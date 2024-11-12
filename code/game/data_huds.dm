@@ -223,8 +223,6 @@ Security HUDs! Basic mode shows only the job.
 	var/icon/I = icon(icon, icon_state, dir)
 	holder.pixel_y = I.Height() - world.icon_size
 	holder.icon_state = "hudno_id"
-	if(wear_ring?.GetID())
-		holder.icon_state = "hud[ckey(wear_ring.GetJobName())]"
 	sec_hud_set_security_status()
 
 /mob/living/proc/sec_hud_set_implants()

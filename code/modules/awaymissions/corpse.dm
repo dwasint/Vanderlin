@@ -206,23 +206,6 @@
 			if(istype(C))
 				C.sensor_mode = NO_SENSORS
 
-	var/obj/item/card/id/W = H.wear_ring
-	if(W)
-		if(id_access)
-			for(var/jobtype in typesof(/datum/job))
-				var/datum/job/J = new jobtype
-				if(J.title == id_access)
-					W.access = J.get_access()
-					break
-		if(id_access_list)
-			if(!islist(W.access))
-				W.access = list()
-			W.access |= id_access_list
-		if(id_job)
-			W.assignment = id_job
-		W.registered_name = H.real_name
-		W.update_label()
-
 //Instant version - use when spawning corpses during runtime
 /obj/effect/mob_spawn/human/corpse
 	roundstart = FALSE
@@ -288,34 +271,6 @@
 
 // I'll work on making a list of corpses people request for maps, or that I think will be commonly used. Syndicate operatives for example.
 
-///////////Civilians//////////////////////
-
-/obj/effect/mob_spawn/human/corpse/assistant
-	name = "Assistant"
-	outfit = /datum/outfit/job/assistant
-
-/obj/effect/mob_spawn/human/corpse/assistant/beesease_infection
-	disease = /datum/disease/beesease
-
-/obj/effect/mob_spawn/human/corpse/assistant/brainrot_infection
-	disease = /datum/disease/brainrot
-
-/obj/effect/mob_spawn/human/corpse/assistant/spanishflu_infection
-	disease = /datum/disease/fluspanish
-
-/obj/effect/mob_spawn/human/corpse/cargo_tech
-	name = "Cargo Tech"
-	outfit = /datum/outfit/job/cargo_tech
-
-/obj/effect/mob_spawn/human/cook
-	name = "Cook"
-	outfit = /datum/outfit/job/cook
-
-
-/obj/effect/mob_spawn/human/doctor
-	name = "Doctor"
-	outfit = /datum/outfit/job/doctor
-
 
 /obj/effect/mob_spawn/human/doctor/alive
 	death = FALSE
@@ -334,32 +289,6 @@
 	for(var/del_type in del_types)
 		var/obj/item/I = locate(del_type) in H
 		qdel(I)
-
-/obj/effect/mob_spawn/human/engineer
-	name = "Engineer"
-	outfit = /datum/outfit/job/engineer/gloved
-
-/obj/effect/mob_spawn/human/engineer/rig
-	outfit = /datum/outfit/job/engineer/gloved/rig
-
-/obj/effect/mob_spawn/human/clown
-	name = "Clown"
-	outfit = /datum/outfit/job/clown
-
-/obj/effect/mob_spawn/human/scientist
-	name = "Scientist"
-	outfit = /datum/outfit/job/scientist
-
-/obj/effect/mob_spawn/human/miner
-	name = "Shaft Miner"
-	outfit = /datum/outfit/job/miner
-
-/obj/effect/mob_spawn/human/miner/rig
-	outfit = /datum/outfit/job/miner/equipped/hardsuit
-
-/obj/effect/mob_spawn/human/miner/explorer
-	outfit = /datum/outfit/job/miner/equipped
-
 
 /obj/effect/mob_spawn/human/plasmaman
 	mob_species = /datum/species/plasmaman

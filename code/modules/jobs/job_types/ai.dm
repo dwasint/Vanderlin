@@ -1,3 +1,4 @@
+//Triumvirate uses this job datum
 /datum/job/ai
 	title = "AI"
 	flag = AI_JF
@@ -66,4 +67,3 @@
 
 /datum/job/ai/config_check()
 	return CONFIG_GET(flag/allow_ai)
-
