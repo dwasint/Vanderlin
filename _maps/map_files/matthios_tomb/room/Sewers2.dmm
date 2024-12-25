@@ -12,6 +12,10 @@
 "c" = (
 /turf/closed/wall/mineral/rogue/stonebrick/reddish,
 /area/rogue)
+"e" = (
+/obj/effect/dungeon_directional_helper/south,
+/turf/open/floor/rogue/concrete,
+/area/rogue)
 "f" = (
 /turf/closed/wall/mineral/rogue/pipe{
 	icon_state = "iron_line"
@@ -31,11 +35,19 @@
 /obj/item/natural/worms/leech/propaganda,
 /turf/open/floor/rogue/concrete,
 /area/rogue)
+"k" = (
+/obj/effect/dungeon_directional_helper/west,
+/turf/open/floor/rogue/concrete,
+/area/rogue)
 "l" = (
 /turf/open/floor/rogue/plank,
 /area/rogue)
 "n" = (
 /turf/open/transparent/openspace,
+/area/rogue)
+"o" = (
+/obj/effect/dungeon_directional_helper/east,
+/turf/open/floor/rogue/concrete,
 /area/rogue)
 "p" = (
 /turf/closed/wall/mineral/rogue/pipe{
@@ -51,6 +63,10 @@
 /obj/effect/decal/cleanable/blood/old,
 /obj/effect/decal/cleanable/blood/gibs/old,
 /turf/open/floor/rogue/metal,
+/area/rogue)
+"t" = (
+/obj/effect/dungeon_directional_helper/north,
+/turf/open/floor/rogue/concrete,
 /area/rogue)
 "w" = (
 /turf/closed/wall/mineral/rogue/pipe{
@@ -153,7 +169,7 @@ c
 c
 c
 I
-I
+k
 c
 c
 c
@@ -258,7 +274,7 @@ I
 I
 "}
 (8,1,1) = {"
-I
+t
 I
 p
 a
@@ -271,7 +287,7 @@ a
 a
 p
 I
-I
+e
 "}
 (9,1,1) = {"
 c
@@ -361,7 +377,7 @@ c
 c
 c
 I
-I
+o
 c
 c
 c

@@ -41,6 +41,7 @@
 	pixel_y = 7;
 	pixel_x = 8
 	},
+/obj/effect/dungeon_directional_helper/west,
 /turf/open/floor/rogue/dirt,
 /area/rogue)
 "E" = (
@@ -51,6 +52,7 @@
 	pixel_y = 9;
 	pixel_x = -12
 	},
+/obj/effect/dungeon_directional_helper/east,
 /turf/open/floor/rogue/dirt,
 /area/rogue)
 "I" = (
