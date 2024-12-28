@@ -6,6 +6,7 @@ SUBSYSTEM_DEF(dungeon_generator)
 	var/list/created_types = list()
 
 /datum/controller/subsystem/dungeon_generator/proc/find_soulmate(direction, turf/creator, obj/effect/dungeon_directional_helper/looking_for_love)
+	creator = get_step(creator, direction)
 	switch(direction)
 		if(NORTH)
 			direction = SOUTH
@@ -15,7 +16,6 @@ SUBSYSTEM_DEF(dungeon_generator)
 			direction = WEST
 		if(WEST)
 			direction = EAST
-	creator = get_step(creator, direction)
 
 	if(!length(parent_types))
 		for(var/datum/map_template/dungeon/path as anything in subtypesof(/datum/map_template/dungeon))
@@ -43,7 +43,6 @@ SUBSYSTEM_DEF(dungeon_generator)
 			continue
 		if(!is_type_in_list(template, subtypesof(picked_type)))
 			continue
-		var/turf/spawn_turf
 		var/turf/true_spawn
 		switch(direction)
 			if(NORTH)
@@ -51,52 +50,54 @@ SUBSYSTEM_DEF(dungeon_generator)
 					continue
 				if(creator.x - template.north_offset < 0)
 					continue
-				spawn_turf = get_ranged_target_turf(creator, WEST, template.north_offset)
-				true_spawn = get_ranged_target_turf(spawn_turf, SOUTH, template.height)
+				true_spawn = get_offset_target_turf(creator, -template.north_offset, -template.height)
 				if(true_spawn.x + template.width > world.maxx)
 					continue
 				if(true_spawn.y + template.height > world.maxy)
 					continue
 				if(!template.load(true_spawn))
 					continue
+				new /obj/item/banhammer(true_spawn)
 
 			if(SOUTH)
 				if(!template.south_offset)
 					continue
 				if(creator.x - template.south_offset < 0)
 					continue
-				true_spawn = get_ranged_target_turf(creator, WEST, template.south_offset)
+				true_spawn = get_offset_target_turf(creator, -template.south_offset, 0)
 				if(true_spawn.x + template.width > world.maxx)
 					continue
 				if(true_spawn.y + template.height > world.maxy)
 					continue
 				if(!template.load(true_spawn))
 					continue
+				new /obj/item/banhammer(true_spawn)
 
 			if(EAST)
 				if(!template.east_offset)
 					continue
 				if(creator.y - template.east_offset < 0)
 					continue
-				spawn_turf = get_ranged_target_turf(creator, SOUTH, template.east_offset)
-				true_spawn = get_ranged_target_turf(creator, WEST, template.width)
+				true_spawn = get_offset_target_turf(creator, -template.width, -template.east_offset)
 				if(true_spawn.x + template.width > world.maxx)
 					continue
 				if(true_spawn.y + template.height > world.maxy)
 					continue
 				if(!template.load(true_spawn))
 					continue
+				new /obj/item/banhammer(true_spawn)
 
 			if(WEST)
 				if(!template.west_offset)
 					continue
 				if(creator.y - template.west_offset < 0)
 					continue
-				true_spawn = get_ranged_target_turf(creator, SOUTH, template.west_offset)
+				true_spawn = get_offset_target_turf(creator, 0, -template.west_offset)
 				if(true_spawn.x + template.width > world.maxx)
 					continue
 				if(true_spawn.y + template.height > world.maxy)
 					continue
 				if(!template.load(true_spawn))
 					continue
+				new /obj/item/banhammer(true_spawn)
 		picking = FALSE

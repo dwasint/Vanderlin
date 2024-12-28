@@ -7,6 +7,9 @@
 
 /obj/effect/dungeon_directional_helper/Initialize()
 	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/effect/dungeon_directional_helper/LateInitialize()
 	var/turf/opposite_turf = get_step(get_turf(src), dir)
 
 	if(!locate(/obj/effect/dungeon_directional_helper) in opposite_turf)
