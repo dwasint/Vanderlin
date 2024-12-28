@@ -22,10 +22,6 @@
 		handle_embedded_objects()
 		handle_blood()
 		handle_roguebreath()
-		var/bprv = handle_bodyparts()
-		if(bprv & BODYPART_LIFE_UPDATE_HEALTH)
-			update_stamina() //needs to go before updatehealth to remove stamcrit
-			updatehealth()
 		update_stress()
 		handle_nausea()
 		if(blood_volume > BLOOD_VOLUME_SURVIVE)
@@ -49,7 +45,7 @@
 			var/bleed_rate = get_bleed_rate()
 			var/yess = HAS_TRAIT(src, TRAIT_NOHUNGER)
 			if(nutrition > 0 || yess)
-				rogstam_add(sleepy_mod * 20)
+				adjust_energy(sleepy_mod * 20)
 			if(hydration > 0 || yess)
 				if(!bleed_rate)
 					blood_volume = min(blood_volume + (4 * sleepy_mod), BLOOD_VOLUME_NORMAL)
@@ -80,7 +76,7 @@
 						to_chat(src, span_boldwarning("I can't sleep...[cause]"))
 					fallingas = 13
 				else
-					rogstam_add(buckled.sleepy * 10)
+					adjust_energy(buckled.sleepy * 10)
 			// Resting on the ground (not sleeping or with eyes closed and about to fall asleep)
 			else if(!(mobility_flags & MOBILITY_STAND))
 				if(eyesclosed && !cant_fall_asleep || (eyesclosed && !(fallingas >= 10 && cant_fall_asleep)))
@@ -94,7 +90,7 @@
 						to_chat(src, span_boldwarning("I can't sleep...[cause]"))
 					fallingas = 13
 				else
-					rogstam_add(10)
+					adjust_energy(10)
 			else if(fallingas)
 				fallingas = 0
 			tiredness = min(tiredness + 1, 100)
@@ -236,23 +232,69 @@
 
 //Start of a breath chain, calls breathe()
 /mob/living/carbon/handle_breathing(times_fired)
+	var/breath_effect_prob = 0
+	var/turf/turf = get_turf(src)
+	var/turf_temp = turf.temperature
+
+	if(turf_temp <= T0C - 50)
+		breath_effect_prob = 100
+	else if(turf_temp <= T0C - 25)
+		breath_effect_prob = 50
+	else if(turf_temp <= T0C - 10)
+		breath_effect_prob = 25
+	else if(turf_temp <= T0C)
+		breath_effect_prob = 15
+
+	if(snow_shiver > world.time)
+		breath_effect_prob += 50
+
+	if(prob(breath_effect_prob))
+		// Breathing into your mask, no particle. We can add fogged up glasses later
+		if(is_mouth_covered())
+			return
+		emit_breath_particle(/particles/fog/breath)
+
 	return
+
+/mob/living/proc/emit_breath_particle(particle_type)
+	ASSERT(ispath(particle_type, /particles))
+
+	var/obj/effect/abstract/particle_holder/holder = new(src, particle_type)
+	var/particles/breath_particle = holder.particles
+	var/breath_dir = dir
+
+	var/list/particle_grav = list(0, 0.1, 0)
+	var/list/particle_pos = list(0, 6, 0)
+	if(breath_dir & NORTH)
+		particle_grav[2] = 0.2
+		breath_particle.rotation = pick(-45, 45)
+		// Layer it behind the mob since we're facing away from the camera
+		holder.pixel_w -= 4
+		holder.pixel_y += 4
+	if(breath_dir & WEST)
+		particle_grav[1] = -0.2
+		particle_pos[1] = -5
+		breath_particle.rotation = -45
+	if(breath_dir & EAST)
+		particle_grav[1] = 0.2
+		particle_pos[1] = 5
+		breath_particle.rotation = 45
+	if(breath_dir & SOUTH)
+		particle_grav[2] = 0.2
+		breath_particle.rotation = pick(-45, 45)
+		// Shouldn't be necessary but just for parity
+		holder.pixel_w += 4
+		holder.pixel_y -= 4
+
+	breath_particle.gravity = particle_grav
+	breath_particle.position = particle_pos
+
+	QDEL_IN(holder, breath_particle.lifespan)
 
 /mob/living/carbon/proc/has_smoke_protection()
 	if(HAS_TRAIT(src, TRAIT_NOBREATH))
 		return TRUE
 	return FALSE
-
-/mob/living/carbon/proc/handle_bodyparts()
-	var/stam_regen = FALSE
-	if(stam_regen_start_time <= world.time)
-		stam_regen = TRUE
-		if(stam_paralyzed)
-			. |= BODYPART_LIFE_UPDATE_HEALTH //make sure we remove the stamcrit
-	for(var/I in bodyparts)
-		var/obj/item/bodypart/BP = I
-		if(BP.needs_processing)
-			. |= BP.on_life(stam_regen)
 
 /mob/living/carbon/proc/handle_organs()
 	if(stat != DEAD)

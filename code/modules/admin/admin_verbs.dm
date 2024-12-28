@@ -15,6 +15,7 @@ GLOBAL_PROTECT(admin_verbs_default)
 	/datum/admins/proc/start_vote,
 	/datum/admins/proc/show_player_panel,
 	/datum/admins/proc/admin_heal,
+	/datum/admins/proc/admin_curse,
 	/datum/admins/proc/admin_sleep,
 	/client/proc/ghost_down,
 	/client/proc/jumptoarea,
@@ -52,7 +53,6 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/cmd_admin_pm_panel,		/*admin-pm list*/
 	/client/proc/stop_sounds,
 	/client/proc/mark_datum_mapview,
-	/client/proc/fix_air,				/*resets air in designated radius to its default atmos composition*/
 
 	/client/proc/invisimin,				/*allows our mob to go invisible/visible*/
 //	/datum/admins/proc/show_traitor_panel,	/*interface which shows a mob's mind*/ -Removed due to rare practical use. Moved to debug verbs ~Errorage
@@ -86,8 +86,6 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/jumptokey,				/*allows us to jump to the location of a mob with a certain ckey*/
 	/client/proc/jumptomob,				/*allows us to jump to a specific mob*/
 	/client/proc/jumptoturf,			/*allows us to jump to a specific turf*/
-	/client/proc/admin_call_shuttle,	/*allows us to call the emergency shuttle*/
-	/client/proc/admin_cancel_shuttle,	/*allows us to cancel the emergency shuttle, sending it back to centcom*/
 	/client/proc/cmd_admin_direct_narrate,	/*send text directly to a player with no padding. Useful for narratives and fluff-text*/
 	/client/proc/cmd_admin_world_narrate,	/*sends text to all players with no padding*/
 	/client/proc/cmd_admin_local_narrate,	/*sends text to all mobs within view of atom*/
@@ -96,7 +94,6 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/cmd_admin_check_player_exp, /* shows players by playtime */
 	/client/proc/toggle_combo_hud, // toggle display of the combination pizza antag and taco sci/med/eng hud
 	/client/proc/toggle_AI_interact, /*toggle admin ability to interact with machines as an AI*/
-	/datum/admins/proc/open_shuttlepanel, /* Opens shuttle manipulator UI */
 	/client/proc/deadchat,
 	/client/proc/toggleprayers,
 	/client/proc/toggle_prayer_sound,
@@ -107,7 +104,7 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/discord_id_manipulation,
 	/client/proc/ShowAllFamilies,
 	)
-GLOBAL_LIST_INIT(admin_verbs_ban, list(/client/proc/unban_panel, /client/proc/ban_panel, /client/proc/stickybanpanel, /client/proc/check_pq, /client/proc/adjust_pq, /client/proc/getcurrentlogs, /client/proc/getserverlogs))
+GLOBAL_LIST_INIT(admin_verbs_ban, list(/client/proc/unban_panel, /client/proc/ban_panel, /client/proc/stickybanpanel, /client/proc/role_ban_panel, /client/proc/check_pq, /client/proc/adjust_pq, /client/proc/getcurrentlogs, /client/proc/getserverlogs))
 GLOBAL_PROTECT(admin_verbs_ban)
 GLOBAL_LIST_INIT(admin_verbs_sounds, list(/client/proc/play_local_sound, /client/proc/play_sound, /client/proc/set_round_end_sound))
 GLOBAL_PROTECT(admin_verbs_sounds)
@@ -151,7 +148,8 @@ GLOBAL_PROTECT(admin_verbs_server)
 	/client/proc/forcerandomrotate,
 	/client/proc/adminchangemap,
 	/client/proc/panicbunker,
-	/client/proc/toggle_hub
+	/client/proc/toggle_hub,
+	/client/proc/toggle_cdn
 	)
 GLOBAL_LIST_INIT(admin_verbs_debug, world.AVerbsDebug())
 GLOBAL_PROTECT(admin_verbs_debug)
@@ -180,7 +178,6 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	/client/proc/map_template_load,
 	/client/proc/map_template_upload,
 	/client/proc/jump_to_ruin,
-	/client/proc/clear_dynamic_transit,
 	/client/proc/toggle_medal_disable,
 	/client/proc/view_runtimes,
 	/client/proc/pump_random_event,
@@ -213,8 +210,6 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	/client/proc/cmd_admin_subtle_message,
 	/client/proc/cmd_admin_headset_message,
 	/client/proc/cmd_admin_check_contents,
-	/client/proc/admin_call_shuttle,
-	/client/proc/admin_cancel_shuttle,
 	/client/proc/cmd_admin_direct_narrate,
 	/client/proc/cmd_admin_world_narrate,
 	/client/proc/cmd_admin_local_narrate,
@@ -436,6 +431,14 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 		return
 	holder.ban_panel()
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Banning Panel") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
+/client/proc/role_ban_panel()
+	set name = "Role Ban Panel"
+	set category = "Admin"
+	if(!check_rights(R_BAN))
+		return
+	holder.role_ban_panel.show_ui(usr)
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Role Ban Panel") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/unban_panel()
 	set name = "Unbanning Panel"

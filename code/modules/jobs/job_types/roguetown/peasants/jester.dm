@@ -35,7 +35,7 @@
 	pants = /obj/item/clothing/under/roguetown/tights
 	armor = /obj/item/clothing/suit/roguetown/shirt/jester
 	belt = /obj/item/storage/belt/rogue/leather
-	beltr = /obj/item/keyring/jester
+	beltr = /obj/item/storage/keyring/jester
 	beltl = /obj/item/storage/belt/rogue/pouch
 	head = /obj/item/clothing/head/roguetown/jester
 	neck = /obj/item/clothing/neck/roguetown/coif
@@ -51,7 +51,7 @@
 		H.mind?.adjust_skillrank(/datum/skill/misc/stealing, pick(1,2,3,4,5), TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/misc/lockpicking, pick(1,2,3,4,5), TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/misc/climbing, pick(4,5), TRUE) // Pirouette, but falling and hurting yourself IS pretty funny.
-		H.mind?.adjust_skillrank(/datum/skill/misc/athletics, pick(1,2,3,4,5), TRUE)
+		H.mind?.adjust_skillrank(/datum/skill/misc/athletics, pick(4,4,4,4,5), TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/misc/music, pick(1,2,3,4,5,6), TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/craft/cooking, pick(1,2,3,4,5,6), TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/combat/firearms, pick(1,2,3,4,5,6), TRUE)
@@ -64,9 +64,9 @@
 		H.TOTALSPD = rand(1, 20)
 
 		if(H.STASTR > 16)
-			H.cmode_music = 'sound/music/combat_jester3.ogg'
+			H.cmode_music = 'sound/music/cmode/nobility/CombatJesterSTR.ogg'
 		else
-			H.cmode_music = pick("sound/music/combat_jester.ogg","sound/music/combat_jester2.ogg")
+			H.cmode_music = pick("sound/music/cmode/nobility/CombatJester1.ogg","sound/music/cmode/nobility/CombatJester2.ogg")
 
 /*		if(H.gender == MALE)
 			if(H.dna?.species)
@@ -83,6 +83,7 @@
 	H.verbs |= /mob/living/carbon/human/proc/ear_trick
 	ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NUTCRACKER, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_ZJUMP, TRAIT_GENERIC)
 
 //Ventriloquism! Make things speak!
 

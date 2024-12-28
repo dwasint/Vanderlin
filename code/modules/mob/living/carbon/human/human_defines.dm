@@ -8,7 +8,6 @@
 	hud_type = /datum/hud/human
 	base_intents = list(INTENT_HELP, INTENT_DISARM, INTENT_GRAB, INTENT_HARM)
 	possible_mmb_intents = list(INTENT_STEAL, INTENT_JUMP, INTENT_KICK, INTENT_BITE, INTENT_GIVE)
-	pressure_resistance = 25
 	can_buckle = TRUE
 	buckle_lying = FALSE
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
@@ -56,8 +55,6 @@
 	var/shavelevel = 0
 
 	var/socks = "Nude" //Which socks the player wants
-	var/backpack = DBACKPACK		//Which backpack type the player has chosen.
-	var/jumpsuit_style = PREF_SUIT		//suit/skirt
 
 	//Equipment slots
 	var/obj/item/clothing/skin_armor = null
@@ -125,7 +122,7 @@
 	var/buried = FALSE // Whether the body is buried or not.
 	var/funeral = FALSE // Whether the body has received rites or not.
 
-	var/cleric = null // Used for cleric_holder for priests
+	var/datum/devotion/cleric_holder/cleric = null // Used for cleric_holder for priests
 
 	var/confession_points = 0 // Used to track how many confessions the Inquisitor has gotten signed. Used to buy items at mailboxes.
 	var/purchase_history = null // Used to track what the Inquisitor has bought from the mailbox.

@@ -1,6 +1,5 @@
 #define POPCOUNT_SURVIVORS "survivors"					//Not dead at roundend
 #define POPCOUNT_ESCAPEES "escapees"					//Not dead and on centcom/shuttles marked as escaped
-#define POPCOUNT_SHUTTLE_ESCAPEES "shuttle_escapees" 	//Emergency shuttle only.
 
 /datum/controller/subsystem/ticker/proc/gather_roundend_feedback()
 	gather_antag_data()
@@ -8,10 +7,6 @@
 	var/list/file_data = list("escapees" = list("humans" = list(), "silicons" = list(), "others" = list(), "npcs" = list()), "abandoned" = list("humans" = list(), "silicons" = list(), "others" = list(), "npcs" = list()), "ghosts" = list(), "additional data" = list())
 	var/num_survivors = 0
 	var/num_escapees = 0
-	var/num_shuttle_escapees = 0
-	var/list/area/shuttle_areas
-	if(SSshuttle && SSshuttle.emergency)
-		shuttle_areas = SSshuttle.emergency.shuttle_areas
 	for(var/mob/m in GLOB.mob_list)
 		var/escaped
 		var/category
@@ -35,11 +30,9 @@
 				category = "others"
 				mob_data += list("typepath" = m.type)
 		if(!escaped)
-			if(EMERGENCY_ESCAPED_OR_ENDGAMED && (m.onCentCom() || m.onSyndieBase()))
+			if((m.onCentCom()))
 				escaped = "escapees"
 				num_escapees++
-				if(shuttle_areas[get_area(m)])
-					num_shuttle_escapees++
 			else
 				escaped = "abandoned"
 		if(!m.mind && (!ishuman(m)))
@@ -66,7 +59,6 @@
 	. = list()
 	.[POPCOUNT_SURVIVORS] = num_survivors
 	.[POPCOUNT_ESCAPEES] = num_escapees
-	.[POPCOUNT_SHUTTLE_ESCAPEES] = num_shuttle_escapees
 
 /datum/controller/subsystem/ticker/proc/gather_antag_data()
 	var/team_gid = 1
@@ -138,7 +130,7 @@
 
 	log_game("The round has ended.")
 
-	to_chat(world, "<BR><BR><BR><span class='reallybig'>So ends this tale of Roguetown.</span>")
+	to_chat(world, "<BR><BR><BR><span class='reallybig'>So ends this tale of Vanderlin.</span>")
 	get_end_reason()
 
 	var/list/key_list = list()
@@ -378,7 +370,7 @@
 
 /datum/controller/subsystem/ticker/proc/survivor_report(popcount)
 	var/list/parts = list()
-	var/station_evacuated = EMERGENCY_ESCAPED_OR_ENDGAMED
+	var/station_evacuated = round_end
 
 	if(GLOB.round_id)
 		var/statspage = CONFIG_GET(string/roundstatsurl)
@@ -390,7 +382,6 @@
 		parts+= "[FOURSPACES]Total Population: <B>[total_players]</B>"
 		if(station_evacuated)
 			parts += "<BR>[FOURSPACES]Evacuation Rate: <B>[popcount[POPCOUNT_ESCAPEES]] ([PERCENT(popcount[POPCOUNT_ESCAPEES]/total_players)]%)</B>"
-			parts += "[FOURSPACES](on emergency shuttle): <B>[popcount[POPCOUNT_SHUTTLE_ESCAPEES]] ([PERCENT(popcount[POPCOUNT_SHUTTLE_ESCAPEES]/total_players)]%)</B>"
 		parts += "[FOURSPACES]Survival Rate: <B>[popcount[POPCOUNT_SURVIVORS]] ([PERCENT(popcount[POPCOUNT_SURVIVORS]/total_players)]%)</B>"
 		if(SSblackbox.first_death)
 			var/list/ded = SSblackbox.first_death
@@ -436,13 +427,9 @@
 	var/mob/M = C.mob
 	if(M.mind && !isnewplayer(M))
 		if(M.stat != DEAD && !isbrain(M))
-			if(EMERGENCY_ESCAPED_OR_ENDGAMED)
-				if(!M.onCentCom() && !M.onSyndieBase())
-					parts += "<div class='panel stationborder'>"
-					parts += "<span class='marooned'>I managed to survive, but were marooned on [station_name()]...</span>"
-				else
-					parts += "<div class='panel greenborder'>"
-					parts += "<span class='greentext'>I managed to survive the events on [station_name()] as [M.real_name].</span>"
+			if(round_end)
+				parts += "<div class='panel greenborder'>"
+				parts += "<span class='greentext'>I managed to survive the events on [station_name()] as [M.real_name].</span>"
 			else
 				parts += "<div class='panel greenborder'>"
 				parts += "<span class='greentext'>I managed to survive the events on [station_name()] as [M.real_name].</span>"
@@ -536,12 +523,12 @@
 	var/datum/action/report/R = new
 	C.player_details.player_actions += R
 	R.Grant(C.mob)
-	to_chat(C,"<a href='?src=[REF(R)];report=1'>Show roundend report again</a>")
+	to_chat(C,"<a href='byond://?src=[REF(R)];report=1'>Show roundend report again</a>")
 
 /datum/controller/subsystem/ticker/proc/give_show_playerlist_button(client/C)
 	set waitfor = 0
-	to_chat(C,"<a href='?src=[C];playerlistrogue=1'>* SHOW PLAYER LIST *</a>")
-	to_chat(C,"<a href='?src=[C];commendsomeone=1'>* Commend a Character *</a>")
+	to_chat(C,"<a href='byond://?src=[C];playerlistrogue=1'>* SHOW PLAYER LIST *</a>")
+	to_chat(C,"<a href='byond://?src=[C];commendsomeone=1'>* Commend a Character *</a>")
 	C.commendation_popup()
 
 /datum/action/report
@@ -606,9 +593,9 @@
 	var/count = 1
 	for(var/datum/objective/objective in objectives)
 		if(objective.check_completion())
-			objective_parts += "<b>Objective #[count]</b>: [objective.explanation_text] <span class='greentext'>Success!</span>"
+			objective_parts += "<b>[objective.flavor] #[count]</b>: [objective.explanation_text] <span class='greentext'>Success!</span>"
 		else
-			objective_parts += "<b>Objective #[count]</b>: [objective.explanation_text] <span class='redtext'>Fail.</span>"
+			objective_parts += "<b>[objective.flavor] #[count]</b>: [objective.explanation_text] <span class='redtext'>Fail.</span>"
 		count++
 	return objective_parts.Join("<br>")
 

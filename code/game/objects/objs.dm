@@ -85,10 +85,6 @@
 				obj_flags &= ~string_to_objflag[flag]
 			else
 				obj_flags |= string_to_objflag[flag]
-	if((obj_flags & ON_BLUEPRINTS) && isturf(loc))
-		var/turf/T = loc
-		T.add_blueprints_preround(src)
-
 
 /obj/Destroy(force=FALSE)
 	if(!ismachinery(src))
@@ -105,38 +101,6 @@
 	if(obj_flags & FROZEN)
 		visible_message("<span class='danger'>[src] shatters into a million pieces!</span>")
 		qdel(src)
-
-
-/obj/assume_air(datum/gas_mixture/giver)
-	if(loc)
-		return loc.assume_air(giver)
-	else
-		return null
-
-/obj/remove_air(amount)
-	if(loc)
-		return loc.remove_air(amount)
-	else
-		return null
-
-/obj/return_air()
-	if(loc)
-		return loc.return_air()
-	else
-		return null
-
-/obj/proc/handle_internal_lifeform(mob/lifeform_inside_me, breath_request)
-	//Return: (NONSTANDARD)
-	//		null if object handles breathing logic for lifeform
-	//		datum/air_group to tell lifeform to process using that breath return
-	//DEFAULT: Take air from turf to give to have mob process
-
-	if(breath_request>0)
-		var/datum/gas_mixture/environment = return_air()
-		var/breath_percentage = BREATH_VOLUME / environment.return_volume()
-		return remove_air(environment.total_moles() * breath_percentage)
-	else
-		return null
 
 /obj/proc/updateUsrDialog()
 	if((obj_flags & IN_USE) && !(obj_flags & USES_TGUI))

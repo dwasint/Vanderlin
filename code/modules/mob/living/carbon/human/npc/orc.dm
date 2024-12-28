@@ -126,6 +126,7 @@
 /mob/living/carbon/human/species/orc/proc/configure_mind()
 	if(!mind)
 		mind = new /datum/mind(src)
+	mind.current = src
 
 	mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
 	mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
@@ -233,7 +234,7 @@
 			if(B.rotted)
 				var/turf/open/T = C.loc
 				if(istype(T))
-					T.add_pollutants(/datum/pollutant/rot, 1)
+					T.pollute_turf(/datum/pollutant/rot, 10)
 	if(should_update)
 		if(amount > 20 MINUTES)
 			C.update_body()

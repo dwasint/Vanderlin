@@ -32,6 +32,10 @@
 			neck = /obj/item/clothing/neck/roguetown/psycross/silver/astrata
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/necked/astrata
 			cloak = /obj/item/clothing/cloak/stabard/templar/astrata
+		if("Noc")
+			neck = /obj/item/clothing/neck/roguetown/psycross/noc
+			head = /obj/item/clothing/head/roguetown/helmet/heavy/necked/noc
+			cloak = /obj/item/clothing/cloak/stabard/templar/noc
 		if("Dendor")
 			neck = /obj/item/clothing/neck/roguetown/psycross/silver/dendor
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/dendorhelm
@@ -40,26 +44,22 @@
 			neck = /obj/item/clothing/neck/roguetown/psycross/silver/necra
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/necked/necra
 			cloak = /obj/item/clothing/cloak/stabard/templar/necra
+		if("Pestra")
+			wrists = /obj/item/clothing/neck/roguetown/psycross/silver/pestra
+			head = /obj/item/clothing/head/roguetown/helmet/heavy/pestrahelm
+			cloak = /obj/item/clothing/cloak/stabard/templar/pestra
 		if("Eora")
 			head = /obj/item/clothing/head/roguetown/helmet/sallet/eoran
 			wrists = /obj/item/clothing/neck/roguetown/psycross/silver/eora
 			neck = /obj/item/clothing/neck/roguetown/chaincoif
 			cloak = /obj/item/clothing/cloak/stabard/templar/eora
 			H.virginity = FALSE
-		if("Pestra")
-			wrists = /obj/item/clothing/neck/roguetown/psycross/silver/pestra
-			head = /obj/item/clothing/head/roguetown/helmet/heavy/pestrahelm
-			cloak = /obj/item/clothing/cloak/stabard/templar/pestra
-		if("Noc")
-			neck = /obj/item/clothing/neck/roguetown/psycross/noc
-			head = /obj/item/clothing/head/roguetown/helmet/heavy/necked/noc
-			cloak = /obj/item/clothing/cloak/stabard/templar/noc
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 	pants = /obj/item/clothing/under/roguetown/chainlegs
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	backl = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/keyring/priest = 1)
+	backpack_contents = list(/obj/item/storage/keyring/priest = 1)
 	backr = /obj/item/rogueweapon/shield/tower/metal
 	belt = /obj/item/storage/belt/rogue/leather/black
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor

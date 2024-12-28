@@ -94,7 +94,6 @@
 #define COMSIG_ATOM_BLOB_ACT "atom_blob_act"					//from base of atom/blob_act(): (/obj/structure/blob)
 #define COMSIG_ATOM_ACID_ACT "atom_acid_act"					//from base of atom/acid_act(): (acidpwr, acid_volume)
 #define COMSIG_ATOM_EMAG_ACT "atom_emag_act"					//from base of atom/emag_act(): (/mob/user)
-#define COMSIG_ATOM_RAD_ACT "atom_rad_act"						//from base of atom/rad_act(intensity)
 #define COMSIG_ATOM_NARSIE_ACT "atom_narsie_act"				//from base of atom/narsie_act(): ()
 #define COMSIG_ATOM_BSA_BEAM "atom_bsa_beam_pass"				//from obj/machinery/bsa/full/proc/fire(): ()
 	#define COMSIG_ATOM_BLOCKS_BSA_BEAM 1
@@ -226,6 +225,7 @@
 #define COMSIG_PROCESS_BORGCHARGER_OCCUPANT "living_charge"		//sent from borg recharge stations: (amount, repairs)
 #define COMSIG_MOB_CLIENT_LOGIN "comsig_mob_client_login"		//sent when a mob/login() finishes: (client)
 #define COMSIG_BORG_SAFE_DECONSTRUCT "borg_safe_decon"			//sent from borg mobs to itself, for tools to catch an upcoming destroy() due to safe decon (rather than detonation)
+#define COMSIG_MOB_ACTIVE_PERCEPTION "comsig_mob_active_perception"	//sent from mob/living/proc/look_around(): (mob/living/source)
 
 //ALL OF THESE DO NOT TAKE INTO ACCOUNT WHETHER AMOUNT IS 0 OR LOWER AND ARE SENT REGARDLESS!
 #define COMSIG_LIVING_STATUS_OFFBALANCED "living_offbalanced"
@@ -248,6 +248,9 @@
 // /mob/living/simple_animal/hostile signals
 #define COMSIG_HOSTILE_ATTACKINGTARGET "hostile_attackingtarget"
 	#define COMPONENT_HOSTILE_NO_ATTACK 1
+///before attackingtarget has happened, source is the attacker and target is the attacked
+#define COMSIG_HOSTILE_PRE_ATTACKINGTARGET "hostile_pre_attackingtarget"
+	#define COMPONENT_HOSTILE_NO_PREATTACK (1<<0) //cancel the attack, only works before attack happens
 
 // /obj signals
 #define COMSIG_OBJ_DECONSTRUCT "obj_deconstruct"				//from base of obj/deconstruct(): (disassembled)
@@ -408,3 +411,5 @@
 #define COMSIG_XENO_TURF_CLICK_SHIFT "xeno_turf_click_shift"				//from turf ShiftClickOn(): (/mob)
 #define COMSIG_XENO_TURF_CLICK_CTRL "xeno_turf_click_alt"					//from turf AltClickOn(): (/mob)
 #define COMSIG_XENO_MONKEY_CLICK_CTRL "xeno_monkey_click_ctrl"				//from monkey CtrlClickOn(): (/mob)
+
+#define COMSIG_PARENT_IMPREGNATE "comsig_mob_impregnate"

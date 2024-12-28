@@ -434,9 +434,6 @@ block( \
 		if(gametypeCheck)
 			if(!gametypeCheck.age_check(M.client))
 				continue
-		if(jobbanType)
-			if(is_banned_from(M.ckey, list(jobbanType, ROLE_SYNDICATE)) || QDELETED(M))
-				continue
 
 		showCandidatePollWindow(M, poll_time, Question, result, ignore_category, time_passed, flashwindow)
 	sleep(poll_time)
@@ -517,16 +514,6 @@ block( \
 /proc/GetBluePart(const/hexa)
 	return hex2num(copytext(hexa, 6, 8))
 
-/proc/lavaland_equipment_pressure_check(turf/T)
-	. = FALSE
-	if(!istype(T))
-		return
-	var/datum/gas_mixture/environment = T.return_air()
-	if(!istype(environment))
-		return
-	var/pressure = environment.return_pressure()
-	if(pressure <= LAVALAND_EQUIPMENT_EFFECT_PRESSURE)
-		. = TRUE
 
 // Find a obstruction free turf that's within the range of the center. Can also condition on if it is of a certain area type.
 /proc/find_obstruction_free_location(range, atom/center, area/specific_area)

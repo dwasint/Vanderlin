@@ -15,7 +15,7 @@
 		to_chat(src, "<span class='warning'>The blood soaks through my bandage.</span>")
 
 /mob/living/carbon/monkey/handle_blood()
-	if((bodytemperature <= TCRYO) || HAS_TRAIT(src, TRAIT_HUSK)) //cryosleep or husked people do not pump the blood.
+	if(HAS_TRAIT(src, TRAIT_HUSK)) //cryosleep or husked people do not pump the blood.
 		return
 	//Blood regeneration if there is some space
 	if(blood_volume < BLOOD_VOLUME_NORMAL && !bleed_rate)
@@ -24,7 +24,7 @@
 			adjustOxyLoss(round((BLOOD_VOLUME_NORMAL - blood_volume) * 0.02, 1))
 
 /mob/living/proc/handle_blood()
-	if((bodytemperature <= TCRYO) || HAS_TRAIT(src, TRAIT_HUSK)) //cryosleep or husked people do not pump the blood.
+	if(HAS_TRAIT(src, TRAIT_HUSK)) //cryosleep or husked people do not pump the blood.
 		return
 	blood_volume = min(blood_volume, BLOOD_VOLUME_MAXIMUM)
 
@@ -76,7 +76,7 @@
 
 // Takes care blood loss and regeneration
 /mob/living/carbon/handle_blood()
-	if((bodytemperature <= TCRYO) || HAS_TRAIT(src, TRAIT_HUSK)) //cryosleep or husked people do not pump the blood.
+	if(HAS_TRAIT(src, TRAIT_HUSK)) //cryosleep or husked people do not pump the blood.
 		return
 	blood_volume = min(blood_volume, BLOOD_VOLUME_MAXIMUM)
 	var/bleed_rate = get_bleed_rate()
@@ -251,8 +251,6 @@
 		blood_data["donor"] = src
 
 		blood_data["blood_DNA"] = copytext(dna.unique_enzymes,1,0)
-		if(disease_resistances && disease_resistances.len)
-			blood_data["resistances"] = disease_resistances.Copy()
 		var/list/temp_chem = list()
 		for(var/datum/reagent/R in reagents.reagent_list)
 			temp_chem[R.type] = R.volume

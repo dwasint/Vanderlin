@@ -44,8 +44,6 @@
 		if(C.stat != DEAD)
 			qdel(src)
 			return
-
-
 	if(!(C.mob_biotypes & (MOB_ORGANIC|MOB_UNDEAD)))
 		qdel(src)
 		return
@@ -64,22 +62,21 @@
 					B.rotted = TRUE
 					findonerotten = TRUE
 					shouldupdate = TRUE
-					C.change_stat("constitution", -8, "rottenlimbs")
+					C.change_stat(STATKEY_CON, -8)
 			else
 				if(amount > 45 MINUTES)
 					if(!is_zombie)
 						B.skeletonize()
 						if(C.dna && C.dna.species)
 							C.dna.species.species_traits |= NOBLOOD
-						C.change_stat("constitution", -99, "skeletonized")
+						C.change_stat(STATKEY_CON, -99)
 						shouldupdate = TRUE
 				else
 					findonerotten = TRUE
-
 	if(findonerotten)
 		var/turf/open/T = C.loc
 		if(istype(T))
-			T.add_pollutants(/datum/pollutant/rot, 5)
+			T.pollute_turf(/datum/pollutant/rot, 50)
 			if(soundloop && soundloop.stopped && !is_zombie)
 				soundloop.start()
 		else
@@ -109,13 +106,13 @@
 			soundloop.start()
 		var/turf/open/T = get_turf(L)
 		if(istype(T))
-			T.add_pollutants(/datum/pollutant/rot, 5)
+			T.pollute_turf(/datum/pollutant/rot, 50)
 	if(amount > 20 MINUTES)
 		qdel(R)
 		return L.dust(drop_items=TRUE)
 
 /datum/component/rot/gibs
-	amount = MIASMA_GIBS_MOLES
+	amount = 0.005
 
 /datum/looping_sound/fliesloop
 	mid_sounds = list('sound/misc/fliesloop.ogg')

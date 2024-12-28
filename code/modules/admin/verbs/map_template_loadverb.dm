@@ -37,11 +37,9 @@
 		to_chat(src, "<span class='warning'>Filename must end in '.dmm': [map]</span>")
 		return
 	var/datum/map_template/M
-	switch(alert(src, "What kind of map is this?", "Map type", "Normal", "Shuttle", "Cancel"))
+	switch(alert(src, "What kind of map is this?", "Map type", "Normal", "Cancel"))
 		if("Normal")
 			M = new /datum/map_template(map, "[map]", TRUE)
-		if("Shuttle")
-			M = new /datum/map_template/shuttle(map, "[map]", TRUE)
 		else
 			return
 	if(!M.cached_map)
@@ -52,8 +50,8 @@
 	var/report_link
 	if(report)
 		report.show_to(src)
-		report_link = " - <a href='?src=[REF(report)];[HrefToken(TRUE)];show=1'>validation report</a>"
-		to_chat(src, "<span class='warning'>Map template '[map]' <a href='?src=[REF(report)];[HrefToken()];show=1'>failed validation</a>.</span>")
+		report_link = " - <a href='byond://?src=[REF(report)];[HrefToken(TRUE)];show=1'>validation report</a>"
+		to_chat(src, "<span class='warning'>Map template '[map]' <a href='byond://?src=[REF(report)];[HrefToken()];show=1'>failed validation</a>.</span>")
 		if(report.loadable)
 			var/response = alert(src, "The map failed validation, would you like to load it anyways?", "Map Errors", "Cancel", "Upload Anyways")
 			if(response != "Upload Anyways")

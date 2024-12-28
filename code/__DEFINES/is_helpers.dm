@@ -20,18 +20,6 @@ GLOBAL_LIST_INIT(turfs_without_ground, typecacheof(list(
 	/turf/open/transparent/openspace
 	)))
 
-GLOBAL_LIST_INIT(our_forest_sex, typecacheof(list(
-	/area/rogue/outdoors/woods,
-	/area/rogue/indoors/shelter/woods,
-	/area/rogue/outdoors/river,
-	/area/rogue/outdoors/bog,
-	/area/rogue/indoors/shelter/bog,
-	/area/rogue/outdoors/rtfield,
-	/area/rogue/indoors/shelter/rtfield
-	)))
-
-#define isforestsex(A) (is_type_in_typecache(A, GLOB.our_forest_sex))
-
 #define isgroundlessturf(A) (is_type_in_typecache(A, GLOB.turfs_without_ground))
 
 #define isopenturf(A) (istype(A, /turf/open))
@@ -109,6 +97,9 @@ GLOBAL_LIST_INIT(our_forest_sex, typecacheof(list(
 //Misc mobs
 #define isobserver(A) (istype(A, /mob/dead/observer))
 
+#define isrogueobserver(A) (istype(A, /mob/dead/observer/rogue))
+#define isroguespirit(A) (istype(A, /mob/living/carbon/spirit)) //underworld spirit
+
 #define isdead(A) (istype(A, /mob/dead))
 
 #define isnewplayer(A) (istype(A, /mob/dead/new_player))
@@ -153,8 +144,6 @@ GLOBAL_LIST_INIT(pointed_types, typecacheof(list(
 #define iseffect(O) (istype(O, /obj/effect))
 
 #define isblobmonster(O) (istype(O, /mob/living/simple_animal/hostile/blob))
-
-#define isshuttleturf(T) (length(T.baseturfs) && (/turf/baseturf_skipover/shuttle in T.baseturfs))
 
 GLOBAL_LIST_INIT(RATS_DONT_EAT, typecacheof(list(
 	/obj/item/reagent_containers/food/snacks/smallrat,

@@ -12,10 +12,10 @@
 	outfit = /datum/outfit/job/roguetown/adventurer/monk
 	min_pq = 0
 	category_tags = list(CTAG_ADVENTURER)
+	cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'
 	vampcompat = FALSE
 
 /datum/outfit/job/roguetown/adventurer/monk
-	allowed_patrons = list(/datum/patron/divine/ravox)
 
 /datum/outfit/job/roguetown/adventurer/monk/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -31,6 +31,9 @@
 	backr = /obj/item/rogueweapon/polearm/woodstaff
 
 	if(H.mind)
+		if(H.patron != /datum/patron/divine/ravox)
+			H.set_patron(/datum/patron/divine/ravox)
+
 		H.mind?.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/combat/unarmed, 5, TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)

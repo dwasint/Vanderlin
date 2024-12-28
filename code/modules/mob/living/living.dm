@@ -24,7 +24,6 @@
 		buckled.unbuckle_mob(src,force=1)
 
 	GLOB.mob_living_list -= src
-	QDEL_LIST(diseases)
 	for(var/s in ownedSoullinks)
 		var/datum/soullink/S = s
 		S.ownerDies(FALSE)
@@ -546,11 +545,6 @@
 /mob/living/proc/InFullCritical()
 	return ((health <= HEALTH_THRESHOLD_FULLCRIT) && stat == UNCONSCIOUS)
 
-//This proc is used for mobs which are affected by pressure to calculate the amount of pressure that actually
-//affects them once clothing is factored in. ~Errorage
-/mob/living/proc/calculate_affecting_pressure(pressure)
-	return pressure
-
 /mob/living/proc/getMaxHealth()
 	return maxHealth
 
@@ -675,7 +669,6 @@
 		// You dont have any blood and your not bloodloss immune? Dead.
 		if(blood_volume <= 0)
 			health = 0
-	staminaloss = getStaminaLoss()
 	update_stat()
 	SEND_SIGNAL(src, COMSIG_LIVING_HEALTH_UPDATE)
 
@@ -708,7 +701,6 @@
 	SetImmobilized(0, FALSE)
 	SetParalyzed(0, FALSE)
 	SetSleeping(0, FALSE)
-	setStaminaLoss(0)
 	SetUnconscious(0, FALSE)
 	if(should_update_mobility)
 		update_mobility()
@@ -745,7 +737,7 @@
 	cure_blind()
 	cure_husk()
 	hallucination = 0
-	heal_overall_damage(INFINITY, INFINITY, INFINITY, null, TRUE) //heal brute and burn dmg on both organic and robotic limbs, and update health right away.
+	heal_overall_damage(INFINITY, INFINITY, null, TRUE) //heal brute and burn dmg on both organic and robotic limbs, and update health right away.
 	for(var/datum/wound/wound as anything in get_wounds())
 		if(admin_revive)
 			qdel(wound)
@@ -898,35 +890,6 @@
 	else
 		return pick("trails_1", "trails_2")
 
-/mob/living/experience_pressure_difference(pressure_difference, direction, pressure_resistance_prob_delta = 0)
-	if(buckled)
-		return
-	if(client && client.move_delay >= world.time + world.tick_lag*2)
-		pressure_resistance_prob_delta -= 30
-
-	var/list/turfs_to_check = list()
-
-	if(has_limbs)
-		var/turf/T = get_step(src, angle2dir(dir2angle(direction)+90))
-		if (T)
-			turfs_to_check += T
-
-		T = get_step(src, angle2dir(dir2angle(direction)-90))
-		if(T)
-			turfs_to_check += T
-
-		for(var/t in turfs_to_check)
-			T = t
-			if(T.density)
-				pressure_resistance_prob_delta -= 20
-				continue
-			for (var/atom/movable/AM in T)
-				if (AM.density && AM.anchored)
-					pressure_resistance_prob_delta -= 20
-					break
-	if(!force_moving)
-		..(pressure_difference, direction, pressure_resistance_prob_delta)
-
 /mob/living/can_resist()
 	return !((next_move > world.time) || incapacitated(ignore_restraints = TRUE, ignore_stasis = TRUE))
 
@@ -1035,7 +998,7 @@
 	if(moving_resist && client) //we resisted by trying to move
 		client.move_delay = world.time + 20
 	if(prob(resist_chance))
-		rogfat_add(rand(5,15))
+		adjust_stamina(rand(5,15))
 		visible_message("<span class='warning'>[src] breaks free of [pulledby]'s grip!</span>", \
 						"<span class='notice'>I break free of [pulledby]'s grip!</span>", null, null, pulledby)
 		to_chat(pulledby, "<span class='danger'>[src] breaks free of my grip!</span>")
@@ -1049,7 +1012,7 @@
 
 		return FALSE
 	else
-		rogfat_add(rand(5,15))
+		adjust_stamina(rand(5,15))
 		var/shitte = ""
 //		if(client?.prefs.showrolls)
 //			shitte = " ([resist_chance]%)"
@@ -1209,15 +1172,6 @@
 	animate(pixel_x = final_pixel_x , pixel_y = final_pixel_y , time = 2)
 	setMovetype(movement_type & ~FLOATING) // If we were without gravity, the bouncing animation got stopped, so we make sure to restart it in next life().
 
-/mob/living/proc/get_temperature(datum/gas_mixture/environment)
-	var/loc_temp = environment ? environment.temperature : T0C
-	if(isobj(loc))
-		var/obj/oloc = loc
-		var/obj_temp = oloc.return_temperature()
-		if(obj_temp != null)
-			loc_temp = obj_temp
-	return loc_temp
-
 /mob/living/proc/get_standard_pixel_x_offset(lying = 0)
 	var/_x = initial(pixel_x)
 	for(var/o in mob_offsets)
@@ -1282,9 +1236,6 @@
 		to_chat(src, "<span class='warning'>I try to fire [G], but can't use the trigger!</span>")
 		return FALSE
 	return TRUE
-
-/mob/living/proc/update_stamina()
-	return
 
 /mob/living/proc/owns_soul()
 	if(mind)
@@ -1658,7 +1609,6 @@
 			OXY:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=oxygen' id='oxygen'>[getOxyLoss()]</a>
 			CLONE:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=clone' id='clone'>[getCloneLoss()]</a>
 			BRAIN:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=brain' id='brain'>[getOrganLoss(ORGAN_SLOT_BRAIN)]</a>
-			STAMINA:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=stamina' id='stamina'>[getStaminaLoss()]</a>
 		</font>
 	"}
 
@@ -1690,6 +1640,7 @@
 	var/looktime = 50 - (STAPER * 2)
 	if(do_after(src, looktime, target = src))
 		// var/huhsneak
+		SEND_GLOBAL_SIGNAL(COMSIG_MOB_ACTIVE_PERCEPTION,src)
 		for(var/mob/living/M in view(7,src))
 			if(M == src)
 				continue

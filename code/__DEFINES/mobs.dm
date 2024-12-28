@@ -94,8 +94,6 @@
 #define HUMAN_MAX_OXYLOSS 3
 #define HUMAN_CRIT_MAX_OXYLOSS (SSmobs.wait/30)
 
-#define STAMINA_REGEN_BLOCK_TIME (10 SECONDS)
-
 #define HEAT_DAMAGE_LEVEL_1 1 //Amount of damage applied when your body temperature just passes the 360.15k safety point
 #define HEAT_DAMAGE_LEVEL_2 1 //Amount of damage applied when your body temperature passes the 400K point
 #define HEAT_DAMAGE_LEVEL_3 1 //Amount of damage applied when your body temperature passes the 460K point and you are on fire
@@ -495,3 +493,6 @@
 
 //SPECIAL SKIN TONES
 #define SKIN_COLOR_ROT "878f79" //Sickly green
+
+/// Humans are slowed by the difference between bodytemp and BODYTEMP_COLD_DAMAGE_LIMIT divided by this
+#define COLD_SLOWDOWN_FACTOR				20

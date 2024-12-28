@@ -11,7 +11,7 @@
 	// This shouldn't be modified directly, use the helper procs.
 	var/list/baseturfs = /turf/open/transparent/openspace
 
-	var/temperature = T20C
+	var/temperature = 293.15
 	var/to_be_destroyed = 0 //Used for fire, if a melting temperature was reached, it will be destroyed
 	var/max_fire_temperature_sustained = 0 //The max temperature of the fire which it was subjected to
 
@@ -24,7 +24,6 @@
 	var/explosion_level = 0	//for preventing explosion dodging
 	var/explosion_id = 0
 
-	var/requires_activation	//add to air processing after initialize?
 	var/changing_turf = FALSE
 
 	var/bullet_bounce_sound = 'sound/blank.ogg' //sound played when a shell casing is ejected ontop of the turf.
@@ -84,10 +83,6 @@
 	if(!IS_DYNAMIC_LIGHTING(src) && IS_DYNAMIC_LIGHTING(A))
 		add_overlay(/obj/effect/fullbright)
 
-	if(requires_activation)
-		CALCULATE_ADJACENT_TURFS(src)
-		SSair.add_to_active(src)
-
 	if (light_power && (light_outer_range || light_inner_range))
 		update_light()
 
@@ -114,9 +109,6 @@
 
 	return INITIALIZE_HINT_NORMAL
 
-/turf/proc/Initalize_Atmos(times_fired)
-	CALCULATE_ADJACENT_TURFS(src)
-
 /turf/Destroy(force)
 	. = QDEL_HINT_IWILLGC
 	if(!changing_turf)
@@ -129,8 +121,6 @@
 	if(T)
 		T.multiz_turf_del(src, UP)
 	STOP_PROCESSING(SSweather,src)
-	if(pollutants)
-		pollutants = null
 	if(force)
 		..()
 		//this will completely wipe turf state
@@ -140,10 +130,8 @@
 		for(var/I in B.vars)
 			B.vars[I] = null
 		return
-	SSair.remove_from_active(src)
 	QDEL_LIST(blueprint_data)
 	flags_1 &= ~INITIALIZED_1
-	requires_activation = FALSE
 	..()
 
 #define SEE_SKY_YES 1
@@ -177,50 +165,6 @@
 			can_see_sky = SEE_SKY_NO
 			return can_see_sky()
 
-/turf/proc/update_see_sky()
-	can_see_sky = null
-	var/can = can_see_sky()
-	var/area/A = get_area(src)
-	if(istype(A,/area/shuttle))
-		return
-	if(can)
-		if(!A.outdoors)
-			var/area2new = /area/rogue/outdoors
-			if(A.converted_type)
-				area2new = A.converted_type
-			var/area/nuarea
-			if(primary_area)
-				nuarea = type2area(primary_area)
-				if(!nuarea.outdoors)
-					nuarea = null
-			if(!nuarea)
-				nuarea = type2area(area2new)
-				primary_area = A.type
-			if(nuarea)
-				A.contents -= src
-				nuarea.contents += src
-				change_area(A, nuarea)
-	else
-		if(A.outdoors)
-			var/area2new = /area/rogue/indoors/shelter
-			if(A.converted_type)
-				area2new = A.converted_type
-			var/area/nuarea
-			if(primary_area)
-				nuarea = type2area(primary_area)
-				if(nuarea.outdoors)
-					nuarea = null
-			if(!nuarea)
-				nuarea = type2area(area2new)
-				primary_area = A.type
-			if(!nuarea)
-				var/area/NA = new area2new()
-				nuarea = NA
-				primary_area = NA.type
-			if(nuarea)
-				A.contents -= src
-				nuarea.contents += src
-				change_area(A, nuarea)
 
 /turf/attack_hand(mob/user)
 	. = ..()
@@ -260,7 +204,7 @@
 		if(flags & FALL_STOP_INTERCEPTING)
 			break
 	if(prev_turf && !(flags & FALL_NO_MESSAGE))
-		prev_turf.visible_message("<span class='danger'>[mov_name] falls through [prev_turf]!</span>")
+		prev_turf.visible_message("<span class='danger'>\The [mov_name] falls through [prev_turf]!</span>")
 	if(flags & FALL_INTERCEPTED)
 		return
 	if(zFall(A, ++levels))
@@ -397,7 +341,7 @@
 /turf/open/Entered(atom/movable/AM)
 	..()
 	//melting
-	if(isobj(AM) && air && air.temperature > T0C)
+	if(isobj(AM) && temperature > 273.15)
 		var/obj/O = AM
 		if(O.obj_flags & FROZEN)
 			O.make_unfrozen()
@@ -461,12 +405,6 @@
 	for(var/obj/O in src)
 		if(O.level == 1 && (O.flags_1 & INITIALIZED_1))
 			O.hide(src.intact)
-
-// Removes all signs of lattice on the pos of the turf -Donkieyo
-/turf/proc/RemoveLattice()
-	var/obj/structure/lattice/L = locate(/obj/structure/lattice, src)
-	if(L && (L.flags_1 & INITIALIZED_1))
-		qdel(L)
 
 /turf/proc/phase_damage_creatures(damage,mob/U = null)//>Ninja Code. Hurts and knocks out creatures on this turf //NINJACODE
 	for(var/mob/living/M in src)
@@ -552,22 +490,6 @@
 	underlay_appearance.icon_state = icon_state
 	underlay_appearance.dir = adjacency_dir
 	return TRUE
-
-/turf/proc/add_blueprints(atom/movable/AM)
-	var/image/I = new
-	I.appearance = AM.appearance
-	I.appearance_flags = RESET_COLOR|RESET_ALPHA|RESET_TRANSFORM
-	I.loc = src
-	I.setDir(AM.dir)
-	I.alpha = 128
-	LAZYADD(blueprint_data, I)
-
-/turf/proc/add_blueprints_preround(atom/movable/AM)
-	if(!SSticker.HasRoundStarted())
-		if(AM.layer == WIRE_LAYER)	//wires connect to adjacent positions after its parent init, meaning we need to wait (in this case, until smoothing) to take its image
-			SSicon_smooth.blueprint_queue += AM
-		else
-			add_blueprints(AM)
 
 /turf/proc/is_transition_turf()
 	return
