@@ -16,7 +16,7 @@
 	///picks able to be used
 	var/list/lockpicks = list(/obj/item/lockpick)
 	///wedges able to be used
-	var/list/wedges = list(/obj/item/lockpick) //whem we add more thieves tools check this
+	var/list/wedges = list(/obj/item/rogueweapon/knife/dagger, /obj/item/lockpick) //whem we add more thieves tools check this
 	///shows the lock difficulty level on examine, like fallout
 	var/shown_difficulty
 
@@ -353,7 +353,7 @@
 				to_chat(picker, "<span class='notice'>Your [the_lockpick] broke!</span>")
 				playsound(loc, 'sound/items/LPBreak.ogg', 100 - (15 * skill_level))
 				qdel(the_lockpick)
-				break_checking_cooldown = world.time + 3 SECONDS
+			break_checking_cooldown = world.time + 7 SECONDS
 
 		lock_angle -= 20
 		playsound(picker.loc, pick('sound/items/LPtry.ogg', 'sound/items/LPtry2.ogg'), 100 - (15 * skill_level))
