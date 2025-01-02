@@ -36,6 +36,10 @@
 "m" = (
 /turf/open/floor/rogue/metal,
 /area/rogue)
+"n" = (
+/obj/effect/dungeon_directional_helper/west,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue)
 "o" = (
 /obj/structure/bars/pipe/left,
 /turf/open/floor/rogue/metal/barograte,
@@ -47,6 +51,10 @@
 "q" = (
 /obj/item/rogueweapon/mace/steel,
 /turf/open/floor/rogue/volcanic,
+/area/rogue)
+"r" = (
+/obj/effect/dungeon_directional_helper/east,
+/turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "s" = (
 /turf/open/floor/rogue/metal/barograte,
@@ -76,6 +84,10 @@
 /area/rogue)
 "z" = (
 /turf/open/lava/acid,
+/area/rogue)
+"A" = (
+/obj/effect/dungeon_directional_helper/south,
+/turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "B" = (
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow,
@@ -123,6 +135,10 @@
 /area/rogue)
 "L" = (
 /turf/open/floor/rogue/volcanic,
+/area/rogue)
+"M" = (
+/obj/effect/dungeon_directional_helper/north,
+/turf/open/floor/rogue/dirt/road,
 /area/rogue)
 "N" = (
 /obj/structure/fluff/big_chain,
@@ -209,11 +225,11 @@ W
 W
 W
 W
+W
 a
+n
 a
-a
-a
-a
+W
 W
 W
 W
@@ -356,7 +372,7 @@ a
 W
 "}
 (8,1,1) = {"
-F
+W
 a
 p
 a
@@ -375,7 +391,7 @@ L
 z
 L
 a
-a
+W
 "}
 (9,1,1) = {"
 F
@@ -400,7 +416,7 @@ a
 a
 "}
 (10,1,1) = {"
-F
+M
 F
 d
 a
@@ -419,7 +435,7 @@ z
 z
 L
 a
-a
+A
 "}
 (11,1,1) = {"
 F
@@ -444,7 +460,7 @@ a
 a
 "}
 (12,1,1) = {"
-F
+W
 a
 a
 z
@@ -463,7 +479,7 @@ a
 a
 a
 d
-a
+W
 "}
 (13,1,1) = {"
 W
@@ -485,7 +501,7 @@ z
 z
 a
 a
-a
+W
 "}
 (14,1,1) = {"
 W
@@ -507,7 +523,7 @@ a
 z
 a
 a
-a
+W
 "}
 (15,1,1) = {"
 W
@@ -627,11 +643,11 @@ W
 W
 W
 W
+W
 a
+r
 a
-a
-a
-a
+W
 W
 W
 W

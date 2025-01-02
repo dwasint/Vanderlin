@@ -9,14 +9,17 @@ SUBSYSTEM_DEF(dungeon_generator)
 	var/list/markers = list()
 
 /datum/controller/subsystem/dungeon_generator/fire(resumed)
+	var/current_run = 0
 	if(length(markers))
-
 		for(var/obj/effect/dungeon_directional_helper/helper as anything in markers)
+			if(current_run >= 4)
+				return
 			if(!get_turf(helper))
 				continue
 			find_soulmate(helper.dir, get_turf(helper), helper)
 			markers -= helper
 			CHECK_TICK
+			current_run++
 
 /datum/controller/subsystem/dungeon_generator/proc/find_soulmate(direction, turf/creator, obj/effect/dungeon_directional_helper/looking_for_love)
 	creator = get_step(creator, direction)
@@ -69,10 +72,11 @@ SUBSYSTEM_DEF(dungeon_generator)
 					continue
 				if(creator.y - template.height < 0)
 					continue
-				var/turf/turf = locate(creator.x - template.north_offset, creator.y - template.height, creator.z)
-				if(!turf)
-					continue
+				var/turf/turf = locate(creator.x - template.north_offset - 1, creator.y + template.height, creator.z)
 				if(turf.type != /turf/closed)
+					continue
+				var/turf/turf2 = locate(creator.x -(template.north_offset - 1) + template.width, creator.y + template.height, creator.z)
+				if(turf2.type != /turf/closed)
 					continue
 				true_spawn = get_offset_target_turf(creator, -(template.north_offset - 1), -(template.height-1))
 				if(true_spawn.x + template.width > world.maxx)
@@ -88,8 +92,11 @@ SUBSYSTEM_DEF(dungeon_generator)
 					continue
 				if(creator.y - template.south_offset < 0)
 					continue
-				var/turf/turf = locate(creator.x - template.south_offset, creator.y, creator.z)
+				var/turf/turf = locate(creator.x, creator.y + template.height, creator.z)
 				if(turf.type != /turf/closed)
+					continue
+				var/turf/turf2 = locate(creator.x + template.width - template.south_offset, creator.y + template.height, creator.z)
+				if(turf2.type != /turf/closed)
 					continue
 				true_spawn = get_offset_target_turf(creator, -template.south_offset, 0)
 				if(true_spawn.x + template.width > world.maxx)
@@ -109,6 +116,9 @@ SUBSYSTEM_DEF(dungeon_generator)
 				var/turf/turf = locate(creator.x - (template.width-1), creator.y - template.east_offset, creator.z)
 				if(turf.type != /turf/closed)
 					continue
+				var/turf/turf2 = locate(creator.x, creator.y - template.east_offset, creator.z)
+				if(turf2.type != /turf/closed)
+					continue
 				true_spawn = get_offset_target_turf(creator, -(template.width-1), -template.east_offset)
 				if(true_spawn.x + template.width > world.maxx)
 					continue
@@ -124,6 +134,9 @@ SUBSYSTEM_DEF(dungeon_generator)
 					continue
 				var/turf/turf = locate(creator.x, creator.y - template.west_offset, creator.z)
 				if(turf.type != /turf/closed)
+					continue
+				var/turf/turf2 = locate(creator.x + template.width, creator.y - template.east_offset, creator.z)
+				if(turf2.type != /turf/closed)
 					continue
 				true_spawn = get_offset_target_turf(creator, 0, -(template.west_offset))
 				if(true_spawn.x + template.width > world.maxx)
