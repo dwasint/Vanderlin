@@ -3,6 +3,9 @@
 	name = "Dungeon Direction Helper"
 	desc = "These help stitch together dungeons, it looks for the opposite direction on a template, basically write in the template if it has this"
 
+	icon = 'icons/obj/items_and_weapons.dmi'
+	icon_state = "toyhammer"
+
 	var/top = FALSE
 
 /obj/effect/dungeon_directional_helper/Initialize()
@@ -13,7 +16,8 @@
 	var/turf/opposite_turf = get_step(get_turf(src), dir)
 
 	if(!locate(/obj/effect/dungeon_directional_helper) in opposite_turf)
-		SSdungeon_generator.find_soulmate(dir, get_turf(src), src)
+		SSdungeon_generator.markers |= src
+
 
 /obj/effect/dungeon_directional_helper/south
 	dir = SOUTH

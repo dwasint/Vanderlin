@@ -5,6 +5,10 @@
 "s" = (
 /turf/closed,
 /area/rogue)
+"D" = (
+/obj/effect/dungeon_directional_helper/east,
+/turf/closed,
+/area/rogue)
 
 (1,1,1) = {"
 s
@@ -14890,7 +14894,7 @@ s
 s
 s
 s
-s
+D
 s
 s
 s

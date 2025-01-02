@@ -94,7 +94,6 @@
 /area/rogue)
 "E" = (
 /obj/effect/decal/cleanable/blood,
-/obj/structure/bonepile,
 /turf/open/floor/rogue/metal,
 /area/rogue)
 "F" = (

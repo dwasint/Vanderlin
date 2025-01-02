@@ -1,12 +1,29 @@
 SUBSYSTEM_DEF(dungeon_generator)
 	name = "Matthios's Creation"
+	wait = 1 SECONDS
 
 	var/list/parent_types = list()
 
 	var/list/created_types = list()
 
+	var/list/markers = list()
+
+/datum/controller/subsystem/dungeon_generator/fire(resumed)
+	if(length(markers))
+
+		for(var/obj/effect/dungeon_directional_helper/helper as anything in markers)
+			if(!get_turf(helper))
+				continue
+			find_soulmate(helper.dir, get_turf(helper), helper)
+			markers -= helper
+			CHECK_TICK
+
 /datum/controller/subsystem/dungeon_generator/proc/find_soulmate(direction, turf/creator, obj/effect/dungeon_directional_helper/looking_for_love)
 	creator = get_step(creator, direction)
+	if(!creator)
+		return
+	if(creator.type != /turf/closed)
+		return
 	switch(direction)
 		if(NORTH)
 			direction = SOUTH
@@ -50,19 +67,29 @@ SUBSYSTEM_DEF(dungeon_generator)
 					continue
 				if(creator.x - template.north_offset < 0)
 					continue
-				true_spawn = get_offset_target_turf(creator, -template.north_offset, -template.height)
+				if(creator.y - template.height < 0)
+					continue
+				var/turf/turf = locate(creator.x - template.north_offset, creator.y - template.height, creator.z)
+				if(!turf)
+					continue
+				if(turf.type != /turf/closed)
+					continue
+				true_spawn = get_offset_target_turf(creator, -(template.north_offset - 1), -(template.height-1))
 				if(true_spawn.x + template.width > world.maxx)
 					continue
 				if(true_spawn.y + template.height > world.maxy)
 					continue
 				if(!template.load(true_spawn))
 					continue
-				new /obj/item/banhammer(true_spawn)
+
 
 			if(SOUTH)
 				if(!template.south_offset)
 					continue
-				if(creator.x - template.south_offset < 0)
+				if(creator.y - template.south_offset < 0)
+					continue
+				var/turf/turf = locate(creator.x - template.south_offset, creator.y, creator.z)
+				if(turf.type != /turf/closed)
 					continue
 				true_spawn = get_offset_target_turf(creator, -template.south_offset, 0)
 				if(true_spawn.x + template.width > world.maxx)
@@ -71,33 +98,38 @@ SUBSYSTEM_DEF(dungeon_generator)
 					continue
 				if(!template.load(true_spawn))
 					continue
-				new /obj/item/banhammer(true_spawn)
 
 			if(EAST)
 				if(!template.east_offset)
 					continue
 				if(creator.y - template.east_offset < 0)
 					continue
-				true_spawn = get_offset_target_turf(creator, -template.width, -template.east_offset)
+				if(creator.x - template.width < 0)
+					continue
+				var/turf/turf = locate(creator.x - (template.width-1), creator.y - template.east_offset, creator.z)
+				if(turf.type != /turf/closed)
+					continue
+				true_spawn = get_offset_target_turf(creator, -(template.width-1), -template.east_offset)
 				if(true_spawn.x + template.width > world.maxx)
 					continue
 				if(true_spawn.y + template.height > world.maxy)
 					continue
 				if(!template.load(true_spawn))
 					continue
-				new /obj/item/banhammer(true_spawn)
 
 			if(WEST)
 				if(!template.west_offset)
 					continue
 				if(creator.y - template.west_offset < 0)
 					continue
-				true_spawn = get_offset_target_turf(creator, 0, -template.west_offset)
+				var/turf/turf = locate(creator.x, creator.y - template.west_offset, creator.z)
+				if(turf.type != /turf/closed)
+					continue
+				true_spawn = get_offset_target_turf(creator, 0, -(template.west_offset))
 				if(true_spawn.x + template.width > world.maxx)
 					continue
 				if(true_spawn.y + template.height > world.maxy)
 					continue
 				if(!template.load(true_spawn))
 					continue
-				new /obj/item/banhammer(true_spawn)
 		picking = FALSE
