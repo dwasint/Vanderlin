@@ -689,6 +689,8 @@ GLOBAL_LIST_EMPTY(active_lifts_by_type)
 
 			original_contents += resolved_contents
 
+		var/list/sold_items = list()
+		var/list/sold_count = list()
 		for(var/atom/movable/listed_atom in platform.lift_load)
 			if(listed_atom in original_contents)
 				continue
@@ -702,6 +704,45 @@ GLOBAL_LIST_EMPTY(active_lifts_by_type)
 				continue
 
 			total_coin_value += listed_atom.sellprice
+			if(!(initial(listed_atom.name) in sold_items))
+				sold_items |= initial(listed_atom.name)
+				sold_count |= initial(listed_atom.name)
+
+				sold_count[initial(listed_atom.name)] = 1
+				sold_items[initial(listed_atom.name)] = listed_atom.sellprice
+
+			else
+				sold_count[initial(listed_atom.name)]++
+				sold_items[initial(listed_atom.name)] += listed_atom.sellprice
+
 			qdel(listed_atom)
 
 		spawn_coins(total_coin_value, platform)
+
+		if(length(sold_items))
+			var/scrolls_to_spawn = CEILING(length(sold_items) / 6, 1)
+			for(var/i = 1 to scrolls_to_spawn)
+				var/list/items = list()
+				var/list/count = list()
+				var/current_count = 0
+				for(var/b = 1 to length(sold_items))
+					if(current_count >= 6)
+						continue
+					current_count++
+					var/first_item = sold_items[1]
+					items |= first_item
+					items[first_item] = sold_items[first_item]
+					sold_items -= first_item
+
+					var/first_count = sold_count[1]
+					count |= first_item
+					count[first_count] = sold_count[first_count]
+					sold_items -= first_count
+
+
+				var/obj/structure/industrial_lift/tram/picked = pick(platform.moving_lifts)
+				var/turf/location = get_turf(picked)
+				var/obj/item/paper/scroll/sold_manifest/manifest = new /obj/item/paper/scroll/sold_manifest(location)
+				manifest.count = count.Copy()
+				manifest.items = items.Copy()
+				manifest.rebuild_info()
