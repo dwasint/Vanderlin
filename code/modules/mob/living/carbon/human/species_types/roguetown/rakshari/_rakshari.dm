@@ -44,21 +44,17 @@
 	..()
 	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 	C.grant_language(/datum/language/common)
-	C.grant_language(/datum/language/elvish)
 
 /datum/species/rakshari/check_roundstart_eligible()
 	return TRUE
 
 /datum/species/rakshari/after_creation(mob/living/carbon/C)
 	..()
-//	if(!C.has_language(/datum/language/elvish))
-	C.grant_language(/datum/language/elvish)
-	to_chat(C, "<span class='info'>I can speak Elfish with ,e before my speech.</span>")
+	C.grant_language(/datum/language/common)
 
 /datum/species/rakshari/on_species_loss(mob/living/carbon/C)
 	. = ..()
 	UnregisterSignal(C, COMSIG_MOB_SAY)
-	C.remove_language(/datum/language/elvish)
 
 /datum/species/rakshari/qualifies_for_rank(rank, list/features)
 	return TRUE
