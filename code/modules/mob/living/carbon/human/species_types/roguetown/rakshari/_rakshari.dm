@@ -13,6 +13,8 @@
 	capturing slaves to fuel their expanding cities and economies, \
 	practice of this was justified through religious doctrines venerating strength and dominance as divine virtues \
 	As they attached themselves to Zybantine Rakshari integrated more sophisticated forms of servitude, including indentured contracts and debt bondage. \
+	\
+	THIS IS A DISCRIMINATED SPECIES. EXPECT A MORE DIFFICULT EXPERIENCE. PLAY AT YOUR OWN RISK.\
 	"
 
 	skin_tone_wording = "Tribal Identity"
