@@ -65,13 +65,8 @@
 
 /datum/species/rakshari/get_skin_list()
 	return sortList(list(
-		"Plain Elf" = SKIN_COLOR_PLAIN_ELF, // - (White 2)
-		"Mountain Elf" = SKIN_COLOR_MOUNTAIN_ELF, // - (White 3)
-		"Coastal Elf" = SKIN_COLOR_COASTAL_ELF, // - (White 4)
-		"Wood Elf" = SKIN_COLOR_WOOD_ELF, // - (Mediterranean 1)
-		"Sea Elf" = SKIN_COLOR_SEA_ELF, // - (Mediterranean 2)
-		"Jungle Elf" = SKIN_COLOR_JUNGLE_ELF, // - (Latin)
-		"Savannah Elf" = SKIN_COLOR_SAVANNAH_ELF, // - (Middle-Eastern)
-		"Sand Elf" = SKIN_COLOR_SAND_ELF, // - (Black 1)
-		"Crimson Elf" = SKIN_COLOR_CRIMSON_ELF, // - (Black2)
+		"Oasis Rakshari" = SKIN_COLOR_PLAIN_ELF, // - (White 2)
+		"Mountain Rakshari" = SKIN_COLOR_MOUNTAIN_ELF, // - (White 3)
+		"City Rakshari" = SKIN_COLOR_COASTAL_ELF, // - (White 4)
+		"Desert Rakshari" = SKIN_COLOR_WOOD_ELF, // - (Mediterranean 1)
 	))
