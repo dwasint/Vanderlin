@@ -45,7 +45,7 @@
 	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 	C.grant_language(/datum/language/common)
 	C.grant_language(/datum/language/thievescant)
-	to_chat(H, "<span class='info'>I can gesture in thieves' cant with ,t before my speech.</span>")
+	to_chat(C, "<span class='info'>I can gesture in thieves' cant with ,t before my speech.</span>")
 
 /datum/species/rakshari/check_roundstart_eligible()
 	return TRUE
