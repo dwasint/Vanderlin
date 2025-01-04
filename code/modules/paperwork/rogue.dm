@@ -385,7 +385,7 @@
 
 	if(length(items))
 		for(var/real_name in items)
-			info += "<li style='color:#06080F;font-size:11px;font-family:\"Segoe Script\"'>[count[real_name]]x[real_name] for [items[real_name]] mammons</li><br/>"
+			info += "<li style='color:#06080F;font-size:11px;font-family:\"Segoe Script\"'>[count[real_name]]x[real_name] - [items[real_name]] mammons</li><br/>"
 
 	info += "</div>"
 
