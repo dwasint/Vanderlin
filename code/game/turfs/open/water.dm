@@ -52,8 +52,69 @@
 		var/turf/open/floor/rogue/dirt/dirt = new(src)
 		new /obj/structure/closet/dirthole/grave(dirt)
 
-/turf/open/water/creatable
+/turf/open/water/river/creatable
 	mapped = FALSE
+	river_processes = FALSE
+	icon_state = "together"
+
+/turf/open/water/river/creatable/update_icon()
+	if(!river_processes)
+		icon_state = "together"
+		if(water_overlay)
+			water_overlay.color = water_reagent.color
+			water_overlay.icon_state = "bottom[water_level]"
+		if(water_top_overlay)
+			water_top_overlay.color = water_reagent.color
+			water_top_overlay.icon_state = "top[water_level]"
+		return
+	icon_state = "rock"
+
+	if(water_overlay)
+		water_overlay.color = water_reagent.color
+		water_overlay.icon_state = "riverbot"
+		water_overlay.dir = dir
+	if(water_top_overlay)
+		water_top_overlay.color = water_reagent.color
+		water_top_overlay.icon_state = "rivertop"
+		water_top_overlay.dir = dir
+
+/turf/open/water/river/creatable/Initialize()
+	. = ..()
+	var/list/viable_directions = list()
+	for(var/direction in GLOB.cardinals)
+		var/turf/open/water/water = get_step(src, direction)
+		if(!istype(water))
+			continue
+		viable_directions |= direction
+	if(length(viable_directions) == 4 || length(viable_directions) == 0)
+		return
+	river_processes = TRUE
+	icon_state = "rock"
+	var/picked_dir = pick(viable_directions)
+	dir = GLOB.reverse_dir[picked_dir]
+	update_icon()
+
+/turf/open/water/river/creatable/attackby(obj/item/C, mob/user, params)
+	if(!river_processes)
+		return
+	if(istype(C, /obj/item/reagent_containers/glass/bucket/wooden))
+		try_modify_water(user, C)
+
+/turf/open/water/river/creatable/proc/try_modify_water(mob/user, obj/item/reagent_containers/glass/bucket/wooden/bucket)
+	if(user.used_intent.type == /datum/intent/splash)
+		if(bucket.reagents)
+			var/datum/reagent/master_reagent = bucket.reagents.get_master_reagent()
+			if(do_after(user, 10 SECONDS, target = src))
+				if(bucket.reagents.remove_reagent(master_reagent.type, clamp(master_reagent.volume, 1, 100)))
+					playsound(src, 'sound/foley/waterenter.ogg', 100, FALSE)
+					river_processes = FALSE
+					swimdir = FALSE
+					icon_state = "together"
+					for(var/direction in GLOB.cardinals)
+						var/turf/open/water/river/water = get_step(src, direction)
+						if(!istype(water))
+							continue
+						water.dir = direction
 
 /turf/open/water/Initialize()
 	.  = ..()
@@ -412,6 +473,7 @@
 	wash_in = TRUE
 	swim_skill = TRUE
 	var/river_processing
+	var/river_processes = TRUE
 	swimdir = TRUE
 
 /turf/open/water/river/update_icon()
@@ -430,6 +492,8 @@
 
 /turf/open/water/river/Entered(atom/movable/AM, atom/oldLoc)
 	. = ..()
+	if(!river_processes)
+		return
 	if(isliving(AM))
 		if(!river_processing)
 			river_processing = addtimer(CALLBACK(src, PROC_REF(process_river)), 5, TIMER_STOPPABLE)
