@@ -176,7 +176,10 @@
 	if(orders.len)
 		info += "<ul>"
 		for(var/datum/supply_pack/A in orders)
-			info += "<li style='color:#06080F;font-size:11px;font-family:\"Segoe Script\"'>[A.name] - [A.cost] mammons</li><br/>"
+			if(!A.contraband)
+				info += "<li style='color:#06080F;font-size:11px;font-family:\"Segoe Script\"'>[A.name] - [A.cost] mammons</li><br/>"
+			else
+				info += "<li style='color:#610018;font-size:11px;font-family:\"Segoe Script\"'>[A.name] - [A.cost] mammons</li><br/>"
 		info += "</ul>"
 
 	info += "<br/></font>"
