@@ -57,4 +57,4 @@
 /turf/open/water/proc/recursive_clear_icon()
 	dryup()
 	for(var/turf/open/water/child in children)
-		addtimer(CALLBACK(child, PROC_REF(recursive_clear_icon)), 0.35 SECONDS)
+		addtimer(CALLBACK(child, PROC_REF(recursive_clear_icon)), 0.25 SECONDS)

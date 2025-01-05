@@ -108,7 +108,7 @@
 		water.set_watervolume(0)
 		water.check_surrounding_water()
 		for(var/turf/open/water/child in children)
-			addtimer(CALLBACK(child, PROC_REF(recursive_clear_icon)), 0.35 SECONDS)
+			addtimer(CALLBACK(child, PROC_REF(recursive_clear_icon)), 0.25 SECONDS)
 		for(var/turf/open/water/conflict as anything in conflicting_originate_turfs)
 			conflict.check_surrounding_water(TRUE)
 	else
