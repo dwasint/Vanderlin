@@ -21,9 +21,9 @@
 			source_originate = incoming
 	if(!source_originate)
 		source_originate = incoming
-	parent?.children -= src
+	parent?.remove_child(src)
 	parent = incoming
-	parent.children += src
+	parent.add_child(src)
 	water_volume = parent.water_volume - 10
 	water_reagent = parent.water_reagent
 	if(istype(src, /turf/open/water/river/creatable))
@@ -56,5 +56,19 @@
 
 /turf/open/water/proc/recursive_clear_icon()
 	dryup()
+	check_surrounding_water()
 	for(var/turf/open/water/child in children)
 		addtimer(CALLBACK(child, PROC_REF(recursive_clear_icon)), 0.25 SECONDS)
+	for(var/direction in GLOB.cardinals)
+		var/turf/open/water/river/creatable/water = get_step(src, direction)
+		if(!istype(water))
+			continue
+		if(water.water_volume < 0)
+			continue
+		water.check_surrounding_water()
+
+/turf/open/water/proc/remove_child(turf/open/water/water)
+	children -= water
+
+/turf/open/water/proc/add_child(turf/open/water/water)
+	children |= water

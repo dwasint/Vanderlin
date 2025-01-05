@@ -47,6 +47,7 @@
 	var/set_relationships_on_init = TRUE
 	var/list/blocked_flow_directions = list("2" = 0, "1" = 0, "8" = 0, "4" = 0)
 	var/we_cut = FALSE
+	var/childless = FALSE
 
 /turf/open/water/proc/set_watervolume(volume, list/adjusted_turfs)
 	water_volume = volume
@@ -219,9 +220,9 @@
 		dryup()
 	if(water_volume)
 		if(!water_overlay)
-			water_overlay = new(src)
+			water_overlay = new()
 		if(!water_top_overlay)
-			water_top_overlay = new(src)
+			water_top_overlay = new()
 			queue_smooth(src)
 
 	if(water_overlay)
