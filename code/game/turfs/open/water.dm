@@ -44,13 +44,100 @@
 	var/swimdir = FALSE
 	var/notake = FALSE // cant pick up with reagent containers
 	shine = SHINE_SHINY
+	var/list/blocked_flow_directions = list("2" = 0, "1" = 0, "8" = 0, "4" = 0)
+	var/list/providing_to = list()
+	var/list/taking_from = list()
+	var/set_relationships_on_init = TRUE
+	var/turf/open/water/parent
+
+/turf/open/water/proc/set_watervolume(volume, list/adjusted_turfs)
+	water_volume = volume
+	if(!length(adjusted_turfs))
+		adjusted_turfs = list()
+	adjusted_turfs |= src
+	update_icon()
+	for(var/turf/open/water/river/water in providing_to)
+		if(water in adjusted_turfs)
+			continue
+		if(!istype(water))
+			continue
+		if(water.mapped)
+			continue
+		set_relationship(water, volume-10, adjusted_turfs)
+
+/turf/open/water/proc/set_relationship(turf/open/water/taking, amount, list/passed_list)
+	sleep(0.1 SECONDS)
+	if(taking in taking_from)
+		return
+	if(!(taking in providing_to))
+		providing_to |= taking
+	if(!(src in taking.taking_from))
+		taking.taking_from |= src
+	providing_to[taking] = amount
+	taking.taking_from[src] = amount
+
+	taking.determine_parent(passed_list)
+
+/turf/open/water/proc/determine_parent(list/passed_list)
+	var/turf/open/water/highest_parent
+	var/highest_number
+	for(var/turf/open/water/water in taking_from)
+		if(!highest_parent)
+			highest_parent = water
+			highest_number = 0
+		if(taking_from[water] >= highest_number)
+			highest_parent = water
+			highest_number = taking_from[water]
+	water_reagent = highest_parent.water_reagent
+	set_watervolume(highest_number)
+	if(highest_parent != parent)
+		after_parent_effect(highest_parent)
+	parent = highest_parent
+	update_icon()
+	for(var/turf/open/water/child in providing_to)
+		set_relationship(child, water_volume-10, passed_list)
+
+/turf/open/water/proc/adjust_watervolume(volume, list/adjusted_turfs)
+	water_volume += volume
+	if(!length(adjusted_turfs))
+		adjusted_turfs = list()
+	adjusted_turfs |= src
+	update_icon()
+
+	for(var/turf/open/water/river/water in providing_to)
+		if(water in adjusted_turfs)
+			continue
+		if(!istype(water))
+			continue
+		if(water.mapped)
+			continue
+		set_relationship(water, volume, adjusted_turfs)
+
+/turf/open/water/proc/after_parent_effect(turf/open/water/water)
+	return
+
+/turf/open/water/proc/toggle_block_state(dir, value)
+	blocked_flow_directions["[dir]"] = value
+	if(blocked_flow_directions["[dir]"])
+		var/turf/open/water/river/water = get_step(src, dir)
+		if(!istype(water))
+			return
+		if(water.mapped)
+			return
+		set_relationship(water, 0)
+	else
+		var/turf/open/water/river/water = get_step(src, dir)
+		if(!istype(water))
+			return
+		if(water.mapped)
+			return
+		set_relationship(water, water_volume-10)
 
 /turf/open/water/proc/dryup()
 	if(water_volume <= 0)
-		qdel(water_overlay)
-		qdel(water_top_overlay)
-		var/turf/open/floor/rogue/dirt/dirt = new(src)
-		new /obj/structure/closet/dirthole/grave(dirt)
+		QDEL_NULL(water_overlay)
+		QDEL_NULL(water_top_overlay)
+		make_unshiny()
 
 /turf/open/water/river/creatable
 	mapped = FALSE
@@ -58,6 +145,14 @@
 	icon_state = "together"
 
 /turf/open/water/river/creatable/update_icon()
+	if(water_volume)
+		if(!water_overlay)
+			water_overlay = new(src)
+		if(!water_top_overlay)
+			water_top_overlay = new(src)
+			make_shiny(shine)
+			queue_smooth(src)
+
 	if(!river_processes)
 		icon_state = "together"
 		if(water_overlay)
@@ -79,7 +174,6 @@
 		water_top_overlay.dir = dir
 
 /turf/open/water/river/creatable/Initialize()
-	. = ..()
 	var/list/viable_directions = list()
 	for(var/direction in GLOB.cardinals)
 		var/turf/open/water/water = get_step(src, direction)
@@ -93,6 +187,18 @@
 	var/picked_dir = pick(viable_directions)
 	dir = GLOB.reverse_dir[picked_dir]
 	update_icon()
+	. = ..()
+
+/turf/open/water/river/creatable/after_parent_effect(turf/open/water/water)
+	var/old_dir = dir
+	dir = get_dir(water, src)
+	if(old_dir != dir)
+		var/turf/open/water/step_water = get_step(src, dir)
+		if(istype(step_water))
+			if(step_water in taking_from)
+				taking_from -= step_water
+			set_relationship(step_water, water_volume - 10)
+	update_icon()
 
 /turf/open/water/river/creatable/attackby(obj/item/C, mob/user, params)
 	if(!river_processes)
@@ -105,16 +211,20 @@
 		if(bucket.reagents)
 			var/datum/reagent/master_reagent = bucket.reagents.get_master_reagent()
 			if(do_after(user, 10 SECONDS, target = src))
+				var/make_static = FALSE
+				if(water_volume >= 100)
+					make_static = TRUE
 				if(bucket.reagents.remove_reagent(master_reagent.type, clamp(master_reagent.volume, 1, 100)))
 					playsound(src, 'sound/foley/waterenter.ogg', 100, FALSE)
 					river_processes = FALSE
 					swimdir = FALSE
 					icon_state = "together"
-					for(var/direction in GLOB.cardinals)
-						var/turf/open/water/river/water = get_step(src, direction)
-						if(!istype(water))
-							continue
-						water.dir = direction
+					if(!make_static)
+						for(var/direction in GLOB.cardinals)
+							var/turf/open/water/river/water = get_step(src, direction)
+							if(!istype(water))
+								continue
+							water.dir = direction
 
 /turf/open/water/Initialize()
 	.  = ..()
@@ -126,11 +236,30 @@
 	water_overlay = new(src)
 	water_top_overlay = new(src)
 	update_icon()
+	return INITIALIZE_HINT_LATELOAD
+
+/turf/open/water/LateInitialize()
+	. = ..()
+	if(!set_relationships_on_init)
+		return
+	for(var/direction in GLOB.cardinals)
+		var/turf/open/water/river/water = get_step(src, direction)
+		if(!istype(water))
+			continue
+		set_relationship(water, water_volume - 10, list())
 
 /turf/open/water/process()
 	dryup()
 
 /turf/open/water/update_icon()
+	if(water_volume)
+		if(!water_overlay)
+			water_overlay = new(src)
+		if(!water_top_overlay)
+			water_top_overlay = new(src)
+			make_shiny(shine)
+			queue_smooth(src)
+
 	if(water_overlay)
 		water_overlay.color = water_reagent.color
 		water_overlay.icon_state = "bottom[water_level]"
@@ -227,7 +356,8 @@
 				user.changeNext_move(CLICK_CD_MELEE)
 				playsound(user, 'sound/foley/drawwater.ogg', 100, FALSE)
 				if(!mapped && C.reagents.add_reagent(water_reagent, 10))
-					water_volume = water_volume - 10
+					adjust_watervolume(-10)
+
 				else
 					C.reagents.add_reagent(water_reagent, 100)
 				to_chat(user, "<span class='notice'>I fill [C] from [src].</span>")
@@ -243,7 +373,7 @@
 				user.changeNext_move(CLICK_CD_MELEE)
 				playsound(user, 'sound/foley/drawwater.ogg', 100, FALSE)
 				if(!mapped && C.reagents.remove_reagent(water_reagent,  C.reagents.total_volume))
-					water_volume = clamp(water_volume + C.reagents.total_volume, 1, water_maximum)
+					set_watervolume(clamp(water_volume + C.reagents.total_volume, 1, water_maximum))
 				to_chat(user, "<span class='notice'>I pour the contents of [C] into [src].</span>")
 			return
 	. = ..()
@@ -265,7 +395,7 @@
 				reagents.add_reagent(water_reagent, 4)
 				reagents.trans_to(L, reagents.total_volume, transfered_by = user, method = TOUCH)
 				if(!mapped)
-					water_volume = water_volume - 2
+					adjust_watervolume(-2)
 				playsound(user, pick(wash), 100, FALSE)
 /*				if(water_reagent == /datum/reagent/water) //become shittified, checks so bath water can be naturally gross but not discolored
 					water_reagent = /datum/reagent/water/gross
@@ -296,7 +426,7 @@
 			reagents.add_reagent(water_reagent, 2)
 			reagents.trans_to(L, reagents.total_volume, transfered_by = user, method = INGEST)
 			if(!mapped)
-				water_volume = water_volume - 2
+				adjust_watervolume(-2)
 
 			playsound(user,pick('sound/items/drink_gen (1).ogg','sound/items/drink_gen (2).ogg','sound/items/drink_gen (3).ogg'), 100, TRUE)
 		return
@@ -475,8 +605,17 @@
 	var/river_processing
 	var/river_processes = TRUE
 	swimdir = TRUE
+	set_relationships_on_init = FALSE
 
 /turf/open/water/river/update_icon()
+	if(water_volume)
+		if(!water_overlay)
+			water_overlay = new(src)
+		if(!water_top_overlay)
+			water_top_overlay = new(src)
+			make_shiny(shine)
+			queue_smooth(src)
+
 	if(water_overlay)
 		water_overlay.color = water_reagent.color
 		water_overlay.icon_state = "riverbot"
@@ -490,22 +629,44 @@
 	icon_state = "rock"
 	.  = ..()
 
+/turf/open/water/river/LateInitialize()
+	. = ..()
+	var/turf/open/water/river/water = get_step(src, dir)
+	if(!istype(water))
+		return
+	set_relationship(water, water_volume - 10, list())
+
 /turf/open/water/river/Entered(atom/movable/AM, atom/oldLoc)
 	. = ..()
 	if(!river_processes)
 		return
-	if(isliving(AM))
+	if(isliving(AM) || isitem(AM))
 		if(!river_processing)
 			river_processing = addtimer(CALLBACK(src, PROC_REF(process_river)), 5, TIMER_STOPPABLE)
 
 /turf/open/water/river/proc/process_river()
 	river_processing = null
+	if(water_volume < 10)
+		return
 	for(var/atom/movable/A in contents)
 		for(var/obj/structure/S in src)
 			if(S.obj_flags & BLOCK_Z_OUT_DOWN)
 				return
 		if((A.loc == src) && A.has_gravity())
-			A.ConveyorMove(dir)
+			if(!istype(get_step(src, dir), /turf/open/water))
+				var/list/viable_cardinals = list()
+				var/inverse = GLOB.reverse_dir[dir]
+				for(var/direction in GLOB.cardinals)
+					if(direction == inverse)
+						continue
+					var/turf/open/water/water = get_step(src, direction)
+					if(!istype(water))
+						continue
+					viable_cardinals |= direction
+				if(length(viable_cardinals))
+					A.ConveyorMove(pick(viable_cardinals))
+			else
+				A.ConveyorMove(dir)
 
 /turf/open/water/acid // holy SHIT
 	name = "acid pool"
