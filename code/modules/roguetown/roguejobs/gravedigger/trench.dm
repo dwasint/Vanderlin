@@ -63,7 +63,7 @@
 
 		var/turf/open/water/river/creatable/W = new(get_turf(src))
 		W.water_reagent = water.water_reagent
-		water.set_relationship(W, water.water_volume - 10, list())
+		W.try_set_parent(water)
 		W.update_icon()
 		W.dir = GLOB.reverse_dir[direction]
 		playsound(W, 'sound/foley/waterenter.ogg', 100, FALSE)
