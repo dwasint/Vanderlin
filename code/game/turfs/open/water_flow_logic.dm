@@ -51,5 +51,10 @@
 		if(!reassess)
 			if(water.water_volume > (water_volume - 10))
 				continue
-		water.try_set_parent(src)
+		addtimer(CALLBACK(water, PROC_REF(try_set_parent), src), 0.2 SECONDS)
+		//water.try_set_parent(src)
 
+/turf/open/water/proc/recursive_clear_icon()
+	dryup()
+	for(var/turf/open/water/child in children)
+		addtimer(CALLBACK(child, PROC_REF(recursive_clear_icon)), 0.35 SECONDS)

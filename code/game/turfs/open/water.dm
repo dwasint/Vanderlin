@@ -44,10 +44,9 @@
 	var/swimdir = FALSE
 	var/notake = FALSE // cant pick up with reagent containers
 	shine = SHINE_SHINY
-	var/list/blocked_flow_directions = list("2" = 0, "1" = 0, "8" = 0, "4" = 0)
-	var/list/providing_to = list()
-	var/list/taking_from = list()
 	var/set_relationships_on_init = TRUE
+	var/list/blocked_flow_directions = list("2" = 0, "1" = 0, "8" = 0, "4" = 0)
+	var/we_cut = FALSE
 
 /turf/open/water/proc/set_watervolume(volume, list/adjusted_turfs)
 	water_volume = volume
@@ -56,9 +55,8 @@
 	adjusted_turfs |= src
 	if(src in children)
 		return
-	update_icon()
-	if(water_volume <= 0)
-		dryup()
+	if(!istype(src, /turf/open/water/river/creatable))
+		update_icon()
 
 	for(var/turf/open/water/river/water in children)
 		adjusted_turfs |= water
@@ -71,9 +69,8 @@
 	if(!length(adjusted_turfs))
 		adjusted_turfs = list()
 	adjusted_turfs |= src
-	update_icon()
-	if(water_volume <= 0)
-		dryup()
+	if(!istype(src, /turf/open/water/river/creatable))
+		update_icon()
 
 	for(var/turf/open/water/river/water in children)
 		water.adjust_watervolume(volume)
@@ -92,7 +89,8 @@
 	if(!length(adjusted_turfs))
 		adjusted_turfs = list()
 	adjusted_turfs |= src
-	update_icon()
+	if(!istype(src, /turf/open/water/river/creatable))
+		update_icon()
 
 	for(var/turf/open/water/river/water in adjuster.children)
 		water.adjust_watervolume(volume)
@@ -109,6 +107,8 @@
 			return
 		water.set_watervolume(0)
 		water.check_surrounding_water()
+		for(var/turf/open/water/child in children)
+			addtimer(CALLBACK(child, PROC_REF(recursive_clear_icon)), 0.35 SECONDS)
 		for(var/turf/open/water/conflict as anything in conflicting_originate_turfs)
 			conflict.check_surrounding_water(TRUE)
 	else
@@ -121,7 +121,8 @@
 		for(var/obj/effect/overlay/water/water in contents)
 			qdel(water)
 		make_unshiny()
-		cut_overlays()
+		shine = 0
+		we_cut = TRUE
 		var/mutable_appearance/dirty = mutable_appearance('icons/turf/floors.dmi', "dirt")
 		add_overlay(dirty)
 
@@ -136,7 +137,6 @@
 			water_overlay = new(src)
 		if(!water_top_overlay)
 			water_top_overlay = new(src)
-			make_shiny(shine)
 			queue_smooth(src)
 
 	if(!river_processes)
@@ -211,7 +211,7 @@
 	check_surrounding_water()
 
 /turf/open/water/process()
-	if(water_overlay && water_volume <= 0)
+	if(water_overlay && water_volume <= 0 && !istype(src, /turf/open/water/river/creatable))
 		dryup()
 
 /turf/open/water/update_icon()
@@ -222,7 +222,6 @@
 			water_overlay = new(src)
 		if(!water_top_overlay)
 			water_top_overlay = new(src)
-			make_shiny(shine)
 			queue_smooth(src)
 
 	if(water_overlay)
@@ -273,6 +272,7 @@
 	roguesmooth(adjacencies)
 
 /turf/open/water/roguesmooth(adjacencies)
+	make_unshiny()
 	var/list/Yeah = ..()
 	if(water_overlay)
 		water_overlay.cut_overlays(TRUE)
@@ -282,6 +282,7 @@
 		water_top_overlay.cut_overlays(TRUE)
 		if(Yeah)
 			water_top_overlay.add_overlay(Yeah)
+	make_shiny(initial(shine))
 
 /turf/open/water/Entered(atom/movable/AM, atom/oldLoc)
 	. = ..()
@@ -590,7 +591,6 @@
 			water_overlay = new(src)
 		if(!water_top_overlay)
 			water_top_overlay = new(src)
-			make_shiny(shine)
 			queue_smooth(src)
 
 	if(water_overlay)
