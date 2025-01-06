@@ -14,6 +14,10 @@
 	var/water_pressure
 	var/datum/reagent/carrying_reagent
 	var/list/connected = list("2" = 0, "1" = 0, "8" = 0, "4" = 0)
+	//this is a list of pipes that are connected to something giving a reagent
+	var/list/providers = list()
+	///this is just a list we can access for the sake of checking, this is basically just a number getting random addition every check to keep unique
+	var/check_id = 0
 
 /obj/structure/water_pipe/Initialize()
 	. = ..()
@@ -25,18 +29,95 @@
 			set_connection(get_dir(src, pipe))
 			pipe.set_connection(get_dir(pipe, src))
 			pipe.update_overlays()
+			if(pipe.check_id && !check_id)
+				check_id = pipe.check_id
 	update_overlays()
 	START_PROCESSING(SSobj, src)
 
 /obj/structure/water_pipe/Destroy()
+	var/turf/old_turf = get_turf(src)
 	. = ..()
+	var/list/directional_pipes = list()
+	for(var/direction in GLOB.cardinals)
+		var/turf/cardinal_turf = get_step(old_turf, direction)
+		for(var/obj/structure/water_pipe/pipe in cardinal_turf)
+			if(!istype(pipe))
+				continue
+			pipe.unset_connection(get_dir(pipe, src))
+			pipe.update_overlays()
+			directional_pipes |= pipe
+
+	var/list/orphaned_pipes = directional_pipes
+	var/list/last_connected_pipes = list()
+	for(var/obj/structure/water_pipe/provider in providers)
+		var/list/connected_pipes = provider.build_connected(last_connected_pipes)
+		last_connected_pipes = connected_pipes
+		for(var/obj/structure/water_pipe/pipe in orphaned_pipes)
+			if(pipe in connected_pipes)
+				orphaned_pipes -= pipe
+				if(!length(orphaned_pipes))
+					return
+
+	check_id++
+	for(var/obj/structure/water_pipe/pipe in orphaned_pipes)
+		pipe.propagate_change(check_id, null, 0, null, null)
+		pipe.providers = list()
+
+/obj/structure/water_pipe/proc/make_provider(datum/reagent/reagent, pressure)
+	check_id++
+	propagate_change(check_id, reagent, pressure, src)
+
+/obj/structure/water_pipe/proc/remove_provider(datum/reagent/reagent, pressure)
+	check_id++
+	propagate_change(check_id, reagent, pressure, null, src)
+
+
+/obj/structure/water_pipe/proc/build_connected(list/last_checked)
+	if(src in last_checked)
+		return last_checked
+
+	check_id++
+	return check_adjacency(list(src), check_id)
+
+
+/obj/structure/water_pipe/proc/check_adjacency(list/checked, id)
+	check_id = id
+	checked |= src
 	for(var/direction in GLOB.cardinals)
 		var/turf/cardinal_turf = get_step(src, direction)
 		for(var/obj/structure/water_pipe/pipe in cardinal_turf)
 			if(!istype(pipe))
-				return
-			pipe.unset_connection(get_dir(pipe, src))
-			pipe.update_overlays()
+				continue
+			if(pipe.check_id == id)
+				continue
+			checked |= pipe.check_adjacency(checked, id)
+	return checked
+
+/obj/structure/water_pipe/proc/propagate_change(change_id, datum/reagent/id, pressure, obj/structure/water_pipe/added_provider, obj/structure/water_pipe/removed_provider)
+	sleep(0.1 SECONDS)
+	water_pressure = pressure
+	carrying_reagent = id
+	check_id = change_id
+	if(added_provider)
+		if(length(providers))
+			for(var/obj/structure/water_pipe/pipe in providers)
+				if(pipe.carrying_reagent != id)
+					visible_message("[src] bursts from the clashing pipe streams!")
+					qdel(src)
+					return
+		providers |= added_provider
+	if(removed_provider)
+		providers -= removed_provider
+
+	for(var/direction in GLOB.cardinals)
+		var/turf/cardinal_turf = get_step(src, direction)
+		for(var/obj/structure/water_pipe/pipe in cardinal_turf)
+			if(!istype(pipe))
+				continue
+			if((pipe.carrying_reagent == id && pipe.water_pressure == pressure) || pipe.check_id == change_id)
+				continue
+			pipe.propagate_change(change_id, id, max(0, pressure - 1), added_provider, removed_provider)
+
 
 /obj/structure/water_pipe/proc/set_connection(dir)
 	connected["[dir]"] = 1
@@ -55,3 +136,27 @@
 	icon_state = "[new_overlay]"
 	if(!new_overlay)
 		icon_state = "base"
+
+	manipulate_possible_steam_creaks()
+
+/obj/structure/water_pipe/proc/manipulate_possible_steam_creaks()
+	var/obj/particle_emitter/emitter
+	if(prob(25))
+		emitter = locate(/obj/particle_emitter) in particle_emitters
+		if(!emitter)
+			emitter = MakeParticleEmitter(/particles/smoke/cig/big)
+	else
+		for(var/obj/particle_emitter/stored in particle_emitters)
+			RemoveEmitter(stored)
+		return
+
+	switch(icon_state)
+		if("base", "84", "4", "8", "18", "28")
+			emitter.pixel_x = rand(-8, -6)
+			emitter.pixel_y = rand(3, 6)
+		if("14", "18", "21", "2", "1")
+			emitter.pixel_y = rand(14, 16)
+			emitter.pixel_x = rand(3, 9)
+		if("24")
+			for(var/obj/particle_emitter/stored in particle_emitters)
+				RemoveEmitter(stored)

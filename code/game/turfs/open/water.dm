@@ -126,6 +126,10 @@
 		we_cut = TRUE
 		var/mutable_appearance/dirty = mutable_appearance('icons/turf/floors.dmi', "dirt")
 		add_overlay(dirty)
+		for(var/obj/structure/rotator in contents)
+			if(!rotator.rotation_provider)
+				continue
+			rotator.set_rotational_speed(0)
 
 /turf/open/water/river/creatable
 	mapped = FALSE
