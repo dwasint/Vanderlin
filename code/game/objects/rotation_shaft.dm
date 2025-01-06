@@ -15,6 +15,24 @@
 
 	var/cog_size = COG_SMALL
 
+
+/obj/structure/rotation_piece/cog/return_connected(list/came_from)
+	var/list/connected = list()
+	if(!came_from)
+		came_from = list()
+	came_from |= src
+	connected |= src
+
+	for(var/direction in GLOB.cardinals)
+		var/turf/step_forward = get_step(src, direction)
+		for(var/obj/structure/structure in step_forward.contents)
+			if(structure in came_from)
+				continue
+			if(structure in rotation_data.children)
+				connected |= structure.return_connected(came_from)
+
+	return connected
+
 /obj/structure/rotation_piece/cog/update_animation_effect()
 	if(!rotation_data || rotation_data?.rotations_per_minute <= 0)
 		animate(src, icon_state = "1", time = 1)

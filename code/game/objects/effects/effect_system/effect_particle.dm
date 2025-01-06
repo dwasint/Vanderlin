@@ -22,9 +22,9 @@
 	return
 
 
-/atom/movable/proc/MakeParticleEmitter(type, create_new = FALSE)
+/atom/movable/proc/MakeParticleEmitter(type, create_new = FALSE, time = -1)
 	var/obj/particle_emitter/pe
-	pe = new /obj/particle_emitter(loc)
+	pe = new /obj/particle_emitter(loc, time)
 	pe.AddParticles(type, create_new)
 	particle_emitters |= pe
 	return pe

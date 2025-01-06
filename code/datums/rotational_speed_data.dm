@@ -4,6 +4,13 @@
 	var/stress_generation = 0
 	var/rotation_speed = 0
 	var/rotation_direction = EAST
+	///this is how much stress we use as a baseline torque affects it aswell as speed the stress is multipled by 2 for every stress_multiplier rpm's their is
+	var/stress_use = 0
+	///this is basically do we want to connect via a cog type or shaft
+	var/required_connection_type = COG_SMALL
+
+	var/stress_multiplier = 30
+	var/cog_type = COG_SMALL
 
 /obj/structure/Destroy()
 	. = ..()
@@ -11,6 +18,11 @@
 		if(rotation_provider)
 			rotation_data.remove_provider(src)
 		rotation_data.remove_child(src)
+
+/obj/structure/proc/get_effective_speed()
+	if(!rotation_data)
+		return 0
+	return rotation_data.rotations_per_minute / stress_multiplier
 
 /obj/structure/proc/try_find_rotation_group()
 	var/turf/step_forward = get_step(src, dir)
@@ -29,6 +41,16 @@
 	if(!rotation_data)
 		rotation_data = new
 		rotation_data.add_child(src)
+
+/obj/structure/proc/add_stress_use()
+	if(!rotation_data)
+		return
+	rotation_data.add_stress_user(src)
+
+/obj/structure/proc/remove_stress_use()
+	if(!rotation_data)
+		return
+	rotation_data.remove_stress_user(src)
 
 /obj/structure/proc/return_connected(list/came_from)
 	var/list/connected = list()
@@ -86,11 +108,15 @@
 /datum/rotational_information
 	var/rotations_per_minute = 0
 	var/total_stress = 0
+	var/used_stress = 0
 	var/torque = 1
 	var/rotation_direction = EAST
+	var/overstressed = FALSE
 
 	var/list/children = list()
 	var/list/providers = list()
+
+	var/list/stress_users = list()
 	var/obj/structure/highest_provider
 
 /datum/rotational_information/proc/set_rotational_speed(amount = 8, obj/structure/incoming, force =FALSE)
@@ -105,6 +131,7 @@
 	rotations_per_minute = amount
 	highest_provider = incoming
 	update_animation_effect()
+	adjust_stress_usage()
 
 /datum/rotational_information/proc/set_rotational_direction(direction = EAST, obj/structure/incoming)
 	if(length(providers) > 1)
@@ -113,6 +140,7 @@
 				return
 	rotation_direction = direction
 	update_animation_effect()
+	adjust_stress_usage()
 
 /datum/rotational_information/proc/set_rotational_direction_and_speed(direction = EAST, amount = 8, obj/structure/incoming)
 	if(amount > 0 && !(incoming in providers))
@@ -132,6 +160,7 @@
 	rotation_direction = direction
 	rotations_per_minute = amount
 	update_animation_effect()
+	adjust_stress_usage()
 
 /datum/rotational_information/proc/update_animation_effect()
 	for(var/obj/structure/child as anything in children)
@@ -160,6 +189,7 @@
 
 	highest_provider = highest
 	set_rotational_speed(highest_number, highest, TRUE)
+	adjust_stress_usage()
 
 /datum/rotational_information/proc/add_child(obj/structure/child)
 	children |= child
@@ -200,7 +230,6 @@
 
 		make_new_group(connected)
 
-
 /datum/rotational_information/proc/make_new_group(list/groupmates)
 
 	var/datum/rotational_information/new_group = new
@@ -209,7 +238,46 @@
 		if(structure.rotation_provider)
 			remove_provider(structure)
 			new_group.add_provider(structure)
+		if(structure.stress_use)
+			remove_stress_user(structure)
+			new_group.add_stress_user(structure)
 		remove_child(structure)
 		new_group.add_child(structure)
 
 	new_group.get_next_provider()
+
+/datum/rotational_information/proc/adjust_stress_usage()
+	used_stress = 0
+
+	for(var/obj/structure/user in stress_users)
+		var/stress_multiplier = max(FLOOR(rotations_per_minute / user.stress_multiplier, 1),1)
+
+		used_stress += stress_multiplier * user.stress_use
+
+	if(used_stress > total_stress)
+		breakdown()
+	else if(overstressed)
+		restore()
+
+/datum/rotational_information/proc/breakdown()
+	rotations_per_minute = 0
+	overstressed = TRUE
+	update_animation_effect()
+
+	for(var/obj/structure/child in children)
+		child.AddParticles()
+		child.MakeParticleEmitter(/particles/smoke, FALSE, 1 SECONDS)
+
+/datum/rotational_information/proc/restore()
+	rotations_per_minute = highest_provider.rotation_speed
+	overstressed = FALSE
+
+	update_animation_effect()
+
+/datum/rotational_information/proc/add_stress_user(obj/structure/user)
+	stress_users |= user
+	adjust_stress_usage()
+
+/datum/rotational_information/proc/remove_stress_user(obj/structure/user)
+	stress_users -= user
+	adjust_stress_usage()
