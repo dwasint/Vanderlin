@@ -20,12 +20,18 @@
 	for(var/direction in GLOB.cardinals)
 		var/turf/step_back = get_step(src, direction)
 		for(var/obj/structure/structure in step_back.contents)
+			if(direction != dir && direction != GLOB.reverse_dir[dir])
+				if(!istype(structure, /obj/structure/rotation_piece/cog))
+					continue
 			if(structure.rotation_data)
 				if(rotation_data)
 					rotation_data.try_merge_groups(src, structure.rotation_data)
 				else
 					structure.rotation_data.add_child(src)
 
+	if(!rotation_data)
+		rotation_data = new
+		rotation_data.add_child(src)
 
 /obj/structure/rotation_piece/cog/return_connected(list/came_from)
 	var/list/connected = list()
