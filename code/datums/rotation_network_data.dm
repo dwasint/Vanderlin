@@ -44,7 +44,7 @@
 	rebuilding = TRUE
 	var/list/producers = list()
 	for(var/obj/structure/child in connected)
-		if(!child.stress_generation)
+		if(!child.stress_generator)
 			child.rotation_direction = null
 			child.set_rotations_per_minute(0)
 			continue
@@ -63,6 +63,7 @@
 		var/list/returned = near.return_connected(deleted, list(), src)
 		connected_copy -= deleted
 		if(length(connected_copy) == length(returned))
+			rebuild_group()
 			return
 		var/datum/rotation_network/new_network = new
 		var/list/dealt_with = list()

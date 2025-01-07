@@ -5,6 +5,7 @@
 	var/stress_generation
 	var/rotation_direction
 	var/cog_size = COG_SMALL
+	var/stress_generator = FALSE
 	var/last_stress_added = 0
 
 	var/datum/rotation_network/rotation_network
@@ -16,8 +17,9 @@
 
 /obj/structure/Destroy()
 	if(rotation_network)
-		rotation_network.reassess_group(src)
+		var/datum/rotation_network/old_network = rotation_network
 		rotation_network.remove_connection(src)
+		old_network.reassess_group(src)
 	. = ..()
 
 /obj/structure/LateInitialize()
@@ -112,7 +114,7 @@
 		rotation_break()
 		return
 	connector.rotation_direction = rotation_direction
-	if(!connector.stress_generation)
+	if(!connector.stress_generator)
 		connector.set_rotations_per_minute(rotations_per_minute)
 
 	connector.find_and_propagate(checked, TRUE)

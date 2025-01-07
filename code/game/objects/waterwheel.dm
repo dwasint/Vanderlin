@@ -6,6 +6,7 @@
 	icon_state = "1"
 
 	layer = 5
+	stress_generator = TRUE
 	rotation_structure = TRUE
 
 /obj/structure/waterwheel/LateInitialize()
@@ -32,3 +33,6 @@
 		animate(icon_state = "3", time = frame_stage)
 		animate(icon_state = "2", time = frame_stage)
 		animate(icon_state = "1", time = frame_stage)
+
+/obj/structure/waterwheel/set_rotations_per_minute(speed)
+	. = ..()

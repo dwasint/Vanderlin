@@ -46,7 +46,7 @@
 		var/turf/step_back = get_step(src, direction)
 		for(var/obj/structure/structure in step_back.contents)
 			if(direction != dir && direction != GLOB.reverse_dir[dir])
-				if(!istype(structure, /obj/structure/rotation_piece/cog))
+				if(!istype(structure, /obj/structure/rotation_piece/cog) && !istype(structure, /obj/structure/water_pump))
 					continue
 			if(!(structure in network.connected))
 				continue
@@ -105,7 +105,7 @@
 			rotation_break()
 			return
 		connector.rotation_direction = rotation_direction
-		if(!connector.stress_generation)
+		if(!connector.stress_generator)
 			connector.set_rotations_per_minute(rotations_per_minute)
 
 	connector.find_and_propagate(checked, TRUE)
