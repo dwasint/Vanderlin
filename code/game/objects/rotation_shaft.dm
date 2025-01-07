@@ -101,7 +101,7 @@
 			connector.rotation_direction = GLOB.reverse_dir[rotation_direction]
 			connector.set_rotations_per_minute(get_speed_mod(connector))
 	else
-		if(connector.stress_generation && connector.rotation_direction != rotation_direction)
+		if(connector.stress_generation && rotation_direction && (connector.rotation_direction != rotation_direction))
 			rotation_break()
 			return
 		connector.rotation_direction = rotation_direction

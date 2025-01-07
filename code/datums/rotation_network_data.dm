@@ -25,7 +25,7 @@
 /datum/rotation_network/proc/breakdown()
 	overstressed = TRUE
 	for(var/obj/structure/child in connected)
-		child.MakeParticleEmitter(/particles/smoke, FALSE, 1 SECONDS)
+		child.MakeParticleEmitter(/particles/sparks, FALSE, 1 SECONDS)
 	update_animation_effect()
 
 /datum/rotation_network/proc/restore()

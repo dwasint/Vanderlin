@@ -99,3 +99,20 @@
 	fadein = 0.7 SECONDS
 	position = generator(GEN_VECTOR, list(-3, 5, 0), list(3, 6.5, 0), NORMAL_RAND)
 	velocity = generator(GEN_VECTOR, list(-0.1, 0.4, 0), list(0.1, 0.5, 0), NORMAL_RAND)
+
+/particles/sparks
+	name = "sparks"
+	width = 124
+	height = 124
+	count = 16
+	spawning = 16
+	lifespan = 1.5 SECONDS
+	fade = 0.25 SECONDS
+	position = generator("circle", -12, 12, NORMAL_RAND)
+	gravity = list(0, -1)
+	velocity = generator("box", list(-12, 2, 0), list(12, 12, 5), NORMAL_RAND)
+	friction = 0.25
+	gradient = list(0, COLOR_WHITE, 1, COLOR_ORANGE)
+	color_change = 0.125
+	color = 0
+	transform = list(1,0,0,0, 0,1,0,0, 0,0,1,1/5, 0,0,0,1)
