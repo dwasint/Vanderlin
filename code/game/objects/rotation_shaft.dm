@@ -39,6 +39,20 @@
 		rotation_network = new
 		rotation_network.add_connection(src)
 
+/obj/structure/rotation_piece/cog/return_surrounding_rotation(datum/rotation_network/network)
+	var/list/surrounding = list()
+
+	for(var/direction in GLOB.cardinals)
+		var/turf/step_back = get_step(src, direction)
+		for(var/obj/structure/structure in step_back.contents)
+			if(direction != dir && direction != GLOB.reverse_dir[dir])
+				if(!istype(structure, /obj/structure/rotation_piece/cog))
+					continue
+			if(!(structure in network.connected))
+				continue
+			surrounding |= structure
+	return surrounding
+
 /obj/structure/rotation_piece/cog/update_animation_effect()
 	if(!rotation_network || rotation_network?.overstressed || !rotations_per_minute)
 		animate(src, icon_state = "1", time = 1)

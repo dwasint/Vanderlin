@@ -13,9 +13,10 @@
 		return INITIALIZE_HINT_LATELOAD
 
 /obj/structure/Destroy()
-	. = ..()
 	if(rotation_network)
+		rotation_network.reassess_group(src)
 		rotation_network.remove_connection(src)
+	. = ..()
 
 /obj/structure/LateInitialize()
 	. = ..()
@@ -29,8 +30,12 @@
 	var/turf/step_forward = get_step(src, dir)
 	for(var/obj/structure/structure in step_forward.contents)
 		if(structure.rotation_network)
-			if(!structure.try_connect(src))
-				rotation_break()
+			if(rotation_network)
+				if(!structure.try_network_merge(src))
+					rotation_break()
+			else
+				if(!structure.try_connect(src))
+					rotation_break()
 
 	var/turf/step_back = get_step(src, GLOB.reverse_dir[dir])
 	for(var/obj/structure/structure in step_back.contents)
@@ -88,8 +93,8 @@
 	if(!can_connect(connector))
 		return FALSE
 	for(var/obj/structure/child in connector.rotation_network.connected)
-		connector.rotation_network.remove_connection(connector)
-		rotation_network.add_connection(connector)
+		connector.rotation_network.remove_connection(child)
+		rotation_network.add_connection(child)
 	rotation_network.total_stress += connector.rotation_network.total_stress
 	rotation_network.used_stress += connector.rotation_network.used_stress
 	propagate_rotation_change(connector)
@@ -158,3 +163,37 @@
 		return FALSE
 	rotations_per_minute = speed
 	return TRUE
+
+/obj/structure/proc/return_surrounding_rotation(datum/rotation_network/network)
+	var/list/surrounding = list()
+
+	var/turf/step_forward = get_step(src, dir)
+	for(var/obj/structure/structure in step_forward.contents)
+		if(!(structure in network.connected))
+			continue
+		surrounding |= structure
+
+	var/turf/step_back = get_step(src, GLOB.reverse_dir[dir])
+	for(var/obj/structure/structure in step_back.contents)
+		if(!(structure in network.connected))
+			continue
+		surrounding |= structure
+	return surrounding
+
+/obj/structure/proc/return_connected(obj/structure/deleted, list/passed, datum/rotation_network/network)
+	var/list/surroundings = return_surrounding_rotation(network)
+	var/list/connected = list()
+	if(!length(passed))
+		passed = list()
+	passed |= src
+	if(deleted in surroundings)
+		surroundings -= deleted
+
+	connected |= surroundings
+	for(var/obj/structure/surrounding in surroundings)
+		if(surrounding == src)
+			continue
+		if(surrounding in passed)
+			continue
+		connected |= surrounding.return_connected(deleted, passed, network)
+	return connected

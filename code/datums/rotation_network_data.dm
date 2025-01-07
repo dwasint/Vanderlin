@@ -44,3 +44,30 @@
 
 	for(var/obj/structure/producer in producers)
 		producer.find_and_propagate(list(), TRUE)
+	update_animation_effect()
+
+/datum/rotation_network/proc/reassess_group(obj/structure/deleted)
+	var/list/returned_nearbys = deleted.return_surrounding_rotation(src)
+	var/list/connected_copy = connected.Copy()
+
+	for(var/obj/structure/near in returned_nearbys)
+		var/list/returned = near.return_connected(deleted, list(), src)
+		connected_copy -= deleted
+		if(length(connected_copy) == length(returned))
+			return
+		var/datum/rotation_network/new_network = new
+		for(var/obj/structure/returned_object in returned)
+			remove_connection(returned_object)
+			new_network.add_connection(returned_object)
+			if(returned_object.stress_use)
+				used_stress -= returned_object.stress_use
+				returned_object.set_stress_use(returned_object.stress_use)
+			if(returned_object.stress_generation)
+				total_stress -= returned_object.stress_generation
+				returned_object.set_stress_generation(returned_object.stress_generation)
+		new_network.rebuild_group()
+
+	if(!length(connected))
+		qdel(src)
+		return
+	rebuild_group()
