@@ -120,10 +120,6 @@ SUBSYSTEM_DEF(plexora)
 		return TRUE
 
 /datum/controller/subsystem/plexora/fire()
-	/*if((cur_day == "Sat") && (cur_hour >= 12 && cur_hour <= 18))
-  	//hrp_available = check_byondserver_status("7cfa7daf")
-	//else
-    		hrp_available = FALSE */
 	if(!is_plexora_alive()) return
 	// Send current status to Plexora
 	var/datum/world_topic/status/status_handler = new()
