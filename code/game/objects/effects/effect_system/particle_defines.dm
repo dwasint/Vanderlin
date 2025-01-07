@@ -12,6 +12,11 @@
 	friction = 0.2
 	grow = 0.0015
 
+/particles/mist/waterfall
+	count = 75
+	lifespan =  generator("num", 2 SECONDS, 3 SECONDS)
+	position = generator("box", list(-20, 4), list(20, 10), UNIFORM_RAND)
+
 // All the smoke variant particles.
 /particles/smoke
 	name = "smoke"

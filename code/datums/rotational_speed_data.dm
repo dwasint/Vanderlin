@@ -115,6 +115,7 @@
 
 	var/list/children = list()
 	var/list/providers = list()
+	var/list/conflicting_providers = list()
 
 	var/list/stress_users = list()
 	var/obj/structure/highest_provider
@@ -137,7 +138,17 @@
 	if(length(providers) > 1)
 		for(var/obj/structure/provider in providers)
 			if(provider.rotation_direction != direction)
+				conflicting_providers |= incoming
+				breakdown()
 				return
+
+	if(incoming in conflicting_providers)
+		conflicting_providers -= incoming
+		for(var/obj/particle_emitter/emitter in incoming.particle_emitters)
+			if(emitter.particles.type == /particles/smoke)
+				incoming.particle_emitters -= emitter
+				qdel(emitter)
+		restore()
 	rotation_direction = direction
 	update_animation_effect()
 	adjust_stress_usage()
@@ -154,7 +165,17 @@
 	if(length(providers) > 1)
 		for(var/obj/structure/provider in providers)
 			if(provider.rotation_direction != direction)
+				conflicting_providers |= incoming
+				breakdown()
 				return
+
+	if(incoming in conflicting_providers)
+		conflicting_providers -= incoming
+		for(var/obj/particle_emitter/emitter in incoming.particle_emitters)
+			if(emitter.particles.type == /particles/smoke)
+				incoming.particle_emitters -= emitter
+				qdel(emitter)
+		restore()
 
 	highest_provider = incoming
 	rotation_direction = direction
@@ -176,6 +197,9 @@
 /datum/rotational_information/proc/remove_provider(obj/structure/incoming)
 	providers -= incoming
 	total_stress -= incoming.stress_generation
+	if(incoming in conflicting_providers)
+		conflicting_providers -= incoming
+		restore()
 	if(highest_provider == incoming)
 		get_next_provider()
 
@@ -265,10 +289,15 @@
 	update_animation_effect()
 
 	for(var/obj/structure/child in children)
-		child.AddParticles()
-		child.MakeParticleEmitter(/particles/smoke, FALSE, 1 SECONDS)
+		if(child in conflicting_providers)
+			var/obj/particle_emitter/emitter = child.MakeParticleEmitter(/particles/smoke, FALSE)
+			emitter.layer = child.layer + 1
+		else
+			child.MakeParticleEmitter(/particles/smoke, FALSE, 1 SECONDS)
 
 /datum/rotational_information/proc/restore()
+	if(length(conflicting_providers))
+		return
 	rotations_per_minute = highest_provider.rotation_speed
 	overstressed = FALSE
 

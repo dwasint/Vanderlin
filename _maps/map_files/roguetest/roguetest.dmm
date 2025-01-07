@@ -247,6 +247,9 @@
 	dir = 2;
 	redstone_id = "test2"
 	},
+/obj/effect/waterfall/acid{
+	pixel_y = 32
+	},
 /turf/open/water/acid{
 	water_volume = 500
 	},
@@ -1120,6 +1123,11 @@
 /obj/item/rogueweapon/polearm/woodstaff/aries,
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors)
+"jV" = (
+/obj/structure/trench,
+/obj/structure/waterwheel,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors)
 "oH" = (
 /obj/structure/lever{
 	redstone_id = "test2"
@@ -1172,10 +1180,19 @@
 /obj/effect/landmark/start,
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors)
+"xp" = (
+/obj/structure/trench,
+/obj/structure/rotation_piece,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors)
 "Fo" = (
 /obj/effect/landmark/start/consort,
 /turf/open/floor/rogue/carpet/lord/left,
 /area/rogue/indoors)
+"Mn" = (
+/obj/structure/rotation_piece,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors)
 "QR" = (
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/woods)
@@ -1194,6 +1211,10 @@
 /area/rogue)
 "WA" = (
 /turf/closed/wall/mineral/rogue/stone,
+/area/rogue/outdoors)
+"XC" = (
+/obj/structure/rotation_piece/cog,
+/turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors)
 
 (1,1,1) = {"
@@ -3963,7 +3984,7 @@ aa
 aa
 aa
 at
-al
+at
 aM
 cN
 cN
@@ -5251,10 +5272,10 @@ at
 al
 cN
 al
-cN
-al
-al
-al
+jV
+XC
+Mn
+XC
 al
 at
 ab
@@ -5506,13 +5527,13 @@ ac
 ac
 at
 al
-cN
-al
-cN
-al
-al
-al
-al
+jV
+XC
+xp
+XC
+Mn
+Mn
+Mn
 at
 ab
 ag
