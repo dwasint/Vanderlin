@@ -8,9 +8,8 @@
 	layer = 5
 	rotation_structure = TRUE
 
-/obj/structure/waterwheel/Initialize()
+/obj/structure/waterwheel/LateInitialize()
 	. = ..()
-
 	var/turf/open/water/river/water = get_turf(src)
 	if(!istype(water))
 		return

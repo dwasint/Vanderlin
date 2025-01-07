@@ -11,6 +11,10 @@
 	incoming.rotation_network = src
 
 /datum/rotation_network/proc/remove_connection(obj/structure/incoming)
+	if(incoming.stress_generation)
+		incoming.set_stress_generation(0)
+	if(incoming.stress_use)
+		incoming.set_stress_use(0)
 	incoming.rotation_network = null
 	connected -= incoming
 
@@ -61,15 +65,18 @@
 		if(length(connected_copy) == length(returned))
 			return
 		var/datum/rotation_network/new_network = new
+		var/list/dealt_with = list()
 		for(var/obj/structure/returned_object in returned)
 			remove_connection(returned_object)
 			new_network.add_connection(returned_object)
-			if(returned_object.stress_use)
-				used_stress -= returned_object.stress_use
-				returned_object.set_stress_use(returned_object.stress_use)
-			if(returned_object.stress_generation)
-				total_stress -= returned_object.stress_generation
-				returned_object.set_stress_generation(returned_object.stress_generation)
+			if(!(returned_object in dealt_with))
+				if(returned_object.stress_use)
+					used_stress -= returned_object.stress_use
+					returned_object.set_stress_use(returned_object.stress_use)
+				if(returned_object.stress_generation)
+					total_stress -= returned_object.stress_generation
+					returned_object.set_stress_generation(returned_object.stress_generation)
+			dealt_with |= returned_object
 		new_network.rebuild_group()
 
 	if(!length(connected))
