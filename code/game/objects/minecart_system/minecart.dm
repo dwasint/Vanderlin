@@ -319,7 +319,7 @@
 /obj/structure/closet/crate/miningcar/proc/check_powered()
 	var/obj/structure/minecart_rail/potential_power = locate() in loc
 	if(potential_power.rotations_per_minute)
-		momentum += potential_power.rotations_per_minute / 16
+		momentum += potential_power.rotations_per_minute / 4
 
 /// Throws all the contents of the cart out ahead
 /obj/structure/closet/crate/miningcar/proc/throw_contents()
@@ -339,7 +339,7 @@
 			visible_message(span_warning("[src] breaks open!"))
 		return
 
-	var/throw_distance = clamp(ceil(momentum / 3) - 4, 1, 5)
+	var/throw_distance = clamp(ceil(momentum / 3) - 4, 1, 20)
 	var/turf/some_distant_turf = get_edge_target_turf(src, dir)
 	for(var/atom/movable/yeeten in to_yeet)
 		yeeten.throw_at(some_distant_turf, throw_distance, 3)
@@ -407,6 +407,29 @@
 				continue
 			surrounding |= structure
 	return surrounding
+
+/obj/structure/minecart_rail/find_and_propagate(list/checked, first = FALSE)
+	if(!length(checked))
+		checked = list()
+	checked |= src
+	if(!(dir in GLOB.cardinals))
+		rotation_structure = FALSE
+		return checked
+
+	for(var/direction in GLOB.cardinals)
+		var/turf/step_back = get_step(src, direction)
+		if(!step_back)
+			continue
+		for(var/obj/structure/structure in step_back.contents)
+			if(structure in checked)
+				continue
+			if(direction == dir || direction == GLOB.reverse_dir[dir])
+				continue
+			if(!(structure in rotation_network.connected))
+				continue
+			propagate_rotation_change(structure, checked, TRUE)
+	if(first && rotation_network)
+		rotation_network.update_animation_effect()
 
 /obj/structure/minecart_rail/set_rotations_per_minute(speed)
 	set_stress_use(64 * (speed / 8))
