@@ -46,3 +46,10 @@
 /obj/structure/water_pump/set_rotations_per_minute(speed)
 	set_stress_use(64 * (speed / 8))
 	. = ..()
+
+/obj/structure/water_pump/can_connect(obj/structure/connector)
+	if(connector.rotation_direction && connector.rotation_direction != rotation_direction)
+		if(!istype(connector, /obj/structure/rotation_piece/cog) && !istype(connector, /obj/structure/water_pump))
+			if(connector.rotations_per_minute && rotations_per_minute)
+				return FALSE
+	return TRUE

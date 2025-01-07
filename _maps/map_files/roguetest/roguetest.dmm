@@ -1118,11 +1118,6 @@
 "cX" = (
 /turf/open/floor/rogue/carpet/lord/right,
 /area/rogue/indoors)
-"gy" = (
-/obj/structure/trench,
-/obj/structure/rotation_piece/cog/large,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors)
 "hP" = (
 /obj/item/rogueweapon/polearm/woodstaff/aries,
 /turf/open/floor/rogue/cobble,
@@ -1180,6 +1175,10 @@
 "vW" = (
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/warehouse)
+"wM" = (
+/obj/structure/water_pump,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors)
 "xh" = (
 /obj/effect/landmark/start,
 /turf/open/floor/rogue/cobble,
@@ -1189,29 +1188,29 @@
 /obj/structure/rotation_piece,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors)
-"BZ" = (
+"AL" = (
 /obj/structure/trench,
-/obj/structure/rotation_piece/cog,
+/obj/structure/rotation_piece/cog/large,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors)
 "Fo" = (
 /obj/effect/landmark/start/consort,
 /turf/open/floor/rogue/carpet/lord/left,
 /area/rogue/indoors)
-"Ma" = (
-/obj/structure/water_pump,
+"Mn" = (
+/obj/structure/rotation_piece,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors)
-"Mn" = (
+"Pf" = (
 /obj/structure/rotation_piece/cog/large,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors)
 "QR" = (
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/woods)
-"Tt" = (
+"Tc" = (
 /obj/structure/trench,
-/obj/structure/water_pump,
+/obj/structure/rotation_piece/cog,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors)
 "Ty" = (
@@ -1220,6 +1219,11 @@
 	},
 /turf/open/floor/rogue/carpet/lord/right,
 /area/rogue/indoors)
+"TL" = (
+/obj/structure/trench,
+/obj/structure/water_pump,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors)
 "Ua" = (
 /obj/structure/water_pipe,
 /turf/open/floor/rogue/dirt/road,
@@ -5034,7 +5038,7 @@ al
 cN
 aL
 cN
-Ma
+wM
 al
 oH
 al
@@ -5549,7 +5553,7 @@ jV
 XC
 xp
 XC
-Mn
+Pf
 al
 al
 at
@@ -5806,8 +5810,8 @@ cN
 al
 cN
 cN
-BZ
-Mn
+Tc
+Pf
 al
 at
 ab
@@ -6062,7 +6066,7 @@ al
 cN
 al
 aL
-gy
+AL
 xp
 XC
 al
@@ -6317,9 +6321,9 @@ ac
 at
 al
 cN
-al
-al
-BZ
+XC
+Mn
+Tc
 cN
 al
 al
@@ -6573,10 +6577,10 @@ ac
 ac
 at
 al
+jV
+XC
 cN
-al
-cN
-Tt
+TL
 cN
 al
 al

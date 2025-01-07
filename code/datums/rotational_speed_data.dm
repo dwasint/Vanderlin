@@ -134,15 +134,16 @@
 			propagate_rotation_change(structure, checked, TRUE)
 
 	var/turf/step_back = get_step(src, GLOB.reverse_dir[dir])
-	for(var/obj/structure/structure in step_back.contents)
-		if(structure.rotation_network)
-			if(structure in checked)
-				continue
+	if(step_back)
+		for(var/obj/structure/structure in step_back.contents)
 			if(structure.rotation_network)
-				propagate_rotation_change(structure, checked, TRUE)
+				if(structure in checked)
+					continue
+				if(structure.rotation_network)
+					propagate_rotation_change(structure, checked, TRUE)
 
 	if(first)
-		rotation_network.update_animation_effect()
+		rotation_network?.update_animation_effect()
 
 /obj/structure/proc/pass_rotation_data(obj/structure/connector, list/checked)
 	if(!length(checked))
@@ -173,16 +174,18 @@
 	var/list/surrounding = list()
 
 	var/turf/step_forward = get_step(src, dir)
-	for(var/obj/structure/structure in step_forward.contents)
-		if(!(structure in network.connected))
-			continue
-		surrounding |= structure
+	if(step_forward)
+		for(var/obj/structure/structure in step_forward.contents)
+			if(!(structure in network.connected))
+				continue
+			surrounding |= structure
 
 	var/turf/step_back = get_step(src, GLOB.reverse_dir[dir])
-	for(var/obj/structure/structure in step_back.contents)
-		if(!(structure in network.connected))
-			continue
-		surrounding |= structure
+	if(step_back)
+		for(var/obj/structure/structure in step_back.contents)
+			if(!(structure in network.connected))
+				continue
+			surrounding |= structure
 	return surrounding
 
 /obj/structure/proc/return_connected(obj/structure/deleted, list/passed, datum/rotation_network/network)

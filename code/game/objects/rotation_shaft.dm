@@ -19,6 +19,13 @@
 
 	cog_size = COG_LARGE
 
+/obj/structure/rotation_piece/cog/can_connect(obj/structure/connector)
+	if(connector.rotation_direction && connector.rotation_direction != rotation_direction)
+		if(!istype(connector, /obj/structure/rotation_piece/cog) && !istype(connector, /obj/structure/water_pump))
+			if(connector.rotations_per_minute && rotations_per_minute)
+				return FALSE
+	return TRUE
+
 /obj/structure/rotation_piece/cog/find_rotation_network()
 
 	for(var/direction in GLOB.cardinals)
