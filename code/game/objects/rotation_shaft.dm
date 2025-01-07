@@ -3,10 +3,7 @@
 
 	icon = 'icons/roguetown/misc/shafts_cogs.dmi'
 	icon_state = "shaft"
-
-/obj/structure/rotation_piece/Initialize()
-	. = ..()
-	try_find_rotation_group()
+	rotation_structure = TRUE
 
 /obj/structure/rotation_piece/cog
 	name = "cog"
@@ -15,7 +12,14 @@
 
 	var/cog_size = COG_SMALL
 
-/obj/structure/rotation_piece/cog/try_find_rotation_group()
+/obj/structure/rotation_piece/cog/large
+	name = "large cog"
+
+	icon_state = "l1"
+
+	cog_size = COG_LARGE
+
+/obj/structure/rotation_piece/cog/find_rotation_network()
 
 	for(var/direction in GLOB.cardinals)
 		var/turf/step_back = get_step(src, direction)
@@ -23,39 +27,24 @@
 			if(direction != dir && direction != GLOB.reverse_dir[dir])
 				if(!istype(structure, /obj/structure/rotation_piece/cog))
 					continue
-			if(structure.rotation_data)
-				if(rotation_data)
-					rotation_data.try_merge_groups(src, structure.rotation_data)
+			if(structure.rotation_network)
+				if(rotation_network)
+					if(!structure.try_network_merge(src))
+						rotation_break()
 				else
-					structure.rotation_data.add_child(src)
+					if(!structure.try_connect(src))
+						rotation_break()
 
-	if(!rotation_data)
-		rotation_data = new
-		rotation_data.add_child(src)
-
-/obj/structure/rotation_piece/cog/return_connected(list/came_from)
-	var/list/connected = list()
-	if(!came_from)
-		came_from = list()
-	came_from |= src
-	connected |= src
-
-	for(var/direction in GLOB.cardinals)
-		var/turf/step_forward = get_step(src, direction)
-		for(var/obj/structure/structure in step_forward.contents)
-			if(structure in came_from)
-				continue
-			if(structure in rotation_data.children)
-				connected |= structure.return_connected(came_from)
-
-	return connected
+	if(!rotation_network)
+		rotation_network = new
+		rotation_network.add_connection(src)
 
 /obj/structure/rotation_piece/cog/update_animation_effect()
-	if(!rotation_data || rotation_data?.rotations_per_minute <= 0)
+	if(!rotation_network || rotation_network?.overstressed || !rotations_per_minute)
 		animate(src, icon_state = "1", time = 1)
 		return
-	var/frame_stage = 1 / ((rotation_data.rotations_per_minute / 60) * 4)
-	if(rotation_data.rotation_direction == WEST)
+	var/frame_stage = 1 / ((rotations_per_minute / 60) * 4)
+	if(rotation_direction == WEST)
 		animate(src, icon_state = "1", time = frame_stage, loop=-1)
 		animate(icon_state = "2", time = frame_stage)
 		animate(icon_state = "3", time = frame_stage)
@@ -65,3 +54,72 @@
 		animate(icon_state = "3", time = frame_stage)
 		animate(icon_state = "2", time = frame_stage)
 		animate(icon_state = "1", time = frame_stage)
+
+/obj/structure/rotation_piece/cog/find_and_propagate(list/checked, first = FALSE)
+	if(!length(checked))
+		checked = list()
+	checked |= src
+
+	for(var/direction in GLOB.cardinals)
+		var/turf/step_back = get_step(src, direction)
+		if(!step_back)
+			continue
+		for(var/obj/structure/structure in step_back.contents)
+			if(structure in checked)
+				continue
+			if(direction != dir && direction != GLOB.reverse_dir[dir])
+				if(!istype(structure, /obj/structure/rotation_piece/cog))
+					continue
+			if(!(structure in rotation_network.connected))
+				continue
+			propagate_rotation_change(structure, checked, TRUE)
+	if(first && rotation_network)
+		rotation_network.update_animation_effect()
+
+/obj/structure/rotation_piece/cog/propagate_rotation_change(obj/structure/connector, list/checked, first = FALSE)
+	if(!length(checked))
+		checked = list()
+	checked |= src
+
+	var/direction = get_dir(src, connector)
+	if(direction != dir && direction != GLOB.reverse_dir[dir])
+		if(istype(connector, /obj/structure/rotation_piece/cog))
+			connector.rotation_direction = GLOB.reverse_dir[rotation_direction]
+			connector.set_rotations_per_minute(get_speed_mod(connector))
+	else
+		if(connector.stress_generation && connector.rotation_direction != rotation_direction)
+			rotation_break()
+			return
+		connector.rotation_direction = rotation_direction
+		if(!connector.stress_generation)
+			connector.rotations_per_minute = rotations_per_minute
+
+	connector.find_and_propagate(checked, TRUE)
+	if(first)
+		rotation_network.update_animation_effect()
+
+/obj/structure/rotation_piece/cog/proc/get_speed_mod(obj/structure/connector)
+	var/obj/structure/rotation_piece/cog/cog = connector
+	if(cog.cog_size == COG_LARGE && cog_size == COG_SMALL)
+		return rotations_per_minute * 0.5
+
+	if(cog.cog_size == COG_SMALL && cog_size == COG_LARGE)
+		return rotations_per_minute * 2
+
+	return rotations_per_minute
+
+/obj/structure/rotation_piece/cog/large/update_animation_effect()
+	if(!rotation_network || rotation_network?.overstressed || !rotations_per_minute)
+		animate(src, icon_state = "l1", time = 1)
+		return
+	var/frame_stage = 1 / ((rotations_per_minute / 60) * 4)
+	if(rotation_direction == WEST)
+		animate(src, icon_state = "l1", time = frame_stage, loop=-1)
+		animate(icon_state = "l2", time = frame_stage)
+		animate(icon_state = "l3", time = frame_stage)
+		animate(icon_state = "l4", time = frame_stage)
+	else
+		animate(src, icon_state = "l4", time = frame_stage, loop=-1)
+		animate(icon_state = "l3", time = frame_stage)
+		animate(icon_state = "l2", time = frame_stage)
+		animate(icon_state = "l1", time = frame_stage)

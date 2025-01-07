@@ -1064,7 +1064,6 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors)
 "cM" = (
-/obj/structure/trench,
 /obj/structure/water_dam{
 	dir = 1;
 	redstone_id = "test3"
@@ -1169,6 +1168,11 @@
 	water_volume = 500
 	},
 /area/rogue/outdoors)
+"vb" = (
+/obj/structure/trench,
+/obj/structure/rotation_piece/cog,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors)
 "vV" = (
 /obj/structure/ladder,
 /turf/open/floor/rogue/cobble,
@@ -1190,7 +1194,7 @@
 /turf/open/floor/rogue/carpet/lord/left,
 /area/rogue/indoors)
 "Mn" = (
-/obj/structure/rotation_piece,
+/obj/structure/rotation_piece/cog/large,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors)
 "QR" = (
@@ -1211,6 +1215,11 @@
 /area/rogue)
 "WA" = (
 /turf/closed/wall/mineral/rogue/stone,
+/area/rogue/outdoors)
+"Xa" = (
+/obj/structure/trench,
+/obj/structure/rotation_piece/cog/large,
+/turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors)
 "XC" = (
 /obj/structure/rotation_piece/cog,
@@ -5274,8 +5283,8 @@ cN
 al
 jV
 XC
-Mn
-XC
+al
+al
 al
 at
 ab
@@ -5532,8 +5541,8 @@ XC
 xp
 XC
 Mn
-Mn
-Mn
+al
+al
 at
 ab
 ag
@@ -5788,8 +5797,8 @@ cN
 al
 cN
 cN
-cN
-al
+vb
+Mn
 al
 at
 ab
@@ -6044,9 +6053,9 @@ al
 cN
 al
 aL
-cN
-cN
-al
+Xa
+xp
+XC
 al
 at
 ab
@@ -6301,7 +6310,7 @@ al
 cN
 al
 al
-cN
+vb
 cN
 al
 al

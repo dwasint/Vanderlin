@@ -28,10 +28,9 @@
 	water_reagent = parent.water_reagent
 	if(istype(src, /turf/open/water/river/creatable))
 		dir = get_dir(parent, src)
-		for(var/obj/structure/potential_rotator in contents)
-			if(!potential_rotator.rotation_provider)
-				continue
+		for(var/obj/structure/waterwheel/potential_rotator in contents)
 			potential_rotator.set_rotational_direction_and_speed(dir, 12)
+			potential_rotator.set_stress_generation(1024)
 
 	check_surrounding_water()
 	update_icon()

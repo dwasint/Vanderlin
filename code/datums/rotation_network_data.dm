@@ -1,0 +1,46 @@
+/datum/rotation_network
+	var/total_stress = 0
+	var/used_stress = 0
+	var/overstressed = FALSE
+
+	var/list/connected = list()
+
+/datum/rotation_network/proc/add_connection(obj/structure/incoming)
+	connected |= incoming
+	incoming.rotation_network = src
+
+/datum/rotation_network/proc/remove_connection(obj/structure/incoming)
+	incoming.rotation_network = null
+	connected -= incoming
+
+/datum/rotation_network/proc/check_stress()
+	if(total_stress < used_stress)
+		breakdown()
+	else if(overstressed)
+		restore()
+
+/datum/rotation_network/proc/breakdown()
+	overstressed = TRUE
+	for(var/obj/structure/child in connected)
+		child.MakeParticleEmitter(/particles/smoke, FALSE, 1 SECONDS)
+	update_animation_effect()
+
+/datum/rotation_network/proc/restore()
+	overstressed = FALSE
+	update_animation_effect()
+
+/datum/rotation_network/proc/update_animation_effect()
+	for(var/obj/structure/child in connected)
+		child.update_animation_effect()
+
+/datum/rotation_network/proc/rebuild_group()
+	var/list/producers = list()
+	for(var/obj/structure/child in connected)
+		if(!child.stress_generation)
+			child.rotation_direction = null
+			child.rotations_per_minute = 0
+			continue
+		producers |= child
+
+	for(var/obj/structure/producer in producers)
+		producer.find_and_propagate(list(), TRUE)

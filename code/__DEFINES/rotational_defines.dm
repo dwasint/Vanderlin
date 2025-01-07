@@ -1,2 +1,2 @@
 #define COG_SMALL "smallCog"
-#define COG_LARGE
+#define COG_LARGE "largeCog"
