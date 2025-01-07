@@ -1118,13 +1118,37 @@
 "cX" = (
 /turf/open/floor/rogue/carpet/lord/right,
 /area/rogue/indoors)
+"eE" = (
+/obj/structure/trench,
+/obj/structure/rotation_piece/cog,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors)
+"fe" = (
+/obj/structure/rotation_piece/cog/large,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors)
 "hP" = (
 /obj/item/rogueweapon/polearm/woodstaff/aries,
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors)
+"jt" = (
+/obj/structure/trench,
+/obj/structure/rotation_piece/cog/large,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors)
 "jV" = (
 /obj/structure/trench,
 /obj/structure/waterwheel,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors)
+"mo" = (
+/obj/structure/water_pump,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors)
+"mv" = (
+/obj/structure/minecart_rail{
+	dir = 10
+	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors)
 "oH" = (
@@ -1175,10 +1199,6 @@
 "vW" = (
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/warehouse)
-"wM" = (
-/obj/structure/water_pump,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors)
 "xh" = (
 /obj/effect/landmark/start,
 /turf/open/floor/rogue/cobble,
@@ -1188,29 +1208,40 @@
 /obj/structure/rotation_piece,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors)
-"AL" = (
-/obj/structure/trench,
-/obj/structure/rotation_piece/cog/large,
+"Bg" = (
+/obj/structure/minecart_rail{
+	dir = 5
+	},
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors)
+"BE" = (
+/obj/structure/minecart_rail{
+	dir = 4
+	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors)
 "Fo" = (
 /obj/effect/landmark/start/consort,
 /turf/open/floor/rogue/carpet/lord/left,
 /area/rogue/indoors)
-"Mn" = (
-/obj/structure/rotation_piece,
+"Jj" = (
+/obj/structure/minecart_rail{
+	dir = 4
+	},
+/obj/structure/closet/crate/miningcar,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors)
-"Pf" = (
-/obj/structure/rotation_piece/cog/large,
+"Mn" = (
+/obj/structure/rotation_piece,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors)
 "QR" = (
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/woods)
-"Tc" = (
-/obj/structure/trench,
-/obj/structure/rotation_piece/cog,
+"Sl" = (
+/obj/structure/minecart_rail{
+	dir = 6
+	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors)
 "Ty" = (
@@ -1219,11 +1250,6 @@
 	},
 /turf/open/floor/rogue/carpet/lord/right,
 /area/rogue/indoors)
-"TL" = (
-/obj/structure/trench,
-/obj/structure/water_pump,
-/turf/open/floor/rogue/dirt/road,
-/area/rogue/outdoors)
 "Ua" = (
 /obj/structure/water_pipe,
 /turf/open/floor/rogue/dirt/road,
@@ -1233,6 +1259,12 @@
 /area/rogue)
 "WA" = (
 /turf/closed/wall/mineral/rogue/stone,
+/area/rogue/outdoors)
+"WW" = (
+/obj/structure/minecart_rail{
+	dir = 9
+	},
+/turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors)
 "XC" = (
 /obj/structure/rotation_piece/cog,
@@ -3485,12 +3517,12 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
+at
+at
+at
+at
+at
+at
 at
 at
 at
@@ -3742,12 +3774,12 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
+at
+aL
+al
+al
+al
+aL
 at
 al
 al
@@ -3999,12 +4031,12 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
+at
+al
+Bg
+Sl
+al
+al
 at
 at
 aM
@@ -4256,13 +4288,13 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
 at
+al
+BE
+BE
+al
+al
+al
 al
 al
 al
@@ -4513,12 +4545,12 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
+at
+al
+BE
+BE
+al
+al
 at
 al
 cN
@@ -4770,12 +4802,12 @@ aa
 aa
 aa
 aa
-aa
-ac
-ac
-ac
-ac
-ac
+at
+aL
+BE
+BE
+al
+al
 at
 al
 cN
@@ -5027,18 +5059,18 @@ aa
 aa
 aa
 aa
-aa
-ac
-ac
-ac
-ac
-ac
+at
+al
+BE
+BE
+al
+al
 at
 al
 cN
 aL
 cN
-wM
+mo
 al
 oH
 al
@@ -5284,12 +5316,12 @@ aa
 aa
 aa
 aa
-aa
-ac
-ac
-ac
-ac
-ac
+at
+al
+BE
+BE
+al
+al
 at
 al
 cN
@@ -5541,19 +5573,19 @@ aa
 aa
 aa
 aa
-aa
-ac
-ac
-ac
-ac
-ac
+at
+aL
+BE
+BE
+al
+al
 at
 al
 jV
 XC
 xp
 XC
-Pf
+fe
 al
 al
 at
@@ -5798,20 +5830,20 @@ aa
 aa
 aa
 aa
-aa
-ac
-ac
-ac
-ac
-ac
+at
+al
+BE
+BE
+al
+al
 at
 al
 cN
 al
 cN
 cN
-Tc
-Pf
+eE
+fe
 al
 at
 ab
@@ -6055,18 +6087,18 @@ aa
 aa
 aa
 aa
-aa
-ac
-ac
-ac
-ac
-ac
+at
+al
+BE
+BE
+al
+al
 at
 al
 cN
 al
 aL
-AL
+jt
 xp
 XC
 al
@@ -6312,18 +6344,18 @@ aa
 aa
 aa
 aa
-aa
-ac
-ac
-ac
-ac
-ac
+at
+al
+BE
+BE
+al
+al
 at
 al
 cN
 XC
 Mn
-Tc
+eE
 cN
 al
 al
@@ -6569,18 +6601,18 @@ aa
 aa
 aa
 aa
-aa
-ac
-ac
-ac
-ac
-ac
 at
+aL
+BE
+BE
 al
-jV
+al
+at
+XC
+xp
 XC
 cN
-TL
+cN
 cN
 al
 al
@@ -6826,14 +6858,14 @@ aa
 aa
 aa
 aa
-aa
-ac
-ac
-ac
-ac
-ac
 at
 al
+BE
+BE
+al
+al
+at
+XC
 cN
 al
 cN
@@ -7083,14 +7115,14 @@ aa
 aa
 aa
 aa
-aa
-ac
-ac
-ac
-ac
-ac
 at
 al
+BE
+BE
+al
+al
+at
+XC
 cN
 aL
 cN
@@ -7340,14 +7372,14 @@ aa
 aa
 aa
 aa
-aa
-ac
-ac
-ac
-ac
-ac
 at
 al
+BE
+BE
+Mn
+XC
+at
+XC
 cN
 cN
 cN
@@ -7597,14 +7629,14 @@ aa
 aa
 aa
 aa
-aa
-ac
-ac
-ac
-ac
-ac
 at
 al
+BE
+Jj
+al
+XC
+at
+XC
 cN
 aL
 al
@@ -7854,14 +7886,14 @@ aa
 aa
 aa
 aa
-aa
-ac
-ac
-ac
-ac
-ac
 at
+aL
+WW
+mv
 al
+XC
+Mn
+XC
 al
 al
 al
@@ -8111,12 +8143,12 @@ aa
 aa
 aa
 aa
-aa
-ac
-ac
-ac
-ac
-ac
+at
+at
+at
+at
+at
+at
 at
 at
 at
