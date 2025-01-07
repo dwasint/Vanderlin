@@ -10,7 +10,7 @@
 
 	icon_state = "1"
 
-	var/cog_size = COG_SMALL
+	cog_size = COG_SMALL
 
 /obj/structure/rotation_piece/cog/large
 	name = "large cog"
@@ -25,7 +25,7 @@
 		var/turf/step_back = get_step(src, direction)
 		for(var/obj/structure/structure in step_back.contents)
 			if(direction != dir && direction != GLOB.reverse_dir[dir])
-				if(!istype(structure, /obj/structure/rotation_piece/cog))
+				if(!istype(structure, /obj/structure/rotation_piece/cog) && !istype(structure, /obj/structure/water_pump))
 					continue
 			if(structure.rotation_network)
 				if(rotation_network)
@@ -82,7 +82,7 @@
 			if(structure in checked)
 				continue
 			if(direction != dir && direction != GLOB.reverse_dir[dir])
-				if(!istype(structure, /obj/structure/rotation_piece/cog))
+				if(!istype(structure, /obj/structure/rotation_piece/cog) && !istype(structure, /obj/structure/water_pump))
 					continue
 			if(!(structure in rotation_network.connected))
 				continue
@@ -97,7 +97,7 @@
 
 	var/direction = get_dir(src, connector)
 	if(direction != dir && direction != GLOB.reverse_dir[dir])
-		if(istype(connector, /obj/structure/rotation_piece/cog))
+		if(istype(connector, /obj/structure/rotation_piece/cog) || istype(connector, /obj/structure/water_pump))
 			connector.rotation_direction = GLOB.reverse_dir[rotation_direction]
 			connector.set_rotations_per_minute(get_speed_mod(connector))
 	else
@@ -106,7 +106,7 @@
 			return
 		connector.rotation_direction = rotation_direction
 		if(!connector.stress_generation)
-			connector.rotations_per_minute = rotations_per_minute
+			connector.set_rotations_per_minute(rotations_per_minute)
 
 	connector.find_and_propagate(checked, TRUE)
 	if(first)

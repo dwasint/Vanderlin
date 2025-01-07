@@ -1141,6 +1141,11 @@
 /obj/effect/landmark/observer_start,
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors)
+"qK" = (
+/obj/structure/trench,
+/obj/structure/rotation_piece/cog/large,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors)
 "rh" = (
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/woods)
@@ -1168,9 +1173,9 @@
 	water_volume = 500
 	},
 /area/rogue/outdoors)
-"vb" = (
+"vw" = (
 /obj/structure/trench,
-/obj/structure/rotation_piece/cog,
+/obj/structure/water_pump,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors)
 "vV" = (
@@ -1189,10 +1194,19 @@
 /obj/structure/rotation_piece,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors)
+"DB" = (
+/obj/structure/water_pump,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors)
 "Fo" = (
 /obj/effect/landmark/start/consort,
 /turf/open/floor/rogue/carpet/lord/left,
 /area/rogue/indoors)
+"He" = (
+/obj/structure/trench,
+/obj/structure/rotation_piece/cog,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors)
 "Mn" = (
 /obj/structure/rotation_piece/cog/large,
 /turf/open/floor/rogue/dirt/road,
@@ -1215,11 +1229,6 @@
 /area/rogue)
 "WA" = (
 /turf/closed/wall/mineral/rogue/stone,
-/area/rogue/outdoors)
-"Xa" = (
-/obj/structure/trench,
-/obj/structure/rotation_piece/cog/large,
-/turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors)
 "XC" = (
 /obj/structure/rotation_piece/cog,
@@ -5025,7 +5034,7 @@ al
 cN
 aL
 cN
-al
+DB
 al
 oH
 al
@@ -5797,7 +5806,7 @@ cN
 al
 cN
 cN
-vb
+He
 Mn
 al
 at
@@ -6053,7 +6062,7 @@ al
 cN
 al
 aL
-Xa
+qK
 xp
 XC
 al
@@ -6310,7 +6319,7 @@ al
 cN
 al
 al
-vb
+He
 cN
 al
 al
@@ -6567,7 +6576,7 @@ al
 cN
 al
 cN
-cN
+vw
 cN
 al
 al

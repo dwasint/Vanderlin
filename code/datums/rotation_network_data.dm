@@ -2,6 +2,7 @@
 	var/total_stress = 0
 	var/used_stress = 0
 	var/overstressed = FALSE
+	var/rebuilding = FALSE
 
 	var/list/connected = list()
 
@@ -14,6 +15,8 @@
 	connected -= incoming
 
 /datum/rotation_network/proc/check_stress()
+	if(rebuilding)
+		return
 	if(total_stress < used_stress)
 		breakdown()
 	else if(overstressed)
@@ -34,17 +37,19 @@
 		child.update_animation_effect()
 
 /datum/rotation_network/proc/rebuild_group()
+	rebuilding = TRUE
 	var/list/producers = list()
 	for(var/obj/structure/child in connected)
 		if(!child.stress_generation)
 			child.rotation_direction = null
-			child.rotations_per_minute = 0
+			child.set_rotations_per_minute(0)
 			continue
 		producers |= child
 
 	for(var/obj/structure/producer in producers)
 		producer.find_and_propagate(list(), TRUE)
 	update_animation_effect()
+	rebuilding = FALSE
 
 /datum/rotation_network/proc/reassess_group(obj/structure/deleted)
 	var/list/returned_nearbys = deleted.return_surrounding_rotation(src)

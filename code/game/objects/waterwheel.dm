@@ -15,7 +15,7 @@
 	if(!istype(water))
 		return
 	if(water.water_volume)
-		set_rotational_direction_and_speed(water.dir, 12)
+		set_rotational_direction_and_speed(water.dir, 8)
 		set_stress_generation(1024)
 
 /obj/structure/waterwheel/update_animation_effect()

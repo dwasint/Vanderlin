@@ -4,6 +4,8 @@
 	var/stress_use
 	var/stress_generation
 	var/rotation_direction
+	var/cog_size = COG_SMALL
+	var/last_stress_added = 0
 
 	var/datum/rotation_network/rotation_network
 
@@ -52,14 +54,14 @@
 		rotation_network.add_connection(src)
 
 /obj/structure/proc/set_rotational_direction_and_speed(direction, speed)
-	rotations_per_minute = speed
+	set_rotations_per_minute(speed)
 	rotation_direction = direction
 	find_and_propagate()
 	rotation_network.check_stress()
 	rotation_network.update_animation_effect()
 
 /obj/structure/proc/set_rotational_speed(speed)
-	rotations_per_minute = speed
+	set_rotations_per_minute(speed)
 	find_and_propagate()
 	rotation_network.check_stress()
 	rotation_network.update_animation_effect()
@@ -71,8 +73,9 @@
 	rotation_network.check_stress()
 
 /obj/structure/proc/set_stress_use(amount)
-	rotation_network.used_stress -= stress_use
+	rotation_network.used_stress -= last_stress_added
 	rotation_network.used_stress += amount
+	last_stress_added = amount
 	stress_use = amount
 	rotation_network.check_stress()
 
@@ -110,7 +113,7 @@
 		return
 	connector.rotation_direction = rotation_direction
 	if(!connector.stress_generation)
-		connector.rotations_per_minute = rotations_per_minute
+		connector.set_rotations_per_minute(rotations_per_minute)
 
 	connector.find_and_propagate(checked, TRUE)
 	if(first)
