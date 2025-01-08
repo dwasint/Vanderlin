@@ -43,6 +43,7 @@
 #define TRAIT_LIGHT_STEP				"Light Step" //Can't trigger /obj/structure/trap/'s
 #define TRAIT_THIEVESGUILD				"Thieves Guild Member"
 #define TRAIT_MOB_FIRE_IMMUNE			"Fire Immune" //Just says no to fire_act()
+#define TRAIT_ENGINEERING_GOGGLES		"Engineering Goggles"
 
 // Divine patron trait bonuses:
 #define TRAIT_SOUL_EXAMINE				"Blessing of Necra"  //can check bodies to see if they have departed
@@ -148,6 +149,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LEPROSY = span_necrosis("I'm a disgusting leper..."),
 	TRAIT_LIGHT_STEP = span_info("I will never trip a trap plate."),
 	TRAIT_MOB_FIRE_IMMUNE = span_info("I am immune to most scorching flames."),
+	TRAIT_ENGINEERING_GOGGLES = span_info("I can find out more information from mechanical devices.")
 	))
 
 // trait accessor defines

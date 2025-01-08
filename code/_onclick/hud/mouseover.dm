@@ -19,7 +19,7 @@
 /atom
 	/// This means that the mouse over text will not be displayed when the mouse is over this atom
 	var/nomouseover = FALSE
-	var/hover_color = "#ddd7df"
+	var/hover_color = "#a1bac4"
 
 /atom/MouseEntered(location,control,params)
 	. = ..()
@@ -49,7 +49,38 @@
 			p.client.mouseovertext.movethis(PM, TRUE)
 		else
 			p.client.mouseovertext.movethis(PM)
+		p.client.mouseovertext.maptext_height = 32
 		p.client.mouseovertext.maptext = {"<span style='font-size:8pt;font-family:"Pterra";color:[hover_color];text-shadow:0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;' class='center maptext '>[name]"}
+		p.client.screen |= p.client.mouseovertext
+	return TRUE
+
+/obj/structure/handle_mouseover(location, control, params)
+	var/mob/p = usr
+	if(p.client)
+		if(!p.client.mouseovertext)
+			p.client.genmouseobj()
+			return FALSE
+		if(p.client.pixel_x || p.client.pixel_y)
+			return FALSE
+		if(!p.x || !p.y)
+			return FALSE
+		var/offset_x = 8 - (p.x - x)
+		var/offset_y = 8 - (p.y - y)
+		var/list/PM = list("screen-loc" = "[offset_x]:0,[offset_y]:0")
+		if(!isturf(loc))
+			PM = params2list(params)
+			p.client.mouseovertext.movethis(PM, TRUE)
+		else
+			p.client.mouseovertext.movethis(PM)
+		if(rotation_structure && rotation_network && HAS_TRAIT(p, TRAIT_ENGINEERING_GOGGLES))
+			p.client.mouseovertext.maptext_height = 96
+			p.client.mouseovertext.maptext = {"<span style='font-size:8pt;font-family:"Pterra";color:#e6b120;text-shadow:0 0 1px #fff, 0 0 2px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;' class='center maptext '>
+			RPM:[rotations_per_minute ? rotations_per_minute : "0"]
+			[rotation_network.overstressed ? "Overstressed" : "Stress:[round(((rotation_network?.used_stress / max(1, rotation_network?.total_stress)) * 100), 1)]%"]</span>
+			<span style='font-size:8pt;font-family:"Pterra";color:[hover_color];text-shadow:0 0 1px #fff, 0 0 2px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;' class='center maptext '>[name]"}
+		else
+			p.client.mouseovertext.maptext_height = 32
+			p.client.mouseovertext.maptext = {"<span style='font-size:8pt;font-family:"Pterra";color:[hover_color];text-shadow:0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;' class='center maptext '>[name]"}
 		p.client.screen |= p.client.mouseovertext
 	return TRUE
 
