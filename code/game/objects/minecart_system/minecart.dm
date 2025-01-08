@@ -242,7 +242,7 @@
 		return
 
 	setDir(movedir)
-	var/datum/move_loop/loop = SSmove_manager.move(src, dir, delay = calculate_delay(), subsystem = SSminecarts, flags = MOVEMENT_LOOP_START_FAST|MOVEMENT_LOOP_IGNORE_PRIORITY)
+	var/datum/move_loop/loop = SSmove_manager.move(src, dir, delay = calculate_delay(), subsystem = SSminecarts, flags = MOVEMENT_LOOP_START_FAST|MOVEMENT_LOOP_IGNORE_PRIORITY, move_loop_type = /datum/move_loop/minecart)
 	RegisterSignal(loop, COMSIG_MOVELOOP_PREPROCESS_CHECK, PROC_REF(check_rail))
 	RegisterSignal(loop, COMSIG_MOVELOOP_POSTPROCESS, PROC_REF(decay_momentum))
 
@@ -258,7 +258,11 @@
 		return MOVELOOP_SKIP_STEP
 	// Going straight
 	if(istype(get_step(src, dir), /turf/open/transparent/openspace))
-		momentum -= 3
+		var/turf/below_turf = GET_TURF_BELOW(get_step(src, dir))
+		var/obj/structure/minecart_rail/rail = locate(/obj/structure/minecart_rail) in below_turf.contents
+		if(!rail)
+			momentum -= 3
+
 	if(can_travel_on_turf(get_step(src, dir)))
 		return NONE
 	// Trying to turn
@@ -324,6 +328,11 @@
 		if(rail.dir & (dir_to_check|GLOB.reverse_dir[dir_to_check]))
 			return TRUE
 
+	var/turf/above_next = GET_TURF_ABOVE(next_turf)
+	for(var/obj/structure/minecart_rail/rail in above_next)
+		if(rail.dir & (dir_to_check|GLOB.reverse_dir[dir_to_check]))
+			return TRUE
+
 	return FALSE
 
 /obj/structure/closet/crate/miningcar/proc/check_powered()
@@ -381,6 +390,31 @@
 	//AddElement(/datum/element/footstep_override, footstep = FOOTSTEP_CATWALK)
 	for(var/obj/structure/closet/crate/miningcar/cart in loc)
 		cart.update_rail_state(TRUE)
+
+	for(var/direction in GLOB.cardinals)
+		if(direction != dir && direction != GLOB.reverse_dir[dir])
+			continue
+		var/turf/step_up = GET_TURF_ABOVE(get_step(src, direction))
+		var/turf/step_down = GET_TURF_BELOW(get_step(src, direction))
+		var/turf/step_side = get_step(src, direction)
+		var/turf/above_turf = GET_TURF_ABOVE(get_turf(src))
+
+		if(step_up && istype(above_turf, /turf/open/transparent/openspace))
+			for(var/obj/structure/minecart_rail/rail in step_up.contents)
+				if(direction != rail.dir && direction != GLOB.reverse_dir[rail.dir])
+					continue
+				if(dir == WEST || dir == EAST)
+					pixel_y = 7
+				icon_state = "vertical_track"
+				dir = direction
+
+		if(step_down && istype(step_side, /turf/open/transparent/openspace))
+			for(var/obj/structure/minecart_rail/rail in step_down.contents)
+				if(direction != rail.dir && direction != GLOB.reverse_dir[rail.dir])
+					continue
+				if(dir == WEST || dir == EAST)
+					rail.pixel_y = 7
+				rail.icon_state = "vertical_track"
 
 /obj/structure/minecart_rail/update_animation_effect()
 	. = ..()

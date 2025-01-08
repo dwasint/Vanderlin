@@ -1,6 +1,7 @@
 /obj/structure/rotation_piece
 	name = "shaft"
 
+	layer = 5
 	icon = 'icons/roguetown/misc/shafts_cogs.dmi'
 	icon_state = "shaft"
 	rotation_structure = TRUE
@@ -18,6 +19,12 @@
 	icon_state = "l1"
 
 	cog_size = COG_LARGE
+
+/obj/structure/rotation_piece/cog/large/Initialize()
+	. = ..()
+	var/matrix/skew = matrix()
+	skew.Scale(1.5, 1.5)
+	transform = skew
 
 /obj/structure/rotation_piece/cog/can_connect(obj/structure/connector)
 	if(connector.rotation_direction && connector.rotation_direction != rotation_direction)

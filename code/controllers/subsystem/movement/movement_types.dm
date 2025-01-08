@@ -122,8 +122,8 @@
  * flags - Set of bitflags that effect move loop behavior in some way. Check _DEFINES/movement.dm
  *
 **/
-/datum/controller/subsystem/move_manager/proc/move(moving, direction, delay, timeout, subsystem, priority, flags, datum/extra_info)
-	return add_to_loop(moving, subsystem, /datum/move_loop/move, priority, flags, extra_info, delay, timeout, direction)
+/datum/controller/subsystem/move_manager/proc/move(moving, direction, delay, timeout, subsystem, priority, flags, datum/extra_info, datum/move_loop/move_loop_type = /datum/move_loop/move)
+	return add_to_loop(moving, subsystem, move_loop_type, priority, flags, extra_info, delay, timeout, direction)
 
 ///Replacement for walk()
 /datum/move_loop/move
@@ -584,4 +584,29 @@
 /datum/move_loop/move_to_rand/move()
 	var/atom/old_loc = moving.loc
 	step_rand(moving)
+	return old_loc != moving.loc
+
+/datum/move_loop/minecart
+	var/direction
+
+/datum/move_loop/minecart/setup(delay, timeout, dir)
+	. = ..()
+	if(!.)
+		return
+	direction = dir
+
+/datum/move_loop/minecart/move()
+	var/atom/old_loc = moving.loc
+	var/atom/new_loc = get_step(moving, direction)
+	if(istype(new_loc, /turf/open/transparent/openspace))
+		var/turf/below_turf = GET_TURF_BELOW(new_loc)
+		if(locate(/obj/structure/minecart_rail) in below_turf)
+			new_loc = below_turf
+	else if(!(locate(/obj/structure/minecart_rail) in new_loc))
+		var/turf/above_turf = GET_TURF_ABOVE(new_loc)
+		if(locate(/obj/structure/minecart_rail) in above_turf)
+			new_loc = above_turf
+
+	moving.Move(new_loc, direction)
+	// We cannot rely on the return value of Move(), we care about teleports and it doesn't
 	return old_loc != moving.loc
