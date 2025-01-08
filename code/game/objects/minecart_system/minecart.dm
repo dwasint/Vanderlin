@@ -208,6 +208,7 @@
 	if(!on_rails || momentum > 0)
 		return
 
+	obj_flags |= BLOCK_Z_OUT_DOWN
 	var/movedir = bumped_atom.dir
 	var/turf/next_turf = get_step(src, movedir)
 	if(!can_travel_on_turf(next_turf, movedir))
@@ -256,6 +257,8 @@
 	if(anchored || !has_gravity())
 		return MOVELOOP_SKIP_STEP
 	// Going straight
+	if(istype(get_step(src, dir), /turf/open/transparent/openspace))
+		momentum -= 2
 	if(can_travel_on_turf(get_step(src, dir)))
 		return NONE
 	// Trying to turn
@@ -269,6 +272,7 @@
 		return NONE
 	// Can't go straight and cant turn = STOP
 	SSmove_manager.stop_looping(src, SSminecarts)
+	obj_flags &= ~BLOCK_Z_OUT_DOWN
 	if(momentum >= 8)
 		visible_message(span_warning("[src] comes to a halt!"))
 		throw_contents()
@@ -310,6 +314,11 @@
 
 /// Checks if we can travel on the passed turf
 /obj/structure/closet/crate/miningcar/proc/can_travel_on_turf(turf/next_turf, dir_to_check = dir)
+	if(istype(next_turf, /turf/open/transparent/openspace))
+		return TRUE
+	if(istype(get_turf(src), /turf/open/transparent/openspace))
+		return TRUE //we can land
+
 	for(var/obj/structure/minecart_rail/rail in next_turf)
 		if(rail.dir & (dir_to_check|GLOB.reverse_dir[dir_to_check]))
 			return TRUE
@@ -318,8 +327,10 @@
 
 /obj/structure/closet/crate/miningcar/proc/check_powered()
 	var/obj/structure/minecart_rail/potential_power = locate() in loc
+	if(!potential_power)
+		return
 	if(potential_power.rotations_per_minute)
-		momentum += potential_power.rotations_per_minute / 4
+		momentum += potential_power.rotations_per_minute
 
 /// Throws all the contents of the cart out ahead
 /obj/structure/closet/crate/miningcar/proc/throw_contents()
