@@ -116,3 +116,18 @@
 	color_change = 0.125
 	color = 0
 	transform = list(1,0,0,0, 0,1,0,0, 0,0,1,1/5, 0,0,0,1)
+
+/particles/water_spray
+	name = "water_spray"
+	width = 124
+	height = 124
+	count = 32
+	spawning = 4
+	lifespan = 0.7 SECONDS
+	fade = 0.1 SECONDS
+	position = generator("box", list(-10, -10), list(10, 10), NORMAL_RAND)
+	velocity = generator("num", -4, -8)
+	friction = 0.225
+	gravity = list(1, 1)
+	color = COLOR_WHITE
+	transform = list(1,0,0,0, 0,1,0,0, 0,0,1,1/5, 0,0,0,1)
