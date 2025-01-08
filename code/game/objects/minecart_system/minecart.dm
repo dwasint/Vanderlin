@@ -258,7 +258,7 @@
 		return MOVELOOP_SKIP_STEP
 	// Going straight
 	if(istype(get_step(src, dir), /turf/open/transparent/openspace))
-		momentum -= 2
+		momentum -= 3
 	if(can_travel_on_turf(get_step(src, dir)))
 		return NONE
 	// Trying to turn
@@ -315,7 +315,8 @@
 /// Checks if we can travel on the passed turf
 /obj/structure/closet/crate/miningcar/proc/can_travel_on_turf(turf/next_turf, dir_to_check = dir)
 	if(istype(next_turf, /turf/open/transparent/openspace))
-		return TRUE
+		if(momentum >= 10)
+			return TRUE
 	if(istype(get_turf(src), /turf/open/transparent/openspace))
 		return TRUE //we can land
 
@@ -330,7 +331,7 @@
 	if(!potential_power)
 		return
 	if(potential_power.rotations_per_minute)
-		momentum += potential_power.rotations_per_minute
+		momentum += potential_power.rotations_per_minute / 4
 
 /// Throws all the contents of the cart out ahead
 /obj/structure/closet/crate/miningcar/proc/throw_contents()

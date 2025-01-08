@@ -12,9 +12,9 @@
 
 /datum/rotation_network/proc/remove_connection(obj/structure/incoming)
 	if(incoming.stress_generation)
-		incoming.set_stress_generation(0)
-	if(incoming.stress_use)
-		incoming.set_stress_use(0)
+		total_stress -= incoming.stress_generation
+	if(incoming.last_stress_added)
+		used_stress -= incoming.last_stress_added
 	incoming.rotation_network = null
 	connected -= incoming
 
@@ -47,6 +47,7 @@
 		if(!child.stress_generator)
 			child.rotation_direction = null
 			child.set_rotations_per_minute(0)
+			child.set_stress_use(0)
 			continue
 		producers |= child
 
@@ -72,10 +73,10 @@
 			new_network.add_connection(returned_object)
 			if(!(returned_object in dealt_with))
 				if(returned_object.stress_use)
-					used_stress -= returned_object.stress_use
+					new_network.used_stress += returned_object.stress_use
 					returned_object.set_stress_use(returned_object.stress_use)
-				if(returned_object.stress_generation)
-					total_stress -= returned_object.stress_generation
+				if(returned_object.stress_generator)
+					new_network.total_stress += returned_object.stress_generation
 					returned_object.set_stress_generation(returned_object.stress_generation)
 			dealt_with |= returned_object
 		new_network.rebuild_group()

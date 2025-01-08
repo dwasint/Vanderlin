@@ -97,11 +97,11 @@
 /obj/structure/proc/try_network_merge(obj/structure/connector)
 	if(!can_connect(connector))
 		return FALSE
+	rotation_network.total_stress += connector.rotation_network.total_stress
+	rotation_network.used_stress += connector.rotation_network.used_stress
 	for(var/obj/structure/child in connector.rotation_network.connected)
 		connector.rotation_network.remove_connection(child)
 		rotation_network.add_connection(child)
-	rotation_network.total_stress += connector.rotation_network.total_stress
-	rotation_network.used_stress += connector.rotation_network.used_stress
 	propagate_rotation_change(connector)
 	return TRUE
 
