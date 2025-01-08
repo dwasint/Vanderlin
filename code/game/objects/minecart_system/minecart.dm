@@ -14,7 +14,7 @@
 
 /obj/structure/closet/crate/miningcar/Initialize(mapload)
 	. = ..()
-	//AddElement(/datum/element/noisy_movement, 'sound/effects/tank_treads.ogg', 50)
+	AddElement(/datum/element/noisy_movement, 'sound/tank_treads.ogg', 50)
 	if(locate(/obj/structure/minecart_rail) in loc)
 		update_rail_state(TRUE)
 
@@ -382,6 +382,12 @@
 	for(var/obj/structure/closet/crate/miningcar/cart in loc)
 		cart.update_rail_state(TRUE)
 
+/obj/structure/minecart_rail/update_animation_effect()
+	. = ..()
+	if(rotations_per_minute)
+		icon_state = "track_shaft"
+	else
+		icon_state = "track"
 
 /obj/structure/minecart_rail/find_rotation_network()
 	if(!(dir in GLOB.cardinals))
