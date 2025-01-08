@@ -5,10 +5,10 @@
 	icon_state = "p1"
 	icon = 'icons/obj/rotation_machines.dmi'
 	layer = 5
+	accepts_water_input = TRUE
 
 
 	var/turf/open/water/pumping_from
-	var/pumping_volume = 0
 	var/last_provided_pressure = 0
 	var/mutable_appearance/water_spray
 
@@ -59,8 +59,19 @@
 			pipe.remove_provider(pumping_from.water_reagent, last_provided_pressure)
 		STOP_PROCESSING(SSobj, src)
 		pumping_from = null
+		last_provided_pressure = 0
 		stop_spray()
 	. = ..()
+
+/obj/structure/water_pump/return_rotation_chat(atom/movable/screen/movable/mouseover/mouseover)
+	mouseover.maptext_height = 128
+
+	return {"<span style='font-size:8pt;font-family:"Pterra";color:#808000;text-shadow:0 0 1px #fff, 0 0 2px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;' class='center maptext '>
+			Pressure:[last_provided_pressure]
+			Fluid:[pumping_from ? initial(pumping_from.water_reagent.name) : "Nothing"]
+	<span style='font-size:8pt;font-family:"Pterra";color:#e6b120;text-shadow:0 0 1px #fff, 0 0 2px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;' class='center maptext '>
+			RPM:[rotations_per_minute ? rotations_per_minute : "0"]
+			[rotation_network.overstressed ? "Overstressed" : "Stress:[round(((rotation_network?.used_stress / max(1, rotation_network?.total_stress)) * 100), 1)]%"]</span>"}
 
 /obj/structure/water_pump/can_connect(obj/structure/connector)
 	if(connector.rotation_direction && connector.rotation_direction != rotation_direction)
@@ -106,12 +117,14 @@
 	var/new_pressure = rotations_per_minute
 	if(last_provided_pressure != new_pressure)
 		pipe.make_provider(pumping_from.water_reagent, new_pressure)
+		last_provided_pressure = new_pressure
 	pumping_from.adjust_originate_watervolume(-2)
 
 /obj/structure/water_pump/proc/spray_water()
 	if(!water_spray)
 		water_spray = mutable_appearance(icon, "water_spray")
 		water_spray.pixel_y = -32
+		water_spray.layer = 5
 	cut_overlay(water_spray)
 	water_spray.color = initial(pumping_from.water_reagent.color)
 	add_overlay(water_spray)

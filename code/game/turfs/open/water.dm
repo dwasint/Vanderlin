@@ -83,7 +83,7 @@
 	var/turf/open/water/adjuster = source_originate
 	if(!adjuster)
 		adjuster = src
-	if(volume < 0)
+	if(volume < 0 && mapped)
 		if(adjuster.water_volume + volume < initial(adjuster.water_volume))
 			return
 	adjuster.water_volume += volume
@@ -92,7 +92,8 @@
 	adjusted_turfs |= src
 	if(!istype(src, /turf/open/water/river/creatable))
 		update_icon()
-
+	if(adjuster.mapped) //means no changes downstream
+		return
 	for(var/turf/open/water/river/water in adjuster.children)
 		water.adjust_watervolume(volume)
 		water.check_surrounding_water()

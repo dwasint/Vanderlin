@@ -29,6 +29,8 @@
 	if(istype(src, /turf/open/water/river/creatable))
 		dir = get_dir(parent, src)
 		for(var/obj/structure/waterwheel/potential_rotator in contents)
+			if(potential_rotator.stress_generation == 1024 && potential_rotator.rotation_direction == dir)
+				continue
 			potential_rotator.set_rotational_direction_and_speed(dir, 8)
 			potential_rotator.set_stress_generation(1024)
 

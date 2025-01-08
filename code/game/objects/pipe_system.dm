@@ -31,6 +31,12 @@
 			pipe.update_overlays()
 			if(pipe.check_id && !check_id)
 				check_id = pipe.check_id
+
+		for(var/obj/structure/structure in cardinal_turf)
+			if(!structure.accepts_water_input)
+				continue
+			set_connection(get_dir(src, structure))
+
 	update_overlays()
 	START_PROCESSING(SSobj, src)
 
@@ -62,6 +68,11 @@
 	for(var/obj/structure/water_pipe/pipe in orphaned_pipes)
 		pipe.propagate_change(check_id, null, 0, null, null)
 		pipe.providers = list()
+/obj/structure/water_pipe/return_rotation_chat(atom/movable/screen/movable/mouseover/mouseover)
+	mouseover.maptext_height = 96
+	return {"<span style='font-size:8pt;font-family:"Pterra";color:#808000;text-shadow:0 0 1px #fff, 0 0 2px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;' class='center maptext '>
+			Pressure:[water_pressure]
+			Fluid:[carrying_reagent ? initial(carrying_reagent.name) : "Nothing"]</span>"}
 
 /obj/structure/water_pipe/proc/make_provider(datum/reagent/reagent, pressure)
 	check_id++

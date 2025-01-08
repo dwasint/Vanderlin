@@ -7,6 +7,7 @@
 	var/cog_size = COG_SMALL
 	var/stress_generator = FALSE
 	var/last_stress_added = 0
+	var/accepts_water_input = FALSE
 
 	var/datum/rotation_network/rotation_network
 
@@ -21,6 +22,11 @@
 		rotation_network.remove_connection(src)
 		old_network.reassess_group(src)
 	. = ..()
+/obj/structure/return_rotation_chat(atom/movable/screen/movable/mouseover/mouseover)
+	mouseover.maptext_height = 96
+	return {"<span style='font-size:8pt;font-family:"Pterra";color:#e6b120;text-shadow:0 0 1px #fff, 0 0 2px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;' class='center maptext '>
+			RPM:[rotations_per_minute ? rotations_per_minute : "0"]
+			[rotation_network.overstressed ? "Overstressed" : "Stress:[round(((rotation_network?.used_stress / max(1, rotation_network?.total_stress)) * 100), 1)]%"]</span>"}
 
 /obj/structure/LateInitialize()
 	. = ..()
@@ -58,13 +64,13 @@
 /obj/structure/proc/set_rotational_direction_and_speed(direction, speed)
 	set_rotations_per_minute(speed)
 	rotation_direction = direction
-	find_and_propagate()
+	find_and_propagate(first = TRUE)
 	rotation_network.check_stress()
 	rotation_network.update_animation_effect()
 
 /obj/structure/proc/set_rotational_speed(speed)
 	set_rotations_per_minute(speed)
-	find_and_propagate()
+	find_and_propagate(first = TRUE)
 	rotation_network.check_stress()
 	rotation_network.update_animation_effect()
 
@@ -117,7 +123,7 @@
 	if(!connector.stress_generator)
 		connector.set_rotations_per_minute(rotations_per_minute)
 
-	connector.find_and_propagate(checked, TRUE)
+	connector.find_and_propagate(checked, FALSE)
 	if(first)
 		connector.update_animation_effect()
 
@@ -131,7 +137,7 @@
 		if(structure in checked)
 			continue
 		if(structure.rotation_network)
-			propagate_rotation_change(structure, checked, TRUE)
+			propagate_rotation_change(structure, checked, FALSE)
 
 	var/turf/step_back = get_step(src, GLOB.reverse_dir[dir])
 	if(step_back)
@@ -140,7 +146,7 @@
 				if(structure in checked)
 					continue
 				if(structure.rotation_network)
-					propagate_rotation_change(structure, checked, TRUE)
+					propagate_rotation_change(structure, checked, FALSE)
 
 	if(first)
 		rotation_network?.update_animation_effect()
@@ -156,7 +162,7 @@
 	if(connector.rotations_per_minute > rotations_per_minute)
 		connector.propagate_rotation_change(src, first = TRUE)
 	else
-		propagate_rotation_change(connector, checked, TRUE)
+		propagate_rotation_change(connector, checked, FALSE)
 
 /obj/structure/proc/rotation_break()
 	visible_message(span_warning("[src] breaks apart from the opposing directions!"))

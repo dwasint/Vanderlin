@@ -72,17 +72,18 @@
 			p.client.mouseovertext.movethis(PM, TRUE)
 		else
 			p.client.mouseovertext.movethis(PM)
-		if(rotation_structure && rotation_network && HAS_TRAIT(p, TRAIT_ENGINEERING_GOGGLES))
-			p.client.mouseovertext.maptext_height = 96
-			p.client.mouseovertext.maptext = {"<span style='font-size:8pt;font-family:"Pterra";color:#e6b120;text-shadow:0 0 1px #fff, 0 0 2px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;' class='center maptext '>
-			RPM:[rotations_per_minute ? rotations_per_minute : "0"]
-			[rotation_network.overstressed ? "Overstressed" : "Stress:[round(((rotation_network?.used_stress / max(1, rotation_network?.total_stress)) * 100), 1)]%"]</span>
+		if(((rotation_structure && rotation_network) || istype(src, /obj/structure/water_pipe)) && HAS_TRAIT(p, TRAIT_ENGINEERING_GOGGLES))
+			var/rotation_chat = return_rotation_chat(p.client.mouseovertext)
+			p.client.mouseovertext.maptext = {"[rotation_chat]
 			<span style='font-size:8pt;font-family:"Pterra";color:[hover_color];text-shadow:0 0 1px #fff, 0 0 2px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;' class='center maptext '>[name]"}
 		else
 			p.client.mouseovertext.maptext_height = 32
 			p.client.mouseovertext.maptext = {"<span style='font-size:8pt;font-family:"Pterra";color:[hover_color];text-shadow:0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;' class='center maptext '>[name]"}
 		p.client.screen |= p.client.mouseovertext
 	return TRUE
+
+/atom/proc/return_rotation_chat(atom/movable/screen/movable/mouseover/mouseover)
+	return
 
 /atom/proc/handle_mouseexit(params)
 	var/mob/p = usr
