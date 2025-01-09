@@ -11,6 +11,7 @@
 	var/turf/open/water/pumping_from
 	var/last_provided_pressure = 0
 	var/mutable_appearance/water_spray
+	var/datum/reagent/last_provided
 
 /obj/structure/water_pump/find_rotation_network()
 
@@ -55,8 +56,8 @@
 	else
 		var/turf/open/pipe_turf = get_step(src, dir)
 		var/obj/structure/water_pipe/pipe  = locate(/obj/structure/water_pipe) in pipe_turf
-		if(pipe)
-			pipe.remove_provider(pumping_from.water_reagent, last_provided_pressure)
+		if(pipe && last_provided)
+			pipe.remove_provider(last_provided, last_provided_pressure)
 		STOP_PROCESSING(SSobj, src)
 		pumping_from = null
 		last_provided_pressure = 0
@@ -106,6 +107,7 @@
 		pumping_from = water
 
 	var/turf/open/pipe_turf = get_step(src, dir)
+	last_provided = pumping_from.water_reagent
 	if(!locate(/obj/structure/water_pipe) in pipe_turf)
 		spray_water()
 		return

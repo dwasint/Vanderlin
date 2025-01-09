@@ -36,6 +36,9 @@
 /obj/structure/proc/update_animation_effect()
 	return
 
+/obj/structure/proc/valid_water_connection(direction)
+	return TRUE
+
 /obj/structure/proc/use_water_pressure(pressure)
 	return
 

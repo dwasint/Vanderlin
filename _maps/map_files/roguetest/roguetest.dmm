@@ -251,7 +251,8 @@
 	pixel_y = 32
 	},
 /turf/open/water/acid{
-	water_volume = 500
+	water_volume = 500;
+	water_reagent = /datum/reagent/consumable/milk
 	},
 /area/rogue/outdoors)
 "aN" = (
@@ -1260,6 +1261,10 @@
 "QR" = (
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/woods)
+"Sz" = (
+/obj/structure/boiler,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors)
 "Ty" = (
 /obj/effect/landmark/start/lord{
 	dir = 8
@@ -4316,7 +4321,7 @@ al
 al
 cN
 al
-Ua
+Sz
 at
 ab
 ae
