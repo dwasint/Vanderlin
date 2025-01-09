@@ -712,7 +712,7 @@
 	update_rest_hud_icon()
 	update_mobility()
 
-//Recursive function to find everything a mob is holding. Really shitty proc tbh.
+//Recursive function to find everything a mob is holding. Really shitty proc tbh, you should use get_all_gear for carbons.
 /mob/living/get_contents()
 	var/list/ret = list()
 	ret |= contents						//add our contents
@@ -1033,6 +1033,7 @@
 		Stun(150)
 		src.visible_message("<span class='notice'>[src] yields!</span>")
 		playsound(src, 'sound/misc/surrender.ogg', 100, FALSE, -1)
+		toggle_cmode()
 		sleep(150)
 	surrendering = 0
 
