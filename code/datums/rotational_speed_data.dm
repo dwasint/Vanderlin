@@ -36,6 +36,9 @@
 /obj/structure/proc/update_animation_effect()
 	return
 
+/obj/structure/proc/use_water_pressure(pressure)
+	return
+
 /obj/structure/proc/find_rotation_network()
 	var/turf/step_forward = get_step(src, dir)
 	for(var/obj/structure/structure in step_forward.contents)

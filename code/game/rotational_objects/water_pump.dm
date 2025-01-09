@@ -116,9 +116,11 @@
 
 	var/new_pressure = rotations_per_minute
 	if(last_provided_pressure != new_pressure)
-		pipe.make_provider(pumping_from.water_reagent, new_pressure)
+		pipe.make_provider(pumping_from.water_reagent, new_pressure, src)
 		last_provided_pressure = new_pressure
-	pumping_from.adjust_originate_watervolume(-2)
+
+/obj/structure/water_pump/use_pressure(pressure)
+	pumping_from.adjust_originate_watervolume(pressure)
 
 /obj/structure/water_pump/proc/spray_water()
 	if(!water_spray)
