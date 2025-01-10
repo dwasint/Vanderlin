@@ -341,7 +341,7 @@
 		if(2)
 			layer = BELOW_OBJ_LAYER
 		if(3)
-			layer = OBJ_LAYER
+			layer = BELOW_OBJ_LAYER
 
 	update_corners(TRUE)
 	update_overlays()
