@@ -10,9 +10,6 @@
 	owner.vis_contents += src
 
 
-/obj/item
-	has_reflection = TRUE
-
 /obj/structure
 	has_reflection = TRUE
 
