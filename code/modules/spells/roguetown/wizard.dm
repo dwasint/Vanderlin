@@ -189,6 +189,9 @@
 	movement_interrupt = TRUE
 	chargedloop = /datum/looping_sound/invokefire
 	associated_skill = /datum/skill/magic/arcane
+	attunements = list(
+		/datum/attunement/fire = 1
+		)
 	cost = 4
 
 /obj/projectile/magic/aoe/fireball/rogue

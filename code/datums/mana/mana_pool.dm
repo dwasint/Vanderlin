@@ -129,8 +129,8 @@
 
 	for(var/datum/attunement/listed as anything in attunements)
 		var/datum/attunement/created = new listed
-		if(incoming_patron in created.alignments)
-			attunements[listed] += created.alignments[incoming_patron]
+		if(incoming_patron.type in created.alignments)
+			attunements[listed] += created.alignments[incoming_patron.type]
 
 /datum/mana_pool/proc/remove_attunements(datum/patron/incoming_patron)
 	if(!length(attunements))
@@ -138,8 +138,8 @@
 
 	for(var/datum/attunement/listed as anything in attunements)
 		var/datum/attunement/created = new listed
-		if(incoming_patron in created.alignments)
-			attunements[listed] -= created.alignments[incoming_patron]
+		if(incoming_patron.type in created.alignments)
+			attunements[listed] -= created.alignments[incoming_patron.type]
 
 // order of operations is as follows:
 // 1. we recharge
@@ -186,7 +186,7 @@
 	// exponentially decays amount when amount surpasses softcap, with [exponential_decay_divisor] being the (inverse) decay factor
 	// can only decay however much amount we are over softcap
 	// imperfect as of now (need to test)
-		var/exponential_decay = (max(-((((NUM_E**((amount - softcap)/exponential_decay_divisor)) + 1)) * seconds_per_tick), (softcap - amount)))
+		var/exponential_decay = (max(-((((NUM_E**((amount - softcap)/exponential_decay_divisor)) + 1))), (softcap - amount)))
 		// in desmos: f\left(x\right)=\max\left(\left(\left(-\left(e\right)^{\left(\frac{\left(x-t\right)}{c}\right)}\right)+1\right),\ \left(t-x\right)\right)\ \left\{x\ge t\right\}
 		// t=50
 		// c=150
@@ -211,8 +211,8 @@
 		adjust_mana(exponential_decay) //just to be safe, in case we have any left over or didnt have a discharge destination
 
 /// Perform a "natural" transfer where we use the default transfer rate, capped by the usual math
-/datum/mana_pool/proc/transfer_mana_to(datum/mana_pool/target_pool, seconds_per_tick = 1)
-	return transfer_specific_mana(target_pool, get_transfer_rate_for(target_pool) * seconds_per_tick)
+/datum/mana_pool/proc/transfer_mana_to(datum/mana_pool/target_pool)
+	return transfer_specific_mana(target_pool, get_transfer_rate_for(target_pool))
 
 /// Returns the amount of mana we want to give in a given tick
 /datum/mana_pool/proc/get_transfer_rate_for(datum/mana_pool/target_pool)

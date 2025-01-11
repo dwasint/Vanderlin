@@ -1,16 +1,16 @@
-/atom/movable/proc/process_mana_overload(effect_mult, seconds_per_tick)
+/atom/movable/proc/process_mana_overload(effect_mult)
 	mana_overloaded = TRUE
 
-/mob/process_mana_overload(effect_mult, seconds_per_tick)
+/mob/process_mana_overload(effect_mult)
 	if (!mana_overloaded)
 		to_chat(src, span_warning("You start feeling fuzzy and tingly all around..."))
 
 	return ..()
 
-/mob/living/carbon/process_mana_overload(effect_mult, seconds_per_tick = 1)
+/mob/living/carbon/process_mana_overload(effect_mult)
 	. = ..()
 
-	var/adjusted_mult = effect_mult * seconds_per_tick
+	var/adjusted_mult = effect_mult
 
 	adjust_disgust(adjusted_mult)
 
