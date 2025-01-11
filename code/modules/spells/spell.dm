@@ -26,6 +26,7 @@
 	var/charging_slowdown = 0
 	var/obj/inhand_requirement = null
 	var/overlay_state = null
+	var/list/attunements
 
 
 /obj/effect/proc_holder/Initialize()
@@ -217,10 +218,14 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 			return newdrain
 		else
 			return 0.1
+
 	return releasedrain
 
 
 /obj/effect/proc_holder/spell/proc/cast_check(skipcharge = 0, mob/user = usr) //checks if the spell can be cast based on its settings; skipcharge is used when an additional cast_check is called inside the spell
+	if(SEND_SIGNAL(src, COMSIG_SPELL_BEFORE_CAST))
+		return FALSE
+
 	if(player_lock)
 		if(!user.mind || !(src in user.mind.spell_list) && !(src in user.mob_spell_list))
 			to_chat(user, "<span class='warning'>I shouldn't have this spell! Something's wrong.</span>")
@@ -444,6 +449,10 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 				var/datum/effect_system/smoke_spread/sleeping/smoke = new
 				smoke.set_up(smoke_amt, location)
 				smoke.start()
+	if(ismob(usr))
+		var/mob/living/user = usr
+		if(user.mmb_intent)
+			SEND_SIGNAL(user.mmb_intent, COMSIG_SPELL_AFTER_CAST, targets)
 
 
 /obj/effect/proc_holder/spell/proc/cast(list/targets,mob/user = usr)

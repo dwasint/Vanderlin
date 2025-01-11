@@ -25,6 +25,7 @@
 	give_bank_account = 120
 	min_pq = 4
 	cmode_music = 'sound/music/cmode/nobility/CombatCourtMagician.ogg'
+	magic_user = TRUE
 
 /datum/outfit/job/roguetown/magician/pre_equip(mob/living/carbon/human/H)
 	..()

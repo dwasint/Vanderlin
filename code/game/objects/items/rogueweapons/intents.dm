@@ -97,6 +97,13 @@
 	else
 		return 0
 
+/datum/intent/proc/spell_cannot_activate()
+	to_chat(mastermob, span_warning("I am too drained for this."))
+	return
+
+/datum/intent/proc/get_owner()
+	return mastermob
+
 /datum/intent/proc/get_chargedrain()
 	if(chargedrain)
 		return chargedrain

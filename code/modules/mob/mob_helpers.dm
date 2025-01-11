@@ -638,6 +638,9 @@
 			mmb_intent.chargedloop = ranged_ability.chargedloop
 			mmb_intent.update_chargeloop()
 
+			mmb_intent.AddComponent(/datum/component/uses_mana/spell,CALLBACK(mmb_intent, TYPE_PROC_REF(/datum/intent, spell_cannot_activate)),CALLBACK(mmb_intent, TYPE_PROC_REF(/datum/intent, get_owner)),COMSIG_SPELL_BEFORE_CAST,null,COMSIG_SPELL_AFTER_CAST,ranged_ability.get_fatigue_drain(),ranged_ability.attunements)
+
+
 	hud_used.quad_intents.switch_intent(input)
 	hud_used.give_intent.switch_intent(input)
 	givingto = null

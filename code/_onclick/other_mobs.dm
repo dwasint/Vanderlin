@@ -454,8 +454,8 @@
 			if(INTENT_SPELL)
 				if(ranged_ability?.InterceptClickOn(src, params, A))
 					changeNext_move(mmb_intent.clickcd)
-					if(mmb_intent.releasedrain)
-						adjust_stamina(mmb_intent.releasedrain)
+					//if(mmb_intent.releasedrain)
+						//adjust_stamina(mmb_intent.releasedrain)
 				return
 
 //Return TRUE to cancel other attack hand effects that respect it.
