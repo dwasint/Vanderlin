@@ -366,7 +366,7 @@
 	)
 
 /obj/item/rogue/instrument/harp
-	name = "harp"
+	name = "lyre"
 	desc = "An elven instrument of a great and proud heritage."
 	icon_state = "harp"
 	song_list = list(
