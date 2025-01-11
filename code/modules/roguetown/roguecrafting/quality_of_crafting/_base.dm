@@ -586,6 +586,7 @@
 							move_items_back(to_delete, user)
 							continue
 						to_chat(user, "<span class='danger'>I've failed to craft \the [name].</span>")
+						move_items_back(to_delete, user)
 						continue
 
 				if(put_items_in_hand)
