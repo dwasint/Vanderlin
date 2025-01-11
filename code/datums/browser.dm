@@ -17,6 +17,7 @@
 
 /datum/browser/Destroy(force, ...)
 	. = ..()
+	close()
 	ref = null
 	user = null
 

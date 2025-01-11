@@ -237,7 +237,7 @@ SUBSYSTEM_DEF(garbage)
 	if(!D)
 		return
 	if(!enable_hard_deletes)
-		failed_hard_deletes |= D
+		//failed_hard_deletes |= D
 		return
 	var/time = world.timeofday
 	var/tick = TICK_USAGE
