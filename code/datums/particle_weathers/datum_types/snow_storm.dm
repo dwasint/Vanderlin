@@ -135,7 +135,6 @@
 	var/turf/snowed_turf
 	var/list/snows_connections = list(list("0", "0", "0", "0"), list("0", "0", "0", "0"), list("0", "0", "0", "0"))
 	var/list/diged = list("2" = 0, "1" = 0, "8" = 0, "4" = 0)
-	var/layer_increase = 0
 
 /obj/structure/snow/Initialize(mapload, bleed_layers)
 	. = ..()
@@ -319,7 +318,7 @@
 
 
 /obj/structure/snow/proc/weathered(datum/weather_effect/effect)
-	if(progression < bleed_layer * 8)
+	if(progression < bleed_layer * 32)
 		progression++
 	else
 		if(bleed_layer >= 3)
@@ -333,10 +332,7 @@
 					turf.snow.weathered(effect)
 					break
 		else
-			if(layer_increase == 10)
-				changing_layer(min(bleed_layer + 1, MAX_LAYER_SNOW_LEVELS))
-				layer_increase = 0
-			layer_increase++
+			changing_layer(min(bleed_layer + 1, MAX_LAYER_SNOW_LEVELS))
 
 		progression = 0
 
