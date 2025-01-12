@@ -108,9 +108,6 @@
 			break
 		var/obj/effect/ebeam/X = new beam_type(origin_oldloc)
 		X.owner = src
-		X.color = bcolor
-		if(forced_plane)
-			X.plane = forced_plane
 		elements += X
 
 		//Assign icon, for main segments it's base_icon, for the end, it's icon+icon_state
@@ -148,6 +145,9 @@
 
 		X.pixel_x = Pixel_x
 		X.pixel_y = Pixel_y
+		X.color = bcolor
+		if(forced_plane)
+			X.plane = forced_plane
 		CHECK_TICK
 	afterDraw()
 

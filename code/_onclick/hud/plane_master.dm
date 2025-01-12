@@ -261,3 +261,15 @@
 	blend_mode = BLEND_MULTIPLY
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	render_target = SUNLIGHTING_RENDER_TARGET
+
+/atom/movable/screen/plane_master/leylines
+	name = "leyline plane master"
+//	screen_loc = "CENTER-2"
+	plane = PLANE_LEYLINES
+	appearance_flags = PLANE_MASTER //should use client color
+	blend_mode = BLEND_OVERLAY
+	//render_target = GAME_PLANE_RENDER_TARGET
+
+/atom/movable/screen/plane_master/leylines/Initialize(mapload, ...)
+	. = ..()
+	alpha =175
