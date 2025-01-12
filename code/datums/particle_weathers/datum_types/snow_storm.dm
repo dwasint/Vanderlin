@@ -340,14 +340,6 @@
 		qdel(src)
 		return
 
-	switch(bleed_layer)
-		if(1)
-			layer = BELOW_OBJ_LAYER
-		if(2)
-			layer = BELOW_OBJ_LAYER
-		if(3)
-			layer = BELOW_OBJ_LAYER
-
 	update_corners(TRUE)
 	update_overlays()
 
