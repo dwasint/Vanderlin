@@ -103,6 +103,8 @@
 	var/datum/orderless_slapcraft/in_progress_slapcraft
 
 /mob/living/proc/try_orderless_slapcraft(obj/item/attacking_item, obj/item/attacked_object)
+	if(!isitem(attacked_object))
+		return list()
 	if(attacked_object.in_progress_slapcraft)
 		return attacked_object.in_progress_slapcraft.try_process_item(attacking_item, src)
 

@@ -18,8 +18,9 @@
 
 
 /mob/living/proc/try_recipes(obj/item/attacked_item, obj/item/attacked_object)
-	if(attacked_item.in_progress_slapcraft)
-		return attacked_item.in_progress_slapcraft.try_process_item(attacked_object, src)
+	if(isitem(attacked_item))
+		if(attacked_item.in_progress_slapcraft)
+			return attacked_item.in_progress_slapcraft.try_process_item(attacked_object, src)
 
 	var/list/recipes = list()
 	recipes |= src.try_orderless_slapcraft(attacked_object, attacked_item)

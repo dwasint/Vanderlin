@@ -2,6 +2,8 @@
 /mob/living/proc/try_slapcraft(obj/item/first_item, obj/item/second_item)
 	// You cannot craft with items in storage, you must be holding them in hand
 	// or they must be on the floor
+	if(!isitem(first_item))
+		return list()
 	if((first_item.item_flags | second_item.item_flags) & IN_STORAGE)
 		return list()
 
