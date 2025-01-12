@@ -17,6 +17,7 @@
 		SEND_SIGNAL(src, COMSIG_TRY_STORAGE_INSERT, item_in_source, null, TRUE, TRUE, FALSE)
 
 /obj/item
+	has_reflection = FALSE //sad but I prefer ram usage more
 	// ~Grid INVENTORY VARIABLES
 	/// Width we occupy on the hud - Keep null to generate based on w_class
 	var/grid_width
