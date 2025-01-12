@@ -18,8 +18,8 @@
 
 
 /mob/living/proc/try_recipes(obj/item/attacked_item, obj/item/attacked_object)
-	if(attacked_object.in_progress_slapcraft)
-		return attacked_object.in_progress_slapcraft.try_process_item(attacked_item, src)
+	if(attacked_item.in_progress_slapcraft)
+		return attacked_item.in_progress_slapcraft.try_process_item(attacked_object, src)
 
 	var/list/recipes = list()
 	recipes |= src.try_orderless_slapcraft(attacked_object, attacked_item)
@@ -94,7 +94,7 @@
 		return TRUE
 	else if(istype(target_recipe, /datum/orderless_slapcraft))
 		var/datum/orderless_slapcraft/recipe = target_recipe
-		second_item.in_progress_slapcraft = new recipe.type(null, first_item)
+		second_item.in_progress_slapcraft = new recipe.type(null, second_item)
 		return second_item.in_progress_slapcraft.try_process_item(first_item, src)
 
 	else if(istype(target_recipe, /datum/repeatable_crafting_recipe))
