@@ -151,6 +151,24 @@
 
 	if (ethereal_recharge_rate != 0)
 		adjust_mana(ethereal_recharge_rate, attunements_to_generate)
+
+	if(isliving(parent) && amount < parent?.mana_overload_threshold)
+		var/list/leylines = list()
+		for(var/obj/effect/ebeam/beam in range(3, src))
+			if(!beam.owner.mana_pool)
+				continue
+			if(beam.owner.mana_pool in leylines)
+				if(leylines[beam.owner.mana_pool] > get_dist(src, beam))
+					leylines[beam.owner.mana_pool] = get_dist(src, beam)
+			else
+				leylines |= beam.owner.mana_pool
+				leylines[beam.owner.mana_pool] = get_dist(parent, beam)
+
+		if(length(leylines))
+			for(var/datum/mana_pool/leyline/leyline as anything in leylines)
+				var/sane_distance = leylines[leyline]
+				leyline.transfer_specific_mana(src, (get_transfer_rate_for(leyline) / sane_distance) * 0.1)
+
 	if (length(transferring_to) > 0)
 		switch (transfer_method)
 			if (MANA_SEQUENTIAL)
@@ -234,7 +252,7 @@
 	adjust_mana(-adjusted_amount)
 	return other_pool.adjust_mana(adjusted_amount, attunements)
 
-/datum/mana_pool/proc/start_transfer(datum/mana_pool/target_pool, force_process = TRUE)
+/datum/mana_pool/proc/start_transfer(datum/mana_pool/target_pool, force_process = FALSE)
 
 	if (target_pool == src)
 		stack_trace("start_transfer called where target_pool was src!")

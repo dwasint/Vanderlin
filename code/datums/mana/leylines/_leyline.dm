@@ -13,10 +13,10 @@ GLOBAL_LIST_EMPTY_TYPED(all_leylines, /datum/mana_pool/leyline)
 
 /proc/get_initial_leyline_amount()
 	var/list/leyline_amount_list = list(
-		"6" = 5000,
-		"8" = 500,
-		"10" = 200,
-		"12" = 10
+		"12" = 5000,
+		"16" = 500,
+		"20" = 200,
+		"24" = 10
 	)
 	var/leyline_amount = text2num(pickweight(leyline_amount_list))
 	return leyline_amount
@@ -57,6 +57,8 @@ GLOBAL_LIST_EMPTY_TYPED(all_leylines, /datum/mana_pool/leyline)
 	max_donation_rate_per_second *= (intensity.overall_mult)
 
 	amount = maximum_mana_capacity
+
+	create_leyline_objects()
 
 	return ..()
 
@@ -103,3 +105,55 @@ GLOBAL_LIST_EMPTY_TYPED(all_leylines, /datum/mana_pool/leyline)
 
 /datum/leyline_variable
 	var/name = "abstract, do not instantiate"
+	var/beam_color = COLOR_WHITE
+
+
+/datum/mana_pool/leyline/proc/generate_start_and_end()
+	var/starting_y = 0
+	var/starting_x = 0
+	var/stuck_dir = pick(GLOB.cardinals)
+
+	var/ending_x = 0
+	var/ending_y = 0
+
+	var/stuck_axis
+	switch(stuck_dir)
+		if(NORTH)
+			starting_y = world.maxy
+			ending_y = 1
+			stuck_axis = "Y"
+		if(SOUTH)
+			starting_y = 1
+			ending_y = world.maxy
+			stuck_axis = "Y"
+		if(EAST)
+			starting_x = 1
+			ending_x = world.maxx
+			stuck_axis = "X"
+		if(WEST)
+			starting_x = world.maxx
+			ending_x = 1
+			stuck_axis = "X"
+
+	switch(stuck_axis)
+		if("X")
+			starting_y = rand(1, world.maxy)
+			ending_y = rand(1, world.maxy)
+		if("Y")
+			starting_x = rand(1, world.maxx)
+			ending_x = rand(1, world.maxx)
+
+	var/station_z = SSmapping.levels_by_trait(ZTRAIT_STATION)[1]
+	var/turf/ending = locate(ending_x, ending_y, station_z)
+	var/turf/starting = locate(starting_x, starting_y, station_z)
+
+	return list(starting, ending, stuck_axis)
+
+/datum/mana_pool/leyline/proc/create_leyline_objects()
+	var/list/data = generate_start_and_end()
+	var/turf/starting = data[1]
+	var/datum/leyline_variable/attunement_theme/theme
+	if(length(themes))
+		theme = themes[1]
+
+	starting.LeyBeam(data[2], icon_state = "blood", maxdistance = world.maxx, time = INFINITY, beam_color = theme?.beam_color, mana_pool = src)

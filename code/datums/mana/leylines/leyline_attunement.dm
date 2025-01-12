@@ -22,6 +22,14 @@ GLOBAL_LIST_INIT(leyline_attunement_themes, list(
 
 /datum/leyline_variable/attunement_theme/fire_minor
 	name = "Smoldering"
+	beam_color = COLOR_ORANGE
 
 /datum/leyline_variable/attunement_theme/fire_minor/adjust_attunements(list/datum/attunement/attunements)
 	attunements[MAGIC_ELEMENT_FIRE] += 0.2
+
+/datum/leyline_variable/attunement_theme/arcyne_minor
+	name = "Arcyne"
+	beam_color = COLOR_PALE_PURPLE_GRAY
+
+/datum/leyline_variable/attunement_theme/arcyne_minor/adjust_attunements(list/datum/attunement/attunements)
+	attunements[/datum/attunement/arcyne] += 0.2

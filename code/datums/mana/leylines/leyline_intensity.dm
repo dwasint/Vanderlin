@@ -15,39 +15,49 @@ GLOBAL_LIST_INIT(leyline_intensities, list(
 /// "Intensities" that will be applied to leylines. Should influence the average capacity/recharge rate/whatever of the leyline.
 /datum/leyline_variable/leyline_intensity
 	var/overall_mult
+	var/thickness
 
 /datum/leyline_variable/leyline_intensity/none
 	overall_mult = 0
 	name = "None"
+	thickness = 0
 
 /datum/leyline_variable/leyline_intensity/minimal
 	overall_mult = 0.05
 	name = "Minimal"
+	thickness = 0
 
 /datum/leyline_variable/leyline_intensity/extremely_low
 	overall_mult = 0.1
 	name = "Extremely Low"
+	thickness = 1
 
 /datum/leyline_variable/leyline_intensity/low
 	overall_mult = 0.5
 	name = "Low"
+	thickness = 1
 
 /datum/leyline_variable/leyline_intensity/below_average
 	overall_mult = 0.7
 	name = "Below average"
+	thickness = 1
 
 /datum/leyline_variable/leyline_intensity/average
 	overall_mult = 1
 	name = "Average"
+	thickness = 2
 
 /datum/leyline_variable/leyline_intensity/above_average
 	overall_mult = 1.3
 	name = "Above average"
+	thickness = 2
 
 /datum/leyline_variable/leyline_intensity/high
 	overall_mult = 2
 	name = "High"
+	thickness = 2
 
 /datum/leyline_variable/leyline_intensity/extreme
 	overall_mult = 5
 	name = "Extreme"
+	thickness = 3
