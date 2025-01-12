@@ -188,11 +188,11 @@
 
 
 /obj/structure/snow/proc/damage_act(damage)
-	if(pts > damage / 5)
-		pts -= damage / 5
+	if(progression > damage / 5)
+		progression -= damage / 5
 	else
 		changing_layer(min(bleed_layer - round(damage / bleed_layer * 8, 1), MAX_LAYER_SNOW_LEVELS))
-		pts = 0
+		progression = 0
 /obj/structure/snow/proc/get_slowdown()
 	return 1.5 * bleed_layer
 
