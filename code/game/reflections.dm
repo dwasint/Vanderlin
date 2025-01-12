@@ -21,3 +21,6 @@
 
 /obj/structure/flora
 	has_reflection = FALSE
+
+/obj/item
+	has_reflection = FALSE
