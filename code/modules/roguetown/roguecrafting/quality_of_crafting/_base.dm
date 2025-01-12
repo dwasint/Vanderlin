@@ -586,6 +586,7 @@
 							move_items_back(to_delete, user)
 							continue
 						to_chat(user, "<span class='danger'>I've failed to craft \the [name].</span>")
+						move_items_back(to_delete, user)
 						continue
 
 				if(put_items_in_hand)
@@ -727,9 +728,9 @@
 
 	html += "<strong class=class='scroll'>start the process with</strong> <br>[icon2html(new attacking_atom, user)] <br> [initial(attacking_atom.name)]<br>"
 	if(subtypes_allowed)
-		html += "<strong class=class='scroll'>using</strong> <br> [icon2html(new starting_atom, user)] <br> any [initial(starting_atom.name)]<br>"
+		html += "<strong class=class='scroll'>using</strong> <br> [icon2html(new starting_atom, user)] <br> any [initial(starting_atom.name)] on it<br>"
 	else
-		html += "<strong class=class='scroll'>using</strong> <br> [icon2html(new starting_atom, user)] <br> [initial(starting_atom.name)]<br>"
+		html += "<strong class=class='scroll'>using</strong> <br> [icon2html(new starting_atom, user)] <br> [initial(starting_atom.name)] on it<br>"
 
 
 	html += {"
