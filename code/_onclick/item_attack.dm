@@ -23,8 +23,8 @@
 			return
 		else
 			user.resist_grab()
-	if(!user.has_hand_for_held_index(user.active_hand_index, TRUE)) //we obviously have a hadn, but we need to check for fingers/prosthetics
-		to_chat(user, "<span class='warning'>I can't move the fingers.</span>")
+	if(!user.has_hand_for_held_index(user.active_hand_index, TRUE)) //we obviously have a hand, but we need to check for fingers/prosthetics
+		to_chat(user, "<span class='warning'>I can't move the fingers of my [user.active_hand_index == 1 ? "left" : "right"] hand.</span>")
 		return
 	if(!istype(src, /obj/item/grabbing))
 		if(HAS_TRAIT(user, TRAIT_CHUNKYFINGERS))
@@ -271,7 +271,7 @@
 				if(BCLASS_CUT)
 					var/mob/living/lumberjacker = user
 					var/lumberskill = lumberjacker.mind.get_skill_level(/datum/skill/labor/lumberjacking)
-					if(!I.remove_bintegrity(1))
+					if(!I.remove_bintegrity(1, user))
 						dullfactor = 0.2
 					else
 						dullfactor = 0.45 + (lumberskill * 0.15)
@@ -285,7 +285,7 @@
 							//Yes i know its cheap to just make it a flat plus.
 							newforce = newforce + R.axe_cut
 							testing("newforcewood+[R.axe_cut]")
-					if(!I.remove_bintegrity(1))
+					if(!I.remove_bintegrity(1, user))
 						dullfactor = 0.2
 					else
 						dullfactor = 1.5
@@ -307,11 +307,11 @@
 		if(DULLING_BASHCHOP) //structures that can be attacked by clubs also (doors fences etc)
 			switch(user.used_intent.blade_class)
 				if(BCLASS_CUT)
-					if(!I.remove_bintegrity(1))
+					if(!I.remove_bintegrity(1, user))
 						dullfactor = 0.8
 					cont = TRUE
 				if(BCLASS_CHOP)
-					if(!I.remove_bintegrity(1))
+					if(!I.remove_bintegrity(1, user))
 						dullfactor = 0.8
 					else
 						dullfactor = 1.5

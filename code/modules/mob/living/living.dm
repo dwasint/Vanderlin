@@ -1,3 +1,72 @@
+/mob/living
+	var/mutable_appearance/reflective_mask
+	var/mutable_appearance/reflective_icon
+
+
+/mob/living/update_overlays()
+	. = ..()
+	update_reflection()
+
+/mob/living/update_icon()
+	. = ..()
+	update_reflection()
+
+/mob/living/proc/create_reflection()
+	//Add custom reflection mask
+	var/mutable_appearance/MA = new()
+	//appearance stuff
+	MA.appearance = appearance
+	if(render_target)
+		MA.render_source = render_target
+	MA.plane = MANUAL_REFLECTIVE_MASK_PLANE
+	reflective_mask = MA
+	add_overlay(MA)
+
+	//Add custom reflection image
+	var/mutable_appearance/MAM = new()
+	//appearance stuff
+	MAM.appearance = appearance
+	if(render_target)
+		MAM.render_source = render_target
+	MAM.plane = MANUAL_REFLECTIVE_PLANE
+	//transform stuff
+	var/matrix/n_transform = MAM.transform
+	n_transform.Scale(1, -1)
+	MAM.transform = n_transform
+	MAM.vis_flags = VIS_INHERIT_DIR
+	//filters
+	var/icon/I = icon('icons/turf/overlays.dmi', "partialOverlay")
+	I.Flip(NORTH)
+	MAM.filters += filter(type = "alpha", icon = I)
+	reflective_icon = MAM
+	add_overlay(reflective_icon)
+	update_vision_cone()
+
+/mob/living/carbon/human/dummy/update_reflection()
+	return
+
+/mob/living/proc/update_reflection()
+	if(!reflective_icon)
+		create_reflection()
+	cut_overlay(reflective_icon)
+	reflective_icon.appearance = appearance
+	if(render_target)
+		reflective_icon.render_source = render_target
+	reflective_icon.plane = MANUAL_REFLECTIVE_PLANE
+	reflective_icon.pixel_y -= 32
+	//transform stuff
+	var/matrix/n_transform = reflective_icon.transform
+	n_transform.Scale(1, -1)
+	reflective_icon.transform = n_transform
+	reflective_icon.vis_flags = VIS_INHERIT_DIR
+	//filters
+	var/icon/I = icon('icons/turf/overlays.dmi', "partialOverlay")
+	I.Flip(NORTH)
+	reflective_icon.filters += filter(type = "alpha", icon = I)
+	add_overlay(reflective_icon)
+	update_vision_cone()
+
+
 /mob/living/Initialize()
 	. = ..()
 	update_a_intents()
@@ -8,6 +77,8 @@
 	faction += "[REF(src)]"
 	GLOB.mob_living_list += src
 	init_faith()
+
+	create_reflection()
 
 /mob/living/Destroy()
 	surgeries = null
@@ -592,7 +663,7 @@
 		return
 	if(resting)
 		if(!IsKnockdown() && !IsStun() && !IsParalyzed())
-			src.visible_message("<span class='notice'>[src] stands up.</span>")
+			src.visible_message("<span class='notice'>[src] begins standing up.</span>")
 			if(move_after(src, 20, target = src))
 				set_resting(FALSE, FALSE)
 				return TRUE
@@ -610,7 +681,7 @@
 		return
 	if(resting)
 		if(!IsKnockdown() && !IsStun() && !IsParalyzed())
-			src.visible_message("<span class='info'>[src] stands up.</span>")
+			src.visible_message("<span class='info'>[src] begins standing up.</span>")
 			if(move_after(src, 20, target = src))
 				set_resting(FALSE, FALSE)
 		else
@@ -641,7 +712,7 @@
 	update_rest_hud_icon()
 	update_mobility()
 
-//Recursive function to find everything a mob is holding. Really shitty proc tbh.
+//Recursive function to find everything a mob is holding. Really shitty proc tbh, you should use get_all_gear for carbons.
 /mob/living/get_contents()
 	var/list/ret = list()
 	ret |= contents						//add our contents
@@ -687,13 +758,17 @@
 		update_sight()
 		clear_alert("not_enough_oxy")
 		reload_fullscreen()
-		remove_client_colour(/datum/client_colour/monochrome)
+		remove_client_colour(/datum/client_colour/monochrome/death)
 		. = TRUE
 		if(mind)
 			for(var/S in mind.spell_list)
 				var/obj/effect/proc_holder/spell/spell = S
 				spell.updateButtonIcon()
 			mind.remove_antag_datum(/datum/antagonist/zombie)
+		if(ishuman(src))
+			var/mob/living/carbon/human/human = src
+			human.funeral = FALSE
+		client?.verbs -= /client/proc/descend
 
 /mob/living/proc/remove_CC(should_update_mobility = TRUE)
 	SetStun(0, FALSE)
@@ -793,6 +868,15 @@
 	reset_offsets("wall_press")
 	update_wallpress_slowdown()
 
+/mob/living/proc/update_pixelshift(turf/T, atom/newloc, direct)
+	if(!pixelshifted)
+		reset_offsets("pixel_shift")
+		return FALSE
+	pixelshifted = FALSE
+	pixelshift_x = 0
+	pixelshift_y = 0
+	reset_offsets("pixel_shift")
+
 /mob/living/Move(atom/newloc, direct, glide_size_override)
 
 	var/old_direction = dir
@@ -803,6 +887,9 @@
 
 	if(wallpressed)
 		update_wallpress(T, newloc, direct)
+
+	if(pixelshifted)
+		update_pixelshift(T, newloc, direct)
 
 	if(lying)
 		if(direct & EAST)
@@ -946,6 +1033,7 @@
 		Stun(150)
 		src.visible_message("<span class='notice'>[src] yields!</span>")
 		playsound(src, 'sound/misc/surrender.ogg', 100, FALSE, -1)
+		toggle_cmode()
 		sleep(150)
 	surrendering = 0
 

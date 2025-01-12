@@ -598,7 +598,7 @@
 		return		// not enough spell points
 	else
 		user.mind.used_spell_points += item.cost
-		user.mind.AddSpell(new item)
+		user.mind.AddSpell(new item, silent = FALSE)
 		addtimer(CALLBACK(user.mind, TYPE_PROC_REF(/datum/mind, check_learnspell), src), 2 SECONDS) //self remove if no points
 		return TRUE
 
@@ -875,7 +875,7 @@
 		var/def_zone = pick(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 		var/obj/item/bodypart/BP = L.get_bodypart(def_zone)
 		L.apply_damage(damage, BRUTE, def_zone)
-		BP.add_wound(/datum/wound/fracture)
+		BP?.add_wound(/datum/wound/fracture)
 		play_cleave = TRUE
 		L.adjustBruteLoss(damage)
 		playsound(T, "genslash", 80, TRUE)

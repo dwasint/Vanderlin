@@ -5,7 +5,9 @@
 	allowed_races = list(
 		"Humen",
 		"Dwarf",
-		"Aasimar")
+		"Aasimar",
+		"Half-Elf",
+		"Elf")
 	grant_lit_torch = TRUE
 	advjob_examine = FALSE
 	outfit = /datum/outfit/job/roguetown/serjeant_at_arms
@@ -51,12 +53,17 @@
 		H.change_stat("endurance", 2)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
+	H.cmode_music = 'sound/music/cmode/garrison/CombatGarrison.ogg'
 
 /datum/migrant_role/archer_bannerman
 	name = "Bannermen Archer"
 	greet_text = "You were apart of an expedition sent by the King of Vanderlin to Kingsfield, you and your serjeant-at-arms have returned upon fullfiling your task."
 	outfit = /datum/outfit/job/roguetown/archer_bannerman
-	allowed_races = list("Humen","Dwarf","Aasimar")
+	allowed_races = list("Humen",
+		"Dwarf",
+		"Aasimar",
+		"Half-Elf",
+		"Elf")
 	grant_lit_torch = TRUE
 	advjob_examine = FALSE
 /datum/outfit/job/roguetown/archer_bannerman/pre_equip(mob/living/carbon/human/H)
@@ -97,12 +104,13 @@
 		H.change_stat("speed", 2)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_KNOWBANDITS, TRAIT_GENERIC)
+	H.cmode_music = 'sound/music/cmode/garrison/CombatGarrison.ogg'
 
 /datum/migrant_role/crossbow_bannerman
 	name = "Bannermen Crossboman"
 	greet_text = "You were apart of an expedition sent by the King of Vanderlin to Kingsfield, you and your serjeant-at-arms have returned upon fullfiling your task."
 	outfit = /datum/outfit/job/roguetown/crossbow_bannerman
-	allowed_races = list("Humen","Dwarf","Aasimar")
+	allowed_races = list("Humen","Dwarf","Aasimar", "Half-Elf", "Elf")
 	grant_lit_torch = TRUE
 	advjob_examine = FALSE
 
@@ -145,12 +153,13 @@
 		H.change_stat("speed", 2)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_KNOWBANDITS, TRAIT_GENERIC)
+	H.cmode_music = 'sound/music/cmode/garrison/CombatGarrison.ogg'
 
 /datum/migrant_role/footman_bannerman
 	name = "Bannermen Footman"
 	greet_text = "You were apart of an expedition sent by the King of Vanderlin to Kingsfield, you and your serjeant-at-arms have returned upon fullfiling your task."
 	outfit = /datum/outfit/job/roguetown/footman_bannerman
-	allowed_races = list("Humen","Dwarf","Aasimar")
+	allowed_races = list("Humen","Dwarf","Aasimar","Half-Elf","Elf")
 	grant_lit_torch = TRUE
 	advjob_examine = FALSE
 
@@ -183,13 +192,14 @@
 		H.change_stat("constitution", 1)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_KNOWBANDITS, TRAIT_GENERIC)
+	H.cmode_music = 'sound/music/cmode/garrison/CombatGarrison.ogg'
 	H.verbs |= /mob/proc/haltyell
 
 /datum/migrant_role/pikeman_bannerman
 	name = "Bannermen Pikeman"
 	greet_text = "You were apart of an expedition sent by the King of Vanderlin to Kingsfield, you and your serjeant-at-arms have returned upon fullfiling your task."
 	outfit = /datum/outfit/job/roguetown/pikeman_bannerman
-	allowed_races = list("Humen","Dwarf","Aasimar")
+	allowed_races = list("Humen","Dwarf","Aasimar","Half-Elf","Elf")
 	grant_lit_torch = TRUE
 	advjob_examine = FALSE
 
@@ -235,7 +245,7 @@
 	max_spawns = 2
 	shared_wave_type = /datum/migrant_wave/knight
 	downgrade_wave = /datum/migrant_wave/returning_bannermen_down
-	weight = 15
+	weight = 40
 	roles = list(
 		/datum/migrant_role/sergeant_at_arms = 1,
 		/datum/migrant_role/footman_bannerman = 2,
@@ -250,7 +260,6 @@
 	shared_wave_type = /datum/migrant_wave/returning_bannermen
 	downgrade_wave = /datum/migrant_wave/returning_bannermen_down_one
 	can_roll = FALSE
-	weight = 15
 	roles = list(
 		/datum/migrant_role/sergeant_at_arms = 1,
 		/datum/migrant_role/footman_bannerman = 1,
@@ -265,7 +274,6 @@
 	shared_wave_type = /datum/migrant_wave/returning_bannermen
 	downgrade_wave = /datum/migrant_wave/returning_bannermen_down_two
 	can_roll = FALSE
-	weight = 15
 	roles = list(
 		/datum/migrant_role/sergeant_at_arms = 1,
 		/datum/migrant_role/footman_bannerman = 1,
@@ -279,7 +287,6 @@
 	shared_wave_type = /datum/migrant_wave/returning_bannermen
 	downgrade_wave = /datum/migrant_wave/returning_bannermen_down_three
 	can_roll = FALSE
-	weight = 15
 	roles = list(
 		/datum/migrant_role/sergeant_at_arms = 1,
 		/datum/migrant_role/footman_bannerman = 1,
@@ -292,7 +299,6 @@
 	shared_wave_type = /datum/migrant_wave/returning_bannermen
 	downgrade_wave = /datum/migrant_wave/returning_bannermen_down_four
 	can_roll = FALSE
-	weight = 15
 	roles = list(
 		/datum/migrant_role/sergeant_at_arms = 1,
 		/datum/migrant_role/footman_bannerman = 1,
@@ -303,7 +309,6 @@
 	name = "The Bannermen's return"
 	shared_wave_type = /datum/migrant_wave/returning_bannermen
 	can_roll = FALSE
-	weight = 15
 	roles = list(
 		/datum/migrant_role/sergeant_at_arms = 1,
 	)
