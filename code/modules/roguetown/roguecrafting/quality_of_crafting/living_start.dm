@@ -35,6 +35,8 @@
 		return execute_recipe(recipe, attacked_object, attacked_item)
 
 /mob/living/proc/execute_recipe(datum/slapcraft_recipe/target_recipe, obj/item/first_item, obj/item/second_item)
+	if(!target_recipe)
+		return
 
 	if(istype(target_recipe, /datum/slapcraft_recipe))
 		// We have found the recipe we want to do, make an assembly item where the first item used to be.
@@ -95,6 +97,6 @@
 		second_item.in_progress_slapcraft = new recipe.type(null, first_item)
 		return second_item.in_progress_slapcraft.try_process_item(first_item, src)
 
-	else
+	else if(istype(target_recipe, /datum/repeatable_crafting_recipe))
 		var/datum/repeatable_crafting_recipe/recipe = target_recipe
 		recipe.start_recipe(second_item, first_item, src)
