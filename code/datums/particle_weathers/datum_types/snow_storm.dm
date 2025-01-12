@@ -130,7 +130,6 @@
 	density = FALSE
 	plane = GAME_PLANE
 	layer = TABLE_LAYER - 0.1
-	has_reflection = FALSE //should halve the ram usage of snow
 	var/bleed_layer = 0
 	var/progression = 0
 	var/turf/snowed_turf
