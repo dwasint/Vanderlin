@@ -542,6 +542,7 @@
 	if(atomy[AB].loc != src)
 		return
 	var/AE = atomy[AB]
+	user.cast_move = 0
 	user.used_intent = user.a_intent
 	user.UnarmedAttack(AE,1,params)
 

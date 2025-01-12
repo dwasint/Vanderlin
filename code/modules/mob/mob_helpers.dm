@@ -512,6 +512,7 @@
 		if(a_intent)
 			a_intent.afterchange()
 		used_intent = a_intent
+		cast_move = 0
 	if(hud_used?.action_intent)
 		hud_used.action_intent.switch_intent(r_index,l_index,oactive)
 

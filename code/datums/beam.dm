@@ -16,6 +16,7 @@
 	var/timing_id = null
 	var/recalculating = FALSE
 	var/bcolor
+	var/forced_plane
 
 	var/datum/mana_pool/mana_pool
 
@@ -108,6 +109,8 @@
 		var/obj/effect/ebeam/X = new beam_type(origin_oldloc)
 		X.owner = src
 		X.color = bcolor
+		if(forced_plane)
+			X.plane = forced_plane
 		elements += X
 
 		//Assign icon, for main segments it's base_icon, for the end, it's icon+icon_state

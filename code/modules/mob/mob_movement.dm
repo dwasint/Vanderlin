@@ -185,13 +185,23 @@
 			if(P.facepull)
 				mob.setDir(turn(mob.dir, 180))
 	if(mob.used_intent?.movement_interrupt && mob.atkswinging == "left" && charging)
-		to_chat(src, "<span class='warning'>I lost my concentration!</span>")
-		mob.stop_attack(FALSE)
-		mob.changeNext_move(CLICK_CD_MELEE)
+		if(mob.cast_move < mob.used_intent?.move_limit)
+			to_chat(src, "<span class='warning'>I am starting to lose focus!</span>")
+			mob.cast_move++
+		else
+			to_chat(src, "<span class='warning'>I lost my concentration!</span>")
+			mob.stop_attack(FALSE)
+			mob.changeNext_move(CLICK_CD_MELEE)
+			mob.cast_move = 0
 	if(mob.mmb_intent?.movement_interrupt && mob.atkswinging == "middle" && charging)
-		to_chat(src, "<span class='warning'>I lost my concentration!</span>")
-		mob.stop_attack(FALSE)
-		mob.changeNext_move(CLICK_CD_MELEE)
+		if(mob.cast_move < mob.used_intent?.move_limit)
+			to_chat(src, "<span class='warning'>I am starting to lose focus!</span>")
+			mob.cast_move++
+		else
+			to_chat(src, "<span class='warning'>I lost my concentration!</span>")
+			mob.stop_attack(FALSE)
+			mob.changeNext_move(CLICK_CD_MELEE)
+			mob.cast_move = 0
 
 	for(var/datum/browser/X in open_popups)
 		if(!X.no_close_movement)

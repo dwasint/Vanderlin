@@ -126,6 +126,7 @@
 			else
 				if(mob.next_rmove > world.time)
 					return
+			mob.cast_move = 0
 			mob.used_intent = mob.o_intent
 			if(mob.used_intent.get_chargetime() && !AD.blockscharging && !mob.in_throw_mode)
 				updateprogbar()
@@ -140,6 +141,7 @@
 			return
 		mob.atkswinging = "middle"
 		if(mob.mmb_intent)
+			mob.cast_move = 0
 			mob.used_intent = mob.mmb_intent
 			if(mob.used_intent.type == INTENT_SPELL && mob.ranged_ability)
 				var/obj/effect/proc_holder/spell/S = mob.ranged_ability
@@ -164,6 +166,7 @@
 			if(mob.next_rmove > world.time)
 				return
 		mob.atkswinging = "left"
+		mob.cast_move = 0
 		mob.used_intent = mob.a_intent
 		if(mob.used_intent.get_chargetime() && !AD.blockscharging && !mob.in_throw_mode)
 			updateprogbar()

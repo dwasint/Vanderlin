@@ -49,6 +49,7 @@
 	var/miss_sound //THESE ARE FOR UNARMED MISSING ATTACKS
 
 	var/item_damage_type = "blunt"
+	var/move_limit = 0
 
 /datum/intent/Destroy()
 	if(chargedloop)
@@ -257,6 +258,7 @@
 	chargetime = 0
 	warnie = "aimwarn"
 	warnoffset = 0
+	move_limit = 6
 
 /datum/looping_sound/invokegen
 	mid_sounds = list('sound/magic/charging.ogg')

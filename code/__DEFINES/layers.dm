@@ -41,17 +41,18 @@
 #define WEATHER_RENDER_TARGET "*WEATHER_OVERLAY_PLANE"
 
 #define OPENSPACE_LAYER 17 //Openspace layer over all
-#define OPENSPACE_PLANE -9 //Openspace plane below all turfs
-#define OPENSPACE_BACKDROP_PLANE -8
+#define OPENSPACE_PLANE -10 //Openspace plane below all turfs
+#define OPENSPACE_BACKDROP_PLANE -9
 
-#define FLOOR_PLANE -7
-#define REFLECTION_PLANE -6
-#define GAME_PLANE -5
+#define FLOOR_PLANE -8
+#define REFLECTION_PLANE -7
+#define GAME_PLANE -6
 #define GAME_PLANE_RENDER_TARGET "GAME_PLANE_RENDER_TARGET"
-#define GAME_PLANE_FOV_HIDDEN -4
-#define GAME_PLANE_UPPER -3
-#define WEATHER_EFFECT_PLANE -2
-#define REFLECTION_PLANE_ABOVE -1
+#define GAME_PLANE_FOV_HIDDEN -5
+#define GAME_PLANE_UPPER -4
+#define WEATHER_EFFECT_PLANE -3
+#define REFLECTION_PLANE_ABOVE -2
+#define PLANE_LEYLINES -1
 #define BLACKNESS_PLANE 0 //To keep from conflicts with SEE_BLACKNESS internals
 
 #define SPACE_LAYER 1.8
