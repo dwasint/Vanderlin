@@ -87,6 +87,7 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/jumptokey,				/*allows us to jump to the location of a mob with a certain ckey*/
 	/client/proc/jumptomob,				/*allows us to jump to a specific mob*/
 	/client/proc/jumptoturf,			/*allows us to jump to a specific turf*/
+	/client/proc/spawn_in_test_area,
 	/client/proc/cmd_admin_direct_narrate,	/*send text directly to a player with no padding. Useful for narratives and fluff-text*/
 	/client/proc/cmd_admin_world_narrate,	/*sends text to all players with no padding*/
 	/client/proc/cmd_admin_local_narrate,	/*sends text to all mobs within view of atom*/
