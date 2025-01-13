@@ -82,3 +82,8 @@
 
 /datum/species/werewolf/random_name(gender,unique,lastname)
 	return "WEREVOLF"
+
+/datum/species/werewolf/check_species_weakness(obj/item, mob/living/attacker, mob/living/parent)
+	if(has_status_effect(/datum/status_effect/debuff/silver_curse))
+		return 0.75
+	return 0
