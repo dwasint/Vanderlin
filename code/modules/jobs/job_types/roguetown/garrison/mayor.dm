@@ -6,7 +6,7 @@
 	total_positions = 1
 	spawn_positions = 1
 
-	spells = /obj/effect/proc_holder/spell/self/convertrole/town_militia
+	spells = list(/obj/effect/proc_holder/spell/self/convertrole/town_militia)
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(
 		"Humen",
@@ -28,7 +28,7 @@
 	can_have_apprentices = FALSE
 
 /datum/outfit/job/roguetown/mayor
-	name = "Mayor"
+	name = "Town Elder"
 	jobtype = /datum/job/roguetown/mayor
 
 /datum/outfit/job/roguetown/mayor/pre_equip(mob/living/carbon/human/H)
