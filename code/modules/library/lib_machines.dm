@@ -183,8 +183,6 @@
 
 /obj/item/paper/attack_right(mob/user)
 	if(istype(user, /mob/living/carbon/human))
-		if(istype(src, /obj/item/paper/manuscript))
-			return
 		var/mob/living/carbon/human/H = user
 		if(H.mind.get_skill_level(/datum/skill/misc/reading) <= 0)
 			to_chat(user, "<span class='warning'>I don't know how to do this!</span>")
