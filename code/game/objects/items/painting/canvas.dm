@@ -40,6 +40,7 @@
 	draw = icon(icon, icon_state)
 	base = icon(icon, icon_state)
 	underlays += base
+	icon = draw
 	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTERED, PROC_REF(remove_showers))
 
 /obj/item/canvas/Destroy()
@@ -134,6 +135,7 @@
 	. = ..()
 	draw = icon(icon, icon_state)
 	base = icon(icon, icon_state)
+	icon = draw
 	underlays += base
 
 /atom/movable/screen/canvas/Click(location, control, params)
