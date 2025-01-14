@@ -22,6 +22,8 @@
 				continue
 			if(!istype(structure, /obj/structure/rotation_piece/cog))
 				continue
+			if(structure.dir != dir && structure.dir != GLOB.reverse_dir[dir])
+				continue
 			if(structure.rotation_network)
 				if(rotation_network)
 					if(!structure.try_network_merge(src))
@@ -43,6 +45,8 @@
 			if(direction == dir || direction == GLOB.reverse_dir[dir])
 				continue
 			if(!istype(structure, /obj/structure/rotation_piece/cog))
+				continue
+			if(structure.dir != dir && structure.dir != GLOB.reverse_dir[dir])
 				continue
 			if(!(structure in network.connected))
 				continue
