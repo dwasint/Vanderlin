@@ -83,7 +83,7 @@
 		animate(icon_state = "millstone1", time = frame_stage)
 
 /obj/structure/fluff/millstone/process()
-	if(rotations_per_minute)
+	if(rotations_per_minute && !rotation_network.overstressed)
 		work_on_mill(powered = TRUE)
 
 /obj/structure/fluff/millstone/proc/work_on_mill(mob/living/user, powered = FALSE)
@@ -91,7 +91,7 @@
 		return
 	if(!length(millable_contents))
 		return
-	playsound(get_turf(src), 'modular/Neu_Food/sound/milling.ogg', 100, TRUE, -1)
+	playsound(src, 'modular/Neu_Food/sound/milling.ogg', 100, TRUE, -1)
 	if(powered)
 		mill_progress += rotations_per_minute * 2
 	else
