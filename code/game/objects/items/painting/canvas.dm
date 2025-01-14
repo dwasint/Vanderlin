@@ -18,6 +18,7 @@
 	var/author
 	var/author_ckey
 	var/canvas_size = "32x32"
+	var/reject = FALSE
 
 	var/canvas_icon = 'icons/paint_supplies/canvas/canvas_32x32.dmi'
 	var/canvas_icon_state = "canvas"
@@ -42,6 +43,16 @@
 	. = ..()
 	for(var/mob/mob in showers)
 		remove_shower(mob)
+
+/obj/item/canvas/attack_hand(mob/user)
+	. = ..()
+	if(user.cmode)
+		if(anchored)
+			to_chat(user, "You start unmounting [src]")
+			if(!do_after(user, 3 SECONDS, target = src))
+				return
+			anchored = FALSE
+			to_chat(user, "You unmount [src]")
 
 /obj/item/canvas/attack_right(mob/user)
 	. = ..()
@@ -77,9 +88,20 @@
 	for(var/mob/mob in showers)
 		remove_shower(mob)
 
+/obj/item/canvas/attack_turf(turf/T, mob/living/user)
+	. = ..()
+	to_chat(user, "You start mounting [src] to [T]")
+	if(!do_after(user, 3 SECONDS, target = T))
+		return
+	forceMove(T)
+	pixel_x = 0
+	pixel_y = 0
+	anchored = TRUE
+	to_chat(user, "You mount [src] to [T]")
+
 /obj/item/canvas/proc/remove_shower(mob/source)
 	showers -= source
-	source.client?.screens -= used_canvas
+	source.client?.screen -= used_canvas
 	UnregisterSignal(source, COMSIG_MOVABLE_TURF_ENTERED)
 
 /obj/item/canvas/proc/update_drawing(x, y, current_color)
@@ -90,7 +112,7 @@
 /obj/item/canvas/proc/upload_painting()
 	if(!author || !title)
 		return
-	SSpaintings.playerpainting2file(draw, title, author, author_ckey, canvas_size)
+	SSpaintings.playerpainting2file(draw, title, author, author_ckey, canvas_size, src)
 	SSpaintings.update_paintings()
 
 /atom/movable/screen/canvas

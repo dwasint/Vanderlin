@@ -43,11 +43,23 @@ SUBSYSTEM_DEF(paintings)
 	return list()
 
 
-/datum/controller/subsystem/paintings/proc/playerpainting2file(icon/painting, painting_title = "Unknown", author = "Unknown", author_ckey = "Unknown", canvas_size)
+/datum/controller/subsystem/paintings/proc/playerpainting2file(icon/painting, painting_title = "Unknown", author = "Unknown", author_ckey = "Unknown", canvas_size, obj/item/canvas/canvas)
 	if(!painting)
 		return "There is no provided painting!"
 	if(fexists("data/player_generated_paintings/[url_encode(painting_title)].json"))
-		return "there is already a painting by this title!"
+		var/list/painting_data = paintings[painting_title]
+		if(painting_data["author_ckey"] == author_ckey)
+			if(!canvas.reject)
+				for(var/client/client in GLOB.clients)
+					if(client.ckey == author_ckey)
+						if(!(istext(painting_title) && istext(author) && istext(author_ckey)))
+							return "This painting is incorrectly formatted!"
+						var/replace = input(client, "Someone wants to replace [painting_title] with another one by you, do you want to replace this?") as anything in list("Yes", "No")
+						if(replace != "Yes")
+							canvas.reject = TRUE
+							return "there is already a painting by this title!"
+						else
+							del_player_painting(painting_title)
 	if(!(istext(painting_title) && istext(author) && istext(author_ckey)))
 		return "This painting is incorrectly formatted!"
 
