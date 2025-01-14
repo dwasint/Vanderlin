@@ -79,7 +79,7 @@
 
 /obj/item/canvas/proc/remove_shower(mob/source)
 	showers -= source
-	source.screens -= used_canvas
+	source.client?.screens -= used_canvas
 	UnregisterSignal(source, COMSIG_MOVABLE_TURF_ENTERED)
 
 /obj/item/canvas/proc/update_drawing(x, y, current_color)
