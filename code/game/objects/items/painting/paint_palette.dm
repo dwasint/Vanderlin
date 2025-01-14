@@ -47,7 +47,7 @@
 	. = ..()
 	remove_color(user)
 
-/obj/item/paint_palette/AltClick(mob/user)
+/obj/item/paint_palette/attack_self(mob/user)
 	. = ..()
 	add_color(user)
 

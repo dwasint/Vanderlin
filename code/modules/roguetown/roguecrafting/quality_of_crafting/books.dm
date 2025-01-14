@@ -259,3 +259,16 @@
 	types = list(
 		/datum/slapcraft_recipe/masonry,
 	)
+
+/obj/item/recipe_book/art
+	name = "The Artisan's Palette"
+	desc = "Created by Elara Moondance, Visionary Painter and Culinary Alchemist"
+	icon_state ="book3_0"
+	base_icon_state = "book3"
+
+	types = list(
+		/datum/repeatable_crafting_recipe/canvas,
+		/datum/repeatable_crafting_recipe/paint_palette,
+		/datum/repeatable_crafting_recipe/paintbrush,
+		/datum/slapcraft_recipe/carpentry/structure/easel,
+	)
