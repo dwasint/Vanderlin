@@ -22,6 +22,20 @@
 	if(output_item)
 		to_chat(user, span_notice("Please retrieve the printed 5item before inserting new items."))
 		return
+	if(istype(O, /obj/item/canvas))
+		var/obj/item/canvas/M = O
+		if(!M.author || !M.title)
+			to_chat(user, span_notice("This canvas isn't signed."))
+			return
+		// Prompt the user to upload the manuscript
+		var/choice = input(user, "Do you want to add the painting to the archive?") in list("Yes", "No")
+		if(choice == "Yes")
+			upload_painting(user, M)
+			to_chat(user, span_notice("The painting has been uploaded."))
+		else
+			to_chat(user, span_notice("You decide not to upload the painting."))
+		return
+
 	if(istype(O, /obj/item/manuscript))
 		var/obj/item/manuscript/M = O
 		if(!M.written)
@@ -140,6 +154,9 @@
 /obj/machinery/printingpress/proc/upload_manuscript(mob/user, obj/item/manuscript/M)
 	SSlibrarian.playerbook2file(M.compiled_pages, M.name, M.author, M.ckey, M.select_icon)
 	SSlibrarian.update_books()
+
+/obj/machinery/printingpress/proc/upload_painting(mob/user, obj/item/canvas/M)
+	M.upload_painting()
 
 /obj/machinery/printingpress/proc/print_bibble(mob/user)
 	// Creates a static book (Bibble)
