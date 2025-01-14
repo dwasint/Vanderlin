@@ -573,7 +573,7 @@
 				if(prob2craft < 1)
 					to_chat(user, "<span class='danger'>I lack the skills for this...</span>")
 					move_items_back(to_delete, user)
-					actual_crafts+					return
+					return
 				else
 					prob2craft = CLAMP(prob2craft, 5, 99)
 					if(prob(prob2fail)) //critical fail
