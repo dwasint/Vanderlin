@@ -45,151 +45,255 @@
 	asset_datum.send()
 	//Could somebody tell me why this isn't using the browser datum, given that it copypastes all of browser datum's html
 	var/dat = {"
-		<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Paint Canvas</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 10px;
-        }
-        canvas {
-            border: 1px solid black;
-            cursor: crosshair;
-        }
-        .palette {
-            display: flex;
-            margin-top: 10px;
-        }
-        .palette-color {
-            width: 24px;
-            height: 24px;
-            margin-right: 5px;
-            border: 2px solid black;
-            cursor: pointer;
-        }
-        .palette-color.selected {
-            border-color: lightblue;
-        }
-        .buttons {
-            margin-top: 10px;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <canvas id="paintCanvas" width="300" height="300"></canvas>
-        <div class="palette" id="palette"></div>
-        <div class="buttons">
-            <button id="toggleGrid">Toggle Grid</button>
-            <button id="finalize">Finalize</button>
-        </div>
-    </div>
-    <script>
-        (function () {
-            var canvas = document.getElementById('paintCanvas');
-            var ctx = canvas.getContext('2d');
-            var isDrawing = false;
-            var drawingColor = '#000000';
-            var showGrid = false;
-            var palette = document.getElementById('palette');
-            var gridData = Array(36).fill(null).map(function () {
-                return Array(36).fill('#FFFFFF');
-            });
+		<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+		<html>
+			<head>
+				<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+				<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+				<link rel='stylesheet' type='text/css' href='[SSassets.transport.get_asset_url("common.css")]'>
+				<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+				<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.full.min.js"></script>
+				<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css">
+				<script type="text/javascript" src="https://kit.fontawesome.com/8d67455b41.js"></script>
+				<style>
+					.select2-search { color: #40628a; background-color: #272727; }
+					.select2-results { color: #40628a; background-color: #272727; }
+					.select2-selection { border-radius: 0px !important; }
 
-            function drawGrid() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                var scale = canvas.width / 36;
+					ul {
+					  list-style-type: none; /* Remove bullets */
+					  padding: 0; /* Remove padding */
+					  margin: 0; /* Remove margins */
+					}
 
-                for (var x = 0; x < gridData.length; x++) {
-                    for (var y = 0; y < gridData\[x\].length; y++) {
-                        ctx.fillStyle = gridData\[x\]\[y\];
-                        ctx.fillRect(x * scale, y * scale, scale, scale);
-                        if (showGrid) {
-                            ctx.strokeStyle = '#888888';
-                            ctx.lineWidth = 0.5;
-                            ctx.strokeRect(x * scale, y * scale, scale, scale);
-                        }
-                    }
-                }
-            }
+					ul li {
+						margin-top: -1px; /* Prevent double borders */
+						padding: 12px; /* Add some padding */
+						color: #ffffff;
+						text-decoration: none;
+						background: #40628a;
+						border: 1px solid #161616;
+						margin: 0 2px 0 0;
+						cursor:default;
+					}
 
-            function getCanvasCoords(event) {
-                var rect = canvas.getBoundingClientRect();
-                var x = Math.floor((event.clientX - rect.left) / (canvas.width / 36));
-                var y = Math.floor((event.clientY - rect.top) / (canvas.height / 36));
-                return { x: x, y: y };
-            }
+					.remove-reagent {
+					background-color: #d03000;
+					}
 
-            function drawPoint(x, y, color) {
-                if (x >= 0 && x < 36 && y >= 0 && y < 36) {
-                    gridData\[x\]\[y\] = color;
-                    drawGrid();
-                }
-            }
+					.container-control {
+					  width: 48%;
+					  float: left;
+					  padding-right: 10px;
+					}
+					.reagent > div, .reagent-div {
+						float: right;
+						width: 200px;
+					}
+					input.reagent {
+					  width: 50%;
+					}
+					.grenade-data {
+					  display: inline-block;
+					}
+				</style>
+				<script>
+				window.onload=function(){
 
-            canvas.addEventListener('mousedown', function (event) {
-                isDrawing = true;
-                var coords = getCanvasCoords(event);
-                drawPoint(coords.x, coords.y, drawingColor);
-            });
+					var reagents = [reagentsforbeakers()];
 
-            canvas.addEventListener('mousemove', function (event) {
-                if (isDrawing) {
-                    var coords = getCanvasCoords(event);
-                    drawPoint(coords.x, coords.y, drawingColor);
-                }
-            });
+					var containers = [beakersforbeakers()];
 
-            canvas.addEventListener('mouseup', function () {
-                isDrawing = false;
-            });
+					$('select\[name="containertype"\]').select2({
+						data: containers,
+						escapeMarkup: noEscape,
+						templateResult: formatContainer,
+						templateSelection: textSelection,
+						width: "300px"
+						});
+					$('.select-new-reagent').select2({
+					data: reagents,
+					escapeMarkup: noEscape,
+					templateResult: formatReagent,
+					templateSelection: textSelection
+					});
 
-            canvas.addEventListener('mouseout', function () {
-                isDrawing = false;
-            });
+					$('.remove-reagent').click(function() { $(this).parents('li').remove(); });
 
-            document.getElementById('toggleGrid').addEventListener('click', function () {
-                showGrid = !showGrid;
-                drawGrid();
-            });
+					$('#spawn-grenade').click(function() {
+						var containers = $('div.container-control').map(function() {
+					  	  var type = $(this).children('select\[name=containertype\]').select2("data")\[0\].id;
+					      var reagents = $(this).find("li.reagent").map(function() {
+					        return { "reagent": $(this).data("type"), "volume": $(this).find('input').val()};
+					        }).get();
+					     return {"container": type, "reagents": reagents };
+					  }).get();
+						var grenadeType = $('#grenade-type').val()
+						var grenadeData = {};
+						$('.grenade-data.'+grenadeType).find(':input').each(function() {
+							var ret = {};
+							grenadeData\[$(this).attr('name')\] = $(this).val();
+						});
+					  $.ajax({
+					      url: '',
+					      data: {
+									"_src_": "holder",
+									"admin_token": "[RawHrefToken()]",
+									"beakerpanel": "spawngrenade",
+									"containers": JSON.stringify(containers),
+									"grenadetype": grenadeType,
+									"grenadedata": JSON.stringify(grenadeData)
+								}
+					    });
+					});
 
-            document.getElementById('finalize').addEventListener('click', function () {
-                alert('Canvas finalized!');
-            });
+					$('.spawn-container').click(function() {
+						var container = $(this).parents('div.container-control')\[0\];
+					  var type = $(container).children('select\[name=containertype\]').select2("data")\[0\].id;
+					  var reagents = $(container).find("li.reagent").map(function() {
+					  	return { "reagent": $(this).data("type"), "volume": $(this).find('input').val()};
+					    }).get();
+					  $.ajax({
+					  	url: '',
+					    data: {
+								"_src_": "holder",
+								"admin_token": "[RawHrefToken()]",
+								"beakerpanel": "spawncontainer",
+								"container": JSON.stringify({"container": type, "reagents": reagents }),
 
-            var colors = \['#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FF00FF', '#00FFFF', '#000000', '#FFFFFF'\];
+							}
+						});
+					});
 
-            colors.forEach(function (color) {
-                var colorDiv = document.createElement('div');
-                colorDiv.className = 'palette-color';
-                colorDiv.style.backgroundColor = color;
-                colorDiv.addEventListener('click', function () {
-                    drawingColor = color;
-                    var selected = document.querySelector('.palette-color.selected');
-                    if (selected) {
-                        selected.classList.remove('selected');
-                    }
-                    colorDiv.classList.add('selected');
-                });
-                palette.appendChild(colorDiv);
-            });
+					$('.add-reagent').click(function() {
+						var select = $(this).parents('li').children('select').select2("data")\[0\];
+					  var amount = $(this).parent().children('input').val();
+					  addReagent($(this).parents('ul'), select.id, select.text, amount)
+					})
 
-            drawGrid();
-        })();
-    </script>
-</body>
-</html>
+					$('.export-reagents').click(function() {
+						var container = $(this).parents('div.container-control')\[0\];
+					  var ret = \[\];
+					  var reagents = $(container).find("li.reagent").each(function() {
+					  	var reagentname = $(this).contents().filter(function(){ return this.nodeType == 3; })\[0\].nodeValue.toLowerCase().replace(/\\W/g, '');
+					    ret.push(reagentname+"="+$(this).find('input').val());
+					    });
+					  prompt("Copy this value", ret.join(';'));
 
+					});
+
+					$('.import-reagents').click(function() {
+						var macro = prompt("Enter a chemistry macro", "");
+					  var parts = macro.split(';');
+					  var container = $(this).parents('div.container-control')\[0\];
+					  var ul = $(container).find("ul");
+
+					  $(parts).each(function() {
+					  	var reagentArr = this.split('=');
+					    var thisReagent = $(reagents).filter(function() { return this.text.toLowerCase().replace(/\\W/g, '') == reagentArr\[0\] })\[0\];
+					    addReagent(ul, thisReagent.id, thisReagent.text, reagentArr\[1\]);
+					  });
+
+					});
+
+					$('#grenade-type').change(function() {
+						$('.grenade-data').hide();
+					  $('.grenade-data.'+$(this).val()).show();
+					})
+
+					function addReagent(ul, reagentType, reagentName, amount)
+					{
+						$('<li class="reagent" data-type="'+reagentType+'">'+reagentName+'<div><input class="reagent" value="'+amount+'" />&nbsp;&nbsp;<button class="remove-reagent"><i class="far fa-trash-alt"></i>&nbsp;Remove</button></div></li>').insertBefore($(ul).children('li').last());
+					  $(ul).children('li').last().prev().find('button').click(function() { $(this).parents('li').remove(); });
+					}
+
+					function textSelection(selection)
+					{
+					return selection.text;
+					}
+
+					function noEscape(markup)
+					{
+					return markup;
+					}
+
+					function formatReagent(result)
+					{
+					return '<span>'+result.text+'</span><br/><span><small>'+result.id+'</small></span>';
+					}
+
+					function formatContainer(result)
+					{
+					return '<span>'+result.text+" ("+result.volume+'u)</span><br/><span><small>'+result.id+'</small></span>';
+					}
+
+
+			}
+			</script>
+			</head>
+			<body scroll=auto>
+				<div class='uiWrapper'>
+					<div class='uiTitleWrapper'><div class='uiTitle'><tt>Beaker panel</tt></div></div>
+					<div class='uiContent'>
+
+		<div class="width: 100%">
+		<button id="spawn-grenade">
+		<i class="fas fa-bomb"></i>&nbsp;Spawn grenade
+		</button>
+			<label for="grenade-type">Grenade type: </label>
+		<select id="grenade-type">
+			<option value="normal">Normal</option>
+		</select>
+		<div class="grenade-data normal">
+		</div>
+			<br />
+<small>note: beakers recommended, other containers may have issues</small>
+		</div>
+
+	"}
+	for (var/i in 1 to 2 )
+		dat += {"
+			<div class="container-control">
+			<h4>
+			Container [i]:
+			</h4>
+			<br />
+			<label for="beaker[i]type">Container type</label>
+			<select name="containertype" id="beaker[i]type"></select>
+			<br />
+			<br />
+			<div>
+			<button class="spawn-container">
+			<i class="fas fa-cog"></i>&nbsp;Spawn
+				</button>
+				&nbsp;&nbsp;&nbsp;
+				<button class="import-reagents">
+			<i class="fas fa-file-import"></i>&nbsp;Import
+				</button>
+				&nbsp;&nbsp;&nbsp;
+				<button class="export-reagents">
+			<i class="fas fa-file-export"></i>&nbsp;Export
+				</button>
+
+			</div>
+				<ul>
+				<li>
+
+					<select class="select-new-reagent"></select><div class="reagent-div"><input style="width: 50%" type="text" name="newreagent" value="40" />&nbsp;&nbsp;<button class="add-reagent">
+				<i class="fas fa-plus"></i>&nbsp;Add
+				</button>
+
+				</div>
+			</li>
+			</ul>
+			</div>
+		"}
+
+	dat += {"
+					</div>
+				</div>
+			</body>
+		</html>
 	"}
 
 	usr << browse(dat, "window=beakerpanel;size=1100x720")
