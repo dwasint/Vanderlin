@@ -1,41 +1,4 @@
 
-///////////
-// EASEL //
-///////////
-
-/obj/structure/easel
-	name = "easel"
-	desc = ""
-	icon = 'icons/obj/artstuff.dmi'
-	icon_state = "easel"
-	density = TRUE
-	resistance_flags = FLAMMABLE
-	max_integrity = 60
-	var/obj/item/canvas/painting = null
-
-//Adding canvases
-/obj/structure/easel/attackby(obj/item/I, mob/user, params)
-	if(istype(I, /obj/item/canvas))
-		var/obj/item/canvas/C = I
-		user.dropItemToGround(C)
-		painting = C
-		C.forceMove(get_turf(src))
-		C.layer = layer+0.1
-		user.visible_message("<span class='notice'>[user] puts \the [C] on \the [src].</span>","<span class='notice'>I place \the [C] on \the [src].</span>")
-	else
-		return ..()
-
-
-//Stick to the easel like glue
-/obj/structure/easel/Move()
-	var/turf/T = get_turf(src)
-	. = ..()
-	if(painting && painting.loc == T) //Only move if it's near us.
-		painting.forceMove(get_turf(src))
-	else
-		painting = null
-
-
 //////////////
 // CANVASES //
 //////////////
@@ -45,7 +8,7 @@
 //To safe memory on making /icons we cache the blanks..
 GLOBAL_LIST_INIT(globalBlankCanvases, new(AMT_OF_CANVASES))
 
-/obj/item/canvas
+/obj/item/canvasold
 	name = "canvas"
 	desc = ""
 	icon = 'icons/obj/artstuff.dmi'
@@ -53,15 +16,15 @@ GLOBAL_LIST_INIT(globalBlankCanvases, new(AMT_OF_CANVASES))
 	resistance_flags = FLAMMABLE
 	var/whichGlobalBackup = 1 //List index
 
-/obj/item/canvas/nineteenXnineteen
+/obj/item/canvasold/nineteenXnineteen
 	icon_state = "19x19"
 	whichGlobalBackup = 2
 
-/obj/item/canvas/twentythreeXnineteen
+/obj/item/canvasold/twentythreeXnineteen
 	icon_state = "23x19"
 	whichGlobalBackup = 3
 
-/obj/item/canvas/twentythreeXtwentythree
+/obj/item/canvasold/twentythreeXtwentythree
 	icon_state = "23x23"
 	whichGlobalBackup = 4
 
@@ -71,12 +34,12 @@ GLOBAL_LIST_INIT(globalBlankCanvases, new(AMT_OF_CANVASES))
 //...AND NOBODY CAN FIGURE OUT WHY?
 //THEN GO ON BRAVE TRAVELER
 //TRY TO FIX THEM AND REMOVE THIS CODE
-/obj/item/canvas/Initialize()
+/obj/item/canvasold/Initialize()
 	..()
 	return INITIALIZE_HINT_QDEL //Delete on creation
 
 //Find the right size blank canvas
-/obj/item/canvas/proc/getGlobalBackup()
+/obj/item/canvasold/proc/getGlobalBackup()
 	. = null
 	if(GLOB.globalBlankCanvases[whichGlobalBackup])
 		. = GLOB.globalBlankCanvases[whichGlobalBackup]
@@ -88,7 +51,7 @@ GLOBAL_LIST_INIT(globalBlankCanvases, new(AMT_OF_CANVASES))
 
 
 //One pixel increments
-/obj/item/canvas/attackby(obj/item/I, mob/user, params)
+/obj/item/canvasold/attackby(obj/item/I, mob/user, params)
 	//Click info
 	var/list/click_params = params2list(params)
 	var/pixX = text2num(click_params["icon-x"])
@@ -118,7 +81,7 @@ GLOBAL_LIST_INIT(globalBlankCanvases, new(AMT_OF_CANVASES))
 
 
 //Clean the whole canvas
-/obj/item/canvas/attack_self(mob/user)
+/obj/item/canvasold/attack_self(mob/user)
 	if(!user)
 		return
 	var/icon/blank = getGlobalBackup()

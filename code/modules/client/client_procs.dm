@@ -179,6 +179,11 @@ GLOBAL_LIST_EMPTY(respawncounts)
 		answer_schizohelp(locate(href_list["schizohelp"]))
 		return
 
+	if(href_list["delete_painting"])
+		if(!holder)
+			return
+		SSpaintings.del_player_painting(href_list["id"])
+		SSpaintings.update_paintings()
 	switch(href_list["_src_"])
 		if("holder")
 			hsrc = holder
