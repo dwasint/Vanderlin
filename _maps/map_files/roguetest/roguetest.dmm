@@ -1128,6 +1128,10 @@
 /obj/structure/rotation_piece/cog/large,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors)
+"hi" = (
+/obj/structure/fluff/millstone,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors)
 "hP" = (
 /obj/item/rogueweapon/polearm/woodstaff/aries,
 /turf/open/floor/rogue/cobble,
@@ -6375,9 +6379,9 @@ cN
 XC
 Mn
 eE
-cN
-al
-al
+xp
+Mn
+hi
 at
 ab
 cQ

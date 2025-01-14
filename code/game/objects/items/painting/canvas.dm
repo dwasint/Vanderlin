@@ -13,6 +13,7 @@
 	var/list/showers = list()
 
 	var/icon/draw
+	var/icon/base
 
 	var/title
 	var/author
@@ -37,6 +38,8 @@
 	used_canvas.screen_loc = canvas_screen_loc
 	used_canvas.icon_state = canvas_icon_state
 	draw = icon(icon, icon_state)
+	base = icon(icon, icon_state)
+	underlays += base
 	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTERED, PROC_REF(remove_showers))
 
 /obj/item/canvas/Destroy()
@@ -83,6 +86,7 @@
 		return
 	user?.client.screen += used_canvas
 	showers |= user
+	RegisterSignal(user, COMSIG_MOVABLE_TURF_ENTERED, PROC_REF(remove_shower))
 
 /obj/item/canvas/proc/remove_showers()
 	for(var/mob/mob in showers)
@@ -106,7 +110,6 @@
 
 /obj/item/canvas/proc/update_drawing(x, y, current_color)
 	draw.DrawBox(current_color, x, y)
-
 	icon = draw
 
 /obj/item/canvas/proc/upload_painting()
@@ -121,16 +124,17 @@
 	screen_loc = "6,6"
 
 	var/obj/item/canvas/host
-
-	var/icon/draw
-
 	var/list/modified_areas = list()
 	var/icon/base_icon
+	var/icon/draw
+	var/icon/base
 
 
 /atom/movable/screen/canvas/Initialize(mapload, ...)
 	. = ..()
 	draw = icon(icon, icon_state)
+	base = icon(icon, icon_state)
+	underlays += base
 
 /atom/movable/screen/canvas/Click(location, control, params)
 	. = ..()
@@ -138,6 +142,8 @@
 	if(!istype(brush))
 		return
 	var/current_color = brush.current_color
+	if(!current_color)
+		return
 	var/list/param_list = params2list(params)
 
 	var/x = text2num(param_list["icon-x"])
@@ -157,10 +163,8 @@
 			if(pre_merge != current_color)
 				current_color = BlendRGB(current_color, pre_merge, 0.5)
 		modified_areas |= "[x][y]"
-
 	draw.DrawBox(current_color, x*host.canvas_divider_x, y*host.canvas_divider_y, (x*host.canvas_divider_x) + host.pixel_size_x, (y*host.canvas_divider_y) + host.pixel_size_y)
 	host.update_drawing(x+1, y+1, current_color)
-
 	icon = draw
 
 /obj/item/random_painting/Initialize()
