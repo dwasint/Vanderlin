@@ -48,7 +48,6 @@
 //		return
 //	next_ai_tick = world.time + rand(10,20)
 	cmode = 1
-	update_cone_show()
 	if(stat == CONSCIOUS)
 		if(on_fire || buckled || restrained() || pulledby)
 			resisting = TRUE
