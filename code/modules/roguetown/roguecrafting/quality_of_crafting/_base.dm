@@ -573,7 +573,7 @@
 				if(prob2craft < 1)
 					to_chat(user, "<span class='danger'>I lack the skills for this...</span>")
 					move_items_back(to_delete, user)
-					return
+					actual_crafts+					return
 				else
 					prob2craft = CLAMP(prob2craft, 5, 99)
 					if(prob(prob2fail)) //critical fail
@@ -584,9 +584,11 @@
 						if(user.client?.prefs.showrolls)
 							to_chat(user, "<span class='danger'>I've failed to craft \the [name]. (Success chance: [prob2craft]%)</span>")
 							move_items_back(to_delete, user)
+							actual_crafts++
 							continue
 						to_chat(user, "<span class='danger'>I've failed to craft \the [name].</span>")
 						move_items_back(to_delete, user)
+						actual_crafts++
 						continue
 
 				if(put_items_in_hand)
