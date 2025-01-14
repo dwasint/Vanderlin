@@ -4,6 +4,8 @@
 	icon = 'icons/paint_supplies/paint_items.dmi'
 	icon_state = "paintbrush"
 
+	grid_height = 32
+	grid_width = 64
 	var/current_color
 
 

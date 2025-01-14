@@ -29,6 +29,9 @@
 	var/pixel_size_x = 4
 	var/pixel_size_y = 4
 
+	var/list/overlay_to_index = list()
+	var/current_overlays = 0
+
 /obj/item/canvas/Initialize()
 	. = ..()
 	used_canvas = new
@@ -110,14 +113,32 @@
 	UnregisterSignal(source, COMSIG_MOVABLE_TURF_ENTERED)
 
 /obj/item/canvas/proc/update_drawing(x, y, current_color)
-	draw.DrawBox(current_color, x, y)
-	icon = draw
+	if("[x][y]" in overlay_to_index)
+		cut_overlay(overlay_to_index["[x][y]"])
+		overlay_to_index -= "[x][y]"
+	var/mutable_appearance/MA = mutable_appearance('icons/paint_supplies/pixel.dmi', "pixel")
+	MA.color = current_color
+	MA.pixel_x = x
+	MA.pixel_y = y
+	add_overlay(MA)
+	overlay_to_index |= "[x][y]"
+	overlay_to_index["[x][y]"] = MA
+	current_overlays++
+	if(current_overlays > 75)
+		icon = usr.client.RenderIcon(src)
+		current_overlays = 0
+		cut_overlays()
+		overlay_to_index = list()
 
 /obj/item/canvas/proc/upload_painting()
 	if(!author || !title)
 		return
-	SSpaintings.playerpainting2file(draw, title, author, author_ckey, canvas_size, src)
-	SSpaintings.update_paintings()
+	var/icon/rendered = usr.client.RenderIcon(src)
+	cut_overlays()
+	if(rendered)
+		icon = rendered
+		SSpaintings.playerpainting2file(icon, title, author, author_ckey, canvas_size, src)
+		SSpaintings.update_paintings()
 
 /atom/movable/screen/canvas
 	icon = 'icons/paint_supplies/canvas/canvas_32x32.dmi'
@@ -129,6 +150,9 @@
 	var/icon/base_icon
 	var/icon/draw
 	var/icon/base
+
+	var/list/overlay_to_index = list()
+	var/current_overlays = 0
 
 
 /atom/movable/screen/canvas/Initialize(mapload, ...)
@@ -152,12 +176,14 @@
 	var/y = text2num(param_list["icon-y"])
 
 	y = min(FLOOR(y / host.canvas_divider_y, 1), host.canvas_size_y)
-	x = min(FLOOR(x / host.canvas_divider_y, 1), host.canvas_size_x)
+	x = min(FLOOR(x / host.canvas_divider_x, 1), host.canvas_size_x)
 
 	if(param_list["right"])
 		var/original_color = base_icon.GetPixel(x, y)
 		current_color = original_color
 		modified_areas -= "[x][y]"
+		if("[x][y]" in overlay_to_index)
+			cut_overlay(overlay_to_index["[x][y]"])
 	else
 
 		if("[x][y]" in modified_areas)
@@ -165,9 +191,27 @@
 			if(pre_merge != current_color)
 				current_color = BlendRGB(current_color, pre_merge, 0.5)
 		modified_areas |= "[x][y]"
-	draw.DrawBox(current_color, x*host.canvas_divider_x, y*host.canvas_divider_y, (x*host.canvas_divider_x) + host.pixel_size_x, (y*host.canvas_divider_y) + host.pixel_size_y)
-	host.update_drawing(x+1, y+1, current_color)
-	icon = draw
+		if("[x][y]" in overlay_to_index)
+			cut_overlay(overlay_to_index["[x][y]"])
+
+	var/mutable_appearance/MA = mutable_appearance(host.canvas_icon, "pixel")
+	MA.color = current_color
+	MA.pixel_x = (x) * host.canvas_divider_y
+	MA.pixel_y = (y) * host.canvas_divider_x
+	MA.layer = layer +1
+	MA.plane = plane
+	add_overlay(MA)
+	current_overlays++
+	overlay_to_index |= "[x][y]"
+	overlay_to_index["[x][y]"] = MA
+	if(current_overlays > 75)
+		icon = usr.client.RenderIcon(src)
+		current_overlays = 0
+		cut_overlays()
+		overlay_to_index = list()
+
+	host.update_drawing(x, y, current_color)
+
 
 /obj/item/random_painting/Initialize()
 	. = ..()
