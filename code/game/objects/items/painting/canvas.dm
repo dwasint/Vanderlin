@@ -124,7 +124,7 @@
 	overlay_to_index |= "[x][y]"
 	overlay_to_index["[x][y]"] = MA
 	current_overlays++
-	if(current_overlays > 150)
+	if(current_overlays > 75)
 		icon = usr.client.RenderIcon(src)
 		current_overlays = 0
 		cut_overlays()
@@ -204,7 +204,7 @@
 	current_overlays++
 	overlay_to_index |= "[x][y]"
 	overlay_to_index["[x][y]"] = MA
-	if(current_overlays > 150)
+	if(current_overlays > 75)
 		icon = usr.client.RenderIcon(src)
 		current_overlays = 0
 		cut_overlays()
