@@ -124,7 +124,7 @@
 	overlay_to_index |= "[x][y]"
 	overlay_to_index["[x][y]"] = MA
 	current_overlays++
-	if(current_overlays > 75)
+	if(current_overlays > 150)
 		icon = usr.client.RenderIcon(src)
 		current_overlays = 0
 		cut_overlays()
@@ -175,8 +175,8 @@
 	var/x = text2num(param_list["icon-x"])
 	var/y = text2num(param_list["icon-y"])
 
-	y = min(FLOOR(y / host.canvas_divider_y, 1), host.canvas_size_y)
-	x = min(FLOOR(x / host.canvas_divider_x, 1), host.canvas_size_x)
+	y = min(FLOOR(y / host.canvas_divider_y, 1), host.canvas_size_y-1)
+	x = min(FLOOR(x / host.canvas_divider_x, 1), host.canvas_size_x-1)
 
 	if(param_list["right"])
 		var/original_color = base_icon.GetPixel(x, y)
@@ -187,7 +187,7 @@
 	else
 
 		if("[x][y]" in modified_areas)
-			var/pre_merge = draw.GetPixel(x, y)
+			var/pre_merge = draw.GetPixel(x+1, y+1)
 			if(pre_merge != current_color)
 				current_color = BlendRGB(current_color, pre_merge, 0.5)
 		modified_areas |= "[x][y]"
@@ -204,14 +204,13 @@
 	current_overlays++
 	overlay_to_index |= "[x][y]"
 	overlay_to_index["[x][y]"] = MA
-	if(current_overlays > 75)
+	if(current_overlays > 150)
 		icon = usr.client.RenderIcon(src)
 		current_overlays = 0
 		cut_overlays()
 		overlay_to_index = list()
 
 	host.update_drawing(x, y, current_color)
-
 
 /obj/item/random_painting/Initialize()
 	. = ..()
