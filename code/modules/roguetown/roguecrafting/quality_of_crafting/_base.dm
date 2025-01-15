@@ -256,7 +256,19 @@
 			for(var/obj/item in listed_turf.contents)
 				usable_contents |= item
 
-	for(var/craft = 1 to actual_crafts)
+	while(actual_crafts)
+		actual_crafts--
+		for(var/obj/item/I in user.held_items)
+			usable_contents |= I
+		inactive_hand = user.get_inactive_held_item()
+		if(is_type_in_list(inactive_hand, offhand_repeat_check))
+			for(var/obj/item in inactive_hand.contents)
+				storage_contents |= item
+
+		if(check_around_owner)
+			for(var/turf/listed_turf in range(1, user))
+				for(var/obj/item in listed_turf.contents)
+					usable_contents |= item
 		var/list/copied_requirements = requirements.Copy()
 		var/list/copied_reagent_requirements = reagent_requirements.Copy()
 		var/list/copied_tool_usage = tool_usage.Copy()
@@ -626,7 +638,6 @@
 				return
 		else
 			move_items_back(to_delete, user)
-			return
 
 /datum/repeatable_crafting_recipe/proc/move_items_back(list/items, mob/user)
 	for(var/obj/item/item in items)
