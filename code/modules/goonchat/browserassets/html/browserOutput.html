@@ -1,57 +1,111 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Chat</title>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<link rel="stylesheet" type="text/css" href="font-awesome.css" />
-	<link id="sheetofstyles" rel="stylesheet" type="text/css" href="browserOutput.css" />
-	<link rel="stylesheet" type="text/css" href="spritesheet_chat.css" />
-	<script type="text/javascript" src="jquery.min.js"></script>
-	<script type="text/javascript" src="json2.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Chat</title>
+    <link rel="stylesheet" type="text/css" href="font-awesome.css" />
+    <link id="sheetofstyles" rel="stylesheet" type="text/css" href="browserOutput.css" />
+    <script type="text/javascript" src="purify.min.js"></script>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="json2.min.js"></script>
+    <style>
+        /* Basic styling for context menu */
+        #contextMenu {
+            display: none;
+            position: absolute;
+            background: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.2);
+            z-index: 1000;
+            width: 150px;
+        }
+
+        #contextMenu ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        #contextMenu li {
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        #contextMenu li:hover {
+            background-color: #ddd;
+        }
+
+    </style>
 </head>
 <body>
-	<div id="loading">
-		<i class="fas fa-spinner fa-2x"></i>
-		<div>
-			Loading...<br><br>
-			If this takes longer than 30 seconds, it will automatically reload a maximum of 5 times.<br>
-			If it <b>still</b> doesn't work, use the bug report button at the top right of the window.
-		</div>
-	</div>
-	<div id="messages">
+    <div id="loading">
+        <i class="fas fa-spinner fa-2x"></i>
+        <div>
+            Loading...<br><br>
+            If this takes longer than 30 seconds, it will automatically reload a maximum of 5 times.<br>
+            If it <b>still</b> doesn't work, use the bug report button at the top right of the window.
+        </div>
+    </div>
+    <div id="contextMenu">
+        <ul>
+            <li id="ctx_option1">Option 1</li>
+            <li id="ctx_option2">Option 2</li>
+            <li id="ctx_option3">Option 3</li>
+        </ul>
+    </div>
 
-	</div>
-	<div id="userBar" style="display: none;">
-<!--		<div id="ping">
-			<i class="fas fa-circle" id="pingDot"></i>
-			<span class="ms" id="pingMs">--ms</span>
-		</div>-->
-<!--		<div id="darkmodething">
-			<a href="#" class="subCell toggle" id="darkmodetoggle" title="Darkmode"><i class="fas fa-adjust"></i></a>
-		</div>-->
-		<div id="audio">
-			<a href="#" class="subCell toggle" id="toggleAudio" title="Audio"><i class="fas fa-volume-up"></i></a>
-		</div>
-		<div id="options">
-			<a href="#" class="subCell toggle" id="toggleOptions" title="Options"><i class="fas fa-cog"></i></a>
-		</div>
-		<div class="sub" id="subOptions">
-			<a href="#" class="subCell decreaseFont topCell" id="decreaseFont"><span>Decrease font size</span> <i class="fas fa-font"></i></a>
-			<a href="#" class="subCell increaseFont" id="increaseFont"><span>Increase font size</span> <i class="fas fa-font"></i></a>
-			<a href="#" class="subCell decreaseLineHeight" id="decreaseLineHeight"><span>Decrease line height</span> <i class="fas fa-text-height"></i></a>
-			<a href="#" class="subCell increaseLineHeight" id="increaseLineHeight"><span>Increase line height</span> <i class="fas fa-text-height"></i></a>
-<!--			<a href="#" class="subCell togglePing" id="togglePing"><span>Toggle ping display</span> <i class="fas fa-circle"></i></a>-->
-<!--			<a href="#" class="subCell highlightTerm" id="highlightTerm"><span>Highlight string</span> <i class="fas fa-tag"></i></a>-->
-<!--			<a href="#" class="subCell saveLog" id="saveLog"><span>Save chat log</span> <i class="fas fa-save"></i></a>-->
-			<a href="#" class="subCell toggleCombine" id="toggleCombine"><span>Toggle line combining</span> <i class="fas fa-filter"></i></a>
-<!--			<a href="#" class="subCell clearMessages" id="clearMessages"><span>Clear all messages</span> <i class="fas fa-eraser"></i></a>-->
-		</div>
-		<div class="sub" id="subAudio">
-			<span class="subCell topCell" id="musicVolumeSpan"><input type="range" class="hidden" id="musicVolume"><span id="musicVolumeText">Admin music volume</span><i class="fas fa-music"></i></span>
-		</div>
-	</div>
-	<audio class="hidden" id="adminMusic" autoplay></audio>
-	<script type="text/javascript" src="browserOutput.js"></script>
+    <div id="userBar" style="display: none;">
+        <!-- Your user bar content here -->
+    </div>
+
+    <script type="text/javascript" src="errorHandler.js"></script>
+    <script type="text/javascript" src="browserOutput.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // Catch right-click on messages
+            $('#messages').on('contextmenu', '.say', function(e) {
+                e.preventDefault(); // Prevent the default browser context menu
+
+                // Get the clicked element (message)
+                var messageElement = $(this);
+
+                // You can add custom data here if needed, such as message ID or any other data
+                var messageId = messageElement.attr('data-id'); // Assuming you have a data-id for each message
+
+                // Position the context menu near the mouse pointer
+                $('#contextMenu').css({
+                    top: e.pageY + 5 + 'px',
+                    left: e.pageX + 5 + 'px'
+                }).show();
+
+                // Optional: Perform actions based on the clicked message
+                $('#ctx_option1').on('click', function() {
+                    alert('Option 1 clicked for message ' + messageId);
+                    $('#contextMenu').hide();
+                });
+
+                $('#ctx_option2').on('click', function() {
+                    alert('Option 2 clicked for message ' + messageId);
+                    $('#contextMenu').hide();
+                });
+
+                $('#ctx_option3').on('click', function() {
+                    alert('Option 3 clicked for message ' + messageId);
+                    $('#contextMenu').hide();
+                });
+            });
+
+            // Hide the context menu if clicked outside of it
+            $(document).on('click', function(e) {
+                // Check if the click was outside of the context menu or messages area
+                if (!$(e.target).closest('#contextMenu').length && !$(e.target).closest('#messages').length) {
+                    $('#contextMenu').hide();  // Hide the context menu
+                }
+            });
+        });
+    </script>
 </body>
 </html>
