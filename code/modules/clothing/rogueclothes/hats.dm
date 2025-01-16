@@ -131,10 +131,16 @@
 	desc = "A comfortable and fashionable headgear."
 	icon_state = "chap_alt"
 	flags_inv = HIDEEARS
-
+	color = CLOTHING_LINEN
 /obj/item/clothing/head/roguetown/chaperon/greyscale/random/Initialize()
 	. = ..()
-	color = pick(CLOTHING_ROYAL_TEAL, CLOTHING_FOREST_GREEN, CLOTHING_FYRITIUS_DYE, CLOTHING_ROYAL_MAJENTA, CLOTHING_MUSTARD_YELLOW,CLOTHING_SALMON, CLOTHING_SKY_BLUE, CLOTHING_YELLOW_OCHRE, CLOTHING_RED_OCHRE, CLOTHING_RUSSET)
+	color = RANDOM_NOBLE_DYES
+
+/obj/item/clothing/head/roguetown/chaperon/greyscale/silk
+	icon_state = "chap_silk"
+/obj/item/clothing/head/roguetown/chaperon/greyscale/silk/random/Initialize()
+	. = ..()
+	color = RANDOM_NOBLE_DYES
 
 /obj/item/clothing/head/roguetown/chaperon/greyscale/chaperonsecondary
 	color = CLOTHING_PLUM_PURPLE
@@ -976,6 +982,12 @@
 	item_state = "malumhelm"
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 
+/obj/item/clothing/head/roguetown/helmet/heavy/ravox
+	name = "ravoxian helmet"
+	desc = "Headwear commonly worn by Templars in service to Ravox. It resembles an heavily adorned visored sallet."
+	icon_state = "ravoxhelm"
+	item_state = "ravoxhelm"
+	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 
 //............... Sinistar (Graggar) Helmet ............... //
 /obj/item/clothing/head/roguetown/helmet/heavy/sinistar

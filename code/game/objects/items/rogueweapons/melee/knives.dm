@@ -150,7 +150,8 @@
 		var/obj/item/item = O
 		if(item.sewrepair && item.salvage_result) // We can only salvage objects which can be sewn!
 			var/salvage_time = 70
-			salvage_time = (70 - ((user.mind.get_skill_level(/datum/skill/misc/sewing)) * 10))
+			var/skill_level = user.mind.get_skill_level(/datum/skill/misc/sewing)
+			salvage_time = (70 - (skill_level * 10))
 			if(!do_after(user, salvage_time, target = user))
 				return
 			if(item.fiber_salvage) //We're getting fiber as base if fiber is present on the item
@@ -158,9 +159,9 @@
 			if(istype(item, /obj/item/storage))
 				var/obj/item/storage/bag = item
 				bag.emptyStorage()
-			var/skill_level = user.mind.get_skill_level(/datum/skill/misc/sewing)
-			if(prob(50 - (skill_level * 10))) // We are dumb and we failed!
-				to_chat(user, span_info("I ruined some of the materials due to my lack of skill..."))
+			var/probability = max(0, 50 - (skill_level * 10))
+			if(prob(probability)) // We are dumb and we failed!
+				to_chat(user, span_warning("I ruined some of the materials due to my lack of skill..."))
 				playsound(item, 'sound/foley/cloth_rip.ogg', 50, TRUE)
 				qdel(item)
 				user.mind.add_sleep_experience(/datum/skill/misc/sewing, (user.STAINT)) //Getting exp for failing
@@ -427,8 +428,8 @@
 	desc = "A tool favored by the wood-elves, easy to make, useful for skinning the flesh of beast and man alike."
 	icon_state = "stone_knife"
 	resistance_flags = FLAMMABLE // Weapon made mostly of wood
-	max_integrity = 15
-	max_blade_int = 15
+	max_integrity = 30
+	max_blade_int = 30
 	wdefense = TERRIBLE_PARRY
 	smeltresult = /obj/item/ash
 	sellprice = 5
@@ -440,14 +441,15 @@
 	name = "villager knife"
 	desc = "The loyal companion of simple peasants, able to cut hard bread and carve wood. A versatile kitchen utensil and tool."
 	icon_state = "villagernife"
+	smeltresult = null
 
 /obj/item/rogueweapon/knife/copper
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/thrust)
 	name = "copper dagger"
 	desc = "A dagger of an older design, the copper serves decent enough."
 	icon_state = "cdagger"
-	max_blade_int = 50
-	max_integrity = 50
+	max_blade_int = 75
+	max_integrity = 75
 	swingsound = list('sound/combat/wooshes/bladed/wooshsmall (1).ogg','sound/combat/wooshes/bladed/wooshsmall (2).ogg','sound/combat/wooshes/bladed/wooshsmall (3).ogg')
 	associated_skill = /datum/skill/combat/knives
 	pickup_sound = 'sound/foley/equip/swordsmall2.ogg'
