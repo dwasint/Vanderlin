@@ -456,6 +456,7 @@ SUBSYSTEM_DEF(ticker)
 			to_chat(world, "<h4>[holiday.greet()]</h4>")
 */
 	PostSetup()
+	INVOKE_ASYNC(world, TYPE_PROC_REF(/world, flush_byond_tracy))
 	log_game("GAME SETUP: postsetup success")
 
 	return TRUE
