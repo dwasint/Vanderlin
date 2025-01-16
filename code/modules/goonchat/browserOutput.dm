@@ -17,6 +17,7 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 	var/list/connectionHistory //Contains the connection history passed from chat cookie
 	var/adminMusicVolume = 50 //This is for the Play Global Sound verb
 	var/total_checks = 0
+	var/load_attempts = 0
 
 
 /datum/chatOutput/New(client/C)
@@ -52,11 +53,20 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 	set waitfor = FALSE
 	if(!owner)
 		return
-
+	if(loaded)
+		return
 	var/datum/asset/stuff = get_asset_datum(/datum/asset/group/goonchat)
 	stuff.send(owner)
 
 	owner << browse(file('code/modules/goonchat/browserassets/html/browserOutput.html'), "window=browseroutput")
+
+	if (load_attempts < 5) //To a max of 5 load attempts
+		spawn(20 SECONDS)
+			if (owner && !loaded)
+				load_attempts++
+				load()
+	else
+		return
 
 /datum/chatOutput/Topic(href, list/href_list)
 	if(usr.client != owner)
