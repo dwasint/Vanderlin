@@ -15,10 +15,10 @@ SUBSYSTEM_DEF(statpanels)
 		var/list/global_data = list(
 			"Map: [SSmapping.config?.map_name || "Loading..."]",
 			cached ? "Next Map: [cached.map_name]" : null,
-			"Round ID: [GLOB.round_id ? GLOB.round_id : "NULL"]",
-			"Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]",
+			"Round ID: [GLOB.rogue_round_id ? GLOB.rogue_round_id : "NULL"]",
 			"Round Time: [round_time > MIDNIGHT_ROLLOVER ? "[round(round_time/MIDNIGHT_ROLLOVER)]:[worldtime2text()]" : worldtime2text()]",
 			"Time Of Day: [GLOB.tod]",
+			"IC Time: [station_time_timestamp()] [station_time()]",
 			"Time Dilation: [round(SStime_track.time_dilation_current,1)]% AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, [round(SStime_track.time_dilation_avg,1)]%, [round(SStime_track.time_dilation_avg_slow,1)]%)"
 		)
 
@@ -34,8 +34,9 @@ SUBSYSTEM_DEF(statpanels)
 		if(!target.statbrowser_ready)
 			continue
 		if(target.stat_tab == "Status")
+			var/ping_str = url_encode("Ping: [round(target.lastping, 1)]ms (Average: [round(target.avgping, 1)]ms)")
 			var/other_str = url_encode(json_encode(target.mob.get_status_tab_items()))
-			target << output("[encoded_global_data];[other_str]", "statbrowser:update")
+			target << output("[encoded_global_data];[ping_str];[other_str]", "statbrowser:update")
 		if(!target.holder)
 			target << output("", "statbrowser:remove_admin_tabs")
 		else
