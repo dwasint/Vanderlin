@@ -65,7 +65,7 @@
 
 /obj/machinery/printingpress/attack_hand(mob/user)
 	if(printing)
-		to_chat(user, span_warning("The [src] is currently printing. Please wait."))
+		to_chat(user, span_warning("[src] is currently printing. Please wait."))
 		return
 	if(output_item)
 		// Try to put the item into the user's hands
@@ -81,7 +81,7 @@
 		var/obj/item/paper/P = new /obj/item/paper(get_turf(user)) // Create the item at the user's location
 		if(!user.put_in_hands(P)) // Try to put the item in the user's hands
 			P.forceMove(get_turf(user)) // If not, drop it at the user's location
-		to_chat(user, span_warning("You retrieve the [P.name] from [src]."))
+		to_chat(user, span_warning("You retrieve [P.name] from [src]."))
 		has_paper = FALSE
 		loaded_paper = null
 		src.icon_state = "Ppress_Clean"
@@ -168,7 +168,7 @@
 	// Creates a static book (Tome of Justice)
 	var/obj/item/book/rogue/law/B = new()
 	output_item = B
-	visible_message("<span class='notice'>[src] hums as it produces the [B.name].</span>")
+	visible_message("<span class='notice'>[src] hums as it produces [B.name].</span>")
 
 /obj/machinery/printingpress/proc/print_manuscript(mob/user, id)
 	output_item = new /obj/item/book/rogue/playerbook(src, null, null, null, id)
