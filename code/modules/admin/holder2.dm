@@ -161,7 +161,7 @@ GLOBAL_PROTECT(href_token)
 		if(FLAG_JUMP)
 			owner.jumptomob(resolved)
 		if(FLAG_JUMP_GHOST)
-			if(!isobserver(mob))
+			if(!isobserver(owner))
 				owner.admin_ghost()
 			owner.jumptomob(resolved)
 /*
