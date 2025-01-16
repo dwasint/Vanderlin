@@ -820,8 +820,8 @@ $(function() {
 	$('body').on('mousedown', function(e) {
 		var $target = $(e.target);
 
-		if ($contextMenu && opts.hasOwnProperty('contextMenuTarget') && opts.contextMenuTarget) {
-			hideContextMenu();
+		if ($contextMenu) {
+			$contextMenu.hide();
 			return false;
 		}
 

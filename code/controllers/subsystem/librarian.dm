@@ -3,10 +3,6 @@ SUBSYSTEM_DEF(librarian)
 	init_order = INIT_ORDER_PATH
 	flags = SS_NO_FIRE
 	var/list/books = list()
-	///here be book titles by author
-	var/list/books_authors = list()
-	///here be books by category
-	var/list/books_category = list()
 
 /datum/controller/subsystem/librarian/Initialize(start_timeofday)
 	update_books()

@@ -139,6 +139,8 @@
 
 /mob/living/carbon/human/Stat()
 	..()
+	if(!client)
+		return
 	if(mind)
 		var/datum/antagonist/vampirelord/VD = mind.has_antag_datum(/datum/antagonist/vampirelord)
 		if(VD)

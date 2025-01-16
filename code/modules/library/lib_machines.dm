@@ -186,8 +186,11 @@
 	books |= SSlibrarian.get_books(search_title, search_author, search_category)
 	var/dat = "<h3>Manuscript Search Results:</h3><br>"
 	dat += "<table><tr><th>Author</th><th>Title</th><th>Category</th><th>Print</th></tr>"
+	var/list/decoded_books = SSlibrarian.pull_player_book_titles()
+	var/index = 0
 	for(var/list/book in books)
-		dat += "<tr><td>[book["author"]]</td><td>[book["book_title"]]</td><td>[book["category"]]</td><td><a href='byond://?src=[REF(src)];print=1;id=[book["book_title"]]'>Print</a></td></tr>"
+		index++
+		dat += "<tr><td>[book["author"]]</td><td>[book["book_title"]]</td><td>[book["category"]]</td><td><a href='byond://?src=[REF(src)];print=1;id=[decoded_books[index]]'>Print</a></td></tr>"
 	if (!length(books))
 		dat += "<tr><td colspan='4'>No results found.</td></tr>"
 
@@ -199,7 +202,7 @@
 	if(printing)
 		return // Ignore interactions while printing
 	if("print" in href_list)
-		var/id = href_list["id"]
+		var/id = url_encode(href_list["id"])
 		start_printing(usr, "archive", id)
 
 /obj/item/paper/attack_right(mob/user)
