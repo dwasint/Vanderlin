@@ -511,10 +511,14 @@
 		return FALSE
 	if(HAS_TRAIT(src, TRAIT_DEATHCOMA))
 		return FALSE
+	return ..()
+
+/mob/living/_pointed(atom/pointing_at)
 	if(!..())
 		return FALSE
-	visible_message("<span class='name'>[src]</span> points at [A].", "<span class='notice'>I point at [A].</span>")
-	return TRUE
+	log_message("points at [pointing_at]", LOG_EMOTE)
+	visible_message("<span class='infoplain'>[span_name("[src]")] points at [pointing_at].</span>", span_notice("You point at [pointing_at]."))
+
 
 /mob/living/verb/succumb(whispered as null, reaper as null)
 	set hidden = TRUE
@@ -913,6 +917,10 @@
 	set name = "Resist"
 	set category = "IC"
 	set hidden = 1
+	DEFAULT_QUEUE_OR_CALL_VERB(VERB_CALLBACK(src, PROC_REF(execute_resist)))
+
+///proc extender of [/mob/living/verb/resist] meant to make the process queable if the server is overloaded when the verb is called
+/mob/living/proc/execute_resist()
 	if(!can_resist() || surrendering)
 		return
 
