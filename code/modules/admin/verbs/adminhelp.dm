@@ -89,18 +89,28 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
 //Tickets statpanel
 /datum/admin_help_tickets/proc/stat_entry()
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+	var/list/L = list()
 	var/num_disconnected = 0
-	stat("Active Tickets:", astatclick.update("[active_tickets.len]"))
+	L[++L.len] = list("Active Tickets:", "[astatclick.update("[active_tickets.len]")]", null, REF(astatclick))
+	astatclick.update("[active_tickets.len]")
 	for(var/I in active_tickets)
 		var/datum/admin_help/AH = I
 		if(AH.initiator)
-			stat("#[AH.id]. [AH.initiator_key_name]:", AH.statclick.update())
+			L[++L.len] = list("#[AH.id]. [AH.initiator_key_name]:", "[AH.statclick.update()]", REF(AH))
 		else
 			++num_disconnected
 	if(num_disconnected)
-		stat("Disconnected:", astatclick.update("[num_disconnected]"))
-	stat("Closed Tickets:", cstatclick.update("[closed_tickets.len]"))
-	stat("Resolved Tickets:", rstatclick.update("[resolved_tickets.len]"))
+		L[++L.len] = list("Disconnected:", "[astatclick.update("[num_disconnected]")]", null, REF(astatclick))
+	L[++L.len] = list("Closed Tickets:", "[cstatclick.update("[closed_tickets.len]")]", null, REF(cstatclick))
+	L[++L.len] = list("Resolved Tickets:", "[rstatclick.update("[resolved_tickets.len]")]", null, REF(rstatclick))
+	return L
+
+
+//called by admin topic
+/obj/effect/statclick/ticket_list/proc/Action()
+	Click()
 
 //Reassociate still open ticket if one exists
 /datum/admin_help_tickets/proc/ClientLogin(client/C)
@@ -222,7 +232,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
 //Removes the ahelp verb and returns it after 2 minutes
 /datum/admin_help/proc/TimeoutVerb()
-	initiator.verbs -= /client/verb/adminhelp
+	remove_verb(initiator, /client/verb/adminhelp)
 	initiator.adminhelptimerid = addtimer(CALLBACK(initiator, TYPE_PROC_REF(/client, giveadminhelpverb)), 1200, TIMER_STOPPABLE) //2 minute cooldown of admin helps
 
 //private

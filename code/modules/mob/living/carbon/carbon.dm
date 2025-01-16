@@ -504,24 +504,20 @@
 			used = 1
 		return used
 
-/mob/living/Stat()
-	..()
-	if(!client)
-		return
-	if(statpanel("Stats"))
-		stat("STR: \Roman [STASTR]")
-		stat("PER: \Roman [STAPER]")
-		stat("INT: \Roman [STAINT]")
-		stat("CON: \Roman [STACON]")
-		stat("END: \Roman [STAEND]")
-		stat("SPD: \Roman [STASPD]")
-		stat("PATRON: [patron]")
+/mob/living/get_status_tab_items()
+	. = ..()
+	. += ""
+	. += "STR: \Roman[STASTR]"
+	. += "PER: \Roman[STAPER]"
+	. += "INT: \Roman[STAINT]"
+	. += "CON: \Roman[STACON]"
+	. += "END: \Roman[STAEND]"
+	. += "SPD: \Roman[STASPD]"
+	. += "PATRON: [patron]"
 
-/mob/living/carbon/Stat()
+/mob/living/carbon/get_proc_holders()
 	..()
-	if(!client)
-		return
-	add_abilities_to_panel()
+	. += add_abilities_to_panel()
 
 /mob/living/carbon/attack_ui(slot)
 	if(!has_hand_for_held_index(active_hand_index))

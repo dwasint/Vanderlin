@@ -1085,7 +1085,7 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 	var/list/partial = splittext(iconData, "{")
 	return replacetext(copytext(partial[2], 3, -5), "\n", "")
 
-/proc/icon2html(thing, target, icon_state, dir, frame = 1, moving = FALSE)
+/proc/icon2html(thing, target, icon_state, dir, frame = 1, moving = FALSE, sourceonly = FALSE)
 	if (!thing)
 		return
 
@@ -1111,6 +1111,8 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 				if(!istype(thing2) || !thing2.client)
 					continue
 				SSassets.transport.send_assets(thing2?.client, key)
+			if(sourceonly)
+				return SSassets.transport.get_asset_url(name)
 			return "<img class='icon icon-misc' src=\"[url_encode(name)]\">"
 		var/atom/A = thing
 		if (isnull(dir))
@@ -1137,6 +1139,8 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 		if(!istype(thing2) || !thing2.client)
 			continue
 		SSassets.transport.send_assets(thing2?.client, key)
+	if(sourceonly)
+		return SSassets.transport.get_asset_url(key)
 
 	return "<img class='icon icon-[icon_state]' src='[SSassets.transport.get_asset_url(key)]'>"
 
@@ -1174,7 +1178,7 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 	return "<img class='icon icon-[A.icon_state]' src='data:image/png;base64,[bicon_cache[key]]'>"
 
 //Costlier version of icon2html() that uses getFlatIcon() to account for overlays, underlays, etc. Use with extreme moderation, ESPECIALLY on mobs.
-/proc/costly_icon2html(thing, target)
+/proc/costly_icon2html(thing, target, sourceonly = FALSE)
 	if (!thing)
 		return
 
@@ -1182,4 +1186,4 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 		return icon2html(thing, target)
 
 	var/icon/I = getFlatIcon(thing)
-	return icon2html(I, target)
+	return icon2html(I, target, sourceonly = sourceonly)

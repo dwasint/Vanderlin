@@ -6,9 +6,10 @@ SUBSYSTEM_DEF(npcpool)
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 	var/list/currentrun = list()
 
-/datum/controller/subsystem/npcpool/stat_entry()
+/datum/controller/subsystem/npcpool/stat_entry(msg)
 	var/list/activelist = GLOB.simple_animals[AI_ON]
-	..("NPCS:[activelist.len]")
+	msg = ("NPCS:[activelist.len]")
+	return ..()
 
 /datum/controller/subsystem/npcpool/fire(resumed = FALSE)
 

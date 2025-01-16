@@ -57,8 +57,8 @@
 #endif
 
 /mob/living/carbon/human/Initialize()
-	verbs += /mob/living/proc/mob_sleep
-	verbs += /mob/living/proc/lay_down
+	add_verb(src, /mob/living/proc/mob_sleep)
+	add_verb(src, /mob/living/proc/lay_down)
 
 	icon_state = ""		//Remove the inherent human icon that is visible on the map editor. We're rendering ourselves limb by limb, having it still be there results in a bug where the basic human icon appears below as south in all directions and generally looks nasty.
 
@@ -137,18 +137,15 @@
 	GLOB.human_list -= src
 	return ..()
 
-/mob/living/carbon/human/Stat()
-	..()
-	if(!client)
-		return
+/mob/living/carbon/human/get_status_tab_items()
+	. = ..()
+	. += ""
 	if(mind)
 		var/datum/antagonist/vampirelord/VD = mind.has_antag_datum(/datum/antagonist/vampirelord)
 		if(VD)
-			if(statpanel("Stats"))
-				stat("Vitae:",VD.vitae)
+			.+= "Vitae:[VD.vitae]"
 		if((mind.assigned_role == "Shepherd") || (mind.assigned_role == "Witch Hunter"))
-			if(statpanel("Status"))
-				stat("Confessions sent: [GLOB.confessors.len]")
+			. += "Confessions sent: [GLOB.confessors.len]"
 
 	return
 

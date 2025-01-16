@@ -98,5 +98,5 @@ VERB_MANAGER_SUBSYSTEM_DEF(input)
 	current_clicks = 0
 
 /datum/controller/subsystem/verb_manager/input/stat_entry(msg)
-	. = ..()
-	. += "M/S:[round(movements_per_second,0.01)] | C/S:[round(clicks_per_second,0.01)]([round(delayed_clicks_per_second,0.01)] | CD: [round(average_click_delay,0.01)])"
+	msg = "M/S:[round(movements_per_second,0.01)] | C/S:[round(clicks_per_second,0.01)]([round(delayed_clicks_per_second,0.01)] | CD: [round(average_click_delay,0.01)])"
+	return ..()

@@ -48,4 +48,4 @@
 
 	var/datum/devotion/cleric_holder/C = new /datum/devotion/cleric_holder(H, H.patron)
 	C.grant_spells_churchling(H)
-	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
+	add_verb(H, list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray))

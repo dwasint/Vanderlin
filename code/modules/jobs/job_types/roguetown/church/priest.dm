@@ -73,7 +73,7 @@
 		H.change_stat("endurance", 2)
 		H.change_stat("speed", 1)
 	var/datum/devotion/cleric_holder/C = new /datum/devotion/cleric_holder(H, H.patron) // This creates the cleric holder used for devotion spells
-	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
+	add_verb(H, list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray))
 	C.grant_spells_priest(H)
 
 	H.update_icons()
@@ -216,7 +216,7 @@
 		return
 	var/datum/devotion/cleric_holder/C = new /datum/devotion/cleric_holder(recruit, recruit.patron)
 	C.grant_spells_templar(recruit)
-	recruit.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
+	add_verb(recruit, list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray))
 
 /obj/effect/proc_holder/spell/self/convertrole/monk
 	name = "Recruit Acolyte"
@@ -233,4 +233,4 @@
 		return
 	var/datum/devotion/cleric_holder/C = new /datum/devotion/cleric_holder(recruit, recruit.patron)
 	C.grant_spells(recruit)
-	recruit.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
+	add_verb(recruit, list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray))
