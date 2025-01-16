@@ -65,7 +65,7 @@
 	else if(isliving(mind?.current))
 		var/mob/living/L = mind.current
 		if(L?.stat >= DEAD)
-			add_verb(client, /client/proc/descend)
+			client.verbs += /client/proc/descend
 			if(ishuman(L))
 				var/mob/living/carbon/human/D = L
 				if(D.funeral)
