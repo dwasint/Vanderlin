@@ -600,7 +600,6 @@
 	key_third_person = "grimaces"
 	message = "grimaces."
 	emote_type = EMOTE_VISIBLE
-
 /mob/living/carbon/human/verb/emote_grimace()
 	set name = "Grimace"
 	set category = "Emotes"
