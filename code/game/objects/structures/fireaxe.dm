@@ -126,7 +126,7 @@
 
 /obj/structure/fireaxecabinet/verb/toggle_open()
 	set name = "Open/Close"
-	set hidden = 1
+	set hidden = TRUE
 	set src in oview(1)
 
 	if(locked)

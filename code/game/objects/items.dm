@@ -401,7 +401,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 /obj/item/verb/move_to_top()
 	set name = "Move To Top"
-	set hidden = 1
+	set hidden = TRUE
 	set src in oview(1)
 
 	if(!isturf(loc) || usr.stat || usr.restrained())
@@ -748,7 +748,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 /obj/item/verb/verb_pickup()
 	set src in oview(1)
-	set hidden = 1
+	set hidden = TRUE
 	set name = "Pick up"
 
 	if(usr.incapacitated() || !Adjacent(usr))

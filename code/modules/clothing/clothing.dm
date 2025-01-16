@@ -364,7 +364,7 @@ BLIND     // can't see anything
 
 /obj/item/clothing/under/verb/toggle()
 	set name = "Adjust Suit Sensors"
-	set hidden = 1
+	set hidden = TRUE
 	set src in usr
 	if(!usr.client.holder)
 		return

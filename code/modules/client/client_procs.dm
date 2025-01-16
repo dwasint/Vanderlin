@@ -1189,12 +1189,10 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	var/list/verbstoprocess = verbs.Copy()
 	if(mob)
 		verbstoprocess += mob.verbs
-		for(var/AM in mob.contents)
-			var/atom/movable/thing = AM
+		for(var/atom/movable/thing as anything in mob.contents)
 			verbstoprocess += thing.verbs
 	panel_tabs.Cut() // panel_tabs get reset in init_verbs on JS side anyway
-	for(var/thing in verbstoprocess)
-		var/procpath/verb_to_init = thing
+	for(var/procpath/verb_to_init as anything in verbstoprocess)
 		if(!verb_to_init)
 			continue
 		if(verb_to_init.hidden)
@@ -1204,6 +1202,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 		panel_tabs |= verb_to_init.category
 		verblist[++verblist.len] = list(verb_to_init.category, verb_to_init.name)
 		src << output("[url_encode(json_encode(panel_tabs))];[url_encode(json_encode(verblist))]", "statbrowser:init_verbs")
+
 /client/proc/check_panel_loaded()
 	if(statbrowser_ready)
 		return

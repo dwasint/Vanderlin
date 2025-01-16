@@ -115,10 +115,9 @@
 	return ret_data
 
 /client/verb/checkachievements()
-	set category = "OOC"
 	set name = "Check achievements"
 	set desc = ""
-	set hidden = 1
+	set hidden = TRUE
 	if(!holder)
 		return
 

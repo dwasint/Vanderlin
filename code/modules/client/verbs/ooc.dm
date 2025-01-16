@@ -5,8 +5,8 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 
 /client/verb/ooc(msg as text)
 	set name = "OOC" //Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite
-	set category = "OOC"
-	set hidden = 1
+
+	set hidden = TRUE
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
 		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
 		return
@@ -180,8 +180,8 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 /client/proc/set_ooc(newColor as color)
 	set name = "Set Player OOC Color"
 	set desc = ""
-	set category = "Fun"
-	set hidden = 1
+
+	set hidden = TRUE
 	if(!holder)
 		return
 	GLOB.OOC_COLOR = sanitize_ooccolor(newColor)
@@ -191,8 +191,8 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 /client/proc/reset_ooc()
 	set name = "Reset Player OOC Color"
 	set desc = ""
-	set category = "Fun"
-	set hidden = 1
+
+	set hidden = TRUE
 	if(!holder)
 		return
 	GLOB.OOC_COLOR = null
@@ -200,8 +200,8 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 		return
 /client/verb/colorooc()
 	set name = "Set Your OOC Color"
-	set category = "Preferences"
-	set hidden = 1
+
+	set hidden = TRUE
 	if(!holder)
 		return
 	if(!check_rights(0))
@@ -220,8 +220,8 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 /client/verb/resetcolorooc()
 	set name = "Reset Your OOC Color"
 	set desc = ""
-	set category = "Preferences"
-	set hidden = 1
+
+	set hidden = TRUE
 	if(!holder)
 		return
 	if(!check_rights(0))
@@ -236,9 +236,9 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 //Checks admin notice
 /client/verb/admin_notice()
 	set name = "Adminnotice"
-	set category = "Admin"
+
 	set desc ="Check the admin notice if it has been set"
-	set hidden = 1
+	set hidden = TRUE
 	if(!holder)
 		return
 	if(!check_rights(0))
@@ -252,7 +252,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	set name = "KillSelf"
 	set category = "DEBUGTEST"
 /*
-	set hidden = 1
+	set hidden = TRUE
 	if(!check_rights(0))
 		return*/
 	var/confirm = alert(src, "Should I really kill myself?", "Feed the crows", "Yes", "No")
@@ -316,8 +316,8 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 
 /client/verb/fix_chat()
 	set name = "{FIX CHAT}"
-	set category = "Options"
-	set hidden = 1
+
+	set hidden = TRUE
 	if(!check_rights(0))
 		return
 	if (!chatOutput || !istype(chatOutput))
@@ -402,9 +402,9 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 
 /client/verb/motd()
 	set name = "MOTD"
-	set category = "OOC"
+
 	set desc ="Check the Message of the Day"
-	set hidden = 1
+	set hidden = TRUE
 	if(!holder)
 		return
 	if(!check_rights(0))
@@ -417,9 +417,9 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 
 /client/proc/self_notes()
 	set name = "View Admin Remarks"
-	set category = "OOC"
+
 	set desc = ""
-	set hidden = 1
+	set hidden = TRUE
 	if(!holder)
 		return
 	if(!check_rights(0))
@@ -456,9 +456,9 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 
 /client/verb/select_ignore()
 	set name = "Ignore"
-	set category = "Options"
+
 	set desc ="Ignore a player's messages on the OOC channel"
-	set hidden = 1
+	set hidden = TRUE
 	if(!holder)
 		return
 
@@ -494,9 +494,9 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 
 /client/verb/fit_viewport()
 	set name = "Fit Viewport"
-	set category = "Options"
+
 	set desc = ""
-	set hidden = 1
+	set hidden = TRUE
 	if(!holder)
 		return
 	// Fetch aspect ratio
@@ -544,8 +544,8 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 /client/verb/policy()
 	set name = "Show Policy"
 	set desc = ""
-	set category = "OOC"
-	set hidden = 1
+
+	set hidden = TRUE
 	if(!holder)
 		return
 

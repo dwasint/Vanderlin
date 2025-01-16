@@ -824,7 +824,7 @@
 
 /mob/living/carbon/human/verb/emote_meditate()
 	set name = "Meditate"
-	set hidden = 1
+	set hidden = TRUE
 
 	emote("meditate", intentional = TRUE)
 

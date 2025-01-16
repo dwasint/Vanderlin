@@ -724,9 +724,8 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	message_admins("[key_name_admin(usr)] has [AI_Interact ? "activated" : "deactivated"] their AI interaction")
 
 /client/proc/end_party()
-	set category = "GameMaster"
 	set name = "EndPlaytest"
-	set hidden = 1
+	set hidden = TRUE
 	if(!holder)
 		return
 	if(!SSticker.end_party)

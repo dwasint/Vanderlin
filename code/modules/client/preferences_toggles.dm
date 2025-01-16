@@ -14,9 +14,9 @@
 
 /datum/verbs/menu/Settings/verb/setup_character()
 	set name = "Game Preferences"
-	set category = "Options"
+
 	set desc = ""
-	set hidden = 1
+	set hidden = TRUE
 	usr.client.prefs.current_tab = 1
 	usr.client.prefs.ShowChoices(usr)
 #endif
@@ -53,7 +53,7 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Ghost/chatterbox, toggle_ghost_ears)(
 	set name = "Show/Hide GhostEars"
 	set category = "Preferences"
 	set desc = ""
-	set hidden = 1
+	set hidden = TRUE
 	usr.client.prefs.chat_toggles ^= CHAT_GHOSTEARS
 	to_chat(usr, "As a ghost, you will now [(usr.client.prefs.chat_toggles & CHAT_GHOSTEARS) ? "see all speech in the world" : "only see speech from nearby mobs"].")
 	usr.client.prefs.save_preferences()
@@ -65,7 +65,7 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Ghost/chatterbox, toggle_ghost_sight)
 	set name = "Show/Hide GhostSight"
 	set category = "Preferences"
 	set desc = ""
-	set hidden = 1
+	set hidden = TRUE
 	usr.client.prefs.chat_toggles ^= CHAT_GHOSTSIGHT
 	to_chat(usr, "As a ghost, you will now [(usr.client.prefs.chat_toggles & CHAT_GHOSTSIGHT) ? "see all emotes in the world" : "only see emotes from nearby mobs"].")
 	usr.client.prefs.save_preferences()
@@ -77,7 +77,7 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Ghost/chatterbox, toggle_ghost_whispe
 	set name = "Show/Hide GhostWhispers"
 	set category = "Preferences"
 	set desc = ""
-	set hidden = 1
+	set hidden = TRUE
 	usr.client.prefs.chat_toggles ^= CHAT_GHOSTWHISPER
 	to_chat(usr, "As a ghost, you will now [(usr.client.prefs.chat_toggles & CHAT_GHOSTWHISPER) ? "see all whispers in the world" : "only see whispers from nearby mobs"].")
 	usr.client.prefs.save_preferences()
@@ -89,7 +89,7 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Ghost/chatterbox, toggle_ghost_radio)
 	set name = "Show/Hide GhostRadio"
 	set category = "Preferences"
 	set desc = ""
-	set hidden = 1
+	set hidden = TRUE
 	usr.client.prefs.chat_toggles ^= CHAT_GHOSTRADIO
 	to_chat(usr, "As a ghost, you will now [(usr.client.prefs.chat_toggles & CHAT_GHOSTRADIO) ? "see radio chatter" : "not see radio chatter"].")
 	usr.client.prefs.save_preferences()
@@ -101,7 +101,7 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Ghost/chatterbox, toggle_ghost_pda)()
 	set name = "Show/Hide GhostPDA"
 	set category = "Preferences"
 	set desc = ""
-	set hidden = 1
+	set hidden = TRUE
 	usr.client.prefs.chat_toggles ^= CHAT_GHOSTPDA
 	to_chat(usr, "As a ghost, you will now [(usr.client.prefs.chat_toggles & CHAT_GHOSTPDA) ? "see all pda messages in the world" : "only see pda messages from nearby mobs"].")
 	usr.client.prefs.save_preferences()
@@ -117,7 +117,7 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Ghost/chatterbox/Events, toggle_death
 	set name = "Toggle Deathrattle"
 	set category = "Preferences"
 	set desc = ""
-	set hidden = 1
+	set hidden = TRUE
 	usr.client.prefs.toggles ^= DISABLE_DEATHRATTLE
 	usr.client.prefs.save_preferences()
 	to_chat(usr, "You will [(usr.client.prefs.toggles & DISABLE_DEATHRATTLE) ? "no longer" : "now"] get messages when a sentient mob dies.")
@@ -129,7 +129,7 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Ghost/chatterbox/Events, toggle_arriv
 	set name = "Toggle Arrivalrattle"
 	set category = "Preferences"
 	set desc = ""
-	set hidden = 1
+	set hidden = TRUE
 	usr.client.prefs.toggles ^= DISABLE_ARRIVALRATTLE
 	to_chat(usr, "You will [(usr.client.prefs.toggles & DISABLE_ARRIVALRATTLE) ? "no longer" : "now"] get messages when someone joins the station.")
 	usr.client.prefs.save_preferences()
@@ -141,7 +141,7 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Ghost, togglemidroundantag)()
 	set name = "Toggle Midround Antagonist"
 	set category = "Preferences"
 	set desc = ""
-	set hidden = 1
+	set hidden = TRUE
 	usr.client.prefs.toggles ^= MIDROUND_ANTAG
 	usr.client.prefs.save_preferences()
 	to_chat(usr, "You will [(usr.client.prefs.toggles & MIDROUND_ANTAG) ? "now" : "no longer"] be considered for midround antagonist positions.")
@@ -153,7 +153,7 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Sound, toggletitlemusic)()
 	set name = "LobbyMusic"
 	set category = "Options"
 	set desc = ""
-	set hidden = 1
+	set hidden = TRUE
 	usr.client.prefs.toggles ^= SOUND_LOBBY
 	usr.client.prefs.save_preferences()
 	if(usr.client.prefs.toggles & SOUND_LOBBY)
@@ -172,7 +172,7 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Sound, togglemidis)()
 	set name = "Hear/Silence Midis"
 	set category = "Preferences"
 	set desc = ""
-	set hidden = 1
+	set hidden = TRUE
 	usr.client.prefs.toggles ^= SOUND_MIDI
 	usr.client.prefs.save_preferences()
 	if(usr.client.prefs.toggles & SOUND_MIDI)
@@ -192,7 +192,7 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Sound, toggle_instruments)()
 	set name = "Hear/Silence Instruments"
 	set category = "Preferences"
 	set desc = ""
-	set hidden = 1
+	set hidden = TRUE
 	usr.client.prefs.toggles ^= SOUND_INSTRUMENTS
 	usr.client.prefs.save_preferences()
 	if(usr.client.prefs.toggles & SOUND_INSTRUMENTS)
@@ -208,7 +208,7 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Sound, Toggle_Soundscape)()
 	set name = "Hear/Silence Ambience"
 	set category = "Preferences"
 	set desc = ""
-	set hidden = 1
+	set hidden = TRUE
 	usr.client.prefs.toggles ^= SOUND_AMBIENCE
 	usr.client.prefs.save_preferences()
 	if(usr.client.prefs.toggles & SOUND_AMBIENCE)
@@ -226,7 +226,7 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Sound, toggle_ship_ambience)()
 	set name = "Hear/Silence Ship Ambience"
 	set category = "Preferences"
 	set desc = ""
-	set hidden = 1
+	set hidden = TRUE
 	usr.client.prefs.toggles ^= SOUND_SHIP_AMBIENCE
 	usr.client.prefs.save_preferences()
 	if(usr.client.prefs.toggles & SOUND_SHIP_AMBIENCE)
@@ -244,7 +244,7 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Sound, toggle_announcement_sound)()
 	set name = "Hear/Silence Announcements"
 	set category = "Preferences"
 	set desc = ""
-	set hidden = 1
+	set hidden = TRUE
 	usr.client.prefs.toggles ^= SOUND_ANNOUNCEMENTS
 	to_chat(usr, "You will now [(usr.client.prefs.toggles & SOUND_ANNOUNCEMENTS) ? "hear announcement sounds" : "no longer hear announcements"].")
 	usr.client.prefs.save_preferences()
@@ -268,7 +268,7 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings, listen_ooc)()
 	set name = "Show/Hide OOC"
 	set category = "Preferences"
 	set desc = ""
-	set hidden = 1
+	set hidden = TRUE
 	usr.client.prefs.chat_toggles ^= CHAT_OOC
 	usr.client.prefs.save_preferences()
 	to_chat(usr, "You will [(usr.client.prefs.chat_toggles & CHAT_OOC) ? "now" : "no longer"] see messages on the OOC channel.")
@@ -280,7 +280,7 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings, listen_bank_card)()
 	set name = "Show/Hide Income Updates"
 	set category = "Preferences"
 	set desc = ""
-	set hidden = 1
+	set hidden = TRUE
 	usr.client.prefs.chat_toggles ^= CHAT_BANKCARD
 	usr.client.prefs.save_preferences()
 	to_chat(usr, "You will [(usr.client.prefs.chat_toggles & CHAT_BANKCARD) ? "now" : "no longer"] be notified when you get paid.")
@@ -337,9 +337,9 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 
 /client/verb/pick_ghost_customization()
 	set name = "Ghost Customization"
-	set category = "Preferences"
+
 	set desc = ""
-	set hidden = 1
+	set hidden = TRUE
 	if(!holder)
 		return
 	if(is_content_unlocked())
@@ -355,9 +355,9 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 
 /client/verb/pick_ghost_others()
 	set name = "Ghosts of Others"
-	set category = "Preferences"
+
 	set desc = ""
-	set hidden = 1
+	set hidden = TRUE
 	if(!holder)
 		return
 	var/new_ghost_others = alert("Do you want the ghosts of others to show up as their own setting, as their default sprites or always as the default white ghost?",,"Their Setting", "Default Sprites", "White Ghost")
@@ -376,9 +376,9 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 
 /client/verb/toggle_intent_style()
 	set name = "Toggle Intent Selection Style"
-	set category = "Preferences"
+
 	set desc = ""
-	set hidden = 1
+	set hidden = TRUE
 	if(!holder)
 		return
 	prefs.toggles ^= INTENT_STYLE
@@ -388,9 +388,9 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 
 /client/verb/toggle_ghost_hud_pref()
 	set name = "Toggle Ghost HUD"
-	set category = "Preferences"
+
 	set desc = ""
-	set hidden = 1
+	set hidden = TRUE
 	if(!holder)
 		return
 	prefs.ghost_hud = !prefs.ghost_hud
@@ -403,8 +403,8 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 /client/verb/toggle_inquisition() // warning: unexpected inquisition
 	set name = "Toggle Inquisitiveness"
 	set desc = ""
-	set category = "Preferences"
-	set hidden = 1
+
+	set hidden = TRUE
 	if(!holder)
 		return
 	prefs.inquisitive_ghost = !prefs.inquisitive_ghost
@@ -418,9 +418,9 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 //Admin Preferences
 /client/proc/toggleadminhelpsound()
 	set name = "Hear/Silence Adminhelps"
-	set category = "Prefs - Admin"
+
 	set desc = ""
-	set hidden = 1
+	set hidden = TRUE
 	if(!holder)
 		return
 	prefs.toggles ^= SOUND_ADMINHELP

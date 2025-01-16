@@ -8,7 +8,7 @@
  * This is a hidden verb, likely for binding with winset for hotkeys
  */
 /client/verb/drop_item()
-	set hidden = 1
+	set hidden = TRUE
 	return
 
 /**
@@ -401,7 +401,7 @@
  */
 /client/verb/body_toggle_head()
 	set name = "body-toggle-head"
-	set hidden = 1
+	set hidden = TRUE
 
 	if(!check_has_body_select())
 		return
@@ -423,7 +423,7 @@
 ///Hidden verb to target the neck, bound to 7
 /client/verb/body_neck()
 	set name = "body-neck"
-	set hidden = 1
+	set hidden = TRUE
 
 	if(!check_has_body_select())
 		return
@@ -441,7 +441,7 @@
 ///Hidden verb to target the eyes, bound to 9
 /client/verb/body_eyes()
 	set name = "body_eyes"
-	set hidden = 1
+	set hidden = TRUE
 
 	if(!check_has_body_select())
 		return
@@ -459,7 +459,7 @@
 ///Hidden verb to target the right arm, bound to 4
 /client/verb/body_r_arm()
 	set name = "body-r-arm"
-	set hidden = 1
+	set hidden = TRUE
 
 	if(!check_has_body_select())
 		return
@@ -477,7 +477,7 @@
 ///Hidden verb to target the chest, bound to 5
 /client/verb/body_chest()
 	set name = "body-chest"
-	set hidden = 1
+	set hidden = TRUE
 
 	if(!check_has_body_select())
 		return
@@ -495,7 +495,7 @@
 ///Hidden verb to target the left arm, bound to 6
 /client/verb/body_l_arm()
 	set name = "body-l-arm"
-	set hidden = 1
+	set hidden = TRUE
 
 	if(!check_has_body_select())
 		return
@@ -513,7 +513,7 @@
 ///Hidden verb to target the right leg, bound to 1
 /client/verb/body_r_leg()
 	set name = "body-r-leg"
-	set hidden = 1
+	set hidden = TRUE
 
 	if(!check_has_body_select())
 		return
@@ -531,7 +531,7 @@
 ///Hidden verb to target the groin, bound to 2
 /client/verb/body_groin()
 	set name = "body-groin"
-	set hidden = 1
+	set hidden = TRUE
 
 	if(!check_has_body_select())
 		return
@@ -542,7 +542,7 @@
 ///Hidden verb to target the left leg, bound to 3
 /client/verb/body_l_leg()
 	set name = "body-l-leg"
-	set hidden = 1
+	set hidden = TRUE
 
 	if(!check_has_body_select())
 		return

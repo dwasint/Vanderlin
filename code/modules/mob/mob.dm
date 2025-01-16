@@ -391,8 +391,7 @@ GLOBAL_VAR_INIT(mobids, 1)
  */
 /mob/verb/examinate(atom/A as mob|obj|turf in view()) //It used to be oview(12), but I can't really say why
 	set name = "Examine"
-	set category = "IC"
-	set hidden = 1
+	set hidden = TRUE
 	DEFAULT_QUEUE_OR_CALL_VERB(VERB_CALLBACK(src, PROC_REF(run_examinate), A))
 
 /mob/proc/run_examinate(atom/A)
@@ -517,7 +516,7 @@ GLOBAL_VAR_INIT(mobids, 1)
  */
 /mob/verb/mode()
 	set name = "Activate Held Object"
-	set hidden = 1
+	set hidden = TRUE
 	set src = usr
 
 	if(incapacitated())
@@ -568,8 +567,7 @@ GLOBAL_VAR_INIT(mobids, 1)
  */
 /mob/verb/abandon_mob()
 	set name = "{RETURN TO LOBBY}"
-	set category = "Options"
-	set hidden = 1
+	set hidden = TRUE
 	if(!check_rights(0))
 		return
 	if (CONFIG_GET(flag/norespawn))
@@ -1103,8 +1101,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 ///Show the language menu for this mob
 /mob/verb/open_language_menu()
 	set name = "Open Language Menu"
-	set category = "IC"
-	set hidden = 1
+	set hidden = TRUE
 
 	var/datum/language_holder/H = get_language_holder()
 	H.open_language_menu(usr)
