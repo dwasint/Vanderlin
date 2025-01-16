@@ -189,7 +189,7 @@
 
 /obj/item/paper/verb/rename()
 	set name = "Rename paper"
-	set hidden = TRUE
+	set hidden = 1
 	set src in usr
 
 	if(usr.incapacitated() || !usr.is_literate())

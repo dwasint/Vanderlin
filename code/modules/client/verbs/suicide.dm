@@ -14,7 +14,7 @@
 		B.suicided = suicide_state
 
 /mob/living/carbon/human/verb/suicide()
-	set hidden = TRUE
+	set hidden = 1
 	if(!usr.client.holder)
 		return
 	if(!canSuicide())
@@ -99,7 +99,7 @@
 		death(FALSE)
 
 /mob/living/brain/verb/suicide()
-	set hidden = TRUE
+	set hidden = 1
 	if(!usr.client.holder)
 		return
 	if(!canSuicide())
@@ -117,7 +117,7 @@
 		death(FALSE)
 
 /mob/living/carbon/monkey/verb/suicide()
-	set hidden = TRUE
+	set hidden = 1
 	if(!usr.client.holder)
 		return
 	if(!canSuicide())
@@ -136,7 +136,7 @@
 		death(FALSE)
 
 /mob/living/simple_animal/verb/suicide()
-	set hidden = TRUE
+	set hidden = 1
 	if(!usr.client.holder)
 		return
 	if(!canSuicide())

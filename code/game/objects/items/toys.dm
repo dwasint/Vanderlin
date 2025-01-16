@@ -339,7 +339,7 @@
 
 /obj/item/toy/cards/singlecard/verb/Flip()
 	set name = "Flip Card"
-	set hidden = TRUE
+	set hidden = 1
 	set src in range(1)
 	if(!ishuman(usr) || !usr.canUseTopic(src, BE_CLOSE))
 		return

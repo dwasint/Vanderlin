@@ -1,7 +1,8 @@
 /mob/dead/observer/verb/show_notificationprefs()
+	set category = "Ghost"
 	set name = "Notification preferences"
 	set desc = ""
-	set hidden = TRUE
+	set hidden = 1
 	if(!check_rights(0))
 		return
 	var/datum/notificationpanel/panel  = new(usr)

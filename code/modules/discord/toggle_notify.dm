@@ -1,9 +1,9 @@
 // Verb to toggle restart notifications
 /client/verb/notify_restart()
-
+	set category = "Special Verbs"
 	set name = "Notify Restart"
 	set desc = ""
-	set hidden = TRUE
+	set hidden = 1
 	if(!usr.client.holder)
 		return
 	// Safety checks

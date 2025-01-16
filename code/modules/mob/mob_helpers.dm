@@ -414,7 +414,7 @@
  */
 /mob/verb/a_intent_change(input as text)
 	set name = "a-intent"
-	set hidden = TRUE
+	set hidden = 1
 
 	if(!possible_a_intents || !possible_a_intents.len)
 		return
@@ -463,7 +463,7 @@
 
 /mob/verb/rog_intent_change(numb as num,offhand as num)
 	set name = "intent-change"
-	set hidden = TRUE
+	set hidden = 1
 	if(atkswinging)
 		stop_attack()
 	if(offhand)
@@ -575,7 +575,7 @@
 
 /mob/verb/mmb_intent_change(input as text)
 	set name = "mmb-change"
-	set hidden = TRUE
+	set hidden = 1
 	if(!hud_used)
 		return
 	if(atkswinging)
@@ -644,7 +644,7 @@
 
 /mob/verb/def_intent_change(input as num)
 	set name = "def-change"
-	set hidden = TRUE
+	set hidden = 1
 
 	if(input == d_intent)
 		return
@@ -658,7 +658,7 @@
 
 /mob/verb/toggle_cmode()
 	set name = "cmode-change"
-	set hidden = TRUE
+	set hidden = 1
 
 	var/mob/living/L
 	if(isliving(src))

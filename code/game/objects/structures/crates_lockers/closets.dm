@@ -438,7 +438,7 @@
 
 /obj/structure/closet/verb/verb_toggleopen()
 	set src in view(1)
-	set hidden = TRUE
+	set hidden = 1
 	set name = "Toggle Open"
 
 	if(!usr.canUseTopic(src, BE_CLOSE) || !isturf(loc))

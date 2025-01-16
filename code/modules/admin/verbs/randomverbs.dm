@@ -46,9 +46,9 @@
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Subtle Message") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_admin_headset_message(mob/M in GLOB.mob_list)
-
+	set category = "Special Verbs"
 	set name = "Headset Message"
-	set hidden = TRUE
+	set hidden = 1
 
 	admin_headset_message(M)
 
@@ -382,9 +382,9 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	return new_character
 
 /client/proc/cmd_admin_add_freeform_ai_law()
-
+	set category = "Fun"
 	set name = "Add Custom AI law"
-	set hidden = TRUE
+	set hidden = 1
 
 	if(!check_rights(R_ADMIN))
 		return
@@ -646,10 +646,10 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 
 /client/proc/admin_change_sec_level()
-
+	set category = "Special Verbs"
 	set name = "Set Security Level"
 	set desc = ""
-	set hidden = TRUE
+	set hidden = 1
 
 	if(!check_rights(R_ADMIN))
 		return

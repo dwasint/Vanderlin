@@ -376,8 +376,9 @@ SUBSYSTEM_DEF(vote)
 	generated_actions = list()
 
 /mob/verb/vote()
+	set category = "OOC"
 	set name = "Vote"
-	set hidden = TRUE
+	set hidden = 1
 	var/datum/browser/noclose/popup = new(src, "vote", "Voting Panel")
 	popup.set_window_options("can_close=0")
 	popup.set_content(SSvote.interface(client))

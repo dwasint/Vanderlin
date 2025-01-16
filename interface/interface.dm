@@ -17,7 +17,7 @@
 /client/verb/forum()
 	set name = "forum"
 	set desc = ""
-	set hidden = TRUE
+	set hidden = 1
 	var/forumurl = CONFIG_GET(string/forumurl)
 	if(forumurl)
 		if(alert("This will open the forum in your browser. Are you sure?",,"Yes","No")!="Yes")
@@ -67,7 +67,7 @@
 /client/verb/reportissue()
 	set name = "report-issue"
 	set desc = ""
-	set hidden = TRUE
+	set hidden = 1
 	var/githuburl = CONFIG_GET(string/githuburl)
 	if(githuburl)
 		var/message = "This will open the Github issue reporter in your browser. Are you sure?"
@@ -105,8 +105,8 @@
 
 /client/verb/changelog()
 	set name = "Changelog"
-
-	set hidden = TRUE
+	set category = "OOC"
+	set hidden = 1
 	src << browse('html/changelog.html', "window=changes;size=675x650")
 	if(prefs.lastchangelog != GLOB.changelog_hash)
 		prefs.lastchangelog = GLOB.changelog_hash

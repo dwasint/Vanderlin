@@ -3,7 +3,8 @@
 
 /mob/verb/say_verb()
 	set name = "Say"
-	set hidden = TRUE
+	set category = "IC"
+	set hidden = 1
 
 	var/message = input(usr, "", "say") as text|null
 	// If they don't type anything just drop the message.
@@ -20,7 +21,8 @@
 ///Whisper verb
 /mob/verb/whisper_verb(message as text)
 	set name = "Whisper"
-	set hidden = TRUE
+	set category = "IC"
+	set hidden = 1
 
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
 		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
@@ -34,7 +36,8 @@
 ///The me emote verb
 /mob/verb/me_verb()
 	set name = "Me"
-	set hidden = TRUE
+	set category = "IC"
+	set hidden = 1
 #ifndef MATURESERVER
 	return
 #endif
@@ -59,7 +62,7 @@
 ///Speak as a dead person (ghost etc)
 /mob/proc/say_dead(message)
 	return
-/*
+/* 
 	var/name = real_name
 	var/alt_name = ""
 

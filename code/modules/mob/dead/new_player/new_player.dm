@@ -46,7 +46,8 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/Lore_Primer.json")
 ///Say verb
 /mob/dead/new_player/say_verb(message as text)
 	set name = "Say"
-	set hidden = TRUE
+	set category = "IC"
+	set hidden = 1
 
 #ifdef MATURESERVER
 

@@ -64,42 +64,39 @@ li a:hover:not(.active) {
 }
 
 .button-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Flexible column sizing */
-    grid-auto-rows: auto;
-    gap: 8px; /* Space between buttons */
-    width: 100%; /* Full width of the container */
-    margin: 0 auto; /* Center the container horizontally */
-    box-sizing: border-box;
+	display: inline-flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: flex-start;
+	min-width: 0;
+	min-height: 0;
+	white-space: pre-wrap;
 }
-
 .button {
-    background: #000000; /* Black background */
-    font-family: 'MedievalSharp', cursive; /* Medieval-style font */
-    font-size: 16px;
-    color: #d6d6d6;
-    line-height: 1.2;
-    padding: 10px 16px; /* Add space around the text */
-    border: 1px solid #444; /* Subtle border */
-    text-align: center;
-    text-shadow: 1px 1px 2px #000, -1px -1px 2px #000;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-sizing: border-box;
+	background: #000000;
+	font-family: 'MedievalSharp', cursive;
+	font-size: 20px;
+	color: #c9c1ba;
+	line-height: 1.2;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	word-wrap: break-word;
+	scrollbar-face-color:#1A1A1A;
+	scrollbar-track-color:#171717;
+	scrollbar-highlight-color:#171717;
+	text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;
 }
 
 .button:hover {
-    background-color: #252525;
-    color: #ffffff;
-    border-color: #666666;
+	border-color: rgba(255, 255, 254, 0.5);
+	background-color: #252525;
+	color: white;
 }
 
 .button:active, .button.active {
-    background-color: #444444;
-    text-decoration: underline;
-    color: #e6e6e6;
+	text-decoration: underline;
 }
-
 .grid-container {
 	display: inline-flex;
 	flex-wrap: wrap;

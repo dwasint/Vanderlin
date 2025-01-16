@@ -278,7 +278,7 @@ GLOBAL_PROTECT(protected_ranks)
 
 #ifdef TESTING
 /client/verb/changerank(newrank in GLOB.admin_ranks)
-	set hidden = TRUE
+	set hidden = 1
 	if(holder)
 		holder.rank = newrank
 	else
@@ -287,7 +287,7 @@ GLOBAL_PROTECT(protected_ranks)
 	holder.associate(src)
 
 /client/verb/changerights(newrights as num)
-	set hidden = TRUE
+	set hidden = 1
 	if(holder)
 		holder.rank.rights = newrights
 	else

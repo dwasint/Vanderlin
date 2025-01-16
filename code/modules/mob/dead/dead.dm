@@ -131,9 +131,10 @@ INITIALIZE_IMMEDIATE(/mob/dead)
 		popup.open(FALSE)
 
 /mob/dead/proc/server_hop()
+	set category = "OOC"
 	set name = "Server Hop!"
 	set desc= "Jump to the other server"
-	set hidden = TRUE
+	set hidden = 1
 	if(notransform)
 		return
 	var/list/csa = CONFIG_GET(keyed_list/cross_server)

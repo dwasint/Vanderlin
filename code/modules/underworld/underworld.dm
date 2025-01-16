@@ -1,8 +1,8 @@
 // Verbs
 /mob/verb/returntolobby()
 	set name = "{RETURN TO LOBBY}"
-
-	set hidden = TRUE
+	set category = "Options"
+	set hidden = 1
 
 	if(key)
 		GLOB.respawntimes[key] = world.time

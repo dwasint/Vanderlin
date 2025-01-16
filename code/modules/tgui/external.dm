@@ -131,7 +131,7 @@
 /client/verb/uiclose(ref as text)
 	// Name the verb, and hide it from the user panel.
 	set name = "uiclose"
-	set hidden = TRUE
+	set hidden = 1
 
 	// Get the UI based on the ref.
 	var/datum/tgui/ui = locate(ref)

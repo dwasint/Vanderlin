@@ -1,7 +1,7 @@
 /mob/verb/pray(msg as text)
-
+	set category = "IC"
 	set name = "Pray"
-	set hidden = TRUE
+	set hidden = 1
 	if(!usr.client.holder)
 		return
 
@@ -78,7 +78,7 @@
 /mob/proc/roguepray(msg as text)
 //	set category = "IC"
 //	set name = "Pray"
-//	set hidden = TRUE
+//	set hidden = 1
 //	if(!usr.client.holder)
 //		return
 //

@@ -472,7 +472,7 @@
 //for more info on why this is not atom/pull, see examinate() in mob.dm
 /mob/living/verb/pulled(atom/movable/AM as mob|obj in oview(1))
 	set name = "Pull"
-	set hidden = TRUE
+	set hidden = 1
 
 	if(istype(AM) && Adjacent(AM))
 		start_pulling(AM)
@@ -511,8 +511,8 @@
 
 /mob/living/verb/stop_pulling1()
 	set name = "Stop Pulling"
-
-	set hidden = TRUE
+	set category = "IC"
+	set hidden = 1
 	stop_pulling()
 
 //same as above
@@ -569,8 +569,8 @@
 
 /mob/living/proc/mob_sleep()
 	set name = "Sleep"
-
-	set hidden = TRUE
+	set category = "IC"
+	set hidden = 1
 	if(IsSleeping())
 		to_chat(src, "<span class='warning'>I am already sleeping!</span>")
 		return
@@ -585,8 +585,8 @@
 
 /mob/living/proc/lay_down()
 	set name = "Lay down"
-
-	set hidden = TRUE
+	set category = "IC"
+	set hidden = 1
 	if(stat)
 		return
 	if(pulledby)
@@ -597,8 +597,8 @@
 
 /mob/living/proc/stand_up()
 	set name = "Stand up"
-
-	set hidden = TRUE
+	set category = "IC"
+	set hidden = 1
 	if(stat)
 		return
 	if(pulledby)
@@ -615,8 +615,8 @@
 
 /mob/living/proc/toggle_rest()
 	set name = "Rest/Stand"
-
-	set hidden = TRUE
+	set category = "IC"
+	set hidden = 1
 	if(stat)
 		return
 	if(pulledby)
@@ -925,8 +925,8 @@
 
 /mob/living/verb/resist()
 	set name = "Resist"
-
-	set hidden = TRUE
+	set category = "IC"
+	set hidden = 1
 	DEFAULT_QUEUE_OR_CALL_VERB(VERB_CALLBACK(src, PROC_REF(execute_resist)))
 
 ///proc extender of [/mob/living/verb/resist] meant to make the process queable if the server is overloaded when the verb is called
@@ -963,8 +963,8 @@
 
 /mob/living/verb/submit()
 	set name = "Yield"
-
-	set hidden = TRUE
+	set category = "IC"
+	set hidden = 1
 	if(surrendering)
 		return
 	if(stat)

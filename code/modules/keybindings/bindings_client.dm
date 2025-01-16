@@ -98,7 +98,7 @@
 	mob.update_mouse_pointer()
 
 /client/verb/activeInput()
-	set hidden = TRUE
+	set hidden = 1
 	if(isliving(mob))
 		var/mob/living/L = mob
 		if(L.stat)
@@ -106,6 +106,6 @@
 		mob.set_typing_indicator(TRUE)
 
 /client/verb/disableInput()
-	set hidden = TRUE
+	set hidden = 1
 	if(isliving(mob))
 		mob.set_typing_indicator(FALSE)

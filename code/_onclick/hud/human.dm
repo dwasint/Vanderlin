@@ -762,10 +762,10 @@
 
 
 /mob/living/carbon/human/verb/toggle_hotkey_verbs()
-
+	set category = "OOC"
 	set name = "Toggle hotkey buttons"
 	set desc = ""
-	set hidden = TRUE
+	set hidden = 1
 	if(hud_used.hotkey_ui_hidden)
 		client.screen += hud_used.hotkeybuttons
 		hud_used.hotkey_ui_hidden = FALSE
