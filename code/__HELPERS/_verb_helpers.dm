@@ -64,7 +64,6 @@
 		mob_target = target
 		target = mob_target.client
 	else if(!istype(target, /client))
-		var/list/verbs_list = list()
 		if(!islist(verb_or_list_to_remove))
 			target.verbs -= verb_or_list_to_remove
 		else
