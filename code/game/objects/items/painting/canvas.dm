@@ -164,6 +164,8 @@
 
 /atom/movable/screen/canvas/Click(location, control, params)
 	. = ..()
+	if(host.item_flags & IN_STORAGE)
+		return
 	var/obj/item/paint_brush/brush = usr.get_active_held_item()
 	if(!istype(brush))
 		return
