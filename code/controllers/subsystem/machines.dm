@@ -10,9 +10,9 @@ SUBSYSTEM_DEF(machines)
 	fire()
 	return ..()
 
-/datum/controller/subsystem/machines/stat_entry(msg)
-	msg = ("M:[processing.len]")
-	return ..()
+/datum/controller/subsystem/machines/stat_entry()
+	..("M:[processing.len]")
+
 
 /datum/controller/subsystem/machines/fire(resumed = 0)
 	if (!resumed)

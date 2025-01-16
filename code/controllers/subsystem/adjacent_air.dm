@@ -6,9 +6,8 @@ SUBSYSTEM_DEF(adjacent_air)
 	priority = FIRE_PRIORITY_ATMOS_ADJACENCY
 	var/list/queue = list()
 
-/datum/controller/subsystem/adjacent_air/stat_entry(msg)
-	msg = ("P:[length(queue)]")
-	return ..()
+/datum/controller/subsystem/adjacent_air/stat_entry()
+	..("P:[length(queue)]")
 
 /datum/controller/subsystem/adjacent_air/Initialize()
 	while(length(queue))

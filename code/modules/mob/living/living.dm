@@ -711,7 +711,7 @@
 		if(ishuman(src))
 			var/mob/living/carbon/human/human = src
 			human.funeral = FALSE
-		remove_verb(client, /client/proc/descend)
+		client?.verbs -= /client/proc/descend
 
 /mob/living/proc/remove_CC(should_update_mobility = TRUE)
 	SetStun(0, FALSE)

@@ -55,9 +55,9 @@
 	if(isliving(src))
 		var/mob/living/L = src
 		if(L.stat >= DEAD)
-			add_verb(client, /client/proc/descend)
+			client.verbs += /client/proc/descend
 		else if(L.stat < DEAD && !L.mind.has_antag_datum(/datum/antagonist/zombie))
-			remove_verb(client, /client/proc/descend)
+			client.verbs -= /client/proc/descend
 	else if(isroguespirit(src))
 		var/mob/living/carbon/spirit/S = src
 		if(S.paid)

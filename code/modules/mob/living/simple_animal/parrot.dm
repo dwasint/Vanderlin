@@ -125,6 +125,14 @@
 
 	..(gibbed)
 
+/mob/living/simple_animal/parrot/Stat()
+	..()
+	if(!client)
+		return
+	if(statpanel("Status"))
+		stat("Held Item", held_item)
+		stat("Mode",a_intent)
+
 /mob/living/simple_animal/parrot/Hear(message, atom/movable/speaker, message_langs, raw_message, radio_freq, list/spans, message_mode)
 	. = ..()
 	if(speaker != src && prob(50)) //Dont imitate ourselves

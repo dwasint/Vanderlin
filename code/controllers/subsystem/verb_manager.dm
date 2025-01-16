@@ -112,6 +112,6 @@ SUBSYSTEM_DEF(verb_manager)
 	verbs_executed_per_second = MC_AVG_SECONDS(verbs_executed_per_second, executed_verbs, wait TICKS)
 
 /datum/controller/subsystem/verb_manager/stat_entry(msg)
+	. = ..()
 	if(use_default_stats)
-		msg = "V/S: [round(verbs_executed_per_second, 0.01)]"
-	return ..()
+		. += "V/S: [round(verbs_executed_per_second, 0.01)]"

@@ -86,9 +86,6 @@ GLOBAL_LIST_EMPTY(respawncounts)
 				to_chat(src, span_danger("Your previous action was ignored because you've done too many in a second"))
 				return
 
-	if(href_list["reload_statbrowser"])
-		src << browse(file('html/statbrowser.html'), "window=statbrowser")
-
 	//Logs all hrefs, except chat pings
 	if(!(href_list["_src_"] == "chat" && href_list["proc"] == "ping" && LAZYLEN(href_list) == 2))
 		log_href("[src] (usr:[usr]\[[COORD(usr)]\]) : [hsrc ? "[hsrc] " : ""][href]")
@@ -316,7 +313,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 		holder.owner = src
 		connecting_admin = TRUE
 	else if(GLOB.deadmins[ckey])
-		add_verb(src, /client/proc/readmin)
+		verbs += /client/proc/readmin
 		connecting_admin = TRUE
 	if(CONFIG_GET(flag/autoadmin))
 		if(!GLOB.admin_datums[ckey])
@@ -350,7 +347,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	fps = prefs.clientfps
 
 	if(fexists(roundend_report_file()))
-		add_verb(src, /client/proc/show_previous_roundend_report)
+		verbs += /client/proc/show_previous_roundend_report
 
 	var/full_version = "[byond_version].[byond_build ? byond_build : "xxx"]"
 	log_access("Login: [key_name(src)] from [address ? address : "localhost"]-[computer_id] || BYOND v[full_version]")
@@ -422,8 +419,6 @@ GLOBAL_LIST_EMPTY(respawncounts)
 		set_macros()
 		update_movement_keys()
 
-	src << browse(file('html/statbrowser.html'), "window=statbrowser")
-	addtimer(CALLBACK(src, PROC_REF(check_panel_loaded)), 30 SECONDS)
 //	chatOutput.start() // Starts the chat
 
 	if(alert_mob_dupe_login)
@@ -1006,9 +1001,9 @@ GLOBAL_LIST_EMPTY(respawncounts)
 
 /client/proc/add_verbs_from_config()
 	if(CONFIG_GET(flag/see_own_notes))
-		add_verb(src, /client/proc/self_notes)
+		verbs += /client/proc/self_notes
 	if(CONFIG_GET(flag/use_exp_tracking))
-		add_verb(src, /client/proc/self_playtime)
+		verbs += /client/proc/self_playtime
 
 
 #undef UPLOAD_LIMIT
@@ -1180,37 +1175,3 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	set desc = "Make that one person you had Quality RolePlay with happy."
 
 	commendation_popup(forced)
-
-/// compiles a full list of verbs and sends it to the browser
-/client/proc/init_verbs()
-	if(IsAdminAdvancedProcCall())
-		return
-	var/list/verblist = list()
-	var/list/verbstoprocess = verbs.Copy()
-	if(mob)
-		verbstoprocess += mob.verbs
-		for(var/AM in mob.contents)
-			var/atom/movable/thing = AM
-			verbstoprocess += thing.verbs
-	panel_tabs.Cut() // panel_tabs get reset in init_verbs on JS side anyway
-	for(var/thing in verbstoprocess)
-		var/procpath/verb_to_init = thing
-		if(!verb_to_init)
-			continue
-		if(verb_to_init.hidden)
-			continue
-		if(!istext(verb_to_init.category))
-			continue
-		panel_tabs |= verb_to_init.category
-		verblist[++verblist.len] = list(verb_to_init.category, verb_to_init.name)
-		src << output("[url_encode(json_encode(panel_tabs))];[url_encode(json_encode(verblist))]", "statbrowser:init_verbs")
-/client/proc/check_panel_loaded()
-	if(statbrowser_ready)
-		return
-	to_chat(src, "<span class='userdanger'>Statpanel failed to load, click <a href='?src=[REF(src)];reload_statbrowser=1'>here</a> to reload the panel </span>")
-
-/client/verb/fix_stat_panel()
-	set name = "Fix Stat Panel"
-	set hidden = TRUE
-
-	init_verbs()

@@ -141,15 +141,6 @@
 
 	var/list/open_popups = list()
 
-	/// list of tabs containing spells and abilities
-	var/list/spell_tabs = list()
-	/// our current tab
-	var/stat_tab
-	/// whether our browser is ready or not yet
-	var/statbrowser_ready = FALSE
-	/// list of all tabs
-	var/list/panel_tabs = list()
-
 	var/loop_sound = FALSE
 	var/rain_sound = FALSE
 	var/last_droning_sound
@@ -245,9 +236,3 @@
 	else
 		screen -= P
 		qdel(P)
-
-/client/proc/debugstatpanel()
-	set name = "Debug Stat Panel"
-	set category = "Debug"
-
-	src << output("", "statbrowser:create_debug")

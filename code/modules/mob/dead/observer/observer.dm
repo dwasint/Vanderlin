@@ -122,8 +122,8 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 /mob/dead/observer/Initialize()
 	set_invisibility(GLOB.observer_default_invisibility)
 
-	add_verb(src, list(
-		/mob/dead/observer/proc/tray_view))
+	verbs += list(
+		/mob/dead/observer/proc/tray_view)
 
 	if(icon_state in GLOB.ghost_forms_with_directions_list)
 		ghostimage_default = image(src.icon,src,src.icon_state + "")
@@ -210,8 +210,8 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 	real_name = name
 
 	if(!fun_verbs)
-		remove_verb(src, /mob/dead/observer/verb/boo)
-		remove_verb(src, /mob/dead/observer/verb/possess)
+		verbs -= /mob/dead/observer/verb/boo
+		verbs -= /mob/dead/observer/verb/possess
 
 	GLOB.dead_mob_list += src
 
@@ -224,8 +224,8 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 	. = ..()
 
 	if(!(istype(src, /mob/dead/observer/rogue/arcaneeye)))
-		add_verb(src, /mob/dead/observer/verb/ghost_upward)
-		add_verb(src, /mob/dead/observer/verb/ghost_downward)
+		verbs += /mob/dead/observer/verb/ghost_upward
+		verbs += /mob/dead/observer/verb/ghost_downward
 
 	grant_all_languages()
 //	show_data_huds()
@@ -553,7 +553,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		qdel(M)
 		return
 
-	remove_verb(client, /client/proc/descend)
+	client?.verbs -= /client/proc/descend
 	M.key = key
 //	M.Login()	//wat
 	return
@@ -1061,11 +1061,11 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			ghostimage_simple.icon_state = icon_state
 		if("fun_verbs")
 			if(fun_verbs)
-				add_verb(src, /mob/dead/observer/verb/boo)
-				add_verb(src, /mob/dead/observer/verb/possess)
+				verbs += /mob/dead/observer/verb/boo
+				verbs += /mob/dead/observer/verb/possess
 			else
-				remove_verb(src, /mob/dead/observer/verb/boo)
-				remove_verb(src, /mob/dead/observer/verb/possess)
+				verbs -= /mob/dead/observer/verb/boo
+				verbs -= /mob/dead/observer/verb/possess
 
 /mob/dead/observer/reset_perspective(atom/A)
 	if(client)
