@@ -1,11 +1,11 @@
 //Speech verbs.
 
 
-/mob/verb/say_verb()
+/mob/verb/say_verb(message as text)
 	set name = "Say"
-	set hidden = TRUE
 
-	var/message = input(usr, "", "say") as text|null
+	if(!message)
+		message = input(usr, "", "say") as text|null
 	// If they don't type anything just drop the message.
 	set_typing_indicator(FALSE)
 	if(!length(message))
@@ -20,7 +20,6 @@
 ///Whisper verb
 /mob/verb/whisper_verb(message as text)
 	set name = "Whisper"
-	set hidden = TRUE
 
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
 		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
@@ -32,9 +31,8 @@
 	say(message, language, sanitize = sanitize) //only living mobs actually whisper, everything else just talks
 
 ///The me emote verb
-/mob/verb/me_verb()
+/mob/verb/me_verb(message as text)
 	set name = "Me"
-	set hidden = TRUE
 #ifndef MATURESERVER
 	return
 #endif
@@ -45,7 +43,8 @@
 		if(get_playerquality(client.ckey) <= -20)
 			to_chat(usr, "<span class='warning'>I can't use custom emotes. (LOW PQ)</span>")
 			return
-	var/message = input(usr, "", "me") as text|null
+	if(!message)
+		message = input(usr, "", "me") as text|null
 	// If they don't type anything just drop the message.
 	set_typing_indicator(FALSE)
 	if(!length(message))

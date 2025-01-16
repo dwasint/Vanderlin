@@ -378,6 +378,7 @@ Works together with spawning an observer, noted above.
 					ghost.can_reenter_corpse = can_reenter_corpse
 					ghost.ghostize_time = world.time
 					ghost.key = key
+					ghost.client?.init_verbs()
 					return ghost
 //		if(client)
 //			var/S = sound('sound/ambience/creepywind.ogg', repeat = 1, wait = 0, volume = client.prefs.musicvol, channel = CHANNEL_MUSIC)
@@ -507,6 +508,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	client.change_view(CONFIG_GET(string/default_view))
 	SStgui.on_transfer(src, mind.current) // Transfer NanoUIs.
 	mind.current.key = key
+	mind.current.client.init_verbs()
 	return TRUE
 
 /mob/dead/observer/returntolobby(modifier as num)

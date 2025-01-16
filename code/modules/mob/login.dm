@@ -90,6 +90,7 @@
 	log_message("Client [key_name(src)] has taken ownership of mob [src]([src.type])", LOG_OWNERSHIP)
 	SEND_SIGNAL(src, COMSIG_MOB_CLIENT_LOGIN, client)
 	addtimer(CALLBACK(src, PROC_REF(send_pref_messages)), 2 SECONDS)
+	client.init_verbs()
 	if(client.holder)
 		client.hearallasghost()
 
