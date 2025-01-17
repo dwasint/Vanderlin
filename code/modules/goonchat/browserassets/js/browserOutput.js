@@ -1013,27 +1013,38 @@ $(function() {
 	});
 
 	$('#saveLog').click(function(e) {
-		// Requires IE 10+ to issue download commands. Just opening a popup
-		// window will cause Ctrl+S to save a blank page, ignoring innerHTML.
-		if (!window.Blob) {
-			output('<span class="big red">This function is only supported on IE 10 and up. Upgrade if possible.</span>', 'internal');
-			return;
-		}
+		var date = new Date();
+		var fname = 'Azure Peak Chat Log ' +
+					date.getFullYear() + '-' +
+					(date.getMonth() + 1 < 10 ? '0' : '') + (date.getMonth() + 1) + '-' +
+					(date.getDate() < 10 ? '0' : '') + date.getDate() + ' ' +
+					(date.getHours() < 10 ? '0' : '') + date.getHours() +
+					(date.getMinutes() < 10 ? '0' : '') + date.getMinutes() +
+					(date.getSeconds() < 10 ? '0' : '') + date.getSeconds() +
+					'.html';
 
 		$.ajax({
 			type: 'GET',
 			url: 'browserOutput_white.css',
 			success: function(styleData) {
-				var blob = new Blob(['<head><title>Chat Log</title><style>', styleData, '</style></head><body>', $messages.html(), '</body>']);
+				var blob = new Blob([
+					'<head><title>Vanderlin Chat Log</title><style>',
+					styleData,
+					'</style></head><body>',
+					$messages.html(),
+					'</body>'
+				], { type: 'text/html;charset=utf-8' });
 
-				var fname = 'SS13 Chat Log';
-				var date = new Date(), month = date.getMonth(), day = date.getDay(), hours = date.getHours(), mins = date.getMinutes(), secs = date.getSeconds();
-				fname += ' ' + date.getFullYear() + '-' + (month < 10 ? '0' : '') + month + '-' + (day < 10 ? '0' : '') + day;
-				fname += ' ' + (hours < 10 ? '0' : '') + hours + (mins < 10 ? '0' : '') + mins + (secs < 10 ? '0' : '') + secs;
-				fname += '.html';
-
-				window.navigator.msSaveBlob(blob, fname);
-			}
+				if (window.navigator.msSaveBlob) {
+					window.navigator.msSaveBlob(blob, fname);
+				} else {
+					var link = document.createElement('a');
+					link.href = URL.createObjectURL(blob);
+					link.download = fname;
+					link.click();
+					URL.revokeObjectURL(link.href);
+				}
+			},
 		});
 	});
 
