@@ -217,7 +217,7 @@
 			damtype = BURN
 			update_brightness()
 			force = on_damage
-			soundloop.start()
+			//soundloop.start()
 			if(ismob(loc))
 				var/mob/M = loc
 				M.update_inv_hands()

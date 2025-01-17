@@ -36,7 +36,7 @@
 
 /obj/structure/fluff/millstone/attack_right(mob/living/carbon/human/user)
 	. = ..()
-	var/obj/item/item = input("Choose an item to remvoe") as anything in millable_contents
+	var/obj/item/item = input("Choose an item to remove") as anything in millable_contents
 	if(!item)
 		return
 	if(QDELETED(item) || !(item in millable_contents))

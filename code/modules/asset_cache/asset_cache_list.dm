@@ -27,7 +27,8 @@
 		"slop_menustyle4.css" = 'html/browser/slop_menustyle4.css',
 	)
 
-/datum/asset/simple/roguefonts
+/datum/asset/simple/namespaced/roguefonts
+	legacy = TRUE
 	assets = list(
 		"pterra.ttf" = 'interface/fonts/pterra.ttf',
 		"chiseld.ttf" = 'interface/fonts/chiseld.ttf',
@@ -85,7 +86,7 @@
 		/datum/asset/simple/namespaced/goonchat,
 		/datum/asset/spritesheet/goonchat,
 		/datum/asset/simple/namespaced/fontawesome,
-		/datum/asset/simple/roguefonts
+		/datum/asset/simple/namespaced/roguefonts
 	)
 
 

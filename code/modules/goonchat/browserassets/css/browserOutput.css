@@ -27,51 +27,51 @@ body {
 /* Fonts */
 @font-face {
   font-family: "Pterra";
-  src: url('pterra.ttf');
+  src: url('pterra.ttf') format('truetype');
 }
 @font-face {
   font-family: "Honoka Mincho";
-  src: url('HonokaMincho.ttf');
+  src: url('HonokaMincho.ttf') format('truetype');
 }
 
 @font-face {
   font-family: "Dauphin";
-  src: url('elf.ttf');
+  src: url('elf.ttf') format('truetype');
 }
 
 @font-face {
   font-family: "MasonAlternate";
-  src: url('dwarf.ttf');
+  src: url('dwarf.ttf') format('truetype');
 }
 
 @font-face {
   font-family: "Arabolical";
-  src: url('sand.ttf');
+  src: url('sand.ttf') format('truetype');
 }
 
 @font-face {
   font-family: "Xaphan";
-  src: url('hell.ttf');
+  src: url('hell.ttf') format('truetype');
 }
 
 @font-face {
   font-family: "FriskyVampire";
-  src: url('undead.ttf');
+  src: url('undead.ttf') format('truetype');
 }
 
 @font-face {
   font-family: "Thief by The Riddler";
-  src: url('orc.ttf');
+  src: url('orc.ttf') format('truetype');
 }
 
 @font-face {
   font-family: "Kingthings Petrock";
-  src: url('draconic.ttf');
+  src: url('draconic.ttf') format('truetype');
 }
 
 @font-face {
   font-family: "Emperialisme";
-  src: url('lupian.ttf');
+  src: url('lupian.ttf') format('truetype');
 }
 
 /* */
