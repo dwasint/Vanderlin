@@ -23,10 +23,6 @@
 	seton(TRUE)
 	. = ..()
 
-/obj/machinery/light/rogue/weather_trigger(W)
-	if(W==/datum/weather/rain)
-		START_PROCESSING(SSweather,src)
-
 /obj/machinery/light/rogue/OnCrafted(dirin)
 	. = ..()
 	can_damage = TRUE
@@ -90,14 +86,7 @@
 		update_icon()
 		if(soundloop)
 			soundloop.start()
-		addtimer(CALLBACK(src, PROC_REF(trigger_weather)), rand(5,20))
 		return TRUE
-
-/obj/proc/trigger_weather()
-	if(!QDELETED(src))
-		if(isturf(loc))
-			var/turf/T = loc
-			T.trigger_weather(src)
 
 /obj/machinery/light/rogue/Crossed(atom/movable/AM, oldLoc)
 	..()
