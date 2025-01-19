@@ -34,6 +34,10 @@
 	if (!shown)
 		shown = TRUE
 
+	if(progress >= goal)
+		qdel(src)
+
+
 /datum/progressbar/proc/shiftDown()
 	--listindex
 	bar.pixel_y = 32 + (PROGRESSBAR_HEIGHT * (listindex - 1))
