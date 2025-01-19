@@ -1,5 +1,16 @@
 // This mode will become the main basis for the typical roguetown round. Based off of chaos mode.
-GLOBAL_LIST_INIT(roguegamemodes, list("Rebellion", "Vampires and Werewolves", "None", "Aspirants", "Bandits", "Maniac", "Cultists", "Lich", "CANCEL"))
+GLOBAL_LIST_INIT(roguegamemodes, list(
+	"Rebellion",
+	"Vampires and Werewolves",
+	"Vampires",
+	"Werewolves",
+	"None",
+	"Aspirants",
+	"Bandits",
+	"Maniac",
+	"Cultists",
+	"Lich",
+	"CANCEL"))
 
 /datum/game_mode/chaosmode
 	name = "roguemode"
@@ -143,6 +154,12 @@ GLOBAL_LIST_INIT(roguegamemodes, list("Rebellion", "Vampires and Werewolves", "N
 					pick_vampires()
 					pick_werewolves()
 					log_game("Major Antagonist: Vampires and Werewolves")
+				if("Vampires")
+					pick_vampires()
+					log_game("Major Antagonist: Vampires")
+				if("Werewolves")
+					pick_werewolves()
+					log_game("Major Antagonist: Werewolves")
 				if("Bandits")
 					pick_bandits()
 					log_game("Minor Antagonist: Bandit")
@@ -162,7 +179,7 @@ GLOBAL_LIST_INIT(roguegamemodes, list("Rebellion", "Vampires and Werewolves", "N
 					log_game("Major Antagonist: None")
 		return TRUE
 
-	var/major_roll = pick(1,2,3)
+	var/major_roll = pick(1,2,3,4,5,6,7)
 	switch(major_roll)
 		if(1)
 			pick_rebels()
@@ -175,8 +192,17 @@ GLOBAL_LIST_INIT(roguegamemodes, list("Rebellion", "Vampires and Werewolves", "N
 			pick_vampires()
 			pick_werewolves()
 			log_game("Major Antagonist: Vampires and Werewolves")
-		//if(4)
-		//	log_game("Major Antagonist: None")
+		if(4)
+			pick_vampires()
+			log_game("Major Antagonist: Vampires")
+		if(5)
+			pick_werewolves()
+			log_game("Major Antagonist: Werewolves")
+		if(6)
+			pick_lich()
+			log_game("Major Antagonist: Lich")
+		if(7)
+			log_game("Major Antagonist: None")
 
 	if(prob(80))
 		pick_bandits()
@@ -185,10 +211,6 @@ GLOBAL_LIST_INIT(roguegamemodes, list("Rebellion", "Vampires and Werewolves", "N
 	if(prob(45))
 		pick_aspirants()
 		log_game("Minor Antagonist: Aspirant")
-
-	if(prob(30))
-		pick_lich()
-		log_game("Minor Antagonist: Lich")
 
 	if(prob(10))
 		pick_maniac()
