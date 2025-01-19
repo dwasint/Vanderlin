@@ -728,7 +728,6 @@ $(function() {
 	******************************************/
 	var savedConfig = {
 		fontsize: getCookie('fontsize'),
-		lineheight: getCookie('lineheight'),
 		'spingDisabled': getCookie('pingdisabled'),
 		'shighlightTerms': getCookie('highlightterms'),
 		'shighlightColor': getCookie('highlightcolor'),
@@ -740,10 +739,6 @@ $(function() {
 	if (savedConfig.fontsize) {
 		$messages.css('font-size', savedConfig.fontsize);
 		internalOutput('<span class="internal boldnshit">Loaded font size setting of: '+savedConfig.fontsize+'</span>', 'internal');
-	}
-	if (savedConfig.lineheight) {
-		$("body").css('line-height', savedConfig.lineheight);
-		internalOutput('<span class="internal boldnshit">Loaded line height setting of: '+savedConfig.lineheight+'</span>', 'internal');
 	}
 	if(savedConfig.sdarkmode == 'true'){
 		swap();
@@ -985,20 +980,6 @@ $(function() {
 		$messages.css({'font-size': savedConfig.fontsize});
 		setCookie('fontsize', savedConfig.fontsize, 365);
 		internalOutput('<span class="internal boldnshit">Font size set to '+savedConfig.fontsize+'</span>', 'internal');
-	});
-
-	$('#decreaseLineHeight').click(function(e) {
-		savedConfig.lineheight = Math.max(parseFloat(savedConfig.lineheight || 1.2) - 0.1, 0.1).toFixed(1);
-		$("body").css({'line-height': savedConfig.lineheight});
-		setCookie('lineheight', savedConfig.lineheight, 365);
-		internalOutput('<span class="internal boldnshit">Line height set to '+savedConfig.lineheight+'</span>', 'internal');
-	});
-
-	$('#increaseLineHeight').click(function(e) {
-		savedConfig.lineheight = (parseFloat(savedConfig.lineheight || 1.2) + 0.1).toFixed(1);
-		$("body").css({'line-height': savedConfig.lineheight});
-		setCookie('lineheight', savedConfig.lineheight, 365);
-		internalOutput('<span class="internal boldnshit">Line height set to '+savedConfig.lineheight+'</span>', 'internal');
 	});
 
 	$('#togglePing').click(function(e) {
