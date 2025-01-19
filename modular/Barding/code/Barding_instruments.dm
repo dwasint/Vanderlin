@@ -314,6 +314,7 @@
 	name = "lute"
 	desc = "The favored instrument of Eora, made of wood and simple string."
 	possible_item_intents = list(/datum/intent/mace/strike/wood)
+	force = 5
 	icon_state = "lute"
 	song_list = list(
 	"A Knight's Return" = 'modular/Barding/sound/instruments/lute (1).ogg',
