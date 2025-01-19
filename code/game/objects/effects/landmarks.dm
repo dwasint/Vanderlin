@@ -138,7 +138,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/manorguardsman
-	name = "Royal Guard"
+	name = "Royal Knight"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/veteran
@@ -368,6 +368,14 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	. = ..()
 	GLOB.bandit_starts += loc
 
+/obj/effect/landmark/start/admin
+	name = "admin"
+	icon = 'icons/mob/landmarks.dmi'
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/admin/Initialize()
+	. = ..()
+	GLOB.admin_warp += loc
 
 /obj/effect/landmark/start/delf
 	name = "delf"

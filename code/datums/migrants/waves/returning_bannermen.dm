@@ -9,7 +9,7 @@
 		"Half-Elf",
 		"Elf")
 	grant_lit_torch = TRUE
-	advjob_examine = FALSE
+	show_wanderer_examine = FALSE
 	outfit = /datum/outfit/job/roguetown/serjeant_at_arms
 
 /datum/outfit/job/roguetown/serjeant_at_arms/pre_equip(mob/living/carbon/human/H)
@@ -65,7 +65,7 @@
 		"Half-Elf",
 		"Elf")
 	grant_lit_torch = TRUE
-	advjob_examine = FALSE
+	show_wanderer_examine = FALSE
 /datum/outfit/job/roguetown/archer_bannerman/pre_equip(mob/living/carbon/human/H)
 	..()
 	pants = /obj/item/clothing/under/roguetown/trou/leather
@@ -76,7 +76,7 @@
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/storage/keyring/guard
-	beltr = /obj/item/quiver/arrows
+	beltr = /obj/item/ammo_holder/quiver/arrows
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	backpack_contents = list(/obj/item/rogueweapon/knife/dagger/steel/special = 1)
 	if(prob(30))
@@ -112,7 +112,7 @@
 	outfit = /datum/outfit/job/roguetown/crossbow_bannerman
 	allowed_races = list("Humen","Dwarf","Aasimar", "Half-Elf", "Elf")
 	grant_lit_torch = TRUE
-	advjob_examine = FALSE
+	show_wanderer_examine = FALSE
 
 /datum/outfit/job/roguetown/crossbow_bannerman/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -125,7 +125,7 @@
 	belt = /obj/item/storage/belt/rogue/leather
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	beltl = /obj/item/storage/keyring/guard
-	beltr = /obj/item/quiver/bolts
+	beltr = /obj/item/ammo_holder/quiver/bolts
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	backpack_contents = list(/obj/item/rogueweapon/knife/dagger/steel/special = 1)
 	if(prob(30))
@@ -161,7 +161,7 @@
 	outfit = /datum/outfit/job/roguetown/footman_bannerman
 	allowed_races = list("Humen","Dwarf","Aasimar","Half-Elf","Elf")
 	grant_lit_torch = TRUE
-	advjob_examine = FALSE
+	show_wanderer_examine = FALSE
 
 /datum/outfit/job/roguetown/footman_bannerman/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -201,7 +201,7 @@
 	outfit = /datum/outfit/job/roguetown/pikeman_bannerman
 	allowed_races = list("Humen","Dwarf","Aasimar","Half-Elf","Elf")
 	grant_lit_torch = TRUE
-	advjob_examine = FALSE
+	show_wanderer_examine = FALSE
 
 /datum/outfit/job/roguetown/pikeman_bannerman/pre_equip(mob/living/carbon/human/H)
 	..()

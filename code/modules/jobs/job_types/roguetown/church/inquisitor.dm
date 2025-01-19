@@ -20,7 +20,7 @@
 
 	outfit = /datum/outfit/job/roguetown/inquisitor
 	display_order = JDO_PURITAN
-	min_pq = 4
+	min_pq = 8
 	bypass_lastclass = TRUE
 	cmode_music = 'sound/music/cmode/church/CombatInquisitor.ogg'
 
@@ -36,6 +36,7 @@
 /datum/outfit/job/roguetown/inquisitor
 	name = "Inquisitor"
 	jobtype = /datum/job/roguetown/inquisitor
+	allowed_patrons = list(/datum/patron/psydon)
 
 /datum/outfit/job/roguetown/inquisitor/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -223,7 +224,6 @@
 				say(pick(confessions), spans = list("torture"))
 			else
 				say(pick(confessions))
-
 			if(user.is_holding_item_of_type(/obj/item/paper/confession)) // This code is to process gettin a signed confession through torture.
 				testing("User is holding a confession.")
 				if(has_confessed==TRUE) // This is to check if the victim has already confessed, if so just inform the torturer and return. This is so that the Inquisitor cannot get infinite confession points and get all of the things upon getting thier first heretic.

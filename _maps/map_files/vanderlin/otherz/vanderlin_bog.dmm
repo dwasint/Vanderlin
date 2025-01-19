@@ -452,7 +452,7 @@
 "fs" = (
 /obj/structure/rack/rogue,
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow,
-/obj/item/quiver/arrows,
+/obj/item/ammo_holder/quiver/arrows,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/shelter/bog)
 "ft" = (
@@ -1114,7 +1114,7 @@
 "pf" = (
 /obj/structure/rack/rogue,
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow,
-/obj/item/quiver/arrows,
+/obj/item/ammo_holder/quiver/arrows,
 /obj/machinery/light/rogue/torchholder/c,
 /turf/open/floor/rogue/woodturned/nosmooth,
 /area/rogue/indoors/shelter/bog)
@@ -1271,7 +1271,7 @@
 "ro" = (
 /obj/structure/rack/rogue,
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow,
-/obj/item/quiver/arrows,
+/obj/item/ammo_holder/quiver/arrows,
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/indoors/shelter/bog)
 "rv" = (
@@ -2434,7 +2434,7 @@
 "IU" = (
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow,
 /obj/structure/rack/rogue,
-/obj/item/quiver/bolts,
+/obj/item/ammo_holder/quiver/bolts,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/shelter/bog)
 "IX" = (
@@ -2477,7 +2477,7 @@
 	},
 /obj/structure/rack/rogue,
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow,
-/obj/item/quiver/arrows,
+/obj/item/ammo_holder/quiver/arrows,
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/indoors/shelter/bog)
 "JJ" = (
@@ -2706,6 +2706,9 @@
 "NL" = (
 /turf/open/floor/rogue/woodturned/nosmooth,
 /area/rogue/outdoors/bog)
+"NM" = (
+/turf/open/transparent/openspace,
+/area/rogue/indoors/cave)
 "NQ" = (
 /obj/structure/fluff/railing/wood{
 	dir = 8;
@@ -2897,7 +2900,7 @@
 /area/rogue/outdoors/bog)
 "QG" = (
 /obj/structure/table/wood/plain,
-/obj/item/rogueweapon/hammer,
+/obj/item/rogueweapon/hammer/iron,
 /turf/open/floor/rogue/woodturned/nosmooth,
 /area/rogue/indoors/shelter/bog)
 "QJ" = (
@@ -3327,7 +3330,7 @@
 /obj/structure/rack/rogue,
 /obj/structure/fluff/walldeco/wantedposter,
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow,
-/obj/item/quiver/arrows,
+/obj/item/ammo_holder/quiver/arrows,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/shelter/bog)
 "Wj" = (
@@ -3469,7 +3472,7 @@
 /turf/open/floor/rogue/woodturned/nosmooth,
 /area/rogue/indoors/shelter/bog)
 "Yk" = (
-/obj/structure/fluff/traveltile,
+/obj/structure/fluff/traveltile/to_inhumen_tribe,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/bog)
 "Yl" = (
@@ -4070,7 +4073,7 @@ ml
 kZ
 kZ
 La
-jS
+La
 jS
 jS
 kZ
@@ -4272,9 +4275,9 @@ ml
 La
 La
 kZ
+La
 jS
-jS
-jS
+kZ
 kZ
 La
 kZ
@@ -4475,8 +4478,8 @@ La
 kZ
 kZ
 jS
-jS
-jS
+La
+kZ
 La
 kZ
 kZ
@@ -4678,7 +4681,7 @@ kZ
 hr
 jS
 jS
-jS
+kZ
 La
 kZ
 La
@@ -4880,7 +4883,7 @@ La
 vX
 jS
 jS
-jS
+La
 kZ
 La
 La
@@ -5082,7 +5085,7 @@ gT
 gT
 jS
 jS
-jS
+La
 La
 yy
 yy
@@ -5284,7 +5287,7 @@ VG
 VG
 jS
 jS
-jS
+La
 La
 La
 La
@@ -5888,9 +5891,9 @@ ml
 kZ
 La
 La
+La
 jS
-jS
-jS
+kZ
 La
 Gh
 kZ
@@ -6496,7 +6499,7 @@ La
 kZ
 jS
 jS
-jS
+La
 La
 La
 La
@@ -6698,7 +6701,7 @@ kZ
 kZ
 jS
 jS
-jS
+La
 kZ
 kZ
 yy
@@ -7100,9 +7103,9 @@ ml
 La
 kZ
 La
+La
 jS
-jS
-jS
+La
 kZ
 La
 kZ
@@ -75910,8 +75913,8 @@ Dd
 Dm
 Dm
 HA
-Dd
-Dd
+Dm
+Dm
 Dm
 Nk
 Nk
@@ -76114,8 +76117,8 @@ Ie
 Ie
 Ie
 Ie
-Ie
-Ie
+Dm
+Dm
 Ie
 Ie
 Ie
@@ -83371,7 +83374,7 @@ Dm
 Dm
 Dm
 Dm
-Dm
+bk
 Dm
 Dm
 Dm
@@ -83568,10 +83571,10 @@ Dm
 Dm
 Dm
 Dd
+bk
 Dm
-Dm
-Dm
-Dm
+NM
+NM
 Dm
 Dm
 Dm
@@ -83772,8 +83775,8 @@ Dm
 Dd
 Dm
 wQ
-Dm
-Dm
+Wv
+Wv
 Dm
 Dm
 Dm
@@ -83973,10 +83976,10 @@ Dm
 Dm
 Dm
 Dd
-bk
-Ie
-Ie
-bk
+Dm
+Dm
+Dm
+Dm
 Dd
 Dd
 Dd

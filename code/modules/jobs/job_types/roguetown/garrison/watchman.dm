@@ -23,10 +23,10 @@
 	bypass_lastclass = TRUE
 	cmode_music = 'sound/music/cmode/garrison/CombatGarrison.ogg'
 	give_bank_account = 15
-	min_pq = 2
+	min_pq = 6
 
 /datum/outfit/job/roguetown/watchman/pre_equip(mob/living/carbon/human/H)
-	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/merc
+	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/light
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	shoes = /obj/item/clothing/shoes/roguetown/boots
@@ -72,15 +72,16 @@
 		H.change_stat("perception", 2)
 		H.change_stat("endurance", -3)
 		H.change_stat("speed", -1)
+		H.verbs |= /mob/proc/haltyell
 		ADD_TRAIT(H, TRAIT_KNOWBANDITS, TRAIT_GENERIC)
 		var/weapontypec = pickweight(list("Bow" = 6, "Crossbow" = 4)) // Rolls for either a bow or a Crossbow
 		switch(weapontypec)
 			if("Bow")
 				backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
-				backr = /obj/item/quiver/arrows
+				backr = /obj/item/ammo_holder/quiver/arrows
 			if("Crossbow")
 				backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
-				backr = /obj/item/quiver/bolts
+				backr = /obj/item/ammo_holder/quiver/bolts
 
 /datum/advclass/menatarms/watchman_pikeman
 	name = "Pikeman Men-At-Arms"
@@ -91,7 +92,7 @@
 
 /datum/outfit/job/roguetown/watchman/pikeman/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/helmet/ironpot
+	head = /obj/item/clothing/head/roguetown/helmet/kettle
 	cloak = /obj/item/clothing/cloak/stabard/guard
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail
 	neck = /obj/item/clothing/neck/roguetown/chaincoif/iron
@@ -115,5 +116,6 @@
 		H.change_stat("endurance", -1)
 		H.change_stat("constitution", 1)
 		H.change_stat("speed", 1)
+		H.verbs |= /mob/proc/haltyell
 		ADD_TRAIT(H, TRAIT_KNOWBANDITS, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
