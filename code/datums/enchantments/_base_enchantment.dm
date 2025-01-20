@@ -65,7 +65,11 @@
 /datum/enchantment/proc/on_drop()
 
 /datum/enchantment/proc/remove_item(datum/weakref/weakref)
-	var/atom/item = weakref.resolve()
+	var/atom/item
+	if(!istype(weakref))
+		item = weakref
+	else
+		item = weakref.resolve()
 	if(!item)
 		return
 	if(item in affected_items)

@@ -314,6 +314,8 @@
 			to_chat(M, "profane dagger whispers, \"[message]\"")
 
 /obj/item/rogueweapon/knife/dagger/steel/profane/pre_attack(mob/living/carbon/human/target, mob/living/user = usr, params)
+	if(!istype(target))
+		return FALSE
 	if(target.has_flaw(/datum/charflaw/hunted) || HAS_TRAIT(target, TRAIT_ZIZOID_HUNTED)) // Check to see if the dagger will do 20 damage or 14
 		force = 20
 	else
