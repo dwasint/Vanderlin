@@ -583,6 +583,7 @@
 #include "code\datums\elements\tipped_item.dm"
 #include "code\datums\enchantments\_base_enchantment.dm"
 #include "code\datums\enchantments\dimensional_shrink.dm"
+#include "code\datums\enchantments\silver.dm"
 #include "code\datums\gods\_faith.dm"
 #include "code\datums\gods\_patron.dm"
 #include "code\datums\gods\faiths\atheism.dm"
