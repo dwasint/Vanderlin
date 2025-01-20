@@ -70,6 +70,7 @@
 		list(
 			/obj/item/reagent_containers/food/snacks/rogue/meat/bacon,
 			/obj/item/reagent_containers/food/snacks/rogue/meat/mince/poultry,
+			/obj/item/reagent_containers/food/snacks/rogue/meat/mince,
 			/obj/item/reagent_containers/food/snacks/fat) = 1
 	)
 
