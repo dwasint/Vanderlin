@@ -204,8 +204,8 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 		var/newdrain = releasedrain
 		//skill block
 		newdrain = newdrain - (releasedrain * (ranged_ability_user.mind.get_skill_level(associated_skill) * 0.05))
-		var/charged_modifier = ranged_ability_user.client.chargedprog
-		if(charged_modifier != 100)
+		var/charged_modifier = 100 - ranged_ability_user.client.chargedprog
+		if(charged_modifier != 0)
 			newdrain *= max(1, min(5.60 * log(0.0144 * charged_modifier + 1.297) - 0.607, 10))//chat I think this is math
 
 		//int block

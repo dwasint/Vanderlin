@@ -57,7 +57,9 @@
 	var/discharge_method = MANA_SEQUENTIAL
 
 	/// The intrinsic sources of mana we will constantly try to draw from. Uses defines from magic_charge_bitflags.dm.
-	var/intrinsic_recharge_sources = MANA_ALL_LEYLINES
+	var/intrinsic_recharge_sources = NONE
+
+	var/list/maptext_info = list("Last Generated" = 0, "Total Mana" = 0)
 
 /datum/mana_pool/New(atom/parent = null)
 	. = ..()
@@ -89,6 +91,14 @@
 
 /datum/mana_pool/proc/set_parent(atom/parent)
 	src.parent = parent
+	if(parent)
+		if(ismob(parent))
+			if(parent:hud_used)
+				var/datum/hud/human/hud_used = parent:hud_used
+				if(istype(hud_used))
+					var/filled = round((src.amount / softcap) * 100, 20)
+					filled = min(filled, 120)
+					hud_used.mana.icon_state = "mana[filled]"
 
 /datum/mana_pool/proc/mana_status_report(datum/source, list/status_tab)
 	SIGNAL_HANDLER
@@ -141,6 +151,12 @@
 		if(incoming_patron.type in created.alignments)
 			attunements[listed] -= created.alignments[incoming_patron.type]
 
+/datum/mana_pool/proc/adjust_attunement(datum/attunement/attunement_type, amount)
+	if(!length(attunements))
+		attunements = generate_initial_attunements()
+
+	attunements[attunement_type] += amount
+
 // order of operations is as follows:
 // 1. we recharge
 // 2. we transfer mana
@@ -152,9 +168,9 @@
 	if (ethereal_recharge_rate != 0)
 		adjust_mana(ethereal_recharge_rate, attunements_to_generate)
 
-	if(isliving(parent) && amount < parent?.mana_overload_threshold)
+	if((intrinsic_recharge_sources & MANA_ALL_LEYLINES) && amount < softcap)
 		var/list/leylines = list()
-		for(var/obj/effect/ebeam/beam in range(3, src))
+		for(var/obj/effect/ebeam/beam in range(3, parent))
 			if(!beam.owner.mana_pool)
 				continue
 			if(beam.owner.mana_pool in leylines)
@@ -166,7 +182,7 @@
 
 		if(length(leylines))
 			for(var/datum/mana_pool/leyline/leyline as anything in leylines)
-				var/sane_distance = leylines[leyline]
+				var/sane_distance = leylines[leyline] + 1
 				leyline.transfer_specific_mana(src, (get_transfer_rate_for(leyline) / sane_distance) * 0.1)
 
 	if (length(transferring_to) > 0)
@@ -308,8 +324,13 @@
 	. = result - src.amount // Return the amount that was used
 	src.amount = result
 	if(parent)
-		parent.maptext = amount
-		parent.maptext_y = 32
+		if(ismob(parent))
+			if(parent:hud_used)
+				var/datum/hud/human/hud_used = parent:hud_used
+				if(istype(hud_used))
+					var/filled = round((src.amount / softcap) * 100, 20)
+					filled = min(filled, 120)
+					hud_used.mana.icon_state = "mana[filled]"
 
 /// Returns an adjusted amount of "effective" mana, affected by the attunements.
 /// Will always return a minimum of zero and a maximum of the total amount of mana we can give multiplied by the mults.

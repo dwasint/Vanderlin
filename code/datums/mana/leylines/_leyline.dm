@@ -39,6 +39,7 @@ GLOBAL_LIST_EMPTY_TYPED(all_leylines, /datum/mana_pool/leyline)
 	transfer_method = MANA_DISPERSE_EVENLY
 
 	discharge_destinations = NONE
+	intrinsic_recharge_sources = NONE //we don't pull from leylines
 
 
 /datum/mana_pool/leyline/New()

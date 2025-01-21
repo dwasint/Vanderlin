@@ -21,6 +21,9 @@
 	sparks_spread = 3
 	sparks_amt = 5
 	cost = 3
+	attunements = list(
+		/datum/attunement/electric = 0.5,
+	)
 
 /obj/projectile/magic/lightning
 	name = "bolt of lightning"
@@ -78,6 +81,10 @@
 	charging_slowdown = 3
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/blood
+	attunements = list(
+		/datum/attunement/electric = 0.3,
+		/datum/attunement/blood = 0.7,
+	)
 
 /obj/projectile/magic/bloodlightning
 	name = "blood bolt"
@@ -130,6 +137,9 @@
 	charging_slowdown = 3
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/blood
+	attunements = list(
+		/datum/attunement/blood = 0.7,
+	)
 
 /obj/projectile/magic/bloodsteal
 	name = "blood steal"
@@ -190,7 +200,7 @@
 	chargedloop = /datum/looping_sound/invokefire
 	associated_skill = /datum/skill/magic/arcane
 	attunements = list(
-		/datum/attunement/fire = 1
+		/datum/attunement/fire = 0.5
 		)
 	cost = 4
 
@@ -243,6 +253,9 @@
 	movement_interrupt = TRUE
 	chargedloop = /datum/looping_sound/invokefire
 	cost = 10
+	attunements = list(
+		/datum/attunement/fire = 1.1,
+	)
 
 /obj/projectile/magic/aoe/fireball/rogue/great
 	name = "fireball"
@@ -275,6 +288,9 @@
 	chargedloop = /datum/looping_sound/invokefire
 	associated_skill = /datum/skill/magic/arcane
 	cost = 3
+	attunements = list(
+		/datum/attunement/fire = 0.3,
+	)
 
 /obj/projectile/magic/aoe/fireball/rogue2
 	name = "spitfire"
@@ -320,6 +336,9 @@
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
 	cost = 2
+	attunements = list(
+		/datum/attunement/arcyne = 0.7,
+	)
 
 /obj/projectile/energy/rogue3
 	name = "arcane bolt"
@@ -360,6 +379,9 @@
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
 	cost = 2
+	attunements = list(
+		/datum/attunement/aeromancy = 0.3,
+	)
 
 /obj/projectile/magic/fetch/on_hit(target)
 	. = ..()
@@ -395,6 +417,9 @@
 	associated_skill = /datum/skill/magic/arcane
 	hand_path = /obj/item/melee/touch_attack/prestidigitation
 	cost = 1
+	attunements = list(
+		/datum/attunement/arcyne = 0.2,
+	)
 
 /obj/item/melee/touch_attack/prestidigitation
 	name = "\improper prestidigitating touch"
@@ -634,6 +659,9 @@
 	associated_skill = /datum/skill/magic/arcane
 	var/wall_type = /obj/structure/forcefield_weak/caster
 	cost = 3
+	attunements = list(
+		/datum/attunement/illusion = 0.3,
+	)
 
 //adapted from forcefields.dm, this needs to be destructible
 /obj/structure/forcefield_weak
@@ -706,6 +734,10 @@
 	associated_skill = /datum/skill/magic/arcane
 	range = 6
 	overlay_state = "ensnare"
+	attunements = list(
+		/datum/attunement/time = 0.3,
+		/datum/attunement/arcyne = 0.4,
+	)
 	var/area_of_effect = 1
 	var/duration = 4 SECONDS
 	var/delay = 0.8 SECONDS
@@ -802,6 +834,9 @@
 	charging_slowdown = 2
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
+	attunements = list(
+		/datum/attunement/aeromancy = 0.4,
+	)
 	var/stun_amt = 5
 	var/maxthrow = 3
 	var/sparkle_path = /obj/effect/temp_visual/gravpush
@@ -860,6 +895,9 @@
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
 	overlay_state = "blade_burst"
+	attunements = list(
+		/datum/attunement/earth = 0.4,
+	)
 	var/delay = 7
 	var/damage = 45
 
@@ -912,6 +950,9 @@
 	associated_skill = /datum/skill/magic/arcane
 	hand_path = /obj/item/melee/touch_attack/nondetection
 	cost = 1
+	attunements = list(
+		/datum/attunement/illusion = 0.4,
+	)
 
 /obj/item/melee/touch_attack/nondetection
 	name = "\improper arcyne focus"
@@ -977,6 +1018,9 @@
 	associated_skill = /datum/skill/magic/arcane
 	hand_path = /obj/item/melee/touch_attack/darkvision
 	cost = 2
+	attunements = list(
+		/datum/attunement/light = 0.6,
+	)
 
 /obj/item/melee/touch_attack/darkvision
 	name = "\improper arcyne focus"
@@ -1021,6 +1065,9 @@
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
 	overlay_state = "jump"
+	attunements = list(
+		/datum/attunement/aeromancy = 0.5,
+	)
 
 /obj/effect/proc_holder/spell/invoked/featherfall/cast(list/targets, mob/user = usr)
 
@@ -1046,6 +1093,9 @@
 	charging_slowdown = 2
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
+	attunements = list(
+		/datum/attunement/aeromancy = 0.5,
+	)
 
 /obj/effect/proc_holder/spell/invoked/haste/cast(list/targets, mob/user)
 	var/atom/A = targets[1]
@@ -1082,6 +1132,9 @@
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
 	cost = 3
+	attunements = list(
+		/datum/attunement/arcyne = 0.4,
+	)
 
 /obj/effect/proc_holder/spell/invoked/findfamiliar/cast(list/targets,mob/user = usr)
 	. = ..()
