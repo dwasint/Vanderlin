@@ -125,11 +125,16 @@
 	ethereal_recharge_rate = 2 // forgot this was a thing LMFAO
 
 /obj/item/clothing/neck/mana_star
-	name = "Volite Amulet"
-	desc = "A cut volite crystal placed within a gilded amulet. It naturally draws and fixes mana for your use."
+	name = "primordial quartz amulet"
+	desc = "A cut priomrodial quartz crystal placed within a gilded amulet. It naturally draws and fixes mana for your use."
 	has_initial_mana_pool = TRUE
 	icon = 'icons/obj/crystals.dmi'
 	icon_state = "amulet"
+
+/obj/item/clothing/neck/mana_star/Initialize()
+	. = ..()
+	enchant(/datum/enchantment/mana_regeneration)
+	enchant(/datum/enchantment/mana_capacity)
 
 /obj/item/clothing/neck/mana_star/get_initial_mana_pool_type()
 	return /datum/mana_pool/mana_star

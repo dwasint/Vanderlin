@@ -38,6 +38,7 @@
 	beltr = /obj/item/storage/keyring/mage
 	backl = /obj/item/rogueweapon/polearm/woodstaff
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
+	neck = /obj/item/clothing/neck/mana_star
 	backpack_contents = list(/obj/item/scrying = 1, /obj/item/reagent_containers/glass/bottle/rogue/killersice = 1)
 	if(H.mind)
 		if(!(H.patron == /datum/patron/divine/noc || /datum/patron/inhumen/zizo))
@@ -76,6 +77,8 @@
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/ethereal_jaunt)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/learnspell)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
+
+		H.generate_random_attunements(rand(4,6))
 
 //............... Unique Court Mage Stuff ...........................
 /*

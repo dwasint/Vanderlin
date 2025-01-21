@@ -13,7 +13,6 @@
 	cooldown_min = 300 //20 deciseconds reduction per rank
 	attunements = list(
 		/datum/attunement/aeromancy = 0.2,
-		/datum/attunement/polymorph = 0.5,
 	)
 
 /obj/effect/proc_holder/spell/aoe_turf/knock/cast(list/targets,mob/user = usr)
