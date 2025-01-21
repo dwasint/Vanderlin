@@ -24,7 +24,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	tutorial = "Elevated upon your throne through a web of intrigue and political upheaval, you are the absolute authority of these lands and at the center of every plot within it. Every man, woman and child is envious of your position and would replace you in less than a heartbeat: Show them the error in their ways."
 	bypass_lastclass = TRUE
 	whitelist_req = FALSE
-	min_pq = 4
+	min_pq = 15
 	give_bank_account = 500
 	selection_color = "#7851A9"
 
@@ -103,6 +103,14 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 //	SSticker.rulermob = H
 
+/datum/job/roguetown/exlord //just used to change the lords title
+	title = "Ex-Monarch"
+	flag = LORD
+	department_flag = NOBLEMEN
+	faction = "Station"
+	total_positions = 0
+	spawn_positions = 0
+	display_order = JDO_LORD
 
 /proc/give_lord_surname(mob/living/carbon/human/family_guy, preserve_original = FALSE)
 	if(!GLOB.lordsurname)

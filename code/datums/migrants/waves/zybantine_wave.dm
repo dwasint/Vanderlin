@@ -15,7 +15,7 @@
 	)
 	outfit = /datum/outfit/job/roguetown/zybantine_migration/emir
 	grant_lit_torch = TRUE
-	advjob_examine = FALSE
+	show_wanderer_examine = FALSE
 
 /datum/outfit/job/roguetown/zybantine_migration/emir/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -63,6 +63,7 @@
 		H.change_stat("endurance", 2)
 		ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
+		H.cmode_music = 'sound/music/cmode/adventurer/CombatOutlander.ogg'
 
 
 /datum/migrant_role/zybantine/amirah
@@ -82,7 +83,7 @@
 	)
 	outfit = /datum/outfit/job/roguetown/zybantine_migration/amirah
 	grant_lit_torch = TRUE
-	advjob_examine = FALSE
+	show_wanderer_examine = FALSE
 
 /datum/outfit/job/roguetown/zybantine_migration/amirah/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -126,6 +127,7 @@
 		H.change_stat("endurance", 2)
 		ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
+		H.cmode_music = 'sound/music/cmode/adventurer/CombatOutlander.ogg'
 
 /datum/migrant_role/zybantine/furusiyya
 	name = "Furusiyya"
@@ -134,7 +136,7 @@
 	allowed_races = list("Humen")
 	outfit = /datum/outfit/job/roguetown/zybantine_migration/furusiyya
 	grant_lit_torch = TRUE
-	advjob_examine = FALSE
+	show_wanderer_examine = FALSE
 
 /datum/outfit/job/roguetown/zybantine_migration/furusiyya/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -188,6 +190,7 @@
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
+	H.cmode_music = 'sound/music/cmode/adventurer/CombatOutlander.ogg'
 
 /datum/migrant_role/zybantine_guard
 	name = "Zybantine soldier"
@@ -204,7 +207,7 @@
 	)
 	outfit = /datum/outfit/job/roguetown/zybantine_migration/zybantine_guard
 	grant_lit_torch = TRUE
-	advjob_examine = FALSE
+	show_wanderer_examine = FALSE
 
 /datum/outfit/job/roguetown/zybantine_migration/zybantine_guard/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -241,6 +244,7 @@
 		H.change_stat("strength", 1)
 		H.change_stat("endurance", 2)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	H.cmode_music = 'sound/music/cmode/adventurer/CombatOutlander.ogg'
 
 /datum/migrant_role/qatil
 	name = "Qatil"
@@ -255,6 +259,7 @@
 		"Half-Orc"
 	)
 	outfit = /datum/outfit/job/roguetown/zybantine_migration/qatil
+	show_wanderer_examine = FALSE
 
 /datum/outfit/job/roguetown/zybantine_migration/qatil/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -293,11 +298,12 @@
 
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
+	H.cmode_music = 'sound/music/cmode/adventurer/CombatOutlander3.ogg'
 
 /datum/migrant_wave/zybantine_wave
 	name = "The Ziggurat expedition"
 	max_spawns = 1
-	shared_wave_type = /datum/migrant_wave/zybantine_wave
+	shared_wave_type = list(/datum/migrant_wave/grenzelhoft_visit,/datum/migrant_wave/zybantine_wave,/datum/migrant_wave/rockhill_wave,/datum/migrant_wave/heartfelt)
 	weight = 25
 	downgrade_wave = /datum/migrant_wave/zybantine_wave_down
 	roles = list(
@@ -312,7 +318,7 @@
 /datum/migrant_wave/zybantine_wave_down
 	name = "The Ziggurat expedition"
 	max_spawns = 1
-	shared_wave_type = /datum/migrant_wave/zybantine_wave
+	shared_wave_type = list(/datum/migrant_wave/grenzelhoft_visit,/datum/migrant_wave/zybantine_wave,/datum/migrant_wave/rockhill_wave,/datum/migrant_wave/heartfelt)
 	can_roll = FALSE
 	roles = list(
 		/datum/migrant_role/zybantine/emir = 1,

@@ -168,7 +168,28 @@
 /obj/item/clothing/under/roguetown/loincloth/pink
 	color = "#b98ae3"
 
+/obj/item/clothing/under/roguetown/skirt
+	name = "skirt"
+	desc = "Long, flowing, and modest."
+	icon_state = "skirt"
+	item_state = "skirt"
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/pants.dmi'
 
+/obj/item/clothing/under/roguetown/skirt/random
+	name = "skirt"
+
+/obj/item/clothing/under/roguetown/skirt/random/Initialize()
+	..()
+	color = pick(CLOTHING_SALMON, CLOTHING_BERRY_BLUE, CLOTHING_SPRING_GREEN, CLOTHING_PEAR_YELLOW)
+
+/obj/item/clothing/under/roguetown/skirt/blue
+	color = CLOTHING_BERRY_BLUE
+
+/obj/item/clothing/under/roguetown/skirt/green
+	color = CLOTHING_SPRING_GREEN
+
+/obj/item/clothing/under/roguetown/skirt/red
+	color = CLOTHING_RED_OCHRE
 //..................................................................................................................................
 /*---------------\
 |			 	 |
@@ -322,3 +343,10 @@
 	prevent_crits = ALL_EXCEPT_STAB
 	do_sound_plate = TRUE
 
+/obj/item/clothing/under/roguetown/platelegs/captain
+	name = "captain's chausses"
+	desc = "Cuisses made of plated steel, offering additional protection against blunt force. These are specially fitted for the captain."
+	icon_state = "capplateleg"
+	item_state = "capplateleg"
+	icon = 'icons/roguetown/clothing/special/captain.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/captain.dmi'

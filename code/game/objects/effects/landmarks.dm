@@ -80,7 +80,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/adventurerlate
 	name = "Adventurerlate"
 	icon_state = "arrow"
-	jobspawn_override = list("Drifter", "Pilgrim", "Adventurer")
+	jobspawn_override = list("Pilgrim", "Adventurer")
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/vagrantlate
@@ -110,16 +110,13 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/combatlate
 	name = "Combatlate"
 	icon_state = "arrow"
-	jobspawn_override = list("Drifter", "Pilgrim", "Adventurer", "Mercenary")
+	jobspawn_override = list( "Pilgrim", "Adventurer", "Mercenary")
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/lord
 	name = "Monarch"
 	icon_state = "arrow"
 
-/obj/effect/landmark/start/knight
-	name = "Knight"
-	icon_state = "arrow"
 
 /obj/effect/landmark/start/sheriff
 	name = "Captain"
@@ -138,7 +135,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/manorguardsman
-	name = "Royal Guard"
+	name = "Royal Knight"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/veteran
@@ -154,7 +151,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/watchman
-	name = "Gatekeeper"
+	name = "Men-at-arms"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/forestwarden
@@ -170,16 +167,13 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/woodsman
-	name = "Mayor"
+	name = "Town Elder"
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/priest
 	name = "Priest"
 	icon_state = "arrow"
 
-/obj/effect/landmark/start/cleric
-	name = "Cleric"
-	icon_state = "arrow"
 
 /obj/effect/landmark/start/monk
 	name = "Acolyte"
@@ -210,12 +204,9 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "arrow"
 
 /obj/effect/landmark/start/grabber
-	name = "Grabber"
+	name = "Stevedore"
 	icon_state = "arrow"
 
-/obj/effect/landmark/start/barkeep //Go figure someone breaks something
-	name = "Innkeep"
-	icon_state = "arrow"
 
 /obj/effect/landmark/start/innkeep
 	name = "Innkeep"
@@ -363,11 +354,20 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "bandit"
 	icon = 'icons/mob/landmarks.dmi'
 	icon_state = "arrow"
+	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/bandit/Initialize()
 	. = ..()
 	GLOB.bandit_starts += loc
 
+/obj/effect/landmark/start/admin
+	name = "admin"
+	icon = 'icons/mob/landmarks.dmi'
+	icon_state = "arrow"
+
+/obj/effect/landmark/start/admin/Initialize()
+	. = ..()
+	GLOB.admin_warp += loc
 
 /obj/effect/landmark/start/delf
 	name = "delf"

@@ -54,6 +54,8 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 #define ADMIN_SPAWNED_1			    (1<<13)
 /// should not get harmed if this gets caught by an explosion?
 #define PREVENT_CONTENTS_EXPLOSION_1 (1<<14)
+/// Is the thing currently spinning?
+#define IS_SPINNING_1 (1<<15)
 
 //turf-only flags
 #define NOJAUNT_1					(1<<0)
@@ -133,8 +135,10 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 #define MOBILITY_STORAGE		(1<<5)
 /// can pull things
 #define MOBILITY_PULL			(1<<6)
+/// can stand, not affected by whether they are standing or not. Mostly used for AI. Revisit this bitflag
+#define MOBILITY_CANSTAND		(1<<7)
 
-#define MOBILITY_FLAGS_DEFAULT (MOBILITY_MOVE | MOBILITY_STAND | MOBILITY_PICKUP | MOBILITY_USE | MOBILITY_UI | MOBILITY_STORAGE | MOBILITY_PULL)
+#define MOBILITY_FLAGS_DEFAULT (MOBILITY_MOVE | MOBILITY_STAND | MOBILITY_PICKUP | MOBILITY_USE | MOBILITY_UI | MOBILITY_STORAGE | MOBILITY_PULL | MOBILITY_CANSTAND)
 #define MOBILITY_FLAGS_INTERACTION (MOBILITY_USE | MOBILITY_PICKUP | MOBILITY_UI | MOBILITY_STORAGE)
 
 //alternate appearance flags

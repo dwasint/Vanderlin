@@ -41,6 +41,13 @@
 	armor = list("blunt" = 20, "slash" = 20, "stab" = 20,  "piercing" = 15, "fire" = 0, "acid" = 0)
 	sellprice = 10
 
+/obj/item/clothing/shoes/roguetown/nobleboot/thighboots
+	name = "thigh boots"
+	icon_state = "thighboot"
+	icon = 'icons/roguetown/clothing/special/hand.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/hand.dmi'
+	sleeved = 'icons/roguetown/clothing/special/onmob/hand.dmi'
+
 /obj/item/clothing/shoes/roguetown/shortboots
 	name = "shortboots"
 	color = "#d5c2aa"
@@ -104,7 +111,7 @@
 	sellprice = 20
 
 /obj/item/clothing/shoes/roguetown/gladiator
-	name = "leather sandals"
+	name = "caligae"
 	desc = "Open design sandals made from sturdy leather. Can be typically seen worn by gladiators."
 	gender = PLURAL
 	icon_state = "gladiator"

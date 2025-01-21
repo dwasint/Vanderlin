@@ -46,6 +46,7 @@
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
+	H.cmode_music = 'sound/music/cmode/nobility/CombatKnight.ogg'
 
 /datum/migrant_role/itinerant_squire
 	name = "Itinerant Squire"
@@ -60,13 +61,13 @@
 	pants = /obj/item/clothing/under/roguetown/chainlegs/iron
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	belt = /obj/item/storage/belt/rogue/leather
-	beltr = /obj/item/quiver/arrows
+	beltr = /obj/item/ammo_holder/quiver/arrows
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/full
 	backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	backr = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/rogueweapon/knife/dagger/steel = 1, /obj/item/storage/belt/rogue/pouch/coins/poor = 1, /obj/item/clothing/neck/roguetown/chaincoif = 1, /obj/item/rogueweapon/hammer = 1,)
+	backpack_contents = list(/obj/item/rogueweapon/knife/dagger/steel = 1, /obj/item/storage/belt/rogue/pouch/coins/poor = 1, /obj/item/clothing/neck/roguetown/chaincoif = 1, /obj/item/rogueweapon/hammer/iron = 1,)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
@@ -88,6 +89,7 @@
 	if(H.gender == MALE && H.dna?.species)
 		H.dna.species.soundpack_m = new /datum/voicepack/male/squire()
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
+	H.cmode_music = 'sound/music/cmode/garrison/CombatGarrison.ogg'
 
 /datum/migrant_wave/knight
 	name = "The Knightly journey"

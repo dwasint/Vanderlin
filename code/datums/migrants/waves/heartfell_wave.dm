@@ -5,7 +5,8 @@
 	allowed_sexes = list(MALE)
 	allowed_races = list("Humen")
 	grant_lit_torch = TRUE
-	advjob_examine = FALSE
+	show_wanderer_examine = FALSE
+
 /datum/outfit/job/roguetown/heartfelt/lord/pre_equip(mob/living/carbon/human/H)
 	..()
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
@@ -44,6 +45,7 @@
 	ADD_TRAIT(H, TRAIT_NOSEGRAB, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	H.cmode_music = 'sound/music/cmode/nobility/combat_noble.ogg'
 /datum/migrant_role/heartfelt/lady
 	name = "Lady of Heartfelt"
 	greet_text = "You are the Lady of Heartfelt, once a respected noblewoman now struggling to survive in a desolate landscape. With your home in ruins, you look to Vanderlin, hoping to find new purpose or refuge amidst the chaos."
@@ -51,7 +53,8 @@
 	allowed_sexes = list(FEMALE)
 	allowed_races = list("Humen")
 	grant_lit_torch = TRUE
-	advjob_examine = FALSE
+	show_wanderer_examine = FALSE
+
 /datum/outfit/job/roguetown/heartfelt/lady/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/hennin
@@ -85,13 +88,15 @@
 	ADD_TRAIT(H, TRAIT_SEEPRICES, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NUTCRACKER, TRAIT_GENERIC)
+	H.cmode_music = 'sound/music/cmode/nobility/combat_noble.ogg'
 /datum/migrant_role/heartfelt/hand
 	name = "Hand of Heartfelt"
 	greet_text = "You are the Hand of Heartfelt, burdened by the perception of failure in protecting your Lord's domain. Despite doubts from others, your loyalty remains steadfast as you journey to Vanderlin, determined to fulfill your duties."
 	outfit = /datum/outfit/job/roguetown/heartfelt/hand
 	allowed_races = list("Humen")
 	grant_lit_torch = TRUE
-	advjob_examine = FALSE
+	show_wanderer_examine = FALSE
+
 /datum/outfit/job/roguetown/heartfelt/hand/pre_equip(mob/living/carbon/human/H)
 	..()
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
@@ -124,6 +129,7 @@
 
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_SEEPRICES, TRAIT_GENERIC)
+	H.cmode_music = 'sound/music/cmode/adventurer/CombatOutlander3.ogg'
 
 /datum/migrant_role/heartfelt/knight
 	name = "Knight of Heartfelt"
@@ -131,7 +137,7 @@
 	outfit = /datum/outfit/job/roguetown/heartfelt/knight
 	allowed_races = list("Humen")
 	grant_lit_torch = TRUE
-	advjob_examine = FALSE
+	show_wanderer_examine = FALSE
 /datum/outfit/job/roguetown/heartfelt/knight/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/helmet
@@ -175,6 +181,7 @@
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
+	H.cmode_music = 'sound/music/cmode/nobility/CombatKnight.ogg'
 /datum/migrant_role/heartfelt/knight/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()
 	if(ishuman(L))
@@ -217,6 +224,7 @@
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/reagent_containers/glass/bottle/rogue/poison,/obj/item/reagent_containers/glass/bottle/rogue/healthpot)
 	ADD_TRAIT(H, TRAIT_SEEPRICES, "[type]")
+	H.cmode_music = 'sound/music/cmode/nobility/CombatCourtMagician.ogg'
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/misc/reading, 6, TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/craft/alchemy, 3, TRUE)
@@ -291,12 +299,13 @@
 	var/datum/devotion/cleric_holder/C = new /datum/devotion/cleric_holder(H, H.patron)
 	C.grant_spells_priest(H)
 	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
+	H.cmode_music = 'sound/music/cmode/church/CombatInquisitor.ogg'
 
 /datum/migrant_wave/heartfelt
 	name = "The Court of Heartfelt"
 	max_spawns = 1
-	shared_wave_type = /datum/migrant_wave/heartfelt
-	weight = 50
+	shared_wave_type = list(/datum/migrant_wave/grenzelhoft_visit,/datum/migrant_wave/zybantine_wave,/datum/migrant_wave/rockhill_wave,/datum/migrant_wave/heartfelt)
+	weight = 25
 	downgrade_wave = /datum/migrant_wave/heartfelt_down
 	roles = list(
 		/datum/migrant_role/heartfelt/lord = 1,
@@ -309,7 +318,7 @@
 	greet_text = "Fleeing disaster, you have come together as a court, united in a final effort to restore the former glory and promise of Heartfelt. Stay close and watch out for each other, for all of your sakes!"
 /datum/migrant_wave/heartfelt_down
 	name = "The Court of Heartfelt"
-	shared_wave_type = /datum/migrant_wave/heartfelt
+	shared_wave_type = list(/datum/migrant_wave/grenzelhoft_visit,/datum/migrant_wave/zybantine_wave,/datum/migrant_wave/rockhill_wave,/datum/migrant_wave/heartfelt)
 	can_roll = FALSE
 	roles = list(
 		/datum/migrant_role/heartfelt/lord = 1,

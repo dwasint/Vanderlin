@@ -177,7 +177,7 @@
 /obj/item/rogueweapon/polearm/woodstaff/aries
 	force_wielded =  DAMAGE_STAFF_WIELD+1
 	name = "staff of the testimonium"
-	desc = "A symbolic staff, granted to graduating acolyte's who have achieved and bear witnessed to the miracles of the Gods."
+	desc = "A symbolic staff, granted to enlightened acolytes who have achieved and bear witnessed to the miracles of the Gods."
 	icon_state = "aries"
 	resistance_flags = FIRE_PROOF // Leniency for unique items
 	dropshrink = 0.6
@@ -425,14 +425,15 @@
 	throwforce = 25
 	sellprice = 10
 
-/obj/item/rogueweapon/spear/bonespear
+/obj/item/rogueweapon/polearm/spear/bonespear
 	force = 18
 	force_wielded = 22
 	name = "bone spear"
-	desc = "A spear made of bones..."
-	icon_state = "bonespear"
-	pixel_y = -16
-	pixel_x = -16
+	desc = "A spear made of bones."
+	// icon_state = "bonespear"
+	icon_state = "stonespear_sk"
+	// pixel_y = -16
+	// pixel_x = -16
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
 	bigboy = TRUE

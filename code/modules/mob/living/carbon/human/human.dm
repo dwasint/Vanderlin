@@ -7,7 +7,7 @@
 	if(held_item && (user.zone_selected == BODY_ZONE_PRECISE_MOUTH))
 		if(held_item.get_sharpness() && held_item.wlength == WLENGTH_SHORT)
 			if(has_stubble)
-				playsound(src, 'modular/Barding/sound/actions/shaving.ogg', 100, TRUE, -1)
+				playsound(src, 'sound/foley/shaving.ogg', 100, TRUE, -1)
 				if(user == src)
 					user.visible_message("<span class='danger'>[user] starts to shave [user.p_their()] stubble with [held_item].</span>")
 				else
@@ -18,7 +18,7 @@
 				else
 					held_item.melee_attack_chain(user, src, params)
 			else if(facial_hairstyle != "None")
-				playsound(src, 'modular/Barding/sound/actions/shaving.ogg', 100, TRUE, -1)
+				playsound(src, 'sound/foley/shaving.ogg', 100, TRUE, -1)
 				if(user == src)
 					user.visible_message("<span class='danger'>[user] starts to shave [user.p_their()] facehairs with [held_item].</span>")
 				else
@@ -57,7 +57,7 @@
 #endif
 
 /mob/living/carbon/human/Initialize()
-	verbs += /mob/living/proc/mob_sleep
+	// verbs += /mob/living/proc/mob_sleep
 	verbs += /mob/living/proc/lay_down
 
 	icon_state = ""		//Remove the inherent human icon that is visible on the map editor. We're rendering ourselves limb by limb, having it still be there results in a bug where the basic human icon appears below as south in all directions and generally looks nasty.
@@ -139,6 +139,8 @@
 
 /mob/living/carbon/human/Stat()
 	..()
+	if(!client)
+		return
 	if(mind)
 		var/datum/antagonist/vampirelord/VD = mind.has_antag_datum(/datum/antagonist/vampirelord)
 		if(VD)
@@ -405,11 +407,11 @@
 	remove_atom_colour(TEMPORARY_COLOUR_PRIORITY, "#000000")
 	cut_overlay(MA)
 
-/mob/living/carbon/human/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE)
+/mob/living/carbon/human/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=TRUE, no_tk=FALSE) //changed so humans by default have dexterity
 	if(!(mobility_flags & MOBILITY_UI))
 		to_chat(src, "<span class='warning'>I can't do that right now!</span>")
 		return FALSE
-	return TRUE
+	return ..()
 
 /mob/living/carbon/human/resist_restraints()
 	if(wear_armor && wear_armor.breakouttime)
@@ -548,7 +550,7 @@
 /mob/living/carbon/human/check_weakness(obj/item/weapon, mob/living/attacker)
 	. = ..()
 	if (dna && dna.species)
-		. += dna.species.check_species_weakness(weapon, attacker)
+		. += dna.species.check_species_weakness(weapon, attacker, src)
 
 /mob/living/carbon/human/is_literate()
 	if(mind)
@@ -598,8 +600,6 @@
 			set_species(newtype)
 
 /mob/living/carbon/human/MouseDrop_T(mob/living/target, mob/living/user)
-	if(user == target)
-		return FALSE
 	if(pulling == target && stat == CONSCIOUS)
 		//If they dragged themselves and we're currently aggressively grabbing them try to piggyback
 		if(user == target && can_piggyback(target))

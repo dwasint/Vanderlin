@@ -48,7 +48,7 @@
 				display_as_wanderer = TRUE
 		else if(job)
 			var/datum/job/J = SSjob.GetJob(job)
-			if(J.wanderer_examine)
+			if(J?.wanderer_examine)
 				display_as_wanderer = TRUE
 			if(islatejoin)
 				is_returning = TRUE
@@ -95,7 +95,10 @@
 					. += family_text
 
 		if(real_name in GLOB.excommunicated_players)
-			. += "<span class='userdanger'>HERETIC! SHAME!</span>"
+			. += span_userdanger("EXCOMMUNICATED!")
+
+		if(real_name in GLOB.heretical_players)
+			. += span_userdanger("HERETIC! SHAME!")
 
 		if(real_name in GLOB.outlawed_players)
 			. += "<span class='userdanger'>OUTLAW!</span>"
@@ -513,8 +516,8 @@
 			user.add_stress(/datum/stressevent/hunted)
 
 	// The Assassin's profane dagger can sniff out their targets, even masked.
-	if(HAS_TRAIT(user, TRAIT_ASSASSIN) && (has_flaw(/datum/charflaw/hunted) || HAS_TRAIT(src, TRAIT_ZIZOID_HUNTED)))
-		for(var/obj/item/I in user)
+	if(HAS_TRAIT(user, TRAIT_ASSASSIN) && ((has_flaw(/datum/charflaw/hunted) || HAS_TRAIT(src, TRAIT_ZIZOID_HUNTED))))
+		for(var/obj/item/I in get_all_gear())
 			if(istype(I, /obj/item/rogueweapon/knife/dagger/steel/profane))
 				user.visible_message("profane dagger whispers, <span class='danger'>\"That's [real_name]! Strike their heart!\"</span>")
 
@@ -535,6 +538,6 @@
 		if(E.examine_text)
 			var/new_text = replacetext(E.examine_text, "SUBJECTPRONOUN", pronoun_replacement)
 			new_text = replacetext(new_text, "[pronoun_replacement] is", "[pronoun_replacement] [p_are()]") //To make sure something become "They are" or "She is", not "They are" and "She are"
-			dat += "[new_text]\n" //dat.Join("\n") doesn't work here, for some reason
+			dat += "[new_text]" //dat.Join("\n") doesn't work here, for some reason
 	if(dat.len)
-		return dat.Join()
+		return dat.Join("\n")

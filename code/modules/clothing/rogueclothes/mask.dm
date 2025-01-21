@@ -133,11 +133,15 @@
 	toggle_icon_state = TRUE
 	experimental_onhip = TRUE
 
+/obj/item/clothing/mask/rogue/facemask/prisoner
+	clothing_flags = NONE //they're used to this being stuck on their face
+
 /obj/item/clothing/mask/rogue/facemask/prisoner/Initialize()
 	. = ..()
 	name = "cursed mask"
 	desc = "We are often criminals in the eyes of the earth, not only for having committed crimes, but because we know that crimes have been committed."
 	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
+	flags_inv = HIDEFACIALHAIR //so prisoners can actually be identified
 
 /obj/item/clothing/mask/rogue/facemask/prisoner/dropped(mob/living/carbon/human/user)
 	. = ..()

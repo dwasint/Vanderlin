@@ -151,17 +151,6 @@
 	obj_flags |= CAN_BE_HIT
 	. = ..()
 
-/turf/open/OnCrafted(dirin)
-	. = ..()
-	START_PROCESSING(SSweather,src)
-	var/turf/belo = get_step_multiz(src, DOWN)
-	for(var/x in 1 to 5)
-		if(belo)
-			START_PROCESSING(SSweather,belo)
-			belo = get_step_multiz(belo, DOWN)
-		else
-			break
-
 /datum/crafting_recipe/proc/TurfCheck(mob/user, turf/T)
 	return TRUE
 
@@ -202,18 +191,18 @@
 		for(var/obj/structure/S in T)
 			if(R.buildsame && istype(S, R.result))
 				if(user.dir == S.dir)
-					to_chat(user, "<span class='warning'>Something is in the way.</span>")
+					to_chat(user, "<span class='warning'>[S] is in the way.</span>")
 					return
 				continue
 			if(R.structurecraft && istype(S, R.structurecraft))
 				testing("isstructurecraft")
 				continue
 			if(S.density)
-				to_chat(user, "<span class='warning'>Something is in the way.</span>")
+				to_chat(user, "<span class='warning'>[S] is in the way.</span>")
 				return
 		for(var/obj/machinery/M in T)
 			if(M.density)
-				to_chat(user, "<span class='warning'>Something is in the way.</span>")
+				to_chat(user, "<span class='warning'>[M] is in the way.</span>")
 				return
 	if(R.req_table)
 		if(!(locate(/obj/structure/table) in T))

@@ -30,7 +30,7 @@
 	craftdiff = 3
 
 /datum/anvil_recipe/weapons/silver/forgotten
-	name = "Forgotten Blade (+Bar)"
+	name = "Forgotten Blade (+Steel Bar)"
 	recipe_name = "a Forgotten Blade"
 	appro_skill = /datum/skill/craft/weaponsmithing
 	req_bar = /obj/item/ingot/silver
@@ -219,6 +219,14 @@
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/mace
+
+/datum/anvil_recipe/weapons/iron/warhammer
+	name = "Warhammer (+1 Stick)"
+	recipe_name = "a Warhammer"
+	appro_skill = /datum/skill/craft/weaponsmithing
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/grown/log/tree/stick)
+	created_item = /obj/item/rogueweapon/mace/warhammer
 
 /datum/anvil_recipe/weapons/iron/messer_iron
 	name = "Messer"
@@ -470,6 +478,15 @@
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/rogueweapon/mace/steel
+	craftdiff = 2
+
+/datum/anvil_recipe/weapons/steel/swarhammer
+	name = "Warhammer (+Bar)"
+	recipe_name = "a Warhammer"
+	appro_skill = /datum/skill/craft/weaponsmithing
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/ingot/steel)
+	created_item = /obj/item/rogueweapon/mace/warhammer/steel
 	craftdiff = 2
 
 /datum/anvil_recipe/weapons/steel/peasant_flail

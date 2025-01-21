@@ -1,7 +1,10 @@
 /mob/living/proc/update_stamina() //update hud and regen after last_fatigued delay on taking
-	maximum_stamina = max_energy / 10
+	var/athletics_skill = 0
+	if(mind)
+		athletics_skill = mind.get_skill_level(/datum/skill/misc/athletics)
+	maximum_stamina = (STAEND + athletics_skill) * 10 //This here is the calculation for max STAMINA / GREEN
 
-	var/delay = (HAS_TRAIT(src, TRAIT_APRICITY) && GLOB.tod == "day") ? 13 : 20
+	var/delay = (HAS_TRAIT(src, TRAIT_APRICITY) && GLOB.tod == "day") ? 11 : 20
 	if(world.time > last_fatigued + delay) //regen fatigue
 		var/added = energy / max_energy
 		added = round(-10+ (added*-40))
@@ -20,7 +23,7 @@
 	var/athletics_skill = 0
 	if(mind)
 		athletics_skill = mind.get_skill_level(/datum/skill/misc/athletics)
-	max_energy = (STAEND + (athletics_skill / 2) ) * 100
+	max_energy = (STAEND + athletics_skill) * 100 // ENERGY / BLUE (Average of 1000)
 	if(cmode)
 		if(!HAS_TRAIT(src, TRAIT_BREADY))
 			adjust_energy(-2)

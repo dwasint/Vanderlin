@@ -6,7 +6,7 @@
 	total_positions = 1
 	spawn_positions = 1
 
-	spells = /obj/effect/proc_holder/spell/self/convertrole/guard
+	spells = list(/obj/effect/proc_holder/spell/self/convertrole/guard)
 	allowed_races = list(
 		"Humen",
 		"Elf",
@@ -20,7 +20,7 @@
 	bypass_lastclass = TRUE
 	outfit = /datum/outfit/job/roguetown/captain
 	give_bank_account = 120
-	min_pq = 4
+	min_pq = 8
 
 	cmode_music = 'sound/music/cmode/antag/CombatSausageMaker.ogg'
 
@@ -38,10 +38,10 @@
 
 /datum/outfit/job/roguetown/captain/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/helmet/visored/knight
+	head = /obj/item/clothing/head/roguetown/helmet/visored/captain
 	gloves = /obj/item/clothing/gloves/roguetown/plate
-	pants = /obj/item/clothing/under/roguetown/platelegs
-	armor = /obj/item/clothing/suit/roguetown/armor/brigandine/captain
+	pants = /obj/item/clothing/under/roguetown/platelegs/captain
+	armor = /obj/item/clothing/suit/roguetown/armor/captain
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guard
 	shoes = /obj/item/clothing/shoes/roguetown/boots
@@ -50,7 +50,7 @@
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
 	beltl = /obj/item/rogueweapon/sword/sabre
 	beltr = /obj/item/rogueweapon/mace/cudgel
-	cloak = /obj/item/clothing/cloak/cape/guard
+	cloak = /obj/item/clothing/cloak/captain
 	backpack_contents = list(/obj/item/storage/keyring/captain = 1, /obj/item/signal_horn = 1)
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/combat/axesmaces, 4, TRUE)
@@ -158,7 +158,7 @@
 	overlay_state = "recruit_guard"
 	recruitment_faction = "Garrison"
 	recruitment_message = "Join the Guarrison, %RECRUIT!"
-	accept_message = "I swear fealty to the Crown and it's garrison !"
+	accept_message = "I swear fealty to the Crown and its garrison!"
 	refuse_message = "I refuse."
 
 /obj/effect/proc_holder/spell/self/convertrole/guard/convert(mob/living/carbon/human/recruit, mob/living/carbon/human/recruiter)

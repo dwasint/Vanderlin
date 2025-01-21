@@ -6,7 +6,7 @@
 	total_positions = 1
 	spawn_positions = 1
 
-	spells = /obj/effect/proc_holder/spell/self/convertrole/town_militia
+	spells = list(/obj/effect/proc_holder/spell/self/convertrole/town_militia)
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(
 		"Humen",
@@ -22,13 +22,13 @@
 	outfit = /datum/outfit/job/roguetown/mayor
 	display_order = JDO_CHIEF
 	give_bank_account = 80
-	min_pq = 1
+	min_pq = 2
 
 	cmode_music = 'sound/music/cmode/towner/CombatMayor.ogg'
 	can_have_apprentices = FALSE
 
 /datum/outfit/job/roguetown/mayor
-	name = "Mayor"
+	name = "Town Elder"
 	jobtype = /datum/job/roguetown/mayor
 
 /datum/outfit/job/roguetown/mayor/pre_equip(mob/living/carbon/human/H)
@@ -70,10 +70,20 @@
 	H.verbs |= /mob/proc/haltyell
 
 /obj/effect/proc_holder/spell/self/convertrole/town_militia
-	name = "Recruit Militiaman"
+	name = "Recruit Militia"
 	new_role = "Town Militiaman"
 	overlay_state = "recruit_guard"
 	recruitment_faction = "Garrison"
-	recruitment_message = "Join the Town Guard, %RECRUIT!"
+	recruitment_message = "Join the Town Militia, %RECRUIT!"
 	accept_message = "I swear fealty to protect the town!"
 	refuse_message = "I refuse."
+
+/datum/job/roguetown/militia //just used to change the title
+	title = "Town Militiaman"
+	f_title = "Town Militiawoman"
+	flag = GUARDSMAN
+	department_flag = GARRISON
+	faction = "Station"
+	total_positions = 0
+	spawn_positions = 0
+	display_order = JDO_GARRISONGUARD

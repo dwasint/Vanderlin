@@ -47,11 +47,13 @@
 			to_chat(user, "<span class='warning'>\The [src] is currently smelting. Wait for it to finish, or douse it with water to retrieve items from it.</span>")
 			return
 
-	if(istype(W, /obj/item/rogueore/coal) && fueluse <= 0)
-		return ..()
+	if(istype(W, /obj/item/rogueore/coal))
+		if(alert(usr, "Fuel \the [src] with [W]?", "VANDERLIN", "Fuel", "Smelt") == "Fuel")
+			return ..()
 	if(W.smeltresult)
 		if(ore.len < maxore)
-			user.dropItemToGround(W)
+			if(!(W in user.held_items) || !user.temporarilyRemoveItemFromInventory(W))
+				return
 			W.forceMove(src)
 			ore += W
 			if(!isliving(user) || !user.mind)

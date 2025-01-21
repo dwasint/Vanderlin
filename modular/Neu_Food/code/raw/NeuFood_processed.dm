@@ -47,7 +47,7 @@
 // -------------- RAISINS -----------------
 /obj/item/reagent_containers/food/snacks/rogue/raisins
 	name = "raisins"
-	icon = 'modular/Neu_Farming/icons/produce.dmi'
+	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = "raisins5"
 	bitesize = 5
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_POOR)
@@ -483,6 +483,7 @@
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/cheddarwedge/aged
 	become_rot_type = null
 	rotprocess = null
+	sellprice = 60
 
 /obj/item/reagent_containers/food/snacks/rogue/cheddarwedge
 	name = "wedge of cheese"
@@ -501,7 +502,8 @@
 	isbait = TRUE
 	fishloot = list(/obj/item/reagent_containers/food/snacks/fish/carp = 10,
 					/obj/item/reagent_containers/food/snacks/fish/eel = 5,
-					/obj/item/reagent_containers/food/snacks/fish/angler = 1)
+					/obj/item/reagent_containers/food/snacks/fish/angler = 1,
+					/obj/item/reagent_containers/food/snacks/fish/shrimp = 3)
 
 /obj/item/reagent_containers/food/snacks/rogue/cheddarwedge/aged
 	name = "wedge of aged cheese"
@@ -509,6 +511,7 @@
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/cheddarslice/aged
 	become_rot_type = null
 	rotprocess = null
+	sellprice = 10
 
 /obj/item/reagent_containers/food/snacks/rogue/cheddarslice
 	name = "slice of cheese"
@@ -525,7 +528,8 @@
 	baitpenalty = 0
 	isbait = TRUE
 	fishloot = list(/obj/item/reagent_containers/food/snacks/fish/carp = 10,
-					/obj/item/reagent_containers/food/snacks/fish/eel = 5)
+					/obj/item/reagent_containers/food/snacks/fish/eel = 5,
+					/obj/item/reagent_containers/food/snacks/fish/shrimp = 3)
 
 /obj/item/reagent_containers/food/snacks/rogue/cheddarslice/aged
 	name = "slice of aged cheese"

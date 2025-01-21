@@ -45,6 +45,8 @@
 /obj/structure/proc/find_rotation_network()
 	var/turf/step_forward = get_step(src, dir)
 	for(var/obj/structure/structure in step_forward.contents)
+		if(structure.dir != dir && structure.dir != GLOB.reverse_dir[dir])
+			continue
 		if(structure.rotation_network)
 			if(rotation_network)
 				if(!structure.try_network_merge(src))
@@ -55,6 +57,8 @@
 
 	var/turf/step_back = get_step(src, GLOB.reverse_dir[dir])
 	for(var/obj/structure/structure in step_back.contents)
+		if(structure.dir != dir && structure.dir != GLOB.reverse_dir[dir])
+			continue
 		if(structure.rotation_network)
 			if(rotation_network)
 				if(!structure.try_network_merge(src))
@@ -142,6 +146,8 @@
 	for(var/obj/structure/structure in step_forward.contents)
 		if(structure in checked)
 			continue
+		if(structure.dir != dir && structure.dir != GLOB.reverse_dir[dir])
+			continue
 		if(structure.rotation_network)
 			propagate_rotation_change(structure, checked, FALSE)
 
@@ -150,6 +156,8 @@
 		for(var/obj/structure/structure in step_back.contents)
 			if(structure.rotation_network)
 				if(structure in checked)
+					continue
+				if(structure.dir != dir && structure.dir != GLOB.reverse_dir[dir])
 					continue
 				if(structure.rotation_network)
 					propagate_rotation_change(structure, checked, FALSE)

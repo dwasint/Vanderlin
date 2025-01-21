@@ -157,6 +157,7 @@
 	faction = list("undead")
 	name = "zizombie"
 	real_name = "zizombie"
+	mob_biotypes |= MOB_UNDEAD
 	ADD_TRAIT(src, TRAIT_NOSTAMINA, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
@@ -222,7 +223,7 @@
 			if(!B.rotted)
 				B.rotted = TRUE
 				should_update = TRUE
-			if(B.rotted)
+			if(B.rotted && amount < 16 MINUTES)
 				var/turf/open/T = C.loc
 				if(istype(T))
 					T.pollute_turf(/datum/pollutant/rot, 10)

@@ -1,7 +1,7 @@
 /datum/repeatable_crafting_recipe/survival
 	abstract_type = /datum/repeatable_crafting_recipe/survival
 
-/datum/repeatable_crafting_recipe/cloth
+/datum/repeatable_crafting_recipe/survival/cloth
 	name = "cloth"
 	requirements = list(
 		/obj/item/natural/fibers = 2
@@ -134,7 +134,7 @@
 /datum/repeatable_crafting_recipe/survival/alchemy_mortar
 	name = "alchemical mortar"
 	requirements = list(
-		/obj/item/natural/stone = 3,
+		/obj/item/natural/stone = 2,
 	)
 
 	starting_atom = /obj/item/rogueweapon/knife
@@ -158,7 +158,7 @@
 	subtypes_allowed = TRUE
 
 /datum/repeatable_crafting_recipe/survival/bag
-	name = "bag"
+	name = "sack"
 	requirements = list(
 		/obj/item/natural/cloth = 1,
 		/obj/item/natural/fibers = 1,

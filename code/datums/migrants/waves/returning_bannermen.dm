@@ -9,7 +9,7 @@
 		"Half-Elf",
 		"Elf")
 	grant_lit_torch = TRUE
-	advjob_examine = FALSE
+	show_wanderer_examine = FALSE
 	outfit = /datum/outfit/job/roguetown/serjeant_at_arms
 
 /datum/outfit/job/roguetown/serjeant_at_arms/pre_equip(mob/living/carbon/human/H)
@@ -53,6 +53,7 @@
 		H.change_stat("endurance", 2)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
+	H.cmode_music = 'sound/music/cmode/garrison/CombatGarrison.ogg'
 
 /datum/migrant_role/archer_bannerman
 	name = "Bannermen Archer"
@@ -64,7 +65,7 @@
 		"Half-Elf",
 		"Elf")
 	grant_lit_torch = TRUE
-	advjob_examine = FALSE
+	show_wanderer_examine = FALSE
 /datum/outfit/job/roguetown/archer_bannerman/pre_equip(mob/living/carbon/human/H)
 	..()
 	pants = /obj/item/clothing/under/roguetown/trou/leather
@@ -75,7 +76,7 @@
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/storage/keyring/guard
-	beltr = /obj/item/quiver/arrows
+	beltr = /obj/item/ammo_holder/quiver/arrows
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	backpack_contents = list(/obj/item/rogueweapon/knife/dagger/steel/special = 1)
 	if(prob(30))
@@ -103,6 +104,7 @@
 		H.change_stat("speed", 2)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_KNOWBANDITS, TRAIT_GENERIC)
+	H.cmode_music = 'sound/music/cmode/garrison/CombatGarrison.ogg'
 
 /datum/migrant_role/crossbow_bannerman
 	name = "Bannermen Crossboman"
@@ -110,7 +112,7 @@
 	outfit = /datum/outfit/job/roguetown/crossbow_bannerman
 	allowed_races = list("Humen","Dwarf","Aasimar", "Half-Elf", "Elf")
 	grant_lit_torch = TRUE
-	advjob_examine = FALSE
+	show_wanderer_examine = FALSE
 
 /datum/outfit/job/roguetown/crossbow_bannerman/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -123,7 +125,7 @@
 	belt = /obj/item/storage/belt/rogue/leather
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	beltl = /obj/item/storage/keyring/guard
-	beltr = /obj/item/quiver/bolts
+	beltr = /obj/item/ammo_holder/quiver/bolts
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	backpack_contents = list(/obj/item/rogueweapon/knife/dagger/steel/special = 1)
 	if(prob(30))
@@ -151,6 +153,7 @@
 		H.change_stat("speed", 2)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_KNOWBANDITS, TRAIT_GENERIC)
+	H.cmode_music = 'sound/music/cmode/garrison/CombatGarrison.ogg'
 
 /datum/migrant_role/footman_bannerman
 	name = "Bannermen Footman"
@@ -158,7 +161,7 @@
 	outfit = /datum/outfit/job/roguetown/footman_bannerman
 	allowed_races = list("Humen","Dwarf","Aasimar","Half-Elf","Elf")
 	grant_lit_torch = TRUE
-	advjob_examine = FALSE
+	show_wanderer_examine = FALSE
 
 /datum/outfit/job/roguetown/footman_bannerman/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -189,6 +192,7 @@
 		H.change_stat("constitution", 1)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_KNOWBANDITS, TRAIT_GENERIC)
+	H.cmode_music = 'sound/music/cmode/garrison/CombatGarrison.ogg'
 	H.verbs |= /mob/proc/haltyell
 
 /datum/migrant_role/pikeman_bannerman
@@ -197,7 +201,7 @@
 	outfit = /datum/outfit/job/roguetown/pikeman_bannerman
 	allowed_races = list("Humen","Dwarf","Aasimar","Half-Elf","Elf")
 	grant_lit_torch = TRUE
-	advjob_examine = FALSE
+	show_wanderer_examine = FALSE
 
 /datum/outfit/job/roguetown/pikeman_bannerman/pre_equip(mob/living/carbon/human/H)
 	..()

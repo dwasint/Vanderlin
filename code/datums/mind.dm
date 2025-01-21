@@ -473,11 +473,12 @@
 				if(A.type == datum_type)
 					return A
 
-// Boolean. Returns true if the antag is actually "good", false otherwise.
+// Boolean. Returns true if all antag datums are actually "good", false otherwise.
 /datum/mind/proc/isactuallygood()
-	for(var/GG in antag_datums)
-		var/datum/antagonist/antaggy = GG
-		return antaggy.isgoodguy
+	var/is_good_guy = TRUE
+	for(var/datum/antagonist/GG in antag_datums)
+		is_good_guy &&= GG.isgoodguy
+	return is_good_guy
 
 
 /datum/mind/proc/equip_traitor(employer = "The Syndicate", silent = FALSE, datum/antagonist/uplink_owner)
@@ -527,12 +528,12 @@
 
 /datum/mind/proc/recall_targets(mob/recipient, window=1)
 	var/output = "<B>[recipient.real_name]'s Hitlist:</B><br>"
-	for (var/mob/living/carbon in world) // Iterate through all mobs in the world
+	for (var/mob/living/carbon in GLOB.mob_living_list) // Iterate through all mobs in the world
 		if ((carbon.real_name != recipient.real_name) && ((carbon.has_flaw(/datum/charflaw/hunted) || HAS_TRAIT(carbon, TRAIT_ZIZOID_HUNTED)) && (!istype(carbon, /mob/living/carbon/human/dummy))))//To be on the list they must be hunted, not be the user and not be a dummy (There is a dummy that has all vices for some reason)
 			output += "<br>[carbon.real_name]"
 			if (carbon.job)
 				output += " - [carbon.job]"
-	output += "<br>Your creed is blood, your faith is steel. You will not rest until these souls are yours. Use the profane dagger."
+	output += "<br>Your creed is blood, your faith is steel. You will not rest until these souls are yours. Use the profane dagger to trap their souls for Graggar."
 
 	if(window)
 		recipient << browse(output,"window=memory")
@@ -699,7 +700,7 @@
 /datum/mind/proc/check_learnspell(obj/effect/proc_holder/spell/S)
 	if(!has_spell(/obj/effect/proc_holder/spell/self/learnspell)) //are we missing the learning spell?
 		if((spell_points - used_spell_points) > 0) //do we have points?
-			AddSpell(new /obj/effect/proc_holder/spell/self/learnspell(null), silent = FALSE) //put it in
+			AddSpell(new /obj/effect/proc_holder/spell/self/learnspell(null)) //put it in
 			return
 
 	if((spell_points - used_spell_points) <= 0) //are we out of points?
@@ -862,6 +863,7 @@
 
 	var/choice = input(youngling, "Do you wish to become [current.name]'s apprentice?") as anything in list("Yes", "No")
 	if(choice != "Yes")
+		to_chat(current, span_warning("[youngling] has rejected your apprenticeship!"))
 		return
 	apprentices |= WEAKREF(youngling)
 	youngling.mind.apprentice = TRUE

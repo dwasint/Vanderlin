@@ -8,7 +8,7 @@
 	)
 	outfit = /datum/outfit/job/roguetown/grenzelhoft_migration/count
 	grant_lit_torch = TRUE
-	advjob_examine = FALSE
+	show_wanderer_examine = FALSE
 
 /datum/outfit/job/roguetown/grenzelhoft_migration/count/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -51,6 +51,7 @@
 		H.change_stat("endurance", 2)
 		ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
+		H.cmode_music = 'sound/music/cmode/nobility/combat_noble.ogg'
 
 /datum/migrant_role/grenzelhoft/countess
 	name = "Grenzelhoft Countess"
@@ -62,7 +63,7 @@
 	)
 	outfit = /datum/outfit/job/roguetown/grenzelhoft_migration/countess
 	grant_lit_torch = TRUE
-	advjob_examine = FALSE
+	show_wanderer_examine = FALSE
 
 /datum/outfit/job/roguetown/grenzelhoft_migration/countess/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -105,6 +106,7 @@
 		H.change_stat("endurance", 2)
 		ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
+		H.cmode_music = 'sound/music/cmode/nobility/combat_noble.ogg'
 
 /datum/migrant_role/grenzelhoft/grenzelhoft_knight
 	name = "Grenzelhoft Knight"
@@ -112,6 +114,7 @@
 	allowed_sexes = list(MALE)
 	allowed_races = list("Humen")
 	outfit = /datum/outfit/job/roguetown/grenzelhoft_migration/grenzelhoft_knight
+	show_wanderer_examine = FALSE
 
 /datum/outfit/job/roguetown/grenzelhoft_migration/grenzelhoft_knight/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -151,6 +154,7 @@
 		to_chat(H, "<span class='info'>I can speak Old Psydonic with ,m before my speech.</span>")
 
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+	H.cmode_music = 'sound/music/cmode/nobility/CombatKnight.ogg'
 
 /datum/migrant_role/grenzelhoft/grenzelhoft_men_at_arms
 	name = "Grenzelhoft Men-at-Arms"
@@ -161,6 +165,7 @@
 		"Dwarf"
 	)
 	outfit = /datum/outfit/job/roguetown/grenzelhoft_migration/grenzelhoft_men_at_arms
+	show_wanderer_examine = FALSE
 
 /datum/outfit/job/roguetown/grenzelhoft_migration/grenzelhoft_men_at_arms/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -202,11 +207,12 @@
 	H.change_stat("endurance", 1)
 	H.change_stat("constitution", 2)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	H.cmode_music = 'sound/music/cmode/garrison/CombatGarrison.ogg'
 
 /datum/migrant_wave/grenzelhoft_visit
 	name = "The Grenzelhoft visit"
 	max_spawns = 1
-	shared_wave_type = /datum/migrant_wave/grenzelhoft_visit
+	shared_wave_type = list(/datum/migrant_wave/grenzelhoft_visit,/datum/migrant_wave/zybantine_wave,/datum/migrant_wave/rockhill_wave,/datum/migrant_wave/heartfelt)
 	weight = 25
 	downgrade_wave = /datum/migrant_wave/grenzelhoft_visit_down
 	roles = list(
@@ -219,7 +225,7 @@
 /datum/migrant_wave/grenzelhoft_visit_down
 	name = "The Grenzelhoft visit"
 	max_spawns = 1
-	shared_wave_type = /datum/migrant_wave/grenzelhoft_visit
+	shared_wave_type = list(/datum/migrant_wave/grenzelhoft_visit,/datum/migrant_wave/zybantine_wave,/datum/migrant_wave/rockhill_wave,/datum/migrant_wave/heartfelt)
 	can_roll = FALSE
 	roles = list(
 		/datum/migrant_role/grenzelhoft/count = 1,

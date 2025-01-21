@@ -312,7 +312,7 @@
 /datum/crafting_recipe/roguetown/readingscroll
 	name = "novice's guide to literature"
 	result = list(/obj/item/literary)
-	reqs = list(/obj/item/paper/scroll = 5)
+	reqs = list(/obj/item/paper/scroll = 3)
 	tools = list(/obj/item/natural/feather)
 	req_table = TRUE
 	skillcraft = /datum/skill/misc/reading
@@ -464,7 +464,7 @@
 	craftdiff = 0
 /datum/crafting_recipe/roguetown/bonespear
 	name = "bone spear"
-	result = /obj/item/rogueweapon/spear/bonespear
+	result = /obj/item/rogueweapon/polearm/spear/bonespear
 	reqs = list(/obj/item/rogueweapon/polearm/woodstaff = 1,
 				/obj/item/alch/bone = 2,
 				/obj/item/natural/fibers = 1)
@@ -507,3 +507,40 @@
 	result = /obj/item/rogueweapon/hammer/wood
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 	craftdiff = 0
+
+/datum/crafting_recipe/roguetown/confessional
+	name = "confession"
+	result = /obj/item/paper/confession
+	reqs = list(/obj/item/paper = 1)
+	tools = list(/obj/item/natural/feather)
+	skillcraft = /datum/skill/misc/reading
+	always_availible = FALSE
+	craftsound = null
+	craftdiff = 0
+
+/datum/crafting_recipe/roguetown/wpsycross
+	name = "handheld psycross"
+	reqs = list(/obj/item/grown/log/tree/small = 1)
+	result = /obj/item/clothing/neck/roguetown/psycross
+	craftdiff = 0
+
+/datum/crafting_recipe/roguetown/impsaw
+	name = "improvised saw"
+	result = /obj/item/rogueweapon/surgery/saw/improv
+	reqs = list(/obj/item/natural/fibers = 1, /obj/item/natural/stone = 1, /obj/item/grown/log/tree/stick = 1)
+	craftdiff = 1
+	skillcraft = /datum/skill/craft/crafting
+
+/datum/crafting_recipe/roguetown/impretra
+	name = "improvised clamp"
+	result = /obj/item/rogueweapon/surgery/hemostat/improv
+	reqs = list(/obj/item/natural/fibers = 1, /obj/item/grown/log/tree/stick = 2)
+	craftdiff = 1
+	skillcraft = /datum/skill/craft/crafting
+
+/datum/crafting_recipe/roguetown/imphemo
+	name = "improvised retractor"
+	result = /obj/item/rogueweapon/surgery/retractor/improv
+	reqs = list(/obj/item/natural/fibers = 1, /obj/item/grown/log/tree/stick = 2)
+	craftdiff = 1
+	skillcraft = /datum/skill/craft/crafting
