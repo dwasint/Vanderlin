@@ -9,16 +9,6 @@
 * Not all need to do this, though, some could simply check and no nothing else, or others.
 */
 
-///Returns the src and all recursive contents as a list.
-/atom/proc/get_all_contents(ignore_flag_1)
-	. = list(src)
-	var/i = 0
-	while(i < length(.))
-		var/atom/checked_atom = .[++i]
-		if(checked_atom.flags_1 & ignore_flag_1)
-			continue
-		. += checked_atom.contents
-
 /// Designates the item it's added to as something that "uses mana".
 /datum/component/uses_mana
 	var/datum/callback/get_mana_callback
@@ -162,7 +152,7 @@
 
 /// What can_activate_check returns apon failing to activate.
 /datum/component/uses_mana/proc/can_activate_check_failure(...)
-	return activate_check_failure_callback?.Invoke(arglist(args))
+	return !activate_check_failure_callback?.Invoke(arglist(args))
 
 /// Should react to a post-use signal given by the parent, and ideally subtract mana, or something.
 /datum/component/uses_mana/proc/react_to_successful_use(...)

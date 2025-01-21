@@ -204,6 +204,10 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 		var/newdrain = releasedrain
 		//skill block
 		newdrain = newdrain - (releasedrain * (ranged_ability_user.mind.get_skill_level(associated_skill) * 0.05))
+		var/charged_modifier = ranged_ability_user.client.chargedprog
+		if(charged_modifier != 100)
+			newdrain *= max(1, min(5.60 * log(0.0144 * charged_modifier + 1.297) - 0.607, 10))//chat I think this is math
+
 		//int block
 		if(ranged_ability_user.STAINT > 10)
 			newdrain = newdrain - (releasedrain * (ranged_ability_user.STAINT * 0.02))
@@ -223,8 +227,9 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 
 
 /obj/effect/proc_holder/spell/proc/cast_check(skipcharge = 0, mob/user = usr) //checks if the spell can be cast based on its settings; skipcharge is used when an additional cast_check is called inside the spell
-	if(SEND_SIGNAL(src, COMSIG_SPELL_BEFORE_CAST))
-		return FALSE
+	if(user.mmb_intent && !skipcharge)
+		if(SEND_SIGNAL(user?.mmb_intent, COMSIG_SPELL_BEFORE_CAST))
+			return FALSE
 
 	if(player_lock)
 		if(!user.mind || !(src in user.mind.spell_list) && !(src in user.mob_spell_list))

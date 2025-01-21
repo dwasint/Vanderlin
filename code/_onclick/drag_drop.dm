@@ -61,6 +61,7 @@
 	var/progress
 	var/doneset
 	var/aghost_toggle
+	var/last_charge_process
 
 /atom
 	var/blockscharging = FALSE
@@ -92,6 +93,7 @@
 	mob.atkswinging = null
 
 	charging = 0
+	last_charge_process = 0
 	chargedprog = 0
 
 	if(!mob.fixedeye) //If fixedeye isn't already enabled, we need to set this var
@@ -179,7 +181,11 @@
 	var/datum/intent/curplaying
 
 /client/MouseUp(object, location, control, params)
+	var/mob/living/L = mob
+	if(L)
+		update_to_mob(L)
 	charging = 0
+	last_charge_process = 0
 //	mob.update_warning()
 
 	mouse_pointer_icon = 'icons/effects/mousemice/human.dmi'
@@ -283,15 +289,12 @@
 /client/proc/update_to_mob(mob/living/L)
 	if(charging)
 		if(progress < goal)
-			progress++
+			if(last_charge_process)
+				progress += world.time - last_charge_process
+			else
+				progress++
 			chargedprog = text2num("[((progress / goal) * 100)]")
-	//		mouseprog = round(text2num("[((progress / goal) * 20)]"), 1)
-	//		mouse_pointer_icon = GLOB.mouseicons_human[mouseprog]
-	//		testing("mouse[mouseprog]")
-//			if(sections && chargedprog > lastplayed)
-//				L.say(L.used_intent.charge_invocation[part])
-//				part++
-//				lastplayed = sections * part
+			last_charge_process = world.time
 		else
 			if(!doneset)
 				doneset = 1

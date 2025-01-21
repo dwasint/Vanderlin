@@ -102,7 +102,7 @@
 
 /datum/intent/proc/spell_cannot_activate()
 	to_chat(mastermob, span_warning("I am too drained for this."))
-	return
+	return FALSE
 
 /datum/intent/proc/get_owner()
 	return mastermob

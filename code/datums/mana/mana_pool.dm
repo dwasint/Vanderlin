@@ -266,7 +266,7 @@
 
 	target_pool.incoming_transfer_start(src)
 
-	RegisterSignal(target_pool, COMSIG_PARENT_QDELETING, PROC_REF(stop_transfer))
+	RegisterSignal(target_pool, COMSIG_PARENT_QDELETING, PROC_REF(stop_transfer), override = TRUE)
 
 	if (force_process)
 		transferring_to[target_pool] |= MANA_POOL_SKIP_NEXT_TRANSFER
@@ -307,6 +307,9 @@
 	var/result = clamp(src.amount + amount, 0, maximum_mana_capacity)
 	. = result - src.amount // Return the amount that was used
 	src.amount = result
+	if(parent)
+		parent.maptext = amount
+		parent.maptext_y = 32
 
 /// Returns an adjusted amount of "effective" mana, affected by the attunements.
 /// Will always return a minimum of zero and a maximum of the total amount of mana we can give multiplied by the mults.
