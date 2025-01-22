@@ -1203,7 +1203,6 @@
 #include "code\modules\farming\trash.dm"
 #include "code\modules\fields\fields.dm"
 #include "code\modules\fields\gravity.dm"
-#include "code\modules\fields\timestop.dm"
 #include "code\modules\fields\turf_objects.dm"
 #include "code\modules\flufftext\Dreaming.dm"
 #include "code\modules\food_and_drinks\food.dm"
