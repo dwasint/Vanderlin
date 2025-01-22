@@ -129,9 +129,6 @@
 	icon = 'icons/roguetown/clothing/storage.dmi'
 	mob_overlay_icon = null
 	icon_state = "pouch"
-	item_state = "pouch"
-	lefthand_file = 'icons/mob/inhands/equipment/belt_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/equipment/belt_righthand.dmi'
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_NECK
 	w_class = WEIGHT_CLASS_NORMAL
 	attack_verb = list("whips", "lashes")
