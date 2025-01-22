@@ -94,13 +94,6 @@
 	icon_state = "pill_happy"
 
 
-/obj/item/reagent_containers/pill/lsd
-	name = "sunshine pill"
-	desc = ""
-	list_reagents = list(/datum/reagent/drug/mushroomhallucinogen = 15, /datum/reagent/toxin/mindbreaker = 15)
-	icon_state = "pill14"
-
-
 /obj/item/reagent_containers/pill/aranesp
 	name = "smooth pill"
 	desc = ""

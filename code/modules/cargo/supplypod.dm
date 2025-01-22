@@ -277,8 +277,7 @@
 /obj/effect/DPtarget //This is the object that forceMoves the supplypod to it's location
 	name = "Landing Zone Indicator"
 	desc = ""
-	icon = 'icons/mob/actions/actions_items.dmi'
-	icon_state = "sniper_zoom"
+	icon_state = ""
 	layer = PROJECTILE_HIT_THRESHHOLD_LAYER
 	light_outer_range =  2
 	var/obj/effect/temp_visual/fallingPod //Temporary "falling pod" that we animate
