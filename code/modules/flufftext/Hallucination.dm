@@ -331,9 +331,6 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 			if("carp")//Carp
 				A = image('icons/mob/carp.dmi',H,"carp")
 				A.name = "Space Carp"
-			if("corgi")//Corgi
-				A = image('icons/mob/pets.dmi',H,"corgi")
-				A.name = "Corgi"
 			if("skeleton")//Skeletons
 				A = image('icons/mob/human.dmi',H,"skeleton")
 				A.name = "Skeleton"
@@ -373,17 +370,12 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 			A = image('icons/mob/monkey.dmi',target,"monkey1")
 		if("carp")//Carp
 			A = image('icons/mob/animal.dmi',target,"carp")
-		if("corgi")//Corgi
-			A = image('icons/mob/pets.dmi',target,"corgi")
 		if("skeleton")//Skeletons
 			A = image('icons/mob/human.dmi',target,"skeleton")
 		if("zombie")//Zombies
 			A = image('icons/mob/human.dmi',target,"zombie")
 		if("demon")//Demon
 			A = image('icons/mob/mob.dmi',target,"daemon")
-		if("robot")//Cyborg
-			A = image('icons/mob/robots.dmi',target,"robot")
-			target.playsound_local(target,'sound/blank.ogg', 75, 1)
 		if("custom")
 			A = image(custom_icon_file, target, custom_icon)
 	A.override = 1
