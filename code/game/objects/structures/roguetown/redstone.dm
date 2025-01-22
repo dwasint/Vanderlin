@@ -6,7 +6,7 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 	var/redstone_id
 	var/list/redstone_attached = list()
 
-/obj/structure/MouseDrop(atom/over, src_location, over_location, src_control, over_control, params)
+/obj/structure/MouseDrop(obj/structure/over, src_location, over_location, src_control, over_control, params)
 	. = ..()
 	if(!isstructure(over))
 		return
