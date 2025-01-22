@@ -1,3 +1,10 @@
+/obj/effect/decal/cleanable/generic
+	name = "clutter"
+	desc = ""
+	icon = 'icons/obj/objects.dmi'
+	icon_state = "shards"
+	beauty = -50
+
 /obj/effect/decal/cleanable/ash
 	name = "ashes"
 	desc = ""
