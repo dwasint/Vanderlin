@@ -228,8 +228,6 @@
 	icon_state = "satchel"
 	item_state = "satchel"
 	icon = 'icons/roguetown/clothing/storage.dmi'
-	lefthand_file = 'icons/mob/inhands/equipment/backpack_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/equipment/backpack_righthand.dmi'
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK
 	resistance_flags = NONE
