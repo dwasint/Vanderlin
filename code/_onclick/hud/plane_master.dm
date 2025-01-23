@@ -270,6 +270,11 @@
 	blend_mode = BLEND_OVERLAY
 	//render_target = GAME_PLANE_RENDER_TARGET
 
-/atom/movable/screen/plane_master/leylines/Initialize(mapload, ...)
+/atom/movable/screen/plane_master/leylines/backdrop(mob/mymob)
 	. = ..()
-	alpha =175
+	if(!isliving(mymob))
+		alpha = 255
+	else if(!HAS_TRAIT(mymob, TRAIT_SEE_LEYLINES))
+		alpha = 0
+	else
+		alpha = 255

@@ -259,7 +259,7 @@
 
 /datum/mana_pool/proc/transfer_specific_mana(datum/mana_pool/other_pool, amount_to_transfer, decrement_budget = TRUE)
 	// ensure we dont give more than we hold and dont give more than they CAN hold
-	var/adjusted_amount = min(min(amount_to_transfer, maximum_mana_capacity), (other_pool.maximum_mana_capacity - other_pool.amount))
+	var/adjusted_amount = min(min(amount_to_transfer, amount), (other_pool.maximum_mana_capacity - other_pool.amount))
 	// ^^^^ TODO THIS ISNT THA TGOOD I DONT LIKE IT we should instead have remainders returned on adjust mana and plug it into the OTHER adjust mana
 
 	if (decrement_budget)
