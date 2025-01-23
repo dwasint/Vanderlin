@@ -170,3 +170,12 @@
 /obj/item/mana_battery/mana_crystal/small/focus/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_POOL_AVAILABLE_FOR_CAST, INNATE_TRAIT)
+
+
+/datum/mana_pool/mana_pylon
+	// a special type of mana battery that regenerates passively- but cannot be given mana
+	maximum_mana_capacity = 400 // 400 by default
+	softcap = 400
+	amount = 0
+	ethereal_recharge_rate = 0
+	intrinsic_recharge_sources = MANA_ALL_LEYLINES
