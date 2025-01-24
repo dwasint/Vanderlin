@@ -71,6 +71,13 @@
 	icon_state = "orecoal[rand(1,3)]"
 	..()
 
+/obj/item/rogueore/cinnabar
+	name = "cinnabar"
+	desc = "Red gems that contain the essence of quicksilver."
+	icon_state = "orecinnabar"
+	grind_results = list(/datum/reagent/mercury = 15)
+	sellprice = 5
+
 /obj/item/ingot
 	name = "ingot"
 	desc = "A parent bar of metal. If you see this, report it on github."

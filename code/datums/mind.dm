@@ -99,6 +99,8 @@
 
 	var/list/apprentices = list()
 
+	var/has_studied = FALSE
+
 /datum/mind/New(key)
 	src.key = key
 	soulOwner = src

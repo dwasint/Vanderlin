@@ -9,7 +9,7 @@
 
 /datum/enchantment/mana_capacity/on_equip(obj/item/source, mob/living/carbon/equipper, slot)
 	affecting_mobs |= source
-	if(!source in affecting_mobs)
+	if(!(source in affecting_mobs))
 		affecting_mobs |= source
 		affecting_mobs[source] = list()
 	if(equipper in affecting_mobs[source])

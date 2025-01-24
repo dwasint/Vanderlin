@@ -71,6 +71,7 @@
 	//Trolls eat more than wolves
 	var/deaggroprob = 10
 	var/eat_forever
+	var/tier = 0
 
 
 /mob/living/simple_animal/hostile/retaliate/rogue/onbite(mob/living/carbon/human/user)

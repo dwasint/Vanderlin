@@ -27,8 +27,9 @@
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 	armor = /obj/item/clothing/suit/roguetown/shirt/robe/mage
 	belt = /obj/item/storage/belt/rogue/leather/rope
-	backr = /obj/item/storage/backpack/rogue/satchel
+	beltr = /obj/item/storage/magebag/apprentice
 	beltl = /obj/item/reagent_containers/glass/bottle/rogue/manapot
+	backpack_contents = list(/obj/item/chalk = 1, /obj/item/book/granter/spellbook/apprentice = 1)
 	r_hand = /obj/item/rogueweapon/polearm/woodstaff
 	if(H.mind)
 		if(H.patron != /datum/patron/divine/noc)
@@ -51,5 +52,4 @@
 		H.change_stat("endurance", -1)
 		H.change_stat("speed", -2)
 		H.mind.adjust_spellpoints(7)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/learnspell)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)

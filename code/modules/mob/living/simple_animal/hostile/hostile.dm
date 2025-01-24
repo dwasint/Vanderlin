@@ -91,6 +91,8 @@
 		return 0
 	if(has_buckled_mobs() && tame)
 		return 0
+	if(binded)
+		return 0
 	var/list/possible_targets = ListTargets() //we look around for potential targets and make it a list for later use.
 
 	if(environment_smash)
@@ -180,6 +182,8 @@
 	. = list()
 	if(!HasTargetsList)
 		possible_targets = ListTargets()
+	if(binded)
+		return 0
 	for(var/pos_targ in possible_targets)
 		var/atom/A = pos_targ
 		if(Found(A))//Just in case people want to override targetting
