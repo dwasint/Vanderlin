@@ -186,3 +186,4 @@
 	amount = 0
 	ethereal_recharge_rate = 0
 	intrinsic_recharge_sources = MANA_ALL_PYLONS
+	draws_beams = TRUE

@@ -59,6 +59,8 @@
 	/// The intrinsic sources of mana we will constantly try to draw from. Uses defines from magic_charge_bitflags.dm.
 	var/intrinsic_recharge_sources = NONE
 
+	var/draws_beams = FALSE
+
 	var/list/maptext_info = list("Last Generated" = 0, "Total Mana" = 0)
 
 /datum/mana_pool/New(atom/parent = null)
@@ -185,9 +187,13 @@
 				leyline.transfer_specific_mana(src, (leyline.get_transfer_rate_for(src) / sane_distance) * 0.1)
 
 	if((intrinsic_recharge_sources & MANA_ALL_PYLONS) && amount < softcap)
+		var/list/pylons = list()
 		for(var/obj/structure/mana_pylon/pylon in range(3, parent))
 			var/sane_distance = get_dist(parent, pylon) + 1
 			pylon.mana_pool.transfer_specific_mana(src, (pylon.mana_pool.get_transfer_rate_for(src) / sane_distance))
+			pylons += pylon
+		if(draws_beams)
+			parent.draw_mana_beams_from_list(pylons)
 
 	if (length(transferring_to) > 0)
 		switch (transfer_method)

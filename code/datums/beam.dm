@@ -80,6 +80,7 @@
 		deltimer(timing_id)
 	if(!QDELETED(src) && destroy_self)
 		qdel(src)
+	origin.BeamBroken(target)
 
 /datum/beam/proc/Reset()
 	for(var/obj/effect/ebeam/B in elements)
