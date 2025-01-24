@@ -179,3 +179,10 @@
 	amount = 0
 	ethereal_recharge_rate = 0
 	intrinsic_recharge_sources = MANA_ALL_LEYLINES
+
+/datum/mana_pool/mana_fountain
+	maximum_mana_capacity = 1000
+	softcap = 1000
+	amount = 0
+	ethereal_recharge_rate = 0
+	intrinsic_recharge_sources = MANA_ALL_PYLONS

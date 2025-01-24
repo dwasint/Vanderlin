@@ -62,6 +62,7 @@
 #define COMSIG_ATOM_MANA_POOL_CHANGED "atom_mana_pool_changed"
 
 #define MANA_ALL_LEYLINES (1<<1)
+#define MANA_ALL_PYLONS (1<<2)
 
 #define MANA_DISPERSE_EVENLY 1
 #define MANA_SEQUENTIAL 2

@@ -167,15 +167,14 @@
 
 	if (ethereal_recharge_rate != 0)
 		adjust_mana(ethereal_recharge_rate, attunements_to_generate)
-
 	if((intrinsic_recharge_sources & MANA_ALL_LEYLINES) && amount < softcap)
 		var/list/leylines = list()
 		for(var/obj/effect/ebeam/beam in range(3, parent))
 			if(!beam.owner.mana_pool)
 				continue
 			if(beam.owner.mana_pool in leylines)
-				if(leylines[beam.owner.mana_pool] > get_dist(src, beam))
-					leylines[beam.owner.mana_pool] = get_dist(src, beam)
+				if(leylines[beam.owner.mana_pool] > get_dist(parent, beam))
+					leylines[beam.owner.mana_pool] = get_dist(parent, beam)
 			else
 				leylines |= beam.owner.mana_pool
 				leylines[beam.owner.mana_pool] = get_dist(parent, beam)
@@ -183,7 +182,12 @@
 		if(length(leylines))
 			for(var/datum/mana_pool/leyline/leyline as anything in leylines)
 				var/sane_distance = leylines[leyline] + 1
-				leyline.transfer_specific_mana(src, (get_transfer_rate_for(leyline) / sane_distance) * 0.1)
+				leyline.transfer_specific_mana(src, (leyline.get_transfer_rate_for(src) / sane_distance) * 0.1)
+
+	if((intrinsic_recharge_sources & MANA_ALL_PYLONS) && amount < softcap)
+		for(var/obj/structure/mana_pylon/pylon in range(3, parent))
+			var/sane_distance = get_dist(parent, pylon) + 1
+			pylon.mana_pool.transfer_specific_mana(src, (pylon.mana_pool.get_transfer_rate_for(src) / sane_distance))
 
 	if (length(transferring_to) > 0)
 		switch (transfer_method)

@@ -101,6 +101,10 @@
 	icon_state = "fountain"
 	layer = BELOW_MOB_LAYER
 	layer = -0.1
+	has_initial_mana_pool = TRUE
+
+/obj/structure/well/fountain/mana/get_initial_mana_pool_type()
+	return /datum/mana_pool/mana_fountain
 
 /obj/structure/well/fountain/mana/onbite(mob/user)
 	if(isliving(user))
@@ -111,10 +115,16 @@
 			var/mob/living/carbon/C = user
 			if(C.is_mouth_covered())
 				return
+		var/list/waterl
+		if(mana_pool.amount > 50)
+			waterl = list(/datum/reagent/medicine/manapot = 2)
+		else
+			to_chat(user, span_warning("[src] is dry."))
+			return FALSE
 		playsound(user, pick('sound/foley/waterwash (1).ogg','sound/foley/waterwash (2).ogg'), 100, FALSE)
 		user.visible_message(span_info("[user] starts to drink from [src]."))
-		if(do_after(L, 25, target = src))
-			var/list/waterl = list(/datum/reagent/medicine/manapot = 2)
+		if(do_after(L, 2.5 SECONDS, target = src))
+			mana_pool.adjust_mana(-50)
 			var/datum/reagents/reagents = new()
 			reagents.add_reagent_list(waterl)
 			reagents.trans_to(L, reagents.total_volume, transfered_by = user, method = INGEST)
@@ -127,13 +137,17 @@
 		if(W.reagents.holder_full())
 			to_chat(user, span_warning("[W] is full."))
 			return
+		var/mana_amount = max(round(mana_pool.amount / 25, 1), 40)
+		if(!mana_amount)
+			to_chat(user, span_warning("[src] is dry."))
+			return
 		if(do_after(user, 60, target = src))
-			var/list/waterl = list(/datum/reagent/medicine/manapot = 40)
+			mana_pool.adjust_mana(-mana_amount * 25)
+			var/list/waterl = list(/datum/reagent/medicine/manapot = mana_amount)
 			W.reagents.add_reagent_list(waterl)
 			to_chat(user, "<span class='notice'>I fill [W] from [src].</span>")
 			playsound(user, pick('sound/foley/waterwash (1).ogg','sound/foley/waterwash (2).ogg'), 80, FALSE)
 			return
-	if(istype(I, /obj/item/reagent_containers/glass))
 	else ..()
 
 /obj/machinery/light/rogue/forge/arcane
