@@ -1634,6 +1634,7 @@
 	playsound(T,'sound/magic/meteorstorm.ogg', 80, TRUE)
 	sleep(2)
 	create_meteors(T)
+	return TRUE
 
 //meteor storm and lightstorm.
 /obj/effect/proc_holder/spell/invoked/meteor_storm/proc/create_meteors(atom/target)
@@ -1724,17 +1725,21 @@
 	associated_skill = /datum/skill/magic/arcane //can be arcane, druidic, blood, holy
 	cost = 1
 
-
 	miracle = FALSE
 
 	invocation = "Blades, be dulled!"
 	invocation_type = "shout" //can be none, whisper, emote and shout
+
+	attunements = list(
+		/datum/attunement/arcyne = 0.3,
+	)
 // Notes: Bard, Sorcerer, Warlock, Wizard
 
 /obj/effect/proc_holder/spell/self/bladeward5e/cast(mob/user = usr)
 	var/mob/living/target = user
 	target.apply_status_effect(/datum/status_effect/buff/bladeward5e)
 	user.visible_message("<span class='info'>[user] traces a warding sigil in the air.</span>", "<span class='notice'>I trace a a sigil of warding in the air.</span>")
+	return TRUE
 
 /datum/status_effect/buff/bladeward5e
 	id = "blade ward"
@@ -1790,6 +1795,10 @@
 	invocation = "Stay still!" // Incantation should explain a confusing spell's mechanic.
 	invocation_type = "shout" //can be none, whisper, emote and shout
 
+	attunements = list(
+		/datum/attunement/earth = 0.3,
+	)
+
 /obj/effect/proc_holder/spell/invoked/boomingblade5e/cast(list/targets, mob/living/user)
 	if(isliving(targets[1]))
 		var/mob/living/carbon/target = targets[1]
@@ -1799,6 +1808,8 @@
 		if(held_item)
 			held_item.melee_attack_chain(U, L)
 			target.apply_status_effect(/datum/status_effect/buff/boomingblade5e/) //apply buff
+		return TRUE
+	return FALSE
 
 /datum/status_effect/buff/boomingblade5e
 	id = "booming blade"
@@ -1874,6 +1885,10 @@
 	invocation = "Be torn apart!"
 	invocation_type = "shout"
 
+	attunements = list(
+		/datum/attunement/ice = 0.3,
+	)
+
 
 // Notes: sorcerer, warlock, wizard
 /obj/effect/proc_holder/spell/invoked/chilltouch5e/cast(list/targets, mob/living/user)
@@ -1892,6 +1907,7 @@
 			hand.pleasureaccepted = TRUE
 		else
 			hand.pleasureaccepted = FALSE
+		return TRUE
 	return FALSE
 
 /obj/item/chilltouch5e
@@ -1999,7 +2015,6 @@
 	associated_skill = /datum/skill/magic/arcane //can be arcane, druidic, blood, holy
 	cost = 1
 
-
 	miracle = FALSE
 
 	invocation = "Bonfire!"
@@ -2012,6 +2027,9 @@
 	summon_amt = 1
 
 	action_icon_state = "the_traps"
+	attunements = list(
+		/datum/attunement/fire = 0.3,
+	)
 
 /obj/machinery/light/rogue/campfire/createbonfire5e
 	name = "magical bonfire"
@@ -2062,6 +2080,9 @@
 
 	invocation = "Return to rot."
 	invocation_type = "whisper"
+	attunements = list(
+		/datum/attunement/death = 0.3,
+	)
 
 /obj/effect/proc_holder/spell/invoked/decompose5e/cast(list/targets, mob/living/user)
 	if(!isliving(targets[1]))
@@ -2134,12 +2155,14 @@
 	associated_skill = /datum/skill/magic/arcane //can be arcane, druidic, blood, holy
 	cost = 1
 
-
 	miracle = FALSE
 
 	invocation = "Eldritch blast!" // Bad incantation but it's funny.
 	invocation_type = "shout"
 
+	attunements = list(
+		/datum/attunement/dark = 0.3,
+	)
 
 
 /obj/projectile/magic/eldritchblast5e
@@ -2202,12 +2225,15 @@
 	associated_skill = /datum/skill/magic/arcane //can be arcane, druidic, blood, holy
 	cost = 1
 
-
 	miracle = FALSE
 
 	invocation = ""
 	invocation_type = "shout" //can be none, whisper, emote and shout
 	include_user = FALSE
+
+	attunements = list(
+		/datum/attunement/dark = 0.5,
+	)
 
 /obj/effect/proc_holder/spell/targeted/encodethoughts5e/cast(list/targets, mob/user)
 	. = ..()
@@ -2222,7 +2248,7 @@
 		log_game("[key_name(user)] sent a thought to [key_name(C)] with contents [message]")
 		return TRUE
 	to_chat(user, span_warning("I wasn't able to find a mind to weave here."))
-	revert_cast()
+	return FALSE
 
 /obj/effect/proc_holder/spell/targeted/encodethoughts5e/test
 	antimagic_allowed = TRUE
@@ -2248,11 +2274,14 @@
 	associated_skill = /datum/skill/magic/arcane //can be arcane, druidic, blood, holy
 	cost = 1
 
-
 	miracle = FALSE
 
 	invocation = "Green flame blade!"
 	invocation_type = "shout" //can be none, whisper, emote and shout
+
+	attunements = list(
+		/datum/attunement/fire = 0.3,
+	)
 
 /obj/effect/proc_holder/spell/invoked/greenflameblade5e/cast(list/targets, mob/living/user)
 	if(isliving(targets[1]))
@@ -2273,6 +2302,8 @@
 						//burn effect and sound
 						new /obj/effect/temp_visual/acidsplash5e(get_turf(M))
 						playsound(M, 'sound/items/firelight.ogg', 100)
+		return TRUE
+	return FALSE
 
 /obj/effect/temp_visual/greenflameblade5e
 	icon = 'icons/effects/fire.dmi'
@@ -2304,6 +2335,9 @@
 	associated_skill = /datum/skill/magic/arcane //can be arcane, druidic, blood, holy
 	cost = 1
 
+	attunements = list(
+		/datum/attunement/arcyne = 0.4,
+	)
 
 	miracle = FALSE
 
@@ -2317,6 +2351,8 @@
 		var/mob/living/carbon/caster = user
 		target.visible_message(span_warning("You are being guided by [caster]"), span_notice("You guide [target] "))
 		target.apply_status_effect(/datum/status_effect/buff/guidance5e/) // adds guidance
+		return TRUE
+	return FALSE
 
 /datum/status_effect/buff/guidance5e
 	id = "guidance"
@@ -2369,12 +2405,19 @@
 	invocation = "Rot, take them!"
 	invocation_type = "shout" //can be none, whisper, emote and shout
 
+	attunements = list(
+		/datum/attunement/dark = 0.3,
+		/datum/attunement/death = 0.3,
+	)
+
 
 /obj/effect/proc_holder/spell/invoked/infestation5e/cast(list/targets, mob/living/user)
 	if(isliving(targets[1]))
 		var/mob/living/carbon/target = targets[1]
 		target.visible_message(span_warning("[target] is surrounded by a cloud of pestilent vermin!"), span_notice("You surround [target] in a cloud of pestilent vermin!"))
 		target.apply_status_effect(/datum/status_effect/buff/infestation5e/) //apply debuff
+		return TRUE
+	return FALSE
 
 /datum/status_effect/buff/infestation5e
 	id = "infestation"
@@ -2458,6 +2501,10 @@
 	invocation = "Let there be light."
 	invocation_type = "whisper" //can be none, whisper, emote and shout
 
+	attunements = list(
+		/datum/attunement/light = 0.3,
+	)
+
 	var/obj/item/item
 	var/item_type = /obj/item/flashlight/flare/light5e
 	var/delete_old = TRUE //TRUE to delete the last summoned object if it's still there, FALSE for infinite item stream weeeee
@@ -2468,6 +2515,7 @@
 	if(user.dropItemToGround(user.get_active_held_item()))
 		user.put_in_hands(make_item(), TRUE)
 		user.visible_message(span_info("An orb of light condenses in [user]'s hand!"), span_info("You condense an orb of pure light!"))
+	return TRUE
 
 /obj/effect/proc_holder/spell/self/light5e/Destroy()
 	if(item)
@@ -2614,8 +2662,11 @@
 	associated_skill = /datum/skill/magic/arcane //can be arcane, druidic, blood, holy
 	cost = 1
 
-
 	miracle = FALSE
+
+	attunements = list(
+		/datum/attunement/earth = 0.3,
+	)
 
 	invocation = "Stay sharp and strong."
 	invocation_type = "whisper" //can be none, whisper, emote and shout
@@ -2661,6 +2712,9 @@
 	associated_skill = /datum/skill/magic/arcane //can be arcane, druidic, blood, holy
 	cost = 1
 
+	attunements = list(
+		/datum/attunement/dark = 0.5,
+	)
 
 	miracle = FALSE
 
@@ -2680,6 +2734,7 @@
 		brain.applyOrganDamage((brain.maxHealth/8))
 		playsound(T, "genslash", 80, TRUE)
 		to_chat(L, "<span class='userdanger'>Psychic energy is driven into my skull!!</span>")
+	return TRUE
 
 /obj/effect/temp_visual/mindsliver5e_p1
 	icon = 'icons/effects/effects.dmi'
@@ -2724,6 +2779,10 @@
 	associated_skill = /datum/skill/magic/arcane //can be arcane, druidic, blood, holy
 	cost = 1
 
+	attunements = list(
+		/datum/attunement/blood = 0.3,
+		/datum/attunement/death = 0.3,
+	)
 
 	miracle = FALSE
 
@@ -2748,16 +2807,17 @@
 					playsound(user, 'sound/magic/webspin.ogg', 100)
 				else
 					to_chat(user, "<span class='warning'>The [held_item] is empty!</span>")
-					revert_cast()
+					return FALSE
 			else
 				to_chat(user, "<span class='warning'>I can't get access to the contents of this [held_item]!</span>")
-				revert_cast()
+				return FALSE
 		else
 			to_chat(user, "<span class='warning'>I need to hold a container to cast this!</span>")
-			revert_cast()
+			return FALSE
 	else
 		to_chat(user, "<span class='warning'>I couldn't find a good place for this!</span>")
-		revert_cast()
+		return FALSE
+	return TRUE
 
 /obj/effect/proc_holder/spell/invoked/poisonspray5e/test
 	antimagic_allowed = TRUE
@@ -2788,6 +2848,9 @@
 	associated_skill = /datum/skill/magic/druidic //can be arcane, druidic, blood, holy
 	cost = 1
 
+	attunements = list(
+		/datum/attunement/earth = 0.3,
+	)
 
 	miracle = FALSE
 
@@ -2800,6 +2863,7 @@
 	target.apply_status_effect(/datum/status_effect/buff/primalsavagery5e)
 	ADD_TRAIT(target, TRAIT_POISONBITE, TRAIT_GENERIC)
 	user.visible_message(span_info("[user] looks more primal!"), span_info("You feel more primal."))
+	return TRUE
 
 /datum/status_effect/buff/primalsavagery5e
 	id = "primal savagery"
@@ -2844,6 +2908,10 @@
 	associated_skill = /datum/skill/magic/arcane //can be arcane, druidic, blood, holy
 	cost = 1
 
+
+	attunements = list(
+		/datum/attunement/ice = 0.6,
+	)
 
 	miracle = FALSE
 
