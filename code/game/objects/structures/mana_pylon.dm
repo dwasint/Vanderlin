@@ -2,14 +2,35 @@
 	name = "mana pylon"
 	desc = ""
 
-	icon_state = "standing0"
-	icon = 'icons/roguetown/misc/lighting.dmi'
+	icon_state = "pylon"
+	icon = 'icons/roguetown/misc/mana_pylon.dmi'
 	has_initial_mana_pool = TRUE
+	pixel_y = -32
+	plane = GAME_PLANE_UPPER
+	light_outer_range = MINIMUM_USEFUL_LIGHT_RANGE
+	light_color = COLOR_CYAN
+
+	extra_directions = list(SOUTH)
 
 	var/obj/structure/mana_pylon/linked_pylon
 	var/datum/beam/created_beam
 
 	var/list/transferring_mobs = list()
+
+/obj/structure/mana_pylon/Initialize()
+	. = ..()
+	var/turf/step_up = get_step(src, NORTH) //this is dumb but for beams it makes it work
+	if(step_up)
+		forceMove(step_up)
+
+	update_icon()
+	set_light(1.4, 1.4, 0.75, l_color = COLOR_CYAN)
+
+/obj/structure/mana_pylon/update_icon()
+	. = ..()
+	cut_overlays()
+	var/mutable_appearance/MA = mutable_appearance(icon, "pylon-glow", plane = ABOVE_LIGHTING_PLANE)
+	add_overlay(MA)
 
 /obj/structure/mana_pylon/MouseDrop(obj/structure/over, src_location, over_location, src_control, over_control, params)
 	. = ..()
@@ -31,7 +52,7 @@
 	if(linked_pylon)
 		unlink_pylon(linked_pylon)
 
-	created_beam = LeyBeam(pylon_to_link, icon_state = "lichbeam", maxdistance = world.maxx, time = INFINITY)
+	created_beam = LeyBeam(pylon_to_link, icon_state = "medbeam", maxdistance = world.maxx, time = INFINITY)
 	linked_pylon = pylon_to_link
 	mana_pool.start_transfer(pylon_to_link.mana_pool, TRUE)
 
@@ -65,3 +86,4 @@
 	. = ..()
 	if(user.client)
 		drain_mana(user)
+
