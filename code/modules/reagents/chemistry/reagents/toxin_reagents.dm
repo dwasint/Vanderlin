@@ -324,6 +324,28 @@
 	else
 		return ..()
 
+
+/datum/reagent/medicine/soporpot
+	name = "Soporific Poison"
+	description = "Weakens those it enters."
+	reagent_state = LIQUID
+	color = "#fcefa8"
+	taste_description = "drowsyness"
+	overdose_threshold = 0
+	metabolization_rate = 1 * REAGENTS_METABOLISM
+	alpha = 225
+
+/datum/reagent/medicine/soporpot/on_mob_life(mob/living/carbon/M)
+	M.confused += 1
+	M.dizziness += 1
+	M.adjust_energy(-25)
+	if(M.stamina > 75)
+		M.drowsyness += 2
+	else
+		M.adjust_stamina(15)
+	..()
+	. = 1
+
 /datum/reagent/toxin/venom
 	name = "Venom"
 	description = "An exotic poison extracted from highly toxic fauna. Causes scaling amounts of toxin damage and bruising depending and dosage. Often decays into Histamine."
