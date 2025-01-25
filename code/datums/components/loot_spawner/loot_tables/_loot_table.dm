@@ -3,6 +3,7 @@
 	///to list of items with weights. Or Just raw list with weights, these then get added in with bonuses based on their skills based on a minimum
 	///you can set the minimum value in the second list or leave it default which is 0
 	///if a number is in the list ie item_path = 5, 12 if you aren't higher then that level it just ends there
+	///this does mean that you should structure it lowest to highest or you will run into issues
 	var/list/loot_table = list()
 
 	///this is our minimum skill list
