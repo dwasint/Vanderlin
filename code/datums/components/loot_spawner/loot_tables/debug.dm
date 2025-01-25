@@ -10,6 +10,7 @@
 		STATKEY_LCK = list(
 			/obj/item/roguecoin/gold = 5,
 			/obj/item/roguecoin/silver = 10,
+			200,
 			/obj/item/roguecoin/copper = 25,
 		),
 		/datum/skill/misc/stealing = list(
