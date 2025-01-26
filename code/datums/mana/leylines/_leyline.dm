@@ -5,9 +5,10 @@ GLOBAL_LIST_EMPTY_TYPED(all_leylines, /datum/mana_pool/leyline)
 
 	var/list/datum/mana_pool/leyline/leylines = list()
 
-	var/leylines_to_generate = get_initial_leyline_amount()
-	while (leylines_to_generate-- > 0)
-		leylines += generate_leyline()
+	for(var/z in SSmapping.levels_by_trait(ZTRAIT_LEYLINES))
+		var/leylines_to_generate = get_initial_leyline_amount()
+		while (leylines_to_generate-- > 0)
+			leylines += generate_leyline(z)
 
 	return leylines
 
@@ -21,10 +22,10 @@ GLOBAL_LIST_EMPTY_TYPED(all_leylines, /datum/mana_pool/leyline)
 	var/leyline_amount = text2num(pickweight(leyline_amount_list))
 	return leyline_amount
 
-/proc/generate_leyline()
+/proc/generate_leyline(z)
 	RETURN_TYPE(/datum/mana_pool/leyline)
 
-	return new /datum/mana_pool/leyline()
+	return new /datum/mana_pool/leyline(null, z)
 
 /// The lines of latent energy that run under the universe. Available to all people in the game. Should be high capacity, but slow to recharge.
 /datum/mana_pool/leyline
@@ -42,7 +43,7 @@ GLOBAL_LIST_EMPTY_TYPED(all_leylines, /datum/mana_pool/leyline)
 	intrinsic_recharge_sources = NONE //we don't pull from leylines
 
 
-/datum/mana_pool/leyline/New()
+/datum/mana_pool/leyline/New(atom/parent = null, z_level = SSmapping.levels_by_trait(ZTRAIT_STATION)[1])
 	GLOB.all_leylines += src
 
 	intensity = generate_initial_intensity()
@@ -59,7 +60,7 @@ GLOBAL_LIST_EMPTY_TYPED(all_leylines, /datum/mana_pool/leyline)
 
 	amount = maximum_mana_capacity
 
-	create_leyline_objects()
+	create_leyline_objects(z_level)
 
 	return ..()
 
@@ -109,7 +110,7 @@ GLOBAL_LIST_EMPTY_TYPED(all_leylines, /datum/mana_pool/leyline)
 	var/beam_color = COLOR_WHITE
 
 
-/datum/mana_pool/leyline/proc/generate_start_and_end()
+/datum/mana_pool/leyline/proc/generate_start_and_end(station_z)
 	var/starting_y = 0
 	var/starting_x = 0
 	var/stuck_dir = pick(GLOB.cardinals)
@@ -144,14 +145,13 @@ GLOBAL_LIST_EMPTY_TYPED(all_leylines, /datum/mana_pool/leyline)
 			starting_x = rand(1, world.maxx)
 			ending_x = rand(1, world.maxx)
 
-	var/station_z = SSmapping.levels_by_trait(ZTRAIT_STATION)[1]
 	var/turf/ending = locate(ending_x, ending_y, station_z)
 	var/turf/starting = locate(starting_x, starting_y, station_z)
 
 	return list(starting, ending, stuck_axis)
 
-/datum/mana_pool/leyline/proc/create_leyline_objects()
-	var/list/data = generate_start_and_end()
+/datum/mana_pool/leyline/proc/create_leyline_objects(z_level)
+	var/list/data = generate_start_and_end(z_level)
 	var/turf/starting = data[1]
 	var/datum/leyline_variable/attunement_theme/theme
 	if(length(themes))
