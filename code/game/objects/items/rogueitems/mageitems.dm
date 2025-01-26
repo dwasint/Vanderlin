@@ -523,3 +523,57 @@
 	name = "arcanic aberation"
 	icon_state = "wessence"
 	desc = "A melding of arcane fusion and voidstone. It pulses erratically, power coiled tightly within and dangerous. Many would be afraid of going near this, let alone holding it."
+
+
+/obj/item/soul
+	name = "soul"
+	desc = "The soul of the dead"
+
+	icon = 'icons/roguetown/misc/mana.dmi'
+	icon_state = "soul"
+
+	plane = PLANE_LEYLINES
+	anchored = TRUE
+
+	var/mana_amount = 75
+
+	var/datum/weakref/drainer
+
+/obj/item/soul/New(loc, mob/living/dead_person)
+	if(dead_person?.mana_pool)
+		mana_amount = dead_person.mana_pool.amount
+		drainer = WEAKREF(dead_person)
+	animate(src, pixel_y = 4, time = 1 SECONDS, loop = -1, flags = ANIMATION_RELATIVE)
+	animate(pixel_y = -4, time = 1 SECONDS, flags = ANIMATION_RELATIVE)
+
+/obj/item/soul/attack_hand(mob/living/user)
+	. = ..()
+	if(user.mana_pool)
+		if(user.mana_pool.intrinsic_recharge_sources & MANA_SOULS)
+			drain_mana(user)
+
+/obj/item/soul/proc/drain_mana(mob/living/user)
+	var/datum/beam/transfer_beam = user.Beam(src, icon_state = "drain_life", time = INFINITY)
+
+	var/failed = FALSE
+	while(!failed)
+		var/mob/living/drained = drainer.resolve()
+		if(!do_after(user, 3 SECONDS, target = src))
+			qdel(transfer_beam)
+			failed = TRUE
+			break
+		if(!user.client)
+			failed = TRUE
+			qdel(transfer_beam)
+			break
+		var/transfer_amount = min(mana_amount, 20)
+		if(!transfer_amount)
+			failed = TRUE
+			qdel(transfer_beam)
+			qdel(src)
+			break
+		if(drained)
+			mana_amount -= drained.mana_pool.transfer_specific_mana(user.mana_pool, transfer_amount, decrement_budget = TRUE)
+		else
+			mana_amount -= transfer_amount
+			user.mana_pool.adjust_mana(transfer_amount)

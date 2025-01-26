@@ -63,6 +63,7 @@
 
 #define MANA_ALL_LEYLINES (1<<1)
 #define MANA_ALL_PYLONS (1<<2)
+#define MANA_SOULS (1<<3)
 
 #define MANA_DISPERSE_EVENLY 1
 #define MANA_SEQUENTIAL 2
