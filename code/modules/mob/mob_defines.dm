@@ -108,6 +108,7 @@
 	var/overeatduration = 0		// How long this guy is overeating //Carbon
 
 	/// The current intent of the mob
+	var/uses_intents = TRUE
 	var/datum/intent/a_intent = INTENT_HELP//Living
 	var/datum/intent/o_intent = INTENT_HELP
 	var/datum/rmb_intent/rmb_intent //Living

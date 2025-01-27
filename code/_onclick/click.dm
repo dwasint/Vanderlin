@@ -115,15 +115,16 @@
 			used_hand = 2
 			if(next_rmove > world.time)
 				return
-		if(used_intent.get_chargetime())
-			if(used_intent.no_early_release && client?.chargedprog < 100)
-				var/adf = used_intent.clickcd
-				if(istype(rmb_intent, /datum/rmb_intent/aimed))
-					adf = round(adf * 1.4)
-				if(istype(rmb_intent, /datum/rmb_intent/swift))
-					adf = round(adf * 0.6)
-				changeNext_move(adf,used_hand)
-				return
+		if(uses_intents)
+			if(used_intent?.get_chargetime())
+				if(used_intent.no_early_release && client?.chargedprog < 100)
+					var/adf = used_intent.clickcd
+					if(istype(rmb_intent, /datum/rmb_intent/aimed))
+						adf = round(adf * 1.4)
+					if(istype(rmb_intent, /datum/rmb_intent/swift))
+						adf = round(adf * 0.6)
+					changeNext_move(adf,used_hand)
+					return
 	if(modifiers["right"])
 		if(oactive)
 			if(atkswinging != "right")
@@ -797,7 +798,7 @@
 			A.rmb_self(src)
 		else
 			rmb_on(A, params)
-	else if(used_intent.rmb_ranged)
+	else if(uses_intents && used_intent.rmb_ranged)
 		used_intent.rmb_ranged(A, src) //get the message from the intent
 	changeNext_move(CLICK_CD_MELEE)
 	if(isturf(A.loc))

@@ -46,12 +46,15 @@
 		if(above_turf)
 			listeners += SSmobs.clients_by_zlevel[above_turf.z]
 			listeners += SSmobs.dead_players_by_zlevel[above_turf.z]
+			listeners += SSmobs.camera_players_by_zlevel[above_turf.z]
 
 		if(below_turf)
 			listeners += SSmobs.clients_by_zlevel[below_turf.z]
 			listeners += SSmobs.dead_players_by_zlevel[below_turf.z]
+			listeners += SSmobs.camera_players_by_zlevel[below_turf.z]
 
 	listeners += SSmobs.dead_players_by_zlevel[source_z]
+	listeners += SSmobs.camera_players_by_zlevel[source_z]
 	. = list()
 
 	for(var/mob/M as anything in listeners)

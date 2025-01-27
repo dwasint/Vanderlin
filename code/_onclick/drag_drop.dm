@@ -78,8 +78,9 @@
 
 	var/atom/AD = object
 
-	if(mob.used_intent)
-		mob.used_intent.on_mouse_up()
+	if(mob.uses_intents)
+		if(mob.used_intent)
+			mob.used_intent.on_mouse_up()
 
 	if(mob.stat != CONSCIOUS)
 		mob.atkswinging = null
@@ -172,10 +173,11 @@
 		mob.atkswinging = "left"
 		mob.cast_move = 0
 		mob.used_intent = mob.a_intent
-		if(mob.used_intent.get_chargetime() && !AD.blockscharging && !mob.in_throw_mode)
-			updateprogbar()
-		else
-			mouse_pointer_icon = 'icons/effects/mousemice/human_attack.dmi'
+		if(mob.uses_intents)
+			if(mob.used_intent.get_chargetime() && !AD.blockscharging && !mob.in_throw_mode)
+				updateprogbar()
+			else
+				mouse_pointer_icon = 'icons/effects/mousemice/human_attack.dmi'
 		return
 
 /mob

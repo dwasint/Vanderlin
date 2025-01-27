@@ -295,7 +295,8 @@
 /turf/CanPass(atom/movable/mover, turf/target)
 	if(!target)
 		return FALSE
-
+	if(iscameramob(mover))
+		return TRUE
 	if(istype(mover)) // turf/Enter(...) will perform more advanced checks
 		return !density
 
