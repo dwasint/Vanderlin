@@ -12,6 +12,7 @@
 	uses_intents = FALSE
 	lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
 	pass_flags = PASSCLOSEDTURF | PASSMOB | PASSTABLE
+	next_move_modifier = 0
 
 	var/list/worker_mobs = list()
 	var/list/dead_workers = list()
@@ -27,9 +28,11 @@
 	var/list/constructed_building_nodes = list()
 
 	var/atom/movable/screen/controller_ui/controller_ui/displayed_mob_ui
+	var/atom/movable/screen/strategy_ui/controller_ui/displayed_base_ui
 
 /mob/camera/strategy_controller/Initialize()
 	. = ..()
+	displayed_base_ui = new
 	START_PROCESSING(SSstrategy_master, src)
 
 /mob/camera/strategy_controller/proc/add_assignments(list/assignments)
@@ -53,14 +56,19 @@
 	if(isliving(A))
 		var/mob/living/living = A
 		if(living.controller_mind)
+			displayed_base_ui.remove_ui(client)
 			if(displayed_mob_ui)
 				displayed_mob_ui.remove_ui(client)
 			displayed_mob_ui  = living.controller_mind.stats
 			displayed_mob_ui.add_ui(client)
 
 	if(isclosedturf(A))
-		var/datum/queued_workorder/new_queued = new /datum/queued_workorder(/datum/work_order/break_turf, A)
-		in_progress_workorders += new_queued
+		var/turf/turf = A
+		if(turf.break_overlay)
+			SEND_SIGNAL(turf, COMSIG_CANCEL_TURF_BREAK)
+		else
+			var/datum/queued_workorder/new_queued = new /datum/queued_workorder(/datum/work_order/break_turf, src, A)
+			in_progress_workorders += new_queued
 	. = ..()
 
 /mob/camera/strategy_controller/process()
@@ -91,8 +99,11 @@
 				qdel(workorder)
 				return
 
-/mob/camera/Login()
+/mob/camera/strategy_controller/Login()
 	. = ..()
+	displayed_base_ui.add_ui(client)
+	displayed_base_ui.add_ui_buttons(client)
+
 	var/turf/T = get_turf(src)
 	if (isturf(T))
 		update_z(T.z)

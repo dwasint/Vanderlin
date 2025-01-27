@@ -427,3 +427,5 @@
 #define COMSIG_XENO_MONKEY_CLICK_CTRL "xeno_monkey_click_ctrl"				//from monkey CtrlClickOn(): (/mob)
 
 #define COMSIG_PARENT_IMPREGNATE "comsig_mob_impregnate"
+
+#define COMSIG_CANCEL_TURF_BREAK "cancel_turf_break_comsig"

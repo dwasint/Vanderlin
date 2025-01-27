@@ -73,6 +73,9 @@
 		if(!isclosedturf(turf))
 			continue
 		needed_broken_turfs |= turf
+		if(!turf.break_overlay)
+			create_turf_break_overlay(turf)
+
 	return TRUE
 
 /datum/building_datum/proc/try_work_on(mob/living/worker)
