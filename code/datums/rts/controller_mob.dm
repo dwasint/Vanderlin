@@ -138,6 +138,19 @@
 				qdel(workorder)
 				return
 
+/mob/camera/strategy_controller/proc/should_stop_idle(datum/worker_mind/mind)
+	if(length(in_progress_workorders))
+		return TRUE
+	if(length(building_requests))
+		return TRUE
+	if(length(constructed_building_nodes))
+		if(resource_stockpile)
+			for(var/obj/effect/building_node/node in constructed_building_nodes)
+				if(length(node.materials_to_store))
+					return TRUE
+	return FALSE
+
+
 /mob/camera/strategy_controller/Login()
 	. = ..()
 	displayed_base_ui.add_ui(client)

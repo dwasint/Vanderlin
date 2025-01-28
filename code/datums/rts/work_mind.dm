@@ -165,13 +165,6 @@
 	if(assigned_work && !current_task)
 		assigned_work.apply_to_worker(worker)
 		return
-	if(length(master.in_progress_workorders))
+	if(master.should_stop_idle(src))
 		return
-	if(length(master.building_requests))
-		return
-	if(length(master.constructed_building_nodes))
-		if(master.resource_stockpile)
-			for(var/obj/effect/building_node/node in master.constructed_building_nodes)
-				if(length(node.materials_to_store))
-					return
 	start_idle()
