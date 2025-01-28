@@ -8,6 +8,10 @@
 	if(!nomouseover && name && ismob(usr))
 		handle_mouseover(location, control, params)
 
+/turf/MouseEntered(location, control, params)
+	. = ..()
+	SEND_SIGNAL(usr, COMSIG_MOUSE_ENTERED, src)
+
 /atom/MouseExited(params)
 	. = ..()
 	if(!nomouseover && ismob(usr))

@@ -11,6 +11,8 @@
 
 	var/maximum_workers = 1
 
+	var/list/materials_to_store = list()
+
 /obj/effect/building_node/proc/on_construction(mob/camera/strategy_controller/master_controller)
 	SHOULD_CALL_PARENT(TRUE)
 	master_controller.constructed_building_nodes |= src
@@ -72,3 +74,11 @@
 	if(!master_controller.resource_stockpile)
 		master_controller.resource_stockpile = new /datum/stockpile
 	stockpile = master_controller.resource_stockpile
+
+/obj/effect/building_node/farm
+	name = "Farm"
+	work_template = "farm"
+
+	materials_to_store = list(
+		"Grain" = 10
+	)

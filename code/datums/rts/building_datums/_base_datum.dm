@@ -1,10 +1,26 @@
+/obj/effect/building_outline
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/obj/effect/conflicting_area
+	name = ""
+	icon = 'icons/effects/alphacolors.dmi'
+	icon_state = "red"
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	plane = ABOVE_LIGHTING_PLANE
+
+/obj/effect/conflicting_area/Initialize()
+	. = ..()
+	QDEL_IN(src, 5 SECONDS)
+
+GLOBAL_LIST_INIT(cached_building_images, list())
+
 /datum/building_datum
 	var/mob/camera/strategy_controller/master
 	var/name = "Generic Name"
 	var/desc = "Generic Desc"
 	///this is our template id
 	var/building_template
-	var/mutable_appearance/generated_MA
+	var/obj/effect/building_outline/generated_MA
 	var/list/resource_cost = list(
 		"Stone" = 0,
 		"Wood" = 0,
@@ -30,25 +46,32 @@
 
 /datum/building_datum/New(mob/camera/strategy_controller/created, turf/turf)
 	. = ..()
-	generate_preview()
 	if(turf)
 		if(!try_place_building(created, turf))
 			return INITIALIZE_HINT_QDEL
+	if(created)
 		master = created
 		master.building_requests |= src
+		generate_preview()
 
 /datum/building_datum/proc/generate_preview()
-	var/datum/map_template/template = SSmapping.map_templates[building_template]
-	generated_MA = mutable_appearance()
-	var/turf/T = get_turf(usr)
-	for(var/turf/place_on as anything in template.get_affected_turfs(T,centered = TRUE))
-		var/offset_x = T.x - place_on.x
-		var/offset_y = T.y - place_on.y
+	if(!(type in GLOB.cached_building_images))
+		var/datum/map_template/template = SSmapping.map_templates[building_template]
+		var/turf/T = get_turf(master)
+		var/obj/effect/building_outline/cached = template.load_as_building(T, TRUE)
 
-		var/mutable_appearance/placement_node = mutable_appearance('icons/effects/alphacolors.dmi', "red")
-		placement_node.pixel_x = offset_x * 32
-		placement_node.pixel_y = offset_y * 32
-		generated_MA.add_overlay(placement_node)
+		cached.alpha = 190
+		cached.color = COLOR_CYAN
+
+		generated_MA = new
+		generated_MA.appearance = cached.appearance
+		GLOB.cached_building_images |= type
+		GLOB.cached_building_images[type] = cached
+
+	else
+		generated_MA = new
+		var/obj/effect/building_outline/cached = GLOB.cached_building_images[type]
+		generated_MA.appearance = cached.appearance
 
 /datum/building_datum/proc/try_place_building(mob/camera/strategy_controller/user, turf/placed_turf)
 	var/has_cost = FALSE
@@ -68,6 +91,26 @@
 
 	var/datum/map_template/template = SSmapping.map_templates[building_template]
 	var/list/turfs = template.get_affected_turfs(placed_turf,centered = TRUE)
+
+	var/list/failed_locations = list()
+	for(var/turf/turf in turfs)
+		if(istype(turf, /turf/closed/mineral/rogue/bedrock))
+			failed_locations |= turf
+			continue
+
+		for(var/obj/structure/structure in turf.contents)
+			failed_locations |= turf
+			continue
+		for(var/obj/machinery/structure in turf.contents)
+			failed_locations |= turf
+			continue
+
+	if(length(failed_locations))
+		for(var/turf/turf in failed_locations)
+			new /obj/effect/conflicting_area(turf)
+
+		return FALSE
+
 	center_turf = placed_turf
 	for(var/turf/turf in turfs)
 		if(!isclosedturf(turf))
@@ -93,7 +136,7 @@
 		return FALSE
 
 	current_workers++
-	worker.controller_mind.set_current_task(/datum/work_order/construct_building, src)
+	worker.controller_mind.set_current_task(/datum/work_order/construct_building, src, center_turf)
 	return TRUE
 
 /datum/building_datum/proc/construct_building()
@@ -105,13 +148,25 @@
 	template.load(center_turf, TRUE)
 
 	for(var/turf/place_on as anything in template.get_affected_turfs(center_turf ,centered = TRUE))
-		for(var/obj/effect/effect in place_on.contents)
-			if(!istype(effect, building_node_path))
-				continue
+		for(var/obj/effect/building_node/effect in place_on.contents)
 			var/obj/effect/building_node/node = effect
 			node.on_construction(master)
 
 	after_construction()
+	master.building_requests -= src
 
 /datum/building_datum/proc/after_construction()
 	return
+
+/datum/building_datum/proc/setup_building_ghost()
+	RegisterSignal(master, COMSIG_MOUSE_ENTERED, PROC_REF(move_effect))
+	generated_MA.forceMove(get_turf(master))
+	master.held_build = src
+
+/datum/building_datum/proc/move_effect(mob/source, turf/new_turf)
+	generated_MA.forceMove(new_turf)
+
+/datum/building_datum/proc/clean_up(mob/source, turf/new_turf)
+	UnregisterSignal(master, COMSIG_MOUSE_ENTERED)
+	generated_MA.moveToNullspace()
+	master.held_build = null

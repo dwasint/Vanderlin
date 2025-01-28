@@ -32,6 +32,9 @@
 
 	var/atom/movable/screen/controller_ui/controller_ui/stats
 
+	var/list/current_path = list()
+	var/next_recalc = 0
+
 /datum/worker_mind/New(mob/living/new_worker, mob/camera/strategy_controller/new_master)
 	. = ..()
 	idle = new /datum/idle_tendancies/basic
@@ -50,7 +53,21 @@
 	START_PROCESSING(SSstrategy_master, src)
 
 /datum/worker_mind/proc/head_to_target()
-	walk_to(worker, movement_target, 1, walkspeed)
+	if(next_recalc < world.time)
+		current_path = get_path_to(worker, get_turf(movement_target), /turf/proc/Distance, 32 + 1, 250,1)
+		next_recalc = world.time + 2 SECONDS
+	if(!length(current_path) && !worker.CanReach(movement_target))
+		current_path = get_path_to(worker, get_turf(movement_target), /turf/proc/Distance, 32 + 1, 250,1)
+		if(!length(current_path))
+			current_task.stop_work()
+	if(length(current_path) >= 3)
+		walk_to(worker, current_path[3],0,5)
+		current_path -= current_path[3]
+		current_path -= current_path[2]
+		current_path -= current_path[1]
+	else
+		walk_to(worker, current_path[length(current_path)],0,5)
+		current_path = list()
 
 /datum/worker_mind/proc/start_task()
 	current_task.start_working(worker)
@@ -71,6 +88,13 @@
 		return
 	if(length(master.building_requests))
 		return
+
+	if(length(master.constructed_building_nodes))
+		if(master.resource_stockpile)
+			for(var/obj/effect/building_node/node in master.constructed_building_nodes)
+				if(length(node.materials_to_store))
+					return
+
 	start_idle()
 
 /datum/worker_mind/proc/start_idle()

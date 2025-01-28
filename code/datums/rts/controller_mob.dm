@@ -30,6 +30,8 @@
 	var/atom/movable/screen/controller_ui/controller_ui/displayed_mob_ui
 	var/atom/movable/screen/strategy_ui/controller_ui/displayed_base_ui
 
+	var/datum/building_datum/held_build
+
 /mob/camera/strategy_controller/Initialize()
 	. = ..()
 	displayed_base_ui = new
@@ -49,11 +51,28 @@
 	var/mob/living/simple_animal/hostile/retaliate/rogue/bigrat/new_rat = new(new_turf)
 	new_rat.controller_mind = new(new_rat, src)
 
+
+/mob/camera/strategy_controller/proc/test_try_placement()
+	var/datum/building_datum/stockpile/pile = new /datum/building_datum/stockpile(src)
+	pile.setup_building_ghost()
+
+/mob/camera/strategy_controller/proc/test_try_placement_farm()
+	var/datum/building_datum/stockpile/pile = new /datum/building_datum/farm(src)
+	pile.setup_building_ghost()
+
+
 /mob/camera/strategy_controller/proc/queue_building_build(datum/building_datum/building, turf/source_turf)
 	new building(src, source_turf)
 
 /mob/camera/strategy_controller/RightClickOn(atom/A, params)
-	if(isliving(A))
+	if(held_build)
+		if(held_build.try_place_building(src, get_turf(A)))
+			held_build.clean_up()
+		else
+			building_requests -= held_build
+			held_build.clean_up()
+
+	else if(isliving(A))
 		var/mob/living/living = A
 		if(living.controller_mind)
 			displayed_base_ui.remove_ui(client)
@@ -62,7 +81,7 @@
 			displayed_mob_ui  = living.controller_mind.stats
 			displayed_mob_ui.add_ui(client)
 
-	if(isclosedturf(A))
+	else if(isclosedturf(A))
 		var/turf/turf = A
 		if(turf.break_overlay)
 			SEND_SIGNAL(turf, COMSIG_CANCEL_TURF_BREAK)
@@ -82,6 +101,15 @@
 			for(var/datum/building_datum/building in building_requests)
 				if(building.try_work_on(mob))
 					return
+
+	if(length(constructed_building_nodes))
+		if(resource_stockpile)
+			for(var/obj/effect/building_node/node in constructed_building_nodes)
+				if(length(node.materials_to_store))
+					for(var/mob/living/mob in worker_mobs)
+						if(mob.controller_mind.current_task)
+							continue
+						mob.controller_mind.set_current_task(/datum/work_order/store_materials, node, src)
 
 	if(length(in_progress_workorders))
 		for(var/mob/living/mob in worker_mobs)

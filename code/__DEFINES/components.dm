@@ -429,3 +429,4 @@
 #define COMSIG_PARENT_IMPREGNATE "comsig_mob_impregnate"
 
 #define COMSIG_CANCEL_TURF_BREAK "cancel_turf_break_comsig"
+#define COMSIG_MOUSE_ENTERED "comsig_mouse_entered"
