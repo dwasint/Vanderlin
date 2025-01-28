@@ -1,6 +1,7 @@
 /obj/effect/building_node
 	name = "Building Node"
 	desc = "A generic building"
+	plane = STRATEGY_PLANE
 
 	///this is our template id
 	var/work_template
@@ -12,6 +13,8 @@
 	var/maximum_workers = 1
 
 	var/list/materials_to_store = list()
+
+	var/list/persistant_nodes = list()
 
 /obj/effect/building_node/proc/on_construction(mob/camera/strategy_controller/master_controller)
 	SHOULD_CALL_PARENT(TRUE)
@@ -27,8 +30,30 @@
 			workspots |= spot
 	after_construction(turfs)
 
+	var/list/created_nodes = list()
+	for(var/datum/persistant_workorder/node as anything in persistant_nodes)
+		created_nodes |= new node(src)
+	persistant_nodes = created_nodes
+
 /obj/effect/building_node/proc/after_construction(list/turfs)
 	return
+
+/obj/effect/building_node/proc/select_workorder(mob/user)
+	if(!length(persistant_nodes))
+		return
+	var/list/name_to_node = list()
+	var/list/radial_options = list()
+	for(var/datum/persistant_workorder/order in persistant_nodes)
+		radial_options |= order.name
+		radial_options[order.name] = image(order.ui_icon, order.ui_icon_state)
+		name_to_node |= order.name
+		name_to_node[order.name] = order
+
+	var/picked = show_radial_menu(user, src, radial_options)
+	if(!picked)
+		return
+
+	return name_to_node[picked]
 
 /datum/food_item
 	var/name = "Bread"
@@ -79,6 +104,15 @@
 	name = "Farm"
 	work_template = "farm"
 
+	icon = 'icons/roguetown/items/produce.dmi'
+	icon_state = "wheatchaff"
+
 	materials_to_store = list(
 		"Grain" = 10
+	)
+
+	persistant_nodes = list(
+		/datum/persistant_workorder/farm/grain,
+		/datum/persistant_workorder/farm/fruit,
+		/datum/persistant_workorder/farm/vegetable,
 	)

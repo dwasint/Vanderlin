@@ -31,7 +31,7 @@
 #define GAME_PLANE_FOV_HIDDEN -5
 #define GAME_PLANE_UPPER -4
 #define WEATHER_EFFECT_PLANE -3
-#define REFLECTION_PLANE_ABOVE -2
+#define STRATEGY_PLANE -2
 #define PLANE_LEYLINES -1
 #define BLACKNESS_PLANE 0 //To keep from conflicts with SEE_BLACKNESS internals
 

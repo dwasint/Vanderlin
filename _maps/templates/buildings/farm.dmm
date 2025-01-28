@@ -7,11 +7,6 @@
 /obj/structure/irrigation_channel,
 /turf/open/floor/rogue/cobblerock,
 /area/template_noop)
-"d" = (
-/obj/structure/soil,
-/obj/effect/workspot,
-/turf/open/floor/rogue/dirt,
-/area/template_noop)
 "n" = (
 /obj/structure/closet/crate/chest/wicker{
 	pixel_y = -1;
@@ -22,9 +17,13 @@
 	},
 /obj/structure/closet/crate/chest/wicker{
 	pixel_x = -20;
-	pixel_y = 12
+	pixel_y = 12;
+	layer = 2.91
 	},
 /turf/open/floor/rogue/dirt,
+/area/template_noop)
+"p" = (
+/turf/closed/mineral/rogue/bedrock,
 /area/template_noop)
 "r" = (
 /obj/structure/irrigation_channel,
@@ -42,15 +41,16 @@
 /obj/machinery/light/rogue/firebowl/stump,
 /turf/open/floor/rogue/cobblerock,
 /area/template_noop)
+"z" = (
+/obj/effect/building_node/farm,
+/turf/open/floor/rogue/dirt,
+/area/template_noop)
 "D" = (
 /turf/open/floor/rogue/dirt,
 /area/template_noop)
 "F" = (
 /obj/machinery/light/rogue/firebowl/stump,
 /turf/open/floor/rogue/dirt,
-/area/template_noop)
-"L" = (
-/turf/closed/mineral/rogue/bedrock,
 /area/template_noop)
 "M" = (
 /obj/structure/soil,
@@ -62,8 +62,9 @@
 "Q" = (
 /turf/open/water,
 /area/template_noop)
-"X" = (
-/obj/effect/building_node/farm,
+"W" = (
+/obj/structure/soil,
+/obj/effect/workspot,
 /turf/open/floor/rogue/dirt,
 /area/template_noop)
 "Z" = (
@@ -89,7 +90,7 @@ Z
 P
 "}
 (3,1,1) = {"
-L
+p
 r
 a
 M
@@ -98,19 +99,19 @@ D
 P
 "}
 (4,1,1) = {"
-L
+p
 v
 F
 M
 r
-X
+z
 n
 "}
 (5,1,1) = {"
-L
+p
 b
 a
-d
+W
 r
 D
 D
@@ -140,7 +141,7 @@ M
 a
 r
 Z
-L
+p
 "}
 (9,1,1) = {"
 F
@@ -149,5 +150,5 @@ Z
 D
 D
 D
-L
+p
 "}

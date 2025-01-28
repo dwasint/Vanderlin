@@ -35,6 +35,8 @@
 	var/list/current_path = list()
 	var/next_recalc = 0
 
+	var/datum/persistant_workorder/assigned_work
+
 /datum/worker_mind/New(mob/living/new_worker, mob/camera/strategy_controller/new_master)
 	. = ..()
 	idle = new /datum/idle_tendancies/basic
@@ -73,29 +75,7 @@
 	current_task.start_working(worker)
 
 /datum/worker_mind/process()
-	if(paused)
-		return
-	if(current_stamina <= 0)
-		try_restore_stamina()
-		return
-	if(movement_target && (!worker.CanReach(movement_target)))
-		head_to_target()
-		return
-	if(current_task)
-		start_task()
-		return
-	if(length(master.in_progress_workorders))
-		return
-	if(length(master.building_requests))
-		return
-
-	if(length(master.constructed_building_nodes))
-		if(master.resource_stockpile)
-			for(var/obj/effect/building_node/node in master.constructed_building_nodes)
-				if(length(node.materials_to_store))
-					return
-
-	start_idle()
+	check_worktree()
 
 /datum/worker_mind/proc/start_idle()
 	idle.perform_idle(master, worker)
@@ -169,3 +149,29 @@
 
 /datum/worker_mind/proc/update_stat_panel()
 	stats.update_text()
+
+/datum/worker_mind/proc/check_worktree()
+	if(paused)
+		return
+	if(current_stamina <= 0)
+		try_restore_stamina()
+		return
+	if(movement_target && (!worker.CanReach(movement_target)))
+		head_to_target()
+		return
+	if(current_task)
+		start_task()
+		return
+	if(assigned_work && !current_task)
+		assigned_work.apply_to_worker(worker)
+		return
+	if(length(master.in_progress_workorders))
+		return
+	if(length(master.building_requests))
+		return
+	if(length(master.constructed_building_nodes))
+		if(master.resource_stockpile)
+			for(var/obj/effect/building_node/node in master.constructed_building_nodes)
+				if(length(node.materials_to_store))
+					return
+	start_idle()

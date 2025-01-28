@@ -72,6 +72,17 @@
 			building_requests -= held_build
 			held_build.clean_up()
 
+	else if (istype(A, /obj/effect/building_node) && displayed_mob_ui)
+		var/mob/living/worker_mob = displayed_mob_ui.worker_mob
+
+		var/datum/persistant_workorder/old_workorder = worker_mob.controller_mind.assigned_work
+		var/datum/persistant_workorder/chosen_workorder = A:select_workorder(src)
+		if(chosen_workorder)
+			worker_mob.controller_mind.assigned_work = chosen_workorder
+			if(worker_mob.controller_mind.current_task && (old_workorder != chosen_workorder))
+				worker_mob.controller_mind.current_task.stop_work()
+			worker_mob.controller_mind.assigned_work.apply_to_worker(worker_mob)
+
 	else if(isliving(A))
 		var/mob/living/living = A
 		if(living.controller_mind)

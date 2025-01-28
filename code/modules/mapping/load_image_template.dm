@@ -136,8 +136,6 @@
 //Instance an atom at (x,y,z) and gives it the variables in attributes
 /datum/parsed_map/proc/instance_atom_image(atom/path,list/attributes, turf/crds, no_changeturf, placeOnTop)
 	world.preloader_setup(attributes, path)
-	for(var/attribute in attributes)
-		message_admins(attribute)
 
 	if(ispath(path, /turf))
 		if(placeOnTop)
