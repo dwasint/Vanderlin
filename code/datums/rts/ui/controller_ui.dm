@@ -114,7 +114,7 @@
 	task.maptext = worker_mind.current_task ? {"<center><span style='font-size:8pt;font-family:"Pterra"'>[worker_mind.current_task.name]</span></center>"} : {"<center><span style='font-size:8pt;font-family:"Pterra"'>Idle</span></center>"}
 
 /atom/movable/screen/controller_ui/controller_ui/proc/update_name_text()
-	name_box.maptext = {"<center><span style='font-family: "Blackmoor LET", "Pterra";font-size: 200%;text-shadow: 1px 1px 2px black, 0 0 1em black, 0 0 0.2em black;'>[worker_mob.real_name]</span></center>"}
+	name_box.maptext = {"<center><span style='font-family: "Blackmoor LET", "Pterra";font-size: 200%;text-shadow: 1px 1px 2px black, 0 0 1em black, 0 0 0.2em black;'>[worker_mind.worker_name]</span></center>"}
 
 /atom/movable/screen/controller_ui/controller_ui/proc/update_stat_text()
 	stat.maptext = {"<span style='font-size:8pt;font-family:"Pterra"'>Stamina: [worker_mind.current_stamina] \nWorkspeed: [worker_mind.work_speed]</span>"}

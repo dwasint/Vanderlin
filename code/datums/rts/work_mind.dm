@@ -12,6 +12,7 @@
 /datum/worker_mind
 	var/mob/camera/strategy_controller/master
 	var/mob/living/worker
+	var/worker_name
 	///10 is default so 20 is double etc
 	var/work_speed = 10
 	///our worker walk speed
@@ -46,7 +47,8 @@
 	worker.pass_flags |= PASSMOB
 	worker.density = FALSE
 
-	worker.real_name = "[pick( world.file2list("strings/rt/names/dwarf/dwarmm.txt") )] the [worker.real_name]"
+	worker_name = pick( world.file2list("strings/rt/names/dwarf/dwarmm.txt") )
+	worker.real_name = "[worker_name] the [worker.real_name]"
 	worker.name = worker.real_name
 
 	master.add_new_worker(worker)
@@ -153,14 +155,14 @@
 /datum/worker_mind/proc/check_worktree()
 	if(paused)
 		return
-	if(current_stamina <= 0)
-		try_restore_stamina()
-		return
 	if(movement_target && (!worker.CanReach(movement_target)))
 		head_to_target()
 		return
 	if(current_task)
 		start_task()
+		return
+	if(current_stamina <= 0)
+		try_restore_stamina()
 		return
 	if(assigned_work && !current_task)
 		assigned_work.apply_to_worker(worker)

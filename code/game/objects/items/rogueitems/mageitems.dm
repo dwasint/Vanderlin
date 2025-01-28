@@ -459,7 +459,7 @@
 
 /obj/item/natural/leyline
 	name = "leyline shards"
-	icon = 'icons/obj/shards.dmi'
+	icon = 'icons/roguetown/items/natural.dmi'
 	icon_state = "leyline"
 	desc = "Volcanic glass cooled from molten lava rapidly."
 	resistance_flags = FLAMMABLE
@@ -467,22 +467,29 @@
 
 /obj/item/natural/manabloom
 	name = "mana bloom"
-	icon_state = "wessence"
+	icon_state = "manabloom"
 	desc = "Volcanic glass cooled from molten lava rapidly."
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/natural/artifact
 	name = "runed artifact"
-	icon_state = "wessence"
+	icon_state = "runedartifact"
 	desc = "Volcanic glass cooled from molten lava rapidly."
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/natural/manacrystal
 	name = "crytalized mana"
-	icon_state = "wessence"
+	icon_state = "manacrystal"
 	desc = "Volcanic glass cooled from molten lava rapidly."
+	resistance_flags = FLAMMABLE
+	w_class = WEIGHT_CLASS_SMALL
+
+/obj/item/natural/voidstone
+	name = "Voidstone"
+	icon_state = "wessence"
+	desc = "A piece of blackstone, it feels off to stare at it for long."
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
 

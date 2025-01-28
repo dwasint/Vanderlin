@@ -14,28 +14,27 @@
 	turns_per_move = 3
 	see_in_dark = 6
 	move_to_delay = 3
-	base_intents = list(/datum/intent/simple/bite)
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 2,
-						/obj/item/natural/hide = 2,
-						/obj/item/natural/fur = 1)
-	faction = list("wolfs")
+	base_intents = list(/datum/intent/unarmed/claw)
+	butcher_results = list()
+	faction = list("infernal")
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	health = 70
-	maxHealth = 170
+	maxHealth = 70
 	melee_damage_lower = 15
 	melee_damage_upper = 17
 	vision_range = 7
 	aggro_vision_range = 9
 	environment_smash = ENVIRONMENT_SMASH_NONE
 	simple_detect_bonus = 20
-	retreat_distance = 0
-	minimum_distance = 0
-	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat, /obj/item/organ)
+	projectiletype = /obj/projectile/magic/firebolt
+	retreat_distance = 4
+	minimum_distance = 3
+	food_type = list()
 	footstep_type = FOOTSTEP_MOB_BAREFOOT
 	pooptype = null
 	STACON = 7
-	STASTR = 7
-	STASPD = 13
+	STASTR = 6
+	STASPD = 12
 	simple_detect_bonus = 20
 	deaggroprob = 0
 	defprob = 40
@@ -43,11 +42,17 @@
 	del_on_deaggro = 44 SECONDS
 	retreat_health = 0.3
 	food = 0
-	attack_sound = list('sound/vo/mobs/vw/attack (1).ogg','sound/vo/mobs/vw/attack (2).ogg','sound/vo/mobs/vw/attack (3).ogg','sound/vo/mobs/vw/attack (4).ogg')
+	attack_sound = list()
 	dodgetime = 30
 	aggressive = 1
 //	stat_attack = UNCONSCIOUS
 	remains_type = /obj/effect/decal/remains/wolf
+
+	///this mob was updated to new ai
+	AIStatus = AI_OFF
+	can_have_ai = FALSE
+	ai_controller = /datum/ai_controller/imp
+
 
 /mob/living/simple_animal/hostile/retaliate/rogue/infernal/imp/Initialize()
 	. = ..()
@@ -59,35 +64,24 @@
 	new /obj/item/natural/infernalash(deathspot)
 	new /obj/item/natural/infernalash(deathspot)
 	update_icon()
+	sleep(1)
+	qdel(src)
 
-/* Eyes that glow in the dark. They float over kybraxor pits at the moment.
-/mob/living/simple_animal/hostile/retaliate/rogue/wolf/update_icon()
-	cut_overlays()
-	..()
-	if(stat != DEAD)
-		var/mutable_appearance/eye_lights = mutable_appearance(icon, "vve")
-		eye_lights.plane = 19
-		eye_lights.layer = 19
-		add_overlay(eye_lights)*/
 
-/mob/living/simple_animal/hostile/retaliate/rogue/wolf/taunted(mob/user)
+/mob/living/simple_animal/hostile/retaliate/rogue/infernal/imp/taunted(mob/user)
 	emote("aggro")
 	Retaliate()
 	GiveTarget(user)
 	return
 
-/mob/living/simple_animal/hostile/retaliate/rogue/wolf/Life()
+/mob/living/simple_animal/hostile/retaliate/rogue/infernal/imp/Life()
 	..()
 	if(pulledby)
 		Retaliate()
 		GiveTarget(pulledby)
 
-/mob/living/simple_animal/hostile/retaliate/rogue/wolf/find_food()
-	. = ..()
-	if(!.)
-		return eat_bodies()
 
-/mob/living/simple_animal/hostile/retaliate/rogue/wolf/simple_limb_hit(zone)
+/mob/living/simple_animal/hostile/retaliate/rogue/infernal/imp/simple_limb_hit(zone)
 	if(!zone)
 		return ""
 	switch(zone)
@@ -128,3 +122,78 @@
 		if(BODY_ZONE_L_ARM)
 			return "foreleg"
 	return ..()
+
+/mob/living/simple_animal/hostile/retaliate/rogue/infernal/hellhound
+	icon = 'icons/mob/summonable/32x32.dmi'
+	name = "hell hound"
+	icon_state = "hellhound"
+	icon_living = "hellhound"
+	icon_dead = "vvd"
+	gender = MALE
+	emote_hear = null
+	emote_see = null
+	speak_chance = 1
+	turns_per_move = 3
+	see_in_dark = 6
+	move_to_delay = 3
+	base_intents = list(/datum/intent/simple/bite)
+	butcher_results = list()
+	faction = list("infernal")
+	mob_biotypes = MOB_ORGANIC|MOB_BEAST
+	health = 170
+	maxHealth = 170
+	melee_damage_lower = 15
+	melee_damage_upper = 17
+	vision_range = 7
+	aggro_vision_range = 9
+	environment_smash = ENVIRONMENT_SMASH_NONE
+	simple_detect_bonus = 20
+	retreat_distance = 0
+	minimum_distance = 0
+	food_type = list()
+	footstep_type = FOOTSTEP_MOB_BAREFOOT
+	pooptype = null
+	STACON = 7
+	STASTR = 9
+	STASPD = 13
+	simple_detect_bonus = 20
+	deaggroprob = 0
+	defprob = 40
+	defdrain = 10
+	del_on_deaggro = 44 SECONDS
+	retreat_health = 0.3
+	food = 0
+	attack_sound = list('sound/vo/mobs/vw/attack (1).ogg','sound/vo/mobs/vw/attack (2).ogg','sound/vo/mobs/vw/attack (3).ogg','sound/vo/mobs/vw/attack (4).ogg')
+	dodgetime = 30
+	aggressive = 1
+//	stat_attack = UNCONSCIOUS
+
+/mob/living/simple_animal/hostile/retaliate/rogue/infernal/hellhound/Initialize()
+	. = ..()
+
+/mob/living/simple_animal/hostile/retaliate/rogue/infernal/hellhound/death(gibbed)
+	..()
+	var/turf/deathspot = get_turf(src)
+	new /obj/item/natural/hellhoundfang(deathspot)
+	new /obj/item/natural/hellhoundfang(deathspot)
+	update_icon()
+
+
+/obj/projectile/magic/firebolt
+	name = "ball of fire"
+	icon_state = "fireball"
+	damage = 20
+	damage_type = BURN
+	nodamage = FALSE
+	armor_penetration = 0
+	flag = "magic"
+	hitsound = 'sound/blank.ogg'
+
+/obj/projectile/magic/firebolt/on_hit(target)
+	if(ismob(target))
+		var/mob/M = target
+		if(M.anti_magic_check())
+			M.visible_message(span_warning("[src] vanishes on contact with [target]!"))
+			qdel(src)
+			return BULLET_ACT_BLOCK
+	. = ..()

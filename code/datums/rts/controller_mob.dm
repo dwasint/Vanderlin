@@ -48,7 +48,7 @@
 
 /mob/camera/strategy_controller/proc/create_testing_controlled_mob()
 	var/turf/new_turf = get_turf(src)
-	var/mob/living/simple_animal/hostile/retaliate/rogue/bigrat/new_rat = new(new_turf)
+	var/mob/living/simple_animal/hostile/retaliate/rogue/leylinelycan/new_rat = new(new_turf)
 	new_rat.controller_mind = new(new_rat, src)
 
 
