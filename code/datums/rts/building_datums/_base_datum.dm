@@ -169,7 +169,6 @@ GLOBAL_LIST_INIT(cached_building_images, list())
 
 /datum/building_datum/proc/setup_building_ghost()
 	RegisterSignal(master, COMSIG_MOUSE_ENTERED, PROC_REF(move_effect))
-	generated_MA.forceMove(get_turf(master))
 	master.held_build = src
 
 /datum/building_datum/proc/move_effect(mob/source, turf/new_turf)
