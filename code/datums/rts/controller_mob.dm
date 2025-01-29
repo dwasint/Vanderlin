@@ -33,6 +33,8 @@
 
 	var/datum/building_datum/held_build
 
+	var/worker_type = /mob/living/simple_animal/hostile/retaliate/rogue/leylinelycan
+
 /mob/camera/strategy_controller/Initialize()
 	. = ..()
 	displayed_base_ui = new
@@ -56,18 +58,10 @@
 	var/mob/living/simple_animal/hostile/retaliate/rogue/leylinelycan/new_rat = new(new_turf)
 	new_rat.controller_mind = new(new_rat, src)
 
-
-/mob/camera/strategy_controller/proc/test_try_placement()
-	var/datum/building_datum/stockpile/pile = new /datum/building_datum/stockpile(src)
-	pile.setup_building_ghost()
-
-/mob/camera/strategy_controller/proc/test_try_placement_farm()
-	var/datum/building_datum/stockpile/pile = new /datum/building_datum/farm(src)
-	pile.setup_building_ghost()
-
-/mob/camera/strategy_controller/proc/test_try_placement_spike()
-	var/datum/building_datum/simple/spike/pile = new /datum/building_datum/simple/spike(src)
-	pile.setup_building_ghost()
+/mob/camera/strategy_controller/proc/create_new_worker_mob(atom/spawn_loc)
+	var/turf/turf = get_turf(spawn_loc)
+	var/mob/living/new_mob = new worker_type(turf)
+	new_mob.controller_mind = new(new_mob, src)
 
 /mob/camera/strategy_controller/proc/try_setup_build(datum/building_datum/building)
 	var/datum/building_datum/build = new building(src)
@@ -96,14 +90,14 @@
 /mob/camera/strategy_controller/RightClickOn(atom/A, params)
 	if (istype(A, /obj/effect/building_node) && displayed_mob_ui)
 		var/mob/living/worker_mob = displayed_mob_ui.worker_mob
-
-		var/datum/persistant_workorder/old_workorder = worker_mob.controller_mind.assigned_work
-		var/datum/persistant_workorder/chosen_workorder = A:select_workorder(src)
-		if(chosen_workorder)
-			worker_mob.controller_mind.assigned_work = chosen_workorder
-			if(worker_mob.controller_mind.current_task && (old_workorder != chosen_workorder))
-				worker_mob.controller_mind.current_task.stop_work()
-			worker_mob.controller_mind.assigned_work.apply_to_worker(worker_mob)
+		if(!A:override_click(src))
+			var/datum/persistant_workorder/old_workorder = worker_mob.controller_mind.assigned_work
+			var/datum/persistant_workorder/chosen_workorder = A:select_workorder(src)
+			if(chosen_workorder)
+				worker_mob.controller_mind.assigned_work = chosen_workorder
+				if(worker_mob.controller_mind.current_task && (old_workorder != chosen_workorder))
+					worker_mob.controller_mind.current_task.stop_work()
+				worker_mob.controller_mind.assigned_work.apply_to_worker(worker_mob)
 
 	else if(isliving(A))
 		var/mob/living/living = A
@@ -145,6 +139,12 @@
 						if(mob.controller_mind.current_task)
 							continue
 						mob.controller_mind.set_current_task(/datum/work_order/store_materials, node, src)
+
+				if(length(node.material_requests))
+					for(var/mob/living/mob in worker_mobs)
+						if(mob.controller_mind.current_task)
+							continue
+						mob.controller_mind.set_current_task(/datum/work_order/haul_materials, node, src)
 
 	if(length(in_progress_workorders))
 		for(var/mob/living/mob in worker_mobs)

@@ -1,5 +1,5 @@
 /datum/work_order/wander_to_building
-	name = "Wandering to"
+	name = "Wandering to "
 	stamina_cost = 0
 	work_time_left = 0
 

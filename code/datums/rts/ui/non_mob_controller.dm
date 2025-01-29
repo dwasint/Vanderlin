@@ -103,16 +103,26 @@
 /atom/movable/screen/strategy_ui/controller_button
 	icon_state = "button_1"
 
+	var/list/buildings
+
+
 /atom/movable/screen/strategy_ui/controller_button/one
 	icon_state = "button_1"
 
 /atom/movable/screen/strategy_ui/controller_button/two
 	icon_state = "button_2"
 
+	buildings = list(
+		/datum/building_datum/farm,
+		/datum/building_datum/kitchen,
+		/datum/building_datum/stockpile,
+		/datum/building_datum/spawning_grounds,
+	)
+
 /atom/movable/screen/strategy_ui/controller_button/three
 	icon_state = "button_3"
 
-	var/list/buildings = list(
+	buildings = list(
 		/datum/building_datum/simple/flame,
 		/datum/building_datum/simple/poison,
 		/datum/building_datum/simple/chill,
@@ -123,8 +133,8 @@
 		/datum/building_datum/simple/spike,
 	)
 
-/atom/movable/screen/strategy_ui/controller_button/three/Click(location, control, params)
+/atom/movable/screen/strategy_ui/controller_button/Click(location, control, params)
 	. = ..()
-
-	var/mob/camera/strategy_controller/controller = usr
-	controller.building_icon.open_ui(controller, buildings)
+	if(length(buildings))
+		var/mob/camera/strategy_controller/controller = usr
+		controller.building_icon.open_ui(controller, buildings)

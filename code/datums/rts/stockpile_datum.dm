@@ -6,7 +6,7 @@
 		MAT_ORE = 0,
 		MAT_INGOT = 0,
 		MAT_COAL = 0,
-		MAT_GRAIN = 0,
+		MAT_GRAIN = 5,
 		MAT_MEAT = 0,
 		MAT_VEG = 0,
 		MAT_FRUIT = 0,

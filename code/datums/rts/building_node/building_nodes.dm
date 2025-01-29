@@ -14,7 +14,11 @@
 
 	var/list/materials_to_store = list()
 
+	var/list/material_requests = list()
+
 	var/list/persistant_nodes = list()
+
+	var/list/work_materials = list()
 
 /obj/effect/building_node/proc/on_construction(mob/camera/strategy_controller/master_controller)
 	SHOULD_CALL_PARENT(TRUE)
@@ -38,6 +42,29 @@
 /obj/effect/building_node/proc/after_construction(list/turfs)
 	return
 
+/obj/effect/building_node/proc/add_material_request(location, list/resource_amount, multiplier = 1)
+	if(location in material_requests)
+		return
+	material_requests |= location
+
+	for(var/resource in resource_amount)
+		resource_amount[resource] *= multiplier
+	material_requests[location] = resource_amount
+
+/obj/effect/building_node/proc/use_work_materials(list/used_materials)
+	if(!length(work_materials))
+		return FALSE
+
+	for(var/material in used_materials)
+		if(!(material in work_materials))
+			return FALSE
+		if(work_materials[material] < used_materials[material])
+			return FALSE
+
+	for(var/material in used_materials)
+		work_materials[material] -= used_materials[material]
+	return TRUE
+
 /obj/effect/building_node/proc/select_workorder(mob/user)
 	if(!length(persistant_nodes))
 		return
@@ -55,39 +82,6 @@
 
 	return name_to_node[picked]
 
-/datum/food_item
-	var/name = "Bread"
-	var/stamina_restore = 50
-
-/datum/food_item/bread
-	name = "Bread"
-	stamina_restore = 50
-
-/obj/effect/building_node/kitchen
-	name = "Kitchen"
-
-	var/list/stored_foods
-
-	var/list/eating_spots
-
-/obj/effect/building_node/kitchen/after_construction(list/turfs)
-	for(var/turf/turf as anything in turfs)
-		for(var/obj/effect/foodspot/spot in turf.contents)
-			eating_spots |= spot
-
-/obj/effect/building_node/kitchen/proc/try_feed(mob/living/hungry_worker)
-	if(!length(stored_foods))
-		var/list/turfs = view(6, hungry_worker)
-		shuffle_inplace(turfs)
-		for(var/turf/open/open in turfs)
-			hungry_worker.controller_mind.set_current_task(/datum/work_order/nappy_time, open)
-			break
-		return
-	hungry_worker.controller_mind.set_current_task(/datum/work_order/eat_food, pick(eating_spots), pick(stored_foods), src)
-
-/obj/effect/building_node/kitchen/proc/consume_food(datum/food_item/food_to_consume, mob/living/hungry_worker)
-	hungry_worker.controller_mind.current_stamina = min(hungry_worker.controller_mind.maximum_stamina, hungry_worker.controller_mind.current_stamina + (initial(food_to_consume.stamina_restore)))
-
 /obj/effect/building_node/stockpile
 	name = "Stockpile"
 	work_template = "stockpile"
@@ -100,19 +94,5 @@
 		master_controller.resource_stockpile = new /datum/stockpile
 	stockpile = master_controller.resource_stockpile
 
-/obj/effect/building_node/farm
-	name = "Farm"
-	work_template = "farm"
-
-	icon = 'icons/roguetown/items/produce.dmi'
-	icon_state = "wheatchaff"
-
-	materials_to_store = list(
-		"Grain" = 10
-	)
-
-	persistant_nodes = list(
-		/datum/persistant_workorder/farm/grain,
-		/datum/persistant_workorder/farm/fruit,
-		/datum/persistant_workorder/farm/vegetable,
-	)
+/obj/effect/building_node/proc/override_click(mob/camera/strategy_controller/user)
+	return FALSE

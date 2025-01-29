@@ -38,6 +38,11 @@
 
 	var/datum/persistant_workorder/assigned_work
 
+	var/paused_until = 0
+	var/atom/move_back_after
+	var/work_pause = FALSE
+	var/datum/work_order/paused_task
+
 /datum/worker_mind/New(mob/living/new_worker, mob/camera/strategy_controller/new_master)
 	. = ..()
 	idle = new /datum/idle_tendancies/basic
@@ -155,18 +160,32 @@
 /datum/worker_mind/proc/check_worktree()
 	if(paused)
 		return
+	if(work_pause && (world.time > paused_until) && !current_task)
+		set_movement_target(move_back_after)
+		work_pause = FALSE
+		current_task = paused_task
+		paused_task = null
+		return
+
 	if(movement_target && (!worker.CanReach(movement_target)))
 		head_to_target()
 		return
-	if(current_task)
+	if(current_task && world.time > paused_until)
 		start_task()
 		return
 	if(current_stamina <= 0)
 		try_restore_stamina()
 		return
-	if(assigned_work && !current_task)
+	if(assigned_work && !current_task && !paused_task)
 		assigned_work.apply_to_worker(worker)
 		return
 	if(master.should_stop_idle(src))
 		return
 	start_idle()
+
+/datum/worker_mind/proc/pause_task_for(duration = 60 SECONDS, atom/after_pause_target)
+	move_back_after = after_pause_target
+	work_pause = TRUE
+	paused_task = current_task
+	current_task = null
+	paused_until = world.time + duration

@@ -45,6 +45,9 @@ GLOBAL_LIST_INIT(cached_building_images, list())
 	var/building_node_path
 	var/building_right_now = FALSE
 
+	var/ui_icon
+	var/ui_icon_state
+
 /datum/building_datum/New(mob/camera/strategy_controller/created, turf/turf)
 	. = ..()
 	if(turf)
@@ -91,7 +94,7 @@ GLOBAL_LIST_INIT(cached_building_images, list())
 /datum/building_datum/proc/try_place_building(mob/camera/strategy_controller/user, turf/placed_turf)
 	if(!resource_check(user))
 		return
-	user.resource_stockpile.remove_resources(resource_cost)
+	user.resource_stockpile?.remove_resources(resource_cost)
 
 
 	var/datum/map_template/template = SSmapping.map_templates[building_template]
