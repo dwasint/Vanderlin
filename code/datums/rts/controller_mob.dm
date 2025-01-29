@@ -29,13 +29,18 @@
 
 	var/atom/movable/screen/controller_ui/controller_ui/displayed_mob_ui
 	var/atom/movable/screen/strategy_ui/controller_ui/displayed_base_ui
+	var/atom/movable/screen/building_backdrop/building_icon
 
 	var/datum/building_datum/held_build
 
 /mob/camera/strategy_controller/Initialize()
 	. = ..()
 	displayed_base_ui = new
+	building_icon = new
 	START_PROCESSING(SSstrategy_master, src)
+
+/mob/camera/strategy_controller/proc/close_building_ui()
+	building_icon.close_uis(src)
 
 /mob/camera/strategy_controller/proc/add_assignments(list/assignments)
 	possible_job_actions |= assignments
@@ -60,19 +65,36 @@
 	var/datum/building_datum/stockpile/pile = new /datum/building_datum/farm(src)
 	pile.setup_building_ghost()
 
+/mob/camera/strategy_controller/proc/test_try_placement_spike()
+	var/datum/building_datum/simple/spike/pile = new /datum/building_datum/simple/spike(src)
+	pile.setup_building_ghost()
+
+/mob/camera/strategy_controller/proc/try_setup_build(datum/building_datum/building)
+	var/datum/building_datum/build = new building(src)
+	build.setup_building_ghost()
+
 
 /mob/camera/strategy_controller/proc/queue_building_build(datum/building_datum/building, turf/source_turf)
 	new building(src, source_turf)
 
-/mob/camera/strategy_controller/RightClickOn(atom/A, params)
-	if(held_build)
-		if(held_build.try_place_building(src, get_turf(A)))
-			held_build.clean_up()
-		else
-			building_requests -= held_build
-			held_build.clean_up()
+/mob/camera/strategy_controller/ClickOn(atom/A, params)
+	var/list/modifiers = params2list(params)
+	if(modifiers["left"] && get_turf(A))
+		if(held_build)
+			if(held_build.try_place_building(src, get_turf(A)))
+				var/datum/building_datum/last_type = held_build.type
+				held_build.clean_up(success = TRUE)
+				if(modifiers["shift"])
+					try_setup_build(last_type)
 
-	else if (istype(A, /obj/effect/building_node) && displayed_mob_ui)
+			else
+				building_requests -= held_build
+				held_build.clean_up()
+			return
+	. = ..()
+
+/mob/camera/strategy_controller/RightClickOn(atom/A, params)
+	if (istype(A, /obj/effect/building_node) && displayed_mob_ui)
 		var/mob/living/worker_mob = displayed_mob_ui.worker_mob
 
 		var/datum/persistant_workorder/old_workorder = worker_mob.controller_mind.assigned_work
@@ -102,6 +124,8 @@
 	. = ..()
 
 /mob/camera/strategy_controller/process()
+	building_icon?.update(src)
+
 	if(length(building_requests))
 		for(var/mob/living/mob in worker_mobs)
 			if(!length(building_requests))

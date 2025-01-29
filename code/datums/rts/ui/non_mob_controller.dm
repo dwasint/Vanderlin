@@ -111,3 +111,20 @@
 
 /atom/movable/screen/strategy_ui/controller_button/three
 	icon_state = "button_3"
+
+	var/list/buildings = list(
+		/datum/building_datum/simple/flame,
+		/datum/building_datum/simple/poison,
+		/datum/building_datum/simple/chill,
+		/datum/building_datum/simple/wall_fire,
+		/datum/building_datum/simple/wall_arrow,
+		/datum/building_datum/simple/saw,
+		/datum/building_datum/simple/bomb,
+		/datum/building_datum/simple/spike,
+	)
+
+/atom/movable/screen/strategy_ui/controller_button/three/Click(location, control, params)
+	. = ..()
+
+	var/mob/camera/strategy_controller/controller = usr
+	controller.building_icon.open_ui(controller, buildings)

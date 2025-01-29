@@ -1,15 +1,15 @@
 /datum/stockpile
 	var/list/stored_materials = list(
-		"Stone" = 0,
-		"Wood" = 0,
-		"Gems" = 0,
-		"Ores" = 0,
-		"Ingots" = 0,
-		"Coal" = 0,
-		"Grain" = 0,
-		"Meat" = 0,
-		"Vegetable" = 0,
-		"Fruit" = 0,
+		MAT_STONE = 0,
+		MAT_WOOD = 0,
+		MAT_GEM = 0,
+		MAT_ORE = 0,
+		MAT_INGOT = 0,
+		MAT_COAL = 0,
+		MAT_GRAIN = 0,
+		MAT_MEAT = 0,
+		MAT_VEG = 0,
+		MAT_FRUIT = 0,
 	)
 
 /datum/stockpile/proc/has_resources(list/resources_to_spend)

@@ -1,5 +1,6 @@
 /obj/effect/building_outline
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	glide_size = 1000
 
 /obj/effect/conflicting_area
 	name = ""
@@ -22,16 +23,16 @@ GLOBAL_LIST_INIT(cached_building_images, list())
 	var/building_template
 	var/obj/effect/building_outline/generated_MA
 	var/list/resource_cost = list(
-		"Stone" = 0,
-		"Wood" = 0,
-		"Gems" = 0,
-		"Ores" = 0,
-		"Ingots" = 0,
-		"Coal" = 0,
-		"Grain" = 0,
-		"Meat" = 0,
-		"Vegetable" = 0,
-		"Fruit" = 0,
+		MAT_STONE = 0,
+		MAT_WOOD = 0,
+		MAT_GEM = 0,
+		MAT_ORE = 0,
+		MAT_INGOT = 0,
+		MAT_COAL = 0,
+		MAT_GRAIN = 0,
+		MAT_MEAT = 0,
+		MAT_VEG = 0,
+		MAT_FRUIT = 0,
 	)
 
 	var/list/needed_broken_turfs = list()
@@ -73,7 +74,7 @@ GLOBAL_LIST_INIT(cached_building_images, list())
 		var/obj/effect/building_outline/cached = GLOB.cached_building_images[type]
 		generated_MA.appearance = cached.appearance
 
-/datum/building_datum/proc/try_place_building(mob/camera/strategy_controller/user, turf/placed_turf)
+/datum/building_datum/proc/resource_check(mob/camera/strategy_controller/user)
 	var/has_cost = FALSE
 	for(var/resource in resource_cost)
 		if(resource_cost[resource])
@@ -85,8 +86,12 @@ GLOBAL_LIST_INIT(cached_building_images, list())
 	if(has_cost)
 		if(!user.resource_stockpile?.has_resources(resource_cost))
 			return
+	return TRUE
 
-		user.resource_stockpile.remove_resources(resource_cost)
+/datum/building_datum/proc/try_place_building(mob/camera/strategy_controller/user, turf/placed_turf)
+	if(!resource_check(user))
+		return
+	user.resource_stockpile.remove_resources(resource_cost)
 
 
 	var/datum/map_template/template = SSmapping.map_templates[building_template]
@@ -154,6 +159,7 @@ GLOBAL_LIST_INIT(cached_building_images, list())
 
 	after_construction()
 	master.building_requests -= src
+	generated_MA.moveToNullspace()
 
 /datum/building_datum/proc/after_construction()
 	return
@@ -166,7 +172,11 @@ GLOBAL_LIST_INIT(cached_building_images, list())
 /datum/building_datum/proc/move_effect(mob/source, turf/new_turf)
 	generated_MA.forceMove(new_turf)
 
-/datum/building_datum/proc/clean_up(mob/source, turf/new_turf)
+/datum/building_datum/proc/clean_up(mob/source, turf/new_turf, success = FALSE)
 	UnregisterSignal(master, COMSIG_MOUSE_ENTERED)
-	generated_MA.moveToNullspace()
 	master.held_build = null
+
+	if(!success)
+		generated_MA.moveToNullspace()
+	else
+		generated_MA.forceMove(center_turf)
