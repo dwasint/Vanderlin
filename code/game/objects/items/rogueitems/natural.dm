@@ -209,7 +209,6 @@
 
 /obj/item/natural/infernalash//T1 mage summon loot
 	name = "infernal ash"
-	icon = 'icons/obj/objects.dmi'
 	icon_state = "infernalash"
 	desc = "Ash burnt and burnt once again. Smells of brimstone and hellfire. Still has embers within."
 	resistance_flags = FLAMMABLE
@@ -218,7 +217,7 @@
 
 /obj/item/natural/hellhoundfang//T2 mage summon loot
 	name = "hellhound fang"
-	icon_state = "wessence"
+	icon_state = "hellhound_fang"
 	desc = "A sharp fang that glows bright red, no matter how long it's left to cool."
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
@@ -234,7 +233,7 @@
 
 /obj/item/natural/abyssalflame//T4 mage summon loot
 	name = "abyssal flame"
-	icon_state = "wessence"
+	icon_state = "abyssalflame"
 	desc = "A  flickering, black flame contained in a crystal; the heart of an archfiend. Or atleast, what passes for one. It pulses with dense thrums of magick."
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
@@ -276,7 +275,7 @@
 //ELEMENTAL
 /obj/item/natural/elementalmote
 	name = "elemental mote"
-	icon_state = "wessence"
+	icon_state = "mote"
 	desc = "A mystical essence embued with the power of Dendor. Merely holding it transports one's mind to ancient times."
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
