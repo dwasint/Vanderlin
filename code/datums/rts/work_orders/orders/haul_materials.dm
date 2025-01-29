@@ -81,6 +81,7 @@
 				return FALSE
 			work_time_left = world.time - world_start_time
 			return FALSE
+		grab_materials_from_stockpile()
 		set_movement_target(taking_node)
 		going_to_stockpile = FALSE
 		worker.controller_mind.paused = FALSE

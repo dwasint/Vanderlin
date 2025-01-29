@@ -83,6 +83,7 @@
 
 /datum/worker_mind/process()
 	check_worktree()
+	update_stat_panel()
 
 /datum/worker_mind/proc/start_idle()
 	idle.perform_idle(master, worker)
@@ -110,6 +111,7 @@
 /datum/worker_mind/proc/set_current_task(datum/work_order/order, ...)
 	var/list/arg_list = list(worker) + args
 	current_task = new order(arglist(arg_list))
+	update_stat_panel()
 
 /datum/worker_mind/proc/finish_work(success, stamina_cost)
 	current_stamina = max(0, current_stamina - stamina_cost)
@@ -157,14 +159,19 @@
 /datum/worker_mind/proc/update_stat_panel()
 	stats.update_text()
 
-/datum/worker_mind/proc/check_worktree()
-	if(paused)
-		return
+/datum/worker_mind/proc/check_paused_state()
 	if(work_pause && (world.time > paused_until) && !current_task)
 		set_movement_target(move_back_after)
 		work_pause = FALSE
 		current_task = paused_task
 		paused_task = null
+		return TRUE
+	return FALSE
+
+/datum/worker_mind/proc/check_worktree()
+	if(paused)
+		return
+	if(check_paused_state())
 		return
 
 	if(movement_target && (!worker.CanReach(movement_target)))

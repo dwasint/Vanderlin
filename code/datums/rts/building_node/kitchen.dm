@@ -60,3 +60,9 @@
 /obj/effect/building_node/kitchen/proc/add_food(datum/food_item/incoming_food)
 	stored_foods |= incoming_food
 	stored_foods[incoming_food] += initial(incoming_food.created_amount)
+
+	var/datum/food_item/food = new incoming_food
+	for(var/material in food.requirements)
+		work_materials[material] -= food.requirements[material]
+		work_materials[material] = max(0, work_materials[material])
+	qdel(food)

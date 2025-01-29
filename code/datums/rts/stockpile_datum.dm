@@ -20,6 +20,15 @@
 			return FALSE
 	return TRUE
 
+/datum/stockpile/proc/has_any_resources(list/resources_to_spend)
+	var/has_any = FALSE
+	for(var/resource in resources_to_spend)
+		if(!(resource in stored_materials))
+			continue
+		if(stored_materials[resource] >= 0)
+			has_any = TRUE
+	return has_any
+
 /datum/stockpile/proc/add_resources(list/resources_to_spend)
 	for(var/resource in resources_to_spend)
 		if(!(resource in stored_materials))

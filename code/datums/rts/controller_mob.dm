@@ -126,6 +126,8 @@
 				return
 			if(mob.controller_mind.current_task)
 				continue
+			if(mob.controller_mind.check_paused_state())
+				continue
 
 			for(var/datum/building_datum/building in building_requests)
 				if(building.try_work_on(mob))
@@ -138,11 +140,22 @@
 					for(var/mob/living/mob in worker_mobs)
 						if(mob.controller_mind.current_task)
 							continue
+						if(mob.controller_mind.check_paused_state())
+							continue
 						mob.controller_mind.set_current_task(/datum/work_order/store_materials, node, src)
 
 				if(length(node.material_requests))
+					var/passed = TRUE
+					for(var/request in node.material_requests)
+						if(!resource_stockpile.has_any_resources(node.material_requests[request]))
+							passed = FALSE
+					if(!passed)
+						continue
+
 					for(var/mob/living/mob in worker_mobs)
 						if(mob.controller_mind.current_task)
+							continue
+						if(mob.controller_mind.check_paused_state())
 							continue
 						mob.controller_mind.set_current_task(/datum/work_order/haul_materials, node, src)
 
@@ -151,6 +164,8 @@
 			if(!length(in_progress_workorders))
 				return
 			if(mob.controller_mind.current_task)
+				continue
+			if(mob.controller_mind.check_paused_state())
 				continue
 
 			for(var/datum/queued_workorder/workorder in in_progress_workorders)
@@ -172,6 +187,9 @@
 			for(var/obj/effect/building_node/node in constructed_building_nodes)
 				if(length(node.materials_to_store))
 					return TRUE
+				if(length(node.material_requests))
+					return TRUE
+
 	return FALSE
 
 
