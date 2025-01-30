@@ -351,13 +351,18 @@
 		else if(target != null && prob(40))//No more pulling a mob forever and having a second player attack it, it can switch targets now if it finds a more suitable one
 			FindTarget()
 
+/mob/living/proc/AttackingTarget(mob/living/passed_target)
+	return
 
-/mob/living/simple_animal/hostile/proc/AttackingTarget(mob/living/target)
+/mob/living/simple_animal/hostile/AttackingTarget(mob/living/passed_target)
 	if(SEND_SIGNAL(src, COMSIG_HOSTILE_PRE_ATTACKINGTARGET, target) & COMPONENT_HOSTILE_NO_PREATTACK)
 		return FALSE //but more importantly return before attack_animal called
 	SEND_SIGNAL(src, COMSIG_HOSTILE_ATTACKINGTARGET, target)
 	in_melee = TRUE
-	return target?.attack_animal(src)
+	var/mob/living/actual_target = passed_target
+	if(!actual_target)
+		actual_target = target
+	return actual_target?.attack_animal(src)
 
 /mob/living/simple_animal/hostile/proc/Aggro()
 	vision_range = aggro_vision_range

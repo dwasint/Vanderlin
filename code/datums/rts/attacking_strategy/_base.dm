@@ -107,9 +107,12 @@
 	if(distance > attack_range)
 		return FALSE
 
+	if(current_target.stat >= DEAD)
+		lose_target()
+		return FALSE
 	reset_patience()
 	if(!spawning_projectile)
-		worker.MeleeAction(current_target)
+		worker.AttackingTarget(current_target)
 	else
 		fire_projectile()
 	after_attack()
