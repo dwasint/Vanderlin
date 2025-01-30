@@ -235,8 +235,19 @@ and set its desc to what you want the verb to appear as in the statpanel.
 /mob/dead/new_player/noteUpdate()
 	var/newHTML = ""
 	var/lobby = ""
-	if(SSticker.current_state == GAME_STATE_PREGAME)
-		lobby += "Time to Start: <span id='timestart'>[SSticker.GetTimeLeft()]</span><BR>"
+
+	if(SSticker.current_state < GAME_STATE_PLAYING)
+		var/time_remaining = SSticker.GetTimeLeft()
+		if(time_remaining > 0)
+			lobby += "Time To Start: [round(time_remaining/10)]s<br>"
+		else if(time_remaining == -10)
+			lobby += "Time To Start: DELAYED<br>"
+		else
+			lobby += "Time To Start: SOON<br>"
+		lobby += "Total players ready: [SSticker.totalPlayersReady]<br>"
+
+	lobby += "Time of Day:[GLOB.tod]"
+
 	newHTML += {"<span style='color:#600; font-weight:bold;'>[lobby]</span>"}
 	return newHTML
 
