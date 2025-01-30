@@ -43,6 +43,8 @@
 	var/work_pause = FALSE
 	var/datum/work_order/paused_task
 
+	var/datum/worker_attack_strategy/attack_mode
+
 /datum/worker_mind/New(mob/living/new_worker, mob/camera/strategy_controller/new_master)
 	. = ..()
 	idle = new /datum/idle_tendancies/basic
@@ -82,6 +84,8 @@
 	current_task.start_working(worker)
 
 /datum/worker_mind/process()
+	if(worker.stat >= DEAD)
+		return
 	check_worktree()
 	update_stat_panel()
 
@@ -171,6 +175,17 @@
 /datum/worker_mind/proc/check_worktree()
 	if(paused)
 		return
+
+	if(attack_mode)
+		if(attack_mode.current_target)
+			if(!attack_mode.can_attack_target())
+				walk_to(worker, attack_mode.current_target, 1, worker.controller_mind.walkspeed)
+			return
+		else if(attack_mode.find_targets())
+			if(!attack_mode.can_attack_target())
+				walk_to(worker, attack_mode.current_target, 1, worker.controller_mind.walkspeed)
+				return
+
 	if(check_paused_state())
 		return
 
@@ -196,3 +211,14 @@
 	paused_task = current_task
 	current_task = null
 	paused_until = world.time + duration
+
+/datum/worker_mind/proc/stop_chase()
+	walk(worker, 0)
+
+/datum/worker_mind/proc/suppress_attack()
+	attack_mode?.lose_target()
+	stop_chase()
+
+/datum/worker_mind/proc/apply_attack_strategy(datum/worker_attack_strategy/attack_path = /datum/worker_attack_strategy)
+	var/datum/worker_attack_strategy/new_attack = new attack_path(worker)
+	attack_mode = new_attack

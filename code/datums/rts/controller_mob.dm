@@ -122,6 +122,8 @@
 
 	if(length(building_requests))
 		for(var/mob/living/mob in worker_mobs)
+			if(mob.stat >= DEAD)
+				return
 			if(!length(building_requests))
 				return
 			if(mob.controller_mind.current_task)
@@ -138,6 +140,8 @@
 			for(var/obj/effect/building_node/node in constructed_building_nodes)
 				if(length(node.materials_to_store))
 					for(var/mob/living/mob in worker_mobs)
+						if(mob.stat >= DEAD)
+							return
 						if(mob.controller_mind.current_task)
 							continue
 						if(mob.controller_mind.check_paused_state())
@@ -153,6 +157,8 @@
 						continue
 
 					for(var/mob/living/mob in worker_mobs)
+						if(mob.stat >= DEAD)
+							return
 						if(mob.controller_mind.current_task)
 							continue
 						if(mob.controller_mind.check_paused_state())
@@ -161,6 +167,8 @@
 
 	if(length(in_progress_workorders))
 		for(var/mob/living/mob in worker_mobs)
+			if(mob.stat >= DEAD)
+				return
 			if(!length(in_progress_workorders))
 				return
 			if(mob.controller_mind.current_task)

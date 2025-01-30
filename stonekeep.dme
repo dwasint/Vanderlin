@@ -674,6 +674,7 @@
 #include "code\datums\rts\stockpile_datum.dm"
 #include "code\datums\rts\work_mind.dm"
 #include "code\datums\rts\work_spot.dm"
+#include "code\datums\rts\attacking_strategy\_base.dm"
 #include "code\datums\rts\building_datums\_base_datum.dm"
 #include "code\datums\rts\building_datums\farm.dm"
 #include "code\datums\rts\building_datums\kitchen.dm"

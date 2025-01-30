@@ -276,8 +276,11 @@
 		Aggro()
 		return 1
 
+/mob/living/proc/MeleeAction()
+	return
+
 //What we do after closing in
-/mob/living/simple_animal/hostile/proc/MeleeAction(patience = TRUE)
+/mob/living/simple_animal/hostile/MeleeAction(patience = TRUE)
 	if(rapid_melee > 1)
 		var/datum/callback/cb = CALLBACK(src, PROC_REF(CheckAndAttack))
 		var/delay = SSnpcpool.wait / rapid_melee
@@ -354,9 +357,7 @@
 		return FALSE //but more importantly return before attack_animal called
 	SEND_SIGNAL(src, COMSIG_HOSTILE_ATTACKINGTARGET, target)
 	in_melee = TRUE
-	if(!target)
-		return
-	return target.attack_animal(src)
+	return target?.attack_animal(src)
 
 /mob/living/simple_animal/hostile/proc/Aggro()
 	vision_range = aggro_vision_range
@@ -418,8 +419,9 @@
 		Shoot(A)
 	ranged_cooldown = world.time + ranged_cooldown_time
 
+/mob/living/proc/Shoot(atom/targeted_atom)
 
-/mob/living/simple_animal/hostile/proc/Shoot(atom/targeted_atom)
+/mob/living/simple_animal/hostile/Shoot(atom/targeted_atom)
 	if( QDELETED(targeted_atom) || targeted_atom == targets_from.loc || targeted_atom == targets_from )
 		return
 	var/turf/startloc = get_turf(targets_from)
