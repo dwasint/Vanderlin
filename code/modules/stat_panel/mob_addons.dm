@@ -82,12 +82,6 @@ and set its desc to what you want the verb to appear as in the statpanel.
 /client/verb/debug_panel()
 	init_panel()
 
-
-/client/proc/loadDataPig()
-	var/datum/asset/stuff = get_asset_datum(/datum/asset/group/statpanel)
-	if(stuff.send(src))
-		lobbyPig()
-
 /client/verb/ready()
 	set hidden = 1
 	set name = "doneRsc"
@@ -252,10 +246,6 @@ and set its desc to what you want the verb to appear as in the statpanel.
 	newHTML += {"<span style='color:#600; font-weight:bold;'>[note]</span>"}
 	return newHTML
 
-
-/client/proc/lobbyPig()
-	src << browse('code/modules/stat_panel/html/html/statpanel.html', "window=outputwindow.browser;")
-
 /client/proc/defaultButton(button)
 	var/newHTML
 	switch(button)
@@ -273,10 +263,6 @@ and set its desc to what you want the verb to appear as in the statpanel.
 
 /client/New()
 	..()
-	loadDataPig()
-
-	statpanel_loaded = TRUE
-
 	if(!holder)
 		return
 	winset(src, "outputwindow.csay", "is-visible=true")

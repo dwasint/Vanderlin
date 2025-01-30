@@ -72,7 +72,12 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("data/iconCache.sav"))
 	var/datum/asset/stuff = get_asset_datum(/datum/asset/group/goonchat)
 	stuff.send(owner)
 
+	var/datum/asset/stat_stuff = get_asset_datum(/datum/asset/group/statpanel)
+	stat_stuff.send(owner)
+
 	owner << browse(file('code/modules/goonchat/browserassets/html/browserOutput.html'), "window=browseroutput")
+	owner << browse(file('code/modules/stat_panel/html/html/statpanel.html'), "window=outputwindow.browser;")
+
 
 /datum/chatOutput/Topic(href, list/href_list)
 	if(usr.client != owner)
@@ -121,7 +126,7 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("data/iconCache.sav"))
 /datum/chatOutput/proc/showChat()
 	winset(owner, "output", "is-visible=false")
 	winset(owner, "browseroutput", "is-disabled=false;is-visible=true")
-
+	owner.statpanel_loaded = TRUE
 
 /datum/chatOutput/proc/updatePing()
 	if (!owner)
