@@ -111,7 +111,12 @@
 	character.add_overlay(MA)
 
 /atom/movable/screen/controller_ui/controller_ui/proc/update_task_text()
-	task.maptext = worker_mind.current_task ? {"<center><span style='font-size:8pt;font-family:"Pterra"'>[worker_mind.current_task.name]</span></center>"} : {"<center><span style='font-size:8pt;font-family:"Pterra"'>Idle</span></center>"}
+	var/task_text = {"<center><span style='font-size:8pt;font-family:"Pterra"'>Idle</span></center>"}
+	if(worker_mind.attack_mode?.current_target)
+		task_text = {"<center><span style='font-size:8pt;font-family:"Pterra"'>Attacking [worker_mind.attack_mode.current_target]</span></center>"}
+	else if(worker_mind.current_task)
+		task_text = {"<center><span style='font-size:8pt;font-family:"Pterra"'>[worker_mind.current_task.name]</span></center>"}
+	task.maptext = task_text
 
 /atom/movable/screen/controller_ui/controller_ui/proc/update_name_text()
 	name_box.maptext = {"<center><span style='font-family: "Blackmoor LET", "Pterra";font-size: 200%;text-shadow: 1px 1px 2px black, 0 0 1em black, 0 0 0.2em black;'>[worker_mind.worker_name]</span></center>"}
