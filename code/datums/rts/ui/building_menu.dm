@@ -83,7 +83,7 @@
 			var/datum/building_datum/simple/building = datum
 			var/mutable_appearance/MA = mutable_appearance(initial(building.ui_icon), initial(building.ui_icon_state), new_button.layer + 0.1, new_button.plane)
 			new_button.add_overlay(MA)
-			new_button.name = initial(building.created_atom.name)
+			new_button.name = initial(building.name)
 		new_button.screen_loc = "WEST:[current_x*32],SOUTH:[96 + (current_y*32)]"
 		new_button.datum_path = datum
 

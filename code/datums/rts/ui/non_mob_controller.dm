@@ -114,9 +114,14 @@
 
 	buildings = list(
 		/datum/building_datum/farm,
+		/datum/building_datum/bar,
 		/datum/building_datum/kitchen,
 		/datum/building_datum/stockpile,
+		/datum/building_datum/lumber_yard,
+		/datum/building_datum/blacksmith,
+		/datum/building_datum/mines,
 		/datum/building_datum/spawning_grounds,
+
 	)
 
 /atom/movable/screen/strategy_ui/controller_button/three
