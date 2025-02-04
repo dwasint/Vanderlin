@@ -12,7 +12,7 @@
 	var/spawncount = 3
 	var/list/starts
 
-/datum/round_event_control/rogue/skellyinvade/canSpawnEvent()
+/datum/round_event_control/rogue/skellyinvade/canSpawnEvent(players_amt, gamemode, fake_check)
 	if(!LAZYLEN(GLOB.hauntstart))
 		return FALSE
 

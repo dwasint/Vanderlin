@@ -90,7 +90,7 @@
 
 // Checks if the event can be spawned. Used by event controller and "false alarm" event.
 // Admin-created events override this.
-/datum/round_event_control/proc/canSpawnEvent(players_amt, gamemode)
+/datum/round_event_control/proc/canSpawnEvent(players_amt, gamemode, fake_check = FALSE)
 	if(SSgamemode.current_storyteller?.disable_distribution || SSgamemode.halted_storyteller)
 		return FALSE
 	if(event_group && !GLOB.event_groups[event_group].can_run())
@@ -129,7 +129,7 @@
 		sleep(100)
 		var/gamemode = SSticker.mode.config_tag
 		var/players_amt = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE)
-		if(!canSpawnEvent(players_amt, gamemode))
+		if(!canSpawnEvent(players_amt, gamemode, fake_check = TRUE))
 			message_admins("Second pre-condition check for [name] failed, skipping...")
 			return EVENT_INTERRUPTED
 
@@ -162,6 +162,7 @@
 
 	round_event.setup()
 	round_event.current_players = get_active_player_count(alive_check = 1, afk_check = 1, human_check = 1)
+	round_event.control = src
 	occurrences++
 
 	triggering = FALSE
@@ -205,6 +206,8 @@
 //It will only have been overridden by the time we get to announce() start() tick() or end() (anything but setup basically).
 //This is really only for setting defaults which can be overridden later when New() finishes.
 /datum/round_event/proc/setup()
+	SHOULD_CALL_PARENT(FALSE)
+	setup = TRUE
 	return
 
 //Called when the tick is equal to the startWhen variable.

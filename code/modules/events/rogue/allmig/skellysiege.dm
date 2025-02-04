@@ -1,5 +1,5 @@
 /datum/round_event_control/rogue/worldsiege
-	name = "skellyworldsiege"
+	name = "Skeleton Siege"
 	typepath = /datum/round_event/rogue/worldsiege
 	weight = 99
 	max_occurrences = 999
@@ -7,9 +7,11 @@
 	req_omen = FALSE
 	todreq = list("dusk", "night")
 	earliest_start = 35 MINUTES
+	tags = list(TAG_HAUNTED, TAG_COMBAT, TAG_RAID)
+	track = EVENT_TRACK_OBJECTIVES
 	var/last_siege
 
-/datum/round_event_control/rogue/worldsiege/canSpawnEvent(players_amt, gamemode)
+/datum/round_event_control/rogue/worldsiege/canSpawnEvent(players_amt, gamemode, fake_check)
 	if(earliest_start >= world.time-SSticker.round_start_time)
 		return FALSE
 	if(players_amt < min_players)

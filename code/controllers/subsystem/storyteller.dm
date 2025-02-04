@@ -13,6 +13,7 @@ SUBSYSTEM_DEF(gamemode)
 	flags = SS_BACKGROUND | SS_KEEP_TIMING
 	priority = 20
 	wait = 2 SECONDS
+	lazy_load = FALSE
 
 	/// List of our event tracks for fast access during for loops.
 	var/list/event_tracks = EVENT_TRACKS
@@ -138,10 +139,10 @@ SUBSYSTEM_DEF(gamemode)
 	/// Ready players for roundstart events.
 	var/ready_players = 0
 	var/active_players = 0
-	var/head_crew = 0
-	var/eng_crew = 0
-	var/sec_crew = 0
-	var/med_crew = 0
+	var/royalty = 0
+	var/constructor = 0
+	var/garrison = 0
+	var/church = 0
 
 	/// Is storyteller secret or not
 	var/secret_storyteller = FALSE
@@ -208,7 +209,7 @@ SUBSYSTEM_DEF(gamemode)
 				current_roundstart_event.preferred_events[new e_control] = preferred_copy[e_control]
 			preferred_copy = current_roundstart_event.preferred_events.Copy()
 			selected_event = null
-		else if(!selected_event.can_spawn_event(player_count))
+		else if(!selected_event.canSpawnEvent(player_count))
 			preferred_copy -= selected_event
 			selected_event = null
 
@@ -216,7 +217,7 @@ SUBSYSTEM_DEF(gamemode)
 		while(!selected_event && length(preferred_copy) && sanity < 100)
 			sanity++
 			selected_event = pickweight(preferred_copy)
-			if(!selected_event.can_spawn_event(player_count))
+			if(!selected_event.canSpawnEvent(player_count))
 				preferred_copy -= selected_event
 				selected_event = null
 
@@ -240,7 +241,7 @@ SUBSYSTEM_DEF(gamemode)
 
 /// Gets the number of antagonists the antagonist injection events will stop rolling after.
 /datum/controller/subsystem/gamemode/proc/get_antag_cap()
-	var/total_number = get_correct_popcount() + (sec_crew * 2)
+	var/total_number = get_correct_popcount() + (garrison * 2)
 	var/cap = FLOOR((total_number / ANTAG_CAP_DENOMINATOR), 1) + ANTAG_CAP_FLAT
 	return cap
 
@@ -250,7 +251,7 @@ SUBSYSTEM_DEF(gamemode)
 	for(var/datum/antagonist/antag as anything in GLOB.antagonists)
 		if(QDELETED(antag) || QDELETED(antag.owner) || already_counted[antag.owner])
 			continue
-		if(!antag.count_against_dynamic_roll_chance || (antag.antag_flags & (FLAG_FAKE_ANTAG | FLAG_ANTAG_CAP_IGNORE)))
+		if((antag.antag_flags & (FLAG_FAKE_ANTAG | FLAG_ANTAG_CAP_IGNORE)))
 			continue
 		if(antag.antag_flags & FLAG_ANTAG_CAP_TEAM)
 			var/datum/team/antag_team = antag.get_team()
@@ -285,10 +286,6 @@ SUBSYSTEM_DEF(gamemode)
 		else if(living_players && isliving(player))
 			if(!ishuman(player))
 				continue
-			// I split these checks up to make the code more readable ~Lucy
-			var/is_on_station = is_station_level(player.z)
-			if(!is_on_station && !is_late_arrival(player))
-				continue
 			candidate_candidates += player
 
 	for(var/mob/candidate as anything in candidate_candidates)
@@ -300,33 +297,24 @@ SUBSYSTEM_DEF(gamemode)
 			if(no_antags && !isnull(candidate.mind.antag_datums))
 				var/real = FALSE
 				for(var/datum/antagonist/antag_datum as anything in candidate.mind.antag_datums)
-					if(antag_datum.count_against_dynamic_roll_chance && !(antag_datum.antag_flags & FLAG_FAKE_ANTAG))
+					if(!(antag_datum.antag_flags & FLAG_FAKE_ANTAG))
 						real = TRUE
 						break
 				if(real)
 					continue
-			if(restricted_roles && (candidate.mind.assigned_role.title in restricted_roles))
+			if(restricted_roles && (candidate.mind.assigned_role in restricted_roles))
 				continue
-			if(length(required_roles) && !(candidate.mind.assigned_role.title in required_roles))
+			if(length(required_roles) && !(candidate.mind.assigned_role in required_roles))
 				continue
 
 		if(be_special)
 			if(!(candidate.client.prefs) || !(be_special in candidate.client.prefs.be_special))
 				continue
 
-			var/time_to_check
-			if(required_time)
-				time_to_check = required_time
-			else if(inherit_required_time)
-				time_to_check = GLOB.special_roles[be_special]
-
-			if(time_to_check && candidate.client.get_remaining_days(time_to_check) > 0)
-				continue
-
 		//if(midround_antag_pref)
 			//continue
 
-		if(job_ban && is_banned_from(candidate.ckey, list(job_ban, ROLE_SYNDICATE)))
+		if(job_ban && is_banned_from(candidate.ckey, list(job_ban, ROLE_VILLAIN)))
 			continue
 		candidates += candidate
 	return candidates
@@ -440,10 +428,10 @@ SUBSYSTEM_DEF(gamemode)
 /datum/controller/subsystem/gamemode/proc/update_crew_infos()
 	// Very similar logic to `get_active_player_count()`
 	active_players = 0
-	head_crew = 0
-	eng_crew = 0
-	med_crew = 0
-	sec_crew = 0
+	royalty = 0
+	constructor = 0
+	church = 0
+	garrison = 0
 	for(var/mob/player_mob as anything in GLOB.player_list)
 		if(!player_mob.client)
 			continue
@@ -455,15 +443,14 @@ SUBSYSTEM_DEF(gamemode)
 			continue
 		active_players++
 		if(player_mob.mind?.assigned_role)
-			var/datum/job/player_role = player_mob.mind.assigned_role
-			if(player_role.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND)
-				head_crew++
-			if(player_role.departments_bitflags & DEPARTMENT_BITFLAG_ENGINEERING)
-				eng_crew++
-			if(player_role.departments_bitflags & DEPARTMENT_BITFLAG_MEDICAL)
-				med_crew++
-			if(player_role.departments_bitflags & DEPARTMENT_BITFLAG_SECURITY)
-				sec_crew++
+			if(player_mob.mind.job_bitflag & BITFLAG_ROYALTY)
+				royalty++
+			if(player_mob.mind.job_bitflag & BITFLAG_CONTRUCTOR)
+				constructor++
+			if(player_mob.mind.job_bitflag & BITFLAG_CHURCH)
+				church++
+			if(player_mob.mind.job_bitflag & BITFLAG_GARRISON)
+				garrison++
 	update_pop_scaling()
 
 /datum/controller/subsystem/gamemode/proc/update_pop_scaling()
@@ -491,7 +478,7 @@ SUBSYSTEM_DEF(gamemode)
 	if(. == EVENT_CANT_RUN)//we couldn't run this event for some reason, set its max_occurrences to 0
 		event.max_occurrences = 0
 	else if(. == EVENT_READY)
-		event.run_event(random = TRUE, admin_forced = forced) // fallback to dynamic
+		event.runEvent(random = TRUE, admin_forced = forced) // fallback to dynamic
 
 ///Resets frequency multiplier.
 /datum/controller/subsystem/gamemode/proc/resetFrequency()
@@ -523,24 +510,6 @@ SUBSYSTEM_DEF(gamemode)
 			delay = (4 MINUTES) //default to 4 minutes if the delay isn't defined.
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(reopen_roundstart_suicide_roles)), delay)
 
-	if(SSdbcore.Connect())
-		var/list/to_set = list()
-		var/arguments = list()
-		if(current_storyteller)
-			to_set += "game_mode = :game_mode"
-			arguments["game_mode"] = current_storyteller.name
-		if(GLOB.revdata.originmastercommit)
-			to_set += "commit_hash = :commit_hash"
-			arguments["commit_hash"] = GLOB.revdata.originmastercommit
-		if(to_set.len)
-			arguments["round_id"] = GLOB.round_id
-			var/datum/db_query/query_round_game_mode = SSdbcore.NewQuery(
-				"UPDATE [format_table_name("round")] SET [to_set.Join(", ")] WHERE id = :round_id",
-				arguments
-			)
-			query_round_game_mode.Execute()
-			qdel(query_round_game_mode)
-	generate_station_goals()
 	handle_post_setup_roundstart_events()
 	handle_post_setup_points()
 	roundstart_event_view = FALSE
@@ -554,122 +523,11 @@ SUBSYSTEM_DEF(gamemode)
 /datum/controller/subsystem/gamemode/proc/check_finished(force_ending) //to be called by SSticker
 	if(!SSticker.setup_done)
 		return FALSE
-	if(SSshuttle.emergency && (SSshuttle.emergency.mode == SHUTTLE_ENDGAME))
-		return TRUE
-	if(GLOB.station_was_nuked)
-		return TRUE
 	if(force_ending)
 		return TRUE
 
-/*
- * Generate a list of station goals available to purchase to report to the crew.
- *
- * Returns a formatted string all station goals that are available to the station.
- */
-/datum/controller/subsystem/gamemode/proc/generate_station_goal_report()
-	if(!GLOB.station_goals.len)
-		return
-	. = "<hr><b>Special Orders for [station_name()]:</b><BR>"
-	for(var/datum/station_goal/station_goal as anything in GLOB.station_goals)
-		station_goal.on_report()
-		. += station_goal.get_report()
-	return
-
-/*
- * Generate a list of active station traits to report to the crew.
- *
- * Returns a formatted string of all station traits (that are shown) affecting the station.
- */
-/datum/controller/subsystem/gamemode/proc/generate_station_trait_report()
-	if(!SSstation.station_traits.len)
-		return
-	. = "<hr><b>Identified shift divergencies:</b><BR>"
-	for(var/datum/station_trait/station_trait as anything in SSstation.station_traits)
-		if(!station_trait.show_in_report)
-			continue
-		. += "[station_trait.get_report()]<BR>"
-	return
-
-/* /proc/reopen_roundstart_suicide_roles()
-	var/include_command = CONFIG_GET(flag/reopen_roundstart_suicide_roles_command_positions)
-	var/list/reopened_jobs = list()
-	for(var/mob/living/quitter in GLOB.suicided_mob_list)
-		var/datum/job/job = SSjob.GetJob(quitter.job)
-		if(!job || !(job.job_flags & JOB_REOPEN_ON_ROUNDSTART_LOSS))
-			continue
-		if(!include_command && job.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND)
-			continue
-		job.current_positions = max(job.current_positions - 1, 0)
-		reopened_jobs += quitter.job
-	if(CONFIG_GET(flag/reopen_roundstart_suicide_roles_command_report))
-		if(reopened_jobs.len)
-			var/reopened_job_report_positions
-			for(var/dead_dudes_job in reopened_jobs)
-				reopened_job_report_positions = "[reopened_job_report_positions ? "[reopened_job_report_positions]\n":""][dead_dudes_job]"
-			var/suicide_command_report = "<font size = 3><b>Central Command Human Resources Board</b><br>\
-								Notice of Personnel Change</font><hr>\
-								To personnel management staff aboard [station_name()]:<br><br>\
-								Our medical staff have detected a series of anomalies in the vital sensors \
-								of some of the staff aboard your station.<br><br>\
-								Further investigation into the situation on our end resulted in us discovering \
-								a series of rather... unforturnate decisions that were made on the part of said staff.<br><br>\
-								As such, we have taken the liberty to automatically reopen employment opportunities for the positions of the crew members \
-								who have decided not to partake in our research. We will be forwarding their cases to our employment review board \
-								to determine their eligibility for continued service with the company (and of course the \
-								continued storage of cloning records within the central medical backup server.)<br><br>\
-								<i>The following positions have been reopened on our behalf:<br><br>\
-								[reopened_job_report_positions]</i>"
-			print_command_report(suicide_command_report, "Central Command Personnel Update") */
-
-//////////////////////////
-//Reports player logouts//
-//////////////////////////
-/* /proc/display_roundstart_logout_report()
-	var/list/msg = list("[SPAN_BOLDNOTICE("Roundstart logout report")]\n\n")
-	for(var/i in GLOB.mob_living_list)
-		var/mob/living/L = i
-		var/mob/living/carbon/C = L
-		if (istype(C) && !C.last_mind)
-			continue  // never had a client
-		if(L.ckey && !GLOB.directory[L.ckey])
-			msg += "<b>[L.name]</b> ([L.key]), the [L.job] (<font color='#ffcc00'><b>Disconnected</b></font>)\n"
-		if(L.ckey && L.client)
-			var/failed = FALSE
-			if(L.client.inactivity >= (ROUNDSTART_LOGOUT_REPORT_TIME / 2)) //Connected, but inactive (alt+tabbed or something)
-				msg += "<b>[L.name]</b> ([L.key]), the [L.job] (<font color='#ffcc00'><b>Connected, Inactive</b></font>)\n"
-				failed = TRUE //AFK client
-			if(!failed && L.stat)
-				if(L.suiciding) //Suicider
-					msg += "<b>[L.name]</b> ([L.key]), the [L.job] ([SPAN_BOLDANNOUNCE("Suicide")])\n"
-					failed = TRUE //Disconnected client
-				if(!failed && (L.stat == UNCONSCIOUS || L.stat == HARD_CRIT))
-					msg += "<b>[L.name]</b> ([L.key]), the [L.job] (Dying)\n"
-					failed = TRUE //Unconscious
-				if(!failed && L.stat == DEAD)
-					msg += "<b>[L.name]</b> ([L.key]), the [L.job] (Dead)\n"
-					failed = TRUE //Dead
-			continue //Happy connected client
-		for(var/mob/dead/observer/D in GLOB.dead_mob_list)
-			if(D.mind && D.mind.current == L)
-				if(L.stat == DEAD)
-					if(L.suiciding) //Suicider
-						msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), the [L.job] ([SPAN_BOLDANNOUNCE("Suicide")])\n"
-						continue //Disconnected client
-					else
-						msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), the [L.job] (Dead)\n"
-						continue //Dead mob, ghost abandoned
-				else
-					if(D.can_reenter_corpse)
-						continue //Adminghost, or cult/wizard ghost
-					else
-						msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), the [L.job] ([SPAN_BOLDANNOUNCE("Ghosted")])\n"
-						continue //Ghosted while alive
-	for (var/C in GLOB.admins)
-		to_chat(C, msg.Join()) */
-
 /datum/controller/subsystem/gamemode/proc/generate_town_goals()
 	return
-
 
 /// Loads json event config values from events.txt
 /datum/controller/subsystem/gamemode/proc/load_event_config_vars()
@@ -737,13 +595,11 @@ SUBSYSTEM_DEF(gamemode)
 	point_thresholds[EVENT_TRACK_OBJECTIVES] = CONFIG_GET(number/objectives_point_threshold)
 
 /datum/controller/subsystem/gamemode/proc/handle_picking_storyteller()
-	if(CONFIG_GET(flag/disable_storyteller))
-		return
 	if(length(GLOB.clients) > MAX_POP_FOR_STORYTELLER_VOTE)
 		secret_storyteller = TRUE
 		selected_storyteller = pickweight(get_valid_storytellers(TRUE))
 		return
-	SSvote.initiate_vote(/datum/vote/storyteller, "pick round storyteller", forced = TRUE)
+	SSvote.initiate_vote("storyteller", "Which god watches thee?")
 
 /datum/controller/subsystem/gamemode/proc/storyteller_vote_choices()
 	var/list/final_choices = list()
@@ -795,14 +651,12 @@ SUBSYSTEM_DEF(gamemode)
 /datum/controller/subsystem/gamemode/proc/set_storyteller(passed_type)
 	if(!storytellers[passed_type])
 		message_admins("Attempted to set an invalid storyteller type: [passed_type], force setting to guide instead.")
-		current_storyteller = storytellers[/datum/storyteller/guide] //if we dont have any then we brick, lets not do that
+		current_storyteller = storytellers[/datum/storyteller/astrata] //if we dont have any then we brick, lets not do that
 		CRASH("Attempted to set an invalid storyteller type: [passed_type].")
 	current_storyteller = storytellers[passed_type]
 	if(!secret_storyteller)
 		send_to_playing_players(span_notice("<b>Storyteller is [current_storyteller.name]!</b>"))
 		send_to_playing_players(span_notice("[current_storyteller.welcome_text]"))
-	else
-		send_to_observers(span_boldbig("<b>Storyteller is [current_storyteller.name]!</b>")) //observers still get to know
 
 /// Panel containing information, variables and controls about the gamemode and scheduled event
 /datum/controller/subsystem/gamemode/proc/admin_panel(mob/user)
@@ -812,7 +666,7 @@ SUBSYSTEM_DEF(gamemode)
 	dat += "Storyteller: [current_storyteller ? "[current_storyteller.name]" : "None"] "
 	dat += " <a href='byond://?src=[REF(src)];panel=main;action=halt_storyteller' [halted_storyteller ? "class='linkOn'" : ""]>HALT Storyteller</a> <a href='byond://?src=[REF(src)];panel=main;action=open_stats'>Event Panel</a> <a href='byond://?src=[REF(src)];panel=main;action=set_storyteller'>Set Storyteller</a> <a href='byond://?src=[REF(src)];panel=main'>Refresh</a>"
 	dat += "<BR><font color='#888888'><i>Storyteller determines points gained, event chances, and is the entity responsible for rolling events.</i></font>"
-	dat += "<BR>Active Players: [active_players]   (Head: [head_crew], Sec: [sec_crew], Eng: [eng_crew], Med: [med_crew])"
+	dat += "<BR>Active Players: [active_players]   (Royalty: [royalty], Garrison: [garrison], Town Workers: [constructor], Church: [church])"
 	dat += "<BR>Antagonist Count vs Maximum: [get_antag_count()] / [get_antag_cap()]"
 	dat += "<HR>"
 	dat += "<a href='byond://?src=[REF(src)];panel=main;action=tab;tab=[GAMEMODE_PANEL_MAIN]' [panel_page == GAMEMODE_PANEL_MAIN ? "class='linkOn'" : ""]>Main</a>"
@@ -975,7 +829,7 @@ SUBSYSTEM_DEF(gamemode)
 		var/players_amt = get_active_player_count(alive_check = 1, afk_check = 1, human_check = 1)
 		if(event.roundstart != roundstart_event_view)
 			continue
-		if(event.can_spawn_event(players_amt))
+		if(event.canSpawnEvent(players_amt))
 			total_weight += event.calculated_weight
 			assoc_spawn_weight[event] = event.calculated_weight
 		else

@@ -4,7 +4,7 @@ GLOBAL_LIST_INIT(badomens, list())
 /datum/round_event_control/rogue
 	name = null
 
-/datum/round_event_control/rogue/canSpawnEvent()
+/datum/round_event_control/rogue/canSpawnEvent(players_amt, gamemode, fake_check)
 	. = ..()
 	if(!.)
 		return .

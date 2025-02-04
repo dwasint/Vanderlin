@@ -13,7 +13,7 @@
 	var/spawncount = 5
 	var/list/starts
 
-/datum/round_event_control/rogue/gobinvade/canSpawnEvent()
+/datum/round_event_control/rogue/gobinvade/canSpawnEvent(players_amt, gamemode, fake_check)
 	if(!LAZYLEN(GLOB.hauntstart))
 		return FALSE
 	. = ..()

@@ -121,7 +121,7 @@
 		// Determine which events are valid to pick
 		for(var/datum/round_event_control/event as anything in mode.event_pools[track])
 			var/players_amt = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE)
-			if(event.can_spawn_event(players_amt))
+			if(event.canSpawnEvent(players_amt))
 				if(QDELETED(event))
 					message_admins("[event.name] was deleted!")
 					continue
@@ -131,7 +131,7 @@
 			message_admins("Storyteller failed to pick an event for track of [track].")
 			mode.event_track_points[track] *= TRACK_FAIL_POINT_PENALTY_MULTIPLIER
 			return
-		picked_event = pick_weight(valid_events)
+		picked_event = pickweight(valid_events)
 		if(!picked_event)
 			if(length(valid_events))
 				var/added_string = ""

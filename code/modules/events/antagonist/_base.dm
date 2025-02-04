@@ -30,12 +30,12 @@
 	var/job_check = 0
 	var/list/enemy_players = list()
 	if(roundstart)
-		for(var/enemy in enemy_roles)
-			var/datum/job/enemy_job = SSjob.GetJob(enemy)
-			if(enemy_job && SSjob.assigned_players_by_job[enemy_job.type])
-				job_check += length(SSjob.assigned_players_by_job[enemy_job.type])
-				enemy_players += SSjob.assigned_players_by_job[enemy_job.type]
-
+		for(var/mob/living/player as anything in GLOB.mob_living_list)
+			if(!player.mind)
+				continue
+			if(player.mind.assigned_role in enemy_roles)
+				job_check++
+				enemy_players++
 	else
 		for(var/mob/M in GLOB.mob_living_list)
 			if (M.stat == DEAD)
@@ -53,7 +53,7 @@
 	if(CONFIG_GET(flag/protect_roles_from_antagonist))
 		restricted_roles |= protected_roles
 
-/datum/round_event_control/antagonist/canSpawnEvent(players_amt, gamemode)
+/datum/round_event_control/antagonist/canSpawnEvent(players_amt, gamemode, fake_check)
 	. = ..()
 	if(!check_required())
 		return FALSE

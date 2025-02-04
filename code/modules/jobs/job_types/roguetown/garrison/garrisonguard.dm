@@ -45,10 +45,12 @@
 
 //Universal stuff for all guards, regardless of their class selection.
 /datum/outfit/job/roguetown/guardsman
+	job_bitflag = BITFLAG_GARRISON
 	pants = /obj/item/clothing/under/roguetown/trou/leather
 	cloak = /obj/item/clothing/cloak/stabard/guard
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	belt = /obj/item/storage/belt/rogue/leather
+
 
 /* ! ! ! Class Selection Section Below ! ! !
 Design philosphy:

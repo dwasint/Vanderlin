@@ -156,6 +156,9 @@ SUBSYSTEM_DEF(vote)
 						to_chat(world, "\n<font color='purple'>[ROUND_END_TIME_VERBAL]</font>")
 						C.roundvoteend = TRUE
 						C.round_ends_at = GLOB.round_timer + ROUND_END_TIME
+			if("storyteller")
+				SSgamemode.storyteller_vote_result(.)
+
 	if(restart)
 		var/active_admins = 0
 		for(var/client/C in GLOB.admins)
@@ -238,12 +241,16 @@ SUBSYSTEM_DEF(vote)
 			if("endround")
 				initiator_key = pick("Zlod", "Sun King", "Gaia", "Aeon", "Gemini", "Aries")
 				choices.Add("Continue Playing","End Round")
+			if("storyteller")
+				choices.Add(SSgamemode.storyteller_vote_choices())
 			else
 				return 0
 		mode = vote_type
 		initiator = initiator_key
 		started_time = world.time
 		var/text = "[capitalize(mode)] vote started by [initiator]."
+		if(mode == "storyteller")
+			text = initiator
 		if(mode == "custom")
 			text += "\n[question]"
 		log_vote(text)

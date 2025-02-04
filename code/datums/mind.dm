@@ -101,6 +101,9 @@
 
 	/// Variable that lets the event picker see if someones getting chosen or not
 	var/picking = FALSE
+	///the bitflag our job applied
+	var/job_bitflag = NONE
+
 
 /datum/mind/New(key)
 	src.key = key
@@ -450,7 +453,7 @@
 		antag_team.add_member(src)
 	A.on_gain()
 	log_game("[key_name(src)] has gained antag datum [A.name]([A.type])")
-	var/client/picked_client = get_player_client(src)
+	var/client/picked_client = src.current?.client
 	picked_client?.mob?.mind.picking = FALSE
 	return A
 

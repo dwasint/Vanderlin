@@ -50,7 +50,7 @@
 	remove_occurence()
 
 	///If we can't spawn the scheduled event, refund it.
-	if(!ignores_checks && !event.can_spawn_event(1000)) //FALSE argument to ignore popchecks, to prevent scheduled events from failing from people dying/cryoing etc.
+	if(!ignores_checks && !event.canSpawnEvent(1000)) //FALSE argument to ignore popchecks, to prevent scheduled events from failing from people dying/cryoing etc.
 		message_admins("Scheduled Event: [event] was unable to run and has been refunded.")
 		SSgamemode.refund_scheduled_event(src)
 		return

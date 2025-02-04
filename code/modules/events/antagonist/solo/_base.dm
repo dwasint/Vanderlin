@@ -26,7 +26,7 @@
 	candidates = trim_candidates(candidates)
 	return candidates
 
-/datum/round_event_control/antagonist/solo/canSpawnEvent(players_amt, gamemode)
+/datum/round_event_control/antagonist/solo/canSpawnEvent(players_amt, gamemode, fake_check)
 	. = ..()
 	if(!.)
 		return
@@ -118,7 +118,7 @@
 	for(var/mob/living/mob as anything in possible_candidates)
 		cliented_list += mob.client
 
-	while(length(weighted_candidates) && length(candidates) < antag_count) //both of these pick_n_take from weighted_candidates so this should be fine
+	while(length(possible_candidates) && length(candidates) < antag_count) //both of these pick_n_take from weighted_candidates so this should be fine
 		var/picked_ckey = pick_n_take(possible_candidates)
 		var/client/picked_client = GLOB.directory[picked_ckey]
 		if(QDELETED(picked_client))
@@ -175,7 +175,7 @@
 	if(!create_at)
 		SSjob.SendToLateJoin(new_character)
 
-	old_mob.client.prefs.safe_transfer_prefs_to(new_character)
+	old_mob.client.prefs.copy_to(new_character)
 	new_character.dna.update_dna_identity()
 	old_mob.mind.transfer_to(new_character)
 	if(qdel_old_mob)
@@ -215,7 +215,7 @@
 	*/
 
 	var/selected_count = 0
-	while(length(weighted_candidates) && selected_count < antag_count)
+	while(length(candidates) && selected_count < antag_count)
 		var/candidate_ckey = pick_n_take(candidates)
 		var/client/candidate_client = GLOB.directory[candidate_ckey]
 		if(QDELETED(candidate_client) || QDELETED(candidate_client.mob))
@@ -230,3 +230,19 @@
 		setup_minds += new_human.mind
 		selected_count++
 	setup = TRUE
+
+
+///Uses stripped down and bastardized code from respawn character
+/proc/make_body(mob/dead/observer/ghost_player)
+	if(!ghost_player || !ghost_player.key)
+		return
+
+	//First we spawn a dude.
+	var/mob/living/carbon/human/new_character = new//The mob being spawned.
+	SSjob.SendToLateJoin(new_character)
+
+	ghost_player.client.prefs.copy_to(new_character)
+	new_character.dna.update_dna_identity()
+	new_character.key = ghost_player.key
+
+	return new_character
