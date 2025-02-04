@@ -98,35 +98,26 @@ SUBSYSTEM_DEF(events)
 //aka Badmin Central
 // > Not in modules/admin
 // REEEEEEEEE
+
 /client/proc/forceEvent()
 	set name = "Trigger Event"
 	set category = "Fun"
-
 	if(!holder ||!check_rights(R_FUN))
 		return
+	holder.forceEvent(usr)
 
-	holder.forceEvent()
+/datum/admins/proc/forceEvent(mob/user)
+	SSgamemode.event_panel(user)
 
-/datum/admins/proc/forceEvent()
-	var/dat 	= ""
-	var/normal 	= ""
-	var/magic 	= ""
-	var/holiday = ""
-	for(var/datum/round_event_control/E in SSevents.control)
-		dat = "<BR><A href='byond://?src=[REF(src)];[HrefToken()];forceevent=[REF(E)]'>[E]</A>"
-		if(E.holidayID)
-			holiday	+= dat
-		else if(E.wizardevent)
-			magic 	+= dat
-		else
-			normal 	+= dat
+/client/proc/forceGamemode()
+	set name = "Open Gamemode Panel"
+	set category = "Fun"
+	if(!holder ||!check_rights(R_FUN))
+		return
+	holder.forceGamemode(usr)
 
-	dat = normal + "<BR>" + magic + "<BR>" + holiday
-
-	var/datum/browser/popup = new(usr, "forceevent", "Force Random Event", 300, 750)
-	popup.set_content(dat)
-	popup.open()
-
+/datum/admins/proc/forceGamemode(mob/user)
+	SSgamemode.admin_panel(user)
 
 /*
 //////////////

@@ -1,0 +1,74 @@
+
+/datum/round_event_control/antagonist
+	checks_antag_cap = TRUE
+	track = EVENT_TRACK_ROLESET
+	///list of required roles, needed for this to form
+	var/list/exclusive_roles
+	/// Protected roles from the antag roll. People will not get those roles if a config is enabled
+	var/list/protected_roles
+	/// Restricted roles from the antag roll
+	var/list/restricted_roles
+	var/event_icon_state
+
+/datum/round_event_control/antagonist/proc/check_required()
+	if(!length(exclusive_roles))
+		return TRUE
+	for (var/mob/M in GLOB.mob_living_list)
+		if (M.stat == DEAD)
+			continue // Dead players cannot count as passing requirements
+		if(M.mind && (M.mind.assigned_role in exclusive_roles))
+			return TRUE
+
+/datum/round_event_control/antagonist/proc/trim_candidates(list/candidates)
+	return candidates
+
+/// Check if our enemy_roles requirement is met, if return_players is set then we will return the list of enemy players instead
+/datum/round_event_control/proc/check_enemies(return_players = FALSE)
+	if(!length(enemy_roles))
+		return return_players ? list() : TRUE
+
+	var/job_check = 0
+	var/list/enemy_players = list()
+	if(roundstart)
+		for(var/enemy in enemy_roles)
+			var/datum/job/enemy_job = SSjob.GetJob(enemy)
+			if(enemy_job && SSjob.assigned_players_by_job[enemy_job.type])
+				job_check += length(SSjob.assigned_players_by_job[enemy_job.type])
+				enemy_players += SSjob.assigned_players_by_job[enemy_job.type]
+
+	else
+		for(var/mob/M in GLOB.mob_living_list)
+			if (M.stat == DEAD)
+				continue // Dead players cannot count as opponents
+			if (M.mind && (M.mind.assigned_role in enemy_roles))
+				job_check++ // Checking for "enemies" (such as sec officers). To be counters, they must either not be candidates to that
+				enemy_players += M
+
+	if(job_check >= required_enemies)
+		return return_players ? enemy_players : TRUE
+	return return_players ? enemy_players : FALSE
+
+/datum/round_event_control/antagonist/New()
+	. = ..()
+	if(CONFIG_GET(flag/protect_roles_from_antagonist))
+		restricted_roles |= protected_roles
+
+/datum/round_event_control/antagonist/canSpawnEvent(players_amt, gamemode)
+	. = ..()
+	if(!check_required())
+		return FALSE
+
+	if(!.)
+		return
+
+/datum/round_event_control/antagonist/return_failure_string(players_amt)
+	. =..()
+	if(!check_enemies())
+		if(.)
+			. += ", "
+		. += "No Enemies"
+	if(!check_required())
+		if(.)
+			. += ", "
+		. += "No Required"
+	return .

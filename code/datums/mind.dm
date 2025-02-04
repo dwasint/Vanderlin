@@ -99,6 +99,9 @@
 
 	var/list/apprentices = list()
 
+	/// Variable that lets the event picker see if someones getting chosen or not
+	var/picking = FALSE
+
 /datum/mind/New(key)
 	src.key = key
 	soulOwner = src
@@ -447,6 +450,8 @@
 		antag_team.add_member(src)
 	A.on_gain()
 	log_game("[key_name(src)] has gained antag datum [A.name]([A.type])")
+	var/client/picked_client = get_player_client(src)
+	picked_client?.mob?.mind.picking = FALSE
 	return A
 
 /datum/mind/proc/remove_antag_datum(datum_type)
