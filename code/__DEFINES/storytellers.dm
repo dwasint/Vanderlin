@@ -9,6 +9,7 @@
 #define TAG_RAID "raid"
 #define TAG_TRADE "trade"
 #define TAG_WIDESPREAD "widespread"
+#define TAG_VILLIAN "villian"
 
 #define EVENT_TRACK_MUNDANE "Mundane"
 #define EVENT_TRACK_MODERATE "Moderate"

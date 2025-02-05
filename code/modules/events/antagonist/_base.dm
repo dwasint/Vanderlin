@@ -35,7 +35,7 @@
 				continue
 			if(player.mind.assigned_role in enemy_roles)
 				job_check++
-				enemy_players++
+				enemy_players += player
 	else
 		for(var/mob/M in GLOB.mob_living_list)
 			if (M.stat == DEAD)

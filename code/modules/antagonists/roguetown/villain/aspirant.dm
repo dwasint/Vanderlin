@@ -9,6 +9,7 @@
 		"THE CHOSEN MUST TAKE THE THRONE!",
 	)
 	increase_votepwr = FALSE
+	antag_flags = FLAG_FAKE_ANTAG
 
 /datum/antagonist/aspirant/supporter
 	name = "Supporter"
