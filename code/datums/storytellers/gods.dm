@@ -126,3 +126,22 @@
 		EVENT_TRACK_OMENS = 1,
 		EVENT_TRACK_RAIDS = 0,
 	)
+
+/datum/storyteller/dendor
+	name = "Dendor"
+	desc = "Dendor likes to send nature themed events."
+	weight = 4
+	always_votable = TRUE
+
+	tag_multipliers = list(
+		TAG_NATURE = 1.5,
+	)
+
+	point_gains_multipliers = list(
+		EVENT_TRACK_MUNDANE = 1,
+		EVENT_TRACK_MODERATE = 1,
+		EVENT_TRACK_INTERVENTION = 2,
+		EVENT_TRACK_CHARACTER_INJECTION = 1,
+		EVENT_TRACK_OMENS = 1,
+		EVENT_TRACK_RAIDS = 1,
+	)

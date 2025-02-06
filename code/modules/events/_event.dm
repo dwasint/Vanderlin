@@ -62,7 +62,7 @@
 	if(roundstart && (world.time-SSticker.round_start_time >= 2 MINUTES))
 		string += "Roundstart"
 	if(length(todreq) && !(GLOB.tod in todreq))
-		string += "Wrong time of Day."
+		string += "Wrong Time of Day"
 	if(occurrences >= max_occurrences)
 		if(string)
 			string += ","

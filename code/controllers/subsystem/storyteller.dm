@@ -615,7 +615,7 @@ SUBSYSTEM_DEF(gamemode)
 		secret_storyteller = TRUE
 		selected_storyteller = pickweight(get_valid_storytellers(TRUE))
 		return
-	SSvote.initiate_vote("storyteller", "Which god watches thee?")
+	pick_most_devoted(TRUE)
 
 /datum/controller/subsystem/gamemode/proc/storyteller_vote_choices()
 	var/list/final_choices = list()
@@ -999,6 +999,38 @@ SUBSYSTEM_DEF(gamemode)
 				continue
 			listed.occurrences++
 			listed.occurrences++
+
+/datum/controller/subsystem/gamemode/proc/pick_most_devoted(roundstart = FALSE)
+	var/list/storytellers_with_votes = list()
+	for(var/client/client in GLOB.clients)
+		var/mob/living/living = client.mob
+		if(!roundstart)
+			if(!living.mind)
+				continue
+			if(living.stat == DEAD)
+				continue
+			if(!living.patron)
+				continue
+			if(!initial(living.patron.storyteller))
+				continue
+			storytellers_with_votes |= initial(living.patron.storyteller)
+			storytellers_with_votes[initial(living.patron.storyteller)]++
+		else
+			storytellers_with_votes |= initial(client.prefs.selected_patron.storyteller)
+			storytellers_with_votes[initial(client.prefs.selected_patron.storyteller)]++
+
+	var/datum/storyteller/highest
+	for(var/datum/storyteller/listed as anything in storytellers_with_votes)
+		if(!highest)
+			highest = listed
+			continue
+		if(storytellers_with_votes[listed] < storytellers_with_votes[highest])
+			continue
+
+		if(storytellers_with_votes[listed] == storytellers_with_votes[highest] && prob(50))
+			continue
+		highest = listed
+	set_storyteller(highest)
 
 #undef DEFAULT_STORYTELLER_VOTE_OPTIONS
 #undef MAX_POP_FOR_STORYTELLER_VOTE
