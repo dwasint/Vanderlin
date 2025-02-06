@@ -304,7 +304,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/Lore_Primer.json")
 /mob/dead/new_player/proc/IsJobUnavailable(rank, latejoin = FALSE)
 	if(istype(SSticker.mode, /datum/game_mode/chaosmode))
 		var/datum/game_mode/chaosmode/C = SSticker.mode
-		if(C.skeletons)
+		if(has_world_trait(/datum/world_trait/skeleton_siege))
 			if(rank != "Skeleton")
 				return JOB_UNAVAILABLE_GENERIC
 			else
@@ -312,6 +312,16 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/Lore_Primer.json")
 		else
 			if(rank == "Skeleton")
 				return JOB_UNAVAILABLE_GENERIC
+
+		if(has_world_trait(/datum/world_trait/goblin_siege))
+			if(rank != "Goblin")
+				return JOB_UNAVAILABLE_GENERIC
+			else
+				return JOB_AVAILABLE
+		else
+			if(rank == "Goblin")
+				return JOB_UNAVAILABLE_GENERIC
+
 		if(C.deathknightspawn)
 			if(rank != "Death Knight")
 				return JOB_UNAVAILABLE_GENERIC
@@ -515,8 +525,22 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/Lore_Primer.json")
 			dat += "<legend align='center' style='font-weight: bold; color: [cat_color]'>[cat_name]</legend>"
 			var/datum/game_mode/chaosmode/C = SSticker.mode
 			if(istype(C))
-				if(C.skeletons)
+				if(has_world_trait(/datum/world_trait/skeleton_siege))
 					dat += "<a class='job command' href='byond://?src=[REF(src)];SelectedJob=Skeleton'>BECOME AN EVIL SKELETON</a>"
+					dat += "</fieldset><br>"
+					column_counter++
+					if(column_counter > 0 && (column_counter % 3 == 0))
+						dat += "</td><td valign='top'>"
+					break
+				if(has_world_trait(/datum/world_trait/goblin_siege))
+					dat += "<a class='job command' href='byond://?src=[REF(src)];SelectedJob=Goblin'>BECOME A GOBLIN</a>"
+					dat += "</fieldset><br>"
+					column_counter++
+					if(column_counter > 0 && (column_counter % 3 == 0))
+						dat += "</td><td valign='top'>"
+					break
+				if(has_world_trait(/datum/world_trait/rousman_siege))
+					dat += "<a class='job command' href='byond://?src=[REF(src)];SelectedJob=Rousman'>BECOME A ROUSMAN</a>"
 					dat += "</fieldset><br>"
 					column_counter++
 					if(column_counter > 0 && (column_counter % 3 == 0))
