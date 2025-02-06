@@ -15,6 +15,9 @@ SUBSYSTEM_DEF(gamemode)
 	wait = 2 SECONDS
 	lazy_load = FALSE
 
+	///world.time of our last devotion check we add 2 minutes to this to determine if we should switch storytellers
+	var/last_devotion_check = 0
+
 	/// List of our event tracks for fast access during for loops.
 	var/list/event_tracks = EVENT_TRACKS
 	/// Our storyteller. They progresses our trackboards and picks out events
@@ -206,6 +209,10 @@ SUBSYSTEM_DEF(gamemode)
 	. = ..()
 
 /datum/controller/subsystem/gamemode/fire(resumed = FALSE)
+	if(last_devotion_check < world.time)
+		pick_most_devoted()
+		last_devotion_check = world.time + 2 MINUTES
+
 	if(SSticker.round_start_time && (world.time - SSticker.round_start_time) >= ROUNDSTART_VALID_TIMEFRAME)
 		can_run_roundstart = FALSE
 	else if(current_roundstart_event && length(current_roundstart_event.preferred_events)) //note that this implementation is made for preferred_events being other roundstart events
@@ -1030,6 +1037,8 @@ SUBSYSTEM_DEF(gamemode)
 		if(storytellers_with_votes[listed] == storytellers_with_votes[highest] && prob(50))
 			continue
 		highest = listed
+	if(!highest)
+		return
 	set_storyteller(highest)
 
 #undef DEFAULT_STORYTELLER_VOTE_OPTIONS
