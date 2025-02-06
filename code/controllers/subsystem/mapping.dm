@@ -44,6 +44,9 @@ SUBSYSTEM_DEF(mapping)
 	var/datum/space_level/empty_space
 	var/num_of_res_levels = 1
 
+	///this is a list of all the world_traits we have from things like god interventions
+	var/list/active_world_traits = list()
+
 //dlete dis once #39770 is resolved
 /datum/controller/subsystem/mapping/proc/HACK_LoadMapConfig()
 	if(!config)
@@ -427,3 +430,38 @@ SUBSYSTEM_DEF(mapping)
 			else
 				//Loading the template failed somehow (template.load returned a FALSE), did you spell the paths right?
 				log_world("SSMapping: Failed to load template: [template.name] ([template.mappath])")
+
+/datum/controller/subsystem/mapping/proc/add_world_trait(datum/world_trait/trait_type, duration = 30 MINUTES)
+	var/datum/world_trait/new_trait = new trait_type
+	active_world_traits |= new_trait
+
+	addtimer(CALLBACK(src, PROC_REF(remove_world_trait), new_trait), duration)
+
+/datum/controller/subsystem/mapping/proc/remove_world_trait(datum/world_trait/trait_to_remove)
+	active_world_traits -= trait_to_remove
+	qdel(trait_to_remove)
+
+/proc/has_world_trait(datum/world_trait/trait_type)
+	if(!length(SSmapping.active_world_traits))
+		return FALSE
+	for(var/datum/world_trait/trait in SSmapping.active_world_traits)
+		if(!istype(trait, trait_type))
+			continue
+		return TRUE
+	return FALSE
+
+/proc/add_tracked_world_trait_atom(atom/incoming, datum/world_trait/trait_type)
+	if(!length(SSmapping.active_world_traits))
+		return FALSE
+	for(var/datum/world_trait/trait in SSmapping.active_world_traits)
+		if(!istype(trait, trait_type))
+			continue
+		trait.add_tracked(incoming)
+
+/proc/remove_tracked_world_trait_atom(atom/removing, datum/world_trait/trait_type)
+	if(!length(SSmapping.active_world_traits))
+		return FALSE
+	for(var/datum/world_trait/trait in SSmapping.active_world_traits)
+		if(!istype(trait, trait_type))
+			continue
+		trait.remove_tracked(removing)

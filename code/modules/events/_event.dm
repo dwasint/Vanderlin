@@ -61,7 +61,13 @@
 	var/string
 	if(roundstart && (world.time-SSticker.round_start_time >= 2 MINUTES))
 		string += "Roundstart"
+	if(length(allowed_storytellers) && !(SSgamemode.current_storyteller.type in allowed_storytellers))
+		if(string)
+			string += ","
+		string += "Wrong God"
 	if(length(todreq) && !(GLOB.tod in todreq))
+		if(string)
+			string += ","
 		string += "Wrong Time of Day"
 	if(occurrences >= max_occurrences)
 		if(string)
@@ -114,6 +120,9 @@
 		return FALSE
 	if(!(GLOB.tod in todreq))
 		return FALSE
+	if(length(allowed_storytellers))
+		if(!(SSgamemode.current_storyteller.type in allowed_storytellers))
+			return FALSE
 	if(req_omen)
 		if(!GLOB.badomens.len)
 			return FALSE

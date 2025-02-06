@@ -17,7 +17,7 @@
 		if(turfs.len) //Pick a turf to spawn at if we can
 			var/turf/T = pick_n_take(turfs)
 			message_admins("VINES at [ADMIN_VERBOSEJMP(T)]")
-			new /datum/spacevine_controller(T, event = src) //spawn a controller at turf
+			new /datum/vine_controller(T, event = src) //spawn a controller at turf
 
 /datum/vine_mutation
 	var/name = ""
@@ -75,6 +75,18 @@
 /datum/vine_mutation/light/on_grow(obj/structure/vine/holder)
 	if(holder.energy)
 		holder.set_light(severity, severity, 0.3)
+
+/datum/vine_mutation/healing
+	name = "healing"
+	hue = "#b551e4"
+	quality = POSITIVE
+	severity = 50
+
+/datum/vine_mutation/healing/on_cross(obj/structure/vine/holder, mob/living/crosser)
+	if(prob(severity) && istype(crosser) && !isvineimmune(crosser))
+		to_chat(crosser, "<span class='alert'>I accidentally touch the vine and feel a strange sensation.</span>")
+		crosser.adjustBruteLoss(-2, updating_health = FALSE)
+		crosser.adjustFireLoss(-2, updating_health = FALSE)
 
 /datum/vine_mutation/toxicity
 	name = "toxic"
@@ -204,7 +216,7 @@
 	damage_deflection = 5
 	blade_dulling = DULLING_CUT
 	var/energy = 0
-	var/datum/spacevine_controller/master = null
+	var/datum/vine_controller/master = null
 	var/list/mutations = list()
 	break_sound = "plantcross"
 	destroy_sound = null
@@ -296,7 +308,7 @@
 		SM.on_hit(src, user)
 	user_unbuckle_mob(user,user)
 
-/datum/spacevine_controller
+/datum/vine_controller
 	var/list/obj/structure/vine/vines
 	var/obj/structure/flora/roguetree/evil/tree
 	var/list/growth_queue
@@ -305,7 +317,7 @@
 	var/list/vine_mutations_list
 	var/mutativeness = 1
 
-/datum/spacevine_controller/New(turf/location, list/muts, potency, production, datum/round_event/event = null)
+/datum/vine_controller/New(turf/location, list/muts, potency, production, datum/round_event/event = null)
 	vines = list()
 	growth_queue = list()
 	var/obj/structure/vine/SV = spawn_spacevine_piece(location, null, muts)
@@ -322,24 +334,24 @@
 	tree = new /obj/structure/flora/roguetree/evil(location)
 	tree.controller = src
 
-/datum/spacevine_controller/vv_get_dropdown()
+/datum/vine_controller/vv_get_dropdown()
 	. = ..()
 	VV_DROPDOWN_OPTION(VV_HK_SPACEVINE_PURGE, "Delete Vines")
 
-/datum/spacevine_controller/vv_do_topic(href_list)
+/datum/vine_controller/vv_do_topic(href_list)
 	. = ..()
 	if(href_list[VV_HK_SPACEVINE_PURGE])
 		if(alert(usr, "Are you sure you want to delete this spacevine cluster?", "Delete Vines", "Yes", "No") == "Yes")
 			DeleteVines()
 
-/datum/spacevine_controller/proc/DeleteVines()	//this is kill
+/datum/vine_controller/proc/DeleteVines()	//this is kill
 	QDEL_LIST(vines)	//this will also qdel us
 
-/datum/spacevine_controller/Destroy()
+/datum/vine_controller/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/datum/spacevine_controller/proc/spawn_spacevine_piece(turf/location, obj/structure/vine/parent, list/muts)
+/datum/vine_controller/proc/spawn_spacevine_piece(turf/location, obj/structure/vine/parent, list/muts)
 	var/obj/structure/vine/SV = new(location)
 	growth_queue += SV
 	vines += SV
@@ -361,12 +373,12 @@
 	location.Entered(SV)
 	return SV
 
-/datum/spacevine_controller/proc/endvines()
+/datum/vine_controller/proc/endvines()
 	for(var/obj/structure/vine/V in vines)
 		V.dieepic()
 	qdel(src)
 
-/datum/spacevine_controller/proc/VineDestroyed(obj/structure/vine/S)
+/datum/vine_controller/proc/VineDestroyed(obj/structure/vine/S)
 	S.master = null
 	vines -= S
 	growth_queue -= S
@@ -377,7 +389,7 @@
 //		KZ.set_production((spread_cap / initial(spread_cap)) * 5)
 		qdel(src)
 
-/datum/spacevine_controller/process()
+/datum/vine_controller/process()
 	if(!LAZYLEN(vines))
 		if(!tree)
 			qdel(src) //space vines exterminated. Remove the controller
