@@ -119,8 +119,8 @@
 		cliented_list += mob.client
 
 	while(length(possible_candidates) && length(candidates) < antag_count) //both of these pick_n_take from weighted_candidates so this should be fine
-		var/picked_ckey = pick_n_take(possible_candidates)
-		var/client/picked_client = GLOB.directory[picked_ckey]
+		var/mob/picked_ckey = pick_n_take(possible_candidates)
+		var/client/picked_client = picked_ckey.client
 		if(QDELETED(picked_client))
 			continue
 		var/mob/picked_mob = picked_client.mob
@@ -216,8 +216,8 @@
 
 	var/selected_count = 0
 	while(length(candidates) && selected_count < antag_count)
-		var/candidate_ckey = pick_n_take(candidates)
-		var/client/candidate_client = GLOB.directory[candidate_ckey]
+		var/mob/candidate_ckey = pick_n_take(candidates)
+		var/client/candidate_client = candidate_ckey.client
 		if(QDELETED(candidate_client) || QDELETED(candidate_client.mob))
 			continue
 		var/mob/candidate = candidate_client.mob

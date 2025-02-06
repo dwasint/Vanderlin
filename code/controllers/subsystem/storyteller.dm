@@ -29,51 +29,57 @@ SUBSYSTEM_DEF(gamemode)
 	var/list/event_track_points = list(
 		EVENT_TRACK_MUNDANE = 0,
 		EVENT_TRACK_MODERATE = 0,
-		EVENT_TRACK_MAJOR = 0,
-		EVENT_TRACK_ROLESET = 0,
-		EVENT_TRACK_OBJECTIVES = 0
+		EVENT_TRACK_INTERVENTION = 0,
+		EVENT_TRACK_CHARACTER_INJECTION = 0,
+		EVENT_TRACK_OMENS = 0,
+		EVENT_TRACK_RAIDS = 0,
 		)
 	/// Last point amount gained of each track. Those are recorded for purposes of estimating how long until next event.
 	var/list/last_point_gains = list(
 		EVENT_TRACK_MUNDANE = 0,
 		EVENT_TRACK_MODERATE = 0,
-		EVENT_TRACK_MAJOR = 0,
-		EVENT_TRACK_ROLESET = 0,
-		EVENT_TRACK_OBJECTIVES = 0
+		EVENT_TRACK_INTERVENTION = 0,
+		EVENT_TRACK_CHARACTER_INJECTION = 0,
+		EVENT_TRACK_OMENS = 0,
+		EVENT_TRACK_RAIDS = 0,
 		)
 	/// Point thresholds at which the events are supposed to be rolled, it is also the base cost for events.
 	var/list/point_thresholds = list(
 		EVENT_TRACK_MUNDANE = MUNDANE_POINT_THRESHOLD,
 		EVENT_TRACK_MODERATE = MODERATE_POINT_THRESHOLD,
-		EVENT_TRACK_MAJOR = MAJOR_POINT_THRESHOLD,
-		EVENT_TRACK_ROLESET = ROLESET_POINT_THRESHOLD,
-		EVENT_TRACK_OBJECTIVES = OBJECTIVES_POINT_THRESHOLD
+		EVENT_TRACK_INTERVENTION = MAJOR_POINT_THRESHOLD,
+		EVENT_TRACK_CHARACTER_INJECTION = ROLESET_POINT_THRESHOLD,
+		EVENT_TRACK_OMENS = OBJECTIVES_POINT_THRESHOLD,
+		EVENT_TRACK_RAIDS = OBJECTIVES_POINT_THRESHOLD,
 		)
 
 	/// Minimum population thresholds for the tracks to fire off events.
 	var/list/min_pop_thresholds = list(
 		EVENT_TRACK_MUNDANE = MUNDANE_MIN_POP,
 		EVENT_TRACK_MODERATE = MODERATE_MIN_POP,
-		EVENT_TRACK_MAJOR = MAJOR_MIN_POP,
-		EVENT_TRACK_ROLESET = ROLESET_MIN_POP,
-		EVENT_TRACK_OBJECTIVES = OBJECTIVES_MIN_POP
+		EVENT_TRACK_INTERVENTION = MAJOR_MIN_POP,
+		EVENT_TRACK_CHARACTER_INJECTION = ROLESET_MIN_POP,
+		EVENT_TRACK_OMENS = OBJECTIVES_MIN_POP,
+		EVENT_TRACK_RAIDS = OBJECTIVES_MIN_POP,
 		)
 
 	/// Configurable multipliers for point gain over time.
 	var/list/point_gain_multipliers = list(
 		EVENT_TRACK_MUNDANE = 1,
 		EVENT_TRACK_MODERATE = 1,
-		EVENT_TRACK_MAJOR = 1,
-		EVENT_TRACK_ROLESET = 1,
-		EVENT_TRACK_OBJECTIVES = 1
+		EVENT_TRACK_INTERVENTION = 1,
+		EVENT_TRACK_CHARACTER_INJECTION = 1,
+		EVENT_TRACK_OMENS = 1,
+		EVENT_TRACK_RAIDS = 1,
 		)
 	/// Configurable multipliers for roundstart points.
 	var/list/roundstart_point_multipliers = list(
 		EVENT_TRACK_MUNDANE = 1,
 		EVENT_TRACK_MODERATE = 1,
-		EVENT_TRACK_MAJOR = 1,
-		EVENT_TRACK_ROLESET = 1,
-		EVENT_TRACK_OBJECTIVES = 1
+		EVENT_TRACK_INTERVENTION = 1,
+		EVENT_TRACK_CHARACTER_INJECTION = 1,
+		EVENT_TRACK_OMENS = 1,
+		EVENT_TRACK_RAIDS = 1,
 		)
 	/// Whether we allow pop scaling. This is configured by config, or the storyteller UI
 	var/allow_pop_scaling = TRUE
@@ -82,27 +88,30 @@ SUBSYSTEM_DEF(gamemode)
 	var/list/pop_scale_thresholds = list(
 		EVENT_TRACK_MUNDANE = MUNDANE_POP_SCALE_THRESHOLD,
 		EVENT_TRACK_MODERATE = MODERATE_POP_SCALE_THRESHOLD,
-		EVENT_TRACK_MAJOR = MAJOR_POP_SCALE_THRESHOLD,
-		EVENT_TRACK_ROLESET = ROLESET_POP_SCALE_THRESHOLD,
-		EVENT_TRACK_OBJECTIVES = OBJECTIVES_POP_SCALE_THRESHOLD
+		EVENT_TRACK_INTERVENTION = MAJOR_POP_SCALE_THRESHOLD,
+		EVENT_TRACK_CHARACTER_INJECTION = ROLESET_POP_SCALE_THRESHOLD,
+		EVENT_TRACK_OMENS = OBJECTIVES_POP_SCALE_THRESHOLD,
+		EVENT_TRACK_RAIDS = OBJECTIVES_POP_SCALE_THRESHOLD,
 		)
 
 	/// Associative list of pop scale penalties.
 	var/list/pop_scale_penalties = list(
 		EVENT_TRACK_MUNDANE = MUNDANE_POP_SCALE_PENALTY,
 		EVENT_TRACK_MODERATE = MODERATE_POP_SCALE_PENALTY,
-		EVENT_TRACK_MAJOR = MAJOR_POP_SCALE_PENALTY,
-		EVENT_TRACK_ROLESET = ROLESET_POP_SCALE_PENALTY,
-		EVENT_TRACK_OBJECTIVES = OBJECTIVES_POP_SCALE_PENALTY
+		EVENT_TRACK_INTERVENTION = MAJOR_POP_SCALE_PENALTY,
+		EVENT_TRACK_CHARACTER_INJECTION = ROLESET_POP_SCALE_PENALTY,
+		EVENT_TRACK_OMENS = OBJECTIVES_POP_SCALE_PENALTY,
+		EVENT_TRACK_RAIDS = OBJECTIVES_POP_SCALE_PENALTY,
 		)
 
 	/// Associative list of active multipliers from pop scale penalty.
 	var/list/current_pop_scale_multipliers = list(
 		EVENT_TRACK_MUNDANE = 1,
 		EVENT_TRACK_MODERATE = 1,
-		EVENT_TRACK_MAJOR = 1,
-		EVENT_TRACK_ROLESET = 1,
-		EVENT_TRACK_OBJECTIVES = 1,
+		EVENT_TRACK_INTERVENTION = 1,
+		EVENT_TRACK_CHARACTER_INJECTION = 1,
+		EVENT_TRACK_OMENS = 1,
+		EVENT_TRACK_RAIDS = 1,
 		)
 
 
@@ -362,13 +371,16 @@ SUBSYSTEM_DEF(gamemode)
 			if(EVENT_TRACK_MODERATE)
 				base_amt = ROUNDSTART_MODERATE_BASE
 				gain_amt = ROUNDSTART_MODERATE_GAIN
-			if(EVENT_TRACK_MAJOR)
+			if(EVENT_TRACK_INTERVENTION)
 				base_amt = ROUNDSTART_MAJOR_BASE
 				gain_amt = ROUNDSTART_MAJOR_GAIN
-			if(EVENT_TRACK_ROLESET)
+			if(EVENT_TRACK_CHARACTER_INJECTION)
 				base_amt = ROUNDSTART_ROLESET_BASE
 				gain_amt = ROUNDSTART_ROLESET_GAIN
-			if(EVENT_TRACK_OBJECTIVES)
+			if(EVENT_TRACK_OMENS)
+				base_amt = ROUNDSTART_OBJECTIVES_BASE
+				gain_amt = ROUNDSTART_OBJECTIVES_GAIN
+			if(EVENT_TRACK_RAIDS)
 				base_amt = ROUNDSTART_OBJECTIVES_BASE
 				gain_amt = ROUNDSTART_OBJECTIVES_GAIN
 		var/calc_value = base_amt + (gain_amt * ready_players)
@@ -378,8 +390,8 @@ SUBSYSTEM_DEF(gamemode)
 		event_track_points[track] = round(calc_value)
 
 	/// If the storyteller guarantees an antagonist roll, add points to make it so.
-	if(current_storyteller.guarantees_roundstart_roleset && event_track_points[EVENT_TRACK_ROLESET] < point_thresholds[EVENT_TRACK_ROLESET])
-		event_track_points[EVENT_TRACK_ROLESET] = point_thresholds[EVENT_TRACK_ROLESET]
+	if(current_storyteller.guarantees_roundstart_roleset && event_track_points[EVENT_TRACK_CHARACTER_INJECTION] < point_thresholds[EVENT_TRACK_CHARACTER_INJECTION])
+		event_track_points[EVENT_TRACK_CHARACTER_INJECTION] = point_thresholds[EVENT_TRACK_CHARACTER_INJECTION]
 
 	/// If we have any forced events, ensure we get enough points for them
 	for(var/track in event_tracks)
@@ -572,27 +584,31 @@ SUBSYSTEM_DEF(gamemode)
 /datum/controller/subsystem/gamemode/proc/load_config_vars()
 	point_gain_multipliers[EVENT_TRACK_MUNDANE] = CONFIG_GET(number/mundane_point_gain_multiplier)
 	point_gain_multipliers[EVENT_TRACK_MODERATE] = CONFIG_GET(number/moderate_point_gain_multiplier)
-	point_gain_multipliers[EVENT_TRACK_MAJOR] = CONFIG_GET(number/major_point_gain_multiplier)
-	point_gain_multipliers[EVENT_TRACK_ROLESET] = CONFIG_GET(number/roleset_point_gain_multiplier)
-	point_gain_multipliers[EVENT_TRACK_OBJECTIVES] = CONFIG_GET(number/objectives_point_gain_multiplier)
+	point_gain_multipliers[EVENT_TRACK_INTERVENTION] = CONFIG_GET(number/major_point_gain_multiplier)
+	point_gain_multipliers[EVENT_TRACK_CHARACTER_INJECTION] = CONFIG_GET(number/roleset_point_gain_multiplier)
+	point_gain_multipliers[EVENT_TRACK_OMENS] = CONFIG_GET(number/objectives_point_gain_multiplier)
+	point_gain_multipliers[EVENT_TRACK_RAIDS] = CONFIG_GET(number/objectives_point_gain_multiplier)
 
 	roundstart_point_multipliers[EVENT_TRACK_MUNDANE] = CONFIG_GET(number/mundane_roundstart_point_multiplier)
 	roundstart_point_multipliers[EVENT_TRACK_MODERATE] = CONFIG_GET(number/moderate_roundstart_point_multiplier)
-	roundstart_point_multipliers[EVENT_TRACK_MAJOR] = CONFIG_GET(number/major_roundstart_point_multiplier)
-	roundstart_point_multipliers[EVENT_TRACK_ROLESET] = CONFIG_GET(number/roleset_roundstart_point_multiplier)
-	roundstart_point_multipliers[EVENT_TRACK_OBJECTIVES] = CONFIG_GET(number/objectives_roundstart_point_multiplier)
+	roundstart_point_multipliers[EVENT_TRACK_INTERVENTION] = CONFIG_GET(number/major_roundstart_point_multiplier)
+	roundstart_point_multipliers[EVENT_TRACK_CHARACTER_INJECTION] = CONFIG_GET(number/roleset_roundstart_point_multiplier)
+	roundstart_point_multipliers[EVENT_TRACK_OMENS] = CONFIG_GET(number/objectives_roundstart_point_multiplier)
+	roundstart_point_multipliers[EVENT_TRACK_RAIDS] = CONFIG_GET(number/objectives_roundstart_point_multiplier)
 
 	min_pop_thresholds[EVENT_TRACK_MUNDANE] = CONFIG_GET(number/mundane_min_pop)
 	min_pop_thresholds[EVENT_TRACK_MODERATE] = CONFIG_GET(number/moderate_min_pop)
-	min_pop_thresholds[EVENT_TRACK_MAJOR] = CONFIG_GET(number/major_min_pop)
-	min_pop_thresholds[EVENT_TRACK_ROLESET] = CONFIG_GET(number/roleset_min_pop)
-	min_pop_thresholds[EVENT_TRACK_OBJECTIVES] = CONFIG_GET(number/objectives_min_pop)
+	min_pop_thresholds[EVENT_TRACK_INTERVENTION] = CONFIG_GET(number/major_min_pop)
+	min_pop_thresholds[EVENT_TRACK_CHARACTER_INJECTION] = CONFIG_GET(number/roleset_min_pop)
+	min_pop_thresholds[EVENT_TRACK_OMENS] = CONFIG_GET(number/objectives_min_pop)
+	min_pop_thresholds[EVENT_TRACK_RAIDS] = CONFIG_GET(number/objectives_min_pop)
 
 	point_thresholds[EVENT_TRACK_MUNDANE] = CONFIG_GET(number/mundane_point_threshold)
 	point_thresholds[EVENT_TRACK_MODERATE] = CONFIG_GET(number/moderate_point_threshold)
-	point_thresholds[EVENT_TRACK_MAJOR] = CONFIG_GET(number/major_point_threshold)
-	point_thresholds[EVENT_TRACK_ROLESET] = CONFIG_GET(number/roleset_point_threshold)
-	point_thresholds[EVENT_TRACK_OBJECTIVES] = CONFIG_GET(number/objectives_point_threshold)
+	point_thresholds[EVENT_TRACK_INTERVENTION] = CONFIG_GET(number/major_point_threshold)
+	point_thresholds[EVENT_TRACK_CHARACTER_INJECTION] = CONFIG_GET(number/roleset_point_threshold)
+	point_thresholds[EVENT_TRACK_OMENS] = CONFIG_GET(number/objectives_point_threshold)
+	point_thresholds[EVENT_TRACK_RAIDS] = CONFIG_GET(number/objectives_point_threshold)
 
 /datum/controller/subsystem/gamemode/proc/handle_picking_storyteller()
 	if(length(GLOB.clients) > MAX_POP_FOR_STORYTELLER_VOTE)

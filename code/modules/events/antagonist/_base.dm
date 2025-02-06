@@ -1,7 +1,7 @@
 
 /datum/round_event_control/antagonist
 	checks_antag_cap = TRUE
-	track = EVENT_TRACK_ROLESET
+	track = EVENT_TRACK_CHARACTER_INJECTION
 	///list of required roles, needed for this to form
 	var/list/exclusive_roles
 	/// Protected roles from the antag roll. People will not get those roles if a config is enabled

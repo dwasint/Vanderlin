@@ -1,5 +1,5 @@
-/datum/round_event_control/antagonist/solo/vampires_and_werewolves
-	name = "Vampires and Verevolves"
+/datum/round_event_control/antagonist/solo/vampires
+	name = "Vampires"
 	tags = list(
 		TAG_COMBAT,
 		TAG_HAUNTED,
@@ -9,12 +9,13 @@
 	antag_flag = ROLE_NBEAST
 	shared_occurence_type = SHARED_HIGH_THREAT
 
-	base_antags = 2
-	maximum_antags = 4
+	base_antags = 1
+	maximum_antags = 3
 
 	earliest_start = 0 SECONDS
 
-	typepath = /datum/round_event/antagonist/solo/vampires_and_werewolves
+	typepath = /datum/round_event/antagonist/solo/vampire
+	antag_datum = /datum/antagonist/vampirelord
 
 	restricted_roles = list(
 		"Monarch",
@@ -50,22 +51,11 @@
 		"Apothecary"
 	)
 
-/datum/round_event/antagonist/solo/vampires_and_werewolves
+/datum/round_event/antagonist/solo/vampire
 	var/leader = FALSE
 
-/datum/round_event/antagonist/solo/vampires_and_werewolves/start()
-	var/vampire = FALSE
-	for(var/datum/mind/antag_mind as anything in setup_minds)
-		if(vampire)
-			add_vampire(antag_mind)
-		else
-			add_werewolf(antag_mind, antag_mind.current)
-		vampire = !vampire
-
-/datum/round_event/antagonist/solo/vampires_and_werewolves/proc/add_werewolf(datum/mind/antag_mind)
-	antag_mind.add_antag_datum(/datum/antagonist/werewolf)
-
-/datum/round_event/antagonist/solo/vampires_and_werewolves/proc/add_vampire(datum/mind/antag_mind)
+/datum/round_event/antagonist/solo/vampire/add_datum_to_mind(datum/mind/antag_mind)
+	. = ..()
 	if(!leader)
 		antag_mind.add_antag_datum(antag_datum)
 		leader = TRUE

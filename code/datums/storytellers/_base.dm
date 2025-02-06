@@ -13,17 +13,19 @@
 	var/list/starting_point_multipliers = list(
 		EVENT_TRACK_MUNDANE = 1,
 		EVENT_TRACK_MODERATE = 1,
-		EVENT_TRACK_MAJOR = 1,
-		EVENT_TRACK_ROLESET = 1,
-		EVENT_TRACK_OBJECTIVES = 1
+		EVENT_TRACK_INTERVENTION = 1,
+		EVENT_TRACK_CHARACTER_INJECTION = 1,
+		EVENT_TRACK_OMENS = 1,
+		EVENT_TRACK_RAIDS = 1,
 		)
 	/// Multipliers for point gains.
 	var/list/point_gains_multipliers = list(
 		EVENT_TRACK_MUNDANE = 1,
 		EVENT_TRACK_MODERATE = 1,
-		EVENT_TRACK_MAJOR = 1,
-		EVENT_TRACK_ROLESET = 1,
-		EVENT_TRACK_OBJECTIVES = 1
+		EVENT_TRACK_INTERVENTION = 1,
+		EVENT_TRACK_CHARACTER_INJECTION = 1,
+		EVENT_TRACK_OMENS = 1,
+		EVENT_TRACK_RAIDS = 1,
 		)
 	/// Multipliers of weight to apply for each tag of an event.
 	var/list/tag_multipliers
@@ -67,10 +69,10 @@
 		roundstart_checks = TRUE
 
 	if(SSgamemode.current_roundstart_event && !SSgamemode.ran_roundstart && (guarantees_roundstart_roleset || roundstart_checks))
-		buy_event(SSgamemode.current_roundstart_event, EVENT_TRACK_ROLESET, TRUE)
-		if(EVENT_TRACK_ROLESET in SSgamemode.forced_next_events)
-			SSgamemode.forced_next_events[EVENT_TRACK_ROLESET] = null
-			SSgamemode.forced_next_events -= EVENT_TRACK_ROLESET
+		buy_event(SSgamemode.current_roundstart_event, EVENT_TRACK_CHARACTER_INJECTION, TRUE)
+		if(EVENT_TRACK_CHARACTER_INJECTION in SSgamemode.forced_next_events)
+			SSgamemode.forced_next_events[EVENT_TRACK_CHARACTER_INJECTION] = null
+			SSgamemode.forced_next_events -= EVENT_TRACK_CHARACTER_INJECTION
 
 		log_storyteller("Running SSgamemode.current_roundstart_event\[[SSgamemode.current_roundstart_event]\]")
 		SSgamemode.ran_roundstart = TRUE

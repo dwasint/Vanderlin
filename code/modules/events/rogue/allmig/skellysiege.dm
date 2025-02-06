@@ -8,7 +8,7 @@
 	todreq = list("dusk", "night")
 	earliest_start = 35 MINUTES
 	tags = list(TAG_HAUNTED, TAG_COMBAT, TAG_RAID)
-	track = EVENT_TRACK_OBJECTIVES
+	track = EVENT_TRACK_RAIDS
 	var/last_siege
 
 /datum/round_event_control/rogue/worldsiege/canSpawnEvent(players_amt, gamemode, fake_check)
