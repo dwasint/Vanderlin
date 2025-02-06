@@ -1,7 +1,7 @@
 /datum/round_event_control/rogue/spacevine
 	name = "Evil Vines"
 	track = EVENT_TRACK_OMENS
-	typepath = /datum/round_event/spacevine
+	typepath = /datum/round_event/vines
 	weight = 4
 	max_occurrences = 1
 	min_players = 3
