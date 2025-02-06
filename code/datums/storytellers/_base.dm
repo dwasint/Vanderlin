@@ -9,6 +9,8 @@
 	var/welcome_text = "Set your eyes on the horizon."
 	/// This is the multiplier for repetition penalty in event weight. The lower the harsher it is
 	var/event_repetition_multiplier = 0.6
+	///if the event is forced regardless
+	var/forced = FALSE
 	/// Multipliers for starting points.
 	var/list/starting_point_multipliers = list(
 		EVENT_TRACK_MUNDANE = 1,
@@ -103,7 +105,7 @@
 /// Find and buy a valid event from a track.
 /datum/storyteller/proc/find_and_buy_event_from_track(track)
 	. = FALSE
-	var/are_forced = FALSE
+	var/are_forced = forced
 	var/datum/controller/subsystem/gamemode/mode = SSgamemode
 	var/datum/round_event_control/picked_event
 	if(mode.forced_next_events[track]) //Forced event by admin
@@ -123,7 +125,12 @@
 		// Determine which events are valid to pick
 		for(var/datum/round_event_control/event as anything in mode.event_pools[track])
 			var/players_amt = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE)
-			if(event.canSpawnEvent(players_amt))
+			if(forced)
+				if(QDELETED(event))
+					message_admins("[event.name] was deleted!")
+					continue
+				valid_events[event] = round(event.calculated_weight * 10)
+			else if(event.canSpawnEvent(players_amt))
 				if(QDELETED(event))
 					message_admins("[event.name] was deleted!")
 					continue

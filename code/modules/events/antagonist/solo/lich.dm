@@ -12,6 +12,8 @@
 	base_antags = 1
 	maximum_antags = 2
 
+	weight = 12
+
 	earliest_start = 0 SECONDS
 
 	typepath = /datum/round_event/antagonist/solo/lich

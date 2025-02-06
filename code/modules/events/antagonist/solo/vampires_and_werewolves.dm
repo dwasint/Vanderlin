@@ -14,6 +14,8 @@
 
 	earliest_start = 0 SECONDS
 
+	weight = 8
+
 	typepath = /datum/round_event/antagonist/solo/vampires_and_werewolves
 
 	restricted_roles = list(

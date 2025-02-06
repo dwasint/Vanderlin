@@ -10,6 +10,12 @@
 #define TAG_TRADE "trade"
 #define TAG_WIDESPREAD "widespread"
 #define TAG_VILLIAN "villian"
+#define TAG_MEDICAL "medical"
+#define TAG_ALCHEMY "alchemy"
+#define TAG_NATURE "nature"
+#define TAG_WORK "work"
+#define TAG_WATER "water"
+#define TAG_MAGICAL "magical"
 
 #define EVENT_TRACK_MUNDANE "Mundane"
 #define EVENT_TRACK_MODERATE "Moderate"
