@@ -1,10 +1,9 @@
 /datum/round_event_control/rogue/worldsiege
 	name = "Skeleton Siege"
 	typepath = /datum/round_event/rogue/worldsiege
-	weight = 99
-	max_occurrences = 999
+	weight = 10
+	max_occurrences = 1
 	min_players = 4
-	req_omen = FALSE
 	todreq = list("dusk", "night")
 	earliest_start = 35 MINUTES
 	tags = list(TAG_HAUNTED, TAG_COMBAT, TAG_RAID)

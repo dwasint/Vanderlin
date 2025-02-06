@@ -87,7 +87,12 @@
 	var/datum/controller/subsystem/gamemode/mode = SSgamemode
 	var/base_point = EVENT_POINT_GAINED_PER_SECOND * seconds_per_tick * mode.event_frequency_multiplier
 	for(var/track in mode.event_track_points)
+		if(track == EVENT_TRACK_OMENS)
+			if(!length(GLOB.badomens))
+				continue
 		var/point_gain = base_point * point_gains_multipliers[track] * mode.point_gain_multipliers[track]
+		if(track == EVENT_TRACK_OMENS)
+			point_gain *= length(GLOB.badomens)
 		if(mode.allow_pop_scaling)
 			point_gain *= mode.current_pop_scale_multipliers[track]
 		mode.event_track_points[track] += point_gain

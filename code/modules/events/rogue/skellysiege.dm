@@ -1,8 +1,9 @@
 /datum/round_event_control/rogue/skellysiege
-	name = "skellysiege"
+	name = "Skeleton Omen"
+	track = EVENT_TRACK_OMENS
 	typepath = /datum/round_event/rogue/skellysiege
 	weight = 10
-	max_occurrences = 999
+	max_occurrences = 2
 	min_players = 0
 	req_omen = TRUE
 	todreq = list("dusk", "night", "dawn", "day")

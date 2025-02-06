@@ -1,8 +1,9 @@
 /datum/round_event_control/rogue/skellyinvade
 	name = "Skeleton Invasion"
+	track = EVENT_TRACK_OMENS
 	typepath = /datum/round_event/rogue/skellyinvade
 	weight = 10
-	max_occurrences = 999
+	max_occurrences = 2
 	min_players = 0
 	req_omen = TRUE
 	todreq = list("night")

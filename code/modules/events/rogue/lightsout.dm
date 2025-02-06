@@ -1,5 +1,6 @@
 /datum/round_event_control/rogue/lightsout
-	name = "lightsout"
+	name = "Lights Out"
+	track = EVENT_TRACK_OMENS
 	typepath = /datum/round_event/rogue/lightsout
 	weight = 5
 	max_occurrences = 1

@@ -1,8 +1,9 @@
 /datum/round_event_control/rogue/gobinvade
 	name = "Gob Invasion"
+	track = EVENT_TRACK_OMENS
 	typepath = /datum/round_event/rogue/gobinvade
 	weight = 10
-	max_occurrences = 999
+	max_occurrences = 2
 	min_players = 0
 	req_omen = TRUE
 	earliest_start = 35 MINUTES
