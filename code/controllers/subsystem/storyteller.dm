@@ -503,11 +503,6 @@ SUBSYSTEM_DEF(gamemode)
 /datum/controller/subsystem/gamemode/proc/resetFrequency()
 	event_frequency_multiplier = 1
 
-/datum/controller/subsystem/gamemode/proc/toggleWizardmode()
-	wizardmode = !wizardmode //TODO: decide what to do with wiz events
-	message_admins("Summon Events has been [wizardmode ? "enabled, events will occur [SSgamemode.event_frequency_multiplier] times as fast" : "disabled"]!")
-	log_game("Summon Events was [wizardmode ? "enabled" : "disabled"]!")
-
 ///Attempts to select players for special roles the mode might have.
 /datum/controller/subsystem/gamemode/proc/pre_setup()
 	calculate_ready_players()
