@@ -826,7 +826,7 @@ SUBSYSTEM_DEF(gamemode)
 	popup.set_content(dat.Join())
 	popup.open()
 
- /// Panel containing information and actions regarding events
+/// Panel containing information and actions regarding events
 /datum/controller/subsystem/gamemode/proc/event_panel(mob/user)
 	var/list/dat = list()
 	if(current_storyteller)
