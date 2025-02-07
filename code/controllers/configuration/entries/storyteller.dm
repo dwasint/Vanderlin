@@ -58,7 +58,7 @@
 	min_val = 0
 
 /datum/config_entry/number/roleset_min_pop
-	config_entry_value = ROLESET_MIN_POP
+	config_entry_value = CHARACTER_INJECTION_MIN_POP
 	integer = TRUE
 	min_val = 0
 

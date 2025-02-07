@@ -511,29 +511,27 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/Lore_Primer.json")
 				column_counter++
 				if(column_counter > 0 && (column_counter % 3 == 0))
 					dat += "</td><td valign='top'>"
-				break
 			if(has_world_trait(/datum/world_trait/goblin_siege))
 				dat += "<a class='job command' href='byond://?src=[REF(src)];SelectedJob=Goblin'>BECOME A GOBLIN</a>"
 				dat += "</fieldset><br>"
 				column_counter++
 				if(column_counter > 0 && (column_counter % 3 == 0))
 					dat += "</td><td valign='top'>"
-				break
 			if(has_world_trait(/datum/world_trait/rousman_siege))
 				dat += "<a class='job command' href='byond://?src=[REF(src)];SelectedJob=Rousman'>BECOME A ROUSMAN</a>"
 				dat += "</fieldset><br>"
 				column_counter++
 				if(column_counter > 0 && (column_counter % 3 == 0))
 					dat += "</td><td valign='top'>"
-				break
 			if(has_world_trait(/datum/world_trait/death_knight))
 				dat += "<a class='job command' href='byond://?src=[REF(src)];SelectedJob=Death Knight'>JOIN THE VAMPIRE LORD AS A DEATH KNIGHT</a>"
 				dat += "</fieldset><br>"
 				column_counter++
 				if(column_counter > 0 && (column_counter % 3 == 0))
 					dat += "</td><td valign='top'>"
-				break
 
+			if(has_world_trait(/datum/world_trait/skeleton_siege) || has_world_trait(/datum/world_trait/death_knight) || has_world_trait(/datum/world_trait/rousman_siege) || has_world_trait(/datum/world_trait/goblin_siege))
+				break
 			for(var/job in available_jobs)
 				var/datum/job/job_datum = SSjob.name_occupations[job]
 				if(job_datum)

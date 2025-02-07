@@ -27,7 +27,7 @@
 	var/triggering	//admin cancellation
 
 	var/req_omen = FALSE
-	var/list/todreq = list("day", "dawn", "night", "dusk")
+	var/list/todreq
 
 	///do we check against the antag cap before attempting a spawn?
 	var/checks_antag_cap = FALSE
@@ -114,7 +114,7 @@
 		return FALSE
 	if(players_amt < min_players)
 		return FALSE
-	if(!(GLOB.tod in todreq))
+	if(length(todreq) && !(GLOB.tod in todreq))
 		return FALSE
 	if(length(allowed_storytellers))
 		if(!(SSgamemode.current_storyteller.type in allowed_storytellers))
@@ -125,8 +125,6 @@
 	if(!name)
 		return FALSE
 
-//	if(holidayID && (!SSevents.holidays || !SSevents.holidays[holidayID]))
-//		return FALSE
 	return TRUE
 
 /datum/round_event_control/proc/preRunEvent()

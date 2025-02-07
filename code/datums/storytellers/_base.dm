@@ -55,7 +55,7 @@
 	///have we done roundstart checks?
 	var/roundstart_checks = FALSE
 	///prob of roundstart antag
-	var/roundstart_prob = 25
+	var/roundstart_prob = 90
 	///do we ignore ran_roundstart
 	var/ignores_roundstart = FALSE
 	///is a storyteller always able to be voted for(also does not count for the amount of storytellers to pick from)
@@ -191,6 +191,7 @@
 	message_admins("Storyteller purchased and triggered [bought_event] event, on [track] track, for [total_cost] cost.")
 	if(bought_event.roundstart)
 		SSgamemode.ran_roundstart = TRUE
+		SSgamemode.current_roundstart_event = bought_event
 		mode.TriggerEvent(bought_event, forced)
 	else
 		mode.schedule_event(bought_event, 3 MINUTES, total_cost, _forced = forced)

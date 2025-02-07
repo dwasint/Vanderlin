@@ -61,7 +61,7 @@ SUBSYSTEM_DEF(gamemode)
 		EVENT_TRACK_MUNDANE = MUNDANE_MIN_POP,
 		EVENT_TRACK_MODERATE = MODERATE_MIN_POP,
 		EVENT_TRACK_INTERVENTION = MAJOR_MIN_POP,
-		EVENT_TRACK_CHARACTER_INJECTION = ROLESET_MIN_POP,
+		EVENT_TRACK_CHARACTER_INJECTION = CHARACTER_INJECTION_MIN_POP,
 		EVENT_TRACK_OMENS = OBJECTIVES_MIN_POP,
 		EVENT_TRACK_RAIDS = OBJECTIVES_MIN_POP,
 		)
@@ -217,7 +217,7 @@ SUBSYSTEM_DEF(gamemode)
 		pick_most_devoted()
 		last_devotion_check = world.time + 2 MINUTES
 
-	if(SSticker.round_start_time && (world.time - SSticker.round_start_time) >= ROUNDSTART_VALID_TIMEFRAME)
+	if(SSticker.HasRoundStarted() && (world.time - SSticker.round_start_time) >= ROUNDSTART_VALID_TIMEFRAME)
 		can_run_roundstart = FALSE
 	else if(current_roundstart_event && length(current_roundstart_event.preferred_events)) //note that this implementation is made for preferred_events being other roundstart events
 		var/list/preferred_copy = current_roundstart_event.preferred_events.Copy()

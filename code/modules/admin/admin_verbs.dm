@@ -139,7 +139,6 @@ GLOBAL_PROTECT(admin_verbs_server)
 /world/proc/AVerbsServer()
 	return list(
 	/datum/admins/proc/startnow,
-	/datum/admins/proc/forcemode,
 	/datum/admins/proc/restart,
 	/datum/admins/proc/end_round,
 	/datum/admins/proc/delay,
