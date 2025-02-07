@@ -396,8 +396,8 @@ SUBSYSTEM_DEF(ticker)
 /datum/controller/subsystem/ticker/proc/PostSetup()
 	set waitfor = FALSE
 
-	SSgamemode.current_storyteller.process(STORYTELLER_WAIT_TIME * 0.1) // we want this asap
-	SSgamemode.current_storyteller.round_started = TRUE
+	SSgamemode.current_storyteller?.process(STORYTELLER_WAIT_TIME * 0.1) // we want this asap
+	SSgamemode.current_storyteller?.round_started = TRUE
 
 	setup_done = TRUE
 
