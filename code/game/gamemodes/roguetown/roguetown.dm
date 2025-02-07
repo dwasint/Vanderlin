@@ -34,98 +34,6 @@ GLOBAL_LIST_INIT(roguegamemodes, list(
 
 // DEBUG
 	var/list/forcedmodes = list()
-	var/mob/living/carbon/human/vlord = null
-	var/mob/living/carbon/human/species/werewolf = null
-// GAMEMODE SPECIFIC
-	var/banditcontrib = 0
-	var/banditgoal = 1
-	var/delfcontrib = 0
-	var/delfgoal = 1
-
-	var/skeletons = FALSE
-
-	var/headrebdecree = FALSE
-	var/reb_end_time = 0
-
-	var/check_for_lord = TRUE
-	var/next_check_lord = 0
-	var/missing_lord_time = FALSE
-
-	var/kingsubmit = FALSE
-	var/deathknightspawn = FALSE
-	var/ascended = FALSE
-	var/cultascended = FALSE
-
-/datum/game_mode/chaosmode/proc/reset_skeletons()
-	skeletons = FALSE
-
-/datum/game_mode/chaosmode/check_finished()
-	var/ttime = world.time - SSticker.round_start_time
-	if(roguefight)
-		if(ttime >= 30 MINUTES)
-			return TRUE
-		if((redscore >= 100) || (greenscore >= 100))
-			return TRUE
-		return FALSE
-
-	if(allmig)
-		return FALSE
-
-	if(ttime >= GLOB.round_timer)
-		if(roundvoteend)
-			if(ttime >= round_ends_at)
-				for(var/mob/living/carbon/human/H in GLOB.human_list)
-					if(H.stat != DEAD)
-						if(H.allmig_reward)
-							H.adjust_triumphs(H.allmig_reward)
-							H.allmig_reward = 0
-				return TRUE
-		else
-			if(!SSvote.mode)
-				SSvote.initiate_vote("endround", pick("Zlod", "Sun King", "Gaia", "Moon Queen", "Aeon", "Gemini", "Aries"))
-
-	if(headrebdecree)
-		if(reb_end_time == 0)
-			to_chat(world, span_boldannounce("The peasant rebels took control of the throne, hail the new community!"))
-			if(ttime >= INITIAL_ROUND_TIMER)
-				reb_end_time = ttime + 15 MINUTES
-				to_chat(world, span_boldwarning("The round will end in 15 minutes."))
-			else
-				reb_end_time = INITIAL_ROUND_TIMER
-				to_chat(world, span_boldwarning("The round will end at the 2:30 hour mark."))
-		if(ttime >= reb_end_time)
-			return TRUE
-
-	check_for_lord()
-/*
-	if(ttime > 180 MINUTES) //3 hour cutoff
-		return TRUE*/
-
-/datum/game_mode/chaosmode/proc/check_for_lord(forced = FALSE)
-	if(!forced && world.time < next_check_lord)
-		return
-	next_check_lord = world.time + 1 MINUTES
-	var/lord_found = FALSE
-	var/lord_dead = FALSE
-	for(var/mob/living/carbon/human/H in GLOB.human_list)
-		if(H.mind)
-			if(H.job == "Monarch")
-				lord_found = TRUE
-				if(H.stat == DEAD)
-					lord_dead = TRUE
-				else
-					if(lord_dead)
-						lord_dead = FALSE
-					break
-	if(lord_dead || !lord_found)
-		if(!missing_lord_time)
-			missing_lord_time = world.time
-		if(world.time > missing_lord_time + 10 MINUTES)
-			missing_lord_time = world.time
-			addomen(OMEN_NOLORD)
-		return FALSE
-	else
-		return TRUE
 
 /datum/game_mode/chaosmode/pre_setup()
 	if(allmig || roguefight)
@@ -235,7 +143,7 @@ GLOBAL_LIST_INIT(roguegamemodes, list(
 
 /datum/game_mode/chaosmode/proc/pick_bandits()
 	//BANDITS
-	banditgoal = rand(200,400)
+	SSmapping.retainer.bandit_goal = rand(200,400)
 	restricted_jobs = list("Monarch",
 	"Consort",
 	"Prince",
@@ -272,7 +180,7 @@ GLOBAL_LIST_INIT(roguegamemodes, list(
 		var/datum/job/bandit_job = SSjob.GetJob("Bandit")
 		bandit_job.total_positions = num_bandits
 		bandit_job.spawn_positions = num_bandits
-		banditgoal += (num_bandits * rand(200,400))
+		SSmapping.retainer.bandit_goal += (num_bandits * rand(200,400))
 
 
 	if(num_bandits)
@@ -757,30 +665,6 @@ GLOBAL_LIST_INIT(roguegamemodes, list(
 					if(prob(66))
 						add_latejoin_villain(character.mind)
 	*/
-
-/datum/game_mode/chaosmode/proc/vampire_werewolf()
-	var/vampyr = 0
-	var/wwoelf = 0
-	for(var/mob/living/carbon/human/player in GLOB.human_list)
-		if(player.mind)
-			if(player.stat != DEAD)
-				if(isbrain(player)) //also technically dead
-					continue
-				if(is_in_roguetown(player))
-					var/datum/antagonist/D = player.mind.has_antag_datum(/datum/antagonist/werewolf)
-					if(D && D.increase_votepwr)
-						wwoelf++
-						continue
-					D = player.mind.has_antag_datum(/datum/antagonist/vampire)
-					if(D && D.increase_votepwr)
-						vampyr++
-						continue
-	if(vampyr)
-		if(!wwoelf)
-			return "vampire"
-	if(wwoelf)
-		if(!vampyr)
-			return "werewolf"
 
 /datum/game_mode/chaosmode/proc/add_latejoin_villain(datum/mind/character)
 	var/datum/antagonist/maniac/new_antag = new /datum/antagonist/maniac()

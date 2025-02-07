@@ -46,6 +46,8 @@ SUBSYSTEM_DEF(mapping)
 
 	///this is a list of all the world_traits we have from things like god interventions
 	var/list/active_world_traits = list()
+	///antag retainer
+	var/datum/antag_retainer/retainer
 
 //dlete dis once #39770 is resolved
 /datum/controller/subsystem/mapping/proc/HACK_LoadMapConfig()
@@ -58,6 +60,7 @@ SUBSYSTEM_DEF(mapping)
 
 /datum/controller/subsystem/mapping/Initialize(timeofday)
 	HACK_LoadMapConfig()
+	retainer = new
 	if(initialized)
 		return
 	if(config.defaulted)
@@ -435,11 +438,21 @@ SUBSYSTEM_DEF(mapping)
 	var/datum/world_trait/new_trait = new trait_type
 	active_world_traits |= new_trait
 
-	addtimer(CALLBACK(src, PROC_REF(remove_world_trait), new_trait), duration)
+	if(duration > 0)
+		addtimer(CALLBACK(src, PROC_REF(remove_world_trait), new_trait), duration)
 
 /datum/controller/subsystem/mapping/proc/remove_world_trait(datum/world_trait/trait_to_remove)
 	active_world_traits -= trait_to_remove
 	qdel(trait_to_remove)
+
+/datum/controller/subsystem/mapping/proc/find_and_remove_world_trait(datum/world_trait/trait_to_remove)
+	for(var/datum/world_trait/trait in active_world_traits)
+		if(!istype(trait, trait_to_remove))
+			continue
+		active_world_traits -= trait
+		qdel(trait)
+		return TRUE
+	return FALSE
 
 /proc/has_world_trait(datum/world_trait/trait_type)
 	if(!length(SSmapping.active_world_traits))

@@ -224,9 +224,7 @@
 
 	CHECK_TICK
 	SSdbcore.SetRoundEnd()
-	//Collects persistence features
-	if(mode.allow_persistence_save)
-		SSpersistence.CollectData()
+	SSpersistence.CollectData()
 
 	//stop collecting feedback during grifftime
 	SSblackbox.Seal()
@@ -239,30 +237,25 @@
 /datum/controller/subsystem/ticker/proc/get_end_reason()
 	var/end_reason
 
-	if(istype(SSticker.mode, /datum/game_mode/chaosmode))
-		var/datum/game_mode/chaosmode/C = SSticker.mode
-		if(C.check_for_lord)
-			if(!C.check_for_lord())
-				end_reason = pick("Without a Monarch, they were doomed to become slaves of Zizo.",
-								"Without a Monarch, they were doomed to be eaten by nite creachers.",
-								"Without a Monarch, they were doomed to become victims of Gehenna.",
-								"Without a Monarch, they were doomed to enjoy a mass-suicide.",
-								"Without a Monarch, the Lich made them his playthings.",
-								"Without a Monarch, some jealous rival reigned in tyranny.",
-								"Without a Monarch, the town was abandoned.")
-//		if(C.not_enough_players)
-//			end_reason = "The town was abandoned."
+	if(!check_for_lord())
+		end_reason = pick("Without a Monarch, they were doomed to become slaves of Zizo.",
+						"Without a Monarch, they were doomed to be eaten by nite creachers.",
+						"Without a Monarch, they were doomed to become victims of Gehenna.",
+						"Without a Monarch, they were doomed to enjoy a mass-suicide.",
+						"Without a Monarch, the Lich made them his playthings.",
+						"Without a Monarch, some jealous rival reigned in tyranny.",
+						"Without a Monarch, the town was abandoned.")
 
-		if(C.vampire_werewolf() == "vampire")
-			end_reason = "When the Vampires finished sucking the town dry, they moved on to the next one."
-		if(C.vampire_werewolf() == "werewolf")
-			end_reason = "The Werevolves formed an unholy clan, marauding Rockhill until the end of its daes."
+	if(vampire_werewolf() == "vampire")
+		end_reason = "When the Vampires finished sucking the town dry, they moved on to the next one."
+	if(vampire_werewolf() == "werewolf")
+		end_reason = "The Werevolves formed an unholy clan, marauding Rockhill until the end of its daes."
 
-		if(C.cultascended)
-			end_reason = "ZIZOZIZOZIZOZIZO"
+	if(SSmapping.retainer.cult_ascended)
+		end_reason = "ZIZOZIZOZIZOZIZO"
 
-		if(C.headrebdecree)
-			end_reason = "The peasant rebels took control of the throne, hail the new community!"
+	if(SSmapping.retainer.head_rebel_decree)
+		end_reason = "The peasant rebels took control of the throne, hail the new community!"
 
 
 	if(end_reason)
@@ -344,19 +337,13 @@
 
 /datum/controller/subsystem/ticker/proc/standard_reboot()
 	if(ready_for_reboot)
-		if(mode.station_was_nuked)
-			Reboot("Station destroyed by Nuclear Device.", "nuke")
-		else
-			Reboot("Round ended.", "proper completion")
+		Reboot("Round ended.", "proper completion")
 	else
 		CRASH("Attempted standard reboot without ticker roundend completion")
 
 //Common part of the report
 /datum/controller/subsystem/ticker/proc/build_roundend_report()
 	var/list/parts = list()
-
-	//Gamemode specific things. Should be empty most of the time.
-	parts += mode.special_report()
 
 	CHECK_TICK
 
@@ -393,13 +380,6 @@
 			//ignore this comment, it fixes the broken sytax parsing caused by the " above
 			else
 				parts += "[FOURSPACES]<i>Nobody died this shift!</i>"
-	if(istype(SSticker.mode, /datum/game_mode/dynamic))
-		var/datum/game_mode/dynamic/mode = SSticker.mode
-		parts += "[FOURSPACES]Threat level: [mode.threat_level]"
-		parts += "[FOURSPACES]Threat left: [mode.threat]"
-		parts += "[FOURSPACES]Executed rules:"
-		for(var/datum/dynamic_ruleset/rule in mode.executed_rules)
-			parts += "[FOURSPACES][FOURSPACES][rule.ruletype] - <b>[rule.name]</b>: -[rule.cost + rule.scaled_times * rule.scaling_cost] threat"
 	return parts.Join("<br>")
 
 /client/proc/roundend_report_file()

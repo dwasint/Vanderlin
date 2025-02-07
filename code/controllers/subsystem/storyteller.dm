@@ -173,6 +173,10 @@ SUBSYSTEM_DEF(gamemode)
 	var/can_run_roundstart = TRUE
 	var/list/triggered_round_events = list()
 
+	var/round_ends_at = 0
+	var/roundvoteend = FALSE
+	var/reb_end_time = 0
+
 /datum/controller/subsystem/gamemode/Initialize(time, zlevel)
 #if defined(UNIT_TESTS) || defined(AUTOWIKI) // lazy way of doing this but idc
 	CONFIG_SET(flag/disable_storyteller, TRUE)
@@ -540,6 +544,32 @@ SUBSYSTEM_DEF(gamemode)
 	if(force_ending)
 		return TRUE
 
+	var/ttime = world.time - SSticker.round_start_time
+	if(ttime >= GLOB.round_timer)
+		if(roundvoteend)
+			if(ttime >= round_ends_at)
+				for(var/mob/living/carbon/human/H in GLOB.human_list)
+					if(H.stat != DEAD)
+						if(H.allmig_reward)
+							H.adjust_triumphs(H.allmig_reward)
+							H.allmig_reward = 0
+				return TRUE
+		else
+			if(!SSvote.mode)
+				SSvote.initiate_vote("endround", pick("Zlod", "Sun King", "Gaia", "Moon Queen", "Aeon", "Gemini", "Aries"))
+
+	if(SSmapping.retainer.head_rebel_decree)
+		if(reb_end_time == 0)
+			to_chat(world, span_boldannounce("The peasant rebels took control of the throne, hail the new community!"))
+			if(ttime >= INITIAL_ROUND_TIMER)
+				reb_end_time = ttime + 15 MINUTES
+				to_chat(world, span_boldwarning("The round will end in 15 minutes."))
+			else
+				reb_end_time = INITIAL_ROUND_TIMER
+				to_chat(world, span_boldwarning("The round will end at the 2:30 hour mark."))
+		if(ttime >= reb_end_time)
+			return TRUE
+
 /datum/controller/subsystem/gamemode/proc/generate_town_goals()
 	return
 
@@ -790,7 +820,7 @@ SUBSYSTEM_DEF(gamemode)
 				dat += "</tr>"
 			dat += "</table>"
 
-	var/datum/browser/popup = new(user, "gamemode_admin_panel", "Gamemode Panel", 670, 650)
+	var/datum/browser/noclose/popup = new(user, "gamemode_admin_panel", "Gamemode Panel", 670, 650)
 	popup.set_content(dat.Join())
 	popup.open()
 
@@ -880,7 +910,7 @@ SUBSYSTEM_DEF(gamemode)
 		dat += "<td>[event.get_href_actions()]</td>" //Actions
 		dat += "</tr>"
 	dat += "</table>"
-	var/datum/browser/popup = new(user, "gamemode_event_panel", "Event Panel", 1100, 600)
+	var/datum/browser/noclose/popup = new(user, "gamemode_event_panel", "Event Panel", 1100, 600)
 	popup.set_content(dat.Join())
 	popup.open()
 

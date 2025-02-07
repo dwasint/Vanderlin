@@ -222,20 +222,6 @@ GLOBAL_VAR_INIT(dynamic_forced_threat_level, -1)
 
 	priority_announce("A summary has been copied and printed to all communications consoles.", "Security level elevated.", 'sound/blank.ogg')
 
-// Yes, this is copy pasted from game_mode
-/datum/game_mode/dynamic/check_finished(force_ending)
-	if(!SSticker.setup_done || !gamemode_ready)
-		return FALSE
-	if(replacementmode && round_converted == 2)
-		return replacementmode.check_finished()
-	if(station_was_nuked)
-		return TRUE
-	if(force_ending)
-		return TRUE
-	for(var/datum/dynamic_ruleset/rule in executed_rules)
-		if(rule.flags & HIGHLANDER_RULESET)
-			return rule.check_finished()
-
 /datum/game_mode/dynamic/proc/show_threatlog(mob/admin)
 	if(!SSticker.HasRoundStarted())
 		alert("The round hasn't started yet!")

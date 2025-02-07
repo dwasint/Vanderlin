@@ -16,12 +16,6 @@
 		return FALSE
 	if(players_amt < min_players)
 		return FALSE
-	var/datum/game_mode/chaosmode/C = SSticker.mode
-	if(istype(C))
-		if(C.allmig)
-			if(world.time > last_siege + 18 MINUTES)
-				last_siege = world.time
-				return TRUE
 
 /datum/round_event/worldsiege/goblin/start()
 	SSmapping.add_world_trait(/datum/world_trait/goblin_siege, rand(4 MINUTES, 8 MINUTES))

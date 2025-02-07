@@ -16,17 +16,14 @@
 		return FALSE
 	if(players_amt < min_players)
 		return FALSE
-	var/datum/game_mode/chaosmode/C = SSticker.mode
-	if(istype(C))
-		if(C.allmig)
-			if(world.time > last_siege + 18 MINUTES)
-				last_siege = world.time
-				return TRUE
+	if(world.time > last_siege + 18 MINUTES)
+		return TRUE
 
 /datum/round_event_control/worldsiege/preRunEvent()
 	. = ..()
 	if(. == EVENT_READY)
 		priority_announce(raid_text, "", 'sound/misc/evilevent.ogg')
+	last_siege = world.time
 
 /datum/round_event/worldsiege
 	announceWhen	= 1

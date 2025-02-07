@@ -64,10 +64,9 @@
 		G.initialruler = SSticker.rulermob
 		return
 	if(istype(src, /datum/antagonist/aspirant/supporter))
-		var/datum/game_mode/chaosmode/C = SSticker.mode
 		var/datum/objective/aspirant/coup/three/G = new
 		objectives += G
-		for(var/datum/mind/aspirant in C.aspirants)
+		for(var/datum/mind/aspirant in SSmapping.retainer.aspirants)
 			if(aspirant.special_role == "Aspirant")
 				G.aspirant = aspirant.current
 		return

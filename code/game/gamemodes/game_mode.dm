@@ -119,9 +119,6 @@
 	if(SSdbcore.Connect())
 		var/list/to_set = list()
 		var/arguments = list()
-		if(SSticker.mode)
-			to_set += "game_mode = :game_mode"
-			arguments["game_mode"] = SSticker.mode
 		if(GLOB.revdata.originmastercommit)
 			to_set += "commit_hash = :commit_hash"
 			arguments["commit_hash"] = GLOB.revdata.originmastercommit
@@ -160,7 +157,7 @@
 		message_admins("Convert_roundtype failed due to too many dead people. Limit is [malc * 100]% living crew")
 		return null
 
-	var/list/datum/game_mode/runnable_modes = config.get_runnable_midround_modes(living_crew.len)
+	var/list/datum/game_mode/runnable_modes = list()
 	var/list/datum/game_mode/usable_modes = list()
 	for(var/datum/game_mode/G in runnable_modes)
 		if(G.reroll_friendly && living_crew.len >= G.required_players)
@@ -206,10 +203,6 @@
 		message_admins("Roundtype conversion cancelled, the game appears to have finished!")
 		round_converted = 0
 		return
-	//somewhere between 1 and 3 minutes from now
-	if(!CONFIG_GET(keyed_list/midround_antag)[SSticker.mode.config_tag])
-		round_converted = 0
-		return 1
 	for(var/mob/living/carbon/human/H in antag_candidates)
 		if(H.client)
 			replacementmode.make_antag_chance(H)
@@ -225,61 +218,6 @@
 //For things that do not die easily
 /datum/game_mode/proc/are_special_antags_dead()
 	return TRUE
-
-
-/datum/game_mode/proc/check_finished(force_ending) //to be called by SSticker
-	if(!SSticker.setup_done || !gamemode_ready)
-		return FALSE
-	if(replacementmode && round_converted == 2)
-		return replacementmode.check_finished()
-	if(station_was_nuked)
-		return TRUE
-	var/list/continuous = CONFIG_GET(keyed_list/continuous)
-	var/list/midround_antag = CONFIG_GET(keyed_list/midround_antag)
-	if(!round_converted && (!continuous[config_tag] || (continuous[config_tag] && midround_antag[config_tag]))) //Non-continuous or continous with replacement antags
-		if(!continuous_sanity_checked) //make sure we have antags to be checking in the first place
-			for(var/mob/Player in GLOB.mob_list)
-				if(Player.mind)
-					if(Player.mind.special_role || LAZYLEN(Player.mind.antag_datums))
-						continuous_sanity_checked = 1
-						return 0
-			if(!continuous_sanity_checked)
-				message_admins("The roundtype ([config_tag]) has no antagonists, continuous round has been defaulted to on and midround_antag has been defaulted to off.")
-				continuous[config_tag] = TRUE
-				midround_antag[config_tag] = FALSE
-				return 0
-
-
-		if(living_antag_player && living_antag_player.mind && isliving(living_antag_player) && living_antag_player.stat != DEAD && !isnewplayer(living_antag_player) &&!isbrain(living_antag_player) && (living_antag_player.mind.special_role || LAZYLEN(living_antag_player.mind.antag_datums)))
-			return 0 //A resource saver: once we find someone who has to die for all antags to be dead, we can just keep checking them, cycling over everyone only when we lose our mark.
-
-		for(var/mob/Player in GLOB.alive_mob_list)
-			if(Player.mind && Player.stat != DEAD && !isnewplayer(Player) &&!isbrain(Player) && Player.client && (Player.mind.special_role || LAZYLEN(Player.mind.antag_datums))) //Someone's still antagging but is their antagonist datum important enough to skip mulligan?
-				for(var/datum/antagonist/antag_types in Player.mind.antag_datums)
-					if(antag_types.prevent_roundtype_conversion)
-						living_antag_player = Player //they were an important antag, they're our new mark
-						return 0
-
-		if(!are_special_antags_dead())
-			return FALSE
-
-		if(!continuous[config_tag] || force_ending)
-			return 1
-
-		else
-			round_converted = convert_roundtype()
-			if(!round_converted)
-				if(round_ends_with_antag_death)
-					return 1
-				else
-					midround_antag[config_tag] = 0
-					return 0
-
-	return 0
-
-
-/datum/game_mode/proc/check_win() //universal trigger to be called at mob death, nuke explosion, etc. To be called from everywhere.
-	return 0
 
 /datum/game_mode/proc/send_intercept()
 	var/intercepttext = "<b><i>Central Command Status Summary</i></b><hr>"
@@ -504,12 +442,6 @@
 
 	for (var/C in GLOB.admins)
 		to_chat(C, msg.Join())
-
-//If the configuration option is set to require players to be logged as old enough to play certain jobs, then this proc checks that they are, otherwise it just returns 1
-/datum/game_mode/proc/age_check(client/C)
-	if(get_remaining_days(C) == 0)
-		return 1	//Available in 0 days = available right now = player is old enough to play.
-	return 0
 
 
 /datum/game_mode/proc/get_remaining_days(client/C)

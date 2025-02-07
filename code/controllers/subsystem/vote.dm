@@ -149,12 +149,10 @@ SUBSYSTEM_DEF(vote)
 					GLOB.round_timer = GLOB.round_timer + (32 MINUTES)
 				else
 					log_game("LOG VOTE: ELSE  [REALTIMEOFDAY]")
-					var/datum/game_mode/chaosmode/C = SSticker.mode
-					if(istype(C))
-						log_game("LOG VOTE: ROUNDVOTEEND [REALTIMEOFDAY]")
-						to_chat(world, "\n<font color='purple'>[ROUND_END_TIME_VERBAL]</font>")
-						C.roundvoteend = TRUE
-						C.round_ends_at = GLOB.round_timer + ROUND_END_TIME
+					log_game("LOG VOTE: ROUNDVOTEEND [REALTIMEOFDAY]")
+					to_chat(world, "\n<font color='purple'>[ROUND_END_TIME_VERBAL]</font>")
+					SSgamemode.roundvoteend = TRUE
+					SSgamemode.round_ends_at = GLOB.round_timer + ROUND_END_TIME
 			if("storyteller")
 				SSgamemode.storyteller_vote_result(.)
 

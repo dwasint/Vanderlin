@@ -431,8 +431,7 @@ block( \
 		if(be_special_flag)
 			if(!(M.client.prefs) || !(be_special_flag in M.client.prefs.be_special))
 				continue
-		if(gametypeCheck)
-			if(!gametypeCheck.age_check(M.client))
+			if(!age_check(M.client))
 				continue
 
 		showCandidatePollWindow(M, poll_time, Question, result, ignore_category, time_passed, flashwindow)

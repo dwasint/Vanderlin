@@ -114,10 +114,6 @@
 		return FALSE
 	if(players_amt < min_players)
 		return FALSE
-	if(gamemode_blacklist.len && (gamemode in gamemode_blacklist))
-		return FALSE
-	if(gamemode_whitelist.len && !(gamemode in gamemode_whitelist))
-		return FALSE
 	if(!(GLOB.tod in todreq))
 		return FALSE
 	if(length(allowed_storytellers))
@@ -141,9 +137,8 @@
 	if (alert_observers)
 		message_admins("Random Event triggering in 10 seconds: [name] (<a href='byond://?src=[REF(src)];cancel=1'>CANCEL</a>)")
 		sleep(100)
-		var/gamemode = SSticker.mode.config_tag
 		var/players_amt = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE)
-		if(!canSpawnEvent(players_amt, gamemode, fake_check = TRUE))
+		if(!canSpawnEvent(players_amt, null, fake_check = TRUE))
 			message_admins("Second pre-condition check for [name] failed, skipping...")
 			return EVENT_INTERRUPTED
 
