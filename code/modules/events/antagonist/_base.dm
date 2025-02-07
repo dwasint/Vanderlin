@@ -9,6 +9,9 @@
 	/// Restricted roles from the antag roll
 	var/list/restricted_roles
 	var/event_icon_state
+	///these are the jobs we need to get the role
+	var/list/needed_job
+	var/minor_roleset = FALSE
 
 /datum/round_event_control/antagonist/proc/check_required()
 	if(!length(exclusive_roles))
@@ -20,6 +23,10 @@
 			return TRUE
 
 /datum/round_event_control/antagonist/proc/trim_candidates(list/candidates)
+	if(length(needed_job))
+		for(var/mob/living/candidate in candidates)
+			if(!candidate.mind?.assigned_role in needed_job)
+				candidates -= candidate
 	return candidates
 
 /// Check if our enemy_roles requirement is met, if return_players is set then we will return the list of enemy players instead

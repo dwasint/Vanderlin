@@ -94,7 +94,7 @@ SUBSYSTEM_DEF(gamemode)
 		EVENT_TRACK_INTERVENTION = MAJOR_POP_SCALE_THRESHOLD,
 		EVENT_TRACK_CHARACTER_INJECTION = ROLESET_POP_SCALE_THRESHOLD,
 		EVENT_TRACK_OMENS = OBJECTIVES_POP_SCALE_THRESHOLD,
-		EVENT_TRACK_RAIDS = OBJECTIVES_POP_SCALE_THRESHOLD,
+		EVENT_TRACK_RAIDS = RAID_POP_SCALE_THRESHOLD,
 		)
 
 	/// Associative list of pop scale penalties.
@@ -104,7 +104,7 @@ SUBSYSTEM_DEF(gamemode)
 		EVENT_TRACK_INTERVENTION = MAJOR_POP_SCALE_PENALTY,
 		EVENT_TRACK_CHARACTER_INJECTION = ROLESET_POP_SCALE_PENALTY,
 		EVENT_TRACK_OMENS = OBJECTIVES_POP_SCALE_PENALTY,
-		EVENT_TRACK_RAIDS = OBJECTIVES_POP_SCALE_PENALTY,
+		EVENT_TRACK_RAIDS = RAID_POP_SCALE_PENALTY,
 		)
 
 	/// Associative list of active multipliers from pop scale penalty.
@@ -619,14 +619,14 @@ SUBSYSTEM_DEF(gamemode)
 	point_gain_multipliers[EVENT_TRACK_INTERVENTION] = CONFIG_GET(number/major_point_gain_multiplier)
 	point_gain_multipliers[EVENT_TRACK_CHARACTER_INJECTION] = CONFIG_GET(number/roleset_point_gain_multiplier)
 	point_gain_multipliers[EVENT_TRACK_OMENS] = CONFIG_GET(number/objectives_point_gain_multiplier)
-	point_gain_multipliers[EVENT_TRACK_RAIDS] = CONFIG_GET(number/objectives_point_gain_multiplier)
+	point_gain_multipliers[EVENT_TRACK_RAIDS] = 1
 
 	roundstart_point_multipliers[EVENT_TRACK_MUNDANE] = CONFIG_GET(number/mundane_roundstart_point_multiplier)
 	roundstart_point_multipliers[EVENT_TRACK_MODERATE] = CONFIG_GET(number/moderate_roundstart_point_multiplier)
 	roundstart_point_multipliers[EVENT_TRACK_INTERVENTION] = CONFIG_GET(number/major_roundstart_point_multiplier)
 	roundstart_point_multipliers[EVENT_TRACK_CHARACTER_INJECTION] = CONFIG_GET(number/roleset_roundstart_point_multiplier)
 	roundstart_point_multipliers[EVENT_TRACK_OMENS] = CONFIG_GET(number/objectives_roundstart_point_multiplier)
-	roundstart_point_multipliers[EVENT_TRACK_RAIDS] = CONFIG_GET(number/objectives_roundstart_point_multiplier)
+	roundstart_point_multipliers[EVENT_TRACK_RAIDS] = 1
 
 	min_pop_thresholds[EVENT_TRACK_MUNDANE] = CONFIG_GET(number/mundane_min_pop)
 	min_pop_thresholds[EVENT_TRACK_MODERATE] = CONFIG_GET(number/moderate_min_pop)

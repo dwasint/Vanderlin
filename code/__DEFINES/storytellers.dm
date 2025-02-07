@@ -54,6 +54,7 @@
 #define MAJOR_POP_SCALE_THRESHOLD 45
 #define ROLESET_POP_SCALE_THRESHOLD 45
 #define OBJECTIVES_POP_SCALE_THRESHOLD 45
+#define RAID_POP_SCALE_THRESHOLD 55
 
 /// The maximum penalty coming from pop scalling, when we're at the most minimum point, easing into 0 as we reach the SCALE_THRESHOLD. This is treated as a percentage.
 #define MUNDANE_POP_SCALE_PENALTY 35
@@ -61,6 +62,7 @@
 #define MAJOR_POP_SCALE_PENALTY 35
 #define ROLESET_POP_SCALE_PENALTY 35
 #define OBJECTIVES_POP_SCALE_PENALTY 35
+#define RAID_POP_SCALE_PENALTY 55
 
 #define STORYTELLER_VOTE "storyteller"
 
@@ -89,3 +91,4 @@
 
 #define SHARED_HIGH_THREAT	"high threat event"
 #define SHARED_ANOMALIES	"anomalous event"
+#define SHARED_MINOR_THREAT "minor event"
