@@ -1,4 +1,4 @@
-/datum/round_event_control/rogue/spacevine
+/datum/round_event_control/spacevine
 	name = "Evil Vines"
 	track = EVENT_TRACK_OMENS
 	typepath = /datum/round_event/vines

@@ -1,7 +1,7 @@
-/datum/round_event_control/rogue/skellysiege
+/datum/round_event_control/skellysiege
 	name = "Skeleton Omen"
 	track = EVENT_TRACK_OMENS
-	typepath = /datum/round_event/rogue/skellysiege
+	typepath = /datum/round_event/skellysiege
 	weight = 10
 	max_occurrences = 2
 	min_players = 0
@@ -11,13 +11,13 @@
 	var/last_siege = 0
 
 
-/datum/round_event/rogue/skellysiege
+/datum/round_event/skellysiege
 	announceWhen	= 1
 
-/datum/round_event/rogue/skellysiege/setup()
+/datum/round_event/skellysiege/setup()
 	return
 
-/datum/round_event/rogue/skellysiege/start()
+/datum/round_event/skellysiege/start()
 	if(SSticker.mode)
 		var/datum/game_mode/chaosmode/C = SSticker.mode
 		if(istype(C))

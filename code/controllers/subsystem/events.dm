@@ -16,7 +16,7 @@ SUBSYSTEM_DEF(events)
 	var/wizardmode = FALSE
 
 /datum/controller/subsystem/events/Initialize(time, zlevel)
-	for(var/type in typesof(/datum/round_event_control/rogue))
+	for(var/type in typesof(/datum/round_event_control))
 		var/datum/round_event_control/E = new type()
 		if(!E.typepath)
 			continue				//don't want this one! leave it for the garbage collector

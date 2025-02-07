@@ -1,20 +1,6 @@
 //GLOBAL_LIST_INIT(badomens, list("roundstart"))
 GLOBAL_LIST_INIT(badomens, list())
 
-/datum/round_event_control/rogue
-	name = null
-
-/datum/round_event_control/rogue/canSpawnEvent(players_amt, gamemode, fake_check)
-	. = ..()
-	if(!.)
-		return .
-	var/datum/game_mode/chaosmode/C = SSticker.mode
-	if(istype(C))
-		if(C.allmig || C.roguefight)
-			return FALSE
-	if(!name)
-		return FALSE
-
 /proc/hasomen(input)
 	return (input in GLOB.badomens)
 

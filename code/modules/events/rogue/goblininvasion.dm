@@ -1,7 +1,7 @@
-/datum/round_event_control/rogue/gobinvade
+/datum/round_event_control/gobinvade
 	name = "Gob Invasion"
 	track = EVENT_TRACK_OMENS
-	typepath = /datum/round_event/rogue/gobinvade
+	typepath = /datum/round_event/gobinvade
 	weight = 10
 	max_occurrences = 2
 	min_players = 0
@@ -9,17 +9,17 @@
 	earliest_start = 35 MINUTES
 	todreq = list("night", "dawn", "day", "dusk")
 
-/datum/round_event/rogue/gobinvade
+/datum/round_event/gobinvade
 	announceWhen	= 50
 	var/spawncount = 5
 	var/list/starts
 
-/datum/round_event_control/rogue/gobinvade/canSpawnEvent(players_amt, gamemode, fake_check)
+/datum/round_event_control/gobinvade/canSpawnEvent(players_amt, gamemode, fake_check)
 	if(!LAZYLEN(GLOB.hauntstart))
 		return FALSE
 	. = ..()
 
-/datum/round_event/rogue/gobinvade/start()
+/datum/round_event/gobinvade/start()
 	var/list/spawn_locs = GLOB.hauntstart.Copy()
 	if(LAZYLEN(spawn_locs))
 		for(var/i in 1 to spawncount)

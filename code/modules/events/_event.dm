@@ -126,6 +126,14 @@
 	if(req_omen)
 		if(!GLOB.badomens.len)
 			return FALSE
+
+	var/datum/game_mode/chaosmode/C = SSticker.mode
+	if(istype(C))
+		if(C.allmig || C.roguefight)
+			return FALSE
+	if(!name)
+		return FALSE
+
 //	if(holidayID && (!SSevents.holidays || !SSevents.holidays[holidayID]))
 //		return FALSE
 	return TRUE

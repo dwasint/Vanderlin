@@ -1,6 +1,6 @@
-/datum/round_event_control/rogue/worldsiege/goblin
+/datum/round_event_control/worldsiege/goblin
 	name = "Goblin Siege"
-	typepath = /datum/round_event/rogue/worldsiege/goblin
+	typepath = /datum/round_event/worldsiege/goblin
 	weight = 10
 	max_occurrences = 1
 	min_players = 4
@@ -11,7 +11,7 @@
 
 	raid_text = "The goblin horde approaches."
 
-/datum/round_event_control/rogue/worldsiege/goblin/canSpawnEvent(players_amt, gamemode, fake_check)
+/datum/round_event_control/worldsiege/goblin/canSpawnEvent(players_amt, gamemode, fake_check)
 	if(earliest_start >= world.time-SSticker.round_start_time)
 		return FALSE
 	if(players_amt < min_players)
@@ -23,7 +23,7 @@
 				last_siege = world.time
 				return TRUE
 
-/datum/round_event/rogue/worldsiege/goblin/start()
+/datum/round_event/worldsiege/goblin/start()
 	SSmapping.add_world_trait(/datum/world_trait/goblin_siege, rand(4 MINUTES, 8 MINUTES))
 	for(var/mob/dead/observer/O in GLOB.player_list)
 		addtimer(CALLBACK(O, TYPE_PROC_REF(/mob/dead/observer, horde_respawn)), 1)
