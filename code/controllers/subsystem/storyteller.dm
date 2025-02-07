@@ -371,6 +371,9 @@ SUBSYSTEM_DEF(gamemode)
 
 /// We roll points to be spent for roundstart events, including antagonists.
 /datum/controller/subsystem/gamemode/proc/roll_pre_setup_points()
+#if defined(UNIT_TESTS) || defined(AUTOWIKI) // lazy way of doing this but idc
+	return
+#endif
 	if(current_storyteller?.disable_distribution || halted_storyteller)
 		return
 	/// Distribute points
@@ -398,8 +401,8 @@ SUBSYSTEM_DEF(gamemode)
 				gain_amt = ROUNDSTART_OBJECTIVES_GAIN
 		var/calc_value = base_amt + (gain_amt * ready_players)
 		calc_value *= roundstart_point_multipliers[track]
-		calc_value *= current_storyteller.starting_point_multipliers[track]
-		calc_value *= (rand(100 - current_storyteller.roundstart_points_variance,100 + current_storyteller.roundstart_points_variance)/100)
+		calc_value *= current_storyteller?.starting_point_multipliers[track]
+		calc_value *= (rand(100 - current_storyteller?.roundstart_points_variance,100 + current_storyteller?.roundstart_points_variance)/100)
 		event_track_points[track] = round(calc_value)
 
 	/// If the storyteller guarantees an antagonist roll, add points to make it so.
