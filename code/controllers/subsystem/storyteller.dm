@@ -177,15 +177,11 @@ SUBSYSTEM_DEF(gamemode)
 	var/roundvoteend = FALSE
 	var/reb_end_time = 0
 
-	var/disabled = FALSE
-
 /datum/controller/subsystem/gamemode/Initialize(time, zlevel)
 #if defined(UNIT_TESTS) || defined(AUTOWIKI) // lazy way of doing this but idc
-	disabled = TRUE
+	flags |= SS_NO_FIRE
+	return ..()
 #endif
-	if(disabled)
-		flags |= SS_NO_FIRE
-		return ..()
 
 	// Populate event pools
 	for(var/track in event_tracks)
