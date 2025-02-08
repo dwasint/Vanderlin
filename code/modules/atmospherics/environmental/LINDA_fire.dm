@@ -31,10 +31,10 @@
 	var/life = 20
 	var/firelevel = 1 //RTD new firehotspot mechanics
 
-//obj/effect/hotspot/extinguish() handled in other_reagents
-//	if(isturf(loc))
-//		new /obj/effect/temp_visual/small_smoke(src.loc)
-//	qdel(src)
+/obj/effect/hotspot/extinguish()
+	if(isturf(loc))
+		new /obj/effect/temp_visual/small_smoke(src.loc)
+	qdel(src)
 
 /obj/effect/hotspot/Initialize(mapload, starting_volume, starting_temperature)
 	. = ..()
@@ -46,6 +46,17 @@
 	perform_exposure()
 	setDir(pick(GLOB.cardinals))
 	air_update_turf()
+	GLOB.weather_act_upon_list |= src
+
+/obj/effect/hotspot/Destroy()
+	. = ..()
+	GLOB.weather_act_upon_list -= src
+
+/obj/effect/hotspot/weather_act_on(weather_trait, severity)
+	if(weather_trait != PARTICLEWEATHER_RAIN)
+		return
+	life -= 1 * (severity / 5)
+
 
 /obj/effect/hotspot/proc/perform_exposure()
 
