@@ -518,6 +518,9 @@
 		growth_multiplier *= 2.0
 		nutriment_eat_mutliplier *= 0.4
 
+	if(has_world_trait(/datum/world_trait/fertility))
+		growth_multiplier *= 1.5
+
 	if(has_world_trait(/datum/world_trait/dendor_drought))
 		growth_multiplier *= 0.4
 		nutriment_eat_mutliplier *= 2

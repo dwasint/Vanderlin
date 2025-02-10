@@ -6,7 +6,7 @@
 	/// Description of our storyteller.
 	var/desc = "Report this to the coders."
 	/// Text that the players will be greeted with when this storyteller is chosen.
-	var/welcome_text = "Set your eyes on the horizon."
+	var/welcome_text = "Lift your Eyes to the Horizon." //changing this quote to match the one from the original eris PR.
 	/// This is the multiplier for repetition penalty in event weight. The lower the harsher it is
 	var/event_repetition_multiplier = 0.6
 	///if the event is forced regardless
