@@ -136,7 +136,7 @@
 		return
 
 	var/datum/patron/A = H.patron
-	var/list/spelllist = list(A.t0, A.t1)
+	var/list/spelllist = list(/obj/effect/proc_holder/spell/targeted/abrogation, A.t0, A.t1)
 	for(var/spell_type in spelllist)
 		if(!spell_type || H.mind.has_spell(spell_type))
 			continue
@@ -199,7 +199,7 @@
 	var/prayersesh = 0
 	visible_message("[src] kneels their head in prayer.", "I kneel my head in prayer to [patron.name].")
 	for(var/i in 1 to 50)
-		if(do_after(src, 30))
+		if(do_after(src, 3 SECONDS))
 			if(C.devotion >= C.max_devotion)
 				to_chat(src, "<font color='red'>I have reached the limit of my devotion...</font>")
 				break
