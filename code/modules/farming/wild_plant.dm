@@ -39,7 +39,7 @@
 
 /obj/structure/wild_plant/attack_hand(mob/user)
 	. = ..()
-	if(do_after(user, get_farming_do_time(user, 4 SECONDS), target = src))
+	if(do_after(user, get_farming_do_time(user, 4 SECONDS), src))
 		playsound(src,'sound/items/seed.ogg', 100, FALSE)
 		user_harvests(user)
 	return
