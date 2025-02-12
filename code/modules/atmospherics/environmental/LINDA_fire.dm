@@ -204,6 +204,9 @@
 					continue
 				var/obj/effect/hotspot/located_fire = locate() in ranged_floor
 				if(prob(ranged_floor.spread_chance) && !located_fire)
+					if(ranged_floor.liquids)
+						ranged_floor.fire_act(temperature * firelevel)
+						continue
 					new /obj/effect/hotspot(ranged_floor, volume, temperature)
 
 /obj/effect/hotspot/proc/change_firelevel(level = 1)
