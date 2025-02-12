@@ -46,7 +46,7 @@ var opts = {
 
 	//Ping display
 	'lastPang': 0, //Timestamp of the last response from the server.
-	'pangLimit': 350000,
+	'pangLimit': 35000,
 	'pingTime': 0, //Timestamp of when ping sent
 	'pongTime': 0, //Timestamp of when ping received
 	'noResponse': false, //Tracks the state of the previous ping request
@@ -718,7 +718,7 @@ $(function() {
 				$('.connectionClosed[data-count="'+opts.noResponseCount+'"]:not(.restored)').addClass('restored').text('Your connection has been restored (probably)!');
 				opts.noResponse = false;
 		}
-	}, 20000); //20 seconds
+	}, 2000); //2 seconds
 
 
 	/*****************************************
