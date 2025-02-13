@@ -52,7 +52,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	///The opacity of the chems used to determine the alpha of liquid turfs
 	var/opacity = 175
 	///The rate of evaporation in units per call
-	var/evaporation_rate = 1
+	var/evaporation_rate = 2
 	/// do we have a turf exposure (used to prevent liquids doing un-needed processes)
 	var/turf_exposure = FALSE
 	/// are we slippery?

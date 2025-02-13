@@ -109,6 +109,8 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 	for(var/turf/member as anything in members)
 		if(QDELETED(member.liquids))
 			continue
+		if(ispath(modified))
+			continue
 		modified?.remove_from_member(member.liquids)
 
 ///GROUP CONTROLLING
@@ -632,6 +634,8 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 		build_fire_cache(member)
 
 	for(var/turf/open/adjacent_turf in cached_fire_spreads[member])
+		if(!prob(adjacent_turf.spread_chance + (group_burn_power)))
+			continue
 		if(!QDELETED(adjacent_turf.liquids) && adjacent_turf.liquids.liquid_group == src && adjacent_turf.liquids.fire_state < member.liquids.fire_state)
 			adjacent_turf.liquids.fire_state = group_fire_state
 			member.liquids.set_fire_effect()

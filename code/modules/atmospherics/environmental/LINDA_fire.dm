@@ -10,6 +10,9 @@
 
 
 /turf/open/hotspot_expose(added, maxstacks, soh)
+	if(liquids && liquids.liquid_group && !liquids.fire_state)
+		liquids.liquid_group.ignite_turf(src)
+
 	return
 
 //This is the icon for fire on turfs, also helps for nurturing small fires until they are full tile
