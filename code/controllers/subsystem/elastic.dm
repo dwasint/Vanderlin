@@ -22,14 +22,18 @@ SUBSYSTEM_DEF(elastic)
 	return ..()
 
 /datum/controller/subsystem/elastic/fire(resumed)
+	send_data()
+
+
+/datum/controller/subsystem/elastic/proc/send_data(all_data = TRUE)
 	var/datum/http_request/request = new()
-	request.prepare(RUSTG_HTTP_METHOD_POST, CONFIG_GET(string/elastic_endpoint), get_compiled_data(), list(
+	request.prepare(RUSTG_HTTP_METHOD_POST, CONFIG_GET(string/elastic_endpoint), get_compiled_data(all_data), list(
 		"Authorization" = "ApiKey [CONFIG_GET(string/metrics_api_token)]",
 		"Content-Type" = "application/json"
 	))
 	request.begin_async()
 
-/datum/controller/subsystem/elastic/proc/get_compiled_data()
+/datum/controller/subsystem/elastic/proc/get_compiled_data(all_data)
 	var/list/compiled = list()
 	//DON'T CHANGE THIS EVER OR THIS WILL ALL BREAK
 	compiled["@timestamp"] = time_stamp_metric()
@@ -70,10 +74,17 @@ SUBSYSTEM_DEF(elastic)
 	assoc_list_data |= main_cat
 	if(!length(assoc_list_data[main_cat]))
 		assoc_list_data[main_cat] = list()
-	assoc_list_data[main_cat] |= list(assoc_data)
+	assoc_list_data[main_cat] |= assoc_data
 
 /proc/add_elastic_data(main_cat, list/assoc_data)
 	if(!main_cat || !length(assoc_data))
 		return
 	SSelastic.add_list_data(main_cat, assoc_data)
+	return TRUE
+
+/proc/add_elastic_data_immediate(main_cat, list/assoc_data)
+	if(!main_cat || !length(assoc_data))
+		return
+	SSelastic.add_list_data(main_cat, assoc_data)
+	SSelastic.send_data()
 	return TRUE
