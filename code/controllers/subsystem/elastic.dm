@@ -70,7 +70,7 @@ SUBSYSTEM_DEF(elastic)
 	assoc_list_data |= main_cat
 	if(!length(assoc_list_data[main_cat]))
 		assoc_list_data[main_cat] = list()
-	assoc_list_data[main_cat] |= assoc_data
+	assoc_list_data[main_cat] |= list(assoc_data)
 
 /proc/add_elastic_data(main_cat, list/assoc_data)
 	if(!main_cat || !length(assoc_data))
