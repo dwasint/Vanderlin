@@ -539,6 +539,7 @@
 #include "code\datums\components\knockback.dm"
 #include "code\datums\components\knockoff.dm"
 #include "code\datums\components\lifesteal.dm"
+#include "code\datums\components\liquid_interactions.dm"
 #include "code\datums\components\magnetic_catch.dm"
 #include "code\datums\components\mirage_border.dm"
 #include "code\datums\components\mood.dm"
