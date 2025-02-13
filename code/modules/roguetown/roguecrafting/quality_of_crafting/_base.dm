@@ -631,7 +631,7 @@
 								continue
 							parts += listed
 						new_item.CheckParts(parts)
-						new_item.OnCrafted(user.dir)
+						new_item.OnCrafted(user.dir, user)
 						parts = null
 
 					outputs += new_item
