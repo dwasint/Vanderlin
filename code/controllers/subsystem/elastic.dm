@@ -32,7 +32,7 @@ SUBSYSTEM_DEF(elastic)
 /datum/controller/subsystem/elastic/proc/get_compiled_data()
 	var/list/compiled = list()
 	//DON'T CHANGE THIS EVER OR THIS WILL ALL BREAK
-	compiled["@timestamp"] = time_stamp()
+	compiled["@timestamp"] = time_stamp_metric()
 	compiled["cpu"] = world.cpu
 	compiled["elapsed_process_time"] = world.time
 	compiled["elapsed_real_time"] = (REALTIMEOFDAY - world_init_time)
