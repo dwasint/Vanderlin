@@ -514,6 +514,9 @@ SUBSYSTEM_DEF(gamemode)
 
 ///Attempts to select players for special roles the mode might have.
 /datum/controller/subsystem/gamemode/proc/pre_setup()
+	if(!length(storytellers))
+		for(var/type in subtypesof(/datum/storyteller))
+			storytellers[type] = new type()
 	set_storyteller(/datum/storyteller/astrata)
 	calculate_ready_players()
 	roll_pre_setup_points()
