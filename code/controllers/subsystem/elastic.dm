@@ -15,6 +15,8 @@ SUBSYSTEM_DEF(elastic)
 	var/world_init_time = 0
 	///this NEEDS NEEDS NEEDS NEEDS NEEDS to be assoclists when 516 is in this will be an alist
 	var/list/assoc_list_data = list()
+	///abstract information - basically want to keep track of spell casts over the round? do it like this
+	var/list/abstract_information = list()
 
 /datum/controller/subsystem/elastic/Initialize(start_timeofday)
 	if(!CONFIG_GET(flag/elastic_middleware_enabled))
@@ -89,4 +91,16 @@ SUBSYSTEM_DEF(elastic)
 		return
 	SSelastic.add_list_data(main_cat, assoc_data)
 	SSelastic.send_data()
+	return TRUE
+
+///this is best for numerical data think x event ran 12 times since you're updating the number with the total run anyway.
+/proc/add_abstract_elastic_data(main_cat, abstract_name, abstract_value)
+	if(!isnum(abstract_value))
+		return
+	if(!main_cat)
+		return
+	SSelastic.abstract_information |= abstract_name
+	SSelastic.abstract_information[abstract_name] += abstract_value
+	var/list/data = list(abstract_name = SSelastic.abstract_information[abstract_name])
+	SSelastic.add_list_data(main_cat, data)
 	return TRUE
