@@ -450,7 +450,8 @@
 
 /turf/closed/wall/Initialize(mapload)
 	. = ..()
-	new /atom/movable/atom_shadow(src)
+	if(opacity)
+		new /atom/movable/atom_shadow(src)
 
 /turf/closed/wall
 	plane = WALL_PLANE
@@ -461,4 +462,5 @@
 
 /turf/closed/mineral/Initialize(mapload)
 	. = ..()
-	new /atom/movable/atom_shadow(src)
+	if(opacity)
+		new /atom/movable/atom_shadow(src)
