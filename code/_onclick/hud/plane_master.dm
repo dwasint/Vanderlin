@@ -296,6 +296,15 @@
 	screen_loc = "CENTER-2:-16, CENTER"
 	color = list(1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,2)
 
+
+
+/atom/movable/screen/plane_master/wall_fov/backdrop(mob/mymob)
+	. = ..()
+	if(!isliving(mymob))
+		alpha = 0
+	else
+		alpha = 255
+
 /atom/movable/screen/plane_master/wall_fov/shadows_plane
 	name = "wall fov shadows plane"
 	plane = ATOMS_FOV_SHADOWS_PLANE
