@@ -63,7 +63,7 @@
 	///weight this has of being picked for random storyteller/showing up in the vote if not always_votable
 	var/weight = 0
 
-/datum/storyteller/process(1)
+/datum/storyteller/process()
 	if(!round_started || disable_distribution) // we are differing roundstarted ones until base roundstart so we can get cooler stuff
 		return
 

@@ -406,7 +406,7 @@ SUBSYSTEM_DEF(gamemode)
 		event_track_points[track] = round(calc_value)
 
 	/// If the storyteller guarantees an antagonist roll, add points to make it so.
-	if(current_storyteller.guarantees_roundstart_roleset && event_track_points[EVENT_TRACK_CHARACTER_INJECTION] < point_thresholds[EVENT_TRACK_CHARACTER_INJECTION])
+	if(current_storyteller?.guarantees_roundstart_roleset && event_track_points[EVENT_TRACK_CHARACTER_INJECTION] < point_thresholds[EVENT_TRACK_CHARACTER_INJECTION])
 		event_track_points[EVENT_TRACK_CHARACTER_INJECTION] = point_thresholds[EVENT_TRACK_CHARACTER_INJECTION]
 
 	/// If we have any forced events, ensure we get enough points for them
@@ -514,6 +514,7 @@ SUBSYSTEM_DEF(gamemode)
 
 ///Attempts to select players for special roles the mode might have.
 /datum/controller/subsystem/gamemode/proc/pre_setup()
+	set_storyteller(/datum/storyteller/astrata)
 	calculate_ready_players()
 	roll_pre_setup_points()
 	//handle_pre_setup_roundstart_events()
