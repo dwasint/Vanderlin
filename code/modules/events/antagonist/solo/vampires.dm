@@ -11,8 +11,10 @@
 
 	weight = 12
 
+	denominator = 80
+
 	base_antags = 1
-	maximum_antags = 3
+	maximum_antags = 2
 
 	earliest_start = 0 SECONDS
 
