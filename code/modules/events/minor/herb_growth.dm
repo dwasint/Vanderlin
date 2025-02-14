@@ -17,6 +17,9 @@ GLOBAL_LIST_INIT(harvested_herbs, list())
 
 /datum/round_event/herb_growth/start()
 	. = ..()
-	for(var/i = 1 to rand(1, 25))
-		var/obj/structure/flora/roguegrass/herb/herb = pick(GLOB.harvested_herbs)
-		herb.loot_replenish()
+	if(length(GLOB.harvested_herbs))
+		for(var/i = 1 to rand(1, 25))
+			if(!length(GLOB.harvested_herbs))
+				return
+			var/obj/structure/flora/roguegrass/herb/herb = pick(GLOB.harvested_herbs)
+			herb.loot_replenish()
