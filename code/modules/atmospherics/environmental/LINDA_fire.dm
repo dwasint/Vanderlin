@@ -60,7 +60,7 @@
 /obj/effect/hotspot/weather_act_on(weather_trait, severity)
 	if(weather_trait != PARTICLEWEATHER_RAIN)
 		return
-	life -= 1 * (severity / 5)
+	life -= 2 * (severity / 5)
 
 
 /obj/effect/hotspot/proc/perform_exposure()
