@@ -51,7 +51,7 @@
 	/// If defined, it will not be votable if exceeding the population
 	var/population_max
 	/// has the round gotten to the point where jobs are pre-created?
-	var/round_started = FALSE
+	var/static/round_started = FALSE
 	///have we done roundstart checks?
 	var/roundstart_checks = FALSE
 	///prob of roundstart antag
@@ -63,7 +63,7 @@
 	///weight this has of being picked for random storyteller/showing up in the vote if not always_votable
 	var/weight = 0
 
-/datum/storyteller/process(seconds_per_tick)
+/datum/storyteller/process(1)
 	if(!round_started || disable_distribution) // we are differing roundstarted ones until base roundstart so we can get cooler stuff
 		return
 
@@ -79,7 +79,7 @@
 		log_storyteller("Running SSgamemode.current_roundstart_event\[[SSgamemode.current_roundstart_event]\]")
 		SSgamemode.ran_roundstart = TRUE
 
-	add_points(seconds_per_tick)
+	add_points(1)
 	handle_tracks()
 
 /// Add points to all tracks while respecting the multipliers.

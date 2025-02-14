@@ -47,7 +47,7 @@
 					user.visible_message(span_notice("[user] finds [B] in [src]."))
 					harvested = TRUE
 					timerid = addtimer(CALLBACK(src, PROC_REF(loot_replenish)), 5 MINUTES)
-					add_filter("picked", 1, alpha_mask_filter(icon = icon('icons/effects/picked_overlay.dmi', "picked_overlay_[rand(1,3)]"), , flags = MASK_INVERSE))
+					add_filter("picked", 1, alpha_mask_filter(icon = icon('icons/effects/picked_overlay.dmi', "picked_overlay_[rand(1,3)]"), flags = MASK_INVERSE))
 					GLOB.harvested_herbs |= src
 					return
 			user.visible_message(span_notice("[user] searches through [src]."))
@@ -58,7 +58,8 @@
 	harvested = FALSE
 	remove_filter("picked")
 	GLOB.harvested_herbs -= src
-	deltimer(timerid)
+	if(timerid)
+		deltimer(timerid)
 
 /obj/structure/flora/roguegrass/herb/random
 	name = "random herb"
