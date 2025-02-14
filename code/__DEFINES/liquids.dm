@@ -35,7 +35,7 @@
 //Threshold at which the difference of height makes us need to climb/blocks movement/allows to fall down
 #define TURF_HEIGHT_BLOCK_THRESHOLD 20
 
-#define LIQUID_HEIGHT_DIVISOR 10
+#define LIQUID_HEIGHT_DIVISOR 15
 
 #define ONE_LIQUIDS_HEIGHT LIQUID_HEIGHT_DIVISOR
 
