@@ -76,12 +76,14 @@ SUBSYSTEM_DEF(elastic)
 		assoc_list_data[main_cat] = list()
 	assoc_list_data[main_cat] |= assoc_data
 
+///this is best for numerical data think x event ran 12 times since you're updating the number with the total run anyway.
 /proc/add_elastic_data(main_cat, list/assoc_data)
 	if(!main_cat || !length(assoc_data))
 		return
 	SSelastic.add_list_data(main_cat, assoc_data)
 	return TRUE
 
+///this should be used for logging purposes think runtimes, or wanting to track player x does y
 /proc/add_elastic_data_immediate(main_cat, list/assoc_data)
 	if(!main_cat || !length(assoc_data))
 		return
