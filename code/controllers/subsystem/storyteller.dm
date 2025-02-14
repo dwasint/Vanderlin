@@ -188,8 +188,9 @@ SUBSYSTEM_DEF(gamemode)
 		event_pools[track] = list()
 
 	// Populate storytellers
-	for(var/type in subtypesof(/datum/storyteller))
-		storytellers[type] = new type()
+	if(!length(storytellers))//unit tests can force this before init.
+		for(var/type in subtypesof(/datum/storyteller))
+			storytellers[type] = new type()
 
 	for(var/datum/round_event_control/event_type as anything in typesof(/datum/round_event_control))
 		if(!event_type::typepath || !event_type::name)
