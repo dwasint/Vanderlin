@@ -30,6 +30,7 @@
 
 /datum/outfit/job/roguetown/rousman/pre_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()
+	H.set_species(/datum/species/rousman)
 	var/loadout = rand(1,4)
 	switch(loadout)
 		if(1) //Grats, you got all the good armor
