@@ -431,6 +431,13 @@
 	plane = ATOMS_FOV_SHADOWS_PLANE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
+/atom/movable/atom_shadow/New(loc, ...)
+	. = ..()
+	RegisterSignal(loc, COMSIG_PARENT_QDELETING, PROC_REF(kill))
+
+/atom/movable/atom_shadow/proc/kill(datum/source)
+	UnregisterSignal(source, COMSIG_PARENT_QDELETING)
+	qdel(src)
 
 /turf/closed/wall/Initialize(mapload)
 	. = ..()
@@ -438,3 +445,11 @@
 
 /turf/closed/wall
 	plane = WALL_PLANE
+
+
+/turf/closed/mineral
+	plane = WALL_PLANE
+
+/turf/closed/mineral/Initialize(mapload)
+	. = ..()
+	new /atom/movable/atom_shadow(src)
