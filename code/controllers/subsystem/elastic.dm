@@ -101,6 +101,6 @@ SUBSYSTEM_DEF(elastic)
 		return
 	SSelastic.abstract_information |= abstract_name
 	SSelastic.abstract_information[abstract_name] += abstract_value
-	var/list/data = list(abstract_name = SSelastic.abstract_information[abstract_name])
+	var/list/data = list("[abstract_name]" = SSelastic.abstract_information[abstract_name])
 	SSelastic.add_list_data(main_cat, data)
 	return TRUE
