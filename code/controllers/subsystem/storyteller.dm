@@ -395,11 +395,12 @@ SUBSYSTEM_DEF(gamemode)
 				base_amt = ROUNDSTART_ROLESET_BASE
 				gain_amt = ROUNDSTART_ROLESET_GAIN
 			if(EVENT_TRACK_OMENS)
-				base_amt = ROUNDSTART_OBJECTIVES_BASE
-				gain_amt = ROUNDSTART_OBJECTIVES_GAIN
+				base_amt = 0
+				gain_amt = 0
 			if(EVENT_TRACK_RAIDS)
-				base_amt = ROUNDSTART_OBJECTIVES_BASE
-				gain_amt = ROUNDSTART_OBJECTIVES_GAIN
+				base_amt = 0
+				gain_amt = 0
+
 		var/calc_value = base_amt + (gain_amt * ready_players)
 		calc_value *= roundstart_point_multipliers[track]
 		calc_value *= current_storyteller?.starting_point_multipliers[track]

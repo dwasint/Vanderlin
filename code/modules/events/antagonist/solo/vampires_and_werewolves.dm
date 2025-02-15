@@ -72,5 +72,8 @@
 	if(!leader)
 		antag_mind.add_antag_datum(antag_datum)
 		leader = TRUE
+		return
 	else
-		antag_mind.add_antag_datum(/datum/antagonist/vampirelord/lesser)
+		if(!antag_mind.has_antag_datum(/datum/antagonist/vampirelord))
+			antag_mind.add_antag_datum(/datum/antagonist/vampirelord/lesser)
+		return
