@@ -21,6 +21,7 @@ SUBSYSTEM_DEF(elastic)
 /datum/controller/subsystem/elastic/Initialize(start_timeofday)
 	if(!CONFIG_GET(flag/elastic_middleware_enabled))
 		flags |= SS_NO_FIRE // Disable firing to save CPU
+	set_abstract_data_zeros()
 	return ..()
 
 /datum/controller/subsystem/elastic/fire(resumed)
@@ -104,3 +105,13 @@ SUBSYSTEM_DEF(elastic)
 	var/list/data = list("[abstract_name]" = SSelastic.abstract_information[abstract_name])
 	SSelastic.add_list_data(main_cat, data)
 	return TRUE
+
+///this really exists if you want data to start at 0 useful for timeseries data without round filtering
+/proc/set_abstract_data_zeros()
+	add_abstract_elastic_data("combat", "fight_revives", 0)
+	add_abstract_elastic_data("combat", "eaten_bodies", 0)
+	add_abstract_elastic_data("combat", "coin_revive", 0)
+	add_abstract_elastic_data("combat", "decapitations", 0)
+
+	add_abstract_elastic_data("economy", "mammons_gained", 0)
+	add_abstract_elastic_data("economy", "mammons_spent", 0)
