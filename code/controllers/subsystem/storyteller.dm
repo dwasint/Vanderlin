@@ -474,7 +474,7 @@ SUBSYSTEM_DEF(gamemode)
 		if(player_mob.mind?.assigned_role)
 			if(player_mob.mind.job_bitflag & BITFLAG_ROYALTY)
 				royalty++
-			if(player_mob.mind.job_bitflag & BITFLAG_CONTRUCTOR)
+			if(player_mob.mind.job_bitflag & BITFLAG_CONSTRUCTOR)
 				constructor++
 			if(player_mob.mind.job_bitflag & BITFLAG_CHURCH)
 				church++
@@ -509,7 +509,7 @@ SUBSYSTEM_DEF(gamemode)
 	else if(. == EVENT_READY)
 		event.runEvent(random = TRUE, admin_forced = forced) // fallback to dynamic
 		add_abstract_elastic_data("storyteller", event.name, 1)
-		
+
 ///Resets frequency multiplier.
 /datum/controller/subsystem/gamemode/proc/resetFrequency()
 	event_frequency_multiplier = 1
