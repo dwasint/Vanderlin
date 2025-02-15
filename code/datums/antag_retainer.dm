@@ -50,7 +50,7 @@
 			return "werewolf"
 
 /proc/check_for_lord(forced = FALSE)
-	if(!forced && world.time < SSticker.next_lord_check)
+	if(!forced && (world.time < SSticker.next_lord_check))
 		return
 	SSticker.next_lord_check = world.time + 1 MINUTES
 	var/lord_found = FALSE
