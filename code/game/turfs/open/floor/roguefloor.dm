@@ -176,7 +176,8 @@
 						/turf/open/floor/rogue/snow/rough)
 	max_integrity = 1200
 
-	spread_chance = 25
+	spread_chance = 15
+	burn_power = 6
 
 /turf/open/floor/rogue/grass/Initialize()
 	dir = pick(GLOB.cardinals)
