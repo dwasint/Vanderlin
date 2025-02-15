@@ -639,6 +639,7 @@ GLOBAL_LIST_EMPTY(active_lifts_by_type)
 
 		if(!length(requested_supplies))
 			spawn_coins(total_coin_value, platform)
+			add_abstract_elastic_data("economy", "mammons_gained", total_coin_value)
 			continue
 
 		for(var/datum/supply_pack/requested as anything in requested_supplies)
