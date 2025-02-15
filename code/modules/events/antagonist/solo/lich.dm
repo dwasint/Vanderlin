@@ -9,10 +9,10 @@
 	antag_flag = ROLE_LICH
 	shared_occurence_type = SHARED_HIGH_THREAT
 
-	denominator = 60
+	denominator = 80
 
 	base_antags = 1
-	maximum_antags = 2
+	maximum_antags = 3
 
 	weight = 12
 
