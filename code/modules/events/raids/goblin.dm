@@ -4,7 +4,7 @@
 	weight = 10
 	max_occurrences = 1
 	min_players = 4
-	todreq = list("dusk", "night")
+	todreq = null
 	earliest_start = 35 MINUTES
 	tags = list(TAG_HAUNTED, TAG_COMBAT, TAG_RAID)
 	track = EVENT_TRACK_RAIDS
