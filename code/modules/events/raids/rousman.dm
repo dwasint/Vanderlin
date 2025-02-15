@@ -16,6 +16,7 @@
 		return FALSE
 	if(players_amt < min_players)
 		return FALSE
+	. = ..()
 
 /datum/round_event/worldsiege/rousman/start()
 	SSmapping.add_world_trait(/datum/world_trait/rousman_siege, rand(4 MINUTES, 8 MINUTES))

@@ -15,8 +15,7 @@
 		return FALSE
 	if(players_amt < min_players)
 		return FALSE
-	if(world.time > last_siege + 18 MINUTES)
-		return TRUE
+	. = ..()
 
 /datum/round_event_control/worldsiege/preRunEvent()
 	. = ..()
