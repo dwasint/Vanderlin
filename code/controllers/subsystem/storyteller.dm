@@ -53,7 +53,7 @@ SUBSYSTEM_DEF(gamemode)
 		EVENT_TRACK_INTERVENTION = MAJOR_POINT_THRESHOLD,
 		EVENT_TRACK_CHARACTER_INJECTION = ROLESET_POINT_THRESHOLD,
 		EVENT_TRACK_OMENS = OBJECTIVES_POINT_THRESHOLD,
-		EVENT_TRACK_RAIDS = OBJECTIVES_POINT_THRESHOLD * 2.5,
+		EVENT_TRACK_RAIDS = OBJECTIVES_POINT_THRESHOLD * 2,
 		)
 
 	/// Minimum population thresholds for the tracks to fire off events.
@@ -651,7 +651,7 @@ SUBSYSTEM_DEF(gamemode)
 	point_thresholds[EVENT_TRACK_INTERVENTION] = CONFIG_GET(number/major_point_threshold)
 	point_thresholds[EVENT_TRACK_CHARACTER_INJECTION] = CONFIG_GET(number/roleset_point_threshold)
 	point_thresholds[EVENT_TRACK_OMENS] = CONFIG_GET(number/objectives_point_threshold)
-	point_thresholds[EVENT_TRACK_RAIDS] = CONFIG_GET(number/objectives_point_threshold) * 2.5
+	point_thresholds[EVENT_TRACK_RAIDS] = CONFIG_GET(number/objectives_point_threshold) * 2
 
 /datum/controller/subsystem/gamemode/proc/handle_picking_storyteller()
 	if(length(GLOB.clients) > MAX_POP_FOR_STORYTELLER_VOTE)
