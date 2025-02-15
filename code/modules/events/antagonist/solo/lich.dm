@@ -12,7 +12,7 @@
 	denominator = 80
 
 	base_antags = 1
-	maximum_antags = 3
+	maximum_antags = 2
 
 	weight = 12
 
