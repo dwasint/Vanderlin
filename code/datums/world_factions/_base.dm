@@ -17,6 +17,9 @@
 
 	///modifiers that are hard set by the faction think zybantine needing food more cause desert.
 	var/list/hard_value_mulitpliers = list()
+	
+	///this is our town reputation, this changes the buy and sell modifiers on a faction to faction basis
+	var/faction_reputation = 0
 
 /datum/world_faction/proc/handle_world_change()
 	for(var/obj/atom as anything in last_sell_modification)
