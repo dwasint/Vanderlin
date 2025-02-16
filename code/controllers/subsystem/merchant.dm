@@ -1,9 +1,8 @@
 SUBSYSTEM_DEF(merchant)
 	name = "Merchant Packs"
-	wait = 10
+	wait = 60 SECONDS
 	init_order = INIT_ORDER_DEFAULT
 	runlevels = RUNLEVEL_SETUP | RUNLEVEL_GAME
-	flags = SS_NO_FIRE
 
 	var/list/supply_packs = list()
 	var/list/supply_cats = list()
@@ -19,6 +18,10 @@ SUBSYSTEM_DEF(merchant)
 	var/datum/lift_master/tram/cargo_boat
 	var/cargo_docked = TRUE
 
+	var/list/world_factions = list()
+
+	var/list/staticly_setup_types = list()
+
 	var/datum/lift_master/tram/fence_boat
 	var/fence_docked = TRUE
 
@@ -30,12 +33,20 @@ SUBSYSTEM_DEF(merchant)
 		supply_packs[P.type] = P
 		if(!(P.group in supply_cats))
 			supply_cats += P.group
+	for(var/faction in typesof(/datum/world_faction))
+		var/datum/world_faction/made = new faction()
+		world_factions |= made
 	return ..()
 
+/datum/controller/subsystem/merchant/fire(resumed)
+	for(var/datum/world_faction/faction in world_factions)
+		faction.handle_world_change()
 
 /datum/controller/subsystem/merchant/proc/prepare_cargo_shipment()
 	if(!cargo_boat || !cargo_docked)
 		return
+
+	draw_selling_changes()
 
 	cargo_boat.show_tram()
 	var/list/boat_spaces = list()
@@ -119,3 +130,29 @@ SUBSYSTEM_DEF(merchant)
 
 	fence_boat.tram_travel(destination_platform, rapid = FALSE)
 	fence_boat.callback_platform = destination_platform
+
+/datum/controller/subsystem/merchant/proc/adjust_sell_multiplier(obj/change_type, change = 0)
+	var/datum/world_faction/active_faction = world_factions[1]//when world factions we change this
+	active_faction.adjust_sell_multiplier(change_type, change)
+
+
+/datum/controller/subsystem/merchant/proc/handle_selling(obj/selling_type)
+	var/datum/world_faction/active_faction = world_factions[1]//when world factions we change this
+	active_faction.handle_selling(selling_type)
+
+/datum/controller/subsystem/merchant/proc/changed_sell_prices(atom/atom_type, old_price, new_price)
+	var/datum/world_faction/active_faction = world_factions[1]//when world factions we change this
+	active_faction.changed_sell_prices(atom_type, old_price, new_price)
+
+/datum/controller/subsystem/merchant/proc/draw_selling_changes()
+	for(var/datum/world_faction/active_faction in world_factions)
+		active_faction.draw_selling_changes()
+
+/datum/controller/subsystem/merchant/proc/return_sell_modifier(atom/sell_type)
+	var/datum/world_faction/active_faction = world_factions[1]
+	return active_faction.return_sell_modifier(sell_type)
+
+/datum/controller/subsystem/merchant/proc/set_faction_sell_values(atom/sell_type)
+	staticly_setup_types |= sell_type
+	for(var/datum/world_faction/active_faction in world_factions)
+		active_faction.setup_sell_data(sell_type)

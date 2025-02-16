@@ -757,17 +757,24 @@ GLOBAL_LIST_EMPTY(active_lifts_by_type)
 			if(istype(listed_atom, /obj/item/roguecoin))
 				continue
 
-			total_coin_value += FLOOR(listed_atom.sellprice * sell_modifer, 1)
+			total_coin_value += FLOOR(listed_atom.sellprice * sell_modifer * SSmerchant.return_sell_modifier(listed_atom.type), 1)
+			var/old_price = FLOOR(listed_atom.sellprice * sell_modifer * SSmerchant.return_sell_modifier(listed_atom.type), 1)
 			if(!(initial(listed_atom.name) in sold_items))
 				sold_items |= initial(listed_atom.name)
 				sold_count |= initial(listed_atom.name)
 
 				sold_count[initial(listed_atom.name)] = 1
-				sold_items[initial(listed_atom.name)] = FLOOR(listed_atom.sellprice * sell_modifer, 1)
+				sold_items[initial(listed_atom.name)] = FLOOR(listed_atom.sellprice * sell_modifer * SSmerchant.return_sell_modifier(listed_atom.type), 1)
 
 			else
 				sold_count[initial(listed_atom.name)]++
-				sold_items[initial(listed_atom.name)] += FLOOR(listed_atom.sellprice * sell_modifer, 1)
+				sold_items[initial(listed_atom.name)] += FLOOR(listed_atom.sellprice * sell_modifer * SSmerchant.return_sell_modifier(listed_atom.type), 1)
+			SSmerchant.handle_selling(listed_atom.type)
+			var/new_price = FLOOR(listed_atom.sellprice * sell_modifer * SSmerchant.return_sell_modifier(listed_atom.type), 1)
+
+			if(old_price != new_price)
+				SSmerchant.changed_sell_prices(listed_atom.type, old_price, new_price)
+
 
 			for(var/atom/movable/inside in listed_atom.get_all_contents())
 				if(inside == listed_atom)

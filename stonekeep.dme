@@ -707,6 +707,7 @@
 #include "code\datums\stress\_stressevent.dm"
 #include "code\datums\stress\negative_events.dm"
 #include "code\datums\stress\positive_events.dm"
+#include "code\datums\world_factions\_base.dm"
 #include "code\datums\world_traits\_base.dm"
 #include "code\datums\world_traits\death_knight.dm"
 #include "code\datums\world_traits\dendor_boon.dm"

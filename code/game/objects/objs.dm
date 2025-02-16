@@ -76,6 +76,10 @@
 
 	. = ..() //Do this after, else mat datums is mad.
 
+	if(sellprice)
+		if(!(type in SSmerchant.staticly_setup_types))
+			SSmerchant.set_faction_sell_values(type)
+
 	if (set_obj_flags)
 		var/flagslist = splittext(set_obj_flags,";")
 		var/list/string_to_objflag = GLOB.bitfields["obj_flags"]
