@@ -11,6 +11,8 @@
 	base_antags = 1
 	maximum_antags = 3
 
+	max_occurrences = 1
+
 	earliest_start = 0 SECONDS
 
 	typepath = /datum/round_event/antagonist/solo/rebel
