@@ -558,7 +558,8 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 			continue
 		var/modifier = 1
 		if(SSParticleWeather.runningWeather?.target_trait == PARTICLEWEATHER_RAIN)
-			modifier = 0.5
+			if(!floor.outdoor_effect?.weatherproof)
+				modifier = 0.5
 		if(prob(floor.spread_chance * modifier))
 			for(var/turf/ranged_floor in range(1, floor))
 				if(ranged_floor == floor || !ranged_floor.burn_power || (ranged_floor in members))

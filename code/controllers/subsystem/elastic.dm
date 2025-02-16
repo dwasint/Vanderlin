@@ -104,7 +104,7 @@ SUBSYSTEM_DEF(elastic)
 	SSelastic.abstract_information[abstract_name] += abstract_value
 	if(maximum)
 		SSelastic.abstract_information[abstract_name] = min(maximum, SSelastic.abstract_information[abstract_name])
-		
+
 	var/list/data = list("[abstract_name]" = SSelastic.abstract_information[abstract_name])
 	SSelastic.add_list_data(main_cat, data)
 	return TRUE
