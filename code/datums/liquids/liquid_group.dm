@@ -556,13 +556,16 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 	for(var/turf/floor in burning_members)
 		if(!(floor in cached_edge_turfs))
 			continue
-			if(prob(floor.spread_chance))
-				for(var/turf/ranged_floor in range(1, floor))
-					if(ranged_floor == floor || !ranged_floor.burn_power || (ranged_floor in members))
-						continue
-					var/obj/effect/hotspot/located_fire = locate() in ranged_floor
-					if(!located_fire)
-						new /obj/effect/hotspot(ranged_floor, 175, 1000 + T0C)
+		var/modifier = 1
+		if(SSParticleWeather.runningWeather?.target_trait == PARTICLEWEATHER_RAIN)
+			modifier = 0.5
+		if(prob(floor.spread_chance * modifier))
+			for(var/turf/ranged_floor in range(1, floor))
+				if(ranged_floor == floor || !ranged_floor.burn_power || (ranged_floor in members))
+					continue
+				var/obj/effect/hotspot/located_fire = locate() in ranged_floor
+				if(!located_fire)
+					new /obj/effect/hotspot(ranged_floor, 175, 1000 + T0C)
 
 	if(!group_burn_power)
 		extinguish_all()
@@ -633,8 +636,11 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 	if(!cached_fire_spreads[member])
 		build_fire_cache(member)
 
+	var/modifier = 1
+	if(SSParticleWeather.runningWeather?.target_trait == PARTICLEWEATHER_RAIN)
+		modifier = 0.5
 	for(var/turf/open/adjacent_turf in cached_fire_spreads[member])
-		if(!prob(adjacent_turf.spread_chance + (group_burn_power)))
+		if(!prob((adjacent_turf.spread_chance + (group_burn_power)) * modifier))
 			continue
 		if(!QDELETED(adjacent_turf.liquids) && adjacent_turf.liquids.liquid_group == src && adjacent_turf.liquids.fire_state < member.liquids.fire_state)
 			adjacent_turf.liquids.fire_state = group_fire_state

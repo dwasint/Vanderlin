@@ -192,13 +192,16 @@
 		object.fire_act(temperature * firelevel)
 
 	var/burn_power = 0
+	var/modifier = 1
+	if(SSParticleWeather.runningWeather?.target_trait == PARTICLEWEATHER_RAIN)
+		modifier = 0.5
 	if(isfloorturf(get_turf(src)))
 		var/turf/floor= get_turf(src)
 		floor.burn_power = max(0, floor.burn_power - (1 * firelevel))
 		if(floor.burn_power == 0)
 			extinguish()
 		burn_power += floor.burn_power
-		if(prob(floor.spread_chance))
+		if(prob(floor.spread_chance * modifier))
 			change_firelevel(min(3, firelevel+1))
 
 		if(burn_power)
@@ -206,7 +209,7 @@
 				if(ranged_floor == src || !ranged_floor.burn_power)
 					continue
 				var/obj/effect/hotspot/located_fire = locate() in ranged_floor
-				if(prob(ranged_floor.spread_chance) && !located_fire)
+				if(prob(ranged_floor.spread_chance * modifier) && !located_fire)
 					if(ranged_floor.liquids)
 						ranged_floor.fire_act(temperature * firelevel)
 						continue
