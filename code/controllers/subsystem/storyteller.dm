@@ -405,7 +405,7 @@ SUBSYSTEM_DEF(gamemode)
 		calc_value *= roundstart_point_multipliers[track]
 		calc_value *= current_storyteller?.starting_point_multipliers[track]
 		calc_value *= (rand(100 - current_storyteller?.roundstart_points_variance,100 + current_storyteller?.roundstart_points_variance)/100)
-		event_track_points[track] = round(calc_value)
+		event_track_points[track] = min(round(calc_value), round(point_thresholds[track] * 1.25))
 
 	/// If the storyteller guarantees an antagonist roll, add points to make it so.
 	if(current_storyteller?.guarantees_roundstart_roleset && event_track_points[EVENT_TRACK_CHARACTER_INJECTION] < point_thresholds[EVENT_TRACK_CHARACTER_INJECTION])
