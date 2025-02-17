@@ -500,6 +500,7 @@
 #include "code\datums\ai\subtrees\simple_melee_subtree.dm"
 #include "code\datums\ai\subtrees\targeted_ability_use.dm"
 #include "code\datums\ai\subtrees\tip_reaction.dm"
+#include "code\datums\ai\subtrees\travel_to_point.dm"
 #include "code\datums\ai\targetting_datum\simpe_targetting_datum.dm"
 #include "code\datums\ai\targetting_datum\simple_targetting_allow_item.dm"
 #include "code\datums\brain_damage\brain_trauma.dm"

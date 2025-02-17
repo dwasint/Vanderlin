@@ -40,7 +40,11 @@ GLOBAL_LIST_INIT(animal_migration_points, list())
 		var/mob/living/simple_animal/hostile/retaliate/rogue/created = new animal(start_turf)
 		if(created.ai_controller)
 			created.ai_controller.set_blackboard_key(BB_WANDER_POINT, end_turf)
-			created.ai_controller.queue_behavior(/datum/ai_behavior/travel_towards, BB_WANDER_POINT)
+			var/list/ai_controller_paths = list()
+			for(var/datum/ai_planning_subtree/tree as anything in created.ai_controller.planning_subtrees)
+				ai_controller_paths |= tree.type
+			ai_controller_paths |= /datum/ai_planning_subtree/travel_to_point/and_clear_target/wander
+			created.ai_controller.replace_planning_subtrees(ai_controller_paths)
 		else
 			created.GiveTarget(end_turf)
 
