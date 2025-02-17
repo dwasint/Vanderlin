@@ -297,3 +297,4 @@
 	if(cap && pollution.total_amount >= cap)
 		return
 	pollution.add_pollutant_list(pollutions)
+	pollution.add_pollutant_list(pollutions)
