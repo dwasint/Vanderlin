@@ -16,6 +16,7 @@
 	smeltresult = /obj/item/ash // Helmets have pre-defined smeltresults, this is for hats
 	body_parts_covered = COVERAGE_SKULL
 	sellprice = VALUE_CHEAP_CLOTHING
+	edelay_type = 1
 
 	max_integrity = INTEGRITY_WORST
 
@@ -244,7 +245,6 @@
 	pickup_sound = 'sound/foley/equip/cloak_take_off.ogg'
 	break_sound = 'sound/foley/cloth_rip.ogg'
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
-	edelay_type = 1
 	adjustable = CAN_CADJUST
 	toggle_icon_state = TRUE
 	var/default_hidden = null
@@ -264,6 +264,9 @@
 
 /obj/item/clothing/head/roguetown/roguehood/black
 	color = CLOTHING_SOOT_BLACK
+
+/obj/item/clothing/head/roguetown/roguehood/green
+	color = CLOTHING_FOREST_GREEN
 
 /obj/item/clothing/head/roguetown/roguehood/random/Initialize()
 	color = pick( CLOTHING_PEASANT_BROWN, CLOTHING_SPRING_GREEN, CLOTHING_CHESTNUT, CLOTHING_YELLOW_OCHRE)
@@ -440,7 +443,7 @@
 		user.visible_message(span_reallybig("UNWORTHY HANDS TOUCH MY VISAGE, CEASE OR BE PUNISHED"))
 		spawn(30)
 			if(loc == user)
-				user.adjust_fire_stacks(3)
+				user.adjust_divine_fire_stacks(3)
 				user.IgniteMob()
 		return
 	else
@@ -460,7 +463,7 @@
 		to_chat(user, "<font color='yellow'>UNWORTHY HANDS TOUCH THE VISAGE, CEASE OR BE PUNISHED</font>")
 		spawn(30)
 			if(loc == user)
-				user.adjust_fire_stacks(5)
+				user.adjust_divine_fire_stacks(5)
 				user.IgniteMob()
 		return
 	else
@@ -509,7 +512,7 @@
 
 /obj/item/clothing/head/roguetown/crown/serpcrown/Initialize()
 	. = ..()
-	if(type == /obj/item/clothing/head/roguetown/crown/serpcrown)
+	if(type == /obj/item/clothing/head/roguetown/crown/serpcrown && !istype(loc, /mob/living/carbon/human/dummy)) //dummies spawn this in character setup
 		SSroguemachine.crown = src
 
 /obj/item/clothing/head/roguetown/crown/serpcrown/proc/anti_stall()
@@ -660,6 +663,8 @@
 	name = "kettle helmet"
 	desc = "A lightweight steel helmet generally worn by crossbowmen and garrison archers. This one has eyeslits for the paranoid."
 	icon_state = "slitkettle"
+	flags_cover = HEADCOVERSEYES
+	body_parts_covered = HEAD|HAIR|EARS|EYES
 
 
 //................ Iron Pot Helmet ............... //
@@ -899,14 +904,15 @@
 /obj/item/clothing/head/roguetown/helmet/heavy/rust
 	name = "rusted barbute"
 	desc = "A rusted barbute. Relatively fragile, and might turn your hair brown, but offers good protection."
-	icon_state = "rustbarbuta"
+	icon = 'icons/roguetown/clothing/special/rust_armor.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/rust_armor.dmi'
+	icon_state = "rusthelm"
+	item_state = "rusthelm"
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 	smeltresult = /obj/item/ingot/iron
-	sellprice = VALUE_LEATHER_HELMET
-
+	sellprice = VALUE_IRON_ARMOR/2
 	armor = ARMOR_PLATE_BAD
-	max_integrity = INTEGRITY_STANDARD // shitty rusted iron
-
+	max_integrity = INTEGRITY_STANDARD
 
 //............... Great Helm ............... //
 /obj/item/clothing/head/roguetown/helmet/heavy/bucket
@@ -969,7 +975,7 @@
 	icon_state = "necrahelm"
 
 //............... Dendor Helmet ............... //	This one seems a bit out of place
-/obj/item/clothing/head/roguetown/helmet/heavy/dendorhelm
+/obj/item/clothing/head/roguetown/helmet/heavy/necked/dendorhelm
 	name = "dendor helmet"
 	desc = "A great helmet with twisted metalwork that imitates the twisting of bark, or the horns of a beast."
 	icon_state = "dendorhelm"
@@ -985,7 +991,7 @@
 
 
 //............... Pestra Helmet ............... //
-/obj/item/clothing/head/roguetown/helmet/heavy/pestrahelm
+/obj/item/clothing/head/roguetown/helmet/heavy/necked/pestrahelm
 	name = "pestran helmet"
 	desc = "A great helmet made of coarse, tainted steel. It is modeled after a plagued carrion, a blessed abomination of Pestra."
 	icon_state = "pestrahelm"
@@ -993,14 +999,14 @@
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 
 //................ Malum Helmet ............. //
-/obj/item/clothing/head/roguetown/helmet/heavy/malumhelm
+/obj/item/clothing/head/roguetown/helmet/heavy/necked/malumhelm
 	name = "malumite helmet"
 	desc = "A great helmet of sturdy dark steel. Its chiseled countenance reminds the viewer of Malum's stern gaze."
 	icon_state = "malumhelm"
 	item_state = "malumhelm"
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 
-/obj/item/clothing/head/roguetown/helmet/heavy/ravox
+/obj/item/clothing/head/roguetown/helmet/heavy/necked/ravox
 	name = "ravoxian helmet"
 	desc = "Headwear commonly worn by Templars in service to Ravox. It resembles an heavily adorned visored sallet."
 	icon_state = "ravoxhelm"
@@ -1448,9 +1454,9 @@
 	item_state = "human_spearplate"
 	allowed_sex = list(MALE)
 	allowed_race = list("human")
-	flags_inv = HIDEEARS
+	flags_inv = HIDEEARS|HIDEFACE
 	clothing_flags = CANT_SLEEP_IN
-	body_parts_covered = HEAD|EARS|HAIR
+	body_parts_covered = HEAD|EARS|HAIR|NOSE|MOUTH
 
 //............... Hoplite Helmet ............... //
 /obj/item/clothing/head/roguetown/rare/hoplite // Unique Hoplite kit
@@ -1466,6 +1472,7 @@
 	flags_inv = HIDEEARS
 	clothing_flags = CANT_SLEEP_IN
 	body_parts_covered = HEAD|EARS|HAIR
+	smeltresult = /obj/item/ingot/bronze
 
 
 /*-------------------\
