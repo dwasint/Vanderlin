@@ -59,7 +59,6 @@
 	var/leader = FALSE
 
 /datum/round_event/antagonist/solo/vampire/add_datum_to_mind(datum/mind/antag_mind)
-	. = ..()
 	if(!leader)
 		antag_mind.add_antag_datum(antag_datum)
 		leader = TRUE
