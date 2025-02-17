@@ -226,7 +226,9 @@ SUBSYSTEM_DEF(mapping)
 	#endif
 	//For all maps
 	otherZ += load_map_config("_maps/map_files/roguetown/otherz/underworld.json")
+	#ifndef NO_DUNGEON
 	otherZ += load_map_config("_maps/map_files/vanderlin/otherz/dungeon.json")
+	#endif
 //	otherZ += load_map_config("_maps/map_files/roguetown/otherz/special.json")
 	if(otherZ.len)
 		for(var/datum/map_config/OtherZ in otherZ)

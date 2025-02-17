@@ -1,22 +1,20 @@
 ///so this is the most important step of the dungeon maker if you don't put these down right your gonna obliterate the dungeon
 /obj/effect/dungeon_directional_helper
 	name = "Dungeon Direction Helper"
-	desc = "These help stitch together dungeons, it looks for the opposite direction on a template, basically write in the template if it has this"
+	desc = "These help stitch together dungeons, it looks for the opposite direction on a template, basically write in the template if it has this, invis on creation"
 
 	icon = 'icons/obj/items_and_weapons.dmi'
 	icon_state = "toyhammer"
 
 	var/top = FALSE
 
-/obj/effect/dungeon_directional_helper/Initialize()
+/obj/effect/dungeon_directional_helper/New()
 	. = ..()
-	return INITIALIZE_HINT_LATELOAD
-
-/obj/effect/dungeon_directional_helper/LateInitialize()
 	var/turf/opposite_turf = get_step(get_turf(src), dir)
 
 	if(!locate(/obj/effect/dungeon_directional_helper) in opposite_turf)
 		SSdungeon_generator.markers |= src
+	alpha = 0
 
 
 /obj/effect/dungeon_directional_helper/south
