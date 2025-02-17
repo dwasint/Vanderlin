@@ -16,7 +16,7 @@
 	var/list/price_change_manifest = list()
 
 	///modifiers that are hard set by the faction think zybantine needing food more cause desert.
-	var/list/hard_value_mulitpliers = list()
+	var/list/hard_value_multipliers = list()
 
 	///this is our town reputation, this changes the buy and sell modifiers on a faction to faction basis
 	var/faction_reputation = 0
@@ -55,7 +55,7 @@
 	sold_count[selling_type]++
 
 	///basically guarenteed diminish after 10 sells of an item.
-	if(!prob(selling_type * 10))
+	if(!prob(sold_count[selling_type] * 10))
 		return
 
 	adjust_sell_multiplier(selling_type, -rand(0.01, 0.1))
@@ -83,8 +83,8 @@
 
 /datum/world_faction/proc/return_sell_modifier(atom/sell_type)
 	var/static_modifer = 1
-	if(sell_type in hard_value_mulitpliers)
-		static_modifer = hard_value_mulitpliers[sell_type]
+	if(sell_type in hard_value_multipliers)
+		static_modifer = hard_value_multipliers[sell_type]
 	if(!(sell_type in sell_value_modifiers))
 		return 1 * static_modifer
 	return sell_value_modifiers[sell_type] * static_modifer
