@@ -303,7 +303,6 @@
 //Sets up the event then adds the event to the the list of running events
 /datum/round_event/New(my_processing = TRUE, datum/round_event_control/source)
 	control = source
-	setup()
 	processing = my_processing
 	SSevents.running += src
 	return ..()
