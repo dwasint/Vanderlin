@@ -11,6 +11,10 @@
 	dir = 8
 	},
 /area/rogue)
+"d" = (
+/obj/effect/dungeon_directional_helper/north,
+/turf/open/floor/rogue/hexstone,
+/area/rogue)
 "e" = (
 /turf/closed/wall/mineral/rogue/pipe{
 	icon_state = "iron_line"
@@ -45,6 +49,14 @@
 	dir = 4;
 	icon_state = "iron_corner"
 	},
+/area/rogue)
+"u" = (
+/obj/effect/dungeon_directional_helper/south,
+/turf/open/floor/rogue/hexstone,
+/area/rogue)
+"w" = (
+/obj/effect/dungeon_directional_helper/west,
+/turf/open/floor/rogue/hexstone,
 /area/rogue)
 "x" = (
 /obj/item/natural/worms/leech,
@@ -90,6 +102,10 @@
 /area/rogue)
 "J" = (
 /turf/open/water/sewer,
+/area/rogue)
+"K" = (
+/obj/effect/dungeon_directional_helper/east,
+/turf/open/floor/rogue/hexstone,
 /area/rogue)
 "M" = (
 /turf/closed/mineral/rogue/bedrock,
@@ -158,7 +174,6 @@
 	name = "shit stained cloak";
 	desc = "You are the lord of this shithouse."
 	},
-/obj/effect/decal/cleanable/oil/slippery,
 /turf/open/floor/rogue/metal/barograte/open,
 /area/rogue)
 
@@ -170,7 +185,7 @@ M
 M
 M
 M
-M
+w
 M
 M
 M
@@ -282,7 +297,7 @@ S
 M
 "}
 (8,1,1) = {"
-M
+d
 S
 I
 S
@@ -296,7 +311,7 @@ J
 J
 S
 S
-M
+u
 "}
 (9,1,1) = {"
 M
@@ -408,7 +423,7 @@ M
 M
 M
 M
-M
+K
 M
 M
 M

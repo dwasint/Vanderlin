@@ -43,6 +43,10 @@
 /obj/item/book/rogue/random_book,
 /turf/open/floor/rogue/churchrough,
 /area/rogue)
+"gp" = (
+/obj/effect/dungeon_directional_helper/west,
+/turf/open/floor/rogue/churchrough,
+/area/rogue)
 "gV" = (
 /obj/effect/decal/cleanable/generic,
 /obj/structure/fluff/railing/wood{
@@ -77,6 +81,10 @@
 /area/rogue)
 "iK" = (
 /obj/effect/decal/cleanable/generic,
+/turf/open/floor/rogue/churchrough,
+/area/rogue)
+"jr" = (
+/obj/effect/dungeon_directional_helper/east,
 /turf/open/floor/rogue/churchrough,
 /area/rogue)
 "jY" = (
@@ -144,7 +152,6 @@
 /turf/open/floor/rogue/churchrough,
 /area/rogue)
 "tz" = (
-/turf/open/transparent/openspace/airless,
 /area/rogue)
 "tT" = (
 /obj/structure/bookcase,
@@ -200,6 +207,10 @@
 	dir = 4
 	},
 /turf/open/floor/rogue/ruinedwood/darker,
+/area/rogue)
+"ym" = (
+/obj/effect/dungeon_directional_helper/north,
+/turf/open/floor/rogue/churchrough,
 /area/rogue)
 "yw" = (
 /obj/effect/decal/cleanable/dirt,
@@ -355,6 +366,10 @@
 	},
 /turf/open/floor/rogue/ruinedwood/darker,
 /area/rogue)
+"Xx" = (
+/obj/effect/dungeon_directional_helper/south,
+/turf/open/floor/rogue/churchrough,
+/area/rogue)
 "XA" = (
 /obj/structure/rack/rogue/shelf,
 /obj/effect/decal/cleanable/dirt/cobweb/cobweb2,
@@ -369,7 +384,7 @@ zE
 zE
 Ku
 Ku
-Ku
+gp
 Ku
 Ku
 zE
@@ -481,7 +496,7 @@ qk
 Ku
 "}
 (8,1,1) = {"
-Ku
+ym
 Rg
 Ku
 Ku
@@ -495,7 +510,7 @@ hl
 iK
 Ku
 Rg
-Ku
+Xx
 "}
 (9,1,1) = {"
 Ku
@@ -607,7 +622,7 @@ zE
 zE
 Ku
 Ku
-Ku
+jr
 Ku
 Ku
 zE

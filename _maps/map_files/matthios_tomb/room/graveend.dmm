@@ -105,6 +105,10 @@
 /obj/effect/spawner/roguemap/loot/common,
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
+"B" = (
+/obj/effect/dungeon_directional_helper/west,
+/turf/open/floor/rogue/hexstone,
+/area/rogue)
 "C" = (
 /obj/structure/table/wood/plain/alt,
 /obj/item/storage/belt/rogue/leather/plaquegold,
@@ -177,7 +181,7 @@
 a
 a
 a
-J
+B
 a
 a
 a

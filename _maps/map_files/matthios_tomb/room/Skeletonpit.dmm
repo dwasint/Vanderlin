@@ -6,6 +6,10 @@
 /obj/item/clothing/suit/roguetown/armor/cuirass/iron,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
+"e" = (
+/obj/effect/dungeon_directional_helper/south,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue)
 "g" = (
 /obj/item/clothing/head/roguetown/helmet/ironpot,
 /turf/open/floor/rogue/naturalstone,
@@ -66,6 +70,10 @@
 	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
+"u" = (
+/obj/effect/dungeon_directional_helper/north,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue)
 "v" = (
 /mob/living/carbon/human/species/skeleton/npc/warrior,
 /turf/open/floor/rogue/naturalstone,
@@ -86,13 +94,14 @@
 	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
+"A" = (
+/obj/effect/dungeon_directional_helper/east,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue)
 "B" = (
 /mob/living/carbon/human/species/skeleton/npc/warrior/skilled,
 /obj/effect/landmark/chest_or_mimic,
 /obj/item/roguecoin/copper/pile,
-/obj/item/roguegem/random,
-/obj/item/roguegem/random,
-/obj/item/roguegem/random,
 /obj/item/clothing/ring/silver/rontz,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
@@ -136,6 +145,10 @@
 /mob/living/simple_animal/hostile/rogue/skeleton/bow,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
+"S" = (
+/obj/effect/dungeon_directional_helper/west,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue)
 "U" = (
 /obj/item/clothing/suit/roguetown/armor/leather/hide,
 /turf/open/floor/rogue/naturalstone,
@@ -165,7 +178,7 @@ a
 a
 t
 w
-w
+S
 w
 D
 a
@@ -354,7 +367,7 @@ w
 w
 "}
 (10,1,1) = {"
-w
+u
 w
 a
 w
@@ -373,7 +386,7 @@ y
 w
 a
 w
-w
+e
 "}
 (11,1,1) = {"
 w
@@ -583,7 +596,7 @@ a
 a
 t
 w
-w
+A
 w
 D
 a

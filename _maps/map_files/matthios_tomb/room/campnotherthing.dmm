@@ -41,6 +41,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/rogue/ruinedwood/darker,
 /area/rogue)
+"m" = (
+/obj/effect/dungeon_directional_helper/south,
+/turf/open/floor/rogue/cobble,
+/area/rogue)
 "n" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/remains/bigrat,
@@ -133,6 +137,10 @@
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/rogue/metal,
 /area/rogue)
+"E" = (
+/obj/effect/dungeon_directional_helper/west,
+/turf/open/floor/rogue/cobble,
+/area/rogue)
 "F" = (
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/rogue/cobble,
@@ -180,6 +188,10 @@
 /obj/effect/decal/remains/human,
 /turf/open/floor/rogue/cobble,
 /area/rogue)
+"R" = (
+/obj/effect/dungeon_directional_helper/north,
+/turf/open/floor/rogue/cobble,
+/area/rogue)
 "S" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/rogue/metal,
@@ -191,6 +203,10 @@
 "U" = (
 /mob/living/carbon/human/species/goblin/npc/cave,
 /obj/effect/decal/cleanable/dirt,
+/turf/open/floor/rogue/cobble,
+/area/rogue)
+"W" = (
+/obj/effect/dungeon_directional_helper/east,
 /turf/open/floor/rogue/cobble,
 /area/rogue)
 "X" = (
@@ -208,7 +224,7 @@ k
 k
 k
 k
-a
+E
 a
 k
 k
@@ -273,7 +289,7 @@ c
 k
 "}
 (6,1,1) = {"
-a
+R
 a
 g
 a
@@ -284,7 +300,7 @@ x
 F
 a
 a
-a
+m
 "}
 (7,1,1) = {"
 a
@@ -362,7 +378,7 @@ k
 k
 k
 k
-a
+W
 a
 k
 k

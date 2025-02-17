@@ -159,6 +159,10 @@
 "mX" = (
 /turf/closed/wall/mineral/rogue/stone/window/moss,
 /area/rogue)
+"nm" = (
+/obj/effect/dungeon_directional_helper/south,
+/turf/open/floor/rogue/hexstone,
+/area/rogue)
 "oY" = (
 /obj/item/ingot/iron,
 /obj/item/ingot/iron{
@@ -450,6 +454,10 @@
 /obj/effect/decal/cleanable/blood/gibs/up,
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
+"Pw" = (
+/obj/effect/dungeon_directional_helper/west,
+/turf/open/floor/rogue/hexstone,
+/area/rogue)
 "PG" = (
 /obj/structure/fermenting_barrel/random/beer,
 /turf/open/floor/rogue/ruinedwood/darker,
@@ -606,7 +614,7 @@ DJ
 DJ
 pT
 pT
-pT
+Pw
 pT
 pT
 DJ
@@ -836,7 +844,7 @@ pT
 pT
 pT
 pT
-pT
+nm
 "}
 (12,1,1) = {"
 DJ

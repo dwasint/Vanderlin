@@ -61,6 +61,10 @@
 	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
+"oQ" = (
+/obj/effect/dungeon_directional_helper/north,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue)
 "qt" = (
 /obj/structure/mineral_door/wood/deadbolt{
 	dir = 4
@@ -215,6 +219,10 @@
 	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
+"Ll" = (
+/obj/effect/dungeon_directional_helper/east,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue)
 "Ls" = (
 /obj/structure/chair/bench/church,
 /turf/open/floor/rogue/carpet/lord/left,
@@ -243,6 +251,10 @@
 "Ox" = (
 /turf/open/floor/rogue/wood,
 /area/rogue)
+"OA" = (
+/obj/effect/dungeon_directional_helper/west,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue)
 "QC" = (
 /obj/structure/fluff/railing/border{
 	dir = 9
@@ -264,7 +276,6 @@
 /area/rogue)
 "TG" = (
 /obj/structure/table/wood/plain_alt,
-/obj/item/reagent_containers/food/snacks/bread/raisin_poison,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "UK" = (
@@ -284,6 +295,10 @@
 	name = "Wine Drenched Skeleton"
 	},
 /turf/open/floor/rogue/hexstone,
+/area/rogue)
+"VG" = (
+/obj/effect/dungeon_directional_helper/south,
+/turf/open/floor/rogue/cobblerock,
 /area/rogue)
 "Wp" = (
 /obj/structure/table/vtable,
@@ -328,7 +343,7 @@ DK
 DK
 DK
 RZ
-RZ
+OA
 RZ
 RZ
 DK
@@ -441,7 +456,7 @@ Tf
 RZ
 "}
 (8,1,1) = {"
-RZ
+oQ
 FB
 UK
 lg
@@ -455,7 +470,7 @@ lg
 lg
 lg
 vj
-RZ
+VG
 "}
 (9,1,1) = {"
 RZ
@@ -566,7 +581,7 @@ DK
 DK
 DK
 RZ
-RZ
+Ll
 RZ
 RZ
 DK

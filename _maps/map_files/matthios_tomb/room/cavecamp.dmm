@@ -15,6 +15,14 @@
 /obj/structure/roguetent/preopen,
 /turf/open/floor/rogue/dirt,
 /area/rogue)
+"f" = (
+/obj/effect/dungeon_directional_helper/east,
+/turf/open/floor/rogue/dirt,
+/area/rogue)
+"g" = (
+/obj/effect/dungeon_directional_helper/south,
+/turf/open/floor/rogue/dirt,
+/area/rogue)
 "h" = (
 /obj/machinery/light/rogue/campfire/longlived,
 /turf/open/floor/rogue/dirt,
@@ -35,6 +43,10 @@
 /area/rogue)
 "u" = (
 /turf/closed/mineral/rogue/bedrock,
+/area/rogue)
+"D" = (
+/obj/effect/dungeon_directional_helper/north,
+/turf/open/floor/rogue/dirt,
 /area/rogue)
 "G" = (
 /obj/structure/chair/stool/rogue,
@@ -75,6 +87,10 @@
 "W" = (
 /turf/open/transparent/openspace,
 /area/rogue)
+"X" = (
+/obj/effect/dungeon_directional_helper/west,
+/turf/open/floor/rogue/dirt,
+/area/rogue)
 
 (1,1,1) = {"
 u
@@ -82,7 +98,7 @@ u
 u
 u
 l
-l
+X
 l
 u
 u
@@ -161,7 +177,7 @@ l
 l
 "}
 (7,1,1) = {"
-l
+D
 l
 s
 s
@@ -172,7 +188,7 @@ K
 l
 l
 l
-l
+g
 "}
 (8,1,1) = {"
 u
@@ -237,7 +253,7 @@ u
 u
 u
 u
-l
+f
 u
 u
 u

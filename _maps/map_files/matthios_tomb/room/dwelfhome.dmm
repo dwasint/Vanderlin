@@ -14,9 +14,17 @@
 /obj/effect/spawner/roguemap/treeorbush,
 /turf/open/floor/rogue/dirt,
 /area/rogue)
+"i" = (
+/obj/effect/dungeon_directional_helper/west,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue)
 "m" = (
 /obj/structure/flora/ausbushes/brflowers,
 /turf/open/floor/rogue/dirt,
+/area/rogue)
+"n" = (
+/obj/effect/dungeon_directional_helper/east,
+/turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "u" = (
 /obj/effect/spawner/roguemap/tree,
@@ -72,7 +80,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "P" = (
-/obj/item/roguegem/random,
+/obj/effect/dungeon_directional_helper/south,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "Q" = (
@@ -80,6 +88,10 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "T" = (
+/turf/open/floor/rogue/naturalstone,
+/area/rogue)
+"V" = (
+/obj/effect/dungeon_directional_helper/north,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "X" = (
@@ -99,7 +111,7 @@ D
 D
 D
 T
-T
+i
 T
 D
 D
@@ -183,11 +195,11 @@ T
 T
 a
 T
-P
+T
 T
 v
 T
-P
+T
 a
 a
 T
@@ -211,7 +223,7 @@ T
 T
 "}
 (8,1,1) = {"
-T
+V
 T
 T
 a
@@ -225,7 +237,7 @@ K
 T
 a
 T
-T
+P
 "}
 (9,1,1) = {"
 T
@@ -237,9 +249,9 @@ T
 T
 K
 T
-P
 T
-P
+T
+T
 a
 T
 T
@@ -337,7 +349,7 @@ D
 D
 D
 T
-T
+n
 T
 D
 D

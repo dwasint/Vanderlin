@@ -2,6 +2,10 @@
 "a" = (
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/outdoors/caves)
+"b" = (
+/obj/effect/dungeon_directional_helper/west,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/caves)
 "g" = (
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/caves)
@@ -10,6 +14,18 @@
 /area/rogue/outdoors/caves)
 "o" = (
 /obj/machinery/light/rogue/firebowl,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/caves)
+"p" = (
+/obj/effect/dungeon_directional_helper/south,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/caves)
+"s" = (
+/obj/effect/dungeon_directional_helper/east,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/caves)
+"t" = (
+/obj/effect/dungeon_directional_helper/north,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/caves)
 "v" = (
@@ -36,7 +52,7 @@
 (1,1,1) = {"
 U
 U
-g
+b
 U
 U
 "}
@@ -52,10 +68,10 @@ U
 o
 v
 g
-g
+p
 "}
 (4,1,1) = {"
-g
+t
 g
 g
 U
@@ -71,7 +87,7 @@ U
 (6,1,1) = {"
 U
 U
-g
+s
 U
 U
 "}

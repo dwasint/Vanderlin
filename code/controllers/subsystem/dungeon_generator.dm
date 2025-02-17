@@ -83,6 +83,14 @@ SUBSYSTEM_DEF(dungeon_generator)
 					continue
 				if(true_spawn.y + template.height > world.maxy)
 					continue
+				var/list/turfs = block(true_spawn.x, true_spawn.y, true_spawn.z, true_spawn.x + template.width, true_spawn.y + template.height, true_spawn.z)
+				var/fail = FALSE
+				for(var/turf/list_turf in turfs)
+					if(list_turf.type != /turf/closed)
+						fail = TRUE
+						break
+				if(fail)
+					continue
 				if(!template.load(true_spawn))
 					continue
 
@@ -102,6 +110,14 @@ SUBSYSTEM_DEF(dungeon_generator)
 				if(true_spawn.x + template.width > world.maxx)
 					continue
 				if(true_spawn.y + template.height > world.maxy)
+					continue
+				var/list/turfs = block(true_spawn.x, true_spawn.y, true_spawn.z, true_spawn.x + template.width, true_spawn.y + template.height, true_spawn.z)
+				var/fail = FALSE
+				for(var/turf/list_turf in turfs)
+					if(list_turf.type != /turf/closed)
+						fail = TRUE
+						break
+				if(fail)
 					continue
 				if(!template.load(true_spawn))
 					continue
@@ -124,6 +140,14 @@ SUBSYSTEM_DEF(dungeon_generator)
 					continue
 				if(true_spawn.y + template.height > world.maxy)
 					continue
+				var/list/turfs = block(true_spawn.x, true_spawn.y, true_spawn.z, true_spawn.x + template.width, true_spawn.y + template.height, true_spawn.z)
+				var/fail = FALSE
+				for(var/turf/list_turf in turfs)
+					if(list_turf.type != /turf/closed)
+						fail = TRUE
+						break
+				if(fail)
+					continue
 				if(!template.load(true_spawn))
 					continue
 
@@ -143,6 +167,15 @@ SUBSYSTEM_DEF(dungeon_generator)
 					continue
 				if(true_spawn.y + template.height > world.maxy)
 					continue
+				var/list/turfs = block(true_spawn.x, true_spawn.y, true_spawn.z, true_spawn.x + template.width, true_spawn.y + template.height, true_spawn.z)
+				var/fail = FALSE
+				for(var/turf/list_turf in turfs)
+					if(list_turf.type != /turf/closed)
+						fail = TRUE
+						break
+				if(fail)
+					continue
 				if(!template.load(true_spawn))
 					continue
+
 		picking = FALSE

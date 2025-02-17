@@ -47,6 +47,10 @@
 /obj/machinery/light/rogue/wallfire/candle/blue/r,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue)
+"iZ" = (
+/obj/effect/dungeon_directional_helper/north,
+/turf/open/floor/rogue/dirt,
+/area/rogue)
 "kc" = (
 /obj/item/bath/soap{
 	pixel_y = -5
@@ -129,6 +133,10 @@
 /obj/item/roguecoin/copper/pile,
 /turf/open/floor/rogue/tile,
 /area/rogue)
+"tE" = (
+/obj/effect/dungeon_directional_helper/west,
+/turf/open/floor/rogue/dirt,
+/area/rogue)
 "tJ" = (
 /obj/structure/rack/rogue/shelf/big,
 /obj/item/perfume/random{
@@ -162,6 +170,10 @@
 /obj/structure/closet/crate/drawer/inn,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue)
+"AL" = (
+/obj/effect/dungeon_directional_helper/east,
+/turf/open/floor/rogue/dirt,
+/area/rogue)
 "BX" = (
 /mob/living/simple_animal/hostile/rogue/skeleton/spear,
 /turf/open/water/bath,
@@ -185,6 +197,10 @@
 	pixel_x = 6
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue)
+"Fc" = (
+/obj/effect/dungeon_directional_helper/south,
+/turf/open/floor/rogue/dirt,
 /area/rogue)
 "Fx" = (
 /obj/structure/bed/rogue/inn/double,
@@ -336,7 +352,7 @@ RG
 RG
 RG
 RG
-mF
+tE
 mF
 RG
 RG
@@ -547,7 +563,7 @@ mF
 mF
 "}
 (11,1,1) = {"
-mF
+iZ
 mF
 JI
 JI
@@ -566,7 +582,7 @@ JI
 JI
 JI
 mF
-mF
+Fc
 "}
 (12,1,1) = {"
 RG
@@ -754,7 +770,7 @@ RG
 RG
 RG
 RG
-mF
+AL
 mF
 RG
 RG

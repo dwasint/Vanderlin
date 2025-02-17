@@ -54,6 +54,10 @@
 /obj/structure/closet/crate/chest/gold,
 /turf/open/floor/rogue/carpet,
 /area/rogue/outdoors/caves)
+"jB" = (
+/obj/effect/dungeon_directional_helper/north,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/caves)
 "jN" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/minotaur/axe/female,
 /turf/open/floor/rogue/carpet,
@@ -84,8 +88,9 @@
 /turf/open/floor/rogue/dirt/ambush,
 /area/rogue/outdoors/caves)
 "pv" = (
-/obj/structure/fluff/dryingrack,
-/turf/open/floor/rogue/blocks/paving/vert,
+/obj/machinery/light/rogue/torchholder/c,
+/obj/effect/dungeon_directional_helper/east,
+/turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/caves)
 "pY" = (
 /obj/machinery/light/rogue/torchholder/c,
@@ -95,6 +100,10 @@
 /obj/machinery/light/rogue/wallfire/candle/l,
 /obj/structure/fluff/statue/knight/interior,
 /turf/open/floor/rogue/tile/checkeralt,
+/area/rogue/outdoors/caves)
+"rJ" = (
+/obj/effect/dungeon_directional_helper/south,
+/turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/caves)
 "sj" = (
 /obj/machinery/light/rogue/wallfire/candle/l,
@@ -139,6 +148,11 @@
 "wP" = (
 /obj/machinery/light/rogue/torchholder/r,
 /turf/open/floor/rogue/dirt/ambush,
+/area/rogue/outdoors/caves)
+"xR" = (
+/obj/machinery/light/rogue/torchholder/c,
+/obj/effect/dungeon_directional_helper/west,
+/turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/caves)
 "xS" = (
 /obj/machinery/light/rogue/firebowl/standing,
@@ -191,6 +205,10 @@
 /obj/machinery/light/rogue/torchholder/l,
 /obj/structure/fermenting_barrel/water,
 /turf/open/floor/rogue/blocks/paving/vert,
+/area/rogue/outdoors/caves)
+"Jp" = (
+/obj/machinery/light/rogue/torchholder/c,
+/turf/closed/mineral/rogue/bedrock,
 /area/rogue/outdoors/caves)
 "JX" = (
 /obj/structure/flora/rogueshroom,
@@ -263,15 +281,15 @@
 (1,1,1) = {"
 en
 en
-mY
+xR
 en
 en
 en
 en
-mY
+Jp
 en
 en
-mY
+Jp
 en
 en
 "}
@@ -306,7 +324,7 @@ AE
 en
 "}
 (4,1,1) = {"
-YH
+en
 YH
 YH
 YH
@@ -348,7 +366,7 @@ YH
 bY
 bY
 YH
-YH
+rJ
 "}
 (7,1,1) = {"
 en
@@ -384,7 +402,7 @@ en
 en
 wC
 nl
-pv
+AH
 en
 pY
 yG
@@ -426,7 +444,7 @@ tg
 en
 "}
 (12,1,1) = {"
-YH
+jB
 YH
 YH
 bY
@@ -442,15 +460,15 @@ en
 "}
 (13,1,1) = {"
 en
-mY
+Jp
 en
 en
 en
-YH
 en
 en
 en
-mY
+en
+pv
 en
 en
 en
