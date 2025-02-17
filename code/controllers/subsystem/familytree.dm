@@ -48,24 +48,29 @@ SUBSYSTEM_DEF(familytree)
 		"Inquisitor",
 		"Adept",
 		"Jailor",
+		"Orphan",
+		"Innkeepers Son",
+		"Churchling"
 		)
 	//This creates 2 families for each race roundstart so that siblings dont fail to be added to a family.
 	var/list/preset_family_species = list(
 		/datum/species/human/northern,
 		/datum/species/elf,
 		/datum/species/elf/dark,
-		/datum/species/elf/snow,
+		/datum/species/human/halfelf,
 		/datum/species/dwarf/mountain,
 		/datum/species/tieberian,
+		/datum/species/aasimar,
+		/datum/species/rakshari,
 		/datum/species/halforc
 		)
 
 /datum/controller/subsystem/familytree/Initialize()
-	ruling_family = new /datum/heritage(null, null, /datum/species/human/northern)
+	ruling_family = new /datum/heritage(majority_species = /datum/species/human/northern)
 	//Blank starter families that we can customize for players.
 	for(var/pioneer_household in preset_family_species)
 		for(var/I = 1 to 2)
-			families += new /datum/heritage(null, null, pioneer_household)
+		families += new /datum/heritage(majority_species = pioneer_household)
 
 	return ..()
 
@@ -84,10 +89,17 @@ SUBSYSTEM_DEF(familytree)
 			AssignToHouse(H)
 
 		if(FAMILY_NEWLYWED)
-			AssignNewlyWed(H)
+			if(H.age == AGE_CHILD)
+				AssignToHouse(H)
+				return
+			else
+				AssignNewlyWed(H)
 
 		if(FAMILY_FULL)
 			if(H.virginity)
+				return
+			if(H.age == AGE_CHILD)
+				AssignToHouse(H)
 				return
 			AssignToFamily(H)
 
@@ -117,13 +129,16 @@ SUBSYSTEM_DEF(familytree)
 	if(H.age > AGE_ADULT)
 		AssignAuntUncle(H)
 		return
+	if(H.age > AGE_CHILD)
+		AssignAuntUncle(H)
+		return
 	var/species = H.dna.species.type
 	var/adopted = FALSE
 	var/datum/heritage/chosen_house
 	var/list/low_priority_houses = list()
 	var/list/high_priority_houses = list()
 	for(var/datum/heritage/I in families)
-		if(I.housename || I.family.len >= 1)
+		if(I.housename && (I.family.len >= 1 && I.family.len < 6))
 			high_priority_houses.Add(I)
 		else
 			low_priority_houses.Add(I)
@@ -134,11 +149,11 @@ SUBSYSTEM_DEF(familytree)
 		if(i == 2)
 			what_we_checkin = low_priority_houses
 		for(var/datum/heritage/I in what_we_checkin)
-			if(I.dominant_species == species)
+			if(I.dominant_species == species && (I.family.len >= 1 && I.family.len < 4))
 				chosen_house = I
 				break
 			//Its weird to be placed as a foster child in a family with no people in it.
-			if(prob(10) && I.family.len > 1)
+			if(prob(20) && (I.family.len > 1 && I.family.len <= 8))
 				chosen_house = I
 				adopted = TRUE
 				break
@@ -246,7 +261,7 @@ SUBSYSTEM_DEF(familytree)
 		if(L == H)
 			continue
 		//They already have a spouse so skip this one.
-		if(L.spouse_name)
+		if(L.spouse_mob)
 			continue
 		//True love! They chose you and chose love them!
 		if(H.setspouse == L.real_name && L.setspouse == H.real_name)
@@ -296,11 +311,12 @@ SUBSYSTEM_DEF(familytree)
 */
 /datum/controller/subsystem/familytree/proc/AssignAuntUncle(mob/living/carbon/human/H)
 	var/species = H.dna.species.type
+	var/inlaw = FALSE
 	var/datum/heritage/chosen_house
 	var/list/low_priority_houses = list()
 	var/list/high_priority_houses = list()
 	for(var/datum/heritage/I in families)
-		if(I.housename || (I.family.len >= 1 && I.family.len <= 6))
+		if(I.housename && (I.family.len >= 1 && I.family.len > 6))
 			high_priority_houses.Add(I)
 		else
 			low_priority_houses.Add(I)
@@ -312,14 +328,18 @@ SUBSYSTEM_DEF(familytree)
 		if(i == 2)
 			what_we_checkin = low_priority_houses
 		for(var/datum/heritage/I in what_we_checkin)
-			if(I.dominant_species == species)
+			if((I.dominant_species == species && (I.family.len > 1 || I.family.len <=6 )) && I.housename)
 				chosen_house = I
+				break
+			if((prob(2) && (I.family.len > 1)) && I.housename)
+				chosen_house = I
+				inlaw = TRUE
 				break
 		if(chosen_house)
 			break
 
 	if(chosen_house)
-		chosen_house.addToHouse(H, FAMILY_OMMER)
+		chosen_house.addToHouse(H, inlaw ?  FAMILY_INLAW : FAMILY_OMMER)
 
 /*
 * For admins to view EVERY FAMILY and see all the

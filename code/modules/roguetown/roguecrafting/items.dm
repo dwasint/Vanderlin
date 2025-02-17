@@ -2,31 +2,6 @@
 	always_availible = TRUE
 	skillcraft = /datum/skill/craft/crafting
 
-
-/datum/crafting_recipe/roguetown/tneedle
-	name = "sewing needle"
-	result = /obj/item/needle/thorn
-	reqs = list(/obj/item/natural/thorn = 1,
-				/obj/item/natural/fibers = 1)
-	craftdiff = 0
-
-/datum/crafting_recipe/roguetown/cloth
-	name = "cloth"
-	result = /obj/item/natural/cloth
-	reqs = list(/obj/item/natural/fibers = 2)
-	tools = list(/obj/item/needle)
-	skillcraft = /datum/skill/misc/sewing
-	craftdiff = 0
-	verbage = "sew"
-	verbage_tp = "sews"
-
-/datum/crafting_recipe/roguetown/dart
-	name = "dart"
-	result = /obj/item/ammo_casing/caseless/rogue/dart
-	reqs = list(/obj/item/natural/thorn = 1,
-				/obj/item/grown/log/tree/stick = 1)
-	craftdiff = 0
-
 /datum/crafting_recipe/roguetown/blowgun
 	name = "blowgun"
 	result = /obj/item/gun/ballistic/revolver/grenadelauncher/blowgun
@@ -65,56 +40,11 @@
 	verbage = "untie"
 	verbage_tp  = "unties"
 
-/datum/crafting_recipe/roguetown/rope
-	name = "rope"
-	result = /obj/item/rope
-	reqs = list(/obj/item/natural/fibers = 3)
-	verbage = "braid"
-	verbage_tp = "braids"
-
-/*
-/datum/crafting_recipe/roguetown/net
-	name = "net"
-	result = /obj/item/net
-	craftdiff = 2
-	reqs = list(/obj/item/rope = 2,
-				/obj/item/natural/stone = 3)
-	verbage = "braid"
-	verbage_tp = "braids"
-*/
-
-/datum/crafting_recipe/roguetown/torch
-	name = "torch"
-	result = /obj/item/flashlight/flare/torch
-	reqs = list(/obj/item/grown/log/tree/stick = 1,
-				/obj/item/natural/fibers = 1)
-	craftdiff = 0
-
 /datum/crafting_recipe/roguetown/candle
 	name = "candle (x2)"
 	result = list(/obj/item/candle/yellow,
 				/obj/item/candle/yellow)
 	reqs = list(/obj/item/reagent_containers/food/snacks/fat = 1)
-
-/datum/crafting_recipe/roguetown/stoneaxe
-	name = "stone axe"
-	result = /obj/item/rogueweapon/axe/stone
-	reqs = list(/obj/item/grown/log/tree/small = 1,
-				/obj/item/natural/stone = 1)
-
-
-/datum/crafting_recipe/roguetown/stoneknife
-	name = "stone knife"
-	result = /obj/item/rogueweapon/knife/stone
-	reqs = list(/obj/item/grown/log/tree/stick = 1,
-				/obj/item/natural/stone = 1)
-	craftdiff = 0
-
-/datum/crafting_recipe/roguetown/stonespear
-	name = "stone spear"
-	result = /obj/item/rogueweapon/polearm/spear/stone
-	reqs = list(/obj/item/rogueweapon/polearm/woodstaff = 1,
-				/obj/item/natural/stone = 1)
 
 /datum/crafting_recipe/roguetown/woodclub
 	name = "wood club"
@@ -167,49 +97,12 @@
 
 /datum/crafting_recipe/roguetown/woodtray
 	name = "wooden trays (x2)"
-	result = list(/obj/item/storage/bag/tray,
-				/obj/item/storage/bag/tray)
+	result = list(/obj/item/plate/tray,
+				/obj/item/plate/tray)
 	reqs = list(/obj/item/grown/log/tree/small = 1)
-
-/datum/crafting_recipe/roguetown/pot
-	name = "stone pot"
-	result = /obj/item/reagent_containers/glass/bucket/pot
-	reqs = list(/obj/item/natural/stone = 2)
 
 /obj/item/reagent_containers/glass/cup/wooden/crafted
 	sellprice = 3
-
-/datum/crafting_recipe/roguetown/mortar
-	name = "stone mortar"
-	result = /obj/item/reagent_containers/glass/mortar
-	reqs = list(/obj/item/natural/stone = 1)
-	tools = list(/obj/item/rogueweapon/knife/hunting)
-	craftdiff = 3
-	subtype_reqs = TRUE
-
-/datum/crafting_recipe/roguetown/alchmortar
-	name = "alchemical mortar"
-	result = /obj/item/mortar
-	reqs = list(/obj/item/natural/stone = 3)
-	tools = list(/obj/item/rogueweapon/knife/hunting)
-	verbage = "crafts"
-	skillcraft = /datum/skill/craft/masonry
-
-/datum/crafting_recipe/roguetown/pestle
-	name = "pestle"
-	result = /obj/item/pestle
-	reqs = list(/obj/item/natural/stone = 2)
-	tools = list(/obj/item/rogueweapon/knife/hunting)
-	verbage = "crafts"
-	skillcraft = /datum/skill/craft/masonry
-
-/datum/crafting_recipe/roguetown/bag
-	name = "bag"
-	result = /obj/item/storage/roguebag/crafted
-	reqs = list(/obj/item/natural/fibers = 1,
-				/obj/item/natural/cloth = 1)
-	tools = list(/obj/item/needle)
-	skillcraft = /datum/skill/misc/sewing
 
 /obj/item/storage/roguebag/crafted
 	sellprice = 4
@@ -248,14 +141,16 @@
 
 /datum/crafting_recipe/roguetown/woodplatter
 	name = "wood platters (x2)"
-	result = list(/obj/item/cooking/platter,
-				/obj/item/cooking/platter)
+	result = list(/obj/item/kitchen/platter,
+				/obj/item/kitchen/platter)
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 
 /datum/crafting_recipe/roguetown/pipe
 	name = "wood pipe"
 	result = /obj/item/clothing/mask/cigarette/pipe/crafted
 	reqs = list(/obj/item/grown/log/tree/stick = 2)
+	craftdiff = 1
+	tools = list(/obj/item/rogueweapon/knife)
 
 /obj/item/clothing/mask/cigarette/pipe/crafted
 	sellprice = 6
@@ -304,15 +199,20 @@
 	verbage_tp = "puts together"
 
 /datum/crafting_recipe/roguetown/stonearrow
-	name = "stone arrow"
-	result = /obj/item/ammo_casing/caseless/rogue/arrow/stone
+	name = "stone arrow (x2)"
+	result = list(/obj/item/ammo_casing/caseless/rogue/arrow/stone,
+				/obj/item/ammo_casing/caseless/rogue/arrow/stone)
 	reqs = list(/obj/item/grown/log/tree/stick = 1,
 				/obj/item/natural/stone = 1)
-	req_table = TRUE
 
 /datum/crafting_recipe/roguetown/stonearrow_five
-	name = "stone arrow (x5)"
+	name = "stone arrow (x10)"
 	result = list(
+				/obj/item/ammo_casing/caseless/rogue/arrow/stone,
+				/obj/item/ammo_casing/caseless/rogue/arrow/stone,
+				/obj/item/ammo_casing/caseless/rogue/arrow/stone,
+				/obj/item/ammo_casing/caseless/rogue/arrow/stone,
+				/obj/item/ammo_casing/caseless/rogue/arrow/stone,
 				/obj/item/ammo_casing/caseless/rogue/arrow/stone,
 				/obj/item/ammo_casing/caseless/rogue/arrow/stone,
 				/obj/item/ammo_casing/caseless/rogue/arrow/stone,
@@ -320,7 +220,13 @@
 				/obj/item/ammo_casing/caseless/rogue/arrow/stone)
 	reqs = list(/obj/item/grown/log/tree/stick = 5,
 				/obj/item/natural/stone = 5)
-	req_table = TRUE
+
+/datum/crafting_recipe/roguetown/poisondart
+	name = "poison dart"
+	result = /obj/item/ammo_casing/caseless/rogue/dart/poison
+	reqs = list(/obj/item/ammo_casing/caseless/rogue/dart = 1,
+				/obj/item/reagent_containers/food/snacks/produce/jacksberry/poison = 1)
+	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/poisonarrow
 	name = "poison arrow"
@@ -371,7 +277,8 @@
 				/obj/item/reagent_containers/food/snacks/produce/fyritius = 1,
 				/obj/item/reagent_containers/glass/bottle = 1)
 	craftdiff = 2
-	skillcraft = /datum/skill/craft/engineering
+	skillcraft = /datum/skill/craft/bombs
+	subtype_reqs = TRUE
 
 /datum/crafting_recipe/roguetown/pyrobolt
 	name = "pyroclastic bolt"
@@ -402,7 +309,7 @@
 	result = list(/obj/item/gun/ballistic/revolver/grenadelauncher/bow/long)
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 	/obj/item/natural/fibers = 8,
-	/obj/item/reagent_containers/food/snacks/fat)
+	/obj/item/reagent_containers/food/snacks/fat = 1)
 	skillcraft = /datum/skill/craft/carpentry
 	structurecraft = /obj/machinery/light/rogue/campfire
 	craftdiff = 3
@@ -419,7 +326,7 @@
 /datum/crafting_recipe/roguetown/readingscroll
 	name = "novice's guide to literature"
 	result = list(/obj/item/literary)
-	reqs = list(/obj/item/paper/scroll = 5)
+	reqs = list(/obj/item/paper/scroll = 3)
 	tools = list(/obj/item/natural/feather)
 	req_table = TRUE
 	skillcraft = /datum/skill/misc/reading
@@ -449,17 +356,16 @@
 
 /datum/crafting_recipe/roguetown/quarterstaff
 	name = "wooden quarterstaff"
-	result = list(/obj/item/rogueweapon/polearm/woodstaff/quarterstaff,
-	/obj/item/rogueweapon/polearm/woodstaff/quarterstaff)
+	result = list(/obj/item/rogueweapon/polearm/woodstaff/quarterstaff)
 	reqs = list(/obj/item/grown/log/tree = 1)
 	req_table = TRUE
-	tools = list(/obj/item/rogueweapon/knife/hunting)
+	tools = list(/obj/item/rogueweapon/knife)
 	skillcraft = /datum/skill/craft/carpentry
 
 /datum/crafting_recipe/roguetown/steelstaff
 	name = "steel quarterstaff"
 	skillcraft = /datum/skill/craft/carpentry
-	reqs = list(/obj/item/rogueweapon/polearm/woodstaff/quarterstaff = 1, /obj/item/ingot/steel = 2)
+	reqs = list(/obj/item/rogueweapon/polearm/woodstaff/quarterstaff = 1, /obj/item/ingot/steel = 1)
 	result = list(/obj/item/rogueweapon/polearm/woodstaff/quarterstaff/steel)
 	craftdiff = 3
 
@@ -491,14 +397,14 @@
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/woodengreatflail
-	name = "great wooden flail"
+	name = "thresher"
 	skillcraft = /datum/skill/craft/carpentry
 	reqs = list(/obj/item/rope = 1,
 			/obj/item/grown/log/tree/stick = 1, /obj/item/grown/log/tree/small = 1)
 	tools = list(/obj/item/rogueweapon/hammer)
 	req_table = TRUE
 	result = list(/obj/item/rogueweapon/thresher)
-	craftdiff = 2
+	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/bigflail
 	name = "great militia flail"
@@ -571,7 +477,7 @@
 	craftdiff = 0
 /datum/crafting_recipe/roguetown/bonespear
 	name = "bone spear"
-	result = /obj/item/rogueweapon/spear/bonespear
+	result = /obj/item/rogueweapon/polearm/spear/bonespear
 	reqs = list(/obj/item/rogueweapon/polearm/woodstaff = 1,
 				/obj/item/alch/bone = 2,
 				/obj/item/natural/fibers = 1)
@@ -584,28 +490,61 @@
 				/obj/item/natural/fibers = 1)
 	craftdiff = 2
 
+/datum/crafting_recipe/roguetown/parchment_scroll
+	name = "parchment scroll"
+	result = /obj/item/paper/scroll
+	reqs = list(/obj/item/paper = 3)
+
 // Woodcutting recipe
 /datum/crafting_recipe/roguetown/lumberjacking
 	skillcraft = /datum/skill/labor/lumberjacking
-	tools = list(/obj/item/rogueweapon/knife/hunting = 1)
+	tools = list(/obj/item/rogueweapon/knife = 1)
 
 /datum/crafting_recipe/roguetown/lumberjacking/cart_upgrade
-	name = "upgrade cog"
-	result = /obj/item/cart_upgrade/level_1
-	reqs = list(/obj/item/grown/log/tree/small = 2,
-				/obj/item/natural/stone = 1)
-	craftdiff = 2
-
-/datum/crafting_recipe/roguetown/lumberjacking/cart_upgrade2
-	name = "advanced upgrade cog"
-	result = /obj/item/cart_upgrade/level_2
-	reqs = list(/obj/item/grown/log/tree/small = 4,
-				/obj/item/cart_upgrade/level_1 = 1,
-				/obj/item/ingot/iron = 1)
-	craftdiff = 4
+	name = "wooden cog"
+	result = /obj/item/roguegear/wood/basic
+	reqs = list(/obj/item/natural/wood/plank = 2)
+	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/wood_hammer
 	name = "wooden mallet"
 	result = /obj/item/rogueweapon/hammer/wood
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 	craftdiff = 0
+
+/datum/crafting_recipe/roguetown/confessional
+	name = "confession"
+	result = /obj/item/paper/confession
+	reqs = list(/obj/item/paper = 1)
+	tools = list(/obj/item/natural/feather)
+	skillcraft = /datum/skill/misc/reading
+	always_availible = FALSE
+	craftsound = null
+	craftdiff = 0
+
+/datum/crafting_recipe/roguetown/wpsycross
+	name = "handheld psycross"
+	reqs = list(/obj/item/grown/log/tree/small = 1)
+	result = /obj/item/clothing/neck/roguetown/psycross
+	craftdiff = 0
+
+/datum/crafting_recipe/roguetown/impsaw
+	name = "improvised saw"
+	result = /obj/item/rogueweapon/surgery/saw/improv
+	reqs = list(/obj/item/natural/fibers = 1, /obj/item/natural/stone = 1, /obj/item/grown/log/tree/stick = 1)
+	craftdiff = 1
+	skillcraft = /datum/skill/craft/crafting
+
+/datum/crafting_recipe/roguetown/impretra
+	name = "improvised clamp"
+	result = /obj/item/rogueweapon/surgery/hemostat/improv
+	reqs = list(/obj/item/natural/fibers = 1, /obj/item/grown/log/tree/stick = 2)
+	craftdiff = 1
+	skillcraft = /datum/skill/craft/crafting
+
+/datum/crafting_recipe/roguetown/imphemo
+	name = "improvised retractor"
+	result = /obj/item/rogueweapon/surgery/retractor/improv
+	reqs = list(/obj/item/natural/fibers = 1, /obj/item/grown/log/tree/stick = 2)
+	craftdiff = 1
+	skillcraft = /datum/skill/craft/crafting

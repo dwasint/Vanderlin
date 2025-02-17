@@ -1,25 +1,7 @@
-/*
-/mob/living
-	var/tmp/image/move_indicator
-
-/turf/MouseEntered(location,control,params)
-	if(istype(usr, /mob/living))
-		var/mob/living/p = usr
-		if(!p.move_indicator)
-			p.move_indicator = image('icons/mouseover.dmi',src,"mouseover",ABOVE_HUD_LAYER,null)
-			p.move_indicator.pixel_x = -1
-			p.move_indicator.pixel_y = -1
-			p <<  p.move_indicator
-		else
-			world << "[src.x] [src.y]" //outputs the turf's x/y
-			p.move_indicator.loc = src //set to turf I entered before this /turf
-			world << "[p.move_indicator.x] [p.move_indicator.y]" //outputs the turf's x/y, they match
-*/
-
 /atom
 	/// This means that the mouse over text will not be displayed when the mouse is over this atom
 	var/nomouseover = FALSE
-	var/hover_color = "#ddd7df"
+	var/hover_color = "#a1bac4"
 
 /atom/MouseEntered(location,control,params)
 	. = ..()
@@ -49,9 +31,41 @@
 			p.client.mouseovertext.movethis(PM, TRUE)
 		else
 			p.client.mouseovertext.movethis(PM)
+		p.client.mouseovertext.maptext_height = 32
 		p.client.mouseovertext.maptext = {"<span style='font-size:8pt;font-family:"Pterra";color:[hover_color];text-shadow:0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;' class='center maptext '>[name]"}
 		p.client.screen |= p.client.mouseovertext
 	return TRUE
+
+/obj/structure/handle_mouseover(location, control, params)
+	var/mob/p = usr
+	if(p.client)
+		if(!p.client.mouseovertext)
+			p.client.genmouseobj()
+			return FALSE
+		if(p.client.pixel_x || p.client.pixel_y)
+			return FALSE
+		if(!p.x || !p.y)
+			return FALSE
+		var/offset_x = 8 - (p.x - x)
+		var/offset_y = 8 - (p.y - y)
+		var/list/PM = list("screen-loc" = "[offset_x]:0,[offset_y]:0")
+		if(!isturf(loc))
+			PM = params2list(params)
+			p.client.mouseovertext.movethis(PM, TRUE)
+		else
+			p.client.mouseovertext.movethis(PM)
+		if((((rotation_structure && rotation_network) || istype(src, /obj/structure/water_pipe)) || accepts_water_input) && HAS_TRAIT(p, TRAIT_ENGINEERING_GOGGLES))
+			var/rotation_chat = return_rotation_chat(p.client.mouseovertext)
+			p.client.mouseovertext.maptext = {"[rotation_chat]
+			<span style='font-size:8pt;font-family:"Pterra";color:[hover_color];text-shadow:0 0 1px #fff, 0 0 2px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;' class='center maptext '>[name]"}
+		else
+			p.client.mouseovertext.maptext_height = 32
+			p.client.mouseovertext.maptext = {"<span style='font-size:8pt;font-family:"Pterra";color:[hover_color];text-shadow:0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;' class='center maptext '>[name]"}
+		p.client.screen |= p.client.mouseovertext
+	return TRUE
+
+/atom/proc/return_rotation_chat(atom/movable/screen/movable/mouseover/mouseover)
+	return
 
 /atom/proc/handle_mouseexit(params)
 	var/mob/p = usr
@@ -162,7 +176,8 @@
 	icon = 'icons/mouseover.dmi'
 	icon_state = "mouseover"
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	layer = ABOVE_HUD_LAYER+1
+	layer = ABOVE_HUD_LAYER+3
+	plane = HUD_PLANE + 1
 
 /atom/movable/screen/movable/mouseover/maptext
 	name = ""
@@ -209,5 +224,5 @@
 /client/proc/genmouseobj()
 	mouseovertext = new /atom/movable/screen/movable/mouseover/maptext
 	mouseoverbox = new /atom/movable/screen/movable/mouseover
-	var/datum/asset/stuff = get_asset_datum(/datum/asset/simple/roguefonts)
+	var/datum/asset/stuff = get_asset_datum(/datum/asset/simple/namespaced/roguefonts)
 	stuff.send(src)

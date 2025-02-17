@@ -5,7 +5,7 @@
 	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
 	icon_state = "puffer_uncocked_ramrod"
-	item_state = "gun"
+	item_state = "puffer"
 	bigboy = FALSE
 	recoil = 8
 	randomspread = 2
@@ -31,6 +31,8 @@
 	slot_flags = ITEM_SLOT_HIP
 	w_class = WEIGHT_CLASS_NORMAL
 	sellprice = 200 // This kind of equipment is very hard to come by in Rockhill.
+	grid_height = 32
+	grid_width = 96
 	var/cocked = FALSE
 	var/ramrod_inserted = TRUE
 	var/powdered = FALSE
@@ -87,9 +89,10 @@
 		return
 	if(wound)
 		to_chat(user, "<span class='info'>\The [src]'s mechanism is already wound!</span>")
+		return
 	var/windtime = 3.5
 	windtime = windtime - (user.mind.get_skill_level(/datum/skill/combat/firearms) / 2)
-	if(do_after(user, windtime SECONDS, TRUE, src) && !wound)
+	if(do_after(user, windtime SECONDS, src) && !wound)
 		to_chat(user, "<span class='info'>I wind \the [src]'s mechanism.</span>")
 		playsound(src.loc, 'sound/foley/winding.ogg', 100, FALSE)
 		wound = TRUE
@@ -115,6 +118,14 @@
 		update_icon() // Update the icon state after handling the ramrod
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/pistol/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
+	if(!cocked)
+		return
+	if(!rammed)
+		return
+	if(!powdered)
+		return
+	if(!wound)
+		return
 	if(user.client)
 		if(user.client.chargedprog >= 100)
 			spread = 0
@@ -133,14 +144,6 @@
 		if(user.STAPER > 10)
 			BB.damage = BB.damage * (user.STAPER / 10)
 		BB.bonus_accuracy += (user.mind.get_skill_level(/datum/skill/combat/firearms) * 3) //+3 accuracy per level in firearms
-	if(!cocked)
-		return
-	if(!rammed)
-		return
-	if(!powdered)
-		return
-	if(!wound)
-		return
 	playsound(src.loc, 'sound/combat/Ranged/muskclick.ogg', 100, FALSE)
 	cocked = FALSE
 	rammed = FALSE
@@ -178,7 +181,7 @@
 				to_chat(user, "<span class='warning'>I need to powder the [src] before I can ram it.</span>")
 				return
 			if(!rammed)
-				if(do_after(user, ramtime SECONDS, TRUE, src))
+				if(do_after(user, ramtime SECONDS, src))
 					to_chat(user, "<span class='info'>I ram \the [src].</span>")
 					playsound(src.loc, 'sound/foley/nockarrow.ogg', 100, FALSE)
 					rammed = TRUE
@@ -215,5 +218,6 @@
 /obj/item/reagent_containers/glass/bottle/rogue/aflask
 	name = "alchemical flask"
 	desc = "A small metal flask used for the secure storing of alchemical powders."
+	icon = 'icons/roguetown/items/cooking.dmi'
 	list_reagents = list(/datum/reagent/blastpowder = 30)
 	icon_state = "aflask"

@@ -17,6 +17,7 @@
 	pickprob = 15
 	category_tags = list(CTAG_ADVENTURER)
 	min_pq = 2
+	cmode_music = 'sound/music/cmode/church/CombatInquisitor.ogg'
 
 /datum/outfit/job/roguetown/adventurer/puritan/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -24,10 +25,10 @@
 	belt = /obj/item/storage/belt/rogue/leather
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	pants = /obj/item/clothing/under/roguetown/tights/black
-	cloak = /obj/item/clothing/cloak/cape/puritan
+	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/winterjacket
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
 	head = /obj/item/clothing/head/roguetown/helmet/leather/inquisitor
-	gloves = /obj/item/clothing/gloves/roguetown/leather
+	gloves = /obj/item/clothing/gloves/roguetown/angle
 	beltl = /obj/item/rogueweapon/sword/rapier/silver
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
 

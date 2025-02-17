@@ -74,6 +74,7 @@
 	var/soundenv = 0
 
 	var/first_time_text = null
+	var/custom_area_sound = null
 
 	/// typecache to limit the areas that atoms in this area can smooth with, used for shuttles IIRC
 	var/list/canSmoothWithAreas
@@ -273,11 +274,6 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 		//Ambience if combat mode is off
 		SSdroning.area_entered(src, living_arrived.client)
 		SSdroning.play_loop(src, living_arrived.client)
-		var/found = FALSE
-		for(var/datum/weather/rain/R in SSweather.curweathers)
-			found = TRUE
-		if(found)
-			SSdroning.play_rain(src, living_arrived.client)
 
 //	L.play_ambience(src)
 
@@ -302,7 +298,11 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 	T.maptext_height = 209
 	T.maptext_x = 12
 	T.maptext_y = 64
-	playsound_local(src, 'sound/misc/area.ogg', 100, FALSE)
+	if(A.custom_area_sound)
+		playsound_local(src, A.custom_area_sound, 125, FALSE)
+	else
+		playsound_local(src, 'sound/misc/area.ogg', 100, FALSE)
+
 	animate(T, alpha = 255, time = 10, easing = EASE_IN)
 	addtimer(CALLBACK(src, PROC_REF(clear_area_text), T), 35)
 
@@ -404,19 +404,9 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 		SSdroning.area_entered(src, boarder.client)
 		boarder.client.update_ambience_pref()
 		SSdroning.play_loop(src, boarder.client)
-		var/found = FALSE
-		for(var/datum/weather/rain/R in SSweather.curweathers)
-			found = TRUE
-		if(found)
-			SSdroning.play_rain(get_area(boarder.client), boarder.client)
 
 /area/reconnect_game(mob/living/boarder)
 	. = ..()
 	if(istype(boarder) && boarder.client)
 		SSdroning.area_entered(src, boarder.client)
 		SSdroning.play_loop(src, boarder.client)
-		var/found = FALSE
-		for(var/datum/weather/rain/R in SSweather.curweathers)
-			found = TRUE
-		if(found)
-			SSdroning.play_rain(get_area(boarder.client), boarder.client)

@@ -3,7 +3,6 @@
 /obj/structure/fluff
 	name = "fluff structure"
 	desc = ""
-	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "minibar"
 	anchored = TRUE
 	density = FALSE
@@ -11,21 +10,6 @@
 	blade_dulling = DULLING_BASHCHOP
 	max_integrity = 150
 	var/deconstructible = TRUE
-
-/obj/structure/fluff/paper
-	name = "dense lining of papers"
-	desc = ""
-	icon = 'icons/obj/fluff.dmi'
-	icon_state = "paper"
-	deconstructible = FALSE
-
-/obj/structure/fluff/paper/corner
-	icon_state = "papercorner"
-
-/obj/structure/fluff/paper/stack
-	name = "dense stack of papers"
-	desc = ""
-	icon_state = "paperstack"
 
 /obj/structure/fluff/big_chain
 	name = "giant chain"
@@ -40,7 +24,7 @@
 /obj/structure/fluff/railing
 	name = "railing"
 	desc = ""
-	icon = 'icons/obj/railing.dmi'
+	icon = 'icons/roguetown/misc/railing.dmi'
 	icon_state = "railing"
 	density = FALSE
 	anchored = TRUE
@@ -78,6 +62,8 @@
 		return 1
 	if(isobserver(mover))
 		return 1
+	if(mover.movement_type & FLYING)
+		return 1
 	if(isliving(mover))
 		var/mob/living/M = mover
 		if(!(M.mobility_flags & MOBILITY_STAND))
@@ -109,6 +95,8 @@
 		return 1
 	if(isobserver(O))
 		return 1
+	if(O.movement_type & FLYING)
+		return 1
 	if(isliving(O))
 		var/mob/living/M = O
 		if(!(M.mobility_flags & MOBILITY_STAND))
@@ -131,7 +119,7 @@
 		return 0
 	return 1
 
-/obj/structure/fluff/railing/OnCrafted(dirin)
+/obj/structure/fluff/railing/OnCrafted(dirin, mob/user)
 	dir = dirin
 	var/lay = getwlayer(dir)
 	if(lay)
@@ -151,7 +139,6 @@
 	name = "stone railing"
 	icon_state = "stonehedge"
 	blade_dulling = DULLING_BASHCHOP
-	layer = ABOVE_MOB_LAYER
 
 /obj/structure/fluff/railing/border
 	name = "border"
@@ -162,7 +149,6 @@
 /obj/structure/fluff/railing/fence
 	name = "palisade"
 	desc = "A sturdy fence of wooden stakes."
-	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "fence"
 	density = TRUE
 	opacity = TRUE
@@ -181,7 +167,7 @@
 	..()
 	smooth_fences()
 
-/obj/structure/fluff/railing/fence/OnCrafted(dirin)
+/obj/structure/fluff/railing/fence/OnCrafted(dirin, mob/user)
 	. = ..()
 	smooth_fences()
 
@@ -268,8 +254,9 @@
 	icon_state = "passage0"
 	density = TRUE
 	max_integrity = 2000
+	redstone_structure = TRUE
 
-/obj/structure/bars/passage/redstone_triggered()
+/obj/structure/bars/passage/redstone_triggered(mob/user)
 	if(obj_broken)
 		return
 	if(density)
@@ -283,8 +270,9 @@
 	icon_state = "shutter0"
 	density = TRUE
 	opacity = TRUE
+	redstone_structure = TRUE
 
-/obj/structure/bars/passage/shutter/redstone_triggered()
+/obj/structure/bars/passage/shutter/redstone_triggered(mob/user)
 	if(obj_broken)
 		return
 	if(density)
@@ -312,6 +300,7 @@
 	blade_dulling = DULLING_BASHCHOP
 	obj_flags = CAN_BE_HIT | BLOCK_Z_OUT_DOWN | BLOCK_Z_IN_UP
 	attacked_sound = list('sound/combat/hits/onmetal/grille (1).ogg', 'sound/combat/hits/onmetal/grille (2).ogg', 'sound/combat/hits/onmetal/grille (3).ogg')
+	redstone_structure = TRUE
 	var/togg = FALSE
 
 /obj/structure/bars/grille/Initialize()
@@ -323,7 +312,7 @@
 	obj_flags = CAN_BE_HIT
 	..()
 
-/obj/structure/bars/grille/redstone_triggered()
+/obj/structure/bars/grille/redstone_triggered(mob/user)
 	if(obj_broken)
 		return
 	testing("togge")
@@ -385,7 +374,7 @@
 	var/broke = FALSE
 	var/datum/looping_sound/clockloop/soundloop
 	drag_slowdown = 3
-	metalizer_result = /obj/item/roguegear
+	metalizer_result = /obj/item/roguegear/metal/bronze
 
 /obj/structure/fluff/clock/Initialize()
 	soundloop = new(src, FALSE)
@@ -422,8 +411,24 @@
 /obj/structure/fluff/clock/examine(mob/user)
 	. = ..()
 	if(!broke)
-		. += "Oh no, it's [station_time_timestamp("hh:mm")]."
-		. += "<span class='info'>(Round Time: [gameTimestamp("hh:mm:ss", REALTIMEOFDAY - SSticker.round_start_irl)].)</span>"
+		var/day = "... actually, WHAT dae is it?"
+		switch(GLOB.dayspassed)
+			if(1)
+				day = "Moon's dae"
+			if(2)
+				day = "Tiw's dae"
+			if(3)
+				day = "Wedding's dae"
+			if(4)
+				day = "Thule's dae"
+			if(5)
+				day = "Freyja's dae"
+			if(6)
+				day = "Saturn's dae"
+			if(7)
+				day = "Sun's dae"
+		. += "Oh no, it's [station_time_timestamp("hh:mm")] on a [day]."
+		// . += span_info("(Round Time: [gameTimestamp("hh:mm:ss", REALTIMEOFDAY - SSticker.round_start_irl)].)")
 
 /obj/structure/fluff/clock/CanPass(atom/movable/mover, turf/target)
 	if(get_dir(loc, mover) == dir)
@@ -456,7 +461,7 @@
 	attacked_sound = 'sound/combat/hits/onglass/glasshit.ogg'
 	var/broke = FALSE
 	pixel_y = 32
-	metalizer_result = /obj/item/roguegear
+	metalizer_result = /obj/item/roguegear/metal/bronze
 
 /obj/structure/fluff/wallclock/Destroy()
 	if(soundloop)
@@ -466,8 +471,24 @@
 /obj/structure/fluff/wallclock/examine(mob/user)
 	. = ..()
 	if(!broke)
-		. += "Oh no, it's [station_time_timestamp("hh:mm")]."
-		. += "(Round Time: [gameTimestamp("hh:mm:ss", REALTIMEOFDAY - SSticker.round_start_irl)].)"
+		var/day = "... actually, WHAT dae is it?"
+		switch(GLOB.dayspassed)
+			if(1)
+				day = "Moon's dae"
+			if(2)
+				day = "Tiw's dae"
+			if(3)
+				day = "Wedding's dae"
+			if(4)
+				day = "Thule's dae"
+			if(5)
+				day = "Freyja's dae"
+			if(6)
+				day = "Saturn's dae"
+			if(7)
+				day = "Sun's dae"
+		. += "Oh no, it's [station_time_timestamp("hh:mm")] on a [day]."
+		// . += span_info("(Round Time: [gameTimestamp("hh:mm:ss", REALTIMEOFDAY - SSticker.round_start_irl)].)")
 
 /obj/structure/fluff/wallclock/Initialize()
 	soundloop = new(src, FALSE)
@@ -582,15 +603,15 @@
 		if(!user.is_literate())
 			to_chat(user, "<span class='warning'>I don't know any verba.</span>")
 			return
-		if((user.used_intent.blade_class == BCLASS_STAB) && (W.wlength == WLENGTH_SHORT))
+		if(((user.used_intent.blade_class == BCLASS_STAB) || (user.used_intent.blade_class == BCLASS_CUT)) && (W.wlength == WLENGTH_SHORT))
 			if(wrotesign)
 				to_chat(user, "<span class='warning'>Something is already carved here.</span>")
-				return
 			else
 				var/inputty = stripped_input(user, "What would you like to carve here?", "", null, 200)
 				if(inputty && !wrotesign)
 					wrotesign = inputty
 					icon_state = "signwrote"
+			return
 	..()
 
 /obj/structure/fluff/statue
@@ -723,7 +744,7 @@
 	to_chat(H, "<span class='notice'>[message2send]</span>")
 
 	if(random_message == 2)
-		if(do_after(H, 25, target = src))
+		if(do_after(H, 2.5 SECONDS, src))
 			var/obj/item/bodypart/affecting = H.get_bodypart("head")
 			to_chat(H, "<span class='warning'>The blinding light causes you intense pain!</span>")
 			if(affecting && affecting.receive_damage(0, 5))
@@ -772,7 +793,7 @@
 					probby = min(probby, 99)
 					user.changeNext_move(CLICK_CD_MELEE)
 					if(W.max_blade_int)
-						W.remove_bintegrity(5)
+						W.remove_bintegrity(5, user)
 					if(!L.adjust_stamina(rand(4,6)))
 						if(ishuman(L))
 							var/mob/living/carbon/human/H = L
@@ -829,7 +850,7 @@
 	icon_state = "spidercore"
 
 /obj/structure/fluff/statue/spider/attackby(obj/item/W, mob/user, params)
-	if(istype(W, /obj/item/reagent_containers/food/snacks/rogue/honey))
+	if(istype(W, /obj/item/reagent_containers/food/snacks/spiderhoney))
 		if(user.mind)
 			if(user.mind.special_role == "Dark Elf")
 				playsound(loc,'sound/misc/eat.ogg', rand(30,60), TRUE)
@@ -854,7 +875,7 @@
 	if(user.mind)
 		var/datum/antagonist/bandit/B = user.mind.has_antag_datum(/datum/antagonist/bandit)
 		if(B)
-			if(istype(W, /obj/item/roguecoin) || istype(W, /obj/item/roguegem) || istype(W, /obj/item/reagent_containers/glass/cup/silver) || istype(W, /obj/item/reagent_containers/glass/cup/golden) || istype(W, /obj/item/clothing/ring) || istype(W, /obj/item/clothing/head/roguetown/crown/circlet) || istype(W, /obj/item/roguestatue))
+			if(istype(W, /obj/item/roguecoin) || istype(W, /obj/item/roguegem) || istype(W, /obj/item/reagent_containers/glass/cup/silver) || istype(W, /obj/item/reagent_containers/glass/cup/golden) || istype(W, /obj/item/reagent_containers/glass/carafe) || istype(W, /obj/item/clothing/ring) || istype(W, /obj/item/clothing/head/roguetown/crown/circlet) || istype(W, /obj/item/roguestatue))
 				if(B.tri_amt >= 10)
 					to_chat(user, "<span class='warning'>The mouth doesn't open.</span>")
 					return
@@ -974,8 +995,13 @@
 
 /obj/structure/fluff/psycross/crafted/shrine/dendor_saiga
 	name = "shrine to Dendor"
-	desc = "The life force of a Saiga has consecrated this holy place.<br/> Present jacksberries, westleach leaves, and silk grubs for crafting a worthy sacrifice."
+	desc = "The life force of a Saiga has consecrated this holy place.<br/> Present jacksberries, westleach leaves, and eels for crafting a worthy sacrifice."
 	icon_state = "shrine_dendor_saiga"
+
+/obj/structure/fluff/psycross/crafted/shrine/dendor_gote
+	name = "shrine to Dendor"
+	desc = "The life force of a Gote has consecrated this holy place.<br/> Present poppies, swampweed leaves, and silk grubs for crafting a worthy sacrifice."
+	icon_state = "shrine_dendor_gote"
 
 /obj/structure/fluff/psycross/attackby(obj/item/W, mob/living/carbon/human/user, params)
 	if(user.mind)
@@ -995,7 +1021,7 @@
 						var/mob/living/carbon/human/thegroom
 						var/mob/living/carbon/human/thebride
 						//Did anyone get cold feet on the wedding?
-						for(var/mob/M in viewers(src, 7))
+						for(var/mob/M in viewers(src, 2))
 							testing("check [M]")
 							if(thegroom && thebride)
 								break
@@ -1310,79 +1336,6 @@
 	if(M.flash_act())
 		var/diff = power - M.confused
 		M.confused += min(power, diff)
-
-
-//================================
-/obj/structure/fluff/beach_towel
-	name = "beach towel"
-	desc = ""
-	icon = 'icons/obj/fluff.dmi'
-	icon_state = "railing"
-	density = FALSE
-	anchored = TRUE
-	deconstructible = FALSE
-
-/obj/structure/fluff/beach_umbrella
-	name = "beach umbrella"
-	desc = ""
-	icon = 'icons/obj/fluff.dmi'
-	icon_state = "brella"
-	density = FALSE
-	anchored = TRUE
-	deconstructible = FALSE
-
-/obj/structure/fluff/beach_umbrella/security
-	icon_state = "hos_brella"
-
-/obj/structure/fluff/beach_umbrella/science
-	icon_state = "rd_brella"
-
-/obj/structure/fluff/beach_umbrella/engine
-	icon_state = "ce_brella"
-
-/obj/structure/fluff/beach_umbrella/cap
-	icon_state = "cap_brella"
-
-/obj/structure/fluff/beach_umbrella/syndi
-	icon_state = "syndi_brella"
-
-/obj/structure/fluff/clockwork
-	name = "Clockwork Fluff"
-	icon = 'icons/obj/clockwork_objects.dmi'
-	deconstructible = FALSE
-
-/obj/structure/fluff/clockwork/alloy_shards
-	name = "replicant alloy shards"
-	desc = ""
-	icon_state = "alloy_shards"
-
-/obj/structure/fluff/clockwork/alloy_shards/small
-	icon_state = "shard_small1"
-
-/obj/structure/fluff/clockwork/alloy_shards/medium
-	icon_state = "shard_medium1"
-
-/obj/structure/fluff/clockwork/alloy_shards/medium_gearbit
-	icon_state = "gear_bit1"
-
-/obj/structure/fluff/clockwork/alloy_shards/large
-	icon_state = "shard_large1"
-
-/obj/structure/fluff/clockwork/blind_eye
-	name = "blind eye"
-	desc = ""
-	icon_state = "blind_eye"
-
-/obj/structure/fluff/clockwork/fallen_armor
-	name = "fallen armor"
-	desc = ""
-	icon_state = "fallen_armor"
-
-/obj/structure/fluff/clockwork/clockgolem_remains
-	name = "clockwork golem scrap"
-	desc = ""
-	icon_state = "clockgolem_dead"
-
 
 /obj/structure/fluff/statue/shisha
 	name = "shisha pipe"

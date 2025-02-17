@@ -6,7 +6,7 @@
 	item_chair = null
 	destroy_sound = 'sound/combat/hits/onwood/destroyfurniture.ogg'
 	attacked_sound = "woodimpact"
-	sleepy = 0.5
+	sleepy = 0.55
 //	pixel_y = 10
 	layer = OBJ_LAYER
 	metalizer_result = /obj/item/roguestatue/iron/deformed
@@ -158,7 +158,7 @@
 	icon_state = "chair_red"
 	item_chair = /obj/item/chair/rogue/chair_nobles/red
 /obj/item/chair/rogue/chair_nobles/red
-	icon_state = "chair_purple"
+	icon_state = "chair_red"
 	origin_type = /obj/structure/chair/wood/rogue/chair_noble/red
 
 /obj/item/chair/rogue/
@@ -312,7 +312,7 @@
 	buckle_lying = 90
 	pixel_y = 5
 	sleepy = 2
-	debris = list(/obj/item/grown/log/tree/small = 1)
+	debris = list(/obj/item/natural/wood/plank = 1)
 	metalizer_result = /obj/machinery/anvil/crafted
 
 // ------------ GOOD BEDS ----------------------
@@ -377,7 +377,7 @@
 /obj/structure/bed/rogue/shit
 	name = "uncomfortable bed"
 	icon_state = "shitbed"
-	sleepy = 0.5
+	sleepy = 0.75
 	metalizer_result = null
 
 /obj/structure/bed/rogue/sleepingbag
@@ -386,17 +386,18 @@
 	icon_state = "sleepingcloth"
 	attacked_sound = 'sound/foley/cloth_rip.ogg'
 	break_sound = 'sound/foley/cloth_rip.ogg'
-	sleepy = 0.5
+	sleepy = 0.75
 
 /obj/structure/bed/rogue/sleepingbag/MiddleClick(mob/user, params)
 	..()
 	user.visible_message("<span class='notice'>[user] begins rolling up \the [src].</span>")
-	if(do_after(user, 2 SECONDS, TRUE, src))
-		new /obj/item/sleepingbag(get_turf(src))
+	if(do_after(user, 2 SECONDS, target = src))
+		user.put_in_hands(new /obj/item/sleepingbag(get_turf(src)))
 		qdel(src)
 
 /obj/item/sleepingbag
 	name = "roll of sleepcloth"
+	desc = "A quick and simple way to create a resting place on the ground."
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "sleepingcloth_rolled"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -408,14 +409,11 @@
 		to_chat(user, "<span class='warning'>I need ground to plant this on!</span>")
 		return
 	for(var/obj/A in T)
-		if(istype(A, /obj/structure))
-			to_chat(user, "<span class='warning'>I need some free space to deploy a [src] here!</span>")
-			return
 		if(A.density && !(A.flags_1 & ON_BORDER_1))
 			to_chat(user, "<span class='warning'>There is already something here!</span>")
 			return
 	user.visible_message("<span class='notice'>[user] begins placing \the [src] down on the ground.</span>")
-	if(do_after(user, 2 SECONDS, TRUE, src))
+	if(do_after(user, 2 SECONDS, src, (IGNORE_HELD_ITEM)))
 		new /obj/structure/bed/rogue/sleepingbag(get_turf(src))
 		qdel(src)
 

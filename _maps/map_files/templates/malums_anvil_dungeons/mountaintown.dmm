@@ -58,11 +58,6 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "aO" = (
 /obj/structure/closet/crate/coffin,
-/obj/item/roguekey/custom{
-	lockid = "tomb";
-	name = "Tomb key";
-	desc = "You're not sure how or why the key was on the insides, best to not think about it too much."
-	},
 /turf/open/floor/rogue/church,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "aP" = (
@@ -92,7 +87,7 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "bc" = (
 /obj/structure/rack/rogue/shelf/big,
-/obj/item/reagent_containers/glass/bucket{
+/obj/item/reagent_containers/glass/bucket/wooden{
 	pixel_y = 10
 	},
 /turf/open/floor/rogue/ruinedwood/spiralfade,
@@ -415,7 +410,7 @@
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "eh" = (
-/mob/living/carbon/human/species/goblin/npc/ambush/hell,
+/mob/living/carbon/human/species/goblin/npc/cave,
 /turf/open/floor/rogue/ruinedwood/spiralfade,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "ek" = (
@@ -510,13 +505,6 @@
 	desc = null
 	},
 /turf/open/floor/rogue/churchrough,
-/area/rogue/under/mountains/anvil/dungeon/lower)
-"fu" = (
-/mob/living/carbon/human/species/orc/warlord/skilled{
-	oxyloss = 500;
-	bruteloss = 500
-	},
-/turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "fC" = (
 /obj/effect/decal/cleanable/blood/tracks{
@@ -850,7 +838,6 @@
 /turf/open/transparent/openspace,
 /area/rogue/under/mountains/anvil/dungeon)
 "kJ" = (
-/obj/structure/fluff/dryingrack,
 /obj/item/storage/backpack/rogue/backpack,
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/under/mountains/anvil/dungeon)
@@ -1091,7 +1078,7 @@
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "oD" = (
-/mob/living/carbon/human/species/goblin/npc/ambush/hell,
+/mob/living/carbon/human/species/goblin/npc/cave,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon)
 "oI" = (
@@ -1139,7 +1126,7 @@
 "pw" = (
 /obj/structure/closet/crate/coffin,
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/long,
-/obj/item/quiver/arrows,
+/obj/item/ammo_holder/quiver/arrows,
 /obj/effect/spawner/roguemap/loot/armor,
 /obj/item/alch/bone{
 	name = "bone";
@@ -1206,16 +1193,6 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "ql" = (
 /turf/open/water/swamp,
-/area/rogue/under/mountains/anvil/dungeon/lower)
-"qm" = (
-/obj/item/roguekey/custom{
-	lockid = "armory";
-	name = "Armory Key"
-	},
-/obj/effect/decal/cleanable/blood/tracks{
-	dir = 1
-	},
-/turf/open/floor/rogue/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "qr" = (
 /obj/structure/stairs/stone/church{
@@ -1545,7 +1522,7 @@
 /obj/structure/closet/crate/coffin,
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow,
 /obj/item/clothing/suit/roguetown/armor/chainmail/iron,
-/obj/item/quiver/bolts,
+/obj/item/ammo_holder/quiver/bolts,
 /obj/item/ammo_casing/caseless/rogue/bolt/pyro,
 /obj/item/ammo_casing/caseless/rogue/bolt/pyro,
 /obj/item/ammo_casing/caseless/rogue/bolt/pyro,
@@ -1561,13 +1538,6 @@
 	},
 /turf/open/floor/rogue/ruinedwood/spiralfade,
 /area/rogue/under/mountains/anvil/dungeon)
-"vc" = (
-/obj/item/roguekey/custom{
-	lockid = "pitentrance";
-	name = "Arena gate"
-	},
-/turf/open/floor/rogue/naturalstone,
-/area/rogue/under/mountains/anvil/dungeon/lower)
 "vs" = (
 /turf/open/floor/rogue/ruinedwood/darker,
 /area/rogue/under/mountains/anvil/dungeon/lower)
@@ -1878,7 +1848,7 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "Ag" = (
 /obj/effect/decal/cleanable/blood/gibs/old,
-/obj/item/clothing/head/roguetown/helmet/heavy/malumhelm,
+/obj/item/clothing/head/roguetown/helmet/heavy/necked/malumhelm,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Aq" = (
@@ -2290,12 +2260,6 @@
 	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
-"FH" = (
-/mob/living/carbon/human/species/orc/warlord/skilled{
-	wander = 0
-	},
-/turf/open/floor/rogue/naturalstone,
-/area/rogue/under/mountains/anvil/dungeon/lower)
 "FI" = (
 /turf/closed/wall/mineral/rogue/stonebrick,
 /area/rogue/under/mountains/anvil/dungeon)
@@ -2420,7 +2384,7 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "HI" = (
 /obj/item/storage/roguebag,
-/obj/item/reagent_containers/food/snacks/rogue/preserved/potato_baked{
+/obj/item/reagent_containers/food/snacks/potato_baked{
 	pixel_x = -6
 	},
 /obj/structure/table/wood/plain_alt,
@@ -2696,11 +2660,11 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Lr" = (
 /obj/structure/rack/rogue/shelf/big,
-/obj/item/cooking/platter,
-/obj/item/cooking/platter,
+/obj/item/kitchen/platter,
+/obj/item/kitchen/platter,
 /obj/item/rogueweapon/knife/villager,
-/obj/item/kitchen/ironfork,
-/obj/item/kitchen/ironfork,
+/obj/item/kitchen/fork/iron,
+/obj/item/kitchen/fork/iron,
 /turf/open/floor/rogue/ruinedwood/spiralfade,
 /area/rogue/under/mountains/anvil/dungeon)
 "Lt" = (
@@ -2869,9 +2833,7 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "NY" = (
 /obj/structure/mineral_door/wood/donjon/stone,
-/turf/closed/wall/mineral/rogue/decostone/long{
-	dir = 1
-	},
+/turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Od" = (
 /obj/structure/bars,
@@ -2979,9 +2941,7 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "PG" = (
 /obj/structure/mineral_door/wood/violet,
-/turf/closed/wall/mineral/rogue/decostone/long{
-	dir = 1
-	},
+/turf/open/floor/rogue/church,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "PI" = (
 /obj/effect/spawner/roguemap/loot/common,
@@ -2990,7 +2950,7 @@
 "PJ" = (
 /obj/structure/table/wood/plain_alt,
 /obj/item/rogueweapon/tongs,
-/obj/item/rogueweapon/hammer,
+/obj/item/rogueweapon/hammer/iron,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "PK" = (
@@ -3008,7 +2968,7 @@
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Qa" = (
-/obj/item/rogueweapon/hammer/claw,
+/obj/item/rogueweapon/hammer/steel,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Qb" = (
@@ -3211,10 +3171,6 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Th" = (
 /obj/structure/closet/crate/drawer,
-/obj/item/roguekey/custom{
-	lockid = "dormroom";
-	name = "Dorm room key"
-	},
 /turf/open/floor/rogue/ruinedwood/spiralfade,
 /area/rogue/under/mountains/anvil/dungeon)
 "To" = (
@@ -3296,14 +3252,6 @@
 	pixel_x = 15
 	},
 /turf/open/floor/rogue/ruinedwood/spiralfade,
-/area/rogue/under/mountains/anvil/dungeon/lower)
-"Un" = (
-/obj/effect/decal/cleanable/blood,
-/mob/living/carbon/human/species/orc/warlord/skilled{
-	oxyloss = 500;
-	bruteloss = 500
-	},
-/turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Us" = (
 /obj/structure/fermenting_barrel/random/beer,
@@ -3539,9 +3487,6 @@
 /obj/structure/table/wood/treestump/shroomstump,
 /turf/open/floor/rogue/dirt,
 /area/rogue/under/mountains/anvil/dungeon/lower)
-"Xw" = (
-/turf/open/transparent/openspace/airless,
-/area/rogue/under/mountains/anvil/dungeon)
 "Xx" = (
 /obj/structure/rack/rogue/shelf/biggest,
 /turf/open/floor/rogue/blocks{
@@ -3728,7 +3673,7 @@
 "Zk" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/limb,
-/obj/item/rogueweapon/hammer,
+/obj/item/rogueweapon/hammer/iron,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Zm" = (
@@ -3745,10 +3690,6 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "Zx" = (
 /obj/structure/fluff/statue/knightalt,
-/turf/open/floor/rogue/churchmarble,
-/area/rogue/under/mountains/anvil/dungeon)
-"ZD" = (
-/mob/living/carbon/human/species/orc/warlord/skilled,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/under/mountains/anvil/dungeon)
 "ZF" = (
@@ -3777,10 +3718,6 @@
 /obj/structure/closet/crate/chest/crate,
 /obj/item/reagent_containers/powder/moondust,
 /turf/open/floor/rogue/ruinedwood/spiralfade,
-/area/rogue/under/mountains/anvil/dungeon)
-"ZQ" = (
-/mob/living/carbon/human/species/orc/warlord/skilled,
-/turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon)
 "ZX" = (
 /obj/item/chair/rogue/chair3/crafted,
@@ -4471,7 +4408,7 @@ Te
 Te
 nR
 rq
-FH
+rq
 QT
 rq
 rq
@@ -4613,7 +4550,7 @@ rq
 rq
 JN
 Ag
-Un
+Px
 rq
 rq
 rq
@@ -4678,7 +4615,7 @@ rq
 rq
 rq
 rq
-fu
+rq
 rq
 rq
 rq
@@ -5074,7 +5011,7 @@ UD
 UD
 KW
 rq
-vc
+rq
 rq
 KW
 UD
@@ -6939,7 +6876,7 @@ fK
 fK
 fK
 pX
-qm
+fC
 fC
 Tb
 Tb
@@ -9163,7 +9100,7 @@ De
 Zx
 Wc
 Wc
-ZD
+Wc
 Wc
 co
 uD
@@ -9296,7 +9233,7 @@ Wc
 DO
 Wc
 Wc
-ZD
+Wc
 Wc
 Wc
 Fn
@@ -11815,7 +11752,7 @@ RT
 Cv
 xw
 RT
-ZQ
+RT
 nB
 FV
 FV
@@ -11833,10 +11770,10 @@ FV
 FV
 FV
 kJ
-Xw
+gy
 FV
-Xw
-Xw
+gy
+gy
 FU
 dD
 "}
@@ -11893,16 +11830,16 @@ qN
 EK
 FU
 FV
-Xw
-Xw
-Xw
-Xw
-Xw
+gy
+gy
+gy
+gy
+gy
 FV
 HN
 FV
 FV
-Xw
+gy
 FU
 dD
 "}
@@ -11959,14 +11896,14 @@ FV
 FV
 FU
 FV
-Xw
-Xw
+gy
+gy
 FV
-Xw
-Xw
-Xw
+gy
+gy
+gy
 FV
-Xw
+gy
 FV
 FV
 FU
@@ -12009,7 +11946,7 @@ dD
 dD
 FU
 Cv
-ZQ
+RT
 RT
 RT
 RT
@@ -12025,11 +11962,11 @@ FV
 FV
 FU
 FV
-Xw
+gy
 il
 CA
 FV
-Xw
+gy
 FV
 FV
 FV
@@ -12098,7 +12035,7 @@ FV
 FV
 FV
 FV
-Xw
+gy
 kI
 FV
 FU

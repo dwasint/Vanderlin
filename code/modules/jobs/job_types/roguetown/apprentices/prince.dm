@@ -8,7 +8,8 @@
 	spawn_positions = 2
 	allowed_races = list(
 		"Humen",
-		"Half-Elf"
+		"Half-Elf",
+		"Elf"
 	)
 
 	spells = list(
@@ -16,7 +17,7 @@
 	)
 
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_ages = list(AGE_ADULT)
+	allowed_ages = list(AGE_ADULT, AGE_CHILD)
 	cmode_music = 'sound/music/cmode/nobility/combat_noble.ogg'
 	advclass_cat_rolls = list(CTAG_HEIR = 20)
 
@@ -77,7 +78,8 @@
 		H.change_stat("constitution", 1)
 		H.change_stat("speed", 1)
 		H.change_stat("fortune", 1)
-		ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
 /datum/advclass/heir/aristocrat
 	name = "Sheltered Aristocrat"
@@ -88,22 +90,22 @@
 /datum/outfit/job/roguetown/heir/aristocrat/pre_equip(mob/living/carbon/human/H)
 	..()
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/key/manor
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/under/roguetown/tights
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guard
+		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/royal/prince
 		belt = /obj/item/storage/belt/rogue/leather
 		shoes = /obj/item/clothing/shoes/roguetown/nobleboot
 	if(H.gender == FEMALE)
 		belt = /obj/item/storage/belt/rogue/leather/cloth/lady
 		head = /obj/item/clothing/head/roguetown/hennin
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/jacket/silk_coat
-		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/princess
+		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/royal/princess
 		shoes = /obj/item/clothing/shoes/roguetown/shortboots
 		pants = /obj/item/clothing/under/roguetown/tights/random
-
+	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, pick(0,1), TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
@@ -123,7 +125,7 @@
 		H.change_stat("speed", 1)
 
 /datum/advclass/heir/inbred
-	name = "Inbred wastrel"
+	name = "Inbred Wastrel"
 	tutorial = "Your bloodline ensures Psydon smiles upon you by divine right, the blessing of nobility... until you were born, anyway. You are a child forsaken, and even though your body boils as you go about your day, your spine creaks, and your drooling form needs to be waited on tirelessly you are still considered more important then the peasant that keeps the town fed and warm. Remind them of that fact when your lungs are particularly pus free."
 	outfit = /datum/outfit/job/roguetown/heir/inbred
 	category_tags = list(CTAG_HEIR)
@@ -132,19 +134,19 @@
 	..()
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_CRITICAL_WEAKNESS, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/key/manor
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/under/roguetown/tights
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guard
+		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/royal/prince
 		belt = /obj/item/storage/belt/rogue/leather
 		shoes = /obj/item/clothing/shoes/roguetown/nobleboot
 	if(H.gender == FEMALE)
 		belt = /obj/item/storage/belt/rogue/leather/cloth/lady
 		head = /obj/item/clothing/head/roguetown/hennin
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/jacket/silk_coat
-		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/princess
+		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/royal/princess
 		shoes = /obj/item/clothing/shoes/roguetown/shortboots
 		pants = /obj/item/clothing/under/roguetown/tights/random
 	if(H.mind)

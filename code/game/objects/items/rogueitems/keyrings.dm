@@ -5,8 +5,8 @@
 	desc = "A circular ring of metal for hooking additional rings."
 	icon_state = "keyring0"
 	icon = 'icons/roguetown/items/keys.dmi'
-	lefthand_file = 'icons/mob/inhands/misc/food_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/misc/food_righthand.dmi'
+	lefthand_file = 'icons/roguetown/onmob/lefthand.dmi'
+	righthand_file = 'icons/roguetown/onmob/righthand.dmi'
 	w_class = WEIGHT_CLASS_TINY
 	dropshrink = 0
 	throwforce = 0
@@ -15,30 +15,17 @@
 	experimental_inhand = FALSE
 	dropshrink = 0.7
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
+	component_type = /datum/component/storage/concrete/roguetown/keyring
 
 /obj/item/storage/keyring/Initialize()
 	. = ..()
 	for(var/X in keys)
-		new X(src)
+		var/obj/item/key/new_key = new X(loc)
+		if(!SEND_SIGNAL(src, COMSIG_TRY_STORAGE_INSERT, new_key, null, TRUE, FALSE))
+			qdel(new_key)
+
 	update_icon()
 	update_desc()
-
-/obj/item/storage/keyring/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_combined_w_class = 20
-	STR.max_w_class = WEIGHT_CLASS_SMALL
-	STR.max_items = 10
-	STR.attack_hand_interact = FALSE
-	STR.click_gather = TRUE
-	STR.allow_dump_out = TRUE
-	STR.rustle_sound = FALSE
-	STR.collection_mode = COLLECT_ONE
-	STR.set_holdable(list(
-		/obj/item/key,
-	))
-	STR.insert_verb = "slide"
-	STR.insert_preposition = "on"
 
 /obj/item/storage/keyring/attack_right(mob/user)
 	var/datum/component/storage/CP = GetComponent(/datum/component/storage)
@@ -72,7 +59,6 @@
 
 /obj/item/storage/keyring/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
 	. = ..()
-	playsound(src, "sound/items/gems (1).ogg", 35, FALSE)
 	update_desc()
 
 /obj/item/storage/keyring/Exited(atom/movable/gone, direction)
@@ -113,8 +99,8 @@
 	desc = "A piece of bent wire to store lockpicking tools. Too bulky for fine work."
 	icon_state = "pickring0"
 	icon = 'icons/roguetown/items/keys.dmi'
-	lefthand_file = 'icons/mob/inhands/misc/food_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/misc/food_righthand.dmi'
+	lefthand_file = 'icons/roguetown/onmob/lefthand.dmi'
+	righthand_file = 'icons/roguetown/onmob/righthand.dmi'
 	w_class = WEIGHT_CLASS_TINY
 	dropshrink = 0
 	throwforce = 0
@@ -244,7 +230,7 @@
 	keys = list(/obj/item/key/manor, /obj/item/key/tower, /obj/item/key/mage)
 
 /obj/item/storage/keyring/innkeep
-	keys = list(/obj/item/key/tavern, /obj/item/key/roomhunt, /obj/item/key/roomvi, /obj/item/key/roomv, /obj/item/key/roomiv, /obj/item/key/roomiii, /obj/item/key/roomii, /obj/item/key/roomi)
+	keys = list(/obj/item/key/tavern, /obj/item/key/roomhunt, /obj/item/key/medroomiv, /obj/item/key/medroomiii, /obj/item/key/medroomii, /obj/item/key/medroomi, /obj/item/key/luxroomiv, /obj/item/key/luxroomiii, /obj/item/key/luxroomii, /obj/item/key/luxroomi)
 
 /obj/item/storage/keyring/priest
 	keys = list(/obj/item/key/priest, /obj/item/key/confession, /obj/item/key/church, /obj/item/key/graveyard, /obj/item/key/monastery, /obj/item/key/inquisition, /obj/item/key/manor)
@@ -257,6 +243,9 @@
 
 /obj/item/storage/keyring/niteman
 	keys = list(/obj/item/key/niteman, /obj/item/key/nitemaiden)
+
+/obj/item/storage/keyring/gravetender
+	keys = list(/obj/item/key/church, /obj/item/key/graveyard)
 
 /obj/item/storage/keyring/hand
 	keys = list(/obj/item/key/hand, /obj/item/key/steward, /obj/item/key/tavern, /obj/item/key/church, /obj/item/key/merchant, /obj/item/key/dungeon, /obj/item/key/walls, /obj/item/key/garrison, /obj/item/key/forrestgarrison, /obj/item/key/manor, /obj/item/key/guest)
@@ -283,7 +272,16 @@
 	keys = list(/obj/item/key/veteran, /obj/item/key/walls, /obj/item/key/elder, /obj/item/key/butcher, /obj/item/key/soilson, /obj/item/key/manor, /obj/item/key/apartments/penthouse2)
 
 /obj/item/storage/keyring/doctor
-	keys = list(/obj/item/key/doctor, /obj/item/key/manor)
+	keys = list(/obj/item/key/doctor, /obj/item/key/manor, /obj/item/key/clinic)
+
+/obj/item/storage/keyring/physicker
+	keys = list(/obj/item/key/doctor, /obj/item/key/clinic)
 
 /obj/item/storage/keyring/veteran
 	keys = list(/obj/item/key/veteran, /obj/item/key/dungeon, /obj/item/key/garrison, /obj/item/key/walls, /obj/item/key/elder, /obj/item/key/butcher, /obj/item/key/soilson)
+
+/obj/item/storage/keyring/tailor
+	keys = list(/obj/item/key/tailor)
+
+/obj/item/storage/keyring/stevedore
+	keys = list(/obj/item/key/warehouse, /obj/item/key/shop)

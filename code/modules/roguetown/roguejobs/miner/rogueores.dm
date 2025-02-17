@@ -3,6 +3,8 @@
 	icon = 'icons/roguetown/items/ore.dmi'
 	icon_state = "ore"
 	w_class = WEIGHT_CLASS_NORMAL
+	grid_width = 32
+	grid_height = 32
 
 /obj/item/rogueore/gold
 	name = "raw gold"
@@ -76,6 +78,9 @@
 	icon_state = "ingot"
 	w_class = WEIGHT_CLASS_NORMAL
 	smeltresult = null
+
+	grid_width = 64
+	grid_height = 32
 	var/datum/anvil_recipe/currecipe
 	var/quality = SMELTERY_LEVEL_NORMAL
 
@@ -104,6 +109,9 @@
 	if(istype(I, /obj/item/rogueweapon/tongs))
 		var/obj/item/rogueweapon/tongs/T = I
 		if(!T.hingot)
+			if(item_flags & IN_STORAGE)
+				if(!SEND_SIGNAL(loc, COMSIG_TRY_STORAGE_TAKE, src, user.loc, TRUE))
+					return ..()
 			forceMove(T)
 			T.hingot = src
 			T.hott = null

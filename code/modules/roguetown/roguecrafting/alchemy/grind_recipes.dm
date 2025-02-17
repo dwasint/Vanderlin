@@ -195,3 +195,4 @@
 /datum/alch_grind_recipe/artemisia_seed
 	valid_input = /obj/item/alch/artemisia
 	valid_outputs = list(/obj/item/herbseed/artemisia = 1)
+

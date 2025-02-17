@@ -43,6 +43,7 @@
 	var/recipe_link
 	/// Whether this step is optional. This is forbidden for first and last steps of recipes, and cannot be used on recipes with an order of SLAP_ORDER_FIRST_THEN_FREEFORM
 	var/optional = FALSE
+	var/start_verb = "to"
 
 /datum/slapcraft_step/New()
 	. = ..()
@@ -113,8 +114,8 @@
 	if(perform_time && !instant)
 		if(!silent)
 			user.visible_message(
-				span_notice(step_replace_text(start_msg, user, item, assembly)),
-				span_notice(step_replace_text(start_msg_self, user, item, assembly))
+				span_small(step_replace_text(start_msg, user, item, assembly)),
+				span_small(step_replace_text(start_msg_self, user, item, assembly))
 				)
 		if(!perform_do_after(user, item, assembly, perform_time * get_speed_multiplier(user, item, assembly)))
 			return FALSE
@@ -125,8 +126,8 @@
 
 	if(!silent)
 		user.visible_message(
-			span_notice(step_replace_text(finish_msg, user, item, assembly)),
-			span_notice(step_replace_text(finish_msg_self, user, item, assembly))
+			span_small(step_replace_text(finish_msg, user, item, assembly)),
+			span_small(step_replace_text(finish_msg_self, user, item, assembly))
 		)
 
 	if(!silent)
@@ -184,7 +185,7 @@
 	if(skill_type)
 		time_to_do *=  (2 / max(1, user.mind?.get_skill_level(skill_type)))
 
-	if(!do_after(user, time_to_do, target = item))
+	if(!do_after(user, time_to_do, item))
 		return FALSE
 	return TRUE
 

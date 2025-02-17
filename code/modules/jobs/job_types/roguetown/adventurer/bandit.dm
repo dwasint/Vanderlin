@@ -17,13 +17,13 @@
 	display_order = JDO_BANDIT
 	show_in_credits = FALSE
 	announce_latejoin = FALSE
-	min_pq = 1
+	min_pq = 4
 
 	advclass_cat_rolls = list(CTAG_BANDIT = 20)
 	//PQ_boost_divider = 10
 
 	wanderer_examine = TRUE
-	always_show_on_latechoices = TRUE
+	always_show_on_latechoices = FALSE
 	job_reopens_slots_on_death = FALSE //no endless stream of bandits, unless the migration waves deem it so
 	same_job_respawn_delay = 30 MINUTES
 

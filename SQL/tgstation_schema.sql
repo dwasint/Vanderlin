@@ -446,6 +446,7 @@ CREATE TABLE `round` (
   `shuttle_name` VARCHAR(64) NULL,
   `map_name` VARCHAR(32) NULL,
   `station_name` VARCHAR(80) NULL,
+  `log_directory` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -531,6 +532,23 @@ CREATE TABLE `achievement_metadata` (
 	`achievement_name` VARCHAR(64) NULL DEFAULT NULL,
 	`achievement_description` VARCHAR(512) NULL DEFAULT NULL,
 	PRIMARY KEY (`achievement_key`)
+) ENGINE=InnoDB;
+
+--
+-- Table structure for table `discord_links`
+--
+DROP TABLE IF EXISTS `discord_links`;
+CREATE TABLE `discord_links` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ckey` varchar(32) NOT NULL,
+  `discord_id` bigint(20) DEFAULT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  `one_time_token` varchar(100) NOT NULL,
+  `valid` tinyint(1) NOT NULL DEFAULT 0,
+  `cached_state` tinyint(3) unsigned DEFAULT NULL,
+  `cached_timestamp` timestamp NULL DEFAULT NULL,
+  `cached_username` tinytext DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
 --

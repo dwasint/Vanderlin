@@ -94,15 +94,6 @@
 /obj/structure/fireaxecabinet/attack_paw(mob/living/user)
 	return attack_hand(user)
 
-/obj/structure/fireaxecabinet/attack_tk(mob/user)
-	if(locked)
-		to_chat(user, "<span class='warning'>The [name] won't budge!</span>")
-		return
-	else
-		open = !open
-		update_icon()
-		return
-
 /obj/structure/fireaxecabinet/update_icon()
 	cut_overlays()
 	if(heirloom)
@@ -119,7 +110,7 @@
 /obj/structure/fireaxecabinet/proc/toggle_lock(mob/user)
 	to_chat(user, "<span class='notice'>Resetting circuitry...</span>")
 	playsound(src, 'sound/blank.ogg', 50, TRUE)
-	if(do_after(user, 20, target = src))
+	if(do_after(user, 2 SECONDS, src))
 		to_chat(user, "<span class='notice'>I [locked ? "disable" : "re-enable"] the locking modules.</span>")
 		locked = !locked
 		update_icon()

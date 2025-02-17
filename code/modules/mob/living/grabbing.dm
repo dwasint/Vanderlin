@@ -140,10 +140,18 @@
 	hostagetaker = null
 
 /obj/item/grabbing/attack(mob/living/M, mob/living/user)
-	if(M != grabbed)
-		return FALSE
 	if(!valid_check())
 		return FALSE
+	if(M != grabbed)
+		if(!istype(limb_grabbed, /obj/item/bodypart/head))
+			return FALSE
+		if(M != user)
+			return FALSE
+		if(!user.cmode)
+			return FALSE
+		user.changeNext_move(CLICK_CD_RESIST)
+		headbutt(user)
+		return
 	user.changeNext_move(CLICK_CD_MELEE)
 	var/skill_diff = 0
 	var/combat_modifier = 1
@@ -571,6 +579,8 @@
 
 	if(user.mind && C.mind)
 		var/datum/antagonist/vampirelord/VDrinker = user.mind.has_antag_datum(/datum/antagonist/vampirelord)
+		if(!VDrinker) //SLOP OBJECT HIERARCHY CODE
+			VDrinker = user.mind.has_antag_datum(/datum/antagonist/vampire)
 		var/datum/antagonist/vampirelord/VVictim = C.mind.has_antag_datum(/datum/antagonist/vampirelord)
 		var/zomwerewolf = C.mind.has_antag_datum(/datum/antagonist/werewolf)
 		if(!zomwerewolf)
@@ -632,6 +642,16 @@
 						VDrinker.handle_vitae(250)
 				else
 					to_chat(user, "<span class='warning'>And yet, not enough vitae can be extracted from them... Tsk.</span>")
+			else if(user.mind.has_antag_datum(/datum/antagonist/vampire))
+				var/datum/antagonist/vampire/VDrinker = user.mind.has_antag_datum(/datum/antagonist/vampire)
+				C.blood_volume = max(C.blood_volume-45, 0)
+				if(C.vitae_pool >= 250)
+					if(VDrinker.isspawn)
+						VDrinker.handle_vitae(250, 250)
+					else
+						VDrinker.handle_vitae(250)
+				else
+					to_chat(user, "<span class='warning'>And yet, not enough vitae can be extracted from them... Tsk.</span>")
 
 	C.blood_volume = max(C.blood_volume-5, 0)
 	C.handle_blood()
@@ -645,16 +665,22 @@
 
 	if(ishuman(C) && C.mind)
 		var/datum/antagonist/vampirelord/VDrinker = user.mind.has_antag_datum(/datum/antagonist/vampirelord)
+		if(!VDrinker) //SLOP OBJECT HIERARCHY CODE
+			VDrinker = user.mind.has_antag_datum(/datum/antagonist/vampire)
 		if(C.blood_volume <= BLOOD_VOLUME_SURVIVE)
 			if(!VDrinker.isspawn)
-				switch(alert("Would you like to sire a new spawn?",,"Yes","No"))
+				switch(alert(user, "Would you like to sire a new spawn?","VAMPIRE","Yes","No"))
 					if("Yes")
-						user.visible_message("[user] begins to infuse dark magic into [C]")
-						if(do_after(user, 30))
-							C.visible_message("[C] rises as a new spawn!")
-							var/datum/antagonist/vampirelord/lesser/new_antag = new /datum/antagonist/vampirelord/lesser()
-							new_antag.sired = TRUE
-							C.mind.add_antag_datum(new_antag)
+						user.visible_message(span_red("[user] begins to infuse dark magic into [C]."))
+						if(do_after(user, 3 SECONDS))
+							C.visible_message(span_red("[C] rises as a new spawn!"))
+							if(istype(VDrinker, /datum/antagonist/vampirelord))
+								var/datum/antagonist/vampirelord/lesser/new_antag = new /datum/antagonist/vampirelord/lesser()
+								new_antag.sired = TRUE
+								C.mind.add_antag_datum(new_antag)
+							else
+								var/datum/antagonist/vampire/lesser/new_antag = new /datum/antagonist/vampire/lesser()
+								C.mind.add_antag_datum(new_antag)
 							sleep(20)
 							C.fully_heal()
 					if("No")

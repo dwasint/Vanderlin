@@ -112,6 +112,11 @@
 		var/yea = pick("[src] is broken!", "[src] is useless!", "[src] is destroyed!")
 		destroy_message = "<span class='warning'>[yea]</span>"
 
+/obj/item/rogueweapon/attack_hand(mob/user)
+	if(istype(user, /mob/living/carbon/human/species/werewolf)) //slop fix
+		return TRUE
+	. = ..()
+
 /obj/item/rogueweapon/pickup(mob/user)
 	. = ..()
 	if(HAS_TRAIT(user, TRAIT_RAVOX_CURSE))
@@ -120,6 +125,9 @@
 		H.cursed_freak_out()
 		H.Paralyze(20)
 		return
+
+/obj/item/rogueweapon/get_examine_string(mob/user, thats = FALSE)
+	return "[thats? "That's ":""]<b>[get_examine_name(user)]</b>"
 
 /obj/item/rogueweapon/get_dismemberment_chance(obj/item/bodypart/affecting, mob/user)
 	if(!get_sharpness() || !affecting.can_dismember(src))
@@ -150,7 +158,7 @@
 		else
 			return 0
 
-	if(nuforce < 25) //End force needs to be at least this high, after accounting for strong intent and chop. An iron messer should be able to do it, but not a dagger.
+	if(nuforce < 23) //End force needs to be at least this high, after accounting for strong intent and chop. An iron messer should be able to do it, but not a dagger.
 		return 0
 
 	var/probability = (nuforce * (total_dam / affecting.max_damage) - 5) //More weight given to total damage accumulated on the limb

@@ -3,8 +3,8 @@
 	flag = COOK
 	department_flag = PEASANTS
 	faction = "Station"
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 3
+	spawn_positions = 3
 
 	allowed_races = list(
 		"Humen",
@@ -22,7 +22,7 @@
 	bypass_lastclass = TRUE
 	min_pq = -20
 	give_bank_account = 8
-	cmode_music = 'sound/music/cmode/towner/CombatTowner.ogg'
+	cmode_music = 'sound/music/cmode/towner/CombatInn.ogg'
 
 /datum/outfit/job/roguetown/cook/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -49,7 +49,9 @@
 		neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 		H.change_stat("constitution", 2)
 	else
-		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
+		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/lowcut
+		armor = /obj/item/clothing/suit/roguetown/armor/corset
+		pants = /obj/item/clothing/under/roguetown/skirt/red
 		cloak = /obj/item/clothing/cloak/apron/cook
 		head = /obj/item/clothing/head/roguetown/cookhat
 		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes

@@ -120,7 +120,6 @@
 	T = GET_TURF_BELOW(src)
 	if(T)
 		T.multiz_turf_del(src, UP)
-	STOP_PROCESSING(SSweather,src)
 	if(force)
 		..()
 		//this will completely wipe turf state
@@ -330,6 +329,9 @@
 
 /turf/Entered(atom/movable/AM)
 	..()
+	SEND_SIGNAL(src, COMSIG_TURF_ENTERED, AM)
+	SEND_SIGNAL(AM, COMSIG_MOVABLE_TURF_ENTERED, src)
+
 	if(explosion_level && AM.ex_check(explosion_id))
 		AM.ex_act(explosion_level)
 
@@ -347,7 +349,6 @@
 			O.make_unfrozen()
 	if(!AM.zfalling)
 		zFall(AM)
-	trigger_weather(AM)
 
 /turf/proc/is_plasteel_floor()
 	return FALSE
@@ -422,14 +423,14 @@
 		return
 	if(length(src_object.contents()))
 		to_chat(usr, "<span class='notice'>I start dumping out the contents...</span>")
-		if(!do_after(usr,20,target=src_object.parent))
+		if(!do_after(usr, 2 SECONDS, src_object.parent))
 			return FALSE
 
 	var/list/things = src_object.contents()
 	var/datum/progressbar/progress = new(user, things.len, src)
-	while (do_after(usr, 10, TRUE, src, FALSE, CALLBACK(src_object, TYPE_PROC_REF(/datum/component/storage, mass_remove_from_storage), src, things, progress)))
+	while (do_after(usr, 1 SECONDS, src, NONE, FALSE, CALLBACK(src_object, TYPE_PROC_REF(/datum/component/storage, mass_remove_from_storage), src, things, progress)))
 		stoplag(1)
-	qdel(progress)
+	progress.end_progress()
 
 	return TRUE
 

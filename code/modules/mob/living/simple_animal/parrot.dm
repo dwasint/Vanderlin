@@ -87,7 +87,7 @@
 	//Parrots will generally sit on their perch unless something catches their eye.
 	//These vars store their preffered perch and if they dont have one, what they can use as a perch
 	var/obj/parrot_perch = null
-	var/obj/desired_perches = list(/obj/structure/displaycase)
+	var/obj/desired_perches = list()
 
 	//Parrots are kleptomaniacs. This variable ... stores the item a parrot is holding.
 	var/obj/item/held_item = null
@@ -127,6 +127,8 @@
 
 /mob/living/simple_animal/parrot/Stat()
 	..()
+	if(!client)
+		return
 	if(statpanel("Status"))
 		stat("Held Item", held_item)
 		stat("Mode",a_intent)

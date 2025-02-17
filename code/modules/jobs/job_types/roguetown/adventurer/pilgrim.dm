@@ -25,6 +25,5 @@
 	..()
 	if(L)
 		var/mob/living/carbon/human/H = L
-		H.advsetup = 1
-		H.invisibility = INVISIBILITY_MAXIMUM
-		H.become_blind("advsetup")
+		if(advclass_cat_rolls)
+			hugboxify_for_class_selection(H)

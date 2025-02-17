@@ -135,7 +135,7 @@
 	light_color = "#ffb773"
 	on_damage = 2
 	flags_1 = null
-	possible_item_intents = list(/datum/intent/hit, /datum/intent/use)
+	possible_item_intents = list(/datum/intent/use, /datum/intent/hit)
 	slot_flags = ITEM_SLOT_HIP
 	var/datum/looping_sound/torchloop/soundloop
 	var/should_self_destruct = TRUE //added for torch burnout
@@ -144,6 +144,10 @@
 	light_depth = 0
 	light_height = 0
 	metalizer_result = /obj/item/flashlight/flare/torch/lantern
+
+	grid_width = 32
+	grid_height = 32
+	var/extinguish_prob = 100
 
 /obj/item/flashlight/flare/torch/getonmobprop(tag)
 	. = ..()
@@ -156,7 +160,7 @@
 
 /obj/item/flashlight/flare/torch/Initialize()
 	. = ..()
-	soundloop = new(src, FALSE)
+	//soundloop = new(src, FALSE)
 
 /obj/item/flashlight/flare/torch/process()
 	open_flame(heat)
@@ -191,12 +195,12 @@
 		turn_off()
 
 /obj/item/flashlight/flare/torch/extinguish()
-	if(on)
+	if(on && prob(extinguish_prob))
 		turn_off()
 
 /obj/item/flashlight/flare/torch/turn_off()
-	playsound(src.loc, 'sound/items/firesnuff.ogg', 100)
-	soundloop.stop()
+	playsound(src.loc, 'sound/items/firesnuff.ogg', 50)
+	soundloop?.stop()
 	STOP_PROCESSING(SSobj, src)
 	..()
 	if(ismob(loc))
@@ -214,7 +218,7 @@
 			damtype = BURN
 			update_brightness()
 			force = on_damage
-			soundloop.start()
+			//soundloop.start()
 			if(ismob(loc))
 				var/mob/M = loc
 				M.update_inv_hands()
@@ -288,6 +292,7 @@
 	should_self_destruct = FALSE
 	metalizer_result = null
 	smeltresult = /obj/item/ingot/iron
+	extinguish_prob = 10
 
 /obj/item/flashlight/flare/torch/lantern/afterattack(atom/movable/A, mob/user, proximity)
 	. = ..()
@@ -306,9 +311,6 @@
 		turn_off()
 		STOP_PROCESSING(SSobj, src)
 
-/obj/item/flashlight/flare/torch/lantern/extinguish()
-	return
-
 /obj/item/flashlight/flare/torch/lantern/getonmobprop(tag)
 	. = ..()
 	if(tag)
@@ -323,10 +325,12 @@
 	icon_state = "bronzelamp"
 	item_state = "bronzelamp"
 	desc = "A marvel of engineering that emits a strange green glow."
-	light_outer_range = 8
-	light_color ="#4ac77e"
+	light_outer_range = 9
+	light_power = 2
+	light_color ="#00ff6a"
 	on = FALSE
 	smeltresult = /obj/item/ingot/bronze
+	extinguish_prob = 0
 
 /obj/item/flashlight/flare/torch/lantern/copper
 	name = "copper lamptern"
@@ -340,6 +344,8 @@
 	on_damage = 5
 	fuel = 120 MINUTES
 	should_self_destruct = FALSE
+	smeltresult = /obj/item/ingot/copper
+	extinguish_prob = 15
 
 /obj/item/flashlight/flare/torch/lantern/copper/getonmobprop(tag)
 	. = ..()

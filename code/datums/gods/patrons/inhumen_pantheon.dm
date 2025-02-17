@@ -1,11 +1,23 @@
 /datum/patron/inhumen
 	name = null
 	associated_faith = /datum/faith/inhumen_pantheon
+
+	profane_words = list()
 	confess_lines = list(
-		"PSYDON IS THE DEMIURGE!",
+		"PSYDON AND HIS CHILDREN ARE THE DEMIURGE!",
 		"THE TEN ARE WORTHLESS COWARDS!",
 		"THE TEN ARE DECEIVERS!"
 	)
+
+/datum/patron/inhumen/can_pray(mob/living/follower)
+	for(var/obj/structure/fluff/psycross/cross in view(7, get_turf(follower)))
+		if(!cross.obj_broken)
+			to_chat(follower, span_danger("That accursed cross won't let me commune with the Forbidden One!"))
+			return FALSE
+
+	return TRUE
+
+/* ----------------- */
 
 /datum/patron/inhumen/zizo
 	name = "Zizo"
@@ -13,7 +25,7 @@
 	desc = "Snow Elf who slaughtered Her kind in ascension, conquered and remade the Dark Elven empires in Her name. She proves that any with will can achieve divinity... though at a cost."
 	flaws = "Hubris, Superiority, Fury"
 	worshippers = "Dark Elves, Aspirants, Necromancers"
-	sins = "Resistance, Deceit, Wastefulness"
+	sins = "Pearl-clutching, Moralism, Wastefulness"
 	boons = "You know other followers of Zizo when you see them."
 	added_traits = list(TRAIT_CABAL)
 	confess_lines = list(
@@ -44,11 +56,12 @@
 	flaws = "Pride, Greed, Orneryness"
 	worshippers = "Outlaws, Noble-Haters, Downtrodden Peasantry"
 	sins = "Clumsiness, Stupidity, Humility"
-	boons = "None... yet."
+	boons = "You can see the most expensive item someone is carrying."
+	added_traits = list(TRAIT_MATTHIOS_EYES)
 	confess_lines = list(
-		"Matthios steal my pain, and take me away from these HEATHENS!",
-		"Matthios is my true lord, he WILL steal me away from YOU!",
-		"I am a devoted of Matthios, I will sooner martyr than REPENT!",
+		"MATTHIOS STEALS FROM THE WORTHLESS!",
+		"MATTHIOS IS JUSTICE FOR THE COMMON MAN!",
+		"MATTHIOS IS MY LORD, I SHALL BE HIS MARTYR!",
 	)
 
 /datum/patron/inhumen/baotha
@@ -66,19 +79,36 @@
 		"BAOTHA'S WHISPERS CALM MY MIND!",
 	)
 
-
+/// Maniac Patron
 /datum/patron/inhumen/graggar_zizo
-	name = "Graggar"
-	domain = "Ascended God who slaughtered Her kind in ascension, the Dark Sini-Star of Unnatural Beasts, Unsated Consumption, and Unbridled Hatred."
+	name = "Graggazo"
+	domain = "Ascended God who slaughtered Her kind in ascension, the Dark Sini-Star of Unnatural Beasts, Forbidden Magic, and Unbridled Hatred."
 	desc = "Became the first Snow orc upon ascension through His habit of consuming the bodies of those He conquered. His forces continue to ravage the lands in His name. She proves that any with will can achieve divinity... though at a cost."
 	flaws = "Rage, Superiority, Bloodthirst"
-	worshippers = "Greenskins, Aspirants, Sadists"
+	worshippers = "Dark Elves, The Revenge-Driven, Necromancers"
 	sins = "Compassion, Wastefulness, Servility"
-	boons = "You are drawn to the flavour of raw flesh and organs, and may consume without worry."
+	boons = "You are drawn to the flavour of other followers of Zizo, and may see them when you consume without worry."
 	added_traits = list(TRAIT_ORGAN_EATER, TRAIT_CABAL)
 	confess_lines = list(
 		"WHERE AM I!",
 		"NONE OF THIS IS REAL!",
-		"WHO AM I WORSHIPPING!"
+		"WHO AM I WORSHIPPING?!"
 	)
 	non_faith = TRUE
+
+/datum/patron/inhumen/graggar_zizo/can_pray(mob/living/follower)
+	var/datum/antagonist/maniac/dreamer = follower.mind.has_antag_datum(/datum/antagonist/maniac)
+	if(!dreamer)
+		// if a non-maniac somehow gets this patron,
+		// something interesting should happen if they try to pray
+		return FALSE
+	return TRUE
+
+/datum/patron/inhumen/graggar_zizo/hear_prayer(mob/living/follower, message)
+	var/datum/antagonist/maniac/dreamer = follower.mind.has_antag_datum(/datum/antagonist/maniac)
+	if(!dreamer)
+		return FALSE
+
+	// something interesting should happen...
+
+	. = ..()

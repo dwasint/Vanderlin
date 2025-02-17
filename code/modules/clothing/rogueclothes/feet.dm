@@ -41,6 +41,13 @@
 	armor = list("blunt" = 20, "slash" = 20, "stab" = 20,  "piercing" = 15, "fire" = 0, "acid" = 0)
 	sellprice = 10
 
+/obj/item/clothing/shoes/roguetown/nobleboot/thighboots
+	name = "thigh boots"
+	icon_state = "thighboot"
+	icon = 'icons/roguetown/clothing/special/hand.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/hand.dmi'
+	sleeved = 'icons/roguetown/clothing/special/onmob/hand.dmi'
+
 /obj/item/clothing/shoes/roguetown/shortboots
 	name = "shortboots"
 	color = "#d5c2aa"
@@ -58,6 +65,15 @@
 	gender = PLURAL
 	icon_state = "ridingboots"
 	item_state = "ridingboots"
+	sellprice = 10
+
+/obj/item/clothing/shoes/roguetown/apothboots
+	name = "apothecary boots"
+	desc = "Boots designed for the toil of tincture gathering and mixing."
+	gender = PLURAL
+	icon_state = "apothboots"
+	item_state = "apothboots"
+	armor = list("blunt" = 15, "slash" = 15, "stab" = 15,  "piercing" = 5, "fire" = 0, "acid" = 0)
 	sellprice = 10
 
 ///obj/item/clothing/shoes/roguetown/ridingboots/Initialize()
@@ -95,7 +111,7 @@
 	sellprice = 20
 
 /obj/item/clothing/shoes/roguetown/gladiator
-	name = "leather sandals"
+	name = "caligae"
 	desc = "Open design sandals made from sturdy leather. Can be typically seen worn by gladiators."
 	gender = PLURAL
 	icon_state = "gladiator"
@@ -160,6 +176,19 @@
 	max_integrity = 250
 	armor_class = AC_MEDIUM
 	sellprice = 20
+
+/obj/item/clothing/shoes/roguetown/boots/armor/light/rust
+	name = "rusted light plate boots"
+	desc = "Rusted armored boots made from iron offering protection against both melee and ranged attacks. They smell stained of blood and urine."
+	icon = 'icons/roguetown/clothing/special/rust_armor.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/rust_armor.dmi'
+	sleeved = 'icons/roguetown/clothing/special/onmob/rust_armor.dmi'
+	icon_state = "rustboots"
+	item_state = "rustboots"
+	smeltresult = /obj/item/ingot/iron
+	sellprice = VALUE_IRON_ARMOR/2
+	armor = ARMOR_PLATE_BAD
+	max_integrity = INTEGRITY_STANDARD
 
 /obj/item/clothing/shoes/roguetown/boots/leather
 	name = "leather boots"

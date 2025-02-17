@@ -76,7 +76,7 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	var/qdel_on_droplimb = FALSE
 
 	/// Werewolf infection probability for bites on this wound
-	var/werewolf_infection_probability = 15
+	var/werewolf_infection_probability = 8
 	/// Time taken until werewolf infection comes in
 	var/werewolf_infection_time = 2 MINUTES
 	/// Actual infection timer
@@ -131,7 +131,7 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 /// Sound that plays when this wound is applied to a mob
 /datum/wound/proc/get_sound_effect(mob/living/affected, obj/item/bodypart/affected_bodypart)
 	if(critical && prob(3))
-		return 'sound/combat/tf2crit.ogg'
+		return 'sound/combat/CriticalHit.ogg'
 	return pick(sound_effect)
 
 /// Returns whether or not this wound can be applied to a given bodypart
@@ -188,14 +188,14 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	var/obj/item/bodypart/was_bodypart = bodypart_owner
 	var/mob/living/was_owner = owner
 	LAZYREMOVE(bodypart_owner.wounds, src)
-	bodypart_owner = null
+	bodypart_owner = null //honestly shouldn't be nulling the owner before calling on loss procs
 	owner = null
-	on_bodypart_loss(was_bodypart)
+	on_bodypart_loss(was_bodypart, was_owner)
 	on_mob_loss(was_owner)
 	return TRUE
 
 /// Effects when a wound is lost on a bodypart
-/datum/wound/proc/on_bodypart_loss(obj/item/bodypart/affected)
+/datum/wound/proc/on_bodypart_loss(obj/item/bodypart/affected, mob/living/affected_mob)
 	if(disabling)
 		affected.update_disabled()
 

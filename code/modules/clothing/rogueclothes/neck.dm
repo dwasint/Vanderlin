@@ -118,7 +118,7 @@
 					H.update_inv_head()
 
 /obj/item/clothing/neck/roguetown/keffiyeh/red
-	color = COLOR_MAROON
+	color = CLOTHING_BLOOD_RED
 
 /obj/item/clothing/neck/roguetown/keffiyeh/yellow
 	color = CLOTHING_PEAR_YELLOW
@@ -134,9 +134,6 @@
 
 /obj/item/clothing/neck/roguetown/keffiyeh/purple
 	color = CLOTHING_ROYAL_PURPLE
-
-/obj/item/clothing/neck/roguetown/keffiyeh/teal
-	color = CLOTHING_ROYAL_TEAL
 
 /obj/item/clothing/neck/roguetown/keffiyeh/black
 	color = CLOTHING_ROYAL_BLACK
@@ -282,7 +279,7 @@
 	name = "bronze gorget"
 	desc = "A heavy collar of great age, meant to protect the neck."
 	icon_state = "aasimarneck"
-	smeltresult = null // No bronze ingots yet
+	smeltresult = /obj/item/ingot/bronze
 	armor = ARMOR_MAILLE_GOOD
 
 
@@ -308,40 +305,6 @@
 	resistance_flags = FIRE_PROOF
 	sellprice = 50
 	smeltresult = /obj/item/ingot/silver
-
-/obj/item/clothing/neck/roguetown/psycross/silver/pickup(mob/user)
-	. = ..()
-	var/mob/living/carbon/human/H = user
-	var/datum/antagonist/vampirelord/V_lord = H.mind.has_antag_datum(/datum/antagonist/vampirelord/)
-	if(H.mind)
-		if(H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
-			to_chat(H, "<span class='userdanger'>I can't pick up the silver, it is my BANE!</span>")
-			H.Knockdown(20)
-			H.adjustFireLoss(60)
-			H.Paralyze(20)
-			H.fire_act(1,5)
-		if(V_lord)
-			if(V_lord.vamplevel < 4 && !H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
-				to_chat(H, "<span class='userdanger'>I can't pick up the silver, it is my BANE!</span>")
-				H.Knockdown(10)
-				H.Paralyze(10)
-
-/obj/item/clothing/neck/roguetown/psycross/silver/mob_can_equip(mob/living/M, mob/living/equipper, slot, disable_warning = FALSE, bypass_equip_delay_self = FALSE)
-	. = ..()
-	var/mob/living/carbon/human/H = M
-	var/datum/antagonist/vampirelord/V_lord = H.mind?.has_antag_datum(/datum/antagonist/vampirelord/)
-	if(H.mind)
-		if(H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
-			to_chat(H, "<span class='userdanger'>I can't pick up the silver, it is my BANE!</span>")
-			H.Knockdown(20)
-			H.adjustFireLoss(60)
-			H.Paralyze(20)
-			H.fire_act(1,5)
-		if(V_lord)
-			if(V_lord.vamplevel < 4 && !H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser))
-				to_chat(H, "<span class='userdanger'>I can't pick up the silver, it is my BANE!</span>")
-				H.Knockdown(10)
-				H.Paralyze(10)
 
 // PANTHEON SILVER PSYCROSSES START
 
@@ -393,6 +356,34 @@
 	desc = "And I love thee because thou art love."
 	icon_state = "eora"
 	resistance_flags = FIRE_PROOF
+
+/obj/item/clothing/neck/roguetown/psycross/silver/holy/eora
+	name = "Eora's love potion"
+	desc = "Eora's blessing is upon thy, use me on someone else and you shall be soulbond."
+	icon_state = "eora"
+	resistance_flags = FIRE_PROOF
+
+/obj/item/clothing/neck/roguetown/psycross/silver/holy/eora/attack(mob/living/love_target, mob/user)
+	if(!isliving(love_target) || love_target.stat == DEAD)
+		to_chat(user, span_warning("The love potion only works on living things, sicko!"))
+		return ..()
+	if(user == love_target)
+		to_chat(user, span_warning("You can't drink the love potion. What are you, a narcissist?"))
+		return ..()
+	if(love_target.has_status_effect(/datum/status_effect/in_love))
+		to_chat(user, span_warning("[love_target] is already lovestruck!"))
+		return ..()
+
+	love_target.visible_message(span_danger("[user] starts to feed [love_target] a love potion!"),
+		span_userdanger("[user] starts to feed you a love potion!"))
+
+	if(!do_after(user, 5 SECONDS, love_target))
+		return
+	to_chat(user, span_notice("You feed [love_target] the love potion!"))
+	to_chat(love_target, span_notice("You develop feelings for [user], and anyone [user.p_they()] like[user.p_s()]."))
+	love_target.faction |= "[REF(user)]"
+	love_target.apply_status_effect(/datum/status_effect/in_love, user)
+	qdel(src)
 
 /obj/item/clothing/neck/roguetown/psycross/silver/pestra
 	name = "amulet of Pestra"

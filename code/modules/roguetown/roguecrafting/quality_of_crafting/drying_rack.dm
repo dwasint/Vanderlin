@@ -1,8 +1,3 @@
-
-/datum/repeatable_crafting_recipe/cooking
-	abstract_type = /datum/repeatable_crafting_recipe/cooking
-	skillcraft = /datum/skill/craft/cooking
-
 /datum/repeatable_crafting_recipe/dryleaf
 	name = "dry swampweed"
 	output = /obj/item/reagent_containers/food/snacks/produce/swampweed_dried
@@ -39,7 +34,7 @@
 
 /datum/repeatable_crafting_recipe/coppiette
 	name = "coppiette"
-	output = /obj/item/reagent_containers/food/snacks/rogue/meat/coppiette
+	output = /obj/item/reagent_containers/food/snacks/cooked/coppiette
 	starting_atom = /obj/item/reagent_containers/food/snacks/rogue/meat/steak
 	requirements = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1,
@@ -56,7 +51,7 @@
 	output = /obj/item/reagent_containers/food/snacks/fat/salo
 	starting_atom = /obj/item/reagent_containers/food/snacks/fat
 	requirements = list(
-		/obj/item/reagent_containers/food/snacks/fat = 1,
+		/obj/item/reagent_containers/food/snacks/fat = 2,
 		/obj/item/reagent_containers/powder/salt = 1
 	)
 	attacking_atom = /obj/machinery/tanningrack
@@ -85,7 +80,7 @@
 
 /datum/repeatable_crafting_recipe/raisins
 	name = "raisins"
-	output = /obj/item/reagent_containers/food/snacks/rogue/raisins
+	output = /obj/item/reagent_containers/food/snacks/raisins
 	starting_atom = /obj/item/reagent_containers/food/snacks/produce/jacksberry
 	requirements = list(
 		/obj/item/reagent_containers/food/snacks/produce/jacksberry = 1,
@@ -101,7 +96,7 @@
 
 /datum/repeatable_crafting_recipe/raisins_poison
 	name = "raisins"
-	output = /obj/item/reagent_containers/food/snacks/rogue/raisins/poison
+	output = /obj/item/reagent_containers/food/snacks/raisins/poison
 	starting_atom = /obj/item/reagent_containers/food/snacks/produce/jacksberry/poison
 	requirements = list(
 		/obj/item/reagent_containers/food/snacks/produce/jacksberry/poison = 1,
@@ -115,19 +110,22 @@
 		/obj/item/reagent_containers/food/snacks/produce/jacksberry/poison,
 	)
 
-/datum/repeatable_crafting_recipe/parchment_scrolls
-	name = "parchment scrolls"
-	output = /obj/item/paper/scroll
-	output_amount = 5
-	starting_atom = /obj/item/grown/log/tree/small
+/datum/repeatable_crafting_recipe/parchment
+	name = "parchment"
+	output = /obj/item/paper
+	output_amount = 6
+	starting_atom = /obj/item/rogueweapon/knife
+	tool_usage = list(
+		/obj/item/rogueweapon/knife = list("starts to prepare the hide", "start to prepare the hide", 'sound/combat/hits/bladed/genstab (1).ogg'),
+	)
 	requirements = list(
-		/obj/item/grown/log/tree/small = 1,
+		/obj/item/natural/hide = 1,
 	)
 	reagent_requirements = list(
-		/datum/reagent/water = 50
+		/datum/reagent/water = 33
 	)
 	attacking_atom = /obj/machinery/tanningrack
 
 	craft_time = 1.5 SECONDS
-	crafting_message = "starts making some scrolls"
-	craftdiff = 1
+	crafting_message = "starts making some parchment"
+	craftdiff = 0

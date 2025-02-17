@@ -1,7 +1,7 @@
 /obj/item/reagent_containers/food/snacks/fish
 	name = "fish"
 	desc = ""
-	icon_state = "carp"
+	icon_state = "carpcom"
 	icon = 'icons/roguetown/misc/fish.dmi'
 	verb_say = "glubs"
 	verb_yell = "glubs"
@@ -93,6 +93,14 @@
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/eel
 	cooked_smell = /datum/pollutant/food/baked_eel
 
+/obj/item/reagent_containers/food/snacks/fish/shrimp
+	name = "shrimp"
+	desc = "As shrimple as that."
+	icon_state = "shrimp"
+	sellprice = 2
+	fried_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/shrimp
+	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/shrimp
+	cooked_smell = /datum/pollutant/food/baked_shrimp
 
 /obj/item/reagent_containers/food/snacks/rogue/fryfish
 	icon = 'icons/roguetown/misc/fish.dmi'
@@ -100,23 +108,46 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 10)
 	tastes = list("fish" = 1)
 	name = "cooked fish"
-	desc = ""
+	desc = "Abyssor's bounty, make sure to eat the eyes!"
 	icon_state = "carpcooked"
 	foodtype = MEAT
-	warming = 5 MINUTES
 	dropshrink = 0.6
 
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/carp
+	name = "cooked carp"
 	icon_state = "carpcooked"
+	plateable = TRUE
+	plating_alt_icon = TRUE
+	plated_iconstate = "carp_plated"
 
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/clownfish
+	name = "cooked clownfish"
 	icon_state = "clownfishcooked"
+	plateable = TRUE
+	plating_alt_icon = TRUE
+	plated_iconstate = "clown_plated"
 
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/angler
+	name = "cooked anglerfish"
 	icon_state = "anglercooked"
+	plateable = TRUE
+	plating_alt_icon = TRUE
+	plated_iconstate = "angler_plated"
 
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/eel
+	name = "cooked eel"
 	icon_state = "eelcooked"
+	plateable = TRUE
+	plating_alt_icon = TRUE
+	plated_iconstate = "eel_plated"
+
+/obj/item/reagent_containers/food/snacks/rogue/fryfish/swordfish
+	name = "cooked swordfish"
+
+/obj/item/reagent_containers/food/snacks/rogue/fryfish/shrimp
+	icon_state = "shrimpcooked"
+	name = "cooked shrimp"
+	tastes = list("shrimp" = 1)
 
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/carp/rare
 	eat_effect = list(/datum/status_effect/buff/foodbuff, /datum/status_effect/buff/blessed)

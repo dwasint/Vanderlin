@@ -29,27 +29,26 @@
 	if(!loc)
 		return
 
-	if(!IS_IN_STASIS(src))
-		//Breathing, if applicable
-		handle_breathing(times_fired)
-		if(HAS_TRAIT(src, TRAIT_SIMPLE_WOUNDS))
-			handle_wounds()
-			handle_embedded_objects()
-			handle_blood()
-			//passively heal even wounds with no passive healing
-			for(var/datum/wound/wound as anything in get_wounds())
-				wound.heal_wound(1)
+	//Breathing, if applicable
+	handle_breathing(times_fired)
+	if(HAS_TRAIT(src, TRAIT_SIMPLE_WOUNDS))
+		handle_wounds()
+		handle_embedded_objects()
+		handle_blood()
+		//passively heal even wounds with no passive healing
+		for(var/datum/wound/wound as anything in get_wounds())
+			wound.heal_wound(1)
 
-		if (QDELETED(src)) // diseases can qdel the mob via transformations
-			return
+	if (QDELETED(src)) // diseases can qdel the mob via transformations
+		return
 
-		//Random events (vomiting etc)
-		handle_random_events()
+	//Random events (vomiting etc)
+	handle_random_events()
 
-		handle_gravity()
+	handle_gravity()
 
-		handle_traits() // eye, ear, brain damages
-		handle_status_effects() //all special effects, stun, knockdown, jitteryness, hallucination, sleeping, etc
+	handle_traits() // eye, ear, brain damages
+	handle_status_effects() //all special effects, stun, knockdown, jitteryness, hallucination, sleeping, etc
 
 	update_sneak_invis()
 	handle_fire()
@@ -74,11 +73,10 @@
 		return
 	if(!loc)
 		return
-	if(!IS_IN_STASIS(src))
-		if(HAS_TRAIT(src, TRAIT_SIMPLE_WOUNDS))
-			handle_wounds()
-			handle_embedded_objects()
-			handle_blood()
+	if(HAS_TRAIT(src, TRAIT_SIMPLE_WOUNDS))
+		handle_wounds()
+		handle_embedded_objects()
+		handle_blood()
 	update_sneak_invis()
 	handle_fire()
 	handle_typing_indicator()
@@ -113,14 +111,16 @@
 //		testing("handlefyre0 [src]")
 		return TRUE //the mob is no longer on fire, no need to do the rest.
 //	testing("handlefyre1 [src]")
-	if(fire_stacks > 0)
-		adjust_fire_stacks(-0.05) //the fire is slowly consumed
+	if(fire_stacks + divine_fire_stacks > 0)
+		adjust_divine_fire_stacks(-0.05)
+		if(fire_stacks > 0)
+			adjust_fire_stacks(-0.05) //the fire is slowly consumed
 	else
 		ExtinguishMob()
 		return TRUE //mob was put out, on_fire = FALSE via ExtinguishMob(), no need to update everything down the chain.
 	update_fire()
 	var/turf/location = get_turf(src)
-	location.hotspot_expose(700, 50, 1)
+	location?.hotspot_expose(700, 50, 1)
 
 /mob/living/proc/handle_wounds()
 	if(stat >= DEAD)

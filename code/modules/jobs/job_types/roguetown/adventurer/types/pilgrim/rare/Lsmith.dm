@@ -16,7 +16,7 @@
 
 /datum/outfit/job/roguetown/adventurer/masterblacksmith/pre_equip(mob/living/carbon/human/H)
 	..()
-	beltr = /obj/item/rogueweapon/hammer
+	beltr = /obj/item/rogueweapon/hammer/iron
 	backl = /obj/item/storage/backpack/rogue/backpack
 	backr =	/obj/item/rogueweapon/hammer/sledgehammer
 	pants = /obj/item/clothing/under/roguetown/trou
@@ -35,8 +35,8 @@
 		H.mind?.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/misc/swimming, pick(0,1,1), TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/misc/climbing, pick(1,1,2), TRUE)
-		H.mind?.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
-		H.mind?.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
+		H.mind?.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
+		H.mind?.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/craft/crafting, pick(2,2,3), TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/craft/masonry, 2, TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/craft/carpentry, pick(1,2,2), TRUE)

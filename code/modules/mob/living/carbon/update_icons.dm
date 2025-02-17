@@ -105,10 +105,7 @@
 		if(client && hud_used && hud_used.hud_version != HUD_STYLE_NOHUD)
 			if(I.bigboy)
 				if(I.wielded)
-					if(get_held_index_of_item(I) == 1)
-						I.screen_loc = "WEST-4:16,SOUTH+7:-16"
-					else
-						I.screen_loc = "WEST-4:16,SOUTH+7:-16"
+					I.screen_loc = "WEST-4:16,SOUTH+7:-16"
 				else
 					if(get_held_index_of_item(I) == 1)
 						I.screen_loc = "WEST-4:0,SOUTH+7:-16"
@@ -116,10 +113,7 @@
 						I.screen_loc = "WEST-3:0,SOUTH+7:-16"
 			else
 				if(I.wielded)
-					if(get_held_index_of_item(I) == 1)
-						I.screen_loc = "WEST-3:0,SOUTH+7"
-					else
-						I.screen_loc = "WEST-3:0,SOUTH+7"
+					I.screen_loc = "WEST-3:0,SOUTH+7"
 				else
 					I.screen_loc = ui_hand_position(get_held_index_of_item(I))
 			client.screen += I
@@ -217,6 +211,8 @@
 	remove_overlay(FIRE_LAYER)
 	if(on_fire || islava(loc))
 		var/mutable_appearance/new_fire_overlay = mutable_appearance('icons/mob/OnFire.dmi', fire_icon, -FIRE_LAYER)
+		if(divine_fire_stacks > fire_stacks)
+			new_fire_overlay.color = list(0,0,0, 0,0,0, 0,0,0, 1,1,1)
 		new_fire_overlay.appearance_flags = RESET_COLOR
 		overlays_standing[FIRE_LAYER] = new_fire_overlay
 

@@ -7,6 +7,7 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(
 		"Humen",
+		"Rakshari",
 		"Elf",
 		"Half-Elf",
 		"Dwarf",
@@ -20,7 +21,7 @@
 	maximum_possible_slots = 1
 	pickprob = 15
 	category_tags = list(CTAG_PILGRIM, CTAG_TOWNER)
-	apprentice_name = "Fisher"
+	apprentice_name = "Fisher Apprentice"
 
 /datum/outfit/job/roguetown/adventurer/fishermaster/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -33,7 +34,7 @@
 		backr = /obj/item/storage/backpack/rogue/satchel
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/jacket/sea
 		belt = /obj/item/storage/belt/rogue/leather
-		backl = /obj/item/fishingrod
+		backl = /obj/item/fishingrod/fisher
 		beltr = /obj/item/cooking/pan
 		beltl = /obj/item/rogueweapon/knife/hunting
 		backpack_contents = list(/obj/item/natural/worms = 2,/obj/item/rogueweapon/shovel/small=1)
@@ -62,7 +63,7 @@
 		backr = /obj/item/storage/backpack/rogue/satchel
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/jacket/sea
 		belt = /obj/item/storage/belt/rogue/leather
-		beltr = /obj/item/fishingrod
+		beltr = /obj/item/fishingrod/fisher
 		beltl = /obj/item/rogueweapon/knife/hunting
 		backpack_contents = list(/obj/item/natural/worms = 2,/obj/item/rogueweapon/shovel/small=1)
 		if(H.mind)

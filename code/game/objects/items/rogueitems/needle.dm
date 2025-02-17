@@ -3,8 +3,6 @@
 	desc = "A firm needle affixed with a simple thread, Pestra's most favored tool."
 	icon_state = "needle"
 	icon = 'icons/roguetown/items/misc.dmi'
-	lefthand_file = 'icons/mob/inhands/misc/food_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/misc/food_righthand.dmi'
 	w_class = WEIGHT_CLASS_TINY
 	force = 0
 	throwforce = 0
@@ -13,6 +11,9 @@
 	max_integrity = 20
 	anvilrepair = /datum/skill/craft/blacksmithing
 	tool_behaviour = TOOL_SUTURE
+
+	grid_width = 32
+	grid_height = 32
 	/// Amount of uses left
 	var/stringamt = 20
 	var/maxstring = 20
@@ -58,7 +59,7 @@
 			return
 		else
 			to_chat(user, "I begin threading the needle with additional fibers...")
-			if(do_after(user, 6 SECONDS - user.mind.get_skill_level(/datum/skill/misc/sewing), target = I))
+			if(do_after(user, 6 SECONDS - user.mind.get_skill_level(/datum/skill/misc/sewing), I))
 				stringamt += 5
 				to_chat(user, "I replenish the needle's thread!")
 				qdel(I)
@@ -74,28 +75,42 @@
 			to_chat(user, "<span class='warning'>The needle has no thread left!</span>")
 			return
 		if(!I.sewrepair || !I.max_integrity)
+			to_chat(user, span_warning("[I] can't be repaired!"))
 			return
 		if(I.obj_integrity == I.max_integrity)
-			to_chat(user, span_warning("This is not broken."))
+			to_chat(user, span_warning("[I] is not damaged!"))
 			return
 		if(!I.ontable())
 			to_chat(user, span_warning("I should put this on a table first."))
 			return
+		var/armor_value = 0
+		var/skill_level = user.mind.get_skill_level(/datum/skill/misc/sewing)
+		for(var/key in I.armor.getList()) // Here we are checking if the armor value of the item is 0 so we can know if the item is armor without having to make a snowflake var
+			armor_value += I.armor.getRating(key)
+		if((armor_value == 0 && skill_level < 1) || (armor_value > 0 && skill_level < 2))
+			to_chat(user, span_warning("I should probably not be doing this..."))
 		playsound(loc, 'sound/foley/sewflesh.ogg', 100, TRUE, -2)
-		var/skill = ((user.mind.get_skill_level(/datum/skill/misc/sewing)) * 10)
-		var/sewtime = (60 - skill)
-		if(!do_after(user, sewtime, target = I))
+		var/skill_multiplied = (skill_level * 10)
+		var/sewtime = (6 SECONDS - skill_multiplied)
+		if(!do_after(user, sewtime, I))
 			return
-		if(prob(60 - skill)) //The more knowlegeable we are the less chance we damage the object
-			I.obj_integrity -= (60 - skill)
-			user.visible_message(span_info("[user] damages [I] due to a lack of skill!"))
-			playsound(src, 'sound/foley/cloth_rip.ogg', 50, TRUE)
-			user.mind.add_sleep_experience(/datum/skill/misc/sewing, (user.STAINT) / 2) // Only failing a repair teaches us something
-			return
-		else
-			playsound(loc, 'sound/foley/sewflesh.ogg', 50, TRUE, -2)
+		if((armor_value == 0 && skill_level > 0) || (armor_value > 0 && skill_level > 1)) //If not armor but skill level at least 1 or Armor and skill level at least 2
 			user.visible_message(span_info("[user] repairs [I]!"))
-			I.obj_integrity = min(I.obj_integrity + skill, I.max_integrity)
+			I.obj_integrity = min(I.obj_integrity + skill_multiplied, I.max_integrity)
+		else
+			if(prob(20 - user.STALUC)) //Unlucky here!
+				I.take_damage(150, BRUTE, "slash")
+				user.visible_message(span_warning("[user] was extremely unlucky and ruined [I] while futilely trying to repair it!"))
+				playsound(src, 'sound/foley/cloth_rip.ogg', 50, TRUE)
+			else if(prob(user.STALUC)) //Lucky here!
+				I.obj_integrity = min(I.obj_integrity + 50, I.max_integrity)
+				playsound(src, 'sound/magic/ahh2.ogg', 50, TRUE)
+				user.visible_message(span_info("A miracle! [user] somehow managed to repair [I] while not having a single clue what [user.p_they()] [user.p_were()] doing!"))
+			else
+				I.take_damage(50, BRUTE, "slash")
+				user.visible_message(span_warning("[user] damaged [I] due to a lack of skill!"))
+				playsound(src, 'sound/foley/cloth_rip.ogg', 50, TRUE)
+			user.mind.add_sleep_experience(/datum/skill/misc/sewing, (user.STAINT) / 2) // Only failing if we have no idea what we're doing
 		return
 	return ..()
 
@@ -138,7 +153,7 @@
 	while(!QDELETED(target_wound) && !QDELETED(src) && \
 		!QDELETED(user) && (target_wound.sew_progress < target_wound.sew_threshold) && \
 		stringamt >= 1)
-		if(!do_after(doctor, 20, target = patient))
+		if(!do_after(doctor, 2 SECONDS, patient))
 			break
 		playsound(loc, 'sound/foley/sewflesh.ogg', 100, TRUE, -2)
 		target_wound.sew_progress = min(target_wound.sew_progress + moveup, target_wound.sew_threshold)
@@ -170,5 +185,6 @@
 
 /obj/item/needle/blessed
 	name = "blessed needle"
-	desc = "<span class='hierophant'>A needle blessed by the ordained of the Church. A coveted item.</span>"
+	desc = "<span class='hierophant'>A needle blessed by the ordained prestrans of the Church. A coveted item.</span>"
 	infinite = TRUE
+	can_repair = FALSE

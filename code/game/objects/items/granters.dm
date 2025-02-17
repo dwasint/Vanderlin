@@ -12,7 +12,7 @@
 
 /obj/item/book/granter/proc/turn_page(mob/user)
 	playsound(user, pick('sound/blank.ogg'), 30, TRUE)
-	if(do_after(user,50, user))
+	if(do_after(user, 5 SECONDS))
 		if(remarks.len)
 			to_chat(user, "<span class='notice'>[pick(remarks)]</span>")
 		else
@@ -57,7 +57,7 @@
 			on_reading_stopped()
 			reading = FALSE
 			return
-	if(do_after(user,50, user))
+	if(do_after(user, 5 SECONDS))
 		on_reading_finished(user)
 		reading = FALSE
 	return TRUE
@@ -118,6 +118,9 @@
 //! --MAGICK SCROLLS-- !/
 
 /obj/item/book/granter/spell
+	grid_width = 64
+	grid_height = 32
+
 	var/spell
 	var/spellname = "conjure bugs"
 

@@ -5,7 +5,7 @@
 	fueluse = 60 MINUTES
 	bulb_colour = "#f9ad80"
 	bulb_power = 1
-	var/datum/looping_sound/soundloop = /datum/looping_sound/fireloop
+	var/datum/looping_sound/soundloop
 	pass_flags = LETPASSTHROW
 	flags_1 = NODECONSTRUCT_1
 	var/cookonme = FALSE
@@ -23,11 +23,7 @@
 	seton(TRUE)
 	. = ..()
 
-/obj/machinery/light/rogue/weather_trigger(W)
-	if(W==/datum/weather/rain)
-		START_PROCESSING(SSweather,src)
-
-/obj/machinery/light/rogue/OnCrafted(dirin)
+/obj/machinery/light/rogue/OnCrafted(dirin, mob/user)
 	. = ..()
 	can_damage = TRUE
 	burn_out()
@@ -90,14 +86,7 @@
 		update_icon()
 		if(soundloop)
 			soundloop.start()
-		addtimer(CALLBACK(src, PROC_REF(trigger_weather)), rand(5,20))
 		return TRUE
-
-/obj/proc/trigger_weather()
-	if(!QDELETED(src))
-		if(isturf(loc))
-			var/turf/T = loc
-			T.trigger_weather(src)
 
 /obj/machinery/light/rogue/Crossed(atom/movable/AM, oldLoc)
 	..()
@@ -128,7 +117,7 @@
 						prob2spoil = 1
 					user.visible_message("<span class='notice'>[user] starts to cook [W] over [src].</span>")
 					for(var/i in 1 to 6)
-						if(do_after(user, 30, target = src))
+						if(do_after(user, 30, src))
 							var/obj/item/reagent_containers/food/snacks/S = W
 							var/obj/item/C
 							if(prob(prob2spoil))
@@ -155,7 +144,9 @@
 		else
 			if(!on)
 				return
-		if (alert(usr, "Feed [W] to the fire?", "ROGUETOWN", "Yes", "No") != "Yes")
+		if (alert(usr, "Feed [W] to the fire?", "VANDERLIN", "Yes", "No") != "Yes")
+			return
+		if(!(W in user.held_items)|| !user.temporarilyRemoveItemFromInventory(W))
 			return
 		qdel(W)
 		user.visible_message("<span class='warning'>[user] feeds [W] to [src].</span>")

@@ -207,6 +207,9 @@
 		return
 	var/contents = "<center>People that [name] knows:</center><BR>"
 	for(var/P in known_people)
+		if(!length(known_people[P]))
+			known_people -= P
+			continue
 		var/fcolor = known_people[P]["VCOLOR"]
 		if(!fcolor)
 			continue
@@ -400,10 +403,11 @@
 		return
 	var/msg = ""
 	msg += span_info("*---------*\n")
-	for(var/i in shown_skills)
-		msg += "[i] - [SSskills.level_names[known_skills[i]]]\n"
+	for(var/datum/skill/S as anything in shown_skills)
+		var/skill_level = SSskills.level_names[known_skills[S]]
+		var/skill_link = "<a href='byond://?src=[REF(S)];action=examine'>?</a>"
+		msg += "[S] - [skill_level] [skill_link]\n"
 	to_chat(user, msg)
-
 
 /datum/mind/proc/set_death_time()
 	last_death = world.time
@@ -473,11 +477,12 @@
 				if(A.type == datum_type)
 					return A
 
-// Boolean. Returns true if the antag is actually "good", false otherwise.
+// Boolean. Returns true if all antag datums are actually "good", false otherwise.
 /datum/mind/proc/isactuallygood()
-	for(var/GG in antag_datums)
-		var/datum/antagonist/antaggy = GG
-		return antaggy.isgoodguy
+	var/is_good_guy = TRUE
+	for(var/datum/antagonist/GG in antag_datums)
+		is_good_guy &&= GG.isgoodguy
+	return is_good_guy
 
 
 /datum/mind/proc/equip_traitor(employer = "The Syndicate", silent = FALSE, datum/antagonist/uplink_owner)
@@ -527,12 +532,12 @@
 
 /datum/mind/proc/recall_targets(mob/recipient, window=1)
 	var/output = "<B>[recipient.real_name]'s Hitlist:</B><br>"
-	for (var/mob/living/carbon in world) // Iterate through all mobs in the world
+	for (var/mob/living/carbon in GLOB.mob_living_list) // Iterate through all mobs in the world
 		if ((carbon.real_name != recipient.real_name) && ((carbon.has_flaw(/datum/charflaw/hunted) || HAS_TRAIT(carbon, TRAIT_ZIZOID_HUNTED)) && (!istype(carbon, /mob/living/carbon/human/dummy))))//To be on the list they must be hunted, not be the user and not be a dummy (There is a dummy that has all vices for some reason)
 			output += "<br>[carbon.real_name]"
 			if (carbon.job)
 				output += " - [carbon.job]"
-	output += "<br>Your creed is blood, your faith is steel. You will not rest until these souls are yours. Use the profane dagger."
+	output += "<br>Your creed is blood, your faith is steel. You will not rest until these souls are yours. Use the profane dagger to trap their souls for Graggar."
 
 	if(window)
 		recipient << browse(output,"window=memory")
@@ -686,13 +691,14 @@
 		obj_count++
 
 
-/datum/mind/proc/AddSpell(obj/effect/proc_holder/spell/S)
+/datum/mind/proc/AddSpell(obj/effect/proc_holder/spell/S, silent = TRUE)
 	if(!S)
 		return
 	if(has_spell(S))
 		return
 	spell_list += S
-	to_chat(current, "<span class='boldnotice'>I have learned a new spell: [S]</span>")
+	if(!silent)
+		to_chat(current, "<span class='boldnotice'>I have learned a new spell: [S]</span>")
 	S.action.Grant(current)
 
 /datum/mind/proc/check_learnspell(obj/effect/proc_holder/spell/S)
@@ -824,8 +830,14 @@
 	var/mob/living/carbon/human/H = current
 	if(!istype(H))
 		return 1
-	var/boon = H.age == AGE_OLD ? 0.8 : 1 // Can't teach an old dog new tricks. Most old jobs start with higher skill too.
+	var/boon = 1 // Can't teach an old dog new tricks. Most old jobs start with higher skill too.
+	if(H.age == AGE_OLD)
+		boon = 0.8
+	else if(H.age == AGE_CHILD)
+		boon = 1.1
 	boon += get_skill_level(skill) / 10
+	if(HAS_TRAIT(H, TRAIT_TUTELAGE)) //5% boost for being a good teacher
+		boon += 0.05
 	return boon
 
 /datum/mind/proc/add_sleep_experience(skill, amt, silent = FALSE, check_apprentice = TRUE)
@@ -841,6 +853,10 @@
 				multiplier = apprentice_training_skills[skill]
 			if(apprentice.mind.get_skill_level(skill) <= (get_skill_level(skill) - 1))
 				multiplier += 0.25 //this means a base 35% of your xp is also given to nearby apprentices plus skill modifiers.
+			if(ishuman(current))
+				var/mob/living/carbon/human/H = current
+				if(HAS_TRAIT(H, TRAIT_TUTELAGE)) //Base 50% of your xp is given to nearby apprentice
+					multiplier += 0.15
 			var/apprentice_amt = amt * 0.1 + multiplier
 			if(apprentice.mind.add_sleep_experience(skill, apprentice_amt, FALSE, FALSE))
 				current.add_stress(/datum/stressevent/apprentice_making_me_proud)
@@ -852,16 +868,26 @@
 		return
 	if(length(apprentices) >= max_apprentices)
 		return
+	if(current.stat >= UNCONSCIOUS || youngling.stat >= UNCONSCIOUS)
+		return
 
 	var/choice = input(youngling, "Do you wish to become [current.name]'s apprentice?") as anything in list("Yes", "No")
 	if(choice != "Yes")
+		to_chat(current, span_warning("[youngling] has rejected your apprenticeship!"))
+		return
+	if(length(apprentices) >= max_apprentices)
+		return
+	if(current.stat >= UNCONSCIOUS || youngling.stat >= UNCONSCIOUS)
 		return
 	apprentices |= WEAKREF(youngling)
 	youngling.mind.apprentice = TRUE
 
 	var/datum/job/J = SSjob.GetJob(current:job)
-	var/title = "[J.title] Apprentice"
-	if(apprentice_name)
+	var/title = "[J.title]"
+	if(youngling.gender == FEMALE && J.f_title)
+		title = "[J.f_title]"
+	title += " Apprentice"
+	if(apprentice_name) //Needed for advclassses
 		title = apprentice_name
-	youngling.mind.our_apprentice_name = "[current.name]'s [title]"
-	to_chat(current, span_notice("[youngling.name] has become your apprentice."))
+	youngling.mind.our_apprentice_name = "[current.real_name]'s [title]"
+	to_chat(current, span_notice("[youngling.real_name] has become your apprentice."))

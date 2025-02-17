@@ -16,7 +16,7 @@
 /datum/stressevent/viewdismembermaniac
 	timer = 2 MINUTES
 	stressadd = -1
-	desc = span_green("I've limbs fly. Hehe...")
+	desc = span_green("I saw limbs fly. Hehe...")
 
 /datum/stressevent/viewgibmaniac
 	timer = 2 MINUTES
@@ -26,7 +26,7 @@
 /datum/stressevent/viewexecution
 	timer = 5 MINUTES
 	stressadd = -2
-	desc = span_green("I saw a lawbreaker get punished!")
+	desc = span_green("Nice civilized entertainment.")
 
 /datum/stressevent/psyprayer
 	timer = 30 MINUTES
@@ -110,39 +110,40 @@
 
 /datum/stressevent/music
 	timer = 1 MINUTES
+	stressadd = 0 // you suck at music
+	desc = span_green("This music is pleasant.")
+
+/datum/stressevent/music/two
 	stressadd = -1
 	desc = span_green("This music is relaxing.")
 
-/datum/stressevent/music/two
-	stressadd = -2
-	desc = span_green("This music is very relaxing.")
-
 /datum/stressevent/music/three
-	stressadd = -3
-	desc = span_green("This music saps my stress.")
-
-/datum/stressevent/music/four
-	stressadd = -4
-	desc = span_green("This music is heavenly.")
-	timer = 10 MINUTES
-
-/datum/stressevent/music/five
-	stressadd = -5
-	timer = 10 MINUTES
+	stressadd = -2
 	desc = span_green("This music is wonderful.")
 
-/datum/stressevent/music/six
-	stressadd = -6
-	timer = 10 MINUTES
+/datum/stressevent/music/four
+	stressadd = -3
 	desc = span_green("This music is exceptional.")
+
+/datum/stressevent/music/five
+	stressadd = -4
+	desc = span_green("This music is enchanting.")
+
+/datum/stressevent/music/six
+	stressadd = -5
+	desc = span_green("This music is divine.")
+
+/datum/stressevent/eora
+	stressadd = -4
+	timer = INFINITY
+	desc = span_boldgreen("Eora brings me peace.")
 
 // Bard buffs below
 
 /datum/stressevent/bardicbuff
 	timer = 1 MINUTES
 	desc = span_nicegreen("Bardic inspiration moves mine soul even more!\n")
-	stressadd = -2
-	timer = 10 MINUTES
+	stressadd = -1
 
 /datum/stressevent/vblood
 	stressadd = -5
@@ -178,11 +179,11 @@
 	timer = 10 MINUTES
 
 /datum/stressevent/divine_beauty
-	stressadd = -5
-	desc = span_green("A soothing fragrance envelops me, and I feel clean as a whistle.")
+	stressadd = -2
+	desc = span_green("I feel touched by a divine beauty.")
 	timer = 5 MINUTES
 
 /datum/stressevent/apprentice_making_me_proud
 	timer = 5 MINUTES
 	stressadd = -3
-	desc = span_green("My apprentice is getting better.")
+	desc = span_green("My apprentice is improving, all thanks to me!")

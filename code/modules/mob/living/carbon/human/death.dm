@@ -89,17 +89,18 @@
 
 		var/yeae = TRUE
 		if(buckled)
-			if(istype(buckled, /obj/structure/fluff/psycross))
-				if(real_name in GLOB.excommunicated_players)
+			if(istype(buckled, /obj/structure/fluff/psycross) || istype(buckled, /obj/machinery/light/rogue/campfire/pyre))
+				if((real_name in GLOB.excommunicated_players) || (real_name in GLOB.heretical_players))
 					yeae = FALSE
 					tris2take += -2
 				if(real_name in GLOB.outlawed_players)
 					yeae = FALSE
-
+		if(istype(src, /mob/living/carbon/human/species/skeleton/death_arena))
+			tris2take = 0
 		if(tris2take)
 			adjust_triumphs(tris2take)
 		else
-			if(get_triumphs() > 0)
+			if(!istype(src, /mob/living/carbon/human/species/skeleton/death_arena) && get_triumphs() > 0)
 				adjust_triumphs(-1)
 
 		if(job == "Monarch")
@@ -111,9 +112,9 @@
 		if(yeae)
 			if(mind)
 				if((mind.assigned_role == "Monarch"))
-					addomen("nolord")			// Re-adding at Ook's request.
+					addomen(OMEN_NOLORD)			// Re-adding at Ook's request.
 				if(mind.assigned_role == "Priest")
-					addomen("importantdeath")	// message changed to reflect only priest for now, change it if more roles added. (Priest dying causes Bad Omen)
+					addomen(OMEN_NOPRIEST)	// message changed to reflect only priest for now, change it if more roles added. (Priest dying causes Bad Omen)
 
 		if(!gibbed && yeae)
 			for(var/mob/living/carbon/human/HU in viewers(7, src))
@@ -170,3 +171,14 @@
 				continue
 			V.add_stress(/datum/stressevent/viewgib)
 	. = ..()
+
+/mob/living/carbon/human/revive(full_heal, admin_revive)
+	. = ..()
+	if(!.)
+		return
+	var/datum/job/human_job = SSjob.GetJob(job)
+	switch(human_job.type)
+		if(/datum/job/roguetown/lord)
+			removeomen(OMEN_NOLORD)
+		if(/datum/job/roguetown/priest)
+			removeomen(OMEN_NOPRIEST)

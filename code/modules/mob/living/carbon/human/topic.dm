@@ -16,22 +16,16 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 				msg += "[bodypart] is healthy."
 		else
 			msg += "<B>[capitalize(parse_zone(checked_zone))]:</B>"
-			msg += "<span class='dead'>Limb is missing!</span>"
-		to_chat(usr, "<span class='info'>[msg.Join("\n")]</span>")
+			msg += span_dead("Limb is missing!")
+		to_chat(usr, span_info("[msg.Join("\n")]"))
 
-	if(href_list["check_hb"])
-		if(isobserver(usr))
-			if(stat == DEAD)
-				to_chat(usr, "<span class='info'><B>No heartbeat...</B></span>")
-			else
-				to_chat(usr, "<span class='info'><B>The heart is still beating.</B></span>")
-		else if(Adjacent(usr) && usr.canUseTopic(src, BE_CLOSE, NO_DEXTERITY))
-			usr.visible_message("<span class='info'>[usr] tries to hear [src]'s heartbeat.</span>")
-			if(do_after(usr, 30, needhand = 1, target = src))
-				if(stat == DEAD)
-					to_chat(usr, "<span class='info'><B>No heartbeat...</B>")
-				else
-					to_chat(usr, "<span class='info'><B>The heart is still beating.</B></span>")
+	if(href_list["check_hb"] && (isobserver(usr) || usr.canUseTopic(src, BE_CLOSE, NO_DEXTERITY)))
+		if(!isobserver(usr))
+			usr.visible_message(span_info("[usr] tries to hear [src]'s heartbeat."))
+			if(!do_after(usr, 3 SECONDS, src))
+				return
+		var/list/following_my_heart = check_heartbeat(usr)
+		to_chat(usr, span_info("[following_my_heart.Join("\n")]"))
 
 	if(href_list["embedded_object"] && usr.canUseTopic(src, BE_CLOSE, NO_DEXTERITY))
 		var/obj/item/bodypart/L = locate(href_list["embedded_limb"]) in bodyparts
@@ -42,10 +36,10 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 			return
 		var/time_taken = I.embedding.embedded_unsafe_removal_time*I.w_class
 		if(usr == src)
-			usr.visible_message("<span class='warning'>[usr] attempts to remove [I] from [usr.p_their()] [L.name].</span>","<span class='warning'>I attempt to remove [I] from my [L.name]...</span>")
+			usr.visible_message(span_warning("[usr] attempts to remove [I] from [usr.p_their()] [L.name]."),span_warning("I attempt to remove [I] from my [L.name]..."))
 		else
-			usr.visible_message("<span class='warning'>[usr] attempts to remove [I] from [src]'s [L.name].</span>","<span class='warning'>I attempt to remove [I] from [src]'s [L.name]...</span>")
-		if(do_after(usr, time_taken, needhand = TRUE, target = src))
+			usr.visible_message(span_warning("[usr] attempts to remove [I] from [src]'s [L.name]."),span_warning("I attempt to remove [I] from [src]'s [L.name]..."))
+		if(do_after(usr, time_taken, src))
 			if(QDELETED(I) || QDELETED(L) || !L.remove_embedded_object(I))
 				return
 			L.receive_damage(I.embedding.embedded_unsafe_removal_pain_multiplier*I.w_class)//It hurts to rip it out, get surgery you dingus.
@@ -53,9 +47,9 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 			emote("pain", TRUE)
 			playsound(loc, 'sound/foley/flesh_rem.ogg', 100, TRUE, -2)
 			if(usr == src)
-				usr.visible_message("<span class='notice'>[usr] rips [I] out of [usr.p_their()] [L.name]!</span>", "<span class='notice'>I successfully remove [I] from my [L.name].</span>")
+				usr.visible_message(span_notice("[usr] rips [I] out of [usr.p_their()] [L.name]!"), span_notice("I successfully remove [I] from my [L.name]."))
 			else
-				usr.visible_message("<span class='notice'>[usr] rips [I] out of [src]'s [L.name]!</span>", "<span class='notice'>I successfully remove [I] from [src]'s [L.name].</span>")
+				usr.visible_message(span_notice("[usr] rips [I] out of [src]'s [L.name]!"), span_notice("I successfully remove [I] from [src]'s [L.name]."))
 
 	if(href_list["bandage"] && usr.canUseTopic(src, BE_CLOSE, NO_DEXTERITY))
 		var/obj/item/bodypart/L = locate(href_list["bandaged_limb"]) in bodyparts
@@ -65,10 +59,10 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 		if(!I)
 			return
 		if(usr == src)
-			usr.visible_message("<span class='warning'>[usr] starts unbandaging [usr.p_their()] [L.name].</span>","<span class='warning'>I start unbandaging [L.name]...</span>")
+			usr.visible_message(span_warning("[usr] starts unbandaging [usr.p_their()] [L.name]."),span_warning("I start unbandaging [L.name]..."))
 		else
-			usr.visible_message("<span class='warning'>[usr] starts unbandaging [src]'s [L.name].</span>","<span class='warning'>I start unbandaging [src]'s [L.name]...</span>")
-		if(do_after(usr, 50, needhand = TRUE, target = src))
+			usr.visible_message(span_warning("[usr] starts unbandaging [src]'s [L.name]."),span_warning("I start unbandaging [src]'s [L.name]..."))
+		if(do_after(usr, 5 SECONDS, src))
 			if(QDELETED(I) || QDELETED(L) || (L.bandage != I))
 				return
 			L.remove_bandage()
@@ -77,16 +71,16 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 	if(href_list["item"]) //canUseTopic check for this is handled by mob/Topic()
 		var/slot = text2num(href_list["item"])
 		if(slot in check_obscured_slots(TRUE))
-			to_chat(usr, "<span class='warning'>I can't reach that! Something is covering it.</span>")
+			to_chat(usr, span_warning("I can't reach that! Something is covering it."))
 			return
 
 	if(href_list["undiesthing"]) //canUseTopic check for this is handled by mob/Topic()
 		if(!get_location_accessible(src, BODY_ZONE_PRECISE_GROIN, skipundies = TRUE))
-			to_chat(usr, "<span class='warning'>I can't reach that! Something is covering it.</span>")
+			to_chat(usr, span_warning("I can't reach that! Something is covering it."))
 			return
 		if(underwear == "Nude")
 			return
-		if(do_after(usr, 50, needhand = 1, target = src))
+		if(do_after(usr, 5 SECONDS, src))
 			cached_underwear = underwear
 			underwear = "Nude"
 			update_body()
@@ -109,15 +103,15 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 		var/delay_denominator = 1
 		if(pocket_item && !(pocket_item.item_flags & ABSTRACT))
 			if(HAS_TRAIT(pocket_item, TRAIT_NODROP))
-				to_chat(usr, "<span class='warning'>I try to empty [src]'s [pocket_side] pocket, it seems to be stuck!</span>")
-			to_chat(usr, "<span class='notice'>I try to empty [src]'s [pocket_side] pocket.</span>")
+				to_chat(usr, span_warning("I try to empty [src]'s [pocket_side] pocket, it seems to be stuck!"))
+			to_chat(usr, span_notice("I try to empty [src]'s [pocket_side] pocket."))
 		else if(place_item && place_item.mob_can_equip(src, usr, pocket_id, 1) && !(place_item.item_flags & ABSTRACT))
-			to_chat(usr, "<span class='notice'>I try to place [place_item] into [src]'s [pocket_side] pocket.</span>")
+			to_chat(usr, span_notice("I try to place [place_item] into [src]'s [pocket_side] pocket."))
 			delay_denominator = 4
 		else
 			return
 
-		if(do_mob(usr, src, POCKET_STRIP_DELAY/delay_denominator)) //placing an item into the pocket is 4 times faster
+		if(do_after(usr, POCKET_STRIP_DELAY/delay_denominator, src)) //placing an item into the pocket is 4 times faster
 			if(pocket_item)
 				if(pocket_item == (pocket_id == SLOT_R_STORE ? r_store : l_store)) //item still in the pocket we search
 					dropItemToGround(pocket_item)
@@ -130,5 +124,28 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 				//updating inv screen after handled by living/Topic()
 		else
 			// Display a warning if the user mocks up
-			to_chat(src, "<span class='warning'>I feel your [pocket_side] pocket being fumbled with!</span>")
+			to_chat(src, span_warning("I feel your [pocket_side] pocket being fumbled with!"))
 	return ..() //end of this massive fucking chain. TODO: make the hud chain not spooky. - Yeah, great job doing that.
+
+/mob/living/proc/check_heartbeat(mob/user)
+	var/list/message = list()
+	if(stat >= DEAD)
+		message += "<B>No heartbeat...</B>"
+	else
+		message += "<B>The heart is still beating.</B>"
+	var/list/soul_message = soul_examine(user)
+	if(soul_message)
+		message += soul_message
+	return message
+
+/mob/living/proc/soul_examine(mob/user)
+	var/list/message = list()
+	if(stat >= DEAD)
+		if(suiciding)
+			message += span_deadsay("[p_they(TRUE)] commited suicide... Nothing can be done...")
+		if(isobserver(user) || HAS_TRAIT(user, TRAIT_SOUL_EXAMINE))
+			if(!key && !get_ghost(TRUE))
+				message += span_deadsay("[p_their(TRUE)] soul has departed for the Underworld.")
+			else
+				message += span_deadsay("[p_they(TRUE)] [p_are()] still earthbound.")
+	return message

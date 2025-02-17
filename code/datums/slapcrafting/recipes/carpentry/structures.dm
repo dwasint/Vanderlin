@@ -48,6 +48,7 @@
 		/datum/slapcraft_step/use_item/carpentry/hammer/second
 		)
 	result_type = /obj/structure/mineral_door/wood/donjon
+	craftdiff = 2
 
 /datum/slapcraft_recipe/carpentry/structure/fancydoor
 	name = "fancy wooden door"
@@ -57,6 +58,7 @@
 		/datum/slapcraft_step/use_item/carpentry/hammer
 		)
 	result_type = /obj/structure/mineral_door/wood/fancywood
+	craftdiff = 3
 
 /datum/slapcraft_recipe/carpentry/structure/roguebin
 	name = "wooden bin"
@@ -67,16 +69,7 @@
 		/datum/slapcraft_step/use_item/carpentry/hammer/second
 		)
 	result_type = /obj/item/roguebin
-
-/datum/slapcraft_recipe/carpentry/structure/dye_bin
-	name = "dye bin"
-	steps = list(
-		/datum/slapcraft_step/item/small_log,
-		/datum/slapcraft_step/use_item/carpentry/hammer,
-		/datum/slapcraft_step/item/jacksberry,
-		/datum/slapcraft_step/item/dirtclod
-		)
-	result_type = /obj/machinery/simple_dye_bin
+	craftdiff = 0
 
 /datum/slapcraft_recipe/carpentry/structure/chair
 	name = "wooden chair"
@@ -102,6 +95,7 @@
 		/datum/slapcraft_step/item/silk
 		)
 	result_type = /obj/structure/chair/wood/rogue/fancy/crafted
+	craftdiff = 2
 
 /obj/structure/chair/wood/rogue/fancy/crafted
 	item_chair = /obj/item/chair/rogue/fancy/crafted
@@ -166,8 +160,6 @@
 /datum/slapcraft_recipe/carpentry/structure/noose/check_craft_requirements(mob/user, turf/T)
 	var/turf/checking = get_step_multiz(T, UP)
 	if(!checking)
-		return FALSE
-	if(!isopenturf(checking))
 		return FALSE
 	if(istype(checking,/turf/open/transparent/openspace))
 		return FALSE
@@ -405,3 +397,48 @@
 		)
 	result_type = /obj/structure/table/wood/crafted
 	craftdiff = 0
+
+/datum/slapcraft_recipe/carpentry/structure/pillory
+	name = "pillory"
+	steps = list(
+		/datum/slapcraft_step/item/small_log,
+		/datum/slapcraft_step/item/iron,
+		/datum/slapcraft_step/use_item/carpentry/hammer,
+		/datum/slapcraft_step/item/lock,
+		/datum/slapcraft_step/use_item/carpentry/hammer/second,
+		)
+	result_type = /obj/structure/pillory
+	craftdiff = 2
+
+/datum/slapcraft_recipe/carpentry/structure/easel
+	name = "wooden easel"
+	steps = list(
+		/datum/slapcraft_step/item/small_log,
+		/datum/slapcraft_step/item/stick,
+		/datum/slapcraft_step/item/stick/second,
+		/datum/slapcraft_step/use_item/carpentry/hammer
+		)
+	result_type = /obj/structure/easel
+
+/datum/slapcraft_recipe/carpentry/structure/optable
+	name = "operating table"
+	steps = list(
+		/datum/slapcraft_step/item/plank,
+		/datum/slapcraft_step/use_item/carpentry/hammer,
+		/datum/slapcraft_step/item/plank/second,
+		/datum/slapcraft_step/use_item/carpentry/hammer/second,
+		)
+	result_type = /obj/structure/table/optable
+	craftdiff = 2
+
+/datum/slapcraft_recipe/carpentry/structure/meathook
+	name = "meathook"
+	steps = list(
+		/datum/slapcraft_step/item/plank,
+		/datum/slapcraft_step/item/small_log,
+		/datum/slapcraft_step/use_item/carpentry/hammer,
+		/datum/slapcraft_step/item/stone,
+		/datum/slapcraft_step/use_item/carpentry/hammer/second,
+		)
+	result_type = /obj/structure/meathook
+	craftdiff = 1

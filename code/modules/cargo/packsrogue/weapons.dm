@@ -35,12 +35,12 @@
 
 /datum/supply_pack/rogue/weapons/huntingknife
 	name = "Iron Hunting Knife"
-	cost = 12
+	cost = 10
 	contains = /obj/item/rogueweapon/knife/hunting
 
 /datum/supply_pack/rogue/weapons/dagger
 	name = "Iron Dagger"
-	cost = 10
+	cost = 12
 	contains = /obj/item/rogueweapon/knife/dagger
 
 /datum/supply_pack/rogue/weapons/spear
@@ -100,17 +100,17 @@
 /datum/supply_pack/rogue/weapons/quivers
 	name = "Empty Quiver"
 	cost = 8
-	contains = /obj/item/quiver
+	contains = /obj/item/ammo_holder/quiver
 
 /datum/supply_pack/rogue/weapons/arrowquiver
 	name = "Quiver of Arrows"
 	cost = 40
-	contains = /obj/item/quiver/arrows
+	contains = /obj/item/ammo_holder/quiver/arrows
 
 /datum/supply_pack/rogue/weapons/boltquiver
 	name = "Quiver of Bolts"
 	cost = 60
-	contains = /obj/item/quiver/bolts
+	contains = /obj/item/ammo_holder/quiver/bolts
 
 /datum/supply_pack/rogue/weapons/arrows
 	name = "Arrow"

@@ -9,7 +9,7 @@
 
 //This is the ABSOLUTE ONLY THING that should init globally like this
 //2019 update: the failsafe,config and Global controllers also do it
-GLOBAL_REAL(Master, /datum/controller/master) = new
+GLOBAL_REAL(Master, /datum/controller/master)
 
 //THIS IS THE INIT ORDER
 //Master -> SSPreInit -> GLOB -> world -> config -> SSInit -> Failsafe
@@ -219,6 +219,8 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	to_chat(world, "<span class='boldannounce'>[msg]</span>")
 #endif
 	log_world(msg)
+
+	SSplexora.serverinitdone(time)
 
 	if (!current_runlevel)
 		SetRunLevel(1)

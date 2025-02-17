@@ -3,13 +3,14 @@
 	icon = 'icons/roguetown/misc/forge.dmi'
 	name = "anvil"
 	icon_state = "anvil"
-	var/hott = null
+	var/hott = 0
 	var/obj/item/ingot/hingot
 	max_integrity = 2000
 	density = TRUE
 	damage_deflection = 25
 	climbable = TRUE
 	var/previous_material_quality = 0
+	var/cool_time = 10 SECONDS
 
 /obj/machinery/anvil/crafted
 	icon_state = "caveanvil"
@@ -24,14 +25,17 @@
 		var/obj/item/rogueweapon/tongs/T = W
 		if(hingot)
 			if(T.hingot)
-				..()
+				if(hingot.currecipe && hingot.currecipe.needed_item && istype(T.hingot, hingot.currecipe.needed_item))
+					hingot.currecipe.item_added(user)
+					qdel(T.hingot)
+					T.hingot = null
+					T.update_icon()
+					update_icon()
 				return
 			else
 				hingot.forceMove(T)
 				T.hingot = hingot
 				hingot = null
-				T.hott = null
-				hott = null
 				T.update_icon()
 				update_icon()
 				return
@@ -51,7 +55,7 @@
 		if(!hingot)
 			W.forceMove(src)
 			hingot = W
-			hott = null
+			hott = 0
 			update_icon()
 			return
 
@@ -131,6 +135,8 @@
 
 	var/list/valid_types = list()
 	for(var/datum/anvil_recipe/R in GLOB.anvil_recipes)
+		if(is_abstract(R.type)) //these recipes are initialized
+			continue
 		if(istype(hingot, R.req_bar))
 			if(!valid_types.Find(R.i_type))
 				valid_types += R.i_type
@@ -144,6 +150,8 @@
 
 	var/list/appro_recipe = list()
 	for(var/datum/anvil_recipe/R in GLOB.anvil_recipes)
+		if(is_abstract(R.type))
+			continue
 		if(R.i_type == i_type_choice && istype(hingot, R.req_bar))
 			appro_recipe += R
 
@@ -178,8 +186,8 @@
 
 /obj/machinery/anvil/process()
 	if(hott)
-		if(world.time > hott + 10 SECONDS)
-			hott = null
+		if(world.time > hott + cool_time)
+			hott = 0
 			STOP_PROCESSING(SSmachines, src)
 	else
 		STOP_PROCESSING(SSmachines, src)

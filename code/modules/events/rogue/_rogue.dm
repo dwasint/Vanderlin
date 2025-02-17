@@ -15,26 +15,35 @@ GLOBAL_LIST_INIT(badomens, list())
 	if(!name)
 		return FALSE
 
+/proc/hasomen(input)
+	return (input in GLOB.badomens)
+
 /proc/addomen(input)
 	if(!(input in GLOB.badomens))
 		testing("Omen added: [input]")
 		GLOB.badomens += input
 
+/proc/removeomen(input)
+	if(!hasomen(input))
+		return
+	testing("Omen removed: [input]")
+	GLOB.badomens -= input
+
 /datum/round_event_control/proc/badomen(eventreason)
 	var/used
 	switch(eventreason)
-		if("roundstart")
-			used = "Zizo."
-		if("importantdeath")
+		if(OMEN_ROUNDSTART)
+			used = "Zizo's apocalypse brings death to the land once more."
+		if(OMEN_NOPRIEST)
 			used = "The Priest has perished! The Ten are weakened..."
-		if("skellysiege")
-			used = "Unwelcome visitors!"
-		if("nolord")
-			used = "The Monarch is dead! We need a new ruler."
-		if("sunsteal")
-			used = "The Sun, she is wounded!"
-		if("ascend")
-			used = "Zizo will rise once again."
+		if(OMEN_SKELETONSIEGE)
+			used = "Unwelcome visitors invade our lands!"
+		if(OMEN_NOLORD)
+			used = "The Monarch has been slain! Our town is at the mercy of invaders."
+		if(OMEN_SUNSTEAL)
+			used = "The Sun is wounded! Astrata falls silent across the land!"
+		if(OMEN_ASCEND)
+			used = "Zizo has risen again! Make peace with your god for not even they can save you!"
 	if(eventreason && used)
 		priority_announce(used, "Bad Omen", 'sound/misc/evilevent.ogg')
 

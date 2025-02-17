@@ -177,7 +177,7 @@
 /obj/item/rogueweapon/polearm/woodstaff/aries
 	force_wielded =  DAMAGE_STAFF_WIELD+1
 	name = "staff of the testimonium"
-	desc = "A symbolic staff, granted to graduating acolyte's who have achieved and bear witnessed to the miracles of the Gods."
+	desc = "A symbolic staff, granted to enlightened acolytes who have achieved and bear witnessed to the miracles of the Gods."
 	icon_state = "aries"
 	resistance_flags = FIRE_PROOF // Leniency for unique items
 	dropshrink = 0.6
@@ -188,7 +188,7 @@
 /obj/item/rogueweapon/polearm/spear
 	force = DAMAGE_SPEAR
 	force_wielded = DAMAGE_SPEAR_WIELD
-	throwforce = DAMAGE_SPEAR_WIELD
+	throwforce = DAMAGE_SPEAR
 	possible_item_intents = list(SPEAR_THRUST, POLEARM_BASH) //bash is for nonlethal takedowns, only targets limbs
 	gripped_intents = list(POLEARM_THRUST, SPEAR_CUT, POLEARM_BASH)
 	name = "spear"
@@ -199,7 +199,7 @@
 	smeltresult = /obj/item/ingot/iron
 	dropshrink = 0.8
 	thrown_bclass = BCLASS_STAB
-	sellprice = 20
+	sellprice = 22
 
 /obj/item/rogueweapon/polearm/spear/getonmobprop(tag)
 	. = ..()
@@ -256,6 +256,8 @@
 	smeltresult = /obj/item/ingot/copper
 	dropshrink = 0.9
 	sellprice = 15
+	throw_speed = 3
+	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 50, "embedded_fall_chance" = 0, "embedded_ignore_throwspeed_threshold" = 1)
 
 /obj/item/rogueweapon/polearm/spear/stone/copper/getonmobprop(tag)
 	. = ..()
@@ -423,14 +425,15 @@
 	throwforce = 25
 	sellprice = 10
 
-/obj/item/rogueweapon/spear/bonespear
+/obj/item/rogueweapon/polearm/spear/bonespear
 	force = 18
 	force_wielded = 22
 	name = "bone spear"
-	desc = "A spear made of bones..."
-	icon_state = "bonespear"
-	pixel_y = -16
-	pixel_x = -16
+	desc = "A spear made of bones."
+	// icon_state = "bonespear"
+	icon_state = "stonespear_sk"
+	// pixel_y = -16
+	// pixel_x = -16
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
 	bigboy = TRUE

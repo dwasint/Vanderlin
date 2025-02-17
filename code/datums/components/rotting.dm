@@ -51,7 +51,11 @@
 		if(is_zombie)
 			var/datum/antagonist/zombie/Z = C.mind.has_antag_datum(/datum/antagonist/zombie)
 			if(Z && !Z.has_turned && !Z.revived && C.stat == DEAD)
-				Z.wake_zombie()
+				if(istype(C.loc, /obj/structure/closet/dirthole) || istype(C.loc, /obj/structure/closet/crate/coffin))
+					if(amount > 3 MINUTES)
+						Z.wake_zombie()
+				else
+					Z.wake_zombie()
 
 	var/findonerotten = FALSE
 	var/shouldupdate = FALSE
@@ -75,7 +79,7 @@
 					findonerotten = TRUE
 	if(findonerotten)
 		var/turf/open/T = C.loc
-		if(istype(T))
+		if(istype(T) && amount < 16 MINUTES)
 			T.pollute_turf(/datum/pollutant/rot, 50)
 			if(soundloop && soundloop.stopped && !is_zombie)
 				soundloop.start()
@@ -105,7 +109,7 @@
 		if(soundloop && soundloop.stopped)
 			soundloop.start()
 		var/turf/open/T = get_turf(L)
-		if(istype(T))
+		if(istype(T)  && amount < 16 MINUTES)
 			T.pollute_turf(/datum/pollutant/rot, 50)
 	if(amount > 20 MINUTES)
 		qdel(R)

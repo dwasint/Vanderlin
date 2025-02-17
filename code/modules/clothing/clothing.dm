@@ -23,8 +23,6 @@
 	var/visor_flags_cover = 0	//same as above, but for flags_cover
 //what to toggle when toggled with weldingvisortoggle()
 	var/visor_vars_to_toggle = VISOR_FLASHPROTECT | VISOR_TINT | VISOR_VISIONFLAGS | VISOR_DARKNESSVIEW | VISOR_INVISVIEW
-	lefthand_file = 'icons/mob/inhands/clothing_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/clothing_righthand.dmi'
 	var/alt_desc = null
 	var/toggle_message = null
 	var/alt_toggle_message = null
@@ -148,7 +146,7 @@
 			if(r_sleeve_status == SLEEVE_TORN)
 				to_chat(user, span_info("It's torn away."))
 				return
-			if(!do_after(user, 20, target = user))
+			if(!do_after(user, 2 SECONDS, user))
 				return
 			if(prob(L.STASTR * 8))
 				torn_sleeve_number += 1
@@ -175,7 +173,7 @@
 			if(l_sleeve_status == SLEEVE_TORN)
 				to_chat(user, span_info("It's torn away."))
 				return
-			if(!do_after(user, 20, target = user))
+			if(!do_after(user, 2 SECONDS, user))
 				return
 			if(prob(L.STASTR * 8))
 				torn_sleeve_number += 1
@@ -233,6 +231,8 @@
 	var/mob/M = usr
 
 	if(!M.incapacitated() && loc == M && istype(over_object, /atom/movable/screen/inventory/hand))
+		if(!allow_attack_hand_drop(M))
+			return
 		var/atom/movable/screen/inventory/hand/H = over_object
 		if(M.putItemFromInventoryInHandIfPossible(src, H.held_index))
 			add_fingerprint(usr)
@@ -240,6 +240,19 @@
 /obj/item/clothing/Destroy()
 	user_vars_remembered = null //Oh god somebody put REFERENCES in here? not to worry, we'll clean it up
 	return ..()
+
+/obj/item/clothing/attack(mob/living/M, mob/living/user, def_zone)
+	if(M.on_fire)
+		if(user == M)
+			return
+		user.changeNext_move(CLICK_CD_MELEE)
+		M.visible_message(span_warning("[user] pats out the flames on [M] with [src]!"))
+		M.adjust_divine_fire_stacks(-2)
+		if(M.fire_stacks > 0)
+			M.adjust_fire_stacks(-2)
+		take_damage(10, BURN, "fire")
+	else
+		return ..()
 
 /obj/item/clothing/dropped(mob/user)
 	..()

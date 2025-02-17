@@ -8,6 +8,48 @@
 	sewrepair = TRUE
 	anvilrepair = null
 
+/obj/item/clothing/mask/rogue/goggles
+	name = "goggles"
+	icon_state = "artigoggles"
+	desc = "Protective goggles with green lenses. Perfect for staring into fires."
+	resistance_flags = FIRE_PROOF
+	slot_flags = list(ITEM_SLOT_HEAD, ITEM_SLOT_MASK)
+	body_parts_covered = EYES
+	toggle_icon_state = TRUE
+	adjustable = CAN_CADJUST
+
+/obj/item/clothing/mask/rogue/goggles/AdjustClothes(mob/user)
+	if(loc == user)
+		if(adjustable == CAN_CADJUST)
+			adjustable = CADJUSTED
+			if(toggle_icon_state)
+				icon_state = "[initial(icon_state)]_t"
+			flags_inv = null
+			body_parts_covered = EYES
+			REMOVE_TRAIT(user, TRAIT_ENGINEERING_GOGGLES, "[ref(src)]")
+			if(ishuman(user))
+				var/mob/living/carbon/H = user
+				H.update_inv_wear_mask()
+				H.update_inv_head()
+		else if(adjustable == CADJUSTED)
+			ResetAdjust(user)
+			ADD_TRAIT(user, TRAIT_ENGINEERING_GOGGLES, "[ref(src)]")
+			if(user)
+				if(ishuman(user))
+					var/mob/living/carbon/H = user
+					H.update_inv_wear_mask()
+					H.update_inv_head()
+
+/obj/item/clothing/mask/rogue/goggles/dropped(mob/user)
+	. = ..()
+	REMOVE_TRAIT(user, TRAIT_ENGINEERING_GOGGLES, "[ref(src)]")
+
+/obj/item/clothing/mask/rogue/goggles/equipped(mob/user, slot)
+	. = ..()
+	if(slot == SLOT_WEAR_MASK)
+		if(adjustable == CAN_CADJUST)
+			ADD_TRAIT(user, TRAIT_ENGINEERING_GOGGLES, "[ref(src)]")
+
 /obj/item/clothing/mask/rogue/spectacles
 	name = "spectacles"
 	icon_state = "glasses"
@@ -103,11 +145,15 @@
 	toggle_icon_state = TRUE
 	experimental_onhip = TRUE
 
+/obj/item/clothing/mask/rogue/facemask/prisoner
+	clothing_flags = NONE //they're used to this being stuck on their face
+
 /obj/item/clothing/mask/rogue/facemask/prisoner/Initialize()
 	. = ..()
 	name = "cursed mask"
 	desc = "We are often criminals in the eyes of the earth, not only for having committed crimes, but because we know that crimes have been committed."
 	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
+	flags_inv = HIDEFACIALHAIR //so prisoners can actually be identified
 
 /obj/item/clothing/mask/rogue/facemask/prisoner/dropped(mob/living/carbon/human/user)
 	. = ..()

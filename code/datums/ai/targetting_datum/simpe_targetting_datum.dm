@@ -26,12 +26,17 @@
 	if(living_mob.see_invisible < the_target.invisibility)//Target's invisible to us, forget it
 		return FALSE
 
+	if(HAS_TRAIT(the_target, TRAIT_IMPERCEPTIBLE))
+		return FALSE
+	if(HAS_TRAIT(the_target, TRAIT_UNTARGETTABLE))
+		return FALSE
+
 	if(isturf(the_target.loc) && living_mob.z != the_target.z)
 		return FALSE
 
 	if(isliving(the_target)) //Targetting vs living mobs
 		var/mob/living/L = the_target
-		if(faction_check(living_mob, L) || L.stat)
+		if(faction_check(living_mob, L) || L.stat >= DEAD) //basic targetting doesn't target dead people
 			return FALSE
 		return TRUE
 

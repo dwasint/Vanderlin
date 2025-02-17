@@ -57,6 +57,8 @@ have ways of interacting with a specific atom and control it. They posses a blac
 	var/paused_until = 0
 
 	var/failed_sneak_check = 0
+	///Time at which controller became inactive
+	var/inactive_timestamp
 
 
 /datum/ai_controller/New(atom/new_pawn)
@@ -205,7 +207,7 @@ have ways of interacting with a specific atom and control it. They posses a blac
 
 		if(current_behavior.behavior_flags & AI_BEHAVIOR_REQUIRE_MOVEMENT) //Might need to move closer
 			if(!current_movement_target)
-				stack_trace("[pawn] wants to perform action type [current_behavior.type] which requires movement, but has no current movement target!")
+				current_behavior.finish_action(src, FALSE)
 				return //This can cause issues, so don't let these slide.
 
 			///Stops pawns from performing such actions that should require the target to be adjacent.
@@ -290,10 +292,14 @@ have ways of interacting with a specific atom and control it. They posses a blac
 	switch(ai_status)
 		if(AI_STATUS_ON)
 			SSai_controllers.active_ai_controllers += src
+			SSai_controllers.inactive_ai_controllers -= src
+			inactive_timestamp = null
 			START_PROCESSING(SSai_behaviors, src)
 		if(AI_STATUS_OFF)
 			STOP_PROCESSING(SSai_behaviors, src)
 			SSai_controllers.active_ai_controllers -= src
+			SSai_controllers.inactive_ai_controllers += src
+			inactive_timestamp = world.time
 			CancelActions()
 
 /datum/ai_controller/proc/PauseAi(time)

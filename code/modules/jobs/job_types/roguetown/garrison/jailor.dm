@@ -7,7 +7,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	tutorial = "Your eyes have seen true terror in The Crimson Valley Asylum- men ripping one another apart for\
-	their own entertainment. You now live in this town- a quiet peaceful place compared Asylum you used to guard."
+	their own entertainment. You now live in this town- where you have the job of assisting the City Watchmen. It's much more quiet here."
 	allowed_races = list( // They're from Crimson Valley Asylum- only a select of houses are in position of guard there.
 		"Humen",
 		"Dwarf",
@@ -19,7 +19,7 @@
 	outfit = /datum/outfit/job/roguetown/jailor
 	cmode_music = 'sound/music/cmode/garrison/CombatJailor.ogg'
 	give_bank_account = 25
-	min_pq = 2
+	min_pq = 4
 
 /datum/outfit/job/roguetown/jailor/pre_equip(mob/living/carbon/human/H)
 	..()

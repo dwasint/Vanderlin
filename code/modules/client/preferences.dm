@@ -178,7 +178,8 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	if(!selected_patron)
 		selected_patron = GLOB.patronlist[default_patron]
 	key_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
-	C.update_movement_keys()
+	if(isclient(C))
+		C.update_movement_keys()
 	real_name = pref_species.random_name(gender,1)
 	if(!loaded_preferences_successfully)
 		save_preferences()
@@ -989,8 +990,9 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 				HTML += "<font color=#a36c63>[used_name]</font></td> <td> </td></tr>"
 				continue
 			if(length(job.allowed_races) && !(user.client.prefs.pref_species.name in job.allowed_races))
-				HTML += "<font color=#a36c63>[used_name]</font></td> <td> </td></tr>"
-				continue
+				if(!(user.client.triumph_ids.Find("race_all")))
+					HTML += "<font color=#a36c63>[used_name]</font></td> <td> </td></tr>"
+					continue
 			if(length(job.allowed_patrons) && !(user.client.prefs.selected_patron.type in job.allowed_patrons))
 				HTML += "<font color=#a36c63>[used_name]</font></td> <td> </td></tr>"
 				continue
@@ -1740,7 +1742,7 @@ Slots: [job.spawn_positions]</span>
 							continue
 						crap += bla
 
-					var/result = input(user, "Select a species", "Roguetown") as null|anything in crap
+					var/result = input(user, "Select a species", "Vanderlin") as null|anything in crap
 
 					if(result)
 						//var/newtype = GLOB.species_list[result]
@@ -1760,7 +1762,7 @@ Slots: [job.spawn_positions]</span>
 
 				if("charflaw")
 					var/list/flawslist = GLOB.character_flaws.Copy()
-					var/result = input(user, "Select a flaw", "Roguetown") as null|anything in flawslist
+					var/result = input(user, "Select a flaw", "Vanderlin") as null|anything in flawslist
 					if(result)
 						result = flawslist[result]
 						var/datum/charflaw/C = new result()
@@ -1846,18 +1848,6 @@ Slots: [job.spawn_positions]</span>
 					if(new_legs)
 						features["legs"] = new_legs
 
-				if("moth_wings")
-					var/new_moth_wings
-					new_moth_wings = input(user, "Choose your character's wings:", "Character Preference") as null|anything in GLOB.moth_wings_list
-					if(new_moth_wings)
-						features["moth_wings"] = new_moth_wings
-
-				if("moth_markings")
-					var/new_moth_markings
-					new_moth_markings = input(user, "Choose your character's markings:", "Character Preference") as null|anything in GLOB.moth_markings_list
-					if(new_moth_markings)
-						features["moth_markings"] = new_moth_markings
-
 				if("s_tone")
 					var/listy = pref_species.get_skin_list()
 					var/new_s_tone = input(user, "Choose your character's skin tone:", "Sun")  as null|anything in listy
@@ -1867,12 +1857,12 @@ Slots: [job.spawn_positions]</span>
 				if("ooccolor")
 					var/new_ooccolor = input(user, "Choose your OOC colour:", "Game Preference",ooccolor) as color|null
 					if(new_ooccolor)
-						ooccolor = new_ooccolor
+						ooccolor = sanitize_ooccolor(new_ooccolor)
 
 				if("asaycolor")
 					var/new_asaycolor = input(user, "Choose your ASAY color:", "Game Preference",asaycolor) as color|null
 					if(new_asaycolor)
-						asaycolor = new_asaycolor
+						asaycolor = sanitize_ooccolor(new_asaycolor)
 
 				if ("preferred_map")
 					var/maplist = list()
@@ -2204,7 +2194,7 @@ Slots: [job.spawn_positions]</span>
 								if(!name)
 									name = "Slot[i]"
 								choices[name] = i
-					var/choice = input(user, "CHOOSE A HERO","ROGUETOWN") as null|anything in choices
+					var/choice = input(user, "CHOOSE A HERO","VANDERLIN") as null|anything in choices
 					if(choice)
 						choice = choices[choice]
 						if(!load_character(choice))
@@ -2279,8 +2269,7 @@ Slots: [job.spawn_positions]</span>
 	character.voice_color = voice_color
 	var/obj/item/organ/eyes/organ_eyes = character.getorgan(/obj/item/organ/eyes)
 	if(organ_eyes)
-		if(!initial(organ_eyes.eye_color))
-			organ_eyes.eye_color = eye_color
+		organ_eyes.eye_color = eye_color
 		organ_eyes.old_eye_color = eye_color
 	character.hair_color = hair_color
 	character.facial_hair_color = facial_hair_color

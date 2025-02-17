@@ -58,7 +58,7 @@
 	throwforce = 0
 	firefuel = 5 MINUTES
 	resistance_flags = FLAMMABLE
-	slot_flags = ITEM_SLOT_MOUTH|ITEM_SLOT_HIP
+	slot_flags = ITEM_SLOT_MOUTH|ITEM_SLOT_HIP|ITEM_SLOT_MASK
 	body_parts_covered = null
 	experimental_onhip = TRUE
 	max_integrity = 20
@@ -69,6 +69,16 @@
 	var/wet = 0
 	/// Effectiveness when used as a bandage, how much bloodloss we can tampon
 	var/bandage_effectiveness = 0.9
+	obj_flags = CAN_BE_HIT //enables splashing on by containers
+
+/obj/item/natural/cloth/equipped(mob/living/carbon/human/user, slot)
+	. = ..()
+	if(slot == SLOT_WEAR_MASK)
+		user.become_blind("blindfold_[REF(src)]")
+
+/obj/item/natural/cloth/dropped(mob/living/carbon/human/user)
+	..()
+	user.cure_blind("blindfold_[REF(src)]")
 
 /obj/item/natural/cloth/examine(mob/user)
 	. = ..()
@@ -89,14 +99,13 @@
 		var/cleanme = TRUE
 		if(istype(O, /obj/effect/decal/cleanable/blood))
 			if(!wet)
+				to_chat(user, span_warning("[src] is too dry to clean [O]!"))
 				cleanme = FALSE
 			add_blood_DNA(O.return_blood_DNA())
 		if(prob(40 + (wet*10)) && cleanme)
 			wet = max(wet-0.50, 0)
 			user.visible_message(span_info("[user] wipes \the [O.name] with [src]."), span_info("I wipe \the [O.name] with [src]."))
 			qdel(O)
-		else
-			user.visible_message(span_warning("[user] wipes \the [O.name] with [src]."), span_warning("I wipe \the [O.name] with [src]."))
 		playsound(user, "clothwipe", 100, TRUE)
 	else
 		if(prob(40 + (wet*10)))
@@ -117,8 +126,8 @@
 	if(istype(T, /turf/open/water))
 		return ..()
 	if(prob(40 + (wet*10)))
-		user.visible_message(span_notice("[user] wipes \the [T.name] with [src]."), span_notice("I wipe \the [T.name] with [src]."))
 		if(wet)
+			user.visible_message(span_info("[user] wipes \the [T.name] with [src]."), span_info("I wipe \the [T.name] with [src]."))
 			for(var/obj/effect/decal/cleanable/C in T)
 				qdel(C)
 			wet = max(wet-0.50, 0)
@@ -143,9 +152,6 @@
 	var/obj/item/bodypart/affecting = H.get_bodypart(check_zone(user.zone_selected))
 	if(!affecting)
 		return
-	if(!get_location_accessible(H, check_zone(user.zone_selected)))
-		to_chat(user, "<span class='warning'>Something in the way.</span>")
-		return
 	if(affecting.bandage)
 		to_chat(user, "<span class='warning'>There is already a bandage.</span>")
 		return
@@ -153,7 +159,7 @@
 	if(H.mind)
 		used_time -= (H.mind.get_skill_level(/datum/skill/misc/medicine) * 10)
 	playsound(loc, 'sound/foley/bandage.ogg', 100, FALSE)
-	if(!do_mob(user, M, used_time))
+	if(!do_after(user, used_time, M))
 		return
 	playsound(loc, 'sound/foley/bandage.ogg', 100, FALSE)
 
@@ -300,13 +306,14 @@
 /obj/item/natural/bundle/worms
 	name = "worms"
 	desc = "Multiple wriggly worms."
+	icon_state = "worm2"
 	color = "#964B00"
-	maxamount = 12
+	maxamount = 6
 	icon1 = "worm2"
-	icon1step = 4
-	icon2 = "worm4"
-	icon2step = 6
-	icon3 = "worm6"
+	icon1step = 3
+	icon2 = "worm3"
+	icon2step = 5
+	icon3 = "worm4"
 	stacktype = /obj/item/natural/worms
 	stackname = "worms"
 

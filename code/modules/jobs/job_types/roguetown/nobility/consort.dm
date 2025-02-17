@@ -6,6 +6,7 @@
 	total_positions = 0
 	spawn_positions = 1
 
+	spells = list(/obj/effect/proc_holder/spell/self/convertrole/servant)
 	allowed_races = list(
 		"Humen",
 		"Elf",
@@ -19,11 +20,11 @@
 
 	display_order = JDO_CONSORT
 	bypass_lastclass = TRUE
-	min_pq = 4
+	min_pq = 6
 	give_bank_account = 500
 
 	cmode_music = 'sound/music/cmode/nobility/combat_noble.ogg'
-	can_have_apprentices = FALSE
+	apprentice_name = "Servant"
 
 /datum/job/roguetown/consort/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()
@@ -38,7 +39,7 @@
 			SSfamilytree.AddRoyal(H, FAMILY_FATHER)
 
 /datum/outfit/job/roguetown/consort // Default equipment regardless of class.
-	head = /obj/item/clothing/head/roguetown/crown/nyle
+	head = /obj/item/clothing/head/roguetown/crown/nyle/consortcrown
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	id = /obj/item/clothing/ring/silver
 	belt = /obj/item/storage/belt/rogue/leather
@@ -54,7 +55,7 @@
 	displays_adv_job = FALSE
 
 /datum/advclass/consort/highborn
-	name = "Highborn"
+	name = "Highborn Consort"
 	tutorial = "Of a minor noble house, yours is a rather typical tale; you were trained in manners, literature, and intrigue, all to be married off to the next ruler of this backwater island."
 	outfit = /datum/outfit/job/roguetown/consort/highborn
 
@@ -65,10 +66,12 @@
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/under/roguetown/tights/black
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
-		armor = /obj/item/clothing/suit/roguetown/armor/gambeson/arming
+		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/winterjacket
 	else
 		pants = /obj/item/clothing/under/roguetown/tights/random
-		armor = pick(/obj/item/clothing/suit/roguetown/armor/gambeson/heavy/dress, /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/dress/alt)
+		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/winterjacket
+		shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/winterdress
+
 
 	H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
@@ -89,9 +92,10 @@
 	H.change_stat("fortune", 5)
 	ADD_TRAIT(H, TRAIT_SEEPRICES, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_NUTCRACKER, TRAIT_GENERIC)
 
 /datum/advclass/consort/courtesan
-	name = "Courtesan"
+	name = "Courtesan Consort"
 	tutorial = "Though initially none envied your lot in life, it's certain that your midnight talents haven't gone to waste. Your honeyed words and charm have brought you right to being a ruler's beloved consort."
 	outfit = /datum/outfit/job/roguetown/consort/courtesan
 
@@ -102,10 +106,11 @@
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/under/roguetown/tights/black
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/jacket/sea // this is kind of stupid but i love it anyway
+		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/winterjacket // this is kind of stupid but i love it anyway
 	else
 		pants = /obj/item/clothing/under/roguetown/tights/random
-		armor = pick(/obj/item/clothing/suit/roguetown/armor/gambeson/heavy/dress, /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/dress/alt)
+		shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/winterdress
+		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/winterjacket
 		cloak = /obj/item/clothing/cloak/raincloak/furcloak
 
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
@@ -127,10 +132,11 @@
 	H.change_stat("speed", 1)
 	H.change_stat("fortune", 3)
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_NUTCRACKER, TRAIT_GENERIC)
 
 /datum/advclass/consort/lowborn
-	name = "Lowborn"
-	tutorial = "You never could have dreamed your life would be like this. Though your origins are humble, something special about you - whether it was your good looks, your kind heart, or your bravery - has brought you into Rockhill Keep."
+	name = "Lowborn Consort"
+	tutorial = "You never could have dreamed your life would be like this. Though your origins are humble, something special about you - whether it was your good looks, your kind heart, or your bravery - has brought you into Vanderlin Keep."
 	outfit = /datum/outfit/job/roguetown/consort/lowborn
 
 	category_tags = list(CTAG_CONSORT)
@@ -166,16 +172,37 @@
 	H.change_stat("fortune", 1)
 	ADD_TRAIT(H, TRAIT_SEEDKNOW, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_NUTCRACKER, TRAIT_GENERIC)
 
 /datum/advclass/consort/courtesan/night_spy
-	name = "Night-Mother's Spy"
+	name = "Night-Mother's Spy Consort"
 	tutorial = "Raised by the guild to report on all the Monarch's action. Using your honeyed words and charm have brought you right to being a ruler's beloved consort."
 	outfit = /datum/outfit/job/roguetown/consort/courtesan/spy
 
 	category_tags = list(CTAG_CONSORT)
+
+/datum/job/roguetown/exlady //just used to change the consort title
+	title = "Ex-Consort"
+	flag = CONSORT
+	department_flag = NOBLEMEN
+	faction = "Station"
+	total_positions = 0
+	spawn_positions = 0
+	display_order = JDO_CONSORT
 
 /datum/outfit/job/roguetown/consort/courtesan/spy/pre_equip(mob/living/carbon/human/H)
 	. = ..()
 	H.grant_language(/datum/language/thievescant)
 	to_chat(H, "<span class='info'>I can gesture in thieves' cant with ,t before my speech.</span>")
 	ADD_TRAIT(H, TRAIT_THIEVESGUILD, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_NUTCRACKER, TRAIT_GENERIC)
+
+/obj/effect/proc_holder/spell/self/convertrole/servant
+	name = "Recruit Servant"
+	new_role = "Servant"
+	overlay_state = "recruit_servant"
+	recruitment_faction = "Servants"
+	recruitment_message = "Join the keep's servants, %RECRUIT!"
+	accept_message = "I serve the Crown!"
+	refuse_message = "I refuse."
+	charge_max = 100

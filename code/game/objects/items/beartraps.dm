@@ -6,8 +6,6 @@
 	gender = PLURAL
 	icon = 'icons/obj/items_and_weapons.dmi'
 	icon_state = "handcuff"
-	lefthand_file = 'icons/mob/inhands/equipment/security_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/equipment/security_righthand.dmi'
 	flags_1 = CONDUCT_1
 	throwforce = 0
 	w_class = WEIGHT_CLASS_NORMAL
@@ -21,12 +19,14 @@
 	throw_speed = 1
 	throw_range = 1
 	icon_state = "beartrap"
-	desc = "A crude and old spring trap, used to snare interlopers, or prey on a hunt. Looks almost like falling apart."
+	desc = "A crude and old spring trap, used to snare interlopers, or prey on a hunt. Looks almost like it'll break at any moment."
 	var/old = TRUE // Is it an old trap? Will most likely be destroyed if not handled right
 	var/armed = FALSE // Is it armed?
 	var/trap_damage = 90 // How much brute damage the trap will do to its victim
 	var/used_time = 12 SECONDS // How many seconds it takes to disarm the trap
 	max_integrity = 100
+	grid_width = 64
+	grid_height = 64
 
 /obj/item/restraints/legcuffs/beartrap/attack_hand(mob/user)
 	var/boon = user?.mind?.get_learning_boon(/datum/skill/craft/traps)
@@ -54,7 +54,7 @@
 		else
 			if(C.mind)
 				used_time -= max((C.mind.get_skill_level(/datum/skill/craft/traps) * 2 SECONDS), 2 SECONDS)
-			if(do_after(user, used_time, target = src))
+			if(do_after(user, used_time, src))
 				armed = FALSE
 				anchored = FALSE
 				update_icon()
@@ -118,7 +118,7 @@
 	var/boon = user?.mind?.get_learning_boon(/datum/skill/craft/traps)
 	if(ishuman(user) && !user.stat && !user.restrained())
 		var/mob/living/L = user
-		if(do_after(user, 50 - (L.STASTR*2), target = user))
+		if(do_after(user, (5 SECONDS) - (L.STASTR*2), user))
 			if(prob(50 + (L.mind.get_skill_level(/datum/skill/craft/traps) * 10))) // 100% chance to set traps properly at Master trapping
 				armed = TRUE // Impossible to use in hand if it's armed
 				L.dropItemToGround(src) // We drop it instantly on the floor beneath us

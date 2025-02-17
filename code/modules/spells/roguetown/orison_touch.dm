@@ -20,8 +20,8 @@
 /obj/item/melee/touch_attack/orison
 	name = "\improper lesser prayer"
 	desc = "The fundamental teachings of theology return to you:\n \
-		<b>Fill</b>: Beseech your Divine to create a small quantity of water in a container that you touch for some devotion.\n \
-		<b>Touch</b>: Direct a sliver of divine thaumaturgy into your being, causing your voice to become LOUD when you next speak. Known to sometimes scare the rats inside the SCOMlines. Can be used on light sources at range, and it will cause them flicker.\n \
+		<b>Fill</b>: Beseech your Divine to create a small quantity of holy water in a container that you touch for some devotion.\n \
+		<b>Touch</b>: Direct a sliver of divine thaumaturgy into your being, causing your voice to become LOUD when you next speak. Can be used on light sources at range, and it will cause them flicker.\n \
 		<b>Use</b>: Issue a prayer for illumination, causing you or another living creature to begin glowing with light for five minutes - this stacks each time you cast it, with no upper limit. Using thaumaturgy on a person will remove this blessing from them, and MMB on your praying hand will remove any light blessings from yourself."
 	catchphrase = null
 	possible_item_intents = list(/datum/intent/fill, INTENT_HELP, /datum/intent/use)
@@ -112,7 +112,7 @@
 	return TRUE
 
 /datum/status_effect/light_buff/proc/add_light(mob/living/source)
-	var/obj/effect/dummy/lighting_obj/moblight/mob_light_obj = source.mob_light(potency)
+	var/obj/effect/dummy/lighting_obj/moblight/mob_light_obj = source.mob_light(_power = potency)
 	LAZYSET(mobs_affected, source, mob_light_obj)
 	RegisterSignal(source, COMSIG_PARENT_QDELETING, PROC_REF(on_living_holder_deletion))
 
@@ -145,7 +145,7 @@
 		else
 			user.visible_message(span_notice("[user] closes [user.p_their()] eyes and places a glowing hand upon [user.p_their()] chest..."), span_notice("Blessed [user.patron.name], I ask but for a light to guide the way..."))
 
-		if (do_after(user, cast_time, target = thing))
+		if(do_after(user, cast_time, thing))
 			var/mob/living/living_thing = thing
 			var/light_power = clamp(4 + (holy_skill - 3), 4, 7)
 
@@ -163,18 +163,29 @@
 
 /atom/movable/screen/alert/status_effect/thaumaturgy
 	name = "Thaumaturgical Voice"
-	desc = "The power of my god will make the next thing I say carry much further!"
+	desc = "The power of my god will make the next thing I say much louder!"
 	icon_state = "stressvg"
 
 /datum/status_effect/thaumaturgy
 	id = "thaumaturgy"
 	alert_type = /atom/movable/screen/alert/status_effect/thaumaturgy
 	duration = 30 SECONDS
-	var/potency = 1
 
-/datum/status_effect/thaumaturgy/on_creation(mob/living/new_owner, skill_power)
-	potency = skill_power
-	return ..()
+/datum/status_effect/thaumaturgy/on_creation(mob/living/new_owner)
+	. = ..()
+	if(!.)
+		return
+	RegisterSignal(new_owner, COMSIG_MOB_SAY, PROC_REF(handle_speech))
+
+/datum/status_effect/thaumaturgy/on_remove(mob/living/new_owner)
+	. = ..()
+	UnregisterSignal(new_owner, COMSIG_MOB_SAY)
+
+/datum/status_effect/thaumaturgy/proc/handle_speech(datum/source, list/speech_args)
+	SIGNAL_HANDLER
+	speech_args[SPEECH_SPANS] |= list(SPAN_REALLYBIG)
+	UnregisterSignal(owner, COMSIG_MOB_SAY)
+	owner.remove_status_effect(/datum/status_effect/thaumaturgy)
 
 /obj/item/melee/touch_attack/orison/proc/thaumaturgy(thing, mob/living/carbon/human/user)
 	var/holy_skill = user.mind?.get_skill_level(attached_spell.associated_skill)
@@ -184,8 +195,8 @@
 		user.visible_message(span_notice("[user] lowers [user.p_their()] head solemnly, whispered prayers spilling from [user.p_their()] lips..."), span_notice("O holy [user.patron.name], share unto me a sliver of your power..."))
 
 		if (!user.has_status_effect(/datum/status_effect/thaumaturgy))
-			if (do_after(user, cast_time, target = user))
-				user.apply_status_effect(/datum/status_effect/thaumaturgy, holy_skill)
+			if(do_after(user, cast_time))
+				user.apply_status_effect(/datum/status_effect/thaumaturgy)
 				user.visible_message(span_notice("[user] throws open [user.p_their()] eyes, suddenly emboldened!"), span_notice("A feeling of power wells up in my throat: speak, and many will hear!"))
 				return thaumaturgy_devotion
 		else
@@ -307,15 +318,74 @@
 		user.visible_message(span_info("[user] closes [user.p_their()] eyes in prayer and extends a hand over [thing] as water begins to stream from [user.p_their()] fingertips..."), span_notice("I utter forth a plea to [user.patron.name] for succour, and hold my hand out above [thing]..."))
 
 		var/holy_skill = user.mind?.get_skill_level(attached_spell.associated_skill)
-		var/drip_speed = 56 - (holy_skill * 8)
+		var/drip_speed = 5.6 SECONDS - (holy_skill * 8)
 		var/fatigue_spent = 0
 		var/fatigue_used = max(3, holy_skill)
-		while (do_after(user, drip_speed, target = thing))
+		while(do_after(user, drip_speed, thing))
 			if (thing.reagents.holder_full() || (user.cleric.devotion - fatigue_used <= 0))
 				break
 
 			var/water_qty = max(1, holy_skill) + 1
 			var/list/water_contents = list(/datum/reagent/water/blessed = water_qty)
+
+			var/datum/reagents/reagents_to_add = new()
+			reagents_to_add.add_reagent_list(water_contents)
+			reagents_to_add.trans_to(thing, reagents_to_add.total_volume, transfered_by = user, method = INGEST)
+
+			fatigue_spent += fatigue_used
+			user.adjust_stamina(fatigue_used)
+			user.cleric?.update_devotion(-1.0)
+
+			if (prob(80))
+				playsound(user, 'sound/items/fillcup.ogg', 55, TRUE)
+
+		return min(50, fatigue_spent)
+	else if (istype(thing, /obj/item/natural/cloth))
+		// stupid little easter egg here: you can dampen a cloth to clean with it, because prestidigitation also lets you clean things. also a lot cheaper devotion-wise than filling a bucket
+		var/obj/item/natural/cloth/the_cloth = thing
+		if (!the_cloth.wet)
+			var/holy_skill = user.mind?.get_skill_level(attached_spell.associated_skill)
+			the_cloth.wet += holy_skill * 5
+			user.visible_message(span_info("[user] closes [user.p_their()] eyes in prayer, beads of moisture coalescing in [user.p_their()] hands to moisten [the_cloth]."), span_notice("I utter forth a plea to [user.patron.name] for succour, and will moisture into [the_cloth]. I should be able to clean with it properly now."))
+			return water_moisten
+	else
+		to_chat(user, span_info("I'll need to find a container that can hold water."))
+
+/obj/effect/proc_holder/spell/targeted/touch/orison/lesser
+	hand_path = /obj/item/melee/touch_attack/orison/lesser
+
+/obj/item/melee/touch_attack/orison/lesser
+	name = "\improper lesser prayer"
+	desc = "The fundamental teachings of theology are still foreign to you, but your mind is malleable to the influence of the Ten:\n \
+		<b>Fill</b>: Beseech your Divine to create a small quantity of water in a container that you touch for some devotion."
+	possible_item_intents = list(/datum/intent/fill)
+
+/obj/item/melee/touch_attack/orison/MiddleClick(mob/living/user, params)
+	return
+
+/obj/item/melee/touch_attack/orison/lesser/create_water(atom/thing, mob/living/carbon/human/user)
+	// normally we wouldn't use fatigue here to keep in line w/ other holy magic, but we have to since water is a persistent resource
+	if (!thing.Adjacent(user))
+		to_chat(user, span_info("I need to be closer to [thing] in order to try filling it with water."))
+		return
+
+	if (thing.is_refillable())
+		if (thing.reagents.holder_full())
+			to_chat(user, span_warning("[thing] is full."))
+			return
+
+		user.visible_message(span_info("[user] closes [user.p_their()] eyes in prayer and extends a hand over [thing] as water begins to stream from [user.p_their()] fingertips..."), span_notice("I utter forth a plea to [user.patron.name] for succour, and hold my hand out above [thing]..."))
+
+		var/holy_skill = user.mind?.get_skill_level(attached_spell.associated_skill)
+		var/drip_speed = 56 - (holy_skill * 8)
+		var/fatigue_spent = 0
+		var/fatigue_used = max(3, holy_skill)
+		while(do_after(user, drip_speed, thing))
+			if (thing.reagents.holder_full() || (user.cleric.devotion - fatigue_used <= 0))
+				break
+
+			var/water_qty = max(1, holy_skill) + 1
+			var/list/water_contents = list(/datum/reagent/water = water_qty)
 
 			var/datum/reagents/reagents_to_add = new()
 			reagents_to_add.add_reagent_list(water_contents)

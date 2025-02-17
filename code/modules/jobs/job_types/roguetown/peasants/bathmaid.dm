@@ -52,8 +52,6 @@
 	desc = "A soap made from various herbs."
 	icon = 'icons/obj/items_and_weapons.dmi'
 	icon_state = "soap"
-	lefthand_file = 'icons/mob/inhands/equipment/custodial_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/equipment/custodial_righthand.dmi'
 	w_class = WEIGHT_CLASS_TINY
 	item_flags = NOBLUDGEON
 	throwforce = 0
@@ -117,7 +115,7 @@
 
 	user.visible_message("<span class='info'>[user] begins scrubbing [target] with the [src].</span>")	// Applies the special bonus only if Nitemaiden using the soap
 	playsound(src.loc, pick('sound/items/soaping.ogg'), 100)
-	if(do_after(user, 5 SECONDS, target = target))
+	if(do_after(user, 5 SECONDS, target))
 		if(user.job == "Nitemaiden")
 			user.visible_message(span_info("[user] expertly scrubs and soothes [target] with the [src]."))
 			to_chat(target, span_warning("I feel so relaxed and clean!"))

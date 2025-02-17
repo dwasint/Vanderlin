@@ -32,18 +32,19 @@
 		if(istype(H))
 			H.visible_message("<span class='info'>[H] warms \his hand over the fire.</span>")
 
-			if(do_after(H, 15, target = src))
-				var/obj/item/bodypart/affecting = H.get_bodypart("[(user.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
-				to_chat(H, "<span class='warning'>HOT!</span>")
-				if(affecting && affecting.receive_damage( 0, 5 ))		// 5 burn damage
-					H.update_damage_overlays()
+			if(do_after(H, 1.5 SECONDS, src))
+				// var/obj/item/bodypart/affecting = H.get_bodypart("[(user.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
+				// to_chat(H, "<span class='warning'>HOT!</span>")
+				// if(affecting && affecting.receive_damage( 0, 5 ))		// 5 burn damage
+				// 	H.update_damage_overlays()
+				H.adjust_bodytemperature(40)
 		return TRUE //fires that are on always have this interaction with lmb unless its a torch
 
 	else
 		if(icon_state == "[base_state]over")
 			user.visible_message("<span class='notice'>[user] starts to pick up [src]...</span>", \
 				"<span class='notice'>I start to pick up [src]...</span>")
-			if(do_after(user, 30, target = src))
+			if(do_after(user, 3 SECONDS, src))
 				icon_state = "[base_state]0"
 			return
 
@@ -60,13 +61,13 @@
 	name = "standing fire"
 	icon_state = "standing1"
 	base_state = "standing"
-	bulb_colour = "#ff9648"
+	bulb_colour = "#ff9e54"
 	cookonme = FALSE
 	crossfire = FALSE
 
 
 /obj/machinery/light/rogue/firebowl/standing/blue
-	bulb_colour = "#b9bcff"
+	bulb_colour = "#8468ff"
 	icon_state = "standingb1"
 	base_state = "standingb"
 
@@ -116,12 +117,13 @@
 	name = "candles"
 	icon_state = "wallcandle1"
 	base_state = "wallcandle"
+	bulb_colour = "#ffa35c"
 	crossfire = FALSE
 	cookonme = FALSE
 	pixel_y = 32
 	soundloop = null
 
-/obj/machinery/light/rogue/wallfire/candle/OnCrafted(dirin)
+/obj/machinery/light/rogue/wallfire/candle/OnCrafted(dirin, mob/user)
 	pixel_x = 0
 	pixel_y = 0
 	switch(dirin)
@@ -150,7 +152,7 @@
 	pixel_x = -32
 
 /obj/machinery/light/rogue/wallfire/candle/blue
-	bulb_colour = "#b9bcff"
+	bulb_colour = "#8d73ff"
 	icon_state = "wallcandleb1"
 	base_state = "wallcandleb"
 
@@ -176,6 +178,15 @@
 /obj/machinery/light/rogue/wallfire/candle/weak/r
 	pixel_x = 32
 	pixel_y = 0
+
+/*	.............   Candle lamp   ................ */
+/obj/machinery/light/rogue/wallfire/candle/lamp // cant get them to start unlit but they work as is
+	name = "candle lamp"
+	icon_state = "candle"
+	base_state = "candle"
+	layer = WALL_OBJ_LAYER+0.1
+	light_power = 0.9
+	light_outer_range =  6
 
 /obj/machinery/light/rogue/torchholder
 	name = "sconce"
@@ -210,7 +221,6 @@
 				update_icon()
 				if(soundloop)
 					soundloop.start()
-				addtimer(CALLBACK(src, PROC_REF(trigger_weather)), rand(5,20))
 				return TRUE
 
 /obj/machinery/light/rogue/torchholder/Initialize()
@@ -277,7 +287,6 @@
 					on = TRUE
 					update()
 					update_icon()
-					addtimer(CALLBACK(src, PROC_REF(trigger_weather)), rand(5,20))
 					return
 			if(!LR.on && on)
 				if(LR.fuel > 0)
@@ -292,7 +301,6 @@
 				on = TRUE
 				update()
 				update_icon()
-				addtimer(CALLBACK(src, PROC_REF(trigger_weather)), rand(5,20))
 			else
 				if(!user.transferItemToLoc(LR, src))
 					return
@@ -337,6 +345,7 @@
 	climb_offset = 14
 	on = FALSE
 	cookonme = TRUE
+	soundloop = /datum/looping_sound/fireloop
 	var/obj/item/attachment = null
 	var/obj/item/reagent_containers/food/snacks/food = null
 	var/datum/looping_sound/boilloop/boilloop
@@ -362,9 +371,11 @@
 			if(W.type in subtypesof(/obj/item/reagent_containers/food/snacks))
 				var/obj/item/reagent_containers/food/snacks/S = W
 				if(istype(W, /obj/item/reagent_containers/food/snacks/egg)) // added
-					playsound(get_turf(user), 'modular/Neu_Food/sound/eggbreak.ogg', 100, TRUE, 0)
-					sleep(25) // to get egg crack before frying hiss
-					W.icon_state = "rawegg" // added
+					if(W.icon_state != "rawegg")
+						playsound(get_turf(user), 'sound/foley/eggbreak.ogg', 100, TRUE, -1)
+						if(!do_after(user, 25))
+							return
+						W.icon_state = "rawegg" // added
 					rawegg = TRUE
 				if(!food)
 					S.forceMove(src)
@@ -416,7 +427,7 @@
 		if(istype(attachment, /obj/item/cooking/pan))
 			if(food)
 				if(rawegg)
-					to_chat(user, "<span class='notice'>Throws away the raw egg.</span>")
+					to_chat(user, "<span class='notice'>You throw away the raw egg.</span>")
 					rawegg = FALSE
 					qdel(food)
 					update_icon()
@@ -440,11 +451,12 @@
 			var/mob/living/carbon/human/H = user
 			if(istype(H))
 				H.visible_message("<span class='info'>[H] warms \his hand over the embers.</span>")
-				if(do_after(H, 50, target = src))
-					var/obj/item/bodypart/affecting = H.get_bodypart("[(user.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
-					to_chat(H, "<span class='warning'>HOT!</span>")
-					if(affecting && affecting.receive_damage( 0, 5 ))		// 5 burn damage
-						H.update_damage_overlays()
+				if(do_after(H, 5 SECONDS, src))
+					// var/obj/item/bodypart/affecting = H.get_bodypart("[(user.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
+					// to_chat(H, "<span class='warning'>HOT!</span>")
+					// if(affecting && affecting.receive_damage( 0, 5 ))		// 5 burn damage
+					// 	H.update_damage_overlays()
+					H.adjust_bodytemperature(40)
 			return TRUE
 
 
@@ -499,6 +511,7 @@
 	bulb_colour = "#da5e21"
 	cookonme = TRUE
 	max_integrity = 30
+	soundloop = /datum/looping_sound/fireloop
 
 /obj/machinery/light/rogue/campfire/process()
 	..()
@@ -524,11 +537,12 @@
 		if(istype(H))
 			H.visible_message("<span class='info'>[H] warms \his hand near the fire.</span>")
 
-			if(do_after(H, 100, target = src))
-				var/obj/item/bodypart/affecting = H.get_bodypart("[(user.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
-				to_chat(H, "<span class='warning'>HOT!</span>")
-				if(affecting && affecting.receive_damage( 0, 5 ))		// 5 burn damage
-					H.update_damage_overlays()
+			if(do_after(H, 10 SECONDS, src))
+				// var/obj/item/bodypart/affecting = H.get_bodypart("[(user.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
+				// to_chat(H, "<span class='warning'>HOT!</span>")
+				// if(affecting && affecting.receive_damage( 0, 5 ))		// 5 burn damage
+				// 	H.update_damage_overlays()
+				H.adjust_bodytemperature(40)
 		return TRUE //fires that are on always have this interaction with lmb unless its a torch
 
 /obj/machinery/light/rogue/campfire/densefire

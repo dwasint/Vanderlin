@@ -10,12 +10,13 @@
 				j.current_positions--
 		mob_timers["mirrortime"] = world.time
 		var/begin_time = world.time
-		var/new_name = input(src, "What should your [input] name be?", "ROGUETOWN")
+		var/new_name = input(src, "What should your [input] name be?", "VANDERLIN")
 		if(world.time > begin_time + 60 SECONDS)
 			to_chat(src, "<font color='red'>You waited too long.</font>")
 			return
 		new_name = reject_bad_name(new_name)
 		if(new_name)
+			new_name = capitalize(new_name)
 			if(new_name in GLOB.chosen_names)
 				to_chat(src, "<font color='red'>The name is taken.</font>")
 				return

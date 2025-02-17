@@ -4,6 +4,9 @@
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = null
 	w_class = WEIGHT_CLASS_TINY
+
+	grid_height = 64
+	grid_width = 32
 	var/amount_per_transfer_from_this = 5
 	var/list/possible_transfer_amounts = list(5,10,15,20,25,30)
 	var/volume = 30
@@ -35,7 +38,8 @@
 /obj/item/reagent_containers/weather_act_on(weather_trait, severity)
 	if(weather_trait != PARTICLEWEATHER_RAIN || !COOLDOWN_FINISHED(src, fill_cooldown))
 		return
-
+	if(!isturf(loc))
+		return
 	reagents.add_reagent(/datum/reagent/water, clamp(severity * 0.5, 1, 5))
 	COOLDOWN_START(src, fill_cooldown, 10 SECONDS)
 
@@ -47,6 +51,7 @@
 /obj/item/reagent_containers/proc/add_initial_reagents()
 	if(list_reagents)
 		reagents.add_reagent_list(list_reagents)
+	update_icon()
 
 /obj/item/reagent_containers/attack(mob/M, mob/user, def_zone)
 	return ..()
@@ -156,3 +161,4 @@
 		filling.color = mix_color_from_reagents(reagents.reagent_list)
 		add_overlay(filling)
 	. = ..()
+

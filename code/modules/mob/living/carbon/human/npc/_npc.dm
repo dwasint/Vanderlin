@@ -23,6 +23,7 @@
 	var/next_passive_detect = 0
 	var/flee_in_pain = FALSE
 	var/stand_attempts = 0
+	var/resist_attempts = 0
 	var/ai_currently_active = FALSE
 	var/attack_speed = 0
 
@@ -48,19 +49,21 @@
 //		return
 //	next_ai_tick = world.time + rand(10,20)
 	cmode = 1
-	update_cone_show()
 	if(stat == CONSCIOUS)
 		if(on_fire || buckled || restrained() || pulledby)
-			resisting = TRUE
-			walk_to(src,0)
-			resist()
-			resisting = FALSE
-		if(!(mobility_flags & MOBILITY_STAND) && (stand_attempts < 3))
+			if(resist_attempts < 1)
+				resisting = TRUE
+				walk_to(src,0)
+				resist()
+				resist_attempts += 1
+				resisting = FALSE
+		if((mobility_flags & MOBILITY_CANSTAND) && (stand_attempts < 3))
 			resisting = TRUE
 			npc_stand()
 			resisting = FALSE
 		else
 			stand_attempts = 0
+			resist_attempts = 0
 			if(!handle_combat())
 				if(mode == AI_IDLE && !pickupTarget)
 					npc_idle()
@@ -129,6 +132,8 @@
 	var/turf/turf_of_target = get_turf(target)
 	if(!turf_of_target)
 		back_to_idle()
+		return 0
+	if(!(mobility_flags & MOBILITY_MOVE))
 		return 0
 	var/target_z = turf_of_target.z
 	if(turf_of_target?.z == z)
@@ -275,6 +280,8 @@
 						continue
 					if(blacklistItems[I])
 						continue
+					if(HAS_TRAIT(I, TRAIT_NODROP))
+						continue
 					if(I.force > 7)
 						equip_item(I)
 
@@ -283,7 +290,7 @@
 				back_to_idle()
 				return TRUE
 
-			if(Adjacent(target) && isturf(target.loc))	// if right next to perp
+			if(Adjacent(target) && isturf(target.loc) && !IsDeadOrIncap())	// if right next to perp
 				frustration = 0
 				face_atom(target)
 				monkey_attack(target)
@@ -395,7 +402,7 @@
 	probby += extra_prob
 	var/sneak_bonus = 0
 	if(target.mind)
-		if (world.time < target.mob_timers[MT_INVISIBILITY])
+		if(target.has_status_effect(/datum/status_effect/invisibility))
 			// we're invisible as per the spell effect, so use the highest of our arcane magic (or holy) skill instead of our sneaking
 			sneak_bonus = (max(target.mind?.get_skill_level(/datum/skill/magic/arcane), target.mind?.get_skill_level(/datum/skill/magic/holy)) * 10)
 			probby -= 20 // also just a fat lump of extra difficulty for the npc since spells are hard, you know?

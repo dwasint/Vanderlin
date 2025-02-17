@@ -2,8 +2,41 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 
 
 /obj/structure
+	var/redstone_structure = FALSE
 	var/redstone_id
 	var/list/redstone_attached = list()
+
+/obj/structure/multitool_act(mob/living/user, obj/item/I)
+	. = ..()
+	if(!redstone_structure)
+		return
+	if(!istype(I, /obj/item/contraption/linker))
+		return
+	var/obj/item/contraption/linker/multitool = I
+	if(!multitool.current_charge)
+		return
+	if(user.mind?.get_skill_level(/datum/skill/craft/engineering) < 1)
+		to_chat(user, span_warning("I do not know how to use [multitool]..."))
+		return
+	user.visible_message("[user] starts tinkering with [src].", "You start tinkering with [src].")
+	if(!do_after(user, 8 SECONDS, src))
+		return
+	var/datum/effect_system/spark_spread/S = new()
+	var/turf/front = get_turf(src)
+	S.set_up(1, 1, front)
+	S.start()
+	if(!redstone_id)
+		update_redstone_id("[rand(99999, 999999)]_[REF(src)]")
+	if(isstructure(multitool.buffer))
+		var/obj/structure/buffer_structure = multitool.buffer
+		if(!buffer_structure.redstone_id) // sanity check
+			buffer_structure.update_redstone_id("[rand(99999, 999999)]_[REF(buffer_structure)]")
+		update_redstone_id(buffer_structure.redstone_id)
+		to_chat(user, "You calibrate [src] to the output of [buffer_structure].")
+	else
+		to_chat(user, "You store the internal schematics of [src] on [multitool].")
+		multitool.set_buffer(src)
+	multitool.charge_deduction(src, user, 1)
 
 /obj/structure/LateInitialize()
 	. = ..()
@@ -13,7 +46,28 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 				redstone_attached |= S
 				S.redstone_attached |= src
 
-/obj/structure/proc/redstone_triggered()
+/obj/structure/vv_edit_var(var_name, var_value)
+	switch (var_name)
+		if ("redstone_id")
+			update_redstone_id(var_value)
+			datum_flags |= DF_VAR_EDITED
+			return TRUE
+
+	return ..()
+
+/obj/structure/proc/update_redstone_id(new_id)
+	if(new_id)
+		GLOB.redstone_objs |= src
+		redstone_attached = list()
+		redstone_id = new_id
+		for(var/obj/structure/S in GLOB.redstone_objs)
+			if(S == src)
+				continue
+			if(S.redstone_id == redstone_id)
+				redstone_attached |= S
+				S.redstone_attached |= src
+
+/obj/structure/proc/redstone_triggered(mob/user)
 	return
 
 /obj/structure/lever
@@ -24,18 +78,19 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 	density = FALSE
 	anchored = TRUE
 	max_integrity = 3000
+	redstone_structure = TRUE
 	var/toggled = FALSE
 
 /obj/structure/lever/attack_hand(mob/user)
 	if(isliving(user))
 		var/mob/living/L = user
 		L.changeNext_move(CLICK_CD_MELEE)
-		var/used_time = 100 - (L.STASTR * 10)
+		var/used_time = 10 SECONDS - (L.STASTR * 1 SECONDS)
 		user.visible_message("<span class='warning'>[user] pulls the lever.</span>")
 		log_game("[key_name(user)] pulled the lever with redstone id \"[redstone_id]\"")
-		if(do_after(user, used_time, target = user))
+		if(do_after(user, used_time))
 			for(var/obj/structure/O in redstone_attached)
-				spawn(0) O.redstone_triggered()
+				spawn(0) O.redstone_triggered(user)
 			toggled = !toggled
 			icon_state = "leverfloor[toggled]"
 			playsound(src, 'sound/foley/lever.ogg', 100, extrarange = 3)
@@ -48,7 +103,7 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 		playsound(src, 'sound/combat/hits/onwood/woodimpact (1).ogg', 100)
 		if(prob(L.STASTR * 4))
 			for(var/obj/structure/O in redstone_attached)
-				spawn(0) O.redstone_triggered()
+				spawn(0) O.redstone_triggered(user)
 			toggled = !toggled
 			icon_state = "leverfloor[toggled]"
 			playsound(src, 'sound/foley/lever.ogg', 100, extrarange = 3)
@@ -66,7 +121,7 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 		user.visible_message("<span class='warning'>[user] presses a hidden button.</span>")
 		log_game("[key_name(user)] pulled the lever with redstone id \"[redstone_id]\"")
 		for(var/obj/structure/O in redstone_attached)
-			spawn(0) O.redstone_triggered()
+			spawn(0) O.redstone_triggered(user)
 		toggled = !toggled
 		playsound(src, 'sound/foley/lever.ogg', 100, extrarange = 3)
 
@@ -87,6 +142,7 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 	max_integrity = 5
 	density = TRUE
 	anchored = TRUE
+	redstone_structure = TRUE
 	var/mode = 1 // 1 means repeat 5 times, 2 means random, 0 means indefinite but has chance to explode, 3 means indefinite no chance to explode
 	var/obj/structure/linked_thing // because redstone code is weird
 
@@ -101,7 +157,7 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 	var/mob/living/L = user
 
 	if(istype(L))
-		if(!user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
+		if(!user.canUseTopic(src, BE_CLOSE))
 			return FALSE
 		else
 			return TRUE
@@ -140,41 +196,47 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 		if(!istype(adjc, /obj/structure))
 			continue
 		structures += adjc
-	var/input = input("Choose structure to link", "ROGUETOWN") as null|anything in structures
+	var/input = input("Choose structure to link", "VANDERLIN") as null|anything in structures
 	if(input)
 		playsound(loc, 'sound/misc/keyboard_enter.ogg', 100, FALSE, -1)
 		if(istype(linked_thing, /obj/structure/repeater))
-			say("AAAAAAAGH!!!")
+			say("BZZZZZZZZ!!!")
 			playsound(loc, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 			sleep(10)
 			explosion(src, light_impact_range = 1, flame_range = 2, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
+			qdel(src)
 			return
 		linked_thing = input
 
-/obj/structure/repeater/redstone_triggered()
+/obj/structure/repeater/redstone_triggered(mob/user)
 	. = ..()
 	var/repeat_times = 0
 	switch(mode)
 		if(1)
 			repeat_times = 5
 		if(2)
-			repeat_times = rand(2,10)
+			repeat_times = rand(2,8)
 	if(repeat_times)
 		for(var/i in 1 to repeat_times)
-			linked_thing.redstone_triggered()
+			linked_thing.redstone_triggered(user)
+			sleep(5)
 	else
 		if(mode == 3)
 			for(var/i in 1 to INFINITY)
+				if(QDELETED(src) || mode != 3)
+					break
+				linked_thing.redstone_triggered(user)
 				sleep(5)
-				linked_thing.redstone_triggered()
-		else
+		else if(mode == 0)
 			for(var/i in 1 to INFINITY)
-				sleep(5)
+				if(QDELETED(src) || mode != 0)
+					break
 				if(prob(25))
 					explosion(src, light_impact_range = 1, flame_range = 2, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
 					qdel(src)
 					break
-				linked_thing.redstone_triggered()
+				linked_thing.redstone_triggered(user)
+				sleep(5)
 
 /obj/structure/pressure_plate
 	name = "pressure plate"
@@ -184,6 +246,7 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 	max_integrity = 45 // so it gets destroyed when used to explode a bomb
 	density = FALSE
 	anchored = TRUE
+	redstone_structure = TRUE
 
 /obj/structure/pressure_plate/Crossed(atom/movable/AM)
 	. = ..()
@@ -222,8 +285,9 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 	w_class = WEIGHT_CLASS_HUGE // mechanical stuff is usually pretty heavy.
 	density = TRUE
 	anchored = TRUE
+	redstone_structure = TRUE
 	var/obj/item/containment
-	var/obj/item/quiver/ammo // used if the contained item is a bow or crossbow
+	var/obj/item/ammo_holder/ammo // used if the contained item is a bow or crossbow
 
 /obj/structure/activator/Initialize()
 	. = ..()
@@ -240,7 +304,7 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 	var/mob/living/L = user
 
 	if(istype(L))
-		if(!user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
+		if(!user.canUseTopic(src, BE_CLOSE))
 			return FALSE
 		else
 			return TRUE
@@ -256,12 +320,6 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 
 /obj/structure/activator/attack_hand(mob/user)
 	. = ..()
-	if(user.used_intent.type == INTENT_HARM)
-		if(user.cmode)
-			var/datum/component/simple_rotation/rotcomp = GetComponent(/datum/component/simple_rotation)
-			if(rotcomp)
-				rotcomp.HandRot(null,usr,ROTATION_CLOCKWISE)
-			return
 	playsound(loc, 'sound/misc/keyboard_enter.ogg', 100, FALSE, -1)
 	sleep(7)
 	if(containment)
@@ -273,25 +331,34 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 		ammo.forceMove(get_turf(src))
 		ammo = null
 	update_icon()
+	return TRUE
+
+/obj/structure/activator/attack_right(mob/user)
+	. = ..()
+	if(user.get_active_held_item())
+		return
+	var/datum/component/simple_rotation/rotcomp = GetComponent(/datum/component/simple_rotation)
+	if(rotcomp)
+		rotcomp.HandRot(null, user, ROTATION_CLOCKWISE)
+	return TRUE
 
 /obj/structure/activator/attackby(obj/item/I, mob/user, params)
-	if(!user.cmode)
-		if(!containment && !istype(I, /obj/item/quiver) && !istype(I, /obj/item/roguegear))
-			if(!user.transferItemToLoc(I, src))
-				return
-			containment = I
-			playsound(src, 'sound/misc/chestclose.ogg', 25)
-			update_icon()
+	if(!containment && istype(I, /obj/item/gun/ballistic/revolver/grenadelauncher))
+		if(!user.transferItemToLoc(I, src))
+			return ..()
+		containment = I
+		playsound(src, 'sound/misc/chestclose.ogg', 25)
+		update_icon()
+		return TRUE
+	if(!ammo && istype(I, /obj/item/ammo_holder/quiver))
+		if(!user.transferItemToLoc(I, src))
 			return
-		if(!ammo && istype(I, /obj/item/quiver))
-			if(!user.transferItemToLoc(I, src))
-				return
-			playsound(src, 'sound/misc/chestclose.ogg', 25)
-			ammo = I
-			return
+		playsound(src, 'sound/misc/chestclose.ogg', 25)
+		ammo = I
+		return TRUE
 	return ..()
 
-/obj/structure/activator/redstone_triggered()
+/obj/structure/activator/redstone_triggered(mob/user)
 	if(!containment)
 		return
 	if(istype(containment, /obj/item/bomb))
@@ -302,24 +369,17 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 		var/turf/front = get_step(src, dir)
 		S.set_up(1, 1, front)
 		S.start()
-	if(istype(containment, /obj/item/gun/ballistic/revolver/grenadelauncher/bow))
+	if(istype(containment, /obj/item/gun/ballistic/revolver/grenadelauncher))
 		if(!ammo)
 			return
 		if(ammo.ammo_list.len)
+			var/obj/item/gun/ballistic/revolver/grenadelauncher/B = containment
+			var/obj/item/ammo_box/gun_magazine = B.mag_type
+			var/obj/item/ammo_casing/caseless/rogue/gun_ammo = initial(gun_magazine?.ammo_type)
 			for(var/obj/item/ammo_casing/BT in ammo.ammo_list)
-				if(istype(BT, /obj/item/ammo_casing/caseless/rogue/arrow))
+				if(istype(BT, gun_ammo))
 					ammo.ammo_list -= BT
-					BT.fire_casing(get_step(src, dir), src, null, null, null, pick(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG), 0,  src)
-					break
-	if(istype(containment, /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow))
-		if(!ammo)
-			return
-		if(ammo.ammo_list.len)
-			for(var/obj/item/ammo_casing/BT in ammo.ammo_list)
-				if(istype(BT, /obj/item/ammo_casing/caseless/rogue/bolt))
-					sleep(4)
-					ammo.ammo_list -= BT
-					BT.fire_casing(get_step(src, dir), src, null, null, null, pick(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG), 0,  src)
+					BT.fire_casing(get_step(src, dir), null, null, null, null, pick(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG, BODY_ZONE_CHEST), 0,  src)
 					break
 
 /obj/structure/floordoor
@@ -331,6 +391,7 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 	anchored = TRUE
 	layer = ABOVE_OPEN_TURF_LAYER
 	obj_flags = CAN_BE_HIT | BLOCK_Z_OUT_DOWN | BLOCK_Z_IN_UP
+	redstone_structure = TRUE
 	var/togg = FALSE
 	var/base_state = "floorhatch"
 	max_integrity = 0
@@ -343,7 +404,7 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 	obj_flags = null
 	..()
 
-/obj/structure/floordoor/redstone_triggered()
+/obj/structure/floordoor/redstone_triggered(mob/user)
 	if(obj_broken)
 		return
 	togg = !togg
@@ -357,6 +418,8 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 	else
 		icon_state = "[base_state]1"
 		obj_flags = BLOCK_Z_OUT_DOWN | BLOCK_Z_IN_UP
+	if(user)
+		log_game("[user] triggered [src] at [x], [y], [z]. REDSTONE ID: [redstone_id]")
 
 /obj/structure/floordoor/gatehatch
 	name = ""
@@ -369,12 +432,13 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 	max_integrity = 0
 	nomouseover = TRUE
 	mouse_opacity = 0
+	redstone_structure = TRUE
 
 /obj/structure/floordoor/gatehatch/Initialize()
 	AddComponent(/datum/component/squeak, list('sound/foley/footsteps/FTMET_A1.ogg','sound/foley/footsteps/FTMET_A2.ogg','sound/foley/footsteps/FTMET_A3.ogg','sound/foley/footsteps/FTMET_A4.ogg'), 40)
 	return ..()
 
-/obj/structure/floordoor/gatehatch/redstone_triggered()
+/obj/structure/floordoor/gatehatch/redstone_triggered(mob/user)
 	if(changing_state)
 		return
 	if(obj_broken)
@@ -419,7 +483,7 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 	layer = ABOVE_OPEN_TURF_LAYER
 	max_integrity = 0
 
-/obj/structure/kybraxor/redstone_triggered()
+/obj/structure/kybraxor/redstone_triggered(mob/user)
 	if(changing_state)
 		return
 	if(obj_broken)

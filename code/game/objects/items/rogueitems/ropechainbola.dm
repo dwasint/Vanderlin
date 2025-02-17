@@ -5,8 +5,6 @@
 	gender = PLURAL
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "rope"
-	lefthand_file = 'icons/mob/inhands/equipment/security_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/equipment/security_righthand.dmi'
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_WRISTS
 	throwforce = 5
 	w_class = WEIGHT_CLASS_SMALL
@@ -51,12 +49,12 @@
 
 	if(user.aimheight > 4)
 		if(!C.handcuffed)
-			if(C.get_num_arms(TRUE))
+			if(C.get_num_arms(FALSE))
 				C.visible_message("<span class='warning'>[user] is trying to tie [C]'s arms with [src.name]!</span>", \
 									"<span class='userdanger'>[user] is trying to tie my arms with [src.name]!</span>")
 
 				playsound(loc, cuffsound, 100, TRUE, -2)
-				if(do_mob(user, C, 60) && C.get_num_arms(FALSE))
+				if(do_after(user, 6 SECONDS * (C.surrendering ? 0.5 : 1), C) && C.get_num_arms(FALSE))
 					apply_cuffs(C, user)
 					C.visible_message("<span class='warning'>[user] ties [C] with [src.name].</span>", \
 										"<span class='danger'>[user] ties me up with [src.name].</span>")
@@ -75,7 +73,7 @@
 									"<span class='userdanger'>[user] is trying to tie my legs with [src.name]!</span>")
 
 				playsound(loc, cuffsound, 30, TRUE, -2)
-				if(do_mob(user, C, 60) && (C.get_num_legs(FALSE) < 2))
+				if(do_after(user, 6 SECONDS, C) && (C.get_num_legs(FALSE) < 2))
 					apply_cuffs(C, user)
 					C.visible_message("<span class='warning'>[user] ties [C]'s legs with [src.name].</span>", \
 										"<span class='danger'>[user] ties my legs with [src.name].</span>")
@@ -170,7 +168,7 @@
 /obj/item/net/proc/ensnare(mob/living/carbon/C)
 	if(!C.legcuffed && C.get_num_legs(FALSE) >= 2)
 		visible_message("<span class='danger'>\The [src] ensnares [C]!</span>")
-		C.legcuffed = src 
+		C.legcuffed = src
 		forceMove(C)
 		C.update_inv_legcuffed()
 		SSblackbox.record_feedback("tally", "handcuffs", 1, type)
@@ -188,7 +186,7 @@
 			M.update_inv_legcuffed()
 			if(M.has_status_effect(/datum/status_effect/debuff/netted))
 				M.remove_status_effect(/datum/status_effect/debuff/netted)
-	return ..()	
+	return ..()
 
 /obj/structure/noose
 	name = "noose"
@@ -238,17 +236,17 @@
 		return FALSE
 
 	M.visible_message("<span class='danger'>[user] attempts to tie \the [src] over [M]'s neck!</span>")
-	if(do_after(user, user == M ? 0:5 SECONDS, M))
+	if(do_after(user, (user == M ? 0 : 5 SECONDS), M))
 		if(buckle_mob(M))
 			user.visible_message("<span class='warning'>[user] ties \the [src] over [M]'s neck!</span>")
 			if(user == M)
-				to_chat(M, "<span class='userdanger'>You tie \the [src] over your neck!</span>")
+				to_chat(M, "<span class='userdanger'>I tie \the [src] over my neck...</span>")
 			else
-				to_chat(M, "<span class='userdanger'>[user] ties \the [src] over your neck!</span>")
+				to_chat(M, "<span class='userdanger'>[user] ties \the [src] over my neck!</span>")
 			playsound(user.loc, 'sound/foley/noosed.ogg', 50, 1, -1)
 			return TRUE
 	user.visible_message("<span class='warning'>[user] fails to tie \the [src] over [M]'s neck!</span>")
-	to_chat(user, "<span class='warning'>You fail to tie \the [src] over [M]'s neck!</span>")
+	to_chat(user, "<span class='warning'>I fail to tie \the [src] over [M]'s neck.</span>")
 	return FALSE
 
 /obj/structure/noose/post_buckle_mob(mob/living/M)

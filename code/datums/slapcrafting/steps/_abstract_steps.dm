@@ -1,6 +1,7 @@
 /datum/slapcraft_step/use_item
 	abstract_type = /datum/slapcraft_step/use_item
 	insert_item = FALSE
+	start_verb = "of"
 
 /datum/slapcraft_step/use_item/sewing
 	abstract_type = /datum/slapcraft_step/use_item/sewing
@@ -13,6 +14,10 @@
 
 /datum/slapcraft_step/use_item/masonry
 	abstract_type = /datum/slapcraft_step/use_item/masonry
+	skill_type = /datum/skill/craft/masonry
+
+/datum/slapcraft_step/use_item/engineering
+	abstract_type = /datum/slapcraft_step/use_item/engineering
 	skill_type = /datum/skill/craft/masonry
 
 /datum/slapcraft_step/item

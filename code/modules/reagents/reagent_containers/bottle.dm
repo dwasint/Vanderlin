@@ -4,7 +4,7 @@ GLOBAL_LIST_INIT(wisdoms, world.file2list("strings/rt/wisdoms.txt"))
 /obj/item/reagent_containers/glass/bottle
 	name = "bottle"
 	desc = "A bottle with a cork."
-	icon = 'icons/roguetown/items/cooking.dmi'
+	icon = 'icons/roguetown/items/glass_reagent_container.dmi'
 	icon_state = "clear_bottle1"
 	amount_per_transfer_from_this = 6
 	possible_transfer_amounts = list(6)
@@ -36,6 +36,7 @@ GLOBAL_LIST_INIT(wisdoms, world.file2list("strings/rt/wisdoms.txt"))
 			var/mob/living/carbon/human/H = user
 			var/obj/item/paper/scroll/P = I
 			var/obj/item/bottlemessage/BM = new
+			BM.icon_state = "[icon_state]_message"
 
 			P.forceMove(BM)
 			BM.contained = P
@@ -54,7 +55,7 @@ GLOBAL_LIST_INIT(wisdoms, world.file2list("strings/rt/wisdoms.txt"))
 
 	if(reagents.total_volume)
 		var/fill_name = fill_icon_state? fill_icon_state : icon_state
-		var/mutable_appearance/filling = mutable_appearance('icons/obj/reagentfillings.dmi', "[fill_name][fill_icon_thresholds[1]]")
+		var/mutable_appearance/filling = mutable_appearance('icons/roguetown/items/glass_reagent_container.dmi', "[fill_name][fill_icon_thresholds[1]]")
 
 		var/percent = round((reagents.total_volume / volume) * 100)
 		for(var/i in 1 to fill_icon_thresholds.len)
@@ -76,6 +77,7 @@ GLOBAL_LIST_INIT(wisdoms, world.file2list("strings/rt/wisdoms.txt"))
 	if(closed)
 		reagent_flags = TRANSPARENT
 		reagents.flags = reagent_flags
+		to_chat(user, span_notice("You carefully press the cork back into the mouth of [src]."))
 		spillable = FALSE
 		GLOB.weather_act_upon_list -= src
 		if(!fancy)
@@ -84,6 +86,7 @@ GLOBAL_LIST_INIT(wisdoms, world.file2list("strings/rt/wisdoms.txt"))
 		reagent_flags = OPENCONTAINER
 		reagents.flags = reagent_flags
 		playsound(user.loc,'sound/items/uncork.ogg', 100, TRUE)
+		to_chat(user, span_notice("You thumb off the cork from [src]."))
 		spillable = TRUE
 		GLOB.weather_act_upon_list |= src
 		if(!fancy)
@@ -314,9 +317,9 @@ GLOBAL_LIST_INIT(wisdoms, world.file2list("strings/rt/wisdoms.txt"))
 /obj/item/bottlemessage
 	name = "message bottle"
 	desc = "Inside is a scroll, pop it open and read the ancient wisdoms."
-	icon = 'icons/roguetown/items/cooking.dmi'
-	dropshrink = 0.5
-	icon_state = "bottle_message"
+	icon = 'icons/roguetown/items/glass_reagent_container.dmi'
+	dropshrink = 0.8
+	icon_state = "clear_bottle1"
 	w_class = WEIGHT_CLASS_NORMAL
 	var/obj/item/paper/contained
 
@@ -333,11 +336,11 @@ GLOBAL_LIST_INIT(wisdoms, world.file2list("strings/rt/wisdoms.txt"))
 		return
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-		var/obj/item/reagent_containers/glass/bottle/bootl = new
-		bootl.icon_state = "clear_bottle1"
-		bootl.closed = FALSE
+		var/obj/item/reagent_containers/glass/bottle/btle = new
+		btle.icon_state = replacetext("[icon_state]","_message","")
+		btle.closed = FALSE
 		H.dropItemToGround(src, silent=TRUE)
-		H.put_in_active_hand(bootl)
+		H.put_in_active_hand(btle)
 		H.put_in_hands(contained)
 		contained = null
 		qdel(src)
@@ -345,13 +348,13 @@ GLOBAL_LIST_INIT(wisdoms, world.file2list("strings/rt/wisdoms.txt"))
 /obj/item/reagent_containers/glass/bottle/vial
 	name = "vial"
 	desc = "A vial with a cork."
-	icon = 'icons/roguetown/items/cooking.dmi'
+	icon = 'icons/roguetown/items/glass_reagent_container.dmi'
 	icon_state = "clear_vial1"
 	amount_per_transfer_from_this = 6
 	possible_transfer_amounts = list(6)
 	volume = 30
 	fill_icon_thresholds = list(0, 25, 50, 75, 100)
-	dropshrink = 0.5
+	dropshrink = 0.8
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_MOUTH|ITEM_SLOT_BELT
 	obj_flags = CAN_BE_HIT
 	spillable = FALSE
@@ -372,7 +375,7 @@ GLOBAL_LIST_INIT(wisdoms, world.file2list("strings/rt/wisdoms.txt"))
 
 	if(reagents.total_volume)
 		var/fill_name = fill_icon_state? fill_icon_state : icon_state
-		var/mutable_appearance/filling = mutable_appearance('icons/obj/reagentfillings.dmi', "[fill_name][fill_icon_thresholds[1]]")
+		var/mutable_appearance/filling = mutable_appearance('icons/roguetown/items/glass_reagent_container.dmi', "[fill_name][fill_icon_thresholds[1]]")
 
 		var/percent = round((reagents.total_volume / volume) * 100)
 		for(var/i in 1 to fill_icon_thresholds.len)
@@ -394,10 +397,12 @@ GLOBAL_LIST_INIT(wisdoms, world.file2list("strings/rt/wisdoms.txt"))
 		reagent_flags = TRANSPARENT
 		reagents.flags = reagent_flags
 		desc = "A vial with a cork."
+		to_chat(user, span_notice("You carefully press the cork back into the mouth of [src]."))
 		spillable = FALSE
 	else
 		reagent_flags = OPENCONTAINER
 		reagents.flags = reagent_flags
+		to_chat(user, span_notice("You thumb off the cork from [src]."))
 		playsound(user.loc,'sound/items/uncork.ogg', 100, TRUE)
 		desc = "An open vial, easy to drink quickly."
 		spillable = TRUE

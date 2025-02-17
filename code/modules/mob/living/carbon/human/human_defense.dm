@@ -22,7 +22,8 @@
 		def_zone = CBP.body_zone
 	var/protection = 0
 	var/obj/item/clothing/used
-	var/list/body_parts = list(skin_armor, head, wear_mask, wear_wrists, wear_shirt, wear_neck, cloak, wear_armor, wear_pants, backr, backl, gloves, shoes, belt, s_store, glasses, ears, wear_ring) //Everything but pockets. Pockets are l_store and r_store. (if pockets were allowed, putting something armored, gloves or hats for example, would double up on the armor)
+	//Everything but pockets. Pockets are l_store and r_store. (if pockets were allowed, putting something armored, gloves or hats for example, would double up on the armor)
+	var/list/body_parts = list(skin_armor, head, wear_mask, wear_wrists, gloves, wear_neck, cloak, wear_armor, wear_shirt, shoes, wear_pants, backr, backl, belt, s_store, glasses, ears, wear_ring)
 	for(var/bp in body_parts)
 		if(!bp)
 			continue
@@ -46,7 +47,10 @@
 					if(val > 0) // ...and it's not just a linen shirt...
 						if(val > protection)
 							protection = val
-							used = shirtworn //  ...skip straight to the shirt slot, and target it!
+							if(skin_armor)
+								used = skin_armor
+							else
+								used = shirtworn //  ...skip straight to the shirt slot, and target it!
 				// Otherwise, proceed with normal assignment of bodypart protected by armor that isn't armor or shirt
 				else if(!istype(bp, wear_armor) && !istype(bp, wear_shirt))
 					if(val > 0)
@@ -324,7 +328,7 @@
 		if(check_shields(M, damage, "the [M.name]", MELEE_ATTACK, M.armor_penetration))
 			return FALSE
 		var/zones = M.zone_selected
-		if(!ckey)
+		if(!M.ckey)
 			zones = pick(BODY_ZONE_HEAD, BODY_ZONE_CHEST, BODY_ZONE_PRECISE_NECK, BODY_ZONE_PRECISE_L_HAND, BODY_ZONE_PRECISE_R_HAND, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 		var/dam_zone = dismembering_strike(M, zones)
 		if(!dam_zone) //Dismemberment successful
@@ -611,7 +615,7 @@
 	if(src == M)
 		if(has_status_effect(STATUS_EFFECT_CHOKINGSTRAND))
 			to_chat(src, "<span class='notice'>I attempt to remove the durathread strand from around my neck.</span>")
-			if(do_after(src, 35, null, src))
+			if(do_after(src, 3.5 SECONDS, src))
 				to_chat(src, "<span class='notice'>I succesfuly remove the durathread strand.</span>")
 				remove_status_effect(STATUS_EFFECT_CHOKINGSTRAND)
 			return
@@ -625,7 +629,7 @@
 
 	return ..()
 
-/mob/living/carbon/human/proc/check_for_injuries(mob/user = src, advanced = FALSE, silent = FALSE)
+/mob/living/carbon/human/proc/check_for_injuries(mob/user = src, advanced = FALSE, silent = FALSE, additional = FALSE)
 	var/list/examination = list("<span class='info'>ø ------------ ø")
 	var/m1
 	var/deep_examination = advanced
@@ -641,7 +645,7 @@
 			deep_examination = HAS_TRAIT(user, TRAIT_EMPATH)
 		examination += "<span class='notice'>Let's see how [src] is doing.</span>"
 		if(!user.stat && !silent)
-			visible_message("<span class='notice'>[user] examines [src].</span>", \
+			user.visible_message("<span class='notice'>[user] examines [src].</span>", \
 				"<span class='notice'>I check [src] for injuries.</span>")
 
 	if(stat < DEAD)
@@ -683,7 +687,9 @@
 			examination += "<span class='info'>☼ [capitalize(parse_zone(body_zone))]: <span class='deadsay'><b>MISSING</b></span></span>"
 			continue
 		examination += bodypart.check_for_injuries(user, deep_examination)
-
+	if(additional)
+		examination += span_info(span_green("[getToxLoss()] TOXIN"))
+		examination += span_info(span_blue("[getOxyLoss()] OXYGEN"))
 	examination += "ø ------------ ø</span>"
 	if(!silent)
 		to_chat(user, examination.Join("\n"))

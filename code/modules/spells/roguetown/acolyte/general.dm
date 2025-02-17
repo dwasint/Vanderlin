@@ -13,7 +13,8 @@
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = TRUE
 	charge_max = 10 SECONDS
-	devotion_cost = 25
+	devotion_cost = 10
+	miracle = TRUE
 
 /obj/effect/proc_holder/spell/invoked/lesser_heal/cast(list/targets, mob/living/user)
 	if(isliving(targets[1]))
@@ -23,16 +24,17 @@
 			target.cursed_freak_out()
 			return FALSE
 		if(HAS_TRAIT(target, TRAIT_ATHEISM_CURSE))
-			target.visible_message(span_danger("[target] recoils in disgust!"), span_userdanger("These fools are trying to cure me with religion!!"))
+			target.visible_message(span_danger("[target] recoils in disgust!"), span_userdanger("These fools are trying to cure me with religion!"))
 			target.cursed_freak_out()
 			return FALSE
 		if(target.mob_biotypes & MOB_UNDEAD) //positive energy harms the undead
-			target.visible_message("<span class='danger'>[target] is burned by holy light!</span>", "<span class='userdanger'>I'm burned by holy light!</span>")
+			target.visible_message(span_danger("[target] is burned by holy light!"), span_userdanger("I'm burned by holy light!"))
 			target.adjustFireLoss(30)
-			target.fire_act(1,5)
+			target.adjust_divine_fire_stacks(1)
+			target.IgniteMob()
 			return TRUE
 		if(target.real_name in GLOB.excommunicated_players)
-			target.visible_message("<span class='warning'>The angry Gods sears [user]s flesh, blasphemer, heretic!</span>", "<span class='notice'>I am despised by the Gods, rejected, and they remind me with a wave of pain just how unlovable I am!</span>")
+			target.visible_message(span_warning("The angry Ten sear [user]s flesh, a foolish blasphemer and heretic!"), span_notice("I am despised by the Ten, rejected, and they remind me just how unlovable I am with a wave of pain!"))
 			target.emote("scream")
 			target.adjustFireLoss(20)
 			return TRUE
@@ -64,8 +66,8 @@
 					conditional_buff = TRUE
 			if(/datum/patron/divine/abyssor)
 				target.visible_message(span_info("A mist of salt-scented vapour settles on [target]!"), span_notice("I'm invigorated by healing vapours!"))
-				// if our target is standing in water, heal a flat amount extra
-				if (istype(get_turf(target), /turf/open/water))
+				// if our user or target is standing in water, heal a flat amount extra
+				if (istype(get_turf(target), /turf/open/water) || istype(get_turf(user), /turf/open/water))
 					conditional_buff = TRUE
 					situational_bonus = 15
 			if(/datum/patron/divine/ravox)
@@ -95,17 +97,18 @@
 				target.adjustToxLoss(-situational_bonus)
 				target.blood_volume += BLOOD_VOLUME_SURVIVE/2
 			if(/datum/patron/divine/malum)
-				target.visible_message("<span class='info'>A tempering heat is discharged out of [target]!</span>", "<span class='notice'>I feel the heat of a forge soothing my pains!</span>")
-				var/list/firey_stuff = list(/obj/machinery/light/rogue/torchholder, /obj/machinery/light/rogue/campfire, /obj/machinery/light/rogue/hearth, /obj/machinery/light/rogue/wallfire, /obj/machinery/light/rogue/wallfire/candle, /obj/machinery/light/rogue/forge)
+				target.visible_message(span_info("A tempering heat is discharged out of [target]!"), span_notice("I feel the heat of a forge soothing my pains!"))
+				// var/list/firey_stuff = list(/obj/machinery/light/rogue/torchholder, /obj/machinery/light/rogue/campfire, /obj/machinery/light/rogue/hearth, /obj/machinery/light/rogue/wallfire, /obj/machinery/light/rogue/wallfire/candle, /obj/machinery/light/rogue/forge, /obj/machinery/light/rogue/firebowl/stump)
 				// extra healing for every source of fire/light near us
 				situational_bonus = 0
-				for (var/obj/O in oview(5, user))
-					if (O in firey_stuff)
-						situational_bonus = min(situational_bonus + 5, 25)
+				for (var/obj/machinery/light/rogue/O in oview(5, user))
+					if(!O.on)
+						continue
+					situational_bonus = min(situational_bonus + 3, 25)
 				if (situational_bonus > 0)
 					conditional_buff = TRUE
 			if(/datum/patron/divine/eora)
-				target.visible_message("<span class='info'>An emanance of love blossoms around [target]!</span>", "<span class='notice'>I'm filled with the restorative warmth of love!</span>")
+				target.visible_message(span_info("An eminence of love blossoms around [target]!"), span_notice("I'm filled with the restorative warmth of love!"))
 				// if they're wearing an eoran bud (or are a pacifist), pretty much double the healing.
 				situational_bonus = 0
 				if (HAS_TRAIT(target, TRAIT_PACIFISM))
@@ -151,7 +154,7 @@
 			if(affecting)
 				if(affecting.heal_damage(healing, healing))
 					C.update_damage_overlays()
-				if(affecting.heal_wounds(healing))
+				if(affecting.heal_wounds(healing/4))
 					C.update_damage_overlays()
 		else
 			target.adjustBruteLoss(-healing)
@@ -195,19 +198,20 @@
 			return FALSE
 
 		if(target.mob_biotypes & MOB_UNDEAD) //positive energy harms the undead
-			target.visible_message("<span class='danger'>[target] is burned by holy light!</span>", "<span class='userdanger'>I'm burned by holy light!</span>")
+			target.visible_message(span_danger("[target] is burned by holy light!"), span_userdanger("I'm burned by holy light!"))
 			target.adjustFireLoss(100)
 			target.Paralyze(50)
-			target.fire_act(1,5)
-			return TRUE
-		target.visible_message("<span class='info'>A wreath of gentle light passes over [target]!</span>", "<span class='notice'>I'm bathed in holy light!</span>")
+			target.adjust_divine_fire_stacks(1)
+			target.IgniteMob()
+			return ..()
+		target.visible_message(span_info("A wreath of gentle light passes over [target]!"), span_notice("I'm bathed in holy light!"))
 		if(iscarbon(target))
 			var/mob/living/carbon/C = target
 			var/obj/item/bodypart/affecting = C.get_bodypart(check_zone(user.zone_selected))
 			if(affecting)
 				if(affecting.heal_damage(50, 50))
 					C.update_damage_overlays()
-				if(affecting.heal_wounds(50))
+				if(affecting.heal_wounds(25))
 					C.update_damage_overlays()
 		else
 			target.adjustBruteLoss(-50)
@@ -233,6 +237,7 @@
 	user.emote("rage", forced = TRUE)
 	playsound(get_turf(user), 'sound/magic/barbroar.ogg', 50, TRUE)
 	user.apply_status_effect(/datum/status_effect/buff/barbrage)
+	return TRUE
 
 // XYLIX
 
@@ -245,76 +250,20 @@
 
 /obj/effect/proc_holder/spell/invoked/mockery/cast(list/targets, mob/living/user)
 	if(isliving(targets[1]))
+		var/message
+		if(!user.cmode)
+			message = input(user, "What should you say?", "Vicious Mockery")
+			if(!message)
+				return FALSE
+		else
+			if(ishuman(user))
+				var/mob/living/carbon/human/B = user
+				message = pick_list_replacements("bard.json", "[B.dna.species.id]_mockery")
+			else
+				message = "Boo!" //That's a failsafe.
 		playsound(get_turf(user), 'sound/magic/mockery.ogg', 40, FALSE)
+		user.say(message, forced = "spell")
 		var/mob/living/victim = targets[1]
 		if(victim.can_hear())
 			victim.apply_status_effect(/datum/status_effect/debuff/viciousmockery)
-
-/obj/effect/proc_holder/spell/invoked/mockery/invocation(mob/user = usr)
-	if(ishuman(user))
-		var/mob/living/carbon/human/B = user
-		switch(B.dna.species.id)
-			if("human") // Half elves too
-				switch(rand(1,5))
-					if(1)
-						user.say("Your mother was a Rous, and your father smelled of jacksberries!", forced = "spell")
-					if(2)
-						user.say("What are you going to do for a face when the troll wants his arse back?!", forced = "spell")
-					if(3)
-						user.say("I pass wind at thy general vacinity!", forced = "spell")
-					if(4)
-						user.say("That's a face not even Eora could love!", forced = "spell")
-					if(5)
-						user.say("I shall ne'er desist from thee, nor shall I ever disappoint thee much~", forced = "spell")
-
-			if("elf")
-				switch(rand(1,5))
-					if(1)
-						user.say("As graceful as a drunken mole, I see!", forced = "spell")
-					if(2)
-						user.say("I've fought zads more fierce than you!", forced = "spell")
-					if(3)
-						user.say("You're making this so easy, I'm losing confidence in myself... barely!", forced = "spell")
-					if(4)
-						user.say("OHH-HOH-HOH-HOH-HOH!", forced = "spell")
-					if(5)
-						user.say("Uncultured churls, barely worth my words!", forced = "spell")
-
-			if("dwarf")
-				switch(rand(1,5))
-					if(1)
-						user.say("If yer mind was as sharp as yer ears, we wouldn't be in this mess!", forced = "spell")
-					if(2)
-						user.say("Ye kick softer than a newborn saiga!", forced = "spell")
-					if(3)
-						user.say("Make it quick, dullard! T'is happy hour in the tavern!", forced = "spell")
-					if(4)
-						user.say("Ohh, is the milk drinker gonna cry?", forced = "spell")
-					if(5)
-						user.say("Ye couldn't dent a grain a sand with a pick from Malum!", forced = "spell")
-
-			if("tiefling")
-				switch(rand(1,5))
-					if(1)
-						user.say("Oh wow, everyone, look at this fool with two left feet!", forced = "spell")
-					if(2)
-						user.say("You're not worth a wheat grain of what I can do!", forced = "spell")
-					if(3)
-						user.say("Good job Slowpoke Rodriguez, you almost had me! Almost!", forced = "spell")
-					if(4)
-						user.say("Come on, entertain me a little longer!", forced = "spell")
-					if(5)
-						user.say("Dance with the devil and win a prize!", forced = "spell")
-
-			if("aasimar")
-				switch(rand(1,5))
-					if(1)
-						user.say("Your imperfect body could never match the fires I was forged on.", forced = "spell")
-					if(2)
-						user.say("You're in for a world of hurt, impudent one.", forced = "spell")
-					if(3)
-						user.say("Your name shall be stricken down from the annals of history.", forced = "spell")
-					if(4)
-						user.say("I couldn't sing your praises even if I were forged to!", forced = "spell")
-					if(5)
-						user.say("What manner of blabbering creecher art thou?", forced = "spell")
+		return TRUE

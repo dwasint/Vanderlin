@@ -25,9 +25,9 @@
 		if(L.anti_magic_check(TRUE, TRUE))
 			return FALSE
 		playsound(user, 'sound/items/flint.ogg', 150, FALSE)
-		L.adjust_fire_stacks(5)
+		L.adjust_divine_fire_stacks(5)
 		L.IgniteMob()
-		addtimer(CALLBACK(L, TYPE_PROC_REF(/mob/living, ExtinguishMob)), 7 SECONDS)
+		// addtimer(CALLBACK(L, TYPE_PROC_REF(/mob/living, ExtinguishMob)), 7 SECONDS)
 		return ..()
 
 	// Spell interaction with ignitable objects (burn wooden things, light torches up)
@@ -35,6 +35,9 @@
 		var/obj/O = targets[1]
 		if(O.fire_act())
 			user.visible_message("<font color='yellow'>[user] points at [O], igniting it with sacred flames!</font>")
+			var/mob/living/carbon/human/C = user
+			var/datum/devotion/cleric_holder/D = C.cleric
+			D.update_devotion(25)
 			return ..()
 		else
 			to_chat(user, "<span class='warning'>You point at [O], but it fails to catch fire.</span>")
@@ -60,7 +63,7 @@
 	devotion_cost = 100
 //	req_inhand = list(/obj/item/roguecoin/gold)
 	/// Amount of PQ gained for reviving people
-	var/revive_pq = 0.25
+	var/revive_pq = PQ_GAIN_REVIVE
 
 /obj/effect/proc_holder/spell/invoked/revive/cast(list/targets, mob/living/user)
 	if(isliving(targets[1]))
@@ -83,7 +86,7 @@
 			target.gib()
 			return ..()
 		if(!target.revive(full_heal = FALSE))
-			to_chat(user, "<span class='warning'>Nothing happens.</span>")
+			to_chat(user, "<span class='warning'>Astrata's light fails to heal [target]!</span>")
 			return FALSE
 		testing("revived2")
 		var/mob/living/carbon/spirit/underworld_spirit = target.get_spirit()

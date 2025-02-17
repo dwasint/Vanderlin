@@ -46,6 +46,9 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	sharpness = IS_SHARP
 	resistance_flags = FIRE_PROOF
 
+	grid_height = 32
+	grid_width = 32
+
 /obj/item/throwing_star/ninja
 	name = "ninja throwing star"
 	throwforce = 30
@@ -56,8 +59,6 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	desc = ""
 	icon = 'icons/obj/wizard.dmi'
 	icon_state = "staff"
-	lefthand_file = 'icons/mob/inhands/weapons/staves_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/weapons/staves_righthand.dmi'
 	force = 3
 	throwforce = 5
 	throw_speed = 2

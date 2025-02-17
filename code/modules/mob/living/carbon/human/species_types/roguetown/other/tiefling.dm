@@ -28,7 +28,7 @@
 	skin_tone_wording = "Progenitor"
 
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE,OLDGREY)
-	inherent_traits = list(TRAIT_NOMOBSWAP,TRAIT_MOB_FIRE_IMMUNE)
+	inherent_traits = list(TRAIT_NOMOBSWAP,TRAIT_NOFIRE)
 	default_features = list("mcolor" = "FFF", "ears" = "ElfW", "tail_human" = "TiebTail", "horns" = "TiebHorns")
 	use_skintones = 1
 	disliked_food = NONE
@@ -134,6 +134,11 @@
 	"black - cave" = "201616",
 	"black - rogue" = "2b201b",
 	"black - midnight" = "1d1b2b",
+
+	"blond - pale" = "9d8d6e",
+	"blond - dirty" = "88754f",
+	"blond - drywheat" = "d5ba7b",
+	"blond - strawberry" = "c69b71",
 
 	"purple - arcane" = "3f2f42",
 

@@ -1,6 +1,6 @@
 GLOBAL_LIST_EMPTY(billagerspawns)
 
-GLOBAL_VAR_INIT(adventurer_hugbox_duration, 40 SECONDS)
+GLOBAL_VAR_INIT(adventurer_hugbox_duration, 30 SECONDS)
 GLOBAL_VAR_INIT(adventurer_hugbox_duration_still, 3 MINUTES)
 
 /datum/job/roguetown/adventurer
@@ -21,7 +21,7 @@ GLOBAL_VAR_INIT(adventurer_hugbox_duration_still, 3 MINUTES)
 	var/ispilgrim = FALSE
 	display_order = JDO_ADVENTURER
 	show_in_credits = FALSE
-	min_pq = 0
+	min_pq = 2
 	always_show_on_latechoices = TRUE
 	job_reopens_slots_on_death = TRUE
 	same_job_respawn_delay = 15 MINUTES
@@ -36,6 +36,5 @@ GLOBAL_VAR_INIT(adventurer_hugbox_duration_still, 3 MINUTES)
 	..()
 	if(L)
 		var/mob/living/carbon/human/H = L
-		H.advsetup = 1
-		H.invisibility = INVISIBILITY_MAXIMUM
-		H.become_blind("advsetup")
+		if(advclass_cat_rolls)
+			hugboxify_for_class_selection(H)

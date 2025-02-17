@@ -56,12 +56,10 @@
 			. += "<span class='warning'>Better let this one sleep.</span>"
 
 /obj/structure/closet/dirthole/insertion_allowed(atom/movable/AM)
-	if(istype(AM, /obj/structure/closet/crate/chest) || istype(AM, /obj/structure/closet/burial_shroud))
+	if(istype(AM, /obj/structure/closet/crate/chest) || istype(AM, /obj/structure/closet/burial_shroud) || istype(AM, /obj/structure/closet/crate/coffin))
 		for(var/mob/living/M in contents)
 			return FALSE
 		for(var/obj/structure/closet/C in contents)
-			if(istype(C, /obj/structure/closet/crate/coffin))
-				return TRUE
 			return FALSE
 		return TRUE
 	. = ..()
@@ -76,12 +74,16 @@
 		if(bucket.reagents)
 			testing("reagent check complete")
 			var/datum/reagent/master_reagent = bucket.reagents.get_master_reagent()
-			if(do_after(user, 10 SECONDS, target = src))
+			var/reagent_volume = master_reagent.volume
+			if(do_after(user, 10 SECONDS, src))
 				if(bucket.reagents.remove_reagent(master_reagent.type, clamp(master_reagent.volume, 1, 100)))
 					testing("remove reagent proc complete")
-					var/turf/open/water/creatable/W = new(get_turf(src))
+					var/turf/structure_turf = get_turf(src)
+					var/turf/open/water/W = structure_turf.PlaceOnTop(/turf/open/water/river/creatable)
+					if(!W) // how did this happen
+						return
 					W.water_reagent = master_reagent.type
-					W.water_volume = clamp(master_reagent.volume, 1, 100)
+					W.water_volume = clamp(reagent_volume, 1, 100)
 					W.update_icon()
 					playsound(W, 'sound/foley/waterenter.ogg', 100, FALSE)
 					QDEL_NULL(src) // Somehow this actually makes it disappear. Hilarious.
@@ -129,6 +131,9 @@
 		if(stage == 3)
 			var/turf/underT = get_step_multiz(src, DOWN)
 			if(underT && isopenturf(underT) && mastert)
+				user.visible_message("[user] starts digging out the bottom of [src]", "I start digging out the bottom of [src].")
+				if(!do_after(user, 10 SECONDS * attacking_shovel.time_multiplier, src))
+					return TRUE
 				attacking_shovel.heldclod = new(attacking_shovel)
 				attacking_shovel.update_icon()
 				playsound(mastert,'sound/items/dig_shovel.ogg', 100, TRUE)
@@ -212,13 +217,12 @@
 		actuallyismob = 1
 	else if(!isitem(O))
 		return
-	var/list/targets = list(O, src)
 	add_fingerprint(user)
 	user.visible_message("<span class='warning'>[user] [actuallyismob ? "tries to ":""]stuff [O] into [src].</span>", \
 						"<span class='warning'>I [actuallyismob ? "try to ":""]stuff [O] into [src].</span>", \
 						"<span class='hear'>I hear clanging.</span>")
 	if(actuallyismob)
-		if(do_after_mob(user, targets, 40))
+		if(do_after(user, 4 SECONDS, O))
 			user.visible_message("<span class='notice'>[user] stuffs [O] into [src].</span>", \
 								"<span class='notice'>I stuff [O] into [src].</span>", \
 								"<span class='hear'>I hear a loud bang.</span>")
@@ -261,6 +265,8 @@
 /obj/structure/closet/dirthole/open(mob/living/user)
 	if(opened)
 		return
+	stage = 3
+	climb_offset = 0
 	opened = TRUE
 	dump_contents()
 	update_icon()
@@ -297,14 +303,13 @@
 		T.holie = src
 		if(T.muddy)
 			if(!(locate(/obj/item/natural/worms) in T))
-				if(prob(55))
-					if(prob(20))
-						if(prob(5))
-							new /obj/item/natural/worms/grubs(T)
-						else
-							new /obj/item/natural/worms/leech(T)
+				if(prob(40))
+					if(prob(10))
+						new /obj/item/natural/worms/grub_silk(T)
 					else
-						new /obj/item/natural/worms(T)
+						new /obj/item/natural/worms/leech(T)
+				else
+					new /obj/item/natural/worms(T)
 		else
 			if(!(locate(/obj/item/natural/stone) in T))
 				if(prob(23))
@@ -313,8 +318,9 @@
 
 /obj/structure/closet/dirthole/Destroy()
 	QDEL_NULL(abovemob)
-	if(mastert && mastert.holie == src)
-		mastert.holie = null
+	if(istype(mastert))
+		if(mastert && mastert?.holie == src)
+			mastert.holie = null
 	return ..()
 
 /obj/structure/closet/dirthole/post_buckle_mob(mob/living/M)
@@ -331,3 +337,13 @@
 	. = ..()
 	update_abovemob()
 
+/obj/structure/closet/dirthole/relaymove(mob/user)
+	if(user.stat || !isturf(loc) || !isliving(user))
+		return
+	if(locked && !user.mind?.has_antag_datum(/datum/antagonist/zombie))
+		if(message_cooldown <= world.time)
+			message_cooldown = world.time + 50
+			to_chat(user, "<span class='warning'>I'm trapped!</span>")
+		return
+	locked = FALSE
+	container_resist(user)

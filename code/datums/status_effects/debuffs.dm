@@ -1,3 +1,5 @@
+#define TRAIT_STATUS_EFFECT(effect_id) "[effect_id]-trait"
+
 //Largely negative status effects go here, even if they have small benificial effects
 //STUN EFFECTS
 /datum/status_effect/incapacitating
@@ -16,11 +18,19 @@
 			if(needs_update_stat)
 				owner.update_stat()
 
+/datum/status_effect/incapacitating/on_apply()
+	. = ..()
+	if(!.)
+		return
+	ADD_TRAIT(owner, TRAIT_INCAPACITATED, TRAIT_STATUS_EFFECT(id))
+
 /datum/status_effect/incapacitating/on_remove()
+	REMOVE_TRAIT(owner, TRAIT_INCAPACITATED, TRAIT_STATUS_EFFECT(id))
 	if(owner)
 		owner.update_mobility()
 		if(needs_update_stat) //silicons need stat updates in addition to normal canmove updates
 			owner.update_stat()
+	return ..()
 
 //STUN
 /datum/status_effect/incapacitating/stun
@@ -71,41 +81,36 @@
 	id = "sleeping"
 	alert_type = /atom/movable/screen/alert/status_effect/asleep
 	needs_update_stat = TRUE
-	var/mob/living/carbon/carbon_owner
-	var/mob/living/carbon/human/human_owner
 	var/sleptonground = FALSE
 
 /datum/status_effect/incapacitating/sleeping/on_creation(mob/living/new_owner, updating_canmove)
 	. = ..()
-	if(.)
-		if(owner.cmode)
-			owner.cmode = 0
-		SSdroning.kill_droning(owner.client)
-		SSdroning.kill_loop(owner.client)
-		SSdroning.kill_rain(owner.client)
-		owner.set_typing_indicator(FALSE)
-		if(iscarbon(owner)) //to avoid repeated istypes
-			carbon_owner = owner
-		if(ishuman(owner))
-			human_owner = owner
+	if(!.)
+		return
+
+	owner.cmode = FALSE
+	SSdroning.kill_droning(owner.client)
+	SSdroning.kill_loop(owner.client)
+	SSdroning.kill_rain(owner.client)
+	owner.set_typing_indicator(FALSE)
 
 /datum/status_effect/incapacitating/sleeping/on_remove()
-	if(human_owner && human_owner.client)
-		SSdroning.play_area_sound(get_area(src), human_owner.client)
-		SSdroning.play_loop(get_area(src), human_owner.client)
-	if(sleptonground)
+	var/area/this_area = get_area(owner)
+	SSdroning.play_area_sound(this_area, owner.client)
+	SSdroning.play_loop(this_area, owner.client)
+
+	if(ishuman(owner) && sleptonground)
+		var/mob/living/carbon/human/human_owner = owner
 		if(HAS_TRAIT(human_owner, TRAIT_NOBLE))
 			human_owner.add_stress(/datum/stressevent/sleepfloornoble)
 		else
 			human_owner.add_stress(/datum/stressevent/sleepfloor)
 	. = ..()
 
-/datum/status_effect/incapacitating/sleeping/Destroy()
-	carbon_owner = null
-	human_owner = null
-	return ..()
-
 /datum/status_effect/incapacitating/sleeping/tick()
+	var/mob/living/carbon/carbon_owner = iscarbon(owner) ? owner : null
+	var/mob/living/carbon/human/human_owner = ishuman(owner) ? owner : null
+
 	if(owner.maxHealth)
 		var/health_ratio = owner.health / owner.maxHealth
 		var/healing = -0.2
@@ -113,6 +118,8 @@
 			healing -= 0.3
 		else if((locate(/obj/structure/table) in owner.loc))
 			healing -= 0.1
+		else //we're sleeping on the damn floor!!
+			sleptonground = TRUE
 		if(locate(/obj/structure/bed/rogue/sleepingbag) in owner.loc)
 			sleptonground = TRUE
 		for(var/obj/item/bedsheet/bedsheet in range(owner.loc,0))
@@ -124,58 +131,17 @@
 			owner.adjustBruteLoss(healing)
 			owner.adjustFireLoss(healing)
 			owner.adjustToxLoss(healing * 0.5, FALSE, TRUE)
-	if(human_owner && human_owner.drunkenness)
-		human_owner.drunkenness *= 0.997 //reduce drunkenness by 0.3% per tick, 6% per 2 seconds
+
+	human_owner?.drunkenness *= 0.997 //reduce drunkenness by 0.3% per tick, 6% per 2 seconds
 	if(prob(20))
-		if(carbon_owner)
-			carbon_owner.handle_dreams()
-		if(!IS_IN_STASIS(owner))
-			if(prob(10) && owner.health > owner.crit_threshold)
-				owner.emote("snore")
+		carbon_owner?.handle_dreams()
+		if(prob(10) && owner.health > owner.crit_threshold)
+			owner.emote("snore")
 
 /atom/movable/screen/alert/status_effect/asleep
 	name = "Asleep"
 	desc = ""
-	icon_state = "asleep"
-
-//STASIS
-/datum/status_effect/incapacitating/stasis
-		id = "stasis"
-		duration = -1
-		tick_interval = 10
-		alert_type = /atom/movable/screen/alert/status_effect/stasis
-		var/last_dead_time
-
-/datum/status_effect/incapacitating/stasis/proc/update_time_of_death()
-		if(last_dead_time)
-				var/delta = world.time - last_dead_time
-				var/new_timeofdeath = owner.timeofdeath + delta
-				owner.timeofdeath = new_timeofdeath
-				owner.tod = station_time_timestamp(wtime=new_timeofdeath)
-				last_dead_time = null
-		if(owner.stat == DEAD)
-				last_dead_time = world.time
-
-/datum/status_effect/incapacitating/stasis/on_creation(mob/living/new_owner, set_duration, updating_canmove)
-		. = ..()
-		update_time_of_death()
-		owner.reagents?.end_metabolization(owner, FALSE)
-
-/datum/status_effect/incapacitating/stasis/tick()
-		update_time_of_death()
-
-/datum/status_effect/incapacitating/stasis/on_remove()
-		update_time_of_death()
-		return ..()
-
-/datum/status_effect/incapacitating/stasis/be_replaced()
-		update_time_of_death()
-		return ..()
-
-/atom/movable/screen/alert/status_effect/stasis
-		name = "Stasis"
-		desc = ""
-		icon_state = "stasis"
+	icon_state = "sleeping"
 
 //GOLEM GANG
 
@@ -202,7 +168,7 @@
 /atom/movable/screen/alert/status_effect/strandling/Click(location, control, params)
 	. = ..()
 	to_chat(mob_viewer, "<span class='notice'>I attempt to remove the durathread strand from around my neck.</span>")
-	if(do_after(mob_viewer, 35, null, mob_viewer))
+	if(do_after(mob_viewer, 3.5 SECONDS, mob_viewer))
 		if(isliving(mob_viewer))
 			var/mob/living/L = mob_viewer
 			to_chat(mob_viewer, "<span class='notice'>I succesfuly remove the durathread strand.</span>")
@@ -240,29 +206,6 @@
 
 /datum/status_effect/pacify/on_remove()
 	REMOVE_TRAIT(owner, TRAIT_PACIFISM, "status_effect")
-
-/datum/status_effect/stacking/saw_bleed
-	id = "saw_bleed"
-	tick_interval = 6
-	delay_before_decay = 5
-	stack_threshold = 10
-	max_stacks = 10
-	overlay_file = 'icons/effects/bleed.dmi'
-	underlay_file = 'icons/effects/bleed.dmi'
-	overlay_state = "bleed"
-	underlay_state = "bleed"
-	var/bleed_damage = 200
-
-/datum/status_effect/stacking/saw_bleed/fadeout_effect()
-	new /obj/effect/temp_visual/bleed(get_turf(owner))
-
-/datum/status_effect/stacking/saw_bleed/threshold_cross_effect()
-	owner.adjustBruteLoss(bleed_damage)
-	var/turf/T = get_turf(owner)
-	new /obj/effect/temp_visual/bleed/explode(T)
-	for(var/d in GLOB.alldirs)
-		new /obj/effect/temp_visual/dir_setting/bloodsplatter(T, d)
-	playsound(T, "desceration", 100, TRUE, -1)
 
 /datum/status_effect/neck_slice
 	id = "neck_slice"

@@ -27,7 +27,7 @@
 /obj/effect/proc_holder/spell/invoked/diagnose/cast(list/targets, mob/living/user)
 	if(ishuman(targets[1]))
 		var/mob/living/carbon/human/human_target = targets[1]
-		human_target.check_for_injuries(user)
+		human_target.check_for_injuries(user, additional = TRUE)
 		return ..()
 	return FALSE
 
@@ -121,10 +121,11 @@
 				continue
 			human_target.visible_message("<span class='info'>\The [organ] attaches itself to [human_target]!</span>", \
 								"<span class='notice'>\The [organ] attaches itself to me!</span>")
-		if(!(human_target.mob_biotypes & MOB_UNDEAD))
-			for(var/obj/item/bodypart/limb as anything in human_target.bodyparts)
-				limb.rotted = FALSE
-				limb.skeletonized = FALSE
+		// if(!(human_target.mob_biotypes & MOB_UNDEAD))
+		// 	for(var/obj/item/bodypart/limb as anything in human_target.bodyparts)
+		// 		limb.rotted = FALSE
+		// 		limb.skeletonized = FALSE
+		user.update_inv_hands()
 		human_target.update_body()
 		return ..()
 	return FALSE
@@ -149,7 +150,7 @@
 	miracle = TRUE
 	devotion_cost = 100
 	/// Amount of PQ gained for curing zombos
-	var/unzombification_pq = 0.4
+	var/unzombification_pq = PQ_GAIN_UNZOMBIFY
 
 /obj/effect/proc_holder/spell/invoked/cure_rot/cast(list/targets, mob/living/user)
 	if(isliving(targets[1]))
@@ -168,8 +169,6 @@
 		if(!has_rot)
 			to_chat(user, "<span class='warning'>Nothing happens.</span>")
 			return FALSE
-		if(GLOB.tod == "night")
-			to_chat(user, "<span class='warning'>Let there be light.</span>")
 		for(var/obj/structure/fluff/psycross/S in oview(5, user))
 			S.AOE_flash(user, range = 8)
 		testing("curerot2")
@@ -198,6 +197,16 @@
 			target.visible_message("<span class='notice'>The rot leaves [target]'s body!</span>", "<span class='green'>I feel the rot leave my body!</span>")
 		else
 			target.visible_message("<span class='warning'>The rot fails to leave [target]'s body!</span>", "<span class='warning'>I feel no different...</span>")
+		if(ishuman(target))
+			var/mob/living/carbon/human/human = target
+			if(human.funeral)
+				if(human.client)
+					to_chat(human, span_warning("My funeral rites were undone!"))
+				else
+					var/mob/dead/observer/ghost = human.get_ghost(TRUE, TRUE)
+					if(ghost)
+						to_chat(ghost, span_warning("My funeral rites were undone!"))
+			human.funeral = FALSE
 		return ..()
 	return FALSE
 

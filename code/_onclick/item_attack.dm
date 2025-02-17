@@ -23,8 +23,8 @@
 			return
 		else
 			user.resist_grab()
-	if(!user.has_hand_for_held_index(user.active_hand_index, TRUE)) //we obviously have a hadn, but we need to check for fingers/prosthetics
-		to_chat(user, "<span class='warning'>I can't move the fingers.</span>")
+	if(!user.has_hand_for_held_index(user.active_hand_index, TRUE)) //we obviously have a hand, but we need to check for fingers/prosthetics
+		to_chat(user, "<span class='warning'>I can't move the fingers of my [user.active_hand_index == 1 ? "left" : "right"] hand.</span>")
 		return
 	if(!istype(src, /obj/item/grabbing))
 		if(HAS_TRAIT(user, TRAIT_CHUNKYFINGERS))
@@ -64,9 +64,10 @@
 	return FALSE
 
 /obj/attackby(obj/item/I, mob/living/user, params)
-	if(user.try_repeatable_craft(src, I, user))
-		user.changeNext_move(CLICK_CD_FAST)
-		return TRUE
+	if(!user.cmode)
+		if(user.try_recipes(src, I, user))
+			user.changeNext_move(CLICK_CD_FAST)
+			return TRUE
 
 	if(I.obj_flags_ignore)
 		return I.attack_obj(src, user)
@@ -271,7 +272,7 @@
 				if(BCLASS_CUT)
 					var/mob/living/lumberjacker = user
 					var/lumberskill = lumberjacker.mind.get_skill_level(/datum/skill/labor/lumberjacking)
-					if(!I.remove_bintegrity(1))
+					if(!I.remove_bintegrity(1, user))
 						dullfactor = 0.2
 					else
 						dullfactor = 0.45 + (lumberskill * 0.15)
@@ -285,7 +286,7 @@
 							//Yes i know its cheap to just make it a flat plus.
 							newforce = newforce + R.axe_cut
 							testing("newforcewood+[R.axe_cut]")
-					if(!I.remove_bintegrity(1))
+					if(!I.remove_bintegrity(1, user))
 						dullfactor = 0.2
 					else
 						dullfactor = 1.5
@@ -307,11 +308,11 @@
 		if(DULLING_BASHCHOP) //structures that can be attacked by clubs also (doors fences etc)
 			switch(user.used_intent.blade_class)
 				if(BCLASS_CUT)
-					if(!I.remove_bintegrity(1))
+					if(!I.remove_bintegrity(1, user))
 						dullfactor = 0.8
 					cont = TRUE
 				if(BCLASS_CHOP)
-					if(!I.remove_bintegrity(1))
+					if(!I.remove_bintegrity(1, user))
 						dullfactor = 0.8
 					else
 						dullfactor = 1.5
@@ -358,9 +359,11 @@
 	newforce = (newforce * user.used_intent.damfactor) * dullfactor
 	if(user.used_intent.get_chargetime() && user.client?.chargedprog < 100)
 		newforce = newforce * round(user.client?.chargedprog / 100, 0.1)
-	newforce = round(newforce, 1)
+	// newforce = round(newforce, 1)
 	if(!(user.mobility_flags & MOBILITY_STAND))
 		newforce *= 0.5
+	if(user.has_status_effect(/datum/status_effect/divine_strike))
+		newforce += 5
 	// newforce is rounded upto the nearest intiger.
 	newforce = round(newforce,1)
 	//This is returning the maximum of the arguments meaning this is to prevent negative values.
@@ -432,42 +435,6 @@
 		return "body"
 
 /obj/item/proc/funny_attack_effects(mob/living/target, mob/living/user, nodmg)
-	if(is_silver)
-		if(world.time < src.last_used + 120)
-			to_chat(user, span_notice("The silver effect is on cooldown."))
-			return
-
-		if(ishuman(target) && target.mind)
-			var/mob/living/carbon/human/s_user = user
-			var/mob/living/carbon/human/H = target
-			var/datum/antagonist/werewolf/W = H.mind.has_antag_datum(/datum/antagonist/werewolf/)
-			var/datum/antagonist/vampirelord/lesser/V = H.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser)
-			var/datum/antagonist/vampirelord/V_lord = H.mind.has_antag_datum(/datum/antagonist/vampirelord/)
-			if(V)
-				if(V.disguised)
-					H.visible_message("<font color='white'>The silver weapon weakens the curse temporarily!</font>")
-					to_chat(H, span_userdanger("I'm hit by my BANE!"))
-					H.apply_status_effect(/datum/status_effect/debuff/silver_curse)
-					src.last_used = world.time
-				else
-					H.visible_message("<font color='white'>The silver weapon weakens the curse temporarily!</font>")
-					to_chat(H, span_userdanger("I'm hit by my BANE!"))
-					H.apply_status_effect(/datum/status_effect/debuff/silver_curse)
-					src.last_used = world.time
-			if(V_lord)
-				if(V_lord.vamplevel < 4 && !V)
-					H.visible_message("<font color='white'>The silver weapon weakens the curse temporarily!</font>")
-					to_chat(H, span_userdanger("I'm hit by my BANE!"))
-					H.apply_status_effect(/datum/status_effect/debuff/silver_curse)
-					src.last_used = world.time
-				if(V_lord.vamplevel == 4 && !V)
-					to_chat(s_user, "<font color='red'> The silver weapon fails!</font>")
-					H.visible_message(H, span_userdanger("This feeble metal can't hurt me, I AM ANCIENT!"))
-			if(W && W.transformed == TRUE)
-				H.visible_message("<font color='white'>The silver weapon weakens the curse temporarily!</font>")
-				to_chat(H, span_userdanger("I'm hit by my BANE!"))
-				H.apply_status_effect(/datum/status_effect/debuff/silver_curse)
-				src.last_used = world.time
 	return
 
 /mob/living/attacked_by(obj/item/I, mob/living/user)

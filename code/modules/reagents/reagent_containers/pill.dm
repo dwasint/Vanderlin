@@ -3,9 +3,6 @@
 	desc = ""
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "pill"
-	item_state = "pill"
-	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
 	possible_transfer_amounts = list()
 	volume = 50
 	grind_results = list()
@@ -34,14 +31,14 @@
 	if(M == user)
 		M.visible_message("<span class='notice'>[user] attempts to [apply_method] [src].</span>")
 		if(self_delay)
-			if(!do_mob(user, M, self_delay))
+			if(!do_after(user, self_delay, M))
 				return FALSE
 		to_chat(M, "<span class='notice'>I [apply_method] [src].</span>")
 
 	else
 		M.visible_message("<span class='danger'>[user] attempts to force [M] to [apply_method] [src].</span>", \
 							"<span class='danger'>[user] attempts to force you to [apply_method] [src].</span>")
-		if(!do_mob(user, M))
+		if(!do_after(user, 3 SECONDS, M))
 			return FALSE
 		M.visible_message("<span class='danger'>[user] forces [M] to [apply_method] [src].</span>", \
 							"<span class='danger'>[user] forces you to [apply_method] [src].</span>")
@@ -92,13 +89,6 @@
 	desc = ""
 	list_reagents = list(/datum/reagent/consumable/sugar = 10, /datum/reagent/drug/space_drugs = 10)
 	icon_state = "pill_happy"
-
-
-/obj/item/reagent_containers/pill/lsd
-	name = "sunshine pill"
-	desc = ""
-	list_reagents = list(/datum/reagent/drug/mushroomhallucinogen = 15, /datum/reagent/toxin/mindbreaker = 15)
-	icon_state = "pill14"
 
 
 /obj/item/reagent_containers/pill/aranesp

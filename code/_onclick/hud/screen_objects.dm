@@ -73,7 +73,6 @@
 
 /atom/movable/screen/skills
 	name = "skills"
-	icon = 'icons/mob/screen_midnight.dmi'
 	icon_state = "skills"
 	screen_loc = ui_skill_menu
 
@@ -114,16 +113,11 @@
 
 /atom/movable/screen/craft
 	name = "crafting menu"
-	icon = 'icons/mob/screen_midnight.dmi'
 	icon_state = "craft"
 	screen_loc = rogueui_craft
 	var/last_craft
 
 /atom/movable/screen/craft/Click(location, control, params)
-	var/list/modifiers = params2list(params)
-	if(modifiers["middle"])
-		usr?.client?.show_crafting_book()
-		return
 	if(world.time < lastclick + 3 SECONDS)
 		return
 	lastclick = world.time
@@ -139,7 +133,6 @@
 
 /atom/movable/screen/area_creator
 	name = "create new area"
-	icon = 'icons/mob/screen_midnight.dmi'
 	icon_state = "area_edit"
 	screen_loc = ui_building
 
@@ -154,7 +147,6 @@
 
 /atom/movable/screen/language_menu
 	name = "language menu"
-	icon = 'icons/mob/screen_midnight.dmi'
 	icon_state = "talk_wheel"
 	screen_loc = ui_language_menu
 
@@ -317,7 +309,7 @@
 
 /atom/movable/screen/drop
 	name = "drop"
-	icon = 'icons/mob/screen_midnight.dmi'
+
 	icon_state = "act_drop"
 	layer = HUD_LAYER
 	plane = HUD_PLANE
@@ -624,7 +616,7 @@
 
 /atom/movable/screen/mov_intent
 	name = "run/walk toggle"
-	icon = 'icons/mob/screen_midnight.dmi'
+
 	icon_state = "running"
 
 /atom/movable/screen/mov_intent/Click(location, control, params)
@@ -753,6 +745,8 @@
 		if(L.eyesclosed)
 			L.eyesclosed = 0
 			L.cure_blind("eyelids")
+			update_icon()
+			return
 
 	if(modifiers["left"])
 		if(_y>=29 || _y<=4)
@@ -814,7 +808,7 @@
 
 /atom/movable/screen/pull
 	name = "stop pulling"
-	icon = 'icons/mob/screen_midnight.dmi'
+
 	icon_state = "pull"
 
 /atom/movable/screen/pull/Click()
@@ -830,7 +824,7 @@
 
 /atom/movable/screen/rest
 	name = "rest"
-	icon = 'icons/mob/screen_midnight.dmi'
+
 	icon_state = "act_rest"
 	layer = HUD_LAYER
 	plane = HUD_PLANE
@@ -852,7 +846,7 @@
 
 /atom/movable/screen/restup
 	name = "stand up"
-	icon = 'icons/mob/screen_midnight.dmi'
+
 	icon_state = "act_rest_up"
 	layer = HUD_LAYER
 	plane = HUD_PLANE
@@ -869,7 +863,7 @@
 
 /atom/movable/screen/restdown
 	name = "lay down"
-	icon = 'icons/mob/screen_midnight.dmi'
+
 	icon_state = "act_rest_down"
 	layer = HUD_LAYER
 	plane = HUD_PLANE
@@ -901,6 +895,19 @@
 	master = new_master
 
 /atom/movable/screen/storage/Click(location, control, params)
+	var/list/modifiers = params2list(params)
+	if(modifiers["right"])
+		if(master)
+			var/obj/item/flipper = usr.get_active_held_item()
+			if((!usr.Adjacent(flipper) && !usr.DirectAccess(flipper)) || !isliving(usr) || usr.incapacitated())
+				return
+			var/old_width = flipper.grid_width
+			var/old_height = flipper.grid_height
+			flipper.grid_height = old_width
+			flipper.grid_width = old_height
+			update_hovering(location, control, params)
+			return
+
 	if(world.time <= usr.next_move)
 		return TRUE
 	if(usr.incapacitated())
@@ -908,12 +915,12 @@
 	if(master)
 		var/obj/item/I = usr.get_active_held_item()
 		if(I)
-			master.attackby(null, I, usr, params)
+			master.attackby(src, I, usr, params, TRUE)
 	return TRUE
 
 /atom/movable/screen/throw_catch
 	name = "throw/catch"
-	icon = 'icons/mob/screen_midnight.dmi'
+
 	icon_state = "catch0"
 	var/throwy = 0
 
@@ -1296,10 +1303,6 @@
 			. += limby
 
 	. += mutable_appearance(overlay_icon, "[hud.mymob.gender == "male" ? "m" : "f"]_[hud.mymob.zone_selected]")
-//	. += mutable_appearance(overlay_icon, "height_arrow[hud.mymob.aimheight]")
-
-/atom/movable/screen/zone_sel/robot
-	icon = 'icons/mob/screen_cyborg.dmi'
 
 /atom/movable/screen/flash
 	name = "flash"
@@ -1323,12 +1326,6 @@
 	name = "health"
 	icon_state = "health0"
 	screen_loc = ui_health
-
-/atom/movable/screen/healths/construct
-	icon = 'icons/mob/screen_construct.dmi'
-	icon_state = "artificer_health0"
-	screen_loc = ui_construct_health
-	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /atom/movable/screen/healthdoll
 	name = "health doll"
@@ -1758,11 +1755,8 @@
 		if("dawn")
 			icon_state = "dawn"
 			name = "Sir Sun - Dawn"
-	for(var/datum/weather/rain/R in SSweather.curweathers)
-		if(R.stage < 2)
-			add_overlay("clouds")
-		if(R.stage == 2)
-			add_overlay("rainlay")
+	if(SSParticleWeather.runningWeather.target_trait == PARTICLEWEATHER_RAIN)
+		add_overlay("rainlay")
 
 /atom/movable/screen/stamina
 	name = "stamina"

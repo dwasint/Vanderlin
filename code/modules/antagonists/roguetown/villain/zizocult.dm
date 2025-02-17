@@ -169,25 +169,33 @@ GLOBAL_LIST_EMPTY(ritualslist)
 // VERBS
 
 /mob/living/carbon/human/proc/praise()
-	set name = "Praise the Lord!"
+	set name = "Praise the Dark Lady!"
 	set category = "ZIZO"
+
+	if(stat >= UNCONSCIOUS || !can_speak_vocal())
+		return
 	audible_message("\The [src] praises <span class='bold'>Zizo</span>!")
 	playsound(src.loc, 'sound/vo/cult/praise.ogg', 45, 1)
 
 /mob/living/carbon/human/proc/communicate()
-	set name = "Communicate"
+	set name = "Communicate with Cult"
 	set category = "ZIZO"
 
+	if(stat >= UNCONSCIOUS || !can_speak_vocal())
+		return
+	var/mob/living/carbon/human/H = src
 	var/datum/game_mode/chaosmode/C = SSticker.mode
-	var/speak = input("What do you speak of?", "ROGUETOWN") as text|null
+	var/speak = input("What do you speak of?", "VANDERLIN") as text|null
 	if(!speak)
 		return
 	whisper("O schlet'a ty'schkotot ty'skvoro...")
 	sleep(5)
+	if(stat >= UNCONSCIOUS || !can_speak_vocal())
+		return
 	whisper("[speak]")
 
 	for(var/datum/mind/V in C.cultists)
-		to_chat(V, "<span class='boldnotice'>A message from [src.real_name]: \"[speak]\"</span>")
+		to_chat(V, "<span style = \"font-size:110%; font-weight:bold\"><span style = 'color:#8a13bd'>A message from </span><span style = 'color:#[H.voice_color]'>[src.real_name]</span>: [speak]</span>")
 		playsound_local(V.current, 'sound/vo/cult/skvor.ogg', 100)
 
 	testing("[key_name(src)] used cultist telepathy to say: [speak]")
@@ -259,7 +267,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 			if(path.circle == sigil_type)
 				rituals |= path.name
 
-		var/ritualnameinput = input(user, "Rituals", "ROGUETOWN") as null|anything in rituals
+		var/ritualnameinput = input(user, "Rituals", "VANDERLIN") as null|anything in rituals
 		testing("ritualnameinput [ritualnameinput]")
 		var/datum/ritual/pickritual
 
@@ -413,7 +421,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 		to_chat(src, "<span class='danger'>My hands aren't bloody enough.</span>")
 		return
 
-	var/input = input("Sigil Type", "ROGUETOWN") as null|anything in runes
+	var/input = input("Sigil Type", "VANDERLIN") as null|anything in runes
 	if(!input)
 		return
 
@@ -430,9 +438,9 @@ GLOBAL_LIST_EMPTY(ritualslist)
 		if(V.special_role == "Zizoid Lackey")
 			possible |= V.current
 
-	var/mob/living/carbon/human/choice = input(src, "Whom do you no longer have use for?", "ROGUETOWN") as null|anything in possible
+	var/mob/living/carbon/human/choice = input(src, "Whom do you no longer have use for?", "VANDERLIN") as null|anything in possible
 	if(choice)
-		var/alert = alert(src, "Are you sure?", "ROGUETOWN", "Yes", "Cancel")
+		var/alert = alert(src, "Are you sure?", "VANDERLIN", "Yes", "Cancel")
 		if(alert == "Yes")
 			visible_message("<span class='danger'>[src] reaches out, ripping up [choice]'s soul!</span>")
 			to_chat(choice, "<span class='userdanger'>I HAVE FAILED MY LEADER! I HAVE FAILED ZIZO! NOTHING ELSE BUT DEATH REMAINS FOR ME NOW!</span>")
@@ -463,9 +471,9 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	circle = "Servantry"
 	center_requirement = /mob/living/carbon/human
 
-	function = /proc/convert
+	function = /proc/convert_cultist
 
-/proc/convert(mob/user, turf/C)
+/proc/convert_cultist(mob/user, turf/C)
 	var/datum/game_mode/chaosmode/M = SSticker.mode
 	testing("NOW TESTING CONVERT")
 
@@ -484,7 +492,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 				to_chat(user.mind, "<span class='danger'>\"The veil is too strong to support more than seven lackeys.\"</span>")
 				return
 			var/datum/antagonist/zizocultist/PR = user.mind.has_antag_datum(/datum/antagonist/zizocultist)
-			var/alert = alert(H, "YOU WILL BE SHOWN THE TRUTH. DO YOU RESIST? (Resisting: 1 TRI)", "ROGUETOWN", "Yield", "Resist")
+			var/alert = alert(H, "YOU WILL BE SHOWN THE TRUTH. DO YOU RESIST? (Resisting: 1 TRI)", "VANDERLIN", "Yield", "Resist")
 			H.anchored = TRUE
 			if(alert == "Yield")
 				to_chat(H.mind, "<span class='notice'>I see the truth now! It all makes so much sense! They aren't HERETICS! They want the BEST FOR US!</span>")
@@ -657,7 +665,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 			to_chat(H, "<span class='notice'>My elixir of life is stagnant once again.</span>")
 			qdel(src)
 		else
-			if(!do_mob(user, H, 2 SECONDS))
+			if(!do_after(user, 2 SECONDS, H))
 				return
 			if(M.cmode)
 				user.electrocute_act(30)
@@ -685,23 +693,25 @@ GLOBAL_LIST_EMPTY(ritualslist)
 			return
 		for(var/mob/living/carbon/human/HL in GLOB.human_list)
 			if(HL.real_name == P.info)
-				for (var/mob/living/carbon in world) // Iterate through all mobs in the world
+				for (var/mob/living/carbon/carbon in GLOB.carbon_list) // Iterate through all mobs in the world
 					if (HAS_TRAIT(carbon, TRAIT_ASSASSIN) && !(carbon.stat == DEAD)) //Check if they are an assassin and alive
 						found_assassin = TRUE
-						for(var/obj/item/I in carbon) // Checks to see if the assassin has their dagger on them. If so, the dagger will let them know of a new target.
+						for(var/obj/item/I in carbon.get_all_gear()) // Checks to see if the assassin has their dagger on them. If so, the dagger will let them know of a new target.
 							if(istype(I, /obj/item/rogueweapon/knife/dagger/steel/profane)) // Checks to see if the assassin has their dagger on them.
-								carbon.visible_message("profane dagger whispers, <span class='danger'>\"The terrible Zizo has called for our aid. Hunt and strike down our common foe, [HL.real_name]!\"</span>")
+								// carbon.visible_message("profane dagger whispers, <span class='danger'>\"The terrible Zizo has called for our aid. Hunt and strike down our common foe, [HL.real_name]!\"</span>")
+								to_chat(carbon, "profane dagger whispers, <span class='danger'>\"The terrible Zizo has called for our aid. Hunt and strike down our common foe, [HL.real_name]!\"</span>")
 				if(found_assassin == TRUE)
 					ADD_TRAIT(HL, TRAIT_ZIZOID_HUNTED, TRAIT_GENERIC) // Gives the victim a trait to track that they are wanted dead.
 					log_hunted("[key_name(HL)] playing as [HL] had the hunted flaw by Zizoid curse.")
 					to_chat(HL, "<span class='danger'>My hair stands on end. Has someone just said my name? I should watch my back.</span>")
-					to_chat(user, "<span class='warning'>Your target has been marked, your profane call answered. [HL.real_name] will surely perish!</span>")
+					to_chat(user, "<span class='warning'>Your target has been marked, your profane call answered by the Dark Sun. [HL.real_name] will surely perish!</span>")
 					for(var/obj/item/rogueweapon/knife/dagger/D in C.contents) // Get rid of the dagger used as a sacrifice.
 						qdel(D)
 					qdel(P) // Get rid of the paper with the name on it too.
 					HL.playsound_local(HL.loc, 'sound/magic/marked.ogg', 100)
 				else
 					to_chat(user, "<span class='warning'>There has been no answer to your call to the Dark Sun. It seems his servants are far from here...</span>")
+				return
 
 // TRANSMUTATION
 
@@ -790,7 +800,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	for(var/obj/item/paper/P in C.contents)
 		var/info = ""
 		info = sanitize(P.info)
-		var/input = stripped_input(user, "To whom do we send this message?", "ROGUETOWN")
+		var/input = stripped_input(user, "To whom do we send this message?", "VANDERLIN")
 		if(!input)
 			return
 		for(var/mob/living/carbon/human/HL in GLOB.human_list)
@@ -958,7 +968,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 	for(var/mob/living/carbon/human/H in C.contents)
 		if(H.stat == DEAD)
 			H.gib(FALSE, FALSE, FALSE)
-			addomen("roundstart")
+			addomen(OMEN_ROUNDSTART)
 
 /datum/ritual/ascend
 	name = "ASCEND!"
@@ -987,8 +997,8 @@ GLOBAL_LIST_EMPTY(ritualslist)
 				break
 			VIRGIN.gib()
 		CM.cultascended = TRUE
-		addomen("ascend")
-		to_chat(user.mind, "<span class='userdanger'>I HAVE DONE IT! I HAVE REACHED A HIGHER FORM! ZIZO SMILES UPON ME WITH MALICE IN HIS EYES TOWARD THE ONES WHO LACK KNOWLEDGE AND UNDERSTANDING!</span>")
+		addomen(OMEN_ASCEND)
+		to_chat(user.mind, "<span class='userdanger'>I HAVE DONE IT! I HAVE REACHED A HIGHER FORM! ZIZO SMILES UPON ME WITH MALICE IN HER EYES TOWARD THE ONES WHO LACK KNOWLEDGE AND UNDERSTANDING!</span>")
 		var/mob/living/trl = new /mob/living/simple_animal/hostile/retaliate/rogue/blood/ascended(C)
 		trl.ckey = H.ckey
 		H.gib()

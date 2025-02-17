@@ -43,6 +43,7 @@
 /datum/slapcraft_step/item/rope
 	desc = "Add some rope."
 	item_types = list(/obj/item/rope)
+	perform_time = 1 SECONDS
 
 /datum/slapcraft_step/item/stake
 	desc = "Add a wooden stake."
@@ -81,7 +82,7 @@
 
 /datum/slapcraft_step/item/cog
 	desc = "Add a cog."
-	item_types = list(/obj/item/roguegear)
+	item_types = list(/obj/item/roguegear/metal)
 
 /datum/slapcraft_step/item/cog/second
 
@@ -98,3 +99,8 @@
 /datum/slapcraft_step/item/silk
 	desc = "Add some silk."
 	item_types = list(/obj/item/natural/silk)
+
+/datum/slapcraft_step/item/lock
+	desc = "Add a finished lock."
+	item_types = list(/obj/item/customlock/finished)
+	insert_item_into_result = TRUE //check contents of finished item to handle lock behavior

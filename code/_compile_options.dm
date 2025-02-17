@@ -13,6 +13,8 @@
 //#define ROUNDTIMERBOAT (300 MINUTES)
 #define INITIAL_ROUND_TIMER (99 MINUTES)
 #define ROUND_EXTENSION_TIME (30 MINUTES)
+#define ROUND_END_TIME (15 MINUTES)
+#define ROUND_END_TIME_VERBAL "15 minutes"
 //180 norma
 //60 test
 
@@ -39,6 +41,11 @@
 
 // #define UNIT_TESTS			//Enables unit tests
 
+// If this is uncommented, will attempt to load and initialize prof.dll/libprof.so by default.
+// Even if it's not defined, you can pass "tracy" via -params in order to try to load it.
+// We do not ship byond-tracy. Build it yourself here: https://github.com/mafemergency/byond-tracy/
+// #define USE_BYOND_TRACY
+
 #if defined(CIBUILDING) && !defined(OPENDREAM)
 #define UNIT_TESTS
 #endif
@@ -64,6 +71,16 @@
 //Don't forget to update this part
 #error Your version of BYOND is too out-of-date to compile this project. Go to https://secure.byond.com/download and update.
 #error You need version 515 or higher
+#endif
+
+//Update this whenever you need to take advantage of more recent byond features
+#define MIN_COMPILER_MINOR_VERSION 1643
+#ifndef SPACEMAN_DMM
+#if DM_BUILD < MIN_COMPILER_MINOR_VERSION
+//Don't forget to update this part
+#error Your version of BYOND is too out-of-date to compile this project. Go to https://secure.byond.com/download and update.
+#error You need version 515.1643 or higher
+#endif
 #endif
 
 //Additional code for the above flags.

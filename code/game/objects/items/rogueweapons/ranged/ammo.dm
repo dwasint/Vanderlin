@@ -1,3 +1,4 @@
+#define BLOWDART_DAMAGE		20
 #define ARROW_DAMAGE		33
 #define BOLT_DAMAGE			44
 #define BULLET_DAMAGE		80
@@ -21,6 +22,8 @@
 	dropshrink = 0.8
 	max_integrity = 10
 	force = 10
+	embedding = list("embedded_pain_multiplier" = 3, "embedded_fall_chance" = 0)
+	firing_effect_type = null
 
 /obj/projectile/bullet/reusable/bolt
 	name = "bolt"
@@ -153,6 +156,8 @@
 	dropshrink = 0.8
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/thrust)
 	max_integrity = 20
+	embedding = list("embedded_pain_multiplier" = 3, "embedded_fall_chance" = 0)
+	firing_effect_type = null
 
 /obj/projectile/bullet/reusable/arrow
 	name = "arrow"
@@ -173,6 +178,7 @@
 //................ Stone Arrow ............... //
 /obj/item/ammo_casing/caseless/rogue/arrow/stone
 	name = "stone arrow"
+	desc = "A fletched projectile with a stone tip."
 	icon_state = "stonearrow"
 	projectile_type = /obj/projectile/bullet/reusable/arrow/stone //weaker projectile
 	max_integrity = 5
@@ -187,7 +193,7 @@
 //................ Poison Arrow ............... //
 /obj/item/ammo_casing/caseless/rogue/arrow/poison
 	name = "poison arrow"
-	desc = "An arrow with it's tip drenched in a weak poison."
+	desc = "An arrow with its tip drenched in a weak poison."
 	projectile_type = /obj/projectile/bullet/reusable/arrow/poison/weak
 	icon_state = "arrow_poison"
 
@@ -275,6 +281,7 @@
 	if(ismob(target))
 		var/mob/living/M = target
 		M.adjust_fire_stacks(6)
+		M.IgniteMob()
 //		M.take_overall_damage(0,10) //between this 10 burn, the 10 brute, the explosion brute, and the onfire burn, my at about 65 damage if you stop drop and roll immediately
 	var/turf/T
 	if(isturf(target))
@@ -399,6 +406,11 @@
 | Darts |
 \------*/
 
+
+/*------\
+| Darts |
+\------*/
+
 /obj/item/ammo_casing/caseless/rogue/dart
 	name = "dart"
 	desc = "A thorn fasioned into a primitive dart."
@@ -406,28 +418,63 @@
 	caliber = "dart"
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "dart"
-	dropshrink = 0.8
+	dropshrink = 0.9
 	max_integrity = 10
 	force = 10
+	firing_effect_type = null
 
 /obj/projectile/bullet/reusable/dart
 	name = "dart"
 	desc = "A thorn faschioned into a primitive dart."
-	damage = 20
+	damage = BLOWDART_DAMAGE
 	damage_type = BRUTE
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "dart_proj"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/dart
-	range = 20
+	range = 6
 	hitsound = 'sound/combat/hits/hi_arrow2.ogg'
 	embedchance = 100
-	armor_penetration = 10
 	woundclass = BCLASS_STAB
-	flag = "dart"
+	flag = "piercing"
 	speed = 0.3
 	accuracy = 50
 
+//................ Poison Dart ............... //
+/obj/item/ammo_casing/caseless/rogue/dart/poison
+	name = "poison dart"
+	desc = "A dart with its tip drenched in a weak poison."
+	projectile_type = /obj/projectile/bullet/reusable/dart/poison
+	icon_state = "dart_poison"
 
+/obj/projectile/bullet/reusable/dart/poison
+	name = "poison dart"
+	desc = "A dart with its tip drenched in a weak poison."
+	var/piercing = FALSE
+
+/obj/projectile/bullet/reusable/dart/poison/Initialize()
+	. = ..()
+	create_reagents(50, NO_REACT)
+	reagents.add_reagent(/datum/reagent/berrypoison, 3)
+
+/obj/projectile/bullet/reusable/dart/poison/on_hit(atom/target, blocked = FALSE)
+	if(iscarbon(target))
+		var/mob/living/carbon/M = target
+		if(blocked != 100) // not completely blocked
+			if(M.can_inject(null, FALSE, def_zone, piercing)) // Pass the hit zone to see if it can inject by whether it hit the head or the body.
+				..()
+				reagents.reaction(M, INJECT)
+				reagents.trans_to(M, reagents.total_volume)
+				return BULLET_ACT_HIT
+			else
+				blocked = 100
+				target.visible_message(	span_danger("\The [src] was deflected!"), span_danger("My armor protected me against \the [src]!"))
+
+	..(target, blocked)
+	DISABLE_BITFIELD(reagents.flags, NO_REACT)
+	reagents.handle_reactions()
+	return BULLET_ACT_HIT
+
+#undef BLOWDART_DAMAGE
 #undef ARROW_DAMAGE
 #undef BOLT_DAMAGE
 #undef BULLET_DAMAGE
