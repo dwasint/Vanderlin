@@ -114,6 +114,9 @@
 	if("undead" in owner?.faction)
 		return //no sleepy heal for the undead
 
+	if(!owner.client)
+		return
+
 	if(owner.maxHealth)
 		var/health_ratio = owner.health / owner.maxHealth
 		var/healing = -0.2
