@@ -68,6 +68,7 @@
 
 /obj/item/rogue/instrument/Destroy()
 	terminate_playing(loc)
+	qdel(soundloop)
 	. = ..()
 
 /obj/item/rogue/instrument/process()
