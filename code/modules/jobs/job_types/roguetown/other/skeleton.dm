@@ -70,6 +70,7 @@
 		if(turf)
 			if(SSmapping.level_has_any_trait(turf.z, list(ZTRAIT_IGNORE_WEATHER_TRAIT)))
 				H.faction |= "matthios"
+				SSmobs.matthios_mobs |= H
 		H.name = "skeleton"
 		H.real_name = "skeleton"
 		ADD_TRAIT(H, TRAIT_NOMOOD, TRAIT_GENERIC)
