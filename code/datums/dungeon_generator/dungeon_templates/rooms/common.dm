@@ -109,6 +109,7 @@
 	east_offset = 7
 	west_offset = 7
 
+/*
 /datum/map_template/dungeon/room/SpiralLibraryIteration2
 	mappath = "_maps/map_files/matthios_tomb/room/SpiralLibraryIteration2.dmm"
 	id = "SpiralLibraryIteration2"
@@ -119,6 +120,7 @@
 	south_offset = 7
 	east_offset = 7
 	west_offset = 7
+*/
 
 /datum/map_template/dungeon/room/Skeletonpit
 	mappath = "_maps/map_files/matthios_tomb/room/Skeletonpit.dmm"
