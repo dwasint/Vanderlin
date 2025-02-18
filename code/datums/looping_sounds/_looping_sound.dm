@@ -33,15 +33,14 @@ GLOBAL_LIST_EMPTY(created_sound_groups)
 /datum/looping_sound
 	var/atom/parent
 	var/mid_sounds
-	var/mid_length = 1
+	var/mid_length
 	var/start_sound
 	var/start_length
 	var/end_sound = 'sound/blank.ogg'
 	var/chance
 	var/volume = 100
 	var/vary = FALSE
-	var/max_loops = 0
-	var/cur_num_loops = 0
+	var/max_loops
 	var/direct
 	var/extra_range = 0
 	var/falloff
@@ -54,7 +53,6 @@ GLOBAL_LIST_EMPTY(created_sound_groups)
 	var/timerid
 	/// Has the looping started yet?
 	var/loop_started = FALSE
-	var/starttime // A world.time snapshot of when the loop was started.
 	///our sound channel
 	var/channel
 	var/datum/sound_group/sound_group
@@ -97,7 +95,6 @@ GLOBAL_LIST_EMPTY(created_sound_groups)
 /datum/looping_sound/Destroy()
 	stop()
 	parent = null
-	thingshearing.Cut()
 	return ..()
 
 /datum/looping_sound/proc/start(atom/on_behalf_of)
@@ -105,6 +102,8 @@ GLOBAL_LIST_EMPTY(created_sound_groups)
 	if(on_behalf_of)
 		set_parent(on_behalf_of)
 	loop_started = TRUE
+//	if(timerid)
+//		return
 	on_start()
 
 /datum/looping_sound/proc/stop(null_parent)
@@ -114,20 +113,25 @@ GLOBAL_LIST_EMPTY(created_sound_groups)
 			set_parent(null)
 		on_stop()
 		loop_started = FALSE
+//		if(!timerid)
+//			return
+//		deltimer(timerid)
+//		timerid = null
 
-/datum/looping_sound/proc/sound_loop()
+/datum/looping_sound/proc/sound_loop(starttime)
+//	START_PROCESSING(SSsoundloopers, src)
 	if(!cursound)
 		cursound = get_sound(starttime)
-	if(max_loops && cur_num_loops >= max_loops)
+	if(max_loops && world.time >= starttime + mid_length * max_loops)
 		stop()
-		return 1
-	else if(max_loops)
-		cur_num_loops++
+		return
 	if(stopped)
 		stop()
-		return 1
+		return
 	if(!chance || prob(chance))
 		play(cursound)
+//	if(!timerid)
+//		timerid = addtimer(CALLBACK(src, PROC_REF(sound_loop), world.time), mid_length, TIMER_CLIENT_TIME | TIMER_STOPPABLE | TIMER_LOOP)
 
 /datum/looping_sound/proc/play(soundfile)
 	var/sound/S = soundfile
@@ -137,14 +141,12 @@ GLOBAL_LIST_EMPTY(created_sound_groups)
 		S.channel = channel
 		S.volume = volume
 	var/atom/thing = parent
-	starttime = world.time
-
 	if(direct)
 		if(ismob(thing))
 			var/mob/mob = thing
-			mob.playsound_local(get_turf(mob), S, volume, vary, frequency, falloff, repeat = src, channel = channel)
+			mob.playsound_local(get_turf(mob), soundfile, volume, vary, frequency, falloff, repeat = src, channel = channel)
 	else
-		var/list/R = playsound(thing, S, volume, vary, extra_range, falloff, frequency, channel, ignore_walls = ignore_walls, repeat = src, channel = channel)
+		var/list/R = playsound(thing, soundfile, volume, vary, extra_range, falloff, frequency, ignore_walls = ignore_walls, repeat = src, channel = channel)
 		if(!R || !R.len)
 			R = list()
 		for(var/mob/M in thingshearing)
@@ -182,26 +184,36 @@ GLOBAL_LIST_EMPTY(created_sound_groups)
 		play(start_sound)
 		start_wait = start_length
 	addtimer(CALLBACK(src, PROC_REF(begin_loop)), start_wait, TIMER_CLIENT_TIME)
-	if(persistent_loop)
-		GLOB.persistent_sound_loops += src
 
 /datum/looping_sound/proc/begin_loop()
 	sound_loop()
 	START_PROCESSING(SSsoundloopers, src)
 
 /datum/looping_sound/proc/on_stop()
+//	play(end_sound)
 	STOP_PROCESSING(SSsoundloopers, src)
-	if(persistent_loop)
-		GLOB.persistent_sound_loops -= src
 	for(var/mob/M in thingshearing)
 		if(M.client)
 			var/list/L = M.client.played_loops[src]
 			if(L)
+				testing("foundus")
 				var/sound/SD = L["SOUND"]
 				if(SD)
+					testing("foundus2")
 					M.stop_sound_channel(SD.channel)
 				M.client.played_loops -= src
 				thingshearing -= M
+/*
+/mob/proc/stop_all_loops()
+	if(client)
+		for(var/datum/looping_sound/X in client.played_loops)
+			var/list/L = client.played_loops[X]
+			var/sound/SD = L["SOUND"]
+			if(SD)
+				stop_sound_channel(SD.channel)
+			client.played_loops -= X
+			X.thingshearing -= src
+*/
 
 /datum/looping_sound/proc/set_parent(new_parent)
 	if(parent)

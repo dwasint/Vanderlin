@@ -151,8 +151,9 @@
 							update_sound_volume(DS, S.volume)
 							if(client.played_loops[D]["MUTESTATUS"]) //we have sound so turn this off
 								client.played_loops[D]["MUTESTATUS"] = null
-
-			D.thingshearing += src
+						return TRUE
+			else
+				D.thingshearing += src
 			client.played_loops[D] = list()
 			client.played_loops[D]["SOUND"] = S
 			client.played_loops[D]["VOL"] = S.volume
