@@ -111,6 +111,9 @@
 	var/mob/living/carbon/carbon_owner = iscarbon(owner) ? owner : null
 	var/mob/living/carbon/human/human_owner = ishuman(owner) ? owner : null
 
+	if("undead" in owner?.faction)
+		return //no sleepy heal for the undead
+
 	if(owner.maxHealth)
 		var/health_ratio = owner.health / owner.maxHealth
 		var/healing = -0.2
