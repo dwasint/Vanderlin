@@ -74,10 +74,6 @@
 /obj/effect/dungeon_directional_helper/north,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
-"v" = (
-/mob/living/carbon/human/species/skeleton/npc/warrior,
-/turf/open/floor/rogue/naturalstone,
-/area/rogue)
 "w" = (
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
@@ -85,7 +81,7 @@
 /turf/open/transparent/openspace,
 /area/rogue)
 "y" = (
-/mob/living/carbon/human/species/skeleton,
+/mob/living/carbon/human/species/skeleton/npc,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "z" = (
@@ -137,8 +133,8 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "Q" = (
-/mob/living/carbon/human/species/skeleton,
 /obj/item/rogueweapon/polearm/spear,
+/mob/living/carbon/human/species/skeleton/npc,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "R" = (
@@ -268,9 +264,9 @@ w
 w
 w
 Z
-y
+w
 M
-v
+w
 w
 w
 a
@@ -284,16 +280,16 @@ a
 a
 a
 w
-y
 w
-v
-Q
+w
+w
+I
 U
 w
 w
 w
 w
-y
+w
 w
 a
 a
@@ -438,7 +434,7 @@ z
 a
 w
 w
-y
+w
 w
 w
 w
@@ -464,13 +460,13 @@ w
 w
 w
 w
-Q
+I
 q
 w
 c
-v
-Q
-y
+w
+I
+w
 w
 a
 a
