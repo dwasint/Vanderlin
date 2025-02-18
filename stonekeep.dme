@@ -569,6 +569,7 @@
 #include "code\datums\components\storage\concrete\_concrete.dm"
 #include "code\datums\components\storage\new_storage\tetris.dm"
 #include "code\datums\dungeon_generator\dungeon_direction_helpers.dm"
+#include "code\datums\dungeon_generator\dungeon_entry_exit.dm"
 #include "code\datums\dungeon_generator\dungeon_templates\_base.dm"
 #include "code\datums\dungeon_generator\dungeon_templates\rooms\common.dm"
 #include "code\datums\elements\_element.dm"

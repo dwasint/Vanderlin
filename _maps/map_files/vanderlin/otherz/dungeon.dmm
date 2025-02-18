@@ -55,9 +55,8 @@
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
 "w" = (
-/obj/structure/fluff/traveltile{
-	icon = 'icons/roguetown/misc/structure.dmi';
-	icon_state = "ladder11"
+/obj/structure/dungeon_exit{
+	dungeon_id = "center"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue)

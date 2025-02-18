@@ -44,3 +44,4 @@
 /obj/effect/dungeon_directional_helper/west/top
 	dir = WEST
 	top = TRUE
+
