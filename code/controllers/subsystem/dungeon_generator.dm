@@ -13,10 +13,6 @@ SUBSYSTEM_DEF(dungeon_generator)
 	var/list/markers = list()
 
 /datum/controller/subsystem/dungeon_generator/Initialize(start_timeofday)
-	#ifdef TESTING
-		flags = SS_NO_FIRE
-		return ..()
-	#endif
 	while(length(markers))
 		for(var/obj/effect/dungeon_directional_helper/helper as anything in markers)
 			if(!get_turf(helper))
