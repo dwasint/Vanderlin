@@ -1173,6 +1173,10 @@
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors)
+"pQ" = (
+/obj/structure/dungeon_entry,
+/turf/open/floor/rogue/cobble,
+/area/rogue/indoors/town/vault)
 "qw" = (
 /obj/structure/fluff/statue/tdummy,
 /turf/open/floor/rogue/cobble,
@@ -8731,7 +8735,7 @@ ac
 ac
 ac
 ab
-cF
+pQ
 am
 cF
 ab
@@ -8988,7 +8992,7 @@ ac
 ac
 ac
 ab
-bP
+am
 am
 cF
 ab
@@ -9245,7 +9249,7 @@ ac
 ac
 ac
 ab
-ab
+am
 am
 ab
 ab

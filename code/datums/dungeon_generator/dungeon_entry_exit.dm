@@ -20,11 +20,13 @@ GLOBAL_LIST_INIT(dungeon_exit, list())
 	var/dungeon_id
 	var/list/dungeon_exits = list()
 
-/obj/structure/dungeon_entry/Initialize()
-	. = ..()
+/obj/structure/dungeon_entry/New(loc, ...)
 	GLOB.dungeon_entrys |= src
 	GLOB.unlinked_dungeon_entries |= src
+	. = ..()
 
+/obj/structure/dungeon_entry/Initialize()
+	. = ..()
 	if(dungeon_id)
 		for(var/obj/structure/dungeon_exit/exit as anything in GLOB.dungeon_exit)
 			if(exit.dungeon_id != dungeon_id)

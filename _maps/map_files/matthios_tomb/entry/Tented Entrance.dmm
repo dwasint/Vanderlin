@@ -62,6 +62,10 @@
 /obj/item/reagent_containers/glass/bottle/waterskin,
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
+"z" = (
+/obj/effect/dungeon_directional_helper/west,
+/turf/open/floor/rogue/hexstone,
+/area/rogue)
 "C" = (
 /obj/structure/fluff/statue/tdummy,
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -73,6 +77,10 @@
 /obj/machinery/light/rogue/firebowl,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue)
+"G" = (
+/obj/effect/dungeon_directional_helper/south,
+/turf/open/floor/rogue/hexstone,
+/area/rogue)
 "H" = (
 /obj/structure/table/wood/counter/end{
 	dir = 1
@@ -81,6 +89,14 @@
 	pixel_y = 8;
 	pixel_x = 5
 	},
+/turf/open/floor/rogue/hexstone,
+/area/rogue)
+"I" = (
+/obj/effect/dungeon_directional_helper/east,
+/turf/open/floor/rogue/hexstone,
+/area/rogue)
+"N" = (
+/obj/effect/dungeon_directional_helper/north,
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
 "P" = (
@@ -100,10 +116,7 @@
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
 "W" = (
-/obj/structure/fluff/traveltile{
-	icon = 'icons/roguetown/misc/structure.dmi';
-	icon_state = "ladder11"
-	},
+/obj/structure/dungeon_exit,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue)
 "X" = (
@@ -123,7 +136,7 @@ v
 v
 a
 a
-a
+z
 a
 a
 a
@@ -236,7 +249,7 @@ a
 a
 "}
 (8,1,1) = {"
-a
+N
 a
 w
 Y
@@ -250,7 +263,7 @@ X
 a
 a
 a
-a
+G
 "}
 (9,1,1) = {"
 a
@@ -362,7 +375,7 @@ v
 v
 a
 a
-a
+I
 a
 a
 v

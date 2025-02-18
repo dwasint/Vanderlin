@@ -13,6 +13,10 @@
 "aW" = (
 /turf/closed/wall/mineral/rogue/stone/window,
 /area/rogue)
+"cT" = (
+/obj/effect/dungeon_directional_helper/south,
+/turf/open/floor/rogue/hexstone,
+/area/rogue)
 "cX" = (
 /obj/structure/fluff/railing/border,
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -155,6 +159,10 @@
 /obj/structure/bed/rogue/hay,
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
+"qn" = (
+/obj/effect/dungeon_directional_helper/west,
+/turf/open/floor/rogue/hexstone,
+/area/rogue)
 "qo" = (
 /obj/structure/chair/stool/rogue,
 /turf/open/floor/rogue/naturalstone,
@@ -167,8 +175,12 @@
 /obj/machinery/light/rogue/torchholder/r,
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
+"sX" = (
+/obj/effect/dungeon_directional_helper/east,
+/turf/open/floor/rogue/hexstone,
+/area/rogue)
 "uj" = (
-/obj/structure/fluff/traveltile,
+/obj/structure/dungeon_exit,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue)
 "uO" = (
@@ -390,7 +402,7 @@ Kk
 Kk
 LJ
 Gx
-Gx
+qn
 LJ
 SG
 kT
@@ -990,7 +1002,7 @@ Gx
 Gx
 Gx
 Gx
-Gx
+cT
 "}
 (24,1,1) = {"
 kT
@@ -1578,7 +1590,7 @@ SG
 SG
 LJ
 Gx
-Gx
+sX
 LJ
 Kk
 kT
@@ -2128,8 +2140,8 @@ yr
 yr
 "}
 (21,1,2) = {"
-uj
-uj
+AR
+Ob
 Ob
 Ob
 Ob
@@ -2155,8 +2167,8 @@ lW
 Ob
 "}
 (22,1,2) = {"
-uj
-uj
+AR
+Ob
 Ob
 Ob
 Ob
@@ -2182,7 +2194,7 @@ lW
 Ob
 "}
 (23,1,2) = {"
-uj
+AR
 uj
 Ob
 Ob
@@ -2209,8 +2221,8 @@ lW
 Ob
 "}
 (24,1,2) = {"
-uj
-uj
+AR
+Ob
 Ob
 Ob
 Ob
@@ -2236,8 +2248,8 @@ lW
 Ob
 "}
 (25,1,2) = {"
-uj
-uj
+AR
+Ob
 Ob
 Wl
 oB
