@@ -61,4 +61,6 @@
 		SSmapping.retainer.bandits |= antag_mind.current
 		antag_mind.add_antag_datum(/datum/antagonist/bandit)
 
+		antag_mind.current.hud_used?.set_advclass()
+
 	SSrole_class_handler.bandits_in_round = TRUE
