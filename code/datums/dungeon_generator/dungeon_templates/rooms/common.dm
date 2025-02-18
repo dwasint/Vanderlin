@@ -122,6 +122,7 @@
 	west_offset = 7
 */
 
+/*
 /datum/map_template/dungeon/room/Skeletonpit
 	mappath = "_maps/map_files/matthios_tomb/room/Skeletonpit.dmm"
 	id = "Skeletonpit"
@@ -132,6 +133,7 @@
 	south_offset = 9
 	east_offset = 10
 	west_offset = 10
+*/
 
 /datum/map_template/dungeon/room/Malphpiece4
 	mappath = "_maps/map_files/matthios_tomb/room/Malphpiece4.dmm"
