@@ -611,8 +611,6 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 */
 
 /mob/living/carbon/proc/handle_sleep()
-	if(!client)
-		return
 	if(HAS_TRAIT(src, TRAIT_NOSLEEP))
 		return
 	var/cant_fall_asleep = FALSE
