@@ -70,10 +70,16 @@
 
 /datum/round_event/antagonist/solo/vampires_and_werewolves/proc/add_vampire(datum/mind/antag_mind)
 	if(!leader)
+		var/datum/job/J = SSjob.GetJob(antag_mind.current?.job)
+		J?.current_positions = max(J?.current_positions-1, 0)
+		antag_mind.current.unequip_everything()
 		antag_mind.add_antag_datum(antag_datum)
 		leader = TRUE
 		return
 	else
 		if(!antag_mind.has_antag_datum(/datum/antagonist/vampirelord))
+			var/datum/job/J = SSjob.GetJob(antag_mind.current?.job)
+			J?.current_positions = max(J?.current_positions-1, 0)
+			antag_mind.current.unequip_everything()
 			antag_mind.add_antag_datum(/datum/antagonist/vampirelord/lesser)
 		return
