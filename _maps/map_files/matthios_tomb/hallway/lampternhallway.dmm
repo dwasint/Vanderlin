@@ -14,6 +14,10 @@
 /obj/structure/bars,
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
+"n" = (
+/obj/effect/dungeon_directional_helper/east,
+/turf/open/floor/rogue/hexstone,
+/area/rogue)
 "s" = (
 /turf/closed/wall/mineral/rogue/decostone/end{
 	dir = 4
@@ -38,6 +42,10 @@
 	redstone_id = blades
 	},
 /turf/open/transparent/openspace,
+/area/rogue)
+"A" = (
+/obj/effect/dungeon_directional_helper/west,
+/turf/open/floor/rogue/hexstone,
 /area/rogue)
 "C" = (
 /turf/open/transparent/openspace,
@@ -75,6 +83,14 @@
 	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
+"V" = (
+/obj/effect/dungeon_directional_helper/south,
+/turf/open/floor/rogue/hexstone,
+/area/rogue)
+"X" = (
+/obj/effect/dungeon_directional_helper/north,
+/turf/open/floor/rogue/hexstone,
+/area/rogue)
 "Y" = (
 /turf/closed/wall/mineral/rogue/decostone,
 /area/rogue)
@@ -95,7 +111,7 @@ G
 G
 Y
 L
-L
+A
 L
 Y
 G
@@ -151,7 +167,7 @@ L
 L
 "}
 (4,1,1) = {"
-L
+X
 L
 L
 L
@@ -170,7 +186,7 @@ L
 L
 L
 L
-L
+V
 "}
 (5,1,1) = {"
 s
@@ -205,7 +221,7 @@ G
 G
 Y
 L
-L
+n
 L
 Y
 G

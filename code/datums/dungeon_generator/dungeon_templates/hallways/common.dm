@@ -136,3 +136,88 @@
 	south_offset = 2
 	east_offset = 2
 	west_offset = 2
+
+/datum/map_template/dungeon/hallway/hallwesteastshort
+	mappath = "_maps/map_files/matthios_tomb/hallway/hallwesteastshort.dmm"
+	id = "hallwesteastshort"
+	width = 3
+	height = 6
+
+	east_offset = 1
+	west_offset = 1
+
+/datum/map_template/dungeon/hallway/lampternhallway
+	mappath = "_maps/map_files/matthios_tomb/hallway/lampternhallway.dmm"
+	id = "lampternhallway"
+	width = 6
+	height = 20
+
+	north_offset = 3
+	south_offset = 3
+	east_offset = 9
+	west_offset = 9
+
+/datum/map_template/dungeon/hallway/longhall
+	mappath = "_maps/map_files/matthios_tomb/hallway/longhall.dmm"
+	id = "longhall"
+	width = 15
+	height = 6
+
+	east_offset = 2
+	west_offset = 2
+
+/datum/map_template/dungeon/hallway/northminedhall
+	mappath = "_maps/map_files/matthios_tomb/hallway/northminedhall.dmm"
+	id = "northminedhall"
+	width = 7
+	height = 20
+
+	north_offset = 3
+	south_offset = 3
+
+/datum/map_template/dungeon/hallway/right_left_floor_transition
+	mappath = "_maps/map_files/matthios_tomb/hallway/right left floor transition.dmm"
+	id = "right_left_floor_transition"
+	width = 8
+	height = 5
+
+	east_offset = 2
+	west_offset = 2
+
+/datum/map_template/dungeon/hallway/Crossjunction
+	mappath = "_maps/map_files/matthios_tomb/hallway/Crossjunction.dmm"
+	id = "Crossjunction"
+	width = 6
+	height = 6
+
+	east_offset = 3
+	west_offset = 3
+	north_offset = 3
+	south_offset = 3
+
+/datum/map_template/dungeon/hallway/Floortransition2
+	mappath = "_maps/map_files/matthios_tomb/hallway/Floortransition2.dmm"
+	id = "Floortransition2"
+	width = 5
+	height = 8
+
+	north_offset = 2
+	south_offset = 2
+
+/datum/map_template/dungeon/hallway/Hallwayeastwestplane
+	mappath = "_maps/map_files/matthios_tomb/hallway/Hallwayeastwestplane.dmm"
+	id = "Hallwayeastwestplane"
+	width = 15
+	height = 5
+
+	east_offset = 2
+	west_offset = 2
+
+/datum/map_template/dungeon/hallway/smallhallns
+	mappath = "_maps/map_files/matthios_tomb/hallway/smallhallns.dmm"
+	id = "smallhallns"
+	width = 3
+	height = 6
+
+	north_offset = 1
+	south_offset = 1

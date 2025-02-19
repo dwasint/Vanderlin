@@ -145,3 +145,44 @@
 	south_offset = 5
 	east_offset = 3
 	west_offset = 10
+
+/datum/map_template/dungeon/room/ForgottenInn
+	mappath = "_maps/map_files/matthios_tomb/room/ForgottenInn.dmm"
+	id = "ForgottenInn"
+	width = 20
+	height = 20
+
+	north_offset = 10
+	south_offset = 10
+	east_offset = 11
+	west_offset = 11
+
+/datum/map_template/dungeon/room/fightingpit
+	mappath = "_maps/map_files/matthios_tomb/room/fightingpit.dmm"
+	id = "fightingpit"
+	width = 20
+	height = 15
+
+	east_offset = 7
+	west_offset = 7
+
+/datum/map_template/dungeon/room/small_lab
+	mappath = "_maps/map_files/matthios_tomb/room/small lab.dmm"
+	id = "small_lab"
+	width = 20
+	height = 20
+
+	east_offset = 9
+	west_offset = 9
+	north_offset = 10
+	south_offset = 10
+
+/datum/map_template/dungeon/room/Allbutwesthall
+	mappath = "_maps/map_files/matthios_tomb/room/Allbutwesthall.dmm"
+	id = "Allbutwesthall"
+	width = 15
+	height = 15
+
+	east_offset = 7
+	north_offset = 7
+	south_offset = 7

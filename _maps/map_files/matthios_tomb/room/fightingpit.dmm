@@ -51,6 +51,10 @@
 "nc" = (
 /turf/closed/wall/mineral/rogue/wooddark,
 /area/rogue)
+"ni" = (
+/obj/effect/dungeon_directional_helper/east,
+/turf/open/floor/rogue/dirt,
+/area/rogue)
 "ox" = (
 /obj/machinery/light/rogue/torchholder/c,
 /turf/open/floor/rogue/dirt,
@@ -217,6 +221,10 @@
 	},
 /turf/open/floor/rogue/metal,
 /area/rogue)
+"Nv" = (
+/obj/effect/dungeon_directional_helper/west,
+/turf/open/floor/rogue/dirt,
+/area/rogue)
 "OI" = (
 /obj/structure/mineral_door/wood/donjon{
 	dir = 4
@@ -291,7 +299,7 @@ zM
 zM
 zM
 hz
-hz
+Nv
 hz
 zM
 zM
@@ -614,7 +622,7 @@ zM
 zM
 zM
 hz
-hz
+ni
 hz
 zM
 zM

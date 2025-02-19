@@ -40,7 +40,6 @@
 /area/rogue)
 "hq" = (
 /obj/structure/floordoor/gatehatch/inner,
-/obj/structure/fluff/walldeco/sign/saiga,
 /turf/open/floor/rogue/dirt,
 /area/rogue)
 "hr" = (
@@ -89,8 +88,8 @@
 /turf/closed/wall/mineral/rogue/decowood,
 /area/rogue)
 "mp" = (
-/obj/item/chair/rogue/crafted,
-/turf/open/floor/rogue/ruinedwood/spiralfade,
+/obj/effect/dungeon_directional_helper/south,
+/turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "mD" = (
 /obj/structure/fluff/walldeco/sign/saiga,
@@ -120,8 +119,15 @@
 	dir = 1
 	},
 /area/rogue)
+"qq" = (
+/obj/effect/dungeon_directional_helper/east,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue)
 "qI" = (
-/turf/open/floor/rogue/ruinedwood/spiral,
+/obj/structure/roguewindow/openclose{
+	dir = 4
+	},
+/turf/open/floor/rogue/ruinedwood/spiralfade,
 /area/rogue)
 "rv" = (
 /obj/machinery/light/rogue/torchholder/l,
@@ -235,6 +241,10 @@
 /obj/item/chair/stool/bar/rogue,
 /turf/open/floor/rogue/ruinedwood/spiralfade,
 /area/rogue)
+"GK" = (
+/obj/effect/dungeon_directional_helper/north,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue)
 "GW" = (
 /obj/structure/chair/bench/couch/redleft,
 /turf/open/floor/rogue/ruinedwood/spiralfade,
@@ -275,8 +285,8 @@
 /turf/open/transparent/openspace,
 /area/rogue)
 "IQ" = (
-/obj/structure/fluff/walldeco/innsign,
-/turf/closed/wall/mineral/rogue/stone/moss,
+/obj/effect/dungeon_directional_helper/west,
+/turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "Jg" = (
 /obj/structure/chair/stool/rogue{
@@ -468,7 +478,7 @@ bm
 bm
 bm
 bm
-KZ
+IQ
 KZ
 bm
 bm
@@ -507,15 +517,15 @@ bm
 KZ
 KZ
 Hp
+Hp
+Hp
+Hp
+Hp
 mD
-Hp
-Hp
-Hp
-Hp
 KZ
 KZ
 Hp
-Hp
+mD
 Hp
 Hp
 Hp
@@ -533,10 +543,10 @@ vs
 vs
 Ok
 vs
-IQ
+vs
 WZ
 WZ
-IQ
+vs
 vs
 Ok
 vs
@@ -561,7 +571,7 @@ Mk
 Mk
 Mk
 Mk
-mp
+Mk
 Mk
 vs
 Hp
@@ -646,12 +656,12 @@ Mk
 Mk
 Hp
 Hp
-mp
 Mk
 Mk
 Mk
 Mk
-IQ
+Mk
+vs
 Hp
 KZ
 bm
@@ -679,7 +689,7 @@ KZ
 KZ
 "}
 (11,1,1) = {"
-KZ
+GK
 KZ
 KZ
 WZ
@@ -698,7 +708,7 @@ Mk
 WZ
 KZ
 KZ
-KZ
+mp
 "}
 (12,1,1) = {"
 bm
@@ -717,7 +727,7 @@ Pc
 Pc
 Pc
 Pc
-IQ
+vs
 Hp
 Hp
 bm
@@ -885,7 +895,7 @@ bm
 bm
 bm
 bm
-KZ
+qq
 KZ
 bm
 bm

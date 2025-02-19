@@ -2,6 +2,16 @@
 "a" = (
 /turf/closed/mineral/rogue/bedrock,
 /area/rogue)
+"q" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/dungeon_directional_helper/west,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue)
+"y" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/dungeon_directional_helper/east,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue)
 "z" = (
 /obj/structure/kneestingers,
 /turf/open/floor/rogue/naturalstone,
@@ -27,7 +37,7 @@
 (1,1,1) = {"
 a
 H
-I
+q
 H
 a
 "}
@@ -125,7 +135,7 @@ a
 (15,1,1) = {"
 a
 H
-I
+y
 H
 a
 "}

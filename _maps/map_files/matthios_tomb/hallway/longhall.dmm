@@ -95,6 +95,7 @@
 /obj/effect/decal/cleanable/blood/footprints{
 	dir = 8
 	},
+/obj/effect/dungeon_directional_helper/west,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "K" = (
@@ -120,6 +121,14 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "W" = (
+/turf/open/floor/rogue/naturalstone,
+/area/rogue)
+"X" = (
+/obj/item/reagent_containers/food/snacks/rogue/meat/steak{
+	pixel_x = 8;
+	pixel_y = 14
+	},
+/obj/effect/dungeon_directional_helper/east,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "Z" = (
@@ -243,7 +252,7 @@ a
 a
 W
 W
-p
+X
 W
 a
 "}

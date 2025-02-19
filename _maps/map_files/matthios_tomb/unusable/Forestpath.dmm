@@ -49,6 +49,14 @@
 "L" = (
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
+"M" = (
+/obj/effect/dungeon_directional_helper/west,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue)
+"V" = (
+/obj/effect/dungeon_directional_helper/east,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue)
 "Y" = (
 /turf/open/floor/rogue/dirt/ambush,
 /area/rogue)
@@ -57,7 +65,7 @@
 E
 C
 C
-C
+M
 C
 C
 C
@@ -197,7 +205,7 @@ E
 E
 C
 C
-C
+V
 C
 C
 C

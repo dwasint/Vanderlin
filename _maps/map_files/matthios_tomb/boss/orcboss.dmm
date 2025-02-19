@@ -170,15 +170,6 @@
 /area/rogue)
 "JC" = (
 /obj/structure/table/vtable/v2,
-/obj/item/roguegem/random,
-/obj/item/roguegem/random{
-	pixel_x = -16;
-	pixel_y = 6
-	},
-/obj/item/roguegem/random{
-	pixel_y = 8;
-	pixel_x = 6
-	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue)
 "JV" = (

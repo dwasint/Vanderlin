@@ -2,12 +2,21 @@
 "a" = (
 /turf/open/floor/rogue/dirt,
 /area/rogue)
+"h" = (
+/obj/structure/kneestingers,
+/obj/effect/dungeon_directional_helper/south,
+/turf/open/floor/rogue/dirt,
+/area/rogue)
 "j" = (
 /obj/item/restraints/legcuffs/beartrap/armed/camouflage,
 /turf/open/floor/rogue/dirt,
 /area/rogue)
 "k" = (
 /obj/structure/kneestingers,
+/turf/open/floor/rogue/dirt,
+/area/rogue)
+"l" = (
+/obj/effect/dungeon_directional_helper/north,
 /turf/open/floor/rogue/dirt,
 /area/rogue)
 "n" = (
@@ -57,14 +66,14 @@ a
 a
 "}
 (3,1,1) = {"
-a
+l
 k
 a
 j
 Q
 j
 k
-k
+h
 "}
 (4,1,1) = {"
 a

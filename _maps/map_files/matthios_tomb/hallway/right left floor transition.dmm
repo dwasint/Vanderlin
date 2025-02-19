@@ -2,6 +2,14 @@
 "a" = (
 /turf/closed/mineral/rogue/bedrock,
 /area/rogue)
+"i" = (
+/obj/effect/dungeon_directional_helper/west,
+/turf/open/floor/rogue/dirt,
+/area/rogue)
+"n" = (
+/obj/effect/dungeon_directional_helper/east,
+/turf/open/floor/rogue/dirt,
+/area/rogue)
 "s" = (
 /turf/open/transparent/openspace,
 /area/rogue)
@@ -41,7 +49,7 @@
 (1,1,1) = {"
 a
 U
-U
+i
 U
 a
 "}
@@ -90,7 +98,7 @@ a
 (8,1,1) = {"
 a
 U
-U
+n
 U
 a
 "}

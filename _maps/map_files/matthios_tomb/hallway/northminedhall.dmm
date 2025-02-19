@@ -34,6 +34,10 @@
 /obj/item/rogueweapon/axe/stone,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
+"k" = (
+/obj/effect/dungeon_directional_helper/south,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue)
 "l" = (
 /obj/item/natural/stone{
 	pixel_x = 7;
@@ -100,6 +104,10 @@
 /obj/item/clothing/head/roguetown/antlerhood{
 	pixel_x = 11
 	},
+/turf/open/floor/rogue/naturalstone,
+/area/rogue)
+"H" = (
+/obj/effect/dungeon_directional_helper/north,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "I" = (
@@ -202,13 +210,13 @@ I
 e
 "}
 (4,1,1) = {"
-e
-e
-I
-a
+H
 e
 I
 a
+e
+I
+a
 I
 e
 e
@@ -221,7 +229,7 @@ e
 I
 e
 a
-e
+k
 "}
 (5,1,1) = {"
 e

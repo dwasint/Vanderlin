@@ -50,6 +50,10 @@
 /obj/structure/bed/rogue/shit,
 /turf/open/floor/rogue/ruinedwood/turned/darker,
 /area/rogue)
+"K" = (
+/obj/effect/dungeon_directional_helper/south,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue)
 "L" = (
 /obj/structure/mineral_door/wood/donjon/stone,
 /turf/open/floor/rogue/ruinedwood/turned/darker,
@@ -59,8 +63,16 @@
 /obj/item/flashlight/flare/torch/lantern,
 /turf/open/floor/rogue/ruinedwood/turned/darker,
 /area/rogue)
+"N" = (
+/obj/effect/dungeon_directional_helper/north,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue)
 "O" = (
 /turf/closed/wall/mineral/rogue/wooddark/slitted,
+/area/rogue)
+"P" = (
+/obj/effect/dungeon_directional_helper/west,
+/turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "Q" = (
 /obj/structure/fluff/walldeco/vinez,
@@ -85,7 +97,7 @@ i
 i
 i
 a
-a
+P
 a
 a
 i
@@ -211,10 +223,10 @@ a
 a
 a
 a
-a
+K
 "}
 (9,1,1) = {"
-a
+N
 a
 a
 a

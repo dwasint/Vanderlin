@@ -34,3 +34,13 @@
 	south_offset = 3
 	east_offset = 2
 	west_offset = 5
+
+/datum/map_template/dungeon/rest/largehallway
+	mappath = "_maps/map_files/matthios_tomb/entry/largehallway.dmm"
+	id = "largehallway"
+	width = 15
+	height = 15
+
+	north_offset = 8
+	south_offset = 7
+	west_offset = 7
