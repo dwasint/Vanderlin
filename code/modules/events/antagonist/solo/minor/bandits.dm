@@ -61,6 +61,7 @@
 		SSmapping.retainer.bandits |= antag_mind.current
 		antag_mind.add_antag_datum(/datum/antagonist/bandit)
 
+		SSrole_class_handler.setup_class_handler(antag_mind.current, list(CTAG_BANDIT = 20))
 		antag_mind.current:advsetup = TRUE
 		antag_mind.current.hud_used?.set_advclass()
 
