@@ -186,3 +186,47 @@
 	east_offset = 7
 	north_offset = 7
 	south_offset = 7
+
+/datum/map_template/dungeon/room/Bathhouse_Dungeon
+	mappath = "_maps/map_files/matthios_tomb/room/Bathhouse Dungeon.dmm"
+	id = "Bathhouse_Dungeon"
+	width = 30
+	height = 30
+
+	west_offset = 14
+	east_offset = 14
+	north_offset = 15
+	south_offset = 15
+
+/datum/map_template/dungeon/room/lava_small
+	mappath = "_maps/map_files/matthios_tomb/room/Lava Small.dmm"
+	id = "lava_small"
+	width = 10
+	height = 10
+
+	west_offset = 5
+	east_offset = 5
+	north_offset = 5
+	south_offset = 5
+
+/datum/map_template/dungeon/room/lava_medium
+	mappath = "_maps/map_files/matthios_tomb/room/Lava Medium.dmm"
+	id = "lava_medium"
+	width = 15
+	height = 15
+
+	west_offset = 7
+	east_offset = 7
+	north_offset = 7
+	south_offset = 7
+
+/datum/map_template/dungeon/room/lava_large
+	mappath = "_maps/map_files/matthios_tomb/room/Lava Large.dmm"
+	id = "lava_large"
+	width = 20
+	height = 20
+
+	west_offset = 9
+	east_offset = 9
+	north_offset = 10
+	south_offset = 10

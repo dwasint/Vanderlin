@@ -1,0 +1,52 @@
+"a" = (/turf/closed/mineral/rogue/bedrock,/area/rogue/under/cave)
+"d" = (/turf/open/floor/rogue/naturalstone,/area/rogue/under/cave)
+"k" = (/mob/living/carbon/human/species/goblin/npc/ambush/cave,/turf/open/floor/rogue/volcanic,/area/rogue/under/cave)
+"n" = (/mob/living/carbon/human/species/goblin/npc/ambush/cave,/turf/open/floor/rogue/naturalstone,/area/rogue/under/cave)
+"o" = (/turf/open/floor/rogue/volcanic,/area/rogue/under/cave)
+"t" = (/obj/item/natural/rock/random_ore,/turf/open/floor/rogue/volcanic,/area/rogue/under/cave)
+"A" = (/obj/effect/dungeon_directional_helper/south,/turf/open/floor/rogue/naturalstone,/area/rogue/under/cave)
+"B" = (/obj/effect/dungeon_directional_helper/east,/turf/open/floor/rogue/volcanic,/area/rogue/under/cave)
+"D" = (/obj/structure/stairs/stone/reddish{dir = 8},/turf/open/transparent/openspace,/area/rogue/under/cave)
+"I" = (/mob/living/carbon/human/species/goblin/npc/ambush/cave,/obj/item/natural/rock/random_ore,/turf/open/floor/rogue/naturalstone,/area/rogue/under/cave)
+"M" = (/obj/structure/stairs/stone/reddish{dir = 8},/turf/open/floor/rogue/naturalstone,/area/rogue/under/cave)
+"Q" = (/obj/effect/dungeon_directional_helper/west,/turf/open/floor/rogue/naturalstone,/area/rogue/under/cave)
+"S" = (/obj/item/natural/rock/gemerald,/turf/open/floor/rogue/volcanic,/area/rogue/under/cave)
+"U" = (/obj/effect/dungeon_directional_helper/north,/turf/open/floor/rogue/volcanic,/area/rogue/under/cave)
+"W" = (/turf/open/transparent/openspace,/area/rogue/under/cave)
+"X" = (/obj/item/natural/rock/random_ore,/turf/open/floor/rogue/naturalstone,/area/rogue/under/cave)
+"Y" = (/turf/open/lava,/area/rogue/under/cave)
+
+(1,1,1) = {"
+aaaaaadUooaaaaa
+aaaaaaddooXXaaa
+aaaaYaodotadYYa
+aaaYYYdooaaoYaa
+aadttddodYotaaa
+aodatododdooXYa
+oodaookooooddoo
+QdoooaaXdkdaodB
+doooaaMnddododo
+oodaaaModttodda
+aodXaaaodoaaaYa
+aadtdaadotYaaaa
+aaYodXoooYYaaaa
+aYYaaooddYaaaaa
+aaaaaaoAdaaaaaa
+"}
+(1,1,2) = {"
+aaaaaaddotaaaaa
+aaaaaaXddootaaa
+aaaaWaXdoSaoWWa
+aaaWWWddoaadWaa
+aaotddddoWddaaa
+atoaoodoodoaaaa
+ottadoooodootdd
+oddddnaaoodotoo
+dddddDWaaIaaood
+adoooDWaaaaaoda
+aaaooodaaaaadWa
+aaaSodddaaWXdaa
+aaWSaaddoWWXaaa
+aWWaaadooWXaaaa
+aaaaaaoooaaaaaa
+"}

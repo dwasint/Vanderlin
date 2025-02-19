@@ -221,3 +221,69 @@
 
 	north_offset = 1
 	south_offset = 1
+
+/datum/map_template/dungeon/hallway/wild_dungeon_small
+	mappath = "_maps/map_files/matthios_tomb/hallway/Wild Dungeon Small.dmm"
+	id = "wild_dungeon_small"
+	width = 10
+	height = 10
+
+	north_offset = 5
+	south_offset = 5
+	east_offset = 5
+	west_offset = 4
+
+/datum/map_template/dungeon/hallway/wild_dungeon_medium
+	mappath = "_maps/map_files/matthios_tomb/hallway/Wild Dungeon Medium.dmm"
+	id = "wild_dungeon_medium"
+	width = 15
+	height = 15
+
+	north_offset = 7
+	south_offset = 7
+	east_offset = 7
+	west_offset = 7
+
+/datum/map_template/dungeon/hallway/wild_dungeon_large
+	mappath = "_maps/map_files/matthios_tomb/hallway/Wild Dungeon Large.dmm"
+	id = "wild_dungeon_large"
+	width = 20
+	height = 20
+
+	north_offset = 9
+	south_offset = 9
+	east_offset = 10
+	west_offset = 10
+
+/datum/map_template/dungeon/hallway/puzzle_dungeon_small
+	mappath = "_maps/map_files/matthios_tomb/hallway/Puzzle Trap Small.dmm"
+	id = "puzzle_dungeon_small"
+	width = 10
+	height = 10
+
+	north_offset = 5
+	south_offset = 5
+	east_offset = 4
+	west_offset = 5
+
+/datum/map_template/dungeon/hallway/puzzle_dungeon_medium
+	mappath = "_maps/map_files/matthios_tomb/hallway/Puzzle Trap Medium.dmm"
+	id = "puzzle_dungeon_medium"
+	width = 15
+	height = 15
+
+	north_offset = 7
+	south_offset = 7
+	east_offset = 7
+	west_offset = 7
+
+/datum/map_template/dungeon/hallway/puzzle_dungeon_large
+	mappath = "_maps/map_files/matthios_tomb/hallway/Puzzle Trap Large.dmm"
+	id = "puzzle_dungeon_large"
+	width = 20
+	height = 20
+
+	north_offset = 10
+	south_offset = 10
+	east_offset = 10
+	west_offset = 10
