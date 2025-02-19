@@ -1,8 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "al" = (
-/obj/structure/flora/roguegrass/water,
 /obj/effect/waterfall,
-/turf/open/water/river,
+/turf/closed/wall/mineral/rogue/stone/moss,
 /area/rogue/indoors)
 "aD" = (
 /obj/structure/bookcase/random,
@@ -355,7 +354,7 @@
 "KF" = (
 /obj/effect/waterfall,
 /turf/open/water/river{
-	dir = 1
+	dir = 8
 	},
 /area/rogue/indoors)
 "KQ" = (
@@ -371,10 +370,10 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
 "LJ" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/roguegrass/water/reeds,
 /obj/effect/waterfall,
 /turf/open/water/river{
-	dir = 1
+	dir = 4
 	},
 /area/rogue/indoors)
 "LP" = (
@@ -648,8 +647,8 @@ Wy
 rL
 uf
 dx
-JN
-RU
+iM
+LJ
 dx
 bZ
 bZ
@@ -657,8 +656,8 @@ bx
 dx
 GY
 Zk
-KF
-nS
+Zk
+al
 uf
 tm
 tm
@@ -717,8 +716,8 @@ rL
 mA
 nF
 nF
-al
-iM
+NG
+JN
 iM
 Bi
 qD
@@ -786,8 +785,8 @@ nS
 MG
 Kr
 mA
-LJ
-bx
+nF
+KF
 dx
 BF
 uf
@@ -802,8 +801,8 @@ nS
 ym
 MO
 nS
-JN
 iM
+JN
 GY
 NG
 bX
