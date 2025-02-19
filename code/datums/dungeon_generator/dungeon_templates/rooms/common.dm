@@ -318,3 +318,60 @@
 	east_offset = 15
 	north_offset = 15
 	south_offset = 15
+
+/datum/map_template/dungeon/room/goblincamp
+	mappath = "_maps/map_files/matthios_tomb/room/goblincamp.dmm"
+	id = "goblincamp"
+	width = 30
+	height = 30
+
+	west_offset = 15
+	east_offset = 15
+	north_offset = 13
+	south_offset = 13
+
+/datum/map_template/dungeon/room/rousecamp
+	mappath = "_maps/map_files/matthios_tomb/room/rousecamp.dmm"
+	id = "rousecamp"
+	width = 30
+	height = 30
+
+	west_offset = 14
+	east_offset = 14
+	north_offset = 15
+	south_offset = 15
+
+/datum/map_template/dungeon/room/queensretreat
+	mappath = "_maps/map_files/matthios_tomb/room/queensretreat.dmm"
+	id = "queensretreat"
+	width = 30
+	height = 30
+
+	west_offset = 15
+	east_offset = 15
+	north_offset = 14
+	south_offset = 14
+
+/datum/map_template/dungeon/room/lavafort
+	mappath = "_maps/map_files/matthios_tomb/room/lavafort.dmm"
+	id = "lavafort"
+	width = 30
+	height = 30
+
+	west_offset = 15
+	east_offset = 15
+	north_offset = 14
+	south_offset = 14
+
+/datum/map_template/dungeon/room/magicanvil
+	mappath = "_maps/map_files/matthios_tomb/room/magicanvil.dmm"
+	id = "magicanvil"
+	width = 30
+	height = 30
+
+	rarity = 20
+
+	west_offset = 13
+	east_offset = 12
+	north_offset = 14
+	south_offset = 15

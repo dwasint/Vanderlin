@@ -336,7 +336,7 @@ SUBSYSTEM_DEF(dungeon_generator)
 
 		picking = FALSE
 		created_since++
-	if(ispath(picked_type, /datum/map_template/dungeon/entry))
+	if(picked_type == /datum/map_template/dungeon/entry)
 		created_since = 0
 		unlinked_dungeon_length--
 	return TRUE
