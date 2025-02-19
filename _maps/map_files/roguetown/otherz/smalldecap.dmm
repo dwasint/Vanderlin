@@ -715,9 +715,7 @@
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/under/cavelava)
 "pG" = (
-/turf/open/lava/flow{
-	dir = 4
-	},
+/turf/open/lava/flow,
 /area/rogue/outdoors/mountains/decap)
 "pK" = (
 /obj/effect/decal/cleanable/dirt/dust,
@@ -34666,7 +34664,7 @@ kb
 Xk
 Xk
 es
-pX
+pG
 pG
 kb
 kb
@@ -34793,13 +34791,13 @@ pt
 pt
 pt
 kb
-pX
-pX
-pX
-pX
-pX
-pX
-pX
+pG
+pG
+pG
+pG
+pG
+pG
+pG
 yl
 yl
 yl
@@ -34920,10 +34918,10 @@ pt
 pt
 pt
 pt
-pX
-pX
-pX
-pX
+pG
+pG
+pG
+pG
 pX
 Ks
 kb
