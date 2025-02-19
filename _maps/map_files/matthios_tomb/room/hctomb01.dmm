@@ -16,8 +16,8 @@
 /area/rogue)
 "bi" = (
 /obj/structure/winch{
-	gid = hctomb01;
-	redstone_id = hctomb01
+	gid = "hctomb01";
+	redstone_id = "hctomb01"
 	},
 /turf/open/floor/rogue/metal/barograte,
 /area/rogue)
@@ -630,8 +630,8 @@
 /area/rogue)
 "MY" = (
 /obj/structure/gate/bars{
-	gid = hctomb01;
-	redstone_id = hctomb01
+	gid = "hctomb01";
+	redstone_id = "hctomb01"
 	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)

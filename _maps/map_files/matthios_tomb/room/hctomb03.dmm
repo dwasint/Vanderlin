@@ -288,7 +288,7 @@
 /area/rogue)
 "kF" = (
 /obj/structure/lever/hidden{
-	redstone_id = hctomb03sdA
+	redstone_id = "hctomb03sdA"
 	},
 /turf/closed/wall/mineral/rogue/craftstone,
 /area/rogue)
@@ -331,7 +331,7 @@
 	vip_message = "Miner";
 	vips = list("Miner");
 	name = "DF Secret Door";
-	redstone_id = hctomb03sdC;
+	redstone_id = "hctomb03sdC";
 	floor_turf = /turf/open/floor/rogue/churchrough
 	},
 /turf/closed/wall/mineral/rogue/decostone,
@@ -439,7 +439,7 @@
 	vip_message = "Miner";
 	vips = list("Miner");
 	name = "DF Secret Door";
-	redstone_id = hctomb03sdB;
+	redstone_id = "hctomb03sdB";
 	floor_turf = /turf/open/floor/rogue/blocks/stonered/tiny
 	},
 /turf/closed/wall/mineral/rogue/craftstone,
@@ -456,7 +456,7 @@
 	vip_message = "Miner";
 	vips = list("Miner");
 	name = "DF Secret Door";
-	redstone_id = hctomb03sdD;
+	redstone_id = "hctomb03sdD";
 	floor_turf = /turf/open/floor/rogue/blocks/stonered/tiny
 	},
 /turf/closed/wall/mineral/rogue/craftstone,
@@ -727,7 +727,7 @@
 	vip_message = "Miner";
 	vips = list("Miner");
 	name = "DF Secret Door";
-	redstone_id = hctomb03sdA;
+	redstone_id = "hctomb03sdA";
 	floor_turf = /turf/open/floor/rogue/blocks/stonered/tiny
 	},
 /turf/closed/wall/mineral/rogue/craftstone,
@@ -814,7 +814,7 @@
 /area/rogue)
 "DY" = (
 /obj/structure/lever/hidden{
-	redstone_id = hctomb03sdB
+	redstone_id = "hctomb03sdB"
 	},
 /turf/closed/wall/mineral/rogue/craftstone,
 /area/rogue)
@@ -1082,7 +1082,7 @@
 "Pd" = (
 /obj/structure/lever/wall{
 	dir = 4;
-	redstone_id = hctomb03drop
+	redstone_id = "hctomb03drop"
 	},
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue)
@@ -1277,7 +1277,7 @@
 /area/rogue)
 "Up" = (
 /obj/structure/floordoor{
-	redstone_id = hctomb03drop
+	redstone_id = "hctomb03drop"
 	},
 /turf/open/transparent/openspace,
 /area/rogue)
@@ -1383,7 +1383,7 @@
 /area/rogue)
 "Wf" = (
 /obj/structure/lever/hidden{
-	redstone_id = hctomb03sdC
+	redstone_id = "hctomb03sdC"
 	},
 /turf/closed/wall/mineral/rogue/decostone,
 /area/rogue)
@@ -1400,7 +1400,7 @@
 /area/rogue)
 "WI" = (
 /obj/structure/lever/hidden{
-	redstone_id = hctomb03sdD
+	redstone_id = "hctomb03sdD"
 	},
 /turf/closed/wall/mineral/rogue/craftstone,
 /area/rogue)
