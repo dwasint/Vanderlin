@@ -230,3 +230,91 @@
 	east_offset = 9
 	north_offset = 10
 	south_offset = 10
+
+/datum/map_template/dungeon/room/DarkCorridors
+	mappath = "_maps/map_files/matthios_tomb/room/DarkCorridors.dmm"
+	id = "DarkCorridors"
+	width = 30
+	height = 30
+
+	west_offset = 14
+	east_offset = 14
+	north_offset = 14
+	south_offset = 14
+
+/datum/map_template/dungeon/room/GoblinInfestedJoint
+	mappath = "_maps/map_files/matthios_tomb/room/GoblinInfestedJoint.dmm"
+	id = "GoblinInfestedJoint"
+	width = 30
+	height = 30
+
+	west_offset = 14
+	east_offset = 14
+	north_offset = 14
+	south_offset = 14
+
+/datum/map_template/dungeon/room/SmallChurch
+	mappath = "_maps/map_files/matthios_tomb/room/SmallChurch.dmm"
+	id = "SmallChurch"
+	width = 30
+	height = 30
+
+	west_offset = 14
+	east_offset = 14
+	north_offset = 14
+	south_offset = 14
+
+/datum/map_template/dungeon/room/TheatherOfSadism
+	mappath = "_maps/map_files/matthios_tomb/room/TheatherOfSadism.dmm"
+	id = "TheatherOfSadism"
+	width = 30
+	height = 30
+
+	west_offset = 14
+	east_offset = 14
+	north_offset = 14
+	south_offset = 14
+
+/datum/map_template/dungeon/room/TownRuins
+	mappath = "_maps/map_files/matthios_tomb/room/TownRuins.dmm"
+	id = "TownRuins"
+	width = 30
+	height = 30
+
+	west_offset = 14
+	east_offset = 14
+	north_offset = 14
+	south_offset = 14
+
+/datum/map_template/dungeon/room/hctomb1
+	mappath = "_maps/map_files/matthios_tomb/room/hctomb1.dmm"
+	id = "hctomb1"
+	width = 30
+	height = 30
+
+	west_offset = 15
+	east_offset = 15
+	north_offset = 14
+	south_offset = 14
+
+/datum/map_template/dungeon/room/hctomb2
+	mappath = "_maps/map_files/matthios_tomb/room/hctomb2.dmm"
+	id = "hctomb2"
+	width = 30
+	height = 30
+
+	west_offset = 15
+	east_offset = 15
+	north_offset = 15
+	south_offset = 15
+
+/datum/map_template/dungeon/room/hctomb3
+	mappath = "_maps/map_files/matthios_tomb/room/hctomb3.dmm"
+	id = "hctomb3"
+	width = 30
+	height = 30
+
+	west_offset = 15
+	east_offset = 15
+	north_offset = 15
+	south_offset = 15
