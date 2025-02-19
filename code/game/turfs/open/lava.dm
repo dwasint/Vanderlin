@@ -22,6 +22,9 @@
 	neighborlay_override = "lavedge"
 	turf_flags = NONE
 
+/turf/open/lava/flow
+	icon_state = "flowing-lava"
+
 /turf/open/lava/Initialize()
 	. = ..()
 	dir = pick(GLOB.cardinals)
