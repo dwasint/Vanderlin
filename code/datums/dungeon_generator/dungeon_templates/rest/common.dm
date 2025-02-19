@@ -44,3 +44,14 @@
 	north_offset = 8
 	south_offset = 7
 	west_offset = 7
+
+/datum/map_template/dungeon/rest/farm
+	mappath = "_maps/map_files/matthios_tomb/entry/farm.dmm"
+	id = "farm"
+	width = 15
+	height = 15
+	rarity = 400
+
+	east_offset = 4
+	south_offset = 7
+	west_offset = 9
