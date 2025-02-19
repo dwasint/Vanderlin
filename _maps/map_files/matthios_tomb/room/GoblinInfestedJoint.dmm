@@ -88,7 +88,7 @@
 /obj/effect/decal/cleanable/blood,
 /obj/item/natural/stone{
 	pixel_x = 5;
-	pixel_y = D
+	pixel_y = 0;
 	},
 /turf/open/floor/rogue/cobble/alt,
 /area/rogue)
