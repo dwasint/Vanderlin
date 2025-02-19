@@ -300,6 +300,9 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cavelava)
+"gS" = (
+/turf/closed/wall/mineral/rogue/tent,
+/area/rogue/outdoors/mountains/decap)
 "gU" = (
 /obj/structure/stairs/stone{
 	dir = 8
@@ -1008,6 +1011,10 @@
 "xO" = (
 /turf/closed/mineral/random/rogue/high,
 /area/rogue/outdoors/caves)
+"xT" = (
+/obj/item/recipe_book/survival,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/mountains/decap)
 "xV" = (
 /turf/closed/wall/mineral/rogue/craftstone,
 /area/rogue/outdoors/mountains/decap)
@@ -1070,6 +1077,10 @@
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/mountains/deception)
+"zy" = (
+/obj/structure/bed/rogue/hay,
+/turf/open/floor/rogue/cobble/mossy,
+/area/rogue/outdoors/mountains/decap)
 "zE" = (
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/mountains/decap)
@@ -1123,6 +1134,10 @@
 "AK" = (
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/mountains)
+"AN" = (
+/obj/structure/roguetent/preopen,
+/turf/open/floor/rogue/dirt,
+/area/rogue/outdoors/mountains/decap)
 "AV" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/closet/crate/chest/old_crate,
@@ -1887,6 +1902,10 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cavelava)
+"Uu" = (
+/obj/machinery/light/rogue/campfire/densefire,
+/turf/open/floor/rogue/cobble/mossy,
+/area/rogue/outdoors/mountains/decap)
 "Uv" = (
 /turf/closed/mineral/random/rogue/med,
 /area/rogue/under/cavelava)
@@ -33229,9 +33248,9 @@ pt
 pt
 pt
 pt
-pt
-pt
-pt
+gS
+gS
+gS
 pt
 pt
 HV
@@ -33359,9 +33378,9 @@ pt
 pt
 pt
 pt
-pt
-pt
-pt
+gS
+zy
+AN
 pt
 pt
 pt
@@ -33489,10 +33508,10 @@ pt
 pt
 PX
 pt
-pt
-pt
-pt
-pt
+gS
+gS
+xT
+iP
 Lq
 lj
 lj
@@ -34273,7 +34292,7 @@ GM
 gY
 gY
 gY
-iP
+Uu
 jm
 gY
 jm
