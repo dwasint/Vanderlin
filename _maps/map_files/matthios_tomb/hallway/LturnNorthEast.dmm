@@ -2,8 +2,16 @@
 "a" = (
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
+"l" = (
+/obj/effect/dungeon_directional_helper/east,
+/turf/open/floor/rogue/hexstone,
+/area/rogue)
 "n" = (
 /turf/closed/wall/mineral/rogue/craftstone,
+/area/rogue)
+"U" = (
+/obj/effect/dungeon_directional_helper/north,
+/turf/open/floor/rogue/hexstone,
 /area/rogue)
 
 (1,1,1) = {"
@@ -14,7 +22,7 @@ n
 n
 "}
 (2,1,1) = {"
-a
+U
 a
 a
 a
@@ -37,7 +45,7 @@ n
 (5,1,1) = {"
 n
 n
-a
+l
 a
 n
 "}

@@ -52,6 +52,7 @@
 /area/rogue/outdoors/caves)
 "q" = (
 /obj/structure/mineral_door/wood/violet,
+/obj/effect/dungeon_directional_helper/west,
 /turf/open/floor/rogue/cobblerock/alt,
 /area/rogue/outdoors/caves)
 "s" = (
@@ -103,8 +104,18 @@
 /obj/structure/spider/stickyweb,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/outdoors/caves)
+"C" = (
+/obj/structure/mineral_door/wood/violet,
+/obj/effect/dungeon_directional_helper/east,
+/turf/open/floor/rogue/cobblerock/alt,
+/area/rogue/outdoors/caves)
 "D" = (
 /obj/machinery/light/rogue/wallfire/candle/blue/r,
+/obj/effect/dungeon_directional_helper/north,
+/turf/open/floor/rogue/cobblerock/alt,
+/area/rogue/outdoors/caves)
+"E" = (
+/obj/effect/dungeon_directional_helper/south,
 /turf/open/floor/rogue/cobblerock/alt,
 /area/rogue/outdoors/caves)
 "F" = (
@@ -170,7 +181,7 @@ v
 K
 f
 o
-v
+E
 "}
 (3,1,1) = {"
 D
@@ -196,7 +207,7 @@ c
 c
 c
 c
-q
+C
 c
 c
 c

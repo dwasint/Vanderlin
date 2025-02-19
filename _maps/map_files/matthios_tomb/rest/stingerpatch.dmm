@@ -7,12 +7,28 @@
 /obj/structure/kneestingers,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
+"u" = (
+/obj/effect/dungeon_directional_helper/west,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue)
 "y" = (
 /obj/structure/kneestingers,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
+"C" = (
+/obj/effect/dungeon_directional_helper/south,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue)
 "I" = (
 /obj/structure/ladder/earth,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue)
+"J" = (
+/obj/effect/dungeon_directional_helper/east,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue)
+"N" = (
+/obj/effect/dungeon_directional_helper/north,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "O" = (
@@ -28,7 +44,7 @@ a
 a
 Y
 Y
-Y
+u
 Y
 a
 a
@@ -71,7 +87,7 @@ a
 Y
 "}
 (5,1,1) = {"
-Y
+N
 y
 y
 y
@@ -80,7 +96,7 @@ y
 y
 y
 Y
-Y
+C
 "}
 (6,1,1) = {"
 Y
@@ -135,7 +151,7 @@ a
 a
 a
 Y
-Y
+J
 Y
 Y
 a

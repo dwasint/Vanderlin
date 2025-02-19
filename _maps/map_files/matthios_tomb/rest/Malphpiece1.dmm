@@ -39,6 +39,14 @@
 "j" = (
 /turf/closed/wall/mineral/rogue/wooddark/horizontal,
 /area/rogue/outdoors/caves)
+"l" = (
+/obj/effect/dungeon_directional_helper/south,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/caves)
+"m" = (
+/obj/effect/dungeon_directional_helper/north,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/caves)
 "o" = (
 /obj/structure/bookcase/random/legends,
 /turf/open/floor/rogue/ruinedwood/chevron,
@@ -115,6 +123,10 @@
 /obj/structure/bed/rogue/shit,
 /turf/open/floor/rogue/cobblerock/alt,
 /area/rogue/outdoors/caves)
+"S" = (
+/obj/effect/dungeon_directional_helper/west,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/caves)
 "V" = (
 /turf/open/floor/rogue/ruinedwood/chevron,
 /area/rogue/outdoors/caves)
@@ -126,11 +138,15 @@
 /obj/structure/bed/rogue/inn/double,
 /turf/open/floor/rogue/ruinedwood/chevron,
 /area/rogue/outdoors/caves)
+"Y" = (
+/obj/effect/dungeon_directional_helper/east,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/caves)
 
 (1,1,1) = {"
 z
 z
-a
+S
 z
 z
 z
@@ -148,7 +164,7 @@ a
 z
 "}
 (3,1,1) = {"
-a
+m
 a
 a
 a
@@ -165,7 +181,7 @@ z
 a
 a
 a
-a
+l
 "}
 (5,1,1) = {"
 z
@@ -203,7 +219,7 @@ z
 z
 z
 z
-a
+Y
 z
 z
 "}

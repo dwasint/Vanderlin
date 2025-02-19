@@ -5,6 +5,18 @@
 "n" = (
 /turf/closed/wall/mineral/rogue/craftstone,
 /area/rogue)
+"y" = (
+/obj/effect/dungeon_directional_helper/north,
+/turf/open/floor/rogue/hexstone,
+/area/rogue)
+"N" = (
+/obj/effect/dungeon_directional_helper/south,
+/turf/open/floor/rogue/hexstone,
+/area/rogue)
+"W" = (
+/obj/effect/dungeon_directional_helper/east,
+/turf/open/floor/rogue/hexstone,
+/area/rogue)
 
 (1,1,1) = {"
 n
@@ -23,12 +35,12 @@ n
 n
 "}
 (3,1,1) = {"
+y
 a
 a
 a
 a
-a
-a
+N
 "}
 (4,1,1) = {"
 a
@@ -50,7 +62,7 @@ n
 n
 n
 a
-a
+W
 n
 n
 "}

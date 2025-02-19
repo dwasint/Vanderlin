@@ -79,10 +79,6 @@
 /obj/structure/flora/roguegrass/swampweed,
 /turf/open/floor/rogue/dirt/ambush,
 /area/rogue/outdoors/caves)
-"pv" = (
-/obj/structure/fluff/dryingrack,
-/turf/open/floor/rogue/blocks/paving/vert,
-/area/rogue/outdoors/caves)
 "pY" = (
 /obj/machinery/light/rogue/torchholder/c,
 /turf/open/floor/rogue/dirt/ambush,
@@ -376,7 +372,7 @@ en
 en
 wC
 nl
-pv
+AH
 en
 pY
 yG

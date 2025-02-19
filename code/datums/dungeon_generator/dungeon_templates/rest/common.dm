@@ -1,0 +1,36 @@
+/datum/map_template/dungeon/rest
+	abstract_type = /datum/map_template/dungeon/rest
+	type_weight = 1
+
+/datum/map_template/dungeon/rest/snackplatter
+	mappath = "_maps/map_files/matthios_tomb/entry/snackplatter.dmm"
+	id = "snackplatter"
+	width = 9
+	height = 9
+
+	north_offset = 4
+	south_offset = 4
+	east_offset = 4
+	west_offset = 4
+
+/datum/map_template/dungeon/rest/stingerpatch
+	mappath = "_maps/map_files/matthios_tomb/entry/stingerpatch.dmm"
+	id = "stingerpatch"
+	width = 10
+	height = 10
+
+	north_offset = 4
+	south_offset = 4
+	east_offset = 5
+	west_offset = 4
+
+/datum/map_template/dungeon/rest/Malphpiece1
+	mappath = "_maps/map_files/matthios_tomb/entry/Malphpiece1.dmm"
+	id = "Malphpiece1"
+	width = 8
+	height = 8
+
+	north_offset = 2
+	south_offset = 3
+	east_offset = 2
+	west_offset = 5

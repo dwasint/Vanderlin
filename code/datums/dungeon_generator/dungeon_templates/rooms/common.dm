@@ -41,7 +41,7 @@
 	id = "graveend"
 	width = 24
 	height = 7
-	type_weight = 5
+	rarity = 20
 
 	west_offset = 3
 
@@ -145,14 +145,3 @@
 	south_offset = 5
 	east_offset = 3
 	west_offset = 10
-
-/datum/map_template/dungeon/room/Malphpiece2
-	mappath = "_maps/map_files/matthios_tomb/room/Malphpiece2.dmm"
-	id = "Malphpiece2"
-	width = 6
-	height = 5
-
-	north_offset = 3
-	south_offset = 2
-	east_offset = 2
-	west_offset = 2

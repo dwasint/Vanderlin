@@ -2,6 +2,9 @@ GLOBAL_LIST_INIT(unlinked_dungeon_entries, list())
 GLOBAL_LIST_INIT(dungeon_entrys, list())
 GLOBAL_LIST_INIT(dungeon_exit, list())
 
+/obj/structure/dungeon_entry/center
+	dungeon_id = "center"
+
 /obj/structure/dungeon_entry
 	name = "The Tomb of Matthios"
 	desc = ""
@@ -22,7 +25,8 @@ GLOBAL_LIST_INIT(dungeon_exit, list())
 
 /obj/structure/dungeon_entry/New(loc, ...)
 	GLOB.dungeon_entrys |= src
-	GLOB.unlinked_dungeon_entries |= src
+	if(!dungeon_id)
+		GLOB.unlinked_dungeon_entries |= src
 	. = ..()
 
 /obj/structure/dungeon_entry/Initialize()

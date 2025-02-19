@@ -2,6 +2,14 @@
 "a" = (
 /turf/closed/mineral/rogue/bedrock,
 /area/rogue)
+"b" = (
+/obj/effect/dungeon_directional_helper/south,
+/turf/open/floor/rogue/dirt,
+/area/rogue)
+"c" = (
+/obj/effect/dungeon_directional_helper/west,
+/turf/open/floor/rogue/dirt,
+/area/rogue)
 "d" = (
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
@@ -11,6 +19,10 @@
 	pixel_y = 14
 	},
 /turf/open/floor/rogue/hexstone,
+/area/rogue)
+"i" = (
+/obj/effect/dungeon_directional_helper/north,
+/turf/open/floor/rogue/dirt,
 /area/rogue)
 "q" = (
 /obj/structure/table/wood/treestump/burnt,
@@ -47,6 +59,10 @@
 "K" = (
 /turf/open/transparent/openspace,
 /area/rogue)
+"Q" = (
+/obj/effect/dungeon_directional_helper/east,
+/turf/open/floor/rogue/dirt,
+/area/rogue)
 "X" = (
 /turf/open/floor/rogue/dirt,
 /area/rogue)
@@ -56,7 +72,7 @@ a
 a
 a
 X
-X
+c
 X
 a
 a
@@ -96,7 +112,7 @@ X
 X
 "}
 (5,1,1) = {"
-X
+i
 X
 A
 g
@@ -104,7 +120,7 @@ d
 X
 X
 X
-X
+b
 "}
 (6,1,1) = {"
 X
@@ -144,7 +160,7 @@ a
 a
 a
 X
-X
+Q
 X
 a
 a

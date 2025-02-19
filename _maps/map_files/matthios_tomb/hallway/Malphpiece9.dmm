@@ -61,6 +61,10 @@
 /obj/structure/fluff/walldeco/bath/four,
 /turf/closed/wall/mineral/rogue/decostone/long,
 /area/rogue/outdoors/caves)
+"n" = (
+/obj/effect/dungeon_directional_helper/north,
+/turf/open/floor/rogue/cobble/mossy,
+/area/rogue/outdoors/caves)
 "o" = (
 /obj/effect/decal/cleanable/blood/tracks,
 /obj/effect/decal/cleanable/blood/footprints,
@@ -133,6 +137,10 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/rogue/carpet/lord/center,
+/area/rogue/outdoors/caves)
+"E" = (
+/obj/effect/dungeon_directional_helper/south,
+/turf/open/floor/rogue/cobble/mossy,
 /area/rogue/outdoors/caves)
 "F" = (
 /obj/effect/decal/cleanable/blood/splatter,
@@ -250,7 +258,7 @@ q
 q
 "}
 (3,1,1) = {"
-q
+n
 q
 q
 q
@@ -258,7 +266,7 @@ N
 t
 q
 R
-q
+E
 "}
 (4,1,1) = {"
 q

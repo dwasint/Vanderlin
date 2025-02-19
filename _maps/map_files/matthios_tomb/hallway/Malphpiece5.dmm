@@ -27,6 +27,10 @@
 /obj/structure/fluff/walldeco/vinez/offset,
 /turf/open/floor/rogue/volcanic,
 /area/rogue/outdoors/caves)
+"k" = (
+/obj/effect/dungeon_directional_helper/east,
+/turf/open/floor/rogue/volcanic,
+/area/rogue/outdoors/caves)
 "m" = (
 /obj/structure/fluff/walldeco/bigpainting,
 /obj/structure/table/vtable,
@@ -79,6 +83,10 @@
 "J" = (
 /turf/open/floor/rogue/herringbone,
 /area/rogue/outdoors/caves)
+"K" = (
+/obj/effect/dungeon_directional_helper/west,
+/turf/open/floor/rogue/volcanic,
+/area/rogue/outdoors/caves)
 "L" = (
 /obj/machinery/light/rogue/torchholder/l,
 /turf/open/floor/rogue/volcanic,
@@ -126,7 +134,7 @@
 
 (1,1,1) = {"
 C
-a
+K
 C
 C
 "}
@@ -181,7 +189,7 @@ C
 (10,1,1) = {"
 C
 C
-a
+k
 C
 "}
 

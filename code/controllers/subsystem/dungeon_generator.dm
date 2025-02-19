@@ -68,7 +68,9 @@ SUBSYSTEM_DEF(dungeon_generator)
 		for(var/path in subtypesof(/datum/map_template/dungeon))
 			if(is_abstract(path))
 				continue
-			created_types += new path
+			var/datum/map_template/dungeon/template = new path
+			created_types += template
+			created_types[template] = template.rarity
 
 	var/picked_type = pickweight(parent_types)
 	var/picking = TRUE
@@ -334,7 +336,7 @@ SUBSYSTEM_DEF(dungeon_generator)
 
 		picking = FALSE
 		created_since++
-	if(picked_type == /datum/map_template/dungeon/entry)
+	if(ispath(picked_type, /datum/map_template/dungeon/entry))
 		created_since = 0
 		unlinked_dungeon_length--
 	return TRUE

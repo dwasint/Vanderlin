@@ -1042,9 +1042,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/vault)
 "cG" = (
-/obj/structure/dungeon_entry{
-	dungeon_id = "center"
-	},
+/obj/structure/dungeon_entry/center,
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors)
 "cI" = (

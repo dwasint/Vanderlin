@@ -20630,9 +20630,7 @@
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town/magician)
 "piX" = (
-/obj/structure/dungeon_entry{
-	dungeon_id = "center"
-	},
+/obj/structure/dungeon_entry/center,
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/outdoors/town)
 "pjr" = (
