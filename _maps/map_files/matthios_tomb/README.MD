@@ -1,7 +1,13 @@
 # How to Make Dungeon Maps
+General Tips
+- Make sure StrongDMM is set to save as TGM and not DMM
+- Larger map sizes mean they are less likely to appear in rotation due to it having issues finding space
+- When Loot Tables are in those are the preferred way to add loot to dungeons
+- Avoid using Mammons as Loot
 
 ## Step 1: Choose the Type of Map
 For most cases, the type of map will be **room**.
+- You can check on the templates folder for a list of room types currently setup.
 
 ```dm
 /datum/map_template/dungeon/room/sewer
@@ -21,6 +27,7 @@ Store the maps in properly labeled folders:
 
 ## Step 3: Assign an ID
 Use the map name as the ID:
+- Avoid using spaces in the name.
 
 ```dm
 /datum/map_template/dungeon/room/sewer
