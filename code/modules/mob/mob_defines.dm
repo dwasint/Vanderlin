@@ -19,6 +19,7 @@
 
 	//FOV STUFF
 	plane = GAME_PLANE_FOV_HIDDEN
+	blocks_emissive = EMISSIVE_BLOCK_GENERIC
 
 	var/lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 	var/datum/mind/mind
