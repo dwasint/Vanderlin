@@ -38,7 +38,7 @@
 		return
 	name = "Molten Metals"
 
-	for(var/datum/material/material as anything incoming_data)
+	for(var/datum/material/material as anything in incoming_data)
 		data |= material
 		data[material] += incoming_data[material]
 
