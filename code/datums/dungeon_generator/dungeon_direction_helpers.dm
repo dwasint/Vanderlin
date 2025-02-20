@@ -3,8 +3,8 @@
 	name = "Dungeon Direction Helper"
 	desc = "These help stitch together dungeons, it looks for the opposite direction on a template, basically write in the template if it has this, invis on creation"
 
-	icon = 'icons/obj/items_and_weapons.dmi'
-	icon_state = "toyhammer"
+	icon = 'icons/effects/dungeon_helper.dmi'
+	icon_state = "helper"
 
 	var/top = FALSE
 
