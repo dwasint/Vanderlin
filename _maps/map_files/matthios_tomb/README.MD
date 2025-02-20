@@ -8,7 +8,7 @@ General Tips
 ## Step 1: Choose the Type of Map
 For most cases, the type of map will be **room**.
 - You can check on the templates folder for a list of room types currently setup.
-
+- The path would go like /datum/map_template/dungeon/**TYPE**/**NAME**
 ```dm
 /datum/map_template/dungeon/room/sewer
 ```
@@ -19,7 +19,7 @@ For most cases, the type of map will be **room**.
 Store the maps in properly labeled folders:
 
 ```dm
-/datum/map_template/dungeon/room/sewer
+/datum/map_template/dungeon/room/Sewers2
     mappath = "_maps/map_files/matthios_tomb/room/Sewers2.dmm"
 ```
 
@@ -30,7 +30,7 @@ Use the map name as the ID:
 - Avoid using spaces in the name.
 
 ```dm
-/datum/map_template/dungeon/room/sewer
+/datum/map_template/dungeon/room/Sewers2
     mappath = "_maps/map_files/matthios_tomb/room/Sewers2.dmm"
     id = "Sewers2"
 ```
@@ -43,7 +43,7 @@ Set the **width** and **height** based on the topmost corner of the map.
 ![Map Dimensions](image.png)
 
 ```dm
-/datum/map_template/dungeon/room/sewer
+/datum/map_template/dungeon/room/Sewers2
     mappath = "_maps/map_files/matthios_tomb/room/Sewers2.dmm"
     id = "Sewers2"
     width = 14
@@ -75,7 +75,7 @@ Offsets are determined by the tile **beside** the node (not on it).
   - Example: **6**
 
 ```dm
-/datum/map_template/dungeon/room/sewer
+/datum/map_template/dungeon/room/Sewers2
     mappath = "_maps/map_files/matthios_tomb/room/Sewers2.dmm"
     id = "Sewers2"
     width = 14
