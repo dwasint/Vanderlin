@@ -37,7 +37,10 @@
 	if(!length(incoming_data))
 		return
 	name = "Molten Metals"
-	data |= incoming_data
+
+	for(var/datum/material/material as anything inincoming_data)
+		data |= material
+		data[material] += incoming_data[material]
 
 	try_metal_merge()
 	find_largest_metal()

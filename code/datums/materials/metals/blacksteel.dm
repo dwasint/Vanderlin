@@ -6,3 +6,4 @@
 	integrity_modifier = 1.5
 	can_be_molded = TRUE
 	ingot_type = /obj/item/ingot/blacksteel
+	melting_point = 1866

@@ -32,10 +32,10 @@
 
 /obj/item/mould/attackby(obj/item/I, mob/living/user, params)
 	. = ..()
-	if(!istype(I, /obj/item/crucible))
+	if(!istype(I, /obj/item/storage/crucible))
 		return
 
-	var/obj/item/crucible/crucible = I
+	var/obj/item/storage/crucible/crucible = I
 	var/datum/reagent/molten_metal/metal = crucible.reagents.get_reagent(/datum/reagent/molten_metal)
 	if(!metal)
 		return
@@ -43,6 +43,8 @@
 	if(!filling_metal)
 		var/list/names = list()
 		for(var/datum/material/material as anything in metal.data)
+			if(crucible.reagents.chem_temp < initial(material.melting_point))
+				continue
 			names |= initial(material.name)
 
 		var/choice = input(user, "What metal to pour?", crucible) in names

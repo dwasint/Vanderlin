@@ -629,6 +629,7 @@
 #include "code\datums\materials\metals\bronze.dm"
 #include "code\datums\materials\metals\copper.dm"
 #include "code\datums\materials\metals\gold.dm"
+#include "code\datums\materials\metals\iron.dm"
 #include "code\datums\materials\metals\silver.dm"
 #include "code\datums\materials\metals\steel.dm"
 #include "code\datums\materials\metals\tin.dm"

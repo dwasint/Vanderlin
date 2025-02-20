@@ -6,3 +6,4 @@
 	integrity_modifier = 1.2
 	can_be_molded = TRUE
 	ingot_type = /obj/item/ingot/steel
+	melting_point = 1866
