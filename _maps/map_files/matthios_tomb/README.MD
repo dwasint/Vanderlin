@@ -5,6 +5,8 @@ General Tips
 - When Loot Tables are in those are the preferred way to add loot to dungeons
 - Avoid using Mammons as Loot
 
+- You will find the actual templates at: 'code\datums\dungeon_generator\dungeon_templates'
+
 ## Step 1: Choose the Type of Map
 For most cases, the type of map will be **room**.
 - You can check on the templates folder for a list of room types currently setup.
