@@ -4,11 +4,13 @@
 
 	icon = 'icons/roguetown/weapons/crucible.dmi'
 	icon_state = "crucible"
+	appearance_flags = KEEP_APART
 
 
 /obj/item/crucible/Initialize()
 	. = ..()
 	create_reagents(100)
+	color = pick("#766f8c", "#565c5c", "#8d3a2d", "#4f3524")
 
 /obj/item/crucible/examine(mob/user)
 	. = ..()
@@ -30,6 +32,7 @@
 	if(!reagents.total_volume)
 		return
 	var/mutable_appearance/MA = mutable_appearance(icon, "filling")
+	MA.appearance_flags = RESET_COLOR | KEEP_APART
 
 	MA.color = mix_color_from_reagents(reagents.reagent_list)
 	var/datum/reagent/molten_metal/metal = reagents.get_reagent(/datum/reagent/molten_metal)
