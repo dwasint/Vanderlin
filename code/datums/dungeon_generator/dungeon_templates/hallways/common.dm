@@ -1,4 +1,5 @@
 /datum/map_template/dungeon/hallway
+	name = "Hall Tile"
 	abstract_type = /datum/map_template/dungeon/hallway
 	type_weight = 5
 

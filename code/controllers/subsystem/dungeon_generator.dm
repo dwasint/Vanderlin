@@ -12,6 +12,8 @@ SUBSYSTEM_DEF(dungeon_generator)
 
 	var/list/markers = list()
 
+	var/list/placed_types = list()
+
 	var/created_since = 0
 	var/unlinked_dungeon_length = 0
 
@@ -205,6 +207,8 @@ SUBSYSTEM_DEF(dungeon_generator)
 						continue
 
 			picking = FALSE
+			placed_types |= template.type
+			placed_types[template.type]++
 			created_since++
 
 /datum/controller/subsystem/dungeon_generator/proc/try_pickedtype_first(picked_type, direction, turf/creator, obj/effect/dungeon_directional_helper/looking_for_love)
@@ -336,6 +340,8 @@ SUBSYSTEM_DEF(dungeon_generator)
 
 		picking = FALSE
 		created_since++
+		placed_types |= template.type
+		placed_types[template.type]++
 	if(picked_type == /datum/map_template/dungeon/entry)
 		created_since = 0
 		unlinked_dungeon_length--

@@ -1,4 +1,5 @@
 /datum/map_template/dungeon/room
+	name = "Room Tile"
 	abstract_type = /datum/map_template/dungeon/room
 	type_weight = 15
 
