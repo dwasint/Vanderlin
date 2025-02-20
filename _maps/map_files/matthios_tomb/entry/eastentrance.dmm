@@ -8,7 +8,7 @@
 /area/rogue)
 "bP" = (
 /obj/structure/mineral_door/wood,
-/turf/open/floor/rogue/hexstone,
+/turf/open/floor/rogue/herringbone,
 /area/rogue)
 "cG" = (
 /turf/open/floor/carpet/red,
@@ -123,10 +123,6 @@
 "sj" = (
 /obj/item/reagent_containers/glass/bucket/wooden/alter,
 /turf/open/floor/rogue/dirt,
-/area/rogue)
-"sG" = (
-/obj/structure/mineral_door/wood,
-/turf/closed/wall/mineral/rogue/stone/window,
 /area/rogue)
 "tz" = (
 /obj/structure/fluff/statue/knightalt,
@@ -1525,7 +1521,7 @@ AC
 JJ
 JJ
 JJ
-sG
+bP
 JJ
 JJ
 JJ
@@ -1563,7 +1559,7 @@ pd
 pd
 pd
 pd
-sG
+bP
 pd
 pd
 pd
@@ -1636,7 +1632,7 @@ Yw
 JJ
 JJ
 JJ
-sG
+bP
 JJ
 JJ
 JJ
@@ -1711,7 +1707,7 @@ pd
 pd
 pd
 pd
-sG
+bP
 pd
 pd
 pd
@@ -1747,7 +1743,7 @@ FA
 JJ
 JJ
 JJ
-sG
+bP
 JJ
 JJ
 JJ

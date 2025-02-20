@@ -4,7 +4,6 @@
 
 	icon = 'icons/roguetown/weapons/crucible.dmi'
 	icon_state = "crucible"
-	appearance_flags = KEEP_APART
 	component_type = /datum/component/storage/concrete/roguetown/crucible
 	var/crucible_temperature
 

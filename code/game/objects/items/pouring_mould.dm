@@ -16,6 +16,7 @@
 
 /obj/item/mould/Initialize()
 	. = ..()
+	color = pick("#766f8c", "#565c5c", "#8d3a2d", "#4f3524")
 	update_overlays()
 
 /obj/item/mould/examine(mob/user)
@@ -26,7 +27,7 @@
 
 	if(fufilled_metal)
 		var/reagent_color = initial(filling_metal.color)
-		. += "[src] has [fufilled_metal / 3] oz of <font color=[reagent_color]> Molten [initial(filling_metal.name)] out of [required_metal / 3] oz.</font>"
+		. += "[src] has [round(fufilled_metal / 3, 1)] oz of <font color=[reagent_color]> Molten [initial(filling_metal.name)]</font> out of [round(required_metal / 3, 1)] oz.</font>"
 	else
 		. += "[src] requires [required_metal / 3] oz of Molten Metal to form.</font>"
 
@@ -86,9 +87,14 @@
 		var/mutable_appearance/MA = mutable_appearance(icon, filling_icon_state)
 		MA.color = initial(filling_metal.color)
 		MA.alpha = 255 * (fufilled_metal / required_metal)
+		MA.appearance_flags = RESET_COLOR | KEEP_APART
 		overlays += MA
+
 		var/mutable_appearance/MA2 = mutable_appearance(icon, filling_icon_state)
-		MA2.alpha = 255 * (fufilled_metal / required_metal)
+		if(cooling)
+			MA2.alpha = 255 * round((1 - (cooling_progress / 100)),0.1)
+		else
+			MA2.alpha = 255 * (fufilled_metal / required_metal)
 		MA2.plane = EMISSIVE_PLANE
 		overlays += MA2
 
@@ -98,6 +104,7 @@
 
 /obj/item/mould/process()
 	cooling_progress += 2.5
+	update_overlays()
 	if(cooling_progress >= 100)
 		STOP_PROCESSING(SSobj, src)
 		create_item()
