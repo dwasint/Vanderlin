@@ -156,3 +156,9 @@ SUBSYSTEM_DEF(merchant)
 	staticly_setup_types |= sell_type
 	for(var/datum/world_faction/active_faction in world_factions)
 		active_faction.setup_sell_data(sell_type)
+
+/obj/Initialize()
+	. = ..()
+	if(sellprice)
+		if(!(type in SSmerchant.staticly_setup_types))
+			SSmerchant.set_faction_sell_values(type)
