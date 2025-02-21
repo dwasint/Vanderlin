@@ -65,7 +65,7 @@
 	var/datum/material/largest = metal?.largest_metal
 	if(initial(largest?.red_hot) && reagents.chem_temp > initial(largest.melting_point))
 		var/mutable_appearance/MA2 = mutable_appearance(icon, "filling")
-		MA2.plane = ABOVE_LIGHTING_PLANE
+		MA2.plane = EMISSIVE_PLANE
 		overlays += MA2
 
 	overlays += MA
