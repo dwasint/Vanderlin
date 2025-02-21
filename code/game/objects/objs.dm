@@ -65,6 +65,10 @@
 	return ..()
 
 /obj/Initialize()
+	if(sellprice)
+		if(!(type in SSmerchant.staticly_setup_types))
+			SSmerchant.set_faction_sell_values(type)
+
 	if (islist(armor))
 		armor = getArmor(arglist(armor))
 	else if (!armor)
@@ -75,10 +79,6 @@
 		obj_integrity = max_integrity
 
 	. = ..() //Do this after, else mat datums is mad.
-
-	if(sellprice)
-		if(!(type in SSmerchant.staticly_setup_types))
-			SSmerchant.set_faction_sell_values(type)
 
 	if (set_obj_flags)
 		var/flagslist = splittext(set_obj_flags,";")
