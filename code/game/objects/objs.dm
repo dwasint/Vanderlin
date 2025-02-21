@@ -69,13 +69,12 @@
 		armor = getArmor()
 	else if (!istype(armor, /datum/armor))
 		stack_trace("Invalid type [armor.type] found in .armor during /obj Initialize()")
+	if(main_material)
+		set_material_information()
 	if(obj_integrity == null)
 		obj_integrity = max_integrity
 
 	. = ..() //Do this after, else mat datums is mad.
-
-	if(main_material)
-		set_material_information()
 
 /obj/proc/set_material_information()
 	color = initial(main_material.color)
