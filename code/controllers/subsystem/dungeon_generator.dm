@@ -45,7 +45,7 @@ SUBSYSTEM_DEF(dungeon_generator)
 	creator = get_step(creator, direction)
 	if(!creator)
 		return
-	if(creator.type != /turf/closed)
+	if(creator.type != /turf/closed/dungeon_void)
 		return
 	switch(direction)
 		if(NORTH)
@@ -100,10 +100,10 @@ SUBSYSTEM_DEF(dungeon_generator)
 					if(creator.y - template.west_offset < 0)
 						continue
 					var/turf/turf = locate(creator.x, creator.y - template.west_offset, creator.z)
-					if(turf?.type != /turf/closed)
+					if(turf?.type != /turf/closed/dungeon_void)
 						continue
 					var/turf/turf2 = locate(creator.x + template.width, creator.y - template.east_offset, creator.z)
-					if(turf2?.type != /turf/closed)
+					if(turf2?.type != /turf/closed/dungeon_void)
 						continue
 					true_spawn = get_offset_target_turf(creator, 0, -(template.west_offset))
 					if(true_spawn.x + template.width > world.maxx)
@@ -113,7 +113,7 @@ SUBSYSTEM_DEF(dungeon_generator)
 					var/list/turfs = block(true_spawn, locate(true_spawn.x + template.width, true_spawn.y + template.height, true_spawn.z))
 					var/fail = FALSE
 					for(var/turf/list_turf in turfs)
-						if(list_turf.type != /turf/closed)
+						if(list_turf.type != /turf/closed/dungeon_void)
 							fail = TRUE
 							break
 					if(fail)
@@ -129,10 +129,10 @@ SUBSYSTEM_DEF(dungeon_generator)
 					if(creator.y - template.height < 0)
 						continue
 					var/turf/turf = locate(creator.x - template.north_offset - 1, creator.y + template.height, creator.z)
-					if(turf?.type != /turf/closed)
+					if(turf?.type != /turf/closed/dungeon_void)
 						continue
 					var/turf/turf2 = locate(creator.x -(template.north_offset - 1) + template.width, creator.y + template.height, creator.z)
-					if(turf2?.type != /turf/closed)
+					if(turf2?.type != /turf/closed/dungeon_void)
 						continue
 					true_spawn = get_offset_target_turf(creator, -(template.north_offset), -(template.height-1))
 					if(true_spawn.x + template.width > world.maxx)
@@ -142,7 +142,7 @@ SUBSYSTEM_DEF(dungeon_generator)
 					var/list/turfs = block(true_spawn, locate(true_spawn.x + template.width, true_spawn.y + template.height-1, true_spawn.z))
 					var/fail = FALSE
 					for(var/turf/list_turf in turfs)
-						if(list_turf.type != /turf/closed)
+						if(list_turf.type != /turf/closed/dungeon_void)
 							fail = TRUE
 							break
 					if(fail)
@@ -156,10 +156,10 @@ SUBSYSTEM_DEF(dungeon_generator)
 					if(creator.y - template.south_offset < 0)
 						continue
 					var/turf/turf = locate(creator.x, creator.y + template.height, creator.z)
-					if(turf?.type != /turf/closed)
+					if(turf?.type != /turf/closed/dungeon_void)
 						continue
 					var/turf/turf2 = locate(creator.x + template.width - template.south_offset, creator.y + template.height, creator.z)
-					if(turf2?.type != /turf/closed)
+					if(turf2?.type != /turf/closed/dungeon_void)
 						continue
 					true_spawn = get_offset_target_turf(creator, -template.south_offset, 0)
 					if(true_spawn.x + template.width > world.maxx)
@@ -169,7 +169,7 @@ SUBSYSTEM_DEF(dungeon_generator)
 					var/list/turfs = block(true_spawn, locate(true_spawn.x + template.width, true_spawn.y + template.height, true_spawn.z))
 					var/fail = FALSE
 					for(var/turf/list_turf in turfs)
-						if(list_turf.type != /turf/closed)
+						if(list_turf.type != /turf/closed/dungeon_void)
 							fail = TRUE
 							break
 					if(fail)
@@ -185,10 +185,10 @@ SUBSYSTEM_DEF(dungeon_generator)
 					if(creator.x - template.width < 0)
 						continue
 					var/turf/turf = locate(creator.x - (template.width-1), creator.y - template.east_offset, creator.z)
-					if(turf?.type != /turf/closed)
+					if(turf?.type != /turf/closed/dungeon_void)
 						continue
 					var/turf/turf2 = locate(creator.x, creator.y - template.east_offset, creator.z)
-					if(turf2?.type != /turf/closed)
+					if(turf2?.type != /turf/closed/dungeon_void)
 						continue
 					true_spawn = get_offset_target_turf(creator, -(template.width-1), -template.east_offset)
 					if(true_spawn.x + template.width > world.maxx)
@@ -198,7 +198,7 @@ SUBSYSTEM_DEF(dungeon_generator)
 					var/list/turfs = block(true_spawn, locate(true_spawn.x + template.width-1, true_spawn.y + template.height, true_spawn.z))
 					var/fail = FALSE
 					for(var/turf/list_turf in turfs)
-						if(list_turf.type != /turf/closed)
+						if(list_turf.type != /turf/closed/dungeon_void)
 							fail = TRUE
 							break
 					if(fail)
@@ -232,10 +232,10 @@ SUBSYSTEM_DEF(dungeon_generator)
 				if(creator.y - template.west_offset < 0)
 					continue
 				var/turf/turf = locate(creator.x, creator.y - template.west_offset, creator.z)
-				if(turf?.type != /turf/closed)
+				if(turf?.type != /turf/closed/dungeon_void)
 					continue
 				var/turf/turf2 = locate(creator.x + template.width, creator.y - template.east_offset, creator.z)
-				if(turf2?.type != /turf/closed)
+				if(turf2?.type != /turf/closed/dungeon_void)
 					continue
 				true_spawn = get_offset_target_turf(creator, 0, -(template.west_offset))
 				if(true_spawn.x + template.width > world.maxx)
@@ -245,7 +245,7 @@ SUBSYSTEM_DEF(dungeon_generator)
 				var/list/turfs = block(true_spawn, locate(true_spawn.x + template.width, true_spawn.y + template.height, true_spawn.z))
 				var/fail = FALSE
 				for(var/turf/list_turf in turfs)
-					if(list_turf.type != /turf/closed)
+					if(list_turf.type != /turf/closed/dungeon_void)
 						fail = TRUE
 						break
 				if(fail)
@@ -261,10 +261,10 @@ SUBSYSTEM_DEF(dungeon_generator)
 				if(creator.y - template.height < 0)
 					continue
 				var/turf/turf = locate(creator.x - template.north_offset - 1, creator.y + template.height, creator.z)
-				if(turf?.type != /turf/closed)
+				if(turf?.type != /turf/closed/dungeon_void)
 					continue
 				var/turf/turf2 = locate(creator.x -(template.north_offset - 1) + template.width, creator.y + template.height, creator.z)
-				if(turf2?.type != /turf/closed)
+				if(turf2?.type != /turf/closed/dungeon_void)
 					continue
 				true_spawn = get_offset_target_turf(creator, -(template.north_offset), -(template.height-1))
 				if(true_spawn.x + template.width > world.maxx)
@@ -274,7 +274,7 @@ SUBSYSTEM_DEF(dungeon_generator)
 				var/list/turfs = block(true_spawn, locate(true_spawn.x + template.width, true_spawn.y + template.height-1, true_spawn.z))
 				var/fail = FALSE
 				for(var/turf/list_turf in turfs)
-					if(list_turf.type != /turf/closed)
+					if(list_turf.type != /turf/closed/dungeon_void)
 						fail = TRUE
 						break
 				if(fail)
@@ -288,10 +288,10 @@ SUBSYSTEM_DEF(dungeon_generator)
 				if(creator.y - template.south_offset < 0)
 					continue
 				var/turf/turf = locate(creator.x, creator.y + template.height, creator.z)
-				if(turf?.type != /turf/closed)
+				if(turf?.type != /turf/closed/dungeon_void)
 					continue
 				var/turf/turf2 = locate(creator.x + template.width - template.south_offset, creator.y + template.height, creator.z)
-				if(turf2?.type != /turf/closed)
+				if(turf2?.type != /turf/closed/dungeon_void)
 					continue
 				true_spawn = get_offset_target_turf(creator, -template.south_offset, 0)
 				if(true_spawn.x + template.width > world.maxx)
@@ -301,7 +301,7 @@ SUBSYSTEM_DEF(dungeon_generator)
 				var/list/turfs = block(true_spawn, locate(true_spawn.x + template.width, true_spawn.y + template.height, true_spawn.z))
 				var/fail = FALSE
 				for(var/turf/list_turf in turfs)
-					if(list_turf.type != /turf/closed)
+					if(list_turf.type != /turf/closed/dungeon_void)
 						fail = TRUE
 						break
 				if(fail)
@@ -317,10 +317,10 @@ SUBSYSTEM_DEF(dungeon_generator)
 				if(creator.x - template.width < 0)
 					continue
 				var/turf/turf = locate(creator.x - (template.width-1), creator.y - template.east_offset, creator.z)
-				if(turf?.type != /turf/closed)
+				if(turf?.type != /turf/closed/dungeon_void)
 					continue
 				var/turf/turf2 = locate(creator.x, creator.y - template.east_offset, creator.z)
-				if(turf2?.type != /turf/closed)
+				if(turf2?.type != /turf/closed/dungeon_void)
 					continue
 				true_spawn = get_offset_target_turf(creator, -(template.width-1), -template.east_offset)
 				if(true_spawn.x + template.width > world.maxx)
@@ -330,7 +330,7 @@ SUBSYSTEM_DEF(dungeon_generator)
 				var/list/turfs = block(true_spawn, locate(true_spawn.x + template.width-1, true_spawn.y + template.height, true_spawn.z))
 				var/fail = FALSE
 				for(var/turf/list_turf in turfs)
-					if(list_turf.type != /turf/closed)
+					if(list_turf.type != /turf/closed/dungeon_void)
 						fail = TRUE
 						break
 				if(fail)
