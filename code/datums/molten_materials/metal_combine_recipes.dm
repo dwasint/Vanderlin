@@ -25,13 +25,15 @@ GLOBAL_LIST_INIT(molten_recipes, list())
 	if(!length(cared_values) == length(materials_required))
 		return
 
-	var/largest_multiplier = 1
+	var/smallest_multiplier = 1
 	for(var/datum/material/material as anything in materials_copy)
 		if(cared_values[material] < materials_copy[material])
 			return
-		largest_multiplier = FLOOR(cared_values[material] / materials_copy[material], 1)
+		var/multiplier = FLOOR(cared_values[material] / materials_copy[material], 1)
+		if(!smallest_multiplier || (multiplier < smallest_multiplier))
+			smallest_multiplier = multiplier
 
-	return largest_multiplier
+	return smallest_multiplier
 
 
 /datum/molten_recipe/proc/generate_html(mob/user)

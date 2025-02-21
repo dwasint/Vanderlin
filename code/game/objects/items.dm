@@ -253,9 +253,9 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	///our metling amount
 	var/melt_amount = 0
 
-
 /obj/item/Initialize()
 	. = ..()
+
 	if(!pixel_x && !pixel_y && !bigboy)
 		pixel_x = rand(-5,5)
 		pixel_y = rand(-5,5)
@@ -275,7 +275,6 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	if(is_silver)
 		enchant(/datum/enchantment/silver)
 	update_transform()
-
 
 /obj/item/proc/update_transform()
 	transform = null

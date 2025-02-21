@@ -48,6 +48,7 @@
 		melting_pot[item] += 5
 		if(melting_pot[item] >= item.melt_amount)
 			melt_item(item)
+	update_overlays()
 
 /obj/item/storage/crucible/update_overlays()
 	. = ..()
@@ -64,7 +65,7 @@
 	var/datum/material/largest = metal?.largest_metal
 	if(initial(largest?.red_hot) && reagents.chem_temp > initial(largest.melting_point))
 		var/mutable_appearance/MA2 = mutable_appearance(icon, "filling")
-		MA2.plane = EMISSIVE_PLANE
+		MA2.plane = ABOVE_LIGHTING_PLANE
 		overlays += MA2
 
 	overlays += MA
@@ -77,6 +78,7 @@
 	reagents.add_reagent(/datum/reagent/molten_metal, item.melt_amount, data, crucible_temperature)
 	melting_pot -= item
 	qdel(item)
+	update_overlays()
 
 /obj/item/storage/crucible/test_crucible
 	var/list/material_data_to_add = list(

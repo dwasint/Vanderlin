@@ -95,7 +95,7 @@
 			MA2.alpha = 255 * round((1 - (cooling_progress / 100)),0.1)
 		else
 			MA2.alpha = 255 * (fufilled_metal / required_metal)
-		MA2.plane = EMISSIVE_PLANE
+		MA2.plane = ABOVE_LIGHTING_PLANE
 		overlays += MA2
 
 /obj/item/mould/proc/start_cooling()

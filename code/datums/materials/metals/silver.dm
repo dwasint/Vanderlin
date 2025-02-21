@@ -10,3 +10,5 @@
 	traits = list(
 		/datum/material_trait/silver_bane
 	)
+
+	value_modiifer = 1.5

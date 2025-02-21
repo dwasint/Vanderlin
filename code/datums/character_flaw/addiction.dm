@@ -1,6 +1,5 @@
 
 /mob/living/carbon/human
-	blocks_emissive = EMISSIVE_BLOCK_UNIQUE
 	var/datum/charflaw/charflaw
 
 /mob/proc/sate_addiction()
@@ -9,7 +8,7 @@
 /mob/living/carbon/human/sate_addiction()
 	if(istype(charflaw, /datum/charflaw/addiction))
 		var/datum/charflaw/addiction/A = charflaw
-//		remove_stress(list(/datum/stressevent/vice1,/datum/stressevent/vice2,/datum/stressevent/vice3))
+//		remove_stress(list(/datum/stressevent/vice1,/datum/stressevent/vice2,/datum/stresse%vent/vice3))
 		if(!A.sated)
 			to_chat(src, span_blue(A.sated_text))
 		A.sated = TRUE

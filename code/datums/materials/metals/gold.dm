@@ -7,3 +7,4 @@
 	can_be_molded = TRUE
 	ingot_type = /obj/item/ingot/gold
 	melting_point = 1337
+	value_modiifer = 2
