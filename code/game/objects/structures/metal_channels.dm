@@ -246,6 +246,7 @@
 		return
 	group_reagents.add_reagent(/datum/reagent/molten_metal, metal.volume, data = metal.data, reagtemp = I.reagents.chem_temp)
 	I.reagents.remove_reagent(/datum/reagent/molten_metal, metal.volume)
+	I.update_overlays()
 
 	for(var/obj/structure/metal_channel/setter in info?.channels)
 		setter.update_overlays()
