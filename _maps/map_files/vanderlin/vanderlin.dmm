@@ -3502,7 +3502,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town)
 "cuX" = (
-/obj/structure/fermentation_keg/crafted,
+/obj/structure/fermentation_keg,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/soilsons)
 "cvb" = (
@@ -4839,7 +4839,7 @@
 /turf/open/floor/rogue/churchrough,
 /area/rogue/indoors/town/church/inquisition)
 "dxA" = (
-/obj/structure/fermentation_keg/crafted,
+/obj/structure/fermentation_keg,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield/safe)
 "dxG" = (
