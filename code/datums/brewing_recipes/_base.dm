@@ -29,6 +29,11 @@
 	var/brewed_item_count = 1
 	///do we age afterwards?
 	var/ages = FALSE
+	///the reagent we get at different age times
+	var/list/age_times = list()
+
+/datum/brewing_recipe/proc/after_finish_attackby(mob/user, obj/item/attacked_item)
+	return
 
 /datum/brewing_recipe/proc/generate_html(mob/user)
 	var/client/client = user
@@ -107,6 +112,9 @@
 		<div>
 		"}
 
+	if(ages)
+		for(var/datum/reagent/path as anything in age_times)
+			html += "After aging for [age_times[path] * 0.1] Seconds, becomes [initial(path.name)].<br>"
 
 	html += {"
 		</div>
