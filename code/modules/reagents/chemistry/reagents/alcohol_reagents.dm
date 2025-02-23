@@ -1998,6 +1998,12 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	taste_description = "sickly sweet aged wine"
 	color = "#402249"
 
+/datum/reagent/consumable/ethanol/beer/jackberrywine/delectable
+	name = "Delectable Jackberry Wine"
+	boozepwr = 30
+	taste_description = "sickly sweet delectably aged wine"
+	color = "#652679"
+
 // Elf Production - Berries & Herbal
 
 /datum/reagent/consumable/ethanol/beer/elfred

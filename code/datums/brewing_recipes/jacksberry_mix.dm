@@ -9,5 +9,6 @@
 
 	ages = TRUE
 	age_times = list(
-		/datum/reagent/consumable/ethanol/beer/jackberrywine/aged = 10 MINUTES
+		/datum/reagent/consumable/ethanol/beer/jackberrywine/aged = 10 MINUTES,
+		/datum/reagent/consumable/ethanol/beer/jackberrywine/delectable = 20 MINUTES
 	)
