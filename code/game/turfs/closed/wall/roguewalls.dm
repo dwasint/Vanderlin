@@ -347,7 +347,9 @@
 	icon_state = "fluffstone"
 
 
-
+/turf/closed/dungeon_void
+	icon = 'icons/turf/roguewall.dmi'
+	icon_state = "shroud1"
 
 /turf/closed/wall/shroud //vines
 	name = "thick treetop"

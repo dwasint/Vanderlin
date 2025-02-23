@@ -6,12 +6,14 @@
 	resistance_flags = FIRE_PROOF
 	grid_width = 32
 	grid_height = 32
+	melt_amount = 120
 
 /obj/item/rogueore/gold
 	name = "raw gold"
 	icon_state = "oregold1"
 	smeltresult = /obj/item/ingot/gold
 	sellprice = 10
+	melting_material = /datum/material/gold
 
 /obj/item/rogueore/gold/Initialize()
 	icon_state = "oregold[rand(1,3)]"
@@ -23,6 +25,7 @@
 	icon_state = "oresilv1"
 	smeltresult = /obj/item/ingot/silver
 	sellprice = 8
+	melting_material = /datum/material/silver
 
 /obj/item/rogueore/silver/Initialize()
 	icon_state = "oresilv[rand(1,3)]"
@@ -34,6 +37,7 @@
 	icon_state = "oreiron1"
 	smeltresult = /obj/item/ingot/iron
 	sellprice = 5
+	melting_material = /datum/material/iron
 
 /obj/item/rogueore/iron/Initialize()
 	icon_state = "oreiron[rand(1,3)]"
@@ -45,6 +49,7 @@
 	icon_state = "orecop1"
 	smeltresult = /obj/item/ingot/copper
 	sellprice = 2
+	melting_material = /datum/material/copper
 
 /obj/item/rogueore/copper/Initialize()
 	icon_state = "orecop[rand(1,3)]"
@@ -56,6 +61,7 @@
 	icon_state = "oretin1"
 	smeltresult = /obj/item/ingot/tin
 	sellprice = 4
+	melting_material = /datum/material/tin
 
 /obj/item/rogueore/tin/Initialize()
 	icon_state = "oretin[rand(1,3)]"
@@ -83,6 +89,7 @@
 
 	grid_width = 64
 	grid_height = 32
+	melt_amount = 100
 	var/datum/anvil_recipe/currecipe
 	var/quality = SMELTERY_LEVEL_NORMAL
 
@@ -136,6 +143,7 @@
 	icon_state = "ingotgold"
 	smeltresult = /obj/item/ingot/gold
 	sellprice = 100
+	melting_material = /datum/material/gold
 
 /obj/item/ingot/iron
 	name = "iron bar"
@@ -143,6 +151,7 @@
 	icon_state = "ingotiron"
 	smeltresult = /obj/item/ingot/iron
 	sellprice = 25
+	melting_material = /datum/material/iron
 
 /obj/item/ingot/copper
 	name = "copper bar"
@@ -150,6 +159,7 @@
 	icon_state = "ingotcop"
 	smeltresult = /obj/item/ingot/copper
 	sellprice = 10
+	melting_material = /datum/material/copper
 
 /obj/item/ingot/tin
 	name = "tin bar"
@@ -157,6 +167,7 @@
 	icon_state = "ingottin"
 	smeltresult = /obj/item/ingot/tin
 	sellprice = 15
+	melting_material = /datum/material/tin
 
 /obj/item/ingot/bronze
 	name = "bronze bar"
@@ -164,6 +175,7 @@
 	icon_state = "ingotbronze"
 	smeltresult = /obj/item/ingot/bronze
 	sellprice = 30
+	melting_material = /datum/material/bronze
 
 /obj/item/ingot/silver
 	name = "silver bar"
@@ -171,6 +183,7 @@
 	icon_state = "ingotsilv"
 	smeltresult = /obj/item/ingot/silver
 	sellprice = 60
+	melting_material = /datum/material/silver
 
 /obj/item/ingot/steel
 	name = "steel bar"
@@ -178,6 +191,7 @@
 	icon_state = "ingotsteel"
 	smeltresult = /obj/item/ingot/steel
 	sellprice = 40
+	melting_material = /datum/material/steel
 
 /obj/item/ingot/blacksteel
 	name = "blacksteel bar"
@@ -185,3 +199,4 @@
 	icon_state = "ingotblacksteel"
 	smeltresult = /obj/item/ingot/blacksteel
 	sellprice = 90
+	melting_material = /datum/material/blacksteel

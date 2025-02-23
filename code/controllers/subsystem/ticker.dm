@@ -6,7 +6,9 @@
 		player.ready = PLAYER_READY_TO_PLAY
 
 	SSticker.start_immediately = TRUE
+	sleep(1 SECONDS)
 	SSticker.fire()
+
 GLOBAL_VAR_INIT(round_timer, INITIAL_ROUND_TIMER)
 
 SUBSYSTEM_DEF(ticker)
