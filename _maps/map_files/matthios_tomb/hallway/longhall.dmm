@@ -117,7 +117,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "V" = (
-/obj/structure/fermenting_barrel/water,
+/obj/structure/fermentation_keg/water,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "W" = (

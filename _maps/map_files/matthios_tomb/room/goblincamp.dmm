@@ -313,7 +313,7 @@
 /turf/open/floor/rogue/grass/cold,
 /area/rogue)
 "Ub" = (
-/obj/structure/fermenting_barrel/random/beer,
+/obj/structure/fermentation_keg/random/beer,
 /turf/open/floor/rogue/grass/cold,
 /area/rogue)
 "Um" = (
@@ -325,7 +325,7 @@
 /turf/open/floor/rogue/snow/patchy,
 /area/rogue)
 "UM" = (
-/obj/structure/fermenting_barrel/random/water,
+/obj/structure/fermentation_keg/random/water,
 /turf/open/floor/rogue/grass/cold,
 /area/rogue)
 "UN" = (
@@ -352,7 +352,7 @@
 /turf/open/floor/rogue/snow/patchy,
 /area/rogue)
 "Xk" = (
-/obj/structure/fermenting_barrel/random/beer,
+/obj/structure/fermentation_keg/random/beer,
 /obj/item/reagent_containers/glass/cup/golden,
 /turf/open/floor/rogue/dirt,
 /area/rogue)

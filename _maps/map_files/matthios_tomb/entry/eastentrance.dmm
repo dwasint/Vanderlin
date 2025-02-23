@@ -82,7 +82,7 @@
 /turf/open/floor/rogue/herringbone,
 /area/rogue)
 "ny" = (
-/obj/structure/fermenting_barrel/random/water,
+/obj/structure/fermentation_keg/random/water,
 /turf/open/floor/rogue/herringbone,
 /area/rogue)
 "nK" = (
@@ -148,7 +148,7 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue)
 "wx" = (
-/obj/structure/fermenting_barrel/random/beer,
+/obj/structure/fermentation_keg/random/beer,
 /turf/open/floor/rogue/herringbone,
 /area/rogue)
 "xk" = (

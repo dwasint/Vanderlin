@@ -26,7 +26,7 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue)
 "fL" = (
-/obj/structure/fermenting_barrel/random/water,
+/obj/structure/fermentation_keg/random/water,
 /obj/item/reagent_containers/glass/bowl,
 /turf/open/floor/rogue/cobble,
 /area/rogue)

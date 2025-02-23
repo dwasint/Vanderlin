@@ -370,7 +370,7 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/shelter/bog)
 "es" = (
-/obj/structure/fermenting_barrel/beer,
+/obj/structure/fermentation_keg/beer,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/shelter/bog)
 "ey" = (
@@ -392,7 +392,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/bog)
 "eF" = (
-/obj/structure/fermenting_barrel/random/beer,
+/obj/structure/fermentation_keg/random/beer,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/indoors/cave)
 "eG" = (
@@ -427,7 +427,7 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/bog)
 "eZ" = (
-/obj/structure/fermenting_barrel/random/water,
+/obj/structure/fermentation_keg/random/water,
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/indoors/shelter/bog)
 "fc" = (
@@ -578,7 +578,7 @@
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors/shelter/bog)
 "hb" = (
-/obj/structure/fermenting_barrel/random/water,
+/obj/structure/fermentation_keg/random/water,
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors/shelter/bog)
 "hc" = (
@@ -767,7 +767,7 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/bog)
 "kq" = (
-/obj/structure/fermenting_barrel/random/water,
+/obj/structure/fermentation_keg/random/water,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/shelter/bog)
 "ku" = (
@@ -1293,7 +1293,7 @@
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/shelter/bog)
 "rg" = (
-/obj/structure/fermenting_barrel/random/water,
+/obj/structure/fermentation_keg/random/water,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/indoors/cave)
 "rh" = (
@@ -1726,7 +1726,7 @@
 /turf/open/floor/rogue/woodturned/nosmooth,
 /area/rogue/indoors/shelter/bog)
 "xh" = (
-/obj/structure/fermenting_barrel/random/water,
+/obj/structure/fermentation_keg/random/water,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/shelter/bog)
@@ -2380,7 +2380,7 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/shelter/bog)
 "Gt" = (
-/obj/structure/fermenting_barrel/random/beer,
+/obj/structure/fermentation_keg/random/beer,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/shelter/bog)
 "Gv" = (
@@ -2442,7 +2442,7 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/shelter/bog)
 "Hz" = (
-/obj/structure/fermenting_barrel/beer,
+/obj/structure/fermentation_keg/beer,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/shelter/bog)
 "HA" = (
@@ -2986,7 +2986,7 @@
 /turf/closed/wall/mineral/rogue/decostone,
 /area/rogue/indoors/shelter/bog)
 "Pu" = (
-/obj/structure/fermenting_barrel/water,
+/obj/structure/fermentation_keg/water,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/shelter/bog)
 "PH" = (
@@ -3021,7 +3021,7 @@
 	},
 /area/rogue/indoors/shelter/bog)
 "Qj" = (
-/obj/structure/fermenting_barrel/random/beer,
+/obj/structure/fermentation_keg/random/beer,
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors/shelter/bog)
 "Qk" = (
@@ -3117,7 +3117,7 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/shelter/bog)
 "Rs" = (
-/obj/structure/fermenting_barrel/random/beer,
+/obj/structure/fermentation_keg/random/beer,
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/indoors/shelter/bog)
 "RB" = (
@@ -3129,7 +3129,7 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/bog)
 "RE" = (
-/obj/structure/fermenting_barrel/random/water,
+/obj/structure/fermentation_keg/random/water,
 /turf/open/floor/rogue/woodturned/nosmooth,
 /area/rogue/indoors/shelter/bog)
 "RK" = (
@@ -3177,7 +3177,7 @@
 /turf/closed/mineral/rogue,
 /area/rogue/indoors/cave)
 "Sp" = (
-/obj/structure/fermenting_barrel/random/beer,
+/obj/structure/fermentation_keg/random/beer,
 /turf/open/floor/rogue/woodturned/nosmooth,
 /area/rogue/indoors/shelter/bog)
 "St" = (
@@ -3395,7 +3395,7 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/indoors/shelter/bog)
 "US" = (
-/obj/structure/fermenting_barrel/water,
+/obj/structure/fermentation_keg/water,
 /turf/open/floor/rogue/woodturned/nosmooth,
 /area/rogue/indoors/shelter/bog)
 "UU" = (
@@ -3548,7 +3548,7 @@
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/indoors/shelter/bog)
 "WO" = (
-/obj/structure/fermenting_barrel/random/beer,
+/obj/structure/fermentation_keg/random/beer,
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/indoors/shelter/bog)
 "WP" = (

@@ -1227,7 +1227,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "VF" = (
-/obj/structure/fermenting_barrel/random/water,
+/obj/structure/fermentation_keg/random/water,
 /turf/open/floor/rogue/ruinedwood/turned/darker,
 /area/rogue)
 "VN" = (
@@ -1243,7 +1243,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "Wo" = (
-/obj/structure/fermenting_barrel/random/beer,
+/obj/structure/fermentation_keg/random/beer,
 /turf/open/floor/rogue/cobble,
 /area/rogue)
 "Wp" = (

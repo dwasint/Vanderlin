@@ -65,11 +65,11 @@
 /turf/open/floor/rogue/ruinedwood/chevron,
 /area/rogue/outdoors/caves)
 "s" = (
-/obj/structure/fermenting_barrel/water,
+/obj/structure/fermentation_keg/water,
 /turf/open/floor/rogue/ruinedwood/chevron,
 /area/rogue/outdoors/caves)
 "u" = (
-/obj/structure/fermenting_barrel/beer,
+/obj/structure/fermentation_keg/beer,
 /turf/open/floor/rogue/ruinedwood/chevron,
 /area/rogue/outdoors/caves)
 "z" = (

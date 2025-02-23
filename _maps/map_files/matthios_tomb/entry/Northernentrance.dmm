@@ -22,7 +22,7 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue)
 "du" = (
-/obj/structure/fermenting_barrel/random/beer,
+/obj/structure/fermentation_keg/random/beer,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue)
 "dY" = (
@@ -45,7 +45,7 @@
 /turf/closed/wall/mineral/rogue/stone,
 /area/rogue)
 "er" = (
-/obj/structure/fermenting_barrel,
+/obj/structure/fermentation_keg,
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
 "eJ" = (
@@ -71,7 +71,7 @@
 /turf/closed/wall/mineral/rogue/stone/window/moss,
 /area/rogue)
 "fM" = (
-/obj/structure/fermenting_barrel/random/beer,
+/obj/structure/fermentation_keg/random/beer,
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
 "gi" = (
@@ -224,7 +224,7 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue)
 "DY" = (
-/obj/structure/fermenting_barrel/random/water,
+/obj/structure/fermentation_keg/random/water,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue)
 "Fo" = (
@@ -326,7 +326,7 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue)
 "RR" = (
-/obj/structure/fermenting_barrel/random/water,
+/obj/structure/fermentation_keg/random/water,
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
 "SG" = (

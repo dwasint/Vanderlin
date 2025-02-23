@@ -241,7 +241,7 @@
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue)
 "iy" = (
-/obj/structure/fermenting_barrel/water,
+/obj/structure/fermentation_keg/water,
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue)
 "iF" = (
@@ -819,7 +819,7 @@
 /turf/closed/wall/mineral/rogue/craftstone,
 /area/rogue)
 "Eq" = (
-/obj/structure/fermenting_barrel/random/beer,
+/obj/structure/fermentation_keg/random/beer,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue)

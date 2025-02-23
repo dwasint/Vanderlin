@@ -114,6 +114,9 @@
 		else if(ispath(path, /datum/pottery_recipe))
 			var/datum/pottery_recipe/real_path = new path
 			real_path.show_menu(current_reader)
+		else if(ispath(path, /datum/brewing_recipe))
+			var/datum/brewing_recipe/real_path = new path
+			real_path.show_menu(current_reader)
 
 /obj/item/recipe_book/getonmobprop(tag)
 	. = ..()
@@ -195,6 +198,7 @@
 	base_icon_state = "book6"
 
 	types = list(
+		/datum/brewing_recipe,
 		/datum/pot_recipe/cooking,
 		/datum/repeatable_crafting_recipe/cooking,
 		/datum/repeatable_crafting_recipe/salami,

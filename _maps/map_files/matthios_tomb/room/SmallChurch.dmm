@@ -752,7 +752,7 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue)
 "GJ" = (
-/obj/structure/fermenting_barrel/random/water,
+/obj/structure/fermentation_keg/random/water,
 /obj/effect/decal/cleanable/dirt/cobweb,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue)
@@ -1290,7 +1290,7 @@
 /turf/open/floor/rogue/herringbone,
 /area/rogue)
 "ZF" = (
-/obj/structure/fermenting_barrel,
+/obj/structure/fermentation_keg,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue)
 "ZL" = (

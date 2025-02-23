@@ -203,7 +203,7 @@
 /area/rogue/outdoors/caves)
 "HP" = (
 /obj/machinery/light/rogue/torchholder/l,
-/obj/structure/fermenting_barrel/water,
+/obj/structure/fermentation_keg/water,
 /turf/open/floor/rogue/blocks/paving/vert,
 /area/rogue/outdoors/caves)
 "Jp" = (

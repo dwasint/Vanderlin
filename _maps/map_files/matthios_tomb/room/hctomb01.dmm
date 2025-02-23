@@ -783,7 +783,7 @@
 /area/rogue)
 "SV" = (
 /obj/structure/fluff/railing/wood,
-/obj/structure/fermenting_barrel/random/water,
+/obj/structure/fermentation_keg/random/water,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue)
 "SW" = (

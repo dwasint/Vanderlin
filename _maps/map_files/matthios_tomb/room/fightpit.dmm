@@ -87,7 +87,7 @@
 /turf/open/floor/rogue/ruinedwood/darker,
 /area/rogue)
 "iE" = (
-/obj/structure/fermenting_barrel/random/water,
+/obj/structure/fermentation_keg/random/water,
 /turf/open/floor/rogue/ruinedwood/darker,
 /area/rogue)
 "iH" = (
@@ -459,7 +459,7 @@
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
 "PG" = (
-/obj/structure/fermenting_barrel/random/beer,
+/obj/structure/fermentation_keg/random/beer,
 /turf/open/floor/rogue/ruinedwood/darker,
 /area/rogue)
 "PH" = (

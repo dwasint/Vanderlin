@@ -5,8 +5,8 @@
 
 /obj/item/natural/clay/New(loc, ...)
 	main_material = pick(typesof(/datum/material/clay))
-
 	. = ..()
+
 /obj/item/natural/clay/set_material_information()
 	. = ..()
 	name = "[lowertext(initial(main_material.name))] clay lump"
