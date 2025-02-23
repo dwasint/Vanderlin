@@ -86,6 +86,11 @@ GLOBAL_LIST_EMPTY(custom_fermentation_recipes)
 		if(try_filling(user, I))
 			return
 
+	if(ready_to_bottle)
+		if(selected_recipe.after_finish_attackby(user, I, src))
+			create_items()
+			return
+
 	var/list/produce_list = list()
 
 	if(istype(I, /obj/item/bottle_kit))
@@ -320,12 +325,35 @@ GLOBAL_LIST_EMPTY(custom_fermentation_recipes)
 	. = ..()
 	reagents.add_reagent(/datum/reagent/consumable/ethanol/beer,900)
 
+/obj/structure/fermentation_keg/proc/create_items()
+	if(!ready_to_bottle)
+		return
+
+	ready_to_bottle = FALSE
+	made_item = null
+	tapped = FALSE
+	age_start_time = 0
+	beer_left = 0
+	brewing = FALSE
+	sellprice = 25
+	icon_state = open_icon_state
+	update_overlays()
+
+	if(selected_recipe.brewed_item)
+		var/items_given
+		for(items_given= 0, items_given < selected_recipe.brewed_item_count, items_given++)
+			new selected_recipe.brewed_item(get_turf(src))
+	selected_recipe = null
+
 
 /obj/structure/fermentation_keg/proc/bottle(glass_colour)
 	if(ready_to_bottle)
 
 		ready_to_bottle = FALSE
 		made_item = null
+		tapped = FALSE
+		age_start_time = 0
+		beer_left = 0
 		brewing = FALSE
 		sellprice = 25
 		icon_state = open_icon_state

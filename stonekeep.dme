@@ -522,6 +522,7 @@
 #include "code\datums\brewing_recipes\mead.dm"
 #include "code\datums\brewing_recipes\onion_beer.dm"
 #include "code\datums\brewing_recipes\vodden.dm"
+#include "code\datums\brewing_recipes\items\cheese.dm"
 #include "code\datums\character_flaw\_character_flaw.dm"
 #include "code\datums\character_flaw\addiction.dm"
 #include "code\datums\character_flaw\limbloss.dm"
