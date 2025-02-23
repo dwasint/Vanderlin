@@ -22,6 +22,7 @@
 /obj/structure/metal_channel/Destroy()
 	var/turf/old_turf = get_turf(src)
 	. = ..()
+	reassess_group(old_turf)
 	var/list/directional_pipes = list()
 	for(var/direction in GLOB.cardinals)
 		var/turf/cardinal_turf = get_step(old_turf, direction)
@@ -170,9 +171,10 @@
 		setter.update_overlays()
 		setter.info = new_info
 
-/obj/structure/metal_channel/proc/reassess_group()
+/obj/structure/metal_channel/proc/reassess_group(turf/old_turf)
 	var/datum/metal_channel_info/listed_info = info
 	info.channels -= src
+	var/pre_total = group_reagents.total_volume
 
 	var/true_value = 0
 	for(var/list in connected)
@@ -187,7 +189,7 @@
 	for(var/direction2 in GLOB.cardinals)
 		var/list/channel_found = list()
 		var/list/nested_steps = list()
-		var/turf/step2 = get_step(src, text2num(direction2))
+		var/turf/step2 = get_step(old_turf, text2num(direction2))
 		var/obj/structure/metal_channel/channel = locate(/obj/structure/metal_channel) in step2
 		if(!channel)
 			continue
@@ -216,6 +218,20 @@
 		if(length(channel_found) == length(listed_info.channels))
 			return
 
+		var/datum/metal_channel_info/new_info = new
+		new_info.channels = channel_found
+		var/datum/reagents/new_group_reagents = new
+		new_group_reagents.maximum_volume = 1000000
+
+		var/per_item = FLOOR(pre_total /length(listed_info.channels),1)
+		group_reagents.trans_to(new_group_reagents, per_item * length(channel_found), preserve_data = TRUE)
+		for(var/obj/structure/metal_channel/listed_channel as anything in channel_found)
+			listed_channel.group_reagents = new_group_reagents
+			listed_channel.info = new_info
+			listed_channel.update_overlays()
+
+	info = null
+	group_reagents =null
 
 /obj/structure/metal_channel/attackby(obj/item/I, mob/user, params)
 	. = ..()
