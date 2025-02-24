@@ -8,9 +8,17 @@
 	grid_width = 32
 	grid_height = 64
 
-	var/crucible_temperature
+	var/crucible_temperature = 300
 
 	var/list/melting_pot = list()
+
+/obj/item/storage/crucible/examine(mob/user)
+	. = ..()
+	if(crucible_temperature)
+		. += "The crucible is around [crucible_temperature - 271.3]C"
+	if(length(melting_pot))
+		for(var/atom/atom in melting_pot)
+			. += "[atom.name] [FLOOR((atom.melt_amount / melting_pot[atom]) * 100, 1)]% Melted"
 
 /obj/item/storage/crucible/set_material_information()
 	. = ..()
@@ -41,14 +49,14 @@
 	var/obj/machinery/light/rogue/smelter/smelter = loc
 	var/obj/machinery/light/rogue/light = locate(/obj/machinery/light/rogue) in get_turf(src)
 	if(istype(smelter) && smelter?.on)
-		crucible_temperature = max(0, min(smelter.max_crucible_temperature, crucible_temperature + 100))
+		crucible_temperature = max(300, min(smelter.max_crucible_temperature, crucible_temperature + 100))
 	else if(light?.on)
 		if(crucible_temperature > 1300)
-			crucible_temperature = max(0, crucible_temperature - 1)
+			crucible_temperature = max(300, crucible_temperature - 1)
 		else
-			crucible_temperature = max(0, min(1300, crucible_temperature + 100))
+			crucible_temperature = max(300, min(1300, crucible_temperature + 100))
 	else
-		crucible_temperature = max(0, crucible_temperature - 10)
+		crucible_temperature = max(300, crucible_temperature - 10)
 
 	reagents.expose_temperature(crucible_temperature, 1)
 	for(var/obj/item/item in contents)
