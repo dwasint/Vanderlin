@@ -18,7 +18,8 @@
 		. += "The crucible is around [crucible_temperature - 271.3]C"
 	if(length(melting_pot))
 		for(var/obj/item/atom in melting_pot)
-			. += "[atom.name] [FLOOR((atom.melt_amount / melting_pot[atom]) * 100, 1)]% Melted"
+			var/datum/material/material = atom.melting_material
+			. += "<font color=[initial(material.color)]> [atom.name] </font> - [FLOOR((melting_pot[atom] / atom.melt_amount) * 100, 1)]% Melted"
 
 /obj/item/storage/crucible/set_material_information()
 	. = ..()
