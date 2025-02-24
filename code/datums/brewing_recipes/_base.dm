@@ -4,7 +4,7 @@
 	///the type path of the reagent
 	var/reagent_to_brew = /datum/reagent/consumable/ethanol
 	///pre-reqs: Essentially do we need past recipes made of this, uses the reagent_to_brew var to know if this has been done
-	var/pre_reqs
+	var/datum/reagent/pre_reqs
 	///the crops typepath we need goes typepath = amount. Amount is not just how many based on potency value up to a cap it adds values.
 	var/list/needed_crops = list()
 	///the type paths of needed reagents in typepath = amount
@@ -93,20 +93,24 @@
 		html += "<strong>Will Continue to age after brewing.</strong><br>"
 	if(helpful_hints)
 		html += "<strong>[helpful_hints]</stong><br>"
+	if(pre_reqs)
+		html += "<strong>Requires that you have just made [initial(pre_reqs.name)] in the keg.</stong><br>"
 
-	html += "<strong>Items Required</strong><br>"
-	for(var/atom/path as anything in needed_crops)
-		var/count = needed_crops[path]
-		html += "[icon2html(new path, user)] [count] parts [initial(path.name)]<br>"
-	for(var/atom/path as anything in needed_items)
-		var/count = needed_items[path]
-		html += "[count] parts [initial(path.name)]<br>"
-	html += "<br>"
-	html += "<strong>Liquids Required</strong><br>"
-	for(var/atom/path as anything in needed_reagents)
-		var/count = needed_reagents[path]
-		html += "[FLOOR(count / 3, 1)] oz of [initial(path.name)]<br>"
-	html += "<br>"
+	if(length(needed_crops) || length(needed_items))
+		html += "<strong>Items Required</strong><br>"
+		for(var/atom/path as anything in needed_crops)
+			var/count = needed_crops[path]
+			html += "[icon2html(new path, user)] [count] parts [initial(path.name)]<br>"
+		for(var/atom/path as anything in needed_items)
+			var/count = needed_items[path]
+			html += "[count] parts [initial(path.name)]<br>"
+		html += "<br>"
+	if(length(needed_reagents))
+		html += "<strong>Liquids Required</strong><br>"
+		for(var/atom/path as anything in needed_reagents)
+			var/count = needed_reagents[path]
+			html += "[FLOOR(count / 3, 1)] oz of [initial(path.name)]<br>"
+		html += "<br>"
 
 	if(brewed_amount)
 		html += "Produces: [FLOOR((per_brew_amount * brewed_amount) / 3, 1)] oz of [name]"

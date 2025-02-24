@@ -108,6 +108,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 10)
 	tastes = list("fish" = 1)
 	name = "cooked fish"
+	faretype = FARE_POOR
 	desc = "Abyssor's bounty, make sure to eat the eyes!"
 	icon_state = "carpcooked"
 	foodtype = MEAT
@@ -119,6 +120,7 @@
 	plateable = TRUE
 	plating_alt_icon = TRUE
 	plated_iconstate = "carp_plated"
+	faretype = FARE_IMPOVERISHED
 
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/clownfish
 	name = "cooked clownfish"
@@ -140,6 +142,7 @@
 	plateable = TRUE
 	plating_alt_icon = TRUE
 	plated_iconstate = "eel_plated"
+	faretype = FARE_NEUTRAL
 
 /obj/item/reagent_containers/food/snacks/rogue/fryfish/swordfish
 	name = "cooked swordfish"

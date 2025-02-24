@@ -5,10 +5,16 @@
 	icon = 'icons/roguetown/weapons/crucible.dmi'
 	icon_state = "crucible"
 	component_type = /datum/component/storage/concrete/roguetown/crucible
+	grid_width = 32
+	grid_height = 64
+
 	var/crucible_temperature
 
 	var/list/melting_pot = list()
 
+/obj/item/storage/crucible/set_material_information()
+	. = ..()
+	name = "[lowertext(initial(main_material.name))] crucible"
 
 /obj/item/storage/crucible/Initialize()
 	. = ..()
@@ -79,6 +85,11 @@
 	melting_pot -= item
 	qdel(item)
 	update_overlays()
+
+/obj/item/storage/crucible/random/Initialize()
+	. = ..()
+	main_material = pick(typesof(/datum/material/clay))
+	set_material_information()
 
 /obj/item/storage/crucible/test_crucible
 	var/list/material_data_to_add = list(

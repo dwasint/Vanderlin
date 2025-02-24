@@ -265,7 +265,7 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 	if(!length(members))
 		return
 	if(!turf_reagents)
-		turf_reagents = new(100000)
+		turf_reagents = new(100000, NO_REACT)
 
 	exposure = FALSE
 	slippery = FALSE

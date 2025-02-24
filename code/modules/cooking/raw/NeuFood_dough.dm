@@ -267,7 +267,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = DOUGH_NUTRITION)
 	tastes = list("spelt" = 1)
 	rotprocess = null
-
+	faretype = FARE_POOR
 
 /*	.................   Piedough   ................... */
 /obj/item/reagent_containers/food/snacks/piedough
@@ -436,6 +436,8 @@
 	rotprocess = SHELFLIFE_LONG
 	dropshrink = 0.8
 	become_rot_type = /obj/item/reagent_containers/food/snacks/rotten/breadslice
+	faretype = FARE_POOR
+
 /obj/item/reagent_containers/food/snacks/breadslice/attackby(obj/item/I, mob/living/user, params)
 	if(user.mind)
 		short_cooktime = (50 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*8))
@@ -517,6 +519,7 @@
 	drop_sound = 'sound/foley/dropsound/gen_drop.ogg'
 	w_class = WEIGHT_CLASS_NORMAL
 	tastes = list("stale bread" = 1)
+	faretype = FARE_NEUTRAL
 
 /obj/item/reagent_containers/food/snacks/stale_bread/raisin
 	icon_state = "raisinbread6"
@@ -543,6 +546,7 @@
 	tastes = list("bread" = 1,"dried fruit" = 1)
 	rotprocess = SHELFLIFE_EXTREME
 	become_rot_type = /obj/item/reagent_containers/food/snacks/stale_bread/raisin
+	faretype = FARE_NEUTRAL
 
 /obj/item/reagent_containers/food/snacks/raisindough_poison
 	name = "loaf of raisins"
@@ -565,6 +569,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = BREADSLICE_NUTRITION+2)
 	tastes = list("bread" = 1,"dried fruit" = 1)
 	rotprocess = SHELFLIFE_EXTREME
+	faretype = FARE_NEUTRAL
 
 /obj/item/reagent_containers/food/snacks/breadslice/raisin_poison
 	name = "raisin loaf slice"
@@ -590,6 +595,8 @@
 	biting = TRUE
 	tastes = list("bread" = 1)
 	rotprocess = SHELFLIFE_EXTREME
+	faretype = FARE_POOR
+
 /obj/item/reagent_containers/food/snacks/bun/attackby(obj/item/I, mob/living/user, params)
 	if(user.mind)
 		short_cooktime = (50 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*8))
@@ -637,7 +644,7 @@
 	foodtype = GRAIN | DAIRY
 	w_class = WEIGHT_CLASS_NORMAL
 	rotprocess = SHELFLIFE_DECENT
-
+	faretype = FARE_FINE
 
 /*---------\
 | Pastries |
@@ -652,6 +659,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
 	tastes = list("crispy bread with a soft inside" = 1)
 	rotprocess = null
+	faretype = FARE_FINE
 
 
 /*	.................   Pastry   ................... */
@@ -685,6 +693,8 @@
 	biting = TRUE
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT+SNACK_POOR)
 	tastes = list("crispy butterdough" = 1, "raisins" = 1)
+	faretype = FARE_POOR
+
 /obj/item/reagent_containers/food/snacks/biscuit/good
 	eat_effect = /datum/status_effect/buff/foodbuff
 /obj/item/reagent_containers/food/snacks/biscuit/good/New()
@@ -730,6 +740,8 @@
 	biting = TRUE
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
 	tastes = list("crispy butterdough" = 1)
+	faretype = FARE_FINE
+
 /obj/item/reagent_containers/food/snacks/prezzel/good
 	name = "prezzel"
 	eat_effect = /datum/status_effect/buff/foodbuff
@@ -896,7 +908,7 @@
 	slice_sound = TRUE
 	rotprocess = SHELFLIFE_LONG
 	eat_effect = /datum/status_effect/buff/foodbuff
-
+	faretype = FARE_LAVISH
 
 /obj/item/reagent_containers/food/snacks/zybcake_slice
 	name = "zybantine cake slice"
@@ -913,6 +925,7 @@
 	eat_effect = /datum/status_effect/buff/foodbuff
 	rotprocess = SHELFLIFE_DECENT
 	plateable = TRUE
+	faretype = FARE_FINE
 
 // -------------- CHEESECAKE -----------------
 /obj/item/reagent_containers/food/snacks/chescake_ready
@@ -950,6 +963,7 @@
 	slice_sound = TRUE
 	rotprocess = SHELFLIFE_LONG
 	eat_effect = /datum/status_effect/buff/foodbuff
+	faretype = FARE_FINE
 
 /obj/item/reagent_containers/food/snacks/cheesecake_slice
 	name = "cheesecake slice"
@@ -966,6 +980,7 @@
 	eat_effect = /datum/status_effect/buff/foodbuff
 	rotprocess = SHELFLIFE_DECENT
 	plateable = TRUE
+	faretype = FARE_FINE
 
 /obj/item/reagent_containers/food/snacks/cheesecake_poison_cooked
 	name = "cheesecake"

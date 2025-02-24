@@ -36,7 +36,7 @@
 			irrigation_channel.update_overlays()
 
 /obj/structure/irrigation_channel/proc/set_diged_ways(dir)
-	diged["[dir]"] = world.time + 60 MINUTES
+	diged["[dir]"] = TRUE
 	update_overlays()
 
 /obj/structure/irrigation_channel/proc/unset_diged_ways(dir)
@@ -49,7 +49,7 @@
 	cut_overlays()
 	var/new_overlay = ""
 	for(var/i in diged)
-		if(diged[i] > world.time)
+		if(diged[i])
 			new_overlay += i
 	icon_state = "[new_overlay]"
 	if(!new_overlay)

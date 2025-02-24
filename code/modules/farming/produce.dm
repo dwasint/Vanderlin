@@ -95,6 +95,7 @@
 	foodtype = FRUIT
 	tastes = list("apple" = 1)
 	trash = /obj/item/trash/applecore
+	faretype = FARE_POOR
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/64x64/head.dmi'
 	slot_flags = ITEM_SLOT_HEAD
 	worn_x_dimension = 64
@@ -145,6 +146,7 @@
 	desc = "Common berries found throughout Enigma. A traveler's repast, or Dendor's wrath."
 	icon_state = "berries"
 	tastes = list("berry" = 1)
+	faretype = FARE_NEUTRAL
 	bitesize = 5
 	list_reagents = list(/datum/reagent/consumable/nutriment = 0.5)
 	dropshrink = 0.75
