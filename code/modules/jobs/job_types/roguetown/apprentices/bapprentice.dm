@@ -53,4 +53,5 @@
 		backr = /obj/item/storage/backpack/rogue/satchel
 		H.change_stat("endurance", 2)
 		H.change_stat("speed", 1)
+
 	ADD_TRAIT(H, TRAIT_MALUMFIRE, TRAIT_GENERIC)

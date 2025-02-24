@@ -86,6 +86,7 @@
 	wbalance = EASY_TO_DODGE
 	wlength = WLENGTH_SHORT
 	smeltresult = /obj/item/ash //is a wooden log and a stone hammered in the top
+	melting_material = null
 	sellprice = 10
 
 /obj/item/rogueweapon/axe/stone/getonmobprop(tag)
@@ -108,7 +109,6 @@
 	desc = "A masterfully constructed ax, with additional weights in the form of ornate spikes and practical edges."
 	icon_state = "battleaxe"
 	max_blade_int = 500
-	smeltresult = /obj/item/ingot/steel
 	gripped_intents = list(/datum/intent/axe/cut,/datum/intent/axe/chop)
 	parrysound = "sword"
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
@@ -117,6 +117,8 @@
 	max_integrity = INTEGRITY_STRONG
 	wdefense = AVERAGE_PARRY
 	sellprice = 60
+	melting_material = /datum/material/steel
+	melt_amount = 150
 
 /obj/item/rogueweapon/axe/battle/getonmobprop(tag)
 	if(tag)
@@ -140,7 +142,8 @@
 	icon_state = "axe"
 	max_blade_int = 200
 	max_integrity = INTEGRITY_STANDARD
-	smeltresult = /obj/item/ingot/iron
+	melting_material = /datum/material/iron
+	melt_amount = 75
 	gripped_intents = list(/datum/intent/axe/cut,/datum/intent/axe/chop)
 	parrysound = "sword"
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
@@ -169,7 +172,8 @@
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_BACK
 	associated_skill = /datum/skill/combat/axesmaces
 	anvilrepair = /datum/skill/craft/weaponsmithing
-	smeltresult = /obj/item/ingot/steel
+	melting_material = /datum/material/steel
+	melt_amount = 175
 	resistance_flags = FIRE_PROOF
 	parrysound = list('sound/combat/parry/wood/parrywood (1).ogg', 'sound/combat/parry/wood/parrywood (2).ogg', 'sound/combat/parry/wood/parrywood (3).ogg')
 	swingsound = BLADEWOOSH_MED
@@ -191,7 +195,8 @@
 	possible_item_intents = list(/datum/intent/axe/cut,/datum/intent/axe/chop)
 	max_blade_int = 300
 	max_integrity = INTEGRITY_STRONGEST
-	smeltresult = /obj/item/ingot/steel
+	melting_material = /datum/material/steel
+	melt_amount = 75
 	resistance_flags = FIRE_PROOF
 	gripped_intents = list(/datum/intent/axe/cut,/datum/intent/axe/chop)
 	wdefense = AVERAGE_PARRY
@@ -224,7 +229,8 @@
 	max_blade_int = 120
 	max_integrity = INTEGRITY_WORST
 	minstr = 6
-	smeltresult = /obj/item/ingot/copper
+	melting_material = /datum/material/copper
+	melt_amount = 150
 	wlength = WLENGTH_SHORT
 	pickup_sound = 'sound/foley/equip/rummaging-03.ogg'
 	sellprice = 15
@@ -253,7 +259,8 @@
 	icon = 'icons/roguetown/weapons/64.dmi'
 	max_blade_int = 200
 	max_integrity = INTEGRITY_STRONG
-	smeltresult = /obj/item/ingot/iron
+	melting_material = /datum/material/iron
+	melt_amount = 75
 	gripped_intents = list(/datum/intent/axe/cut,/datum/intent/axe/chop/great)
 	parrysound = list('sound/combat/parry/wood/parrywood (1).ogg', 'sound/combat/parry/wood/parrywood (2).ogg', 'sound/combat/parry/wood/parrywood (3).ogg')
 	swingsound = BLADEWOOSH_MED
@@ -291,7 +298,8 @@
 	max_blade_int = 200
 	max_integrity = INTEGRITY_STRONG
 	bigboy = TRUE
-	smeltresult = /obj/item/ingot/iron
+	melting_material = /datum/material/iron
+	melt_amount = 150
 	gripped_intents = list(/datum/intent/axe/cut,/datum/intent/axe/chop/great, /datum/intent/axe/thrust, /datum/intent/pick)
 	parrysound = list('sound/combat/parry/wood/parrywood (1).ogg', 'sound/combat/parry/wood/parrywood (2).ogg', 'sound/combat/parry/wood/parrywood (3).ogg')
 	swingsound = BLADEWOOSH_MED

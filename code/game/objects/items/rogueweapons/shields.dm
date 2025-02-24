@@ -30,6 +30,7 @@
 	blade_dulling = DULLING_BASHCHOP
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ash
+	melting_material = null
 	COOLDOWN_DECLARE(shield_bang)
 
 // Shield banging
@@ -162,7 +163,8 @@
 	coverage = 65
 	parrysound = list('sound/combat/parry/shield/towershield (1).ogg','sound/combat/parry/shield/towershield (2).ogg','sound/combat/parry/shield/towershield (3).ogg')
 	max_integrity = 300
-	smeltresult = /obj/item/ingot/iron // Made with an iron ingot, let us recover it
+	melting_material = /datum/material/iron
+	melt_amount = 75
 
 /obj/item/rogueweapon/shield/tower/spidershield
 	name = "spider shield"
@@ -199,7 +201,8 @@
 	max_integrity = 500
 	blade_dulling = DULLING_BASH
 	sellprice = 150 // A noble collector would love to get their hands on one of these
-	smeltresult = null // No bronze ingots yet
+	melting_material = /datum/material/bronze
+	melt_amount = 75
 
 /obj/item/rogueweapon/shield/tower/hoplite/getonmobprop(tag)
 	. = ..()
@@ -229,7 +232,8 @@
 	max_integrity = 500
 	blade_dulling = DULLING_BASH
 	sellprice = 30
-	smeltresult = /obj/item/ingot/steel // Made with steel, let us repurpose it
+	melting_material = /datum/material/steel
+	melt_amount = 90
 
 /obj/item/rogueweapon/shield/tower/metal/getonmobprop(tag)
 	if(tag)
@@ -282,7 +286,8 @@
 	attacked_sound = list('sound/combat/parry/shield/metalshield (1).ogg','sound/combat/parry/shield/metalshield (2).ogg','sound/combat/parry/shield/metalshield (3).ogg')
 	parrysound = list('sound/combat/parry/shield/metalshield (1).ogg','sound/combat/parry/shield/metalshield (2).ogg','sound/combat/parry/shield/metalshield (3).ogg')
 	max_integrity = 250
-	smeltresult = /obj/item/ingot/iron // Made with an iron ingot, let us recover it
+	melting_material = /datum/material/iron
+	melt_amount = 75
 
 /obj/item/rogueweapon/shield/tower/buckleriron/getonmobprop(tag)
 	. = ..()

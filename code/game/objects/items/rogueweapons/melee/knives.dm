@@ -22,7 +22,8 @@
 	drop_sound = 'sound/foley/dropsound/blade_drop.ogg'
 	wdefense = MEDIOCHRE_PARRY
 	wbalance = HARD_TO_DODGE
-	smeltresult = /obj/item/ingot/steel
+	melting_material = /datum/material/steel
+	melt_amount = 50
 	sharpness = IS_SHARP
 	sellprice = 30
 
@@ -122,7 +123,8 @@
 	max_integrity = INTEGRITY_STRONG
 	wdefense = MEDIOCHRE_PARRY
 	wbalance = HARD_TO_DODGE
-	smeltresult = /obj/item/ingot/steel
+	melting_material = /datum/material/steel
+	melt_amount = 75
 	sellprice = 6
 
 
@@ -132,6 +134,8 @@
 	name = "iron scissors"
 	desc = "Scissors made of iron that may be used to salvage usable materials from clothing."
 	icon_state = "iscissors"
+	melting_material = /datum/material/iron
+	melt_amount = 75
 
 /datum/intent/snip // The salvaging intent! Used only for the scissors for now!
 	name = "snip"
@@ -182,7 +186,8 @@
 	name = "steel scissors"
 	desc = "Scissors made of solid steel that may be used to salvage usable materials from clothing, more durable and a tad more deadly than their iron conterpart."
 	icon_state = "sscissors"
-	smeltresult = /obj/item/ingot/steel
+	melting_material = /datum/material/steel
+	melt_amount = 75
 
 //................ Cleaver ............... //
 /obj/item/rogueweapon/knife/cleaver
@@ -203,7 +208,8 @@
 	slot_flags = ITEM_SLOT_HIP
 	thrown_bclass = BCLASS_CHOP
 	w_class = WEIGHT_CLASS_NORMAL
-	smeltresult = /obj/item/ingot/steel
+	melting_material = /datum/material/steel
+	melt_amount = 75
 	wbalance = 0 // Except this one, too huge and used to chop
 	dropshrink = 0.9
 
@@ -218,7 +224,8 @@
 	max_integrity = 180
 	slot_flags = ITEM_SLOT_HIP
 	w_class = WEIGHT_CLASS_NORMAL
-	smeltresult = /obj/item/ingot/iron
+	melting_material = /datum/material/iron
+	melt_amount = 75
 	wbalance = 1
 	sellprice = 15
 
@@ -237,7 +244,7 @@
 	name = "iron dagger"
 	desc = "Thin, sharp, pointed death."
 	icon_state = "idagger"
-	smeltresult = null
+	melting_material = null
 	sellprice = 12
 
 //................ Steel Dagger ............... //
@@ -245,7 +252,7 @@
 	name = "steel dagger"
 	desc = "A dagger made of refined steel."
 	icon_state = "sdagger"
-	smeltresult = null
+	melting_material = null
 	wdefense = AVERAGE_PARRY
 	wbalance = VERY_HARD_TO_DODGE
 
@@ -258,14 +265,14 @@
 	name = "fanged dagger"
 	desc = "A dagger modeled after the fang of an anthrax spider."
 	icon_state = "spiderdagger"
-	smeltresult = null
+	melting_material = null
 
 //................ Silver Dagger ............... //
 /obj/item/rogueweapon/knife/dagger/silver
 	name = "silver dagger"
 	desc = "A dagger made of fine silver, the bane of the undead."
 	icon_state = "sildagger"
-	smeltresult = null
+	melting_material = null
 	max_blade_int = 112 // .8 of steel
 	max_integrity = 240 // .8 of steel
 	sellprice = 45
@@ -278,7 +285,7 @@
 	// desc = "A profane dagger made of cursed black steel. Whispers emanate from the gem on its hilt."
 	sellprice = 250
 	icon_state = "pdagger"
-	smeltresult = null
+	melting_material = null
 	embedding = list("embed_chance" = 0) // Embedding the cursed dagger has the potential to cause duping issues. Keep it like this unless you want to do a lot of bug hunting.
 
 /obj/item/rogueweapon/knife/dagger/steel/profane/examine(mob/user)
@@ -404,6 +411,7 @@
 	max_blade_int = 30
 	wdefense = TERRIBLE_PARRY
 	smeltresult = /obj/item/ash
+	melting_material = null
 	sellprice = 5
 
 
@@ -413,7 +421,8 @@
 	name = "villager knife"
 	desc = "The loyal companion of simple peasants, able to cut hard bread and carve wood. A versatile kitchen utensil and tool."
 	icon_state = "villagernife"
-	smeltresult = null
+	melting_material = /datum/material/iron
+	melt_amount = 25
 
 /obj/item/rogueweapon/knife/copper
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/thrust)
@@ -425,7 +434,8 @@
 	swingsound = list('sound/combat/wooshes/bladed/wooshsmall (1).ogg','sound/combat/wooshes/bladed/wooshsmall (2).ogg','sound/combat/wooshes/bladed/wooshsmall (3).ogg')
 	associated_skill = /datum/skill/combat/knives
 	pickup_sound = 'sound/foley/equip/swordsmall2.ogg'
-	smeltresult = /obj/item/ash
+	melting_material = /datum/material/copper
+	melt_amount = 50
 	sellprice = 10
 
 
@@ -440,6 +450,8 @@
 	wdefense = 1
 	icon_state = "throw_knifei"
 	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 25, "embedded_fall_chance" = 20)
+	melting_material = /datum/material/iron
+	melt_amount = 50
 
 /obj/item/rogueweapon/knife/throwingknife/steel
 	name = "steel tossblade"
@@ -452,6 +464,7 @@
 	wdefense = 1
 	icon_state = "throw_knifes"
 	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 30, "embedded_fall_chance" = 15)
+	melt_amount = 50
 
 /obj/item/rogueweapon/knife/throwingknife/psydon
 	name = "psydonian tossblade"
@@ -466,4 +479,5 @@
 	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 50, "embedded_fall_chance" = 0)
 	is_silver = TRUE
 	sellprice = 65
-	smeltresult = /obj/item/ingot/silver
+	melting_material = /datum/material/silver
+	melt_amount = 50

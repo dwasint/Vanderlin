@@ -15,6 +15,7 @@
 	resistance_flags = FIRE_PROOF|LAVA_PROOF // Nigh indestructible due to how important it is
 	associated_skill = /datum/skill/combat/axesmaces
 	smeltresult = null // No
+	melting_material = null
 	swingsound = BLUNTWOOSH_MED
 	minstr = 5
 	blade_dulling = DULLING_BASHCHOP

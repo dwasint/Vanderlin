@@ -17,6 +17,7 @@
 	max_integrity = INTEGRITY_STANDARD
 	minstr = 8
 	smeltresult = /obj/item/ash
+	melting_material = null
 	associated_skill = /datum/skill/combat/polearms
 	drop_sound = 'sound/foley/dropsound/wooden_drop.ogg'
 	parrysound = list('sound/combat/parry/wood/parrywood (1).ogg', 'sound/combat/parry/wood/parrywood (2).ogg', 'sound/combat/parry/wood/parrywood (3).ogg')
@@ -196,7 +197,8 @@
 	icon_state = "spear"
 	slot_flags = ITEM_SLOT_BACK
 	max_blade_int = 100
-	smeltresult = /obj/item/ingot/iron
+	melting_material = /datum/material/iron
+	melt_amount = 75
 	dropshrink = 0.8
 	thrown_bclass = BCLASS_STAB
 	sellprice = 22
@@ -220,7 +222,8 @@
 	resistance_flags = FIRE_PROOF
 	drop_sound = 'sound/foley/dropsound/blade_drop.ogg'
 	max_blade_int = 100
-	smeltresult = /obj/item/ingot/steel
+	melting_material = /datum/material/steel
+	melt_amount = 75
 	max_integrity = INTEGRITY_STRONG
 	wdefense = ULTMATE_PARRY
 	wbalance = EASY_TO_DODGE
@@ -238,6 +241,7 @@
 	minstr = 6
 	max_blade_int = 50
 	smeltresult = /obj/item/ash
+	melting_material = null
 	dropshrink = 0.7
 	wlength = WLENGTH_LONG
 	wdefense = AVERAGE_PARRY
@@ -253,7 +257,8 @@
 	max_blade_int = 70
 	max_integrity = INTEGRITY_POOR
 	minstr = 7
-	smeltresult = /obj/item/ingot/copper
+	melting_material = /datum/material/copper
+	melt_amount = 75
 	dropshrink = 0.9
 	sellprice = 15
 	throw_speed = 3
@@ -283,7 +288,8 @@
 	max_blade_int = 300
 	max_integrity = INTEGRITY_STRONGEST
 	drop_sound = 'sound/foley/dropsound/blade_drop.ogg'
-	smeltresult = /obj/item/ingot/steel
+	melting_material = /datum/material/steel
+	melt_amount = 150
 	dropshrink = 0.8
 	wdefense = ULTMATE_PARRY
 	wbalance = EASY_TO_DODGE
@@ -310,7 +316,8 @@
 	name = "bardiche"
 	desc = "A grand axe of northernly design, renowned for easily chopping off limbs clean with brutal strength."
 	icon_state = "bardiche"
-	smeltresult = /obj/item/ingot/iron
+	melting_material = /datum/material/iron
+	melt_amount = 140
 	swingsound = BLADEWOOSH_MED
 	wbalance = VERY_EASY_TO_DODGE
 	max_blade_int = 200
@@ -333,7 +340,8 @@
 	icon_state = "eaglebeak"
 	slot_flags = ITEM_SLOT_BACK
 	minstr = 11
-	smeltresult = /obj/item/ingot/steel
+	melting_material = /datum/material/steel
+	melt_amount = 150
 	max_blade_int = 300
 	max_integrity = INTEGRITY_STRONGEST
 	dropshrink = 0.8
@@ -356,7 +364,8 @@
 	name = "lucerne"
 	desc = "A polehammer of simple iron, fracture bone and dissent with simple brute force."
 	icon_state = "polehammer"
-	smeltresult = /obj/item/ingot/iron
+	melting_material = /datum/material/iron
+	melt_amount = 150
 	max_integrity = INTEGRITY_STRONG
 	sellprice = 40
 	wbalance = VERY_EASY_TO_DODGE
@@ -370,7 +379,8 @@
 	icon_state = "bronzespear"
 	max_blade_int = 300
 	max_integrity = INTEGRITY_STRONG
-	smeltresult = /obj/item/ash
+	melting_material = /datum/material/bronze
+	melt_amount = 75
 	sellprice = 120 // A noble collector would love to get his/her hands on one of these spears
 
 /obj/item/rogueweapon/polearm/spear/hoplite/winged // Winged version has +1 weapon defence and sells for a bit more, but is identical otherwise
@@ -386,7 +396,8 @@
 	desc = "A spear forged of bronze. Expensive but more durable than a regular iron one."
 	icon_state = "bronzespear"
 	max_blade_int = 200
-	smeltresult = /obj/item/ingot/bronze
+	melting_material = /datum/material/bronze
+	melt_amount = 75
 	force = 20
 	force_wielded = 25
 
@@ -414,7 +425,8 @@
 	max_blade_int = 100
 	max_integrity = 300
 	minstr = 5
-	smeltresult = /obj/item/ingot/iron
+	melting_material = /datum/material/iron
+	melt_amount = 75
 	associated_skill = /datum/skill/combat/polearms
 	drop_sound = 'sound/foley/dropsound/blade_drop.ogg'
 	dropshrink = 0.75
@@ -442,7 +454,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	minstr = 6
 	max_blade_int = 70
-	smeltresult = null
+	melting_material = null
 	associated_skill = /datum/skill/combat/polearms
 	blade_dulling = DULLING_BASHCHOP
 	walking_stick = TRUE

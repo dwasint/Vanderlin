@@ -38,9 +38,15 @@
 				. += "It contains [round(total_volume / 3)] oz of <font color=[reagent_color]> [tag] [initial(material.name)].</font>"
 
 /obj/item/storage/crucible/process()
+	var/obj/machinery/light/rogue/smelter/smelter = loc
 	var/obj/machinery/light/rogue/light = locate(/obj/machinery/light/rogue) in get_turf(src)
-	if(light?.on)
-		crucible_temperature = max(0, min(5000, crucible_temperature + 100))
+	if(istype(smelter) && smelter?.on)
+		crucible_temperature = max(0, min(smelter.max_crucible_temperature, crucible_temperature + 100))
+	else if(light?.on)
+		if(crucible_temperature > 1300)
+			crucible_temperature = max(0, crucible_temperature - 1)
+		else
+			crucible_temperature = max(0, min(1300, crucible_temperature + 100))
 	else
 		crucible_temperature = max(0, crucible_temperature - 10)
 

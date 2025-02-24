@@ -19,7 +19,8 @@
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_HIP
 	associated_skill = /datum/skill/combat/axesmaces
-	smeltresult = /obj/item/ingot/iron
+	melting_material = /datum/material/iron
+	melt_amount = 75
 	parrysound = list('sound/combat/parry/parrygen.ogg')
 	swingsound = BLUNTWOOSH_MED
 	max_integrity = 300
@@ -122,7 +123,8 @@
 	name = "bell ringer"
 	desc = "Faith is sometimes best administered with steel and blood."
 	icon_state = "churchmace"
-	smeltresult = /obj/item/ingot/steel
+	melting_material = /datum/material/steel
+	melt_amount = 75
 	blade_dulling = DULLING_BASH
 	sellprice = 100
 	wdefense = GOOD_PARRY
@@ -134,7 +136,8 @@
 	desc = "A well-crafted mace with a steel head. Easier to control and hits just as hard."
 	icon_state = "smace"
 	blade_dulling = DULLING_BASH
-	smeltresult = /obj/item/ingot/steel
+	melting_material = /datum/material/steel
+	melt_amount = 150
 	wbalance = DODGE_CHANCE_NORMAL
 	sellprice = 60
 	wdefense = GOOD_PARRY
@@ -167,7 +170,8 @@
 	icon_state = "cbludgeon"
 	max_integrity = 80
 	minstr = 5
-	smeltresult = /obj/item/ingot/copper
+	melting_material = /datum/material/copper
+	melt_amount = 75
 	sellprice = 10
 	wdefense = MEDIOCHRE_PARRY
 
@@ -184,6 +188,7 @@
 	possible_item_intents = list(/datum/intent/mace/strike/wood)
 	gripped_intents = list(/datum/intent/mace/strike/wood, /datum/intent/mace/smash/wood)
 	smeltresult = /obj/item/ash
+	melting_material = null
 	minstr = 2
 	sellprice = 5
 	wdefense = MEDIOCHRE_PARRY
@@ -204,6 +209,7 @@
 	gripped_intents = null
 	resistance_flags = FLAMMABLE // Weapon made mostly of wood
 	smeltresult = /obj/item/ash
+	melting_material = null
 	wlength = WLENGTH_SHORT
 	w_class = WEIGHT_CLASS_NORMAL
 	max_integrity = 180
@@ -275,6 +281,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK
 	smeltresult = /obj/item/ash
+	melting_material = null
 	resistance_flags = FLAMMABLE // Weapon made mostly of wood
 	minstr = 10
 	parrysound = "parrywood"
@@ -301,12 +308,12 @@
 	desc = "A casted polearm, rumored to be the weapon-design used by Psydon himself."
 	icon_state = "polemace"
 	resistance_flags = FIRE_PROOF
-	smeltresult = /obj/item/ingot/steel
+	melting_material = /datum/material/steel
+	melt_amount = 75
 	max_integrity = INTEGRITY_STRONGEST
 //	slowdown = 1
 	sellprice = 60
 	wbalance = DODGE_CHANCE_NORMAL
-	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/mace/goden/steel/getonmobprop(tag)
 	. = ..()
@@ -378,7 +385,8 @@
 	name = "copper warclub"
 	desc = "A two handed club, decorated with a crown of spikes. A barbaric besign, good enough to be used as a weapon."
 	icon_state = "cwarclub"
-	smeltresult = /obj/item/ash
+	melting_material = /datum/material/copper
+	melt_amount = 75
 	resistance_flags = FLAMMABLE // Weapon made mostly of wood
 	parrysound = "parrywood"
 	max_integrity = 150
@@ -394,7 +402,8 @@
 	desc = "Made to punch through armor and skull alike."
 	icon_state = "iwarhammer"
 	wbalance = -1
-	smeltresult = /obj/item/ingot/iron
+	melting_material = /datum/material/iron
+	melt_amount = 75
 	blade_dulling = DULLING_BASH
 	wdefense = 3
 
@@ -415,7 +424,8 @@
 	name = "steel warhammer"
 	desc = "A fine steel warhammer, makes a satisfying sound when paired with a knight's helm."
 	icon_state = "swarhammer"
-	smeltresult = /obj/item/ingot/steel
+	melting_material = /datum/material/steel
+	melt_amount = 150
 	wdefense = 4
 
 /datum/intent/mace/warhammer/stab

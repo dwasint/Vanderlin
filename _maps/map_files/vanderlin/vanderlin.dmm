@@ -4188,6 +4188,14 @@
 /obj/machinery/light/rogue/firebowl/standing,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/town/caverogue)
+"cTk" = (
+/obj/machinery/light/rogue/smelter,
+/obj/item/storage/crucible/random{
+	pixel_y = 14;
+	pixel_x = -2
+	},
+/turf/open/floor/rogue/blocks/newstone,
+/area/rogue/indoors/town/smithy)
 "cTS" = (
 /turf/closed/wall/mineral/rogue/wooddark/end{
 	dir = 1
@@ -5750,6 +5758,16 @@
 "edj" = (
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/soilsons)
+"edv" = (
+/obj/structure/table/wood/reinforced_alter,
+/obj/item/mould/ingot{
+	pixel_y = 11
+	},
+/obj/item/mould/ingot{
+	pixel_y = -4
+	},
+/turf/open/floor/rogue/herringbone,
+/area/rogue/indoors/town/smithy)
 "edD" = (
 /obj/structure/roguemachine/mail,
 /turf/open/floor/rogue/blocks,
@@ -9108,6 +9126,13 @@
 /obj/machinery/light/rogue/torchholder{
 	pixel_y = 26
 	},
+/obj/item/storage/crucible/random{
+	pixel_y = 14;
+	pixel_x = -2
+	},
+/obj/item/mould/ingot{
+	pixel_y = -7
+	},
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/dwarfin)
 "gzH" = (
@@ -9309,6 +9334,18 @@
 /obj/machinery/light/rogue/wallfire/candle,
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/outdoors/rtfield/safe)
+"gGF" = (
+/obj/structure/table/wood/reinforced_alter,
+/obj/item/storage/crucible/random{
+	pixel_y = 14;
+	pixel_x = -2
+	},
+/obj/item/storage/crucible/random{
+	pixel_y = 5;
+	pixel_x = 1
+	},
+/turf/open/floor/rogue/ruinedwood,
+/area/rogue/indoors/town)
 "gGR" = (
 /turf/open/floor/rogue/tile{
 	icon_state = "bfloorz"
@@ -10503,6 +10540,12 @@
 /area/rogue/indoors/town/cell)
 "hDd" = (
 /obj/structure/table/wood/reinf_long,
+/obj/item/mould/ingot{
+	pixel_y = -4
+	},
+/obj/item/mould/ingot{
+	pixel_y = 11
+	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town)
 "hDm" = (
@@ -12707,6 +12750,10 @@
 /area/rogue/outdoors/town)
 "jda" = (
 /obj/machinery/light/rogue/smelter/great,
+/obj/item/storage/crucible/random{
+	pixel_y = 14;
+	pixel_x = -3
+	},
 /turf/open/floor/rogue/blocks/newstone,
 /area/rogue/indoors/town/smithy)
 "jdj" = (
@@ -12764,6 +12811,13 @@
 /obj/structure/closet/crate/roguecloset/inn,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/tavern)
+"jgB" = (
+/obj/machinery/light/rogue/smelter,
+/obj/item/storage/crucible/random{
+	pixel_y = 12
+	},
+/turf/open/floor/rogue/blocks/newstone,
+/area/rogue/indoors/town/smithy)
 "jgF" = (
 /obj/structure/closet/crate/roguecloset,
 /obj/item/flashlight/flare/torch/metal,
@@ -21346,6 +21400,10 @@
 /area/rogue/indoors/town)
 "pMR" = (
 /obj/machinery/light/rogue/smelter,
+/obj/item/storage/crucible/random{
+	pixel_y = 12;
+	pixel_x = 3
+	},
 /turf/open/floor/rogue/blocks/newstone,
 /area/rogue/indoors/town/smithy)
 "pMU" = (
@@ -23859,9 +23917,7 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
 "rJr" = (
-/obj/effect/waterfall{
-	pixel_y = 32
-	},
+/obj/effect/waterfall,
 /turf/open/water/river,
 /area/rogue/outdoors/town)
 "rJx" = (
@@ -25530,6 +25586,13 @@
 /obj/machinery/light/rogue/torchholder{
 	pixel_y = 26
 	},
+/obj/item/storage/crucible/random{
+	pixel_y = 13;
+	pixel_x = -3
+	},
+/obj/item/mould/ingot{
+	pixel_y = -7
+	},
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/dwarfin)
 "sSS" = (
@@ -25695,6 +25758,14 @@
 "sXG" = (
 /obj/structure/table/wood/reinf_long{
 	dir = 1
+	},
+/obj/item/storage/crucible/random{
+	pixel_y = 14;
+	pixel_x = -7
+	},
+/obj/item/storage/crucible/random{
+	pixel_y = 2;
+	pixel_x = 6
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town)
@@ -25907,7 +25978,7 @@
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town/church)
 "tgw" = (
-/obj/structure/rack/rogue,
+/obj/structure/pottery_lathe,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/smithy)
 "tgx" = (
@@ -26004,6 +26075,12 @@
 /area/rogue/outdoors/rtfield)
 "tja" = (
 /obj/structure/table/wood/reinforced_alter,
+/obj/item/mould/ingot{
+	pixel_y = -4
+	},
+/obj/item/mould/ingot{
+	pixel_y = 11
+	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/smithy)
 "tjO" = (
@@ -28365,6 +28442,16 @@
 /area/rogue/indoors/town/church/inquisition)
 "uKC" = (
 /obj/structure/closet/crate/roguecloset,
+/obj/item/natural/clay,
+/obj/item/natural/clay,
+/obj/item/natural/clay,
+/obj/item/natural/clay,
+/obj/item/natural/clay,
+/obj/item/natural/clay,
+/obj/item/natural/clay,
+/obj/item/natural/clay,
+/obj/item/natural/clay,
+/obj/item/natural/clay,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/smithy)
 "uKF" = (
@@ -93890,7 +93977,7 @@ tTU
 ehF
 elp
 nlk
-tPH
+gGF
 ulA
 ulA
 sXG
@@ -94079,7 +94166,7 @@ eGV
 uOB
 pMR
 xfp
-pMR
+jgB
 eHV
 uOB
 uOB
@@ -94279,7 +94366,7 @@ sTi
 aFU
 mCU
 dFv
-pMR
+cTk
 qBL
 pMR
 svp
@@ -94482,7 +94569,7 @@ oaj
 dFv
 dFv
 pnI
-tja
+edv
 pnI
 pnI
 pnI

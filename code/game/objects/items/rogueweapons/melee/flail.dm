@@ -12,7 +12,8 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = ITEM_SLOT_HIP
 	associated_skill = /datum/skill/combat/whipsflails
-	smeltresult = /obj/item/ingot/iron
+	melting_material = /datum/material/iron
+	melt_amount = 100
 	pickup_sound = 'sound/foley/equip/equip_armor_chain.ogg'
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
 	equip_sound = 'sound/foley/equip/equip_armor_chain.ogg'
@@ -93,6 +94,7 @@
 	desc = "During peacetime these flails are used to thresh wheat. During wartime - to chase off marauders."
 	icon_state = "peasantflail"
 	smeltresult = /obj/item/rogueore/coal //is mostly wood
+	melting_material = null
 	max_integrity = 200
 	minstr = 5
 	sellprice = 10
@@ -104,7 +106,8 @@
 	name = "steel flail"
 	desc = "A knightly flail made of worked steel, with a flanged head. An effective and brutal design."
 	icon_state = "flail"
-	smeltresult = /obj/item/ingot/steel
+	melting_material = /datum/material/steel
+	melt_amount = 75
 	minstr = 4
 	max_integrity = 500
 	sellprice = 35

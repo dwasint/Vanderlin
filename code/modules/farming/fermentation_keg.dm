@@ -66,12 +66,15 @@ GLOBAL_LIST_EMPTY(custom_fermentation_recipes)
 	MA.color = mix_color_from_reagents(reagents)
 	overlays += MA
 
+/obj/structure/fermentation_keg/attack_right(mob/user)
+	. = ..()
+	if(!brewing && ready_to_bottle)
+		if(try_tapping(user))
+			return
+
 /obj/structure/fermentation_keg/attack_hand(mob/user)
 	if((user.used_intent == /datum/intent/grab) || user.cmode)
 		return ..()
-	if(ready_to_bottle)
-		if(try_tapping(user))
-			return
 
 	if(!brewing && (!selected_recipe || ready_to_bottle))
 		shopping_run(user)
@@ -82,7 +85,7 @@ GLOBAL_LIST_EMPTY(custom_fermentation_recipes)
 	..()
 
 /obj/structure/fermentation_keg/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/reagent_containers) && tapped && (user.used_intent == /datum/intent/fill))
+	if(istype(I, /obj/item/reagent_containers) && tapped && (user.used_intent.type == /datum/intent/fill))
 		if(try_filling(user, I))
 			return
 
@@ -279,6 +282,7 @@ GLOBAL_LIST_EMPTY(custom_fermentation_recipes)
 		if(user)
 			to_chat(user, span_notice("This keg is already brewing a mix!"))
 		ready = FALSE
+		return ready
 
 	//Crops
 	for(var/obj/item/reagent_containers/food/needed_crop as anything in selected_recipe.needed_crops)

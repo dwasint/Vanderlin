@@ -37,7 +37,7 @@
 		"Veteran"
 	)
 
-	base_antags = 1
+	base_antags = 4
 	maximum_antags = 8
 
 	earliest_start = 0 SECONDS

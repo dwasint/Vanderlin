@@ -13,7 +13,8 @@
 	slot_flags = ITEM_SLOT_HIP
 	toolspeed = 2
 	associated_skill = /datum/skill/labor/mining
-	smeltresult = /obj/item/ingot/iron
+	melting_material = /datum/material/iron
+	melt_amount = 75
 	var/pickmult = 1 // Multiplier of how much extra picking force we do to rocks.
 
 /obj/item/rogueweapon/pick/getonmobprop(tag)
@@ -38,7 +39,8 @@
 	toolspeed = 3
 	pickmult = 0.8 // Worse pick
 	associated_skill = /datum/skill/combat/axesmaces
-	smeltresult = /obj/item/ingot/copper
+	melting_material = /datum/material/copper
+	melt_amount = 75
 
 /obj/item/rogueweapon/pick/steel
 	name = "steel pick"
@@ -48,7 +50,8 @@
 	possible_item_intents = list(/datum/intent/pick)
 	gripped_intents = list(/datum/intent/pick)
 	max_integrity = 600
-	smeltresult = /obj/item/ingot/steel
+	melting_material = /datum/material/steel
+	melt_amount = 75
 
 /obj/item/rogueweapon/pick/stone
 	name = "stone pick"
@@ -58,5 +61,5 @@
 	possible_item_intents = list(/datum/intent/pick)
 	gripped_intents = list(/datum/intent/pick)
 	max_integrity = 250
-	smeltresult = null
 	anvilrepair = null
+	melting_material = null

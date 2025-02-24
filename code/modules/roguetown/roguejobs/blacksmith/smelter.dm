@@ -14,6 +14,7 @@
 	var/maxore = 1
 	var/cooking = 0
 	var/actively_smelting = FALSE // Are we currently smelting?
+	var/max_crucible_temperature = 1500
 	fueluse = 5 MINUTES
 	crossfire = FALSE
 
@@ -42,6 +43,13 @@
 						T.take_damage(1, BRUTE, "blunt")
 				T.update_icon()
 				return
+
+			for(var/obj/item/storage/crucible/crucible in contents)
+				user.visible_message("[user] starts removing a crucible from [src]!", "You start removing a crucible from [src]!")
+				if(!do_after(user, 1.5 SECONDS, src))
+					return
+				crucible.forceMove(get_turf(src))
+				return
 			if(on)
 				to_chat(user, "<span class='info'>Nothing to retrieve from inside.</span>")
 				return // Safety for not smelting our tongs
@@ -52,6 +60,12 @@
 	if(istype(W, /obj/item/rogueore/coal))
 		if(alert(usr, "Fuel \the [src] with [W]?", "VANDERLIN", "Fuel", "Smelt") == "Fuel")
 			return ..()
+
+	if(istype(W, /obj/item/storage/crucible))
+		W.forceMove(src)
+		user.visible_message("Loads a crucible into [src].", "You load a crucible into [src].")
+		return ..()
+
 	if(W.smeltresult)
 		if(ore.len < maxore)
 			if(!(W in user.held_items) || !user.temporarilyRemoveItemFromInventory(W))
@@ -148,6 +162,7 @@
 	maxore = 4
 	fueluse = 5 MINUTES
 	climbable = FALSE
+	max_crucible_temperature = 2000
 
 /obj/machinery/light/rogue/smelter/great/process()
 	..()
