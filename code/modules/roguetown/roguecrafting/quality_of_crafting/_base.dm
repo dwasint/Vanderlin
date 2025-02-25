@@ -662,7 +662,13 @@
 
 /datum/repeatable_crafting_recipe/proc/move_items_back(list/items, mob/user)
 	for(var/obj/item/item in items)
-		item.forceMove(user.drop_location())
+		var/early_continue = FALSE
+		for(var/obj/structure/table/table in range(1, user))
+			item.forceMove(get_turf(table))
+			early_continue = TRUE
+			break
+		if(!early_continue)
+			item.forceMove(user.drop_location())
 	user.update_inv_hands() //the consequences of forcemoving
 
 //Attempt to put tools in hand first. Then puts a random item from products in hand.
