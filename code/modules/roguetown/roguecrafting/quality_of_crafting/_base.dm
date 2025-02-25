@@ -401,6 +401,7 @@
 				continue
 			if(istype(item, /obj/item/natural/bundle))
 				var/continue_early = TRUE
+				var/early_ass_break = FALSE
 				var/bundle_path = item:stacktype
 				for(var/path in copied_requirements)
 					if(QDELETED(item))
@@ -408,6 +409,10 @@
 					if(!ispath(bundle_path, path))
 						continue
 					for(var/i = 1 to item:amount)
+						if(!(bundle_path in copied_requirements))
+							continue
+						if(early_ass_break)
+							break
 						item:amount--
 						var/obj/item/sub_item = new bundle_path(get_turf(item))
 						if(item:amount == 0)
@@ -426,6 +431,7 @@
 								if(copied_requirements[requirement] <= 0)
 									copied_requirements -= requirement
 									continue_early = FALSE
+									early_ass_break = TRUE
 									break
 				if(continue_early)
 					continue
