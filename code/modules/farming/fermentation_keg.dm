@@ -114,6 +114,8 @@ GLOBAL_LIST_EMPTY(custom_fermentation_recipes)
 	var/dumps = FALSE
 	for(var/obj/item/reagent_containers/food/G in produce_list)
 		if(G.type in selected_recipe?.needed_crops)
+			if(recipe_crop_stocks[G.type] >= selected_recipe?.needed_crops[G.type])
+				continue
 			recipe_crop_stocks[G.type]++
 			if(G in storage_list)
 				dumps = TRUE
@@ -122,6 +124,8 @@ GLOBAL_LIST_EMPTY(custom_fermentation_recipes)
 
 	for(var/obj/item/item in produce_list)
 		if(item.type in selected_recipe?.needed_items)
+			if(recipe_crop_stocks[item.type] >= selected_recipe?.needed_items[item.type])
+				continue
 			var/amount = recipe_crop_stocks[item.type] || 0
 			var/added_item = 1
 			recipe_crop_stocks[item.type] = amount + added_item
