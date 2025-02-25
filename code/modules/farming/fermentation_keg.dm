@@ -130,6 +130,9 @@ GLOBAL_LIST_EMPTY(custom_fermentation_recipes)
 				SEND_SIGNAL(item.loc, COMSIG_TRY_STORAGE_TAKE, item, get_turf(src), TRUE)
 			qdel(item)
 
+	if(dumps)
+		user.visible_message("[user] dumps some things into [src].", "You dump some things into [src].")
+
 	. = ..()
 	update_overlays()
 
