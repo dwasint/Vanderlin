@@ -95,6 +95,7 @@ GLOBAL_LIST_EMPTY(custom_fermentation_recipes)
 			return
 
 	var/list/produce_list = list()
+	var/list/storage_list = list()
 
 	if(istype(I, /obj/item/bottle_kit))
 		var/obj/item/bottle_kit/kit = I
@@ -106,9 +107,17 @@ GLOBAL_LIST_EMPTY(custom_fermentation_recipes)
 	if(istype(I, /obj/item/reagent_containers/food))
 		produce_list += I
 
+	if(istype(I, /obj/item/storage))
+		produce_list += I.contents
+		storage_list += I.contents
+
+	var/dumps = FALSE
 	for(var/obj/item/reagent_containers/food/G in produce_list)
 		if(G.type in selected_recipe?.needed_crops)
 			recipe_crop_stocks[G.type]++
+			if(G in storage_list)
+				dumps = TRUE
+				SEND_SIGNAL(G.loc, COMSIG_TRY_STORAGE_TAKE, G, get_turf(src), TRUE)
 			qdel(G)
 
 	for(var/obj/item/item in produce_list)
@@ -116,6 +125,9 @@ GLOBAL_LIST_EMPTY(custom_fermentation_recipes)
 			var/amount = recipe_crop_stocks[item.type] || 0
 			var/added_item = 1
 			recipe_crop_stocks[item.type] = amount + added_item
+			if(item in storage_list)
+				dumps = TRUE
+				SEND_SIGNAL(item.loc, COMSIG_TRY_STORAGE_TAKE, item, get_turf(src), TRUE)
 			qdel(item)
 
 	. = ..()
@@ -150,6 +162,12 @@ GLOBAL_LIST_EMPTY(custom_fermentation_recipes)
 
 		if(selected_recipe.helpful_hints)
 			message += "[selected_recipe.helpful_hints].\n"
+
+		if(beer_left)
+			message += "[(beer_left / FLOOR((selected_recipe.brewed_amount * selected_recipe.per_brew_amount)/ 3 , 1)) * 100]% Full"
+
+		if(ready_to_bottle && !tapped)
+			message += span_blue("Right-Click on the Barrel to Tap it.")
 
 		/*
 		if(istype(selected_recipe, /datum/brewing_recipe/custom_recipe))
@@ -425,7 +443,7 @@ GLOBAL_LIST_EMPTY(custom_fermentation_recipes)
 	container.reagents.add_reagent(brewed_reagent, beer_taken)
 
 	if(beer_left <= 0)
-		clear_keg()
+		clear_keg(TRUE)
 
 /obj/structure/fermentation_keg/verb/reset_keg()
 	set name = "Clear Keg (Completely Resets)"
