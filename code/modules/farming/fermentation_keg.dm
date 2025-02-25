@@ -207,6 +207,8 @@ GLOBAL_LIST_EMPTY(custom_fermentation_recipes)
 	if(selecting_recipe)
 		return
 	selecting_recipe = TRUE
+	addtimer(VARSET_CALLBACK(src, selecting_recipe, FALSE), 5 SECONDS)
+
 	var/list/options = list()
 	for(var/path in subtypesof(/datum/brewing_recipe))
 		var/datum/brewing_recipe/recipe = path
@@ -240,6 +242,7 @@ GLOBAL_LIST_EMPTY(custom_fermentation_recipes)
 		selected_recipe = new choice_to_spawn
 	*/
 	selected_recipe = new choice_to_spawn
+	selecting_recipe = FALSE
 
 	//Second stage brewing gives no refunds! - This is intented design to help make it so folks dont quit halfway through and still get a rebate
 	ready_to_bottle = FALSE
@@ -247,7 +250,6 @@ GLOBAL_LIST_EMPTY(custom_fermentation_recipes)
 	if(open_icon_state)
 		icon_state = open_icon_state
 	update_overlays()
-	selecting_recipe = FALSE
 
 //Remove only chemicals
 /obj/structure/fermentation_keg/proc/clear_keg_reagents()
