@@ -13,9 +13,10 @@
 /obj/machinery/light/rogue/forge/attackby(obj/item/W, mob/living/user, params)
 	if(istype(W, /obj/item/rogueweapon/tongs) && on)
 		var/obj/item/rogueweapon/tongs/T = W
-		if(T.hingot)
+		if(T.held_item)
 			var/tyme = world.time
 			T.hott = tyme
+			T.proxy_heat(150, 1500)
 			addtimer(CALLBACK(T, TYPE_PROC_REF(/obj/item/rogueweapon/tongs, make_unhot), tyme), 100)
 			T.update_icon()
 			user.visible_message("<span class='info'>[user] heats the bar.</span>")

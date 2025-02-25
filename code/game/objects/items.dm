@@ -253,6 +253,10 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	var/datum/material/melting_material
 	///our metling amount
 	var/melt_amount = 0
+	///our current in progress slapcraft
+	var/datum/orderless_slapcraft/in_progress_slapcraft
+	///these are flags of what tools can interact with this atom useful to stop hard coding interactions
+	var/tool_flags = NONE
 
 /obj/item/Initialize()
 	. = ..()

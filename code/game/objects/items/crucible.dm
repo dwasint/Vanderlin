@@ -8,6 +8,8 @@
 	grid_width = 32
 	grid_height = 64
 
+	tool_flags = TOOL_USAGE_TONGS
+
 	var/crucible_temperature = 300
 
 	var/list/melting_pot = list()
@@ -70,6 +72,14 @@
 		if(melting_pot[item] >= item.melt_amount)
 			melt_item(item)
 	update_overlays()
+
+/obj/item/storage/crucible/get_temperature()
+	return crucible_temperature
+
+/obj/item/storage/crucible/tong_interaction(atom/target, mob/user)
+	if(istype(target, /obj/item/mould))
+		target.attackby(src, user)
+		return TRUE
 
 /obj/item/storage/crucible/update_overlays()
 	. = ..()

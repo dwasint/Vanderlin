@@ -244,13 +244,14 @@
 	return TRUE
 
 /obj/effect/proc_holder/spell/invoked/heatmetal/proc/handle_tongs(obj/item/rogueweapon/tongs/T, mob/user) //Stole the code from smithing.
-	if(!T.hingot)
+	if(!T.held_item)
 		return
 	var/tyme = world.time + 20 SECONDS
 	T.hott = tyme
 	addtimer(CALLBACK(T, TYPE_PROC_REF(/obj/item/rogueweapon/tongs, make_unhot), tyme), 30 SECONDS)
+	T.proxy_heat(150)
 	T.update_icon()
-	T.visible_message("<font color='yellow'>After [user]'s incantation, [T.hingot] inside [T] starts glowing from divine heat.</font>")
+	T.visible_message("<font color='yellow'>After [user]'s incantation, [T.held_item] inside [T] starts glowing from divine heat.</font>")
 	return TRUE
 
 /obj/effect/proc_holder/spell/invoked/heatmetal/proc/handle_anvil(obj/machinery/anvil/A, mob/user) //Stole the code from smithing.

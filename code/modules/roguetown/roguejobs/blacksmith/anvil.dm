@@ -24,26 +24,26 @@
 	if(istype(W, /obj/item/rogueweapon/tongs))
 		var/obj/item/rogueweapon/tongs/T = W
 		if(hingot)
-			if(T.hingot)
-				if(hingot.currecipe && hingot.currecipe.needed_item && istype(T.hingot, hingot.currecipe.needed_item))
+			if(T.held_item && istype(T.held_item, /obj/item/ingot))
+				if(hingot.currecipe && hingot.currecipe.needed_item && istype(T.held_item, hingot.currecipe.needed_item))
 					hingot.currecipe.item_added(user)
-					qdel(T.hingot)
-					T.hingot = null
+					qdel(T.held_item)
+					T.held_item = null
 					T.update_icon()
 					update_icon()
 				return
 			else
 				hingot.forceMove(T)
-				T.hingot = hingot
+				T.held_item = hingot
 				hingot = null
 				T.update_icon()
 				update_icon()
 				return
 		else
-			if(T.hingot && istype(T.hingot, /obj/item/ingot))
-				T.hingot.forceMove(src)
-				hingot = T.hingot
-				T.hingot = null
+			if(T.held_item && istype(T.held_item, /obj/item/ingot))
+				T.held_item.forceMove(src)
+				hingot = T.held_item
+				T.held_item = null
 				hott = T.hott
 				if(hott)
 					START_PROCESSING(SSmachines, src)

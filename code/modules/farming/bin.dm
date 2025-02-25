@@ -141,7 +141,7 @@
 			return TRUE
 	if(istype(I, /obj/item/rogueweapon/tongs))
 		var/obj/item/rogueweapon/tongs/T = I
-		if(T.hingot && istype(T.hingot))
+		if(T.held_item && istype(T.held_item, /obj/item/ingot))
 			return TRUE
 	return FALSE
 
@@ -160,17 +160,18 @@
 
 	if(istype(I, /obj/item/rogueweapon/tongs))
 		var/obj/item/rogueweapon/tongs/T = I
-		if(T.hingot && istype(T.hingot))
+		if(T.held_item && istype(T.held_item, /obj/item/ingot))
+			var/obj/item/ingot/ingot = T.held_item
 			var/removereg = /datum/reagent/water
 			if(!reagents.has_reagent(/datum/reagent/water, 5))
 				removereg = /datum/reagent/water/gross
 				if(!reagents.has_reagent(/datum/reagent/water/gross, 5))
 					to_chat(user, "<span class='warning'>Need more water to quench in.</span>")
 					return
-			if(!T.hingot.currecipe)
+			if(!T.held_item:currecipe)
 				to_chat(user, "<span class='warning'>Huh?</span>")
 				return
-			if(T.hingot.currecipe.progress != 100)
+			if(ingot.currecipe.progress != 100)
 				to_chat(user, "<span class='warning'>It's not finished yet.</span>")
 				return
 			if(!T.hott)
@@ -183,7 +184,7 @@
 			// Because engine is dumb and doesn't have a copy object proc
 			// We take all values of a recipe, apply them to floating vars, then assign them to every extra copy
 			// (substracting one every time it runs) until we run out of that number
-			var/datum/anvil_recipe/R = T.hingot.currecipe
+			var/datum/anvil_recipe/R = T.held_item:currecipe
 			var/obj/item/crafteditem = R.created_item
 			if(R.createmultiple)
 				var/obj/item/IT = new crafteditem(used_turf)
@@ -231,8 +232,8 @@
 				var/obj/item/IT = new crafteditem(used_turf)
 				R.handle_creation(IT)
 			playsound(src,pick('sound/items/quench_barrel1.ogg','sound/items/quench_barrel2.ogg'), 100, FALSE)
-			user.visible_message("<span class='info'>[user] tempers \the [T.hingot.name] in \the [src], hot metal sizzling.</span>")
-			T.hingot = null
+			user.visible_message("<span class='info'>[user] tempers \the [T.held_item.name] in \the [src], hot metal sizzling.</span>")
+			T.held_item = null
 			T.update_icon()
 			reagents.remove_reagent(removereg, 5)
 			var/datum/reagent/water_to_dirty = reagents.has_reagent(/datum/reagent/water, 5)

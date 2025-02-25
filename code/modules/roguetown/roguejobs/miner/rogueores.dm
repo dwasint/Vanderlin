@@ -117,12 +117,12 @@
 /obj/item/ingot/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/rogueweapon/tongs))
 		var/obj/item/rogueweapon/tongs/T = I
-		if(!T.hingot)
+		if(!T.held_item)
 			if(item_flags & IN_STORAGE)
 				if(!SEND_SIGNAL(loc, COMSIG_TRY_STORAGE_TAKE, src, user.loc, TRUE))
 					return ..()
 			forceMove(T)
-			T.hingot = src
+			T.held_item = src
 			T.hott = null
 			T.update_icon()
 			return
