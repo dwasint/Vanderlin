@@ -104,9 +104,6 @@ GLOBAL_LIST_EMPTY(custom_fermentation_recipes)
 	if(I.type in selected_recipe?.needed_items)
 		produce_list += I
 
-	if(istype(I, /obj/item/reagent_containers/food))
-		produce_list += I
-
 	if(istype(I, /obj/item/storage))
 		produce_list += I.contents
 		storage_list += I.contents
@@ -146,6 +143,10 @@ GLOBAL_LIST_EMPTY(custom_fermentation_recipes)
 		. += span_boldnotice("[made_item]")
 		if(age_start_time)
 			. += "Aged for [(world.time - age_start_time) * 0.1] Seconds.\n"
+		if(beer_left)
+			message += "[(beer_left / FLOOR((selected_recipe.brewed_amount * selected_recipe.per_brew_amount)/ 3 , 1)) * 100]% Full"
+		if(!tapped)
+			message += span_blue("Right-Click on the Barrel to Tap it.")
 
 	else if(selected_recipe)
 		var/message = "Currently making: [selected_recipe.name].\n"
@@ -170,11 +171,6 @@ GLOBAL_LIST_EMPTY(custom_fermentation_recipes)
 		if(selected_recipe.helpful_hints)
 			message += "[selected_recipe.helpful_hints].\n"
 
-		if(beer_left)
-			message += "[(beer_left / FLOOR((selected_recipe.brewed_amount * selected_recipe.per_brew_amount)/ 3 , 1)) * 100]% Full"
-
-		if(ready_to_bottle && !tapped)
-			message += span_blue("Right-Click on the Barrel to Tap it.")
 
 		/*
 		if(istype(selected_recipe, /datum/brewing_recipe/custom_recipe))

@@ -389,6 +389,8 @@
 
 /datum/mind/proc/get_skill_level(skill)
 	var/datum/skill/S = GetSkillRef(skill)
+	if(!S in known_skills)
+		return SKILL_LEVEL_NONE
 	return known_skills[S] || SKILL_LEVEL_NONE
 
 /datum/mind/proc/get_skill_parry_modifier(skill)
