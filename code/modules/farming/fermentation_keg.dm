@@ -102,14 +102,14 @@ GLOBAL_LIST_EMPTY(custom_fermentation_recipes)
 		bottle(kit.glass_colour)
 
 	if(I.type in selected_recipe?.needed_items)
-		produce_list += I
+		produce_list |= I
 
 	if(I.type in selected_recipe?.needed_crops)
-		produce_list += I
+		produce_list |= I
 
 	if(istype(I, /obj/item/storage))
-		produce_list += I.contents
-		storage_list += I.contents
+		produce_list |= I.contents
+		storage_list |= I.contents
 
 	var/dumps = FALSE
 	for(var/obj/item/reagent_containers/food/G in produce_list)
