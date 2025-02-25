@@ -429,6 +429,7 @@
 			list_reagents = list(/datum/reagent/consumable/nutriment = SAUSAGE_NUTRITION+FRYVEGGIE_NUTRITION+1)
 			tastes = list("savory sausage" = 1, "fried onions" = 1)
 			foodtype = VEGETABLES | MEAT
+			faretype = FARE_NEUTRAL
 			meal_properties()
 			user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
 			qdel(I)
@@ -465,6 +466,7 @@
 			tastes = list("savory sausage" = 1)
 			icon_state = "wienerpotato"
 			base_icon_state = "wienerpotato"
+			faretype = FARE_FINE
 			foodtype = VEGETABLES | MEAT
 			meal_properties()
 			user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
@@ -477,6 +479,8 @@
 			icon_state = "frybirdtato"
 			base_icon_state = "frybirdtato"
 			tastes = list("frybird" = 1)
+			faretype = FARE_FINE
+			portable = FALSE
 			list_reagents = list(/datum/reagent/consumable/nutriment = COOKED_MEAT_NUTRITION+FRYVEGGIE_NUTRITION+2)
 			meal_properties()
 			user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
