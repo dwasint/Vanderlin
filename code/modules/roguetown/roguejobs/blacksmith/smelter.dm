@@ -14,7 +14,7 @@
 	var/maxore = 1
 	var/cooking = 0
 	var/actively_smelting = FALSE // Are we currently smelting?
-	var/max_crucible_temperature = 1500
+	var/max_crucible_temperature = 1850
 	fueluse = 5 MINUTES
 	crossfire = FALSE
 
