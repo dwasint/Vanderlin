@@ -31,6 +31,8 @@
 	var/ages = FALSE
 	///the reagent we get at different age times
 	var/list/age_times = list()
+	///the heat we need to be kept at
+	var/heat_required
 
 /datum/brewing_recipe/proc/after_finish_attackby(mob/user, obj/item/attacked_item, atom/source)
 	return FALSE
@@ -94,7 +96,9 @@
 	if(helpful_hints)
 		html += "<strong>[helpful_hints]</stong><br>"
 	if(pre_reqs)
-		html += "<strong>Requires that you have just made [initial(pre_reqs.name)] in the keg.</stong><br>"
+		html += "<strong>Requires that you have just made [initial(pre_reqs.name)] in the [heat_required ? "Distiller" : "Keg"].</stong><br>"
+	if(heat_required)
+		html += "<strong>Requires that this be made in a distiller thats atleast [heat_required - 273.1]C.</stong><br>"
 
 	if(length(needed_crops) || length(needed_items))
 		html += "<strong>Items Required</strong><br>"

@@ -5,6 +5,7 @@
 	brewed_amount = 3
 	brew_time = 8 MINUTES
 	sell_value = 60
+	heat_required = 360
 
 /datum/brewing_recipe/brandy/pear
 	name = "Pear Brandy"
