@@ -15,11 +15,11 @@
 	allowed_turfs = list(/turf/open/floor/dirt)
 	excluded_turfs = list(/turf/open/floor/dirt/road)
 	spawnableAtoms = list(/obj/structure/flora/newtree = 5,
-							/obj/structure/flora/roguegrass/bush_meagre = 13,
-							/obj/structure/flora/roguegrass/herb/random = 1,
-							/obj/structure/flora/roguegrass = 50,
-							/obj/structure/flora/roguegrass/maneater = 1,
-							/obj/structure/flora/roguegrass/pyroclasticflowers = 1,
+							/obj/structure/flora/grass/bush_meagre = 13,
+							/obj/structure/flora/grass/herb/random = 1,
+							/obj/structure/flora/grass = 50,
+							/obj/structure/flora/grass/maneater = 1,
+							/obj/structure/flora/grass/pyroclasticflowers = 1,
 							/obj/item/natural/stone = 8,
 							/obj/item/natural/rock = 7,
 							/obj/item/grown/log/tree/stick = 3,
@@ -47,8 +47,8 @@
 	clusterCheckFlags = CLUSTER_CHECK_NONE
 	allowed_turfs = list(/turf/open/floor/grass)
 	excluded_turfs = list(/turf/open/floor/dirt/road)
-	spawnableAtoms = list(/obj/structure/flora/roguegrass = 20,
-						/obj/structure/flora/roguegrass/maneater = 1,
+	spawnableAtoms = list(/obj/structure/flora/grass = 20,
+						/obj/structure/flora/grass/maneater = 1,
 							/obj/item/natural/stone = 7,
 							/obj/item/grown/log/tree/stick = 3)
 	allowed_areas = list(/area/rogue/outdoors/town,/area/rogue/outdoors/rtfield)
@@ -58,8 +58,8 @@
 	allowed_turfs = list(/turf/open/water/cleanshallow)
 	excluded_turfs = list()
 	allowed_areas = list(/area/rogue/outdoors/rtfield)
-	spawnableAtoms = list(/obj/structure/flora/roguegrass/water = 20,
-	                        /obj/structure/flora/roguegrass/water/reeds = 12,
+	spawnableAtoms = list(/obj/structure/flora/grass/water = 20,
+	                        /obj/structure/flora/grass/water/reeds = 12,
 	                        /obj/structure/kneestingers = 6)
 
 /datum/mapGeneratorModule/roguetownswampwaterturf
@@ -67,6 +67,6 @@
 	allowed_turfs = list(/turf/open/water/swamp)
 	excluded_turfs = list()
 	allowed_areas = list(/area/rogue/outdoors/rtfield)
-	spawnableAtoms = list(/obj/structure/flora/roguegrass/water = 20,
-		                    /obj/structure/flora/roguegrass/water/reeds = 12,
+	spawnableAtoms = list(/obj/structure/flora/grass/water = 20,
+		                    /obj/structure/flora/grass/water/reeds = 12,
 	                        /obj/structure/kneestingers = 3)

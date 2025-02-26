@@ -1,7 +1,7 @@
 
 //newtree
 
-/obj/structure/flora/roguetree
+/obj/structure/flora/tree
 	name = "old tree"
 	desc = "An old, wicked tree that not even elves could love."
 	icon = 'icons/roguetown/misc/foliagetall.dmi'
@@ -22,7 +22,7 @@
 	metalizer_result = /obj/machinery/light/fueledstreet
 	smeltresult = /obj/item/ore/coal
 
-/obj/structure/flora/roguetree/attack_right(mob/user)
+/obj/structure/flora/tree/attack_right(mob/user)
 	if(user.mind && isliving(user))
 		if(user.mind.special_items && user.mind.special_items.len)
 			var/item = input(user, "What will I take?", "STASH") as null|anything in user.mind.special_items
@@ -35,11 +35,11 @@
 						user.put_in_hands(I)
 			return
 
-/obj/structure/flora/roguetree/fire_act(added, maxstacks)
+/obj/structure/flora/tree/fire_act(added, maxstacks)
 	if(added > 5)
 		return ..()
 
-/obj/structure/flora/roguetree/Initialize()
+/obj/structure/flora/tree/Initialize()
 	. = ..()
 
 /*
@@ -51,7 +51,7 @@
 			for(var/D in GLOB.cardinals)
 				if(!makecanopy)
 					var/turf/NT = get_step(src, D)
-					for(var/obj/structure/flora/roguetree/R in NT)
+					for(var/obj/structure/flora/tree/R in NT)
 						if(R.makevines)
 							makecanopy = TRUE
 							break
@@ -72,23 +72,23 @@
 		var/turf/T = loc
 		T.ChangeTurf(/turf/open/floor/dirt)
 
-/obj/structure/flora/roguetree/obj_destruction(damage_flag)
+/obj/structure/flora/tree/obj_destruction(damage_flag)
 	if(stump_type)
 		new stump_type(loc)
 	. = ..()
 
 
-/obj/structure/flora/roguetree/Initialize()
+/obj/structure/flora/tree/Initialize()
 	. = ..()
 	icon_state = "t[rand(1,16)]"
 
-/obj/structure/flora/roguetree/evil/Initialize()
+/obj/structure/flora/tree/evil/Initialize()
 	. = ..()
 	icon_state = "wv[rand(1,2)]"
 	soundloop = new(src, FALSE)
 	soundloop.start()
 
-/obj/structure/flora/roguetree/evil/Destroy()
+/obj/structure/flora/tree/evil/Destroy()
 	soundloop.stop()
 	if(controller)
 		controller.endvines()
@@ -96,21 +96,21 @@
 		controller = null
 	. = ..()
 
-/obj/structure/flora/roguetree/evil
+/obj/structure/flora/tree/evil
 	var/datum/looping_sound/boneloop/soundloop
 	var/datum/vine_controller/controller
 
-/obj/structure/flora/roguetree/wise
+/obj/structure/flora/tree/wise
 	name = "wise tree"
 	desc = "Dendor's favored."
 	icon_state = "mystical"
 	var/activated = 0
 
-/obj/structure/flora/roguetree/wise/Initialize()
+/obj/structure/flora/tree/wise/Initialize()
 	. = ..()
 	icon_state = "mystical"
 
-/obj/structure/flora/roguetree/burnt
+/obj/structure/flora/tree/burnt
 	name = "burnt tree"
 	desc = "A scorched pillar of a once living tree."
 	icon = 'icons/roguetown/misc/96x96.dmi'
@@ -119,12 +119,12 @@
 	pixel_x = -32
 	metalizer_result = /obj/machinery/anvil
 
-/obj/structure/flora/roguetree/burnt/Initialize()
+/obj/structure/flora/tree/burnt/Initialize()
 	. = ..()
 	icon_state = "t[rand(1,4)]"
 
 
-/obj/structure/flora/roguetree/underworld
+/obj/structure/flora/tree/underworld
 	name = "screaming tree"
 	desc = "human faces everywhere."
 	icon = 'icons/roguetown/misc/foliagetall.dmi'
@@ -133,7 +133,7 @@
 	density = 1
 	resistance_flags = INDESTRUCTIBLE
 
-/obj/structure/flora/roguetree/underworld/Initialize()
+/obj/structure/flora/tree/underworld/Initialize()
 	. = ..()
 	icon_state = "screaming[rand(1,3)]"
 
@@ -213,7 +213,7 @@
 
 //newbushes
 
-/obj/structure/flora/roguegrass
+/obj/structure/flora/grass
 	name = "grass"
 	desc = "The kindest blades you will ever meet in this world."
 	icon = 'icons/roguetown/misc/foliage.dmi'
@@ -226,24 +226,24 @@
 	var/islooted = FALSE	// for harvestable
 	var/luckydouble			//	for various luck based effects
 
-/obj/structure/flora/roguegrass/spark_act()
+/obj/structure/flora/grass/spark_act()
 	fire_act()
 
-/obj/structure/flora/roguegrass/Initialize()
+/obj/structure/flora/grass/Initialize()
 	update_icon()
-	AddComponent(/datum/component/roguegrass)
+	AddComponent(/datum/component/grass)
 	. = ..()
 
-/obj/structure/flora/roguegrass/update_icon()
+/obj/structure/flora/grass/update_icon()
 	icon_state = "grass[rand(1, 6)]"
 
-/obj/structure/flora/roguegrass/water
+/obj/structure/flora/grass/water
 	name = "grass"
 	desc = "This grass is sodden and muddy."
 	icon_state = "swampgrass"
 	max_integrity = 5
 
-/obj/structure/flora/roguegrass/water/reeds
+/obj/structure/flora/grass/water/reeds
 	name = "reeds"
 	desc = "This plant thrives in water, and shelters dangers."
 	icon_state = "reeds"
@@ -251,13 +251,13 @@
 	max_integrity = 10
 	layer = 4.1
 
-/obj/structure/flora/roguegrass/water/update_icon()
+/obj/structure/flora/grass/water/update_icon()
 	dir = pick(GLOB.cardinals)
 
-/datum/component/roguegrass/Initialize()
+/datum/component/grass/Initialize()
 	RegisterSignal(parent, list(COMSIG_MOVABLE_CROSSED), PROC_REF(Crossed))
 
-/datum/component/roguegrass/proc/Crossed(datum/source, atom/movable/AM)
+/datum/component/grass/proc/Crossed(datum/source, atom/movable/AM)
 	var/atom/A = parent
 
 	if(isliving(AM))
@@ -274,7 +274,7 @@
 	return
 
 // normal bush. Oldstyle. Kept for the managed palace hedges for now.
-/obj/structure/flora/roguegrass/bush
+/obj/structure/flora/grass/bush
 	name = "bush"
 	desc = "A bush, a den for critters and treasures."
 	icon_state = "bush"
@@ -287,7 +287,7 @@
 	var/list/looty = list()
 	var/bushtype
 
-/obj/structure/flora/roguegrass/bush/Initialize()
+/obj/structure/flora/grass/bush/Initialize()
 	if(prob(88))
 		bushtype = pickweight(list(/obj/item/reagent_containers/food/snacks/produce/jacksberry=5,
 					/obj/item/reagent_containers/food/snacks/produce/jacksberry/poison=3,
@@ -296,7 +296,7 @@
 	pixel_x += rand(-3,3)
 	return ..()
 
-/obj/structure/flora/roguegrass/bush/proc/loot_replenish()
+/obj/structure/flora/grass/bush/proc/loot_replenish()
 	if(bushtype)
 		looty += bushtype
 	if(prob(66))
@@ -305,7 +305,7 @@
 
 
 // normalbush looting
-/obj/structure/flora/roguegrass/bush/attack_hand(mob/user)
+/obj/structure/flora/grass/bush/attack_hand(mob/user)
 	if(isliving(user))
 		var/mob/living/L = user
 		user.changeNext_move(CLICK_CD_MELEE)
@@ -334,17 +334,17 @@
 #endif
 
 
-/obj/structure/flora/roguegrass/bush/update_icon()
+/obj/structure/flora/grass/bush/update_icon()
 	icon_state = "bush"
 
-/obj/structure/flora/roguegrass/bush/CanPass(atom/movable/mover, turf/target)
+/obj/structure/flora/grass/bush/CanPass(atom/movable/mover, turf/target)
 	if(istype(mover) && (mover.pass_flags & PASSGRILLE))
 		return 1
 	// if(get_dir(loc, target) == dir)
 	// 	return 0
 	return 1
 
-/obj/structure/flora/roguegrass/bush/CheckExit(atom/movable/mover as mob|obj, turf/target)
+/obj/structure/flora/grass/bush/CheckExit(atom/movable/mover as mob|obj, turf/target)
 	if(istype(mover) && (mover.pass_flags & PASSGRILLE))
 		return 1
 	// if(get_dir(mover.loc, target) == dir)
@@ -352,7 +352,7 @@
 	return 1
 
 // bush crossing
-/obj/structure/flora/roguegrass/bush/Crossed(atom/movable/AM)
+/obj/structure/flora/grass/bush/Crossed(atom/movable/AM)
 	..()
 	if(isliving(AM))
 		var/mob/living/L = AM
@@ -381,7 +381,7 @@
 					BP.receive_damage(10)
 
 
-/obj/structure/flora/roguegrass/bush/wall
+/obj/structure/flora/grass/bush/wall
 	name = "great bush"
 	desc = "A bush, this one's roots are too thick and block the way."
 	opacity = TRUE
@@ -392,24 +392,24 @@
 	debris = list(/obj/item/natural/fibers = 1, /obj/item/grown/log/tree/stick = 1, /obj/item/natural/thorn = 1)
 	attacked_sound = 'sound/misc/woodhit.ogg'
 
-/obj/structure/flora/roguegrass/bush/wall/Initialize()
+/obj/structure/flora/grass/bush/wall/Initialize()
 	. = ..()
 	icon_state = "bushwall[pick(1,2)]"
 
-/obj/structure/flora/roguegrass/bush/wall/update_icon()
+/obj/structure/flora/grass/bush/wall/update_icon()
 	return
 
-/obj/structure/flora/roguegrass/bush/wall/CanPass(atom/movable/mover, turf/target)
+/obj/structure/flora/grass/bush/wall/CanPass(atom/movable/mover, turf/target)
 	if(istype(mover) && (mover.pass_flags & PASSGRILLE))
 		return 1
 	return 0
 
-/obj/structure/flora/roguegrass/bush/wall/CheckExit(atom/movable/O, turf/target)
+/obj/structure/flora/grass/bush/wall/CheckExit(atom/movable/O, turf/target)
 	if(istype(O) && (O.pass_flags & PASSGRILLE))
 		return 1
 	return 0
 
-/obj/structure/flora/roguegrass/bush/wall/tall
+/obj/structure/flora/grass/bush/wall/tall
 	icon = 'icons/roguetown/misc/foliagetall.dmi'
 	desc = "A tall bush that has grown into a hedge."
 	icon_state = "tallbush1"
@@ -419,12 +419,12 @@
 	static_debris = null
 
 
-/obj/structure/flora/roguegrass/bush/wall/tall/Initialize()
+/obj/structure/flora/grass/bush/wall/tall/Initialize()
 	. = ..()
 	icon_state = "tallbush[pick(1,2)]"
 
 // fyrituis bush
-/obj/structure/flora/roguegrass/pyroclasticflowers
+/obj/structure/flora/grass/pyroclasticflowers
 	name = "odd group of flowers"
 	desc = "A cluster of dangerously combustible flowers."
 	icon_state = "pyroflower1"
@@ -437,24 +437,24 @@
 	var/bushtype2
 	var/res_replenish2
 
-/obj/structure/flora/roguegrass/pyroclasticflowers/update_icon()
+/obj/structure/flora/grass/pyroclasticflowers/update_icon()
 	icon_state = "pyroflower[rand(1,3)]"
 
-/obj/structure/flora/roguegrass/pyroclasticflowers/Initialize()
+/obj/structure/flora/grass/pyroclasticflowers/Initialize()
 	. = ..()
 	if(prob(88))
 		bushtype2 = pickweight(list(/obj/item/reagent_containers/food/snacks/produce/fyritius = 1))
 	loot_replenish2()
 	pixel_x += rand(-3,3)
 
-/obj/structure/flora/roguegrass/pyroclasticflowers/proc/loot_replenish2()
+/obj/structure/flora/grass/pyroclasticflowers/proc/loot_replenish2()
 	if(bushtype2)
 		looty2 += bushtype2
 	if(prob(66))
 		looty2 += /obj/item/reagent_containers/food/snacks/produce/fyritius
 
 // pyroflower cluster looting
-/obj/structure/flora/roguegrass/pyroclasticflowers/attack_hand(mob/user)
+/obj/structure/flora/grass/pyroclasticflowers/attack_hand(mob/user)
 	if(isliving(user))
 		var/mob/living/L = user
 		user.changeNext_move(CLICK_CD_MELEE)
@@ -483,7 +483,7 @@
 #endif
 
 // swarmpweed bush
-/obj/structure/flora/roguegrass/swampweed
+/obj/structure/flora/grass/swampweed
 	name = "bunch of swampweed"
 	desc = "a green root good for smoking."
 	icon_state = "swampweed1"
@@ -496,14 +496,14 @@
 	var/bushtype3
 	var/res_replenish3
 
-/obj/structure/flora/roguegrass/swampweed/Initialize()
+/obj/structure/flora/grass/swampweed/Initialize()
 	if(prob(88))
 		bushtype3 = pickweight(list(/obj/item/reagent_containers/food/snacks/produce/swampweed = 1))
 	loot_replenish3()
 	pixel_x += rand(-3,3)
 	return ..()
 
-/obj/structure/flora/roguegrass/swampweed/proc/loot_replenish3()
+/obj/structure/flora/grass/swampweed/proc/loot_replenish3()
 	if(bushtype3)
 		looty3 += bushtype3
 	if(prob(66))
@@ -514,7 +514,7 @@
 
 
 // pyroflower cluster looting
-/obj/structure/flora/roguegrass/pyroclasticflowers/attack_hand(mob/user)
+/obj/structure/flora/grass/pyroclasticflowers/attack_hand(mob/user)
 	if(isliving(user))
 		var/mob/living/L = user
 		user.changeNext_move(CLICK_CD_MELEE)
@@ -543,7 +543,7 @@
 #endif
 
 // swarmweed looting
-/obj/structure/flora/roguegrass/swampweed/attack_hand(mob/user)
+/obj/structure/flora/grass/swampweed/attack_hand(mob/user)
 	if(isliving(user))
 		var/mob/living/L = user
 		user.changeNext_move(CLICK_CD_MELEE)
@@ -574,14 +574,14 @@
 // varients
 
 
-/obj/structure/flora/roguegrass/pyroclasticflowers/update_icon()
+/obj/structure/flora/grass/pyroclasticflowers/update_icon()
 	icon_state = "pyroflower[rand(1, 3)]"
 
-/obj/structure/flora/roguegrass/swampweed/update_icon()
+/obj/structure/flora/grass/swampweed/update_icon()
 	icon_state = "swarmpweed[rand(1, 3)]"
 
 
-/obj/structure/flora/rogueshroom
+/obj/structure/flora/shroom_tree
 	name = "shroom"
 	desc = "A ginormous mushroom, prized by dwarves for their shroomwood."
 	icon = 'icons/roguetown/misc/foliagetall.dmi'
@@ -597,7 +597,7 @@
 	static_debris = list( /obj/item/grown/log/tree/small = 1)
 	dir = SOUTH
 
-/obj/structure/flora/rogueshroom/attack_right(mob/user)
+/obj/structure/flora/shroom_tree/attack_right(mob/user)
 	if(user.mind && isliving(user))
 		if(user.mind.special_items && user.mind.special_items.len)
 			var/item = input(user, "What will I take?", "STASH") as null|anything in user.mind.special_items
@@ -611,32 +611,32 @@
 			return
 
 
-/obj/structure/flora/rogueshroom/Initialize()
+/obj/structure/flora/shroom_tree/Initialize()
 	. = ..()
 	icon_state = "mush[rand(1,5)]"
 	if(icon_state == "mush5")
 		static_debris = list(/obj/item/natural/thorn=1, /obj/item/grown/log/tree/small = 1)
 	pixel_x += rand(8,-8)
 
-/obj/structure/flora/rogueshroom/CanPass(atom/movable/mover, turf/target)
+/obj/structure/flora/shroom_tree/CanPass(atom/movable/mover, turf/target)
 	if(istype(mover) && (mover.pass_flags & PASSGRILLE))
 		return 1
 	if(get_dir(loc, target) == dir)
 		return 0
 	return 1
 
-/obj/structure/flora/rogueshroom/CheckExit(atom/movable/mover as mob|obj, turf/target)
+/obj/structure/flora/shroom_tree/CheckExit(atom/movable/mover as mob|obj, turf/target)
 	if(istype(mover) && (mover.pass_flags & PASSGRILLE))
 		return 1
 	if(get_dir(mover.loc, target) == dir)
 		return 0
 	return 1
 
-/obj/structure/flora/rogueshroom/fire_act(added, maxstacks)
+/obj/structure/flora/shroom_tree/fire_act(added, maxstacks)
 	if(added > 5)
 		return ..()
 
-/obj/structure/flora/rogueshroom/obj_destruction(damage_flag)
+/obj/structure/flora/shroom_tree/obj_destruction(damage_flag)
 	var/obj/structure/S = new /obj/structure/table/wood/treestump/shroomstump(loc)
 	S.icon_state = "[icon_state]stump"
 	. = ..()
@@ -684,7 +684,7 @@
 
 
 /*	..................   Thorn Bush   ................... */	// Updated to use searcher perception, can yield thorns
-/obj/structure/flora/roguegrass/thorn_bush
+/obj/structure/flora/grass/thorn_bush
 	name = "thorn bush"
 	desc = "A thorny bush, bearing a bountiful collection of razor sharp thorns!"
 	icon_state = "thornbush1"
@@ -696,11 +696,11 @@
 	debris = list(/obj/item/natural/thorn = 3, /obj/item/grown/log/tree/stick = 1)
 	prob2findstuff = 15
 
-/obj/structure/flora/roguegrass/thorn_bush/Initialize()
+/obj/structure/flora/grass/thorn_bush/Initialize()
 	. = ..()
 	icon_state = "thornbush[rand(1,2)]"
 
-/obj/structure/flora/roguegrass/thorn_bush/attack_hand(mob/living/user)
+/obj/structure/flora/grass/thorn_bush/attack_hand(mob/living/user)
 	var/mob/living/L = user
 	user.changeNext_move(CLICK_CD_MELEE)
 	playsound(src.loc, "plantcross", 80, FALSE, -1)
@@ -727,7 +727,7 @@
 
 	prob2findstuff = 15
 
-/obj/structure/flora/roguegrass/thorn_bush/Crossed(atom/movable/AM)
+/obj/structure/flora/grass/thorn_bush/Crossed(atom/movable/AM)
 	..()
 	if(isliving(AM))
 		var/mob/living/L = AM
@@ -764,7 +764,7 @@
 
 
 /*	..................   Meagre Bush   ................... */	// This works on the characters stats and doesnt have a preset vendor content. Hardmode compared to the OG one.
-/obj/structure/flora/roguegrass/bush_meagre
+/obj/structure/flora/grass/bush_meagre
 	name = "bush"
 	desc = "Home to thorns, spiders, and maybe some berries."
 	icon_state = "bush1"
@@ -781,14 +781,14 @@
 	var/goodie
 	var/trashie = /obj/item/natural/thorn
 
-/obj/structure/flora/roguegrass/bush_meagre/update_icon()
+/obj/structure/flora/grass/bush_meagre/update_icon()
 	if(!silky)
 		if(berries)
 			icon_state = "bush_berry[rand(1,3)]"
 		else
 			icon_state = "bush[rand(1, 3)]"
 
-/obj/structure/flora/roguegrass/bush_meagre/Initialize()
+/obj/structure/flora/grass/bush_meagre/Initialize()
 	if(silky)
 		goodie = /obj/item/natural/worms/grub_silk
 	else
@@ -811,7 +811,7 @@
 	return ..()
 
 // bush crossing
-/obj/structure/flora/roguegrass/bush_meagre/Crossed(atom/movable/AM)
+/obj/structure/flora/grass/bush_meagre/Crossed(atom/movable/AM)
 	..()
 	if(isliving(AM))
 		var/mob/living/L = AM
@@ -838,7 +838,7 @@
 					to_chat(H, "<span class='warning'>A thorn [pick("slices","cuts","nicks")] my [BP.name].</span>")
 					BP.receive_damage(10)
 
-/obj/structure/flora/roguegrass/bush_meagre/attack_hand(mob/living/user)
+/obj/structure/flora/grass/bush_meagre/attack_hand(mob/living/user)
 	var/mob/living/L = user
 	user.changeNext_move(CLICK_CD_MELEE)
 	playsound(src.loc, "plantcross", 80, FALSE, -1)
@@ -893,7 +893,7 @@
 	luckydouble	= 3
 
 
-/obj/structure/flora/roguegrass/bush_meagre/bog
+/obj/structure/flora/grass/bush_meagre/bog
 	desc = "These large bushes are known to be well-liked by silkworms who make their nests in their dark depths."
 	icon = 'icons/roguetown/mob/monster/Trolls.dmi'
 	icon_state = "Trolls"

@@ -206,7 +206,7 @@
 	pixel_x = -32;
 	pixel_y = 0
 	},
-/obj/item/chair/rogue,
+/obj/item/chair,
 /turf/open/floor/church,
 /area/rogue/under/mountains/anvil/lower)
 "ep" = (
@@ -838,7 +838,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/lower)
 "nr" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/grass,
 /area/rogue/under/mountains/anvil/lower)
 "ny" = (
@@ -909,7 +909,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/lower)
 "ov" = (
-/obj/structure/flora/rogueshroom,
+/obj/structure/flora/shroom_tree,
 /turf/open/floor/dirt,
 /area/rogue/under/mountains/anvil/lower)
 "ow" = (
@@ -1405,7 +1405,7 @@
 /turf/open/floor/snow,
 /area/rogue/outdoors/mountains/anvil/snowyforest)
 "wa" = (
-/obj/structure/flora/rogueshroom,
+/obj/structure/flora/shroom_tree,
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/lower/building)
 "wb" = (
@@ -1414,7 +1414,7 @@
 /turf/open/floor/church,
 /area/rogue/under/mountains/anvil/lower)
 "wi" = (
-/obj/structure/flora/rogueshroom,
+/obj/structure/flora/shroom_tree,
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/lower)
 "wj" = (
@@ -1444,7 +1444,7 @@
 /turf/open/floor/wood/nosmooth/saiga,
 /area/rogue/indoors/mountains/anvil/surface/building)
 "wQ" = (
-/obj/structure/flora/rogueshroom,
+/obj/structure/flora/shroom_tree,
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/lower)
 "xb" = (
@@ -1561,7 +1561,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/lower/building)
 "yV" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/dirt/road,
 /area/rogue/under/mountains/anvil/lower)
 "za" = (
@@ -1738,7 +1738,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/lower)
 "Cz" = (
-/obj/structure/flora/rogueshroom,
+/obj/structure/flora/shroom_tree,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/mountains/anvil/lavaexposed)
 "CH" = (
@@ -2107,7 +2107,7 @@
 	},
 /area/rogue/under/mountains/anvil/lower/building)
 "Iu" = (
-/obj/structure/flora/rogueshroom,
+/obj/structure/flora/shroom_tree,
 /turf/open/floor/dirt/road,
 /area/rogue/under/mountains/anvil/lower)
 "Iw" = (
@@ -2190,7 +2190,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/lower/building)
 "JH" = (
-/obj/structure/flora/rogueshroom,
+/obj/structure/flora/shroom_tree,
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/lower/building)
 "JK" = (
@@ -2629,7 +2629,7 @@
 /turf/open/floor/blocks/green,
 /area/rogue/under/mountains/anvil/lower/building)
 "PV" = (
-/obj/structure/flora/rogueshroom,
+/obj/structure/flora/shroom_tree,
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/mountains/anvil/lavaexposed)
 "PY" = (
@@ -2643,7 +2643,7 @@
 /turf/open/transparent/openspace,
 /area/rogue/under/mountains/anvil/lower/building)
 "Ql" = (
-/obj/item/chair/rogue{
+/obj/item/chair{
 	dir = 1
 	},
 /turf/open/floor/blocks,
@@ -2809,7 +2809,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/lower/building)
 "SP" = (
-/obj/item/chair/rogue,
+/obj/item/chair,
 /turf/open/floor/blocks,
 /area/rogue/under/mountains/anvil/lower/building)
 "SY" = (
@@ -2879,7 +2879,7 @@
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/mountains/anvil/snowyforest)
 "Uk" = (
-/obj/item/chair/rogue,
+/obj/item/chair,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/lower/building)

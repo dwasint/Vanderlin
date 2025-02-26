@@ -205,7 +205,7 @@
 /turf/open/floor/carpet,
 /area/rogue/indoors)
 "aF" = (
-/obj/structure/flora/roguetree/wise,
+/obj/structure/flora/tree/wise,
 /turf/open/floor/dirt,
 /area/rogue/outdoors)
 "aG" = (
@@ -289,7 +289,7 @@
 /turf/open/floor/carpet,
 /area/rogue/indoors)
 "aT" = (
-/obj/structure/flora/roguetree,
+/obj/structure/flora/tree,
 /turf/open/floor/dirt,
 /area/rogue/outdoors)
 "aU" = (
@@ -958,7 +958,7 @@
 /turf/closed/wall/mineral/stone/moss,
 /area/rogue/outdoors)
 "cx" = (
-/obj/structure/flora/roguetree,
+/obj/structure/flora/tree,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods)
 "cy" = (

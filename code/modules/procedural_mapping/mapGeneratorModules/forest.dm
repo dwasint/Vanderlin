@@ -16,13 +16,13 @@
 	allowed_turfs = list(/turf/open/floor/dirt)
 	excluded_turfs = list(/turf/open/floor/dirt/road)
 	spawnableAtoms = list(/obj/structure/flora/newtree = 5,
-							/obj/structure/flora/roguegrass/bush_meagre = 6,
-							/obj/structure/flora/roguegrass/thorn_bush = 2,
-							/obj/structure/flora/roguegrass = 80,
-							/obj/structure/flora/roguegrass/herb/random = 7,
+							/obj/structure/flora/grass/bush_meagre = 6,
+							/obj/structure/flora/grass/thorn_bush = 2,
+							/obj/structure/flora/grass = 80,
+							/obj/structure/flora/grass/herb/random = 7,
 							/obj/item/natural/stone = 5,
 							/obj/item/natural/rock = 6,
-							/obj/structure/flora/roguegrass/pyroclasticflowers = 1,
+							/obj/structure/flora/grass/pyroclasticflowers = 1,
 							/obj/item/grown/log/tree/stick = 5,
 							/obj/structure/chair/bench/ancientlog = 3,
 							/obj/structure/table/wood/treestump = 4,
@@ -49,12 +49,12 @@
 	allowed_turfs = list(/turf/open/floor/grass)
 	excluded_turfs = list()
 	allowed_areas = list(/area/rogue/outdoors/woods)
-	spawnableAtoms = list(/obj/structure/flora/roguetree = 0,
-							/obj/structure/flora/roguegrass/bush_meagre = 6,
-							/obj/structure/flora/roguegrass = 80,
-							/obj/structure/flora/roguegrass/herb/random = 7,
-							/obj/structure/flora/roguegrass/maneater = 0.1,
-							/obj/structure/flora/roguegrass/maneater/real = 0.1,
+	spawnableAtoms = list(/obj/structure/flora/tree = 0,
+							/obj/structure/flora/grass/bush_meagre = 6,
+							/obj/structure/flora/grass = 80,
+							/obj/structure/flora/grass/herb/random = 7,
+							/obj/structure/flora/grass/maneater = 0.1,
+							/obj/structure/flora/grass/maneater/real = 0.1,
 							/obj/item/restraints/legcuffs/beartrap/armed/camouflage = 0.1,
 							/obj/item/natural/stone = 6,
 							/obj/item/natural/rock = 5,
@@ -66,8 +66,8 @@
 	allowed_turfs = list(/turf/open/water/cleanshallow)
 	excluded_turfs = list()
 	allowed_areas = list(/area/rogue/outdoors/woods)
-	spawnableAtoms = list(/obj/structure/flora/roguegrass/water = 20,
-	                        /obj/structure/flora/roguegrass/water/reeds = 25,
+	spawnableAtoms = list(/obj/structure/flora/grass/water = 20,
+	                        /obj/structure/flora/grass/water/reeds = 25,
 	                        /obj/structure/kneestingers = 25)
 
 /datum/mapGeneratorModule/forestswampwaterturf
@@ -75,6 +75,6 @@
 	allowed_turfs = list(/turf/open/water/swamp)
 	excluded_turfs = list()
 	allowed_areas = list(/area/rogue/outdoors/woods)
-	spawnableAtoms = list(/obj/structure/flora/roguegrass/water = 20,
-		                    /obj/structure/flora/roguegrass/water/reeds = 30,
+	spawnableAtoms = list(/obj/structure/flora/grass/water = 20,
+		                    /obj/structure/flora/grass/water/reeds = 30,
 	                        /obj/structure/kneestingers = 30)

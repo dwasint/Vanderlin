@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ae" = (
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /turf/open/floor/dirt,
 /area/rogue)
 "ai" = (
@@ -26,7 +26,7 @@
 /turf/open/floor/cobble/alt,
 /area/rogue)
 "bB" = (
-/obj/structure/flora/roguegrass/thorn_bush,
+/obj/structure/flora/grass/thorn_bush,
 /turf/open/floor/dirt,
 /area/rogue)
 "bP" = (
@@ -117,7 +117,7 @@
 /area/rogue)
 "fj" = (
 /obj/structure/noose,
-/obj/item/chair/rogue/chair3,
+/obj/item/chair/chair3,
 /obj/effect/decal/remains/human,
 /turf/open/floor/cobble,
 /area/rogue)
@@ -134,7 +134,7 @@
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue)
 "fw" = (
-/obj/item/chair/rogue/chair3,
+/obj/item/chair/chair3,
 /obj/effect/decal/cleanable/blood/gibs/down,
 /turf/open/floor/ruinedwood/turned,
 /area/rogue)
@@ -219,7 +219,7 @@
 /area/rogue)
 "ia" = (
 /obj/effect/decal/cleanable/dirt/cobweb/cobweb2,
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /turf/open/floor/dirt,
 /area/rogue)
 "in" = (
@@ -379,7 +379,7 @@
 /area/rogue)
 "pt" = (
 /obj/machinery/light/fueled/torchholder/r,
-/obj/structure/flora/roguegrass/thorn_bush,
+/obj/structure/flora/grass/thorn_bush,
 /turf/open/floor/dirt,
 /area/rogue)
 "pQ" = (
@@ -604,7 +604,7 @@
 /turf/open/floor/rooftop,
 /area/rogue)
 "zm" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/effect/spawner/map_spawner/loot/medium,
 /turf/open/floor/dirt,
 /area/rogue)
@@ -717,7 +717,7 @@
 /area/rogue)
 "Eo" = (
 /obj/effect/decal/cleanable/dirt/cobweb,
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /turf/open/floor/grass,
 /area/rogue)
 "EA" = (
@@ -755,7 +755,7 @@
 /turf/open/floor/hexstone,
 /area/rogue)
 "FF" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/closed/mineral/bedrock,
 /area/rogue)
 "FJ" = (
@@ -771,7 +771,7 @@
 /turf/closed,
 /area/rogue)
 "Gp" = (
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /obj/item/restraints/legcuffs/beartrap/armed,
 /turf/open/floor/dirt,
 /area/rogue)
@@ -795,7 +795,7 @@
 /turf/open/floor/cobble/alt,
 /area/rogue)
 "HD" = (
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /obj/item/restraints/legcuffs/beartrap/armed,
 /turf/open/floor/grass,
 /area/rogue)
@@ -1041,7 +1041,7 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "OM" = (
-/obj/item/chair/rogue/chair3,
+/obj/item/chair/chair3,
 /obj/effect/decal/cleanable/blood/footprints,
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue)
@@ -1085,7 +1085,7 @@
 /turf/open/floor/hexstone,
 /area/rogue)
 "QP" = (
-/obj/item/chair/rogue/chair3,
+/obj/item/chair/chair3,
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue)
 "QR" = (
@@ -1103,7 +1103,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue)
 "Ri" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/dirt,
 /area/rogue)
 "Rt" = (
@@ -1116,11 +1116,11 @@
 /area/rogue)
 "Rz" = (
 /obj/effect/decal/cleanable/dirt/cobweb/cobweb2,
-/obj/structure/flora/roguegrass/thorn_bush,
+/obj/structure/flora/grass/thorn_bush,
 /turf/open/floor/dirt,
 /area/rogue)
 "RC" = (
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /turf/open/floor/grass,
 /area/rogue)
 "RD" = (
@@ -1252,8 +1252,8 @@
 /area/rogue)
 "WC" = (
 /obj/machinery/light/fueled/torchholder/l,
-/obj/structure/flora/roguegrass/bush_meagre,
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /turf/open/floor/grass,
 /area/rogue)
 "WE" = (

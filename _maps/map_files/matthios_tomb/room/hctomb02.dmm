@@ -86,7 +86,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue)
 "hQ" = (
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /turf/open/floor/grass/yel,
 /area/rogue)
 "hY" = (
@@ -117,7 +117,7 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "iL" = (
-/obj/structure/flora/roguegrass/maneater,
+/obj/structure/flora/grass/maneater,
 /turf/open/floor/dirt/road,
 /area/rogue)
 "iR" = (
@@ -148,7 +148,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue)
 "mJ" = (
-/obj/structure/flora/roguegrass/herb/atropa,
+/obj/structure/flora/grass/herb/atropa,
 /turf/open/floor/grass/yel,
 /area/rogue)
 "mN" = (
@@ -522,7 +522,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue)
 "Vc" = (
-/obj/structure/flora/roguegrass/bush,
+/obj/structure/flora/grass/bush,
 /turf/open/floor/grass/yel,
 /area/rogue)
 "Wk" = (
@@ -546,7 +546,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue)
 "XO" = (
-/obj/structure/flora/rogueshroom,
+/obj/structure/flora/shroom_tree,
 /turf/open/water/swamp,
 /area/rogue)
 "XV" = (

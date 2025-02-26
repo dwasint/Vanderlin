@@ -4,7 +4,7 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "aY" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water,
 /area/rogue)
 "be" = (

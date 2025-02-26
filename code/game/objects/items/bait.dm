@@ -63,13 +63,13 @@
 					return
 				possible_targets = list()
 				var/list/objects = range(7, src)
-				for(var/obj/structure/flora/roguetree/RT in objects)
+				for(var/obj/structure/flora/tree/RT in objects)
 					if(can_see(src, RT, 7))
 						possible_targets += RT
-				for(var/obj/structure/flora/roguegrass/bush/RT in objects)
+				for(var/obj/structure/flora/grass/bush/RT in objects)
 					if(can_see(src, RT, 7))
 						possible_targets += RT
-				for(var/obj/structure/flora/roguegrass/bush_meagre/RT in objects)
+				for(var/obj/structure/flora/grass/bush_meagre/RT in objects)
 					if(can_see(src, RT, 7))
 						possible_targets += RT
 				for(var/obj/structure/chair/bench/ancientlog/RT in objects)

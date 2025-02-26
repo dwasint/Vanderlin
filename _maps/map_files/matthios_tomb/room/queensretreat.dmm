@@ -7,7 +7,7 @@
 /obj/structure/gravemarker{
 	desc = "To my strong father, I will not let you down."
 	},
-/obj/structure/flora/roguegrass/herb/salvia,
+/obj/structure/flora/grass/herb/salvia,
 /obj/structure/closet/dirthole/closed,
 /turf/open/floor/dirt,
 /area/rogue)
@@ -35,7 +35,7 @@
 /obj/structure/fluff/railing/wood{
 	dir = 1
 	},
-/obj/structure/flora/roguegrass/herb/artemisia,
+/obj/structure/flora/grass/herb/artemisia,
 /turf/open/floor/grass,
 /area/rogue)
 "cA" = (
@@ -83,7 +83,7 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "ez" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/cobble/mossy,
 /area/rogue)
 "eD" = (
@@ -113,7 +113,7 @@
 /obj/structure/gravemarker{
 	desc = "To my wisest mother, you did much for me."
 	},
-/obj/structure/flora/roguegrass/herb/artemisia,
+/obj/structure/flora/grass/herb/artemisia,
 /obj/structure/closet/dirthole/closed,
 /turf/open/floor/dirt,
 /area/rogue)
@@ -138,7 +138,7 @@
 /turf/open/floor/carpet/red,
 /area/rogue)
 "ga" = (
-/obj/structure/flora/roguegrass/bush/wall/tall,
+/obj/structure/flora/grass/bush/wall/tall,
 /turf/open/floor/dirt,
 /area/rogue)
 "gj" = (
@@ -210,7 +210,7 @@
 /turf/open/floor/tile/bath,
 /area/rogue)
 "lN" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/effect/dungeon_directional_helper/west,
 /turf/open/floor/dirt/road,
 /area/rogue)
@@ -238,7 +238,7 @@
 /turf/open/water/bath,
 /area/rogue)
 "nj" = (
-/obj/structure/flora/roguegrass/bush/wall/tall,
+/obj/structure/flora/grass/bush/wall/tall,
 /turf/open/floor/dirt/road,
 /area/rogue)
 "nl" = (
@@ -344,7 +344,7 @@
 	},
 /area/rogue)
 "rY" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/dirt/road,
 /area/rogue)
 "sk" = (
@@ -366,7 +366,7 @@
 	},
 /area/rogue)
 "sF" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/dirt,
 /area/rogue)
 "ta" = (
@@ -603,11 +603,11 @@
 /turf/open/floor/dirt/road,
 /area/rogue)
 "zY" = (
-/obj/structure/flora/roguegrass/pyroclasticflowers,
+/obj/structure/flora/grass/pyroclasticflowers,
 /turf/open/floor/grass,
 /area/rogue)
 "Af" = (
-/obj/structure/flora/roguegrass/herb/salvia,
+/obj/structure/flora/grass/herb/salvia,
 /turf/open/floor/grass,
 /area/rogue)
 "AT" = (
@@ -991,7 +991,7 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "Ry" = (
-/obj/structure/flora/roguegrass/herb/artemisia,
+/obj/structure/flora/grass/herb/artemisia,
 /turf/open/floor/grass,
 /area/rogue)
 "RH" = (
@@ -1026,7 +1026,7 @@
 /turf/open/floor/tile/bath,
 /area/rogue)
 "Su" = (
-/obj/structure/flora/roguegrass/bush/wall/tall,
+/obj/structure/flora/grass/bush/wall/tall,
 /turf/open/floor/grass,
 /area/rogue)
 "SJ" = (
@@ -1054,7 +1054,7 @@
 /turf/open/floor/tile/checker,
 /area/rogue)
 "UM" = (
-/obj/structure/flora/roguegrass/herb/artemisia,
+/obj/structure/flora/grass/herb/artemisia,
 /turf/open/floor/dirt/road,
 /area/rogue)
 "Vl" = (
@@ -1174,8 +1174,8 @@
 /turf/open/floor/carpet/lord/center,
 /area/rogue)
 "Zu" = (
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass/bush/wall/tall,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass/bush/wall/tall,
 /turf/open/floor/dirt/road,
 /area/rogue)
 "Zx" = (

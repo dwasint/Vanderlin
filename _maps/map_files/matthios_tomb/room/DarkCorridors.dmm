@@ -51,7 +51,7 @@
 /area/rogue)
 "eD" = (
 /obj/effect/spawner/map_spawner/treeorstump,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/grass,
 /area/rogue)
 "eT" = (
@@ -76,7 +76,7 @@
 /area/rogue)
 "hm" = (
 /obj/effect/decal/remains/cabbit,
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/swamp,
 /area/rogue)
 "hN" = (
@@ -97,7 +97,7 @@
 /turf/open/floor/cobble,
 /area/rogue)
 "im" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/item/restraints/legcuffs/beartrap/armed/camouflage,
 /turf/open/floor/grass,
 /area/rogue)
@@ -174,7 +174,7 @@
 "mR" = (
 /obj/structure/closet/dirthole/closed,
 /obj/structure/gravemarker,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/grass,
 /area/rogue)
 "mW" = (
@@ -223,8 +223,8 @@
 /turf/open/floor/cobblerock,
 /area/rogue)
 "rl" = (
-/obj/structure/flora/roguegrass/bush,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass/bush,
+/obj/structure/flora/grass,
 /turf/open/floor/grass,
 /area/rogue)
 "rM" = (
@@ -251,11 +251,11 @@
 /area/rogue)
 "wj" = (
 /obj/effect/decal/remains/bogbug,
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/swamp,
 /area/rogue)
 "wl" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/swamp,
 /area/rogue)
 "wF" = (
@@ -281,7 +281,7 @@
 /turf/open/floor/cobble/alt,
 /area/rogue)
 "yo" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/grass,
 /area/rogue)
 "yI" = (
@@ -325,7 +325,7 @@
 /turf/open/floor/blocks,
 /area/rogue)
 "CL" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /obj/item/restraints/legcuffs/beartrap/armed/camouflage,
 /turf/open/floor/dirt,
 /area/rogue)
@@ -338,7 +338,7 @@
 /turf/open/floor/cobble,
 /area/rogue)
 "Ed" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/closed/mineral/bedrock,
 /area/rogue)
 "Ei" = (
@@ -368,11 +368,11 @@
 /turf/open/floor/blocks/stonered,
 /area/rogue)
 "GC" = (
-/obj/structure/flora/roguegrass/bush,
+/obj/structure/flora/grass/bush,
 /turf/open/floor/grass,
 /area/rogue)
 "GY" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/dirt,
 /area/rogue)
 "Hd" = (
@@ -381,7 +381,7 @@
 /area/rogue)
 "Iy" = (
 /obj/effect/decal/remains/human,
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/swamp,
 /area/rogue)
 "IJ" = (
@@ -453,7 +453,7 @@
 /area/rogue)
 "ML" = (
 /obj/effect/decal/remains/bigrat,
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/swamp,
 /area/rogue)
 "NM" = (
@@ -463,7 +463,7 @@
 /turf/open/floor/blocks/stonered/tiny,
 /area/rogue)
 "Pu" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/floor/dirt,
 /area/rogue)
 "PZ" = (

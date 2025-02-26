@@ -200,7 +200,7 @@
 /obj/structure/fluff/railing/fence{
 	dir = 4
 	},
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/bog)
 "sD" = (
@@ -285,7 +285,7 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors/bog)
 "xU" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/grass,
 /area/rogue/outdoors/bog)
 "yC" = (
@@ -356,7 +356,7 @@
 /turf/open/floor/twig,
 /area/rogue/outdoors/bog)
 "DY" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/bog)
 "Ei" = (
@@ -507,7 +507,7 @@
 /turf/open/floor/twig,
 /area/rogue/outdoors/bog)
 "Vw" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/water/swamp,
 /area/rogue/outdoors/bog)
 "Vz" = (

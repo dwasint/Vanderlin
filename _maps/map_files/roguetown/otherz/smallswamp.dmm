@@ -10,7 +10,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/bog)
 "c" = (
-/obj/structure/flora/roguetree,
+/obj/structure/flora/tree,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/bog)
 "d" = (
@@ -49,7 +49,7 @@
 /turf/closed/mineral/bedrock,
 /area/rogue/outdoors/bog)
 "p" = (
-/obj/structure/flora/roguetree,
+/obj/structure/flora/tree,
 /turf/open/water/swamp,
 /area/rogue/outdoors/bog)
 "q" = (
@@ -76,7 +76,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/bog)
 "C" = (
-/obj/structure/flora/roguetree,
+/obj/structure/flora/tree,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/bog)
 "D" = (
@@ -86,7 +86,7 @@
 /turf/open/water/swamp,
 /area/rogue/outdoors/bog)
 "H" = (
-/obj/structure/flora/roguetree,
+/obj/structure/flora/tree,
 /turf/open/water/swamp/deep,
 /area/rogue/outdoors/bog)
 "L" = (
@@ -95,8 +95,8 @@
 	},
 /area/rogue/outdoors/bog)
 "Q" = (
-/obj/structure/flora/roguetree,
-/obj/structure/flora/roguetree,
+/obj/structure/flora/tree,
+/obj/structure/flora/tree,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/bog)
 "U" = (
@@ -104,9 +104,9 @@
 /turf/open/floor/hexstone,
 /area/rogue/outdoors/bog)
 "V" = (
-/obj/structure/flora/roguetree,
-/obj/structure/flora/roguetree,
-/obj/structure/flora/roguetree,
+/obj/structure/flora/tree,
+/obj/structure/flora/tree,
+/obj/structure/flora/tree,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/bog)
 "X" = (

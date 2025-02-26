@@ -263,7 +263,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue)
 "ID" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/swamp,
 /area/rogue)
 "IU" = (
@@ -322,7 +322,7 @@
 /turf/open/floor/churchrough,
 /area/rogue)
 "TW" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/swamp/deep,
 /area/rogue)
 "Uc" = (

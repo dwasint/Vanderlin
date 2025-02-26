@@ -77,10 +77,10 @@
 	result_type = /obj/structure/chair/wood/alt/chair3/crafted
 
 /obj/structure/chair/wood/alt/chair3/crafted
-	item_chair = /obj/item/chair/rogue/chair3/crafted
+	item_chair = /obj/item/chair/chair3/crafted
 	sellprice = 6
 
-/obj/item/chair/rogue/chair3/crafted
+/obj/item/chair/chair3/crafted
 	origin_type = /obj/structure/chair/wood/alt/chair3/crafted
 	sellprice = 6
 
@@ -95,10 +95,10 @@
 	craftdiff = 2
 
 /obj/structure/chair/wood/alt/fancy/crafted
-	item_chair = /obj/item/chair/rogue/fancy/crafted
+	item_chair = /obj/item/chair/fancy/crafted
 	sellprice = 12
 
-/obj/item/chair/rogue/fancy/crafted
+/obj/item/chair/fancy/crafted
 	origin_type = /obj/structure/chair/wood/alt/fancy/crafted
 	sellprice = 12
 

@@ -25,25 +25,25 @@
 /turf/open/floor/dirt/road,
 /area/rogue/indoors/town/dwarfin)
 "aT" = (
-/obj/structure/flora/rogueshroom,
+/obj/structure/flora/shroom_tree,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/mountains/decap)
 "aX" = (
-/obj/structure/flora/rogueshroom{
+/obj/structure/flora/shroom_tree{
 	pixel_x = -36;
 	pixel_y = 3
 	},
-/obj/structure/flora/roguegrass/bush_meagre{
+/obj/structure/flora/grass/bush_meagre{
 	pixel_y = -2;
 	pixel_x = -16;
 	layer = 7
 	},
-/obj/structure/flora/roguegrass/bush_meagre{
+/obj/structure/flora/grass/bush_meagre{
 	pixel_y = -4;
 	pixel_x = -29;
 	layer = 7
 	},
-/obj/structure/flora/roguegrass/bush{
+/obj/structure/flora/grass/bush{
 	pixel_x = -7;
 	pixel_y = 1
 	},
@@ -185,7 +185,7 @@
 /turf/closed/wall/mineral/wood,
 /area/rogue/indoors/town/dwarfin)
 "es" = (
-/obj/structure/flora/roguegrass/pyroclasticflowers,
+/obj/structure/flora/grass/pyroclasticflowers,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/mountains/decap)
 "ez" = (
@@ -197,7 +197,7 @@
 /turf/open/floor/concrete,
 /area/rogue/under/cavelava)
 "eF" = (
-/obj/structure/flora/roguetree/burnt,
+/obj/structure/flora/tree/burnt,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/caves)
 "eG" = (
@@ -239,7 +239,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/caves)
 "fu" = (
-/obj/structure/flora/rogueshroom,
+/obj/structure/flora/shroom_tree,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/mountains/deception)
 "fv" = (
@@ -272,7 +272,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/mountains/decap)
 "fV" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/river{
 	dir = 8
 	},
@@ -338,7 +338,7 @@
 /turf/open/floor/greenstone,
 /area/rogue/under/cavelava)
 "hm" = (
-/obj/structure/flora/rogueshroom,
+/obj/structure/flora/shroom_tree,
 /turf/open/floor/dirt/road,
 /area/rogue/under/cavelava)
 "ho" = (
@@ -353,7 +353,7 @@
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue/indoors/town/dwarfin)
 "hv" = (
-/obj/structure/flora/roguetree/burnt,
+/obj/structure/flora/tree/burnt,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/caves)
 "hw" = (
@@ -471,7 +471,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/cavelava)
 "jM" = (
-/obj/structure/flora/roguegrass/herb/hypericum,
+/obj/structure/flora/grass/herb/hypericum,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/mountains/decap)
 "jU" = (
@@ -543,7 +543,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/cavelava)
 "lS" = (
-/obj/structure/flora/roguetree,
+/obj/structure/flora/tree,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/caves)
 "lZ" = (
@@ -805,23 +805,23 @@
 /turf/open/floor/dirt/road,
 /area/rogue/indoors/town/dwarfin)
 "sb" = (
-/obj/structure/flora/rogueshroom{
+/obj/structure/flora/shroom_tree{
 	pixel_x = -9
 	},
-/obj/structure/flora/roguegrass/bush_meagre{
+/obj/structure/flora/grass/bush_meagre{
 	pixel_y = -3;
 	pixel_x = 14;
 	layer = 7
 	},
-/obj/structure/flora/roguegrass/bush{
+/obj/structure/flora/grass/bush{
 	pixel_x = 10
 	},
-/obj/structure/flora/roguegrass/bush_meagre{
+/obj/structure/flora/grass/bush_meagre{
 	pixel_y = -5;
 	pixel_x = 24;
 	layer = 7
 	},
-/obj/structure/flora/roguegrass/bush{
+/obj/structure/flora/grass/bush{
 	pixel_x = 24;
 	pixel_y = 5
 	},
@@ -861,7 +861,7 @@
 	},
 /area/rogue/outdoors/mountains/decap)
 "sI" = (
-/obj/structure/flora/rogueshroom,
+/obj/structure/flora/shroom_tree,
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/mountains/decap)
 "sJ" = (
@@ -1042,7 +1042,7 @@
 /turf/open/lava,
 /area/rogue/outdoors/mountains/decap)
 "yu" = (
-/obj/structure/flora/roguegrass/thorn_bush,
+/obj/structure/flora/grass/thorn_bush,
 /turf/open/floor/dirt,
 /area/rogue/under/cavelava)
 "yC" = (
@@ -1187,7 +1187,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/outdoors/mountains)
 "CV" = (
-/obj/structure/flora/rogueshroom,
+/obj/structure/flora/shroom_tree,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/caves)
 "CW" = (
@@ -1233,7 +1233,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/outdoors/mountains)
 "DV" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water,
 /area/rogue/outdoors/mountains/decap)
 "DZ" = (
@@ -1252,7 +1252,7 @@
 /turf/closed/wall/mineral/stonebrick,
 /area/rogue/outdoors/caves)
 "EB" = (
-/obj/structure/flora/rogueshroom,
+/obj/structure/flora/shroom_tree,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/mountains/decap)
 "ED" = (
@@ -1377,14 +1377,14 @@
 /turf/open/floor/herringbone,
 /area/rogue/under/cavelava)
 "HU" = (
-/obj/structure/flora/rogueshroom,
+/obj/structure/flora/shroom_tree,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/caves)
 "HV" = (
 /turf/open/water,
 /area/rogue/outdoors/mountains/decap)
 "Ig" = (
-/obj/structure/flora/rogueshroom,
+/obj/structure/flora/shroom_tree,
 /turf/open/floor/grass,
 /area/rogue/outdoors/caves)
 "Ii" = (
@@ -1457,7 +1457,7 @@
 /turf/open/floor/concrete,
 /area/rogue/under/cavelava)
 "IY" = (
-/obj/structure/flora/rogueshroom,
+/obj/structure/flora/shroom_tree,
 /turf/open/floor/dirt,
 /area/rogue/under/cavelava)
 "Jc" = (
@@ -1477,7 +1477,7 @@
 /turf/closed/wall/mineral/stone,
 /area/rogue/outdoors/caves)
 "Jm" = (
-/obj/structure/flora/roguetree,
+/obj/structure/flora/tree,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/caves)
 "JK" = (
@@ -1504,7 +1504,7 @@
 /turf/open/floor/cobble/mossy,
 /area/rogue/under/cavelava)
 "Ks" = (
-/obj/structure/flora/roguegrass/herb/taraxacum,
+/obj/structure/flora/grass/herb/taraxacum,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/mountains/decap)
 "Ku" = (
@@ -1527,7 +1527,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/under/cavelava)
 "KZ" = (
-/obj/structure/flora/rogueshroom,
+/obj/structure/flora/shroom_tree,
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/caves)
 "Lg" = (
@@ -1538,7 +1538,7 @@
 /turf/open/floor/blocks,
 /area/rogue/under/cavelava)
 "Lq" = (
-/obj/structure/flora/roguegrass/herb/calendula,
+/obj/structure/flora/grass/herb/calendula,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/mountains/decap)
 "Lt" = (
@@ -1598,7 +1598,7 @@
 /turf/open/floor/herringbone,
 /area/rogue/under/cavelava)
 "MQ" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/river,
 /area/rogue/outdoors/mountains/decap)
 "MS" = (
@@ -1769,7 +1769,7 @@
 /turf/open/floor/herringbone,
 /area/rogue/under/cavelava)
 "Rb" = (
-/obj/structure/flora/rogueshroom,
+/obj/structure/flora/shroom_tree,
 /turf/closed/mineral/random/med,
 /area/rogue/outdoors/mountains/deception)
 "Ro" = (
@@ -1936,7 +1936,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/mountains/deception)
 "Vi" = (
-/obj/structure/flora/roguetree,
+/obj/structure/flora/tree,
 /turf/open/floor/dirt/road,
 /area/rogue/under/cavelava)
 "Vk" = (
@@ -2078,10 +2078,10 @@
 /turf/closed/mineral/bedrock,
 /area/rogue/outdoors/mountains/deception)
 "Zu" = (
-/obj/structure/flora/roguegrass/bush{
+/obj/structure/flora/grass/bush{
 	pixel_x = 19
 	},
-/obj/structure/flora/roguegrass/bush{
+/obj/structure/flora/grass/bush{
 	pixel_x = 7;
 	pixel_y = 6
 	},
@@ -2118,7 +2118,7 @@
 /turf/closed/wall/mineral/wood,
 /area/rogue/outdoors/caves)
 "ZO" = (
-/obj/structure/flora/roguetree,
+/obj/structure/flora/tree,
 /turf/open/floor/dirt,
 /area/rogue/under/cavelava)
 "ZU" = (

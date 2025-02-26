@@ -130,8 +130,8 @@
 /turf/open/floor/carpet/purple,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "cT" = (
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass/herb/urtica,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass/herb/urtica,
 /turf/open/floor/grass,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "cV" = (
@@ -542,7 +542,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "iQ" = (
-/obj/structure/rogue/trophy/deer,
+/obj/structure/trophy/deer,
 /turf/open/floor/carpet,
 /area/rogue/under/mountains/anvil/dungeon)
 "iU" = (
@@ -674,7 +674,7 @@
 /turf/closed/wall/mineral/stonebrick,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "kn" = (
-/obj/structure/flora/roguegrass/pyroclasticflowers,
+/obj/structure/flora/grass/pyroclasticflowers,
 /obj/structure/flora/ausbushes/ppflowers,
 /obj/structure/flora/ausbushes/ywflowers,
 /turf/open/floor/grass,
@@ -962,7 +962,7 @@
 /turf/open/floor/twig,
 /area/rogue/under/mountains/anvil/dungeon)
 "nr" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/flora/ausbushes/brflowers,
 /turf/open/floor/grass,
 /area/rogue/under/mountains/anvil/dungeon/lower)
@@ -1022,7 +1022,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "ot" = (
-/obj/structure/flora/roguegrass/pyroclasticflowers,
+/obj/structure/flora/grass/pyroclasticflowers,
 /obj/structure/flora/ausbushes/ywflowers,
 /obj/structure/flora/ausbushes/ppflowers,
 /turf/open/floor/grass,
@@ -1525,7 +1525,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "ul" = (
-/obj/structure/flora/roguegrass/pyroclasticflowers,
+/obj/structure/flora/grass/pyroclasticflowers,
 /obj/structure/flora/ausbushes/brflowers,
 /turf/open/floor/grass,
 /area/rogue/under/mountains/anvil/dungeon/lower)
@@ -1649,8 +1649,8 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "vD" = (
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass/herb/taraxacum,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass/herb/taraxacum,
 /turf/open/floor/grass,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "vG" = (
@@ -1686,7 +1686,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "wg" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/machinery/light/fueled/firebowl/standing/blue,
 /turf/open/floor/grass,
 /area/rogue/under/mountains/anvil/dungeon/lower)
@@ -1787,7 +1787,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "xC" = (
-/obj/structure/flora/roguegrass/pyroclasticflowers,
+/obj/structure/flora/grass/pyroclasticflowers,
 /obj/structure/flora/ausbushes/brflowers,
 /obj/structure/flora/ausbushes/ywflowers,
 /turf/open/floor/grass,
@@ -2401,7 +2401,7 @@
 /turf/closed/wall/mineral/stonebrick,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "GG" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/item/clothing/head/peaceflower,
 /obj/structure/flora/ausbushes/ppflowers,
 /turf/open/floor/grass,
@@ -2457,7 +2457,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "Ht" = (
-/obj/structure/flora/roguegrass/pyroclasticflowers,
+/obj/structure/flora/grass/pyroclasticflowers,
 /obj/structure/flora/ausbushes/ywflowers,
 /turf/open/floor/grass,
 /area/rogue/under/mountains/anvil/dungeon/lower)
@@ -2556,7 +2556,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "Io" = (
-/obj/structure/flora/roguegrass/pyroclasticflowers,
+/obj/structure/flora/grass/pyroclasticflowers,
 /obj/structure/flora/ausbushes/ppflowers,
 /turf/open/floor/grass,
 /area/rogue/under/mountains/anvil/dungeon/lower)
@@ -2591,7 +2591,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "IK" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/flora/ausbushes/brflowers,
 /obj/machinery/light/fueled/firebowl/standing/blue,
 /turf/open/floor/grass,
@@ -3386,8 +3386,8 @@
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "Tj" = (
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass/herb/euphrasia,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass/herb/euphrasia,
 /turf/open/floor/grass,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Tk" = (
@@ -3590,7 +3590,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Vz" = (
-/obj/structure/flora/roguegrass/bush/wall/tall,
+/obj/structure/flora/grass/bush/wall/tall,
 /turf/open/floor/grass,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "VW" = (

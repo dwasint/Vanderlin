@@ -1,4 +1,4 @@
-/obj/structure/flora/roguegrass/herb
+/obj/structure/flora/grass/herb
 	name = "herbbush"
 	desc = "A bush,for an herb. This shouldn't show up."
 	icon = 'icons/roguetown/misc/herbfoliage.dmi'
@@ -14,22 +14,22 @@
 	var/timerid
 	var/harvested = FALSE
 
-/obj/structure/flora/roguegrass/herb/Initialize()
+/obj/structure/flora/grass/herb/Initialize()
 	. = ..()
 	desc = "An herb. This one looks like [name]."
 	alchemy_effect = new(get_turf(src), src)
 	GLOB.herb_locations |= src
 	loot_replenish()
 
-/obj/structure/flora/roguegrass/herb/Destroy()
+/obj/structure/flora/grass/herb/Destroy()
 	. = ..()
 	GLOB.harvested_herbs -= src
 	GLOB.herb_locations -= src
 
-/obj/structure/flora/roguegrass/herb/update_icon()
+/obj/structure/flora/grass/herb/update_icon()
 	return
 
-/obj/structure/flora/roguegrass/herb/attack_hand(mob/user)
+/obj/structure/flora/grass/herb/attack_hand(mob/user)
 	if(harvested)
 		to_chat(user, span_warning("Picked clean; but looks healthy. I should try again later."))
 	if(isliving(user))
@@ -52,7 +52,7 @@
 					return
 			user.visible_message(span_notice("[user] searches through [src]."))
 
-/obj/structure/flora/roguegrass/herb/proc/loot_replenish()
+/obj/structure/flora/grass/herb/proc/loot_replenish()
 	if(herbtype)
 		looty += herbtype
 	harvested = FALSE
@@ -61,20 +61,20 @@
 	if(timerid)
 		deltimer(timerid)
 
-/obj/structure/flora/roguegrass/herb/random
+/obj/structure/flora/grass/herb/random
 	name = "random herb"
 	desc = "Haha, im in danger."
 
-/obj/structure/flora/roguegrass/herb/random/Initialize()
-	var/type = pick(list(/obj/structure/flora/roguegrass/herb/atropa,/obj/structure/flora/roguegrass/herb/matricaria,
-	/obj/structure/flora/roguegrass/herb/symphitum,/obj/structure/flora/roguegrass/herb/taraxacum,
-	/obj/structure/flora/roguegrass/herb/euphrasia,/obj/structure/flora/roguegrass/herb/paris,
-	/obj/structure/flora/roguegrass/herb/calendula,/obj/structure/flora/roguegrass/herb/mentha,
-	/obj/structure/flora/roguegrass/herb/urtica,/obj/structure/flora/roguegrass/herb/salvia,
-	/obj/structure/flora/roguegrass/herb/hypericum,/obj/structure/flora/roguegrass/herb/benedictus,
-	/obj/structure/flora/roguegrass/herb/valeriana,/obj/structure/flora/roguegrass/herb/artemisia))
+/obj/structure/flora/grass/herb/random/Initialize()
+	var/type = pick(list(/obj/structure/flora/grass/herb/atropa,/obj/structure/flora/grass/herb/matricaria,
+	/obj/structure/flora/grass/herb/symphitum,/obj/structure/flora/grass/herb/taraxacum,
+	/obj/structure/flora/grass/herb/euphrasia,/obj/structure/flora/grass/herb/paris,
+	/obj/structure/flora/grass/herb/calendula,/obj/structure/flora/grass/herb/mentha,
+	/obj/structure/flora/grass/herb/urtica,/obj/structure/flora/grass/herb/salvia,
+	/obj/structure/flora/grass/herb/hypericum,/obj/structure/flora/grass/herb/benedictus,
+	/obj/structure/flora/grass/herb/valeriana,/obj/structure/flora/grass/herb/artemisia))
 
-	var/obj/structure/flora/roguegrass/herb/boi = new type
+	var/obj/structure/flora/grass/herb/boi = new type
 	boi.forceMove(get_turf(src))
 	boi.pixel_x += rand(-3,3)
 	. = ..()
@@ -82,85 +82,85 @@
 	return INITIALIZE_HINT_QDEL
 
 
-/obj/structure/flora/roguegrass/herb/atropa
+/obj/structure/flora/grass/herb/atropa
 	name = "atropa"
 	icon_state = "atropa"
 
 	herbtype = /obj/item/alch/atropa
 
-/obj/structure/flora/roguegrass/herb/matricaria
+/obj/structure/flora/grass/herb/matricaria
 	name = "matricaria"
 	icon_state = "matricaria"
 
 	herbtype = /obj/item/alch/matricaria
 
-/obj/structure/flora/roguegrass/herb/symphitum
+/obj/structure/flora/grass/herb/symphitum
 	name = "symphitum"
 	icon_state = "symphitum"
 
 	herbtype = /obj/item/alch/symphitum
 
-/obj/structure/flora/roguegrass/herb/taraxacum
+/obj/structure/flora/grass/herb/taraxacum
 	name = "taraxacum"
 	icon_state = "taraxacum"
 
 	herbtype = /obj/item/alch/taraxacum
 
-/obj/structure/flora/roguegrass/herb/euphrasia
+/obj/structure/flora/grass/herb/euphrasia
 	name = "euphrasia"
 	icon_state = "euphrasia"
 
 	herbtype = /obj/item/alch/euphrasia
 
-/obj/structure/flora/roguegrass/herb/paris
+/obj/structure/flora/grass/herb/paris
 	name = "paris"
 	icon_state = "paris"
 
 	herbtype = /obj/item/alch/paris
 
-/obj/structure/flora/roguegrass/herb/calendula
+/obj/structure/flora/grass/herb/calendula
 	name = "calendula"
 	icon_state = "calendula"
 
 	herbtype = /obj/item/alch/calendula
 
-/obj/structure/flora/roguegrass/herb/mentha
+/obj/structure/flora/grass/herb/mentha
 	name = "mentha"
 	icon_state = "mentha"
 
 	herbtype = /obj/item/alch/mentha
 
-/obj/structure/flora/roguegrass/herb/urtica
+/obj/structure/flora/grass/herb/urtica
 	name = "urtica"
 	icon_state = "urtica"
 
 	herbtype = /obj/item/alch/urtica
 
-/obj/structure/flora/roguegrass/herb/salvia
+/obj/structure/flora/grass/herb/salvia
 	name = "salvia"
 	icon_state = "salvia"
 
 	herbtype = /obj/item/alch/salvia
 
-/obj/structure/flora/roguegrass/herb/hypericum
+/obj/structure/flora/grass/herb/hypericum
 	name = "hypericum"
 	icon_state = "hypericum"
 
 	herbtype = /obj/item/alch/hypericum
 
-/obj/structure/flora/roguegrass/herb/benedictus
+/obj/structure/flora/grass/herb/benedictus
 	name = "benedictus"
 	icon_state = "benedictus"
 
 	herbtype = /obj/item/alch/benedictus
 
-/obj/structure/flora/roguegrass/herb/valeriana
+/obj/structure/flora/grass/herb/valeriana
 	name = "valeriana"
 	icon_state = "valeriana"
 
 	herbtype = /obj/item/alch/valeriana
 
-/obj/structure/flora/roguegrass/herb/artemisia
+/obj/structure/flora/grass/herb/artemisia
 	name = "artemisia"
 	icon_state = "artemisia"
 

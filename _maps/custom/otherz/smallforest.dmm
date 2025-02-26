@@ -65,7 +65,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods)
 "ap" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/river{
 	dir = 4
 	},
@@ -77,15 +77,15 @@
 	},
 /area/rogue/outdoors/woods)
 "at" = (
-/obj/structure/flora/roguegrass/maneater/real,
+/obj/structure/flora/grass/maneater/real,
 /turf/open/floor/grass,
 /area/rogue/outdoors/woods)
 "au" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods)
 "aA" = (
-/obj/structure/flora/roguetree,
+/obj/structure/flora/tree,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods)
 "aC" = (
@@ -93,7 +93,7 @@
 /turf/open/water/swamp,
 /area/rogue/outdoors/woods)
 "aD" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/swamp,
 /area/rogue/outdoors/woods)
 "aE" = (
@@ -101,15 +101,15 @@
 /turf/open/water/swamp,
 /area/rogue/outdoors/woods)
 "aF" = (
-/obj/structure/flora/roguetree,
+/obj/structure/flora/tree,
 /turf/open/water/swamp,
 /area/rogue/outdoors/woods)
 "aG" = (
-/obj/structure/flora/roguetree,
+/obj/structure/flora/tree,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/woods)
 "aH" = (
-/obj/structure/flora/roguetree,
+/obj/structure/flora/tree,
 /turf/open/floor/grass,
 /area/rogue/outdoors/woods)
 "aI" = (
@@ -133,7 +133,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods)
 "aU" = (
-/obj/structure/flora/roguetree,
+/obj/structure/flora/tree,
 /turf/open/water/cleanshallow,
 /area/rogue/outdoors/woods)
 "bp" = (
@@ -200,7 +200,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods)
 "pu" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/cleanshallow,
 /area/rogue/outdoors/woods)
 "qa" = (
@@ -230,7 +230,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/woods)
 "vV" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water/river,
 /area/rogue/outdoors/woods)
 "vW" = (
@@ -324,7 +324,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/woods)
 "PA" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water/cleanshallow,
 /area/rogue/outdoors/woods)
 "PG" = (

@@ -310,7 +310,7 @@
 
 /datum/vine_controller
 	var/list/obj/structure/vine/vines
-	var/obj/structure/flora/roguetree/evil/tree
+	var/obj/structure/flora/tree/evil/tree
 	var/list/growth_queue
 	var/spread_multiplier = 1
 	var/spread_cap = 4
@@ -331,7 +331,7 @@
 //	if(production != null)
 //		spread_cap *= production / 5
 //		spread_multiplier /= production / 5
-	tree = new /obj/structure/flora/roguetree/evil(location)
+	tree = new /obj/structure/flora/tree/evil(location)
 	tree.controller = src
 
 /datum/vine_controller/vv_get_dropdown()

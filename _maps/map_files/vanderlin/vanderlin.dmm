@@ -108,7 +108,7 @@
 /obj/machinery/light/fueled/torchholder{
 	dir = 4
 	},
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/town)
 "adY" = (
@@ -117,7 +117,7 @@
 	},
 /area/rogue/indoors/town/manor)
 "aea" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water/river{
 	dir = 8
 	},
@@ -147,8 +147,8 @@
 /turf/open/floor/dirt/road,
 /area/rogue/indoors/town/church)
 "afA" = (
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass,
 /turf/open/floor/grass,
 /area/rogue/outdoors/town/roofs)
 "afO" = (
@@ -249,7 +249,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/town/basement)
 "aiP" = (
-/obj/structure/flora/roguegrass/bush/wall/tall,
+/obj/structure/flora/grass/bush/wall/tall,
 /obj/structure/fluff/railing/wood{
 	dir = 1
 	},
@@ -338,7 +338,7 @@
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town/magician)
 "amM" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/cobble/mossy,
 /area/rogue/outdoors/town)
 "anM" = (
@@ -435,7 +435,7 @@
 /turf/open/floor/twig,
 /area/rogue/under/town/basement)
 "aqC" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/grass/red,
 /area/rogue/outdoors/woods_safe)
 "aqG" = (
@@ -609,7 +609,7 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/outdoors/river)
 "awp" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/rtfield)
 "awB" = (
@@ -641,8 +641,8 @@
 /turf/open/floor/wood,
 /area/rogue/indoors/town)
 "ays" = (
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass/bush_meagre,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/town)
 "ayy" = (
@@ -766,7 +766,7 @@
 /turf/open/floor/carpet,
 /area/rogue/indoors/town/merc_guild)
 "aCm" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/item/natural/stone,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield)
@@ -778,11 +778,11 @@
 /obj/structure/fluff/railing/wood{
 	dir = 4
 	},
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/floor/naturalstone,
 /area/rogue/outdoors/river)
 "aDa" = (
-/obj/structure/flora/rogueshroom,
+/obj/structure/flora/shroom_tree,
 /turf/open/floor/dirt,
 /area/rogue/under/cavelava)
 "aDp" = (
@@ -857,7 +857,7 @@
 /turf/open/floor/herringbone,
 /area/rogue/indoors/town/shop)
 "aEe" = (
-/obj/item/chair/rogue,
+/obj/item/chair,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/indoors/town/orphanage)
 "aEv" = (
@@ -917,7 +917,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/town)
 "aFt" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/town/roofs)
 "aFz" = (
@@ -1207,7 +1207,7 @@
 /turf/open/floor/wood,
 /area/rogue/indoors/town)
 "aOl" = (
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /turf/open/floor/grass,
 /area/rogue/outdoors/mountains)
 "aOn" = (
@@ -1251,7 +1251,7 @@
 /obj/structure/fluff/railing/wood{
 	dir = 4
 	},
-/obj/structure/flora/roguegrass/bush,
+/obj/structure/flora/grass/bush,
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
 "aPo" = (
@@ -1412,7 +1412,7 @@
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/town)
 "aUi" = (
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield/safe)
 "aUC" = (
@@ -1428,7 +1428,7 @@
 /turf/open/floor/wood,
 /area/rogue/indoors/town/tavern)
 "aVj" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/fluff/railing/wood,
 /obj/effect/landmark/start/vagrant,
 /turf/open/floor/grass,
@@ -1517,11 +1517,11 @@
 /obj/structure/fluff/railing/wood{
 	pixel_y = -4
 	},
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/floor/naturalstone,
 /area/rogue/outdoors/river)
 "aZt" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water,
 /area/rogue/outdoors/river)
 "aZW" = (
@@ -1671,7 +1671,7 @@
 /turf/open/floor/dirt,
 /area/rogue/indoors/town/cell)
 "bga" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/floor/tile{
 	icon_state = "greenstone"
 	},
@@ -1774,7 +1774,7 @@
 /turf/open/floor/hexstone,
 /area/rogue/indoors/town/church)
 "bjz" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water,
 /area/rogue/outdoors/river)
 "bjC" = (
@@ -1843,7 +1843,7 @@
 /turf/closed/wall/mineral/stone/moss,
 /area/rogue/under/town/sewer)
 "bmw" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/flora/newtree,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield/safe)
@@ -1989,8 +1989,8 @@
 /turf/open/floor/naturalstone,
 /area/rogue/under/town/sewer)
 "bty" = (
-/obj/structure/flora/roguegrass/bush_meagre,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass/bush_meagre,
+/obj/structure/flora/grass,
 /obj/structure/fluff/railing/wood,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/town)
@@ -2032,7 +2032,7 @@
 /turf/open/floor/hexstone,
 /area/rogue/indoors/villagegarrison)
 "buH" = (
-/obj/structure/flora/roguegrass/bush,
+/obj/structure/flora/grass/bush,
 /obj/structure/fluff/railing/wood{
 	dir = 4
 	},
@@ -2261,7 +2261,7 @@
 /turf/open/floor/wood,
 /area/rogue/indoors/town/orphanage)
 "bAh" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/fluff/railing/wood{
 	dir = 4
 	},
@@ -2788,7 +2788,7 @@
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/mountains)
 "bUe" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/effect/landmark/start/vagrant,
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
@@ -2992,7 +2992,7 @@
 /turf/open/floor/wood,
 /area/rogue/indoors/town/manor)
 "bZO" = (
-/obj/structure/flora/roguegrass/herb/hypericum,
+/obj/structure/flora/grass/herb/hypericum,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield)
 "cag" = (
@@ -3091,7 +3091,7 @@
 /turf/open/floor/tile,
 /area/rogue/indoors/town/magician)
 "cei" = (
-/obj/structure/flora/roguegrass/bush/wall/tall,
+/obj/structure/flora/grass/bush/wall/tall,
 /obj/structure/fluff/railing/wood{
 	dir = 8;
 	pixel_y = -1
@@ -3173,7 +3173,7 @@
 /turf/open/floor/blocks/stonered/tiny,
 /area/rogue/indoors/town/manor)
 "chp" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield)
 "chr" = (
@@ -3412,8 +3412,8 @@
 /turf/open/floor/ruinedwood/darker,
 /area/rogue/indoors/town/orphanage)
 "crG" = (
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass/herb/mentha,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass/herb/mentha,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield)
 "crM" = (
@@ -3431,7 +3431,7 @@
 /turf/open/floor/wood,
 /area/rogue/indoors/town)
 "csy" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield)
 "csK" = (
@@ -3486,7 +3486,7 @@
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/church/inquisition)
 "cuo" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/floor/dirt/road,
 /area/rogue/under/town/sewer)
 "cup" = (
@@ -3771,7 +3771,7 @@
 /turf/open/water/sewer,
 /area/rogue/under/town/sewer)
 "cEb" = (
-/obj/structure/flora/roguegrass/bush,
+/obj/structure/flora/grass/bush,
 /obj/structure/flora/ausbushes/ppflowers,
 /obj/structure/fluff/railing/wood{
 	dir = 8;
@@ -3913,7 +3913,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/town/basement)
 "cHs" = (
-/obj/structure/flora/roguegrass/bush/wall/tall,
+/obj/structure/flora/grass/bush/wall/tall,
 /obj/structure/fluff/railing/wood,
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
@@ -3980,7 +3980,7 @@
 /turf/open/floor/wood,
 /area/rogue/indoors/town/magician)
 "cME" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/floor/cobblerock,
 /area/rogue/under/town/sewer)
 "cMN" = (
@@ -4076,7 +4076,7 @@
 /turf/open/floor/carpet,
 /area/rogue/indoors/town/steward)
 "cOM" = (
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /turf/open/floor/cobble/mossy,
 /area/rogue/outdoors/town)
 "cPM" = (
@@ -4153,7 +4153,7 @@
 /turf/open/floor/tile,
 /area/rogue/indoors/town/manor)
 "cSa" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/fluff/railing/wood,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/town)
@@ -4336,7 +4336,7 @@
 /obj/structure/fluff/railing/wood{
 	dir = 4
 	},
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /obj/structure/fluff/railing/wood{
 	dir = 1
 	},
@@ -4549,7 +4549,7 @@
 	},
 /area/rogue/outdoors/town/roofs)
 "dlM" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/town)
 "dlP" = (
@@ -4765,7 +4765,7 @@
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town/manor)
 "duS" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/machinery/light/fueled/lanternpost/fixed{
 	dir = 1
 	},
@@ -4869,7 +4869,7 @@
 	dir = 8;
 	pixel_y = -1
 	},
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/machinery/light/fueled/lanternpost/fixed{
 	dir = 1
 	},
@@ -5013,8 +5013,8 @@
 /turf/open/floor/carpet/lord/center,
 /area/rogue/indoors/town/manor)
 "dEt" = (
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass/bush,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass/bush,
 /obj/structure/fluff/railing/wood{
 	dir = 1
 	},
@@ -5037,7 +5037,7 @@
 /turf/open/floor/woodturned,
 /area/rogue/indoors/town/tavern)
 "dFe" = (
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /obj/structure/fluff/railing/wood{
 	dir = 8;
 	pixel_y = -1
@@ -5048,7 +5048,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/indoors/town/smithy)
 "dFK" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water/river{
 	dir = 8
 	},
@@ -5229,7 +5229,7 @@
 /turf/open/floor/ruinedwood/turned,
 /area/rogue/indoors/town/manorgate)
 "dMG" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/flora/ausbushes/ywflowers,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield/safe)
@@ -5268,8 +5268,8 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield/safe)
 "dOo" = (
-/obj/structure/flora/roguegrass/bush,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass/bush,
+/obj/structure/flora/grass,
 /obj/structure/fluff/railing/wood{
 	dir = 8;
 	pixel_y = -1
@@ -5307,8 +5307,8 @@
 /turf/open/floor/ruinedwood/darker,
 /area/rogue/indoors/town/orphanage)
 "dPH" = (
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass/bush/wall/tall,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass/bush/wall/tall,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/town)
 "dPK" = (
@@ -5369,7 +5369,7 @@
 /obj/structure/fluff/railing/wood{
 	dir = 4
 	},
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/town)
 "dQx" = (
@@ -5455,7 +5455,7 @@
 /turf/open/floor/woodturned,
 /area/rogue/indoors/town/church)
 "dSR" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water/river{
 	dir = 1
 	},
@@ -5715,7 +5715,7 @@
 /turf/open/floor/blocks,
 /area/rogue/indoors/town/magician)
 "ecv" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water/cleanshallow,
 /area/rogue/under/town/sewer)
 "ecx" = (
@@ -5815,7 +5815,7 @@
 /turf/open/floor/wood,
 /area/rogue/indoors/town)
 "efK" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/grass,
 /area/rogue/outdoors/town/roofs)
 "efQ" = (
@@ -5913,7 +5913,7 @@
 /turf/open/floor/tile/masonic/spiral,
 /area/rogue/under/town/basement)
 "ejt" = (
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /obj/structure/fluff/railing/wood,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/town)
@@ -5950,7 +5950,7 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/outdoors/river)
 "ekO" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/floor/tile{
 	icon_state = "greenstone"
 	},
@@ -5992,7 +5992,7 @@
 /turf/open/floor/churchbrick,
 /area/rogue/indoors/town/clinic_large)
 "elR" = (
-/obj/structure/flora/roguegrass/herb/salvia,
+/obj/structure/flora/grass/herb/salvia,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/town)
 "emj" = (
@@ -6110,7 +6110,7 @@
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/mountains)
 "epy" = (
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /turf/open/floor/grass/red,
 /area/rogue/outdoors/woods_safe)
 "epA" = (
@@ -6282,7 +6282,7 @@
 	},
 /area/rogue/indoors/town/smithy)
 "eva" = (
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /turf/open/floor/grass,
 /area/rogue/outdoors/woods_safe)
 "eve" = (
@@ -6411,7 +6411,7 @@
 /obj/machinery/light/fueled/torchholder{
 	pixel_y = 26
 	},
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/town)
 "ezn" = (
@@ -6477,7 +6477,7 @@
 /turf/closed/wall/mineral/stone,
 /area/rogue/outdoors/town)
 "eCs" = (
-/obj/structure/flora/roguegrass/bush,
+/obj/structure/flora/grass/bush,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield)
 "eCw" = (
@@ -6486,7 +6486,7 @@
 /turf/open/floor/carpet,
 /area/rogue/indoors/town/tavern)
 "eCG" = (
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /obj/structure/fluff/railing/wood{
 	dir = 4
 	},
@@ -6510,7 +6510,7 @@
 /turf/closed/wall/mineral/stone,
 /area/rogue/indoors/town/clocktower)
 "eDO" = (
-/obj/structure/flora/roguegrass/bush,
+/obj/structure/flora/grass/bush,
 /obj/item/reagent_containers/glass/bottle/redwine,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield)
@@ -6536,8 +6536,8 @@
 /turf/closed/wall/mineral/stonebrick,
 /area/rogue/indoors/town/manor)
 "eEM" = (
-/obj/structure/flora/roguegrass/water,
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
+/obj/structure/flora/grass/water,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/town)
 "eES" = (
@@ -6727,7 +6727,7 @@
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/magician)
 "eLN" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/floor/naturalstone,
 /area/rogue/outdoors/river)
 "eLP" = (
@@ -6798,7 +6798,7 @@
 /turf/open/floor/hexstone,
 /area/rogue/indoors/town/dwarfin)
 "eNT" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/fluff/railing/wood,
 /obj/structure/fluff/railing/wood{
 	dir = 8;
@@ -6919,7 +6919,7 @@
 	dir = 8;
 	pixel_y = -1
 	},
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/flora/ausbushes/ppflowers,
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
@@ -6949,7 +6949,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/town)
 "eTF" = (
-/obj/structure/flora/roguegrass/bush,
+/obj/structure/flora/grass/bush,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield/safe)
 "eTM" = (
@@ -7236,12 +7236,12 @@
 /obj/structure/fluff/railing/wood{
 	dir = 1
 	},
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/town)
 "fcN" = (
 /obj/effect/decal/cleanable/blood/old,
-/obj/item/chair/rogue,
+/obj/item/chair,
 /turf/open/floor/church,
 /area/rogue/indoors/town/church/inquisition)
 "fdp" = (
@@ -7541,8 +7541,8 @@
 /turf/open/transparent/openspace,
 /area/rogue/indoors/butchershop)
 "fps" = (
-/obj/structure/flora/roguegrass/water/reeds,
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water,
 /area/rogue/outdoors/river)
 "fpy" = (
@@ -7638,7 +7638,7 @@
 /turf/open/floor/ruinedwood,
 /area/rogue/indoors/town)
 "fsV" = (
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /turf/closed/mineral,
 /area/rogue/outdoors/rtfield)
 "ftd" = (
@@ -7775,7 +7775,7 @@
 	dir = 8;
 	pixel_y = -1
 	},
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
 "fwT" = (
@@ -7818,7 +7818,7 @@
 /obj/structure/fluff/railing/wood{
 	dir = 1
 	},
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
 "fze" = (
@@ -7882,7 +7882,7 @@
 	dir = 8;
 	pixel_y = -1
 	},
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water/cleanshallow,
 /area/rogue/outdoors/river)
 "fCH" = (
@@ -7927,7 +7927,7 @@
 	dir = 10;
 	icon_state = "largetable"
 	},
-/obj/structure/rogue/trophy/deer{
+/obj/structure/trophy/deer{
 	pixel_y = 0;
 	pixel_x = -32
 	},
@@ -8073,7 +8073,7 @@
 	dir = 1
 	},
 /obj/structure/flora/ausbushes/brflowers,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
 "fKN" = (
@@ -8459,7 +8459,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/rtfield/safe)
 "fZd" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/floor/naturalstone,
 /area/rogue/outdoors/river)
 "fZk" = (
@@ -8502,14 +8502,14 @@
 /obj/structure/fluff/railing/wood{
 	dir = 4
 	},
-/obj/structure/flora/roguegrass/bush,
+/obj/structure/flora/grass/bush,
 /obj/structure/fluff/railing/border{
 	dir = 8
 	},
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
 "gbD" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/effect/landmark/start/vagrant,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/town)
@@ -8533,8 +8533,8 @@
 /turf/open/floor/churchrough,
 /area/rogue/indoors/town/clinic_large)
 "gcv" = (
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass/herb/euphrasia,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass/herb/euphrasia,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield)
 "gcy" = (
@@ -8922,7 +8922,7 @@
 /turf/closed/wall/mineral/decostone,
 /area/rogue/indoors/town/manor)
 "grT" = (
-/obj/structure/flora/roguegrass/bush/wall/tall,
+/obj/structure/flora/grass/bush/wall/tall,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/town)
 "gsg" = (
@@ -8956,7 +8956,7 @@
 /area/rogue/indoors/town/clocktower)
 "gtN" = (
 /obj/item/grown/log/tree/stick,
-/obj/structure/flora/roguegrass/herb/hypericum,
+/obj/structure/flora/grass/herb/hypericum,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield)
 "gtP" = (
@@ -8973,7 +8973,7 @@
 /turf/open/floor/ruinedwood/chevron,
 /area/rogue/outdoors/mountains)
 "guP" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/fluff/railing/wood,
 /obj/structure/fluff/railing/wood{
 	dir = 4
@@ -9340,7 +9340,7 @@
 /turf/open/floor/tile/kitchen,
 /area/rogue/indoors/town/orphanage)
 "gFA" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water/river,
 /area/rogue/outdoors/river)
 "gFW" = (
@@ -9411,7 +9411,7 @@
 /turf/open/floor/ruinedwood/turned,
 /area/rogue/indoors/town)
 "gId" = (
-/obj/structure/flora/roguegrass/bush,
+/obj/structure/flora/grass/bush,
 /obj/structure/fluff/railing/wood{
 	dir = 1
 	},
@@ -9540,7 +9540,7 @@
 /area/rogue/outdoors/town/roofs)
 "gNi" = (
 /obj/structure/fluff/railing/wood,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/effect/landmark/start/vagrant,
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
@@ -9586,12 +9586,12 @@
 /turf/open/floor/blocks,
 /area/rogue/indoors/town/cell)
 "gPo" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/fluff/railing/wood{
 	dir = 8;
 	pixel_y = -1
 	},
-/obj/structure/flora/roguegrass/bush,
+/obj/structure/flora/grass/bush,
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
 "gPu" = (
@@ -9772,7 +9772,7 @@
 /turf/open/floor/tile/kitchen,
 /area/rogue/outdoors/mountains)
 "gVE" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/bars/cemetery,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield/safe)
@@ -9900,12 +9900,12 @@
 /turf/open/floor/wood,
 /area/rogue/indoors/town/church/chapel)
 "gZV" = (
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass/bush/wall,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass/bush/wall,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/town)
 "gZZ" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/rtfield/safe)
 "har" = (
@@ -10060,7 +10060,7 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/outdoors/river)
 "hhL" = (
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/mountains)
 "hhO" = (
@@ -10148,7 +10148,7 @@
 /turf/open/floor/woodturned,
 /area/rogue/indoors/town/manor)
 "hnC" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/mountains)
 "hob" = (
@@ -10270,7 +10270,7 @@
 /turf/open/floor/cobble/mossy,
 /area/rogue/outdoors/rtfield)
 "hsv" = (
-/obj/structure/flora/roguegrass/bush/wall/tall,
+/obj/structure/flora/grass/bush/wall/tall,
 /obj/structure/fluff/railing/wood{
 	dir = 1
 	},
@@ -10401,7 +10401,7 @@
 /area/rogue/indoors/town/garrison)
 "hwZ" = (
 /obj/structure/fluff/railing/wood,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/town)
 "hxl" = (
@@ -10755,8 +10755,8 @@
 /turf/open/floor/blocks/stonered,
 /area/rogue/indoors/town/bath)
 "hJN" = (
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass/thorn_bush,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass/thorn_bush,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield)
 "hJQ" = (
@@ -10803,7 +10803,7 @@
 /area/rogue/indoors/town/church/chapel)
 "hLN" = (
 /obj/structure/kneestingers,
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/river{
 	dir = 8
 	},
@@ -10812,7 +10812,7 @@
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town/church)
 "hMz" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/flora/newtree,
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
@@ -10832,13 +10832,13 @@
 /turf/open/floor/tile,
 /area/rogue/under/town/basement)
 "hMQ" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/fluff/statue/gargoyle/moss,
 /obj/machinery/light/fueled/torchholder,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/town)
 "hNh" = (
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /obj/structure/fluff/railing/wood,
 /obj/structure/fluff/railing/wood{
 	dir = 8;
@@ -11220,8 +11220,8 @@
 	},
 /area/rogue/indoors/town/tavern)
 "hZH" = (
-/obj/structure/flora/roguegrass/bush_meagre,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass/bush_meagre,
+/obj/structure/flora/grass,
 /turf/open/floor/grass/red,
 /area/rogue/outdoors/woods_safe)
 "hZO" = (
@@ -11306,7 +11306,7 @@
 /turf/open/floor/ruinedwood/darker,
 /area/rogue/indoors/town/tavern)
 "idf" = (
-/obj/structure/flora/roguegrass/bush/wall/tall,
+/obj/structure/flora/grass/bush/wall/tall,
 /obj/structure/fluff/railing/wood{
 	dir = 8;
 	pixel_y = -1
@@ -11418,7 +11418,7 @@
 /turf/open/floor/blocks,
 /area/rogue/outdoors/town)
 "iiB" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/river{
 	dir = 8
 	},
@@ -11573,7 +11573,7 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/indoors/town/orphanage)
 "irf" = (
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /turf/open/floor/dirt,
 /area/rogue/indoors/town/church)
 "irl" = (
@@ -11639,7 +11639,7 @@
 	dir = 8;
 	pixel_y = -1
 	},
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/machinery/light/fueled/lanternpost/fixed{
 	dir = 1
 	},
@@ -11987,7 +11987,7 @@
 /turf/open/floor/hexstone,
 /area/rogue/indoors/town/orphanage)
 "iBZ" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/grass/yel,
 /area/rogue/outdoors/town)
 "iCm" = (
@@ -12027,7 +12027,7 @@
 /obj/structure/fluff/railing/wood{
 	dir = 1
 	},
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/town)
 "iDu" = (
@@ -12227,7 +12227,7 @@
 /obj/machinery/light/fueled/torchholder{
 	dir = 8
 	},
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/town)
 "iLi" = (
@@ -12298,7 +12298,7 @@
 /turf/open/floor/ruinedwood,
 /area/rogue/indoors/town/manor)
 "iNK" = (
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /obj/structure/fluff/railing/wood{
 	dir = 8;
 	pixel_y = -1
@@ -12306,7 +12306,7 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
 "iNP" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/town)
 "iNW" = (
@@ -12330,18 +12330,18 @@
 /turf/open/floor/blocks/stonered/tiny,
 /area/rogue/indoors/town/bath)
 "iOF" = (
-/obj/structure/flora/roguegrass/herb/salvia,
+/obj/structure/flora/grass/herb/salvia,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield)
 "iOK" = (
-/obj/structure/flora/roguegrass/bush/wall/tall{
+/obj/structure/flora/grass/bush/wall/tall{
 	pixel_x = -8
 	},
-/obj/structure/flora/roguegrass/bush_meagre{
+/obj/structure/flora/grass/bush_meagre{
 	pixel_x = 20;
 	pixel_y = -5
 	},
-/obj/structure/flora/roguegrass/bush{
+/obj/structure/flora/grass/bush{
 	pixel_x = 25;
 	pixel_y = 7;
 	layer = 4.4
@@ -12476,7 +12476,7 @@
 /turf/open/floor/ruinedwood,
 /area/rogue/indoors/town/church)
 "iTb" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/river{
 	dir = 1
 	},
@@ -12533,7 +12533,7 @@
 /turf/open/floor/cobble/mossy,
 /area/rogue/outdoors/rtfield)
 "iVE" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods_safe)
 "iVG" = (
@@ -12676,7 +12676,7 @@
 /turf/open/floor/twig,
 /area/rogue/indoors/town)
 "jaa" = (
-/obj/structure/flora/roguegrass/bush,
+/obj/structure/flora/grass/bush,
 /turf/open/floor/grass,
 /area/rogue/outdoors/town/roofs)
 "jad" = (
@@ -12820,7 +12820,7 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield/safe)
 "jeB" = (
-/obj/structure/flora/roguegrass/herb/atropa,
+/obj/structure/flora/grass/herb/atropa,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield)
 "jfU" = (
@@ -12899,7 +12899,7 @@
 /turf/open/floor/ruinedwood/chevron,
 /area/rogue/indoors/town/orphanage)
 "jim" = (
-/obj/structure/flora/roguegrass/bush,
+/obj/structure/flora/grass/bush,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/town)
 "jiP" = (
@@ -12953,8 +12953,8 @@
 /turf/open/floor/twig,
 /area/rogue/indoors/town)
 "jkT" = (
-/obj/structure/flora/roguegrass/bush/wall/tall,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass/bush/wall/tall,
+/obj/structure/flora/grass,
 /obj/structure/fluff/railing/wood{
 	dir = 8;
 	pixel_y = -1
@@ -13295,7 +13295,7 @@
 /area/rogue/outdoors/river)
 "jzm" = (
 /obj/machinery/light/fueledstreet,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/town)
 "jzn" = (
@@ -13441,8 +13441,8 @@
 /turf/open/floor/blocks,
 /area/rogue/indoors/town/church)
 "jEf" = (
-/obj/structure/flora/roguegrass/bush,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass/bush,
+/obj/structure/flora/grass,
 /obj/structure/fluff/railing/wood{
 	dir = 8;
 	pixel_y = -1
@@ -13545,7 +13545,7 @@
 /turf/open/floor/wood,
 /area/rogue/indoors/town)
 "jHQ" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/fluff/railing/wood{
 	dir = 8;
 	pixel_y = -1
@@ -14313,7 +14313,7 @@
 /turf/open/floor/ruinedwood,
 /area/rogue/indoors/town/tavern)
 "khI" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/flora/ausbushes/brflowers,
 /obj/structure/fluff/railing/wood{
 	dir = 4
@@ -14340,7 +14340,7 @@
 /area/rogue/under/town/basement)
 "kip" = (
 /obj/structure/fluff/railing/wood,
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
 "kiz" = (
@@ -14470,7 +14470,7 @@
 /turf/open/floor/tile/masonic/single,
 /area/rogue/indoors/town)
 "kmy" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/flora/ausbushes/ywflowers,
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
@@ -14488,8 +14488,8 @@
 /turf/open/floor/woodturned,
 /area/rogue/indoors/town/tavern)
 "kmT" = (
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass/maneater/real,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass/maneater/real,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield)
 "kmY" = (
@@ -14520,7 +14520,7 @@
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town/tavern)
 "knI" = (
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /obj/structure/fluff/railing/wood{
 	dir = 1
 	},
@@ -14541,7 +14541,7 @@
 	},
 /area/rogue/indoors/town/tavern)
 "knY" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water,
 /area/rogue/outdoors/town)
 "koj" = (
@@ -14572,8 +14572,8 @@
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/smithy)
 "kpf" = (
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass/bush_meagre,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield)
 "kpk" = (
@@ -14583,7 +14583,7 @@
 /turf/open/floor/blocks/stonered/tiny,
 /area/rogue/indoors/town/bath)
 "kpz" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/chair/bench/church/smallbench{
 	pixel_y = 17
 	},
@@ -14610,7 +14610,7 @@
 /turf/closed/wall/mineral/wood,
 /area/rogue/indoors/town/manor)
 "krC" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/grass,
 /area/rogue/outdoors/mountains)
 "krK" = (
@@ -14739,7 +14739,7 @@
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue/indoors/town/theatre)
 "kzd" = (
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /obj/structure/fluff/railing/wood{
 	dir = 4
 	},
@@ -14913,15 +14913,15 @@
 /turf/open/floor/woodturned,
 /area/rogue/indoors/town/church)
 "kEc" = (
-/obj/structure/flora/roguegrass/bush/wall/tall{
+/obj/structure/flora/grass/bush/wall/tall{
 	pixel_x = -24;
 	pixel_y = -4
 	},
-/obj/structure/flora/roguegrass/bush_meagre{
+/obj/structure/flora/grass/bush_meagre{
 	pixel_y = -7;
 	pixel_x = -23
 	},
-/obj/structure/flora/roguegrass/bush{
+/obj/structure/flora/grass/bush{
 	pixel_x = -28;
 	pixel_y = 7;
 	layer = 4.4
@@ -14991,7 +14991,7 @@
 /turf/open/floor/blocks/stonered,
 /area/rogue/indoors/town/manor)
 "kHj" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/flora/ausbushes/brflowers,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/town)
@@ -15275,7 +15275,7 @@
 /turf/open/floor/hexstone,
 /area/rogue/indoors/town/church)
 "kTV" = (
-/obj/structure/flora/roguegrass/bush/wall/tall,
+/obj/structure/flora/grass/bush/wall/tall,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/town)
 "kTY" = (
@@ -15764,7 +15764,7 @@
 /turf/open/floor/ruinedwood/turned,
 /area/rogue/outdoors/town/roofs)
 "loX" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water/sewer,
 /area/rogue/under/town/sewer)
 "lpz" = (
@@ -15796,7 +15796,7 @@
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/manor)
 "lrZ" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/fluff/railing/wood{
 	dir = 4
 	},
@@ -15966,7 +15966,7 @@
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/town/manor)
 "lyE" = (
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield)
 "lyI" = (
@@ -15991,7 +15991,7 @@
 	},
 /area/rogue/indoors/town/tavern)
 "lzt" = (
-/obj/structure/flora/roguegrass/herb/benedictus,
+/obj/structure/flora/grass/herb/benedictus,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield)
 "lzw" = (
@@ -16101,8 +16101,8 @@
 /turf/open/floor/twig,
 /area/rogue/outdoors/town)
 "lDP" = (
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass/bush,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass/bush,
 /obj/structure/fluff/railing/wood,
 /obj/structure/fluff/railing/wood{
 	dir = 8;
@@ -16111,7 +16111,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/town)
 "lEe" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/cleanshallow,
 /area/rogue/under/cavewet)
 "lEn" = (
@@ -16202,7 +16202,7 @@
 /turf/open/floor/concrete,
 /area/rogue/indoors/town/shop)
 "lIi" = (
-/obj/structure/flora/roguegrass/herb/valeriana,
+/obj/structure/flora/grass/herb/valeriana,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield)
 "lIB" = (
@@ -16235,7 +16235,7 @@
 /obj/structure/fluff/railing/border{
 	dir = 4
 	},
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water/cleanshallow,
 /area/rogue/under/town/sewer)
 "lJM" = (
@@ -16318,7 +16318,7 @@
 /obj/structure/fluff/railing/wood{
 	dir = 4
 	},
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/machinery/light/fueled/lanternpost/fixed{
 	pixel_x = -2
 	},
@@ -16413,7 +16413,7 @@
 /obj/structure/fluff/railing/wood{
 	dir = 4
 	},
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/flora/ausbushes/brflowers,
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
@@ -16594,7 +16594,7 @@
 /area/rogue/indoors/butchershop)
 "mbB" = (
 /obj/structure/flora/ausbushes/ppflowers,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/town)
 "mbR" = (
@@ -16605,7 +16605,7 @@
 /obj/structure/fluff/railing/wood{
 	dir = 4
 	},
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /obj/structure/fluff/railing/wood,
 /turf/open/floor/naturalstone,
 /area/rogue/outdoors/river)
@@ -16723,7 +16723,7 @@
 /obj/structure/fluff/railing/wood{
 	dir = 1
 	},
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
 "mgx" = (
@@ -16736,7 +16736,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/town/basement)
 "mhb" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/fluff/railing/wood,
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
@@ -16882,7 +16882,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield/safe)
 "mog" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/town)
 "moh" = (
@@ -16987,7 +16987,7 @@
 /turf/open/floor/wood,
 /area/rogue/indoors/town/manor)
 "msC" = (
-/obj/structure/flora/roguegrass/bush,
+/obj/structure/flora/grass/bush,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods_safe)
 "msJ" = (
@@ -17040,7 +17040,7 @@
 	},
 /area/rogue/indoors/town/magician)
 "mvc" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water/cleanshallow,
 /area/rogue/outdoors/river)
 "mvi" = (
@@ -17048,7 +17048,7 @@
 	dir = 4
 	},
 /obj/structure/fluff/railing/wood,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/flora/ausbushes/ppflowers,
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
@@ -17599,11 +17599,11 @@
 /turf/open/floor/carpet/stellar,
 /area/rogue/indoors/town/merc_guild)
 "mPx" = (
-/obj/structure/flora/roguetree/wise,
+/obj/structure/flora/tree/wise,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield)
 "mPB" = (
-/obj/structure/flora/roguegrass/bush,
+/obj/structure/flora/grass/bush,
 /turf/open/floor/grass,
 /area/rogue/outdoors/woods_safe)
 "mPD" = (
@@ -17816,7 +17816,7 @@
 /turf/open/floor/wood/nosmooth,
 /area/rogue/indoors/town/manor)
 "mUs" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/town)
 "mVc" = (
@@ -17954,7 +17954,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/town/basement)
 "mZB" = (
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /obj/structure/flora/ausbushes/brflowers,
 /obj/structure/fluff/railing/wood,
 /obj/structure/fluff/railing/wood{
@@ -18020,9 +18020,9 @@
 /turf/open/floor/concrete,
 /area/rogue/indoors/town/clocktower)
 "naS" = (
-/obj/structure/flora/roguegrass/water/reeds,
-/obj/structure/flora/roguegrass/water,
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water/reeds,
+/obj/structure/flora/grass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water/river{
 	dir = 8
 	},
@@ -18061,7 +18061,7 @@
 /turf/open/floor/tile,
 /area/rogue/indoors/town/manor)
 "nec" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water,
 /area/rogue/under/town/sewer)
 "nez" = (
@@ -18373,7 +18373,7 @@
 	dir = 8;
 	pixel_y = -1
 	},
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/floor/naturalstone,
 /area/rogue/outdoors/river)
 "nth" = (
@@ -18390,7 +18390,7 @@
 	},
 /area/rogue/indoors/town/magician)
 "ntp" = (
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/town)
 "ntv" = (
@@ -18422,7 +18422,7 @@
 /turf/open/floor/blocks,
 /area/rogue/outdoors/town)
 "nux" = (
-/obj/structure/flora/roguegrass/bush/wall/tall,
+/obj/structure/flora/grass/bush/wall/tall,
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
 "nuy" = (
@@ -18476,7 +18476,7 @@
 /obj/machinery/light/fueled/lanternpost/fixed{
 	dir = 1
 	},
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
 "nxE" = (
@@ -18619,7 +18619,7 @@
 /obj/structure/fluff/railing/wood{
 	dir = 1
 	},
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/town)
 "nBK" = (
@@ -18793,7 +18793,7 @@
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue/indoors/town)
 "nHJ" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/floor/dirt/road,
 /area/rogue/under/town/sewer)
 "nHZ" = (
@@ -19118,7 +19118,7 @@
 /turf/open/floor/blocks,
 /area/rogue/indoors/town/magician)
 "nSZ" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/fluff/railing/wood{
 	dir = 8;
 	pixel_y = -1
@@ -19198,8 +19198,8 @@
 	dir = 8;
 	pixel_y = -1
 	},
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass,
 /obj/structure/flora/ausbushes/brflowers,
 /obj/machinery/light/fueled/lanternpost/fixed{
 	dir = 1
@@ -19264,7 +19264,7 @@
 /turf/closed/mineral,
 /area/rogue/under/town/sewer)
 "nZK" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield/safe)
 "nZS" = (
@@ -19334,7 +19334,7 @@
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue/indoors/town)
 "ocG" = (
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /turf/open/floor/grass,
 /area/rogue/outdoors/town/roofs)
 "ocM" = (
@@ -19603,7 +19603,7 @@
 /area/rogue/indoors/town/orphanage)
 "omx" = (
 /obj/structure/fake_machine/scomm,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield/safe)
 "omB" = (
@@ -19699,7 +19699,7 @@
 	pixel_y = -1
 	},
 /obj/structure/fluff/railing/wood,
-/obj/structure/flora/roguegrass/bush/wall/tall,
+/obj/structure/flora/grass/bush/wall/tall,
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
 "otQ" = (
@@ -19773,8 +19773,8 @@
 	},
 /area/rogue/indoors/town/shop)
 "oxn" = (
-/obj/structure/flora/roguegrass/water/reeds,
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water/reeds,
+/obj/structure/flora/grass/water,
 /turf/open/water/river{
 	dir = 8
 	},
@@ -20090,7 +20090,7 @@
 /turf/open/floor/blocks,
 /area/rogue/under/town/basement)
 "oIh" = (
-/obj/structure/flora/roguegrass/bush,
+/obj/structure/flora/grass/bush,
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
 "oIi" = (
@@ -20500,7 +20500,7 @@
 /turf/open/floor/grass/red,
 /area/rogue/outdoors/woods_safe)
 "oXQ" = (
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
 "oYe" = (
@@ -20537,7 +20537,7 @@
 /area/rogue/indoors/town)
 "oZq" = (
 /obj/structure/flora/ausbushes/ppflowers,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/bars/cemetery,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield/safe)
@@ -20563,7 +20563,7 @@
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/town/roofs)
 "paC" = (
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /obj/structure/fluff/railing/wood{
 	dir = 1
 	},
@@ -20832,8 +20832,8 @@
 /turf/open/floor/blocks,
 /area/rogue/indoors/town/smithy)
 "poa" = (
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass/bush_meagre,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield)
 "pob" = (
@@ -21305,7 +21305,7 @@
 /turf/open/floor/ruinedwood/turned,
 /area/rogue/indoors/town)
 "pGv" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /obj/structure/kneestingers,
 /turf/open/water,
 /area/rogue/outdoors/river)
@@ -21441,7 +21441,7 @@
 /turf/closed/wall/mineral/wooddark/end,
 /area/rogue/indoors/butchershop)
 "pMh" = (
-/obj/structure/flora/roguegrass/bush,
+/obj/structure/flora/grass/bush,
 /obj/structure/fluff/railing/wood{
 	dir = 4
 	},
@@ -21449,7 +21449,7 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
 "pMr" = (
-/obj/structure/flora/roguegrass/thorn_bush,
+/obj/structure/flora/grass/thorn_bush,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield)
 "pMx" = (
@@ -21475,7 +21475,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/town)
 "pNi" = (
-/obj/item/chair/rogue{
+/obj/item/chair{
 	dir = 8
 	},
 /turf/open/floor/ruinedwood/spiral,
@@ -21711,7 +21711,7 @@
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue/indoors/town)
 "pXt" = (
-/obj/structure/flora/roguegrass/bush,
+/obj/structure/flora/grass/bush,
 /turf/open/floor/grass/yel,
 /area/rogue/outdoors/town)
 "pXR" = (
@@ -21907,7 +21907,7 @@
 /area/rogue/indoors/town)
 "qfi" = (
 /obj/item/natural/stone,
-/obj/structure/flora/roguegrass/thorn_bush,
+/obj/structure/flora/grass/thorn_bush,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield)
 "qfq" = (
@@ -21962,7 +21962,7 @@
 /turf/open/floor/ruinedwood/darker,
 /area/rogue/indoors/town/orphanage)
 "qhM" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
 "qib" = (
@@ -22086,7 +22086,7 @@
 	dir = 8;
 	pixel_y = -1
 	},
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /obj/structure/fluff/railing/wood{
 	dir = 1
 	},
@@ -22185,7 +22185,7 @@
 /turf/open/floor/carpet/stellar,
 /area/rogue/indoors/town/magician)
 "qpx" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/machinery/light/fueled/wallfire/candle,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield/safe)
@@ -22453,7 +22453,7 @@
 /turf/open/floor/carpet/lord/right,
 /area/rogue/indoors/town/manor)
 "qyN" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/river{
 	dir = 4
 	},
@@ -22634,7 +22634,7 @@
 /turf/open/floor/concrete,
 /area/rogue/indoors/town/church/inquisition)
 "qGa" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water/river{
 	dir = 4
 	},
@@ -22667,7 +22667,7 @@
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue/indoors/town)
 "qIn" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/flora/ausbushes/ywflowers,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield/safe)
@@ -22713,7 +22713,7 @@
 /turf/open/floor/ruinedwood/darker,
 /area/rogue/indoors/soilsons)
 "qLV" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/fluff/railing/wood{
 	dir = 4
 	},
@@ -22721,7 +22721,7 @@
 	pixel_x = -32;
 	pixel_y = 0
 	},
-/obj/structure/flora/roguegrass/bush,
+/obj/structure/flora/grass/bush,
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
 "qMe" = (
@@ -22732,7 +22732,7 @@
 /turf/open/floor/ruinedwood,
 /area/rogue/indoors/town/manor)
 "qMJ" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/machinery/light/fueled/torchholder{
 	dir = 8
 	},
@@ -22959,7 +22959,7 @@
 /obj/structure/fluff/railing/wood{
 	dir = 4
 	},
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/floor/naturalstone,
 /area/rogue/outdoors/river)
 "qTs" = (
@@ -23011,7 +23011,7 @@
 	pixel_y = 0;
 	pixel_x = 32
 	},
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield/safe)
 "qUL" = (
@@ -23222,7 +23222,7 @@
 	},
 /area/rogue/indoors/town/tavern)
 "rds" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/floor/naturalstone,
 /area/rogue/under/town/sewer)
 "rdM" = (
@@ -23313,7 +23313,7 @@
 /area/rogue/indoors/town)
 "rhR" = (
 /obj/structure/flora/ausbushes/ppflowers,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/fluff/railing/wood{
 	dir = 4
 	},
@@ -23427,7 +23427,7 @@
 /turf/closed/wall/mineral/stone,
 /area/rogue/indoors/town)
 "rnP" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/machinery/light/fueled/lanternpost/fixed{
 	dir = 1
 	},
@@ -23442,7 +23442,7 @@
 /turf/open/floor/metal/barograte,
 /area/rogue/indoors/town/cell)
 "roA" = (
-/obj/structure/flora/roguegrass/herb/mentha,
+/obj/structure/flora/grass/herb/mentha,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield)
 "roU" = (
@@ -23914,7 +23914,7 @@
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/town/roofs)
 "rFV" = (
-/obj/structure/flora/roguegrass/thorn_bush,
+/obj/structure/flora/grass/thorn_bush,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield)
 "rGC" = (
@@ -24108,7 +24108,7 @@
 	},
 /area/rogue/indoors/town/magician)
 "rNc" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/item/weapon/mace/woodclub,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/town)
@@ -24119,7 +24119,7 @@
 /turf/open/floor/blocks,
 /area/rogue/indoors/town/church)
 "rNS" = (
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /obj/structure/fluff/railing/wood{
 	dir = 4
 	},
@@ -24316,7 +24316,7 @@
 /turf/open/floor/churchrough,
 /area/rogue/indoors/town/church/inquisition)
 "rTt" = (
-/obj/structure/flora/roguegrass/herb/taraxacum,
+/obj/structure/flora/grass/herb/taraxacum,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/town)
 "rUa" = (
@@ -24352,7 +24352,7 @@
 /turf/open/floor/tile,
 /area/rogue/indoors/town/manor)
 "rUM" = (
-/obj/structure/flora/roguegrass/bush,
+/obj/structure/flora/grass/bush,
 /turf/open/floor/grass,
 /area/rogue/outdoors/mountains)
 "rVc" = (
@@ -24533,7 +24533,7 @@
 /turf/open/floor/woodturned/nosmooth,
 /area/rogue/under/town/basement)
 "scx" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /obj/structure/fluff/railing/wood,
 /obj/structure/fluff/railing/wood{
 	dir = 8;
@@ -24619,7 +24619,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/town/sewer)
 "sfm" = (
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /obj/structure/fluff/railing/wood,
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
@@ -24746,8 +24746,8 @@
 /turf/open/floor/naturalstone,
 /area/rogue/under/town/sewer)
 "slX" = (
-/obj/structure/flora/roguegrass/water,
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water/river{
 	dir = 8
 	},
@@ -24859,7 +24859,7 @@
 /turf/open/floor/ruinedwood,
 /area/rogue/outdoors/town/roofs)
 "sqC" = (
-/obj/structure/flora/roguegrass/maneater/real,
+/obj/structure/flora/grass/maneater/real,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield)
 "sqL" = (
@@ -25097,7 +25097,7 @@
 /turf/open/floor/wood,
 /area/rogue/indoors/town/steward)
 "swU" = (
-/obj/structure/flora/roguegrass/herb/paris,
+/obj/structure/flora/grass/herb/paris,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield)
 "sxc" = (
@@ -25254,7 +25254,7 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/indoors/town/orphanage)
 "sDY" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/flora/ausbushes/ywflowers,
 /turf/open/floor/grass/red,
 /area/rogue/outdoors/woods_safe)
@@ -25350,7 +25350,7 @@
 /obj/machinery/light/fueled/lanternpost/fixed{
 	dir = 1
 	},
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/fluff/railing/wood{
 	dir = 8;
 	pixel_y = -1
@@ -25499,7 +25499,7 @@
 /turf/open/floor/ruinedwood/darker,
 /area/rogue/indoors/town/theatre)
 "sKR" = (
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield)
 "sKU" = (
@@ -25673,7 +25673,7 @@
 	},
 /area/rogue/indoors/town/manor)
 "sRj" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/fluff/railing/wood{
 	dir = 4
 	},
@@ -25865,7 +25865,7 @@
 /turf/open/floor/blocks/paving,
 /area/rogue/indoors/town)
 "sWl" = (
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods_safe)
 "sWJ" = (
@@ -25876,7 +25876,7 @@
 /turf/open/floor/church,
 /area/rogue/indoors/town/church)
 "sWK" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/item/grown/log/tree/stick,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield)
@@ -26139,7 +26139,7 @@
 /turf/open/floor/rooftop,
 /area/rogue/outdoors/town/roofs)
 "thz" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/item/grown/log/tree/stick,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/town)
@@ -26201,7 +26201,7 @@
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue/indoors/town/garrison)
 "tiX" = (
-/obj/structure/flora/roguegrass/herb/mentha,
+/obj/structure/flora/grass/herb/mentha,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield)
 "tja" = (
@@ -26510,7 +26510,7 @@
 /turf/open/floor/wood/nosmooth,
 /area/rogue/indoors/town/merc_guild)
 "tsz" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/cleanshallow,
 /area/rogue/under/town/sewer)
 "ttj" = (
@@ -26534,7 +26534,7 @@
 /turf/open/floor/herringbone,
 /area/rogue/under/town/sewer)
 "ttQ" = (
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /obj/structure/fluff/railing/wood{
 	dir = 1
 	},
@@ -26643,7 +26643,7 @@
 /area/rogue/outdoors/town/roofs)
 "txE" = (
 /obj/structure/flora/ausbushes/ppflowers,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/fluff/railing/wood{
 	dir = 1
 	},
@@ -26744,8 +26744,8 @@
 /turf/open/floor/churchrough,
 /area/rogue/indoors/town/church)
 "tBc" = (
-/obj/structure/flora/roguegrass/bush_meagre,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass/bush_meagre,
+/obj/structure/flora/grass,
 /obj/structure/fluff/railing/wood{
 	dir = 4
 	},
@@ -26802,7 +26802,7 @@
 /area/rogue/indoors/town/tavern)
 "tDo" = (
 /obj/machinery/light/fueled/lanternpost/fixed,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
 "tDA" = (
@@ -26926,7 +26926,7 @@
 /area/rogue/indoors/town/bath)
 "tHQ" = (
 /obj/structure/fluff/walldeco/wantedposter,
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /obj/structure/fluff/railing/wood,
 /obj/structure/fluff/railing/wood{
 	dir = 8;
@@ -26962,7 +26962,7 @@
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue/indoors/town)
 "tIw" = (
-/obj/structure/flora/roguegrass/maneater/real,
+/obj/structure/flora/grass/maneater/real,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield)
 "tIS" = (
@@ -27009,7 +27009,7 @@
 /obj/structure/fluff/railing/wood{
 	dir = 4
 	},
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
 "tKd" = (
@@ -27151,7 +27151,7 @@
 /area/rogue/indoors/town/manorgate)
 "tNP" = (
 /obj/structure/flora/ausbushes/ppflowers,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/fluff/railing/wood,
 /obj/effect/landmark/start/vagrant,
 /turf/open/floor/grass,
@@ -27353,12 +27353,12 @@
 /turf/open/floor/cobble,
 /area/rogue/under/town/basement)
 "tWK" = (
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass/bush,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass/bush,
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
 "tWR" = (
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield/safe)
 "tWU" = (
@@ -27425,8 +27425,8 @@
 /turf/open/floor/twig,
 /area/rogue/under/town/sewer)
 "tYB" = (
-/obj/structure/flora/roguegrass/bush_meagre,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass/bush_meagre,
+/obj/structure/flora/grass,
 /obj/structure/fluff/railing/wood{
 	dir = 8;
 	pixel_y = -1
@@ -27439,8 +27439,8 @@
 	pixel_y = -1
 	},
 /obj/structure/flora/ausbushes/ywflowers,
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass/bush,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass/bush,
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
 "tZa" = (
@@ -27725,7 +27725,7 @@
 /turf/open/floor/ruinedwood/darker,
 /area/rogue/outdoors/town/roofs)
 "ujr" = (
-/obj/structure/flora/roguegrass/bush,
+/obj/structure/flora/grass/bush,
 /turf/open/floor/grass/red,
 /area/rogue/outdoors/woods_safe)
 "ujE" = (
@@ -27773,7 +27773,7 @@
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue/indoors/town)
 "ukJ" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield/safe)
 "ulk" = (
@@ -28262,7 +28262,7 @@
 /turf/open/floor/blocks/stonered/tiny,
 /area/rogue/indoors/town/bath)
 "uAV" = (
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /turf/open/floor/grass/yel,
 /area/rogue/outdoors/town)
 "uBh" = (
@@ -28503,7 +28503,7 @@
 /area/rogue/indoors/town/church/inquisition)
 "uHQ" = (
 /obj/structure/fluff/walldeco/feldshersign,
-/obj/structure/flora/roguegrass/bush/wall/tall,
+/obj/structure/flora/grass/bush/wall/tall,
 /obj/structure/fluff/railing/wood{
 	dir = 4
 	},
@@ -28519,8 +28519,8 @@
 /turf/open/floor/blocks,
 /area/rogue/outdoors/town)
 "uJc" = (
-/obj/structure/flora/roguegrass/thorn_bush,
-/obj/structure/flora/roguegrass/herb/euphrasia,
+/obj/structure/flora/grass/thorn_bush,
+/obj/structure/flora/grass/herb/euphrasia,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield)
 "uJm" = (
@@ -28538,7 +28538,7 @@
 /area/rogue/indoors/town)
 "uJL" = (
 /obj/structure/flora/ausbushes/ppflowers,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/fluff/railing/wood{
 	dir = 8;
 	pixel_y = -1
@@ -28722,7 +28722,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/river)
 "uPK" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/floor/dirt/road,
 /area/rogue/under/town/caverogue)
 "uPP" = (
@@ -28784,8 +28784,8 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield)
 "uSI" = (
-/obj/structure/flora/roguegrass/water,
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water,
 /area/rogue/outdoors/river)
 "uSP" = (
@@ -28801,7 +28801,7 @@
 /turf/open/floor/metal/barograte,
 /area/rogue/outdoors/town)
 "uTe" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/woods_safe)
 "uTi" = (
@@ -28826,7 +28826,7 @@
 	dir = 8;
 	pixel_y = -1
 	},
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/floor/naturalstone,
 /area/rogue/outdoors/river)
 "uTV" = (
@@ -28964,8 +28964,8 @@
 /turf/open/floor/carpet/lord/left,
 /area/rogue/indoors/town/manor)
 "vcA" = (
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass/bush,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass/bush,
 /obj/structure/fluff/railing/wood,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/town)
@@ -29058,7 +29058,7 @@
 /turf/open/floor/cobble/mossy,
 /area/rogue/outdoors/rtfield/safe)
 "vfc" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/flora/ausbushes/ppflowers,
 /obj/machinery/light/fueled/lanternpost/fixed{
 	dir = 1
@@ -29284,8 +29284,8 @@
 	},
 /area/rogue/indoors/town)
 "voN" = (
-/obj/structure/flora/roguegrass/bush/wall,
-/obj/structure/flora/roguegrass/bush/wall,
+/obj/structure/flora/grass/bush/wall,
+/obj/structure/flora/grass/bush/wall,
 /turf/closed/mineral,
 /area/rogue/under/town/caverogue)
 "vpy" = (
@@ -29319,7 +29319,7 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/under/town/sewer)
 "vqk" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/floor/naturalstone,
 /area/rogue/under/town/caverogue)
 "vqr" = (
@@ -29350,7 +29350,7 @@
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town/shop)
 "vqS" = (
-/obj/structure/flora/roguegrass/bush/wall,
+/obj/structure/flora/grass/bush/wall,
 /turf/closed/mineral,
 /area/rogue/under/town/caverogue)
 "vrJ" = (
@@ -29417,7 +29417,7 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/under/town/sewer)
 "vsJ" = (
-/obj/structure/flora/roguegrass/bush,
+/obj/structure/flora/grass/bush,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/town/roofs)
 "vsQ" = (
@@ -29702,7 +29702,7 @@
 /turf/open/floor/church,
 /area/rogue/indoors/town/church)
 "vDY" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/item/natural/stone,
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
@@ -29873,12 +29873,12 @@
 /turf/open/floor/wood,
 /area/rogue/indoors/butchershop)
 "vLG" = (
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass/bush/wall,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass/bush/wall,
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
 "vLL" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/machinery/light/fueled/lanternpost/fixed{
 	pixel_x = -2
 	},
@@ -29896,7 +29896,7 @@
 /turf/open/floor/tile,
 /area/rogue/indoors/town/manor)
 "vMb" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/river{
 	dir = 8
 	},
@@ -29979,7 +29979,7 @@
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue/indoors/town)
 "vPk" = (
-/obj/structure/flora/roguegrass/bush,
+/obj/structure/flora/grass/bush,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/mountains)
 "vQa" = (
@@ -30309,7 +30309,7 @@
 /turf/open/floor/blocks/newstone/alt,
 /area/rogue/under/town/basement)
 "wgu" = (
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/town/roofs)
 "wgK" = (
@@ -30391,7 +30391,7 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/indoors/town/smithy)
 "wiN" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/flora/ausbushes/brflowers,
 /obj/machinery/light/fueled/lanternpost/fixed{
 	pixel_x = -2
@@ -30604,7 +30604,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/town)
 "woY" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /obj/structure/fluff/railing/border,
 /turf/open/water,
 /area/rogue/outdoors/river)
@@ -30799,7 +30799,7 @@
 /turf/open/floor/wood,
 /area/rogue/indoors/town)
 "wwd" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/fluff/railing/wood{
 	dir = 1
 	},
@@ -31107,7 +31107,7 @@
 /turf/open/floor/wood,
 /area/rogue/indoors/town)
 "wFG" = (
-/obj/structure/flora/roguegrass/bush,
+/obj/structure/flora/grass/bush,
 /obj/structure/fluff/railing/wood,
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
@@ -31352,7 +31352,7 @@
 /turf/open/floor/carpet/stellar,
 /area/rogue/indoors/town/magician)
 "wNA" = (
-/obj/structure/flora/roguegrass/bush/wall,
+/obj/structure/flora/grass/bush/wall,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/town)
 "wNO" = (
@@ -31453,9 +31453,9 @@
 /obj/structure/fluff/railing/wood{
 	dir = 1
 	},
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/effect/landmark/start/vagrant,
-/obj/structure/flora/roguegrass/bush,
+/obj/structure/flora/grass/bush,
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
 "wRQ" = (
@@ -31540,7 +31540,7 @@
 /turf/open/floor/cobble/alt,
 /area/rogue/under/town/basement)
 "wVS" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/item/grown/log/tree/stick,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield)
@@ -31769,11 +31769,11 @@
 /turf/open/floor/wood,
 /area/rogue/indoors/town)
 "xez" = (
-/obj/structure/flora/roguegrass/bush,
+/obj/structure/flora/grass/bush,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield)
 "xeH" = (
-/obj/structure/flora/roguegrass/bush,
+/obj/structure/flora/grass/bush,
 /obj/structure/fluff/railing/wood{
 	dir = 4
 	},
@@ -31783,8 +31783,8 @@
 /turf/open/floor/concrete,
 /area/rogue/indoors/town/clocktower)
 "xfh" = (
-/obj/structure/flora/roguegrass/bush_meagre,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass/bush_meagre,
+/obj/structure/flora/grass,
 /obj/structure/fluff/railing/wood,
 /obj/structure/fluff/railing/wood{
 	dir = 8;
@@ -31800,7 +31800,7 @@
 /turf/closed/wall/mineral/stone,
 /area/rogue/indoors/town/smithy)
 "xfD" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water/river{
 	dir = 8
 	},
@@ -32025,7 +32025,7 @@
 	dir = 8;
 	pixel_y = -1
 	},
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/cleanshallow,
 /area/rogue/outdoors/river)
 "xpR" = (
@@ -32079,7 +32079,7 @@
 /turf/open/floor/churchmarble,
 /area/rogue/indoors/town/church)
 "xtt" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/grass,
 /area/rogue/outdoors/woods_safe)
 "xtU" = (
@@ -32234,7 +32234,7 @@
 /turf/closed/mineral,
 /area/rogue/outdoors/town)
 "xzm" = (
-/obj/structure/flora/roguegrass/herb/euphrasia,
+/obj/structure/flora/grass/herb/euphrasia,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield)
 "xzq" = (
@@ -32298,7 +32298,7 @@
 	dir = 8;
 	pixel_y = -1
 	},
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
 "xBz" = (
@@ -32405,7 +32405,7 @@
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue/indoors/town/theatre)
 "xEX" = (
-/obj/structure/flora/roguegrass/bush/wall/tall,
+/obj/structure/flora/grass/bush/wall/tall,
 /obj/structure/fluff/railing/wood,
 /obj/structure/fluff/railing/wood{
 	dir = 8;
@@ -32452,7 +32452,7 @@
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/manor)
 "xGn" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/river,
 /area/rogue/outdoors/river)
 "xGr" = (
@@ -32644,8 +32644,8 @@
 /turf/open/floor/cobble,
 /area/rogue/outdoors/town)
 "xOn" = (
-/obj/structure/flora/roguegrass/bush,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass/bush,
+/obj/structure/flora/grass,
 /turf/open/floor/grass/red,
 /area/rogue/outdoors/woods_safe)
 "xOo" = (
@@ -32885,7 +32885,7 @@
 /area/rogue/indoors/town/manor)
 "xXP" = (
 /obj/structure/flora/ausbushes/ywflowers,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
 "xYa" = (
@@ -33087,7 +33087,7 @@
 /turf/open/floor/tile/bfloorz,
 /area/rogue/indoors/town/bath)
 "ygJ" = (
-/obj/structure/flora/roguegrass/herb/paris,
+/obj/structure/flora/grass/herb/paris,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield)
 "yhF" = (

@@ -35,8 +35,8 @@
 /area/rogue/indoors)
 "aV" = (
 /obj/structure/flora/ausbushes/lavendergrass,
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass,
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/open/floor/grass,
 /area/rogue/indoors)
@@ -56,7 +56,7 @@
 /turf/closed/mineral/bedrock,
 /area/rogue/indoors)
 "bv" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/effect/spawner/map_spawner/loot,
 /turf/open/floor/grass,
@@ -76,7 +76,7 @@
 /obj/structure/flora/ausbushes/lavendergrass,
 /obj/structure/flora/ausbushes/grassybush,
 /obj/structure/flora/ausbushes/grassybush,
-/obj/structure/flora/roguegrass/pyroclasticflowers,
+/obj/structure/flora/grass/pyroclasticflowers,
 /turf/open/floor/grass,
 /area/rogue/indoors)
 "bM" = (
@@ -169,7 +169,7 @@
 /turf/closed/wall/mineral/stone,
 /area/rogue/indoors)
 "dq" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /obj/structure/trap/shock,
 /turf/open/water/river{
 	dir = 1
@@ -185,7 +185,7 @@
 /turf/open/floor/grass,
 /area/rogue/indoors)
 "dH" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /obj/structure/trap/shock,
 /turf/open/water/river{
 	dir = 1
@@ -209,9 +209,9 @@
 /turf/open/floor/metal/barograte,
 /area/rogue/indoors)
 "ea" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/roguegrass/herb/calendula,
+/obj/structure/flora/grass/herb/calendula,
 /turf/open/floor/grass,
 /area/rogue/indoors)
 "eh" = (
@@ -284,7 +284,7 @@
 /turf/open/floor/grass,
 /area/rogue/indoors)
 "fW" = (
-/obj/item/chair/rogue/fancy{
+/obj/item/chair/fancy{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/blood/old,
@@ -358,7 +358,7 @@
 /turf/closed/wall/mineral/stone,
 /area/rogue/indoors)
 "ig" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water/river{
 	dir = 4
 	},
@@ -401,7 +401,7 @@
 "jk" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/roguegrass/herb/artemisia,
+/obj/structure/flora/grass/herb/artemisia,
 /turf/open/floor/grass,
 /area/rogue/indoors)
 "js" = (
@@ -546,7 +546,7 @@
 /turf/open/transparent/openspace,
 /area/rogue/indoors)
 "mH" = (
-/obj/structure/flora/roguegrass/herb/artemisia,
+/obj/structure/flora/grass/herb/artemisia,
 /turf/open/floor/grass,
 /area/rogue/indoors)
 "mV" = (
@@ -575,7 +575,7 @@
 /area/rogue/indoors)
 "nz" = (
 /obj/structure/fluff/statue/small,
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water/bath,
 /area/rogue/indoors)
 "nG" = (
@@ -648,7 +648,7 @@
 /area/rogue/indoors)
 "py" = (
 /obj/structure/flora/ausbushes/reedbush,
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water/river{
 	dir = 1
 	},
@@ -677,9 +677,9 @@
 /turf/open/floor/tile/masonic/inverted,
 /area/rogue/indoors)
 "qj" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/roguegrass/herb/benedictus,
+/obj/structure/flora/grass/herb/benedictus,
 /turf/open/floor/grass,
 /area/rogue/indoors)
 "qm" = (
@@ -692,7 +692,7 @@
 /turf/open/floor/herringbone,
 /area/rogue/indoors)
 "qp" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /obj/structure/trap/shock,
 /turf/open/water/river{
 	dir = 8
@@ -765,7 +765,7 @@
 /turf/closed/wall/mineral/stone,
 /area/rogue/indoors)
 "sd" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water/bath,
 /area/rogue/indoors)
 "si" = (
@@ -774,20 +774,20 @@
 /turf/open/floor/tile/masonic/inverted,
 /area/rogue/indoors)
 "sl" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water/river,
 /area/rogue/indoors)
 "sm" = (
-/obj/structure/flora/roguegrass/water,
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water,
+/obj/structure/flora/grass/water/reeds,
 /obj/structure/trap/shock,
 /turf/open/water/river{
 	dir = 1
 	},
 /area/rogue/indoors)
 "sp" = (
-/obj/structure/flora/roguegrass/water,
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water,
+/obj/structure/flora/grass/water/reeds,
 /obj/structure/trap/shock,
 /turf/open/water/bath,
 /area/rogue/indoors)
@@ -823,8 +823,8 @@
 /area/rogue/indoors)
 "ta" = (
 /obj/structure/flora/ausbushes/reedbush,
-/obj/structure/flora/roguegrass/water,
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/river{
 	dir = 1
 	},
@@ -832,7 +832,7 @@
 "tg" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/ausbushes/lavendergrass,
-/obj/structure/flora/roguegrass/pyroclasticflowers,
+/obj/structure/flora/grass/pyroclasticflowers,
 /turf/open/floor/grass,
 /area/rogue/indoors)
 "to" = (
@@ -850,8 +850,8 @@
 /turf/open/floor/church,
 /area/rogue/indoors)
 "tw" = (
-/obj/structure/flora/roguegrass/water,
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water/river{
 	dir = 1
 	},
@@ -888,8 +888,8 @@
 /turf/open/water/bath,
 /area/rogue/indoors)
 "up" = (
-/obj/structure/flora/roguegrass/water/reeds,
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water/reeds,
+/obj/structure/flora/grass/water,
 /turf/open/water/bath,
 /area/rogue/indoors)
 "us" = (
@@ -954,8 +954,8 @@
 /turf/open/transparent/openspace,
 /area/rogue/indoors)
 "wH" = (
-/obj/structure/flora/roguegrass/water,
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/bath,
 /area/rogue/indoors)
 "wJ" = (
@@ -1048,7 +1048,7 @@
 /area/rogue/indoors)
 "yE" = (
 /obj/structure/flora/ausbushes/grassybush,
-/obj/structure/flora/roguegrass/pyroclasticflowers,
+/obj/structure/flora/grass/pyroclasticflowers,
 /turf/open/floor/grass,
 /area/rogue/indoors)
 "yF" = (
@@ -1127,7 +1127,7 @@
 /turf/open/floor/metal,
 /area/rogue/indoors)
 "Av" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/bath,
 /area/rogue/indoors)
 "Az" = (
@@ -1142,8 +1142,8 @@
 /turf/closed/wall/mineral/stone,
 /area/rogue/indoors)
 "AJ" = (
-/obj/structure/flora/roguegrass/water,
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/river{
 	dir = 1
 	},
@@ -1175,7 +1175,7 @@
 "BQ" = (
 /obj/effect/waterfall,
 /obj/structure/flora/ausbushes/reedbush,
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water,
 /area/rogue/indoors)
 "Cj" = (
@@ -1190,7 +1190,7 @@
 /turf/open/water/bath,
 /area/rogue/indoors)
 "Cv" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /obj/structure/trap/shock,
 /turf/open/water/river,
 /area/rogue/indoors)
@@ -1213,8 +1213,8 @@
 /turf/open/floor/carpet,
 /area/rogue/indoors)
 "Dl" = (
-/obj/structure/flora/roguegrass/water,
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water/river{
 	dir = 8
 	},
@@ -1234,7 +1234,7 @@
 /area/rogue/indoors)
 "DL" = (
 /obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/roguegrass/pyroclasticflowers,
+/obj/structure/flora/grass/pyroclasticflowers,
 /turf/open/floor/grass,
 /area/rogue/indoors)
 "DR" = (
@@ -1246,7 +1246,7 @@
 /turf/open/floor/blocks/newstone/alt,
 /area/rogue/indoors)
 "DZ" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /obj/structure/trap/shock,
 /turf/open/water/river{
 	dir = 4
@@ -1283,7 +1283,7 @@
 /turf/open/floor/church,
 /area/rogue/indoors)
 "ES" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/river{
 	dir = 4
 	},
@@ -1390,7 +1390,7 @@
 /turf/open/floor/blocks,
 /area/rogue/indoors)
 "Hb" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /obj/machinery/light/fueled/wallfire/candle/weak,
 /turf/open/water/bath,
 /area/rogue/indoors)
@@ -1400,14 +1400,14 @@
 /area/rogue/indoors)
 "He" = (
 /obj/structure/fluff/statue/small,
-/obj/structure/flora/roguegrass/water,
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/river{
 	dir = 4
 	},
 /area/rogue/indoors)
 "Hf" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water/river{
 	dir = 1
 	},
@@ -1479,7 +1479,7 @@
 /turf/open/floor/grass,
 /area/rogue/indoors)
 "JH" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /obj/structure/trap/shock,
 /turf/open/water/bath,
 /area/rogue/indoors)
@@ -1509,7 +1509,7 @@
 /area/rogue/indoors)
 "Ke" = (
 /obj/structure/flora/ausbushes/lavendergrass,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/grass,
 /area/rogue/indoors)
 "Ku" = (
@@ -1616,7 +1616,7 @@
 /area/rogue/indoors)
 "MR" = (
 /obj/structure/flora/ausbushes/reedbush,
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /obj/structure/trap/shock,
 /turf/open/water/bath,
 /area/rogue/indoors)
@@ -1716,8 +1716,8 @@
 /turf/open/floor/blocks,
 /area/rogue/indoors)
 "Pg" = (
-/obj/structure/flora/roguegrass/water/reeds,
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water/reeds,
+/obj/structure/flora/grass/water,
 /obj/machinery/light/fueled/wallfire/candle/weak,
 /turf/open/water/bath,
 /area/rogue/indoors)
@@ -1752,7 +1752,7 @@
 /turf/open/floor/blocks,
 /area/rogue/indoors)
 "PO" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /obj/structure/trap/shock,
 /turf/open/water/river{
 	dir = 8
@@ -1825,7 +1825,7 @@
 /turf/open/floor/herringbone,
 /area/rogue/indoors)
 "RR" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/closed/mineral/bedrock,
 /area/rogue/indoors)
 "RZ" = (
@@ -1842,7 +1842,7 @@
 /area/rogue/indoors)
 "Ss" = (
 /obj/structure/fluff/statue/small,
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /obj/machinery/light/fueled/wallfire/candle/weak,
 /turf/open/water/bath,
 /area/rogue/indoors)
@@ -1883,7 +1883,7 @@
 /area/rogue/indoors)
 "Tg" = (
 /obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/roguegrass/pyroclasticflowers,
+/obj/structure/flora/grass/pyroclasticflowers,
 /obj/machinery/light/fueled/wallfire/candle/weak,
 /turf/open/floor/grass,
 /area/rogue/indoors)
@@ -1924,8 +1924,8 @@
 /turf/open/floor/blocks,
 /area/rogue/indoors)
 "Uf" = (
-/obj/structure/flora/roguegrass/herb/mentha,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass/herb/mentha,
+/obj/structure/flora/grass,
 /obj/item/restraints/legcuffs/beartrap/armed/camouflage,
 /turf/open/floor/grass,
 /area/rogue/indoors)
@@ -1938,13 +1938,13 @@
 /turf/open/floor/churchmarble,
 /area/rogue/indoors)
 "Un" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/open/floor/grass,
 /area/rogue/indoors)
 "Ut" = (
-/obj/structure/flora/roguegrass/water,
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/river{
 	dir = 4
 	},
@@ -1969,7 +1969,7 @@
 /area/rogue/indoors)
 "UP" = (
 /obj/structure/flora/ausbushes/reedbush,
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water/river{
 	dir = 4
 	},
@@ -1979,7 +1979,7 @@
 /turf/open/floor/carpet,
 /area/rogue/indoors)
 "UV" = (
-/obj/item/chair/rogue/fancy,
+/obj/item/chair/fancy,
 /turf/open/floor/tile/masonic/inverted,
 /area/rogue/indoors)
 "Va" = (
@@ -2070,7 +2070,7 @@
 /turf/open/floor/churchmarble,
 /area/rogue/indoors)
 "Xz" = (
-/obj/item/chair/rogue/fancy{
+/obj/item/chair/fancy{
 	dir = 8
 	},
 /turf/open/floor/tile/masonic/inverted,
@@ -2118,7 +2118,7 @@
 /area/rogue/indoors)
 "YK" = (
 /obj/structure/flora/ausbushes/grassybush,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/grass,
 /area/rogue/indoors)
 "YQ" = (
@@ -2148,8 +2148,8 @@
 /turf/open/floor/hexstone,
 /area/rogue/indoors)
 "ZS" = (
-/obj/structure/flora/roguegrass/water/reeds,
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water/reeds,
+/obj/structure/flora/grass/water,
 /turf/open/water/river,
 /area/rogue/indoors)
 "ZV" = (

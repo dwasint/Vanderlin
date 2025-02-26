@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "b" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/swamp,
 /area/rogue/outdoors/bog)
 "d" = (
@@ -37,11 +37,11 @@
 /turf/open/floor/blocks,
 /area/rogue/outdoors/bog)
 "p" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/bog)
 "q" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/bog)
 "r" = (
@@ -91,11 +91,11 @@
 /area/rogue/outdoors/bog)
 "A" = (
 /obj/item/restraints/legcuffs/beartrap/armed/camouflage,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/bog)
 "B" = (
-/obj/structure/flora/roguetree,
+/obj/structure/flora/tree,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/bog)
 "C" = (
@@ -158,7 +158,7 @@
 /turf/open/floor/blocks,
 /area/rogue/outdoors/bog)
 "V" = (
-/obj/structure/flora/roguetree,
+/obj/structure/flora/tree,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/bog)
 "W" = (
@@ -178,7 +178,7 @@
 /turf/open/floor/blocks,
 /area/rogue/outdoors/bog)
 "Z" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/swamp/deep,
 /area/rogue/outdoors/bog)
 

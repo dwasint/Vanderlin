@@ -117,7 +117,7 @@
 /obj/structure/chair/wood/alt
 	icon_state = "chair2"
 	icon = 'icons/roguetown/misc/structure.dmi'
-	item_chair = /obj/item/chair/rogue
+	item_chair = /obj/item/chair
 	blade_dulling = DULLING_BASHCHOP
 	destroy_sound = 'sound/combat/hits/onwood/destroyfurniture.ogg'
 	attacked_sound = "woodimpact"
@@ -126,11 +126,11 @@
 /obj/structure/chair/wood/alt/chair3
 	icon_state = "chair3"
 	icon = 'icons/roguetown/misc/structure.dmi'
-	item_chair = /obj/item/chair/rogue/chair3
+	item_chair = /obj/item/chair/chair3
 	blade_dulling = DULLING_BASHCHOP
 	destroy_sound = 'sound/combat/hits/onwood/destroyfurniture.ogg'
 	attacked_sound = "woodimpact"
-/obj/item/chair/rogue/chair3
+/obj/item/chair/chair3
 	icon_state = "chair3"
 	origin_type = /obj/structure/chair/wood/alt/chair3
 
@@ -139,51 +139,28 @@
 	name = "fine chair"
 	icon_state = "chair_green"
 	icon = 'icons/roguetown/misc/structure.dmi'
-	item_chair = /obj/item/chair/rogue/chair_nobles
+	item_chair = /obj/item/chair/chair_nobles
 	blade_dulling = DULLING_BASHCHOP
 	destroy_sound = 'sound/combat/hits/onwood/destroyfurniture.ogg'
 	attacked_sound = "woodimpact"
-/obj/item/chair/rogue/chair_nobles
+/obj/item/chair/chair_nobles
 	icon_state = "chair_green"
 	origin_type = /obj/structure/chair/wood/alt/chair_noble
 
 /obj/structure/chair/wood/alt/chair_noble/purple
 	icon_state = "chair_purple"
-	item_chair = /obj/item/chair/rogue/chair_nobles/purple
-/obj/item/chair/rogue/chair_nobles/purple
+	item_chair = /obj/item/chair/chair_nobles/purple
+/obj/item/chair/chair_nobles/purple
 	icon_state = "chair_purple"
 	origin_type = /obj/structure/chair/wood/alt/chair_noble/purple
 
 /obj/structure/chair/wood/alt/chair_noble/red
 	icon_state = "chair_red"
-	item_chair = /obj/item/chair/rogue/chair_nobles/red
-/obj/item/chair/rogue/chair_nobles/red
+	item_chair = /obj/item/chair/chair_nobles/red
+/obj/item/chair/chair_nobles/red
 	icon_state = "chair_red"
 	origin_type = /obj/structure/chair/wood/alt/chair_noble/red
 
-/obj/item/chair/rogue/
-	name = "chair"
-	icon = 'icons/roguetown/items/chairs.dmi'
-	icon_state = "chair2"
-	origin_type = /obj/structure/chair/wood/alt
-	blade_dulling = DULLING_BASHCHOP
-	can_parry = TRUE
-	gripped_intents = list(/datum/intent/hit)
-	obj_flags = CAN_BE_HIT
-	max_integrity = 100
-	destroy_sound = 'sound/combat/hits/onwood/destroyfurniture.ogg'
-	attacked_sound = "woodimpact"
-	sleepy = 0.1
-
-/obj/item/chair/rogue/getonmobprop(tag)
-	. = ..()
-	if(tag)
-		switch(tag)
-			if("wieldedl")
-				return list("shrink" = 0.7,"sx" = 2,"sy" = 1,"nx" = -17,"ny" = 0,"wx" = -11,"wy" = 0,"ex" = 2,"ey" = 0,"westabove" = 1,"eastbehind" = 0,"nturn" = 9,"sturn" = -42,"wturn" = 21,"eturn" = -27,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0)
-			if("wielded")
-				return list("shrink" = 0.7,"sx" = 2,"sy" = 1,"nx" = -17,"ny" = 0,"wx" = -11,"wy" = 0,"ex" = 2,"ey" = 0,"westabove" = 1,"eastbehind" = 0,"nturn" = 9,"sturn" = -42,"wturn" = 21,"eturn" = -27,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,)
-	..()
 
 /obj/structure/chair/wood/alt/CanPass(atom/movable/mover, turf/target)
 	if(isliving(mover))
@@ -241,9 +218,9 @@
 
 /obj/structure/chair/wood/alt/fancy
 	icon_state = "chair1"
-	item_chair = /obj/item/chair/rogue/fancy
+	item_chair = /obj/item/chair/fancy
 
-/obj/item/chair/rogue/fancy
+/obj/item/chair/fancy
 	icon_state = "chair1"
 	origin_type = /obj/structure/chair/wood/alt/fancy
 

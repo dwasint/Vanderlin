@@ -55,7 +55,7 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "C" = (
-/obj/structure/flora/roguegrass/bush/wall,
+/obj/structure/flora/grass/bush/wall,
 /turf/open/floor/dirt,
 /area/rogue)
 "D" = (

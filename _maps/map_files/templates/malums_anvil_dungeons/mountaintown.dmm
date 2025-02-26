@@ -631,7 +631,7 @@
 /turf/open/floor/carpet/lord/left,
 /area/rogue/under/mountains/anvil/dungeon)
 "hb" = (
-/obj/structure/flora/rogueshroom,
+/obj/structure/flora/shroom_tree,
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "hc" = (
@@ -863,7 +863,7 @@
 /turf/open/floor/wood/nosmooth,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "kW" = (
-/obj/structure/flora/rogueshroom,
+/obj/structure/flora/shroom_tree,
 /turf/open/floor/dirt,
 /area/rogue/under/mountains/anvil/dungeon)
 "lc" = (
@@ -999,7 +999,7 @@
 /turf/open/floor/churchrough,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "nv" = (
-/obj/item/chair/rogue/chair3,
+/obj/item/chair/chair3,
 /turf/open/floor/wood/nosmooth,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "nA" = (
@@ -1424,7 +1424,7 @@
 /turf/open/floor/tile/kitchen,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "tr" = (
-/obj/item/chair/rogue{
+/obj/item/chair{
 	dir = 8
 	},
 /obj/item/natural/stone,
@@ -1668,7 +1668,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon)
 "xy" = (
-/obj/item/chair/rogue/chair3,
+/obj/item/chair/chair3,
 /turf/open/floor/ruinedwood/spiralfade,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "xB" = (
@@ -3127,7 +3127,7 @@
 /turf/open/floor/wood/nosmooth,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "So" = (
-/obj/item/chair/rogue/chair3{
+/obj/item/chair/chair3{
 	dir = 8
 	},
 /turf/open/floor/ruinedwood/spiralfade,
@@ -3410,7 +3410,7 @@
 /turf/open/floor/woodturned,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Wh" = (
-/obj/structure/flora/rogueshroom,
+/obj/structure/flora/shroom_tree,
 /turf/open/floor/dirt,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Wl" = (
@@ -3720,7 +3720,7 @@
 /turf/open/floor/ruinedwood/spiralfade,
 /area/rogue/under/mountains/anvil/dungeon)
 "ZX" = (
-/obj/item/chair/rogue/chair3/crafted,
+/obj/item/chair/chair3/crafted,
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon)
 

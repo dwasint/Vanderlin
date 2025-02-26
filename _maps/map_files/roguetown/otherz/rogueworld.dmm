@@ -20,7 +20,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/rtfield)
 "dF" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water/cleanshallow,
 /area/rogue/outdoors/rtfield)
 "eT" = (
@@ -31,7 +31,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/under/cave)
 "gd" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water/river{
 	dir = 8
 	},
@@ -42,7 +42,7 @@
 	},
 /area/rogue/outdoors/town/sargoth)
 "hf" = (
-/obj/structure/flora/roguetree/burnt,
+/obj/structure/flora/tree/burnt,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/rtfield)
 "hM" = (
@@ -154,7 +154,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/under/cave)
 "xw" = (
-/obj/structure/flora/roguetree/burnt,
+/obj/structure/flora/tree/burnt,
 /turf/open/water/cleanshallow,
 /area/rogue/outdoors/rtfield)
 "yg" = (
@@ -178,7 +178,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/town/sargoth)
 "Fc" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water/river{
 	dir = 4
 	},
@@ -278,11 +278,11 @@
 /turf/open/floor/dirt/road,
 /area/rogue/under/cave)
 "TS" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water/river,
 /area/rogue/outdoors/rtfield)
 "UD" = (
-/obj/structure/flora/roguetree/burnt,
+/obj/structure/flora/tree/burnt,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield)
 "Vv" = (

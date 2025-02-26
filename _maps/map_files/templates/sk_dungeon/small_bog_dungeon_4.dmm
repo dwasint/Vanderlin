@@ -8,7 +8,7 @@
 /turf/open/floor/herringbone,
 /area/rogue/outdoors/caves)
 "b" = (
-/obj/structure/flora/roguetree/evil,
+/obj/structure/flora/tree/evil,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/bog)
 "d" = (
@@ -195,7 +195,7 @@
 /turf/open/floor/blocks,
 /area/rogue/outdoors/caves)
 "U" = (
-/obj/structure/flora/roguetree,
+/obj/structure/flora/tree,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/bog)
 "V" = (

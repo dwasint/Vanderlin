@@ -5,11 +5,11 @@
 /turf/open/floor/herringbone,
 /area/rogue/outdoors/bog)
 "bA" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/cleanshallow,
 /area/rogue/outdoors/bog)
 "cB" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/bog)
 "cM" = (
@@ -17,7 +17,7 @@
 /turf/open/floor/ruinedwood/chevron,
 /area/rogue/outdoors/bog)
 "cP" = (
-/obj/structure/flora/roguetree,
+/obj/structure/flora/tree,
 /turf/open/floor/grass,
 /area/rogue/outdoors/bog)
 "df" = (
@@ -25,7 +25,7 @@
 /area/rogue/outdoors/bog)
 "dy" = (
 /obj/item/restraints/legcuffs/beartrap/armed/camouflage,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/bog)
 "dN" = (
@@ -42,7 +42,7 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors/bog)
 "gz" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/grass,
 /area/rogue/outdoors/bog)
 "gS" = (
@@ -118,7 +118,7 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors/bog)
 "sA" = (
-/obj/structure/flora/roguetree,
+/obj/structure/flora/tree,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/bog)
 "ty" = (
@@ -367,7 +367,7 @@
 /turf/open/floor/cobble/mossy,
 /area/rogue/outdoors/bog)
 "WP" = (
-/obj/structure/flora/roguegrass/maneater/real,
+/obj/structure/flora/grass/maneater/real,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/bog)
 "YA" = (

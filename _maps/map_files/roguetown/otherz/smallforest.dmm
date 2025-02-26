@@ -25,7 +25,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/river)
 "ah" = (
-/obj/structure/flora/roguetree,
+/obj/structure/flora/tree,
 /turf/open/floor/grass,
 /area/rogue/outdoors/river)
 "ai" = (
@@ -56,7 +56,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/river)
 "ap" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water/river,
 /area/rogue/outdoors/river)
 "ar" = (
@@ -64,15 +64,15 @@
 /turf/open/water/river,
 /area/rogue/outdoors/river)
 "as" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water/cleanshallow,
 /area/rogue/outdoors/river)
 "at" = (
-/obj/structure/flora/roguetree,
+/obj/structure/flora/tree,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/river)
 "au" = (
-/obj/structure/flora/roguetree,
+/obj/structure/flora/tree,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/river)
 "aw" = (
@@ -93,15 +93,15 @@
 /turf/open/floor/cobble,
 /area/rogue/outdoors/river)
 "aA" = (
-/obj/structure/flora/roguetree,
+/obj/structure/flora/tree,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods)
 "aB" = (
-/obj/structure/flora/roguetree,
+/obj/structure/flora/tree,
 /turf/open/water/cleanshallow,
 /area/rogue/outdoors/river)
 "aC" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/cleanshallow,
 /area/rogue/outdoors/river)
 "aD" = (
@@ -112,15 +112,15 @@
 /turf/open/water/swamp,
 /area/rogue/outdoors/river)
 "aG" = (
-/obj/structure/flora/roguetree,
+/obj/structure/flora/tree,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/woods)
 "aH" = (
-/obj/structure/flora/roguetree,
+/obj/structure/flora/tree,
 /turf/open/floor/grass,
 /area/rogue/outdoors/woods)
 "aI" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/river)
 "aJ" = (
@@ -301,7 +301,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/woods)
 "qJ" = (
-/obj/structure/flora/roguetree/wise,
+/obj/structure/flora/tree/wise,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods)
 "re" = (

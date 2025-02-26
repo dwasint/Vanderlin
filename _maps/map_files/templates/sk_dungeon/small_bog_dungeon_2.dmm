@@ -10,7 +10,7 @@
 /area/rogue/outdoors/bog)
 "ax" = (
 /obj/item/restraints/legcuffs/beartrap/armed/camouflage,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/bog)
 "cf" = (
@@ -43,7 +43,7 @@
 /area/rogue/outdoors/bog)
 "ko" = (
 /obj/item/restraints/legcuffs/beartrap/armed/camouflage,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/bog)
 "ky" = (
@@ -104,7 +104,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/bog)
 "uV" = (
-/obj/structure/flora/roguetree/evil,
+/obj/structure/flora/tree/evil,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/bog)
 "vl" = (
@@ -142,11 +142,11 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/bog)
 "BO" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/bog)
 "De" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/bog)
 "DJ" = (
@@ -168,7 +168,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/bog)
 "Ii" = (
-/obj/structure/flora/roguetree/evil,
+/obj/structure/flora/tree/evil,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/bog)
 "Iz" = (

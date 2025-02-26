@@ -5,7 +5,7 @@
 /area/rogue)
 "c" = (
 /obj/effect/spawner/map_spawner/treeorbush,
-/obj/structure/flora/roguetree/wise{
+/obj/structure/flora/tree/wise{
 	desc = "You must be exactlyh 25 years old to play this game.";
 	name = "Woody"
 	},
@@ -21,7 +21,7 @@
 /area/rogue)
 "w" = (
 /obj/effect/spawner/map_spawner/treeorbush,
-/obj/structure/flora/roguetree/evil,
+/obj/structure/flora/tree/evil,
 /turf/open/floor/dirt,
 /area/rogue)
 "y" = (

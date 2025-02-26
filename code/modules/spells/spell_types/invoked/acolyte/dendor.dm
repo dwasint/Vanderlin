@@ -134,7 +134,7 @@
 
 	var/turf/T = get_turf(targets[1])
 	user.visible_message("<font color='green'>[user] points at [T]!</font>")
-	var/obj/structure/flora/roguegrass/tangler/real/already_grown = locate(/obj/structure/flora/roguegrass/tangler/real) in (T.contents)
+	var/obj/structure/flora/grass/tangler/real/already_grown = locate(/obj/structure/flora/grass/tangler/real) in (T.contents)
 	var/area/area = get_area(T)
 	if (!area.outdoors)
 		to_chat(user, span_notice("The open air is more suited for Dendor's miracles..."))
@@ -143,7 +143,7 @@
 		to_chat(user, span_notice("There's no room for more vines..."))
 		return FALSE
 	sound = 'sound/magic/webspin.ogg'
-	new /obj/structure/flora/roguegrass/tangler/real(T)
+	new /obj/structure/flora/grass/tangler/real(T)
 	return ..()
 
 /obj/item/melee/touch_attack/greenthumb

@@ -5,7 +5,7 @@
 	},
 /area/rogue/underworld)
 "bL" = (
-/obj/structure/flora/roguetree/underworld,
+/obj/structure/flora/tree/underworld,
 /turf/open/floor/dirt,
 /area/rogue/underworld)
 "df" = (
@@ -51,7 +51,7 @@
 /turf/open/floor/churchrough,
 /area/rogue/underworld)
 "oZ" = (
-/obj/structure/flora/roguetree/underworld,
+/obj/structure/flora/tree/underworld,
 /obj/machinery/light/fueled/wallfire/candle/blue{
 	pixel_y = -32
 	},
@@ -72,7 +72,7 @@
 /turf/open/floor/underworld/road,
 /area/rogue)
 "tO" = (
-/obj/structure/flora/roguetree/underworld,
+/obj/structure/flora/tree/underworld,
 /turf/open/floor/underworld/road,
 /area/rogue)
 "uo" = (
@@ -251,14 +251,14 @@
 	},
 /area/rogue/underworld)
 "OG" = (
-/obj/structure/flora/roguetree/underworld,
+/obj/structure/flora/tree/underworld,
 /turf/open/floor/underworld/arena,
 /area/rogue/underworld)
 "Pr" = (
 /turf/open/floor/dirt,
 /area/rogue)
 "PP" = (
-/obj/structure/flora/roguetree/underworld,
+/obj/structure/flora/tree/underworld,
 /turf/open/floor/underworld/road,
 /area/rogue/underworld)
 "Qn" = (
@@ -299,7 +299,7 @@
 /turf/open/floor/underworld/road,
 /area/rogue/underworld)
 "TB" = (
-/obj/structure/flora/roguetree/underworld,
+/obj/structure/flora/tree/underworld,
 /obj/machinery/light/fueled/wallfire/candle/blue,
 /turf/open/floor/underworld/arena,
 /area/rogue/underworld)

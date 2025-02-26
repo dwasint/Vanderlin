@@ -254,7 +254,7 @@
 /turf/open/floor/cobble/alt,
 /area/rogue)
 "pr" = (
-/obj/structure/flora/rogueshroom,
+/obj/structure/flora/shroom_tree,
 /turf/open/floor/dirt,
 /area/rogue)
 "pL" = (
@@ -400,7 +400,7 @@
 /turf/open/floor/concrete,
 /area/rogue)
 "yF" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water/cleanshallow,
 /area/rogue)
 "yS" = (
@@ -434,7 +434,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue)
 "AM" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/cleanshallow,
 /area/rogue)
 "AS" = (

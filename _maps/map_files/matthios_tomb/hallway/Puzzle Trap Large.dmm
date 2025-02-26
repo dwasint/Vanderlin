@@ -18,19 +18,19 @@
 	},
 /area/rogue/indoors)
 "bX" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water/river{
 	dir = 4
 	},
 /area/rogue/indoors)
 "bZ" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water/river{
 	dir = 8
 	},
 /area/rogue/indoors)
 "cl" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/river{
 	dir = 1
 	},
@@ -58,8 +58,8 @@
 /turf/open/floor/cobblerock,
 /area/rogue/indoors)
 "gJ" = (
-/obj/structure/flora/roguegrass/water/reeds,
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/river{
 	dir = 8
 	},
@@ -126,8 +126,8 @@
 /turf/open/floor/cobblerock,
 /area/rogue/indoors)
 "mA" = (
-/obj/structure/flora/roguegrass/water,
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/river{
 	dir = 1
 	},
@@ -143,7 +143,7 @@
 /turf/open/floor/cobble,
 /area/rogue/indoors)
 "nF" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water/river{
 	dir = 1
 	},
@@ -169,8 +169,8 @@
 /turf/open/floor/cobble,
 /area/rogue/indoors)
 "qD" = (
-/obj/structure/flora/roguegrass/water,
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/river,
 /area/rogue/indoors)
 "rh" = (
@@ -215,8 +215,8 @@
 /turf/open/floor/cobble,
 /area/rogue/indoors)
 "uK" = (
-/obj/structure/flora/roguegrass/water,
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/river{
 	dir = 8
 	},
@@ -275,14 +275,14 @@
 /turf/open/floor/cobblerock,
 /area/rogue/indoors)
 "Bi" = (
-/obj/structure/flora/roguegrass/water,
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/river{
 	dir = 4
 	},
 /area/rogue/indoors)
 "BF" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/river,
 /area/rogue/indoors)
 "CR" = (
@@ -341,8 +341,8 @@
 /turf/open/floor/cobblerock,
 /area/rogue/indoors)
 "Kr" = (
-/obj/structure/flora/roguegrass/water/reeds,
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/river{
 	dir = 1
 	},
@@ -370,7 +370,7 @@
 /turf/open/floor/cobble,
 /area/rogue/indoors)
 "LJ" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /obj/effect/waterfall,
 /turf/open/water/river{
 	dir = 4
@@ -385,7 +385,7 @@
 /turf/open/floor/cobble,
 /area/rogue/indoors)
 "MG" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/river{
 	dir = 8
 	},
@@ -399,7 +399,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/indoors)
 "NG" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water/river,
 /area/rogue/indoors)
 "Oa" = (
@@ -450,7 +450,7 @@
 /turf/open/floor/cobble,
 /area/rogue/indoors)
 "RU" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/river{
 	dir = 4
 	},
@@ -478,9 +478,9 @@
 /turf/open/floor/cobble,
 /area/rogue/indoors)
 "Vt" = (
-/obj/structure/flora/roguegrass/water,
-/obj/structure/flora/roguegrass/water/reeds,
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water,
+/obj/structure/flora/grass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/river{
 	dir = 8
 	},

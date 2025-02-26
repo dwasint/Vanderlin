@@ -40,7 +40,7 @@
 /area/rogue)
 "K" = (
 /obj/structure/toilet,
-/obj/structure/flora/roguegrass/maneater/real{
+/obj/structure/flora/grass/maneater/real{
 	pixel_y = 9
 	},
 /obj/item/coin/silver{

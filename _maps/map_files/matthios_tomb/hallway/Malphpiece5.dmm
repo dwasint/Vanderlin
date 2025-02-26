@@ -100,7 +100,7 @@
 /turf/open/floor/herringbone,
 /area/rogue/outdoors/caves)
 "O" = (
-/obj/structure/flora/rogueshroom,
+/obj/structure/flora/shroom_tree,
 /turf/open/floor/volcanic,
 /area/rogue/outdoors/caves)
 "P" = (

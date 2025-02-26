@@ -19,7 +19,7 @@
 /turf/open/transparent/openspace,
 /area/rogue/indoors)
 "aU" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/swamp/deep,
 /area/rogue/outdoors/woods)
 "aW" = (
@@ -302,7 +302,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods)
 "lR" = (
-/obj/structure/flora/roguetree,
+/obj/structure/flora/tree,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods)
 "mg" = (
@@ -483,7 +483,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/woods)
 "tJ" = (
-/obj/structure/flora/roguetree/evil,
+/obj/structure/flora/tree/evil,
 /turf/open/floor/grass,
 /area/rogue/outdoors/woods)
 "tR" = (
@@ -737,7 +737,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/indoors/cave)
 "CC" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water/swamp/deep,
 /area/rogue/outdoors/woods)
 "CK" = (
@@ -767,7 +767,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/woods)
 "Dl" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods)
 "DI" = (
@@ -977,7 +977,7 @@
 /turf/closed/wall/mineral/wooddark,
 /area/rogue/outdoors/woods)
 "Md" = (
-/obj/structure/flora/roguegrass/bush/wall/tall,
+/obj/structure/flora/grass/bush/wall/tall,
 /turf/open/floor/grass,
 /area/rogue/outdoors/woods)
 "Mm" = (
@@ -1084,7 +1084,7 @@
 /turf/open/floor/ruinedwood/darker,
 /area/rogue/outdoors/mountains)
 "Ra" = (
-/obj/structure/flora/roguetree/burnt,
+/obj/structure/flora/tree/burnt,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods)
 "Rb" = (
@@ -1181,7 +1181,7 @@
 /turf/closed/mineral/random/med,
 /area/rogue/outdoors/mountains)
 "UM" = (
-/obj/structure/flora/roguetree,
+/obj/structure/flora/tree,
 /turf/open/floor/grass,
 /area/rogue/outdoors/woods)
 "UR" = (
@@ -1203,7 +1203,7 @@
 /turf/closed/mineral/random/med,
 /area/rogue/indoors/cave)
 "Wo" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water/swamp,
 /area/rogue/outdoors/woods)
 "Wr" = (
@@ -1219,7 +1219,7 @@
 /turf/open/floor/cobble,
 /area/rogue/outdoors/mountains)
 "WA" = (
-/obj/structure/flora/roguegrass/bush/wall/tall,
+/obj/structure/flora/grass/bush/wall/tall,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods)
 "WL" = (
@@ -1265,7 +1265,7 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors/woods)
 "Zo" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/swamp,
 /area/rogue/outdoors/woods)
 "Zt" = (

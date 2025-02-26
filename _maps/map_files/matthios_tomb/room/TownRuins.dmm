@@ -41,7 +41,7 @@
 /turf/open/water/swamp,
 /area/rogue)
 "bQ" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/grass,
 /area/rogue)
 "ca" = (
@@ -201,7 +201,7 @@
 /turf/open/floor/tile,
 /area/rogue)
 "eX" = (
-/obj/structure/flora/roguegrass/herb/valeriana,
+/obj/structure/flora/grass/herb/valeriana,
 /turf/open/floor/dirt,
 /area/rogue)
 "fb" = (
@@ -213,9 +213,9 @@
 /turf/open/floor/carpet,
 /area/rogue)
 "fg" = (
-/obj/structure/flora/roguegrass/herb/atropa,
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass/herb/atropa,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass,
 /turf/open/floor/grass,
 /area/rogue)
 "fj" = (
@@ -223,8 +223,8 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "fp" = (
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass,
 /turf/open/floor/dirt,
 /area/rogue)
 "fr" = (
@@ -235,7 +235,7 @@
 /turf/open/transparent/openspace,
 /area/rogue)
 "fx" = (
-/obj/structure/flora/roguegrass/herb/atropa,
+/obj/structure/flora/grass/herb/atropa,
 /turf/open/floor/dirt,
 /area/rogue)
 "fT" = (
@@ -325,7 +325,7 @@
 /turf/open/floor/carpet/red,
 /area/rogue)
 "ig" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water/swamp,
 /area/rogue)
 "iv" = (
@@ -339,8 +339,8 @@
 /turf/open/floor/ruinedwood,
 /area/rogue)
 "iJ" = (
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass,
 /turf/open/floor/grass,
 /area/rogue)
 "iK" = (
@@ -500,12 +500,12 @@
 /turf/open/floor/ruinedwood/chevron,
 /area/rogue)
 "ml" = (
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /turf/open/floor/grass,
 /area/rogue)
 "mt" = (
-/obj/structure/flora/roguegrass/herb/atropa,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass/herb/atropa,
+/obj/structure/flora/grass,
 /turf/open/floor/grass,
 /area/rogue)
 "mu" = (
@@ -634,7 +634,7 @@
 /area/rogue)
 "pq" = (
 /obj/structure/kneestingers,
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water/swamp,
 /area/rogue)
 "pC" = (
@@ -753,7 +753,7 @@
 /turf/open/transparent/openspace,
 /area/rogue)
 "st" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/dirt/road,
 /area/rogue)
 "sv" = (
@@ -858,7 +858,7 @@
 /obj/structure/bars/pipe{
 	pixel_y = 8
 	},
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water/swamp,
 /area/rogue)
 "uO" = (
@@ -896,7 +896,7 @@
 /turf/open/floor/blocks/stonered,
 /area/rogue)
 "vu" = (
-/obj/structure/flora/roguegrass/herb/valeriana,
+/obj/structure/flora/grass/herb/valeriana,
 /turf/open/floor/grass,
 /area/rogue)
 "vD" = (
@@ -932,7 +932,7 @@
 /turf/open/floor/carpet/red,
 /area/rogue)
 "wr" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/closed/wall/mineral/pipe,
 /area/rogue)
 "wt" = (
@@ -946,10 +946,10 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "wM" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/effect/decal/cleanable/glass,
 /obj/effect/decal/cleanable/blood/footprints,
-/obj/item/chair/rogue/fancy,
+/obj/item/chair/fancy,
 /turf/open/floor/grass,
 /area/rogue)
 "wP" = (
@@ -1010,9 +1010,9 @@
 /area/rogue)
 "xL" = (
 /obj/structure/fluff/statue/pillar,
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass,
 /turf/open/floor/grass,
 /area/rogue)
 "xP" = (
@@ -1038,7 +1038,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue)
 "yC" = (
-/obj/structure/flora/roguegrass/herb/atropa,
+/obj/structure/flora/grass/herb/atropa,
 /turf/open/floor/grass,
 /area/rogue)
 "yO" = (
@@ -1056,7 +1056,7 @@
 /area/rogue)
 "yY" = (
 /obj/structure/fluff/statue/pillar,
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/swamp,
 /area/rogue)
 "za" = (
@@ -1124,7 +1124,7 @@
 /turf/open/floor/churchbrick,
 /area/rogue)
 "Am" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/swamp/deep,
 /area/rogue)
 "Aq" = (
@@ -1177,9 +1177,9 @@
 /turf/open/floor/ruinedwood,
 /area/rogue)
 "Bn" = (
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass,
 /turf/open/floor/grass,
 /area/rogue)
 "Bp" = (
@@ -1193,7 +1193,7 @@
 /area/rogue)
 "Bs" = (
 /obj/structure/kneestingers/decaying,
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/swamp,
 /area/rogue)
 "Bz" = (
@@ -1269,7 +1269,7 @@
 /turf/open/floor/wood/nosmooth,
 /area/rogue)
 "Di" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/dirt,
 /area/rogue)
 "Dn" = (
@@ -1308,8 +1308,8 @@
 /turf/open/floor/grass,
 /area/rogue)
 "Eq" = (
-/obj/structure/flora/roguegrass/herb/valeriana,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass/herb/valeriana,
+/obj/structure/flora/grass,
 /turf/open/floor/dirt,
 /area/rogue)
 "Es" = (
@@ -1621,7 +1621,7 @@
 /turf/open/floor/hexstone,
 /area/rogue)
 "Ln" = (
-/obj/structure/flora/roguegrass/bush_meagre,
+/obj/structure/flora/grass/bush_meagre,
 /turf/open/floor/dirt,
 /area/rogue)
 "Ls" = (
@@ -1690,7 +1690,7 @@
 /area/rogue)
 "MG" = (
 /mob/living/carbon/human/species/skeleton/npc/peasant,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/cobble,
 /area/rogue)
 "MO" = (
@@ -1851,7 +1851,7 @@
 /turf/open/floor/churchbrick,
 /area/rogue)
 "PR" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/cobble,
 /area/rogue)
 "PT" = (
@@ -1887,7 +1887,7 @@
 /area/rogue)
 "QE" = (
 /obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/grass,
 /area/rogue)
 "QP" = (
@@ -1897,7 +1897,7 @@
 /area/rogue)
 "QW" = (
 /obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/dirt,
 /area/rogue)
 "QX" = (
@@ -2031,7 +2031,7 @@
 /turf/open/floor/ruinedwood/turned,
 /area/rogue)
 "Te" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/swamp,
 /area/rogue)
 "Tk" = (

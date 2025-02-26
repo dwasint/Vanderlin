@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "bO" = (
-/obj/structure/flora/rogueshroom,
+/obj/structure/flora/shroom_tree,
 /turf/open/floor/dirt/ambush,
 /area/rogue/outdoors/caves)
 "bY" = (
@@ -16,7 +16,7 @@
 /turf/closed/wall/mineral/wood,
 /area/rogue/outdoors/caves)
 "cP" = (
-/obj/structure/flora/rogueshroom,
+/obj/structure/flora/shroom_tree,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/caves)
 "dv" = (
@@ -24,12 +24,12 @@
 /turf/closed/wall/mineral/wood,
 /area/rogue/outdoors/caves)
 "dE" = (
-/obj/structure/flora/roguegrass/swampweed,
+/obj/structure/flora/grass/swampweed,
 /turf/open/floor/dirt/ambush,
 /area/rogue/outdoors/caves)
 "ec" = (
 /obj/machinery/light/fueled/torchholder/l,
-/obj/structure/flora/roguegrass/swampweed,
+/obj/structure/flora/grass/swampweed,
 /turf/open/floor/dirt/ambush,
 /area/rogue/outdoors/caves)
 "en" = (
@@ -59,7 +59,7 @@
 /turf/open/floor/tile/checkeralt,
 /area/rogue/outdoors/caves)
 "mz" = (
-/obj/structure/flora/roguegrass/swampweed,
+/obj/structure/flora/grass/swampweed,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/caves)
 "mY" = (
@@ -76,7 +76,7 @@
 /area/rogue/outdoors/caves)
 "pt" = (
 /obj/machinery/light/fueled/torchholder/c,
-/obj/structure/flora/roguegrass/swampweed,
+/obj/structure/flora/grass/swampweed,
 /turf/open/floor/dirt/ambush,
 /area/rogue/outdoors/caves)
 "pY" = (
@@ -181,7 +181,7 @@
 /turf/open/floor/blocks/paving/vert,
 /area/rogue/outdoors/caves)
 "JX" = (
-/obj/structure/flora/rogueshroom,
+/obj/structure/flora/shroom_tree,
 /turf/closed/mineral/bedrock,
 /area/rogue/outdoors/caves)
 "Ke" = (

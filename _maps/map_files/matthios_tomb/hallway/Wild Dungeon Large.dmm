@@ -1,36 +1,36 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aD" = (
-/obj/structure/flora/roguegrass/bush/wall/tall,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass/bush/wall/tall,
+/obj/structure/flora/grass,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "aL" = (
-/obj/structure/flora/roguegrass/herb/salvia,
+/obj/structure/flora/grass/herb/salvia,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "bR" = (
 /obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/roguegrass/herb/euphrasia,
+/obj/structure/flora/grass/herb/euphrasia,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "ca" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/effect/dungeon_directional_helper/south,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "cr" = (
 /obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "eA" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "eH" = (
 /obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/roguegrass/herb/artemisia,
+/obj/structure/flora/grass/herb/artemisia,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "fo" = (
@@ -38,7 +38,7 @@
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "fz" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/item/natural/rock,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
@@ -48,12 +48,12 @@
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "hF" = (
-/obj/structure/flora/roguegrass/bush/wall/tall,
+/obj/structure/flora/grass/bush/wall/tall,
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "iJ" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/effect/dungeon_directional_helper/north,
 /turf/open/floor/grass,
@@ -70,13 +70,13 @@
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "kl" = (
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass/bush,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass/bush,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "kq" = (
 /obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/effect/spawner/map_spawner/loot,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
@@ -86,7 +86,7 @@
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "kX" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/open/floor/grass,
@@ -107,7 +107,7 @@
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "nx" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "nA" = (
@@ -119,12 +119,12 @@
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/effect/spawner/map_spawner/loot,
-/obj/structure/flora/roguegrass/herb/hypericum,
+/obj/structure/flora/grass/herb/hypericum,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "oy" = (
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass,
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
@@ -133,7 +133,7 @@
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "pH" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/flora/ausbushes/sparsegrass,
 /mob/living/carbon/human/species/goblin/npc/ambush,
 /turf/open/floor/grass,
@@ -149,17 +149,17 @@
 "rB" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/roguegrass/herb/taraxacum,
+/obj/structure/flora/grass/herb/taraxacum,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "rM" = (
-/obj/structure/flora/roguegrass/bush/wall/tall,
+/obj/structure/flora/grass/bush/wall/tall,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "rS" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/roguegrass/herb/mentha,
+/obj/structure/flora/grass/herb/mentha,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "sd" = (
@@ -169,15 +169,15 @@
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "sj" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/roguegrass/herb/euphrasia,
+/obj/structure/flora/grass/herb/euphrasia,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "sG" = (
 /obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass,
 /mob/living/simple_animal/hostile/retaliate/wolf,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
@@ -190,7 +190,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/under/cave)
 "uo" = (
-/obj/structure/flora/roguegrass/herb/calendula,
+/obj/structure/flora/grass/herb/calendula,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "vd" = (
@@ -207,28 +207,28 @@
 /area/rogue/under/cave)
 "wz" = (
 /obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/roguegrass/herb/calendula,
+/obj/structure/flora/grass/herb/calendula,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "xb" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/fluff/nest,
 /obj/effect/spawner/map_spawner/loot,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "xo" = (
 /obj/structure/flora/ausbushes/lavendergrass,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/effect/dungeon_directional_helper/west,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "yj" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /mob/living/carbon/human/species/goblin/npc/ambush,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "zK" = (
-/obj/structure/flora/roguegrass/bush,
+/obj/structure/flora/grass/bush,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "AH" = (
@@ -240,13 +240,13 @@
 /area/rogue/under/cave)
 "Bi" = (
 /obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/roguegrass/herb/euphrasia,
+/obj/structure/flora/grass/herb/euphrasia,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "BK" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/roguegrass/herb/hypericum,
+/obj/structure/flora/grass/herb/hypericum,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "BO" = (
@@ -270,7 +270,7 @@
 /area/rogue/under/cave)
 "DK" = (
 /obj/structure/flora/ausbushes/ppflowers,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "Ec" = (
@@ -282,11 +282,11 @@
 /turf/open/transparent/openspace,
 /area/rogue/under/cave)
 "Fz" = (
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass,
 /obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/roguegrass/herb/calendula,
+/obj/structure/flora/grass/herb/calendula,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "FI" = (
@@ -312,7 +312,7 @@
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "HB" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/structure/flora/ausbushes/sparsegrass,
@@ -325,24 +325,24 @@
 /area/rogue/under/cave)
 "Iz" = (
 /obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/roguegrass/herb/urtica,
+/obj/structure/flora/grass/herb/urtica,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "IG" = (
 /obj/structure/flora/ausbushes/lavendergrass,
 /obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "JC" = (
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass/herb/paris,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass/herb/paris,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "JH" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/structure/fluff/nest,
 /obj/effect/spawner/map_spawner/loot,
@@ -350,8 +350,8 @@
 /area/rogue/under/cave)
 "KV" = (
 /obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass/herb/paris,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass/herb/paris,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "Lu" = (
@@ -360,9 +360,9 @@
 /turf/closed/mineral/bedrock,
 /area/rogue/under/cave)
 "Mm" = (
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass/bush,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass/bush,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "Mn" = (
@@ -370,8 +370,8 @@
 /turf/open/floor/naturalstone,
 /area/rogue/under/cave)
 "Mo" = (
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass,
 /mob/living/simple_animal/hostile/retaliate/wolf,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
@@ -393,24 +393,24 @@
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "Oo" = (
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass/herb/artemisia,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass/herb/artemisia,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "PO" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/fluff/nest,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "PY" = (
-/obj/structure/flora/roguegrass/bush,
-/obj/structure/flora/roguegrass/herb/valeriana,
+/obj/structure/flora/grass/bush,
+/obj/structure/flora/grass/herb/valeriana,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "QB" = (
 /obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass/herb/taraxacum,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass/herb/taraxacum,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "QN" = (
@@ -419,7 +419,7 @@
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "QS" = (
-/obj/structure/flora/roguegrass/herb/taraxacum,
+/obj/structure/flora/grass/herb/taraxacum,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "Rk" = (
@@ -437,9 +437,9 @@
 /area/rogue/under/cave)
 "Ts" = (
 /obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass/herb/hypericum,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass/herb/hypericum,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "TC" = (
@@ -450,13 +450,13 @@
 /area/rogue/under/cave)
 "TV" = (
 /obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/roguegrass/herb/urtica,
+/obj/structure/flora/grass/herb/urtica,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "Uv" = (
 /obj/structure/flora/ausbushes/grassybush,
 /obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "UN" = (
@@ -466,14 +466,14 @@
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "UP" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/roguegrass/herb/hypericum,
+/obj/structure/flora/grass/herb/hypericum,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "UX" = (
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "VC" = (
@@ -483,18 +483,18 @@
 "VJ" = (
 /obj/structure/flora/ausbushes/ywflowers,
 /obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "Wb" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/flora/ausbushes/sparsegrass,
 /mob/living/simple_animal/hostile/retaliate/wolf,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "Xn" = (
 /obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
@@ -502,9 +502,9 @@
 /turf/open/floor/naturalstone,
 /area/rogue/under/cave)
 "XR" = (
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass/herb/valeriana,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass/herb/valeriana,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "XS" = (
@@ -515,9 +515,9 @@
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "ZQ" = (
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass,
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/open/floor/grass,
 /area/rogue/under/cave)

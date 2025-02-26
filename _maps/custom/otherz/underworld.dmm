@@ -31,7 +31,7 @@
 /turf/open/floor/underworld/road,
 /area/rogue/underworld)
 "i" = (
-/obj/structure/flora/roguetree/underworld,
+/obj/structure/flora/tree/underworld,
 /turf/open/floor/underworld/road,
 /area/rogue)
 "j" = (
@@ -51,7 +51,7 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "n" = (
-/obj/structure/flora/roguetree/underworld,
+/obj/structure/flora/tree/underworld,
 /turf/open/floor/underworld/road,
 /area/rogue/underworld)
 "o" = (
@@ -66,7 +66,7 @@
 /turf/open/floor/churchrough,
 /area/rogue/underworld)
 "q" = (
-/obj/structure/flora/roguetree/underworld,
+/obj/structure/flora/tree/underworld,
 /turf/open/floor/dirt,
 /area/rogue/underworld)
 "r" = (
@@ -82,12 +82,12 @@
 /turf/open/floor/underworld/road,
 /area/rogue/underworld)
 "u" = (
-/obj/structure/flora/roguetree/underworld,
+/obj/structure/flora/tree/underworld,
 /obj/effect/landmark/underworldsafe,
 /turf/open/floor/underworld/road,
 /area/rogue)
 "v" = (
-/obj/structure/flora/roguetree/underworld,
+/obj/structure/flora/tree/underworld,
 /obj/effect/landmark/underworldsafe,
 /turf/open/floor/underworld/road,
 /area/rogue/underworld)

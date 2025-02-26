@@ -299,7 +299,7 @@
 /turf/open/floor/wood,
 /area/rogue)
 "aH" = (
-/obj/structure/flora/roguetree,
+/obj/structure/flora/tree,
 /turf/open/floor/dirt,
 /area/rogue/outdoors)
 "aI" = (
@@ -650,14 +650,14 @@
 /turf/open/floor/cobble,
 /area/rogue)
 "bz" = (
-/obj/structure/flora/roguetree,
+/obj/structure/flora/tree,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods_safe)
 "bA" = (
 /turf/open/water/cleanshallow,
 /area/rogue/outdoors/woods_safe)
 "bB" = (
-/obj/structure/flora/roguetree/burnt,
+/obj/structure/flora/tree/burnt,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods_safe)
 "bD" = (
@@ -1238,7 +1238,7 @@
 /turf/open/floor/cobble/mossy,
 /area/rogue/outdoors/woods_safe)
 "dF" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/cleanshallow,
 /area/rogue/outdoors/woods_safe)
 "dG" = (
@@ -1246,7 +1246,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods_safe)
 "dH" = (
-/obj/structure/flora/roguegrass/bush/wall/tall,
+/obj/structure/flora/grass/bush/wall/tall,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods_safe)
 "dI" = (
@@ -1435,8 +1435,8 @@
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue/indoors/bandit_lair)
 "fY" = (
-/obj/structure/flora/roguetree/burnt,
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/tree/burnt,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/swamp,
 /area/rogue/outdoors/bog/inhumen_camp)
 "fZ" = (
@@ -1651,7 +1651,7 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "jl" = (
-/obj/structure/flora/roguetree/burnt,
+/obj/structure/flora/tree/burnt,
 /turf/open/water/swamp,
 /area/rogue/outdoors/bog/inhumen_camp)
 "jn" = (
@@ -1752,8 +1752,8 @@
 /turf/open/floor/ruinedwood/darker,
 /area/rogue/indoors/bandit_lair)
 "lb" = (
-/obj/structure/flora/roguegrass/water/reeds,
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/swamp,
 /area/rogue/outdoors/bog/inhumen_camp)
 "lh" = (
@@ -1852,7 +1852,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors)
 "mQ" = (
-/obj/structure/flora/roguetree/evil,
+/obj/structure/flora/tree/evil,
 /turf/open/water/swamp,
 /area/rogue/outdoors/woods_safe)
 "mW" = (
@@ -2482,12 +2482,12 @@
 /turf/open/floor/tile,
 /area/rogue/indoors/vampire_manor)
 "uy" = (
-/obj/structure/flora/roguetree,
-/obj/structure/flora/roguetree,
+/obj/structure/flora/tree,
+/obj/structure/flora/tree,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/woods_safe)
 "uA" = (
-/obj/structure/flora/roguetree/burnt,
+/obj/structure/flora/tree/burnt,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/bog/inhumen_camp)
 "uF" = (
@@ -2861,7 +2861,7 @@
 /turf/open/floor/ruinedwood/chevron,
 /area/rogue)
 "Ae" = (
-/obj/structure/flora/roguetree,
+/obj/structure/flora/tree,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/bog/inhumen_camp)
 "Al" = (
@@ -3035,7 +3035,7 @@
 /obj/structure/fluff/railing/fence{
 	dir = 8
 	},
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/woods_safe)
 "CZ" = (
@@ -3175,7 +3175,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/indoors)
 "FR" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/woods_safe)
 "FT" = (
@@ -3249,7 +3249,7 @@
 /turf/open/floor/blocks/paving,
 /area/rogue/indoors/vampire_manor)
 "GG" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/swamp,
 /area/rogue/outdoors/bog/inhumen_camp)
 "GN" = (
@@ -3365,7 +3365,7 @@
 /turf/open/floor/ruinedwood/darker,
 /area/rogue/indoors/bandit_lair)
 "Ip" = (
-/obj/structure/flora/roguetree/burnt,
+/obj/structure/flora/tree/burnt,
 /turf/open/water/swamp/deep,
 /area/rogue/outdoors/bog/inhumen_camp)
 "Iq" = (
@@ -3553,12 +3553,12 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/bog/inhumen_camp)
 "Kn" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/grass,
 /area/rogue/outdoors/woods_safe)
 "Kq" = (
-/obj/structure/flora/roguetree,
-/obj/structure/flora/roguetree,
+/obj/structure/flora/tree,
+/obj/structure/flora/tree,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods_safe)
 "Ks" = (
@@ -3596,7 +3596,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/woods_safe)
 "Lj" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods_safe)
 "Lp" = (
@@ -4117,7 +4117,7 @@
 /turf/open/floor/plasteel/maniac,
 /area/rogue)
 "Sy" = (
-/obj/structure/flora/roguetree,
+/obj/structure/flora/tree,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/woods_safe)
 "SA" = (

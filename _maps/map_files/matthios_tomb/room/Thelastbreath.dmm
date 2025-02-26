@@ -26,14 +26,14 @@
 /turf/open/floor/naturalstone,
 /area/rogue/indoors)
 "aJ" = (
-/obj/structure/flora/roguegrass/water,
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water,
+/obj/structure/flora/grass/water/reeds,
 /obj/structure/kneestingers,
 /turf/open/water/bath,
 /area/rogue/indoors)
 "aP" = (
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass/bush/wall/tall,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass/bush/wall/tall,
 /turf/open/floor/grass,
 /area/rogue/indoors)
 "aQ" = (
@@ -99,7 +99,7 @@
 /turf/open/floor/church,
 /area/rogue/indoors)
 "bR" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/structure/closet/dirthole/closed/loot,
 /obj/structure/gravemarker,
@@ -131,7 +131,7 @@
 /turf/open/floor/ruinedwood,
 /area/rogue/indoors)
 "cx" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/grass,
 /area/rogue/indoors)
 "cy" = (
@@ -399,8 +399,8 @@
 "gs" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass,
 /obj/structure/closet/dirthole/closed/loot,
 /obj/structure/gravemarker,
 /turf/open/floor/grass,
@@ -433,8 +433,8 @@
 /turf/open/floor/blocks,
 /area/rogue/indoors)
 "gY" = (
-/obj/structure/flora/roguetree/evil,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/tree/evil,
+/obj/structure/flora/grass,
 /turf/open/floor/grass,
 /area/rogue/indoors)
 "ha" = (
@@ -652,7 +652,7 @@
 "kI" = (
 /obj/structure/bars/grille,
 /obj/structure/fluff/walldeco/vinez,
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /obj/structure/kneestingers,
 /turf/open/water/bath,
 /area/rogue/indoors)
@@ -944,9 +944,9 @@
 /turf/open/floor/cobble,
 /area/rogue/indoors)
 "oJ" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/roguegrass/bush/wall/tall,
+/obj/structure/flora/grass/bush/wall/tall,
 /turf/open/floor/grass,
 /area/rogue/indoors)
 "oT" = (
@@ -1047,7 +1047,7 @@
 "qs" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/roguegrass/bush,
+/obj/structure/flora/grass/bush,
 /turf/open/floor/grass,
 /area/rogue/indoors)
 "qE" = (
@@ -1247,7 +1247,7 @@
 /area/rogue/indoors)
 "tr" = (
 /obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/open/floor/grass,
 /area/rogue/indoors)
@@ -1346,7 +1346,7 @@
 /turf/closed/wall/mineral/decostone,
 /area/rogue/indoors)
 "uV" = (
-/obj/item/chair/rogue/chair_nobles/red,
+/obj/item/chair/chair_nobles/red,
 /turf/open/floor/tile/masonic/spiral,
 /area/rogue/indoors)
 "uY" = (
@@ -1441,8 +1441,8 @@
 /turf/open/floor/church,
 /area/rogue/indoors)
 "ww" = (
-/obj/structure/flora/roguegrass/water,
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/bath,
 /area/rogue/indoors)
 "wB" = (
@@ -1535,7 +1535,7 @@
 /turf/closed/mineral/bedrock,
 /area/rogue/indoors)
 "xC" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /obj/structure/kneestingers,
 /turf/open/water/bath,
 /area/rogue/indoors)
@@ -1588,7 +1588,7 @@
 /turf/open/floor/cobble,
 /area/rogue/indoors)
 "yA" = (
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water/bath,
 /area/rogue/indoors)
 "yB" = (
@@ -1631,7 +1631,7 @@
 /area/rogue/indoors)
 "yV" = (
 /obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/roguegrass/bush/wall/tall,
+/obj/structure/flora/grass/bush/wall/tall,
 /turf/open/floor/grass,
 /area/rogue/indoors)
 "zd" = (
@@ -1650,8 +1650,8 @@
 /area/rogue/indoors)
 "zj" = (
 /obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass/bush/wall/tall,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass/bush/wall/tall,
 /turf/open/floor/grass,
 /area/rogue/indoors)
 "zk" = (
@@ -1674,7 +1674,7 @@
 /turf/open/water/swamp,
 /area/rogue/indoors)
 "zq" = (
-/obj/structure/flora/roguegrass/bush/wall/tall,
+/obj/structure/flora/grass/bush/wall/tall,
 /turf/open/floor/grass,
 /area/rogue/indoors)
 "zu" = (
@@ -1720,7 +1720,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/indoors)
 "zV" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/flora/ausbushes/grassybush,
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/open/floor/grass,
@@ -1888,8 +1888,8 @@
 /area/rogue/indoors)
 "CW" = (
 /obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass/bush,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass/bush,
 /turf/open/floor/grass,
 /area/rogue/indoors)
 "De" = (
@@ -1899,7 +1899,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/indoors)
 "Df" = (
-/obj/item/chair/rogue/fancy,
+/obj/item/chair/fancy,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/indoors)
 "Dp" = (
@@ -1916,8 +1916,8 @@
 "Dt" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/ausbushes/lavendergrass,
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass,
 /turf/open/floor/grass,
 /area/rogue/indoors)
 "Du" = (
@@ -2021,9 +2021,9 @@
 /turf/open/floor/cobble,
 /area/rogue/indoors)
 "Fy" = (
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass/bush,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass/bush,
 /turf/open/floor/grass,
 /area/rogue/indoors)
 "FA" = (
@@ -2040,7 +2040,7 @@
 /area/rogue/indoors)
 "FH" = (
 /obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/grass,
 /area/rogue/indoors)
 "FN" = (
@@ -2177,9 +2177,9 @@
 /turf/closed/wall/mineral/decostone,
 /area/rogue/indoors)
 "HW" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/roguegrass/pyroclasticflowers,
+/obj/structure/flora/grass/pyroclasticflowers,
 /turf/open/floor/grass,
 /area/rogue/indoors)
 "HX" = (
@@ -2200,8 +2200,8 @@
 /turf/open/floor/church,
 /area/rogue/indoors)
 "Iy" = (
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass/bush,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass/bush,
 /turf/open/floor/grass,
 /area/rogue/indoors)
 "Iz" = (
@@ -2460,7 +2460,7 @@
 /turf/open/floor/carpet,
 /area/rogue/indoors)
 "Mg" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /obj/structure/kneestingers,
 /turf/open/water/bath,
 /area/rogue/indoors)
@@ -2550,11 +2550,11 @@
 /turf/open/floor/cobblerock,
 /area/rogue/indoors)
 "Nw" = (
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water/reeds,
 /turf/open/water/bath,
 /area/rogue/indoors)
 "Nx" = (
-/obj/item/chair/rogue/chair_nobles,
+/obj/item/chair/chair_nobles,
 /turf/open/floor/hexstone,
 /area/rogue/indoors)
 "Ny" = (
@@ -2650,7 +2650,7 @@
 "OO" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /turf/open/floor/grass,
 /area/rogue/indoors)
 "OR" = (
@@ -2668,7 +2668,7 @@
 /turf/open/floor/tile/kitchen,
 /area/rogue/indoors)
 "Pl" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/open/floor/grass,
 /area/rogue/indoors)
@@ -2683,8 +2683,8 @@
 "Px" = (
 /obj/structure/bars/grille,
 /obj/structure/fluff/walldeco/vinez,
-/obj/structure/flora/roguegrass/water,
-/obj/structure/flora/roguegrass/water/reeds,
+/obj/structure/flora/grass/water,
+/obj/structure/flora/grass/water/reeds,
 /obj/structure/kneestingers,
 /turf/open/water/bath,
 /area/rogue/indoors)
@@ -2708,8 +2708,8 @@
 /turf/open/floor/tile,
 /area/rogue/indoors)
 "PJ" = (
-/obj/structure/flora/roguegrass/water,
-/obj/structure/flora/roguegrass/water,
+/obj/structure/flora/grass/water,
+/obj/structure/flora/grass/water,
 /turf/open/water/bath,
 /area/rogue/indoors)
 "PM" = (
@@ -2740,7 +2740,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/indoors)
 "Qm" = (
-/obj/item/chair/rogue/chair_nobles/red,
+/obj/item/chair/chair_nobles/red,
 /obj/effect/decal/cleanable/blood/gibs,
 /turf/open/floor/tile/masonic/spiral,
 /area/rogue/indoors)
@@ -2761,7 +2761,7 @@
 "QG" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/roguegrass/bush/wall/tall,
+/obj/structure/flora/grass/bush/wall/tall,
 /turf/open/floor/grass,
 /area/rogue/indoors)
 "QH" = (
@@ -2837,7 +2837,7 @@
 /area/rogue/indoors)
 "RB" = (
 /obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/roguegrass/pyroclasticflowers,
+/obj/structure/flora/grass/pyroclasticflowers,
 /turf/open/floor/grass,
 /area/rogue/indoors)
 "RD" = (
@@ -2916,7 +2916,7 @@
 /turf/open/floor/tile/kitchen,
 /area/rogue/indoors)
 "SQ" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/fluff/psycross/crafted,
 /turf/open/floor/grass,
 /area/rogue/indoors)
@@ -2990,9 +2990,9 @@
 /area/rogue/indoors)
 "TT" = (
 /obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/roguegrass/pyroclasticflowers,
+/obj/structure/flora/grass/pyroclasticflowers,
 /turf/open/floor/grass,
 /area/rogue/indoors)
 "TU" = (
@@ -3011,14 +3011,14 @@
 /area/rogue/indoors)
 "Uc" = (
 /obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass/bush,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass/bush,
 /turf/open/floor/grass,
 /area/rogue/indoors)
 "Uf" = (
 /obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass,
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/open/floor/grass,
 /area/rogue/indoors)
@@ -3057,8 +3057,8 @@
 "Uv" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass/bush/wall/tall,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass/bush/wall/tall,
 /turf/open/floor/grass,
 /area/rogue/indoors)
 "Uw" = (
@@ -3146,7 +3146,7 @@
 /turf/open/floor/hexstone,
 /area/rogue/indoors)
 "VL" = (
-/obj/structure/flora/roguegrass/bush,
+/obj/structure/flora/grass/bush,
 /turf/open/floor/grass,
 /area/rogue/indoors)
 "VM" = (
@@ -3280,7 +3280,7 @@
 /turf/closed/wall/mineral/decostone,
 /area/rogue/indoors)
 "XI" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/structure/flora/ausbushes/grassybush,
 /turf/open/floor/grass,
 /area/rogue/indoors)
@@ -3300,8 +3300,8 @@
 /turf/closed/wall/mineral/decostone,
 /area/rogue/indoors)
 "XY" = (
-/obj/structure/flora/roguegrass,
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
+/obj/structure/flora/grass,
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/open/floor/grass,
 /area/rogue/indoors)
@@ -3355,7 +3355,7 @@
 /turf/open/floor/church,
 /area/rogue/indoors)
 "YP" = (
-/obj/structure/flora/roguegrass,
+/obj/structure/flora/grass,
 /obj/item/book/random_book/legends,
 /turf/open/floor/grass,
 /area/rogue/indoors)
@@ -3437,7 +3437,7 @@
 /area/rogue/indoors)
 "ZW" = (
 /obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/roguegrass/bush,
+/obj/structure/flora/grass/bush,
 /turf/open/floor/grass,
 /area/rogue/indoors)
 "ZX" = (

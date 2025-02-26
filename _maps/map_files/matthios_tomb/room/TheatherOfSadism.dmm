@@ -504,7 +504,7 @@
 /area/rogue)
 "wR" = (
 /obj/structure/fluff/walldeco/skullspike,
-/obj/structure/flora/roguegrass/bush_meagre/bog,
+/obj/structure/flora/grass/bush_meagre/bog,
 /turf/open/floor/grass/red,
 /area/rogue)
 "xO" = (
@@ -865,7 +865,7 @@
 /turf/open/floor/blocks/stonered/tiny,
 /area/rogue)
 "Us" = (
-/obj/structure/flora/roguegrass/bush_meagre/bog,
+/obj/structure/flora/grass/bush_meagre/bog,
 /turf/open/floor/grass/red,
 /area/rogue)
 "UB" = (

@@ -58,19 +58,19 @@
 	icon_state = "tree"
 	name = "Tree spawner"
 	probby = 80
-	spawned = list(/obj/structure/flora/roguetree)
+	spawned = list(/obj/structure/flora/tree)
 
 /obj/effect/spawner/map_spawner/treeorbush
 	icon_state = "Treeorbush"
 	name = "Tree or bush spawner"
 	probby = 50
-	spawned = list(/obj/structure/flora/roguetree, /obj/structure/flora/roguegrass/bush_meagre)
+	spawned = list(/obj/structure/flora/tree, /obj/structure/flora/grass/bush_meagre)
 
 /obj/effect/spawner/map_spawner/treeorstump
 	icon_state = "treeorstump"
 	name = "Tree or stump spawner"
 	probby = 50
-	spawned = list(/obj/structure/flora/roguetree, /obj/structure/table/wood/treestump)
+	spawned = list(/obj/structure/flora/tree, /obj/structure/table/wood/treestump)
 
 /obj/effect/spawner/map_spawner/stump
 	icon_state = "stump"
@@ -100,13 +100,13 @@
 	icon_state = "grass"
 	name = "grass tile loot spawner"
 	probby = 75
-	spawned = list(/obj/structure/flora/roguegrass/bush_meagre = 10, /obj/structure/flora/roguegrass = 60, /obj/item/natural/stone = 8, /obj/item/natural/rock = 7, /obj/item/grown/log/tree/stick = 3, /obj/structure/closet/dirthole/closed/loot=0.1)
+	spawned = list(/obj/structure/flora/grass/bush_meagre = 10, /obj/structure/flora/grass = 60, /obj/item/natural/stone = 8, /obj/item/natural/rock = 7, /obj/item/grown/log/tree/stick = 3, /obj/structure/closet/dirthole/closed/loot=0.1)
 
 /obj/effect/spawner/map_spawner/grass_low
 	icon_state = "grass"
 	name = "grass tile low loot spawner"
 	probby = 50
-	spawned = list(/obj/structure/flora/roguegrass/bush_meagre = 5, /obj/structure/flora/roguegrass = 60, /obj/item/natural/stone = 8, /obj/item/natural/rock = 4, /obj/item/grown/log/tree/stick = 2)
+	spawned = list(/obj/structure/flora/grass/bush_meagre = 5, /obj/structure/flora/grass = 60, /obj/item/natural/stone = 8, /obj/item/natural/rock = 4, /obj/item/grown/log/tree/stick = 2)
 
 /*	..................   Toll randomizer (poor mans coin generator, cheaper workload is all)  ................... */
 /obj/effect/spawner/map_spawner/tollrandom

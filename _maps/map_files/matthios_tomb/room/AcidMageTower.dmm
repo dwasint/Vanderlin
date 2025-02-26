@@ -167,7 +167,7 @@
 /turf/open/floor/tile/kitchen,
 /area/rogue/indoors)
 "gm" = (
-/obj/structure/flora/roguegrass/herb/random,
+/obj/structure/flora/grass/herb/random,
 /mob/living/carbon/human/species/zizombie/ambush,
 /turf/open/floor/grass/cold,
 /area/rogue/indoors)
@@ -180,7 +180,7 @@
 /turf/open/floor/cobblerock/alt,
 /area/rogue/indoors/cave)
 "ho" = (
-/obj/structure/flora/roguegrass/herb/random,
+/obj/structure/flora/grass/herb/random,
 /turf/open/floor/grass/cold,
 /area/rogue/indoors)
 "hq" = (
@@ -413,7 +413,7 @@
 /turf/open/floor/tile,
 /area/rogue/indoors)
 "oj" = (
-/obj/structure/flora/roguegrass/herb/calendula,
+/obj/structure/flora/grass/herb/calendula,
 /obj/effect/decal/cleanable/blood/tracks{
 	dir = 8
 	},
@@ -803,7 +803,7 @@
 /turf/open/floor/tile/kitchen,
 /area/rogue/indoors)
 "DR" = (
-/obj/structure/flora/roguetree/evil,
+/obj/structure/flora/tree/evil,
 /turf/open/floor/grass/cold,
 /area/rogue/indoors)
 "Ef" = (
@@ -959,7 +959,7 @@
 /obj/effect/decal/cleanable/blood/tracks{
 	dir = 6
 	},
-/obj/structure/flora/roguegrass/pyroclasticflowers,
+/obj/structure/flora/grass/pyroclasticflowers,
 /turf/open/floor/grass/cold,
 /area/rogue/indoors)
 "Js" = (
@@ -1206,7 +1206,7 @@
 /turf/open/floor/churchrough,
 /area/rogue/indoors)
 "Rm" = (
-/obj/structure/flora/roguegrass/herb/random,
+/obj/structure/flora/grass/herb/random,
 /obj/structure/gravemarker,
 /obj/structure/closet/dirthole/closed/loot,
 /obj/item/reagent_containers/food/snacks/produce/sunflower,
@@ -1374,7 +1374,7 @@
 /turf/open/floor/tile,
 /area/rogue/indoors)
 "Xf" = (
-/obj/structure/flora/roguegrass/herb/random,
+/obj/structure/flora/grass/herb/random,
 /mob/living/simple_animal/hostile/haunt,
 /turf/open/floor/grass/cold,
 /area/rogue/indoors)
@@ -1437,7 +1437,7 @@
 /turf/open/floor/ruinedwood/darker,
 /area/rogue/indoors)
 "Zi" = (
-/obj/item/chair/rogue/chair_nobles/red,
+/obj/item/chair/chair_nobles/red,
 /obj/effect/decal/cleanable/sigil/S,
 /turf/open/floor/tile/masonic/spiral,
 /area/rogue/indoors)
