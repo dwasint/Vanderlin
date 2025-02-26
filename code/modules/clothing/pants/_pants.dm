@@ -36,9 +36,7 @@
 	anvilrepair = null
 
 	var/fitted = NO_FEMALE_UNIFORM // For use in alternate clothing styles for women
-	var/has_sensor = HAS_SENSORS // For the crew computer
 	var/random_sensor = TRUE
-	var/sensor_mode = NO_SENSORS
 	var/can_adjust = FALSE
 	var/adjusted = NORMAL_STYLE
 	var/alt_covers_chest = FALSE // for adjusted/rolled-down jumpsuits, FALSE = exposes chest and arms, TRUE = exposes arms only
@@ -84,22 +82,7 @@
 		var/mob/M = loc
 		M.update_inv_w_uniform()
 		M.update_inv_pants()
-	if(has_sensor > NO_SENSORS)
-		has_sensor = BROKEN_SENSORS
 
-/obj/item/clothing/pants/Initialize()
-	. = ..()
-	if(random_sensor)
-		//make the sensor mode favor higher levels, except coords.
-		sensor_mode = pick(SENSOR_OFF, SENSOR_LIVING, SENSOR_LIVING, SENSOR_VITALS, SENSOR_VITALS, SENSOR_VITALS, SENSOR_COORDS, SENSOR_COORDS)
-
-/obj/item/clothing/pants/emp_act()
-	. = ..()
-	if(has_sensor > NO_SENSORS)
-		sensor_mode = pick(SENSOR_OFF, SENSOR_OFF, SENSOR_OFF, SENSOR_LIVING, SENSOR_LIVING, SENSOR_VITALS, SENSOR_VITALS, SENSOR_COORDS)
-		if(ismob(loc))
-			var/mob/M = loc
-			to_chat(M,"<span class='warning'>The sensors on the [src] change rapidly!</span>")
 
 /obj/item/clothing/pants/equipped(mob/user, slot)
 	..()

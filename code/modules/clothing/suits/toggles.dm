@@ -153,6 +153,12 @@
 /obj/item/clothing/suit/toggle/ui_action_click()
 	suit_toggle()
 
+/obj/item/clothing/proc/can_use(mob/user)
+	if(user && ismob(user))
+		if(!user.incapacitated())
+			return 1
+	return 0
+
 /obj/item/clothing/suit/toggle/proc/suit_toggle()
 	set src in usr
 

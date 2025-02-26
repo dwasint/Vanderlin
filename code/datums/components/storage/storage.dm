@@ -101,7 +101,6 @@
 
 	RegisterSignal(parent, COMSIG_ATOM_ATTACK_HAND, PROC_REF(on_attack_hand))
 	RegisterSignal(parent, COMSIG_ATOM_ATTACK_PAW, PROC_REF(on_attack_hand))
-	RegisterSignal(parent, COMSIG_ATOM_EMP_ACT, PROC_REF(emp_act))
 	RegisterSignal(parent, COMSIG_ATOM_ATTACK_GHOST, PROC_REF(show_to_ghost))
 	RegisterSignal(parent, COMSIG_ATOM_ENTERED, PROC_REF(refresh_mob_views))
 	RegisterSignal(parent, COMSIG_ATOM_EXITED, PROC_REF(_remove_and_refresh))
@@ -451,12 +450,6 @@
 	for(var/mob/M in can_see_contents())
 		close(M)
 		. = TRUE //returns TRUE if any mobs actually got a close(M) call
-
-/datum/component/storage/proc/emp_act(datum/source, severity)
-	if(emp_shielded)
-		return
-	var/datum/component/storage/concrete/master = master()
-	master.emp_act(source, severity)
 
 //This proc draws out the inventory and places the items on it. tx and ty are the upper left tile and mx, my are the bottm right.
 //The numbers are calculated from the bottom-left The bottom-left slot being 1,1.

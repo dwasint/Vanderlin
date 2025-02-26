@@ -440,32 +440,7 @@
 	//Don't go further if the shock was blocked/too weak.
 	if(!.)
 		return
-	//Note we both check that the user is in cardiac arrest and can actually heartattack
-	//If they can't, they're missing their heart and this would runtime
-///	if(undergoing_cardiac_arrest() && can_heartattack() && !(flags & SHOCK_ILLUSION))
-//		if(shock_damage * siemens_coeff >= 1 && prob(25))
-//			var/obj/item/organ/heart/heart = getorganslot(ORGAN_SLOT_HEART)
-//			if(heart.Restart() && stat == CONSCIOUS)
-//				to_chat(src, "<span class='notice'>I feel my heart beating again!</span>")
 	electrocution_animation(40)
-
-/mob/living/carbon/human/emp_act(severity)
-	. = ..()
-	if(. & EMP_PROTECT_CONTENTS)
-		return
-	var/informed = FALSE
-	for(var/obj/item/bodypart/L in src.bodyparts)
-		if(L.status == BODYPART_ROBOTIC)
-			if(!informed)
-				to_chat(src, "<span class='danger'>I feel a sharp pain as my robotic limbs overload.</span>")
-				informed = TRUE
-			switch(severity)
-				if(1)
-					L.receive_damage(0,10)
-					Paralyze(200)
-				if(2)
-					L.receive_damage(0,5)
-					Paralyze(100)
 
 /mob/living/carbon/human/acid_act(acidpwr, acid_volume, bodyzone_hit) //todo: update this to utilize check_obscured_slots() //and make sure it's check_obscured_slots(TRUE) to stop aciding through visors etc
 	var/list/damaged = list()
