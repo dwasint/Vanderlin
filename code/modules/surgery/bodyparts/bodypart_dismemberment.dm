@@ -305,7 +305,6 @@
 		//Drop all worn head items
 		var/list/worn_items = list(
 			owner.get_item_by_slot(SLOT_HEAD),
-			owner.get_item_by_slot(SLOT_GLASSES),
 			owner.get_item_by_slot(SLOT_NECK),
 			owner.get_item_by_slot(SLOT_WEAR_MASK),
 			owner.get_item_by_slot(SLOT_MOUTH),

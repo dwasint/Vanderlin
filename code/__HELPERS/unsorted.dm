@@ -671,9 +671,6 @@ will handle it, but:
 		if(M.head && wash_obj(M.head,clean))
 			M.update_inv_head()
 
-		if(M.glasses && !(SLOT_GLASSES in obscured) && wash_obj(M.glasses,clean))
-			M.update_inv_glasses()
-
 		if(M.wear_mask && !(SLOT_WEAR_MASK in obscured) && wash_obj(M.wear_mask,clean))
 			M.update_inv_wear_mask()
 

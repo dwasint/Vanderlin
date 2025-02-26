@@ -701,9 +701,6 @@
 	dir = 8
 	},
 /obj/item/clothing/face/facemask/prisoner,
-/obj/item/clothing/glasses/blindfold/white{
-	name = "blindfold"
-	},
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/cell)
 "aSx" = (
@@ -16619,12 +16616,6 @@
 	pixel_y = 32
 	},
 /obj/item/clothing/head/menacing,
-/obj/item/clothing/glasses/blindfold/white{
-	name = "blindfold"
-	},
-/obj/item/clothing/glasses/blindfold/white{
-	name = "blindfold"
-	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/cell)
 "rIo" = (
