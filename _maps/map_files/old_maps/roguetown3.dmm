@@ -1876,7 +1876,7 @@
 	},
 /area/rogue/indoors/town/church)
 "agh" = (
-/obj/item/storage/backpack/rogue/satchel,
+/obj/item/storage/backpack/satchel,
 /obj/structure/closet/crate/chest,
 /obj/item/book/rogue/bibble,
 /turf/open/floor/ruinedwood{
@@ -2388,7 +2388,7 @@
 	},
 /area/rogue/indoors/town/church)
 "ahT" = (
-/obj/item/storage/backpack/rogue/satchel,
+/obj/item/storage/backpack/satchel,
 /turf/open/floor/woodturned,
 /area/rogue/indoors/town/church)
 "ahU" = (
@@ -4395,7 +4395,7 @@
 /obj/item/key/walls,
 /obj/item/storage/keyring,
 /obj/item/key/manor,
-/obj/item/storage/backpack/rogue/satchel,
+/obj/item/storage/backpack/satchel,
 /turf/open/floor/carpet/royalblack,
 /area/rogue)
 "anU" = (
@@ -7400,7 +7400,7 @@
 /obj/item/flashlight/flare/torch/metal,
 /obj/item/flashlight/flare/torch/metal,
 /obj/structure/closet/crate/crafted_closet,
-/obj/item/storage/backpack/rogue/satchel,
+/obj/item/storage/backpack/satchel,
 /turf/open/floor/herringbone,
 /area/rogue)
 "awY" = (
@@ -7419,7 +7419,7 @@
 /area/rogue)
 "axa" = (
 /obj/structure/closet/crate/crafted_closet,
-/obj/item/storage/backpack/rogue/satchel,
+/obj/item/storage/backpack/satchel,
 /turf/open/floor/hexstone,
 /area/rogue)
 "axb" = (
@@ -11263,7 +11263,7 @@
 /turf/open/floor/concrete,
 /area/rogue/outdoors/town)
 "aJK" = (
-/obj/item/storage/backpack/rogue/satchel,
+/obj/item/storage/backpack/satchel,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/town)
 "aJL" = (
@@ -14015,7 +14015,7 @@
 /area/rogue)
 "wux" = (
 /obj/structure/closet/crate/crafted_closet,
-/obj/item/storage/backpack/rogue/satchel,
+/obj/item/storage/backpack/satchel,
 /turf/open/floor/wood/nosmooth,
 /area/rogue/indoors)
 "wvd" = (

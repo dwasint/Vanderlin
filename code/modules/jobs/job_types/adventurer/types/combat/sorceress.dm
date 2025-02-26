@@ -23,7 +23,7 @@
 	shoes = /obj/item/clothing/shoes/simpleshoes
 	armor = /obj/item/clothing/shirt/robe/mage
 	belt = /obj/item/storage/belt/leather/rope
-	backr = /obj/item/storage/backpack/rogue/satchel
+	backr = /obj/item/storage/backpack/satchel
 	beltl = /obj/item/reagent_containers/glass/bottle/manapot
 	r_hand = /obj/item/weapon/polearm/woodstaff
 	if(H.mind)

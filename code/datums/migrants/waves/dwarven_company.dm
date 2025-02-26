@@ -20,7 +20,7 @@
 	beltl = /obj/item/weapon/pick/paxe
 	pants = /obj/item/clothing/pants/trou
 	shoes = /obj/item/clothing/shoes/simpleshoes/buckle
-	backl = /obj/item/storage/backpack/rogue/satchel
+	backl = /obj/item/storage/backpack/satchel
 	backpack_contents = list(/obj/item/storage/belt/pouch/coins/poor)
 	H.change_stat(STATKEY_STR, 3)
 	H.change_stat(STATKEY_PER, 2)

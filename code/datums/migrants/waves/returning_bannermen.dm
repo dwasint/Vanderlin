@@ -24,7 +24,7 @@
 	belt = /obj/item/storage/belt/leather
 	beltr = /obj/item/weapon/sword/arming
 	beltl = /obj/item/storage/keyring/guard
-	backl = /obj/item/storage/backpack/rogue/satchel
+	backl = /obj/item/storage/backpack/satchel
 	backpack_contents = list(/obj/item/weapon/knife/dagger/steel/special = 1, /obj/item/signal_horn = 1)
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/combat/axesmaces, 4, TRUE)

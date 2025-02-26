@@ -29,13 +29,13 @@
 	head = /obj/item/clothing/head/roguehood/phys
 	shoes = /obj/item/clothing/shoes/boots/leather
 	shirt = /obj/item/clothing/shirt/undershirt/black
-	backr = /obj/item/storage/backpack/rogue/satchel
+	backr = /obj/item/storage/backpack/satchel
 	backpack_contents =list(/obj/item/storage/keyring/physicker = 1)
 	pants = /obj/item/clothing/pants/tights/random
 	gloves = /obj/item/clothing/gloves/leather/phys
 	armor = /obj/item/clothing/shirt/robe/phys
 	neck = /obj/item/clothing/neck/phys
-	r_hand = /obj/item/storage/backpack/rogue/satchel/surgbag
+	r_hand = /obj/item/storage/backpack/satchel/surgbag
 
 	H.mind?.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 	H.mind?.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)

@@ -51,7 +51,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 /datum/outfit/job/lord/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/crown/serpcrown
-	backr = /obj/item/storage/backpack/rogue/satchel
+	backr = /obj/item/storage/backpack/satchel
 	belt = /obj/item/storage/belt/leather/plaquegold
 	backpack_contents = list(/obj/item/weapon/knife/dagger/steel/special = 1)
 	id = /obj/item/clothing/ring/active/nomag

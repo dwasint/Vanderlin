@@ -28,7 +28,7 @@
 	pants = /obj/item/clothing/pants/trou/leather
 	shirt = /obj/item/clothing/shirt/shortshirt/random
 	shoes = /obj/item/clothing/shoes/boots
-	backr = /obj/item/storage/backpack/rogue/satchel
+	backr = /obj/item/storage/backpack/satchel
 	backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1)
 	mask = /obj/item/clothing/face/facemask/steel
 	neck = /obj/item/clothing/neck/coif

@@ -8761,7 +8761,7 @@
 "gmH" = (
 /obj/structure/rack/rogue/shelf/biggest,
 /obj/machinery/light/rogue/wallfire/candle/blue,
-/obj/item/storage/backpack/rogue/backpack,
+/obj/item/storage/backpack/backpack,
 /turf/open/floor/blocks/stonered/tiny,
 /area/rogue/indoors/town/bath)
 "gmP" = (
@@ -9079,11 +9079,11 @@
 "gzc" = (
 /obj/structure/rack/rogue,
 /obj/item/staff/stick,
-/obj/item/storage/backpack/rogue/satchel,
-/obj/item/storage/backpack/rogue/satchel,
-/obj/item/storage/backpack/rogue/satchel,
-/obj/item/storage/backpack/rogue/backpack,
-/obj/item/storage/backpack/rogue/backpack,
+/obj/item/storage/backpack/satchel,
+/obj/item/storage/backpack/satchel,
+/obj/item/storage/backpack/satchel,
+/obj/item/storage/backpack/backpack,
+/obj/item/storage/backpack/backpack,
 /turf/open/floor/concrete,
 /area/rogue/indoors/town/shop)
 "gzf" = (
@@ -16123,7 +16123,7 @@
 /area/rogue/indoors/soilsons)
 "lEs" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/storage/backpack/rogue/backpack,
+/obj/item/storage/backpack/backpack,
 /turf/open/floor/blocks,
 /area/rogue/indoors/town/smithy)
 "lEG" = (
@@ -16760,7 +16760,7 @@
 /obj/item/clothing/head/headdress,
 /obj/item/clothing/head/headdress/alt,
 /obj/item/clothing/shirt/dress/silkdress/random,
-/obj/item/storage/backpack/rogue/satchel,
+/obj/item/storage/backpack/satchel,
 /obj/item/clothing/cloak/half,
 /obj/item/clothing/armor/gambeson/heavy/winterdress,
 /obj/item/clothing/armor/leather/vest/winterjacket,
@@ -23393,7 +23393,7 @@
 "rmb" = (
 /obj/item/flashlight/flare/torch/metal,
 /obj/item/flashlight/flare/torch/metal,
-/obj/item/storage/backpack/rogue/satchel,
+/obj/item/storage/backpack/satchel,
 /obj/structure/rack/rogue/shelf/biggest,
 /obj/item/flashlight/flare/torch/lantern,
 /obj/item/flashlight/flare/torch/lantern,
@@ -25561,7 +25561,7 @@
 	},
 /obj/item/clothing/cloak/stole/red,
 /obj/item/clothing/cloak/chasuble,
-/obj/item/storage/backpack/rogue/satchel,
+/obj/item/storage/backpack/satchel,
 /obj/item/weapon/polearm/woodstaff/aries,
 /turf/open/floor/blocks{
 	icon_state = "newstone2"
@@ -30460,7 +30460,7 @@
 /area/rogue/under/town/caverogue)
 "wkT" = (
 /obj/structure/closet/crate/crafted_closet,
-/obj/item/storage/backpack/rogue/satchel,
+/obj/item/storage/backpack/satchel,
 /obj/item/weapon/flail/sflail,
 /obj/item/rope/chain,
 /turf/open/floor/tile,

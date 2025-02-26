@@ -61,7 +61,7 @@
 	shoes = /obj/item/clothing/shoes/boots/armor
 	beltl = /obj/item/weapon/sword/sabre
 	beltr = /obj/item/storage/keyring/veteran
-	backr = /obj/item/storage/backpack/rogue/satchel/black
+	backr = /obj/item/storage/backpack/satchel/black
 	cloak = /obj/item/clothing/cloak/half/vet
 	belt = /obj/item/storage/belt/leather/black
 	H.cmode_music = 'sound/music/cmode/adventurer/CombatWarrior.ogg'
@@ -119,7 +119,7 @@
 	shoes = /obj/item/clothing/shoes/boots/armor
 	beltl = /obj/item/weapon/sword
 	beltr = /obj/item/storage/keyring/veteran
-	backr = /obj/item/storage/backpack/rogue/satchel/black
+	backr = /obj/item/storage/backpack/satchel/black
 	backl = /obj/item/weapon/shield/tower/metal
 	r_hand = /obj/item/weapon/polearm/spear/billhook
 	belt = /obj/item/storage/belt/leather/black
@@ -176,7 +176,7 @@
 	wrists = /obj/item/clothing/wrists/bracers
 	shoes = /obj/item/clothing/shoes/boots/armor
 	beltr = /obj/item/storage/keyring/veteran
-	backr = /obj/item/storage/backpack/rogue/satchel/black
+	backr = /obj/item/storage/backpack/satchel/black
 	belt = /obj/item/storage/belt/leather/black
 	cloak = /obj/item/clothing/cloak/half/vet
 	H.cmode_music = 'sound/music/cmode/nobility/CombatDungeoneer.ogg'
@@ -256,7 +256,7 @@
 	gloves = /obj/item/clothing/gloves/angle/grenzel
 	beltl = /obj/item/weapon/sword/short
 	beltr = /obj/item/storage/keyring/veteran
-	backr = /obj/item/storage/backpack/rogue/satchel/black
+	backr = /obj/item/storage/backpack/satchel/black
 	belt = /obj/item/storage/belt/leather/black
 	cloak = /obj/item/clothing/cloak/half/vet
 	H.cmode_music = 'sound/music/cmode/adventurer/CombatOutlander.ogg'
@@ -327,7 +327,7 @@
 	shoes = /obj/item/clothing/shoes/boots/leather
 	beltl = /obj/item/ammo_holder/quiver/arrows
 	beltr = /obj/item/flashlight/flare/torch/lantern
-	backr = /obj/item/storage/backpack/rogue/satchel/black
+	backr = /obj/item/storage/backpack/satchel/black
 	backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/long
 	belt = /obj/item/storage/belt/leather/black
 	cloak = /obj/item/clothing/cloak/half/vet
@@ -386,7 +386,7 @@
 	shoes = /obj/item/clothing/shoes/boots
 	beltl = /obj/item/weapon/whip
 	beltr = /obj/item/flashlight/flare/torch/lantern
-	backr = /obj/item/storage/backpack/rogue/satchel/black
+	backr = /obj/item/storage/backpack/satchel/black
 	belt = /obj/item/storage/belt/leather/knifebelt/iron
 	cloak = /obj/item/clothing/cloak/raincloak/mortus
 	H.cmode_music = 'sound/music/cmode/adventurer/CombatOutlander3.ogg'

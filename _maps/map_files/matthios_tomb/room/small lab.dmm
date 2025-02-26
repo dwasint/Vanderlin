@@ -176,7 +176,7 @@
 	pixel_x = -12
 	},
 /obj/structure/table/wood/plain_alt,
-/obj/item/storage/backpack/rogue/satchel/surgbag{
+/obj/item/storage/backpack/satchel/surgbag{
 	pixel_x = 7
 	},
 /turf/open/floor/ruinedwood/turned/darker,

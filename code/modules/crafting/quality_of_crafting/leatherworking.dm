@@ -182,7 +182,7 @@
 		/obj/item/natural/hide/cured = 2,
 		/obj/item/natural/fibers = 1,
 	)
-	output = /obj/item/storage/backpack/rogue/satchel
+	output = /obj/item/storage/backpack/satchel
 	craftdiff = 1
 
 /datum/repeatable_crafting_recipe/leather/meatbag
@@ -301,7 +301,7 @@
 		/obj/item/natural/hide/cured = 3,
 		/obj/item/natural/fibers = 2,
 	)
-	output = /obj/item/storage/backpack/rogue/backpack
+	output = /obj/item/storage/backpack/backpack
 	craftdiff = 2
 
 /datum/repeatable_crafting_recipe/leather/hidearmor

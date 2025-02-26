@@ -28,7 +28,7 @@
 	pants = /obj/item/clothing/pants/tights/red
 	neck = /obj/item/storage/belt/pouch/coins/poor
 	backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
-	backr = /obj/item/storage/backpack/rogue/satchel
+	backr = /obj/item/storage/backpack/satchel
 	backpack_contents = list(/obj/item/weapon/knife/hunting = 1)
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)

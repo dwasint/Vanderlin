@@ -22,7 +22,7 @@
 	belt = /obj/item/storage/belt/leather
 	neck = /obj/item/storage/belt/pouch/coins/mid
 	beltl = /obj/item/weapon/pick
-	backl = /obj/item/storage/backpack/rogue/backpack
+	backl = /obj/item/storage/backpack/backpack
 	if(H.age == AGE_OLD)
 		H.change_stat(STATKEY_END, -1)
 		H.mind?.adjust_skillrank(/datum/skill/craft/traps, 1, TRUE)

@@ -39,7 +39,7 @@
 	beltr = /obj/item/storage/belt/pouch/coins/mid
 	beltl = /obj/item/weapon/pick
 	backr = /obj/item/weapon/axe/steel
-	backl = /obj/item/storage/backpack/rogue/backpack
+	backl = /obj/item/storage/backpack/backpack
 	H.change_stat(STATKEY_STR, 1)
 	H.change_stat(STATKEY_INT, 2)
 	H.change_stat(STATKEY_END, 2)

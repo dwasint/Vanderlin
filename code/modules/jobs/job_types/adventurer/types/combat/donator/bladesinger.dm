@@ -42,7 +42,7 @@
 		belt = /obj/item/storage/belt/leather
 		shirt = /obj/item/clothing/shirt/undershirt/black
 		armor = /obj/item/clothing/armor/rare/elfplate
-		backl = /obj/item/storage/backpack/rogue/satchel
+		backl = /obj/item/storage/backpack/satchel
 		head = /obj/item/clothing/head/rare/elfplate
 		neck = /obj/item/clothing/neck/chaincoif
 	if(H.dna.species.name == "Elf")
@@ -54,7 +54,7 @@
 		belt = /obj/item/storage/belt/leather
 		shirt = /obj/item/clothing/shirt/undershirt/black
 		armor = /obj/item/clothing/armor/rare/elfplate/welfplate
-		backl = /obj/item/storage/backpack/rogue/satchel
+		backl = /obj/item/storage/backpack/satchel
 		head = /obj/item/clothing/head/rare/elfplate/welfplate
 		neck = /obj/item/clothing/neck/chaincoif
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)

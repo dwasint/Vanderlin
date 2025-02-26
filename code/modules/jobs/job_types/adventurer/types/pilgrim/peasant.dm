@@ -40,7 +40,7 @@
 	shoes = /obj/item/clothing/shoes/simpleshoes
 	wrists = /obj/item/clothing/wrists/bracers/leather
 	backr = /obj/item/weapon/hoe
-	backl = /obj/item/storage/backpack/rogue/satchel
+	backl = /obj/item/storage/backpack/satchel
 	neck = /obj/item/storage/belt/pouch/coins/poor
 	armor = /obj/item/clothing/armor/gambeson/light/striped
 	beltl = /obj/item/weapon/sickle

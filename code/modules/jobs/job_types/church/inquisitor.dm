@@ -49,7 +49,7 @@
 	head = /obj/item/clothing/head/helmet/leather/inquisitor
 	gloves = /obj/item/clothing/gloves/angle
 	wrists = /obj/item/clothing/neck/psycross/silver
-	backr = /obj/item/storage/backpack/rogue/satchel
+	backr = /obj/item/storage/backpack/satchel
 	backl = /obj/item/weapon/sword/long/forgotten
 	beltl = /obj/item/flashlight/flare/torch/lantern
 	neck = /obj/item/clothing/neck/bevor

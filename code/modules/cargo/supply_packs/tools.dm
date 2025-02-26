@@ -190,7 +190,7 @@
 /datum/supply_pack/tools/surgerybag
 	name = "Set of Surgical Tools"
 	cost = 100
-	contains = /obj/item/storage/backpack/rogue/satchel/surgbag
+	contains = /obj/item/storage/backpack/satchel/surgbag
 
 /datum/supply_pack/tools/glassware_set
 	name = "Set of Glassware Cups"

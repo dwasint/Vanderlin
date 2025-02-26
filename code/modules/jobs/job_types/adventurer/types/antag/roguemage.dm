@@ -15,7 +15,7 @@
 	armor = /obj/item/clothing/shirt/robe/black
 	belt = /obj/item/storage/belt/leather/rope
 	beltr = /obj/item/reagent_containers/glass/bottle/manapot
-	backr = /obj/item/storage/backpack/rogue/satchel
+	backr = /obj/item/storage/backpack/satchel
 	backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1)
 	mask = /obj/item/clothing/face/facemask/steel //idk if this makes it so they cant cast but i want all of the bandits to have the same mask
 	neck = /obj/item/clothing/neck/coif

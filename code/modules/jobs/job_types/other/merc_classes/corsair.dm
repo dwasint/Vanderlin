@@ -15,7 +15,7 @@
 	pants = /obj/item/clothing/pants/tights/sailor
 	belt = /obj/item/storage/belt/leather/mercenary
 	armor = /obj/item/clothing/armor/leather/jacket/sea
-	backl = /obj/item/storage/backpack/rogue/satchel
+	backl = /obj/item/storage/backpack/satchel
 	backpack_contents = list(/obj/item/natural/worms/leech = 2, /obj/item/storage/belt/pouch/coins/mid)
 	backr = /obj/item/fishingrod/fisher
 	beltl = /obj/item/weapon/sword/sabre/cutlass

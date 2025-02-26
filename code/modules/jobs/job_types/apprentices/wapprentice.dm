@@ -39,14 +39,14 @@
 		belt = /obj/item/storage/belt/leather/rope
 		beltr = /obj/item/key/tower
 		armor = /obj/item/clothing/armor/gambeson/light/striped
-		backr = /obj/item/storage/backpack/rogue/satchel
+		backr = /obj/item/storage/backpack/satchel
 	else
 		shoes = /obj/item/clothing/shoes/sandals
 		shirt = /obj/item/clothing/shirt/undershirt
 		belt = /obj/item/storage/belt/leather/rope
 		beltr = /obj/item/key/tower
 		armor = /obj/item/clothing/armor/gambeson/light/striped
-		backr = /obj/item/storage/backpack/rogue/satchel
+		backr = /obj/item/storage/backpack/satchel
 
 	H.change_stat(STATKEY_INT, 1)
 	H.change_stat(STATKEY_SPD, -1)

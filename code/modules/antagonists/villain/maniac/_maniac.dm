@@ -85,7 +85,7 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 	SSfake_world.should_bother = TRUE
 	owner.special_role = ROLE_VILLAIN
 	owner.special_items["Maniac"] = pick(possible_weapons)
-	owner.special_items["Surgical Kit"] = /obj/item/storage/backpack/rogue/satchel/surgbag
+	owner.special_items["Surgical Kit"] = /obj/item/storage/backpack/satchel/surgbag
 	if(owner.current)
 		if(ishuman(owner.current))
 			var/mob/living/carbon/human/dreamer = owner.current

@@ -27,12 +27,12 @@
 	head = /obj/item/clothing/head/roguehood/phys
 	shoes = /obj/item/clothing/shoes/boots/leather
 	shirt = /obj/item/clothing/shirt/undershirt/black
-	backr = /obj/item/storage/backpack/rogue/satchel
+	backr = /obj/item/storage/backpack/satchel
 	pants = /obj/item/clothing/pants/tights/random
 	gloves = /obj/item/clothing/gloves/leather/phys
 	armor = /obj/item/clothing/shirt/robe/phys
 	neck = /obj/item/clothing/neck/phys
-	r_hand = /obj/item/storage/backpack/rogue/satchel/surgbag
+	r_hand = /obj/item/storage/backpack/satchel/surgbag
 	beltl = /obj/item/key/clinic
 
 	H.mind?.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)

@@ -241,12 +241,12 @@
 /datum/supply_pack/apparel/satchel
 	name = "Satchel"
 	cost = 10
-	contains = /obj/item/storage/backpack/rogue/satchel
+	contains = /obj/item/storage/backpack/satchel
 
 /datum/supply_pack/apparel/backpack
 	name = "Backpack"
 	cost = 20
-	contains = /obj/item/storage/backpack/rogue/backpack
+	contains = /obj/item/storage/backpack/backpack
 
 /datum/supply_pack/apparel/luxurydyes
 	name = "Luxury Dyes"

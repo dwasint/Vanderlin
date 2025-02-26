@@ -83,7 +83,7 @@
 	shirt = /obj/item/clothing/armor/gambeson
 	pants = /obj/item/clothing/pants/chainlegs
 	shoes = /obj/item/clothing/shoes/boots
-	backl = /obj/item/storage/backpack/rogue/satchel
+	backl = /obj/item/storage/backpack/satchel
 	backpack_contents = list(/obj/item/storage/keyring/priest = 1)
 	backr = /obj/item/weapon/shield/tower/metal
 	belt = /obj/item/storage/belt/leather/black

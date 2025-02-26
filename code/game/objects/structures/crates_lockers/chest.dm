@@ -53,7 +53,7 @@
 		/obj/item/clothing/face/cigarette/pipe=10,
 		/obj/item/clothing/face/cigarette/pipe/westman=10,
 		/obj/item/storage/fancy/cigarettes/zig=33,
-		/obj/item/storage/backpack/rogue/satchel=33,
+		/obj/item/storage/backpack/satchel=33,
 		/obj/item/storage/sack=33,
 		/obj/item/roguegem=1,
 		/obj/item/roguegem/blue=2,

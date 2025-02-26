@@ -50,7 +50,7 @@
 			beltr = /obj/item/ammo_holder/quiver/bolts
 			cloak = /obj/item/clothing/cloak/raincloak/mortus //cool cloak
 			beltl = /obj/item/weapon/knife/dagger/steel
-			backr = /obj/item/storage/backpack/rogue/satchel
+			backr = /obj/item/storage/backpack/satchel
 			backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1, /obj/item/lockpickring/mundane = 1) //rogue gets lockpicks
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
@@ -58,7 +58,7 @@
 			backl= /obj/item/weapon/shield/tower/buckleriron
 			beltr = /obj/item/weapon/sword/short //steel sword like literally every adventurer gets
 			head = /obj/item/clothing/head/helmet/leather/volfhelm //cool hat
-			backr = /obj/item/storage/backpack/rogue/satchel
+			backr = /obj/item/storage/backpack/satchel
 			backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1, /obj/item/restraints/legcuffs/beartrap = 2) //poacher gets mantraps
 			H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)

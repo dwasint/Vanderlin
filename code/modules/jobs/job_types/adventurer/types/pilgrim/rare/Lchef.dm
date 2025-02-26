@@ -42,7 +42,7 @@
 	cloak = /obj/item/clothing/cloak/apron
 	head = /obj/item/clothing/head/cookhat/chef
 	shoes = /obj/item/clothing/shoes/shortboots
-	backl = /obj/item/storage/backpack/rogue/backpack
+	backl = /obj/item/storage/backpack/backpack
 	neck = /obj/item/storage/belt/pouch/coins/mid
 	wrists = /obj/item/clothing/wrists/bracers/leather
 	beltr = /obj/item/cooking/pan

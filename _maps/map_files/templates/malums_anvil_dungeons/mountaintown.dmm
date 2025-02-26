@@ -838,7 +838,7 @@
 /turf/open/transparent/openspace,
 /area/rogue/under/mountains/anvil/dungeon)
 "kJ" = (
-/obj/item/storage/backpack/rogue/backpack,
+/obj/item/storage/backpack/backpack,
 /turf/open/floor/wood/nosmooth,
 /area/rogue/under/mountains/anvil/dungeon)
 "kK" = (

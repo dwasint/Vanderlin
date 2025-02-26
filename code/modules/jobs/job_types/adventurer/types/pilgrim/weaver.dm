@@ -26,7 +26,7 @@
 	belt = /obj/item/storage/belt/leather/cloth/lady
 	pants = /obj/item/clothing/pants/tights/random
 	shoes = /obj/item/clothing/shoes/shortboots
-	backl = /obj/item/storage/backpack/rogue/satchel
+	backl = /obj/item/storage/backpack/satchel
 	neck = /obj/item/storage/belt/pouch/coins/mid
 	shirt = /obj/item/clothing/shirt/undershirt
 	beltr = /obj/item/weapon/knife/scissors

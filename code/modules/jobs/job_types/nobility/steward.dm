@@ -41,7 +41,7 @@
 	belt = /obj/item/storage/belt/leather/plaquesilver
 	beltr = /obj/item/storage/keyring/steward
 	beltl = /obj/item/weapon/knife/dagger/steel
-	backr = /obj/item/storage/backpack/rogue/satchel
+	backr = /obj/item/storage/backpack/satchel
 	backpack_contents = list(/obj/item/storage/belt/pouch/coins/rich = 1, /obj/item/lockpickring/mundane = 1)
 
 	if(H.mind)

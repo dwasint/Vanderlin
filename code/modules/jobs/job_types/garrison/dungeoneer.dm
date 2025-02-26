@@ -42,7 +42,7 @@
 	belt = /obj/item/storage/belt/leather
 	beltr = /obj/item/weapon/whip/antique
 	beltl = /obj/item/storage/keyring/dungeoneer
-	backr = /obj/item/storage/backpack/rogue/satchel	// lack of satchel requires dealing with the merchant to correct, which requires entering town; not ideal. N.
+	backr = /obj/item/storage/backpack/satchel	// lack of satchel requires dealing with the merchant to correct, which requires entering town; not ideal. N.
 
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)

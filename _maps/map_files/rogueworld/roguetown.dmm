@@ -2590,7 +2590,7 @@
 	},
 /area/rogue/indoors/town/church)
 "jf" = (
-/obj/item/storage/backpack/rogue/satchel,
+/obj/item/storage/backpack/satchel,
 /obj/structure/closet/crate/chest,
 /obj/item/book/rogue/bibble,
 /obj/item/key/priest,
@@ -6054,7 +6054,7 @@
 /obj/item/flashlight/flare/torch/metal,
 /obj/item/flashlight/flare/torch/metal,
 /obj/structure/closet/crate/crafted_closet,
-/obj/item/storage/backpack/rogue/satchel,
+/obj/item/storage/backpack/satchel,
 /turf/open/floor/herringbone,
 /area/rogue/indoors/town/church)
 "uA" = (
@@ -6819,11 +6819,11 @@
 	icon_state = "tablewood1"
 	},
 /obj/item/clothing/face/cigarette/pipe/westman,
-/obj/item/storage/backpack/rogue/backpack,
-/obj/item/storage/backpack/rogue/backpack,
-/obj/item/storage/backpack/rogue/satchel/black,
-/obj/item/storage/backpack/rogue/satchel/heartfelt,
-/obj/item/storage/backpack/rogue/satchel,
+/obj/item/storage/backpack/backpack,
+/obj/item/storage/backpack/backpack,
+/obj/item/storage/backpack/satchel/black,
+/obj/item/storage/backpack/satchel/heartfelt,
+/obj/item/storage/backpack/satchel,
 /turf/open/floor/wood,
 /area/rogue/indoors/town/shop)
 "xt" = (
@@ -10099,7 +10099,7 @@
 /obj/item/key/walls,
 /obj/item/storage/keyring,
 /obj/item/key/manor,
-/obj/item/storage/backpack/rogue/satchel,
+/obj/item/storage/backpack/satchel,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/garrison)
 "Iy" = (

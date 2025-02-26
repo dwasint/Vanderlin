@@ -43,7 +43,7 @@
 	shoes = /obj/item/clothing/shoes/boots
 	belt = /obj/item/storage/belt/leather/plaquesilver
 	beltl = /obj/item/storage/keyring/archivist
-	backl = /obj/item/storage/backpack/rogue/satchel
+	backl = /obj/item/storage/backpack/satchel
 	neck = /obj/item/clothing/neck/psycross/noc
 	backpack_contents = list(/obj/item/literary/apprentice = 1)
 

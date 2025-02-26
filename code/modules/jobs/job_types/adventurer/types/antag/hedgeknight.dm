@@ -19,7 +19,7 @@
 	shoes = /obj/item/clothing/shoes/boots/armor/light/rust
 	belt = /obj/item/storage/belt/leather
 	beltr = /obj/item/weapon/sword/long
-	backr = /obj/item/storage/backpack/rogue/satchel/black
+	backr = /obj/item/storage/backpack/satchel/black
 	backl = /obj/item/weapon/shield/tower/metal
 	backpack_contents = list(/obj/item/weapon/knife/dagger = 1)
 	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)

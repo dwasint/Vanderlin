@@ -14,7 +14,7 @@
 	shoes = /obj/item/clothing/shoes/boots
 	belt = /obj/item/storage/belt/leather/black
 	pants = /obj/item/clothing/pants/trou/shadowpants
-	backl = /obj/item/storage/backpack/rogue/satchel
+	backl = /obj/item/storage/backpack/satchel
 	backpack_contents = list(/obj/item/key/mercenary, /obj/item/storage/belt/pouch/coins/poor, /obj/item/weapon/knife/dagger/steel/dirk)
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)

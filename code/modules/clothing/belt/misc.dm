@@ -188,13 +188,7 @@
 		/obj/item/ammo_casing/caseless/rogue/dart/poison,
 	)
 
-/obj/item/storage/backpack/rogue //holding salvage vars for children
-	sewrepair = TRUE
-	fiber_salvage = TRUE
-	salvage_amount = 1
-	salvage_result = /obj/item/natural/hide/cured
-
-/obj/item/storage/backpack/rogue/satchel
+/obj/item/storage/backpack/satchel
 	name = "satchel"
 	desc = "A bulky bag worn over the shoulder which can be used to hold many things."
 	icon_state = "satchel"
@@ -209,23 +203,23 @@
 	alternate_worn_layer = UNDER_CLOAK_LAYER
 	component_type = /datum/component/storage/concrete/grid/satchel
 
-/obj/item/storage/backpack/rogue/satchel/heartfelt
+/obj/item/storage/backpack/satchel/heartfelt
 	populate_contents = list(
 		/obj/item/natural/feather,
 		/obj/item/paper/heartfelt/random,
 	)
 
-/obj/item/storage/backpack/rogue/satchel/black
+/obj/item/storage/backpack/satchel/black
 	color = CLOTHING_SOOT_BLACK
 
-/obj/item/storage/backpack/rogue/attack_right(mob/user)
+/obj/item/storage/backpack/attack_right(mob/user)
 	var/datum/component/storage/CP = GetComponent(/datum/component/storage)
 	if(CP)
 		CP.rmb_show(user)
 		return TRUE
 
 
-/obj/item/storage/backpack/rogue/backpack
+/obj/item/storage/backpack/backpack
 	name = "backpack"
 	desc = "A bulky backpack worn on the back which can store many items."
 	icon_state = "backpack"
@@ -239,7 +233,7 @@
 	bloody_icon_state = "bodyblood"
 	component_type = /datum/component/storage/concrete/grid/backpack
 
-/obj/item/storage/backpack/rogue/satchel/surgbag
+/obj/item/storage/backpack/satchel/surgbag
 	name = "surgery bag"
 	desc = "Contains all the phreakish devices one needs to cut a person up."
 	item_state = "doctorbag"

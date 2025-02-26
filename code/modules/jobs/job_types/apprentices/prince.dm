@@ -59,7 +59,7 @@
 	beltl = /obj/item/weapon/sword
 	beltr = /obj/item/key/manor
 	neck = /obj/item/storage/belt/pouch/coins/rich
-	backr = /obj/item/storage/backpack/rogue/satchel
+	backr = /obj/item/storage/backpack/satchel
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/axesmaces, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)

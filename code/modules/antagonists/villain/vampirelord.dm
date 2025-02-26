@@ -173,7 +173,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	beltl = /obj/item/key/vampire
 	cloak = /obj/item/clothing/cloak/cape/puritan
 	shoes = /obj/item/clothing/shoes/boots
-	backl = /obj/item/storage/backpack/rogue/satchel/black
+	backl = /obj/item/storage/backpack/satchel/black
 	H.ambushable = FALSE
 
 ////////Outfits////////

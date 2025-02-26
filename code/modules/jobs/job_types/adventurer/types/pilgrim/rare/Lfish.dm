@@ -31,7 +31,7 @@
 		shoes = /obj/item/clothing/shoes/boots/leather
 		neck = /obj/item/storage/belt/pouch/coins/mid
 		head = /obj/item/clothing/head/fisherhat
-		backr = /obj/item/storage/backpack/rogue/satchel
+		backr = /obj/item/storage/backpack/satchel
 		armor = /obj/item/clothing/armor/leather/jacket/sea
 		belt = /obj/item/storage/belt/leather
 		backl = /obj/item/fishingrod/fisher
@@ -60,7 +60,7 @@
 		shirt = /obj/item/clothing/shirt/shortshirt/random
 		neck = /obj/item/storage/belt/pouch/coins/mid
 		head = /obj/item/clothing/head/fisherhat
-		backr = /obj/item/storage/backpack/rogue/satchel
+		backr = /obj/item/storage/backpack/satchel
 		armor = /obj/item/clothing/armor/leather/jacket/sea
 		belt = /obj/item/storage/belt/leather
 		beltr = /obj/item/fishingrod/fisher

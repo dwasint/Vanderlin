@@ -17,8 +17,8 @@
 	beltr = /obj/item/weapon/knife/cleaver /// proper self defense an tree aquiring
 	pants = /obj/item/clothing/pants/trou
 	shoes = /obj/item/clothing/shoes/simpleshoes
-	backr = /obj/item/storage/backpack/rogue/satchel
-	backl = /obj/item/storage/backpack/rogue/satchel/surgbag
+	backr = /obj/item/storage/backpack/satchel
+	backl = /obj/item/storage/backpack/satchel/surgbag
 	backpack_contents = list(/obj/item/natural/worms/leech = 1, /obj/item/natural/cloth = 2,)
 	H.mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)

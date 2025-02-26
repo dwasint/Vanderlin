@@ -71,7 +71,7 @@
 	gloves = /obj/item/clothing/gloves/chain
 	beltr = /obj/item/weapon/sword/arming
 	backr = /obj/item/weapon/polearm/spear/billhook
-	backl = /obj/item/storage/backpack/rogue/satchel
+	backl = /obj/item/storage/backpack/satchel
 	backpack_contents = list(/obj/item/weapon/knife/dagger/steel/special)
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
@@ -114,7 +114,7 @@
 	neck = /obj/item/clothing/neck/gorget
 	gloves = /obj/item/clothing/gloves/chain
 	beltr = /obj/item/weapon/sword/rapier
-	backl = /obj/item/storage/backpack/rogue/satchel
+	backl = /obj/item/storage/backpack/satchel
 	backpack_contents = list(/obj/item/weapon/knife/dagger/steel/special)
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)

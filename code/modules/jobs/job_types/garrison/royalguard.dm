@@ -61,7 +61,7 @@
 	beltl = /obj/item/storage/keyring/mguard
 	belt = /obj/item/storage/belt/leather
 	beltr = /obj/item/weapon/sword/arming
-	backr = /obj/item/storage/backpack/rogue/satchel
+	backr = /obj/item/storage/backpack/satchel
 	backl = /obj/item/weapon/shield/tower/metal
 	r_hand = /obj/item/weapon/polearm/halberd
 	if(prob(30))

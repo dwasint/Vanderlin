@@ -48,7 +48,7 @@
 	H.mind?.adjust_skillrank(/datum/skill/misc/music, rand(1,2), TRUE)
 	H.change_stat(STATKEY_INT, 1)
 	shoes = /obj/item/clothing/shoes/boots
-	backl = /obj/item/storage/backpack/rogue/satchel
+	backl = /obj/item/storage/backpack/satchel
 	neck = /obj/item/storage/belt/pouch/coins/veryrich
 	belt = /obj/item/storage/belt/leather
 	id = /obj/item/clothing/ring/silver

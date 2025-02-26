@@ -126,28 +126,28 @@
 /area/rogue)
 "aq" = (
 /obj/structure/table/wood/reinforced,
-/obj/item/storage/backpack/rogue/satchel,
-/obj/item/storage/backpack/rogue/satchel,
-/obj/item/storage/backpack/rogue/satchel,
-/obj/item/storage/backpack/rogue/satchel/black,
-/obj/item/storage/backpack/rogue/satchel/black,
-/obj/item/storage/backpack/rogue/satchel/black,
+/obj/item/storage/backpack/satchel,
+/obj/item/storage/backpack/satchel,
+/obj/item/storage/backpack/satchel,
+/obj/item/storage/backpack/satchel/black,
+/obj/item/storage/backpack/satchel/black,
+/obj/item/storage/backpack/satchel/black,
 /obj/structure/fake_machine/camera/right,
 /turf/open/floor/carpet,
 /area/rogue)
 "ar" = (
 /obj/structure/table/wood/reinforced,
-/obj/item/storage/backpack/rogue/backpack,
-/obj/item/storage/backpack/rogue/backpack,
-/obj/item/storage/backpack/rogue/backpack,
-/obj/item/storage/backpack/rogue/backpack,
+/obj/item/storage/backpack/backpack,
+/obj/item/storage/backpack/backpack,
+/obj/item/storage/backpack/backpack,
+/obj/item/storage/backpack/backpack,
 /turf/open/floor/carpet,
 /area/rogue)
 "as" = (
 /obj/structure/table/wood/reinforced,
-/obj/item/storage/backpack/rogue/satchel/surgbag,
-/obj/item/storage/backpack/rogue/satchel/surgbag,
-/obj/item/storage/backpack/rogue/satchel/surgbag,
+/obj/item/storage/backpack/satchel/surgbag,
+/obj/item/storage/backpack/satchel/surgbag,
+/obj/item/storage/backpack/satchel/surgbag,
 /turf/open/floor/carpet,
 /area/rogue)
 "at" = (

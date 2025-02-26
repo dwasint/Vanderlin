@@ -420,7 +420,7 @@
 		),
 		// Tools
 		"Surgery Bag (3)" = list(
-			list(type = /obj/item/storage/backpack/rogue/satchel/surgbag, count = 1),
+			list(type = /obj/item/storage/backpack/satchel/surgbag, count = 1),
 			cost = 3,
 			max_purchases = 1
 		),

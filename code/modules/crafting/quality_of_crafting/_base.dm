@@ -13,7 +13,7 @@
 	var/sellprice = 0
 
 	///this is the things we check for in our offhand ie herb pouch or something to repeat the craft
-	var/list/offhand_repeat_check = list(/obj/item/storage/backpack/rogue)
+	var/list/offhand_repeat_check = list(/obj/item/storage/backpack)
 	///if this is set we also check the floor on the ground
 	var/check_around_owner = TRUE
 	///this is the atom we need to start the process

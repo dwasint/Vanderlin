@@ -24,7 +24,7 @@
 	belt = /obj/item/storage/belt/leather/plaquesilver
 	beltl = /obj/item/weapon/sword/sabre/dec
 	beltr = /obj/item/flashlight/flare/torch/lantern
-	backr = /obj/item/storage/backpack/rogue/satchel
+	backr = /obj/item/storage/backpack/satchel
 	id = /obj/item/clothing/ring/gold
 	shirt = /obj/item/clothing/shirt/grenzelhoft
 	pants = /obj/item/clothing/pants/grenzelpants

@@ -32,7 +32,7 @@
 /datum/outfit/job/magician/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/wizhat/gen
-	backr = /obj/item/storage/backpack/rogue/satchel
+	backr = /obj/item/storage/backpack/satchel
 	armor = /obj/item/clothing/shirt/robe/black
 	cloak = /obj/item/clothing/cloak/black_cloak
 	id = /obj/item/clothing/ring/gold

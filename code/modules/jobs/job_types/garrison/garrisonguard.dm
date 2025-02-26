@@ -70,7 +70,7 @@
 	armor = /obj/item/clothing/armor/chainmail
 	shirt = /obj/item/clothing/armor/gambeson
 	backr = /obj/item/weapon/shield/heater
-	backl = /obj/item/storage/backpack/rogue/satchel
+	backl = /obj/item/storage/backpack/satchel
 	beltr = /obj/item/weapon/sword/short
 	beltl = /obj/item/weapon/mace/cudgel
 	backpack_contents = list(/obj/item/storage/keyring/guard, /obj/item/weapon/knife/dagger/steel/special)
@@ -107,7 +107,7 @@
 	armor = /obj/item/clothing/armor/gambeson/heavy
 	shirt = pick(/obj/item/clothing/shirt/undershirt/guard, /obj/item/clothing/shirt/undershirt/guardsecond)
 	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
-	backl = /obj/item/storage/backpack/rogue/satchel
+	backl = /obj/item/storage/backpack/satchel
 	beltr = /obj/item/ammo_holder/quiver/arrows
 	beltl = /obj/item/weapon/mace/cudgel
 	backpack_contents = list(/obj/item/storage/keyring/guard, /obj/item/weapon/knife/dagger/steel/special)
@@ -149,7 +149,7 @@
 	armor = /obj/item/clothing/armor/chainmail
 	shirt = /obj/item/clothing/armor/gambeson
 	neck = /obj/item/clothing/neck/gorget
-	backl = /obj/item/storage/backpack/rogue/satchel
+	backl = /obj/item/storage/backpack/satchel
 	backr = /obj/item/weapon/polearm/spear
 	beltl = /obj/item/weapon/sword/short
 	beltr = /obj/item/weapon/mace/cudgel

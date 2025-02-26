@@ -17,7 +17,7 @@
 /datum/outfit/job/adventurer/masterblacksmith/pre_equip(mob/living/carbon/human/H)
 	..()
 	beltr = /obj/item/weapon/hammer/iron
-	backl = /obj/item/storage/backpack/rogue/backpack
+	backl = /obj/item/storage/backpack/backpack
 	backr =	/obj/item/weapon/hammer/sledgehammer
 	pants = /obj/item/clothing/pants/trou
 	shoes = /obj/item/clothing/shoes/boots/leather

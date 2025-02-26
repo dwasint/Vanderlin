@@ -19,7 +19,7 @@
 	belt = /obj/item/storage/belt/leather/mercenary/black
 	armor = /obj/item/clothing/armor/cuirass/elven
 	backr = /obj/item/weapon/polearm/spear
-	backl = /obj/item/storage/backpack/rogue/satchel
+	backl = /obj/item/storage/backpack/satchel
 	beltl = /obj/item/weapon/knife/dagger/steel/special
 	shirt = /obj/item/clothing/shirt/undershirt/black
 	pants = /obj/item/clothing/pants/trou/leather

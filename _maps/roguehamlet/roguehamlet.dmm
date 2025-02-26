@@ -3350,7 +3350,7 @@
 /turf/closed/wall/mineral/stonebrick/reddish,
 /area/rogue/indoors/town/bath/redhouse)
 "dOd" = (
-/obj/item/storage/backpack/rogue/satchel/heartfelt,
+/obj/item/storage/backpack/satchel/heartfelt,
 /turf/open/floor/dirt/road,
 /area/rogue/indoors/shelter/rtfield)
 "dOe" = (
@@ -15369,7 +15369,7 @@
 	pixel_y = 0
 	},
 /obj/structure/rack/rogue,
-/obj/item/storage/backpack/rogue/satchel,
+/obj/item/storage/backpack/satchel,
 /turf/open/floor/blocks,
 /area/rogue/indoors/town/shop)
 "pQi" = (
@@ -16228,8 +16228,8 @@
 /obj/structure/closet/crate/crafted_closet/inn/chest,
 /obj/item/storage/belt/pouch,
 /obj/item/storage/belt/pouch,
-/obj/item/storage/backpack/rogue/satchel,
-/obj/item/storage/backpack/rogue/satchel,
+/obj/item/storage/backpack/satchel,
+/obj/item/storage/backpack/satchel,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/indoors/town/shop)
 "qJZ" = (
@@ -19393,7 +19393,7 @@
 	pixel_x = 8;
 	pixel_y = -2
 	},
-/obj/item/storage/backpack/rogue/backpack,
+/obj/item/storage/backpack/backpack,
 /turf/open/floor/blocks,
 /area/rogue/indoors/town/shop)
 "tUq" = (
@@ -23443,7 +23443,7 @@
 /area/rogue/outdoors/mountains/decap)
 "xNu" = (
 /obj/structure/bed/rogue/shit,
-/obj/item/storage/backpack/rogue/backpack,
+/obj/item/storage/backpack/backpack,
 /turf/open/floor/dirt/road,
 /area/rogue/indoors/shelter/rtfield)
 "xOf" = (

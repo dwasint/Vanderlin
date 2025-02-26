@@ -31,7 +31,7 @@
 	belt = /obj/item/storage/belt/leather/shalal
 	beltl = /obj/item/weapon/sword/sabre/shalal
 	beltr = /obj/item/flashlight/flare/torch/lantern
-	backr = /obj/item/storage/backpack/rogue/satchel
+	backr = /obj/item/storage/backpack/satchel
 	id = /obj/item/clothing/ring/gold/guild_mercator
 	shirt = /obj/item/clothing/shirt/tunic/purple
 	pants = /obj/item/clothing/pants/trou/leather

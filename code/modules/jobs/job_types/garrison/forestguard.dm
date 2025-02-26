@@ -40,7 +40,7 @@
 	wrists = /obj/item/clothing/wrists/bracers/leather
 	gloves = /obj/item/clothing/gloves/leather
 	belt = /obj/item/storage/belt/leather
-	backl = /obj/item/storage/backpack/rogue/satchel
+	backl = /obj/item/storage/backpack/satchel
 
 /datum/job/forestguard/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()
