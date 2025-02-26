@@ -581,25 +581,25 @@
 "jr" = (
 /obj/structure/rack/rogue,
 /obj/structure/rack/rogue,
-/obj/item/clothing/neck/roguetown/gorget{
+/obj/item/clothing/neck/gorget{
 	pixel_y = -12
 	},
-/obj/item/clothing/neck/roguetown/gorget{
+/obj/item/clothing/neck/gorget{
 	pixel_y = -12
 	},
-/obj/item/clothing/neck/roguetown/gorget{
+/obj/item/clothing/neck/gorget{
 	pixel_y = -12
 	},
-/obj/item/clothing/neck/roguetown/gorget{
+/obj/item/clothing/neck/gorget{
 	pixel_y = -12
 	},
-/obj/item/clothing/neck/roguetown/gorget{
+/obj/item/clothing/neck/gorget{
 	pixel_y = -12
 	},
-/obj/item/clothing/neck/roguetown/gorget{
+/obj/item/clothing/neck/gorget{
 	pixel_y = -12
 	},
-/obj/item/clothing/neck/roguetown/gorget{
+/obj/item/clothing/neck/gorget{
 	pixel_y = -12
 	},
 /obj/effect/decal/cleanable/dirt/dust,
@@ -1596,7 +1596,7 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "uY" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/neck/roguetown/talkstone,
+/obj/item/clothing/neck/talkstone,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "vb" = (
@@ -1832,7 +1832,7 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "yz" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/clothing/neck/roguetown/chaincoif,
+/obj/item/clothing/neck/chaincoif,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "yA" = (
@@ -2474,7 +2474,7 @@
 /obj/item/storage/belt/rogue/leather/plaquesilver,
 /obj/item/clothing/ring/silver/noc,
 /obj/item/clothing/wrists/roguetown/nocwrappings,
-/obj/item/clothing/neck/roguetown/psycross/noc,
+/obj/item/clothing/neck/psycross/noc,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /mob/living/carbon/human/species/skeleton/npc/no_equipment,
 /turf/open/floor/carpet/purple,
@@ -3030,7 +3030,7 @@
 "Ou" = (
 /obj/item/clothing/face/facemask/goldmask,
 /obj/item/clothing/wrists/roguetown/bracers/hoplite,
-/obj/item/clothing/neck/roguetown/gorget/hoplite,
+/obj/item/clothing/neck/gorget/hoplite,
 /obj/item/weapon/polearm/spear/hoplite/winged,
 /obj/item/weapon/shield/tower/hoplite,
 /obj/item/clothing/cloak/cape,
@@ -3267,7 +3267,7 @@
 /obj/structure/table/church{
 	dir = 1
 	},
-/obj/item/clothing/neck/roguetown/psycross/g,
+/obj/item/clothing/neck/psycross/g,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Ru" = (
@@ -3451,7 +3451,7 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "Uf" = (
 /obj/structure/table/church,
-/obj/item/clothing/neck/roguetown/psycross/noc,
+/obj/item/clothing/neck/psycross/noc,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Ui" = (
@@ -3723,7 +3723,7 @@
 "Xr" = (
 /mob/living/carbon/human/species/skeleton/npc/no_equipment,
 /obj/item/clothing/suit/roguetown/shirt/robe/noc,
-/obj/item/clothing/neck/roguetown/psycross/noc,
+/obj/item/clothing/neck/psycross/noc,
 /obj/item/clothing/head/roguehood/nochood,
 /obj/item/clothing/gloves/roguetown/leather/black,
 /obj/item/clothing/shoes/boots/leather,

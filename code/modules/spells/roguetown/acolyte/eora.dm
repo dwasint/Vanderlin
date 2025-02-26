@@ -5,7 +5,7 @@
 	desc = "Grants target a super-natural beauty for a time, increasing their mood."
 	overlay_state = "perfume"
 	charge_max = 2 MINUTES
-	req_items = list(/obj/item/clothing/neck/roguetown/psycross/silver/eora)
+	req_items = list(/obj/item/clothing/neck/psycross/silver/eora)
 	invocation = "Eora, lend some of your devine beauty!"
 	invocation_type = "shout"
 	releasedrain = 30
@@ -131,7 +131,7 @@
 	range = 2
 	overlay_state = "pflower"
 	sound = list('sound/magic/magnet.ogg')
-	req_items = list(/obj/item/clothing/neck/roguetown/psycross/silver/eora)
+	req_items = list(/obj/item/clothing/neck/psycross/silver/eora)
 	releasedrain = 40
 	chargetime = 40
 	warnie = "spellwarning"
@@ -172,7 +172,7 @@
 	warnie = "sydwarning"
 	movement_interrupt = FALSE
 	chargedloop = null
-	req_items = list(/obj/item/clothing/neck/roguetown/psycross/silver/eora)
+	req_items = list(/obj/item/clothing/neck/psycross/silver/eora)
 	sound = 'sound/magic/whiteflame.ogg'
 	invocation = "Nulla felicitas sine amore!"
 	invocation_type = "shout"
@@ -265,7 +265,7 @@
 	warnie = "sydwarning"
 	movement_interrupt = FALSE
 	chargedloop = /datum/looping_sound/invokegen
-	req_items = list(/obj/item/clothing/neck/roguetown/psycross/silver/eora)
+	req_items = list(/obj/item/clothing/neck/psycross/silver/eora)
 	sound = list('sound/magic/whiteflame.ogg')
 	invocation = "Experiamur vim amoris!"
 	invocation_type = "shout"

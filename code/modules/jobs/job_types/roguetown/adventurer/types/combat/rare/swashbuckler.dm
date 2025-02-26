@@ -29,7 +29,7 @@
 	beltl = /obj/item/weapon/sword/sabre/cutlass
 	beltr = /obj/item/weapon/knife/dagger
 	shoes = /obj/item/clothing/shoes/boots
-	neck = /obj/item/clothing/neck/roguetown/psycross/silver/abyssor
+	neck = /obj/item/clothing/neck/psycross/silver/abyssor
 
 /datum/outfit/job/roguetown/adventurer/swashbuckler/pre_equip(mob/living/carbon/human/H)
 	..()

@@ -21,7 +21,7 @@
 	beltr = /obj/item/flashlight/flare/torch/lantern
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/priest
 	pants = /obj/item/clothing/pants/tights/black
-	neck = /obj/item/clothing/neck/roguetown/psycross
+	neck = /obj/item/clothing/neck/psycross
 	head = /obj/item/clothing/head/brimmed
 	r_hand = /obj/item/book/rogue/psybibble
 	beltl = /obj/item/handheld_bell

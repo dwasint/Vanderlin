@@ -115,7 +115,7 @@
 /area/rogue)
 "nJ" = (
 /obj/structure/table/church/m,
-/obj/item/clothing/neck/roguetown/psycross/silver/ravox,
+/obj/item/clothing/neck/psycross/silver/ravox,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue)
 "nR" = (

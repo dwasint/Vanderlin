@@ -46,7 +46,7 @@
 	gloves = /obj/item/clothing/gloves/roguetown/plate
 	pants = /obj/item/clothing/pants/platelegs/captain
 	armor = /obj/item/clothing/suit/roguetown/armor/captain
-	neck = /obj/item/clothing/neck/roguetown/gorget
+	neck = /obj/item/clothing/neck/gorget
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guard
 	shoes = /obj/item/clothing/shoes/boots
 	backr = /obj/item/storage/backpack/rogue/satchel

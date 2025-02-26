@@ -31,7 +31,7 @@
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1)
 	mask = /obj/item/clothing/face/facemask/steel
-	neck = /obj/item/clothing/neck/roguetown/coif
+	neck = /obj/item/clothing/neck/coif
 	head = /obj/item/clothing/head/helmet/leather/volfhelm
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
 	H.change_stat(STATKEY_STR, 3)

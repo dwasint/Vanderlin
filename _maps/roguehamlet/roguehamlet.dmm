@@ -2300,7 +2300,7 @@
 /obj/structure/fluff/walldeco/painting{
 	pixel_y = 32
 	},
-/obj/item/clothing/neck/roguetown/psycross/silver/astrata,
+/obj/item/clothing/neck/psycross/silver/astrata,
 /obj/structure/closet/crate/chest/neu_fancy,
 /turf/open/floor/rogue/tile/kitchen,
 /area/rogue/indoors/town/vault)
@@ -5178,7 +5178,7 @@
 	})
 "fsd" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/neck/roguetown/talkstone,
+/obj/item/clothing/neck/talkstone,
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/magician)
 "fsl" = (
@@ -7453,7 +7453,7 @@
 /area/rogue/outdoors/exposed/magiciantower)
 "hRk" = (
 /obj/structure/closet/crate/roguecloset/inn/chest,
-/obj/item/clothing/neck/roguetown/coif,
+/obj/item/clothing/neck/coif,
 /obj/item/storage/belt/rogue/pouch/coins/poor,
 /obj/item/reagent_containers/food/snacks/cooked/frysteak,
 /obj/item/clothing/suit/roguetown/shirt/undershirt/priest,
@@ -19256,9 +19256,9 @@
 /obj/item/clothing/head/helmet,
 /obj/item/clothing/head/helmet,
 /obj/item/clothing/head/helmet,
-/obj/item/clothing/neck/roguetown/gorget,
-/obj/item/clothing/neck/roguetown/gorget,
-/obj/item/clothing/neck/roguetown/gorget,
+/obj/item/clothing/neck/gorget,
+/obj/item/clothing/neck/gorget,
+/obj/item/clothing/neck/gorget,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/garrison)
 "tOU" = (
@@ -21025,7 +21025,7 @@
 /obj/structure/closet/crate/roguecloset,
 /obj/item/clothing/cloak/apron/cook,
 /obj/item/clothing/suit/roguetown/shirt/robe/feld,
-/obj/item/clothing/neck/roguetown/feld,
+/obj/item/clothing/neck/feld,
 /obj/item/clothing/face/feld,
 /obj/item/clothing/head/roguehood/feld,
 /obj/item/clothing/gloves/roguetown/leather/feld,
@@ -21733,7 +21733,7 @@
 /obj/structure/closet/crate/roguecloset/dark{
 	lockid = "steward"
 	},
-/obj/item/clothing/neck/roguetown/gorget,
+/obj/item/clothing/neck/gorget,
 /obj/item/weapon/knife/dagger/steel,
 /obj/item/storage/keyring/steward,
 /turf/open/floor/rogue/carpet,

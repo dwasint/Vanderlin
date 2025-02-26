@@ -23,7 +23,7 @@
 	beltl = /obj/item/weapon/knife/dagger/steel/special
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 	pants = /obj/item/clothing/pants/trou/leather
-	neck = /obj/item/clothing/neck/roguetown/chaincoif
+	neck = /obj/item/clothing/neck/chaincoif
 	backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/poor)
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)

@@ -31,7 +31,7 @@
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1)
 	mask = /obj/item/clothing/face/facemask/steel
-	neck = /obj/item/clothing/neck/roguetown/gorget
+	neck = /obj/item/clothing/neck/gorget
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail
 	H.change_stat(STATKEY_STR, 2) //less buffs than brigand but no int debuff
 	H.change_stat(STATKEY_END, 2)

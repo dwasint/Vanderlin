@@ -68,7 +68,7 @@
 /obj/structure/table/wood/counter/end{
 	dir = 1
 	},
-/obj/item/clothing/neck/roguetown/menears,
+/obj/item/clothing/neck/menears,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue)
 "pT" = (
@@ -76,7 +76,7 @@
 /area/rogue)
 "qE" = (
 /obj/structure/toilet,
-/obj/item/clothing/neck/roguetown/psycross/g,
+/obj/item/clothing/neck/psycross/g,
 /obj/item/natural/poo{
 	pixel_y = 9
 	},
@@ -234,7 +234,7 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue)
 "Ns" = (
-/obj/item/clothing/neck/roguetown/elfears,
+/obj/item/clothing/neck/elfears,
 /obj/structure/table/wood/large/corner,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue)

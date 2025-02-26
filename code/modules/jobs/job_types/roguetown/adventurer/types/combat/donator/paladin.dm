@@ -19,37 +19,37 @@
 	switch(H.patron?.type)
 		if(/datum/patron/psydon)
 			head = /obj/item/clothing/head/helmet/heavy/bucket/gold
-			wrists = /obj/item/clothing/neck/roguetown/psycross/g
+			wrists = /obj/item/clothing/neck/psycross/g
 		if(/datum/patron/divine/astrata)
 			head = /obj/item/clothing/head/helmet/heavy/necked/astrata
-			wrists = /obj/item/clothing/neck/roguetown/psycross/silver/astrata
+			wrists = /obj/item/clothing/neck/psycross/silver/astrata
 		if(/datum/patron/divine/noc)
 			head = /obj/item/clothing/head/helmet/heavy/necked/noc
-			wrists = /obj/item/clothing/neck/roguetown/psycross/noc
+			wrists = /obj/item/clothing/neck/psycross/noc
 		if(/datum/patron/divine/dendor)
 			head = /obj/item/clothing/head/helmet/heavy/necked/dendorhelm
-			wrists = /obj/item/clothing/neck/roguetown/psycross/silver/dendor
+			wrists = /obj/item/clothing/neck/psycross/silver/dendor
 		if(/datum/patron/divine/abyssor)
 			head = /obj/item/clothing/head/helmet/heavy/bucket // Placeholder
-			wrists = /obj/item/clothing/neck/roguetown/psycross/silver/abyssor
+			wrists = /obj/item/clothing/neck/psycross/silver/abyssor
 		if(/datum/patron/divine/necra)
 			head = /obj/item/clothing/head/helmet/heavy/necked/necra
-			wrists = /obj/item/clothing/neck/roguetown/psycross/silver/necra
+			wrists = /obj/item/clothing/neck/psycross/silver/necra
 		if(/datum/patron/divine/ravox)
 			head = /obj/item/clothing/head/helmet/heavy/bucket // Placeholder
-			wrists = /obj/item/clothing/neck/roguetown/psycross/silver/ravox
+			wrists = /obj/item/clothing/neck/psycross/silver/ravox
 		if(/datum/patron/divine/xylix)
 			head = /obj/item/clothing/head/helmet/heavy/bucket // Placeholder
-			wrists = /obj/item/clothing/neck/roguetown/psycross/silver/xylix
+			wrists = /obj/item/clothing/neck/psycross/silver/xylix
 		if(/datum/patron/divine/pestra)
 			head = /obj/item/clothing/head/helmet/heavy/necked/pestrahelm
-			wrists = /obj/item/clothing/neck/roguetown/psycross/silver/pestra
+			wrists = /obj/item/clothing/neck/psycross/silver/pestra
 		if(/datum/patron/divine/malum)
 			head = /obj/item/clothing/head/helmet/heavy/necked/malumhelm
-			wrists = /obj/item/clothing/neck/roguetown/psycross/silver/malum
+			wrists = /obj/item/clothing/neck/psycross/silver/malum
 		if(/datum/patron/divine/eora)
 			head = /obj/item/clothing/head/helmet/sallet/eoran
-			wrists = /obj/item/clothing/neck/roguetown/psycross/silver/eora
+			wrists = /obj/item/clothing/neck/psycross/silver/eora
 			H.virginity = FALSE
 		if(/datum/patron/inhumen/baotha, /datum/patron/inhumen/graggar, /datum/patron/inhumen/zizo, /datum/patron/inhumen/matthios, /datum/patron/inhumen/graggar_zizo, /datum/patron/godless)
 			head = /obj/item/clothing/head/jester
@@ -57,7 +57,7 @@
 				H.change_stat(STATKEY_LCK, -20)
 		else // Failsafe
 			head = /obj/item/clothing/head/helmet/heavy/bucket
-			wrists = /obj/item/clothing/neck/roguetown/psycross/silver
+			wrists = /obj/item/clothing/neck/psycross/silver
 
 	armor = /obj/item/clothing/suit/roguetown/armor/plate
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
@@ -67,7 +67,7 @@
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
 	id = /obj/item/clothing/ring/silver/toper
 	cloak = /obj/item/clothing/cloak/tabard/crusader
-	neck = /obj/item/clothing/neck/roguetown/chaincoif
+	neck = /obj/item/clothing/neck/chaincoif
 	gloves = /obj/item/clothing/gloves/roguetown/plate
 	backl = /obj/item/weapon/sword/long/judgement
 	if(H.mind)

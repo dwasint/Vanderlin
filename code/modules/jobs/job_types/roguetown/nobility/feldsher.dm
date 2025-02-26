@@ -43,7 +43,7 @@
 	armor = /obj/item/clothing/suit/roguetown/shirt/robe/feld
 	head = /obj/item/clothing/head/roguehood/feld
 	mask = /obj/item/clothing/face/feld
-	neck = /obj/item/clothing/neck/roguetown/feld
+	neck = /obj/item/clothing/neck/feld
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/storage/keyring/doctor
 

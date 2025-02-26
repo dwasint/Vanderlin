@@ -52,7 +52,7 @@
 /area/rogue)
 "ew" = (
 /obj/structure/closet/dirthole/closed,
-/obj/item/clothing/neck/roguetown/gorget/copper,
+/obj/item/clothing/neck/gorget/copper,
 /obj/item/clothing/head/helmet/coppercap,
 /mob/living/carbon/human/species/skeleton/npc/ambush,
 /mob/living/carbon/human/species/skeleton/npc/ambush,
@@ -422,7 +422,7 @@
 /obj/item/clothing/pants/trou/leather/mourning,
 /obj/item/clothing/suit/roguetown/shirt/robe/necra,
 /obj/item/clothing/head/padded/deathshroud,
-/obj/item/clothing/neck/roguetown/psycross/silver/necra,
+/obj/item/clothing/neck/psycross/silver/necra,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue)
 "IB" = (

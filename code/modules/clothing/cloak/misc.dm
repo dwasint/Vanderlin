@@ -264,7 +264,7 @@
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/blacksteel
 
-/obj/item/clothing/neck/roguetown/blkknight
+/obj/item/clothing/neck/blkknight
 	name = "dragonscale necklace"
 	desc = ""
 	icon_state = "bktrinket"

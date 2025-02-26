@@ -44,7 +44,7 @@
 		armor = /obj/item/clothing/suit/roguetown/armor/rare/elfplate
 		backl = /obj/item/storage/backpack/rogue/satchel
 		head = /obj/item/clothing/head/rare/elfplate
-		neck = /obj/item/clothing/neck/roguetown/chaincoif
+		neck = /obj/item/clothing/neck/chaincoif
 	if(H.dna.species.name == "Elf")
 		pants = /obj/item/clothing/pants/tights/black
 		backr = /obj/item/weapon/sword/long/greatsword/elfgsword
@@ -56,5 +56,5 @@
 		armor = /obj/item/clothing/suit/roguetown/armor/rare/elfplate/welfplate
 		backl = /obj/item/storage/backpack/rogue/satchel
 		head = /obj/item/clothing/head/rare/elfplate/welfplate
-		neck = /obj/item/clothing/neck/roguetown/chaincoif
+		neck = /obj/item/clothing/neck/chaincoif
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)

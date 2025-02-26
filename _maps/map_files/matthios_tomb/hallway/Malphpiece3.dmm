@@ -70,7 +70,7 @@
 /obj/item/clothing/suit/roguetown/shirt/tunic/blue,
 /obj/item/roguegem/blue,
 /obj/item/clothing/shoes/boots,
-/obj/item/clothing/neck/roguetown/psycross/silver/malum_steel,
+/obj/item/clothing/neck/psycross/silver/malum_steel,
 /obj/item/clothing/ring/silver/saffira,
 /obj/item/storage/belt/rogue/leather/plaquesilver,
 /obj/item/weapon/sword/rapier/silver,
@@ -87,8 +87,8 @@
 /obj/item/clothing/suit/roguetown/shirt/undershirt/webs,
 /obj/item/clothing/pants/webs,
 /obj/item/clothing/cloak/raincloak/purple,
-/obj/item/clothing/neck/roguetown/menears,
-/obj/item/clothing/neck/roguetown/mercmedal/anthrax,
+/obj/item/clothing/neck/menears,
+/obj/item/clothing/neck/mercmedal/anthrax,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/outdoors/caves)
 "y" = (

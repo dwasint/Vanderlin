@@ -204,7 +204,7 @@
 			head = pick(/obj/item/clothing/head/hatfur, /obj/item/clothing/head/hatblu, /obj/item/clothing/head/brimmed)
 			shoes = /obj/item/clothing/shoes/boots/leather
 			backr = /obj/item/storage/backpack/rogue/satchel
-			neck = /obj/item/clothing/neck/roguetown/coif
+			neck = /obj/item/clothing/neck/coif
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 			armor = /obj/item/clothing/suit/roguetown/armor/gambeson/light/striped
 			beltr = /obj/item/storage/belt/rogue/pouch/coins/poor

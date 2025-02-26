@@ -128,21 +128,21 @@
 					H.tokenclaimed = TRUE
 					switch(H.merctype)
 						if(0)
-							new /obj/item/clothing/neck/roguetown/shalal(src.loc)
+							new /obj/item/clothing/neck/shalal(src.loc)
 						if(1)
-							new /obj/item/clothing/neck/roguetown/mercmedal/zybatine(src.loc)
+							new /obj/item/clothing/neck/mercmedal/zybatine(src.loc)
 						if(2)
-							new /obj/item/clothing/neck/roguetown/mercmedal/grenzelhoft(src.loc)
+							new /obj/item/clothing/neck/mercmedal/grenzelhoft(src.loc)
 						if(3)
-							new /obj/item/clothing/neck/roguetown/mercmedal/underdweller(src.loc)
+							new /obj/item/clothing/neck/mercmedal/underdweller(src.loc)
 						if(4)
-							new /obj/item/clothing/neck/roguetown/mercmedal/blackoak(src.loc)
+							new /obj/item/clothing/neck/mercmedal/blackoak(src.loc)
 						if(5)
-							new /obj/item/clothing/neck/roguetown/mercmedal/steppesman(src.loc)
+							new /obj/item/clothing/neck/mercmedal/steppesman(src.loc)
 						if(6)
-							new /obj/item/clothing/neck/roguetown/mercmedal/boltslinger(src.loc)
+							new /obj/item/clothing/neck/mercmedal/boltslinger(src.loc)
 						if(7)
-							new /obj/item/clothing/neck/roguetown/mercmedal/anthrax(src.loc)
+							new /obj/item/clothing/neck/mercmedal/anthrax(src.loc)
 				if(C.signed == 0)
 					to_chat(H, "<span class='warning'>I cannot send an unsigned token.</span>")
 					return
@@ -451,7 +451,7 @@
 		),
 		// Clothing
 		"Silver Psycross (2)" = list(
-			list(type = /obj/item/clothing/neck/roguetown/psycross/silver, count = 1),
+			list(type = /obj/item/clothing/neck/psycross/silver, count = 1),
 			cost = 2,
 			max_purchases = 4
 		),

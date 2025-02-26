@@ -176,7 +176,7 @@
 	movement_interrupt = FALSE
 //	chargedloop = /datum/looping_sound/invokeholy
 	chargedloop = null
-	req_items = list(/obj/item/clothing/neck/roguetown/psycross)
+	req_items = list(/obj/item/clothing/neck/psycross)
 	sound = 'sound/magic/heal.ogg'
 	invocation_type = "none"
 	associated_skill = /datum/skill/magic/holy

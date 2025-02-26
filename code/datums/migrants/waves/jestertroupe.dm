@@ -25,7 +25,7 @@
 	backl = /obj/item/rogue/instrument/lute
 	backr = /obj/item/rogue/instrument/viola
 	head = /obj/item/clothing/head/jester
-	neck = /obj/item/clothing/neck/roguetown/coif
+	neck = /obj/item/clothing/neck/coif
 	mask = /obj/item/clothing/face/lordmask
 
 	if(H.mind)

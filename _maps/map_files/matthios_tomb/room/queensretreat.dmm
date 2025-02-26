@@ -784,7 +784,7 @@
 "If" = (
 /obj/machinery/light/rogue/wallfire/candle/weak/r,
 /obj/structure/closet/crate/roguecloset/lord,
-/obj/item/clothing/neck/roguetown/psycross/noc,
+/obj/item/clothing/neck/psycross/noc,
 /obj/item/clothing/ring/silver/noc,
 /obj/item/reagent_containers/glass/bottle/rogue/stronghealthpot,
 /obj/item/reagent_containers/glass/bottle/rogue/stronghealthpot,

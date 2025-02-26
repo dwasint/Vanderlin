@@ -55,5 +55,5 @@
 	shoes = /obj/item/clothing/shoes/boots/armor
 	head = /obj/item/clothing/head/helmet/skullcap
 	gloves = /obj/item/clothing/gloves/roguetown/chain
-	neck = /obj/item/clothing/neck/roguetown/chaincoif
+	neck = /obj/item/clothing/neck/chaincoif
 	mask = /obj/item/clothing/face/skullmask

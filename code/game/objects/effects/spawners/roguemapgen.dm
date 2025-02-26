@@ -142,7 +142,7 @@
 		/obj/item/weapon/mace = 5,
 		/obj/item/clothing/suit/roguetown/armor/leather = 10,
 		/obj/item/clothing/gloves/roguetown/chain/iron = 3,
-		/obj/item/clothing/neck/roguetown/coif = 3,
+		/obj/item/clothing/neck/coif = 3,
 		/obj/item/natural/poo = 5
 		)
 
@@ -157,7 +157,7 @@
 		/obj/item/clothing/suit/roguetown/armor/cuirass/iron = 10,
 		/obj/item/clothing/suit/roguetown/armor/gambeson = 10,
 		/obj/item/clothing/gloves/roguetown/chain/iron = 3,
-		/obj/item/clothing/neck/roguetown/gorget = 3,
+		/obj/item/clothing/neck/gorget = 3,
 		/obj/item/roguestatue/gold/loot = 1
 		)
 
@@ -173,7 +173,7 @@
 		/obj/item/clothing/suit/roguetown/armor/medium/scale = 8,
 		/obj/item/clothing/suit/roguetown/armor/plate = 8,
 		/obj/item/clothing/gloves/roguetown/chain = 3,
-		/obj/item/clothing/neck/roguetown/bevor = 3,
+		/obj/item/clothing/neck/bevor = 3,
 		/obj/item/clothing/pants/chainlegs = 5
 		)
 
@@ -188,7 +188,7 @@
 		/obj/item/clothing/head/crown/circlet/vision = 3,
 		/obj/item/clothing/head/crown/circlet/sleepless = 3,
 		/obj/item/clothing/head/crown/circlet/stink = 5,
-		/obj/item/clothing/neck/roguetown/talkstone = 10
+		/obj/item/clothing/neck/talkstone = 10
 		)
 
 /obj/effect/spawner/roguemap/loot/coin
@@ -279,7 +279,7 @@
 		/obj/item/clothing/head/helmet/visored/hounskull = 5,
 		/obj/item/clothing/face/facemask/steel = 5,
 		/obj/item/clothing/suit/roguetown/armor/plate/full = 5,
-		/obj/item/clothing/neck/roguetown/chaincoif = 5
+		/obj/item/clothing/neck/chaincoif = 5
 		)
 
 /obj/effect/spawner/roguemap/loot/food

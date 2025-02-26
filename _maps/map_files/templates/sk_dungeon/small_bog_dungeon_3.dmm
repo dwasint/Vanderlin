@@ -138,7 +138,7 @@
 /obj/structure/closet/crate/coffin,
 /obj/item/clothing/head/helmet/heavy/necked/noc,
 /obj/item/clothing/ring/silver/noc,
-/obj/item/clothing/neck/roguetown/psycross/noc,
+/obj/item/clothing/neck/psycross/noc,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/outdoors/bog)
 "Q" = (

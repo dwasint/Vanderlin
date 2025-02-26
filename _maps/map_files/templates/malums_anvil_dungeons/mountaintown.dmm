@@ -1237,7 +1237,7 @@
 /obj/structure/table/wood/large/corner_blue{
 	dir = 10
 	},
-/obj/item/clothing/neck/roguetown/psycross/silver/ravox,
+/obj/item/clothing/neck/psycross/silver/ravox,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/under/mountains/anvil/dungeon)
 "qN" = (
@@ -1664,7 +1664,7 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "xw" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/neck/roguetown/chaincoif,
+/obj/item/clothing/neck/chaincoif,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon)
 "xy" = (
@@ -1680,7 +1680,7 @@
 "xF" = (
 /obj/structure/closet/crate/drawer,
 /obj/item/candle/yellow,
-/obj/item/clothing/neck/roguetown/psycross/silver/malum_steel,
+/obj/item/clothing/neck/psycross/silver/malum_steel,
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/under/mountains/anvil/dungeon)
 "xJ" = (
@@ -1692,7 +1692,7 @@
 "xR" = (
 /obj/structure/closet/crate/coffin,
 /obj/item/clothing/suit/roguetown/armor/gambeson/arming,
-/obj/item/clothing/neck/roguetown/bevor,
+/obj/item/clothing/neck/bevor,
 /obj/item/clothing/head/helmet/visored/sallet,
 /obj/effect/spawner/roguemap/loot/weapon,
 /obj/item/alch/bone{
@@ -2351,7 +2351,7 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "Hh" = (
 /obj/structure/closet/crate/coffin,
-/obj/item/clothing/neck/roguetown/chaincoif/iron,
+/obj/item/clothing/neck/chaincoif/iron,
 /obj/effect/spawner/roguemap/loot/weapon,
 /obj/item/alch/bone{
 	name = "bone";
@@ -3135,7 +3135,7 @@
 "Sq" = (
 /obj/structure/closet/crate/chest,
 /obj/effect/spawner/roguemap/loot/magic{
-	spawned = list(/obj/item/clothing/ring/active/nomag = 20, /obj/item/clothing/ring/gold/protection = 16, /obj/item/clothing/ring/silver/calm = 20, /obj/item/clothing/ring/silver/noc = 6, /obj/item/clothing/head/crown/circlet/vision = 3, /obj/item/clothing/head/crown/circlet/sleepless = 3, /obj/item/clothing/neck/roguetown/talkstone = 15)
+	spawned = list(/obj/item/clothing/ring/active/nomag = 20, /obj/item/clothing/ring/gold/protection = 16, /obj/item/clothing/ring/silver/calm = 20, /obj/item/clothing/ring/silver/noc = 6, /obj/item/clothing/head/crown/circlet/vision = 3, /obj/item/clothing/head/crown/circlet/sleepless = 3, /obj/item/clothing/neck/talkstone = 15)
 	},
 /turf/open/floor/rogue/churchrough,
 /area/rogue/under/mountains/anvil/dungeon/lower)
@@ -3684,7 +3684,7 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Zq" = (
 /obj/effect/decal/cleanable/blood/gibs,
-/obj/item/clothing/neck/roguetown/psycross/silver/malum_steel,
+/obj/item/clothing/neck/psycross/silver/malum_steel,
 /obj/effect/decal/cleanable/blood/gibs/body,
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/under/mountains/anvil/dungeon)

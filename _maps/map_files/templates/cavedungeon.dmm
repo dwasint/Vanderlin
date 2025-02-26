@@ -180,7 +180,7 @@
 /area/rogue/outdoors/caves)
 "Aj" = (
 /obj/structure/table/wood/fancy,
-/obj/item/clothing/neck/roguetown/psycross/g,
+/obj/item/clothing/neck/psycross/g,
 /turf/open/floor/rogue/cobble/alt,
 /area/rogue/outdoors/caves)
 "Br" = (
@@ -209,7 +209,7 @@
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /obj/item/clothing/head/helmet/heavy/crusader,
 /obj/item/clothing/gloves/roguetown/plate,
-/obj/item/clothing/neck/roguetown/bevor,
+/obj/item/clothing/neck/bevor,
 /obj/item/clothing/pants/platelegs,
 /obj/item/clothing/shoes/boots/armor,
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk,

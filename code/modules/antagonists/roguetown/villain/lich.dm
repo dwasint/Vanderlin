@@ -83,7 +83,7 @@
 	head = /obj/item/clothing/head/helmet/skullcap/cult
 	pants = /obj/item/clothing/pants/chainlegs
 	shoes = /obj/item/clothing/shoes/shortboots
-	neck = /obj/item/clothing/neck/roguetown/chaincoif
+	neck = /obj/item/clothing/neck/chaincoif
 	armor = /obj/item/clothing/suit/roguetown/shirt/robe/necromancer
 	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/ucolored
 	wrists = /obj/item/clothing/wrists/roguetown/bracers

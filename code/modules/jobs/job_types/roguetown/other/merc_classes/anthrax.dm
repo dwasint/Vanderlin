@@ -35,7 +35,7 @@
 			gloves = /obj/item/clothing/gloves/roguetown/chain/iron/shadowgauntlets
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 			mask = /obj/item/clothing/face/facemask/shadowfacemask
-			neck = /obj/item/clothing/neck/roguetown/gorget
+			neck = /obj/item/clothing/neck/gorget
 			backr = /obj/item/weapon/shield/tower/spidershield
 			beltr = /obj/item/weapon/whip/spiderwhip
 
@@ -57,7 +57,7 @@
 			cloak = /obj/item/clothing/cloak/half/shadowcloak
 			gloves = /obj/item/clothing/gloves/roguetown/fingerless/shadowgloves
 			mask = /obj/item/clothing/face/shepherd/shadowmask
-			neck = /obj/item/clothing/neck/roguetown/chaincoif/iron
+			neck = /obj/item/clothing/neck/chaincoif/iron
 			backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve //Coupled with the racial PER malus, abysmal damage, but good for poison arrows.
 			beltr = /obj/item/ammo_holder/quiver/arrows
 			beltl = /obj/item/weapon/sword/sabre/stalker

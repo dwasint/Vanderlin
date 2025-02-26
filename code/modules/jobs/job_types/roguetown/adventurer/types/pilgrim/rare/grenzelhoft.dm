@@ -18,7 +18,7 @@
 	..()
 	shoes = /obj/item/clothing/shoes/grenzelhoft
 	gloves = /obj/item/clothing/gloves/roguetown/angle/grenzel
-	wrists = /obj/item/clothing/neck/roguetown/psycross/g
+	wrists = /obj/item/clothing/neck/psycross/g
 	head = /obj/item/clothing/head/helmet/skullcap/grenzelhoft
 	armor = /obj/item/clothing/suit/roguetown/armor/brigandine
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
@@ -28,7 +28,7 @@
 	id = /obj/item/clothing/ring/gold
 	shirt = /obj/item/clothing/suit/roguetown/shirt/grenzelhoft
 	pants = /obj/item/clothing/pants/grenzelpants
-	neck = /obj/item/clothing/neck/roguetown/gorget
+	neck = /obj/item/clothing/neck/gorget
 	backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/veryrich)
 	if(H.gender == FEMALE)
 		armor = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/dress/alt

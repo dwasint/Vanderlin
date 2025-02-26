@@ -26,7 +26,7 @@
 /datum/supply_pack/rogue/armor/chaincoif_iron
 	name = "Iron Chain Coif"
 	cost = 20
-	contains = /obj/item/clothing/neck/roguetown/chaincoif/iron
+	contains = /obj/item/clothing/neck/chaincoif/iron
 
 /datum/supply_pack/rogue/armor/gambeson
 	name = "Cloth Gambeson"

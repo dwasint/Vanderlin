@@ -24,7 +24,7 @@
 	..()
 
 	head = /obj/item/clothing/head/helmet/heavy/crusader
-	neck = /obj/item/clothing/neck/roguetown/coif/cloth
+	neck = /obj/item/clothing/neck/coif/cloth
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 	cloak = /obj/item/clothing/cloak/cape/crusader
 	gloves = /obj/item/clothing/gloves/roguetown/chain
@@ -40,19 +40,19 @@
 	switch(H.patron?.name)
 		if("Astrata")
 			cloak = /obj/item/clothing/cloak/stabard/crusader // Gold for Astrata regardless of gender
-			wrists = /obj/item/clothing/neck/roguetown/psycross/silver/astrata
+			wrists = /obj/item/clothing/neck/psycross/silver/astrata
 		if("Necra")
 			cloak = /obj/item/clothing/cloak/stabard/templar/necra
-			wrists = /obj/item/clothing/neck/roguetown/psycross/silver/necra
+			wrists = /obj/item/clothing/neck/psycross/silver/necra
 		if("Psydon")
-			wrists = /obj/item/clothing/neck/roguetown/psycross/silver
+			wrists = /obj/item/clothing/neck/psycross/silver
 			if(H.gender == FEMALE) // Silver for female, gold for male
 				cloak = /obj/item/clothing/cloak/stabard/crusader/t
 			else
 				cloak = /obj/item/clothing/cloak/stabard/crusader
 		else // Failsafe
 			cloak = /obj/item/clothing/cloak/stabard/crusader // Gold version regardless of gender or patron
-			wrists = /obj/item/clothing/neck/roguetown/psycross/silver
+			wrists = /obj/item/clothing/neck/psycross/silver
 
 	H.mind?.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
 	H.mind?.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)

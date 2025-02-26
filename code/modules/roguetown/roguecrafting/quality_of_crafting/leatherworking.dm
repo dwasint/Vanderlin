@@ -320,7 +320,7 @@
 	requirements = list(
 		/obj/item/natural/hide = 1,
 	)
-	output = /obj/item/clothing/neck/roguetown/coif
+	output = /obj/item/clothing/neck/coif
 	craftdiff = 2
 
 /datum/repeatable_crafting_recipe/leather/leatherjacket

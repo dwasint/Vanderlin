@@ -31,7 +31,7 @@
 	id = /obj/item/clothing/ring/gold/guild_mercator
 	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/purple
 	pants = /obj/item/clothing/pants/trou/leather
-	neck = /obj/item/clothing/neck/roguetown/shalal/emir
+	neck = /obj/item/clothing/neck/shalal/emir
 	backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/veryrich)
 	if(H.gender == FEMALE)
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/jacket/silk_coat
@@ -99,7 +99,7 @@
 	id = /obj/item/clothing/ring/gold/guild_mercator
 	shirt = /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/black
 	pants = /obj/item/clothing/pants/trou/leather
-	neck = /obj/item/clothing/neck/roguetown/shalal/emir
+	neck = /obj/item/clothing/neck/shalal/emir
 	backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/veryrich = 1, /obj/item/reagent_containers/glass/bottle/rogue/wine = 1)
 
 	if(H.mind)
@@ -180,7 +180,7 @@
 	backl = /obj/item/storage/backpack/rogue/satchel
 	head = /obj/item/clothing/head/rare/zybanplate
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
-	neck = /obj/item/clothing/neck/roguetown/chaincoif
+	neck = /obj/item/clothing/neck/chaincoif
 	if(!H.has_language(/datum/language/zybantine))
 		H.grant_language(/datum/language/zybantine)
 		to_chat(H, "<span class='info'>I can speak Zybean with ,z before my speech.</span>")
@@ -219,7 +219,7 @@
 	beltl= /obj/item/flashlight/flare/torch/lantern
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 	pants = /obj/item/clothing/pants/tights/red
-	neck = /obj/item/clothing/neck/roguetown/keffiyeh/red
+	neck = /obj/item/clothing/neck/keffiyeh/red
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/poor)
 	if(!H.has_language(/datum/language/zybantine))
@@ -290,7 +290,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/red
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/splint
 	backl = /obj/item/storage/backpack/rogue/satchel
-	head = /obj/item/clothing/neck/roguetown/keffiyeh/red
+	head = /obj/item/clothing/neck/keffiyeh/red
 	backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/poor, /obj/item/lockpick)
 	if(!H.has_language(/datum/language/zybantine))
 		H.grant_language(/datum/language/zybantine)

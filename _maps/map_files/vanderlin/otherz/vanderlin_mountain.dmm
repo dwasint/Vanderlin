@@ -2058,7 +2058,7 @@
 /area/rogue/under/mountains/anvil/lower/building)
 "HG" = (
 /obj/machinery/light/rogue/campfire/densefire,
-/obj/item/clothing/neck/roguetown/psycross/silver,
+/obj/item/clothing/neck/psycross/silver,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/lower/building)
 "HI" = (
@@ -2738,7 +2738,7 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/mountains/anvil/lavaexposed)
 "Rw" = (
-/obj/item/clothing/neck/roguetown/psycross/silver/malum,
+/obj/item/clothing/neck/psycross/silver/malum,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/lower)
 "RB" = (
@@ -3251,7 +3251,7 @@
 /area/rogue/indoors/mountains/anvil/surface/building)
 "ZN" = (
 /obj/structure/table/church,
-/obj/item/clothing/neck/roguetown/psycross,
+/obj/item/clothing/neck/psycross,
 /turf/open/floor/rogue/church,
 /area/rogue/under/mountains/anvil/lower)
 "ZU" = (

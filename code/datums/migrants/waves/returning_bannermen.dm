@@ -19,7 +19,7 @@
 	cloak = /obj/item/clothing/cloak/half/vet
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guardsecond
 	armor = /obj/item/clothing/suit/roguetown/armor/medium/scale
-	neck = /obj/item/clothing/neck/roguetown/gorget
+	neck = /obj/item/clothing/neck/gorget
 	shoes = /obj/item/clothing/shoes/boots
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/weapon/sword/arming
@@ -170,7 +170,7 @@
 	..()
 	armor = /obj/item/clothing/suit/roguetown/armor/cuirass
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
-	neck = /obj/item/clothing/neck/roguetown/gorget
+	neck = /obj/item/clothing/neck/gorget
 	head = /obj/item/clothing/head/helmet/nasal
 	backr = /obj/item/weapon/shield/wood
 	beltr = /obj/item/weapon/sword/scimitar/messer
@@ -210,7 +210,7 @@
 	..()
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
-	neck = /obj/item/clothing/neck/roguetown/gorget
+	neck = /obj/item/clothing/neck/gorget
 	head = /obj/item/clothing/head/helmet/kettle
 	beltr = /obj/item/weapon/sword/scimitar/messer
 	pants = /obj/item/clothing/pants/trou/leather

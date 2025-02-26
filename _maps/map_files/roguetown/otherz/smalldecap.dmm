@@ -1174,7 +1174,7 @@
 /area/rogue/under/cavelava)
 "Ck" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/neck/roguetown/talkstone,
+/obj/item/clothing/neck/talkstone,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/cavelava)
@@ -1645,7 +1645,7 @@
 "NO" = (
 /obj/structure/rack/rogue,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/item/clothing/neck/roguetown/gorget/hoplite,
+/obj/item/clothing/neck/gorget/hoplite,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/under/cavelava)
 "Oh" = (

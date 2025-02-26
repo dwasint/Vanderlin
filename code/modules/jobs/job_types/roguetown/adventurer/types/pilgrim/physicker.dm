@@ -31,7 +31,7 @@
 	pants = /obj/item/clothing/pants/tights/random
 	gloves = /obj/item/clothing/gloves/roguetown/leather/phys
 	armor = /obj/item/clothing/suit/roguetown/shirt/robe/phys
-	neck = /obj/item/clothing/neck/roguetown/phys
+	neck = /obj/item/clothing/neck/phys
 	r_hand = /obj/item/storage/backpack/rogue/satchel/surgbag
 	beltl = /obj/item/key/clinic
 

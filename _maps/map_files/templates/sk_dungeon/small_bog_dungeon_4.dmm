@@ -207,7 +207,7 @@
 /area/rogue/outdoors/caves)
 "X" = (
 /obj/structure/table/wood,
-/obj/item/clothing/neck/roguetown/psycross/silver,
+/obj/item/clothing/neck/psycross/silver,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/outdoors/caves)
 "Y" = (

@@ -41,7 +41,7 @@
 	H.verbs |= /mob/living/carbon/human/proc/churchexcommunicate
 	H.verbs |= /mob/living/carbon/human/proc/churchcurse
 	H.verbs |= /mob/living/carbon/human/proc/churchannouncement
-	neck = /obj/item/clothing/neck/roguetown/psycross/silver/astrata
+	neck = /obj/item/clothing/neck/psycross/silver/astrata
 	head = /obj/item/clothing/head/priestmask
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/priest
 	pants = /obj/item/clothing/pants/tights/black

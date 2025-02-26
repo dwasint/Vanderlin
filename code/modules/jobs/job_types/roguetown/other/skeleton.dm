@@ -111,9 +111,9 @@
 		if (4)
 			head = /obj/item/clothing/head/helmet/coppercap
 		if (5)
-			neck = /obj/item/clothing/neck/roguetown/coif/cloth
+			neck = /obj/item/clothing/neck/coif/cloth
 		if (6)
-			neck = /obj/item/clothing/neck/roguetown/coif
+			neck = /obj/item/clothing/neck/coif
 		if (7)
 			head = /obj/item/clothing/head/helmet/horned
 		if (8)

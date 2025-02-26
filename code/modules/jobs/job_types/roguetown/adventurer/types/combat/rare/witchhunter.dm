@@ -30,7 +30,7 @@
 	head = /obj/item/clothing/head/helmet/leather/inquisitor
 	gloves = /obj/item/clothing/gloves/roguetown/angle
 	beltl = /obj/item/weapon/sword/rapier/silver
-	neck = /obj/item/clothing/neck/roguetown/chaincoif
+	neck = /obj/item/clothing/neck/chaincoif
 
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
@@ -52,11 +52,11 @@
 		H.change_stat(STATKEY_CON, 2)
 		switch(H.patron?.name)
 			if("Astrata")
-				wrists = /obj/item/clothing/neck/roguetown/psycross/silver/astrata
+				wrists = /obj/item/clothing/neck/psycross/silver/astrata
 			if("Necra")
-				wrists = /obj/item/clothing/neck/roguetown/psycross/silver/necra
+				wrists = /obj/item/clothing/neck/psycross/silver/necra
 			if("Pestra")
-				wrists = /obj/item/clothing/neck/roguetown/psycross/silver/pestra
+				wrists = /obj/item/clothing/neck/psycross/silver/pestra
 			else
 				wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	H.verbs |= /mob/living/carbon/human/proc/torture_victim

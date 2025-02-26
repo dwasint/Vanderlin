@@ -30,7 +30,7 @@
 /datum/outfit/job/roguetown/merchant/pre_equip(mob/living/carbon/human/H)
 	..()
 
-	neck = /obj/item/clothing/neck/roguetown/horus
+	neck = /obj/item/clothing/neck/horus
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/veryrich = 1, /obj/item/merctoken = 1)
 	beltr = /obj/item/weapon/sword/rapier

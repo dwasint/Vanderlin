@@ -1498,14 +1498,14 @@
 /area/rogue)
 "gQ" = (
 /obj/structure/table/wood/reinforced,
-/obj/item/clothing/neck/roguetown/gorget,
-/obj/item/clothing/neck/roguetown/gorget,
-/obj/item/clothing/neck/roguetown/gorget,
-/obj/item/clothing/neck/roguetown/gorget,
-/obj/item/clothing/neck/roguetown/bevor,
-/obj/item/clothing/neck/roguetown/bevor,
-/obj/item/clothing/neck/roguetown/bevor,
-/obj/item/clothing/neck/roguetown/bevor,
+/obj/item/clothing/neck/gorget,
+/obj/item/clothing/neck/gorget,
+/obj/item/clothing/neck/gorget,
+/obj/item/clothing/neck/gorget,
+/obj/item/clothing/neck/bevor,
+/obj/item/clothing/neck/bevor,
+/obj/item/clothing/neck/bevor,
+/obj/item/clothing/neck/bevor,
 /turf/open/floor/rogue/carpet,
 /area/rogue)
 "gR" = (
@@ -1881,7 +1881,7 @@
 /area/rogue)
 "nh" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/neck/roguetown/coif,
+/obj/item/clothing/neck/coif,
 /turf/open/floor/rogue/ruinedwood/darker,
 /area/rogue/indoors/bandit_lair)
 "ni" = (
@@ -3605,10 +3605,10 @@
 /area/rogue/indoors/bandit_lair)
 "Lq" = (
 /obj/structure/table/wood/reinforced,
-/obj/item/clothing/neck/roguetown/talkstone,
-/obj/item/clothing/neck/roguetown/talkstone,
-/obj/item/clothing/neck/roguetown/talkstone,
-/obj/item/clothing/neck/roguetown/talkstone,
+/obj/item/clothing/neck/talkstone,
+/obj/item/clothing/neck/talkstone,
+/obj/item/clothing/neck/talkstone,
+/obj/item/clothing/neck/talkstone,
 /turf/open/floor/rogue/carpet,
 /area/rogue)
 "Lt" = (
@@ -3856,12 +3856,12 @@
 /area/rogue/outdoors)
 "PN" = (
 /obj/structure/table/wood/reinforced,
-/obj/item/clothing/neck/roguetown/coif,
-/obj/item/clothing/neck/roguetown/coif,
-/obj/item/clothing/neck/roguetown/chaincoif/iron,
-/obj/item/clothing/neck/roguetown/chaincoif/iron,
-/obj/item/clothing/neck/roguetown/chaincoif,
-/obj/item/clothing/neck/roguetown/chaincoif,
+/obj/item/clothing/neck/coif,
+/obj/item/clothing/neck/coif,
+/obj/item/clothing/neck/chaincoif/iron,
+/obj/item/clothing/neck/chaincoif/iron,
+/obj/item/clothing/neck/chaincoif,
+/obj/item/clothing/neck/chaincoif,
 /turf/open/floor/rogue/carpet,
 /area/rogue)
 "PY" = (
@@ -4239,15 +4239,15 @@
 	dir = 1;
 	icon_state = "largetable"
 	},
-/obj/item/clothing/neck/roguetown/psycross/silver/ravox,
-/obj/item/clothing/neck/roguetown/psycross/noc,
-/obj/item/clothing/neck/roguetown/psycross/silver/necra,
-/obj/item/clothing/neck/roguetown/psycross/g,
-/obj/item/clothing/neck/roguetown/psycross/silver/eora,
-/obj/item/clothing/neck/roguetown/psycross/silver/dendor,
-/obj/item/clothing/neck/roguetown/psycross/silver/astrata,
-/obj/item/clothing/neck/roguetown/shalal,
-/obj/item/clothing/neck/roguetown/horus,
+/obj/item/clothing/neck/psycross/silver/ravox,
+/obj/item/clothing/neck/psycross/noc,
+/obj/item/clothing/neck/psycross/silver/necra,
+/obj/item/clothing/neck/psycross/g,
+/obj/item/clothing/neck/psycross/silver/eora,
+/obj/item/clothing/neck/psycross/silver/dendor,
+/obj/item/clothing/neck/psycross/silver/astrata,
+/obj/item/clothing/neck/shalal,
+/obj/item/clothing/neck/horus,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "Ut" = (

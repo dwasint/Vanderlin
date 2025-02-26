@@ -66,7 +66,7 @@
 
 /datum/outfit/job/roguetown/guardsman/footman/pre_equip(mob/living/carbon/human/H)
 	..()
-	neck = /obj/item/clothing/neck/roguetown/gorget
+	neck = /obj/item/clothing/neck/gorget
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 	backr = /obj/item/weapon/shield/heater
@@ -103,7 +103,7 @@
 
 /datum/outfit/job/roguetown/guardsman/archer/pre_equip(mob/living/carbon/human/H)
 	..()
-	neck = /obj/item/clothing/neck/roguetown/chaincoif
+	neck = /obj/item/clothing/neck/chaincoif
 	armor = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
 	shirt = pick(/obj/item/clothing/suit/roguetown/shirt/undershirt/guard, /obj/item/clothing/suit/roguetown/shirt/undershirt/guardsecond)
 	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
@@ -148,7 +148,7 @@
 	..()
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
-	neck = /obj/item/clothing/neck/roguetown/gorget
+	neck = /obj/item/clothing/neck/gorget
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backr = /obj/item/weapon/polearm/spear
 	beltl = /obj/item/weapon/sword/short

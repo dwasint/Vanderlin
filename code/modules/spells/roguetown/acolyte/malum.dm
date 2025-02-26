@@ -7,7 +7,7 @@
 	warnie = "sydwarning"
 	movement_interrupt = FALSE
 	no_early_release = TRUE
-	req_items = list(/obj/item/clothing/neck/roguetown/psycross/silver/malum)
+	req_items = list(/obj/item/clothing/neck/psycross/silver/malum)
 	invocation = "Through ash and flame! Legere librum!"
 	invocation_type = "shout"
 	miracle = TRUE
@@ -49,7 +49,7 @@
 	warnie = "sydwarning"
 	movement_interrupt = FALSE
 	no_early_release = TRUE
-	req_items = list(/obj/item/clothing/neck/roguetown/psycross/silver/malum)
+	req_items = list(/obj/item/clothing/neck/psycross/silver/malum)
 	sound = 'sound/items/bsmithfail.ogg'
 	invocation = "Let the weight of Malum's hammer fall!"
 	invocation_type = "shout"
@@ -187,7 +187,7 @@
 	warnie = "sydwarning"
 	movement_interrupt = FALSE
 	no_early_release = TRUE
-	req_items = list(/obj/item/clothing/neck/roguetown/psycross/silver/malum)
+	req_items = list(/obj/item/clothing/neck/psycross/silver/malum)
 	sound = 'sound/items/bsmithfail.ogg'
 	invocation = "Metal bends to the heat of Malum's forge!"
 	invocation_type = "shout"

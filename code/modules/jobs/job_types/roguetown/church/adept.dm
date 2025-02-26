@@ -39,7 +39,7 @@
 	mask = /obj/item/clothing/face/facemask
 	pants = /obj/item/clothing/pants/trou/leather
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
-	wrists = /obj/item/clothing/neck/roguetown/psycross/silver
+	wrists = /obj/item/clothing/neck/psycross/silver
 
 // Brutal Zealot, a class balanced to town guard, with 1 more strength but less intelligence and perception. Axe/Mace and shield focus.
 /datum/advclass/adept/bzealot
@@ -56,7 +56,7 @@
 	//Armor for class
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail
 	cloak = /obj/item/clothing/cloak/tabard/adept
-	neck = /obj/item/clothing/neck/roguetown/chaincoif
+	neck = /obj/item/clothing/neck/chaincoif
 	beltl = /obj/item/weapon/mace/spiked
 	backr = /obj/item/weapon/shield/wood/adept
 	gloves = /obj/item/clothing/gloves/roguetown/leather
@@ -98,7 +98,7 @@
 	..()
 	//Armor for class
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/splint
-	neck = /obj/item/clothing/neck/roguetown/gorget
+	neck = /obj/item/clothing/neck/gorget
 	beltl = /obj/item/weapon/mace/cudgel
 	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 	backl = /obj/item/ammo_holder/quiver/bolts

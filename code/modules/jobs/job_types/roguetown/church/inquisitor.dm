@@ -48,11 +48,11 @@
 	cloak = /obj/item/clothing/cloak/cape/puritan
 	head = /obj/item/clothing/head/helmet/leather/inquisitor
 	gloves = /obj/item/clothing/gloves/roguetown/angle
-	wrists = /obj/item/clothing/neck/roguetown/psycross/silver
+	wrists = /obj/item/clothing/neck/psycross/silver
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backl = /obj/item/weapon/sword/long/forgotten
 	beltl = /obj/item/flashlight/flare/torch/lantern
-	neck = /obj/item/clothing/neck/roguetown/bevor
+	neck = /obj/item/clothing/neck/bevor
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/splint
 	backpack_contents = list(/obj/item/storage/keyring/inquisitor = 1)
 	var/prev_real_name = H.real_name

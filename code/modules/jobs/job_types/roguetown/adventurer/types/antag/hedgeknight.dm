@@ -10,7 +10,7 @@
 /datum/outfit/job/roguetown/bandit/hedgeknight/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/helmet/heavy/rust
-	neck = /obj/item/clothing/neck/roguetown/gorget
+	neck = /obj/item/clothing/neck/gorget
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/rust
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/dark
 	wrists = /obj/item/clothing/wrists/roguetown/bracers

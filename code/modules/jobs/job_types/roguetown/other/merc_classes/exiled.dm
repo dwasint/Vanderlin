@@ -30,7 +30,7 @@
 		H.mind?.adjust_skillrank(/datum/skill/craft/traps, 3, TRUE) // Valor pleases you, Crom.
 
 	beltr = /obj/item/weapon/sword/iron
-	neck = /obj/item/clothing/neck/roguetown/coif
+	neck = /obj/item/clothing/neck/coif
 	pants = /obj/item/clothing/pants/loincloth
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	belt = /obj/item/storage/belt/rogue/leather/mercenary

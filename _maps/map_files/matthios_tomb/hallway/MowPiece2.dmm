@@ -178,7 +178,7 @@
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue)
 "CL" = (
-/obj/item/clothing/neck/roguetown/psycross/silver,
+/obj/item/clothing/neck/psycross/silver,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue)
 "Du" = (

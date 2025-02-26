@@ -424,8 +424,8 @@
 /area/rogue)
 "sx" = (
 /obj/structure/closet/crate/chest/crate,
-/obj/item/clothing/neck/roguetown/psycross/silver/necra,
-/obj/item/clothing/neck/roguetown/psycross/silver/astrata,
+/obj/item/clothing/neck/psycross/silver/necra,
+/obj/item/clothing/neck/psycross/silver/astrata,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue)
 "sG" = (
@@ -611,8 +611,8 @@
 /obj/item/clothing/cloak/stabard/templar/astrata/alt,
 /obj/item/clothing/cloak/stabard/templar/astrata,
 /obj/item/clothing/cloak/stabard/templar/astrata,
-/obj/item/clothing/neck/roguetown/psycross/silver/astrata,
-/obj/item/clothing/neck/roguetown/psycross/silver/astrata,
+/obj/item/clothing/neck/psycross/silver/astrata,
+/obj/item/clothing/neck/psycross/silver/astrata,
 /obj/item/clothing/suit/roguetown/shirt/robe/astrata,
 /obj/item/clothing/suit/roguetown/shirt/robe/astrata,
 /obj/item/clothing/head/helmet/heavy/necked/astrata,
@@ -726,8 +726,8 @@
 /area/rogue)
 "FM" = (
 /obj/structure/closet/crate/chest/crate,
-/obj/item/clothing/neck/roguetown/psycross,
-/obj/item/clothing/neck/roguetown/psycross,
+/obj/item/clothing/neck/psycross,
+/obj/item/clothing/neck/psycross,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue)
 "FW" = (
@@ -1165,7 +1165,7 @@
 /area/rogue)
 "Ww" = (
 /obj/structure/closet/crate/chest/crate,
-/obj/item/clothing/neck/roguetown/psycross/noc,
+/obj/item/clothing/neck/psycross/noc,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue)
 "WQ" = (

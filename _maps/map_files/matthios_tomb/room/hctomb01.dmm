@@ -597,7 +597,7 @@
 /area/rogue)
 "KM" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/neck/roguetown/chaincoif/iron,
+/obj/item/clothing/neck/chaincoif/iron,
 /turf/open/floor/rogue/ruinedwood/spiralfade,
 /area/rogue)
 "KO" = (

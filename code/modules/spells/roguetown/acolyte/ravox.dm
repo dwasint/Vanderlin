@@ -3,7 +3,7 @@
 	desc = "Grants you and all allies nearby a buff to their strength, endurance, and constitution."
 	overlay_state = "call_to_arms"
 	charge_max = 5 MINUTES
-	req_items = list(/obj/item/clothing/neck/roguetown/psycross/silver/ravox)
+	req_items = list(/obj/item/clothing/neck/psycross/silver/ravox)
 	invocation = "MAY THE FIGHT BE BLOODY!"
 	invocation_type = "shout"
 	sound = 'sound/magic/timestop.ogg'
@@ -33,7 +33,7 @@
 	charging_slowdown = 2
 	chargedloop = null
 	associated_skill = /datum/skill/magic/holy
-	req_items = list(/obj/item/clothing/neck/roguetown/psycross/silver/ravox)
+	req_items = list(/obj/item/clothing/neck/psycross/silver/ravox)
 	sound = 'sound/magic/timestop.ogg'
 	invocation = "Ravox guides my strike against the unjust!"
 	invocation_type = "shout"
@@ -127,7 +127,7 @@
 	chargetime = 0
 	range = 7
 	warnie = "sydwarning"
-	req_items = list(/obj/item/clothing/neck/roguetown/psycross/silver/ravox)
+	req_items = list(/obj/item/clothing/neck/psycross/silver/ravox)
 	sound = 'sound/magic/timestop.ogg'
 	invocation = "Ravox deems your persistence worthy!"
 	invocation_type = "shout"

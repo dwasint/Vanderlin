@@ -564,7 +564,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 				if(do_after(user, 10 SECONDS))
 					lord.handle_vitae(-500)
 					var/naming = input(user, "Select a name for the amulet.", "VANDERLIN") as text|null
-					var/obj/item/clothing/neck/roguetown/portalamulet/P = new(src.loc)
+					var/obj/item/clothing/neck/portalamulet/P = new(src.loc)
 					if(naming)
 						P.name = naming
 					user.playsound_local(get_turf(src), 'sound/misc/vcraft.ogg', 100, FALSE, pressure_affected = FALSE)
@@ -620,7 +620,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	var/inputportal = input(user, "Which type of portal?", "Portal Type") as anything in choices
 	switch(inputportal)
 		if("Return")
-			for(var/obj/item/clothing/neck/roguetown/portalamulet/P in GLOB.vampire_objects)
+			for(var/obj/item/clothing/neck/portalamulet/P in GLOB.vampire_objects)
 				possibleportals += P
 			var/atom/choice = input(user, "Choose an area to open the portal", "Choices") as null|anything in possibleportals
 			if(!choice)
@@ -628,8 +628,8 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 			user.visible_message("[user] begins to summon a portal.", "I begin to summon a portal.")
 			if(do_after(user, 3 SECONDS))
 				lord.handle_vitae(-1000)
-				if(istype(choice, /obj/item/clothing/neck/roguetown/portalamulet))
-					var/obj/item/clothing/neck/roguetown/portalamulet/A = choice
+				if(istype(choice, /obj/item/clothing/neck/portalamulet))
+					var/obj/item/clothing/neck/portalamulet/A = choice
 					A.uses -= 1
 					var/obj/effect/landmark/vteleportdestination/VR = new(A.loc)
 					VR.amuletname = A.name
@@ -642,7 +642,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 			if(sending)
 				to_chat(user, "A portal is already active!")
 				return
-			for(var/obj/item/clothing/neck/roguetown/portalamulet/P in GLOB.vampire_objects)
+			for(var/obj/item/clothing/neck/portalamulet/P in GLOB.vampire_objects)
 				sendpossibleportals += P
 			var/atom/choice = input(user, "Choose an area to open the portal to", "Choices") as null|anything in sendpossibleportals
 			if(!choice)
@@ -650,8 +650,8 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 			user.visible_message("[user] begins to summon a portal.", "I begin to summon a portal.")
 			if(do_after(user, 3 SECONDS))
 				lord.handle_vitae(-1000)
-				if(istype(choice, /obj/item/clothing/neck/roguetown/portalamulet))
-					var/obj/item/clothing/neck/roguetown/portalamulet/A = choice
+				if(istype(choice, /obj/item/clothing/neck/portalamulet))
+					var/obj/item/clothing/neck/portalamulet/A = choice
 					A.uses -= 1
 					var/turf/G = get_turf(A)
 					new /obj/effect/landmark/vteleportsenddest(G.loc)
@@ -663,7 +663,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		if("CANCEL")
 			return
 /* DISABLED FOR NOW
-/obj/item/clothing/neck/roguetown/portalamulet/attack_self(mob/user)
+/obj/item/clothing/neck/portalamulet/attack_self(mob/user)
 	. = ..()
 	if(alert(user, "Create a portal?", "PORTAL GEM", "Yes", "No") == "Yes")
 		uses -= 1
@@ -844,17 +844,17 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 			owner.current.playsound_local(get_turf(owner.current), 'sound/misc/fail.ogg', 100, FALSE, pressure_affected = FALSE)
 
 // NEW OBJECTS/STRUCTURES
-/obj/item/clothing/neck/roguetown/portalamulet
+/obj/item/clothing/neck/portalamulet
 	name = "Gate Amulet"
 	icon_state = "bloodtooth"
 	icon = 'icons/roguetown/clothing/neck.dmi'
 	var/uses = 3
 
-/obj/item/clothing/neck/roguetown/portalamulet/Initialize()
+/obj/item/clothing/neck/portalamulet/Initialize()
 	GLOB.vampire_objects |= src
 	. = ..()
 
-/obj/item/clothing/neck/roguetown/portalamulet/Destroy()
+/obj/item/clothing/neck/portalamulet/Destroy()
 	GLOB.vampire_objects -= src
 	return ..()
 
@@ -1135,7 +1135,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		if(L.cmode)
 			willroll += 10
 		var/found_psycross = FALSE
-		for(var/obj/item/clothing/neck/roguetown/psycross/silver/I in L.contents) //Subpath fix.
+		for(var/obj/item/clothing/neck/psycross/silver/I in L.contents) //Subpath fix.
 			found_psycross = TRUE
 			break
 

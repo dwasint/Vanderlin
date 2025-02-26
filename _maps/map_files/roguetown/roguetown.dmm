@@ -2198,9 +2198,9 @@
 /area/rogue/indoors/town)
 "cqN" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/neck/roguetown/gorget,
-/obj/item/clothing/neck/roguetown/gorget,
-/obj/item/clothing/neck/roguetown/gorget,
+/obj/item/clothing/neck/gorget,
+/obj/item/clothing/neck/gorget,
+/obj/item/clothing/neck/gorget,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "cqZ" = (
@@ -3022,8 +3022,8 @@
 /area/rogue/outdoors/town)
 "dqe" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/neck/roguetown/psycross/silver/eora,
-/obj/item/clothing/neck/roguetown/psycross/silver/ravox,
+/obj/item/clothing/neck/psycross/silver/eora,
+/obj/item/clothing/neck/psycross/silver/ravox,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
 "dqy" = (
@@ -6866,7 +6866,7 @@
 /area/rogue/under/town/basement)
 "hCu" = (
 /obj/structure/closet/crate/chest/neu_fancy,
-/obj/item/clothing/neck/roguetown/psycross/silver,
+/obj/item/clothing/neck/psycross/silver,
 /obj/item/book/rogue/bibble,
 /turf/open/floor/rogue/ruinedwood/darker,
 /area/rogue/indoors/town/church)
@@ -10484,7 +10484,7 @@
 	dir = 10;
 	icon_state = "tablewood2"
 	},
-/obj/item/clothing/neck/roguetown/psycross/silver/necra,
+/obj/item/clothing/neck/psycross/silver/necra,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
 "lBp" = (
@@ -12935,9 +12935,9 @@
 /area/rogue/indoors)
 "ofS" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/neck/roguetown/psycross/silver,
-/obj/item/clothing/neck/roguetown/psycross/silver/pestra,
-/obj/item/clothing/neck/roguetown/psycross/silver/malum_steel,
+/obj/item/clothing/neck/psycross/silver,
+/obj/item/clothing/neck/psycross/silver/pestra,
+/obj/item/clothing/neck/psycross/silver/malum_steel,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
 "oga" = (
@@ -14020,8 +14020,8 @@
 /area/rogue/outdoors/town)
 "pnu" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/neck/roguetown/psycross/noc,
-/obj/item/clothing/neck/roguetown/psycross/silver/astrata,
+/obj/item/clothing/neck/psycross/noc,
+/obj/item/clothing/neck/psycross/silver/astrata,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
 "pnx" = (
@@ -16164,9 +16164,9 @@
 /area/rogue/outdoors/town)
 "rNK" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/neck/roguetown/psycross/silver/necra,
-/obj/item/clothing/neck/roguetown/psycross/silver/necra,
-/obj/item/clothing/neck/roguetown/psycross/silver/dendor,
+/obj/item/clothing/neck/psycross/silver/necra,
+/obj/item/clothing/neck/psycross/silver/necra,
+/obj/item/clothing/neck/psycross/silver/dendor,
 /obj/machinery/light/rogue/torchholder{
 	dir = 4
 	},
@@ -17754,7 +17754,7 @@
 	icon_state = "tablewood1"
 	},
 /obj/item/weapon/knife/dagger/silver,
-/obj/item/clothing/neck/roguetown/talkstone,
+/obj/item/clothing/neck/talkstone,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town/magician)
 "tEg" = (
@@ -20992,7 +20992,7 @@
 	dir = 10;
 	icon_state = "largetable"
 	},
-/obj/item/clothing/neck/roguetown/coif,
+/obj/item/clothing/neck/coif,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/shop)
 "xaK" = (

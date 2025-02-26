@@ -139,12 +139,12 @@
 /obj/item/clothing/gloves/roguetown/plate/rust,
 /obj/item/clothing/shoes/boots/armor/light/rust,
 /obj/item/clothing/pants/platelegs/rust,
-/obj/item/clothing/neck/roguetown/chaincoif,
+/obj/item/clothing/neck/chaincoif,
 /obj/item/clothing/ring/gold/rontz,
 /obj/item/clothing/suit/roguetown/armor/cuirass/iron/rust,
 /mob/living/carbon/human/species/skeleton/npc/no_equipment,
 /obj/item/weapon/sword/rapier,
-/obj/item/clothing/neck/roguetown/psycross/silver,
+/obj/item/clothing/neck/psycross/silver,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors)
 "cH" = (
@@ -252,7 +252,7 @@
 /area/rogue/indoors)
 "er" = (
 /obj/effect/mapping_helpers/floor_clothing_equipper,
-/obj/item/clothing/neck/roguetown/gorget/hoplite,
+/obj/item/clothing/neck/gorget/hoplite,
 /obj/item/weapon/polearm/woodstaff/quarterstaff/steel,
 /obj/item/clothing/shoes/shortboots,
 /obj/item/clothing/head/crown/circlet,
@@ -267,7 +267,7 @@
 	TOTALCON = 12
 	},
 /obj/item/clothing/suit/roguetown/shirt/robe/courtmage,
-/obj/item/clothing/neck/roguetown/psycross/silver,
+/obj/item/clothing/neck/psycross/silver,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors)
 "et" = (
@@ -672,13 +672,13 @@
 /obj/item/clothing/shoes/boots/armor/light/rust,
 /obj/item/clothing/suit/roguetown/armor/plate/rust,
 /obj/item/clothing/pants/platelegs/rust,
-/obj/item/clothing/neck/roguetown/chaincoif,
+/obj/item/clothing/neck/chaincoif,
 /obj/item/clothing/suit/roguetown/armor/chainmail,
 /obj/item/clothing/ring/gold/saffira,
 /obj/item/weapon/sword/sabre/scythe,
 /obj/item/weapon/shield/tower/buckleriron,
 /mob/living/carbon/human/species/skeleton/npc/no_equipment,
-/obj/item/clothing/neck/roguetown/psycross/silver,
+/obj/item/clothing/neck/psycross/silver,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors)
 "la" = (
@@ -1097,12 +1097,12 @@
 /obj/item/clothing/head/helmet/heavy/rust,
 /obj/item/clothing/shoes/boots/armor/light/rust,
 /obj/item/clothing/pants/platelegs/rust,
-/obj/item/clothing/neck/roguetown/chaincoif,
+/obj/item/clothing/neck/chaincoif,
 /obj/item/clothing/ring/gold/rontz,
 /obj/item/clothing/suit/roguetown/armor/cuirass/iron/rust,
 /obj/item/weapon/polearm/halberd,
 /mob/living/carbon/human/species/skeleton/npc/no_equipment,
-/obj/item/clothing/neck/roguetown/psycross/silver,
+/obj/item/clothing/neck/psycross/silver,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors)
 "rt" = (
@@ -1265,12 +1265,12 @@
 /obj/item/clothing/head/helmet/heavy/rust,
 /obj/item/clothing/shoes/boots/armor/light/rust,
 /obj/item/clothing/pants/platelegs/rust,
-/obj/item/clothing/neck/roguetown/chaincoif,
+/obj/item/clothing/neck/chaincoif,
 /obj/item/clothing/ring/gold/rontz,
 /obj/item/clothing/suit/roguetown/armor/cuirass/iron/rust,
 /obj/item/weapon/sword/long/greatsword/flamberge,
 /mob/living/carbon/human/species/skeleton/npc/no_equipment,
-/obj/item/clothing/neck/roguetown/psycross/silver,
+/obj/item/clothing/neck/psycross/silver,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors)
 "tM" = (
@@ -1557,7 +1557,7 @@
 /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/silkdressprimary,
 /obj/item/clothing/pants/trou/shadowpants,
 /obj/item/clothing/ring/gold/blortz,
-/obj/item/clothing/neck/roguetown/psycross/g,
+/obj/item/clothing/neck/psycross/g,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors)
 "xX" = (
@@ -1598,12 +1598,12 @@
 /obj/item/clothing/shoes/boots/armor/light/rust,
 /obj/item/clothing/suit/roguetown/armor/plate/rust,
 /obj/item/clothing/pants/platelegs/rust,
-/obj/item/clothing/neck/roguetown/chaincoif,
+/obj/item/clothing/neck/chaincoif,
 /obj/item/clothing/suit/roguetown/armor/chainmail,
 /obj/item/weapon/polearm/spear/billhook,
 /obj/item/clothing/ring/gold/rontz,
 /mob/living/carbon/human/species/skeleton/npc/no_equipment,
-/obj/item/clothing/neck/roguetown/psycross/g,
+/obj/item/clothing/neck/psycross/g,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors)
 "yF" = (
@@ -1616,13 +1616,13 @@
 /obj/item/clothing/gloves/roguetown/plate/rust,
 /obj/item/clothing/shoes/boots/armor/light/rust,
 /obj/item/clothing/pants/platelegs/rust,
-/obj/item/clothing/neck/roguetown/chaincoif,
+/obj/item/clothing/neck/chaincoif,
 /obj/item/clothing/ring/gold/rontz,
 /obj/item/clothing/suit/roguetown/armor/cuirass/iron/rust,
 /mob/living/carbon/human/species/skeleton/npc/no_equipment,
 /obj/item/weapon/sword/decorated,
 /obj/item/weapon/shield/tower/buckleriron,
-/obj/item/clothing/neck/roguetown/psycross/silver,
+/obj/item/clothing/neck/psycross/silver,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors)
 "yU" = (
@@ -1639,13 +1639,13 @@
 /obj/item/clothing/gloves/roguetown/plate/rust,
 /obj/item/clothing/shoes/boots/armor/light/rust,
 /obj/item/clothing/pants/platelegs/rust,
-/obj/item/clothing/neck/roguetown/chaincoif,
+/obj/item/clothing/neck/chaincoif,
 /obj/item/clothing/ring/gold/rontz,
 /obj/item/clothing/suit/roguetown/armor/cuirass/iron/rust,
 /mob/living/carbon/human/species/skeleton/npc/no_equipment,
 /obj/item/weapon/sword/rapier,
 /obj/item/weapon/shield/tower/buckleriron,
-/obj/item/clothing/neck/roguetown/psycross/silver,
+/obj/item/clothing/neck/psycross/silver,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors)
 "zj" = (
@@ -2119,7 +2119,7 @@
 /obj/item/clothing/gloves/roguetown/leather/phys,
 /obj/item/clothing/head/roguehood/phys,
 /obj/item/clothing/face/phys,
-/obj/item/clothing/neck/roguetown/phys,
+/obj/item/clothing/neck/phys,
 /obj/item/clothing/suit/roguetown/shirt/robe/phys,
 /obj/item/weapon/surgery/scalpel,
 /turf/open/floor/rogue/hexstone,
@@ -2389,13 +2389,13 @@
 /obj/item/clothing/shoes/boots/armor/light/rust,
 /obj/item/clothing/suit/roguetown/armor/plate/rust,
 /obj/item/clothing/pants/platelegs/rust,
-/obj/item/clothing/neck/roguetown/chaincoif,
+/obj/item/clothing/neck/chaincoif,
 /obj/item/clothing/suit/roguetown/armor/chainmail,
 /obj/item/weapon/shield/tower/metal,
 /obj/item/weapon/mace/steel,
 /obj/item/clothing/ring/silver/toper,
 /mob/living/carbon/human/species/skeleton/npc/no_equipment,
-/obj/item/clothing/neck/roguetown/psycross/silver,
+/obj/item/clothing/neck/psycross/silver,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors)
 "KX" = (

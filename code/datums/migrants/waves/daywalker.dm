@@ -8,7 +8,7 @@
 /datum/outfit/job/roguetown/daywalker/pre_equip(mob/living/carbon/human/H)
 	..()
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-	neck = /obj/item/clothing/neck/roguetown/psycross/silver/astrata
+	neck = /obj/item/clothing/neck/psycross/silver/astrata
 	gloves = /obj/item/clothing/gloves/roguetown/fingerless/shadowgloves // Would give em Fingerless, but parrying with fists sounds funny as fuck
 	pants = /obj/item/clothing/pants/trou/shadowpants
 	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/black

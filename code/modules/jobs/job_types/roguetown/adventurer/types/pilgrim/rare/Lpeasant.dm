@@ -48,7 +48,7 @@
 	backr = /obj/item/weapon/hoe
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	backl = /obj/item/storage/backpack/rogue/backpack
-	neck = /obj/item/clothing/neck/roguetown/coif/cloth
+	neck = /obj/item/clothing/neck/coif/cloth
 	armor = /obj/item/clothing/suit/roguetown/armor/gambeson
 	mouth = /obj/item/clothing/face/cigarette/pipe/westman
 	beltl = /obj/item/weapon/sickle

@@ -16,7 +16,7 @@
 
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	mask = /obj/item/clothing/face/druid
-	neck = /obj/item/clothing/neck/roguetown/psycross/silver/dendor
+	neck = /obj/item/clothing/neck/psycross/silver/dendor
 	shirt = /obj/item/clothing/suit/roguetown/armor/leather/vest
 	armor = /obj/item/clothing/suit/roguetown/shirt/robe/dendor
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather

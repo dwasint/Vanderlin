@@ -11,7 +11,7 @@
 	warnie = "sydwarning"
 	movement_interrupt = FALSE
 	chargedloop = /datum/looping_sound/invokegen
-	req_items = list(/obj/item/clothing/neck/roguetown/psycross/silver/abyssor)
+	req_items = list(/obj/item/clothing/neck/psycross/silver/abyssor)
 	sound = 'sound/magic/whiteflame.ogg'
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = TRUE
@@ -63,7 +63,7 @@
 	name = "Summon Trident"
 	overlay_state = "lightning"
 	charge_max = 1 MINUTES
-	req_items = list(/obj/item/clothing/neck/roguetown/psycross/silver/abyssor)
+	req_items = list(/obj/item/clothing/neck/psycross/silver/abyssor)
 	invocation = "Let Abyssor's wrath be known."
 	invocation_type = "shout"
 	releasedrain = 30
@@ -195,7 +195,7 @@
 	chargetime = 0
 	range = 7
 	warnie = "sydwarning"
-	req_items = list(/obj/item/clothing/neck/roguetown/psycross/silver/abyssor)
+	req_items = list(/obj/item/clothing/neck/psycross/silver/abyssor)
 	sound = 'sound/foley/jumpland/waterland.wav'
 	invocation = "Embrace the waters of Abyssor's domain."
 	invocation_type = "shout"

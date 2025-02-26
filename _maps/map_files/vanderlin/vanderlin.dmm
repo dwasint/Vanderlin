@@ -5126,7 +5126,7 @@
 "dIp" = (
 /obj/structure/fluff/railing/wood,
 /obj/structure/table/wood/plain/alt,
-/obj/item/clothing/neck/roguetown/psycross/silver/dendor,
+/obj/item/clothing/neck/psycross/silver/dendor,
 /obj/item/clothing/suit/roguetown/shirt/robe/dendor,
 /turf/open/floor/rogue/ruinedwood/chevron,
 /area/rogue/outdoors/mountains)
@@ -5342,7 +5342,7 @@
 /area/rogue/indoors/town)
 "dQa" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/clothing/neck/roguetown/talkstone{
+/obj/item/clothing/neck/talkstone{
 	pixel_x = 3;
 	pixel_y = 5
 	},
@@ -7105,15 +7105,15 @@
 /area/rogue/indoors/town)
 "eYp" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/clothing/neck/roguetown/psycross/silver{
+/obj/item/clothing/neck/psycross/silver{
 	pixel_x = -5;
 	pixel_y = 8
 	},
-/obj/item/clothing/neck/roguetown/psycross/silver{
+/obj/item/clothing/neck/psycross/silver{
 	pixel_x = -4;
 	pixel_y = -4
 	},
-/obj/item/clothing/neck/roguetown/psycross/silver{
+/obj/item/clothing/neck/psycross/silver{
 	pixel_x = 7;
 	pixel_y = 2
 	},
@@ -9053,7 +9053,7 @@
 /area/rogue/outdoors/town)
 "gxM" = (
 /obj/structure/table/wood/plain/alt,
-/obj/item/clothing/neck/roguetown/psycross/silver/dendor,
+/obj/item/clothing/neck/psycross/silver/dendor,
 /obj/item/clothing/head/padded/briarthorns,
 /turf/open/floor/rogue/ruinedwood/chevron,
 /area/rogue/outdoors/mountains)
@@ -11016,7 +11016,7 @@
 /area/rogue/outdoors/town)
 "hSv" = (
 /obj/structure/table/stone_small,
-/obj/item/clothing/neck/roguetown/psycross/silver/malum_steel,
+/obj/item/clothing/neck/psycross/silver/malum_steel,
 /obj/machinery/light/rogue/wallfire/candle{
 	pixel_x = -32;
 	pixel_y = 0
@@ -13128,7 +13128,7 @@
 /area/rogue/indoors/town/manor)
 "jqR" = (
 /obj/structure/closet/crate/coffin,
-/obj/item/clothing/neck/roguetown/chaincoif/iron,
+/obj/item/clothing/neck/chaincoif/iron,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/under/town/sewer)
 "jrj" = (
@@ -13631,12 +13631,12 @@
 /area/rogue/indoors/soilsons)
 "jMs" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/neck/roguetown/psycross/silver{
+/obj/item/clothing/neck/psycross/silver{
 	pixel_x = 7;
 	pixel_y = 2
 	},
-/obj/item/clothing/neck/roguetown/psycross/silver/astrata,
-/obj/item/clothing/neck/roguetown/psycross/silver/ravox,
+/obj/item/clothing/neck/psycross/silver/astrata,
+/obj/item/clothing/neck/psycross/silver/ravox,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town/church)
 "jMD" = (
@@ -23898,7 +23898,7 @@
 	pixel_x = 3;
 	pixel_y = -3
 	},
-/obj/item/clothing/neck/roguetown/psycross/silver/necra{
+/obj/item/clothing/neck/psycross/silver/necra{
 	pixel_x = -8;
 	pixel_y = 4
 	},
@@ -26403,7 +26403,7 @@
 /area/rogue/under/town/sewer)
 "tpe" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/neck/roguetown/chaincoif,
+/obj/item/clothing/neck/chaincoif,
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk,
 /obj/item/clothing/gloves/roguetown/chain,
 /turf/open/floor/rogue/wood,
@@ -29451,7 +29451,7 @@
 /area/rogue/indoors/villagegarrison)
 "vtL" = (
 /obj/structure/closet/crate/chest/neu_iron,
-/obj/item/clothing/neck/roguetown/talkstone,
+/obj/item/clothing/neck/talkstone,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/magician)
 "vue" = (
@@ -29920,7 +29920,7 @@
 /obj/structure/closet/crate/roguecloset/dark,
 /obj/item/clothing/face/phys,
 /obj/item/clothing/head/roguehood/phys,
-/obj/item/clothing/neck/roguetown/phys,
+/obj/item/clothing/neck/phys,
 /obj/item/clothing/suit/roguetown/shirt/robe/phys,
 /obj/item/clothing/gloves/roguetown/leather/phys,
 /obj/machinery/light/rogue/wallfire/candle/blue,
@@ -30555,11 +30555,11 @@
 /area/rogue/outdoors/mountains)
 "woh" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/neck/roguetown/psycross/silver/eora,
-/obj/item/clothing/neck/roguetown/psycross/silver/malum_steel,
-/obj/item/clothing/neck/roguetown/psycross/silver/pestra,
-/obj/item/clothing/neck/roguetown/psycross/silver/xylix,
-/obj/item/clothing/neck/roguetown/psycross/noc,
+/obj/item/clothing/neck/psycross/silver/eora,
+/obj/item/clothing/neck/psycross/silver/malum_steel,
+/obj/item/clothing/neck/psycross/silver/pestra,
+/obj/item/clothing/neck/psycross/silver/xylix,
+/obj/item/clothing/neck/psycross/noc,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town/church)
 "wok" = (
@@ -32788,7 +32788,7 @@
 /obj/structure/closet/crate/roguecloset/dark,
 /obj/item/clothing/face/phys,
 /obj/item/clothing/head/roguehood/phys,
-/obj/item/clothing/neck/roguetown/phys,
+/obj/item/clothing/neck/phys,
 /obj/item/clothing/suit/roguetown/shirt/robe/phys,
 /obj/item/clothing/gloves/roguetown/leather/phys,
 /turf/open/floor/rogue/churchbrick,

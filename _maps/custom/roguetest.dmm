@@ -405,10 +405,10 @@
 	icon_state = "tablewood2";
 	dir = 10
 	},
-/obj/item/clothing/neck/roguetown/chaincoif,
-/obj/item/clothing/neck/roguetown/chaincoif,
-/obj/item/clothing/neck/roguetown/chaincoif,
-/obj/item/clothing/neck/roguetown/chaincoif,
+/obj/item/clothing/neck/chaincoif,
+/obj/item/clothing/neck/chaincoif,
+/obj/item/clothing/neck/chaincoif,
+/obj/item/clothing/neck/chaincoif,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors)
 "bg" = (
@@ -437,9 +437,9 @@
 	icon_state = "tablewood2";
 	dir = 10
 	},
-/obj/item/clothing/neck/roguetown/coif,
-/obj/item/clothing/neck/roguetown/coif,
-/obj/item/clothing/neck/roguetown/coif,
+/obj/item/clothing/neck/coif,
+/obj/item/clothing/neck/coif,
+/obj/item/clothing/neck/coif,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors)
 "bj" = (
@@ -447,10 +447,10 @@
 	icon_state = "tablewood2";
 	dir = 10
 	},
-/obj/item/clothing/neck/roguetown/talkstone,
-/obj/item/clothing/neck/roguetown/talkstone,
-/obj/item/clothing/neck/roguetown/talkstone,
-/obj/item/clothing/neck/roguetown/talkstone,
+/obj/item/clothing/neck/talkstone,
+/obj/item/clothing/neck/talkstone,
+/obj/item/clothing/neck/talkstone,
+/obj/item/clothing/neck/talkstone,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors)
 "bk" = (
@@ -470,9 +470,9 @@
 	icon_state = "tablewood2";
 	dir = 10
 	},
-/obj/item/clothing/neck/roguetown/psycross,
-/obj/item/clothing/neck/roguetown/psycross,
-/obj/item/clothing/neck/roguetown/psycross,
+/obj/item/clothing/neck/psycross,
+/obj/item/clothing/neck/psycross,
+/obj/item/clothing/neck/psycross,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors)
 "bm" = (

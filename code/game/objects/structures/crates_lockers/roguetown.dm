@@ -70,7 +70,7 @@
 		/obj/item/weapon/pick=23,
 		/obj/item/book/granter/spell_points=5,
 		/obj/item/riddleofsteel=2,
-		/obj/item/clothing/neck/roguetown/talkstone=2
+		/obj/item/clothing/neck/talkstone=2
 		)
 	var/I = pickweight(loot)
 	new I(src)

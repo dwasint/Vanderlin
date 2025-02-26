@@ -38,7 +38,7 @@
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	head = /obj/item/clothing/head/helmet/kettle/slit
 	gloves = /obj/item/clothing/gloves/roguetown/leather
-	neck = /obj/item/clothing/neck/roguetown/bevor
+	neck = /obj/item/clothing/neck/bevor
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/weapon/axe/iron
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich

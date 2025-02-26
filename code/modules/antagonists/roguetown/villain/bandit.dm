@@ -113,11 +113,11 @@
 			switch(pick(1,2))
 				if (1) //worse leg protection, better neck protection, and a face mask
 					pants = /obj/item/clothing/pants/trou/leather
-					neck = /obj/item/clothing/neck/roguetown/chaincoif
+					neck = /obj/item/clothing/neck/chaincoif
 					mask = /obj/item/clothing/face/facemask
 				if (2) //better leg protection, worse neck protection
 					pants = /obj/item/clothing/pants/chainlegs/iron
-					neck = /obj/item/clothing/neck/roguetown/chaincoif/iron
+					neck = /obj/item/clothing/neck/chaincoif/iron
 
 		if("Poacher") //good perception, speed, bow skill, and knife skill. Also some cooking and skincrafting since they are poachers. The speedy ranged class.
 			H.set_blindness(0)
@@ -148,9 +148,9 @@
 			switch(helmet2choose)
 				if("Hood")
 					head = /obj/item/clothing/head/roguehood
-					neck = /obj/item/clothing/neck/roguetown/coif
+					neck = /obj/item/clothing/neck/coif
 					if(H.age == AGE_OLD) //old poachers also saved up for a better coif
-						head = /obj/item/clothing/neck/roguetown/chaincoif/iron
+						head = /obj/item/clothing/neck/chaincoif/iron
 				if("Volfhelm")
 					head = /obj/item/clothing/head/helmet/leather/volfhelm
 
@@ -183,11 +183,11 @@
 			H.change_stat(STATKEY_CON, 1)
 			H.change_stat(STATKEY_SPD, 1)
 
-			neck = /obj/item/clothing/neck/roguetown/coif
+			neck = /obj/item/clothing/neck/coif
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 			pants = /obj/item/clothing/pants/trou/leather
 			beltl = /obj/item/clothing/face/shepherd/rag
-			neck = /obj/item/clothing/neck/roguetown/coif
+			neck = /obj/item/clothing/neck/coif
 
 			var/helmet2choose = pickweight(list("Leather helmet" = 2, "Volfhelm" = 2, "Coif" = 1))
 			switch(helmet2choose)
@@ -196,7 +196,7 @@
 				if("Volfhelm")
 					head = /obj/item/clothing/head/helmet/leather/volfhelm
 				if("Coif")
-					head = /obj/item/clothing/neck/roguetown/chaincoif/iron
+					head = /obj/item/clothing/neck/chaincoif/iron
 
 			switch(pick(1,2))
 				if (1)

@@ -2219,7 +2219,7 @@
 /obj/structure/fluff/walldeco/painting{
 	pixel_y = 32
 	},
-/obj/item/clothing/neck/roguetown/psycross/silver/astrata,
+/obj/item/clothing/neck/psycross/silver/astrata,
 /obj/structure/closet/crate/chest/gold,
 /turf/open/floor/rogue/tile{
 	icon_state = "chess"
@@ -4007,7 +4007,7 @@
 	})
 "ewn" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/neck/roguetown/portalamulet,
+/obj/item/clothing/neck/portalamulet,
 /turf/open/floor/rogue/tile/masonic/inverted,
 /area/rogue)
 "ewq" = (
@@ -7076,7 +7076,7 @@
 /area/rogue/outdoors/exposed/magiciantower)
 "hRk" = (
 /obj/structure/closet/crate/roguecloset/inn/chest,
-/obj/item/clothing/neck/roguetown/coif,
+/obj/item/clothing/neck/coif,
 /obj/item/storage/belt/rogue/pouch/coins/poor,
 /obj/item/reagent_containers/food/snacks/cooked/frysteak,
 /obj/item/clothing/suit/roguetown/shirt/undershirt/priest,
@@ -19402,7 +19402,7 @@
 /area/rogue/indoors/shelter/town/dwarf)
 "uDp" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/neck/roguetown/talkstone,
+/obj/item/clothing/neck/talkstone,
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/magician)
 "uDz" = (
@@ -20956,7 +20956,7 @@
 	})
 "weF" = (
 /obj/structure/closet/crate/roguecloset/dark,
-/obj/item/clothing/neck/roguetown/gorget,
+/obj/item/clothing/neck/gorget,
 /obj/item/weapon/knife/dagger/silver,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town)

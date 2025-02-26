@@ -5,7 +5,7 @@
 	invocation_type = "none"
 	associated_skill = /datum/skill/magic/holy
 	charge_max = 1 MINUTES
-	req_items = list(/obj/item/clothing/neck/roguetown/psycross/silver/xylix)
+	req_items = list(/obj/item/clothing/neck/psycross/silver/xylix)
 	miracle = TRUE
 	devotion_cost = 25
 
@@ -46,7 +46,7 @@
 	sound = 'sound/misc/letsgogambling.ogg'
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = TRUE
-	req_items = list(/obj/item/clothing/neck/roguetown/psycross/silver/xylix)
+	req_items = list(/obj/item/clothing/neck/psycross/silver/xylix)
 	charge_max = 2 MINUTES
 	miracle = TRUE
 	devotion_cost = 35

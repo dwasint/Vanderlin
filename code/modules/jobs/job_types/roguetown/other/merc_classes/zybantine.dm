@@ -30,7 +30,7 @@
 	beltl= /obj/item/flashlight/flare/torch/lantern
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 	pants = /obj/item/clothing/pants/tights/red
-	neck = /obj/item/clothing/neck/roguetown/keffiyeh/red
+	neck = /obj/item/clothing/neck/keffiyeh/red
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/poor)
 	if(!H.has_language(/datum/language/zybantine))

@@ -34,7 +34,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
 	shoes = /obj/item/clothing/shoes/boots
 	mask = /obj/item/clothing/face/facemask/steel
-	neck = /obj/item/clothing/neck/roguetown/coif
+	neck = /obj/item/clothing/neck/coif
 	armor = /obj/item/clothing/suit/roguetown/armor/leather
 	H.change_stat(STATKEY_END, 1)
 	H.change_stat(STATKEY_PER, 2)

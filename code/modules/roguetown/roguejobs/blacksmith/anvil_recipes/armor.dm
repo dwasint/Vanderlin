@@ -34,7 +34,7 @@
 	name = "Copper neck protector"
 	recipe_name = "a neck protector"
 	req_bar = /obj/item/ingot/copper
-	created_item = /obj/item/clothing/neck/roguetown/gorget/copper
+	created_item = /obj/item/clothing/neck/gorget/copper
 	craftdiff = 0
 
 /datum/anvil_recipe/armor/copper/chest
@@ -64,7 +64,7 @@
 /datum/anvil_recipe/armor/iron/chaincoif
 	name = "Iron Chain Coif"
 	recipe_name = "a Chain Coif"
-	created_item = /obj/item/clothing/neck/roguetown/chaincoif/iron
+	created_item = /obj/item/clothing/neck/chaincoif/iron
 
 /datum/anvil_recipe/armor/iron/chainglove
 	name = "2x Iron Chain Gauntlets"
@@ -116,7 +116,7 @@
 	name = "Iron Gorget"
 	recipe_name = "a gorget"
 	req_bar = /obj/item/ingot/iron
-	created_item = /obj/item/clothing/neck/roguetown/gorget
+	created_item = /obj/item/clothing/neck/gorget
 	craftdiff = 0
 
 /datum/anvil_recipe/armor/iron/platebootlight
@@ -150,7 +150,7 @@
 	name = "Bevor"
 	recipe_name = "a Bevor"
 	req_bar = /obj/item/ingot/steel
-	created_item = /obj/item/clothing/neck/roguetown/bevor
+	created_item = /obj/item/clothing/neck/bevor
 	craftdiff = 2
 
 /datum/anvil_recipe/armor/steel/brigadine
@@ -179,7 +179,7 @@
 	name = "Chain Coif"
 	recipe_name = "a Chain Coif"
 	req_bar = /obj/item/ingot/steel
-	created_item = /obj/item/clothing/neck/roguetown/chaincoif
+	created_item = /obj/item/clothing/neck/chaincoif
 	craftdiff = 2
 
 /datum/anvil_recipe/armor/steel/chainglove

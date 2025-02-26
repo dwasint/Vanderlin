@@ -40,75 +40,75 @@
 	switch(H.patron?.type)
 		if(/datum/patron/divine/astrata)
 			head = /obj/item/clothing/head/roguehood/astrata
-			neck = /obj/item/clothing/neck/roguetown/psycross/silver/astrata
+			neck = /obj/item/clothing/neck/psycross/silver/astrata
 			wrists = /obj/item/clothing/wrists/roguetown/wrappings
 			shoes = /obj/item/clothing/shoes/sandals
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/astrata
 			H.cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'
 		if(/datum/patron/divine/necra) //Necra acolytes are now gravetenders
 			head = /obj/item/clothing/head/padded/deathshroud
-			neck = /obj/item/clothing/neck/roguetown/psycross/silver/necra
+			neck = /obj/item/clothing/neck/psycross/silver/necra
 			shoes = /obj/item/clothing/shoes/boots
 			pants = /obj/item/clothing/pants/trou/leather/mourning
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/necra
 			H.cmode_music = 'sound/music/cmode/church/CombatGravekeeper.ogg'
 		if(/datum/patron/divine/eora)
 			head = /obj/item/clothing/head/padded/operavisage
-			neck = /obj/item/clothing/neck/roguetown/psycross/silver/eora
+			neck = /obj/item/clothing/neck/psycross/silver/eora
 			shoes = /obj/item/clothing/shoes/sandals
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/eora
 			H.cmode_music = 'sound/music/cmode/church/CombatEora.ogg'
 		if(/datum/patron/divine/noc)
 			head = /obj/item/clothing/head/roguehood/nochood
-			neck = /obj/item/clothing/neck/roguetown/psycross/noc
+			neck = /obj/item/clothing/neck/psycross/noc
 			wrists = /obj/item/clothing/wrists/roguetown/nocwrappings
 			shoes = /obj/item/clothing/shoes/sandals
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/noc
 			H.cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'
 		if(/datum/patron/divine/pestra)
 			head = /obj/item/clothing/head/roguehood/brown
-			neck = /obj/item/clothing/neck/roguetown/psycross/silver/pestra
+			neck = /obj/item/clothing/neck/psycross/silver/pestra
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/green
 			shoes = /obj/item/clothing/shoes/sandals
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/phys
 			H.cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'
 		if(/datum/patron/divine/dendor)
 			head = /obj/item/clothing/head/padded/briarthorns
-			neck = /obj/item/clothing/neck/roguetown/psycross/silver/dendor
+			neck = /obj/item/clothing/neck/psycross/silver/dendor
 			shoes = /obj/item/clothing/shoes/sandals
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/dendor
 			H.cmode_music = 'sound/music/cmode/garrison/CombatForestGarrison.ogg'
 		if(/datum/patron/divine/abyssor)
 			head = /obj/item/clothing/head/roguehood/random
-			neck = /obj/item/clothing/neck/roguetown/psycross/silver/abyssor
+			neck = /obj/item/clothing/neck/psycross/silver/abyssor
 			shoes = /obj/item/clothing/shoes/boots
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/plain
 			H.cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'
 			H.mind?.adjust_skillrank(/datum/skill/labor/fishing, 1, TRUE)
 		if(/datum/patron/divine/ravox)
 			head = /obj/item/clothing/head/roguehood/random
-			neck = /obj/item/clothing/neck/roguetown/psycross/silver/ravox
+			neck = /obj/item/clothing/neck/psycross/silver/ravox
 			shoes = /obj/item/clothing/shoes/boots
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/plain
 			H.cmode_music = 'sound/music/cmode/adventurer/CombatOutlander2.ogg'
 			H.mind?.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 		if(/datum/patron/divine/xylix)
 			head = /obj/item/clothing/head/roguehood/random
-			neck = /obj/item/clothing/neck/roguetown/psycross/silver/xylix
+			neck = /obj/item/clothing/neck/psycross/silver/xylix
 			shoes = /obj/item/clothing/shoes/boots
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/plain
 			H.cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'
 			H.mind?.adjust_skillrank(/datum/skill/misc/stealing, 1, TRUE)
 		if(/datum/patron/divine/malum)
 			head = /obj/item/clothing/head/roguehood/random
-			neck = /obj/item/clothing/neck/roguetown/psycross/silver/malum
+			neck = /obj/item/clothing/neck/psycross/silver/malum
 			shoes = /obj/item/clothing/shoes/boots
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/plain
 			backpack_contents += /obj/item/weapon/hammer/iron
 			H.cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'
 		else // Failsafe
 			head = /obj/item/clothing/head/roguehood/random
-			neck = /obj/item/clothing/neck/roguetown/psycross/silver
+			neck = /obj/item/clothing/neck/psycross/silver
 			shoes = /obj/item/clothing/shoes/boots
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/plain
 			H.cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'

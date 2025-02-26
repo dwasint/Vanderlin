@@ -42,7 +42,7 @@
 		beltr = /obj/item/weapon/sword/arming
 	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/merc
 	pants = /obj/item/clothing/pants/trou/leather
-	neck = /obj/item/clothing/neck/roguetown/gorget
+	neck = /obj/item/clothing/neck/gorget
 	if(H.gender == FEMALE)
 		pants = /obj/item/clothing/pants/tights/black
 		beltr = /obj/item/weapon/sword/sabre

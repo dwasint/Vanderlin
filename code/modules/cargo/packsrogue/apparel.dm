@@ -66,7 +66,7 @@
 /datum/supply_pack/rogue/apparel/coif
 	name = "Leather Coif"
 	cost = 13
-	contains = /obj/item/clothing/neck/roguetown/coif
+	contains = /obj/item/clothing/neck/coif
 
 /datum/supply_pack/rogue/apparel/tabard
 	name = "Tabard"

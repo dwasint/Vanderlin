@@ -480,7 +480,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 				return
 			if(H.anchored) // a way to bind the person to the rune if they choose to resist converting
 				return
-			if(istype(H.wear_neck, /obj/item/clothing/neck/roguetown/psycross))
+			if(istype(H.wear_neck, /obj/item/clothing/neck/psycross))
 				to_chat(user.mind, "<span class='danger'>\"They are wearing my bane...\"</span>")
 				return
 			if(length(SSmapping.retainer.cultists) >= 8)
@@ -600,7 +600,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 						return
 					if(HL == SSticker.rulermob)
 						return
-					if(istype(HL.wear_neck, /obj/item/clothing/neck/roguetown/psycross))
+					if(istype(HL.wear_neck, /obj/item/clothing/neck/psycross))
 						return
 					if(HAS_TRAIT(HL, TRAIT_NOSTAMINA))
 						return

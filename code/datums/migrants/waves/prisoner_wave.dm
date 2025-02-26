@@ -103,7 +103,7 @@
 	..()
 	armor = /obj/item/clothing/suit/roguetown/armor/cuirass
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
-	neck = /obj/item/clothing/neck/roguetown/gorget
+	neck = /obj/item/clothing/neck/gorget
 	head = /obj/item/clothing/head/helmet/nasal
 	backr = /obj/item/weapon/shield/wood
 	beltr = /obj/item/weapon/sword/scimitar/messer

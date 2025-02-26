@@ -28,7 +28,7 @@
 /datum/outfit/job/roguetown/jailor/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguehood/black
-	neck = /obj/item/clothing/neck/roguetown/coif
+	neck = /obj/item/clothing/neck/coif
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/splint
 	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/black
 	pants = /obj/item/clothing/pants/loincloth/black

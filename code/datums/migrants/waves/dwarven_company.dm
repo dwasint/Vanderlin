@@ -12,7 +12,7 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/cuirass
 	cloak = /obj/item/clothing/cloak/raincloak/furcloak
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
-	neck = /obj/item/clothing/neck/roguetown/gorget
+	neck = /obj/item/clothing/neck/gorget
 	head = /obj/item/clothing/head/helmet/coppercap
 	backr = /obj/item/weapon/shield/wood
 	belt = /obj/item/storage/belt/rogue/leather

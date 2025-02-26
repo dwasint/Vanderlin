@@ -37,7 +37,7 @@
 	overlay_state = "speakwithdead"
 	releasedrain = 30
 	charge_max = 75 SECONDS
-	req_items = list(/obj/item/clothing/neck/roguetown/psycross/silver/necra)
+	req_items = list(/obj/item/clothing/neck/psycross/silver/necra)
 	max_targets = 0
 	cast_without_targets = TRUE
 	sound = 'sound/magic/churn.ogg'
@@ -120,7 +120,7 @@
 	charge_max = 30 SECONDS
 	max_targets = 0
 	cast_without_targets = TRUE
-	req_items = list(/obj/item/clothing/neck/roguetown/psycross/silver/necra)
+	req_items = list(/obj/item/clothing/neck/psycross/silver/necra)
 	sound = 'sound/magic/churn.ogg'
 	associated_skill = /datum/skill/magic/holy
 	invocation = "The Undermaiden rebukes!"

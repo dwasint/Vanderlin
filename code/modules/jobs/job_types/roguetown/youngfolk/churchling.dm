@@ -46,28 +46,28 @@
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	shoes = /obj/item/clothing/shoes/simpleshoes
 	beltl = /obj/item/storage/keyring/priest
-	neck = /obj/item/clothing/neck/roguetown/psycross/silver
+	neck = /obj/item/clothing/neck/psycross/silver
 	switch(H.patron?.type)
 		if(/datum/patron/divine/astrata)
-			neck = /obj/item/clothing/neck/roguetown/psycross/silver/astrata
+			neck = /obj/item/clothing/neck/psycross/silver/astrata
 		if(/datum/patron/divine/necra) //Necra acolytes are now gravetenders
-			neck = /obj/item/clothing/neck/roguetown/psycross/silver/necra
+			neck = /obj/item/clothing/neck/psycross/silver/necra
 		if(/datum/patron/divine/eora)
-			neck = /obj/item/clothing/neck/roguetown/psycross/silver/eora
+			neck = /obj/item/clothing/neck/psycross/silver/eora
 		if(/datum/patron/divine/noc)
-			neck = /obj/item/clothing/neck/roguetown/psycross/noc
+			neck = /obj/item/clothing/neck/psycross/noc
 		if(/datum/patron/divine/pestra)
-			neck = /obj/item/clothing/neck/roguetown/psycross/silver/pestra
+			neck = /obj/item/clothing/neck/psycross/silver/pestra
 		if(/datum/patron/divine/dendor)
-			neck = /obj/item/clothing/neck/roguetown/psycross/silver/dendor
+			neck = /obj/item/clothing/neck/psycross/silver/dendor
 		if(/datum/patron/divine/abyssor)
-			neck = /obj/item/clothing/neck/roguetown/psycross/silver/abyssor
+			neck = /obj/item/clothing/neck/psycross/silver/abyssor
 		if(/datum/patron/divine/ravox)
-			neck = /obj/item/clothing/neck/roguetown/psycross/silver/ravox
+			neck = /obj/item/clothing/neck/psycross/silver/ravox
 		if(/datum/patron/divine/xylix)
-			neck = /obj/item/clothing/neck/roguetown/psycross/silver/xylix
+			neck = /obj/item/clothing/neck/psycross/silver/xylix
 		if(/datum/patron/divine/malum)
-			neck = /obj/item/clothing/neck/roguetown/psycross/silver/malum
+			neck = /obj/item/clothing/neck/psycross/silver/malum
 
 	H.change_stat(STATKEY_PER, 1)
 	H.change_stat(STATKEY_SPD, 2)
