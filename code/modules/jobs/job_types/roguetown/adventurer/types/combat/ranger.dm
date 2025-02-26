@@ -19,7 +19,7 @@
 
 /datum/outfit/job/roguetown/adventurer/ranger/pre_equip(mob/living/carbon/human/H)
 	..()
-	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+	shoes = /obj/item/clothing/shoes/boots/leather
 	H.mind?.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 	H.mind?.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
 	H.mind?.adjust_skillrank(/datum/skill/craft/tanning, 2, TRUE)

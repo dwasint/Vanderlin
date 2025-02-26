@@ -12,7 +12,7 @@
 
 /datum/outfit/job/roguetown/grenzelhoft_migration/count/pre_equip(mob/living/carbon/human/H)
 	..()
-	shoes = /obj/item/clothing/shoes/roguetown/grenzelhoft
+	shoes = /obj/item/clothing/shoes/grenzelhoft
 	gloves = /obj/item/clothing/gloves/roguetown/angle/grenzel
 	wrists = /obj/item/clothing/neck/roguetown/psycross/g
 	head = /obj/item/clothing/head/helmet/skullcap/grenzelhoft
@@ -67,7 +67,7 @@
 
 /datum/outfit/job/roguetown/grenzelhoft_migration/countess/pre_equip(mob/living/carbon/human/H)
 	..()
-	shoes = /obj/item/clothing/shoes/roguetown/grenzelhoft
+	shoes = /obj/item/clothing/shoes/grenzelhoft
 	gloves = /obj/item/clothing/gloves/roguetown/angle/grenzel
 	wrists = /obj/item/clothing/neck/roguetown/psycross/g
 	head = /obj/item/clothing/head/helmet/skullcap/grenzelhoft
@@ -140,7 +140,7 @@
 	pants = /obj/item/clothing/pants/tights/black
 	backr = /obj/item/weapon/sword/long/greatsword/flamberge
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
-	shoes = /obj/item/clothing/shoes/roguetown/boots/rare/grenzelplate
+	shoes = /obj/item/clothing/shoes/boots/rare/grenzelplate
 	gloves = /obj/item/clothing/gloves/roguetown/rare/grenzelplate
 	belt = /obj/item/storage/belt/rogue/leather
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
@@ -191,7 +191,7 @@
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
 	pants = /obj/item/clothing/pants/grenzelpants
-	shoes = /obj/item/clothing/shoes/roguetown/grenzelhoft
+	shoes = /obj/item/clothing/shoes/grenzelhoft
 	gloves = /obj/item/clothing/gloves/roguetown/angle/grenzel
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/weapon/mace/cudgel

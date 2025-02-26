@@ -123,7 +123,7 @@
 	name = "Light Plate Boots"
 	recipe_name = "a pair of Light Plate Boots"
 	req_bar = /obj/item/ingot/iron
-	created_item = /obj/item/clothing/shoes/roguetown/boots/armor/light
+	created_item = /obj/item/clothing/shoes/boots/armor/light
 
 /datum/anvil_recipe/armor/iron/nasal_helmet
 	name = "Nasal helmet"
@@ -298,7 +298,7 @@
 	name = "Plated boots"
 	recipe_name = "some Plated Boots"
 	req_bar = /obj/item/ingot/steel
-	created_item = /obj/item/clothing/shoes/roguetown/boots/armor
+	created_item = /obj/item/clothing/shoes/boots/armor
 	craftdiff = 3
 
 /datum/anvil_recipe/armor/steel/helmetsall
@@ -405,5 +405,5 @@
 /datum/anvil_recipe/armor/blacksteel/plateboots
 	name = "Blacksteel Plate Boots"
 	req_bar = /obj/item/ingot/blacksteel
-	created_item = /obj/item/clothing/shoes/roguetown/boots/armor/blkknight
+	created_item = /obj/item/clothing/shoes/boots/armor/blkknight
 	craftdiff = 3

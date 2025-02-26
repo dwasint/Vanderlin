@@ -27,7 +27,7 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/cuirass // Halfplate has been made heavy armor, billions must make due.
 	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
 	pants = /obj/item/clothing/pants/trou/leather
-	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+	shoes = /obj/item/clothing/shoes/boots/leather
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/weapon/mace
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor

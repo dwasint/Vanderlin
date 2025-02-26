@@ -45,11 +45,11 @@
 /datum/repeatable_crafting_recipe/leather/shoes
 	name = "leather shoes"
 	output_amount = 2
-	output = /obj/item/clothing/shoes/roguetown/simpleshoes
+	output = /obj/item/clothing/shoes/simpleshoes
 
 /datum/repeatable_crafting_recipe/leather/boots
 	name = "leather boots"
-	output = /obj/item/clothing/shoes/roguetown/boots/leather
+	output = /obj/item/clothing/shoes/boots/leather
 
 /datum/repeatable_crafting_recipe/leather/corset
 	name = "corset"
@@ -61,7 +61,7 @@
 		/obj/item/natural/hide/cured = 1,
 		/obj/item/natural/fibers = 1
 	)
-	output = /obj/item/clothing/shoes/roguetown/sandals
+	output = /obj/item/clothing/shoes/sandals
 
 /datum/repeatable_crafting_recipe/leather/gladiator
 	name = "caligae"
@@ -69,7 +69,7 @@
 		/obj/item/natural/hide/cured = 2,
 		/obj/item/natural/fibers = 1
 	)
-	output = /obj/item/clothing/shoes/roguetown/gladiator
+	output = /obj/item/clothing/shoes/gladiator
 	sellprice = 17
 	craftdiff = 1
 
@@ -158,7 +158,7 @@
 	requirements = list(
 		/obj/item/natural/hide = 1,
 	)
-	output = /obj/item/clothing/shoes/roguetown/tribal
+	output = /obj/item/clothing/shoes/tribal
 
 /datum/repeatable_crafting_recipe/leather/furlinedanklets
 	name = "fur lined anklets"
@@ -166,7 +166,7 @@
 		/obj/item/natural/hide/cured = 1,
 		/obj/item/natural/fur = 1,
 	)
-	output = /obj/item/clothing/shoes/roguetown/boots/furlinedanklets
+	output = /obj/item/clothing/shoes/boots/furlinedanklets
 
 /datum/repeatable_crafting_recipe/leather/saddle
 	name = "saddle"
@@ -255,7 +255,7 @@
 		/obj/item/natural/hide/cured = 2,
 		/obj/item/natural/fur = 2,
 	)
-	output = /obj/item/clothing/shoes/roguetown/boots/furlinedboots
+	output = /obj/item/clothing/shoes/boots/furlinedboots
 	craftdiff = 1
 
 /datum/repeatable_crafting_recipe/leather/shortboots
@@ -263,7 +263,7 @@
 	requirements = list(
 		/obj/item/natural/hide/cured = 2,
 	)
-	output = /obj/item/clothing/shoes/roguetown/shortboots
+	output = /obj/item/clothing/shoes/shortboots
 	craftdiff = 1
 
 /datum/repeatable_crafting_recipe/leather/darkboots
@@ -272,7 +272,7 @@
 		/obj/item/natural/hide/cured = 2,
 		/obj/item/natural/cloth = 1
 	)
-	output = /obj/item/clothing/shoes/roguetown/boots
+	output = /obj/item/clothing/shoes/boots
 	craftdiff = 2
 
 /datum/repeatable_crafting_recipe/leather/ridingboots
@@ -282,12 +282,12 @@
 		/obj/item/natural/fibers = 2,
 		/obj/item/natural/cloth = 1,
 	)
-	output = /obj/item/clothing/shoes/roguetown/ridingboots
+	output = /obj/item/clothing/shoes/ridingboots
 	craftdiff = 3
 
 /datum/repeatable_crafting_recipe/leather/nobleboots
 	name = "noble boots"
-	output = /obj/item/clothing/shoes/roguetown/nobleboot
+	output = /obj/item/clothing/shoes/nobleboot
 	requirements = list(
 		/obj/item/natural/hide/cured = 2,
 		/obj/item/natural/fibers = 2,
@@ -374,7 +374,7 @@
 
 /datum/repeatable_crafting_recipe/leather/standalone/boots
 	name = "hardened leather boots"
-	output = /obj/item/clothing/shoes/roguetown/boots/leather/advanced
+	output = /obj/item/clothing/shoes/boots/leather/advanced
 	requirements = list(/obj/item/natural/hide/cured = 1,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 4
@@ -411,9 +411,9 @@
 
 /datum/repeatable_crafting_recipe/leather/standalone/boots/masterwork
 	name = "masterwork leather boots"
-	output = /obj/item/clothing/shoes/roguetown/boots/leather/masterwork
-	attacking_atom = /obj/item/clothing/shoes/roguetown/boots/leather
-	requirements = list(/obj/item/clothing/shoes/roguetown/boots/leather = 1,
+	output = /obj/item/clothing/shoes/boots/leather/masterwork
+	attacking_atom = /obj/item/clothing/shoes/boots/leather
+	requirements = list(/obj/item/clothing/shoes/boots/leather = 1,
 				/obj/item/natural/cured/essence = 1,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 5

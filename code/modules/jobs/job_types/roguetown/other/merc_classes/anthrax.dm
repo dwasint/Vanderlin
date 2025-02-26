@@ -11,7 +11,7 @@
 
 /datum/outfit/job/roguetown/mercenary/anthrax/pre_equip(mob/living/carbon/human/H)
 	..()
-	shoes = /obj/item/clothing/shoes/roguetown/boots
+	shoes = /obj/item/clothing/shoes/boots
 	belt = /obj/item/storage/belt/rogue/leather/black
 	pants = /obj/item/clothing/pants/trou/shadowpants
 	backl = /obj/item/storage/backpack/rogue/satchel

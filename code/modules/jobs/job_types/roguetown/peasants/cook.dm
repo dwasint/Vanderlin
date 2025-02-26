@@ -43,7 +43,7 @@
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/pants/tights/random
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
-		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
+		shoes = /obj/item/clothing/shoes/simpleshoes
 		cloak = /obj/item/clothing/cloak/apron/cook
 		head = /obj/item/clothing/head/cookhat
 		neck = /obj/item/storage/belt/rogue/pouch/coins/poor
@@ -54,6 +54,6 @@
 		pants = /obj/item/clothing/pants/skirt/red
 		cloak = /obj/item/clothing/cloak/apron/cook
 		head = /obj/item/clothing/head/cookhat
-		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
+		shoes = /obj/item/clothing/shoes/simpleshoes
 		neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 		H.change_stat(STATKEY_CON, 2)

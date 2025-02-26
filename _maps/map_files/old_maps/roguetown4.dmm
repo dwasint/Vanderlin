@@ -7289,7 +7289,7 @@
 "AW" = (
 /obj/structure/closet/crate/roguecloset/dark,
 /obj/item/clothing/suit/roguetown/armor/leather/vest,
-/obj/item/clothing/shoes/roguetown/boots/leather,
+/obj/item/clothing/shoes/boots/leather,
 /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/dress,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)
@@ -8354,7 +8354,7 @@
 "ET" = (
 /obj/structure/closet/crate/roguecloset,
 /obj/item/scomstone,
-/obj/item/clothing/shoes/roguetown/nobleboot,
+/obj/item/clothing/shoes/nobleboot,
 /obj/item/weapon/sword/long/greatsword,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)

@@ -60,7 +60,7 @@
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/black
 		pants = /obj/item/clothing/pants/trou/beltpants
 		belt = /obj/item/storage/belt/rogue/leather/cloth/lady
-		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+		shoes = /obj/item/clothing/shoes/boots/leather
 		beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
 		backr = /obj/item/storage/backpack/rogue/satchel
 		cloak = /obj/item/clothing/cloak/matron

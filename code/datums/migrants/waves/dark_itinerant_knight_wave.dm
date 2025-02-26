@@ -14,7 +14,7 @@
 	pants = /obj/item/clothing/pants/trou/shadowpants
 	shirt = /obj/item/clothing/suit/roguetown/shirt/shadowshirt
 	armor = /obj/item/clothing/suit/roguetown/armor/rare/elfplate
-	shoes = /obj/item/clothing/shoes/roguetown/boots/rare/elfplate
+	shoes = /obj/item/clothing/shoes/boots/rare/elfplate
 	beltl = /obj/item/flashlight/flare/torch/lantern
 	belt = /obj/item/storage/belt/rogue/leather/steel
 	backr = /obj/item/storage/backpack/rogue/satchel
@@ -58,7 +58,7 @@
 	..()
 	shirt = /obj/item/clothing/suit/roguetown/shirt/dress/gen/black
 	pants = /obj/item/clothing/pants/chainlegs/iron
-	shoes = /obj/item/clothing/shoes/roguetown/boots
+	shoes = /obj/item/clothing/shoes/boots
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/ammo_holder/quiver/bolts
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail

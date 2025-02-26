@@ -846,7 +846,7 @@
 "tu" = (
 /obj/structure/closet/crate/roguecloset/inn,
 /obj/item/clothing/suit/roguetown/armor/leather/vest/butcher,
-/obj/item/clothing/shoes/roguetown/boots/leather,
+/obj/item/clothing/shoes/boots/leather,
 /turf/open/floor/rogue/church,
 /area/rogue/indoors)
 "tw" = (

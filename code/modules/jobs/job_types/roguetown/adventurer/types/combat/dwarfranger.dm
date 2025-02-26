@@ -14,7 +14,7 @@
 	head = /obj/item/clothing/head/roguehood/uncolored
 	pants = /obj/item/clothing/pants/trou/leather
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
-	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
+	shoes = /obj/item/clothing/shoes/simpleshoes
 	belt = /obj/item/storage/belt/rogue/leather
 	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 	backl = /obj/item/storage/backpack/rogue/satchel
@@ -25,9 +25,9 @@
 	r_hand = /obj/item/weapon/sword/scimitar/falchion
 	backpack_contents = list(/obj/item/bait = 1)
 	if(prob(23))
-		shoes = /obj/item/clothing/shoes/roguetown/boots
+		shoes = /obj/item/clothing/shoes/boots
 	if(prob(23))
-		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+		shoes = /obj/item/clothing/shoes/boots/leather
 	cloak = /obj/item/clothing/cloak/raincloak/brown
 	H.mind?.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE) // In line with basic combat classes
 	H.mind?.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)

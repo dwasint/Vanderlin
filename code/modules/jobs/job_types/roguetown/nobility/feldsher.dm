@@ -34,7 +34,7 @@
 /datum/outfit/job/roguetown/feldsher/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.virginity = TRUE
-	shoes = /obj/item/clothing/shoes/roguetown/shortboots
+	shoes = /obj/item/clothing/shoes/shortboots
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/red
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backl = /obj/item/storage/backpack/rogue/satchel/surgbag

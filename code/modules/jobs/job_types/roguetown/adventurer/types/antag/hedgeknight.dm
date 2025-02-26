@@ -16,7 +16,7 @@
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	gloves = /obj/item/clothing/gloves/roguetown/plate/rust
 	pants = /obj/item/clothing/pants/platelegs/rust
-	shoes = /obj/item/clothing/shoes/roguetown/boots/armor/light/rust
+	shoes = /obj/item/clothing/shoes/boots/armor/light/rust
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/weapon/sword/long
 	backr = /obj/item/storage/backpack/rogue/satchel/black

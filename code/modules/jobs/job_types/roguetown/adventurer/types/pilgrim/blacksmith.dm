@@ -65,11 +65,11 @@
 		ADD_TRAIT(H, TRAIT_MALUMFIRE, TRAIT_GENERIC)
 
 	if(H.gender == MALE)
-		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+		shoes = /obj/item/clothing/shoes/boots/leather
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
 	else
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
-		shoes = /obj/item/clothing/shoes/roguetown/shortboots
+		shoes = /obj/item/clothing/shoes/shortboots
 
 	if(H.dna.species.id == "dwarf")
 		head = /obj/item/clothing/head/helmet/leather/minershelm

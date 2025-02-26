@@ -252,7 +252,7 @@
 /obj/structure/closet/crate/chest/wicker,
 /obj/effect/spawner/roguemap/loot,
 /obj/effect/spawner/roguemap/loot,
-/obj/item/clothing/shoes/roguetown/boots,
+/obj/item/clothing/shoes/boots,
 /turf/open/floor/rogue/dirt,
 /area/rogue)
 "Ib" = (

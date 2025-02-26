@@ -30,7 +30,7 @@
 	gloves = /obj/item/clothing/gloves/roguetown/chain
 	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/random
 	pants = /obj/item/clothing/pants/chainlegs
-	shoes = /obj/item/clothing/shoes/roguetown/boots/armor/light
+	shoes = /obj/item/clothing/shoes/boots/armor/light
 	backr = /obj/item/weapon/shield/tower/metal
 	backl = /obj/item/clothing/cloak/cape/crusader
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver

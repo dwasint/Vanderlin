@@ -19,7 +19,7 @@
 	pants = /obj/item/clothing/pants/tights
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	armor = /obj/item/clothing/suit/roguetown/shirt/rags
-	shoes = /obj/item/clothing/shoes/roguetown/boots
+	shoes = /obj/item/clothing/shoes/boots
 
 /datum/job/roguetown/huntmaster
 	title = "Huntmaster of the Murderwoods"
@@ -43,7 +43,7 @@
 	pants = /obj/item/clothing/pants/tights
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	armor = /obj/item/clothing/suit/roguetown/shirt/rags
-	shoes = /obj/item/clothing/shoes/roguetown/boots
+	shoes = /obj/item/clothing/shoes/boots
 
 /datum/job/roguetown/hetman
 	title = "Hetman of Mount Decapitation"
@@ -66,4 +66,4 @@
 	pants = /obj/item/clothing/pants/tights
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	armor = /obj/item/clothing/suit/roguetown/shirt/rags
-	shoes = /obj/item/clothing/shoes/roguetown/boots
+	shoes = /obj/item/clothing/shoes/boots

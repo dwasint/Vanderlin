@@ -1633,10 +1633,10 @@
 "bSo" = (
 /obj/structure/closet/crate/roguecloset/inn/chest,
 /obj/item/storage/belt/rogue/pouch/coins/rich,
-/obj/item/clothing/shoes/roguetown/boots/leather,
-/obj/item/clothing/shoes/roguetown/shortboots,
-/obj/item/clothing/shoes/roguetown/ridingboots,
-/obj/item/clothing/shoes/roguetown/boots,
+/obj/item/clothing/shoes/boots/leather,
+/obj/item/clothing/shoes/shortboots,
+/obj/item/clothing/shoes/ridingboots,
+/obj/item/clothing/shoes/boots,
 /obj/item/roguegem,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/shelter/rtfield)
@@ -3281,7 +3281,7 @@
 /obj/structure/closet/crate/roguecloset/inn/chest,
 /obj/item/storage/belt/rogue/pouch/coins/poor,
 /obj/item/storage/belt/rogue/leather/rope,
-/obj/item/clothing/shoes/roguetown/boots/leather,
+/obj/item/clothing/shoes/boots/leather,
 /obj/item/weapon/knife/dagger,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/town/sewer)
@@ -4187,7 +4187,7 @@
 	icon_state = "largetable";
 	dir = 6
 	},
-/obj/item/clothing/shoes/roguetown/boots/leather,
+/obj/item/clothing/shoes/boots/leather,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/shop)
 "eCq" = (
@@ -4642,7 +4642,7 @@
 	})
 "fbw" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/item/clothing/shoes/roguetown/simpleshoes,
+/obj/item/clothing/shoes/simpleshoes,
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/indoors/shelter/rtfield)
 "fbL" = (
@@ -4840,7 +4840,7 @@
 	})
 "fnq" = (
 /obj/structure/fluff/railing/border,
-/obj/item/clothing/shoes/roguetown/jester,
+/obj/item/clothing/shoes/jester,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/manor{
 	first_time_text = "Blackwine Manor"
@@ -8201,7 +8201,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/exposed/under/basement)
 "jbl" = (
-/obj/item/clothing/shoes/roguetown/sandals,
+/obj/item/clothing/shoes/sandals,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/magician)
 "jbv" = (
@@ -9039,7 +9039,7 @@
 /turf/open/floor/rogue/rooftop/green,
 /area/rogue/outdoors/bog)
 "jWp" = (
-/obj/item/clothing/shoes/roguetown/shortboots,
+/obj/item/clothing/shoes/shortboots,
 /mob/living/carbon/human/species/human/northern/bum{
 	name = "creep";
 	aggressive = 1
@@ -19600,7 +19600,7 @@
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town)
 "uMw" = (
-/obj/item/clothing/shoes/roguetown/shortboots,
+/obj/item/clothing/shoes/shortboots,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield{
 	ambush_mobs = list(/mob/living/simple_animal/hostile/retaliate/rogue/wolf = 50, /mob/living/carbon/human/species/human/northern/bum/ambush = 30)
@@ -20260,7 +20260,7 @@
 /area/rogue/indoors/town/cell)
 "vuG" = (
 /obj/machinery/light/rogue/wallfire/candle/r,
-/obj/item/clothing/shoes/roguetown/ridingboots,
+/obj/item/clothing/shoes/ridingboots,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town/manor{
 	first_time_text = "Blackwine Manor"
@@ -20629,7 +20629,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/garrison)
 "vOf" = (
-/obj/item/clothing/shoes/roguetown/boots/leather,
+/obj/item/clothing/shoes/boots/leather,
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/rtfield{
@@ -20791,7 +20791,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/exposed/under/basement)
 "vWJ" = (
-/obj/item/clothing/shoes/roguetown/jester,
+/obj/item/clothing/shoes/jester,
 /obj/effect/decal/cleanable/blood/old,
 /obj/structure/flora/roguegrass,
 /turf/open/floor/rogue/cobble,

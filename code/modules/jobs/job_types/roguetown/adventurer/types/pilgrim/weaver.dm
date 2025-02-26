@@ -25,7 +25,7 @@
 	H.mind?.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
 	belt = /obj/item/storage/belt/rogue/leather/cloth/lady
 	pants = /obj/item/clothing/pants/tights/random
-	shoes = /obj/item/clothing/shoes/roguetown/shortboots
+	shoes = /obj/item/clothing/shoes/shortboots
 	backl = /obj/item/storage/backpack/rogue/satchel
 	neck = /obj/item/storage/belt/rogue/pouch/coins/mid
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt

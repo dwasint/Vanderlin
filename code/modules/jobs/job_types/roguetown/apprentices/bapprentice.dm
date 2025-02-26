@@ -34,7 +34,7 @@
 		H.mind?.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/pants/tights/random
-		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
+		shoes = /obj/item/clothing/shoes/simpleshoes
 		shirt = null
 		belt = /obj/item/storage/belt/rogue/leather/rope
 		beltr = /obj/item/key/blacksmith
@@ -45,7 +45,7 @@
 		H.change_stat(STATKEY_SPD, 1)
 	else
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
-		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
+		shoes = /obj/item/clothing/shoes/simpleshoes
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 		belt = /obj/item/storage/belt/rogue/leather/rope
 		beltr = /obj/item/key/blacksmith

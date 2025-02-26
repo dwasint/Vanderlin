@@ -34,7 +34,7 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/splint
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
 	pants = /obj/item/clothing/pants/trou/leather
-	shoes = /obj/item/clothing/shoes/roguetown/boots/furlinedboots
+	shoes = /obj/item/clothing/shoes/boots/furlinedboots
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	head = /obj/item/clothing/head/helmet/kettle/slit
 	gloves = /obj/item/clothing/gloves/roguetown/leather

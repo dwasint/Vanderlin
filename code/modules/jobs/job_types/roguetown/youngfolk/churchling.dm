@@ -44,7 +44,7 @@
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	pants = /obj/item/clothing/pants/tights
 	belt = /obj/item/storage/belt/rogue/leather/rope
-	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
+	shoes = /obj/item/clothing/shoes/simpleshoes
 	beltl = /obj/item/storage/keyring/priest
 	neck = /obj/item/clothing/neck/roguetown/psycross/silver
 	switch(H.patron?.type)

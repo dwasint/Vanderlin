@@ -43,7 +43,7 @@
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
 "eD" = (
-/obj/item/clothing/shoes/roguetown/boots/armor,
+/obj/item/clothing/shoes/boots/armor,
 /obj/structure/fluff/walldeco/chains,
 /turf/open/floor/rogue/hexstone,
 /area/rogue)

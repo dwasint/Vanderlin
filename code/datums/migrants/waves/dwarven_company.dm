@@ -19,7 +19,7 @@
 	beltr = /obj/item/flashlight/flare/torch/lantern
 	beltl = /obj/item/weapon/pick/paxe
 	pants = /obj/item/clothing/pants/trou
-	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes/buckle
+	shoes = /obj/item/clothing/shoes/simpleshoes/buckle
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/poor)
 	H.change_stat(STATKEY_STR, 3)
@@ -86,7 +86,7 @@
 			H.mind?.adjust_skillrank(/datum/skill/craft/weaponsmithing, pick(1,2), TRUE)
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/pants/trou
-		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+		shoes = /obj/item/clothing/shoes/boots/leather
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/splint
 		belt = /obj/item/storage/belt/rogue/leather
@@ -101,7 +101,7 @@
 		pants = /obj/item/clothing/pants/trou
 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/splint
-		shoes = /obj/item/clothing/shoes/roguetown/shortboots
+		shoes = /obj/item/clothing/shoes/shortboots
 		belt = /obj/item/storage/belt/rogue/leather
 		cloak = /obj/item/clothing/cloak/apron/brown
 		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
@@ -146,7 +146,7 @@
 			H.mind?.adjust_skillrank(/datum/skill/craft/armorsmithing, pick(1,2), TRUE)
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/pants/trou
-		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes/buckle
+		shoes = /obj/item/clothing/shoes/simpleshoes/buckle
 		armor = /obj/item/clothing/suit/roguetown/armor/chainmail
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
 		belt = /obj/item/storage/belt/rogue/leather
@@ -161,7 +161,7 @@
 		pants = /obj/item/clothing/pants/trou
 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 		armor = /obj/item/clothing/suit/roguetown/armor/chainmail
-		shoes = /obj/item/clothing/shoes/roguetown/shortboots
+		shoes = /obj/item/clothing/shoes/shortboots
 		belt = /obj/item/storage/belt/rogue/leather
 		cloak = /obj/item/clothing/cloak/apron/brown
 		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor

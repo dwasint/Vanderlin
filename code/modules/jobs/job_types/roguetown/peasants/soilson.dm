@@ -78,7 +78,7 @@
 		pants = /obj/item/clothing/pants/tights/random
 		armor = /obj/item/clothing/suit/roguetown/armor/gambeson/light/striped
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
-		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
+		shoes = /obj/item/clothing/shoes/simpleshoes
 		belt = /obj/item/storage/belt/rogue/leather/rope
 		beltr = /obj/item/key/soilson
 		beltl = /obj/item/weapon/knife/villager
@@ -86,7 +86,7 @@
 		head = /obj/item/clothing/head/armingcap
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
-		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
+		shoes = /obj/item/clothing/shoes/simpleshoes
 		belt = /obj/item/storage/belt/rogue/leather/rope
 		beltr = /obj/item/key/soilson
 		beltl = /obj/item/weapon/knife/villager

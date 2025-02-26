@@ -176,37 +176,37 @@
 /datum/supply_pack/rogue/apparel/simpleshoes
 	name = "Simple Shoes"
 	cost = 4
-	contains = /obj/item/clothing/shoes/roguetown/simpleshoes
+	contains = /obj/item/clothing/shoes/simpleshoes
 
 /datum/supply_pack/rogue/apparel/sandals
 	name = "Sandals"
 	cost = 3
-	contains = /obj/item/clothing/shoes/roguetown/sandals
+	contains = /obj/item/clothing/shoes/sandals
 
 /datum/supply_pack/rogue/apparel/gladiator_sandals
 	name = "Gladiator Sandals"
 	cost = 10
-	contains = /obj/item/clothing/shoes/roguetown/gladiator
+	contains = /obj/item/clothing/shoes/gladiator
 
 /datum/supply_pack/rogue/apparel/boots
 	name = "Dark Boots"
 	cost = 13
-	contains = /obj/item/clothing/shoes/roguetown/boots
+	contains = /obj/item/clothing/shoes/boots
 
 /datum/supply_pack/rogue/apparel/shortboots
 	name = "Short Boots"
 	cost = 10
-	contains = /obj/item/clothing/shoes/roguetown/shortboots
+	contains = /obj/item/clothing/shoes/shortboots
 
 /datum/supply_pack/rogue/apparel/ridingboots
 	name = "Riding Boots"
 	cost = 15
-	contains = /obj/item/clothing/shoes/roguetown/ridingboots
+	contains = /obj/item/clothing/shoes/ridingboots
 
 /datum/supply_pack/rogue/apparel/leather_boots
 	name = "Leather Boots"
 	cost = 13
-	contains = /obj/item/clothing/shoes/roguetown/boots/leather
+	contains = /obj/item/clothing/shoes/boots/leather
 
 /datum/supply_pack/rogue/apparel/leather_gloves
 	name = "Leather Gloves"

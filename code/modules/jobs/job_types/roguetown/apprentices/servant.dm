@@ -55,7 +55,7 @@
 		H.mind?.adjust_skillrank(/datum/skill/misc/music, pick(0,1,1), TRUE)
 		H.change_stat(STATKEY_SPD, 1)
 		H.change_stat(STATKEY_END, 1)
-		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
+		shoes = /obj/item/clothing/shoes/simpleshoes
 		pants = /obj/item/clothing/pants/tights/uncolored
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/uncolored
 		belt = /obj/item/storage/belt/rogue/leather/rope

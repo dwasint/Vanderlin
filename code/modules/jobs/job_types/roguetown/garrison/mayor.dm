@@ -37,7 +37,7 @@
 	head = /obj/item/clothing/head/brimmed
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/jacket
 	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic
-	shoes = /obj/item/clothing/shoes/roguetown/boots
+	shoes = /obj/item/clothing/shoes/boots
 	cloak = /obj/item/clothing/cloak/half
 	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
 	belt = /obj/item/storage/belt/rogue/leather/black

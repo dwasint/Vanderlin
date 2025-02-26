@@ -81,7 +81,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 		pants = /obj/item/clothing/pants/tights/black
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 		armor = /obj/item/clothing/suit/roguetown/armor/gambeson/arming
-		shoes = /obj/item/clothing/shoes/roguetown/boots
+		shoes = /obj/item/clothing/shoes/boots
 		cloak = /obj/item/clothing/cloak/lordcloak
 		if(H.dna?.species)
 			if(H.dna.species.id == "human")
@@ -89,7 +89,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	else
 		pants = /obj/item/clothing/pants/tights/random
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/royal
-		shoes = /obj/item/clothing/shoes/roguetown/shortboots
+		shoes = /obj/item/clothing/shoes/shortboots
 		cloak = /obj/item/clothing/cloak/lordcloak/ladycloak
 		wrists = /obj/item/clothing/wrists/roguetown/royalsleeves
 

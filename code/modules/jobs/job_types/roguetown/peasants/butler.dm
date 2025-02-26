@@ -50,7 +50,7 @@
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/pants/tights
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guard
-		shoes = /obj/item/clothing/shoes/roguetown/nobleboot
+		shoes = /obj/item/clothing/shoes/nobleboot
 		belt = /obj/item/storage/belt/rogue/leather/plaquesilver
 		beltr = /obj/item/storage/keyring/butler
 		beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
@@ -60,7 +60,7 @@
 	else
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/maid
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
-		shoes = /obj/item/clothing/shoes/roguetown/ridingboots
+		shoes = /obj/item/clothing/shoes/ridingboots
 		cloak = /obj/item/clothing/cloak/apron
 		belt = /obj/item/storage/belt/rogue/leather/cloth/lady
 		beltr = /obj/item/storage/keyring/butler

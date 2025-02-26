@@ -18,7 +18,7 @@
 /datum/outfit/job/roguetown/tailor/pre_equip(mob/living/carbon/human/H)
 	..()
 
-	shoes = /obj/item/clothing/shoes/roguetown/nobleboot
+	shoes = /obj/item/clothing/shoes/nobleboot
 	head = /obj/item/clothing/head/courtierhat
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/weapon/knife/scissors

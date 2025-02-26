@@ -69,7 +69,7 @@
 /mob/living/simple_animal/hostile/rogue/skeleton,
 /obj/item/clothing/suit/roguetown/shirt/tunic/blue,
 /obj/item/roguegem/blue,
-/obj/item/clothing/shoes/roguetown/boots,
+/obj/item/clothing/shoes/boots,
 /obj/item/clothing/neck/roguetown/psycross/silver/malum_steel,
 /obj/item/clothing/ring/silver/saffira,
 /obj/item/storage/belt/rogue/leather/plaquesilver,

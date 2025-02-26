@@ -4684,7 +4684,7 @@
 "fcx" = (
 /obj/structure/closet/crate/roguecloset/dark,
 /obj/item/clothing/suit/roguetown/armor/leather/vest,
-/obj/item/clothing/shoes/roguetown/boots/leather,
+/obj/item/clothing/shoes/boots/leather,
 /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/dress,
 /obj/item/clothing/pants/tights/random,
 /obj/item/clothing/suit/roguetown/shirt/undershirt/random,
@@ -6582,7 +6582,7 @@
 	},
 /obj/item/clothing/pants/tights/black,
 /obj/item/clothing/suit/roguetown/shirt/undershirt/black,
-/obj/item/clothing/shoes/roguetown/boots,
+/obj/item/clothing/shoes/boots,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/magician)
 "hjY" = (
@@ -8115,7 +8115,7 @@
 "iWi" = (
 /obj/structure/closet/crate/roguecloset/inn/south,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/item/clothing/shoes/roguetown/boots/leather,
+/obj/item/clothing/shoes/boots/leather,
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors/town)
 "iWW" = (
@@ -11938,7 +11938,7 @@
 "neO" = (
 /obj/structure/closet/crate/roguecloset/dark,
 /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/dress,
-/obj/item/clothing/shoes/roguetown/boots/leather,
+/obj/item/clothing/shoes/boots/leather,
 /obj/item/clothing/suit/roguetown/armor/leather/vest,
 /obj/item/clothing/pants/tights/random,
 /obj/item/clothing/suit/roguetown/shirt/undershirt/random,
@@ -16299,9 +16299,9 @@
 /area/rogue/indoors/town/tavern)
 "rVN" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/clothing/shoes/roguetown/boots/leather,
-/obj/item/clothing/shoes/roguetown/boots/leather,
-/obj/item/clothing/shoes/roguetown/boots/leather,
+/obj/item/clothing/shoes/boots/leather,
+/obj/item/clothing/shoes/boots/leather,
+/obj/item/clothing/shoes/boots/leather,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/under/town/basement)
 "rVR" = (
@@ -22034,8 +22034,8 @@
 /area/rogue/under/town/basement)
 "yjx" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/clothing/shoes/roguetown/boots,
-/obj/item/clothing/shoes/roguetown/boots,
+/obj/item/clothing/shoes/boots,
+/obj/item/clothing/shoes/boots,
 /obj/item/clothing/pants/trou/leather,
 /obj/item/clothing/pants/trou/leather,
 /turf/open/floor/rogue/blocks,

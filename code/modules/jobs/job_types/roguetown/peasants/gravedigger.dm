@@ -36,7 +36,7 @@
 	neck = /obj/item/clothing/neck/roguetown/psycross/silver/necra
 	pants = /obj/item/clothing/pants/trou/leather/mourning
 	armor = /obj/item/clothing/suit/roguetown/shirt/robe/necra
-	shoes = /obj/item/clothing/shoes/roguetown/boots
+	shoes = /obj/item/clothing/shoes/boots
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/storage/keyring/gravetender
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor

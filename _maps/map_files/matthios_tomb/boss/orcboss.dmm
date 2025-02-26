@@ -46,7 +46,7 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue)
 "ly" = (
-/obj/item/clothing/shoes/roguetown/nobleboot{
+/obj/item/clothing/shoes/nobleboot{
 	pixel_x = 1;
 	pixel_y = 15
 	},
@@ -225,7 +225,7 @@
 "Nk" = (
 /obj/structure/closet/crate/chest/wicker,
 /obj/item/clothing/head/fancyhat,
-/obj/item/clothing/shoes/roguetown/nobleboot{
+/obj/item/clothing/shoes/nobleboot{
 	pixel_x = -3;
 	pixel_y = 8
 	},

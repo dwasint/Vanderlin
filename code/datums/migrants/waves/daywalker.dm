@@ -13,7 +13,7 @@
 	pants = /obj/item/clothing/pants/trou/shadowpants
 	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/black
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/winterjacket
-	shoes = /obj/item/clothing/shoes/roguetown/nobleboot
+	shoes = /obj/item/clothing/shoes/nobleboot
 	beltl = /obj/item/flashlight/flare/torch/lantern
 	mask = /obj/item/clothing/face/goggles
 	beltr = /obj/item/weapon/sword/rapier

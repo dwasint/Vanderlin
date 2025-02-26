@@ -30,7 +30,7 @@
 /datum/outfit/job/roguetown/apothecary/pre_equip(mob/living/carbon/human/H)
 	..()
 	armor = /obj/item/clothing/suit/roguetown/armor/gambeson/apothecary
-	shoes = /obj/item/clothing/shoes/roguetown/apothboots
+	shoes = /obj/item/clothing/shoes/apothboots
 	shirt = /obj/item/clothing/suit/roguetown/shirt/apothshirt
 	pants = /obj/item/clothing/pants/trou/apothecary
 	gloves = /obj/item/clothing/gloves/roguetown/leather/apothecary

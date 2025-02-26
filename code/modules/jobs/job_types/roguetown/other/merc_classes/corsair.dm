@@ -20,7 +20,7 @@
 	backr = /obj/item/fishingrod/fisher
 	beltl = /obj/item/weapon/sword/sabre/cutlass
 	beltr = /obj/item/weapon/knife/dagger
-	shoes = /obj/item/clothing/shoes/roguetown/boots
+	shoes = /obj/item/clothing/shoes/boots
 
 /datum/outfit/job/roguetown/adventurer/corsair/pre_equip(mob/living/carbon/human/H)
 	..()

@@ -923,7 +923,7 @@
 /area/rogue)
 "Je" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/shoes/roguetown/boots/rare/dwarfplate{
+/obj/item/clothing/shoes/boots/rare/dwarfplate{
 	pixel_x = -6;
 	pixel_y = 7
 	},
@@ -948,7 +948,7 @@
 	pixel_x = 7;
 	pixel_y = -4
 	},
-/obj/item/clothing/shoes/roguetown/boots/leather{
+/obj/item/clothing/shoes/boots/leather{
 	pixel_y = 7;
 	pixel_x = -4
 	},
@@ -1177,7 +1177,7 @@
 /area/rogue)
 "RM" = (
 /obj/effect/decal/cleanable/blood/old,
-/obj/item/clothing/shoes/roguetown/boots{
+/obj/item/clothing/shoes/boots{
 	pixel_x = 6;
 	pixel_y = -9
 	},

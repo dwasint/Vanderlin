@@ -34,14 +34,14 @@
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fetch)
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/pants/tights/random
-		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
+		shoes = /obj/item/clothing/shoes/simpleshoes
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 		belt = /obj/item/storage/belt/rogue/leather/rope
 		beltr = /obj/item/key/tower
 		armor = /obj/item/clothing/suit/roguetown/armor/gambeson/light/striped
 		backr = /obj/item/storage/backpack/rogue/satchel
 	else
-		shoes = /obj/item/clothing/shoes/roguetown/sandals
+		shoes = /obj/item/clothing/shoes/sandals
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 		belt = /obj/item/storage/belt/rogue/leather/rope
 		beltr = /obj/item/key/tower

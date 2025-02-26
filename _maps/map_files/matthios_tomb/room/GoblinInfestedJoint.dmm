@@ -270,7 +270,7 @@
 /obj/structure/closet/crate/roguecloset,
 /obj/item/clothing/cloak/apron/cook,
 /obj/item/clothing/head/cookhat,
-/obj/item/clothing/shoes/roguetown/sandals,
+/obj/item/clothing/shoes/sandals,
 /turf/open/floor/rogue/cobble/alt,
 /area/rogue)
 "lh" = (

@@ -76,7 +76,7 @@
 /area/rogue)
 "es" = (
 /mob/living/carbon/human/species/skeleton/npc/no_equipment,
-/obj/item/clothing/shoes/roguetown/nobleboot,
+/obj/item/clothing/shoes/nobleboot,
 /obj/item/clothing/suit/roguetown/shirt/tunic/noblecoat,
 /obj/item/clothing/head/fancyhat,
 /obj/item/clothing/gloves/roguetown/chain,

@@ -34,7 +34,7 @@
 		pants = /obj/item/clothing/pants/trou/leathertights
 
 	ADD_TRAIT(H, TRAIT_SEEPRICES, type)
-	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes/buckle
+	shoes = /obj/item/clothing/shoes/simpleshoes/buckle
 	head = /obj/item/clothing/head/stewardtophat
 	cloak = /obj/item/clothing/cloak/raincloak/furcloak
 	armor = /obj/item/clothing/suit/roguetown/armor/gambeson/steward

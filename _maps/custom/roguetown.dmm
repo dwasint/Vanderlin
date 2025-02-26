@@ -6296,7 +6296,7 @@
 "wL" = (
 /obj/structure/closet/crate/roguecloset/dark,
 /obj/item/clothing/suit/roguetown/armor/leather/vest,
-/obj/item/clothing/shoes/roguetown/boots/leather,
+/obj/item/clothing/shoes/boots/leather,
 /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/dress,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)
@@ -12364,7 +12364,7 @@
 "TY" = (
 /obj/structure/closet/crate/roguecloset/dark,
 /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/dress,
-/obj/item/clothing/shoes/roguetown/boots/leather,
+/obj/item/clothing/shoes/boots/leather,
 /obj/item/clothing/suit/roguetown/armor/leather/vest,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)

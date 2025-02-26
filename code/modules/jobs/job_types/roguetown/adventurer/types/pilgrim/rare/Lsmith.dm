@@ -20,7 +20,7 @@
 	backl = /obj/item/storage/backpack/rogue/backpack
 	backr =	/obj/item/weapon/hammer/sledgehammer
 	pants = /obj/item/clothing/pants/trou
-	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+	shoes = /obj/item/clothing/shoes/boots/leather
 	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
 	neck = /obj/item/storage/belt/rogue/pouch/coins/mid
 	belt = /obj/item/storage/belt/rogue/leather
@@ -65,9 +65,9 @@
 			H.change_stat(STATKEY_SPD, -1)
 
 	if(H.gender == MALE)
-		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+		shoes = /obj/item/clothing/shoes/boots/leather
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
 	else
-		shoes = /obj/item/clothing/shoes/roguetown/shortboots
+		shoes = /obj/item/clothing/shoes/shortboots
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt

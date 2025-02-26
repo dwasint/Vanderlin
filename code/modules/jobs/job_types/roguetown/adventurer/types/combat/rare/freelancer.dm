@@ -38,7 +38,7 @@
 
 	pants = /obj/item/clothing/pants/tights/black
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
-	shoes = /obj/item/clothing/shoes/roguetown/boots/rare/zybanplate
+	shoes = /obj/item/clothing/shoes/boots/rare/zybanplate
 	gloves = /obj/item/clothing/gloves/roguetown/rare/zybanplate
 	belt = /obj/item/storage/belt/rogue/leather
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random

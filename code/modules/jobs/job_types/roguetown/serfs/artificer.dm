@@ -49,7 +49,7 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/jacket/artijacket
 	pants = /obj/item/clothing/pants/trou/artipants
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/artificer
-	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes/buckle
+	shoes = /obj/item/clothing/shoes/simpleshoes/buckle
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
 	beltl = /obj/item/key/artificer

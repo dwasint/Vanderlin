@@ -20,7 +20,7 @@
 
 /datum/outfit/job/roguetown/mercenary/boltslinger/pre_equip(mob/living/carbon/human/H)
 	..()
-	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+	shoes = /obj/item/clothing/shoes/boots/leather
 	cloak = /obj/item/clothing/cloak/half
 	head = /obj/item/clothing/head/helmet/sallet
 	gloves = /obj/item/clothing/gloves/roguetown/angle

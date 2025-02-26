@@ -41,7 +41,7 @@
 	H.mind?.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 	H.mind?.AddSpell(new /obj/effect/proc_holder/spell/invoked/mockery)
 	head = /obj/item/clothing/head/bardhat
-	shoes = /obj/item/clothing/shoes/roguetown/boots
+	shoes = /obj/item/clothing/shoes/boots
 	pants = /obj/item/clothing/pants/tights/random
 	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/noblecoat
 	if(prob(30))

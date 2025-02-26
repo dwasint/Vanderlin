@@ -37,7 +37,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 	pants = /obj/item/clothing/pants/trou
 	head = /obj/item/clothing/head/strawhat
-	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
+	shoes = /obj/item/clothing/shoes/simpleshoes
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	backr = /obj/item/weapon/hoe
 	backl = /obj/item/storage/backpack/rogue/satchel

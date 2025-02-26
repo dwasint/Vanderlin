@@ -1020,7 +1020,7 @@
 	sellprice = 1000
 	resistance_flags = FIRE_PROOF
 
-/obj/item/clothing/shoes/roguetown/boots/armor/vampire
+/obj/item/clothing/shoes/boots/armor/vampire
 	name = "ancient ceremonial boots"
 	desc = "Antediluvian boots with ceremonial ornamets from ages past."
 	body_parts_covered = FEET

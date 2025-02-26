@@ -34,7 +34,7 @@
 
 /datum/outfit/job/roguetown/adept // Base outfit for Adepts, before loadouts
 	belt = /obj/item/storage/belt/rogue/leather
-	shoes = /obj/item/clothing/shoes/roguetown/boots
+	shoes = /obj/item/clothing/shoes/boots
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
 	mask = /obj/item/clothing/face/facemask
 	pants = /obj/item/clothing/pants/trou/leather

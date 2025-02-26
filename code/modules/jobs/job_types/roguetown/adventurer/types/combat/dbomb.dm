@@ -35,6 +35,6 @@
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	switch(pick(1,2))
 		if (1)
-			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+			shoes = /obj/item/clothing/shoes/boots/leather
 		if (2)
-			shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
+			shoes = /obj/item/clothing/shoes/simpleshoes

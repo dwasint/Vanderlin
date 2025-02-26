@@ -54,7 +54,7 @@
 		if("Bard")
 			H.mind?.adjust_skillrank(/datum/skill/misc/music, 1, TRUE) //Have to know to "PLAY" the part... Eh? Eh?
 			head = /obj/item/clothing/head/bardhat
-			shoes = /obj/item/clothing/shoes/roguetown/boots
+			shoes = /obj/item/clothing/shoes/boots
 			pants = /obj/item/clothing/pants/tights/random
 			shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
 			belt = /obj/item/storage/belt/rogue/leather/assassin
@@ -86,7 +86,7 @@
 			if(H.gender == MALE)
 				pants = /obj/item/clothing/pants/tights/random
 				shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
-				shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+				shoes = /obj/item/clothing/shoes/boots/leather
 				neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 				head = /obj/item/clothing/head/fisherhat
 				mouth = /obj/item/weapon/knife/hunting
@@ -100,7 +100,7 @@
 			else
 				shirt = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 				armor = /obj/item/clothing/suit/roguetown/armor/gambeson/light/striped
-				shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+				shoes = /obj/item/clothing/shoes/boots/leather
 				neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 				head = /obj/item/clothing/head/fisherhat
 				backl = /obj/item/storage/backpack/rogue/satchel
@@ -114,7 +114,7 @@
 			H.mind?.adjust_skillrank(/datum/skill/combat/crossbows, -2, TRUE)
 			pants = /obj/item/clothing/pants/tights/random
 			shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
-			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+			shoes = /obj/item/clothing/shoes/boots/leather
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 			cloak = /obj/item/clothing/cloak/raincloak/furcloak/brown
 			backr = /obj/item/storage/backpack/rogue/satchel
@@ -132,7 +132,7 @@
 			pants = /obj/item/clothing/pants/trou
 			armor = /obj/item/clothing/suit/roguetown/armor/gambeson/light/striped
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
-			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+			shoes = /obj/item/clothing/shoes/boots/leather
 			belt = /obj/item/storage/belt/rogue/leather/assassin
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 			beltl = /obj/item/weapon/pick
@@ -148,7 +148,7 @@
 			H.real_name = "[honorary] [prev_real_name]"
 			H.name = "[honorary] [prev_name]"
 
-			shoes = /obj/item/clothing/shoes/roguetown/boots
+			shoes = /obj/item/clothing/shoes/boots
 			backl = /obj/item/storage/backpack/rogue/satchel
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor //Spent all their money on expensive clothing.
 			belt = /obj/item/storage/belt/rogue/leather/assassin
@@ -179,7 +179,7 @@
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 			pants = /obj/item/clothing/pants/trou
 			head = /obj/item/clothing/head/strawhat
-			shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
+			shoes = /obj/item/clothing/shoes/simpleshoes
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 			backr = /obj/item/weapon/hoe
 			backl = /obj/item/storage/backpack/rogue/satchel
@@ -202,7 +202,7 @@
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 			pants = /obj/item/clothing/pants/trou
 			head = pick(/obj/item/clothing/head/hatfur, /obj/item/clothing/head/hatblu, /obj/item/clothing/head/brimmed)
-			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+			shoes = /obj/item/clothing/shoes/boots/leather
 			backr = /obj/item/storage/backpack/rogue/satchel
 			neck = /obj/item/clothing/neck/roguetown/coif
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather

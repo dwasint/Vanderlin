@@ -29,7 +29,7 @@
 	// Beneath the arms and armor is a simple loincloth, and it doesn't start with any money. This should encourage them to find someone to serve or work alongside with very quickly
 	pants = /obj/item/clothing/pants/loincloth/brown
 	beltr = /obj/item/flashlight/flare/torch/lantern
-	shoes = /obj/item/clothing/shoes/roguetown/hoplite
+	shoes = /obj/item/clothing/shoes/hoplite
 	cloak = /obj/item/clothing/cloak/half/red
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	armor = /obj/item/clothing/suit/roguetown/armor/rare/hoplite

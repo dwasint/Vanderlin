@@ -425,11 +425,11 @@
 	icon_state = "tablewood2";
 	dir = 10
 	},
-/obj/item/clothing/shoes/roguetown/boots,
-/obj/item/clothing/shoes/roguetown/boots,
-/obj/item/clothing/shoes/roguetown/boots,
-/obj/item/clothing/shoes/roguetown/boots,
-/obj/item/clothing/shoes/roguetown/boots,
+/obj/item/clothing/shoes/boots,
+/obj/item/clothing/shoes/boots,
+/obj/item/clothing/shoes/boots,
+/obj/item/clothing/shoes/boots,
+/obj/item/clothing/shoes/boots,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors)
 "bi" = (
@@ -458,11 +458,11 @@
 	icon_state = "tablewood2";
 	dir = 10
 	},
-/obj/item/clothing/shoes/roguetown/boots/armor,
-/obj/item/clothing/shoes/roguetown/boots/armor,
-/obj/item/clothing/shoes/roguetown/boots/armor,
-/obj/item/clothing/shoes/roguetown/boots/armor,
-/obj/item/clothing/shoes/roguetown/boots/armor,
+/obj/item/clothing/shoes/boots/armor,
+/obj/item/clothing/shoes/boots/armor,
+/obj/item/clothing/shoes/boots/armor,
+/obj/item/clothing/shoes/boots/armor,
+/obj/item/clothing/shoes/boots/armor,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors)
 "bl" = (

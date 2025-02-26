@@ -2339,8 +2339,8 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "GQ" = (
 /obj/structure/rack/rogue/shelf/big,
-/obj/item/clothing/shoes/roguetown/boots/leather,
-/obj/item/clothing/shoes/roguetown/simpleshoes,
+/obj/item/clothing/shoes/boots/leather,
+/obj/item/clothing/shoes/simpleshoes,
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "GT" = (
@@ -3175,7 +3175,7 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "To" = (
 /obj/structure/closet/crate/chest/crate,
-/obj/item/clothing/shoes/roguetown/shortboots,
+/obj/item/clothing/shoes/shortboots,
 /turf/open/floor/rogue/ruinedwood/spiralfade,
 /area/rogue/under/mountains/anvil/dungeon)
 "Tr" = (

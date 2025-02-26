@@ -706,7 +706,7 @@
 /obj/item/clothing/gloves/roguetown/chain,
 /obj/item/clothing/pants/chainlegs,
 /obj/item/clothing/wrists/roguetown/bracers/copper,
-/obj/item/clothing/shoes/roguetown/boots,
+/obj/item/clothing/shoes/boots,
 /obj/item/clothing/face/facemask,
 /turf/open/floor/rogue/concrete,
 /area/rogue)
@@ -994,7 +994,7 @@
 /obj/item/clothing/gloves/roguetown/chain,
 /obj/item/clothing/pants/chainlegs,
 /obj/item/clothing/wrists/roguetown/bracers/copper,
-/obj/item/clothing/shoes/roguetown/boots,
+/obj/item/clothing/shoes/boots,
 /obj/item/clothing/face/facemask,
 /turf/open/floor/rogue/concrete,
 /area/rogue)

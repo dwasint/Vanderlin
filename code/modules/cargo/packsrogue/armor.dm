@@ -86,4 +86,4 @@
 /datum/supply_pack/rogue/armor/light_armor_boots
 	name = "Iron Boots"
 	cost = 20
-	contains = /obj/item/clothing/shoes/roguetown/boots/armor/light
+	contains = /obj/item/clothing/shoes/boots/armor/light

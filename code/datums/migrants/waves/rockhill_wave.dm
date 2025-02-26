@@ -12,7 +12,7 @@
 	belt = /obj/item/storage/belt/rogue/leather/black
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	head = /obj/item/clothing/head/helmet
-	shoes = /obj/item/clothing/shoes/roguetown/nobleboot
+	shoes = /obj/item/clothing/shoes/nobleboot
 	pants = /obj/item/clothing/pants/tights/black
 	cloak = /obj/item/clothing/cloak/raincloak/furcloak
 	armor = /obj/item/clothing/suit/roguetown/armor/cuirass
@@ -26,7 +26,7 @@
 		cloak = /obj/item/clothing/cloak/raincloak/furcloak
 		beltr = /obj/item/weapon/sword/rapier
 		id = /obj/item/clothing/ring/silver
-		shoes = /obj/item/clothing/shoes/roguetown/nobleboot
+		shoes = /obj/item/clothing/shoes/nobleboot
 		backr = /obj/item/storage/backpack/rogue/satchel
 		backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/rich = 1, /obj/item/flashlight/flare/torch/lantern = 1)
 		if(prob(66))
@@ -72,7 +72,7 @@
 	neck = /obj/item/clothing/neck/roguetown/bevor
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/full
-	shoes = /obj/item/clothing/shoes/roguetown/boots/armor
+	shoes = /obj/item/clothing/shoes/boots/armor
 	beltr = /obj/item/weapon/sword/long
 	beltl = /obj/item/flashlight/flare/torch/lantern
 	belt = /obj/item/storage/belt/rogue/leather/steel
@@ -147,7 +147,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guardsecond
 	armor = /obj/item/clothing/suit/roguetown/armor/medium/scale
 	neck = /obj/item/clothing/neck/roguetown/gorget
-	shoes = /obj/item/clothing/shoes/roguetown/boots
+	shoes = /obj/item/clothing/shoes/boots
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/weapon/sword/arming
 	backl = /obj/item/storage/backpack/rogue/satchel

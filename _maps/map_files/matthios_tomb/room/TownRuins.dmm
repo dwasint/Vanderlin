@@ -624,7 +624,7 @@
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /obj/item/clothing/head/wizhat/witch,
 /obj/item/clothing/suit/roguetown/armor/gambeson/shadowrobe,
-/obj/item/clothing/shoes/roguetown/sandals,
+/obj/item/clothing/shoes/sandals,
 /obj/item/weapon/polearm/woodstaff,
 /obj/item/clothing/face/facemask/copper,
 /obj/item/clothing/pants/trou/shadowpants,

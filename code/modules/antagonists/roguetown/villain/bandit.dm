@@ -237,7 +237,7 @@
 
 	// The commmon gear shared between all bandits
 	belt = /obj/item/storage/belt/rogue/leather/bandit
-	shoes = /obj/item/clothing/shoes/roguetown/boots
+	shoes = /obj/item/clothing/shoes/boots
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/flashlight/flare/torch/metal)
 

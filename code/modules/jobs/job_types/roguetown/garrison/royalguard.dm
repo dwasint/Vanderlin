@@ -57,7 +57,7 @@
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/arming
 	armor = /obj/item/clothing/suit/roguetown/armor/brigandine // Wear the King's colors.
-	shoes = /obj/item/clothing/shoes/roguetown/boots/armor/light
+	shoes = /obj/item/clothing/shoes/boots/armor/light
 	beltl = /obj/item/storage/keyring/mguard
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/weapon/sword/arming

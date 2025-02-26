@@ -43,10 +43,10 @@
 	if(H.gender == MALE)
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
 		pants = /obj/item/clothing/pants/tights/sailor
-		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+		shoes = /obj/item/clothing/shoes/boots/leather
 	else
 		shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/blue
-		shoes = /obj/item/clothing/shoes/roguetown/gladiator
+		shoes = /obj/item/clothing/shoes/gladiator
 
 	ADD_TRAIT(H, TRAIT_SEEPRICES, type)
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)

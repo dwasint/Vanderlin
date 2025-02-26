@@ -35,7 +35,7 @@
 
 /datum/outfit/job/roguetown/hand
 	job_bitflag = BITFLAG_ROYALTY
-	shoes = /obj/item/clothing/shoes/roguetown/nobleboot/thighboots
+	shoes = /obj/item/clothing/shoes/nobleboot/thighboots
 	belt = /obj/item/storage/belt/rogue/leather/steel
 
 /datum/job/roguetown/hand/after_spawn(mob/living/L, mob/M, latejoin = TRUE)

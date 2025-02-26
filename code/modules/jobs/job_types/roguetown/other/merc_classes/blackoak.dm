@@ -12,7 +12,7 @@
 
 /datum/outfit/job/roguetown/mercenary/blackoak/pre_equip(mob/living/carbon/human/H)
 	..()
-	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+	shoes = /obj/item/clothing/shoes/boots/leather
 	cloak = /obj/item/clothing/cloak/half/red
 	head = /obj/item/clothing/head/helmet/sallet/elven
 	gloves = /obj/item/clothing/gloves/roguetown/angle

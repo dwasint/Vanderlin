@@ -43,7 +43,7 @@
 		H.mind?.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
 		H.change_stat(STATKEY_STR, 1)
 	if(H.gender == MALE)
-		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+		shoes = /obj/item/clothing/shoes/boots/leather
 		pants = /obj/item/clothing/pants/tights/sailor
 		head = /obj/item/clothing/head/headband/red
 		beltr = /obj/item/weapon/mace/cudgel
@@ -55,7 +55,7 @@
 		H.change_stat(STATKEY_CON, 1)
 		H.change_stat(STATKEY_STR, 1)//thug bodytype
 	else
-		shoes = /obj/item/clothing/shoes/roguetown/gladiator
+		shoes = /obj/item/clothing/shoes/gladiator
 		pants = /obj/item/clothing/pants/tights/sailor
 		beltr = /obj/item/weapon/mace/cudgel
 		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor

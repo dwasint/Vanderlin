@@ -32,7 +32,7 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/splint
 	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/black
 	pants = /obj/item/clothing/pants/loincloth/black
-	shoes = /obj/item/clothing/shoes/roguetown/shortboots
+	shoes = /obj/item/clothing/shoes/shortboots
 	wrists = /obj/item/rope/chain
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/weapon/mace/spiked // He gets a random mace.

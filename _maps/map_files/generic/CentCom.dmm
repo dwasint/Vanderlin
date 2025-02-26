@@ -336,16 +336,16 @@
 /area/rogue)
 "aL" = (
 /obj/structure/table/wood/reinforced,
-/obj/item/clothing/shoes/roguetown/nobleboot,
-/obj/item/clothing/shoes/roguetown/nobleboot,
-/obj/item/clothing/shoes/roguetown/nobleboot,
-/obj/item/clothing/shoes/roguetown/boots/armor,
-/obj/item/clothing/shoes/roguetown/boots/armor,
-/obj/item/clothing/shoes/roguetown/boots/armor,
-/obj/item/clothing/shoes/roguetown/boots,
-/obj/item/clothing/shoes/roguetown/boots,
-/obj/item/clothing/shoes/roguetown/boots,
-/obj/item/clothing/shoes/roguetown/boots,
+/obj/item/clothing/shoes/nobleboot,
+/obj/item/clothing/shoes/nobleboot,
+/obj/item/clothing/shoes/nobleboot,
+/obj/item/clothing/shoes/boots/armor,
+/obj/item/clothing/shoes/boots/armor,
+/obj/item/clothing/shoes/boots/armor,
+/obj/item/clothing/shoes/boots,
+/obj/item/clothing/shoes/boots,
+/obj/item/clothing/shoes/boots,
+/obj/item/clothing/shoes/boots,
 /turf/open/floor/rogue/carpet,
 /area/rogue)
 "aM" = (
@@ -1589,7 +1589,7 @@
 "hY" = (
 /obj/structure/table/wood/fancy/purple,
 /obj/item/clothing/gloves/roguetown/rare/elfplate,
-/obj/item/clothing/shoes/roguetown/boots/rare/elfplate,
+/obj/item/clothing/shoes/boots/rare/elfplate,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "iu" = (
@@ -2083,40 +2083,40 @@
 	dir = 1;
 	icon_state = "longtable"
 	},
-/obj/item/clothing/shoes/roguetown/boots,
-/obj/item/clothing/shoes/roguetown/boots,
-/obj/item/clothing/shoes/roguetown/boots,
-/obj/item/clothing/shoes/roguetown/boots/leather,
-/obj/item/clothing/shoes/roguetown/boots/leather,
-/obj/item/clothing/shoes/roguetown/boots/leather,
-/obj/item/clothing/shoes/roguetown/gladiator,
-/obj/item/clothing/shoes/roguetown/gladiator,
-/obj/item/clothing/shoes/roguetown/gladiator,
-/obj/item/clothing/shoes/roguetown/grenzelhoft,
-/obj/item/clothing/shoes/roguetown/grenzelhoft,
-/obj/item/clothing/shoes/roguetown/grenzelhoft,
-/obj/item/clothing/shoes/roguetown/nobleboot,
-/obj/item/clothing/shoes/roguetown/nobleboot,
-/obj/item/clothing/shoes/roguetown/nobleboot,
-/obj/item/clothing/shoes/roguetown/ridingboots,
-/obj/item/clothing/shoes/roguetown/ridingboots,
-/obj/item/clothing/shoes/roguetown/ridingboots,
-/obj/item/clothing/shoes/roguetown/sandals,
-/obj/item/clothing/shoes/roguetown/sandals,
-/obj/item/clothing/shoes/roguetown/sandals,
-/obj/item/clothing/shoes/roguetown/shalal,
-/obj/item/clothing/shoes/roguetown/shalal,
-/obj/item/clothing/shoes/roguetown/shalal,
-/obj/item/clothing/shoes/roguetown/shortboots,
-/obj/item/clothing/shoes/roguetown/shortboots,
-/obj/item/clothing/shoes/roguetown/shortboots,
-/obj/item/clothing/shoes/roguetown/shortboots,
-/obj/item/clothing/shoes/roguetown/simpleshoes,
-/obj/item/clothing/shoes/roguetown/simpleshoes,
-/obj/item/clothing/shoes/roguetown/simpleshoes,
-/obj/item/clothing/shoes/roguetown/simpleshoes/buckle,
-/obj/item/clothing/shoes/roguetown/simpleshoes/buckle,
-/obj/item/clothing/shoes/roguetown/simpleshoes/buckle,
+/obj/item/clothing/shoes/boots,
+/obj/item/clothing/shoes/boots,
+/obj/item/clothing/shoes/boots,
+/obj/item/clothing/shoes/boots/leather,
+/obj/item/clothing/shoes/boots/leather,
+/obj/item/clothing/shoes/boots/leather,
+/obj/item/clothing/shoes/gladiator,
+/obj/item/clothing/shoes/gladiator,
+/obj/item/clothing/shoes/gladiator,
+/obj/item/clothing/shoes/grenzelhoft,
+/obj/item/clothing/shoes/grenzelhoft,
+/obj/item/clothing/shoes/grenzelhoft,
+/obj/item/clothing/shoes/nobleboot,
+/obj/item/clothing/shoes/nobleboot,
+/obj/item/clothing/shoes/nobleboot,
+/obj/item/clothing/shoes/ridingboots,
+/obj/item/clothing/shoes/ridingboots,
+/obj/item/clothing/shoes/ridingboots,
+/obj/item/clothing/shoes/sandals,
+/obj/item/clothing/shoes/sandals,
+/obj/item/clothing/shoes/sandals,
+/obj/item/clothing/shoes/shalal,
+/obj/item/clothing/shoes/shalal,
+/obj/item/clothing/shoes/shalal,
+/obj/item/clothing/shoes/shortboots,
+/obj/item/clothing/shoes/shortboots,
+/obj/item/clothing/shoes/shortboots,
+/obj/item/clothing/shoes/shortboots,
+/obj/item/clothing/shoes/simpleshoes,
+/obj/item/clothing/shoes/simpleshoes,
+/obj/item/clothing/shoes/simpleshoes,
+/obj/item/clothing/shoes/simpleshoes/buckle,
+/obj/item/clothing/shoes/simpleshoes/buckle,
+/obj/item/clothing/shoes/simpleshoes/buckle,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "pP" = (
@@ -2626,10 +2626,10 @@
 /area/rogue/outdoors)
 "xa" = (
 /obj/structure/table/wood/fancy/black,
-/obj/item/clothing/shoes/roguetown/ridingboots,
-/obj/item/clothing/shoes/roguetown/ridingboots,
-/obj/item/clothing/shoes/roguetown/ridingboots,
-/obj/item/clothing/shoes/roguetown/ridingboots,
+/obj/item/clothing/shoes/ridingboots,
+/obj/item/clothing/shoes/ridingboots,
+/obj/item/clothing/shoes/ridingboots,
+/obj/item/clothing/shoes/ridingboots,
 /turf/open/floor/rogue/carpet,
 /area/rogue)
 "xe" = (
@@ -2723,7 +2723,7 @@
 /turf/open/floor/rogue/ruinedwood/turned/darker,
 /area/rogue/indoors/bandit_lair)
 "ya" = (
-/obj/item/clothing/shoes/roguetown/shortboots{
+/obj/item/clothing/shoes/shortboots{
 	desc = "Very comfortable short boots that seem to have space runes stitched into them allowing them to transport the wearer to distant places.";
 	name = "One Step Mile Boots"
 	},
@@ -2775,7 +2775,7 @@
 "yz" = (
 /obj/structure/table/wood/fancy/green,
 /obj/item/clothing/gloves/roguetown/rare/elfplate/welfplate,
-/obj/item/clothing/shoes/roguetown/boots/rare/elfplate/welfplate,
+/obj/item/clothing/shoes/boots/rare/elfplate/welfplate,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "yE" = (
@@ -3054,7 +3054,7 @@
 "Dg" = (
 /obj/structure/table/wood/fancy/orange,
 /obj/item/clothing/gloves/roguetown/rare/dwarfplate,
-/obj/item/clothing/shoes/roguetown/boots/rare/dwarfplate,
+/obj/item/clothing/shoes/boots/rare/dwarfplate,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "Do" = (

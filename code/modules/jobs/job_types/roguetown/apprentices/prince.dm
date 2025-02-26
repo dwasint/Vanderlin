@@ -54,7 +54,7 @@
 	pants = /obj/item/clothing/pants/tights
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guard
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail
-	shoes = /obj/item/clothing/shoes/roguetown/nobleboot
+	shoes = /obj/item/clothing/shoes/nobleboot
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/weapon/sword
 	beltr = /obj/item/key/manor
@@ -98,12 +98,12 @@
 		pants = /obj/item/clothing/pants/tights
 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/royal/prince
 		belt = /obj/item/storage/belt/rogue/leather
-		shoes = /obj/item/clothing/shoes/roguetown/nobleboot
+		shoes = /obj/item/clothing/shoes/nobleboot
 	if(H.gender == FEMALE)
 		belt = /obj/item/storage/belt/rogue/leather/cloth/lady
 		head = /obj/item/clothing/head/hennin
 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/royal/princess
-		shoes = /obj/item/clothing/shoes/roguetown/shortboots
+		shoes = /obj/item/clothing/shoes/shortboots
 		pants = /obj/item/clothing/pants/tights/random
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
@@ -142,12 +142,12 @@
 		pants = /obj/item/clothing/pants/tights
 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/royal/prince
 		belt = /obj/item/storage/belt/rogue/leather
-		shoes = /obj/item/clothing/shoes/roguetown/nobleboot
+		shoes = /obj/item/clothing/shoes/nobleboot
 	if(H.gender == FEMALE)
 		belt = /obj/item/storage/belt/rogue/leather/cloth/lady
 		head = /obj/item/clothing/head/hennin
 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/royal/princess
-		shoes = /obj/item/clothing/shoes/roguetown/shortboots
+		shoes = /obj/item/clothing/shoes/shortboots
 		pants = /obj/item/clothing/pants/tights/random
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)

@@ -5022,7 +5022,7 @@
 /area/rogue/outdoors/town)
 "dEF" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/clothing/shoes/roguetown/nobleboot,
+/obj/item/clothing/shoes/nobleboot,
 /obj/item/clothing/pants/tights/uncolored,
 /obj/item/clothing/suit/roguetown/shirt/robe/plain,
 /turf/open/floor/rogue/wood,
@@ -6720,8 +6720,8 @@
 /obj/item/clothing/suit/roguetown/shirt/robe/wizard,
 /obj/item/clothing/cloak/raincloak/blue,
 /obj/item/clothing/head/wizhat,
-/obj/item/clothing/shoes/roguetown/boots,
-/obj/item/clothing/shoes/roguetown/shortboots,
+/obj/item/clothing/shoes/boots,
+/obj/item/clothing/shoes/shortboots,
 /obj/item/clothing/face/spectacles/golden,
 /obj/item/clothing/head/wizhat/witch,
 /turf/open/floor/carpet/royalblack,
@@ -8331,15 +8331,15 @@
 "fTE" = (
 /obj/machinery/light/rogue/wallfire/candle,
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/clothing/shoes/roguetown/boots/leather{
+/obj/item/clothing/shoes/boots/leather{
 	pixel_x = 1;
 	pixel_y = 15
 	},
-/obj/item/clothing/shoes/roguetown/boots{
+/obj/item/clothing/shoes/boots{
 	pixel_x = -7;
 	pixel_y = -3
 	},
-/obj/item/clothing/shoes/roguetown/shortboots{
+/obj/item/clothing/shoes/shortboots{
 	pixel_x = 10
 	},
 /turf/open/floor/rogue/ruinedwood/turned/darker,
@@ -12075,7 +12075,7 @@
 /area/rogue/indoors/town/orphanage)
 "iFK" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/clothing/shoes/roguetown/shortboots,
+/obj/item/clothing/shoes/shortboots,
 /obj/item/clothing/cloak/half,
 /turf/open/floor/rogue/blocks/newstone/alt,
 /area/rogue/indoors/town/manor)
@@ -13534,7 +13534,7 @@
 /obj/item/clothing/suit/roguetown/shirt/formal,
 /obj/item/clothing/suit/roguetown/shirt/undershirt/black,
 /obj/item/clothing/pants/tights/black,
-/obj/item/clothing/shoes/roguetown/nobleboot,
+/obj/item/clothing/shoes/nobleboot,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town)
 "jHz" = (
@@ -13617,7 +13617,7 @@
 /area/rogue/indoors/town/manor)
 "jLe" = (
 /obj/structure/closet/crate/roguecloset/lord,
-/obj/item/clothing/shoes/roguetown/nobleboot,
+/obj/item/clothing/shoes/nobleboot,
 /obj/item/scomstone,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/manor)
@@ -14053,7 +14053,7 @@
 /area/rogue/indoors/town/tavern)
 "jZG" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/shoes/roguetown/nobleboot,
+/obj/item/clothing/shoes/nobleboot,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/manor)
 "jZK" = (
@@ -14128,7 +14128,7 @@
 "kbO" = (
 /obj/structure/closet/crate/roguecloset,
 /obj/machinery/light/rogue/wallfire/candle,
-/obj/item/clothing/shoes/roguetown/shortboots,
+/obj/item/clothing/shoes/shortboots,
 /obj/item/book/rogue/manners,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
@@ -16983,7 +16983,7 @@
 /area/rogue/indoors/town/dwarfin)
 "mso" = (
 /obj/structure/closet/crate/roguecloset/crafted,
-/obj/item/clothing/shoes/roguetown/boots,
+/obj/item/clothing/shoes/boots,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
 "msC" = (
@@ -17492,7 +17492,7 @@
 /obj/structure/closet/crate/roguecloset,
 /obj/item/clothing/pants/tights/black,
 /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/black,
-/obj/item/clothing/shoes/roguetown/nobleboot,
+/obj/item/clothing/shoes/nobleboot,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town)
 "mJO" = (
@@ -17999,16 +17999,16 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/town)
 "nau" = (
-/obj/item/clothing/shoes/roguetown/boots/leather,
-/obj/item/clothing/shoes/roguetown/boots/leather{
+/obj/item/clothing/shoes/boots/leather,
+/obj/item/clothing/shoes/boots/leather{
 	pixel_x = 1;
 	pixel_y = -2
 	},
-/obj/item/clothing/shoes/roguetown/shortboots{
+/obj/item/clothing/shoes/shortboots{
 	pixel_x = -5;
 	pixel_y = 9
 	},
-/obj/item/clothing/shoes/roguetown/simpleshoes{
+/obj/item/clothing/shoes/simpleshoes{
 	pixel_x = 7;
 	pixel_y = 7
 	},
@@ -19403,7 +19403,7 @@
 	pixel_x = -32;
 	pixel_y = 0
 	},
-/obj/item/clothing/shoes/roguetown/boots/leather,
+/obj/item/clothing/shoes/boots/leather,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
 "ofH" = (
@@ -20225,7 +20225,7 @@
 "oMJ" = (
 /obj/structure/closet/crate/roguecloset,
 /obj/item/clothing/suit/roguetown/shirt/dress,
-/obj/item/clothing/shoes/roguetown/nobleboot,
+/obj/item/clothing/shoes/nobleboot,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town)
 "oMT" = (
@@ -22496,7 +22496,7 @@
 /area/rogue/indoors/town/church/inquisition)
 "qBC" = (
 /obj/structure/closet/crate/roguecloset/crafted,
-/obj/item/clothing/shoes/roguetown/boots,
+/obj/item/clothing/shoes/boots,
 /obj/item/reagent_containers/glass/cup/wooden{
 	pixel_y = 1;
 	pixel_x = 1
@@ -23360,7 +23360,7 @@
 /area/rogue/indoors/butchershop)
 "rjQ" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/shoes/roguetown/shortboots,
+/obj/item/clothing/shoes/shortboots,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/manor)
 "rjY" = (
@@ -24371,7 +24371,7 @@
 "rVD" = (
 /obj/structure/closet/crate/roguecloset/dark,
 /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/dress,
-/obj/item/clothing/shoes/roguetown/boots/leather,
+/obj/item/clothing/shoes/boots/leather,
 /obj/item/clothing/suit/roguetown/armor/leather/vest,
 /obj/item/clothing/pants/tights/random,
 /obj/item/clothing/suit/roguetown/shirt/undershirt/random,
@@ -25510,7 +25510,7 @@
 /area/rogue/outdoors/mountains)
 "sLe" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/shoes/roguetown/boots,
+/obj/item/clothing/shoes/boots,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/manor)
 "sLD" = (
@@ -30423,7 +30423,7 @@
 /area/rogue/outdoors/town)
 "wjt" = (
 /obj/structure/closet/crate/roguecloset/crafted,
-/obj/item/clothing/shoes/roguetown/boots/leather,
+/obj/item/clothing/shoes/boots/leather,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
 "wjy" = (
@@ -30718,7 +30718,7 @@
 /obj/structure/closet/crate/roguecloset,
 /obj/item/clothing/pants/tights/black,
 /obj/item/clothing/suit/roguetown/shirt/formal,
-/obj/item/clothing/shoes/roguetown/nobleboot,
+/obj/item/clothing/shoes/nobleboot,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town)
 "wsQ" = (
@@ -31257,7 +31257,7 @@
 /area/rogue/indoors/town/dwarfin)
 "wKs" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/clothing/shoes/roguetown/nobleboot,
+/obj/item/clothing/shoes/nobleboot,
 /obj/item/clothing/suit/roguetown/shirt/formal,
 /obj/item/clothing/pants/tights/black,
 /turf/open/floor/rogue/wood,
@@ -31652,7 +31652,7 @@
 /area/rogue/indoors/town/church/inquisition)
 "wZu" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/shoes/roguetown/boots/leather,
+/obj/item/clothing/shoes/boots/leather,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/manor)
 "wZx" = (
