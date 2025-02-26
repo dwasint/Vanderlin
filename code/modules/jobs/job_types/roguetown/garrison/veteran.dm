@@ -63,7 +63,7 @@
 	beltr = /obj/item/storage/keyring/veteran
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	cloak = /obj/item/clothing/cloak/half/vet
-	belt = /obj/item/storage/belt/rogue/leather/black
+	belt = /obj/item/storage/belt/leather/black
 	H.cmode_music = 'sound/music/cmode/adventurer/CombatWarrior.ogg'
 	backpack_contents = list(/obj/item/weapon/knife/dagger/steel/special = 1)
 	if(H.mind)
@@ -122,7 +122,7 @@
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	backl = /obj/item/weapon/shield/tower/metal
 	r_hand = /obj/item/weapon/polearm/spear/billhook
-	belt = /obj/item/storage/belt/rogue/leather/black
+	belt = /obj/item/storage/belt/leather/black
 	cloak = /obj/item/clothing/cloak/half/vet
 	H.cmode_music = 'sound/music/cmode/garrison/CombatGarrison.ogg'
 	backpack_contents = list(/obj/item/weapon/knife/dagger/steel/special = 1, /obj/item/rope/chain = 1)
@@ -177,7 +177,7 @@
 	shoes = /obj/item/clothing/shoes/boots/armor
 	beltr = /obj/item/storage/keyring/veteran
 	backr = /obj/item/storage/backpack/rogue/satchel/black
-	belt = /obj/item/storage/belt/rogue/leather/black
+	belt = /obj/item/storage/belt/leather/black
 	cloak = /obj/item/clothing/cloak/half/vet
 	H.cmode_music = 'sound/music/cmode/nobility/CombatDungeoneer.ogg'
 	backpack_contents = list(/obj/item/weapon/knife/dagger/steel/special = 1)
@@ -248,7 +248,7 @@
 /datum/outfit/job/roguetown/vet/merc/pre_equip(mob/living/carbon/human/H)
 	neck = /obj/item/clothing/neck/gorget
 	wrists = /obj/item/clothing/wrists/bracers
-	shirt = /obj/item/clothing/suit/roguetown/shirt/grenzelhoft // You do NOT get the BLACKSTEEL CUIRASS because yours BROKE & I hate you. Go on a personal quest to replace it or something.
+	shirt = /obj/item/clothing/shirt/grenzelhoft // You do NOT get the BLACKSTEEL CUIRASS because yours BROKE & I hate you. Go on a personal quest to replace it or something.
 	head = /obj/item/clothing/head/helmet/skullcap/grenzelhoft
 	armor = /obj/item/clothing/armor/cuirass/iron
 	pants = /obj/item/clothing/pants/grenzelpants
@@ -257,7 +257,7 @@
 	beltl = /obj/item/weapon/sword/short
 	beltr = /obj/item/storage/keyring/veteran
 	backr = /obj/item/storage/backpack/rogue/satchel/black
-	belt = /obj/item/storage/belt/rogue/leather/black
+	belt = /obj/item/storage/belt/leather/black
 	cloak = /obj/item/clothing/cloak/half/vet
 	H.cmode_music = 'sound/music/cmode/adventurer/CombatOutlander.ogg'
 	backpack_contents = list(/obj/item/weapon/knife/dagger/steel/special = 1)
@@ -329,7 +329,7 @@
 	beltr = /obj/item/flashlight/flare/torch/lantern
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/long
-	belt = /obj/item/storage/belt/rogue/leather/black
+	belt = /obj/item/storage/belt/leather/black
 	cloak = /obj/item/clothing/cloak/half/vet
 	H.cmode_music = 'sound/music/cmode/adventurer/CombatWarrior.ogg'
 	backpack_contents = list(/obj/item/weapon/knife/dagger/steel/special = 1, /obj/item/storage/keyring/veteran = 1)
@@ -379,7 +379,7 @@
 /datum/outfit/job/roguetown/vet/spy/pre_equip(mob/living/carbon/human/H)
 	neck = /obj/item/clothing/neck/gorget
 	armor = /obj/item/clothing/armor/leather/vest
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
+	shirt = /obj/item/clothing/shirt/undershirt/puritan
 	pants = /obj/item/clothing/pants/tights/black
 	gloves = /obj/item/clothing/gloves/fingerless
 	wrists = /obj/item/clothing/wrists/bracers/leather
@@ -387,7 +387,7 @@
 	beltl = /obj/item/weapon/whip
 	beltr = /obj/item/flashlight/flare/torch/lantern
 	backr = /obj/item/storage/backpack/rogue/satchel/black
-	belt = /obj/item/storage/belt/rogue/leather/knifebelt/iron
+	belt = /obj/item/storage/belt/leather/knifebelt/iron
 	cloak = /obj/item/clothing/cloak/raincloak/mortus
 	H.cmode_music = 'sound/music/cmode/adventurer/CombatOutlander3.ogg'
 	backpack_contents = list(/obj/item/weapon/knife/dagger/silver = 1, /obj/item/storage/keyring/veteran = 1, /obj/item/reagent_containers/glass/bottle/rogue/poison = 1)

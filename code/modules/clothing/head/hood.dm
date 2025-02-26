@@ -1,4 +1,31 @@
 
+/obj/item/clothing/head/hooded
+	var/obj/item/clothing/connectedc
+	dynamic_hair_suffix = ""
+	icon = 'icons/roguetown/clothing/head.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/head.dmi'
+
+/obj/item/clothing/head/hooded/Destroy()
+	connectedc = null
+	return ..()
+
+/obj/item/clothing/head/hooded/attack_right(mob/user)
+	if(connectedc)
+		connectedc.ToggleHood()
+
+/obj/item/clothing/head/hooded/dropped()
+	..()
+	if(connectedc)
+		connectedc.RemoveHood()
+
+/obj/item/clothing/head/hooded/equipped(mob/user, slot)
+	..()
+	if(slot != SLOT_HEAD)
+		if(connectedc)
+			connectedc.RemoveHood()
+		else
+			qdel(src)
+
 /obj/item/clothing/head/roguehood
 	name = "hood"
 	desc = "Conceals your face, whether against the rain, or the gazes of others."

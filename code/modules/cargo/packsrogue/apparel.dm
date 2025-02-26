@@ -116,42 +116,42 @@
 /datum/supply_pack/rogue/apparel/undershirt_random
 	name = "Undershirt"
 	cost = 4
-	contains = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
+	contains = /obj/item/clothing/shirt/undershirt/random
 
 /datum/supply_pack/rogue/apparel/undershirt_sailor
 	name = "Sailor Undershirt"
 	cost = 7
-	contains = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
+	contains = /obj/item/clothing/shirt/undershirt/sailor
 
 /datum/supply_pack/rogue/apparel/undershirt_sailor_red
 	name = "Red Sailor Undershirt"
 	cost = 7
-	contains = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor/red
+	contains = /obj/item/clothing/shirt/undershirt/sailor/red
 
 /datum/supply_pack/rogue/apparel/shortshirt_random
 	name = "Shortshirt"
 	cost = 3
-	contains = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
+	contains = /obj/item/clothing/shirt/shortshirt/random
 
 /datum/supply_pack/rogue/apparel/tunic_random
 	name = "Tunic"
 	cost = 6
-	contains = /obj/item/clothing/suit/roguetown/shirt/tunic/random
+	contains = /obj/item/clothing/shirt/tunic/random
 
 /datum/supply_pack/rogue/apparel/dress_gen_random
 	name = "Cloth Dress"
 	cost = 7
-	contains = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
+	contains = /obj/item/clothing/shirt/dress/gen/random
 
 /datum/supply_pack/rogue/apparel/silkdress_random
 	name = "Silk Dress"
 	cost = 30
-	contains = /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/random
+	contains = /obj/item/clothing/shirt/dress/silkdress/random
 
 /datum/supply_pack/rogue/apparel/robe
 	name = "Robe"
 	cost = 5
-	contains = /obj/item/clothing/suit/roguetown/shirt/robe/mage
+	contains = /obj/item/clothing/shirt/robe/mage
 
 /datum/supply_pack/rogue/apparel/tights_random
 	name = "Cloth Tights"
@@ -226,17 +226,17 @@
 /datum/supply_pack/rogue/apparel/leather_belt
 	name = "Leather Belt"
 	cost = 5
-	contains = /obj/item/storage/belt/rogue/leather
+	contains = /obj/item/storage/belt/leather
 
 /datum/supply_pack/rogue/apparel/black_leather_belt
 	name = "Black Leather Belt"
 	cost = 6
-	contains = /obj/item/storage/belt/rogue/leather/black
+	contains = /obj/item/storage/belt/leather/black
 
 /datum/supply_pack/rogue/apparel/pouch
 	name = "Pouch"
 	cost = 4
-	contains = /obj/item/storage/belt/rogue/pouch
+	contains = /obj/item/storage/belt/pouch
 
 /datum/supply_pack/rogue/apparel/satchel
 	name = "Satchel"

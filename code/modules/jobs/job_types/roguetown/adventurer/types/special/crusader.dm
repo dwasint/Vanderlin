@@ -28,14 +28,14 @@
 	armor = /obj/item/clothing/armor/chainmail/hauberk
 	cloak = /obj/item/clothing/cloak/cape/crusader
 	gloves = /obj/item/clothing/gloves/chain
-	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/random
+	shirt = /obj/item/clothing/shirt/tunic/random
 	pants = /obj/item/clothing/pants/chainlegs
 	shoes = /obj/item/clothing/shoes/boots/armor/light
 	backr = /obj/item/weapon/shield/tower/metal
 	backl = /obj/item/clothing/cloak/cape/crusader
-	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
+	belt = /obj/item/storage/belt/leather/plaquesilver
 	beltl = /obj/item/weapon/sword/silver
-	backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/rich = 1)
+	backpack_contents = list(/obj/item/storage/belt/pouch/coins/rich = 1)
 
 	switch(H.patron?.name)
 		if("Astrata")

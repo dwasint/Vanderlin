@@ -266,7 +266,7 @@
 	TOTALEND = 12;
 	TOTALCON = 12
 	},
-/obj/item/clothing/suit/roguetown/shirt/robe/courtmage,
+/obj/item/clothing/shirt/robe/courtmage,
 /obj/item/clothing/neck/psycross/silver,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors)
@@ -1554,7 +1554,7 @@
 /obj/item/clothing/head/peaceflower,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /obj/item/clothing/shoes/boots/leather,
-/obj/item/clothing/suit/roguetown/shirt/dress/silkdress/silkdressprimary,
+/obj/item/clothing/shirt/dress/silkdress/silkdressprimary,
 /obj/item/clothing/pants/trou/shadowpants,
 /obj/item/clothing/ring/gold/blortz,
 /obj/item/clothing/neck/psycross/g,
@@ -2120,7 +2120,7 @@
 /obj/item/clothing/head/roguehood/phys,
 /obj/item/clothing/face/phys,
 /obj/item/clothing/neck/phys,
-/obj/item/clothing/suit/roguetown/shirt/robe/phys,
+/obj/item/clothing/shirt/robe/phys,
 /obj/item/weapon/surgery/scalpel,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors)

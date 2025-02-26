@@ -14,13 +14,13 @@
 	..()
 	pants = /obj/item/clothing/pants/trou/leather
 	armor = /obj/item/clothing/armor/cuirass/iron
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor/red
+	shirt = /obj/item/clothing/shirt/undershirt/sailor/red
 	shoes = /obj/item/clothing/shoes/simpleshoes/buckle
-	belt = /obj/item/storage/belt/rogue/leather/mercenary
+	belt = /obj/item/storage/belt/leather/mercenary
 	beltr = /obj/item/weapon/knife/hunting
 	neck = /obj/item/clothing/neck/chaincoif/iron
 	backl = /obj/item/storage/backpack/rogue/backpack
-	backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/poor=1)
+	backpack_contents = list(/obj/item/storage/belt/pouch/coins/poor=1)
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/labor/mining, 3, TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)

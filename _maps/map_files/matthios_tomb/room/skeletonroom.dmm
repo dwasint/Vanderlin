@@ -174,8 +174,8 @@
 /area/rogue)
 "CT" = (
 /obj/structure/closet/crate/roguecloset/inn/chest,
-/obj/item/clothing/suit/roguetown/shirt/robe/black,
-/obj/item/clothing/suit/roguetown/shirt/robe/mage,
+/obj/item/clothing/shirt/robe/black,
+/obj/item/clothing/shirt/robe/mage,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "DK" = (

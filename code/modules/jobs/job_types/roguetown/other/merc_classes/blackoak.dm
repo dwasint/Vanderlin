@@ -16,15 +16,15 @@
 	cloak = /obj/item/clothing/cloak/half/red
 	head = /obj/item/clothing/head/helmet/sallet/elven
 	gloves = /obj/item/clothing/gloves/angle
-	belt = /obj/item/storage/belt/rogue/leather/mercenary/black
+	belt = /obj/item/storage/belt/leather/mercenary/black
 	armor = /obj/item/clothing/armor/cuirass/elven
 	backr = /obj/item/weapon/polearm/spear
 	backl = /obj/item/storage/backpack/rogue/satchel
 	beltl = /obj/item/weapon/knife/dagger/steel/special
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
+	shirt = /obj/item/clothing/shirt/undershirt/black
 	pants = /obj/item/clothing/pants/trou/leather
 	neck = /obj/item/clothing/neck/chaincoif
-	backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/poor)
+	backpack_contents = list(/obj/item/storage/belt/pouch/coins/poor)
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)

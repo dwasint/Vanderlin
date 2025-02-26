@@ -17,7 +17,7 @@
 	head = /obj/item/clothing/head/menacing
 	pants = /obj/item/clothing/pants/trou
 	shoes = /obj/item/clothing/shoes/simpleshoes
-	belt = /obj/item/storage/belt/rogue/leather/rope
+	belt = /obj/item/storage/belt/leather/rope
 	beltl = /obj/item/weapon/knife/villager // won't be able to light a torch without this, bare minimum
 
 	if(H.mind)

@@ -28,7 +28,7 @@
 /turf/open/floor/rogue/ruinedwood/spiralfade,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "aF" = (
-/obj/item/clothing/suit/roguetown/shirt/tunic,
+/obj/item/clothing/shirt/tunic,
 /obj/effect/decal/cleanable/blood/gibs/body,
 /turf/open/floor/rogue/tile/kitchen,
 /area/rogue/under/mountains/anvil/dungeon/lower)
@@ -670,9 +670,9 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "hD" = (
 /obj/structure/closet/crate/roguecloset/inn,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/random,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/random,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/random,
+/obj/item/clothing/shirt/undershirt/random,
+/obj/item/clothing/shirt/undershirt/random,
+/obj/item/clothing/shirt/undershirt/random,
 /obj/item/clothing/pants/tights/random,
 /obj/item/clothing/pants/tights/random,
 /obj/item/clothing/pants/tights/random,
@@ -737,8 +737,8 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "iS" = (
 /obj/structure/closet/crate/roguecloset/inn,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/random,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/random,
+/obj/item/clothing/shirt/undershirt/random,
+/obj/item/clothing/shirt/undershirt/random,
 /obj/item/clothing/pants/tights/random,
 /obj/item/clothing/pants/tights/random,
 /turf/open/floor/rogue/wood/nosmooth,
@@ -859,7 +859,7 @@
 /turf/open/floor/rogue/churchrough,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "kT" = (
-/obj/item/storage/belt/rogue/pouch,
+/obj/item/storage/belt/pouch,
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "kW" = (
@@ -1783,10 +1783,10 @@
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/under/mountains/anvil/dungeon)
 "yU" = (
-/obj/item/clothing/suit/roguetown/shirt/undershirt/random,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/random,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/random,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/random,
+/obj/item/clothing/shirt/undershirt/random,
+/obj/item/clothing/shirt/undershirt/random,
+/obj/item/clothing/shirt/undershirt/random,
+/obj/item/clothing/shirt/undershirt/random,
 /obj/item/clothing/pants/tights/random,
 /obj/item/clothing/pants/tights/random,
 /obj/item/clothing/pants/tights/random,
@@ -3051,8 +3051,8 @@
 /obj/structure/closet/crate/roguecloset/inn/south{
 	name = "closet"
 	},
-/obj/item/clothing/suit/roguetown/shirt/undershirt/random,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/random,
+/obj/item/clothing/shirt/undershirt/random,
+/obj/item/clothing/shirt/undershirt/random,
 /obj/item/clothing/cloak/apron/brown,
 /turf/open/floor/rogue/ruinedwood/spiralfade,
 /area/rogue/under/mountains/anvil/dungeon)

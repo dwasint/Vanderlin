@@ -23,10 +23,10 @@
 	neck = /obj/item/clothing/neck/psycross/silver/ravox
 	shoes = /obj/item/clothing/shoes/shortboots
 	cloak = /obj/item/clothing/cloak/raincloak/furcloak/brown
-	armor = /obj/item/clothing/suit/roguetown/shirt/robe/plain
+	armor = /obj/item/clothing/shirt/robe/plain
 	wrists = /obj/item/clothing/wrists/bracers/leather
-	belt = /obj/item/storage/belt/rogue/leather/rope
-	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
+	belt = /obj/item/storage/belt/leather/rope
+	beltr = /obj/item/storage/belt/pouch/coins/poor
 	backl = /obj/item/storage/backpack/rogue/backpack
 	backr = /obj/item/weapon/polearm/woodstaff
 

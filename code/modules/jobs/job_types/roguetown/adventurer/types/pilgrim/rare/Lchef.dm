@@ -36,14 +36,14 @@
 	H.mind?.adjust_skillrank(/datum/skill/labor/butchering, 4, TRUE)
 	H.mind?.adjust_skillrank(/datum/skill/labor/taming, 2, TRUE)
 	H.mind?.adjust_skillrank(/datum/skill/craft/cooking, 6, TRUE)
-	belt = /obj/item/storage/belt/rogue/leather
+	belt = /obj/item/storage/belt/leather
 	pants = /obj/item/clothing/pants/tights/random
-	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
+	shirt = /obj/item/clothing/shirt/shortshirt/random
 	cloak = /obj/item/clothing/cloak/apron
 	head = /obj/item/clothing/head/cookhat/chef
 	shoes = /obj/item/clothing/shoes/shortboots
 	backl = /obj/item/storage/backpack/rogue/backpack
-	neck = /obj/item/storage/belt/rogue/pouch/coins/mid
+	neck = /obj/item/storage/belt/pouch/coins/mid
 	wrists = /obj/item/clothing/wrists/bracers/leather
 	beltr = /obj/item/cooking/pan
 	beltl = /obj/item/weapon/knife/cleaver

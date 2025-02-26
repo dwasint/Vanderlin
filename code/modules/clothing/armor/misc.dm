@@ -157,7 +157,7 @@
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
 
-/obj/item/clothing/suit/roguetown/shirt/vampire
+/obj/item/clothing/shirt/vampire
 	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
 	name = "regal silks"
 	desc = ""

@@ -102,26 +102,26 @@
 /area/rogue)
 "ao" = (
 /obj/structure/table/wood/reinforced,
-/obj/item/storage/belt/rogue/leather,
-/obj/item/storage/belt/rogue/leather,
-/obj/item/storage/belt/rogue/leather,
-/obj/item/storage/belt/rogue/leather,
-/obj/item/storage/belt/rogue/leather,
-/obj/item/storage/belt/rogue/leather,
+/obj/item/storage/belt/leather,
+/obj/item/storage/belt/leather,
+/obj/item/storage/belt/leather,
+/obj/item/storage/belt/leather,
+/obj/item/storage/belt/leather,
+/obj/item/storage/belt/leather,
 /turf/open/floor/rogue/carpet,
 /area/rogue)
 "ap" = (
 /obj/structure/table/wood/reinforced,
-/obj/item/storage/belt/rogue/pouch,
-/obj/item/storage/belt/rogue/pouch,
-/obj/item/storage/belt/rogue/pouch,
-/obj/item/storage/belt/rogue/pouch,
-/obj/item/storage/belt/rogue/pouch,
-/obj/item/storage/belt/rogue/pouch,
-/obj/item/storage/belt/rogue/pouch,
-/obj/item/storage/belt/rogue/pouch,
-/obj/item/storage/belt/rogue/pouch,
-/obj/item/storage/belt/rogue/pouch,
+/obj/item/storage/belt/pouch,
+/obj/item/storage/belt/pouch,
+/obj/item/storage/belt/pouch,
+/obj/item/storage/belt/pouch,
+/obj/item/storage/belt/pouch,
+/obj/item/storage/belt/pouch,
+/obj/item/storage/belt/pouch,
+/obj/item/storage/belt/pouch,
+/obj/item/storage/belt/pouch,
+/obj/item/storage/belt/pouch,
 /turf/open/floor/rogue/carpet,
 /area/rogue)
 "aq" = (
@@ -1021,10 +1021,10 @@
 "cQ" = (
 /obj/structure/fluff/walldeco/chains,
 /obj/structure/closet/crate/roguecloset/inn/chest,
-/obj/item/clothing/suit/roguetown/shirt/rags,
-/obj/item/clothing/suit/roguetown/shirt/rags,
-/obj/item/clothing/suit/roguetown/shirt/rags,
-/obj/item/clothing/suit/roguetown/shirt/rags,
+/obj/item/clothing/shirt/rags,
+/obj/item/clothing/shirt/rags,
+/obj/item/clothing/shirt/rags,
+/obj/item/clothing/shirt/rags,
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/indoors/vampire_manor)
 "cS" = (
@@ -1338,12 +1338,12 @@
 /area/rogue)
 "ee" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/storage/belt/rogue/leather/shalal,
-/obj/item/storage/belt/rogue/leather/rope,
-/obj/item/storage/belt/rogue/leather/plaquesilver,
-/obj/item/storage/belt/rogue/leather/plaquegold,
-/obj/item/storage/belt/rogue/leather/steel,
-/obj/item/storage/belt/rogue/leather/steel,
+/obj/item/storage/belt/leather/shalal,
+/obj/item/storage/belt/leather/rope,
+/obj/item/storage/belt/leather/plaquesilver,
+/obj/item/storage/belt/leather/plaquegold,
+/obj/item/storage/belt/leather/steel,
+/obj/item/storage/belt/leather/steel,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "eq" = (
@@ -1390,7 +1390,7 @@
 /area/rogue)
 "fi" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/clothing/suit/roguetown/shirt/vampire,
+/obj/item/clothing/shirt/vampire,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "fk" = (
@@ -1566,7 +1566,7 @@
 	dir = 4;
 	icon_state = "largetable"
 	},
-/obj/item/clothing/suit/roguetown/shirt/robe/wizard,
+/obj/item/clothing/shirt/robe/wizard,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "hQ" = (
@@ -1970,8 +1970,8 @@
 	dir = 5;
 	icon_state = "largetable"
 	},
-/obj/item/clothing/suit/roguetown/shirt/robe/eora,
-/obj/item/clothing/suit/roguetown/shirt/robe/eora/alt,
+/obj/item/clothing/shirt/robe/eora,
+/obj/item/clothing/shirt/robe/eora/alt,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "nW" = (
@@ -1990,7 +1990,7 @@
 	dir = 8;
 	icon_state = "largetable"
 	},
-/obj/item/clothing/suit/roguetown/shirt/robe/merchant,
+/obj/item/clothing/shirt/robe/merchant,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "ot" = (
@@ -2176,21 +2176,21 @@
 /obj/structure/table/wood{
 	icon_state = "longtable"
 	},
-/obj/item/clothing/suit/roguetown/shirt/dress/gen/black,
-/obj/item/clothing/suit/roguetown/shirt/dress/gen/black,
-/obj/item/clothing/suit/roguetown/shirt/dress/gen/black,
-/obj/item/clothing/suit/roguetown/shirt/dress/gen/blue,
-/obj/item/clothing/suit/roguetown/shirt/dress/gen/blue,
-/obj/item/clothing/suit/roguetown/shirt/dress/gen/blue,
-/obj/item/clothing/suit/roguetown/shirt/dress/gen/green,
-/obj/item/clothing/suit/roguetown/shirt/dress/gen/green,
-/obj/item/clothing/suit/roguetown/shirt/dress/gen/green,
-/obj/item/clothing/suit/roguetown/shirt/dress/gen/purple,
-/obj/item/clothing/suit/roguetown/shirt/dress/gen/purple,
-/obj/item/clothing/suit/roguetown/shirt/dress/gen/purple,
-/obj/item/clothing/suit/roguetown/shirt/dress/gen/random,
-/obj/item/clothing/suit/roguetown/shirt/dress/gen/random,
-/obj/item/clothing/suit/roguetown/shirt/dress/gen/random,
+/obj/item/clothing/shirt/dress/gen/black,
+/obj/item/clothing/shirt/dress/gen/black,
+/obj/item/clothing/shirt/dress/gen/black,
+/obj/item/clothing/shirt/dress/gen/blue,
+/obj/item/clothing/shirt/dress/gen/blue,
+/obj/item/clothing/shirt/dress/gen/blue,
+/obj/item/clothing/shirt/dress/gen/green,
+/obj/item/clothing/shirt/dress/gen/green,
+/obj/item/clothing/shirt/dress/gen/green,
+/obj/item/clothing/shirt/dress/gen/purple,
+/obj/item/clothing/shirt/dress/gen/purple,
+/obj/item/clothing/shirt/dress/gen/purple,
+/obj/item/clothing/shirt/dress/gen/random,
+/obj/item/clothing/shirt/dress/gen/random,
+/obj/item/clothing/shirt/dress/gen/random,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "qP" = (
@@ -2213,30 +2213,30 @@
 /obj/structure/table/wood/reinforced,
 /obj/structure/table/wood/reinforced,
 /obj/structure/table/wood/reinforced,
-/obj/item/clothing/suit/roguetown/shirt/undershirt,
-/obj/item/clothing/suit/roguetown/shirt/undershirt,
-/obj/item/clothing/suit/roguetown/shirt/undershirt,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/black,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/black,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/black,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/green,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/green,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/green,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/guard,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/guard,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/guard,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/guardsecond,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/guardsecond,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/guardsecond,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/lord,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/lord,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/lord,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/purple,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/purple,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/purple,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/red,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/red,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/red,
+/obj/item/clothing/shirt/undershirt,
+/obj/item/clothing/shirt/undershirt,
+/obj/item/clothing/shirt/undershirt,
+/obj/item/clothing/shirt/undershirt/black,
+/obj/item/clothing/shirt/undershirt/black,
+/obj/item/clothing/shirt/undershirt/black,
+/obj/item/clothing/shirt/undershirt/green,
+/obj/item/clothing/shirt/undershirt/green,
+/obj/item/clothing/shirt/undershirt/green,
+/obj/item/clothing/shirt/undershirt/guard,
+/obj/item/clothing/shirt/undershirt/guard,
+/obj/item/clothing/shirt/undershirt/guard,
+/obj/item/clothing/shirt/undershirt/guardsecond,
+/obj/item/clothing/shirt/undershirt/guardsecond,
+/obj/item/clothing/shirt/undershirt/guardsecond,
+/obj/item/clothing/shirt/undershirt/lord,
+/obj/item/clothing/shirt/undershirt/lord,
+/obj/item/clothing/shirt/undershirt/lord,
+/obj/item/clothing/shirt/undershirt/purple,
+/obj/item/clothing/shirt/undershirt/purple,
+/obj/item/clothing/shirt/undershirt/purple,
+/obj/item/clothing/shirt/undershirt/red,
+/obj/item/clothing/shirt/undershirt/red,
+/obj/item/clothing/shirt/undershirt/red,
 /turf/open/floor/rogue/carpet,
 /area/rogue)
 "rl" = (
@@ -2335,23 +2335,23 @@
 /obj/structure/table/wood{
 	icon_state = "longtable"
 	},
-/obj/item/clothing/suit/roguetown/shirt/tunic,
-/obj/item/clothing/suit/roguetown/shirt/tunic,
-/obj/item/clothing/suit/roguetown/shirt/tunic,
-/obj/item/clothing/suit/roguetown/shirt/tunic/blue,
-/obj/item/clothing/suit/roguetown/shirt/tunic/blue,
-/obj/item/clothing/suit/roguetown/shirt/tunic/blue,
-/obj/item/clothing/suit/roguetown/shirt/tunic/green,
-/obj/item/clothing/suit/roguetown/shirt/tunic/green,
-/obj/item/clothing/suit/roguetown/shirt/tunic/green,
-/obj/item/clothing/suit/roguetown/shirt/tunic/green,
-/obj/item/clothing/suit/roguetown/shirt/tunic/purple,
-/obj/item/clothing/suit/roguetown/shirt/tunic/purple,
-/obj/item/clothing/suit/roguetown/shirt/tunic/purple,
-/obj/item/clothing/suit/roguetown/shirt/tunic/purple,
-/obj/item/clothing/suit/roguetown/shirt/tunic/red,
-/obj/item/clothing/suit/roguetown/shirt/tunic/red,
-/obj/item/clothing/suit/roguetown/shirt/tunic/red,
+/obj/item/clothing/shirt/tunic,
+/obj/item/clothing/shirt/tunic,
+/obj/item/clothing/shirt/tunic,
+/obj/item/clothing/shirt/tunic/blue,
+/obj/item/clothing/shirt/tunic/blue,
+/obj/item/clothing/shirt/tunic/blue,
+/obj/item/clothing/shirt/tunic/green,
+/obj/item/clothing/shirt/tunic/green,
+/obj/item/clothing/shirt/tunic/green,
+/obj/item/clothing/shirt/tunic/green,
+/obj/item/clothing/shirt/tunic/purple,
+/obj/item/clothing/shirt/tunic/purple,
+/obj/item/clothing/shirt/tunic/purple,
+/obj/item/clothing/shirt/tunic/purple,
+/obj/item/clothing/shirt/tunic/red,
+/obj/item/clothing/shirt/tunic/red,
+/obj/item/clothing/shirt/tunic/red,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "so" = (
@@ -2410,13 +2410,13 @@
 	dir = 1;
 	icon_state = "longtable"
 	},
-/obj/item/clothing/suit/roguetown/shirt/dress,
-/obj/item/clothing/suit/roguetown/shirt/dress,
-/obj/item/clothing/suit/roguetown/shirt/dress,
-/obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy,
-/obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy,
-/obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy,
-/obj/item/clothing/suit/roguetown/shirt/robe/nun,
+/obj/item/clothing/shirt/dress,
+/obj/item/clothing/shirt/dress,
+/obj/item/clothing/shirt/dress,
+/obj/item/clothing/shirt/dress/gen/sexy,
+/obj/item/clothing/shirt/dress/gen/sexy,
+/obj/item/clothing/shirt/dress/gen/sexy,
+/obj/item/clothing/shirt/robe/nun,
 /obj/item/clothing/head/nun,
 /turf/open/floor/rogue/wood,
 /area/rogue)
@@ -3440,7 +3440,7 @@
 /obj/item/clothing/armor/leather/jacket/apothecary,
 /obj/item/clothing/armor/leather/jacket/apothecary,
 /obj/item/clothing/armor/leather/jacket/apothecary,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/puritan,
+/obj/item/clothing/shirt/undershirt/puritan,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "IY" = (
@@ -3458,7 +3458,7 @@
 	dir = 10;
 	icon_state = "largetable"
 	},
-/obj/item/clothing/suit/roguetown/shirt/robe/necra,
+/obj/item/clothing/shirt/robe/necra,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "Jo" = (
@@ -3619,17 +3619,17 @@
 	dir = 1;
 	icon_state = "longtable"
 	},
-/obj/item/clothing/suit/roguetown/shirt/dress/silkdress,
-/obj/item/clothing/suit/roguetown/shirt/dress/silkdress,
-/obj/item/clothing/suit/roguetown/shirt/dress/silkdress,
-/obj/item/clothing/suit/roguetown/shirt/dress/silkdress/black,
-/obj/item/clothing/suit/roguetown/shirt/dress/silkdress/black,
-/obj/item/clothing/suit/roguetown/shirt/dress/silkdress/black,
-/obj/item/clothing/suit/roguetown/shirt/dress/silkdress/black,
-/obj/item/clothing/suit/roguetown/shirt/dress/silkdress/green,
-/obj/item/clothing/suit/roguetown/shirt/dress/silkdress/green,
-/obj/item/clothing/suit/roguetown/shirt/dress/silkdress/green,
-/obj/item/clothing/suit/roguetown/shirt/dress/silkdress/green,
+/obj/item/clothing/shirt/dress/silkdress,
+/obj/item/clothing/shirt/dress/silkdress,
+/obj/item/clothing/shirt/dress/silkdress,
+/obj/item/clothing/shirt/dress/silkdress/black,
+/obj/item/clothing/shirt/dress/silkdress/black,
+/obj/item/clothing/shirt/dress/silkdress/black,
+/obj/item/clothing/shirt/dress/silkdress/black,
+/obj/item/clothing/shirt/dress/silkdress/green,
+/obj/item/clothing/shirt/dress/silkdress/green,
+/obj/item/clothing/shirt/dress/silkdress/green,
+/obj/item/clothing/shirt/dress/silkdress/green,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "LI" = (
@@ -3897,7 +3897,7 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/bog/inhumen_camp)
 "Qm" = (
-/obj/item/clothing/suit/roguetown/shirt/robe/white,
+/obj/item/clothing/shirt/robe/white,
 /obj/structure/table/wood/fancy/royalblue,
 /turf/open/floor/rogue/carpet,
 /area/rogue)
@@ -4079,7 +4079,7 @@
 	dir = 6;
 	icon_state = "largetable"
 	},
-/obj/item/clothing/suit/roguetown/shirt/robe/priest,
+/obj/item/clothing/shirt/robe/priest,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "RU" = (
@@ -4159,8 +4159,8 @@
 	dir = 9;
 	icon_state = "largetable"
 	},
-/obj/item/clothing/suit/roguetown/shirt/robe/feld,
-/obj/item/clothing/suit/roguetown/shirt/robe/phys,
+/obj/item/clothing/shirt/robe/feld,
+/obj/item/clothing/shirt/robe/phys,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "Tl" = (
@@ -4292,25 +4292,25 @@
 	dir = 1;
 	icon_state = "longtable"
 	},
-/obj/item/clothing/suit/roguetown/shirt/undershirt,
-/obj/item/clothing/suit/roguetown/shirt/undershirt,
-/obj/item/clothing/suit/roguetown/shirt/undershirt,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/black,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/black,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/black,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/green,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/green,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/green,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/guard,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/guard,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/guard,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/guard,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/purple,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/purple,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/purple,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/red,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/red,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/red,
+/obj/item/clothing/shirt/undershirt,
+/obj/item/clothing/shirt/undershirt,
+/obj/item/clothing/shirt/undershirt,
+/obj/item/clothing/shirt/undershirt/black,
+/obj/item/clothing/shirt/undershirt/black,
+/obj/item/clothing/shirt/undershirt/black,
+/obj/item/clothing/shirt/undershirt/green,
+/obj/item/clothing/shirt/undershirt/green,
+/obj/item/clothing/shirt/undershirt/green,
+/obj/item/clothing/shirt/undershirt/guard,
+/obj/item/clothing/shirt/undershirt/guard,
+/obj/item/clothing/shirt/undershirt/guard,
+/obj/item/clothing/shirt/undershirt/guard,
+/obj/item/clothing/shirt/undershirt/purple,
+/obj/item/clothing/shirt/undershirt/purple,
+/obj/item/clothing/shirt/undershirt/purple,
+/obj/item/clothing/shirt/undershirt/red,
+/obj/item/clothing/shirt/undershirt/red,
+/obj/item/clothing/shirt/undershirt/red,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "UV" = (
@@ -4327,7 +4327,7 @@
 /obj/structure/table/wood{
 	icon_state = "largetable"
 	},
-/obj/item/clothing/suit/roguetown/shirt/robe/noc,
+/obj/item/clothing/shirt/robe/noc,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "Vc" = (
@@ -4579,16 +4579,16 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/bog/inhumen_camp)
 "XZ" = (
-/obj/item/clothing/suit/roguetown/shirt/robe/wizard{
+/obj/item/clothing/shirt/robe/wizard{
 	desc = "Robes belonging to a Spellcaster.  From the sigil on the lappel this is an official member of the Wizards Association.";
 	name = "Wizards Formal Robe"
 	},
 /obj/structure/table/wood/fancy/royalblue,
-/obj/item/clothing/suit/roguetown/shirt/robe/wizard{
+/obj/item/clothing/shirt/robe/wizard{
 	desc = "Robes belonging to a Spellcaster.  From the sigil on the lappel this is an official member of the Wizards Association.";
 	name = "Wizards Formal Robe"
 	},
-/obj/item/clothing/suit/roguetown/shirt/robe/wizard{
+/obj/item/clothing/shirt/robe/wizard{
 	desc = "Robes belonging to a Spellcaster.  From the sigil on the lappel this is an official member of the Wizards Association.";
 	name = "Wizards Formal Robe"
 	},

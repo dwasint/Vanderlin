@@ -93,7 +93,7 @@
 /area/rogue/indoors/cave)
 "bn" = (
 /obj/structure/chair/wood/rogue/chair_noble/red,
-/obj/item/clothing/suit/roguetown/shirt/robe/magus,
+/obj/item/clothing/shirt/robe/magus,
 /obj/item/weapon/knife/dagger/steel/dirk,
 /obj/item/clothing/gloves/fingerless/shadowgloves,
 /obj/item/clothing/face/shepherd/shadowmask,
@@ -463,7 +463,7 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/bog)
 "fu" = (
-/obj/item/storage/belt/rogue/pouch/coins/rich,
+/obj/item/storage/belt/pouch/coins/rich,
 /obj/structure/table/wood{
 	dir = 5;
 	icon_state = "largetable"
@@ -797,7 +797,7 @@
 /area/rogue/indoors/shelter/bog)
 "kG" = (
 /obj/structure/closet/crate/roguecloset/inn,
-/obj/item/clothing/suit/roguetown/shirt/undershirt,
+/obj/item/clothing/shirt/undershirt,
 /obj/item/clothing/pants/tights/black,
 /obj/item/clothing/head/cookhat,
 /turf/open/floor/rogue/wood/nosmooth,
@@ -3034,7 +3034,7 @@
 /area/rogue/indoors/shelter/bog)
 "PK" = (
 /obj/structure/closet/crate/roguecloset/inn,
-/obj/item/clothing/suit/roguetown/shirt/dress,
+/obj/item/clothing/shirt/dress,
 /obj/item/clothing/head/softcap,
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/indoors/shelter/bog)

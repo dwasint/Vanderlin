@@ -7,7 +7,7 @@
 "aY" = (
 /obj/machinery/light/rogue/wallfire/candle/blue,
 /obj/structure/table/vtable,
-/obj/item/storage/belt/rogue/pouch,
+/obj/item/storage/belt/pouch,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue)
 "bv" = (
@@ -179,7 +179,7 @@
 /turf/open/water/bath,
 /area/rogue)
 "CA" = (
-/obj/item/storage/belt/rogue/pouch,
+/obj/item/storage/belt/pouch,
 /obj/structure/table/vtable/v2,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue)

@@ -9,15 +9,15 @@
 
 /datum/outfit/job/roguetown/heartfelt/lord/pre_equip(mob/living/carbon/human/H)
 	..()
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
-	belt = /obj/item/storage/belt/rogue/leather/black
+	shirt = /obj/item/clothing/shirt/undershirt
+	belt = /obj/item/storage/belt/leather/black
 	neck = /obj/item/clothing/neck/gorget
 	head = /obj/item/clothing/head/helmet
 	shoes = /obj/item/clothing/shoes/nobleboot
 	pants = /obj/item/clothing/pants/tights/black
 	cloak = /obj/item/clothing/cloak/heartfelt
 	armor = /obj/item/clothing/armor/medium/surcoat/heartfelt
-	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
+	beltr = /obj/item/storage/belt/pouch/coins/rich
 	beltl = /obj/item/scomstone
 	gloves = /obj/item/clothing/gloves/leather/black
 	neck = /obj/item/clothing/neck/chaincoif
@@ -57,17 +57,17 @@
 /datum/outfit/job/roguetown/heartfelt/lady/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/hennin
-	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
+	neck = /obj/item/storage/belt/pouch/coins/rich
 	cloak = /obj/item/clothing/cloak/heartfelt
 	if(isdwarf(H))
-		armor = /obj/item/clothing/suit/roguetown/shirt/dress
+		armor = /obj/item/clothing/shirt/dress
 	else
 		if(prob(66))
 			armor = /obj/item/clothing/armor/gambeson/heavy/dress/alt
 		else
 			armor = /obj/item/clothing/armor/gambeson/heavy/dress
 	beltl = /obj/item/flashlight/flare/torch/lantern
-	beltr =  /obj/item/storage/belt/rogue/pouch
+	beltr =  /obj/item/storage/belt/pouch
 	id = /obj/item/clothing/ring/silver
 	shoes = /obj/item/clothing/shoes/shortboots
 	if(H.mind)
@@ -98,13 +98,13 @@
 
 /datum/outfit/job/roguetown/heartfelt/hand/pre_equip(mob/living/carbon/human/H)
 	..()
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
-	belt = /obj/item/storage/belt/rogue/leather/black
+	shirt = /obj/item/clothing/shirt/undershirt
+	belt = /obj/item/storage/belt/leather/black
 	shoes = /obj/item/clothing/shoes/nobleboot
 	pants = /obj/item/clothing/pants/tights/black
 	neck = /obj/item/clothing/neck/gorget
 	armor = /obj/item/clothing/armor/medium/surcoat/heartfelt
-	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
+	beltr = /obj/item/storage/belt/pouch/coins/rich
 	gloves = /obj/item/clothing/gloves/leather/black
 	beltl = /obj/item/weapon/sword/decorated
 	beltr = /obj/item/scomstone
@@ -149,7 +149,7 @@
 	shoes = /obj/item/clothing/shoes/boots/armor
 	beltr = /obj/item/weapon/sword/long
 	beltl = /obj/item/flashlight/flare/torch/lantern
-	belt = /obj/item/storage/belt/rogue/leather/steel
+	belt = /obj/item/storage/belt/leather/steel
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	if(prob(50))
 		r_hand = /obj/item/weapon/polearm/eaglebeak/lucerne
@@ -211,10 +211,10 @@
 	..()
 	neck = /obj/item/clothing/neck/talkstone
 	cloak = /obj/item/clothing/cloak/black_cloak
-	armor = /obj/item/clothing/suit/roguetown/shirt/robe/black
+	armor = /obj/item/clothing/shirt/robe/black
 	pants = /obj/item/clothing/pants/tights/random
 	shoes = /obj/item/clothing/shoes/shortboots
-	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
+	belt = /obj/item/storage/belt/leather/plaquesilver
 	beltl = /obj/item/flashlight/flare/torch/lantern
 	id = /obj/item/clothing/ring/gold
 	r_hand = /obj/item/weapon/polearm/woodstaff
@@ -244,10 +244,10 @@
 			H.change_stat(STATKEY_SPD, -1)
 			H.change_stat(STATKEY_PER, 1)
 			if(ishumannorthern(H))
-				belt = /obj/item/storage/belt/rogue/leather/plaquegold
+				belt = /obj/item/storage/belt/leather/plaquegold
 				cloak = null
 				head = /obj/item/clothing/head/wizhat
-				armor = /obj/item/clothing/suit/roguetown/shirt/robe/wizard
+				armor = /obj/item/clothing/shirt/robe/wizard
 				H.dna.species.soundpack_m = new /datum/voicepack/male/wizard()
 		var/list/spells = list(/obj/effect/proc_holder/spell/invoked/projectile/fireball/greater, /obj/effect/proc_holder/spell/invoked/projectile/fireball, /obj/effect/proc_holder/spell/invoked/projectile/lightningbolt, /obj/effect/proc_holder/spell/invoked/projectile/fetch)
 		for(var/S in spells)
@@ -264,13 +264,13 @@
 	..()
 	H.virginity = TRUE
 	neck = /obj/item/clothing/neck/psycross/silver
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/priest
+	shirt = /obj/item/clothing/shirt/undershirt/priest
 	pants = /obj/item/clothing/pants/tights/black
 	shoes = /obj/item/clothing/shoes/shortboots
-	belt = /obj/item/storage/belt/rogue/leather/rope
+	belt = /obj/item/storage/belt/leather/rope
 	beltl = /obj/item/flashlight/flare/torch/lantern
-	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
-	armor = /obj/item/clothing/suit/roguetown/shirt/robe/priest
+	beltr = /obj/item/storage/belt/pouch/coins/mid
+	armor = /obj/item/clothing/shirt/robe/priest
 	cloak = /obj/item/clothing/cloak/chasuble
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(

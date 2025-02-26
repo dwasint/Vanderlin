@@ -30,7 +30,7 @@
 /datum/outfit/job/roguetown/beastmaster/pre_equip(mob/living/carbon/human/H)
 	..()
 
-	belt = /obj/item/storage/belt/rogue/leather
+	belt = /obj/item/storage/belt/leather
 	beltr= /obj/item/storage/meatbag
 	beltl= /obj/item/key/butcher
 	backl = /obj/item/storage/backpack/rogue/satchel
@@ -42,7 +42,7 @@
 		pants = /obj/item/clothing/pants/trou
 		wrists = /obj/item/clothing/wrists/bracers/leather
 	else
-		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
+		shirt = /obj/item/clothing/shirt/dress/gen/random
 
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC) // Used to dismembering live stock, desensitized to it.
 

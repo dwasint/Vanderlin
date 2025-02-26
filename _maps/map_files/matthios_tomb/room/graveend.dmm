@@ -111,7 +111,7 @@
 /area/rogue)
 "C" = (
 /obj/structure/table/wood/plain/alt,
-/obj/item/storage/belt/rogue/leather/plaquegold,
+/obj/item/storage/belt/leather/plaquegold,
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
 "E" = (

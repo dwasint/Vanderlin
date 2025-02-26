@@ -33,14 +33,14 @@
 		H.underwear_color = CLOTHING_SOOT_BLACK
 		H.update_body()
 
-	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
+	beltr = /obj/item/storage/belt/pouch/coins/poor
 	neck = /obj/item/clothing/neck/chaincoif
 	pants = /obj/item/clothing/pants/grenzelpants
 	shoes = /obj/item/clothing/shoes/grenzelhoft
 	gloves = /obj/item/clothing/gloves/angle/grenzel
-	belt = /obj/item/storage/belt/rogue/leather/mercenary
+	belt = /obj/item/storage/belt/leather/mercenary
 	beltl = /obj/item/weapon/mace/cudgel
-	shirt = /obj/item/clothing/suit/roguetown/shirt/grenzelhoft
+	shirt = /obj/item/clothing/shirt/grenzelhoft
 	head = /obj/item/clothing/head/helmet/skullcap/grenzelhoft
 	armor = /obj/item/clothing/armor/cuirass/grenzelhoft
 	backl = /obj/item/storage/backpack/rogue/satchel

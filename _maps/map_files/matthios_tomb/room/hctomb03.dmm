@@ -74,7 +74,7 @@
 /area/rogue)
 "dH" = (
 /obj/effect/decal/cleanable/blood/old,
-/obj/item/clothing/suit/roguetown/shirt/shortshirt/random{
+/obj/item/clothing/shirt/shortshirt/random{
 	pixel_x = -8
 	},
 /turf/open/floor/rogue/blocks/stonered,
@@ -944,7 +944,7 @@
 /area/rogue)
 "Jj" = (
 /obj/structure/table/stone_small,
-/obj/item/clothing/suit/roguetown/shirt/shortshirt/random{
+/obj/item/clothing/shirt/shortshirt/random{
 	pixel_x = 7;
 	pixel_y = -4
 	},
@@ -1297,7 +1297,7 @@
 /turf/open/floor/rogue/churchrough,
 /area/rogue)
 "UC" = (
-/obj/item/storage/belt/rogue/leather{
+/obj/item/storage/belt/leather{
 	pixel_x = 12;
 	pixel_y = 5
 	},

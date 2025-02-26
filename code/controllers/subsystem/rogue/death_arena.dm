@@ -170,7 +170,7 @@ SUBSYSTEM_DEF(death_arena)
 
 	r_hand = /obj/item/weapon/mace/steel
 	l_hand = /obj/item/weapon/shield/wood
-	belt = /obj/item/storage/belt/rogue/leather
+	belt = /obj/item/storage/belt/leather
 	beltr = /obj/item/weapon/axe/iron
 
 

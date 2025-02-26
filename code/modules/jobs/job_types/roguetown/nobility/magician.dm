@@ -33,10 +33,10 @@
 	..()
 	head = /obj/item/clothing/head/wizhat/gen
 	backr = /obj/item/storage/backpack/rogue/satchel
-	armor = /obj/item/clothing/suit/roguetown/shirt/robe/black
+	armor = /obj/item/clothing/shirt/robe/black
 	cloak = /obj/item/clothing/cloak/black_cloak
 	id = /obj/item/clothing/ring/gold
-	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
+	belt = /obj/item/storage/belt/leather/plaquesilver
 	beltr = /obj/item/storage/keyring/mage
 	backl = /obj/item/weapon/polearm/woodstaff
 	shoes = /obj/item/clothing/shoes/shortboots
@@ -53,17 +53,17 @@
 		H.mind?.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/craft/alchemy, 5, TRUE)
 		if(H.age == AGE_OLD)
-			armor = /obj/item/clothing/suit/roguetown/shirt/robe/courtmage
+			armor = /obj/item/clothing/shirt/robe/courtmage
 			H.change_stat(STATKEY_SPD, -1)
 			H.change_stat(STATKEY_INT, 1)
 			if(H.dna.species.id == "human")
-				belt = /obj/item/storage/belt/rogue/leather/plaquegold
+				belt = /obj/item/storage/belt/leather/plaquegold
 				cloak = null
 				head = /obj/item/clothing/head/wizhat
 				if(H.gender == FEMALE)
-					armor = /obj/item/clothing/suit/roguetown/shirt/robe/courtmage
+					armor = /obj/item/clothing/shirt/robe/courtmage
 				if(H.gender == MALE)
-					armor = /obj/item/clothing/suit/roguetown/shirt/robe/wizard
+					armor = /obj/item/clothing/shirt/robe/wizard
 					H.dna.species.soundpack_m = new /datum/voicepack/male/wizard()
 		ADD_TRAIT(H, TRAIT_SEEPRICES, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_LEGENDARY_ALCHEMIST, TRAIT_GENERIC)

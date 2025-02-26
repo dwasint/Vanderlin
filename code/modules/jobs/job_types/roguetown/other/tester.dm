@@ -31,16 +31,16 @@
 	..()
 	shoes = /obj/item/clothing/shoes/boots/leather
 	wrists = /obj/item/clothing/wrists/bracers
-	belt = /obj/item/storage/belt/rogue/leather
+	belt = /obj/item/storage/belt/leather
 	armor = /obj/item/clothing/armor/gambeson/arming
 	if(prob(50))
 		armor = /obj/item/clothing/armor/gambeson
 	neck = /obj/item/key/mercenary
-	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
+	beltl = /obj/item/storage/belt/pouch/coins/poor
 	beltr = /obj/item/weapon/sword/sabre
 	if(prob(50))
 		beltr = /obj/item/weapon/sword/arming
-	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/merc
+	shirt = /obj/item/clothing/shirt/shortshirt/merc
 	pants = /obj/item/clothing/pants/trou/leather
 	neck = /obj/item/clothing/neck/gorget
 	if(H.gender == FEMALE)

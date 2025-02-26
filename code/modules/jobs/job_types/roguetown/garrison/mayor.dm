@@ -36,11 +36,11 @@
 	pants = /obj/item/clothing/pants/trou/leather
 	head = /obj/item/clothing/head/brimmed
 	armor = /obj/item/clothing/armor/leather/jacket
-	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic
+	shirt = /obj/item/clothing/shirt/tunic
 	shoes = /obj/item/clothing/shoes/boots
 	cloak = /obj/item/clothing/cloak/half
-	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
-	belt = /obj/item/storage/belt/rogue/leather/black
+	neck = /obj/item/storage/belt/pouch/coins/rich
+	belt = /obj/item/storage/belt/leather/black
 	beltr = /obj/item/storage/keyring/mayor
 	beltl = /obj/item/flashlight/flare/torch/lantern
 	r_hand = /obj/item/weapon/polearm/woodstaff/quarterstaff

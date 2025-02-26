@@ -33,15 +33,15 @@
 	H.mind?.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 	H.mind?.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 
-	belt = /obj/item/storage/belt/rogue/leather/rope
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
+	belt = /obj/item/storage/belt/leather/rope
+	shirt = /obj/item/clothing/shirt/undershirt/random
 	pants = /obj/item/clothing/pants/trou
 	head = /obj/item/clothing/head/strawhat
 	shoes = /obj/item/clothing/shoes/simpleshoes
 	wrists = /obj/item/clothing/wrists/bracers/leather
 	backr = /obj/item/weapon/hoe
 	backl = /obj/item/storage/backpack/rogue/satchel
-	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
+	neck = /obj/item/storage/belt/pouch/coins/poor
 	armor = /obj/item/clothing/armor/gambeson/light/striped
 	beltl = /obj/item/weapon/sickle
 	beltr = /obj/item/flint
@@ -49,8 +49,8 @@
 	H.put_in_hands(P, forced = TRUE)
 	if(H.gender == FEMALE)
 		head = /obj/item/clothing/head/armingcap
-		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
+		armor = /obj/item/clothing/shirt/dress/gen/random
+		shirt = /obj/item/clothing/shirt/undershirt
 		pants = null
 	backpack_contents = list(/obj/item/neuFarm/seed/wheat=1,/obj/item/neuFarm/seed/apple=1,/obj/item/ash=1,/obj/item/weapon/knife/villager=1)
 	H.change_stat(STATKEY_STR, 1)

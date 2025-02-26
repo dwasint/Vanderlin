@@ -18,9 +18,9 @@
 	..()
 	shoes = /obj/item/clothing/shoes/jester
 	pants = /obj/item/clothing/pants/tights
-	armor = /obj/item/clothing/suit/roguetown/shirt/jester
-	belt = /obj/item/storage/belt/rogue/leather
-	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
+	armor = /obj/item/clothing/shirt/jester
+	belt = /obj/item/storage/belt/leather
+	beltl = /obj/item/storage/belt/pouch/coins/poor
 	beltr = /obj/item/weapon/knife/villager
 	backl = /obj/item/rogue/instrument/lute
 	backr = /obj/item/rogue/instrument/viola

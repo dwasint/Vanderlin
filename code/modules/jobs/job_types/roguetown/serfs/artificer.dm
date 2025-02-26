@@ -48,10 +48,10 @@
 	head = /obj/item/clothing/head/articap
 	armor = /obj/item/clothing/armor/leather/jacket/artijacket
 	pants = /obj/item/clothing/pants/trou/artipants
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/artificer
+	shirt = /obj/item/clothing/shirt/undershirt/artificer
 	shoes = /obj/item/clothing/shoes/simpleshoes/buckle
-	belt = /obj/item/storage/belt/rogue/leather
-	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
+	belt = /obj/item/storage/belt/leather
+	beltr = /obj/item/storage/belt/pouch/coins/mid
 	beltl = /obj/item/key/artificer
 	mask = /obj/item/clothing/face/goggles
 	backl = /obj/item/storage/backpack/rogue/backpack

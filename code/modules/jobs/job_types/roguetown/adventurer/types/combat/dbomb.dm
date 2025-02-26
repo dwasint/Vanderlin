@@ -11,7 +11,7 @@
 	..()
 	head = /obj/item/clothing/head/helmet/horned
 	pants = /obj/item/clothing/pants/trou
-	belt = /obj/item/storage/belt/rogue/leather
+	belt = /obj/item/storage/belt/leather
 	armor = /obj/item/clothing/armor/chainmail/iron
 	wrists = /obj/item/clothing/wrists/bracers/leather
 	backl = /obj/item/storage/backpack/rogue/backpack

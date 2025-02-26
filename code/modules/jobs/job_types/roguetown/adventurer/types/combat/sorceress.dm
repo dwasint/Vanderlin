@@ -21,8 +21,8 @@
 /datum/outfit/job/roguetown/adventurer/sorceress/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/simpleshoes
-	armor = /obj/item/clothing/suit/roguetown/shirt/robe/mage
-	belt = /obj/item/storage/belt/rogue/leather/rope
+	armor = /obj/item/clothing/shirt/robe/mage
+	belt = /obj/item/storage/belt/leather/rope
 	backr = /obj/item/storage/backpack/rogue/satchel
 	beltl = /obj/item/reagent_containers/glass/bottle/rogue/manapot
 	r_hand = /obj/item/weapon/polearm/woodstaff

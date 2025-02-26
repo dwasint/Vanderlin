@@ -12,10 +12,10 @@
 /datum/outfit/job/roguetown/mercenary/anthrax/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/boots
-	belt = /obj/item/storage/belt/rogue/leather/black
+	belt = /obj/item/storage/belt/leather/black
 	pants = /obj/item/clothing/pants/trou/shadowpants
 	backl = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/key/mercenary, /obj/item/storage/belt/rogue/pouch/coins/poor, /obj/item/weapon/knife/dagger/steel/dirk)
+	backpack_contents = list(/obj/item/key/mercenary, /obj/item/storage/belt/pouch/coins/poor, /obj/item/weapon/knife/dagger/steel/dirk)
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
@@ -52,7 +52,7 @@
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
 		if(H.gender == MALE) //Squishy hit-and-runner assassin.
-			shirt = /obj/item/clothing/suit/roguetown/shirt/shadowshirt
+			shirt = /obj/item/clothing/shirt/shadowshirt
 			armor = /obj/item/clothing/armor/gambeson/shadowrobe
 			cloak = /obj/item/clothing/cloak/half/shadowcloak
 			gloves = /obj/item/clothing/gloves/fingerless/shadowgloves

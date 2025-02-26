@@ -53,7 +53,7 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 
 /datum/admins/proc/create_outfit(mob/admin)
 	var/list/uniforms = typesof(/obj/item/clothing/pants)
-	var/list/suits = typesof(/obj/item/clothing/suit)
+	var/list/suits = typesof(/obj/item/clothing/shirt)
 	var/list/gloves = typesof(/obj/item/clothing/gloves)
 	var/list/shoes = typesof(/obj/item/clothing/shoes)
 	var/list/headwear = typesof(/obj/item/clothing/head)

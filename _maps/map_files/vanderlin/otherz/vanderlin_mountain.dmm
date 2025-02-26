@@ -115,7 +115,7 @@
 /area/rogue/under/mountains/anvil/lower/building)
 "cO" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/clothing/suit/roguetown/shirt/rags,
+/obj/item/clothing/shirt/rags,
 /obj/item/broom,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/mountains/anvil/lower/building)
@@ -573,7 +573,7 @@
 /area/rogue/under/mountains/anvil/lower/building)
 "jo" = (
 /obj/item/grown/log/tree/stake,
-/obj/item/storage/belt/rogue/pouch/coins/poor,
+/obj/item/storage/belt/pouch/coins/poor,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/lower/building)

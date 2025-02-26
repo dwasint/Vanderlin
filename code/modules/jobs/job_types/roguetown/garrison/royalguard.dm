@@ -59,7 +59,7 @@
 	armor = /obj/item/clothing/armor/brigandine // Wear the King's colors.
 	shoes = /obj/item/clothing/shoes/boots/armor/light
 	beltl = /obj/item/storage/keyring/mguard
-	belt = /obj/item/storage/belt/rogue/leather
+	belt = /obj/item/storage/belt/leather
 	beltr = /obj/item/weapon/sword/arming
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backl = /obj/item/weapon/shield/tower/metal

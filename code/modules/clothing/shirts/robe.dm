@@ -1,4 +1,4 @@
-/obj/item/clothing/suit/roguetown/shirt/robe
+/obj/item/clothing/shirt/robe
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "robe"
 	desc = "A common robe, worn mostly by religious adepts."
@@ -18,61 +18,61 @@
 	prevent_crits = list(BCLASS_TWIST)
 	max_integrity = INTEGRITY_POOR
 
-/obj/item/clothing/suit/roguetown/shirt/robe/plain
+/obj/item/clothing/shirt/robe/plain
 	color = CLOTHING_LINEN
 
-/obj/item/clothing/suit/roguetown/shirt/robe/black
+/obj/item/clothing/shirt/robe/black
 	color = CLOTHING_DARK_INK
 
-/obj/item/clothing/suit/roguetown/shirt/robe/white
+/obj/item/clothing/shirt/robe/white
 
 
 //................ Temple Robes ............... //
-/obj/item/clothing/suit/roguetown/shirt/robe/astrata
+/obj/item/clothing/shirt/robe/astrata
 	name = "sun robe"
 	desc = "The cloth of a follower of Astrata."
 	icon_state = "astratarobe"
 	sleeved = null
 
-/obj/item/clothing/suit/roguetown/shirt/robe/noc
+/obj/item/clothing/shirt/robe/noc
 	name = "moon robe"
 	desc = "The cloth of a follower of Noc."
 	icon_state = "nocrobe"
 	sleeved = null
 
-/obj/item/clothing/suit/roguetown/shirt/robe/necromancer
+/obj/item/clothing/shirt/robe/necromancer
 	name = "necromancer robes"
 	desc = "Eerie black garb of death."
 	icon_state = "warlock"
 	sleeved = null
 
-/obj/item/clothing/suit/roguetown/shirt/robe/dendor
+/obj/item/clothing/shirt/robe/dendor
 	name = "briar robe"
 	desc = "Nature nurtures us and we, in turn, will nurture it back in the end."
 	icon_state = "dendorrobe"
 
-/obj/item/clothing/suit/roguetown/shirt/robe/eora
+/obj/item/clothing/shirt/robe/eora
 	name = "eoran robe"
 	desc = "Holy robes, intended for use by followers of Eora"
 	icon_state = "eorarobes"
 
-/obj/item/clothing/suit/roguetown/shirt/robe/eora/alt
+/obj/item/clothing/shirt/robe/eora/alt
 	name = "eoran straps"
 	desc = "Sanctified, form fitting straps. Used by more radical followers of the Eoran Church"
 	icon_state = "eorastraps"
 
-/obj/item/clothing/suit/roguetown/shirt/robe/necra
+/obj/item/clothing/shirt/robe/necra
 	name = "mourning robe"
 	desc = "Black robes which cover the body not unlike those in depictions of the Carriageman himself."
 	icon_state = "necrarobe"
 
-/obj/item/clothing/suit/roguetown/shirt/robe/priest
+/obj/item/clothing/shirt/robe/priest
 	name = "solar vestments"
 	desc = "Holy vestments sanctified by divine hands. Caution is advised if not a faithful."
 	icon_state = "priestrobe"
 	dropshrink = 0.8
 
-/obj/item/clothing/suit/roguetown/shirt/robe/priest/pickup(mob/living/user)
+/obj/item/clothing/shirt/robe/priest/pickup(mob/living/user)
 	if((user.job != "Priest") && (user.job != "Priestess"))
 		user.visible_message(span_reallybig("UNWORTHY HANDS TOUCH MY VISAGE, CEASE OR BE PUNISHED"))
 		playsound(user, 'sound/misc/astratascream.ogg', 80,  falloff = 0.2)
@@ -85,14 +85,14 @@
 
 
 //................ Wizard Robes ............... //
-/obj/item/clothing/suit/roguetown/shirt/robe/courtmage
+/obj/item/clothing/shirt/robe/courtmage
 	color = CLOTHING_ASH_GREY
 
-/obj/item/clothing/suit/roguetown/shirt/robe/mage/Initialize()
+/obj/item/clothing/shirt/robe/mage/Initialize()
 	color = pick( CLOTHING_PEASANT_BROWN, CLOTHING_SPRING_GREEN, CLOTHING_CHESTNUT, CLOTHING_YELLOW_OCHRE)
 	. = ..()
 
-/obj/item/clothing/suit/roguetown/shirt/robe/wizard
+/obj/item/clothing/shirt/robe/wizard
 	name = "wizard's robe"
 	desc = "What wizard's ensemble would be complete without robes?"
 	icon_state = "wizardrobes"
@@ -100,7 +100,7 @@
 	allowed_race = list("human", "tiefling", "aasimar")
 	sellprice = 100
 
-/obj/item/clothing/suit/roguetown/shirt/robe/magus
+/obj/item/clothing/shirt/robe/magus
 	name = "magus's robe"
 	desc = "A dark padded robe worn by only the most mysterious of mages, the magi."
 	icon_state = "warlock"
@@ -114,28 +114,42 @@
 
 
 
-/obj/item/clothing/suit/roguetown/shirt/robe/merchant
+/obj/item/clothing/shirt/robe/merchant
 	name = "guilder jacket"
 	desc = "A fancy jacket common with members of the Mercator Guild."
 	icon_state = "merrobe"
 	sellprice = 30
 
-/obj/item/clothing/suit/roguetown/shirt/robe/nun
+/obj/item/clothing/shirt/robe/nun
 	icon_state = "nun"
 	item_state = "nun"
 	allowed_race = list("human", "tiefling", "dark elf", "elf", "half-elf", "dwarf", "aasimar")
 	allowed_sex = list(FEMALE)
 
-/obj/item/clothing/suit/roguetown/shirt/robe/feld
+/obj/item/clothing/shirt/robe/feld
 	name = "feldsher's robe"
 	desc = "Red to hide the blood."
 	icon_state = "feldrobe"
 	item_state = "feldrobe"
 
-/obj/item/clothing/suit/roguetown/shirt/robe/phys
+/obj/item/clothing/shirt/robe/phys
 	name = "physicker's robe"
 	desc = "Part robe, part butcher's apron."
 	icon_state = "surgrobe"
 	item_state = "surgrobe"
 
-
+/obj/item/clothing/shirt/robe/archivist
+	name = "archivist's robe"
+	desc = "Robes belonging to seekers of knowledge."
+	icon_state = "archivist"
+	icon = 'icons/roguetown/clothing/shirts.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/shirts.dmi'
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_shirts.dmi'
+	boobed = TRUE
+	flags_inv = HIDEBOOB
+	r_sleeve_status = SLEEVE_NORMAL
+	l_sleeve_status = SLEEVE_NORMAL
+	allowed_sex = list(MALE, FEMALE)
+	allowed_race = list("human", "tiefling", "aasimar", "elf")
+	color = null
+	sellprice = 100

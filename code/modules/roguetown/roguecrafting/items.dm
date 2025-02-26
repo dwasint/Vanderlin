@@ -10,7 +10,7 @@
 
 /datum/crafting_recipe/roguetown/clothsash
 	name = "cloth sash"
-	result = /obj/item/storage/belt/rogue/leather/cloth
+	result = /obj/item/storage/belt/leather/cloth
 	reqs = list(/obj/item/natural/cloth = 1)
 	craftdiff = 0
 	verbage = "tie"
@@ -19,14 +19,14 @@
 /datum/crafting_recipe/roguetown/unclothsash
 	name = "untie cloth sash"
 	result = /obj/item/natural/cloth
-	reqs = list(/obj/item/storage/belt/rogue/leather/cloth = 1)
+	reqs = list(/obj/item/storage/belt/leather/cloth = 1)
 	craftdiff = 0
 	verbage = "untie"
 	verbage_tp = "unties"
 
 /datum/crafting_recipe/roguetown/ropebelt
 	name = "rope belt"
-	result = /obj/item/storage/belt/rogue/leather/rope
+	result = /obj/item/storage/belt/leather/rope
 	reqs = list(/obj/item/rope = 1)
 	craftdiff = 0
 	verbage = "untie"
@@ -35,7 +35,7 @@
 /datum/crafting_recipe/roguetown/unropebelt
 	name = "untie rope belt"
 	result = /obj/item/rope
-	reqs = list(/obj/item/storage/belt/rogue/leather/rope = 1)
+	reqs = list(/obj/item/storage/belt/leather/rope = 1)
 	craftdiff = 0
 	verbage = "untie"
 	verbage_tp  = "unties"

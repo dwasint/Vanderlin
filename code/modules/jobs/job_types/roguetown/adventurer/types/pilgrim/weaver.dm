@@ -23,12 +23,12 @@
 	H.mind?.adjust_skillrank(/datum/skill/labor/farming, 1, TRUE)
 	H.mind?.adjust_skillrank(/datum/skill/craft/tanning, 3, TRUE)
 	H.mind?.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
-	belt = /obj/item/storage/belt/rogue/leather/cloth/lady
+	belt = /obj/item/storage/belt/leather/cloth/lady
 	pants = /obj/item/clothing/pants/tights/random
 	shoes = /obj/item/clothing/shoes/shortboots
 	backl = /obj/item/storage/backpack/rogue/satchel
-	neck = /obj/item/storage/belt/rogue/pouch/coins/mid
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
+	neck = /obj/item/storage/belt/pouch/coins/mid
+	shirt = /obj/item/clothing/shirt/undershirt
 	beltr = /obj/item/weapon/knife/scissors
 	cloak = /obj/item/clothing/cloak/raincloak/furcloak
 	backpack_contents = list(/obj/item/natural/cloth = 1, /obj/item/natural/cloth = 1, /obj/item/natural/bundle/fibers = 1, /obj/item/needle = 1)

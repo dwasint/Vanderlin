@@ -27,13 +27,13 @@
 	..()
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/pants/trou
-		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
+		shirt = /obj/item/clothing/shirt/shortshirt/random
 		shoes = /obj/item/clothing/shoes/boots/leather
-		neck = /obj/item/storage/belt/rogue/pouch/coins/mid
+		neck = /obj/item/storage/belt/pouch/coins/mid
 		head = /obj/item/clothing/head/fisherhat
 		backr = /obj/item/storage/backpack/rogue/satchel
 		armor = /obj/item/clothing/armor/leather/jacket/sea
-		belt = /obj/item/storage/belt/rogue/leather
+		belt = /obj/item/storage/belt/leather
 		backl = /obj/item/fishingrod/fisher
 		beltr = /obj/item/cooking/pan
 		beltl = /obj/item/weapon/knife/hunting
@@ -57,12 +57,12 @@
 	else
 		pants = /obj/item/clothing/pants/trou
 		shoes = /obj/item/clothing/shoes/boots/leather
-		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
-		neck = /obj/item/storage/belt/rogue/pouch/coins/mid
+		shirt = /obj/item/clothing/shirt/shortshirt/random
+		neck = /obj/item/storage/belt/pouch/coins/mid
 		head = /obj/item/clothing/head/fisherhat
 		backr = /obj/item/storage/backpack/rogue/satchel
 		armor = /obj/item/clothing/armor/leather/jacket/sea
-		belt = /obj/item/storage/belt/rogue/leather
+		belt = /obj/item/storage/belt/leather
 		beltr = /obj/item/fishingrod/fisher
 		beltl = /obj/item/weapon/knife/hunting
 		backpack_contents = list(/obj/item/natural/worms = 2,/obj/item/weapon/shovel/small=1)

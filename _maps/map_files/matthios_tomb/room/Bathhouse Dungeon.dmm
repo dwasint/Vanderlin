@@ -1649,7 +1649,7 @@
 "NA" = (
 /obj/structure/closet/crate/roguecloset/inn,
 /obj/item/clothing/armor/leather/vest/innkeep,
-/obj/item/storage/belt/rogue/leather,
+/obj/item/storage/belt/leather,
 /turf/open/floor/rogue/church,
 /area/rogue/indoors)
 "NL" = (

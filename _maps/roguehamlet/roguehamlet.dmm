@@ -385,7 +385,7 @@
 	})
 "awU" = (
 /obj/structure/closet/crate/chest/wicker,
-/obj/item/storage/belt/rogue/pouch/coins/poor,
+/obj/item/storage/belt/pouch/coins/poor,
 /obj/item/weapon/knife/stone,
 /obj/item/reagent_containers/food/snacks/hardtack,
 /turf/open/floor/rogue/naturalstone,
@@ -1683,7 +1683,7 @@
 /obj/item/clothing/cloak/raincloak/red,
 /obj/item/clothing/shoes/ridingboots,
 /obj/item/clothing/cloak/raincloak/furcloak/black,
-/obj/item/storage/belt/rogue/pouch/coins/mid,
+/obj/item/storage/belt/pouch/coins/mid,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/manor{
 	first_time_text = "Blackwine Manor"
@@ -1700,7 +1700,7 @@
 	})
 "bSo" = (
 /obj/structure/closet/crate/roguecloset/inn/chest,
-/obj/item/storage/belt/rogue/pouch/coins/rich,
+/obj/item/storage/belt/pouch/coins/rich,
 /obj/item/clothing/shoes/boots/leather,
 /obj/item/clothing/shoes/shortboots,
 /obj/item/clothing/shoes/ridingboots,
@@ -1770,7 +1770,7 @@
 	})
 "bVB" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/suit/roguetown/shirt/dress/gen/blue,
+/obj/item/clothing/shirt/dress/gen/blue,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/shop)
 "bVR" = (
@@ -1937,7 +1937,7 @@
 	first_time_text = "Blackwine Manor"
 	})
 "ceG" = (
-/obj/item/storage/belt/rogue/pouch/coins/mid,
+/obj/item/storage/belt/pouch/coins/mid,
 /obj/structure/bed/rogue/shit,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
@@ -2077,7 +2077,7 @@
 /area/rogue/indoors)
 "cnF" = (
 /obj/structure/table/wood/large/corner_new,
-/obj/item/storage/belt/rogue/leather,
+/obj/item/storage/belt/leather,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/shop)
 "cnQ" = (
@@ -3031,7 +3031,7 @@
 	})
 "dwg" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/suit/roguetown/shirt/dress/gen/black,
+/obj/item/clothing/shirt/dress/gen/black,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/shop)
 "dwx" = (
@@ -3325,8 +3325,8 @@
 /area/rogue/indoors/town/tavern/saiga)
 "dMl" = (
 /obj/structure/closet/crate/chest/old_crate,
-/obj/item/storage/belt/rogue/pouch/coins/poor,
-/obj/item/storage/belt/rogue/leather/rope,
+/obj/item/storage/belt/pouch/coins/poor,
+/obj/item/storage/belt/leather/rope,
 /obj/item/clothing/shoes/boots/leather,
 /obj/item/weapon/knife/dagger,
 /turf/open/floor/rogue/naturalstone,
@@ -3790,7 +3790,7 @@
 /area/rogue/indoors/shelter/rtfield)
 "ehQ" = (
 /obj/structure/chair/stool/rogue,
-/obj/item/storage/belt/rogue/leather/rope,
+/obj/item/storage/belt/leather/rope,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
 "ehS" = (
@@ -6147,7 +6147,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/exposed/town)
 "gtT" = (
-/obj/item/clothing/suit/roguetown/shirt/dress/gen/random,
+/obj/item/clothing/shirt/dress/gen/random,
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cave{
@@ -6835,7 +6835,7 @@
 /area/rogue/indoors)
 "hkU" = (
 /obj/structure/closet/crate/roguecloset/inn/chest,
-/obj/item/storage/belt/rogue/pouch/coins/rich,
+/obj/item/storage/belt/pouch/coins/rich,
 /obj/item/clothing/armor/gambeson,
 /obj/item/reagent_containers/food/snacks/cooked/frysteak,
 /obj/item/reagent_containers/food/snacks/cooked/frysteak,
@@ -7351,7 +7351,7 @@
 /area/rogue/outdoors/town)
 "hOB" = (
 /obj/structure/closet/crate/roguecloset/inn/chest,
-/obj/item/storage/belt/rogue/pouch/coins/poor,
+/obj/item/storage/belt/pouch/coins/poor,
 /obj/item/reagent_containers/food/snacks/cooked/frysteak,
 /obj/item/reagent_containers/powder/salt,
 /turf/open/floor/rogue/dirt/road,
@@ -7454,9 +7454,9 @@
 "hRk" = (
 /obj/structure/closet/crate/roguecloset/inn/chest,
 /obj/item/clothing/neck/coif,
-/obj/item/storage/belt/rogue/pouch/coins/poor,
+/obj/item/storage/belt/pouch/coins/poor,
 /obj/item/reagent_containers/food/snacks/cooked/frysteak,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/priest,
+/obj/item/clothing/shirt/undershirt/priest,
 /obj/item/reagent_containers/food/snacks/cooked/frysteak,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/shelter/rtfield)
@@ -7683,9 +7683,9 @@
 /area/rogue/indoors/town/garrison)
 "icE" = (
 /obj/structure/closet/crate/roguecloset/dark,
-/obj/item/clothing/suit/roguetown/shirt/tunic/random,
-/obj/item/clothing/suit/roguetown/shirt/tunic/random,
-/obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy,
+/obj/item/clothing/shirt/tunic/random,
+/obj/item/clothing/shirt/tunic/random,
+/obj/item/clothing/shirt/dress/gen/sexy,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/under/town/basement)
 "icG" = (
@@ -12107,7 +12107,7 @@
 /area/rogue/under/cave)
 "mKN" = (
 /obj/structure/bed/rogue/mediocre,
-/obj/item/storage/belt/rogue/pouch/coins/mid,
+/obj/item/storage/belt/pouch/coins/mid,
 /turf/open/floor/rogue/dirt,
 /area/rogue/indoors)
 "mLJ" = (
@@ -12381,7 +12381,7 @@
 	},
 /area/rogue/outdoors/exposed/dwarf)
 "mWp" = (
-/obj/item/storage/belt/rogue/pouch,
+/obj/item/storage/belt/pouch,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/rtfield{
 	ambush_mobs = list(/mob/living/simple_animal/hostile/retaliate/rogue/wolf = 50, /mob/living/carbon/human/species/human/northern/bum/ambush = 30)
@@ -12585,7 +12585,7 @@
 	},
 /obj/item/clothing/head/nun,
 /obj/item/clothing/armor/amazon_chainkini,
-/obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy,
+/obj/item/clothing/shirt/dress/gen/sexy,
 /obj/item/rope,
 /obj/machinery/light/rogue/wallfire/candle/lamp{
 	pixel_y = 28
@@ -13580,7 +13580,7 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
 "oko" = (
-/obj/item/storage/belt/rogue/pouch/coins/poor,
+/obj/item/storage/belt/pouch/coins/poor,
 /obj/effect/decal/cleanable/dirt/cobweb{
 	dir = 1
 	},
@@ -14604,7 +14604,7 @@
 /area/rogue/outdoors/exposed/under/basement)
 "pcd" = (
 /obj/structure/rack/rogue,
-/obj/item/storage/belt/rogue/pouch,
+/obj/item/storage/belt/pouch,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/shop)
 "pch" = (
@@ -15353,7 +15353,7 @@
 	})
 "pOI" = (
 /obj/structure/closet/crate/roguecloset/inn,
-/obj/item/clothing/suit/roguetown/shirt/rags,
+/obj/item/clothing/shirt/rags,
 /obj/item/roguegem/yellow,
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/indoors/shelter/rtfield)
@@ -16005,7 +16005,7 @@
 	})
 "qwu" = (
 /obj/effect/decal/cleanable/blood/gibs/core,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/priest,
+/obj/item/clothing/shirt/undershirt/priest,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cave{
 	ambush_mobs = list(/mob/living/simple_animal/hostile/retaliate/rogue/wolf = 50);
@@ -16226,8 +16226,8 @@
 /area/rogue/indoors/town/church/chapel)
 "qJI" = (
 /obj/structure/closet/crate/roguecloset/inn/chest,
-/obj/item/storage/belt/rogue/pouch,
-/obj/item/storage/belt/rogue/pouch,
+/obj/item/storage/belt/pouch,
+/obj/item/storage/belt/pouch,
 /obj/item/storage/backpack/rogue/satchel,
 /obj/item/storage/backpack/rogue/satchel,
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -17801,7 +17801,7 @@
 /area/rogue/outdoors/exposed/under/sewer)
 "spe" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/suit/roguetown/shirt/dress,
+/obj/item/clothing/shirt/dress,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/shop)
 "sph" = (
@@ -18782,7 +18782,7 @@
 	name = "plague district"
 	})
 "tri" = (
-/obj/item/storage/belt/rogue/leather/rope,
+/obj/item/storage/belt/leather/rope,
 /obj/effect/decal/remains/human,
 /obj/effect/decal/cleanable/blood/old,
 /obj/effect/decal/cleanable/blood/gibs/old,
@@ -21024,7 +21024,7 @@
 "vvP" = (
 /obj/structure/closet/crate/roguecloset,
 /obj/item/clothing/cloak/apron/cook,
-/obj/item/clothing/suit/roguetown/shirt/robe/feld,
+/obj/item/clothing/shirt/robe/feld,
 /obj/item/clothing/neck/feld,
 /obj/item/clothing/face/feld,
 /obj/item/clothing/head/roguehood/feld,
@@ -23291,7 +23291,7 @@
 "xHn" = (
 /obj/structure/closet/crate/roguecloset/inn/chest,
 /obj/item/weapon/mace/woodclub/crafted,
-/obj/item/storage/belt/rogue/pouch/coins/poor,
+/obj/item/storage/belt/pouch/coins/poor,
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/outdoors/rtfield{
 	ambush_mobs = list(/mob/living/simple_animal/hostile/retaliate/rogue/wolf = 50, /mob/living/carbon/human/species/human/northern/bum/ambush = 30)

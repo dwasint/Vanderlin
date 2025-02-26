@@ -20,11 +20,11 @@
 
 	shoes = /obj/item/clothing/shoes/nobleboot
 	head = /obj/item/clothing/head/courtierhat
-	belt = /obj/item/storage/belt/rogue/leather
+	belt = /obj/item/storage/belt/leather
 	beltr = /obj/item/weapon/knife/scissors
 	beltl = /obj/item/storage/keyring/tailor
 	backr = /obj/item/storage/backpack/rogue/satchel
-	neck = /obj/item/storage/belt/rogue/pouch/coins/mid
+	neck = /obj/item/storage/belt/pouch/coins/mid
 	backpack_contents = list(/obj/item/needle = 1, /obj/item/natural/bundle/cloth = 2, /obj/item/natural/bundle/fibers = 1, /obj/item/dye_pack/luxury = 1, /obj/item/book/rogue/advice_weaving = 1, /obj/item/weapon/knife/villager = 1)
 
 	H.mind?.adjust_skillrank(/datum/skill/misc/sewing, pick(4,5), TRUE)
@@ -39,13 +39,13 @@
 	ADD_TRAIT(H, TRAIT_SEEPRICES, TRAIT_GENERIC)
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/pants/tights/red
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/red
-		armor = /obj/item/clothing/suit/roguetown/shirt/tunic/red
+		shirt = /obj/item/clothing/shirt/undershirt/red
+		armor = /obj/item/clothing/shirt/tunic/red
 		cloak = /obj/item/clothing/cloak/raincloak/furcloak
 	else
 		cloak = /obj/item/clothing/cloak/raincloak/furcloak
-		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/gen/purple
-		armor = /obj/item/clothing/suit/roguetown/shirt/tunic/purple
+		shirt = /obj/item/clothing/shirt/dress/gen/purple
+		armor = /obj/item/clothing/shirt/tunic/purple
 		pants = /obj/item/clothing/pants/tights/purple
 	H.change_stat(STATKEY_INT, 2)
 	H.change_stat(STATKEY_SPD, 2)

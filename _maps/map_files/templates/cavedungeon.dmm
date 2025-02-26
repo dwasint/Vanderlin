@@ -108,7 +108,7 @@
 /area/rogue/outdoors/caves)
 "sE" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/item/storage/belt/rogue/pouch/coins/poor,
+/obj/item/storage/belt/pouch/coins/poor,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/outdoors/caves)
 "tN" = (

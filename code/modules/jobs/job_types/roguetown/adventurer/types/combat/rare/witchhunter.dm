@@ -21,12 +21,12 @@
 
 /datum/outfit/job/roguetown/adventurer/puritan/pre_equip(mob/living/carbon/human/H)
 	..()
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
-	belt = /obj/item/storage/belt/rogue/leather
+	shirt = /obj/item/clothing/shirt/undershirt/puritan
+	belt = /obj/item/storage/belt/leather
 	shoes = /obj/item/clothing/shoes/boots
 	pants = /obj/item/clothing/pants/tights/black
 	armor = /obj/item/clothing/armor/leather/vest/winterjacket
-	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
+	beltr = /obj/item/storage/belt/pouch/coins/mid
 	head = /obj/item/clothing/head/helmet/leather/inquisitor
 	gloves = /obj/item/clothing/gloves/angle
 	beltl = /obj/item/weapon/sword/rapier/silver

@@ -13,9 +13,9 @@
 	..()
 	head = /obj/item/clothing/head/roguehood/uncolored
 	pants = /obj/item/clothing/pants/trou/leather
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
+	shirt = /obj/item/clothing/shirt/undershirt/random
 	shoes = /obj/item/clothing/shoes/simpleshoes
-	belt = /obj/item/storage/belt/rogue/leather
+	belt = /obj/item/storage/belt/leather
 	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 	backl = /obj/item/storage/backpack/rogue/satchel
 	beltl = /obj/item/ammo_holder/quiver/bolts

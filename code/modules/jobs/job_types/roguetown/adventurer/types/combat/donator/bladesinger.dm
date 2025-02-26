@@ -36,11 +36,11 @@
 	if(H.dna.species.name == "Dark Elf")
 		pants = /obj/item/clothing/pants/tights/black
 		backr = /obj/item/weapon/sword/long/greatsword/elfgsword
-		beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
+		beltl = /obj/item/storage/belt/pouch/coins/mid
 		shoes = /obj/item/clothing/shoes/boots/rare/elfplate
 		gloves = /obj/item/clothing/gloves/rare/elfplate
-		belt = /obj/item/storage/belt/rogue/leather
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
+		belt = /obj/item/storage/belt/leather
+		shirt = /obj/item/clothing/shirt/undershirt/black
 		armor = /obj/item/clothing/armor/rare/elfplate
 		backl = /obj/item/storage/backpack/rogue/satchel
 		head = /obj/item/clothing/head/rare/elfplate
@@ -48,11 +48,11 @@
 	if(H.dna.species.name == "Elf")
 		pants = /obj/item/clothing/pants/tights/black
 		backr = /obj/item/weapon/sword/long/greatsword/elfgsword
-		beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
+		beltl = /obj/item/storage/belt/pouch/coins/mid
 		shoes = /obj/item/clothing/shoes/boots/rare/elfplate/welfplate
 		gloves = /obj/item/clothing/gloves/rare/elfplate/welfplate
-		belt = /obj/item/storage/belt/rogue/leather
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
+		belt = /obj/item/storage/belt/leather
+		shirt = /obj/item/clothing/shirt/undershirt/black
 		armor = /obj/item/clothing/armor/rare/elfplate/welfplate
 		backl = /obj/item/storage/backpack/rogue/satchel
 		head = /obj/item/clothing/head/rare/elfplate/welfplate

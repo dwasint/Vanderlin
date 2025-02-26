@@ -39,14 +39,14 @@
 	H.change_stat(STATKEY_INT, 1)
 	shoes = /obj/item/clothing/shoes/boots
 	backl = /obj/item/storage/backpack/rogue/satchel
-	neck = /obj/item/storage/belt/rogue/pouch/coins/veryrich
-	belt = /obj/item/storage/belt/rogue/leather
+	neck = /obj/item/storage/belt/pouch/coins/veryrich
+	belt = /obj/item/storage/belt/leather
 	id = /obj/item/clothing/ring/silver
 	if(H.gender == FEMALE)
 		H.change_stat(STATKEY_SPD, 1)
 		H.mind?.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
-		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/random
+		shirt = /obj/item/clothing/shirt/dress/silkdress/random
 		head = /obj/item/clothing/head/hatfur
 		cloak = /obj/item/clothing/cloak/raincloak/furcloak
 		backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
@@ -58,7 +58,7 @@
 		H.mind?.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
 		pants = /obj/item/clothing/pants/tights/black
-		shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/random
+		shirt = /obj/item/clothing/shirt/tunic/random
 		cloak = /obj/item/clothing/cloak/raincloak/furcloak
 		head = /obj/item/clothing/head/fancyhat
 		backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow

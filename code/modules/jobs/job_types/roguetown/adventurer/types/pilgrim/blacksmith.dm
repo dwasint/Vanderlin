@@ -19,12 +19,12 @@
 
 /datum/outfit/job/roguetown/adventurer/blacksmith/pre_equip(mob/living/carbon/human/H)
 	..()
-	belt = /obj/item/storage/belt/rogue/leather
+	belt = /obj/item/storage/belt/leather
 
 	beltr = /obj/item/weapon/hammer/iron
 	beltl = /obj/item/weapon/tongs
 
-	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
+	neck = /obj/item/storage/belt/pouch/coins/poor
 	gloves = /obj/item/clothing/gloves/leather
 	cloak = /obj/item/clothing/cloak/apron/brown
 	pants = /obj/item/clothing/pants/trou
@@ -66,9 +66,9 @@
 
 	if(H.gender == MALE)
 		shoes = /obj/item/clothing/shoes/boots/leather
-		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
+		shirt = /obj/item/clothing/shirt/shortshirt
 	else
-		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
+		armor = /obj/item/clothing/shirt/dress/gen/random
 		shoes = /obj/item/clothing/shoes/shortboots
 
 	if(H.dna.species.id == "dwarf")

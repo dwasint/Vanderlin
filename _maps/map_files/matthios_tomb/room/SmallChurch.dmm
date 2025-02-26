@@ -343,17 +343,17 @@
 /area/rogue)
 "pG" = (
 /obj/structure/table/wood/large/corner,
-/obj/item/clothing/suit/roguetown/shirt/rags{
+/obj/item/clothing/shirt/rags{
 	pixel_x = 12
 	},
-/obj/item/clothing/suit/roguetown/shirt/rags{
+/obj/item/clothing/shirt/rags{
 	pixel_x = 5;
 	pixel_y = 8
 	},
-/obj/item/clothing/suit/roguetown/shirt/rags{
+/obj/item/clothing/shirt/rags{
 	pixel_x = 5
 	},
-/obj/item/clothing/suit/roguetown/shirt/rags,
+/obj/item/clothing/shirt/rags,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue)
 "pN" = (
@@ -613,8 +613,8 @@
 /obj/item/clothing/cloak/stabard/templar/astrata,
 /obj/item/clothing/neck/psycross/silver/astrata,
 /obj/item/clothing/neck/psycross/silver/astrata,
-/obj/item/clothing/suit/roguetown/shirt/robe/astrata,
-/obj/item/clothing/suit/roguetown/shirt/robe/astrata,
+/obj/item/clothing/shirt/robe/astrata,
+/obj/item/clothing/shirt/robe/astrata,
 /obj/item/clothing/head/helmet/heavy/necked/astrata,
 /obj/item/clothing/head/helmet/heavy/necked/astrata,
 /obj/machinery/light/rogue/torchholder/l,
@@ -885,8 +885,8 @@
 /area/rogue)
 "Mu" = (
 /obj/structure/closet/crate/roguecloset/dark,
-/obj/item/clothing/suit/roguetown/shirt/robe/priest,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/priest,
+/obj/item/clothing/shirt/robe/priest,
+/obj/item/clothing/shirt/undershirt/priest,
 /obj/item/clothing/head/priestmask,
 /obj/machinery/light/rogue/torchholder/r,
 /turf/open/floor/rogue/churchmarble,

@@ -39,9 +39,9 @@
 	head = /obj/item/clothing/head/helmet/kettle/slit
 	gloves = /obj/item/clothing/gloves/leather
 	neck = /obj/item/clothing/neck/bevor
-	belt = /obj/item/storage/belt/rogue/leather
+	belt = /obj/item/storage/belt/leather
 	beltl = /obj/item/weapon/axe/iron
-	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
+	beltr = /obj/item/storage/belt/pouch/coins/rich
 	backr = /obj/item/weapon/polearm/halberd/bardiche/woodcutter
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/weapon/knife/hunting = 1, /obj/item/rope/chain = 1, /obj/item/key/forrestgarrison = 1, /obj/item/signal_horn = 1)

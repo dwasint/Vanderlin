@@ -42,12 +42,12 @@
 	beltr = /obj/item/weapon/knife/dagger/steel/special
 	shoes = /obj/item/clothing/shoes/shalal
 	gloves = /obj/item/clothing/gloves/angle
-	belt = /obj/item/storage/belt/rogue/leather/shalal
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/red
+	belt = /obj/item/storage/belt/leather/shalal
+	shirt = /obj/item/clothing/shirt/undershirt/red
 	armor = /obj/item/clothing/armor/leather/splint
 	backl = /obj/item/storage/backpack/rogue/satchel
 	head = /obj/item/clothing/neck/keffiyeh/red
-	backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/poor, /obj/item/lockpick)
+	backpack_contents = list(/obj/item/storage/belt/pouch/coins/poor, /obj/item/lockpick)
 	if(!H.has_language(/datum/language/zybantine))
 		H.grant_language(/datum/language/zybantine)
 		to_chat(H, "<span class='info'>I can speak Zybean with ,z before my speech.</span>")

@@ -31,12 +31,12 @@
 /datum/supply_pack/rogue/jewelry/silver_plaque_belt
 	name = "Silver Plaque Belt"
 	cost = 40
-	contains = /obj/item/storage/belt/rogue/leather/plaquesilver
+	contains = /obj/item/storage/belt/leather/plaquesilver
 
 /datum/supply_pack/rogue/jewelry/gold_plaque_belt
 	name = "Gold Plaque Belt"
 	cost = 60
-	contains = /obj/item/storage/belt/rogue/leather/plaquegold
+	contains = /obj/item/storage/belt/leather/plaquegold
 
 /datum/supply_pack/rogue/jewelry/spectacles_golden
 	name = "Golden Spectacles"

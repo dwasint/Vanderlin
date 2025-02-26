@@ -8,27 +8,27 @@
 	show_wanderer_examine = FALSE
 /datum/outfit/job/roguetown/rockhill/mayor/pre_equip(mob/living/carbon/human/H)
 	..()
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
-	belt = /obj/item/storage/belt/rogue/leather/black
+	shirt = /obj/item/clothing/shirt/undershirt
+	belt = /obj/item/storage/belt/leather/black
 	neck = /obj/item/clothing/neck/gorget
 	head = /obj/item/clothing/head/helmet
 	shoes = /obj/item/clothing/shoes/nobleboot
 	pants = /obj/item/clothing/pants/tights/black
 	cloak = /obj/item/clothing/cloak/raincloak/furcloak
 	armor = /obj/item/clothing/armor/cuirass
-	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
+	beltr = /obj/item/storage/belt/pouch/coins/rich
 	gloves = /obj/item/clothing/gloves/leather/black
 	neck = /obj/item/clothing/neck/chaincoif
 	beltl = /obj/item/weapon/sword/long
 	if(H.gender == FEMALE)
 		head = /obj/item/clothing/head/courtierhat
-		neck = /obj/item/storage/belt/rogue/pouch/coins/rich
+		neck = /obj/item/storage/belt/pouch/coins/rich
 		cloak = /obj/item/clothing/cloak/raincloak/furcloak
 		beltr = /obj/item/weapon/sword/rapier
 		id = /obj/item/clothing/ring/silver
 		shoes = /obj/item/clothing/shoes/nobleboot
 		backr = /obj/item/storage/backpack/rogue/satchel
-		backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/rich = 1, /obj/item/flashlight/flare/torch/lantern = 1)
+		backpack_contents = list(/obj/item/storage/belt/pouch/coins/rich = 1, /obj/item/flashlight/flare/torch/lantern = 1)
 		if(prob(66))
 			armor = /obj/item/clothing/armor/gambeson/heavy/dress/alt
 		else
@@ -75,7 +75,7 @@
 	shoes = /obj/item/clothing/shoes/boots/armor
 	beltr = /obj/item/weapon/sword/long
 	beltl = /obj/item/flashlight/flare/torch/lantern
-	belt = /obj/item/storage/belt/rogue/leather/steel
+	belt = /obj/item/storage/belt/leather/steel
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	if(prob(50))
 		r_hand = /obj/item/weapon/polearm/eaglebeak/lucerne
@@ -144,11 +144,11 @@
 	head = /obj/item/clothing/head/helmet/leather
 	pants = /obj/item/clothing/pants/trou/leather
 	cloak = /obj/item/clothing/cloak/half/vet
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guardsecond
+	shirt = /obj/item/clothing/shirt/undershirt/guardsecond
 	armor = /obj/item/clothing/armor/medium/scale
 	neck = /obj/item/clothing/neck/gorget
 	shoes = /obj/item/clothing/shoes/boots
-	belt = /obj/item/storage/belt/rogue/leather
+	belt = /obj/item/storage/belt/leather
 	beltr = /obj/item/weapon/sword/arming
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/weapon/knife/dagger/steel/special = 1, /obj/item/signal_horn = 1)

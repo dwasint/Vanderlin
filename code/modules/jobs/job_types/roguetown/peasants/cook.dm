@@ -37,23 +37,23 @@
 		H.mind?.adjust_skillrank(/datum/skill/labor/farming, 1, TRUE)
 		if(H.age == AGE_OLD)
 			H.mind?.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
-	belt = /obj/item/storage/belt/rogue/leather/rope
+	belt = /obj/item/storage/belt/leather/rope
 	beltl = /obj/item/key/tavern
 	beltr = /obj/item/weapon/knife/villager
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/pants/tights/random
-		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
+		shirt = /obj/item/clothing/shirt/shortshirt/random
 		shoes = /obj/item/clothing/shoes/simpleshoes
 		cloak = /obj/item/clothing/cloak/apron/cook
 		head = /obj/item/clothing/head/cookhat
-		neck = /obj/item/storage/belt/rogue/pouch/coins/poor
+		neck = /obj/item/storage/belt/pouch/coins/poor
 		H.change_stat(STATKEY_CON, 2)
 	else
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/lowcut
+		shirt = /obj/item/clothing/shirt/undershirt/lowcut
 		armor = /obj/item/clothing/armor/corset
 		pants = /obj/item/clothing/pants/skirt/red
 		cloak = /obj/item/clothing/cloak/apron/cook
 		head = /obj/item/clothing/head/cookhat
 		shoes = /obj/item/clothing/shoes/simpleshoes
-		neck = /obj/item/storage/belt/rogue/pouch/coins/poor
+		neck = /obj/item/storage/belt/pouch/coins/poor
 		H.change_stat(STATKEY_CON, 2)

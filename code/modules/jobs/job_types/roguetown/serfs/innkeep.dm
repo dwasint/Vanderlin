@@ -36,20 +36,20 @@
 		H.mind?.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/pants/tights/random
-		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
+		shirt = /obj/item/clothing/shirt/shortshirt/random
 		shoes = /obj/item/clothing/shoes/shortboots
-		belt = /obj/item/storage/belt/rogue/leather
-		beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
+		belt = /obj/item/storage/belt/leather
+		beltl = /obj/item/storage/belt/pouch/coins/mid
 		beltr = /obj/item/reagent_containers/glass/bottle/rogue/beer/blackgoat
 		neck = /obj/item/storage/keyring/innkeep
 		cloak = /obj/item/clothing/cloak/apron/waist
 		H.change_stat(STATKEY_STR, 1)
 		H.change_stat(STATKEY_END, 1)
 	else
-		armor = /obj/item/clothing/suit/roguetown/shirt/dress
+		armor = /obj/item/clothing/shirt/dress
 		shoes = /obj/item/clothing/shoes/shortboots
-		neck = /obj/item/storage/belt/rogue/pouch/coins/mid
-		belt = /obj/item/storage/belt/rogue/leather
+		neck = /obj/item/storage/belt/pouch/coins/mid
+		belt = /obj/item/storage/belt/leather
 		beltl = /obj/item/storage/keyring/innkeep
 		beltr = /obj/item/reagent_containers/glass/bottle/rogue/beer/blackgoat
 		H.change_stat(STATKEY_END, 1)

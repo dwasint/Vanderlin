@@ -48,14 +48,14 @@
 	if(prob(10))
 		gloves = /obj/item/clothing/gloves/fingerless
 	if(H.gender == FEMALE)
-		armor = /obj/item/clothing/suit/roguetown/shirt/rags
+		armor = /obj/item/clothing/shirt/rags
 	else
 		pants = /obj/item/clothing/pants/tights/vagrant
 		if(prob(50))
 			pants = /obj/item/clothing/pants/tights/vagrant/l
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
+		shirt = /obj/item/clothing/shirt/undershirt/vagrant
 		if(prob(50))
-			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant/l
+			shirt = /obj/item/clothing/shirt/undershirt/vagrant/l
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/misc/sneaking, pick(1,2,3,4,5), TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/misc/stealing, pick(1,2,3,4,5), TRUE)

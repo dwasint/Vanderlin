@@ -167,8 +167,8 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/climbing, 5, TRUE)
 	pants = /obj/item/clothing/pants/tights/black
-	shirt = /obj/item/clothing/suit/roguetown/shirt/vampire
-	belt = /obj/item/storage/belt/rogue/leather/plaquegold
+	shirt = /obj/item/clothing/shirt/vampire
+	belt = /obj/item/storage/belt/leather/plaquegold
 	head  = /obj/item/clothing/head/vampire
 	beltl = /obj/item/key/vampire
 	cloak = /obj/item/clothing/cloak/cape/puritan

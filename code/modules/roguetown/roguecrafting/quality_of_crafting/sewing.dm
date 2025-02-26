@@ -18,12 +18,12 @@
 	requirements = list(
 		/obj/item/natural/cloth = 2,
 	)
-	output = /obj/item/clothing/suit/roguetown/shirt/rags
+	output = /obj/item/clothing/shirt/rags
 
 
 /datum/repeatable_crafting_recipe/sewing/tribalrags
 	name = "tribal rags"
-	output = /obj/item/clothing/suit/roguetown/shirt/tribalrag
+	output = /obj/item/clothing/shirt/tribalrag
 	attacking_atom = /obj/item/natural/hide
 	requirements = list(/obj/item/natural/hide = 1,
 				/obj/item/natural/fibers = 1)
@@ -67,7 +67,7 @@
 		/obj/item/natural/cloth = 1,
 		/obj/item/natural/fibers = 1,
 	)
-	output = /obj/item/clothing/suit/roguetown/shirt/shortshirt/uncolored
+	output = /obj/item/clothing/shirt/shortshirt/uncolored
 
 /datum/repeatable_crafting_recipe/sewing/clothshirt
 	name = "cloth shirt"
@@ -75,11 +75,11 @@
 		/obj/item/natural/cloth = 2,
 		/obj/item/natural/fibers = 1,
 	)
-	output = /obj/item/clothing/suit/roguetown/shirt/undershirt/uncolored
+	output = /obj/item/clothing/shirt/undershirt/uncolored
 
 /datum/repeatable_crafting_recipe/sewing/tunic
 	name = "tunic"
-	output = /obj/item/clothing/suit/roguetown/shirt/tunic
+	output = /obj/item/clothing/shirt/tunic
 	requirements = list(/obj/item/natural/cloth = 2)
 
 /datum/repeatable_crafting_recipe/sewing/lowcut_shirt
@@ -88,7 +88,7 @@
 		/obj/item/natural/cloth = 2,
 		/obj/item/natural/fibers = 1,
 	)
-	output = /obj/item/clothing/suit/roguetown/shirt/undershirt/lowcut
+	output = /obj/item/clothing/shirt/undershirt/lowcut
 
 /datum/repeatable_crafting_recipe/sewing/stripedtunic
 	name = "striped tunic"
@@ -256,7 +256,7 @@
 		/obj/item/natural/cloth = 3,
 		/obj/item/natural/fibers = 1,
 	)
-	output = /obj/item/clothing/suit/roguetown/shirt/undershirt/priest
+	output = /obj/item/clothing/shirt/undershirt/priest
 	craftdiff = 2
 
 /datum/repeatable_crafting_recipe/sewing/wrappings
@@ -306,14 +306,14 @@
 
 /datum/repeatable_crafting_recipe/sewing/wizardrobes
 	name = "wizard hat"
-	output = /obj/item/clothing/suit/roguetown/shirt/robe/wizard
+	output = /obj/item/clothing/shirt/robe/wizard
 	requirements = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 
 /datum/repeatable_crafting_recipe/sewing/robe
 	name = "robes"
-	output = /obj/item/clothing/suit/roguetown/shirt/robe/plain
+	output = /obj/item/clothing/shirt/robe/plain
 	requirements = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
@@ -406,35 +406,35 @@
 
 /datum/repeatable_crafting_recipe/sewing/dress
 	name = "bar dress"
-	output = /obj/item/clothing/suit/roguetown/shirt/dress
+	output = /obj/item/clothing/shirt/dress
 	requirements = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 
 /datum/repeatable_crafting_recipe/sewing/stockdress
 	name = "stock dress"
-	output = /obj/item/clothing/suit/roguetown/shirt/dress/gen
+	output = /obj/item/clothing/shirt/dress/gen
 	requirements = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 
 /datum/repeatable_crafting_recipe/sewing/Bladress
 	name = "black dress"
-	output = /obj/item/clothing/suit/roguetown/shirt/dress/gen/black
+	output = /obj/item/clothing/shirt/dress/gen/black
 	requirements = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 
 /datum/repeatable_crafting_recipe/sewing/Bludress
 	name = "blue dress"
-	output = /obj/item/clothing/suit/roguetown/shirt/dress/gen/blue
+	output = /obj/item/clothing/shirt/dress/gen/blue
 	requirements = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 
 /datum/repeatable_crafting_recipe/sewing/Purdress
 	name = "purple dress"
-	output = /obj/item/clothing/suit/roguetown/shirt/dress/gen/purple
+	output = /obj/item/clothing/shirt/dress/gen/purple
 	requirements = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
@@ -493,7 +493,7 @@
 
 /datum/repeatable_crafting_recipe/sewing/silkydress
 	name = "silky dress of legendary sewists"
-	output = /obj/item/clothing/suit/roguetown/shirt/dress/silkydress
+	output = /obj/item/clothing/shirt/dress/silkydress
 	requirements = list(/obj/item/natural/cloth = 6,
 				/obj/item/natural/fibers = 3)
 	craftdiff = 6
@@ -521,7 +521,7 @@
 
 /datum/repeatable_crafting_recipe/sewing/weaving/rags
 	name = "shirt (webbed)"
-	output = /obj/item/clothing/suit/roguetown/shirt/undershirt/webs
+	output = /obj/item/clothing/shirt/undershirt/webs
 	requirements = list(/obj/item/natural/silk = 1)
 	craftdiff = 1
 
@@ -579,13 +579,13 @@
 
 /datum/repeatable_crafting_recipe/sewing/weaving/shirt
 	name = "shirt (formal silks)"
-	output = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
+	output = /obj/item/clothing/shirt/undershirt/puritan
 	requirements = list(/obj/item/natural/silk = 5)
 	craftdiff = 3
 
 /datum/repeatable_crafting_recipe/sewing/weaving/noblecoat
 	name = "coat (fancy)"
-	output = /obj/item/clothing/suit/roguetown/shirt/tunic/noblecoat
+	output = /obj/item/clothing/shirt/tunic/noblecoat
 	requirements = list(/obj/item/natural/cloth = 3,
 			/obj/item/natural/silk = 1)
 	craftdiff = 3
@@ -598,7 +598,7 @@
 
 /datum/repeatable_crafting_recipe/sewing/weaving/nunrobe
 	name = "robes (nun)"
-	output = /obj/item/clothing/suit/roguetown/shirt/robe/nun
+	output = /obj/item/clothing/shirt/robe/nun
 	requirements = list(/obj/item/natural/silk = 3)
 	craftdiff = 3
 
@@ -613,7 +613,7 @@
 
 /datum/repeatable_crafting_recipe/sewing/weaving/shadowshirt
 	name = "shirt (dark)"
-	output = /obj/item/clothing/suit/roguetown/shirt/shadowshirt
+	output = /obj/item/clothing/shirt/shadowshirt
 	requirements = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/silk = 3)
 	craftdiff = 4
@@ -634,35 +634,35 @@
 
 /datum/repeatable_crafting_recipe/sewing/weaving/astratarobe
 	name = "robes (Astrata)"
-	output = /obj/item/clothing/suit/roguetown/shirt/robe/astrata
+	output = /obj/item/clothing/shirt/robe/astrata
 	requirements = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/silk = 1)
 	craftdiff = 4
 
 /datum/repeatable_crafting_recipe/sewing/weaving/eorarobe
 	name = "robes (Eora)"
-	output = /obj/item/clothing/suit/roguetown/shirt/robe/eora
+	output = /obj/item/clothing/shirt/robe/eora
 	requirements = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/silk = 1)
 	craftdiff = 4
 
 /datum/repeatable_crafting_recipe/sewing/weaving/dendorrobe
 	name = "robes (Dendor)"
-	output = /obj/item/clothing/suit/roguetown/shirt/robe/dendor
+	output = /obj/item/clothing/shirt/robe/dendor
 	requirements = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/silk = 1)
 	craftdiff = 4
 
 /datum/repeatable_crafting_recipe/sewing/weaving/necrarobe
 	name = "robes (Necra)"
-	output = /obj/item/clothing/suit/roguetown/shirt/robe/necra
+	output = /obj/item/clothing/shirt/robe/necra
 	requirements = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/silk = 1)
 	craftdiff = 4
 
 /datum/repeatable_crafting_recipe/sewing/weaving/nocrobe
 	name = "robes (Noc)"
-	output = /obj/item/clothing/suit/roguetown/shirt/robe/noc
+	output = /obj/item/clothing/shirt/robe/noc
 	requirements = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/silk = 1)
 	craftdiff = 4
@@ -697,7 +697,7 @@
 
 /datum/repeatable_crafting_recipe/sewing/weaving/eorastraps
 	name = "straps (eora)"
-	output = /obj/item/clothing/suit/roguetown/shirt/robe/eora/alt
+	output = /obj/item/clothing/shirt/robe/eora/alt
 	requirements = list(/obj/item/ingot/gold = 1,
 				/obj/item/natural/silk = 5,
 				)
@@ -707,14 +707,14 @@
 
 /datum/repeatable_crafting_recipe/sewing/weaving/barkeep
 	name = "dress (bar, silk)"
-	output = /obj/item/clothing/suit/roguetown/shirt/dress
+	output = /obj/item/clothing/shirt/dress
 	requirements = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/silk = 2)
 	craftdiff = 5
 
 /datum/repeatable_crafting_recipe/sewing/weaving/silkdress
 	name = "dress (chemise, silk)"
-	output = /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/random
+	output = /obj/item/clothing/shirt/dress/silkdress/random
 	requirements = list(/obj/item/natural/fibers = 2,
 				/obj/item/natural/silk = 3)
 	craftdiff = 5
@@ -723,7 +723,7 @@
 // IDK how to balance these
 /datum/repeatable_crafting_recipe/sewing/weaving/springgown
 	name = "gown (spring)"
-	output = /obj/item/clothing/suit/roguetown/shirt/dress/gown
+	output = /obj/item/clothing/shirt/dress/gown
 	requirements = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/silk = 4)
 	craftdiff = 6
@@ -731,7 +731,7 @@
 
 /datum/repeatable_crafting_recipe/sewing/weaving/summergown
 	name = "gown (summer)"
-	output = /obj/item/clothing/suit/roguetown/shirt/dress/gown/summergown
+	output = /obj/item/clothing/shirt/dress/gown/summergown
 	requirements = list(/obj/item/natural/fibers = 2,
 				/obj/item/natural/cloth = 1,
 				/obj/item/natural/silk = 3)
@@ -740,7 +740,7 @@
 
 /datum/repeatable_crafting_recipe/sewing/weaving/fallgown
 	name = "gown (fall, silk)"
-	output = /obj/item/clothing/suit/roguetown/shirt/dress/gown/fallgown
+	output = /obj/item/clothing/shirt/dress/gown/fallgown
 	requirements = list(/obj/item/natural/fibers = 3,
 				/obj/item/natural/silk = 2,
 				/obj/item/natural/cloth = 2)
@@ -749,7 +749,7 @@
 
 /datum/repeatable_crafting_recipe/sewing/weaving/wintergown
 	name = "gown (winter)"
-	output = /obj/item/clothing/suit/roguetown/shirt/dress/gown/wintergown
+	output = /obj/item/clothing/shirt/dress/gown/wintergown
 	requirements = list(/obj/item/natural/fibers = 3,
 				/obj/item/natural/silk = 2,
 				/obj/item/natural/fur/cabbit = 1)

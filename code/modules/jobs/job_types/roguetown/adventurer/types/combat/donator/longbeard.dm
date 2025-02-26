@@ -35,11 +35,11 @@
 
 	pants = /obj/item/clothing/pants/tights/black
 	backr = /obj/item/weapon/mace/goden/steel/warhammer
-	beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
+	beltl = /obj/item/storage/belt/pouch/coins/mid
 	shoes = /obj/item/clothing/shoes/boots/rare/dwarfplate
 	gloves = /obj/item/clothing/gloves/rare/dwarfplate
-	belt = /obj/item/storage/belt/rogue/leather
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
+	belt = /obj/item/storage/belt/leather
+	shirt = /obj/item/clothing/shirt/undershirt/black
 	armor = /obj/item/clothing/armor/rare/dwarfplate
 	backl = /obj/item/storage/backpack/rogue/satchel
 	head = /obj/item/clothing/head/rare/dwarfplate

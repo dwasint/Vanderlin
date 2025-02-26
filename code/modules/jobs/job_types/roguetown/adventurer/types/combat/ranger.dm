@@ -38,18 +38,18 @@
 	H.mind?.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/pants/trou/leather
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
+		shirt = /obj/item/clothing/shirt/undershirt
 	else
 		pants = /obj/item/clothing/pants/tights
 		if(prob(50))
 			pants = /obj/item/clothing/pants/tights/black
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
+		shirt = /obj/item/clothing/shirt/undershirt
 	if(prob(23))
 		gloves = /obj/item/clothing/gloves/leather
 	else
 		gloves = /obj/item/clothing/gloves/fingerless
 	wrists = /obj/item/clothing/wrists/bracers/leather
-	belt = /obj/item/storage/belt/rogue/leather
+	belt = /obj/item/storage/belt/leather
 	armor = /obj/item/clothing/armor/leather/hide
 	cloak = /obj/item/clothing/cloak/raincloak/brown
 	if(prob(33))

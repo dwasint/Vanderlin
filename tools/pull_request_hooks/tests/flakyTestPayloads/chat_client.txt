@@ -1321,7 +1321,7 @@
 2022-10-27T05:40:28.0105063Z ##[group]/datum/unit_test/defined_inhand_icon_states
 2022-10-27T05:40:29.0888247Z 	Notice - Possible inhand icon matches found. It is best to be explicit with inhand sprite values.
 2022-10-27T05:40:29.0889307Z 	/obj/item/clothing/accessory/pride does not have an inhand_icon_state value - Possible matching sprites for "pride" found in: 'icons/mob/inhands/weapons/hammers_lefthand.dmi' & 'icons/mob/inhands/weapons/hammers_righthand.dmi'
-2022-10-27T05:40:29.0890499Z 	/obj/item/clothing/suit/caution does not have an inhand_icon_state value - Possible matching sprites for "caution" found in: 'icons/mob/inhands/equipment/custodial_lefthand.dmi' & 'icons/mob/inhands/equipment/custodial_righthand.dmi'
+2022-10-27T05:40:29.0890499Z 	/obj/item/clothing/shirt/caution does not have an inhand_icon_state value - Possible matching sprites for "caution" found in: 'icons/mob/inhands/equipment/custodial_lefthand.dmi' & 'icons/mob/inhands/equipment/custodial_righthand.dmi'
 2022-10-27T05:40:29.0891626Z 	/obj/item/clothing/pants/suit/sl does not have an inhand_icon_state value - Possible matching sprites for "sl_suit" found in: 'icons/mob/inhands/clothing/suits_righthand.dmi' & 'icons/mob/inhands/clothing/suits_lefthand.dmi'
 2022-10-27T05:40:29.0892733Z 	/obj/item/clothing/head/collectable/paper does not have an inhand_icon_state value - Possible matching sprites for "paper" found in: 'icons/mob/inhands/items_lefthand.dmi' & 'icons/mob/inhands/items_righthand.dmi'
 2022-10-27T05:40:29.0893862Z 	/obj/item/clothing/head/mod does not have an inhand_icon_state value - Possible matching sprites for "helmet" found in: 'icons/mob/inhands/clothing/hats_lefthand.dmi' & 'icons/mob/inhands/clothing/hats_righthand.dmi'

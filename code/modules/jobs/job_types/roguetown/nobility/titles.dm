@@ -17,8 +17,8 @@
 	jobtype = /datum/job/roguetown/bogwarden
 
 	pants = /obj/item/clothing/pants/tights
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
-	armor = /obj/item/clothing/suit/roguetown/shirt/rags
+	shirt = /obj/item/clothing/shirt/undershirt
+	armor = /obj/item/clothing/shirt/rags
 	shoes = /obj/item/clothing/shoes/boots
 
 /datum/job/roguetown/huntmaster
@@ -41,8 +41,8 @@
 	jobtype = /datum/job/roguetown/huntmaster
 
 	pants = /obj/item/clothing/pants/tights
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
-	armor = /obj/item/clothing/suit/roguetown/shirt/rags
+	shirt = /obj/item/clothing/shirt/undershirt
+	armor = /obj/item/clothing/shirt/rags
 	shoes = /obj/item/clothing/shoes/boots
 
 /datum/job/roguetown/hetman
@@ -64,6 +64,6 @@
 	jobtype = /datum/job/roguetown/hetman
 
 	pants = /obj/item/clothing/pants/tights
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
-	armor = /obj/item/clothing/suit/roguetown/shirt/rags
+	shirt = /obj/item/clothing/shirt/undershirt
+	armor = /obj/item/clothing/shirt/rags
 	shoes = /obj/item/clothing/shoes/boots

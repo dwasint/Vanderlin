@@ -17,9 +17,9 @@
 /datum/outfit/job/roguetown/adventurer/preacher/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/shortboots
-	belt = /obj/item/storage/belt/rogue/leather/rope
+	belt = /obj/item/storage/belt/leather/rope
 	beltr = /obj/item/flashlight/flare/torch/lantern
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/priest
+	shirt = /obj/item/clothing/shirt/undershirt/priest
 	pants = /obj/item/clothing/pants/tights/black
 	neck = /obj/item/clothing/neck/psycross
 	head = /obj/item/clothing/head/brimmed

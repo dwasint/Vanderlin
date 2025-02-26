@@ -906,11 +906,11 @@
 /area/rogue/under/town/basement)
 "dr" = (
 /obj/structure/closet/crate/chest,
-/obj/item/clothing/suit/roguetown/shirt/rags,
-/obj/item/clothing/suit/roguetown/shirt/rags,
-/obj/item/clothing/suit/roguetown/shirt/rags,
-/obj/item/clothing/suit/roguetown/shirt/rags,
-/obj/item/clothing/suit/roguetown/shirt/rags,
+/obj/item/clothing/shirt/rags,
+/obj/item/clothing/shirt/rags,
+/obj/item/clothing/shirt/rags,
+/obj/item/clothing/shirt/rags,
+/obj/item/clothing/shirt/rags,
 /obj/item/clothing/pants/loincloth/brown,
 /obj/item/clothing/pants/loincloth/brown,
 /obj/item/clothing/pants/loincloth/brown,
@@ -1245,7 +1245,7 @@
 /area/rogue/under/town/basement)
 "ew" = (
 /obj/structure/closet/crate/roguecloset/dark,
-/obj/item/clothing/suit/roguetown/shirt/rags,
+/obj/item/clothing/shirt/rags,
 /obj/item/weapon/mace/woodclub/train_sword,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
@@ -7372,8 +7372,8 @@
 /area/rogue/indoors/town/dwarfin)
 "zk" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/clothing/suit/roguetown/shirt/shortshirt/random,
-/obj/item/clothing/suit/roguetown/shirt/shortshirt/random,
+/obj/item/clothing/shirt/shortshirt/random,
+/obj/item/clothing/shirt/shortshirt/random,
 /obj/item/clothing/pants/tights/random,
 /obj/item/clothing/pants/tights/random,
 /turf/open/floor/rogue/blocks/stonered/tiny,
@@ -7822,7 +7822,7 @@
 /area/rogue/indoors/town/tavern)
 "AH" = (
 /obj/structure/closet/crate/drawer/inn,
-/obj/item/storage/belt/rogue/pouch/coins/poor,
+/obj/item/storage/belt/pouch/coins/poor,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/tavern)
 "AI" = (
@@ -9872,7 +9872,7 @@
 	icon_state = "largetable";
 	dir = 6
 	},
-/obj/item/storage/belt/rogue/pouch,
+/obj/item/storage/belt/pouch,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/garrison)
 "HC" = (
@@ -10985,9 +10985,9 @@
 /area/rogue/indoors/town/shop)
 "Lj" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/clothing/suit/roguetown/shirt/rags,
-/obj/item/clothing/suit/roguetown/shirt/rags,
-/obj/item/clothing/suit/roguetown/shirt/rags,
+/obj/item/clothing/shirt/rags,
+/obj/item/clothing/shirt/rags,
+/obj/item/clothing/shirt/rags,
 /obj/item/reagent_containers/food/snacks/hardtack,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/mountains)

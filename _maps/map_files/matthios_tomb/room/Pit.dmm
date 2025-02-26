@@ -3,7 +3,7 @@
 /turf/open/transparent/openspace,
 /area/rogue)
 "b" = (
-/obj/item/clothing/suit/roguetown/shirt/dress/gen/black,
+/obj/item/clothing/shirt/dress/gen/black,
 /obj/item/clothing/cloak/apron/waist{
 	pixel_x = 14;
 	pixel_y = -8
@@ -57,7 +57,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "v" = (
-/obj/item/storage/belt/rogue/leather/cloth,
+/obj/item/storage/belt/leather/cloth,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "y" = (
@@ -132,10 +132,10 @@
 /turf/closed/mineral/rogue,
 /area/rogue)
 "N" = (
-/obj/item/clothing/suit/roguetown/shirt,
-/obj/item/clothing/suit/roguetown/shirt,
-/obj/item/clothing/suit/roguetown/shirt,
-/obj/item/clothing/suit/roguetown/shirt/rags,
+/obj/item/clothing/shirt,
+/obj/item/clothing/shirt,
+/obj/item/clothing/shirt,
+/obj/item/clothing/shirt/rags,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "O" = (
@@ -148,7 +148,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "U" = (
-/obj/item/clothing/suit/roguetown/shirt/grenzelhoft{
+/obj/item/clothing/shirt/grenzelhoft{
 	pixel_x = -4;
 	pixel_y = 19
 	},
@@ -179,7 +179,7 @@
 "Z" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/spider,
 /obj/effect/decal/cleanable/dirt/cobweb,
-/obj/item/storage/belt/rogue/pouch/coins/mid,
+/obj/item/storage/belt/pouch/coins/mid,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 

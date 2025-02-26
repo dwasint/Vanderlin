@@ -28,15 +28,15 @@
 	// The guaranteed clothing they wear.
 	if(prob(50))
 		if(prob(50))
-			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant/l
+			shirt = /obj/item/clothing/shirt/undershirt/vagrant/l
 		else
-			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
+			shirt = /obj/item/clothing/shirt/undershirt/vagrant
 		if(prob(50))
 			pants = /obj/item/clothing/pants/tights/vagrant/l
 		else
 			pants = /obj/item/clothing/pants/tights/vagrant
 	else
-		armor = /obj/item/clothing/suit/roguetown/shirt/rags
+		armor = /obj/item/clothing/shirt/rags
 	// Flair
 	if(prob(35))
 		cloak = pick(/obj/item/clothing/cloak/half, /obj/item/clothing/cloak/half/brown)

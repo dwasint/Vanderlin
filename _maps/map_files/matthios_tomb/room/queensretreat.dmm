@@ -727,10 +727,10 @@
 /area/rogue)
 "Fc" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/clothing/suit/roguetown/shirt/dress,
+/obj/item/clothing/shirt/dress,
 /obj/item/clothing/pants/tights/random,
-/obj/item/clothing/suit/roguetown/shirt/dress/gen/blue,
-/obj/item/clothing/suit/roguetown/shirt/dress/silkdress,
+/obj/item/clothing/shirt/dress/gen/blue,
+/obj/item/clothing/shirt/dress/silkdress,
 /obj/item/clothing/armor/leather/jacket/silk_coat,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
@@ -996,11 +996,11 @@
 /area/rogue)
 "RH" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/clothing/suit/roguetown/shirt/dress,
+/obj/item/clothing/shirt/dress,
 /obj/item/clothing/head/crown/serpcrown/surplus,
 /obj/item/clothing/pants/tights/random,
-/obj/item/clothing/suit/roguetown/shirt/dress/gen/purple,
-/obj/item/clothing/suit/roguetown/shirt/dress/silkdress,
+/obj/item/clothing/shirt/dress/gen/purple,
+/obj/item/clothing/shirt/dress/silkdress,
 /obj/item/clothing/armor/leather/jacket/silk_coat,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"

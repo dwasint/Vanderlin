@@ -35,16 +35,16 @@
 	..()
 	H.virginity = TRUE
 	shoes = /obj/item/clothing/shoes/shortboots
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/red
+	shirt = /obj/item/clothing/shirt/undershirt/red
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backl = /obj/item/storage/backpack/rogue/satchel/surgbag
 	pants = /obj/item/clothing/pants/tights/random
 	gloves = /obj/item/clothing/gloves/leather/feld
-	armor = /obj/item/clothing/suit/roguetown/shirt/robe/feld
+	armor = /obj/item/clothing/shirt/robe/feld
 	head = /obj/item/clothing/head/roguehood/feld
 	mask = /obj/item/clothing/face/feld
 	neck = /obj/item/clothing/neck/feld
-	belt = /obj/item/storage/belt/rogue/leather
+	belt = /obj/item/storage/belt/leather
 	beltl = /obj/item/storage/keyring/doctor
 
 	if(H.mind)

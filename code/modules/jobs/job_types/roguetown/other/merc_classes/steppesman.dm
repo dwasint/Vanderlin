@@ -18,15 +18,15 @@
 	shoes = /obj/item/clothing/shoes/boots/leather
 	head = /obj/item/clothing/head/papakha
 	gloves = /obj/item/clothing/gloves/leather
-	belt = /obj/item/storage/belt/rogue/leather/mercenary/black
+	belt = /obj/item/storage/belt/leather/mercenary/black
 	armor = /obj/item/clothing/armor/leather/splint
 	cloak = /obj/item/clothing/cloak/raincloak/furcloak
 	wrists = /obj/item/clothing/wrists/bracers/leather
 	beltr = /obj/item/weapon/sword/sabre
 	beltl= /obj/item/ammo_holder/quiver/arrows
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
+	shirt = /obj/item/clothing/shirt/undershirt
 	pants = /obj/item/clothing/pants/tights/red
-	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
+	neck = /obj/item/storage/belt/pouch/coins/poor
 	backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/weapon/knife/hunting = 1)

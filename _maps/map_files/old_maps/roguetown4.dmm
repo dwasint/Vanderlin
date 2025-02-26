@@ -863,7 +863,7 @@
 "dm" = (
 /obj/machinery/light/rogue/wallfire/candle,
 /obj/structure/closet/crate/drawer,
-/obj/item/storage/belt/rogue/pouch/coins/mid,
+/obj/item/storage/belt/pouch/coins/mid,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -2376,7 +2376,7 @@
 /area/rogue/outdoors/town)
 "iO" = (
 /obj/structure/closet/crate/roguecloset/inn,
-/obj/item/storage/belt/rogue/pouch/coins/poor,
+/obj/item/storage/belt/pouch/coins/poor,
 /turf/open/floor/rogue/woodturned/nosmooth,
 /area/rogue/indoors/town)
 "iP" = (
@@ -4013,8 +4013,8 @@
 /area/rogue/indoors/town/bath)
 "oX" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/clothing/suit/roguetown/shirt/shortshirt/random,
-/obj/item/clothing/suit/roguetown/shirt/shortshirt/random,
+/obj/item/clothing/shirt/shortshirt/random,
+/obj/item/clothing/shirt/shortshirt/random,
 /obj/item/clothing/pants/tights/random,
 /obj/item/clothing/pants/tights/random,
 /turf/open/floor/rogue/blocks/stonered/tiny,
@@ -4217,7 +4217,7 @@
 /area/rogue/indoors/town/church)
 "pF" = (
 /obj/structure/closet/crate/roguecloset/dark,
-/obj/item/storage/belt/rogue/pouch/coins/poor,
+/obj/item/storage/belt/pouch/coins/poor,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)
 "pG" = (
@@ -4410,7 +4410,7 @@
 	icon_state = "largetable";
 	dir = 6
 	},
-/obj/item/storage/belt/rogue/pouch,
+/obj/item/storage/belt/pouch,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/garrison)
 "qr" = (
@@ -6060,7 +6060,7 @@
 /area/rogue/indoors/town/tavern)
 "wD" = (
 /obj/structure/closet/crate/roguecloset/dark,
-/obj/item/clothing/suit/roguetown/shirt/rags,
+/obj/item/clothing/shirt/rags,
 /obj/item/weapon/mace/woodclub/train_sword,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
@@ -7295,7 +7295,7 @@
 /area/rogue/indoors/town/dwarfin)
 "AX" = (
 /obj/structure/closet/crate/drawer/inn,
-/obj/item/storage/belt/rogue/pouch/coins/poor,
+/obj/item/storage/belt/pouch/coins/poor,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/tavern)
 "AY" = (
@@ -8117,7 +8117,7 @@
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
 	},
-/obj/item/storage/belt/rogue/pouch/coins/rich,
+/obj/item/storage/belt/pouch/coins/rich,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
 "Ei" = (
@@ -8554,7 +8554,7 @@
 /area/rogue/indoors/town/tavern)
 "FP" = (
 /obj/structure/closet/crate/drawer/inn,
-/obj/item/storage/belt/rogue/pouch/coins/rich,
+/obj/item/storage/belt/pouch/coins/rich,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town)
 "FQ" = (
@@ -11703,11 +11703,11 @@
 /area/rogue/indoors/town/magician)
 "WY" = (
 /obj/structure/closet/crate/chest,
-/obj/item/clothing/suit/roguetown/shirt/rags,
-/obj/item/clothing/suit/roguetown/shirt/rags,
-/obj/item/clothing/suit/roguetown/shirt/rags,
-/obj/item/clothing/suit/roguetown/shirt/rags,
-/obj/item/clothing/suit/roguetown/shirt/rags,
+/obj/item/clothing/shirt/rags,
+/obj/item/clothing/shirt/rags,
+/obj/item/clothing/shirt/rags,
+/obj/item/clothing/shirt/rags,
+/obj/item/clothing/shirt/rags,
 /obj/item/clothing/pants/loincloth/brown,
 /obj/item/clothing/pants/loincloth/brown,
 /obj/item/clothing/pants/loincloth/brown,

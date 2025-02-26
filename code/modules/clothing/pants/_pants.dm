@@ -170,6 +170,43 @@
 			H.update_inv_wear_suit()
 
 
+
+/obj/item/clothing/pants/verb/jumpsuit_adjust()
+	set name = "Adjust Jumpsuit Style"
+	set category = null
+	set src in usr
+	rolldown()
+
+/obj/item/clothing/pants/proc/rolldown()
+	if(!can_use(usr))
+		return
+	if(!can_adjust)
+		to_chat(usr, "<span class='warning'>I cannot wear this suit any differently!</span>")
+		return
+	if(toggle_jumpsuit_adjust())
+		to_chat(usr, "<span class='notice'>I adjust the suit to wear it more casually.</span>")
+	else
+		to_chat(usr, "<span class='notice'>I adjust the suit back to normal.</span>")
+	if(ishuman(usr))
+		var/mob/living/carbon/human/H = usr
+		H.update_inv_w_uniform()
+		H.update_body()
+
+/obj/item/clothing/pants/proc/toggle_jumpsuit_adjust()
+	if(adjusted == DIGITIGRADE_STYLE)
+		return
+	adjusted = !adjusted
+	if(adjusted)
+		if(fitted != FEMALE_UNIFORM_TOP)
+			fitted = NO_FEMALE_UNIFORM
+		if(!alt_covers_chest) // for the special snowflake suits that expose the chest when adjusted
+			body_parts_covered &= ~CHEST
+	else
+		fitted = initial(fitted)
+		if(!alt_covers_chest)
+			body_parts_covered |= CHEST
+	return adjusted
+
 /obj/item/clothing/pants/examine(mob/user)
 	. = ..()
 	if(freshly_laundered)

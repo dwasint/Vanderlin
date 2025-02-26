@@ -11,9 +11,9 @@
 	..()
 	shoes = /obj/item/clothing/shoes/simpleshoes
 	pants = /obj/item/clothing/pants/trou/leather
-	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
-	armor = /obj/item/clothing/suit/roguetown/shirt/robe/black
-	belt = /obj/item/storage/belt/rogue/leather/rope
+	shirt = /obj/item/clothing/shirt/shortshirt
+	armor = /obj/item/clothing/shirt/robe/black
+	belt = /obj/item/storage/belt/leather/rope
 	beltr = /obj/item/reagent_containers/glass/bottle/rogue/manapot
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1)
@@ -40,7 +40,7 @@
 		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 3, TRUE)
 		if(H.age == AGE_OLD)
 			head = /obj/item/clothing/head/wizhat/gen
-			armor = /obj/item/clothing/suit/roguetown/shirt/robe
+			armor = /obj/item/clothing/shirt/robe
 			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
 			H.change_stat(STATKEY_SPD, -1)
 			H.change_stat(STATKEY_INT, 1)

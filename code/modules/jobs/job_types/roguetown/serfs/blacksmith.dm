@@ -42,9 +42,9 @@
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/pants/trou
 		shoes = /obj/item/clothing/shoes/simpleshoes/buckle
-		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
-		belt = /obj/item/storage/belt/rogue/leather
-		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
+		shirt = /obj/item/clothing/shirt/shortshirt
+		belt = /obj/item/storage/belt/leather
+		beltl = /obj/item/storage/belt/pouch/coins/poor
 		beltr = /obj/item/storage/keyring/armorsmith
 		cloak = /obj/item/clothing/cloak/apron/brown
 		H.change_stat(STATKEY_STR, 1)
@@ -52,11 +52,11 @@
 		H.change_stat(STATKEY_SPD, -1)
 	else
 		pants = /obj/item/clothing/pants/trou
-		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
+		armor = /obj/item/clothing/shirt/dress/gen/random
 		shoes = /obj/item/clothing/shoes/shortboots
-		belt = /obj/item/storage/belt/rogue/leather
+		belt = /obj/item/storage/belt/leather
 		cloak = /obj/item/clothing/cloak/apron/brown
-		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
+		beltl = /obj/item/storage/belt/pouch/coins/poor
 		beltr = /obj/item/storage/keyring/armorsmith
 		backl =	/obj/item/weapon/hammer/sledgehammer
 		H.change_stat(STATKEY_STR, 1)
@@ -106,9 +106,9 @@
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/pants/trou
 		shoes = /obj/item/clothing/shoes/boots/leather
-		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
-		belt = /obj/item/storage/belt/rogue/leather
-		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
+		shirt = /obj/item/clothing/shirt/shortshirt
+		belt = /obj/item/storage/belt/leather
+		beltl = /obj/item/storage/belt/pouch/coins/poor
 		beltr = /obj/item/storage/keyring/weaponsmith
 		cloak = /obj/item/clothing/cloak/apron/brown
 		backl =	/obj/item/weapon/hammer/sledgehammer
@@ -117,11 +117,11 @@
 		H.change_stat(STATKEY_SPD, -1)
 	else
 		pants = /obj/item/clothing/pants/trou
-		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
+		armor = /obj/item/clothing/shirt/dress/gen/random
 		shoes = /obj/item/clothing/shoes/shortboots
-		belt = /obj/item/storage/belt/rogue/leather
+		belt = /obj/item/storage/belt/leather
 		cloak = /obj/item/clothing/cloak/apron/brown
-		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
+		beltl = /obj/item/storage/belt/pouch/coins/poor
 		beltr = /obj/item/storage/keyring/weaponsmith
 		H.change_stat(STATKEY_STR, 1)
 		H.change_stat(STATKEY_END, 2)

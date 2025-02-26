@@ -47,10 +47,10 @@
 		pants = /obj/item/clothing/pants/tights/sailor
 		head = /obj/item/clothing/head/headband/red
 		beltr = /obj/item/weapon/mace/cudgel
-		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
-		belt = /obj/item/storage/belt/rogue/leather/rope
+		beltl = /obj/item/storage/belt/pouch/coins/poor
+		belt = /obj/item/storage/belt/leather/rope
 		armor = /obj/item/clothing/armor/leather/jacket/sea
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor/red
+		shirt = /obj/item/clothing/shirt/undershirt/sailor/red
 		H.change_stat(STATKEY_END, 1)
 		H.change_stat(STATKEY_CON, 1)
 		H.change_stat(STATKEY_STR, 1)//thug bodytype
@@ -58,9 +58,9 @@
 		shoes = /obj/item/clothing/shoes/gladiator
 		pants = /obj/item/clothing/pants/tights/sailor
 		beltr = /obj/item/weapon/mace/cudgel
-		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
-		belt = /obj/item/storage/belt/rogue/leather/rope
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
+		beltl = /obj/item/storage/belt/pouch/coins/poor
+		belt = /obj/item/storage/belt/leather/rope
+		shirt = /obj/item/clothing/shirt/undershirt/sailor
 		armor = /obj/item/clothing/armor/leather/jacket/sea
 		head = /obj/item/clothing/head/headband
 		H.change_stat(STATKEY_END, 1)

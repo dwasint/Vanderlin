@@ -25,12 +25,12 @@
 	H.virginity = TRUE
 
 	armor = /obj/item/clothing/armor/cuirass // Halfplate has been made heavy armor, billions must make due.
-	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
+	shirt = /obj/item/clothing/shirt/shortshirt/random
 	pants = /obj/item/clothing/pants/trou/leather
 	shoes = /obj/item/clothing/shoes/boots/leather
-	belt = /obj/item/storage/belt/rogue/leather
+	belt = /obj/item/storage/belt/leather
 	beltl = /obj/item/weapon/mace
-	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
+	beltr = /obj/item/storage/belt/pouch/coins/poor
 
 	switch(H.patron?.type)
 		if(/datum/patron/divine/astrata)

@@ -87,7 +87,7 @@
 	wrists = /obj/item/clothing/wrists/bracers/leather
 	if(prob(50))
 		wrists = /obj/item/clothing/wrists/bracers
-	belt = /obj/item/storage/belt/rogue/leather
+	belt = /obj/item/storage/belt/leather
 	if(prob(10))
 		armor = /obj/item/clothing/armor/gambeson/light
 	if(prob(10))

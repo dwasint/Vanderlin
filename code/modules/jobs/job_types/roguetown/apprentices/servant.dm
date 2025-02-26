@@ -57,9 +57,9 @@
 		H.change_stat(STATKEY_END, 1)
 		shoes = /obj/item/clothing/shoes/simpleshoes
 		pants = /obj/item/clothing/pants/tights/uncolored
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/uncolored
-		belt = /obj/item/storage/belt/rogue/leather/rope
-		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
+		shirt = /obj/item/clothing/shirt/undershirt/uncolored
+		belt = /obj/item/storage/belt/leather/rope
+		beltl = /obj/item/storage/belt/pouch/coins/poor
 		if(H.gender == MALE)
 			armor = /obj/item/clothing/armor/leather/vest/black
 		else

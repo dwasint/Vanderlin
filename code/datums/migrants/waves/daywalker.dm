@@ -11,13 +11,13 @@
 	neck = /obj/item/clothing/neck/psycross/silver/astrata
 	gloves = /obj/item/clothing/gloves/fingerless/shadowgloves // Would give em Fingerless, but parrying with fists sounds funny as fuck
 	pants = /obj/item/clothing/pants/trou/shadowpants
-	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/black
+	shirt = /obj/item/clothing/shirt/tunic/black
 	armor = /obj/item/clothing/armor/leather/vest/winterjacket
 	shoes = /obj/item/clothing/shoes/nobleboot
 	beltl = /obj/item/flashlight/flare/torch/lantern
 	mask = /obj/item/clothing/face/goggles
 	beltr = /obj/item/weapon/sword/rapier
-	belt = /obj/item/storage/belt/rogue/leather/steel
+	belt = /obj/item/storage/belt/leather/steel
 	backr = /obj/item/storage/backpack/rogue/satchel
 	id = /obj/item/clothing/ring/silver
 	H.virginity = TRUE

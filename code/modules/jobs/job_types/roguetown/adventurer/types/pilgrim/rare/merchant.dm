@@ -29,19 +29,19 @@
 	H.change_stat(STATKEY_INT, 2)
 	H.change_stat(STATKEY_SPD, 1)
 	shoes = /obj/item/clothing/shoes/boots
-	belt = /obj/item/storage/belt/rogue/leather/black
+	belt = /obj/item/storage/belt/leather/black
 	beltr = /obj/item/flashlight/flare/torch/lantern
 	backl = /obj/item/storage/backpack/rogue/backpack
 	backpack_contents = list(/obj/item/weapon/knife/dagger/steel)
-	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
+	neck = /obj/item/storage/belt/pouch/coins/rich
 	id = /obj/item/clothing/ring/silver
 	if(H.gender == FEMALE)
-		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/green
+		armor = /obj/item/clothing/shirt/dress/gen/green
 		head = /obj/item/clothing/head/hatblu
 		cloak = /obj/item/clothing/cloak/raincloak/purple
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/pants/tights/green
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/green
+		shirt = /obj/item/clothing/shirt/undershirt/green
 		cloak = /obj/item/clothing/cloak/half
 		head = /obj/item/clothing/head/fancyhat
 
@@ -55,7 +55,7 @@
 			backpack_contents = list(/obj/item/reagent_containers/glass/bottle/rogue/healthpot, /obj/item/reagent_containers/glass/bottle/rogue/healthpot, /obj/item/reagent_containers/glass/bottle/rogue/healthpot, /obj/item/reagent_containers/glass/bottle/rogue/manapot)
 			H.mind?.adjust_skillrank(/datum/skill/craft/alchemy, 2, TRUE)
 		if("SILK")		// Travelling silk trader
-			backpack_contents = list(/obj/item/natural/bundle/silk = 2, /obj/item/natural/fur = 1, /obj/item/natural/bundle/fibers = 2, /obj/item/clothing/suit/roguetown/shirt/dress/silkdress, /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan)
+			backpack_contents = list(/obj/item/natural/bundle/silk = 2, /obj/item/natural/fur = 1, /obj/item/natural/bundle/fibers = 2, /obj/item/clothing/shirt/dress/silkdress, /obj/item/clothing/shirt/undershirt/puritan)
 			H.mind?.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 		if("GEMS")		// Travelling high-end merchant
 			backpack_contents = list(/obj/item/roguegem/yellow, /obj/item/roguegem/yellow, /obj/item/roguegem/green, /obj/item/roguegem/green, /obj/item/roguegem/violet)

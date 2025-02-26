@@ -30,11 +30,11 @@
 	head = /obj/item/clothing/head/roguehood/black
 	neck = /obj/item/clothing/neck/coif
 	armor = /obj/item/clothing/armor/leather/splint
-	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/black
+	shirt = /obj/item/clothing/shirt/tunic/black
 	pants = /obj/item/clothing/pants/loincloth/black
 	shoes = /obj/item/clothing/shoes/shortboots
 	wrists = /obj/item/rope/chain
-	belt = /obj/item/storage/belt/rogue/leather
+	belt = /obj/item/storage/belt/leather
 	beltl = /obj/item/weapon/mace/spiked // He gets a random mace.
 	beltr = /obj/item/storage/keyring/guard
 	backpack_contents = list(/obj/item/weapon/knife/dagger)

@@ -14,11 +14,11 @@
 	ADD_TRAIT(H, TRAIT_KNEESTINGER_IMMUNITY, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_SEEDKNOW, TRAIT_GENERIC)
 
-	belt = /obj/item/storage/belt/rogue/leather/rope
+	belt = /obj/item/storage/belt/leather/rope
 	mask = /obj/item/clothing/face/druid
 	neck = /obj/item/clothing/neck/psycross/silver/dendor
 	shirt = /obj/item/clothing/armor/leather/vest
-	armor = /obj/item/clothing/suit/roguetown/shirt/robe/dendor
+	armor = /obj/item/clothing/shirt/robe/dendor
 	wrists = /obj/item/clothing/wrists/bracers/leather
 	beltl = /obj/item/weapon/knife/stone
 	backl = /obj/item/weapon/mace/goden/shillelagh

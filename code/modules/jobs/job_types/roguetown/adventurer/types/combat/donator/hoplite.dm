@@ -31,7 +31,7 @@
 	beltr = /obj/item/flashlight/flare/torch/lantern
 	shoes = /obj/item/clothing/shoes/hoplite
 	cloak = /obj/item/clothing/cloak/half/red
-	belt = /obj/item/storage/belt/rogue/leather/rope
+	belt = /obj/item/storage/belt/leather/rope
 	armor = /obj/item/clothing/armor/rare/hoplite
 	head = /obj/item/clothing/head/rare/hoplite
 	wrists = /obj/item/clothing/wrists/bracers/hoplite

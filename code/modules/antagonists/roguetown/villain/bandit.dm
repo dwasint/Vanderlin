@@ -236,7 +236,7 @@
 	H.mind.teach_crafting_recipe(/datum/crafting_recipe/cult_hood)
 
 	// The commmon gear shared between all bandits
-	belt = /obj/item/storage/belt/rogue/leather/bandit
+	belt = /obj/item/storage/belt/leather/bandit
 	shoes = /obj/item/clothing/shoes/boots
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/flashlight/flare/torch/metal)
@@ -244,10 +244,10 @@
 	switch(pick(1,3))
 		if (1 to 2)
 			gloves = /obj/item/clothing/gloves/leather
-			shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
+			shirt = /obj/item/clothing/shirt/shortshirt/random
 		if (3)
 			gloves = /obj/item/clothing/gloves/angle
-			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
+			shirt = /obj/item/clothing/shirt/undershirt/black
 
 	H.change_stat(STATKEY_INT, -1)
 	var/obj/item/bodypart/B = H.get_bodypart("head")

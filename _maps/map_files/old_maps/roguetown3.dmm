@@ -486,7 +486,7 @@
 /turf/closed/mineral/rogue,
 /area/rogue)
 "abL" = (
-/obj/item/clothing/suit/roguetown/shirt/rags,
+/obj/item/clothing/shirt/rags,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue)
 "abM" = (
@@ -529,7 +529,7 @@
 /area/rogue)
 "abS" = (
 /obj/structure/closet/crate/roguecloset/dark,
-/obj/item/clothing/suit/roguetown/shirt/rags,
+/obj/item/clothing/shirt/rags,
 /obj/item/weapon/mace/woodclub/train_sword,
 /turf/open/floor/rogue/cobble,
 /area/rogue)
@@ -978,8 +978,8 @@
 /area/rogue/indoors/town/manor)
 "ady" = (
 /obj/structure/closet/crate/chest,
-/obj/item/storage/belt/rogue/pouch,
-/obj/item/storage/belt/rogue/pouch,
+/obj/item/storage/belt/pouch,
+/obj/item/storage/belt/pouch,
 /turf/open/floor/rogue/tile/masonic{
 	dir = 1
 	},
@@ -4737,8 +4737,8 @@
 /area/rogue)
 "aoY" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/clothing/suit/roguetown/shirt/shortshirt/random,
-/obj/item/clothing/suit/roguetown/shirt/shortshirt/random,
+/obj/item/clothing/shirt/shortshirt/random,
+/obj/item/clothing/shirt/shortshirt/random,
 /obj/item/clothing/pants/tights/random,
 /obj/item/clothing/pants/tights/random,
 /turf/open/floor/rogue/cobble,
@@ -5468,7 +5468,7 @@
 	icon_state = "largetable";
 	dir = 6
 	},
-/obj/item/storage/belt/rogue/pouch,
+/obj/item/storage/belt/pouch,
 /turf/open/floor/rogue/woodturned,
 /area/rogue)
 "aqZ" = (
@@ -5786,8 +5786,8 @@
 /area/rogue)
 "arY" = (
 /obj/structure/closet/crate/chest,
-/obj/item/clothing/suit/roguetown/shirt/rags,
-/obj/item/clothing/suit/roguetown/shirt/rags,
+/obj/item/clothing/shirt/rags,
+/obj/item/clothing/shirt/rags,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "arZ" = (
@@ -5887,9 +5887,9 @@
 /area/rogue/indoors)
 "asp" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/clothing/suit/roguetown/shirt/rags,
-/obj/item/clothing/suit/roguetown/shirt/rags,
-/obj/item/clothing/suit/roguetown/shirt/rags,
+/obj/item/clothing/shirt/rags,
+/obj/item/clothing/shirt/rags,
+/obj/item/clothing/shirt/rags,
 /obj/item/reagent_containers/food/snacks/hardtack,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors)
@@ -7454,11 +7454,11 @@
 /area/rogue)
 "axh" = (
 /obj/structure/closet/crate/chest,
-/obj/item/clothing/suit/roguetown/shirt/rags,
-/obj/item/clothing/suit/roguetown/shirt/rags,
-/obj/item/clothing/suit/roguetown/shirt/rags,
-/obj/item/clothing/suit/roguetown/shirt/rags,
-/obj/item/clothing/suit/roguetown/shirt/rags,
+/obj/item/clothing/shirt/rags,
+/obj/item/clothing/shirt/rags,
+/obj/item/clothing/shirt/rags,
+/obj/item/clothing/shirt/rags,
+/obj/item/clothing/shirt/rags,
 /obj/item/clothing/pants/loincloth/brown,
 /obj/item/clothing/pants/loincloth/brown,
 /obj/item/clothing/pants/loincloth/brown,
@@ -8977,14 +8977,14 @@
 	},
 /area/rogue)
 "aCn" = (
-/obj/item/clothing/suit/roguetown/shirt/undershirt/sailor/red,
+/obj/item/clothing/shirt/undershirt/sailor/red,
 /obj/structure/closet/crate/chest,
 /turf/open/floor/rogue/blocks{
 	icon_state = "newstone2"
 	},
 /area/rogue)
 "aCo" = (
-/obj/item/clothing/suit/roguetown/shirt/undershirt/sailor,
+/obj/item/clothing/shirt/undershirt/sailor,
 /obj/structure/closet/crate/chest,
 /turf/open/floor/rogue/blocks{
 	icon_state = "newstone2"
@@ -11401,13 +11401,13 @@
 /area/rogue/outdoors/town)
 "aKl" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/clothing/suit/roguetown/shirt/dress/gen,
-/obj/item/clothing/suit/roguetown/shirt/dress/gen,
-/obj/item/clothing/suit/roguetown/shirt/dress/gen,
-/obj/item/clothing/suit/roguetown/shirt/dress/gen,
-/obj/item/clothing/suit/roguetown/shirt/rags,
-/obj/item/clothing/suit/roguetown/shirt/rags,
-/obj/item/clothing/suit/roguetown/shirt/rags,
+/obj/item/clothing/shirt/dress/gen,
+/obj/item/clothing/shirt/dress/gen,
+/obj/item/clothing/shirt/dress/gen,
+/obj/item/clothing/shirt/dress/gen,
+/obj/item/clothing/shirt/rags,
+/obj/item/clothing/shirt/rags,
+/obj/item/clothing/shirt/rags,
 /obj/structure/fluff/walldeco/customflag{
 	pixel_y = 32
 	},
@@ -12105,7 +12105,7 @@
 /area/rogue/indoors)
 "fZv" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy,
+/obj/item/clothing/shirt/dress/gen/sexy,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors)
 "gad" = (

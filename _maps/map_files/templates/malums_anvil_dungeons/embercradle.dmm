@@ -502,7 +502,7 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "io" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/suit/roguetown/shirt/robe/wizard,
+/obj/item/clothing/shirt/robe/wizard,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "ip" = (
@@ -534,7 +534,7 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "iJ" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/storage/belt/rogue/pouch/coins/mid,
+/obj/item/storage/belt/pouch/coins/mid,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "iK" = (
@@ -924,9 +924,9 @@
 /mob/living/carbon/human/species/skeleton/npc/no_equipment,
 /obj/item/clothing/cloak/apron/brown,
 /obj/item/clothing/pants/trou/leather,
-/obj/item/clothing/suit/roguetown/shirt/undershirt,
+/obj/item/clothing/shirt/undershirt,
 /obj/item/clothing/gloves/leather,
-/obj/item/storage/belt/rogue/leather,
+/obj/item/storage/belt/leather,
 /obj/item/weapon/hammer/iron,
 /obj/item/weapon/tongs,
 /obj/item/clothing/shoes/boots/leather,
@@ -989,9 +989,9 @@
 /obj/item/clothing/shoes/boots/leather,
 /obj/item/clothing/gloves/fingerless,
 /obj/item/clothing/pants/tights,
-/obj/item/clothing/suit/roguetown/shirt/tunic/ucolored,
-/obj/item/storage/belt/rogue/leather,
-/obj/item/storage/belt/rogue/pouch/coins/poor,
+/obj/item/clothing/shirt/tunic/ucolored,
+/obj/item/storage/belt/leather,
+/obj/item/storage/belt/pouch/coins/poor,
 /obj/item/storage/backpack/rogue/satchel,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /turf/open/floor/rogue/carpet,
@@ -1254,9 +1254,9 @@
 /obj/item/clothing/shoes/boots/leather,
 /obj/item/clothing/gloves/fingerless,
 /obj/item/clothing/pants/tights,
-/obj/item/clothing/suit/roguetown/shirt/tunic/purple,
-/obj/item/storage/belt/rogue/leather,
-/obj/item/storage/belt/rogue/pouch/coins/poor,
+/obj/item/clothing/shirt/tunic/purple,
+/obj/item/storage/belt/leather,
+/obj/item/storage/belt/pouch/coins/poor,
 /obj/item/storage/backpack/rogue/satchel,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /turf/open/floor/rogue/carpet,
@@ -1331,9 +1331,9 @@
 /obj/item/clothing/shoes/boots/leather,
 /obj/item/clothing/gloves/fingerless,
 /obj/item/clothing/pants/tights,
-/obj/item/clothing/suit/roguetown/shirt/tunic/green,
-/obj/item/storage/belt/rogue/leather,
-/obj/item/storage/belt/rogue/pouch/coins/poor,
+/obj/item/clothing/shirt/tunic/green,
+/obj/item/storage/belt/leather,
+/obj/item/storage/belt/pouch/coins/poor,
 /obj/item/storage/backpack/rogue/satchel,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
@@ -1391,9 +1391,9 @@
 /obj/item/clothing/shoes/boots/leather,
 /obj/item/clothing/gloves/fingerless,
 /obj/item/clothing/pants/tights,
-/obj/item/clothing/suit/roguetown/shirt/tunic/red,
-/obj/item/storage/belt/rogue/leather,
-/obj/item/storage/belt/rogue/pouch/coins/poor,
+/obj/item/clothing/shirt/tunic/red,
+/obj/item/storage/belt/leather,
+/obj/item/storage/belt/pouch/coins/poor,
 /obj/item/storage/backpack/rogue/satchel,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /turf/open/floor/rogue/carpet,
@@ -1628,9 +1628,9 @@
 /obj/item/clothing/shoes/boots/leather,
 /obj/item/clothing/gloves/fingerless,
 /obj/item/clothing/pants/tights,
-/obj/item/clothing/suit/roguetown/shirt/tunic,
-/obj/item/storage/belt/rogue/leather,
-/obj/item/storage/belt/rogue/pouch/coins/poor,
+/obj/item/clothing/shirt/tunic,
+/obj/item/storage/belt/leather,
+/obj/item/storage/belt/pouch/coins/poor,
 /obj/item/storage/backpack/rogue/satchel,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
@@ -1748,9 +1748,9 @@
 /obj/item/clothing/shoes/boots/leather,
 /obj/item/clothing/gloves/fingerless,
 /obj/item/clothing/pants/tights,
-/obj/item/clothing/suit/roguetown/shirt/tunic/blue,
-/obj/item/storage/belt/rogue/leather,
-/obj/item/storage/belt/rogue/pouch/coins/poor,
+/obj/item/clothing/shirt/tunic/blue,
+/obj/item/storage/belt/leather,
+/obj/item/storage/belt/pouch/coins/poor,
 /obj/item/storage/backpack/rogue/satchel,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
@@ -1982,7 +1982,7 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "AP" = (
 /obj/structure/rack/rogue,
-/obj/item/storage/belt/rogue/leather/plaquesilver,
+/obj/item/storage/belt/leather/plaquesilver,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
@@ -2471,7 +2471,7 @@
 /obj/item/clothing/shoes/boots/armor/light,
 /obj/item/weapon/shield/tower/metal,
 /obj/item/weapon/sword,
-/obj/item/storage/belt/rogue/leather/plaquesilver,
+/obj/item/storage/belt/leather/plaquesilver,
 /obj/item/clothing/ring/silver/noc,
 /obj/item/clothing/wrists/nocwrappings,
 /obj/item/clothing/neck/psycross/noc,
@@ -2707,7 +2707,7 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "JT" = (
 /obj/structure/rack/rogue,
-/obj/item/storage/belt/rogue/leather/plaquegold,
+/obj/item/storage/belt/leather/plaquegold,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
@@ -2913,18 +2913,18 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "MJ" = (
 /obj/structure/chair/bench/throne,
-/obj/item/clothing/suit/roguetown/shirt/tunic,
+/obj/item/clothing/shirt/tunic,
 /mob/living/carbon/human/species/skeleton/npc/no_equipment{
 	real_name = "Prince of Ruin"
 	},
 /obj/item/weapon/sword/sabre/scythe,
 /obj/item/weapon/sword/sabre/scythe,
 /obj/item/clothing/pants/trou/leather,
-/obj/item/clothing/suit/roguetown/shirt/robe/black,
+/obj/item/clothing/shirt/robe/black,
 /obj/item/clothing/gloves/leather/black,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /obj/item/clothing/shoes/boots,
-/obj/item/storage/belt/rogue/leather/black,
+/obj/item/storage/belt/leather/black,
 /obj/item/clothing/head/crown/nyle,
 /turf/open/floor/rogue/carpet,
 /area/rogue/under/mountains/anvil/dungeon/lower)
@@ -3037,7 +3037,7 @@
 /obj/item/clothing/armor/cuirass,
 /obj/item/clothing/shoes/boots/armor/light,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
-/obj/item/storage/belt/rogue/leather,
+/obj/item/storage/belt/leather,
 /mob/living/carbon/human/species/skeleton/npc/no_equipment,
 /turf/open/floor/rogue/carpet,
 /area/rogue/under/mountains/anvil/dungeon/lower)
@@ -3391,7 +3391,7 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Tk" = (
-/obj/item/storage/belt/rogue/leather/plaquegold,
+/obj/item/storage/belt/leather/plaquegold,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "Tx" = (
@@ -3722,14 +3722,14 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "Xr" = (
 /mob/living/carbon/human/species/skeleton/npc/no_equipment,
-/obj/item/clothing/suit/roguetown/shirt/robe/noc,
+/obj/item/clothing/shirt/robe/noc,
 /obj/item/clothing/neck/psycross/noc,
 /obj/item/clothing/head/roguehood/nochood,
 /obj/item/clothing/gloves/leather/black,
 /obj/item/clothing/shoes/boots/leather,
 /obj/item/clothing/pants/trou/leather,
-/obj/item/clothing/suit/roguetown/shirt/undershirt/uncolored,
-/obj/item/storage/belt/rogue/leather/cloth,
+/obj/item/clothing/shirt/undershirt/uncolored,
+/obj/item/storage/belt/leather/cloth,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /obj/item/clothing/wrists/nocwrappings,
 /obj/item/weapon/knife/dagger/steel/dirk,

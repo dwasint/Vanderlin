@@ -17,8 +17,8 @@
 	jobtype = /datum/job/roguetown/scribe
 
 	pants = /obj/item/clothing/pants/tights
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
-	armor = /obj/item/clothing/suit/roguetown/shirt/rags
+	shirt = /obj/item/clothing/shirt/undershirt
+	armor = /obj/item/clothing/shirt/rags
 	shoes = /obj/item/clothing/shoes/boots
 
 /datum/outfit/job/roguetown/scribe/female

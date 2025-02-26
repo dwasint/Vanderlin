@@ -1,38 +1,11 @@
-/obj/item/storage/belt/rogue
-	name = ""
-	desc = ""
-	icon = 'icons/roguetown/clothing/belts.dmi'
-	mob_overlay_icon = 'icons/roguetown/clothing/onmob/belts.dmi'
-	icon_state = ""
-	item_state = ""
-	slot_flags = ITEM_SLOT_BELT
-	w_class = WEIGHT_CLASS_NORMAL
-	attack_verb = list("whips", "lashes")
-	max_integrity = 300
-	equip_sound = 'sound/blank.ogg'
-	content_overlays = FALSE
-	bloody_icon_state = "bodyblood"
-	sewrepair = TRUE
-	fiber_salvage = TRUE
-	salvage_amount = 1
-	salvage_result = /obj/item/natural/hide/cured
-	component_type = /datum/component/storage/concrete/roguetown/belt
-
-/obj/item/storage/belt/rogue/attack_right(mob/user)
-	var/datum/component/storage/CP = GetComponent(/datum/component/storage)
-	if(CP)
-		CP.rmb_show(user)
-		return TRUE
-	..()
-
-/obj/item/storage/belt/rogue/leather
+/obj/item/storage/belt/leather
 	name = "belt"
 	desc = "A leather belt."
 	icon_state = "leather"
 	item_state = "leather"
 	equip_sound = 'sound/blank.ogg'
 
-/obj/item/storage/belt/rogue/leather/dropped(mob/living/carbon/human/user)
+/obj/item/storage/belt/leather/dropped(mob/living/carbon/human/user)
 	..()
 	if(QDELETED(src))
 		return
@@ -42,7 +15,7 @@
 		for(var/obj/item/I in things)
 			STR.remove_from_storage(I, get_turf(src))
 
-/obj/item/storage/belt/rogue/leather/assassin // Assassin's super edgy and cool belt can carry normal items (for poison vial, lockpick).
+/obj/item/storage/belt/leather/assassin // Assassin's super edgy and cool belt can carry normal items (for poison vial, lockpick).
 	component_type = /datum/component/storage/concrete/roguetown/belt/assassin
 
 	populate_contents = list(
@@ -53,57 +26,57 @@
 
 //Bandit's belt starts with a simple needle and a key to their hideout.
 
-/obj/item/storage/belt/rogue/leather/bandit
+/obj/item/storage/belt/leather/bandit
 	populate_contents = list(
 		/obj/item/needle/thorn,
 		/obj/item/key/bandit,
 	)
 
 //Bandit's belt starts with a bandage and a key to their guildhall.
-/obj/item/storage/belt/rogue/leather/mercenary
+/obj/item/storage/belt/leather/mercenary
 	populate_contents = list(
 		/obj/item/natural/cloth,
 		/obj/item/key/mercenary,
 	)
 
-/obj/item/storage/belt/rogue/leather/mercenary/shalal
+/obj/item/storage/belt/leather/mercenary/shalal
 	name = "shalal belt"
 	icon_state = "shalal"
 
-/obj/item/storage/belt/rogue/leather/mercenary/black
+/obj/item/storage/belt/leather/mercenary/black
 	name = "black belt"
 	icon_state = "blackbelt"
 
 
-/obj/item/storage/belt/rogue/leather/plaquegold
+/obj/item/storage/belt/leather/plaquegold
 	name = "plaque belt"
 	desc = "A belt with a golden plaque on its front."
 	icon_state = "goldplaque"
 	sellprice = 50
 
-/obj/item/storage/belt/rogue/leather/shalal
+/obj/item/storage/belt/leather/shalal
 	name = "shalal belt"
 	icon_state = "shalal"
 	sellprice = 5
 
-/obj/item/storage/belt/rogue/leather/black
+/obj/item/storage/belt/leather/black
 	name = "black belt"
 	icon_state = "blackbelt"
 	sellprice = 10
 
-/obj/item/storage/belt/rogue/leather/plaquesilver
+/obj/item/storage/belt/leather/plaquesilver
 	name = "plaque belt"
 	desc = "A belt with a silver plaque on its front."
 	icon_state = "silverplaque"
 	sellprice = 30
 
-/obj/item/storage/belt/rogue/leather/steel
+/obj/item/storage/belt/leather/steel
 	name = "steel belt"
 	desc = "A belt with a steel plate on its front."
 	icon_state = "steelplaque"
 	sellprice = 30
 
-/obj/item/storage/belt/rogue/leather/rope
+/obj/item/storage/belt/leather/rope
 	name = "rope belt"
 	desc = "A simple belt made of rope."
 	icon_state = "rope"
@@ -112,20 +85,20 @@
 	salvage_result = /obj/item/rope
 	component_type = /datum/component/storage/concrete/roguetown/belt/cloth
 
-/obj/item/storage/belt/rogue/leather/cloth
+/obj/item/storage/belt/leather/cloth
 	name = "cloth sash"
 	desc = "A simple cloth sash."
 	icon_state = "cloth"
 	salvage_result = /obj/item/natural/cloth
 	component_type = /datum/component/storage/concrete/roguetown/belt/cloth
 
-/obj/item/storage/belt/rogue/leather/cloth/lady
+/obj/item/storage/belt/leather/cloth/lady
 	color = "#575160"
 
-/obj/item/storage/belt/rogue/leather/cloth/bandit
+/obj/item/storage/belt/leather/cloth/bandit
 	color = "#ff0000"
 
-/obj/item/storage/belt/rogue/pouch
+/obj/item/storage/belt/pouch
 	name = "pouch"
 	desc = "Usually used for holding coins."
 	icon = 'icons/roguetown/clothing/storage.dmi'
@@ -143,7 +116,7 @@
 	grid_height = 64
 	grid_width = 32
 
-/obj/item/storage/belt/rogue/pouch/coins/mid/Initialize()
+/obj/item/storage/belt/pouch/coins/mid/Initialize()
 	. = ..()
 	var/obj/item/roguecoin/silver/pile/H = new(loc)
 	if(istype(H))
@@ -154,7 +127,7 @@
 		if(!SEND_SIGNAL(src, COMSIG_TRY_STORAGE_INSERT, C, null, TRUE, TRUE))
 			qdel(C)
 
-/obj/item/storage/belt/rogue/pouch/coins/poor/Initialize()
+/obj/item/storage/belt/pouch/coins/poor/Initialize()
 	. = ..()
 	var/obj/item/roguecoin/copper/pile/H = new(loc)
 	if(istype(H))
@@ -166,7 +139,7 @@
 			if(!SEND_SIGNAL(src, COMSIG_TRY_STORAGE_INSERT, H, null, TRUE, TRUE))
 				qdel(H)
 
-/obj/item/storage/belt/rogue/pouch/coins/rich/Initialize()
+/obj/item/storage/belt/pouch/coins/rich/Initialize()
 	. = ..()
 	var/obj/item/roguecoin/silver/pile/H = new(loc)
 	if(istype(H))
@@ -182,7 +155,7 @@
 			if(!SEND_SIGNAL(src, COMSIG_TRY_STORAGE_INSERT, H, null, TRUE, TRUE))
 				qdel(H)
 
-/obj/item/storage/belt/rogue/pouch/coins/veryrich/Initialize()
+/obj/item/storage/belt/pouch/coins/veryrich/Initialize()
 	. = ..()
 	var/obj/item/roguecoin/gold/pile/H = new(loc)
 	if(istype(H))
@@ -198,7 +171,7 @@
 			if(!SEND_SIGNAL(src, COMSIG_TRY_STORAGE_INSERT, H, null, TRUE, TRUE))
 				qdel(H)
 
-/obj/item/storage/belt/rogue/pouch/bullets
+/obj/item/storage/belt/pouch/bullets
 	populate_contents = list(
 		/obj/item/ammo_casing/caseless/rogue/bullet,
 		/obj/item/ammo_casing/caseless/rogue/bullet,
@@ -207,7 +180,7 @@
 	)
 
 //Poison darts pouch
-/obj/item/storage/belt/rogue/pouch/pdarts
+/obj/item/storage/belt/pouch/pdarts
 	populate_contents = list(
 		/obj/item/ammo_casing/caseless/rogue/dart/poison,
 		/obj/item/ammo_casing/caseless/rogue/dart/poison,
@@ -286,7 +259,7 @@
 	)
 	component_type = /datum/component/storage/concrete/roguetown/surgery_bag
 
-/obj/item/storage/belt/rogue/leather/knifebelt
+/obj/item/storage/belt/leather/knifebelt
 
 	name = "tossblade belt"
 	desc = "A many-slotted belt meant for tossblades. Little room left over."
@@ -299,7 +272,7 @@
 	component_type = /datum/component/storage/concrete/roguetown/belt/knife_belt
 
 
-/obj/item/storage/belt/rogue/leather/knifebelt/attack_turf(turf/T, mob/living/user)
+/obj/item/storage/belt/leather/knifebelt/attack_turf(turf/T, mob/living/user)
 	if(arrows.len >= max_storage)
 		to_chat(user, span_warning("Your [src.name] is full!"))
 		return
@@ -309,7 +282,7 @@
 			if(!eatarrow(arrow))
 				break
 
-/obj/item/storage/belt/rogue/leather/knifebelt/proc/eatarrow(obj/A)
+/obj/item/storage/belt/leather/knifebelt/proc/eatarrow(obj/A)
 	if(A.type in subtypesof(/obj/item/weapon/knife/throwingknife))
 		if(arrows.len < max_storage)
 			A.forceMove(src)
@@ -319,7 +292,7 @@
 		else
 			return FALSE
 
-/obj/item/storage/belt/rogue/leather/knifebelt/attackby(obj/A, loc, params)
+/obj/item/storage/belt/leather/knifebelt/attackby(obj/A, loc, params)
 	if(A.type in subtypesof(/obj/item/weapon/knife/throwingknife))
 		if(arrows.len < max_storage)
 			if(ismob(loc))
@@ -335,7 +308,7 @@
 		return
 	..()
 
-/obj/item/storage/belt/rogue/leather/knifebelt/attack_right(mob/user)
+/obj/item/storage/belt/leather/knifebelt/attack_right(mob/user)
 	if(arrows.len)
 		var/obj/O = arrows[arrows.len]
 		arrows -= O
@@ -344,12 +317,12 @@
 		update_icon()
 		return TRUE
 
-/obj/item/storage/belt/rogue/leather/knifebelt/examine(mob/user)
+/obj/item/storage/belt/leather/knifebelt/examine(mob/user)
 	. = ..()
 	if(arrows.len)
 		. += span_notice("[arrows.len] inside.")
 
-/obj/item/storage/belt/rogue/leather/knifebelt/iron/Initialize()
+/obj/item/storage/belt/leather/knifebelt/iron/Initialize()
 	. = ..()
 	for(var/i in 1 to max_storage)
 		var/obj/item/weapon/knife/throwingknife/A = new()
@@ -357,26 +330,26 @@
 	update_icon()
 
 
-/obj/item/storage/belt/rogue/leather/knifebelt/black
+/obj/item/storage/belt/leather/knifebelt/black
 
 	icon_state = "blackknife"
 	item_state = "blackknife"
 
-/obj/item/storage/belt/rogue/leather/knifebelt/black/iron/Initialize()
+/obj/item/storage/belt/leather/knifebelt/black/iron/Initialize()
 	. = ..()
 	for(var/i in 1 to max_storage)
 		var/obj/item/weapon/knife/throwingknife/A = new()
 		arrows += A
 	update_icon()
 
-/obj/item/storage/belt/rogue/leather/knifebelt/black/steel/Initialize()
+/obj/item/storage/belt/leather/knifebelt/black/steel/Initialize()
 	. = ..()
 	for(var/i in 1 to max_storage)
 		var/obj/item/weapon/knife/throwingknife/steel/A = new()
 		arrows += A
 	update_icon()
 
-/obj/item/storage/belt/rogue/leather/knifebelt/black/psydon/Initialize()
+/obj/item/storage/belt/leather/knifebelt/black/psydon/Initialize()
 	. = ..()
 	for(var/i in 1 to max_storage)
 		var/obj/item/weapon/knife/throwingknife/psydon/A = new()

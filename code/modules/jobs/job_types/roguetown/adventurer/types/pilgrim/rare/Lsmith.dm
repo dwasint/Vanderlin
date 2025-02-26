@@ -21,9 +21,9 @@
 	backr =	/obj/item/weapon/hammer/sledgehammer
 	pants = /obj/item/clothing/pants/trou
 	shoes = /obj/item/clothing/shoes/boots/leather
-	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
-	neck = /obj/item/storage/belt/rogue/pouch/coins/mid
-	belt = /obj/item/storage/belt/rogue/leather
+	shirt = /obj/item/clothing/shirt/shortshirt
+	neck = /obj/item/storage/belt/pouch/coins/mid
+	belt = /obj/item/storage/belt/leather
 	beltl = /obj/item/weapon/knife/hunting
 	cloak = /obj/item/clothing/cloak/apron/brown
 	gloves = /obj/item/clothing/gloves/leather
@@ -66,8 +66,8 @@
 
 	if(H.gender == MALE)
 		shoes = /obj/item/clothing/shoes/boots/leather
-		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
+		shirt = /obj/item/clothing/shirt/shortshirt
 	else
 		shoes = /obj/item/clothing/shoes/shortboots
-		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
+		armor = /obj/item/clothing/shirt/dress/gen/random
+		shirt = /obj/item/clothing/shirt/undershirt

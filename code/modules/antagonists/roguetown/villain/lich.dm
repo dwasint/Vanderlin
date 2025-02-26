@@ -84,11 +84,11 @@
 	pants = /obj/item/clothing/pants/chainlegs
 	shoes = /obj/item/clothing/shoes/shortboots
 	neck = /obj/item/clothing/neck/chaincoif
-	armor = /obj/item/clothing/suit/roguetown/shirt/robe/necromancer
-	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/ucolored
+	armor = /obj/item/clothing/shirt/robe/necromancer
+	shirt = /obj/item/clothing/shirt/tunic/ucolored
 	wrists = /obj/item/clothing/wrists/bracers
 	gloves = /obj/item/clothing/gloves/chain
-	belt = /obj/item/storage/belt/rogue/leather/black
+	belt = /obj/item/storage/belt/leather/black
 	backl = /obj/item/storage/backpack/rogue/satchel
 	beltr = /obj/item/reagent_containers/glass/bottle/rogue/manapot
 	beltl = /obj/item/weapon/knife/dagger/steel

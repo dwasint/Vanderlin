@@ -46,11 +46,11 @@
 	neck = /obj/item/clothing/neck/coif
 	armor = /obj/item/clothing/armor/leather/jacket
 	pants = /obj/item/clothing/pants/trou
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
+	shirt = /obj/item/clothing/shirt/undershirt/random
 	wrists = /obj/item/clothing/wrists/bracers/leather
 	shoes = /obj/item/clothing/shoes/boots/leather
-	belt = /obj/item/storage/belt/rogue/leather
-	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
+	belt = /obj/item/storage/belt/leather
+	beltr = /obj/item/storage/belt/pouch/coins/mid
 	beltl = /obj/item/weapon/hammer/steel
 	backl = /obj/item/storage/backpack/rogue/backpack
 	backr = /obj/item/weapon/polearm/halberd/bardiche/woodcutter // A specialist in cutting trees would carry an impressive axe

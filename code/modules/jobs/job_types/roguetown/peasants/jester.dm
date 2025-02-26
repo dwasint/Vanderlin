@@ -33,10 +33,10 @@
 	..()
 	shoes = /obj/item/clothing/shoes/jester
 	pants = /obj/item/clothing/pants/tights
-	armor = /obj/item/clothing/suit/roguetown/shirt/jester
-	belt = /obj/item/storage/belt/rogue/leather
+	armor = /obj/item/clothing/shirt/jester
+	belt = /obj/item/storage/belt/leather
 	beltr = /obj/item/storage/keyring/jester
-	beltl = /obj/item/storage/belt/rogue/pouch
+	beltl = /obj/item/storage/belt/pouch
 	head = /obj/item/clothing/head/jester
 	neck = /obj/item/clothing/neck/coif
 	if(H.mind)

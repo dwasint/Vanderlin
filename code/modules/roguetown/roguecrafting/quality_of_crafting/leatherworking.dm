@@ -15,7 +15,7 @@
 
 /datum/repeatable_crafting_recipe/leather/pouch
 	name = "leather pouch"
-	output = /obj/item/storage/belt/rogue/pouch
+	output = /obj/item/storage/belt/pouch
 	sellprice = 6
 
 /datum/repeatable_crafting_recipe/leather/volfhelm
@@ -92,7 +92,7 @@
 		/obj/item/natural/hide/cured = 1,
 		/obj/item/natural/fibers = 1,
 	)
-	output = /obj/item/storage/belt/rogue/leather
+	output = /obj/item/storage/belt/leather
 
 /datum/repeatable_crafting_recipe/leather/vest
 	name = "leather vest"

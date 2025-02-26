@@ -63,8 +63,8 @@
 	shirt = /obj/item/clothing/armor/chainmail
 	pants = /obj/item/clothing/pants/platelegs
 	shoes = /obj/item/clothing/shoes/boots/armor
-	belt = /obj/item/storage/belt/rogue/leather/steel
-	beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
+	belt = /obj/item/storage/belt/leather/steel
+	beltl = /obj/item/storage/belt/pouch/coins/mid
 	id = /obj/item/clothing/ring/silver/toper
 	cloak = /obj/item/clothing/cloak/tabard/crusader
 	neck = /obj/item/clothing/neck/chaincoif

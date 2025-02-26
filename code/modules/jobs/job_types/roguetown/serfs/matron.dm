@@ -56,12 +56,12 @@
 		H.grant_language(/datum/language/thievescant)
 		to_chat(H, "<span class='info'>I can gesture in thieves' cant with ,t before my speech.</span>")
 		ADD_TRAIT(H, TRAIT_THIEVESGUILD, TRAIT_GENERIC)
-		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/gen/black
+		shirt = /obj/item/clothing/shirt/dress/gen/black
 		armor = /obj/item/clothing/armor/leather/vest/black
 		pants = /obj/item/clothing/pants/trou/beltpants
-		belt = /obj/item/storage/belt/rogue/leather/cloth/lady
+		belt = /obj/item/storage/belt/leather/cloth/lady
 		shoes = /obj/item/clothing/shoes/boots/leather
-		beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
+		beltl = /obj/item/storage/belt/pouch/coins/mid
 		backr = /obj/item/storage/backpack/rogue/satchel
 		cloak = /obj/item/clothing/cloak/matron
 		backpack_contents = list(/obj/item/weapon/knife/dagger/steel = 1, /obj/item/key/matron = 1)

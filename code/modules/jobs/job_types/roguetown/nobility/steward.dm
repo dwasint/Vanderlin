@@ -28,9 +28,9 @@
 	..()
 	H.virginity = TRUE
 	if(H.gender == FEMALE)
-		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/stewarddress
+		shirt = /obj/item/clothing/shirt/dress/stewarddress
 	else
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/fancy
+		shirt = /obj/item/clothing/shirt/undershirt/fancy
 		pants = /obj/item/clothing/pants/trou/leathertights
 
 	ADD_TRAIT(H, TRAIT_SEEPRICES, type)
@@ -38,11 +38,11 @@
 	head = /obj/item/clothing/head/stewardtophat
 	cloak = /obj/item/clothing/cloak/raincloak/furcloak
 	armor = /obj/item/clothing/armor/gambeson/steward
-	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
+	belt = /obj/item/storage/belt/leather/plaquesilver
 	beltr = /obj/item/storage/keyring/steward
 	beltl = /obj/item/weapon/knife/dagger/steel
 	backr = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/rich = 1, /obj/item/lockpickring/mundane = 1)
+	backpack_contents = list(/obj/item/storage/belt/pouch/coins/rich = 1, /obj/item/lockpickring/mundane = 1)
 
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)

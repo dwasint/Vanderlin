@@ -92,10 +92,10 @@
 	H.mind?.adjust_skillrank(/datum/skill/magic/arcane, 3, TRUE)
 
 
-	belt = /obj/item/storage/belt/rogue/leather
+	belt = /obj/item/storage/belt/leather
 	pants = /obj/item/clothing/pants/platelegs/blk/death
 	shoes = /obj/item/clothing/shoes/boots/armor/blkknight
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
+	shirt = /obj/item/clothing/shirt/undershirt/black
 	armor = /obj/item/clothing/armor/plate/blkknight/death
 	gloves = /obj/item/clothing/gloves/plate/blk/death
 	backl = /obj/item/weapon/sword/long/death

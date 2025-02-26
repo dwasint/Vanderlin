@@ -57,7 +57,7 @@
 	icon_state = "cyberdeck"
 	armor = list("blunt" = 25, "slash" = 25, "stab" = 25, "piercing" = 0, "fire" = 0, "acid" = 0)
 
-/obj/item/clothing/suit/roguetown/shirt/formal
+/obj/item/clothing/shirt/formal
 	name = "formal shirt"
 	desc = "TNC is the fairest company I know, atleast I think?."
 	icon = 'icons/roguetown/maniac/clothing.dmi'
@@ -75,7 +75,7 @@
 /datum/outfit/treyliam
 	name = "Trey Liam"
 	head = /obj/item/clothing/head/cyberdeck
-	shirt = /obj/item/clothing/suit/roguetown/shirt/formal
+	shirt = /obj/item/clothing/shirt/formal
 	pants = /obj/item/clothing/pants/tights/formal
 
 /obj/effect/landmark/treyliam

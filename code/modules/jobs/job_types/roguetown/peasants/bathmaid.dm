@@ -22,10 +22,10 @@
 /datum/outfit/job/roguetown/nitemaiden/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/shortboots
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
-	armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy
-	neck = /obj/item/storage/belt/rogue/pouch/nitemaiden
-	belt = /obj/item/storage/belt/rogue/leather/rope
+	shirt = /obj/item/clothing/shirt/undershirt
+	armor = /obj/item/clothing/shirt/dress/gen/sexy
+	neck = /obj/item/storage/belt/pouch/nitemaiden
+	belt = /obj/item/storage/belt/leather/rope
 	beltr = /obj/item/key/nitemaiden
 	ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
 
@@ -42,7 +42,7 @@
 		H.mind?.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 	if(H.gender == MALE)
 		shoes = /obj/item/clothing/shoes/boots/leather
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
+		shirt = /obj/item/clothing/shirt/undershirt/puritan
 		armor = /obj/item/clothing/armor/leather/jacket/sea
 */
 // Washing Implements

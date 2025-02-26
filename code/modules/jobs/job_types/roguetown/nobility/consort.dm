@@ -45,9 +45,9 @@
 	head = /obj/item/clothing/head/crown/nyle/consortcrown
 	shoes = /obj/item/clothing/shoes/boots
 	id = /obj/item/clothing/ring/silver
-	belt = /obj/item/storage/belt/rogue/leather
+	belt = /obj/item/storage/belt/leather
 	beltl = /obj/item/storage/keyring/consort
-	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
+	beltr = /obj/item/storage/belt/pouch/coins/rich
 
 /* ! ! ! CONSORT CLASSES ! ! !
 - Highborn: The "default" class, a typical Enigman noble. Decent with swords and a knife. Can sew and read pretty good. A little squishy.
@@ -68,7 +68,7 @@
 	. = ..()
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/pants/tights/black
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
+		shirt = /obj/item/clothing/shirt/undershirt/black
 		armor = /obj/item/clothing/armor/leather/vest/winterjacket
 	else
 		pants = /obj/item/clothing/pants/tights/random
@@ -108,7 +108,7 @@
 	. = ..()
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/pants/tights/black
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
+		shirt = /obj/item/clothing/shirt/undershirt/black
 		armor = /obj/item/clothing/armor/leather/vest/winterjacket // this is kind of stupid but i love it anyway
 	else
 		pants = /obj/item/clothing/pants/tights/random
@@ -148,10 +148,10 @@
 	. = ..()
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/pants/tights/green
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
-		armor = /obj/item/clothing/suit/roguetown/shirt/tunic/green
+		shirt = /obj/item/clothing/shirt/undershirt/black
+		armor = /obj/item/clothing/shirt/tunic/green
 	else
-		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/princess
+		shirt = /obj/item/clothing/shirt/dress/silkdress/princess
 		armor = /obj/item/clothing/armor/leather/jacket/silk_coat
 
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)

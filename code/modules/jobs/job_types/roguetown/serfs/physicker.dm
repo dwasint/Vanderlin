@@ -28,12 +28,12 @@
 	mask = /obj/item/clothing/face/phys
 	head = /obj/item/clothing/head/roguehood/phys
 	shoes = /obj/item/clothing/shoes/boots/leather
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
+	shirt = /obj/item/clothing/shirt/undershirt/black
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents =list(/obj/item/storage/keyring/physicker = 1)
 	pants = /obj/item/clothing/pants/tights/random
 	gloves = /obj/item/clothing/gloves/leather/phys
-	armor = /obj/item/clothing/suit/roguetown/shirt/robe/phys
+	armor = /obj/item/clothing/shirt/robe/phys
 	neck = /obj/item/clothing/neck/phys
 	r_hand = /obj/item/storage/backpack/rogue/satchel/surgbag
 

@@ -36,7 +36,7 @@
 		pants = /obj/item/clothing/pants/tights/random
 		shoes = /obj/item/clothing/shoes/simpleshoes
 		shirt = null
-		belt = /obj/item/storage/belt/rogue/leather/rope
+		belt = /obj/item/storage/belt/leather/rope
 		beltr = /obj/item/key/blacksmith
 		armor = /obj/item/clothing/armor/leather/vest
 		backr = /obj/item/storage/backpack/rogue/satchel
@@ -44,10 +44,10 @@
 		H.change_stat(STATKEY_END, 2)
 		H.change_stat(STATKEY_SPD, 1)
 	else
-		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
+		armor = /obj/item/clothing/shirt/dress/gen/random
 		shoes = /obj/item/clothing/shoes/simpleshoes
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
-		belt = /obj/item/storage/belt/rogue/leather/rope
+		shirt = /obj/item/clothing/shirt/undershirt
+		belt = /obj/item/storage/belt/leather/rope
 		beltr = /obj/item/key/blacksmith
 		cloak = /obj/item/clothing/cloak/apron/brown
 		backr = /obj/item/storage/backpack/rogue/satchel

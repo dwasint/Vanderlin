@@ -31,12 +31,12 @@
 	..()
 	armor = /obj/item/clothing/armor/gambeson/apothecary
 	shoes = /obj/item/clothing/shoes/apothboots
-	shirt = /obj/item/clothing/suit/roguetown/shirt/apothshirt
+	shirt = /obj/item/clothing/shirt/apothshirt
 	pants = /obj/item/clothing/pants/trou/apothecary
 	gloves = /obj/item/clothing/gloves/leather/apothecary
-	belt = /obj/item/storage/belt/rogue/leather
+	belt = /obj/item/storage/belt/leather
 	beltr = /obj/item/storage/keyring/niteman
-	beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
+	beltl = /obj/item/storage/belt/pouch/coins/mid
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_LEGENDARY_ALCHEMIST, TRAIT_GENERIC)
 	if(H.mind)

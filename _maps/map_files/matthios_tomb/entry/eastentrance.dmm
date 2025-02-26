@@ -195,7 +195,7 @@
 /area/rogue)
 "FA" = (
 /obj/structure/closet/crate/roguecloset/inn,
-/obj/item/clothing/suit/roguetown/shirt/robe/plain,
+/obj/item/clothing/shirt/robe/plain,
 /turf/open/floor/rogue/herringbone,
 /area/rogue)
 "GE" = (
