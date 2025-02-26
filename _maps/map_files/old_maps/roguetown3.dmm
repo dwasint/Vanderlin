@@ -128,7 +128,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue)
 "aaB" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/herringbone,
 /area/rogue)
 "aaC" = (
@@ -910,7 +910,7 @@
 /turf/open/floor/blocks,
 /area/rogue/outdoors/town)
 "adn" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	icon_state = "woodwindowdir";
 	dir = 4
 	},
@@ -3346,7 +3346,7 @@
 /turf/open/floor/blocks,
 /area/rogue)
 "akN" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/dirt/road,
 /area/rogue)
 "akO" = (
@@ -3638,7 +3638,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/rtfield)
 "alM" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/carpet,
 /area/rogue)
 "alN" = (
@@ -3875,7 +3875,7 @@
 /turf/open/floor/carpet,
 /area/rogue)
 "amv" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	icon_state = "woodwindowdir";
 	dir = 4
 	},
@@ -4043,14 +4043,14 @@
 	},
 /area/rogue)
 "amT" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	icon_state = "woodwindowdir";
 	dir = 1
 	},
 /turf/open/floor/woodturned,
 /area/rogue)
 "amU" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	icon_state = "woodwindowdir";
 	dir = 1
 	},
@@ -4124,7 +4124,7 @@
 	},
 /area/rogue)
 "ane" = (
-/obj/structure/roguewindow/stained,
+/obj/structure/window/stained,
 /turf/open/floor/woodturned,
 /area/rogue)
 "anf" = (
@@ -4490,14 +4490,14 @@
 /turf/open/floor/carpet/royalblack,
 /area/rogue)
 "aoh" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	icon_state = "woodwindowdir";
 	dir = 8
 	},
 /turf/closed/wall/mineral/craftstone,
 /area/rogue)
 "aoi" = (
-/obj/structure/roguewindow/stained,
+/obj/structure/window/stained,
 /turf/open/floor/ruinedwood{
 	icon_state = "horzw"
 	},
@@ -4573,7 +4573,7 @@
 	},
 /area/rogue)
 "aov" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	icon_state = "woodwindowdir";
 	dir = 1
 	},
@@ -5036,7 +5036,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue)
 "apN" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	icon_state = "woodwindowdir";
 	dir = 8
 	},
@@ -5129,7 +5129,7 @@
 /turf/open/floor/woodturned,
 /area/rogue)
 "aqa" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/woodturned,
 /area/rogue)
 "aqb" = (
@@ -5144,7 +5144,7 @@
 /turf/open/floor/wood,
 /area/rogue)
 "aqd" = (
-/obj/structure/roguewindow/openclose,
+/obj/structure/window/openclose,
 /turf/open/floor/woodturned,
 /area/rogue)
 "aqe" = (
@@ -5385,7 +5385,7 @@
 /turf/open/floor/woodturned,
 /area/rogue)
 "aqO" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	icon_state = "woodwindowdir";
 	dir = 4
 	},
@@ -5857,7 +5857,7 @@
 /turf/open/floor/ruinedwood,
 /area/rogue/indoors)
 "ask" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	icon_state = "woodwindowdir";
 	dir = 4
 	},
@@ -5921,7 +5921,7 @@
 /turf/open/floor/ruinedwood,
 /area/rogue/indoors)
 "asw" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	icon_state = "woodwindowdir";
 	dir = 1
 	},
@@ -6445,7 +6445,7 @@
 /turf/open/floor/hexstone,
 /area/rogue)
 "auc" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	icon_state = "woodwindowdir";
 	dir = 1
 	},
@@ -6861,14 +6861,14 @@
 /turf/open/floor/tile/bath,
 /area/rogue)
 "avp" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	icon_state = "woodwindowdir";
 	dir = 4
 	},
 /turf/open/floor/rooftop,
 /area/rogue)
 "avq" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	icon_state = "woodwindowdir";
 	dir = 8
 	},
@@ -9157,7 +9157,7 @@
 	},
 /area/rogue)
 "aCN" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/ruinedwood{
 	icon_state = "vertw";
 	dir = 1
@@ -9431,7 +9431,7 @@
 /turf/open/floor/blocks,
 /area/rogue)
 "aDD" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/blocks,
 /area/rogue)
 "aDE" = (
@@ -9491,7 +9491,7 @@
 /turf/open/floor/cobble,
 /area/rogue/indoors)
 "aDP" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	icon_state = "woodwindowdir";
 	dir = 1
 	},
@@ -10178,7 +10178,7 @@
 /turf/open/floor/wood,
 /area/rogue/indoors/town/manor)
 "aFS" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/hexstone,
 /area/rogue/indoors/town/manor)
 "aFT" = (
@@ -10380,7 +10380,7 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
 "aGC" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	icon_state = "woodwindowdir";
 	dir = 1
 	},
@@ -10740,7 +10740,7 @@
 /turf/open/floor/blocks,
 /area/rogue/indoors/town/garrison)
 "aHO" = (
-/obj/structure/roguewindow/stained,
+/obj/structure/window/stained,
 /turf/open/floor/blocks,
 /area/rogue/indoors/town/church)
 "aHP" = (
@@ -10790,7 +10790,7 @@
 /turf/open/floor/cobble,
 /area/rogue/indoors/town/garrison)
 "aHY" = (
-/obj/structure/roguewindow/stained,
+/obj/structure/window/stained,
 /turf/open/floor/cobble,
 /area/rogue/indoors/town/church)
 "aHZ" = (
@@ -11248,7 +11248,7 @@
 /turf/open/floor/herringbone,
 /area/rogue/indoors/town)
 "aJI" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	icon_state = "woodwindowdir";
 	dir = 8
 	},
@@ -11730,7 +11730,7 @@
 /turf/open/lava,
 /area/rogue/under/cavelava)
 "cGv" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	icon_state = "woodwindowdir";
 	dir = 1
 	},
@@ -11798,7 +11798,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/beach)
 "dmH" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/ruinedwood{
 	icon_state = "vertw"
 	},
@@ -11913,7 +11913,7 @@
 	},
 /area/rogue/outdoors/rtfield)
 "eaY" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	icon_state = "woodwindowdir";
 	dir = 8
 	},
@@ -12075,7 +12075,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/under/cave)
 "fQr" = (
-/obj/structure/roguewindow/stained,
+/obj/structure/window/stained,
 /turf/open/floor/ruinedwood{
 	icon_state = "vertw"
 	},
@@ -12477,7 +12477,7 @@
 /turf/open/floor/herringbone,
 /area/rogue/indoors)
 "iRS" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/rtfield)
 "iXT" = (
@@ -12596,7 +12596,7 @@
 /turf/closed/wall/mineral/stone/moss,
 /area/rogue/outdoors/rtfield)
 "kji" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/herringbone,
 /area/rogue/indoors)
 "kjj" = (
@@ -12610,7 +12610,7 @@
 	},
 /area/rogue)
 "klH" = (
-/obj/structure/roguewindow/openclose,
+/obj/structure/window/openclose,
 /turf/open/floor/wood,
 /area/rogue/indoors)
 "kma" = (
@@ -13003,7 +13003,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/beach)
 "ojs" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/dirt/road,
 /area/rogue/indoors)
 "omQ" = (
@@ -13042,7 +13042,7 @@
 	},
 /area/rogue)
 "oBj" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	icon_state = "woodwindowdir";
 	dir = 4
 	},
@@ -13142,7 +13142,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/bog)
 "pmu" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	icon_state = "woodwindowdir";
 	dir = 1
 	},
@@ -13438,7 +13438,7 @@
 /turf/open/floor/wood,
 /area/rogue)
 "rxb" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/ruinedwood{
 	icon_state = "horzw"
 	},
@@ -13518,7 +13518,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/cave)
 "rUg" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -13579,7 +13579,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods)
 "sGn" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	icon_state = "woodwindowdir";
 	dir = 8
 	},

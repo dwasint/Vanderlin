@@ -147,7 +147,7 @@
 		/datum/slapcraft_step/item/glass,
 		/datum/slapcraft_step/item/glass/second,
 		)
-	result_type = /obj/structure/roguewindow/stained
+	result_type = /obj/structure/window/stained
 	craftdiff = 2
 
 
@@ -161,7 +161,7 @@
 		/datum/slapcraft_step/use_item/masonry/hammer/second,
 		/datum/slapcraft_step/item/glass,
 		)
-	result_type = /obj/structure/roguewindow/openclose
+	result_type = /obj/structure/window/openclose
 
 /datum/slapcraft_recipe/masonry/structure/window
 	name = "solid glass window"
@@ -171,4 +171,4 @@
 		/datum/slapcraft_step/use_item/masonry/hammer,
 		/datum/slapcraft_step/item/glass,
 		)
-	result_type = /obj/structure/roguewindow/solid
+	result_type = /obj/structure/window/solid

@@ -413,7 +413,7 @@
 /turf/open/floor/ruinedwood,
 /area/rogue)
 "od" = (
-/obj/structure/roguewindow/openclose,
+/obj/structure/window/openclose,
 /turf,
 /area/rogue)
 "og" = (
@@ -1060,7 +1060,7 @@
 /turf/open/floor/twig,
 /area/rogue)
 "Jl" = (
-/obj/structure/roguewindow/openclose,
+/obj/structure/window/openclose,
 /turf/open/floor/woodturned,
 /area/rogue)
 "Jn" = (
@@ -1074,7 +1074,7 @@
 /turf/open/floor/grass,
 /area/rogue)
 "Jt" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/closed/wall/mineral/wood/window,
 /area/rogue)
 "JH" = (
@@ -1153,7 +1153,7 @@
 /turf/open/floor/grass,
 /area/rogue)
 "Lu" = (
-/obj/structure/roguewindow/stained,
+/obj/structure/window/stained,
 /turf/open/floor/grass,
 /area/rogue)
 "Mg" = (
@@ -1280,7 +1280,7 @@
 /turf/closed/wall/mineral/tent,
 /area/rogue)
 "QU" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf,
 /area/rogue)
 "Rc" = (
@@ -1296,7 +1296,7 @@
 /turf/open/water,
 /area/rogue)
 "Rp" = (
-/obj/structure/roguewindow/stained,
+/obj/structure/window/stained,
 /turf/open/floor/dirt/road,
 /area/rogue)
 "Rq" = (

@@ -121,7 +121,7 @@
 /turf/closed/wall/mineral/stone/moss,
 /area/rogue)
 "fK" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 4
 	},
 /turf/open/floor/blocks,
@@ -195,7 +195,7 @@
 /turf/open/floor/tile,
 /area/rogue)
 "kz" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 1
 	},
 /turf/open/floor/blocks,
@@ -1077,7 +1077,7 @@
 	},
 /area/rogue)
 "WB" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 8
 	},
 /turf/open/floor/blocks,
@@ -1087,7 +1087,7 @@
 /turf/open/floor/cobble/mossy,
 /area/rogue)
 "WI" = (
-/obj/structure/roguewindow/openclose,
+/obj/structure/window/openclose,
 /turf/open/floor/blocks,
 /area/rogue)
 "WM" = (

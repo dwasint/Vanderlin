@@ -2059,7 +2059,7 @@
 /turf/open/floor/woodturned,
 /area/rogue/indoors/town)
 "hs" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/ruinedwood/spiral{
 	dir = 4
 	},
@@ -3010,7 +3010,7 @@
 /turf/open/floor/blocks/stonered,
 /area/rogue/indoors/town/dwarfin)
 "kr" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	icon_state = "woodwindowdir";
 	dir = 4
 	},
@@ -3266,7 +3266,7 @@
 /turf/open/water/swamp,
 /area/rogue/under/lake)
 "le" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/ruinedwood{
 	icon_state = "horzw"
 	},
@@ -3617,7 +3617,7 @@
 /turf/open/floor/tile/masonic,
 /area/rogue/indoors/town/manor)
 "mH" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/ruinedwood{
 	icon_state = "vertw";
 	dir = 1
@@ -4874,7 +4874,7 @@
 /turf/open/floor/herringbone,
 /area/rogue/indoors/town/bath)
 "rm" = (
-/obj/structure/roguewindow/openclose,
+/obj/structure/window/openclose,
 /turf/open/floor/woodturned,
 /area/rogue/indoors/town/tavern)
 "ro" = (
@@ -5236,7 +5236,7 @@
 /turf/open/floor/wood,
 /area/rogue/indoors/town/church)
 "sL" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	icon_state = "woodwindowdir";
 	dir = 8
 	},
@@ -5264,7 +5264,7 @@
 /turf/open/floor/woodturned,
 /area/rogue/indoors/town/tavern)
 "sP" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	icon_state = "woodwindowdir";
 	dir = 8
 	},
@@ -5556,7 +5556,7 @@
 /turf/open/floor/carpet/purple,
 /area/rogue/indoors/town/shop)
 "tV" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	icon_state = "woodwindowdir";
 	dir = 1
 	},
@@ -6241,7 +6241,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/indoors/town/dwarfin)
 "ww" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/ruinedwood{
 	icon_state = "vertw";
 	dir = 1
@@ -6555,7 +6555,7 @@
 /turf/open/floor/cobble,
 /area/rogue/indoors/town/dwarfin)
 "xK" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -6832,7 +6832,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/town)
 "yL" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/ruinedwood,
 /area/rogue/indoors/town/dwarfin)
 "yM" = (
@@ -6875,11 +6875,11 @@
 /turf/closed/wall/mineral/decowood,
 /area/rogue/indoors/town)
 "yY" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/ruinedwood,
 /area/rogue/indoors/town)
 "yZ" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	icon_state = "woodwindowdir";
 	dir = 1
 	},
@@ -7166,7 +7166,7 @@
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/town/tavern)
 "Ai" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	icon_state = "woodwindowdir";
 	dir = 1
 	},
@@ -7318,7 +7318,7 @@
 /turf/open/floor/woodturned,
 /area/rogue/indoors/town/tavern)
 "AK" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	icon_state = "woodwindowdir";
 	dir = 4
 	},
@@ -7427,7 +7427,7 @@
 	},
 /area/rogue/indoors/town/tavern)
 "Bd" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	icon_state = "woodwindowdir";
 	dir = 8
 	},
@@ -8123,7 +8123,7 @@
 /turf/closed/wall/mineral/craftstone,
 /area/rogue/under/town/sewer)
 "DE" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -8276,7 +8276,7 @@
 /turf/open/floor/carpet,
 /area/rogue/indoors/town/manor)
 "Eh" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	icon_state = "woodwindowdir";
 	dir = 1
 	},
@@ -8485,7 +8485,7 @@
 	},
 /area/rogue/indoors/town/church)
 "EX" = (
-/obj/structure/roguewindow/stained,
+/obj/structure/window/stained,
 /turf/open/floor/blocks,
 /area/rogue/indoors/town/church)
 "EY" = (
@@ -8572,7 +8572,7 @@
 	},
 /area/rogue/indoors/town/church/chapel)
 "Fq" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -8810,11 +8810,11 @@
 /turf/open/floor/churchrough,
 /area/rogue/indoors/town/church/chapel)
 "Gh" = (
-/obj/structure/roguewindow/openclose,
+/obj/structure/window/openclose,
 /turf/closed/wall/mineral/craftstone,
 /area/rogue/indoors/town)
 "Gi" = (
-/obj/structure/roguewindow/openclose,
+/obj/structure/window/openclose,
 /turf/open/floor/woodturned,
 /area/rogue/indoors/town/garrison)
 "Gj" = (
@@ -9161,7 +9161,7 @@
 /turf/open/floor/herringbone,
 /area/rogue/indoors/town/church)
 "Ht" = (
-/obj/structure/roguewindow/stained{
+/obj/structure/window/stained{
 	opacity = 0
 	},
 /turf/open/floor/blocks,
@@ -9195,7 +9195,7 @@
 /turf/open/floor/tile/tilerg,
 /area/rogue/indoors/town)
 "Hz" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	icon_state = "woodwindowdir";
 	dir = 4
 	},
@@ -9226,7 +9226,7 @@
 	},
 /area/rogue/indoors/town/garrison)
 "HE" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	icon_state = "woodwindowdir";
 	dir = 8
 	},
@@ -9550,7 +9550,7 @@
 	},
 /area/rogue/indoors/town/dwarfin)
 "IG" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	icon_state = "woodwindowdir";
 	dir = 4
 	},
@@ -9640,7 +9640,7 @@
 /turf/open/floor/carpet,
 /area/rogue/indoors/town)
 "IW" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	icon_state = "woodwindowdir";
 	dir = 1
 	},
@@ -9766,7 +9766,7 @@
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/garrison)
 "Jo" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	icon_state = "woodwindowdir";
 	dir = 8
 	},
@@ -9835,7 +9835,7 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield)
 "Jz" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/ruinedwood{
 	icon_state = "horzw"
 	},
@@ -9990,7 +9990,7 @@
 	},
 /area/rogue/indoors/town/shop)
 "Ka" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	icon_state = "woodwindowdir";
 	dir = 8
 	},
@@ -10300,7 +10300,7 @@
 	},
 /area/rogue/under/cave)
 "Lh" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/ruinedwood{
 	icon_state = "horzw"
 	},
@@ -10320,11 +10320,11 @@
 /turf/open/transparent/openspace,
 /area/rogue/under/town/basement)
 "Lk" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/closed/wall/mineral/wooddark/window,
 /area/rogue/indoors/town)
 "Ll" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -10405,11 +10405,11 @@
 /turf/open/floor/woodturned,
 /area/rogue/indoors/town/dwarfin)
 "LH" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	icon_state = "woodwindowdir";
 	dir = 1
 	},
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/ruinedwood{
 	icon_state = "horzw"
 	},
@@ -10505,7 +10505,7 @@
 	},
 /area/rogue/indoors/town/magician)
 "Mb" = (
-/obj/structure/roguewindow/openclose,
+/obj/structure/window/openclose,
 /turf/open/floor/woodturned,
 /area/rogue/indoors/town)
 "Mc" = (
@@ -10585,7 +10585,7 @@
 /turf/open/floor/wood,
 /area/rogue/indoors/town/magician)
 "Mp" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -10682,7 +10682,7 @@
 /turf/open/floor/blocks,
 /area/rogue/outdoors/town)
 "MF" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/tile{
 	icon_state = "chess"
 	},
@@ -10821,7 +10821,7 @@
 /turf/open/floor/churchrough,
 /area/rogue/indoors/town/church)
 "Ni" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/churchrough,
 /area/rogue/indoors/town/church)
 "Nj" = (
@@ -10889,7 +10889,7 @@
 	},
 /area/rogue/indoors/town)
 "Nu" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	icon_state = "woodwindowdir";
 	dir = 8
 	},
@@ -10996,7 +10996,7 @@
 /turf/open/floor/cobble,
 /area/rogue/indoors/town)
 "NM" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -11044,7 +11044,7 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield)
 "NU" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/ruinedwood{
 	icon_state = "horzw"
 	},
@@ -11079,7 +11079,7 @@
 /turf/closed/wall/mineral/wooddark/end,
 /area/rogue/outdoors/mountains)
 "Od" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -11249,7 +11249,7 @@
 	},
 /area/rogue/outdoors/mountains)
 "OO" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	icon_state = "woodwindowdir";
 	dir = 4
 	},
@@ -12153,7 +12153,7 @@
 	},
 /area/rogue/indoors)
 "Te" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/dirt/road,
 /area/rogue/indoors/town)
 "Tg" = (
@@ -12235,7 +12235,7 @@
 /turf/open/floor/carpet/purple,
 /area/rogue/indoors/town/shop)
 "Tq" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/wood,
 /area/rogue/indoors/town/church)
 "Tr" = (
@@ -12243,7 +12243,7 @@
 /turf/open/floor/cobble,
 /area/rogue/outdoors/exposed/dwarf)
 "Ts" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -12259,7 +12259,7 @@
 /turf/open/water/bath,
 /area/rogue/indoors/town/bath)
 "Tv" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -12464,11 +12464,11 @@
 /turf/open/water/sewer,
 /area/rogue/under/town/sewer)
 "Uq" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	icon_state = "woodwindowdir";
 	dir = 4
 	},
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -12883,7 +12883,7 @@
 /turf/open/floor/blocks/stonered/tiny,
 /area/rogue/indoors/town/bath)
 "Wg" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/tile{
 	icon_state = "chess"
 	},
@@ -13018,7 +13018,7 @@
 /turf/open/floor/blocks,
 /area/rogue/indoors/town)
 "WN" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -13524,7 +13524,7 @@
 	},
 /area/rogue/indoors)
 "Zj" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/ruinedwood{
 	icon_state = "vertw";
 	dir = 1
@@ -13576,7 +13576,7 @@
 /turf/open/floor/wood,
 /area/rogue/indoors/town/tavern)
 "Zu" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/closed/wall/mineral/roofwall/middle{
 	dir = 1
 	},

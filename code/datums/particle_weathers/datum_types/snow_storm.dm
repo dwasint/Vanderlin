@@ -110,8 +110,8 @@
 		var/obj/structure/mineral_door/door = locate(/obj/structure/mineral_door) in src
 		if(door.density)
 			return
-	if(locate(/obj/structure/roguewindow) in src)
-		var/obj/structure/roguewindow/door = locate(/obj/structure/roguewindow) in src
+	if(locate(/obj/structure/window) in src)
+		var/obj/structure/window/door = locate(/obj/structure/window) in src
 		if(!door.climbable)
 			return
 

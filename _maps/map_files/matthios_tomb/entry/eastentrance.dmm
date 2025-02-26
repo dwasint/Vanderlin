@@ -181,7 +181,7 @@
 /turf/open/floor/herringbone,
 /area/rogue)
 "Bz" = (
-/obj/structure/roguewindow/openclose,
+/obj/structure/window/openclose,
 /turf/closed/wall/mineral/stone/window,
 /area/rogue)
 "CX" = (

@@ -195,7 +195,7 @@
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/river)
 "agX" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 8
 	},
 /obj/structure/bars/alt{
@@ -298,7 +298,7 @@
 	},
 /area/rogue/indoors/town/shop)
 "aku" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 1
 	},
 /turf/open/floor/blocks,
@@ -328,7 +328,7 @@
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue/indoors/town/garrison)
 "amf" = (
-/obj/structure/roguewindow/openclose,
+/obj/structure/window/openclose,
 /turf/open/floor/ruinedwood{
 	icon_state = "horzw"
 	},
@@ -942,7 +942,7 @@
 	},
 /area/rogue/under/town/sewer)
 "aFT" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 8
 	},
 /turf/open/floor/woodturned/nosmooth,
@@ -955,7 +955,7 @@
 /area/rogue/indoors/town/smithy)
 "aFX" = (
 /obj/structure/fake_machine/mail,
-/obj/structure/roguewindow/stained,
+/obj/structure/window/stained,
 /turf/open/floor/church,
 /area/rogue/indoors/town/clinic_large)
 "aGa" = (
@@ -1178,7 +1178,7 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/under/town/sewer)
 "aNw" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /obj/structure/curtain/bounty{
 	color = "grey"
 	},
@@ -1211,7 +1211,7 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors/mountains)
 "aOn" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 8
 	},
 /turf/open/floor/ruinedwood/darker,
@@ -1255,7 +1255,7 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
 "aPo" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 8
 	},
 /turf/open/floor/woodturned,
@@ -1422,7 +1422,7 @@
 /turf/open/floor/tile,
 /area/rogue/indoors/town/magician)
 "aUJ" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 8
 	},
 /turf/open/floor/wood,
@@ -1778,7 +1778,7 @@
 /turf/open/water,
 /area/rogue/outdoors/river)
 "bjC" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 4
 	},
 /turf/open/floor/hexstone,
@@ -2550,7 +2550,7 @@
 	},
 /area/rogue/indoors/town/manor)
 "bKc" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 4
 	},
 /turf/open/floor/ruinedwood/spiral,
@@ -3538,7 +3538,7 @@
 /turf/open/floor/wood,
 /area/rogue/indoors/town)
 "cvO" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/blocks,
 /area/rogue/indoors/town/clocktower)
 "cvS" = (
@@ -3740,7 +3740,7 @@
 /turf/open/floor/concrete,
 /area/rogue/indoors/town/shop)
 "cCV" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 4
 	},
 /turf/open/floor/woodturned/nosmooth,
@@ -4116,7 +4116,7 @@
 	},
 /area/rogue/indoors/town/clocktower)
 "cQq" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 4
 	},
 /turf/open/floor/ruinedwood/spiral,
@@ -4985,7 +4985,7 @@
 	},
 /area/rogue/indoors/town)
 "dDQ" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 8
 	},
 /turf/open/floor/wood,
@@ -5118,7 +5118,7 @@
 /turf/open/floor/hexstone,
 /area/rogue/indoors/town/church)
 "dIc" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 4
 	},
 /turf/open/floor/wood,
@@ -5223,7 +5223,7 @@
 /turf/open/floor/church,
 /area/rogue/indoors/town/church/chapel)
 "dMz" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 4
 	},
 /turf/open/floor/ruinedwood/turned,
@@ -5234,7 +5234,7 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield/safe)
 "dNc" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 4
 	},
 /turf/open/floor/tile,
@@ -6286,7 +6286,7 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors/woods_safe)
 "eve" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 1
 	},
 /turf/open/floor/tile,
@@ -6437,8 +6437,8 @@
 /turf/open/floor/blocks/paving,
 /area/rogue/indoors/town)
 "eAp" = (
-/obj/structure/roguewindow/solid,
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
+/obj/structure/window/solid,
 /turf/open/floor/wood,
 /area/rogue/indoors/town)
 "eAM" = (
@@ -6852,7 +6852,7 @@
 /turf/open/floor/carpet,
 /area/rogue/indoors/town/merc_guild)
 "eOu" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/woodturned,
 /area/rogue/indoors/town)
 "ePm" = (
@@ -7375,7 +7375,7 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/outdoors/river)
 "fiE" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 1
 	},
 /turf/open/floor/carpet,
@@ -7735,7 +7735,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/town)
 "fvJ" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/wood,
 /area/rogue/indoors/town)
 "fvY" = (
@@ -8819,7 +8819,7 @@
 /turf/open/floor/twig,
 /area/rogue/under/town/basement)
 "god" = (
-/obj/structure/roguewindow/openclose,
+/obj/structure/window/openclose,
 /turf/open/floor/ruinedwood,
 /area/rogue/indoors/town)
 "gol" = (
@@ -9344,7 +9344,7 @@
 /turf/open/water/river,
 /area/rogue/outdoors/river)
 "gFW" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 1
 	},
 /turf/open/floor/woodturned,
@@ -9625,7 +9625,7 @@
 /turf/closed/mineral/random/low_nonval,
 /area/rogue/under/town/caverogue)
 "gRe" = (
-/obj/structure/roguewindow/openclose,
+/obj/structure/window/openclose,
 /turf/open/floor/woodturned,
 /area/rogue/indoors/town/manor)
 "gRj" = (
@@ -9831,7 +9831,7 @@
 	},
 /area/rogue/indoors/town/church/chapel)
 "gWT" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 4
 	},
 /turf/open/floor/woodturned/nosmooth,
@@ -10013,7 +10013,7 @@
 /turf/open/floor/metal,
 /area/rogue/indoors/town/clocktower)
 "hgf" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 1
 	},
 /turf/open/floor/ruinedwood{
@@ -10982,7 +10982,7 @@
 	},
 /area/rogue/outdoors/town/roofs)
 "hRa" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/herringbone,
 /area/rogue/indoors/town/smithy)
 "hRl" = (
@@ -10997,7 +10997,7 @@
 /turf/open/floor/churchmarble,
 /area/rogue/indoors/town/church/chapel)
 "hRC" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 1
 	},
 /turf/open/floor/wood,
@@ -11459,14 +11459,14 @@
 /turf/open/floor/hexstone,
 /area/rogue/indoors/town/steward)
 "ijP" = (
-/obj/structure/roguewindow/openclose,
+/obj/structure/window/openclose,
 /turf/open/floor/wood,
 /area/rogue/indoors/town/merc_guild)
 "ikG" = (
 /turf/open/floor/hexstone,
 /area/rogue/indoors/villagegarrison)
 "ikW" = (
-/obj/structure/roguewindow/openclose,
+/obj/structure/window/openclose,
 /turf/open/floor/wood,
 /area/rogue/indoors/town/tavern)
 "ilD" = (
@@ -11508,7 +11508,7 @@
 /area/rogue/indoors/butchershop)
 "inB" = (
 /obj/machinery/light/fueled/wallfire/candle/blue,
-/obj/structure/roguewindow/stained,
+/obj/structure/window/stained,
 /turf/open/floor/churchmarble,
 /area/rogue/indoors/town/clinic_large)
 "inE" = (
@@ -11715,7 +11715,7 @@
 /turf/open/floor/herringbone,
 /area/rogue/indoors/town)
 "ivr" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 8
 	},
 /turf/open/floor/blocks,
@@ -11854,7 +11854,7 @@
 /turf/open/floor/wood,
 /area/rogue/indoors/town/magician)
 "izu" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 4
 	},
 /turf/open/floor/wood,
@@ -12629,7 +12629,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/town/basement)
 "iYy" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/tile/kitchen,
 /area/rogue/indoors/town)
 "iYC" = (
@@ -12639,7 +12639,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield/safe)
 "iYE" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 4
 	},
 /turf/open/floor/woodturned,
@@ -12691,7 +12691,7 @@
 /turf/open/floor/ruinedwood/darker,
 /area/rogue/indoors/town/magician)
 "jaW" = (
-/obj/structure/roguewindow/openclose,
+/obj/structure/window/openclose,
 /turf/open/floor/ruinedwood{
 	icon_state = "horzw"
 	},
@@ -13497,7 +13497,7 @@
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/magician)
 "jGs" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 4
 	},
 /turf/open/transparent/openspace,
@@ -14244,7 +14244,7 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/indoors/town/smithy)
 "kfx" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 1
 	},
 /turf/open/floor/blocks{
@@ -14433,7 +14433,7 @@
 /turf/open/floor/blocks/paving,
 /area/rogue/under/town/basement)
 "klx" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 4
 	},
 /turf/open/floor/woodturned,
@@ -14776,7 +14776,7 @@
 /turf/open/floor/cobble,
 /area/rogue/indoors/town/church)
 "kAa" = (
-/obj/structure/roguewindow,
+/obj/structure/window,
 /turf/open/floor/blocks,
 /area/rogue/indoors/town/shop)
 "kAg" = (
@@ -15233,7 +15233,7 @@
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/garrison)
 "kQA" = (
-/obj/structure/roguewindow/stained,
+/obj/structure/window/stained,
 /turf/open/floor/church,
 /area/rogue/indoors/town/church/chapel)
 "kQB" = (
@@ -15271,7 +15271,7 @@
 /turf/open/floor/woodturned,
 /area/rogue/indoors/town/tavern)
 "kTP" = (
-/obj/structure/roguewindow/stained,
+/obj/structure/window/stained,
 /turf/open/floor/hexstone,
 /area/rogue/indoors/town/church)
 "kTV" = (
@@ -15419,7 +15419,7 @@
 /turf/open/floor/dirt,
 /area/rogue/indoors/town/shop)
 "kZi" = (
-/obj/structure/roguewindow/openclose,
+/obj/structure/window/openclose,
 /turf/open/floor/tile{
 	icon_state = "tavern"
 	},
@@ -15511,7 +15511,7 @@
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/manor)
 "ldm" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 4
 	},
 /turf/open/floor/wood,
@@ -15995,7 +15995,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield)
 "lzw" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/blocks,
 /area/rogue/indoors/town/smithy)
 "lzy" = (
@@ -16667,7 +16667,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/town/basement)
 "mev" = (
-/obj/structure/roguewindow/openclose,
+/obj/structure/window/openclose,
 /turf/open/floor/carpet,
 /area/rogue/indoors/town/steward)
 "mex" = (
@@ -17190,7 +17190,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/town)
 "mBc" = (
-/obj/structure/roguewindow/openclose,
+/obj/structure/window/openclose,
 /turf/open/floor/ruinedwood,
 /area/rogue/indoors/town/tavern)
 "mBo" = (
@@ -18211,7 +18211,7 @@
 /turf/open/floor/tile/tilerg,
 /area/rogue/indoors/town/bath)
 "nmp" = (
-/obj/structure/roguewindow/openclose,
+/obj/structure/window/openclose,
 /turf/open/floor/woodturned,
 /area/rogue/indoors/town/tavern)
 "nmq" = (
@@ -18335,7 +18335,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/town/sewer)
 "nrZ" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 4
 	},
 /turf/open/floor/ruinedwood{
@@ -18445,7 +18445,7 @@
 /turf/open/floor/churchrough,
 /area/rogue/indoors/town/church/chapel)
 "nwG" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 8
 	},
 /turf/open/floor/metal{
@@ -18932,7 +18932,7 @@
 /turf/open/floor/cobble/mossy,
 /area/rogue/outdoors/rtfield)
 "nLu" = (
-/obj/structure/roguewindow/stained,
+/obj/structure/window/stained,
 /turf/open/floor/church,
 /area/rogue/indoors/town/church)
 "nLA" = (
@@ -19338,7 +19338,7 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors/town/roofs)
 "ocM" = (
-/obj/structure/roguewindow/openclose,
+/obj/structure/window/openclose,
 /obj/structure/bars/passage/shutter/open{
 	redstone_id = "orphanagelockdown"
 	},
@@ -19798,7 +19798,7 @@
 /obj/structure/curtain/bounty{
 	color = "grey"
 	},
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue/indoors/town)
 "oxT" = (
@@ -21135,11 +21135,11 @@
 /turf/open/floor/wood,
 /area/rogue/indoors/town)
 "pyS" = (
-/obj/structure/roguewindow/stained,
+/obj/structure/window/stained,
 /turf/open/floor/churchmarble,
 /area/rogue/indoors/town/clinic_large)
 "pzf" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 1
 	},
 /turf/open/floor/ruinedwood/turned,
@@ -21314,7 +21314,7 @@
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/magician)
 "pGD" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 8
 	},
 /turf/open/floor/wood,
@@ -22971,7 +22971,7 @@
 /turf/open/floor/wood,
 /area/rogue/indoors/town/tavern)
 "qTL" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 8
 	},
 /turf/open/floor/ruinedwood/spiral,
@@ -23015,7 +23015,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield/safe)
 "qUL" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 4
 	},
 /turf/open/floor/ruinedwood/spiralfade,
@@ -23351,7 +23351,7 @@
 /turf/open/floor/tile/masonic/single,
 /area/rogue/indoors/town)
 "rjz" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/metal/barograte,
 /area/rogue/indoors/town/clocktower)
 "rjL" = (
@@ -24035,7 +24035,7 @@
 	},
 /area/rogue/indoors/town/manor)
 "rJS" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /obj/structure/curtain/bounty{
 	color = "grey"
 	},
@@ -24593,7 +24593,7 @@
 /turf/open/floor/tile/bfloorz,
 /area/rogue/indoors/town/bath)
 "seq" = (
-/obj/structure/roguewindow/stained,
+/obj/structure/window/stained,
 /turf/open/floor/churchmarble,
 /area/rogue/indoors/town/church)
 "seP" = (
@@ -24801,7 +24801,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/town/basement)
 "snb" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 8
 	},
 /turf/open/floor/wood,
@@ -25985,7 +25985,7 @@
 /turf/open/floor/churchrough,
 /area/rogue/indoors/town/church/inquisition)
 "tbp" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 8
 	},
 /turf/open/floor/woodturned,
@@ -26089,7 +26089,7 @@
 /turf/open/floor/tile/masonic/spiral,
 /area/rogue/under/town/basement)
 "tfA" = (
-/obj/structure/roguewindow/openclose,
+/obj/structure/window/openclose,
 /turf/open/floor/metal,
 /area/rogue/outdoors/mountains)
 "tfC" = (
@@ -26683,7 +26683,7 @@
 /turf/open/floor/church,
 /area/rogue/indoors/town/clinic_large)
 "tzM" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/ruinedwood,
 /area/rogue/indoors/town/tavern)
 "tzO" = (
@@ -26888,7 +26888,7 @@
 	},
 /area/rogue/indoors/town/magician)
 "tGv" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 8
 	},
 /turf/open/floor/ruinedwood/turned,
@@ -27020,7 +27020,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/town)
 "tKI" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 8
 	},
 /turf/open/floor/woodturned/nosmooth,
@@ -27245,7 +27245,7 @@
 /turf/open/water/river,
 /area/rogue/outdoors/town)
 "tQB" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/indoors/town/smithy)
 "tQG" = (
@@ -27451,7 +27451,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/town)
 "tZj" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /obj/structure/curtain/bounty{
 	color = "grey"
 	},
@@ -27548,7 +27548,7 @@
 /obj/structure/curtain/bounty{
 	color = "grey"
 	},
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 4
 	},
 /turf/open/floor/wood,
@@ -27816,7 +27816,7 @@
 /turf/closed,
 /area/rogue/under/town/sewer)
 "umv" = (
-/obj/structure/roguewindow/openclose,
+/obj/structure/window/openclose,
 /turf/open/floor/ruinedwood{
 	dir = 1;
 	icon_state = "vertw"
@@ -28417,7 +28417,7 @@
 /turf/open/transparent/openspace,
 /area/rogue/indoors/butchershop)
 "uFx" = (
-/obj/structure/roguewindow/openclose,
+/obj/structure/window/openclose,
 /turf/open/floor/woodturned/nosmooth,
 /area/rogue/indoors/soilsons)
 "uFW" = (
@@ -29222,7 +29222,7 @@
 /turf/open/floor/church,
 /area/rogue/indoors/town/clinic_large)
 "vlc" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/wood,
 /area/rogue/indoors/villagegarrison)
 "vlf" = (
@@ -29506,7 +29506,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/indoors/town/cell)
 "vwk" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 1
 	},
 /obj/structure/bars/bent,
@@ -29583,7 +29583,7 @@
 /turf/open/floor/blocks/newstone,
 /area/rogue/indoors/town/manor)
 "vzW" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/rooftop,
 /area/rogue/indoors/town/garrison)
 "vzY" = (
@@ -29961,7 +29961,7 @@
 /turf/open/floor/blocks/stonered/tiny,
 /area/rogue/indoors/town/bath)
 "vOg" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 4
 	},
 /turf/open/floor/ruinedwood{
@@ -31033,7 +31033,7 @@
 /turf/open/floor/tile,
 /area/rogue/indoors/town/church)
 "wDw" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 4
 	},
 /turf/open/floor/blocks,
@@ -31656,7 +31656,7 @@
 /turf/open/floor/tile,
 /area/rogue/indoors/town/manor)
 "wZx" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 1
 	},
 /turf/open/floor/wood,
@@ -32117,7 +32117,7 @@
 	},
 /area/rogue/indoors/town)
 "xuT" = (
-/obj/structure/roguewindow/openclose{
+/obj/structure/window/openclose{
 	dir = 1
 	},
 /turf/open/floor/wood/nosmooth,
@@ -32839,7 +32839,7 @@
 /turf/open/floor/churchbrick,
 /area/rogue/under/town/sewer)
 "xVZ" = (
-/obj/structure/roguewindow/stained,
+/obj/structure/window/stained,
 /turf/open/floor/church,
 /area/rogue/indoors/town/clinic_large)
 "xWa" = (
@@ -32918,7 +32918,7 @@
 /turf/open/floor/tile,
 /area/rogue/indoors/town/garrison)
 "xYL" = (
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
 /turf/open/floor/wood,
 /area/rogue/indoors/town/tavern)
 "xZb" = (

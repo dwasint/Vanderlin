@@ -683,9 +683,9 @@
 /turf/open/water/swamp,
 /area/rogue)
 "JL" = (
-/obj/structure/roguewindow/solid,
-/obj/structure/roguewindow/solid,
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
+/obj/structure/window/solid,
+/obj/structure/window/solid,
 /turf/closed/indestructible/roguewindow,
 /area/rogue)
 "JQ" = (
@@ -796,10 +796,10 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "Or" = (
-/obj/structure/roguewindow/solid,
-/obj/structure/roguewindow,
-/obj/structure/roguewindow/solid,
-/obj/structure/roguewindow/solid,
+/obj/structure/window/solid,
+/obj/structure/window,
+/obj/structure/window/solid,
+/obj/structure/window/solid,
 /turf/closed/indestructible/roguewindow,
 /area/rogue)
 "Pb" = (

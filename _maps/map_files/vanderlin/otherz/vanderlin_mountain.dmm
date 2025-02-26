@@ -271,7 +271,7 @@
 /turf/closed/mineral/random/med,
 /area/rogue/outdoors/mountains/anvil/lavaexposed)
 "eW" = (
-/obj/structure/roguewindow,
+/obj/structure/window,
 /turf/closed,
 /area/rogue/outdoors/mountains/anvil/snowyforest)
 "eZ" = (
@@ -1409,7 +1409,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/lower/building)
 "wb" = (
-/obj/structure/roguewindow/stained,
+/obj/structure/window/stained,
 /obj/structure/barricade/rogue/crude,
 /turf/open/floor/church,
 /area/rogue/under/mountains/anvil/lower)
@@ -2687,7 +2687,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/lower/building)
 "QJ" = (
-/obj/structure/roguewindow,
+/obj/structure/window,
 /turf/open/floor/wood/nosmooth/saiga,
 /area/rogue/outdoors/mountains/anvil/snowyforest)
 "QM" = (
@@ -2847,7 +2847,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/lower/building)
 "TC" = (
-/obj/structure/roguewindow,
+/obj/structure/window,
 /turf/open/floor/wood/nosmooth/saiga,
 /area/rogue/indoors/mountains/anvil/surface/building)
 "TE" = (
