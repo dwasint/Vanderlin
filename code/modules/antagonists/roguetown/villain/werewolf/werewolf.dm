@@ -161,7 +161,7 @@
 	miss_sound = "bluntwooshlarge"
 	item_damage_type = "slash"
 
-/obj/item/rogueweapon/werewolf_claw
+/obj/item/weapon/werewolf_claw
 	name = "Verevolf Claw"
 	desc = ""
 	item_state = null
@@ -187,13 +187,13 @@
 	item_flags = DROPDEL
 	walking_stick = TRUE
 
-/obj/item/rogueweapon/werewolf_claw/right
+/obj/item/weapon/werewolf_claw/right
 	icon_state = "claw_r"
 
-/obj/item/rogueweapon/werewolf_claw/left
+/obj/item/weapon/werewolf_claw/left
 	icon_state = "claw_l"
 
-/obj/item/rogueweapon/werewolf_claw/Initialize()
+/obj/item/weapon/werewolf_claw/Initialize()
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOEMBED, TRAIT_GENERIC)

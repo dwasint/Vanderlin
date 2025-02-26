@@ -58,7 +58,7 @@
 	name = "Iron Chain Chausses"
 	recipe_name = "a pair of Chain Chausses"
 	req_bar = /obj/item/ingot/iron
-	created_item = /obj/item/clothing/under/roguetown/chainlegs/iron
+	created_item = /obj/item/clothing/pants/chainlegs/iron
 	craftdiff = 0
 
 /datum/anvil_recipe/armor/iron/chaincoif
@@ -172,7 +172,7 @@
 	name = "Chain Chausses"
 	recipe_name = "a pair of Chain Chausses"
 	req_bar = /obj/item/ingot/steel
-	created_item = /obj/item/clothing/under/roguetown/chainlegs
+	created_item = /obj/item/clothing/pants/chainlegs
 	craftdiff = 2
 
 /datum/anvil_recipe/armor/steel/chaincoif
@@ -284,7 +284,7 @@
 	name = "Plate Chausses"
 	recipe_name = "a pair of Plate Chausses"
 	req_bar = /obj/item/ingot/steel
-	created_item = /obj/item/clothing/under/roguetown/platelegs
+	created_item = /obj/item/clothing/pants/platelegs
 	craftdiff = 3
 
 /datum/anvil_recipe/armor/steel/plateglove
@@ -386,7 +386,7 @@
 	name = "Blacksteel Plate Chausses (+Bar)"
 	req_bar = /obj/item/ingot/blacksteel
 	additional_items = list(/obj/item/ingot/blacksteel)
-	created_item = /obj/item/clothing/under/roguetown/platelegs/blk
+	created_item = /obj/item/clothing/pants/platelegs/blk
 	craftdiff = 3
 
 /datum/anvil_recipe/armor/blacksteel/bucket

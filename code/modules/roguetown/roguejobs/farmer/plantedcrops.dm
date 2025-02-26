@@ -160,7 +160,7 @@
 		to_chat(user, "<span class='warning'>Something is already growing here.</span>")
 		return
 
-	if(istype(I, /obj/item/rogueweapon/sickle))
+	if(istype(I, /obj/item/weapon/sickle))
 		if(myseed)
 			if(php <= 0)
 				to_chat(user, "<span class='warning'>This crop has perished.</span>")
@@ -193,7 +193,7 @@
 					update_seed_icon()
 		return
 
-	if(istype(I, /obj/item/rogueweapon/hoe))
+	if(istype(I, /obj/item/weapon/hoe))
 		if(user.used_intent.type == /datum/intent/till)
 			if(php <= 0)
 				playsound(src,'sound/items/seed.ogg', 100, FALSE)

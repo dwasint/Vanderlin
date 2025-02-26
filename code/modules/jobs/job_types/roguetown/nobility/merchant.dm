@@ -33,7 +33,7 @@
 	neck = /obj/item/clothing/neck/roguetown/horus
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/veryrich = 1, /obj/item/merctoken = 1)
-	beltr = /obj/item/rogueweapon/sword/rapier
+	beltr = /obj/item/weapon/sword/rapier
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
 	beltl = /obj/item/storage/keyring/merchant
 	armor = /obj/item/clothing/suit/roguetown/shirt/robe/merchant
@@ -42,7 +42,7 @@
 
 	if(H.gender == MALE)
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
-		pants = /obj/item/clothing/under/roguetown/tights/sailor
+		pants = /obj/item/clothing/pants/tights/sailor
 		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	else
 		shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/blue

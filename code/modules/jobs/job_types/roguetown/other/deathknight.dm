@@ -93,12 +93,12 @@
 
 
 	belt = /obj/item/storage/belt/rogue/leather
-	pants = /obj/item/clothing/under/roguetown/platelegs/blk/death
+	pants = /obj/item/clothing/pants/platelegs/blk/death
 	shoes = /obj/item/clothing/shoes/roguetown/boots/armor/blkknight
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/blkknight/death
 	gloves = /obj/item/clothing/gloves/roguetown/plate/blk/death
-	backl = /obj/item/rogueweapon/sword/long/death
+	backl = /obj/item/weapon/sword/long/death
 	head = /obj/item/clothing/head/roguetown/helmet/visored/knight/black
 
 	H.change_stat(STATKEY_INT, 3)
@@ -123,5 +123,5 @@
 /obj/item/clothing/gloves/roguetown/plate/blk/death
 	color = CLOTHING_SOOT_BLACK
 
-/obj/item/clothing/under/roguetown/platelegs/blk/death
+/obj/item/clothing/pants/platelegs/blk/death
 	color = CLOTHING_SOOT_BLACK

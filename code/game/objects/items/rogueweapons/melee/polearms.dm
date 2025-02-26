@@ -1,7 +1,7 @@
 /* POLEARMS
 ==========================================================*/
 
-/obj/item/rogueweapon/polearm
+/obj/item/weapon/polearm
 	throwforce = DAMAGE_STAFF
 	icon = 'icons/roguetown/weapons/64.dmi'
 	pixel_y = -16
@@ -28,7 +28,7 @@
 	thrown_bclass = BCLASS_STAB
 	sellprice = 20
 
-/obj/item/rogueweapon/polearm/getonmobprop(tag)
+/obj/item/weapon/polearm/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)
@@ -119,7 +119,7 @@
 
 
 //................ Wooden Staff ............... //
-/obj/item/rogueweapon/polearm/woodstaff
+/obj/item/weapon/polearm/woodstaff
 	force =  DAMAGE_STAFF
 	force_wielded =  DAMAGE_STAFF_WIELD-1
 	possible_item_intents = list(POLEARM_BASH)
@@ -135,7 +135,7 @@
 	minstr = 5
 	sellprice = 5
 
-/obj/item/rogueweapon/polearm/woodstaff/getonmobprop(tag)
+/obj/item/weapon/polearm/woodstaff/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)
@@ -147,7 +147,7 @@
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 //................ Quarterstaff ............... //!
-/obj/item/rogueweapon/polearm/woodstaff/quarterstaff
+/obj/item/weapon/polearm/woodstaff/quarterstaff
 	force_wielded =  DAMAGE_STAFF_WIELD
 	name = "wooden quarterstaff"
 	desc = "A staff that makes any journey easier. Durable and swift, capable of bludgeoning stray volves and ruffians alike."
@@ -156,7 +156,7 @@
 	sellprice = 10
 
 //................ Iron-shod Staff ............... //
-/obj/item/rogueweapon/polearm/woodstaff/quarterstaff/iron
+/obj/item/weapon/polearm/woodstaff/quarterstaff/iron
 	force_wielded =  DAMAGE_STAFF_WIELD
 	gripped_intents = list(POLEARM_BASH,/datum/intent/mace/smash)
 	name = "iron quarterstaff"
@@ -165,7 +165,7 @@
 	minstr = 7
 	max_integrity = INTEGRITY_STRONG
 
-/obj/item/rogueweapon/polearm/woodstaff/quarterstaff/steel
+/obj/item/weapon/polearm/woodstaff/quarterstaff/steel
 	force_wielded =  DAMAGE_STAFF_WIELD+1
 	gripped_intents = list(POLEARM_BASH,/datum/intent/mace/smash)
 	name = "steel quarterstaff"
@@ -175,7 +175,7 @@
 	max_integrity = INTEGRITY_STRONGEST
 
 //................ Staff of the Testimonium ............... //
-/obj/item/rogueweapon/polearm/woodstaff/aries
+/obj/item/weapon/polearm/woodstaff/aries
 	force_wielded =  DAMAGE_STAFF_WIELD+1
 	name = "staff of the testimonium"
 	desc = "A symbolic staff, granted to enlightened acolytes who have achieved and bear witnessed to the miracles of the Gods."
@@ -186,7 +186,7 @@
 
 
 //................ Spear ............... //
-/obj/item/rogueweapon/polearm/spear
+/obj/item/weapon/polearm/spear
 	force = DAMAGE_SPEAR
 	force_wielded = DAMAGE_SPEAR_WIELD
 	throwforce = DAMAGE_SPEAR
@@ -203,7 +203,7 @@
 	thrown_bclass = BCLASS_STAB
 	sellprice = 22
 
-/obj/item/rogueweapon/polearm/spear/getonmobprop(tag)
+/obj/item/weapon/polearm/spear/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)
@@ -213,7 +213,7 @@
 				return list("shrink" = 0.6,"sx" = 5,"sy" = -3,"nx" = -5,"ny" = -2,"wx" = -5,"wy" = -1,"ex" = 3,"ey" = -2,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 7,"sturn" = -7,"wturn" = 16,"eturn" = -22,"nflip" = 8,"sflip" = 0,"wflip" = 8,"eflip" = 0)
 
 //................ Billhook ............... //
-/obj/item/rogueweapon/polearm/spear/billhook
+/obj/item/weapon/polearm/spear/billhook
 	name = "billhook"
 	desc = "A polearm with a curved krag, a Valorian design for dismounting mounted warriors and to strike down monstrous beasts."
 	icon_state = "billhook"
@@ -231,7 +231,7 @@
 
 
 //................ Stone Short Spear ............... //		- Short spears got shorter reach and worse wield effect, made for one handed and throwing
-/obj/item/rogueweapon/polearm/spear/stone
+/obj/item/weapon/polearm/spear/stone
 	force = DAMAGE_SPEAR
 	force_wielded = DAMAGE_SPEAR+2
 	throwforce = DAMAGE_SPEAR
@@ -249,7 +249,7 @@
 	sellprice = 5
 
 //................ Javelin ............... //
-/obj/item/rogueweapon/polearm/spear/stone/copper
+/obj/item/weapon/polearm/spear/stone/copper
 	throwforce = DAMAGE_SPEAR_WIELD
 	name = "javelin"
 	desc = "Made for throwing, long out of favor and using inferior metals, it still can kill when the aim is true."
@@ -264,7 +264,7 @@
 	throw_speed = 3
 	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 50, "embedded_fall_chance" = 0, "embedded_ignore_throwspeed_threshold" = 1)
 
-/obj/item/rogueweapon/polearm/spear/stone/copper/getonmobprop(tag)
+/obj/item/weapon/polearm/spear/stone/copper/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)
@@ -275,7 +275,7 @@
 
 
 //................ Halberd ............... //
-/obj/item/rogueweapon/polearm/halberd
+/obj/item/weapon/polearm/halberd
 	force = DAMAGE_SPEAR
 	force_wielded = DAMAGE_HALBERD_WIELD
 	slowdown = 1
@@ -295,7 +295,7 @@
 	wbalance = EASY_TO_DODGE
 	sellprice = 90
 
-/obj/item/rogueweapon/polearm/halberd/getonmobprop(tag)
+/obj/item/weapon/polearm/halberd/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)
@@ -308,7 +308,7 @@
 
 
 //................ Bardiche ............... //
-/obj/item/rogueweapon/polearm/halberd/bardiche
+/obj/item/weapon/polearm/halberd/bardiche
 	force = DAMAGE_AXE
 	force_wielded = DAMAGE_AXE_WIELD
 	possible_item_intents = list(/datum/intent/axe/cut)
@@ -329,7 +329,7 @@
 	sellprice = 30
 
 //................ Eagle Beak ............... //
-/obj/item/rogueweapon/polearm/eaglebeak
+/obj/item/weapon/polearm/eaglebeak
 	force = DAMAGE_SPEAR
 	force_wielded = DAMAGE_SPEAR_WIELD
 	slowdown = 1
@@ -348,7 +348,7 @@
 	wbalance = EASY_TO_DODGE
 	sellprice = 60
 
-/obj/item/rogueweapon/polearm/eaglebeak/getonmobprop(tag)
+/obj/item/weapon/polearm/eaglebeak/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)
@@ -360,7 +360,7 @@
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 //................ Lucerne Hammer ............... //
-/obj/item/rogueweapon/polearm/eaglebeak/lucerne
+/obj/item/weapon/polearm/eaglebeak/lucerne
 	name = "lucerne"
 	desc = "A polehammer of simple iron, fracture bone and dissent with simple brute force."
 	icon_state = "polehammer"
@@ -372,7 +372,7 @@
 	wdefense = AVERAGE_PARRY
 
 //................ Hoplite Spear ............... //
-/obj/item/rogueweapon/polearm/spear/hoplite
+/obj/item/weapon/polearm/spear/hoplite
 	force = DAMAGE_SPEARPLUS
 	name = "ancient spear"
 	desc = "A humble spear with a bronze head, a rare survivor from the battles long past that nearly destroyed Psydonia."
@@ -383,7 +383,7 @@
 	melt_amount = 75
 	sellprice = 120 // A noble collector would love to get his/her hands on one of these spears
 
-/obj/item/rogueweapon/polearm/spear/hoplite/winged // Winged version has +1 weapon defence and sells for a bit more, but is identical otherwise
+/obj/item/weapon/polearm/spear/hoplite/winged // Winged version has +1 weapon defence and sells for a bit more, but is identical otherwise
 	name = "ancient winged spear"
 	desc = "A spear with a winged bronze head, a rare survivor from the battles long past that nearly destroyed Psydonia."
 	icon_state = "bronzespear_winged"
@@ -391,7 +391,7 @@
 	sellprice = 150 // A noble collector would love to get his/her hands on one of these spears
 
 
-/obj/item/rogueweapon/polearm/spear/bronze
+/obj/item/weapon/polearm/spear/bronze
 	name = "Bronze Spear"
 	desc = "A spear forged of bronze. Expensive but more durable than a regular iron one."
 	icon_state = "bronzespear"
@@ -403,7 +403,7 @@
 
 
 //scythe
-/obj/item/rogueweapon/sickle/scythe
+/obj/item/weapon/sickle/scythe
 	force = 10
 	force_wielded = 20
 	possible_item_intents = list(SPEAR_CUT) //truly just a long knife
@@ -437,7 +437,7 @@
 	throwforce = 25
 	sellprice = 10
 
-/obj/item/rogueweapon/polearm/spear/bonespear
+/obj/item/weapon/polearm/spear/bonespear
 	force = 18
 	force_wielded = 22
 	name = "bone spear"

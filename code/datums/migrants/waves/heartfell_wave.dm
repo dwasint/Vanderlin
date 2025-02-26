@@ -14,14 +14,14 @@
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	head = /obj/item/clothing/head/roguetown/helmet
 	shoes = /obj/item/clothing/shoes/roguetown/nobleboot
-	pants = /obj/item/clothing/under/roguetown/tights/black
+	pants = /obj/item/clothing/pants/tights/black
 	cloak = /obj/item/clothing/cloak/heartfelt
 	armor = /obj/item/clothing/suit/roguetown/armor/medium/surcoat/heartfelt
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
 	beltl = /obj/item/scomstone
 	gloves = /obj/item/clothing/gloves/roguetown/leather/black
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
-	beltl = /obj/item/rogueweapon/sword/long
+	beltl = /obj/item/weapon/sword/long
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
@@ -101,12 +101,12 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	belt = /obj/item/storage/belt/rogue/leather/black
 	shoes = /obj/item/clothing/shoes/roguetown/nobleboot
-	pants = /obj/item/clothing/under/roguetown/tights/black
+	pants = /obj/item/clothing/pants/tights/black
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	armor = /obj/item/clothing/suit/roguetown/armor/medium/surcoat/heartfelt
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
 	gloves = /obj/item/clothing/gloves/roguetown/leather/black
-	beltl = /obj/item/rogueweapon/sword/decorated
+	beltl = /obj/item/weapon/sword/decorated
 	beltr = /obj/item/scomstone
 	backr = /obj/item/storage/backpack/rogue/satchel/heartfelt
 	mask = /obj/item/clothing/mask/rogue/spectacles/golden
@@ -141,20 +141,20 @@
 	..()
 	head = /obj/item/clothing/head/roguetown/helmet
 	gloves = /obj/item/clothing/gloves/roguetown/plate
-	pants = /obj/item/clothing/under/roguetown/platelegs
+	pants = /obj/item/clothing/pants/platelegs
 	cloak = /obj/item/clothing/cloak/tabard/knight/guard
 	neck = /obj/item/clothing/neck/roguetown/bevor
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/full
 	shoes = /obj/item/clothing/shoes/roguetown/boots/armor
-	beltr = /obj/item/rogueweapon/sword/long
+	beltr = /obj/item/weapon/sword/long
 	beltl = /obj/item/flashlight/flare/torch/lantern
 	belt = /obj/item/storage/belt/rogue/leather/steel
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	if(prob(50))
-		r_hand = /obj/item/rogueweapon/polearm/eaglebeak/lucerne
+		r_hand = /obj/item/weapon/polearm/eaglebeak/lucerne
 	else
-		r_hand = /obj/item/rogueweapon/mace/goden/steel
+		r_hand = /obj/item/weapon/mace/goden/steel
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
@@ -212,12 +212,12 @@
 	neck = /obj/item/clothing/neck/roguetown/talkstone
 	cloak = /obj/item/clothing/cloak/black_cloak
 	armor = /obj/item/clothing/suit/roguetown/shirt/robe/black
-	pants = /obj/item/clothing/under/roguetown/tights/random
+	pants = /obj/item/clothing/pants/tights/random
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
 	beltl = /obj/item/flashlight/flare/torch/lantern
 	id = /obj/item/clothing/ring/gold
-	r_hand = /obj/item/rogueweapon/polearm/woodstaff
+	r_hand = /obj/item/weapon/polearm/woodstaff
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/reagent_containers/glass/bottle/rogue/poison,/obj/item/reagent_containers/glass/bottle/rogue/healthpot)
 	ADD_TRAIT(H, TRAIT_SEEPRICES, "[type]")
@@ -265,7 +265,7 @@
 	H.virginity = TRUE
 	neck = /obj/item/clothing/neck/roguetown/psycross/silver
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/priest
-	pants = /obj/item/clothing/under/roguetown/tights/black
+	pants = /obj/item/clothing/pants/tights/black
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	beltl = /obj/item/flashlight/flare/torch/lantern

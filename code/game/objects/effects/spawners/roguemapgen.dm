@@ -135,11 +135,11 @@
 	icon_state = "lootlow"
 	spawned = list(
 		/obj/item/roguecoin/copper/pile = 15,
-		/obj/item/rogueweapon/knife/hunting = 5,
-		/obj/item/rogueweapon/knife/dagger = 8,
-		/obj/item/rogueweapon/sword/iron = 3,
-		/obj/item/rogueweapon/axe/copper = 10,
-		/obj/item/rogueweapon/mace = 5,
+		/obj/item/weapon/knife/hunting = 5,
+		/obj/item/weapon/knife/dagger = 8,
+		/obj/item/weapon/sword/iron = 3,
+		/obj/item/weapon/axe/copper = 10,
+		/obj/item/weapon/mace = 5,
 		/obj/item/clothing/suit/roguetown/armor/leather = 10,
 		/obj/item/clothing/gloves/roguetown/chain/iron = 3,
 		/obj/item/clothing/neck/roguetown/coif = 3,
@@ -150,10 +150,10 @@
 	icon_state = "lootmed"
 	spawned = list(
 		/obj/item/roguecoin/silver/pile = 15,
-		/obj/item/rogueweapon/knife/dagger/steel = 4,
-		/obj/item/rogueweapon/axe/iron = 10,
+		/obj/item/weapon/knife/dagger/steel = 4,
+		/obj/item/weapon/axe/iron = 10,
 		/obj/item/ammo_holder/quiver/arrows = 5,
-		/obj/item/rogueweapon/sword/short = 5,
+		/obj/item/weapon/sword/short = 5,
 		/obj/item/clothing/suit/roguetown/armor/cuirass/iron = 10,
 		/obj/item/clothing/suit/roguetown/armor/gambeson = 10,
 		/obj/item/clothing/gloves/roguetown/chain/iron = 3,
@@ -165,16 +165,16 @@
 	icon_state = "loothigh"
 	spawned = list(
 		/obj/item/roguecoin/gold/pile = 15,
-		/obj/item/rogueweapon/knife/dagger/silver = 5,
-		/obj/item/rogueweapon/sword/long/greatsword = 3,
-		/obj/item/rogueweapon/axe/iron = 10,
+		/obj/item/weapon/knife/dagger/silver = 5,
+		/obj/item/weapon/sword/long/greatsword = 3,
+		/obj/item/weapon/axe/iron = 10,
 		/obj/item/ingot/gold = 5,
 		/obj/item/clothing/head/roguetown/crown/circlet = 2,
 		/obj/item/clothing/suit/roguetown/armor/medium/scale = 8,
 		/obj/item/clothing/suit/roguetown/armor/plate = 8,
 		/obj/item/clothing/gloves/roguetown/chain = 3,
 		/obj/item/clothing/neck/roguetown/bevor = 3,
-		/obj/item/clothing/under/roguetown/chainlegs = 5
+		/obj/item/clothing/pants/chainlegs = 5
 		)
 
 /obj/effect/spawner/roguemap/loot/magic
@@ -234,32 +234,32 @@
 /obj/effect/spawner/roguemap/loot/weapon
 	icon_state = "lootweapon"
 	spawned = list(
-		/obj/item/rogueweapon/mace/copperbludgeon = 15,
-		/obj/item/rogueweapon/axe/copper = 15,
-		/obj/item/rogueweapon/knife/copper = 15,
-		/obj/item/rogueweapon/sword/long/rider/copper = 15,
-		/obj/item/rogueweapon/sword/coppermesser = 15,
-		/obj/item/rogueweapon/polearm/spear/stone/copper = 15,
-		/obj/item/rogueweapon/axe/iron = 10,
-		/obj/item/rogueweapon/polearm/halberd/bardiche = 10,
-		/obj/item/rogueweapon/sword/rapier/ironestoc = 10,
-		/obj/item/rogueweapon/polearm/eaglebeak/lucerne = 10,
-		/obj/item/rogueweapon/mace = 10,
-		/obj/item/rogueweapon/sword/scimitar/messer = 10,
-		/obj/item/rogueweapon/flail/militia = 10,
-		/obj/item/rogueweapon/sword/short = 10,
-		/obj/item/rogueweapon/sword/long/greatsword/zwei = 10,
+		/obj/item/weapon/mace/copperbludgeon = 15,
+		/obj/item/weapon/axe/copper = 15,
+		/obj/item/weapon/knife/copper = 15,
+		/obj/item/weapon/sword/long/rider/copper = 15,
+		/obj/item/weapon/sword/coppermesser = 15,
+		/obj/item/weapon/polearm/spear/stone/copper = 15,
+		/obj/item/weapon/axe/iron = 10,
+		/obj/item/weapon/polearm/halberd/bardiche = 10,
+		/obj/item/weapon/sword/rapier/ironestoc = 10,
+		/obj/item/weapon/polearm/eaglebeak/lucerne = 10,
+		/obj/item/weapon/mace = 10,
+		/obj/item/weapon/sword/scimitar/messer = 10,
+		/obj/item/weapon/flail/militia = 10,
+		/obj/item/weapon/sword/short = 10,
+		/obj/item/weapon/sword/long/greatsword/zwei = 10,
 		/obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve = 10,
 		/obj/item/gun/ballistic/revolver/grenadelauncher/bow = 10,
 		/obj/item/gun/ballistic/revolver/grenadelauncher/bow/long = 5,
 		/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow = 5,
-		/obj/item/rogueweapon/axe/steel = 5,
-		/obj/item/rogueweapon/sword/long/greatsword = 5,
-		/obj/item/rogueweapon/sword/rapier = 5,
-		/obj/item/rogueweapon/sword/sabre = 5,
-		/obj/item/rogueweapon/mace/goden/steel = 5,
-		/obj/item/rogueweapon/mace/steel = 5,
-		/obj/item/rogueweapon/hammer/sledgehammer/war = 5
+		/obj/item/weapon/axe/steel = 5,
+		/obj/item/weapon/sword/long/greatsword = 5,
+		/obj/item/weapon/sword/rapier = 5,
+		/obj/item/weapon/sword/sabre = 5,
+		/obj/item/weapon/mace/goden/steel = 5,
+		/obj/item/weapon/mace/steel = 5,
+		/obj/item/weapon/hammer/sledgehammer/war = 5
 		)
 
 /obj/effect/spawner/roguemap/loot/armor
@@ -269,7 +269,7 @@
 		/obj/item/clothing/wrists/roguetown/bracers/copper = 15,
 		/obj/item/clothing/head/roguetown/helmet/coppercap = 15,
 		/obj/item/clothing/suit/roguetown/armor/cuirass/copperchest = 15,
-		/obj/item/clothing/under/roguetown/chainlegs/iron = 10,
+		/obj/item/clothing/pants/chainlegs/iron = 10,
 		/obj/item/clothing/suit/roguetown/armor/chainmail/iron = 10,
 		/obj/item/clothing/suit/roguetown/armor/plate/iron = 10,
 		/obj/item/clothing/head/roguetown/helmet/heavy/ironplate = 10,

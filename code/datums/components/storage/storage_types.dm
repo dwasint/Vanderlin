@@ -49,7 +49,7 @@
 
 /datum/component/storage/concrete/roguetown/belt/knife_belt/New(datum/P, ...)
 	. = ..()
-	can_hold = typecacheof(list(/obj/item/rogueweapon/knife/throwingknife))
+	can_hold = typecacheof(list(/obj/item/weapon/knife/throwingknife))
 
 
 /datum/component/storage/concrete/roguetown/belt/cloth
@@ -78,7 +78,7 @@
 
 /datum/component/storage/concrete/roguetown/bin/New(datum/P, ...)
 	. = ..()
-	cant_hold = typecacheof(list(/obj/item/rogueweapon))
+	cant_hold = typecacheof(list(/obj/item/weapon))
 
 /datum/component/storage/concrete/roguetown/sack
 	max_w_class = WEIGHT_CLASS_NORMAL

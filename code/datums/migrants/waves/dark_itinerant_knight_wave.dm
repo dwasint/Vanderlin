@@ -11,14 +11,14 @@
 	head = /obj/item/clothing/head/roguetown/rare/elfplate
 	cloak = /obj/item/clothing/cloak/half/shadowcloak
 	gloves = /obj/item/clothing/gloves/roguetown/chain/iron/shadowgauntlets
-	pants = /obj/item/clothing/under/roguetown/trou/shadowpants
+	pants = /obj/item/clothing/pants/trou/shadowpants
 	shirt = /obj/item/clothing/suit/roguetown/shirt/shadowshirt
 	armor = /obj/item/clothing/suit/roguetown/armor/rare/elfplate
 	shoes = /obj/item/clothing/shoes/roguetown/boots/rare/elfplate
 	beltl = /obj/item/flashlight/flare/torch/lantern
 	belt = /obj/item/storage/belt/rogue/leather/steel
 	backr = /obj/item/storage/backpack/rogue/satchel
-	backl = /obj/item/rogueweapon/sword/long/greatsword/elfgsword
+	backl = /obj/item/weapon/sword/long/greatsword/elfgsword
 
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
@@ -57,7 +57,7 @@
 /datum/outfit/job/roguetown/dark_itinerant_squire/pre_equip(mob/living/carbon/human/H)
 	..()
 	shirt = /obj/item/clothing/suit/roguetown/shirt/dress/gen/black
-	pants = /obj/item/clothing/under/roguetown/chainlegs/iron
+	pants = /obj/item/clothing/pants/chainlegs/iron
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/ammo_holder/quiver/bolts
@@ -66,7 +66,7 @@
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	backr = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/rogueweapon/knife/dagger/steel = 1, /obj/item/storage/belt/rogue/pouch/coins/poor = 1, /obj/item/clothing/neck/roguetown/chaincoif = 1, /obj/item/rogueweapon/hammer/iron = 1,)
+	backpack_contents = list(/obj/item/weapon/knife/dagger/steel = 1, /obj/item/storage/belt/rogue/pouch/coins/poor = 1, /obj/item/clothing/neck/roguetown/chaincoif = 1, /obj/item/weapon/hammer/iron = 1,)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)

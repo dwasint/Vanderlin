@@ -33,7 +33,7 @@
 		H.mind?.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fetch)
 	if(H.gender == MALE)
-		pants = /obj/item/clothing/under/roguetown/tights/random
+		pants = /obj/item/clothing/pants/tights/random
 		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 		belt = /obj/item/storage/belt/rogue/leather/rope

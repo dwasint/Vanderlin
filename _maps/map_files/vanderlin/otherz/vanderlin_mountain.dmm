@@ -312,7 +312,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/lower)
 "fy" = (
-/obj/item/rogueweapon/mace/woodclub,
+/obj/item/weapon/mace/woodclub,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/mountains/anvil/lower/building)
 "fB" = (
@@ -486,7 +486,7 @@
 /area/rogue/under/mountains/anvil/lower/building)
 "ih" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/rogueweapon/pick/copper,
+/obj/item/weapon/pick/copper,
 /obj/item/clothing/head/roguetown/helmet/leather/minershelm,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/mountains/anvil/lower/building)
@@ -617,7 +617,7 @@
 /turf/open/floor/rogue/wood/nosmooth/saiga,
 /area/rogue/outdoors/mountains/anvil/snowyforest)
 "jW" = (
-/obj/item/clothing/under/roguetown/loincloth/brown,
+/obj/item/clothing/pants/loincloth/brown,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/mountains/anvil/lower/building)
 "ka" = (
@@ -721,7 +721,7 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue/under/mountains/anvil/lower/building)
 "md" = (
-/obj/item/rogueweapon/sword,
+/obj/item/weapon/sword,
 /turf/open/water/cleanshallow,
 /area/rogue/under/mountains/anvil/lower)
 "mf" = (
@@ -1090,7 +1090,7 @@
 /area/rogue/under/mountains/anvil/lower)
 "rh" = (
 /obj/structure/table/wood/plain,
-/obj/item/rogueweapon/knife/dagger,
+/obj/item/weapon/knife/dagger,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/spawner/roguemap/loot/food,
 /turf/open/floor/rogue/ruinedwood/darker,
@@ -1340,7 +1340,7 @@
 /area/rogue/under/mountains/anvil/lower)
 "uX" = (
 /obj/structure/rack/rogue/shelf,
-/obj/item/rogueweapon/hammer/copper{
+/obj/item/weapon/hammer/copper{
 	pixel_x = -6;
 	pixel_y = 32
 	},
@@ -1504,7 +1504,7 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/mountains/anvil/lower/building)
 "xV" = (
-/obj/item/rogueweapon/sword/arming,
+/obj/item/weapon/sword/arming,
 /obj/effect/decal/cleanable/blood/gibs/limb{
 	dir = 8
 	},
@@ -1585,7 +1585,7 @@
 /area/rogue/outdoors/mountains/anvil/snowyforest)
 "zA" = (
 /obj/structure/table/wood/nice/decorated_alt,
-/obj/item/rogueweapon/knife/cleaver,
+/obj/item/weapon/knife/cleaver,
 /turf/open/floor/rogue/tile/kitchen,
 /area/rogue/under/mountains/anvil/lower/building)
 "zC" = (
@@ -1897,7 +1897,7 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/mountains/anvil/lower/building)
 "EW" = (
-/obj/item/rogueweapon/pick/copper,
+/obj/item/weapon/pick/copper,
 /obj/item/natural/stone{
 	pixel_y = 9;
 	pixel_x = -7
@@ -2306,8 +2306,8 @@
 /area/rogue/outdoors/mountains/anvil/snowyforest)
 "Ln" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/rogueweapon/mace/woodclub/train_sword,
-/obj/item/rogueweapon/mace/woodclub/train_sword,
+/obj/item/weapon/mace/woodclub/train_sword,
+/obj/item/weapon/mace/woodclub/train_sword,
 /turf/open/floor/rogue/ruinedwood/spiralfade,
 /area/rogue/under/mountains/anvil/lower/building)
 "Ly" = (
@@ -2340,7 +2340,7 @@
 /turf/open/floor/rogue/tile/masonic/spiral,
 /area/rogue/under/mountains/anvil/lower/building)
 "LY" = (
-/obj/item/clothing/under/roguetown/loincloth/brown,
+/obj/item/clothing/pants/loincloth/brown,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/mountains/anvil/lower)
 "Ma" = (
@@ -2560,7 +2560,7 @@
 	},
 /area/rogue/indoors/mountains/anvil/surface/building)
 "Pd" = (
-/obj/item/rogueweapon/mace/woodclub,
+/obj/item/weapon/mace/woodclub,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/mountains/anvil/lower)
 "Pk" = (
@@ -2674,7 +2674,7 @@
 /area/rogue/outdoors/mountains/anvil/snowyforest)
 "QG" = (
 /obj/structure/table/wood/plain,
-/obj/item/rogueweapon/knife/copper,
+/obj/item/weapon/knife/copper,
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = 3;
@@ -2945,7 +2945,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/lower)
 "VA" = (
-/obj/item/rogueweapon/polearm/spear/stone,
+/obj/item/weapon/polearm/spear/stone,
 /turf/open/floor/rogue/dirt,
 /area/rogue/under/mountains/anvil/lower/building)
 "VB" = (
@@ -3237,7 +3237,7 @@
 /turf/closed/wall/mineral/rogue/stone/moss,
 /area/rogue/under/mountains/anvil/lower/building)
 "ZC" = (
-/obj/item/rogueweapon/pick/copper,
+/obj/item/weapon/pick/copper,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/lower/building)
 "ZH" = (
@@ -3268,7 +3268,7 @@
 "ZY" = (
 /obj/item/roguebin/water,
 /obj/structure/rack/rogue/shelf,
-/obj/item/rogueweapon/tongs{
+/obj/item/weapon/tongs{
 	pixel_x = 6;
 	pixel_y = 32
 	},

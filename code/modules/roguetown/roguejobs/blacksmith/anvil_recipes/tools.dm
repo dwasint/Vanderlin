@@ -52,13 +52,13 @@
 /datum/anvil_recipe/tools/scissors
 	name = "Scissors"
 	req_bar = /obj/item/ingot/iron
-	created_item = /obj/item/rogueweapon/knife/scissors
+	created_item = /obj/item/weapon/knife/scissors
 	i_type = "Tools"
 
 /datum/anvil_recipe/tools/steelscissors
 	name = "Steel Scissors"
 	req_bar = /obj/item/ingot/steel
-	created_item = /obj/item/rogueweapon/knife/scissors/steel
+	created_item = /obj/item/weapon/knife/scissors/steel
 	i_type = "Tools"
 
 /datum/anvil_recipe/tools/pick/steel
@@ -66,7 +66,7 @@
 	recipe_name = "a digging Pick"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/grown/log/tree/stick)
-	created_item = /obj/item/rogueweapon/pick/steel
+	created_item = /obj/item/weapon/pick/steel
 	i_type = "Tools"
 
 /datum/anvil_recipe/tools/frypan
@@ -122,7 +122,7 @@
 	recipe_name = "a blacksmithing Hammer"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/grown/log/tree/stick)
-	created_item = /obj/item/rogueweapon/hammer/iron
+	created_item = /obj/item/weapon/hammer/iron
 	i_type = "Tools"
 
 /datum/anvil_recipe/tools/hoe
@@ -130,7 +130,7 @@
 	recipe_name = "a gardening Hoe"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick)
-	created_item = /obj/item/rogueweapon/hoe
+	created_item = /obj/item/weapon/hoe
 	i_type = "Tools"
 
 /datum/anvil_recipe/tools/keyring
@@ -197,7 +197,7 @@
 	recipe_name = "a digging Pick"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/grown/log/tree/stick)
-	created_item = /obj/item/rogueweapon/pick
+	created_item = /obj/item/weapon/pick
 	i_type = "Tools"
 
 /datum/anvil_recipe/tools/pitchfork
@@ -205,7 +205,7 @@
 	recipe_name = "a Pitchfork"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick)
-	created_item = /obj/item/rogueweapon/pitchfork
+	created_item = /obj/item/weapon/pitchfork
 	i_type = "Tools"
 
 /datum/anvil_recipe/tools/sewingneedle
@@ -222,7 +222,7 @@
 	recipe_name = "a Shovel"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick)
-	created_item = /obj/item/rogueweapon/shovel
+	created_item = /obj/item/weapon/shovel
 	i_type = "Tools"
 
 /datum/anvil_recipe/tools/sickle
@@ -230,14 +230,14 @@
 	recipe_name = "a Sickle"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/grown/log/tree/stick)
-	created_item = /obj/item/rogueweapon/sickle
+	created_item = /obj/item/weapon/sickle
 	i_type = "Tools"
 
 /datum/anvil_recipe/tools/tongs
 	name = "Tongs"
 	recipe_name = "a pair of Tongs"
 	req_bar = /obj/item/ingot/iron
-	created_item = /obj/item/rogueweapon/tongs
+	created_item = /obj/item/weapon/tongs
 	i_type = "Tools"
 
 /datum/anvil_recipe/tools/torch
@@ -274,7 +274,7 @@
 	recipe_name = "a gardening Hoe"
 	req_bar = /obj/item/ingot/copper
 	additional_items = list(/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick)
-	created_item = /obj/item/rogueweapon/hoe/copper
+	created_item = /obj/item/weapon/hoe/copper
 	i_type = "Tools"
 
 /datum/anvil_recipe/tools/sickle/copper
@@ -282,7 +282,7 @@
 	recipe_name = "a Sickle"
 	req_bar = /obj/item/ingot/copper
 	additional_items = list(/obj/item/grown/log/tree/stick)
-	created_item = /obj/item/rogueweapon/sickle/copper
+	created_item = /obj/item/weapon/sickle/copper
 	i_type = "Tools"
 
 /datum/anvil_recipe/tools/pitchfork/copper
@@ -290,7 +290,7 @@
 	recipe_name = "a Pitchfork"
 	req_bar = /obj/item/ingot/copper
 	additional_items = list(/obj/item/grown/log/tree/stick,/obj/item/grown/log/tree/stick)
-	created_item = /obj/item/rogueweapon/pitchfork/copper
+	created_item = /obj/item/weapon/pitchfork/copper
 	i_type = "Tools"
 
 /datum/anvil_recipe/tools/pick/copper
@@ -298,7 +298,7 @@
 	recipe_name = "a digging Pick"
 	req_bar = /obj/item/ingot/copper
 	additional_items = list(/obj/item/grown/log/tree/stick)
-	created_item = /obj/item/rogueweapon/pick/copper
+	created_item = /obj/item/weapon/pick/copper
 	i_type = "Tools"
 
 /datum/anvil_recipe/tools/lamptern/copper
@@ -312,5 +312,5 @@
 	req_bar = /obj/item/ingot/copper
 	recipe_name = "a blacksmithing Hammer"
 	additional_items = list(/obj/item/grown/log/tree/stick)
-	created_item = /obj/item/rogueweapon/hammer/copper
+	created_item = /obj/item/weapon/hammer/copper
 	i_type = "Tools"

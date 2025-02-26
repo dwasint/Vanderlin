@@ -16,18 +16,18 @@
 
 /datum/outfit/job/roguetown/adventurer/masterblacksmith/pre_equip(mob/living/carbon/human/H)
 	..()
-	beltr = /obj/item/rogueweapon/hammer/iron
+	beltr = /obj/item/weapon/hammer/iron
 	backl = /obj/item/storage/backpack/rogue/backpack
-	backr =	/obj/item/rogueweapon/hammer/sledgehammer
-	pants = /obj/item/clothing/under/roguetown/trou
+	backr =	/obj/item/weapon/hammer/sledgehammer
+	pants = /obj/item/clothing/pants/trou
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
 	neck = /obj/item/storage/belt/rogue/pouch/coins/mid
 	belt = /obj/item/storage/belt/rogue/leather
-	beltl = /obj/item/rogueweapon/knife/hunting
+	beltl = /obj/item/weapon/knife/hunting
 	cloak = /obj/item/clothing/cloak/apron/brown
 	gloves = /obj/item/clothing/gloves/roguetown/leather
-	backpack_contents = list(/obj/item/flint = 1, /obj/item/rogueweapon/tongs=1, /obj/item/rogueore/coal=1, /obj/item/rogueore/iron=1, /obj/item/mould/ingot = 1, /obj/item/storage/crucible/random = 1)
+	backpack_contents = list(/obj/item/flint = 1, /obj/item/weapon/tongs=1, /obj/item/rogueore/coal=1, /obj/item/rogueore/iron=1, /obj/item/mould/ingot = 1, /obj/item/storage/crucible/random = 1)
 
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)

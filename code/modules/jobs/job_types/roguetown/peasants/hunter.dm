@@ -28,7 +28,7 @@
 
 /datum/outfit/job/roguetown/hunter/pre_equip(mob/living/carbon/human/H)
 	..()
-	pants = /obj/item/clothing/under/roguetown/tights/random
+	pants = /obj/item/clothing/pants/tights/random
 	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
@@ -39,7 +39,7 @@
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/ammo_holder/quiver/arrows
 	beltl = /obj/item/storage/meatbag
-	backpack_contents = list(/obj/item/flint = 1, /obj/item/bait = 1, /obj/item/rogueweapon/knife/hunting = 1, /obj/item/flashlight/flare/torch/lantern = 1)
+	backpack_contents = list(/obj/item/flint = 1, /obj/item/bait = 1, /obj/item/weapon/knife/hunting = 1, /obj/item/flashlight/flare/torch/lantern = 1)
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)

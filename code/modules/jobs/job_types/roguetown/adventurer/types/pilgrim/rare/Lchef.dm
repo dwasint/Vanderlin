@@ -37,7 +37,7 @@
 	H.mind?.adjust_skillrank(/datum/skill/labor/taming, 2, TRUE)
 	H.mind?.adjust_skillrank(/datum/skill/craft/cooking, 6, TRUE)
 	belt = /obj/item/storage/belt/rogue/leather
-	pants = /obj/item/clothing/under/roguetown/tights/random
+	pants = /obj/item/clothing/pants/tights/random
 	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
 	cloak = /obj/item/clothing/cloak/apron
 	head = /obj/item/clothing/head/roguetown/cookhat/chef
@@ -46,7 +46,7 @@
 	neck = /obj/item/storage/belt/rogue/pouch/coins/mid
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	beltr = /obj/item/cooking/pan
-	beltl = /obj/item/rogueweapon/knife/cleaver
+	beltl = /obj/item/weapon/knife/cleaver
 	H.change_stat(STATKEY_INT, 3)
 	H.change_stat(STATKEY_CON, 2)
 	if(H.age == AGE_OLD)

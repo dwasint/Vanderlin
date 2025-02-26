@@ -110,10 +110,10 @@
 
 /obj/structure/irrigation_channel/attackby(obj/item/I, mob/user, params)
 	. = ..()
-	if(!istype(I, /obj/item/rogueweapon/shovel))
+	if(!istype(I, /obj/item/weapon/shovel))
 		return
 	if((user.used_intent.type == /datum/intent/shovelscoop) || (user.used_intent.type == /datum/intent/irrigate))
-		var/obj/item/rogueweapon/shovel/shovel = I
+		var/obj/item/weapon/shovel/shovel = I
 		if(!shovel.heldclod)
 			user.visible_message("[user] starts digging a trench.", "I start digging a trench.")
 			if(!do_after(user, 10 SECONDS * shovel.time_multiplier, src))

@@ -373,7 +373,7 @@ BLIND     // can't see anything
 		testing("GDC added [index]")
 		GLOB.dismembered_clothing_icons[index] = dismembered
 
-/obj/item/clothing/under/verb/toggle()
+/obj/item/clothing/pants/verb/toggle()
 	set name = "Adjust Suit Sensors"
 	set hidden = 1
 	set src in usr
@@ -412,7 +412,7 @@ BLIND     // can't see anything
 			if(3)
 				to_chat(usr, "<span class='notice'>My suit will now report my exact vital lifesigns as well as my coordinate position.</span>")
 
-/obj/item/clothing/under/AltClick(mob/user)
+/obj/item/clothing/pants/AltClick(mob/user)
 	if(..())
 		return 1
 
@@ -424,13 +424,13 @@ BLIND     // can't see anything
 		else
 			rolldown()
 
-/obj/item/clothing/under/verb/jumpsuit_adjust()
+/obj/item/clothing/pants/verb/jumpsuit_adjust()
 	set name = "Adjust Jumpsuit Style"
 	set category = null
 	set src in usr
 	rolldown()
 
-/obj/item/clothing/under/proc/rolldown()
+/obj/item/clothing/pants/proc/rolldown()
 	if(!can_use(usr))
 		return
 	if(!can_adjust)
@@ -445,7 +445,7 @@ BLIND     // can't see anything
 		H.update_inv_w_uniform()
 		H.update_body()
 
-/obj/item/clothing/under/proc/toggle_jumpsuit_adjust()
+/obj/item/clothing/pants/proc/toggle_jumpsuit_adjust()
 	if(adjusted == DIGITIGRADE_STYLE)
 		return
 	adjusted = !adjusted

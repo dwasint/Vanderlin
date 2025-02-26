@@ -35,12 +35,12 @@
 	..()
 	head = /obj/item/clothing/head/roguetown/menacing
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor	// Small storage. N.
-	pants = /obj/item/clothing/under/roguetown/trou
+	pants = /obj/item/clothing/pants/trou
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	cloak = /obj/item/clothing/cloak/stabard/dungeon
 	belt = /obj/item/storage/belt/rogue/leather
-	beltr = /obj/item/rogueweapon/whip/antique
+	beltr = /obj/item/weapon/whip/antique
 	beltl = /obj/item/storage/keyring/dungeoneer
 	backr = /obj/item/storage/backpack/rogue/satchel	// lack of satchel requires dealing with the merchant to correct, which requires entering town; not ideal. N.
 

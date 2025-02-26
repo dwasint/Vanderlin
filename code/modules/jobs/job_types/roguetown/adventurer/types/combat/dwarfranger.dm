@@ -12,7 +12,7 @@
 /datum/outfit/job/roguetown/adventurer/dranger/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/roguehood/uncolored
-	pants = /obj/item/clothing/under/roguetown/trou/leather
+	pants = /obj/item/clothing/pants/trou/leather
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 	belt = /obj/item/storage/belt/rogue/leather
@@ -22,7 +22,7 @@
 	beltr = /obj/item/flashlight/flare/torch/lantern
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/iron // Starts with better armor than a typical ranger (iron chainmail) but has no dodge expert or sneaking skill
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-	r_hand = /obj/item/rogueweapon/sword/scimitar/falchion
+	r_hand = /obj/item/weapon/sword/scimitar/falchion
 	backpack_contents = list(/obj/item/bait = 1)
 	if(prob(23))
 		shoes = /obj/item/clothing/shoes/roguetown/boots

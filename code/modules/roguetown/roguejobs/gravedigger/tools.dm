@@ -2,7 +2,7 @@
 |  Shovel  |
 \---------*/
 
-/obj/item/rogueweapon/shovel
+/obj/item/weapon/shovel
 	force = 5
 	force_wielded = 12
 	possible_item_intents = list(/datum/intent/mace/strike/shovel)
@@ -29,7 +29,7 @@
 	grid_height = 96
 	var/time_multiplier = 1 //multipler to do_after times
 
-/obj/item/rogueweapon/shovel/pre_attack(atom/A, mob/living/user, params)
+/obj/item/weapon/shovel/pre_attack(atom/A, mob/living/user, params)
 	. = ..()
 	if(user.used_intent.type != /datum/intent/shovelscoop)
 		return
@@ -45,24 +45,24 @@
 	user.changeNext_move(CLICK_CD_MELEE)
 	return TRUE
 
-/obj/item/rogueweapon/shovel/New()
+/obj/item/weapon/shovel/New()
 	. = ..()
 	if(icon_state == "shovel1")
 		icon_state = "shovel[rand(1,2)]"
 
-/obj/item/rogueweapon/shovel/Destroy()
+/obj/item/weapon/shovel/Destroy()
 	if(heldclod)
 		QDEL_NULL(heldclod)
 	return ..()
 
-/obj/item/rogueweapon/shovel/dropped(mob/user)
+/obj/item/weapon/shovel/dropped(mob/user)
 	if(heldclod && isturf(loc))
 		heldclod.forceMove(loc)
 		heldclod = null
 	update_icon()
 	. = ..()
 
-/obj/item/rogueweapon/shovel/update_icon()
+/obj/item/weapon/shovel/update_icon()
 	if(heldclod)
 		icon_state = "dirt[initial(icon_state)]"
 	else
@@ -102,14 +102,14 @@
 	item_damage_type = "blunt"
 
 
-/obj/item/rogueweapon/shovel/attack(mob/living/M, mob/living/user)
+/obj/item/weapon/shovel/attack(mob/living/M, mob/living/user)
 	. = ..()
 	if(. && heldclod && get_turf(M))
 		heldclod.forceMove(get_turf(M))
 		heldclod = null
 		update_icon()
 
-/obj/item/rogueweapon/shovel/attack_turf(turf/T, mob/living/user)
+/obj/item/weapon/shovel/attack_turf(turf/T, mob/living/user)
 	user.changeNext_move(user.used_intent.clickcd)
 	if(user.used_intent.type == /datum/intent/irrigate)
 		if(istype(T, /turf/open/floor/rogue/dirt))
@@ -167,7 +167,7 @@
 		return
 	. = ..()
 
-/obj/item/rogueweapon/shovel/getonmobprop(tag)
+/obj/item/weapon/shovel/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)
@@ -221,7 +221,7 @@
 
 // --------- SPADE -----------
 
-/obj/item/rogueweapon/shovel/small
+/obj/item/weapon/shovel/small
 	force = 2
 	force_wielded = 5
 	possible_item_intents = list(/datum/intent/shovelscoop, /datum/intent/irrigate, /datum/intent/mace/strike/shovel)
@@ -238,7 +238,7 @@
 	grid_height = 64
 	time_multiplier = 2
 
-/obj/item/rogueweapon/shovel/small/getonmobprop(tag)
+/obj/item/weapon/shovel/small/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)

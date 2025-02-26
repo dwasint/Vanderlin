@@ -166,8 +166,8 @@
 		var/obj/item/lockpick/L = I
 		L.picklvl = modifier
 	// Apply inherent weapon modifiers
-	if(istype(I, /obj/item/rogueweapon))
-		var/obj/item/rogueweapon/W = I
+	if(istype(I, /obj/item/weapon))
+		var/obj/item/weapon/W = I
 		W.force *= modifier
 		W.throwforce *= modifier
 		W.blade_int *= modifier
@@ -175,12 +175,12 @@
 		W.armor_penetration *= modifier
 		W.wdefense *= modifier
 		// Make (ONLY) axes (and the Pick-axe) better at woodcutting too
-		if(istype(I, /obj/item/rogueweapon/axe/iron) || istype(I, /obj/item/rogueweapon/pick/paxe))
-			var/obj/item/rogueweapon/A = I
+		if(istype(I, /obj/item/weapon/axe/iron) || istype(I, /obj/item/weapon/pick/paxe))
+			var/obj/item/weapon/A = I
 			A.axe_cut += (A.force * modifier) * 0.5 // Multiply the axe's damage by the modifier, and add half of this as axe_cut
 		// If it's a pick, make it better at its job
-		if(istype(I, /obj/item/rogueweapon/pick))
-			var/obj/item/rogueweapon/pick/P = I
+		if(istype(I, /obj/item/weapon/pick))
+			var/obj/item/weapon/pick/P = I
 			P.pickmult *= modifier
 	// Apply inherent armor modifiers
 	if(istype(I, /obj/item/clothing))

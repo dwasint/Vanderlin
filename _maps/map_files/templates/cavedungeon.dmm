@@ -210,11 +210,11 @@
 /obj/item/clothing/head/roguetown/helmet/heavy/crusader,
 /obj/item/clothing/gloves/roguetown/plate,
 /obj/item/clothing/neck/roguetown/bevor,
-/obj/item/clothing/under/roguetown/platelegs,
+/obj/item/clothing/pants/platelegs,
 /obj/item/clothing/shoes/roguetown/boots/armor,
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk,
-/obj/item/rogueweapon/sword,
-/obj/item/rogueweapon/shield/tower/metal,
+/obj/item/weapon/sword,
+/obj/item/weapon/shield/tower/metal,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/outdoors/caves)
 "Go" = (
@@ -240,7 +240,7 @@
 /area/rogue/outdoors/caves)
 "Lx" = (
 /obj/structure/table/wood/fancy,
-/obj/item/rogueweapon/sword/long/forgotten,
+/obj/item/weapon/sword/long/forgotten,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/outdoors/caves)
 "Mr" = (

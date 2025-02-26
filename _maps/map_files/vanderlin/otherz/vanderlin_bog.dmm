@@ -94,10 +94,10 @@
 "bn" = (
 /obj/structure/chair/wood/rogue/chair_noble/red,
 /obj/item/clothing/suit/roguetown/shirt/robe/magus,
-/obj/item/rogueweapon/knife/dagger/steel/dirk,
+/obj/item/weapon/knife/dagger/steel/dirk,
 /obj/item/clothing/gloves/roguetown/fingerless/shadowgloves,
 /obj/item/clothing/mask/rogue/shepherd/shadowmask,
-/obj/item/clothing/under/roguetown/trou/shadowpants,
+/obj/item/clothing/pants/trou/shadowpants,
 /obj/item/clothing/shoes/roguetown/boots,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /mob/living/carbon/human/species/skeleton/npc/no_equipment,
@@ -213,7 +213,7 @@
 "cG" = (
 /obj/structure/closet/crate/chest,
 /obj/item/rope/chain,
-/obj/item/rogueweapon/mace/cudgel,
+/obj/item/weapon/mace/cudgel,
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/indoors/shelter/bog)
 "cK" = (
@@ -290,7 +290,7 @@
 /area/rogue/indoors/shelter/bog)
 "dD" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/sword/scimitar/messer{
+/obj/item/weapon/sword/scimitar/messer{
 	pixel_y = -4;
 	pixel_x = 3
 	},
@@ -574,7 +574,7 @@
 /obj/item/clothing/suit/roguetown/armor/leather/hide/orc,
 /obj/item/clothing/cloak/raincloak/brown,
 /obj/item/clothing/head/roguetown/helmet/leather/orc,
-/obj/item/rogueweapon/whip,
+/obj/item/weapon/whip,
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors/shelter/bog)
 "hb" = (
@@ -611,7 +611,7 @@
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/indoors/shelter/bog)
 "hw" = (
-/obj/item/rogueweapon/pick,
+/obj/item/weapon/pick,
 /turf/open/floor/rogue/woodturned/nosmooth,
 /area/rogue/indoors/shelter/bog)
 "hA" = (
@@ -798,18 +798,18 @@
 "kG" = (
 /obj/structure/closet/crate/roguecloset/inn,
 /obj/item/clothing/suit/roguetown/shirt/undershirt,
-/obj/item/clothing/under/roguetown/tights/black,
+/obj/item/clothing/pants/tights/black,
 /obj/item/clothing/head/roguetown/cookhat,
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/indoors/shelter/bog)
 "kH" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/mace/woodclub,
-/obj/item/rogueweapon/mace/woodclub,
-/obj/item/rogueweapon/mace/woodclub,
-/obj/item/rogueweapon/mace/woodclub,
-/obj/item/rogueweapon/mace/woodclub,
-/obj/item/rogueweapon/mace/woodclub,
+/obj/item/weapon/mace/woodclub,
+/obj/item/weapon/mace/woodclub,
+/obj/item/weapon/mace/woodclub,
+/obj/item/weapon/mace/woodclub,
+/obj/item/weapon/mace/woodclub,
+/obj/item/weapon/mace/woodclub,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/bog)
 "kK" = (
@@ -879,7 +879,7 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue/indoors/shelter/bog)
 "lG" = (
-/obj/item/rogueweapon/knife/dagger/steel,
+/obj/item/weapon/knife/dagger/steel,
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/item/trash/candle{
 	pixel_y = 7;
@@ -961,11 +961,11 @@
 /area/rogue/indoors/shelter/bog)
 "my" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/mace/woodclub/train_sword,
-/obj/item/rogueweapon/mace/woodclub/train_sword,
-/obj/item/rogueweapon/mace/woodclub/train_sword,
-/obj/item/rogueweapon/mace/woodclub/train_sword,
-/obj/item/rogueweapon/mace/woodclub/train_sword,
+/obj/item/weapon/mace/woodclub/train_sword,
+/obj/item/weapon/mace/woodclub/train_sword,
+/obj/item/weapon/mace/woodclub/train_sword,
+/obj/item/weapon/mace/woodclub/train_sword,
+/obj/item/weapon/mace/woodclub/train_sword,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/bog)
 "mz" = (
@@ -1044,10 +1044,10 @@
 /area/rogue/outdoors/bog)
 "nR" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/mace/woodclub{
+/obj/item/weapon/mace/woodclub{
 	pixel_x = 8
 	},
-/obj/item/rogueweapon/mace/woodclub,
+/obj/item/weapon/mace/woodclub,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/shelter/bog)
 "nU" = (
@@ -1196,7 +1196,7 @@
 /area/rogue/indoors/shelter/bog)
 "pN" = (
 /obj/structure/closet/crate/chest,
-/obj/item/rogueweapon/pick,
+/obj/item/weapon/pick,
 /turf/open/floor/rogue/woodturned/nosmooth,
 /area/rogue/indoors/shelter/bog)
 "pO" = (
@@ -1307,11 +1307,11 @@
 /area/rogue/indoors/cave)
 "rh" = (
 /obj/structure/table/church/m,
-/obj/item/rogueweapon/sword/decorated{
+/obj/item/weapon/sword/decorated{
 	pixel_y = 3;
 	pixel_x = -11
 	},
-/obj/item/rogueweapon/knife/dagger/steel,
+/obj/item/weapon/knife/dagger/steel,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/shelter/bog)
 "rj" = (
@@ -1361,7 +1361,7 @@
 	},
 /area/rogue/outdoors/bog)
 "sl" = (
-/obj/item/rogueweapon/tongs,
+/obj/item/weapon/tongs,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/bog)
 "sm" = (
@@ -1522,7 +1522,7 @@
 	icon_state = "tablewood2"
 	},
 /obj/item/reagent_containers/food/snacks/rogue/meat/mince/beef,
-/obj/item/rogueweapon/knife/cleaver{
+/obj/item/weapon/knife/cleaver{
 	pixel_y = -9
 	},
 /turf/open/floor/rogue/twig,
@@ -1757,7 +1757,7 @@
 /area/rogue/outdoors/mountains)
 "xq" = (
 /obj/structure/closet/crate/chest/gold,
-/obj/item/rogueweapon/polearm/woodstaff/quarterstaff/steel,
+/obj/item/weapon/polearm/woodstaff/quarterstaff/steel,
 /obj/item/roguestatue/gold,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/shelter/bog)
@@ -1928,7 +1928,7 @@
 /area/rogue/indoors/shelter/bog)
 "zK" = (
 /obj/structure/table/wood/plain,
-/obj/item/rogueweapon/sword/scimitar/messer,
+/obj/item/weapon/sword/scimitar/messer,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/shelter/bog)
 "zL" = (
@@ -2059,8 +2059,8 @@
 "BG" = (
 /obj/structure/rack/rogue,
 /obj/effect/decal/cleanable/dirt/cobweb,
-/obj/item/rogueweapon/sword/short,
-/obj/item/rogueweapon/sword/short,
+/obj/item/weapon/sword/short,
+/obj/item/weapon/sword/short,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/shelter/bog)
 "BM" = (
@@ -2151,7 +2151,7 @@
 /obj/structure/rack/rogue,
 /obj/item/clothing/suit/roguetown/armor/chainmail/iron/orc,
 /obj/item/clothing/head/roguetown/helmet/orc,
-/obj/item/rogueweapon/sword/scimitar/falchion,
+/obj/item/weapon/sword/scimitar/falchion,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/shelter/bog)
 "CM" = (
@@ -2475,7 +2475,7 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/shelter/bog)
 "HA" = (
-/obj/item/rogueweapon/pick,
+/obj/item/weapon/pick,
 /obj/item/natural/stone,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/indoors/cave)
@@ -2489,7 +2489,7 @@
 /area/rogue/outdoors/bog)
 "HG" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/sword/scimitar/messer,
+/obj/item/weapon/sword/scimitar/messer,
 /obj/item/clothing/gloves/roguetown/leather,
 /obj/item/clothing/suit/roguetown/armor/leather,
 /obj/item/clothing/cloak/raincloak/furcloak/brown,
@@ -2759,7 +2759,7 @@
 /obj/structure/table/wood/reinf_long{
 	dir = 8
 	},
-/obj/item/rogueweapon/knife/cleaver,
+/obj/item/weapon/knife/cleaver,
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/indoors/shelter/bog)
 "LX" = (
@@ -2836,7 +2836,7 @@
 /obj/structure/rack/rogue,
 /obj/item/clothing/head/roguetown/helmet/goblin,
 /obj/item/clothing/suit/roguetown/armor/cuirass/iron/goblin,
-/obj/item/rogueweapon/sword/scimitar/messer,
+/obj/item/weapon/sword/scimitar/messer,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/shelter/bog)
 "Ng" = (
@@ -3097,7 +3097,7 @@
 /area/rogue/outdoors/bog)
 "QG" = (
 /obj/structure/table/wood/plain,
-/obj/item/rogueweapon/hammer/iron,
+/obj/item/weapon/hammer/iron,
 /turf/open/floor/rogue/woodturned/nosmooth,
 /area/rogue/indoors/shelter/bog)
 "QJ" = (
@@ -3226,7 +3226,7 @@
 /area/rogue/indoors/shelter/bog)
 "St" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/polearm/spear{
+/obj/item/weapon/polearm/spear{
 	pixel_y = -15;
 	pixel_x = -10
 	},
@@ -3247,7 +3247,7 @@
 /area/rogue/outdoors/bog)
 "SG" = (
 /obj/structure/table/wood/plain,
-/obj/item/rogueweapon/knife/cleaver,
+/obj/item/weapon/knife/cleaver,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/shelter/bog)
 "SH" = (
@@ -3410,7 +3410,7 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/bog)
 "Uz" = (
-/obj/item/rogueweapon/knife/dagger,
+/obj/item/weapon/knife/dagger,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/bog)
@@ -3740,7 +3740,7 @@
 /area/rogue/indoors/shelter/bog)
 "Zb" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/under/roguetown/chainlegs/iron,
+/obj/item/clothing/pants/chainlegs/iron,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/shelter/bog)
 "Zm" = (
@@ -3755,7 +3755,7 @@
 /area/rogue/indoors/shelter/bog)
 "Zy" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/mace/steel/morningstar,
+/obj/item/weapon/mace/steel/morningstar,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/shelter/bog)
 "ZF" = (
@@ -3777,7 +3777,7 @@
 	dir = 10;
 	icon_state = "largetable"
 	},
-/obj/item/rogueweapon/mace/church{
+/obj/item/weapon/mace/church{
 	pixel_y = 10
 	},
 /turf/open/floor/rogue/ruinedwood/turned,
@@ -3798,7 +3798,7 @@
 /area/rogue/indoors/shelter/bog)
 "ZV" = (
 /obj/machinery/anvil,
-/obj/item/rogueweapon/tongs,
+/obj/item/weapon/tongs,
 /turf/open/floor/rogue/dirt,
 /area/rogue/indoors/shelter/bog)
 "ZX" = (

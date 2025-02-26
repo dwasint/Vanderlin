@@ -115,8 +115,8 @@
 				desc += " It is of exquisite quality."
 
 /obj/item/ingot/attackby(obj/item/I, mob/user, params)
-	if(istype(I, /obj/item/rogueweapon/tongs))
-		var/obj/item/rogueweapon/tongs/T = I
+	if(istype(I, /obj/item/weapon/tongs))
+		var/obj/item/weapon/tongs/T = I
 		if(!T.held_item)
 			if(item_flags & IN_STORAGE)
 				if(!SEND_SIGNAL(loc, COMSIG_TRY_STORAGE_TAKE, src, user.loc, TRUE))

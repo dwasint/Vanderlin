@@ -200,7 +200,7 @@
 /area/rogue/indoors)
 "hO" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/clothing/under/roguetown/tights/lord,
+/obj/item/clothing/pants/tights/lord,
 /obj/item/natural/cloth,
 /turf/open/floor/rogue/tile/bath,
 /area/rogue/indoors)
@@ -262,7 +262,7 @@
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors)
 "jY" = (
-/obj/item/rogueweapon/pick/copper,
+/obj/item/weapon/pick/copper,
 /turf/open/floor/rogue/cobblerock/alt,
 /area/rogue/indoors/cave)
 "kg" = (
@@ -385,7 +385,7 @@
 /area/rogue/indoors)
 "nw" = (
 /obj/structure/table/wood,
-/obj/item/rogueweapon/knife/cleaver,
+/obj/item/weapon/knife/cleaver,
 /turf/open/floor/rogue/tile/kitchen,
 /area/rogue/indoors)
 "ny" = (
@@ -476,7 +476,7 @@
 /area/rogue/indoors)
 "ql" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/clothing/under/roguetown/skirt,
+/obj/item/clothing/pants/skirt,
 /obj/item/natural/cloth,
 /obj/item/natural/cloth,
 /turf/open/floor/rogue/tile/bath,
@@ -786,9 +786,9 @@
 "DB" = (
 /obj/effect/decal/cleanable/blood/old,
 /obj/structure/table/stone_small,
-/obj/item/rogueweapon/surgery/saw,
-/obj/item/rogueweapon/surgery/scalpel,
-/obj/item/rogueweapon/surgery/retractor,
+/obj/item/weapon/surgery/saw,
+/obj/item/weapon/surgery/scalpel,
+/obj/item/weapon/surgery/retractor,
 /turf/open/floor/rogue/tile/masonic/spiral,
 /area/rogue/indoors)
 "DF" = (
@@ -853,12 +853,12 @@
 	TOTALSPD = 15;
 	TOTALSTR = 14
 	},
-/obj/item/clothing/under/roguetown/platelegs/rust,
+/obj/item/clothing/pants/platelegs/rust,
 /obj/item/clothing/suit/roguetown/armor/plate/rust,
 /obj/item/clothing/shoes/roguetown/boots/armor/light/rust,
 /obj/item/clothing/head/roguetown/helmet/heavy/rust,
 /obj/item/clothing/gloves/roguetown/plate/rust,
-/obj/item/rogueweapon/sword/scimitar/falchion,
+/obj/item/weapon/sword/scimitar/falchion,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /turf/open/floor/rogue/ruinedwood/chevron,
 /area/rogue/indoors)
@@ -1107,8 +1107,8 @@
 /obj/item/clothing/head/roguetown/helmet/heavy/rust,
 /obj/item/clothing/shoes/roguetown/boots/armor/light/rust,
 /obj/item/clothing/suit/roguetown/armor/cuirass/iron/rust,
-/obj/item/clothing/under/roguetown/platelegs/rust,
-/obj/item/rogueweapon/polearm/halberd/bardiche/warcutter,
+/obj/item/clothing/pants/platelegs/rust,
+/obj/item/weapon/polearm/halberd/bardiche/warcutter,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors)
@@ -1353,9 +1353,9 @@
 /obj/item/clothing/head/roguetown/helmet/heavy/rust,
 /obj/item/clothing/shoes/roguetown/boots/armor/light/rust,
 /obj/item/clothing/suit/roguetown/armor/cuirass/iron/rust,
-/obj/item/clothing/under/roguetown/platelegs/rust,
-/obj/item/rogueweapon/sword/arming,
-/obj/item/rogueweapon/shield/tower/buckleriron,
+/obj/item/clothing/pants/platelegs/rust,
+/obj/item/weapon/sword/arming,
+/obj/item/weapon/shield/tower/buckleriron,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)

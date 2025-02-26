@@ -44,7 +44,7 @@
 /area/rogue)
 "iH" = (
 /obj/structure/table/wood/plain,
-/obj/item/rogueweapon/knife/hunting{
+/obj/item/weapon/knife/hunting{
 	pixel_y = 3;
 	pixel_x = -5
 	},
@@ -145,7 +145,7 @@
 /area/rogue)
 "xI" = (
 /obj/structure/closet/crate/chest/old_crate,
-/obj/item/rogueweapon/sword/rapier/silver,
+/obj/item/weapon/sword/rapier/silver,
 /obj/item/clothing/suit/roguetown/armor/cuirass,
 /obj/item/clothing/mask/rogue/facemask,
 /obj/item/organ/heart,
@@ -226,7 +226,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue)
 "Mt" = (
-/obj/item/rogueweapon/knife/dagger/silver,
+/obj/item/weapon/knife/dagger/silver,
 /obj/item/natural/stone,
 /obj/item/natural/stone{
 	pixel_y = -6;

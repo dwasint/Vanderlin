@@ -728,7 +728,7 @@
 "Fc" = (
 /obj/structure/closet/crate/roguecloset,
 /obj/item/clothing/suit/roguetown/shirt/dress,
-/obj/item/clothing/under/roguetown/tights/random,
+/obj/item/clothing/pants/tights/random,
 /obj/item/clothing/suit/roguetown/shirt/dress/gen/blue,
 /obj/item/clothing/suit/roguetown/shirt/dress/silkdress,
 /obj/item/clothing/suit/roguetown/armor/leather/jacket/silk_coat,
@@ -935,7 +935,7 @@
 /area/rogue)
 "NP" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/rogueweapon/knife/cleaver,
+/obj/item/weapon/knife/cleaver,
 /obj/item/kitchen/rollingpin,
 /obj/machinery/light/rogue/wallfire/candle/weak,
 /turf/open/floor/rogue/tile,
@@ -998,7 +998,7 @@
 /obj/structure/closet/crate/roguecloset,
 /obj/item/clothing/suit/roguetown/shirt/dress,
 /obj/item/clothing/head/roguetown/crown/serpcrown/surplus,
-/obj/item/clothing/under/roguetown/tights/random,
+/obj/item/clothing/pants/tights/random,
 /obj/item/clothing/suit/roguetown/shirt/dress/gen/purple,
 /obj/item/clothing/suit/roguetown/shirt/dress/silkdress,
 /obj/item/clothing/suit/roguetown/armor/leather/jacket/silk_coat,

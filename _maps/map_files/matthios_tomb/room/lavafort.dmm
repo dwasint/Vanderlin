@@ -209,7 +209,7 @@
 /area/rogue)
 "pY" = (
 /obj/effect/decal/cleanable/sigil,
-/obj/item/rogueweapon/knife/dagger/silver,
+/obj/item/weapon/knife/dagger/silver,
 /obj/item/reagent_containers/powder/moondust_purest,
 /turf/open/floor/carpet/royalblack,
 /area/rogue)
@@ -274,7 +274,7 @@
 "vB" = (
 /obj/structure/circle_protection,
 /obj/item/alch/firedust,
-/obj/item/rogueweapon/sword/silver,
+/obj/item/weapon/sword/silver,
 /mob/living/simple_animal/hostile/rogue/skeleton/bow,
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
@@ -325,12 +325,12 @@
 /area/rogue)
 "yG" = (
 /obj/structure/closet/crate/chest/neu_fancy,
-/obj/item/rogueweapon/sickle,
-/obj/item/rogueweapon/pitchfork,
-/obj/item/rogueweapon/hoe,
-/obj/item/rogueweapon/thresher,
+/obj/item/weapon/sickle,
+/obj/item/weapon/pitchfork,
+/obj/item/weapon/hoe,
+/obj/item/weapon/thresher,
 /obj/item/reagent_containers/glass/bucket/wooden,
-/obj/item/rogueweapon/shovel,
+/obj/item/weapon/shovel,
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
 "yI" = (
@@ -493,7 +493,7 @@
 "LP" = (
 /obj/structure/circle_protection,
 /obj/item/alch/firedust,
-/obj/item/rogueweapon/sword/rapier/silver,
+/obj/item/weapon/sword/rapier/silver,
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
 "MG" = (

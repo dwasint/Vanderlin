@@ -35,7 +35,7 @@
 /area/rogue)
 "cc" = (
 /obj/structure/closet/dirthole/grave,
-/obj/item/rogueweapon/shovel,
+/obj/item/weapon/shovel,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue)
 "dr" = (
@@ -78,7 +78,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue)
 "gp" = (
-/obj/item/rogueweapon/shovel,
+/obj/item/weapon/shovel,
 /turf/open/floor/rogue/dirt,
 /area/rogue)
 "gT" = (
@@ -139,7 +139,7 @@
 /obj/structure/closet/dirthole/closed,
 /obj/effect/spawner/roguemap/loot/common,
 /obj/structure/closet/burial_shroud,
-/obj/item/rogueweapon/sword/coppermesser,
+/obj/item/weapon/sword/coppermesser,
 /mob/living/carbon/human/species/skeleton/npc/ambush,
 /turf/open/floor/rogue/dirt,
 /area/rogue)
@@ -197,8 +197,8 @@
 /area/rogue)
 "rU" = (
 /obj/structure/closet/dirthole/closed,
-/obj/item/rogueweapon/shield/tower,
-/obj/item/rogueweapon/mace/copperbludgeon,
+/obj/item/weapon/shield/tower,
+/obj/item/weapon/mace/copperbludgeon,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /mob/living/carbon/human/species/skeleton/npc/no_equipment,
 /turf/open/floor/rogue/dirt,
@@ -209,7 +209,7 @@
 /area/rogue)
 "sF" = (
 /obj/structure/closet/dirthole/closed,
-/obj/item/rogueweapon/mace/spiked,
+/obj/item/weapon/mace/spiked,
 /turf/open/floor/rogue/dirt,
 /area/rogue)
 "tc" = (
@@ -343,7 +343,7 @@
 "DA" = (
 /obj/structure/closet/dirthole/grave,
 /obj/structure/closet/burial_shroud,
-/obj/item/rogueweapon/shield/wood,
+/obj/item/weapon/shield/wood,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue)
 "DH" = (
@@ -418,8 +418,8 @@
 "Hc" = (
 /mob/living/carbon/human/species/skeleton/npc/no_equipment,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
-/obj/item/rogueweapon/shovel,
-/obj/item/clothing/under/roguetown/trou/leather/mourning,
+/obj/item/weapon/shovel,
+/obj/item/clothing/pants/trou/leather/mourning,
 /obj/item/clothing/suit/roguetown/shirt/robe/necra,
 /obj/item/clothing/head/roguetown/padded/deathshroud,
 /obj/item/clothing/neck/roguetown/psycross/silver/necra,
@@ -495,7 +495,7 @@
 /obj/item/clothing/head/roguetown/jester,
 /obj/item/clothing/shoes/roguetown/jester,
 /obj/item/clothing/suit/roguetown/shirt/jester,
-/obj/item/clothing/under/roguetown/tights/jester,
+/obj/item/clothing/pants/tights/jester,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /obj/item/handheld_bell,
 /mob/living/carbon/human/species/skeleton/npc/no_equipment,
@@ -504,7 +504,7 @@
 /area/rogue)
 "Rk" = (
 /obj/structure/closet/dirthole/closed,
-/obj/item/rogueweapon/shield/wood,
+/obj/item/weapon/shield/wood,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue)
 "Sk" = (
@@ -527,7 +527,7 @@
 /area/rogue)
 "Wk" = (
 /mob/living/carbon/human/species/skeleton/npc/no_equipment,
-/obj/item/rogueweapon/shovel,
+/obj/item/weapon/shovel,
 /obj/item/clothing/head/roguetown/padded/deathshroud,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /turf/open/floor/rogue/dirt/road,

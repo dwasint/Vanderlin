@@ -166,7 +166,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	H.mind.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/climbing, 5, TRUE)
-	pants = /obj/item/clothing/under/roguetown/tights/black
+	pants = /obj/item/clothing/pants/tights/black
 	shirt = /obj/item/clothing/suit/roguetown/shirt/vampire
 	belt = /obj/item/storage/belt/rogue/leather/plaquegold
 	head  = /obj/item/clothing/head/roguetown/vampire
@@ -575,8 +575,8 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 					return
 				if(do_after(user, 10 SECONDS))
 					lord.handle_vitae(-5000)
-					new /obj/item/clothing/under/roguetown/platelegs/vampire (src.loc)
-					new /obj/item/clothing/under/roguetown/platelegs/vampire (src.loc)
+					new /obj/item/clothing/pants/platelegs/vampire (src.loc)
+					new /obj/item/clothing/pants/platelegs/vampire (src.loc)
 					new /obj/item/clothing/suit/roguetown/armor/haubergon_vampire (src.loc)
 					new /obj/item/clothing/suit/roguetown/armor/cuirass/vampire (src.loc)
 					new /obj/item/clothing/shoes/roguetown/boots/armor/vampire (src.loc)

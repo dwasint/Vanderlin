@@ -32,13 +32,13 @@
 	head = /obj/item/clothing/head/roguetown/hatblu
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
 	cloak = /obj/item/clothing/cloak/apron/waist/bar
-	pants = /obj/item/clothing/under/roguetown/trou
+	pants = /obj/item/clothing/pants/trou
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
-	beltl = /obj/item/rogueweapon/pick
-	backr = /obj/item/rogueweapon/axe/steel
+	beltl = /obj/item/weapon/pick
+	backr = /obj/item/weapon/axe/steel
 	backl = /obj/item/storage/backpack/rogue/backpack
 	H.change_stat(STATKEY_STR, 1)
 	H.change_stat(STATKEY_INT, 2)

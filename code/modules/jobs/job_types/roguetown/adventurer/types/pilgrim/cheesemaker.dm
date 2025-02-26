@@ -31,7 +31,7 @@
 	H.mind?.adjust_skillrank(/datum/skill/craft/cooking, 4, TRUE)
 	H.mind?.adjust_skillrank(/datum/skill/labor/farming, 2, TRUE)
 	belt = /obj/item/storage/belt/rogue/leather
-	pants = /obj/item/clothing/under/roguetown/tights/random
+	pants = /obj/item/clothing/pants/tights/random
 	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
 	cloak = /obj/item/clothing/cloak/apron
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
@@ -39,7 +39,7 @@
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	beltr = /obj/item/reagent_containers/glass/bottle/waterskin/milk
-	beltl = /obj/item/rogueweapon/knife/villager
+	beltl = /obj/item/weapon/knife/villager
 	backpack_contents = list(/obj/item/reagent_containers/powder/salt = 3, /obj/item/reagent_containers/food/snacks/rogue/cheddar = 1, /obj/item/natural/cloth = 2, /obj/item/book/rogue/yeoldecookingmanual = 1)
 	H.change_stat(STATKEY_INT, 1)
 	H.change_stat(STATKEY_CON, 2) // Cheese diet.

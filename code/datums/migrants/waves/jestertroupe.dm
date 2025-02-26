@@ -17,11 +17,11 @@
 /datum/outfit/job/roguetown/jestertroupe/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/roguetown/jester
-	pants = /obj/item/clothing/under/roguetown/tights
+	pants = /obj/item/clothing/pants/tights
 	armor = /obj/item/clothing/suit/roguetown/shirt/jester
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
-	beltr = /obj/item/rogueweapon/knife/villager
+	beltr = /obj/item/weapon/knife/villager
 	backl = /obj/item/rogue/instrument/lute
 	backr = /obj/item/rogue/instrument/viola
 	head = /obj/item/clothing/head/roguetown/jester

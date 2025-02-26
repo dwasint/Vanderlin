@@ -81,7 +81,7 @@
 /datum/outfit/job/roguetown/lich/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/helmet/skullcap/cult
-	pants = /obj/item/clothing/under/roguetown/chainlegs
+	pants = /obj/item/clothing/pants/chainlegs
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
 	armor = /obj/item/clothing/suit/roguetown/shirt/robe/necromancer
@@ -91,8 +91,8 @@
 	belt = /obj/item/storage/belt/rogue/leather/black
 	backl = /obj/item/storage/backpack/rogue/satchel
 	beltr = /obj/item/reagent_containers/glass/bottle/rogue/manapot
-	beltl = /obj/item/rogueweapon/knife/dagger/steel
-	r_hand = /obj/item/rogueweapon/polearm/woodstaff
+	beltl = /obj/item/weapon/knife/dagger/steel
+	r_hand = /obj/item/weapon/polearm/woodstaff
 
 	H.mind.adjust_skillrank(/datum/skill/misc/reading, 6, TRUE)
 	H.mind?.adjust_skillrank(/datum/skill/craft/alchemy, 5, TRUE)

@@ -135,9 +135,9 @@
 /area/rogue)
 "Cs" = (
 /obj/structure/closet/crate/chest/gold,
-/obj/item/rogueweapon/sword/sabre/cutlass,
-/obj/item/rogueweapon/knife/dagger/silver,
-/obj/item/rogueweapon/shield/tower/metal,
+/obj/item/weapon/sword/sabre/cutlass,
+/obj/item/weapon/knife/dagger/silver,
+/obj/item/weapon/shield/tower/metal,
 /turf/open/floor/rogue/metal,
 /area/rogue)
 "CT" = (

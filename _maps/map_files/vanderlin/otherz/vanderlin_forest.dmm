@@ -1189,8 +1189,8 @@
 /area/rogue/outdoors/woods)
 "Vd" = (
 /obj/structure/closet/crate/chest/neu,
-/obj/item/rogueweapon/mace/woodclub/train_sword,
-/obj/item/rogueweapon/mace/woodclub/train_sword,
+/obj/item/weapon/mace/woodclub/train_sword,
+/obj/item/weapon/mace/woodclub/train_sword,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "horzw"
 	},

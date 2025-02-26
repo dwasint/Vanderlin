@@ -20,19 +20,19 @@
 
 /datum/outfit/job/roguetown/adventurer/gravedigger/pre_equip(mob/living/carbon/human/H)
 	..()
-	pants = /obj/item/clothing/under/roguetown/tights/black
+	pants = /obj/item/clothing/pants/tights/black
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/black
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 	backl = /obj/item/storage/backpack/rogue/satchel
 	belt = /obj/item/storage/belt/rogue/leather/rope
-	backpack_contents = list(/obj/item/rogueweapon/pick = 1, /obj/item/rogueweapon/knife/hunting = 1, /obj/item/lockpickring/mundane)
+	backpack_contents = list(/obj/item/weapon/pick = 1, /obj/item/weapon/knife/hunting = 1, /obj/item/lockpickring/mundane)
 	gloves = /obj/item/clothing/gloves/roguetown/fingerless
 	cloak = /obj/item/clothing/cloak/raincloak/mortus
 	armor = /obj/item/clothing/suit/roguetown/armor/leather
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	beltr = /obj/item/flashlight/flare/torch/lantern
-	beltl = /obj/item/rogueweapon/whip // You know why.
-	backr = /obj/item/rogueweapon/shovel
+	beltl = /obj/item/weapon/whip // You know why.
+	backr = /obj/item/weapon/shovel
 	head = /obj/item/clothing/head/roguetown/helmet/leather/inquisitor
 	neck = /obj/item/storage/belt/rogue/pouch
 	if(H.mind)

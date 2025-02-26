@@ -115,7 +115,7 @@
 /turf/open/water/cleanshallow,
 /area/rogue)
 "fh" = (
-/obj/item/clothing/under/roguetown/trou/leather{
+/obj/item/clothing/pants/trou/leather{
 	pixel_x = -6
 	},
 /turf/open/floor/rogue/blocks/stonered/tiny,
@@ -165,7 +165,7 @@
 /area/rogue)
 "gR" = (
 /obj/structure/trap/poison,
-/obj/item/rogueweapon/pick/stone,
+/obj/item/weapon/pick/stone,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue)
 "gS" = (
@@ -191,8 +191,8 @@
 /area/rogue)
 "hy" = (
 /obj/structure/closet/crate/chest/neu_iron,
-/obj/item/rogueweapon/tongs,
-/obj/item/rogueweapon/hammer,
+/obj/item/weapon/tongs,
+/obj/item/weapon/hammer,
 /turf/open/floor/rogue/churchrough,
 /area/rogue)
 "hz" = (
@@ -223,7 +223,7 @@
 	pixel_x = -1;
 	pixel_y = 11
 	},
-/obj/item/clothing/under/roguetown/trou,
+/obj/item/clothing/pants/trou,
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue)
 "iv" = (
@@ -591,7 +591,7 @@
 /area/rogue)
 "th" = (
 /obj/machinery/anvil,
-/obj/item/rogueweapon/hammer/sledgehammer,
+/obj/item/weapon/hammer/sledgehammer,
 /obj/machinery/light/rogue/wallfire/candle/r,
 /turf/open/floor/rogue/churchrough,
 /area/rogue)
@@ -938,7 +938,7 @@
 /obj/structure/giantfur{
 	layer = 2.7
 	},
-/obj/item/clothing/under/roguetown/trou,
+/obj/item/clothing/pants/trou,
 /obj/item/reagent_containers/food/snacks/smallrat/dead,
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue)
@@ -1034,7 +1034,7 @@
 /area/rogue)
 "Nr" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/item/clothing/under/roguetown/tights/random,
+/obj/item/clothing/pants/tights/random,
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue)
 "Ny" = (
@@ -1092,9 +1092,9 @@
 /area/rogue)
 "Pg" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/item/clothing/under/roguetown/trou,
+/obj/item/clothing/pants/trou,
 /obj/structure/rack/rogue/shelf/notdense,
-/obj/item/rogueweapon/polearm/eaglebeak{
+/obj/item/weapon/polearm/eaglebeak{
 	pixel_y = 16
 	},
 /turf/open/floor/rogue/blocks/stonered/tiny,
@@ -1240,7 +1240,7 @@
 	},
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/item/rogueweapon/shield/tower/metal,
+/obj/item/weapon/shield/tower/metal,
 /obj/effect/spawner/roguemap/loot/weapon,
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue)
@@ -1270,7 +1270,7 @@
 /area/rogue)
 "Uo" = (
 /obj/structure/rack/rogue/shelf/notdense,
-/obj/item/rogueweapon/mace/steel/morningstar{
+/obj/item/weapon/mace/steel/morningstar{
 	pixel_y = 32
 	},
 /turf/open/floor/rogue/blocks/stonered,
@@ -1391,7 +1391,7 @@
 /turf/open/water/bath,
 /area/rogue)
 "Wu" = (
-/obj/item/rogueweapon/mace/warhammer{
+/obj/item/weapon/mace/warhammer{
 	pixel_y = 32
 	},
 /obj/effect/decal/cleanable/blood/old,

@@ -10,13 +10,13 @@
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	neck = /obj/item/clothing/neck/roguetown/psycross/silver/astrata
 	gloves = /obj/item/clothing/gloves/roguetown/fingerless/shadowgloves // Would give em Fingerless, but parrying with fists sounds funny as fuck
-	pants = /obj/item/clothing/under/roguetown/trou/shadowpants
+	pants = /obj/item/clothing/pants/trou/shadowpants
 	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/black
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/winterjacket
 	shoes = /obj/item/clothing/shoes/roguetown/nobleboot
 	beltl = /obj/item/flashlight/flare/torch/lantern
 	mask = /obj/item/clothing/mask/rogue/goggles
-	beltr = /obj/item/rogueweapon/sword/rapier
+	beltr = /obj/item/weapon/sword/rapier
 	belt = /obj/item/storage/belt/rogue/leather/steel
 	backr = /obj/item/storage/backpack/rogue/satchel
 	id = /obj/item/clothing/ring/silver

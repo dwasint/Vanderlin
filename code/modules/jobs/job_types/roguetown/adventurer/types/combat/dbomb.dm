@@ -10,13 +10,13 @@
 /datum/outfit/job/roguetown/adventurer/dbomb/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/helmet/horned
-	pants = /obj/item/clothing/under/roguetown/trou
+	pants = /obj/item/clothing/pants/trou
 	belt = /obj/item/storage/belt/rogue/leather
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	backl = /obj/item/storage/backpack/rogue/backpack
-	beltl = /obj/item/rogueweapon/pick
-	beltr = /obj/item/rogueweapon/hammer/iron
+	beltl = /obj/item/weapon/pick
+	beltr = /obj/item/weapon/hammer/iron
 	backpack_contents = list(/obj/item/bomb = 1, /obj/item/flint = 1)
 	H.mind?.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)
 	H.mind?.adjust_skillrank(/datum/skill/labor/mining, 1, TRUE)

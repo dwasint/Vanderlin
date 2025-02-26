@@ -20,12 +20,12 @@
 	..()
 	head = /obj/item/clothing/head/roguetown/menacing
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
-	pants = /obj/item/clothing/under/roguetown/trou
+	pants = /obj/item/clothing/pants/trou
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	cloak = /obj/item/clothing/cloak/stabard/dungeon
 	belt = /obj/item/storage/belt/rogue/leather
-	beltr = /obj/item/rogueweapon/whip/antique
+	beltr = /obj/item/weapon/whip/antique
 	beltl = /obj/item/flashlight/flare/torch/lantern
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/storage/keyring/dungeoneer = 1, /obj/item/rope/chain = 1)
@@ -69,7 +69,7 @@
 
 /datum/outfit/job/roguetown/mig_prisoner/pre_equip(mob/living/carbon/human/H)
 	..()
-	pants = /obj/item/clothing/under/roguetown/loincloth/brown
+	pants = /obj/item/clothing/pants/loincloth/brown
 	mask = /obj/item/clothing/mask/rogue/facemask/prisoner
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
@@ -105,10 +105,10 @@
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	head = /obj/item/clothing/head/roguetown/helmet/nasal
-	backr = /obj/item/rogueweapon/shield/wood
-	beltr = /obj/item/rogueweapon/sword/scimitar/messer
-	beltl = /obj/item/rogueweapon/mace
-	pants = /obj/item/clothing/under/roguetown/trou/leather
+	backr = /obj/item/weapon/shield/wood
+	beltr = /obj/item/weapon/sword/scimitar/messer
+	beltl = /obj/item/weapon/mace
+	pants = /obj/item/clothing/pants/trou/leather
 	cloak = /obj/item/clothing/cloak/stabard/guard
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	belt = /obj/item/storage/belt/rogue/leather

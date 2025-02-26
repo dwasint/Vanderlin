@@ -64,7 +64,7 @@
 	mob_overlay_icon = 'icons/roguetown/maniac/clothing_mob.dmi'
 	icon_state = "shirt"
 
-/obj/item/clothing/under/roguetown/tights/formal
+/obj/item/clothing/pants/tights/formal
 	name = "formal pants"
 	desc = "TNC is the fairest company I know, atleast I think?."
 	gender = PLURAL
@@ -76,7 +76,7 @@
 	name = "Trey Liam"
 	head = /obj/item/clothing/head/roguetown/cyberdeck
 	shirt = /obj/item/clothing/suit/roguetown/shirt/formal
-	pants = /obj/item/clothing/under/roguetown/tights/formal
+	pants = /obj/item/clothing/pants/tights/formal
 
 /obj/effect/landmark/treyliam
 	name = "trey"

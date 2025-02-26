@@ -1152,7 +1152,7 @@
 	icon = 'icons/roguetown/clothing/special/blkknight.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
 
-/obj/item/clothing/under/roguetown/platelegs/blk
+/obj/item/clothing/pants/platelegs/blk
 	name = "blacksteel legs"
 	icon_state = "bklegs"
 	icon = 'icons/roguetown/clothing/special/blkknight.dmi'

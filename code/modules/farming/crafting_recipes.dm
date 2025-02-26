@@ -14,12 +14,12 @@
 
 /datum/crafting_recipe/roguetown/woodthresher
 	name = "thresher"
-	result = list(/obj/item/rogueweapon/thresher)
+	result = list(/obj/item/weapon/thresher)
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 				/obj/item/rope = 1)
 
 /datum/crafting_recipe/roguetown/militarythresher
 	name = "military flail"
-	result = list(/obj/item/rogueweapon/thresher/military)
-	reqs = list(/obj/item/rogueweapon/thresher = 1,
+	result = list(/obj/item/weapon/thresher/military)
+	reqs = list(/obj/item/weapon/thresher = 1,
 				/obj/item/ingot/iron = 1)

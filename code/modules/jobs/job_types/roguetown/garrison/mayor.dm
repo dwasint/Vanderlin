@@ -33,7 +33,7 @@
 
 /datum/outfit/job/roguetown/mayor/pre_equip(mob/living/carbon/human/H)
 	..()
-	pants = /obj/item/clothing/under/roguetown/trou/leather
+	pants = /obj/item/clothing/pants/trou/leather
 	head = /obj/item/clothing/head/roguetown/brimmed
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/jacket
 	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic
@@ -43,7 +43,7 @@
 	belt = /obj/item/storage/belt/rogue/leather/black
 	beltr = /obj/item/storage/keyring/mayor
 	beltl = /obj/item/flashlight/flare/torch/lantern
-	r_hand = /obj/item/rogueweapon/polearm/woodstaff/quarterstaff
+	r_hand = /obj/item/weapon/polearm/woodstaff/quarterstaff
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)

@@ -53,7 +53,7 @@
 /area/rogue)
 "s" = (
 /obj/structure/handcart,
-/obj/item/rogueweapon/knife/cleaver,
+/obj/item/weapon/knife/cleaver,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "x" = (
@@ -70,7 +70,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "C" = (
-/obj/item/rogueweapon/knife/cleaver,
+/obj/item/weapon/knife/cleaver,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "D" = (

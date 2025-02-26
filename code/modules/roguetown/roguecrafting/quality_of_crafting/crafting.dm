@@ -6,12 +6,12 @@
 	name = "stone spear"
 	requirements = list(
 		/obj/item/natural/stone = 1,
-		/obj/item/rogueweapon/polearm/woodstaff = 1,
+		/obj/item/weapon/polearm/woodstaff = 1,
 	)
 
-	starting_atom = /obj/item/rogueweapon/polearm/woodstaff
+	starting_atom = /obj/item/weapon/polearm/woodstaff
 	attacking_atom = /obj/item/natural/stone
-	output = /obj/item/rogueweapon/polearm/spear/stone
+	output = /obj/item/weapon/polearm/spear/stone
 	craftdiff = 0
 	uses_attacking_atom = TRUE
 
@@ -23,7 +23,7 @@
 
 // 	starting_atom =/obj/item/natural/wood/plank
 // 	attacking_atom = /obj/item/natural/wood/plank
-// 	output = /obj/item/rogueweapon/polearm/woodstaff
+// 	output = /obj/item/weapon/polearm/woodstaff
 // 	craftdiff = 0
 // 	uses_attacking_atom = TRUE
 
@@ -49,7 +49,7 @@
 
 	starting_atom = /obj/item/grown/log/tree/stick
 	attacking_atom = /obj/item/natural/wood/plank
-	output = /obj/item/rogueweapon/mace/woodclub/train_sword
+	output = /obj/item/weapon/mace/woodclub/train_sword
 	craftdiff = 0
 	uses_attacking_atom = TRUE
 
@@ -61,10 +61,10 @@
 
 	starting_atom = /obj/item/natural/wood/plank
 	attacking_atom = /obj/item/natural/wood/plank
-	output = /obj/item/rogueweapon/shield/wood/crafted
+	output = /obj/item/weapon/shield/wood/crafted
 	uses_attacking_atom = TRUE
 
-/obj/item/rogueweapon/shield/wood/crafted
+/obj/item/weapon/shield/wood/crafted
 	sellprice = 6
 
 /datum/repeatable_crafting_recipe/crafting/heatershield
@@ -76,9 +76,9 @@
 
 	starting_atom = /obj/item/natural/hide
 	attacking_atom = /obj/item/natural/wood/plank
-	output = /obj/item/rogueweapon/shield/heater/crafted
+	output = /obj/item/weapon/shield/heater/crafted
 	craftdiff = 2
 	uses_attacking_atom = TRUE
 
-/obj/item/rogueweapon/shield/heater/crafted
+/obj/item/weapon/shield/heater/crafted
 	sellprice = 6

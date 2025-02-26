@@ -3,7 +3,7 @@
 /turf/closed/mineral/rogue,
 /area/rogue)
 "b" = (
-/obj/item/clothing/under/roguetown/chainlegs/iron,
+/obj/item/clothing/pants/chainlegs/iron,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "c" = (
@@ -52,7 +52,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "p" = (
-/obj/item/clothing/under/roguetown/tights,
+/obj/item/clothing/pants/tights,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "q" = (
@@ -153,7 +153,7 @@
 	pixel_x = -4;
 	pixel_y = 19
 	},
-/obj/item/clothing/under/roguetown/grenzelpants{
+/obj/item/clothing/pants/grenzelpants{
 	pixel_x = 10
 	},
 /obj/item/clothing/shoes/roguetown/grenzelhoft{

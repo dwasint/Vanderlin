@@ -156,22 +156,22 @@
 /datum/supply_pack/rogue/apparel/tights_random
 	name = "Cloth Tights"
 	cost = 4
-	contains = /obj/item/clothing/under/roguetown/tights/random
+	contains = /obj/item/clothing/pants/tights/random
 
 /datum/supply_pack/rogue/apparel/tights_sailor
 	name = "Sailor Tights"
 	cost = 5
-	contains = /obj/item/clothing/under/roguetown/tights/sailor
+	contains = /obj/item/clothing/pants/tights/sailor
 
 /datum/supply_pack/rogue/apparel/trousers
 	name = "Cloth Trousers"
 	cost = 4
-	contains = /obj/item/clothing/under/roguetown/trou
+	contains = /obj/item/clothing/pants/trou
 
 /datum/supply_pack/rogue/apparel/leather_trousers
 	name = "Leather Trousers"
 	cost = 10
-	contains = /obj/item/clothing/under/roguetown/trou/leather
+	contains = /obj/item/clothing/pants/trou/leather
 
 /datum/supply_pack/rogue/apparel/simpleshoes
 	name = "Simple Shoes"

@@ -28,7 +28,7 @@
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	backr = /obj/item/storage/backpack/rogue/satchel
 	beltl = /obj/item/reagent_containers/glass/bottle/rogue/manapot
-	r_hand = /obj/item/rogueweapon/polearm/woodstaff
+	r_hand = /obj/item/weapon/polearm/woodstaff
 	if(H.mind)
 		if(H.patron != /datum/patron/divine/noc)
 			H.set_patron(/datum/patron/divine/noc)

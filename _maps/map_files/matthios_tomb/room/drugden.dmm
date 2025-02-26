@@ -192,7 +192,7 @@
 /area/rogue)
 "EQ" = (
 /obj/structure/table/vtable,
-/obj/item/rogueweapon/knife/dagger/silver{
+/obj/item/weapon/knife/dagger/silver{
 	pixel_y = 8;
 	pixel_x = 6
 	},
@@ -252,7 +252,7 @@
 /area/rogue)
 "Ph" = (
 /obj/structure/table/vtable/v2,
-/obj/item/rogueweapon/knife/dagger/silver{
+/obj/item/weapon/knife/dagger/silver{
 	pixel_y = 3;
 	pixel_x = -3
 	},

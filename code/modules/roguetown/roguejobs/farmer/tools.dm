@@ -1,6 +1,6 @@
 //copper tools
 
-/obj/item/rogueweapon/hoe/copper
+/obj/item/weapon/hoe/copper
 	experimental_inhand = TRUE
 	experimental_onback = TRUE
 	experimental_onhip = TRUE
@@ -15,7 +15,7 @@
 	smeltresult = /obj/item/ingot/copper
 	time_multiplier = 0.5
 
-/obj/item/rogueweapon/sickle/copper
+/obj/item/weapon/sickle/copper
 	force = 10
 	possible_item_intents = list(DAGGER_CUT)
 	name = "copper sickle"
@@ -25,7 +25,7 @@
 	smeltresult = /obj/item/ingot/copper
 
 
-/obj/item/rogueweapon/pitchfork/copper
+/obj/item/weapon/pitchfork/copper
 	experimental_inhand = TRUE
 	experimental_onback = TRUE
 	experimental_onhip = TRUE
@@ -58,7 +58,7 @@
 	thrown_bclass = BCLASS_STAB
 	throwforce = 25
 
-/obj/item/rogueweapon/pitchfork/copper/getonmobprop(tag)
+/obj/item/weapon/pitchfork/copper/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)
@@ -69,7 +69,7 @@
 			if("onbelt")
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
-/obj/item/rogueweapon/pitchfork/update_icon()
+/obj/item/weapon/pitchfork/update_icon()
 	if(forked.len)
 		icon_state = "cfork1"
 	else

@@ -55,14 +55,14 @@
 	var/weapons = rand(1,5)
 	switch(weapons)
 		if(1) //Sword and Shield
-			r_hand = /obj/item/rogueweapon/sword/iron
-			l_hand = /obj/item/rogueweapon/shield/wood
+			r_hand = /obj/item/weapon/sword/iron
+			l_hand = /obj/item/weapon/shield/wood
 		if(2) //Daggers
-			r_hand = /obj/item/rogueweapon/knife/copper
-			l_hand = /obj/item/rogueweapon/knife/copper
+			r_hand = /obj/item/weapon/knife/copper
+			l_hand = /obj/item/weapon/knife/copper
 		if(3) //Spear
-			r_hand = /obj/item/rogueweapon/polearm/spear
+			r_hand = /obj/item/weapon/polearm/spear
 		if(4) //Flail
-			r_hand = /obj/item/rogueweapon/flail
+			r_hand = /obj/item/weapon/flail
 		if(5) //Mace
-			r_hand = /obj/item/rogueweapon/mace/spiked
+			r_hand = /obj/item/weapon/mace/spiked

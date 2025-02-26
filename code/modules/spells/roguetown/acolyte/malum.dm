@@ -61,7 +61,7 @@
 	charging_slowdown = 3
 	chargedloop = /datum/looping_sound/invokegen
 	devotion_cost = 75
-	var/static/list/hammer_weapons = typecacheof(list(/obj/item/rogueweapon/hammer, /obj/item/rogueweapon/mace/goden/steel/warhammer, /obj/item/rogueweapon/mace/warhammer))
+	var/static/list/hammer_weapons = typecacheof(list(/obj/item/weapon/hammer, /obj/item/weapon/mace/goden/steel/warhammer, /obj/item/weapon/mace/warhammer))
 
 /obj/effect/proc_holder/spell/invoked/hammerfall/cast(list/targets, mob/user = usr)
 	var/atom/A = targets[1]
@@ -217,7 +217,7 @@
 		return FALSE
 
 /obj/effect/proc_holder/spell/invoked/heatmetal/proc/handle_item_smelting(obj/item/target, mob/user)
-	if(istype(target, /obj/item/rogueweapon/tongs))
+	if(istype(target, /obj/item/weapon/tongs))
 		return handle_tongs(target, user)
 	if(!target.smeltresult || target.smeltresult == /obj/item/ash)
 		return
@@ -243,12 +243,12 @@
 	sparks.start()
 	return TRUE
 
-/obj/effect/proc_holder/spell/invoked/heatmetal/proc/handle_tongs(obj/item/rogueweapon/tongs/T, mob/user) //Stole the code from smithing.
+/obj/effect/proc_holder/spell/invoked/heatmetal/proc/handle_tongs(obj/item/weapon/tongs/T, mob/user) //Stole the code from smithing.
 	if(!T.held_item)
 		return
 	var/tyme = world.time + 20 SECONDS
 	T.hott = tyme
-	addtimer(CALLBACK(T, TYPE_PROC_REF(/obj/item/rogueweapon/tongs, make_unhot), tyme), 30 SECONDS)
+	addtimer(CALLBACK(T, TYPE_PROC_REF(/obj/item/weapon/tongs, make_unhot), tyme), 30 SECONDS)
 	T.proxy_heat(150)
 	T.update_icon()
 	T.visible_message("<font color='yellow'>After [user]'s incantation, [T.held_item] inside [T] starts glowing from divine heat.</font>")
@@ -269,7 +269,7 @@
 	if(!targeteditem)
 		return FALSE
 
-	if(istype(targeteditem, /obj/item/rogueweapon/tongs))
+	if(istype(targeteditem, /obj/item/weapon/tongs))
 		return handle_tongs(targeteditem, user)
 
 	if(!targeteditem.smeltresult || targeteditem.smeltresult == /obj/item/ash || target.anti_magic_check(TRUE))

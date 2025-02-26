@@ -16,7 +16,7 @@
 	name = "Warden of the Terrorbog"
 	jobtype = /datum/job/roguetown/bogwarden
 
-	pants = /obj/item/clothing/under/roguetown/tights
+	pants = /obj/item/clothing/pants/tights
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	armor = /obj/item/clothing/suit/roguetown/shirt/rags
 	shoes = /obj/item/clothing/shoes/roguetown/boots
@@ -40,7 +40,7 @@
 	name = "Huntmaster of the Murderwoods"
 	jobtype = /datum/job/roguetown/huntmaster
 
-	pants = /obj/item/clothing/under/roguetown/tights
+	pants = /obj/item/clothing/pants/tights
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	armor = /obj/item/clothing/suit/roguetown/shirt/rags
 	shoes = /obj/item/clothing/shoes/roguetown/boots
@@ -63,7 +63,7 @@
 	name = "Hetman of Mount Decapitation"
 	jobtype = /datum/job/roguetown/hetman
 
-	pants = /obj/item/clothing/under/roguetown/tights
+	pants = /obj/item/clothing/pants/tights
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	armor = /obj/item/clothing/suit/roguetown/shirt/rags
 	shoes = /obj/item/clothing/shoes/roguetown/boots

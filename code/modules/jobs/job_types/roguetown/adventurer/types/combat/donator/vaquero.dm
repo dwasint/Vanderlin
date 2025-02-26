@@ -36,14 +36,14 @@
 	H.mind?.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 	head = /obj/item/clothing/head/roguetown/bardhat
 	shoes = /obj/item/clothing/shoes/roguetown/boots
-	pants = /obj/item/clothing/under/roguetown/tights/random
+	pants = /obj/item/clothing/pants/tights/random
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	belt = /obj/item/storage/belt/rogue/leather
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
 	cloak = /obj/item/clothing/cloak/half/red
 	backl = /obj/item/storage/backpack/rogue/satchel
-	beltl = /obj/item/rogueweapon/sword/rapier
-	beltr = /obj/item/rogueweapon/whip
+	beltl = /obj/item/weapon/sword/rapier
+	beltr = /obj/item/weapon/whip
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
 	H.change_stat(STATKEY_STR, 1)
 	H.change_stat(STATKEY_SPD, 2)

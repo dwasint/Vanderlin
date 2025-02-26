@@ -16,7 +16,7 @@
 "f" = (
 /obj/item/roguegem/diamond,
 /obj/structure/fluff/walldeco/vinez/offset,
-/obj/item/rogueweapon/pick/paxe,
+/obj/item/weapon/pick/paxe,
 /turf/open/floor/rogue/volcanic,
 /area/rogue/outdoors/caves)
 "i" = (
@@ -37,7 +37,7 @@
 /obj/item/reagent_containers/glass/cup/silver,
 /obj/item/reagent_containers/food/snacks/cheese_wedge/aged,
 /obj/item/reagent_containers/food/snacks/hardtack,
-/obj/item/rogueweapon/knife/dagger/silver,
+/obj/item/weapon/knife/dagger/silver,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/outdoors/caves)
 "o" = (

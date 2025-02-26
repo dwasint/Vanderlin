@@ -1101,7 +1101,7 @@
 /obj/structure/closet/crate/roguecloset/inn,
 /obj/item/roguestatue,
 /obj/item/clothing/suit/roguetown/armor/leather/vest/random,
-/obj/item/clothing/under/roguetown/trou/leathertights,
+/obj/item/clothing/pants/trou/leathertights,
 /turf/open/floor/rogue/church,
 /area/rogue/indoors)
 "zB" = (
@@ -1434,7 +1434,7 @@
 /area/rogue/indoors)
 "Iq" = (
 /obj/structure/closet/crate/roguecloset/inn,
-/obj/item/clothing/under/roguetown/trou/leather,
+/obj/item/clothing/pants/trou/leather,
 /turf/open/floor/rogue/church,
 /area/rogue/indoors)
 "Ix" = (
@@ -1779,7 +1779,7 @@
 "Qn" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/structure/closet/dirthole/closed/loot,
-/obj/item/rogueweapon/shovel/small,
+/obj/item/weapon/shovel/small,
 /turf/open/floor/rogue/grass,
 /area/rogue/indoors)
 "Qo" = (

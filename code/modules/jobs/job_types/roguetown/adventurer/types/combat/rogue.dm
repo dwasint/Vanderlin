@@ -28,13 +28,13 @@
 		H.mind?.adjust_skillrank(/datum/skill/craft/traps, 3, TRUE)
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 	gloves = /obj/item/clothing/gloves/roguetown/fingerless
-	pants = /obj/item/clothing/under/roguetown/trou/leather
+	pants = /obj/item/clothing/pants/trou/leather
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	backl = /obj/item/storage/backpack/rogue/satchel
 	belt = /obj/item/storage/belt/rogue/leather
-	beltr = /obj/item/rogueweapon/mace/cudgel // TEMP until I make a blackjack- for now though this will do.
+	beltr = /obj/item/weapon/mace/cudgel // TEMP until I make a blackjack- for now though this will do.
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
-	backpack_contents = list(/obj/item/lockpick, /obj/item/rogueweapon/knife/dagger/steel, /obj/item/clothing/mask/rogue/shepherd/rag)
+	backpack_contents = list(/obj/item/lockpick, /obj/item/weapon/knife/dagger/steel, /obj/item/clothing/mask/rogue/shepherd/rag)
 	ADD_TRAIT(H, TRAIT_THIEVESGUILD, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_LIGHT_STEP, TRAIT_GENERIC)

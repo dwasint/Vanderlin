@@ -69,37 +69,37 @@
 /datum/supply_pack/rogue/tools/pick
 	name = "Pickaxe"
 	cost = 15
-	contains = /obj/item/rogueweapon/pick
+	contains = /obj/item/weapon/pick
 
 /datum/supply_pack/rogue/tools/tongs
 	name = "Tongs"
 	cost = 20
-	contains = /obj/item/rogueweapon/tongs
+	contains = /obj/item/weapon/tongs
 
 /datum/supply_pack/rogue/tools/hammer
 	name = "Hammer"
 	cost = 20
-	contains = /obj/item/rogueweapon/hammer/iron
+	contains = /obj/item/weapon/hammer/iron
 
 /datum/supply_pack/rogue/tools/shovel
 	name = "Shovel"
 	cost = 15
-	contains = /obj/item/rogueweapon/shovel
+	contains = /obj/item/weapon/shovel
 
 /datum/supply_pack/rogue/tools/Sickle
 	name = "Sickle"
 	cost = 15
-	contains = /obj/item/rogueweapon/sickle
+	contains = /obj/item/weapon/sickle
 
 /datum/supply_pack/rogue/tools/pitchfork
 	name = "Pitchfork"
 	cost = 15
-	contains = /obj/item/rogueweapon/pitchfork
+	contains = /obj/item/weapon/pitchfork
 
 /datum/supply_pack/rogue/tools/hoe
 	name = "Hoe"
 	cost = 15
-	contains = /obj/item/rogueweapon/hoe
+	contains = /obj/item/weapon/hoe
 
 /datum/supply_pack/rogue/tools/bottle
 	name = "Glass Bottle"

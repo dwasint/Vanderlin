@@ -1,7 +1,7 @@
 /* AXES - Ok damage, kinda bad parry, ok AP for chops
 ==========================================================*/
 
-/obj/item/rogueweapon/axe
+/obj/item/weapon/axe
 	item_state = "axe"
 	parrysound = "parrywood"
 	swingsound = BLADEWOOSH_MED
@@ -73,7 +73,7 @@
 	item_damage_type = "stab"
 
 //................ Stone Axe ............... //
-/obj/item/rogueweapon/axe/stone
+/obj/item/weapon/axe/stone
 	force = DAMAGE_BAD_AXE
 	force_wielded = DAMAGE_BAD_AXE_WIELD
 	name = "stone axe"
@@ -89,7 +89,7 @@
 	melting_material = null
 	sellprice = 10
 
-/obj/item/rogueweapon/axe/stone/getonmobprop(tag)
+/obj/item/weapon/axe/stone/getonmobprop(tag)
 	if(tag)
 		switch(tag)
 			if("gen")
@@ -102,7 +102,7 @@
 
 
 //................ Battle Axe ............... //
-/obj/item/rogueweapon/axe/battle
+/obj/item/weapon/axe/battle
 	force = DAMAGE_AXE
 	force_wielded = DAMAGE_HEAVYAXE_WIELD
 	name = "battle axe"
@@ -120,7 +120,7 @@
 	melting_material = /datum/material/steel
 	melt_amount = 150
 
-/obj/item/rogueweapon/axe/battle/getonmobprop(tag)
+/obj/item/weapon/axe/battle/getonmobprop(tag)
 	if(tag)
 		switch(tag)
 			if("gen")
@@ -133,7 +133,7 @@
 
 
 //................ Iron Axe ............... //
-/obj/item/rogueweapon/axe/iron
+/obj/item/weapon/axe/iron
 	force = DAMAGE_AXE
 	force_wielded = DAMAGE_AXE_WIELD
 	possible_item_intents = list(/datum/intent/axe/cut,/datum/intent/axe/chop)
@@ -157,7 +157,7 @@
 //................ Pick Axe ............... //
 // Pickaxe-axe ; Technically both a tool and weapon, but it goes here due to weapon function.
 // Same stats as steel axe, but refactored for pickaxe quality purposes.
-/obj/item/rogueweapon/pick/paxe
+/obj/item/weapon/pick/paxe
 	force = DAMAGE_AXE
 	force_wielded = DAMAGE_AXE_WIELD
 	name = "pickaxe"
@@ -186,7 +186,7 @@
 
 
 //................ Steel Axe ............... //
-/obj/item/rogueweapon/axe/steel
+/obj/item/weapon/axe/steel
 	name = "steel axe"
 	desc = "A bearded steel axe revered by dwarf, humen and elf alike. Performs much better than its iron counterpart."
 	icon_state = "saxe"
@@ -204,7 +204,7 @@
 	sellprice = 35
 	axe_cut = 15 // Better than iron
 
-/obj/item/rogueweapon/axe/steel/getonmobprop(tag)
+/obj/item/weapon/axe/steel/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)
@@ -218,7 +218,7 @@
 
 //................ Copper Hatchet ............... //
 // Copper Hatchet
-/obj/item/rogueweapon/axe/copper
+/obj/item/weapon/axe/copper
 	force = DAMAGE_BAD_AXE
 	force_wielded = DAMAGE_BAD_AXE_WIELD
 
@@ -234,7 +234,7 @@
 	wlength = WLENGTH_SHORT
 	pickup_sound = 'sound/foley/equip/rummaging-03.ogg'
 	sellprice = 15
-/obj/item/rogueweapon/axe/copper/getonmobprop(tag)
+/obj/item/weapon/axe/copper/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)
@@ -247,7 +247,7 @@
 
 
 //................ Woodcutter Axe ............... //
-/obj/item/rogueweapon/polearm/halberd/bardiche/woodcutter
+/obj/item/weapon/polearm/halberd/bardiche/woodcutter
 	slot_flags = ITEM_SLOT_BACK
 	bigboy = TRUE
 	force = DAMAGE_AXE
@@ -272,7 +272,7 @@
 	axe_cut = 15
 	sellprice = 20
 
-/obj/item/rogueweapon/woodchopper/getonmobprop(tag)
+/obj/item/weapon/woodchopper/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)
@@ -286,7 +286,7 @@
 
 //................ War Axe ............... //
 //attempting to fix transformation issues//it worked wohoo, don't touch it.
-/obj/item/rogueweapon/polearm/halberd/bardiche/warcutter
+/obj/item/weapon/polearm/halberd/bardiche/warcutter
 	slot_flags = ITEM_SLOT_BACK
 	force = DAMAGE_AXE
 	force_wielded = DAMAGE_AXE_WIELD
@@ -313,7 +313,7 @@
 
 
 
-/obj/item/rogueweapon/polearm/halberd/bardiche/warcutter/getonmobprop(tag)
+/obj/item/weapon/polearm/halberd/bardiche/warcutter/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)
@@ -326,7 +326,7 @@
 
 
 
-/obj/item/rogueweapon/axe/boneaxe
+/obj/item/weapon/axe/boneaxe
 	slot_flags = ITEM_SLOT_HIP | ITEM_SLOT_BACK
 	force = 18
 	force_wielded = 22
@@ -348,7 +348,7 @@
 	pickup_sound = 'sound/foley/equip/rummaging-03.ogg'
 	gripped_intents = list(/datum/intent/axe/cut,/datum/intent/axe/chop)
 
-/obj/item/rogueweapon/axe/boneaxe/getonmobprop(tag)
+/obj/item/weapon/axe/boneaxe/getonmobprop(tag)
 	if(tag)
 		switch(tag)
 			if("gen")

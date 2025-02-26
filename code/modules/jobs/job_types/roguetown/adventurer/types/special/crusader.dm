@@ -29,12 +29,12 @@
 	cloak = /obj/item/clothing/cloak/cape/crusader
 	gloves = /obj/item/clothing/gloves/roguetown/chain
 	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/random
-	pants = /obj/item/clothing/under/roguetown/chainlegs
+	pants = /obj/item/clothing/pants/chainlegs
 	shoes = /obj/item/clothing/shoes/roguetown/boots/armor/light
-	backr = /obj/item/rogueweapon/shield/tower/metal
+	backr = /obj/item/weapon/shield/tower/metal
 	backl = /obj/item/clothing/cloak/cape/crusader
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
-	beltl = /obj/item/rogueweapon/sword/silver
+	beltl = /obj/item/weapon/sword/silver
 	backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/rich = 1)
 
 	switch(H.patron?.name)
@@ -77,7 +77,7 @@
 	if(H.gender == FEMALE)
 		head = /obj/item/clothing/head/roguetown/helmet/heavy/crusader/t
 		backr = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
-		beltl = /obj/item/rogueweapon/knife/dagger/silver
+		beltl = /obj/item/weapon/knife/dagger/silver
 		beltr = /obj/item/ammo_holder/quiver/bolts
 		H.mind?.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)

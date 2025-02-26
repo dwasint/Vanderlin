@@ -22,17 +22,17 @@
 	head = /obj/item/clothing/head/roguetown/helmet/skullcap/grenzelhoft
 	armor = /obj/item/clothing/suit/roguetown/armor/brigandine
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
-	beltl = /obj/item/rogueweapon/sword/sabre/dec
+	beltl = /obj/item/weapon/sword/sabre/dec
 	beltr = /obj/item/flashlight/flare/torch/lantern
 	backr = /obj/item/storage/backpack/rogue/satchel
 	id = /obj/item/clothing/ring/gold
 	shirt = /obj/item/clothing/suit/roguetown/shirt/grenzelhoft
-	pants = /obj/item/clothing/under/roguetown/grenzelpants
+	pants = /obj/item/clothing/pants/grenzelpants
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/veryrich)
 	if(H.gender == FEMALE)
 		armor = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/dress/alt
-		beltl = /obj/item/rogueweapon/sword/rapier/dec
+		beltl = /obj/item/weapon/sword/rapier/dec
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)

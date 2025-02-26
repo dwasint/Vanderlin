@@ -35,24 +35,24 @@
 
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
-	pants = /obj/item/clothing/under/roguetown/trou
+	pants = /obj/item/clothing/pants/trou
 	head = /obj/item/clothing/head/roguetown/strawhat
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-	backr = /obj/item/rogueweapon/hoe
+	backr = /obj/item/weapon/hoe
 	backl = /obj/item/storage/backpack/rogue/satchel
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	armor = /obj/item/clothing/suit/roguetown/armor/gambeson/light/striped
-	beltl = /obj/item/rogueweapon/sickle
+	beltl = /obj/item/weapon/sickle
 	beltr = /obj/item/flint
-	var/obj/item/rogueweapon/pitchfork/P = new()
+	var/obj/item/weapon/pitchfork/P = new()
 	H.put_in_hands(P, forced = TRUE)
 	if(H.gender == FEMALE)
 		head = /obj/item/clothing/head/roguetown/armingcap
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 		pants = null
-	backpack_contents = list(/obj/item/neuFarm/seed/wheat=1,/obj/item/neuFarm/seed/apple=1,/obj/item/ash=1,/obj/item/rogueweapon/knife/villager=1)
+	backpack_contents = list(/obj/item/neuFarm/seed/wheat=1,/obj/item/neuFarm/seed/apple=1,/obj/item/ash=1,/obj/item/weapon/knife/villager=1)
 	H.change_stat(STATKEY_STR, 1)
 	H.change_stat(STATKEY_CON, 1)
 	H.change_stat(STATKEY_END, 1)

@@ -36,7 +36,7 @@
 		else
 			H.change_stat(STATKEY_CON, 2)
 	if(H.gender == MALE)
-		pants = /obj/item/clothing/under/roguetown/tights/random
+		pants = /obj/item/clothing/pants/tights/random
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
 		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 		neck = /obj/item/storage/belt/rogue/pouch/coins/poor
@@ -47,7 +47,7 @@
 		backr = /obj/item/fishingrod/fisher
 		beltr = /obj/item/cooking/pan
 		beltl = /obj/item/flint
-		backpack_contents = list(/obj/item/rogueweapon/knife/villager = 1, /obj/item/natural/worms = 1, /obj/item/rogueweapon/shovel/small = 1)
+		backpack_contents = list(/obj/item/weapon/knife/villager = 1, /obj/item/natural/worms = 1, /obj/item/weapon/shovel/small = 1)
 
 	else
 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
@@ -60,4 +60,4 @@
 		belt = /obj/item/storage/belt/rogue/leather
 		beltr = /obj/item/cooking/pan
 		beltl = /obj/item/flint
-		backpack_contents = list(/obj/item/rogueweapon/knife/hunting = 1, /obj/item/natural/worms = 1, /obj/item/rogueweapon/shovel/small = 1)
+		backpack_contents = list(/obj/item/weapon/knife/hunting = 1, /obj/item/natural/worms = 1, /obj/item/weapon/shovel/small = 1)

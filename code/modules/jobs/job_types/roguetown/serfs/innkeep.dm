@@ -35,7 +35,7 @@
 		H.mind?.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 	if(H.gender == MALE)
-		pants = /obj/item/clothing/under/roguetown/tights/random
+		pants = /obj/item/clothing/pants/tights/random
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
 		shoes = /obj/item/clothing/shoes/roguetown/shortboots
 		belt = /obj/item/storage/belt/rogue/leather

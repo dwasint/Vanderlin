@@ -15,13 +15,13 @@
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/dark
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	gloves = /obj/item/clothing/gloves/roguetown/plate/rust
-	pants = /obj/item/clothing/under/roguetown/platelegs/rust
+	pants = /obj/item/clothing/pants/platelegs/rust
 	shoes = /obj/item/clothing/shoes/roguetown/boots/armor/light/rust
 	belt = /obj/item/storage/belt/rogue/leather
-	beltr = /obj/item/rogueweapon/sword/long
+	beltr = /obj/item/weapon/sword/long
 	backr = /obj/item/storage/backpack/rogue/satchel/black
-	backl = /obj/item/rogueweapon/shield/tower/metal
-	backpack_contents = list(/obj/item/rogueweapon/knife/dagger = 1)
+	backl = /obj/item/weapon/shield/tower/metal
+	backpack_contents = list(/obj/item/weapon/knife/dagger = 1)
 	H.mind.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)

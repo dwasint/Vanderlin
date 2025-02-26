@@ -18,12 +18,12 @@
 
 /datum/outfit/savageorc
 	shirt = /obj/item/clothing/suit/roguetown/shirt/tribalrag
-	pants =	/obj/item/clothing/under/roguetown/loincloth/brown
+	pants =	/obj/item/clothing/pants/loincloth/brown
 	shoes = /obj/item/clothing/shoes/roguetown/boots/furlinedanklets
 
 /datum/outfit/savageorc2
 	shirt = /obj/item/clothing/suit/roguetown/shirt/tribalrag
-	pants =	/obj/item/clothing/under/roguetown/loincloth/brown
+	pants =	/obj/item/clothing/pants/loincloth/brown
 	shoes = /obj/item/clothing/shoes/roguetown/boots/furlinedanklets
 	head = /obj/item/clothing/head/roguetown/helmet/leather
 
@@ -37,7 +37,7 @@
 
 /datum/outfit/orcmarauder
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail
-	pants =	/obj/item/clothing/under/roguetown/chainlegs
+	pants =	/obj/item/clothing/pants/chainlegs
 	shoes = /obj/item/clothing/shoes/roguetown/boots/furlinedboots
 	head = /obj/item/clothing/head/roguetown/helmet/leather
 
@@ -51,7 +51,7 @@
 
 /datum/outfit/orcravager
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail
-	pants =	/obj/item/clothing/under/roguetown/chainlegs
+	pants =	/obj/item/clothing/pants/chainlegs
 	shoes = /obj/item/clothing/shoes/roguetown/boots/armor
 	head = /obj/item/clothing/head/roguetown/helmet/skullcap
 	gloves = /obj/item/clothing/gloves/roguetown/chain

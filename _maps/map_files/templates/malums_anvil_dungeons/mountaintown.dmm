@@ -127,7 +127,7 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "br" = (
 /obj/structure/closet/crate/coffin,
-/obj/item/clothing/under/roguetown/platelegs,
+/obj/item/clothing/pants/platelegs,
 /obj/effect/spawner/roguemap/loot/armor,
 /obj/item/alch/bone{
 	name = "bone";
@@ -180,7 +180,7 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "bT" = (
 /obj/structure/closet/crate/coffin,
-/obj/item/rogueweapon/mace/goden/steel/warhammer,
+/obj/item/weapon/mace/goden/steel/warhammer,
 /obj/effect/spawner/roguemap/loot/armor,
 /obj/effect/spawner/roguemap/loot/armor,
 /obj/effect/spawner/roguemap/loot/armor,
@@ -292,7 +292,7 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "cF" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/item/rogueweapon/sword/short,
+/obj/item/weapon/sword/short,
 /obj/effect/decal/cleanable/blood/gibs/limb,
 /turf/open/floor/rogue/ruinedwood/spiralfade,
 /area/rogue/under/mountains/anvil/dungeon/lower)
@@ -354,11 +354,11 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "dA" = (
-/obj/item/rogueweapon/polearm/spear{
+/obj/item/weapon/polearm/spear{
 	pixel_y = -6
 	},
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/polearm/spear{
+/obj/item/weapon/polearm/spear{
 	pixel_y = -9
 	},
 /turf/open/floor/rogue/blocks,
@@ -450,7 +450,7 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "eO" = (
 /obj/structure/closet/crate/coffin,
-/obj/item/rogueweapon/shield/tower/metal,
+/obj/item/weapon/shield/tower/metal,
 /obj/item/clothing/suit/roguetown/armor/cuirass/iron/rust,
 /obj/item/clothing/cloak/stabard/templar/malum,
 /obj/item/alch/bone{
@@ -486,7 +486,7 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "fe" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/sword/scimitar/falchion,
+/obj/item/weapon/sword/scimitar/falchion,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon)
 "ff" = (
@@ -514,9 +514,9 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "fD" = (
 /obj/structure/closet/crate/coffin,
-/obj/item/clothing/under/roguetown/chainlegs,
+/obj/item/clothing/pants/chainlegs,
 /obj/item/clothing/cloak/stabard/templar/malum,
-/obj/item/rogueweapon/sword/rapier/dec,
+/obj/item/weapon/sword/rapier/dec,
 /obj/item/alch/bone{
 	name = "bone";
 	desc = null
@@ -673,9 +673,9 @@
 /obj/item/clothing/suit/roguetown/shirt/undershirt/random,
 /obj/item/clothing/suit/roguetown/shirt/undershirt/random,
 /obj/item/clothing/suit/roguetown/shirt/undershirt/random,
-/obj/item/clothing/under/roguetown/tights/random,
-/obj/item/clothing/under/roguetown/tights/random,
-/obj/item/clothing/under/roguetown/tights/random,
+/obj/item/clothing/pants/tights/random,
+/obj/item/clothing/pants/tights/random,
+/obj/item/clothing/pants/tights/random,
 /turf/open/floor/rogue/ruinedwood/spiralfade,
 /area/rogue/under/mountains/anvil/dungeon)
 "hF" = (
@@ -739,8 +739,8 @@
 /obj/structure/closet/crate/roguecloset/inn,
 /obj/item/clothing/suit/roguetown/shirt/undershirt/random,
 /obj/item/clothing/suit/roguetown/shirt/undershirt/random,
-/obj/item/clothing/under/roguetown/tights/random,
-/obj/item/clothing/under/roguetown/tights/random,
+/obj/item/clothing/pants/tights/random,
+/obj/item/clothing/pants/tights/random,
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/under/mountains/anvil/dungeon)
 "iZ" = (
@@ -813,14 +813,14 @@
 /turf/open/floor/rogue/ruinedwood/spiralfade,
 /area/rogue/under/mountains/anvil/dungeon)
 "kk" = (
-/obj/item/rogueweapon/shovel{
+/obj/item/weapon/shovel{
 	pixel_y = 5;
 	pixel_x = 1
 	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon)
 "kl" = (
-/obj/item/rogueweapon/hoe,
+/obj/item/weapon/hoe,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "kt" = (
@@ -958,7 +958,7 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "mB" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/rogueweapon/pick/paxe,
+/obj/item/weapon/pick/paxe,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "mQ" = (
@@ -1358,7 +1358,7 @@
 	icon_state = "border"
 	},
 /obj/structure/table/wood/large/corner_blue,
-/obj/item/rogueweapon/polearm/woodstaff/aries{
+/obj/item/weapon/polearm/woodstaff/aries{
 	pixel_y = -5
 	},
 /turf/open/floor/rogue/churchmarble,
@@ -1420,7 +1420,7 @@
 	pixel_y = 5;
 	pixel_x = 9
 	},
-/obj/item/rogueweapon/knife/cleaver,
+/obj/item/weapon/knife/cleaver,
 /turf/open/floor/rogue/tile/kitchen,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "tr" = (
@@ -1478,12 +1478,12 @@
 "ul" = (
 /obj/structure/table/wood/reinforced_alter,
 /obj/effect/spawner/roguemap/loot/weapon{
-	spawned = list(/obj/item/rogueweapon/sword/rapier/ironestoc = 10, /obj/item/rogueweapon/polearm/eaglebeak/lucerne = 10,/obj/item/rogueweapon/sword/long/greatsword/zwei = 10, /obj/item/rogueweapon/mace/goden/steel = 5, /obj/item/rogueweapon/mace/steel = 5, /obj/item/rogueweapon/hammer/sledgehammer/war = 5)
+	spawned = list(/obj/item/weapon/sword/rapier/ironestoc = 10, /obj/item/weapon/polearm/eaglebeak/lucerne = 10,/obj/item/weapon/sword/long/greatsword/zwei = 10, /obj/item/weapon/mace/goden/steel = 5, /obj/item/weapon/mace/steel = 5, /obj/item/weapon/hammer/sledgehammer/war = 5)
 	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon)
 "up" = (
-/obj/item/rogueweapon/shovel,
+/obj/item/weapon/shovel,
 /turf/open/floor/rogue/churchrough,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "uy" = (
@@ -1787,14 +1787,14 @@
 /obj/item/clothing/suit/roguetown/shirt/undershirt/random,
 /obj/item/clothing/suit/roguetown/shirt/undershirt/random,
 /obj/item/clothing/suit/roguetown/shirt/undershirt/random,
-/obj/item/clothing/under/roguetown/tights/random,
-/obj/item/clothing/under/roguetown/tights/random,
-/obj/item/clothing/under/roguetown/tights/random,
+/obj/item/clothing/pants/tights/random,
+/obj/item/clothing/pants/tights/random,
+/obj/item/clothing/pants/tights/random,
 /turf/open/floor/rogue/ruinedwood/spiralfade,
 /area/rogue/under/mountains/anvil/dungeon)
 "yV" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/mace,
+/obj/item/weapon/mace,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon)
 "zb" = (
@@ -2113,7 +2113,7 @@
 "DC" = (
 /obj/structure/closet/crate/coffin,
 /obj/item/clothing/suit/roguetown/armor/cuirass,
-/obj/item/rogueweapon/sword/scimitar/falchion,
+/obj/item/weapon/sword/scimitar/falchion,
 /obj/item/alch/bone{
 	name = "bone";
 	desc = null
@@ -2169,7 +2169,7 @@
 /turf/open/water,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Em" = (
-/obj/item/rogueweapon/pick/copper,
+/obj/item/weapon/pick/copper,
 /turf/open/water/river,
 /area/rogue/under/mountains/anvil/dungeon)
 "Ex" = (
@@ -2334,7 +2334,7 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "GO" = (
 /obj/item/roguebin/water,
-/obj/item/rogueweapon/tongs,
+/obj/item/weapon/tongs,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "GQ" = (
@@ -2405,8 +2405,8 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "Ib" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/rogueweapon/pick,
-/obj/item/rogueweapon/pick{
+/obj/item/weapon/pick,
+/obj/item/weapon/pick{
 	pixel_y = 6
 	},
 /turf/open/floor/rogue/herringbone,
@@ -2662,7 +2662,7 @@
 /obj/structure/rack/rogue/shelf/big,
 /obj/item/kitchen/platter,
 /obj/item/kitchen/platter,
-/obj/item/rogueweapon/knife/villager,
+/obj/item/weapon/knife/villager,
 /obj/item/kitchen/fork/iron,
 /obj/item/kitchen/fork/iron,
 /turf/open/floor/rogue/ruinedwood/spiralfade,
@@ -2704,7 +2704,7 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "LP" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/shield/tower/buckleriron,
+/obj/item/weapon/shield/tower/buckleriron,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon)
 "LS" = (
@@ -2949,8 +2949,8 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "PJ" = (
 /obj/structure/table/wood/plain_alt,
-/obj/item/rogueweapon/tongs,
-/obj/item/rogueweapon/hammer/iron,
+/obj/item/weapon/tongs,
+/obj/item/weapon/hammer/iron,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "PK" = (
@@ -2963,12 +2963,12 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "PO" = (
 /obj/structure/rack/rogue/shelf/big,
-/obj/item/clothing/under/roguetown/trou/leather,
-/obj/item/clothing/under/roguetown/trou,
+/obj/item/clothing/pants/trou/leather,
+/obj/item/clothing/pants/trou,
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Qa" = (
-/obj/item/rogueweapon/hammer/steel,
+/obj/item/weapon/hammer/steel,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Qb" = (
@@ -3210,7 +3210,7 @@
 "Tv" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/chair/stool/bar/rogue,
-/obj/item/rogueweapon/knife/dagger,
+/obj/item/weapon/knife/dagger,
 /turf/open/floor/rogue/ruinedwood/spiralfade,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Tx" = (
@@ -3233,7 +3233,7 @@
 	pixel_y = -7;
 	pixel_x = 6
 	},
-/obj/item/rogueweapon/knife/villager{
+/obj/item/weapon/knife/villager{
 	pixel_y = 2;
 	pixel_x = -5
 	},
@@ -3425,11 +3425,11 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Ww" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/rogueweapon/polearm/woodstaff/quarterstaff/iron{
+/obj/item/weapon/polearm/woodstaff/quarterstaff/iron{
 	pixel_x = -19;
 	pixel_y = -14
 	},
-/obj/item/rogueweapon/polearm/woodstaff/quarterstaff/iron{
+/obj/item/weapon/polearm/woodstaff/quarterstaff/iron{
 	pixel_y = -19
 	},
 /turf/open/floor/rogue/herringbone,
@@ -3495,9 +3495,9 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Xy" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/mace/woodclub/train_sword,
-/obj/item/rogueweapon/shield/tower,
-/obj/item/rogueweapon/shield/tower,
+/obj/item/weapon/mace/woodclub/train_sword,
+/obj/item/weapon/shield/tower,
+/obj/item/weapon/shield/tower,
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/under/mountains/anvil/dungeon)
 "XE" = (
@@ -3556,10 +3556,10 @@
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/under/mountains/anvil/dungeon)
 "XR" = (
-/obj/item/rogueweapon/polearm/spear/bronze{
+/obj/item/weapon/polearm/spear/bronze{
 	pixel_y = -12
 	},
-/obj/item/rogueweapon/polearm/spear/bronze{
+/obj/item/weapon/polearm/spear/bronze{
 	pixel_y = -8
 	},
 /obj/structure/rack/rogue,
@@ -3673,7 +3673,7 @@
 "Zk" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/limb,
-/obj/item/rogueweapon/hammer/iron,
+/obj/item/weapon/hammer/iron,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Zm" = (

@@ -27,7 +27,7 @@
 
 	// Despite extensive combat experience, this class is exceptionally destitute. The only luxury besides combat gear that it possesses is a lantern for a source of light
 	// Beneath the arms and armor is a simple loincloth, and it doesn't start with any money. This should encourage them to find someone to serve or work alongside with very quickly
-	pants = /obj/item/clothing/under/roguetown/loincloth/brown
+	pants = /obj/item/clothing/pants/loincloth/brown
 	beltr = /obj/item/flashlight/flare/torch/lantern
 	shoes = /obj/item/clothing/shoes/roguetown/hoplite
 	cloak = /obj/item/clothing/cloak/half/red
@@ -36,17 +36,17 @@
 	head = /obj/item/clothing/head/roguetown/rare/hoplite
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/hoplite
 	neck = /obj/item/clothing/neck/roguetown/gorget/hoplite
-	backl = /obj/item/rogueweapon/shield/tower/hoplite
+	backl = /obj/item/weapon/shield/tower/hoplite
 	var/weapontype = pickweight(list("Khopesh" = 5, "Spear" = 3, "WingedSpear" = 2)) // Rolls for various weapon options based on weighted list
 	switch(weapontype) // We either get a spear (winged or regular), or a khopesh sword. The weapon we get is what we get our training in
 		if("Khopesh")
-			beltl = /obj/item/rogueweapon/sword/khopesh
+			beltl = /obj/item/weapon/sword/khopesh
 			H.mind?.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 		if("Spear")
-			backr = /obj/item/rogueweapon/polearm/spear/hoplite
+			backr = /obj/item/weapon/polearm/spear/hoplite
 			H.mind?.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
 		if("WingedSpear")
-			backr = /obj/item/rogueweapon/polearm/spear/hoplite/winged
+			backr = /obj/item/weapon/polearm/spear/hoplite/winged
 			H.mind?.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
 
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)

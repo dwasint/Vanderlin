@@ -52,7 +52,7 @@
 
 /datum/outfit/job/roguetown/royalguard/pre_equip(mob/living/carbon/human/H)
 	..()
-	pants = /obj/item/clothing/under/roguetown/chainlegs
+	pants = /obj/item/clothing/pants/chainlegs
 	cloak = /obj/item/clothing/cloak/tabard/knight/guard
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/arming
@@ -60,10 +60,10 @@
 	shoes = /obj/item/clothing/shoes/roguetown/boots/armor/light
 	beltl = /obj/item/storage/keyring/mguard
 	belt = /obj/item/storage/belt/rogue/leather
-	beltr = /obj/item/rogueweapon/sword/arming
+	beltr = /obj/item/weapon/sword/arming
 	backr = /obj/item/storage/backpack/rogue/satchel
-	backl = /obj/item/rogueweapon/shield/tower/metal
-	r_hand = /obj/item/rogueweapon/polearm/halberd
+	backl = /obj/item/weapon/shield/tower/metal
+	r_hand = /obj/item/weapon/polearm/halberd
 	if(prob(30))
 		head = /obj/item/clothing/head/roguetown/helmet/visored/knight
 	else

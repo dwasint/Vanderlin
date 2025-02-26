@@ -15,10 +15,10 @@
 /datum/outfit/job/roguetown/deprived/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/menacing
-	pants = /obj/item/clothing/under/roguetown/trou
+	pants = /obj/item/clothing/pants/trou
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 	belt = /obj/item/storage/belt/rogue/leather/rope
-	beltl = /obj/item/rogueweapon/knife/villager // won't be able to light a torch without this, bare minimum
+	beltl = /obj/item/weapon/knife/villager // won't be able to light a torch without this, bare minimum
 
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)

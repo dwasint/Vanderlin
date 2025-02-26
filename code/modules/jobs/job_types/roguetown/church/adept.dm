@@ -37,7 +37,7 @@
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
 	mask = /obj/item/clothing/mask/rogue/facemask
-	pants = /obj/item/clothing/under/roguetown/trou/leather
+	pants = /obj/item/clothing/pants/trou/leather
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 	wrists = /obj/item/clothing/neck/roguetown/psycross/silver
 
@@ -57,10 +57,10 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail
 	cloak = /obj/item/clothing/cloak/tabard/adept
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
-	beltl = /obj/item/rogueweapon/mace/spiked
-	backr = /obj/item/rogueweapon/shield/wood/adept
+	beltl = /obj/item/weapon/mace/spiked
+	backr = /obj/item/weapon/shield/wood/adept
 	gloves = /obj/item/clothing/gloves/roguetown/leather
-	backpack_contents = list(/obj/item/storage/keyring/shepherd = 1, /obj/item/rogueweapon/knife/dagger/silver = 1)
+	backpack_contents = list(/obj/item/storage/keyring/shepherd = 1, /obj/item/weapon/knife/dagger/silver = 1)
 
 	//Stats for class
 	H.mind?.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
@@ -99,12 +99,12 @@
 	//Armor for class
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/splint
 	neck = /obj/item/clothing/neck/roguetown/gorget
-	beltl = /obj/item/rogueweapon/mace/cudgel
+	beltl = /obj/item/weapon/mace/cudgel
 	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 	backl = /obj/item/ammo_holder/quiver/bolts
-	pants = /obj/item/clothing/under/roguetown/trou/leather
+	pants = /obj/item/clothing/pants/trou/leather
 	cloak = /obj/item/clothing/cloak/raincloak/brown
-	backpack_contents = list(/obj/item/lockpick = 1, /obj/item/storage/keyring/shepherd = 1, /obj/item/rogueweapon/knife/dagger/silver = 1)
+	backpack_contents = list(/obj/item/lockpick = 1, /obj/item/storage/keyring/shepherd = 1, /obj/item/weapon/knife/dagger/silver = 1)
 
 	//Stats for class
 	H.mind?.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE)

@@ -35,7 +35,7 @@
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
 	beltl = /obj/item/key/church
-	backl = /obj/item/rogueweapon/polearm/woodstaff/quarterstaff
+	backl = /obj/item/weapon/polearm/woodstaff/quarterstaff
 	backpack_contents = list(/obj/item/needle)
 	switch(H.patron?.type)
 		if(/datum/patron/divine/astrata)
@@ -49,7 +49,7 @@
 			head = /obj/item/clothing/head/roguetown/padded/deathshroud
 			neck = /obj/item/clothing/neck/roguetown/psycross/silver/necra
 			shoes = /obj/item/clothing/shoes/roguetown/boots
-			pants = /obj/item/clothing/under/roguetown/trou/leather/mourning
+			pants = /obj/item/clothing/pants/trou/leather/mourning
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/necra
 			H.cmode_music = 'sound/music/cmode/church/CombatGravekeeper.ogg'
 		if(/datum/patron/divine/eora)
@@ -104,7 +104,7 @@
 			neck = /obj/item/clothing/neck/roguetown/psycross/silver/malum
 			shoes = /obj/item/clothing/shoes/roguetown/boots
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/plain
-			backpack_contents += /obj/item/rogueweapon/hammer/iron
+			backpack_contents += /obj/item/weapon/hammer/iron
 			H.cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'
 		else // Failsafe
 			head = /obj/item/clothing/head/roguetown/roguehood/random

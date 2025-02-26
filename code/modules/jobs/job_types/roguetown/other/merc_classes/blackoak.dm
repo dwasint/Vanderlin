@@ -18,11 +18,11 @@
 	gloves = /obj/item/clothing/gloves/roguetown/angle
 	belt = /obj/item/storage/belt/rogue/leather/mercenary/black
 	armor = /obj/item/clothing/suit/roguetown/armor/cuirass/elven
-	backr = /obj/item/rogueweapon/polearm/spear
+	backr = /obj/item/weapon/polearm/spear
 	backl = /obj/item/storage/backpack/rogue/satchel
-	beltl = /obj/item/rogueweapon/knife/dagger/steel/special
+	beltl = /obj/item/weapon/knife/dagger/steel/special
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
-	pants = /obj/item/clothing/under/roguetown/trou/leather
+	pants = /obj/item/clothing/pants/trou/leather
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
 	backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/poor)
 	if(H.mind)

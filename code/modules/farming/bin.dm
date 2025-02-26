@@ -139,8 +139,8 @@
 	if(user.used_intent)
 		if(user.used_intent.type in list(/datum/intent/fill,/datum/intent/pour,/datum/intent/splash))
 			return TRUE
-	if(istype(I, /obj/item/rogueweapon/tongs))
-		var/obj/item/rogueweapon/tongs/T = I
+	if(istype(I, /obj/item/weapon/tongs))
+		var/obj/item/weapon/tongs/T = I
 		if(T.held_item && istype(T.held_item, /obj/item/ingot))
 			return TRUE
 	return FALSE
@@ -158,8 +158,8 @@
 	if(!reagents || !reagents.maximum_volume) //trash
 		return ..()
 
-	if(istype(I, /obj/item/rogueweapon/tongs))
-		var/obj/item/rogueweapon/tongs/T = I
+	if(istype(I, /obj/item/weapon/tongs))
+		var/obj/item/weapon/tongs/T = I
 		if(T.held_item && istype(T.held_item, /obj/item/ingot))
 			var/obj/item/ingot/ingot = T.held_item
 			var/removereg = /datum/reagent/water
@@ -195,7 +195,7 @@
 				var/newprice = IT.sellprice
 				var/obj/item/lockpick/L = IT
 				var/newpicklvl = L.picklvl
-				var/obj/item/rogueweapon/W = IT
+				var/obj/item/weapon/W = IT
 				var/newforce = W.force
 				var/newthrow = W.throwforce
 				var/newblade = W.blade_int
@@ -216,7 +216,7 @@
 					editme.sellprice = newprice
 					if(istype(editme, /obj/item/lockpick))
 						editme.picklvl = newpicklvl
-					if(istype(editme, /obj/item/rogueweapon))
+					if(istype(editme, /obj/item/weapon))
 						editme.force = newforce
 						editme.throwforce = newthrow
 						editme.blade_int = newblade

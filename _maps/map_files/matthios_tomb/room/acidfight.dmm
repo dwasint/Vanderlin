@@ -30,7 +30,7 @@
 /area/rogue)
 "l" = (
 /obj/structure/fluff/walldeco/chains,
-/obj/item/rogueweapon/shield/tower/metal,
+/obj/item/weapon/shield/tower/metal,
 /turf/open/floor/rogue/volcanic,
 /area/rogue)
 "m" = (
@@ -49,7 +49,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "q" = (
-/obj/item/rogueweapon/mace/steel,
+/obj/item/weapon/mace/steel,
 /turf/open/floor/rogue/volcanic,
 /area/rogue)
 "r" = (
@@ -182,7 +182,7 @@
 /turf/open/floor/rogue/metal/barograte,
 /area/rogue)
 "V" = (
-/obj/item/rogueweapon/flail,
+/obj/item/weapon/flail,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "W" = (

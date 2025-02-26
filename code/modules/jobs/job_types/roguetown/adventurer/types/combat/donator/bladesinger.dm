@@ -34,8 +34,8 @@
 		H.underwear_color = CLOTHING_SOOT_BLACK
 		H.update_body()
 	if(H.dna.species.name == "Dark Elf")
-		pants = /obj/item/clothing/under/roguetown/tights/black
-		backr = /obj/item/rogueweapon/sword/long/greatsword/elfgsword
+		pants = /obj/item/clothing/pants/tights/black
+		backr = /obj/item/weapon/sword/long/greatsword/elfgsword
 		beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
 		shoes = /obj/item/clothing/shoes/roguetown/boots/rare/elfplate
 		gloves = /obj/item/clothing/gloves/roguetown/rare/elfplate
@@ -46,8 +46,8 @@
 		head = /obj/item/clothing/head/roguetown/rare/elfplate
 		neck = /obj/item/clothing/neck/roguetown/chaincoif
 	if(H.dna.species.name == "Elf")
-		pants = /obj/item/clothing/under/roguetown/tights/black
-		backr = /obj/item/rogueweapon/sword/long/greatsword/elfgsword
+		pants = /obj/item/clothing/pants/tights/black
+		backr = /obj/item/weapon/sword/long/greatsword/elfgsword
 		beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
 		shoes = /obj/item/clothing/shoes/roguetown/boots/rare/elfplate/welfplate
 		gloves = /obj/item/clothing/gloves/roguetown/rare/elfplate/welfplate

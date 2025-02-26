@@ -28,7 +28,7 @@
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
 	backl = /obj/item/storage/backpack/rogue/backpack
-	backr = /obj/item/rogueweapon/polearm/woodstaff
+	backr = /obj/item/weapon/polearm/woodstaff
 
 	if(H.mind)
 		if(H.patron != /datum/patron/divine/ravox)

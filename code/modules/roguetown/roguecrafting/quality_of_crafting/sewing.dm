@@ -43,7 +43,7 @@
 	requirements = list(
 		/obj/item/natural/cloth = 1,
 	)
-	output = /obj/item/clothing/under/roguetown/loincloth
+	output = /obj/item/clothing/pants/loincloth
 
 /datum/repeatable_crafting_recipe/sewing/apron
 	name = "cloth apron"
@@ -98,7 +98,7 @@
 
 /datum/repeatable_crafting_recipe/sewing/clothtights
 	name = "cloth tights"
-	output = /obj/item/clothing/under/roguetown/tights/uncolored
+	output = /obj/item/clothing/pants/tights/uncolored
 	requirements = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 1)
 
@@ -180,7 +180,7 @@
 
 /datum/repeatable_crafting_recipe/sewing/clothtrou
 	name = "cloth trousers"
-	output = /obj/item/clothing/under/roguetown/trou
+	output = /obj/item/clothing/pants/trou
 	requirements = list(/obj/item/natural/cloth = 4,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 1
@@ -277,14 +277,14 @@
 
 /datum/repeatable_crafting_recipe/sewing/Bluskirt
 	name = "blue skirt"
-	output = /obj/item/clothing/under/roguetown/skirt/blue
+	output = /obj/item/clothing/pants/skirt/blue
 	requirements = list(/obj/item/natural/cloth = 2,
 			/obj/item/natural/fibers = 1)
 	craftdiff = 2
 
 /datum/repeatable_crafting_recipe/sewing/Greskirt
 	name = "green skirt"
-	output = /obj/item/clothing/under/roguetown/skirt/green
+	output = /obj/item/clothing/pants/skirt/green
 	requirements = list(/obj/item/natural/cloth = 2,
 			/obj/item/natural/fibers = 1)
 	craftdiff = 2
@@ -527,7 +527,7 @@
 
 /datum/repeatable_crafting_recipe/sewing/weaving/webbing
 	name = "trousers (webbed)"
-	output = /obj/item/clothing/under/roguetown/webs
+	output = /obj/item/clothing/pants/webs
 	requirements = list(/obj/item/natural/silk = 2)
 	craftdiff = 1
 
@@ -627,7 +627,7 @@
 
 /datum/repeatable_crafting_recipe/sewing/weaving/shadowpants
 	name = "pants (dark)"
-	output = /obj/item/clothing/under/roguetown/trou/shadowpants
+	output = /obj/item/clothing/pants/trou/shadowpants
 	requirements = list(/obj/item/natural/cloth = 1,
 				/obj/item/natural/silk = 3)
 	craftdiff = 4

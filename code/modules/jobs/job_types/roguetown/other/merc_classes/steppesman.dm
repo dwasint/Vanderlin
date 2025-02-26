@@ -22,14 +22,14 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/splint
 	cloak = /obj/item/clothing/cloak/raincloak/furcloak
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-	beltr = /obj/item/rogueweapon/sword/sabre
+	beltr = /obj/item/weapon/sword/sabre
 	beltl= /obj/item/ammo_holder/quiver/arrows
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
-	pants = /obj/item/clothing/under/roguetown/tights/red
+	pants = /obj/item/clothing/pants/tights/red
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 	backr = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/rogueweapon/knife/hunting = 1)
+	backpack_contents = list(/obj/item/weapon/knife/hunting = 1)
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)

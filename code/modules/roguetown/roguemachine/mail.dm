@@ -409,12 +409,12 @@
 			max_purchases = 2
 		),
 		"Silver Dagger (5)" = list(
-			list(type = /obj/item/rogueweapon/knife/dagger/silver, count = 1),
+			list(type = /obj/item/weapon/knife/dagger/silver, count = 1),
 			cost = 5,
 			max_purchases = 2
 		),
 		"Spiked Mace (2)" = list(
-			list(type = /obj/item/rogueweapon/mace/spiked, count = 1),
+			list(type = /obj/item/weapon/mace/spiked, count = 1),
 			cost = 2,
 			max_purchases = 3
 		),

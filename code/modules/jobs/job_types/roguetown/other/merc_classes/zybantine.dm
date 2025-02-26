@@ -26,10 +26,10 @@
 	gloves = /obj/item/clothing/gloves/roguetown/angle
 	belt = /obj/item/storage/belt/rogue/leather/mercenary/shalal
 	armor = /obj/item/clothing/suit/roguetown/armor/brigandine/coatplates
-	beltr = /obj/item/rogueweapon/sword/long/rider
+	beltr = /obj/item/weapon/sword/long/rider
 	beltl= /obj/item/flashlight/flare/torch/lantern
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
-	pants = /obj/item/clothing/under/roguetown/tights/red
+	pants = /obj/item/clothing/pants/tights/red
 	neck = /obj/item/clothing/neck/roguetown/keffiyeh/red
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/poor)

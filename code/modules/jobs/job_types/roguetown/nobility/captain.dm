@@ -44,16 +44,16 @@
 	..()
 	head = /obj/item/clothing/head/roguetown/helmet/visored/captain
 	gloves = /obj/item/clothing/gloves/roguetown/plate
-	pants = /obj/item/clothing/under/roguetown/platelegs/captain
+	pants = /obj/item/clothing/pants/platelegs/captain
 	armor = /obj/item/clothing/suit/roguetown/armor/captain
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guard
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	backr = /obj/item/storage/backpack/rogue/satchel
-	backl = /obj/item/rogueweapon/shield/tower/metal
+	backl = /obj/item/weapon/shield/tower/metal
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
-	beltl = /obj/item/rogueweapon/sword/sabre
-	beltr = /obj/item/rogueweapon/mace/cudgel
+	beltl = /obj/item/weapon/sword/sabre
+	beltr = /obj/item/weapon/mace/cudgel
 	cloak = /obj/item/clothing/cloak/captain
 	backpack_contents = list(/obj/item/storage/keyring/captain = 1, /obj/item/signal_horn = 1)
 	if(H.mind)

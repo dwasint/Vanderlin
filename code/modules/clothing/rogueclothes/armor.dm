@@ -984,7 +984,7 @@
 
 // VAMPIRE ARMORS BELOW
 
-/obj/item/clothing/under/roguetown/platelegs/vampire
+/obj/item/clothing/pants/platelegs/vampire
 	name = "ancient plate greaves"
 	desc = ""
 	gender = PLURAL

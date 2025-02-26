@@ -218,7 +218,7 @@
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/outdoors/mountains/decap)
 "eZ" = (
-/obj/item/rogueweapon/mace/woodclub,
+/obj/item/weapon/mace/woodclub,
 /turf/open/floor/rogue/ruinedwood/turned/darker,
 /area/rogue/indoors/town/dwarfin)
 "fa" = (
@@ -292,7 +292,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/caves)
 "gE" = (
-/obj/item/rogueweapon/pick,
+/obj/item/weapon/pick,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/outdoors/mountains)
 "gH" = (
@@ -410,7 +410,7 @@
 /area/rogue/under/cavelava)
 "ix" = (
 /obj/structure/closet/crate/roguecloset/dark,
-/obj/item/rogueweapon/mace/steel,
+/obj/item/weapon/mace/steel,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/under/cavelava)
@@ -1027,7 +1027,7 @@
 "ye" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/closet/crate/coffin,
-/obj/item/rogueweapon/sword/decorated,
+/obj/item/weapon/sword/decorated,
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/cavelava)
 "yg" = (
@@ -1100,7 +1100,7 @@
 "Ad" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/closet/crate/coffin,
-/obj/item/rogueweapon/sword/sabre,
+/obj/item/weapon/sword/sabre,
 /turf/open/floor/rogue/greenstone,
 /area/rogue/under/cavelava)
 "Ai" = (
@@ -1663,7 +1663,7 @@
 /turf/open/floor/rogue/herringbone,
 /area/rogue/under/cavelava)
 "OO" = (
-/obj/item/rogueweapon/pick,
+/obj/item/weapon/pick,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/dwarfin)
 "OW" = (
@@ -1877,7 +1877,7 @@
 /area/rogue/under/cavelava)
 "TN" = (
 /obj/structure/closet/crate/chest/old_crate,
-/obj/item/rogueweapon/flail/sflail,
+/obj/item/weapon/flail/sflail,
 /turf/open/floor/rogue/dirt,
 /area/rogue/under/cavelava)
 "TW" = (

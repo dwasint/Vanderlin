@@ -50,7 +50,7 @@
 	icon_state = "brownkey"
 
 /obj/item/key/custom/attackby(obj/item/I, mob/user, params)
-	if(!istype(I, /obj/item/rogueweapon/hammer))
+	if(!istype(I, /obj/item/weapon/hammer))
 		return
 	var/input = (input(user, "What would you name this key?", "", "") as text)
 	if(!input)
@@ -69,7 +69,7 @@
 	var/lockhash = 0
 
 /obj/item/key_custom_blank/attackby(obj/item/I, mob/user, params)
-	if(!istype(I, /obj/item/rogueweapon/hammer))
+	if(!istype(I, /obj/item/weapon/hammer))
 		return
 	var/input = input(user, "What would you like to set the key ID to?", "", 0) as num
 	input = abs(input)
@@ -87,7 +87,7 @@
 		var/obj/item/customlock/held = user.get_active_held_item()
 		src.lockhash = held.lockhash
 		to_chat(user, span_notice("You fine-tune [src] to the lock's internals."))
-	else if(istype(user.get_active_held_item(), /obj/item/rogueweapon/hammer) && src.lockhash != 0)
+	else if(istype(user.get_active_held_item(), /obj/item/weapon/hammer) && src.lockhash != 0)
 		var/obj/item/key/custom/F = new (get_turf(src))
 		F.lockhash = src.lockhash
 		F.lockid = lockhash

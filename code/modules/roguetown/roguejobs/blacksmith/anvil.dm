@@ -21,8 +21,8 @@
 		. += "<span class='warning'>[hingot] is too hot to touch.</span>"
 
 /obj/machinery/anvil/attackby(obj/item/W, mob/living/user, params)
-	if(istype(W, /obj/item/rogueweapon/tongs))
-		var/obj/item/rogueweapon/tongs/T = W
+	if(istype(W, /obj/item/weapon/tongs))
+		var/obj/item/weapon/tongs/T = W
 		if(hingot)
 			if(T.held_item && istype(T.held_item, /obj/item/ingot))
 				if(hingot.currecipe && hingot.currecipe.needed_item && istype(T.held_item, hingot.currecipe.needed_item))
@@ -59,8 +59,8 @@
 			update_icon()
 			return
 
-	if(istype(W, /obj/item/rogueweapon/hammer))
-		var/obj/item/rogueweapon/hammer/hammer = W
+	if(istype(W, /obj/item/weapon/hammer))
+		var/obj/item/weapon/hammer/hammer = W
 		if(!hammer.can_smith)
 			return
 		user.changeNext_move(CLICK_CD_MELEE)

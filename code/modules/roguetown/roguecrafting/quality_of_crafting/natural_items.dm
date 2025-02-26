@@ -77,7 +77,7 @@
 
 	attacking_atom = /obj/item/natural/stone
 	starting_atom = /obj/item/grown/log/tree/small
-	output = /obj/item/rogueweapon/axe/stone
+	output = /obj/item/weapon/axe/stone
 	craftdiff = 0
 	uses_attacking_atom = TRUE
 
@@ -90,7 +90,7 @@
 
 	attacking_atom = /obj/item/natural/stone
 	starting_atom = /obj/item/grown/log/tree/stick
-	output = /obj/item/rogueweapon/knife/stone
+	output = /obj/item/weapon/knife/stone
 	craftdiff = 0
 	uses_attacking_atom = TRUE
 
@@ -104,7 +104,7 @@
 
 	attacking_atom = /obj/item/natural/stone
 	starting_atom = /obj/item/grown/log/tree/stick
-	output = /obj/item/rogueweapon/hoe/stone
+	output = /obj/item/weapon/hoe/stone
 	craftdiff = 0
 	uses_attacking_atom = TRUE
 
@@ -117,7 +117,7 @@
 
 	attacking_atom = /obj/item/natural/stone
 	starting_atom = /obj/item/grown/log/tree/stick
-	output = /obj/item/rogueweapon/tongs/stone
+	output = /obj/item/weapon/tongs/stone
 	craftdiff = 0
 	uses_attacking_atom = TRUE
 
@@ -130,7 +130,7 @@
 
 	attacking_atom = /obj/item/natural/stone
 	starting_atom = /obj/item/grown/log/tree/stick
-	output = /obj/item/rogueweapon/pick/stone
+	output = /obj/item/weapon/pick/stone
 	craftdiff = 0
 	uses_attacking_atom = TRUE
 
@@ -138,12 +138,12 @@
 	name = "stone spear"
 	requirements = list(
 		/obj/item/natural/stone = 1,
-		/obj/item/rogueweapon/polearm/woodstaff = 1,
+		/obj/item/weapon/polearm/woodstaff = 1,
 	)
 
-	starting_atom = /obj/item/rogueweapon/polearm/woodstaff
+	starting_atom = /obj/item/weapon/polearm/woodstaff
 	attacking_atom = /obj/item/natural/stone
-	output = /obj/item/rogueweapon/polearm/spear/stone
+	output = /obj/item/weapon/polearm/spear/stone
 	craftdiff = 0
 	uses_attacking_atom = TRUE
 
@@ -165,7 +165,7 @@
 		/obj/item/natural/stone = 1,
 	)
 
-	starting_atom = /obj/item/rogueweapon/knife
+	starting_atom = /obj/item/weapon/knife
 	attacking_atom = /obj/item/natural/stone
 	output = /obj/item/reagent_containers/glass/mortar
 	craftdiff = 0
@@ -177,7 +177,7 @@
 		/obj/item/natural/stone = 2,
 	)
 
-	starting_atom = /obj/item/rogueweapon/knife
+	starting_atom = /obj/item/weapon/knife
 	attacking_atom = /obj/item/natural/stone
 	output = /obj/item/mortar
 	craftdiff = 0
@@ -190,7 +190,7 @@
 		/obj/item/natural/stone = 1,
 	)
 
-	starting_atom = /obj/item/rogueweapon/knife
+	starting_atom = /obj/item/weapon/knife
 	attacking_atom = /obj/item/natural/stone
 	output = /obj/item/pestle
 	craftdiff = 0

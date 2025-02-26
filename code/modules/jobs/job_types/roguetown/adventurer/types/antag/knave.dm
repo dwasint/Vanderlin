@@ -30,7 +30,7 @@
 	H.mind.adjust_skillrank(/datum/skill/craft/traps, 3, TRUE)
 	//H.mind.adjust_skillrank(/datum/skill/misc/tracking, 3, TRUE)
 	belt = /obj/item/storage/belt/rogue/leather
-	pants = /obj/item/clothing/under/roguetown/trou/leather
+	pants = /obj/item/clothing/pants/trou/leather
 	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	mask = /obj/item/clothing/mask/rogue/facemask/steel
@@ -49,14 +49,14 @@
 			backl= /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow //we really need to make this not a grenade launcher subtype
 			beltr = /obj/item/ammo_holder/quiver/bolts
 			cloak = /obj/item/clothing/cloak/raincloak/mortus //cool cloak
-			beltl = /obj/item/rogueweapon/knife/dagger/steel
+			beltl = /obj/item/weapon/knife/dagger/steel
 			backr = /obj/item/storage/backpack/rogue/satchel
 			backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1, /obj/item/lockpickring/mundane = 1) //rogue gets lockpicks
 			H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
 		if("Bow & Sword") //Poacher
-			backl= /obj/item/rogueweapon/shield/tower/buckleriron
-			beltr = /obj/item/rogueweapon/sword/short //steel sword like literally every adventurer gets
+			backl= /obj/item/weapon/shield/tower/buckleriron
+			beltr = /obj/item/weapon/sword/short //steel sword like literally every adventurer gets
 			head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm //cool hat
 			backr = /obj/item/storage/backpack/rogue/satchel
 			backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1, /obj/item/restraints/legcuffs/beartrap = 2) //poacher gets mantraps

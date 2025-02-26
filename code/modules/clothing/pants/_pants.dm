@@ -1,46 +1,84 @@
-/obj/item/clothing/under
+/obj/item/clothing/pants
 	name = "under"
-	icon = 'icons/obj/clothing/under/default.dmi'
-	mob_overlay_icon = 'icons/mob/clothing/under/default.dmi'
-	body_parts_covered = CHEST|GROIN|LEGS|ARMS
+	icon = 'icons/roguetown/clothing/pants.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/pants.dmi'
+	bloody_icon_state = "bodyblood"
+
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_pants.dmi'
+	sleevetype = "leg"
+
+	body_parts_covered = GROIN|LEGS
+	resistance_flags = FLAMMABLE
+	max_integrity = INTEGRITY_WORST
+	prevent_crits = list(BCLASS_LASHING)
 	permeability_coefficient = 0.9
-	slot_flags = ITEM_SLOT_ICLOTHING
+	slot_flags = ITEM_SLOT_PANTS
 	armor = list("blunt" = 0, "slash" = 0, "stab" = 0,  "piercing" = 0, "fire" = 0, "acid" = 0)
-	equip_sound = 'sound/blank.ogg'
-	drop_sound = 'sound/blank.ogg'
-	pickup_sound =  'sound/blank.ogg'
+
+	equip_sound = 'sound/foley/equip/cloak_equip.ogg'
+	pickup_sound = 'sound/foley/equip/cloak_take_off.ogg'
+	break_sound = 'sound/foley/cloth_rip.ogg'
+	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
+
+	dropshrink = 0.8
 
 	grid_width = 64
 	grid_height = 64
 
-	var/fitted = FEMALE_UNIFORM_FULL // For use in alternate clothing styles for women
+	equip_delay_self = 3 SECONDS
+
+	r_sleeve_zone = BODY_ZONE_R_LEG
+	l_sleeve_zone = BODY_ZONE_L_LEG
+	r_sleeve_status = SLEEVE_NORMAL
+	l_sleeve_status = SLEEVE_NORMAL
+
+	sewrepair = TRUE
+	anvilrepair = null
+
+	var/fitted = NO_FEMALE_UNIFORM // For use in alternate clothing styles for women
 	var/has_sensor = HAS_SENSORS // For the crew computer
 	var/random_sensor = TRUE
 	var/sensor_mode = NO_SENSORS
-	var/can_adjust = TRUE
+	var/can_adjust = FALSE
 	var/adjusted = NORMAL_STYLE
 	var/alt_covers_chest = FALSE // for adjusted/rolled-down jumpsuits, FALSE = exposes chest and arms, TRUE = exposes arms only
 	var/obj/item/clothing/accessory/attached_accessory
 	var/mutable_appearance/accessory_overlay
 	var/mutantrace_variation = NO_MUTANTRACE_VARIATION //Are there special sprites for specific situations? Don't use this unless you need to.
 	var/freshly_laundered = FALSE
-	bloody_icon_state = "bodyblood"
 
-/obj/item/clothing/under/worn_overlays(isinhands = FALSE)
+/obj/item/clothing/pants/worn_overlays(isinhands = FALSE)
 	. = list()
 	if(!isinhands)
-//		if(damaged_clothes)
-//			. += mutable_appearance('icons/effects/item_damage.dmi', "damageduniform")
-//		if(HAS_BLOOD_DNA(src))
-//			. += mutable_appearance('icons/effects/blood.dmi', "uniformblood")
 		if(accessory_overlay)
 			. += accessory_overlay
 
-/obj/item/clothing/under/attackby(obj/item/I, mob/user, params)
+/obj/item/clothing/pants/attackby(obj/item/I, mob/user, params)
 	if(!attach_accessory(I, user))
 		return ..()
 
-/obj/item/clothing/under/update_clothes_damaged_state(damaging = TRUE)
+/obj/item/clothing/pants/AdjustClothes(mob/user)
+#ifdef MATURESERVER
+	if(loc == user)
+		if(adjustable == CAN_CADJUST)
+			adjustable = CADJUSTED
+			icon_state = "[initial(icon_state)]_t"
+			body_parts_covered = null
+			slowdown += 2
+			if(ishuman(user))
+				var/mob/living/carbon/H = user
+				H.update_inv_pants()
+		else if(adjustable == CADJUSTED)
+			ResetAdjust(user)
+			if(user)
+				if(ishuman(user))
+					var/mob/living/carbon/H = user
+					H.update_inv_pants()
+#else
+	return
+#endif
+
+/obj/item/clothing/pants/update_clothes_damaged_state(damaging = TRUE)
 	..()
 	if(ismob(loc))
 		var/mob/M = loc
@@ -49,13 +87,13 @@
 	if(has_sensor > NO_SENSORS)
 		has_sensor = BROKEN_SENSORS
 
-/obj/item/clothing/under/Initialize()
+/obj/item/clothing/pants/Initialize()
 	. = ..()
 	if(random_sensor)
 		//make the sensor mode favor higher levels, except coords.
 		sensor_mode = pick(SENSOR_OFF, SENSOR_LIVING, SENSOR_LIVING, SENSOR_VITALS, SENSOR_VITALS, SENSOR_VITALS, SENSOR_COORDS, SENSOR_COORDS)
 
-/obj/item/clothing/under/emp_act()
+/obj/item/clothing/pants/emp_act()
 	. = ..()
 	if(has_sensor > NO_SENSORS)
 		sensor_mode = pick(SENSOR_OFF, SENSOR_OFF, SENSOR_OFF, SENSOR_LIVING, SENSOR_LIVING, SENSOR_VITALS, SENSOR_VITALS, SENSOR_COORDS)
@@ -63,7 +101,7 @@
 			var/mob/M = loc
 			to_chat(M,"<span class='warning'>The sensors on the [src] change rapidly!</span>")
 
-/obj/item/clothing/under/equipped(mob/user, slot)
+/obj/item/clothing/pants/equipped(mob/user, slot)
 	..()
 	if(adjusted)
 		adjusted = NORMAL_STYLE
@@ -87,7 +125,7 @@
 		if(attached_accessory.above_suit)
 			H.update_inv_wear_suit()
 
-/obj/item/clothing/under/dropped(mob/user)
+/obj/item/clothing/pants/dropped(mob/user)
 	if(attached_accessory)
 		attached_accessory.on_uniform_dropped(src, user)
 		if(ishuman(user))
@@ -97,7 +135,7 @@
 
 	..()
 
-/obj/item/clothing/under/proc/attach_accessory(obj/item/I, mob/user, notifyAttach = 1)
+/obj/item/clothing/pants/proc/attach_accessory(obj/item/I, mob/user, notifyAttach = 1)
 	. = FALSE
 	if(istype(I, /obj/item/clothing/accessory))
 		var/obj/item/clothing/accessory/A = I
@@ -129,7 +167,7 @@
 
 			return TRUE
 
-/obj/item/clothing/under/proc/remove_accessory(mob/user)
+/obj/item/clothing/pants/proc/remove_accessory(mob/user)
 	if(!isliving(user))
 		return
 	if(!can_use(user))
@@ -149,29 +187,10 @@
 			H.update_inv_wear_suit()
 
 
-/obj/item/clothing/under/examine(mob/user)
+/obj/item/clothing/pants/examine(mob/user)
 	. = ..()
 	if(freshly_laundered)
 		. += "It looks fresh and clean."
-/*	if(can_adjust)
-		if(adjusted == ALT_STYLE)
-			. += "Alt-click on [src] to wear it normally."
-		else
-			. += "Alt-click on [src] to wear it casually."
-	if (has_sensor == BROKEN_SENSORS)
-		. += "Its sensors appear to be shorted out."
-	else if(has_sensor > NO_SENSORS)
-		switch(sensor_mode)
-			if(SENSOR_OFF)
-				. += "Its sensors appear to be disabled."
-			if(SENSOR_LIVING)
-				. += "Its binary life sensors appear to be enabled."
-			if(SENSOR_VITALS)
-				. += "Its vital tracker appears to be enabled."
-			if(SENSOR_COORDS)
-				. += "Its vital tracker and tracking beacon appear to be enabled."
-	if(attached_accessory)
-		. += "\A [attached_accessory] is attached to it."*/
 
-/obj/item/clothing/under/rank
+/obj/item/clothing/pants/rank
 	dying_key = DYE_REGISTRY_UNDER

@@ -45,7 +45,7 @@
 	icon_state = "skeleton_axe"
 	icon_living = "skeleton_axe"
 	icon_dead = ""
-	loot = list(/obj/item/alch/bone,	/obj/item/alch/bone, /obj/item/alch/bone,	/obj/item/rogueweapon/polearm/halberd/bardiche/woodcutter, /obj/item/skull)
+	loot = list(/obj/item/alch/bone,	/obj/item/alch/bone, /obj/item/alch/bone,	/obj/item/weapon/polearm/halberd/bardiche/woodcutter, /obj/item/skull)
 
 
 
@@ -58,7 +58,7 @@
 	icon_living = "skeleton_spear"
 	icon_dead = ""
 	attack_sound = 'sound/foley/pierce.ogg'
-	loot = list(/obj/item/alch/bone,	/obj/item/alch/bone, /obj/item/alch/bone,	/obj/item/rogueweapon/polearm/spear, /obj/item/skull)
+	loot = list(/obj/item/alch/bone,	/obj/item/alch/bone, /obj/item/alch/bone,	/obj/item/weapon/polearm/spear, /obj/item/skull)
 
 /mob/living/simple_animal/hostile/rogue/skeleton/guard
 	name = "Skeleton"
@@ -68,7 +68,7 @@
 	icon_state = "skeleton_guard"
 	icon_living = "skeleton_guard"
 	icon_dead = ""
-	loot = list(/obj/item/alch/bone,	/obj/item/alch/bone, /obj/item/alch/bone,	/obj/item/rogueweapon/sword/iron, /obj/item/skull)
+	loot = list(/obj/item/alch/bone,	/obj/item/alch/bone, /obj/item/alch/bone,	/obj/item/weapon/sword/iron, /obj/item/skull)
 	maxHealth = 200
 	health = 200
 

@@ -40,7 +40,7 @@
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/mockery)
 	head = /obj/item/clothing/head/roguetown/bardhat
 	shoes = /obj/item/clothing/shoes/roguetown/boots
-	pants = /obj/item/clothing/under/roguetown/tights/random
+	pants = /obj/item/clothing/pants/tights/random
 	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/noblecoat
 	if(prob(30))
 		gloves = /obj/item/clothing/gloves/roguetown/fingerless
@@ -50,7 +50,7 @@
 	if(prob(50))
 		cloak = /obj/item/clothing/cloak/raincloak/red
 	backl = /obj/item/storage/backpack/rogue/satchel
-	beltr = /obj/item/rogueweapon/knife/dagger/steel/special
+	beltr = /obj/item/weapon/knife/dagger/steel/special
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 	backpack_contents = list(/obj/item/flint)
 

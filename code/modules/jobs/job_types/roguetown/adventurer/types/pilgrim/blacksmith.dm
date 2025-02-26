@@ -21,13 +21,13 @@
 	..()
 	belt = /obj/item/storage/belt/rogue/leather
 
-	beltr = /obj/item/rogueweapon/hammer/iron
-	beltl = /obj/item/rogueweapon/tongs
+	beltr = /obj/item/weapon/hammer/iron
+	beltl = /obj/item/weapon/tongs
 
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	cloak = /obj/item/clothing/cloak/apron/brown
-	pants = /obj/item/clothing/under/roguetown/trou
+	pants = /obj/item/clothing/pants/trou
 
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/flint = 1, /obj/item/rogueore/coal=1, /obj/item/rogueore/iron=1, /obj/item/mould/ingot = 1, /obj/item/storage/crucible/random = 1)

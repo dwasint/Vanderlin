@@ -38,8 +38,8 @@
 		H.change_stat(STATKEY_SPD, 2)
 		H.change_stat(STATKEY_END, 1)
 
-	pants = /obj/item/clothing/under/roguetown/trou/leather
-	beltr = /obj/item/rogueweapon/knife/dagger/steel/special
+	pants = /obj/item/clothing/pants/trou/leather
+	beltr = /obj/item/weapon/knife/dagger/steel/special
 	shoes = /obj/item/clothing/shoes/roguetown/shalal
 	gloves = /obj/item/clothing/gloves/roguetown/angle
 	belt = /obj/item/storage/belt/rogue/leather/shalal

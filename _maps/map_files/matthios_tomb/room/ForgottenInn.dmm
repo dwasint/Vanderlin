@@ -368,7 +368,7 @@
 /area/rogue)
 "Pa" = (
 /obj/structure/table/wood/plain,
-/obj/item/rogueweapon/knife/cleaver,
+/obj/item/weapon/knife/cleaver,
 /obj/structure/fluff/walldeco/bigpainting/lake,
 /turf/open/floor/rogue/ruinedwood/spiralfade,
 /area/rogue)
@@ -461,7 +461,7 @@
 	pixel_x = -7
 	},
 /obj/effect/decal/cleanable/blood,
-/obj/item/rogueweapon/knife/hunting{
+/obj/item/weapon/knife/hunting{
 	pixel_y = -2;
 	pixel_x = -14
 	},

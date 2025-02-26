@@ -3,7 +3,7 @@
 /obj/structure/closet/crate/chest/neu_fancy{
 	locked = 1
 	},
-/obj/item/rogueweapon/knife/dagger/silver,
+/obj/item/weapon/knife/dagger/silver,
 /obj/item/reagent_containers/powder/moondust_purest,
 /obj/item/reagent_containers/powder/moondust_purest{
 	pixel_y = -4;
@@ -109,7 +109,7 @@
 "np" = (
 /obj/structure/table/wood/plain_alt,
 /obj/structure/fluff/millstone,
-/obj/item/rogueweapon/knife/cleaver{
+/obj/item/weapon/knife/cleaver{
 	pixel_y = 7;
 	pixel_x = -2
 	},

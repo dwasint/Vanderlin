@@ -41,7 +41,7 @@
 	},
 /area/rogue)
 "dz" = (
-/obj/item/rogueweapon/pick/stone{
+/obj/item/weapon/pick/stone{
 	pixel_x = 5;
 	pixel_y = 5
 	},
@@ -389,7 +389,7 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue)
 "xm" = (
-/obj/item/rogueweapon/hammer/iron,
+/obj/item/weapon/hammer/iron,
 /turf/open/floor/rogue/cobble/alt,
 /area/rogue)
 "yd" = (
@@ -610,7 +610,7 @@
 /turf/open/floor/rogue/ruinedwood/spiralfade,
 /area/rogue)
 "LA" = (
-/obj/item/rogueweapon/knife/copper,
+/obj/item/weapon/knife/copper,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "LG" = (
@@ -740,7 +740,7 @@
 /area/rogue)
 "QT" = (
 /obj/machinery/anvil,
-/obj/item/rogueweapon/tongs,
+/obj/item/weapon/tongs,
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue)
 "Rb" = (
@@ -926,7 +926,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "ZW" = (
-/obj/item/rogueweapon/pick/stone,
+/obj/item/weapon/pick/stone,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "ZY" = (

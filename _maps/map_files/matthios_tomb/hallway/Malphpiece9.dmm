@@ -169,7 +169,7 @@
 /obj/effect/decal/cleanable/blood/old,
 /obj/effect/decal/cleanable/blood/tracks,
 /obj/effect/decal/cleanable/blood/footprints,
-/obj/item/rogueweapon/sword/long/forgotten,
+/obj/item/weapon/sword/long/forgotten,
 /turf/open/floor/rogue/carpet/lord/center,
 /area/rogue/outdoors/caves)
 "K" = (

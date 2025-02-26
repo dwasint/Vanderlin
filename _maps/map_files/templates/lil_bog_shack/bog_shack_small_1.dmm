@@ -18,7 +18,7 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/bog)
 "f" = (
-/obj/item/rogueweapon/polearm/spear/stone,
+/obj/item/weapon/polearm/spear/stone,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/bog)
 "g" = (

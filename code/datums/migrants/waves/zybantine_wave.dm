@@ -25,12 +25,12 @@
 	cloak = /obj/item/clothing/cloak/raincloak/purple
 	armor = /obj/item/clothing/suit/roguetown/armor/gambeson/arming
 	belt = /obj/item/storage/belt/rogue/leather/shalal
-	beltl = /obj/item/rogueweapon/sword/sabre/shalal
+	beltl = /obj/item/weapon/sword/sabre/shalal
 	beltr = /obj/item/flashlight/flare/torch/lantern
 	backr = /obj/item/storage/backpack/rogue/satchel
 	id = /obj/item/clothing/ring/gold/guild_mercator
 	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/purple
-	pants = /obj/item/clothing/under/roguetown/trou/leather
+	pants = /obj/item/clothing/pants/trou/leather
 	neck = /obj/item/clothing/neck/roguetown/shalal/emir
 	backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/veryrich)
 	if(H.gender == FEMALE)
@@ -93,12 +93,12 @@
 	cloak = /obj/item/clothing/cloak/raincloak/purple
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/jacket/silk_coat
 	belt = /obj/item/storage/belt/rogue/leather/shalal
-	beltl = /obj/item/rogueweapon/sword/sabre/shalal
+	beltl = /obj/item/weapon/sword/sabre/shalal
 	beltr = /obj/item/flashlight/flare/torch/lantern
 	backr = /obj/item/storage/backpack/rogue/satchel
 	id = /obj/item/clothing/ring/gold/guild_mercator
 	shirt = /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/black
-	pants = /obj/item/clothing/under/roguetown/trou/leather
+	pants = /obj/item/clothing/pants/trou/leather
 	neck = /obj/item/clothing/neck/roguetown/shalal/emir
 	backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/veryrich = 1, /obj/item/reagent_containers/glass/bottle/rogue/wine = 1)
 
@@ -163,14 +163,14 @@
 	var/randy = rand(1,5)
 	switch(randy)
 		if(1 to 2)
-			backr = /obj/item/rogueweapon/polearm/halberd/bardiche
+			backr = /obj/item/weapon/polearm/halberd/bardiche
 		if(3 to 4)
-			backr = /obj/item/rogueweapon/polearm/eaglebeak
+			backr = /obj/item/weapon/polearm/eaglebeak
 		if(5)
-			backr = /obj/item/rogueweapon/polearm/spear/billhook
+			backr = /obj/item/weapon/polearm/spear/billhook
 
 
-	pants = /obj/item/clothing/under/roguetown/tights/black
+	pants = /obj/item/clothing/pants/tights/black
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
 	shoes = /obj/item/clothing/shoes/roguetown/boots/rare/zybanplate
 	gloves = /obj/item/clothing/gloves/roguetown/rare/zybanplate
@@ -215,10 +215,10 @@
 	gloves = /obj/item/clothing/gloves/roguetown/angle
 	belt = /obj/item/storage/belt/rogue/leather/shalal
 	armor = /obj/item/clothing/suit/roguetown/armor/brigandine/coatplates
-	beltr = /obj/item/rogueweapon/sword/long/rider
+	beltr = /obj/item/weapon/sword/long/rider
 	beltl= /obj/item/flashlight/flare/torch/lantern
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
-	pants = /obj/item/clothing/under/roguetown/tights/red
+	pants = /obj/item/clothing/pants/tights/red
 	neck = /obj/item/clothing/neck/roguetown/keffiyeh/red
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/poor)
@@ -282,8 +282,8 @@
 		H.change_stat(STATKEY_SPD, 2)
 		H.change_stat(STATKEY_END, 1)
 
-	pants = /obj/item/clothing/under/roguetown/trou/leather
-	beltr = /obj/item/rogueweapon/knife/dagger/steel/special
+	pants = /obj/item/clothing/pants/trou/leather
+	beltr = /obj/item/weapon/knife/dagger/steel/special
 	shoes = /obj/item/clothing/shoes/roguetown/shalal
 	gloves = /obj/item/clothing/gloves/roguetown/angle
 	belt = /obj/item/storage/belt/rogue/leather/shalal

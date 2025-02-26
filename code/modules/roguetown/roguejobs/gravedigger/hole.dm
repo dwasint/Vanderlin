@@ -90,14 +90,14 @@
 	testing("proc ended")
 
 /obj/structure/closet/dirthole/attackby(obj/item/attacking_item, mob/user, params)
-	if(!istype(attacking_item, /obj/item/rogueweapon/shovel))
+	if(!istype(attacking_item, /obj/item/weapon/shovel))
 		if(istype(attacking_item, /obj/item/reagent_containers/glass/bucket/wooden))
 			var/obj/item/reagent_containers/glass/bucket/wooden/bucket = attacking_item
 			testing("attempt water make proc should be called now")
 			attemptwatermake(user, bucket)
 			return
 		return ..()
-	var/obj/item/rogueweapon/shovel/attacking_shovel = attacking_item
+	var/obj/item/weapon/shovel/attacking_shovel = attacking_item
 	if(user.used_intent.type != /datum/intent/shovelscoop)
 		return
 

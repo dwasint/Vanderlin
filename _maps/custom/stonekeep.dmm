@@ -230,8 +230,8 @@
 /area/rogue/under/town/basement)
 "aS" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/shovel,
-/obj/item/rogueweapon/shovel,
+/obj/item/weapon/shovel,
+/obj/item/weapon/shovel,
 /turf/open/floor/rogue/blocks/newstone/alt,
 /area/rogue/indoors/town/dwarfin)
 "aT" = (
@@ -647,7 +647,7 @@
 "cp" = (
 /obj/structure/closet/crate/roguecloset/dark,
 /obj/item/clothing/suit/roguetown/shirt/rags,
-/obj/item/rogueweapon/mace/woodclub/train_sword,
+/obj/item/weapon/mace/woodclub/train_sword,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town/tavern)
 "cq" = (
@@ -933,10 +933,10 @@
 /obj/item/clothing/suit/roguetown/shirt/rags,
 /obj/item/clothing/suit/roguetown/shirt/rags,
 /obj/item/clothing/suit/roguetown/shirt/rags,
-/obj/item/clothing/under/roguetown/loincloth/brown,
-/obj/item/clothing/under/roguetown/loincloth/brown,
-/obj/item/clothing/under/roguetown/loincloth/brown,
-/obj/item/clothing/under/roguetown/loincloth/brown,
+/obj/item/clothing/pants/loincloth/brown,
+/obj/item/clothing/pants/loincloth/brown,
+/obj/item/clothing/pants/loincloth/brown,
+/obj/item/clothing/pants/loincloth/brown,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "ds" = (
@@ -995,7 +995,7 @@
 	},
 /area/rogue/under/town/sewer)
 "dC" = (
-/obj/item/rogueweapon/shovel,
+/obj/item/weapon/shovel,
 /turf/open/floor/rogue/blocks{
 	icon_state = "bluestone"
 	},
@@ -1046,7 +1046,7 @@
 	icon_state = "longtable_mid";
 	dir = 1
 	},
-/obj/item/rogueweapon/pitchfork,
+/obj/item/weapon/pitchfork,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town)
 "dP" = (
@@ -1168,7 +1168,7 @@
 /area/rogue/under/lake)
 "em" = (
 /obj/structure/closet/crate/chest,
-/obj/item/rogueweapon/hoe,
+/obj/item/weapon/hoe,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town)
 "en" = (
@@ -1214,7 +1214,7 @@
 	icon_state = "longtable";
 	dir = 1
 	},
-/obj/item/rogueweapon/knife/cleaver,
+/obj/item/weapon/knife/cleaver,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town)
 "ew" = (
@@ -3046,7 +3046,7 @@
 /area/rogue/indoors/town/manor)
 "kw" = (
 /obj/structure/closet/crate/chest,
-/obj/item/rogueweapon/knife/cleaver,
+/obj/item/weapon/knife/cleaver,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
 "kx" = (
@@ -3716,7 +3716,7 @@
 /obj/structure/table/wood{
 	icon_state = "longtable"
 	},
-/obj/item/rogueweapon/sword/sabre,
+/obj/item/weapon/sword/sabre,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
 "nd" = (
@@ -3869,7 +3869,7 @@
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
 "nI" = (
-/obj/item/rogueweapon/sword/sabre,
+/obj/item/weapon/sword/sabre,
 /obj/structure/rack/rogue,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town/manor)
@@ -4059,7 +4059,7 @@
 /area/rogue/indoors/town/garrison)
 "op" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/polearm/spear,
+/obj/item/weapon/polearm/spear,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/garrison)
 "oq" = (
@@ -4721,7 +4721,7 @@
 /area/rogue/outdoors/town)
 "qG" = (
 /obj/structure/closet/crate/roguecloset/dark,
-/obj/item/rogueweapon/mace/woodclub/train_sword,
+/obj/item/weapon/mace/woodclub/train_sword,
 /obj/item/clothing/suit/roguetown/shirt/rags,
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/town)
@@ -5018,8 +5018,8 @@
 /area/rogue/outdoors/mountains)
 "rT" = (
 /obj/structure/closet/crate/chest,
-/obj/item/rogueweapon/shield/tower,
-/obj/item/rogueweapon/shield/wood/crafted,
+/obj/item/weapon/shield/tower,
+/obj/item/weapon/shield/wood/crafted,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/shop)
 "rU" = (
@@ -5056,9 +5056,9 @@
 /area/rogue/indoors/town/tavern)
 "sb" = (
 /obj/structure/closet/crate/chest,
-/obj/item/rogueweapon/knife/dagger/steel,
-/obj/item/rogueweapon/knife/dagger/silver,
-/obj/item/rogueweapon/knife/cleaver/combat,
+/obj/item/weapon/knife/dagger/steel,
+/obj/item/weapon/knife/dagger/silver,
+/obj/item/weapon/knife/cleaver/combat,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/shop)
 "sc" = (
@@ -5209,7 +5209,7 @@
 /obj/structure/closet/crate/chest,
 /obj/item/rope/chain,
 /obj/item/rope/chain,
-/obj/item/rogueweapon/mace/cudgel,
+/obj/item/weapon/mace/cudgel,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/garrison)
 "sF" = (
@@ -5339,7 +5339,7 @@
 /area/rogue/outdoors/town/roofs)
 "te" = (
 /obj/structure/closet/crate/roguecloset/dark,
-/obj/item/rogueweapon/mace/woodclub/train_sword,
+/obj/item/weapon/mace/woodclub/train_sword,
 /obj/item/clothing/suit/roguetown/shirt/rags,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town/tavern)
@@ -5635,7 +5635,7 @@
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town/tavern)
 "ul" = (
-/obj/item/rogueweapon/shovel,
+/obj/item/weapon/shovel,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/town)
 "um" = (
@@ -5690,9 +5690,9 @@
 /area/rogue/indoors/town/shop)
 "uu" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/under/roguetown/tights/random,
-/obj/item/clothing/under/roguetown/tights/random,
-/obj/item/clothing/under/roguetown/tights/random,
+/obj/item/clothing/pants/tights/random,
+/obj/item/clothing/pants/tights/random,
+/obj/item/clothing/pants/tights/random,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/shop)
 "uv" = (
@@ -5930,7 +5930,7 @@
 "vs" = (
 /obj/structure/closet/crate/roguecloset,
 /obj/item/reagent_containers/powder/ozium,
-/obj/item/clothing/under/roguetown/loincloth/brown,
+/obj/item/clothing/pants/loincloth/brown,
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/bath)
 "vt" = (
@@ -6180,10 +6180,10 @@
 /obj/item/clothing/suit/roguetown/shirt/rags,
 /obj/item/clothing/suit/roguetown/shirt/rags,
 /obj/item/clothing/suit/roguetown/shirt/rags,
-/obj/item/clothing/under/roguetown/loincloth/brown,
-/obj/item/clothing/under/roguetown/loincloth/brown,
-/obj/item/clothing/under/roguetown/loincloth/brown,
-/obj/item/clothing/under/roguetown/loincloth/brown,
+/obj/item/clothing/pants/loincloth/brown,
+/obj/item/clothing/pants/loincloth/brown,
+/obj/item/clothing/pants/loincloth/brown,
+/obj/item/clothing/pants/loincloth/brown,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/garrison)
 "wk" = (
@@ -6822,7 +6822,7 @@
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/shop)
 "yJ" = (
-/obj/item/rogueweapon/knife/hunting,
+/obj/item/weapon/knife/hunting,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "vertw";
 	dir = 1
@@ -7010,8 +7010,8 @@
 	icon_state = "tablewood1";
 	dir = 1
 	},
-/obj/item/rogueweapon/mace/woodclub/train_sword,
-/obj/item/rogueweapon/mace/woodclub/train_sword,
+/obj/item/weapon/mace/woodclub/train_sword,
+/obj/item/weapon/mace/woodclub/train_sword,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/manor)
 "zz" = (
@@ -7086,7 +7086,7 @@
 /area/rogue/outdoors/town)
 "zM" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/polearm/spear,
+/obj/item/weapon/polearm/spear,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/mountains)
 "zN" = (
@@ -7917,8 +7917,8 @@
 /area/rogue/indoors/town)
 "CQ" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/rogueweapon/thresher,
-/obj/item/rogueweapon/pitchfork,
+/obj/item/weapon/thresher,
+/obj/item/weapon/pitchfork,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town)
 "CR" = (
@@ -8317,7 +8317,7 @@
 	},
 /area/rogue/outdoors/town/roofs)
 "Eq" = (
-/obj/item/rogueweapon/mace/woodclub,
+/obj/item/weapon/mace/woodclub,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/town)
 "Er" = (
@@ -8683,7 +8683,7 @@
 /area/rogue/indoors/town/church/chapel)
 "FK" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/polearm/spear/billhook,
+/obj/item/weapon/polearm/spear/billhook,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "horzw"
 	},
@@ -8734,7 +8734,7 @@
 /area/rogue/indoors/town/church/chapel)
 "FT" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/mace/goden/steel,
+/obj/item/weapon/mace/goden/steel,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "horzw"
 	},
@@ -8748,7 +8748,7 @@
 /area/rogue/indoors/town/garrison)
 "FV" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/mace/spiked,
+/obj/item/weapon/mace/spiked,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "horzw"
 	},
@@ -9048,7 +9048,7 @@
 	dir = 5
 	},
 /obj/machinery/light/rogue/wallfire/candle,
-/obj/item/rogueweapon/knife/stone,
+/obj/item/weapon/knife/stone,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/garrison)
 "GZ" = (
@@ -9112,7 +9112,7 @@
 /area/rogue/indoors/town/tavern)
 "Hj" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/mace/cudgel,
+/obj/item/weapon/mace/cudgel,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/garrison)
 "Hk" = (
@@ -9307,7 +9307,7 @@
 /area/rogue/indoors/town/garrison)
 "HQ" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/mace/goden,
+/obj/item/weapon/mace/goden,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/garrison)
 "HR" = (
@@ -9698,7 +9698,7 @@
 	},
 /obj/item/candle,
 /obj/item/reagent_containers/food/snacks/rogue/meat/salami,
-/obj/item/rogueweapon/knife/cleaver,
+/obj/item/weapon/knife/cleaver,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/church)
 "Jf" = (
@@ -9861,8 +9861,8 @@
 /area/rogue/indoors/town/dwarfin)
 "JE" = (
 /obj/structure/closet/crate/roguecloset/dark,
-/obj/item/rogueweapon/tongs,
-/obj/item/rogueweapon/hammer/iron,
+/obj/item/weapon/tongs,
+/obj/item/weapon/hammer/iron,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)
 "JF" = (
@@ -9965,7 +9965,7 @@
 /obj/structure/fluff/wallclock{
 	dir = 3
 	},
-/obj/item/rogueweapon/thresher,
+/obj/item/weapon/thresher,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/town)
 "JV" = (
@@ -9999,7 +9999,7 @@
 /area/rogue/indoors/town/shop)
 "Kb" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/pick,
+/obj/item/weapon/pick,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "horzw"
 	},
@@ -10525,7 +10525,7 @@
 /area/rogue/indoors/town/magician)
 "Mf" = (
 /obj/structure/closet/crate/roguecloset/inn/south,
-/obj/item/rogueweapon/knife/dagger/steel,
+/obj/item/weapon/knife/dagger/steel,
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/indoors/town/bath)
 "Mg" = (
@@ -10716,7 +10716,7 @@
 /area/rogue/outdoors/town)
 "ML" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/sword/iron,
+/obj/item/weapon/sword/iron,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "horzw"
 	},
@@ -10818,7 +10818,7 @@
 /area/rogue/indoors/town/church)
 "Nh" = (
 /obj/structure/closet/crate/chest,
-/obj/item/rogueweapon/mace/church,
+/obj/item/weapon/mace/church,
 /turf/open/floor/rogue/churchrough,
 /area/rogue/indoors/town/church)
 "Ni" = (
@@ -11360,8 +11360,8 @@
 /area/rogue/under/town/sewer)
 "Pl" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/rogueweapon/hoe,
-/obj/item/rogueweapon/thresher,
+/obj/item/weapon/hoe,
+/obj/item/weapon/thresher,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town)
 "Pm" = (
@@ -11521,7 +11521,7 @@
 	},
 /area/rogue/indoors/town/tavern)
 "PW" = (
-/obj/item/rogueweapon/shield/wood,
+/obj/item/weapon/shield/wood,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/mountains)
 "PX" = (
@@ -12045,7 +12045,7 @@
 	icon_state = "largetable";
 	dir = 1
 	},
-/obj/item/rogueweapon/knife/cleaver,
+/obj/item/weapon/knife/cleaver,
 /turf/open/floor/rogue/tile{
 	icon_state = "chess"
 	},
@@ -12097,7 +12097,7 @@
 	icon_state = "longtable";
 	dir = 1
 	},
-/obj/item/rogueweapon/shovel,
+/obj/item/weapon/shovel,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town)
 "SU" = (
@@ -12328,8 +12328,8 @@
 /obj/structure/table/wood{
 	icon_state = "longtable"
 	},
-/obj/item/rogueweapon/sickle,
-/obj/item/rogueweapon/sickle,
+/obj/item/weapon/sickle,
+/obj/item/weapon/sickle,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town)
 "TO" = (
@@ -12563,8 +12563,8 @@
 /area/rogue/outdoors/exposed/dwarf)
 "UM" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/hammer/steel,
-/obj/item/rogueweapon/hammer/steel,
+/obj/item/weapon/hammer/steel,
+/obj/item/weapon/hammer/steel,
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/indoors/town/dwarfin)
 "UN" = (
@@ -12648,10 +12648,10 @@
 /area/rogue/outdoors/mountains)
 "Vb" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/pick,
-/obj/item/rogueweapon/pick,
-/obj/item/rogueweapon/pick,
-/obj/item/rogueweapon/pick,
+/obj/item/weapon/pick,
+/obj/item/weapon/pick,
+/obj/item/weapon/pick,
+/obj/item/weapon/pick,
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/indoors/town/dwarfin)
 "Vc" = (
@@ -12670,7 +12670,7 @@
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/mountains)
 "Vg" = (
-/obj/item/rogueweapon/polearm/woodstaff/aries,
+/obj/item/weapon/polearm/woodstaff/aries,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -12713,9 +12713,9 @@
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/tavern)
 "Vn" = (
-/obj/item/rogueweapon/tongs,
+/obj/item/weapon/tongs,
 /obj/structure/closet/crate/roguecloset/dark,
-/obj/item/rogueweapon/hammer/iron,
+/obj/item/weapon/hammer/iron,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)
 "Vo" = (
@@ -13005,7 +13005,7 @@
 	icon_state = "longtable"
 	},
 /obj/item/reagent_containers/powder/flour,
-/obj/item/rogueweapon/knife/cleaver,
+/obj/item/weapon/knife/cleaver,
 /turf/open/floor/rogue/tile{
 	icon_state = "tile"
 	},
@@ -13180,8 +13180,8 @@
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/mountains)
 "Xt" = (
-/obj/item/rogueweapon/thresher,
-/obj/item/rogueweapon/thresher,
+/obj/item/weapon/thresher,
+/obj/item/weapon/thresher,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town)
 "Xv" = (

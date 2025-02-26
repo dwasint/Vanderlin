@@ -45,16 +45,16 @@
 	head = pick(/obj/item/clothing/head/roguetown/hatfur, /obj/item/clothing/head/roguetown/hatblu, /obj/item/clothing/head/roguetown/brimmed)
 	neck = /obj/item/clothing/neck/roguetown/coif
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/jacket
-	pants = /obj/item/clothing/under/roguetown/trou
+	pants = /obj/item/clothing/pants/trou
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
-	beltl = /obj/item/rogueweapon/hammer/steel
+	beltl = /obj/item/weapon/hammer/steel
 	backl = /obj/item/storage/backpack/rogue/backpack
-	backr = /obj/item/rogueweapon/polearm/halberd/bardiche/woodcutter // A specialist in cutting trees would carry an impressive axe
-	backpack_contents = list(/obj/item/flint = 1, /obj/item/rogueweapon/knife/hunting = 1, /obj/item/key/artificer = 1)
+	backr = /obj/item/weapon/polearm/halberd/bardiche/woodcutter // A specialist in cutting trees would carry an impressive axe
+	backpack_contents = list(/obj/item/flint = 1, /obj/item/weapon/knife/hunting = 1, /obj/item/key/artificer = 1)
 	H.change_stat(STATKEY_STR, 2)
 	H.change_stat(STATKEY_END, 2)
 	H.change_stat(STATKEY_INT, 1)

@@ -39,9 +39,9 @@
 			H.mind?.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	beltl = /obj/item/key/tavern
-	beltr = /obj/item/rogueweapon/knife/villager
+	beltr = /obj/item/weapon/knife/villager
 	if(H.gender == MALE)
-		pants = /obj/item/clothing/under/roguetown/tights/random
+		pants = /obj/item/clothing/pants/tights/random
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
 		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 		cloak = /obj/item/clothing/cloak/apron/cook
@@ -51,7 +51,7 @@
 	else
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/lowcut
 		armor = /obj/item/clothing/suit/roguetown/armor/corset
-		pants = /obj/item/clothing/under/roguetown/skirt/red
+		pants = /obj/item/clothing/pants/skirt/red
 		cloak = /obj/item/clothing/cloak/apron/cook
 		head = /obj/item/clothing/head/roguetown/cookhat
 		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes

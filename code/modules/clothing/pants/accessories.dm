@@ -17,7 +17,7 @@
 	if(user)
 		to_chat(user, "<span class='warning'>There doesn't seem to be anywhere to put [src]...</span>")
 
-/obj/item/clothing/accessory/proc/attach(obj/item/clothing/under/U, user)
+/obj/item/clothing/accessory/proc/attach(obj/item/clothing/pants/U, user)
 	var/datum/component/storage/storage = GetComponent(/datum/component/storage)
 	if(storage)
 		if(SEND_SIGNAL(U, COMSIG_CONTAINS_STORAGE))
@@ -47,7 +47,7 @@
 
 	return TRUE
 
-/obj/item/clothing/accessory/proc/detach(obj/item/clothing/under/U, user)
+/obj/item/clothing/accessory/proc/detach(obj/item/clothing/pants/U, user)
 	if(detached_pockets && detached_pockets.parent == U)
 		TakeComponent(detached_pockets)
 
@@ -66,10 +66,10 @@
 	U.attached_accessory = null
 	U.accessory_overlay = null
 
-/obj/item/clothing/accessory/proc/on_uniform_equip(obj/item/clothing/under/U, user)
+/obj/item/clothing/accessory/proc/on_uniform_equip(obj/item/clothing/pants/U, user)
 	return
 
-/obj/item/clothing/accessory/proc/on_uniform_dropped(obj/item/clothing/under/U, user)
+/obj/item/clothing/accessory/proc/on_uniform_dropped(obj/item/clothing/pants/U, user)
 	return
 
 /obj/item/clothing/accessory/AltClick(mob/user)

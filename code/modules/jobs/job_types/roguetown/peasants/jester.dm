@@ -32,7 +32,7 @@
 /datum/outfit/job/roguetown/jester/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/roguetown/jester
-	pants = /obj/item/clothing/under/roguetown/tights
+	pants = /obj/item/clothing/pants/tights
 	armor = /obj/item/clothing/suit/roguetown/shirt/jester
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/storage/keyring/jester

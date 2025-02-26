@@ -82,7 +82,7 @@
 
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 			beltr = /obj/item/clothing/mask/rogue/shepherd/rag
-			beltl = /obj/item/rogueweapon/knife/hunting
+			beltl = /obj/item/weapon/knife/hunting
 
 			if(H.age == AGE_OLD) //old deserters are experts with polearms
 				H.mind?.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
@@ -106,17 +106,17 @@
 			var/weapon2choose = pickweight(list("Spear" = 2, "Bardiche" = 1))
 			switch(weapon2choose)
 				if("Spear")
-					backr = /obj/item/rogueweapon/polearm/spear
+					backr = /obj/item/weapon/polearm/spear
 				if("Bardiche")
-					backr = /obj/item/rogueweapon/polearm/halberd/bardiche
+					backr = /obj/item/weapon/polearm/halberd/bardiche
 
 			switch(pick(1,2))
 				if (1) //worse leg protection, better neck protection, and a face mask
-					pants = /obj/item/clothing/under/roguetown/trou/leather
+					pants = /obj/item/clothing/pants/trou/leather
 					neck = /obj/item/clothing/neck/roguetown/chaincoif
 					mask = /obj/item/clothing/mask/rogue/facemask
 				if (2) //better leg protection, worse neck protection
-					pants = /obj/item/clothing/under/roguetown/chainlegs/iron
+					pants = /obj/item/clothing/pants/chainlegs/iron
 					neck = /obj/item/clothing/neck/roguetown/chaincoif/iron
 
 		if("Poacher") //good perception, speed, bow skill, and knife skill. Also some cooking and skincrafting since they are poachers. The speedy ranged class.
@@ -138,8 +138,8 @@
 			H.change_stat(STATKEY_SPD, 2)
 
 			armor = /obj/item/clothing/suit/roguetown/armor/gambeson
-			pants = /obj/item/clothing/under/roguetown/trou/leather
-			beltr = /obj/item/rogueweapon/knife/hunting
+			pants = /obj/item/clothing/pants/trou/leather
+			beltr = /obj/item/weapon/knife/hunting
 			backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 			beltl = /obj/item/ammo_holder/quiver/arrows
 			mask = /obj/item/clothing/mask/rogue/shepherd/rag
@@ -161,11 +161,11 @@
 
 			switch(pick(1,2,3))
 				if (1)
-					beltr = /obj/item/rogueweapon/knife/hunting
+					beltr = /obj/item/weapon/knife/hunting
 				if (2)
-					beltr = /obj/item/rogueweapon/knife/cleaver
+					beltr = /obj/item/weapon/knife/cleaver
 				if (3)
-					beltr = /obj/item/rogueweapon/knife/dagger
+					beltr = /obj/item/weapon/knife/dagger
 
 		if("Brigand") //good sword skill, shield skill, flail skill, mace skill, slightly speedy. Kind of an all rounder.
 			H.set_blindness(0)
@@ -185,7 +185,7 @@
 
 			neck = /obj/item/clothing/neck/roguetown/coif
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-			pants = /obj/item/clothing/under/roguetown/trou/leather
+			pants = /obj/item/clothing/pants/trou/leather
 			beltl = /obj/item/clothing/mask/rogue/shepherd/rag
 			neck = /obj/item/clothing/neck/roguetown/coif
 
@@ -210,13 +210,13 @@
 
 			switch(pick(1,2,3,4))
 				if (1)
-					beltr = /obj/item/rogueweapon/sword/iron
+					beltr = /obj/item/weapon/sword/iron
 				if (2)
-					beltr = /obj/item/rogueweapon/flail
+					beltr = /obj/item/weapon/flail
 				if (3)
-					beltr = /obj/item/rogueweapon/mace
+					beltr = /obj/item/weapon/mace
 				if (4)
-					beltr = /obj/item/rogueweapon/sword/scimitar/messer
+					beltr = /obj/item/weapon/sword/scimitar/messer
 
 	H.cure_blind("TRAIT_GENERIC")
 

@@ -107,7 +107,7 @@
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
 	else
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant/l
-	pants = /obj/item/clothing/under/roguetown/chainlegs/iron
+	pants = /obj/item/clothing/pants/chainlegs/iron
 	head = /obj/item/clothing/head/roguetown/helmet/leather
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 
@@ -145,9 +145,9 @@
 	H.swap_rmb_intent(num=1) //dont want to mess with base NPCs too much out of fear of breaking them so I assigned the intents in the outfit
 
 	if(prob(50))
-		r_hand = /obj/item/rogueweapon/sword
+		r_hand = /obj/item/weapon/sword
 	else
-		r_hand = /obj/item/rogueweapon/polearm/halberd/bardiche/woodcutter
+		r_hand = /obj/item/weapon/polearm/halberd/bardiche/woodcutter
 
 ///////////////////////////////////////////////////////////// EVENTMIN SKELETONGS
 
@@ -173,25 +173,25 @@
 	H.TOTALEND = 8
 	var/loadout = rand(1,7)
 	head = /obj/item/clothing/head/roguetown/roguehood/random
-	pants = /obj/item/clothing/under/roguetown/tights/vagrant
+	pants = /obj/item/clothing/pants/tights/vagrant
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
 	switch(loadout)
 		if(1) //Axe Warrior
-			r_hand = /obj/item/rogueweapon/axe/iron
+			r_hand = /obj/item/weapon/axe/iron
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 			head = /obj/item/clothing/head/roguetown/knitcap
 		if(2) //Long Stick Fighter
-			r_hand = /obj/item/rogueweapon/polearm/woodstaff
+			r_hand = /obj/item/weapon/polearm/woodstaff
 		if(3) //Club Caveman
-			r_hand = /obj/item/rogueweapon/mace/woodclub
+			r_hand = /obj/item/weapon/mace/woodclub
 		if(4) //Stabbity Stabbity your Knight is now horizontality
-			r_hand =/obj/item/rogueweapon/pitchfork
+			r_hand =/obj/item/weapon/pitchfork
 			head = /obj/item/clothing/head/roguetown/strawhat
 		if(5) //Bonk Build
-			r_hand = /obj/item/rogueweapon/thresher
+			r_hand = /obj/item/weapon/thresher
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 		if(6) //Bonk Build
-			r_hand = /obj/item/rogueweapon/hoe
+			r_hand = /obj/item/weapon/hoe
 			head = /obj/item/clothing/head/roguetown/fisherhat
 		if(7) //Ex Wife
 			r_hand = /obj/item/cooking/pan
@@ -226,17 +226,17 @@
 		if(prob(50))
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant/l
 	if(prob(50))
-		pants = /obj/item/clothing/under/roguetown/tights/vagrant
+		pants = /obj/item/clothing/pants/tights/vagrant
 		if(prob(50))
-			pants = /obj/item/clothing/under/roguetown/tights/vagrant/l
+			pants = /obj/item/clothing/pants/tights/vagrant/l
 	if(prob(50))
 		head = /obj/item/clothing/head/roguetown/helmet/leather
 	if(prob(50))
 		head = /obj/item/clothing/head/roguetown/roguehood/random
 	if(prob(50))
-		r_hand = /obj/item/rogueweapon/sword/iron
+		r_hand = /obj/item/weapon/sword/iron
 	else
-		r_hand = /obj/item/rogueweapon/mace/woodclub
+		r_hand = /obj/item/weapon/mace/woodclub
 
 ///////////////////////////////////////////////////////////// EVENTMIN SKELETONGS
 
@@ -264,57 +264,57 @@
 	var/loadout = rand(1,6)
 	switch(loadout)
 		if(1) //Skeleton Warrior
-			r_hand = /obj/item/rogueweapon/sword/iron
-			l_hand = /obj/item/rogueweapon/shield/wood
+			r_hand = /obj/item/weapon/sword/iron
+			l_hand = /obj/item/weapon/shield/wood
 			belt = /obj/item/storage/belt/rogue/leather
 			armor = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
-			pants = /obj/item/clothing/under/roguetown/tights/vagrant
+			pants = /obj/item/clothing/pants/tights/vagrant
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 			neck = /obj/item/clothing/neck/roguetown/chaincoif
 			head = /obj/item/clothing/head/roguetown/helmet/kettle
 		if(2)//Skeleton Warrior
-			r_hand = /obj/item/rogueweapon/mace
-			l_hand = /obj/item/rogueweapon/shield/wood
+			r_hand = /obj/item/weapon/mace
+			l_hand = /obj/item/weapon/shield/wood
 			belt = /obj/item/storage/belt/rogue/leather
 			armor = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
-			pants = /obj/item/clothing/under/roguetown/tights/vagrant
+			pants = /obj/item/clothing/pants/tights/vagrant
 			neck = /obj/item/clothing/neck/roguetown/chaincoif
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 			head = /obj/item/clothing/head/roguetown/helmet/kettle
 		if(3) //Skeleton Warrior
-			r_hand = /obj/item/rogueweapon/flail
-			l_hand = /obj/item/rogueweapon/shield/wood
+			r_hand = /obj/item/weapon/flail
+			l_hand = /obj/item/weapon/shield/wood
 			belt = /obj/item/storage/belt/rogue/leather
 			armor = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
-			pants = /obj/item/clothing/under/roguetown/tights/vagrant
+			pants = /obj/item/clothing/pants/tights/vagrant
 			neck = /obj/item/clothing/neck/roguetown/chaincoif
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 			head = /obj/item/clothing/head/roguetown/helmet/skullcap
 		if(4) //Skeleton Warrior
-			r_hand =/obj/item/rogueweapon/polearm/spear
+			r_hand =/obj/item/weapon/polearm/spear
 			armor = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
 			neck = /obj/item/clothing/neck/roguetown/chaincoif
-			pants = /obj/item/clothing/under/roguetown/tights/vagrant
+			pants = /obj/item/clothing/pants/tights/vagrant
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 			head = /obj/item/clothing/head/roguetown/helmet/kettle
 		if(5) //Skeleton Warrior
-			r_hand = /obj/item/rogueweapon/sword/sabre
-			l_hand = /obj/item/rogueweapon/knife/dagger
+			r_hand = /obj/item/weapon/sword/sabre
+			l_hand = /obj/item/weapon/knife/dagger
 			armor = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
-			pants = /obj/item/clothing/under/roguetown/tights/vagrant
+			pants = /obj/item/clothing/pants/tights/vagrant
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 			neck = /obj/item/clothing/neck/roguetown/chaincoif
 			head = /obj/item/clothing/head/roguetown/helmet/kettle
 		if(6) //Skeleton Warrior
-			r_hand = /obj/item/rogueweapon/sword/scimitar/messer
-			l_hand = /obj/item/rogueweapon/knife/dagger
+			r_hand = /obj/item/weapon/sword/scimitar/messer
+			l_hand = /obj/item/weapon/knife/dagger
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
-			pants = /obj/item/clothing/under/roguetown/tights/vagrant
+			pants = /obj/item/clothing/pants/tights/vagrant
 			neck = /obj/item/clothing/neck/roguetown/chaincoif
 			armor = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather

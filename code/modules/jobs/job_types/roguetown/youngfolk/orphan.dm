@@ -32,9 +32,9 @@
 		else
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
 		if(prob(50))
-			pants = /obj/item/clothing/under/roguetown/tights/vagrant/l
+			pants = /obj/item/clothing/pants/tights/vagrant/l
 		else
-			pants = /obj/item/clothing/under/roguetown/tights/vagrant
+			pants = /obj/item/clothing/pants/tights/vagrant
 	else
 		armor = /obj/item/clothing/suit/roguetown/shirt/rags
 	// Flair

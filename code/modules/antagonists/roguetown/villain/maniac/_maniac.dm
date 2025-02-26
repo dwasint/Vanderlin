@@ -39,9 +39,9 @@
 	var/STAEND
 	/// Weapons we can give to the dreamer
 	var/static/list/possible_weapons = list(
-		/obj/item/rogueweapon/knife/cleaver,
-		/obj/item/rogueweapon/knife/cleaver/combat,
-		/obj/item/rogueweapon/knife/dagger/steel/special,
+		/obj/item/weapon/knife/cleaver,
+		/obj/item/weapon/knife/cleaver/combat,
+		/obj/item/weapon/knife/dagger/steel/special,
 	)
 	/// Wonder recipes
 	var/static/list/recipe_progression = list(

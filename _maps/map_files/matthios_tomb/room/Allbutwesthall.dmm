@@ -40,13 +40,13 @@
 /area/rogue)
 "k" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/shield/wood{
+/obj/item/weapon/shield/wood{
 	pixel_x = -5
 	},
-/obj/item/rogueweapon/shield/wood{
+/obj/item/weapon/shield/wood{
 	pixel_x = 8
 	},
-/obj/item/rogueweapon/shield/tower,
+/obj/item/weapon/shield/tower,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue)
 "l" = (
@@ -171,7 +171,7 @@
 "S" = (
 /obj/structure/rack/rogue,
 /obj/item/clothing/suit/roguetown/armor/leather,
-/obj/item/clothing/under/roguetown/trou/leather{
+/obj/item/clothing/pants/trou/leather{
 	pixel_x = 14;
 	pixel_y = -4
 	},
@@ -194,13 +194,13 @@
 /area/rogue)
 "W" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/sword/iron{
+/obj/item/weapon/sword/iron{
 	pixel_x = 10
 	},
-/obj/item/rogueweapon/sword/iron{
+/obj/item/weapon/sword/iron{
 	pixel_x = 3
 	},
-/obj/item/rogueweapon/sword/arming{
+/obj/item/weapon/sword/arming{
 	pixel_y = 3;
 	pixel_x = -1
 	},

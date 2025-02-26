@@ -126,7 +126,7 @@
 */
 
 /obj/structure/stationary_bell/attackby(obj/item/used_item, mob/user)
-	if(istype(used_item, /obj/item/rogueweapon/mace/church))
+	if(istype(used_item, /obj/item/weapon/mace/church))
 		if(!COOLDOWN_FINISHED(src, bell_ring))
 			return
 		for(var/mob/M in GLOB.player_list) // @everyone

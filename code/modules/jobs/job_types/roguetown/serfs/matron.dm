@@ -58,10 +58,10 @@
 		ADD_TRAIT(H, TRAIT_THIEVESGUILD, TRAIT_GENERIC)
 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/gen/black
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/black
-		pants = /obj/item/clothing/under/roguetown/trou/beltpants
+		pants = /obj/item/clothing/pants/trou/beltpants
 		belt = /obj/item/storage/belt/rogue/leather/cloth/lady
 		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 		beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
 		backr = /obj/item/storage/backpack/rogue/satchel
 		cloak = /obj/item/clothing/cloak/matron
-		backpack_contents = list(/obj/item/rogueweapon/knife/dagger/steel = 1, /obj/item/key/matron = 1)
+		backpack_contents = list(/obj/item/weapon/knife/dagger/steel = 1, /obj/item/key/matron = 1)

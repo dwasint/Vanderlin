@@ -35,7 +35,7 @@
 	..()
 	cloak = /obj/item/clothing/cloak/raincloak/green
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
-	pants = /obj/item/clothing/under/roguetown/trou/leather
+	pants = /obj/item/clothing/pants/trou/leather
 	shoes = /obj/item/clothing/shoes/roguetown/boots/furlinedboots
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	gloves = /obj/item/clothing/gloves/roguetown/leather
@@ -62,9 +62,9 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
 	head = /obj/item/clothing/head/roguetown/helmet/leather/advanced
 	neck = /obj/item/clothing/neck/roguetown/gorget
-	beltl = /obj/item/rogueweapon/mace/steel/morningstar
-	beltr = /obj/item/rogueweapon/axe/iron
-	backpack_contents = list(/obj/item/rogueweapon/knife/hunting = 1, /obj/item/rope/chain = 1, /obj/item/key/forrestgarrison = 1, /obj/item/storage/belt/rogue/pouch/coins/poor)
+	beltl = /obj/item/weapon/mace/steel/morningstar
+	beltr = /obj/item/weapon/axe/iron
+	backpack_contents = list(/obj/item/weapon/knife/hunting = 1, /obj/item/rope/chain = 1, /obj/item/key/forrestgarrison = 1, /obj/item/storage/belt/rogue/pouch/coins/poor)
 	H.verbs |= /mob/proc/haltyell
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
@@ -101,10 +101,10 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/advanced
 	head = /obj/item/clothing/head/roguetown/roguehood/green
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
-	beltl = /obj/item/rogueweapon/knife/cleaver/combat
+	beltl = /obj/item/weapon/knife/cleaver/combat
 	beltr = /obj/item/ammo_holder/quiver/arrows
 	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/long
-	backpack_contents = list(/obj/item/rogueweapon/knife/hunting = 1, /obj/item/rope/chain = 1, /obj/item/key/forrestgarrison = 1, /obj/item/storage/belt/rogue/pouch/coins/poor)
+	backpack_contents = list(/obj/item/weapon/knife/hunting = 1, /obj/item/rope/chain = 1, /obj/item/key/forrestgarrison = 1, /obj/item/storage/belt/rogue/pouch/coins/poor)
 	H.verbs |= /mob/proc/haltyell
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
@@ -140,9 +140,9 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/advanced
 	head = /obj/item/clothing/head/roguetown/roguehood/green
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
-	beltl = /obj/item/rogueweapon/mace/steel/morningstar
-	beltr = /obj/item/rogueweapon/axe/iron
-	backpack_contents = list(/obj/item/rogueweapon/knife/hunting = 1, /obj/item/rope/chain = 1, /obj/item/key/forrestgarrison = 1, /obj/item/storage/belt/rogue/pouch/coins/poor)
+	beltl = /obj/item/weapon/mace/steel/morningstar
+	beltr = /obj/item/weapon/axe/iron
+	backpack_contents = list(/obj/item/weapon/knife/hunting = 1, /obj/item/rope/chain = 1, /obj/item/key/forrestgarrison = 1, /obj/item/storage/belt/rogue/pouch/coins/poor)
 	H.verbs |= /mob/proc/haltyell
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)

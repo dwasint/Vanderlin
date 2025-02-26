@@ -67,11 +67,11 @@
 /datum/outfit/job/roguetown/consort/highborn/pre_equip(mob/living/carbon/human/H)
 	. = ..()
 	if(H.gender == MALE)
-		pants = /obj/item/clothing/under/roguetown/tights/black
+		pants = /obj/item/clothing/pants/tights/black
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/winterjacket
 	else
-		pants = /obj/item/clothing/under/roguetown/tights/random
+		pants = /obj/item/clothing/pants/tights/random
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/winterjacket
 		shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/winterdress
 
@@ -107,11 +107,11 @@
 /datum/outfit/job/roguetown/consort/courtesan/pre_equip(mob/living/carbon/human/H)
 	. = ..()
 	if(H.gender == MALE)
-		pants = /obj/item/clothing/under/roguetown/tights/black
+		pants = /obj/item/clothing/pants/tights/black
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/winterjacket // this is kind of stupid but i love it anyway
 	else
-		pants = /obj/item/clothing/under/roguetown/tights/random
+		pants = /obj/item/clothing/pants/tights/random
 		shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/winterdress
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/winterjacket
 		cloak = /obj/item/clothing/cloak/raincloak/furcloak
@@ -147,7 +147,7 @@
 /datum/outfit/job/roguetown/consort/lowborn/pre_equip(mob/living/carbon/human/H)
 	. = ..()
 	if(H.gender == MALE)
-		pants = /obj/item/clothing/under/roguetown/tights/green
+		pants = /obj/item/clothing/pants/tights/green
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 		armor = /obj/item/clothing/suit/roguetown/shirt/tunic/green
 	else

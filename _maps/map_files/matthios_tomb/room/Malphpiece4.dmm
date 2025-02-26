@@ -76,7 +76,7 @@
 /area/rogue/outdoors/caves)
 "nl" = (
 /obj/structure/table/wood/plain/alt,
-/obj/item/rogueweapon/pitchfork/copper,
+/obj/item/weapon/pitchfork/copper,
 /obj/item/reagent_containers/glass/cup/wooden,
 /obj/item/clothing/mask/cigarette/pipe,
 /obj/item/reagent_containers/food/snacks/produce/swampweed_dried,

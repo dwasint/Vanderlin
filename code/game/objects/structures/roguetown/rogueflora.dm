@@ -159,7 +159,7 @@
 	icon_state = "t[rand(1,4)]stump"
 
 /obj/structure/table/wood/treestump/attackby(obj/item/I, mob/user, params)
-	if(istype(I, /obj/item/rogueweapon/shovel))
+	if(istype(I, /obj/item/weapon/shovel))
 		to_chat(user, "I start unearthing the stump...")
 		playsound(loc,'sound/items/dig_shovel.ogg', 100, TRUE)
 		if(do_after(user, 5 SECONDS))

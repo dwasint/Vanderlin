@@ -25,7 +25,7 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 	belt = /obj/item/storage/belt/rogue/leather
-	pants = /obj/item/clothing/under/roguetown/trou/leather
+	pants = /obj/item/clothing/pants/trou/leather
 	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	backr = /obj/item/storage/backpack/rogue/satchel
@@ -45,8 +45,8 @@
 	H.set_blindness(0)
 	switch(weapon_choice)
 		if("Battleaxe & Cudgel") //one weapon to hurt people one weapon to kill people
-			backl= /obj/item/rogueweapon/axe/battle
-			beltr = /obj/item/rogueweapon/mace/cudgel
+			backl= /obj/item/weapon/axe/battle
+			beltr = /obj/item/weapon/mace/cudgel
 		if("Flail & Shield") //plate users beware, you're in for a scare!
-			backl= /obj/item/rogueweapon/shield/wood
-			beltr = /obj/item/rogueweapon/flail
+			backl= /obj/item/weapon/shield/wood
+			beltr = /obj/item/weapon/flail

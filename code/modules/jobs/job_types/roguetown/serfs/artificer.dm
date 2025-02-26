@@ -47,7 +47,7 @@
 
 	head = /obj/item/clothing/head/roguetown/articap
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/jacket/artijacket
-	pants = /obj/item/clothing/under/roguetown/trou/artipants
+	pants = /obj/item/clothing/pants/trou/artipants
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/artificer
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes/buckle
 	belt = /obj/item/storage/belt/rogue/leather
@@ -56,7 +56,7 @@
 	mask = /obj/item/clothing/mask/rogue/goggles
 	backl = /obj/item/storage/backpack/rogue/backpack
 	id = /obj/item/clothing/ring/silver/makers_guild
-	backpack_contents = list(/obj/item/rogueweapon/hammer/steel = 1, /obj/item/key/artificer = 1, /obj/item/flashlight/flare/torch/lantern, /obj/item/rogueweapon/knife/villager)
+	backpack_contents = list(/obj/item/weapon/hammer/steel = 1, /obj/item/key/artificer = 1, /obj/item/flashlight/flare/torch/lantern, /obj/item/weapon/knife/villager)
 
 	H.change_stat(STATKEY_STR, 1)
 	H.change_stat(STATKEY_INT, 2)

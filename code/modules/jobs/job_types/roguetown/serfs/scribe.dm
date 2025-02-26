@@ -16,7 +16,7 @@
 	name = "Scribe"
 	jobtype = /datum/job/roguetown/scribe
 
-	pants = /obj/item/clothing/under/roguetown/tights
+	pants = /obj/item/clothing/pants/tights
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	armor = /obj/item/clothing/suit/roguetown/shirt/rags
 	shoes = /obj/item/clothing/shoes/roguetown/boots

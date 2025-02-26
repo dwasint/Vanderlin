@@ -51,12 +51,12 @@
 
 /datum/outfit/job/roguetown/heir/daring/pre_equip(mob/living/carbon/human/H)
 	..()
-	pants = /obj/item/clothing/under/roguetown/tights
+	pants = /obj/item/clothing/pants/tights
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guard
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail
 	shoes = /obj/item/clothing/shoes/roguetown/nobleboot
 	belt = /obj/item/storage/belt/rogue/leather
-	beltl = /obj/item/rogueweapon/sword
+	beltl = /obj/item/weapon/sword
 	beltr = /obj/item/key/manor
 	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
 	backr = /obj/item/storage/backpack/rogue/satchel
@@ -95,7 +95,7 @@
 	beltl = /obj/item/key/manor
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
 	if(H.gender == MALE)
-		pants = /obj/item/clothing/under/roguetown/tights
+		pants = /obj/item/clothing/pants/tights
 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/royal/prince
 		belt = /obj/item/storage/belt/rogue/leather
 		shoes = /obj/item/clothing/shoes/roguetown/nobleboot
@@ -104,7 +104,7 @@
 		head = /obj/item/clothing/head/roguetown/hennin
 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/royal/princess
 		shoes = /obj/item/clothing/shoes/roguetown/shortboots
-		pants = /obj/item/clothing/under/roguetown/tights/random
+		pants = /obj/item/clothing/pants/tights/random
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, pick(0,1), TRUE)
@@ -139,7 +139,7 @@
 	beltl = /obj/item/key/manor
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
 	if(H.gender == MALE)
-		pants = /obj/item/clothing/under/roguetown/tights
+		pants = /obj/item/clothing/pants/tights
 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/royal/prince
 		belt = /obj/item/storage/belt/rogue/leather
 		shoes = /obj/item/clothing/shoes/roguetown/nobleboot
@@ -148,7 +148,7 @@
 		head = /obj/item/clothing/head/roguetown/hennin
 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/royal/princess
 		shoes = /obj/item/clothing/shoes/roguetown/shortboots
-		pants = /obj/item/clothing/under/roguetown/tights/random
+		pants = /obj/item/clothing/pants/tights/random
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/crossbows, pick(0,1), TRUE)

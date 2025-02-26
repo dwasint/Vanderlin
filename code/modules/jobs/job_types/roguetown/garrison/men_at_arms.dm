@@ -35,7 +35,7 @@
 /datum/outfit/job/roguetown/watchman/pre_equip(mob/living/carbon/human/H)
 	. = ..()
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-	pants = /obj/item/clothing/under/roguetown/trou/leather/guard
+	pants = /obj/item/clothing/pants/trou/leather/guard
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/storage/keyring/manorguard
@@ -69,10 +69,10 @@
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 	neck = /obj/item/clothing/neck/roguetown/chaincoif/iron
 	gloves = /obj/item/clothing/gloves/roguetown/chain
-	beltr = /obj/item/rogueweapon/sword/arming
-	backr = /obj/item/rogueweapon/polearm/spear/billhook
+	beltr = /obj/item/weapon/sword/arming
+	backr = /obj/item/weapon/polearm/spear/billhook
 	backl = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/rogueweapon/knife/dagger/steel/special)
+	backpack_contents = list(/obj/item/weapon/knife/dagger/steel/special)
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
@@ -113,9 +113,9 @@
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	gloves = /obj/item/clothing/gloves/roguetown/chain
-	beltr = /obj/item/rogueweapon/sword/rapier
+	beltr = /obj/item/weapon/sword/rapier
 	backl = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/rogueweapon/knife/dagger/steel/special)
+	backpack_contents = list(/obj/item/weapon/knife/dagger/steel/special)
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
@@ -151,10 +151,10 @@
 	cloak = /obj/item/clothing/cloak/stabard/guard
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
-	beltr = /obj/item/rogueweapon/mace/cudgel
+	beltr = /obj/item/weapon/mace/cudgel
 	neck = /obj/item/clothing/neck/roguetown/chaincoif/iron
 	gloves = /obj/item/clothing/gloves/roguetown/leather
-	backpack_contents = list(/obj/item/rogueweapon/knife/dagger/steel/special)
+	backpack_contents = list(/obj/item/weapon/knife/dagger/steel/special)
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)

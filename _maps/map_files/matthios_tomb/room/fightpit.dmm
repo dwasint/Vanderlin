@@ -102,7 +102,7 @@
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
 "jw" = (
-/obj/item/rogueweapon/knife/dagger/steel,
+/obj/item/weapon/knife/dagger/steel,
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
 "jD" = (
@@ -127,8 +127,8 @@
 /area/rogue)
 "ld" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/rogueweapon/polearm/spear/billhook,
-/obj/item/rogueweapon/polearm/spear/billhook{
+/obj/item/weapon/polearm/spear/billhook,
+/obj/item/weapon/polearm/spear/billhook{
 	pixel_y = -8
 	},
 /turf/open/floor/rogue/hexstone,
@@ -232,7 +232,7 @@
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
 "sM" = (
-/obj/item/rogueweapon/sword/arming,
+/obj/item/weapon/sword/arming,
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
 "tz" = (
@@ -367,7 +367,7 @@
 /area/rogue)
 "GL" = (
 /obj/machinery/light/rogue/forge,
-/obj/item/rogueweapon/tongs,
+/obj/item/weapon/tongs,
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
 "HQ" = (
@@ -398,7 +398,7 @@
 	pixel_x = 10
 	},
 /obj/machinery/anvil,
-/obj/item/rogueweapon/hammer/iron,
+/obj/item/weapon/hammer/iron,
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
 "Ll" = (
@@ -416,7 +416,7 @@
 	pixel_y = 8;
 	pixel_x = 8
 	},
-/obj/item/rogueweapon/sword/decorated{
+/obj/item/weapon/sword/decorated{
 	pixel_x = -5;
 	pixel_y = 8
 	},
@@ -553,7 +553,7 @@
 /turf/open/floor/rogue/ruinedwood/darker,
 /area/rogue)
 "We" = (
-/obj/item/rogueweapon/polearm/spear,
+/obj/item/weapon/polearm/spear,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/rogue/hexstone,
 /area/rogue)

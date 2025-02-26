@@ -146,7 +146,7 @@
 /turf/open/floor/rogue/grass/cold,
 /area/rogue)
 "fU" = (
-/obj/item/rogueweapon/pick/copper,
+/obj/item/weapon/pick/copper,
 /turf/open/floor/rogue/woodturned/nosmooth/saiga,
 /area/rogue)
 "gc" = (
@@ -561,7 +561,7 @@
 /turf/open/floor/plasteel/maniac/damaged,
 /area/rogue)
 "xh" = (
-/obj/item/rogueweapon/pick/copper,
+/obj/item/weapon/pick/copper,
 /turf/open/floor/rogue/dirt,
 /area/rogue)
 "xK" = (
@@ -635,7 +635,7 @@
 /area/rogue)
 "Bs" = (
 /obj/structure/closet/dirthole/grave,
-/obj/item/rogueweapon/shovel{
+/obj/item/weapon/shovel{
 	pixel_x = -4;
 	pixel_y = -1
 	},
@@ -701,10 +701,10 @@
 	pixel_y = 10
 	},
 /obj/item/clothing/cloak/half/shadowcloak/cult,
-/obj/item/rogueweapon/mace/goden/steel/warhammer,
+/obj/item/weapon/mace/goden/steel/warhammer,
 /obj/item/clothing/suit/roguetown/armor/gambeson,
 /obj/item/clothing/gloves/roguetown/chain,
-/obj/item/clothing/under/roguetown/chainlegs,
+/obj/item/clothing/pants/chainlegs,
 /obj/item/clothing/wrists/roguetown/bracers/copper,
 /obj/item/clothing/shoes/roguetown/boots,
 /obj/item/clothing/mask/rogue/facemask,
@@ -819,7 +819,7 @@
 /area/rogue)
 "IO" = (
 /obj/structure/table/wood/fancy/black,
-/obj/item/rogueweapon/knife/dagger/steel/profane,
+/obj/item/weapon/knife/dagger/steel/profane,
 /obj/effect/decal/cleanable/sigil,
 /turf/open/floor/plasteel/maniac/damaged,
 /area/rogue)
@@ -874,7 +874,7 @@
 /turf/open/floor/rogue/grass,
 /area/rogue)
 "LM" = (
-/obj/item/rogueweapon/pick/copper,
+/obj/item/weapon/pick/copper,
 /obj/item/flint,
 /turf/open/floor/rogue/woodturned/nosmooth/saiga,
 /area/rogue)
@@ -959,7 +959,7 @@
 /area/rogue)
 "PS" = (
 /obj/item/clothing/head/roguetown/helmet/leather/minershelm,
-/obj/item/rogueweapon/pick/copper,
+/obj/item/weapon/pick/copper,
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue)
 "PU" = (
@@ -989,10 +989,10 @@
 	pixel_y = 10
 	},
 /obj/item/clothing/cloak/half/shadowcloak/cult,
-/obj/item/rogueweapon/sword/long/greatsword/zwei,
+/obj/item/weapon/sword/long/greatsword/zwei,
 /obj/item/clothing/suit/roguetown/armor/gambeson,
 /obj/item/clothing/gloves/roguetown/chain,
-/obj/item/clothing/under/roguetown/chainlegs,
+/obj/item/clothing/pants/chainlegs,
 /obj/item/clothing/wrists/roguetown/bracers/copper,
 /obj/item/clothing/shoes/roguetown/boots,
 /obj/item/clothing/mask/rogue/facemask,

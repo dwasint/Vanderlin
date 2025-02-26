@@ -1,4 +1,4 @@
-/obj/item/rogueweapon/lordscepter
+/obj/item/weapon/lordscepter
 	force = 20
 	force_wielded = 20
 	possible_item_intents = list(/datum/intent/lordbash, /datum/intent/lord_electrocute, /datum/intent/lord_silence)
@@ -45,7 +45,7 @@
 	tranged = TRUE
 	noaa = TRUE
 
-/obj/item/rogueweapon/lordscepter/getonmobprop(tag)
+/obj/item/weapon/lordscepter/getonmobprop(tag)
 	if(tag)
 		switch(tag)
 			if("gen")
@@ -55,7 +55,7 @@
 			if("wielded")
 				return list("shrink" = 0.6,"sx" = 0,"sy" = 2,"nx" = 1,"ny" = 3,"wx" = -2,"wy" = 1,"ex" = 4,"ey" = 1,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 8,"sflip" = 0,"wflip" = 8,"eflip" = 0)
 
-/obj/item/rogueweapon/lordscepter/afterattack(atom/target, mob/user, flag)
+/obj/item/weapon/lordscepter/afterattack(atom/target, mob/user, flag)
 	. = ..()
 	if(get_dist(user, target) > 7)
 		return
@@ -94,7 +94,7 @@
 				to_chat(H, "<span class='danger'>I'm silenced by the scepter!</span>")
 				return
 
-/obj/item/rogueweapon/mace/stunmace
+/obj/item/weapon/mace/stunmace
 	force = 15
 	force_wielded = 15
 	name = "stunmace"
@@ -110,7 +110,7 @@
 	var/on = FALSE
 
 /datum/intent/mace/strike/stunner/afterchange()
-	var/obj/item/rogueweapon/mace/stunmace/I = masteritem
+	var/obj/item/weapon/mace/stunmace/I = masteritem
 	if(I)
 		if(I.on)
 			hitsound = list('sound/items/stunmace_hit (1).ogg','sound/items/stunmace_hit (2).ogg')
@@ -119,7 +119,7 @@
 	. = ..()
 
 /datum/intent/mace/smash/stunner/afterchange()
-	var/obj/item/rogueweapon/mace/stunmace/I = masteritem
+	var/obj/item/weapon/mace/stunmace/I = masteritem
 	if(I)
 		if(I.on)
 			hitsound = list('sound/items/stunmace_hit (1).ogg','sound/items/stunmace_hit (2).ogg')
@@ -127,15 +127,15 @@
 			hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
 	. = ..()
 
-/obj/item/rogueweapon/mace/stunmace/Initialize()
+/obj/item/weapon/mace/stunmace/Initialize()
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
-/obj/item/rogueweapon/mace/stunmace/Destroy()
+/obj/item/weapon/mace/stunmace/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
-/obj/item/rogueweapon/mace/stunmace/funny_attack_effects(mob/living/target, mob/living/user, nodmg)
+/obj/item/weapon/mace/stunmace/funny_attack_effects(mob/living/target, mob/living/user, nodmg)
 	. = ..()
 	if(on)
 		target.electrocute_act(5, src)
@@ -149,13 +149,13 @@
 				if(istype(I))
 					I.afterchange()
 
-/obj/item/rogueweapon/mace/stunmace/update_icon()
+/obj/item/weapon/mace/stunmace/update_icon()
 	if(on)
 		icon_state = "stunmace1"
 	else
 		icon_state = "stunmace0"
 
-/obj/item/rogueweapon/mace/stunmace/attack_self(mob/user)
+/obj/item/weapon/mace/stunmace/attack_self(mob/user)
 	if(on)
 		on = FALSE
 	else
@@ -173,7 +173,7 @@
 	update_icon()
 	add_fingerprint(user)
 
-/obj/item/rogueweapon/mace/stunmace/process()
+/obj/item/weapon/mace/stunmace/process()
 	if(on)
 		charge--
 	else
@@ -191,7 +191,7 @@
 					I.afterchange()
 		playsound(src, pick('sound/items/stunmace_toggle (1).ogg','sound/items/stunmace_toggle (2).ogg','sound/items/stunmace_toggle (3).ogg'), 100, TRUE)
 
-/obj/item/rogueweapon/mace/stunmace/extinguish()
+/obj/item/weapon/mace/stunmace/extinguish()
 	if(on)
 		var/mob/living/user = loc
 		if(istype(user))

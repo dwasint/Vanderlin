@@ -13,9 +13,9 @@
 	..()
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	belt = /obj/item/storage/belt/rogue/leather/black
-	pants = /obj/item/clothing/under/roguetown/trou/shadowpants
+	pants = /obj/item/clothing/pants/trou/shadowpants
 	backl = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/key/mercenary, /obj/item/storage/belt/rogue/pouch/coins/poor, /obj/item/rogueweapon/knife/dagger/steel/dirk)
+	backpack_contents = list(/obj/item/key/mercenary, /obj/item/storage/belt/rogue/pouch/coins/poor, /obj/item/weapon/knife/dagger/steel/dirk)
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
@@ -36,8 +36,8 @@
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 			mask = /obj/item/clothing/mask/rogue/facemask/shadowfacemask
 			neck = /obj/item/clothing/neck/roguetown/gorget
-			backr = /obj/item/rogueweapon/shield/tower/spidershield
-			beltr = /obj/item/rogueweapon/whip/spiderwhip
+			backr = /obj/item/weapon/shield/tower/spidershield
+			beltr = /obj/item/weapon/whip/spiderwhip
 
 			H.mind?.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)
 			H.mind?.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
@@ -60,7 +60,7 @@
 			neck = /obj/item/clothing/neck/roguetown/chaincoif/iron
 			backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve //Coupled with the racial PER malus, abysmal damage, but good for poison arrows.
 			beltr = /obj/item/ammo_holder/quiver/arrows
-			beltl = /obj/item/rogueweapon/sword/sabre/stalker
+			beltl = /obj/item/weapon/sword/sabre/stalker
 
 			H.mind?.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 			H.mind?.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)

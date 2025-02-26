@@ -191,7 +191,7 @@
 		H.equipOutfit(outfit)
 		if(disable_sensors)
 			// Using crew monitors to find corpses while creative makes finding certain ruins too easy.
-			var/obj/item/clothing/under/C = H.wear_pants
+			var/obj/item/clothing/pants/C = H.wear_pants
 			if(istype(C))
 				C.sensor_mode = NO_SENSORS
 

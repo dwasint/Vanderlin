@@ -24,12 +24,12 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
 	belt = /obj/item/storage/belt/rogue/leather
 	shoes = /obj/item/clothing/shoes/roguetown/boots
-	pants = /obj/item/clothing/under/roguetown/tights/black
+	pants = /obj/item/clothing/pants/tights/black
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/winterjacket
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
 	head = /obj/item/clothing/head/roguetown/helmet/leather/inquisitor
 	gloves = /obj/item/clothing/gloves/roguetown/angle
-	beltl = /obj/item/rogueweapon/sword/rapier/silver
+	beltl = /obj/item/weapon/sword/rapier/silver
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
 
 	if(H.mind)

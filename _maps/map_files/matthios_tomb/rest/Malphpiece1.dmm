@@ -21,8 +21,8 @@
 /turf/open/floor/rogue/ruinedwood/chevron,
 /area/rogue/outdoors/caves)
 "e" = (
-/obj/item/rogueweapon/shield/tower/buckleriron,
-/obj/item/rogueweapon/sword/khopesh,
+/obj/item/weapon/shield/tower/buckleriron,
+/obj/item/weapon/sword/khopesh,
 /obj/item/roguecoin/copper/pile,
 /obj/item/clothing/mask/rogue/facemask/copper,
 /obj/item/clothing/neck/roguetown/gorget/copper,

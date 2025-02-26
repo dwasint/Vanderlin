@@ -80,10 +80,10 @@
 /obj/item/clothing/suit/roguetown/shirt/tunic/noblecoat,
 /obj/item/clothing/head/roguetown/fancyhat,
 /obj/item/clothing/gloves/roguetown/chain,
-/obj/item/clothing/under/roguetown/chainlegs/iron,
+/obj/item/clothing/pants/chainlegs/iron,
 /obj/item/clothing/mask/rogue/facemask/goldmask,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
-/obj/item/rogueweapon/sword/rapier/ironestoc,
+/obj/item/weapon/sword/rapier/ironestoc,
 /turf/open/floor/rogue/carpet/lord/center,
 /area/rogue)
 "et" = (
@@ -597,10 +597,10 @@
 /area/rogue)
 "DF" = (
 /obj/structure/closet/crate/chest/gold,
-/obj/item/rogueweapon/knife/cleaver,
+/obj/item/weapon/knife/cleaver,
 /obj/item/clothing/cloak/apron/cook,
 /obj/item/clothing/head/roguetown/sack,
-/obj/item/rogueweapon/polearm/spear/stone/copper,
+/obj/item/weapon/polearm/spear/stone/copper,
 /obj/item/clothing/suit/roguetown/armor/leather/vest/butcher,
 /turf/open/floor/rogue/tile/checker,
 /area/rogue)

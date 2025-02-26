@@ -61,7 +61,7 @@
 
 	armor = /obj/item/clothing/suit/roguetown/armor/plate
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
-	pants = /obj/item/clothing/under/roguetown/platelegs
+	pants = /obj/item/clothing/pants/platelegs
 	shoes = /obj/item/clothing/shoes/roguetown/boots/armor
 	belt = /obj/item/storage/belt/rogue/leather/steel
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
@@ -69,7 +69,7 @@
 	cloak = /obj/item/clothing/cloak/tabard/crusader
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
 	gloves = /obj/item/clothing/gloves/roguetown/plate
-	backl = /obj/item/rogueweapon/sword/long/judgement
+	backl = /obj/item/weapon/sword/long/judgement
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)

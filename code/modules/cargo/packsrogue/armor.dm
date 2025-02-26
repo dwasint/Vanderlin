@@ -81,7 +81,7 @@
 /datum/supply_pack/rogue/armor/chainlegs_iron
 	name = "Iron Chain Chausses"
 	cost = 20
-	contains = /obj/item/clothing/under/roguetown/chainlegs/iron
+	contains = /obj/item/clothing/pants/chainlegs/iron
 
 /datum/supply_pack/rogue/armor/light_armor_boots
 	name = "Iron Boots"

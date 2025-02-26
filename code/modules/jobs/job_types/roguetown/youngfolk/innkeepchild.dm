@@ -35,7 +35,7 @@
 		H.change_stat(STATKEY_END, 1)
 		H.change_stat(STATKEY_STR, -1)
 		H.change_stat(STATKEY_CON, -1)
-	pants = /obj/item/clothing/under/roguetown/tights/random
+	pants = /obj/item/clothing/pants/tights/random
 	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	belt = /obj/item/storage/belt/rogue/leather

@@ -628,7 +628,7 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/woods)
 "Wr" = (
-/obj/item/rogueweapon/shovel/small,
+/obj/item/weapon/shovel/small,
 /obj/structure/fluff/clodpile,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/woods)

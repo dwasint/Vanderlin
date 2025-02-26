@@ -157,7 +157,7 @@
 		to_chat(user, "<span class='warning'>The window doesn't close from this side.</span>")
 
 /obj/structure/roguewindow/openclose/attackby(obj/item/attacking_item, mob/user, params)
-	if(istype(attacking_item, /obj/item/rogueweapon/knife/dagger) && !climbable && !user.cmode)
+	if(istype(attacking_item, /obj/item/weapon/knife/dagger) && !climbable && !user.cmode)
 		to_chat(user, span_notice("I start trying to pry the window open..."))
 		if(do_after(user, 6 SECONDS, src))
 			playsound(src, 'sound/foley/doors/windowup.ogg', 100, FALSE)

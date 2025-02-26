@@ -48,7 +48,7 @@
 		H.change_stat(STATKEY_END, 1)
 
 	if(H.gender == MALE)
-		pants = /obj/item/clothing/under/roguetown/tights
+		pants = /obj/item/clothing/pants/tights
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guard
 		shoes = /obj/item/clothing/shoes/roguetown/nobleboot
 		belt = /obj/item/storage/belt/rogue/leather/plaquesilver

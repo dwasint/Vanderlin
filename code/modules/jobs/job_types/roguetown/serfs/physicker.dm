@@ -31,7 +31,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents =list(/obj/item/storage/keyring/physicker = 1)
-	pants = /obj/item/clothing/under/roguetown/tights/random
+	pants = /obj/item/clothing/pants/tights/random
 	gloves = /obj/item/clothing/gloves/roguetown/leather/phys
 	armor = /obj/item/clothing/suit/roguetown/shirt/robe/phys
 	neck = /obj/item/clothing/neck/roguetown/phys

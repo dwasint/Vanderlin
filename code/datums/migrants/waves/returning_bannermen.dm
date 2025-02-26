@@ -15,17 +15,17 @@
 /datum/outfit/job/roguetown/serjeant_at_arms/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/helmet/leather
-	pants = /obj/item/clothing/under/roguetown/trou/leather
+	pants = /obj/item/clothing/pants/trou/leather
 	cloak = /obj/item/clothing/cloak/half/vet
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guardsecond
 	armor = /obj/item/clothing/suit/roguetown/armor/medium/scale
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	belt = /obj/item/storage/belt/rogue/leather
-	beltr = /obj/item/rogueweapon/sword/arming
+	beltr = /obj/item/weapon/sword/arming
 	beltl = /obj/item/storage/keyring/guard
 	backl = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/rogueweapon/knife/dagger/steel/special = 1, /obj/item/signal_horn = 1)
+	backpack_contents = list(/obj/item/weapon/knife/dagger/steel/special = 1, /obj/item/signal_horn = 1)
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/combat/axesmaces, 4, TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
@@ -71,7 +71,7 @@
 	show_wanderer_examine = FALSE
 /datum/outfit/job/roguetown/archer_bannerman/pre_equip(mob/living/carbon/human/H)
 	..()
-	pants = /obj/item/clothing/under/roguetown/trou/leather
+	pants = /obj/item/clothing/pants/trou/leather
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
 	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/merc
@@ -81,7 +81,7 @@
 	beltl = /obj/item/storage/keyring/guard
 	beltr = /obj/item/ammo_holder/quiver/arrows
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-	backpack_contents = list(/obj/item/rogueweapon/knife/dagger/steel/special = 1)
+	backpack_contents = list(/obj/item/weapon/knife/dagger/steel/special = 1)
 	if(prob(30))
 		head = /obj/item/clothing/head/roguetown/helmet/kettle
 	else
@@ -119,18 +119,18 @@
 
 /datum/outfit/job/roguetown/crossbow_bannerman/pre_equip(mob/living/carbon/human/H)
 	..()
-	pants = /obj/item/clothing/under/roguetown/trou/leather
+	pants = /obj/item/clothing/pants/trou/leather
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
 	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/merc
 	cloak = /obj/item/clothing/cloak/stabard/guard
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	belt = /obj/item/storage/belt/rogue/leather
-	pants = /obj/item/clothing/under/roguetown/trou/leather
+	pants = /obj/item/clothing/pants/trou/leather
 	beltl = /obj/item/storage/keyring/guard
 	beltr = /obj/item/ammo_holder/quiver/bolts
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-	backpack_contents = list(/obj/item/rogueweapon/knife/dagger/steel/special = 1)
+	backpack_contents = list(/obj/item/weapon/knife/dagger/steel/special = 1)
 	if(prob(30))
 		head = /obj/item/clothing/head/roguetown/helmet/kettle
 	else
@@ -172,10 +172,10 @@
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	head = /obj/item/clothing/head/roguetown/helmet/nasal
-	backr = /obj/item/rogueweapon/shield/wood
-	beltr = /obj/item/rogueweapon/sword/scimitar/messer
-	beltl = /obj/item/rogueweapon/mace
-	pants = /obj/item/clothing/under/roguetown/trou/leather
+	backr = /obj/item/weapon/shield/wood
+	beltr = /obj/item/weapon/sword/scimitar/messer
+	beltl = /obj/item/weapon/mace
+	pants = /obj/item/clothing/pants/trou/leather
 	cloak = /obj/item/clothing/cloak/stabard/guard
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	belt = /obj/item/storage/belt/rogue/leather
@@ -212,8 +212,8 @@
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	head = /obj/item/clothing/head/roguetown/helmet/kettle
-	beltr = /obj/item/rogueweapon/sword/scimitar/messer
-	pants = /obj/item/clothing/under/roguetown/trou/leather
+	beltr = /obj/item/weapon/sword/scimitar/messer
+	pants = /obj/item/clothing/pants/trou/leather
 	cloak = /obj/item/clothing/cloak/stabard/guard
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	belt = /obj/item/storage/belt/rogue/leather
@@ -239,9 +239,9 @@
 	var/weapontype = pickweight(list("Spear" = 6, "Bardiche" = 4))
 	switch(weapontype)
 		if("Spear")
-			backr = /obj/item/rogueweapon/polearm/spear
+			backr = /obj/item/weapon/polearm/spear
 		if("Bardiche")
-			backr = /obj/item/rogueweapon/polearm/halberd/bardiche
+			backr = /obj/item/weapon/polearm/halberd/bardiche
 
 /datum/migrant_wave/returning_bannermen
 	name = "The Bannermen's return"

@@ -129,7 +129,7 @@
 /turf/open/floor/rogue/ruinedwood/spiralfade,
 /area/rogue)
 "cV" = (
-/obj/item/rogueweapon/surgery/scalpel,
+/obj/item/weapon/surgery/scalpel,
 /obj/structure/closet/crate/chest/crate,
 /obj/effect/decal/cleanable/blood/gibs/old,
 /obj/effect/decal/cleanable/dirt,
@@ -625,9 +625,9 @@
 /obj/item/clothing/head/roguetown/wizhat/witch,
 /obj/item/clothing/suit/roguetown/armor/gambeson/shadowrobe,
 /obj/item/clothing/shoes/roguetown/sandals,
-/obj/item/rogueweapon/polearm/woodstaff,
+/obj/item/weapon/polearm/woodstaff,
 /obj/item/clothing/mask/rogue/facemask/copper,
-/obj/item/clothing/under/roguetown/trou/shadowpants,
+/obj/item/clothing/pants/trou/shadowpants,
 /mob/living/carbon/human/species/skeleton/npc/no_equipment,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/rogue/blocks/stonered,
@@ -1643,7 +1643,7 @@
 /area/rogue)
 "LM" = (
 /obj/structure/table/optable,
-/obj/item/rogueweapon/shovel,
+/obj/item/weapon/shovel,
 /obj/effect/spawner/roguemap/loot/medium,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue)
@@ -1949,7 +1949,7 @@
 "Rz" = (
 /obj/structure/bed/rogue/hay,
 /obj/structure/curtain,
-/obj/item/rogueweapon/surgery/bonesetter,
+/obj/item/weapon/surgery/bonesetter,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue)
 "RI" = (

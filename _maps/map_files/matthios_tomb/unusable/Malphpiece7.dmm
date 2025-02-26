@@ -15,7 +15,7 @@
 /obj/item/clothing/shoes/roguetown/boots/furlinedboots,
 /obj/item/clothing/suit/roguetown/armor/plate,
 /obj/item/clothing/head/roguetown/rare/dwarfplate,
-/obj/item/rogueweapon/polearm/spear/billhook,
+/obj/item/weapon/polearm/spear/billhook,
 /obj/item/clothing/ring/gold/ravox,
 /obj/item/roguecoin/gold/pile,
 /obj/item/roguecoin/silver/pile,
@@ -27,9 +27,9 @@
 /turf/closed/wall/mineral/rogue/decostone/fluffstone/reddish,
 /area/rogue/outdoors/caves)
 "m" = (
-/obj/item/rogueweapon/knife/copper,
+/obj/item/weapon/knife/copper,
 /obj/item/clothing/suit/roguetown/armor/leather/splint,
-/obj/item/rogueweapon/shield/tower/buckleriron,
+/obj/item/weapon/shield/tower/buckleriron,
 /obj/effect/decal/remains/human,
 /turf/open/floor/rogue/blocks/paving/vert,
 /area/rogue/outdoors/caves)
@@ -40,9 +40,9 @@
 /turf/closed/wall/mineral/rogue/stone,
 /area/rogue/outdoors/caves)
 "x" = (
-/obj/item/rogueweapon/shield/tower,
+/obj/item/weapon/shield/tower,
 /obj/item/clothing/cloak/stabard/templar/dendor,
-/obj/item/rogueweapon/mace/goden/shillelagh,
+/obj/item/weapon/mace/goden/shillelagh,
 /obj/effect/decal/remains/human,
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/outdoors/caves)
@@ -69,7 +69,7 @@
 /turf/open/floor/rogue/blocks/paving/vert,
 /area/rogue/outdoors/caves)
 "G" = (
-/obj/item/rogueweapon/whip/antique,
+/obj/item/weapon/whip/antique,
 /obj/structure/fluff/wallclock/vampire,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/outdoors/caves)

@@ -49,7 +49,7 @@
 	. = ..()
 	cloak = pick(/obj/item/clothing/cloak/half/guard, /obj/item/clothing/cloak/half/guardsecond)
 	head = pick(/obj/item/clothing/head/roguetown/helmet/townwatch, /obj/item/clothing/head/roguetown/helmet/townwatch/alt)
-	pants = /obj/item/clothing/under/roguetown/trou/leather/guard
+	pants = /obj/item/clothing/pants/trou/leather/guard
 	wrists = /obj/item/rope/chain
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	belt = /obj/item/storage/belt/rogue/leather
@@ -69,11 +69,11 @@
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
-	backr = /obj/item/rogueweapon/shield/heater
+	backr = /obj/item/weapon/shield/heater
 	backl = /obj/item/storage/backpack/rogue/satchel
-	beltr = /obj/item/rogueweapon/sword/short
-	beltl = /obj/item/rogueweapon/mace/cudgel
-	backpack_contents = list(/obj/item/storage/keyring/guard, /obj/item/rogueweapon/knife/dagger/steel/special)
+	beltr = /obj/item/weapon/sword/short
+	beltl = /obj/item/weapon/mace/cudgel
+	backpack_contents = list(/obj/item/storage/keyring/guard, /obj/item/weapon/knife/dagger/steel/special)
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE) // Main weapon
 		H.mind?.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE) // Main off-hand weapon
@@ -109,8 +109,8 @@
 	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 	backl = /obj/item/storage/backpack/rogue/satchel
 	beltr = /obj/item/ammo_holder/quiver/arrows
-	beltl = /obj/item/rogueweapon/mace/cudgel
-	backpack_contents = list(/obj/item/storage/keyring/guard, /obj/item/rogueweapon/knife/dagger/steel/special)
+	beltl = /obj/item/weapon/mace/cudgel
+	backpack_contents = list(/obj/item/storage/keyring/guard, /obj/item/weapon/knife/dagger/steel/special)
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE) // Main Weapon
 		H.mind?.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE) // You don't even have access to crossbows
@@ -150,10 +150,10 @@
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	backl = /obj/item/storage/backpack/rogue/satchel
-	backr = /obj/item/rogueweapon/polearm/spear
-	beltl = /obj/item/rogueweapon/sword/short
-	beltr = /obj/item/rogueweapon/mace/cudgel
-	backpack_contents = list(/obj/item/storage/keyring/guard, /obj/item/rogueweapon/knife/dagger/steel/special)
+	backr = /obj/item/weapon/polearm/spear
+	beltl = /obj/item/weapon/sword/short
+	beltr = /obj/item/weapon/mace/cudgel
+	backpack_contents = list(/obj/item/storage/keyring/guard, /obj/item/weapon/knife/dagger/steel/special)
 
 	//Stats for class
 	H.mind?.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)

@@ -1,4 +1,4 @@
-/obj/item/rogueweapon/pick
+/obj/item/weapon/pick
 	force = 16
 	possible_item_intents = list(/datum/intent/pick)
 	name = "pick"
@@ -17,7 +17,7 @@
 	melt_amount = 75
 	var/pickmult = 1 // Multiplier of how much extra picking force we do to rocks.
 
-/obj/item/rogueweapon/pick/getonmobprop(tag)
+/obj/item/weapon/pick/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)
@@ -26,7 +26,7 @@
 			if("onbelt")
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
-/obj/item/rogueweapon/pick/copper
+/obj/item/weapon/pick/copper
 	force = 13
 	possible_item_intents = list(/datum/intent/pick)
 	name = "copper pick"
@@ -42,7 +42,7 @@
 	melting_material = /datum/material/copper
 	melt_amount = 75
 
-/obj/item/rogueweapon/pick/steel
+/obj/item/weapon/pick/steel
 	name = "steel pick"
 	desc = "With a reinforced handle and sturdy shaft, this is a superior tool for delving in the darkness."
 	force = 19
@@ -53,7 +53,7 @@
 	melting_material = /datum/material/steel
 	melt_amount = 75
 
-/obj/item/rogueweapon/pick/stone
+/obj/item/weapon/pick/stone
 	name = "stone pick"
 	desc = "Stone versus sharp stone, who wins?"
 	force = 10

@@ -50,9 +50,9 @@
 	if(H.gender == FEMALE)
 		armor = /obj/item/clothing/suit/roguetown/shirt/rags
 	else
-		pants = /obj/item/clothing/under/roguetown/tights/vagrant
+		pants = /obj/item/clothing/pants/tights/vagrant
 		if(prob(50))
-			pants = /obj/item/clothing/under/roguetown/tights/vagrant/l
+			pants = /obj/item/clothing/pants/tights/vagrant/l
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
 		if(prob(50))
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant/l
@@ -65,7 +65,7 @@
 		H.mind?.adjust_skillrank(/datum/skill/combat/unarmed, pick(1,2,3), TRUE)
 		H.TOTALLUC = rand(1, 20)
 	if(prob(5))
-		r_hand = /obj/item/rogueweapon/mace/woodclub
+		r_hand = /obj/item/weapon/mace/woodclub
 	H.change_stat(STATKEY_INT, -3)
 	H.change_stat(STATKEY_CON, -2)
 	H.change_stat(STATKEY_END, -2)

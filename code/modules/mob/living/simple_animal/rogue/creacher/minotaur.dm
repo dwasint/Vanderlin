@@ -41,7 +41,7 @@
 	dodgetime = 0
 	aggressive = 1
 //	stat_attack = UNCONSCIOUS
-	remains_type = /obj/item/rogueweapon/axe/battle
+	remains_type = /obj/item/weapon/axe/battle
 
 	ai_controller = /datum/ai_controller/minotaur
 	can_have_ai = FALSE

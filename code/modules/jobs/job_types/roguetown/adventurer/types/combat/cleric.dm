@@ -26,10 +26,10 @@
 
 	armor = /obj/item/clothing/suit/roguetown/armor/cuirass // Halfplate has been made heavy armor, billions must make due.
 	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
-	pants = /obj/item/clothing/under/roguetown/trou/leather
+	pants = /obj/item/clothing/pants/trou/leather
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	belt = /obj/item/storage/belt/rogue/leather
-	beltl = /obj/item/rogueweapon/mace
+	beltl = /obj/item/weapon/mace
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
 
 	switch(H.patron?.type)
@@ -42,7 +42,7 @@
 			neck = /obj/item/clothing/neck/roguetown/coif
 			wrists = /obj/item/clothing/neck/roguetown/psycross/silver/dendor
 			cloak = /obj/item/clothing/cloak/raincloak/furcloak
-			beltr = /obj/item/rogueweapon/knife/stone
+			beltr = /obj/item/weapon/knife/stone
 		if(/datum/patron/divine/necra)
 			wrists = /obj/item/clothing/neck/roguetown/psycross/silver/necra
 			cloak = /obj/item/clothing/cloak/stabard/templar/necra

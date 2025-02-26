@@ -2,7 +2,7 @@
 #define SHIELD_BLOCK		/datum/intent/shield/block
 #define SHIELD_BANG_COOLDOWN (3 SECONDS)
 
-/obj/item/rogueweapon/shield
+/obj/item/weapon/shield
 	name = ""
 	desc = ""
 	icon_state = ""
@@ -34,8 +34,8 @@
 	COOLDOWN_DECLARE(shield_bang)
 
 // Shield banging
-/obj/item/rogueweapon/shield/attackby(obj/item/attackby_item, mob/user, params)
-	if(istype(attackby_item, /obj/item/rogueweapon) && !istype(attackby_item, /obj/item/rogueweapon/hammer))
+/obj/item/weapon/shield/attackby(obj/item/attackby_item, mob/user, params)
+	if(istype(attackby_item, /obj/item/weapon) && !istype(attackby_item, /obj/item/weapon/hammer))
 		if(!COOLDOWN_FINISHED(src, shield_bang))
 			return
 		user.visible_message("<span class='danger'>[user] bangs [src] with [attackby_item]!</span>")
@@ -45,7 +45,7 @@
 
 	return ..()
 
-/obj/item/rogueweapon/shield/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the projectile", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
+/obj/item/weapon/shield/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the projectile", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	SEND_SIGNAL(src, COMSIG_ITEM_HIT_REACT, args)
 	if(attack_type == THROWN_PROJECTILE_ATTACK || attack_type == PROJECTILE_ATTACK)
 		if(istype(hitby, /obj/projectile))
@@ -87,7 +87,7 @@
 /datum/intent/shield/block/metal
 	hitsound = list('sound/combat/shieldbash_metal.ogg')
 
-/obj/item/rogueweapon/shield/wood
+/obj/item/weapon/shield/wood
 	name = "wooden shield"
 	desc = "A simple, emblazoned round wooden shield with leather padding. \nCan exceptionally block attacks, but is more brittle than metal ones."
 	icon_state = "woodsh"
@@ -95,7 +95,7 @@
 	coverage = 50
 	max_integrity = 150
 
-/obj/item/rogueweapon/shield/wood/attack_right(mob/user)
+/obj/item/weapon/shield/wood/attack_right(mob/user)
 	if(!overlays.len)
 		if(!('icons/roguetown/weapons/wood_heraldry.dmi' in GLOB.IconStates_cache))
 			var/icon/J = new('icons/roguetown/weapons/wood_heraldry.dmi')
@@ -117,7 +117,7 @@
 	else
 		..()
 
-/obj/item/rogueweapon/shield/wood/getonmobprop(tag)
+/obj/item/weapon/shield/wood/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)
@@ -126,9 +126,9 @@
 			if("onback")
 				return list("shrink" = 0.6,"sx" = 1,"sy" = 4,"nx" = 1,"ny" = 2,"wx" = 3,"wy" = 3,"ex" = 0,"ey" = 2,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 8,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
 
-/obj/item/rogueweapon/shield/wood/adept
+/obj/item/weapon/shield/wood/adept
 
-/obj/item/rogueweapon/shield/wood/adept/Initialize()
+/obj/item/weapon/shield/wood/adept/Initialize()
 	..()
 	if(!overlays.len)
 		if(!('icons/roguetown/weapons/wood_heraldry.dmi' in GLOB.IconStates_cache))
@@ -148,7 +148,7 @@
 		else
 			return
 
-/obj/item/rogueweapon/shield/tower
+/obj/item/weapon/shield/tower
 	name = "tower shield"
 	desc = "A gigantic, iron reinforced shield that covers the entire body, a design-copy of the Aasimar shields of an era gone by."
 	icon_state = "shield_tower"
@@ -166,13 +166,13 @@
 	melting_material = /datum/material/iron
 	melt_amount = 75
 
-/obj/item/rogueweapon/shield/tower/spidershield
+/obj/item/weapon/shield/tower/spidershield
 	name = "spider shield"
 	desc = "A bulky shield of spike-like lengths molten together. The motifs evoke anything but safety and protection."
 	icon_state = "spidershield"
 	coverage = 55
 
-/obj/item/rogueweapon/shield/tower/getonmobprop(tag)
+/obj/item/weapon/shield/tower/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)
@@ -181,7 +181,7 @@
 			if("onback")
 				return list("shrink" = 0.6,"sx" = 1,"sy" = 4,"nx" = 1,"ny" = 2,"wx" = 3,"wy" = 3,"ex" = 0,"ey" = 2,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 8,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
 
-/obj/item/rogueweapon/shield/tower/hoplite
+/obj/item/weapon/shield/tower/hoplite
 	name = "ancient shield"
 	desc = "A gigantic, bronze reinforced shield that covers the entire body. An aasimar relic from an era long past."
 	icon_state = "boeotian"
@@ -204,7 +204,7 @@
 	melting_material = /datum/material/bronze
 	melt_amount = 75
 
-/obj/item/rogueweapon/shield/tower/hoplite/getonmobprop(tag)
+/obj/item/weapon/shield/tower/hoplite/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)
@@ -213,7 +213,7 @@
 			if("onback")
 				return list("shrink" = 0.6,"sx" = 1,"sy" = 4,"nx" = 1,"ny" = 2,"wx" = 3,"wy" = 3,"ex" = 0,"ey" = 2,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 8,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
 
-/obj/item/rogueweapon/shield/tower/metal
+/obj/item/weapon/shield/tower/metal
 	name = "kite shield"
 	desc = "A knightly, kite shaped steel shield, emblazoned with heraldry. \nBoasts superior coverage and durability, owed to its exquisite craftsmanship."
 	icon_state = "ironsh"
@@ -235,7 +235,7 @@
 	melting_material = /datum/material/steel
 	melt_amount = 90
 
-/obj/item/rogueweapon/shield/tower/metal/getonmobprop(tag)
+/obj/item/weapon/shield/tower/metal/getonmobprop(tag)
 	if(tag)
 		switch(tag)
 			if("gen")
@@ -244,7 +244,7 @@
 				return list("shrink" = 0.6,"sx" = 1,"sy" = 4,"nx" = 1,"ny" = 2,"wx" = 3,"wy" = 3,"ex" = 0,"ey" = 2,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 8,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
 	return ..()
 
-/obj/item/rogueweapon/shield/tower/metal/attack_right(mob/user)
+/obj/item/weapon/shield/tower/metal/attack_right(mob/user)
 	if(!overlays.len)
 		if(!('icons/roguetown/weapons/shield_heraldry.dmi' in GLOB.IconStates_cache))
 			var/icon/J = new('icons/roguetown/weapons/shield_heraldry.dmi')
@@ -268,7 +268,7 @@
 #undef SHIELD_BANG_COOLDOWN
 
 
-/obj/item/rogueweapon/shield/tower/buckleriron
+/obj/item/weapon/shield/tower/buckleriron
 	name = "iron buckler"
 	desc = "A small sized iron shield, popular among mercenaries due to it's light weight and ease of mobility."
 	icon_state = "ironbuckler"
@@ -289,7 +289,7 @@
 	melting_material = /datum/material/iron
 	melt_amount = 75
 
-/obj/item/rogueweapon/shield/tower/buckleriron/getonmobprop(tag)
+/obj/item/weapon/shield/tower/buckleriron/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)
@@ -300,7 +300,7 @@
 			if("onbelt")
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
-/obj/item/rogueweapon/shield/heater
+/obj/item/weapon/shield/heater
 	name = "heater shield"
 	desc = "A sturdy wood and leather shield. Made to not be too encumbering while still providing good protection."
 	icon_state = "heatershield"
@@ -312,7 +312,7 @@
 	parrysound = list('sound/combat/parry/shield/towershield (1).ogg','sound/combat/parry/shield/towershield (2).ogg','sound/combat/parry/shield/towershield (3).ogg')
 	max_integrity = 200
 
-/obj/item/rogueweapon/shield/heater/attack_right(mob/user)
+/obj/item/weapon/shield/heater/attack_right(mob/user)
 	if(!overlays.len)
 		var/icon/J = new('icons/roguetown/weapons/heater_heraldry.dmi')
 		var/list/istates = J.IconStates()
@@ -330,7 +330,7 @@
 	else
 		..()
 
-/obj/item/rogueweapon/shield/heater/getonmobprop(tag)
+/obj/item/weapon/shield/heater/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)

@@ -26,7 +26,7 @@
 /datum/outfit/job/roguetown/adventurer/fishermaster/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.gender == MALE)
-		pants = /obj/item/clothing/under/roguetown/trou
+		pants = /obj/item/clothing/pants/trou
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
 		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 		neck = /obj/item/storage/belt/rogue/pouch/coins/mid
@@ -36,8 +36,8 @@
 		belt = /obj/item/storage/belt/rogue/leather
 		backl = /obj/item/fishingrod/fisher
 		beltr = /obj/item/cooking/pan
-		beltl = /obj/item/rogueweapon/knife/hunting
-		backpack_contents = list(/obj/item/natural/worms = 2,/obj/item/rogueweapon/shovel/small=1)
+		beltl = /obj/item/weapon/knife/hunting
+		backpack_contents = list(/obj/item/natural/worms = 2,/obj/item/weapon/shovel/small=1)
 		if(H.mind)
 			H.mind?.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
 			H.mind?.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
@@ -55,7 +55,7 @@
 			H.change_stat(STATKEY_CON, 2)
 			H.change_stat(STATKEY_PER, 2)
 	else
-		pants = /obj/item/clothing/under/roguetown/trou
+		pants = /obj/item/clothing/pants/trou
 		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
 		neck = /obj/item/storage/belt/rogue/pouch/coins/mid
@@ -64,8 +64,8 @@
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/jacket/sea
 		belt = /obj/item/storage/belt/rogue/leather
 		beltr = /obj/item/fishingrod/fisher
-		beltl = /obj/item/rogueweapon/knife/hunting
-		backpack_contents = list(/obj/item/natural/worms = 2,/obj/item/rogueweapon/shovel/small=1)
+		beltl = /obj/item/weapon/knife/hunting
+		backpack_contents = list(/obj/item/natural/worms = 2,/obj/item/weapon/shovel/small=1)
 		if(H.mind)
 			H.mind?.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
 			H.mind?.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)

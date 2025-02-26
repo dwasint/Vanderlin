@@ -29,12 +29,12 @@
 		H.mind?.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/craft/traps, 3, TRUE) // Valor pleases you, Crom.
 
-	beltr = /obj/item/rogueweapon/sword/iron
+	beltr = /obj/item/weapon/sword/iron
 	neck = /obj/item/clothing/neck/roguetown/coif
-	pants = /obj/item/clothing/under/roguetown/loincloth
+	pants = /obj/item/clothing/pants/loincloth
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	belt = /obj/item/storage/belt/rogue/leather/mercenary
-	beltl = /obj/item/rogueweapon/mace/cudgel
+	beltl = /obj/item/weapon/mace/cudgel
 	head = /obj/item/clothing/head/roguetown/helmet/leather
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather

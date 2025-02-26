@@ -45,13 +45,13 @@
 
 /obj/effect/proc_holder/spell/self/claws/cast(mob/user = usr)
 	..()
-	var/obj/item/rogueweapon/werewolf_claw/left/l
-	var/obj/item/rogueweapon/werewolf_claw/right/r
+	var/obj/item/weapon/werewolf_claw/left/l
+	var/obj/item/weapon/werewolf_claw/right/r
 
 	l = user.get_active_held_item()
 	r = user.get_inactive_held_item()
 	if(extended)
-		if(istype(user.get_active_held_item(), /obj/item/rogueweapon/werewolf_claw))
+		if(istype(user.get_active_held_item(), /obj/item/weapon/werewolf_claw))
 			user.dropItemToGround(l, TRUE)
 			user.dropItemToGround(r, TRUE)
 			qdel(l)

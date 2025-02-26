@@ -66,7 +66,7 @@
 #define HARD_TO_DODGE 1
 #define VERY_HARD_TO_DODGE 2
 
-/obj/item/rogueweapon
+/obj/item/weapon
 	name = ""
 	desc = ""
 	icon_state = "sabre"
@@ -106,18 +106,18 @@
 	var/axe_cut = 0
 	istrainable = TRUE // You can train weapon skills on a dummy with these.
 
-/obj/item/rogueweapon/Initialize()
+/obj/item/weapon/Initialize()
 	. = ..()
 	if(!destroy_message)
 		var/yea = pick("[src] is broken!", "[src] is useless!", "[src] is destroyed!")
 		destroy_message = "<span class='warning'>[yea]</span>"
 
-/obj/item/rogueweapon/attack_hand(mob/user)
+/obj/item/weapon/attack_hand(mob/user)
 	if(istype(user, /mob/living/carbon/human/species/werewolf)) //slop fix
 		return TRUE
 	. = ..()
 
-/obj/item/rogueweapon/pickup(mob/user)
+/obj/item/weapon/pickup(mob/user)
 	. = ..()
 	if(HAS_TRAIT(user, TRAIT_RAVOX_CURSE))
 		var/mob/living/carbon/human/H = user
@@ -126,10 +126,10 @@
 		H.Paralyze(20)
 		return
 
-/obj/item/rogueweapon/get_examine_string(mob/user, thats = FALSE)
+/obj/item/weapon/get_examine_string(mob/user, thats = FALSE)
 	return "[thats? "That's ":""]<b>[get_examine_name(user)]</b>"
 
-/obj/item/rogueweapon/get_dismemberment_chance(obj/item/bodypart/affecting, mob/user)
+/obj/item/weapon/get_dismemberment_chance(obj/item/bodypart/affecting, mob/user)
 	if(!get_sharpness() || !affecting.can_dismember(src))
 		return 0
 

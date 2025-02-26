@@ -216,7 +216,7 @@
 	if(shirt)
 		H.equip_to_slot_or_del(new shirt(H),SLOT_SHIRT, TRUE)
 	if(accessory)
-		var/obj/item/clothing/under/U = H.wear_pants
+		var/obj/item/clothing/pants/U = H.wear_pants
 		if(U)
 			U.attach_accessory(new accessory(H))
 		else

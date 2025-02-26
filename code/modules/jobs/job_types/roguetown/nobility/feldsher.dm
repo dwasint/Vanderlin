@@ -38,7 +38,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/red
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backl = /obj/item/storage/backpack/rogue/satchel/surgbag
-	pants = /obj/item/clothing/under/roguetown/tights/random
+	pants = /obj/item/clothing/pants/tights/random
 	gloves = /obj/item/clothing/gloves/roguetown/leather/feld
 	armor = /obj/item/clothing/suit/roguetown/shirt/robe/feld
 	head = /obj/item/clothing/head/roguetown/roguehood/feld

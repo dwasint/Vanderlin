@@ -1,7 +1,7 @@
 /* KNIVES - Low damage, bad parry, ok AP
 ==========================================================*/
 
-/obj/item/rogueweapon/knife
+/obj/item/weapon/knife
 	force = DAMAGE_KNIFE
 	throwforce = DAMAGE_KNIFE
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/thrust, /datum/intent/dagger/chop)
@@ -30,10 +30,10 @@
 	grid_height = 64
 	grid_width = 32
 
-/obj/item/rogueweapon/knife/Initialize()
+/obj/item/weapon/knife/Initialize()
 	. = ..()
 	AddElement(/datum/element/tipped_item)
-/obj/item/rogueweapon/knife/getonmobprop(tag)
+/obj/item/weapon/knife/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)
@@ -112,7 +112,7 @@
 	damfactor = 2
 
 //................ Hunting Knife ............... //
-/obj/item/rogueweapon/knife/hunting
+/obj/item/weapon/knife/hunting
 	force = DAMAGE_DAGGER
 	throwforce = DAMAGE_KNIFE
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/thrust, /datum/intent/dagger/chop)
@@ -128,7 +128,7 @@
 	sellprice = 6
 
 
-/obj/item/rogueweapon/knife/scissors
+/obj/item/weapon/knife/scissors
 	possible_item_intents = list(/datum/intent/dagger/thrust, /datum/intent/dagger/cut, /datum/intent/snip)
 	max_integrity = 100
 	name = "iron scissors"
@@ -149,7 +149,7 @@
 	releasedrain = 0
 	blade_class = BCLASS_PUNCH
 
-/obj/item/rogueweapon/knife/scissors/attack_obj(obj/O, mob/living/user) //This is scissor action! We're putting this here not to lose sight of it!
+/obj/item/weapon/knife/scissors/attack_obj(obj/O, mob/living/user) //This is scissor action! We're putting this here not to lose sight of it!
 	if(user.used_intent.type == /datum/intent/snip && istype(O, /obj/item))
 		var/obj/item/item = O
 		if(item.sewrepair && item.salvage_result) // We can only salvage objects which can be sewn!
@@ -180,7 +180,7 @@
 			return
 	return ..()
 
-/obj/item/rogueweapon/knife/scissors/steel
+/obj/item/weapon/knife/scissors/steel
 	force = 14
 	max_integrity = 150
 	name = "steel scissors"
@@ -190,7 +190,7 @@
 	melt_amount = 75
 
 //................ Cleaver ............... //
-/obj/item/rogueweapon/knife/cleaver
+/obj/item/weapon/knife/cleaver
 	name = "cleaver"
 	desc = "A chef's tool turned armament, cleave off cumbersome flesh with rudimentary ease."
 	lefthand_file = 'icons/roguetown/onmob/lefthand.dmi'
@@ -214,7 +214,7 @@
 	dropshrink = 0.9
 
 //................ Hack-Knife ............... //
-/obj/item/rogueweapon/knife/cleaver/combat
+/obj/item/weapon/knife/cleaver/combat
 	name = "hack-knife"
 	desc = "A short blade that even the weakest of hands can aspire to do harm with."
 	force = 10
@@ -229,7 +229,7 @@
 	wbalance = 1
 	sellprice = 15
 
-/obj/item/rogueweapon/knife/cleaver/combat/getonmobprop(tag)
+/obj/item/weapon/knife/cleaver/combat/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)
@@ -239,7 +239,7 @@
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 //................ Iron Dagger ............... //
-/obj/item/rogueweapon/knife/dagger
+/obj/item/weapon/knife/dagger
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/thrust)
 	name = "iron dagger"
 	desc = "Thin, sharp, pointed death."
@@ -248,7 +248,7 @@
 	sellprice = 12
 
 //................ Steel Dagger ............... //
-/obj/item/rogueweapon/knife/dagger/steel
+/obj/item/weapon/knife/dagger/steel
 	name = "steel dagger"
 	desc = "A dagger made of refined steel."
 	icon_state = "sdagger"
@@ -256,19 +256,19 @@
 	wdefense = AVERAGE_PARRY
 	wbalance = VERY_HARD_TO_DODGE
 
-/obj/item/rogueweapon/knife/dagger/steel/special
+/obj/item/weapon/knife/dagger/steel/special
 	icon_state = "sdaggeralt"
 	desc = "A dagger of refined steel, and even more refined appearance."
 
 //................ Fanged dagger ............... //
-/obj/item/rogueweapon/knife/dagger/steel/dirk
+/obj/item/weapon/knife/dagger/steel/dirk
 	name = "fanged dagger"
 	desc = "A dagger modeled after the fang of an anthrax spider."
 	icon_state = "spiderdagger"
 	melting_material = null
 
 //................ Silver Dagger ............... //
-/obj/item/rogueweapon/knife/dagger/silver
+/obj/item/weapon/knife/dagger/silver
 	name = "silver dagger"
 	desc = "A dagger made of fine silver, the bane of the undead."
 	icon_state = "sildagger"
@@ -280,7 +280,7 @@
 	is_silver = TRUE
 
 //................ Profane Dagger ............... //
-/obj/item/rogueweapon/knife/dagger/steel/profane
+/obj/item/weapon/knife/dagger/steel/profane
 	// name = "profane dagger"
 	// desc = "A profane dagger made of cursed black steel. Whispers emanate from the gem on its hilt."
 	sellprice = 250
@@ -288,12 +288,12 @@
 	melting_material = null
 	embedding = list("embed_chance" = 0) // Embedding the cursed dagger has the potential to cause duping issues. Keep it like this unless you want to do a lot of bug hunting.
 
-/obj/item/rogueweapon/knife/dagger/steel/profane/examine(mob/user)
+/obj/item/weapon/knife/dagger/steel/profane/examine(mob/user)
 	. = ..()
 	if(HAS_TRAIT(user, TRAIT_ASSASSIN))
 		. += "profane dagger whispers, \"[span_danger("Here we are!")]\""
 
-/obj/item/rogueweapon/knife/dagger/steel/profane/pickup(mob/living/M)
+/obj/item/weapon/knife/dagger/steel/profane/pickup(mob/living/M)
 	. = ..()
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
@@ -324,7 +324,7 @@
 //			H.visible_message("profane dagger whispers, \"[message]\"")
 			to_chat(M, "profane dagger whispers, \"[message]\"")
 
-/obj/item/rogueweapon/knife/dagger/steel/profane/pre_attack(mob/living/carbon/human/target, mob/living/user = usr, params)
+/obj/item/weapon/knife/dagger/steel/profane/pre_attack(mob/living/carbon/human/target, mob/living/user = usr, params)
 	if(!istype(target))
 		return FALSE
 	if(target.has_flaw(/datum/charflaw/hunted) || HAS_TRAIT(target, TRAIT_ZIZOID_HUNTED)) // Check to see if the dagger will do 20 damage or 14
@@ -333,7 +333,7 @@
 		force = 14
 	return FALSE
 
-/obj/item/rogueweapon/knife/dagger/steel/profane/afterattack(mob/living/carbon/human/target, mob/living/user = usr, proximity)
+/obj/item/weapon/knife/dagger/steel/profane/afterattack(mob/living/carbon/human/target, mob/living/user = usr, proximity)
 	. = ..()
 	if(!ishuman(target))
 		return
@@ -346,7 +346,7 @@
 				user.adjust_triumphs(1)
 				init_profane_soul(target, user) //If they are still in their body, send them to the dagger!
 
-/obj/item/rogueweapon/knife/dagger/steel/profane/proc/init_profane_soul(mob/living/carbon/human/target, mob/user)
+/obj/item/weapon/knife/dagger/steel/profane/proc/init_profane_soul(mob/living/carbon/human/target, mob/user)
 	var/mob/dead/observer/profane/S = new /mob/dead/observer/profane(src)
 	S.AddComponent(/datum/component/profaned, src)
 	S.name = "soul of [target.real_name]"
@@ -360,7 +360,7 @@
 	src.blade_int = src.max_blade_int // Stealing a soul successfully sharpens the blade.
 	src.obj_integrity = src.max_integrity // And fixes the dagger. No blacksmith required!
 
-/obj/item/rogueweapon/knife/dagger/steel/profane/proc/get_profane_ghost(mob/living/carbon/human/target, mob/user)
+/obj/item/weapon/knife/dagger/steel/profane/proc/get_profane_ghost(mob/living/carbon/human/target, mob/user)
 	var/mob/dead/observer/chosen_ghost
 	var/mob/living/carbon/spirit/underworld_spirit = target.get_spirit() //Check if a soul has already gone to the underworld
 	if(underworld_spirit) // If they are in the underworld, pull them back to the real world and make them a normal ghost. Necra can't save you now!
@@ -375,7 +375,7 @@
 	qdel(target) // Get rid of that ghost!
 	return TRUE
 
-/obj/item/rogueweapon/knife/dagger/steel/profane/proc/release_profane_souls(mob/user) // For ways to release the souls trapped within a profane dagger, such as a Necrite burial rite. Returns the number of freed souls.
+/obj/item/weapon/knife/dagger/steel/profane/proc/release_profane_souls(mob/user) // For ways to release the souls trapped within a profane dagger, such as a Necrite burial rite. Returns the number of freed souls.
 	var/freed_souls = 0
 	for(var/mob/dead/observer/profane/A in src) // for every trapped soul in the dagger, whether they have left the game or not
 		to_chat(A, "<b>I have been freed from my vile prison, I await Necra's cold grasp. Salvation!</b>")
@@ -399,7 +399,7 @@
 	S.forceMove(container)
 
 //................ Stone Knife ............... //
-/obj/item/rogueweapon/knife/stone
+/obj/item/weapon/knife/stone
 	force = DAMAGE_KNIFE
 	throwforce = DAMAGE_KNIFE
 	possible_item_intents = list(/datum/intent/dagger/cut,/datum/intent/dagger/chop)
@@ -416,7 +416,7 @@
 
 
 //................ Villager Knife ............... //
-/obj/item/rogueweapon/knife/villager
+/obj/item/weapon/knife/villager
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/thrust, /datum/intent/dagger/chop)
 	name = "villager knife"
 	desc = "The loyal companion of simple peasants, able to cut hard bread and carve wood. A versatile kitchen utensil and tool."
@@ -424,7 +424,7 @@
 	melting_material = /datum/material/iron
 	melt_amount = 25
 
-/obj/item/rogueweapon/knife/copper
+/obj/item/weapon/knife/copper
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/thrust)
 	name = "copper dagger"
 	desc = "A dagger of an older design, the copper serves decent enough."
@@ -439,7 +439,7 @@
 	sellprice = 10
 
 
-/obj/item/rogueweapon/knife/throwingknife
+/obj/item/weapon/knife/throwingknife
 	name = "iron tossblade"
 	desc = ""
 	item_state = "bone_dagger"
@@ -453,7 +453,7 @@
 	melting_material = /datum/material/iron
 	melt_amount = 50
 
-/obj/item/rogueweapon/knife/throwingknife/steel
+/obj/item/weapon/knife/throwingknife/steel
 	name = "steel tossblade"
 	desc = ""
 	item_state = "bone_dagger"
@@ -466,7 +466,7 @@
 	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 30, "embedded_fall_chance" = 15)
 	melt_amount = 50
 
-/obj/item/rogueweapon/knife/throwingknife/psydon
+/obj/item/weapon/knife/throwingknife/psydon
 	name = "psydonian tossblade"
 	desc = "An unconventional method of delivering silver to a heretic; but one PSYDON smiles at, all the same. Doubles as an 'actual' knife in a pinch."
 	item_state = "bone_dagger"

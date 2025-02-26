@@ -47,7 +47,7 @@
 
 	populate_contents = list(
 		/obj/item/reagent_containers/glass/bottle/rogue/poison,
-		/obj/item/rogueweapon/knife/dagger/steel/profane,
+		/obj/item/weapon/knife/dagger/steel/profane,
 		/obj/item/lockpick,
 	)
 
@@ -274,15 +274,15 @@
 	attack_verb = list("beats", "bludgeons")
 	populate_contents = list(
 		/obj/item/needle/blessed,
-		/obj/item/rogueweapon/surgery/scalpel,
-		/obj/item/rogueweapon/surgery/saw,
-		/obj/item/rogueweapon/surgery/hemostat,
-		/obj/item/rogueweapon/surgery/hemostat,
-		/obj/item/rogueweapon/surgery/retractor,
-		/obj/item/rogueweapon/surgery/bonesetter,
-		/obj/item/rogueweapon/surgery/cautery,
+		/obj/item/weapon/surgery/scalpel,
+		/obj/item/weapon/surgery/saw,
+		/obj/item/weapon/surgery/hemostat,
+		/obj/item/weapon/surgery/hemostat,
+		/obj/item/weapon/surgery/retractor,
+		/obj/item/weapon/surgery/bonesetter,
+		/obj/item/weapon/surgery/cautery,
 		/obj/item/natural/worms/leech/parasite,
-		/obj/item/rogueweapon/surgery/hammer,
+		/obj/item/weapon/surgery/hammer,
 	)
 	component_type = /datum/component/storage/concrete/roguetown/surgery_bag
 
@@ -304,13 +304,13 @@
 		to_chat(user, span_warning("Your [src.name] is full!"))
 		return
 	to_chat(user, span_notice("You begin to gather the ammunition..."))
-	for(var/obj/item/rogueweapon/knife/throwingknife/arrow in T.contents)
+	for(var/obj/item/weapon/knife/throwingknife/arrow in T.contents)
 		if(do_after(user, 5 DECISECONDS))
 			if(!eatarrow(arrow))
 				break
 
 /obj/item/storage/belt/rogue/leather/knifebelt/proc/eatarrow(obj/A)
-	if(A.type in subtypesof(/obj/item/rogueweapon/knife/throwingknife))
+	if(A.type in subtypesof(/obj/item/weapon/knife/throwingknife))
 		if(arrows.len < max_storage)
 			A.forceMove(src)
 			arrows += A
@@ -320,7 +320,7 @@
 			return FALSE
 
 /obj/item/storage/belt/rogue/leather/knifebelt/attackby(obj/A, loc, params)
-	if(A.type in subtypesof(/obj/item/rogueweapon/knife/throwingknife))
+	if(A.type in subtypesof(/obj/item/weapon/knife/throwingknife))
 		if(arrows.len < max_storage)
 			if(ismob(loc))
 				var/mob/M = loc
@@ -352,7 +352,7 @@
 /obj/item/storage/belt/rogue/leather/knifebelt/iron/Initialize()
 	. = ..()
 	for(var/i in 1 to max_storage)
-		var/obj/item/rogueweapon/knife/throwingknife/A = new()
+		var/obj/item/weapon/knife/throwingknife/A = new()
 		arrows += A
 	update_icon()
 
@@ -365,20 +365,20 @@
 /obj/item/storage/belt/rogue/leather/knifebelt/black/iron/Initialize()
 	. = ..()
 	for(var/i in 1 to max_storage)
-		var/obj/item/rogueweapon/knife/throwingknife/A = new()
+		var/obj/item/weapon/knife/throwingknife/A = new()
 		arrows += A
 	update_icon()
 
 /obj/item/storage/belt/rogue/leather/knifebelt/black/steel/Initialize()
 	. = ..()
 	for(var/i in 1 to max_storage)
-		var/obj/item/rogueweapon/knife/throwingknife/steel/A = new()
+		var/obj/item/weapon/knife/throwingknife/steel/A = new()
 		arrows += A
 	update_icon()
 
 /obj/item/storage/belt/rogue/leather/knifebelt/black/psydon/Initialize()
 	. = ..()
 	for(var/i in 1 to max_storage)
-		var/obj/item/rogueweapon/knife/throwingknife/psydon/A = new()
+		var/obj/item/weapon/knife/throwingknife/psydon/A = new()
 		arrows += A
 	update_icon()

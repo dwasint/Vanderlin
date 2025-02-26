@@ -20,7 +20,7 @@
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	beltr = /obj/item/flashlight/flare/torch/lantern
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/priest
-	pants = /obj/item/clothing/under/roguetown/tights/black
+	pants = /obj/item/clothing/pants/tights/black
 	neck = /obj/item/clothing/neck/roguetown/psycross
 	head = /obj/item/clothing/head/roguetown/brimmed
 	r_hand = /obj/item/book/rogue/psybibble

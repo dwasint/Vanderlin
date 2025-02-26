@@ -111,7 +111,7 @@
 /turf/closed/mineral/rogue/bedrock,
 /area/rogue)
 "N" = (
-/obj/item/rogueweapon/sword/long/greatsword/zwei,
+/obj/item/weapon/sword/long/greatsword/zwei,
 /turf/open/floor/rogue/metal/barograte/open,
 /area/rogue)
 "Q" = (

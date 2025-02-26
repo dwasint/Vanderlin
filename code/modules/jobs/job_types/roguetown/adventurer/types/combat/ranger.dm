@@ -37,12 +37,12 @@
 	H.mind?.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 	H.mind?.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 	if(H.gender == MALE)
-		pants = /obj/item/clothing/under/roguetown/trou/leather
+		pants = /obj/item/clothing/pants/trou/leather
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	else
-		pants = /obj/item/clothing/under/roguetown/tights
+		pants = /obj/item/clothing/pants/tights
 		if(prob(50))
-			pants = /obj/item/clothing/under/roguetown/tights/black
+			pants = /obj/item/clothing/pants/tights/black
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	if(prob(23))
 		gloves = /obj/item/clothing/gloves/roguetown/leather
@@ -57,7 +57,7 @@
 	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 	backl = /obj/item/storage/backpack/rogue/satchel
 	beltr = /obj/item/flashlight/flare/torch/lantern
-	backpack_contents = list(/obj/item/bait = 1, /obj/item/rogueweapon/knife/hunting = 1)
+	backpack_contents = list(/obj/item/bait = 1, /obj/item/weapon/knife/hunting = 1)
 	beltl = /obj/item/ammo_holder/quiver/arrows
 	H.change_stat(STATKEY_PER, 2)
 	H.change_stat(STATKEY_END, 1)

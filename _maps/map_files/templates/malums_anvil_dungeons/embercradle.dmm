@@ -644,7 +644,7 @@
 "jW" = (
 /obj/structure/bed/rogue/sleepingbag,
 /mob/living/carbon/human/species/goblin/npc,
-/obj/item/rogueweapon/pick,
+/obj/item/weapon/pick,
 /obj/item/flashlight/flare/torch/lantern,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /turf/open/floor/rogue/twig,
@@ -656,7 +656,7 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "kf" = (
 /mob/living/carbon/human/species/skeleton/npc/peasant,
-/obj/item/rogueweapon/mace/woodclub,
+/obj/item/weapon/mace/woodclub,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
@@ -705,13 +705,13 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "kx" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/polearm/spear,
-/obj/item/rogueweapon/polearm/spear,
-/obj/item/rogueweapon/polearm/spear,
-/obj/item/rogueweapon/polearm/spear,
-/obj/item/rogueweapon/polearm/spear,
-/obj/item/rogueweapon/polearm/spear,
-/obj/item/rogueweapon/polearm/spear,
+/obj/item/weapon/polearm/spear,
+/obj/item/weapon/polearm/spear,
+/obj/item/weapon/polearm/spear,
+/obj/item/weapon/polearm/spear,
+/obj/item/weapon/polearm/spear,
+/obj/item/weapon/polearm/spear,
+/obj/item/weapon/polearm/spear,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "kB" = (
@@ -751,7 +751,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "kN" = (
-/obj/item/rogueweapon/sword/decorated,
+/obj/item/weapon/sword/decorated,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "kW" = (
@@ -867,7 +867,7 @@
 /obj/structure/bed/rogue/sleepingbag,
 /mob/living/carbon/human/species/goblin/npc,
 /obj/item/flashlight/flare/torch/lantern,
-/obj/item/rogueweapon/pick,
+/obj/item/weapon/pick,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /turf/open/floor/rogue/twig,
 /area/rogue/under/mountains/anvil/dungeon)
@@ -923,12 +923,12 @@
 "mN" = (
 /mob/living/carbon/human/species/skeleton/npc/no_equipment,
 /obj/item/clothing/cloak/apron/brown,
-/obj/item/clothing/under/roguetown/trou/leather,
+/obj/item/clothing/pants/trou/leather,
 /obj/item/clothing/suit/roguetown/shirt/undershirt,
 /obj/item/clothing/gloves/roguetown/leather,
 /obj/item/storage/belt/rogue/leather,
-/obj/item/rogueweapon/hammer/iron,
-/obj/item/rogueweapon/tongs,
+/obj/item/weapon/hammer/iron,
+/obj/item/weapon/tongs,
 /obj/item/clothing/shoes/roguetown/boots/leather,
 /obj/item/clothing/head/roguetown/softcap,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
@@ -948,7 +948,7 @@
 /obj/structure/chair/stool/rogue,
 /mob/living/carbon/human/species/skeleton/npc/peasant,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
-/obj/item/rogueweapon/polearm/spear/stone,
+/obj/item/weapon/polearm/spear/stone,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "mY" = (
@@ -988,7 +988,7 @@
 /obj/item/clothing/cloak/raincloak/mortus,
 /obj/item/clothing/shoes/roguetown/boots/leather,
 /obj/item/clothing/gloves/roguetown/fingerless,
-/obj/item/clothing/under/roguetown/tights,
+/obj/item/clothing/pants/tights,
 /obj/item/clothing/suit/roguetown/shirt/tunic/ucolored,
 /obj/item/storage/belt/rogue/leather,
 /obj/item/storage/belt/rogue/pouch/coins/poor,
@@ -1016,9 +1016,9 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "os" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/mace/goden/shillelagh,
-/obj/item/rogueweapon/mace/goden/shillelagh,
-/obj/item/rogueweapon/mace/goden/shillelagh,
+/obj/item/weapon/mace/goden/shillelagh,
+/obj/item/weapon/mace/goden/shillelagh,
+/obj/item/weapon/mace/goden/shillelagh,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "ot" = (
@@ -1033,31 +1033,31 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "ow" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/sword/scimitar/messer{
+/obj/item/weapon/sword/scimitar/messer{
 	pixel_x = -3;
 	pixel_y = 2
 	},
-/obj/item/rogueweapon/sword/scimitar/messer{
+/obj/item/weapon/sword/scimitar/messer{
 	pixel_x = -3;
 	pixel_y = 2
 	},
-/obj/item/rogueweapon/sword/scimitar/messer{
+/obj/item/weapon/sword/scimitar/messer{
 	pixel_x = -3;
 	pixel_y = 2
 	},
-/obj/item/rogueweapon/sword/scimitar/messer{
+/obj/item/weapon/sword/scimitar/messer{
 	pixel_x = -3;
 	pixel_y = 2
 	},
-/obj/item/rogueweapon/sword/scimitar/messer{
+/obj/item/weapon/sword/scimitar/messer{
 	pixel_x = -3;
 	pixel_y = 2
 	},
-/obj/item/rogueweapon/sword/scimitar/messer{
+/obj/item/weapon/sword/scimitar/messer{
 	pixel_x = -3;
 	pixel_y = 2
 	},
-/obj/item/rogueweapon/sword/scimitar/messer{
+/obj/item/weapon/sword/scimitar/messer{
 	pixel_x = -3;
 	pixel_y = 2
 	},
@@ -1065,9 +1065,9 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "oB" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/shovel,
-/obj/item/rogueweapon/shovel,
-/obj/item/rogueweapon/shovel,
+/obj/item/weapon/shovel,
+/obj/item/weapon/shovel,
+/obj/item/weapon/shovel,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "oH" = (
@@ -1253,7 +1253,7 @@
 /obj/item/clothing/cloak/raincloak/green,
 /obj/item/clothing/shoes/roguetown/boots/leather,
 /obj/item/clothing/gloves/roguetown/fingerless,
-/obj/item/clothing/under/roguetown/tights,
+/obj/item/clothing/pants/tights,
 /obj/item/clothing/suit/roguetown/shirt/tunic/purple,
 /obj/item/storage/belt/rogue/leather,
 /obj/item/storage/belt/rogue/pouch/coins/poor,
@@ -1330,7 +1330,7 @@
 /obj/item/clothing/cloak/raincloak/purple,
 /obj/item/clothing/shoes/roguetown/boots/leather,
 /obj/item/clothing/gloves/roguetown/fingerless,
-/obj/item/clothing/under/roguetown/tights,
+/obj/item/clothing/pants/tights,
 /obj/item/clothing/suit/roguetown/shirt/tunic/green,
 /obj/item/storage/belt/rogue/leather,
 /obj/item/storage/belt/rogue/pouch/coins/poor,
@@ -1362,7 +1362,7 @@
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
 	},
-/obj/item/rogueweapon/knife/cleaver,
+/obj/item/weapon/knife/cleaver,
 /obj/effect/decal/cleanable/dirt/cobweb{
 	icon_state = "cobweb2"
 	},
@@ -1390,7 +1390,7 @@
 /obj/item/clothing/cloak/raincloak/blue,
 /obj/item/clothing/shoes/roguetown/boots/leather,
 /obj/item/clothing/gloves/roguetown/fingerless,
-/obj/item/clothing/under/roguetown/tights,
+/obj/item/clothing/pants/tights,
 /obj/item/clothing/suit/roguetown/shirt/tunic/red,
 /obj/item/storage/belt/rogue/leather,
 /obj/item/storage/belt/rogue/pouch/coins/poor,
@@ -1493,18 +1493,18 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /mob/living/carbon/human/species/skeleton/npc/peasant,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
-/obj/item/rogueweapon/knife/cleaver,
+/obj/item/weapon/knife/cleaver,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "tZ" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/axe/iron,
-/obj/item/rogueweapon/axe/iron,
-/obj/item/rogueweapon/axe/iron,
-/obj/item/rogueweapon/axe/iron,
-/obj/item/rogueweapon/axe/iron,
-/obj/item/rogueweapon/axe/iron,
-/obj/item/rogueweapon/axe/iron,
+/obj/item/weapon/axe/iron,
+/obj/item/weapon/axe/iron,
+/obj/item/weapon/axe/iron,
+/obj/item/weapon/axe/iron,
+/obj/item/weapon/axe/iron,
+/obj/item/weapon/axe/iron,
+/obj/item/weapon/axe/iron,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "ud" = (
@@ -1535,7 +1535,7 @@
 	},
 /mob/living/carbon/human/species/skeleton/npc/peasant,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
-/obj/item/rogueweapon/knife/hunting,
+/obj/item/weapon/knife/hunting,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "uq" = (
@@ -1546,7 +1546,7 @@
 /obj/structure/chair/wood/rogue,
 /mob/living/carbon/human/species/skeleton/npc/peasant,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
-/obj/item/rogueweapon/knife/cleaver,
+/obj/item/weapon/knife/cleaver,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "uv" = (
@@ -1627,7 +1627,7 @@
 /obj/item/clothing/cloak/raincloak,
 /obj/item/clothing/shoes/roguetown/boots/leather,
 /obj/item/clothing/gloves/roguetown/fingerless,
-/obj/item/clothing/under/roguetown/tights,
+/obj/item/clothing/pants/tights,
 /obj/item/clothing/suit/roguetown/shirt/tunic,
 /obj/item/storage/belt/rogue/leather,
 /obj/item/storage/belt/rogue/pouch/coins/poor,
@@ -1747,7 +1747,7 @@
 /obj/item/clothing/cloak/raincloak/red,
 /obj/item/clothing/shoes/roguetown/boots/leather,
 /obj/item/clothing/gloves/roguetown/fingerless,
-/obj/item/clothing/under/roguetown/tights,
+/obj/item/clothing/pants/tights,
 /obj/item/clothing/suit/roguetown/shirt/tunic/blue,
 /obj/item/storage/belt/rogue/leather,
 /obj/item/storage/belt/rogue/pouch/coins/poor,
@@ -1776,13 +1776,13 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "xw" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/sword/iron,
-/obj/item/rogueweapon/sword/iron,
-/obj/item/rogueweapon/sword/iron,
-/obj/item/rogueweapon/sword/iron,
-/obj/item/rogueweapon/sword/iron,
-/obj/item/rogueweapon/sword/iron,
-/obj/item/rogueweapon/sword/iron,
+/obj/item/weapon/sword/iron,
+/obj/item/weapon/sword/iron,
+/obj/item/weapon/sword/iron,
+/obj/item/weapon/sword/iron,
+/obj/item/weapon/sword/iron,
+/obj/item/weapon/sword/iron,
+/obj/item/weapon/sword/iron,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
@@ -1794,9 +1794,9 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "xI" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/polearm/woodstaff/quarterstaff,
-/obj/item/rogueweapon/polearm/woodstaff/quarterstaff,
-/obj/item/rogueweapon/polearm/woodstaff/quarterstaff,
+/obj/item/weapon/polearm/woodstaff/quarterstaff,
+/obj/item/weapon/polearm/woodstaff/quarterstaff,
+/obj/item/weapon/polearm/woodstaff/quarterstaff,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "xL" = (
@@ -2049,7 +2049,7 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "BS" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/rogueweapon/pick,
+/obj/item/weapon/pick,
 /turf/open/floor/rogue/twig,
 /area/rogue/under/mountains/anvil/dungeon)
 "BX" = (
@@ -2064,7 +2064,7 @@
 /obj/structure/chair/stool/rogue,
 /mob/living/carbon/human/species/skeleton/npc/peasant,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
-/obj/item/rogueweapon/axe/iron,
+/obj/item/weapon/axe/iron,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "Ce" = (
@@ -2239,7 +2239,7 @@
 	},
 /mob/living/carbon/human/species/skeleton/npc/peasant,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
-/obj/item/rogueweapon/knife/dagger,
+/obj/item/weapon/knife/dagger,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/rogue/carpet,
 /area/rogue/under/mountains/anvil/dungeon)
@@ -2362,7 +2362,7 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "Gf" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/rogueweapon/sword,
+/obj/item/weapon/sword,
 /mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
@@ -2373,9 +2373,9 @@
 /obj/item/clothing/cloak/raincloak/furcloak/brown,
 /obj/item/clothing/shoes/roguetown/boots/leather,
 /obj/item/clothing/suit/roguetown/armor/leather/hide,
-/obj/item/clothing/under/roguetown/loincloth/brown,
-/obj/item/rogueweapon/axe/boneaxe,
-/obj/item/rogueweapon/axe/boneaxe,
+/obj/item/clothing/pants/loincloth/brown,
+/obj/item/weapon/axe/boneaxe,
+/obj/item/weapon/axe/boneaxe,
 /obj/item/clothing/wrists/roguetown/bracers/leather,
 /obj/item/clothing/mask/rogue/skullmask,
 /turf/open/floor/rogue/cobblerock,
@@ -2466,11 +2466,11 @@
 /obj/item/clothing/cloak/stabard/templar/noc,
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk,
 /obj/item/clothing/gloves/roguetown/chain,
-/obj/item/clothing/under/roguetown/chainlegs,
+/obj/item/clothing/pants/chainlegs,
 /obj/item/clothing/gloves/roguetown/chain,
 /obj/item/clothing/shoes/roguetown/boots/armor/light,
-/obj/item/rogueweapon/shield/tower/metal,
-/obj/item/rogueweapon/sword,
+/obj/item/weapon/shield/tower/metal,
+/obj/item/weapon/sword,
 /obj/item/storage/belt/rogue/leather/plaquesilver,
 /obj/item/clothing/ring/silver/noc,
 /obj/item/clothing/wrists/roguetown/nocwrappings,
@@ -2506,9 +2506,9 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "HS" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/rogueweapon/shield/tower,
-/obj/item/rogueweapon/sword/short,
-/obj/item/rogueweapon/sword/scimitar/messer,
+/obj/item/weapon/shield/tower,
+/obj/item/weapon/sword/short,
+/obj/item/weapon/sword/scimitar/messer,
 /turf/open/floor/rogue/twig,
 /area/rogue/under/mountains/anvil/dungeon)
 "HV" = (
@@ -2564,7 +2564,7 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /mob/living/carbon/human/species/skeleton/npc/peasant,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
-/obj/item/rogueweapon/mace/cudgel,
+/obj/item/weapon/mace/cudgel,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "Ir" = (
@@ -2582,7 +2582,7 @@
 /mob/living/carbon/human/species/skeleton/npc/peasant,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /obj/item/clothing/head/roguetown/helmet/leather/minershelm,
-/obj/item/rogueweapon/pick,
+/obj/item/weapon/pick,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "II" = (
@@ -2685,12 +2685,12 @@
 	},
 /mob/living/carbon/human/species/skeleton/npc/peasant,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
-/obj/item/rogueweapon/knife/hunting,
+/obj/item/weapon/knife/hunting,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "JJ" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/knife/dagger/silver,
+/obj/item/weapon/knife/dagger/silver,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "JK" = (
@@ -2733,7 +2733,7 @@
 /obj/structure/closet/crate/chest/crafted,
 /obj/item/clothing/head/roguetown/helmet/battlenun,
 /obj/item/clothing/cloak/battlenun,
-/obj/item/rogueweapon/flail/sflail,
+/obj/item/weapon/flail/sflail,
 /obj/item/handheld_bell,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
@@ -2775,12 +2775,12 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "KN" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/pick,
-/obj/item/rogueweapon/pick,
-/obj/item/rogueweapon/pick,
-/obj/item/rogueweapon/pick,
-/obj/item/rogueweapon/pick,
-/obj/item/rogueweapon/pick,
+/obj/item/weapon/pick,
+/obj/item/weapon/pick,
+/obj/item/weapon/pick,
+/obj/item/weapon/pick,
+/obj/item/weapon/pick,
+/obj/item/weapon/pick,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "KQ" = (
@@ -2820,13 +2820,13 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "LD" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/under/roguetown/trou/leather,
-/obj/item/clothing/under/roguetown/trou/leather,
-/obj/item/clothing/under/roguetown/trou/leather,
-/obj/item/clothing/under/roguetown/trou/leather,
-/obj/item/clothing/under/roguetown/trou/leather,
-/obj/item/clothing/under/roguetown/trou/leather,
-/obj/item/clothing/under/roguetown/trou/leather,
+/obj/item/clothing/pants/trou/leather,
+/obj/item/clothing/pants/trou/leather,
+/obj/item/clothing/pants/trou/leather,
+/obj/item/clothing/pants/trou/leather,
+/obj/item/clothing/pants/trou/leather,
+/obj/item/clothing/pants/trou/leather,
+/obj/item/clothing/pants/trou/leather,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
@@ -2840,7 +2840,7 @@
 /obj/structure/chair/bench/church/r,
 /mob/living/carbon/human/species/skeleton/npc/peasant,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
-/obj/item/rogueweapon/flail/peasant,
+/obj/item/weapon/flail/peasant,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "LK" = (
@@ -2917,9 +2917,9 @@
 /mob/living/carbon/human/species/skeleton/npc/no_equipment{
 	real_name = "Prince of Ruin"
 	},
-/obj/item/rogueweapon/sword/sabre/scythe,
-/obj/item/rogueweapon/sword/sabre/scythe,
-/obj/item/clothing/under/roguetown/trou/leather,
+/obj/item/weapon/sword/sabre/scythe,
+/obj/item/weapon/sword/sabre/scythe,
+/obj/item/clothing/pants/trou/leather,
 /obj/item/clothing/suit/roguetown/shirt/robe/black,
 /obj/item/clothing/gloves/roguetown/leather/black,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
@@ -2932,7 +2932,7 @@
 /obj/structure/bed/rogue/sleepingbag,
 /mob/living/carbon/human/species/goblin/npc,
 /obj/item/flashlight/flare/torch/lantern,
-/obj/item/rogueweapon/pick,
+/obj/item/weapon/pick,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
@@ -2973,9 +2973,9 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "NA" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/mace/woodclub/train_sword,
-/obj/item/rogueweapon/mace/woodclub/train_sword,
-/obj/item/rogueweapon/mace/woodclub/train_sword,
+/obj/item/weapon/mace/woodclub/train_sword,
+/obj/item/weapon/mace/woodclub/train_sword,
+/obj/item/weapon/mace/woodclub/train_sword,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "NH" = (
@@ -3031,8 +3031,8 @@
 /obj/item/clothing/mask/rogue/facemask/goldmask,
 /obj/item/clothing/wrists/roguetown/bracers/hoplite,
 /obj/item/clothing/neck/roguetown/gorget/hoplite,
-/obj/item/rogueweapon/polearm/spear/hoplite/winged,
-/obj/item/rogueweapon/shield/tower/hoplite,
+/obj/item/weapon/polearm/spear/hoplite/winged,
+/obj/item/weapon/shield/tower/hoplite,
 /obj/item/clothing/cloak/cape,
 /obj/item/clothing/suit/roguetown/armor/cuirass,
 /obj/item/clothing/shoes/roguetown/boots/armor/light,
@@ -3072,9 +3072,9 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "OL" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/pick,
-/obj/item/rogueweapon/pick,
-/obj/item/rogueweapon/pick,
+/obj/item/weapon/pick,
+/obj/item/weapon/pick,
+/obj/item/weapon/pick,
 /turf/open/floor/rogue/twig,
 /area/rogue/under/mountains/anvil/dungeon)
 "ON" = (
@@ -3197,7 +3197,7 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Qn" = (
 /mob/living/carbon/human/species/skeleton/npc/peasant,
-/obj/item/rogueweapon/pick,
+/obj/item/weapon/pick,
 /obj/item/clothing/head/roguetown/helmet/leather/minershelm,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /turf/open/floor/rogue/naturalstone,
@@ -3231,14 +3231,14 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "QR" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/rogueweapon/knife/villager,
+/obj/item/weapon/knife/villager,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "QS" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /mob/living/carbon/human/species/skeleton/npc/peasant,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
-/obj/item/rogueweapon/knife/cleaver,
+/obj/item/weapon/knife/cleaver,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "QY" = (
@@ -3260,7 +3260,7 @@
 /obj/structure/chair/wood/rogue,
 /mob/living/carbon/human/species/skeleton/npc/warrior,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
-/obj/item/rogueweapon/knife/cleaver/combat,
+/obj/item/weapon/knife/cleaver/combat,
 /turf/open/floor/rogue/carpet,
 /area/rogue/under/mountains/anvil/dungeon)
 "Rs" = (
@@ -3337,7 +3337,7 @@
 /obj/structure/chair/wood/rogue,
 /mob/living/carbon/human/species/skeleton/npc/peasant,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
-/obj/item/rogueweapon/knife/dagger/steel,
+/obj/item/weapon/knife/dagger/steel,
 /turf/open/floor/rogue/carpet,
 /area/rogue/under/mountains/anvil/dungeon)
 "SP" = (
@@ -3519,7 +3519,7 @@
 "US" = (
 /mob/living/carbon/human/species/skeleton/npc/peasant,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
-/obj/item/rogueweapon/knife/cleaver/combat,
+/obj/item/weapon/knife/cleaver/combat,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "UT" = (
@@ -3538,7 +3538,7 @@
 /obj/structure/chair/wood/rogue,
 /mob/living/carbon/human/species/skeleton/npc/warrior,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
-/obj/item/rogueweapon/knife/cleaver,
+/obj/item/weapon/knife/cleaver,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/rogue/carpet,
 /area/rogue/under/mountains/anvil/dungeon)
@@ -3605,13 +3605,13 @@
 /obj/effect/decal/cleanable/dirt/cobweb{
 	icon_state = "cobweb2"
 	},
-/obj/item/rogueweapon/mace/cudgel,
-/obj/item/rogueweapon/mace/cudgel,
-/obj/item/rogueweapon/mace/cudgel,
-/obj/item/rogueweapon/mace/cudgel,
-/obj/item/rogueweapon/mace/cudgel,
-/obj/item/rogueweapon/mace/cudgel,
-/obj/item/rogueweapon/mace/cudgel,
+/obj/item/weapon/mace/cudgel,
+/obj/item/weapon/mace/cudgel,
+/obj/item/weapon/mace/cudgel,
+/obj/item/weapon/mace/cudgel,
+/obj/item/weapon/mace/cudgel,
+/obj/item/weapon/mace/cudgel,
+/obj/item/weapon/mace/cudgel,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "VY" = (
@@ -3654,7 +3654,7 @@
 	},
 /mob/living/carbon/human/species/skeleton/npc/peasant,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
-/obj/item/rogueweapon/knife/cleaver,
+/obj/item/weapon/knife/cleaver,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "Wz" = (
@@ -3727,12 +3727,12 @@
 /obj/item/clothing/head/roguetown/roguehood/nochood,
 /obj/item/clothing/gloves/roguetown/leather/black,
 /obj/item/clothing/shoes/roguetown/boots/leather,
-/obj/item/clothing/under/roguetown/trou/leather,
+/obj/item/clothing/pants/trou/leather,
 /obj/item/clothing/suit/roguetown/shirt/undershirt/uncolored,
 /obj/item/storage/belt/rogue/leather/cloth,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /obj/item/clothing/wrists/roguetown/nocwrappings,
-/obj/item/rogueweapon/knife/dagger/steel/dirk,
+/obj/item/weapon/knife/dagger/steel/dirk,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "XB" = (
@@ -3806,7 +3806,7 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "Yi" = (
 /obj/structure/fluff/walldeco/skullspike,
-/obj/item/rogueweapon/pick,
+/obj/item/weapon/pick,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "Yq" = (
@@ -3850,9 +3850,9 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "YJ" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/mace/woodclub,
-/obj/item/rogueweapon/mace/woodclub,
-/obj/item/rogueweapon/mace/woodclub,
+/obj/item/weapon/mace/woodclub,
+/obj/item/weapon/mace/woodclub,
+/obj/item/weapon/mace/woodclub,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "YP" = (
@@ -3867,7 +3867,7 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "YW" = (
 /obj/structure/closet/crate/chest/neu,
-/obj/item/rogueweapon/sword/sabre/stalker,
+/obj/item/weapon/sword/sabre/stalker,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "YX" = (
@@ -3912,12 +3912,12 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "ZK" = (
 /obj/structure/rack/rogue,
-/obj/item/rogueweapon/shield/wood,
-/obj/item/rogueweapon/shield/wood,
-/obj/item/rogueweapon/shield/wood,
-/obj/item/rogueweapon/shield/wood,
-/obj/item/rogueweapon/shield/wood,
-/obj/item/rogueweapon/shield/wood,
+/obj/item/weapon/shield/wood,
+/obj/item/weapon/shield/wood,
+/obj/item/weapon/shield/wood,
+/obj/item/weapon/shield/wood,
+/obj/item/weapon/shield/wood,
+/obj/item/weapon/shield/wood,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)

@@ -1,7 +1,7 @@
 /* WHIPS
 ==========================================================*/
 
-/obj/item/rogueweapon/whip
+/obj/item/weapon/whip
 	force = DAMAGE_WHIP
 	possible_item_intents = list(/datum/intent/whip/crack, /datum/intent/whip/lash)
 	name = "whip"
@@ -26,7 +26,7 @@
 	grid_width = 32
 	grid_height = 64
 
-/obj/item/rogueweapon/whip/getonmobprop(tag)
+/obj/item/weapon/whip/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)
@@ -70,7 +70,7 @@
 	item_damage_type = "slash"
 
 //................ Repenta En ............... //
-/obj/item/rogueweapon/whip/antique
+/obj/item/weapon/whip/antique
 	force = DAMAGE_WHIP+4
 	name = "Repenta En"
 	desc = "An extremely well maintained whip, with a polished steel tip and gilded handle"
@@ -81,7 +81,7 @@
 	sellprice = 50
 
 //................ Lashkiss Whip ............... //
-/obj/item/rogueweapon/whip/spiderwhip
+/obj/item/weapon/whip/spiderwhip
 	force = DAMAGE_WHIP+3
 	name = "lashkiss whip"
 	desc = "A dark whip with segmented, ashen spines for a base. Claimed to be hewn from dendrified prisoners of terror."

@@ -33,7 +33,7 @@
 		H.mind?.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 	if(H.gender == MALE)
-		pants = /obj/item/clothing/under/roguetown/tights/random
+		pants = /obj/item/clothing/pants/tights/random
 		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 		shirt = null
 		belt = /obj/item/storage/belt/rogue/leather/rope

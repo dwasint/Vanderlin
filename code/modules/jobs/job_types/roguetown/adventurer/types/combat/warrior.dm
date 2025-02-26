@@ -43,9 +43,9 @@
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	belt = /obj/item/storage/belt/rogue/leather
-	pants = /obj/item/clothing/under/roguetown/tights/black
+	pants = /obj/item/clothing/pants/tights/black
 	backl = /obj/item/storage/backpack/rogue/satchel
-	backr = /obj/item/rogueweapon/shield/wood
+	backr = /obj/item/weapon/shield/wood
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
 	var/armortype = pickweight(list("Ironmail" = 6, "Ironplate" = 3, "Ironplate&Legs" = 1)) // At best they can get an iron breastplate over mail and iron chainleggings
 	var/weapontype = pickweight(list("Axe" = 2, "Mace" = 2, "Messer" = 2, "Sword" = 3, "Flail" = 1)) // Rolls for various weapons, all of these are iron tier
@@ -59,22 +59,22 @@
 		if("Ironplate&Legs") // Big roller gets an iron cuirass over iron mail AND iron chain leggings. Lucky them
 			armor = /obj/item/clothing/suit/roguetown/armor/cuirass/iron
 			shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
-			pants = /obj/item/clothing/under/roguetown/chainlegs/iron
+			pants = /obj/item/clothing/pants/chainlegs/iron
 	switch(weapontype) // We get +1 weapon skill in either axes/maces, swords, or flails depending on our starting weapon
 		if("Axe")
-			beltl = /obj/item/rogueweapon/axe/iron
+			beltl = /obj/item/weapon/axe/iron
 			H.mind?.adjust_skillrank(/datum/skill/combat/axesmaces, 1, TRUE)
 		if("Mace")
-			beltl = /obj/item/rogueweapon/mace
+			beltl = /obj/item/weapon/mace
 			H.mind?.adjust_skillrank(/datum/skill/combat/axesmaces, 1, TRUE)
 		if("Messer")
-			beltl = /obj/item/rogueweapon/sword/scimitar/messer
+			beltl = /obj/item/weapon/sword/scimitar/messer
 			H.mind?.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 		if("Sword")
-			beltl = /obj/item/rogueweapon/sword/iron
+			beltl = /obj/item/weapon/sword/iron
 			H.mind?.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 		if("Flail") // Big roller gets one of the best weapons to pair with a shield, even if it is only iron tier. Lucky bastard
-			beltl = /obj/item/rogueweapon/flail
+			beltl = /obj/item/weapon/flail
 			H.mind?.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
 
 	if(prob(66))

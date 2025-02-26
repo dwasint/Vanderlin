@@ -15,13 +15,13 @@
 /datum/outfit/job/roguetown/adventurer/minermaster/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/helmet/leather/minershelm
-	pants = /obj/item/clothing/under/roguetown/trou
+	pants = /obj/item/clothing/pants/trou
 	armor = /obj/item/clothing/suit/roguetown/armor/gambeson/light/striped
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	belt = /obj/item/storage/belt/rogue/leather
 	neck = /obj/item/storage/belt/rogue/pouch/coins/mid
-	beltl = /obj/item/rogueweapon/pick
+	beltl = /obj/item/weapon/pick
 	backl = /obj/item/storage/backpack/rogue/backpack
 	if(H.age == AGE_OLD)
 		H.change_stat(STATKEY_END, -1)

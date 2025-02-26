@@ -19,9 +19,9 @@
 	crossfire = FALSE
 
 /obj/machinery/light/rogue/smelter/attackby(obj/item/W, mob/living/user, params)
-	if(istype(W, /obj/item/rogueweapon/tongs))
+	if(istype(W, /obj/item/weapon/tongs))
 		if(!actively_smelting) // Prevents an exp gain exploit. - Foxtrot
-			var/obj/item/rogueweapon/tongs/T = W
+			var/obj/item/weapon/tongs/T = W
 			if(ore.len && !T.held_item)
 				var/obj/item/I = ore[ore.len]
 				ore -= I
@@ -39,8 +39,8 @@
 					var/tyme = world.time
 					T.hott = tyme
 					T.proxy_heat(150, max_crucible_temperature)
-					addtimer(CALLBACK(T, TYPE_PROC_REF(/obj/item/rogueweapon/tongs, make_unhot), tyme), 50)
-					if(istype(T, /obj/item/rogueweapon/tongs/stone))
+					addtimer(CALLBACK(T, TYPE_PROC_REF(/obj/item/weapon/tongs, make_unhot), tyme), 50)
+					if(istype(T, /obj/item/weapon/tongs/stone))
 						T.take_damage(1, BRUTE, "blunt")
 				T.update_icon()
 				return

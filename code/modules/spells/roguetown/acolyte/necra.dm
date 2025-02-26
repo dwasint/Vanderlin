@@ -16,8 +16,8 @@
 
 /obj/effect/proc_holder/spell/targeted/burialrite/cast(list/targets,mob/user = usr)
 	. = ..()
-	if(user.is_holding_item_of_type(/obj/item/rogueweapon/knife/dagger/steel/profane)) // If you are holding an assassin's cursed dagger, break it and free the souls contained within, sending them into the lukewarm arms of Necra.
-		var/obj/item/rogueweapon/knife/dagger/steel/profane/held_profane = user.is_holding_item_of_type(/obj/item/rogueweapon/knife/dagger/steel/profane)
+	if(user.is_holding_item_of_type(/obj/item/weapon/knife/dagger/steel/profane)) // If you are holding an assassin's cursed dagger, break it and free the souls contained within, sending them into the lukewarm arms of Necra.
+		var/obj/item/weapon/knife/dagger/steel/profane/held_profane = user.is_holding_item_of_type(/obj/item/weapon/knife/dagger/steel/profane)
 		var/saved_souls = held_profane.release_profane_souls(user) // Releases the trapped souls and breaks the dagger. Gets the number of souls saved by destroying the dagger.
 		user.adjust_triumphs(saved_souls) // Every soul saved earns you a big fat triumph.
 	var/target_turf = get_step(user, user.dir)

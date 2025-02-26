@@ -20,8 +20,8 @@
 	shirt = /obj/item/clothing/suit/roguetown/armor/leather/vest
 	armor = /obj/item/clothing/suit/roguetown/shirt/robe/dendor
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-	beltl = /obj/item/rogueweapon/knife/stone
-	backl = /obj/item/rogueweapon/mace/goden/shillelagh
+	beltl = /obj/item/weapon/knife/stone
+	backl = /obj/item/weapon/mace/goden/shillelagh
 
 	H.change_stat(STATKEY_STR, 1)
 	H.change_stat(STATKEY_END, 1)
@@ -98,7 +98,7 @@
 
 /datum/crafting_recipe/dendor/shillelagh
 	name = "Shillelagh (unique)"
-	result = /obj/item/rogueweapon/mace/goden/shillelagh
+	result = /obj/item/weapon/mace/goden/shillelagh
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 				/obj/item/ash = 1,
 				/obj/item/reagent_containers/food/snacks/fat =1 )

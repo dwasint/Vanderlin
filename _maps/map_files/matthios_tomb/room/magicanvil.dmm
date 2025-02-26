@@ -16,9 +16,9 @@
 "f" = (
 /mob/living/carbon/human/species/goblin/hell,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
-/obj/item/clothing/under/roguetown/trou/leather/advanced,
+/obj/item/clothing/pants/trou/leather/advanced,
 /obj/item/clothing/wrists/roguetown/bracers/leather,
-/obj/item/rogueweapon/pick/paxe,
+/obj/item/weapon/pick/paxe,
 /turf/open/floor/rogue/cobble,
 /area/rogue)
 "g" = (
@@ -70,9 +70,9 @@
 "w" = (
 /mob/living/carbon/human/species/goblin/hell,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
-/obj/item/clothing/under/roguetown/trou/leather/advanced,
+/obj/item/clothing/pants/trou/leather/advanced,
 /obj/item/clothing/wrists/roguetown/bracers/leather,
-/obj/item/rogueweapon/axe/iron,
+/obj/item/weapon/axe/iron,
 /turf/open/floor/rogue/cobble,
 /area/rogue)
 "x" = (
@@ -103,7 +103,7 @@
 	dir = 4
 	},
 /obj/item/clothing/suit/roguetown/armor/leather/splint,
-/obj/item/clothing/under/roguetown/trou/leather/advanced,
+/obj/item/clothing/pants/trou/leather/advanced,
 /turf/open/floor/rogue/cobble,
 /area/rogue)
 "G" = (
@@ -138,7 +138,7 @@
 "M" = (
 /obj/machinery/anvil,
 /obj/item/riddleofsteel,
-/obj/item/rogueweapon/hammer/steel{
+/obj/item/weapon/hammer/steel{
 	pixel_x = -6;
 	pixel_y = 5
 	},

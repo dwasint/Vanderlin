@@ -129,7 +129,7 @@
 "tH" = (
 /obj/structure/table/wood,
 /obj/structure/fluff/millstone,
-/obj/item/rogueweapon/knife/dagger,
+/obj/item/weapon/knife/dagger,
 /turf/open/floor/rogue/dirt,
 /area/rogue)
 "uB" = (
@@ -317,7 +317,7 @@
 /turf/open/floor/rogue/grass/cold,
 /area/rogue)
 "Um" = (
-/obj/item/rogueweapon/mace/woodclub,
+/obj/item/weapon/mace/woodclub,
 /turf/open/floor/rogue/grass/cold,
 /area/rogue)
 "Uu" = (
@@ -382,7 +382,7 @@
 	TOTALCON = 20;
 	name = "level 1 goblin"
 	},
-/obj/item/rogueweapon/polearm/spear/billhook,
+/obj/item/weapon/polearm/spear/billhook,
 /obj/item/clothing/head/roguetown/crown/circlet/sleepless,
 /obj/effect/spawner/roguemap/loot/coin/absurd,
 /obj/effect/spawner/roguemap/loot/potion_vitals,

@@ -53,9 +53,9 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	head = /obj/item/clothing/head/roguetown/crown/serpcrown
 	backr = /obj/item/storage/backpack/rogue/satchel
 	belt = /obj/item/storage/belt/rogue/leather/plaquegold
-	backpack_contents = list(/obj/item/rogueweapon/knife/dagger/steel/special = 1)
+	backpack_contents = list(/obj/item/weapon/knife/dagger/steel/special = 1)
 	id = /obj/item/clothing/ring/active/nomag
-	l_hand = /obj/item/rogueweapon/lordscepter
+	l_hand = /obj/item/weapon/lordscepter
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)
@@ -78,7 +78,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 		H.change_stat(STATKEY_PER, 2)
 		H.change_stat(STATKEY_LCK, 5)
 	if(H.gender == MALE)
-		pants = /obj/item/clothing/under/roguetown/tights/black
+		pants = /obj/item/clothing/pants/tights/black
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 		armor = /obj/item/clothing/suit/roguetown/armor/gambeson/arming
 		shoes = /obj/item/clothing/shoes/roguetown/boots
@@ -87,7 +87,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 			if(H.dna.species.id == "human")
 				H.dna.species.soundpack_m = new /datum/voicepack/male/evil()
 	else
-		pants = /obj/item/clothing/under/roguetown/tights/random
+		pants = /obj/item/clothing/pants/tights/random
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/royal
 		shoes = /obj/item/clothing/shoes/roguetown/shortboots
 		cloak = /obj/item/clothing/cloak/lordcloak/ladycloak

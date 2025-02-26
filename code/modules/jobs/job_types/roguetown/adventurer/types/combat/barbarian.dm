@@ -52,13 +52,13 @@
 			head = /obj/item/clothing/head/roguetown/helmet/horned
 	switch(weapontype)
 		if("Sword")
-			beltr = /obj/item/rogueweapon/sword/iron
+			beltr = /obj/item/weapon/sword/iron
 			H.mind?.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 		if("Club")
-			beltr = /obj/item/rogueweapon/mace/woodclub
+			beltr = /obj/item/weapon/mace/woodclub
 			H.mind?.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)
 		if("Axe")
-			beltr = /obj/item/rogueweapon/axe/iron
+			beltr = /obj/item/weapon/axe/iron
 			H.mind?.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC)

@@ -31,13 +31,13 @@
 	neck = /obj/item/clothing/neck/roguetown/coif
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/splint
 	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/black
-	pants = /obj/item/clothing/under/roguetown/loincloth/black
+	pants = /obj/item/clothing/pants/loincloth/black
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	wrists = /obj/item/rope/chain
 	belt = /obj/item/storage/belt/rogue/leather
-	beltl = /obj/item/rogueweapon/mace/spiked // He gets a random mace.
+	beltl = /obj/item/weapon/mace/spiked // He gets a random mace.
 	beltr = /obj/item/storage/keyring/guard
-	backpack_contents = list(/obj/item/rogueweapon/knife/dagger)
+	backpack_contents = list(/obj/item/weapon/knife/dagger)
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE) // Main weapon
 		H.mind?.adjust_skillrank(/datum/skill/combat/whipsflails, 2, TRUE) // He has lost his trusty whip a long time ago

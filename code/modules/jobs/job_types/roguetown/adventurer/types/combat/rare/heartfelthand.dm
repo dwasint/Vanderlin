@@ -15,12 +15,12 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	belt = /obj/item/storage/belt/rogue/leather/black
 	shoes = /obj/item/clothing/shoes/roguetown/nobleboot
-	pants = /obj/item/clothing/under/roguetown/tights/black
+	pants = /obj/item/clothing/pants/tights/black
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	armor = /obj/item/clothing/suit/roguetown/armor/medium/surcoat/heartfelt
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
 	gloves = /obj/item/clothing/gloves/roguetown/leather/black
-	beltl = /obj/item/rogueweapon/sword/decorated
+	beltl = /obj/item/weapon/sword/decorated
 	beltr = /obj/item/scomstone
 	backr = /obj/item/storage/backpack/rogue/satchel/heartfelt
 	mask = /obj/item/clothing/mask/rogue/spectacles/golden

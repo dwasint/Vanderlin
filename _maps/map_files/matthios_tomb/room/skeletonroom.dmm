@@ -118,7 +118,7 @@
 	pixel_x = 23;
 	pixel_y = 6
 	},
-/obj/item/rogueweapon/sword/decorated{
+/obj/item/weapon/sword/decorated{
 	name = "A Lords Blade";
 	desc = "A long dead kings Blade, Forgotten to time yet master in work."
 	},
@@ -144,7 +144,7 @@
 /obj/item/reagent_containers/food/snacks/rotten/breadslice{
 	pixel_x = 19
 	},
-/obj/item/rogueweapon/knife/cleaver{
+/obj/item/weapon/knife/cleaver{
 	pixel_x = -2;
 	pixel_y = -8
 	},

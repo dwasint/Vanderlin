@@ -57,15 +57,15 @@
 	neck = /obj/item/clothing/neck/roguetown/bevor
 	armor = /obj/item/clothing/suit/roguetown/armor/plate
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
-	pants = /obj/item/clothing/under/roguetown/chainlegs
+	pants = /obj/item/clothing/pants/chainlegs
 	shoes = /obj/item/clothing/shoes/roguetown/boots/armor
-	beltl = /obj/item/rogueweapon/sword/sabre
+	beltl = /obj/item/weapon/sword/sabre
 	beltr = /obj/item/storage/keyring/veteran
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	cloak = /obj/item/clothing/cloak/half/vet
 	belt = /obj/item/storage/belt/rogue/leather/black
 	H.cmode_music = 'sound/music/cmode/adventurer/CombatWarrior.ogg'
-	backpack_contents = list(/obj/item/rogueweapon/knife/dagger/steel/special = 1)
+	backpack_contents = list(/obj/item/weapon/knife/dagger/steel/special = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/axesmaces, 5, TRUE)
@@ -113,19 +113,19 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/plate // Meant to be better than man-at-arms, but worse than knight. No heavy armor!! This is a cuirass, not half-plate.
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
 	head = /obj/item/clothing/head/roguetown/helmet/sallet
-	pants = /obj/item/clothing/under/roguetown/chainlegs
+	pants = /obj/item/clothing/pants/chainlegs
 	gloves = /obj/item/clothing/gloves/roguetown/plate
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	shoes = /obj/item/clothing/shoes/roguetown/boots/armor
-	beltl = /obj/item/rogueweapon/sword
+	beltl = /obj/item/weapon/sword
 	beltr = /obj/item/storage/keyring/veteran
 	backr = /obj/item/storage/backpack/rogue/satchel/black
-	backl = /obj/item/rogueweapon/shield/tower/metal
-	r_hand = /obj/item/rogueweapon/polearm/spear/billhook
+	backl = /obj/item/weapon/shield/tower/metal
+	r_hand = /obj/item/weapon/polearm/spear/billhook
 	belt = /obj/item/storage/belt/rogue/leather/black
 	cloak = /obj/item/clothing/cloak/half/vet
 	H.cmode_music = 'sound/music/cmode/garrison/CombatGarrison.ogg'
-	backpack_contents = list(/obj/item/rogueweapon/knife/dagger/steel/special = 1, /obj/item/rope/chain = 1)
+	backpack_contents = list(/obj/item/weapon/knife/dagger/steel/special = 1, /obj/item/rope/chain = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/axesmaces, 4, TRUE)
@@ -171,7 +171,7 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/	////Former knights should have knightly armour.
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/decorated/knight
-	pants = /obj/item/clothing/under/roguetown/chainlegs
+	pants = /obj/item/clothing/pants/chainlegs
 	gloves = /obj/item/clothing/gloves/roguetown/plate
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	shoes = /obj/item/clothing/shoes/roguetown/boots/armor
@@ -180,7 +180,7 @@
 	belt = /obj/item/storage/belt/rogue/leather/black
 	cloak = /obj/item/clothing/cloak/half/vet
 	H.cmode_music = 'sound/music/cmode/nobility/CombatDungeoneer.ogg'
-	backpack_contents = list(/obj/item/rogueweapon/knife/dagger/steel/special = 1)
+	backpack_contents = list(/obj/item/weapon/knife/dagger/steel/special = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE)
@@ -223,18 +223,18 @@
 	H.set_blindness(0)
 	switch(weapon_choice)
 		if("Sword + Recurve Bow")
-			r_hand = /obj/item/rogueweapon/sword/long
+			r_hand = /obj/item/weapon/sword/long
 			beltl = /obj/item/ammo_holder/quiver/arrows
 			backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
 
 		if("Axe + Crossbow")
-			r_hand = /obj/item/rogueweapon/axe/steel
+			r_hand = /obj/item/weapon/axe/steel
 			backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 			beltl = /obj/item/ammo_holder/quiver/bolts
 
 		if ("Spear + Shield")
-			r_hand = /obj/item/rogueweapon/polearm/spear
-			backl = /obj/item/rogueweapon/shield/tower/metal
+			r_hand = /obj/item/weapon/polearm/spear
+			backl = /obj/item/weapon/shield/tower/metal
 
 /datum/advclass/veteran/merc
 	name = "Retired Mercenary"
@@ -251,16 +251,16 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/grenzelhoft // You do NOT get the BLACKSTEEL CUIRASS because yours BROKE & I hate you. Go on a personal quest to replace it or something.
 	head = /obj/item/clothing/head/roguetown/helmet/skullcap/grenzelhoft
 	armor = /obj/item/clothing/suit/roguetown/armor/cuirass/iron
-	pants = /obj/item/clothing/under/roguetown/grenzelpants
+	pants = /obj/item/clothing/pants/grenzelpants
 	shoes = /obj/item/clothing/shoes/roguetown/grenzelhoft
 	gloves = /obj/item/clothing/gloves/roguetown/angle/grenzel
-	beltl = /obj/item/rogueweapon/sword/short
+	beltl = /obj/item/weapon/sword/short
 	beltr = /obj/item/storage/keyring/veteran
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	belt = /obj/item/storage/belt/rogue/leather/black
 	cloak = /obj/item/clothing/cloak/half/vet
 	H.cmode_music = 'sound/music/cmode/adventurer/CombatOutlander.ogg'
-	backpack_contents = list(/obj/item/rogueweapon/knife/dagger/steel/special = 1)
+	backpack_contents = list(/obj/item/weapon/knife/dagger/steel/special = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/axesmaces, 4, TRUE)
@@ -298,12 +298,12 @@
 	H.set_blindness(0)
 	switch(weapon_choice)
 		if("Zweihander")
-			r_hand = /obj/item/rogueweapon/sword/long/greatsword/zwei
+			r_hand = /obj/item/weapon/sword/long/greatsword/zwei
 			H.mind.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 			H.change_stat(STATKEY_STR, 1) // needs minimum strength to actually use the fucking sword
 		if("Halberd")
-			r_hand = /obj/item/rogueweapon/polearm/halberd
+			r_hand = /obj/item/weapon/polearm/halberd
 			H.mind.adjust_skillrank(/datum/skill/combat/axesmaces, 1, TRUE) // SO, fun fact. The description of the grenzel halbardier says they specialize in axes, but they get no axe skill. Maybe this guy is where that rumor came from.
 			H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 
@@ -321,7 +321,7 @@
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
-	pants = /obj/item/clothing/under/roguetown/trou/leather
+	pants = /obj/item/clothing/pants/trou/leather
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
@@ -332,7 +332,7 @@
 	belt = /obj/item/storage/belt/rogue/leather/black
 	cloak = /obj/item/clothing/cloak/half/vet
 	H.cmode_music = 'sound/music/cmode/adventurer/CombatWarrior.ogg'
-	backpack_contents = list(/obj/item/rogueweapon/knife/dagger/steel/special = 1, /obj/item/storage/keyring/veteran = 1)
+	backpack_contents = list(/obj/item/weapon/knife/dagger/steel/special = 1, /obj/item/storage/keyring/veteran = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE)
@@ -380,17 +380,17 @@
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
-	pants = /obj/item/clothing/under/roguetown/tights/black
+	pants = /obj/item/clothing/pants/tights/black
 	gloves = /obj/item/clothing/gloves/roguetown/fingerless
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	shoes = /obj/item/clothing/shoes/roguetown/boots
-	beltl = /obj/item/rogueweapon/whip
+	beltl = /obj/item/weapon/whip
 	beltr = /obj/item/flashlight/flare/torch/lantern
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	belt = /obj/item/storage/belt/rogue/leather/knifebelt/iron
 	cloak = /obj/item/clothing/cloak/raincloak/mortus
 	H.cmode_music = 'sound/music/cmode/adventurer/CombatOutlander3.ogg'
-	backpack_contents = list(/obj/item/rogueweapon/knife/dagger/silver = 1, /obj/item/storage/keyring/veteran = 1, /obj/item/reagent_containers/glass/bottle/rogue/poison = 1)
+	backpack_contents = list(/obj/item/weapon/knife/dagger/silver = 1, /obj/item/storage/keyring/veteran = 1, /obj/item/reagent_containers/glass/bottle/rogue/poison = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE)

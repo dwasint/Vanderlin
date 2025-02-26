@@ -55,13 +55,13 @@
 			H.mind?.adjust_skillrank(/datum/skill/misc/music, 1, TRUE) //Have to know to "PLAY" the part... Eh? Eh?
 			head = /obj/item/clothing/head/roguetown/bardhat
 			shoes = /obj/item/clothing/shoes/roguetown/boots
-			pants = /obj/item/clothing/under/roguetown/tights/random
+			pants = /obj/item/clothing/pants/tights/random
 			shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
 			belt = /obj/item/storage/belt/rogue/leather/assassin
 			armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
 			cloak = /obj/item/clothing/cloak/raincloak/red
 			backl = /obj/item/storage/backpack/rogue/satchel
-			beltr = /obj/item/rogueweapon/knife/dagger/steel/special
+			beltr = /obj/item/weapon/knife/dagger/steel/special
 			beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 			backpack_contents = list(/obj/item/flint)
 			if(H.dna?.species)
@@ -79,24 +79,24 @@
 			if(H.gender == FEMALE)
 				armor = /obj/item/clothing/suit/roguetown/shirt/rags
 			else
-				pants = /obj/item/clothing/under/roguetown/tights/vagrant
+				pants = /obj/item/clothing/pants/tights/vagrant
 				shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
 		if("Fisher")
 			H.mind?.adjust_skillrank(/datum/skill/labor/fishing, 1, TRUE) //Have to know to play the part.
 			if(H.gender == MALE)
-				pants = /obj/item/clothing/under/roguetown/tights/random
+				pants = /obj/item/clothing/pants/tights/random
 				shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
 				shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 				neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 				head = /obj/item/clothing/head/roguetown/fisherhat
-				mouth = /obj/item/rogueweapon/knife/hunting
+				mouth = /obj/item/weapon/knife/hunting
 				armor = /obj/item/clothing/suit/roguetown/armor/gambeson/light/striped
 				backl = /obj/item/storage/backpack/rogue/satchel
 				belt = /obj/item/storage/belt/rogue/leather/assassin
 				backr = /obj/item/fishingrod
 				beltr = /obj/item/cooking/pan
 				beltl = /obj/item/flint
-				backpack_contents = list(/obj/item/rogueweapon/knife/hunting = 1, /obj/item/natural/worms = 1, /obj/item/rogueweapon/shovel/small = 1)
+				backpack_contents = list(/obj/item/weapon/knife/hunting = 1, /obj/item/natural/worms = 1, /obj/item/weapon/shovel/small = 1)
 			else
 				shirt = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 				armor = /obj/item/clothing/suit/roguetown/armor/gambeson/light/striped
@@ -108,11 +108,11 @@
 				belt = /obj/item/storage/belt/rogue/leather/assassin
 				beltr = /obj/item/cooking/pan
 				beltl = /obj/item/flint
-				backpack_contents = list(/obj/item/rogueweapon/knife/hunting = 1, /obj/item/natural/worms = 1, /obj/item/rogueweapon/shovel/small = 1)
+				backpack_contents = list(/obj/item/weapon/knife/hunting = 1, /obj/item/natural/worms = 1, /obj/item/weapon/shovel/small = 1)
 		if("Hunter")
 			H.mind?.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE) //The assassin trades their crossbow abilities to match their disguise.
 			H.mind?.adjust_skillrank(/datum/skill/combat/crossbows, -2, TRUE)
-			pants = /obj/item/clothing/under/roguetown/tights/random
+			pants = /obj/item/clothing/pants/tights/random
 			shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
 			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
@@ -122,23 +122,23 @@
 			belt = /obj/item/storage/belt/rogue/leather/assassin
 			beltr = /obj/item/ammo_holder/quiver/arrows
 			beltl = /obj/item/flashlight/flare/torch/lantern
-			backpack_contents = list(/obj/item/flint = 1, /obj/item/bait = 1, /obj/item/rogueweapon/knife/hunting = 1)
+			backpack_contents = list(/obj/item/flint = 1, /obj/item/bait = 1, /obj/item/weapon/knife/hunting = 1)
 			gloves = /obj/item/clothing/gloves/roguetown/leather
 		if("Miner")
 			H.mind?.adjust_skillrank(/datum/skill/labor/mining, 1, TRUE)
 			H.mind?.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE) //Use the pickaxe...
 			H.mind?.adjust_skillrank(/datum/skill/combat/swords, -2, TRUE)
 			head = /obj/item/clothing/head/roguetown/armingcap
-			pants = /obj/item/clothing/under/roguetown/trou
+			pants = /obj/item/clothing/pants/trou
 			armor = /obj/item/clothing/suit/roguetown/armor/gambeson/light/striped
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 			belt = /obj/item/storage/belt/rogue/leather/assassin
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
-			beltl = /obj/item/rogueweapon/pick
-			backr = /obj/item/rogueweapon/shovel
+			beltl = /obj/item/weapon/pick
+			backr = /obj/item/weapon/shovel
 			backl = /obj/item/storage/backpack/rogue/backpack
-			backpack_contents = list(/obj/item/flint = 1, /obj/item/rogueweapon/knife/hunting = 1)
+			backpack_contents = list(/obj/item/flint = 1, /obj/item/weapon/knife/hunting = 1)
 		if("Noble")
 			var/prev_real_name = H.real_name
 			var/prev_name = H.name
@@ -155,12 +155,12 @@
 			id = /obj/item/clothing/ring/silver
 			if(H.gender == MALE)
 				H.mind?.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE) //The male noble's sword is less useful than the female noble's bow, so no downside.
-				pants = /obj/item/clothing/under/roguetown/tights/black
+				pants = /obj/item/clothing/pants/tights/black
 				shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/random
 				cloak = /obj/item/clothing/cloak/raincloak/furcloak
 				head = /obj/item/clothing/head/roguetown/fancyhat
 				backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
-				beltr = /obj/item/rogueweapon/sword/rapier/dec
+				beltr = /obj/item/weapon/sword/rapier/dec
 				beltl = /obj/item/ammo_holder/quiver/arrows
 				backpack_contents = list(/obj/item/reagent_containers/glass/bottle/rogue/wine = 1, /obj/item/reagent_containers/glass/cup/silver = 1)
 			else
@@ -170,37 +170,37 @@
 				head = /obj/item/clothing/head/roguetown/hatfur
 				cloak = /obj/item/clothing/cloak/raincloak/furcloak
 				backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
-				beltr = /obj/item/rogueweapon/knife/dagger/steel/special
+				beltr = /obj/item/weapon/knife/dagger/steel/special
 				beltl = /obj/item/ammo_holder/quiver/arrows
 				backpack_contents = list(/obj/item/reagent_containers/glass/bottle/rogue/wine = 1, /obj/item/reagent_containers/glass/cup/silver = 1)
 		if("Peasant")
 			H.mind?.adjust_skillrank(/datum/skill/labor/farming, 1, TRUE)
 			belt = /obj/item/storage/belt/rogue/leather/assassin
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
-			pants = /obj/item/clothing/under/roguetown/trou
+			pants = /obj/item/clothing/pants/trou
 			head = /obj/item/clothing/head/roguetown/strawhat
 			shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-			backr = /obj/item/rogueweapon/hoe
+			backr = /obj/item/weapon/hoe
 			backl = /obj/item/storage/backpack/rogue/satchel
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 			armor = /obj/item/clothing/suit/roguetown/armor/gambeson/light/striped
-			beltl = /obj/item/rogueweapon/sickle
+			beltl = /obj/item/weapon/sickle
 			beltr = /obj/item/flint
-			var/obj/item/rogueweapon/pitchfork/P = new()
+			var/obj/item/weapon/pitchfork/P = new()
 			H.put_in_hands(P, forced = TRUE)
 			if(H.gender == FEMALE)
 				head = /obj/item/clothing/head/roguetown/armingcap
 				armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 				shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 				pants = null
-			backpack_contents = list(/obj/item/neuFarm/seed/wheat=1,/obj/item/neuFarm/seed/apple=1,/obj/item/ash=1,/obj/item/rogueweapon/knife/villager=1)
+			backpack_contents = list(/obj/item/neuFarm/seed/wheat=1,/obj/item/neuFarm/seed/apple=1,/obj/item/ash=1,/obj/item/weapon/knife/villager=1)
 		if("Carpenter")
 			H.mind?.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE) //Use the axe...
 			H.mind?.adjust_skillrank(/datum/skill/combat/swords, -2, TRUE)
 			belt = /obj/item/storage/belt/rogue/leather/assassin
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
-			pants = /obj/item/clothing/under/roguetown/trou
+			pants = /obj/item/clothing/pants/trou
 			head = pick(/obj/item/clothing/head/roguetown/hatfur, /obj/item/clothing/head/roguetown/hatblu, /obj/item/clothing/head/roguetown/brimmed)
 			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 			backr = /obj/item/storage/backpack/rogue/satchel
@@ -208,10 +208,10 @@
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 			armor = /obj/item/clothing/suit/roguetown/armor/gambeson/light/striped
 			beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
-			beltl = /obj/item/rogueweapon/hammer/steel
-			backr = /obj/item/rogueweapon/axe/iron
+			beltl = /obj/item/weapon/hammer/steel
+			backr = /obj/item/weapon/axe/iron
 			backl = /obj/item/storage/backpack/rogue/backpack
-			backpack_contents = list(/obj/item/flint = 1, /obj/item/rogueweapon/knife/villager = 1)
+			backpack_contents = list(/obj/item/flint = 1, /obj/item/weapon/knife/villager = 1)
 
 	H.cure_blind("TRAIT_GENERIC")
 

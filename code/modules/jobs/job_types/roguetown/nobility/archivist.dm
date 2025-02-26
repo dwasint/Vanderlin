@@ -31,14 +31,14 @@
 	if(H.dna.species.id == "Dwarf")
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/jacket/apothecary
-		pants = /obj/item/clothing/under/roguetown/tights/black
+		pants = /obj/item/clothing/pants/tights/black
 	else
 		if(H.gender == FEMALE)
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/archivist
 		else
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/archivist
-			pants = /obj/item/clothing/under/roguetown/tights/black
+			pants = /obj/item/clothing/pants/tights/black
 	H.virginity = TRUE
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver

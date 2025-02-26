@@ -12,14 +12,14 @@
 
 /datum/outfit/job/roguetown/adventurer/corsair
 	head = /obj/item/clothing/head/roguetown/helmet/leather/headscarf
-	pants = /obj/item/clothing/under/roguetown/tights/sailor
+	pants = /obj/item/clothing/pants/tights/sailor
 	belt = /obj/item/storage/belt/rogue/leather/mercenary
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/jacket/sea
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/natural/worms/leech = 2, /obj/item/storage/belt/rogue/pouch/coins/mid)
 	backr = /obj/item/fishingrod/fisher
-	beltl = /obj/item/rogueweapon/sword/sabre/cutlass
-	beltr = /obj/item/rogueweapon/knife/dagger
+	beltl = /obj/item/weapon/sword/sabre/cutlass
+	beltr = /obj/item/weapon/knife/dagger
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 
 /datum/outfit/job/roguetown/adventurer/corsair/pre_equip(mob/living/carbon/human/H)

@@ -81,11 +81,11 @@
 
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
-	pants = /obj/item/clothing/under/roguetown/chainlegs
+	pants = /obj/item/clothing/pants/chainlegs
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/storage/keyring/priest = 1)
-	backr = /obj/item/rogueweapon/shield/tower/metal
+	backr = /obj/item/weapon/shield/tower/metal
 	belt = /obj/item/storage/belt/rogue/leather/black
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 	id = /obj/item/clothing/ring/silver
@@ -107,14 +107,14 @@
 	switch(H.patron?.type)
 		if(/datum/patron/divine/abyssor)
 			H.mind?.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
-			backl = /obj/item/rogueweapon/polearm/spear/billhook
+			backl = /obj/item/weapon/polearm/spear/billhook
 			beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
 		if(/datum/patron/divine/malum)
 			H.mind?.adjust_skillrank(/datum/skill/combat/axesmaces, 4, TRUE)
-			beltr = /obj/item/rogueweapon/mace/warhammer/steel
+			beltr = /obj/item/weapon/mace/warhammer/steel
 		else
 			H.mind?.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
-			beltr = /obj/item/rogueweapon/sword/long
+			beltr = /obj/item/weapon/sword/long
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_KNOWBANDITS, TRAIT_GENERIC)

@@ -1,6 +1,6 @@
 /* FLAILS - Zero wdefense, can´t parry, best AP
 ==========================================================*/
-/obj/item/rogueweapon/flail
+/obj/item/weapon/flail
 	force = DAMAGE_NORMAL_FLAIL
 	possible_item_intents = list(/datum/intent/flail/strike, /datum/intent/flail/strike/smash)
 	name = "military flail"
@@ -27,7 +27,7 @@
 	grid_width = 32
 	grid_height = 96
 
-/obj/item/rogueweapon/flail/getonmobprop(tag)
+/obj/item/weapon/flail/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)
@@ -80,13 +80,13 @@
 
 
 //................ Militia Flail ............... //
-/obj/item/rogueweapon/flail/militia
+/obj/item/weapon/flail/militia
 	name = "militia flail"
 	desc = "A lucky hit from such a flail can squash a cheap helmet along with the wearer's skull."
 	icon_state = "militiaflail"
 
 //................ Wooden Flail ............... // Obsolete by the thresher? No smash so its bad
-/obj/item/rogueweapon/flail/towner
+/obj/item/weapon/flail/towner
 	force = DAMAGE_WEAK_FLAIL
 	possible_item_intents = list(/datum/intent/mace/strike/wood)
 	gripped_intents = list(/datum/intent/flailthresh, /datum/intent/mace/strike/wood)
@@ -101,7 +101,7 @@
 
 
 //................ Steel Flail ............... //
-/obj/item/rogueweapon/flail/sflail
+/obj/item/weapon/flail/sflail
 	force = DAMAGE_GOOD_FLAIL
 	name = "steel flail"
 	desc = "A knightly flail made of worked steel, with a flanged head. An effective and brutal design."
@@ -113,7 +113,7 @@
 	sellprice = 35
 
 //................ Peasant Flail ............... // A little confusing still
-/obj/item/rogueweapon/flail/peasant
+/obj/item/weapon/flail/peasant
 	force = DAMAGE_NORMAL_FLAIL
 	force_wielded = DAMAGE_GOOD_FLAIL
 	name = "peasant flail"
@@ -132,7 +132,7 @@
 	sellprice = 20
 	minstr = 8
 
-/obj/item/rogueweapon/flail/peasant/getonmobprop(tag)
+/obj/item/weapon/flail/peasant/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)

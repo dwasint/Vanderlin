@@ -38,7 +38,7 @@
 	id = /obj/item/clothing/ring/gold
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
 	beltr = /obj/item/storage/keyring/mage
-	backl = /obj/item/rogueweapon/polearm/woodstaff
+	backl = /obj/item/weapon/polearm/woodstaff
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	backpack_contents = list(/obj/item/scrying = 1, /obj/item/reagent_containers/glass/bottle/rogue/killersice = 1)
 	if(H.mind)

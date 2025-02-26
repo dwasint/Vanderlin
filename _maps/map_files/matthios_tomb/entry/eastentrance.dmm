@@ -52,9 +52,9 @@
 /obj/item/neuFarm/seed/wheat,
 /obj/item/neuFarm/seed/wheat,
 /obj/item/neuFarm/seed/wheat,
-/obj/item/rogueweapon/hoe,
-/obj/item/rogueweapon/sickle,
-/obj/item/rogueweapon/thresher,
+/obj/item/weapon/hoe,
+/obj/item/weapon/sickle,
+/obj/item/weapon/thresher,
 /obj/item/neuFarm/seed/onion,
 /obj/item/neuFarm/seed/onion,
 /obj/item/neuFarm/seed/onion,
@@ -104,7 +104,7 @@
 /area/rogue)
 "qs" = (
 /obj/structure/table/wood/plain,
-/obj/item/rogueweapon/knife/cleaver,
+/obj/item/weapon/knife/cleaver,
 /turf/open/floor/rogue/herringbone,
 /area/rogue)
 "ry" = (

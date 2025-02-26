@@ -1,7 +1,7 @@
 /* BLUNT - low-ish damage, limited defense, good AP
 ==========================================================*/
 //................ Mace ............... //
-/obj/item/rogueweapon/mace
+/obj/item/weapon/mace
 	force = DAMAGE_MACE
 	force_wielded = DAMAGE_MACE_WIELD
 	possible_item_intents = list(/datum/intent/mace/strike)
@@ -32,7 +32,7 @@
 	grid_height = 64
 	grid_width = 32
 
-/obj/item/rogueweapon/mace/getonmobprop(tag)
+/obj/item/weapon/mace/getonmobprop(tag)
 	if(tag)
 		switch(tag)
 			if("gen")
@@ -117,7 +117,7 @@
 
 
 //................ Bell ringer ............... //
-/obj/item/rogueweapon/mace/church
+/obj/item/weapon/mace/church
 	force = DAMAGE_MACE+3
 	force_wielded = DAMAGE_MACE_WIELD+3
 	name = "bell ringer"
@@ -131,7 +131,7 @@
 
 
 //................ Steel mace ............... //	Better wbalance and wdefense
-/obj/item/rogueweapon/mace/steel
+/obj/item/weapon/mace/steel
 	name = "steel mace"
 	desc = "A well-crafted mace with a steel head. Easier to control and hits just as hard."
 	icon_state = "smace"
@@ -144,7 +144,7 @@
 
 
 //................ Spiked club ............... //
-/obj/item/rogueweapon/mace/spiked
+/obj/item/weapon/mace/spiked
 	force = DAMAGE_MACE+2
 	force_wielded = DAMAGE_MACE_WIELD+3
 	name = "spiked mace"
@@ -153,7 +153,7 @@
 
 
 //................ Morningstar ............... //
-/obj/item/rogueweapon/mace/steel/morningstar
+/obj/item/weapon/mace/steel/morningstar
 	force = DAMAGE_MACE+2
 	force_wielded = DAMAGE_MACE_WIELD+3
 	name = "morningstar"
@@ -162,7 +162,7 @@
 
 
 //................ Copper bludgeon ............... //
-/obj/item/rogueweapon/mace/copperbludgeon
+/obj/item/weapon/mace/copperbludgeon
 	force = DAMAGE_CLUB
 	force_wielded = DAMAGE_CLUB_WIELD
 	name = "copper bludgeon"
@@ -177,7 +177,7 @@
 
 
 //................ Club ............... //
-/obj/item/rogueweapon/mace/woodclub
+/obj/item/weapon/mace/woodclub
 	force = DAMAGE_CLUB
 	force_wielded = DAMAGE_CLUB_WIELD
 	name = "club"
@@ -193,14 +193,14 @@
 	sellprice = 5
 	wdefense = MEDIOCHRE_PARRY
 
-/obj/item/rogueweapon/mace/woodclub/Initialize(mapload)
+/obj/item/weapon/mace/woodclub/Initialize(mapload)
 	. = ..()
 	if(icon_state == "club1")
 		icon_state = "club[rand(1,2)]"
 
 
 //................ Cudgel ............... //
-/obj/item/rogueweapon/mace/cudgel
+/obj/item/weapon/mace/cudgel
 	force = DAMAGE_CLUB
 	force_wielded = DAMAGE_CLUB_WIELD
 	name = "cudgel"
@@ -219,7 +219,7 @@
 	wdefense = MEDIOCHRE_PARRY
 
 
-/obj/item/rogueweapon/mace/cudgel/getonmobprop(tag)
+/obj/item/weapon/mace/cudgel/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)
@@ -229,14 +229,14 @@
 				return list("shrink" = 0.4,"sx" = -3,"sy" = -4,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 0,"sturn" = 70,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 1,"wflip" = 0,"eflip" = 0)
 
 //................ Alt cudgel ............... //
-/obj/item/rogueweapon/mace/cudgel/carpenter
+/obj/item/weapon/mace/cudgel/carpenter
 	name = "peasant cudgel"
 	icon_state = "carpentercudgel"
 	desc = "A stubby club reinforced with iron bits, popular among village watchmen and peasant militias. Despite being reinforced and hard-hitting, it still cannot compare to a proper mace."
 
 
 //................ Wooden sword ............... //
-/obj/item/rogueweapon/mace/woodclub/train_sword
+/obj/item/weapon/mace/woodclub/train_sword
 	force = 5
 	force_wielded = 8
 	name = "wooden sword"
@@ -245,10 +245,10 @@
 	wbalance = 0
 	associated_skill = /datum/skill/combat/swords
 	wdefense = ULTMATE_PARRY
-	metalizer_result = /obj/item/rogueweapon/sword/iron
+	metalizer_result = /obj/item/weapon/sword/iron
 	max_integrity = 240
 
-/obj/item/rogueweapon/mace/woodclub/train_sword/getonmobprop(tag)
+/obj/item/weapon/mace/woodclub/train_sword/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)
@@ -262,7 +262,7 @@
 
 
 //................ Goedendag ............... //
-/obj/item/rogueweapon/mace/goden
+/obj/item/weapon/mace/goden
 	force = DAMAGE_CLUB
 	force_wielded = DAMAGE_HEAVYCLUB_WIELD
 	possible_item_intents = list(/datum/intent/mace/strike/heavy)
@@ -290,7 +290,7 @@
 	sellprice = 35
 	wdefense = GOOD_PARRY
 
-/obj/item/rogueweapon/mace/goden/getonmobprop(tag)
+/obj/item/weapon/mace/goden/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)
@@ -302,7 +302,7 @@
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 //................ Grand mace ............... //
-/obj/item/rogueweapon/mace/goden/steel
+/obj/item/weapon/mace/goden/steel
 	gripped_intents = list(/datum/intent/mace/smash/heavy) // It's a 2h flanged mace, not a goedendag.
 	name = "grand mace"
 	desc = "A casted polearm, rumored to be the weapon-design used by Psydon himself."
@@ -315,7 +315,7 @@
 	sellprice = 60
 	wbalance = DODGE_CHANCE_NORMAL
 
-/obj/item/rogueweapon/mace/goden/steel/getonmobprop(tag)
+/obj/item/weapon/mace/goden/steel/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)
@@ -327,7 +327,7 @@
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0)
 
 //................ Shillelagh ............... //
-/obj/item/rogueweapon/mace/goden/shillelagh		// The Briar signature weapon. Sturdy oak war club.
+/obj/item/weapon/mace/goden/shillelagh		// The Briar signature weapon. Sturdy oak war club.
 	gripped_intents = list(/datum/intent/mace/smash/wood)
 	name = "shillelagh"
 	desc = "Big old oak branch, carved to a deadly weapon."
@@ -344,7 +344,7 @@
 	sellprice = 5
 
 
-/obj/item/rogueweapon/mace/goden/shillelagh/getonmobprop(tag)
+/obj/item/weapon/mace/goden/shillelagh/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)
@@ -357,7 +357,7 @@
 
 
 //................ Dwarf Warhammer ............... // - Unique Langobardo weapon
-/obj/item/rogueweapon/mace/goden/steel/warhammer
+/obj/item/weapon/mace/goden/steel/warhammer
 	name = "dwarven warhammer"
 	desc = "A great dwarven warhammer made of stern steel, enscratched with oaths of battle and time."
 	icon_state = "warhammer"
@@ -365,7 +365,7 @@
 	swingsound = BLUNTWOOSH_HUGE
 	sellprice = 100
 
-/obj/item/rogueweapon/mace/goden/steel/warhammer/getonmobprop(tag)
+/obj/item/weapon/mace/goden/steel/warhammer/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)
@@ -378,7 +378,7 @@
 
 
 //................ Copper goden ............... //
-/obj/item/rogueweapon/mace/goden/copper
+/obj/item/weapon/mace/goden/copper
 	force = 10
 	force_wielded = 20
 	slowdown = 1
@@ -394,7 +394,7 @@
 	sellprice = 35
 
 //................ Warhammers ............... //
-/obj/item/rogueweapon/mace/warhammer
+/obj/item/weapon/mace/warhammer
 	force = 20
 	possible_item_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash, /datum/intent/mace/warhammer/impale)
 	gripped_intents = null
@@ -407,7 +407,7 @@
 	blade_dulling = DULLING_BASH
 	wdefense = 3
 
-/obj/item/rogueweapon/mace/warhammer/getonmobprop(tag)
+/obj/item/weapon/mace/warhammer/getonmobprop(tag)
 	if(tag)
 		switch(tag)
 			if("gen")
@@ -418,7 +418,7 @@
 				return list("shrink" = 0.4,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 	return ..()
 
-/obj/item/rogueweapon/mace/warhammer/steel
+/obj/item/weapon/mace/warhammer/steel
 	force = 25
 	possible_item_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash, /datum/intent/mace/warhammer/impale, /datum/intent/mace/warhammer/stab)
 	name = "steel warhammer"

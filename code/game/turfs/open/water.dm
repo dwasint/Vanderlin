@@ -183,9 +183,9 @@
 	if(istype(C, /obj/item/reagent_containers/glass/bucket/wooden) && user.used_intent.type == /datum/intent/splash)
 		try_modify_water(user, C)
 		return TRUE
-	if(istype(C, /obj/item/rogueweapon/shovel))
+	if(istype(C, /obj/item/weapon/shovel))
 		if((user.used_intent.type == /datum/intent/shovelscoop))
-			var/obj/item/rogueweapon/shovel/shovel = C
+			var/obj/item/weapon/shovel/shovel = C
 			if(!shovel.heldclod)
 				return
 			user.visible_message("[user] starts filling in [src].", "I start filling in [src].")
