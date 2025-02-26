@@ -26,7 +26,7 @@
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/weapon/knife/hunting
 	cloak = /obj/item/clothing/cloak/apron/brown
-	gloves = /obj/item/clothing/gloves/roguetown/leather
+	gloves = /obj/item/clothing/gloves/leather
 	backpack_contents = list(/obj/item/flint = 1, /obj/item/weapon/tongs=1, /obj/item/rogueore/coal=1, /obj/item/rogueore/iron=1, /obj/item/mould/ingot = 1, /obj/item/storage/crucible/random = 1)
 
 	if(H.mind)

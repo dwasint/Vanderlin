@@ -17,7 +17,7 @@
 /mob/living/carbon/human/species/goblin/hell,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /obj/item/clothing/pants/trou/leather/advanced,
-/obj/item/clothing/wrists/roguetown/bracers/leather,
+/obj/item/clothing/wrists/bracers/leather,
 /obj/item/weapon/pick/paxe,
 /turf/open/floor/rogue/cobble,
 /area/rogue)
@@ -71,7 +71,7 @@
 /mob/living/carbon/human/species/goblin/hell,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /obj/item/clothing/pants/trou/leather/advanced,
-/obj/item/clothing/wrists/roguetown/bracers/leather,
+/obj/item/clothing/wrists/bracers/leather,
 /obj/item/weapon/axe/iron,
 /turf/open/floor/rogue/cobble,
 /area/rogue)

@@ -37,7 +37,7 @@
 	backr = /obj/item/weapon/mace/goden/steel/warhammer
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
 	shoes = /obj/item/clothing/shoes/boots/rare/dwarfplate
-	gloves = /obj/item/clothing/gloves/roguetown/rare/dwarfplate
+	gloves = /obj/item/clothing/gloves/rare/dwarfplate
 	belt = /obj/item/storage/belt/rogue/leather
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 	armor = /obj/item/clothing/armor/rare/dwarfplate

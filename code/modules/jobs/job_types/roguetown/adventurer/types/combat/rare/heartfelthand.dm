@@ -19,7 +19,7 @@
 	neck = /obj/item/clothing/neck/gorget
 	armor = /obj/item/clothing/armor/medium/surcoat/heartfelt
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
-	gloves = /obj/item/clothing/gloves/roguetown/leather/black
+	gloves = /obj/item/clothing/gloves/leather/black
 	beltl = /obj/item/weapon/sword/decorated
 	beltr = /obj/item/scomstone
 	backr = /obj/item/storage/backpack/rogue/satchel/heartfelt

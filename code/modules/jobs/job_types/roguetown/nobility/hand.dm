@@ -110,7 +110,7 @@
 	if(!istype(H.dna.species, /datum/species/dwarf))
 		shirt = /obj/item/clothing/armor/gambeson/shadowrobe
 		cloak = /obj/item/clothing/cloak/half/shadowcloak
-		gloves = /obj/item/clothing/gloves/roguetown/fingerless/shadowgloves
+		gloves = /obj/item/clothing/gloves/fingerless/shadowgloves
 		mask = /obj/item/clothing/face/shepherd/shadowmask
 		pants = /obj/item/clothing/pants/trou/shadowpants
 	else

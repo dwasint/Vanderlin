@@ -175,7 +175,7 @@
 	pixel_x = 14;
 	pixel_y = -4
 	},
-/obj/item/clothing/wrists/roguetown/bracers/leather{
+/obj/item/clothing/wrists/bracers/leather{
 	pixel_y = -9;
 	pixel_x = -6
 	},

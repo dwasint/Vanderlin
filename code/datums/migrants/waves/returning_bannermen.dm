@@ -80,7 +80,7 @@
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/storage/keyring/guard
 	beltr = /obj/item/ammo_holder/quiver/arrows
-	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+	wrists = /obj/item/clothing/wrists/bracers/leather
 	backpack_contents = list(/obj/item/weapon/knife/dagger/steel/special = 1)
 	if(prob(30))
 		head = /obj/item/clothing/head/helmet/kettle
@@ -129,7 +129,7 @@
 	pants = /obj/item/clothing/pants/trou/leather
 	beltl = /obj/item/storage/keyring/guard
 	beltr = /obj/item/ammo_holder/quiver/bolts
-	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+	wrists = /obj/item/clothing/wrists/bracers/leather
 	backpack_contents = list(/obj/item/weapon/knife/dagger/steel/special = 1)
 	if(prob(30))
 		head = /obj/item/clothing/head/helmet/kettle

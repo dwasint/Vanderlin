@@ -136,7 +136,7 @@
 /area/rogue/indoors)
 "cy" = (
 /obj/effect/mapping_helpers/floor_clothing_equipper,
-/obj/item/clothing/gloves/roguetown/plate/rust,
+/obj/item/clothing/gloves/plate/rust,
 /obj/item/clothing/shoes/boots/armor/light/rust,
 /obj/item/clothing/pants/platelegs/rust,
 /obj/item/clothing/neck/chaincoif,
@@ -667,7 +667,7 @@
 /area/rogue/indoors)
 "kY" = (
 /obj/effect/mapping_helpers/floor_clothing_equipper,
-/obj/item/clothing/gloves/roguetown/plate/rust,
+/obj/item/clothing/gloves/plate/rust,
 /obj/item/clothing/head/helmet/heavy/rust,
 /obj/item/clothing/shoes/boots/armor/light/rust,
 /obj/item/clothing/armor/plate/rust,
@@ -1093,7 +1093,7 @@
 /area/rogue/indoors)
 "rj" = (
 /obj/effect/mapping_helpers/floor_clothing_equipper,
-/obj/item/clothing/gloves/roguetown/plate/rust,
+/obj/item/clothing/gloves/plate/rust,
 /obj/item/clothing/head/helmet/heavy/rust,
 /obj/item/clothing/shoes/boots/armor/light/rust,
 /obj/item/clothing/pants/platelegs/rust,
@@ -1261,7 +1261,7 @@
 /area/rogue/indoors)
 "tI" = (
 /obj/effect/mapping_helpers/floor_clothing_equipper,
-/obj/item/clothing/gloves/roguetown/plate/rust,
+/obj/item/clothing/gloves/plate/rust,
 /obj/item/clothing/head/helmet/heavy/rust,
 /obj/item/clothing/shoes/boots/armor/light/rust,
 /obj/item/clothing/pants/platelegs/rust,
@@ -1593,7 +1593,7 @@
 /area/rogue/indoors)
 "yB" = (
 /obj/effect/mapping_helpers/floor_clothing_equipper,
-/obj/item/clothing/gloves/roguetown/plate/rust,
+/obj/item/clothing/gloves/plate/rust,
 /obj/item/clothing/head/helmet/heavy/rust,
 /obj/item/clothing/shoes/boots/armor/light/rust,
 /obj/item/clothing/armor/plate/rust,
@@ -1613,7 +1613,7 @@
 /area/rogue/indoors)
 "yQ" = (
 /obj/effect/mapping_helpers/floor_clothing_equipper,
-/obj/item/clothing/gloves/roguetown/plate/rust,
+/obj/item/clothing/gloves/plate/rust,
 /obj/item/clothing/shoes/boots/armor/light/rust,
 /obj/item/clothing/pants/platelegs/rust,
 /obj/item/clothing/neck/chaincoif,
@@ -1636,7 +1636,7 @@
 /area/rogue/indoors)
 "zd" = (
 /obj/effect/mapping_helpers/floor_clothing_equipper,
-/obj/item/clothing/gloves/roguetown/plate/rust,
+/obj/item/clothing/gloves/plate/rust,
 /obj/item/clothing/shoes/boots/armor/light/rust,
 /obj/item/clothing/pants/platelegs/rust,
 /obj/item/clothing/neck/chaincoif,
@@ -2116,7 +2116,7 @@
 "GW" = (
 /mob/living/carbon/human/species/skeleton/npc/no_equipment,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
-/obj/item/clothing/gloves/roguetown/leather/phys,
+/obj/item/clothing/gloves/leather/phys,
 /obj/item/clothing/head/roguehood/phys,
 /obj/item/clothing/face/phys,
 /obj/item/clothing/neck/phys,
@@ -2384,7 +2384,7 @@
 /area/rogue/indoors)
 "KV" = (
 /obj/effect/mapping_helpers/floor_clothing_equipper,
-/obj/item/clothing/gloves/roguetown/plate/rust,
+/obj/item/clothing/gloves/plate/rust,
 /obj/item/clothing/head/helmet/heavy/rust,
 /obj/item/clothing/shoes/boots/armor/light/rust,
 /obj/item/clothing/armor/plate/rust,

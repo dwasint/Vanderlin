@@ -15233,7 +15233,7 @@
 /area/rogue/indoors/town/cell)
 "qmK" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/item/clothing/gloves/roguetown/angle,
+/obj/item/clothing/gloves/angle,
 /turf/open/transparent/openspace,
 /area/rogue/under/cave{
 	name = "vulf cave";
@@ -21302,7 +21302,7 @@
 	icon_state = "largetable";
 	dir = 5
 	},
-/obj/item/clothing/wrists/roguetown/wrappings,
+/obj/item/clothing/wrists/wrappings,
 /obj/item/flashlight/flare/torch/lantern,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)

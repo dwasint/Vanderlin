@@ -857,7 +857,7 @@
 /obj/item/clothing/armor/plate/rust,
 /obj/item/clothing/shoes/boots/armor/light/rust,
 /obj/item/clothing/head/helmet/heavy/rust,
-/obj/item/clothing/gloves/roguetown/plate/rust,
+/obj/item/clothing/gloves/plate/rust,
 /obj/item/weapon/sword/scimitar/falchion,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /turf/open/floor/rogue/ruinedwood/chevron,
@@ -1103,7 +1103,7 @@
 	TOTALEND = 15;
 	TOTALSTR = 15
 	},
-/obj/item/clothing/gloves/roguetown/plate/rust,
+/obj/item/clothing/gloves/plate/rust,
 /obj/item/clothing/head/helmet/heavy/rust,
 /obj/item/clothing/shoes/boots/armor/light/rust,
 /obj/item/clothing/armor/cuirass/iron/rust,
@@ -1349,7 +1349,7 @@
 /mob/living/carbon/human/species/skeleton/npc/no_equipment{
 	TOTALCON = 15
 	},
-/obj/item/clothing/gloves/roguetown/plate/rust,
+/obj/item/clothing/gloves/plate/rust,
 /obj/item/clothing/head/helmet/heavy/rust,
 /obj/item/clothing/shoes/boots/armor/light/rust,
 /obj/item/clothing/armor/cuirass/iron/rust,

@@ -44,7 +44,7 @@
 	shoes = /obj/item/clothing/shoes/shortboots
 	backl = /obj/item/storage/backpack/rogue/backpack
 	neck = /obj/item/storage/belt/rogue/pouch/coins/mid
-	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+	wrists = /obj/item/clothing/wrists/bracers/leather
 	beltr = /obj/item/cooking/pan
 	beltl = /obj/item/weapon/knife/cleaver
 	H.change_stat(STATKEY_INT, 3)

@@ -37,7 +37,7 @@
 	neck = /obj/item/clothing/neck/chaincoif
 	pants = /obj/item/clothing/pants/grenzelpants
 	shoes = /obj/item/clothing/shoes/grenzelhoft
-	gloves = /obj/item/clothing/gloves/roguetown/angle/grenzel
+	gloves = /obj/item/clothing/gloves/angle/grenzel
 	belt = /obj/item/storage/belt/rogue/leather/mercenary
 	beltl = /obj/item/weapon/mace/cudgel
 	shirt = /obj/item/clothing/suit/roguetown/shirt/grenzelhoft

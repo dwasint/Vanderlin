@@ -29,7 +29,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 	backr = /obj/item/storage/backpack/rogue/satchel
 	pants = /obj/item/clothing/pants/tights/random
-	gloves = /obj/item/clothing/gloves/roguetown/leather/phys
+	gloves = /obj/item/clothing/gloves/leather/phys
 	armor = /obj/item/clothing/suit/roguetown/shirt/robe/phys
 	neck = /obj/item/clothing/neck/phys
 	r_hand = /obj/item/storage/backpack/rogue/satchel/surgbag

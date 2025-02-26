@@ -141,7 +141,7 @@
 		/obj/item/weapon/axe/copper = 10,
 		/obj/item/weapon/mace = 5,
 		/obj/item/clothing/armor/leather = 10,
-		/obj/item/clothing/gloves/roguetown/chain/iron = 3,
+		/obj/item/clothing/gloves/chain/iron = 3,
 		/obj/item/clothing/neck/coif = 3,
 		/obj/item/natural/poo = 5
 		)
@@ -156,7 +156,7 @@
 		/obj/item/weapon/sword/short = 5,
 		/obj/item/clothing/armor/cuirass/iron = 10,
 		/obj/item/clothing/armor/gambeson = 10,
-		/obj/item/clothing/gloves/roguetown/chain/iron = 3,
+		/obj/item/clothing/gloves/chain/iron = 3,
 		/obj/item/clothing/neck/gorget = 3,
 		/obj/item/roguestatue/gold/loot = 1
 		)
@@ -172,7 +172,7 @@
 		/obj/item/clothing/head/crown/circlet = 2,
 		/obj/item/clothing/armor/medium/scale = 8,
 		/obj/item/clothing/armor/plate = 8,
-		/obj/item/clothing/gloves/roguetown/chain = 3,
+		/obj/item/clothing/gloves/chain = 3,
 		/obj/item/clothing/neck/bevor = 3,
 		/obj/item/clothing/pants/chainlegs = 5
 		)
@@ -266,7 +266,7 @@
 	icon_state = "lootarmor"
 	spawned = list(
 		/obj/item/clothing/face/facemask/copper = 15,
-		/obj/item/clothing/wrists/roguetown/bracers/copper = 15,
+		/obj/item/clothing/wrists/bracers/copper = 15,
 		/obj/item/clothing/head/helmet/coppercap = 15,
 		/obj/item/clothing/armor/cuirass/copperchest = 15,
 		/obj/item/clothing/pants/chainlegs/iron = 10,

@@ -45,10 +45,10 @@
 			pants = /obj/item/clothing/pants/tights/black
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	if(prob(23))
-		gloves = /obj/item/clothing/gloves/roguetown/leather
+		gloves = /obj/item/clothing/gloves/leather
 	else
-		gloves = /obj/item/clothing/gloves/roguetown/fingerless
-	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+		gloves = /obj/item/clothing/gloves/fingerless
+	wrists = /obj/item/clothing/wrists/bracers/leather
 	belt = /obj/item/storage/belt/rogue/leather
 	armor = /obj/item/clothing/armor/leather/hide
 	cloak = /obj/item/clothing/cloak/raincloak/brown

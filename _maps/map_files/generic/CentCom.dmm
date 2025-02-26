@@ -233,21 +233,21 @@
 /area/rogue)
 "aB" = (
 /obj/structure/table/wood/reinforced,
-/obj/item/clothing/gloves/roguetown/leather,
-/obj/item/clothing/gloves/roguetown/leather,
-/obj/item/clothing/gloves/roguetown/leather,
-/obj/item/clothing/gloves/roguetown/chain/iron,
-/obj/item/clothing/gloves/roguetown/chain/iron,
-/obj/item/clothing/gloves/roguetown/chain/iron,
-/obj/item/clothing/gloves/roguetown/chain,
-/obj/item/clothing/gloves/roguetown/chain,
-/obj/item/clothing/gloves/roguetown/chain,
-/obj/item/clothing/gloves/roguetown/fingerless,
-/obj/item/clothing/gloves/roguetown/fingerless,
-/obj/item/clothing/gloves/roguetown/fingerless,
-/obj/item/clothing/gloves/roguetown/plate,
-/obj/item/clothing/gloves/roguetown/plate,
-/obj/item/clothing/gloves/roguetown/plate,
+/obj/item/clothing/gloves/leather,
+/obj/item/clothing/gloves/leather,
+/obj/item/clothing/gloves/leather,
+/obj/item/clothing/gloves/chain/iron,
+/obj/item/clothing/gloves/chain/iron,
+/obj/item/clothing/gloves/chain/iron,
+/obj/item/clothing/gloves/chain,
+/obj/item/clothing/gloves/chain,
+/obj/item/clothing/gloves/chain,
+/obj/item/clothing/gloves/fingerless,
+/obj/item/clothing/gloves/fingerless,
+/obj/item/clothing/gloves/fingerless,
+/obj/item/clothing/gloves/plate,
+/obj/item/clothing/gloves/plate,
+/obj/item/clothing/gloves/plate,
 /turf/open/floor/rogue/carpet,
 /area/rogue)
 "aC" = (
@@ -265,13 +265,13 @@
 /area/rogue)
 "aE" = (
 /obj/structure/table/wood/reinforced,
-/obj/item/clothing/wrists/roguetown/bracers,
-/obj/item/clothing/wrists/roguetown/bracers,
-/obj/item/clothing/wrists/roguetown/bracers,
-/obj/item/clothing/wrists/roguetown/bracers,
-/obj/item/clothing/wrists/roguetown/bracers/leather,
-/obj/item/clothing/wrists/roguetown/bracers/leather,
-/obj/item/clothing/wrists/roguetown/bracers/leather,
+/obj/item/clothing/wrists/bracers,
+/obj/item/clothing/wrists/bracers,
+/obj/item/clothing/wrists/bracers,
+/obj/item/clothing/wrists/bracers,
+/obj/item/clothing/wrists/bracers/leather,
+/obj/item/clothing/wrists/bracers/leather,
+/obj/item/clothing/wrists/bracers/leather,
 /turf/open/floor/rogue/carpet,
 /area/rogue)
 "aF" = (
@@ -1588,7 +1588,7 @@
 /area/rogue)
 "hY" = (
 /obj/structure/table/wood/fancy/purple,
-/obj/item/clothing/gloves/roguetown/rare/elfplate,
+/obj/item/clothing/gloves/rare/elfplate,
 /obj/item/clothing/shoes/boots/rare/elfplate,
 /turf/open/floor/rogue/wood,
 /area/rogue)
@@ -2774,7 +2774,7 @@
 /area/rogue/outdoors)
 "yz" = (
 /obj/structure/table/wood/fancy/green,
-/obj/item/clothing/gloves/roguetown/rare/elfplate/welfplate,
+/obj/item/clothing/gloves/rare/elfplate/welfplate,
 /obj/item/clothing/shoes/boots/rare/elfplate/welfplate,
 /turf/open/floor/rogue/wood,
 /area/rogue)
@@ -3053,7 +3053,7 @@
 /area/rogue/outdoors/bog/inhumen_camp)
 "Dg" = (
 /obj/structure/table/wood/fancy/orange,
-/obj/item/clothing/gloves/roguetown/rare/dwarfplate,
+/obj/item/clothing/gloves/rare/dwarfplate,
 /obj/item/clothing/shoes/boots/rare/dwarfplate,
 /turf/open/floor/rogue/wood,
 /area/rogue)

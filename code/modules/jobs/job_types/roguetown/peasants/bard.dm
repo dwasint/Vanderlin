@@ -45,7 +45,7 @@
 	pants = /obj/item/clothing/pants/tights/random
 	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/noblecoat
 	if(prob(30))
-		gloves = /obj/item/clothing/gloves/roguetown/fingerless
+		gloves = /obj/item/clothing/gloves/fingerless
 	belt = /obj/item/storage/belt/rogue/leather
 	armor = /obj/item/clothing/armor/leather/vest
 	cloak = /obj/item/clothing/cloak/raincloak/blue

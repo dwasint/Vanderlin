@@ -259,7 +259,7 @@
 "Ur" = (
 /obj/structure/closet/crate/chest/gold,
 /obj/item/clothing/head/helmet/visored/knight,
-/obj/item/clothing/gloves/roguetown/plate,
+/obj/item/clothing/gloves/plate,
 /turf/open/floor/rogue/metal,
 /area/rogue)
 "Vk" = (

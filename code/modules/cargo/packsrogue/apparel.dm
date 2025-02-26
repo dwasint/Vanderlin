@@ -211,17 +211,17 @@
 /datum/supply_pack/rogue/apparel/leather_gloves
 	name = "Leather Gloves"
 	cost = 10
-	contains = /obj/item/clothing/gloves/roguetown/leather
+	contains = /obj/item/clothing/gloves/leather
 
 /datum/supply_pack/rogue/apparel/black_leather_gloves
 	name = "Black Leather Gloves"
 	cost = 12
-	contains = /obj/item/clothing/gloves/roguetown/leather/black
+	contains = /obj/item/clothing/gloves/leather/black
 
 /datum/supply_pack/rogue/apparel/fingerless_gloves
 	name = "Fingerless Gloves"
 	cost = 4
-	contains = /obj/item/clothing/gloves/roguetown/fingerless
+	contains = /obj/item/clothing/gloves/fingerless
 
 /datum/supply_pack/rogue/apparel/leather_belt
 	name = "Leather Belt"

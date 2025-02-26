@@ -16765,7 +16765,7 @@
 /obj/item/clothing/armor/gambeson/heavy/winterdress,
 /obj/item/clothing/armor/leather/vest/winterjacket,
 /obj/item/clothing/suit/roguetown/shirt/dress/royal,
-/obj/item/clothing/wrists/roguetown/royalsleeves,
+/obj/item/clothing/wrists/royalsleeves,
 /obj/item/clothing/cloak/lordcloak/ladycloak,
 /turf/open/floor/rogue/tile/masonic{
 	dir = 4
@@ -26405,7 +26405,7 @@
 /obj/structure/rack/rogue,
 /obj/item/clothing/neck/chaincoif,
 /obj/item/clothing/armor/chainmail/hauberk,
-/obj/item/clothing/gloves/roguetown/chain,
+/obj/item/clothing/gloves/chain,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
 "tpk" = (
@@ -29922,7 +29922,7 @@
 /obj/item/clothing/head/roguehood/phys,
 /obj/item/clothing/neck/phys,
 /obj/item/clothing/suit/roguetown/shirt/robe/phys,
-/obj/item/clothing/gloves/roguetown/leather/phys,
+/obj/item/clothing/gloves/leather/phys,
 /obj/machinery/light/rogue/wallfire/candle/blue,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/clinic_large)
@@ -32790,7 +32790,7 @@
 /obj/item/clothing/head/roguehood/phys,
 /obj/item/clothing/neck/phys,
 /obj/item/clothing/suit/roguetown/shirt/robe/phys,
-/obj/item/clothing/gloves/roguetown/leather/phys,
+/obj/item/clothing/gloves/leather/phys,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors/town/clinic_large)
 "xVj" = (

@@ -26,7 +26,7 @@
 	backl = /obj/item/storage/backpack/rogue/satchel
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	backpack_contents = list(/obj/item/weapon/pick = 1, /obj/item/weapon/knife/hunting = 1, /obj/item/lockpickring/mundane)
-	gloves = /obj/item/clothing/gloves/roguetown/fingerless
+	gloves = /obj/item/clothing/gloves/fingerless
 	cloak = /obj/item/clothing/cloak/raincloak/mortus
 	armor = /obj/item/clothing/armor/leather
 	shoes = /obj/item/clothing/shoes/boots/leather

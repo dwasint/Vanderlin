@@ -101,7 +101,7 @@
 
 /datum/outfit/job/roguetown/greater_skeleton/pre_equip(mob/living/carbon/human/H) //equipped onto Summon Greater Undead player skeletons only after the mind is added
 	..()
-	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+	wrists = /obj/item/clothing/wrists/bracers/leather
 	armor = /obj/item/clothing/armor/chainmail/iron
 	if(prob(50))
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
@@ -178,7 +178,7 @@
 	switch(loadout)
 		if(1) //Axe Warrior
 			r_hand = /obj/item/weapon/axe/iron
-			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+			wrists = /obj/item/clothing/wrists/bracers/leather
 			head = /obj/item/clothing/head/knitcap
 		if(2) //Long Stick Fighter
 			r_hand = /obj/item/weapon/polearm/woodstaff
@@ -189,7 +189,7 @@
 			head = /obj/item/clothing/head/strawhat
 		if(5) //Bonk Build
 			r_hand = /obj/item/weapon/thresher
-			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+			wrists = /obj/item/clothing/wrists/bracers/leather
 		if(6) //Bonk Build
 			r_hand = /obj/item/weapon/hoe
 			head = /obj/item/clothing/head/fisherhat
@@ -218,7 +218,7 @@
 /datum/outfit/job/roguetown/species/skeleton/npc/random/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(prob(50))
-		wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+		wrists = /obj/item/clothing/wrists/bracers/leather
 	if(prob(50))
 		armor = /obj/item/clothing/armor/chainmail/iron
 	if(prob(30))
@@ -270,7 +270,7 @@
 			armor = /obj/item/clothing/armor/chainmail/iron
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
 			pants = /obj/item/clothing/pants/tights/vagrant
-			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+			wrists = /obj/item/clothing/wrists/bracers/leather
 			neck = /obj/item/clothing/neck/chaincoif
 			head = /obj/item/clothing/head/helmet/kettle
 		if(2)//Skeleton Warrior
@@ -281,7 +281,7 @@
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
 			pants = /obj/item/clothing/pants/tights/vagrant
 			neck = /obj/item/clothing/neck/chaincoif
-			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+			wrists = /obj/item/clothing/wrists/bracers/leather
 			head = /obj/item/clothing/head/helmet/kettle
 		if(3) //Skeleton Warrior
 			r_hand = /obj/item/weapon/flail
@@ -291,7 +291,7 @@
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
 			pants = /obj/item/clothing/pants/tights/vagrant
 			neck = /obj/item/clothing/neck/chaincoif
-			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+			wrists = /obj/item/clothing/wrists/bracers/leather
 			head = /obj/item/clothing/head/helmet/skullcap
 		if(4) //Skeleton Warrior
 			r_hand =/obj/item/weapon/polearm/spear
@@ -299,7 +299,7 @@
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
 			neck = /obj/item/clothing/neck/chaincoif
 			pants = /obj/item/clothing/pants/tights/vagrant
-			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+			wrists = /obj/item/clothing/wrists/bracers/leather
 			head = /obj/item/clothing/head/helmet/kettle
 		if(5) //Skeleton Warrior
 			r_hand = /obj/item/weapon/sword/sabre
@@ -307,7 +307,7 @@
 			armor = /obj/item/clothing/armor/chainmail/iron
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
 			pants = /obj/item/clothing/pants/tights/vagrant
-			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+			wrists = /obj/item/clothing/wrists/bracers/leather
 			neck = /obj/item/clothing/neck/chaincoif
 			head = /obj/item/clothing/head/helmet/kettle
 		if(6) //Skeleton Warrior
@@ -317,7 +317,7 @@
 			pants = /obj/item/clothing/pants/tights/vagrant
 			neck = /obj/item/clothing/neck/chaincoif
 			armor = /obj/item/clothing/armor/chainmail/iron
-			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+			wrists = /obj/item/clothing/wrists/bracers/leather
 			head = /obj/item/clothing/head/helmet/skullcap
 
 

@@ -79,7 +79,7 @@
 /obj/item/clothing/shoes/nobleboot,
 /obj/item/clothing/suit/roguetown/shirt/tunic/noblecoat,
 /obj/item/clothing/head/fancyhat,
-/obj/item/clothing/gloves/roguetown/chain,
+/obj/item/clothing/gloves/chain,
 /obj/item/clothing/pants/chainlegs/iron,
 /obj/item/clothing/face/facemask/goldmask,
 /obj/effect/mapping_helpers/floor_clothing_equipper,

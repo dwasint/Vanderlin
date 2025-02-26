@@ -208,7 +208,7 @@
 /mob/living/carbon/human/species/skeleton/npc/warrior/skilled,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /obj/item/clothing/head/helmet/heavy/crusader,
-/obj/item/clothing/gloves/roguetown/plate,
+/obj/item/clothing/gloves/plate,
 /obj/item/clothing/neck/bevor,
 /obj/item/clothing/pants/platelegs,
 /obj/item/clothing/shoes/boots/armor,

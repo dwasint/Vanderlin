@@ -33,7 +33,7 @@
 	shoes = /obj/item/clothing/shoes/apothboots
 	shirt = /obj/item/clothing/suit/roguetown/shirt/apothshirt
 	pants = /obj/item/clothing/pants/trou/apothecary
-	gloves = /obj/item/clothing/gloves/roguetown/leather/apothecary
+	gloves = /obj/item/clothing/gloves/leather/apothecary
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/storage/keyring/niteman
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/mid

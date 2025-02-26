@@ -17,7 +17,7 @@
 	cloak = /obj/item/clothing/cloak/raincloak/furcloak
 	armor = /obj/item/clothing/armor/cuirass
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
-	gloves = /obj/item/clothing/gloves/roguetown/leather/black
+	gloves = /obj/item/clothing/gloves/leather/black
 	neck = /obj/item/clothing/neck/chaincoif
 	beltl = /obj/item/weapon/sword/long
 	if(H.gender == FEMALE)
@@ -66,7 +66,7 @@
 /datum/outfit/job/roguetown/rockhill/knight/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/helmet
-	gloves = /obj/item/clothing/gloves/roguetown/plate
+	gloves = /obj/item/clothing/gloves/plate
 	pants = /obj/item/clothing/pants/platelegs
 	cloak = /obj/item/clothing/cloak/tabard/knight/guard
 	neck = /obj/item/clothing/neck/bevor

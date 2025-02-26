@@ -461,12 +461,12 @@
 			max_purchases = 1
 		),
 		"Plate Vambraces (2)" = list(
-			list(type = /obj/item/clothing/wrists/roguetown/bracers, count = 1),
+			list(type = /obj/item/clothing/wrists/bracers, count = 1),
 			cost = 2,
 			max_purchases = 4
 		),
 		"Chain Gauntlets (3)" = list(
-			list(type = /obj/item/clothing/gloves/roguetown/chain, count = 2),
+			list(type = /obj/item/clothing/gloves/chain, count = 2),
 			cost = 3,
 			max_purchases = 4
 		),

@@ -32,13 +32,13 @@
 	beltr = /obj/item/weapon/sword/iron
 	neck = /obj/item/clothing/neck/coif
 	pants = /obj/item/clothing/pants/loincloth
-	gloves = /obj/item/clothing/gloves/roguetown/leather
+	gloves = /obj/item/clothing/gloves/leather
 	belt = /obj/item/storage/belt/rogue/leather/mercenary
 	beltl = /obj/item/weapon/mace/cudgel
 	head = /obj/item/clothing/head/helmet/leather
 	armor = /obj/item/clothing/armor/leather/hide
 	shoes = /obj/item/clothing/shoes/boots/leather
-	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+	wrists = /obj/item/clothing/wrists/bracers/leather
 	cloak = /obj/item/clothing/cloak/raincloak/furcloak/brown
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/poor)

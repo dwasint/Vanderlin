@@ -323,7 +323,7 @@
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "db" = (
-/obj/item/clothing/gloves/roguetown/fingerless,
+/obj/item/clothing/gloves/fingerless,
 /turf/open/floor/rogue/dirt,
 /area/rogue/under/mountains/anvil/dungeon)
 "dd" = (
@@ -497,7 +497,7 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "fh" = (
 /obj/structure/closet/crate/coffin,
-/obj/item/clothing/gloves/roguetown/plate,
+/obj/item/clothing/gloves/plate,
 /obj/item/clothing/armor/cuirass,
 /obj/effect/spawner/roguemap/loot/weapon,
 /obj/item/alch/bone{
@@ -2686,9 +2686,9 @@
 /obj/structure/closet/crate/chest/crafted,
 /obj/item/clothing/head/hatfur,
 /obj/item/clothing/head/hatfur,
-/obj/item/clothing/gloves/roguetown/leather,
-/obj/item/clothing/gloves/roguetown/leather,
-/obj/item/clothing/gloves/roguetown/fingerless,
+/obj/item/clothing/gloves/leather,
+/obj/item/clothing/gloves/leather,
+/obj/item/clothing/gloves/fingerless,
 /turf/open/floor/rogue/ruinedwood/spiralfade,
 /area/rogue/under/mountains/anvil/dungeon)
 "LN" = (

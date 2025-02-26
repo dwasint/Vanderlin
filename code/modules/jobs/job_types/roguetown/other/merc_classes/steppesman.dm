@@ -17,11 +17,11 @@
 	..()
 	shoes = /obj/item/clothing/shoes/boots/leather
 	head = /obj/item/clothing/head/papakha
-	gloves = /obj/item/clothing/gloves/roguetown/leather
+	gloves = /obj/item/clothing/gloves/leather
 	belt = /obj/item/storage/belt/rogue/leather/mercenary/black
 	armor = /obj/item/clothing/armor/leather/splint
 	cloak = /obj/item/clothing/cloak/raincloak/furcloak
-	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+	wrists = /obj/item/clothing/wrists/bracers/leather
 	beltr = /obj/item/weapon/sword/sabre
 	beltl= /obj/item/ammo_holder/quiver/arrows
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt

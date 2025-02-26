@@ -114,8 +114,8 @@
 	shirt = /obj/item/clothing/armor/gambeson/heavy
 	head = /obj/item/clothing/head/helmet/sallet
 	pants = /obj/item/clothing/pants/chainlegs
-	gloves = /obj/item/clothing/gloves/roguetown/plate
-	wrists = /obj/item/clothing/wrists/roguetown/bracers
+	gloves = /obj/item/clothing/gloves/plate
+	wrists = /obj/item/clothing/wrists/bracers
 	shoes = /obj/item/clothing/shoes/boots/armor
 	beltl = /obj/item/weapon/sword
 	beltr = /obj/item/storage/keyring/veteran
@@ -172,8 +172,8 @@
 	shirt = /obj/item/clothing/armor/chainmail
 	head = /obj/item/clothing/head/helmet/heavy/decorated/knight
 	pants = /obj/item/clothing/pants/chainlegs
-	gloves = /obj/item/clothing/gloves/roguetown/plate
-	wrists = /obj/item/clothing/wrists/roguetown/bracers
+	gloves = /obj/item/clothing/gloves/plate
+	wrists = /obj/item/clothing/wrists/bracers
 	shoes = /obj/item/clothing/shoes/boots/armor
 	beltr = /obj/item/storage/keyring/veteran
 	backr = /obj/item/storage/backpack/rogue/satchel/black
@@ -247,13 +247,13 @@
 
 /datum/outfit/job/roguetown/vet/merc/pre_equip(mob/living/carbon/human/H)
 	neck = /obj/item/clothing/neck/gorget
-	wrists = /obj/item/clothing/wrists/roguetown/bracers
+	wrists = /obj/item/clothing/wrists/bracers
 	shirt = /obj/item/clothing/suit/roguetown/shirt/grenzelhoft // You do NOT get the BLACKSTEEL CUIRASS because yours BROKE & I hate you. Go on a personal quest to replace it or something.
 	head = /obj/item/clothing/head/helmet/skullcap/grenzelhoft
 	armor = /obj/item/clothing/armor/cuirass/iron
 	pants = /obj/item/clothing/pants/grenzelpants
 	shoes = /obj/item/clothing/shoes/grenzelhoft
-	gloves = /obj/item/clothing/gloves/roguetown/angle/grenzel
+	gloves = /obj/item/clothing/gloves/angle/grenzel
 	beltl = /obj/item/weapon/sword/short
 	beltr = /obj/item/storage/keyring/veteran
 	backr = /obj/item/storage/backpack/rogue/satchel/black
@@ -322,8 +322,8 @@
 	armor = /obj/item/clothing/armor/leather/hide
 	shirt = /obj/item/clothing/armor/gambeson/heavy
 	pants = /obj/item/clothing/pants/trou/leather
-	gloves = /obj/item/clothing/gloves/roguetown/leather
-	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+	gloves = /obj/item/clothing/gloves/leather
+	wrists = /obj/item/clothing/wrists/bracers/leather
 	shoes = /obj/item/clothing/shoes/boots/leather
 	beltl = /obj/item/ammo_holder/quiver/arrows
 	beltr = /obj/item/flashlight/flare/torch/lantern
@@ -381,8 +381,8 @@
 	armor = /obj/item/clothing/armor/leather/vest
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
 	pants = /obj/item/clothing/pants/tights/black
-	gloves = /obj/item/clothing/gloves/roguetown/fingerless
-	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+	gloves = /obj/item/clothing/gloves/fingerless
+	wrists = /obj/item/clothing/wrists/bracers/leather
 	shoes = /obj/item/clothing/shoes/boots
 	beltl = /obj/item/weapon/whip
 	beltr = /obj/item/flashlight/flare/torch/lantern

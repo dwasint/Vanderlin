@@ -745,7 +745,7 @@
 "rv" = (
 /obj/structure/closet/crate/roguecloset/inn/south,
 /obj/effect/spawner/roguemap/loot/food,
-/obj/item/clothing/gloves/roguetown/angle/grenzel,
+/obj/item/clothing/gloves/angle/grenzel,
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors)
 "rx" = (
@@ -1295,7 +1295,7 @@
 "Fg" = (
 /obj/structure/closet/crate/drawer/random,
 /obj/effect/spawner/roguemap/loot,
-/obj/item/clothing/gloves/roguetown/leather/masterwork,
+/obj/item/clothing/gloves/leather/masterwork,
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors)
 "Fh" = (
@@ -2024,7 +2024,7 @@
 "WC" = (
 /obj/structure/closet/crate/roguecloset/lord,
 /obj/effect/spawner/roguemap/loot/weapon,
-/obj/item/clothing/wrists/roguetown/bracers,
+/obj/item/clothing/wrists/bracers,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors)
 "WH" = (

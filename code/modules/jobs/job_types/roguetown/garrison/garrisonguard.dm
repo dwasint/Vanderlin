@@ -53,7 +53,7 @@
 	wrists = /obj/item/rope/chain
 	shoes = /obj/item/clothing/shoes/boots
 	belt = /obj/item/storage/belt/rogue/leather
-	gloves = /obj/item/clothing/gloves/roguetown/leather
+	gloves = /obj/item/clothing/gloves/leather
 
 // EVERY TOWN GUARD SHOULD HAVE AT LEAST THREE CLUB SKILL
 

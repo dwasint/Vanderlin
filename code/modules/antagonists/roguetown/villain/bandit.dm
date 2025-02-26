@@ -80,7 +80,7 @@
 			H.change_stat(STATKEY_END, 1)
 			H.change_stat(STATKEY_CON, 1)
 
-			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+			wrists = /obj/item/clothing/wrists/bracers/leather
 			beltr = /obj/item/clothing/face/shepherd/rag
 			beltl = /obj/item/weapon/knife/hunting
 
@@ -184,7 +184,7 @@
 			H.change_stat(STATKEY_SPD, 1)
 
 			neck = /obj/item/clothing/neck/coif
-			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+			wrists = /obj/item/clothing/wrists/bracers/leather
 			pants = /obj/item/clothing/pants/trou/leather
 			beltl = /obj/item/clothing/face/shepherd/rag
 			neck = /obj/item/clothing/neck/coif
@@ -243,10 +243,10 @@
 
 	switch(pick(1,3))
 		if (1 to 2)
-			gloves = /obj/item/clothing/gloves/roguetown/leather
+			gloves = /obj/item/clothing/gloves/leather
 			shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
 		if (3)
-			gloves = /obj/item/clothing/gloves/roguetown/angle
+			gloves = /obj/item/clothing/gloves/angle
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 
 	H.change_stat(STATKEY_INT, -1)

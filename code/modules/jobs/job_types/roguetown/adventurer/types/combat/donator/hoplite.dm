@@ -34,7 +34,7 @@
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	armor = /obj/item/clothing/armor/rare/hoplite
 	head = /obj/item/clothing/head/rare/hoplite
-	wrists = /obj/item/clothing/wrists/roguetown/bracers/hoplite
+	wrists = /obj/item/clothing/wrists/bracers/hoplite
 	neck = /obj/item/clothing/neck/gorget/hoplite
 	backl = /obj/item/weapon/shield/tower/hoplite
 	var/weapontype = pickweight(list("Khopesh" = 5, "Spear" = 3, "WingedSpear" = 2)) // Rolls for various weapon options based on weighted list

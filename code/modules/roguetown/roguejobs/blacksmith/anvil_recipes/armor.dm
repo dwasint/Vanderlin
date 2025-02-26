@@ -20,7 +20,7 @@
 	name = "Copper bracers"
 	recipe_name = "a pair of Copper bracers"
 	req_bar = /obj/item/ingot/copper
-	created_item = /obj/item/clothing/wrists/roguetown/bracers/copper
+	created_item = /obj/item/clothing/wrists/bracers/copper
 	craftdiff = 0
 
 /datum/anvil_recipe/armor/copper/cap
@@ -70,7 +70,7 @@
 	name = "2x Iron Chain Gauntlets"
 	recipe_name = "two pairs of Chain Gauntlets"
 	req_bar = /obj/item/ingot/iron
-	created_item = /obj/item/clothing/gloves/roguetown/chain/iron
+	created_item = /obj/item/clothing/gloves/chain/iron
 	createmultiple = TRUE
 	createditem_num = 1
 	craftdiff = 0
@@ -186,7 +186,7 @@
 	name = "2x Chain Gauntlets"
 	recipe_name = "two pairs of Chain Gauntlets"
 	req_bar = /obj/item/ingot/steel
-	created_item = /obj/item/clothing/gloves/roguetown/chain
+	created_item = /obj/item/clothing/gloves/chain
 	createmultiple = TRUE
 	createditem_num = 1
 	craftdiff = 2
@@ -277,7 +277,7 @@
 	name = "Plate Vambraces"
 	recipe_name = "Plate Vambraces"
 	req_bar = /obj/item/ingot/steel
-	created_item = /obj/item/clothing/wrists/roguetown/bracers
+	created_item = /obj/item/clothing/wrists/bracers
 	craftdiff = 3
 
 /datum/anvil_recipe/armor/steel/plateleg
@@ -291,7 +291,7 @@
 	name = "Plate Gauntlets"
 	recipe_name = "a pair of Plate Gauntlets"
 	req_bar = /obj/item/ingot/steel
-	created_item = /obj/item/clothing/gloves/roguetown/plate
+	created_item = /obj/item/clothing/gloves/plate
 	craftdiff = 3
 
 /datum/anvil_recipe/armor/steel/plateboot
@@ -399,7 +399,7 @@
 /datum/anvil_recipe/armor/blacksteel/plategloves
 	name = "Blacksteel Plate Gauntlets"
 	req_bar = /obj/item/ingot/blacksteel
-	created_item = /obj/item/clothing/gloves/roguetown/plate/blk
+	created_item = /obj/item/clothing/gloves/plate/blk
 	craftdiff = 3
 
 /datum/anvil_recipe/armor/blacksteel/plateboots

@@ -46,7 +46,7 @@
 	if(prob(10))
 		cloak = /obj/item/clothing/cloak/raincloak/brown
 	if(prob(10))
-		gloves = /obj/item/clothing/gloves/roguetown/fingerless
+		gloves = /obj/item/clothing/gloves/fingerless
 	if(H.gender == FEMALE)
 		armor = /obj/item/clothing/suit/roguetown/shirt/rags
 	else

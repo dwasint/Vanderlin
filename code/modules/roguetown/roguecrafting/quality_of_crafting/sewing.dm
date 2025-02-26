@@ -59,7 +59,7 @@
 		/obj/item/natural/cloth = 1,
 		/obj/item/natural/fibers = 1,
 	)
-	output = /obj/item/clothing/gloves/roguetown/fingerless
+	output = /obj/item/clothing/gloves/fingerless
 
 /datum/repeatable_crafting_recipe/sewing/shortshirt
 	name = "cloth short shirt"
@@ -264,7 +264,7 @@
 	requirements = list(
 		/obj/item/natural/cloth = 2
 	)
-	output = /obj/item/clothing/wrists/roguetown/wrappings
+	output = /obj/item/clothing/wrists/wrappings
 	craftdiff = 2
 
 /datum/repeatable_crafting_recipe/sewing/nocwrappings
@@ -272,7 +272,7 @@
 	requirements = list(
 		/obj/item/natural/cloth = 2
 	)
-	output = /obj/item/clothing/wrists/roguetown/nocwrappings
+	output = /obj/item/clothing/wrists/nocwrappings
 	craftdiff = 2
 
 /datum/repeatable_crafting_recipe/sewing/Bluskirt
@@ -535,7 +535,7 @@
 
 /datum/repeatable_crafting_recipe/sewing/weaving/shadowgloves
 	name = "gloves"
-	output = /obj/item/clothing/gloves/roguetown/fingerless/shadowgloves
+	output = /obj/item/clothing/gloves/fingerless/shadowgloves
 	requirements = list(/obj/item/natural/cloth = 1,
 				/obj/item/natural/silk = 1)
 	craftdiff = 2

@@ -25,7 +25,7 @@
 	beltl = /obj/item/weapon/tongs
 
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
-	gloves = /obj/item/clothing/gloves/roguetown/leather
+	gloves = /obj/item/clothing/gloves/leather
 	cloak = /obj/item/clothing/cloak/apron/brown
 	pants = /obj/item/clothing/pants/trou
 

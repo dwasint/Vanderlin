@@ -38,7 +38,7 @@
 		backr = /obj/item/weapon/sword/long/greatsword/elfgsword
 		beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
 		shoes = /obj/item/clothing/shoes/boots/rare/elfplate
-		gloves = /obj/item/clothing/gloves/roguetown/rare/elfplate
+		gloves = /obj/item/clothing/gloves/rare/elfplate
 		belt = /obj/item/storage/belt/rogue/leather
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 		armor = /obj/item/clothing/armor/rare/elfplate
@@ -50,7 +50,7 @@
 		backr = /obj/item/weapon/sword/long/greatsword/elfgsword
 		beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
 		shoes = /obj/item/clothing/shoes/boots/rare/elfplate/welfplate
-		gloves = /obj/item/clothing/gloves/roguetown/rare/elfplate/welfplate
+		gloves = /obj/item/clothing/gloves/rare/elfplate/welfplate
 		belt = /obj/item/storage/belt/rogue/leather
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 		armor = /obj/item/clothing/armor/rare/elfplate/welfplate

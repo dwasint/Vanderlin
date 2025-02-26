@@ -20,7 +20,7 @@
 /datum/outfit/job/roguetown/zybantine_migration/emir/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/shalal
-	gloves = /obj/item/clothing/gloves/roguetown/leather
+	gloves = /obj/item/clothing/gloves/leather
 	head = /obj/item/clothing/head/crown/circlet
 	cloak = /obj/item/clothing/cloak/raincloak/purple
 	armor = /obj/item/clothing/armor/gambeson/arming
@@ -88,7 +88,7 @@
 /datum/outfit/job/roguetown/zybantine_migration/amirah/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/shalal
-	gloves = /obj/item/clothing/gloves/roguetown/leather
+	gloves = /obj/item/clothing/gloves/leather
 	head = /obj/item/clothing/head/crown/nyle
 	cloak = /obj/item/clothing/cloak/raincloak/purple
 	armor = /obj/item/clothing/armor/leather/jacket/silk_coat
@@ -173,13 +173,13 @@
 	pants = /obj/item/clothing/pants/tights/black
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
 	shoes = /obj/item/clothing/shoes/boots/rare/zybanplate
-	gloves = /obj/item/clothing/gloves/roguetown/rare/zybanplate
+	gloves = /obj/item/clothing/gloves/rare/zybanplate
 	belt = /obj/item/storage/belt/rogue/leather/shalal
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 	armor = /obj/item/clothing/armor/rare/zybanplate
 	backl = /obj/item/storage/backpack/rogue/satchel
 	head = /obj/item/clothing/head/rare/zybanplate
-	wrists = /obj/item/clothing/wrists/roguetown/bracers
+	wrists = /obj/item/clothing/wrists/bracers
 	neck = /obj/item/clothing/neck/chaincoif
 	if(!H.has_language(/datum/language/zybantine))
 		H.grant_language(/datum/language/zybantine)
@@ -212,7 +212,7 @@
 	..()
 	shoes = /obj/item/clothing/shoes/shalal
 	head = /obj/item/clothing/head/helmet/sallet/zybantine
-	gloves = /obj/item/clothing/gloves/roguetown/angle
+	gloves = /obj/item/clothing/gloves/angle
 	belt = /obj/item/storage/belt/rogue/leather/shalal
 	armor = /obj/item/clothing/armor/brigandine/coatplates
 	beltr = /obj/item/weapon/sword/long/rider
@@ -285,7 +285,7 @@
 	pants = /obj/item/clothing/pants/trou/leather
 	beltr = /obj/item/weapon/knife/dagger/steel/special
 	shoes = /obj/item/clothing/shoes/shalal
-	gloves = /obj/item/clothing/gloves/roguetown/angle
+	gloves = /obj/item/clothing/gloves/angle
 	belt = /obj/item/storage/belt/rogue/leather/shalal
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/red
 	armor = /obj/item/clothing/armor/leather/splint

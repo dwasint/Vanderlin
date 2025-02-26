@@ -22,7 +22,7 @@
 	armor = /obj/item/clothing/armor/medium/surcoat/heartfelt
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
 	beltl = /obj/item/scomstone
-	gloves = /obj/item/clothing/gloves/roguetown/leather/black
+	gloves = /obj/item/clothing/gloves/leather/black
 	neck = /obj/item/clothing/neck/chaincoif
 	beltl = /obj/item/weapon/sword/long
 	if(H.mind)

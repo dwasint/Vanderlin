@@ -10,7 +10,7 @@
 	..()
 	head = /obj/item/clothing/head/rare/elfplate
 	cloak = /obj/item/clothing/cloak/half/shadowcloak
-	gloves = /obj/item/clothing/gloves/roguetown/chain/iron/shadowgauntlets
+	gloves = /obj/item/clothing/gloves/chain/iron/shadowgauntlets
 	pants = /obj/item/clothing/pants/trou/shadowpants
 	shirt = /obj/item/clothing/suit/roguetown/shirt/shadowshirt
 	armor = /obj/item/clothing/armor/rare/elfplate
@@ -63,8 +63,8 @@
 	beltr = /obj/item/ammo_holder/quiver/bolts
 	armor = /obj/item/clothing/armor/chainmail
 	backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
-	gloves = /obj/item/clothing/gloves/roguetown/leather
-	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+	gloves = /obj/item/clothing/gloves/leather
+	wrists = /obj/item/clothing/wrists/bracers/leather
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/weapon/knife/dagger/steel = 1, /obj/item/storage/belt/rogue/pouch/coins/poor = 1, /obj/item/clothing/neck/chaincoif = 1, /obj/item/weapon/hammer/iron = 1,)
 	if(H.mind)

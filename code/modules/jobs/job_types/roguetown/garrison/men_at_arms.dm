@@ -34,7 +34,7 @@
 
 /datum/outfit/job/roguetown/watchman/pre_equip(mob/living/carbon/human/H)
 	. = ..()
-	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+	wrists = /obj/item/clothing/wrists/bracers/leather
 	pants = /obj/item/clothing/pants/trou/leather/guard
 	shoes = /obj/item/clothing/shoes/boots
 	belt = /obj/item/storage/belt/rogue/leather
@@ -68,7 +68,7 @@
 	armor = /obj/item/clothing/armor/cuirass
 	shirt = /obj/item/clothing/armor/chainmail
 	neck = /obj/item/clothing/neck/chaincoif/iron
-	gloves = /obj/item/clothing/gloves/roguetown/chain
+	gloves = /obj/item/clothing/gloves/chain
 	beltr = /obj/item/weapon/sword/arming
 	backr = /obj/item/weapon/polearm/spear/billhook
 	backl = /obj/item/storage/backpack/rogue/satchel
@@ -112,7 +112,7 @@
 	armor = /obj/item/clothing/armor/leather/advanced
 	shirt = /obj/item/clothing/armor/gambeson
 	neck = /obj/item/clothing/neck/gorget
-	gloves = /obj/item/clothing/gloves/roguetown/chain
+	gloves = /obj/item/clothing/gloves/chain
 	beltr = /obj/item/weapon/sword/rapier
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/weapon/knife/dagger/steel/special)
@@ -153,7 +153,7 @@
 	shirt = /obj/item/clothing/armor/gambeson/heavy
 	beltr = /obj/item/weapon/mace/cudgel
 	neck = /obj/item/clothing/neck/chaincoif/iron
-	gloves = /obj/item/clothing/gloves/roguetown/leather
+	gloves = /obj/item/clothing/gloves/leather
 	backpack_contents = list(/obj/item/weapon/knife/dagger/steel/special)
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE)

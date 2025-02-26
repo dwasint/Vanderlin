@@ -47,7 +47,7 @@
 	pants = /obj/item/clothing/pants/trou/leather
 	cloak = /obj/item/clothing/cloak/cape/puritan
 	head = /obj/item/clothing/head/helmet/leather/inquisitor
-	gloves = /obj/item/clothing/gloves/roguetown/angle
+	gloves = /obj/item/clothing/gloves/angle
 	wrists = /obj/item/clothing/neck/psycross/silver
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backl = /obj/item/weapon/sword/long/forgotten

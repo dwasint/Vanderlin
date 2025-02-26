@@ -35,7 +35,7 @@
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
 "cA" = (
-/obj/item/clothing/gloves/roguetown/chain/iron,
+/obj/item/clothing/gloves/chain/iron,
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
 "cR" = (

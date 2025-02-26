@@ -61,22 +61,22 @@
 /datum/supply_pack/rogue/armor/leather_bracers
 	name = "Leather Bracers"
 	cost = 6
-	contains = /obj/item/clothing/wrists/roguetown/bracers/leather
+	contains = /obj/item/clothing/wrists/bracers/leather
 
 /datum/supply_pack/rogue/armor/bracers
 	name = "Steel Bracers"
 	cost = 25
-	contains = /obj/item/clothing/wrists/roguetown/bracers
+	contains = /obj/item/clothing/wrists/bracers
 
 /datum/supply_pack/rogue/armor/angle_gloves
 	name = "Heavy Leather Gloves"
 	cost = 15
-	contains = /obj/item/clothing/gloves/roguetown/angle
+	contains = /obj/item/clothing/gloves/angle
 
 /datum/supply_pack/rogue/armor/chain_gloves_iron
 	name = "Iron Chain Gloves"
 	cost = 20
-	contains = /obj/item/clothing/gloves/roguetown/chain/iron
+	contains = /obj/item/clothing/gloves/chain/iron
 
 /datum/supply_pack/rogue/armor/chainlegs_iron
 	name = "Iron Chain Chausses"

@@ -5510,7 +5510,7 @@
 /area/rogue)
 "are" = (
 /obj/structure/closet/crate/chest,
-/obj/item/clothing/wrists/roguetown/bracers/leather,
+/obj/item/clothing/wrists/bracers/leather,
 /turf/open/floor/rogue/woodturned,
 /area/rogue)
 "arf" = (

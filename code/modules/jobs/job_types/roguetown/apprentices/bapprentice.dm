@@ -40,7 +40,7 @@
 		beltr = /obj/item/key/blacksmith
 		armor = /obj/item/clothing/armor/leather/vest
 		backr = /obj/item/storage/backpack/rogue/satchel
-		wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+		wrists = /obj/item/clothing/wrists/bracers/leather
 		H.change_stat(STATKEY_END, 2)
 		H.change_stat(STATKEY_SPD, 1)
 	else

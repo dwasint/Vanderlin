@@ -255,7 +255,7 @@
 	anvilrepair = /datum/skill/craft/blacksmithing
 	smeltresult = /obj/item/ingot/blacksteel
 
-/obj/item/clothing/gloves/roguetown/plate/blk
+/obj/item/clothing/gloves/plate/blk
 	name = "blacksteel gauntlets"
 	icon_state = "bkgloves"
 	icon = 'icons/roguetown/clothing/special/blkknight.dmi'

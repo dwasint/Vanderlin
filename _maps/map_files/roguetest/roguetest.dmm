@@ -132,14 +132,14 @@
 	icon_state = "tablewood2";
 	dir = 10
 	},
-/obj/item/clothing/wrists/roguetown/bracers,
-/obj/item/clothing/wrists/roguetown/bracers,
-/obj/item/clothing/wrists/roguetown/bracers,
-/obj/item/clothing/wrists/roguetown/bracers/leather,
-/obj/item/clothing/wrists/roguetown/bracers/leather,
-/obj/item/clothing/wrists/roguetown/bracers/leather,
-/obj/item/clothing/wrists/roguetown/bracers,
-/obj/item/clothing/wrists/roguetown/bracers,
+/obj/item/clothing/wrists/bracers,
+/obj/item/clothing/wrists/bracers,
+/obj/item/clothing/wrists/bracers,
+/obj/item/clothing/wrists/bracers/leather,
+/obj/item/clothing/wrists/bracers/leather,
+/obj/item/clothing/wrists/bracers/leather,
+/obj/item/clothing/wrists/bracers,
+/obj/item/clothing/wrists/bracers,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors)
 "az" = (
@@ -219,10 +219,10 @@
 	icon_state = "tablewood2";
 	dir = 10
 	},
-/obj/item/clothing/gloves/roguetown/chain,
-/obj/item/clothing/gloves/roguetown/chain,
-/obj/item/clothing/gloves/roguetown/chain,
-/obj/item/clothing/gloves/roguetown/chain,
+/obj/item/clothing/gloves/chain,
+/obj/item/clothing/gloves/chain,
+/obj/item/clothing/gloves/chain,
+/obj/item/clothing/gloves/chain,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors)
 "aI" = (

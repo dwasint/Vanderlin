@@ -15,7 +15,7 @@
 	shoes = /obj/item/clothing/shoes/boots/leather
 	cloak = /obj/item/clothing/cloak/half/red
 	head = /obj/item/clothing/head/helmet/sallet/elven
-	gloves = /obj/item/clothing/gloves/roguetown/angle
+	gloves = /obj/item/clothing/gloves/angle
 	belt = /obj/item/storage/belt/rogue/leather/mercenary/black
 	armor = /obj/item/clothing/armor/cuirass/elven
 	backr = /obj/item/weapon/polearm/spear

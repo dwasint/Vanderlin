@@ -86,8 +86,8 @@
 	neck = /obj/item/clothing/neck/chaincoif
 	armor = /obj/item/clothing/suit/roguetown/shirt/robe/necromancer
 	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/ucolored
-	wrists = /obj/item/clothing/wrists/roguetown/bracers
-	gloves = /obj/item/clothing/gloves/roguetown/chain
+	wrists = /obj/item/clothing/wrists/bracers
+	gloves = /obj/item/clothing/gloves/chain
 	belt = /obj/item/storage/belt/rogue/leather/black
 	backl = /obj/item/storage/backpack/rogue/satchel
 	beltr = /obj/item/reagent_containers/glass/bottle/rogue/manapot

@@ -123,7 +123,7 @@
 			beltr = /obj/item/ammo_holder/quiver/arrows
 			beltl = /obj/item/flashlight/flare/torch/lantern
 			backpack_contents = list(/obj/item/flint = 1, /obj/item/bait = 1, /obj/item/weapon/knife/hunting = 1)
-			gloves = /obj/item/clothing/gloves/roguetown/leather
+			gloves = /obj/item/clothing/gloves/leather
 		if("Miner")
 			H.mind?.adjust_skillrank(/datum/skill/labor/mining, 1, TRUE)
 			H.mind?.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE) //Use the pickaxe...
@@ -180,7 +180,7 @@
 			pants = /obj/item/clothing/pants/trou
 			head = /obj/item/clothing/head/strawhat
 			shoes = /obj/item/clothing/shoes/simpleshoes
-			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+			wrists = /obj/item/clothing/wrists/bracers/leather
 			backr = /obj/item/weapon/hoe
 			backl = /obj/item/storage/backpack/rogue/satchel
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
@@ -205,7 +205,7 @@
 			shoes = /obj/item/clothing/shoes/boots/leather
 			backr = /obj/item/storage/backpack/rogue/satchel
 			neck = /obj/item/clothing/neck/coif
-			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+			wrists = /obj/item/clothing/wrists/bracers/leather
 			armor = /obj/item/clothing/armor/gambeson/light/striped
 			beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
 			beltl = /obj/item/weapon/hammer/steel

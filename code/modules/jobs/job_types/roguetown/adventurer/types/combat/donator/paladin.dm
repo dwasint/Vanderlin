@@ -68,7 +68,7 @@
 	id = /obj/item/clothing/ring/silver/toper
 	cloak = /obj/item/clothing/cloak/tabard/crusader
 	neck = /obj/item/clothing/neck/chaincoif
-	gloves = /obj/item/clothing/gloves/roguetown/plate
+	gloves = /obj/item/clothing/gloves/plate
 	backl = /obj/item/weapon/sword/long/judgement
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)

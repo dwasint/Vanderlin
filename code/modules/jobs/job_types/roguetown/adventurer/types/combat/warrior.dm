@@ -41,7 +41,7 @@
 		H.underwear_color = CLOTHING_SOOT_BLACK
 		H.update_body()
 	shoes = /obj/item/clothing/shoes/boots
-	gloves = /obj/item/clothing/gloves/roguetown/leather
+	gloves = /obj/item/clothing/gloves/leather
 	belt = /obj/item/storage/belt/rogue/leather
 	pants = /obj/item/clothing/pants/tights/black
 	backl = /obj/item/storage/backpack/rogue/satchel

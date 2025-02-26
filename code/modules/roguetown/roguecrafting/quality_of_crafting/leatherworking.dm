@@ -31,12 +31,12 @@
 /datum/repeatable_crafting_recipe/leather/gloves
 	name = "leather gloves"
 	output_amount = 2
-	output = /obj/item/clothing/gloves/roguetown/leather
+	output = /obj/item/clothing/gloves/leather
 
 /datum/repeatable_crafting_recipe/leather/bracers
 	name = "leather bracers"
 	output_amount = 2
-	output = /obj/item/clothing/wrists/roguetown/bracers/leather
+	output = /obj/item/clothing/wrists/bracers/leather
 
 /datum/repeatable_crafting_recipe/leather/pants
 	name = "leather pants"
@@ -211,7 +211,7 @@
 		/obj/item/natural/hide/cured = 1,
 		/obj/item/natural/fur = 1,
 	)
-	output = /obj/item/clothing/gloves/roguetown/angle
+	output = /obj/item/clothing/gloves/angle
 	craftdiff = 1
 
 /datum/repeatable_crafting_recipe/leather/helmet
@@ -381,7 +381,7 @@
 
 /datum/repeatable_crafting_recipe/leather/standalone/gloves
 	name = "hardened leather gloves"
-	output = /obj/item/clothing/gloves/roguetown/leather/advanced
+	output = /obj/item/clothing/gloves/leather/advanced
 	requirements = list(/obj/item/natural/hide/cured = 1,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 4
@@ -420,9 +420,9 @@
 
 /datum/repeatable_crafting_recipe/leather/standalone/gloves/masterwork
 	name = "masterwork leather gloves"
-	output = /obj/item/clothing/gloves/roguetown/leather/masterwork
-	attacking_atom = /obj/item/clothing/gloves/roguetown/leather
-	requirements = list(/obj/item/clothing/gloves/roguetown/leather = 1,
+	output = /obj/item/clothing/gloves/leather/masterwork
+	attacking_atom = /obj/item/clothing/gloves/leather
+	requirements = list(/obj/item/clothing/gloves/leather = 1,
 				/obj/item/natural/cured/essence = 1,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 5
@@ -432,9 +432,9 @@
 
 /datum/repeatable_crafting_recipe/leather/standalone/bracers/masterwork
 	name = "masterwork leather bracers"
-	output = /obj/item/clothing/wrists/roguetown/bracers/leather/masterwork
-	attacking_atom = /obj/item/clothing/wrists/roguetown/bracers/leather
-	requirements = list(/obj/item/clothing/wrists/roguetown/bracers/leather = 1,
+	output = /obj/item/clothing/wrists/bracers/leather/masterwork
+	attacking_atom = /obj/item/clothing/wrists/bracers/leather
+	requirements = list(/obj/item/clothing/wrists/bracers/leather = 1,
 				/obj/item/natural/cured/essence = 1,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 5

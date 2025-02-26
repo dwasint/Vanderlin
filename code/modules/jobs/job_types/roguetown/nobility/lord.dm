@@ -91,7 +91,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/royal
 		shoes = /obj/item/clothing/shoes/shortboots
 		cloak = /obj/item/clothing/cloak/lordcloak/ladycloak
-		wrists = /obj/item/clothing/wrists/roguetown/royalsleeves
+		wrists = /obj/item/clothing/wrists/royalsleeves
 
 		if(H.wear_mask)
 			if(istype(H.wear_mask, /obj/item/clothing/face/eyepatch))

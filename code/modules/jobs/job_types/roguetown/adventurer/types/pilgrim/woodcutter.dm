@@ -37,7 +37,7 @@
 	shoes = /obj/item/clothing/shoes/boots/leather
 	backr = /obj/item/storage/backpack/rogue/satchel
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
-	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+	wrists = /obj/item/clothing/wrists/bracers/leather
 	armor = /obj/item/clothing/armor/gambeson/light/striped
 	beltr = /obj/item/weapon/axe/iron
 	beltl = /obj/item/weapon/knife/villager

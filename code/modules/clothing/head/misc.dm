@@ -231,3 +231,12 @@
 
 /obj/item/clothing/head/armingcap/dwarf // gnome hat I guess?
 	color = "#cb3434"
+
+/obj/item/clothing/head/vampire
+	name = "crown of darkness"
+	icon_state = "vcrown"
+	body_parts_covered = null
+	slot_flags = ITEM_SLOT_HEAD
+	dynamic_hair_suffix = null
+	sellprice = 1000
+	resistance_flags = FIRE_PROOF

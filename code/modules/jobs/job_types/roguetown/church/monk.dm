@@ -41,7 +41,7 @@
 		if(/datum/patron/divine/astrata)
 			head = /obj/item/clothing/head/roguehood/astrata
 			neck = /obj/item/clothing/neck/psycross/silver/astrata
-			wrists = /obj/item/clothing/wrists/roguetown/wrappings
+			wrists = /obj/item/clothing/wrists/wrappings
 			shoes = /obj/item/clothing/shoes/sandals
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/astrata
 			H.cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'
@@ -61,7 +61,7 @@
 		if(/datum/patron/divine/noc)
 			head = /obj/item/clothing/head/roguehood/nochood
 			neck = /obj/item/clothing/neck/psycross/noc
-			wrists = /obj/item/clothing/wrists/roguetown/nocwrappings
+			wrists = /obj/item/clothing/wrists/nocwrappings
 			shoes = /obj/item/clothing/shoes/sandals
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/noc
 			H.cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'

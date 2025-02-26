@@ -35,9 +35,9 @@
 	shirt = /obj/item/clothing/armor/chainmail/iron
 	pants = /obj/item/clothing/pants/trou/leather
 	shoes = /obj/item/clothing/shoes/boots/furlinedboots
-	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+	wrists = /obj/item/clothing/wrists/bracers/leather
 	head = /obj/item/clothing/head/helmet/kettle/slit
-	gloves = /obj/item/clothing/gloves/roguetown/leather
+	gloves = /obj/item/clothing/gloves/leather
 	neck = /obj/item/clothing/neck/bevor
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/weapon/axe/iron

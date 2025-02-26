@@ -36,13 +36,13 @@
 	backr = /obj/item/weapon/sword/long/greatsword/flamberge
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
 	shoes = /obj/item/clothing/shoes/boots/rare/grenzelplate
-	gloves = /obj/item/clothing/gloves/roguetown/rare/grenzelplate
+	gloves = /obj/item/clothing/gloves/rare/grenzelplate
 	belt = /obj/item/storage/belt/rogue/leather
 	shirt = /obj/item/clothing/armor/gambeson
 	armor = /obj/item/clothing/armor/rare/grenzelplate
 	backl = /obj/item/storage/backpack/rogue/satchel
 	head = /obj/item/clothing/head/rare/grenzelplate
-	wrists = /obj/item/clothing/wrists/roguetown/bracers
+	wrists = /obj/item/clothing/wrists/bracers
 	neck = /obj/item/clothing/neck/chaincoif
 	if(!H.has_language(/datum/language/oldpsydonic))
 		H.grant_language(/datum/language/oldpsydonic)

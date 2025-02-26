@@ -59,7 +59,7 @@
 	neck = /obj/item/clothing/neck/chaincoif
 	beltl = /obj/item/weapon/mace/spiked
 	backr = /obj/item/weapon/shield/wood/adept
-	gloves = /obj/item/clothing/gloves/roguetown/leather
+	gloves = /obj/item/clothing/gloves/leather
 	backpack_contents = list(/obj/item/storage/keyring/shepherd = 1, /obj/item/weapon/knife/dagger/silver = 1)
 
 	//Stats for class

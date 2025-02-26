@@ -32,8 +32,8 @@
 
 		if(H.gender == FEMALE) //Melee defense-oriented brute, heavy lean towards non-lethal takedowns and capture.
 			armor = /obj/item/clothing/armor/cuirass/iron/shadowplate
-			gloves = /obj/item/clothing/gloves/roguetown/chain/iron/shadowgauntlets
-			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+			gloves = /obj/item/clothing/gloves/chain/iron/shadowgauntlets
+			wrists = /obj/item/clothing/wrists/bracers/leather
 			mask = /obj/item/clothing/face/facemask/shadowfacemask
 			neck = /obj/item/clothing/neck/gorget
 			backr = /obj/item/weapon/shield/tower/spidershield
@@ -55,7 +55,7 @@
 			shirt = /obj/item/clothing/suit/roguetown/shirt/shadowshirt
 			armor = /obj/item/clothing/armor/gambeson/shadowrobe
 			cloak = /obj/item/clothing/cloak/half/shadowcloak
-			gloves = /obj/item/clothing/gloves/roguetown/fingerless/shadowgloves
+			gloves = /obj/item/clothing/gloves/fingerless/shadowgloves
 			mask = /obj/item/clothing/face/shepherd/shadowmask
 			neck = /obj/item/clothing/neck/chaincoif/iron
 			backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve //Coupled with the racial PER malus, abysmal damage, but good for poison arrows.

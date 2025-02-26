@@ -241,7 +241,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
 	pants = /obj/item/clothing/pants/tights/vagrant
 	shoes = /obj/item/clothing/shoes/simpleshoes
-	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+	wrists = /obj/item/clothing/wrists/bracers/leather
 	head = /obj/item/clothing/head/roguehood/random
 	var/loadout = rand(1,6)
 	switch(loadout)
@@ -277,7 +277,7 @@
 /datum/outfit/job/roguetown/species/zizombie/npc/random/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(prob(50))
-		wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+		wrists = /obj/item/clothing/wrists/bracers/leather
 	if(prob(50))
 		armor = /obj/item/clothing/armor/chainmail/iron
 	if(prob(30))
@@ -331,7 +331,7 @@
 			armor = /obj/item/clothing/armor/chainmail/iron
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
 			pants = /obj/item/clothing/pants/tights/vagrant
-			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+			wrists = /obj/item/clothing/wrists/bracers/leather
 			neck = /obj/item/clothing/neck/chaincoif
 			head = /obj/item/clothing/head/helmet/kettle
 		if(2)//zizombie Warrior
@@ -343,7 +343,7 @@
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
 			pants = /obj/item/clothing/pants/tights/vagrant
 			neck = /obj/item/clothing/neck/chaincoif
-			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+			wrists = /obj/item/clothing/wrists/bracers/leather
 			head = /obj/item/clothing/head/helmet/kettle
 		if(3) //zizombie Warrior
 			r_hand = /obj/item/weapon/flail
@@ -354,7 +354,7 @@
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
 			pants = /obj/item/clothing/pants/tights/vagrant
 			neck = /obj/item/clothing/neck/chaincoif
-			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+			wrists = /obj/item/clothing/wrists/bracers/leather
 			head = /obj/item/clothing/head/helmet/skullcap
 		if(4) //zizombie Warrior
 			r_hand =/obj/item/weapon/polearm/spear
@@ -363,7 +363,7 @@
 			neck = /obj/item/clothing/neck/chaincoif
 			shoes = /obj/item/clothing/shoes/boots
 			pants = /obj/item/clothing/pants/tights/vagrant
-			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+			wrists = /obj/item/clothing/wrists/bracers/leather
 			head = /obj/item/clothing/head/helmet/kettle
 		if(5) //zizombie Warrior
 			r_hand = /obj/item/weapon/sword/sabre
@@ -371,7 +371,7 @@
 			armor = /obj/item/clothing/armor/chainmail/iron
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
 			pants = /obj/item/clothing/pants/tights/vagrant
-			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+			wrists = /obj/item/clothing/wrists/bracers/leather
 			neck = /obj/item/clothing/neck/chaincoif
 			shoes = /obj/item/clothing/shoes/boots
 			head = /obj/item/clothing/head/helmet/kettle
@@ -383,7 +383,7 @@
 			pants = /obj/item/clothing/pants/tights/vagrant
 			neck = /obj/item/clothing/neck/chaincoif
 			armor = /obj/item/clothing/armor/chainmail/iron
-			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+			wrists = /obj/item/clothing/wrists/bracers/leather
 			head = /obj/item/clothing/head/helmet/skullcap
 
 ///////////////////////////////////////////////////////////// EVENTMIN ZOMBIE MILITIA
@@ -416,7 +416,7 @@
 			armor = /obj/item/clothing/armor/chainmail/iron
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
 			pants = /obj/item/clothing/pants/tights/vagrant
-			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+			wrists = /obj/item/clothing/wrists/bracers/leather
 			neck = /obj/item/clothing/neck/chaincoif
 			cloak = /obj/item/clothing/cloak/stabard/guard
 			head = /obj/item/clothing/head/helmet/kettle
@@ -427,7 +427,7 @@
 			armor = /obj/item/clothing/armor/chainmail/iron
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
 			pants = /obj/item/clothing/pants/tights/vagrant
-			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+			wrists = /obj/item/clothing/wrists/bracers/leather
 			neck = /obj/item/clothing/neck/chaincoif
 			cloak = /obj/item/clothing/cloak/stabard/guard
 			head = /obj/item/clothing/head/helmet/kettle
@@ -438,7 +438,7 @@
 			armor = /obj/item/clothing/armor/chainmail/iron
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
 			pants = /obj/item/clothing/pants/tights/vagrant
-			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+			wrists = /obj/item/clothing/wrists/bracers/leather
 			neck = /obj/item/clothing/neck/chaincoif
 			cloak = /obj/item/clothing/cloak/stabard/guard
 			head = /obj/item/clothing/head/helmet/kettle
@@ -449,7 +449,7 @@
 			armor = /obj/item/clothing/armor/chainmail/iron
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
 			pants = /obj/item/clothing/pants/tights/vagrant
-			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+			wrists = /obj/item/clothing/wrists/bracers/leather
 			neck = /obj/item/clothing/neck/chaincoif
 			cloak = /obj/item/clothing/cloak/stabard/guard
 			head = /obj/item/clothing/head/helmet/kettle
@@ -460,7 +460,7 @@
 			armor = /obj/item/clothing/armor/chainmail/iron
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
 			pants = /obj/item/clothing/pants/tights/vagrant
-			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+			wrists = /obj/item/clothing/wrists/bracers/leather
 			neck = /obj/item/clothing/neck/chaincoif
 			cloak = /obj/item/clothing/cloak/stabard/guard
 			head = /obj/item/clothing/head/helmet/kettle
@@ -495,63 +495,63 @@
 			r_hand = /obj/item/weapon/sword/long/greatsword/zwei
 			pants = /obj/item/clothing/pants/grenzelpants
 			shoes = /obj/item/clothing/shoes/boots/armor/light
-			gloves = /obj/item/clothing/gloves/roguetown/angle/grenzel
+			gloves = /obj/item/clothing/gloves/angle/grenzel
 			belt = /obj/item/storage/belt/rogue/leather
 			shirt = /obj/item/clothing/suit/roguetown/shirt/grenzelhoft
 			head = /obj/item/clothing/head/helmet/kettle
 			neck = /obj/item/clothing/neck/chaincoif
 			armor = /obj/item/clothing/armor/cuirass/grenzelhoft
 			backl = /obj/item/storage/backpack/rogue/satchel
-			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+			wrists = /obj/item/clothing/wrists/bracers/leather
 		if(2) //zizombie Warrior
 			r_hand = /obj/item/weapon/polearm/halberd
 			pants = /obj/item/clothing/pants/grenzelpants
 			shoes = /obj/item/clothing/shoes/boots/armor/light
-			gloves = /obj/item/clothing/gloves/roguetown/angle/grenzel
+			gloves = /obj/item/clothing/gloves/angle/grenzel
 			belt = /obj/item/storage/belt/rogue/leather
 			shirt = /obj/item/clothing/suit/roguetown/shirt/grenzelhoft
 			head = /obj/item/clothing/head/helmet/sallet
 			neck = /obj/item/clothing/neck/chaincoif
 			armor = /obj/item/clothing/armor/cuirass/grenzelhoft
 			backl = /obj/item/storage/backpack/rogue/satchel
-			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+			wrists = /obj/item/clothing/wrists/bracers/leather
 		if(3) //zizombie Warrior
 			r_hand = /obj/item/weapon/polearm/eaglebeak
 			pants = /obj/item/clothing/pants/grenzelpants
 			shoes = /obj/item/clothing/shoes/boots/armor/light
-			gloves = /obj/item/clothing/gloves/roguetown/angle/grenzel
+			gloves = /obj/item/clothing/gloves/angle/grenzel
 			belt = /obj/item/storage/belt/rogue/leather
 			shirt = /obj/item/clothing/suit/roguetown/shirt/grenzelhoft
 			head = /obj/item/clothing/head/helmet/sallet
 			neck = /obj/item/clothing/neck/chaincoif
 			armor = /obj/item/clothing/armor/cuirass/grenzelhoft
 			backl = /obj/item/storage/backpack/rogue/satchel
-			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+			wrists = /obj/item/clothing/wrists/bracers/leather
 		if(4) //zizombie Warrior
 			r_hand = /obj/item/weapon/sword/short
 			l_hand = /obj/item/weapon/knife/dagger
 			pants = /obj/item/clothing/pants/grenzelpants
 			shoes = /obj/item/clothing/shoes/boots/armor/light
-			gloves = /obj/item/clothing/gloves/roguetown/angle/grenzel
+			gloves = /obj/item/clothing/gloves/angle/grenzel
 			belt = /obj/item/storage/belt/rogue/leather
 			shirt = /obj/item/clothing/suit/roguetown/shirt/grenzelhoft
 			head = /obj/item/clothing/head/helmet/sallet
 			neck = /obj/item/clothing/neck/chaincoif
 			armor = /obj/item/clothing/armor/cuirass/grenzelhoft
 			backl = /obj/item/storage/backpack/rogue/satchel
-			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+			wrists = /obj/item/clothing/wrists/bracers/leather
 		if(5) //zizombie Warrior
 			r_hand = /obj/item/weapon/axe/battle
 			pants = /obj/item/clothing/pants/grenzelpants
 			shoes = /obj/item/clothing/shoes/boots/armor/light
-			gloves = /obj/item/clothing/gloves/roguetown/angle/grenzel
+			gloves = /obj/item/clothing/gloves/angle/grenzel
 			belt = /obj/item/storage/belt/rogue/leather
 			shirt = /obj/item/clothing/suit/roguetown/shirt/grenzelhoft
 			head = /obj/item/clothing/head/helmet/sallet
 			neck = /obj/item/clothing/neck/chaincoif
 			armor = /obj/item/clothing/armor/cuirass/grenzelhoft
 			backl = /obj/item/storage/backpack/rogue/satchel
-			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+			wrists = /obj/item/clothing/wrists/bracers/leather
 
 
 

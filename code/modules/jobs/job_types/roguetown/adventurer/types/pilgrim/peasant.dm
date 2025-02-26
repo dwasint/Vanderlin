@@ -38,7 +38,7 @@
 	pants = /obj/item/clothing/pants/trou
 	head = /obj/item/clothing/head/strawhat
 	shoes = /obj/item/clothing/shoes/simpleshoes
-	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+	wrists = /obj/item/clothing/wrists/bracers/leather
 	backr = /obj/item/weapon/hoe
 	backl = /obj/item/storage/backpack/rogue/satchel
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor

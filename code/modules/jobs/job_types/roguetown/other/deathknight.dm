@@ -97,7 +97,7 @@
 	shoes = /obj/item/clothing/shoes/boots/armor/blkknight
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 	armor = /obj/item/clothing/armor/plate/blkknight/death
-	gloves = /obj/item/clothing/gloves/roguetown/plate/blk/death
+	gloves = /obj/item/clothing/gloves/plate/blk/death
 	backl = /obj/item/weapon/sword/long/death
 	head = /obj/item/clothing/head/helmet/visored/knight/black
 
@@ -120,7 +120,7 @@
 /obj/item/clothing/shoes/boots/armor/blkknight/death
 	color = CLOTHING_SOOT_BLACK
 
-/obj/item/clothing/gloves/roguetown/plate/blk/death
+/obj/item/clothing/gloves/plate/blk/death
 	color = CLOTHING_SOOT_BLACK
 
 /obj/item/clothing/pants/platelegs/blk/death

@@ -34,7 +34,7 @@
 	H.mind?.AddSpell(new /obj/effect/proc_holder/spell/self/barbrage)
 	belt = /obj/item/storage/belt/rogue/leather
 	shoes = /obj/item/clothing/shoes/boots/leather
-	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+	wrists = /obj/item/clothing/wrists/bracers/leather
 	if(prob(50))
 		backr = /obj/item/storage/backpack/rogue/satchel
 	H.change_stat(STATKEY_STR, 3)

@@ -61,7 +61,7 @@
 "s" = (
 /obj/effect/landmark/chest_or_mimic,
 /obj/item/roguecoin/copper/pile,
-/obj/item/clothing/gloves/roguetown/plate,
+/obj/item/clothing/gloves/plate,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "t" = (

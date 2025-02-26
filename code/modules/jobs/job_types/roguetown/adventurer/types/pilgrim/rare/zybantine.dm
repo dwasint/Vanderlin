@@ -24,7 +24,7 @@
 /datum/outfit/job/roguetown/adventurer/zybantine/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/shalal
-	gloves = /obj/item/clothing/gloves/roguetown/leather
+	gloves = /obj/item/clothing/gloves/leather
 	head = /obj/item/clothing/head/crown/circlet
 	cloak = /obj/item/clothing/cloak/raincloak/purple
 	armor = /obj/item/clothing/armor/gambeson/arming

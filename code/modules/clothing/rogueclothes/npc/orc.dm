@@ -81,4 +81,4 @@
 ///obj/item/clothing/armor/leather/hide/orc
 
 
-///obj/item/clothing/wrists/roguetown/bracers/leather/orc dead until i find a way to make them usable
+///obj/item/clothing/wrists/bracers/leather/orc dead until i find a way to make them usable

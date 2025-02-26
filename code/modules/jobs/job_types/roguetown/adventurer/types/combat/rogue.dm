@@ -27,7 +27,7 @@
 		H.mind?.adjust_skillrank(/datum/skill/misc/lockpicking, 4, TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/craft/traps, 3, TRUE)
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
-	gloves = /obj/item/clothing/gloves/roguetown/fingerless
+	gloves = /obj/item/clothing/gloves/fingerless
 	pants = /obj/item/clothing/pants/trou/leather
 	shoes = /obj/item/clothing/shoes/boots
 	backl = /obj/item/storage/backpack/rogue/satchel

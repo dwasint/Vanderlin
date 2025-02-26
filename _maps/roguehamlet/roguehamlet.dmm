@@ -977,9 +977,9 @@
 /obj/item/clothing/armor/chainmail/iron,
 /obj/item/clothing/armor/chainmail/iron,
 /obj/item/clothing/armor/chainmail/iron,
-/obj/item/clothing/wrists/roguetown/bracers/leather,
-/obj/item/clothing/wrists/roguetown/bracers/leather,
-/obj/item/clothing/wrists/roguetown/bracers/leather,
+/obj/item/clothing/wrists/bracers/leather,
+/obj/item/clothing/wrists/bracers/leather,
+/obj/item/clothing/wrists/bracers/leather,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/garrison)
 "bdj" = (
@@ -5044,7 +5044,7 @@
 /obj/structure/closet/crate/roguecloset,
 /obj/item/candle/yellow,
 /obj/item/candle/yellow,
-/obj/item/clothing/gloves/roguetown/leather,
+/obj/item/clothing/gloves/leather,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
 "fon" = (
@@ -15819,7 +15819,7 @@
 /area/rogue/indoors/town/cell)
 "qmK" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/item/clothing/gloves/roguetown/angle,
+/obj/item/clothing/gloves/angle,
 /turf/open/transparent/openspace,
 /area/rogue/under/cave{
 	ambush_mobs = list(/mob/living/simple_animal/hostile/retaliate/rogue/wolf = 50);
@@ -21028,7 +21028,7 @@
 /obj/item/clothing/neck/feld,
 /obj/item/clothing/face/feld,
 /obj/item/clothing/head/roguehood/feld,
-/obj/item/clothing/gloves/roguetown/leather/feld,
+/obj/item/clothing/gloves/leather/feld,
 /obj/item/key/doctor{
 	pixel_y = 9
 	},
@@ -22082,7 +22082,7 @@
 /obj/structure/table/wood/large/corner_new{
 	dir = 5
 	},
-/obj/item/clothing/wrists/roguetown/wrappings,
+/obj/item/clothing/wrists/wrappings,
 /obj/item/flashlight/flare/torch/lantern,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)

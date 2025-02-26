@@ -76,12 +76,12 @@
 /obj/item/weapon/sword/rapier/silver,
 /obj/item/clothing/head/hatblu,
 /obj/item/clothing/cloak/raincloak/blue,
-/obj/item/clothing/gloves/roguetown/leather/black,
+/obj/item/clothing/gloves/leather/black,
 /turf/open/floor/rogue/cobblerock/alt,
 /area/rogue/outdoors/caves)
 "x" = (
 /obj/structure/table/vtable,
-/obj/item/clothing/gloves/roguetown/rare/elfplate,
+/obj/item/clothing/gloves/rare/elfplate,
 /obj/item/clothing/head/rare/elfplate,
 /obj/item/weapon/knife/dagger/steel/dirk,
 /obj/item/clothing/suit/roguetown/shirt/undershirt/webs,

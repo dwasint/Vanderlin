@@ -23,7 +23,7 @@
 	shoes = /obj/item/clothing/shoes/boots/leather
 	cloak = /obj/item/clothing/cloak/half
 	head = /obj/item/clothing/head/helmet/sallet
-	gloves = /obj/item/clothing/gloves/roguetown/angle
+	gloves = /obj/item/clothing/gloves/angle
 	belt = /obj/item/storage/belt/rogue/leather/mercenary
 	armor = /obj/item/clothing/armor/cuirass
 	beltr = /obj/item/weapon/sword/iron

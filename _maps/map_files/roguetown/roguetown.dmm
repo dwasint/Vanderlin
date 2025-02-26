@@ -2641,9 +2641,9 @@
 /area/rogue/indoors/town/magician)
 "cTY" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/wrists/roguetown/bracers/leather,
-/obj/item/clothing/wrists/roguetown/bracers/leather,
-/obj/item/clothing/wrists/roguetown/bracers/leather,
+/obj/item/clothing/wrists/bracers/leather,
+/obj/item/clothing/wrists/bracers/leather,
+/obj/item/clothing/wrists/bracers/leather,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
 "cTZ" = (
@@ -9490,8 +9490,8 @@
 /area/rogue/indoors/town)
 "kxZ" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/wrists/roguetown/bracers/leather,
-/obj/item/clothing/wrists/roguetown/wrappings,
+/obj/item/clothing/wrists/bracers/leather,
+/obj/item/clothing/wrists/wrappings,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/shop)
 "kyc" = (

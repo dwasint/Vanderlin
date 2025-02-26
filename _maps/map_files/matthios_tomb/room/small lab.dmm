@@ -234,7 +234,7 @@
 "xq" = (
 /obj/structure/closet/crate/roguecloset/inn/south,
 /obj/item/clothing/cloak/wickercloak,
-/obj/item/clothing/gloves/roguetown/fingerless,
+/obj/item/clothing/gloves/fingerless,
 /obj/item/clothing/head/antlerhood,
 /obj/item/clothing/face/skullmask,
 /turf/open/floor/rogue/ruinedwood/turned/darker,
