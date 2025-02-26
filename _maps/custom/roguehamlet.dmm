@@ -2127,7 +2127,7 @@
 	dir = 1;
 	icon_state = "chair2"
 	},
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/under/town/basement)
 "crh" = (
 /obj/structure/bars/grille,
@@ -4191,7 +4191,7 @@
 /obj/structure/fluff/wallclock/r{
 	pixel_x = -32
 	},
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/under/town/basement)
 "ezG" = (
 /obj/machinery/light/rogue/torchholder/l,
@@ -4566,7 +4566,7 @@
 "ePF" = (
 /obj/item/bedsheet/rogue/double_pelt,
 /obj/structure/bed/rogue/wooldouble,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/town/tavern/saiga)
 "ePO" = (
 /turf/closed/mineral/rogue,
@@ -6582,7 +6582,7 @@
 	})
 "gZt" = (
 /obj/structure/chair/stool/rogue,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/town/bath/redhouse)
 "gZJ" = (
 /obj/structure/rack/rogue/shelf/notdense{
@@ -7858,7 +7858,7 @@
 	pixel_x = 3;
 	pixel_y = 9
 	},
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/under/town/basement)
 "iqm" = (
 /obj/effect/decal/cobbleedge{
@@ -10077,7 +10077,7 @@
 	dir = 1;
 	icon_state = "chair2"
 	},
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/town/tavern/saiga)
 "kCq" = (
 /obj/structure/closet/crate/chest/neu,
@@ -10396,7 +10396,7 @@
 "kWv" = (
 /obj/structure/bed/rogue/wooldouble,
 /obj/item/bedsheet/rogue/fabric_double,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/town/bath/redhouse)
 "kXc" = (
 /obj/structure/rack/rogue{
@@ -12222,7 +12222,7 @@
 	pixel_x = -6;
 	pixel_y = 20
 	},
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/under/town/basement)
 "mSa" = (
 /turf/open/floor/rooftop/green{
@@ -12503,7 +12503,7 @@
 	pixel_y = 28
 	},
 /obj/structure/rack/rogue/shelf/notdense,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/town/bath/redhouse)
 "nji" = (
 /turf/open/floor/dirt,
@@ -12522,7 +12522,7 @@
 "njt" = (
 /obj/structure/bed/rogue/wooldouble,
 /obj/item/bedsheet/rogue/double_pelt,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/town/tavern/saiga)
 "njE" = (
 /obj/effect/landmark/start/vagrant{
@@ -13400,7 +13400,7 @@
 /obj/structure/fluff/walldeco/painting/skull{
 	pixel_x = 32
 	},
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/under/town/basement)
 "odO" = (
 /obj/item/reagent_containers/food/snacks/crow,
@@ -16222,7 +16222,7 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors/exposed/church)
 "qOG" = (
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/town/tavern/saiga)
 "qOT" = (
 /obj/structure/table/wood,
@@ -16462,7 +16462,7 @@
 /area/rogue/outdoors/exposed/manorgarri)
 "rgi" = (
 /obj/structure/closet/crate/chest/crate,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/town/tavern/saiga)
 "rgm" = (
 /mob/living/carbon/human/species/skeleton/npc,
@@ -18360,7 +18360,7 @@
 /obj/item/key/tavern,
 /obj/item/reagent_containers/glass/bottle/wine,
 /obj/item/clothing/armor/leather/vest/innkeep,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/town/tavern/saiga)
 "teg" = (
 /obj/effect/decal/cobbleedge,
@@ -19604,7 +19604,7 @@
 	pixel_x = 8;
 	pixel_y = 7
 	},
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/town/bath/redhouse)
 "uqe" = (
 /turf/closed/mineral/rogue/bedrock,
@@ -21125,7 +21125,7 @@
 	pixel_x = 9;
 	pixel_y = 14
 	},
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/town/bath/redhouse)
 "vJI" = (
 /obj/effect/decal/cleanable/blood/footprints{
@@ -22924,7 +22924,7 @@
 	icon_state = "longtable_mid"
 	},
 /obj/machinery/light/rogue/wallfire/candle/blue,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/under/town/basement)
 "xzR" = (
 /obj/structure/bars/pipe,
@@ -23251,7 +23251,7 @@
 /turf/open/transparent/openspace,
 /area/rogue/indoors/shelter/town/dwarf)
 "xPH" = (
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/town/bath/redhouse)
 "xPW" = (
 /obj/structure/bookcase,

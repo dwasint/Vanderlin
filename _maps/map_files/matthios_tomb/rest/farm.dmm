@@ -157,7 +157,7 @@
 "oi" = (
 /obj/structure/bed/rogue/mediocre,
 /obj/item/bedsheet/rogue/pelt,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue)
 "oS" = (
 /turf/open/floor/cobble/mossy,
@@ -313,7 +313,7 @@
 	},
 /area/rogue)
 "SO" = (
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue)
 "TP" = (
 /obj/effect/dungeon_directional_helper/east,

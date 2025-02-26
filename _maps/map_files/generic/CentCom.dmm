@@ -714,7 +714,7 @@
 /turf/open/floor/herringbone,
 /area/rogue/indoors/vampire_manor)
 "bO" = (
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/vampire_manor)
 "bP" = (
 /obj/item/weapon/pick,
@@ -767,7 +767,7 @@
 	icon_state = "largetable_mid"
 	},
 /obj/item/candle/yellow/lit/infinite/strong/skull,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/vampire_manor)
 "bW" = (
 /obj/structure/table/wood{
@@ -775,7 +775,7 @@
 	icon_state = "largetable"
 	},
 /obj/item/paper,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/vampire_manor)
 "bX" = (
 /turf/closed/mineral/rogue/bedrock,
@@ -786,7 +786,7 @@
 	icon_state = "largetable"
 	},
 /obj/item/natural/feather,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/vampire_manor)
 "bZ" = (
 /obj/structure/table/wood{
@@ -794,7 +794,7 @@
 	icon_state = "largetable"
 	},
 /obj/item/reagent_containers/glass/cup/golden,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/vampire_manor)
 "ca" = (
 /obj/structure/bookcase,
@@ -810,13 +810,13 @@
 /obj/structure/chair/wood/rogue/fancy{
 	dir = 1
 	},
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/vampire_manor)
 "cf" = (
 /obj/structure/chair/wood/rogue/fancy{
 	dir = 4
 	},
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/vampire_manor)
 "cg" = (
 /obj/structure/table/wood{
@@ -824,27 +824,27 @@
 	icon_state = "largetable"
 	},
 /obj/item/reagent_containers/glass/cup/skull,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/vampire_manor)
 "ch" = (
 /obj/structure/table/wood{
 	dir = 1;
 	icon_state = "largetable_mid"
 	},
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/vampire_manor)
 "ci" = (
 /obj/structure/table/wood{
 	dir = 4;
 	icon_state = "largetable"
 	},
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/vampire_manor)
 "cj" = (
 /obj/structure/chair/wood/rogue/fancy{
 	dir = 8
 	},
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/vampire_manor)
 "ck" = (
 /obj/structure/vampire/bloodpool{
@@ -854,7 +854,7 @@
 /area/rogue/indoors/vampire_manor)
 "cl" = (
 /obj/structure/closet/crate/coffin/vampire,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/vampire_manor)
 "cm" = (
 /obj/structure/closet/dirthole/closed/loot,
@@ -876,7 +876,7 @@
 	dir = 8;
 	icon_state = "largetable"
 	},
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/vampire_manor)
 "cr" = (
 /obj/structure/table/wood{
@@ -884,7 +884,7 @@
 	icon_state = "largetable"
 	},
 /obj/item/reagent_containers/glass/cup/skull,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/vampire_manor)
 "cs" = (
 /obj/structure/vampire/scryingorb{
@@ -911,7 +911,7 @@
 /obj/item/reagent_containers/glass/cup/silver{
 	pixel_y = 11
 	},
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/vampire_manor)
 "cw" = (
 /turf/closed/wall/mineral/wooddark,
@@ -931,14 +931,14 @@
 /obj/structure/table/wood{
 	icon_state = "largetable"
 	},
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/vampire_manor)
 "cz" = (
 /obj/structure/table/wood{
 	dir = 6;
 	icon_state = "largetable"
 	},
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/vampire_manor)
 "cA" = (
 /obj/item/reagent_containers/glass/bucket/wooden,
@@ -1041,7 +1041,7 @@
 /obj/machinery/light/rogue/wallfire/candle/weak{
 	pixel_y = -28
 	},
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/vampire_manor)
 "cV" = (
 /obj/machinery/light/rogue/wallfire/candle/r,
@@ -1370,7 +1370,7 @@
 /mob/living/simple_animal/pet/cat/rogue/black{
 	name = "Kain"
 	},
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/vampire_manor)
 "eU" = (
 /turf/open/lava,
@@ -4617,7 +4617,7 @@
 /area/rogue/indoors/vampire_manor)
 "Ym" = (
 /obj/effect/landmark/start/vampirelord,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/vampire_manor)
 "Yq" = (
 /obj/machinery/light/rogue/hearth,

@@ -1722,11 +1722,11 @@
 /area/rogue/outdoors/town)
 "go" = (
 /obj/structure/chair/bench/couchablack,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/town/bath)
 "gp" = (
 /obj/structure/chair/bench/couchablack/r,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/town/bath)
 "gq" = (
 /obj/item/reagent_containers/glass/bucket/wooden,
@@ -1811,7 +1811,7 @@
 /area/rogue/indoors/town/manor)
 "gI" = (
 /obj/structure/table/vtable,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/town/bath)
 "gJ" = (
 /obj/structure/fluff/clock,
@@ -2253,7 +2253,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/rtfield)
 "io" = (
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/town/bath)
 "ip" = (
 /obj/structure/stairs{
@@ -7059,7 +7059,7 @@
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/town)
 "Ah" = (
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/town/tavern)
 "Ai" = (
 /obj/structure/closet/crate/chest{
@@ -7086,7 +7086,7 @@
 /area/rogue/indoors/town/manor)
 "Am" = (
 /obj/structure/chair/wood,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/town/tavern)
 "An" = (
 /obj/structure/fluff/walldeco/painting/castle{
@@ -9968,7 +9968,7 @@
 /area/rogue/outdoors/town)
 "MS" = (
 /obj/structure/table/vtable/v2,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/town/bath)
 "MT" = (
 /obj/structure/table/wood{

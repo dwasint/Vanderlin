@@ -1177,6 +1177,7 @@
 	ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
 
 /turf/open/floor/carpet/lord
+	icon = 'icons/turf/roguefloor.dmi'
 	icon_state = ""
 
 /turf/open/floor/carpet/lord/Initialize()
@@ -1212,6 +1213,7 @@
 	icon_state = "carpet_r"
 
 /turf/open/floor/carpet/green
+	icon = 'icons/turf/roguefloor.dmi'
 	icon_state = "carpet_inn"
 
 /turf/open/floor/shroud

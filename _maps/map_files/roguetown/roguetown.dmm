@@ -1275,7 +1275,7 @@
 /obj/structure/chair/wood/rogue{
 	dir = 1
 	},
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/town)
 "bwP" = (
 /obj/structure/chair/bench/church,
@@ -5819,7 +5819,7 @@
 /area/rogue/under/town/sewer)
 "gsS" = (
 /obj/structure/chair/wood,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/town/tavern)
 "gsX" = (
 /obj/structure/mineral_door/wood{
@@ -11972,7 +11972,7 @@
 /turf/open/floor/concrete,
 /area/rogue/indoors/town/garrison)
 "nfu" = (
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/town/tavern)
 "nfv" = (
 /obj/item/paper/confession,
@@ -14156,7 +14156,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/river)
 "ptP" = (
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/town)
 "puo" = (
 /obj/structure/fluff/walldeco/church/line,
@@ -15585,7 +15585,7 @@
 /area/rogue/indoors/town/garrison)
 "rgB" = (
 /obj/structure/fluff/wallclock/r,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/town)
 "rgE" = (
 /obj/structure/closet/crate/chest/neu,
@@ -18359,7 +18359,7 @@
 /obj/effect/landmark/start/feldsher{
 	dir = 1
 	},
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/town)
 "umq" = (
 /obj/machinery/light/rogue/torchholder/l,

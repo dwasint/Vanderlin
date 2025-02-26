@@ -1542,11 +1542,11 @@
 /area/rogue/indoors/town/bath)
 "fJ" = (
 /obj/structure/chair/bench/couchablack,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/town/bath)
 "fK" = (
 /obj/structure/chair/bench/couchablack/r,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/town/bath)
 "fL" = (
 /turf/closed/wall/mineral/roofwall/outercorner{
@@ -7224,11 +7224,11 @@
 /turf/open/floor/wood,
 /area/rogue/indoors/town/tavern)
 "At" = (
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/town/tavern)
 "Au" = (
 /obj/structure/chair/wood,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/town/tavern)
 "Av" = (
 /obj/structure/table/wood{
@@ -11948,7 +11948,7 @@
 /area/rogue/under/town/basement)
 "Sa" = (
 /obj/structure/chair/bench/coucha,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/town/bath)
 "Sb" = (
 /obj/structure/ladder,
@@ -13335,7 +13335,7 @@
 /area/rogue/indoors/town/garrison)
 "Ys" = (
 /obj/structure/chair/bench/coucha/r,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/town/bath)
 "Yt" = (
 /obj/structure/closet/crate/chest,

@@ -124,7 +124,7 @@
 /obj/structure/mirror,
 /obj/item/statue/silver,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors)
 "cE" = (
 /obj/item/rogue/instrument/flute,
@@ -228,7 +228,7 @@
 /obj/structure/table/wood/fancy/black,
 /obj/effect/spawner/roguemap/loot,
 /obj/effect/spawner/roguemap/loot/food,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors)
 "es" = (
 /obj/machinery/light/rogue/wallfire/candle/weak,
@@ -306,7 +306,7 @@
 /turf/open/floor/blocks,
 /area/rogue/indoors)
 "gw" = (
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors)
 "gB" = (
 /mob/living/carbon/human/species/skeleton/npc/ambush,
@@ -346,7 +346,7 @@
 "hA" = (
 /obj/structure/table/wood/fancy/black,
 /obj/effect/spawner/roguemap/loot,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors)
 "hH" = (
 /obj/structure/roguewindow/stained,
@@ -493,7 +493,7 @@
 /area/rogue/indoors)
 "li" = (
 /obj/structure/closet/crate/chest/lootbox,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors)
 "lu" = (
 /obj/structure/fluff/walldeco/vinez,
@@ -581,7 +581,7 @@
 "nG" = (
 /obj/structure/closet/crate/chest/old_crate,
 /obj/effect/spawner/roguemap/loot,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors)
 "nS" = (
 /obj/structure/closet/crate/chest/lootbox,
@@ -746,7 +746,7 @@
 /obj/structure/closet/crate/crafted_closet/inn/south,
 /obj/effect/spawner/roguemap/loot/food,
 /obj/item/clothing/gloves/angle/grenzel,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors)
 "rx" = (
 /obj/effect/decal/cleanable/blood/old,
@@ -1095,7 +1095,7 @@
 /obj/structure/chair/wood/rogue/chair_noble/purple{
 	dir = 8
 	},
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors)
 "zA" = (
 /obj/structure/closet/crate/crafted_closet/inn,
@@ -1206,7 +1206,7 @@
 	dir = 4
 	},
 /mob/living/carbon/human/species/skeleton/npc/ambush,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors)
 "CP" = (
 /obj/structure/chair/wood/rogue/fancy,
@@ -1258,7 +1258,7 @@
 /area/rogue/indoors)
 "Er" = (
 /obj/effect/spawner/roguemap/loot,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors)
 "EA" = (
 /obj/machinery/light/rogue/wallfire/candle/weak,
@@ -1296,7 +1296,7 @@
 /obj/structure/closet/crate/drawer/random,
 /obj/effect/spawner/roguemap/loot,
 /obj/item/clothing/gloves/leather/masterwork,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors)
 "Fh" = (
 /obj/machinery/light/rogue/wallfire/candle/weak,
@@ -1329,7 +1329,7 @@
 "Fw" = (
 /obj/structure/closet/crate/crafted_closet/inn,
 /obj/effect/spawner/roguemap/loot,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors)
 "FF" = (
 /obj/structure/bars/pipe{
@@ -1557,7 +1557,7 @@
 /obj/structure/closet/crate/crafted_closet/crafted,
 /obj/effect/spawner/roguemap/loot/armor,
 /obj/item/clothing/cloak/tabard/crusader,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors)
 "Lx" = (
 /obj/structure/chair/bench/coucha/r,
@@ -1785,7 +1785,7 @@
 "Qo" = (
 /obj/structure/bed/rogue/inn/double,
 /obj/item/bedsheet/rogue/double_pelt,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors)
 "Qv" = (
 /obj/effect/decal/cleanable/blood/gibs/limb,
@@ -1976,7 +1976,7 @@
 /area/rogue/indoors)
 "UQ" = (
 /mob/living/carbon/human/species/skeleton/npc/ambush,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors)
 "UV" = (
 /obj/item/chair/rogue/fancy,
@@ -1987,7 +1987,7 @@
 /obj/machinery/light/rogue/wallfire/candle/weak,
 /obj/effect/spawner/roguemap/loot/food,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors)
 "Vb" = (
 /obj/effect/waterfall,
@@ -2030,7 +2030,7 @@
 "WH" = (
 /obj/structure/chair/wood/rogue/chair_noble/purple,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors)
 "WQ" = (
 /obj/effect/decal/cleanable/blood/splatter,
@@ -2101,7 +2101,7 @@
 /area/rogue/indoors)
 "XY" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors)
 "XZ" = (
 /obj/structure/table/wood/counter,

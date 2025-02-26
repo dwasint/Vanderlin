@@ -4423,7 +4423,7 @@
 "ePF" = (
 /obj/item/bedsheet/rogue/double_pelt,
 /obj/structure/bed/rogue/wooldouble,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/town/tavern)
 "ePO" = (
 /turf/closed/mineral/rogue,
@@ -9659,7 +9659,7 @@
 	icon_state = "chair2";
 	dir = 1
 	},
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/town/tavern)
 "kCq" = (
 /obj/structure/closet/crate/crafted_closet/inn,
@@ -12121,7 +12121,7 @@
 "njt" = (
 /obj/structure/bed/rogue/wooldouble,
 /obj/item/bedsheet/rogue/double_pelt,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/town/tavern)
 "njE" = (
 /obj/effect/landmark/start/vagrant{
@@ -14515,7 +14515,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/exposed/dwarf)
 "puh" = (
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/under/town/basement)
 "puJ" = (
 /obj/structure/fluff/walldeco/customflag{
@@ -15776,7 +15776,7 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors/exposed/church)
 "qOG" = (
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/town/tavern)
 "qOT" = (
 /obj/structure/table/wood,
@@ -16028,7 +16028,7 @@
 /area/rogue/outdoors/exposed/manorgarri)
 "rgi" = (
 /obj/structure/closet/crate/crafted_closet/inn/chest,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/town/tavern)
 "rgm" = (
 /mob/living/carbon/human/species/skeleton/npc,
@@ -17926,7 +17926,7 @@
 	pixel_y = 4
 	},
 /obj/item/storage/keyring/innkeep,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/town/tavern)
 "teg" = (
 /obj/effect/decal/cobbleedge,

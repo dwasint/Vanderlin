@@ -1560,11 +1560,11 @@
 /area/rogue/indoors/town/bath)
 "fJ" = (
 /obj/structure/chair/bench/couchablack,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/town/bath)
 "fK" = (
 /obj/structure/chair/bench/couchablack/r,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/town/bath)
 "fL" = (
 /obj/structure/closet/crate/crafted_closet,
@@ -1624,7 +1624,7 @@
 /area/rogue/indoors/town/bath)
 "fZ" = (
 /obj/structure/table/wood/nice,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/town/bath)
 "ga" = (
 /obj/structure/closet/crate/chest,
@@ -2109,7 +2109,7 @@
 /turf/closed/wall/mineral/stone,
 /area/rogue/indoors/town/bath)
 "hE" = (
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/town/bath)
 "hF" = (
 /obj/structure/fermentation_keg/random/water,
@@ -7741,11 +7741,11 @@
 /turf/open/floor/wood,
 /area/rogue/indoors/town/tavern)
 "At" = (
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/town/tavern)
 "Au" = (
 /obj/structure/chair/wood,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/rogue/indoors/town/tavern)
 "Av" = (
 /obj/structure/table/wood{
