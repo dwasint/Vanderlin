@@ -75,16 +75,16 @@
 	footstep_type = FOOTSTEP_MOB_SHOE
 	emote_see = list("shakes her head.", "chews her cud.")
 
-	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 2,
+	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 2,
 						/obj/item/natural/hide = 1,
 						/obj/item/alch/bone = 1)
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 4,
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 4,
 						/obj/item/reagent_containers/food/snacks/fat = 2,
 						/obj/item/natural/hide = 2,
 						/obj/item/natural/fur/gote = 1,
 						/obj/item/alch/sinew = 2,
 						/obj/item/alch/bone = 1)
-	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 6,
+	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 6,
 						/obj/item/reagent_containers/food/snacks/fat = 2,
 						/obj/item/natural/hide = 2,
 						/obj/item/natural/fur/gote = 2,
@@ -204,17 +204,17 @@
 	emote_see = list("shakes his head.", "chews his cud.")
 	turns_per_move = 3
 
-	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 3,
+	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 3,
 						/obj/item/natural/hide = 1,
 						/obj/item/alch/sinew = 1,
 						/obj/item/alch/bone = 1)
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 4,
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 4,
 						/obj/item/reagent_containers/food/snacks/fat = 1,
 						/obj/item/natural/hide = 2,
 						/obj/item/natural/fur/gote = 1,
 						/obj/item/alch/sinew = 2,
 						/obj/item/alch/bone = 1)
-	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 6,
+	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 6,
 						/obj/item/reagent_containers/food/snacks/fat = 2,
 						/obj/item/natural/hide = 2,
 						/obj/item/natural/fur/gote = 2,
@@ -371,9 +371,9 @@
 	mob_size = MOB_SIZE_SMALL
 	pass_flags = PASSTABLE | PASSMOB
 
-	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/mince/beef = 1)
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1)
-	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1,
+	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/mince/beef = 1)
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 1)
+	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 1,
 							/obj/item/natural/hide = 1)
 
 	health = CALF_HEALTH

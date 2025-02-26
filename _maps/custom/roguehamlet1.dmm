@@ -364,7 +364,7 @@
 /turf/open/floor/carpet,
 /area/rogue/indoors/town)
 "awG" = (
-/obj/effect/spawner/roguemap/tree,
+/obj/effect/spawner/map_spawner/tree,
 /turf/closed/mineral/rogue/bedrock,
 /area/rogue/outdoors/rtfield{
 	ambush_mobs = list(/mob/living/simple_animal/hostile/retaliate/wolf = 50, /mob/living/carbon/human/species/human/northern/bum/ambush = 30)
@@ -464,7 +464,7 @@
 /turf/closed/wall/mineral/wooddark/window,
 /area/rogue/indoors/town/tavern)
 "aDu" = (
-/obj/effect/spawner/roguemap/treeorbush,
+/obj/effect/spawner/map_spawner/treeorbush,
 /turf/open/floor/grass,
 /area/rogue/outdoors/mountains)
 "aDC" = (
@@ -923,7 +923,7 @@
 /turf/open/floor/wood/nosmooth,
 /area/rogue/indoors/shelter/rtfield)
 "bcj" = (
-/obj/effect/spawner/roguemap/treeorbush,
+/obj/effect/spawner/map_spawner/treeorbush,
 /obj/structure/fluff/railing/wood,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield{
@@ -1150,16 +1150,16 @@
 /turf/open/floor/cobble,
 /area/rogue/indoors/shelter/town/dwarf)
 "brh" = (
-/obj/effect/spawner/roguemap/tree,
-/obj/effect/spawner/roguemap/tree,
-/obj/effect/spawner/roguemap/tree,
-/obj/effect/spawner/roguemap/tree,
+/obj/effect/spawner/map_spawner/tree,
+/obj/effect/spawner/map_spawner/tree,
+/obj/effect/spawner/map_spawner/tree,
+/obj/effect/spawner/map_spawner/tree,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield{
 	ambush_mobs = list(/mob/living/simple_animal/hostile/retaliate/wolf = 50, /mob/living/carbon/human/species/human/northern/bum/ambush = 30)
 	})
 "brr" = (
-/obj/effect/spawner/roguemap/tree,
+/obj/effect/spawner/map_spawner/tree,
 /obj/structure/handcart{
 	icon_state = "cart-empty";
 	dir = 4
@@ -1637,7 +1637,7 @@
 /obj/item/clothing/shoes/shortboots,
 /obj/item/clothing/shoes/ridingboots,
 /obj/item/clothing/shoes/boots,
-/obj/item/roguegem,
+/obj/item/gem,
 /turf/open/floor/dirt/road,
 /area/rogue/indoors/shelter/rtfield)
 "bSK" = (
@@ -1966,7 +1966,7 @@
 /turf/open/floor/wood/nosmooth,
 /area/rogue/indoors/shelter/town/dwarf)
 "cls" = (
-/obj/effect/spawner/roguemap/hauntpile,
+/obj/effect/spawner/map_spawner/hauntpile,
 /turf/open/water/swamp,
 /area/rogue/under/cavewet{
 	first_time_text = null;
@@ -2122,7 +2122,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/exposed/manorgarri)
 "cxi" = (
-/obj/effect/spawner/roguemap/tree,
+/obj/effect/spawner/map_spawner/tree,
 /obj/effect/decal/cobbleedge{
 	dir = 5
 	},
@@ -2346,18 +2346,18 @@
 /area/rogue/indoors/town/magician)
 "cIL" = (
 /obj/structure/closet/crate/crafted_closet/inn/chest,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/meat/fatty,
-/obj/item/reagent_containers/food/snacks/rogue/meat/fatty,
-/obj/item/reagent_containers/food/snacks/rogue/meat/fatty,
-/obj/item/reagent_containers/food/snacks/rogue/meat/fatty,
-/obj/item/reagent_containers/food/snacks/rogue/meat/fatty,
-/obj/item/reagent_containers/food/snacks/rogue/meat/fatty,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/fatty,
+/obj/item/reagent_containers/food/snacks/meat/fatty,
+/obj/item/reagent_containers/food/snacks/meat/fatty,
+/obj/item/reagent_containers/food/snacks/meat/fatty,
+/obj/item/reagent_containers/food/snacks/meat/fatty,
+/obj/item/reagent_containers/food/snacks/meat/fatty,
 /turf/open/floor/greenstone,
 /area/rogue/indoors/town/manor{
 	first_time_text = "Blackwine Manor"
@@ -2671,7 +2671,7 @@
 	ambush_mobs = list(/mob/living/simple_animal/hostile/retaliate/wolf = 50, /mob/living/carbon/human/species/human/northern/bum/ambush = 30)
 	})
 "dgN" = (
-/obj/effect/spawner/roguemap/beartrap,
+/obj/effect/spawner/map_spawner/beartrap,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/rtfield{
 	ambush_mobs = list(/mob/living/simple_animal/hostile/retaliate/wolf = 50, /mob/living/carbon/human/species/human/northern/bum/ambush = 30)
@@ -2826,9 +2826,9 @@
 /obj/structure/closet/crate/crafted_closet/dark,
 /obj/item/reagent_containers/food/snacks/egg,
 /obj/item/reagent_containers/food/snacks/egg,
-/obj/item/reagent_containers/food/snacks/rogue/meat/fatty,
-/obj/item/reagent_containers/food/snacks/rogue/meat/fatty,
-/obj/item/reagent_containers/food/snacks/rogue/meat/salami,
+/obj/item/reagent_containers/food/snacks/meat/fatty,
+/obj/item/reagent_containers/food/snacks/meat/fatty,
+/obj/item/reagent_containers/food/snacks/meat/salami,
 /obj/item/reagent_containers/food/snacks/baguette,
 /obj/effect/decal/cleanable/dirt/cobweb,
 /obj/item/reagent_containers/food/snacks/produce/apple,
@@ -2870,8 +2870,8 @@
 /area/rogue/outdoors/exposed/manorgarri)
 "dsM" = (
 /obj/structure/closet/crate/crafted_closet/inn/chest,
-/obj/item/reagent_containers/food/snacks/rogue/fryfish/eel,
-/obj/item/reagent_containers/food/snacks/rogue/fryfish/eel,
+/obj/item/reagent_containers/food/snacks/fryfish/eel,
+/obj/item/reagent_containers/food/snacks/fryfish/eel,
 /obj/item/reagent_containers/food/snacks/faggot,
 /turf/open/floor/twig,
 /area/rogue/indoors/shelter/bog)
@@ -2977,7 +2977,7 @@
 /turf/open/floor/blocks,
 /area/rogue/indoors/town/garrison)
 "dwS" = (
-/obj/effect/spawner/roguemap/beartrap,
+/obj/effect/spawner/map_spawner/beartrap,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield{
 	ambush_mobs = list(/mob/living/simple_animal/hostile/retaliate/wolf = 50, /mob/living/carbon/human/species/human/northern/bum/ambush = 30)
@@ -3239,7 +3239,7 @@
 	icon_state = "largetable";
 	dir = 6
 	},
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
 /turf/open/floor/dirt/road,
 /area/rogue/indoors/shelter/rtfield)
 "dLw" = (
@@ -3291,7 +3291,7 @@
 	},
 /area/rogue/indoors/town/tavern)
 "dNi" = (
-/obj/item/roguegem/green,
+/obj/item/gem/green,
 /turf/closed/mineral/rogue,
 /area/rogue/under/cave/spider)
 "dNW" = (
@@ -3526,7 +3526,7 @@
 /turf/open/floor/cobble/mossy,
 /area/rogue/outdoors/exposed/manorgarri)
 "dXe" = (
-/obj/item/roguecoin/silver/pile,
+/obj/item/coin/silver/pile,
 /turf/open/floor/tile{
 	icon_state = "chess"
 	},
@@ -3912,7 +3912,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/indoors/town/garrison)
 "ert" = (
-/obj/effect/spawner/roguemap/treeorbush,
+/obj/effect/spawner/map_spawner/treeorbush,
 /turf/open/floor/dirt/road,
 /area/rogue/indoors)
 "erC" = (
@@ -4127,7 +4127,7 @@
 	icon_state = "largetable";
 	dir = 10
 	},
-/obj/item/reagent_containers/food/snacks/rogue/meat/mince/beef,
+/obj/item/reagent_containers/food/snacks/meat/mince/beef,
 /obj/item/weapon/knife/cleaver/combat,
 /turf/open/floor/dirt/road,
 /area/rogue/indoors/shelter/rtfield)
@@ -4451,9 +4451,9 @@
 /area/rogue/indoors)
 "eRP" = (
 /obj/structure/closet/crate/crafted_closet/inn/chest,
-/obj/item/reagent_containers/food/snacks/rogue/meat/poultry,
-/obj/item/reagent_containers/food/snacks/rogue/meat/poultry,
-/obj/item/reagent_containers/food/snacks/rogue/meat/poultry,
+/obj/item/reagent_containers/food/snacks/meat/poultry,
+/obj/item/reagent_containers/food/snacks/meat/poultry,
+/obj/item/reagent_containers/food/snacks/meat/poultry,
 /turf/open/floor/metal/barograte,
 /area/rogue/outdoors/exposed/under/basement)
 "eRR" = (
@@ -4653,7 +4653,7 @@
 /turf/open/floor/herringbone,
 /area/rogue/under/town/basement)
 "fbU" = (
-/obj/effect/spawner/roguemap/tree,
+/obj/effect/spawner/map_spawner/tree,
 /obj/structure/barricade/crude,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield{
@@ -4831,7 +4831,7 @@
 /turf/open/floor/dirt,
 /area/rogue/indoors/town)
 "fnd" = (
-/obj/effect/spawner/roguemap/tree,
+/obj/effect/spawner/map_spawner/tree,
 /obj/structure/flora/roguegrass,
 /obj/structure/fluff/railing/wood,
 /turf/open/floor/grass,
@@ -5299,7 +5299,7 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors/exposed/town)
 "fQM" = (
-/obj/effect/spawner/roguemap/treeorbush,
+/obj/effect/spawner/map_spawner/treeorbush,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/rtfield{
 	ambush_mobs = list(/mob/living/simple_animal/hostile/zombie = 50);
@@ -5308,7 +5308,7 @@
 	first_time_text = "PLAGUE DISTRICT"
 	})
 "fRg" = (
-/obj/effect/spawner/roguemap/tree,
+/obj/effect/spawner/map_spawner/tree,
 /obj/structure/flora/roguegrass,
 /turf/open/floor/grass,
 /area/rogue/outdoors/river)
@@ -5488,8 +5488,8 @@
 /obj/structure/closet/crate/chest{
 	lockid = "butcher"
 	},
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
 /obj/item/reagent_containers/food/snacks/egg,
 /obj/item/reagent_containers/food/snacks/egg,
 /obj/item/weapon/knife/cleaver,
@@ -5907,7 +5907,7 @@
 /area/rogue/indoors)
 "gyc" = (
 /obj/structure/flora/roguegrass,
-/obj/effect/spawner/roguemap/treeorbush,
+/obj/effect/spawner/map_spawner/treeorbush,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield{
 	ambush_mobs = list(/mob/living/simple_animal/hostile/zombie = 50);
@@ -5916,7 +5916,7 @@
 	first_time_text = "PLAGUE DISTRICT"
 	})
 "gym" = (
-/obj/effect/spawner/roguemap/treeorbush,
+/obj/effect/spawner/map_spawner/treeorbush,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield{
 	ambush_mobs = list(/mob/living/simple_animal/hostile/zombie = 50);
@@ -6046,7 +6046,7 @@
 	first_time_text = "PLAGUE DISTRICT"
 	})
 "gFp" = (
-/obj/effect/spawner/roguemap/treeorstump,
+/obj/effect/spawner/map_spawner/treeorstump,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield{
 	ambush_mobs = list(/mob/living/simple_animal/hostile/retaliate/wolf = 50, /mob/living/carbon/human/species/human/northern/bum/ambush = 30)
@@ -6085,7 +6085,7 @@
 /area/rogue/under/town/basement)
 "gGu" = (
 /obj/effect/decal/cleanable/blood/gibs,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
 /turf/open/floor/dirt,
 /area/rogue/indoors)
 "gGB" = (
@@ -7033,7 +7033,7 @@
 /turf/open/floor/cobble,
 /area/rogue/outdoors/exposed/under/basement)
 "hPt" = (
-/obj/effect/spawner/roguemap/treeorbush,
+/obj/effect/spawner/map_spawner/treeorbush,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield{
 	ambush_mobs = list(/mob/living/simple_animal/hostile/zombie = 50);
@@ -7105,13 +7105,13 @@
 	dir = 5
 	},
 /obj/structure/closet/crate/crafted_closet/inn/chest,
-/obj/item/reagent_containers/food/snacks/rogue/meat/mince/beef,
-/obj/item/reagent_containers/food/snacks/rogue/meat/mince/beef,
-/obj/item/reagent_containers/food/snacks/rogue/meat/mince/beef,
-/obj/item/reagent_containers/food/snacks/rogue/meat/mince/beef,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/mince/beef,
+/obj/item/reagent_containers/food/snacks/meat/mince/beef,
+/obj/item/reagent_containers/food/snacks/meat/mince/beef,
+/obj/item/reagent_containers/food/snacks/meat/mince/beef,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/exposed/under/basement)
 "hSf" = (
@@ -7152,7 +7152,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/indoors/town/cell)
 "hTQ" = (
-/obj/effect/spawner/roguemap/tree,
+/obj/effect/spawner/map_spawner/tree,
 /turf/open/floor/grass,
 /area/rogue/outdoors/woods)
 "hTZ" = (
@@ -7243,9 +7243,9 @@
 /turf/open/floor/cobble,
 /area/rogue/indoors/town/tavern)
 "hZM" = (
-/obj/effect/spawner/roguemap/tree,
-/obj/effect/spawner/roguemap/tree,
-/obj/effect/spawner/roguemap/tree,
+/obj/effect/spawner/map_spawner/tree,
+/obj/effect/spawner/map_spawner/tree,
+/obj/effect/spawner/map_spawner/tree,
 /obj/structure/flora/roguegrass,
 /obj/structure/flora/roguegrass,
 /turf/open/floor/grass,
@@ -7350,7 +7350,7 @@
 /turf/open/floor/dirt,
 /area/rogue/indoors/shelter/mountains)
 "ifj" = (
-/obj/effect/spawner/roguemap/treeorbush,
+/obj/effect/spawner/map_spawner/treeorbush,
 /turf/open/floor/dirt,
 /area/rogue/indoors)
 "ifq" = (
@@ -7930,7 +7930,7 @@
 /turf/open/floor/blocks/stonered,
 /area/rogue/indoors/town/bath)
 "iLu" = (
-/obj/effect/spawner/roguemap/tree,
+/obj/effect/spawner/map_spawner/tree,
 /obj/structure/flora/roguegrass,
 /obj/structure/flora/roguegrass,
 /turf/open/floor/dirt,
@@ -7945,7 +7945,7 @@
 /turf/open/floor/twig,
 /area/rogue/indoors/town/shop)
 "iLF" = (
-/obj/effect/spawner/roguemap/tree,
+/obj/effect/spawner/map_spawner/tree,
 /turf/open/floor/grass,
 /area/rogue/outdoors/mountains)
 "iLK" = (
@@ -8088,8 +8088,8 @@
 /turf/open/floor/concrete,
 /area/rogue/indoors/town)
 "iVi" = (
-/obj/effect/spawner/roguemap/tree,
-/obj/effect/spawner/roguemap/tree,
+/obj/effect/spawner/map_spawner/tree,
+/obj/effect/spawner/map_spawner/tree,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield{
 	ambush_mobs = list(/mob/living/simple_animal/hostile/retaliate/wolf = 50, /mob/living/carbon/human/species/human/northern/bum/ambush = 30)
@@ -8410,7 +8410,7 @@
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/exposed/under/sewer)
 "jlO" = (
-/obj/effect/spawner/roguemap/tree,
+/obj/effect/spawner/map_spawner/tree,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield{
 	ambush_mobs = list(/mob/living/simple_animal/hostile/retaliate/wolf = 50, /mob/living/carbon/human/species/human/northern/bum/ambush = 30)
@@ -8562,8 +8562,8 @@
 /obj/structure/closet/crate/crafted_closet/inn/chest,
 /obj/structure/closet/crate/crafted_closet/inn/chest,
 /obj/item/reagent_containers/food/snacks/fat/salo,
-/obj/item/reagent_containers/food/snacks/rogue/meat/salami,
-/obj/item/reagent_containers/food/snacks/rogue/meat/salami,
+/obj/item/reagent_containers/food/snacks/meat/salami,
+/obj/item/reagent_containers/food/snacks/meat/salami,
 /obj/effect/decal/cobbleedge{
 	dir = 5
 	},
@@ -8928,7 +8928,7 @@
 /area/rogue/under/cave)
 "jQB" = (
 /obj/effect/decal/cleanable/blood/old,
-/obj/effect/spawner/roguemap/hauntpile,
+/obj/effect/spawner/map_spawner/hauntpile,
 /turf/open/floor/cobble,
 /area/rogue/outdoors/exposed/under/basement)
 "jRb" = (
@@ -9074,8 +9074,8 @@
 	},
 /area/rogue/indoors/town/church)
 "jXo" = (
-/obj/effect/spawner/roguemap/tree,
-/obj/effect/spawner/roguemap/tree,
+/obj/effect/spawner/map_spawner/tree,
+/obj/effect/spawner/map_spawner/tree,
 /obj/structure/flora/rock/pile,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield{
@@ -9267,7 +9267,7 @@
 	ambush_mobs = list(/mob/living/simple_animal/hostile/retaliate/wolf = 50, /mob/living/carbon/human/species/human/northern/bum/ambush = 30)
 	})
 "khv" = (
-/obj/effect/spawner/roguemap/beartrap,
+/obj/effect/spawner/map_spawner/beartrap,
 /turf/open/floor/ruinedwood/turned,
 /area/rogue/outdoors/rtfield{
 	ambush_mobs = list(/mob/living/simple_animal/hostile/retaliate/wolf = 50, /mob/living/carbon/human/species/human/northern/bum/ambush = 30)
@@ -9330,7 +9330,7 @@
 	first_time_text = "Rockhamlet"
 	})
 "kkJ" = (
-/obj/effect/spawner/roguemap/tree,
+/obj/effect/spawner/map_spawner/tree,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/rtfield{
 	ambush_mobs = list(/mob/living/simple_animal/hostile/retaliate/wolf = 50, /mob/living/carbon/human/species/human/northern/bum/ambush = 30)
@@ -9552,7 +9552,7 @@
 /area/rogue/indoors/town/bath)
 "kxd" = (
 /obj/structure/flora/roguegrass,
-/obj/effect/spawner/roguemap/tree,
+/obj/effect/spawner/map_spawner/tree,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield{
 	ambush_mobs = list(/mob/living/simple_animal/hostile/retaliate/wolf = 50, /mob/living/carbon/human/species/human/northern/bum/ambush = 30)
@@ -9640,8 +9640,8 @@
 /turf/open/floor/tile,
 /area/rogue/outdoors/town/roofs)
 "kBD" = (
-/obj/effect/spawner/roguemap/tree,
-/obj/effect/spawner/roguemap/tree,
+/obj/effect/spawner/map_spawner/tree,
+/obj/effect/spawner/map_spawner/tree,
 /obj/structure/flora/roguegrass,
 /obj/structure/flora/roguegrass,
 /turf/open/floor/dirt,
@@ -9673,9 +9673,9 @@
 	first_time_text = "Blackwine Manor"
 	})
 "kCS" = (
-/obj/effect/spawner/roguemap/tree,
-/obj/effect/spawner/roguemap/tree,
-/obj/effect/spawner/roguemap/tree,
+/obj/effect/spawner/map_spawner/tree,
+/obj/effect/spawner/map_spawner/tree,
+/obj/effect/spawner/map_spawner/tree,
 /obj/structure/flora/roguegrass,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield{
@@ -10034,7 +10034,7 @@
 /turf/open/water/sewer,
 /area/rogue/under/town/sewer)
 "lay" = (
-/obj/effect/spawner/roguemap/tree,
+/obj/effect/spawner/map_spawner/tree,
 /obj/structure/flora/rock/pile,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield{
@@ -10896,7 +10896,7 @@
 /turf/closed/wall/mineral/roofwall/outercorner,
 /area/rogue/indoors/town)
 "lSd" = (
-/obj/effect/spawner/roguemap/treeorbush,
+/obj/effect/spawner/map_spawner/treeorbush,
 /turf/open/floor/grass,
 /area/rogue/outdoors/woods)
 "lSl" = (
@@ -11186,7 +11186,7 @@
 /area/rogue/indoors/shelter/town/dwarf)
 "mhH" = (
 /obj/structure/closet/crate/chest/lootbox,
-/obj/item/roguegem/blue,
+/obj/item/gem/blue,
 /turf/open/floor/naturalstone,
 /area/rogue/under/cavewet{
 	first_time_text = null;
@@ -11969,7 +11969,7 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors/exposed/town)
 "nba" = (
-/obj/effect/spawner/roguemap/tree,
+/obj/effect/spawner/map_spawner/tree,
 /obj/effect/decal/remains/saiga,
 /obj/structure/flora/roguegrass,
 /turf/open/floor/grass,
@@ -12432,10 +12432,10 @@
 /turf/open/floor/woodturned/nosmooth,
 /area/rogue/indoors/town/tavern)
 "nzD" = (
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
 /obj/structure/closet/crate/crafted_closet/inn/chest,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
 /turf/open/floor/blocks,
 /area/rogue/under/town/basement)
 "nzO" = (
@@ -12494,7 +12494,7 @@
 	first_time_text = "Blackwine Manor"
 	})
 "nDJ" = (
-/obj/effect/spawner/roguemap/treeorbush,
+/obj/effect/spawner/map_spawner/treeorbush,
 /obj/structure/flora/roguegrass,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield{
@@ -13182,7 +13182,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/indoors)
 "ool" = (
-/obj/effect/spawner/roguemap/treeorbush,
+/obj/effect/spawner/map_spawner/treeorbush,
 /obj/structure/flora/roguegrass,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/rtfield{
@@ -13223,11 +13223,11 @@
 	},
 /area/rogue/indoors/shelter/town/dwarf)
 "opS" = (
-/obj/effect/spawner/roguemap/tree,
+/obj/effect/spawner/map_spawner/tree,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods)
 "opX" = (
-/obj/effect/spawner/roguemap/tree,
+/obj/effect/spawner/map_spawner/tree,
 /turf/open/floor/grass,
 /area/rogue/outdoors/river)
 "opZ" = (
@@ -13239,7 +13239,7 @@
 	first_time_text = "Blackwine Manor"
 	})
 "oqp" = (
-/obj/effect/spawner/roguemap/tree,
+/obj/effect/spawner/map_spawner/tree,
 /obj/structure/flora/roguetree,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield{
@@ -13487,7 +13487,7 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors/exposed/town)
 "oDe" = (
-/obj/item/roguegem/green,
+/obj/item/gem/green,
 /obj/structure/closet/crate/chest{
 	locked = 1;
 	lockid = "merchant"
@@ -13919,7 +13919,7 @@
 /turf/open/water/sewer,
 /area/rogue/under/town/sewer)
 "oVT" = (
-/obj/effect/spawner/roguemap/treeorbush,
+/obj/effect/spawner/map_spawner/treeorbush,
 /obj/structure/flora/roguegrass,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield{
@@ -14090,7 +14090,7 @@
 /turf/open/floor/blocks,
 /area/rogue/indoors/town/shop)
 "pdc" = (
-/obj/effect/spawner/roguemap/tree,
+/obj/effect/spawner/map_spawner/tree,
 /obj/structure/flora/roguegrass,
 /obj/structure/flora/roguegrass/thorn_bush,
 /turf/open/floor/grass,
@@ -14363,7 +14363,7 @@
 /area/rogue/outdoors/woods)
 "poE" = (
 /obj/effect/decal/remains/saiga,
-/obj/effect/spawner/roguemap/tree,
+/obj/effect/spawner/map_spawner/tree,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield{
 	ambush_mobs = list(/mob/living/simple_animal/hostile/retaliate/wolf = 50, /mob/living/carbon/human/species/human/northern/bum/ambush = 30)
@@ -14484,7 +14484,7 @@
 	},
 /area/rogue/under/town/basement)
 "prU" = (
-/obj/effect/spawner/roguemap/tree,
+/obj/effect/spawner/map_spawner/tree,
 /obj/structure/flora/roguegrass,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield{
@@ -14546,8 +14546,8 @@
 /area/rogue/indoors/town/shop)
 "pxa" = (
 /obj/effect/decal/remains/saiga,
-/obj/effect/spawner/roguemap/tree,
-/obj/effect/spawner/roguemap/tree,
+/obj/effect/spawner/map_spawner/tree,
+/obj/effect/spawner/map_spawner/tree,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield{
 	ambush_mobs = list(/mob/living/simple_animal/hostile/retaliate/wolf = 50, /mob/living/carbon/human/species/human/northern/bum/ambush = 30)
@@ -14663,7 +14663,7 @@
 	first_time_text = "Blackwine Manor"
 	})
 "pDj" = (
-/obj/effect/spawner/roguemap/tree,
+/obj/effect/spawner/map_spawner/tree,
 /obj/effect/decal/remains/saiga,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield{
@@ -14788,7 +14788,7 @@
 "pOI" = (
 /obj/structure/closet/crate/crafted_closet/inn,
 /obj/item/clothing/shirt/rags,
-/obj/item/roguegem/yellow,
+/obj/item/gem/yellow,
 /turf/open/floor/wood/nosmooth,
 /area/rogue/indoors/shelter/rtfield)
 "pPO" = (
@@ -15009,7 +15009,7 @@
 /turf/open/floor/cobble,
 /area/rogue/indoors/shelter/town/dwarf)
 "qcp" = (
-/obj/effect/spawner/roguemap/treeorbush,
+/obj/effect/spawner/map_spawner/treeorbush,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield{
 	ambush_mobs = list(/mob/living/simple_animal/hostile/retaliate/wolf = 50, /mob/living/carbon/human/species/human/northern/bum/ambush = 30)
@@ -15247,7 +15247,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/exposed/manorgarri)
 "qnw" = (
-/obj/effect/spawner/roguemap/treeorbush,
+/obj/effect/spawner/map_spawner/treeorbush,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield{
 	ambush_mobs = list(/mob/living/simple_animal/hostile/retaliate/wolf = 50, /mob/living/carbon/human/species/human/northern/bum/ambush = 30)
@@ -16409,7 +16409,7 @@
 	})
 "ryU" = (
 /obj/structure/flora/roguegrass,
-/obj/effect/spawner/roguemap/tree,
+/obj/effect/spawner/map_spawner/tree,
 /turf/open/floor/grass,
 /area/rogue/outdoors/river)
 "ryZ" = (
@@ -16419,7 +16419,7 @@
 /turf/closed/wall/mineral/stone,
 /area/rogue/outdoors/exposed/town)
 "rzm" = (
-/obj/effect/spawner/roguemap/treeorbush,
+/obj/effect/spawner/map_spawner/treeorbush,
 /obj/structure/flora/roguegrass,
 /obj/structure/flora/roguegrass,
 /turf/open/floor/grass,
@@ -16558,9 +16558,9 @@
 	dir = 9
 	},
 /obj/structure/closet/crate/crafted_closet/inn/chest,
-/obj/item/reagent_containers/food/snacks/rogue/meat/fatty,
-/obj/item/reagent_containers/food/snacks/rogue/meat/fatty,
-/obj/item/reagent_containers/food/snacks/rogue/meat/fatty,
+/obj/item/reagent_containers/food/snacks/meat/fatty,
+/obj/item/reagent_containers/food/snacks/meat/fatty,
+/obj/item/reagent_containers/food/snacks/meat/fatty,
 /obj/item/reagent_containers/food/snacks/egg,
 /obj/item/reagent_containers/food/snacks/egg,
 /obj/item/reagent_containers/food/snacks/egg,
@@ -16620,7 +16620,7 @@
 /area/rogue/indoors/town/cell)
 "rIo" = (
 /obj/structure/flora/roguegrass,
-/obj/effect/spawner/roguemap/beartrap,
+/obj/effect/spawner/map_spawner/beartrap,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield{
 	ambush_mobs = list(/mob/living/simple_animal/hostile/retaliate/wolf = 50, /mob/living/carbon/human/species/human/northern/bum/ambush = 30)
@@ -16668,7 +16668,7 @@
 	ambush_mobs = list(/mob/living/simple_animal/hostile/retaliate/wolf = 50, /mob/living/carbon/human/species/human/northern/bum/ambush = 30)
 	})
 "rLE" = (
-/obj/effect/spawner/roguemap/beartrap,
+/obj/effect/spawner/map_spawner/beartrap,
 /obj/structure/roguetent,
 /turf/open/floor/grass,
 /area/rogue/indoors/shelter/rtfield)
@@ -16759,8 +16759,8 @@
 	first_time_text = "Blackwine Manor"
 	})
 "rQE" = (
-/obj/effect/spawner/roguemap/tree,
-/obj/effect/spawner/roguemap/tree,
+/obj/effect/spawner/map_spawner/tree,
+/obj/effect/spawner/map_spawner/tree,
 /obj/structure/flora/roguegrass,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield{
@@ -16778,8 +16778,8 @@
 	first_time_text = "PLAGUE DISTRICT"
 	})
 "rRw" = (
-/obj/effect/spawner/roguemap/treeorbush,
-/obj/effect/spawner/roguemap/treeorbush,
+/obj/effect/spawner/map_spawner/treeorbush,
+/obj/effect/spawner/map_spawner/treeorbush,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield{
 	ambush_mobs = list(/mob/living/simple_animal/hostile/zombie = 50);
@@ -17175,14 +17175,14 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/town)
 "snE" = (
-/obj/effect/spawner/roguemap/tree,
+/obj/effect/spawner/map_spawner/tree,
 /obj/structure/flora/roguegrass,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield{
 	ambush_mobs = list(/mob/living/simple_animal/hostile/retaliate/wolf = 50, /mob/living/carbon/human/species/human/northern/bum/ambush = 30)
 	})
 "sol" = (
-/obj/effect/spawner/roguemap/beartrap,
+/obj/effect/spawner/map_spawner/beartrap,
 /turf/open/floor/rooftop{
 	dir = 4
 	},
@@ -17207,7 +17207,7 @@
 /turf/open/floor/blocks,
 /area/rogue/indoors/town/shop)
 "sph" = (
-/obj/effect/spawner/roguemap/tree,
+/obj/effect/spawner/map_spawner/tree,
 /obj/structure/flora/roguegrass,
 /turf/open/floor/grass,
 /area/rogue/outdoors/woods)
@@ -17412,10 +17412,10 @@
 /turf/open/floor/tile,
 /area/rogue/indoors/town/magician)
 "syZ" = (
-/obj/item/reagent_containers/food/snacks/rogue/fryfish/eel,
-/obj/item/reagent_containers/food/snacks/rogue/fryfish/eel,
-/obj/item/reagent_containers/food/snacks/rogue/fryfish/eel,
-/obj/item/reagent_containers/food/snacks/rogue/fryfish/eel,
+/obj/item/reagent_containers/food/snacks/fryfish/eel,
+/obj/item/reagent_containers/food/snacks/fryfish/eel,
+/obj/item/reagent_containers/food/snacks/fryfish/eel,
+/obj/item/reagent_containers/food/snacks/fryfish/eel,
 /obj/structure/closet/crate/crafted_closet/inn/chest,
 /turf/open/floor/metal/barograte,
 /area/rogue/outdoors/exposed/under/basement)
@@ -17766,7 +17766,7 @@
 	ambush_mobs = list(/mob/living/simple_animal/hostile/retaliate/wolf = 50, /mob/living/carbon/human/species/human/northern/bum/ambush = 30)
 	})
 "sRR" = (
-/obj/effect/spawner/roguemap/treeorstump,
+/obj/effect/spawner/map_spawner/treeorstump,
 /obj/structure/flora/roguegrass,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield{
@@ -18154,7 +18154,7 @@
 /area/rogue/indoors)
 "tra" = (
 /obj/structure/flora/roguegrass,
-/obj/effect/spawner/roguemap/treeorbush,
+/obj/effect/spawner/map_spawner/treeorbush,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield{
 	ambush_mobs = list(/mob/living/simple_animal/hostile/zombie = 50);
@@ -18718,7 +18718,7 @@
 	},
 /area/rogue/outdoors/mountains)
 "tSa" = (
-/obj/item/roguegem/violet,
+/obj/item/gem/violet,
 /turf/open/floor/naturalstone,
 /area/rogue/under/cave)
 "tSb" = (
@@ -18939,7 +18939,7 @@
 	first_time_text = "Blackwine Manor"
 	})
 "ucN" = (
-/obj/effect/spawner/roguemap/treeorbush,
+/obj/effect/spawner/map_spawner/treeorbush,
 /obj/structure/flora/rock/pile,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield{
@@ -19138,7 +19138,7 @@
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/magician)
 "uqL" = (
-/obj/effect/spawner/roguemap/treeorbush,
+/obj/effect/spawner/map_spawner/treeorbush,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/rtfield{
 	ambush_mobs = list(/mob/living/simple_animal/hostile/retaliate/wolf = 50, /mob/living/carbon/human/species/human/northern/bum/ambush = 30)
@@ -19479,7 +19479,7 @@
 /turf/open/water/sewer,
 /area/rogue/under/town/sewer)
 "uFR" = (
-/obj/effect/spawner/roguemap/tree,
+/obj/effect/spawner/map_spawner/tree,
 /obj/structure/flora/roguegrass,
 /obj/structure/flora/rock/pile,
 /turf/open/floor/grass,
@@ -19762,7 +19762,7 @@
 "uSP" = (
 /obj/structure/flora/roguegrass,
 /obj/structure/flora/roguegrass,
-/obj/effect/spawner/roguemap/treeorbush,
+/obj/effect/spawner/map_spawner/treeorbush,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield{
 	ambush_mobs = list(/mob/living/simple_animal/hostile/retaliate/wolf = 50, /mob/living/carbon/human/species/human/northern/bum/ambush = 30)
@@ -19982,7 +19982,7 @@
 	},
 /area/rogue/indoors/shelter/town/dwarf)
 "vew" = (
-/obj/effect/spawner/roguemap/tree,
+/obj/effect/spawner/map_spawner/tree,
 /obj/structure/flora/roguegrass,
 /obj/structure/flora/roguegrass,
 /turf/open/floor/grass,
@@ -20548,13 +20548,13 @@
 "vIO" = (
 /obj/structure/chair/bench/ancientlog,
 /obj/structure/flora/roguegrass/thorn_bush,
-/obj/effect/spawner/roguemap/beartrap,
+/obj/effect/spawner/map_spawner/beartrap,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/rtfield{
 	ambush_mobs = list(/mob/living/simple_animal/hostile/retaliate/wolf = 50, /mob/living/carbon/human/species/human/northern/bum/ambush = 30)
 	})
 "vIR" = (
-/obj/effect/spawner/roguemap/treeorbush,
+/obj/effect/spawner/map_spawner/treeorbush,
 /obj/structure/flora/roguegrass,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield{
@@ -20596,9 +20596,9 @@
 	ambush_mobs = list(/mob/living/simple_animal/hostile/retaliate/wolf = 50, /mob/living/carbon/human/species/human/northern/bum/ambush = 30)
 	})
 "vKe" = (
-/obj/effect/spawner/roguemap/tree,
-/obj/effect/spawner/roguemap/tree,
-/obj/effect/spawner/roguemap/tree,
+/obj/effect/spawner/map_spawner/tree,
+/obj/effect/spawner/map_spawner/tree,
+/obj/effect/spawner/map_spawner/tree,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield{
 	ambush_mobs = list(/mob/living/simple_animal/hostile/retaliate/wolf = 50, /mob/living/carbon/human/species/human/northern/bum/ambush = 30)
@@ -20949,7 +20949,7 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/outdoors/town/roofs)
 "wdV" = (
-/obj/effect/spawner/roguemap/tree,
+/obj/effect/spawner/map_spawner/tree,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield{
 	ambush_mobs = list(/mob/living/simple_animal/hostile/retaliate/wolf = 50, /mob/living/carbon/human/species/human/northern/bum/ambush = 30)
@@ -21061,7 +21061,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/indoors/shelter/town/dwarf)
 "wiz" = (
-/obj/effect/spawner/roguemap/tree,
+/obj/effect/spawner/map_spawner/tree,
 /obj/effect/decal/cobbleedge{
 	dir = 10
 	},
@@ -21311,8 +21311,8 @@
 /turf/open/floor/naturalstone,
 /area/rogue/under/town/sewer)
 "www" = (
-/obj/effect/spawner/roguemap/tree,
-/obj/effect/spawner/roguemap/tree,
+/obj/effect/spawner/map_spawner/tree,
+/obj/effect/spawner/map_spawner/tree,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield{
 	ambush_mobs = list(/mob/living/simple_animal/hostile/retaliate/wolf = 50, /mob/living/carbon/human/species/human/northern/bum/ambush = 30)
@@ -21398,7 +21398,7 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/indoors)
 "wBm" = (
-/obj/effect/spawner/roguemap/tree,
+/obj/effect/spawner/map_spawner/tree,
 /obj/effect/decal/cobbleedge{
 	dir = 9
 	},
@@ -21647,7 +21647,7 @@
 /obj/structure/fluff/railing/stonehedge{
 	dir = 4
 	},
-/obj/effect/spawner/roguemap/tree,
+/obj/effect/spawner/map_spawner/tree,
 /obj/structure/flora/roguegrass,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield{
@@ -21858,7 +21858,7 @@
 /turf/closed/wall/mineral/wooddark/vertical,
 /area/rogue/indoors/shelter/town/dwarf)
 "xcr" = (
-/obj/effect/spawner/roguemap/hauntpile,
+/obj/effect/spawner/map_spawner/hauntpile,
 /turf/open/floor/naturalstone,
 /area/rogue/under/cavewet{
 	first_time_text = null;
@@ -22076,7 +22076,7 @@
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
 	},
-/obj/item/reagent_containers/food/snacks/rogue/meat/salami,
+/obj/item/reagent_containers/food/snacks/meat/salami,
 /obj/item/weapon/knife/cleaver,
 /turf/open/floor/cobble,
 /area/rogue/outdoors/exposed/under/basement)
@@ -22142,7 +22142,7 @@
 /area/rogue/indoors/town/garrison)
 "xqZ" = (
 /obj/structure/flora/roguetree,
-/obj/effect/spawner/roguemap/tree,
+/obj/effect/spawner/map_spawner/tree,
 /turf/open/floor/grass,
 /area/rogue/outdoors/river)
 "xre" = (
@@ -22228,7 +22228,7 @@
 	ambush_mobs = list(/mob/living/simple_animal/hostile/retaliate/wolf = 50, /mob/living/carbon/human/species/human/northern/bum/ambush = 30)
 	})
 "xvB" = (
-/obj/item/roguecoin/gold/pile,
+/obj/item/coin/gold/pile,
 /obj/structure/fluff/walldeco/wallshield{
 	pixel_y = 32
 	},

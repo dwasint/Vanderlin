@@ -75,7 +75,7 @@
 
 /obj/structure/fake_machine/atm/attackby(obj/item/P, mob/user, params)
 	if(ishuman(user))
-		if(istype(P, /obj/item/roguecoin))
+		if(istype(P, /obj/item/coin))
 			var/mob/living/carbon/human/H = user
 			if(HAS_TRAIT(user, TRAIT_MATTHIOS_CURSE))
 				to_chat(H, "<span class='warning'>The idea repulses me!</span>")

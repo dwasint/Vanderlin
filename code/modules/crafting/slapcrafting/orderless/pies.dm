@@ -57,10 +57,10 @@
 /datum/orderless_slapcraft/pie/fish
 	name = "fish pie"
 	requirements = list(
-		/obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish = 2,
+		/obj/item/reagent_containers/food/snacks/meat/mince/fish = 2,
 		list(
-			/obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish,
-			/obj/item/reagent_containers/food/snacks/rogue/veg/potato_sliced) = 1)
+			/obj/item/reagent_containers/food/snacks/meat/mince/fish,
+			/obj/item/reagent_containers/food/snacks/veg/potato_sliced) = 1)
 
 	overlay_state = "fill_fish"
 	pie_name = "fish pie"
@@ -76,19 +76,19 @@
 	requirements = list(
 		list(
 			/obj/item/reagent_containers/food/snacks/cheese_wedge,
-			/obj/item/reagent_containers/food/snacks/rogue/cheese,
+			/obj/item/reagent_containers/food/snacks/cheese,
 			/obj/item/reagent_containers/food/snacks/butterslice,
 			/obj/item/reagent_containers/food/snacks/egg) = 1,
 		list(
-			/obj/item/reagent_containers/food/snacks/rogue/veg/onion_sliced,
-			/obj/item/reagent_containers/food/snacks/rogue/veg/potato_sliced,
-			/obj/item/reagent_containers/food/snacks/rogue/veg/turnip_sliced,
-			/obj/item/reagent_containers/food/snacks/rogue/veg/cabbage_sliced,
-			/obj/item/reagent_containers/food/snacks/rogue/roastseeds) = 1,
+			/obj/item/reagent_containers/food/snacks/veg/onion_sliced,
+			/obj/item/reagent_containers/food/snacks/veg/potato_sliced,
+			/obj/item/reagent_containers/food/snacks/veg/turnip_sliced,
+			/obj/item/reagent_containers/food/snacks/veg/cabbage_sliced,
+			/obj/item/reagent_containers/food/snacks/roastseeds) = 1,
 		list(
-			/obj/item/reagent_containers/food/snacks/rogue/meat/mince/poultry,
-			/obj/item/reagent_containers/food/snacks/rogue/meat/mince/beef,
-			/obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish,
+			/obj/item/reagent_containers/food/snacks/meat/mince/poultry,
+			/obj/item/reagent_containers/food/snacks/meat/mince/beef,
+			/obj/item/reagent_containers/food/snacks/meat/mince/fish,
 			/obj/item/reagent_containers/food/snacks/fat) = 1
 	)
 
@@ -136,9 +136,9 @@
 /datum/orderless_slapcraft/pie/meat
 	name = "meat pie"
 	requirements = list(
-		/obj/item/reagent_containers/food/snacks/rogue/meat/mince/beef = 2,
+		/obj/item/reagent_containers/food/snacks/meat/mince/beef = 2,
 		list(
-			/obj/item/reagent_containers/food/snacks/rogue/meat/mince/beef,
+			/obj/item/reagent_containers/food/snacks/meat/mince/beef,
 			/obj/item/reagent_containers/food/snacks/egg) = 1)
 	overlay_state = "fill_meat"
 	pie_name = "meat pie"

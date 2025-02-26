@@ -420,8 +420,8 @@
 	pixel_x = -5;
 	pixel_y = 8
 	},
-/obj/item/roguegem,
-/obj/item/roguegem{
+/obj/item/gem,
+/obj/item/gem{
 	pixel_x = -11;
 	pixel_y = 11
 	},

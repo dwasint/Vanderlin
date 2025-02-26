@@ -209,7 +209,7 @@
 /turf/open/floor/grass/cold,
 /area/rogue)
 "iJ" = (
-/obj/effect/spawner/roguemap/loot,
+/obj/effect/spawner/map_spawner/loot,
 /turf/open/floor/twig,
 /area/rogue)
 "iV" = (
@@ -330,7 +330,7 @@
 "oV" = (
 /obj/effect/decal/cleanable/sigil/E,
 /obj/effect/decal/cleanable/blood,
-/obj/effect/spawner/roguemap/loot/rare,
+/obj/effect/spawner/map_spawner/loot/rare,
 /turf/open/floor/plasteel/maniac/damaged,
 /area/rogue)
 "pi" = (
@@ -540,7 +540,7 @@
 "vq" = (
 /obj/effect/decal/cleanable/sigil/N,
 /obj/effect/decal/cleanable/blood,
-/obj/effect/spawner/roguemap/loot/magic,
+/obj/effect/spawner/map_spawner/loot/magic,
 /turf/open/floor/plasteel/maniac/damaged,
 /area/rogue)
 "vB" = (
@@ -618,7 +618,7 @@
 /obj/item/clothing/head/helmet/heavy/necked/astrata,
 /obj/item/clothing/head/helmet/heavy/necked/astrata,
 /obj/machinery/light/rogue/torchholder/l,
-/obj/effect/spawner/roguemap/loot/medium,
+/obj/effect/spawner/map_spawner/loot/medium,
 /turf/open/floor/churchmarble,
 /area/rogue)
 "AS" = (
@@ -765,7 +765,7 @@
 /obj/structure/bed/rogue/mediocre,
 /obj/structure/bed/rogue/mediocre,
 /obj/item/bedsheet/rogue/cloth,
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/churchmarble,
 /area/rogue)
 "GV" = (
@@ -794,7 +794,7 @@
 /turf/open/floor/churchmarble,
 /area/rogue)
 "Io" = (
-/obj/effect/spawner/roguemap/loot/armor,
+/obj/effect/spawner/map_spawner/loot/armor,
 /turf/open/floor/twig,
 /area/rogue)
 "Iu" = (
@@ -1058,7 +1058,7 @@
 "RZ" = (
 /obj/effect/decal/cleanable/sigil/W,
 /obj/effect/decal/cleanable/blood/old,
-/obj/effect/spawner/roguemap/loot/rare,
+/obj/effect/spawner/map_spawner/loot/rare,
 /turf/open/floor/plasteel/maniac/damaged,
 /area/rogue)
 "Sg" = (
@@ -1129,7 +1129,7 @@
 /area/rogue)
 "UO" = (
 /obj/structure/closet/crate/chest,
-/obj/effect/spawner/roguemap/loot/rare,
+/obj/effect/spawner/map_spawner/loot/rare,
 /turf/open/floor/churchmarble,
 /area/rogue)
 "UP" = (
@@ -1169,7 +1169,7 @@
 /turf/open/floor/churchmarble,
 /area/rogue)
 "WQ" = (
-/obj/effect/spawner/roguemap/loot/weapon,
+/obj/effect/spawner/map_spawner/loot/weapon,
 /turf/open/floor/twig,
 /area/rogue)
 "WX" = (
@@ -1273,7 +1273,7 @@
 "Zs" = (
 /obj/structure/bed/rogue/mediocre,
 /obj/item/bedsheet/rogue/cloth,
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/churchmarble,
 /area/rogue)
 "Zu" = (

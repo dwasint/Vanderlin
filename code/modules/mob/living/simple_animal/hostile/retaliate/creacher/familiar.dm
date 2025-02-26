@@ -13,7 +13,7 @@
 	maxHealth = 120
 	melee_damage_lower = 10
 	melee_damage_upper = 20
-	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat, /obj/item/bodypart, /obj/item/organ)
+	food_type = list(/obj/item/reagent_containers/food/snacks/meat, /obj/item/bodypart, /obj/item/organ)
 	footstep_type = FOOTSTEP_MOB_BAREFOOT
 	pooptype = null
 	deaggroprob = 0

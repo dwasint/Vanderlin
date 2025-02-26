@@ -3,7 +3,7 @@
 /turf/closed/mineral/rogue/bedrock,
 /area/rogue)
 "b" = (
-/obj/item/roguecoin/gold{
+/obj/item/coin/gold{
 	pixel_y = 2;
 	pixel_x = 22
 	},
@@ -18,7 +18,7 @@
 /turf/open/floor/hexstone,
 /area/rogue)
 "e" = (
-/obj/item/roguecoin/gold{
+/obj/item/coin/gold{
 	pixel_x = 21
 	},
 /turf/open/floor/hexstone,
@@ -44,7 +44,7 @@
 /turf/open/floor/hexstone,
 /area/rogue)
 "m" = (
-/obj/effect/spawner/roguemap/loot,
+/obj/effect/spawner/map_spawner/loot,
 /turf/open/floor/hexstone,
 /area/rogue)
 "n" = (
@@ -102,7 +102,7 @@
 /turf/open/floor/hexstone,
 /area/rogue)
 "A" = (
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/hexstone,
 /area/rogue)
 "B" = (

@@ -12,12 +12,12 @@
 	vision_range = 5
 	aggro_vision_range = 5
 
-	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/strange = 1,
+	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/strange = 1,
 							/obj/item/natural/silk = 1)
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/strange = 1,
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/strange = 1,
 							/obj/item/reagent_containers/food/snacks/spiderhoney = 1,
 							/obj/item/natural/silk = 2)
-	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/strange = 2,
+	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/strange = 2,
 							/obj/item/reagent_containers/food/snacks/spiderhoney = 2,
 							/obj/item/natural/silk = 3)
 
@@ -25,7 +25,7 @@
 	maxHealth = SPIDER_HEALTH
 	food_type = list(/obj/item/bodypart,
 					/obj/item/organ,
-					/obj/item/reagent_containers/food/snacks/rogue/meat)
+					/obj/item/reagent_containers/food/snacks/meat)
 
 	base_intents = list(/datum/intent/simple/bite)
 	attack_sound = list('sound/vo/mobs/spider/attack (1).ogg','sound/vo/mobs/spider/attack (2).ogg','sound/vo/mobs/spider/attack (3).ogg','sound/vo/mobs/spider/attack (4).ogg')

@@ -66,7 +66,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/indoors)
 "iD" = (
-/obj/effect/spawner/roguemap/loot,
+/obj/effect/spawner/map_spawner/loot,
 /turf/open/floor/cobblerock,
 /area/rogue/indoors)
 "iK" = (
@@ -80,7 +80,7 @@
 /area/rogue/indoors)
 "jC" = (
 /obj/structure/table/stone_small,
-/obj/effect/spawner/roguemap/loot/potion_stats,
+/obj/effect/spawner/map_spawner/loot/potion_stats,
 /turf/open/floor/cobblerock,
 /area/rogue/indoors)
 "kN" = (
@@ -89,12 +89,12 @@
 /area/rogue/indoors)
 "kW" = (
 /obj/structure/table/stone_small,
-/obj/effect/spawner/roguemap/loot/potion_poisons,
+/obj/effect/spawner/map_spawner/loot/potion_poisons,
 /turf/open/floor/cobblerock,
 /area/rogue/indoors)
 "lH" = (
 /obj/structure/table/stone_small,
-/obj/effect/spawner/roguemap/loot/rare,
+/obj/effect/spawner/map_spawner/loot/rare,
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/cobblerock,
 /area/rogue/indoors)
@@ -276,7 +276,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/indoors)
 "HJ" = (
-/obj/effect/spawner/roguemap/loot/weapon,
+/obj/effect/spawner/map_spawner/loot/weapon,
 /turf/open/floor/cobblerock,
 /area/rogue/indoors)
 "HN" = (
@@ -301,7 +301,7 @@
 /area/rogue/indoors)
 "Ky" = (
 /obj/structure/table/stone_small,
-/obj/effect/spawner/roguemap/loot/medium,
+/obj/effect/spawner/map_spawner/loot/medium,
 /turf/open/floor/cobblerock,
 /area/rogue/indoors)
 "Lt" = (
@@ -352,7 +352,7 @@
 /obj/structure/spider/stickyweb{
 	dir = 4
 	},
-/obj/effect/spawner/roguemap/loot,
+/obj/effect/spawner/map_spawner/loot,
 /turf/open/floor/cobblerock,
 /area/rogue/indoors)
 "TP" = (
@@ -364,7 +364,7 @@
 /area/rogue/indoors)
 "Va" = (
 /obj/structure/closet/crate/chest,
-/obj/effect/spawner/roguemap/loot/food,
+/obj/effect/spawner/map_spawner/loot/food,
 /turf/open/floor/cobblerock,
 /area/rogue/indoors)
 "Vs" = (
@@ -432,7 +432,7 @@
 /obj/structure/table/stone_small,
 /obj/structure/spider/stickyweb,
 /obj/structure/spider/stickyweb/solo,
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/cobblerock,
 /area/rogue/indoors)
 

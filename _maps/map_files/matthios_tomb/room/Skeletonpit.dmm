@@ -17,7 +17,7 @@
 "i" = (
 /mob/living/carbon/human/species/skeleton,
 /obj/effect/landmark/chest_or_mimic,
-/obj/item/roguecoin/copper/pile,
+/obj/item/coin/copper/pile,
 /turf/open/floor/naturalstone,
 /area/rogue)
 "k" = (
@@ -26,18 +26,18 @@
 /area/rogue)
 "l" = (
 /obj/effect/landmark/chest_or_mimic,
-/obj/item/roguecoin/copper/pile,
+/obj/item/coin/copper/pile,
 /obj/item/clothing/head/helmet/nasal,
 /turf/open/floor/naturalstone,
 /area/rogue)
 "m" = (
 /obj/effect/landmark/chest_or_mimic,
-/obj/item/roguecoin/copper/pile,
+/obj/item/coin/copper/pile,
 /turf/open/floor/naturalstone,
 /area/rogue)
 "n" = (
 /obj/effect/landmark/chest_or_mimic,
-/obj/item/roguecoin/copper/pile,
+/obj/item/coin/copper/pile,
 /obj/item/clothing/ring/silver,
 /turf/open/floor/naturalstone,
 /area/rogue)
@@ -60,7 +60,7 @@
 /area/rogue)
 "s" = (
 /obj/effect/landmark/chest_or_mimic,
-/obj/item/roguecoin/copper/pile,
+/obj/item/coin/copper/pile,
 /obj/item/clothing/gloves/plate,
 /turf/open/floor/naturalstone,
 /area/rogue)
@@ -97,7 +97,7 @@
 "B" = (
 /mob/living/carbon/human/species/skeleton/npc/warrior/skilled,
 /obj/effect/landmark/chest_or_mimic,
-/obj/item/roguecoin/copper/pile,
+/obj/item/coin/copper/pile,
 /obj/item/clothing/ring/silver/rontz,
 /turf/open/floor/naturalstone,
 /area/rogue)
@@ -115,7 +115,7 @@
 /area/rogue)
 "H" = (
 /obj/effect/landmark/chest_or_mimic,
-/obj/item/roguecoin/copper/pile,
+/obj/item/coin/copper/pile,
 /obj/item/lockpickring,
 /obj/item/clothing/head/helmet/leather/volfhelm,
 /turf/open/floor/naturalstone,

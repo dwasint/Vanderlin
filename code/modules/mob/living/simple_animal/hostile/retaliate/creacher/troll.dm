@@ -22,12 +22,12 @@
 	vision_range = 6
 	aggro_vision_range = 6
 
-	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/strange = 1,
+	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/strange = 1,
 						/obj/item/alch/horn = 1)
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/strange = 1,
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/strange = 1,
 						/obj/item/natural/hide = 2,
 						/obj/item/alch/horn = 2)
-	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/strange= 2,
+	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/strange= 2,
 						/obj/item/natural/hide = 3,
 						/obj/item/alch/horn = 2)
 
@@ -179,11 +179,11 @@
 	melee_damage_lower = 20
 	melee_damage_upper = 40
 	footstep_type = FOOTSTEP_MOB_BAREFOOT
-	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1)
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1,
+	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 1)
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 1,
 							/obj/item/alch/sinew = 1,
 							/obj/item/alch/bone = 1)
-	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1,
+	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 1,
 							/obj/item/alch/sinew = 2,
 							/obj/item/alch/bone = 1,
 							/obj/item/natural/fur/cabbit = 1)

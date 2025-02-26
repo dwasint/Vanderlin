@@ -135,12 +135,12 @@
 /datum/supply_pack/food/cheese
 	name = "Cheese Wheel"
 	cost = 30
-	contains = /obj/item/reagent_containers/food/snacks/rogue/cheddar
+	contains = /obj/item/reagent_containers/food/snacks/cheddar
 
 /datum/supply_pack/food/salami
 	name = "Salami Stick"
 	cost = 15
-	contains = /obj/item/reagent_containers/food/snacks/rogue/meat/salami
+	contains = /obj/item/reagent_containers/food/snacks/meat/salami
 
 /datum/supply_pack/food/potato
 	name = "Dwarven Potato"

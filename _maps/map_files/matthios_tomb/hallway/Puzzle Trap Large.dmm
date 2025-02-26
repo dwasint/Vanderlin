@@ -67,7 +67,7 @@
 "gY" = (
 /obj/structure/rack/rogue/shelf/biggest,
 /obj/structure/spider/stickyweb,
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/cobble,
 /area/rogue/indoors)
 "hr" = (
@@ -77,14 +77,14 @@
 /area/rogue/indoors)
 "ih" = (
 /obj/structure/closet/crate/chest,
-/obj/effect/spawner/roguemap/loot/common,
-/obj/effect/spawner/roguemap/loot/food,
+/obj/effect/spawner/map_spawner/loot/common,
+/obj/effect/spawner/map_spawner/loot/food,
 /turf/open/floor/cobble,
 /area/rogue/indoors)
 "ip" = (
 /obj/structure/rack/rogue/shelf/biggest,
 /obj/structure/spider/stickyweb,
-/obj/effect/spawner/roguemap/loot,
+/obj/effect/spawner/map_spawner/loot,
 /turf/open/floor/cobblerock,
 /area/rogue/indoors)
 "iM" = (
@@ -110,7 +110,7 @@
 "ks" = (
 /obj/structure/spider/stickyweb,
 /obj/structure/spider/stickyweb/solo,
-/obj/effect/spawner/roguemap/loot/medium,
+/obj/effect/spawner/map_spawner/loot/medium,
 /turf/open/floor/cobblerock,
 /area/rogue/indoors)
 "lx" = (
@@ -133,7 +133,7 @@
 	},
 /area/rogue/indoors)
 "mH" = (
-/obj/effect/spawner/roguemap/loot/magic,
+/obj/effect/spawner/map_spawner/loot/magic,
 /turf/open/floor/cobble,
 /area/rogue/indoors)
 "nt" = (
@@ -161,7 +161,7 @@
 /turf/open/floor/cobble,
 /area/rogue/indoors)
 "qu" = (
-/obj/effect/spawner/roguemap/loot/weapon,
+/obj/effect/spawner/map_spawner/loot/weapon,
 /turf/open/floor/cobble,
 /area/rogue/indoors)
 "qv" = (
@@ -176,7 +176,7 @@
 "rh" = (
 /obj/structure/closet/crate/coffin,
 /obj/structure/spider/stickyweb,
-/obj/effect/spawner/roguemap/loot/weapon,
+/obj/effect/spawner/map_spawner/loot/weapon,
 /turf/open/floor/cobble,
 /area/rogue/indoors)
 "rJ" = (
@@ -248,7 +248,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/indoors)
 "zD" = (
-/obj/effect/spawner/roguemap/loot/armor,
+/obj/effect/spawner/map_spawner/loot/armor,
 /turf/open/floor/cobble,
 /area/rogue/indoors)
 "zW" = (
@@ -291,7 +291,7 @@
 /area/rogue/indoors)
 "Fs" = (
 /obj/structure/spider/stickyweb,
-/obj/effect/spawner/roguemap/loot,
+/obj/effect/spawner/map_spawner/loot,
 /turf/open/floor/cobblerock,
 /area/rogue/indoors)
 "FY" = (
@@ -329,7 +329,7 @@
 "Jx" = (
 /obj/structure/rack/rogue/shelf/biggest,
 /obj/structure/spider/stickyweb/solo,
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/cobble,
 /area/rogue/indoors)
 "JN" = (
@@ -415,7 +415,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/indoors)
 "OY" = (
-/obj/effect/spawner/roguemap/loot/rare,
+/obj/effect/spawner/map_spawner/loot/rare,
 /turf/open/floor/cobblerock,
 /area/rogue/indoors)
 "Pk" = (

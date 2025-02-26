@@ -4,7 +4,7 @@
 /area/rogue)
 "d" = (
 /obj/item/restraints/legcuffs/beartrap/armed,
-/obj/item/roguecoin/copper,
+/obj/item/coin/copper,
 /turf/open/floor/naturalstone,
 /area/rogue)
 "y" = (

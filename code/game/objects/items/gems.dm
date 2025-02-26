@@ -1,5 +1,5 @@
 
-/obj/item/roguegem
+/obj/item/gem
 	name = "random gem"
 	desc = "If you find this, yell at coderbus"
 	icon_state = "aros"
@@ -16,21 +16,21 @@
 	///For Mappers; gem_path = weight
 	var/list/valid_gems = list()
 
-/obj/item/roguegem/Initialize()
+/obj/item/gem/Initialize()
 	. = ..()
 	if(sellprice == 0)
 		var/new_gem
 		if(length(valid_gems))
 			new_gem = pickweight(valid_gems)
 		else
-			new_gem = pick(subtypesof(/obj/item/roguegem))
-		var/obj/item/roguegem/spawned = new new_gem(get_turf(src))
+			new_gem = pick(subtypesof(/obj/item/gem))
+		var/obj/item/gem/spawned = new new_gem(get_turf(src))
 		spawned.update_icon_state()
 		return INITIALIZE_HINT_QDEL
 	update_icon_state()
 
 ///This is a switch incase anyone would like to add more...
-/obj/item/roguegem/update_icon_state()
+/obj/item/gem/update_icon_state()
 	if(icon_state == "aros")
 		switch(rand(1,2))
 			if(1)
@@ -38,7 +38,7 @@
 			if(2)
 				icon_state = "e_cut"
 	return
-/obj/item/roguegem/getonmobprop(tag)
+/obj/item/gem/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)
@@ -47,53 +47,53 @@
 			if("onbelt")
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
-/obj/item/roguegem/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
+/obj/item/gem/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	playsound(loc, pick('sound/items/gems (1).ogg','sound/items/gems (2).ogg'), 100, TRUE, -2)
 	..()
 
-/obj/item/roguegem/green
+/obj/item/gem/green
 	name = "gemerald"
 	desc = "Glints with verdant brilliance."
 	//color = "#15af158c"
 	icon_state = "emerald_cut"
 	sellprice = 44
 
-/obj/item/roguegem/blue
+/obj/item/gem/blue
 	name = "blortz"
 	desc = "Pale blue, like a frozen tear."
 	//color = "#1ca5aa8c"
 	icon_state = "quartz_cut"
 	sellprice = 88
 
-/obj/item/roguegem/yellow
+/obj/item/gem/yellow
 	name = "toper"
 	desc = "Its amber hues remind you of the sunset."
 	//color = "#e6a0088c"
 	icon_state = "topaz_cut"
 	sellprice = 25
 
-/obj/item/roguegem/violet
+/obj/item/gem/violet
 	name = "saffira"
 	desc = "This gem is admired by many wizards."
 	//color = "#1733b38c"
 	icon_state = "sapphire_cut"
 	sellprice = 56
 
-/obj/item/roguegem/diamond
+/obj/item/gem/diamond
 	name = "dorpel"
 	desc = "Beautifully pure, it demands respect."
 	//color = "#ffffff8c"
 	icon_state = "diamond_cut"
 	sellprice = 121
 
-/obj/item/roguegem/red
+/obj/item/gem/red
 	name = "rubor"
 	desc = "Glistening with unkempt rage."
 	//color = "#ff00008c"
 	icon_state = "ruby_cut"
 	sellprice = 100
 
-/obj/item/roguegem/black
+/obj/item/gem/black
 	name = "onyxa"
 	desc = "Dark as nite."
 	color = "#200013dd"

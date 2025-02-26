@@ -31,8 +31,8 @@
 /area/rogue)
 "h" = (
 /obj/structure/table/wood/counter,
-/obj/item/roguecoin/copper,
-/obj/item/roguecoin/copper,
+/obj/item/coin/copper,
+/obj/item/coin/copper,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "j" = (
@@ -56,7 +56,7 @@
 /obj/structure/table/wood/counter/end{
 	dir = 4
 	},
-/obj/item/roguecoin/copper,
+/obj/item/coin/copper,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "p" = (
@@ -68,7 +68,7 @@
 /area/rogue)
 "r" = (
 /obj/structure/closet/crate/drawer/inn,
-/obj/item/roguecoin/copper/pile,
+/obj/item/coin/copper/pile,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "s" = (

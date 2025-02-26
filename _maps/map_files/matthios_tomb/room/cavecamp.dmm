@@ -65,7 +65,7 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "K" = (
-/obj/item/reagent_containers/food/snacks/rogue/meat/sausage{
+/obj/item/reagent_containers/food/snacks/meat/sausage{
 	pixel_x = 4;
 	pixel_y = 3
 	},
@@ -77,7 +77,7 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "V" = (
-/obj/item/reagent_containers/food/snacks/rogue/meat/sausage{
+/obj/item/reagent_containers/food/snacks/meat/sausage{
 	pixel_x = 6;
 	pixel_y = 4
 	},

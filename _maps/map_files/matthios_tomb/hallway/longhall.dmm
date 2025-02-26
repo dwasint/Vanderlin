@@ -7,7 +7,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue)
 "e" = (
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
 /turf/open/floor/naturalstone,
 /area/rogue)
 "f" = (
@@ -28,7 +28,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue)
 "n" = (
-/obj/item/roguecoin/silver/pile,
+/obj/item/coin/silver/pile,
 /turf/open/floor/naturalstone,
 /area/rogue)
 "o" = (
@@ -36,7 +36,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue)
 "p" = (
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak{
+/obj/item/reagent_containers/food/snacks/meat/steak{
 	pixel_x = 8;
 	pixel_y = 14
 	},
@@ -78,7 +78,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue)
 "F" = (
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak{
+/obj/item/reagent_containers/food/snacks/meat/steak{
 	pixel_x = -12;
 	pixel_y = -7
 	},
@@ -124,7 +124,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue)
 "X" = (
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak{
+/obj/item/reagent_containers/food/snacks/meat/steak{
 	pixel_x = 8;
 	pixel_y = 14
 	},

@@ -401,12 +401,12 @@
 /obj/machinery/light/rogue/oven/west,
 /obj/structure/closet/crate/chest,
 /obj/item/cooking/pan,
-/obj/item/reagent_containers/food/snacks/rogue/meat/mince,
-/obj/item/reagent_containers/food/snacks/rogue/meat/mince,
-/obj/item/reagent_containers/food/snacks/rogue/meat/mince,
-/obj/item/reagent_containers/food/snacks/rogue/meat/mince,
-/obj/item/reagent_containers/food/snacks/rogue/meat/poultry,
-/obj/item/reagent_containers/food/snacks/rogue/meat/poultry,
+/obj/item/reagent_containers/food/snacks/meat/mince,
+/obj/item/reagent_containers/food/snacks/meat/mince,
+/obj/item/reagent_containers/food/snacks/meat/mince,
+/obj/item/reagent_containers/food/snacks/meat/mince,
+/obj/item/reagent_containers/food/snacks/meat/poultry,
+/obj/item/reagent_containers/food/snacks/meat/poultry,
 /turf/open/floor/hexstone,
 /area/rogue)
 "Ga" = (

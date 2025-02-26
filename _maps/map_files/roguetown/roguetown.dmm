@@ -39,7 +39,7 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
 "abY" = (
-/obj/effect/spawner/roguemap/stump,
+/obj/effect/spawner/map_spawner/stump,
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
 "adm" = (
@@ -55,7 +55,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/rtfield)
 "aea" = (
-/obj/effect/spawner/roguemap/hauntz_random,
+/obj/effect/spawner/map_spawner/hauntz_random,
 /turf/open/floor/dirt/road,
 /area/rogue/under/town/basement)
 "aex" = (
@@ -511,7 +511,7 @@
 "aCy" = (
 /obj/structure/closet/crate/crafted_closet/dark,
 /obj/item/rope/chain,
-/obj/item/roguecoin/copper/pile,
+/obj/item/coin/copper/pile,
 /turf/open/floor/cobble,
 /area/rogue/under/town/basement)
 "aDe" = (
@@ -1227,7 +1227,7 @@
 	dir = 4
 	},
 /obj/structure/closet/crate/chest/neu,
-/obj/item/reagent_containers/food/snacks/rogue/meat/salami,
+/obj/item/reagent_containers/food/snacks/meat/salami,
 /obj/item/reagent_containers/food/snacks/bread,
 /turf/open/floor/wood,
 /area/rogue/indoors/town/garrison)
@@ -1520,7 +1520,7 @@
 /obj/effect/decal/cobbleedge{
 	dir = 8
 	},
-/obj/effect/spawner/roguemap/hauntz_random,
+/obj/effect/spawner/map_spawner/hauntz_random,
 /turf/open/floor/blocks,
 /area/rogue/outdoors/town)
 "bIH" = (
@@ -1683,7 +1683,7 @@
 /turf/open/floor/ruinedwood,
 /area/rogue/indoors)
 "bRU" = (
-/obj/effect/spawner/roguemap/hauntz_random,
+/obj/effect/spawner/map_spawner/hauntz_random,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/rtfield)
 "bSt" = (
@@ -2015,7 +2015,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/rtfield)
 "ciy" = (
-/obj/effect/spawner/roguemap/hauntz_random,
+/obj/effect/spawner/map_spawner/hauntz_random,
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/rtfield)
 "cjm" = (
@@ -2247,7 +2247,7 @@
 /turf/open/floor/blocks,
 /area/rogue/under/town/basement)
 "crQ" = (
-/obj/effect/spawner/roguemap/hauntz_random,
+/obj/effect/spawner/map_spawner/hauntz_random,
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/town)
 "csH" = (
@@ -2270,12 +2270,12 @@
 /turf/open/floor/wood,
 /area/rogue/indoors/town)
 "cuY" = (
-/obj/effect/spawner/roguemap/sewerencounter,
+/obj/effect/spawner/map_spawner/sewerencounter,
 /turf/open/floor/blocks/green,
 /area/rogue/under/town/sewer)
 "cwi" = (
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/effect/spawner/roguemap/hauntz_random,
+/obj/effect/spawner/map_spawner/hauntz_random,
 /turf/open/floor/cobble,
 /area/rogue/outdoors/town)
 "cwm" = (
@@ -2314,7 +2314,7 @@
 /area/rogue/indoors/town/manor)
 "czo" = (
 /obj/structure/closet/crate/chest/gold,
-/obj/item/roguecoin/copper/pile,
+/obj/item/coin/copper/pile,
 /turf/open/floor/dirt/road,
 /area/rogue/under/cave)
 "czv" = (
@@ -2330,7 +2330,7 @@
 /turf/open/floor/churchmarble,
 /area/rogue/indoors/town/church/chapel)
 "cAz" = (
-/obj/effect/spawner/roguemap/hauntz_random,
+/obj/effect/spawner/map_spawner/hauntz_random,
 /turf/open/floor/cobble,
 /area/rogue/outdoors/exposed/dwarf)
 "cAB" = (
@@ -2610,7 +2610,7 @@
 /area/rogue/indoors/town/manor)
 "cSy" = (
 /obj/structure/closet/crate/chest/neu_fancy,
-/obj/item/roguecoin/gold/pile,
+/obj/item/coin/gold/pile,
 /turf/open/floor/tile,
 /area/rogue/indoors/town/vault)
 "cSB" = (
@@ -2735,7 +2735,7 @@
 /turf/open/floor/woodturned,
 /area/rogue/indoors/town/tavern)
 "cYE" = (
-/obj/effect/spawner/roguemap/sewerencounter,
+/obj/effect/spawner/map_spawner/sewerencounter,
 /turf/open/floor/blocks,
 /area/rogue/under/town/basement)
 "cYS" = (
@@ -3471,7 +3471,7 @@
 /area/rogue/under/town/sewer)
 "dNA" = (
 /obj/structure/closet/crate/chest/neu,
-/obj/item/roguecoin/copper/pile,
+/obj/item/coin/copper/pile,
 /turf/open/floor/herringbone,
 /area/rogue/indoors/town/church)
 "dOj" = (
@@ -3527,7 +3527,7 @@
 /area/rogue/indoors/town/clocktower)
 "dSa" = (
 /obj/structure/closet/crate/chest/neu_fancy,
-/obj/item/roguegem/green,
+/obj/item/gem/green,
 /obj/item/ingot/silver,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/ruinedwood{
@@ -4205,9 +4205,9 @@
 /area/rogue/under/town/basement)
 "eEe" = (
 /obj/structure/closet/crate/chest/neu_fancy,
-/obj/item/roguecoin/gold/pile,
-/obj/item/roguecoin/silver/pile,
-/obj/item/roguecoin/gold/pile,
+/obj/item/coin/gold/pile,
+/obj/item/coin/silver/pile,
+/obj/item/coin/gold/pile,
 /obj/item/reagent_containers/glass/cup/silver,
 /turf/open/floor/ruinedwood/darker,
 /area/rogue/indoors/town)
@@ -5194,7 +5194,7 @@
 /turf/open/floor/concrete,
 /area/rogue/indoors/town/shop)
 "fHi" = (
-/obj/effect/spawner/roguemap/stump,
+/obj/effect/spawner/map_spawner/stump,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/rtfield)
 "fId" = (
@@ -5239,7 +5239,7 @@
 /turf/open/floor/cobble,
 /area/rogue/indoors/town/garrison)
 "fJE" = (
-/obj/effect/spawner/roguemap/stump,
+/obj/effect/spawner/map_spawner/stump,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/town)
 "fJM" = (
@@ -5348,7 +5348,7 @@
 /turf/open/floor/wood,
 /area/rogue/indoors/town/manor)
 "fQt" = (
-/obj/effect/spawner/roguemap/hauntz_random,
+/obj/effect/spawner/map_spawner/hauntz_random,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/town)
 "fQx" = (
@@ -6762,12 +6762,12 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
 "htF" = (
-/obj/item/roguegem,
-/obj/item/roguegem,
-/obj/item/roguegem/violet,
-/obj/item/roguegem/yellow,
-/obj/item/roguegem/green,
-/obj/item/roguegem/blue,
+/obj/item/gem,
+/obj/item/gem,
+/obj/item/gem/violet,
+/obj/item/gem/yellow,
+/obj/item/gem/green,
+/obj/item/gem/blue,
 /obj/structure/closet/crate/chest/neu_fancy,
 /turf/open/floor/tile,
 /area/rogue/indoors/town/vault)
@@ -7270,7 +7270,7 @@
 /area/rogue/indoors/town/magician)
 "hUX" = (
 /obj/structure/closet/crate/chest/neu_fancy,
-/obj/item/roguecoin/silver/pile,
+/obj/item/coin/silver/pile,
 /turf/open/floor/tile,
 /area/rogue/indoors/town/vault)
 "hVa" = (
@@ -7399,7 +7399,7 @@
 /area/rogue/indoors/town/garrison)
 "icd" = (
 /obj/structure/rack/rogue,
-/obj/item/roguegem/blue,
+/obj/item/gem/blue,
 /obj/item/reagent_containers/glass/bottle/manapot,
 /obj/item/reagent_containers/glass/bottle/healthpot,
 /turf/open/floor/metal/barograte,
@@ -7530,7 +7530,7 @@
 	},
 /area/rogue/under/town/basement)
 "ikN" = (
-/obj/effect/spawner/roguemap/hauntz_random,
+/obj/effect/spawner/map_spawner/hauntz_random,
 /turf/open/floor/blocks/green,
 /area/rogue/under/town/sewer)
 "ikT" = (
@@ -7779,7 +7779,7 @@
 /turf/open/floor/wood,
 /area/rogue/indoors/town/garrison)
 "iAq" = (
-/obj/effect/spawner/roguemap/hauntz_random,
+/obj/effect/spawner/map_spawner/hauntz_random,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/blocks/stonered,
 /area/rogue/indoors/town/bath)
@@ -8257,7 +8257,7 @@
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town/manor)
 "jdQ" = (
-/obj/effect/spawner/roguemap/hauntz_random,
+/obj/effect/spawner/map_spawner/hauntz_random,
 /turf/open/floor/wood,
 /area/rogue/outdoors/town)
 "jea" = (
@@ -8543,7 +8543,7 @@
 /area/rogue/outdoors/town/roofs)
 "jyM" = (
 /obj/structure/closet/crate/chest/gold,
-/obj/item/roguecoin/silver/pile,
+/obj/item/coin/silver/pile,
 /turf/open/floor/dirt/road,
 /area/rogue/under/cave)
 "jzU" = (
@@ -8567,7 +8567,7 @@
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/town/tavern)
 "jAy" = (
-/obj/item/roguecoin/copper,
+/obj/item/coin/copper,
 /turf/open/water/swamp,
 /area/rogue/outdoors/town)
 "jAL" = (
@@ -9060,7 +9060,7 @@
 	},
 /area/rogue/indoors/town/dwarfin)
 "kbW" = (
-/obj/effect/spawner/roguemap/hauntz_random,
+/obj/effect/spawner/map_spawner/hauntz_random,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield)
 "kcf" = (
@@ -9244,7 +9244,7 @@
 /obj/structure/rack/rogue/shelf,
 /obj/item/reagent_containers/food/snacks/produce/onion,
 /obj/item/reagent_containers/food/snacks/produce/cabbage,
-/obj/item/reagent_containers/food/snacks/rogue/cheddar,
+/obj/item/reagent_containers/food/snacks/cheddar,
 /obj/item/reagent_containers/food/snacks/spiderhoney,
 /obj/item/reagent_containers/food/snacks/produce/potato,
 /obj/item/reagent_containers/food/snacks/produce/potato,
@@ -11219,7 +11219,7 @@
 	pixel_x = 4;
 	pixel_y = -1
 	},
-/obj/item/reagent_containers/food/snacks/rogue/friedrat{
+/obj/item/reagent_containers/food/snacks/friedrat{
 	pixel_x = -4;
 	pixel_y = 8
 	},
@@ -12161,7 +12161,7 @@
 	},
 /area/rogue/indoors/town)
 "nqK" = (
-/obj/effect/spawner/roguemap/hauntz_random,
+/obj/effect/spawner/map_spawner/hauntz_random,
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
 "nqP" = (
@@ -12346,11 +12346,11 @@
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/town)
 "nBT" = (
-/obj/effect/spawner/roguemap/hauntz_random,
+/obj/effect/spawner/map_spawner/hauntz_random,
 /turf/open/floor/cobble,
 /area/rogue/under/town/basement)
 "nBU" = (
-/obj/effect/spawner/roguemap/hauntz_random,
+/obj/effect/spawner/map_spawner/hauntz_random,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/town)
 "nCh" = (
@@ -12873,7 +12873,7 @@
 /obj/structure/table/wood{
 	icon_state = "longtable"
 	},
-/obj/item/reagent_containers/food/snacks/rogue/meat/salami,
+/obj/item/reagent_containers/food/snacks/meat/salami,
 /obj/item/weapon/knife/cleaver,
 /turf/open/floor/hexstone,
 /area/rogue/indoors/town/church)
@@ -12981,9 +12981,9 @@
 /obj/item/reagent_containers/food/snacks/egg,
 /obj/item/reagent_containers/food/snacks/egg,
 /obj/item/reagent_containers/food/snacks/butter,
-/obj/item/reagent_containers/food/snacks/rogue/meat/sausage,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/sausage,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
 /turf/open/floor/hexstone,
 /area/rogue/indoors/town/church)
 "ohO" = (
@@ -13304,7 +13304,7 @@
 /turf/open/floor/twig,
 /area/rogue/under/town/basement)
 "oAi" = (
-/obj/effect/spawner/roguemap/hauntz_random,
+/obj/effect/spawner/map_spawner/hauntz_random,
 /obj/effect/decal/cobbleedge/alt{
 	dir = 8
 	},
@@ -13599,7 +13599,7 @@
 	},
 /area/rogue/indoors/town/manor)
 "oOH" = (
-/obj/effect/spawner/roguemap/sewerencounter,
+/obj/effect/spawner/map_spawner/sewerencounter,
 /turf/open/floor/blocks/green,
 /area/rogue/under/town/basement)
 "oPc" = (
@@ -13957,7 +13957,7 @@
 /area/rogue/indoors/town/tavern)
 "piI" = (
 /obj/structure/closet/crate/chest/neu,
-/obj/item/roguecoin/silver/pile,
+/obj/item/coin/silver/pile,
 /turf/open/floor/hexstone,
 /area/rogue/indoors/town/church)
 "piJ" = (
@@ -15722,13 +15722,13 @@
 /obj/structure/closet/crate/chest/old_crate{
 	name = "meat crate"
 	},
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
 /obj/item/reagent_containers/food/snacks/fat,
 /obj/item/reagent_containers/food/snacks/fat,
-/obj/item/reagent_containers/food/snacks/rogue/meat/poultry,
-/obj/item/reagent_containers/food/snacks/rogue/meat/poultry,
+/obj/item/reagent_containers/food/snacks/meat/poultry,
+/obj/item/reagent_containers/food/snacks/meat/poultry,
 /turf/open/floor/tile{
 	icon_state = "tavern"
 	},
@@ -15921,7 +15921,7 @@
 /turf/open/floor/grass,
 /area/rogue/indoors/town/church)
 "rzC" = (
-/obj/effect/spawner/roguemap/hauntz_random,
+/obj/effect/spawner/map_spawner/hauntz_random,
 /turf/open/floor/blocks,
 /area/rogue/outdoors/town)
 "rzY" = (
@@ -16243,8 +16243,8 @@
 /obj/item/reagent_containers/food/snacks/egg,
 /obj/item/reagent_containers/food/snacks/butter,
 /obj/item/reagent_containers/food/snacks/butter,
-/obj/item/reagent_containers/food/snacks/rogue/cheese,
-/obj/item/reagent_containers/food/snacks/rogue/cheese,
+/obj/item/reagent_containers/food/snacks/cheese,
+/obj/item/reagent_containers/food/snacks/cheese,
 /turf/open/floor/tile{
 	icon_state = "tavern"
 	},
@@ -16620,12 +16620,12 @@
 /obj/item/reagent_containers/powder/salt,
 /obj/item/reagent_containers/powder/salt,
 /obj/item/reagent_containers/food/snacks/fat,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/meat/poultry,
-/obj/item/reagent_containers/food/snacks/rogue/meat/poultry,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/poultry,
+/obj/item/reagent_containers/food/snacks/meat/poultry,
 /obj/item/reagent_containers/food/snacks/fat,
 /turf/open/floor/woodturned,
 /area/rogue/indoors/town/manor)
@@ -16849,7 +16849,7 @@
 "sDQ" = (
 /obj/structure/closet/crate/chest/old_crate,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/item/reagent_containers/food/snacks/rogue/meat/salami,
+/obj/item/reagent_containers/food/snacks/meat/salami,
 /obj/item/reagent_containers/food/snacks/bread,
 /turf/open/floor/blocks/stonered/tiny,
 /area/rogue/indoors/town/bath)
@@ -17434,7 +17434,7 @@
 /turf/open/floor/hexstone,
 /area/rogue/indoors/town/church)
 "tmw" = (
-/obj/effect/spawner/roguemap/stump,
+/obj/effect/spawner/map_spawner/stump,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield)
 "tnj" = (
@@ -17507,7 +17507,7 @@
 /turf/open/floor/ruinedwood,
 /area/rogue/indoors/town/magician)
 "tst" = (
-/obj/effect/spawner/roguemap/stump,
+/obj/effect/spawner/map_spawner/stump,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield)
 "tsC" = (
@@ -17602,7 +17602,7 @@
 /turf/open/floor/woodturned,
 /area/rogue/indoors/town/shop)
 "txi" = (
-/obj/effect/spawner/roguemap/hauntz_random,
+/obj/effect/spawner/map_spawner/hauntz_random,
 /obj/machinery/light/rogue/torchholder{
 	dir = 4
 	},
@@ -19663,7 +19663,7 @@
 /turf/open/floor/twig,
 /area/rogue/under/town/basement)
 "vEK" = (
-/obj/effect/spawner/roguemap/stump,
+/obj/effect/spawner/map_spawner/stump,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/town)
 "vEO" = (
@@ -19674,7 +19674,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/mountains)
 "vGz" = (
-/obj/effect/spawner/roguemap/hauntz_random,
+/obj/effect/spawner/map_spawner/hauntz_random,
 /turf/open/floor/blocks,
 /area/rogue/indoors/town/manor)
 "vGL" = (
@@ -21193,7 +21193,7 @@
 /area/rogue/indoors/town/garrison)
 "xlf" = (
 /obj/structure/closet/crate/chest/neu_fancy,
-/obj/item/roguecoin/gold/pile,
+/obj/item/coin/gold/pile,
 /turf/open/floor/herringbone,
 /area/rogue/indoors/town/church)
 "xlw" = (
@@ -21511,7 +21511,7 @@
 /turf/open/floor/herringbone,
 /area/rogue/indoors/town)
 "xDQ" = (
-/obj/effect/spawner/roguemap/hauntz_random,
+/obj/effect/spawner/map_spawner/hauntz_random,
 /turf/open/floor/cobble,
 /area/rogue/outdoors/town)
 "xEg" = (

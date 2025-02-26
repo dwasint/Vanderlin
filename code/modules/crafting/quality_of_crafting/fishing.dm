@@ -5,11 +5,11 @@
 	name = "red bait"
 	output = /obj/item/fishing/bait/meat
 	output_amount = 6
-	starting_atom = /obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish
+	starting_atom = /obj/item/reagent_containers/food/snacks/meat/mince/fish
 	requirements = list(
-		/obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish = 2,
+		/obj/item/reagent_containers/food/snacks/meat/mince/fish = 2,
 	)
-	attacking_atom = /obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish
+	attacking_atom = /obj/item/reagent_containers/food/snacks/meat/mince/fish
 
 	craft_time = 2 SECONDS
 	crafting_message = "starts rolling some bait"
@@ -29,9 +29,9 @@
 	name = "gray bait"
 	output = /obj/item/fishing/bait/gray
 	output_amount = 5
-	starting_atom = /obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish
+	starting_atom = /obj/item/reagent_containers/food/snacks/meat/mince/fish
 	requirements = list(
-		/obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish = 1,
+		/obj/item/reagent_containers/food/snacks/meat/mince/fish = 1,
 		/obj/item/reagent_containers/powder/flour = 1,
 	)
 	attacking_atom = /obj/item/reagent_containers/powder/flour
@@ -40,9 +40,9 @@
 	name = "speckled bait"
 	output = /obj/item/fishing/bait/speckled
 	output_amount = 3
-	starting_atom = /obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish
+	starting_atom = /obj/item/reagent_containers/food/snacks/meat/mince/fish
 	requirements = list(
-		/obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish = 1,
+		/obj/item/reagent_containers/food/snacks/meat/mince/fish = 1,
 		/obj/item/reagent_containers/food/snacks/produce/jacksberry = 1,
 		/obj/item/reagent_containers/powder/flour = 1,
 	)

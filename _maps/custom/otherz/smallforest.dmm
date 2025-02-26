@@ -13,7 +13,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/rtfield)
 "ae" = (
-/obj/effect/spawner/roguemap/stump,
+/obj/effect/spawner/map_spawner/stump,
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/woods)
 "af" = (
@@ -118,7 +118,7 @@
 /turf/open/water/swamp,
 /area/rogue/outdoors/woods)
 "aM" = (
-/obj/effect/spawner/roguemap/stump,
+/obj/effect/spawner/map_spawner/stump,
 /turf/open/floor/grass,
 /area/rogue/outdoors/woods)
 "aO" = (
@@ -196,7 +196,7 @@
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/woods)
 "pt" = (
-/obj/effect/spawner/roguemap/stump,
+/obj/effect/spawner/map_spawner/stump,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods)
 "pu" = (

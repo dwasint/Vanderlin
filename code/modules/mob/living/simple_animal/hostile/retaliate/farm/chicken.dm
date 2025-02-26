@@ -16,13 +16,13 @@
 	speak_chance = 2
 	faction = list("chickens")
 
-	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/poultry/cutlet = 1)
+	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/poultry/cutlet = 1)
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/fat = 1,
-						/obj/item/reagent_containers/food/snacks/rogue/meat/poultry = 1,
+						/obj/item/reagent_containers/food/snacks/meat/poultry = 1,
 						/obj/item/natural/feather = 1)
 	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/fat = 1,
-						/obj/item/reagent_containers/food/snacks/rogue/meat/poultry = 1,
-						/obj/item/reagent_containers/food/snacks/rogue/meat/poultry/cutlet = 1,
+						/obj/item/reagent_containers/food/snacks/meat/poultry = 1,
+						/obj/item/reagent_containers/food/snacks/meat/poultry/cutlet = 1,
 						/obj/item/natural/feather = 1)
 
 	var/egg_type = /obj/item/reagent_containers/food/snacks/egg
@@ -162,13 +162,13 @@
 	gender = FEMALE
 	pass_flags = PASSTABLE | PASSMOB
 
-	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/poultry/cutlet = 1)
+	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/poultry/cutlet = 1)
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/fat = 1,
-						/obj/item/reagent_containers/food/snacks/rogue/meat/poultry = 1,
+						/obj/item/reagent_containers/food/snacks/meat/poultry = 1,
 						/obj/item/natural/feather = 1)
 	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/fat = 1,
-						/obj/item/reagent_containers/food/snacks/rogue/meat/poultry = 1,
-						/obj/item/reagent_containers/food/snacks/rogue/meat/poultry/cutlet = 1,
+						/obj/item/reagent_containers/food/snacks/meat/poultry = 1,
+						/obj/item/reagent_containers/food/snacks/meat/poultry/cutlet = 1,
 						/obj/item/natural/feather = 1)
 
 	health = CHICKEN_HEALTH / 2

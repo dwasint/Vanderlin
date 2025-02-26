@@ -16,7 +16,7 @@
 
 	health = 900
 	maxHealth = 900
-	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat,
+	food_type = list(/obj/item/reagent_containers/food/snacks/meat,
 					/obj/item/bodypart,
 					/obj/item/organ)
 

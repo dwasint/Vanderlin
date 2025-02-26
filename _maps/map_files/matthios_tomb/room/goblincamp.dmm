@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aw" = (
-/obj/effect/spawner/roguemap/loot/rare,
+/obj/effect/spawner/map_spawner/loot/rare,
 /turf/open/floor/dirt,
 /area/rogue)
 "aY" = (
@@ -67,12 +67,12 @@
 /area/rogue)
 "la" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/rogue/meat/salami,
+/obj/item/reagent_containers/food/snacks/meat/salami,
 /turf/open/floor/dirt,
 /area/rogue)
 "lu" = (
 /obj/machinery/light/rogue/campfire,
-/obj/item/reagent_containers/food/snacks/rogue/meat/salami,
+/obj/item/reagent_containers/food/snacks/meat/salami,
 /turf/open/floor/grass/cold,
 /area/rogue)
 "mV" = (
@@ -123,7 +123,7 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "tl" = (
-/obj/effect/spawner/roguemap/loot/magic,
+/obj/effect/spawner/map_spawner/loot/magic,
 /turf/open/floor/dirt,
 /area/rogue)
 "tH" = (
@@ -145,7 +145,7 @@
 "vJ" = (
 /obj/structure/closet/crate/chest/wicker,
 /obj/machinery/light/rogue/wallfire/candle,
-/obj/effect/spawner/roguemap/loot/coin/low,
+/obj/effect/spawner/map_spawner/loot/coin/low,
 /turf/open/floor/dirt,
 /area/rogue)
 "wl" = (
@@ -242,7 +242,7 @@
 /turf/open/floor/snow,
 /area/rogue)
 "Hl" = (
-/obj/effect/spawner/roguemap/loot/rare,
+/obj/effect/spawner/map_spawner/loot/rare,
 /turf/open/floor/grass/cold,
 /area/rogue)
 "HX" = (
@@ -292,10 +292,10 @@
 "RS" = (
 /obj/structure/closet/crate/chest/crate,
 /obj/item/reagent_containers/glass/bottle/waterskin,
-/obj/item/reagent_containers/food/snacks/rogue/cheese,
-/obj/item/reagent_containers/food/snacks/rogue/cheese,
-/obj/item/reagent_containers/food/snacks/rogue/cheese,
-/obj/item/reagent_containers/food/snacks/rogue/cheese,
+/obj/item/reagent_containers/food/snacks/cheese,
+/obj/item/reagent_containers/food/snacks/cheese,
+/obj/item/reagent_containers/food/snacks/cheese,
+/obj/item/reagent_containers/food/snacks/cheese,
 /turf/open/floor/dirt,
 /area/rogue)
 "Sq" = (
@@ -344,7 +344,7 @@
 /turf/open/floor/grass/cold,
 /area/rogue)
 "Wp" = (
-/obj/effect/spawner/roguemap/loot/potion_vitals,
+/obj/effect/spawner/map_spawner/loot/potion_vitals,
 /turf/open/floor/grass/cold,
 /area/rogue)
 "WV" = (
@@ -384,8 +384,8 @@
 	},
 /obj/item/weapon/polearm/spear/billhook,
 /obj/item/clothing/head/crown/circlet/sleepless,
-/obj/effect/spawner/roguemap/loot/coin/absurd,
-/obj/effect/spawner/roguemap/loot/potion_vitals,
+/obj/effect/spawner/map_spawner/loot/coin/absurd,
+/obj/effect/spawner/map_spawner/loot/potion_vitals,
 /turf/open/floor/dirt,
 /area/rogue)
 "YL" = (

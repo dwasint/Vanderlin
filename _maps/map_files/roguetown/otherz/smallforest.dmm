@@ -105,7 +105,7 @@
 /turf/open/water/cleanshallow,
 /area/rogue/outdoors/river)
 "aD" = (
-/obj/effect/spawner/roguemap/stump,
+/obj/effect/spawner/map_spawner/stump,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/river)
 "aF" = (
@@ -253,7 +253,7 @@
 	},
 /area/rogue/indoors)
 "jc" = (
-/obj/effect/spawner/roguemap/stump,
+/obj/effect/spawner/map_spawner/stump,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods)
 "kn" = (
@@ -387,7 +387,7 @@
 	},
 /area/rogue/indoors)
 "xf" = (
-/obj/effect/spawner/roguemap/stump,
+/obj/effect/spawner/map_spawner/stump,
 /turf/open/floor/grass,
 /area/rogue/outdoors/woods)
 "xQ" = (

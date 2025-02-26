@@ -1,9 +1,9 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "cw" = (
 /obj/structure/closet/crate/chest/gold,
-/obj/item/roguegem/green,
-/obj/item/roguegem/red,
-/obj/item/roguegem/yellow,
+/obj/item/gem/green,
+/obj/item/gem/red,
+/obj/item/gem/yellow,
 /turf/open/floor/metal,
 /area/rogue)
 "ei" = (

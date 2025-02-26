@@ -375,10 +375,10 @@
 /area/rogue)
 "nX" = (
 /obj/structure/closet/crate/chest/gold,
-/obj/effect/spawner/roguemap/loot/potion_vitals,
+/obj/effect/spawner/map_spawner/loot/potion_vitals,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/effect/spawner/roguemap/loot/potion_stats,
+/obj/effect/spawner/map_spawner/loot/potion_stats,
 /turf/open/floor/church,
 /area/rogue)
 "of" = (
@@ -1106,7 +1106,7 @@
 "PE" = (
 /mob/living/simple_animal/hostile/retaliate/mimic,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/item/roguegem,
+/obj/item/gem,
 /turf/open/floor/church,
 /area/rogue)
 "PH" = (
@@ -1241,7 +1241,7 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/item/weapon/shield/tower/metal,
-/obj/effect/spawner/roguemap/loot/weapon,
+/obj/effect/spawner/map_spawner/loot/weapon,
 /turf/open/floor/blocks/stonered/tiny,
 /area/rogue)
 "TK" = (
@@ -1318,7 +1318,7 @@
 /mob/living/simple_animal/hostile/retaliate/mimic,
 /obj/machinery/light/rogue/wallfire/candle/blue,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/item/roguegem,
+/obj/item/gem,
 /turf/open/floor/church,
 /area/rogue)
 "UZ" = (

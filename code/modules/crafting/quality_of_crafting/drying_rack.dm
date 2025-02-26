@@ -20,10 +20,10 @@
 
 /datum/repeatable_crafting_recipe/salami
 	name = "salumoi"
-	output = /obj/item/reagent_containers/food/snacks/rogue/meat/salami
-	starting_atom = /obj/item/reagent_containers/food/snacks/rogue/meat/sausage
+	output = /obj/item/reagent_containers/food/snacks/meat/salami
+	starting_atom = /obj/item/reagent_containers/food/snacks/meat/sausage
 	requirements = list(
-		/obj/item/reagent_containers/food/snacks/rogue/meat/sausage = 1,
+		/obj/item/reagent_containers/food/snacks/meat/sausage = 1,
 		/obj/item/reagent_containers/powder/salt = 1
 	)
 	attacking_atom = /obj/machinery/tanningrack
@@ -35,9 +35,9 @@
 /datum/repeatable_crafting_recipe/coppiette
 	name = "coppiette"
 	output = /obj/item/reagent_containers/food/snacks/cooked/coppiette
-	starting_atom = /obj/item/reagent_containers/food/snacks/rogue/meat/steak
+	starting_atom = /obj/item/reagent_containers/food/snacks/meat/steak
 	requirements = list(
-		/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1,
+		/obj/item/reagent_containers/food/snacks/meat/steak = 1,
 		/obj/item/reagent_containers/powder/salt = 1
 	)
 	attacking_atom = /obj/machinery/tanningrack

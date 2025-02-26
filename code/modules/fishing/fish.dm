@@ -13,7 +13,7 @@
 	slices_num = 1
 	slice_bclass = BCLASS_CHOP
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3)
-	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish
+	slice_path = /obj/item/reagent_containers/food/snacks/meat/mince/fish
 	eat_effect = /datum/status_effect/debuff/uncookedfood
 	fishloot = list(/obj/item/reagent_containers/food/snacks/fish/carp = 2)
 
@@ -62,8 +62,8 @@
 /obj/item/reagent_containers/food/snacks/fish/carp
 	name = "carp"
 	icon_state = "carp"
-	fried_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/carp
-	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/carp
+	fried_type = /obj/item/reagent_containers/food/snacks/fryfish/carp
+	cooked_type = /obj/item/reagent_containers/food/snacks/fryfish/carp
 	cooked_smell = /datum/pollutant/food/baked_carp
 
 
@@ -71,8 +71,8 @@
 	name = "clownfish"
 	icon_state = "clownfish"
 	sellprice = 40
-	fried_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/clownfish
-	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/clownfish
+	fried_type = /obj/item/reagent_containers/food/snacks/fryfish/clownfish
+	cooked_type = /obj/item/reagent_containers/food/snacks/fryfish/clownfish
 	cooked_smell = /datum/pollutant/food/baked_clownfish
 
 
@@ -80,8 +80,8 @@
 	name = "anglerfish"
 	icon_state = "angler"
 	sellprice = 15
-	fried_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/angler
-	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/angler
+	fried_type = /obj/item/reagent_containers/food/snacks/fryfish/angler
+	cooked_type = /obj/item/reagent_containers/food/snacks/fryfish/angler
 	cooked_smell = /datum/pollutant/food/baked_angler
 
 
@@ -89,8 +89,8 @@
 	name = "eel"
 	icon_state = "eel"
 	sellprice = 5
-	fried_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/eel
-	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/eel
+	fried_type = /obj/item/reagent_containers/food/snacks/fryfish/eel
+	cooked_type = /obj/item/reagent_containers/food/snacks/fryfish/eel
 	cooked_smell = /datum/pollutant/food/baked_eel
 
 /obj/item/reagent_containers/food/snacks/fish/shrimp
@@ -98,11 +98,11 @@
 	desc = "As shrimple as that."
 	icon_state = "shrimp"
 	sellprice = 2
-	fried_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/shrimp
-	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/shrimp
+	fried_type = /obj/item/reagent_containers/food/snacks/fryfish/shrimp
+	cooked_type = /obj/item/reagent_containers/food/snacks/fryfish/shrimp
 	cooked_smell = /datum/pollutant/food/baked_shrimp
 
-/obj/item/reagent_containers/food/snacks/rogue/fryfish
+/obj/item/reagent_containers/food/snacks/fryfish
 	icon = 'icons/roguetown/misc/fish.dmi'
 	trash = null
 	list_reagents = list(/datum/reagent/consumable/nutriment = 10)
@@ -114,7 +114,7 @@
 	foodtype = MEAT
 	dropshrink = 0.6
 
-/obj/item/reagent_containers/food/snacks/rogue/fryfish/carp
+/obj/item/reagent_containers/food/snacks/fryfish/carp
 	name = "cooked carp"
 	icon_state = "carpcooked"
 	plateable = TRUE
@@ -122,21 +122,21 @@
 	plated_iconstate = "carp_plated"
 	faretype = FARE_IMPOVERISHED
 
-/obj/item/reagent_containers/food/snacks/rogue/fryfish/clownfish
+/obj/item/reagent_containers/food/snacks/fryfish/clownfish
 	name = "cooked clownfish"
 	icon_state = "clownfishcooked"
 	plateable = TRUE
 	plating_alt_icon = TRUE
 	plated_iconstate = "clown_plated"
 
-/obj/item/reagent_containers/food/snacks/rogue/fryfish/angler
+/obj/item/reagent_containers/food/snacks/fryfish/angler
 	name = "cooked anglerfish"
 	icon_state = "anglercooked"
 	plateable = TRUE
 	plating_alt_icon = TRUE
 	plated_iconstate = "angler_plated"
 
-/obj/item/reagent_containers/food/snacks/rogue/fryfish/eel
+/obj/item/reagent_containers/food/snacks/fryfish/eel
 	name = "cooked eel"
 	icon_state = "eelcooked"
 	plateable = TRUE
@@ -144,22 +144,22 @@
 	plated_iconstate = "eel_plated"
 	faretype = FARE_NEUTRAL
 
-/obj/item/reagent_containers/food/snacks/rogue/fryfish/swordfish
+/obj/item/reagent_containers/food/snacks/fryfish/swordfish
 	name = "cooked swordfish"
 
-/obj/item/reagent_containers/food/snacks/rogue/fryfish/shrimp
+/obj/item/reagent_containers/food/snacks/fryfish/shrimp
 	icon_state = "shrimpcooked"
 	name = "cooked shrimp"
 	tastes = list("shrimp" = 1)
 
-/obj/item/reagent_containers/food/snacks/rogue/fryfish/carp/rare
+/obj/item/reagent_containers/food/snacks/fryfish/carp/rare
 	eat_effect = list(/datum/status_effect/buff/foodbuff, /datum/status_effect/buff/blessed)
 
-/obj/item/reagent_containers/food/snacks/rogue/fryfish/clownfish/rare
+/obj/item/reagent_containers/food/snacks/fryfish/clownfish/rare
 	eat_effect = list(/datum/status_effect/buff/foodbuff, /datum/status_effect/buff/blessed)
 
-/obj/item/reagent_containers/food/snacks/rogue/fryfish/angler/rare
+/obj/item/reagent_containers/food/snacks/fryfish/angler/rare
 	eat_effect = list(/datum/status_effect/buff/foodbuff, /datum/status_effect/buff/blessed)
 
-/obj/item/reagent_containers/food/snacks/rogue/fryfish/eel/rare
+/obj/item/reagent_containers/food/snacks/fryfish/eel/rare
 	eat_effect = list(/datum/status_effect/buff/foodbuff, /datum/status_effect/buff/blessed)

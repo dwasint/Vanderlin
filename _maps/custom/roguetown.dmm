@@ -84,12 +84,12 @@
 	},
 /area/rogue/indoors/town/vault)
 "au" = (
-/obj/item/roguegem,
-/obj/item/roguegem,
-/obj/item/roguegem/violet,
-/obj/item/roguegem/yellow,
-/obj/item/roguegem/green,
-/obj/item/roguegem/blue,
+/obj/item/gem,
+/obj/item/gem,
+/obj/item/gem/violet,
+/obj/item/gem/yellow,
+/obj/item/gem/green,
+/obj/item/gem/blue,
 /obj/structure/closet/crate/chest/gold,
 /turf/open/floor/tile{
 	icon_state = "chess"
@@ -117,7 +117,7 @@
 /area/rogue/indoors/town/vault)
 "ay" = (
 /obj/effect/decal/cleanable/dirt/cobweb/cobweb2,
-/obj/item/roguecoin/gold/pile,
+/obj/item/coin/gold/pile,
 /turf/open/floor/tile{
 	icon_state = "chess"
 	},
@@ -468,7 +468,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/town/basement)
 "bK" = (
-/obj/item/roguegem,
+/obj/item/gem,
 /turf/open/floor/cobble,
 /area/rogue/under/town/basement)
 "bL" = (
@@ -1719,7 +1719,7 @@
 	icon_state = "largetable";
 	dir = 8
 	},
-/obj/item/reagent_containers/food/snacks/rogue/meat/salami,
+/obj/item/reagent_containers/food/snacks/meat/salami,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/bath)
 "gu" = (
@@ -2927,7 +2927,7 @@
 /obj/item/reagent_containers/powder/salt,
 /obj/item/reagent_containers/powder/salt,
 /obj/item/reagent_containers/powder/salt,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
 /turf/open/floor/woodturned,
 /area/rogue/indoors/town/manor)
 "kg" = (
@@ -6448,8 +6448,8 @@
 /area/rogue/indoors/town/shop)
 "xs" = (
 /obj/structure/closet/crate/chest,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
 /obj/item/reagent_containers/food/snacks/egg,
 /obj/item/reagent_containers/food/snacks/egg,
 /obj/item/reagent_containers/food/snacks/egg,
@@ -6567,7 +6567,7 @@
 /turf/open/floor/carpet/lord/center,
 /area/rogue/indoors/town/manor)
 "xM" = (
-/obj/item/roguecoin/gold/pile,
+/obj/item/coin/gold/pile,
 /turf/open/floor/tile{
 	icon_state = "linoleum"
 	},
@@ -6792,7 +6792,7 @@
 	},
 /area/rogue/indoors/town/dwarfin)
 "yD" = (
-/obj/item/roguecoin/silver/pile,
+/obj/item/coin/silver/pile,
 /turf/open/floor/tile{
 	icon_state = "chess"
 	},
@@ -7045,7 +7045,7 @@
 /turf/open/floor/church,
 /area/rogue/indoors/town/church/chapel)
 "zG" = (
-/obj/item/roguecoin/gold/pile,
+/obj/item/coin/gold/pile,
 /turf/open/floor/tile{
 	icon_state = "chess"
 	},
@@ -8371,7 +8371,7 @@
 /area/rogue/outdoors/town)
 "EE" = (
 /obj/structure/closet/crate/chest/gold,
-/obj/item/roguecoin/gold/pile,
+/obj/item/coin/gold/pile,
 /turf/open/floor/tile{
 	icon_state = "linoleum"
 	},
@@ -8937,7 +8937,7 @@
 /turf/open/floor/wood,
 /area/rogue/indoors/town)
 "GF" = (
-/obj/item/roguecoin/silver/pile,
+/obj/item/coin/silver/pile,
 /obj/structure/closet/crate/chest/gold,
 /turf/open/floor/tile{
 	icon_state = "chess"
@@ -9696,7 +9696,7 @@
 	icon_state = "longtable"
 	},
 /obj/item/candle,
-/obj/item/reagent_containers/food/snacks/rogue/meat/salami,
+/obj/item/reagent_containers/food/snacks/meat/salami,
 /obj/item/weapon/knife/cleaver,
 /turf/open/floor/hexstone,
 /area/rogue/indoors/town/church)
@@ -9787,8 +9787,8 @@
 /obj/item/reagent_containers/food/snacks/produce/wheat,
 /obj/item/reagent_containers/food/snacks/produce/wheat,
 /obj/item/reagent_containers/food/snacks/butter,
-/obj/item/reagent_containers/food/snacks/rogue/meat/sausage,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/sausage,
+/obj/item/reagent_containers/food/snacks/meat/steak,
 /turf/open/floor/tile{
 	icon_state = "chess"
 	},
@@ -10209,7 +10209,7 @@
 /area/rogue/indoors/town/shop)
 "KM" = (
 /obj/structure/closet/crate/chest,
-/obj/item/roguegem/green,
+/obj/item/gem/green,
 /turf/open/floor/tile{
 	icon_state = "chess"
 	},
@@ -11065,7 +11065,7 @@
 	},
 /area/rogue/outdoors/mountains)
 "Oa" = (
-/obj/effect/spawner/roguemap/stump,
+/obj/effect/spawner/map_spawner/stump,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/rtfield)
 "Ob" = (
@@ -12022,7 +12022,7 @@
 /turf/open/floor/blocks/stonered,
 /area/rogue/indoors/town/bath)
 "Su" = (
-/obj/effect/spawner/roguemap/stump,
+/obj/effect/spawner/map_spawner/stump,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield)
 "Sv" = (
@@ -12993,10 +12993,10 @@
 /area/rogue/indoors/town/magician)
 "WJ" = (
 /obj/structure/closet/crate/chest,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/meat/sausage,
-/obj/item/reagent_containers/food/snacks/rogue/meat/poultry,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/sausage,
+/obj/item/reagent_containers/food/snacks/meat/poultry,
 /turf/open/floor/blocks,
 /area/rogue/under/town/sewer)
 "WK" = (
@@ -13288,7 +13288,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/town/basement)
 "Yf" = (
-/obj/effect/spawner/roguemap/stump,
+/obj/effect/spawner/map_spawner/stump,
 /turf/open/floor/grass,
 /area/rogue/outdoors/rtfield)
 "Yh" = (

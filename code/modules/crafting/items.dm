@@ -135,7 +135,7 @@
 	name = "bloodbait"
 	result = /obj/item/bait/bloody
 	reqs = list(/obj/item/storage/sack = 1,
-				/obj/item/reagent_containers/food/snacks/rogue/meat = 2)
+				/obj/item/reagent_containers/food/snacks/meat = 2)
 	req_table = FALSE
 	subtype_reqs = TRUE
 

@@ -12,7 +12,7 @@
 	see_in_dark = 9
 	move_to_delay = 2
 	base_intents = list(/datum/intent/simple/bite, /datum/intent/simple/claw)
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1,
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 1,
 						/obj/item/reagent_containers/food/snacks/fat = 1,
 						/obj/item/alch/sinew = 2,
 						/obj/item/alch/bone = 1)
@@ -27,7 +27,7 @@
 	environment_smash = ENVIRONMENT_SMASH_NONE
 	retreat_distance = 0
 	minimum_distance = 0
-	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat, /obj/item/bodypart, /obj/item/organ)
+	food_type = list(/obj/item/reagent_containers/food/snacks/meat, /obj/item/bodypart, /obj/item/organ)
 	footstep_type = null
 	pooptype = null
 	TOTALCON = 6

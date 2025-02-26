@@ -91,7 +91,7 @@
 	pixel_x = -6;
 	pixel_y = 14
 	},
-/obj/item/roguegem/blue{
+/obj/item/gem/blue{
 	pixel_y = 7;
 	pixel_x = 5
 	},
@@ -206,7 +206,7 @@
 /area/rogue)
 "Ip" = (
 /obj/machinery/light/rogue/chand,
-/obj/item/roguecoin/copper,
+/obj/item/coin/copper,
 /turf/open/transparent/openspace,
 /area/rogue)
 "JM" = (

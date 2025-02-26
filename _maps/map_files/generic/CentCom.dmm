@@ -152,9 +152,9 @@
 /area/rogue)
 "at" = (
 /obj/structure/table/wood/reinforced,
-/obj/item/roguecoin/gold/pile,
-/obj/item/roguecoin/gold/pile,
-/obj/item/roguecoin/gold/pile,
+/obj/item/coin/gold/pile,
+/obj/item/coin/gold/pile,
+/obj/item/coin/gold/pile,
 /turf/open/floor/carpet,
 /area/rogue)
 "au" = (
@@ -1427,7 +1427,7 @@
 /obj/structure/closet/crate/chest/old_crate,
 /obj/item/reagent_containers/food/snacks/butter,
 /obj/item/reagent_containers/food/snacks/butter,
-/obj/item/reagent_containers/food/snacks/rogue/cheddar,
+/obj/item/reagent_containers/food/snacks/cheddar,
 /turf/open/floor/tile,
 /area/rogue)
 "fL" = (
@@ -1457,7 +1457,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/woods_safe)
 "ge" = (
-/obj/effect/spawner/roguemap/grass_low,
+/obj/effect/spawner/map_spawner/grass_low,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods_safe)
 "gg" = (
@@ -1550,11 +1550,11 @@
 /area/rogue/outdoors/bog/inhumen_camp)
 "hD" = (
 /obj/structure/table/wood/reinforced,
-/obj/item/roguegem,
-/obj/item/roguegem/blue,
-/obj/item/roguegem/green,
-/obj/item/roguegem/violet,
-/obj/item/roguegem/yellow,
+/obj/item/gem,
+/obj/item/gem/blue,
+/obj/item/gem/green,
+/obj/item/gem/violet,
+/obj/item/gem/yellow,
 /turf/open/floor/carpet,
 /area/rogue)
 "hG" = (
@@ -1860,7 +1860,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/bog/inhumen_camp)
 "mY" = (
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/bog/inhumen_camp)
 "na" = (
@@ -2071,11 +2071,11 @@
 /area/rogue/outdoors/bog/inhumen_camp)
 "pE" = (
 /obj/structure/table/wood/reinforced,
-/obj/item/roguecoin/copper/pile,
-/obj/item/roguecoin/copper/pile,
-/obj/item/roguecoin/copper/pile,
-/obj/item/roguecoin/copper/pile,
-/obj/item/roguecoin/copper/pile,
+/obj/item/coin/copper/pile,
+/obj/item/coin/copper/pile,
+/obj/item/coin/copper/pile,
+/obj/item/coin/copper/pile,
+/obj/item/coin/copper/pile,
 /turf/open/floor/carpet,
 /area/rogue)
 "pL" = (
@@ -2801,10 +2801,10 @@
 /area/rogue/indoors/bandit_lair)
 "zc" = (
 /obj/structure/table/wood/reinforced,
-/obj/item/roguecoin/silver/pile,
-/obj/item/roguecoin/silver/pile,
-/obj/item/roguecoin/silver/pile,
-/obj/item/roguecoin/silver/pile,
+/obj/item/coin/silver/pile,
+/obj/item/coin/silver/pile,
+/obj/item/coin/silver/pile,
+/obj/item/coin/silver/pile,
 /turf/open/floor/carpet,
 /area/rogue)
 "zd" = (
@@ -2855,9 +2855,9 @@
 /area/rogue)
 "zW" = (
 /obj/structure/table/vtable,
-/obj/item/roguecoin/gold/pile,
-/obj/item/roguecoin/gold/pile,
-/obj/item/roguecoin/gold/pile,
+/obj/item/coin/gold/pile,
+/obj/item/coin/gold/pile,
+/obj/item/coin/gold/pile,
 /turf/open/floor/ruinedwood/chevron,
 /area/rogue)
 "Ae" = (
@@ -2928,15 +2928,15 @@
 /area/rogue/outdoors/woods_safe)
 "Be" = (
 /obj/structure/closet/crate/chest/old_crate,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
 /turf/open/floor/tile,
 /area/rogue)
 "Bs" = (
@@ -2945,7 +2945,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/bog/inhumen_camp)
 "BM" = (
-/obj/effect/spawner/roguemap/grass_low,
+/obj/effect/spawner/map_spawner/grass_low,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/woods_safe)
 "BT" = (
@@ -3131,9 +3131,9 @@
 /area/rogue/outdoors/bog/inhumen_camp)
 "Fg" = (
 /obj/structure/table/vtable/v2,
-/obj/item/roguecoin/gold/pile,
-/obj/item/roguecoin/gold/pile,
-/obj/item/roguecoin/gold/pile,
+/obj/item/coin/gold/pile,
+/obj/item/coin/gold/pile,
+/obj/item/coin/gold/pile,
 /turf/open/floor/ruinedwood/chevron,
 /area/rogue)
 "Fl" = (
@@ -3233,8 +3233,8 @@
 /obj/structure/closet/crate/chest/old_crate,
 /obj/item/natural/worms/leech,
 /obj/item/natural/worms,
-/obj/item/reagent_containers/food/snacks/rogue/meat/strange,
-/obj/item/reagent_containers/food/snacks/rogue/meat/strange,
+/obj/item/reagent_containers/food/snacks/meat/strange,
+/obj/item/reagent_containers/food/snacks/meat/strange,
 /obj/item/natural/worms/leech,
 /obj/item/natural/worms,
 /turf/open/floor/dirt,
@@ -3659,7 +3659,7 @@
 /turf/open/floor/ruinedwood/darker,
 /area/rogue/indoors/bandit_lair)
 "Mg" = (
-/obj/effect/spawner/roguemap/grass_low,
+/obj/effect/spawner/map_spawner/grass_low,
 /turf/open/floor/grass,
 /area/rogue/outdoors/woods_safe)
 "Mk" = (

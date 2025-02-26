@@ -22,7 +22,7 @@ This is a filter that blocks use of the machine for that role. Could be expanded
 		if(istype(P, /obj/item/natural/bundle))
 			say("Single item entries only. Please unstack.")
 			return
-		if(istype(P, /obj/item/roguecoin))
+		if(istype(P, /obj/item/coin))
 			if(H in SStreasury.bank_accounts)
 				SStreasury.generate_money_account(P.get_real_price(), H)
 				qdel(P)
@@ -129,7 +129,7 @@ GLOBAL_VAR(feeding_hole_reset_timer)
 		playsound(src, 'sound/misc/beep.ogg', 100, FALSE, -1)
 		user.visible_message("<span class='notice'>[user] feeds [P] into the [src].</span>",
 			"<span class='notice'>You feed the [P] into the [src].</span>")
-	else if(istype(P, /obj/item/reagent_containers/food/snacks/rogue/meat/steak))
+	else if(istype(P, /obj/item/reagent_containers/food/snacks/meat/steak))
 		// Handle the steak item and spawn bigrat
 		qdel(P)
 		playsound(src, 'sound/vo/mobs/rat/rat_death.ogg', 100, FALSE, -1)

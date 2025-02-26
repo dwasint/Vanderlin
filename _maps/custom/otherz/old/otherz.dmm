@@ -144,15 +144,15 @@
 /turf/open/floor/volcanic,
 /area/rogue/outdoors/mountains/decap)
 "aO" = (
-/obj/effect/spawner/roguemap/pit,
+/obj/effect/spawner/map_spawner/pit,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods)
 "aP" = (
-/obj/effect/spawner/roguemap/pit,
+/obj/effect/spawner/map_spawner/pit,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/woods)
 "aQ" = (
-/obj/effect/spawner/roguemap/stump,
+/obj/effect/spawner/map_spawner/stump,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods)
 "aR" = (

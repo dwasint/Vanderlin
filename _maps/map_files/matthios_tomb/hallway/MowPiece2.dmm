@@ -52,7 +52,7 @@
 	pixel_x = 6;
 	pixel_y = 8
 	},
-/obj/item/reagent_containers/food/snacks/rogue/meat/salami{
+/obj/item/reagent_containers/food/snacks/meat/salami{
 	pixel_y = -1;
 	pixel_x = -5
 	},

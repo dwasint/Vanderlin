@@ -695,17 +695,17 @@
 					if(fishrarity != "com")
 						switch(fishtype)
 							if(/obj/item/reagent_containers/food/snacks/fish/carp)
-								caughtfish.fried_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/carp/rare
-								caughtfish.cooked_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/carp/rare
+								caughtfish.fried_type = /obj/item/reagent_containers/food/snacks/fryfish/carp/rare
+								caughtfish.cooked_type = /obj/item/reagent_containers/food/snacks/fryfish/carp/rare
 							if(/obj/item/reagent_containers/food/snacks/fish/eel)
-								caughtfish.fried_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/eel/rare
-								caughtfish.cooked_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/eel/rare
+								caughtfish.fried_type = /obj/item/reagent_containers/food/snacks/fryfish/eel/rare
+								caughtfish.cooked_type = /obj/item/reagent_containers/food/snacks/fryfish/eel/rare
 							if(/obj/item/reagent_containers/food/snacks/fish/angler)
-								caughtfish.fried_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/angler/rare
-								caughtfish.cooked_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/angler/rare
+								caughtfish.fried_type = /obj/item/reagent_containers/food/snacks/fryfish/angler/rare
+								caughtfish.cooked_type = /obj/item/reagent_containers/food/snacks/fryfish/angler/rare
 							if(/obj/item/reagent_containers/food/snacks/fish/clownfish)
-								caughtfish.fried_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/clownfish/rare
-								caughtfish.cooked_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/clownfish/rare
+								caughtfish.fried_type = /obj/item/reagent_containers/food/snacks/fryfish/clownfish/rare
+								caughtfish.cooked_type = /obj/item/reagent_containers/food/snacks/fryfish/clownfish/rare
 				else
 					raritydesc = fishrarity
 

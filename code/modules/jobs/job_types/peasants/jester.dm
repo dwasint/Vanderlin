@@ -131,7 +131,7 @@
 
 /mob/living/carbon/human/proc/get_japery()
 	var/japery_list = list(
-		/obj/item/roguecoin/copper,
+		/obj/item/coin/copper,
 		/obj/item/natural/dirtclod,
 		/obj/item/natural/worms,
 		/obj/item/natural/worms/leech,

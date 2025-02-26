@@ -10,8 +10,8 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "h" = (
-/obj/effect/spawner/roguemap/treeorbush,
-/obj/effect/spawner/roguemap/treeorbush,
+/obj/effect/spawner/map_spawner/treeorbush,
+/obj/effect/spawner/map_spawner/treeorbush,
 /turf/open/floor/dirt,
 /area/rogue)
 "i" = (
@@ -27,7 +27,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue)
 "u" = (
-/obj/effect/spawner/roguemap/tree,
+/obj/effect/spawner/map_spawner/tree,
 /turf/open/floor/dirt,
 /area/rogue)
 "v" = (
@@ -65,7 +65,7 @@
 /turf/closed,
 /area/rogue)
 "I" = (
-/obj/effect/spawner/roguemap/treeorbush,
+/obj/effect/spawner/map_spawner/treeorbush,
 /turf/open/floor/dirt,
 /area/rogue)
 "K" = (

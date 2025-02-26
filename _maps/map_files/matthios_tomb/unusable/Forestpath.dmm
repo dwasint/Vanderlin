@@ -4,7 +4,7 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "c" = (
-/obj/effect/spawner/roguemap/treeorbush,
+/obj/effect/spawner/map_spawner/treeorbush,
 /obj/structure/flora/roguetree/wise{
 	desc = "You must be exactlyh 25 years old to play this game.";
 	name = "Woody"
@@ -20,13 +20,13 @@
 /turf/open/floor/dirt/ambush,
 /area/rogue)
 "w" = (
-/obj/effect/spawner/roguemap/treeorbush,
+/obj/effect/spawner/map_spawner/treeorbush,
 /obj/structure/flora/roguetree/evil,
 /turf/open/floor/dirt,
 /area/rogue)
 "y" = (
-/obj/effect/spawner/roguemap/treeorbush,
-/obj/effect/spawner/roguemap/treeorbush,
+/obj/effect/spawner/map_spawner/treeorbush,
+/obj/effect/spawner/map_spawner/treeorbush,
 /turf/open/floor/dirt,
 /area/rogue)
 "C" = (
@@ -36,14 +36,14 @@
 /turf/closed/mineral/rogue/bedrock,
 /area/rogue)
 "F" = (
-/obj/effect/spawner/roguemap/treeorbush,
+/obj/effect/spawner/map_spawner/treeorbush,
 /turf/open/floor/dirt,
 /area/rogue)
 "I" = (
 /turf/open/transparent/openspace,
 /area/rogue)
 "K" = (
-/obj/effect/spawner/roguemap/treeorbush,
+/obj/effect/spawner/map_spawner/treeorbush,
 /turf/open/floor/dirt/ambush,
 /area/rogue)
 "L" = (

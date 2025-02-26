@@ -511,10 +511,10 @@ GLOBAL_LIST_INIT(character_flaws, list(
 			return MASO_THRESHOLD_FOUR
 
 /proc/get_mammons_in_atom(atom/movable/movable)
-	var/static/list/coins_types = typecacheof(/obj/item/roguecoin)
+	var/static/list/coins_types = typecacheof(/obj/item/coin)
 	var/mammons = 0
 	if(coins_types[movable.type])
-		var/obj/item/roguecoin/coin = movable
+		var/obj/item/coin/coin = movable
 		mammons += coin.quantity * coin.sellprice
 	for(var/atom/movable/content in movable.contents)
 		mammons += get_mammons_in_atom(content)

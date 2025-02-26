@@ -95,7 +95,7 @@
 /datum/component/storage/concrete/grid/sack/meat/New(datum/P, ...)
 	. = ..()
 	set_holdable(list(
-		/obj/item/reagent_containers/food/snacks/rogue/meat,
+		/obj/item/reagent_containers/food/snacks/meat,
 		/obj/item/reagent_containers/food/snacks/fat,
 		/obj/item/natural/fur,
 		/obj/item/natural/hide,

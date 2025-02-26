@@ -1,4 +1,4 @@
-/obj/effect/spawner/roguemap
+/obj/effect/spawner/map_spawner
 	icon = 'icons/obj/structures_spawners.dmi'
 	///Chance to bother spawning anything
 	var/probby = 100
@@ -7,12 +7,12 @@
 	var/lootmax = 1		//how many items will be spawned, at most
 	var/lootdoubles = TRUE	//if the same item can be spawned twice
 	var/fan_out_items = FALSE //Whether the items should be distributed to offsets 0,1,-1,2,-2,3,-3.. This overrides pixel_x/y on the spawner itself
-/obj/effect/spawner/roguemap/proc/do_spawn()
+/obj/effect/spawner/map_spawner/proc/do_spawn()
 	if(prob(probby) && length(spawned))
 		var/obj/new_type = pickweight(spawned)
 		new new_type(get_turf(src))
 
-/obj/effect/spawner/roguemap/Initialize(mapload)
+/obj/effect/spawner/map_spawner/Initialize(mapload)
 	..()
 	if(!prob(probby))
 		return INITIALIZE_HINT_QDEL
@@ -44,72 +44,72 @@
 		do_spawn()
 	return INITIALIZE_HINT_QDEL
 
-/obj/effect/spawner/roguemap/pit
+/obj/effect/spawner/map_spawner/pit
 	icon_state = "pit"
 
-/obj/effect/spawner/roguemap/pit/do_spawn()
+/obj/effect/spawner/map_spawner/pit/do_spawn()
 	var/turf/T = get_turf(src)
 	var/turf/below = get_step_multiz(src, DOWN)
 	if(below)
 		T.ChangeTurf(/turf/open/transparent/openspace)
 		below.ChangeTurf(/turf/open/floor/dirt/road)
 
-/obj/effect/spawner/roguemap/tree
+/obj/effect/spawner/map_spawner/tree
 	icon_state = "tree"
 	name = "Tree spawner"
 	probby = 80
 	spawned = list(/obj/structure/flora/roguetree)
 
-/obj/effect/spawner/roguemap/treeorbush
+/obj/effect/spawner/map_spawner/treeorbush
 	icon_state = "Treeorbush"
 	name = "Tree or bush spawner"
 	probby = 50
 	spawned = list(/obj/structure/flora/roguetree, /obj/structure/flora/roguegrass/bush_meagre)
 
-/obj/effect/spawner/roguemap/treeorstump
+/obj/effect/spawner/map_spawner/treeorstump
 	icon_state = "treeorstump"
 	name = "Tree or stump spawner"
 	probby = 50
 	spawned = list(/obj/structure/flora/roguetree, /obj/structure/table/wood/treestump)
 
-/obj/effect/spawner/roguemap/stump
+/obj/effect/spawner/map_spawner/stump
 	icon_state = "stump"
 	name = "stump spawner"
 	probby = 75
 	spawned = list(/obj/structure/table/wood/treestump)
 
-/obj/effect/spawner/roguemap/shroud
+/obj/effect/spawner/map_spawner/shroud
 	icon_state = "shroud"
 	name = "shroud sp"
 	probby = 30
 	spawned = list(/turf/closed/wall/shroud)
 
-/obj/effect/spawner/roguemap/hauntpile
+/obj/effect/spawner/map_spawner/hauntpile
 	icon_state = "hauntpile"
 	name = "hauntpile"
 	probby = 23
 	spawned = list(/obj/structure/bonepile)
 
-/obj/effect/spawner/roguemap/beartrap
+/obj/effect/spawner/map_spawner/beartrap
 	icon_state = "beartrap"
 	name = "beartrap"
 	probby = 50
 	spawned = list(/obj/item/restraints/legcuffs/beartrap/armed/camouflage)
 
-/obj/effect/spawner/roguemap/tallgrass
+/obj/effect/spawner/map_spawner/tallgrass
 	icon_state = "grass"
 	name = "grass tile loot spawner"
 	probby = 75
 	spawned = list(/obj/structure/flora/roguegrass/bush_meagre = 10, /obj/structure/flora/roguegrass = 60, /obj/item/natural/stone = 8, /obj/item/natural/rock = 7, /obj/item/grown/log/tree/stick = 3, /obj/structure/closet/dirthole/closed/loot=0.1)
 
-/obj/effect/spawner/roguemap/grass_low
+/obj/effect/spawner/map_spawner/grass_low
 	icon_state = "grass"
 	name = "grass tile low loot spawner"
 	probby = 50
 	spawned = list(/obj/structure/flora/roguegrass/bush_meagre = 5, /obj/structure/flora/roguegrass = 60, /obj/item/natural/stone = 8, /obj/item/natural/rock = 4, /obj/item/grown/log/tree/stick = 2)
 
 /*	..................   Toll randomizer (poor mans coin generator, cheaper workload is all)  ................... */
-/obj/effect/spawner/roguemap/tollrandom
+/obj/effect/spawner/map_spawner/tollrandom
 	icon = 'icons/roguetown/underworld/enigma_husks.dmi'
 	icon_state = "soultoken_floor"
 	probby = 25
@@ -119,7 +119,7 @@
 		)
 
 /*	..................   Hauntz randomizer   ................... */
-/obj/effect/spawner/roguemap/hauntz_random
+/obj/effect/spawner/map_spawner/hauntz_random
 	icon = 'icons/mob/actions/roguespells.dmi'
 	icon_state = "raiseskele"
 	alpha = 150
@@ -127,14 +127,14 @@
 	spawned = list(	/obj/effect/landmark/events/haunts = 100	)
 
 /*	..................   Loot spawners   ................... */
-/obj/effect/spawner/roguemap/loot
+/obj/effect/spawner/map_spawner/loot
 	icon_state = "lootblank"
 	probby = 100
 
-/obj/effect/spawner/roguemap/loot/common
+/obj/effect/spawner/map_spawner/loot/common
 	icon_state = "lootlow"
 	spawned = list(
-		/obj/item/roguecoin/copper/pile = 15,
+		/obj/item/coin/copper/pile = 15,
 		/obj/item/weapon/knife/hunting = 5,
 		/obj/item/weapon/knife/dagger = 8,
 		/obj/item/weapon/sword/iron = 3,
@@ -146,10 +146,10 @@
 		/obj/item/natural/poo = 5
 		)
 
-/obj/effect/spawner/roguemap/loot/medium
+/obj/effect/spawner/map_spawner/loot/medium
 	icon_state = "lootmed"
 	spawned = list(
-		/obj/item/roguecoin/silver/pile = 15,
+		/obj/item/coin/silver/pile = 15,
 		/obj/item/weapon/knife/dagger/steel = 4,
 		/obj/item/weapon/axe/iron = 10,
 		/obj/item/ammo_holder/quiver/arrows = 5,
@@ -161,10 +161,10 @@
 		/obj/item/statue/gold/loot = 1
 		)
 
-/obj/effect/spawner/roguemap/loot/rare
+/obj/effect/spawner/map_spawner/loot/rare
 	icon_state = "loothigh"
 	spawned = list(
-		/obj/item/roguecoin/gold/pile = 15,
+		/obj/item/coin/gold/pile = 15,
 		/obj/item/weapon/knife/dagger/silver = 5,
 		/obj/item/weapon/sword/long/greatsword = 3,
 		/obj/item/weapon/axe/iron = 10,
@@ -177,7 +177,7 @@
 		/obj/item/clothing/pants/chainlegs = 5
 		)
 
-/obj/effect/spawner/roguemap/loot/magic
+/obj/effect/spawner/map_spawner/loot/magic
 	icon_state = "lootmagic"
 	spawned = list(
 		/obj/item/clothing/ring/active/nomag = 20,
@@ -191,47 +191,47 @@
 		/obj/item/clothing/neck/talkstone = 10
 		)
 
-/obj/effect/spawner/roguemap/loot/coin
+/obj/effect/spawner/map_spawner/loot/coin
 	icon_state = "lootcoin"
 	lootmax = 3
 	spawned = list(
-		/obj/item/roguecoin/gold/pile = 5,
-		/obj/item/roguecoin/gold = 10,
-		/obj/item/roguecoin/silver/pile = 20,
-		/obj/item/roguecoin/silver = 25,
-		/obj/item/roguecoin/copper/pile = 30,
-		/obj/item/roguecoin/copper = 35
+		/obj/item/coin/gold/pile = 5,
+		/obj/item/coin/gold = 10,
+		/obj/item/coin/silver/pile = 20,
+		/obj/item/coin/silver = 25,
+		/obj/item/coin/copper/pile = 30,
+		/obj/item/coin/copper = 35
 		)
 
-/obj/effect/spawner/roguemap/loot/coin/low
+/obj/effect/spawner/map_spawner/loot/coin/low
 	icon_state = "lootcoinlow"
 	spawned = list(
-		/obj/item/roguecoin/copper/pile = 75,
-		/obj/item/roguecoin/copper = 25
+		/obj/item/coin/copper/pile = 75,
+		/obj/item/coin/copper = 25
 		)
 
-/obj/effect/spawner/roguemap/loot/coin/med
+/obj/effect/spawner/map_spawner/loot/coin/med
 	icon_state = "lootcoinmed"
 	spawned = list(
-		/obj/item/roguecoin/silver/pile = 75,
-		/obj/item/roguecoin/silver = 25
+		/obj/item/coin/silver/pile = 75,
+		/obj/item/coin/silver = 25
 		)
 
-/obj/effect/spawner/roguemap/loot/coin/high
+/obj/effect/spawner/map_spawner/loot/coin/high
 	icon_state = "lootcoinhigh"
 	spawned = list(
-		/obj/item/roguecoin/gold/pile = 75,
-		/obj/item/roguecoin/gold = 25
+		/obj/item/coin/gold/pile = 75,
+		/obj/item/coin/gold = 25
 		)
 
-/obj/effect/spawner/roguemap/loot/coin/absurd
+/obj/effect/spawner/map_spawner/loot/coin/absurd
 	icon_state = "lootcoinabsurd"
 	spawned = list(
-		/obj/item/roguecoin/gold/pile = 50,
-		/obj/item/roguegem = 50
+		/obj/item/coin/gold/pile = 50,
+		/obj/item/gem = 50
 		)
 
-/obj/effect/spawner/roguemap/loot/weapon
+/obj/effect/spawner/map_spawner/loot/weapon
 	icon_state = "lootweapon"
 	spawned = list(
 		/obj/item/weapon/mace/copperbludgeon = 15,
@@ -262,7 +262,7 @@
 		/obj/item/weapon/hammer/sledgehammer/war = 5
 		)
 
-/obj/effect/spawner/roguemap/loot/armor
+/obj/effect/spawner/map_spawner/loot/armor
 	icon_state = "lootarmor"
 	spawned = list(
 		/obj/item/clothing/face/facemask/copper = 15,
@@ -282,7 +282,7 @@
 		/obj/item/clothing/neck/chaincoif = 5
 		)
 
-/obj/effect/spawner/roguemap/loot/food
+/obj/effect/spawner/map_spawner/loot/food
 	icon_state = "lootfood"
 	spawned = list(
 		/obj/item/reagent_containers/food/snacks/bread = 10,
@@ -298,11 +298,11 @@
 		/obj/item/reagent_containers/food/snacks/potato/baked = 10,
 		/obj/item/reagent_containers/food/snacks/onion_fried = 10,
 		/obj/item/reagent_containers/food/snacks/raisins = 10,
-		/obj/item/reagent_containers/food/snacks/rogue/meat/salami = 10,
+		/obj/item/reagent_containers/food/snacks/meat/salami = 10,
 		/obj/item/reagent_containers/food/snacks/hardtack = 10
 		)
 
-/obj/effect/spawner/roguemap/loot/potion_vitals
+/obj/effect/spawner/map_spawner/loot/potion_vitals
 	icon_state = "lootpotion"
 	spawned = list(
 		/obj/item/reagent_containers/glass/bottle/healthpot = 10,
@@ -313,7 +313,7 @@
 		/obj/item/reagent_containers/glass/bottle/strongstampot = 5
 	)
 
-/obj/effect/spawner/roguemap/loot/potion_poisons
+/obj/effect/spawner/map_spawner/loot/potion_poisons
 	icon_state = "lootpoison"
 	spawned = list(
 		/obj/item/reagent_containers/glass/bottle/poison = 10,
@@ -324,19 +324,19 @@
 		/obj/item/reagent_containers/glass/bottle/strongstampot = 5
 	)
 
-/obj/effect/spawner/roguemap/loot/potion_ingredient
+/obj/effect/spawner/map_spawner/loot/potion_ingredient
 	icon_state = "lootpotioning"
 	var/static/list/all_potion_ings = list()
 	spawned = list()
 
-/obj/effect/spawner/roguemap/loot/potion_ingredient/Initialize(mapload)
+/obj/effect/spawner/map_spawner/loot/potion_ingredient/Initialize(mapload)
 	if(!all_potion_ings.len)
 		all_potion_ings = subtypesof(/obj/item/alch)
 	if(!spawned.len)
 		spawned = all_potion_ings.Copy()
 	return ..()
 
-/obj/effect/spawner/roguemap/loot/potion_ingredient/herb
+/obj/effect/spawner/map_spawner/loot/potion_ingredient/herb
 	icon_state = "lootpotionherb"
 	spawned = list(
 		/obj/item/alch/atropa = 5,
@@ -354,7 +354,7 @@
 		/obj/item/alch/valeriana = 5,
 		/obj/item/alch/artemisia = 5,
 	)
-/obj/effect/spawner/roguemap/loot/potion_stats
+/obj/effect/spawner/map_spawner/loot/potion_stats
 	icon_state = "lootstatpot"
 	spawned = list(
 		/obj/item/reagent_containers/glass/bottle/vial/strpot = 10,
@@ -365,7 +365,7 @@
 		/obj/item/reagent_containers/glass/bottle/vial/spdpot = 10,
 		/obj/item/reagent_containers/glass/bottle/vial/lucpot = 10
 	)
-/obj/effect/spawner/roguemap/sewerencounter
+/obj/effect/spawner/map_spawner/sewerencounter
 	icon_state = "srat"
 	icon = 'icons/roguetown/mob/monster/rat.dmi'
 	probby = 50
@@ -374,7 +374,7 @@
 		/obj/item/reagent_containers/food/snacks/smallrat = 30,
 		/obj/item/reagent_containers/food/snacks/smallrat/dead = 10,
 		/obj/item/organ/guts = 5,
-		/obj/item/roguecoin/copper = 5,
+		/obj/item/coin/copper = 5,
 		/obj/effect/gibspawner/generic = 5,
 		/obj/effect/decal/remains/bigrat = 5,
 		/mob/living/simple_animal/hostile/retaliate/bigrat = 1,

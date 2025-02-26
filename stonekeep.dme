@@ -839,7 +839,7 @@
 #include "code\game\objects\effects\skill_trackables\trackable_subsystem.dm"
 #include "code\game\objects\effects\spawners\gibspawner.dm"
 #include "code\game\objects\effects\spawners\lootdrop.dm"
-#include "code\game\objects\effects\spawners\roguemapgen.dm"
+#include "code\game\objects\effects\spawners\map_spawner.dm"
 #include "code\game\objects\effects\spawners\structure.dm"
 #include "code\game\objects\effects\spawners\traps.dm"
 #include "code\game\objects\effects\temporary_visuals\miscellaneous.dm"

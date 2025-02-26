@@ -98,7 +98,7 @@
 "fu" = (
 /obj/structure/closet/crate/chest/wicker,
 /obj/item/reagent_containers/peppermill,
-/obj/item/reagent_containers/food/snacks/rogue/cheddar/aged,
+/obj/item/reagent_containers/food/snacks/cheddar/aged,
 /turf/open/floor/hexstone,
 /area/rogue)
 "fw" = (
@@ -172,11 +172,11 @@
 /area/rogue)
 "iJ" = (
 /obj/structure/rack/rogue/shelf/notdense,
-/obj/item/roguegem/red{
+/obj/item/gem/red{
 	pixel_x = -5;
 	pixel_y = 31
 	},
-/obj/item/roguegem/violet{
+/obj/item/gem/violet{
 	pixel_x = 6;
 	pixel_y = 32
 	},
@@ -506,7 +506,7 @@
 /area/rogue)
 "vW" = (
 /obj/structure/table/wood/fine,
-/obj/effect/spawner/roguemap/loot/weapon,
+/obj/effect/spawner/map_spawner/loot/weapon,
 /turf/open/floor/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -699,7 +699,7 @@
 	pixel_x = -9;
 	pixel_y = 6
 	},
-/obj/effect/spawner/roguemap/loot/rare,
+/obj/effect/spawner/map_spawner/loot/rare,
 /obj/item/reagent_containers/glass/bottle/redwine,
 /turf/open/floor/ruinedwood{
 	icon_state = "weird1"
@@ -848,9 +848,9 @@
 	pixel_y = -32
 	},
 /obj/structure/table/wood/fine,
-/obj/effect/spawner/roguemap/loot/rare,
-/obj/item/roguegem,
-/obj/item/roguegem{
+/obj/effect/spawner/map_spawner/loot/rare,
+/obj/item/gem,
+/obj/item/gem{
 	pixel_x = -9;
 	pixel_y = 5
 	},
@@ -930,7 +930,7 @@
 /obj/structure/closet/crate/chest/wicker,
 /obj/item/reagent_containers/food/snacks/rotten/egg,
 /obj/item/reagent_containers/food/snacks/rotten/egg,
-/obj/effect/spawner/roguemap/loot/medium,
+/obj/effect/spawner/map_spawner/loot/medium,
 /turf/open/floor/hexstone,
 /area/rogue)
 "NP" = (

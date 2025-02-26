@@ -25,7 +25,7 @@
 	unsuitable_atmos_damage = 1
 	animal_species = /mob/living/simple_animal/pet/cat
 	childtype = list(/mob/living/simple_animal/pet/cat/kitten)
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/mince/beef = 1, /obj/item/organ/ears/cat = 1, /obj/item/organ/tail/cat = 1)
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/mince/beef = 1, /obj/item/organ/ears/cat = 1, /obj/item/organ/tail/cat = 1)
 	response_help_continuous = "pets"
 	response_help_simple = "pet"
 	response_disarm_continuous = "gently pushes aside"
@@ -82,11 +82,11 @@
 	desc = "If you're seeing this, someone forgot to set a mob desc or it spawned the parent mob. Report to the Creators."
 	TOTALSPD = 5
 	var/isracist = TRUE // Hisses at dark elves if they try to pet it
-	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1)
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1,
+	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 1)
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 1,
 							/obj/item/alch/sinew = 1,
 							/obj/item/alch/bone = 1)
-	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1,
+	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 1,
 							/obj/item/alch/sinew = 2,
 							/obj/item/alch/bone = 1)
 
@@ -108,11 +108,11 @@
 	emote_hear = list("meows.", "clucks.")
 	emote_see = list("brings their ears alert.", "scratches their ear with a hindleg.")
 	childtype = list() // TODO: puppy cabbits =:3
-	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1)
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1,
+	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 1)
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 1,
 							/obj/item/alch/sinew = 1,
 							/obj/item/alch/bone = 1)
-	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1,
+	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 1,
 							/obj/item/alch/sinew = 2,
 							/obj/item/alch/bone = 1,
 							/obj/item/natural/fur/cabbit = 1)

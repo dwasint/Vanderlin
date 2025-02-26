@@ -128,7 +128,7 @@
 "br" = (
 /obj/structure/closet/crate/coffin,
 /obj/item/clothing/pants/platelegs,
-/obj/effect/spawner/roguemap/loot/armor,
+/obj/effect/spawner/map_spawner/loot/armor,
 /obj/item/alch/bone{
 	name = "bone";
 	desc = null
@@ -181,9 +181,9 @@
 "bT" = (
 /obj/structure/closet/crate/coffin,
 /obj/item/weapon/mace/goden/steel/warhammer,
-/obj/effect/spawner/roguemap/loot/armor,
-/obj/effect/spawner/roguemap/loot/armor,
-/obj/effect/spawner/roguemap/loot/armor,
+/obj/effect/spawner/map_spawner/loot/armor,
+/obj/effect/spawner/map_spawner/loot/armor,
+/obj/effect/spawner/map_spawner/loot/armor,
 /obj/item/alch/bone{
 	name = "bone";
 	desc = null
@@ -309,7 +309,7 @@
 	dir = 1;
 	icon_state = "longtable_mid"
 	},
-/obj/effect/spawner/roguemap/loot/potion_vitals,
+/obj/effect/spawner/map_spawner/loot/potion_vitals,
 /turf/open/floor/ruinedwood/spiralfade,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "cT" = (
@@ -499,7 +499,7 @@
 /obj/structure/closet/crate/coffin,
 /obj/item/clothing/gloves/plate,
 /obj/item/clothing/armor/cuirass,
-/obj/effect/spawner/roguemap/loot/weapon,
+/obj/effect/spawner/map_spawner/loot/weapon,
 /obj/item/alch/bone{
 	name = "bone";
 	desc = null
@@ -620,7 +620,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "gW" = (
-/obj/effect/spawner/roguemap/loot/potion_vitals,
+/obj/effect/spawner/map_spawner/loot/potion_vitals,
 /turf/open/floor/ruinedwood/darker,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "gY" = (
@@ -762,7 +762,7 @@
 /obj/structure/table/wood/large/corner{
 	dir = 9
 	},
-/obj/effect/spawner/roguemap/loot/potion_vitals,
+/obj/effect/spawner/map_spawner/loot/potion_vitals,
 /turf/open/floor/ruinedwood/spiralfade,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "jB" = (
@@ -782,8 +782,8 @@
 "jL" = (
 /obj/structure/closet/crate/coffin,
 /obj/item/clothing/armor/gambeson,
-/obj/effect/spawner/roguemap/loot/armor,
-/obj/effect/spawner/roguemap/loot/armor,
+/obj/effect/spawner/map_spawner/loot/armor,
+/obj/effect/spawner/map_spawner/loot/armor,
 /obj/item/alch/bone{
 	name = "bone";
 	desc = null
@@ -939,7 +939,7 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "mn" = (
 /obj/structure/closet/crate/chest/crate,
-/obj/item/roguecoin/silver/pile,
+/obj/item/coin/silver/pile,
 /turf/open/floor/ruinedwood/spiralfade,
 /area/rogue/under/mountains/anvil/dungeon)
 "ms" = (
@@ -1082,7 +1082,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon)
 "oI" = (
-/obj/item/roguegem/blue,
+/obj/item/gem/blue,
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "oJ" = (
@@ -1127,7 +1127,7 @@
 /obj/structure/closet/crate/coffin,
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/long,
 /obj/item/ammo_holder/quiver/arrows,
-/obj/effect/spawner/roguemap/loot/armor,
+/obj/effect/spawner/map_spawner/loot/armor,
 /obj/item/alch/bone{
 	name = "bone";
 	desc = null
@@ -1477,7 +1477,7 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "ul" = (
 /obj/structure/table/wood/reinforced_alter,
-/obj/effect/spawner/roguemap/loot/weapon{
+/obj/effect/spawner/map_spawner/loot/weapon{
 	spawned = list(/obj/item/weapon/sword/rapier/ironestoc = 10, /obj/item/weapon/polearm/eaglebeak/lucerne = 10,/obj/item/weapon/sword/long/greatsword/zwei = 10, /obj/item/weapon/mace/goden/steel = 5, /obj/item/weapon/mace/steel = 5, /obj/item/weapon/hammer/sledgehammer/war = 5)
 	},
 /turf/open/floor/naturalstone,
@@ -1694,7 +1694,7 @@
 /obj/item/clothing/armor/gambeson/arming,
 /obj/item/clothing/neck/bevor,
 /obj/item/clothing/head/helmet/visored/sallet,
-/obj/effect/spawner/roguemap/loot/weapon,
+/obj/effect/spawner/map_spawner/loot/weapon,
 /obj/item/alch/bone{
 	name = "bone";
 	desc = null
@@ -1750,7 +1750,7 @@
 /obj/structure/table/wood/large/corner{
 	dir = 10
 	},
-/obj/effect/spawner/roguemap/loot/food,
+/obj/effect/spawner/map_spawner/loot/food,
 /turf/open/floor/tile/kitchen,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "yC" = (
@@ -1919,7 +1919,7 @@
 /turf/open/floor/church,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Bb" = (
-/obj/item/roguecoin/copper/pile,
+/obj/item/coin/copper/pile,
 /obj/structure/closet/crate/chest/crate,
 /turf/open/floor/ruinedwood/spiralfade,
 /area/rogue/under/mountains/anvil/dungeon)
@@ -2072,8 +2072,8 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Do" = (
 /obj/structure/closet/crate/chest/crate,
-/obj/effect/spawner/roguemap/loot/potion_stats,
-/obj/effect/spawner/roguemap/loot/potion_stats,
+/obj/effect/spawner/map_spawner/loot/potion_stats,
+/obj/effect/spawner/map_spawner/loot/potion_stats,
 /turf/open/floor/ruinedwood/spiralfade,
 /area/rogue/under/mountains/anvil/dungeon)
 "Dq" = (
@@ -2352,7 +2352,7 @@
 "Hh" = (
 /obj/structure/closet/crate/coffin,
 /obj/item/clothing/neck/chaincoif/iron,
-/obj/effect/spawner/roguemap/loot/weapon,
+/obj/effect/spawner/map_spawner/loot/weapon,
 /obj/item/alch/bone{
 	name = "bone";
 	desc = null
@@ -2415,7 +2415,7 @@
 /obj/structure/table/wood/large/corner{
 	dir = 1
 	},
-/obj/effect/spawner/roguemap/loot/food,
+/obj/effect/spawner/map_spawner/loot/food,
 /turf/open/floor/tile/kitchen,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Ij" = (
@@ -2467,7 +2467,7 @@
 "IS" = (
 /obj/structure/closet/crate/chest,
 /obj/item/clothing/head/crown/circlet,
-/obj/effect/spawner/roguemap/loot/coin/med,
+/obj/effect/spawner/map_spawner/loot/coin/med,
 /turf/open/floor/churchrough,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "IV" = (
@@ -2718,7 +2718,7 @@
 /turf/open/floor/ruinedwood/spiralfade,
 /area/rogue/under/mountains/anvil/dungeon)
 "LW" = (
-/obj/item/roguegem/blue,
+/obj/item/gem/blue,
 /obj/structure/closet/crate/chest,
 /turf/open/floor/church,
 /area/rogue/under/mountains/anvil/dungeon/lower)
@@ -2805,10 +2805,10 @@
 /turf/open/floor/ruinedwood/spiralfade,
 /area/rogue/under/mountains/anvil/dungeon)
 "Ni" = (
-/obj/effect/spawner/roguemap/loot/common,
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /obj/structure/closet/crate/chest,
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/ruinedwood,
 /area/rogue/under/mountains/anvil/dungeon)
 "NG" = (
@@ -2876,7 +2876,7 @@
 "OF" = (
 /obj/structure/closet/crate/coffin,
 /obj/item/clothing/armor/chainmail/iron,
-/obj/effect/spawner/roguemap/loot/weapon,
+/obj/effect/spawner/map_spawner/loot/weapon,
 /obj/item/alch/bone{
 	name = "bone";
 	desc = null
@@ -2944,7 +2944,7 @@
 /turf/open/floor/church,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "PI" = (
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon)
 "PJ" = (
@@ -2955,10 +2955,10 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "PK" = (
 /obj/structure/closet/crate/chest,
-/obj/effect/spawner/roguemap/loot/coin/med,
-/obj/effect/spawner/roguemap/loot/coin/low,
-/obj/effect/spawner/roguemap/loot/coin/low,
-/obj/effect/spawner/roguemap/loot/coin/high,
+/obj/effect/spawner/map_spawner/loot/coin/med,
+/obj/effect/spawner/map_spawner/loot/coin/low,
+/obj/effect/spawner/map_spawner/loot/coin/low,
+/obj/effect/spawner/map_spawner/loot/coin/high,
 /turf/open/floor/churchrough,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "PO" = (
@@ -2986,10 +2986,10 @@
 /turf/open/floor/carpet/lord/left,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Qr" = (
-/obj/effect/spawner/roguemap/loot/common,
-/obj/effect/spawner/roguemap/loot/potion_vitals,
+/obj/effect/spawner/map_spawner/loot/common,
+/obj/effect/spawner/map_spawner/loot/potion_vitals,
 /obj/structure/closet/crate/chest,
-/obj/effect/spawner/roguemap/loot/potion_stats,
+/obj/effect/spawner/map_spawner/loot/potion_stats,
 /turf/open/floor/ruinedwood,
 /area/rogue/under/mountains/anvil/dungeon)
 "Qx" = (
@@ -3035,7 +3035,7 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Rl" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
 /turf/open/floor/blocks{
 	icon_state = "bluestone"
 	},
@@ -3134,7 +3134,7 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Sq" = (
 /obj/structure/closet/crate/chest,
-/obj/effect/spawner/roguemap/loot/magic{
+/obj/effect/spawner/map_spawner/loot/magic{
 	spawned = list(/obj/item/clothing/ring/active/nomag = 20, /obj/item/clothing/ring/gold/protection = 16, /obj/item/clothing/ring/silver/calm = 20, /obj/item/clothing/ring/silver/noc = 6, /obj/item/clothing/head/crown/circlet/vision = 3, /obj/item/clothing/head/crown/circlet/sleepless = 3, /obj/item/clothing/neck/talkstone = 15)
 	},
 /turf/open/floor/churchrough,
@@ -3502,8 +3502,8 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "XE" = (
 /obj/structure/closet/crate/chest,
-/obj/item/roguegem/diamond,
-/obj/item/roguegem/green,
+/obj/item/gem/diamond,
+/obj/item/gem/green,
 /obj/item/rogue/instrument/lute,
 /turf/open/floor/churchrough,
 /area/rogue/under/mountains/anvil/dungeon/lower)
@@ -3652,7 +3652,7 @@
 /turf/open/floor/ruinedwood/spiralfade,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "YT" = (
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/woodturned,
 /area/rogue/under/mountains/anvil/dungeon)
 "YV" = (

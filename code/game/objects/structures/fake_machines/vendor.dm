@@ -37,7 +37,7 @@
 				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 				update_icon()
 				return attack_hand(user)
-	if(istype(P, /obj/item/roguecoin))
+	if(istype(P, /obj/item/coin))
 		budget += P.get_real_price()
 		qdel(P)
 		update_icon()
@@ -228,7 +228,7 @@
 	return
 
 /obj/structure/fake_machine/vendor/centcom/attackby(obj/item/P, mob/user, params)
-	if(istype(P, /obj/item/roguecoin))
+	if(istype(P, /obj/item/coin))
 		if(!cachey[user])
 			cachey[user] = list()
 		cachey[user]["moneydonate"] += P.get_real_price()

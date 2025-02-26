@@ -15,15 +15,15 @@
 	emote_hear = list("brays.")
 	emote_see = list("shakes its head.", "chews her cud.")
 
-	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 4,
+	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 4,
 						/obj/item/natural/hide = 1,
 						/obj/item/alch/sinew = 1,
 						/obj/item/alch/bone = 1)
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 6,
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 6,
 						/obj/item/natural/hide = 2,
 						/obj/item/alch/sinew = 2,
 						/obj/item/alch/bone = 1)
-	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 8,
+	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 8,
 						/obj/item/natural/hide = 3,
 						/obj/item/alch/sinew = 2,
 						/obj/item/alch/bone = 1)
@@ -201,14 +201,14 @@
 	emote_hear = list("chews.")
 	emote_see = list("shakes his head.", "chews his cud.")
 
-	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 4,
+	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 4,
 						/obj/item/alch/sinew = 1,
 						/obj/item/alch/bone = 1)
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 7,
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 7,
 						/obj/item/natural/hide = 3,
 						/obj/item/alch/sinew = 2,
 						/obj/item/alch/bone = 1)
-	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 9,
+	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 9,
 						/obj/item/natural/hide = 4,
 						/obj/item/alch/sinew = 2,
 						/obj/item/alch/bone = 1)
@@ -321,9 +321,9 @@
 	mob_size = MOB_SIZE_SMALL
 	pass_flags = PASSTABLE | PASSMOB
 
-	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/mince/beef = 1)
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1)
-	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1,
+	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/mince/beef = 1)
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 1)
+	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 1,
 								/obj/item/natural/hide = 1)
 
 	health = CALF_HEALTH

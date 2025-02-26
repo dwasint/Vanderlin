@@ -16,10 +16,10 @@
 	blade_dulling = DULLING_CUT
 	rotprocess = null
 	static_debris = list(/obj/item/natural/feather=1)
-	fried_type = /obj/item/reagent_containers/food/snacks/rogue/friedcrow
+	fried_type = /obj/item/reagent_containers/food/snacks/friedcrow
 	cooked_smell = /datum/pollutant/food/fried_crow
 
-/obj/item/reagent_containers/food/snacks/rogue/friedcrow
+/obj/item/reagent_containers/food/snacks/friedcrow
 	name = "fried zad"
 	desc = "A pesky, fried bird. The Grenzelhoftians say one 'eats zad' if they are mistaken or outdone."
 	icon_state = "fcrow"

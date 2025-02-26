@@ -34,7 +34,7 @@
 			playsound(get_turf(src),'sound/items/dig_shovel.ogg', 70, TRUE)
 			if(user.used_intent.type == /datum/intent/shovelscoop)
 				if(do_after(user, 3 SECONDS, src))
-					new /obj/item/reagent_containers/food/snacks/rogue/toxicshrooms(get_turf(src))
+					new /obj/item/reagent_containers/food/snacks/toxicshrooms(get_turf(src))
 					hidden_toxicshrooms = FALSE
 	else ..()
 
@@ -67,7 +67,7 @@
 	icon_state = pick("mushroom1_full","mushroom1_full","mushroom1_full")
 	. = ..()
 
-/obj/item/reagent_containers/food/snacks/rogue/toxicshrooms
+/obj/item/reagent_containers/food/snacks/toxicshrooms
 	name = "truffles"
 	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = "mushroom1_full"
@@ -77,7 +77,7 @@
 	cooked_smell = /datum/pollutant/food/truffles
 	color = "#ab7d6f"
 	tastes = list("mushroom" = 1)
-/obj/item/reagent_containers/food/snacks/rogue/toxicshrooms/Initialize()
+/obj/item/reagent_containers/food/snacks/toxicshrooms/Initialize()
 	icon_state = pick("mushroom1_full","mushroom1_full","mushroom1_full")
 	. = ..()
 /obj/item/reagent_containers/food/snacks/cooked/truffle_toxic
@@ -112,13 +112,13 @@
 	response_help_continuous = "pets"
 	response_help_simple = "give the signal to the"
 
-	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/fatty = 3,
+	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/fatty = 3,
 									/obj/item/reagent_containers/food/snacks/fat = 1,
 									/obj/item/natural/hide = 1)
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/fatty = 4,
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/fatty = 4,
 							/obj/item/reagent_containers/food/snacks/fat = 2,
 							/obj/item/natural/hide = 2)
-	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/fatty = 5,
+	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/fatty = 5,
 							/obj/item/reagent_containers/food/snacks/fat = 3,
 							/obj/item/natural/hide = 3)
 
@@ -220,7 +220,7 @@
 		hangry_meter = 0
 		playsound(src,'sound/misc/eat.ogg', rand(30,60), TRUE)
 		qdel(O)
-	if(istype(O, /obj/item/reagent_containers/food/snacks/rogue/toxicshrooms))
+	if(istype(O, /obj/item/reagent_containers/food/snacks/toxicshrooms))
 		visible_message("<span class='notice'>The pig munches the truffles reluctantly.</span>")
 		playsound(src,'sound/misc/eat.ogg', rand(30,60), TRUE)
 		qdel(O)

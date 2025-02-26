@@ -35,7 +35,7 @@
 /area/rogue/under/mountains/anvil/lower)
 "aB" = (
 /obj/structure/closet/crate/crafted_closet,
-/obj/effect/spawner/roguemap/loot/armor,
+/obj/effect/spawner/map_spawner/loot/armor,
 /turf/open/floor/ruinedwood/spiralfade,
 /area/rogue/under/mountains/anvil/lower/building)
 "aC" = (
@@ -76,7 +76,7 @@
 /area/rogue/outdoors/mountains/anvil/snowyforest)
 "bL" = (
 /obj/structure/table/wood/plain,
-/obj/item/roguegem/green{
+/obj/item/gem/green{
 	name = "Gemerald?";
 	desc = "Glints with a hint of malice..."
 	},
@@ -334,7 +334,7 @@
 /area/rogue/under/mountains/anvil/lower/building)
 "fZ" = (
 /obj/structure/closet/crate/crafted_closet,
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/wood/nosmooth/saiga,
 /area/rogue/outdoors/mountains/anvil/snowyforest)
 "ga" = (
@@ -352,7 +352,7 @@
 /area/rogue/under/mountains/anvil/lower/building)
 "gq" = (
 /obj/structure/closet/crate/chest/crate,
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/wood/nosmooth/saiga,
 /area/rogue/outdoors/mountains/anvil/snowyforest)
 "gr" = (
@@ -568,7 +568,7 @@
 /area/rogue/indoors/mountains/anvil/surface/building)
 "jm" = (
 /obj/item/organ/tongue,
-/obj/effect/spawner/roguemap/loot/armor,
+/obj/effect/spawner/map_spawner/loot/armor,
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/lower/building)
 "jo" = (
@@ -587,7 +587,7 @@
 /turf/open/floor/wood/nosmooth/saiga,
 /area/rogue/outdoors/mountains/anvil/snowyforest)
 "jL" = (
-/obj/effect/spawner/roguemap/loot/medium,
+/obj/effect/spawner/map_spawner/loot/medium,
 /turf/open/water/cleanshallow,
 /area/rogue/under/mountains/anvil/lower/building)
 "jQ" = (
@@ -647,7 +647,7 @@
 /area/rogue/under/mountains/anvil/lower/building)
 "ky" = (
 /obj/structure/closet/crate/crafted_closet,
-/obj/effect/spawner/roguemap/loot/medium,
+/obj/effect/spawner/map_spawner/loot/medium,
 /turf/open/floor/wood/nosmooth/saiga,
 /area/rogue/outdoors/mountains/anvil/snowyforest)
 "kA" = (
@@ -806,7 +806,7 @@
 /area/rogue/indoors/mountains/anvil/surface/building)
 "mT" = (
 /obj/structure/table/church/m,
-/obj/effect/spawner/roguemap/loot/medium,
+/obj/effect/spawner/map_spawner/loot/medium,
 /turf/open/floor/churchmarble,
 /area/rogue/under/mountains/anvil/lower)
 "mU" = (
@@ -815,13 +815,13 @@
 /area/rogue/under/mountains/anvil/lower)
 "mV" = (
 /obj/structure/closet/crate/chest,
-/obj/effect/spawner/roguemap/loot/common,
-/obj/effect/spawner/roguemap/loot/common,
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/lower/building)
 "nh" = (
-/obj/effect/spawner/roguemap/loot/weapon,
+/obj/effect/spawner/map_spawner/loot/weapon,
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/lower)
 "ni" = (
@@ -884,7 +884,7 @@
 /area/rogue/outdoors/mountains/anvil/snowyforest)
 "oa" = (
 /obj/item/reagent_containers/food/snacks/rotten/meat,
-/obj/effect/spawner/roguemap/loot/medium,
+/obj/effect/spawner/map_spawner/loot/medium,
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/lower/building)
 "oi" = (
@@ -901,7 +901,7 @@
 /area/rogue/under/mountains/anvil/lower)
 "or" = (
 /obj/structure/closet/crate/crafted_closet,
-/obj/effect/spawner/roguemap/loot/weapon,
+/obj/effect/spawner/map_spawner/loot/weapon,
 /turf/open/floor/ruinedwood/spiralfade,
 /area/rogue/under/mountains/anvil/lower/building)
 "ou" = (
@@ -925,9 +925,9 @@
 /area/rogue/under/mountains/anvil/lower/building)
 "oE" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/effect/spawner/roguemap/loot/weapon,
-/obj/effect/spawner/roguemap/loot/armor,
-/obj/effect/spawner/roguemap/loot/armor,
+/obj/effect/spawner/map_spawner/loot/weapon,
+/obj/effect/spawner/map_spawner/loot/armor,
+/obj/effect/spawner/map_spawner/loot/armor,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/lower/building)
 "oF" = (
@@ -1046,7 +1046,7 @@
 	dir = 1;
 	icon_state = "longtable"
 	},
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/wood/nosmooth/saiga,
 /area/rogue/indoors/mountains/anvil/surface/building)
 "qG" = (
@@ -1092,7 +1092,7 @@
 /obj/structure/table/wood/plain,
 /obj/item/weapon/knife/dagger,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/effect/spawner/roguemap/loot/food,
+/obj/effect/spawner/map_spawner/loot/food,
 /turf/open/floor/ruinedwood/darker,
 /area/rogue/indoors/mountains/anvil/surface/building)
 "rj" = (
@@ -1195,7 +1195,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/lower/building)
 "sL" = (
-/obj/effect/spawner/roguemap/loot/rare,
+/obj/effect/spawner/map_spawner/loot/rare,
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/lower/building)
 "sN" = (
@@ -1214,8 +1214,8 @@
 /turf/open/floor/snow,
 /area/rogue/outdoors/mountains/anvil/lavaexposed)
 "sZ" = (
-/obj/effect/spawner/roguemap/loot/rare,
-/obj/effect/spawner/roguemap/loot/coin/med,
+/obj/effect/spawner/map_spawner/loot/rare,
+/obj/effect/spawner/map_spawner/loot/coin/med,
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/lower)
 "th" = (
@@ -1385,7 +1385,7 @@
 /obj/item/organ/tongue,
 /obj/item/organ/tongue,
 /obj/structure/closet/crate/chest,
-/obj/effect/spawner/roguemap/loot/food,
+/obj/effect/spawner/map_spawner/loot/food,
 /turf/open/floor/blocks,
 /area/rogue/under/mountains/anvil/lower/building)
 "vQ" = (
@@ -1456,7 +1456,7 @@
 /area/rogue/under/mountains/anvil/lower)
 "xg" = (
 /obj/effect/decal/cleanable/blood/gibs,
-/obj/effect/spawner/roguemap/loot/weapon,
+/obj/effect/spawner/map_spawner/loot/weapon,
 /turf/open/floor/blocks,
 /area/rogue/under/mountains/anvil/lower/building)
 "xs" = (
@@ -1525,8 +1525,8 @@
 /area/rogue/under/mountains/anvil/lower)
 "yk" = (
 /obj/structure/rack/rogue/shelf/big,
-/obj/effect/spawner/roguemap/loot/common,
-/obj/effect/spawner/roguemap/loot/weapon,
+/obj/effect/spawner/map_spawner/loot/common,
+/obj/effect/spawner/map_spawner/loot/weapon,
 /turf/open/floor/wood/nosmooth/saiga,
 /area/rogue/outdoors/mountains/anvil/snowyforest)
 "yu" = (
@@ -1574,7 +1574,7 @@
 /turf/closed/wall/mineral/wooddark,
 /area/rogue/outdoors/mountains/anvil/snowyforest)
 "zq" = (
-/obj/effect/spawner/roguemap/loot/armor,
+/obj/effect/spawner/map_spawner/loot/armor,
 /turf/open/floor/blocks,
 /area/rogue/under/mountains/anvil/lower/building)
 "zu" = (
@@ -1652,10 +1652,10 @@
 "AZ" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/closet/crate/chest/gold,
-/obj/effect/spawner/roguemap/loot/magic,
-/obj/effect/spawner/roguemap/loot/coin,
-/obj/effect/spawner/roguemap/loot/coin,
-/obj/effect/spawner/roguemap/loot/coin,
+/obj/effect/spawner/map_spawner/loot/magic,
+/obj/effect/spawner/map_spawner/loot/coin,
+/obj/effect/spawner/map_spawner/loot/coin,
+/obj/effect/spawner/map_spawner/loot/coin,
 /turf/open/floor/tile{
 	icon_state = "bfloorz"
 	},
@@ -1670,8 +1670,8 @@
 /area/rogue/under/mountains/anvil/lower/building)
 "Bw" = (
 /obj/structure/closet/crate/chest,
-/obj/effect/spawner/roguemap/loot/coin/low,
-/obj/effect/spawner/roguemap/loot/food,
+/obj/effect/spawner/map_spawner/loot/coin/low,
+/obj/effect/spawner/map_spawner/loot/food,
 /turf/open/floor/twig,
 /area/rogue/outdoors/mountains/anvil/snowyforest)
 "Bx" = (
@@ -1816,7 +1816,7 @@
 /turf/open/floor/ruinedwood/darker,
 /area/rogue/indoors/mountains/anvil/surface/building)
 "DF" = (
-/obj/effect/spawner/roguemap/loot/coin/med,
+/obj/effect/spawner/map_spawner/loot/coin/med,
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/lower)
 "DI" = (
@@ -1861,7 +1861,7 @@
 /area/rogue/under/mountains/anvil/lower/building)
 "Ek" = (
 /obj/structure/closet/crate/crafted_closet,
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/wood/nosmooth/saiga,
 /area/rogue/indoors/mountains/anvil/surface/building)
 "Er" = (
@@ -1945,7 +1945,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/lower)
 "Gi" = (
-/obj/effect/spawner/roguemap/loot/weapon,
+/obj/effect/spawner/map_spawner/loot/weapon,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/lower/building)
 "Gk" = (
@@ -1993,7 +1993,7 @@
 /obj/structure/table/church{
 	dir = 1
 	},
-/obj/effect/spawner/roguemap/loot/medium,
+/obj/effect/spawner/map_spawner/loot/medium,
 /obj/item/reagent_containers/food/snacks/rotten/breadslice,
 /turf/open/floor/church,
 /area/rogue/under/mountains/anvil/lower)
@@ -2005,7 +2005,7 @@
 /turf/closed/mineral/rogue,
 /area/rogue/under/mountains/anvil/lower)
 "GI" = (
-/obj/effect/spawner/roguemap/loot/armor,
+/obj/effect/spawner/map_spawner/loot/armor,
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/lower)
 "GP" = (
@@ -2049,11 +2049,11 @@
 	},
 /mob/living/carbon/human/species/skeleton/npc/no_equipment,
 /obj/structure/closet/dirthole/grave,
-/obj/effect/spawner/roguemap/loot/medium,
+/obj/effect/spawner/map_spawner/loot/medium,
 /turf/open/floor/blocks,
 /area/rogue/under/mountains/anvil/lower)
 "HF" = (
-/obj/effect/spawner/roguemap/loot/weapon,
+/obj/effect/spawner/map_spawner/loot/weapon,
 /turf/open/floor/tile/masonic/spiral,
 /area/rogue/under/mountains/anvil/lower/building)
 "HG" = (
@@ -2092,8 +2092,8 @@
 /area/rogue/under/mountains/anvil/lower/building)
 "Ih" = (
 /obj/structure/rack/rogue/shelf/big,
-/obj/effect/spawner/roguemap/loot/coin/low,
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/coin/low,
+/obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/wood/nosmooth/saiga,
 /area/rogue/outdoors/mountains/anvil/snowyforest)
 "Ik" = (
@@ -2205,11 +2205,11 @@
 /area/rogue/under/mountains/anvil/lower)
 "JT" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/reagent_containers/food/snacks/rogue/meat/salami/slice{
+/obj/item/reagent_containers/food/snacks/meat/salami/slice{
 	pixel_y = 11;
 	pixel_x = 6
 	},
-/obj/item/reagent_containers/food/snacks/rogue/meat/salami/slice{
+/obj/item/reagent_containers/food/snacks/meat/salami/slice{
 	pixel_y = 3;
 	pixel_x = 6
 	},
@@ -2260,7 +2260,7 @@
 "KN" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/closet/crate/crafted_closet/inn,
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/blocks,
 /area/rogue/under/mountains/anvil/lower/building)
 "KS" = (
@@ -2329,7 +2329,7 @@
 "LI" = (
 /obj/structure/rack/rogue/shelf/biggest,
 /obj/item/ingot/bronze,
-/obj/effect/spawner/roguemap/loot/medium,
+/obj/effect/spawner/map_spawner/loot/medium,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/lower)
 "LJ" = (
@@ -2384,7 +2384,7 @@
 /turf/closed/wall/mineral/wood,
 /area/rogue/outdoors/mountains/anvil/snowyforest)
 "ME" = (
-/obj/effect/spawner/roguemap/loot/armor,
+/obj/effect/spawner/map_spawner/loot/armor,
 /turf/open/floor/tile/masonic/spiral,
 /area/rogue/under/mountains/anvil/lower/building)
 "MG" = (
@@ -2440,7 +2440,7 @@
 /area/rogue/under/mountains/anvil/lower/building)
 "Nt" = (
 /obj/structure/table/wood,
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/twig,
 /area/rogue/outdoors/mountains/anvil/snowyforest)
 "Nv" = (
@@ -2470,7 +2470,7 @@
 /area/rogue/under/mountains/anvil/lower/building)
 "NL" = (
 /obj/structure/closet/crate/crafted_closet,
-/obj/effect/spawner/roguemap/loot/armor,
+/obj/effect/spawner/map_spawner/loot/armor,
 /obj/machinery/light/rogue/torchholder{
 	dir = 8;
 	icon_state = "torchwall1"
@@ -2517,7 +2517,7 @@
 /turf/closed/wall/mineral/roofwall/outercorner,
 /area/rogue/outdoors/mountains/anvil/snowyforest)
 "Oz" = (
-/obj/effect/spawner/roguemap/loot/rare,
+/obj/effect/spawner/map_spawner/loot/rare,
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/lower)
 "OA" = (
@@ -2565,7 +2565,7 @@
 /area/rogue/under/mountains/anvil/lower)
 "Pk" = (
 /obj/structure/closet/crate/crafted_closet,
-/obj/effect/spawner/roguemap/loot/weapon,
+/obj/effect/spawner/map_spawner/loot/weapon,
 /obj/machinery/light/rogue/torchholder{
 	dir = 4;
 	icon_state = "torchwall1"
@@ -2592,9 +2592,9 @@
 "Py" = (
 /obj/structure/closet/crate/chest/gold,
 /obj/item/statue/gold/loot,
-/obj/effect/spawner/roguemap/loot/medium,
-/obj/effect/spawner/roguemap/loot/common,
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/medium,
+/obj/effect/spawner/map_spawner/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/blocks,
 /area/rogue/under/mountains/anvil/lower/building)
 "PA" = (
@@ -2625,7 +2625,7 @@
 /area/rogue/outdoors/mountains/anvil/snowyforest)
 "PU" = (
 /obj/structure/closet/crate/coffin,
-/obj/effect/spawner/roguemap/loot/medium,
+/obj/effect/spawner/map_spawner/loot/medium,
 /turf/open/floor/blocks/green,
 /area/rogue/under/mountains/anvil/lower/building)
 "PV" = (
@@ -2692,8 +2692,8 @@
 /area/rogue/outdoors/mountains/anvil/snowyforest)
 "QM" = (
 /obj/structure/closet/crate/chest/crate,
-/obj/effect/spawner/roguemap/loot/food,
-/obj/effect/spawner/roguemap/loot/food,
+/obj/effect/spawner/map_spawner/loot/food,
+/obj/effect/spawner/map_spawner/loot/food,
 /turf/open/floor/wood/nosmooth/saiga,
 /area/rogue/indoors/mountains/anvil/surface/building)
 "QN" = (
@@ -2904,7 +2904,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/lower/building)
 "UE" = (
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/lower)
 "UH" = (
@@ -3028,7 +3028,7 @@
 /obj/effect/decal/cleanable/blood/gibs/old,
 /obj/effect/decal/cleanable/blood/gibs/old,
 /obj/item/organ/eyes,
-/obj/effect/spawner/roguemap/loot/weapon,
+/obj/effect/spawner/map_spawner/loot/weapon,
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/lower/building)
 "WE" = (
@@ -3116,10 +3116,10 @@
 "XG" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/closet/crate/chest/gold,
-/obj/effect/spawner/roguemap/loot/rare,
-/obj/effect/spawner/roguemap/loot/rare,
-/obj/effect/spawner/roguemap/loot/rare,
-/obj/effect/spawner/roguemap/loot/rare,
+/obj/effect/spawner/map_spawner/loot/rare,
+/obj/effect/spawner/map_spawner/loot/rare,
+/obj/effect/spawner/map_spawner/loot/rare,
+/obj/effect/spawner/map_spawner/loot/rare,
 /turf/open/floor/blocks,
 /area/rogue/under/mountains/anvil/lower/building)
 "XP" = (
@@ -3136,7 +3136,7 @@
 /area/rogue/under/mountains/anvil/lower)
 "XY" = (
 /obj/structure/closet/crate/coffin,
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/blocks/green,
 /area/rogue/under/mountains/anvil/lower/building)
 "Ys" = (
@@ -3166,7 +3166,7 @@
 	},
 /mob/living/carbon/human/species/skeleton/npc/no_equipment,
 /obj/structure/closet/dirthole/grave,
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/blocks,
 /area/rogue/under/mountains/anvil/lower)
 "YC" = (

@@ -187,22 +187,22 @@
 /area/rogue)
 "KK" = (
 /obj/structure/table/vtable,
-/obj/item/roguegem/diamond,
-/obj/item/roguegem/blue{
+/obj/item/gem/diamond,
+/obj/item/gem/blue{
 	pixel_y = 13
 	},
-/obj/item/roguegem{
+/obj/item/gem{
 	pixel_x = -9;
 	pixel_y = 9
 	},
-/obj/item/roguegem/green{
+/obj/item/gem/green{
 	pixel_y = 12;
 	pixel_x = 11
 	},
-/obj/item/roguegem/yellow{
+/obj/item/gem/yellow{
 	pixel_x = -9
 	},
-/obj/item/roguegem/violet{
+/obj/item/gem/violet{
 	pixel_x = 6
 	},
 /turf/open/floor/ruinedwood/spiral,

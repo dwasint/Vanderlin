@@ -17,8 +17,8 @@
 /obj/item/clothing/head/rare/dwarfplate,
 /obj/item/weapon/polearm/spear/billhook,
 /obj/item/clothing/ring/gold/ravox,
-/obj/item/roguecoin/gold/pile,
-/obj/item/roguecoin/silver/pile,
+/obj/item/coin/gold/pile,
+/obj/item/coin/silver/pile,
 /obj/effect/decal/cleanable/blood/gibs,
 /obj/effect/decal/remains/human,
 /turf/open/floor/blocks/paving,
@@ -48,7 +48,7 @@
 /area/rogue/outdoors/caves)
 "B" = (
 /obj/structure/pillory,
-/obj/effect/spawner/roguemap/hauntpile,
+/obj/effect/spawner/map_spawner/hauntpile,
 /obj/item/natural/stone,
 /obj/item/natural/stone,
 /obj/item/natural/stone,

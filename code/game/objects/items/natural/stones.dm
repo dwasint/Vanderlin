@@ -139,7 +139,7 @@
 	mineralType = /obj/item/ore/tin
 
 /obj/item/natural/rock/gemerald
-	mineralType = /obj/item/roguegem
+	mineralType = /obj/item/gem
 
 /obj/item/natural/rock/random_ore
 	name = "rock?"

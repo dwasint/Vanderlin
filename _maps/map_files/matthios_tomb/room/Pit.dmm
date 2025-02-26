@@ -16,7 +16,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue)
 "g" = (
-/obj/item/roguecoin/copper/pile,
+/obj/item/coin/copper/pile,
 /turf/open/floor/naturalstone,
 /area/rogue)
 "h" = (

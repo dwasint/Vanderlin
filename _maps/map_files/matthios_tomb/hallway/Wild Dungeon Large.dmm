@@ -61,11 +61,11 @@
 "jx" = (
 /obj/structure/flora/ausbushes/grassybush,
 /obj/structure/closet/crate/chest/lootbox,
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "jY" = (
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /obj/structure/closet/dirthole/closed/loot,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
@@ -77,7 +77,7 @@
 "kq" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/roguegrass,
-/obj/effect/spawner/roguemap/loot,
+/obj/effect/spawner/map_spawner/loot,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "kN" = (
@@ -118,7 +118,7 @@
 "nI" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/ausbushes/fullgrass,
-/obj/effect/spawner/roguemap/loot,
+/obj/effect/spawner/map_spawner/loot,
 /obj/structure/flora/roguegrass/herb/hypericum,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
@@ -186,7 +186,7 @@
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "tM" = (
-/obj/effect/spawner/roguemap/loot/medium,
+/obj/effect/spawner/map_spawner/loot/medium,
 /turf/open/floor/naturalstone,
 /area/rogue/under/cave)
 "uo" = (
@@ -202,7 +202,7 @@
 /obj/structure/flora/ausbushes/ppflowers,
 /obj/structure/flora/ausbushes/palebush,
 /obj/structure/closet/crate/chest/lootbox,
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "wz" = (
@@ -213,7 +213,7 @@
 "xb" = (
 /obj/structure/flora/roguegrass,
 /obj/structure/fluff/nest,
-/obj/effect/spawner/roguemap/loot,
+/obj/effect/spawner/map_spawner/loot,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "xo" = (
@@ -252,7 +252,7 @@
 "BO" = (
 /obj/structure/flora/ausbushes/ywflowers,
 /obj/structure/closet/crate/chest/lootbox,
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "CE" = (
@@ -303,7 +303,7 @@
 /area/rogue/under/cave)
 "GM" = (
 /obj/structure/fluff/nest,
-/obj/effect/spawner/roguemap/loot,
+/obj/effect/spawner/map_spawner/loot,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "Ho" = (
@@ -345,7 +345,7 @@
 /obj/structure/flora/roguegrass,
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/structure/fluff/nest,
-/obj/effect/spawner/roguemap/loot,
+/obj/effect/spawner/map_spawner/loot,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "KV" = (
@@ -366,7 +366,7 @@
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "Mn" = (
-/obj/effect/spawner/roguemap/loot,
+/obj/effect/spawner/map_spawner/loot,
 /turf/open/floor/naturalstone,
 /area/rogue/under/cave)
 "Mo" = (
@@ -379,7 +379,7 @@
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/ausbushes/sparsegrass,
-/obj/effect/spawner/roguemap/loot,
+/obj/effect/spawner/map_spawner/loot,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "Ng" = (
@@ -423,7 +423,7 @@
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "Rk" = (
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/naturalstone,
 /area/rogue/under/cave)
 "SA" = (

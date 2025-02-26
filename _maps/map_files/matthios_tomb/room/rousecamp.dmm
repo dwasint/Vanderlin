@@ -55,8 +55,8 @@
 /obj/structure/closet/crate/chest/neu,
 /obj/item/sleepingbag,
 /obj/item/sleepingbag,
-/obj/effect/spawner/roguemap/loot/food,
-/obj/effect/spawner/roguemap/loot/food,
+/obj/effect/spawner/map_spawner/loot/food,
+/obj/effect/spawner/map_spawner/loot/food,
 /turf/open/floor/naturalstone,
 /area/rogue)
 "jt" = (
@@ -109,8 +109,8 @@
 /area/rogue)
 "np" = (
 /obj/structure/closet/crate/chest/wicker,
-/obj/effect/spawner/roguemap/loot,
-/obj/effect/spawner/roguemap/loot,
+/obj/effect/spawner/map_spawner/loot,
+/obj/effect/spawner/map_spawner/loot,
 /turf/open/floor/dirt,
 /area/rogue)
 "nJ" = (
@@ -144,7 +144,7 @@
 /area/rogue)
 "qx" = (
 /obj/structure/table/church,
-/obj/effect/spawner/roguemap/loot/weapon,
+/obj/effect/spawner/map_spawner/loot/weapon,
 /turf/open/floor/churchmarble,
 /area/rogue)
 "qX" = (
@@ -158,7 +158,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue)
 "rA" = (
-/obj/effect/spawner/roguemap/loot/weapon,
+/obj/effect/spawner/map_spawner/loot/weapon,
 /turf/open/floor/cobblerock,
 /area/rogue)
 "sb" = (
@@ -242,7 +242,7 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "Hs" = (
-/obj/effect/spawner/roguemap/loot/weapon,
+/obj/effect/spawner/map_spawner/loot/weapon,
 /turf/open/floor/naturalstone,
 /area/rogue)
 "HQ" = (
@@ -250,8 +250,8 @@
 /area/rogue)
 "HZ" = (
 /obj/structure/closet/crate/chest/wicker,
-/obj/effect/spawner/roguemap/loot,
-/obj/effect/spawner/roguemap/loot,
+/obj/effect/spawner/map_spawner/loot,
+/obj/effect/spawner/map_spawner/loot,
 /obj/item/clothing/shoes/boots,
 /turf/open/floor/dirt,
 /area/rogue)
@@ -288,7 +288,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue)
 "OY" = (
-/obj/effect/spawner/roguemap/loot/weapon,
+/obj/effect/spawner/map_spawner/loot/weapon,
 /turf/open/floor/cobble,
 /area/rogue)
 "Rs" = (
@@ -338,7 +338,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue)
 "UW" = (
-/obj/effect/spawner/roguemap/loot/medium,
+/obj/effect/spawner/map_spawner/loot/medium,
 /turf/open/floor/cobble,
 /area/rogue)
 "VO" = (

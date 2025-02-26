@@ -68,7 +68,7 @@
 
 
 
-/obj/item/roguecoin/silver/pile/xylix/Initialize()
+/obj/item/coin/silver/pile/xylix/Initialize()
 	. = ..()
 	set_quantity(rand(6,9))
 

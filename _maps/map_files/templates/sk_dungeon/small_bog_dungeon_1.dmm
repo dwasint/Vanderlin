@@ -158,7 +158,7 @@
 	},
 /area/rogue/outdoors/bog)
 "wi" = (
-/obj/item/roguecoin/copper,
+/obj/item/coin/copper,
 /turf/open/water/cleanshallow,
 /area/rogue/outdoors/bog)
 "wK" = (
@@ -178,7 +178,7 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors/bog)
 "Al" = (
-/obj/effect/spawner/roguemap/grass_low,
+/obj/effect/spawner/map_spawner/grass_low,
 /turf/open/floor/grass,
 /area/rogue/outdoors/bog)
 "An" = (
@@ -268,7 +268,7 @@
 /area/rogue/outdoors/bog)
 "Og" = (
 /obj/structure/closet/crate/coffin,
-/obj/item/roguecoin/silver,
+/obj/item/coin/silver,
 /turf/open/floor/blocks/paving,
 /area/rogue/outdoors/bog)
 "OE" = (

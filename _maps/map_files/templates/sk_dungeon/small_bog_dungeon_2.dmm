@@ -31,7 +31,7 @@
 /turf/open/floor/twig,
 /area/rogue/outdoors/bog)
 "fS" = (
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
 /turf/open/floor/twig,
 /area/rogue/outdoors/bog)
 "gV" = (
@@ -123,7 +123,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/bog)
 "wf" = (
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/bog)
 "xf" = (
@@ -131,7 +131,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/bog)
 "Bk" = (
-/obj/effect/spawner/roguemap/grass_low,
+/obj/effect/spawner/map_spawner/grass_low,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/bog)
 "Bs" = (
@@ -155,8 +155,8 @@
 /area/rogue/outdoors/bog)
 "DQ" = (
 /obj/structure/closet/crate/chest/wicker,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
 /turf/open/floor/twig,
 /area/rogue/outdoors/bog)
 "Ep" = (
@@ -238,7 +238,7 @@
 /area/rogue/outdoors/bog)
 "Yg" = (
 /obj/machinery/tanningrack,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/bog)

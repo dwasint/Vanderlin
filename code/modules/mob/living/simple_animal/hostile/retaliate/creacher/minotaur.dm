@@ -12,7 +12,7 @@
 	see_in_dark = 10
 	move_to_delay = 3
 	base_intents = list(/datum/intent/simple/minotaur_unarmed)
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 10,
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 10,
 						/obj/item/natural/hide = 10, /obj/item/natural/bundle/bone/full = 2)
 	faction = list("caves")
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
@@ -26,7 +26,7 @@
 	obj_damage = 1
 	retreat_distance = 0
 	minimum_distance = 0
-	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat, /obj/item/bodypart, /obj/item/organ)
+	food_type = list(/obj/item/reagent_containers/food/snacks/meat, /obj/item/bodypart, /obj/item/organ)
 	footstep_type = FOOTSTEP_MOB_HEAVY
 	pooptype = null
 	TOTALCON = 19

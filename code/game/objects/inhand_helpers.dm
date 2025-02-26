@@ -769,7 +769,7 @@ GLOBAL_LIST_INIT(IconStates_cache, list())
 	if(mob)
 		var/turf/T = get_turf(mob)
 		if(T)
-			new /obj/item/roguecoin/gold/pile(T)
+			new /obj/item/coin/gold/pile(T)
 /*
 /client/verb/wwolf()
 	set category = "DEBUGTEST"

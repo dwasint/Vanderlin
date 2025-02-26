@@ -14,7 +14,7 @@
 	max_integrity = 40
 	integrity_failure = 0.15
 	attacked_sound = 'sound/misc/woodhit.ogg'
-	var/list/eatablez = list(/obj/item/organ, /obj/item/reagent_containers/food/snacks/rogue/meat,/obj/item/compost,
+	var/list/eatablez = list(/obj/item/organ, /obj/item/reagent_containers/food/snacks/meat,/obj/item/compost,
 /obj/item/natural/poo)
 	var/last_eat
 	buckle_lying = 0

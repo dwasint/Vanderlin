@@ -41,8 +41,8 @@
 /area/rogue/outdoors/bog)
 "k" = (
 /obj/structure/closet/crate/chest/crafted,
-/obj/item/reagent_containers/food/snacks/rogue/friedrat,
-/obj/item/reagent_containers/food/snacks/rogue/fryfish/eel,
+/obj/item/reagent_containers/food/snacks/friedrat,
+/obj/item/reagent_containers/food/snacks/fryfish/eel,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/bog)
 "l" = (

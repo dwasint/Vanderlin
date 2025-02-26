@@ -28,7 +28,7 @@
 /turf/open/floor/tile,
 /area/rogue)
 "cV" = (
-/obj/item/roguecoin/copper/pile,
+/obj/item/coin/copper/pile,
 /turf/open/water/bath,
 /area/rogue)
 "dh" = (
@@ -55,12 +55,12 @@
 /obj/item/bath/soap{
 	pixel_y = -5
 	},
-/obj/item/roguecoin/copper/pile,
+/obj/item/coin/copper/pile,
 /turf/open/water/bath,
 /area/rogue)
 "kJ" = (
 /mob/living/simple_animal/hostile/rogue/skeleton/spear,
-/obj/item/roguecoin/copper/pile,
+/obj/item/coin/copper/pile,
 /turf/open/water/bath,
 /area/rogue)
 "mh" = (
@@ -130,7 +130,7 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "sm" = (
-/obj/item/roguecoin/copper/pile,
+/obj/item/coin/copper/pile,
 /turf/open/floor/tile,
 /area/rogue)
 "tE" = (

@@ -27,8 +27,8 @@
 	force = DAMAGE_DAGGER
 	dropshrink = 0.8
 	possible_item_intents = list(/datum/intent/dagger/thrust, /datum/intent/food)
-	fried_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/swordfish
-	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/fryfish/swordfish
+	fried_type = /obj/item/reagent_containers/food/snacks/fryfish/swordfish
+	cooked_type = /obj/item/reagent_containers/food/snacks/fryfish/swordfish
 	cooked_smell = /datum/pollutant/food/baked_swordfish
 
 //esssentially a magic throwing knife

@@ -196,65 +196,65 @@
 	name = "potato stew"
 	cooking_time = 80 SECONDS
 	produced_reagent = /datum/reagent/consumable/soup/veggie/potato
-	required_items = list(/obj/item/reagent_containers/food/snacks/rogue/veg/potato_sliced = 1)
+	required_items = list(/obj/item/reagent_containers/food/snacks/veg/potato_sliced = 1)
 	finished_smell = /datum/pollutant/food/potato_stew
 
 /datum/pot_recipe/cooking/onion_stew
 	name = "onion stew"
 	cooking_time = 60 SECONDS
 	produced_reagent = /datum/reagent/consumable/soup/veggie/onion
-	required_items = list(/obj/item/reagent_containers/food/snacks/rogue/veg/onion_sliced = 1)
+	required_items = list(/obj/item/reagent_containers/food/snacks/veg/onion_sliced = 1)
 	finished_smell = /datum/pollutant/food/onion_stew
 
 /datum/pot_recipe/cooking/cabbage_stew
 	name = "cabbage stew"
 	cooking_time = 70 SECONDS
 	produced_reagent = /datum/reagent/consumable/soup/veggie/cabbage
-	required_items = list(/obj/item/reagent_containers/food/snacks/rogue/veg/cabbage_sliced = 1)
+	required_items = list(/obj/item/reagent_containers/food/snacks/veg/cabbage_sliced = 1)
 	finished_smell = /datum/pollutant/food/cabbage_stew
 
 /datum/pot_recipe/cooking/turnip_stew
 	name = "turnip stew"
 	cooking_time = 70 SECONDS
 	produced_reagent = /datum/reagent/consumable/soup/veggie/turnip
-	required_items = list(/obj/item/reagent_containers/food/snacks/rogue/veg/turnip_sliced = 1)
+	required_items = list(/obj/item/reagent_containers/food/snacks/veg/turnip_sliced = 1)
 	finished_smell = /datum/pollutant/food/turnip_stew
 
 /datum/pot_recipe/cooking/fish_stew
 	name = "fish stew"
 	cooking_time = 80 SECONDS
 	produced_reagent = /datum/reagent/consumable/soup/stew/fish
-	required_items = list(/obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish = 1)
+	required_items = list(/obj/item/reagent_containers/food/snacks/meat/mince/fish = 1)
 	finished_smell = /datum/pollutant/food/fish_stew
 
 /datum/pot_recipe/cooking/chicken_stew
 	name = "chicken stew"
 	cooking_time = 90 SECONDS
 	produced_reagent = /datum/reagent/consumable/soup/stew/chicken
-	required_items = list(/obj/item/reagent_containers/food/snacks/rogue/meat/mince/poultry = 1)
+	required_items = list(/obj/item/reagent_containers/food/snacks/meat/mince/poultry = 1)
 	finished_smell = /datum/pollutant/food/chicken_stew
 
 /datum/pot_recipe/cooking/chicken_stew/cutlet
-	required_items = list(/obj/item/reagent_containers/food/snacks/rogue/meat/poultry/cutlet = 1)
+	required_items = list(/obj/item/reagent_containers/food/snacks/meat/poultry/cutlet = 1)
 
 /datum/pot_recipe/cooking/questionable_stew
 	name = "questionable stew"
 	cooking_time = 90 SECONDS
 	produced_reagent = /datum/reagent/consumable/soup/stew/gross
-	required_items = list(/obj/item/reagent_containers/food/snacks/rogue/meat/strange = 1)
+	required_items = list(/obj/item/reagent_containers/food/snacks/meat/strange = 1)
 	finished_smell = /datum/pollutant/food/potato_stew
 
 /datum/pot_recipe/cooking/generic_meat_stew
 	name = "meat stew"
 	cooking_time = 90 SECONDS
 	produced_reagent = /datum/reagent/consumable/soup/stew/meat
-//	required_items = list(/obj/item/reagent_containers/food/snacks/rogue/meat/mince/beef = 1)
-	required_items = list(/obj/item/reagent_containers/food/snacks/rogue/meat = 1)
+//	required_items = list(/obj/item/reagent_containers/food/snacks/meat/mince/beef = 1)
+	required_items = list(/obj/item/reagent_containers/food/snacks/meat = 1)
 	finished_smell = /datum/pollutant/food/meat_stew
 	fallback = TRUE
 /*
 /datum/pot_recipe/cooking/generic_meat_stew/steak
-	required_items = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1)
+	required_items = list(/obj/item/reagent_containers/food/snacks/meat/steak = 1)
 */
 /datum/pot_recipe/cooking/egg_soup
 	name = "egg soup"
@@ -274,7 +274,7 @@
 	name = "cheese soup"
 	cooking_time = 80 SECONDS
 	produced_reagent = /datum/reagent/consumable/soup/cheese
-	required_items = list(/obj/item/reagent_containers/food/snacks/rogue/cheese = 1)
+	required_items = list(/obj/item/reagent_containers/food/snacks/cheese = 1)
 	finished_smell = /datum/pollutant/food/cheese_soup
 
 /datum/pot_recipe/cooking/cheese_soup/wedge
@@ -338,7 +338,7 @@
 	required_items = list(/obj/item/natural/poo = 1)
 
 /datum/pot_recipe/yuck_soup/toxicshrooms
-	required_items = list(/obj/item/reagent_containers/food/snacks/rogue/toxicshrooms = 1)
+	required_items = list(/obj/item/reagent_containers/food/snacks/toxicshrooms = 1)
 
 /datum/pot_recipe/yuck_soup/worms
 	required_items = list(/obj/item/natural/worms = 1)

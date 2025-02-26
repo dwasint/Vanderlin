@@ -330,7 +330,7 @@
 
 /turf/closed/mineral/rogue/gemeralds
 	icon_state = "gembad"
-	mineralType = /obj/item/roguegem
+	mineralType = /obj/item/gem
 	rockType = /obj/item/natural/rock/gemerald
 	spreadChance = 3
 	spread = 2

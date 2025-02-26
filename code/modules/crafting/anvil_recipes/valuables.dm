@@ -23,7 +23,7 @@
 	name = "Golden Dorpel Ring"
 	recipe_name = "a Golden Dorpel Ring"
 	req_bar = /obj/item/ingot/gold
-	additional_items = list(/obj/item/roguegem/diamond)
+	additional_items = list(/obj/item/gem/diamond)
 	created_item = /obj/item/clothing/ring/gold/dorpel
 	craftdiff = 2
 
@@ -31,7 +31,7 @@
 	name = "Golden Blortz Ring"
 	recipe_name = "a Golden Blortz Ring"
 	req_bar = /obj/item/ingot/gold
-	additional_items = list(/obj/item/roguegem/blue)
+	additional_items = list(/obj/item/gem/blue)
 	created_item = /obj/item/clothing/ring/gold/blortz
 	craftdiff = 2
 
@@ -39,7 +39,7 @@
 	name = "Golden Saffira Ring"
 	recipe_name = "a Golden Saffira Ring"
 	req_bar = /obj/item/ingot/gold
-	additional_items = list(/obj/item/roguegem/violet)
+	additional_items = list(/obj/item/gem/violet)
 	created_item = /obj/item/clothing/ring/gold/saffira
 	craftdiff = 2
 
@@ -47,7 +47,7 @@
 	name = "Golden Gemerald Ring"
 	recipe_name = "a Golden Gemerald Ring"
 	req_bar = /obj/item/ingot/gold
-	additional_items = list(/obj/item/roguegem/green)
+	additional_items = list(/obj/item/gem/green)
 	created_item = /obj/item/clothing/ring/gold/gemerald
 	craftdiff = 2
 
@@ -55,7 +55,7 @@
 	name = "Golden Toper Ring"
 	recipe_name = "a Golden Toper Ring"
 	req_bar = /obj/item/ingot/gold
-	additional_items = list(/obj/item/roguegem/yellow)
+	additional_items = list(/obj/item/gem/yellow)
 	created_item = /obj/item/clothing/ring/gold/toper
 	craftdiff = 2
 
@@ -63,7 +63,7 @@
 	name = "Golden Rontz Ring"
 	recipe_name = "a Golden Rontz Ring"
 	req_bar = /obj/item/ingot/gold
-	additional_items = list(/obj/item/roguegem)
+	additional_items = list(/obj/item/gem)
 	created_item = /obj/item/clothing/ring/gold/rontz
 	craftdiff = 2
 
@@ -93,7 +93,7 @@
 	name = "Silver Dorpel Ring"
 	recipe_name = "a Silver Dorpel Ring"
 	req_bar = /obj/item/ingot/silver
-	additional_items = list(/obj/item/roguegem/diamond)
+	additional_items = list(/obj/item/gem/diamond)
 	created_item = /obj/item/clothing/ring/silver/dorpel
 	craftdiff = 1
 
@@ -101,7 +101,7 @@
 	name = "Silver Blortz Ring"
 	recipe_name = "a Silver Blortz Ring"
 	req_bar = /obj/item/ingot/silver
-	additional_items = list(/obj/item/roguegem/blue)
+	additional_items = list(/obj/item/gem/blue)
 	created_item = /obj/item/clothing/ring/silver/blortz
 	craftdiff = 1
 
@@ -109,7 +109,7 @@
 	name = "Silver Saffira Ring"
 	recipe_name = "a Silver Saffira Ring"
 	req_bar = /obj/item/ingot/silver
-	additional_items = list(/obj/item/roguegem/violet)
+	additional_items = list(/obj/item/gem/violet)
 	created_item = /obj/item/clothing/ring/silver/saffira
 	craftdiff = 1
 
@@ -117,7 +117,7 @@
 	name = "Silver Gemerald Ring"
 	recipe_name = "a Silver Gemerald Ring"
 	req_bar = /obj/item/ingot/silver
-	additional_items = list(/obj/item/roguegem/green)
+	additional_items = list(/obj/item/gem/green)
 	created_item = /obj/item/clothing/ring/silver/gemerald
 	craftdiff = 1
 
@@ -125,7 +125,7 @@
 	name = "Silver Toper Ring"
 	recipe_name = "a Silver Toper Ring"
 	req_bar = /obj/item/ingot/silver
-	additional_items = list(/obj/item/roguegem/yellow)
+	additional_items = list(/obj/item/gem/yellow)
 	created_item = /obj/item/clothing/ring/silver/toper
 	craftdiff = 1
 
@@ -133,7 +133,7 @@
 	name = "Silver Rontz Ring"
 	recipe_name = "a Silver Rontz Ring"
 	req_bar = /obj/item/ingot/silver
-	additional_items = list(/obj/item/roguegem)
+	additional_items = list(/obj/item/gem)
 	created_item = /obj/item/clothing/ring/silver/rontz
 	craftdiff = 1
 

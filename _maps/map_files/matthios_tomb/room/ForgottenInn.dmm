@@ -258,7 +258,7 @@
 /area/rogue)
 "Hm" = (
 /obj/machinery/light/rogue/chand,
-/obj/item/roguecoin/copper/pile,
+/obj/item/coin/copper/pile,
 /turf/open/transparent/openspace,
 /area/rogue)
 "Hp" = (
@@ -299,11 +299,11 @@
 /area/rogue)
 "JS" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/reagent_containers/food/snacks/rogue/meat/salami{
+/obj/item/reagent_containers/food/snacks/meat/salami{
 	pixel_y = -2;
 	pixel_x = -1
 	},
-/obj/item/reagent_containers/food/snacks/rogue/meat/salami{
+/obj/item/reagent_containers/food/snacks/meat/salami{
 	pixel_x = -2;
 	pixel_y = 10
 	},

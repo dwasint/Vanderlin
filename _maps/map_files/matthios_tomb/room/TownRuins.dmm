@@ -244,12 +244,12 @@
 /area/rogue)
 "ge" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/effect/spawner/roguemap/loot/potion_ingredient/herb,
-/obj/effect/spawner/roguemap/loot/potion_ingredient/herb,
-/obj/effect/spawner/roguemap/loot/potion_ingredient/herb,
-/obj/effect/spawner/roguemap/loot/potion_ingredient/herb,
-/obj/effect/spawner/roguemap/loot/potion_ingredient/herb,
-/obj/effect/spawner/roguemap/loot/potion_ingredient/herb,
+/obj/effect/spawner/map_spawner/loot/potion_ingredient/herb,
+/obj/effect/spawner/map_spawner/loot/potion_ingredient/herb,
+/obj/effect/spawner/map_spawner/loot/potion_ingredient/herb,
+/obj/effect/spawner/map_spawner/loot/potion_ingredient/herb,
+/obj/effect/spawner/map_spawner/loot/potion_ingredient/herb,
+/obj/effect/spawner/map_spawner/loot/potion_ingredient/herb,
 /turf/open/floor/blocks/stonered/tiny,
 /area/rogue)
 "gp" = (
@@ -286,7 +286,7 @@
 /turf/open/floor/ruinedwood,
 /area/rogue)
 "gN" = (
-/obj/effect/spawner/roguemap/loot/rare,
+/obj/effect/spawner/map_spawner/loot/rare,
 /turf/open/floor/naturalstone,
 /area/rogue)
 "gY" = (
@@ -295,7 +295,7 @@
 /area/rogue)
 "ha" = (
 /obj/structure/closet/crate/crafted_closet,
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/hexstone,
 /area/rogue)
 "hk" = (
@@ -345,9 +345,9 @@
 /area/rogue)
 "iK" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/effect/spawner/roguemap/loot/potion_poisons,
-/obj/effect/spawner/roguemap/loot/potion_poisons,
-/obj/effect/spawner/roguemap/loot/potion_stats,
+/obj/effect/spawner/map_spawner/loot/potion_poisons,
+/obj/effect/spawner/map_spawner/loot/potion_poisons,
+/obj/effect/spawner/map_spawner/loot/potion_stats,
 /turf/open/floor/blocks/stonered/tiny,
 /area/rogue)
 "iL" = (
@@ -421,7 +421,7 @@
 "jR" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/effect/spawner/roguemap/loot/rare,
+/obj/effect/spawner/map_spawner/loot/rare,
 /turf/open/floor/churchbrick,
 /area/rogue)
 "jU" = (
@@ -527,15 +527,15 @@
 "mU" = (
 /obj/structure/bed/rogue/inn/double,
 /obj/item/bedsheet/rogue/fabric_double,
-/obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish/cooked,
-/obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish/cooked{
+/obj/item/reagent_containers/food/snacks/meat/mince/fish/cooked,
+/obj/item/reagent_containers/food/snacks/meat/mince/fish/cooked{
 	pixel_y = 4;
 	pixel_x = -5
 	},
-/obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish/cooked{
+/obj/item/reagent_containers/food/snacks/meat/mince/fish/cooked{
 	pixel_y = 9
 	},
-/obj/item/reagent_containers/food/snacks/rogue/meat/mince/fish/cooked{
+/obj/item/reagent_containers/food/snacks/meat/mince/fish/cooked{
 	pixel_y = 5;
 	pixel_x = 7
 	},
@@ -605,7 +605,7 @@
 /area/rogue)
 "oL" = (
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/ruinedwood/chevron,
 /area/rogue)
 "oU" = (
@@ -616,7 +616,7 @@
 /area/rogue)
 "oY" = (
 /obj/structure/closet/crate/chest/crate,
-/obj/effect/spawner/roguemap/loot/medium,
+/obj/effect/spawner/map_spawner/loot/medium,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
@@ -779,7 +779,7 @@
 /area/rogue)
 "sS" = (
 /obj/effect/decal/cleanable/dirt/cobweb,
-/obj/effect/spawner/roguemap/loot,
+/obj/effect/spawner/map_spawner/loot,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
@@ -866,7 +866,7 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "vk" = (
-/obj/effect/spawner/roguemap/loot/rare,
+/obj/effect/spawner/map_spawner/loot/rare,
 /turf/open/floor/plank,
 /area/rogue)
 "vl" = (
@@ -921,7 +921,7 @@
 /area/rogue)
 "wh" = (
 /obj/effect/landmark/chest_or_mimic,
-/obj/effect/spawner/roguemap/loot,
+/obj/effect/spawner/map_spawner/loot,
 /turf/open/floor/wood/nosmooth,
 /area/rogue)
 "wl" = (
@@ -1091,7 +1091,7 @@
 	dir = 8;
 	pixel_y = -1
 	},
-/obj/effect/spawner/roguemap/loot/armor,
+/obj/effect/spawner/map_spawner/loot/armor,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "zU" = (
@@ -1103,7 +1103,7 @@
 "Aa" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/table/wood/plain/alt,
-/obj/effect/spawner/roguemap/loot/coin,
+/obj/effect/spawner/map_spawner/loot/coin,
 /obj/item/toy/cards/cardhand{
 	pixel_x = 8;
 	pixel_y = -2
@@ -1143,7 +1143,7 @@
 	},
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/ruinedwood/spiralfade,
 /area/rogue)
 "AE" = (
@@ -1152,7 +1152,7 @@
 	pixel_x = 5
 	},
 /obj/structure/fluff/walldeco/maidendrape,
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/ruinedwood/spiralfade,
 /area/rogue)
 "AR" = (
@@ -1215,7 +1215,7 @@
 /area/rogue)
 "Cd" = (
 /obj/structure/closet/crate/drawer,
-/obj/effect/spawner/roguemap/loot/rare,
+/obj/effect/spawner/map_spawner/loot/rare,
 /obj/item/book/rogue/fishing{
 	pixel_y = -3;
 	pixel_x = 8
@@ -1255,12 +1255,12 @@
 /area/rogue)
 "Df" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/effect/spawner/roguemap/loot/potion_ingredient,
-/obj/effect/spawner/roguemap/loot/potion_ingredient,
-/obj/effect/spawner/roguemap/loot/potion_ingredient,
-/obj/effect/spawner/roguemap/loot/potion_ingredient,
-/obj/effect/spawner/roguemap/loot/potion_ingredient,
-/obj/effect/spawner/roguemap/loot/potion_ingredient,
+/obj/effect/spawner/map_spawner/loot/potion_ingredient,
+/obj/effect/spawner/map_spawner/loot/potion_ingredient,
+/obj/effect/spawner/map_spawner/loot/potion_ingredient,
+/obj/effect/spawner/map_spawner/loot/potion_ingredient,
+/obj/effect/spawner/map_spawner/loot/potion_ingredient,
+/obj/effect/spawner/map_spawner/loot/potion_ingredient,
 /turf/open/floor/blocks/stonered/tiny,
 /area/rogue)
 "Dg" = (
@@ -1528,9 +1528,9 @@
 /area/rogue)
 "Jf" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/effect/spawner/roguemap/loot/potion_poisons,
-/obj/effect/spawner/roguemap/loot/potion_poisons,
-/obj/effect/spawner/roguemap/loot/potion_vitals,
+/obj/effect/spawner/map_spawner/loot/potion_poisons,
+/obj/effect/spawner/map_spawner/loot/potion_poisons,
+/obj/effect/spawner/map_spawner/loot/potion_vitals,
 /turf/open/floor/blocks/stonered/tiny,
 /area/rogue)
 "Jl" = (
@@ -1603,7 +1603,7 @@
 	dir = 5
 	},
 /obj/effect/decal/cleanable/food/flour,
-/obj/effect/spawner/roguemap/loot/food,
+/obj/effect/spawner/map_spawner/loot/food,
 /turf/open/floor/ruinedwood/spiralfade,
 /area/rogue)
 "KM" = (
@@ -1617,7 +1617,7 @@
 /area/rogue)
 "Le" = (
 /obj/effect/landmark/chest_or_mimic,
-/obj/effect/spawner/roguemap/loot/medium,
+/obj/effect/spawner/map_spawner/loot/medium,
 /turf/open/floor/hexstone,
 /area/rogue)
 "Ln" = (
@@ -1638,13 +1638,13 @@
 "Ly" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/crate/crafted_closet,
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/hexstone,
 /area/rogue)
 "LM" = (
 /obj/structure/table/optable,
 /obj/item/weapon/shovel,
-/obj/effect/spawner/roguemap/loot/medium,
+/obj/effect/spawner/map_spawner/loot/medium,
 /turf/open/floor/churchbrick,
 /area/rogue)
 "LO" = (
@@ -1699,13 +1699,13 @@
 /turf/open/floor/blocks/stonered/tiny,
 /area/rogue)
 "Nf" = (
-/obj/effect/spawner/roguemap/loot,
+/obj/effect/spawner/map_spawner/loot,
 /obj/machinery/light/rogue/torchholder/r,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "Nz" = (
 /obj/structure/closet/crate/chest/crate,
-/obj/effect/spawner/roguemap/loot/weapon,
+/obj/effect/spawner/map_spawner/loot/weapon,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
@@ -1736,7 +1736,7 @@
 /obj/structure/closet/crate/chest,
 /obj/item/bath/soap,
 /obj/item/soap,
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/tile,
 /area/rogue)
 "Ol" = (
@@ -1807,7 +1807,7 @@
 /area/rogue)
 "PB" = (
 /obj/structure/closet/crate/chest/neu,
-/obj/effect/spawner/roguemap/loot,
+/obj/effect/spawner/map_spawner/loot,
 /obj/item/reagent_containers/food/snacks/fish{
 	pixel_x = 5;
 	pixel_y = -8
@@ -1876,13 +1876,13 @@
 /area/rogue)
 "Qw" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/effect/spawner/roguemap/loot/potion_ingredient,
-/obj/effect/spawner/roguemap/loot/potion_ingredient,
-/obj/effect/spawner/roguemap/loot/potion_ingredient,
-/obj/effect/spawner/roguemap/loot/potion_ingredient,
-/obj/effect/spawner/roguemap/loot/potion_ingredient,
-/obj/effect/spawner/roguemap/loot/potion_ingredient,
-/obj/effect/spawner/roguemap/loot/potion_ingredient,
+/obj/effect/spawner/map_spawner/loot/potion_ingredient,
+/obj/effect/spawner/map_spawner/loot/potion_ingredient,
+/obj/effect/spawner/map_spawner/loot/potion_ingredient,
+/obj/effect/spawner/map_spawner/loot/potion_ingredient,
+/obj/effect/spawner/map_spawner/loot/potion_ingredient,
+/obj/effect/spawner/map_spawner/loot/potion_ingredient,
+/obj/effect/spawner/map_spawner/loot/potion_ingredient,
 /turf/open/floor/blocks/stonered/tiny,
 /area/rogue)
 "QE" = (
@@ -1907,19 +1907,19 @@
 "Rk" = (
 /obj/structure/rack/rogue/shelf/biggest,
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/effect/spawner/roguemap/loot/potion_ingredient/herb,
-/obj/effect/spawner/roguemap/loot/potion_ingredient/herb,
-/obj/effect/spawner/roguemap/loot/potion_ingredient/herb,
-/obj/effect/spawner/roguemap/loot/potion_ingredient/herb,
-/obj/effect/spawner/roguemap/loot/potion_ingredient/herb,
-/obj/effect/spawner/roguemap/loot/potion_ingredient/herb,
-/obj/effect/spawner/roguemap/loot/potion_ingredient/herb,
-/obj/effect/spawner/roguemap/loot/potion_ingredient/herb,
+/obj/effect/spawner/map_spawner/loot/potion_ingredient/herb,
+/obj/effect/spawner/map_spawner/loot/potion_ingredient/herb,
+/obj/effect/spawner/map_spawner/loot/potion_ingredient/herb,
+/obj/effect/spawner/map_spawner/loot/potion_ingredient/herb,
+/obj/effect/spawner/map_spawner/loot/potion_ingredient/herb,
+/obj/effect/spawner/map_spawner/loot/potion_ingredient/herb,
+/obj/effect/spawner/map_spawner/loot/potion_ingredient/herb,
+/obj/effect/spawner/map_spawner/loot/potion_ingredient/herb,
 /turf/open/floor/blocks/stonered/tiny,
 /area/rogue)
 "Rs" = (
 /obj/structure/closet/crate/chest/neu,
-/obj/effect/spawner/roguemap/loot,
+/obj/effect/spawner/map_spawner/loot,
 /obj/item/reagent_containers/food/snacks/fish{
 	pixel_x = -11;
 	pixel_y = -7
@@ -2233,7 +2233,7 @@
 	pixel_y = 8;
 	pixel_x = -12
 	},
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/naturalstone,
 /area/rogue)
 "WP" = (

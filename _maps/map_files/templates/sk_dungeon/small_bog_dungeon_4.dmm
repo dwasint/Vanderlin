@@ -4,7 +4,7 @@
 /obj/effect/decal/cleanable/dirt/cobweb{
 	dir = 4
 	},
-/obj/item/roguecoin/gold,
+/obj/item/coin/gold,
 /turf/open/floor/herringbone,
 /area/rogue/outdoors/caves)
 "b" = (

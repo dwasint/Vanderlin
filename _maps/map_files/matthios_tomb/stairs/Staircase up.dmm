@@ -9,7 +9,7 @@
 /obj/structure/rack/rogue/shelf/biggest{
 	pixel_y = 17
 	},
-/obj/item/reagent_containers/food/snacks/rogue/meat/salami{
+/obj/item/reagent_containers/food/snacks/meat/salami{
 	pixel_y = 31;
 	pixel_x = -2
 	},

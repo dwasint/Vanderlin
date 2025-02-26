@@ -305,8 +305,8 @@
 /area/rogue/under/cave)
 "Nx" = (
 /obj/effect/landmark/chest_or_mimic,
-/obj/effect/spawner/roguemap/loot/medium,
-/obj/effect/spawner/roguemap/loot/weapon,
+/obj/effect/spawner/map_spawner/loot/medium,
+/obj/effect/spawner/map_spawner/loot/weapon,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "NE" = (
@@ -334,7 +334,7 @@
 /area/rogue/under/cave)
 "Ry" = (
 /obj/structure/bed/rogue/hay,
-/obj/effect/spawner/roguemap/loot/food,
+/obj/effect/spawner/map_spawner/loot/food,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "RP" = (

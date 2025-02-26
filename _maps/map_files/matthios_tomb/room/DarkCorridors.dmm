@@ -28,7 +28,7 @@
 /area/rogue)
 "co" = (
 /obj/structure/closet/crate/chest/old_crate,
-/obj/effect/spawner/roguemap/loot/magic,
+/obj/effect/spawner/map_spawner/loot/magic,
 /turf/open/floor/cobble,
 /area/rogue)
 "cz" = (
@@ -41,7 +41,7 @@
 /turf/open/floor/cobble,
 /area/rogue)
 "dw" = (
-/obj/effect/spawner/roguemap/loot/rare,
+/obj/effect/spawner/map_spawner/loot/rare,
 /turf/open/floor/cobble,
 /area/rogue)
 "dH" = (
@@ -50,7 +50,7 @@
 /turf/open/floor/cobble,
 /area/rogue)
 "eD" = (
-/obj/effect/spawner/roguemap/treeorstump,
+/obj/effect/spawner/map_spawner/treeorstump,
 /obj/structure/flora/roguegrass,
 /turf/open/floor/grass,
 /area/rogue)
@@ -81,7 +81,7 @@
 /area/rogue)
 "hN" = (
 /obj/structure/closet/crate/chest/lootbox,
-/obj/effect/spawner/roguemap/loot/medium,
+/obj/effect/spawner/map_spawner/loot/medium,
 /turf/open/floor/cobble,
 /area/rogue)
 "hU" = (
@@ -112,7 +112,7 @@
 /area/rogue)
 "iZ" = (
 /obj/structure/trap/poison,
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/cobble,
 /area/rogue)
 "jd" = (
@@ -129,7 +129,7 @@
 /area/rogue)
 "kd" = (
 /obj/structure/closet/crate/chest/neu_fancy,
-/obj/effect/spawner/roguemap/loot/medium,
+/obj/effect/spawner/map_spawner/loot/medium,
 /turf/open/floor/cobble,
 /area/rogue)
 "kk" = (
@@ -186,7 +186,7 @@
 /area/rogue)
 "nt" = (
 /mob/living/simple_animal/hostile/retaliate/spider,
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/cobble,
 /area/rogue)
 "nH" = (
@@ -211,7 +211,7 @@
 /turf/open/floor/cobble,
 /area/rogue)
 "pJ" = (
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/cobble,
 /area/rogue)
 "pP" = (
@@ -230,7 +230,7 @@
 "rM" = (
 /obj/structure/spider/stickyweb,
 /obj/structure/closet/crate/chest/neu_fancy,
-/obj/effect/spawner/roguemap/loot/weapon,
+/obj/effect/spawner/map_spawner/loot/weapon,
 /turf/open/floor/cobble,
 /area/rogue)
 "si" = (
@@ -290,7 +290,7 @@
 /area/rogue)
 "yK" = (
 /obj/effect/decal/remains/human,
-/obj/effect/spawner/roguemap/loot/rare,
+/obj/effect/spawner/map_spawner/loot/rare,
 /turf/open/floor/cobble,
 /area/rogue)
 "zm" = (
@@ -301,7 +301,7 @@
 /turf/open/floor/blocks,
 /area/rogue)
 "AT" = (
-/obj/effect/spawner/roguemap/loot/potion_stats,
+/obj/effect/spawner/map_spawner/loot/potion_stats,
 /turf/open/floor/cobble,
 /area/rogue)
 "Bt" = (
@@ -347,7 +347,7 @@
 /area/rogue)
 "Fg" = (
 /obj/structure/closet/crate/chest/lootbox,
-/obj/effect/spawner/roguemap/loot/rare,
+/obj/effect/spawner/map_spawner/loot/rare,
 /turf/open/floor/cobble,
 /area/rogue)
 "FC" = (
@@ -393,7 +393,7 @@
 /turf/open/floor/cobble/alt,
 /area/rogue)
 "Jd" = (
-/obj/effect/spawner/roguemap/treeorstump,
+/obj/effect/spawner/map_spawner/treeorstump,
 /obj/item/restraints/legcuffs/beartrap/armed/camouflage,
 /turf/open/floor/grass,
 /area/rogue)
@@ -404,7 +404,7 @@
 /turf/open/floor/cobble,
 /area/rogue)
 "Jo" = (
-/obj/effect/spawner/roguemap/loot/potion_stats,
+/obj/effect/spawner/map_spawner/loot/potion_stats,
 /turf/open/floor/cobble/alt,
 /area/rogue)
 "JZ" = (
@@ -425,7 +425,7 @@
 /turf/open/floor/grass,
 /area/rogue)
 "La" = (
-/obj/effect/spawner/roguemap/treeorstump,
+/obj/effect/spawner/map_spawner/treeorstump,
 /turf/open/floor/grass,
 /area/rogue)
 "Ln" = (
@@ -433,7 +433,7 @@
 /turf/open/floor/cobble/alt,
 /area/rogue)
 "LB" = (
-/obj/effect/spawner/roguemap/treeorstump,
+/obj/effect/spawner/map_spawner/treeorstump,
 /turf/open/floor/dirt,
 /area/rogue)
 "LM" = (
@@ -531,7 +531,7 @@
 "Xp" = (
 /obj/structure/fluff/walldeco/chains,
 /obj/structure/closet/crate/chest/neu_fancy,
-/obj/effect/spawner/roguemap/loot/armor,
+/obj/effect/spawner/map_spawner/loot/armor,
 /turf/open/floor/cobble,
 /area/rogue)
 "Ya" = (

@@ -130,7 +130,7 @@
 
 /obj/structure/fake_machine/stockpile/attackby(obj/item/P, mob/user, params)
 	if(ishuman(user))
-		if(istype(P, /obj/item/roguecoin))
+		if(istype(P, /obj/item/coin))
 			withdraw_tab.insert_coins(P)
 			return attack_hand(user)
 		else
@@ -223,7 +223,7 @@
 				budget = 0
 		return TRUE
 
-/datum/withdraw_tab/proc/insert_coins(obj/item/roguecoin/C)
+/datum/withdraw_tab/proc/insert_coins(obj/item/coin/C)
 	budget += C.get_real_price()
 	qdel(C)
 	parent_structure.update_icon()

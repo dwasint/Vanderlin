@@ -201,7 +201,7 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "dY" = (
 /obj/structure/rack/rogue,
-/obj/item/roguecoin/silver/pile,
+/obj/item/coin/silver/pile,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "eb" = (
@@ -363,8 +363,8 @@
 	dir = 1;
 	icon_state = "largetable"
 	},
-/obj/item/roguecoin/copper/pile,
-/obj/item/roguecoin/silver/pile,
+/obj/item/coin/copper/pile,
+/obj/item/coin/silver/pile,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "gh" = (
@@ -1117,7 +1117,7 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "pf" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/roguecoin/gold,
+/obj/item/coin/gold,
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "pg" = (
@@ -1412,7 +1412,7 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "sE" = (
 /obj/structure/rack/rogue,
-/obj/item/roguecoin/silver/pile,
+/obj/item/coin/silver/pile,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
@@ -1582,7 +1582,7 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "uP" = (
 /obj/structure/rack/rogue,
-/obj/item/roguecoin/copper/pile,
+/obj/item/coin/copper/pile,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "uQ" = (
@@ -1861,11 +1861,11 @@
 "zk" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/closet/crate/chest/gold,
-/obj/item/roguegem/green,
-/obj/item/roguegem/blue,
-/obj/item/roguegem/blue,
+/obj/item/gem/green,
+/obj/item/gem/blue,
+/obj/item/gem/blue,
 /obj/item/statue/gold,
-/obj/item/roguegem/diamond,
+/obj/item/gem/diamond,
 /obj/item/ingot/gold,
 /obj/item/ingot/gold,
 /obj/item/ingot/gold,
@@ -1963,14 +1963,14 @@
 /obj/structure/closet/crate/chest/crafted,
 /obj/item/reagent_containers/powder/salt,
 /obj/item/reagent_containers/powder/salt,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/meat/poultry,
-/obj/item/reagent_containers/food/snacks/rogue/meat/poultry,
-/obj/item/reagent_containers/food/snacks/rogue/meat/poultry,
-/obj/item/reagent_containers/food/snacks/rogue/meat/poultry,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/poultry,
+/obj/item/reagent_containers/food/snacks/meat/poultry,
+/obj/item/reagent_containers/food/snacks/meat/poultry,
+/obj/item/reagent_containers/food/snacks/meat/poultry,
 /obj/item/reagent_containers/food/snacks/cooked/ham,
 /obj/item/reagent_containers/food/snacks/cooked/ham,
 /obj/item/reagent_containers/food/snacks/cooked/ham,
@@ -2196,9 +2196,9 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "Ed" = (
 /obj/structure/rack/rogue/shelf/big,
-/obj/item/reagent_containers/food/snacks/rogue/cheddar,
-/obj/item/reagent_containers/food/snacks/rogue/cheddar,
-/obj/item/reagent_containers/food/snacks/rogue/cheddar,
+/obj/item/reagent_containers/food/snacks/cheddar,
+/obj/item/reagent_containers/food/snacks/cheddar,
+/obj/item/reagent_containers/food/snacks/cheddar,
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Eg" = (
@@ -2297,7 +2297,7 @@
 	dir = 1;
 	icon_state = "longtable_mid"
 	},
-/obj/item/reagent_containers/food/snacks/rogue/dough_base,
+/obj/item/reagent_containers/food/snacks/dough_base,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "Fo" = (
@@ -2313,7 +2313,7 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "Fu" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/reagent_containers/food/snacks/rogue/friedrat,
+/obj/item/reagent_containers/food/snacks/friedrat,
 /turf/open/floor/twig,
 /area/rogue/under/mountains/anvil/dungeon)
 "FD" = (
@@ -2387,7 +2387,7 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Go" = (
 /obj/structure/rack/rogue,
-/obj/item/roguecoin/gold/pile,
+/obj/item/coin/gold/pile,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Gt" = (
@@ -3243,7 +3243,7 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "QY" = (
 /obj/structure/table/wood/large/corner,
-/obj/item/roguecoin/copper/pile,
+/obj/item/coin/copper/pile,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
@@ -3415,7 +3415,7 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "TM" = (
 /obj/item/natural/hide,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
 /obj/effect/decal/cleanable/blood,
 /obj/machinery/tanningrack,
 /turf/open/floor/cobblerock,
@@ -3756,7 +3756,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "XP" = (
-/obj/item/reagent_containers/food/snacks/rogue/friedcrow,
+/obj/item/reagent_containers/food/snacks/friedcrow,
 /turf/open/floor/twig,
 /area/rogue/under/mountains/anvil/dungeon)
 "XV" = (

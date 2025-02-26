@@ -58,7 +58,7 @@
 "bv" = (
 /obj/structure/flora/roguegrass,
 /obj/structure/flora/ausbushes/fullgrass,
-/obj/effect/spawner/roguemap/loot,
+/obj/effect/spawner/map_spawner/loot,
 /turf/open/floor/grass,
 /area/rogue/indoors)
 "bB" = (
@@ -132,7 +132,7 @@
 /area/rogue/indoors)
 "cK" = (
 /obj/structure/closet/crate/drawer/random,
-/obj/effect/spawner/roguemap/loot/medium,
+/obj/effect/spawner/map_spawner/loot/medium,
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/blocks,
 /area/rogue/indoors)
@@ -152,7 +152,7 @@
 /turf/open/floor/carpet,
 /area/rogue/indoors)
 "cU" = (
-/obj/effect/spawner/roguemap/loot,
+/obj/effect/spawner/map_spawner/loot,
 /turf/open/floor/blocks,
 /area/rogue/indoors)
 "cV" = (
@@ -197,9 +197,9 @@
 /area/rogue/indoors)
 "dW" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/effect/spawner/roguemap/loot/potion_ingredient/herb,
-/obj/effect/spawner/roguemap/loot/potion_ingredient/herb,
-/obj/effect/spawner/roguemap/loot/potion_ingredient/herb,
+/obj/effect/spawner/map_spawner/loot/potion_ingredient/herb,
+/obj/effect/spawner/map_spawner/loot/potion_ingredient/herb,
+/obj/effect/spawner/map_spawner/loot/potion_ingredient/herb,
 /turf/open/floor/metal/barograte,
 /area/rogue/indoors)
 "dX" = (
@@ -226,8 +226,8 @@
 /area/rogue/indoors)
 "ej" = (
 /obj/structure/table/wood/fancy/black,
-/obj/effect/spawner/roguemap/loot,
-/obj/effect/spawner/roguemap/loot/food,
+/obj/effect/spawner/map_spawner/loot,
+/obj/effect/spawner/map_spawner/loot/food,
 /turf/open/floor/carpet,
 /area/rogue/indoors)
 "es" = (
@@ -280,7 +280,7 @@
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/ausbushes/lavendergrass,
 /obj/structure/flora/ausbushes/sparsegrass,
-/obj/effect/spawner/roguemap/loot,
+/obj/effect/spawner/map_spawner/loot,
 /turf/open/floor/grass,
 /area/rogue/indoors)
 "fW" = (
@@ -345,7 +345,7 @@
 /area/rogue/indoors)
 "hA" = (
 /obj/structure/table/wood/fancy/black,
-/obj/effect/spawner/roguemap/loot,
+/obj/effect/spawner/map_spawner/loot,
 /turf/open/floor/carpet,
 /area/rogue/indoors)
 "hH" = (
@@ -365,7 +365,7 @@
 /area/rogue/indoors)
 "ij" = (
 /obj/structure/table/vtable/v2,
-/obj/effect/spawner/roguemap/loot/food,
+/obj/effect/spawner/map_spawner/loot/food,
 /turf/open/floor/blocks,
 /area/rogue/indoors)
 "im" = (
@@ -382,7 +382,7 @@
 /obj/structure/rack/rogue/shelf/biggest,
 /obj/item/bath/soap,
 /obj/item/bath/soap,
-/obj/effect/spawner/roguemap/loot/potion_ingredient/herb,
+/obj/effect/spawner/map_spawner/loot/potion_ingredient/herb,
 /turf/open/floor/metal/barograte,
 /area/rogue/indoors)
 "iO" = (
@@ -423,7 +423,7 @@
 "jH" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/glass/bowl,
-/obj/effect/spawner/roguemap/loot/food,
+/obj/effect/spawner/map_spawner/loot/food,
 /turf/open/floor/tile/kitchen,
 /area/rogue/indoors)
 "jK" = (
@@ -435,7 +435,7 @@
 /area/rogue/indoors)
 "jV" = (
 /obj/structure/closet/crate/chest/lootbox,
-/obj/effect/spawner/roguemap/loot/rare,
+/obj/effect/spawner/map_spawner/loot/rare,
 /turf/open/floor/blocks,
 /area/rogue/indoors)
 "jW" = (
@@ -474,7 +474,7 @@
 /area/rogue/indoors)
 "kY" = (
 /obj/structure/closet/crate/chest/old_crate,
-/obj/effect/spawner/roguemap/loot,
+/obj/effect/spawner/map_spawner/loot,
 /turf/open/floor/church,
 /area/rogue/indoors)
 "la" = (
@@ -488,7 +488,7 @@
 /area/rogue/indoors)
 "lg" = (
 /obj/structure/flora/ausbushes/grassybush,
-/obj/effect/spawner/roguemap/loot,
+/obj/effect/spawner/map_spawner/loot,
 /turf/open/floor/grass,
 /area/rogue/indoors)
 "li" = (
@@ -532,11 +532,11 @@
 "mt" = (
 /obj/machinery/light/rogue/wallfire/candle/weak,
 /obj/structure/closet/crate/chest/lootbox,
-/obj/effect/spawner/roguemap/loot/rare,
+/obj/effect/spawner/map_spawner/loot/rare,
 /turf/open/floor/blocks,
 /area/rogue/indoors)
 "my" = (
-/obj/effect/spawner/roguemap/loot/potion_ingredient/herb,
+/obj/effect/spawner/map_spawner/loot/potion_ingredient/herb,
 /turf/open/floor/metal/barograte,
 /area/rogue/indoors)
 "mE" = (
@@ -580,7 +580,7 @@
 /area/rogue/indoors)
 "nG" = (
 /obj/structure/closet/crate/chest/old_crate,
-/obj/effect/spawner/roguemap/loot,
+/obj/effect/spawner/map_spawner/loot,
 /turf/open/floor/carpet,
 /area/rogue/indoors)
 "nS" = (
@@ -663,7 +663,7 @@
 /turf/closed/wall/mineral/decostone,
 /area/rogue/indoors)
 "pY" = (
-/obj/effect/spawner/roguemap/loot,
+/obj/effect/spawner/map_spawner/loot,
 /turf/open/floor/tile/masonic/inverted,
 /area/rogue/indoors)
 "pZ" = (
@@ -744,7 +744,7 @@
 /area/rogue/indoors)
 "rv" = (
 /obj/structure/closet/crate/crafted_closet/inn/south,
-/obj/effect/spawner/roguemap/loot/food,
+/obj/effect/spawner/map_spawner/loot/food,
 /obj/item/clothing/gloves/angle/grenzel,
 /turf/open/floor/carpet,
 /area/rogue/indoors)
@@ -797,7 +797,7 @@
 /turf/open/floor/hexstone,
 /area/rogue/indoors)
 "sw" = (
-/obj/effect/spawner/roguemap/loot/weapon,
+/obj/effect/spawner/map_spawner/loot/weapon,
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/church,
 /area/rogue/indoors)
@@ -809,7 +809,7 @@
 /area/rogue/indoors)
 "sF" = (
 /obj/structure/flora/ausbushes/lavendergrass,
-/obj/effect/spawner/roguemap/loot,
+/obj/effect/spawner/map_spawner/loot,
 /obj/machinery/light/rogue/wallfire/candle/weak,
 /turf/open/floor/grass,
 /area/rogue/indoors)
@@ -931,7 +931,7 @@
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors)
 "vy" = (
-/obj/effect/spawner/roguemap/loot/medium,
+/obj/effect/spawner/map_spawner/loot/medium,
 /turf/open/floor/carpet,
 /area/rogue/indoors)
 "vH" = (
@@ -967,7 +967,7 @@
 /area/rogue/indoors)
 "wP" = (
 /obj/structure/table/vtable,
-/obj/effect/spawner/roguemap/loot/weapon,
+/obj/effect/spawner/map_spawner/loot/weapon,
 /turf/open/floor/blocks,
 /area/rogue/indoors)
 "wX" = (
@@ -1007,7 +1007,7 @@
 /area/rogue/indoors)
 "xW" = (
 /obj/structure/table/wood,
-/obj/effect/spawner/roguemap/loot/food,
+/obj/effect/spawner/map_spawner/loot/food,
 /turf/open/floor/tile/kitchen,
 /area/rogue/indoors)
 "xX" = (
@@ -1033,7 +1033,7 @@
 /obj/structure/bars/pipe{
 	dir = 5
 	},
-/obj/effect/spawner/roguemap/loot,
+/obj/effect/spawner/map_spawner/loot,
 /turf/open/transparent/openspace,
 /area/rogue/indoors)
 "yt" = (
@@ -1069,12 +1069,12 @@
 "zd" = (
 /obj/structure/table/wood/counter,
 /obj/item/reagent_containers/glass/cup/wooden,
-/obj/effect/spawner/roguemap/loot/food,
+/obj/effect/spawner/map_spawner/loot/food,
 /turf/open/floor/herringbone,
 /area/rogue/indoors)
 "zf" = (
 /obj/structure/closet/crate/crafted_closet/inn,
-/obj/effect/spawner/roguemap/loot/armor,
+/obj/effect/spawner/map_spawner/loot/armor,
 /turf/open/floor/blocks,
 /area/rogue/indoors)
 "zo" = (
@@ -1106,7 +1106,7 @@
 /area/rogue/indoors)
 "zB" = (
 /obj/structure/closet/crate/crafted_closet/inn,
-/obj/effect/spawner/roguemap/loot,
+/obj/effect/spawner/map_spawner/loot,
 /turf/open/floor/church,
 /area/rogue/indoors)
 "Ae" = (
@@ -1116,7 +1116,7 @@
 /area/rogue/indoors)
 "Ai" = (
 /obj/structure/table/vtable/v2,
-/obj/effect/spawner/roguemap/loot/rare,
+/obj/effect/spawner/map_spawner/loot/rare,
 /turf/open/floor/blocks,
 /area/rogue/indoors)
 "Ap" = (
@@ -1134,7 +1134,7 @@
 /obj/structure/bars/pipe{
 	dir = 8
 	},
-/obj/effect/spawner/roguemap/loot,
+/obj/effect/spawner/map_spawner/loot,
 /turf/open/transparent/openspace,
 /area/rogue/indoors)
 "AE" = (
@@ -1154,7 +1154,7 @@
 /area/rogue/indoors)
 "Ba" = (
 /obj/structure/closet/crate/crafted_closet/inn,
-/obj/effect/spawner/roguemap/loot/medium,
+/obj/effect/spawner/map_spawner/loot/medium,
 /turf/open/floor/blocks,
 /area/rogue/indoors)
 "Bw" = (
@@ -1186,7 +1186,7 @@
 /obj/structure/fluff/railing/border{
 	dir = 6
 	},
-/obj/effect/spawner/roguemap/loot/medium,
+/obj/effect/spawner/map_spawner/loot/medium,
 /turf/open/water/bath,
 /area/rogue/indoors)
 "Cv" = (
@@ -1257,7 +1257,7 @@
 /turf/open/transparent/openspace,
 /area/rogue/indoors)
 "Er" = (
-/obj/effect/spawner/roguemap/loot,
+/obj/effect/spawner/map_spawner/loot,
 /turf/open/floor/carpet,
 /area/rogue/indoors)
 "EA" = (
@@ -1294,7 +1294,7 @@
 /area/rogue/indoors)
 "Fg" = (
 /obj/structure/closet/crate/drawer/random,
-/obj/effect/spawner/roguemap/loot,
+/obj/effect/spawner/map_spawner/loot,
 /obj/item/clothing/gloves/leather/masterwork,
 /turf/open/floor/carpet,
 /area/rogue/indoors)
@@ -1315,7 +1315,7 @@
 	dir = 8
 	},
 /obj/item/reagent_containers/glass/cup/wooden,
-/obj/effect/spawner/roguemap/loot/food,
+/obj/effect/spawner/map_spawner/loot/food,
 /turf/open/floor/herringbone,
 /area/rogue/indoors)
 "Fp" = (
@@ -1328,7 +1328,7 @@
 /area/rogue/indoors)
 "Fw" = (
 /obj/structure/closet/crate/crafted_closet/inn,
-/obj/effect/spawner/roguemap/loot,
+/obj/effect/spawner/map_spawner/loot,
 /turf/open/floor/carpet,
 /area/rogue/indoors)
 "FF" = (
@@ -1339,7 +1339,7 @@
 /area/rogue/indoors)
 "FG" = (
 /obj/structure/table/wood,
-/obj/effect/spawner/roguemap/loot/food,
+/obj/effect/spawner/map_spawner/loot/food,
 /turf/open/floor/herringbone,
 /area/rogue/indoors)
 "FH" = (
@@ -1354,7 +1354,7 @@
 "Gc" = (
 /obj/structure/closet/crate/crafted_closet/lord,
 /obj/item/storage/fancy/candle_box,
-/obj/effect/spawner/roguemap/loot/armor,
+/obj/effect/spawner/map_spawner/loot/armor,
 /obj/item/clothing/head/helmet/heavy/necked/noc,
 /turf/open/floor/carpet,
 /area/rogue/indoors)
@@ -1386,7 +1386,7 @@
 /area/rogue/indoors)
 "GL" = (
 /obj/structure/table/vtable,
-/obj/effect/spawner/roguemap/loot/potion_stats,
+/obj/effect/spawner/map_spawner/loot/potion_stats,
 /turf/open/floor/blocks,
 /area/rogue/indoors)
 "Hb" = (
@@ -1455,7 +1455,7 @@
 /area/rogue/indoors)
 "Jb" = (
 /obj/structure/closet/crate/crafted_closet/inn,
-/obj/effect/spawner/roguemap/loot,
+/obj/effect/spawner/map_spawner/loot,
 /obj/item/clothing/head/helmet/leather,
 /turf/open/floor/church,
 /area/rogue/indoors)
@@ -1475,7 +1475,7 @@
 /area/rogue/indoors)
 "Js" = (
 /obj/structure/flora/ausbushes/fullgrass,
-/obj/effect/spawner/roguemap/loot/weapon,
+/obj/effect/spawner/map_spawner/loot/weapon,
 /turf/open/floor/grass,
 /area/rogue/indoors)
 "JH" = (
@@ -1493,7 +1493,7 @@
 /obj/structure/fluff/railing/border{
 	dir = 4
 	},
-/obj/effect/spawner/roguemap/loot,
+/obj/effect/spawner/map_spawner/loot,
 /turf/open/floor/tile/masonic/inverted,
 /area/rogue/indoors)
 "JK" = (
@@ -1520,10 +1520,10 @@
 /area/rogue/indoors)
 "KA" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/effect/spawner/roguemap/loot/potion_ingredient/herb,
-/obj/effect/spawner/roguemap/loot/potion_ingredient/herb,
-/obj/effect/spawner/roguemap/loot/potion_ingredient/herb,
-/obj/effect/spawner/roguemap/loot/potion_ingredient/herb,
+/obj/effect/spawner/map_spawner/loot/potion_ingredient/herb,
+/obj/effect/spawner/map_spawner/loot/potion_ingredient/herb,
+/obj/effect/spawner/map_spawner/loot/potion_ingredient/herb,
+/obj/effect/spawner/map_spawner/loot/potion_ingredient/herb,
 /turf/open/floor/metal/barograte,
 /area/rogue/indoors)
 "KB" = (
@@ -1555,7 +1555,7 @@
 /area/rogue/indoors)
 "Lo" = (
 /obj/structure/closet/crate/crafted_closet/crafted,
-/obj/effect/spawner/roguemap/loot/armor,
+/obj/effect/spawner/map_spawner/loot/armor,
 /obj/item/clothing/cloak/tabard/crusader,
 /turf/open/floor/carpet,
 /area/rogue/indoors)
@@ -1607,7 +1607,7 @@
 "MC" = (
 /obj/structure/table/wood/fancy,
 /obj/item/reagent_containers/glass/carafe/silver/redwine,
-/obj/effect/spawner/roguemap/loot/food,
+/obj/effect/spawner/map_spawner/loot/food,
 /turf/open/floor/carpet,
 /area/rogue/indoors)
 "MK" = (
@@ -1621,7 +1621,7 @@
 /turf/open/water/bath,
 /area/rogue/indoors)
 "MY" = (
-/obj/effect/spawner/roguemap/loot/potion_ingredient/herb,
+/obj/effect/spawner/map_spawner/loot/potion_ingredient/herb,
 /obj/effect/decal/cleanable/blood/gibs/up,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/metal/barograte,
@@ -1667,7 +1667,7 @@
 /obj/structure/flora/ausbushes/brflowers,
 /obj/structure/flora/ausbushes/ywflowers,
 /obj/structure/flora/ausbushes,
-/obj/effect/spawner/roguemap/loot/rare,
+/obj/effect/spawner/map_spawner/loot/rare,
 /turf/open/floor/grass,
 /area/rogue/indoors)
 "Od" = (
@@ -1738,7 +1738,7 @@
 /obj/structure/bars/pipe{
 	dir = 10
 	},
-/obj/effect/spawner/roguemap/loot,
+/obj/effect/spawner/map_spawner/loot,
 /turf/open/transparent/openspace,
 /area/rogue/indoors)
 "PG" = (
@@ -1985,7 +1985,7 @@
 "Va" = (
 /obj/structure/closet/crate/drawer/random,
 /obj/machinery/light/rogue/wallfire/candle/weak,
-/obj/effect/spawner/roguemap/loot/food,
+/obj/effect/spawner/map_spawner/loot/food,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/carpet,
 /area/rogue/indoors)
@@ -2008,7 +2008,7 @@
 /turf/closed/wall/mineral/decostone,
 /area/rogue/indoors)
 "We" = (
-/obj/effect/spawner/roguemap/loot/potion_ingredient/herb,
+/obj/effect/spawner/map_spawner/loot/potion_ingredient/herb,
 /obj/machinery/light/rogue/wallfire/candle/weak,
 /turf/open/floor/metal/barograte,
 /area/rogue/indoors)
@@ -2023,7 +2023,7 @@
 /area/rogue/indoors)
 "WC" = (
 /obj/structure/closet/crate/crafted_closet/lord,
-/obj/effect/spawner/roguemap/loot/weapon,
+/obj/effect/spawner/map_spawner/loot/weapon,
 /obj/item/clothing/wrists/bracers,
 /turf/open/floor/carpet,
 /area/rogue/indoors)
@@ -2088,7 +2088,7 @@
 /turf/open/floor/blocks,
 /area/rogue/indoors)
 "XN" = (
-/obj/effect/spawner/roguemap/loot/magic,
+/obj/effect/spawner/map_spawner/loot/magic,
 /turf/open/floor/carpet,
 /area/rogue/indoors)
 "XQ" = (
@@ -2140,7 +2140,7 @@
 /turf/open/transparent/openspace,
 /area/rogue/indoors)
 "ZQ" = (
-/obj/effect/spawner/roguemap/loot/food,
+/obj/effect/spawner/map_spawner/loot/food,
 /turf/open/floor/carpet,
 /area/rogue/indoors)
 "ZR" = (

@@ -65,7 +65,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue)
 "u" = (
-/obj/item/roguecoin/copper/pile,
+/obj/item/coin/copper/pile,
 /turf/open/floor/naturalstone,
 /area/rogue)
 "x" = (

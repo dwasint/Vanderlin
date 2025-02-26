@@ -21,7 +21,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue)
 "n" = (
-/obj/item/roguecoin/silver,
+/obj/item/coin/silver,
 /turf/open/floor/naturalstone,
 /area/rogue)
 "z" = (
@@ -43,7 +43,7 @@
 /obj/structure/flora/roguegrass/maneater/real{
 	pixel_y = 9
 	},
-/obj/item/roguecoin/silver{
+/obj/item/coin/silver{
 	pixel_y = -2
 	},
 /turf/open/floor/naturalstone,

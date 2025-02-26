@@ -6,7 +6,7 @@
 /obj/structure/table/wood/nice/decorated,
 /obj/item/candle/yellow/lit/infinite/strong/skull,
 /obj/item/reagent_containers/glass/bottle/stronghealthpot,
-/obj/item/roguecoin/gold,
+/obj/item/coin/gold,
 /obj/item/reagent_containers/glass/bottle/redwine,
 /turf/open/floor/ruinedwood/chevron,
 /area/rogue/outdoors/caves)
@@ -23,7 +23,7 @@
 "e" = (
 /obj/item/weapon/shield/tower/buckleriron,
 /obj/item/weapon/sword/khopesh,
-/obj/item/roguecoin/copper/pile,
+/obj/item/coin/copper/pile,
 /obj/item/clothing/face/facemask/copper,
 /obj/item/clothing/neck/gorget/copper,
 /obj/item/clothing/wrists/bracers/copper,
@@ -104,7 +104,7 @@
 "K" = (
 /obj/structure/table/wood/plain/alt,
 /obj/machinery/light/rogue/wallfire/candle/weak/l,
-/obj/item/reagent_containers/food/snacks/rogue/cheddar/aged,
+/obj/item/reagent_containers/food/snacks/cheddar/aged,
 /obj/item/reagent_containers/glass/cup/skull,
 /turf/open/floor/cobblerock/alt,
 /area/rogue/outdoors/caves)

@@ -47,7 +47,7 @@
 
 /obj/item/dmusicbox/attackby(obj/item/P, mob/user, params)
 	if(!loaded)
-		if(istype(P, /obj/item/roguecoin/gold))
+		if(istype(P, /obj/item/coin/gold))
 			loaded=TRUE
 			qdel(P)
 			update_icon()

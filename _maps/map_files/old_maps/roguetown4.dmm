@@ -101,7 +101,7 @@
 /turf/open/floor/carpet,
 /area/rogue/indoors/town/manor)
 "au" = (
-/obj/item/roguegem,
+/obj/item/gem,
 /turf/open/floor/cobble,
 /area/rogue/under/town/basement)
 "av" = (
@@ -172,7 +172,7 @@
 /area/rogue/indoors/town/vault)
 "aG" = (
 /obj/effect/decal/cleanable/dirt/cobweb/cobweb2,
-/obj/item/roguecoin/gold/pile,
+/obj/item/coin/gold/pile,
 /turf/open/floor/tile{
 	icon_state = "chess"
 	},
@@ -258,7 +258,7 @@
 	},
 /area/rogue/indoors/town/vault)
 "aW" = (
-/obj/item/roguecoin/gold/pile,
+/obj/item/coin/gold/pile,
 /turf/open/floor/tile{
 	icon_state = "chess"
 	},
@@ -1659,8 +1659,8 @@
 /obj/item/reagent_containers/food/snacks/grown/wheat,
 /obj/item/reagent_containers/food/snacks/grown/wheat,
 /obj/item/reagent_containers/food/snacks/butter,
-/obj/item/reagent_containers/food/snacks/rogue/meat/sausage,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/sausage,
+/obj/item/reagent_containers/food/snacks/meat/steak,
 /turf/open/floor/tile{
 	icon_state = "chess"
 	},
@@ -1882,7 +1882,7 @@
 	icon_state = "largetable";
 	dir = 8
 	},
-/obj/item/reagent_containers/food/snacks/rogue/meat/salami,
+/obj/item/reagent_containers/food/snacks/meat/salami,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/bath)
 "gX" = (
@@ -2682,7 +2682,7 @@
 /turf/open/floor/blocks,
 /area/rogue/under/town/basement)
 "jP" = (
-/obj/item/roguecoin/gold,
+/obj/item/coin/gold,
 /turf/open/water/cleanshallow,
 /area/rogue/under/cave)
 "jQ" = (
@@ -2857,7 +2857,7 @@
 /area/rogue/indoors/town)
 "kx" = (
 /obj/structure/closet/crate/chest,
-/obj/item/reagent_containers/food/snacks/rogue/meat/poultry,
+/obj/item/reagent_containers/food/snacks/meat/poultry,
 /turf/open/floor/blocks{
 	icon_state = "newstone2"
 	},
@@ -5034,8 +5034,8 @@
 /area/rogue/indoors/town/tavern)
 "sy" = (
 /obj/structure/closet/crate/chest,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
 /obj/item/reagent_containers/food/snacks/egg,
 /obj/item/reagent_containers/food/snacks/egg,
 /obj/item/reagent_containers/food/snacks/egg,
@@ -8437,7 +8437,7 @@
 	icon_state = "longtable"
 	},
 /obj/item/candle,
-/obj/item/reagent_containers/food/snacks/rogue/meat/salami,
+/obj/item/reagent_containers/food/snacks/meat/salami,
 /turf/open/floor/hexstone,
 /area/rogue/indoors/town/church)
 "Fm" = (
@@ -9177,7 +9177,7 @@
 /area/rogue/indoors/town/manor)
 "Iy" = (
 /obj/structure/closet/crate/crafted_closet/dark,
-/obj/item/roguecoin/copper/pile,
+/obj/item/coin/copper/pile,
 /obj/item/rope/chain,
 /turf/open/floor/cobble,
 /area/rogue/under/town/basement)
@@ -9615,7 +9615,7 @@
 /area/rogue/indoors/town/garrison)
 "KR" = (
 /obj/structure/closet/crate/chest,
-/obj/item/roguegem/green,
+/obj/item/gem/green,
 /turf/open/floor/tile{
 	icon_state = "chess"
 	},
@@ -10093,7 +10093,7 @@
 /turf/open/floor/cobble,
 /area/rogue/outdoors/town)
 "NM" = (
-/obj/item/roguegem,
+/obj/item/gem,
 /turf/open/floor/cobble,
 /area/rogue/indoors/town)
 "NN" = (
@@ -11018,7 +11018,7 @@
 /obj/item/reagent_containers/powder/salt,
 /obj/item/reagent_containers/powder/salt,
 /obj/item/reagent_containers/powder/salt,
-/obj/item/reagent_containers/food/snacks/rogue/meat/steak,
+/obj/item/reagent_containers/food/snacks/meat/steak,
 /turf/open/floor/woodturned,
 /area/rogue/indoors/town/manor)
 "TN" = (

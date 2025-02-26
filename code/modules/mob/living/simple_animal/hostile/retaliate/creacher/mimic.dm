@@ -12,7 +12,7 @@
 	gender = NEUTER
 	mob_biotypes = NONE
 	base_intents = list(/datum/intent/simple/bite)
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 2)
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 2)
 	retreat_distance = 0
 	minimum_distance = 0
 	aggro_vision_range = 2
@@ -35,7 +35,7 @@
 	wander = 0
 	stat_attack = UNCONSCIOUS
 
-	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat, /obj/item/bodypart, /obj/item/organ)
+	food_type = list(/obj/item/reagent_containers/food/snacks/meat, /obj/item/bodypart, /obj/item/organ)
 	food = 0
 	pooptype = null
 

@@ -6,7 +6,7 @@
 "az" = (
 /obj/structure/closet/dirthole/closed,
 /mob/living/carbon/human/species/skeleton/npc/ambush,
-/obj/effect/spawner/roguemap/loot/rare,
+/obj/effect/spawner/map_spawner/loot/rare,
 /turf/open/floor/dirt,
 /area/rogue)
 "aG" = (
@@ -45,9 +45,9 @@
 "dE" = (
 /obj/structure/closet/dirthole/closed,
 /mob/living/carbon/human/species/skeleton/npc/no_equipment,
-/obj/effect/spawner/roguemap/loot/weapon,
+/obj/effect/spawner/map_spawner/loot/weapon,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
-/obj/effect/spawner/roguemap/loot/armor,
+/obj/effect/spawner/map_spawner/loot/armor,
 /turf/open/floor/dirt,
 /area/rogue)
 "ew" = (
@@ -66,7 +66,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue)
 "eL" = (
-/obj/effect/spawner/roguemap/beartrap,
+/obj/effect/spawner/map_spawner/beartrap,
 /turf/open/floor/naturalstone,
 /area/rogue)
 "fm" = (
@@ -91,7 +91,7 @@
 /area/rogue)
 "hY" = (
 /obj/structure/closet/dirthole/closed,
-/obj/effect/spawner/roguemap/loot/armor,
+/obj/effect/spawner/map_spawner/loot/armor,
 /mob/living/carbon/human/species/skeleton/npc/ambush,
 /obj/structure/closet/burial_shroud,
 /turf/open/floor/dirt/road,
@@ -100,7 +100,7 @@
 /obj/structure/closet/dirthole/closed,
 /obj/structure/closet/burial_shroud,
 /mob/living/carbon/human/species/skeleton/npc/ambush,
-/obj/effect/spawner/roguemap/loot/weapon,
+/obj/effect/spawner/map_spawner/loot/weapon,
 /turf/open/floor/dirt,
 /area/rogue)
 "in" = (
@@ -137,7 +137,7 @@
 /area/rogue)
 "mj" = (
 /obj/structure/closet/dirthole/closed,
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /obj/structure/closet/burial_shroud,
 /obj/item/weapon/sword/coppermesser,
 /mob/living/carbon/human/species/skeleton/npc/ambush,
@@ -167,7 +167,7 @@
 "oM" = (
 /mob/living/carbon/human/species/skeleton/npc/warrior/skilled,
 /mob/living/carbon/human/species/skeleton/npc/warrior/skilled,
-/obj/effect/spawner/roguemap/loot/rare,
+/obj/effect/spawner/map_spawner/loot/rare,
 /obj/structure/closet/dirthole/closed,
 /obj/item/clothing/head/peaceflower{
 	pixel_y = -10;
@@ -256,7 +256,7 @@
 /area/rogue)
 "xy" = (
 /obj/structure/closet/dirthole/closed,
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /mob/living/carbon/human/species/skeleton/npc/warrior,
 /turf/open/floor/dirt/road,
 /area/rogue)
@@ -268,7 +268,7 @@
 "yG" = (
 /obj/structure/closet/dirthole/closed,
 /mob/living/carbon/human/species/skeleton/npc/warrior/skilled,
-/obj/effect/spawner/roguemap/loot/armor,
+/obj/effect/spawner/map_spawner/loot/armor,
 /turf/open/floor/dirt,
 /area/rogue)
 "yN" = (
@@ -445,7 +445,7 @@
 /area/rogue)
 "MV" = (
 /obj/effect/decal/cleanable/blood/old,
-/obj/effect/spawner/roguemap/beartrap,
+/obj/effect/spawner/map_spawner/beartrap,
 /turf/open/floor/naturalstone,
 /area/rogue)
 "MX" = (
@@ -478,7 +478,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue)
 "Pt" = (
-/obj/effect/spawner/roguemap/beartrap,
+/obj/effect/spawner/map_spawner/beartrap,
 /turf/open/floor/cobblerock,
 /area/rogue)
 "PD" = (
@@ -488,7 +488,7 @@
 "Qk" = (
 /obj/structure/closet/dirthole/closed,
 /obj/effect/landmark/chest_or_mimic,
-/obj/item/roguegem,
+/obj/item/gem,
 /turf/open/floor/dirt,
 /area/rogue)
 "QX" = (

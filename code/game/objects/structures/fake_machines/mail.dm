@@ -206,10 +206,10 @@
 					playsound(loc, 'sound/misc/disposalflush.ogg', 100, FALSE, -1)
 					send_ooc_note("<span class='boldnotice'>New letter from <b>[sentfrom].</b></span>", name = send2place)
 					return
-	if(istype(P, /obj/item/roguecoin))
+	if(istype(P, /obj/item/coin))
 		if(coin_loaded)
 			return
-		var/obj/item/roguecoin/C = P
+		var/obj/item/coin/C = P
 		if(C.quantity > 1)
 			return
 		coin_loaded = C.get_real_price()

@@ -38,7 +38,7 @@
 /area/rogue/outdoors/caves)
 "O" = (
 /obj/machinery/light/rogue/torchholder/l,
-/obj/effect/spawner/roguemap/hauntpile,
+/obj/effect/spawner/map_spawner/hauntpile,
 /turf/open/floor/churchbrick,
 /area/rogue/outdoors/caves)
 "S" = (

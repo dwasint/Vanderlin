@@ -14,17 +14,17 @@
 	vision_range = 7
 	aggro_vision_range = 9
 
-	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1,
+	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 1,
 						/obj/item/natural/hide = 1,
 						/obj/item/natural/fur/mole = 1,
 						/obj/item/alch/sinew = 1,
 						/obj/item/alch/bone = 1)
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 2,
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 2,
 						/obj/item/natural/hide = 2,
 						/obj/item/natural/fur/mole = 2,
 						/obj/item/alch/sinew = 2,
 						/obj/item/alch/bone = 1)
-	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 3,
+	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 3,
 						/obj/item/natural/hide = 2,
 						/obj/item/natural/fur/mole = 3,
 						/obj/item/alch/sinew = 2,
@@ -32,7 +32,7 @@
 
 	health = MOLE_HEALTH
 	maxHealth = MOLE_HEALTH
-	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat,
+	food_type = list(/obj/item/reagent_containers/food/snacks/meat,
 					/obj/item/bodypart,
 					/obj/item/organ)
 

@@ -38,7 +38,7 @@
 "bL" = (
 /obj/effect/decal/cleanable/blood/gibs,
 /obj/effect/decal/cleanable/blood,
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /turf/open/water/swamp,
 /area/rogue)
 "cq" = (
@@ -65,7 +65,7 @@
 	pixel_x = 6;
 	pixel_y = 12
 	},
-/obj/effect/spawner/roguemap/loot/armor,
+/obj/effect/spawner/map_spawner/loot/armor,
 /turf/open/floor/dirt,
 /area/rogue)
 "el" = (
@@ -99,7 +99,7 @@
 /obj/effect/decal/remains/human{
 	pixel_x = 6
 	},
-/obj/effect/spawner/roguemap/loot/weapon,
+/obj/effect/spawner/map_spawner/loot/weapon,
 /turf/open/floor/dirt,
 /area/rogue)
 "fg" = (
@@ -165,7 +165,7 @@
 /obj/effect/decal/remains/human{
 	pixel_x = 6
 	},
-/obj/effect/spawner/roguemap/loot/weapon,
+/obj/effect/spawner/map_spawner/loot/weapon,
 /turf/open/floor/dirt,
 /area/rogue)
 "gL" = (
@@ -195,7 +195,7 @@
 /turf/open/floor/plasteel/maniac,
 /area/rogue)
 "gZ" = (
-/obj/effect/spawner/roguemap/loot/medium,
+/obj/effect/spawner/map_spawner/loot/medium,
 /turf/open/floor/grass/red,
 /area/rogue)
 "hf" = (
@@ -442,7 +442,7 @@
 /area/rogue)
 "sT" = (
 /obj/effect/decal/cleanable/blood/gibs,
-/obj/effect/spawner/roguemap/loot/rare,
+/obj/effect/spawner/map_spawner/loot/rare,
 /turf/open/water/swamp,
 /area/rogue)
 "tD" = (
@@ -475,11 +475,11 @@
 	dir = 8
 	},
 /obj/machinery/light/rogue/torchholder/c,
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/blocks/stonered/tiny,
 /area/rogue)
 "uX" = (
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /turf/open/water/swamp,
 /area/rogue)
 "vT" = (
@@ -571,7 +571,7 @@
 /obj/structure/chair/wood/rogue{
 	dir = 8
 	},
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/blocks/stonered/tiny,
 /area/rogue)
 "CJ" = (
@@ -644,7 +644,7 @@
 /turf/open/floor/churchbrick,
 /area/rogue)
 "EQ" = (
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/grass/red,
 /area/rogue)
 "FB" = (
@@ -679,7 +679,7 @@
 /area/rogue)
 "Jw" = (
 /obj/effect/decal/cleanable/blood/gibs/down,
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /turf/open/water/swamp,
 /area/rogue)
 "JL" = (
@@ -703,7 +703,7 @@
 /area/rogue)
 "JU" = (
 /obj/effect/decal/cleanable/blood/drip,
-/obj/effect/spawner/roguemap/loot/medium,
+/obj/effect/spawner/map_spawner/loot/medium,
 /turf/open/floor/grass/red,
 /area/rogue)
 "JV" = (
@@ -759,7 +759,7 @@
 /obj/structure/chair/wood/rogue{
 	dir = 8
 	},
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/blocks/stonered/tiny,
 /area/rogue)
 "No" = (
@@ -777,7 +777,7 @@
 /obj/item/organ/guts,
 /obj/effect/decal/cleanable/blood/gibs/down,
 /obj/effect/decal/cleanable/blood,
-/obj/effect/spawner/roguemap/loot/common,
+/obj/effect/spawner/map_spawner/loot/common,
 /turf/open/water/swamp,
 /area/rogue)
 "NS" = (
@@ -837,7 +837,7 @@
 /obj/effect/decal/remains/human{
 	pixel_x = 6
 	},
-/obj/effect/spawner/roguemap/loot/rare,
+/obj/effect/spawner/map_spawner/loot/rare,
 /turf/open/floor/dirt,
 /area/rogue)
 "St" = (
@@ -850,7 +850,7 @@
 /turf/open/floor/blocks/stonered/tiny,
 /area/rogue)
 "SO" = (
-/obj/effect/spawner/roguemap/loot/weapon,
+/obj/effect/spawner/map_spawner/loot/weapon,
 /turf/open/floor/dirt,
 /area/rogue)
 "Ug" = (

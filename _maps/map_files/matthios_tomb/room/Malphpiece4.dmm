@@ -49,7 +49,7 @@
 /area/rogue/outdoors/caves)
 "gI" = (
 /obj/structure/table/wood/nice/decorated_alt,
-/obj/item/roguecoin/gold,
+/obj/item/coin/gold,
 /obj/item/ore/gold,
 /obj/structure/closet/crate/chest/gold,
 /turf/open/floor/carpet,
@@ -111,7 +111,7 @@
 /area/rogue/outdoors/caves)
 "sK" = (
 /obj/structure/table/wood/nice/decorated_alt,
-/obj/item/roguecoin/gold,
+/obj/item/coin/gold,
 /obj/item/statue/gold/loot,
 /obj/structure/closet/crate/chest/gold,
 /turf/open/floor/carpet,
@@ -126,14 +126,14 @@
 /area/rogue/outdoors/caves)
 "tx" = (
 /obj/structure/table/wood/nice/decorated_alt,
-/obj/item/roguecoin/gold,
+/obj/item/coin/gold,
 /obj/item/statue/gold,
 /obj/structure/closet/crate/chest/gold,
 /turf/open/floor/carpet,
 /area/rogue/outdoors/caves)
 "uc" = (
 /obj/structure/table/wood/nice/decorated_alt,
-/obj/item/roguecoin/gold,
+/obj/item/coin/gold,
 /obj/item/clothing/ring/gold,
 /obj/structure/closet/crate/chest/gold,
 /turf/open/floor/carpet,
@@ -191,9 +191,9 @@
 "Gb" = (
 /obj/machinery/light/rogue/torchholder/r,
 /obj/effect/landmark/chest_or_mimic,
-/obj/item/roguecoin/copper/pile,
+/obj/item/coin/copper/pile,
 /obj/item/reagent_containers/glass/bottle/stronghealthpot,
-/obj/item/reagent_containers/food/snacks/rogue/cheddar/aged,
+/obj/item/reagent_containers/food/snacks/cheddar/aged,
 /turf/open/floor/blocks/paving/vert,
 /area/rogue/outdoors/caves)
 "Gy" = (
@@ -239,7 +239,7 @@
 /area/rogue/outdoors/caves)
 "UY" = (
 /obj/structure/table/wood/nice/decorated_alt,
-/obj/item/roguecoin/gold,
+/obj/item/coin/gold,
 /obj/item/reagent_containers/glass/cup/golden,
 /obj/structure/closet/crate/chest/gold,
 /turf/open/floor/carpet,
@@ -250,7 +250,7 @@
 /area/rogue/outdoors/caves)
 "WO" = (
 /obj/structure/table/wood/nice/decorated_alt,
-/obj/item/roguecoin/gold,
+/obj/item/coin/gold,
 /obj/item/ingot/gold,
 /obj/structure/closet/crate/chest/gold,
 /turf/open/floor/carpet,
@@ -261,11 +261,11 @@
 "Yi" = (
 /obj/structure/table/wood/nice/decorated_alt,
 /obj/item/clothing/face/facemask/goldmask,
-/obj/item/roguecoin/gold/pile,
+/obj/item/coin/gold/pile,
 /obj/item/storage/belt/leather/plaquegold,
 /obj/structure/closet/crate/chest/gold,
-/obj/item/reagent_containers/food/snacks/rogue/cheddar/aged,
-/obj/item/reagent_containers/food/snacks/rogue/cheddar/aged,
+/obj/item/reagent_containers/food/snacks/cheddar/aged,
+/obj/item/reagent_containers/food/snacks/cheddar/aged,
 /obj/item/lockpick,
 /obj/item/lockpick,
 /obj/item/lockpick,

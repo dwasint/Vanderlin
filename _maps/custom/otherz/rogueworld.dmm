@@ -12,7 +12,7 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors/town/sargoth)
 "cw" = (
-/obj/effect/spawner/roguemap/hauntpile,
+/obj/effect/spawner/map_spawner/hauntpile,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/town/sargoth)
 "dD" = (
