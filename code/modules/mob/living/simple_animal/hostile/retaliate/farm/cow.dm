@@ -108,7 +108,7 @@
 		if("idle")
 			return pick('sound/vo/mobs/cow/idle (1).ogg','sound/vo/mobs/cow/idle (2).ogg','sound/vo/mobs/cow/idle (3).ogg','sound/vo/mobs/cow/idle (4).ogg','sound/vo/mobs/cow/idle (5).ogg')
 
-/mob/living/simple_animal/hostile/retaliate/cow/proc/after_birth(mob/living/simple_animal/hostile/retaliate/rogue/cow/cowlet/baby, mob/living/partner)
+/mob/living/simple_animal/hostile/retaliate/cow/proc/after_birth(mob/living/simple_animal/hostile/retaliate/cow/cowlet/baby, mob/living/partner)
 	return
 
 /mob/living/simple_animal/hostile/retaliate/cow/simple_limb_hit(zone)
@@ -248,7 +248,7 @@
 		CALLBACK(src, PROC_REF(after_birth)),\
 	)
 
-/mob/living/simple_animal/hostile/retaliate/bull/proc/after_birth(mob/living/simple_animal/hostile/retaliate/rogue/cow/cowlet/baby, mob/living/partner)
+/mob/living/simple_animal/hostile/retaliate/bull/proc/after_birth(mob/living/simple_animal/hostile/retaliate/cow/cowlet/baby, mob/living/partner)
 	return
 
 

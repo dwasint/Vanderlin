@@ -3,11 +3,11 @@
 /turf/open/transparent/openspace,
 /area/rogue)
 "b" = (
-/turf/closed/wall/mineral/rogue/stone,
+/turf/closed/wall/mineral/stone,
 /area/rogue)
 "c" = (
 /obj/structure/flora/newtree/scorched,
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/rogue)
 "d" = (
 /obj/structure/flora/newtree/scorched,
@@ -19,22 +19,22 @@
 /obj/item/clothing/pants/trou/leather/advanced,
 /obj/item/clothing/wrists/bracers/leather,
 /obj/item/weapon/pick/paxe,
-/turf/open/floor/rogue/cobble,
+/turf/open/floor/cobble,
 /area/rogue)
 "g" = (
-/turf/open/floor/rogue/cobble,
+/turf/open/floor/cobble,
 /area/rogue)
 "j" = (
 /obj/effect/dungeon_directional_helper/east,
-/turf/open/floor/rogue/cobblerock,
+/turf/open/floor/cobblerock,
 /area/rogue)
 "m" = (
 /obj/structure/fluff/railing/wood,
-/turf/open/floor/rogue/cobble,
+/turf/open/floor/cobble,
 /area/rogue)
 "n" = (
 /obj/machinery/light/rogue/forge,
-/turf/open/floor/rogue/cobblerock,
+/turf/open/floor/cobblerock,
 /area/rogue)
 "o" = (
 /obj/structure/fluff/railing/wood{
@@ -46,18 +46,18 @@
 	pixel_x = 2;
 	pixel_y = 7
 	},
-/turf/open/floor/rogue/cobble,
+/turf/open/floor/cobble,
 /area/rogue)
 "p" = (
 /turf/open/lava,
 /area/rogue)
 "q" = (
 /obj/effect/dungeon_directional_helper/north,
-/turf/open/floor/rogue/cobblerock,
+/turf/open/floor/cobblerock,
 /area/rogue)
 "u" = (
 /obj/structure/grindwheel,
-/turf/open/floor/rogue/cobblerock,
+/turf/open/floor/cobblerock,
 /area/rogue)
 "v" = (
 /obj/structure/fluff/railing/wood{
@@ -65,7 +65,7 @@
 	pixel_y = -1
 	},
 /obj/structure/fluff/railing/wood,
-/turf/open/floor/rogue/cobble,
+/turf/open/floor/cobble,
 /area/rogue)
 "w" = (
 /mob/living/carbon/human/species/goblin/hell,
@@ -73,10 +73,10 @@
 /obj/item/clothing/pants/trou/leather/advanced,
 /obj/item/clothing/wrists/bracers/leather,
 /obj/item/weapon/axe/iron,
-/turf/open/floor/rogue/cobble,
+/turf/open/floor/cobble,
 /area/rogue)
 "x" = (
-/turf/open/floor/rogue/cobblerock,
+/turf/open/floor/cobblerock,
 /area/rogue)
 "y" = (
 /obj/structure/fluff/railing/wood{
@@ -85,17 +85,17 @@
 /obj/structure/fluff/railing/wood{
 	dir = 1
 	},
-/turf/open/floor/rogue/cobble,
+/turf/open/floor/cobble,
 /area/rogue)
 "z" = (
 /obj/structure/fluff/railing/wood{
 	dir = 4
 	},
-/turf/open/floor/rogue/cobble,
+/turf/open/floor/cobble,
 /area/rogue)
 "A" = (
 /obj/machinery/light/rogue/smelter,
-/turf/open/floor/rogue/cobblerock,
+/turf/open/floor/cobblerock,
 /area/rogue)
 "E" = (
 /mob/living/carbon/human/species/orc/warrior,
@@ -104,18 +104,18 @@
 	},
 /obj/item/clothing/armor/leather/splint,
 /obj/item/clothing/pants/trou/leather/advanced,
-/turf/open/floor/rogue/cobble,
+/turf/open/floor/cobble,
 /area/rogue)
 "G" = (
 /obj/structure/fluff/railing/wood{
 	dir = 8;
 	pixel_y = -1
 	},
-/turf/open/floor/rogue/cobble,
+/turf/open/floor/cobble,
 /area/rogue)
 "H" = (
 /mob/living/simple_animal/hostile/rogue/orc/orc_marauder/spear,
-/turf/open/floor/rogue/cobble,
+/turf/open/floor/cobble,
 /area/rogue)
 "J" = (
 /obj/structure/fluff/railing/wood{
@@ -125,15 +125,15 @@
 /obj/structure/fluff/railing/wood{
 	dir = 1
 	},
-/turf/open/floor/rogue/cobble,
+/turf/open/floor/cobble,
 /area/rogue)
 "K" = (
 /obj/item/roguebin/water,
-/turf/open/floor/rogue/cobblerock,
+/turf/open/floor/cobblerock,
 /area/rogue)
 "L" = (
 /obj/effect/dungeon_directional_helper/south,
-/turf/open/floor/rogue/cobblerock,
+/turf/open/floor/cobblerock,
 /area/rogue)
 "M" = (
 /obj/machinery/anvil,
@@ -142,10 +142,10 @@
 	pixel_x = -6;
 	pixel_y = 5
 	},
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/rogue)
 "N" = (
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/rogue)
 "P" = (
 /obj/structure/fluff/railing/wood{
@@ -154,17 +154,17 @@
 	pixel_x = 2;
 	pixel_y = 7
 	},
-/turf/open/floor/rogue/cobble,
+/turf/open/floor/cobble,
 /area/rogue)
 "R" = (
 /obj/effect/dungeon_directional_helper/west,
-/turf/open/floor/rogue/cobblerock,
+/turf/open/floor/cobblerock,
 /area/rogue)
 "S" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1
 	},
-/turf/open/floor/rogue/cobble,
+/turf/open/floor/cobble,
 /area/rogue)
 "T" = (
 /obj/structure/fluff/railing/wood{
@@ -177,14 +177,14 @@
 	pixel_x = 2;
 	pixel_y = 7
 	},
-/turf/open/floor/rogue/cobble,
+/turf/open/floor/cobble,
 /area/rogue)
 "V" = (
 /obj/structure/fluff/railing/wood{
 	dir = 4
 	},
 /obj/structure/fluff/railing/wood,
-/turf/open/floor/rogue/cobble,
+/turf/open/floor/cobble,
 /area/rogue)
 "W" = (
 /obj/structure/fluff/railing/wood{
@@ -196,7 +196,7 @@
 /obj/structure/fluff/railing/wood{
 	dir = 4
 	},
-/turf/open/floor/rogue/cobble,
+/turf/open/floor/cobble,
 /area/rogue)
 "Y" = (
 /turf/closed/mineral/rogue/bedrock,

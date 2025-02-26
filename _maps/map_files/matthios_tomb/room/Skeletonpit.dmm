@@ -4,164 +4,164 @@
 /area/rogue)
 "c" = (
 /obj/item/clothing/armor/cuirass/iron,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "e" = (
 /obj/effect/dungeon_directional_helper/south,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "g" = (
 /obj/item/clothing/head/helmet/ironpot,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "i" = (
 /mob/living/carbon/human/species/skeleton,
 /obj/effect/landmark/chest_or_mimic,
 /obj/item/roguecoin/copper/pile,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "k" = (
 /obj/item/clothing/armor/chainmail/iron,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "l" = (
 /obj/effect/landmark/chest_or_mimic,
 /obj/item/roguecoin/copper/pile,
 /obj/item/clothing/head/helmet/nasal,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "m" = (
 /obj/effect/landmark/chest_or_mimic,
 /obj/item/roguecoin/copper/pile,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "n" = (
 /obj/effect/landmark/chest_or_mimic,
 /obj/item/roguecoin/copper/pile,
 /obj/item/clothing/ring/silver,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "o" = (
 /obj/item/clothing/head/helmet/bascinet,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "p" = (
 /obj/item/clothing/armor/medium/scale,
 /obj/item/weapon/polearm/spear,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "q" = (
 /obj/item/clothing/head/helmet/winged,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "r" = (
 /obj/item/clothing/armor/gambeson/arming,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "s" = (
 /obj/effect/landmark/chest_or_mimic,
 /obj/item/roguecoin/copper/pile,
 /obj/item/clothing/gloves/plate,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "t" = (
 /obj/structure/stairs/stone{
 	dir = 1
 	},
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "u" = (
 /obj/effect/dungeon_directional_helper/north,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "w" = (
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "x" = (
 /turf/open/transparent/openspace,
 /area/rogue)
 "y" = (
 /mob/living/carbon/human/species/skeleton/npc,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "z" = (
 /obj/structure/stairs/stone{
 	dir = 4
 	},
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "A" = (
 /obj/effect/dungeon_directional_helper/east,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "B" = (
 /mob/living/carbon/human/species/skeleton/npc/warrior/skilled,
 /obj/effect/landmark/chest_or_mimic,
 /obj/item/roguecoin/copper/pile,
 /obj/item/clothing/ring/silver/rontz,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "C" = (
 /obj/item/clothing/shoes/boots/armor,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "D" = (
 /obj/structure/stairs/stone,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "G" = (
 /obj/item/clothing/head/helmet/skullcap,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "H" = (
 /obj/effect/landmark/chest_or_mimic,
 /obj/item/roguecoin/copper/pile,
 /obj/item/lockpickring,
 /obj/item/clothing/head/helmet/leather/volfhelm,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "I" = (
 /obj/item/weapon/polearm/spear,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "M" = (
 /obj/item/weapon/sword/iron,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "P" = (
 /obj/item/clothing/armor/cuirass/iron/rust,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "Q" = (
 /obj/item/weapon/polearm/spear,
 /mob/living/carbon/human/species/skeleton/npc,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "R" = (
 /mob/living/simple_animal/hostile/rogue/skeleton/bow,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "S" = (
 /obj/effect/dungeon_directional_helper/west,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "U" = (
 /obj/item/clothing/armor/leather/hide,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "X" = (
 /obj/item/clothing/armor/gambeson,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "Y" = (
 /obj/structure/stairs/stone{
 	dir = 8
 	},
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "Z" = (
 /obj/item/clothing/armor/cuirass/grenzelhoft,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 
 (1,1,1) = {"

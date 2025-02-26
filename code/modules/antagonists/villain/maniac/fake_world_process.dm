@@ -28,7 +28,7 @@ SUBSYSTEM_DEF(fake_world)
 		gun.icon = 'icons/roguetown/weapons/bows.dmi'
 		gun.icon_state = "bow"
 
-	for(var/turf/closed/wall/mineral/rogue/underbrick/wall in fake_world_constructs)
+	for(var/turf/closed/wall/mineral/underbrick/wall in fake_world_constructs)
 		wall.icon_state = "wood"
 		wall.icon = 'icons/turf/walls/roguewood.dmi'
 
@@ -40,7 +40,7 @@ SUBSYSTEM_DEF(fake_world)
 		bed.icon_state = "inn_bed"
 		bed.icon = 'icons/roguetown/misc/structure.dmi'
 
-	for(var/turf/open/floor/rogue/underworld/space/sparkle_quiet/fake_world/space in fake_world_constructs)
+	for(var/turf/open/floor/underworld/space/sparkle_quiet/fake_world/space in fake_world_constructs)
 		space.icon_state = "grass"
 		space.icon = 'icons/turf/roguefloor.dmi'
 

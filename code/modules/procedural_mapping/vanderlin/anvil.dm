@@ -14,7 +14,7 @@
 /datum/mapGeneratorModule/abovemountain
 	clusterCheckFlags = CLUSTER_CHECK_DIFFERENT_ATOMS
 	include_subtypes = FALSE
-	allowed_turfs = list(/turf/open/floor/rogue/snow,/turf/open/floor/rogue/grass/cold,/turf/open/floor/rogue/snow/patchy)
+	allowed_turfs = list(/turf/open/floor/snow,/turf/open/floor/grass/cold,/turf/open/floor/snow/patchy)
 	spawnableAtoms = list(/obj/structure/flora/roguegrass/bush_meagre = 25,
 						/obj/structure/flora/roguegrass = 25,
 						/obj/structure/flora/roguegrass/herb/random = 2,
@@ -26,7 +26,7 @@
 
 /datum/mapGeneratorModule/undermountain
 	clusterCheckFlags = CLUSTER_CHECK_DIFFERENT_ATOMS
-	allowed_turfs = list(/turf/open/floor/rogue/dirt,/turf/open/floor/rogue/cobblerock, /turf/open/floor/rogue/naturalstone)
+	allowed_turfs = list(/turf/open/floor/dirt,/turf/open/floor/cobblerock, /turf/open/floor/naturalstone)
 	spawnableAtoms = list(/obj/item/natural/stone = 15,
 						/obj/item/natural/rock = 10,
 						/obj/item/natural/rock/random_ore = 5,
@@ -36,7 +36,7 @@
 
 /datum/mapGeneratorModule/grove
 	clusterCheckFlags = CLUSTER_CHECK_DIFFERENT_ATOMS
-	allowed_turfs = list(/turf/open/floor/rogue/dirt,/turf/open/floor/rogue/dirt/road, /turf/open/floor/rogue/grass)
+	allowed_turfs = list(/turf/open/floor/dirt,/turf/open/floor/dirt/road, /turf/open/floor/grass)
 	spawnableAtoms = list(/obj/item/natural/stone = 3,
 						/obj/structure/flora/roguegrass = 25,
 						/obj/structure/flora/roguegrass/herb/random = 2,

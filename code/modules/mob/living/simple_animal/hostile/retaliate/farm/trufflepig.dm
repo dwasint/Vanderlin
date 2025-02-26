@@ -7,11 +7,11 @@
 
 
 //	........   Dirt changes   ................
-/turf/open/floor/rogue/dirt //truffles, var needed for the sniffing function
+/turf/open/floor/dirt //truffles, var needed for the sniffing function
 	var/hidden_truffles
 	var/hidden_toxicshrooms
 
-/turf/open/floor/rogue/dirt/Initialize()
+/turf/open/floor/dirt/Initialize()
 	. = ..()
 	if(istype(loc, /area/rogue/outdoors/bog))
 		if(!((locate(/obj/structure) in src) || (locate(/obj/machinery) in src)))
@@ -21,7 +21,7 @@
 				hidden_toxicshrooms = FALSE
 			return
 
-/turf/open/floor/rogue/dirt/attackby(obj/item/W, mob/user, params)
+/turf/open/floor/dirt/attackby(obj/item/W, mob/user, params)
 	if(hidden_truffles)
 		if(istype(W, /obj/item/weapon/shovel))
 			playsound(get_turf(src),'sound/items/dig_shovel.ogg', 70, TRUE)
@@ -237,11 +237,11 @@
 //	........   Truffle Search   ................
 /mob/living/simple_animal/hostile/retaliate/trufflepig/proc/trufflesearch(turf/T, range = world.view)
 	var/list/found_stuff = list()
-	for(var/turf/open/floor/rogue/dirt/M in range(range, T))
+	for(var/turf/open/floor/dirt/M in range(range, T))
 		if(M.hidden_truffles)
 			found_stuff += M
 	if(LAZYLEN(found_stuff))
-		for(var/turf/open/floor/rogue/dirt/M in found_stuff)
+		for(var/turf/open/floor/dirt/M in found_stuff)
 			var/obj/effect/temp_visual/truffle_overlay/oldC = locate(/obj/effect/temp_visual/truffle_overlay) in M
 			if(oldC)
 				qdel(oldC)

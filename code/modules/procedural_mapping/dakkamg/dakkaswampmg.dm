@@ -10,7 +10,7 @@
 
 /datum/mapGeneratorModule/dswamp
 	clusterCheckFlags = CLUSTER_CHECK_DIFFERENT_ATOMS
-	allowed_turfs = list(/turf/open/floor/rogue/dirt)
+	allowed_turfs = list(/turf/open/floor/dirt)
 	spawnableAtoms = list(/obj/structure/flora/roguetree = 1,
 							/obj/structure/flora/roguegrass/bush_meagre = 12,
 							/obj/structure/flora/roguegrass/pyroclasticflowers = 1,
@@ -24,7 +24,7 @@
 							/obj/structure/flora/roguegrass/maneater/real = 1,
 							/obj/item/restraints/legcuffs/beartrap/armed/camouflage = 0)
 	spawnableTurfs = list(/turf/open/water/swamp = 5,
-	                     /turf/open/floor/rogue/dirt = 80)
+	                     /turf/open/floor/dirt = 80)
 	allowed_areas = list(/area/rogue/outdoors/bog)
 
 /datum/mapGeneratorModule/dswampwater

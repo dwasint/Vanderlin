@@ -19,8 +19,8 @@
 	icon_state = "lowercavemalum"
 	first_time_text = "MALUM'S ANVIL"
 	ambush_types = list(
-				/turf/open/floor/rogue/dirt,
-				/turf/open/floor/rogue/cobblerock)
+				/turf/open/floor/dirt,
+				/turf/open/floor/cobblerock)
 	ambush_mobs = list(
 				/mob/living/simple_animal/hostile/retaliate/mole = 40,
 				/mob/living/carbon/human/species/goblin/npc/ambush/cave = 30,
@@ -32,7 +32,7 @@
 	name = "malum's anvil under upper caves"
 	icon_state = "uppercavemalum"
 	ambush_types = list(
-				/turf/open/floor/rogue/naturalstone)
+				/turf/open/floor/naturalstone)
 	ambush_mobs = list(
 				/mob/living/simple_animal/hostile/retaliate/mole = 60,
 				/mob/living/carbon/human/species/rousman/ambush = 20,
@@ -96,8 +96,8 @@
 	droning_sound_dusk = null
 	droning_sound_night = null
 	ambush_types = list(
-				/turf/open/floor/rogue/grass/cold,
-				/turf/open/floor/rogue/snow/patchy)
+				/turf/open/floor/grass/cold,
+				/turf/open/floor/snow/patchy)
 	ambush_mobs = list(
 				/mob/living/simple_animal/hostile/retaliate/wolf = 40,
 				/mob/living/carbon/human/species/goblin/npc/ambush = 30,
@@ -111,7 +111,7 @@
 	droning_sound_dusk = null
 	droning_sound_night = null
 	ambush_types = list(
-				/turf/open/floor/rogue/cobblerock)
+				/turf/open/floor/cobblerock)
 	ambush_mobs = list(
 				/mob/living/carbon/human/species/goblin/npc/ambush = 30,
 				/mob/living/carbon/human/species/rousman/ambush = 20,
@@ -121,8 +121,8 @@
 	name = "malum's anvil hidden grove"
 	icon_state = "grovemalum"
 	ambush_types = list(
-				/turf/open/floor/rogue/dirt,
-				/turf/open/floor/rogue/grass)
+				/turf/open/floor/dirt,
+				/turf/open/floor/grass)
 	ambush_mobs = list(
 				/mob/living/simple_animal/hostile/retaliate/wolf = 10)
 

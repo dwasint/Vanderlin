@@ -5,38 +5,38 @@
 "b" = (
 /obj/item/reagent_containers/glass/bottle/beer/ratkept,
 /obj/item/reagent_containers/glass/bottle/beer/ratkept,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "d" = (
 /obj/item/natural/poo,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "i" = (
 /obj/structure/bed/rogue/shit,
 /mob/living/carbon/human/species/zizombie/npc/GRENZEL,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "l" = (
 /obj/structure/roguetent,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "n" = (
 /obj/item/roguecoin/silver,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "z" = (
 /turf/open/transparent/openspace,
 /area/rogue)
 "D" = (
 /obj/effect/decal/cleanable/vomit/old,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "H" = (
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "J" = (
 /obj/item/reagent_containers/glass/bottle/beer/ratkept,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "K" = (
 /obj/structure/toilet,
@@ -46,7 +46,7 @@
 /obj/item/roguecoin/silver{
 	pixel_y = -2
 	},
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "U" = (
 /obj/item/paper{
@@ -60,7 +60,7 @@
 	pixel_y = -4;
 	pixel_x = -4
 	},
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 
 (1,1,1) = {"

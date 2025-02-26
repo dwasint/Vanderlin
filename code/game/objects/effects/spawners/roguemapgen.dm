@@ -52,7 +52,7 @@
 	var/turf/below = get_step_multiz(src, DOWN)
 	if(below)
 		T.ChangeTurf(/turf/open/transparent/openspace)
-		below.ChangeTurf(/turf/open/floor/rogue/dirt/road)
+		below.ChangeTurf(/turf/open/floor/dirt/road)
 
 /obj/effect/spawner/roguemap/tree
 	icon_state = "tree"

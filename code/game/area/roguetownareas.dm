@@ -14,7 +14,6 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	has_gravity = STANDARD_GRAVITY
 	ambientsounds = null
 	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
-//	var/previous_ambient = ""
 
 /area/rogue/indoors
 	name = "indoors rt"
@@ -88,7 +87,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	icon_state = "deception"
 	first_time_text = "THE CANYON OF DECEPTION"
 	ambush_types = list(
-				/turf/open/floor/rogue/dirt)
+				/turf/open/floor/dirt)
 	ambush_mobs = list(
 				/mob/living/simple_animal/hostile/retaliate/troll = 30,
 				/mob/living/carbon/human/species/skeleton/npc/ambush = 30,
@@ -98,7 +97,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	name = "mt decapitation"
 	icon_state = "decap"
 	ambush_types = list(
-				/turf/open/floor/rogue/dirt)
+				/turf/open/floor/dirt)
 	ambush_mobs = list(
 				/mob/living/simple_animal/hostile/retaliate/troll = 30,
 				/mob/living/carbon/human/species/skeleton/npc/ambush = 90,
@@ -122,7 +121,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	soundenv = 19
 	ambush_times = list("night","dawn","dusk","day")
 	ambush_types = list(
-				/turf/open/floor/rogue/grass)
+				/turf/open/floor/grass)
 	ambush_mobs = list(
 				/mob/living/simple_animal/hostile/retaliate/wolf = 60,
 				/mob/living/carbon/human/species/goblin/npc/ambush/hell = 50,
@@ -156,7 +155,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	soundenv = 15
 	ambush_times = list("night","dawn","dusk","day")
 	ambush_types = list(
-				/turf/open/floor/rogue/grass)
+				/turf/open/floor/grass)
 	ambush_mobs = list(
 				/mob/living/simple_animal/hostile/retaliate/wolf = 60,
 				/mob/living/simple_animal/hostile/retaliate/troll = 10,
@@ -211,7 +210,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound_night = null
 	ambush_times = list("night","dawn","dusk","day")
 	ambush_types = list(
-				/turf/open/floor/rogue/dirt,
+				/turf/open/floor/dirt,
 				/turf/open/water)
 	ambush_mobs = list(
 				/mob/living/simple_animal/hostile/retaliate/bigrat = 20,
@@ -269,7 +268,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound_night = null
 	ambush_times = list("night","dawn","dusk","day")
 	ambush_types = list(
-				/turf/open/floor/rogue/dirt)
+				/turf/open/floor/dirt)
 	ambush_mobs = list(
 				/mob/living/simple_animal/hostile/retaliate/bigrat = 30,
 				/mob/living/carbon/human/species/goblin/npc/ambush/cave = 20,
@@ -295,7 +294,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound_night = null
 	ambush_times = list("night","dawn","dusk","day")
 	ambush_types = list(
-				/turf/open/floor/rogue/dirt)
+				/turf/open/floor/dirt)
 	ambush_mobs = list(
 				/mob/living/carbon/human/species/skeleton/npc/ambush = 10,
 				/mob/living/simple_animal/hostile/retaliate/bigrat = 30,
@@ -344,7 +343,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	spookynight = SPOOKY_CAVE
 	ambush_times = list("night","dawn","dusk","day")
 	ambush_types = list(
-				/turf/open/floor/rogue/dirt)
+				/turf/open/floor/dirt)
 	ambush_mobs = list(
 				/mob/living/simple_animal/hostile/retaliate/bigrat = 30,
 				/mob/living/carbon/human/species/skeleton/npc/ambush = 10,
@@ -794,7 +793,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 		if(findtext(prayer, profanity))
 			//put this idiot SOMEWHERE
 			var/static/list/unsafe_turfs = list(
-				/turf/open/floor/rogue/underworld/space,
+				/turf/open/floor/underworld/space,
 				/turf/open/transparent/openspace,
 			)
 

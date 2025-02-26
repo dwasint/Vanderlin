@@ -5,8 +5,8 @@
 	clusterMin = 2
 	checkdensity = FALSE
 	allowed_areas = list(/area/rogue/outdoors)
-	allowed_turfs = list(/turf/open/floor/rogue/dirt/ambush)
-	excluded_turfs = list(/turf/open/floor/rogue/dirt/road)
+	allowed_turfs = list(/turf/open/floor/dirt/ambush)
+	excluded_turfs = list(/turf/open/floor/dirt/road)
 
 /obj/effect/landmark/ambush/Initialize()
 	. = ..()

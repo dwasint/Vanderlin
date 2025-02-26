@@ -10,7 +10,7 @@
 
 /datum/mapGeneratorModule/dbeach
 	clusterCheckFlags = CLUSTER_CHECK_SAME_ATOMS|CLUSTER_CHECK_DIFFERENT_ATOMS
-	allowed_turfs = list(/turf/open/floor/rogue/dirt/road)
+	allowed_turfs = list(/turf/open/floor/dirt/road)
 	allowed_areas = list(/area/rogue/outdoors/beach)
 	spawnableAtoms = list(	/obj/item/natural/stone = 11,
 							/obj/item/grown/log/tree/stick = 1)

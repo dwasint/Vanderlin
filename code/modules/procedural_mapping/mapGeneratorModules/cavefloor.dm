@@ -11,13 +11,13 @@
 
 /datum/mapGeneratorModule/cave
 	clusterCheckFlags = CLUSTER_CHECK_DIFFERENT_ATOMS
-	allowed_turfs = list(/turf/open/floor/rogue/dirt/road,/turf/open/water,/turf/open/floor/rogue/volcanic)
+	allowed_turfs = list(/turf/open/floor/dirt/road,/turf/open/water,/turf/open/floor/volcanic)
 	spawnableAtoms = list(/obj/item/natural/stone = 5, /obj/structure/roguerock=5, /obj/item/natural/rock=3, /obj/structure/kneestingers=1, /obj/item/restraints/legcuffs/beartrap/armed/camouflage=1)
 	allowed_areas = list(/area/rogue/under/cave/spider,/area/rogue/indoors/cave,/area/rogue/under/cavewet,/area/rogue/under/cave,/area/rogue/under/cavelava)
 
 /datum/mapGeneratorModule/cavedirt
 	clusterCheckFlags = CLUSTER_CHECK_NONE
-	allowed_turfs = list(/turf/open/floor/rogue/dirt)
+	allowed_turfs = list(/turf/open/floor/dirt)
 	spawnableAtoms = list(/obj/structure/flora/rogueshroom=16, /obj/structure/roguerock=8, /obj/structure/closet/dirthole/closed/loot=3, /obj/item/natural/stone=10, /obj/item/natural/rock=8, /obj/structure/kneestingers = 0, /obj/item/restraints/legcuffs/beartrap/armed/camouflage=0)
 	allowed_areas = list(/area/rogue/under/cave/spider,/area/rogue/indoors/cave,/area/rogue/under/cavewet,/area/rogue/under/cave,/area/rogue/under/cavelava)
 
@@ -28,7 +28,7 @@
 	modules = list(/datum/mapGeneratorModule/cave,/datum/mapGeneratorModule/cavedirt/lava)
 
 /datum/mapGeneratorModule/cavedirt/lava
-	spawnableTurfs = list(/turf/open/lava=2,/turf/open/floor/rogue/dirt/road=30)
+	spawnableTurfs = list(/turf/open/lava=2,/turf/open/floor/dirt/road=30)
 
 
 /obj/effect/landmark/mapGenerator/rogue/cave/spider
@@ -43,7 +43,7 @@
 
 /datum/mapGeneratorModule/cavespider
 	clusterCheckFlags = CLUSTER_CHECK_DIFFERENT_ATOMS
-	allowed_turfs = list(/turf/open/floor/rogue/dirt)
+	allowed_turfs = list(/turf/open/floor/dirt)
 	spawnableAtoms = list(/obj/structure/spider/stickyweb=10)
 	allowed_areas = list(/area/rogue/under/cave/spider)
 

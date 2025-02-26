@@ -1,20 +1,20 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ah" = (
 /obj/item/flashlight/flare/torch/metal,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "az" = (
 /obj/structure/closet/dirthole/closed,
 /mob/living/carbon/human/species/skeleton/npc/ambush,
 /obj/effect/spawner/roguemap/loot/rare,
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/rogue)
 "aG" = (
 /obj/item/natural/rock,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "aH" = (
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "aX" = (
 /turf/open/transparent/openspace,
@@ -27,20 +27,20 @@
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /obj/item/kitchen/spoon/iron,
 /obj/item/kitchen/spoon/iron,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "bo" = (
 /obj/structure/pillory/double,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "cc" = (
 /obj/structure/closet/dirthole/grave,
 /obj/item/weapon/shovel,
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/dirt/road,
 /area/rogue)
 "dr" = (
 /obj/item/natural/stone,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "dE" = (
 /obj/structure/closet/dirthole/closed,
@@ -48,7 +48,7 @@
 /obj/effect/spawner/roguemap/loot/weapon,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /obj/effect/spawner/roguemap/loot/armor,
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/rogue)
 "ew" = (
 /obj/structure/closet/dirthole/closed,
@@ -56,55 +56,55 @@
 /obj/item/clothing/head/helmet/coppercap,
 /mob/living/carbon/human/species/skeleton/npc/ambush,
 /mob/living/carbon/human/species/skeleton/npc/ambush,
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/rogue)
 "eK" = (
 /obj/item/natural/stone{
 	pixel_x = 2;
 	pixel_y = -8
 	},
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "eL" = (
 /obj/effect/spawner/roguemap/beartrap,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "fm" = (
 /obj/item/natural/rock/random,
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/dirt/road,
 /area/rogue)
 "fy" = (
 /obj/structure/closet/dirthole,
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/dirt/road,
 /area/rogue)
 "gp" = (
 /obj/item/weapon/shovel,
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/rogue)
 "gT" = (
 /obj/item/natural/rock/gold,
-/turf/open/floor/rogue/cobblerock,
+/turf/open/floor/cobblerock,
 /area/rogue)
 "hQ" = (
 /obj/structure/flora/roguegrass/bush_meagre,
-/turf/open/floor/rogue/grass/yel,
+/turf/open/floor/grass/yel,
 /area/rogue)
 "hY" = (
 /obj/structure/closet/dirthole/closed,
 /obj/effect/spawner/roguemap/loot/armor,
 /mob/living/carbon/human/species/skeleton/npc/ambush,
 /obj/structure/closet/burial_shroud,
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/dirt/road,
 /area/rogue)
 "if" = (
 /obj/structure/closet/dirthole/closed,
 /obj/structure/closet/burial_shroud,
 /mob/living/carbon/human/species/skeleton/npc/ambush,
 /obj/effect/spawner/roguemap/loot/weapon,
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/rogue)
 "in" = (
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/rogue)
 "iv" = (
 /obj/structure/closet/dirthole/grave,
@@ -114,26 +114,26 @@
 /obj/item/organ/heart,
 /obj/item/organ/tongue,
 /obj/item/organ/brain,
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/rogue)
 "iL" = (
 /obj/structure/flora/roguegrass/maneater,
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/dirt/road,
 /area/rogue)
 "iR" = (
 /turf/closed/mineral/rogue/bedrock,
 /area/rogue)
 "jc" = (
 /obj/effect/dungeon_directional_helper/east,
-/turf/open/floor/rogue/grass/yel,
+/turf/open/floor/grass/yel,
 /area/rogue)
 "kh" = (
 /obj/structure/roguerock,
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/rogue)
 "lA" = (
 /obj/structure/closet/dirthole/grave,
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/rogue)
 "mj" = (
 /obj/structure/closet/dirthole/closed,
@@ -141,28 +141,28 @@
 /obj/structure/closet/burial_shroud,
 /obj/item/weapon/sword/coppermesser,
 /mob/living/carbon/human/species/skeleton/npc/ambush,
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/rogue)
 "mu" = (
 /obj/structure/roguerock,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "mJ" = (
 /obj/structure/flora/roguegrass/herb/atropa,
-/turf/open/floor/rogue/grass/yel,
+/turf/open/floor/grass/yel,
 /area/rogue)
 "mN" = (
 /obj/item/natural/stone{
 	pixel_x = 9;
 	pixel_y = 5
 	},
-/turf/open/floor/rogue/cobblerock,
+/turf/open/floor/cobblerock,
 /area/rogue)
 "oB" = (
 /obj/structure/stairs/stone{
 	dir = 1
 	},
-/turf/open/floor/rogue/herringbone,
+/turf/open/floor/herringbone,
 /area/rogue)
 "oM" = (
 /mob/living/carbon/human/species/skeleton/npc/warrior/skilled,
@@ -176,24 +176,24 @@
 /obj/item/reagent_containers/food/snacks/produce/poppy{
 	pixel_x = 9
 	},
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/rogue)
 "pr" = (
-/turf/open/floor/rogue/herringbone,
+/turf/open/floor/herringbone,
 /area/rogue)
 "qA" = (
 /obj/structure/fluff/clodpile,
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/rogue)
 "rp" = (
-/turf/closed/wall/mineral/rogue/decostone/end{
+/turf/closed/wall/mineral/decostone/end{
 	dir = 8
 	},
 /area/rogue)
 "rr" = (
 /obj/structure/closet/dirthole/closed,
 /obj/item/clothing/armor/cuirass/copperchest,
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/rogue)
 "rU" = (
 /obj/structure/closet/dirthole/closed,
@@ -201,7 +201,7 @@
 /obj/item/weapon/mace/copperbludgeon,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /mob/living/carbon/human/species/skeleton/npc/no_equipment,
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/rogue)
 "si" = (
 /obj/structure/flora/ausbushes/reedbush,
@@ -210,10 +210,10 @@
 "sF" = (
 /obj/structure/closet/dirthole/closed,
 /obj/item/weapon/mace/spiked,
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/rogue)
 "tc" = (
-/turf/closed/wall/mineral/rogue/decostone/end{
+/turf/closed/wall/mineral/decostone/end{
 	dir = 4
 	},
 /area/rogue)
@@ -222,14 +222,14 @@
 	pixel_x = -3;
 	pixel_y = 5
 	},
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "vd" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "vg" = (
-/turf/open/floor/rogue/cobblerock,
+/turf/open/floor/cobblerock,
 /area/rogue)
 "vl" = (
 /obj/structure/kneestingers,
@@ -237,7 +237,7 @@
 /area/rogue)
 "vH" = (
 /obj/effect/dungeon_directional_helper/north,
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/dirt/road,
 /area/rogue)
 "wj" = (
 /obj/structure/kneestingers{
@@ -248,28 +248,28 @@
 "wu" = (
 /obj/structure/closet/dirthole/closed,
 /mob/living/carbon/human/species/skeleton/npc/ambush,
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/rogue)
 "xc" = (
 /obj/structure/roguerock,
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/dirt/road,
 /area/rogue)
 "xy" = (
 /obj/structure/closet/dirthole/closed,
 /obj/effect/spawner/roguemap/loot/common,
 /mob/living/carbon/human/species/skeleton/npc/warrior,
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/dirt/road,
 /area/rogue)
 "xP" = (
 /obj/structure/gravemarker,
 /obj/structure/closet/dirthole/closed/loot,
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/rogue)
 "yG" = (
 /obj/structure/closet/dirthole/closed,
 /mob/living/carbon/human/species/skeleton/npc/warrior/skilled,
 /obj/effect/spawner/roguemap/loot/armor,
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/rogue)
 "yN" = (
 /turf/closed/mineral/rogue,
@@ -283,7 +283,7 @@
 	pixel_x = 9;
 	pixel_y = 5
 	},
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "AF" = (
 /obj/item/grown/log/tree/small,
@@ -292,21 +292,21 @@
 "AG" = (
 /obj/structure/gravemarker,
 /obj/structure/closet/dirthole/closed/loot,
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/dirt/road,
 /area/rogue)
 "AQ" = (
 /obj/item/restraints/legcuffs/beartrap/armed/camouflage,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "Bh" = (
 /obj/structure/kneestingers{
 	icon_state = "glowshroom_A3"
 	},
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/rogue)
 "BF" = (
 /obj/structure/roguerock,
-/turf/open/floor/rogue/cobblerock,
+/turf/open/floor/cobblerock,
 /area/rogue)
 "Cj" = (
 /obj/item/ingot/gold,
@@ -322,29 +322,29 @@
 /area/rogue)
 "Co" = (
 /obj/effect/decal/cleanable/blood/old,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "Cq" = (
 /obj/item/natural/rock,
-/turf/open/floor/rogue/cobblerock,
+/turf/open/floor/cobblerock,
 /area/rogue)
 "CI" = (
 /obj/structure/kneestingers,
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/rogue)
 "CZ" = (
 /obj/structure/closet/dirthole/closed,
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/rogue)
 "Dz" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor/rogue/cobblerock,
+/turf/open/floor/cobblerock,
 /area/rogue)
 "DA" = (
 /obj/structure/closet/dirthole/grave,
 /obj/structure/closet/burial_shroud,
 /obj/item/weapon/shield/wood,
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/dirt/road,
 /area/rogue)
 "DH" = (
 /obj/item/natural/stone{
@@ -355,7 +355,7 @@
 	pixel_x = -3;
 	pixel_y = 7
 	},
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "Ei" = (
 /obj/item/kitchen/spoon/iron{
@@ -377,7 +377,7 @@
 	pixel_x = -8;
 	pixel_y = 3
 	},
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "Eq" = (
 /obj/item/natural/stone{
@@ -388,11 +388,11 @@
 	pixel_x = -6;
 	pixel_y = -7
 	},
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "EE" = (
 /obj/item/natural/dirtclod,
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/rogue)
 "EP" = (
 /mob/living/carbon/human/species/skeleton/npc/ambush,
@@ -400,20 +400,20 @@
 /area/rogue)
 "Ft" = (
 /mob/living/carbon/human/species/skeleton/npc/ambush,
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/dirt/road,
 /area/rogue)
 "Fy" = (
 /obj/structure/kneestingers{
 	icon_state = "glowshroom_A1"
 	},
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/rogue)
 "GC" = (
 /turf/open/water/swamp/deep,
 /area/rogue)
 "GJ" = (
 /obj/effect/dungeon_directional_helper/west,
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/dirt/road,
 /area/rogue)
 "Hc" = (
 /mob/living/carbon/human/species/skeleton/npc/no_equipment,
@@ -423,73 +423,73 @@
 /obj/item/clothing/shirt/robe/necra,
 /obj/item/clothing/head/padded/deathshroud,
 /obj/item/clothing/neck/psycross/silver/necra,
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/dirt/road,
 /area/rogue)
 "IB" = (
 /obj/item/natural/rock/random,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "IP" = (
 /obj/machinery/light/rogue/firebowl/standing/blue,
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/dirt/road,
 /area/rogue)
 "Lx" = (
 /obj/structure/closet/dirthole/grave,
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/dirt/road,
 /area/rogue)
 "Ly" = (
 /obj/structure/closet/dirthole/grave,
 /obj/structure/closet/burial_shroud,
 /mob/living/carbon/human/species/skeleton/npc/no_equipment,
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/rogue)
 "MV" = (
 /obj/effect/decal/cleanable/blood/old,
 /obj/effect/spawner/roguemap/beartrap,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "MX" = (
 /obj/structure/grindwheel,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "Nq" = (
 /turf/open/water/swamp,
 /area/rogue)
 "Nr" = (
 /obj/machinery/light/rogue/torchholder/r,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "NC" = (
-/turf/open/floor/rogue/grass/yel,
+/turf/open/floor/grass/yel,
 /area/rogue)
 "Oh" = (
 /obj/item/natural/rock/gemerald,
-/turf/open/floor/rogue/cobblerock,
+/turf/open/floor/cobblerock,
 /area/rogue)
 "OL" = (
 /obj/structure/kneestingers{
 	icon_state = "glowshroom_A2"
 	},
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/rogue)
 "OW" = (
 /obj/structure/closet/dirthole/closed,
 /mob/living/carbon/human/species/skeleton/npc/ambush,
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/dirt/road,
 /area/rogue)
 "Pt" = (
 /obj/effect/spawner/roguemap/beartrap,
-/turf/open/floor/rogue/cobblerock,
+/turf/open/floor/cobblerock,
 /area/rogue)
 "PD" = (
 /obj/item/clothing/cloak/raincloak/mortus,
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/dirt/road,
 /area/rogue)
 "Qk" = (
 /obj/structure/closet/dirthole/closed,
 /obj/effect/landmark/chest_or_mimic,
 /obj/item/roguegem,
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/rogue)
 "QX" = (
 /obj/item/clothing/head/jester,
@@ -500,37 +500,37 @@
 /obj/item/handheld_bell,
 /mob/living/carbon/human/species/skeleton/npc/no_equipment,
 /obj/item/kitchen/fork/iron,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "Rk" = (
 /obj/structure/closet/dirthole/closed,
 /obj/item/weapon/shield/wood,
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/dirt/road,
 /area/rogue)
 "Sk" = (
 /obj/structure/stairs/stone,
-/turf/open/floor/rogue/herringbone,
+/turf/open/floor/herringbone,
 /area/rogue)
 "SP" = (
 /obj/structure/kneestingers{
 	icon_state = "glowshroom2"
 	},
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/rogue)
 "SY" = (
 /obj/effect/dungeon_directional_helper/south,
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/dirt/road,
 /area/rogue)
 "Vc" = (
 /obj/structure/flora/roguegrass/bush,
-/turf/open/floor/rogue/grass/yel,
+/turf/open/floor/grass/yel,
 /area/rogue)
 "Wk" = (
 /mob/living/carbon/human/species/skeleton/npc/no_equipment,
 /obj/item/weapon/shovel,
 /obj/item/clothing/head/padded/deathshroud,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/dirt/road,
 /area/rogue)
 "WI" = (
 /obj/structure/kneestingers{
@@ -540,10 +540,10 @@
 /area/rogue)
 "Xc" = (
 /obj/item/grown/log/tree/small,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "XK" = (
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/dirt/road,
 /area/rogue)
 "XO" = (
 /obj/structure/flora/rogueshroom,
@@ -551,14 +551,14 @@
 /area/rogue)
 "XV" = (
 /obj/item/natural/dirtclod,
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/dirt/road,
 /area/rogue)
 "XW" = (
-/turf/closed/wall/mineral/rogue/decostone,
+/turf/closed/wall/mineral/decostone,
 /area/rogue)
 "Yg" = (
 /obj/structure/closet/dirthole/closed,
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/dirt/road,
 /area/rogue)
 
 (1,1,1) = {"

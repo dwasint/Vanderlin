@@ -115,8 +115,8 @@
 /obj/machinery/crop/Destroy(force=FALSE)
 	if(myseed)
 		QDEL_NULL(myseed)
-	if(istype(loc, /turf/open/floor/rogue/dirt))
-		var/turf/open/floor/rogue/dirt/T = loc
+	if(istype(loc, /turf/open/floor/dirt))
+		var/turf/open/floor/dirt/T = loc
 		if(T.planted_crop == src)
 			T.planted_crop = null
 	. = ..()

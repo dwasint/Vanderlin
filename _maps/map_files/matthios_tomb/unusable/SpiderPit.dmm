@@ -4,11 +4,11 @@
 /area/rogue)
 "b" = (
 /obj/item/clothing/pants/chainlegs/iron,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "c" = (
 /obj/item/restraints/legcuffs/beartrap/armed/camouflage,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "f" = (
 /turf/closed/mineral/rogue/bedrock,
@@ -19,15 +19,15 @@
 /area/rogue)
 "h" = (
 /obj/structure/spider/stickyweb,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "i" = (
 /obj/effect/decal/remains/human,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "j" = (
 /mob/living/simple_animal/hostile/retaliate/spider,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "k" = (
 /obj/item/ingot/iron,
@@ -40,20 +40,20 @@
 	pixel_y = 4;
 	pixel_x = 7
 	},
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "l" = (
 /obj/item/clothing/armor/cuirass/iron,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "o" = (
 /obj/effect/decal/remains/human,
 /obj/effect/decal/cleanable/dirt/cobweb,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "p" = (
 /obj/item/clothing/pants/tights,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "q" = (
 /obj/effect/decal/remains/human,
@@ -62,73 +62,73 @@
 /obj/item/clothing/cloak/raincloak/furcloak/black{
 	pixel_x = 14
 	},
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "u" = (
 /obj/item/roguecoin/copper/pile,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "x" = (
 /obj/effect/decal/cleanable/dirt/cobweb/cobweb2,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "y" = (
 /obj/item/reagent_containers/food/snacks/cooked/sausage{
 	pixel_x = 14;
 	pixel_y = 4
 	},
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "B" = (
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "C" = (
 /mob/living/simple_animal/hostile/retaliate/spider,
 /obj/structure/spider/stickyweb,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "E" = (
 /obj/structure/spider/stickyweb/solo,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "F" = (
 /mob/living/simple_animal/hostile/retaliate/spider,
 /obj/effect/decal/cleanable/dirt/cobweb,
 /obj/item/storage/belt/pouch/coins/mid,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "G" = (
 /obj/item/statue/iron,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "H" = (
 /obj/structure/spider/stickyweb,
 /mob/living/simple_animal/hostile/retaliate/spider,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "K" = (
 /obj/item/storage/belt/leather/cloth,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "L" = (
 /obj/effect/decal/cleanable/dirt/cobweb,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "N" = (
 /obj/effect/landmark/ambush,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "P" = (
 /mob/living/simple_animal/hostile/retaliate/spider,
 /obj/effect/decal/remains/human,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "Q" = (
 /obj/item/clothing/shirt,
 /obj/item/clothing/shirt,
 /obj/item/clothing/shirt,
 /obj/item/clothing/shirt/rags,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "R" = (
 /obj/item/clothing/shirt/dress/gen/black,
@@ -136,17 +136,17 @@
 	pixel_x = 14;
 	pixel_y = -8
 	},
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "S" = (
 /obj/structure/spider/stickyweb,
 /obj/structure/spider/stickyweb,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "T" = (
 /obj/effect/decal/remains/human,
 /obj/structure/spider/stickyweb/solo,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "U" = (
 /obj/item/clothing/shirt/grenzelhoft{
@@ -160,20 +160,20 @@
 	pixel_x = -12;
 	pixel_y = -13
 	},
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "V" = (
 /obj/effect/decal/cleanable/dirt/cobweb/cobweb2,
 /obj/item/clothing/head/helmet/skullcap/grenzelhoft{
 	pixel_y = -15
 	},
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "W" = (
 /obj/effect/decal/remains/human,
 /obj/effect/decal/cleanable/dirt/cobweb,
 /obj/structure/spider/stickyweb/solo,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "Y" = (
 /obj/effect/decal/remains/human,

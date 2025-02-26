@@ -32,19 +32,19 @@
 	. = ..()
 	break_tile()
 
-/turf/open/floor/rogue/underworld/space/sparkle_quiet/fake_world/Initialize(mapload)
+/turf/open/floor/underworld/space/sparkle_quiet/fake_world/Initialize(mapload)
 	. = ..()
 	SSfake_world.fake_world_constructs |= src
 
-/turf/open/floor/rogue/underworld/space/sparkle_quiet/fake_world/Destroy()
+/turf/open/floor/underworld/space/sparkle_quiet/fake_world/Destroy()
 	. = ..()
 	SSfake_world.fake_world_constructs -= src
 
-/turf/closed/wall/mineral/rogue/underbrick/fake_world/Initialize(mapload)
+/turf/closed/wall/mineral/underbrick/fake_world/Initialize(mapload)
 	. = ..()
 	SSfake_world.fake_world_constructs |= src
 
-/turf/closed/wall/mineral/rogue/underbrick/fake_world/Destroy()
+/turf/closed/wall/mineral/underbrick/fake_world/Destroy()
 	. = ..()
 	SSfake_world.fake_world_constructs -= src
 

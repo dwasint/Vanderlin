@@ -2,16 +2,16 @@
 "aO" = (
 /obj/effect/decal/cleanable/sigil/N,
 /obj/machinery/light/rogue/wallfire/candle/blue,
-/turf/open/floor/rogue/ruinedwood/spiral,
+/turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "aY" = (
 /obj/machinery/light/rogue/wallfire/candle/blue,
 /obj/structure/table/vtable,
 /obj/item/storage/belt/pouch,
-/turf/open/floor/rogue/ruinedwood/spiral,
+/turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "bv" = (
-/turf/open/floor/rogue/rooftop{
+/turf/open/floor/rooftop{
 	dir = 4
 	},
 /area/rogue)
@@ -22,10 +22,10 @@
 /obj/structure/mineral_door/wood/fancywood{
 	locked = 1
 	},
-/turf/open/floor/rogue/ruinedwood/spiral,
+/turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "cO" = (
-/turf/open/floor/rogue/tile,
+/turf/open/floor/tile,
 /area/rogue)
 "cV" = (
 /obj/item/roguecoin/copper/pile,
@@ -33,23 +33,23 @@
 /area/rogue)
 "dh" = (
 /obj/structure/stairs/d,
-/turf/open/floor/rogue/ruinedwood/spiral,
+/turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "dT" = (
 /obj/effect/decal/cleanable/sigil/NW,
-/turf/open/floor/rogue/ruinedwood/spiral,
+/turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "gI" = (
 /obj/structure/stairs,
-/turf/open/floor/rogue/tile,
+/turf/open/floor/tile,
 /area/rogue)
 "hR" = (
 /obj/machinery/light/rogue/wallfire/candle/blue/r,
-/turf/open/floor/rogue/ruinedwood/spiral,
+/turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "iZ" = (
 /obj/effect/dungeon_directional_helper/north,
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/rogue)
 "kc" = (
 /obj/item/bath/soap{
@@ -66,21 +66,21 @@
 "mh" = (
 /obj/structure/closet/crate/crafted_closet/inn,
 /mob/living/simple_animal/hostile/rogue/skeleton/guard,
-/turf/open/floor/rogue/ruinedwood/spiral,
+/turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "mx" = (
 /obj/effect/decal/cleanable/sigil/SW,
-/turf/open/floor/rogue/ruinedwood/spiral,
+/turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "mF" = (
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/rogue)
 "nn" = (
 /mob/living/simple_animal/hostile/rogue/skeleton/guard,
-/turf/open/floor/rogue/ruinedwood/spiral,
+/turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "nu" = (
-/turf/open/floor/rogue/rooftop{
+/turf/open/floor/rooftop{
 	dir = 8
 	},
 /area/rogue)
@@ -94,14 +94,14 @@
 	pixel_y = 23;
 	pixel_x = 14
 	},
-/turf/open/floor/rogue/ruinedwood/spiral,
+/turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "oY" = (
 /obj/structure/mineral_door/swing_door,
 /obj/item/bath/soap{
 	pixel_y = -5
 	},
-/turf/open/floor/rogue/tile,
+/turf/open/floor/tile,
 /area/rogue)
 "pA" = (
 /obj/structure/rack/rogue/shelf/big,
@@ -112,14 +112,14 @@
 	pixel_y = 24;
 	pixel_x = 12
 	},
-/turf/open/floor/rogue/ruinedwood/spiral,
+/turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "pQ" = (
 /obj/effect/decal/cleanable/sigil/W,
-/turf/open/floor/rogue/ruinedwood/spiral,
+/turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "pR" = (
-/turf/open/floor/rogue/ruinedwood/spiral,
+/turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "rS" = (
 /obj/item/soap{
@@ -127,15 +127,15 @@
 	pixel_y = -5
 	},
 /obj/structure/mineral_door/swing_door,
-/turf/open/floor/rogue/ruinedwood/spiral,
+/turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "sm" = (
 /obj/item/roguecoin/copper/pile,
-/turf/open/floor/rogue/tile,
+/turf/open/floor/tile,
 /area/rogue)
 "tE" = (
 /obj/effect/dungeon_directional_helper/west,
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/rogue)
 "tJ" = (
 /obj/structure/rack/rogue/shelf/big,
@@ -146,20 +146,20 @@
 	pixel_x = 12;
 	pixel_y = 27
 	},
-/turf/open/floor/rogue/ruinedwood/spiral,
+/turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "uR" = (
-/turf/open/floor/rogue/rooftop{
+/turf/open/floor/rooftop{
 	dir = 1
 	},
 /area/rogue)
 "vx" = (
 /mob/living/simple_animal/hostile/rogue/skeleton/bow,
-/turf/open/floor/rogue/tile,
+/turf/open/floor/tile,
 /area/rogue)
 "wQ" = (
 /obj/effect/decal/cleanable/sigil/E,
-/turf/open/floor/rogue/ruinedwood/spiral,
+/turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "xx" = (
 /obj/machinery/light/rogue/wallfire/candle/blue,
@@ -168,11 +168,11 @@
 "Ao" = (
 /obj/machinery/light/rogue/wallfire/candle/blue,
 /obj/structure/closet/crate/drawer/inn,
-/turf/open/floor/rogue/ruinedwood/spiral,
+/turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "AL" = (
 /obj/effect/dungeon_directional_helper/east,
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/rogue)
 "BX" = (
 /mob/living/simple_animal/hostile/rogue/skeleton/spear,
@@ -181,14 +181,14 @@
 "CA" = (
 /obj/item/storage/belt/pouch,
 /obj/structure/table/vtable/v2,
-/turf/open/floor/rogue/ruinedwood/spiral,
+/turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "CU" = (
 /obj/effect/decal/cleanable/sigil/S,
-/turf/open/floor/rogue/ruinedwood/spiral,
+/turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "Ey" = (
-/turf/closed/wall/mineral/rogue/decowood,
+/turf/closed/wall/mineral/decowood,
 /area/rogue)
 "EQ" = (
 /obj/structure/table/vtable,
@@ -196,34 +196,34 @@
 	pixel_y = 8;
 	pixel_x = 6
 	},
-/turf/open/floor/rogue/ruinedwood/spiral,
+/turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "Fc" = (
 /obj/effect/dungeon_directional_helper/south,
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/rogue)
 "Fx" = (
 /obj/structure/bed/rogue/inn/double,
 /obj/item/bedsheet/rogue/fabric_double,
-/turf/open/floor/rogue/ruinedwood/spiral,
+/turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "FL" = (
 /obj/effect/decal/cleanable/sigil/NE,
-/turf/open/floor/rogue/ruinedwood/spiral,
+/turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "Gb" = (
 /obj/structure/mineral_door/wood/fancywood{
 	locked = 1
 	},
-/turf/open/floor/rogue/ruinedwood/spiral,
+/turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "Gp" = (
 /mob/living/simple_animal/hostile/rogue/skeleton/bow,
-/turf/open/floor/rogue/ruinedwood/spiral,
+/turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "Hv" = (
 /obj/structure/mineral_door/swing_door,
-/turf/open/floor/rogue/tile,
+/turf/open/floor/tile,
 /area/rogue)
 "JI" = (
 /turf/open/water/swamp/deep,
@@ -232,7 +232,7 @@
 /obj/machinery/light/rogue/wallfire/candle/blue,
 /obj/structure/bed/rogue/shit,
 /mob/living/simple_animal/hostile/rogue/skeleton,
-/turf/open/floor/rogue/ruinedwood/spiral,
+/turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "KT" = (
 /obj/structure/rack/rogue/shelf/big,
@@ -243,7 +243,7 @@
 	pixel_y = 27;
 	pixel_x = 13
 	},
-/turf/open/floor/rogue/ruinedwood/spiral,
+/turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "Mj" = (
 /obj/machinery/light/rogue/wallfire/candle/blue,
@@ -265,7 +265,7 @@
 	pixel_y = 10;
 	pixel_x = 10
 	},
-/turf/open/floor/rogue/ruinedwood/spiral,
+/turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "PM" = (
 /obj/effect/decal/cleanable/sigil,
@@ -291,18 +291,18 @@
 	pixel_y = -13;
 	pixel_x = 14
 	},
-/turf/open/floor/rogue/ruinedwood/spiral,
+/turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "PQ" = (
 /obj/machinery/light/rogue/wallfire/candle/blue/l,
-/turf/open/floor/rogue/ruinedwood/spiral,
+/turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "Qs" = (
 /obj/effect/decal/cleanable/sigil/SE,
-/turf/open/floor/rogue/ruinedwood/spiral,
+/turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "Qw" = (
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/rogue)
 "RG" = (
 /turf/closed/mineral/rogue/bedrock,
@@ -321,22 +321,22 @@
 /area/rogue)
 "Vw" = (
 /mob/living/carbon/human/species/zizombie/npc/militiamen,
-/turf/open/floor/rogue/ruinedwood/spiral,
+/turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "Yr" = (
-/turf/open/floor/rogue/rooftop,
+/turf/open/floor/rooftop,
 /area/rogue)
 "Yy" = (
 /obj/machinery/light/rogue/wallfire/candle/blue,
-/turf/open/floor/rogue/tile,
+/turf/open/floor/tile,
 /area/rogue)
 "YP" = (
 /obj/structure/bed/rogue/shit,
 /mob/living/simple_animal/hostile/rogue/skeleton,
-/turf/open/floor/rogue/ruinedwood/spiral,
+/turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "YZ" = (
-/turf/closed/wall/mineral/rogue/decowood/vert,
+/turf/closed/wall/mineral/decowood/vert,
 /area/rogue)
 "Zi" = (
 /turf/closed/indestructible/roguewindow,

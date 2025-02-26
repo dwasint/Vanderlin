@@ -33,7 +33,7 @@
 	if(soil)
 		try_plant_seed(user, soil)
 		return
-	else if(istype(T, /turf/open/floor/rogue/dirt))
+	else if(istype(T, /turf/open/floor/dirt))
 		to_chat(user, span_notice("I begin making a mound for the seeds..."))
 		if(do_after(user, get_farming_do_time(user, 10 SECONDS), src))
 			apply_farming_fatigue(user, 30)

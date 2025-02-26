@@ -1,13 +1,13 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/rogue/outdoors/bog)
 "b" = (
 /turf/closed/mineral/rogue/bedrock,
 /area/rogue)
 "c" = (
 /obj/structure/flora/roguetree,
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/rogue/outdoors/bog)
 "d" = (
 /turf/closed/mineral/rogue/bedrock,
@@ -17,7 +17,7 @@
 /area/rogue/outdoors/bog)
 "f" = (
 /obj/machinery/light/rogue/firebowl/standing/blue,
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/dirt/road,
 /area/rogue/indoors/cave)
 "g" = (
 /turf/closed/mineral/random/rogue/high,
@@ -29,7 +29,7 @@
 /turf/open/water/cleanshallow,
 /area/rogue/indoors/cave)
 "j" = (
-/turf/closed/wall/mineral/rogue/craftstone,
+/turf/closed/wall/mineral/craftstone,
 /area/rogue/outdoors/bog)
 "k" = (
 /obj/structure/flora/roguetree,
@@ -40,7 +40,7 @@
 /area/rogue/indoors/cave)
 "m" = (
 /mob/living/simple_animal/hostile/retaliate/spider/mutated,
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/dirt/road,
 /area/rogue/outdoors/bog)
 "n" = (
 /obj/structure/flora/roguetree,
@@ -58,11 +58,11 @@
 /turf/open/water/swamp/deep,
 /area/rogue/outdoors/bog)
 "r" = (
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/rogue/indoors/cave)
 "s" = (
 /mob/living/simple_animal/hostile/retaliate/spider,
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/rogue/outdoors/bog)
 "t" = (
 /mob/living/simple_animal/hostile/retaliate/spider,
@@ -70,42 +70,42 @@
 /area/rogue/outdoors/bog)
 "u" = (
 /mob/living/simple_animal/hostile/retaliate/spider/mutated,
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/rogue/outdoors/bog)
 "v" = (
 /obj/structure/portal,
 /turf/closed/mineral/rogue/bedrock,
 /area/rogue/outdoors/bog)
 "w" = (
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/dirt/road,
 /area/rogue/indoors/cave)
 "x" = (
 /obj/effect/landmark/start/adventurerlate{
 	dir = 4
 	},
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/dirt/road,
 /area/rogue/outdoors/bog)
 "y" = (
-/turf/open/floor/rogue/hexstone,
+/turf/open/floor/hexstone,
 /area/rogue/outdoors/bog)
 "z" = (
 /obj/effect/landmark/start/adventurerlate{
 	dir = 8
 	},
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/dirt/road,
 /area/rogue/outdoors/bog)
 "B" = (
 /obj/effect/landmark/events/testportal{
 	aportalloc = "bog"
 	},
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/dirt/road,
 /area/rogue/outdoors/bog)
 "C" = (
 /obj/structure/flora/roguetree,
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/dirt/road,
 /area/rogue/outdoors/bog)
 "D" = (
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/dirt/road,
 /area/rogue/outdoors/bog)
 "F" = (
 /mob/living/simple_animal/hostile/retaliate/spider,
@@ -123,7 +123,7 @@
 /area/rogue/outdoors/bog)
 "U" = (
 /obj/machinery/light/rogue/firebowl/standing,
-/turf/open/floor/rogue/hexstone,
+/turf/open/floor/hexstone,
 /area/rogue/outdoors/bog)
 "V" = (
 /obj/effect/landmark/mapGenerator/rogue/bog{
@@ -141,7 +141,7 @@
 	aportalgoesto = "bogrtout";
 	aportalid = "bogrtin"
 	},
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/dirt/road,
 /area/rogue/outdoors/bog)
 "Z" = (
 /turf/closed/mineral/rogue/salt,

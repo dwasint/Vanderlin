@@ -17,23 +17,23 @@
 	aportalid = "decapin";
 	aallmig = "rwfielddecap"
 	},
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/dirt/road,
 /area/rogue/outdoors/mountains/decap)
 "k" = (
-/turf/closed/wall/mineral/rogue/craftstone,
+/turf/closed/wall/mineral/craftstone,
 /area/rogue/outdoors/mountains/decap)
 "s" = (
 /obj/machinery/light/rogue/firebowl/standing,
 /obj/structure/bars,
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/dirt/road,
 /area/rogue/outdoors/mountains/decap)
 "u" = (
-/turf/open/floor/rogue/hexstone,
+/turf/open/floor/hexstone,
 /area/rogue/outdoors/mountains/decap)
 "z" = (
 /obj/structure/portal,
 /obj/structure/bars,
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/dirt/road,
 /area/rogue/outdoors/mountains/decap)
 "B" = (
 /obj/effect/landmark/mapGenerator/rogue/decap{
@@ -47,34 +47,34 @@
 /area/rogue/outdoors/mountains/decap)
 "E" = (
 /obj/structure/bars,
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/dirt/road,
 /area/rogue/outdoors/mountains/decap)
 "G" = (
 /obj/machinery/light/rogue/campfire,
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/dirt/road,
 /area/rogue/outdoors/mountains/decap)
 "I" = (
 /turf/closed/mineral/random/rogue/high,
 /area/rogue/outdoors/mountains/decap)
 "M" = (
-/turf/open/floor/rogue/volcanic,
+/turf/open/floor/volcanic,
 /area/rogue/outdoors/mountains/decap)
 "S" = (
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/dirt/road,
 /area/rogue/outdoors/mountains/decap)
 "U" = (
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/rogue/outdoors/mountains/decap)
 "V" = (
 /obj/machinery/light/rogue/firebowl/standing,
-/turf/open/floor/rogue/hexstone,
+/turf/open/floor/hexstone,
 /area/rogue/outdoors/mountains/decap)
 "Y" = (
 /obj/structure/fluff/traveltile{
 	aportalgoesto = "forestdecapin";
 	aportalid = "forestdecapout"
 	},
-/turf/open/floor/rogue/dirt/road,
+/turf/open/floor/dirt/road,
 /area/rogue/outdoors/mountains/decap)
 
 (1,1,1) = {"

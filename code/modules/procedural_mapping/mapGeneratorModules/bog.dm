@@ -11,7 +11,7 @@
 
 /datum/mapGeneratorModule/bog
 	clusterCheckFlags = CLUSTER_CHECK_DIFFERENT_ATOMS
-	allowed_turfs = list(/turf/open/floor/rogue/dirt, /turf/open/floor/rogue/grass)
+	allowed_turfs = list(/turf/open/floor/dirt, /turf/open/floor/grass)
 	spawnableAtoms = list(/obj/structure/flora/roguetree = 1,
 							/obj/structure/flora/roguegrass/bush_meagre = 7,
 							/obj/structure/flora/roguegrass/bush_meagre/bog = 4,

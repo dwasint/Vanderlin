@@ -7,7 +7,7 @@
 	var/smooth_icon = 'icons/turf/smoothrocks.dmi'
 	smooth = SMOOTH_MORE|SMOOTH_BORDER
 	canSmoothWith = null
-	baseturfs = list(/turf/open/floor/rogue/naturalstone)
+	baseturfs = list(/turf/open/floor/naturalstone)
 	opacity = 1
 	density = TRUE
 	var/environment_type = "asteroid"
@@ -52,7 +52,7 @@
 					Spread(T)
 	var/turf/open/transparent/openspace/target = get_step_multiz(src, UP)
 	if(istype(target))
-		target.ChangeTurf(/turf/open/floor/rogue/naturalstone)
+		target.ChangeTurf(/turf/open/floor/naturalstone)
 
 /turf/closed/mineral/get_smooth_underlay_icon(mutable_appearance/underlay_appearance, turf/asking_turf, adjacency_dir)
 	if(turf_type)
@@ -209,9 +209,9 @@
 	smooth_icon = 'icons/turf/walls/cwall.dmi'
 	wallclimb = TRUE
 	canSmoothWith = list(/turf/closed/mineral/random/rogue, /turf/closed/mineral/rogue)
-	turf_type = /turf/open/floor/rogue/naturalstone
-	above_floor = /turf/open/floor/rogue/naturalstone
-	baseturfs = list(/turf/open/floor/rogue/naturalstone)
+	turf_type = /turf/open/floor/naturalstone
+	above_floor = /turf/open/floor/naturalstone
+	baseturfs = list(/turf/open/floor/naturalstone)
 	mineralSpawnChanceList = list(/turf/closed/mineral/rogue/salt = 20, /turf/closed/mineral/rogue/copper = 15, ,/turf/closed/mineral/rogue/tin = 12, /turf/closed/mineral/rogue/iron = 5, /turf/closed/mineral/rogue/coal = 5)
 	mineralChance = 30
 	max_integrity = 400
@@ -268,11 +268,11 @@
 	smooth_icon = 'icons/turf/walls/cwall.dmi'
 	wallclimb = TRUE
 	canSmoothWith = list(/turf/closed/mineral/random/rogue, /turf/closed/mineral/rogue)
-	turf_type = /turf/open/floor/rogue/naturalstone
-	baseturfs = /turf/open/floor/rogue/naturalstone
+	turf_type = /turf/open/floor/naturalstone
+	baseturfs = /turf/open/floor/naturalstone
 	mineralAmt = 1
 	max_integrity = 500
-	above_floor = /turf/open/floor/rogue/naturalstone
+	above_floor = /turf/open/floor/naturalstone
 	mineralType = null
 	rockType = null
 	spreadChance = 0

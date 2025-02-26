@@ -142,9 +142,9 @@
 	SStreesetup.initialize_me |= src
 	build_trees()
 	update_icon()
-	if(istype(loc, /turf/open/floor/rogue/grass))
+	if(istype(loc, /turf/open/floor/grass))
 		var/turf/T = loc
-		T.ChangeTurf(/turf/open/floor/rogue/dirt)
+		T.ChangeTurf(/turf/open/floor/dirt)
 
 /obj/structure/flora/newtree/proc/FellTree(damage_type)
 	var/turf/NT = get_turf(src)

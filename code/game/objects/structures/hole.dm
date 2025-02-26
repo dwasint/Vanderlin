@@ -5,7 +5,7 @@
 	icon = 'icons/turf/roguefloor.dmi'
 	var/stage = 1
 	var/mutable_appearance/abovemob
-	var/turf/open/floor/rogue/dirt/mastert
+	var/turf/open/floor/dirt/mastert
 	var/faildirt = 0
 	mob_storage_capacity = 3
 	allow_dense = TRUE
@@ -300,7 +300,7 @@
 	abovemob = mutable_appearance('icons/turf/roguefloor.dmi', "grave_above")
 	abovemob.layer = ABOVE_MOB_LAYER
 	update_icon()
-	var/turf/open/floor/rogue/dirt/T = loc
+	var/turf/open/floor/dirt/T = loc
 	if(istype(T))
 		mastert = T
 		T.holie = src
