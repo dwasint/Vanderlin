@@ -2377,7 +2377,7 @@
 /obj/item/weapon/axe/boneaxe,
 /obj/item/weapon/axe/boneaxe,
 /obj/item/clothing/wrists/roguetown/bracers/leather,
-/obj/item/clothing/mask/rogue/skullmask,
+/obj/item/clothing/face/skullmask,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "Gm" = (
@@ -3028,7 +3028,7 @@
 /turf/open/floor/rogue/carpet,
 /area/rogue/under/mountains/anvil/dungeon)
 "Ou" = (
-/obj/item/clothing/mask/rogue/facemask/goldmask,
+/obj/item/clothing/face/facemask/goldmask,
 /obj/item/clothing/wrists/roguetown/bracers/hoplite,
 /obj/item/clothing/neck/roguetown/gorget/hoplite,
 /obj/item/weapon/polearm/spear/hoplite/winged,
@@ -3668,7 +3668,7 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "WF" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/mask/rogue/spectacles/golden,
+/obj/item/clothing/face/spectacles/golden,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "WJ" = (

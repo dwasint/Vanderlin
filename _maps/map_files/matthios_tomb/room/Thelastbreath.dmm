@@ -2118,7 +2118,7 @@
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /obj/item/clothing/gloves/roguetown/leather/phys,
 /obj/item/clothing/head/roguehood/phys,
-/obj/item/clothing/mask/rogue/phys,
+/obj/item/clothing/face/phys,
 /obj/item/clothing/neck/roguetown/phys,
 /obj/item/clothing/suit/roguetown/shirt/robe/phys,
 /obj/item/weapon/surgery/scalpel,

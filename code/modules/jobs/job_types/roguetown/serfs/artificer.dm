@@ -53,7 +53,7 @@
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
 	beltl = /obj/item/key/artificer
-	mask = /obj/item/clothing/mask/rogue/goggles
+	mask = /obj/item/clothing/face/goggles
 	backl = /obj/item/storage/backpack/rogue/backpack
 	id = /obj/item/clothing/ring/silver/makers_guild
 	backpack_contents = list(/obj/item/weapon/hammer/steel = 1, /obj/item/key/artificer = 1, /obj/item/flashlight/flare/torch/lantern, /obj/item/weapon/knife/villager)

@@ -70,7 +70,7 @@
 /obj/structure/table/wood/plain/alt,
 /obj/item/weapon/pitchfork/copper,
 /obj/item/reagent_containers/glass/cup/wooden,
-/obj/item/clothing/mask/cigarette/pipe,
+/obj/item/clothing/face/cigarette/pipe,
 /obj/item/reagent_containers/food/snacks/produce/swampweed_dried,
 /turf/open/floor/rogue/blocks/paving/vert,
 /area/rogue/outdoors/caves)
@@ -230,7 +230,7 @@
 /area/rogue/outdoors/caves)
 "Yi" = (
 /obj/structure/table/wood/nice/decorated_alt,
-/obj/item/clothing/mask/rogue/facemask/goldmask,
+/obj/item/clothing/face/facemask/goldmask,
 /obj/item/roguecoin/gold/pile,
 /obj/item/storage/belt/rogue/leather/plaquegold,
 /obj/item/reagent_containers/food/snacks/rogue/cheddar/aged,

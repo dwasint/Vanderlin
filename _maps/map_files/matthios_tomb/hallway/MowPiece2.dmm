@@ -96,7 +96,7 @@
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue)
 "nE" = (
-/obj/item/clothing/mask/rogue/facemask/goldmask,
+/obj/item/clothing/face/facemask/goldmask,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue)
 "oE" = (
@@ -147,7 +147,7 @@
 /obj/structure/closet/crate/chest/old_crate,
 /obj/item/weapon/sword/rapier/silver,
 /obj/item/clothing/suit/roguetown/armor/cuirass,
-/obj/item/clothing/mask/rogue/facemask,
+/obj/item/clothing/face/facemask,
 /obj/item/organ/heart,
 /obj/effect/decal/cleanable/blood,
 /obj/item/reagent_containers/food/snacks/hardtack,

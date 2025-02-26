@@ -7,7 +7,7 @@
 /datum/supply_pack/rogue/narcotics/sigs
 	name = "Pipe Weed Zig"
 	cost = 5
-	contains = /obj/item/clothing/mask/cigarette/rollie/nicotine
+	contains = /obj/item/clothing/face/cigarette/rollie/nicotine
 
 /datum/supply_pack/rogue/narcotics/zigbox
 	name = "Zigbox"

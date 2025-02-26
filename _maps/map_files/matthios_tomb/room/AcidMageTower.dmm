@@ -887,7 +887,7 @@
 /area/rogue/indoors)
 "FV" = (
 /obj/structure/table/vtable/v2,
-/obj/item/clothing/mask/rogue/facemask/goldmask,
+/obj/item/clothing/face/facemask/goldmask,
 /turf/open/floor/rogue/tile/masonic/spiral,
 /area/rogue/indoors)
 "Gb" = (

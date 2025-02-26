@@ -41,7 +41,7 @@
 /datum/supply_pack/rogue/jewelry/spectacles_golden
 	name = "Golden Spectacles"
 	cost = 40
-	contains = /obj/item/clothing/mask/rogue/spectacles/golden
+	contains = /obj/item/clothing/face/spectacles/golden
 
 /datum/supply_pack/rogue/jewelry/nomag
 	name = "Ring of Null Magic"

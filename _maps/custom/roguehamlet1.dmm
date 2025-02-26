@@ -146,7 +146,7 @@
 	icon_state = "longtable_mid";
 	dir = 1
 	},
-/obj/item/clothing/mask/cigarette/pipe,
+/obj/item/clothing/face/cigarette/pipe,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/garrison)
 "akk" = (
@@ -700,7 +700,7 @@
 	icon_state = "largetable";
 	dir = 8
 	},
-/obj/item/clothing/mask/rogue/facemask/prisoner,
+/obj/item/clothing/face/facemask/prisoner,
 /obj/item/clothing/glasses/blindfold/white{
 	name = "blindfold"
 	},
@@ -1041,7 +1041,6 @@
 	},
 /area/rogue/outdoors/town/roofs)
 "biW" = (
-/obj/item/clothing/mask/rat/raven,
 /turf/open/floor/rogue/dirt,
 /area/rogue/indoors)
 "bjG" = (
@@ -1806,7 +1805,7 @@
 	})
 "bYh" = (
 /obj/structure/bed/rogue/shit,
-/obj/item/clothing/mask/cigarette/rollie/cannabis,
+/obj/item/clothing/face/cigarette/rollie/cannabis,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/garrison)
 "bYY" = (
@@ -2412,7 +2411,7 @@
 /obj/item/neuFarm/seed/apple,
 /obj/item/neuFarm/seed/apple,
 /obj/item/neuFarm/seed/westleach,
-/obj/item/clothing/mask/cigarette/pipe/westman,
+/obj/item/clothing/face/cigarette/pipe/westman,
 /obj/structure/closet/crate/roguecloset/inn/chest,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
@@ -2527,7 +2526,7 @@
 /obj/structure/closet/crate/roguecloset/lord{
 	lockid = "nightman"
 	},
-/obj/item/clothing/mask/cigarette/pipe/westman,
+/obj/item/clothing/face/cigarette/pipe/westman,
 /obj/item/storage/box/matches,
 /turf/open/floor/rogue/greenstone,
 /area/rogue/indoors/town/bath)
@@ -3269,7 +3268,7 @@
 /obj/item/reagent_containers/glass/bottle/rogue/wine{
 	pixel_x = 8
 	},
-/obj/item/clothing/mask/cigarette/rollie/nicotine{
+/obj/item/clothing/face/cigarette/rollie/nicotine{
 	pixel_x = -7;
 	pixel_y = -7
 	},
@@ -3516,7 +3515,7 @@
 /area/rogue/indoors/town/garrison)
 "dWm" = (
 /obj/structure/table/vtable/v2,
-/obj/item/clothing/mask/cigarette/pipe,
+/obj/item/clothing/face/cigarette/pipe,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors/town/bath)
 "dWu" = (
@@ -4382,7 +4381,7 @@
 /area/rogue/indoors/town)
 "eOs" = (
 /obj/structure/bed/rogue/shit,
-/obj/item/clothing/mask/cigarette/rollie/cannabis,
+/obj/item/clothing/face/cigarette/rollie/cannabis,
 /obj/structure/fluff/walldeco/wantedposter,
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/exposed/under/basement)
@@ -6015,7 +6014,7 @@
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
 	},
-/obj/item/clothing/mask/cigarette/pipe{
+/obj/item/clothing/face/cigarette/pipe{
 	pixel_y = 14
 	},
 /obj/item/reagent_containers/food/snacks/produce/dry_westleach{
@@ -7783,10 +7782,9 @@
 "iDQ" = (
 /obj/structure/closet/crate/roguecloset/crafted,
 /obj/item/clothing/head/jester,
-/obj/item/clothing/mask/gas/sexymime{
+/obj/item/clothing/face/gas/sexymime{
 	name = "pantomime mask"
 	},
-/obj/item/clothing/mask/pig,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/manor{
 	first_time_text = "Blackwine Manor"
@@ -9316,7 +9314,7 @@
 	pixel_x = -32
 	},
 /obj/structure/closet/crate/roguecloset/lord,
-/obj/item/clothing/mask/cigarette/pipe/westman,
+/obj/item/clothing/face/cigarette/pipe/westman,
 /obj/item/reagent_containers/food/snacks/produce/dry_westleach,
 /obj/item/reagent_containers/glass/bottle/rogue/wine,
 /obj/item/reagent_containers/glass/cup/golden,
@@ -10626,7 +10624,7 @@
 /obj/item/paper/scroll,
 /obj/item/weapon/knife/dagger/steel,
 /obj/item/reagent_containers/glass/bottle/rogue/poison,
-/obj/item/clothing/mask/cigarette/rollie/cannabis,
+/obj/item/clothing/face/cigarette/rollie/cannabis,
 /obj/item/reagent_containers/food/snacks/produce/jacksberry/poison,
 /turf/open/floor/rogue/ruinedwood/chevron,
 /area/rogue/indoors/town)
@@ -11323,8 +11321,6 @@
 /obj/structure/closet/crate/chest,
 /obj/item/rope/chain,
 /obj/item/rope/chain,
-/obj/item/clothing/mask/muzzle,
-/obj/item/clothing/mask/muzzle,
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/cell)
 "mrZ" = (
@@ -11336,7 +11332,7 @@
 /area/rogue/outdoors/town/roofs)
 "msB" = (
 /obj/structure/table/wood,
-/obj/item/clothing/mask/rogue/spectacles/golden,
+/obj/item/clothing/face/spectacles/golden,
 /obj/item/flashlight/lamp{
 	pixel_y = 13
 	},
@@ -11656,12 +11652,12 @@
 /area/rogue/outdoors/river)
 "mMb" = (
 /obj/item/key/mage,
-/obj/item/clothing/mask/cigarette/rollie/cannabis{
+/obj/item/clothing/face/cigarette/rollie/cannabis{
 	pixel_y = -10;
 	pixel_x = 10
 	},
 /obj/structure/chair/bench/couchablack,
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
 /turf/open/floor/rogue/tile/masonic/single,
 /area/rogue/indoors/town/magician)
 "mMc" = (
@@ -14475,7 +14471,7 @@
 /obj/item/clothing/head/wizhat,
 /obj/item/clothing/head/wizhat/gen,
 /obj/item/clothing/cloak/raincloak/blue,
-/obj/item/clothing/mask/cigarette/pipe/westman,
+/obj/item/clothing/face/cigarette/pipe/westman,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/magician)
 "pro" = (
@@ -15226,7 +15222,7 @@
 	})
 "qlN" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/mask/cigarette/rollie/cannabis,
+/obj/item/clothing/face/cigarette/rollie/cannabis,
 /turf/open/floor/rogue/tile/masonic/single,
 /area/rogue/indoors/town/magician)
 "qlR" = (
@@ -15430,7 +15426,6 @@
 	dir = 8
 	},
 /obj/item/weapon/mace/woodclub,
-/obj/item/clothing/mask/muzzle,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/cell)
 "qwN" = (
@@ -15598,7 +15593,7 @@
 	})
 "qHN" = (
 /obj/machinery/light/rogue/hearth,
-/obj/item/clothing/mask/rogue/facemask/prisoner,
+/obj/item/clothing/face/facemask/prisoner,
 /obj/effect/decal/cobbleedge{
 	dir = 1;
 	icon_state = "borderfall"
@@ -15833,7 +15828,7 @@
 	dir = 10
 	},
 /obj/item/storage/box/matches,
-/obj/item/clothing/mask/cigarette/pipe,
+/obj/item/clothing/face/cigarette/pipe,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/manor{
 	first_time_text = "Blackwine Manor"
@@ -15951,8 +15946,6 @@
 /obj/item/candle,
 /obj/item/candle,
 /obj/item/candle,
-/obj/item/clothing/mask/rat/jackal,
-/obj/item/clothing/mask/muzzle,
 /obj/item/clothing/head/nun,
 /obj/item/clothing/suit/roguetown/armor/amazon_chainkini,
 /obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy,
@@ -17647,7 +17640,7 @@
 	lockid = "nightman"
 	},
 /obj/item/reagent_containers/glass/bottle/rogue/wine,
-/obj/item/clothing/mask/cigarette/rollie/trippy,
+/obj/item/clothing/face/cigarette/rollie/trippy,
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/under/town/basement)
 "sMr" = (
@@ -17969,8 +17962,8 @@
 	locked = 1;
 	lockid = "woodsm"
 	},
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
 /obj/item/paper/scroll,
 /obj/item/natural/feather,
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -19654,13 +19647,13 @@
 	lockid = "merchant";
 	name = "Tobacco Locker"
 	},
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
 /obj/item/reagent_containers/food/snacks/produce/dry_westleach,
 /obj/item/reagent_containers/food/snacks/produce/dry_westleach,
-/obj/item/clothing/mask/cigarette/pipe,
+/obj/item/clothing/face/cigarette/pipe,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/shop)
 "uOM" = (
@@ -22715,7 +22708,7 @@
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
 	},
-/obj/item/clothing/mask/cigarette/pipe,
+/obj/item/clothing/face/cigarette/pipe,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/exposed/town)
 "xQC" = (

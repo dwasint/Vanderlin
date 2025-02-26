@@ -145,7 +145,7 @@
 /datum/supply_pack/rogue/tools/wpipe
 	name = "Westman Pipe"
 	cost = 10
-	contains = /obj/item/clothing/mask/cigarette/pipe/westman
+	contains = /obj/item/clothing/face/cigarette/pipe/westman
 
 /datum/supply_pack/rogue/tools/fishingrod
 	name = "Fishing Rod"

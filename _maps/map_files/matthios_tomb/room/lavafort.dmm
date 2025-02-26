@@ -180,7 +180,7 @@
 /area/rogue)
 "mZ" = (
 /obj/structure/closet/crate/chest/wicker,
-/obj/item/clothing/mask/rogue/spectacles/golden,
+/obj/item/clothing/face/spectacles/golden,
 /turf/open/floor/carpet/royalblack,
 /area/rogue)
 "nc" = (

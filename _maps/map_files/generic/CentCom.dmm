@@ -203,16 +203,16 @@
 /area/rogue)
 "ax" = (
 /obj/structure/table/wood/reinforced,
-/obj/item/clothing/mask/rogue/facemask,
-/obj/item/clothing/mask/rogue/facemask,
-/obj/item/clothing/mask/rogue/facemask,
-/obj/item/clothing/mask/rogue/facemask/steel,
-/obj/item/clothing/mask/rogue/facemask/steel,
-/obj/item/clothing/mask/rogue/facemask/steel,
-/obj/item/clothing/mask/rogue/lordmask,
-/obj/item/clothing/mask/rogue/lordmask,
-/obj/item/clothing/mask/rogue/lordmask/l,
-/obj/item/clothing/mask/rogue/lordmask/l,
+/obj/item/clothing/face/facemask,
+/obj/item/clothing/face/facemask,
+/obj/item/clothing/face/facemask,
+/obj/item/clothing/face/facemask/steel,
+/obj/item/clothing/face/facemask/steel,
+/obj/item/clothing/face/facemask/steel,
+/obj/item/clothing/face/lordmask,
+/obj/item/clothing/face/lordmask,
+/obj/item/clothing/face/lordmask/l,
+/obj/item/clothing/face/lordmask/l,
 /turf/open/floor/rogue/carpet,
 /area/rogue)
 "ay" = (
@@ -729,7 +729,7 @@
 /area/rogue/indoors/vampire_manor)
 "bR" = (
 /obj/structure/table/vtable,
-/obj/item/clothing/mask/cigarette/pipe/westman{
+/obj/item/clothing/face/cigarette/pipe/westman{
 	pixel_y = 10
 	},
 /obj/item/reagent_containers/food/snacks/produce/dry_westleach{
@@ -2608,13 +2608,13 @@
 /area/rogue)
 "vX" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/clothing/mask/rogue/spectacles/golden,
-/obj/item/clothing/mask/rogue/spectacles/golden,
-/obj/item/clothing/mask/rogue/spectacles/golden,
-/obj/item/clothing/mask/rogue/spectacles/golden,
-/obj/item/clothing/mask/rogue/spectacles,
-/obj/item/clothing/mask/rogue/spectacles,
-/obj/item/clothing/mask/rogue/spectacles,
+/obj/item/clothing/face/spectacles/golden,
+/obj/item/clothing/face/spectacles/golden,
+/obj/item/clothing/face/spectacles/golden,
+/obj/item/clothing/face/spectacles/golden,
+/obj/item/clothing/face/spectacles,
+/obj/item/clothing/face/spectacles,
+/obj/item/clothing/face/spectacles,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "wB" = (
@@ -2672,13 +2672,13 @@
 /area/rogue/outdoors/woods_safe)
 "xI" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
-/obj/item/clothing/mask/cigarette/rollie/cannabis,
-/obj/item/clothing/mask/cigarette/rollie/cannabis,
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/cannabis,
+/obj/item/clothing/face/cigarette/rollie/cannabis,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/vampire_manor)
 "xK" = (
@@ -2750,13 +2750,13 @@
 /area/rogue/indoors/bandit_lair)
 "yv" = (
 /obj/structure/closet/crate/chest/neu,
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
-/obj/item/clothing/mask/cigarette/rollie/cannabis,
-/obj/item/clothing/mask/cigarette/rollie/cannabis,
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/cannabis,
+/obj/item/clothing/face/cigarette/rollie/cannabis,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
 /turf/open/floor/rogue/ruinedwood/turned/darker,
 /area/rogue/indoors/bandit_lair)
 "yy" = (
@@ -2792,8 +2792,8 @@
 /area/rogue/indoors)
 "yP" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/clothing/mask/rogue/shepherd/rag,
-/obj/item/clothing/mask/rogue/shepherd/rag,
+/obj/item/clothing/face/shepherd/rag,
+/obj/item/clothing/face/shepherd/rag,
 /turf/open/floor/rogue/ruinedwood/darker,
 /area/rogue/indoors/bandit_lair)
 "yR" = (
@@ -3918,7 +3918,7 @@
 	pixel_x = 7;
 	pixel_y = 7
 	},
-/obj/item/clothing/mask/cigarette/pipe{
+/obj/item/clothing/face/cigarette/pipe{
 	pixel_x = -5;
 	pixel_y = 10
 	},
@@ -4168,7 +4168,7 @@
 	dir = 1;
 	icon_state = "largetable_mid"
 	},
-/obj/item/clothing/mask/rogue/druid,
+/obj/item/clothing/face/druid,
 /obj/item/clothing/head/padded/operavisage,
 /obj/item/clothing/head/priestmask,
 /turf/open/floor/rogue/wood,

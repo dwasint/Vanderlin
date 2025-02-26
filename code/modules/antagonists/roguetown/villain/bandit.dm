@@ -81,7 +81,7 @@
 			H.change_stat(STATKEY_CON, 1)
 
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-			beltr = /obj/item/clothing/mask/rogue/shepherd/rag
+			beltr = /obj/item/clothing/face/shepherd/rag
 			beltl = /obj/item/weapon/knife/hunting
 
 			if(H.age == AGE_OLD) //old deserters are experts with polearms
@@ -114,7 +114,7 @@
 				if (1) //worse leg protection, better neck protection, and a face mask
 					pants = /obj/item/clothing/pants/trou/leather
 					neck = /obj/item/clothing/neck/roguetown/chaincoif
-					mask = /obj/item/clothing/mask/rogue/facemask
+					mask = /obj/item/clothing/face/facemask
 				if (2) //better leg protection, worse neck protection
 					pants = /obj/item/clothing/pants/chainlegs/iron
 					neck = /obj/item/clothing/neck/roguetown/chaincoif/iron
@@ -142,7 +142,7 @@
 			beltr = /obj/item/weapon/knife/hunting
 			backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 			beltl = /obj/item/ammo_holder/quiver/arrows
-			mask = /obj/item/clothing/mask/rogue/shepherd/rag
+			mask = /obj/item/clothing/face/shepherd/rag
 
 			var/helmet2choose = pickweight(list("Hood" = 1, "Volfhelm" = 1))
 			switch(helmet2choose)
@@ -186,7 +186,7 @@
 			neck = /obj/item/clothing/neck/roguetown/coif
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 			pants = /obj/item/clothing/pants/trou/leather
-			beltl = /obj/item/clothing/mask/rogue/shepherd/rag
+			beltl = /obj/item/clothing/face/shepherd/rag
 			neck = /obj/item/clothing/neck/roguetown/coif
 
 			var/helmet2choose = pickweight(list("Leather helmet" = 2, "Volfhelm" = 2, "Coif" = 1))
@@ -206,7 +206,7 @@
 
 			if(H.age == AGE_OLD) //old brigands have been in the business for so long that they have managed to pick up some better gear along the way
 				armor = /obj/item/clothing/suit/roguetown/armor/leather/splint
-				mask = /obj/item/clothing/mask/rogue/facemask
+				mask = /obj/item/clothing/face/facemask
 
 			switch(pick(1,2,3,4))
 				if (1)

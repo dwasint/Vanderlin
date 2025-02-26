@@ -94,12 +94,12 @@ GLOBAL_LIST_EMPTY(lord_titles)
 		wrists = /obj/item/clothing/wrists/roguetown/royalsleeves
 
 		if(H.wear_mask)
-			if(istype(H.wear_mask, /obj/item/clothing/mask/rogue/eyepatch))
+			if(istype(H.wear_mask, /obj/item/clothing/face/eyepatch))
 				qdel(H.wear_mask)
-				mask = /obj/item/clothing/mask/rogue/lordmask
-			if(istype(H.wear_mask, /obj/item/clothing/mask/rogue/eyepatch/left))
+				mask = /obj/item/clothing/face/lordmask
+			if(istype(H.wear_mask, /obj/item/clothing/face/eyepatch/left))
 				qdel(H.wear_mask)
-				mask = /obj/item/clothing/mask/rogue/lordmask/l
+				mask = /obj/item/clothing/face/lordmask/l
 
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NOSEGRAB, TRAIT_GENERIC)

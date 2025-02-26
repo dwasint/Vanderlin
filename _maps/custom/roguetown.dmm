@@ -544,8 +544,8 @@
 /area/rogue/under/town/basement)
 "bZ" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/mask/rogue/spectacles/golden,
-/obj/item/clothing/mask/rogue/spectacles,
+/obj/item/clothing/face/spectacles/golden,
+/obj/item/clothing/face/spectacles,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/shop)
 "ca" = (
@@ -1788,7 +1788,7 @@
 /obj/structure/table/wood{
 	icon_state = "longtable"
 	},
-/obj/item/clothing/mask/cigarette/pipe/westman,
+/obj/item/clothing/face/cigarette/pipe/westman,
 /obj/item/reagent_containers/food/snacks/produce/dry_westleach,
 /obj/item/reagent_containers/food/snacks/produce/dry_westleach,
 /turf/open/floor/rogue/ruinedwood{
@@ -3661,7 +3661,7 @@
 /obj/item/neuFarm/seed/apple,
 /obj/item/neuFarm/seed/apple,
 /obj/item/neuFarm/seed/westleach,
-/obj/item/clothing/mask/cigarette/pipe/westman,
+/obj/item/clothing/face/cigarette/pipe/westman,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/town)
 "mQ" = (
@@ -4104,7 +4104,7 @@
 /area/rogue/indoors/town/garrison)
 "oy" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/garrison)
 "oz" = (
@@ -4233,16 +4233,16 @@
 	icon_state = "largetable";
 	dir = 8
 	},
-/obj/item/clothing/mask/rogue/lordmask,
+/obj/item/clothing/face/lordmask,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/shop)
 "oV" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
 /obj/machinery/light/rogue/wallfire/candle/blue,
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/shop)
 "oW" = (
@@ -4823,8 +4823,8 @@
 /area/rogue/indoors/town)
 "ra" = (
 /obj/structure/closet/crate/chest,
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/mountains)
 "rb" = (
@@ -5700,7 +5700,6 @@
 	icon_state = "largetable";
 	dir = 10
 	},
-/obj/item/clothing/mask/bandana/black,
 /obj/item/clothing/neck/roguetown/coif,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/shop)
@@ -8621,7 +8620,7 @@
 /area/rogue/indoors/town/church/chapel)
 "FA" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/garrison)
 "FB" = (
@@ -9478,7 +9477,7 @@
 /area/rogue/indoors/town/garrison)
 "It" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/garrison)
 "Iu" = (
@@ -9672,7 +9671,7 @@
 	icon_state = "longtable";
 	dir = 1
 	},
-/obj/item/clothing/mask/cigarette/pipe,
+/obj/item/clothing/face/cigarette/pipe,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/garrison)
 "Jb" = (
@@ -10342,7 +10341,7 @@
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
 	},
-/obj/item/clothing/mask/cigarette/pipe,
+/obj/item/clothing/face/cigarette/pipe,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/rtfield)
 "Lq" = (
@@ -10466,7 +10465,7 @@
 /area/rogue/indoors/town/magician)
 "LT" = (
 /obj/structure/closet/crate/chest,
-/obj/item/clothing/mask/cigarette/pipe/westman,
+/obj/item/clothing/face/cigarette/pipe/westman,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "horzw"
 	},
@@ -11626,9 +11625,9 @@
 /obj/structure/table/wood{
 	icon_state = "longtable"
 	},
-/obj/item/clothing/mask/cigarette/pipe/westman,
-/obj/item/clothing/mask/cigarette/pipe/westman,
-/obj/item/clothing/mask/cigarette/pipe/westman,
+/obj/item/clothing/face/cigarette/pipe/westman,
+/obj/item/clothing/face/cigarette/pipe/westman,
+/obj/item/clothing/face/cigarette/pipe/westman,
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/bath)
 "Qq" = (
@@ -11852,7 +11851,7 @@
 /area/rogue/under/lake)
 "Rs" = (
 /obj/structure/closet/crate/drawer,
-/obj/item/clothing/mask/cigarette/pipe/westman,
+/obj/item/clothing/face/cigarette/pipe/westman,
 /obj/item/reagent_containers/food/snacks/produce/dry_westleach,
 /turf/open/floor/rogue/woodturned/nosmooth,
 /area/rogue/indoors/town/bath)

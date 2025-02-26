@@ -176,10 +176,10 @@
 /obj/structure/table/wood/reinf_long{
 	dir = 1
 	},
-/obj/item/clothing/mask/cigarette/rollie{
+/obj/item/clothing/face/cigarette/rollie{
 	pixel_y = -15
 	},
-/obj/item/clothing/mask/rogue/skullmask{
+/obj/item/clothing/face/skullmask{
 	pixel_y = 4;
 	pixel_x = 1
 	},
@@ -249,7 +249,7 @@
 /area/rogue)
 "SG" = (
 /obj/structure/table/wood/reinf_long,
-/obj/item/clothing/mask/rogue/shepherd/clothmask{
+/obj/item/clothing/face/shepherd/clothmask{
 	pixel_x = 10
 	},
 /obj/item/flint{

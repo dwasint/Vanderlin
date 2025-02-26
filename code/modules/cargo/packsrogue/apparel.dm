@@ -56,12 +56,12 @@
 /datum/supply_pack/rogue/apparel/spectacles
 	name = "Spectacles"
 	cost = 25
-	contains = /obj/item/clothing/mask/rogue/spectacles
+	contains = /obj/item/clothing/face/spectacles
 
 /datum/supply_pack/rogue/apparel/shepherd
 	name = "Black Halfmask"
 	cost = 10
-	contains = /obj/item/clothing/mask/rogue/shepherd
+	contains = /obj/item/clothing/face/shepherd
 
 /datum/supply_pack/rogue/apparel/coif
 	name = "Leather Coif"

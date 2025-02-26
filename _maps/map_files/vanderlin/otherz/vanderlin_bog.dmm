@@ -96,7 +96,7 @@
 /obj/item/clothing/suit/roguetown/shirt/robe/magus,
 /obj/item/weapon/knife/dagger/steel/dirk,
 /obj/item/clothing/gloves/roguetown/fingerless/shadowgloves,
-/obj/item/clothing/mask/rogue/shepherd/shadowmask,
+/obj/item/clothing/face/shepherd/shadowmask,
 /obj/item/clothing/pants/trou/shadowpants,
 /obj/item/clothing/shoes/roguetown/boots,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
@@ -2009,7 +2009,7 @@
 /area/rogue/indoors/shelter/bog)
 "AQ" = (
 /obj/structure/table/vtable,
-/obj/item/clothing/mask/cigarette/rollie,
+/obj/item/clothing/face/cigarette/rollie,
 /turf/open/floor/rogue/woodturned/nosmooth,
 /area/rogue/indoors/shelter/bog)
 "AU" = (

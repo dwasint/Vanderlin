@@ -121,7 +121,7 @@
 
 /datum/repeatable_crafting_recipe/sewing/cmask
 	name = "cloth mask"
-	output = /obj/item/clothing/mask/rogue/shepherd/clothmask
+	output = /obj/item/clothing/face/shepherd/clothmask
 	requirements = list(/obj/item/natural/fibers = 1, /obj/item/natural/cloth = 1)
 
 /datum/repeatable_crafting_recipe/sewing/linedanklet
@@ -148,14 +148,14 @@
 
 /datum/repeatable_crafting_recipe/sewing/Reyepatch
 	name = "right eye patch"
-	output = /obj/item/clothing/mask/rogue/eyepatch
+	output = /obj/item/clothing/face/eyepatch
 	requirements = list(/obj/item/natural/cloth = 1,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 1
 
 /datum/repeatable_crafting_recipe/sewing/Leyepatch
 	name = "left eye patch"
-	output = /obj/item/clothing/mask/rogue/eyepatch/left
+	output = /obj/item/clothing/face/eyepatch/left
 	requirements = list(/obj/item/natural/cloth = 1,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 1
@@ -514,7 +514,7 @@
 
 /datum/repeatable_crafting_recipe/sewing/weaving/shepardmask
 	name = "half-mask"
-	output = /obj/item/clothing/mask/rogue/shepherd
+	output = /obj/item/clothing/face/shepherd
 	requirements = list(/obj/item/natural/cloth = 1,
 				/obj/item/natural/silk = 1)
 	craftdiff = 1

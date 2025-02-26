@@ -15,7 +15,7 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/winterjacket
 	shoes = /obj/item/clothing/shoes/roguetown/nobleboot
 	beltl = /obj/item/flashlight/flare/torch/lantern
-	mask = /obj/item/clothing/mask/rogue/goggles
+	mask = /obj/item/clothing/face/goggles
 	beltr = /obj/item/weapon/sword/rapier
 	belt = /obj/item/storage/belt/rogue/leather/steel
 	backr = /obj/item/storage/backpack/rogue/satchel

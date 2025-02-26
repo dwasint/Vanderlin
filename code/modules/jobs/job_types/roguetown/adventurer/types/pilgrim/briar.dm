@@ -15,7 +15,7 @@
 	ADD_TRAIT(H, TRAIT_SEEDKNOW, TRAIT_GENERIC)
 
 	belt = /obj/item/storage/belt/rogue/leather/rope
-	mask = /obj/item/clothing/mask/rogue/druid
+	mask = /obj/item/clothing/face/druid
 	neck = /obj/item/clothing/neck/roguetown/psycross/silver/dendor
 	shirt = /obj/item/clothing/suit/roguetown/armor/leather/vest
 	armor = /obj/item/clothing/suit/roguetown/shirt/robe/dendor
@@ -84,7 +84,7 @@
 /datum/crafting_recipe/dendor/visage
 	name = "druids mask (unique)"
 	reqs = list(/obj/item/grown/log/tree/small = 1)
-	result = /obj/item/clothing/mask/rogue/druid
+	result = /obj/item/clothing/face/druid
 
 /datum/crafting_recipe/dendor/shrine
 	name = "growing shrine to Dendor (unique)"

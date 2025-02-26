@@ -109,7 +109,7 @@
 	beltl = /obj/item/weapon/sword/decorated
 	beltr = /obj/item/scomstone
 	backr = /obj/item/storage/backpack/rogue/satchel/heartfelt
-	mask = /obj/item/clothing/mask/rogue/spectacles/golden
+	mask = /obj/item/clothing/face/spectacles/golden
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/combat/axesmaces, 1, TRUE)

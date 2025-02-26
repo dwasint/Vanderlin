@@ -265,7 +265,7 @@
 /obj/effect/spawner/roguemap/loot/armor
 	icon_state = "lootarmor"
 	spawned = list(
-		/obj/item/clothing/mask/rogue/facemask/copper = 15,
+		/obj/item/clothing/face/facemask/copper = 15,
 		/obj/item/clothing/wrists/roguetown/bracers/copper = 15,
 		/obj/item/clothing/head/helmet/coppercap = 15,
 		/obj/item/clothing/suit/roguetown/armor/cuirass/copperchest = 15,
@@ -277,7 +277,7 @@
 		/obj/item/clothing/suit/roguetown/armor/brigandine = 5,
 		/obj/item/clothing/head/helmet/heavy/frog = 5,
 		/obj/item/clothing/head/helmet/visored/hounskull = 5,
-		/obj/item/clothing/mask/rogue/facemask/steel = 5,
+		/obj/item/clothing/face/facemask/steel = 5,
 		/obj/item/clothing/suit/roguetown/armor/plate/full = 5,
 		/obj/item/clothing/neck/roguetown/chaincoif = 5
 		)

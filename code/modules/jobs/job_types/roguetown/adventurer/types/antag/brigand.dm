@@ -30,7 +30,7 @@
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1)
-	mask = /obj/item/clothing/mask/rogue/facemask/steel
+	mask = /obj/item/clothing/face/facemask/steel
 	neck = /obj/item/clothing/neck/roguetown/coif
 	head = /obj/item/clothing/head/helmet/leather/volfhelm
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide

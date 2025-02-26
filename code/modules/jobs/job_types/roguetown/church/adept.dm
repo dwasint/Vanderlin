@@ -36,7 +36,7 @@
 	belt = /obj/item/storage/belt/rogue/leather
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
-	mask = /obj/item/clothing/mask/rogue/facemask
+	mask = /obj/item/clothing/face/facemask
 	pants = /obj/item/clothing/pants/trou/leather
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 	wrists = /obj/item/clothing/neck/roguetown/psycross/silver

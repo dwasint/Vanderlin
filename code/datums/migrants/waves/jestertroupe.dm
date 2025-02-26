@@ -26,7 +26,7 @@
 	backr = /obj/item/rogue/instrument/viola
 	head = /obj/item/clothing/head/jester
 	neck = /obj/item/clothing/neck/roguetown/coif
-	mask = /obj/item/clothing/mask/rogue/lordmask
+	mask = /obj/item/clothing/face/lordmask
 
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/combat/knives, pick(2,3), TRUE)

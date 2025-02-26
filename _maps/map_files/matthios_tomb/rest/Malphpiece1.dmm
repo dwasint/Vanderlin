@@ -24,7 +24,7 @@
 /obj/item/weapon/shield/tower/buckleriron,
 /obj/item/weapon/sword/khopesh,
 /obj/item/roguecoin/copper/pile,
-/obj/item/clothing/mask/rogue/facemask/copper,
+/obj/item/clothing/face/facemask/copper,
 /obj/item/clothing/neck/roguetown/gorget/copper,
 /obj/item/clothing/wrists/roguetown/bracers/copper,
 /obj/item/clothing/head/helmet/coppercap,
@@ -88,7 +88,7 @@
 /area/rogue/outdoors/caves)
 "H" = (
 /obj/structure/table/wood/nice/decorated,
-/obj/item/clothing/mask/cigarette/pipe/westman,
+/obj/item/clothing/face/cigarette/pipe/westman,
 /obj/item/reagent_containers/food/snacks/produce/dry_westleach,
 /obj/item/reagent_containers/food/snacks/produce/dry_westleach,
 /obj/item/reagent_containers/food/snacks/produce/dry_westleach,

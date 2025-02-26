@@ -56,4 +56,4 @@
 	head = /obj/item/clothing/head/helmet/skullcap
 	gloves = /obj/item/clothing/gloves/roguetown/chain
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
-	mask = /obj/item/clothing/mask/rogue/skullmask
+	mask = /obj/item/clothing/face/skullmask

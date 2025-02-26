@@ -13,7 +13,7 @@
 	name = "Copper mask"
 	recipe_name = "a mask of copper"
 	req_bar = /obj/item/ingot/copper
-	created_item = /obj/item/clothing/mask/rogue/facemask/copper
+	created_item = /obj/item/clothing/face/facemask/copper
 	craftdiff = 0
 
 /datum/anvil_recipe/armor/copper/bracers
@@ -107,7 +107,7 @@
 	name = "2x Iron Face Masks"
 	recipe_name = "a Face Mask"
 	req_bar = /obj/item/ingot/iron
-	created_item = /obj/item/clothing/mask/rogue/facemask
+	created_item = /obj/item/clothing/face/facemask
 	createmultiple = TRUE
 	createditem_num = 1
 	craftdiff = 0
@@ -202,7 +202,7 @@
 	name = "Steel Mask"
 	recipe_name = "a Face Mask"
 	req_bar = /obj/item/ingot/steel
-	created_item = (/obj/item/clothing/mask/rogue/facemask/steel)
+	created_item = (/obj/item/clothing/face/facemask/steel)
 	craftdiff = 2
 
 /datum/anvil_recipe/armor/steel/halfplate
@@ -371,7 +371,7 @@
 /datum/anvil_recipe/armor/gold/mask
 	name = "Gold Mask"
 	req_bar = /obj/item/ingot/gold
-	created_item = /obj/item/clothing/mask/rogue/facemask/goldmask
+	created_item = /obj/item/clothing/face/facemask/goldmask
 	craftdiff = 1
 
 // --------- BLACKSTEEL -----------

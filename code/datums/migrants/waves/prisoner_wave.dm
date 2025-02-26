@@ -70,7 +70,7 @@
 /datum/outfit/job/roguetown/mig_prisoner/pre_equip(mob/living/carbon/human/H)
 	..()
 	pants = /obj/item/clothing/pants/loincloth/brown
-	mask = /obj/item/clothing/mask/rogue/facemask/prisoner
+	mask = /obj/item/clothing/face/facemask/prisoner
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)

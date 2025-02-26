@@ -28,7 +28,7 @@
 /datum/outfit/job/roguetown/butler/pre_equip(mob/living/carbon/human/H)
 	..()
 	backpack_contents = list(/obj/item/book/rogue/manners = 1)
-	mask = /obj/item/clothing/mask/rogue/spectacles
+	mask = /obj/item/clothing/face/spectacles
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE) // A well educated head of servants should at least have skilled literacy level

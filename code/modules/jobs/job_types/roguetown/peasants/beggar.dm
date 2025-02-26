@@ -42,7 +42,7 @@
 	if(prob(5))
 		beltr = /obj/item/reagent_containers/powder/moondust
 	if(prob(10))
-		beltl = /obj/item/clothing/mask/cigarette/rollie/cannabis
+		beltl = /obj/item/clothing/face/cigarette/rollie/cannabis
 	if(prob(10))
 		cloak = /obj/item/clothing/cloak/raincloak/brown
 	if(prob(10))

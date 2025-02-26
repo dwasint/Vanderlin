@@ -142,17 +142,17 @@
 /area/rogue)
 "ri" = (
 /obj/structure/closet/crate/drawer/inn,
-/obj/item/clothing/mask/cigarette/pipe/westman,
-/obj/item/clothing/mask/cigarette/rollie/trippy,
-/obj/item/clothing/mask/cigarette/rollie/trippy,
-/obj/item/clothing/mask/cigarette/rollie/trippy{
+/obj/item/clothing/face/cigarette/pipe/westman,
+/obj/item/clothing/face/cigarette/rollie/trippy,
+/obj/item/clothing/face/cigarette/rollie/trippy,
+/obj/item/clothing/face/cigarette/rollie/trippy{
 	pixel_y = 8
 	},
-/obj/item/clothing/mask/cigarette/rollie/trippy{
+/obj/item/clothing/face/cigarette/rollie/trippy{
 	pixel_y = 14;
 	pixel_x = -7
 	},
-/obj/item/clothing/mask/rogue/spectacles/golden,
+/obj/item/clothing/face/spectacles/golden,
 /turf/open/floor/rogue/ruinedwood/turned/darker,
 /area/rogue)
 "rH" = (
@@ -236,7 +236,7 @@
 /obj/item/clothing/cloak/wickercloak,
 /obj/item/clothing/gloves/roguetown/fingerless,
 /obj/item/clothing/head/antlerhood,
-/obj/item/clothing/mask/rogue/skullmask,
+/obj/item/clothing/face/skullmask,
 /turf/open/floor/rogue/ruinedwood/turned/darker,
 /area/rogue)
 "yt" = (

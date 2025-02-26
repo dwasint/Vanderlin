@@ -34,7 +34,7 @@
 /datum/outfit/job/roguetown/prisoner/pre_equip(mob/living/carbon/human/H)
 	..()
 	pants = /obj/item/clothing/pants/loincloth/brown
-	mask = /obj/item/clothing/mask/rogue/facemask/prisoner
+	mask = /obj/item/clothing/face/facemask/prisoner
 	if(H.wear_mask)
 		var/obj/I = H.wear_mask
 		H.dropItemToGround(H.wear_mask, TRUE)

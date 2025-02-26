@@ -300,7 +300,7 @@
 	loc.handle_fall(src, forced)//it's loc so it doesn't call the mob's handle_fall which does nothing
 
 /mob/living/carbon/is_muzzled()
-	return(istype(src.wear_mask, /obj/item/clothing/mask/muzzle))
+	return FALSE
 
 /obj/structure
 	var/breakoutextra = 30 SECONDS
@@ -546,7 +546,7 @@
 		else
 			if(prob(3))
 				to_chat(src, "<span class='warning'>I feel sick...</span>")
-				
+
 	add_nausea(-1)
 
 /mob/living/carbon/proc/vomit(lost_nutrition = 50, blood = FALSE, stun = TRUE, distance = 1, message = TRUE, toxic = FALSE, harm = FALSE, force = FALSE)

@@ -353,10 +353,10 @@
 	icon_state = "tablewood2";
 	dir = 10
 	},
-/obj/item/clothing/mask/rogue/facemask/steel,
-/obj/item/clothing/mask/rogue/facemask/steel,
-/obj/item/clothing/mask/rogue/facemask/steel,
-/obj/item/clothing/mask/rogue/facemask/steel,
+/obj/item/clothing/face/facemask/steel,
+/obj/item/clothing/face/facemask/steel,
+/obj/item/clothing/face/facemask/steel,
+/obj/item/clothing/face/facemask/steel,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors)
 "aY" = (
@@ -390,12 +390,12 @@
 	icon_state = "tablewood2";
 	dir = 10
 	},
-/obj/item/clothing/mask/rogue/facemask,
-/obj/item/clothing/mask/rogue/facemask,
-/obj/item/clothing/mask/rogue/facemask,
-/obj/item/clothing/mask/rogue/facemask,
-/obj/item/clothing/mask/rogue/facemask,
-/obj/item/clothing/mask/rogue/facemask,
+/obj/item/clothing/face/facemask,
+/obj/item/clothing/face/facemask,
+/obj/item/clothing/face/facemask,
+/obj/item/clothing/face/facemask,
+/obj/item/clothing/face/facemask,
+/obj/item/clothing/face/facemask,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors)
 "bc" = (

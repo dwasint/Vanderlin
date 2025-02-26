@@ -111,7 +111,7 @@
 		shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/shadowrobe
 		cloak = /obj/item/clothing/cloak/half/shadowcloak
 		gloves = /obj/item/clothing/gloves/roguetown/fingerless/shadowgloves
-		mask = /obj/item/clothing/mask/rogue/shepherd/shadowmask
+		mask = /obj/item/clothing/face/shepherd/shadowmask
 		pants = /obj/item/clothing/pants/trou/shadowpants
 	else
 		cloak = /obj/item/clothing/cloak/raincloak/mortus //cool spymaster cloak

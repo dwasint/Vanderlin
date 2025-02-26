@@ -301,7 +301,7 @@
 "hk" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/chair/bench/coucha/r,
-/obj/item/clothing/mask/cigarette/pipe,
+/obj/item/clothing/face/cigarette/pipe,
 /mob/living/carbon/human/species/skeleton/npc/ambush,
 /turf/open/floor/rogue/wood/nosmooth/saiga,
 /area/rogue)
@@ -626,7 +626,7 @@
 /obj/item/clothing/suit/roguetown/armor/gambeson/shadowrobe,
 /obj/item/clothing/shoes/roguetown/sandals,
 /obj/item/weapon/polearm/woodstaff,
-/obj/item/clothing/mask/rogue/facemask/copper,
+/obj/item/clothing/face/facemask/copper,
 /obj/item/clothing/pants/trou/shadowpants,
 /mob/living/carbon/human/species/skeleton/npc/no_equipment,
 /obj/effect/decal/cleanable/dirt/dust,
@@ -2210,7 +2210,7 @@
 /area/rogue)
 "Wy" = (
 /obj/structure/table/wood/fancy,
-/obj/item/clothing/mask/rogue/facemask/goldmask,
+/obj/item/clothing/face/facemask/goldmask,
 /turf/open/floor/rogue/ruinedwood/chevron,
 /area/rogue)
 "WB" = (

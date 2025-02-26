@@ -81,7 +81,7 @@
 /obj/item/clothing/head/fancyhat,
 /obj/item/clothing/gloves/roguetown/chain,
 /obj/item/clothing/pants/chainlegs/iron,
-/obj/item/clothing/mask/rogue/facemask/goldmask,
+/obj/item/clothing/face/facemask/goldmask,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /obj/item/weapon/sword/rapier/ironestoc,
 /turf/open/floor/rogue/carpet/lord/center,

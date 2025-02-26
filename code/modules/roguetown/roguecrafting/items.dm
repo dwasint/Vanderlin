@@ -147,12 +147,12 @@
 
 /datum/crafting_recipe/roguetown/pipe
 	name = "wood pipe"
-	result = /obj/item/clothing/mask/cigarette/pipe/crafted
+	result = /obj/item/clothing/face/cigarette/pipe/crafted
 	reqs = list(/obj/item/grown/log/tree/stick = 2)
 	craftdiff = 1
 	tools = list(/obj/item/weapon/knife)
 
-/obj/item/clothing/mask/cigarette/pipe/crafted
+/obj/item/clothing/face/cigarette/pipe/crafted
 	sellprice = 6
 
 /datum/crafting_recipe/roguetown/rod
@@ -458,7 +458,7 @@
 
 /datum/crafting_recipe/roguetown/skullmask
 	name = "skull mask"
-	result = /obj/item/clothing/mask/rogue/skullmask
+	result = /obj/item/clothing/face/skullmask
 	reqs = list(/obj/item/alch/bone = 3,
 				/obj/item/natural/fibers = 1)
 	sellprice = 10

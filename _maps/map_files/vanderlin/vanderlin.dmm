@@ -1952,8 +1952,8 @@
 /turf/open/floor/rogue/ruinedwood/turned/darker,
 /area/rogue/indoors/town/garrison)
 "brP" = (
-/obj/item/clothing/mask/rogue/spectacles,
-/obj/item/clothing/mask/rogue/spectacles/golden,
+/obj/item/clothing/face/spectacles,
+/obj/item/clothing/face/spectacles/golden,
 /obj/structure/table/wood/reinforced_alter,
 /obj/machinery/light/rogue/wallfire/candle/blue{
 	pixel_x = -32;
@@ -3154,7 +3154,7 @@
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
 	},
-/obj/item/clothing/mask/rogue/spectacles/golden,
+/obj/item/clothing/face/spectacles/golden,
 /obj/structure/roguemachine/mail,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
@@ -3405,10 +3405,10 @@
 /area/rogue/indoors/town/shop)
 "cqY" = (
 /obj/structure/closet/crate/chest/gold,
-/obj/item/clothing/mask/rogue/shepherd/clothmask,
-/obj/item/clothing/mask/rogue/shepherd/clothmask,
-/obj/item/clothing/mask/rogue/shepherd/clothmask,
-/obj/item/clothing/mask/rogue/shepherd/clothmask,
+/obj/item/clothing/face/shepherd/clothmask,
+/obj/item/clothing/face/shepherd/clothmask,
+/obj/item/clothing/face/shepherd/clothmask,
+/obj/item/clothing/face/shepherd/clothmask,
 /turf/open/floor/rogue/ruinedwood/darker,
 /area/rogue/indoors/town/orphanage)
 "crG" = (
@@ -3805,7 +3805,7 @@
 /area/rogue/indoors/villagegarrison)
 "cFp" = (
 /obj/structure/table/wood/plain/alt,
-/obj/item/clothing/mask/rogue/druid,
+/obj/item/clothing/face/druid,
 /turf/open/floor/rogue/ruinedwood/chevron,
 /area/rogue/outdoors/mountains)
 "cFy" = (
@@ -4454,7 +4454,7 @@
 /area/rogue/indoors/town)
 "did" = (
 /obj/structure/table/wood/reinf_long,
-/obj/item/clothing/mask/cigarette/pipe/crafted{
+/obj/item/clothing/face/cigarette/pipe/crafted{
 	pixel_x = 6;
 	pixel_y = -2
 	},
@@ -6722,7 +6722,7 @@
 /obj/item/clothing/head/wizhat,
 /obj/item/clothing/shoes/roguetown/boots,
 /obj/item/clothing/shoes/roguetown/shortboots,
-/obj/item/clothing/mask/rogue/spectacles/golden,
+/obj/item/clothing/face/spectacles/golden,
 /obj/item/clothing/head/wizhat/witch,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/magician)
@@ -7068,7 +7068,7 @@
 /obj/structure/table/wood/reinf_long{
 	dir = 1
 	},
-/obj/item/clothing/mask/cigarette/rollie/cannabis{
+/obj/item/clothing/face/cigarette/rollie/cannabis{
 	pixel_y = 8
 	},
 /obj/item/candle/yellow{
@@ -7679,17 +7679,17 @@
 /area/rogue/indoors/town/clocktower)
 "fuu" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/clothing/mask/cigarette/rollie/cannabis{
+/obj/item/clothing/face/cigarette/rollie/cannabis{
 	pixel_y = 8
 	},
-/obj/item/clothing/mask/cigarette/rollie/cannabis{
+/obj/item/clothing/face/cigarette/rollie/cannabis{
 	pixel_y = 8
 	},
-/obj/item/clothing/mask/cigarette/pipe/crafted{
+/obj/item/clothing/face/cigarette/pipe/crafted{
 	pixel_x = 6;
 	pixel_y = -2
 	},
-/obj/item/clothing/mask/cigarette/pipe/crafted{
+/obj/item/clothing/face/cigarette/pipe/crafted{
 	pixel_x = 6;
 	pixel_y = -2
 	},
@@ -8689,7 +8689,7 @@
 	icon_state = "longtable";
 	dir = 1
 	},
-/obj/item/clothing/mask/cigarette/pipe/westman{
+/obj/item/clothing/face/cigarette/pipe/westman{
 	pixel_x = 9;
 	pixel_y = 6
 	},
@@ -10533,7 +10533,7 @@
 	},
 /obj/item/roguecoin/silver/pile,
 /obj/item/roguecoin/copper/pile,
-/obj/item/clothing/mask/cigarette/rollie/cannabis,
+/obj/item/clothing/face/cigarette/rollie/cannabis,
 /turf/open/floor/rogue/ruinedwood/darker,
 /area/rogue/indoors/town/manor)
 "hCq" = (
@@ -17645,13 +17645,13 @@
 /area/rogue/indoors/town/manor)
 "mQm" = (
 /obj/structure/closet/crate/chest/neu,
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
 /obj/item/reagent_containers/powder/spice,
-/obj/item/clothing/mask/cigarette/pipe/westman,
-/obj/item/clothing/mask/cigarette/pipe/westman,
+/obj/item/clothing/face/cigarette/pipe/westman,
+/obj/item/clothing/face/cigarette/pipe/westman,
 /obj/machinery/light/rogue/wallfire/candle/blue/r,
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/shop)
@@ -18489,11 +18489,11 @@
 /obj/structure/table/wood{
 	icon_state = "largetable"
 	},
-/obj/item/clothing/mask/cigarette/rollie/nicotine{
+/obj/item/clothing/face/cigarette/rollie/nicotine{
 	pixel_x = 8;
 	pixel_y = 8
 	},
-/obj/item/clothing/mask/cigarette/rollie/nicotine{
+/obj/item/clothing/face/cigarette/rollie/nicotine{
 	pixel_x = -2;
 	pixel_y = 13
 	},
@@ -21584,7 +21584,7 @@
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
 	},
-/obj/item/clothing/mask/cigarette/pipe,
+/obj/item/clothing/face/cigarette/pipe,
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/outdoors/rtfield/safe)
 "pSA" = (
@@ -23664,13 +23664,13 @@
 /obj/item/reagent_containers/food/snacks/produce/dry_westleach,
 /obj/item/reagent_containers/food/snacks/produce/swampweed,
 /obj/item/reagent_containers/food/snacks/produce/swampweed,
-/obj/item/clothing/mask/cigarette/pipe/crafted,
+/obj/item/clothing/face/cigarette/pipe/crafted,
 /obj/item/reagent_containers/powder/spice,
 /obj/item/reagent_containers/powder/spice,
 /obj/item/neuFarm/seed/poppy,
 /obj/item/natural/chaff/wheat,
 /obj/item/natural/chaff/wheat,
-/obj/item/clothing/mask/cigarette/pipe/crafted,
+/obj/item/clothing/face/cigarette/pipe/crafted,
 /obj/machinery/light/rogue/wallfire/candle/l,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/town/basement)
@@ -24102,7 +24102,7 @@
 /obj/item/reagent_containers/powder/spice,
 /obj/item/reagent_containers/powder/spice,
 /obj/item/reagent_containers/powder/moondust,
-/obj/item/clothing/mask/cigarette/rollie/cannabis,
+/obj/item/clothing/face/cigarette/rollie/cannabis,
 /turf/open/floor/rogue/metal{
 	icon_state = "plating2"
 	},
@@ -24972,7 +24972,7 @@
 /obj/structure/closet/crate/drawer,
 /obj/item/reagent_containers/food/snacks/produce/dry_westleach,
 /obj/item/reagent_containers/food/snacks/produce/dry_westleach,
-/obj/item/clothing/mask/cigarette/pipe/westman,
+/obj/item/clothing/face/cigarette/pipe/westman,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town)
 "suk" = (
@@ -26936,9 +26936,9 @@
 /area/rogue/outdoors/town)
 "tHR" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/shop)
 "tIg" = (
@@ -29918,7 +29918,7 @@
 /area/rogue/outdoors/mountains)
 "vMD" = (
 /obj/structure/closet/crate/roguecloset/dark,
-/obj/item/clothing/mask/rogue/phys,
+/obj/item/clothing/face/phys,
 /obj/item/clothing/head/roguehood/phys,
 /obj/item/clothing/neck/roguetown/phys,
 /obj/item/clothing/suit/roguetown/shirt/robe/phys,
@@ -31390,13 +31390,13 @@
 /obj/item/reagent_containers/food/snacks/produce/dry_westleach,
 /obj/item/reagent_containers/food/snacks/produce/swampweed,
 /obj/item/reagent_containers/food/snacks/produce/swampweed,
-/obj/item/clothing/mask/cigarette/pipe/crafted,
+/obj/item/clothing/face/cigarette/pipe/crafted,
 /obj/item/reagent_containers/powder/spice,
 /obj/item/reagent_containers/powder/spice,
 /obj/item/neuFarm/seed/poppy,
 /obj/item/natural/chaff/wheat,
 /obj/item/natural/chaff/wheat,
-/obj/item/clothing/mask/cigarette/pipe/crafted,
+/obj/item/clothing/face/cigarette/pipe/crafted,
 /obj/effect/spawner/roguemap/loot/potion_ingredient/herb,
 /obj/effect/spawner/roguemap/loot/potion_ingredient/herb,
 /obj/effect/spawner/roguemap/loot/potion_ingredient/herb,
@@ -32786,7 +32786,7 @@
 /area/rogue/outdoors/rtfield/safe)
 "xVe" = (
 /obj/structure/closet/crate/roguecloset/dark,
-/obj/item/clothing/mask/rogue/phys,
+/obj/item/clothing/face/phys,
 /obj/item/clothing/head/roguehood/phys,
 /obj/item/clothing/neck/roguetown/phys,
 /obj/item/clothing/suit/roguetown/shirt/robe/phys,

@@ -45,7 +45,7 @@
 /area/rogue)
 "aak" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/clothing/mask/cigarette/pipe/westman,
+/obj/item/clothing/face/cigarette/pipe/westman,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "aal" = (
@@ -2116,7 +2116,7 @@
 /area/rogue/indoors/town/garrison)
 "agX" = (
 /obj/structure/closet/crate/chest,
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
 /obj/machinery/light/rogue/wallfire/candle,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/manor)
@@ -3977,7 +3977,7 @@
 /area/rogue)
 "amK" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
 /turf/open/floor/rogue/blocks{
 	icon_state = "paving"
 	},
@@ -4147,7 +4147,7 @@
 /area/rogue)
 "ani" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
 /turf/open/floor/rogue/blocks,
 /area/rogue)
 "anj" = (
@@ -4430,7 +4430,7 @@
 /obj/structure/fluff/walldeco/sparrowflag{
 	pixel_x = 32
 	},
-/obj/item/clothing/mask/cigarette/pipe,
+/obj/item/clothing/face/cigarette/pipe,
 /turf/open/floor/carpet/royalblack,
 /area/rogue)
 "anZ" = (
@@ -5134,7 +5134,7 @@
 /area/rogue)
 "aqb" = (
 /obj/structure/closet/crate/chest,
-/obj/item/clothing/mask/cigarette/pipe/westman,
+/obj/item/clothing/face/cigarette/pipe/westman,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "horzw"
 	},
@@ -5530,8 +5530,8 @@
 /area/rogue)
 "ari" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
 /obj/machinery/light/rogue/wallfire/candle/blue,
 /turf/open/floor/rogue/concrete,
 /area/rogue)
@@ -5641,7 +5641,7 @@
 /area/rogue)
 "arz" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
 /turf/open/floor/rogue/woodturned,
 /area/rogue)
 "arA" = (
@@ -5807,7 +5807,7 @@
 /obj/item/neuFarm/seed/apple,
 /obj/item/neuFarm/seed/apple,
 /obj/item/neuFarm/seed/westleach,
-/obj/item/clothing/mask/cigarette/pipe/westman,
+/obj/item/clothing/face/cigarette/pipe/westman,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
 "asc" = (
@@ -5895,8 +5895,8 @@
 /area/rogue/indoors)
 "asq" = (
 /obj/structure/closet/crate/chest,
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors)
 "asr" = (
@@ -6776,7 +6776,7 @@
 /area/rogue)
 "auZ" = (
 /obj/structure/closet/crate/chest,
-/obj/item/clothing/mask/cigarette/pipe/westman,
+/obj/item/clothing/face/cigarette/pipe/westman,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "ava" = (
@@ -6924,7 +6924,7 @@
 /area/rogue)
 "avA" = (
 /obj/structure/closet/crate/roguecloset/dark,
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
 /turf/open/floor/rogue/cobble,
 /area/rogue)
 "avB" = (
@@ -7766,7 +7766,7 @@
 /area/rogue)
 "ayh" = (
 /obj/structure/table/wood,
-/obj/item/clothing/mask/cigarette/pipe,
+/obj/item/clothing/face/cigarette/pipe,
 /turf/open/floor/rogue/blocks{
 	icon_state = "greenblocks"
 	},
@@ -10949,9 +10949,9 @@
 "aIF" = (
 /obj/structure/closet/crate/roguecloset,
 /obj/machinery/light/rogue/wallfire/candle,
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town)
 "aIG" = (
@@ -11245,7 +11245,7 @@
 	icon_state = "largetable";
 	dir = 5
 	},
-/obj/item/clothing/mask/cigarette/pipe/westman,
+/obj/item/clothing/face/cigarette/pipe/westman,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town)
 "aJI" = (
@@ -13259,7 +13259,7 @@
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
 	},
-/obj/item/clothing/mask/cigarette/pipe,
+/obj/item/clothing/face/cigarette/pipe,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/outdoors/rtfield)
 "qie" = (
@@ -13725,7 +13725,7 @@
 /area/rogue/indoors)
 "tHC" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/clothing/mask/cigarette/rollie/nicotine,
+/obj/item/clothing/face/cigarette/rollie/nicotine,
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/indoors)
 "tJE" = (
