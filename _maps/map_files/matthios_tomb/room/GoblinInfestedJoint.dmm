@@ -7,7 +7,7 @@
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue)
 "aj" = (
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /turf/open/floor/rogue/cobble,
 /area/rogue)
 "aB" = (
@@ -430,7 +430,7 @@
 /turf/open/floor/rogue/cobble/alt,
 /area/rogue)
 "sg" = (
-/obj/item/storage/roguebag{
+/obj/item/storage/sack{
 	pixel_y = -6;
 	pixel_x = 13
 	},
@@ -497,7 +497,7 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue)
 "tM" = (
-/obj/item/storage/roguebag{
+/obj/item/storage/sack{
 	pixel_x = 2;
 	pixel_y = 5
 	},
@@ -1188,7 +1188,7 @@
 /turf/closed/mineral/rogue/bedrock,
 /area/rogue)
 "Us" = (
-/obj/item/storage/roguebag{
+/obj/item/storage/sack{
 	pixel_x = -10;
 	pixel_y = 10
 	},

@@ -94,10 +94,10 @@
 /area/rogue)
 "eo" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/storage/roguebag{
+/obj/item/storage/sack{
 	pixel_x = -3
 	},
-/obj/item/storage/roguebag{
+/obj/item/storage/sack{
 	pixel_x = 6;
 	pixel_y = -6
 	},

@@ -472,7 +472,7 @@
 
 /obj/item/storage/eggbasket/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/storage/concrete/roguetown/egg_basket)
+	AddComponent(/datum/component/storage/concrete/grid/egg_basket)
 	if(!mapload)
 		return
 	for(var/obj/item/I in loc)

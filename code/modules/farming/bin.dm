@@ -26,7 +26,7 @@
 	if(!base_state)
 		create_reagents(600, DRAINABLE | AMOUNT_VISIBLE | REFILLABLE)
 		base_state = icon_state
-	AddComponent(/datum/component/storage/concrete/roguetown/bin)
+	AddComponent(/datum/component/storage/concrete/grid/bin)
 	. = ..()
 	pixel_x = 0
 	pixel_y = 0

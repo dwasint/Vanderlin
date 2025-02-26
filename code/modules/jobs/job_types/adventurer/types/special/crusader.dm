@@ -142,7 +142,7 @@
 
 /obj/item/clothing/cloak/cape/crusader/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/storage/concrete/roguetown/cloak/lord)
+	AddComponent(/datum/component/storage/concrete/grid/cloak/lord)
 
 /obj/item/clothing/cloak/cape/crusader/attack_right(mob/user)
 	var/datum/component/storage/CP = GetComponent(/datum/component/storage)

@@ -26,7 +26,7 @@
 /datum/supply_pack/rogue/tools/sack
 	name = "Sack"
 	cost = 4
-	contains = /obj/item/storage/roguebag
+	contains = /obj/item/storage/sack
 
 /datum/supply_pack/rogue/tools/sleepingbag
 	name = "Sleeping Bag"

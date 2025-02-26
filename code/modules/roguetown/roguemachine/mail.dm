@@ -297,7 +297,7 @@
 
 /obj/item/roguemachine/mastermail/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/storage/concrete/roguetown/mailmaster)
+	AddComponent(/datum/component/storage/concrete/grid/mailmaster)
 
 /obj/item/roguemachine/mastermail/attack_hand(mob/user)
 	var/datum/component/storage/CP = GetComponent(/datum/component/storage)

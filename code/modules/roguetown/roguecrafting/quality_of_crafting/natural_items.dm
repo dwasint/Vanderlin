@@ -208,7 +208,7 @@
 	)
 	starting_atom = /obj/item/needle
 	attacking_atom = /obj/item/natural/cloth
-	output = /obj/item/storage/roguebag/crafted
+	output = /obj/item/storage/sack/crafted
 	craftdiff = 0
 	skillcraft = /datum/skill/misc/sewing
 	subtypes_allowed = TRUE

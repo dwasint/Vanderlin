@@ -1,4 +1,4 @@
-/obj/item/storage/roguebag
+/obj/item/storage/sack
 	name = "sack"
 	desc = "A simple canvas sack."
 	icon_state = "cbag"
@@ -15,14 +15,14 @@
 	experimental_inhand = FALSE
 	experimental_onhip = FALSE
 	experimental_onback = FALSE
-	component_type = /datum/component/storage/concrete/roguetown/sack
+	component_type = /datum/component/storage/concrete/grid/sack
 
-/obj/item/storage/roguebag/examine(mob/user)
+/obj/item/storage/sack/examine(mob/user)
 	. = ..()
 	if(length(contents))
 		. += span_notice("[length(contents)] thing[length(contents) > 1 ? "s" : ""] in [src].")
 
-/obj/item/storage/roguebag/equipped(mob/living/carbon/human/user, slot)
+/obj/item/storage/sack/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
 	if(slot == SLOT_HEAD)
 		user.become_blind("blindfold_[REF(src)]")
@@ -30,11 +30,11 @@
 		to_chat(user, span_info("The [src] slips through dead fingers..."))
 		user.dropItemToGround(src, TRUE)
 
-/obj/item/storage/roguebag/dropped(mob/living/carbon/human/user)
+/obj/item/storage/sack/dropped(mob/living/carbon/human/user)
 	..()
 	user.cure_blind("blindfold_[REF(src)]")
 
-/obj/item/storage/roguebag/mob_can_equip(mob/M, slot)
+/obj/item/storage/sack/mob_can_equip(mob/M, slot)
 	if(!..())
 		return FALSE
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
@@ -45,7 +45,7 @@
 		return TRUE
 
 
-/obj/item/storage/roguebag/attack_right(mob/user)
+/obj/item/storage/sack/attack_right(mob/user)
 	. = ..()
 	if(.)
 		return
@@ -59,7 +59,7 @@
 		STR.remove_from_storage(I, get_turf(user))
 		user.put_in_hands(I)
 
-/obj/item/storage/roguebag/update_icon()
+/obj/item/storage/sack/update_icon()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	var/list/things = STR.contents()
 	if(things.len)
@@ -69,7 +69,7 @@
 		icon_state = "cbag"
 		w_class = WEIGHT_CLASS_NORMAL
 
-/obj/item/storage/roguebag/getonmobprop(tag)
+/obj/item/storage/sack/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)
@@ -107,7 +107,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	resistance_flags = NONE
 	max_integrity = 300
-	component_type = /datum/component/storage/concrete/roguetown/sack/meat
+	component_type = /datum/component/storage/concrete/grid/sack/meat
 
 /obj/item/storage/meatbag/attack_right(mob/user)
 	. = ..()

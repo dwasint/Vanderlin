@@ -155,7 +155,7 @@
 
 /obj/item/clothing/armor/leather/jacket/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/storage/concrete/roguetown/cloak)
+	AddComponent(/datum/component/storage/concrete/grid/cloak)
 
 /obj/item/clothing/armor/leather/jacket/dropped(mob/living/carbon/human/user)
 	..()

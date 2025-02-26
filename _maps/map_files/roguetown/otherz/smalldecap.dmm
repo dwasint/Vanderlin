@@ -1183,7 +1183,7 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/caves)
 "CM" = (
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/outdoors/mountains)
 "CV" = (

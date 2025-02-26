@@ -20,7 +20,7 @@
 	fiber_salvage = TRUE
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide/cured
-	component_type = /datum/component/storage/concrete/roguetown/belt
+	component_type = /datum/component/storage/concrete/grid/belt
 
 	var/content_overlays = FALSE //If this is true, the belt will gain overlays based on what it's holding
 

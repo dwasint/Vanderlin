@@ -1487,7 +1487,7 @@
 /area/rogue/indoors/town/manor)
 "aXa" = (
 /obj/structure/table/wood/plain_alt,
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /turf/open/floor/rogue/ruinedwood/turned/darker,
 /area/rogue/indoors/town)
 "aXh" = (
@@ -7321,7 +7321,7 @@
 /obj/structure/closet/crate/chest/wicker,
 /obj/item/neuFarm/seed/oat,
 /obj/item/neuFarm/seed/oat,
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /obj/item/neuFarm/seed/wheat,
 /obj/item/neuFarm/seed/wheat,
 /turf/open/floor/rogue/blocks,
@@ -11046,7 +11046,7 @@
 /area/rogue/under/town/basement)
 "hTY" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/storage/roguebag{
+/obj/item/storage/sack{
 	pixel_x = 2;
 	pixel_y = 17
 	},
@@ -15618,7 +15618,7 @@
 /area/rogue/outdoors/town)
 "lja" = (
 /obj/structure/table/wood/plain_alt,
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town)
 "ljv" = (
@@ -17478,11 +17478,11 @@
 /area/rogue/indoors/town/orphanage)
 "mJD" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/storage/roguebag{
+/obj/item/storage/sack{
 	pixel_x = -4;
 	pixel_y = -1
 	},
-/obj/item/storage/roguebag{
+/obj/item/storage/sack{
 	pixel_x = 1;
 	pixel_y = 4
 	},
@@ -17872,8 +17872,8 @@
 /area/rogue/indoors/town/orphanage)
 "mVS" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/storage/roguebag,
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
+/obj/item/storage/sack,
 /obj/item/natural/cloth{
 	pixel_x = 1;
 	pixel_y = 2
@@ -22021,11 +22021,11 @@
 /area/rogue/outdoors/river)
 "qlE" = (
 /obj/structure/rack/rogue,
-/obj/item/storage/roguebag{
+/obj/item/storage/sack{
 	pixel_x = -2;
 	pixel_y = 10
 	},
-/obj/item/storage/roguebag{
+/obj/item/storage/sack{
 	pixel_x = 5;
 	pixel_y = -1
 	},
@@ -23550,7 +23550,7 @@
 	icon_state = "longtable";
 	dir = 1
 	},
-/obj/item/storage/roguebag{
+/obj/item/storage/sack{
 	pixel_x = 4;
 	pixel_y = 12
 	},
@@ -28476,7 +28476,7 @@
 	icon_state = "largetable";
 	dir = 5
 	},
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/manor)
 "uHh" = (
@@ -30111,7 +30111,7 @@
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors/town/tavern)
 "vVP" = (
-/obj/item/storage/roguebag{
+/obj/item/storage/sack{
 	pixel_x = 2;
 	pixel_y = -1
 	},
@@ -31209,11 +31209,11 @@
 /obj/structure/table/wood{
 	icon_state = "longtable"
 	},
-/obj/item/storage/roguebag{
+/obj/item/storage/sack{
 	pixel_x = -2;
 	pixel_y = 8
 	},
-/obj/item/storage/roguebag{
+/obj/item/storage/sack{
 	pixel_x = 6;
 	pixel_y = 3
 	},

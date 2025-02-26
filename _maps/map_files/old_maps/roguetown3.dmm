@@ -1221,7 +1221,7 @@
 /turf/open/floor/rogue/woodturned,
 /area/rogue)
 "ael" = (
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
 "aem" = (
@@ -2264,7 +2264,7 @@
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
 	},
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/church)
 "ahA" = (
@@ -5212,7 +5212,7 @@
 /turf/open/floor/rogue/woodturned,
 /area/rogue)
 "aqo" = (
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /obj/structure/rack/rogue,
 /turf/open/floor/rogue/wood,
 /area/rogue)
@@ -5563,10 +5563,10 @@
 /turf/open/floor/rogue/concrete,
 /area/rogue)
 "aro" = (
-/obj/item/storage/roguebag,
-/obj/item/storage/roguebag,
-/obj/item/storage/roguebag,
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
+/obj/item/storage/sack,
+/obj/item/storage/sack,
+/obj/item/storage/sack,
 /obj/structure/closet/crate/chest,
 /turf/open/floor/rogue/wood,
 /area/rogue)
@@ -5706,7 +5706,7 @@
 	icon_state = "largetable";
 	dir = 10
 	},
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /turf/open/floor/carpet/royalblack,
 /area/rogue)
 "arL" = (
@@ -5759,7 +5759,7 @@
 /area/rogue)
 "arT" = (
 /obj/structure/table/wood,
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /turf/open/floor/rogue/concrete,
 /area/rogue)
 "arU" = (
@@ -7699,7 +7699,7 @@
 /area/rogue)
 "axW" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /turf/open/floor/rogue/blocks,
 /area/rogue)
 "axX" = (
@@ -7877,7 +7877,7 @@
 /area/rogue)
 "ayy" = (
 /obj/structure/rack/rogue,
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /turf/open/floor/rogue/blocks{
 	icon_state = "greenblocks"
 	},
@@ -8559,7 +8559,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue)
 "aBf" = (
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /turf/open/floor/rogue/cobble,
 /area/rogue)
 "aBg" = (
@@ -9098,7 +9098,7 @@
 /area/rogue)
 "aCE" = (
 /obj/structure/closet/crate/chest,
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /turf/open/floor/rogue/tile{
 	icon_state = "greenstone"
 	},
@@ -12411,7 +12411,7 @@
 	icon_state = "largetable";
 	dir = 6
 	},
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /turf/open/floor/rogue/tile{
 	icon_state = "chess"
 	},
@@ -12838,7 +12838,7 @@
 	},
 /area/rogue)
 "mdn" = (
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors)
 "miQ" = (
@@ -13461,7 +13461,7 @@
 /area/rogue/outdoors/mountains)
 "rzY" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "horzw"
 	},

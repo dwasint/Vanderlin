@@ -3907,7 +3907,7 @@
 /obj/structure/rack/rogue/shelf/biggest,
 /obj/structure/rack/rogue/shelf,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/item/storage/roguebag{
+/obj/item/storage/sack{
 	pixel_y = 22
 	},
 /obj/item/natural/cloth,
@@ -6655,8 +6655,8 @@
 /area/rogue/indoors/town/manor)
 "hoy" = (
 /obj/structure/table/wood,
-/obj/item/storage/roguebag,
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
+/obj/item/storage/sack,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/shop)
 "hoB" = (
@@ -9776,7 +9776,7 @@
 "kLR" = (
 /obj/structure/rack/rogue/shelf/biggest,
 /obj/structure/rack/rogue/shelf,
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /obj/item/candle/yellow{
 	pixel_y = 42
 	},
@@ -11680,7 +11680,7 @@
 "mQs" = (
 /obj/machinery/light/rogue/wallfire/candle/l,
 /obj/structure/closet/crate/chest/neu,
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town)
 "mQv" = (
@@ -13972,7 +13972,7 @@
 /obj/effect/decal/cleanable/dirt/cobweb{
 	icon_state = "cobweb2"
 	},
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
 "pjP" = (
@@ -14045,8 +14045,8 @@
 /area/rogue/indoors/town/garrison)
 "poG" = (
 /obj/structure/closet/crate/chest/old_crate,
-/obj/item/storage/roguebag,
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
+/obj/item/storage/sack,
 /turf/open/floor/rogue/ruinedwood{
 	dir = 1;
 	icon_state = "vertw"
@@ -16329,7 +16329,7 @@
 /obj/item/candle/yellow,
 /obj/item/candle/yellow,
 /obj/item/flint,
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /obj/item/broom,
 /obj/item/broom,
 /turf/open/floor/rogue/cobble,
@@ -18819,7 +18819,7 @@
 	amount = 8
 	},
 /obj/item/reagent_containers/glass/bottle/rogue/poison,
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /obj/item/broom,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
@@ -20182,7 +20182,7 @@
 /area/rogue/outdoors/town/roofs)
 "wfp" = (
 /obj/structure/rack/rogue,
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /turf/open/floor/rogue/ruinedwood{
 	dir = 1;
 	icon_state = "vertw"

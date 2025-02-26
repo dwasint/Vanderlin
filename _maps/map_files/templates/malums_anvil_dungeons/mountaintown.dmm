@@ -2383,7 +2383,7 @@
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/under/mountains/anvil/dungeon)
 "HI" = (
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /obj/item/reagent_containers/food/snacks/potato_baked{
 	pixel_x = -6
 	},

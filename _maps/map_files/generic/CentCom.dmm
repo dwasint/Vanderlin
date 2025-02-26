@@ -1214,7 +1214,7 @@
 	dir = 6;
 	icon_state = "largetable"
 	},
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/vampire_manor)
 "dA" = (

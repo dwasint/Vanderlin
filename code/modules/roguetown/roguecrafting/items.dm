@@ -104,13 +104,13 @@
 /obj/item/reagent_containers/glass/cup/wooden/crafted
 	sellprice = 3
 
-/obj/item/storage/roguebag/crafted
+/obj/item/storage/sack/crafted
 	sellprice = 4
 
 /datum/crafting_recipe/bait
 	name = "bait"
 	result = /obj/item/bait
-	reqs = list(/obj/item/storage/roguebag = 1,
+	reqs = list(/obj/item/storage/sack = 1,
 				/obj/item/reagent_containers/food/snacks/produce/wheat = 2)
 	req_table = FALSE
 	subtype_reqs = TRUE
@@ -118,7 +118,7 @@
 /datum/crafting_recipe/sbaita
 	name = "sweetbait (apple)"
 	result = /obj/item/bait/sweet
-	reqs = list(/obj/item/storage/roguebag = 1,
+	reqs = list(/obj/item/storage/sack = 1,
 				/obj/item/reagent_containers/food/snacks/produce/apple = 2)
 	req_table = FALSE
 	subtype_reqs = TRUE
@@ -126,7 +126,7 @@
 /datum/crafting_recipe/sbait
 	name = "sweetbait (berry)"
 	result = /obj/item/bait/sweet
-	reqs = list(/obj/item/storage/roguebag = 1,
+	reqs = list(/obj/item/storage/sack = 1,
 				/obj/item/reagent_containers/food/snacks/produce/jacksberry = 2)
 	req_table = FALSE
 	subtype_reqs = TRUE
@@ -134,7 +134,7 @@
 /datum/crafting_recipe/bloodbait
 	name = "bloodbait"
 	result = /obj/item/bait/bloody
-	reqs = list(/obj/item/storage/roguebag = 1,
+	reqs = list(/obj/item/storage/sack = 1,
 				/obj/item/reagent_containers/food/snacks/rogue/meat = 2)
 	req_table = FALSE
 	subtype_reqs = TRUE

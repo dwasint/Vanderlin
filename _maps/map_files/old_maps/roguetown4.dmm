@@ -693,7 +693,7 @@
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
 "cF" = (
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /turf/open/floor/rogue/blocks/paving/vert,
 /area/rogue/under/town/basement)
 "cG" = (
@@ -3268,7 +3268,7 @@
 /area/rogue/outdoors/exposed/dwarf)
 "md" = (
 /obj/structure/closet/crate/chest,
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /turf/open/floor/rogue/tile{
 	icon_state = "greenstone"
 	},
@@ -3612,7 +3612,7 @@
 /area/rogue/indoors/town/shop)
 "nr" = (
 /obj/structure/table/wood,
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/shop)
 "ns" = (
@@ -3699,7 +3699,7 @@
 /turf/closed/wall/mineral/rogue/stonebrick,
 /area/rogue/outdoors/exposed/dwarf)
 "nH" = (
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /obj/structure/rack/rogue,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/shop)
@@ -7659,7 +7659,7 @@
 /area/rogue/outdoors/town)
 "Ct" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
 "Cu" = (
@@ -9149,7 +9149,7 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/cave)
 "Ir" = (
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
 "It" = (
@@ -10229,7 +10229,7 @@
 	icon_state = "largetable";
 	dir = 6
 	},
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /turf/open/floor/rogue/tile{
 	icon_state = "chess"
 	},
@@ -10683,7 +10683,7 @@
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
 	},
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/church)
 "RI" = (

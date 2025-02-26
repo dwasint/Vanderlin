@@ -206,7 +206,7 @@
 /area/rogue/indoors)
 "ib" = (
 /obj/structure/table/wood,
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /turf/open/floor/rogue/tile/kitchen,
 /area/rogue/indoors)
 "im" = (

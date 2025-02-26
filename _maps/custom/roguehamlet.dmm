@@ -1231,12 +1231,12 @@
 /area/rogue/indoors/town/garrison)
 "bsE" = (
 /obj/structure/flora/roguegrass,
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /obj/structure/fluff/railing/fence{
 	dir = 8;
 	icon_state = "fence"
 	},
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /obj/structure/closet/crate/chest/old_crate,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/exposed/town)
@@ -3608,7 +3608,7 @@
 /obj/effect/decal/cobbleedge{
 	dir = 5
 	},
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield{
 	ambush_mobs = list(/mob/living/simple_animal/hostile/retaliate/rogue/wolf = 50, /mob/living/carbon/human/species/human/northern/bum/ambush = 30)
@@ -6765,7 +6765,7 @@
 	ambush_mobs = list(/mob/living/simple_animal/hostile/retaliate/rogue/wolf = 50, /mob/living/carbon/human/species/human/northern/bum/ambush = 30)
 	})
 "him" = (
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
 "hio" = (
@@ -16185,7 +16185,7 @@
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/bath/redhouse)
 "qNh" = (
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /obj/structure/rack/rogue,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/town/manor{
@@ -17159,7 +17159,7 @@
 	amount = 8
 	},
 /obj/item/reagent_containers/glass/bottle/rogue/poison,
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /obj/item/clothing/cloak/apron/cook{
 	pixel_y = 17
 	},
@@ -19213,11 +19213,11 @@
 	})
 "tUl" = (
 /obj/structure/rack/rogue,
-/obj/item/storage/roguebag{
+/obj/item/storage/sack{
 	pixel_x = -8;
 	pixel_y = 6
 	},
-/obj/item/storage/roguebag{
+/obj/item/storage/sack{
 	pixel_x = 8;
 	pixel_y = -2
 	},

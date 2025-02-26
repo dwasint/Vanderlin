@@ -59,7 +59,7 @@
 "hG" = (
 /obj/structure/fluff/millstone,
 /obj/structure/table/wood/plain,
-/obj/item/storage/roguebag{
+/obj/item/storage/sack{
 	pixel_x = -10;
 	pixel_y = 19
 	},

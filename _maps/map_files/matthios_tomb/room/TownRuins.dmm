@@ -875,8 +875,8 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue)
 "vo" = (
-/obj/item/storage/roguebag,
-/obj/item/storage/roguebag{
+/obj/item/storage/sack,
+/obj/item/storage/sack{
 	pixel_x = -4;
 	pixel_y = -1
 	},

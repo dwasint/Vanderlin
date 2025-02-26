@@ -123,7 +123,7 @@
 
 /obj/structure/composter/attackby(obj/item/attacking_item, mob/user, params)
 	user.changeNext_move(CLICK_CD_FAST)
-	if(istype(attacking_item,/obj/item/storage/roguebag) && attacking_item.contents.len)
+	if(istype(attacking_item,/obj/item/storage/sack) && attacking_item.contents.len)
 		if(get_total_compost() >= MAXIMUM_TOTAL_COMPOST)
 			to_chat(user, span_warning("There's too much compost!"))
 			return

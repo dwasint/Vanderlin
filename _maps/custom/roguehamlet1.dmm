@@ -3554,7 +3554,7 @@
 /obj/effect/decal/cobbleedge{
 	dir = 5
 	},
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield{
 	ambush_mobs = list(/mob/living/simple_animal/hostile/retaliate/rogue/wolf = 50, /mob/living/carbon/human/species/human/northern/bum/ambush = 30)
@@ -6484,7 +6484,7 @@
 	ambush_mobs = list(/mob/living/simple_animal/hostile/retaliate/rogue/wolf = 50, /mob/living/carbon/human/species/human/northern/bum/ambush = 30)
 	})
 "him" = (
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
 "hio" = (
@@ -11403,7 +11403,7 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/shop)
 "mws" = (
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /turf/open/transparent/openspace,
 /area/rogue/indoors)
 "mwG" = (
@@ -15739,7 +15739,7 @@
 /turf/open/floor/rogue/greenstone,
 /area/rogue/indoors/town/bath)
 "qNh" = (
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /obj/structure/rack/rogue,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/town/manor{
@@ -18759,11 +18759,11 @@
 	})
 "tUl" = (
 /obj/structure/rack/rogue,
-/obj/item/storage/roguebag{
+/obj/item/storage/sack{
 	pixel_y = 6;
 	pixel_x = -8
 	},
-/obj/item/storage/roguebag{
+/obj/item/storage/sack{
 	pixel_y = -2;
 	pixel_x = 8
 	},

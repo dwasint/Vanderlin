@@ -15,7 +15,7 @@
 	experimental_inhand = FALSE
 	dropshrink = 0.7
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
-	component_type = /datum/component/storage/concrete/roguetown/keyring
+	component_type = /datum/component/storage/concrete/grid/keyring
 
 /obj/item/storage/keyring/Initialize()
 	. = ..()

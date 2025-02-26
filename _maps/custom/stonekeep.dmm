@@ -2780,7 +2780,7 @@
 /area/rogue/indoors/town/manor)
 "jK" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "horzw"
 	},
@@ -2931,7 +2931,7 @@
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
 "kg" = (
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
 "kh" = (
@@ -4466,7 +4466,7 @@
 	icon_state = "tablewood1"
 	},
 /obj/item/storage/backpack/rogue/satchel,
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/shop)
 "pK" = (
@@ -5404,7 +5404,7 @@
 /area/rogue/under/lake)
 "ts" = (
 /obj/structure/table/wood,
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/shop)
 "tt" = (
@@ -9453,7 +9453,7 @@
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
 	},
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/church)
 "Ip" = (
@@ -12065,7 +12065,7 @@
 	icon_state = "largetable";
 	dir = 6
 	},
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /turf/open/floor/rogue/tile{
 	icon_state = "chess"
 	},

@@ -1140,7 +1140,7 @@
 	pixel_x = 1;
 	pixel_y = 2
 	},
-/obj/item/storage/roguebag,
+/obj/item/storage/sack,
 /turf/open/floor/carpet/red,
 /area/rogue)
 "Zb" = (

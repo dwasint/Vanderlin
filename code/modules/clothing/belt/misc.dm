@@ -16,7 +16,7 @@
 			STR.remove_from_storage(I, get_turf(src))
 
 /obj/item/storage/belt/leather/assassin // Assassin's super edgy and cool belt can carry normal items (for poison vial, lockpick).
-	component_type = /datum/component/storage/concrete/roguetown/belt/assassin
+	component_type = /datum/component/storage/concrete/grid/belt/assassin
 
 	populate_contents = list(
 		/obj/item/reagent_containers/glass/bottle/rogue/poison,
@@ -83,14 +83,14 @@
 	item_state = "rope"
 	color = "#b9a286"
 	salvage_result = /obj/item/rope
-	component_type = /datum/component/storage/concrete/roguetown/belt/cloth
+	component_type = /datum/component/storage/concrete/grid/belt/cloth
 
 /obj/item/storage/belt/leather/cloth
 	name = "cloth sash"
 	desc = "A simple cloth sash."
 	icon_state = "cloth"
 	salvage_result = /obj/item/natural/cloth
-	component_type = /datum/component/storage/concrete/roguetown/belt/cloth
+	component_type = /datum/component/storage/concrete/grid/belt/cloth
 
 /obj/item/storage/belt/leather/cloth/lady
 	color = "#575160"
@@ -112,7 +112,7 @@
 	content_overlays = FALSE
 	bloody_icon_state = "bodyblood"
 	fiber_salvage = FALSE
-	component_type = /datum/component/storage/concrete/roguetown/coin_pouch
+	component_type = /datum/component/storage/concrete/grid/coin_pouch
 	grid_height = 64
 	grid_width = 32
 
@@ -207,7 +207,7 @@
 	equip_sound = 'sound/blank.ogg'
 	bloody_icon_state = "bodyblood"
 	alternate_worn_layer = UNDER_CLOAK_LAYER
-	component_type = /datum/component/storage/concrete/roguetown/satchel
+	component_type = /datum/component/storage/concrete/grid/satchel
 
 /obj/item/storage/backpack/rogue/satchel/heartfelt
 	populate_contents = list(
@@ -237,7 +237,7 @@
 	max_integrity = 300
 	equip_sound = 'sound/blank.ogg'
 	bloody_icon_state = "bodyblood"
-	component_type = /datum/component/storage/concrete/roguetown/backpack
+	component_type = /datum/component/storage/concrete/grid/backpack
 
 /obj/item/storage/backpack/rogue/satchel/surgbag
 	name = "surgery bag"
@@ -257,7 +257,7 @@
 		/obj/item/natural/worms/leech/parasite,
 		/obj/item/weapon/surgery/hammer,
 	)
-	component_type = /datum/component/storage/concrete/roguetown/surgery_bag
+	component_type = /datum/component/storage/concrete/grid/surgery_bag
 
 /obj/item/storage/belt/leather/knifebelt
 
@@ -269,7 +269,7 @@
 	var/max_storage = 8
 	var/list/arrows = list()
 	sewrepair = TRUE
-	component_type = /datum/component/storage/concrete/roguetown/belt/knife_belt
+	component_type = /datum/component/storage/concrete/grid/belt/knife_belt
 
 
 /obj/item/storage/belt/leather/knifebelt/attack_turf(turf/T, mob/living/user)
