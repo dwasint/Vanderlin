@@ -76,6 +76,7 @@
 
 /*	.................   Unique Dendor recipes   ................... */
 /datum/crafting_recipe/dendor
+	always_availible = FALSE
 	craftdiff = 0
 	category = CAT_NONE
 	subtype_reqs = TRUE // so you can use any subtype of the items

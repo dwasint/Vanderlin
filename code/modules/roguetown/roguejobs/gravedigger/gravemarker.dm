@@ -1,4 +1,4 @@
-/datum/crafting_recipe/roguetown/gravemarker
+/datum/crafting_recipe/gravemarker
 	name = "grave marker"
 	result = /obj/structure/gravemarker
 	reqs = list(/obj/item/grown/log/tree/stick = 1)
@@ -9,7 +9,7 @@
 	structurecraft = /obj/structure/closet/dirthole
 	craftdiff = 0
 
-/datum/crafting_recipe/roguetown/gravemarker/TurfCheck(mob/user, turf/T)
+/datum/crafting_recipe/gravemarker/TurfCheck(mob/user, turf/T)
 	if(!(locate(/obj/structure/closet/dirthole) in T))
 		to_chat(user, "<span class='warning'>There is no grave here.</span>")
 		return FALSE

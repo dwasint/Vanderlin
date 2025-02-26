@@ -57,206 +57,6 @@
 
 	return TRUE
 
-/*
-/datum/outfit/job/roguetown/bandit/pre_equip(mob/living/carbon/human/H)
-	..()
-	H.become_blind("TRAIT_GENERIC")
-	var/classes = list("Deserter","Poacher","Brigand")
-	var/classchoice = input("Choose your background", "Available backgrounds") as anything in classes
-
-	switch(classchoice)
-
-		if("Deserter") //well armored, polearm skill, shield skill. The heavy melee class.
-			H.set_blindness(0)
-			to_chat(H, span_warning("You were once a soldier employed under a lord, and left illegally. You're capable with armor, shields, and polearms."))
-			H.mind?.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
-			H.mind?.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)
-			H.mind?.adjust_skillrank(/datum/skill/combat/axesmaces, 1, TRUE)
-			H.mind?.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
-			H.mind?.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
-			H.mind?.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
-			H.mind?.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-			H.change_stat(STATKEY_STR, 2)
-			H.change_stat(STATKEY_END, 1)
-			H.change_stat(STATKEY_CON, 1)
-
-			wrists = /obj/item/clothing/wrists/bracers/leather
-			beltr = /obj/item/clothing/face/shepherd/rag
-			beltl = /obj/item/weapon/knife/hunting
-
-			if(H.age == AGE_OLD) //old deserters are experts with polearms
-				H.mind?.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
-
-			var/helmet2choose = pickweight(list("Volfhelm" = 5, "Skullcap" = 2, "Barbute" = 1))
-			switch(helmet2choose)
-				if("Volfhelm")
-					head = /obj/item/clothing/head/helmet/leather/volfhelm
-				if("Skullcap")
-					head = /obj/item/clothing/head/helmet/skullcap
-				if("Barbute") // big roller
-					head = /obj/item/clothing/head/helmet/heavy/rust
-
-			var/armor2choose = pickweight(list("Rusty halfplate" = 2, "Chainmail" = 1))
-			switch(armor2choose)
-				if("Rusty halfplate")
-					armor = /obj/item/clothing/armor/cuirass/iron/rust
-				if("Chainmail")
-					armor = /obj/item/clothing/armor/chainmail/iron
-
-			var/weapon2choose = pickweight(list("Spear" = 2, "Bardiche" = 1))
-			switch(weapon2choose)
-				if("Spear")
-					backr = /obj/item/weapon/polearm/spear
-				if("Bardiche")
-					backr = /obj/item/weapon/polearm/halberd/bardiche
-
-			switch(pick(1,2))
-				if (1) //worse leg protection, better neck protection, and a face mask
-					pants = /obj/item/clothing/pants/trou/leather
-					neck = /obj/item/clothing/neck/chaincoif
-					mask = /obj/item/clothing/face/facemask
-				if (2) //better leg protection, worse neck protection
-					pants = /obj/item/clothing/pants/chainlegs/iron
-					neck = /obj/item/clothing/neck/chaincoif/iron
-
-		if("Poacher") //good perception, speed, bow skill, and knife skill. Also some cooking and skincrafting since they are poachers. The speedy ranged class.
-			H.set_blindness(0)
-			to_chat(H, span_warning("You illegally hunt within the lands of others, and are quite good at it."))
-			H.mind?.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
-			H.mind?.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
-			H.mind?.adjust_skillrank(/datum/skill/combat/axesmaces, 1, TRUE)
-			H.mind?.adjust_skillrank(/datum/skill/combat/bows, 4, TRUE)
-			H.mind?.adjust_skillrank(/datum/skill/combat/crossbows, 4, TRUE)
-			H.mind?.adjust_skillrank(/datum/skill/craft/tanning, 2, TRUE)
-			H.mind?.adjust_skillrank(/datum/skill/craft/traps, 2, TRUE)
-			H.mind?.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
-			H.mind?.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
-			H.change_stat(STATKEY_STR, 1)
-			H.change_stat(STATKEY_END, 1)
-			H.change_stat(STATKEY_PER, 2)
-			H.change_stat(STATKEY_SPD, 2)
-
-			armor = /obj/item/clothing/armor/gambeson
-			pants = /obj/item/clothing/pants/trou/leather
-			beltr = /obj/item/weapon/knife/hunting
-			backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
-			beltl = /obj/item/ammo_holder/quiver/arrows
-			mask = /obj/item/clothing/face/shepherd/rag
-
-			var/helmet2choose = pickweight(list("Hood" = 1, "Volfhelm" = 1))
-			switch(helmet2choose)
-				if("Hood")
-					head = /obj/item/clothing/head/roguehood
-					neck = /obj/item/clothing/neck/coif
-					if(H.age == AGE_OLD) //old poachers also saved up for a better coif
-						head = /obj/item/clothing/neck/chaincoif/iron
-				if("Volfhelm")
-					head = /obj/item/clothing/head/helmet/leather/volfhelm
-
-			if(H.age == AGE_OLD) //old poachers are better at their jobs
-				H.mind?.adjust_skillrank(/datum/skill/craft/tanning, 1, TRUE)
-				H.mind?.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
-				H.mind?.adjust_skillrank(/datum/skill/labor/butchering, 1, TRUE)
-
-			switch(pick(1,2,3))
-				if (1)
-					beltr = /obj/item/weapon/knife/hunting
-				if (2)
-					beltr = /obj/item/weapon/knife/cleaver
-				if (3)
-					beltr = /obj/item/weapon/knife/dagger
-
-		if("Brigand") //good sword skill, shield skill, flail skill, mace skill, slightly speedy. Kind of an all rounder.
-			H.set_blindness(0)
-			to_chat(H, span_warning("You are experienced with using swords and clubs to threaten and rob others."))
-			H.mind?.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE)
-			H.mind?.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)
-			H.mind?.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
-			H.mind?.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
-			H.mind?.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-			H.mind?.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
-			H.mind?.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
-			H.mind?.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
-			H.change_stat(STATKEY_STR, 2)
-			H.change_stat(STATKEY_END, 2)
-			H.change_stat(STATKEY_CON, 1)
-			H.change_stat(STATKEY_SPD, 1)
-
-			neck = /obj/item/clothing/neck/coif
-			wrists = /obj/item/clothing/wrists/bracers/leather
-			pants = /obj/item/clothing/pants/trou/leather
-			beltl = /obj/item/clothing/face/shepherd/rag
-			neck = /obj/item/clothing/neck/coif
-
-			var/helmet2choose = pickweight(list("Leather helmet" = 2, "Volfhelm" = 2, "Coif" = 1))
-			switch(helmet2choose)
-				if("Leather helmet")
-					head = /obj/item/clothing/head/helmet/leather/conical
-				if("Volfhelm")
-					head = /obj/item/clothing/head/helmet/leather/volfhelm
-				if("Coif")
-					head = /obj/item/clothing/neck/chaincoif/iron
-
-			switch(pick(1,2))
-				if (1)
-					armor = /obj/item/clothing/armor/leather
-				if (2)
-					armor = /obj/item/clothing/armor/leather/hide
-
-			if(H.age == AGE_OLD) //old brigands have been in the business for so long that they have managed to pick up some better gear along the way
-				armor = /obj/item/clothing/armor/leather/splint
-				mask = /obj/item/clothing/face/facemask
-
-			switch(pick(1,2,3,4))
-				if (1)
-					beltr = /obj/item/weapon/sword/iron
-				if (2)
-					beltr = /obj/item/weapon/flail
-				if (3)
-					beltr = /obj/item/weapon/mace
-				if (4)
-					beltr = /obj/item/weapon/sword/scimitar/messer
-
-	H.cure_blind("TRAIT_GENERIC")
-
-	// The commmon skills shared between all bandits
-	H.mind?.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
-	H.mind?.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
-
-	H.mind?.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
-	H.mind?.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
-	H.mind?.adjust_skillrank(/datum/skill/misc/lockpicking, 2, TRUE)
-	H.mind?.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-	H.mind?.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
-	H.mind?.adjust_skillrank(/datum/skill/misc/stealing, 2, TRUE)
-	H.mind?.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
-
-	H.mind.teach_crafting_recipe(/datum/crafting_recipe/bandit_volfhelm)
-	H.mind.teach_crafting_recipe(/datum/crafting_recipe/cult_hood)
-
-	// The commmon gear shared between all bandits
-	belt = /obj/item/storage/belt/leather/bandit
-	shoes = /obj/item/clothing/shoes/boots
-	backl = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/flashlight/flare/torch/metal)
-
-	switch(pick(1,3))
-		if (1 to 2)
-			gloves = /obj/item/clothing/gloves/leather
-			shirt = /obj/item/clothing/shirt/shortshirt/random
-		if (3)
-			gloves = /obj/item/clothing/gloves/angle
-			shirt = /obj/item/clothing/shirt/undershirt/black
-
-	H.change_stat(STATKEY_INT, -1)
-	var/obj/item/bodypart/B = H.get_bodypart("head")
-	if(B)
-		B.sellprice = rand(44, 88)
-
-	H.ambushable = FALSE
-*/
-
 /datum/antagonist/bandit/roundend_report()
 	if(owner?.current)
 		var/amt = tri_amt
@@ -269,30 +69,6 @@
 		else
 			to_chat(world, "[the_name] was a bandit. He stole [amt] triumphs worth of loot.")
 	return
-/*
-	var/traitorwin = TRUE
-
-	var/count = 0
-	if(objectives.len)//If the traitor had no objectives, don't need to process this.
-		for(var/datum/objective/objective in objectives)
-			objective.update_explanation_text()
-			if(!objective.check_completion())
-				traitorwin = FALSE
-			count += objective.triumph_count
-
-	if(!count)
-		count = 1
-
-	if(traitorwin)
-		owner.adjust_triumphs(count)
-		to_chat(owner.current, "<span class='greentext'>I've TRIUMPHED!</span>")
-		if(owner.current)
-			owner.current.playsound_local(get_turf(owner.current), 'sound/misc/triumph.ogg', 100, FALSE, pressure_affected = FALSE)
-	else
-		to_chat(owner.current, "<span class='redtext'>I've failed to satisfy my greed.</span>")
-		if(owner.current)
-			owner.current.playsound_local(get_turf(owner.current), 'sound/misc/fail.ogg', 100, FALSE, pressure_affected = FALSE)
-*/
 
 /*	.................   Unique Bandit recipes   ................... */
 /datum/crafting_recipe/bandit_volfhelm
@@ -301,6 +77,7 @@
 	reqs = list(/obj/item/natural/fur/volf = 2)
 	result = /obj/item/clothing/head/helmet/leather/volfhelm
 	category = CAT_NONE
+	always_availible = FALSE
 
 /datum/crafting_recipe/cult_hood
 	name = "(Cult) Ominous Hood"
@@ -308,4 +85,5 @@
 	reqs = list(/obj/item/natural/hide = 1)
 	result = /obj/item/clothing/head/helmet/leather/hood_ominous
 	category = CAT_NONE
+	always_availible = FALSE
 

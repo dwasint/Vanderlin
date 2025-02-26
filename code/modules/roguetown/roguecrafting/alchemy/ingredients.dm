@@ -343,7 +343,7 @@
 	minor_pot = /datum/alch_cauldron_recipe/health_potion
 
 //dust mix crafting
-/datum/crafting_recipe/roguetown/alch/feaudust
+/datum/crafting_recipe/alch/feaudust
 	name = "feau dust"
 	result = list(/obj/item/alch/feaudust,
 				/obj/item/alch/feaudust)
@@ -356,7 +356,7 @@
 	skillcraft = /datum/skill/craft/alchemy
 	craftdiff = 2
 
-/datum/crafting_recipe/roguetown/alch/magicdust
+/datum/crafting_recipe/alch/magicdust
 	name = "magic dust"
 	result = list(/obj/item/alch/magicdust)
 	reqs = list(/obj/item/alch/waterdust = 1, /obj/item/alch/firedust = 1,
@@ -368,7 +368,7 @@
 	skillcraft = /datum/skill/craft/alchemy
 	craftdiff = 3
 
-/datum/crafting_recipe/roguetown/alch/transistus
+/datum/crafting_recipe/alch/transistus
 	name = "transis dust"
 	result = /obj/item/alch/transisdust
 	reqs = list(/obj/item/alch/artemisia = 1,

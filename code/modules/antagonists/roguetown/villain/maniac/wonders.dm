@@ -1,6 +1,6 @@
 //Wonder recipes
 //NOTE: Wonders are named after their proper keys, the wonder structure handles that code
-/datum/crafting_recipe/roguetown/structure/wonder
+/datum/crafting_recipe/structure/wonder
 	name = "wonder"
 	result = /obj/structure/wonder
 	reqs = list(
@@ -13,7 +13,7 @@
 	always_availible = FALSE
 	subtype_reqs = TRUE
 
-/datum/crafting_recipe/roguetown/structure/wonder/first
+/datum/crafting_recipe/structure/wonder/first
 	name = "first wonder (2 bodyparts, 1 stomach)"
 	result = /obj/structure/wonder
 	reqs = list(
@@ -21,7 +21,7 @@
 		/obj/item/organ/stomach = 1,
 	)
 
-/datum/crafting_recipe/roguetown/structure/wonder/second
+/datum/crafting_recipe/structure/wonder/second
 	name = "second wonder (2 bodyparts, 2 lungs)"
 	result = /obj/structure/wonder
 	reqs = list(
@@ -29,7 +29,7 @@
 		/obj/item/organ/lungs = 2,
 	)
 
-/datum/crafting_recipe/roguetown/structure/wonder/third
+/datum/crafting_recipe/structure/wonder/third
 	name = "third wonder (2 bodyparts, 3 heads, 2 stomachs)"
 	result = /obj/structure/wonder
 	reqs = list(
@@ -38,7 +38,7 @@
 		/obj/item/organ/stomach = 2,
 	)
 
-/datum/crafting_recipe/roguetown/structure/wonder/fourth
+/datum/crafting_recipe/structure/wonder/fourth
 	name = "fourth wonder (4 tongues, 3 eyes, 4 livers)"
 	result = /obj/structure/wonder
 	reqs = list(
