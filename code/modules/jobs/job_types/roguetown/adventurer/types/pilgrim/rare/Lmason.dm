@@ -30,7 +30,7 @@
 	H.mind?.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
 	H.mind?.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 	head = /obj/item/clothing/head/hatblu
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
+	armor = /obj/item/clothing/armor/leather/vest
 	cloak = /obj/item/clothing/cloak/apron/waist/bar
 	pants = /obj/item/clothing/pants/trou
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random

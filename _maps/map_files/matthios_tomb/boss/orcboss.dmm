@@ -230,7 +230,7 @@
 	pixel_y = 8
 	},
 /obj/item/clothing/cloak/half/random,
-/obj/item/clothing/suit/roguetown/armor/leather/vest/black,
+/obj/item/clothing/armor/leather/vest/black,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue)
 "Ns" = (

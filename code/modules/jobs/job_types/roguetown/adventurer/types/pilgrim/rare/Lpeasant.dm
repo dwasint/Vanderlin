@@ -49,7 +49,7 @@
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	backl = /obj/item/storage/backpack/rogue/backpack
 	neck = /obj/item/clothing/neck/coif/cloth
-	armor = /obj/item/clothing/suit/roguetown/armor/gambeson
+	armor = /obj/item/clothing/armor/gambeson
 	mouth = /obj/item/clothing/face/cigarette/pipe/westman
 	beltl = /obj/item/weapon/sickle
 	beltr = /obj/item/weapon/knife/hunting

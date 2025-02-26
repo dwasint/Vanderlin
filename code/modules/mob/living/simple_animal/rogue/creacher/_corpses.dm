@@ -36,7 +36,7 @@
 	outfit = /datum/outfit/orcmarauder
 
 /datum/outfit/orcmarauder
-	armor = /obj/item/clothing/suit/roguetown/armor/chainmail
+	armor = /obj/item/clothing/armor/chainmail
 	pants =	/obj/item/clothing/pants/chainlegs
 	shoes = /obj/item/clothing/shoes/boots/furlinedboots
 	head = /obj/item/clothing/head/helmet/leather
@@ -50,7 +50,7 @@
 	outfit = /datum/outfit/orcravager
 
 /datum/outfit/orcravager
-	armor = /obj/item/clothing/suit/roguetown/armor/chainmail
+	armor = /obj/item/clothing/armor/chainmail
 	pants =	/obj/item/clothing/pants/chainlegs
 	shoes = /obj/item/clothing/shoes/boots/armor
 	head = /obj/item/clothing/head/helmet/skullcap

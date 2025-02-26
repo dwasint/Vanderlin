@@ -76,7 +76,7 @@
 		if(prob(50))
 			head = /obj/item/clothing/head/strawhat
 		pants = /obj/item/clothing/pants/tights/random
-		armor = /obj/item/clothing/suit/roguetown/armor/gambeson/light/striped
+		armor = /obj/item/clothing/armor/gambeson/light/striped
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 		shoes = /obj/item/clothing/shoes/simpleshoes
 		belt = /obj/item/storage/belt/rogue/leather/rope

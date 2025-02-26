@@ -65,8 +65,8 @@
 	..()
 	head = /obj/item/clothing/head/helmet/kettle
 	cloak = /obj/item/clothing/cloak/stabard/guard
-	armor = /obj/item/clothing/suit/roguetown/armor/cuirass
-	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
+	armor = /obj/item/clothing/armor/cuirass
+	shirt = /obj/item/clothing/armor/chainmail
 	neck = /obj/item/clothing/neck/chaincoif/iron
 	gloves = /obj/item/clothing/gloves/roguetown/chain
 	beltr = /obj/item/weapon/sword/arming
@@ -109,8 +109,8 @@
 	..()
 	head = pick(/obj/item/clothing/head/roguehood/guard, /obj/item/clothing/head/roguehood/guardsecond)
 	cloak = /obj/item/clothing/cloak/stabard/guard
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/advanced
-	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
+	armor = /obj/item/clothing/armor/leather/advanced
+	shirt = /obj/item/clothing/armor/gambeson
 	neck = /obj/item/clothing/neck/gorget
 	gloves = /obj/item/clothing/gloves/roguetown/chain
 	beltr = /obj/item/weapon/sword/rapier
@@ -149,8 +149,8 @@
 	..()
 	head = /obj/item/clothing/head/helmet/kettle
 	cloak = /obj/item/clothing/cloak/stabard/guard
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
-	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
+	armor = /obj/item/clothing/armor/leather/hide
+	shirt = /obj/item/clothing/armor/gambeson/heavy
 	beltr = /obj/item/weapon/mace/cudgel
 	neck = /obj/item/clothing/neck/chaincoif/iron
 	gloves = /obj/item/clothing/gloves/roguetown/leather

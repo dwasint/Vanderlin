@@ -51,14 +51,14 @@
 	var/weapontype = pickweight(list("Axe" = 2, "Mace" = 2, "Messer" = 2, "Sword" = 3, "Flail" = 1)) // Rolls for various weapons, all of these are iron tier
 	switch(armortype)
 		if("Ironmail")
-			armor = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
-			shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
+			armor = /obj/item/clothing/armor/chainmail/iron
+			shirt = /obj/item/clothing/armor/gambeson
 		if("Ironplate")
-			armor = /obj/item/clothing/suit/roguetown/armor/cuirass/iron
-			shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
+			armor = /obj/item/clothing/armor/cuirass/iron
+			shirt = /obj/item/clothing/armor/gambeson/heavy
 		if("Ironplate&Legs") // Big roller gets an iron cuirass over iron mail AND iron chain leggings. Lucky them
-			armor = /obj/item/clothing/suit/roguetown/armor/cuirass/iron
-			shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
+			armor = /obj/item/clothing/armor/cuirass/iron
+			shirt = /obj/item/clothing/armor/chainmail/iron
 			pants = /obj/item/clothing/pants/chainlegs/iron
 	switch(weapontype) // We get +1 weapon skill in either axes/maces, swords, or flails depending on our starting weapon
 		if("Axe")

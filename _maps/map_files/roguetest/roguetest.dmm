@@ -147,12 +147,12 @@
 	icon_state = "tablewood2";
 	dir = 10
 	},
-/obj/item/clothing/suit/roguetown/armor/leather/splint,
-/obj/item/clothing/suit/roguetown/armor/leather/splint,
-/obj/item/clothing/suit/roguetown/armor/leather/splint,
-/obj/item/clothing/suit/roguetown/armor/leather,
-/obj/item/clothing/suit/roguetown/armor/leather,
-/obj/item/clothing/suit/roguetown/armor/leather,
+/obj/item/clothing/armor/leather/splint,
+/obj/item/clothing/armor/leather/splint,
+/obj/item/clothing/armor/leather/splint,
+/obj/item/clothing/armor/leather,
+/obj/item/clothing/armor/leather,
+/obj/item/clothing/armor/leather,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors)
 "aA" = (
@@ -160,10 +160,10 @@
 	icon_state = "tablewood2";
 	dir = 10
 	},
-/obj/item/clothing/suit/roguetown/armor/plate,
-/obj/item/clothing/suit/roguetown/armor/plate,
-/obj/item/clothing/suit/roguetown/armor/plate,
-/obj/item/clothing/suit/roguetown/armor/plate,
+/obj/item/clothing/armor/plate,
+/obj/item/clothing/armor/plate,
+/obj/item/clothing/armor/plate,
+/obj/item/clothing/armor/plate,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors)
 "aB" = (
@@ -171,10 +171,10 @@
 	icon_state = "tablewood2";
 	dir = 10
 	},
-/obj/item/clothing/suit/roguetown/armor/gambeson,
-/obj/item/clothing/suit/roguetown/armor/gambeson,
-/obj/item/clothing/suit/roguetown/armor/gambeson,
-/obj/item/clothing/suit/roguetown/armor/gambeson,
+/obj/item/clothing/armor/gambeson,
+/obj/item/clothing/armor/gambeson,
+/obj/item/clothing/armor/gambeson,
+/obj/item/clothing/armor/gambeson,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors)
 "aC" = (
@@ -182,11 +182,11 @@
 	icon_state = "tablewood2";
 	dir = 10
 	},
-/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk,
-/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk,
-/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk,
-/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk,
-/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk,
+/obj/item/clothing/armor/chainmail/hauberk,
+/obj/item/clothing/armor/chainmail/hauberk,
+/obj/item/clothing/armor/chainmail/hauberk,
+/obj/item/clothing/armor/chainmail/hauberk,
+/obj/item/clothing/armor/chainmail/hauberk,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors)
 "aD" = (
@@ -201,9 +201,9 @@
 	icon_state = "tablewood2";
 	dir = 10
 	},
-/obj/item/clothing/suit/roguetown/armor/gambeson/heavy/dress,
-/obj/item/clothing/suit/roguetown/armor/gambeson/heavy/dress/alt,
-/obj/item/clothing/suit/roguetown/armor/gambeson/heavy/dress,
+/obj/item/clothing/armor/gambeson/heavy/dress,
+/obj/item/clothing/armor/gambeson/heavy/dress/alt,
+/obj/item/clothing/armor/gambeson/heavy/dress,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors)
 "aF" = (

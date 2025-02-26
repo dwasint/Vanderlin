@@ -46,7 +46,7 @@
 		H.mind?.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 
 	head = /obj/item/clothing/head/articap
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/jacket/artijacket
+	armor = /obj/item/clothing/armor/leather/jacket/artijacket
 	pants = /obj/item/clothing/pants/trou/artipants
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/artificer
 	shoes = /obj/item/clothing/shoes/simpleshoes/buckle

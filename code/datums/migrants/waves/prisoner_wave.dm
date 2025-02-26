@@ -101,8 +101,8 @@
 
 /datum/outfit/job/roguetown/mig_guard/pre_equip(mob/living/carbon/human/H)
 	..()
-	armor = /obj/item/clothing/suit/roguetown/armor/cuirass
-	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
+	armor = /obj/item/clothing/armor/cuirass
+	shirt = /obj/item/clothing/armor/chainmail
 	neck = /obj/item/clothing/neck/gorget
 	head = /obj/item/clothing/head/helmet/nasal
 	backr = /obj/item/weapon/shield/wood

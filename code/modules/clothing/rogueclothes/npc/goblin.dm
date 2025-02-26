@@ -1,4 +1,4 @@
-/obj/item/clothing/suit/roguetown/armor/cuirass/iron/goblin
+/obj/item/clothing/armor/cuirass/iron/goblin
 	name = "goblin mail"
 	icon_state = "plate_armor_item"
 	item_state = "plate_armor"
@@ -12,7 +12,7 @@
 	armor_class = AC_LIGHT // Otherwise they get knocked down TOO easily!!!
 	sellprice = 0
 
-/obj/item/clothing/suit/roguetown/armor/leather/goblin
+/obj/item/clothing/armor/leather/goblin
 	name = "goblin leather armor"
 	icon_state = "leather_armor_item"
 	item_state = "leather_armor"
@@ -25,7 +25,7 @@
 	sellprice = 0
 	smeltresult = /obj/item/ash
 
-/obj/item/clothing/suit/roguetown/armor/leather/hide/goblin
+/obj/item/clothing/armor/leather/hide/goblin
 	name = "goblin loincloth"
 	icon_state = "cloth_armor"
 	item_state = "cloth_armor"

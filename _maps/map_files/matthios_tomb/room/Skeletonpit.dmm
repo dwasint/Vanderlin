@@ -3,7 +3,7 @@
 /turf/closed/mineral/rogue/bedrock,
 /area/rogue)
 "c" = (
-/obj/item/clothing/suit/roguetown/armor/cuirass/iron,
+/obj/item/clothing/armor/cuirass/iron,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "e" = (
@@ -21,7 +21,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "k" = (
-/obj/item/clothing/suit/roguetown/armor/chainmail/iron,
+/obj/item/clothing/armor/chainmail/iron,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "l" = (
@@ -46,7 +46,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "p" = (
-/obj/item/clothing/suit/roguetown/armor/medium/scale,
+/obj/item/clothing/armor/medium/scale,
 /obj/item/weapon/polearm/spear,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
@@ -55,7 +55,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "r" = (
-/obj/item/clothing/suit/roguetown/armor/gambeson/arming,
+/obj/item/clothing/armor/gambeson/arming,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "s" = (
@@ -129,7 +129,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "P" = (
-/obj/item/clothing/suit/roguetown/armor/cuirass/iron/rust,
+/obj/item/clothing/armor/cuirass/iron/rust,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "Q" = (
@@ -146,11 +146,11 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "U" = (
-/obj/item/clothing/suit/roguetown/armor/leather/hide,
+/obj/item/clothing/armor/leather/hide,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "X" = (
-/obj/item/clothing/suit/roguetown/armor/gambeson,
+/obj/item/clothing/armor/gambeson,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "Y" = (
@@ -160,7 +160,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "Z" = (
-/obj/item/clothing/suit/roguetown/armor/cuirass/grenzelhoft,
+/obj/item/clothing/armor/cuirass/grenzelhoft,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 

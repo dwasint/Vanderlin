@@ -19,7 +19,7 @@
 	shoes = /obj/item/clothing/shoes/nobleboot
 	pants = /obj/item/clothing/pants/tights/black
 	cloak = /obj/item/clothing/cloak/heartfelt
-	armor = /obj/item/clothing/suit/roguetown/armor/medium/surcoat/heartfelt
+	armor = /obj/item/clothing/armor/medium/surcoat/heartfelt
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
 	beltl = /obj/item/scomstone
 	gloves = /obj/item/clothing/gloves/roguetown/leather/black

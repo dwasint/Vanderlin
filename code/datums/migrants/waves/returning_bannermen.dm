@@ -18,7 +18,7 @@
 	pants = /obj/item/clothing/pants/trou/leather
 	cloak = /obj/item/clothing/cloak/half/vet
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guardsecond
-	armor = /obj/item/clothing/suit/roguetown/armor/medium/scale
+	armor = /obj/item/clothing/armor/medium/scale
 	neck = /obj/item/clothing/neck/gorget
 	shoes = /obj/item/clothing/shoes/boots
 	belt = /obj/item/storage/belt/rogue/leather
@@ -72,7 +72,7 @@
 /datum/outfit/job/roguetown/archer_bannerman/pre_equip(mob/living/carbon/human/H)
 	..()
 	pants = /obj/item/clothing/pants/trou/leather
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
+	armor = /obj/item/clothing/armor/leather/hide
 	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/merc
 	cloak = /obj/item/clothing/cloak/stabard/guard
@@ -120,7 +120,7 @@
 /datum/outfit/job/roguetown/crossbow_bannerman/pre_equip(mob/living/carbon/human/H)
 	..()
 	pants = /obj/item/clothing/pants/trou/leather
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
+	armor = /obj/item/clothing/armor/leather/hide
 	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/merc
 	cloak = /obj/item/clothing/cloak/stabard/guard
@@ -168,8 +168,8 @@
 
 /datum/outfit/job/roguetown/footman_bannerman/pre_equip(mob/living/carbon/human/H)
 	..()
-	armor = /obj/item/clothing/suit/roguetown/armor/cuirass
-	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
+	armor = /obj/item/clothing/armor/cuirass
+	shirt = /obj/item/clothing/armor/chainmail
 	neck = /obj/item/clothing/neck/gorget
 	head = /obj/item/clothing/head/helmet/nasal
 	backr = /obj/item/weapon/shield/wood
@@ -208,8 +208,8 @@
 
 /datum/outfit/job/roguetown/pikeman_bannerman/pre_equip(mob/living/carbon/human/H)
 	..()
-	armor = /obj/item/clothing/suit/roguetown/armor/chainmail
-	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
+	armor = /obj/item/clothing/armor/chainmail
+	shirt = /obj/item/clothing/armor/gambeson
 	neck = /obj/item/clothing/neck/gorget
 	head = /obj/item/clothing/head/helmet/kettle
 	beltr = /obj/item/weapon/sword/scimitar/messer

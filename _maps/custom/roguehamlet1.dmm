@@ -6505,7 +6505,7 @@
 "hkU" = (
 /obj/structure/closet/crate/roguecloset/inn/chest,
 /obj/item/storage/belt/rogue/pouch/coins/rich,
-/obj/item/clothing/suit/roguetown/armor/gambeson,
+/obj/item/clothing/armor/gambeson,
 /obj/item/reagent_containers/food/snacks/cooked/frysteak,
 /obj/item/reagent_containers/food/snacks/cooked/frysteak,
 /turf/open/floor/rogue/dirt/road,
@@ -15944,7 +15944,7 @@
 /obj/item/candle,
 /obj/item/candle,
 /obj/item/clothing/head/nun,
-/obj/item/clothing/suit/roguetown/armor/amazon_chainkini,
+/obj/item/clothing/armor/amazon_chainkini,
 /obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/under/town/basement)
@@ -19770,7 +19770,7 @@
 "uST" = (
 /obj/structure/closet/crate/roguecloset/inn,
 /obj/item/natural/cloth,
-/obj/item/clothing/suit/roguetown/armor/gambeson/arming,
+/obj/item/clothing/armor/gambeson/arming,
 /obj/item/clothing/cloak/raincloak/furcloak,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/manor{
@@ -21515,7 +21515,7 @@
 /area/rogue/indoors/shelter/mountains)
 "wJv" = (
 /obj/structure/closet/crate/roguecloset/inn,
-/obj/item/clothing/suit/roguetown/armor/leather/jacket/hand,
+/obj/item/clothing/armor/leather/jacket/hand,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/manor{
 	first_time_text = "Blackwine Manor"

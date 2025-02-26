@@ -50,7 +50,7 @@
 		H.change_stat(STATKEY_CON, 2)
 	else
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/lowcut
-		armor = /obj/item/clothing/suit/roguetown/armor/corset
+		armor = /obj/item/clothing/armor/corset
 		pants = /obj/item/clothing/pants/skirt/red
 		cloak = /obj/item/clothing/cloak/apron/cook
 		head = /obj/item/clothing/head/cookhat

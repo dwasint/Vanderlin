@@ -53,7 +53,7 @@
 	gloves = /obj/item/clothing/gloves/roguetown/angle
 	belt = /obj/item/storage/belt/rogue/leather
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
-	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
+	armor = /obj/item/clothing/armor/chainmail/hauberk
 	backl = /obj/item/weapon/polearm/spear
 	head = /obj/item/clothing/head/helmet/leather
 	neck = /obj/item/clothing/neck/chaincoif

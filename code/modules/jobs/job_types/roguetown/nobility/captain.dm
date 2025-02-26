@@ -45,7 +45,7 @@
 	head = /obj/item/clothing/head/helmet/visored/captain
 	gloves = /obj/item/clothing/gloves/roguetown/plate
 	pants = /obj/item/clothing/pants/platelegs/captain
-	armor = /obj/item/clothing/suit/roguetown/armor/captain
+	armor = /obj/item/clothing/armor/captain
 	neck = /obj/item/clothing/neck/gorget
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guard
 	shoes = /obj/item/clothing/shoes/boots

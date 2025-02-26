@@ -451,7 +451,7 @@
 "eO" = (
 /obj/structure/closet/crate/coffin,
 /obj/item/weapon/shield/tower/metal,
-/obj/item/clothing/suit/roguetown/armor/cuirass/iron/rust,
+/obj/item/clothing/armor/cuirass/iron/rust,
 /obj/item/clothing/cloak/stabard/templar/malum,
 /obj/item/alch/bone{
 	name = "bone";
@@ -498,7 +498,7 @@
 "fh" = (
 /obj/structure/closet/crate/coffin,
 /obj/item/clothing/gloves/roguetown/plate,
-/obj/item/clothing/suit/roguetown/armor/cuirass,
+/obj/item/clothing/armor/cuirass,
 /obj/effect/spawner/roguemap/loot/weapon,
 /obj/item/alch/bone{
 	name = "bone";
@@ -781,7 +781,7 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "jL" = (
 /obj/structure/closet/crate/coffin,
-/obj/item/clothing/suit/roguetown/armor/gambeson,
+/obj/item/clothing/armor/gambeson,
 /obj/effect/spawner/roguemap/loot/armor,
 /obj/effect/spawner/roguemap/loot/armor,
 /obj/item/alch/bone{
@@ -850,8 +850,8 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "kQ" = (
 /obj/structure/closet/crate/coffin,
-/obj/item/clothing/suit/roguetown/armor/brigandine,
-/obj/item/clothing/suit/roguetown/armor/gambeson,
+/obj/item/clothing/armor/brigandine,
+/obj/item/clothing/armor/gambeson,
 /obj/item/alch/bone{
 	name = "bone";
 	desc = null
@@ -1521,7 +1521,7 @@
 "va" = (
 /obj/structure/closet/crate/coffin,
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow,
-/obj/item/clothing/suit/roguetown/armor/chainmail/iron,
+/obj/item/clothing/armor/chainmail/iron,
 /obj/item/ammo_holder/quiver/bolts,
 /obj/item/ammo_casing/caseless/rogue/bolt/pyro,
 /obj/item/ammo_casing/caseless/rogue/bolt/pyro,
@@ -1659,7 +1659,7 @@
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "xv" = (
-/obj/item/clothing/suit/roguetown/armor/brigandine/coatplates,
+/obj/item/clothing/armor/brigandine/coatplates,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon)
 "xw" = (
@@ -1691,7 +1691,7 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "xR" = (
 /obj/structure/closet/crate/coffin,
-/obj/item/clothing/suit/roguetown/armor/gambeson/arming,
+/obj/item/clothing/armor/gambeson/arming,
 /obj/item/clothing/neck/bevor,
 /obj/item/clothing/head/helmet/visored/sallet,
 /obj/effect/spawner/roguemap/loot/weapon,
@@ -1811,8 +1811,8 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "zh" = (
 /obj/structure/closet/crate/chest/crafted,
-/obj/item/clothing/suit/roguetown/armor/gambeson,
-/obj/item/clothing/suit/roguetown/armor/gambeson,
+/obj/item/clothing/armor/gambeson,
+/obj/item/clothing/armor/gambeson,
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "zq" = (
@@ -2112,7 +2112,7 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "DC" = (
 /obj/structure/closet/crate/coffin,
-/obj/item/clothing/suit/roguetown/armor/cuirass,
+/obj/item/clothing/armor/cuirass,
 /obj/item/weapon/sword/scimitar/falchion,
 /obj/item/alch/bone{
 	name = "bone";
@@ -2875,7 +2875,7 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "OF" = (
 /obj/structure/closet/crate/coffin,
-/obj/item/clothing/suit/roguetown/armor/chainmail/iron,
+/obj/item/clothing/armor/chainmail/iron,
 /obj/effect/spawner/roguemap/loot/weapon,
 /obj/item/alch/bone{
 	name = "bone";
@@ -3480,7 +3480,7 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Xi" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/suit/roguetown/armor/cuirass/iron,
+/obj/item/clothing/armor/cuirass/iron,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon)
 "Xp" = (
@@ -3711,7 +3711,7 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "ZL" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk,
+/obj/item/clothing/armor/chainmail/hauberk,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon)
 "ZN" = (

@@ -54,7 +54,7 @@
 /datum/outfit/job/roguetown/adept/bzealot/pre_equip(mob/living/carbon/human/H)
 	..()
 	//Armor for class
-	armor = /obj/item/clothing/suit/roguetown/armor/chainmail
+	armor = /obj/item/clothing/armor/chainmail
 	cloak = /obj/item/clothing/cloak/tabard/adept
 	neck = /obj/item/clothing/neck/chaincoif
 	beltl = /obj/item/weapon/mace/spiked
@@ -97,7 +97,7 @@
 /datum/outfit/job/roguetown/adept/rthief/pre_equip(mob/living/carbon/human/H)
 	..()
 	//Armor for class
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/splint
+	armor = /obj/item/clothing/armor/leather/splint
 	neck = /obj/item/clothing/neck/gorget
 	beltl = /obj/item/weapon/mace/cudgel
 	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow

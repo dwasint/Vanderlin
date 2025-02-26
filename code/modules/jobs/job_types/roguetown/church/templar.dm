@@ -79,8 +79,8 @@
 			H.mind?.adjust_skillrank(/datum/skill/labor/fishing, 1, TRUE)
 
 
-	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
-	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
+	armor = /obj/item/clothing/armor/chainmail/hauberk
+	shirt = /obj/item/clothing/armor/gambeson
 	pants = /obj/item/clothing/pants/chainlegs
 	shoes = /obj/item/clothing/shoes/boots
 	backl = /obj/item/storage/backpack/rogue/satchel

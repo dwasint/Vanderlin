@@ -14,7 +14,7 @@
 	head = /obj/item/clothing/head/helmet/leather/headscarf
 	pants = /obj/item/clothing/pants/tights/sailor
 	belt = /obj/item/storage/belt/rogue/leather/mercenary
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/jacket/sea
+	armor = /obj/item/clothing/armor/leather/jacket/sea
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/natural/worms/leech = 2, /obj/item/storage/belt/rogue/pouch/coins/mid)
 	backr = /obj/item/fishingrod/fisher

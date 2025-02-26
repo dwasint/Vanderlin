@@ -41,7 +41,7 @@
 		gloves = /obj/item/clothing/gloves/roguetown/rare/elfplate
 		belt = /obj/item/storage/belt/rogue/leather
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
-		armor = /obj/item/clothing/suit/roguetown/armor/rare/elfplate
+		armor = /obj/item/clothing/armor/rare/elfplate
 		backl = /obj/item/storage/backpack/rogue/satchel
 		head = /obj/item/clothing/head/rare/elfplate
 		neck = /obj/item/clothing/neck/chaincoif
@@ -53,7 +53,7 @@
 		gloves = /obj/item/clothing/gloves/roguetown/rare/elfplate/welfplate
 		belt = /obj/item/storage/belt/rogue/leather
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
-		armor = /obj/item/clothing/suit/roguetown/armor/rare/elfplate/welfplate
+		armor = /obj/item/clothing/armor/rare/elfplate/welfplate
 		backl = /obj/item/storage/backpack/rogue/satchel
 		head = /obj/item/clothing/head/rare/elfplate/welfplate
 		neck = /obj/item/clothing/neck/chaincoif

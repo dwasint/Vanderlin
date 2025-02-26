@@ -192,7 +192,7 @@
 /area/rogue)
 "rr" = (
 /obj/structure/closet/dirthole/closed,
-/obj/item/clothing/suit/roguetown/armor/cuirass/copperchest,
+/obj/item/clothing/armor/cuirass/copperchest,
 /turf/open/floor/rogue/dirt,
 /area/rogue)
 "rU" = (

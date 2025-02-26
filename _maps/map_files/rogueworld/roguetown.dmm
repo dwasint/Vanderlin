@@ -6663,9 +6663,9 @@
 /area/rogue/indoors/town/dwarfin)
 "wL" = (
 /obj/structure/closet/crate/roguecloset/dark,
-/obj/item/clothing/suit/roguetown/armor/leather/vest,
+/obj/item/clothing/armor/leather/vest,
 /obj/item/clothing/shoes/boots/leather,
-/obj/item/clothing/suit/roguetown/armor/gambeson/heavy/dress,
+/obj/item/clothing/armor/gambeson/heavy/dress,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)
 "wM" = (

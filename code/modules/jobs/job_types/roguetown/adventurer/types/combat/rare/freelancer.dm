@@ -42,7 +42,7 @@
 	gloves = /obj/item/clothing/gloves/roguetown/rare/zybanplate
 	belt = /obj/item/storage/belt/rogue/leather
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
-	armor = /obj/item/clothing/suit/roguetown/armor/rare/zybanplate
+	armor = /obj/item/clothing/armor/rare/zybanplate
 	backl = /obj/item/storage/backpack/rogue/satchel
 	head = /obj/item/clothing/head/rare/zybanplate
 	wrists = /obj/item/clothing/wrists/roguetown/bracers

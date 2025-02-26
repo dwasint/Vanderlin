@@ -40,7 +40,7 @@
 	gloves = /obj/item/clothing/gloves/roguetown/rare/dwarfplate
 	belt = /obj/item/storage/belt/rogue/leather
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
-	armor = /obj/item/clothing/suit/roguetown/armor/rare/dwarfplate
+	armor = /obj/item/clothing/armor/rare/dwarfplate
 	backl = /obj/item/storage/backpack/rogue/satchel
 	head = /obj/item/clothing/head/rare/dwarfplate
 	neck = /obj/item/clothing/neck/chaincoif

@@ -41,7 +41,7 @@
 
 /datum/outfit/job/roguetown/inquisitor/pre_equip(mob/living/carbon/human/H)
 	..()
-	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/dark
+	shirt = /obj/item/clothing/armor/gambeson/heavy/dark
 	belt = /obj/item/storage/belt/rogue/leather/black
 	shoes = /obj/item/clothing/shoes/nobleboot
 	pants = /obj/item/clothing/pants/trou/leather
@@ -53,7 +53,7 @@
 	backl = /obj/item/weapon/sword/long/forgotten
 	beltl = /obj/item/flashlight/flare/torch/lantern
 	neck = /obj/item/clothing/neck/bevor
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/splint
+	armor = /obj/item/clothing/armor/leather/splint
 	backpack_contents = list(/obj/item/storage/keyring/inquisitor = 1)
 	var/prev_real_name = H.real_name
 	var/prev_name = H.name

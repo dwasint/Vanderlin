@@ -50,7 +50,7 @@
 		gloves = /obj/item/clothing/gloves/roguetown/fingerless
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	belt = /obj/item/storage/belt/rogue/leather
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
+	armor = /obj/item/clothing/armor/leather/hide
 	cloak = /obj/item/clothing/cloak/raincloak/brown
 	if(prob(33))
 		cloak = /obj/item/clothing/cloak/raincloak/green

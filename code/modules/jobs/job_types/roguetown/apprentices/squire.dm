@@ -51,7 +51,7 @@
 
 /datum/outfit/job/roguetown/squire/lancer/pre_equip(mob/living/carbon/human/H)
 	r_hand = /obj/item/weapon/polearm/spear
-	armor = /obj/item/clothing/suit/roguetown/armor/chainmail
+	armor = /obj/item/clothing/armor/chainmail
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	backr = /obj/item/storage/backpack/rogue/satchel
@@ -88,7 +88,7 @@
 	category_tags = list(CTAG_SQUIRE)
 
 /datum/outfit/job/roguetown/squire/footman/pre_equip(mob/living/carbon/human/H)
-	armor = /obj/item/clothing/suit/roguetown/armor/chainmail
+	armor = /obj/item/clothing/armor/chainmail
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	backr = /obj/item/storage/backpack/rogue/satchel
@@ -126,7 +126,7 @@
 
 /datum/outfit/job/roguetown/squire/skirmisher/pre_equip(mob/living/carbon/human/H)
 	beltr = /obj/item/ammo_holder/quiver/arrows
-	armor = /obj/item/clothing/suit/roguetown/armor/chainmail
+	armor = /obj/item/clothing/armor/chainmail
 	backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather

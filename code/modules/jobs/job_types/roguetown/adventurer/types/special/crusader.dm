@@ -25,7 +25,7 @@
 
 	head = /obj/item/clothing/head/helmet/heavy/crusader
 	neck = /obj/item/clothing/neck/coif/cloth
-	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
+	armor = /obj/item/clothing/armor/chainmail/hauberk
 	cloak = /obj/item/clothing/cloak/cape/crusader
 	gloves = /obj/item/clothing/gloves/roguetown/chain
 	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/random

@@ -59,8 +59,8 @@
 			head = /obj/item/clothing/head/helmet/heavy/bucket
 			wrists = /obj/item/clothing/neck/psycross/silver
 
-	armor = /obj/item/clothing/suit/roguetown/armor/plate
-	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
+	armor = /obj/item/clothing/armor/plate
+	shirt = /obj/item/clothing/armor/chainmail
 	pants = /obj/item/clothing/pants/platelegs
 	shoes = /obj/item/clothing/shoes/boots/armor
 	belt = /obj/item/storage/belt/rogue/leather/steel

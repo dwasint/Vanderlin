@@ -32,7 +32,7 @@
 	shoes = /obj/item/clothing/shoes/hoplite
 	cloak = /obj/item/clothing/cloak/half/red
 	belt = /obj/item/storage/belt/rogue/leather/rope
-	armor = /obj/item/clothing/suit/roguetown/armor/rare/hoplite
+	armor = /obj/item/clothing/armor/rare/hoplite
 	head = /obj/item/clothing/head/rare/hoplite
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/hoplite
 	neck = /obj/item/clothing/neck/gorget/hoplite

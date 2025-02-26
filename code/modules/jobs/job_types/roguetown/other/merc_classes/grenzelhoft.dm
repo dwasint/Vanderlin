@@ -42,7 +42,7 @@
 	beltl = /obj/item/weapon/mace/cudgel
 	shirt = /obj/item/clothing/suit/roguetown/shirt/grenzelhoft
 	head = /obj/item/clothing/head/helmet/skullcap/grenzelhoft
-	armor = /obj/item/clothing/suit/roguetown/armor/cuirass/grenzelhoft
+	armor = /obj/item/clothing/armor/cuirass/grenzelhoft
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backr = /obj/item/weapon/sword/long/greatsword/zwei
 	if(!H.has_language(/datum/language/oldpsydonic))

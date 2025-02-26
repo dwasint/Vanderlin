@@ -2511,10 +2511,10 @@
 /area/rogue/outdoors/town)
 "cKb" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/clothing/suit/roguetown/armor/gambeson,
-/obj/item/clothing/suit/roguetown/armor/gambeson,
-/obj/item/clothing/suit/roguetown/armor/gambeson,
-/obj/item/clothing/suit/roguetown/armor/gambeson,
+/obj/item/clothing/armor/gambeson,
+/obj/item/clothing/armor/gambeson,
+/obj/item/clothing/armor/gambeson,
+/obj/item/clothing/armor/gambeson,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
 "cKl" = (
@@ -3576,7 +3576,7 @@
 /obj/structure/closet/crate/roguecloset/inn/south{
 	pixel_y = 8
 	},
-/obj/item/clothing/suit/roguetown/armor/chainmail,
+/obj/item/clothing/armor/chainmail,
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/indoors/town/bath)
 "dVG" = (
@@ -4683,9 +4683,9 @@
 /area/rogue/under/town/basement)
 "fcx" = (
 /obj/structure/closet/crate/roguecloset/dark,
-/obj/item/clothing/suit/roguetown/armor/leather/vest,
+/obj/item/clothing/armor/leather/vest,
 /obj/item/clothing/shoes/boots/leather,
-/obj/item/clothing/suit/roguetown/armor/gambeson/heavy/dress,
+/obj/item/clothing/armor/gambeson/heavy/dress,
 /obj/item/clothing/pants/tights/random,
 /obj/item/clothing/suit/roguetown/shirt/undershirt/random,
 /turf/open/floor/rogue/wood,
@@ -8599,9 +8599,9 @@
 /area/rogue/indoors/town/manor)
 "jCm" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/suit/roguetown/armor/chainmail/iron,
-/obj/item/clothing/suit/roguetown/armor/chainmail/iron,
-/obj/item/clothing/suit/roguetown/armor/chainmail/iron,
+/obj/item/clothing/armor/chainmail/iron,
+/obj/item/clothing/armor/chainmail/iron,
+/obj/item/clothing/armor/chainmail/iron,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "jCN" = (
@@ -9622,7 +9622,7 @@
 /area/rogue/under/town/basement)
 "kEn" = (
 /obj/structure/closet/crate/roguecloset/lord,
-/obj/item/clothing/suit/roguetown/armor/gambeson/arming,
+/obj/item/clothing/armor/gambeson/arming,
 /obj/item/weapon/sword/rapier/dec/lord,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
@@ -11937,9 +11937,9 @@
 /area/rogue/indoors/town/dwarfin)
 "neO" = (
 /obj/structure/closet/crate/roguecloset/dark,
-/obj/item/clothing/suit/roguetown/armor/gambeson/heavy/dress,
+/obj/item/clothing/armor/gambeson/heavy/dress,
 /obj/item/clothing/shoes/boots/leather,
-/obj/item/clothing/suit/roguetown/armor/leather/vest,
+/obj/item/clothing/armor/leather/vest,
 /obj/item/clothing/pants/tights/random,
 /obj/item/clothing/suit/roguetown/shirt/undershirt/random,
 /turf/open/floor/rogue/wood,
@@ -16069,8 +16069,8 @@
 /obj/structure/closet/crate/roguecloset/inn,
 /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/random,
 /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/random,
-/obj/item/clothing/suit/roguetown/armor/leather/jacket/silk_coat,
-/obj/item/clothing/suit/roguetown/armor/leather/jacket/silk_coat,
+/obj/item/clothing/armor/leather/jacket/silk_coat,
+/obj/item/clothing/armor/leather/jacket/silk_coat,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -21747,7 +21747,7 @@
 "xTC" = (
 /obj/structure/rack/rogue,
 /obj/item/clothing/head/helmet/goblin,
-/obj/item/clothing/suit/roguetown/armor/cuirass/iron/goblin,
+/obj/item/clothing/armor/cuirass/iron/goblin,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cave)
 "xTK" = (

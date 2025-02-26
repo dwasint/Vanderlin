@@ -21,14 +21,14 @@
 /datum/outfit/job/roguetown/adventurer/gravedigger/pre_equip(mob/living/carbon/human/H)
 	..()
 	pants = /obj/item/clothing/pants/tights/black
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/black
+	armor = /obj/item/clothing/armor/leather/vest/black
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 	backl = /obj/item/storage/backpack/rogue/satchel
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	backpack_contents = list(/obj/item/weapon/pick = 1, /obj/item/weapon/knife/hunting = 1, /obj/item/lockpickring/mundane)
 	gloves = /obj/item/clothing/gloves/roguetown/fingerless
 	cloak = /obj/item/clothing/cloak/raincloak/mortus
-	armor = /obj/item/clothing/suit/roguetown/armor/leather
+	armor = /obj/item/clothing/armor/leather
 	shoes = /obj/item/clothing/shoes/boots/leather
 	beltr = /obj/item/flashlight/flare/torch/lantern
 	beltl = /obj/item/weapon/whip // You know why.

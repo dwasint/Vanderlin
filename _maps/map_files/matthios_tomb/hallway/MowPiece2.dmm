@@ -146,7 +146,7 @@
 "xI" = (
 /obj/structure/closet/crate/chest/old_crate,
 /obj/item/weapon/sword/rapier/silver,
-/obj/item/clothing/suit/roguetown/armor/cuirass,
+/obj/item/clothing/armor/cuirass,
 /obj/item/clothing/face/facemask,
 /obj/item/organ/heart,
 /obj/effect/decal/cleanable/blood,

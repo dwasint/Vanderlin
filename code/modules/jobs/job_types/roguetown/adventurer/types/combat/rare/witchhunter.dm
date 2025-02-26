@@ -25,7 +25,7 @@
 	belt = /obj/item/storage/belt/rogue/leather
 	shoes = /obj/item/clothing/shoes/boots
 	pants = /obj/item/clothing/pants/tights/black
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/winterjacket
+	armor = /obj/item/clothing/armor/leather/vest/winterjacket
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
 	head = /obj/item/clothing/head/helmet/leather/inquisitor
 	gloves = /obj/item/clothing/gloves/roguetown/angle

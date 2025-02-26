@@ -39,7 +39,7 @@
 	pants = /obj/item/clothing/pants/tights/random
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	belt = /obj/item/storage/belt/rogue/leather
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
+	armor = /obj/item/clothing/armor/leather/vest
 	cloak = /obj/item/clothing/cloak/half/red
 	backl = /obj/item/storage/backpack/rogue/satchel
 	beltl = /obj/item/weapon/sword/rapier

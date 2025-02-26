@@ -31,32 +31,32 @@
 /datum/supply_pack/rogue/armor/gambeson
 	name = "Cloth Gambeson"
 	cost = 14
-	contains = /obj/item/clothing/suit/roguetown/armor/gambeson
+	contains = /obj/item/clothing/armor/gambeson
 
 /datum/supply_pack/rogue/armor/leather_armor
 	name = "Leather Armor"
 	cost = 20
-	contains = /obj/item/clothing/suit/roguetown/armor/leather
+	contains = /obj/item/clothing/armor/leather
 
 /datum/supply_pack/rogue/armor/studleather
 	name = "Studded Leather Armor"
 	cost = 30
-	contains = /obj/item/clothing/suit/roguetown/armor/leather/splint
+	contains = /obj/item/clothing/armor/leather/splint
 
 /datum/supply_pack/rogue/armor/chainmail_iron
 	name = "Iron Chainmail"
 	cost = 22
-	contains = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
+	contains = /obj/item/clothing/armor/chainmail/iron
 
 /datum/supply_pack/rogue/armor/cuirass
 	name = "Breastplate"
 	cost = 50
-	contains = /obj/item/clothing/suit/roguetown/armor/cuirass
+	contains = /obj/item/clothing/armor/cuirass
 
 /datum/supply_pack/rogue/armor/brigandine
 	name = "Brigandine"
 	cost = 100
-	contains = /obj/item/clothing/suit/roguetown/armor/brigandine
+	contains = /obj/item/clothing/armor/brigandine
 
 /datum/supply_pack/rogue/armor/leather_bracers
 	name = "Leather Bracers"

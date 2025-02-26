@@ -133,7 +133,7 @@
 	to_chat(src, span_warning("I feed on succulent flesh. I feel reinvigorated."))
 	return src.reagents.add_reagent(/datum/reagent/medicine/healthpot, healing_amount)
 
-/obj/item/clothing/suit/roguetown/armor/skin_armor/werewolf_skin
+/obj/item/clothing/armor/skin_armor/werewolf_skin
 	slot_flags = null
 	name = "verewolf's skin"
 	desc = ""

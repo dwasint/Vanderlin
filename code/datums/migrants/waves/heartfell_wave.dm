@@ -16,7 +16,7 @@
 	shoes = /obj/item/clothing/shoes/nobleboot
 	pants = /obj/item/clothing/pants/tights/black
 	cloak = /obj/item/clothing/cloak/heartfelt
-	armor = /obj/item/clothing/suit/roguetown/armor/medium/surcoat/heartfelt
+	armor = /obj/item/clothing/armor/medium/surcoat/heartfelt
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
 	beltl = /obj/item/scomstone
 	gloves = /obj/item/clothing/gloves/roguetown/leather/black
@@ -63,9 +63,9 @@
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress
 	else
 		if(prob(66))
-			armor = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/dress/alt
+			armor = /obj/item/clothing/armor/gambeson/heavy/dress/alt
 		else
-			armor = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/dress
+			armor = /obj/item/clothing/armor/gambeson/heavy/dress
 	beltl = /obj/item/flashlight/flare/torch/lantern
 	beltr =  /obj/item/storage/belt/rogue/pouch
 	id = /obj/item/clothing/ring/silver
@@ -103,7 +103,7 @@
 	shoes = /obj/item/clothing/shoes/nobleboot
 	pants = /obj/item/clothing/pants/tights/black
 	neck = /obj/item/clothing/neck/gorget
-	armor = /obj/item/clothing/suit/roguetown/armor/medium/surcoat/heartfelt
+	armor = /obj/item/clothing/armor/medium/surcoat/heartfelt
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
 	gloves = /obj/item/clothing/gloves/roguetown/leather/black
 	beltl = /obj/item/weapon/sword/decorated
@@ -144,8 +144,8 @@
 	pants = /obj/item/clothing/pants/platelegs
 	cloak = /obj/item/clothing/cloak/tabard/knight/guard
 	neck = /obj/item/clothing/neck/bevor
-	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
-	armor = /obj/item/clothing/suit/roguetown/armor/plate/full
+	shirt = /obj/item/clothing/armor/chainmail
+	armor = /obj/item/clothing/armor/plate/full
 	shoes = /obj/item/clothing/shoes/boots/armor
 	beltr = /obj/item/weapon/sword/long
 	beltl = /obj/item/flashlight/flare/torch/lantern

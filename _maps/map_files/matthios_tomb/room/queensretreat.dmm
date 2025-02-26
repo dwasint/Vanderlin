@@ -731,7 +731,7 @@
 /obj/item/clothing/pants/tights/random,
 /obj/item/clothing/suit/roguetown/shirt/dress/gen/blue,
 /obj/item/clothing/suit/roguetown/shirt/dress/silkdress,
-/obj/item/clothing/suit/roguetown/armor/leather/jacket/silk_coat,
+/obj/item/clothing/armor/leather/jacket/silk_coat,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -1001,7 +1001,7 @@
 /obj/item/clothing/pants/tights/random,
 /obj/item/clothing/suit/roguetown/shirt/dress/gen/purple,
 /obj/item/clothing/suit/roguetown/shirt/dress/silkdress,
-/obj/item/clothing/suit/roguetown/armor/leather/jacket/silk_coat,
+/obj/item/clothing/armor/leather/jacket/silk_coat,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},

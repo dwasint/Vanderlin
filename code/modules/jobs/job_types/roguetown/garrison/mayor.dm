@@ -35,7 +35,7 @@
 	..()
 	pants = /obj/item/clothing/pants/trou/leather
 	head = /obj/item/clothing/head/brimmed
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/jacket
+	armor = /obj/item/clothing/armor/leather/jacket
 	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic
 	shoes = /obj/item/clothing/shoes/boots
 	cloak = /obj/item/clothing/cloak/half

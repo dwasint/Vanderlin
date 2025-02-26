@@ -32,7 +32,7 @@
 		neck = /obj/item/storage/belt/rogue/pouch/coins/mid
 		head = /obj/item/clothing/head/fisherhat
 		backr = /obj/item/storage/backpack/rogue/satchel
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/jacket/sea
+		armor = /obj/item/clothing/armor/leather/jacket/sea
 		belt = /obj/item/storage/belt/rogue/leather
 		backl = /obj/item/fishingrod/fisher
 		beltr = /obj/item/cooking/pan
@@ -61,7 +61,7 @@
 		neck = /obj/item/storage/belt/rogue/pouch/coins/mid
 		head = /obj/item/clothing/head/fisherhat
 		backr = /obj/item/storage/backpack/rogue/satchel
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/jacket/sea
+		armor = /obj/item/clothing/armor/leather/jacket/sea
 		belt = /obj/item/storage/belt/rogue/leather
 		beltr = /obj/item/fishingrod/fisher
 		beltl = /obj/item/weapon/knife/hunting

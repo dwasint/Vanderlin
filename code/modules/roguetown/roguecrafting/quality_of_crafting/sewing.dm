@@ -92,7 +92,7 @@
 
 /datum/repeatable_crafting_recipe/sewing/stripedtunic
 	name = "striped tunic"
-	output = /obj/item/clothing/suit/roguetown/armor/gambeson/light/striped
+	output = /obj/item/clothing/armor/gambeson/light/striped
 	requirements = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 1)
 
@@ -141,7 +141,7 @@
 
 /datum/repeatable_crafting_recipe/sewing/stripedtunic
 	name = "striped tunic"
-	output = /obj/item/clothing/suit/roguetown/armor/gambeson/light/striped
+	output = /obj/item/clothing/armor/gambeson/light/striped
 	requirements = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 1
@@ -187,7 +187,7 @@
 
 /datum/repeatable_crafting_recipe/sewing/lgambeson
 	name = "light gambeson"
-	output = /obj/item/clothing/suit/roguetown/armor/gambeson/light
+	output = /obj/item/clothing/armor/gambeson/light
 	requirements = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 1
@@ -209,7 +209,7 @@
 
 /datum/repeatable_crafting_recipe/sewing/gambeson
 	name = "gambeson"
-	output = /obj/item/clothing/suit/roguetown/armor/gambeson
+	output = /obj/item/clothing/armor/gambeson
 	requirements = list(/obj/item/natural/cloth = 4,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 2
@@ -292,7 +292,7 @@
 
 /datum/repeatable_crafting_recipe/sewing/armingjacket
 	name = "arming jacket"
-	output = /obj/item/clothing/suit/roguetown/armor/gambeson/arming
+	output = /obj/item/clothing/armor/gambeson/arming
 	requirements = list(/obj/item/natural/cloth = 4,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
@@ -669,7 +669,7 @@
 
 /datum/repeatable_crafting_recipe/sewing/weaving/paddedgambeson
 	name = "padded gambeson"
-	output = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
+	output = /obj/item/clothing/armor/gambeson/heavy
 	requirements = list(/obj/item/natural/cloth = 6,
 				/obj/item/natural/fibers = 4)
 	starting_atom = /obj/item/natural/cloth
@@ -677,7 +677,7 @@
 
 /datum/repeatable_crafting_recipe/sewing/weaving/armordress
 	name = "padded dress"
-	output = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/dress
+	output = /obj/item/clothing/armor/gambeson/heavy/dress
 	requirements = list(/obj/item/natural/fibers = 2,
 				/obj/item/natural/silk = 4,
 				/obj/item/natural/hide/cured = 1)
@@ -688,7 +688,7 @@
 
 /datum/repeatable_crafting_recipe/sewing/weaving/silkcoat
 	name = "coat (silk)"
-	output = /obj/item/clothing/suit/roguetown/armor/leather/jacket/silk_coat
+	output = /obj/item/clothing/armor/leather/jacket/silk_coat
 	requirements = list(/obj/item/natural/cloth = 1,
 				/obj/item/natural/silk = 3,
 				/obj/item/natural/fur = 2)

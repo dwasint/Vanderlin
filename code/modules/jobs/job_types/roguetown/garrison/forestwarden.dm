@@ -31,8 +31,8 @@
 /datum/outfit/job/roguetown/forestwarden/pre_equip(mob/living/carbon/human/H)
 	..()
 	cloak = /obj/item/clothing/cloak/raincloak/furcloak
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/splint
-	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
+	armor = /obj/item/clothing/armor/leather/splint
+	shirt = /obj/item/clothing/armor/chainmail/iron
 	pants = /obj/item/clothing/pants/trou/leather
 	shoes = /obj/item/clothing/shoes/boots/furlinedboots
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather

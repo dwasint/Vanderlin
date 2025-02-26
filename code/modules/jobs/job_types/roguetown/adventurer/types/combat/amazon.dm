@@ -31,7 +31,7 @@
 	beltr = /obj/item/ammo_holder/quiver/arrows
 	shoes = /obj/item/clothing/shoes/gladiator
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-	armor = /obj/item/clothing/suit/roguetown/armor/amazon_chainkini
+	armor = /obj/item/clothing/armor/amazon_chainkini
 	shoes = /obj/item/clothing/shoes/boots
 	H.change_stat(STATKEY_STR, 2)
 	H.change_stat(STATKEY_INT, -1)

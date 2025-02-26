@@ -34,7 +34,7 @@
 	beltr= /obj/item/storage/meatbag
 	beltl= /obj/item/key/butcher
 	backl = /obj/item/storage/backpack/rogue/satchel
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/butcher
+	armor = /obj/item/clothing/armor/leather/vest/butcher
 	shoes = /obj/item/clothing/shoes/boots/leather
 	backpack_contents = list(/obj/item/kitchen/spoon, /obj/item/reagent_containers/food/snacks/truffles, /obj/item/weapon/knife/hunting)
 

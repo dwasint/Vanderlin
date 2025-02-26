@@ -4403,7 +4403,7 @@
 /area/rogue/indoors/town/manor)
 "py" = (
 /obj/structure/closet/crate/roguecloset/lord,
-/obj/item/clothing/suit/roguetown/armor/gambeson/arming,
+/obj/item/clothing/armor/gambeson/arming,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
 "pz" = (
@@ -6295,9 +6295,9 @@
 /area/rogue/indoors/town/dwarfin)
 "wL" = (
 /obj/structure/closet/crate/roguecloset/dark,
-/obj/item/clothing/suit/roguetown/armor/leather/vest,
+/obj/item/clothing/armor/leather/vest,
 /obj/item/clothing/shoes/boots/leather,
-/obj/item/clothing/suit/roguetown/armor/gambeson/heavy/dress,
+/obj/item/clothing/armor/gambeson/heavy/dress,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)
 "wM" = (
@@ -10833,7 +10833,7 @@
 /area/rogue/outdoors/town/roofs)
 "Nk" = (
 /obj/structure/closet/crate/roguecloset/inn/south,
-/obj/item/clothing/suit/roguetown/armor/chainmail,
+/obj/item/clothing/armor/chainmail,
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/indoors/town/bath)
 "Nl" = (
@@ -12363,9 +12363,9 @@
 /area/rogue/under/lake)
 "TY" = (
 /obj/structure/closet/crate/roguecloset/dark,
-/obj/item/clothing/suit/roguetown/armor/gambeson/heavy/dress,
+/obj/item/clothing/armor/gambeson/heavy/dress,
 /obj/item/clothing/shoes/boots/leather,
-/obj/item/clothing/suit/roguetown/armor/leather/vest,
+/obj/item/clothing/armor/leather/vest,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)
 "TZ" = (

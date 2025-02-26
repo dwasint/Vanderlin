@@ -45,7 +45,7 @@
 	if(prob(30))
 		gloves = /obj/item/clothing/gloves/roguetown/fingerless
 	belt = /obj/item/storage/belt/rogue/leather
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
+	armor = /obj/item/clothing/armor/leather/vest
 	cloak = /obj/item/clothing/cloak/raincloak/blue
 	if(prob(50))
 		cloak = /obj/item/clothing/cloak/raincloak/red

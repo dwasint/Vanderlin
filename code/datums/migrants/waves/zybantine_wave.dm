@@ -23,7 +23,7 @@
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	head = /obj/item/clothing/head/crown/circlet
 	cloak = /obj/item/clothing/cloak/raincloak/purple
-	armor = /obj/item/clothing/suit/roguetown/armor/gambeson/arming
+	armor = /obj/item/clothing/armor/gambeson/arming
 	belt = /obj/item/storage/belt/rogue/leather/shalal
 	beltl = /obj/item/weapon/sword/sabre/shalal
 	beltr = /obj/item/flashlight/flare/torch/lantern
@@ -34,7 +34,7 @@
 	neck = /obj/item/clothing/neck/shalal/emir
 	backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/veryrich)
 	if(H.gender == FEMALE)
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/jacket/silk_coat
+		armor = /obj/item/clothing/armor/leather/jacket/silk_coat
 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/black
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
@@ -91,7 +91,7 @@
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	head = /obj/item/clothing/head/crown/nyle
 	cloak = /obj/item/clothing/cloak/raincloak/purple
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/jacket/silk_coat
+	armor = /obj/item/clothing/armor/leather/jacket/silk_coat
 	belt = /obj/item/storage/belt/rogue/leather/shalal
 	beltl = /obj/item/weapon/sword/sabre/shalal
 	beltr = /obj/item/flashlight/flare/torch/lantern
@@ -176,7 +176,7 @@
 	gloves = /obj/item/clothing/gloves/roguetown/rare/zybanplate
 	belt = /obj/item/storage/belt/rogue/leather/shalal
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
-	armor = /obj/item/clothing/suit/roguetown/armor/rare/zybanplate
+	armor = /obj/item/clothing/armor/rare/zybanplate
 	backl = /obj/item/storage/backpack/rogue/satchel
 	head = /obj/item/clothing/head/rare/zybanplate
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
@@ -214,7 +214,7 @@
 	head = /obj/item/clothing/head/helmet/sallet/zybantine
 	gloves = /obj/item/clothing/gloves/roguetown/angle
 	belt = /obj/item/storage/belt/rogue/leather/shalal
-	armor = /obj/item/clothing/suit/roguetown/armor/brigandine/coatplates
+	armor = /obj/item/clothing/armor/brigandine/coatplates
 	beltr = /obj/item/weapon/sword/long/rider
 	beltl= /obj/item/flashlight/flare/torch/lantern
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
@@ -288,7 +288,7 @@
 	gloves = /obj/item/clothing/gloves/roguetown/angle
 	belt = /obj/item/storage/belt/rogue/leather/shalal
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/red
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/splint
+	armor = /obj/item/clothing/armor/leather/splint
 	backl = /obj/item/storage/backpack/rogue/satchel
 	head = /obj/item/clothing/neck/keffiyeh/red
 	backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/poor, /obj/item/lockpick)

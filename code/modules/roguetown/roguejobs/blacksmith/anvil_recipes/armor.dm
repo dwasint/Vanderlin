@@ -41,7 +41,7 @@
 	name = "Copper heart protector"
 	recipe_name = "a very simple armor piece for the chest"
 	req_bar = /obj/item/ingot/copper
-	created_item = /obj/item/clothing/suit/roguetown/armor/cuirass/copperchest
+	created_item = /obj/item/clothing/armor/cuirass/copperchest
 	craftdiff = 0
 
 //For the sake of keeping the code modular with the introduction of new metals, each recipe has had it's main resource added to it's datum
@@ -79,7 +79,7 @@
 	name = "Iron Maille"
 	recipe_name = "maille shirt"
 	req_bar = /obj/item/ingot/iron
-	created_item = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
+	created_item = /obj/item/clothing/armor/chainmail/iron
 
 
 /datum/anvil_recipe/armor/iron/plate
@@ -87,7 +87,7 @@
 	recipe_name = "heavy armor made of iron plates"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/ingot/iron,/obj/item/ingot/iron)
-	created_item = /obj/item/clothing/suit/roguetown/armor/plate/iron
+	created_item = /obj/item/clothing/armor/plate/iron
 	craftdiff = 1
 
 /datum/anvil_recipe/armor/iron/platehelmet
@@ -142,7 +142,7 @@
 	recipe_name = "durable light armor"
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/natural/hide)
-	created_item = /obj/item/clothing/suit/roguetown/armor/leather/splint
+	created_item = /obj/item/clothing/armor/leather/splint
 	craftdiff = 1
 
 // --------- STEEL -----------
@@ -158,7 +158,7 @@
 	recipe_name = "a Brigandine"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel, /obj/item/natural/cloth)
-	created_item = /obj/item/clothing/suit/roguetown/armor/brigandine
+	created_item = /obj/item/clothing/armor/brigandine
 	craftdiff = 3
 
 /datum/anvil_recipe/armor/steel/helmetbuc
@@ -195,7 +195,7 @@
 	name = "Steel Cuirass"
 	recipe_name = "a Cuirass"
 	req_bar = /obj/item/ingot/steel
-	created_item = /obj/item/clothing/suit/roguetown/armor/cuirass
+	created_item = /obj/item/clothing/armor/cuirass
 	craftdiff = 2
 
 /datum/anvil_recipe/armor/steel/platemask
@@ -210,14 +210,14 @@
 	recipe_name = "a Half-Plate Armor"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel,/obj/item/ingot/steel)
-	created_item = /obj/item/clothing/suit/roguetown/armor/plate
+	created_item = /obj/item/clothing/armor/plate
 	craftdiff = 3
 
 /datum/anvil_recipe/armor/steel/haubergeon
 	name = "Maille"
 	recipe_name = "a Haubergeon"
 	req_bar = /obj/item/ingot/steel
-	created_item = /obj/item/clothing/suit/roguetown/armor/chainmail
+	created_item = /obj/item/clothing/armor/chainmail
 	craftdiff = 2
 
 /datum/anvil_recipe/armor/steel/hauberk
@@ -225,7 +225,7 @@
 	recipe_name = "a Hauberk"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
-	created_item = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
+	created_item = /obj/item/clothing/armor/chainmail/hauberk
 	craftdiff = 3
 
 /datum/anvil_recipe/armor/steel/helmetkettle
@@ -270,7 +270,7 @@
 	recipe_name = "a Full-Plate Armor"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel,/obj/item/ingot/steel,/obj/item/ingot/steel)
-	created_item = /obj/item/clothing/suit/roguetown/armor/plate/full
+	created_item = /obj/item/clothing/armor/plate/full
 	craftdiff = 4
 
 /datum/anvil_recipe/armor/steel/platebracer
@@ -320,7 +320,7 @@
 	recipe_name = "a Scalemail"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
-	created_item = /obj/item/clothing/suit/roguetown/armor/medium/scale
+	created_item = /obj/item/clothing/armor/medium/scale
 	craftdiff = 3
 
 /datum/anvil_recipe/armor/steel/helmetsallv
@@ -379,7 +379,7 @@
 	name = "Blacksteel Plate Armor (+Bar x3)"
 	req_bar = /obj/item/ingot/blacksteel
 	additional_items = list(/obj/item/ingot/blacksteel, /obj/item/ingot/blacksteel, /obj/item/ingot/blacksteel)
-	created_item = /obj/item/clothing/suit/roguetown/armor/plate/blkknight
+	created_item = /obj/item/clothing/armor/plate/blkknight
 	craftdiff = 3
 
 /datum/anvil_recipe/armor/blacksteel/platelegs

@@ -54,7 +54,7 @@
 		belt = /obj/item/storage/belt/rogue/leather/plaquesilver
 		beltr = /obj/item/storage/keyring/butler
 		beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/butler
+		armor = /obj/item/clothing/armor/leather/vest/butler
 		backr = /obj/item/storage/backpack/rogue/satchel
 
 	else

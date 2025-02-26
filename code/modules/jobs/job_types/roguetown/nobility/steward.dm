@@ -37,7 +37,7 @@
 	shoes = /obj/item/clothing/shoes/simpleshoes/buckle
 	head = /obj/item/clothing/head/stewardtophat
 	cloak = /obj/item/clothing/cloak/raincloak/furcloak
-	armor = /obj/item/clothing/suit/roguetown/armor/gambeson/steward
+	armor = /obj/item/clothing/armor/gambeson/steward
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
 	beltr = /obj/item/storage/keyring/steward
 	beltl = /obj/item/weapon/knife/dagger/steel

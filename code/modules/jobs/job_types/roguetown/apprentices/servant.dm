@@ -61,7 +61,7 @@
 		belt = /obj/item/storage/belt/rogue/leather/rope
 		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 		if(H.gender == MALE)
-			armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/black
+			armor = /obj/item/clothing/armor/leather/vest/black
 		else
 			cloak = /obj/item/clothing/cloak/apron
 

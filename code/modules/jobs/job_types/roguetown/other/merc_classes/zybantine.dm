@@ -25,7 +25,7 @@
 	head = /obj/item/clothing/head/helmet/sallet/zybantine
 	gloves = /obj/item/clothing/gloves/roguetown/angle
 	belt = /obj/item/storage/belt/rogue/leather/mercenary/shalal
-	armor = /obj/item/clothing/suit/roguetown/armor/brigandine/coatplates
+	armor = /obj/item/clothing/armor/brigandine/coatplates
 	beltr = /obj/item/weapon/sword/long/rider
 	beltl= /obj/item/flashlight/flare/torch/lantern
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black

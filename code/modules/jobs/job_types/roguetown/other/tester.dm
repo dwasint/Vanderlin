@@ -32,9 +32,9 @@
 	shoes = /obj/item/clothing/shoes/boots/leather
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	belt = /obj/item/storage/belt/rogue/leather
-	armor = /obj/item/clothing/suit/roguetown/armor/gambeson/arming
+	armor = /obj/item/clothing/armor/gambeson/arming
 	if(prob(50))
-		armor = /obj/item/clothing/suit/roguetown/armor/gambeson
+		armor = /obj/item/clothing/armor/gambeson
 	neck = /obj/item/key/mercenary
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 	beltr = /obj/item/weapon/sword/sabre

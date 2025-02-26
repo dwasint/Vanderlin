@@ -53,7 +53,7 @@
 
 /datum/repeatable_crafting_recipe/leather/corset
 	name = "corset"
-	output = /obj/item/clothing/suit/roguetown/armor/corset
+	output = /obj/item/clothing/armor/corset
 
 /datum/repeatable_crafting_recipe/leather/sandals
 	name = "sandals"
@@ -99,7 +99,7 @@
 	requirements = list(
 		/obj/item/natural/hide/cured = 2,
 	)
-	output = /obj/item/clothing/suit/roguetown/armor/leather/vest
+	output = /obj/item/clothing/armor/leather/vest
 	craftdiff = 3
 
 /datum/repeatable_crafting_recipe/leather/seajacket
@@ -107,7 +107,7 @@
 	requirements = list(
 		/obj/item/natural/hide/cured = 2,
 	)
-	output = /obj/item/clothing/suit/roguetown/armor/leather/jacket/sea
+	output = /obj/item/clothing/armor/leather/jacket/sea
 	craftdiff = 3
 
 /datum/repeatable_crafting_recipe/leather/apron
@@ -227,7 +227,7 @@
 	requirements = list(
 		/obj/item/natural/hide/cured = 2,
 	)
-	output = /obj/item/clothing/suit/roguetown/armor/leather
+	output = /obj/item/clothing/armor/leather
 	craftdiff = 1
 
 /datum/repeatable_crafting_recipe/leather/papakha
@@ -311,7 +311,7 @@
 		/obj/item/natural/hide = 2,
 		/obj/item/natural/fur = 1,
 	)
-	output = /obj/item/clothing/suit/roguetown/armor/leather/hide
+	output = /obj/item/clothing/armor/leather/hide
 	craftdiff = 2
 
 /datum/repeatable_crafting_recipe/leather/coif
@@ -328,7 +328,7 @@
 	requirements = list(
 		/obj/item/natural/hide/cured = 1,
 	)
-	output = /obj/item/clothing/suit/roguetown/armor/leather/jacket
+	output = /obj/item/clothing/armor/leather/jacket
 	craftdiff = 1
 
 /datum/repeatable_crafting_recipe/leather/brimmedhat
@@ -388,7 +388,7 @@
 
 /datum/repeatable_crafting_recipe/leather/standalone/coat
 	name = "hardened leather coat"
-	output = /obj/item/clothing/suit/roguetown/armor/leather/advanced
+	output = /obj/item/clothing/armor/leather/advanced
 	requirements = list(/obj/item/natural/hide/cured = 2,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 4
@@ -441,9 +441,9 @@
 
 /datum/repeatable_crafting_recipe/leather/standalone/coat/masterwork
 	name = "masterwork leather coat"
-	output = /obj/item/clothing/suit/roguetown/armor/leather/masterwork
-	attacking_atom = /obj/item/clothing/suit/roguetown/armor/leather
-	requirements = list(/obj/item/clothing/suit/roguetown/armor/leather = 1,
+	output = /obj/item/clothing/armor/leather/masterwork
+	attacking_atom = /obj/item/clothing/armor/leather
+	requirements = list(/obj/item/clothing/armor/leather = 1,
 				/obj/item/natural/cured/essence = 1,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 5

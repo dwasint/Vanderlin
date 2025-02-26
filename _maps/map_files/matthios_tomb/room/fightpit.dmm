@@ -343,7 +343,7 @@
 /turf/open/floor/rogue/ruinedwood/darker,
 /area/rogue)
 "CJ" = (
-/obj/item/clothing/suit/roguetown/armor/chainmail/iron,
+/obj/item/clothing/armor/chainmail/iron,
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
 "CK" = (

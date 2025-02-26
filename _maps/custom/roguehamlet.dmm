@@ -984,9 +984,9 @@
 	})
 "bcX" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/suit/roguetown/armor/chainmail/iron,
-/obj/item/clothing/suit/roguetown/armor/chainmail/iron,
-/obj/item/clothing/suit/roguetown/armor/chainmail/iron,
+/obj/item/clothing/armor/chainmail/iron,
+/obj/item/clothing/armor/chainmail/iron,
+/obj/item/clothing/armor/chainmail/iron,
 /obj/item/clothing/wrists/roguetown/bracers/leather,
 /obj/item/clothing/wrists/roguetown/bracers/leather,
 /obj/item/clothing/wrists/roguetown/bracers/leather,
@@ -3443,7 +3443,7 @@
 	pixel_x = -16;
 	pixel_y = 32
 	},
-/obj/item/clothing/suit/roguetown/armor/leather,
+/obj/item/clothing/armor/leather,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
 "dSD" = (
@@ -6785,7 +6785,7 @@
 "hkU" = (
 /obj/structure/closet/crate/roguecloset/inn/chest,
 /obj/item/storage/belt/rogue/pouch/coins/rich,
-/obj/item/clothing/suit/roguetown/armor/gambeson,
+/obj/item/clothing/armor/gambeson,
 /obj/item/reagent_containers/food/snacks/cooked/frysteak,
 /obj/item/reagent_containers/food/snacks/cooked/frysteak,
 /obj/item/reagent_containers/powder/salt,
@@ -9929,7 +9929,7 @@
 /obj/structure/closet/crate/roguecloset/inn,
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow,
 /obj/item/ammo_holder/quiver/bolts,
-/obj/item/clothing/suit/roguetown/armor/leather/vest,
+/obj/item/clothing/armor/leather/vest,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors/shelter/town/dwarf)
 "kvv" = (
@@ -12496,7 +12496,7 @@
 	lockid = "nightmaiden"
 	},
 /obj/item/clothing/head/nun,
-/obj/item/clothing/suit/roguetown/armor/amazon_chainkini,
+/obj/item/clothing/armor/amazon_chainkini,
 /obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy,
 /obj/item/rope,
 /obj/machinery/light/rogue/wallfire/candle/lamp{
@@ -15766,7 +15766,7 @@
 "qqn" = (
 /obj/structure/closet/crate/roguecloset/inn,
 /obj/item/clothing/cloak/apron/waist/brown,
-/obj/item/clothing/suit/roguetown/armor/leather/vest,
+/obj/item/clothing/armor/leather/vest,
 /obj/item/clothing/face/facemask/steel,
 /obj/item/clothing/gloves/roguetown/plate,
 /turf/open/floor/rogue/cobblerock,
@@ -16406,7 +16406,7 @@
 "qZv" = (
 /obj/structure/rack/rogue,
 /obj/item/clothing/head/helmet/skullcap,
-/obj/item/clothing/suit/roguetown/armor/chainmail/iron,
+/obj/item/clothing/armor/chainmail/iron,
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/shelter/town/dwarf)
 "qZR" = (
@@ -18359,7 +18359,7 @@
 	},
 /obj/item/key/tavern,
 /obj/item/reagent_containers/glass/bottle/rogue/wine,
-/obj/item/clothing/suit/roguetown/armor/leather/vest/innkeep,
+/obj/item/clothing/armor/leather/vest/innkeep,
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors/town/tavern/saiga)
 "teg" = (
@@ -20297,9 +20297,9 @@
 "uST" = (
 /obj/structure/closet/crate/roguecloset/lord,
 /obj/item/natural/cloth,
-/obj/item/clothing/suit/roguetown/armor/gambeson/arming,
+/obj/item/clothing/armor/gambeson/arming,
 /obj/item/clothing/cloak/raincloak/furcloak,
-/obj/item/clothing/suit/roguetown/armor/medium/scale,
+/obj/item/clothing/armor/medium/scale,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/manor{
 	first_time_text = "Blackwine Manor"
@@ -22097,7 +22097,7 @@
 /area/rogue/indoors/shelter/mountains)
 "wJv" = (
 /obj/structure/closet/crate/roguecloset/inn,
-/obj/item/clothing/suit/roguetown/armor/leather/jacket/hand,
+/obj/item/clothing/armor/leather/jacket/hand,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/manor{
 	first_time_text = "Blackwine Manor"

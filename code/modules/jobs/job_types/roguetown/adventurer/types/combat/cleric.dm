@@ -24,7 +24,7 @@
 	..()
 	H.virginity = TRUE
 
-	armor = /obj/item/clothing/suit/roguetown/armor/cuirass // Halfplate has been made heavy armor, billions must make due.
+	armor = /obj/item/clothing/armor/cuirass // Halfplate has been made heavy armor, billions must make due.
 	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
 	pants = /obj/item/clothing/pants/trou/leather
 	shoes = /obj/item/clothing/shoes/boots/leather

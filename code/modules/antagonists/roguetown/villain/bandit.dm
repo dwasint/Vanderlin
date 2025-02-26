@@ -99,9 +99,9 @@
 			var/armor2choose = pickweight(list("Rusty halfplate" = 2, "Chainmail" = 1))
 			switch(armor2choose)
 				if("Rusty halfplate")
-					armor = /obj/item/clothing/suit/roguetown/armor/cuirass/iron/rust
+					armor = /obj/item/clothing/armor/cuirass/iron/rust
 				if("Chainmail")
-					armor = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
+					armor = /obj/item/clothing/armor/chainmail/iron
 
 			var/weapon2choose = pickweight(list("Spear" = 2, "Bardiche" = 1))
 			switch(weapon2choose)
@@ -137,7 +137,7 @@
 			H.change_stat(STATKEY_PER, 2)
 			H.change_stat(STATKEY_SPD, 2)
 
-			armor = /obj/item/clothing/suit/roguetown/armor/gambeson
+			armor = /obj/item/clothing/armor/gambeson
 			pants = /obj/item/clothing/pants/trou/leather
 			beltr = /obj/item/weapon/knife/hunting
 			backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
@@ -200,12 +200,12 @@
 
 			switch(pick(1,2))
 				if (1)
-					armor = /obj/item/clothing/suit/roguetown/armor/leather
+					armor = /obj/item/clothing/armor/leather
 				if (2)
-					armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
+					armor = /obj/item/clothing/armor/leather/hide
 
 			if(H.age == AGE_OLD) //old brigands have been in the business for so long that they have managed to pick up some better gear along the way
-				armor = /obj/item/clothing/suit/roguetown/armor/leather/splint
+				armor = /obj/item/clothing/armor/leather/splint
 				mask = /obj/item/clothing/face/facemask
 
 			switch(pick(1,2,3,4))

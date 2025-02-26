@@ -12,7 +12,7 @@
 	head = /obj/item/clothing/head/helmet/horned
 	pants = /obj/item/clothing/pants/trou
 	belt = /obj/item/storage/belt/rogue/leather
-	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
+	armor = /obj/item/clothing/armor/chainmail/iron
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	backl = /obj/item/storage/backpack/rogue/backpack
 	beltl = /obj/item/weapon/pick

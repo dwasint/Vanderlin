@@ -170,7 +170,7 @@
 /area/rogue)
 "S" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/suit/roguetown/armor/leather,
+/obj/item/clothing/armor/leather,
 /obj/item/clothing/pants/trou/leather{
 	pixel_x = 14;
 	pixel_y = -4

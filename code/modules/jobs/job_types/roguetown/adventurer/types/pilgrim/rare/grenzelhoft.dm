@@ -20,7 +20,7 @@
 	gloves = /obj/item/clothing/gloves/roguetown/angle/grenzel
 	wrists = /obj/item/clothing/neck/psycross/g
 	head = /obj/item/clothing/head/helmet/skullcap/grenzelhoft
-	armor = /obj/item/clothing/suit/roguetown/armor/brigandine
+	armor = /obj/item/clothing/armor/brigandine
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
 	beltl = /obj/item/weapon/sword/sabre/dec
 	beltr = /obj/item/flashlight/flare/torch/lantern
@@ -31,7 +31,7 @@
 	neck = /obj/item/clothing/neck/gorget
 	backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/veryrich)
 	if(H.gender == FEMALE)
-		armor = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/dress/alt
+		armor = /obj/item/clothing/armor/gambeson/heavy/dress/alt
 		beltl = /obj/item/weapon/sword/rapier/dec
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)

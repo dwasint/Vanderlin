@@ -12,7 +12,7 @@
 	gloves = /obj/item/clothing/gloves/roguetown/fingerless/shadowgloves // Would give em Fingerless, but parrying with fists sounds funny as fuck
 	pants = /obj/item/clothing/pants/trou/shadowpants
 	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/black
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/winterjacket
+	armor = /obj/item/clothing/armor/leather/vest/winterjacket
 	shoes = /obj/item/clothing/shoes/nobleboot
 	beltl = /obj/item/flashlight/flare/torch/lantern
 	mask = /obj/item/clothing/face/goggles

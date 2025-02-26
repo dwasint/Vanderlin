@@ -89,17 +89,17 @@
 		wrists = /obj/item/clothing/wrists/roguetown/bracers
 	belt = /obj/item/storage/belt/rogue/leather
 	if(prob(10))
-		armor = /obj/item/clothing/suit/roguetown/armor/gambeson/light
+		armor = /obj/item/clothing/armor/gambeson/light
 	if(prob(10))
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
+		armor = /obj/item/clothing/armor/leather/vest
 	if(prob(10))
-		armor = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
+		armor = /obj/item/clothing/armor/chainmail/iron
 	if(prob(10))
-		armor = /obj/item/clothing/suit/roguetown/armor/cuirass/copperchest
+		armor = /obj/item/clothing/armor/cuirass/copperchest
 	if(prob(10))
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
+		armor = /obj/item/clothing/armor/leather/hide
 	if(prob(10))
-		armor = /obj/item/clothing/suit/roguetown/armor/cuirass/iron/rust
+		armor = /obj/item/clothing/armor/cuirass/iron/rust
 
 	switch(pick(1,9))
 		if (1)

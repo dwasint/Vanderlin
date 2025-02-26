@@ -13,7 +13,7 @@
 /datum/outfit/job/roguetown/mercenary/underdweller/pre_equip(mob/living/carbon/human/H)
 	..()
 	pants = /obj/item/clothing/pants/trou/leather
-	armor = /obj/item/clothing/suit/roguetown/armor/cuirass/iron
+	armor = /obj/item/clothing/armor/cuirass/iron
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor/red
 	shoes = /obj/item/clothing/shoes/simpleshoes/buckle
 	belt = /obj/item/storage/belt/rogue/leather/mercenary

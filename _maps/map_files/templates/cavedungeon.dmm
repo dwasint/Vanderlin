@@ -212,7 +212,7 @@
 /obj/item/clothing/neck/bevor,
 /obj/item/clothing/pants/platelegs,
 /obj/item/clothing/shoes/boots/armor,
-/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk,
+/obj/item/clothing/armor/chainmail/hauberk,
 /obj/item/weapon/sword,
 /obj/item/weapon/shield/tower/metal,
 /turf/open/floor/rogue/naturalstone,

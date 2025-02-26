@@ -25,7 +25,7 @@
 	head = /obj/item/clothing/head/helmet/sallet
 	gloves = /obj/item/clothing/gloves/roguetown/angle
 	belt = /obj/item/storage/belt/rogue/leather/mercenary
-	armor = /obj/item/clothing/suit/roguetown/armor/cuirass
+	armor = /obj/item/clothing/armor/cuirass
 	beltr = /obj/item/weapon/sword/iron
 	beltl = /obj/item/ammo_holder/quiver/bolts
 	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow

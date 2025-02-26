@@ -1,12 +1,12 @@
 //................ Orc Armor ............... //
-/obj/item/clothing/suit/roguetown/armor/plate/orc/warlord
+/obj/item/clothing/armor/plate/orc/warlord
 	name = "warlord armor"
 	desc = "Fearsome armor which covers nearly the entire body."
 	icon_state = "warlord_armor"
 	item_state = "warlord_armor"
 	armor = ARMOR_PLATE_BAD
 
-/obj/item/clothing/suit/roguetown/armor/plate/orc
+/obj/item/clothing/armor/plate/orc
 	name = "crude breastplate"
 	icon_state = "marauder_armor"
 	item_state = "marauder_armor"
@@ -19,7 +19,7 @@
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
 	max_integrity = INTEGRITY_POOR
 
-/obj/item/clothing/suit/roguetown/armor/chainmail/iron/orc
+/obj/item/clothing/armor/chainmail/iron/orc
 	name = "crude maille"
 	icon_state = "orc_chainvest"
 	item_state = "orc_chainvest"
@@ -68,7 +68,7 @@
 	sewrepair = TRUE
 	blocksound = SOFTHIT
 
-/obj/item/clothing/suit/roguetown/armor/leather/hide/orc
+/obj/item/clothing/armor/leather/hide/orc
 	name = "orc loincloth"
 	icon_state = "orc_leather"
 	item_state = "orc_leather"
@@ -78,7 +78,7 @@
 	body_parts_covered = CHEST|GROIN
 	sellprice = 0
 
-///obj/item/clothing/suit/roguetown/armor/leather/hide/orc
+///obj/item/clothing/armor/leather/hide/orc
 
 
 ///obj/item/clothing/wrists/roguetown/bracers/leather/orc dead until i find a way to make them usable

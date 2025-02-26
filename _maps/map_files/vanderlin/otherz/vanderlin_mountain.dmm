@@ -2278,7 +2278,7 @@
 /obj/structure/closet/crate/coffin,
 /obj/item/reagent_containers/glass/bottle/rogue/beer/stonebeardreserve,
 /obj/item/clothing/face/spectacles,
-/obj/item/clothing/suit/roguetown/armor/leather/jacket/hand,
+/obj/item/clothing/armor/leather/jacket/hand,
 /turf/open/floor/rogue/blocks/green,
 /area/rogue/under/mountains/anvil/lower/building)
 "Lb" = (

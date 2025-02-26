@@ -38,8 +38,8 @@
 	shoes = /obj/item/clothing/shoes/boots/rare/grenzelplate
 	gloves = /obj/item/clothing/gloves/roguetown/rare/grenzelplate
 	belt = /obj/item/storage/belt/rogue/leather
-	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
-	armor = /obj/item/clothing/suit/roguetown/armor/rare/grenzelplate
+	shirt = /obj/item/clothing/armor/gambeson
+	armor = /obj/item/clothing/armor/rare/grenzelplate
 	backl = /obj/item/storage/backpack/rogue/satchel
 	head = /obj/item/clothing/head/rare/grenzelplate
 	wrists = /obj/item/clothing/wrists/roguetown/bracers

@@ -58,7 +58,7 @@
 			pants = /obj/item/clothing/pants/tights/random
 			shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
 			belt = /obj/item/storage/belt/rogue/leather/assassin
-			armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
+			armor = /obj/item/clothing/armor/leather/vest
 			cloak = /obj/item/clothing/cloak/raincloak/red
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltr = /obj/item/weapon/knife/dagger/steel/special
@@ -90,7 +90,7 @@
 				neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 				head = /obj/item/clothing/head/fisherhat
 				mouth = /obj/item/weapon/knife/hunting
-				armor = /obj/item/clothing/suit/roguetown/armor/gambeson/light/striped
+				armor = /obj/item/clothing/armor/gambeson/light/striped
 				backl = /obj/item/storage/backpack/rogue/satchel
 				belt = /obj/item/storage/belt/rogue/leather/assassin
 				backr = /obj/item/fishingrod
@@ -99,7 +99,7 @@
 				backpack_contents = list(/obj/item/weapon/knife/hunting = 1, /obj/item/natural/worms = 1, /obj/item/weapon/shovel/small = 1)
 			else
 				shirt = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
-				armor = /obj/item/clothing/suit/roguetown/armor/gambeson/light/striped
+				armor = /obj/item/clothing/armor/gambeson/light/striped
 				shoes = /obj/item/clothing/shoes/boots/leather
 				neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 				head = /obj/item/clothing/head/fisherhat
@@ -130,7 +130,7 @@
 			H.mind?.adjust_skillrank(/datum/skill/combat/swords, -2, TRUE)
 			head = /obj/item/clothing/head/armingcap
 			pants = /obj/item/clothing/pants/trou
-			armor = /obj/item/clothing/suit/roguetown/armor/gambeson/light/striped
+			armor = /obj/item/clothing/armor/gambeson/light/striped
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 			shoes = /obj/item/clothing/shoes/boots/leather
 			belt = /obj/item/storage/belt/rogue/leather/assassin
@@ -184,7 +184,7 @@
 			backr = /obj/item/weapon/hoe
 			backl = /obj/item/storage/backpack/rogue/satchel
 			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
-			armor = /obj/item/clothing/suit/roguetown/armor/gambeson/light/striped
+			armor = /obj/item/clothing/armor/gambeson/light/striped
 			beltl = /obj/item/weapon/sickle
 			beltr = /obj/item/flint
 			var/obj/item/weapon/pitchfork/P = new()
@@ -206,7 +206,7 @@
 			backr = /obj/item/storage/backpack/rogue/satchel
 			neck = /obj/item/clothing/neck/coif
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-			armor = /obj/item/clothing/suit/roguetown/armor/gambeson/light/striped
+			armor = /obj/item/clothing/armor/gambeson/light/striped
 			beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
 			beltl = /obj/item/weapon/hammer/steel
 			backr = /obj/item/weapon/axe/iron

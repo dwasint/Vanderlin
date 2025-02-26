@@ -49,7 +49,7 @@
 		beltr = /obj/item/weapon/mace/cudgel
 		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 		belt = /obj/item/storage/belt/rogue/leather/rope
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/jacket/sea
+		armor = /obj/item/clothing/armor/leather/jacket/sea
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor/red
 		H.change_stat(STATKEY_END, 1)
 		H.change_stat(STATKEY_CON, 1)
@@ -61,7 +61,7 @@
 		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 		belt = /obj/item/storage/belt/rogue/leather/rope
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/jacket/sea
+		armor = /obj/item/clothing/armor/leather/jacket/sea
 		head = /obj/item/clothing/head/headband
 		H.change_stat(STATKEY_END, 1)
 		H.change_stat(STATKEY_INT, 1)

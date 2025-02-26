@@ -4997,9 +4997,9 @@
 /area/rogue)
 "apG" = (
 /obj/structure/closet/crate/roguecloset/dark,
-/obj/item/clothing/suit/roguetown/armor/leather/vest,
+/obj/item/clothing/armor/leather/vest,
 /obj/item/clothing/shoes/boots/leather,
-/obj/item/clothing/suit/roguetown/armor/gambeson/heavy/dress,
+/obj/item/clothing/armor/gambeson/heavy/dress,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "apH" = (
@@ -6088,7 +6088,7 @@
 /area/rogue)
 "asW" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/suit/roguetown/armor/plate,
+/obj/item/clothing/armor/plate,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "asX" = (
@@ -6112,7 +6112,7 @@
 /area/rogue)
 "asZ" = (
 /obj/structure/closet/crate/roguecloset/lord,
-/obj/item/clothing/suit/roguetown/armor/gambeson/arming,
+/obj/item/clothing/armor/gambeson/arming,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "ata" = (
@@ -12199,7 +12199,7 @@
 /area/rogue/outdoors/beach)
 "gCd" = (
 /obj/structure/closet/crate/chest,
-/obj/item/clothing/suit/roguetown/armor/amazon_chainkini,
+/obj/item/clothing/armor/amazon_chainkini,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cave)
 "gGu" = (

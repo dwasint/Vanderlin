@@ -47,7 +47,7 @@
 		if("Cloak")
 			cloak = /obj/item/clothing/cloak/raincloak/furcloak/brown
 		if("Hide")
-			armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
+			armor = /obj/item/clothing/armor/leather/hide
 		if("Helmet")
 			head = /obj/item/clothing/head/helmet/horned
 	switch(weapontype)

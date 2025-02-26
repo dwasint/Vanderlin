@@ -102,7 +102,7 @@
 /obj/structure/fluff/railing/wood{
 	dir = 4
 	},
-/obj/item/clothing/suit/roguetown/armor/leather/splint,
+/obj/item/clothing/armor/leather/splint,
 /obj/item/clothing/pants/trou/leather/advanced,
 /turf/open/floor/rogue/cobble,
 /area/rogue)

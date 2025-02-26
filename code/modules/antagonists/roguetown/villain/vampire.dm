@@ -379,17 +379,17 @@
 	if(ishuman(owner))
 		var/mob/living/carbon/human/H = owner
 		QDEL_NULL(H.skin_armor)
-		H.skin_armor = new /obj/item/clothing/suit/roguetown/armor/skin_armor/vampire_fortitude(H)
+		H.skin_armor = new /obj/item/clothing/armor/skin_armor/vampire_fortitude(H)
 	owner.add_stress(/datum/stressevent/weed)
 
 /datum/status_effect/buff/fortitude/on_remove()
 	if(ishuman(owner))
 		var/mob/living/carbon/human/H = owner
-		if(istype(H.skin_armor, /obj/item/clothing/suit/roguetown/armor/skin_armor/vampire_fortitude))
+		if(istype(H.skin_armor, /obj/item/clothing/armor/skin_armor/vampire_fortitude))
 			QDEL_NULL(H.skin_armor)
 	. = ..()
 
-/obj/item/clothing/suit/roguetown/armor/skin_armor/vampire_fortitude
+/obj/item/clothing/armor/skin_armor/vampire_fortitude
 	slot_flags = null
 	name = "vampire's skin"
 	desc = ""

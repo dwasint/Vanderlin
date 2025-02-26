@@ -9,9 +9,9 @@
 
 /datum/outfit/job/roguetown/dwarven_company/captain/pre_equip(mob/living/carbon/human/H)
 	..()
-	armor = /obj/item/clothing/suit/roguetown/armor/cuirass
+	armor = /obj/item/clothing/armor/cuirass
 	cloak = /obj/item/clothing/cloak/raincloak/furcloak
-	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
+	shirt = /obj/item/clothing/armor/chainmail
 	neck = /obj/item/clothing/neck/gorget
 	head = /obj/item/clothing/head/helmet/coppercap
 	backr = /obj/item/weapon/shield/wood
@@ -88,7 +88,7 @@
 		pants = /obj/item/clothing/pants/trou
 		shoes = /obj/item/clothing/shoes/boots/leather
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/splint
+		armor = /obj/item/clothing/armor/leather/splint
 		belt = /obj/item/storage/belt/rogue/leather
 		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 		cloak = /obj/item/clothing/cloak/apron/brown
@@ -100,7 +100,7 @@
 	else
 		pants = /obj/item/clothing/pants/trou
 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/splint
+		armor = /obj/item/clothing/armor/leather/splint
 		shoes = /obj/item/clothing/shoes/shortboots
 		belt = /obj/item/storage/belt/rogue/leather
 		cloak = /obj/item/clothing/cloak/apron/brown
@@ -147,7 +147,7 @@
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/pants/trou
 		shoes = /obj/item/clothing/shoes/simpleshoes/buckle
-		armor = /obj/item/clothing/suit/roguetown/armor/chainmail
+		armor = /obj/item/clothing/armor/chainmail
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
 		belt = /obj/item/storage/belt/rogue/leather
 		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
@@ -160,7 +160,7 @@
 	else
 		pants = /obj/item/clothing/pants/trou
 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
-		armor = /obj/item/clothing/suit/roguetown/armor/chainmail
+		armor = /obj/item/clothing/armor/chainmail
 		shoes = /obj/item/clothing/shoes/shortboots
 		belt = /obj/item/storage/belt/rogue/leather
 		cloak = /obj/item/clothing/cloak/apron/brown

@@ -55,8 +55,8 @@
 	pants = /obj/item/clothing/pants/chainlegs
 	cloak = /obj/item/clothing/cloak/tabard/knight/guard
 	neck = /obj/item/clothing/neck/gorget
-	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/arming
-	armor = /obj/item/clothing/suit/roguetown/armor/brigandine // Wear the King's colors.
+	shirt = /obj/item/clothing/armor/gambeson/arming
+	armor = /obj/item/clothing/armor/brigandine // Wear the King's colors.
 	shoes = /obj/item/clothing/shoes/boots/armor/light
 	beltl = /obj/item/storage/keyring/mguard
 	belt = /obj/item/storage/belt/rogue/leather

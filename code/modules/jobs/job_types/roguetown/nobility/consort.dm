@@ -69,11 +69,11 @@
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/pants/tights/black
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/winterjacket
+		armor = /obj/item/clothing/armor/leather/vest/winterjacket
 	else
 		pants = /obj/item/clothing/pants/tights/random
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/winterjacket
-		shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/winterdress
+		armor = /obj/item/clothing/armor/leather/vest/winterjacket
+		shirt = /obj/item/clothing/armor/gambeson/heavy/winterdress
 
 
 	H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
@@ -109,11 +109,11 @@
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/pants/tights/black
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/winterjacket // this is kind of stupid but i love it anyway
+		armor = /obj/item/clothing/armor/leather/vest/winterjacket // this is kind of stupid but i love it anyway
 	else
 		pants = /obj/item/clothing/pants/tights/random
-		shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/winterdress
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/winterjacket
+		shirt = /obj/item/clothing/armor/gambeson/heavy/winterdress
+		armor = /obj/item/clothing/armor/leather/vest/winterjacket
 		cloak = /obj/item/clothing/cloak/raincloak/furcloak
 
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
@@ -152,7 +152,7 @@
 		armor = /obj/item/clothing/suit/roguetown/shirt/tunic/green
 	else
 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/princess
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/jacket/silk_coat
+		armor = /obj/item/clothing/armor/leather/jacket/silk_coat
 
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)

@@ -9,7 +9,7 @@
 	body_parts_covered = HEAD|EARS|HAIR|EYES
 	sellprice = 0
 
-/obj/item/clothing/suit/roguetown/armor/cuirass/iron/rousman
+/obj/item/clothing/armor/cuirass/iron/rousman
 	name = "stomachgutter plate armor"
 	icon_state = "stomachgutter_armor_item"
 	item_state = "stomachgutter_armor"
@@ -23,7 +23,7 @@
 	armor_class = AC_LIGHT
 	sellprice = 0
 
-/obj/item/clothing/suit/roguetown/armor/leather/hide/rousman
+/obj/item/clothing/armor/leather/hide/rousman
 	name = "rousman loincloth"
 	icon_state = "rousman_loincloth_item"
 	item_state = "rousman_loincloth"

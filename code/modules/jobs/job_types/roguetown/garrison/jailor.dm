@@ -29,7 +29,7 @@
 	..()
 	head = /obj/item/clothing/head/roguehood/black
 	neck = /obj/item/clothing/neck/coif
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/splint
+	armor = /obj/item/clothing/armor/leather/splint
 	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/black
 	pants = /obj/item/clothing/pants/loincloth/black
 	shoes = /obj/item/clothing/shoes/shortboots

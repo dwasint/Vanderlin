@@ -11,7 +11,7 @@
 	..()
 	mask = /obj/item/clothing/face/facemask/steel
 	head = /obj/item/clothing/head/tophat
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
+	armor = /obj/item/clothing/armor/leather/vest
 	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/weapon/knife/cleaver /// proper self defense an tree aquiring

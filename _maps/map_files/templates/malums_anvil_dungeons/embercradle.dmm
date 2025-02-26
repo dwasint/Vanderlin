@@ -152,8 +152,8 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "dc" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/clothing/suit/roguetown/armor/plate/orc,
-/obj/item/clothing/suit/roguetown/armor/plate/orc,
+/obj/item/clothing/armor/plate/orc,
+/obj/item/clothing/armor/plate/orc,
 /turf/open/floor/rogue/twig,
 /area/rogue/under/mountains/anvil/dungeon)
 "dd" = (
@@ -2224,13 +2224,13 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "En" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/suit/roguetown/armor/chainmail/iron,
-/obj/item/clothing/suit/roguetown/armor/chainmail/iron,
-/obj/item/clothing/suit/roguetown/armor/chainmail/iron,
-/obj/item/clothing/suit/roguetown/armor/chainmail/iron,
-/obj/item/clothing/suit/roguetown/armor/chainmail/iron,
-/obj/item/clothing/suit/roguetown/armor/chainmail/iron,
-/obj/item/clothing/suit/roguetown/armor/chainmail/iron,
+/obj/item/clothing/armor/chainmail/iron,
+/obj/item/clothing/armor/chainmail/iron,
+/obj/item/clothing/armor/chainmail/iron,
+/obj/item/clothing/armor/chainmail/iron,
+/obj/item/clothing/armor/chainmail/iron,
+/obj/item/clothing/armor/chainmail/iron,
+/obj/item/clothing/armor/chainmail/iron,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "Eo" = (
@@ -2372,7 +2372,7 @@
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /obj/item/clothing/cloak/raincloak/furcloak/brown,
 /obj/item/clothing/shoes/boots/leather,
-/obj/item/clothing/suit/roguetown/armor/leather/hide,
+/obj/item/clothing/armor/leather/hide,
 /obj/item/clothing/pants/loincloth/brown,
 /obj/item/weapon/axe/boneaxe,
 /obj/item/weapon/axe/boneaxe,
@@ -2464,7 +2464,7 @@
 "Hw" = (
 /obj/item/clothing/head/helmet/heavy/necked/noc,
 /obj/item/clothing/cloak/stabard/templar/noc,
-/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk,
+/obj/item/clothing/armor/chainmail/hauberk,
 /obj/item/clothing/gloves/roguetown/chain,
 /obj/item/clothing/pants/chainlegs,
 /obj/item/clothing/gloves/roguetown/chain,
@@ -2602,13 +2602,13 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "IN" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/suit/roguetown/armor/gambeson,
-/obj/item/clothing/suit/roguetown/armor/gambeson,
-/obj/item/clothing/suit/roguetown/armor/gambeson,
-/obj/item/clothing/suit/roguetown/armor/gambeson,
-/obj/item/clothing/suit/roguetown/armor/gambeson,
-/obj/item/clothing/suit/roguetown/armor/gambeson,
-/obj/item/clothing/suit/roguetown/armor/gambeson,
+/obj/item/clothing/armor/gambeson,
+/obj/item/clothing/armor/gambeson,
+/obj/item/clothing/armor/gambeson,
+/obj/item/clothing/armor/gambeson,
+/obj/item/clothing/armor/gambeson,
+/obj/item/clothing/armor/gambeson,
+/obj/item/clothing/armor/gambeson,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
@@ -3034,7 +3034,7 @@
 /obj/item/weapon/polearm/spear/hoplite/winged,
 /obj/item/weapon/shield/tower/hoplite,
 /obj/item/clothing/cloak/cape,
-/obj/item/clothing/suit/roguetown/armor/cuirass,
+/obj/item/clothing/armor/cuirass,
 /obj/item/clothing/shoes/boots/armor/light,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /obj/item/storage/belt/rogue/leather,
@@ -3795,7 +3795,7 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "Yd" = (
-/obj/item/clothing/suit/roguetown/armor/chainmail/iron,
+/obj/item/clothing/armor/chainmail/iron,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Yg" = (

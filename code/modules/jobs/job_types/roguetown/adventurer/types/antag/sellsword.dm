@@ -26,13 +26,13 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 	belt = /obj/item/storage/belt/rogue/leather
 	pants = /obj/item/clothing/pants/trou/leather
-	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
+	shirt = /obj/item/clothing/armor/gambeson
 	shoes = /obj/item/clothing/shoes/boots
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1)
 	mask = /obj/item/clothing/face/facemask/steel
 	neck = /obj/item/clothing/neck/gorget
-	armor = /obj/item/clothing/suit/roguetown/armor/chainmail
+	armor = /obj/item/clothing/armor/chainmail
 	H.change_stat(STATKEY_STR, 2) //less buffs than brigand but no int debuff
 	H.change_stat(STATKEY_END, 2)
 	H.change_stat(STATKEY_CON, 1)

@@ -30,7 +30,7 @@
 	..()
 	if(H.dna.species.id == "Dwarf")
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/jacket/apothecary
+		armor = /obj/item/clothing/armor/leather/jacket/apothecary
 		pants = /obj/item/clothing/pants/tights/black
 	else
 		if(H.gender == FEMALE)

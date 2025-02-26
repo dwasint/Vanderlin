@@ -55,8 +55,8 @@
 
 /datum/outfit/job/roguetown/vet/battlemaster/pre_equip(mob/living/carbon/human/H)
 	neck = /obj/item/clothing/neck/bevor
-	armor = /obj/item/clothing/suit/roguetown/armor/plate
-	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
+	armor = /obj/item/clothing/armor/plate
+	shirt = /obj/item/clothing/armor/chainmail
 	pants = /obj/item/clothing/pants/chainlegs
 	shoes = /obj/item/clothing/shoes/boots/armor
 	beltl = /obj/item/weapon/sword/sabre
@@ -110,8 +110,8 @@
 
 /datum/outfit/job/roguetown/vet/footman/pre_equip(mob/living/carbon/human/H)
 	neck = /obj/item/clothing/neck/gorget
-	armor = /obj/item/clothing/suit/roguetown/armor/plate // Meant to be better than man-at-arms, but worse than knight. No heavy armor!! This is a cuirass, not half-plate.
-	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
+	armor = /obj/item/clothing/armor/plate // Meant to be better than man-at-arms, but worse than knight. No heavy armor!! This is a cuirass, not half-plate.
+	shirt = /obj/item/clothing/armor/gambeson/heavy
 	head = /obj/item/clothing/head/helmet/sallet
 	pants = /obj/item/clothing/pants/chainlegs
 	gloves = /obj/item/clothing/gloves/roguetown/plate
@@ -168,8 +168,8 @@
 
 /datum/outfit/job/roguetown/vet/calvaryman/pre_equip(mob/living/carbon/human/H)
 	neck = /obj/item/clothing/neck/chaincoif
-	armor = /obj/item/clothing/suit/roguetown/armor/plate/	////Former knights should have knightly armour.
-	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
+	armor = /obj/item/clothing/armor/plate/	////Former knights should have knightly armour.
+	shirt = /obj/item/clothing/armor/chainmail
 	head = /obj/item/clothing/head/helmet/heavy/decorated/knight
 	pants = /obj/item/clothing/pants/chainlegs
 	gloves = /obj/item/clothing/gloves/roguetown/plate
@@ -250,7 +250,7 @@
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	shirt = /obj/item/clothing/suit/roguetown/shirt/grenzelhoft // You do NOT get the BLACKSTEEL CUIRASS because yours BROKE & I hate you. Go on a personal quest to replace it or something.
 	head = /obj/item/clothing/head/helmet/skullcap/grenzelhoft
-	armor = /obj/item/clothing/suit/roguetown/armor/cuirass/iron
+	armor = /obj/item/clothing/armor/cuirass/iron
 	pants = /obj/item/clothing/pants/grenzelpants
 	shoes = /obj/item/clothing/shoes/grenzelhoft
 	gloves = /obj/item/clothing/gloves/roguetown/angle/grenzel
@@ -319,8 +319,8 @@
 
 /datum/outfit/job/roguetown/vet/scout/pre_equip(mob/living/carbon/human/H)
 	neck = /obj/item/clothing/neck/gorget
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
-	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
+	armor = /obj/item/clothing/armor/leather/hide
+	shirt = /obj/item/clothing/armor/gambeson/heavy
 	pants = /obj/item/clothing/pants/trou/leather
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
@@ -378,7 +378,7 @@
 
 /datum/outfit/job/roguetown/vet/spy/pre_equip(mob/living/carbon/human/H)
 	neck = /obj/item/clothing/neck/gorget
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
+	armor = /obj/item/clothing/armor/leather/vest
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/puritan
 	pants = /obj/item/clothing/pants/tights/black
 	gloves = /obj/item/clothing/gloves/roguetown/fingerless

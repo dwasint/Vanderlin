@@ -96,22 +96,22 @@
 /datum/supply_pack/rogue/apparel/armordress
 	name = "Padded Dress"
 	cost = 30
-	contains = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/dress
+	contains = /obj/item/clothing/armor/gambeson/heavy/dress
 
 /datum/supply_pack/rogue/apparel/leather_vest_random
 	name = "Leather Vest"
 	cost = 15
-	contains = /obj/item/clothing/suit/roguetown/armor/leather/vest/random
+	contains = /obj/item/clothing/armor/leather/vest/random
 
 /datum/supply_pack/rogue/apparel/workervest
 	name = "Worker Vest"
 	cost = 10
-	contains = /obj/item/clothing/suit/roguetown/armor/gambeson/light/striped
+	contains = /obj/item/clothing/armor/gambeson/light/striped
 
 /datum/supply_pack/rogue/apparel/silkcoat
 	name = "Silk Coat"
 	cost = 60
-	contains = /obj/item/clothing/suit/roguetown/armor/leather/jacket/silk_coat
+	contains = /obj/item/clothing/armor/leather/jacket/silk_coat
 
 /datum/supply_pack/rogue/apparel/undershirt_random
 	name = "Undershirt"
