@@ -289,9 +289,9 @@
 
 
 /turf/open/water/cardinal_smooth(adjacencies)
-	roguesmooth(adjacencies)
+	smooth(adjacencies)
 
-/turf/open/water/roguesmooth(adjacencies)
+/turf/open/water/smooth(adjacencies)
 	var/list/Yeah = ..()
 	if(water_overlay)
 		water_overlay.cut_overlays(TRUE)

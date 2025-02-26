@@ -161,7 +161,7 @@
 	. = ..()
 
 /turf/open/floor/grass/cardinal_smooth(adjacencies)
-	roguesmooth(adjacencies)
+	smooth(adjacencies)
 
 /turf/open/floor/grass/turf_destruction(damage_flag)
 	. = ..()
@@ -227,7 +227,7 @@
 	. = ..()
 
 /turf/open/floor/snow/cardinal_smooth(adjacencies)
-	roguesmooth(adjacencies)
+	smooth(adjacencies)
 
 /turf/open/floor/snow/rough
 	name = "rough snow"
@@ -257,7 +257,7 @@
 	. = ..()
 
 /turf/open/floor/snowrough/cardinal_smooth(adjacencies)
-	roguesmooth(adjacencies)
+	smooth(adjacencies)
 
 /turf/open/floor/snow/patchy
 	name = "patchy snow"
@@ -281,7 +281,7 @@
 	neighborlay = "snowpatchy_grassedge"
 
 /turf/open/floor/snowpatchy/cardinal_smooth(adjacencies)
-	roguesmooth(adjacencies)
+	smooth(adjacencies)
 
 /*	..................   Dirts   ................... */
 /turf/open/floor/dirt/ambush
@@ -393,7 +393,7 @@
 			START_PROCESSING(SSwaterlevel, src)
 
 /turf/open/floor/dirt/cardinal_smooth(adjacencies)
-	roguesmooth(adjacencies)
+	smooth(adjacencies)
 
 /turf/open/floor/dirt/Initialize()
 	dir = pick(GLOB.cardinals)
@@ -472,10 +472,10 @@
 	return
 
 /turf/open/floor/dirt/road/cardinal_smooth(adjacencies)
-	roguesmooth(adjacencies)
+	smooth(adjacencies)
 
 
-/turf/proc/roguesmooth(adjacencies)
+/turf/proc/smooth(adjacencies)
 	var/list/New
 	var/holder
 
@@ -714,7 +714,7 @@
 	max_integrity = 800
 
 /turf/open/floor/hexstone/cardinal_smooth(adjacencies)
-	roguesmooth(adjacencies)
+	smooth(adjacencies)
 
 /turf/open/floor/hexstone/Initialize()
 	. = ..()
@@ -750,7 +750,7 @@
 	max_integrity = 800
 
 /turf/open/floor/churchmarble/cardinal_smooth(adjacencies)
-	roguesmooth(adjacencies)
+	smooth(adjacencies)
 
 /turf/open/floor/churchmarble/Initialize()
 	. = ..()
@@ -793,7 +793,7 @@
 	ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
 
 /turf/open/floor/church/cardinal_smooth(adjacencies)
-	roguesmooth(adjacencies)
+	smooth(adjacencies)
 
 /turf/open/floor/church/Initialize()
 	. = ..()
@@ -832,7 +832,7 @@
 	ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
 
 /turf/open/floor/churchbrick/cardinal_smooth(adjacencies)
-	roguesmooth(adjacencies)
+	smooth(adjacencies)
 
 /turf/open/floor/churchbrick/Initialize()
 	. = ..()
@@ -871,7 +871,7 @@
 	ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
 
 /turf/open/floor/churchrough/cardinal_smooth(adjacencies)
-	roguesmooth(adjacencies)
+	smooth(adjacencies)
 
 /turf/open/floor/churchrough/Initialize()
 	. = ..()
@@ -905,7 +905,7 @@
 	ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
 
 /turf/open/floor/herringbone/cardinal_smooth(adjacencies)
-	roguesmooth(adjacencies)
+	smooth(adjacencies)
 
 /turf/open/floor/herringbone/Initialize()
 	. = ..()
@@ -933,7 +933,7 @@
 
 
 /turf/open/floor/cobble/cardinal_smooth(adjacencies)
-	roguesmooth(adjacencies)
+	smooth(adjacencies)
 
 /turf/open/floor/cobble/Initialize()
 	. = ..()
@@ -959,7 +959,7 @@
 						/turf/open/floor/snow/rough)
 
 /turf/open/floor/cobble/mossy/cardinal_smooth(adjacencies)
-	roguesmooth(adjacencies)
+	smooth(adjacencies)
 
 /turf/open/floor/cobble/mossy/Initialize()
 	. = ..()
@@ -984,7 +984,7 @@
 						/turf/open/floor/snow/rough)
 
 /turf/open/floor/cobblerock/cardinal_smooth(adjacencies)
-	roguesmooth(adjacencies)
+	smooth(adjacencies)
 
 /obj/effect/decal/cobbleedge
 	name = ""

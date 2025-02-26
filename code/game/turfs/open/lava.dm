@@ -35,7 +35,7 @@
 	dir = pick(GLOB.cardinals)
 
 /turf/open/lava/cardinal_smooth(adjacencies)
-	roguesmooth(adjacencies)
+	smooth(adjacencies)
 
 
 /turf/open/lava/ex_act(severity, target)
