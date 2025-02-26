@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aY" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/chicken,
+/mob/living/simple_animal/hostile/retaliate/chicken,
 /turf/open/floor/rogue/grass,
 /area/rogue)
 "bf" = (

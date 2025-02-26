@@ -294,7 +294,7 @@
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue)
 "ha" = (
-/obj/structure/closet/crate/roguecloset,
+/obj/structure/closet/crate/crafted_closet,
 /obj/effect/spawner/roguemap/loot/common,
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
@@ -1637,7 +1637,7 @@
 /area/rogue)
 "Ly" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/crate/roguecloset,
+/obj/structure/closet/crate/crafted_closet,
 /obj/effect/spawner/roguemap/loot/common,
 /turf/open/floor/rogue/hexstone,
 /area/rogue)

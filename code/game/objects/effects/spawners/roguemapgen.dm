@@ -377,5 +377,5 @@
 		/obj/item/roguecoin/copper = 5,
 		/obj/effect/gibspawner/generic = 5,
 		/obj/effect/decal/remains/bigrat = 5,
-		/mob/living/simple_animal/hostile/retaliate/rogue/bigrat = 1,
+		/mob/living/simple_animal/hostile/retaliate/bigrat = 1,
 		)

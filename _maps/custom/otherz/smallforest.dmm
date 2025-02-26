@@ -55,7 +55,7 @@
 /area/rogue/outdoors/rtfield)
 "an" = (
 /obj/structure/flora/newtree,
-/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck{
+/mob/living/simple_animal/hostile/retaliate/saigabuck{
 	tame = 1
 	},
 /turf/open/floor/rogue/dirt/road,
@@ -129,7 +129,7 @@
 /turf/closed/wall/mineral/rogue/wood/boss,
 /area/rogue/outdoors/woods)
 "aR" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/mole,
+/mob/living/simple_animal/hostile/retaliate/mole,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/woods)
 "aU" = (
@@ -146,7 +146,7 @@
 /turf/closed/wall/mineral/rogue/stone/moss,
 /area/rogue/outdoors/woods)
 "cS" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/goatmale,
+/mob/living/simple_animal/hostile/retaliate/goatmale,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/woods)
 "di" = (
@@ -157,11 +157,11 @@
 /turf/closed/mineral/rogue/bedrock,
 /area/rogue/outdoors/woods)
 "dZ" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/goat,
+/mob/living/simple_animal/hostile/retaliate/goat,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/woods)
 "es" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck,
+/mob/living/simple_animal/hostile/retaliate/saigabuck,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/woods)
 "fZ" = (

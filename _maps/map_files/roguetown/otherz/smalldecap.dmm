@@ -409,7 +409,7 @@
 /turf/open/floor/rogue/herringbone,
 /area/rogue/under/cavelava)
 "ix" = (
-/obj/structure/closet/crate/roguecloset/dark,
+/obj/structure/closet/crate/crafted_closet/dark,
 /obj/item/weapon/mace/steel,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/rogue/wood/nosmooth,
@@ -428,7 +428,7 @@
 /area/rogue/indoors/town/dwarfin)
 "iI" = (
 /obj/structure/spider/stickyweb,
-/mob/living/simple_animal/hostile/retaliate/rogue/spider,
+/mob/living/simple_animal/hostile/retaliate/spider,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cavelava)
 "iJ" = (
@@ -526,7 +526,7 @@
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/cavelava)
 "lz" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/troll,
+/mob/living/simple_animal/hostile/retaliate/troll,
 /turf/open/floor/rogue/dirt,
 /area/rogue/under/cavelava)
 "lH" = (
@@ -645,7 +645,7 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cavelava)
 "nP" = (
-/obj/structure/closet/crate/roguecloset/inn,
+/obj/structure/closet/crate/crafted_closet/inn,
 /obj/item/clothing/ring/gold/ravox,
 /obj/item/clothing/head/crown/circlet/vision,
 /obj/effect/decal/cleanable/dirt/dust,
@@ -723,7 +723,7 @@
 "pK" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/blood/gibs/torso,
-/mob/living/simple_animal/hostile/retaliate/rogue/troll,
+/mob/living/simple_animal/hostile/retaliate/troll,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cavelava)
 "pM" = (
@@ -772,7 +772,7 @@
 /area/rogue/under/cavelava)
 "qO" = (
 /obj/effect/decal/cleanable/dirt/dust,
-/mob/living/simple_animal/hostile/retaliate/rogue/troll,
+/mob/living/simple_animal/hostile/retaliate/troll,
 /turf/open/floor/rogue/tile/kitchen,
 /area/rogue/under/cavelava)
 "ra" = (
@@ -790,7 +790,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/caves)
 "rO" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated,
+/mob/living/simple_animal/hostile/retaliate/spider/mutated,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/machinery/light/rogue/wallfire/candle/blue,
 /turf/open/floor/rogue/cobble,
@@ -903,7 +903,7 @@
 /turf/closed/mineral/rogue/bedrock,
 /area/rogue/under/cavelava)
 "up" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider,
+/mob/living/simple_animal/hostile/retaliate/spider,
 /turf/open/floor/rogue/dirt,
 /area/rogue/under/cavelava)
 "uA" = (
@@ -920,7 +920,7 @@
 /turf/open/water/cleanshallow,
 /area/rogue/under/cavelava)
 "vc" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated,
+/mob/living/simple_animal/hostile/retaliate/spider/mutated,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cavelava)
@@ -1005,7 +1005,7 @@
 /area/rogue/under/cavelava)
 "xI" = (
 /obj/effect/decal/cleanable/dirt/dust,
-/mob/living/simple_animal/hostile/retaliate/rogue/troll,
+/mob/living/simple_animal/hostile/retaliate/troll,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/cavelava)
 "xO" = (
@@ -1125,7 +1125,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cavelava)
 "AI" = (
-/obj/structure/closet/crate/roguecloset/dark,
+/obj/structure/closet/crate/crafted_closet/dark,
 /obj/item/clothing/armor/chainmail,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/machinery/light/rogue/wallfire/candle/l,
@@ -1162,7 +1162,7 @@
 /turf/open/floor/rogue/dirt/ambush,
 /area/rogue/outdoors/mountains/decap)
 "BE" = (
-/obj/structure/closet/crate/roguecloset/dark,
+/obj/structure/closet/crate/crafted_closet/dark,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/item/clothing/head/helmet/skullcap,
 /turf/open/floor/rogue/wood/nosmooth,
@@ -1272,7 +1272,7 @@
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/cavelava)
 "Fv" = (
-/obj/structure/roguemachine/scomm,
+/obj/structure/fake_machine/scomm,
 /obj/effect/decal/cleanable/blood/old{
 	icon_state = "splatter3"
 	},
@@ -1494,7 +1494,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/caves)
 "Ke" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider,
+/mob/living/simple_animal/hostile/retaliate/spider,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cavelava)
 "Kk" = (
@@ -1515,7 +1515,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/mountains/decap)
 "KN" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider,
+/mob/living/simple_animal/hostile/retaliate/spider,
 /obj/structure/spider/stickyweb,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/cavelava)
@@ -1614,7 +1614,7 @@
 /turf/open/floor/rogue/ruinedwood/darker,
 /area/rogue/under/cavelava)
 "Nn" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/troll,
+/mob/living/simple_animal/hostile/retaliate/troll,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/blood/gibs/down,
 /turf/open/floor/rogue/dirt,
@@ -1839,7 +1839,7 @@
 "Tj" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/dirt/dust,
-/mob/living/simple_animal/hostile/retaliate/rogue/troll,
+/mob/living/simple_animal/hostile/retaliate/troll,
 /turf/open/floor/rogue/tile/kitchen,
 /area/rogue/under/cavelava)
 "Tn" = (
@@ -1887,7 +1887,7 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/caves)
 "Uf" = (
-/obj/structure/roguemachine/mail,
+/obj/structure/fake_machine/mail,
 /turf/open/floor/rogue/ruinedwood/turned/darker,
 /area/rogue/indoors/town/dwarfin)
 "Ui" = (
@@ -2046,7 +2046,7 @@
 /turf/open/floor/rogue/hexstone,
 /area/rogue/under/cavelava)
 "Ye" = (
-/obj/structure/closet/crate/roguecloset/inn/chest,
+/obj/structure/closet/crate/crafted_closet/inn/chest,
 /obj/item/clothing/shirt/robe/magus,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/carpet/red,
@@ -2093,7 +2093,7 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue/under/cavelava)
 "ZA" = (
-/obj/structure/closet/crate/roguecloset/dark,
+/obj/structure/closet/crate/crafted_closet/dark,
 /obj/item/clothing/armor/cuirass/iron,
 /obj/item/clothing/armor/cuirass/iron,
 /obj/effect/decal/cleanable/dirt/dust,

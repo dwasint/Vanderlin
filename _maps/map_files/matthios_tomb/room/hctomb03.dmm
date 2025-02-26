@@ -337,7 +337,7 @@
 /turf/closed/wall/mineral/rogue/decostone,
 /area/rogue)
 "mt" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated,
+/mob/living/simple_animal/hostile/retaliate/spider/mutated,
 /turf/open/floor/rogue/churchrough,
 /area/rogue)
 "mB" = (
@@ -383,7 +383,7 @@
 /area/rogue)
 "of" = (
 /obj/machinery/light/rogue/torchholder/l,
-/mob/living/simple_animal/hostile/retaliate/rogue/bigrat,
+/mob/living/simple_animal/hostile/retaliate/bigrat,
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue)
 "oo" = (
@@ -672,7 +672,7 @@
 /turf/open/floor/rogue/church,
 /area/rogue)
 "wx" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated,
+/mob/living/simple_animal/hostile/retaliate/spider/mutated,
 /turf/open/floor/rogue/church,
 /area/rogue)
 "wF" = (
@@ -685,7 +685,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "yS" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/bigrat,
+/mob/living/simple_animal/hostile/retaliate/bigrat,
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue)
 "yZ" = (
@@ -963,12 +963,12 @@
 /area/rogue)
 "Ld" = (
 /obj/effect/decal/cleanable/dirt/dust,
-/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated,
+/mob/living/simple_animal/hostile/retaliate/spider/mutated,
 /turf/open/floor/rogue/churchrough,
 /area/rogue)
 "Lg" = (
 /obj/effect/decal/cleanable/blood/old,
-/mob/living/simple_animal/hostile/retaliate/rogue/headless,
+/mob/living/simple_animal/hostile/retaliate/headless,
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue)
 "Lp" = (
@@ -1104,7 +1104,7 @@
 /turf/open/floor/rogue/churchrough,
 /area/rogue)
 "PE" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/mimic,
+/mob/living/simple_animal/hostile/retaliate/mimic,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/item/roguegem,
 /turf/open/floor/rogue/church,
@@ -1315,7 +1315,7 @@
 /turf/open/floor/rogue/churchrough,
 /area/rogue)
 "UR" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/mimic,
+/mob/living/simple_animal/hostile/retaliate/mimic,
 /obj/machinery/light/rogue/wallfire/candle/blue,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/item/roguegem,
@@ -1417,7 +1417,7 @@
 /turf/open/floor/rogue/church,
 /area/rogue)
 "WW" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated,
+/mob/living/simple_animal/hostile/retaliate/spider/mutated,
 /obj/structure/spider/stickyweb,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/rogue/church,

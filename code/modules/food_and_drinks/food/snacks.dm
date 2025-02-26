@@ -138,7 +138,7 @@ All foods are distributed among various categories. Use common sense.
 	..()
 	if(rotprocess)
 		var/obj/structure/closet/crate/chest/chest = locate(/obj/structure/closet/crate/chest) in get_turf(src)
-		var/obj/structure/roguemachine/vendor = locate(/obj/structure/roguemachine/vendor) in get_turf(src)
+		var/obj/structure/fake_machine/vendor = locate(/obj/structure/fake_machine/vendor) in get_turf(src)
 		if(!chest && !vendor)
 			var/obj/structure/table/located = locate(/obj/structure/table) in loc
 			if(located)

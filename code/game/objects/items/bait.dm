@@ -7,11 +7,11 @@
 	w_class = WEIGHT_CLASS_SMALL
 	throwforce = 0
 	var/check_counter = 0
-	var/list/attracted_types = list(/mob/living/simple_animal/hostile/retaliate/rogue/bigrat = 10,
-										/mob/living/simple_animal/hostile/retaliate/rogue/goat = 33,
-									/mob/living/simple_animal/hostile/retaliate/rogue/goatmale = 33,
+	var/list/attracted_types = list(/mob/living/simple_animal/hostile/retaliate/bigrat = 10,
+										/mob/living/simple_animal/hostile/retaliate/goat = 33,
+									/mob/living/simple_animal/hostile/retaliate/goatmale = 33,
 									/mob/living/simple_animal/pet/cat/rogue/cabbit = 33,
-									/mob/living/simple_animal/hostile/retaliate/rogue/chicken = 55)
+									/mob/living/simple_animal/hostile/retaliate/chicken = 55)
 	var/attraction_chance = 100
 	var/deployed = 0
 	var/deploy_speed = 10 SECONDS
@@ -101,21 +101,21 @@
 	name = "bag of sweetbait"
 	desc = "This bait doesn't smell as bad. I might even try a bite.."
 	icon_state = "baitp"
-	attracted_types = list(/mob/living/simple_animal/hostile/retaliate/rogue/goat = 33,
-							/mob/living/simple_animal/hostile/retaliate/rogue/goatmale = 33,
+	attracted_types = list(/mob/living/simple_animal/hostile/retaliate/goat = 33,
+							/mob/living/simple_animal/hostile/retaliate/goatmale = 33,
 							/mob/living/simple_animal/pet/cat/rogue/cabbit = 50, // Rabbits love sweet things
-							/mob/living/simple_animal/hostile/retaliate/rogue/saiga = 20,
-							/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck = 20,
-							/mob/living/simple_animal/hostile/retaliate/rogue/wolf = 10)
+							/mob/living/simple_animal/hostile/retaliate/saiga = 20,
+							/mob/living/simple_animal/hostile/retaliate/saigabuck = 20,
+							/mob/living/simple_animal/hostile/retaliate/wolf = 10)
 
 
 /obj/item/bait/bloody
 	name = "bag of bloodbait"
 	desc = "A deployable bag of bait used by hunters to attract predators within the wilds."
 	icon_state = "baitb"
-	attracted_types = list(/mob/living/simple_animal/hostile/retaliate/rogue/wolf = 33,
-						/mob/living/simple_animal/hostile/retaliate/rogue/bigrat = 10,
-						/mob/living/simple_animal/hostile/retaliate/rogue/mole = 15,
-						/mob/living/simple_animal/hostile/retaliate/rogue/troll = 5,
-						/mob/living/simple_animal/hostile/retaliate/rogue/trollbog = 5,
-						/mob/living/simple_animal/hostile/retaliate/rogue/troll/caerbannog = 2.5)
+	attracted_types = list(/mob/living/simple_animal/hostile/retaliate/wolf = 33,
+						/mob/living/simple_animal/hostile/retaliate/bigrat = 10,
+						/mob/living/simple_animal/hostile/retaliate/mole = 15,
+						/mob/living/simple_animal/hostile/retaliate/troll = 5,
+						/mob/living/simple_animal/hostile/retaliate/trollbog = 5,
+						/mob/living/simple_animal/hostile/retaliate/troll/caerbannog = 2.5)

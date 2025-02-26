@@ -142,7 +142,7 @@
 /turf/open/floor/rogue/herringbone,
 /area/rogue/outdoors/bog)
 "Q" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider,
+/mob/living/simple_animal/hostile/retaliate/spider,
 /turf/open/water/swamp,
 /area/rogue/outdoors/bog)
 "R" = (

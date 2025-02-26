@@ -150,7 +150,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cave)
 "xb" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider,
+/mob/living/simple_animal/hostile/retaliate/spider,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cave)
 "xw" = (

@@ -202,7 +202,7 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/bog)
 "cx" = (
-/obj/structure/closet/crate/roguecloset/inn/chest,
+/obj/structure/closet/crate/crafted_closet/inn/chest,
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/indoors/shelter/bog)
 "cB" = (
@@ -604,7 +604,7 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/bog)
 "hv" = (
-/obj/structure/closet/crate/roguecloset/inn/chest,
+/obj/structure/closet/crate/crafted_closet/inn/chest,
 /obj/structure/fluff/railing/border{
 	dir = 1
 	},
@@ -796,7 +796,7 @@
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/indoors/shelter/bog)
 "kG" = (
-/obj/structure/closet/crate/roguecloset/inn,
+/obj/structure/closet/crate/crafted_closet/inn,
 /obj/item/clothing/shirt/undershirt,
 /obj/item/clothing/pants/tights/black,
 /obj/item/clothing/head/cookhat,
@@ -969,7 +969,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/bog)
 "mz" = (
-/obj/structure/roguemachine/scomm/r,
+/obj/structure/fake_machine/scomm/r,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/shelter/bog)
@@ -1016,7 +1016,7 @@
 	dir = 8;
 	pixel_y = -1
 	},
-/mob/living/simple_animal/hostile/retaliate/rogue/chicken{
+/mob/living/simple_animal/hostile/retaliate/chicken{
 	name = "bog chicken"
 	},
 /turf/open/floor/rogue/dirt,
@@ -1620,7 +1620,7 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/bog)
 "vD" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/chicken{
+/mob/living/simple_animal/hostile/retaliate/chicken{
 	name = "bog chicken"
 	},
 /turf/open/floor/rogue/grass,
@@ -1684,7 +1684,7 @@
 /area/rogue/indoors/shelter/bog)
 "wf" = (
 /obj/item/neuFarm/seed/potato,
-/mob/living/simple_animal/hostile/retaliate/rogue/chicken{
+/mob/living/simple_animal/hostile/retaliate/chicken{
 	name = "bog chicken"
 	},
 /turf/open/floor/rogue/grass,
@@ -1953,7 +1953,7 @@
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/indoors/shelter/bog)
 "Ad" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/trollbog,
+/mob/living/simple_animal/hostile/retaliate/trollbog,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/indoors/cave)
 "Ag" = (
@@ -2188,7 +2188,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/shelter/bog)
 "Dw" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/troll,
+/mob/living/simple_animal/hostile/retaliate/troll,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/indoors/cave)
 "DA" = (
@@ -2519,7 +2519,7 @@
 /obj/structure/fluff/railing/wood{
 	dir = 1
 	},
-/mob/living/simple_animal/hostile/retaliate/rogue/chicken{
+/mob/living/simple_animal/hostile/retaliate/chicken{
 	name = "bog chicken"
 	},
 /turf/open/floor/rogue/dirt,
@@ -3033,7 +3033,7 @@
 /turf/closed/wall/mineral/rogue/wood,
 /area/rogue/indoors/shelter/bog)
 "PK" = (
-/obj/structure/closet/crate/roguecloset/inn,
+/obj/structure/closet/crate/crafted_closet/inn,
 /obj/item/clothing/shirt/dress,
 /obj/item/clothing/head/softcap,
 /turf/open/floor/rogue/wood/nosmooth,
@@ -3672,7 +3672,7 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue/indoors/shelter/bog)
 "XK" = (
-/obj/structure/closet/crate/roguecloset/dark,
+/obj/structure/closet/crate/crafted_closet/dark,
 /obj/effect/decal/cleanable/dirt/cobweb,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/shelter/bog)
@@ -3697,7 +3697,7 @@
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors/shelter/bog)
 "XZ" = (
-/obj/structure/closet/crate/roguecloset/dark,
+/obj/structure/closet/crate/crafted_closet/dark,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/shelter/bog)
 "Yb" = (

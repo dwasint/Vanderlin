@@ -87,7 +87,7 @@
 /turf/open/floor/rogue/carpet/lord/right,
 /area/rogue/outdoors/caves)
 "t" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/bogbug{
+/mob/living/simple_animal/hostile/retaliate/bogbug{
 	dir = 4
 	},
 /obj/item/roguegem/green,

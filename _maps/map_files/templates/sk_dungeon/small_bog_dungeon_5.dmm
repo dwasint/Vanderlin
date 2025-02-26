@@ -24,7 +24,7 @@
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors/bog)
 "cN" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/saiga,
+/mob/living/simple_animal/hostile/retaliate/saiga,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/bog)
 "dY" = (
@@ -122,12 +122,12 @@
 /area/rogue/outdoors/bog)
 "oc" = (
 /obj/structure/fluff/nest,
-/mob/living/simple_animal/hostile/retaliate/rogue/chicken,
+/mob/living/simple_animal/hostile/retaliate/chicken,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/bog)
 "oj" = (
 /obj/structure/fluff/nest,
-/mob/living/simple_animal/hostile/retaliate/rogue/goat,
+/mob/living/simple_animal/hostile/retaliate/goat,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/bog)
 "oO" = (
@@ -185,7 +185,7 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/bog)
 "qW" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/chicken,
+/mob/living/simple_animal/hostile/retaliate/chicken,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/bog)
 "rj" = (
@@ -348,7 +348,7 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/bog)
 "DM" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/goat,
+/mob/living/simple_animal/hostile/retaliate/goat,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/bog)
 "DN" = (

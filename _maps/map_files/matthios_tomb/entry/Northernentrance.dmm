@@ -184,7 +184,7 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue)
 "uO" = (
-/obj/structure/closet/crate/roguecloset/inn/south,
+/obj/structure/closet/crate/crafted_closet/inn/south,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue)
 "wx" = (

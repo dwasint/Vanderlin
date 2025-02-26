@@ -925,7 +925,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 			return
 		to_chat(user.mind, "<span class='danger'>SOON I WILL BECOME A HIGHER FORM!!!</span>")
 		sleep(5 SECONDS)
-		var/mob/living/trl = new /mob/living/simple_animal/hostile/retaliate/rogue/blood(H)
+		var/mob/living/trl = new /mob/living/simple_animal/hostile/retaliate/blood(H)
 		trl.forceMove(H)
 		trl.ckey = H.ckey
 		H.gib()
@@ -992,7 +992,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 		SSmapping.retainer.cult_ascended = TRUE
 		addomen(OMEN_ASCEND)
 		to_chat(user.mind, "<span class='userdanger'>I HAVE DONE IT! I HAVE REACHED A HIGHER FORM! ZIZO SMILES UPON ME WITH MALICE IN HER EYES TOWARD THE ONES WHO LACK KNOWLEDGE AND UNDERSTANDING!</span>")
-		var/mob/living/trl = new /mob/living/simple_animal/hostile/retaliate/rogue/blood/ascended(C)
+		var/mob/living/trl = new /mob/living/simple_animal/hostile/retaliate/blood/ascended(C)
 		trl.ckey = H.ckey
 		H.gib()
 		to_chat(world, "\n<font color='purple'>15 minutes remain.</font>")

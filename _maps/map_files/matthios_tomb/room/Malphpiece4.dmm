@@ -36,7 +36,7 @@
 /turf/closed/mineral/rogue/bedrock,
 /area/rogue/outdoors/caves)
 "eu" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/trufflepig,
+/mob/living/simple_animal/hostile/retaliate/trufflepig,
 /turf/open/water/swamp/deep,
 /area/rogue/outdoors/caves)
 "fl" = (
@@ -59,7 +59,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/caves)
 "jN" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/minotaur/axe/female,
+/mob/living/simple_animal/hostile/retaliate/minotaur/axe/female,
 /turf/open/floor/rogue/carpet,
 /area/rogue/outdoors/caves)
 "kv" = (
@@ -121,7 +121,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/caves)
 "tg" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/trufflepig,
+/mob/living/simple_animal/hostile/retaliate/trufflepig,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/caves)
 "tx" = (
@@ -162,11 +162,11 @@
 /turf/open/water/swamp,
 /area/rogue/outdoors/caves)
 "Ac" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/minotaur/axe,
+/mob/living/simple_animal/hostile/retaliate/minotaur/axe,
 /turf/open/floor/rogue/tile/checkeralt,
 /area/rogue/outdoors/caves)
 "AE" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/trufflepig,
+/mob/living/simple_animal/hostile/retaliate/trufflepig,
 /turf/open/floor/rogue/dirt/ambush,
 /area/rogue/outdoors/caves)
 "AH" = (
@@ -227,7 +227,7 @@
 /area/rogue/outdoors/caves)
 "OE" = (
 /obj/machinery/light/rogue/torchholder/c,
-/mob/living/simple_animal/hostile/retaliate/rogue/trufflepig,
+/mob/living/simple_animal/hostile/retaliate/trufflepig,
 /turf/open/floor/rogue/dirt/ambush,
 /area/rogue/outdoors/caves)
 "Qf" = (

@@ -93,7 +93,7 @@
 /turf/open/floor/rogue/cobble/alt,
 /area/rogue)
 "ie" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/minotaur/axe,
+/mob/living/simple_animal/hostile/retaliate/minotaur/axe,
 /turf/open/floor/rogue/cobble,
 /area/rogue)
 "im" = (
@@ -107,7 +107,7 @@
 /turf/open/floor/rogue/grass,
 /area/rogue)
 "iT" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider,
+/mob/living/simple_animal/hostile/retaliate/spider,
 /turf/open/floor/rogue/cobble,
 /area/rogue)
 "iZ" = (
@@ -185,7 +185,7 @@
 /turf/closed/wall/mineral/rogue/stone,
 /area/rogue)
 "nt" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider,
+/mob/living/simple_animal/hostile/retaliate/spider,
 /obj/effect/spawner/roguemap/loot/common,
 /turf/open/floor/rogue/cobble,
 /area/rogue)
@@ -330,7 +330,7 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue)
 "CN" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider,
+/mob/living/simple_animal/hostile/retaliate/spider,
 /turf/open/floor/rogue/cobble/alt,
 /area/rogue)
 "CO" = (

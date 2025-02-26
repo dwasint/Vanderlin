@@ -75,7 +75,7 @@
 	},
 /area/rogue)
 "x" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/bigrat,
+/mob/living/simple_animal/hostile/retaliate/bigrat,
 /turf/open/water/swamp,
 /area/rogue)
 "y" = (

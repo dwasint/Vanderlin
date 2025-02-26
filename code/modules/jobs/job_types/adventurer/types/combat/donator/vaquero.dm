@@ -5,7 +5,7 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list("Tiefling")
 	outfit = /datum/outfit/job/adventurer/vaquero
-	horse = /mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame/saddled
+	horse = /mob/living/simple_animal/hostile/retaliate/saigabuck/tame/saddled
 	cmode_music = 'sound/music/cmode/adventurer/combat_vaquero.ogg'
 	category_tags = list(CTAG_ADVENTURER)
 	min_pq = 1
@@ -14,7 +14,7 @@
 
 /datum/advclass/combat/vaquero/equipme(mob/living/carbon/human/H)
 	if(H.gender == FEMALE)
-		horse = /mob/living/simple_animal/hostile/retaliate/rogue/saiga/tame/saddled
+		horse = /mob/living/simple_animal/hostile/retaliate/saiga/tame/saddled
 	return ..()
 
 /datum/outfit/job/adventurer/vaquero/pre_equip(mob/living/carbon/human/H)

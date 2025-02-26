@@ -117,7 +117,7 @@
 /turf/open/water/swamp/deep,
 /area/rogue)
 "dY" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/mimic,
+/mob/living/simple_animal/hostile/retaliate/mimic,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue)
 "ea" = (
@@ -202,7 +202,7 @@
 /turf/open/floor/rogue/concrete,
 /area/rogue)
 "ip" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated,
+/mob/living/simple_animal/hostile/retaliate/spider/mutated,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue)
 "iu" = (
@@ -291,7 +291,7 @@
 /turf/open/floor/rogue/churchmarble,
 /area/rogue)
 "nt" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated,
+/mob/living/simple_animal/hostile/retaliate/spider/mutated,
 /turf/open/floor/rogue/dirt,
 /area/rogue)
 "nz" = (
@@ -572,7 +572,7 @@
 /turf/open/floor/rogue/plank,
 /area/rogue)
 "yf" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/bigrat,
+/mob/living/simple_animal/hostile/retaliate/bigrat,
 /obj/item/rogueore/gold{
 	pixel_y = -12;
 	pixel_x = -10
@@ -606,7 +606,7 @@
 /turf/open/floor/rogue/churchmarble,
 /area/rogue)
 "AK" = (
-/obj/structure/closet/crate/roguecloset,
+/obj/structure/closet/crate/crafted_closet,
 /obj/item/clothing/cloak/stabard/templar/astrata/alt,
 /obj/item/clothing/cloak/stabard/templar/astrata/alt,
 /obj/item/clothing/cloak/stabard/templar/astrata,
@@ -742,8 +742,8 @@
 /turf/open/floor/rogue/grass,
 /area/rogue)
 "GA" = (
-/obj/structure/closet/crate/roguecloset,
-/obj/structure/closet/crate/roguecloset,
+/obj/structure/closet/crate/crafted_closet,
+/obj/structure/closet/crate/crafted_closet,
 /obj/effect/decal/cleanable/dirt/cobweb/cobweb2,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue)
@@ -773,7 +773,7 @@
 /turf/open/floor/rogue/churchmarble,
 /area/rogue)
 "HY" = (
-/obj/structure/closet/crate/roguecloset,
+/obj/structure/closet/crate/crafted_closet,
 /obj/item/clothing/cloak/stabard/templar/eora,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue)
@@ -884,7 +884,7 @@
 	},
 /area/rogue)
 "Mu" = (
-/obj/structure/closet/crate/roguecloset/dark,
+/obj/structure/closet/crate/crafted_closet/dark,
 /obj/item/clothing/shirt/robe/priest,
 /obj/item/clothing/shirt/undershirt/priest,
 /obj/item/clothing/head/priestmask,
@@ -1116,7 +1116,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue)
 "UJ" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/bigrat,
+/mob/living/simple_animal/hostile/retaliate/bigrat,
 /obj/item/rogueore/gold{
 	pixel_y = 5;
 	pixel_x = -10
@@ -1160,7 +1160,7 @@
 /turf/open/floor/rogue/churchmarble,
 /area/rogue)
 "Wk" = (
-/obj/structure/closet/crate/roguecloset,
+/obj/structure/closet/crate/crafted_closet,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue)
 "Ww" = (

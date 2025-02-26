@@ -441,7 +441,7 @@
 	},
 /area/rogue/indoors)
 "sd" = (
-/obj/structure/closet/crate/roguecloset,
+/obj/structure/closet/crate/crafted_closet,
 /obj/item/bait,
 /obj/item/bait,
 /turf/open/floor/rogue/ruinedwood{
@@ -516,7 +516,7 @@
 /turf/closed/wall/mineral/rogue/tent,
 /area/rogue/indoors/cave)
 "vc" = (
-/obj/structure/closet/crate/roguecloset,
+/obj/structure/closet/crate/crafted_closet,
 /obj/item/natural/cloth,
 /obj/item/natural/cloth,
 /turf/open/floor/rogue/ruinedwood{
@@ -632,7 +632,7 @@
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors)
 "xP" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/chicken{
+/mob/living/simple_animal/hostile/retaliate/chicken{
 	name = "chicken"
 	},
 /turf/open/floor/rogue/dirt,

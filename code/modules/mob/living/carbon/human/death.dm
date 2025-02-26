@@ -77,7 +77,7 @@
 		if(istype(A, /area/rogue/indoors/town/cell))
 			tris2take += -2
 		if(H in SStreasury.bank_accounts)
-			for(var/obj/structure/roguemachine/camera/C in view(7, src))
+			for(var/obj/structure/fake_machine/camera/C in view(7, src))
 				var/area_name = A.name
 				var/texty = "<CENTER><B>Death of a Living Being</B><br>---<br></CENTER>"
 				texty += "[real_name] perished in front of face #[C.number] ([area_name]) at [station_time_timestamp("hh:mm")]."

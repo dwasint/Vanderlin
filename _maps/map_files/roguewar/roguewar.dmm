@@ -52,8 +52,8 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue)
 "bE" = (
-/obj/structure/closet/crate/roguecloset,
-/obj/structure/closet/crate/roguecloset,
+/obj/structure/closet/crate/crafted_closet,
+/obj/structure/closet/crate/crafted_closet,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue)
 "bR" = (
@@ -401,11 +401,11 @@
 /turf/closed/wall/mineral/rogue/stonebrick,
 /area/rogue)
 "nw" = (
-/obj/structure/closet/crate/roguecloset,
+/obj/structure/closet/crate/crafted_closet,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue)
 "nG" = (
-/obj/structure/closet/crate/roguecloset,
+/obj/structure/closet/crate/crafted_closet,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue)
 "oa" = (
@@ -706,7 +706,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue)
 "xU" = (
-/obj/structure/closet/crate/roguecloset,
+/obj/structure/closet/crate/crafted_closet,
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue)
 "yn" = (
@@ -720,7 +720,7 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue)
 "yC" = (
-/obj/structure/closet/crate/roguecloset,
+/obj/structure/closet/crate/crafted_closet,
 /turf/open/floor/rogue/woodturned,
 /area/rogue)
 "yQ" = (
@@ -835,7 +835,7 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue)
 "Ca" = (
-/obj/structure/closet/crate/roguecloset,
+/obj/structure/closet/crate/crafted_closet,
 /turf/open/floor/rogue/blocks/newstone,
 /area/rogue)
 "Cj" = (
@@ -1088,7 +1088,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue)
 "JQ" = (
-/obj/structure/closet/crate/roguecloset,
+/obj/structure/closet/crate/crafted_closet,
 /obj/structure/fluff/walldeco/wantedposter/r,
 /turf/open/floor/rogue/woodturned,
 /area/rogue)
@@ -1191,7 +1191,7 @@
 /turf/open/floor/rogue/twig,
 /area/rogue)
 "ML" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/saiga/tame/saddled,
+/mob/living/simple_animal/hostile/retaliate/saiga/tame/saddled,
 /turf/open/floor/rogue/grass,
 /area/rogue)
 "MQ" = (
@@ -1260,7 +1260,7 @@
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue)
 "Qg" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame/saddled,
+/mob/living/simple_animal/hostile/retaliate/saigabuck/tame/saddled,
 /turf/open/floor/rogue/grass,
 /area/rogue)
 "QB" = (
@@ -1411,7 +1411,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue)
 "UI" = (
-/obj/structure/closet/crate/roguecloset,
+/obj/structure/closet/crate/crafted_closet,
 /obj/machinery/light/rogue/torchholder{
 	dir = 4
 	},

@@ -160,7 +160,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/outdoors/caves)
 "M" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated,
+/mob/living/simple_animal/hostile/retaliate/spider/mutated,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/outdoors/caves)
 "N" = (
@@ -183,7 +183,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/outdoors/caves)
 "R" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated,
+/mob/living/simple_animal/hostile/retaliate/spider/mutated,
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/caves)
 "S" = (

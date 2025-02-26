@@ -34,7 +34,7 @@
 /turf/open/floor/rogue/metal,
 /area/rogue)
 "kH" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/wolf,
+/mob/living/simple_animal/hostile/retaliate/wolf,
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/rogue/metal,
 /area/rogue)
@@ -215,7 +215,7 @@
 /turf/open/floor/rogue/ruinedwood/chevron,
 /area/rogue)
 "Nb" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/wolf,
+/mob/living/simple_animal/hostile/retaliate/wolf,
 /obj/effect/decal/cleanable/blood/tracks{
 	dir = 4
 	},
@@ -249,7 +249,7 @@
 /turf/open/floor/rogue/ruinedwood/chevron,
 /area/rogue)
 "SA" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/wolf,
+/mob/living/simple_animal/hostile/retaliate/wolf,
 /turf/open/floor/rogue/metal,
 /area/rogue)
 "Tq" = (

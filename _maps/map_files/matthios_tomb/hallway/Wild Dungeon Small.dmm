@@ -208,7 +208,7 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/under/cave)
 "Vz" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/wolf,
+/mob/living/simple_animal/hostile/retaliate/wolf,
 /turf/open/floor/rogue/grass/mixyel,
 /area/rogue/under/cave)
 "VW" = (

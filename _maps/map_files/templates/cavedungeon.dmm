@@ -34,7 +34,7 @@
 /obj/effect/decal/cleanable/blood/tracks{
 	dir = 1
 	},
-/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated,
+/mob/living/simple_animal/hostile/retaliate/spider/mutated,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/outdoors/caves)
 "ga" = (
@@ -68,7 +68,7 @@
 /area/rogue/outdoors/caves)
 "mT" = (
 /obj/effect/decal/cleanable/dirt/cobweb,
-/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated,
+/mob/living/simple_animal/hostile/retaliate/spider/mutated,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/outdoors/caves)
 "ns" = (
@@ -288,7 +288,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/outdoors/caves)
 "Vl" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated,
+/mob/living/simple_animal/hostile/retaliate/spider/mutated,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/outdoors/caves)
 "Vm" = (

@@ -26,7 +26,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "j" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider,
+/mob/living/simple_animal/hostile/retaliate/spider,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "k" = (
@@ -83,7 +83,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "C" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider,
+/mob/living/simple_animal/hostile/retaliate/spider,
 /obj/structure/spider/stickyweb,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
@@ -92,7 +92,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "F" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider,
+/mob/living/simple_animal/hostile/retaliate/spider,
 /obj/effect/decal/cleanable/dirt/cobweb,
 /obj/item/storage/belt/pouch/coins/mid,
 /turf/open/floor/rogue/naturalstone,
@@ -103,7 +103,7 @@
 /area/rogue)
 "H" = (
 /obj/structure/spider/stickyweb,
-/mob/living/simple_animal/hostile/retaliate/rogue/spider,
+/mob/living/simple_animal/hostile/retaliate/spider,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "K" = (
@@ -119,7 +119,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "P" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider,
+/mob/living/simple_animal/hostile/retaliate/spider,
 /obj/effect/decal/remains/human,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)

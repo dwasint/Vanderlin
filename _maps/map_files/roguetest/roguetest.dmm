@@ -945,7 +945,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors)
 "cs" = (
-/obj/structure/roguemachine/drugmachine,
+/obj/structure/fake_machine/drugmachine,
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors)
 "ct" = (
@@ -1048,15 +1048,15 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors)
 "cJ" = (
-/obj/structure/roguemachine/atm,
+/obj/structure/fake_machine/atm,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors)
 "cK" = (
-/obj/structure/roguemachine/submission,
+/obj/structure/fake_machine/submission,
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors)
 "cL" = (
-/obj/structure/roguemachine/atm,
+/obj/structure/fake_machine/atm,
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors)
 "cM" = (
@@ -1071,16 +1071,16 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors)
 "cO" = (
-/obj/structure/roguethrone,
-/obj/structure/roguemachine/titan,
+/obj/structure/throne,
+/obj/structure/fake_machine/titan,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
 "cP" = (
-/obj/structure/roguemachine/merchantvend,
+/obj/structure/fake_machine/merchantvend,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors)
 "cQ" = (
-/obj/structure/roguemachine/scomm,
+/obj/structure/fake_machine/scomm,
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors)
 "cR" = (

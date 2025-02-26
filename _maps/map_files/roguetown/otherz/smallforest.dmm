@@ -367,7 +367,7 @@
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors/river)
 "vJ" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/goatmale,
+/mob/living/simple_animal/hostile/retaliate/goatmale,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/woods)
 "vW" = (
@@ -493,7 +493,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/river)
 "IZ" = (
-/obj/structure/closet/crate/roguecloset,
+/obj/structure/closet/crate/crafted_closet,
 /obj/item/natural/cloth,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "horzw"
@@ -614,7 +614,7 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue/under/town/caverogue)
 "UJ" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/goat,
+/mob/living/simple_animal/hostile/retaliate/goat,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/woods)
 "Vh" = (

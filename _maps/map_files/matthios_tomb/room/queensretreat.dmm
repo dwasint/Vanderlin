@@ -221,7 +221,7 @@
 	},
 /area/rogue)
 "mC" = (
-/obj/structure/roguemachine/musicbox,
+/obj/structure/fake_machine/musicbox,
 /obj/structure/table/wood/plain/alto,
 /turf/open/floor/rogue/tile,
 /area/rogue)
@@ -726,7 +726,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue)
 "Fc" = (
-/obj/structure/closet/crate/roguecloset,
+/obj/structure/closet/crate/crafted_closet,
 /obj/item/clothing/shirt/dress,
 /obj/item/clothing/pants/tights/random,
 /obj/item/clothing/shirt/dress/gen/blue,
@@ -783,7 +783,7 @@
 /area/rogue)
 "If" = (
 /obj/machinery/light/rogue/wallfire/candle/weak/r,
-/obj/structure/closet/crate/roguecloset/lord,
+/obj/structure/closet/crate/crafted_closet/lord,
 /obj/item/clothing/neck/psycross/noc,
 /obj/item/clothing/ring/silver/noc,
 /obj/item/reagent_containers/glass/bottle/rogue/stronghealthpot,
@@ -995,7 +995,7 @@
 /turf/open/floor/rogue/grass,
 /area/rogue)
 "RH" = (
-/obj/structure/closet/crate/roguecloset,
+/obj/structure/closet/crate/crafted_closet,
 /obj/item/clothing/shirt/dress,
 /obj/item/clothing/head/crown/serpcrown/surplus,
 /obj/item/clothing/pants/tights/random,
@@ -1135,7 +1135,7 @@
 /turf/open/floor/rogue/tile/checker,
 /area/rogue)
 "YY" = (
-/obj/structure/closet/crate/roguecloset,
+/obj/structure/closet/crate/crafted_closet,
 /obj/item/natural/cloth{
 	pixel_x = 1;
 	pixel_y = 2

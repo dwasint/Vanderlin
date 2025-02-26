@@ -34,7 +34,7 @@
 /turf/open/floor/rogue/church,
 /area/rogue/under/mountains/anvil/lower)
 "aB" = (
-/obj/structure/closet/crate/roguecloset,
+/obj/structure/closet/crate/crafted_closet,
 /obj/effect/spawner/roguemap/loot/armor,
 /turf/open/floor/rogue/ruinedwood/spiralfade,
 /area/rogue/under/mountains/anvil/lower/building)
@@ -114,7 +114,7 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/mountains/anvil/lower/building)
 "cO" = (
-/obj/structure/closet/crate/roguecloset,
+/obj/structure/closet/crate/crafted_closet,
 /obj/item/clothing/shirt/rags,
 /obj/item/broom,
 /turf/open/floor/rogue/blocks,
@@ -333,7 +333,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/lower/building)
 "fZ" = (
-/obj/structure/closet/crate/roguecloset,
+/obj/structure/closet/crate/crafted_closet,
 /obj/effect/spawner/roguemap/loot/common,
 /turf/open/floor/rogue/wood/nosmooth/saiga,
 /area/rogue/outdoors/mountains/anvil/snowyforest)
@@ -646,7 +646,7 @@
 /turf/open/floor/rogue/blocks/green,
 /area/rogue/under/mountains/anvil/lower/building)
 "ky" = (
-/obj/structure/closet/crate/roguecloset,
+/obj/structure/closet/crate/crafted_closet,
 /obj/effect/spawner/roguemap/loot/medium,
 /turf/open/floor/rogue/wood/nosmooth/saiga,
 /area/rogue/outdoors/mountains/anvil/snowyforest)
@@ -736,7 +736,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/lower)
 "mj" = (
-/obj/structure/closet/crate/roguecloset,
+/obj/structure/closet/crate/crafted_closet,
 /obj/machinery/light/rogue/torchholder{
 	dir = 4;
 	icon_state = "torchwall1"
@@ -895,17 +895,17 @@
 /turf/open/floor/rogue/wood/nosmooth/saiga,
 /area/rogue/outdoors/mountains/anvil/snowyforest)
 "om" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated,
+/mob/living/simple_animal/hostile/retaliate/spider/mutated,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/lower)
 "or" = (
-/obj/structure/closet/crate/roguecloset,
+/obj/structure/closet/crate/crafted_closet,
 /obj/effect/spawner/roguemap/loot/weapon,
 /turf/open/floor/rogue/ruinedwood/spiralfade,
 /area/rogue/under/mountains/anvil/lower/building)
 "ou" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider,
+/mob/living/simple_animal/hostile/retaliate/spider,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/lower)
 "ov" = (
@@ -1335,7 +1335,7 @@
 /turf/closed/wall/mineral/rogue/craftstone,
 /area/rogue/under/mountains/anvil/lower/building)
 "uW" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/wolf,
+/mob/living/simple_animal/hostile/retaliate/wolf,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/mountains/anvil/lower)
 "uX" = (
@@ -1419,7 +1419,7 @@
 /area/rogue/under/mountains/anvil/lower)
 "wj" = (
 /obj/effect/decal/cleanable/blood,
-/obj/structure/closet/crate/roguecloset,
+/obj/structure/closet/crate/crafted_closet,
 /obj/item/toy/cards/deck,
 /turf/open/floor/rogue/ruinedwood/spiralfade,
 /area/rogue/under/mountains/anvil/lower/building)
@@ -1451,7 +1451,7 @@
 /turf/open/lava,
 /area/rogue/outdoors/mountains/anvil/lavaexposed)
 "xf" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/mole,
+/mob/living/simple_animal/hostile/retaliate/mole,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/lower)
 "xg" = (
@@ -1856,11 +1856,11 @@
 /turf/open/floor/rogue/wood/nosmooth/saiga,
 /area/rogue/indoors/mountains/anvil/surface/building)
 "Eg" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/troll,
+/mob/living/simple_animal/hostile/retaliate/troll,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/lower/building)
 "Ek" = (
-/obj/structure/closet/crate/roguecloset,
+/obj/structure/closet/crate/crafted_closet,
 /obj/effect/spawner/roguemap/loot/common,
 /turf/open/floor/rogue/wood/nosmooth/saiga,
 /area/rogue/indoors/mountains/anvil/surface/building)
@@ -1941,7 +1941,7 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/mountains/anvil/lavaexposed)
 "Gg" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated,
+/mob/living/simple_animal/hostile/retaliate/spider/mutated,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/lower)
 "Gi" = (
@@ -1998,7 +1998,7 @@
 /turf/open/floor/rogue/church,
 /area/rogue/under/mountains/anvil/lower)
 "GB" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/troll,
+/mob/living/simple_animal/hostile/retaliate/troll,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/lower)
 "GF" = (
@@ -2259,7 +2259,7 @@
 /area/rogue/indoors/mountains/anvil/surface/building)
 "KN" = (
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/closet/crate/roguecloset/inn,
+/obj/structure/closet/crate/crafted_closet/inn,
 /obj/effect/spawner/roguemap/loot/common,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/mountains/anvil/lower/building)
@@ -2469,7 +2469,7 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/mountains/anvil/lower/building)
 "NL" = (
-/obj/structure/closet/crate/roguecloset,
+/obj/structure/closet/crate/crafted_closet,
 /obj/effect/spawner/roguemap/loot/armor,
 /obj/machinery/light/rogue/torchholder{
 	dir = 8;
@@ -2542,7 +2542,7 @@
 /area/rogue/under/mountains/anvil/lower/building)
 "OM" = (
 /obj/effect/decal/cleanable/blood,
-/obj/structure/closet/crate/roguecloset,
+/obj/structure/closet/crate/crafted_closet,
 /turf/open/floor/rogue/ruinedwood/spiralfade,
 /area/rogue/under/mountains/anvil/lower/building)
 "OS" = (
@@ -2564,7 +2564,7 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/mountains/anvil/lower)
 "Pk" = (
-/obj/structure/closet/crate/roguecloset,
+/obj/structure/closet/crate/crafted_closet,
 /obj/effect/spawner/roguemap/loot/weapon,
 /obj/machinery/light/rogue/torchholder{
 	dir = 4;
@@ -2837,7 +2837,7 @@
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/mountains/anvil/snowyforest)
 "Tp" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated,
+/mob/living/simple_animal/hostile/retaliate/spider/mutated,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/rogue/naturalstone,
@@ -3156,7 +3156,7 @@
 /turf/open/floor/rogue/ruinedwood/darker,
 /area/rogue/indoors/mountains/anvil/surface/building)
 "Yz" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/troll,
+/mob/living/simple_animal/hostile/retaliate/troll,
 /obj/effect/decal/cleanable/blood/gibs/up,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/lower)
@@ -3181,7 +3181,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/lower)
 "YI" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/mimic,
+/mob/living/simple_animal/hostile/retaliate/mimic,
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors/mountains/anvil/snowyforest)
 "YJ" = (

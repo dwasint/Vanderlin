@@ -10,7 +10,7 @@
 		"Dark Elf"
 	)
 	outfit = /datum/outfit/job/adventurer/sentinel
-	horse = /mob/living/simple_animal/hostile/retaliate/rogue/saigabuck/tame/saddled
+	horse = /mob/living/simple_animal/hostile/retaliate/saigabuck/tame/saddled
 	outfit = /datum/outfit/job/adventurer/sentinel
 	maximum_possible_slots = 1
 	min_pq = 0
@@ -20,7 +20,7 @@
 
 /datum/advclass/combat/sentinel/equipme(mob/living/carbon/human/H)
 	if(H.gender == FEMALE)
-		horse = /mob/living/simple_animal/hostile/retaliate/rogue/saiga/tame/saddled
+		horse = /mob/living/simple_animal/hostile/retaliate/saiga/tame/saddled
 	return ..()
 
 

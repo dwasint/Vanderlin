@@ -46,7 +46,7 @@
 "ef" = (
 /obj/structure/spider/stickyweb,
 /obj/structure/spider/stickyweb,
-/mob/living/simple_animal/hostile/retaliate/rogue/spider,
+/mob/living/simple_animal/hostile/retaliate/spider,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors)
 "ep" = (
@@ -411,7 +411,7 @@
 /area/rogue/indoors)
 "OG" = (
 /obj/structure/spider/stickyweb,
-/mob/living/simple_animal/hostile/retaliate/rogue/spider,
+/mob/living/simple_animal/hostile/retaliate/spider,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors)
 "OY" = (
@@ -474,7 +474,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
 "Vk" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider,
+/mob/living/simple_animal/hostile/retaliate/spider,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors)
 "Vt" = (

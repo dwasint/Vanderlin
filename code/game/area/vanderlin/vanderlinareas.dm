@@ -22,11 +22,11 @@
 				/turf/open/floor/rogue/dirt,
 				/turf/open/floor/rogue/cobblerock)
 	ambush_mobs = list(
-				/mob/living/simple_animal/hostile/retaliate/rogue/mole = 40,
+				/mob/living/simple_animal/hostile/retaliate/mole = 40,
 				/mob/living/carbon/human/species/goblin/npc/ambush/cave = 30,
 				/mob/living/carbon/human/species/rousman/ambush = 30,
 				/mob/living/carbon/human/species/orc/ambush = 20,
-				/mob/living/simple_animal/hostile/retaliate/rogue/troll = 5)
+				/mob/living/simple_animal/hostile/retaliate/troll = 5)
 
 /area/rogue/under/mountains/anvil/upper
 	name = "malum's anvil under upper caves"
@@ -34,7 +34,7 @@
 	ambush_types = list(
 				/turf/open/floor/rogue/naturalstone)
 	ambush_mobs = list(
-				/mob/living/simple_animal/hostile/retaliate/rogue/mole = 60,
+				/mob/living/simple_animal/hostile/retaliate/mole = 60,
 				/mob/living/carbon/human/species/rousman/ambush = 20,
 				/mob/living/carbon/human/species/goblin/npc/ambush/cave = 30,)
 
@@ -99,7 +99,7 @@
 				/turf/open/floor/rogue/grass/cold,
 				/turf/open/floor/rogue/snow/patchy)
 	ambush_mobs = list(
-				/mob/living/simple_animal/hostile/retaliate/rogue/wolf = 40,
+				/mob/living/simple_animal/hostile/retaliate/wolf = 40,
 				/mob/living/carbon/human/species/goblin/npc/ambush = 30,
 				/mob/living/carbon/human/species/rousman/ambush = 20,
 				/mob/living/carbon/human/species/orc/ambush = 20)
@@ -124,7 +124,7 @@
 				/turf/open/floor/rogue/dirt,
 				/turf/open/floor/rogue/grass)
 	ambush_mobs = list(
-				/mob/living/simple_animal/hostile/retaliate/rogue/wolf = 10)
+				/mob/living/simple_animal/hostile/retaliate/wolf = 10)
 
 /area/rogue/outdoors/mountains/anvil/lavaexposed
 	name = "malum's anvil exposed lava" // Mostly exists so lava exposed to the sky will act like it is

@@ -232,7 +232,7 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue)
 "xq" = (
-/obj/structure/closet/crate/roguecloset/inn/south,
+/obj/structure/closet/crate/crafted_closet/inn/south,
 /obj/item/clothing/cloak/wickercloak,
 /obj/item/clothing/gloves/fingerless,
 /obj/item/clothing/head/antlerhood,

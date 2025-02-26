@@ -12,7 +12,7 @@
 /area/rogue)
 "e" = (
 /obj/structure/spider/stickyweb,
-/mob/living/simple_animal/hostile/retaliate/rogue/spider,
+/mob/living/simple_animal/hostile/retaliate/spider,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "g" = (
@@ -27,7 +27,7 @@
 /turf/closed/mineral/rogue/bedrock,
 /area/rogue)
 "j" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider,
+/mob/living/simple_animal/hostile/retaliate/spider,
 /obj/effect/decal/remains/human,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
@@ -61,7 +61,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "y" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider,
+/mob/living/simple_animal/hostile/retaliate/spider,
 /obj/structure/spider/stickyweb,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
@@ -98,7 +98,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "H" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider,
+/mob/living/simple_animal/hostile/retaliate/spider,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "I" = (
@@ -177,7 +177,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "Z" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider,
+/mob/living/simple_animal/hostile/retaliate/spider,
 /obj/effect/decal/cleanable/dirt/cobweb,
 /obj/item/storage/belt/pouch/coins/mid,
 /turf/open/floor/rogue/naturalstone,

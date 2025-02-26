@@ -18,7 +18,7 @@
 /turf/closed/wall/mineral/rogue/decostone,
 /area/rogue/under/mountains/anvil/dungeon)
 "av" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/mole{
+/mob/living/simple_animal/hostile/retaliate/mole{
 	wander = 0
 	},
 /turf/open/floor/rogue/dirt/road,
@@ -150,7 +150,7 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "bI" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/mole{
+/mob/living/simple_animal/hostile/retaliate/mole{
 	wander = 0
 	},
 /turf/open/floor/rogue/dirt,
@@ -173,7 +173,7 @@
 /turf/open/floor/rogue/tile/kitchen,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "bN" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/mole{
+/mob/living/simple_animal/hostile/retaliate/mole{
 	wander = 0
 	},
 /turf/open/floor/rogue/naturalstone,
@@ -343,7 +343,7 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "ds" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/mole,
+/mob/living/simple_animal/hostile/retaliate/mole,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "du" = (
@@ -559,7 +559,7 @@
 	},
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "gb" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/troll{
+/mob/living/simple_animal/hostile/retaliate/troll{
 	wander = 0
 	},
 /turf/open/floor/rogue/naturalstone,
@@ -569,7 +569,7 @@
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "ge" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/mole{
+/mob/living/simple_animal/hostile/retaliate/mole{
 	wander = 0
 	},
 /obj/effect/decal/cleanable/blood/splatter,
@@ -601,7 +601,7 @@
 /turf/closed/wall/mineral/rogue/pipe,
 /area/rogue/under/mountains/anvil/dungeon)
 "gP" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated,
+/mob/living/simple_animal/hostile/retaliate/spider/mutated,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon)
 "gS" = (
@@ -669,7 +669,7 @@
 /turf/open/floor/rogue/ruinedwood/spiralfade,
 /area/rogue/under/mountains/anvil/dungeon)
 "hD" = (
-/obj/structure/closet/crate/roguecloset/inn,
+/obj/structure/closet/crate/crafted_closet/inn,
 /obj/item/clothing/shirt/undershirt/random,
 /obj/item/clothing/shirt/undershirt/random,
 /obj/item/clothing/shirt/undershirt/random,
@@ -736,7 +736,7 @@
 /turf/closed/wall/mineral/rogue/wooddark,
 /area/rogue/under/mountains/anvil/dungeon)
 "iS" = (
-/obj/structure/closet/crate/roguecloset/inn,
+/obj/structure/closet/crate/crafted_closet/inn,
 /obj/item/clothing/shirt/undershirt/random,
 /obj/item/clothing/shirt/undershirt/random,
 /obj/item/clothing/pants/tights/random,
@@ -889,7 +889,7 @@
 /turf/open/water/swamp,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "ly" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/mole,
+/mob/living/simple_animal/hostile/retaliate/mole,
 /turf/open/floor/rogue/dirt,
 /area/rogue/under/mountains/anvil/dungeon)
 "lF" = (
@@ -2736,7 +2736,7 @@
 /turf/open/floor/rogue/ruinedwood/spiralfade,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Mm" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/troll,
+/mob/living/simple_animal/hostile/retaliate/troll,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Mo" = (
@@ -2840,7 +2840,7 @@
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Oe" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/mole{
+/mob/living/simple_animal/hostile/retaliate/mole{
 	wander = 0
 	},
 /turf/open/floor/rogue/naturalstone,
@@ -2924,7 +2924,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Pz" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider{
+/mob/living/simple_animal/hostile/retaliate/spider{
 	wander = 0
 	},
 /turf/open/floor/rogue/naturalstone,
@@ -3048,7 +3048,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Ru" = (
-/obj/structure/closet/crate/roguecloset/inn/south{
+/obj/structure/closet/crate/crafted_closet/inn/south{
 	name = "closet"
 	},
 /obj/item/clothing/shirt/undershirt/random,

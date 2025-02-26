@@ -221,7 +221,7 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue)
 "rz" = (
-/obj/structure/closet/crate/roguecloset/dark,
+/obj/structure/closet/crate/crafted_closet/dark,
 /obj/item/alch/swampdust,
 /obj/item/alch/runedust,
 /obj/item/alch/tobaccodust,
@@ -248,7 +248,7 @@
 /turf/open/transparent/openspace,
 /area/rogue)
 "tF" = (
-/obj/structure/closet/crate/roguecloset/inn,
+/obj/structure/closet/crate/crafted_closet/inn,
 /obj/item/book/rogue/magicaltheory,
 /obj/item/book/granter/spell/magick/fireball,
 /obj/item/scomstone/bad,
@@ -262,7 +262,7 @@
 /turf/open/floor/rogue/grass/red,
 /area/rogue)
 "uy" = (
-/obj/structure/closet/crate/roguecloset/dark,
+/obj/structure/closet/crate/crafted_closet/dark,
 /obj/item/alch/swampdust,
 /obj/item/alch/runedust,
 /obj/item/alch/tobaccodust,

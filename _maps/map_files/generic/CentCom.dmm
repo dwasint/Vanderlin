@@ -132,7 +132,7 @@
 /obj/item/storage/backpack/rogue/satchel/black,
 /obj/item/storage/backpack/rogue/satchel/black,
 /obj/item/storage/backpack/rogue/satchel/black,
-/obj/structure/roguemachine/camera/right,
+/obj/structure/fake_machine/camera/right,
 /turf/open/floor/rogue/carpet,
 /area/rogue)
 "ar" = (
@@ -753,7 +753,7 @@
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/indoors/vampire_manor)
 "bT" = (
-/obj/structure/closet/crate/roguecloset/inn,
+/obj/structure/closet/crate/crafted_closet/inn,
 /obj/item/weapon/sword/long/vlord,
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/indoors/vampire_manor)
@@ -952,7 +952,7 @@
 /area/rogue/indoors/vampire_manor)
 "cC" = (
 /obj/structure/fluff/railing/wood,
-/obj/structure/closet/crate/roguecloset/inn/chest,
+/obj/structure/closet/crate/crafted_closet/inn/chest,
 /obj/item/reagent_containers/glass/bottle/rogue/healthpot,
 /obj/item/reagent_containers/glass/bottle/rogue/healthpot,
 /obj/item/reagent_containers/glass/bottle/rogue/healthpot,
@@ -1020,7 +1020,7 @@
 /area/rogue/indoors/vampire_manor)
 "cQ" = (
 /obj/structure/fluff/walldeco/chains,
-/obj/structure/closet/crate/roguecloset/inn/chest,
+/obj/structure/closet/crate/crafted_closet/inn/chest,
 /obj/item/clothing/shirt/rags,
 /obj/item/clothing/shirt/rags,
 /obj/item/clothing/shirt/rags,
@@ -2569,7 +2569,7 @@
 /turf/open/floor/rogue/ruinedwood/turned/darker,
 /area/rogue/indoors/bandit_lair)
 "vH" = (
-/obj/structure/roguemachine/camera/right,
+/obj/structure/fake_machine/camera/right,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors)
 "vI" = (
@@ -2671,7 +2671,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/woods_safe)
 "xI" = (
-/obj/structure/closet/crate/roguecloset,
+/obj/structure/closet/crate/crafted_closet,
 /obj/item/clothing/face/cigarette/rollie/nicotine,
 /obj/item/clothing/face/cigarette/rollie/nicotine,
 /obj/item/clothing/face/cigarette/rollie/nicotine,
@@ -2735,7 +2735,7 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/woods_safe)
 "yd" = (
-/obj/structure/roguemachine/camera,
+/obj/structure/fake_machine/camera,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors)
 "yo" = (
@@ -2791,7 +2791,7 @@
 /turf/closed,
 /area/rogue/indoors)
 "yP" = (
-/obj/structure/closet/crate/roguecloset,
+/obj/structure/closet/crate/crafted_closet,
 /obj/item/clothing/face/shepherd/rag,
 /obj/item/clothing/face/shepherd/rag,
 /turf/open/floor/rogue/ruinedwood/darker,
@@ -2865,7 +2865,7 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/bog/inhumen_camp)
 "Al" = (
-/obj/structure/closet/crate/roguecloset,
+/obj/structure/closet/crate/crafted_closet,
 /obj/item/rope,
 /obj/item/rope,
 /turf/open/floor/rogue/ruinedwood/turned/darker,
@@ -2879,7 +2879,7 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/woods_safe)
 "As" = (
-/obj/structure/closet/crate/roguecloset,
+/obj/structure/closet/crate/crafted_closet,
 /obj/item/flashlight/flare/torch/metal,
 /obj/item/flashlight/flare/torch/metal,
 /obj/item/flashlight/flare/torch/metal,
@@ -2910,7 +2910,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/woods_safe)
 "AQ" = (
-/obj/structure/roguemachine/mail/r,
+/obj/structure/fake_machine/mail/r,
 /turf/open/floor/rogue/ruinedwood/turned/darker,
 /area/rogue/indoors/bandit_lair)
 "AU" = (
@@ -3576,7 +3576,7 @@
 /area/rogue/outdoors/bog/inhumen_camp)
 "KR" = (
 /obj/structure/mineral_door/wood/window,
-/obj/structure/roguemachine/camera/right,
+/obj/structure/fake_machine/camera/right,
 /turf/open/floor/rogue/cobble,
 /area/rogue)
 "KT" = (
@@ -3723,7 +3723,7 @@
 /turf/open/floor/rogue/woodturned,
 /area/rogue)
 "Nl" = (
-/obj/structure/closet/crate/roguecloset/inn/chest,
+/obj/structure/closet/crate/crafted_closet/inn/chest,
 /obj/item/rogueore/coal,
 /obj/item/rogueore/coal,
 /obj/item/rogueore/coal,
@@ -4661,7 +4661,7 @@
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/vampire_manor)
 "YT" = (
-/obj/structure/roguemachine/camera/left,
+/obj/structure/fake_machine/camera/left,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors)
 "YU" = (

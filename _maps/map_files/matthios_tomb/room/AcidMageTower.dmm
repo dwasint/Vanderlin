@@ -25,7 +25,7 @@
 /turf/open/floor/rogue/tile/masonic/spiral,
 /area/rogue/indoors)
 "aT" = (
-/obj/structure/closet/crate/roguecloset/inn,
+/obj/structure/closet/crate/crafted_closet/inn,
 /obj/machinery/light/rogue/wallfire/candle/blue,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors)
@@ -55,7 +55,7 @@
 /turf/open/floor/rogue/churchrough,
 /area/rogue/indoors)
 "ch" = (
-/obj/structure/closet/crate/roguecloset/lord,
+/obj/structure/closet/crate/crafted_closet/lord,
 /obj/effect/spawner/roguemap/loot/armor,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors)
@@ -345,7 +345,7 @@
 "mB" = (
 /obj/structure/spider/stickyweb,
 /obj/structure/spider/stickyweb,
-/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated,
+/mob/living/simple_animal/hostile/retaliate/spider/mutated,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors)
 "mI" = (
@@ -353,7 +353,7 @@
 /obj/effect/decal/cleanable/blood/puddle,
 /obj/effect/decal/cleanable/blood/old,
 /obj/effect/decal/cleanable/blood/old,
-/mob/living/simple_animal/hostile/retaliate/rogue/blood,
+/mob/living/simple_animal/hostile/retaliate/blood,
 /turf/open/floor/rogue/tile/masonic/spiral,
 /area/rogue/indoors)
 "mJ" = (
@@ -563,7 +563,7 @@
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors)
 "tQ" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated,
+/mob/living/simple_animal/hostile/retaliate/spider/mutated,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors)
 "uk" = (
@@ -650,7 +650,7 @@
 /area/rogue/indoors)
 "xD" = (
 /obj/structure/spider/stickyweb,
-/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated,
+/mob/living/simple_animal/hostile/retaliate/spider/mutated,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors)
 "xQ" = (
@@ -767,7 +767,7 @@
 /area/rogue/indoors)
 "CX" = (
 /obj/effect/decal/cleanable/food/flour,
-/mob/living/simple_animal/hostile/retaliate/rogue/mole,
+/mob/living/simple_animal/hostile/retaliate/mole,
 /turf/open/floor/rogue/tile/kitchen,
 /area/rogue/indoors)
 "Dc" = (
@@ -865,7 +865,7 @@
 "Ff" = (
 /obj/effect/decal/cleanable/food/egg_smudge,
 /obj/effect/decal/cleanable/food/flour,
-/mob/living/simple_animal/hostile/retaliate/rogue/mole,
+/mob/living/simple_animal/hostile/retaliate/mole,
 /turf/open/floor/rogue/tile/kitchen,
 /area/rogue/indoors)
 "FP" = (
@@ -917,7 +917,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/indoors/cave)
 "He" = (
-/obj/structure/closet/crate/roguecloset/inn,
+/obj/structure/closet/crate/crafted_closet/inn,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors)
 "HA" = (
@@ -1249,7 +1249,7 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
 "TR" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/blood,
+/mob/living/simple_animal/hostile/retaliate/blood,
 /obj/effect/decal/cleanable/vomit,
 /obj/effect/decal/cleanable/sigil/NW,
 /turf/open/floor/rogue/tile/masonic/spiral,
@@ -1293,7 +1293,7 @@
 /obj/structure/spider/stickyweb{
 	dir = 1
 	},
-/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated,
+/mob/living/simple_animal/hostile/retaliate/spider/mutated,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors)
 "VE" = (

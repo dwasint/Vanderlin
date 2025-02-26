@@ -7,7 +7,7 @@
 /turf/closed/mineral/rogue/bedrock,
 /area/rogue)
 "ch" = (
-/obj/structure/closet/crate/roguecloset/inn/chest,
+/obj/structure/closet/crate/crafted_closet/inn/chest,
 /turf/open/floor/rogue/ruinedwood/spiralfade,
 /area/rogue)
 "cT" = (
@@ -27,7 +27,7 @@
 /turf/open/floor/rogue/ruinedwood/spiralfade,
 /area/rogue)
 "ex" = (
-/obj/structure/closet/crate/roguecloset/inn,
+/obj/structure/closet/crate/crafted_closet/inn,
 /turf/open/floor/rogue/ruinedwood/spiralfade,
 /area/rogue)
 "hf" = (
@@ -152,7 +152,7 @@
 	},
 /area/rogue)
 "uD" = (
-/obj/structure/closet/crate/roguecloset/inn/south,
+/obj/structure/closet/crate/crafted_closet/inn/south,
 /turf/open/floor/rogue/ruinedwood/spiralfade,
 /area/rogue)
 "vn" = (

@@ -267,7 +267,7 @@
 /area/rogue)
 "ld" = (
 /obj/effect/decal/cleanable/dirt/cobweb/cobweb2,
-/obj/structure/closet/crate/roguecloset,
+/obj/structure/closet/crate/crafted_closet,
 /obj/item/clothing/cloak/apron/cook,
 /obj/item/clothing/head/cookhat,
 /obj/item/clothing/shoes/sandals,
@@ -299,7 +299,7 @@
 /area/rogue)
 "lX" = (
 /obj/structure/fluff/railing/border,
-/mob/living/simple_animal/hostile/retaliate/rogue/spider,
+/mob/living/simple_animal/hostile/retaliate/spider,
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue)
 "me" = (
@@ -509,7 +509,7 @@
 /turf/closed/wall/mineral/rogue/stone,
 /area/rogue)
 "uh" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider,
+/mob/living/simple_animal/hostile/retaliate/spider,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "uy" = (
@@ -812,7 +812,7 @@
 /area/rogue)
 "HT" = (
 /obj/structure/rack/rogue/shelf,
-/obj/structure/closet/crate/roguecloset,
+/obj/structure/closet/crate/crafted_closet,
 /obj/item/candle/yellow{
 	pixel_x = -9;
 	pixel_y = 7

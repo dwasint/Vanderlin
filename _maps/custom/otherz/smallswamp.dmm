@@ -39,7 +39,7 @@
 /turf/closed/mineral/random/rogue/high,
 /area/rogue/indoors/cave)
 "m" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated,
+/mob/living/simple_animal/hostile/retaliate/spider/mutated,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/bog)
 "n" = (
@@ -54,22 +54,22 @@
 /turf/open/water/swamp,
 /area/rogue/outdoors/bog)
 "q" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated,
+/mob/living/simple_animal/hostile/retaliate/spider/mutated,
 /turf/open/water/swamp/deep,
 /area/rogue/outdoors/bog)
 "r" = (
 /turf/open/floor/rogue/dirt,
 /area/rogue/indoors/cave)
 "s" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider,
+/mob/living/simple_animal/hostile/retaliate/spider,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/bog)
 "t" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider,
+/mob/living/simple_animal/hostile/retaliate/spider,
 /turf/open/water/swamp,
 /area/rogue/outdoors/bog)
 "u" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated,
+/mob/living/simple_animal/hostile/retaliate/spider/mutated,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/bog)
 "v" = (
@@ -108,7 +108,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/bog)
 "F" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider,
+/mob/living/simple_animal/hostile/retaliate/spider,
 /turf/open/water/swamp/deep,
 /area/rogue/outdoors/bog)
 "G" = (

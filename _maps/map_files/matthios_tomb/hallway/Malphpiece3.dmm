@@ -27,7 +27,7 @@
 /turf/open/floor/rogue/cobblerock/alt,
 /area/rogue/outdoors/caves)
 "l" = (
-/mob/living/simple_animal/hostile/retaliate/rogue/spider/mutated,
+/mob/living/simple_animal/hostile/retaliate/spider/mutated,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/outdoors/caves)
 "m" = (

@@ -194,7 +194,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "FA" = (
-/obj/structure/closet/crate/roguecloset/inn,
+/obj/structure/closet/crate/crafted_closet/inn,
 /obj/item/clothing/shirt/robe/plain,
 /turf/open/floor/rogue/herringbone,
 /area/rogue)

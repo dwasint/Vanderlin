@@ -89,7 +89,7 @@
 	},
 /area/rogue/indoors/shelter/bog)
 "q" = (
-/obj/structure/closet/crate/roguecloset,
+/obj/structure/closet/crate/crafted_closet,
 /obj/item/natural/bundle/fibers,
 /obj/item/natural/hide,
 /turf/open/floor/rogue/ruinedwood{
