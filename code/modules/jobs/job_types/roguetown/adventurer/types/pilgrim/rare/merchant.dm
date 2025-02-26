@@ -37,13 +37,13 @@
 	id = /obj/item/clothing/ring/silver
 	if(H.gender == FEMALE)
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/green
-		head = /obj/item/clothing/head/roguetown/hatblu
+		head = /obj/item/clothing/head/hatblu
 		cloak = /obj/item/clothing/cloak/raincloak/purple
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/pants/tights/green
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/green
 		cloak = /obj/item/clothing/cloak/half
-		head = /obj/item/clothing/head/roguetown/fancyhat
+		head = /obj/item/clothing/head/fancyhat
 
 	//For how we decide what kind of merchant they are.
 	var/merchtype = pickweight(list("FOOD" = 4, "HEAL" = 2, "SILK" = 1, "GEMS" = 1))

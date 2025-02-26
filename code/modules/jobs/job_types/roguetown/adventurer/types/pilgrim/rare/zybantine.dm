@@ -25,7 +25,7 @@
 	..()
 	shoes = /obj/item/clothing/shoes/roguetown/shalal
 	gloves = /obj/item/clothing/gloves/roguetown/leather
-	head = /obj/item/clothing/head/roguetown/crown/circlet
+	head = /obj/item/clothing/head/crown/circlet
 	cloak = /obj/item/clothing/cloak/raincloak/purple
 	armor = /obj/item/clothing/suit/roguetown/armor/gambeson/arming
 	belt = /obj/item/storage/belt/rogue/leather/shalal

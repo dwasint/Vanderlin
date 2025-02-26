@@ -35,7 +35,7 @@
 
 	ADD_TRAIT(H, TRAIT_SEEPRICES, type)
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes/buckle
-	head = /obj/item/clothing/head/roguetown/stewardtophat
+	head = /obj/item/clothing/head/stewardtophat
 	cloak = /obj/item/clothing/cloak/raincloak/furcloak
 	armor = /obj/item/clothing/suit/roguetown/armor/gambeson/steward
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver

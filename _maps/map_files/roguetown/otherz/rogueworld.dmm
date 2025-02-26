@@ -100,7 +100,7 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/town/sargoth)
 "rb" = (
-/obj/item/clothing/head/roguetown/crown/serpcrown/surplus,
+/obj/item/clothing/head/crown/serpcrown/surplus,
 /obj/effect/decal/remains/human,
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/rogue/dirt/road,

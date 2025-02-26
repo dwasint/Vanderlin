@@ -108,7 +108,7 @@
 	else
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant/l
 	pants = /obj/item/clothing/pants/chainlegs/iron
-	head = /obj/item/clothing/head/roguetown/helmet/leather
+	head = /obj/item/clothing/head/helmet/leather
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 
 	H.TOTALSTR = rand(14,16)
@@ -172,30 +172,30 @@
 	H.TOTALCON = 8
 	H.TOTALEND = 8
 	var/loadout = rand(1,7)
-	head = /obj/item/clothing/head/roguetown/roguehood/random
+	head = /obj/item/clothing/head/roguehood/random
 	pants = /obj/item/clothing/pants/tights/vagrant
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/vagrant
 	switch(loadout)
 		if(1) //Axe Warrior
 			r_hand = /obj/item/weapon/axe/iron
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-			head = /obj/item/clothing/head/roguetown/knitcap
+			head = /obj/item/clothing/head/knitcap
 		if(2) //Long Stick Fighter
 			r_hand = /obj/item/weapon/polearm/woodstaff
 		if(3) //Club Caveman
 			r_hand = /obj/item/weapon/mace/woodclub
 		if(4) //Stabbity Stabbity your Knight is now horizontality
 			r_hand =/obj/item/weapon/pitchfork
-			head = /obj/item/clothing/head/roguetown/strawhat
+			head = /obj/item/clothing/head/strawhat
 		if(5) //Bonk Build
 			r_hand = /obj/item/weapon/thresher
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 		if(6) //Bonk Build
 			r_hand = /obj/item/weapon/hoe
-			head = /obj/item/clothing/head/roguetown/fisherhat
+			head = /obj/item/clothing/head/fisherhat
 		if(7) //Ex Wife
 			r_hand = /obj/item/cooking/pan
-			head = /obj/item/clothing/head/roguetown/armingcap
+			head = /obj/item/clothing/head/armingcap
 			shirt = /obj/item/clothing/suit/roguetown/shirt/dress/gen/brown
 
 
@@ -230,9 +230,9 @@
 		if(prob(50))
 			pants = /obj/item/clothing/pants/tights/vagrant/l
 	if(prob(50))
-		head = /obj/item/clothing/head/roguetown/helmet/leather
+		head = /obj/item/clothing/head/helmet/leather
 	if(prob(50))
-		head = /obj/item/clothing/head/roguetown/roguehood/random
+		head = /obj/item/clothing/head/roguehood/random
 	if(prob(50))
 		r_hand = /obj/item/weapon/sword/iron
 	else
@@ -272,7 +272,7 @@
 			pants = /obj/item/clothing/pants/tights/vagrant
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 			neck = /obj/item/clothing/neck/roguetown/chaincoif
-			head = /obj/item/clothing/head/roguetown/helmet/kettle
+			head = /obj/item/clothing/head/helmet/kettle
 		if(2)//Skeleton Warrior
 			r_hand = /obj/item/weapon/mace
 			l_hand = /obj/item/weapon/shield/wood
@@ -282,7 +282,7 @@
 			pants = /obj/item/clothing/pants/tights/vagrant
 			neck = /obj/item/clothing/neck/roguetown/chaincoif
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-			head = /obj/item/clothing/head/roguetown/helmet/kettle
+			head = /obj/item/clothing/head/helmet/kettle
 		if(3) //Skeleton Warrior
 			r_hand = /obj/item/weapon/flail
 			l_hand = /obj/item/weapon/shield/wood
@@ -292,7 +292,7 @@
 			pants = /obj/item/clothing/pants/tights/vagrant
 			neck = /obj/item/clothing/neck/roguetown/chaincoif
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-			head = /obj/item/clothing/head/roguetown/helmet/skullcap
+			head = /obj/item/clothing/head/helmet/skullcap
 		if(4) //Skeleton Warrior
 			r_hand =/obj/item/weapon/polearm/spear
 			armor = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
@@ -300,7 +300,7 @@
 			neck = /obj/item/clothing/neck/roguetown/chaincoif
 			pants = /obj/item/clothing/pants/tights/vagrant
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-			head = /obj/item/clothing/head/roguetown/helmet/kettle
+			head = /obj/item/clothing/head/helmet/kettle
 		if(5) //Skeleton Warrior
 			r_hand = /obj/item/weapon/sword/sabre
 			l_hand = /obj/item/weapon/knife/dagger
@@ -309,7 +309,7 @@
 			pants = /obj/item/clothing/pants/tights/vagrant
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 			neck = /obj/item/clothing/neck/roguetown/chaincoif
-			head = /obj/item/clothing/head/roguetown/helmet/kettle
+			head = /obj/item/clothing/head/helmet/kettle
 		if(6) //Skeleton Warrior
 			r_hand = /obj/item/weapon/sword/scimitar/messer
 			l_hand = /obj/item/weapon/knife/dagger
@@ -318,7 +318,7 @@
 			neck = /obj/item/clothing/neck/roguetown/chaincoif
 			armor = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-			head = /obj/item/clothing/head/roguetown/helmet/skullcap
+			head = /obj/item/clothing/head/helmet/skullcap
 
 
 /mob/living/carbon/human/species/skeleton/npc/warrior/skilled/after_creation()

@@ -58,11 +58,11 @@
 /area/rogue/outdoors/bog)
 "n" = (
 /obj/structure/closet/crate/coffin,
-/obj/item/clothing/head/roguetown/crown/circlet/sleepless,
+/obj/item/clothing/head/crown/circlet/sleepless,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/outdoors/caves)
 "o" = (
-/obj/item/clothing/head/roguetown/helmet/skullcap,
+/obj/item/clothing/head/helmet/skullcap,
 /turf/open/floor/rogue/blocks,
 /area/rogue/outdoors/caves)
 "p" = (

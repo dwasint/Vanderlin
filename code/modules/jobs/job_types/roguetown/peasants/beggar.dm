@@ -38,7 +38,7 @@
 /datum/outfit/job/roguetown/vagrant/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(prob(20))
-		head = /obj/item/clothing/head/roguetown/knitcap
+		head = /obj/item/clothing/head/knitcap
 	if(prob(5))
 		beltr = /obj/item/reagent_containers/powder/moondust
 	if(prob(10))

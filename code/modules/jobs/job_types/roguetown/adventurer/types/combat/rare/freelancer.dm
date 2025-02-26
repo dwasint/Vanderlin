@@ -44,7 +44,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 	armor = /obj/item/clothing/suit/roguetown/armor/rare/zybanplate
 	backl = /obj/item/storage/backpack/rogue/satchel
-	head = /obj/item/clothing/head/roguetown/rare/zybanplate
+	head = /obj/item/clothing/head/rare/zybanplate
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
 	if(!H.has_language(/datum/language/zybantine))

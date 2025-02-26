@@ -6,52 +6,52 @@
 /datum/supply_pack/rogue/apparel/hood
 	name = "Shoulder Hood"
 	cost = 10
-	contains = /obj/item/clothing/head/roguetown/roguehood/random
+	contains = /obj/item/clothing/head/roguehood/random
 
 /datum/supply_pack/rogue/apparel/menacing
 	name = "Sack Hood"
 	cost = 8
-	contains = /obj/item/clothing/head/roguetown/menacing
+	contains = /obj/item/clothing/head/menacing
 
 /datum/supply_pack/rogue/apparel/strawhat
 	name = "Straw Hat"
 	cost = 4
-	contains = /obj/item/clothing/head/roguetown/strawhat
+	contains = /obj/item/clothing/head/strawhat
 
 /datum/supply_pack/rogue/apparel/fancyhat
 	name = "Starfish Hat"
 	cost = 15
-	contains = /obj/item/clothing/head/roguetown/fancyhat
+	contains = /obj/item/clothing/head/fancyhat
 
 /datum/supply_pack/rogue/apparel/bardhat
 	name = "Feathered Hat"
 	cost = 12
-	contains = /obj/item/clothing/head/roguetown/bardhat
+	contains = /obj/item/clothing/head/bardhat
 
 /datum/supply_pack/rogue/apparel/hatfur
 	name = "Fur Hat"
 	cost = 5
-	contains = /obj/item/clothing/head/roguetown/hatfur
+	contains = /obj/item/clothing/head/hatfur
 
 /datum/supply_pack/rogue/apparel/chaperon
 	name = "Chaperon"
 	cost = 7
-	contains = /obj/item/clothing/head/roguetown/chaperon
+	contains = /obj/item/clothing/head/chaperon
 
 /datum/supply_pack/rogue/apparel/knitcap
 	name = "Knit Cap"
 	cost = 4
-	contains = /obj/item/clothing/head/roguetown/knitcap
+	contains = /obj/item/clothing/head/knitcap
 
 /datum/supply_pack/rogue/apparel/headband
 	name = "Headband"
 	cost = 3
-	contains = /obj/item/clothing/head/roguetown/headband
+	contains = /obj/item/clothing/head/headband
 
 /datum/supply_pack/rogue/apparel/hennin
 	name = "Hennin"
 	cost = 25
-	contains = /obj/item/clothing/head/roguetown/hennin
+	contains = /obj/item/clothing/head/hennin
 
 /datum/supply_pack/rogue/apparel/spectacles
 	name = "Spectacles"

@@ -383,7 +383,7 @@
 	name = "level 1 goblin"
 	},
 /obj/item/weapon/polearm/spear/billhook,
-/obj/item/clothing/head/roguetown/crown/circlet/sleepless,
+/obj/item/clothing/head/crown/circlet/sleepless,
 /obj/effect/spawner/roguemap/loot/coin/absurd,
 /obj/effect/spawner/roguemap/loot/potion_vitals,
 /turf/open/floor/rogue/dirt,

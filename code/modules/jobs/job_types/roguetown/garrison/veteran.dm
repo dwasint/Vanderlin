@@ -112,7 +112,7 @@
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	armor = /obj/item/clothing/suit/roguetown/armor/plate // Meant to be better than man-at-arms, but worse than knight. No heavy armor!! This is a cuirass, not half-plate.
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
-	head = /obj/item/clothing/head/roguetown/helmet/sallet
+	head = /obj/item/clothing/head/helmet/sallet
 	pants = /obj/item/clothing/pants/chainlegs
 	gloves = /obj/item/clothing/gloves/roguetown/plate
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
@@ -170,7 +170,7 @@
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/	////Former knights should have knightly armour.
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
-	head = /obj/item/clothing/head/roguetown/helmet/heavy/decorated/knight
+	head = /obj/item/clothing/head/helmet/heavy/decorated/knight
 	pants = /obj/item/clothing/pants/chainlegs
 	gloves = /obj/item/clothing/gloves/roguetown/plate
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
@@ -249,7 +249,7 @@
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	shirt = /obj/item/clothing/suit/roguetown/shirt/grenzelhoft // You do NOT get the BLACKSTEEL CUIRASS because yours BROKE & I hate you. Go on a personal quest to replace it or something.
-	head = /obj/item/clothing/head/roguetown/helmet/skullcap/grenzelhoft
+	head = /obj/item/clothing/head/helmet/skullcap/grenzelhoft
 	armor = /obj/item/clothing/suit/roguetown/armor/cuirass/iron
 	pants = /obj/item/clothing/pants/grenzelpants
 	shoes = /obj/item/clothing/shoes/roguetown/grenzelhoft

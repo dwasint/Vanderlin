@@ -1434,7 +1434,7 @@
 /obj/structure/closet/crate/coffin,
 /obj/structure/fluff/walldeco/maidendrape,
 /obj/item/clothing/suit/roguetown/shirt/robe/necra,
-/obj/item/clothing/head/roguetown/padded/deathshroud,
+/obj/item/clothing/head/padded/deathshroud,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/town/basement)
 "bFf" = (
@@ -2212,9 +2212,9 @@
 /obj/item/rope,
 /obj/item/rope,
 /obj/item/rope,
-/obj/item/clothing/head/roguetown/sack,
-/obj/item/clothing/head/roguetown/sack,
-/obj/item/clothing/head/roguetown/sack,
+/obj/item/clothing/head/sack,
+/obj/item/clothing/head/sack,
+/obj/item/clothing/head/sack,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/town/church)
 "cre" = (
@@ -4273,7 +4273,7 @@
 /area/rogue/indoors/town/shop)
 "eHm" = (
 /obj/structure/closet/crate/coffin,
-/obj/item/clothing/head/roguetown/crown/circlet/stink,
+/obj/item/clothing/head/crown/circlet/stink,
 /obj/item/weapon/sword/decorated,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cave)
@@ -4653,7 +4653,7 @@
 /obj/structure/closet/crate/roguecloset/inn,
 /obj/item/clothing/suit/roguetown/shirt/robe/white,
 /obj/item/clothing/suit/roguetown/shirt/robe/wizard,
-/obj/item/clothing/head/roguetown/wizhat,
+/obj/item/clothing/head/wizhat,
 /obj/item/clothing/cloak/raincloak/blue,
 /obj/item/clothing/suit/roguetown/shirt/robe/courtmage,
 /turf/open/floor/rogue/ruinedwood{
@@ -18368,22 +18368,22 @@
 "umF" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/rack/rogue/shelf/notdense,
-/obj/item/clothing/head/roguetown/knitcap{
+/obj/item/clothing/head/knitcap{
 	pixel_y = 32
 	},
-/obj/item/clothing/head/roguetown/knitcap{
+/obj/item/clothing/head/knitcap{
 	pixel_y = 32
 	},
-/obj/item/clothing/head/roguetown/knitcap{
+/obj/item/clothing/head/knitcap{
 	pixel_y = 32
 	},
-/obj/item/clothing/head/roguetown/strawhat{
+/obj/item/clothing/head/strawhat{
 	pixel_y = 32
 	},
-/obj/item/clothing/head/roguetown/strawhat{
+/obj/item/clothing/head/strawhat{
 	pixel_y = 32
 	},
-/obj/item/clothing/head/roguetown/strawhat{
+/obj/item/clothing/head/strawhat{
 	pixel_y = 32
 	},
 /turf/open/floor/rogue/ruinedwood{
@@ -21747,7 +21747,7 @@
 /area/rogue/indoors/town/church)
 "xTC" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/head/roguetown/helmet/goblin,
+/obj/item/clothing/head/helmet/goblin,
 /obj/item/clothing/suit/roguetown/armor/cuirass/iron/goblin,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cave)
@@ -22079,9 +22079,9 @@
 /area/rogue/indoors/town/garrison)
 "ylc" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/head/roguetown/helmet/skullcap,
-/obj/item/clothing/head/roguetown/helmet/skullcap,
-/obj/item/clothing/head/roguetown/helmet/skullcap,
+/obj/item/clothing/head/helmet/skullcap,
+/obj/item/clothing/head/helmet/skullcap,
+/obj/item/clothing/head/helmet/skullcap,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "ylm" = (

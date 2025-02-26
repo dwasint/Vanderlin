@@ -30,7 +30,7 @@
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
 		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 		neck = /obj/item/storage/belt/rogue/pouch/coins/mid
-		head = /obj/item/clothing/head/roguetown/fisherhat
+		head = /obj/item/clothing/head/fisherhat
 		backr = /obj/item/storage/backpack/rogue/satchel
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/jacket/sea
 		belt = /obj/item/storage/belt/rogue/leather
@@ -59,7 +59,7 @@
 		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
 		neck = /obj/item/storage/belt/rogue/pouch/coins/mid
-		head = /obj/item/clothing/head/roguetown/fisherhat
+		head = /obj/item/clothing/head/fisherhat
 		backr = /obj/item/storage/backpack/rogue/satchel
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/jacket/sea
 		belt = /obj/item/storage/belt/rogue/leather

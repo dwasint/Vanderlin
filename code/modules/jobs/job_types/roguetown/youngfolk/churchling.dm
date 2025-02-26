@@ -36,7 +36,7 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 	if(H.gender == FEMALE)
-		head = /obj/item/clothing/head/roguetown/armingcap
+		head = /obj/item/clothing/head/armingcap
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	else

@@ -18,7 +18,7 @@
 
 /datum/outfit/job/roguetown/gaoler/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/menacing
+	head = /obj/item/clothing/head/menacing
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	pants = /obj/item/clothing/pants/trou
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
@@ -104,7 +104,7 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/cuirass
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 	neck = /obj/item/clothing/neck/roguetown/gorget
-	head = /obj/item/clothing/head/roguetown/helmet/nasal
+	head = /obj/item/clothing/head/helmet/nasal
 	backr = /obj/item/weapon/shield/wood
 	beltr = /obj/item/weapon/sword/scimitar/messer
 	beltl = /obj/item/weapon/mace

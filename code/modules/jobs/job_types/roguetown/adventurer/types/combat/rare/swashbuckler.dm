@@ -19,7 +19,7 @@
 	category_tags = list(CTAG_ADVENTURER)
 
 /datum/outfit/job/roguetown/adventurer/swashbuckler
-	head = /obj/item/clothing/head/roguetown/helmet/leather/headscarf
+	head = /obj/item/clothing/head/helmet/leather/headscarf
 	pants = /obj/item/clothing/pants/tights/sailor
 	belt = /obj/item/storage/belt/rogue/leather
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/jacket/sea

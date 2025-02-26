@@ -234,8 +234,8 @@
 	icon_state = "tablewood2";
 	dir = 10
 	},
-/obj/item/clothing/head/roguetown/helmet/heavy/crusader,
-/obj/item/clothing/head/roguetown/helmet/heavy/crusader/t,
+/obj/item/clothing/head/helmet/heavy/crusader,
+/obj/item/clothing/head/helmet/heavy/crusader/t,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors)
 "aL" = (
@@ -250,11 +250,11 @@
 	icon_state = "tablewood2";
 	dir = 10
 	},
-/obj/item/clothing/head/roguetown/helmet/sallet,
-/obj/item/clothing/head/roguetown/helmet/sallet,
-/obj/item/clothing/head/roguetown/helmet/sallet,
-/obj/item/clothing/head/roguetown/helmet/sallet,
-/obj/item/clothing/head/roguetown/helmet/sallet,
+/obj/item/clothing/head/helmet/sallet,
+/obj/item/clothing/head/helmet/sallet,
+/obj/item/clothing/head/helmet/sallet,
+/obj/item/clothing/head/helmet/sallet,
+/obj/item/clothing/head/helmet/sallet,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors)
 "aP" = (
@@ -270,10 +270,10 @@
 	icon_state = "tablewood2";
 	dir = 10
 	},
-/obj/item/clothing/head/roguetown/helmet/visored/sallet,
-/obj/item/clothing/head/roguetown/helmet/visored/sallet,
-/obj/item/clothing/head/roguetown/helmet/visored/sallet,
-/obj/item/clothing/head/roguetown/helmet/visored/sallet,
+/obj/item/clothing/head/helmet/visored/sallet,
+/obj/item/clothing/head/helmet/visored/sallet,
+/obj/item/clothing/head/helmet/visored/sallet,
+/obj/item/clothing/head/helmet/visored/sallet,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors)
 "aS" = (
@@ -335,8 +335,8 @@
 	icon_state = "tablewood2";
 	dir = 10
 	},
-/obj/item/clothing/head/roguetown/helmet/leather,
-/obj/item/clothing/head/roguetown/helmet/leather,
+/obj/item/clothing/head/helmet/leather,
+/obj/item/clothing/head/helmet/leather,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors)
 "aX" = (
@@ -371,9 +371,9 @@
 	icon_state = "tablewood2";
 	dir = 10
 	},
-/obj/item/clothing/head/roguetown/helmet,
-/obj/item/clothing/head/roguetown/helmet,
-/obj/item/clothing/head/roguetown/helmet,
+/obj/item/clothing/head/helmet,
+/obj/item/clothing/head/helmet,
+/obj/item/clothing/head/helmet,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors)
 "bb" = (

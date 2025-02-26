@@ -53,7 +53,7 @@
 "ew" = (
 /obj/structure/closet/dirthole/closed,
 /obj/item/clothing/neck/roguetown/gorget/copper,
-/obj/item/clothing/head/roguetown/helmet/coppercap,
+/obj/item/clothing/head/helmet/coppercap,
 /mob/living/carbon/human/species/skeleton/npc/ambush,
 /mob/living/carbon/human/species/skeleton/npc/ambush,
 /turf/open/floor/rogue/dirt,
@@ -421,7 +421,7 @@
 /obj/item/weapon/shovel,
 /obj/item/clothing/pants/trou/leather/mourning,
 /obj/item/clothing/suit/roguetown/shirt/robe/necra,
-/obj/item/clothing/head/roguetown/padded/deathshroud,
+/obj/item/clothing/head/padded/deathshroud,
 /obj/item/clothing/neck/roguetown/psycross/silver/necra,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue)
@@ -492,7 +492,7 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue)
 "QX" = (
-/obj/item/clothing/head/roguetown/jester,
+/obj/item/clothing/head/jester,
 /obj/item/clothing/shoes/roguetown/jester,
 /obj/item/clothing/suit/roguetown/shirt/jester,
 /obj/item/clothing/pants/tights/jester,
@@ -528,7 +528,7 @@
 "Wk" = (
 /mob/living/carbon/human/species/skeleton/npc/no_equipment,
 /obj/item/weapon/shovel,
-/obj/item/clothing/head/roguetown/padded/deathshroud,
+/obj/item/clothing/head/padded/deathshroud,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue)

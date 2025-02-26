@@ -33,7 +33,7 @@
 	cloak = /obj/item/clothing/cloak/half/red
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	armor = /obj/item/clothing/suit/roguetown/armor/rare/hoplite
-	head = /obj/item/clothing/head/roguetown/rare/hoplite
+	head = /obj/item/clothing/head/rare/hoplite
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/hoplite
 	neck = /obj/item/clothing/neck/roguetown/gorget/hoplite
 	backl = /obj/item/weapon/shield/tower/hoplite

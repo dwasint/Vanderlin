@@ -224,7 +224,7 @@
 /area/rogue)
 "Nk" = (
 /obj/structure/closet/crate/chest/wicker,
-/obj/item/clothing/head/roguetown/fancyhat,
+/obj/item/clothing/head/fancyhat,
 /obj/item/clothing/shoes/roguetown/nobleboot{
 	pixel_x = -3;
 	pixel_y = 8

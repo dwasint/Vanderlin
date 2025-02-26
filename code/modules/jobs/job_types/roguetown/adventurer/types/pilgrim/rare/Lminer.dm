@@ -14,7 +14,7 @@
 
 /datum/outfit/job/roguetown/adventurer/minermaster/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/helmet/leather/minershelm
+	head = /obj/item/clothing/head/helmet/leather/minershelm
 	pants = /obj/item/clothing/pants/trou
 	armor = /obj/item/clothing/suit/roguetown/armor/gambeson/light/striped
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random

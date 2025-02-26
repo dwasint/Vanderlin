@@ -255,7 +255,7 @@
 /obj/item/clothing/neck/roguetown/gorget/hoplite,
 /obj/item/weapon/polearm/woodstaff/quarterstaff/steel,
 /obj/item/clothing/shoes/roguetown/shortboots,
-/obj/item/clothing/head/roguetown/crown/circlet,
+/obj/item/clothing/head/crown/circlet,
 /obj/item/clothing/ring/gold/gemerald,
 /mob/living/carbon/human/species/skeleton/npc/no_equipment{
 	TOTALSPD = 17;
@@ -668,7 +668,7 @@
 "kY" = (
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /obj/item/clothing/gloves/roguetown/plate/rust,
-/obj/item/clothing/head/roguetown/helmet/heavy/rust,
+/obj/item/clothing/head/helmet/heavy/rust,
 /obj/item/clothing/shoes/roguetown/boots/armor/light/rust,
 /obj/item/clothing/suit/roguetown/armor/plate/rust,
 /obj/item/clothing/pants/platelegs/rust,
@@ -1094,7 +1094,7 @@
 "rj" = (
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /obj/item/clothing/gloves/roguetown/plate/rust,
-/obj/item/clothing/head/roguetown/helmet/heavy/rust,
+/obj/item/clothing/head/helmet/heavy/rust,
 /obj/item/clothing/shoes/roguetown/boots/armor/light/rust,
 /obj/item/clothing/pants/platelegs/rust,
 /obj/item/clothing/neck/roguetown/chaincoif,
@@ -1262,7 +1262,7 @@
 "tI" = (
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /obj/item/clothing/gloves/roguetown/plate/rust,
-/obj/item/clothing/head/roguetown/helmet/heavy/rust,
+/obj/item/clothing/head/helmet/heavy/rust,
 /obj/item/clothing/shoes/roguetown/boots/armor/light/rust,
 /obj/item/clothing/pants/platelegs/rust,
 /obj/item/clothing/neck/roguetown/chaincoif,
@@ -1594,7 +1594,7 @@
 "yB" = (
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /obj/item/clothing/gloves/roguetown/plate/rust,
-/obj/item/clothing/head/roguetown/helmet/heavy/rust,
+/obj/item/clothing/head/helmet/heavy/rust,
 /obj/item/clothing/shoes/roguetown/boots/armor/light/rust,
 /obj/item/clothing/suit/roguetown/armor/plate/rust,
 /obj/item/clothing/pants/platelegs/rust,
@@ -2117,7 +2117,7 @@
 /mob/living/carbon/human/species/skeleton/npc/no_equipment,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /obj/item/clothing/gloves/roguetown/leather/phys,
-/obj/item/clothing/head/roguetown/roguehood/phys,
+/obj/item/clothing/head/roguehood/phys,
 /obj/item/clothing/mask/rogue/phys,
 /obj/item/clothing/neck/roguetown/phys,
 /obj/item/clothing/suit/roguetown/shirt/robe/phys,
@@ -2385,7 +2385,7 @@
 "KV" = (
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /obj/item/clothing/gloves/roguetown/plate/rust,
-/obj/item/clothing/head/roguetown/helmet/heavy/rust,
+/obj/item/clothing/head/helmet/heavy/rust,
 /obj/item/clothing/shoes/roguetown/boots/armor/light/rust,
 /obj/item/clothing/suit/roguetown/armor/plate/rust,
 /obj/item/clothing/pants/platelegs/rust,

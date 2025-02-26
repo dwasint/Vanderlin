@@ -1056,7 +1056,7 @@
 "bhD" = (
 /obj/effect/decal/remains/human,
 /obj/effect/decal/cleanable/blood/old,
-/obj/item/clothing/head/roguetown/crown/serpcrown/surplus,
+/obj/item/clothing/head/crown/serpcrown/surplus,
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/cave/spider)
 "bhL" = (
@@ -1605,7 +1605,7 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/town)
 "bOY" = (
-/obj/item/clothing/head/roguetown/cookhat,
+/obj/item/clothing/head/cookhat,
 /obj/structure/closet/crate/chest/crate,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/manor{
@@ -6044,7 +6044,7 @@
 /area/rogue/outdoors/woods)
 "gos" = (
 /obj/structure/fluff/walldeco/mona,
-/obj/item/clothing/head/roguetown/crown/serpcrown/surplus,
+/obj/item/clothing/head/crown/serpcrown/surplus,
 /obj/item/weapon/lordscepter,
 /turf/open/floor/rogue/tile/kitchen,
 /area/rogue/indoors/town/vault)
@@ -7059,7 +7059,7 @@
 /area/rogue/indoors/town)
 "hBb" = (
 /obj/structure/bed/rogue/shit,
-/obj/item/clothing/head/roguetown/bardhat,
+/obj/item/clothing/head/bardhat,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/shelter/rtfield)
 "hBx" = (
@@ -8144,7 +8144,7 @@
 /area/rogue/outdoors/exposed/under/sewer)
 "izd" = (
 /obj/structure/bed/rogue/shit,
-/obj/item/clothing/head/roguetown/helmet/leather/inquisitor,
+/obj/item/clothing/head/helmet/leather/inquisitor,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/shelter/rtfield)
 "izo" = (
@@ -8207,7 +8207,7 @@
 /area/rogue/indoors/shelter/mountains)
 "iDQ" = (
 /obj/structure/closet/crate/roguecloset/crafted,
-/obj/item/clothing/head/roguetown/jester,
+/obj/item/clothing/head/jester,
 /obj/item/clothing/mask/gas/sexymime{
 	name = "pantomime mask"
 	},
@@ -11279,7 +11279,7 @@
 	})
 "lNb" = (
 /obj/effect/decal/cleanable/blood/gibs/core,
-/obj/item/clothing/head/roguetown/cookhat,
+/obj/item/clothing/head/cookhat,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/shelter/rtfield)
 "lNk" = (
@@ -12586,7 +12586,7 @@
 	},
 /obj/item/clothing/mask/rat/jackal,
 /obj/item/clothing/mask/muzzle,
-/obj/item/clothing/head/roguetown/nun,
+/obj/item/clothing/head/nun,
 /obj/item/clothing/suit/roguetown/armor/amazon_chainkini,
 /obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy,
 /obj/item/rope,
@@ -16352,7 +16352,7 @@
 /area/rogue/indoors/town/tavern/saiga)
 "qOT" = (
 /obj/structure/table/wood,
-/obj/item/clothing/head/roguetown/flathat,
+/obj/item/clothing/head/flathat,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
 "qPb" = (
@@ -16576,7 +16576,7 @@
 /area/rogue/indoors/town/warehouse)
 "qZv" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/head/roguetown/helmet/skullcap,
+/obj/item/clothing/head/helmet/skullcap,
 /obj/item/clothing/suit/roguetown/armor/chainmail/iron,
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/shelter/town/dwarf)
@@ -17251,7 +17251,7 @@
 	pixel_x = 16;
 	pixel_y = 32
 	},
-/obj/item/clothing/head/roguetown/menacing,
+/obj/item/clothing/head/menacing,
 /obj/item/clothing/glasses/blindfold/white{
 	name = "blindfold"
 	},
@@ -18699,7 +18699,7 @@
 "tmk" = (
 /obj/structure/closet/crate/drawer,
 /obj/machinery/light/rogue/wallfire/candle/r,
-/obj/item/clothing/head/roguetown/chaperon,
+/obj/item/clothing/head/chaperon,
 /obj/item/storage/box/matches,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/manor{
@@ -19262,9 +19262,9 @@
 	})
 "tOw" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/head/roguetown/helmet,
-/obj/item/clothing/head/roguetown/helmet,
-/obj/item/clothing/head/roguetown/helmet,
+/obj/item/clothing/head/helmet,
+/obj/item/clothing/head/helmet,
+/obj/item/clothing/head/helmet,
 /obj/item/clothing/neck/roguetown/gorget,
 /obj/item/clothing/neck/roguetown/gorget,
 /obj/item/clothing/neck/roguetown/gorget,
@@ -19732,7 +19732,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/town)
 "ukr" = (
-/obj/item/clothing/head/roguetown/helmet/leather,
+/obj/item/clothing/head/helmet/leather,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cave{
 	ambush_mobs = list(/mob/living/simple_animal/hostile/retaliate/rogue/wolf = 50);
@@ -19959,7 +19959,7 @@
 /area/rogue/under/town/basement)
 "uwa" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/item/clothing/head/roguetown/knitcap,
+/obj/item/clothing/head/knitcap,
 /obj/item/candle/yellow/lit/infinite{
 	pixel_y = 32
 	},
@@ -19977,7 +19977,7 @@
 /turf/open/transparent/openspace,
 /area/rogue)
 "uwG" = (
-/obj/item/clothing/head/roguetown/jester,
+/obj/item/clothing/head/jester,
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/exposed/under/basement)
 "uwR" = (
@@ -21039,7 +21039,7 @@
 /obj/item/clothing/suit/roguetown/shirt/robe/feld,
 /obj/item/clothing/neck/roguetown/feld,
 /obj/item/clothing/mask/rogue/feld,
-/obj/item/clothing/head/roguetown/roguehood/feld,
+/obj/item/clothing/head/roguehood/feld,
 /obj/item/clothing/gloves/roguetown/leather/feld,
 /obj/item/key/doctor{
 	pixel_y = 9

@@ -159,21 +159,21 @@
 /area/rogue)
 "au" = (
 /obj/structure/table/wood/reinforced,
-/obj/item/clothing/head/roguetown/helmet/visored/knight,
-/obj/item/clothing/head/roguetown/helmet/visored/knight,
-/obj/item/clothing/head/roguetown/helmet/visored/knight,
-/obj/item/clothing/head/roguetown/helmet/visored/sallet,
-/obj/item/clothing/head/roguetown/helmet/visored/sallet,
-/obj/item/clothing/head/roguetown/helmet/visored/sallet,
-/obj/item/clothing/head/roguetown/helmet/skullcap,
-/obj/item/clothing/head/roguetown/helmet/skullcap,
-/obj/item/clothing/head/roguetown/helmet/skullcap,
-/obj/item/clothing/head/roguetown/helmet/visored/hounskull,
-/obj/item/clothing/head/roguetown/helmet/visored/hounskull,
-/obj/item/clothing/head/roguetown/helmet/visored/hounskull,
-/obj/item/clothing/head/roguetown/helmet/kettle,
-/obj/item/clothing/head/roguetown/helmet/kettle,
-/obj/item/clothing/head/roguetown/helmet/kettle,
+/obj/item/clothing/head/helmet/visored/knight,
+/obj/item/clothing/head/helmet/visored/knight,
+/obj/item/clothing/head/helmet/visored/knight,
+/obj/item/clothing/head/helmet/visored/sallet,
+/obj/item/clothing/head/helmet/visored/sallet,
+/obj/item/clothing/head/helmet/visored/sallet,
+/obj/item/clothing/head/helmet/skullcap,
+/obj/item/clothing/head/helmet/skullcap,
+/obj/item/clothing/head/helmet/skullcap,
+/obj/item/clothing/head/helmet/visored/hounskull,
+/obj/item/clothing/head/helmet/visored/hounskull,
+/obj/item/clothing/head/helmet/visored/hounskull,
+/obj/item/clothing/head/helmet/kettle,
+/obj/item/clothing/head/helmet/kettle,
+/obj/item/clothing/head/helmet/kettle,
 /turf/open/floor/rogue/carpet,
 /area/rogue)
 "av" = (
@@ -221,11 +221,11 @@
 /area/rogue)
 "az" = (
 /obj/structure/table/wood/reinforced,
-/obj/item/clothing/head/roguetown/crown/circlet/vision,
-/obj/item/clothing/head/roguetown/crown/circlet/stink,
-/obj/item/clothing/head/roguetown/crown/circlet/sleepless,
-/obj/item/clothing/head/roguetown/crown/circlet,
-/obj/item/clothing/head/roguetown/crown/serpcrown/surplus,
+/obj/item/clothing/head/crown/circlet/vision,
+/obj/item/clothing/head/crown/circlet/stink,
+/obj/item/clothing/head/crown/circlet/sleepless,
+/obj/item/clothing/head/crown/circlet,
+/obj/item/clothing/head/crown/serpcrown/surplus,
 /turf/open/floor/rogue/carpet,
 /area/rogue)
 "aA" = (
@@ -252,7 +252,7 @@
 /area/rogue)
 "aC" = (
 /obj/structure/table/wood/fancy/purple,
-/obj/item/clothing/head/roguetown/rare/elfplate,
+/obj/item/clothing/head/rare/elfplate,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "aD" = (
@@ -1468,10 +1468,10 @@
 /area/rogue)
 "gi" = (
 /obj/structure/table/wood/fancy/red,
-/obj/item/clothing/head/roguetown/helmet/orc/warlord,
-/obj/item/clothing/head/roguetown/helmet/orc/warlord,
-/obj/item/clothing/head/roguetown/helmet/orc/warlord,
-/obj/item/clothing/head/roguetown/helmet/orc/warlord,
+/obj/item/clothing/head/helmet/orc/warlord,
+/obj/item/clothing/head/helmet/orc/warlord,
+/obj/item/clothing/head/helmet/orc/warlord,
+/obj/item/clothing/head/helmet/orc/warlord,
 /turf/open/floor/rogue/carpet,
 /area/rogue)
 "gk" = (
@@ -1602,10 +1602,10 @@
 /area/rogue)
 "iE" = (
 /obj/structure/table/wood/fancy/red,
-/obj/item/clothing/head/roguetown/helmet/orc,
-/obj/item/clothing/head/roguetown/helmet/orc,
-/obj/item/clothing/head/roguetown/helmet/orc,
-/obj/item/clothing/head/roguetown/helmet/orc,
+/obj/item/clothing/head/helmet/orc,
+/obj/item/clothing/head/helmet/orc,
+/obj/item/clothing/head/helmet/orc,
+/obj/item/clothing/head/helmet/orc,
 /turf/open/floor/rogue/carpet,
 /area/rogue)
 "iH" = (
@@ -1671,8 +1671,8 @@
 /obj/structure/table/wood{
 	icon_state = "longtable"
 	},
-/obj/item/clothing/head/roguetown/bardhat,
-/obj/item/clothing/head/roguetown/jester,
+/obj/item/clothing/head/bardhat,
+/obj/item/clothing/head/jester,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "jL" = (
@@ -1727,7 +1727,7 @@
 /area/rogue/outdoors/bog/inhumen_camp)
 "kF" = (
 /obj/structure/table/wood/fancy/orange,
-/obj/item/clothing/head/roguetown/rare/dwarfplate,
+/obj/item/clothing/head/rare/dwarfplate,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "kL" = (
@@ -1867,8 +1867,8 @@
 /obj/structure/table/wood{
 	icon_state = "longtable"
 	},
-/obj/item/clothing/head/roguetown/fancyhat,
-/obj/item/clothing/head/roguetown/fancyhat,
+/obj/item/clothing/head/fancyhat,
+/obj/item/clothing/head/fancyhat,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "nd" = (
@@ -1997,7 +1997,7 @@
 /obj/structure/closet/crate/chest/old_crate,
 /obj/item/rogueore/gold,
 /obj/item/reagent_containers/powder/moondust,
-/obj/item/clothing/head/roguetown/helmet/heavy/sinistar,
+/obj/item/clothing/head/helmet/heavy/sinistar,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
 "oI" = (
@@ -2140,8 +2140,8 @@
 /area/rogue/indoors/vampire_manor)
 "qo" = (
 /obj/structure/table/wood/fancy/royalblue,
-/obj/item/clothing/head/roguetown/wizhat,
-/obj/item/clothing/head/roguetown/roguehood/black,
+/obj/item/clothing/head/wizhat,
+/obj/item/clothing/head/roguehood/black,
 /turf/open/floor/rogue/carpet,
 /area/rogue)
 "qs" = (
@@ -2417,7 +2417,7 @@
 /obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy,
 /obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy,
 /obj/item/clothing/suit/roguetown/shirt/robe/nun,
-/obj/item/clothing/head/roguetown/nun,
+/obj/item/clothing/head/nun,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "tj" = (
@@ -2453,10 +2453,10 @@
 /area/rogue/outdoors/woods_safe)
 "tT" = (
 /obj/structure/table/wood/fancy/red,
-/obj/item/clothing/head/roguetown/helmet/leather/orc,
-/obj/item/clothing/head/roguetown/helmet/leather/orc,
-/obj/item/clothing/head/roguetown/helmet/leather/orc,
-/obj/item/clothing/head/roguetown/helmet/leather/orc,
+/obj/item/clothing/head/helmet/leather/orc,
+/obj/item/clothing/head/helmet/leather/orc,
+/obj/item/clothing/head/helmet/leather/orc,
+/obj/item/clothing/head/helmet/leather/orc,
 /turf/open/floor/rogue/carpet,
 /area/rogue)
 "tU" = (
@@ -2686,7 +2686,7 @@
 	dir = 1;
 	icon_state = "longtable"
 	},
-/obj/item/clothing/head/roguetown/crown/circlet,
+/obj/item/clothing/head/crown/circlet,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "xM" = (
@@ -2982,10 +2982,10 @@
 /obj/structure/table/wood{
 	icon_state = "longtable"
 	},
-/obj/item/clothing/head/roguetown/hatblu,
-/obj/item/clothing/head/roguetown/hatfur,
-/obj/item/clothing/head/roguetown/hatfur,
-/obj/item/clothing/head/roguetown/hatblu,
+/obj/item/clothing/head/hatblu,
+/obj/item/clothing/head/hatfur,
+/obj/item/clothing/head/hatfur,
+/obj/item/clothing/head/hatblu,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "Ch" = (
@@ -3002,7 +3002,7 @@
 	dir = 1;
 	icon_state = "longtable"
 	},
-/obj/item/clothing/head/roguetown/helmet/leather/inquisitor,
+/obj/item/clothing/head/helmet/leather/inquisitor,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "Cp" = (
@@ -3283,8 +3283,8 @@
 /area/rogue/indoors/vampire_manor)
 "Hs" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/head/roguetown/helmet/leather/headscarf,
-/obj/item/clothing/head/roguetown/helmet/leather/headscarf,
+/obj/item/clothing/head/helmet/leather/headscarf,
+/obj/item/clothing/head/helmet/leather/headscarf,
 /turf/open/floor/rogue/ruinedwood/darker,
 /area/rogue/indoors/bandit_lair)
 "Hu" = (
@@ -3315,8 +3315,8 @@
 /area/rogue)
 "HH" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/head/roguetown/helmet/leather/hood_ominous,
-/obj/item/clothing/head/roguetown/helmet/leather/hood_ominous,
+/obj/item/clothing/head/helmet/leather/hood_ominous,
+/obj/item/clothing/head/helmet/leather/hood_ominous,
 /turf/open/floor/rogue/ruinedwood/darker,
 /area/rogue/indoors/bandit_lair)
 "HJ" = (
@@ -3392,9 +3392,9 @@
 	dir = 1;
 	icon_state = "longtable"
 	},
-/obj/item/clothing/head/roguetown/helmet/skullcap/grenzelhoft,
-/obj/item/clothing/head/roguetown/helmet/skullcap/grenzelhoft,
-/obj/item/clothing/head/roguetown/helmet/skullcap/grenzelhoft,
+/obj/item/clothing/head/helmet/skullcap/grenzelhoft,
+/obj/item/clothing/head/helmet/skullcap/grenzelhoft,
+/obj/item/clothing/head/helmet/skullcap/grenzelhoft,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "Iw" = (
@@ -3538,10 +3538,10 @@
 /area/rogue/outdoors)
 "Ke" = (
 /obj/structure/table/wood/fancy/black,
-/obj/item/clothing/head/roguetown/bardhat,
-/obj/item/clothing/head/roguetown/bardhat,
-/obj/item/clothing/head/roguetown/bardhat,
-/obj/item/clothing/head/roguetown/bardhat,
+/obj/item/clothing/head/bardhat,
+/obj/item/clothing/head/bardhat,
+/obj/item/clothing/head/bardhat,
+/obj/item/clothing/head/bardhat,
 /turf/open/floor/rogue/carpet,
 /area/rogue)
 "Kg" = (
@@ -3642,7 +3642,7 @@
 /area/rogue)
 "LK" = (
 /obj/structure/table/wood/fancy/green,
-/obj/item/clothing/head/roguetown/rare/elfplate/welfplate,
+/obj/item/clothing/head/rare/elfplate/welfplate,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "LL" = (
@@ -3655,7 +3655,7 @@
 /area/rogue/outdoors/woods_safe)
 "Mc" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/head/roguetown/helmet/leather/volfhelm,
+/obj/item/clothing/head/helmet/leather/volfhelm,
 /turf/open/floor/rogue/ruinedwood/darker,
 /area/rogue/indoors/bandit_lair)
 "Mg" = (
@@ -3980,7 +3980,7 @@
 /obj/structure/table/wood{
 	icon_state = "longtable"
 	},
-/obj/item/clothing/head/roguetown/hennin,
+/obj/item/clothing/head/hennin,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "Rc" = (
@@ -4169,8 +4169,8 @@
 	icon_state = "largetable_mid"
 	},
 /obj/item/clothing/mask/rogue/druid,
-/obj/item/clothing/head/roguetown/padded/operavisage,
-/obj/item/clothing/head/roguetown/priestmask,
+/obj/item/clothing/head/padded/operavisage,
+/obj/item/clothing/head/priestmask,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "Tm" = (
@@ -4178,8 +4178,8 @@
 	dir = 1;
 	icon_state = "longtable"
 	},
-/obj/item/clothing/head/roguetown/menacing,
-/obj/item/clothing/head/roguetown/padded/deathshroud,
+/obj/item/clothing/head/menacing,
+/obj/item/clothing/head/padded/deathshroud,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "Tz" = (

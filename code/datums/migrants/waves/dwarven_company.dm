@@ -13,7 +13,7 @@
 	cloak = /obj/item/clothing/cloak/raincloak/furcloak
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 	neck = /obj/item/clothing/neck/roguetown/gorget
-	head = /obj/item/clothing/head/roguetown/helmet/coppercap
+	head = /obj/item/clothing/head/helmet/coppercap
 	backr = /obj/item/weapon/shield/wood
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/flashlight/flare/torch/lantern
@@ -63,9 +63,9 @@
 /datum/outfit/job/roguetown/dwarven_company/weaponsmith/pre_equip(mob/living/carbon/human/H)
 	..()
 	id = /obj/item/clothing/ring/silver/makers_guild
-	head = /obj/item/clothing/head/roguetown/hatfur
+	head = /obj/item/clothing/head/hatfur
 	if(prob(50))
-		head = /obj/item/clothing/head/roguetown/hatblu
+		head = /obj/item/clothing/head/hatblu
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
@@ -123,9 +123,9 @@
 /datum/outfit/job/roguetown/dwarven_company/armorsmith/pre_equip(mob/living/carbon/human/H)
 	..()
 	id = /obj/item/clothing/ring/silver/makers_guild
-	head = /obj/item/clothing/head/roguetown/hatfur
+	head = /obj/item/clothing/head/hatfur
 	if(prob(50))
-		head = /obj/item/clothing/head/roguetown/hatblu
+		head = /obj/item/clothing/head/hatblu
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)

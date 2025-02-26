@@ -34,7 +34,7 @@
 /datum/outfit/job/roguetown/mayor/pre_equip(mob/living/carbon/human/H)
 	..()
 	pants = /obj/item/clothing/pants/trou/leather
-	head = /obj/item/clothing/head/roguetown/brimmed
+	head = /obj/item/clothing/head/brimmed
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/jacket
 	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic
 	shoes = /obj/item/clothing/shoes/roguetown/boots

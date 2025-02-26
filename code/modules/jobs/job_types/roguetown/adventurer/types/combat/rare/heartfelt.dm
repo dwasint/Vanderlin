@@ -15,7 +15,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	belt = /obj/item/storage/belt/rogue/leather/black
 	neck = /obj/item/clothing/neck/roguetown/gorget
-	head = /obj/item/clothing/head/roguetown/helmet
+	head = /obj/item/clothing/head/helmet
 	shoes = /obj/item/clothing/shoes/roguetown/nobleboot
 	pants = /obj/item/clothing/pants/tights/black
 	cloak = /obj/item/clothing/cloak/heartfelt

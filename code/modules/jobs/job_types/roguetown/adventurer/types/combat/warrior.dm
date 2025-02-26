@@ -79,10 +79,10 @@
 
 	if(prob(66))
 		neck = /obj/item/clothing/neck/roguetown/gorget
-		head = /obj/item/clothing/head/roguetown/helmet/kettle
+		head = /obj/item/clothing/head/helmet/kettle
 	else // High roller gets an iron chain coif and nasal helmet
 		neck = /obj/item/clothing/neck/roguetown/chaincoif/iron
-		head = /obj/item/clothing/head/roguetown/helmet/nasal
+		head = /obj/item/clothing/head/helmet/nasal
 
 	H.change_stat(STATKEY_STR, 2)
 	H.change_stat(STATKEY_END, 1)

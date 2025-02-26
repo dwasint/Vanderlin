@@ -49,7 +49,7 @@
 		if("Hide")
 			armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
 		if("Helmet")
-			head = /obj/item/clothing/head/roguetown/helmet/horned
+			head = /obj/item/clothing/head/helmet/horned
 	switch(weapontype)
 		if("Sword")
 			beltr = /obj/item/weapon/sword/iron

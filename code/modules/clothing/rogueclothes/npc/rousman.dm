@@ -1,4 +1,4 @@
-/obj/item/clothing/head/roguetown/helmet/rousman
+/obj/item/clothing/head/helmet/rousman
 	name = "stomachgutter helmet"
 	icon_state = "stomachgutter_helm_item"
 	item_state = "stomachgutter_helm"

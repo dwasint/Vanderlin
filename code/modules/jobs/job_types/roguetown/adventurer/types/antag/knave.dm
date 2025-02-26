@@ -57,7 +57,7 @@
 		if("Bow & Sword") //Poacher
 			backl= /obj/item/weapon/shield/tower/buckleriron
 			beltr = /obj/item/weapon/sword/short //steel sword like literally every adventurer gets
-			head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm //cool hat
+			head = /obj/item/clothing/head/helmet/leather/volfhelm //cool hat
 			backr = /obj/item/storage/backpack/rogue/satchel
 			backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1, /obj/item/restraints/legcuffs/beartrap = 2) //poacher gets mantraps
 			H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)

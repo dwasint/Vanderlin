@@ -27,7 +27,7 @@
 /obj/item/clothing/mask/rogue/facemask/copper,
 /obj/item/clothing/neck/roguetown/gorget/copper,
 /obj/item/clothing/wrists/roguetown/bracers/copper,
-/obj/item/clothing/head/roguetown/helmet/coppercap,
+/obj/item/clothing/head/helmet/coppercap,
 /obj/item/clothing/suit/roguetown/armor/cuirass/copperchest,
 /obj/structure/closet/crate/chest,
 /turf/open/floor/rogue/cobblerock/alt,

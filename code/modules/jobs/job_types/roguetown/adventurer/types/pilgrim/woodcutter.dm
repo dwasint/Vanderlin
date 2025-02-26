@@ -32,7 +32,7 @@
 	belt = /obj/item/storage/belt/rogue/leather
 	shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
 	pants = /obj/item/clothing/pants/trou
-	head = /obj/item/clothing/head/roguetown/brimmed
+	head = /obj/item/clothing/head/brimmed
 	neck = /obj/item/clothing/neck/roguetown/coif
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	backr = /obj/item/storage/backpack/rogue/satchel

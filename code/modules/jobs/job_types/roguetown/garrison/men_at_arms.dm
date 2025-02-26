@@ -63,7 +63,7 @@
 
 /datum/outfit/job/roguetown/watchman/pikeman/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/helmet/kettle
+	head = /obj/item/clothing/head/helmet/kettle
 	cloak = /obj/item/clothing/cloak/stabard/guard
 	armor = /obj/item/clothing/suit/roguetown/armor/cuirass
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
@@ -107,7 +107,7 @@
 
 /datum/outfit/job/roguetown/watchman/swordsmen/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = pick(/obj/item/clothing/head/roguetown/roguehood/guard, /obj/item/clothing/head/roguetown/roguehood/guardsecond)
+	head = pick(/obj/item/clothing/head/roguehood/guard, /obj/item/clothing/head/roguehood/guardsecond)
 	cloak = /obj/item/clothing/cloak/stabard/guard
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/advanced
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
@@ -147,7 +147,7 @@
 
 /datum/outfit/job/roguetown/watchman/ranger/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/helmet/kettle
+	head = /obj/item/clothing/head/helmet/kettle
 	cloak = /obj/item/clothing/cloak/stabard/guard
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy

@@ -80,7 +80,7 @@
 
 /datum/outfit/job/roguetown/lich/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/helmet/skullcap/cult
+	head = /obj/item/clothing/head/helmet/skullcap/cult
 	pants = /obj/item/clothing/pants/chainlegs
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	neck = /obj/item/clothing/neck/roguetown/chaincoif

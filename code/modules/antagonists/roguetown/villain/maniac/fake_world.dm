@@ -49,7 +49,7 @@
 	SSfake_world.fake_world_constructs -= src
 
 //Mostly garbage related to the ending "cutscene"
-/obj/item/clothing/head/roguetown/cyberdeck
+/obj/item/clothing/head/cyberdeck
 	name = "cyberdeck headset"
 	desc = "Sweet dreams..."
 	icon = 'icons/roguetown/maniac/clothing.dmi'
@@ -74,7 +74,7 @@
 
 /datum/outfit/treyliam
 	name = "Trey Liam"
-	head = /obj/item/clothing/head/roguetown/cyberdeck
+	head = /obj/item/clothing/head/cyberdeck
 	shirt = /obj/item/clothing/suit/roguetown/shirt/formal
 	pants = /obj/item/clothing/pants/tights/formal
 

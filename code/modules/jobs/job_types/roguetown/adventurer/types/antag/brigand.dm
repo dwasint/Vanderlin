@@ -32,7 +32,7 @@
 	backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1)
 	mask = /obj/item/clothing/mask/rogue/facemask/steel
 	neck = /obj/item/clothing/neck/roguetown/coif
-	head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
+	head = /obj/item/clothing/head/helmet/leather/volfhelm
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
 	H.change_stat(STATKEY_STR, 3)
 	H.change_stat(STATKEY_END, 2)

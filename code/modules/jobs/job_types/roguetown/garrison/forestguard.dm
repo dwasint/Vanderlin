@@ -60,7 +60,7 @@
 /datum/outfit/job/roguetown/forestguard/infantry/pre_equip(mob/living/carbon/human/H)
 	..()
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
-	head = /obj/item/clothing/head/roguetown/helmet/leather/advanced
+	head = /obj/item/clothing/head/helmet/leather/advanced
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	beltl = /obj/item/weapon/mace/steel/morningstar
 	beltr = /obj/item/weapon/axe/iron
@@ -99,7 +99,7 @@
 /datum/outfit/job/roguetown/forestguard/ranger/pre_equip(mob/living/carbon/human/H)
 	..()
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/advanced
-	head = /obj/item/clothing/head/roguetown/roguehood/green
+	head = /obj/item/clothing/head/roguehood/green
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
 	beltl = /obj/item/weapon/knife/cleaver/combat
 	beltr = /obj/item/ammo_holder/quiver/arrows
@@ -138,7 +138,7 @@
 /datum/outfit/job/roguetown/forestguard/brawler/pre_equip(mob/living/carbon/human/H)
 	..()
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/advanced
-	head = /obj/item/clothing/head/roguetown/roguehood/green
+	head = /obj/item/clothing/head/roguehood/green
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
 	beltl = /obj/item/weapon/mace/steel/morningstar
 	beltr = /obj/item/weapon/axe/iron

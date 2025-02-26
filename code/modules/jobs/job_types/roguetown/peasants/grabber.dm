@@ -45,7 +45,7 @@
 	if(H.gender == MALE)
 		shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 		pants = /obj/item/clothing/pants/tights/sailor
-		head = /obj/item/clothing/head/roguetown/headband/red
+		head = /obj/item/clothing/head/headband/red
 		beltr = /obj/item/weapon/mace/cudgel
 		beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 		belt = /obj/item/storage/belt/rogue/leather/rope
@@ -62,7 +62,7 @@
 		belt = /obj/item/storage/belt/rogue/leather/rope
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/jacket/sea
-		head = /obj/item/clothing/head/roguetown/headband
+		head = /obj/item/clothing/head/headband
 		H.change_stat(STATKEY_END, 1)
 		H.change_stat(STATKEY_INT, 1)
 		H.change_stat(STATKEY_SPD, 1)

@@ -9,7 +9,7 @@
 
 /datum/outfit/job/roguetown/adventurer/dbomb/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/helmet/horned
+	head = /obj/item/clothing/head/helmet/horned
 	pants = /obj/item/clothing/pants/trou
 	belt = /obj/item/storage/belt/rogue/leather
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/iron

@@ -220,7 +220,7 @@
 /area/rogue/outdoors/bog)
 "UE" = (
 /obj/structure/table/wood/plain,
-/obj/item/clothing/head/roguetown/crown/circlet,
+/obj/item/clothing/head/crown/circlet,
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors/bog)
 "Vm" = (

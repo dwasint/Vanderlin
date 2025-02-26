@@ -12,7 +12,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	belt = /obj/item/storage/belt/rogue/leather/black
 	neck = /obj/item/clothing/neck/roguetown/gorget
-	head = /obj/item/clothing/head/roguetown/helmet
+	head = /obj/item/clothing/head/helmet
 	shoes = /obj/item/clothing/shoes/roguetown/nobleboot
 	pants = /obj/item/clothing/pants/tights/black
 	cloak = /obj/item/clothing/cloak/heartfelt
@@ -56,7 +56,7 @@
 
 /datum/outfit/job/roguetown/heartfelt/lady/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/hennin
+	head = /obj/item/clothing/head/hennin
 	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
 	cloak = /obj/item/clothing/cloak/heartfelt
 	if(isdwarf(H))
@@ -139,7 +139,7 @@
 	show_wanderer_examine = FALSE
 /datum/outfit/job/roguetown/heartfelt/knight/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/helmet
+	head = /obj/item/clothing/head/helmet
 	gloves = /obj/item/clothing/gloves/roguetown/plate
 	pants = /obj/item/clothing/pants/platelegs
 	cloak = /obj/item/clothing/cloak/tabard/knight/guard
@@ -246,7 +246,7 @@
 			if(ishumannorthern(H))
 				belt = /obj/item/storage/belt/rogue/leather/plaquegold
 				cloak = null
-				head = /obj/item/clothing/head/roguetown/wizhat
+				head = /obj/item/clothing/head/wizhat
 				armor = /obj/item/clothing/suit/roguetown/shirt/robe/wizard
 				H.dna.species.soundpack_m = new /datum/voicepack/male/wizard()
 		var/list/spells = list(/obj/effect/proc_holder/spell/invoked/projectile/fireball/greater, /obj/effect/proc_holder/spell/invoked/projectile/fireball, /obj/effect/proc_holder/spell/invoked/projectile/lightningbolt, /obj/effect/proc_holder/spell/invoked/projectile/fetch)

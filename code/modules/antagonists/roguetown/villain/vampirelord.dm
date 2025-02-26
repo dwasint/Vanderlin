@@ -169,7 +169,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	pants = /obj/item/clothing/pants/tights/black
 	shirt = /obj/item/clothing/suit/roguetown/shirt/vampire
 	belt = /obj/item/storage/belt/rogue/leather/plaquegold
-	head  = /obj/item/clothing/head/roguetown/vampire
+	head  = /obj/item/clothing/head/vampire
 	beltl = /obj/item/key/vampire
 	cloak = /obj/item/clothing/cloak/cape/puritan
 	shoes = /obj/item/clothing/shoes/roguetown/boots
@@ -580,7 +580,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 					new /obj/item/clothing/suit/roguetown/armor/haubergon_vampire (src.loc)
 					new /obj/item/clothing/suit/roguetown/armor/cuirass/vampire (src.loc)
 					new /obj/item/clothing/shoes/roguetown/boots/armor/vampire (src.loc)
-					new /obj/item/clothing/head/roguetown/helmet/heavy/savoyard (src.loc)
+					new /obj/item/clothing/head/helmet/heavy/savoyard (src.loc)
 				user.playsound_local(get_turf(src), 'sound/misc/vcraft.ogg', 100, FALSE, pressure_affected = FALSE)
 
 /obj/structure/vampire/bloodpool/proc/update_pool(change)

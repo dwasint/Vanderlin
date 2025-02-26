@@ -59,7 +59,7 @@ GLOBAL_LIST_EMPTY(roundstart_court_agents)
 	var/mob/living/carbon/human/H = speaker
 	var/nocrown = TRUE
 	if(H.head)
-		if(istype(H.head, /obj/item/clothing/head/roguetown/crown/serpcrown))
+		if(istype(H.head, /obj/item/clothing/head/crown/serpcrown))
 			nocrown = FALSE
 	var/notlord
 	if(SSticker.rulermob != H)
@@ -72,17 +72,17 @@ GLOBAL_LIST_EMPTY(roundstart_court_agents)
 			return
 	if(findtext(message2recognize, "summon crown")) //This must never fail, thus place it before all other modestuffs.
 		if(!SSroguemachine.crown)
-			new /obj/item/clothing/head/roguetown/crown/serpcrown(src.loc)
+			new /obj/item/clothing/head/crown/serpcrown(src.loc)
 			say("The crown is summoned!")
 			playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 			playsound(src, 'sound/misc/hiss.ogg', 100, FALSE, -1)
 		if(SSroguemachine.crown)
-			var/obj/item/clothing/head/roguetown/crown/serpcrown/I = SSroguemachine.crown
+			var/obj/item/clothing/head/crown/serpcrown/I = SSroguemachine.crown
 			if(!I)
-				I = new /obj/item/clothing/head/roguetown/crown/serpcrown(src.loc)
+				I = new /obj/item/clothing/head/crown/serpcrown(src.loc)
 			if(I && !ismob(I.loc))//You MUST MUST MUST keep the Crown on a person to prevent it from being summoned (magical interference)
 				I.anti_stall()
-				I = new /obj/item/clothing/head/roguetown/crown/serpcrown(src.loc)
+				I = new /obj/item/clothing/head/crown/serpcrown(src.loc)
 				H.put_in_hands(I)
 				say("The crown is summoned!")
 				playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)

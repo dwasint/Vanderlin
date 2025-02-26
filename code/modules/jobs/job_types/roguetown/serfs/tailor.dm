@@ -19,7 +19,7 @@
 	..()
 
 	shoes = /obj/item/clothing/shoes/roguetown/nobleboot
-	head = /obj/item/clothing/head/roguetown/courtierhat
+	head = /obj/item/clothing/head/courtierhat
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/weapon/knife/scissors
 	beltl = /obj/item/storage/keyring/tailor

@@ -22,7 +22,7 @@
 /turf/closed/mineral/rogue/gemeralds,
 /area/rogue)
 "bw" = (
-/obj/item/clothing/head/roguetown/helmet/kettle/slit,
+/obj/item/clothing/head/helmet/kettle/slit,
 /turf/open/floor/rogue/cobble/alt,
 /area/rogue)
 "bB" = (
@@ -130,7 +130,7 @@
 /area/rogue)
 "fs" = (
 /obj/item/bodypart/head,
-/obj/item/clothing/head/roguetown/helmet/nasal,
+/obj/item/clothing/head/helmet/nasal,
 /turf/open/floor/rogue/ruinedwood/turned/darker,
 /area/rogue)
 "fw" = (
@@ -269,7 +269,7 @@
 /obj/effect/decal/cleanable/dirt/cobweb/cobweb2,
 /obj/structure/closet/crate/roguecloset,
 /obj/item/clothing/cloak/apron/cook,
-/obj/item/clothing/head/roguetown/cookhat,
+/obj/item/clothing/head/cookhat,
 /obj/item/clothing/shoes/roguetown/sandals,
 /turf/open/floor/rogue/cobble/alt,
 /area/rogue)

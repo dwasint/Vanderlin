@@ -90,11 +90,11 @@
 			var/helmet2choose = pickweight(list("Volfhelm" = 5, "Skullcap" = 2, "Barbute" = 1))
 			switch(helmet2choose)
 				if("Volfhelm")
-					head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
+					head = /obj/item/clothing/head/helmet/leather/volfhelm
 				if("Skullcap")
-					head = /obj/item/clothing/head/roguetown/helmet/skullcap
+					head = /obj/item/clothing/head/helmet/skullcap
 				if("Barbute") // big roller
-					head = /obj/item/clothing/head/roguetown/helmet/heavy/rust
+					head = /obj/item/clothing/head/helmet/heavy/rust
 
 			var/armor2choose = pickweight(list("Rusty halfplate" = 2, "Chainmail" = 1))
 			switch(armor2choose)
@@ -147,12 +147,12 @@
 			var/helmet2choose = pickweight(list("Hood" = 1, "Volfhelm" = 1))
 			switch(helmet2choose)
 				if("Hood")
-					head = /obj/item/clothing/head/roguetown/roguehood
+					head = /obj/item/clothing/head/roguehood
 					neck = /obj/item/clothing/neck/roguetown/coif
 					if(H.age == AGE_OLD) //old poachers also saved up for a better coif
 						head = /obj/item/clothing/neck/roguetown/chaincoif/iron
 				if("Volfhelm")
-					head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
+					head = /obj/item/clothing/head/helmet/leather/volfhelm
 
 			if(H.age == AGE_OLD) //old poachers are better at their jobs
 				H.mind?.adjust_skillrank(/datum/skill/craft/tanning, 1, TRUE)
@@ -192,9 +192,9 @@
 			var/helmet2choose = pickweight(list("Leather helmet" = 2, "Volfhelm" = 2, "Coif" = 1))
 			switch(helmet2choose)
 				if("Leather helmet")
-					head = /obj/item/clothing/head/roguetown/helmet/leather/conical
+					head = /obj/item/clothing/head/helmet/leather/conical
 				if("Volfhelm")
-					head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
+					head = /obj/item/clothing/head/helmet/leather/volfhelm
 				if("Coif")
 					head = /obj/item/clothing/neck/roguetown/chaincoif/iron
 
@@ -299,13 +299,13 @@
 	name = "(Bandit) Volfhelm"
 	time = 4 SECONDS
 	reqs = list(/obj/item/natural/fur/volf = 2)
-	result = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
+	result = /obj/item/clothing/head/helmet/leather/volfhelm
 	category = CAT_NONE
 
 /datum/crafting_recipe/cult_hood
 	name = "(Cult) Ominous Hood"
 	time = 4 SECONDS
 	reqs = list(/obj/item/natural/hide = 1)
-	result = /obj/item/clothing/head/roguetown/helmet/leather/hood_ominous
+	result = /obj/item/clothing/head/helmet/leather/hood_ominous
 	category = CAT_NONE
 

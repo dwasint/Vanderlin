@@ -41,7 +41,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 	armor = /obj/item/clothing/suit/roguetown/armor/rare/grenzelplate
 	backl = /obj/item/storage/backpack/rogue/satchel
-	head = /obj/item/clothing/head/roguetown/rare/grenzelplate
+	head = /obj/item/clothing/head/rare/grenzelplate
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
 	if(!H.has_language(/datum/language/oldpsydonic))

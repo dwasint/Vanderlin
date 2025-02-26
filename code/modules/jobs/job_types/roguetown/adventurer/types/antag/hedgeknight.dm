@@ -9,7 +9,7 @@
 
 /datum/outfit/job/roguetown/bandit/hedgeknight/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/helmet/heavy/rust
+	head = /obj/item/clothing/head/helmet/heavy/rust
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/rust
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/dark

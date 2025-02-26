@@ -25,7 +25,7 @@
 		/obj/item/natural/hide = 3,
 		/obj/item/natural/fur = 2,
 	)
-	output = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
+	output = /obj/item/clothing/head/helmet/leather/volfhelm
 	sellprice = 20
 
 /datum/repeatable_crafting_recipe/leather/gloves
@@ -75,7 +75,7 @@
 
 /datum/repeatable_crafting_recipe/leather/hood
 	name = "leather hood"
-	output = /obj/item/clothing/head/roguetown/roguehood/brown
+	output = /obj/item/clothing/head/roguehood/brown
 	craftdiff = 2
 
 /datum/repeatable_crafting_recipe/leather/cloak
@@ -219,7 +219,7 @@
 	requirements = list(
 		/obj/item/natural/hide/cured = 2,
 	)
-	output = /obj/item/clothing/head/roguetown/helmet/leather
+	output = /obj/item/clothing/head/helmet/leather
 	craftdiff = 1
 
 /datum/repeatable_crafting_recipe/leather/armor
@@ -237,7 +237,7 @@
 		/obj/item/natural/fur = 1,
 		/obj/item/natural/fibers = 2,
 	)
-	output = /obj/item/clothing/head/roguetown/papakha
+	output = /obj/item/clothing/head/papakha
 	craftdiff = 1
 
 /datum/repeatable_crafting_recipe/leather/whip
@@ -336,7 +336,7 @@
 	requirements = list(
 		/obj/item/natural/hide/cured = 1,
 	)
-	output = list(/obj/item/clothing/head/roguetown/brimmed = 2)
+	output = list(/obj/item/clothing/head/brimmed = 2)
 	craftdiff = 1
 
 /datum/repeatable_crafting_recipe/leather/volfmantle
@@ -395,7 +395,7 @@
 
 /datum/repeatable_crafting_recipe/leather/standalone/helmet
 	name = "hardened leather helmet"
-	output = /obj/item/clothing/head/roguetown/helmet/leather/advanced
+	output = /obj/item/clothing/head/helmet/leather/advanced
 	requirements = list(/obj/item/natural/hide/cured = 1,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 4
@@ -450,9 +450,9 @@
 
 /datum/repeatable_crafting_recipe/leather/standalone/helmet/masterwork
 	name = "masterwork leather helmet"
-	output = /obj/item/clothing/head/roguetown/helmet/leather/masterwork
-	attacking_atom = /obj/item/clothing/head/roguetown/helmet/leather
-	requirements = list(/obj/item/clothing/head/roguetown/helmet/leather = 1,
+	output = /obj/item/clothing/head/helmet/leather/masterwork
+	attacking_atom = /obj/item/clothing/head/helmet/leather
+	requirements = list(/obj/item/clothing/head/helmet/leather = 1,
 				/obj/item/natural/cured/essence = 1,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 5

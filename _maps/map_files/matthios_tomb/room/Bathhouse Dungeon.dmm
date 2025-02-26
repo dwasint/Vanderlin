@@ -1355,7 +1355,7 @@
 /obj/structure/closet/crate/roguecloset/lord,
 /obj/item/storage/fancy/candle_box,
 /obj/effect/spawner/roguemap/loot/armor,
-/obj/item/clothing/head/roguetown/helmet/heavy/necked/noc,
+/obj/item/clothing/head/helmet/heavy/necked/noc,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors)
 "Gf" = (
@@ -1456,7 +1456,7 @@
 "Jb" = (
 /obj/structure/closet/crate/roguecloset/inn,
 /obj/effect/spawner/roguemap/loot,
-/obj/item/clothing/head/roguetown/helmet/leather,
+/obj/item/clothing/head/helmet/leather,
 /turf/open/floor/rogue/church,
 /area/rogue/indoors)
 "Jg" = (

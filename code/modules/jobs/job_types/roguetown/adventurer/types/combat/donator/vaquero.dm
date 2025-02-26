@@ -34,7 +34,7 @@
 	H.mind?.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE)
 	H.mind?.adjust_skillrank(/datum/skill/misc/music, rand(1,2), TRUE)
 	H.mind?.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
-	head = /obj/item/clothing/head/roguetown/bardhat
+	head = /obj/item/clothing/head/bardhat
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	pants = /obj/item/clothing/pants/tights/random
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt

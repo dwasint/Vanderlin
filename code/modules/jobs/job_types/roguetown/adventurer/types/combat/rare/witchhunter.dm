@@ -27,7 +27,7 @@
 	pants = /obj/item/clothing/pants/tights/black
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/winterjacket
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
-	head = /obj/item/clothing/head/roguetown/helmet/leather/inquisitor
+	head = /obj/item/clothing/head/helmet/leather/inquisitor
 	gloves = /obj/item/clothing/gloves/roguetown/angle
 	beltl = /obj/item/weapon/sword/rapier/silver
 	neck = /obj/item/clothing/neck/roguetown/chaincoif

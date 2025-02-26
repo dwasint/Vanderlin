@@ -36,7 +36,7 @@
 	sellprice = 0
 	smeltresult = /obj/item/ash
 
-/obj/item/clothing/head/roguetown/helmet/leather/goblin
+/obj/item/clothing/head/helmet/leather/goblin
 	name = "goblin leather helmet"
 	icon_state = "leather_helm_item"
 	item_state = "leather_helm"
@@ -47,7 +47,7 @@
 	sellprice = 0
 	smeltresult = /obj/item/ash
 
-/obj/item/clothing/head/roguetown/helmet/goblin
+/obj/item/clothing/head/helmet/goblin
 	name = "goblin helmet"
 	icon_state = "plate_helm_item"
 	item_state = "plate_helm"

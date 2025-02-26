@@ -42,7 +42,7 @@
 
 /datum/outfit/job/roguetown/captain/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/helmet/visored/captain
+	head = /obj/item/clothing/head/helmet/visored/captain
 	gloves = /obj/item/clothing/gloves/roguetown/plate
 	pants = /obj/item/clothing/pants/platelegs/captain
 	armor = /obj/item/clothing/suit/roguetown/armor/captain

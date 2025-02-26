@@ -11,7 +11,7 @@
 	maximum_possible_slots = 5
 
 /datum/outfit/job/roguetown/adventurer/corsair
-	head = /obj/item/clothing/head/roguetown/helmet/leather/headscarf
+	head = /obj/item/clothing/head/helmet/leather/headscarf
 	pants = /obj/item/clothing/pants/tights/sailor
 	belt = /obj/item/storage/belt/rogue/leather/mercenary
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/jacket/sea

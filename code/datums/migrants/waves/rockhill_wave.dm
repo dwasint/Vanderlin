@@ -11,7 +11,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	belt = /obj/item/storage/belt/rogue/leather/black
 	neck = /obj/item/clothing/neck/roguetown/gorget
-	head = /obj/item/clothing/head/roguetown/helmet
+	head = /obj/item/clothing/head/helmet
 	shoes = /obj/item/clothing/shoes/roguetown/nobleboot
 	pants = /obj/item/clothing/pants/tights/black
 	cloak = /obj/item/clothing/cloak/raincloak/furcloak
@@ -21,7 +21,7 @@
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
 	beltl = /obj/item/weapon/sword/long
 	if(H.gender == FEMALE)
-		head = /obj/item/clothing/head/roguetown/courtierhat
+		head = /obj/item/clothing/head/courtierhat
 		neck = /obj/item/storage/belt/rogue/pouch/coins/rich
 		cloak = /obj/item/clothing/cloak/raincloak/furcloak
 		beltr = /obj/item/weapon/sword/rapier
@@ -65,7 +65,7 @@
 	advjob_examine = FALSE
 /datum/outfit/job/roguetown/rockhill/knight/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/helmet
+	head = /obj/item/clothing/head/helmet
 	gloves = /obj/item/clothing/gloves/roguetown/plate
 	pants = /obj/item/clothing/pants/platelegs
 	cloak = /obj/item/clothing/cloak/tabard/knight/guard
@@ -141,7 +141,7 @@
 
 /datum/outfit/job/roguetown/rockhill/serjeant_at_arms/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/helmet/leather
+	head = /obj/item/clothing/head/helmet/leather
 	pants = /obj/item/clothing/pants/trou/leather
 	cloak = /obj/item/clothing/cloak/half/vet
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guardsecond

@@ -615,8 +615,8 @@
 /obj/item/clothing/neck/roguetown/psycross/silver/astrata,
 /obj/item/clothing/suit/roguetown/shirt/robe/astrata,
 /obj/item/clothing/suit/roguetown/shirt/robe/astrata,
-/obj/item/clothing/head/roguetown/helmet/heavy/necked/astrata,
-/obj/item/clothing/head/roguetown/helmet/heavy/necked/astrata,
+/obj/item/clothing/head/helmet/heavy/necked/astrata,
+/obj/item/clothing/head/helmet/heavy/necked/astrata,
 /obj/machinery/light/rogue/torchholder/l,
 /obj/effect/spawner/roguemap/loot/medium,
 /turf/open/floor/rogue/churchmarble,
@@ -697,7 +697,7 @@
 "EJ" = (
 /mob/living/carbon/human/species/skeleton/npc/no_equipment,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
-/obj/item/clothing/head/roguetown/helmet/skullcap/cult{
+/obj/item/clothing/head/helmet/skullcap/cult{
 	pixel_y = 10
 	},
 /obj/item/clothing/cloak/half/shadowcloak/cult,
@@ -887,7 +887,7 @@
 /obj/structure/closet/crate/roguecloset/dark,
 /obj/item/clothing/suit/roguetown/shirt/robe/priest,
 /obj/item/clothing/suit/roguetown/shirt/undershirt/priest,
-/obj/item/clothing/head/roguetown/priestmask,
+/obj/item/clothing/head/priestmask,
 /obj/machinery/light/rogue/torchholder/r,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue)
@@ -958,7 +958,7 @@
 /turf/open/floor/rogue/churchmarble,
 /area/rogue)
 "PS" = (
-/obj/item/clothing/head/roguetown/helmet/leather/minershelm,
+/obj/item/clothing/head/helmet/leather/minershelm,
 /obj/item/weapon/pick/copper,
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue)
@@ -970,8 +970,8 @@
 /obj/structure/table/wood/large/corner{
 	dir = 6
 	},
-/obj/item/clothing/head/roguetown/roguehood/brown,
-/obj/item/clothing/head/roguetown/roguehood/brown{
+/obj/item/clothing/head/roguehood/brown,
+/obj/item/clothing/head/roguehood/brown{
 	pixel_x = 7;
 	pixel_y = -4
 	},
@@ -985,7 +985,7 @@
 /obj/effect/decal/cleanable/blood/old,
 /mob/living/carbon/human/species/skeleton/npc/no_equipment,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
-/obj/item/clothing/head/roguetown/helmet/skullcap/cult{
+/obj/item/clothing/head/helmet/skullcap/cult{
 	pixel_y = 10
 	},
 /obj/item/clothing/cloak/half/shadowcloak/cult,

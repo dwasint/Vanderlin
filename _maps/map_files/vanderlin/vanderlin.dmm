@@ -872,19 +872,19 @@
 /area/rogue/outdoors/town/roofs)
 "aEX" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/clothing/head/roguetown/roguehood/red{
+/obj/item/clothing/head/roguehood/red{
 	pixel_x = -6;
 	pixel_y = -3
 	},
-/obj/item/clothing/head/roguetown/roguehood/random{
+/obj/item/clothing/head/roguehood/random{
 	pixel_x = 9;
 	pixel_y = 8
 	},
-/obj/item/clothing/head/roguetown/roguehood/green{
+/obj/item/clothing/head/roguehood/green{
 	pixel_x = 8;
 	pixel_y = -7
 	},
-/obj/item/clothing/head/roguetown/roguehood/uncolored{
+/obj/item/clothing/head/roguehood/uncolored{
 	pixel_x = -3;
 	pixel_y = 4
 	},
@@ -1268,23 +1268,23 @@
 /area/rogue/outdoors/town)
 "aPs" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/clothing/head/roguetown/bardhat{
+/obj/item/clothing/head/bardhat{
 	pixel_x = 8;
 	pixel_y = 13
 	},
-/obj/item/clothing/head/roguetown/chaperon/greyscale/random{
+/obj/item/clothing/head/chaperon/greyscale/random{
 	pixel_x = -6;
 	pixel_y = 2
 	},
-/obj/item/clothing/head/roguetown/chaperon/greyscale/random{
+/obj/item/clothing/head/chaperon/greyscale/random{
 	pixel_x = -9;
 	pixel_y = 5
 	},
-/obj/item/clothing/head/roguetown/fancyhat{
+/obj/item/clothing/head/fancyhat{
 	pixel_x = 8;
 	pixel_y = -3
 	},
-/obj/item/clothing/head/roguetown/hennin{
+/obj/item/clothing/head/hennin{
 	pixel_x = -9;
 	pixel_y = -4
 	},
@@ -1911,7 +1911,7 @@
 /area/rogue/indoors/town/manor)
 "bpM" = (
 /obj/structure/closet/crate/chest/crate,
-/obj/item/clothing/head/roguetown/fisherhat,
+/obj/item/clothing/head/fisherhat,
 /turf/open/floor/rogue/ruinedwood/darker,
 /area/rogue/outdoors/river)
 "bpR" = (
@@ -3027,9 +3027,9 @@
 /obj/item/clothing/suit/roguetown/shirt/robe/noc,
 /obj/item/clothing/suit/roguetown/shirt/robe/noc,
 /obj/item/clothing/suit/roguetown/shirt/robe/noc,
-/obj/item/clothing/head/roguetown/roguehood/nochood,
-/obj/item/clothing/head/roguetown/roguehood/nochood,
-/obj/item/clothing/head/roguetown/roguehood/nochood,
+/obj/item/clothing/head/roguehood/nochood,
+/obj/item/clothing/head/roguehood/nochood,
+/obj/item/clothing/head/roguehood/nochood,
 /obj/structure/fluff/walldeco/church/line{
 	dir = 8
 	},
@@ -4148,7 +4148,7 @@
 "cRr" = (
 /obj/structure/closet/crate/roguecloset/lord,
 /obj/item/clothing/suit/roguetown/armor/plate/blkknight,
-/obj/item/clothing/head/roguetown/helmet/heavy/blkknight,
+/obj/item/clothing/head/helmet/heavy/blkknight,
 /obj/item/weapon/sword/rapier/dec/lord,
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors/town/manor)
@@ -6063,9 +6063,9 @@
 /obj/item/clothing/suit/roguetown/shirt/robe/astrata,
 /obj/item/clothing/suit/roguetown/shirt/robe/astrata,
 /obj/item/clothing/suit/roguetown/shirt/robe/astrata,
-/obj/item/clothing/head/roguetown/roguehood/astrata,
-/obj/item/clothing/head/roguetown/roguehood/astrata,
-/obj/item/clothing/head/roguetown/roguehood/astrata,
+/obj/item/clothing/head/roguehood/astrata,
+/obj/item/clothing/head/roguehood/astrata,
+/obj/item/clothing/head/roguehood/astrata,
 /obj/structure/fluff/walldeco/church/line{
 	dir = 4
 	},
@@ -6719,11 +6719,11 @@
 /obj/item/clothing/suit/roguetown/shirt/robe/white,
 /obj/item/clothing/suit/roguetown/shirt/robe/wizard,
 /obj/item/clothing/cloak/raincloak/blue,
-/obj/item/clothing/head/roguetown/wizhat,
+/obj/item/clothing/head/wizhat,
 /obj/item/clothing/shoes/roguetown/boots,
 /obj/item/clothing/shoes/roguetown/shortboots,
 /obj/item/clothing/mask/rogue/spectacles/golden,
-/obj/item/clothing/head/roguetown/wizhat/witch,
+/obj/item/clothing/head/wizhat/witch,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/magician)
 "eLN" = (
@@ -7167,9 +7167,9 @@
 /area/rogue/indoors/town/clocktower)
 "fad" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/clothing/head/roguetown/roguehood/phys,
-/obj/item/clothing/head/roguetown/roguehood/phys,
-/obj/item/clothing/head/roguetown/roguehood/phys,
+/obj/item/clothing/head/roguehood/phys,
+/obj/item/clothing/head/roguehood/phys,
+/obj/item/clothing/head/roguehood/phys,
 /obj/item/clothing/suit/roguetown/shirt/robe/phys,
 /obj/item/clothing/suit/roguetown/shirt/robe/phys,
 /obj/item/clothing/suit/roguetown/shirt/robe/phys,
@@ -8627,9 +8627,9 @@
 /obj/item/clothing/suit/roguetown/shirt/robe/eora,
 /obj/item/clothing/suit/roguetown/shirt/robe/eora,
 /obj/item/clothing/suit/roguetown/shirt/robe/eora,
-/obj/item/clothing/head/roguetown/roguehood/eora,
-/obj/item/clothing/head/roguetown/roguehood/eora,
-/obj/item/clothing/head/roguetown/roguehood/eora,
+/obj/item/clothing/head/roguehood/eora,
+/obj/item/clothing/head/roguehood/eora,
+/obj/item/clothing/head/roguehood/eora,
 /obj/machinery/light/rogue/wallfire/candle{
 	pixel_y = -32
 	},
@@ -9054,7 +9054,7 @@
 "gxM" = (
 /obj/structure/table/wood/plain/alt,
 /obj/item/clothing/neck/roguetown/psycross/silver/dendor,
-/obj/item/clothing/head/roguetown/padded/briarthorns,
+/obj/item/clothing/head/padded/briarthorns,
 /turf/open/floor/rogue/ruinedwood/chevron,
 /area/rogue/outdoors/mountains)
 "gxZ" = (
@@ -12403,11 +12403,11 @@
 /area/rogue/indoors/town/steward)
 "iQH" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/clothing/head/roguetown/roguehood/black{
+/obj/item/clothing/head/roguehood/black{
 	pixel_x = -4;
 	pixel_y = 5
 	},
-/obj/item/clothing/head/roguetown/roguehood/brown{
+/obj/item/clothing/head/roguehood/brown{
 	pixel_x = 7;
 	pixel_y = -4
 	},
@@ -16757,8 +16757,8 @@
 "mir" = (
 /obj/structure/closet/crate/roguecloset,
 /obj/item/clothing/suit/roguetown/shirt/dress/gen/purple,
-/obj/item/clothing/head/roguetown/headdress,
-/obj/item/clothing/head/roguetown/headdress/alt,
+/obj/item/clothing/head/headdress,
+/obj/item/clothing/head/headdress/alt,
 /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/random,
 /obj/item/storage/backpack/rogue/satchel,
 /obj/item/clothing/cloak/half,
@@ -17827,7 +17827,7 @@
 	pixel_y = 7
 	},
 /obj/structure/closet/crate/chest/crate,
-/obj/item/clothing/head/roguetown/fisherhat,
+/obj/item/clothing/head/fisherhat,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/outdoors/river)
 "mVi" = (
@@ -27085,7 +27085,7 @@
 /obj/structure/closet/crate/roguecloset/dark,
 /obj/item/clothing/cloak/raincloak/mortus,
 /obj/item/clothing/cloak/raincloak/mortus,
-/obj/item/clothing/head/roguetown/padded/deathshroud,
+/obj/item/clothing/head/padded/deathshroud,
 /turf/open/floor/rogue/blocks{
 	icon_state = "bluestone"
 	},
@@ -28731,19 +28731,19 @@
 /area/rogue/indoors/town)
 "uQo" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/clothing/head/roguetown/hatblu{
+/obj/item/clothing/head/hatblu{
 	pixel_x = -6;
 	pixel_y = 9
 	},
-/obj/item/clothing/head/roguetown/hatfur{
+/obj/item/clothing/head/hatfur{
 	pixel_x = 8;
 	pixel_y = 4
 	},
-/obj/item/clothing/head/roguetown/knitcap{
+/obj/item/clothing/head/knitcap{
 	pixel_x = -7;
 	pixel_y = -3
 	},
-/obj/item/clothing/head/roguetown/strawhat{
+/obj/item/clothing/head/strawhat{
 	pixel_x = 5;
 	pixel_y = -6
 	},
@@ -29681,7 +29681,7 @@
 /obj/item/clothing/cloak/raincloak/mortus{
 	name = "cloak"
 	},
-/obj/item/clothing/head/roguetown/sack,
+/obj/item/clothing/head/sack,
 /obj/structure/closet/crate/roguecloset/dark,
 /obj/machinery/light/rogue/wallfire/candle{
 	pixel_y = -32
@@ -29919,7 +29919,7 @@
 "vMD" = (
 /obj/structure/closet/crate/roguecloset/dark,
 /obj/item/clothing/mask/rogue/phys,
-/obj/item/clothing/head/roguetown/roguehood/phys,
+/obj/item/clothing/head/roguehood/phys,
 /obj/item/clothing/neck/roguetown/phys,
 /obj/item/clothing/suit/roguetown/shirt/robe/phys,
 /obj/item/clothing/gloves/roguetown/leather/phys,
@@ -32787,7 +32787,7 @@
 "xVe" = (
 /obj/structure/closet/crate/roguecloset/dark,
 /obj/item/clothing/mask/rogue/phys,
-/obj/item/clothing/head/roguetown/roguehood/phys,
+/obj/item/clothing/head/roguehood/phys,
 /obj/item/clothing/neck/roguetown/phys,
 /obj/item/clothing/suit/roguetown/shirt/robe/phys,
 /obj/item/clothing/gloves/roguetown/leather/phys,

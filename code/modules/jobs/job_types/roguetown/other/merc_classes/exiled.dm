@@ -35,7 +35,7 @@
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	belt = /obj/item/storage/belt/rogue/leather/mercenary
 	beltl = /obj/item/weapon/mace/cudgel
-	head = /obj/item/clothing/head/roguetown/helmet/leather
+	head = /obj/item/clothing/head/helmet/leather
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather

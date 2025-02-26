@@ -42,7 +42,7 @@
 	H.verbs |= /mob/living/carbon/human/proc/churchcurse
 	H.verbs |= /mob/living/carbon/human/proc/churchannouncement
 	neck = /obj/item/clothing/neck/roguetown/psycross/silver/astrata
-	head = /obj/item/clothing/head/roguetown/priestmask
+	head = /obj/item/clothing/head/priestmask
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/priest
 	pants = /obj/item/clothing/pants/tights/black
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
@@ -108,7 +108,7 @@
 			continue
 		if(!HU.head)
 			continue
-		if(!istype(HU.head, /obj/item/clothing/head/roguetown/crown/serpcrown))
+		if(!istype(HU.head, /obj/item/clothing/head/crown/serpcrown))
 			continue
 		for(var/mob/living/carbon/human/HL in GLOB.human_list)
 			if(HL.mind)

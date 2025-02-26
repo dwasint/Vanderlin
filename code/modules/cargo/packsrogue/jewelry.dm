@@ -21,12 +21,12 @@
 /datum/supply_pack/rogue/jewelry/circlet
 	name = "Golden Circlet"
 	cost = 50
-	contains = /obj/item/clothing/head/roguetown/crown/circlet
+	contains = /obj/item/clothing/head/crown/circlet
 
 /datum/supply_pack/rogue/jewelry/gemcirclet
 	name = "Decorated Circlet"
 	cost = 100
-	contains = /obj/item/clothing/head/roguetown/crown/nyle
+	contains = /obj/item/clothing/head/crown/nyle
 
 /datum/supply_pack/rogue/jewelry/silver_plaque_belt
 	name = "Silver Plaque Belt"

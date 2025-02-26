@@ -37,7 +37,7 @@
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/storage/keyring/jester
 	beltl = /obj/item/storage/belt/rogue/pouch
-	head = /obj/item/clothing/head/roguetown/jester
+	head = /obj/item/clothing/head/jester
 	neck = /obj/item/clothing/neck/roguetown/coif
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/combat/knives, pick(1,2,3,4,5), TRUE)

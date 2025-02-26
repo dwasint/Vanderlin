@@ -41,7 +41,7 @@
 	pants = /obj/item/clothing/pants/tights/random
 	gloves = /obj/item/clothing/gloves/roguetown/leather/feld
 	armor = /obj/item/clothing/suit/roguetown/shirt/robe/feld
-	head = /obj/item/clothing/head/roguetown/roguehood/feld
+	head = /obj/item/clothing/head/roguehood/feld
 	mask = /obj/item/clothing/mask/rogue/feld
 	neck = /obj/item/clothing/neck/roguetown/feld
 	belt = /obj/item/storage/belt/rogue/leather

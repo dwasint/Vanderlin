@@ -36,7 +36,7 @@
 	pants = /obj/item/clothing/pants/trou/leather
 	shoes = /obj/item/clothing/shoes/roguetown/boots/furlinedboots
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
-	head = /obj/item/clothing/head/roguetown/helmet/kettle/slit
+	head = /obj/item/clothing/head/helmet/kettle/slit
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	neck = /obj/item/clothing/neck/roguetown/bevor
 	belt = /obj/item/storage/belt/rogue/leather

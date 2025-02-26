@@ -45,6 +45,6 @@
 
 /datum/objective_item/steal/rogue/crown
 	name = "the Lord's crown."
-	targetitem = /obj/item/clothing/head/roguetown/crown/serpcrown
+	targetitem = /obj/item/clothing/head/crown/serpcrown
 	difficulty = 3
 	excludefromjob = list("Monarch", "Knight")

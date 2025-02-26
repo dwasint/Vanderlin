@@ -101,7 +101,7 @@
 		shoes = /obj/item/clothing/shoes/roguetown/nobleboot
 	if(H.gender == FEMALE)
 		belt = /obj/item/storage/belt/rogue/leather/cloth/lady
-		head = /obj/item/clothing/head/roguetown/hennin
+		head = /obj/item/clothing/head/hennin
 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/royal/princess
 		shoes = /obj/item/clothing/shoes/roguetown/shortboots
 		pants = /obj/item/clothing/pants/tights/random
@@ -145,7 +145,7 @@
 		shoes = /obj/item/clothing/shoes/roguetown/nobleboot
 	if(H.gender == FEMALE)
 		belt = /obj/item/storage/belt/rogue/leather/cloth/lady
-		head = /obj/item/clothing/head/roguetown/hennin
+		head = /obj/item/clothing/head/hennin
 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/royal/princess
 		shoes = /obj/item/clothing/shoes/roguetown/shortboots
 		pants = /obj/item/clothing/pants/tights/random

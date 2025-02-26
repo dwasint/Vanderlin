@@ -24,7 +24,7 @@
 /datum/outfit/job/roguetown/adventurer/physicker/pre_equip(mob/living/carbon/human/H)
 	..()
 	mask = /obj/item/clothing/mask/rogue/phys
-	head = /obj/item/clothing/head/roguetown/roguehood/phys
+	head = /obj/item/clothing/head/roguehood/phys
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 	backr = /obj/item/storage/backpack/rogue/satchel

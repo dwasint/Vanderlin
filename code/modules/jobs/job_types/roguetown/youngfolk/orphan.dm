@@ -41,7 +41,7 @@
 	if(prob(35))
 		cloak = pick(/obj/item/clothing/cloak/half, /obj/item/clothing/cloak/half/brown)
 	if(prob(30))
-		head = pick(/obj/item/clothing/head/roguetown/knitcap, /obj/item/clothing/head/roguetown/bardhat, /obj/item/clothing/head/roguetown/courtierhat, /obj/item/clothing/head/roguetown/fancyhat)
+		head = pick(/obj/item/clothing/head/knitcap, /obj/item/clothing/head/bardhat, /obj/item/clothing/head/courtierhat, /obj/item/clothing/head/fancyhat)
 	if(prob(15))
 		r_hand = pick(/obj/item/rogue/instrument/lute, /obj/item/rogue/instrument/accord, /obj/item/rogue/instrument/guitar, /obj/item/rogue/instrument/flute, /obj/item/rogue/instrument/hurdygurdy, /obj/item/rogue/instrument/viola)
 		if(H.mind)

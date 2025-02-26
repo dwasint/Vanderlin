@@ -47,8 +47,8 @@
 			backl= /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow //we really need to make this not a grenade launcher subtype
 			beltr = /obj/item/ammo_holder/quiver/bolts
 			r_hand = /obj/item/weapon/polearm/spear/billhook
-			head = /obj/item/clothing/head/roguetown/helmet/kettle
+			head = /obj/item/clothing/head/helmet/kettle
 		if("Sword & Buckler") //Mercenary on the wrong side of the law
 			backl= /obj/item/weapon/shield/tower/buckleriron
 			beltr = /obj/item/weapon/sword //steel sword like literally every adventurer gets
-			head = /obj/item/clothing/head/roguetown/helmet/sallet
+			head = /obj/item/clothing/head/helmet/sallet

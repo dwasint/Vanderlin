@@ -101,7 +101,7 @@
 /obj/item/flashlight/flare/torch{
 	pixel_x = -10
 	},
-/obj/item/clothing/head/roguetown/antlerhood{
+/obj/item/clothing/head/antlerhood{
 	pixel_x = 11
 	},
 /turf/open/floor/rogue/naturalstone,

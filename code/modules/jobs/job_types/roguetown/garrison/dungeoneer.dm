@@ -33,7 +33,7 @@
 
 /datum/outfit/job/roguetown/dungeoneer/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/menacing
+	head = /obj/item/clothing/head/menacing
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor	// Small storage. N.
 	pants = /obj/item/clothing/pants/trou
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes

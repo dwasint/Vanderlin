@@ -15,7 +15,7 @@
 	shoes = /obj/item/clothing/shoes/roguetown/grenzelhoft
 	gloves = /obj/item/clothing/gloves/roguetown/angle/grenzel
 	wrists = /obj/item/clothing/neck/roguetown/psycross/g
-	head = /obj/item/clothing/head/roguetown/helmet/skullcap/grenzelhoft
+	head = /obj/item/clothing/head/helmet/skullcap/grenzelhoft
 	armor = /obj/item/clothing/suit/roguetown/armor/brigandine
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
 	beltl = /obj/item/weapon/sword/sabre/dec
@@ -70,7 +70,7 @@
 	shoes = /obj/item/clothing/shoes/roguetown/grenzelhoft
 	gloves = /obj/item/clothing/gloves/roguetown/angle/grenzel
 	wrists = /obj/item/clothing/neck/roguetown/psycross/g
-	head = /obj/item/clothing/head/roguetown/helmet/skullcap/grenzelhoft
+	head = /obj/item/clothing/head/helmet/skullcap/grenzelhoft
 	armor = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/dress/alt
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
 	beltl = /obj/item/weapon/sword/rapier/dec
@@ -146,7 +146,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 	armor = /obj/item/clothing/suit/roguetown/armor/rare/grenzelplate
 	backl = /obj/item/storage/backpack/rogue/satchel
-	head = /obj/item/clothing/head/roguetown/rare/grenzelplate
+	head = /obj/item/clothing/head/rare/grenzelplate
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
 	if(!H.has_language(/datum/language/oldpsydonic))
@@ -196,7 +196,7 @@
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/weapon/mace/cudgel
 	shirt = /obj/item/clothing/suit/roguetown/shirt/grenzelhoft
-	head = /obj/item/clothing/head/roguetown/helmet/skullcap/grenzelhoft
+	head = /obj/item/clothing/head/helmet/skullcap/grenzelhoft
 	armor = /obj/item/clothing/suit/roguetown/armor/cuirass/grenzelhoft
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backr = /obj/item/weapon/sword/long/greatsword/zwei

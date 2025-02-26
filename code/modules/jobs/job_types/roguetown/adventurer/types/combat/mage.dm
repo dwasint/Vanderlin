@@ -22,7 +22,7 @@
 
 /datum/outfit/job/roguetown/adventurer/mage/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/roguehood/mage
+	head = /obj/item/clothing/head/roguehood/mage
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 	armor = /obj/item/clothing/suit/roguetown/shirt/robe/mage
 	belt = /obj/item/storage/belt/rogue/leather/rope
@@ -39,7 +39,7 @@
 		H.mind?.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/craft/alchemy, 2, TRUE)
 		if(H.age == AGE_OLD)
-			head = /obj/item/clothing/head/roguetown/wizhat/gen
+			head = /obj/item/clothing/head/wizhat/gen
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/plain
 			backl = /obj/item/storage/backpack/rogue/backpack
 			H.mind?.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)

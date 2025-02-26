@@ -19,7 +19,7 @@
 	shoes = /obj/item/clothing/shoes/roguetown/grenzelhoft
 	gloves = /obj/item/clothing/gloves/roguetown/angle/grenzel
 	wrists = /obj/item/clothing/neck/roguetown/psycross/g
-	head = /obj/item/clothing/head/roguetown/helmet/skullcap/grenzelhoft
+	head = /obj/item/clothing/head/helmet/skullcap/grenzelhoft
 	armor = /obj/item/clothing/suit/roguetown/armor/brigandine
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
 	beltl = /obj/item/weapon/sword/sabre/dec

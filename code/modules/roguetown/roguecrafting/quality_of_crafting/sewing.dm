@@ -104,18 +104,18 @@
 
 /datum/repeatable_crafting_recipe/sewing/headband
 	name = "headband"
-	output = /obj/item/clothing/head/roguetown/headband
+	output = /obj/item/clothing/head/headband
 	requirements = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 1)
 
 /datum/repeatable_crafting_recipe/sewing/strawhat
 	name = "crude straw hat"
-	output = /obj/item/clothing/head/roguetown/strawhat
+	output = /obj/item/clothing/head/strawhat
 	requirements = list(/obj/item/natural/fibers = 3)
 
 /datum/repeatable_crafting_recipe/sewing/knitcap
 	name = "knit cap"
-	output = /obj/item/clothing/head/roguetown/knitcap
+	output = /obj/item/clothing/head/knitcap
 	requirements = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 1)
 
@@ -162,13 +162,13 @@
 
 /datum/repeatable_crafting_recipe/sewing/fisherhat
 	name = "straw fisher hat"
-	output = /obj/item/clothing/head/roguetown/fisherhat
+	output = /obj/item/clothing/head/fisherhat
 	requirements = list(/obj/item/natural/fibers = 3)
 	craftdiff = 1
 
 /datum/repeatable_crafting_recipe/sewing/sack
 	name = "sack hood"
-	output = /obj/item/clothing/head/roguetown/menacing
+	output = /obj/item/clothing/head/menacing
 	requirements = list(/obj/item/natural/cloth = 3)
 	craftdiff = 1
 
@@ -201,7 +201,7 @@
 
 /datum/repeatable_crafting_recipe/sewing/armingcap
 	name = "arming cap"
-	output = /obj/item/clothing/head/roguetown/armingcap
+	output = /obj/item/clothing/head/armingcap
 	requirements = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 1
@@ -299,7 +299,7 @@
 
 /datum/repeatable_crafting_recipe/sewing/wizhat
 	name = "wizard hat"
-	output = /obj/item/clothing/head/roguetown/wizhat
+	output = /obj/item/clothing/head/wizhat
 	requirements = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
@@ -443,7 +443,7 @@
 
 /datum/repeatable_crafting_recipe/sewing/fancyhat
 	name = "fancy hat"
-	output = /obj/item/clothing/head/roguetown/fancyhat
+	output = /obj/item/clothing/head/fancyhat
 	requirements = list(/obj/item/natural/cloth = 1,
 				/obj/item/natural/fibers = 1,
 				/obj/item/natural/feather = 1)
@@ -451,7 +451,7 @@
 
 /datum/repeatable_crafting_recipe/sewing/courtierhat
 	name = "courtier hat"
-	output = /obj/item/clothing/head/roguetown/courtierhat
+	output = /obj/item/clothing/head/courtierhat
 	requirements = list(/obj/item/natural/cloth = 1,
 				/obj/item/natural/fibers = 1,
 				/obj/item/natural/feather = 1)
@@ -459,7 +459,7 @@
 
 /datum/repeatable_crafting_recipe/sewing/bardhat
 	name = "bard hat"
-	output = /obj/item/clothing/head/roguetown/bardhat
+	output = /obj/item/clothing/head/bardhat
 	requirements = list(/obj/item/natural/cloth = 1,
 				/obj/item/natural/fibers = 1,
 				/obj/item/natural/feather = 1)
@@ -467,7 +467,7 @@
 
 /datum/repeatable_crafting_recipe/sewing/chaperonhat
 	name = "chaperon hat"
-	output = /obj/item/clothing/head/roguetown/chaperon/greyscale
+	output = /obj/item/clothing/head/chaperon/greyscale
 	requirements = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 4
@@ -551,28 +551,28 @@
 
 /datum/repeatable_crafting_recipe/sewing/weaving/nochood
 	name = "hood (moon/Noc)"
-	output = /obj/item/clothing/head/roguetown/roguehood/nochood
+	output = /obj/item/clothing/head/roguehood/nochood
 	requirements = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/silk = 1)
 	craftdiff = 3
 
 /datum/repeatable_crafting_recipe/sewing/weaving/necrahood
 	name = "hood (Necra)"
-	output = /obj/item/clothing/head/roguetown/padded/deathshroud
+	output = /obj/item/clothing/head/padded/deathshroud
 	requirements = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/silk = 1)
 	craftdiff = 3
 
 /datum/repeatable_crafting_recipe/sewing/weaving/eoramask
 	name = "mask (Eora)"
-	output = /obj/item/clothing/head/roguetown/padded/operavisage
+	output = /obj/item/clothing/head/padded/operavisage
 	requirements = list(/obj/item/ingot/silver = 1,
 				/obj/item/natural/silk = 4)
 	craftdiff = 3
 
 /datum/repeatable_crafting_recipe/sewing/weaving/astratahood
 	name = "hood (solar/Astrata)"
-	output = /obj/item/clothing/head/roguetown/roguehood/astrata
+	output = /obj/item/clothing/head/roguehood/astrata
 	requirements = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/silk = 1)
 	craftdiff = 3
@@ -592,7 +592,7 @@
 
 /datum/repeatable_crafting_recipe/sewing/weaving/nunhood
 	name = "hood (nun)"
-	output = /obj/item/clothing/head/roguetown/nun
+	output = /obj/item/clothing/head/nun
 	requirements = list(/obj/item/natural/silk = 2)
 	craftdiff = 3
 
@@ -620,7 +620,7 @@
 
 /datum/repeatable_crafting_recipe/sewing/weaving/silkchaperone
 	name = "hat (chaperone)"
-	output = /obj/item/clothing/head/roguetown/chaperon/greyscale/silk
+	output = /obj/item/clothing/head/chaperon/greyscale/silk
 	requirements = list(/obj/item/natural/cloth = 1,
 				/obj/item/natural/silk = 2)
 	craftdiff = 4

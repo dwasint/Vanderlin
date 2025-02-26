@@ -101,7 +101,7 @@
 /obj/item/clothing/shoes/roguetown/boots,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /mob/living/carbon/human/species/skeleton/npc/no_equipment,
-/obj/item/clothing/head/roguetown/crown/circlet/vision,
+/obj/item/clothing/head/crown/circlet/vision,
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors/shelter/bog)
 "bp" = (
@@ -110,11 +110,11 @@
 /area/rogue/indoors/shelter/bog)
 "bq" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/head/roguetown/helmet/leather/conical{
+/obj/item/clothing/head/helmet/leather/conical{
 	pixel_x = -7;
 	pixel_y = 10
 	},
-/obj/item/clothing/head/roguetown/helmet/leather/conical{
+/obj/item/clothing/head/helmet/leather/conical{
 	pixel_y = 3;
 	pixel_x = 9
 	},
@@ -438,7 +438,7 @@
 	icon_state = "largetable";
 	dir = 6
 	},
-/obj/item/clothing/head/roguetown/fancyhat,
+/obj/item/clothing/head/fancyhat,
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors/shelter/bog)
 "fj" = (
@@ -573,7 +573,7 @@
 /obj/structure/rack/rogue,
 /obj/item/clothing/suit/roguetown/armor/leather/hide/orc,
 /obj/item/clothing/cloak/raincloak/brown,
-/obj/item/clothing/head/roguetown/helmet/leather/orc,
+/obj/item/clothing/head/helmet/leather/orc,
 /obj/item/weapon/whip,
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors/shelter/bog)
@@ -799,7 +799,7 @@
 /obj/structure/closet/crate/roguecloset/inn,
 /obj/item/clothing/suit/roguetown/shirt/undershirt,
 /obj/item/clothing/pants/tights/black,
-/obj/item/clothing/head/roguetown/cookhat,
+/obj/item/clothing/head/cookhat,
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/indoors/shelter/bog)
 "kH" = (
@@ -2150,7 +2150,7 @@
 "CL" = (
 /obj/structure/rack/rogue,
 /obj/item/clothing/suit/roguetown/armor/chainmail/iron/orc,
-/obj/item/clothing/head/roguetown/helmet/orc,
+/obj/item/clothing/head/helmet/orc,
 /obj/item/weapon/sword/scimitar/falchion,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/shelter/bog)
@@ -2450,7 +2450,7 @@
 /area/rogue/outdoors/bog)
 "Hh" = (
 /obj/structure/closet/crate/chest,
-/obj/item/clothing/head/roguetown/helmet/leather/minershelm,
+/obj/item/clothing/head/helmet/leather/minershelm,
 /turf/open/floor/rogue/woodturned/nosmooth,
 /area/rogue/indoors/shelter/bog)
 "Hj" = (
@@ -2834,7 +2834,7 @@
 /area/rogue/indoors/shelter/bog)
 "Nd" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/head/roguetown/helmet/goblin,
+/obj/item/clothing/head/helmet/goblin,
 /obj/item/clothing/suit/roguetown/armor/cuirass/iron/goblin,
 /obj/item/weapon/sword/scimitar/messer,
 /turf/open/floor/rogue/dirt/road,
@@ -3035,7 +3035,7 @@
 "PK" = (
 /obj/structure/closet/crate/roguecloset/inn,
 /obj/item/clothing/suit/roguetown/shirt/dress,
-/obj/item/clothing/head/roguetown/softcap,
+/obj/item/clothing/head/softcap,
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/indoors/shelter/bog)
 "PM" = (

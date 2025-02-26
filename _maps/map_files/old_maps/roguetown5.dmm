@@ -10612,8 +10612,8 @@
 /area/rogue/indoors/town/manor)
 "Ra" = (
 /obj/structure/closet/crate/roguecloset,
-/obj/item/clothing/head/roguetown/helmet/leather,
-/obj/item/clothing/head/roguetown/roguehood/random,
+/obj/item/clothing/head/helmet/leather,
+/obj/item/clothing/head/roguehood/random,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/garrison)
 "Re" = (

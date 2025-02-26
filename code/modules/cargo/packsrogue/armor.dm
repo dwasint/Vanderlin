@@ -6,17 +6,17 @@
 /datum/supply_pack/rogue/armor/skullcap
 	name = "Skullcap Helmet"
 	cost = 30
-	contains = /obj/item/clothing/head/roguetown/helmet/skullcap
+	contains = /obj/item/clothing/head/helmet/skullcap
 
 /datum/supply_pack/rogue/armor/sallet
 	name = "Sallet Helmet"
 	cost = 30
-	contains = /obj/item/clothing/head/roguetown/helmet/sallet
+	contains = /obj/item/clothing/head/helmet/sallet
 
 /datum/supply_pack/rogue/armor/buckethelm
 	name = "Great Helm"
 	cost = 70
-	contains = /obj/item/clothing/head/roguetown/helmet/heavy/bucket
+	contains = /obj/item/clothing/head/helmet/heavy/bucket
 
 /datum/supply_pack/rogue/armor/imask
 	name = "Iron Facemask"

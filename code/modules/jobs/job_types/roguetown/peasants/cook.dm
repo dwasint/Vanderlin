@@ -45,7 +45,7 @@
 		shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
 		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 		cloak = /obj/item/clothing/cloak/apron/cook
-		head = /obj/item/clothing/head/roguetown/cookhat
+		head = /obj/item/clothing/head/cookhat
 		neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 		H.change_stat(STATKEY_CON, 2)
 	else
@@ -53,7 +53,7 @@
 		armor = /obj/item/clothing/suit/roguetown/armor/corset
 		pants = /obj/item/clothing/pants/skirt/red
 		cloak = /obj/item/clothing/cloak/apron/cook
-		head = /obj/item/clothing/head/roguetown/cookhat
+		head = /obj/item/clothing/head/cookhat
 		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 		neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 		H.change_stat(STATKEY_CON, 2)

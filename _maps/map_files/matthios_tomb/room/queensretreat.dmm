@@ -477,7 +477,7 @@
 	pixel_x = -32
 	},
 /obj/item/rogue/painting/queen,
-/obj/item/clothing/head/roguetown/crown/circlet/vision,
+/obj/item/clothing/head/crown/circlet/vision,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -534,8 +534,8 @@
 /area/rogue)
 "xJ" = (
 /obj/structure/table/wood/fine,
-/obj/item/clothing/head/roguetown/crown/circlet,
-/obj/item/clothing/head/roguetown/roguehood/eora,
+/obj/item/clothing/head/crown/circlet,
+/obj/item/clothing/head/roguehood/eora,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -997,7 +997,7 @@
 "RH" = (
 /obj/structure/closet/crate/roguecloset,
 /obj/item/clothing/suit/roguetown/shirt/dress,
-/obj/item/clothing/head/roguetown/crown/serpcrown/surplus,
+/obj/item/clothing/head/crown/serpcrown/surplus,
 /obj/item/clothing/pants/tights/random,
 /obj/item/clothing/suit/roguetown/shirt/dress/gen/purple,
 /obj/item/clothing/suit/roguetown/shirt/dress/silkdress,

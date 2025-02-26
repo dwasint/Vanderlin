@@ -329,7 +329,7 @@
 			r_hand = /obj/item/weapon/mace/woodclub
 			armor = /obj/item/clothing/suit/roguetown/armor/leather/hide/goblin
 			if(prob(10))
-				head = /obj/item/clothing/head/roguetown/helmet/leather/goblin
+				head = /obj/item/clothing/head/helmet/leather/goblin
 		if(4) //lightly armored sword/flail/daggers
 			H.simpmob_attack += 25
 			H.simpmob_defend += 10
@@ -344,7 +344,7 @@
 				l_hand = /obj/item/weapon/knife/stone
 			armor = /obj/item/clothing/suit/roguetown/armor/leather/goblin
 			if(prob(80))
-				head = /obj/item/clothing/head/roguetown/helmet/leather/goblin
+				head = /obj/item/clothing/head/helmet/leather/goblin
 		if(5) //heavy armored sword/flail/shields
 			H.simpmob_attack += 45
 			H.simpmob_defend += 25
@@ -354,9 +354,9 @@
 			else
 				armor = /obj/item/clothing/suit/roguetown/armor/leather/goblin
 			if(prob(80))
-				head = /obj/item/clothing/head/roguetown/helmet/goblin
+				head = /obj/item/clothing/head/helmet/goblin
 			else
-				head = /obj/item/clothing/head/roguetown/helmet/leather/goblin
+				head = /obj/item/clothing/head/helmet/leather/goblin
 			if(prob(50))
 				r_hand = /obj/item/weapon/sword/iron
 			else

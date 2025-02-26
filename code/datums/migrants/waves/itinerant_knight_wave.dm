@@ -7,7 +7,7 @@
 	advjob_examine = FALSE
 /datum/outfit/job/roguetown/itinerant_knight/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/helmet/visored/sallet
+	head = /obj/item/clothing/head/helmet/visored/sallet
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	gloves = /obj/item/clothing/gloves/roguetown/plate
 	pants = /obj/item/clothing/pants/platelegs

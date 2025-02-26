@@ -1014,7 +1014,7 @@
 "bhD" = (
 /obj/effect/decal/remains/human,
 /obj/effect/decal/cleanable/blood/old,
-/obj/item/clothing/head/roguetown/crown/serpcrown/surplus,
+/obj/item/clothing/head/crown/serpcrown/surplus,
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/cave/spider)
 "bhL" = (
@@ -1686,7 +1686,7 @@
 	dir = 1
 	},
 /obj/item/weapon/knife/cleaver,
-/obj/item/clothing/head/roguetown/cookhat,
+/obj/item/clothing/head/cookhat,
 /turf/open/floor/rogue/tile/checker,
 /area/rogue/indoors/town/manor{
 	first_time_text = "Blackwine Manor"
@@ -3904,8 +3904,8 @@
 /obj/structure/rack/rogue{
 	pixel_y = 16
 	},
-/obj/item/clothing/head/roguetown/helmet/heavy/savoyard,
-/obj/item/clothing/head/roguetown/helmet/heavy/savoyard,
+/obj/item/clothing/head/helmet/heavy/savoyard,
+/obj/item/clothing/head/helmet/heavy/savoyard,
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/indoors/town/garrison)
 "erc" = (
@@ -6729,7 +6729,7 @@
 /area/rogue/indoors/town)
 "hBb" = (
 /obj/structure/bed/rogue/shit,
-/obj/item/clothing/head/roguetown/bardhat,
+/obj/item/clothing/head/bardhat,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/shelter/rtfield)
 "hBx" = (
@@ -7708,7 +7708,7 @@
 /area/rogue/outdoors/exposed/under/sewer)
 "izd" = (
 /obj/structure/bed/rogue/shit,
-/obj/item/clothing/head/roguetown/helmet/leather/inquisitor,
+/obj/item/clothing/head/helmet/leather/inquisitor,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/shelter/rtfield)
 "izo" = (
@@ -7773,8 +7773,8 @@
 /area/rogue/indoors/town/shop)
 "iDr" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/head/roguetown/helmet/heavy/savoyard,
-/obj/item/clothing/head/roguetown/helmet/heavy/savoyard,
+/obj/item/clothing/head/helmet/heavy/savoyard,
+/obj/item/clothing/head/helmet/heavy/savoyard,
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/indoors/town/garrison)
 "iDN" = (
@@ -7782,7 +7782,7 @@
 /area/rogue/indoors/shelter/mountains)
 "iDQ" = (
 /obj/structure/closet/crate/roguecloset/crafted,
-/obj/item/clothing/head/roguetown/jester,
+/obj/item/clothing/head/jester,
 /obj/item/clothing/mask/gas/sexymime{
 	name = "pantomime mask"
 	},
@@ -10795,7 +10795,7 @@
 /area/rogue/indoors/town)
 "lNb" = (
 /obj/effect/decal/cleanable/blood/gibs/core,
-/obj/item/clothing/head/roguetown/cookhat,
+/obj/item/clothing/head/cookhat,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/shelter/rtfield)
 "lNk" = (
@@ -11289,9 +11289,9 @@
 /area/rogue/outdoors/town/roofs)
 "mpt" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/head/roguetown/helmet/skullcap,
-/obj/item/clothing/head/roguetown/helmet/skullcap,
-/obj/item/clothing/head/roguetown/helmet/skullcap,
+/obj/item/clothing/head/helmet/skullcap,
+/obj/item/clothing/head/helmet/skullcap,
+/obj/item/clothing/head/helmet/skullcap,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors/town/garrison)
 "mpF" = (
@@ -14472,8 +14472,8 @@
 "prj" = (
 /obj/item/clothing/suit/roguetown/shirt/robe/wizard,
 /obj/structure/closet/crate/roguecloset/inn/chest,
-/obj/item/clothing/head/roguetown/wizhat,
-/obj/item/clothing/head/roguetown/wizhat/gen,
+/obj/item/clothing/head/wizhat,
+/obj/item/clothing/head/wizhat/gen,
 /obj/item/clothing/cloak/raincloak/blue,
 /obj/item/clothing/mask/cigarette/pipe/westman,
 /turf/open/floor/rogue/tile,
@@ -15102,7 +15102,7 @@
 /obj/effect/decal/cobbleedge{
 	dir = 9
 	},
-/obj/item/clothing/head/roguetown/bardhat{
+/obj/item/clothing/head/bardhat{
 	pixel_y = 7
 	},
 /turf/open/floor/rogue/carpet,
@@ -15953,7 +15953,7 @@
 /obj/item/candle,
 /obj/item/clothing/mask/rat/jackal,
 /obj/item/clothing/mask/muzzle,
-/obj/item/clothing/head/roguetown/nun,
+/obj/item/clothing/head/nun,
 /obj/item/clothing/suit/roguetown/armor/amazon_chainkini,
 /obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy,
 /turf/open/floor/rogue/ruinedwood/spiral,
@@ -15988,7 +15988,7 @@
 /area/rogue/indoors/town/warehouse)
 "qZv" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/head/roguetown/helmet/skullcap,
+/obj/item/clothing/head/helmet/skullcap,
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/shelter/town/dwarf)
 "qZR" = (
@@ -16625,7 +16625,7 @@
 	pixel_x = 16;
 	pixel_y = 32
 	},
-/obj/item/clothing/head/roguetown/menacing,
+/obj/item/clothing/head/menacing,
 /obj/item/clothing/glasses/blindfold/white{
 	name = "blindfold"
 	},
@@ -18088,7 +18088,7 @@
 "tmk" = (
 /obj/structure/closet/crate/drawer,
 /obj/machinery/light/rogue/wallfire/candle/r,
-/obj/item/clothing/head/roguetown/chaperon,
+/obj/item/clothing/head/chaperon,
 /obj/item/storage/box/matches,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/manor{
@@ -19083,7 +19083,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/town)
 "ukr" = (
-/obj/item/clothing/head/roguetown/helmet/leather,
+/obj/item/clothing/head/helmet/leather,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/cave{
 	name = "vulf cave";
@@ -19271,7 +19271,7 @@
 /area/rogue/under/town/basement)
 "uwa" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/item/clothing/head/roguetown/knitcap,
+/obj/item/clothing/head/knitcap,
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/indoors/shelter/rtfield)
 "uwk" = (
@@ -19285,7 +19285,7 @@
 /turf/open/transparent/openspace,
 /area/rogue)
 "uwG" = (
-/obj/item/clothing/head/roguetown/jester,
+/obj/item/clothing/head/jester,
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/exposed/under/basement)
 "uxm" = (

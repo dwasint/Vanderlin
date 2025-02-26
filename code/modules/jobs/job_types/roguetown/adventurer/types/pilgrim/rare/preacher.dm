@@ -22,7 +22,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/priest
 	pants = /obj/item/clothing/pants/tights/black
 	neck = /obj/item/clothing/neck/roguetown/psycross
-	head = /obj/item/clothing/head/roguetown/brimmed
+	head = /obj/item/clothing/head/brimmed
 	r_hand = /obj/item/book/rogue/psybibble
 	beltl = /obj/item/handheld_bell
 	if(H.mind)

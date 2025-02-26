@@ -21,7 +21,7 @@
 	..()
 	shoes = /obj/item/clothing/shoes/roguetown/shalal
 	gloves = /obj/item/clothing/gloves/roguetown/leather
-	head = /obj/item/clothing/head/roguetown/crown/circlet
+	head = /obj/item/clothing/head/crown/circlet
 	cloak = /obj/item/clothing/cloak/raincloak/purple
 	armor = /obj/item/clothing/suit/roguetown/armor/gambeson/arming
 	belt = /obj/item/storage/belt/rogue/leather/shalal
@@ -89,7 +89,7 @@
 	..()
 	shoes = /obj/item/clothing/shoes/roguetown/shalal
 	gloves = /obj/item/clothing/gloves/roguetown/leather
-	head = /obj/item/clothing/head/roguetown/crown/nyle
+	head = /obj/item/clothing/head/crown/nyle
 	cloak = /obj/item/clothing/cloak/raincloak/purple
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/jacket/silk_coat
 	belt = /obj/item/storage/belt/rogue/leather/shalal
@@ -178,7 +178,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 	armor = /obj/item/clothing/suit/roguetown/armor/rare/zybanplate
 	backl = /obj/item/storage/backpack/rogue/satchel
-	head = /obj/item/clothing/head/roguetown/rare/zybanplate
+	head = /obj/item/clothing/head/rare/zybanplate
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
 	if(!H.has_language(/datum/language/zybantine))
@@ -211,7 +211,7 @@
 /datum/outfit/job/roguetown/zybantine_migration/zybantine_guard/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/roguetown/shalal
-	head = /obj/item/clothing/head/roguetown/helmet/sallet/zybantine
+	head = /obj/item/clothing/head/helmet/sallet/zybantine
 	gloves = /obj/item/clothing/gloves/roguetown/angle
 	belt = /obj/item/storage/belt/rogue/leather/shalal
 	armor = /obj/item/clothing/suit/roguetown/armor/brigandine/coatplates

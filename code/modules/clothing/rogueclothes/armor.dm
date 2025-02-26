@@ -1011,7 +1011,7 @@
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 
-/obj/item/clothing/head/roguetown/vampire
+/obj/item/clothing/head/vampire
 	name = "crown of darkness"
 	icon_state = "vcrown"
 	body_parts_covered = null

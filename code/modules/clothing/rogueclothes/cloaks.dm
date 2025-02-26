@@ -1139,7 +1139,7 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
 	sleeved = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
 
-/obj/item/clothing/head/roguetown/helmet/heavy/blkknight
+/obj/item/clothing/head/helmet/heavy/blkknight
 	name = "blacksteel helmet"
 	desc = "A helmet black as nite, with blue decorations. Instills fear upon those that gaze upon it."
 	icon_state = "bkhelm"

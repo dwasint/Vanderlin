@@ -467,7 +467,7 @@
 
 /datum/crafting_recipe/roguetown/antlerhood
 	name = "antlerhood"
-	result = /obj/item/clothing/head/roguetown/antlerhood
+	result = /obj/item/clothing/head/antlerhood
 	reqs = list(/obj/item/natural/hide = 1,
 				/obj/item/alch/bone = 2)
 	sellprice = 12

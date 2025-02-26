@@ -51,7 +51,7 @@
 /area/rogue/outdoors/mountains/decap)
 "bh" = (
 /obj/structure/table/wood/reinforced,
-/obj/item/clothing/head/roguetown/wizhat,
+/obj/item/clothing/head/wizhat,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/cavelava)
@@ -647,7 +647,7 @@
 "nP" = (
 /obj/structure/closet/crate/roguecloset/inn,
 /obj/item/clothing/ring/gold/ravox,
-/obj/item/clothing/head/roguetown/crown/circlet/vision,
+/obj/item/clothing/head/crown/circlet/vision,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/carpet/red,
 /area/rogue/under/cavelava)
@@ -1164,7 +1164,7 @@
 "BE" = (
 /obj/structure/closet/crate/roguecloset/dark,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/item/clothing/head/roguetown/helmet/skullcap,
+/obj/item/clothing/head/helmet/skullcap,
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/under/cavelava)
 "BK" = (
@@ -1201,7 +1201,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cavelava)
 "DA" = (
-/obj/item/clothing/head/roguetown/brimmed,
+/obj/item/clothing/head/brimmed,
 /turf/open/floor/rogue/ruinedwood/turned/darker,
 /area/rogue/indoors/town/dwarfin)
 "DC" = (
@@ -1444,7 +1444,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/town/dwarfin)
 "IM" = (
-/obj/item/clothing/head/roguetown/hatfur,
+/obj/item/clothing/head/hatfur,
 /obj/effect/decal/cleanable/blood/old{
 	icon_state = "gib6-old"
 	},
@@ -1467,7 +1467,7 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/closet/crate/coffin,
 /obj/item/clothing/ring/silver/calm,
-/obj/item/clothing/head/roguetown/helmet/sallet/zybantine,
+/obj/item/clothing/head/helmet/sallet/zybantine,
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/cavelava)
 "Jh" = (

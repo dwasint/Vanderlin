@@ -45,7 +45,7 @@
 		H.mind?.adjust_skillrank(/datum/skill/craft/smelting, 4, TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 
-	head = /obj/item/clothing/head/roguetown/articap
+	head = /obj/item/clothing/head/articap
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/jacket/artijacket
 	pants = /obj/item/clothing/pants/trou/artipants
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/artificer
@@ -65,5 +65,5 @@
 	H.change_stat(STATKEY_SPD, -1)
 
 	if(H.dna.species.id == "dwarf")
-		head = /obj/item/clothing/head/roguetown/helmet/leather/minershelm
+		head = /obj/item/clothing/head/helmet/leather/minershelm
 		H.cmode_music = 'sound/music/cmode/combat_dwarf.ogg'

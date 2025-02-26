@@ -32,7 +32,7 @@
 	prevent_crits = ALL_EXCEPT_BLUNT
 	max_integrity = INTEGRITY_POOR
 
-/obj/item/clothing/head/roguetown/helmet/orc
+/obj/item/clothing/head/helmet/orc
 	name = "Orc Marauder Helmet"
 	icon_state = "marauder_helm_item"
 	item_state = "marauder_helm"
@@ -46,7 +46,7 @@
 	max_integrity = 100
 	sellprice = 5
 
-/obj/item/clothing/head/roguetown/helmet/orc/warlord
+/obj/item/clothing/head/helmet/orc/warlord
 	name = "Orc Warlord Helmet"
 	icon_state = "warlord_helm"
 	item_state = "warlord_helm"
@@ -56,7 +56,7 @@
 	max_integrity = 150
 	sellprice = 10
 
-/obj/item/clothing/head/roguetown/helmet/leather/orc
+/obj/item/clothing/head/helmet/leather/orc
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_HIP
 	name = "leather helmet"
 	desc = ""

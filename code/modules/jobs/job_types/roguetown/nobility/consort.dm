@@ -42,7 +42,7 @@
 	job_bitflag = BITFLAG_ROYALTY
 
 /datum/outfit/job/roguetown/consort // Default equipment regardless of class.
-	head = /obj/item/clothing/head/roguetown/crown/nyle/consortcrown
+	head = /obj/item/clothing/head/crown/nyle/consortcrown
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	id = /obj/item/clothing/ring/silver
 	belt = /obj/item/storage/belt/rogue/leather

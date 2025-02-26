@@ -23,7 +23,7 @@
 /datum/outfit/job/roguetown/adventurer/crusader/pre_equip(mob/living/carbon/human/H)
 	..()
 
-	head = /obj/item/clothing/head/roguetown/helmet/heavy/crusader
+	head = /obj/item/clothing/head/helmet/heavy/crusader
 	neck = /obj/item/clothing/neck/roguetown/coif/cloth
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 	cloak = /obj/item/clothing/cloak/cape/crusader
@@ -75,7 +75,7 @@
 
 	// Females are crossbow and dagger based
 	if(H.gender == FEMALE)
-		head = /obj/item/clothing/head/roguetown/helmet/heavy/crusader/t
+		head = /obj/item/clothing/head/helmet/heavy/crusader/t
 		backr = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 		beltl = /obj/item/weapon/knife/dagger/silver
 		beltr = /obj/item/ammo_holder/quiver/bolts
@@ -120,7 +120,7 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/crusader.dmi'
 	sleeved = 'icons/roguetown/clothing/special/onmob/crusader.dmi'
 
-/obj/item/clothing/head/roguetown/helmet/heavy/crusader
+/obj/item/clothing/head/helmet/heavy/crusader
 	name = "bucket helm"
 	desc = "Proud knights of the Totod order displays their faith and their allegiance openly."
 	icon_state = "totodhelm"
@@ -130,7 +130,7 @@
 	worn_x_dimension = 64
 	worn_y_dimension = 64
 
-/obj/item/clothing/head/roguetown/helmet/heavy/crusader/t
+/obj/item/clothing/head/helmet/heavy/crusader/t
 	desc = "A silver gilded bucket helm, inscriptions in old Psydonic are found embezzeled on every inch of silver. Grenzelhoft specializes in these helmets, the Totod order has been purchasing them en-masse."
 	icon_state = "crusader_helmt2"
 	icon = 'icons/roguetown/clothing/special/crusader.dmi'

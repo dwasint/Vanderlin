@@ -36,7 +36,7 @@
 	belt = /obj/item/storage/belt/rogue/leather/rope
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 	pants = /obj/item/clothing/pants/trou
-	head = /obj/item/clothing/head/roguetown/strawhat
+	head = /obj/item/clothing/head/strawhat
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	backr = /obj/item/weapon/hoe
@@ -48,7 +48,7 @@
 	var/obj/item/weapon/pitchfork/P = new()
 	H.put_in_hands(P, forced = TRUE)
 	if(H.gender == FEMALE)
-		head = /obj/item/clothing/head/roguetown/armingcap
+		head = /obj/item/clothing/head/armingcap
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 		pants = null

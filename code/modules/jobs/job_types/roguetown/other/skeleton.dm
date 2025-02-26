@@ -103,23 +103,23 @@
 
 	switch(pick(1,9))
 		if (1)
-			head = /obj/item/clothing/head/roguetown/helmet/kettle
+			head = /obj/item/clothing/head/helmet/kettle
 		if (2)
-			head = /obj/item/clothing/head/roguetown/helmet/winged
+			head = /obj/item/clothing/head/helmet/winged
 		if (3)
-			head = /obj/item/clothing/head/roguetown/helmet/leather/conical
+			head = /obj/item/clothing/head/helmet/leather/conical
 		if (4)
-			head = /obj/item/clothing/head/roguetown/helmet/coppercap
+			head = /obj/item/clothing/head/helmet/coppercap
 		if (5)
 			neck = /obj/item/clothing/neck/roguetown/coif/cloth
 		if (6)
 			neck = /obj/item/clothing/neck/roguetown/coif
 		if (7)
-			head = /obj/item/clothing/head/roguetown/helmet/horned
+			head = /obj/item/clothing/head/helmet/horned
 		if (8)
-			head = /obj/item/clothing/head/roguetown/helmet/skullcap
+			head = /obj/item/clothing/head/helmet/skullcap
 		if (9)
-			head = /obj/item/clothing/head/roguetown/helmet
+			head = /obj/item/clothing/head/helmet
 
 	if(prob(20))
 		backr = /obj/item/weapon/shield/wood

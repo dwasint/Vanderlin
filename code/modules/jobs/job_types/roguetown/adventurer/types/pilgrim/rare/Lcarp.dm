@@ -42,7 +42,7 @@
 	H.mind?.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 	H.mind?.adjust_skillrank(/datum/skill/labor/lumberjacking, 4, TRUE)
 
-	head = pick(/obj/item/clothing/head/roguetown/hatfur, /obj/item/clothing/head/roguetown/hatblu, /obj/item/clothing/head/roguetown/brimmed)
+	head = pick(/obj/item/clothing/head/hatfur, /obj/item/clothing/head/hatblu, /obj/item/clothing/head/brimmed)
 	neck = /obj/item/clothing/neck/roguetown/coif
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/jacket
 	pants = /obj/item/clothing/pants/trou

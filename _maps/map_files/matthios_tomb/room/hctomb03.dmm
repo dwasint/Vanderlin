@@ -366,7 +366,7 @@
 /area/rogue)
 "nu" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/head/roguetown/rare/dwarfplate{
+/obj/item/clothing/head/rare/dwarfplate{
 	pixel_y = 5;
 	pixel_x = -6
 	},

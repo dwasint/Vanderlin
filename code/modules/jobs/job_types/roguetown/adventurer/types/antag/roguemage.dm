@@ -19,7 +19,7 @@
 	backpack_contents = list(/obj/item/needle/thorn = 1, /obj/item/natural/cloth = 1)
 	mask = /obj/item/clothing/mask/rogue/facemask/steel //idk if this makes it so they cant cast but i want all of the bandits to have the same mask
 	neck = /obj/item/clothing/neck/roguetown/coif
-	head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
+	head = /obj/item/clothing/head/helmet/leather/volfhelm
 
 	r_hand = /obj/item/weapon/polearm/woodstaff
 	if(H.mind)
@@ -39,7 +39,7 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/alchemy, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 3, TRUE)
 		if(H.age == AGE_OLD)
-			head = /obj/item/clothing/head/roguetown/wizhat/gen
+			head = /obj/item/clothing/head/wizhat/gen
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe
 			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
 			H.change_stat(STATKEY_SPD, -1)

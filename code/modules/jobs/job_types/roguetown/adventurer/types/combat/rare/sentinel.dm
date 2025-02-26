@@ -55,7 +55,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 	backl = /obj/item/weapon/polearm/spear
-	head = /obj/item/clothing/head/roguetown/helmet/leather
+	head = /obj/item/clothing/head/helmet/leather
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
 	if(prob(33))
 		if(!H.has_language(/datum/language/elvish))

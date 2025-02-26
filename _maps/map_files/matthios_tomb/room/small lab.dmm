@@ -235,7 +235,7 @@
 /obj/structure/closet/crate/roguecloset/inn/south,
 /obj/item/clothing/cloak/wickercloak,
 /obj/item/clothing/gloves/roguetown/fingerless,
-/obj/item/clothing/head/roguetown/antlerhood,
+/obj/item/clothing/head/antlerhood,
 /obj/item/clothing/mask/rogue/skullmask,
 /turf/open/floor/rogue/ruinedwood/turned/darker,
 /area/rogue)
@@ -429,7 +429,7 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue)
 "ZL" = (
-/obj/item/clothing/head/roguetown/hatblu,
+/obj/item/clothing/head/hatblu,
 /turf/open/floor/rogue/ruinedwood/turned/darker,
 /area/rogue)
 "ZT" = (

@@ -207,7 +207,7 @@
 "FX" = (
 /mob/living/carbon/human/species/skeleton/npc/warrior/skilled,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
-/obj/item/clothing/head/roguetown/helmet/heavy/crusader,
+/obj/item/clothing/head/helmet/heavy/crusader,
 /obj/item/clothing/gloves/roguetown/plate,
 /obj/item/clothing/neck/roguetown/bevor,
 /obj/item/clothing/pants/platelegs,
@@ -266,7 +266,7 @@
 /obj/effect/decal/cleanable/blood/tracks{
 	dir = 1
 	},
-/obj/item/clothing/head/roguetown/bardhat,
+/obj/item/clothing/head/bardhat,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/outdoors/caves)
 "SB" = (

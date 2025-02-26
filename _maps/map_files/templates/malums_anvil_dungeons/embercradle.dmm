@@ -405,7 +405,7 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "gG" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/head/roguetown/wizhat/gen,
+/obj/item/clothing/head/wizhat/gen,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "gN" = (
@@ -565,13 +565,13 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "jg" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/head/roguetown/helmet/skullcap,
-/obj/item/clothing/head/roguetown/helmet/skullcap,
-/obj/item/clothing/head/roguetown/helmet/skullcap,
-/obj/item/clothing/head/roguetown/helmet/skullcap,
-/obj/item/clothing/head/roguetown/helmet/skullcap,
-/obj/item/clothing/head/roguetown/helmet/skullcap,
-/obj/item/clothing/head/roguetown/helmet/skullcap,
+/obj/item/clothing/head/helmet/skullcap,
+/obj/item/clothing/head/helmet/skullcap,
+/obj/item/clothing/head/helmet/skullcap,
+/obj/item/clothing/head/helmet/skullcap,
+/obj/item/clothing/head/helmet/skullcap,
+/obj/item/clothing/head/helmet/skullcap,
+/obj/item/clothing/head/helmet/skullcap,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "jn" = (
@@ -930,7 +930,7 @@
 /obj/item/weapon/hammer/iron,
 /obj/item/weapon/tongs,
 /obj/item/clothing/shoes/roguetown/boots/leather,
-/obj/item/clothing/head/roguetown/softcap,
+/obj/item/clothing/head/softcap,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
@@ -958,7 +958,7 @@
 "nq" = (
 /obj/structure/closet/crate/chest/crafted,
 /obj/item/bodypart/head,
-/obj/item/clothing/head/roguetown/papakha,
+/obj/item/clothing/head/papakha,
 /turf/open/floor/rogue/twig,
 /area/rogue/under/mountains/anvil/dungeon)
 "nr" = (
@@ -972,11 +972,11 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "nM" = (
 /obj/structure/rack/rogue,
-/obj/item/clothing/head/roguetown/helmet/leather/minershelm,
-/obj/item/clothing/head/roguetown/helmet/leather/minershelm,
-/obj/item/clothing/head/roguetown/helmet/leather/minershelm,
-/obj/item/clothing/head/roguetown/helmet/leather/minershelm,
-/obj/item/clothing/head/roguetown/helmet/leather/minershelm,
+/obj/item/clothing/head/helmet/leather/minershelm,
+/obj/item/clothing/head/helmet/leather/minershelm,
+/obj/item/clothing/head/helmet/leather/minershelm,
+/obj/item/clothing/head/helmet/leather/minershelm,
+/obj/item/clothing/head/helmet/leather/minershelm,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "nP" = (
@@ -984,7 +984,7 @@
 /mob/living/carbon/human/species/skeleton/no_equipment{
 	real_name = "Shard"
 	},
-/obj/item/clothing/head/roguetown/bardhat,
+/obj/item/clothing/head/bardhat,
 /obj/item/clothing/cloak/raincloak/mortus,
 /obj/item/clothing/shoes/roguetown/boots/leather,
 /obj/item/clothing/gloves/roguetown/fingerless,
@@ -1249,7 +1249,7 @@
 /mob/living/carbon/human/species/skeleton/no_equipment{
 	real_name = "Shriek"
 	},
-/obj/item/clothing/head/roguetown/bardhat,
+/obj/item/clothing/head/bardhat,
 /obj/item/clothing/cloak/raincloak/green,
 /obj/item/clothing/shoes/roguetown/boots/leather,
 /obj/item/clothing/gloves/roguetown/fingerless,
@@ -1326,7 +1326,7 @@
 /mob/living/carbon/human/species/skeleton/no_equipment{
 	real_name = "Hollow"
 	},
-/obj/item/clothing/head/roguetown/bardhat,
+/obj/item/clothing/head/bardhat,
 /obj/item/clothing/cloak/raincloak/purple,
 /obj/item/clothing/shoes/roguetown/boots/leather,
 /obj/item/clothing/gloves/roguetown/fingerless,
@@ -1386,7 +1386,7 @@
 /mob/living/carbon/human/species/skeleton/no_equipment{
 	real_name = "Clatter"
 	},
-/obj/item/clothing/head/roguetown/bardhat,
+/obj/item/clothing/head/bardhat,
 /obj/item/clothing/cloak/raincloak/blue,
 /obj/item/clothing/shoes/roguetown/boots/leather,
 /obj/item/clothing/gloves/roguetown/fingerless,
@@ -1623,7 +1623,7 @@
 /mob/living/carbon/human/species/skeleton/no_equipment{
 	real_name = "Grin"
 	},
-/obj/item/clothing/head/roguetown/bardhat,
+/obj/item/clothing/head/bardhat,
 /obj/item/clothing/cloak/raincloak,
 /obj/item/clothing/shoes/roguetown/boots/leather,
 /obj/item/clothing/gloves/roguetown/fingerless,
@@ -1743,7 +1743,7 @@
 /mob/living/carbon/human/species/skeleton/no_equipment{
 	real_name = "Rattle"
 	},
-/obj/item/clothing/head/roguetown/bardhat,
+/obj/item/clothing/head/bardhat,
 /obj/item/clothing/cloak/raincloak/red,
 /obj/item/clothing/shoes/roguetown/boots/leather,
 /obj/item/clothing/gloves/roguetown/fingerless,
@@ -1836,7 +1836,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "yA" = (
-/obj/item/clothing/head/roguetown/helmet/skullcap,
+/obj/item/clothing/head/helmet/skullcap,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "yI" = (
@@ -2086,8 +2086,8 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "CA" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/clothing/head/roguetown/helmet/orc/warlord,
-/obj/item/clothing/head/roguetown/helmet/orc/warlord,
+/obj/item/clothing/head/helmet/orc/warlord,
+/obj/item/clothing/head/helmet/orc/warlord,
 /turf/open/floor/rogue/twig,
 /area/rogue/under/mountains/anvil/dungeon)
 "CB" = (
@@ -2099,7 +2099,7 @@
 /turf/closed/wall/mineral/rogue/wood,
 /area/rogue/under/mountains/anvil/dungeon)
 "CW" = (
-/obj/item/clothing/head/roguetown/helmet/heavy/sinistar,
+/obj/item/clothing/head/helmet/heavy/sinistar,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "CZ" = (
@@ -2368,7 +2368,7 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Gg" = (
 /mob/living/carbon/human/species/skeleton/npc/no_equipment,
-/obj/item/clothing/head/roguetown/helmet/horned,
+/obj/item/clothing/head/helmet/horned,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /obj/item/clothing/cloak/raincloak/furcloak/brown,
 /obj/item/clothing/shoes/roguetown/boots/leather,
@@ -2462,7 +2462,7 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Hw" = (
-/obj/item/clothing/head/roguetown/helmet/heavy/necked/noc,
+/obj/item/clothing/head/helmet/heavy/necked/noc,
 /obj/item/clothing/cloak/stabard/templar/noc,
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk,
 /obj/item/clothing/gloves/roguetown/chain,
@@ -2514,7 +2514,7 @@
 "HV" = (
 /obj/structure/rack/rogue,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/item/clothing/head/roguetown/wizhat,
+/obj/item/clothing/head/wizhat,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "HX" = (
@@ -2581,7 +2581,7 @@
 "IG" = (
 /mob/living/carbon/human/species/skeleton/npc/peasant,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
-/obj/item/clothing/head/roguetown/helmet/leather/minershelm,
+/obj/item/clothing/head/helmet/leather/minershelm,
 /obj/item/weapon/pick,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
@@ -2644,7 +2644,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Jc" = (
-/obj/item/clothing/head/roguetown/helmet/heavy/decorated/golden,
+/obj/item/clothing/head/helmet/heavy/decorated/golden,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "Jd" = (
@@ -2731,7 +2731,7 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "Kp" = (
 /obj/structure/closet/crate/chest/crafted,
-/obj/item/clothing/head/roguetown/helmet/battlenun,
+/obj/item/clothing/head/helmet/battlenun,
 /obj/item/clothing/cloak/battlenun,
 /obj/item/weapon/flail/sflail,
 /obj/item/handheld_bell,
@@ -2925,7 +2925,7 @@
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /obj/item/clothing/shoes/roguetown/boots,
 /obj/item/storage/belt/rogue/leather/black,
-/obj/item/clothing/head/roguetown/crown/nyle,
+/obj/item/clothing/head/crown/nyle,
 /turf/open/floor/rogue/carpet,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "ML" = (
@@ -3198,7 +3198,7 @@
 "Qn" = (
 /mob/living/carbon/human/species/skeleton/npc/peasant,
 /obj/item/weapon/pick,
-/obj/item/clothing/head/roguetown/helmet/leather/minershelm,
+/obj/item/clothing/head/helmet/leather/minershelm,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
@@ -3724,7 +3724,7 @@
 /mob/living/carbon/human/species/skeleton/npc/no_equipment,
 /obj/item/clothing/suit/roguetown/shirt/robe/noc,
 /obj/item/clothing/neck/roguetown/psycross/noc,
-/obj/item/clothing/head/roguetown/roguehood/nochood,
+/obj/item/clothing/head/roguehood/nochood,
 /obj/item/clothing/gloves/roguetown/leather/black,
 /obj/item/clothing/shoes/roguetown/boots/leather,
 /obj/item/clothing/pants/trou/leather,

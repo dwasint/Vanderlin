@@ -29,7 +29,7 @@
 	H.mind?.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
 	H.mind?.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
 	H.mind?.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-	head = /obj/item/clothing/head/roguetown/hatblu
+	head = /obj/item/clothing/head/hatblu
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest
 	cloak = /obj/item/clothing/cloak/apron/waist/bar
 	pants = /obj/item/clothing/pants/trou
@@ -46,4 +46,4 @@
 	H.change_stat(STATKEY_CON, 2)
 
 	if(H.dna.species.name == "Dwarf")
-		head = /obj/item/clothing/head/roguetown/helmet/leather/minershelm
+		head = /obj/item/clothing/head/helmet/leather/minershelm

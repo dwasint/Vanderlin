@@ -33,7 +33,7 @@
 	beltr = /obj/item/flashlight/flare/torch/lantern
 	beltl = /obj/item/weapon/whip // You know why.
 	backr = /obj/item/weapon/shovel
-	head = /obj/item/clothing/head/roguetown/helmet/leather/inquisitor
+	head = /obj/item/clothing/head/helmet/leather/inquisitor
 	neck = /obj/item/storage/belt/rogue/pouch
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)

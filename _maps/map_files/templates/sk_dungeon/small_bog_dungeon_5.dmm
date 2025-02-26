@@ -411,7 +411,7 @@
 /area/rogue/outdoors/bog)
 "Jk" = (
 /obj/structure/table/wood/plain,
-/obj/item/clothing/head/roguetown/crown/circlet/stink,
+/obj/item/clothing/head/crown/circlet/stink,
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors/bog)
 "JF" = (
@@ -452,7 +452,7 @@
 /area/rogue/outdoors/bog)
 "ML" = (
 /obj/structure/table/wood/plain,
-/obj/item/clothing/head/roguetown/helmet/heavy/crusader,
+/obj/item/clothing/head/helmet/heavy/crusader,
 /turf/open/floor/rogue/twig,
 /area/rogue/outdoors/bog)
 "Nj" = (

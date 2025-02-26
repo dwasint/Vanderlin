@@ -50,7 +50,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 
 /datum/outfit/job/roguetown/lord/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/crown/serpcrown
+	head = /obj/item/clothing/head/crown/serpcrown
 	backr = /obj/item/storage/backpack/rogue/satchel
 	belt = /obj/item/storage/belt/rogue/leather/plaquegold
 	backpack_contents = list(/obj/item/weapon/knife/dagger/steel/special = 1)

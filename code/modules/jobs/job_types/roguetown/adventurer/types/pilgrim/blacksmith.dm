@@ -72,5 +72,5 @@
 		shoes = /obj/item/clothing/shoes/roguetown/shortboots
 
 	if(H.dna.species.id == "dwarf")
-		head = /obj/item/clothing/head/roguetown/helmet/leather/minershelm
+		head = /obj/item/clothing/head/helmet/leather/minershelm
 		H.cmode_music = 'sound/music/cmode/combat_dwarf.ogg'

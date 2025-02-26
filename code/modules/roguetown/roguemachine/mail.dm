@@ -430,7 +430,7 @@
 			max_purchases = 5
 		),
 		"Head Sack (1)" = list(
-			list(type = /obj/item/clothing/head/roguetown/sack, count = 1),
+			list(type = /obj/item/clothing/head/sack, count = 1),
 			cost = 1,
 			max_purchases = 5
 		),

@@ -43,7 +43,7 @@
 		H.cmode_music = 'sound/music/cmode/adventurer/CombatOutlander2.ogg'
 		H.mind?.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/combat/shields, 2, TRUE)
-		head = /obj/item/clothing/head/roguetown/helmet/leather/minershelm
+		head = /obj/item/clothing/head/helmet/leather/minershelm
 		beltl = /obj/item/weapon/pick/paxe // Dorfs get a pick as their primary weapon and axes/maces to use it
 		backr = /obj/item/weapon/shield/wood
 	else // No miner's helm for Delves as they haven nitevision now.

@@ -169,7 +169,7 @@
 		/obj/item/weapon/sword/long/greatsword = 3,
 		/obj/item/weapon/axe/iron = 10,
 		/obj/item/ingot/gold = 5,
-		/obj/item/clothing/head/roguetown/crown/circlet = 2,
+		/obj/item/clothing/head/crown/circlet = 2,
 		/obj/item/clothing/suit/roguetown/armor/medium/scale = 8,
 		/obj/item/clothing/suit/roguetown/armor/plate = 8,
 		/obj/item/clothing/gloves/roguetown/chain = 3,
@@ -185,9 +185,9 @@
 		/obj/item/clothing/ring/gold/ravox = 6,
 		/obj/item/clothing/ring/silver/calm = 20,
 		/obj/item/clothing/ring/silver/noc = 6,
-		/obj/item/clothing/head/roguetown/crown/circlet/vision = 3,
-		/obj/item/clothing/head/roguetown/crown/circlet/sleepless = 3,
-		/obj/item/clothing/head/roguetown/crown/circlet/stink = 5,
+		/obj/item/clothing/head/crown/circlet/vision = 3,
+		/obj/item/clothing/head/crown/circlet/sleepless = 3,
+		/obj/item/clothing/head/crown/circlet/stink = 5,
 		/obj/item/clothing/neck/roguetown/talkstone = 10
 		)
 
@@ -267,16 +267,16 @@
 	spawned = list(
 		/obj/item/clothing/mask/rogue/facemask/copper = 15,
 		/obj/item/clothing/wrists/roguetown/bracers/copper = 15,
-		/obj/item/clothing/head/roguetown/helmet/coppercap = 15,
+		/obj/item/clothing/head/helmet/coppercap = 15,
 		/obj/item/clothing/suit/roguetown/armor/cuirass/copperchest = 15,
 		/obj/item/clothing/pants/chainlegs/iron = 10,
 		/obj/item/clothing/suit/roguetown/armor/chainmail/iron = 10,
 		/obj/item/clothing/suit/roguetown/armor/plate/iron = 10,
-		/obj/item/clothing/head/roguetown/helmet/heavy/ironplate = 10,
+		/obj/item/clothing/head/helmet/heavy/ironplate = 10,
 		/obj/item/clothing/suit/roguetown/armor/leather/splint = 10,
 		/obj/item/clothing/suit/roguetown/armor/brigandine = 5,
-		/obj/item/clothing/head/roguetown/helmet/heavy/frog = 5,
-		/obj/item/clothing/head/roguetown/helmet/visored/hounskull = 5,
+		/obj/item/clothing/head/helmet/heavy/frog = 5,
+		/obj/item/clothing/head/helmet/visored/hounskull = 5,
 		/obj/item/clothing/mask/rogue/facemask/steel = 5,
 		/obj/item/clothing/suit/roguetown/armor/plate/full = 5,
 		/obj/item/clothing/neck/roguetown/chaincoif = 5

@@ -14,7 +14,7 @@
 
 /datum/outfit/job/roguetown/deprived/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/menacing
+	head = /obj/item/clothing/head/menacing
 	pants = /obj/item/clothing/pants/trou
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 	belt = /obj/item/storage/belt/rogue/leather/rope

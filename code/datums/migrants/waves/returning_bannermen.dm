@@ -14,7 +14,7 @@
 
 /datum/outfit/job/roguetown/serjeant_at_arms/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/helmet/leather
+	head = /obj/item/clothing/head/helmet/leather
 	pants = /obj/item/clothing/pants/trou/leather
 	cloak = /obj/item/clothing/cloak/half/vet
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guardsecond
@@ -83,9 +83,9 @@
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	backpack_contents = list(/obj/item/weapon/knife/dagger/steel/special = 1)
 	if(prob(30))
-		head = /obj/item/clothing/head/roguetown/helmet/kettle
+		head = /obj/item/clothing/head/helmet/kettle
 	else
-		head = pick(/obj/item/clothing/head/roguetown/roguehood/guard, /obj/item/clothing/head/roguetown/roguehood/guardsecond)
+		head = pick(/obj/item/clothing/head/roguehood/guard, /obj/item/clothing/head/roguehood/guardsecond)
 
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
@@ -132,9 +132,9 @@
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	backpack_contents = list(/obj/item/weapon/knife/dagger/steel/special = 1)
 	if(prob(30))
-		head = /obj/item/clothing/head/roguetown/helmet/kettle
+		head = /obj/item/clothing/head/helmet/kettle
 	else
-		head = pick(/obj/item/clothing/head/roguetown/roguehood/guard, /obj/item/clothing/head/roguetown/roguehood/guardsecond)
+		head = pick(/obj/item/clothing/head/roguehood/guard, /obj/item/clothing/head/roguehood/guardsecond)
 
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
@@ -171,7 +171,7 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/cuirass
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 	neck = /obj/item/clothing/neck/roguetown/gorget
-	head = /obj/item/clothing/head/roguetown/helmet/nasal
+	head = /obj/item/clothing/head/helmet/nasal
 	backr = /obj/item/weapon/shield/wood
 	beltr = /obj/item/weapon/sword/scimitar/messer
 	beltl = /obj/item/weapon/mace
@@ -211,7 +211,7 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 	neck = /obj/item/clothing/neck/roguetown/gorget
-	head = /obj/item/clothing/head/roguetown/helmet/kettle
+	head = /obj/item/clothing/head/helmet/kettle
 	beltr = /obj/item/weapon/sword/scimitar/messer
 	pants = /obj/item/clothing/pants/trou/leather
 	cloak = /obj/item/clothing/cloak/stabard/guard

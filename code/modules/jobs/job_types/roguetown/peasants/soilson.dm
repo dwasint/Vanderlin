@@ -72,9 +72,9 @@
 
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	if(H.gender == MALE)
-		head = /obj/item/clothing/head/roguetown/roguehood/random
+		head = /obj/item/clothing/head/roguehood/random
 		if(prob(50))
-			head = /obj/item/clothing/head/roguetown/strawhat
+			head = /obj/item/clothing/head/strawhat
 		pants = /obj/item/clothing/pants/tights/random
 		armor = /obj/item/clothing/suit/roguetown/armor/gambeson/light/striped
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
@@ -83,7 +83,7 @@
 		beltr = /obj/item/key/soilson
 		beltl = /obj/item/weapon/knife/villager
 	else
-		head = /obj/item/clothing/head/roguetown/armingcap
+		head = /obj/item/clothing/head/armingcap
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes

@@ -31,7 +31,7 @@
 
 /datum/outfit/job/roguetown/magician/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/wizhat/gen
+	head = /obj/item/clothing/head/wizhat/gen
 	backr = /obj/item/storage/backpack/rogue/satchel
 	armor = /obj/item/clothing/suit/roguetown/shirt/robe/black
 	cloak = /obj/item/clothing/cloak/black_cloak
@@ -59,7 +59,7 @@
 			if(H.dna.species.id == "human")
 				belt = /obj/item/storage/belt/rogue/leather/plaquegold
 				cloak = null
-				head = /obj/item/clothing/head/roguetown/wizhat
+				head = /obj/item/clothing/head/wizhat
 				if(H.gender == FEMALE)
 					armor = /obj/item/clothing/suit/roguetown/shirt/robe/courtmage
 				if(H.gender == MALE)
@@ -81,7 +81,7 @@
 
 //............... Unique Court Mage Stuff ...........................
 /*
-/obj/item/clothing/head/roguetown/wizhat/equipped(mob/living/user, slot)
+/obj/item/clothing/head/wizhat/equipped(mob/living/user, slot)
 	. = ..()
 	if(user.mind && user.mind.assigned_role == "Court Magician")
 		if(slot == SLOT_HEAD && istype(user))
@@ -90,7 +90,7 @@
 			user.remove_status_effect(/datum/status_effect/buff/thinking_cap)
 	else return
 
-/obj/item/clothing/head/roguetown/wizhat/dropped(mob/living/user, slot)
+/obj/item/clothing/head/wizhat/dropped(mob/living/user, slot)
 	. = ..()
 	user.remove_status_effect(/datum/status_effect/buff/thinking_cap)
 

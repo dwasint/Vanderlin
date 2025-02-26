@@ -856,7 +856,7 @@
 /obj/item/clothing/pants/platelegs/rust,
 /obj/item/clothing/suit/roguetown/armor/plate/rust,
 /obj/item/clothing/shoes/roguetown/boots/armor/light/rust,
-/obj/item/clothing/head/roguetown/helmet/heavy/rust,
+/obj/item/clothing/head/helmet/heavy/rust,
 /obj/item/clothing/gloves/roguetown/plate/rust,
 /obj/item/weapon/sword/scimitar/falchion,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
@@ -1104,7 +1104,7 @@
 	TOTALSTR = 15
 	},
 /obj/item/clothing/gloves/roguetown/plate/rust,
-/obj/item/clothing/head/roguetown/helmet/heavy/rust,
+/obj/item/clothing/head/helmet/heavy/rust,
 /obj/item/clothing/shoes/roguetown/boots/armor/light/rust,
 /obj/item/clothing/suit/roguetown/armor/cuirass/iron/rust,
 /obj/item/clothing/pants/platelegs/rust,
@@ -1350,7 +1350,7 @@
 	TOTALCON = 15
 	},
 /obj/item/clothing/gloves/roguetown/plate/rust,
-/obj/item/clothing/head/roguetown/helmet/heavy/rust,
+/obj/item/clothing/head/helmet/heavy/rust,
 /obj/item/clothing/shoes/roguetown/boots/armor/light/rust,
 /obj/item/clothing/suit/roguetown/armor/cuirass/iron/rust,
 /obj/item/clothing/pants/platelegs/rust,

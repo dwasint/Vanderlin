@@ -53,7 +53,7 @@
 	switch(disguisechoice)
 		if("Bard")
 			H.mind?.adjust_skillrank(/datum/skill/misc/music, 1, TRUE) //Have to know to "PLAY" the part... Eh? Eh?
-			head = /obj/item/clothing/head/roguetown/bardhat
+			head = /obj/item/clothing/head/bardhat
 			shoes = /obj/item/clothing/shoes/roguetown/boots
 			pants = /obj/item/clothing/pants/tights/random
 			shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt
@@ -88,7 +88,7 @@
 				shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
 				shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 				neck = /obj/item/storage/belt/rogue/pouch/coins/poor
-				head = /obj/item/clothing/head/roguetown/fisherhat
+				head = /obj/item/clothing/head/fisherhat
 				mouth = /obj/item/weapon/knife/hunting
 				armor = /obj/item/clothing/suit/roguetown/armor/gambeson/light/striped
 				backl = /obj/item/storage/backpack/rogue/satchel
@@ -102,7 +102,7 @@
 				armor = /obj/item/clothing/suit/roguetown/armor/gambeson/light/striped
 				shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 				neck = /obj/item/storage/belt/rogue/pouch/coins/poor
-				head = /obj/item/clothing/head/roguetown/fisherhat
+				head = /obj/item/clothing/head/fisherhat
 				backl = /obj/item/storage/backpack/rogue/satchel
 				backr = /obj/item/fishingrod
 				belt = /obj/item/storage/belt/rogue/leather/assassin
@@ -128,7 +128,7 @@
 			H.mind?.adjust_skillrank(/datum/skill/labor/mining, 1, TRUE)
 			H.mind?.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE) //Use the pickaxe...
 			H.mind?.adjust_skillrank(/datum/skill/combat/swords, -2, TRUE)
-			head = /obj/item/clothing/head/roguetown/armingcap
+			head = /obj/item/clothing/head/armingcap
 			pants = /obj/item/clothing/pants/trou
 			armor = /obj/item/clothing/suit/roguetown/armor/gambeson/light/striped
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
@@ -158,7 +158,7 @@
 				pants = /obj/item/clothing/pants/tights/black
 				shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/random
 				cloak = /obj/item/clothing/cloak/raincloak/furcloak
-				head = /obj/item/clothing/head/roguetown/fancyhat
+				head = /obj/item/clothing/head/fancyhat
 				backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 				beltr = /obj/item/weapon/sword/rapier/dec
 				beltl = /obj/item/ammo_holder/quiver/arrows
@@ -167,7 +167,7 @@
 				H.mind?.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE) //Female nobles get the male noble's bow, but are less trained than an Assassin disguising as a Hunter. Balance.
 				H.mind?.adjust_skillrank(/datum/skill/combat/crossbows, -1, TRUE)
 				shirt = /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/random
-				head = /obj/item/clothing/head/roguetown/hatfur
+				head = /obj/item/clothing/head/hatfur
 				cloak = /obj/item/clothing/cloak/raincloak/furcloak
 				backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 				beltr = /obj/item/weapon/knife/dagger/steel/special
@@ -178,7 +178,7 @@
 			belt = /obj/item/storage/belt/rogue/leather/assassin
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 			pants = /obj/item/clothing/pants/trou
-			head = /obj/item/clothing/head/roguetown/strawhat
+			head = /obj/item/clothing/head/strawhat
 			shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 			backr = /obj/item/weapon/hoe
@@ -190,7 +190,7 @@
 			var/obj/item/weapon/pitchfork/P = new()
 			H.put_in_hands(P, forced = TRUE)
 			if(H.gender == FEMALE)
-				head = /obj/item/clothing/head/roguetown/armingcap
+				head = /obj/item/clothing/head/armingcap
 				armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 				shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 				pants = null
@@ -201,7 +201,7 @@
 			belt = /obj/item/storage/belt/rogue/leather/assassin
 			shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 			pants = /obj/item/clothing/pants/trou
-			head = pick(/obj/item/clothing/head/roguetown/hatfur, /obj/item/clothing/head/roguetown/hatblu, /obj/item/clothing/head/roguetown/brimmed)
+			head = pick(/obj/item/clothing/head/hatfur, /obj/item/clothing/head/hatblu, /obj/item/clothing/head/brimmed)
 			shoes = /obj/item/clothing/shoes/roguetown/boots/leather
 			backr = /obj/item/storage/backpack/rogue/satchel
 			neck = /obj/item/clothing/neck/roguetown/coif

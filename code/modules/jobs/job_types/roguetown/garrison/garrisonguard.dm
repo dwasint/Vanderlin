@@ -48,7 +48,7 @@
 /datum/outfit/job/roguetown/guardsman/pre_equip(mob/living/carbon/human/H)
 	. = ..()
 	cloak = pick(/obj/item/clothing/cloak/half/guard, /obj/item/clothing/cloak/half/guardsecond)
-	head = pick(/obj/item/clothing/head/roguetown/helmet/townwatch, /obj/item/clothing/head/roguetown/helmet/townwatch/alt)
+	head = pick(/obj/item/clothing/head/helmet/townwatch, /obj/item/clothing/head/helmet/townwatch/alt)
 	pants = /obj/item/clothing/pants/trou/leather/guard
 	wrists = /obj/item/rope/chain
 	shoes = /obj/item/clothing/shoes/roguetown/boots

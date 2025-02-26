@@ -16,7 +16,7 @@
 /datum/outfit/job/roguetown/mercenary/steppesman/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
-	head = /obj/item/clothing/head/roguetown/papakha
+	head = /obj/item/clothing/head/papakha
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	belt = /obj/item/storage/belt/rogue/leather/mercenary/black
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/splint

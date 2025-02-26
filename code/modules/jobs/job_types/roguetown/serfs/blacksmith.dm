@@ -19,9 +19,9 @@
 /datum/outfit/job/roguetown/armorsmith/pre_equip(mob/living/carbon/human/H)
 	..()
 	id = /obj/item/clothing/ring/silver/makers_guild
-	head = /obj/item/clothing/head/roguetown/hatfur
+	head = /obj/item/clothing/head/hatfur
 	if(prob(50))
-		head = /obj/item/clothing/head/roguetown/hatblu
+		head = /obj/item/clothing/head/hatblu
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
@@ -83,9 +83,9 @@
 /datum/outfit/job/roguetown/weaponsmith/pre_equip(mob/living/carbon/human/H)
 	..()
 	id = /obj/item/clothing/ring/silver/makers_guild
-	head = /obj/item/clothing/head/roguetown/hatfur
+	head = /obj/item/clothing/head/hatfur
 	if(prob(50))
-		head = /obj/item/clothing/head/roguetown/hatblu
+		head = /obj/item/clothing/head/hatblu
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)

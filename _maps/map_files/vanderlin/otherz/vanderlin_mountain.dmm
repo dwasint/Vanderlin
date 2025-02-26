@@ -13,7 +13,7 @@
 "ak" = (
 /obj/structure/table/wood/plain,
 /obj/structure/table/wood/plain,
-/obj/item/clothing/head/roguetown/tophat,
+/obj/item/clothing/head/tophat,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/rogue/ruinedwood/darker,
 /area/rogue/indoors/mountains/anvil/surface/building)
@@ -163,7 +163,7 @@
 /area/rogue/under/mountains/anvil/lower)
 "dJ" = (
 /obj/effect/decal/cleanable/blood/gibs/torso,
-/obj/item/clothing/head/roguetown/helmet/nasal,
+/obj/item/clothing/head/helmet/nasal,
 /turf/open/floor/rogue/ruinedwood/spiralfade,
 /area/rogue/under/mountains/anvil/lower/building)
 "dL" = (
@@ -487,7 +487,7 @@
 "ih" = (
 /obj/structure/rack/rogue/shelf/biggest,
 /obj/item/weapon/pick/copper,
-/obj/item/clothing/head/roguetown/helmet/leather/minershelm,
+/obj/item/clothing/head/helmet/leather/minershelm,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/mountains/anvil/lower/building)
 "ij" = (
@@ -597,7 +597,7 @@
 "jR" = (
 /obj/structure/rack/rogue/shelf/biggest,
 /obj/item/clothing/cloak/stabard/templar/malum,
-/obj/item/clothing/head/roguetown/helmet/heavy/necked/malumhelm,
+/obj/item/clothing/head/helmet/heavy/necked/malumhelm,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/lower)
 "jS" = (
@@ -871,7 +871,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/lower/building)
 "nU" = (
-/obj/item/clothing/head/roguetown/helmet/leather/minershelm,
+/obj/item/clothing/head/helmet/leather/minershelm,
 /obj/item/natural/rock,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/lower)
@@ -2118,7 +2118,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/lower)
 "Iz" = (
-/obj/item/clothing/head/roguetown/helmet/leather/minershelm,
+/obj/item/clothing/head/helmet/leather/minershelm,
 /obj/item/ash,
 /obj/item/ash{
 	pixel_x = 8;
@@ -3124,7 +3124,7 @@
 /area/rogue/under/mountains/anvil/lower/building)
 "XP" = (
 /obj/structure/table/wood/plain,
-/obj/item/clothing/head/roguetown/helmet/leather/minershelm{
+/obj/item/clothing/head/helmet/leather/minershelm{
 	pixel_x = -3;
 	pixel_y = 6
 	},

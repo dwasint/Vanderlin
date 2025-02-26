@@ -258,7 +258,7 @@
 /area/rogue)
 "Ur" = (
 /obj/structure/closet/crate/chest/gold,
-/obj/item/clothing/head/roguetown/helmet/visored/knight,
+/obj/item/clothing/head/helmet/visored/knight,
 /obj/item/clothing/gloves/roguetown/plate,
 /turf/open/floor/rogue/metal,
 /area/rogue)

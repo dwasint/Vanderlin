@@ -11,7 +11,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "g" = (
-/obj/item/clothing/head/roguetown/helmet/ironpot,
+/obj/item/clothing/head/helmet/ironpot,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "i" = (
@@ -27,7 +27,7 @@
 "l" = (
 /obj/effect/landmark/chest_or_mimic,
 /obj/item/roguecoin/copper/pile,
-/obj/item/clothing/head/roguetown/helmet/nasal,
+/obj/item/clothing/head/helmet/nasal,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "m" = (
@@ -42,7 +42,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "o" = (
-/obj/item/clothing/head/roguetown/helmet/bascinet,
+/obj/item/clothing/head/helmet/bascinet,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "p" = (
@@ -51,7 +51,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "q" = (
-/obj/item/clothing/head/roguetown/helmet/winged,
+/obj/item/clothing/head/helmet/winged,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "r" = (
@@ -110,14 +110,14 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "G" = (
-/obj/item/clothing/head/roguetown/helmet/skullcap,
+/obj/item/clothing/head/helmet/skullcap,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "H" = (
 /obj/effect/landmark/chest_or_mimic,
 /obj/item/roguecoin/copper/pile,
 /obj/item/lockpickring,
-/obj/item/clothing/head/roguetown/helmet/leather/volfhelm,
+/obj/item/clothing/head/helmet/leather/volfhelm,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "I" = (

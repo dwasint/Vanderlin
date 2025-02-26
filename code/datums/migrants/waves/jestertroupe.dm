@@ -24,7 +24,7 @@
 	beltr = /obj/item/weapon/knife/villager
 	backl = /obj/item/rogue/instrument/lute
 	backr = /obj/item/rogue/instrument/viola
-	head = /obj/item/clothing/head/roguetown/jester
+	head = /obj/item/clothing/head/jester
 	neck = /obj/item/clothing/neck/roguetown/coif
 	mask = /obj/item/clothing/mask/rogue/lordmask
 

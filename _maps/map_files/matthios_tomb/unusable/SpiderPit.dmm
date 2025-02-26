@@ -164,7 +164,7 @@
 /area/rogue)
 "V" = (
 /obj/effect/decal/cleanable/dirt/cobweb/cobweb2,
-/obj/item/clothing/head/roguetown/helmet/skullcap/grenzelhoft{
+/obj/item/clothing/head/helmet/skullcap/grenzelhoft{
 	pixel_y = -15
 	},
 /turf/open/floor/rogue/naturalstone,
