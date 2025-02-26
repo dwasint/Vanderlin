@@ -186,8 +186,8 @@
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/indoors/shelter/bog)
 "cj" = (
-/obj/item/rogueore/coal,
-/obj/item/rogueore/coal,
+/obj/item/ore/coal,
+/obj/item/ore/coal,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/indoors/cave)
 "cu" = (
@@ -285,7 +285,7 @@
 	icon_state = "largetable"
 	},
 /obj/item/reagent_containers/powder/moondust_purest,
-/obj/item/roguestatue/gold/loot,
+/obj/item/statue/gold/loot,
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors/shelter/bog)
 "dD" = (
@@ -582,7 +582,7 @@
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors/shelter/bog)
 "hc" = (
-/obj/structure/fluff/grindwheel,
+/obj/structure/grindwheel,
 /turf/open/floor/rogue/dirt,
 /area/rogue/indoors/shelter/bog)
 "hf" = (
@@ -1090,14 +1090,14 @@
 /area/rogue/indoors/shelter/bog)
 "ou" = (
 /obj/structure/closet/crate/chest,
-/obj/item/rogueore/coal,
-/obj/item/rogueore/coal,
-/obj/item/rogueore/iron,
-/obj/item/rogueore/iron,
-/obj/item/rogueore/iron,
-/obj/item/rogueore/iron,
-/obj/item/rogueore/iron,
-/obj/item/rogueore/iron,
+/obj/item/ore/coal,
+/obj/item/ore/coal,
+/obj/item/ore/iron,
+/obj/item/ore/iron,
+/obj/item/ore/iron,
+/obj/item/ore/iron,
+/obj/item/ore/iron,
+/obj/item/ore/iron,
 /turf/open/floor/rogue/dirt,
 /area/rogue/indoors/shelter/bog)
 "oB" = (
@@ -1129,7 +1129,7 @@
 /obj/structure/table/church{
 	dir = 1
 	},
-/obj/item/reagent_containers/glass/bottle/rogue/wine/sourwine{
+/obj/item/reagent_containers/glass/bottle/wine/sourwine{
 	pixel_y = 16
 	},
 /obj/item/trash/candle{
@@ -1646,12 +1646,12 @@
 /turf/open/floor/rogue/woodturned/nosmooth,
 /area/rogue/indoors/shelter/bog)
 "vT" = (
-/obj/item/rogueore/coal,
-/obj/item/rogueore/coal{
+/obj/item/ore/coal,
+/obj/item/ore/coal{
 	pixel_x = -6;
 	pixel_y = -7
 	},
-/obj/item/rogueore/coal{
+/obj/item/ore/coal{
 	pixel_x = 5;
 	pixel_y = -7
 	},
@@ -1758,7 +1758,7 @@
 "xq" = (
 /obj/structure/closet/crate/chest/gold,
 /obj/item/weapon/polearm/woodstaff/quarterstaff/steel,
-/obj/item/roguestatue/gold,
+/obj/item/statue/gold,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/shelter/bog)
 "xr" = (
@@ -1801,10 +1801,10 @@
 /area/rogue/indoors/shelter/bog)
 "xF" = (
 /obj/structure/table/vtable/v2,
-/obj/item/reagent_containers/glass/bottle/rogue/redwine{
+/obj/item/reagent_containers/glass/bottle/redwine{
 	pixel_y = 17
 	},
-/obj/item/roguestatue/gold{
+/obj/item/statue/gold{
 	pixel_x = -14;
 	pixel_y = 8
 	},
@@ -2870,7 +2870,7 @@
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/indoors/shelter/bog)
 "Ny" = (
-/obj/item/rogueore/coal,
+/obj/item/ore/coal,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/indoors/cave)
 "NA" = (
@@ -3789,7 +3789,7 @@
 "ZU" = (
 /obj/structure/fluff/walldeco/bigpainting/lake,
 /obj/structure/table/vtable/v2,
-/obj/item/roguestatue/silver{
+/obj/item/statue/silver{
 	pixel_y = 14;
 	pixel_x = -11
 	},

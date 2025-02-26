@@ -158,7 +158,7 @@
 		/obj/item/clothing/armor/gambeson = 10,
 		/obj/item/clothing/gloves/chain/iron = 3,
 		/obj/item/clothing/neck/gorget = 3,
-		/obj/item/roguestatue/gold/loot = 1
+		/obj/item/statue/gold/loot = 1
 		)
 
 /obj/effect/spawner/roguemap/loot/rare
@@ -305,23 +305,23 @@
 /obj/effect/spawner/roguemap/loot/potion_vitals
 	icon_state = "lootpotion"
 	spawned = list(
-		/obj/item/reagent_containers/glass/bottle/rogue/healthpot = 10,
-		/obj/item/reagent_containers/glass/bottle/rogue/stronghealthpot = 5,
-		/obj/item/reagent_containers/glass/bottle/rogue/manapot = 10,
-		/obj/item/reagent_containers/glass/bottle/rogue/strongmanapot = 5,
-		/obj/item/reagent_containers/glass/bottle/rogue/stampot = 10,
-		/obj/item/reagent_containers/glass/bottle/rogue/strongstampot = 5
+		/obj/item/reagent_containers/glass/bottle/healthpot = 10,
+		/obj/item/reagent_containers/glass/bottle/stronghealthpot = 5,
+		/obj/item/reagent_containers/glass/bottle/manapot = 10,
+		/obj/item/reagent_containers/glass/bottle/strongmanapot = 5,
+		/obj/item/reagent_containers/glass/bottle/stampot = 10,
+		/obj/item/reagent_containers/glass/bottle/strongstampot = 5
 	)
 
 /obj/effect/spawner/roguemap/loot/potion_poisons
 	icon_state = "lootpoison"
 	spawned = list(
-		/obj/item/reagent_containers/glass/bottle/rogue/poison = 10,
-		/obj/item/reagent_containers/glass/bottle/rogue/strongpoison = 5,
-		/obj/item/reagent_containers/glass/bottle/rogue/stampoison = 10,
-		/obj/item/reagent_containers/glass/bottle/rogue/strongstampoison = 5,
-		/obj/item/reagent_containers/glass/bottle/rogue/stampot = 10,
-		/obj/item/reagent_containers/glass/bottle/rogue/strongstampot = 5
+		/obj/item/reagent_containers/glass/bottle/poison = 10,
+		/obj/item/reagent_containers/glass/bottle/strongpoison = 5,
+		/obj/item/reagent_containers/glass/bottle/stampoison = 10,
+		/obj/item/reagent_containers/glass/bottle/strongstampoison = 5,
+		/obj/item/reagent_containers/glass/bottle/stampot = 10,
+		/obj/item/reagent_containers/glass/bottle/strongstampot = 5
 	)
 
 /obj/effect/spawner/roguemap/loot/potion_ingredient

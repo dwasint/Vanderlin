@@ -258,7 +258,7 @@
 "fJ" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/closet/crate/coffin,
-/obj/item/roguestatue/silver,
+/obj/item/statue/silver,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cavelava)
 "fL" = (
@@ -334,7 +334,7 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/rack/rogue/shelf/biggest,
 /obj/structure/rack/rogue/shelf,
-/obj/item/reagent_containers/glass/bottle/rogue/elfblue,
+/obj/item/reagent_containers/glass/bottle/elfblue,
 /turf/open/floor/rogue/greenstone,
 /area/rogue/under/cavelava)
 "hm" = (
@@ -381,14 +381,14 @@
 "hJ" = (
 /obj/structure/closet/crate/chest/neu_fancy,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/item/roguestatue/gold/loot,
+/obj/item/statue/gold/loot,
 /turf/open/floor/rogue/tile/kitchen,
 /area/rogue/under/cavelava)
 "ib" = (
 /obj/item/grown/log/tree/small,
 /obj/structure/closet/crate/chest/crafted,
 /obj/item/reagent_containers/powder/salt,
-/obj/item/rogueore/coal,
+/obj/item/ore/coal,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/outdoors/mountains)
 "ig" = (
@@ -466,8 +466,8 @@
 "jE" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/rack/rogue,
-/obj/item/reagent_containers/glass/bottle/rogue/manapot,
-/obj/item/reagent_containers/glass/bottle/rogue/manapot,
+/obj/item/reagent_containers/glass/bottle/manapot,
+/obj/item/reagent_containers/glass/bottle/manapot,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/cavelava)
 "jM" = (
@@ -659,7 +659,7 @@
 /obj/structure/table/wood/reinforced,
 /obj/item/mortar,
 /obj/item/pestle,
-/obj/item/reagent_containers/glass/bottle/rogue/stronghealthpot,
+/obj/item/reagent_containers/glass/bottle/stronghealthpot,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/under/cavelava)
@@ -746,7 +746,7 @@
 "qe" = (
 /obj/structure/closet/crate/chest/neu_fancy,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/item/roguestatue/iron,
+/obj/item/statue/iron,
 /turf/open/floor/rogue/tile/kitchen,
 /area/rogue/under/cavelava)
 "qk" = (
@@ -844,7 +844,7 @@
 /area/rogue/under/cavelava)
 "su" = (
 /obj/structure/table/wood/reinforced,
-/obj/item/roguestatue/silver/gnome,
+/obj/item/statue/silver/gnome,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/under/cavelava)
@@ -968,7 +968,7 @@
 "wR" = (
 /obj/structure/closet/crate/chest/neu_fancy,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/item/roguestatue/gold,
+/obj/item/statue/gold,
 /turf/open/floor/rogue/tile/kitchen,
 /area/rogue/under/cavelava)
 "wT" = (
@@ -1593,7 +1593,7 @@
 "MC" = (
 /obj/structure/rack/rogue/shelf/biggest,
 /obj/structure/rack/rogue/shelf,
-/obj/item/roguestatue/gold,
+/obj/item/statue/gold,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/under/cavelava)
@@ -1808,8 +1808,8 @@
 "Se" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/rack/rogue,
-/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
-/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
+/obj/item/reagent_containers/glass/bottle/healthpot,
+/obj/item/reagent_containers/glass/bottle/healthpot,
 /turf/open/floor/rogue/greenstone,
 /area/rogue/under/cavelava)
 "Sj" = (
@@ -2053,7 +2053,7 @@
 /area/rogue/under/cavelava)
 "Yt" = (
 /obj/structure/closet/crate/chest/old_crate,
-/obj/item/roguestatue/gold,
+/obj/item/statue/gold,
 /turf/open/floor/rogue/dirt,
 /area/rogue/under/cavelava)
 "YR" = (

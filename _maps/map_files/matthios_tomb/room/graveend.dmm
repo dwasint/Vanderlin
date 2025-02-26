@@ -52,7 +52,7 @@
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
 "o" = (
-/obj/item/roguestatue/gold/loot,
+/obj/item/statue/gold/loot,
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
 "p" = (

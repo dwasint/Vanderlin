@@ -98,7 +98,7 @@ GLOBAL_LIST_EMPTY(custom_fermentation_recipes)
 			return
 
 	if(heated)
-		if(istype(I, /obj/item/rogueore/coal) || istype(I, /obj/item/grown/log/tree))
+		if(istype(I, /obj/item/ore/coal) || istype(I, /obj/item/grown/log/tree))
 			refuel(I, user)
 			return
 
@@ -367,7 +367,7 @@ GLOBAL_LIST_EMPTY(custom_fermentation_recipes)
 		return
 	var/burn_time = 4 MINUTES
 	var/burn_temp = 300
-	if(istype(item, /obj/item/rogueore/coal))
+	if(istype(item, /obj/item/ore/coal))
 		burn_time *= 1.5
 		burn_temp *= 1.5
 

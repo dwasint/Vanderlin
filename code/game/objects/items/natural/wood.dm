@@ -121,7 +121,7 @@
 	twohands_required = FALSE
 	gripped_intents = null
 	w_class = WEIGHT_CLASS_BULKY
-	smeltresult = /obj/item/rogueore/coal
+	smeltresult = /obj/item/ore/coal
 	lumber = /obj/item/natural/wood/plank
 	lumber_alt = /obj/item/grown/log/tree/stick
 	lumber_amount = 2

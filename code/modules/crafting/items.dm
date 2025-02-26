@@ -502,7 +502,7 @@
 
 /datum/crafting_recipe/lumberjacking/cart_upgrade
 	name = "wooden cog"
-	result = /obj/item/roguegear/wood/basic
+	result = /obj/item/gear/wood/basic
 	reqs = list(/obj/item/natural/wood/plank = 2)
 	craftdiff = 3
 

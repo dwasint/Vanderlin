@@ -131,7 +131,7 @@
 "K" = (
 /obj/structure/fluff/walldeco/vinez/l,
 /obj/machinery/light/rogue/wallfire/candle/blue/l,
-/obj/item/reagent_containers/glass/bottle/rogue/whitewine,
+/obj/item/reagent_containers/glass/bottle/whitewine,
 /turf/open/floor/rogue/cobblerock/alt,
 /turf/open/floor/rogue/cobblerock/alt,
 /area/rogue/outdoors/caves)
@@ -151,9 +151,9 @@
 /area/rogue/outdoors/caves)
 "W" = (
 /obj/structure/table/vtable/v2,
-/obj/item/reagent_containers/glass/bottle/rogue/wine/sourwine,
+/obj/item/reagent_containers/glass/bottle/wine/sourwine,
 /obj/item/candle/yellow/lit/infinite/strong/skull,
-/obj/item/reagent_containers/glass/bottle/rogue/stronghealthpot,
+/obj/item/reagent_containers/glass/bottle/stronghealthpot,
 /obj/item/roguecoin/silver/pile/xylix,
 /obj/item/needle,
 /obj/item/natural/bundle/silk,

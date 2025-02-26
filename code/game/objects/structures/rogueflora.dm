@@ -20,7 +20,7 @@
 	alpha = 200
 	var/stump_type = /obj/structure/table/wood/treestump
 	metalizer_result = /obj/machinery/light/roguestreet
-	smeltresult = /obj/item/rogueore/coal
+	smeltresult = /obj/item/ore/coal
 
 /obj/structure/flora/roguetree/attack_right(mob/user)
 	if(user.mind && isliving(user))
@@ -174,7 +174,7 @@
 /obj/structure/table/wood/treestump/burnt
 	name = "tree stump"
 	desc = "This stump is burnt. Maybe someone is trying to get coal the easy way."
-	static_debris = list(/obj/item/rogueore/coal = 1)
+	static_debris = list(/obj/item/ore/coal = 1)
 	isunburnt = FALSE
 	icon_state = "st1"
 	icon = 'icons/roguetown/misc/tree.dmi'

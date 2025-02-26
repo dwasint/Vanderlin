@@ -582,8 +582,8 @@
 	dir = 10
 	},
 /obj/machinery/light/rogue/wallfire/candle/blue,
-/obj/item/rogueore/silver,
-/obj/item/rogueore/silver,
+/obj/item/ore/silver,
+/obj/item/ore/silver,
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/shop)
 "cg" = (
@@ -779,7 +779,7 @@
 /area/rogue/under/town/basement)
 "cQ" = (
 /obj/structure/closet/crate/crafted_closet,
-/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
+/obj/item/reagent_containers/glass/bottle/healthpot,
 /obj/item/reagent_containers/food/snacks/hardtack,
 /obj/item/reagent_containers/food/snacks/hardtack,
 /obj/item/reagent_containers/food/snacks/hardtack,
@@ -1139,7 +1139,7 @@
 /area/rogue/indoors/town)
 "eh" = (
 /obj/structure/rack/rogue,
-/obj/item/reagent_containers/glass/bottle/rogue/poison,
+/obj/item/reagent_containers/glass/bottle/poison,
 /turf/open/floor/rogue/wood,
 /area/rogue/under/town/basement)
 "ei" = (
@@ -1727,7 +1727,7 @@
 	icon_state = "largetable";
 	dir = 4
 	},
-/obj/item/reagent_containers/glass/bottle/rogue/wine,
+/obj/item/reagent_containers/glass/bottle/wine,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/bath)
 "gv" = (
@@ -2828,9 +2828,9 @@
 "jR" = (
 /obj/structure/rack/rogue/shelf/big,
 /obj/structure/rack/rogue/shelf,
-/obj/item/reagent_containers/glass/bottle/rogue/wine,
-/obj/item/reagent_containers/glass/bottle/rogue/wine,
-/obj/item/reagent_containers/glass/bottle/rogue/wine,
+/obj/item/reagent_containers/glass/bottle/wine,
+/obj/item/reagent_containers/glass/bottle/wine,
+/obj/item/reagent_containers/glass/bottle/wine,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/manor)
 "jS" = (
@@ -3827,7 +3827,7 @@
 /area/rogue/indoors/town/manor)
 "nB" = (
 /obj/structure/closet/crate/crafted_closet,
-/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
+/obj/item/reagent_containers/glass/bottle/healthpot,
 /obj/item/reagent_containers/food/snacks/hardtack,
 /obj/item/reagent_containers/food/snacks/hardtack,
 /obj/item/reagent_containers/food/snacks/hardtack,
@@ -4286,12 +4286,12 @@
 /area/rogue/indoors/town/shop)
 "pc" = (
 /obj/structure/closet/crate/chest,
-/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
-/obj/item/reagent_containers/glass/bottle/rogue/manapot,
-/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
-/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
-/obj/item/reagent_containers/glass/bottle/rogue/manapot,
-/obj/item/reagent_containers/glass/bottle/rogue/manapot,
+/obj/item/reagent_containers/glass/bottle/healthpot,
+/obj/item/reagent_containers/glass/bottle/manapot,
+/obj/item/reagent_containers/glass/bottle/healthpot,
+/obj/item/reagent_containers/glass/bottle/healthpot,
+/obj/item/reagent_containers/glass/bottle/manapot,
+/obj/item/reagent_containers/glass/bottle/manapot,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/shop)
 "pd" = (
@@ -5353,7 +5353,7 @@
 /area/rogue/indoors/town/manor)
 "th" = (
 /obj/structure/closet/crate/chest,
-/obj/item/reagent_containers/glass/bottle/rogue/wine,
+/obj/item/reagent_containers/glass/bottle/wine,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
 "ti" = (
@@ -6550,7 +6550,7 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/dwarfin)
 "xJ" = (
-/obj/structure/fluff/grindwheel,
+/obj/structure/grindwheel,
 /obj/machinery/light/rogue/wallfire/candle/r,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/town/dwarfin)
@@ -8788,7 +8788,7 @@
 /turf/open/floor/rogue/churchmarble,
 /area/rogue/indoors/town/church/chapel)
 "Gc" = (
-/obj/item/roguestatue/gold/loot,
+/obj/item/statue/gold/loot,
 /turf/open/floor/rogue/tile{
 	icon_state = "linoleum"
 	},
@@ -9038,7 +9038,7 @@
 /obj/structure/fluff/walldeco/wantedposter{
 	pixel_y = 32
 	},
-/obj/item/reagent_containers/glass/bottle/rogue/wine,
+/obj/item/reagent_containers/glass/bottle/wine,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/garrison)
 "GY" = (
@@ -9472,7 +9472,7 @@
 /area/rogue/indoors/town)
 "Is" = (
 /obj/structure/rack/rogue,
-/obj/item/reagent_containers/glass/bottle/rogue/wine,
+/obj/item/reagent_containers/glass/bottle/wine,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/garrison)
 "It" = (
@@ -10041,17 +10041,17 @@
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)
 "Ki" = (
-/obj/item/rogueore/coal,
-/obj/item/rogueore/coal,
+/obj/item/ore/coal,
+/obj/item/ore/coal,
 /obj/structure/closet/crate/chest,
-/obj/item/rogueore/iron,
+/obj/item/ore/iron,
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/dwarfin)
 "Kj" = (
 /obj/structure/closet/crate/chest,
-/obj/item/rogueore/coal,
-/obj/item/rogueore/coal,
-/obj/item/rogueore/coal,
+/obj/item/ore/coal,
+/obj/item/ore/coal,
+/obj/item/ore/coal,
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/dwarfin)
 "Kk" = (
@@ -10143,7 +10143,7 @@
 /area/rogue/indoors/town/dwarfin)
 "Ky" = (
 /obj/structure/closet/crate/chest,
-/obj/item/rogueore/iron,
+/obj/item/ore/iron,
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/dwarfin)
 "Kz" = (
@@ -11661,7 +11661,7 @@
 "Qy" = (
 /obj/structure/rack/rogue,
 /obj/item/reagent_containers/glass/bottle,
-/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
+/obj/item/reagent_containers/glass/bottle/healthpot,
 /turf/open/floor/rogue/wood,
 /area/rogue/under/town/basement)
 "QB" = (
@@ -11733,7 +11733,7 @@
 	},
 /obj/item/reagent_containers/glass/bottle,
 /obj/item/reagent_containers/glass/bottle,
-/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
+/obj/item/reagent_containers/glass/bottle/healthpot,
 /turf/open/floor/rogue/wood,
 /area/rogue/under/town/sewer)
 "QQ" = (
@@ -12210,7 +12210,7 @@
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/bath)
 "Tm" = (
-/obj/structure/fluff/grindwheel,
+/obj/structure/grindwheel,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/town/dwarfin)
 "Tn" = (
@@ -12390,8 +12390,8 @@
 "Ud" = (
 /obj/structure/rack/rogue/shelf/big,
 /obj/structure/rack/rogue/shelf,
-/obj/item/reagent_containers/glass/bottle/rogue/wine,
-/obj/item/reagent_containers/glass/bottle/rogue/wine,
+/obj/item/reagent_containers/glass/bottle/wine,
+/obj/item/reagent_containers/glass/bottle/wine,
 /turf/open/floor/rogue/woodturned/nosmooth,
 /area/rogue/indoors/town/bath)
 "Ue" = (
@@ -12879,7 +12879,7 @@
 	icon_state = "largetable";
 	dir = 1
 	},
-/obj/item/reagent_containers/glass/bottle/rogue/wine,
+/obj/item/reagent_containers/glass/bottle/wine,
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/bath)
 "Wg" = (

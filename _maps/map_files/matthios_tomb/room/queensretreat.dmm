@@ -134,7 +134,7 @@
 /turf/open/floor/rogue/tile/bath,
 /area/rogue)
 "fT" = (
-/obj/item/roguestatue/gold,
+/obj/item/statue/gold,
 /turf/open/floor/carpet/red,
 /area/rogue)
 "ga" = (
@@ -549,7 +549,7 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue)
 "xU" = (
-/obj/item/roguestatue/silver,
+/obj/item/statue/silver,
 /turf/open/floor/carpet/red,
 /area/rogue)
 "xV" = (
@@ -700,7 +700,7 @@
 	pixel_y = 6
 	},
 /obj/effect/spawner/roguemap/loot/rare,
-/obj/item/reagent_containers/glass/bottle/rogue/redwine,
+/obj/item/reagent_containers/glass/bottle/redwine,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},
@@ -762,11 +762,11 @@
 /obj/structure/table/wood/counter/end{
 	dir = 1
 	},
-/obj/item/roguestatue/gold/loot{
+/obj/item/statue/gold/loot{
 	pixel_x = -16;
 	pixel_y = 13
 	},
-/obj/item/reagent_containers/glass/bottle/rogue/redwine,
+/obj/item/reagent_containers/glass/bottle/redwine,
 /turf/open/floor/carpet/red,
 /area/rogue)
 "Hc" = (
@@ -786,9 +786,9 @@
 /obj/structure/closet/crate/crafted_closet/lord,
 /obj/item/clothing/neck/psycross/noc,
 /obj/item/clothing/ring/silver/noc,
-/obj/item/reagent_containers/glass/bottle/rogue/stronghealthpot,
-/obj/item/reagent_containers/glass/bottle/rogue/stronghealthpot,
-/obj/item/reagent_containers/glass/bottle/rogue/strongmanapot,
+/obj/item/reagent_containers/glass/bottle/stronghealthpot,
+/obj/item/reagent_containers/glass/bottle/stronghealthpot,
+/obj/item/reagent_containers/glass/bottle/strongmanapot,
 /turf/open/floor/rogue/ruinedwood{
 	icon_state = "weird1"
 	},

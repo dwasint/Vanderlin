@@ -105,22 +105,22 @@
 
 //Ores -> dust
 /datum/alch_grind_recipe/gold_ore
-	valid_input = /obj/item/rogueore/gold
+	valid_input = /obj/item/ore/gold
 	valid_outputs = list(/obj/item/alch/golddust = 1)
 	bonus_chance_outputs = list(/obj/item/alch/golddust = 33)
 
 /datum/alch_grind_recipe/silver_ore
-	valid_input = /obj/item/rogueore/silver
+	valid_input = /obj/item/ore/silver
 	valid_outputs = list(/obj/item/alch/silverdust = 1)
 	bonus_chance_outputs = list(/obj/item/alch/silverdust = 33)
 
 /datum/alch_grind_recipe/iron_ore
-	valid_input = /obj/item/rogueore/iron
+	valid_input = /obj/item/ore/iron
 	valid_outputs = list(/obj/item/alch/irondust = 1)
 	bonus_chance_outputs = list(/obj/item/alch/irondust = 33)
 
 /datum/alch_grind_recipe/coal_ore
-	valid_input = /obj/item/rogueore/coal
+	valid_input = /obj/item/ore/coal
 	valid_outputs = list(/obj/item/alch/coaldust = 1)
 	bonus_chance_outputs = list(/obj/item/alch/coaldust = 33)
 

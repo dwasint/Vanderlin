@@ -27,7 +27,7 @@
 	beltl = /obj/item/weapon/knife/hunting
 	cloak = /obj/item/clothing/cloak/apron/brown
 	gloves = /obj/item/clothing/gloves/leather
-	backpack_contents = list(/obj/item/flint = 1, /obj/item/weapon/tongs=1, /obj/item/rogueore/coal=1, /obj/item/rogueore/iron=1, /obj/item/mould/ingot = 1, /obj/item/storage/crucible/random = 1)
+	backpack_contents = list(/obj/item/flint = 1, /obj/item/weapon/tongs=1, /obj/item/ore/coal=1, /obj/item/ore/iron=1, /obj/item/mould/ingot = 1, /obj/item/storage/crucible/random = 1)
 
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)

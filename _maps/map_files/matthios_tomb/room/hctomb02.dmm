@@ -449,7 +449,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "MX" = (
-/obj/structure/fluff/grindwheel,
+/obj/structure/grindwheel,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "Nq" = (

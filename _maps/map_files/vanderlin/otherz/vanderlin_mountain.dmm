@@ -295,12 +295,12 @@
 /area/rogue/under/mountains/anvil/lower/building)
 "fi" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/reagent_containers/glass/bottle/rogue,
+/obj/item/reagent_containers/glass/bottle,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/mountains/anvil/lower/building)
 "fk" = (
 /obj/structure/table/wood/plain,
-/obj/item/reagent_containers/glass/bottle/rogue,
+/obj/item/reagent_containers/glass/bottle,
 /turf/open/floor/rogue/ruinedwood/darker,
 /area/rogue/indoors/mountains/anvil/surface/building)
 "fl" = (
@@ -316,7 +316,7 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/mountains/anvil/lower/building)
 "fB" = (
-/obj/item/rogueore/iron,
+/obj/item/ore/iron,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/lower)
 "fD" = (
@@ -365,7 +365,7 @@
 /area/rogue/under/mountains/anvil/lower/building)
 "gw" = (
 /obj/structure/table/wood/plain,
-/obj/item/reagent_containers/glass/bottle/rogue/beer/fireleaf,
+/obj/item/reagent_containers/glass/bottle/beer/fireleaf,
 /turf/open/floor/rogue/ruinedwood/darker,
 /area/rogue/indoors/mountains/anvil/surface/building)
 "gx" = (
@@ -390,7 +390,7 @@
 /area/rogue/under/mountains/anvil/lower)
 "gE" = (
 /obj/structure/table/wood/plain,
-/obj/item/reagent_containers/glass/bottle/rogue,
+/obj/item/reagent_containers/glass/bottle,
 /obj/machinery/light/rogue/torchholder{
 	dir = 1
 	},
@@ -591,7 +591,7 @@
 /turf/open/water/cleanshallow,
 /area/rogue/under/mountains/anvil/lower/building)
 "jQ" = (
-/obj/item/roguegear/metal/bronze,
+/obj/item/gear/metal/bronze,
 /turf/open/floor/rogue/volcanic,
 /area/rogue/outdoors/mountains/anvil/snowyforest)
 "jR" = (
@@ -732,7 +732,7 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/mountains/anvil/lower/building)
 "mg" = (
-/obj/item/rogueore/tin,
+/obj/item/ore/tin,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/lower)
 "mj" = (
@@ -1063,8 +1063,8 @@
 "qM" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/reagent_containers/glass/bottle/rogue,
-/obj/item/reagent_containers/glass/bottle/rogue,
+/obj/item/reagent_containers/glass/bottle,
+/obj/item/reagent_containers/glass/bottle,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/mountains/anvil/lower/building)
 "qP" = (
@@ -1249,7 +1249,7 @@
 /area/rogue/outdoors/mountains/anvil/snowyforest)
 "tG" = (
 /obj/structure/closet/crate/chest/old_crate,
-/obj/item/reagent_containers/glass/bottle/rogue/beer,
+/obj/item/reagent_containers/glass/bottle/beer,
 /obj/item/reagent_containers/food/snacks/rotten/meat,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/mountains/anvil/lower/building)
@@ -1371,7 +1371,7 @@
 /turf/open/floor/rogue/ruinedwood/spiralfade,
 /area/rogue/under/mountains/anvil/lower/building)
 "vu" = (
-/obj/item/roguegear/metal/bronze,
+/obj/item/gear/metal/bronze,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/mountains/anvil/snowyforest)
 "vK" = (
@@ -2276,7 +2276,7 @@
 /area/rogue/under/mountains/anvil/lower/building)
 "KZ" = (
 /obj/structure/closet/crate/coffin,
-/obj/item/reagent_containers/glass/bottle/rogue/beer/stonebeardreserve,
+/obj/item/reagent_containers/glass/bottle/beer/stonebeardreserve,
 /obj/item/clothing/face/spectacles,
 /obj/item/clothing/armor/leather/jacket/hand,
 /turf/open/floor/rogue/blocks/green,
@@ -2416,7 +2416,7 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/mountains/anvil/lower)
 "MY" = (
-/obj/item/roguestatue/silver,
+/obj/item/statue/silver,
 /turf/open/floor/rogue/blocks/green,
 /area/rogue/under/mountains/anvil/lower/building)
 "Nj" = (
@@ -2591,7 +2591,7 @@
 /area/rogue/under/mountains/anvil/lower/building)
 "Py" = (
 /obj/structure/closet/crate/chest/gold,
-/obj/item/roguestatue/gold/loot,
+/obj/item/statue/gold/loot,
 /obj/effect/spawner/roguemap/loot/medium,
 /obj/effect/spawner/roguemap/loot/common,
 /obj/effect/spawner/roguemap/loot/common,
@@ -3006,8 +3006,8 @@
 /area/rogue/under/mountains/anvil/lower)
 "Wi" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/roguegear/wood/basic,
-/obj/item/roguegear/wood/basic,
+/obj/item/gear/wood/basic,
+/obj/item/gear/wood/basic,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/mountains/anvil/lower/building)
 "Wn" = (
@@ -3086,7 +3086,7 @@
 /area/rogue/under/mountains/anvil/lower/building)
 "Xw" = (
 /obj/structure/table/wood/plain,
-/obj/item/reagent_containers/glass/bottle/rogue/beer/blackgoat,
+/obj/item/reagent_containers/glass/bottle/beer/blackgoat,
 /turf/open/floor/rogue/ruinedwood/darker,
 /area/rogue/indoors/mountains/anvil/surface/building)
 "Xy" = (
@@ -3106,7 +3106,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/under/mountains/anvil/lower/building)
 "XD" = (
-/obj/item/rogueore/copper,
+/obj/item/ore/copper,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/lower)
 "XF" = (
@@ -3128,7 +3128,7 @@
 	pixel_x = -3;
 	pixel_y = 6
 	},
-/obj/item/rogueore/coal{
+/obj/item/ore/coal{
 	pixel_y = -2;
 	pixel_x = 9
 	},

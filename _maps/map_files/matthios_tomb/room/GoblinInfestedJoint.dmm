@@ -112,7 +112,7 @@
 /area/rogue)
 "eX" = (
 /obj/structure/bars/grille,
-/obj/item/roguestatue/gold/loot,
+/obj/item/statue/gold/loot,
 /turf/open/transparent/openspace,
 /area/rogue)
 "fj" = (
@@ -189,7 +189,7 @@
 /turf/open/transparent/openspace,
 /area/rogue)
 "gx" = (
-/obj/item/rogueore/tin{
+/obj/item/ore/tin{
 	pixel_x = 12;
 	pixel_y = 14
 	},
@@ -234,7 +234,7 @@
 /area/rogue)
 "iQ" = (
 /obj/structure/bars/grille,
-/obj/item/roguestatue/gold,
+/obj/item/statue/gold,
 /turf/open/transparent/openspace,
 /area/rogue)
 "iS" = (
@@ -288,7 +288,7 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue)
 "lJ" = (
-/obj/item/rogueore/iron{
+/obj/item/ore/iron{
 	pixel_y = 5
 	},
 /turf/open/floor/rogue/naturalstone,
@@ -337,7 +337,7 @@
 /area/rogue)
 "oB" = (
 /obj/effect/decal/cleanable/dirt/cobweb/cobweb2,
-/obj/item/rogueore/coal,
+/obj/item/ore/coal,
 /mob/living/carbon/human/species/rousman/ambush,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
@@ -520,7 +520,7 @@
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
 "uB" = (
-/obj/item/rogueore/coal,
+/obj/item/ore/coal,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "uC" = (
@@ -924,7 +924,7 @@
 /turf/open/floor/rogue/ruinedwood/turned/darker,
 /area/rogue)
 "KR" = (
-/obj/item/rogueore/iron{
+/obj/item/ore/iron{
 	pixel_x = 10;
 	pixel_y = -2
 	},
@@ -1014,7 +1014,7 @@
 /turf/open/floor/rogue/rooftop,
 /area/rogue)
 "NR" = (
-/obj/item/rogueore/copper{
+/obj/item/ore/copper{
 	pixel_y = -9
 	},
 /turf/open/floor/rogue/naturalstone,
@@ -1216,7 +1216,7 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue)
 "Vz" = (
-/obj/item/rogueore/iron{
+/obj/item/ore/iron{
 	pixel_y = 12;
 	pixel_x = -16
 	},

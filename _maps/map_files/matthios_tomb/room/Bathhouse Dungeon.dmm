@@ -88,7 +88,7 @@
 /area/rogue/indoors)
 "bN" = (
 /obj/structure/bars,
-/obj/item/roguestatue/gold,
+/obj/item/statue/gold,
 /turf/open/water/sewer,
 /area/rogue/indoors)
 "bW" = (
@@ -122,7 +122,7 @@
 /area/rogue/indoors)
 "cB" = (
 /obj/structure/mirror,
-/obj/item/roguestatue/silver,
+/obj/item/statue/silver,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors)
@@ -390,7 +390,7 @@
 /turf/open/floor/rogue/ruinedwood/chevron,
 /area/rogue/indoors)
 "iU" = (
-/obj/item/roguestatue/silver,
+/obj/item/statue/silver,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors)
 "jg" = (
@@ -585,7 +585,7 @@
 /area/rogue/indoors)
 "nS" = (
 /obj/structure/closet/crate/chest/lootbox,
-/obj/item/roguestatue/gold/loot,
+/obj/item/statue/gold/loot,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors)
 "nZ" = (
@@ -922,7 +922,7 @@
 "vg" = (
 /obj/structure/table/wood/fine,
 /obj/item/rogue/painting/castle,
-/obj/item/roguestatue/gold/loot,
+/obj/item/statue/gold/loot,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors)
 "vl" = (
@@ -1099,7 +1099,7 @@
 /area/rogue/indoors)
 "zA" = (
 /obj/structure/closet/crate/crafted_closet/inn,
-/obj/item/roguestatue,
+/obj/item/statue,
 /obj/item/clothing/armor/leather/vest/random,
 /obj/item/clothing/pants/trou/leathertights,
 /turf/open/floor/rogue/church,
@@ -1770,7 +1770,7 @@
 /turf/open/floor/rogue/ruinedwood/chevron,
 /area/rogue/indoors)
 "Qd" = (
-/obj/item/roguestatue,
+/obj/item/statue,
 /mob/living/simple_animal/hostile/retaliate/bigrat,
 /obj/effect/decal/cleanable/blood/gibs,
 /obj/effect/decal/cleanable/blood,
@@ -1813,7 +1813,7 @@
 /area/rogue/indoors)
 "RJ" = (
 /obj/structure/closet/crate/chest/neu_iron,
-/obj/item/roguestatue/gold/loot,
+/obj/item/statue/gold/loot,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors)
 "RK" = (

@@ -58,7 +58,7 @@
 					if((foundrecipe.bonus_chance_outputs[foundrecipe.bonus_chance_outputs[i]] * bonus_modifier) >= roll(1,100))
 						var/obj/item/bonusduck = foundrecipe.bonus_chance_outputs[i]
 						new bonusduck(get_turf(src))
-			if(istype(to_grind,/obj/item/rogueore) || istype(to_grind,/obj/item/ingot))
+			if(istype(to_grind,/obj/item/ore) || istype(to_grind,/obj/item/ingot))
 				user.flash_fullscreen("whiteflash")
 				var/datum/effect_system/spark_spread/S = new()
 				var/turf/front = get_turf(src)

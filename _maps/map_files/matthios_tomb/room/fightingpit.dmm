@@ -7,7 +7,7 @@
 /turf/open/floor/rogue/metal,
 /area/rogue)
 "ei" = (
-/obj/item/reagent_containers/glass/bottle/rogue/whitewine,
+/obj/item/reagent_containers/glass/bottle/whitewine,
 /turf/closed/mineral/rogue/bedrock,
 /area/rogue)
 "es" = (
@@ -141,7 +141,7 @@
 /turf/open/floor/rogue/metal,
 /area/rogue)
 "CT" = (
-/obj/item/reagent_containers/glass/bottle/rogue/redwine,
+/obj/item/reagent_containers/glass/bottle/redwine,
 /turf/closed/mineral/rogue/bedrock,
 /area/rogue)
 "DM" = (

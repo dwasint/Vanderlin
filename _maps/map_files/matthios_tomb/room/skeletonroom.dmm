@@ -99,7 +99,7 @@
 /area/rogue)
 "vb" = (
 /obj/structure/table/vtable/v2,
-/obj/item/roguestatue/gold{
+/obj/item/statue/gold{
 	pixel_y = 14
 	},
 /turf/open/floor/rogue/hexstone,
@@ -280,14 +280,14 @@
 /area/rogue)
 "UK" = (
 /obj/structure/chair/bench/throne,
-/obj/item/reagent_containers/glass/bottle/rogue/redwine{
+/obj/item/reagent_containers/glass/bottle/redwine{
 	pixel_x = -19
 	},
-/obj/item/reagent_containers/glass/bottle/rogue/redwine{
+/obj/item/reagent_containers/glass/bottle/redwine{
 	pixel_x = 16;
 	pixel_y = -11
 	},
-/obj/item/reagent_containers/glass/bottle/rogue/redwine{
+/obj/item/reagent_containers/glass/bottle/redwine{
 	pixel_y = -13;
 	pixel_x = -9
 	},
@@ -302,7 +302,7 @@
 /area/rogue)
 "Wp" = (
 /obj/structure/table/vtable,
-/obj/item/roguestatue/gold/loot{
+/obj/item/statue/gold/loot{
 	pixel_y = 11
 	},
 /turf/open/floor/rogue/hexstone,
@@ -328,7 +328,7 @@
 	},
 /obj/structure/table/wood/plain_alt,
 /obj/structure/table/wood/plain_alt,
-/obj/item/reagent_containers/glass/bottle/rogue/wine/sourwine,
+/obj/item/reagent_containers/glass/bottle/wine/sourwine,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "ZE" = (

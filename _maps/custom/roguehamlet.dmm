@@ -398,7 +398,7 @@
 /area/rogue/under/town/sewer)
 "awX" = (
 /mob/living/simple_animal/hostile/retaliate/spider,
-/obj/item/rogueore/iron,
+/obj/item/ore/iron,
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/cave/spider)
 "axt" = (
@@ -526,7 +526,7 @@
 /obj/item/natural/feather{
 	pixel_x = 5
 	},
-/obj/item/reagent_containers/glass/bottle/rogue/wine{
+/obj/item/reagent_containers/glass/bottle/wine{
 	pixel_x = -11;
 	pixel_y = 10
 	},
@@ -873,7 +873,7 @@
 	pixel_y = 32
 	},
 /obj/structure/closet/crate/crafted_closet/lord,
-/obj/item/reagent_containers/glass/bottle/rogue/wine,
+/obj/item/reagent_containers/glass/bottle/wine,
 /obj/item/clothing/face/cigarette/rollie/trippy,
 /obj/structure/fluff/walldeco/bath/wallrope{
 	dir = 8;
@@ -923,7 +923,7 @@
 	name = "vulf cave"
 	})
 "bbn" = (
-/obj/structure/fluff/grindwheel,
+/obj/structure/grindwheel,
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/exposed/under/basement)
 "bby" = (
@@ -1368,7 +1368,7 @@
 /obj/item/natural/feather{
 	pixel_x = 5
 	},
-/obj/item/reagent_containers/glass/bottle/rogue/wine{
+/obj/item/reagent_containers/glass/bottle/wine{
 	pixel_x = -11;
 	pixel_y = 10
 	},
@@ -1426,13 +1426,13 @@
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town)
 "bFC" = (
-/obj/item/reagent_containers/glass/bottle/rogue/strongpoison,
+/obj/item/reagent_containers/glass/bottle/strongpoison,
 /obj/structure/closet/crate/chest/neu_iron{
 	locked = 1;
 	lockid = "mage";
 	name = "stained old chest"
 	},
-/obj/item/reagent_containers/glass/bottle/rogue/poison,
+/obj/item/reagent_containers/glass/bottle/poison,
 /obj/item/reagent_containers/glass/bottle/venom,
 /obj/item/reagent_containers/glass/bottle/spewium,
 /turf/open/floor/rogue/hexstone,
@@ -1864,10 +1864,10 @@
 	})
 "bYh" = (
 /obj/structure/rack/rogue,
-/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
-/obj/item/reagent_containers/glass/bottle/rogue/poison,
-/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
-/obj/item/reagent_containers/glass/bottle/rogue/manapot,
+/obj/item/reagent_containers/glass/bottle/healthpot,
+/obj/item/reagent_containers/glass/bottle/poison,
+/obj/item/reagent_containers/glass/bottle/healthpot,
+/obj/item/reagent_containers/glass/bottle/manapot,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "bYY" = (
@@ -2117,8 +2117,8 @@
 /obj/item/reagent_containers/glass/cup/wooden,
 /obj/item/reagent_containers/glass/cup/wooden,
 /obj/item/reagent_containers/glass/cup/wooden,
-/obj/item/reagent_containers/glass/bottle/rogue/beer/hagwoodbitter,
-/obj/item/reagent_containers/glass/bottle/rogue/beer/blackgoat,
+/obj/item/reagent_containers/glass/bottle/beer/hagwoodbitter,
+/obj/item/reagent_containers/glass/bottle/beer/blackgoat,
 /obj/item/kitchen/rollingpin,
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors)
@@ -3310,7 +3310,7 @@
 	icon_state = "tablewood2"
 	},
 /obj/item/toy/cards/deck,
-/obj/item/reagent_containers/glass/bottle/rogue/wine{
+/obj/item/reagent_containers/glass/bottle/wine{
 	pixel_x = 8
 	},
 /obj/item/clothing/face/cigarette/rollie/nicotine{
@@ -3911,7 +3911,7 @@
 /obj/effect/decal/cobbleedge{
 	dir = 10
 	},
-/obj/item/reagent_containers/glass/bottle/rogue/wine,
+/obj/item/reagent_containers/glass/bottle/wine,
 /obj/item/bedsheet/rogue/double_pelt,
 /obj/effect/landmark/start/prince{
 	dir = 8
@@ -3965,7 +3965,7 @@
 	lockid = "tavern";
 	name = "cooks chest"
 	},
-/obj/item/reagent_containers/glass/bottle/rogue/wine,
+/obj/item/reagent_containers/glass/bottle/wine,
 /obj/item/clothing/pants/tights/green,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/town/basement)
@@ -4159,7 +4159,7 @@
 /area/rogue/indoors/town/cell)
 "eyi" = (
 /obj/structure/rack/rogue,
-/obj/item/reagent_containers/glass/bottle/rogue/manapot,
+/obj/item/reagent_containers/glass/bottle/manapot,
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/magician)
 "eyx" = (
@@ -4459,7 +4459,7 @@
 	dir = 1;
 	icon_state = "longtable"
 	},
-/obj/item/reagent_containers/glass/bottle/rogue/wine{
+/obj/item/reagent_containers/glass/bottle/wine{
 	pixel_y = 9
 	},
 /turf/open/floor/rogue/tile/masonic/inverted,
@@ -4557,7 +4557,7 @@
 /area/rogue/outdoors/exposed/town)
 "ePp" = (
 /obj/structure/rack/rogue,
-/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
+/obj/item/reagent_containers/glass/bottle/healthpot,
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/magician)
 "ePz" = (
@@ -4913,7 +4913,7 @@
 /obj/item/paper/scroll,
 /obj/item/paper/scroll,
 /obj/item/weapon/knife/dagger/steel,
-/obj/item/reagent_containers/glass/bottle/rogue/poison,
+/obj/item/reagent_containers/glass/bottle/poison,
 /obj/item/clothing/face/cigarette/rollie/cannabis,
 /obj/item/reagent_containers/food/snacks/produce/jacksberry/poison,
 /turf/open/floor/carpet/royalblack,
@@ -5412,7 +5412,7 @@
 "fHU" = (
 /obj/structure/table/vtable/v2,
 /obj/item/reagent_containers/glass/cup,
-/obj/item/reagent_containers/glass/bottle/rogue/wine{
+/obj/item/reagent_containers/glass/bottle/wine{
 	pixel_x = -11;
 	pixel_y = 10
 	},
@@ -6472,7 +6472,7 @@
 	ambush_mobs = list(/mob/living/simple_animal/hostile/retaliate/wolf = 50, /mob/living/carbon/human/species/human/northern/bum/ambush = 30)
 	})
 "gPa" = (
-/obj/structure/fluff/grindwheel,
+/obj/structure/grindwheel,
 /obj/item/weapon/sword/scimitar/messer,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors/shelter/town/dwarf)
@@ -6990,7 +6990,7 @@
 /turf/open/floor/rogue/ruinedwood/chevron,
 /area/rogue/indoors/town/tavern/saiga)
 "hzN" = (
-/obj/item/rogueore/iron,
+/obj/item/ore/iron,
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/cave/spider)
 "hAo" = (
@@ -7070,7 +7070,7 @@
 	name = "plague district"
 	})
 "hDd" = (
-/obj/item/reagent_containers/glass/bottle/rogue/water,
+/obj/item/reagent_containers/glass/bottle/water,
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors/town/shop)
 "hDi" = (
@@ -7113,8 +7113,8 @@
 /obj/item/reagent_containers/glass/bottle/plasma,
 /obj/item/reagent_containers/glass/bottle/welding_fuel,
 /obj/item/reagent_containers/glass/bottle/sulfur,
-/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
-/obj/item/reagent_containers/glass/bottle/rogue/wine,
+/obj/item/reagent_containers/glass/bottle/healthpot,
+/obj/item/reagent_containers/glass/bottle/wine,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/magician)
 "hDZ" = (
@@ -7557,10 +7557,10 @@
 /obj/item/reagent_containers/food/snacks/egg,
 /obj/item/reagent_containers/food/snacks/egg,
 /obj/structure/closet/crate/crafted_closet/dark,
-/obj/item/reagent_containers/glass/bottle/rogue/beer,
-/obj/item/reagent_containers/glass/bottle/rogue/beer,
-/obj/item/reagent_containers/glass/bottle/rogue/beer,
-/obj/item/reagent_containers/glass/bottle/rogue/beer,
+/obj/item/reagent_containers/glass/bottle/beer,
+/obj/item/reagent_containers/glass/bottle/beer,
+/obj/item/reagent_containers/glass/bottle/beer,
+/obj/item/reagent_containers/glass/bottle/beer,
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors)
 "hZE" = (
@@ -7663,7 +7663,7 @@
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/indoors/shelter/rtfield)
 "iek" = (
-/obj/item/roguestatue/steel,
+/obj/item/statue/steel,
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/cavewet{
 	first_time_text = "DWARVERN RUINS"
@@ -7867,11 +7867,11 @@
 	},
 /obj/effect/decal/cleanable/dirt/cobweb,
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/reagent_containers/glass/bottle/rogue/wine,
-/obj/item/reagent_containers/glass/bottle/rogue/wine,
-/obj/item/reagent_containers/glass/bottle/rogue/wine,
-/obj/item/reagent_containers/glass/bottle/rogue/wine,
-/obj/item/reagent_containers/glass/bottle/rogue/wine,
+/obj/item/reagent_containers/glass/bottle/wine,
+/obj/item/reagent_containers/glass/bottle/wine,
+/obj/item/reagent_containers/glass/bottle/wine,
+/obj/item/reagent_containers/glass/bottle/wine,
+/obj/item/reagent_containers/glass/bottle/wine,
 /turf/open/floor/rogue/cobble,
 /area/rogue/outdoors/exposed/under/basement)
 "iqN" = (
@@ -8056,8 +8056,8 @@
 /obj/item/reagent_containers/glass/bottle/lithium,
 /obj/item/reagent_containers/glass/bottle/ammonia,
 /obj/item/reagent_containers/glass/bottle/fluorine,
-/obj/item/reagent_containers/glass/bottle/rogue/manapot,
-/obj/item/reagent_containers/glass/bottle/rogue/water,
+/obj/item/reagent_containers/glass/bottle/manapot,
+/obj/item/reagent_containers/glass/bottle/water,
 /obj/item/reagent_containers/glass/bottle/sodium,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/magician)
@@ -8218,7 +8218,7 @@
 "iHl" = (
 /obj/effect/decal/cleanable/dirt/cobweb/cobweb2,
 /obj/item/weapon/shovel,
-/obj/item/rogueore/coal,
+/obj/item/ore/coal,
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/cave/spider)
 "iHy" = (
@@ -8850,7 +8850,7 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/town)
 "jrk" = (
-/obj/item/roguestatue/silver/gnome,
+/obj/item/statue/silver/gnome,
 /turf/open/floor/rogue/tile/masonic/inverted,
 /area/rogue/indoors/town/magician)
 "jrP" = (
@@ -9708,7 +9708,7 @@
 /obj/structure/closet/crate/chest/neu_iron,
 /obj/item/clothing/face/cigarette/pipe/westman,
 /obj/item/reagent_containers/food/snacks/produce/dry_westleach,
-/obj/item/reagent_containers/glass/bottle/rogue/wine,
+/obj/item/reagent_containers/glass/bottle/wine,
 /obj/item/reagent_containers/glass/cup/steel,
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/town/basement)
@@ -10239,7 +10239,7 @@
 "kLz" = (
 /obj/effect/decal/cleanable/dirt/cobweb/cobweb2,
 /obj/structure/fluff/walldeco/maidensigil,
-/obj/item/roguestatue/gold,
+/obj/item/statue/gold,
 /turf/open/floor/rogue/tile/kitchen,
 /area/rogue/indoors/town/vault)
 "kLA" = (
@@ -10457,14 +10457,14 @@
 /area/rogue/indoors/shelter/mountains)
 "laX" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/reagent_containers/glass/bottle/rogue,
-/obj/item/reagent_containers/glass/bottle/rogue,
-/obj/item/reagent_containers/glass/bottle/rogue,
-/obj/item/reagent_containers/glass/bottle/rogue,
-/obj/item/reagent_containers/glass/bottle/rogue,
-/obj/item/reagent_containers/glass/bottle/rogue,
-/obj/item/reagent_containers/glass/bottle/rogue,
-/obj/item/reagent_containers/glass/bottle/rogue,
+/obj/item/reagent_containers/glass/bottle,
+/obj/item/reagent_containers/glass/bottle,
+/obj/item/reagent_containers/glass/bottle,
+/obj/item/reagent_containers/glass/bottle,
+/obj/item/reagent_containers/glass/bottle,
+/obj/item/reagent_containers/glass/bottle,
+/obj/item/reagent_containers/glass/bottle,
+/obj/item/reagent_containers/glass/bottle,
 /turf/open/floor/rogue/hexstone,
 /area/rogue/indoors/town/magician)
 "lbE" = (
@@ -11073,7 +11073,7 @@
 /obj/structure/closet/crate/chest/neu,
 /obj/item/clothing/cloak/raincloak/blue,
 /obj/item/reagent_containers/food/snacks/breadslice/toast,
-/obj/item/reagent_containers/glass/bottle/rogue/water,
+/obj/item/reagent_containers/glass/bottle/water,
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/indoors/town/garrison)
 "lIP" = (
@@ -11896,7 +11896,7 @@
 	dir = 10;
 	icon_state = "tablewood2"
 	},
-/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
+/obj/item/reagent_containers/glass/bottle/healthpot,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/spiderbase)
 "mEf" = (
@@ -12214,7 +12214,7 @@
 	dir = 1;
 	icon_state = "longtable"
 	},
-/obj/item/reagent_containers/glass/bottle/rogue/redwine{
+/obj/item/reagent_containers/glass/bottle/redwine{
 	pixel_x = 5;
 	pixel_y = 11
 	},
@@ -12570,7 +12570,7 @@
 	},
 /area/rogue/outdoors/exposed/manorgarri)
 "nlv" = (
-/obj/item/rogueore/coal,
+/obj/item/ore/coal,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/shelter/town/dwarf)
 "nlJ" = (
@@ -13030,7 +13030,7 @@
 "nJP" = (
 /obj/effect/decal/cleanable/dirt/cobweb,
 /obj/structure/closet/crate/chest/old_crate,
-/obj/item/roguestatue/gold/loot,
+/obj/item/statue/gold/loot,
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/cave/spider)
 "nJQ" = (
@@ -13584,11 +13584,11 @@
 /area/rogue/indoors/town)
 "onR" = (
 /obj/structure/closet/crate/chest/old_crate,
-/obj/item/rogueore/iron,
-/obj/item/rogueore/iron,
-/obj/item/rogueore/iron,
-/obj/item/rogueore/iron,
-/obj/item/rogueore/iron,
+/obj/item/ore/iron,
+/obj/item/ore/iron,
+/obj/item/ore/iron,
+/obj/item/ore/iron,
+/obj/item/ore/iron,
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/shelter/town/dwarf)
 "onS" = (
@@ -13919,9 +13919,9 @@
 "oDe" = (
 /obj/item/roguegem/green,
 /obj/structure/closet/crate/chest/neu,
-/obj/item/reagent_containers/glass/bottle/rogue/manapot,
-/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
-/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
+/obj/item/reagent_containers/glass/bottle/manapot,
+/obj/item/reagent_containers/glass/bottle/healthpot,
+/obj/item/reagent_containers/glass/bottle/healthpot,
 /turf/open/floor/rogue/tile{
 	icon_state = "chess"
 	},
@@ -14193,11 +14193,11 @@
 	dir = 8
 	},
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/reagent_containers/glass/bottle/rogue/redwine,
-/obj/item/reagent_containers/glass/bottle/rogue/wine/sourwine,
-/obj/item/reagent_containers/glass/bottle/rogue/redwine,
-/obj/item/reagent_containers/glass/bottle/rogue/whitewine,
-/obj/item/reagent_containers/glass/bottle/rogue/whitewine,
+/obj/item/reagent_containers/glass/bottle/redwine,
+/obj/item/reagent_containers/glass/bottle/wine/sourwine,
+/obj/item/reagent_containers/glass/bottle/redwine,
+/obj/item/reagent_containers/glass/bottle/whitewine,
+/obj/item/reagent_containers/glass/bottle/whitewine,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/exposed/under/basement)
 "oOm" = (
@@ -15155,7 +15155,7 @@
 /area/rogue/outdoors/bog)
 "pHH" = (
 /obj/structure/flora/roguegrass,
-/obj/structure/fluff/grindwheel,
+/obj/structure/grindwheel,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/exposed/manorgarri)
 "pHY" = (
@@ -15286,10 +15286,10 @@
 	})
 "pTJ" = (
 /obj/structure/fake_machine/stockpile,
-/obj/item/rogueore/coal,
-/obj/item/rogueore/coal,
-/obj/item/rogueore/coal,
-/obj/item/rogueore/coal,
+/obj/item/ore/coal,
+/obj/item/ore/coal,
+/obj/item/ore/coal,
+/obj/item/ore/coal,
 /obj/item/weapon/shovel/small,
 /obj/structure/bars/pipe{
 	dir = 1;
@@ -15651,7 +15651,7 @@
 /area/rogue/indoors/town/church)
 "qkV" = (
 /obj/structure/closet/crate/crafted_closet,
-/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
+/obj/item/reagent_containers/glass/bottle/healthpot,
 /obj/item/reagent_containers/food/snacks/hardtack,
 /obj/item/reagent_containers/food/snacks/hardtack,
 /obj/item/reagent_containers/food/snacks/hardtack,
@@ -16008,7 +16008,7 @@
 /turf/closed/wall/mineral/rogue/wooddark/end,
 /area/rogue/indoors/town/shop)
 "qFE" = (
-/obj/item/roguestatue/silver,
+/obj/item/statue/silver,
 /turf/open/floor/rogue/tile/kitchen,
 /area/rogue/indoors/town/vault)
 "qGx" = (
@@ -16420,7 +16420,7 @@
 /obj/structure/closet/crate/chest/neu,
 /obj/item/clothing/cloak/raincloak/blue,
 /obj/item/reagent_containers/food/snacks/hardtack,
-/obj/item/reagent_containers/glass/bottle/rogue/water,
+/obj/item/reagent_containers/glass/bottle/water,
 /turf/open/floor/rogue/wood/nosmooth,
 /area/rogue/indoors/town/garrison)
 "raQ" = (
@@ -16473,7 +16473,7 @@
 	})
 "rgv" = (
 /obj/structure/rack/rogue,
-/obj/item/reagent_containers/glass/bottle/rogue/healthpot{
+/obj/item/reagent_containers/glass/bottle/healthpot{
 	pixel_x = 5
 	},
 /obj/item/reagent_containers/glass/cup/steel{
@@ -17158,7 +17158,7 @@
 /obj/item/natural/bundle/cloth{
 	amount = 8
 	},
-/obj/item/reagent_containers/glass/bottle/rogue/poison,
+/obj/item/reagent_containers/glass/bottle/poison,
 /obj/item/storage/sack,
 /obj/item/clothing/cloak/apron/cook{
 	pixel_y = 17
@@ -18358,7 +18358,7 @@
 	pixel_y = 4
 	},
 /obj/item/key/tavern,
-/obj/item/reagent_containers/glass/bottle/rogue/wine,
+/obj/item/reagent_containers/glass/bottle/wine,
 /obj/item/clothing/armor/leather/vest/innkeep,
 /turf/open/floor/carpet/inn,
 /area/rogue/indoors/town/tavern/saiga)
@@ -20362,9 +20362,9 @@
 /area/rogue/indoors/town/shop)
 "uWr" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/reagent_containers/glass/bottle/rogue/wine,
-/obj/item/reagent_containers/glass/bottle/rogue/wine,
-/obj/item/reagent_containers/glass/bottle/rogue/wine,
+/obj/item/reagent_containers/glass/bottle/wine,
+/obj/item/reagent_containers/glass/bottle/wine,
+/obj/item/reagent_containers/glass/bottle/wine,
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors/town/tavern/saiga)
 "uWG" = (
@@ -22082,7 +22082,7 @@
 /area/rogue/indoors/town/bath/redhouse)
 "wIh" = (
 /obj/effect/decal/cleanable/dirt/cobweb,
-/obj/item/rogueore/iron,
+/obj/item/ore/iron,
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/cave/spider)
 "wIl" = (
@@ -23475,7 +23475,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/shelter/mountains)
 "ybe" = (
-/obj/item/roguestatue/iron,
+/obj/item/statue/iron,
 /obj/structure/flora/roguegrass,
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/exposed/manorgarri)

@@ -619,14 +619,14 @@ GLOBAL_LIST_EMPTY(active_lifts_by_type)
 		for(var/atom/movable/listed_atom in platform.lift_load)
 			if(!fence)
 				for(var/datum/trade_request/request in SSmerchant.trade_requests)
-					if(listed_atom.type == request.input_atom || (ispath(request.input_atom, /obj/item/reagent_containers/glass/bottle/rogue) && istype(listed_atom, /obj/item/reagent_containers/glass/bottle/rogue)))
-						if(istype(listed_atom, /obj/item/reagent_containers/glass/bottle/rogue))
-							var/obj/item/reagent_containers/glass/bottle/rogue/input_bottle = request.input_atom
+					if(listed_atom.type == request.input_atom || (ispath(request.input_atom, /obj/item/reagent_containers/glass/bottle) && istype(listed_atom, /obj/item/reagent_containers/glass/bottle)))
+						if(istype(listed_atom, /obj/item/reagent_containers/glass/bottle))
+							var/obj/item/reagent_containers/glass/bottle/input_bottle = request.input_atom
 							if(initial(input_bottle.list_reagents))
 								var/passed = FALSE
 								var/list/input_reagents = initial(input_bottle.list_reagents)
 								for(var/datum/reagent/reagent as anything in initial(input_bottle.list_reagents))
-									var/obj/item/reagent_containers/glass/bottle/rogue/bottle = listed_atom
+									var/obj/item/reagent_containers/glass/bottle/bottle = listed_atom
 									if(bottle.reagents.has_reagent(reagent, input_reagents[reagent] * 0.5))
 										passed = TRUE
 								if(!passed)

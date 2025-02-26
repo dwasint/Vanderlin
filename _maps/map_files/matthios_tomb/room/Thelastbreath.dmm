@@ -1,7 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ab" = (
 /obj/structure/table/vtable,
-/obj/item/roguestatue/gold,
+/obj/item/statue/gold,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors)
 "af" = (
@@ -850,7 +850,7 @@
 /area/rogue/indoors)
 "nb" = (
 /obj/structure/table/vtable/v2,
-/obj/item/roguestatue/gold,
+/obj/item/statue/gold,
 /obj/effect/spawner/roguemap/loot,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors)
@@ -888,7 +888,7 @@
 /area/rogue/indoors)
 "nD" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/reagent_containers/glass/bottle/rogue/wine,
+/obj/item/reagent_containers/glass/bottle/wine,
 /turf/open/floor/rogue/church,
 /area/rogue/indoors)
 "nI" = (
@@ -1386,12 +1386,12 @@
 /area/rogue/indoors)
 "vz" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/reagent_containers/glass/bottle/rogue/wine/sourwine,
+/obj/item/reagent_containers/glass/bottle/wine/sourwine,
 /turf/open/floor/rogue/church,
 /area/rogue/indoors)
 "vB" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/reagent_containers/glass/bottle/rogue/redwine,
+/obj/item/reagent_containers/glass/bottle/redwine,
 /turf/open/floor/rogue/church,
 /area/rogue/indoors)
 "vD" = (
@@ -2059,7 +2059,7 @@
 /area/rogue/indoors)
 "FU" = (
 /obj/item/alch/bonemeal,
-/obj/item/roguestatue/silver,
+/obj/item/statue/silver,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/indoors)
 "FX" = (
@@ -2082,7 +2082,7 @@
 /turf/open/floor/rogue/tile,
 /area/rogue/indoors)
 "Gs" = (
-/obj/item/roguestatue/iron,
+/obj/item/statue/iron,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors)
 "Gt" = (
@@ -2228,7 +2228,7 @@
 /area/rogue/indoors)
 "IS" = (
 /obj/structure/closet/crate/crafted_closet/dark,
-/obj/item/roguestatue/gold,
+/obj/item/statue/gold,
 /obj/effect/spawner/roguemap/loot/armor,
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors)
@@ -2259,7 +2259,7 @@
 /obj/item/candle/yellow/lit/infinite{
 	pixel_y = 8
 	},
-/obj/item/roguestatue/silver,
+/obj/item/statue/silver,
 /obj/item/roguegem/yellow,
 /turf/open/floor/rogue/churchbrick,
 /area/rogue/indoors)
@@ -2575,7 +2575,7 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/indoors)
 "NP" = (
-/obj/item/roguestatue/silver,
+/obj/item/statue/silver,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/indoors)
 "NV" = (
@@ -2586,7 +2586,7 @@
 /turf/open/floor/rogue/carpet,
 /area/rogue/indoors)
 "NY" = (
-/obj/item/roguestatue/silver,
+/obj/item/statue/silver,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/indoors)
@@ -2605,7 +2605,7 @@
 /area/rogue/indoors)
 "Op" = (
 /obj/structure/closet/crate/chest/gold,
-/obj/item/roguestatue/gold,
+/obj/item/statue/gold,
 /turf/open/floor/rogue/church,
 /area/rogue/indoors)
 "Os" = (
@@ -2880,7 +2880,7 @@
 /turf/open/floor/rogue/church,
 /area/rogue/indoors)
 "Sg" = (
-/obj/item/roguestatue/gold,
+/obj/item/statue/gold,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/indoors)
@@ -3104,7 +3104,7 @@
 "Vb" = (
 /obj/structure/fluff/nest,
 /obj/structure/intert_bonepile,
-/obj/item/roguestatue/silver,
+/obj/item/statue/silver,
 /obj/item/reagent_containers/glass/carafe/silver,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/indoors)
@@ -3318,7 +3318,7 @@
 /area/rogue/indoors)
 "Ye" = (
 /obj/structure/closet/crate/crafted_closet/inn/south,
-/obj/item/roguestatue/gold/loot,
+/obj/item/statue/gold/loot,
 /turf/open/floor/rogue/church,
 /area/rogue/indoors)
 "Yn" = (
@@ -3350,8 +3350,8 @@
 "YL" = (
 /obj/structure/closet/crate/chest/gold,
 /obj/effect/spawner/roguemap/loot/medium,
-/obj/item/roguestatue/silver,
-/obj/item/roguestatue/silver,
+/obj/item/statue/silver,
+/obj/item/statue/silver,
 /turf/open/floor/rogue/church,
 /area/rogue/indoors)
 "YP" = (

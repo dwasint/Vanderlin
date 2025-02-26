@@ -9,7 +9,7 @@
 	sleepy = 0.55
 //	pixel_y = 10
 	layer = OBJ_LAYER
-	metalizer_result = /obj/item/roguestatue/iron/deformed
+	metalizer_result = /obj/item/statue/iron/deformed
 
 /obj/structure/chair/bench/church
 	icon_state = "church_benchleft"
@@ -121,7 +121,7 @@
 	blade_dulling = DULLING_BASHCHOP
 	destroy_sound = 'sound/combat/hits/onwood/destroyfurniture.ogg'
 	attacked_sound = "woodimpact"
-	metalizer_result = /obj/item/roguestatue/iron/deformed
+	metalizer_result = /obj/item/statue/iron/deformed
 
 /obj/structure/chair/wood/rogue/chair3
 	icon_state = "chair3"

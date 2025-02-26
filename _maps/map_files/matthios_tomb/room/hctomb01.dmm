@@ -238,7 +238,7 @@
 /area/rogue)
 "pc" = (
 /obj/machinery/light/rogue/torchholder/c,
-/obj/item/rogueore/iron{
+/obj/item/ore/iron{
 	pixel_x = 9;
 	pixel_y = 6
 	},
@@ -305,7 +305,7 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue)
 "sx" = (
-/obj/structure/fluff/grindwheel,
+/obj/structure/grindwheel,
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue)
 "sA" = (
@@ -916,7 +916,7 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/blood/tracks,
-/obj/item/rogueore/coal{
+/obj/item/ore/coal{
 	pixel_x = 7;
 	pixel_y = -6
 	},
@@ -934,7 +934,7 @@
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue)
 "ZZ" = (
-/obj/item/rogueore/gold,
+/obj/item/ore/gold,
 /turf/open/water/cleanshallow,
 /area/rogue)
 

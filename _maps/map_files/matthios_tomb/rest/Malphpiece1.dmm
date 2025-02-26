@@ -5,9 +5,9 @@
 "b" = (
 /obj/structure/table/wood/nice/decorated,
 /obj/item/candle/yellow/lit/infinite/strong/skull,
-/obj/item/reagent_containers/glass/bottle/rogue/stronghealthpot,
+/obj/item/reagent_containers/glass/bottle/stronghealthpot,
 /obj/item/roguecoin/gold,
-/obj/item/reagent_containers/glass/bottle/rogue/redwine,
+/obj/item/reagent_containers/glass/bottle/redwine,
 /turf/open/floor/rogue/ruinedwood/chevron,
 /area/rogue/outdoors/caves)
 "c" = (

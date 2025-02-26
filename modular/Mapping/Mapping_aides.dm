@@ -351,7 +351,7 @@
 
 
 /*	..................   Misc   ................... */
-/obj/item/roguestatue/silver/gnome
+/obj/item/statue/silver/gnome
 	name = "petrified gnome"
 	desc = "A literal gnome, turned to stone mid-step and put on a matching stone platform. Rather unsettling."
 	smeltresult = null

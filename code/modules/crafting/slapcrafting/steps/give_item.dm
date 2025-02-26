@@ -62,7 +62,7 @@
 
 /datum/slapcraft_step/item/coal
 	desc = "Add some coal."
-	item_types = list(/obj/item/rogueore/coal)
+	item_types = list(/obj/item/ore/coal)
 
 /datum/slapcraft_step/item/iron
 	desc = "Add an iron ingot."
@@ -82,7 +82,7 @@
 
 /datum/slapcraft_step/item/cog
 	desc = "Add a cog."
-	item_types = list(/obj/item/roguegear/metal)
+	item_types = list(/obj/item/gear/metal)
 
 /datum/slapcraft_step/item/cog/second
 

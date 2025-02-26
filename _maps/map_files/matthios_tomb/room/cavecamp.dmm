@@ -4,7 +4,7 @@
 /area/rogue)
 "c" = (
 /obj/structure/bed/rogue/shit,
-/obj/item/reagent_containers/glass/bottle/rogue/healthpot{
+/obj/item/reagent_containers/glass/bottle/healthpot{
 	pixel_x = 3;
 	pixel_y = 20
 	},

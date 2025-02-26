@@ -162,7 +162,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "V" = (
-/obj/item/roguestatue/iron,
+/obj/item/statue/iron,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "W" = (

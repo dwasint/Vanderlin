@@ -105,7 +105,7 @@
 /area/rogue/outdoors/caves)
 "P" = (
 /obj/structure/table/vtable/v2,
-/obj/item/reagent_containers/glass/bottle/rogue/whitewine,
+/obj/item/reagent_containers/glass/bottle/whitewine,
 /obj/item/reagent_containers/glass/cup/silver,
 /obj/item/reagent_containers/food/snacks/cheese_wedge/aged,
 /obj/item/reagent_containers/food/snacks/hardtack,
@@ -122,8 +122,8 @@
 "Y" = (
 /obj/machinery/light/rogue/torchholder/r,
 /obj/effect/landmark/chest_or_mimic,
-/obj/item/rogueore/gold,
-/obj/item/rogueore/gold,
+/obj/item/ore/gold,
+/obj/item/ore/gold,
 /obj/item/clothing/neck/psycross/silver/malum_steel,
 /turf/open/floor/rogue/volcanic,
 /area/rogue/outdoors/caves)

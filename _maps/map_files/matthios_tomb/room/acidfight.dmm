@@ -168,14 +168,14 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "R" = (
-/obj/item/roguegear{
+/obj/item/gear{
 	pixel_x = -6
 	},
-/obj/item/roguegear{
+/obj/item/gear{
 	pixel_y = -4;
 	pixel_x = 6
 	},
-/obj/item/roguegear{
+/obj/item/gear{
 	pixel_x = 1;
 	pixel_y = 5
 	},

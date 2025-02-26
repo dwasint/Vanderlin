@@ -38,7 +38,7 @@
 		/datum/slapcraft_step/item/stone,
 		/datum/slapcraft_step/item/iron,
 		)
-	result_type = /obj/structure/fluff/grindwheel
+	result_type = /obj/structure/grindwheel
 
 /datum/slapcraft_recipe/masonry/structure/oven
 	name = "oven"

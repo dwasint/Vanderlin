@@ -140,7 +140,7 @@
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue)
 "vj" = (
-/obj/item/reagent_containers/glass/bottle/rogue/beer,
+/obj/item/reagent_containers/glass/bottle/beer,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue)
 "xI" = (

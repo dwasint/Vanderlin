@@ -43,7 +43,7 @@
 		/obj/item/reagent_containers/food/snacks/produce/fyritius=10,
 		/obj/item/clothing/armor/gambeson=33,
 		/obj/item/clothing/armor/leather=33,
-		/obj/item/roguestatue/gold/loot=1,
+		/obj/item/statue/gold/loot=1,
 		/obj/item/ingot/iron=22,
 		/obj/item/bottlemessage/ancient=22,
 		/obj/item/weapon/knife/cleaver=22,

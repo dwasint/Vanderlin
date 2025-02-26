@@ -224,7 +224,7 @@
 	var/atom/target_loc = target.loc
 	var/obj/item/itemtospawn
 	//Only ores can be smelted remotely, other items must be held by the user
-	if(istype(target, /obj/item/rogueore))
+	if(istype(target, /obj/item/ore))
 		target.visible_message("<font color='yellow'>After [user]'s incantation, [target] melts into an ingot.</font>")
 		itemtospawn = new target.smeltresult(get_turf(target))
 	else if(target_loc == user)

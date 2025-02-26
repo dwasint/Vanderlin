@@ -52,7 +52,7 @@
 			backpack_contents = list(/obj/item/reagent_containers/food/snacks/rogue/meat/salami = 1, /obj/item/reagent_containers/food/snacks/cooked/coppiette = 1, /obj/item/reagent_containers/food/snacks/rogue/cheddar = 1, /obj/item/reagent_containers/food/snacks/saltfish = 1, /obj/item/reagent_containers/food/snacks/hardtack = 1)
 			H.mind?.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
 		if("HEAL")		// Travelling potion seller (If only we had snake oil..)
-			backpack_contents = list(/obj/item/reagent_containers/glass/bottle/rogue/healthpot, /obj/item/reagent_containers/glass/bottle/rogue/healthpot, /obj/item/reagent_containers/glass/bottle/rogue/healthpot, /obj/item/reagent_containers/glass/bottle/rogue/manapot)
+			backpack_contents = list(/obj/item/reagent_containers/glass/bottle/healthpot, /obj/item/reagent_containers/glass/bottle/healthpot, /obj/item/reagent_containers/glass/bottle/healthpot, /obj/item/reagent_containers/glass/bottle/manapot)
 			H.mind?.adjust_skillrank(/datum/skill/craft/alchemy, 2, TRUE)
 		if("SILK")		// Travelling silk trader
 			backpack_contents = list(/obj/item/natural/bundle/silk = 2, /obj/item/natural/fur = 1, /obj/item/natural/bundle/fibers = 2, /obj/item/clothing/shirt/dress/silkdress, /obj/item/clothing/shirt/undershirt/puritan)

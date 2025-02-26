@@ -184,7 +184,7 @@
 /turf/closed/wall/mineral/rogue/wood,
 /area/rogue)
 "gQ" = (
-/obj/structure/fluff/grindwheel,
+/obj/structure/grindwheel,
 /turf/open/floor/rogue/cobble,
 /area/rogue)
 "gU" = (
@@ -843,7 +843,7 @@
 /turf/open/floor/rogue/tile,
 /area/rogue)
 "Cl" = (
-/obj/structure/fluff/grindwheel,
+/obj/structure/grindwheel,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue)
 "Cp" = (
@@ -1488,7 +1488,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue)
 "XK" = (
-/obj/structure/fluff/grindwheel,
+/obj/structure/grindwheel,
 /turf/open/floor/rogue/wood,
 /area/rogue)
 "XP" = (

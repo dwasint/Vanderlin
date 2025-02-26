@@ -52,13 +52,13 @@
 	contents += "----------<BR>"
 	contents += "</center>"
 
-	for(var/datum/roguestock/bounty/R in SStreasury.stockpile_datums)
+	for(var/datum/stock/bounty/R in SStreasury.stockpile_datums)
 		contents += "[R.name] - [R.payout_price][R.percent_bounty ? "%" : ""]"
 		contents += "<BR>"
 
 	contents += "<BR>"
 
-	for(var/datum/roguestock/stockpile/R in SStreasury.stockpile_datums)
+	for(var/datum/stock/stockpile/R in SStreasury.stockpile_datums)
 		contents += "[R.name] - [R.payout_price] - [R.demand2word()]"
 		contents += "<BR>"
 
@@ -84,7 +84,7 @@
 	popup.open()
 
 /obj/structure/fake_machine/stockpile/proc/attemptsell(obj/item/I, mob/H, message = TRUE, sound = TRUE)
-	for(var/datum/roguestock/R in SStreasury.stockpile_datums)
+	for(var/datum/stock/R in SStreasury.stockpile_datums)
 		if(istype(I, /obj/item/natural/bundle))
 			var/obj/item/natural/bundle/B = I
 			if(B.stacktype == R.item_type)
@@ -165,7 +165,7 @@
 	contents += "<a href='byond://?src=[REF(parent_structure)];compact=1'>Compact Mode: [compact ? "ENABLED" : "DISABLED"]</a></center><BR>"
 
 	if(compact)
-		for(var/datum/roguestock/stockpile/A in SStreasury.stockpile_datums)
+		for(var/datum/stock/stockpile/A in SStreasury.stockpile_datums)
 			if(!A.withdraw_disabled)
 				contents += "<b>[A.name]:</b> <a href='byond://?src=[REF(parent_structure)];withdraw=[REF(A)]'>LCL: [A.held_items] at [A.withdraw_price]m</a><BR>"
 
@@ -173,7 +173,7 @@
 				contents += "<b>[A.name]:</b> Withdrawing Disabled..."
 
 	else
-		for(var/datum/roguestock/stockpile/A in SStreasury.stockpile_datums)
+		for(var/datum/stock/stockpile/A in SStreasury.stockpile_datums)
 			contents += "[A.name]<BR>"
 			contents += "[A.desc]<BR>"
 			contents += "Stockpiled Amount: [A.held_items]<BR>"
@@ -186,7 +186,7 @@
 
 /datum/withdraw_tab/proc/perform_action(href, href_list)
 	if(href_list["withdraw"])
-		var/datum/roguestock/D = locate(href_list["withdraw"]) in SStreasury.stockpile_datums
+		var/datum/stock/D = locate(href_list["withdraw"]) in SStreasury.stockpile_datums
 
 		var/total_price = D.withdraw_price
 

@@ -281,28 +281,28 @@
 
 /turf/closed/mineral/rogue/copper
 	icon_state = "coppbad"
-	mineralType = /obj/item/rogueore/copper
+	mineralType = /obj/item/ore/copper
 	rockType = /obj/item/natural/rock/copper
 	spreadChance = 4
 	spread = 3
 
 /turf/closed/mineral/rogue/tin
 	icon_state = "tinbad"
-	mineralType = /obj/item/rogueore/tin
+	mineralType = /obj/item/ore/tin
 	rockType = /obj/item/natural/rock/tin
 	spreadChance = 15
 	spread = 5
 
 /turf/closed/mineral/rogue/silver
 	icon_state = "silverbad"
-	mineralType = /obj/item/rogueore/silver
+	mineralType = /obj/item/ore/silver
 	rockType = /obj/item/natural/rock/silver
 	spreadChance = 2
 	spread = 2
 
 /turf/closed/mineral/rogue/gold
 	icon_state = "goldbad"
-	mineralType = /obj/item/rogueore/gold
+	mineralType = /obj/item/ore/gold
 	rockType = /obj/item/natural/rock/gold
 	spreadChance = 2
 	spread = 2
@@ -316,14 +316,14 @@
 
 /turf/closed/mineral/rogue/iron
 	icon_state = "ironbad"
-	mineralType = /obj/item/rogueore/iron
+	mineralType = /obj/item/ore/iron
 	rockType = /obj/item/natural/rock/iron
 	spreadChance = 5
 	spread = 3
 
 /turf/closed/mineral/rogue/coal
 	icon_state = "coalbad"
-	mineralType = /obj/item/rogueore/coal
+	mineralType = /obj/item/ore/coal
 	rockType = /obj/item/natural/rock/coal
 	spreadChance = 3
 	spread = 4

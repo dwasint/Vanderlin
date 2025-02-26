@@ -52,7 +52,7 @@
 	if(href_list["switchtab"])
 		current_tab = text2num(href_list["switchtab"])
 	if(href_list["import"])
-		var/datum/roguestock/D = locate(href_list["import"]) in SStreasury.stockpile_datums
+		var/datum/stock/D = locate(href_list["import"]) in SStreasury.stockpile_datums
 		if(!D)
 			return
 		if(SStreasury.treasury_value < D.get_import_price())
@@ -65,7 +65,7 @@
 		D.raise_demand()
 		addtimer(CALLBACK(src, PROC_REF(do_import), D.type), 10 SECONDS)
 	if(href_list["export"])
-		var/datum/roguestock/D = locate(href_list["export"]) in SStreasury.stockpile_datums
+		var/datum/stock/D = locate(href_list["export"]) in SStreasury.stockpile_datums
 		if(!D)
 			return
 		if(D.held_items < D.importexport_amt)
@@ -78,12 +78,12 @@
 		scom_announce("Vanderlin exports [D.name] for [amt] mammon.")
 		D.lower_demand()
 	if(href_list["togglewithdraw"])
-		var/datum/roguestock/D = locate(href_list["togglewithdraw"]) in SStreasury.stockpile_datums
+		var/datum/stock/D = locate(href_list["togglewithdraw"]) in SStreasury.stockpile_datums
 		if(!D)
 			return
 		D.withdraw_disabled = !D.withdraw_disabled
 	if(href_list["setbounty"])
-		var/datum/roguestock/D = locate(href_list["setbounty"]) in SStreasury.stockpile_datums
+		var/datum/stock/D = locate(href_list["setbounty"]) in SStreasury.stockpile_datums
 		if(!D)
 			return
 		if(!D.percent_bounty)
@@ -109,7 +109,7 @@
 					scom_announce("The bounty for [D.name] was increased.")
 				D.payout_price = newtax
 	if(href_list["setprice"])
-		var/datum/roguestock/D = locate(href_list["setprice"]) in SStreasury.stockpile_datums
+		var/datum/stock/D = locate(href_list["setprice"]) in SStreasury.stockpile_datums
 		if(!D)
 			return
 		if(!D.percent_bounty)
@@ -180,7 +180,7 @@
 				SStreasury.give_money_account(amount_to_pay, H)
 	return attack_hand(usr)
 
-/obj/structure/fake_machine/steward/proc/do_import(datum/roguestock/D,number)
+/obj/structure/fake_machine/steward/proc/do_import(datum/stock/D,number)
 	if(!D)
 		return
 	D = new D
@@ -265,7 +265,7 @@
 			contents += "Treasury: [SStreasury.treasury_value]m<BR>"
 			contents += "Lord's Tax: [SStreasury.tax_value*100]%<BR>"
 			contents += "Guild's Tax: [SStreasury.queens_tax*100]%</center><BR>"
-			for(var/datum/roguestock/stockpile/A in SStreasury.stockpile_datums)
+			for(var/datum/stock/stockpile/A in SStreasury.stockpile_datums)
 				contents += "[A.name]<BR>"
 				contents += "[A.desc]<BR>"
 				contents += "Stockpiled Amount: [A.held_items]<BR>"
@@ -282,7 +282,7 @@
 			contents += "Treasury: [SStreasury.treasury_value]m<BR>"
 			contents += "Lord's Tax: [SStreasury.tax_value*100]%<BR>"
 			contents += "Guild's Tax: [SStreasury.queens_tax*100]%</center><BR>"
-			for(var/datum/roguestock/import/A in SStreasury.stockpile_datums)
+			for(var/datum/stock/import/A in SStreasury.stockpile_datums)
 				contents += "[A.name]<BR>"
 				contents += "[A.desc]<BR>"
 				if(!A.stable_price)
@@ -294,7 +294,7 @@
 			contents += "--------------<BR>"
 			contents += "Treasury: [SStreasury.treasury_value]m<BR>"
 			contents += "Lord's Tax: [SStreasury.tax_value*100]%</center><BR>"
-			for(var/datum/roguestock/bounty/A in SStreasury.stockpile_datums)
+			for(var/datum/stock/bounty/A in SStreasury.stockpile_datums)
 				contents += "[A.name]<BR>"
 				contents += "[A.desc]<BR>"
 				contents += "Total Collected: [A.held_items]<BR>"

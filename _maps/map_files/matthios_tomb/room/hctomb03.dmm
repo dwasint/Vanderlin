@@ -351,8 +351,8 @@
 /area/rogue)
 "mK" = (
 /obj/structure/closet/crate/chest/neu_iron,
-/obj/item/rogueore/coal,
-/obj/item/rogueore/coal,
+/obj/item/ore/coal,
+/obj/item/ore/coal,
 /obj/structure/spider/stickyweb,
 /turf/open/floor/rogue/churchrough,
 /area/rogue)
@@ -711,10 +711,10 @@
 /area/rogue)
 "Aa" = (
 /obj/structure/closet/crate/chest/neu_iron,
-/obj/item/rogueore/iron,
-/obj/item/rogueore/iron,
-/obj/item/rogueore/iron,
-/obj/item/rogueore/iron,
+/obj/item/ore/iron,
+/obj/item/ore/iron,
+/obj/item/ore/iron,
+/obj/item/ore/iron,
 /turf/open/floor/rogue/churchrough,
 /area/rogue)
 "Ae" = (
@@ -1038,7 +1038,7 @@
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue)
 "Ny" = (
-/obj/structure/fluff/grindwheel,
+/obj/structure/grindwheel,
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue)
 "NQ" = (

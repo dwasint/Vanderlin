@@ -206,9 +206,9 @@
 /obj/structure/closet/crate/chest{
 	locked = 1
 	},
-/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
-/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
-/obj/item/reagent_containers/glass/bottle/rogue/healthpot{
+/obj/item/reagent_containers/glass/bottle/healthpot,
+/obj/item/reagent_containers/glass/bottle/healthpot,
+/obj/item/reagent_containers/glass/bottle/healthpot{
 	pixel_x = -8
 	},
 /turf/open/floor/rogue/ruinedwood/turned/darker,
@@ -256,7 +256,7 @@
 /area/rogue)
 "zG" = (
 /obj/effect/landmark/chest_or_mimic,
-/obj/item/reagent_containers/glass/bottle/rogue/stronghealthpot,
+/obj/item/reagent_containers/glass/bottle/stronghealthpot,
 /turf/open/floor/rogue/ruinedwood/turned/darker,
 /area/rogue)
 "Am" = (

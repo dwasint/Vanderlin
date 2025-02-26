@@ -14,7 +14,7 @@
 	var/maximum_capacity = 60 //arbitrary maximum amount of weight allowed in the cart before it says fuck off
 
 	var/arbitrary_living_creature_weight = 10 // The arbitrary weight for any thing of a mob and living variety
-	var/obj/item/roguegear/wood/upgrade = null
+	var/obj/item/gear/wood/upgrade = null
 	facepull = FALSE
 	throw_range = 1
 	drag_slowdown = 0.8 // weeping and gnashing of teeth
@@ -76,8 +76,8 @@
 		return TRUE
 
 /obj/structure/handcart/attackby(obj/item/I, mob/user, params)
-	if(istype(I, /obj/item/roguegear/wood))
-		var/obj/item/roguegear/wood/cog = I
+	if(istype(I, /obj/item/gear/wood))
+		var/obj/item/gear/wood/cog = I
 		if(cog.cart_capacity <= maximum_capacity)
 			to_chat(user, span_warning("[src] already has a better upgrade installed!"))
 			return

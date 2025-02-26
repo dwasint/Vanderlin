@@ -73,7 +73,7 @@
 /area/rogue/outdoors/caves)
 "ns" = (
 /obj/structure/table/wood/fancy,
-/obj/item/roguestatue/gold,
+/obj/item/statue/gold,
 /turf/open/floor/rogue/cobble/alt,
 /area/rogue/outdoors/caves)
 "oJ" = (

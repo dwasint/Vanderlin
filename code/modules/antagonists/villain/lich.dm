@@ -90,7 +90,7 @@
 	gloves = /obj/item/clothing/gloves/chain
 	belt = /obj/item/storage/belt/leather/black
 	backl = /obj/item/storage/backpack/rogue/satchel
-	beltr = /obj/item/reagent_containers/glass/bottle/rogue/manapot
+	beltr = /obj/item/reagent_containers/glass/bottle/manapot
 	beltl = /obj/item/weapon/knife/dagger/steel
 	r_hand = /obj/item/weapon/polearm/woodstaff
 

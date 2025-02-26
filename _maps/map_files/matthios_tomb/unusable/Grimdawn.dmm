@@ -3,8 +3,8 @@
 /turf/closed/mineral/rogue/bedrock,
 /area/rogue)
 "b" = (
-/obj/item/reagent_containers/glass/bottle/rogue/beer/ratkept,
-/obj/item/reagent_containers/glass/bottle/rogue/beer/ratkept,
+/obj/item/reagent_containers/glass/bottle/beer/ratkept,
+/obj/item/reagent_containers/glass/bottle/beer/ratkept,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "d" = (
@@ -35,7 +35,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "J" = (
-/obj/item/reagent_containers/glass/bottle/rogue/beer/ratkept,
+/obj/item/reagent_containers/glass/bottle/beer/ratkept,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "K" = (

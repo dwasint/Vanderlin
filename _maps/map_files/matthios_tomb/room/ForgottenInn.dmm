@@ -345,14 +345,14 @@
 /area/rogue)
 "My" = (
 /obj/structure/table/wood/plain,
-/obj/item/reagent_containers/glass/bottle/rogue/wine/sourwine{
+/obj/item/reagent_containers/glass/bottle/wine/sourwine{
 	pixel_y = 9
 	},
-/obj/item/reagent_containers/glass/bottle/rogue/wine/sourwine{
+/obj/item/reagent_containers/glass/bottle/wine/sourwine{
 	pixel_y = 5;
 	pixel_x = -7
 	},
-/obj/item/reagent_containers/glass/bottle/rogue/poison{
+/obj/item/reagent_containers/glass/bottle/poison{
 	pixel_y = 7;
 	pixel_x = 8
 	},

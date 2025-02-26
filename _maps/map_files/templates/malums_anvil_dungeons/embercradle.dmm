@@ -179,8 +179,8 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "dE" = (
 /obj/structure/closet/crate/chest/crafted,
-/obj/item/rogueore/silver,
-/obj/item/rogueore/silver,
+/obj/item/ore/silver,
+/obj/item/ore/silver,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "dH" = (
@@ -431,8 +431,8 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "hn" = (
 /obj/structure/rack/rogue,
-/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
-/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
+/obj/item/reagent_containers/glass/bottle/healthpot,
+/obj/item/reagent_containers/glass/bottle/healthpot,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "hq" = (
@@ -469,7 +469,7 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "hI" = (
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/fluff/grindwheel,
+/obj/structure/grindwheel,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "hS" = (
@@ -681,10 +681,10 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "kp" = (
 /obj/structure/rack/rogue/shelf/big,
-/obj/item/reagent_containers/glass/bottle/rogue/wine,
-/obj/item/reagent_containers/glass/bottle/rogue/wine,
-/obj/item/reagent_containers/glass/bottle/rogue/wine,
-/obj/item/reagent_containers/glass/bottle/rogue/wine,
+/obj/item/reagent_containers/glass/bottle/wine,
+/obj/item/reagent_containers/glass/bottle/wine,
+/obj/item/reagent_containers/glass/bottle/wine,
+/obj/item/reagent_containers/glass/bottle/wine,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "kq" = (
@@ -877,7 +877,7 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "mp" = (
 /obj/structure/rack/rogue,
-/obj/item/reagent_containers/glass/bottle/rogue/diseasecure,
+/obj/item/reagent_containers/glass/bottle/diseasecure,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
@@ -936,7 +936,7 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "mT" = (
 /obj/structure/rack/rogue,
-/obj/item/roguestatue/silver,
+/obj/item/statue/silver,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "mU" = (
@@ -1103,10 +1103,10 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "oY" = (
 /obj/structure/closet/crate/chest/crafted,
-/obj/item/rogueore/copper,
-/obj/item/rogueore/copper,
-/obj/item/rogueore/copper,
-/obj/item/rogueore/copper,
+/obj/item/ore/copper,
+/obj/item/ore/copper,
+/obj/item/ore/copper,
+/obj/item/ore/copper,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "pa" = (
@@ -1175,13 +1175,13 @@
 /obj/structure/handcart{
 	dir = 8
 	},
-/obj/item/rogueore/coal,
-/obj/item/rogueore/coal,
-/obj/item/rogueore/coal,
-/obj/item/rogueore/coal,
-/obj/item/rogueore/copper,
-/obj/item/rogueore/iron,
-/obj/item/rogueore/iron,
+/obj/item/ore/coal,
+/obj/item/ore/coal,
+/obj/item/ore/coal,
+/obj/item/ore/coal,
+/obj/item/ore/copper,
+/obj/item/ore/iron,
+/obj/item/ore/iron,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "qo" = (
@@ -1378,7 +1378,7 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "sq" = (
-/obj/item/roguestatue/gold,
+/obj/item/statue/gold,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "st" = (
@@ -1405,9 +1405,9 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "sB" = (
 /obj/structure/rack/rogue,
-/obj/item/reagent_containers/glass/bottle/rogue/elfblue,
-/obj/item/reagent_containers/glass/bottle/rogue/elfblue,
-/obj/item/reagent_containers/glass/bottle/rogue/elfblue,
+/obj/item/reagent_containers/glass/bottle/elfblue,
+/obj/item/reagent_containers/glass/bottle/elfblue,
+/obj/item/reagent_containers/glass/bottle/elfblue,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "sE" = (
@@ -1473,10 +1473,10 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "tz" = (
 /obj/structure/rack/rogue/shelf/big,
-/obj/item/reagent_containers/glass/bottle/rogue/redwine,
-/obj/item/reagent_containers/glass/bottle/rogue/redwine,
-/obj/item/reagent_containers/glass/bottle/rogue/redwine,
-/obj/item/reagent_containers/glass/bottle/rogue/redwine,
+/obj/item/reagent_containers/glass/bottle/redwine,
+/obj/item/reagent_containers/glass/bottle/redwine,
+/obj/item/reagent_containers/glass/bottle/redwine,
+/obj/item/reagent_containers/glass/bottle/redwine,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "tB" = (
@@ -1697,7 +1697,7 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "wt" = (
 /obj/structure/rack/rogue,
-/obj/item/roguestatue/gold,
+/obj/item/statue/gold,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "wu" = (
@@ -1864,7 +1864,7 @@
 /obj/item/roguegem/green,
 /obj/item/roguegem/blue,
 /obj/item/roguegem/blue,
-/obj/item/roguestatue/gold,
+/obj/item/statue/gold,
 /obj/item/roguegem/diamond,
 /obj/item/ingot/gold,
 /obj/item/ingot/gold,
@@ -1921,9 +1921,9 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Ae" = (
-/obj/item/reagent_containers/glass/bottle/rogue/whitewine,
-/obj/item/reagent_containers/glass/bottle/rogue/whitewine,
-/obj/item/reagent_containers/glass/bottle/rogue/whitewine,
+/obj/item/reagent_containers/glass/bottle/whitewine,
+/obj/item/reagent_containers/glass/bottle/whitewine,
+/obj/item/reagent_containers/glass/bottle/whitewine,
 /turf/closed/wall/mineral/rogue/stonebrick,
 /area/rogue/under/mountains/anvil/dungeon)
 "Af" = (
@@ -2032,13 +2032,13 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "BG" = (
 /obj/structure/handcart,
-/obj/item/rogueore/silver,
-/obj/item/rogueore/silver,
-/obj/item/rogueore/copper,
-/obj/item/rogueore/coal,
-/obj/item/rogueore/coal,
-/obj/item/rogueore/coal,
-/obj/item/rogueore/coal,
+/obj/item/ore/silver,
+/obj/item/ore/silver,
+/obj/item/ore/copper,
+/obj/item/ore/coal,
+/obj/item/ore/coal,
+/obj/item/ore/coal,
+/obj/item/ore/coal,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "BR" = (
@@ -2078,10 +2078,10 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "Ck" = (
 /obj/structure/closet/crate/chest/crafted,
-/obj/item/rogueore/tin,
-/obj/item/rogueore/tin,
-/obj/item/rogueore/tin,
-/obj/item/rogueore/tin,
+/obj/item/ore/tin,
+/obj/item/ore/tin,
+/obj/item/ore/tin,
+/obj/item/ore/tin,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "CA" = (
@@ -2114,12 +2114,12 @@
 /obj/structure/handcart{
 	dir = 8
 	},
-/obj/item/rogueore/gold,
-/obj/item/rogueore/tin,
-/obj/item/rogueore/coal,
-/obj/item/rogueore/coal,
-/obj/item/rogueore/coal,
-/obj/item/rogueore/coal,
+/obj/item/ore/gold,
+/obj/item/ore/tin,
+/obj/item/ore/coal,
+/obj/item/ore/coal,
+/obj/item/ore/coal,
+/obj/item/ore/coal,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Do" = (
@@ -2245,7 +2245,7 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "Eu" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/roguestatue/gold,
+/obj/item/statue/gold,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "EI" = (
@@ -2284,7 +2284,7 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Ff" = (
-/obj/item/roguestatue/gold,
+/obj/item/statue/gold,
 /obj/structure/table/wood/fancy/black,
 /turf/open/floor/rogue/carpet,
 /area/rogue/under/mountains/anvil/dungeon/lower)
@@ -2322,9 +2322,9 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "FF" = (
-/obj/item/reagent_containers/glass/bottle/rogue/redwine,
-/obj/item/reagent_containers/glass/bottle/rogue/redwine,
-/obj/item/reagent_containers/glass/bottle/rogue/redwine,
+/obj/item/reagent_containers/glass/bottle/redwine,
+/obj/item/reagent_containers/glass/bottle/redwine,
+/obj/item/reagent_containers/glass/bottle/redwine,
 /turf/closed/wall/mineral/rogue/stonebrick,
 /area/rogue/under/mountains/anvil/dungeon)
 "FM" = (
@@ -2539,15 +2539,15 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "Ih" = (
 /obj/structure/closet/crate/chest/crafted,
-/obj/item/rogueore/coal,
-/obj/item/rogueore/coal,
-/obj/item/rogueore/coal,
-/obj/item/rogueore/coal,
-/obj/item/rogueore/coal,
-/obj/item/rogueore/coal,
-/obj/item/rogueore/coal,
-/obj/item/rogueore/coal,
-/obj/item/rogueore/coal,
+/obj/item/ore/coal,
+/obj/item/ore/coal,
+/obj/item/ore/coal,
+/obj/item/ore/coal,
+/obj/item/ore/coal,
+/obj/item/ore/coal,
+/obj/item/ore/coal,
+/obj/item/ore/coal,
+/obj/item/ore/coal,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Ii" = (
@@ -2574,8 +2574,8 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "It" = (
 /obj/structure/rack/rogue,
-/obj/item/reagent_containers/glass/bottle/rogue/elfred,
-/obj/item/reagent_containers/glass/bottle/rogue/elfred,
+/obj/item/reagent_containers/glass/bottle/elfred,
+/obj/item/reagent_containers/glass/bottle/elfred,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "IG" = (
@@ -2812,10 +2812,10 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "Ly" = (
 /obj/structure/closet/crate/chest/crafted,
-/obj/item/rogueore/iron,
-/obj/item/rogueore/iron,
-/obj/item/rogueore/iron,
-/obj/item/rogueore/iron,
+/obj/item/ore/iron,
+/obj/item/ore/iron,
+/obj/item/ore/iron,
+/obj/item/ore/iron,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "LD" = (
@@ -2887,10 +2887,10 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "Mq" = (
 /obj/structure/rack/rogue/shelf/big,
-/obj/item/reagent_containers/glass/bottle/rogue/wine/sourwine,
-/obj/item/reagent_containers/glass/bottle/rogue/wine/sourwine,
-/obj/item/reagent_containers/glass/bottle/rogue/wine/sourwine,
-/obj/item/reagent_containers/glass/bottle/rogue/wine/sourwine,
+/obj/item/reagent_containers/glass/bottle/wine/sourwine,
+/obj/item/reagent_containers/glass/bottle/wine/sourwine,
+/obj/item/reagent_containers/glass/bottle/wine/sourwine,
+/obj/item/reagent_containers/glass/bottle/wine/sourwine,
 /obj/machinery/light/rogue/torchholder/r,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
@@ -3484,10 +3484,10 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "UB" = (
 /obj/structure/rack/rogue/shelf/big,
-/obj/item/reagent_containers/glass/bottle/rogue/whitewine,
-/obj/item/reagent_containers/glass/bottle/rogue/whitewine,
-/obj/item/reagent_containers/glass/bottle/rogue/whitewine,
-/obj/item/reagent_containers/glass/bottle/rogue/whitewine,
+/obj/item/reagent_containers/glass/bottle/whitewine,
+/obj/item/reagent_containers/glass/bottle/whitewine,
+/obj/item/reagent_containers/glass/bottle/whitewine,
+/obj/item/reagent_containers/glass/bottle/whitewine,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "UD" = (
@@ -3877,7 +3877,7 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Ze" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/roguestatue/gold,
+/obj/item/statue/gold,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Zj" = (
@@ -3922,9 +3922,9 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "ZL" = (
-/obj/item/reagent_containers/glass/bottle/rogue/wine,
-/obj/item/reagent_containers/glass/bottle/rogue/wine,
-/obj/item/reagent_containers/glass/bottle/rogue/wine,
+/obj/item/reagent_containers/glass/bottle/wine,
+/obj/item/reagent_containers/glass/bottle/wine,
+/obj/item/reagent_containers/glass/bottle/wine,
 /turf/closed/wall/mineral/rogue/stonebrick,
 /area/rogue/under/mountains/anvil/dungeon)
 "ZP" = (
@@ -3933,7 +3933,7 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "ZR" = (
 /obj/structure/rack/rogue,
-/obj/item/reagent_containers/glass/bottle/rogue/strongpoison,
+/obj/item/reagent_containers/glass/bottle/strongpoison,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)

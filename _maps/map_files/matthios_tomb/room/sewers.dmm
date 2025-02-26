@@ -72,7 +72,7 @@
 /turf/open/floor/rogue/metal/barograte/open,
 /area/rogue)
 "B" = (
-/obj/item/roguegear,
+/obj/item/gear,
 /turf/open/floor/rogue/metal/barograte/open,
 /area/rogue)
 "C" = (

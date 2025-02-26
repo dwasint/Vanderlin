@@ -93,7 +93,7 @@
 	name = "wooden flail"
 	desc = "During peacetime these flails are used to thresh wheat. During wartime - to chase off marauders."
 	icon_state = "peasantflail"
-	smeltresult = /obj/item/rogueore/coal //is mostly wood
+	smeltresult = /obj/item/ore/coal //is mostly wood
 	melting_material = null
 	max_integrity = 200
 	minstr = 5

@@ -652,7 +652,7 @@
 /area/rogue)
 "qf" = (
 /obj/structure/table/wood/fancy,
-/obj/item/roguestatue/gold,
+/obj/item/statue/gold,
 /turf/open/floor/rogue/ruinedwood/chevron,
 /area/rogue)
 "qq" = (

@@ -50,7 +50,7 @@
 "gI" = (
 /obj/structure/table/wood/nice/decorated_alt,
 /obj/item/roguecoin/gold,
-/obj/item/rogueore/gold,
+/obj/item/ore/gold,
 /obj/structure/closet/crate/chest/gold,
 /turf/open/floor/rogue/carpet,
 /area/rogue/outdoors/caves)
@@ -112,7 +112,7 @@
 "sK" = (
 /obj/structure/table/wood/nice/decorated_alt,
 /obj/item/roguecoin/gold,
-/obj/item/roguestatue/gold/loot,
+/obj/item/statue/gold/loot,
 /obj/structure/closet/crate/chest/gold,
 /turf/open/floor/rogue/carpet,
 /area/rogue/outdoors/caves)
@@ -127,7 +127,7 @@
 "tx" = (
 /obj/structure/table/wood/nice/decorated_alt,
 /obj/item/roguecoin/gold,
-/obj/item/roguestatue/gold,
+/obj/item/statue/gold,
 /obj/structure/closet/crate/chest/gold,
 /turf/open/floor/rogue/carpet,
 /area/rogue/outdoors/caves)
@@ -192,7 +192,7 @@
 /obj/machinery/light/rogue/torchholder/r,
 /obj/effect/landmark/chest_or_mimic,
 /obj/item/roguecoin/copper/pile,
-/obj/item/reagent_containers/glass/bottle/rogue/stronghealthpot,
+/obj/item/reagent_containers/glass/bottle/stronghealthpot,
 /obj/item/reagent_containers/food/snacks/rogue/cheddar/aged,
 /turf/open/floor/rogue/blocks/paving/vert,
 /area/rogue/outdoors/caves)

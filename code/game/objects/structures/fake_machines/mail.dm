@@ -389,7 +389,7 @@
 		"Puffer Pistol- 4 Lead Balls- Powder Flask  (10)" = list(
 			list(type = /obj/item/gun/ballistic/revolver/grenadelauncher/pistol, count = 1),
 			list(type = /obj/item/storage/belt/pouch/bullets, count = 1),
-			list(type = /obj/item/reagent_containers/glass/bottle/rogue/aflask, count = 1),
+			list(type = /obj/item/reagent_containers/glass/bottle/aflask, count = 1),
 			cost = 8,
 			max_purchases = 1
 		),
@@ -399,7 +399,7 @@
 			max_purchases = 1
 		),
 		"Spare Powder Flask (2)" = list(
-			list(type = /obj/item/reagent_containers/glass/bottle/rogue/aflask, count = 1),
+			list(type = /obj/item/reagent_containers/glass/bottle/aflask, count = 1),
 			cost = 2,
 			max_purchases = 1
 		),

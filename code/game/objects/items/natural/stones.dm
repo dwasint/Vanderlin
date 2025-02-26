@@ -59,7 +59,7 @@
 	gripped_intents = list(INTENT_GENERIC)
 	w_class = WEIGHT_CLASS_HUGE
 	twohands_required = TRUE
-	var/obj/item/rogueore/mineralType = null
+	var/obj/item/ore/mineralType = null
 	var/mineralAmt = 1
 	blade_dulling = DULLING_BASH
 	max_integrity = 50
@@ -118,25 +118,25 @@
 
 //begin ore loot rocks
 /obj/item/natural/rock/gold
-	mineralType = /obj/item/rogueore/gold
+	mineralType = /obj/item/ore/gold
 
 /obj/item/natural/rock/iron
-	mineralType = /obj/item/rogueore/iron
+	mineralType = /obj/item/ore/iron
 
 /obj/item/natural/rock/coal
-	mineralType = /obj/item/rogueore/coal
+	mineralType = /obj/item/ore/coal
 
 /obj/item/natural/rock/salt
 	mineralType = /obj/item/reagent_containers/powder/salt
 
 /obj/item/natural/rock/silver
-	mineralType = /obj/item/rogueore/silver
+	mineralType = /obj/item/ore/silver
 
 /obj/item/natural/rock/copper
-	mineralType = /obj/item/rogueore/copper
+	mineralType = /obj/item/ore/copper
 
 /obj/item/natural/rock/tin
-	mineralType = /obj/item/rogueore/tin
+	mineralType = /obj/item/ore/tin
 
 /obj/item/natural/rock/gemerald
 	mineralType = /obj/item/roguegem

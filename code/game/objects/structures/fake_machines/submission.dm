@@ -31,7 +31,7 @@ This is a filter that blocks use of the machine for that role. Could be expanded
 			else
 				say("No account found. Submit your fingers to a meister for inspection.")
 		else
-			for(var/datum/roguestock/R in SStreasury.stockpile_datums)
+			for(var/datum/stock/R in SStreasury.stockpile_datums)
 				if(istype(P,R.item_type))
 					if(!R.check_item(P))
 						continue
@@ -82,13 +82,13 @@ This is a filter that blocks use of the machine for that role. Could be expanded
 
 	contents += "</center>"
 
-	for(var/datum/roguestock/bounty/R in SStreasury.stockpile_datums)
+	for(var/datum/stock/bounty/R in SStreasury.stockpile_datums)
 		contents += "[R.name] - [R.payout_price][R.percent_bounty ? "%" : ""]"
 		contents += "<BR>"
 
 	contents += "<BR>"
 
-	for(var/datum/roguestock/stockpile/R in SStreasury.stockpile_datums)
+	for(var/datum/stock/stockpile/R in SStreasury.stockpile_datums)
 		contents += "[R.name] - [R.payout_price] - [R.demand2word()]"
 		contents += "<BR>"
 

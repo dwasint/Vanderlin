@@ -146,7 +146,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon)
 "bF" = (
-/obj/structure/fluff/grindwheel,
+/obj/structure/grindwheel,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "bI" = (
@@ -2388,7 +2388,7 @@
 	pixel_x = -6
 	},
 /obj/structure/table/wood/plain_alt,
-/obj/item/reagent_containers/glass/bottle/rogue{
+/obj/item/reagent_containers/glass/bottle{
 	pixel_y = 5;
 	pixel_x = 7
 	},
@@ -2693,7 +2693,7 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "LN" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/reagent_containers/glass/bottle/rogue/beer/stonebeardreserve,
+/obj/item/reagent_containers/glass/bottle/beer/stonebeardreserve,
 /turf/open/floor/rogue/blocks{
 	icon_state = "bluestone"
 	},
@@ -2743,9 +2743,9 @@
 /obj/structure/handcart{
 	dir = 8
 	},
-/obj/item/rogueore/iron,
-/obj/item/rogueore/iron,
-/obj/item/rogueore/iron,
+/obj/item/ore/iron,
+/obj/item/ore/iron,
+/obj/item/ore/iron,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Mp" = (
@@ -2795,7 +2795,7 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Ne" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/roguegear,
+/obj/item/gear,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Nh" = (
@@ -2909,7 +2909,7 @@
 /turf/open/floor/rogue/ruinedwood/darker,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Pa" = (
-/obj/item/rogueore/silver,
+/obj/item/ore/silver,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Pb" = (
@@ -3202,7 +3202,7 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Tu" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/reagent_containers/glass/bottle/rogue/redwine,
+/obj/item/reagent_containers/glass/bottle/redwine,
 /turf/open/floor/rogue/blocks{
 	icon_state = "bluestone"
 	},
@@ -3260,7 +3260,7 @@
 	},
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Uv" = (
-/obj/item/roguegear,
+/obj/item/gear,
 /turf/open/water,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Ux" = (
@@ -3597,9 +3597,9 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "Yo" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/rogueore/coal,
-/obj/item/rogueore/coal,
-/obj/item/rogueore/coal,
+/obj/item/ore/coal,
+/obj/item/ore/coal,
+/obj/item/ore/coal,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Yz" = (
@@ -3610,7 +3610,7 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "YD" = (
 /obj/machinery/artificer_table,
-/obj/item/roguegear{
+/obj/item/gear{
 	pixel_y = 8
 	},
 /obj/item/reagent_containers/powder/blastpowder,
@@ -3656,7 +3656,7 @@
 /turf/open/floor/rogue/woodturned,
 /area/rogue/under/mountains/anvil/dungeon)
 "YV" = (
-/obj/item/rogueore/coal,
+/obj/item/ore/coal,
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "YX" = (

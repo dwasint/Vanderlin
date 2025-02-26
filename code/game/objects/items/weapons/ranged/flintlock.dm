@@ -215,7 +215,7 @@
 	max_ammo = 1
 	start_empty = TRUE
 
-/obj/item/reagent_containers/glass/bottle/rogue/aflask
+/obj/item/reagent_containers/glass/bottle/aflask
 	name = "alchemical flask"
 	desc = "A small metal flask used for the secure storing of alchemical powders."
 	icon = 'icons/roguetown/items/cooking.dmi'

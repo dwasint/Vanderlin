@@ -151,7 +151,7 @@
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
 "aI" = (
-/obj/item/roguestatue/gold/loot,
+/obj/item/statue/gold/loot,
 /turf/open/floor/rogue/tile{
 	icon_state = "chess"
 	},
@@ -3784,7 +3784,7 @@
 /area/rogue/indoors/town/garrison)
 "mS" = (
 /obj/structure/rack/rogue,
-/obj/item/reagent_containers/glass/bottle/rogue/wine,
+/obj/item/reagent_containers/glass/bottle/wine,
 /turf/open/floor/rogue/blocks,
 /area/rogue/under/town/basement)
 "mT" = (
@@ -3970,7 +3970,7 @@
 /area/rogue/outdoors/town)
 "nB" = (
 /obj/structure/closet/crate/crafted_closet,
-/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
+/obj/item/reagent_containers/glass/bottle/healthpot,
 /obj/item/reagent_containers/food/snacks/hardtack,
 /obj/item/reagent_containers/food/snacks/hardtack,
 /obj/item/reagent_containers/food/snacks/hardtack,
@@ -5289,7 +5289,7 @@
 	icon_state = "largetable";
 	dir = 5
 	},
-/obj/item/reagent_containers/glass/bottle/rogue/wine,
+/obj/item/reagent_containers/glass/bottle/wine,
 /turf/open/floor/rogue/tile{
 	icon_state = "chess"
 	},
@@ -5682,7 +5682,7 @@
 /area/rogue/indoors/town/manor)
 "th" = (
 /obj/structure/closet/crate/chest,
-/obj/item/reagent_containers/glass/bottle/rogue/wine,
+/obj/item/reagent_containers/glass/bottle/wine,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/manor)
 "ti" = (
@@ -6756,7 +6756,7 @@
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/dwarfin)
 "xi" = (
-/obj/structure/fluff/grindwheel,
+/obj/structure/grindwheel,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)
 "xj" = (
@@ -7435,8 +7435,8 @@
 /area/rogue/indoors/town)
 "zt" = (
 /obj/structure/closet/crate/chest,
-/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
-/obj/item/reagent_containers/glass/bottle/rogue/manapot,
+/obj/item/reagent_containers/glass/bottle/healthpot,
+/obj/item/reagent_containers/glass/bottle/manapot,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/shop)
 "zu" = (
@@ -8322,7 +8322,7 @@
 "Cp" = (
 /obj/structure/rack/rogue/shelf/big,
 /obj/structure/rack/rogue/shelf,
-/obj/item/reagent_containers/glass/bottle/rogue/wine,
+/obj/item/reagent_containers/glass/bottle/wine,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/tavern)
 "Cq" = (
@@ -9618,7 +9618,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/town/roofs)
 "GI" = (
-/obj/structure/fluff/grindwheel,
+/obj/structure/grindwheel,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/garrison)
 "GJ" = (
@@ -9705,7 +9705,7 @@
 /obj/structure/fluff/walldeco/wantedposter{
 	pixel_y = 32
 	},
-/obj/item/reagent_containers/glass/bottle/rogue/wine,
+/obj/item/reagent_containers/glass/bottle/wine,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/garrison)
 "GY" = (
@@ -10130,7 +10130,7 @@
 /area/rogue/indoors/town)
 "Is" = (
 /obj/structure/rack/rogue,
-/obj/item/reagent_containers/glass/bottle/rogue/wine,
+/obj/item/reagent_containers/glass/bottle/wine,
 /turf/open/floor/rogue/woodturned,
 /area/rogue/indoors/town/garrison)
 "It" = (
@@ -10611,7 +10611,7 @@
 /area/rogue/indoors/town/dwarfin)
 "JW" = (
 /obj/structure/closet/crate/chest,
-/obj/item/rogueore/iron,
+/obj/item/ore/iron,
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/dwarfin)
 "JX" = (
@@ -10683,15 +10683,15 @@
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/dwarfin)
 "Ki" = (
-/obj/item/rogueore/coal,
-/obj/item/rogueore/coal,
+/obj/item/ore/coal,
+/obj/item/ore/coal,
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/dwarfin)
 "Kj" = (
 /obj/structure/closet/crate/chest,
-/obj/item/rogueore/coal,
-/obj/item/rogueore/coal,
-/obj/item/rogueore/coal,
+/obj/item/ore/coal,
+/obj/item/ore/coal,
+/obj/item/ore/coal,
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors/town/dwarfin)
 "Kk" = (
@@ -10779,14 +10779,14 @@
 /area/rogue/indoors/town/dwarfin)
 "Ky" = (
 /obj/structure/closet/crate/chest,
-/obj/item/rogueore/iron,
+/obj/item/ore/iron,
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/dwarfin)
 "Kz" = (
 /obj/structure/closet/crate/chest,
-/obj/item/rogueore/coal,
-/obj/item/rogueore/coal,
-/obj/item/rogueore/coal,
+/obj/item/ore/coal,
+/obj/item/ore/coal,
+/obj/item/ore/coal,
 /turf/open/floor/rogue/blocks/stonered,
 /area/rogue/indoors/town/dwarfin)
 "KA" = (
@@ -11493,7 +11493,7 @@
 	pixel_x = 28;
 	pixel_y = 0
 	},
-/obj/item/reagent_containers/glass/bottle/rogue/manapot,
+/obj/item/reagent_containers/glass/bottle/manapot,
 /obj/item/candle/yellow,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/town/church)

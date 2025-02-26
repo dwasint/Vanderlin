@@ -15,7 +15,7 @@
 /area/rogue)
 "g" = (
 /obj/structure/table/church/m,
-/obj/item/reagent_containers/glass/bottle/rogue/wine/sourwine{
+/obj/item/reagent_containers/glass/bottle/wine/sourwine{
 	pixel_y = 14
 	},
 /turf/open/floor/rogue/hexstone,

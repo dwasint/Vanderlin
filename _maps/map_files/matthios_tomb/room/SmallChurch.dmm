@@ -6,7 +6,7 @@
 /area/rogue)
 "aC" = (
 /obj/structure/closet/crate/drawer,
-/obj/item/reagent_containers/glass/bottle/rogue/stronghealthpot,
+/obj/item/reagent_containers/glass/bottle/stronghealthpot,
 /turf/open/floor/rogue/churchmarble,
 /area/rogue)
 "aD" = (
@@ -395,7 +395,7 @@
 /obj/structure/table/church{
 	dir = 1
 	},
-/obj/item/roguestatue/silver{
+/obj/item/statue/silver{
 	pixel_y = 20
 	},
 /turf/open/floor/rogue/churchmarble,
@@ -573,11 +573,11 @@
 /area/rogue)
 "yf" = (
 /mob/living/simple_animal/hostile/retaliate/bigrat,
-/obj/item/rogueore/gold{
+/obj/item/ore/gold{
 	pixel_y = -12;
 	pixel_x = -10
 	},
-/obj/item/rogueore/gold{
+/obj/item/ore/gold{
 	pixel_y = 11;
 	pixel_x = 10
 	},
@@ -1005,7 +1005,7 @@
 /area/rogue)
 "QC" = (
 /obj/structure/table/church/m,
-/obj/item/roguestatue/silver{
+/obj/item/statue/silver{
 	pixel_y = 20
 	},
 /turf/open/floor/rogue/churchmarble,
@@ -1117,7 +1117,7 @@
 /area/rogue)
 "UJ" = (
 /mob/living/simple_animal/hostile/retaliate/bigrat,
-/obj/item/rogueore/gold{
+/obj/item/ore/gold{
 	pixel_y = 5;
 	pixel_x = -10
 	},

@@ -56,7 +56,7 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue)
 "u" = (
-/obj/structure/fluff/grindwheel,
+/obj/structure/grindwheel,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue)
 "v" = (

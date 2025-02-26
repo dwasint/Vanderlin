@@ -390,7 +390,7 @@
 	belt = /obj/item/storage/belt/leather/knifebelt/iron
 	cloak = /obj/item/clothing/cloak/raincloak/mortus
 	H.cmode_music = 'sound/music/cmode/adventurer/CombatOutlander3.ogg'
-	backpack_contents = list(/obj/item/weapon/knife/dagger/silver = 1, /obj/item/storage/keyring/veteran = 1, /obj/item/reagent_containers/glass/bottle/rogue/poison = 1)
+	backpack_contents = list(/obj/item/weapon/knife/dagger/silver = 1, /obj/item/storage/keyring/veteran = 1, /obj/item/reagent_containers/glass/bottle/poison = 1)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE)

@@ -19,7 +19,7 @@
 	component_type = /datum/component/storage/concrete/grid/belt/assassin
 
 	populate_contents = list(
-		/obj/item/reagent_containers/glass/bottle/rogue/poison,
+		/obj/item/reagent_containers/glass/bottle/poison,
 		/obj/item/weapon/knife/dagger/steel/profane,
 		/obj/item/lockpick,
 	)

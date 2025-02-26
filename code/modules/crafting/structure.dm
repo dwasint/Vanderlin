@@ -45,7 +45,7 @@
 	name = "brazier"
 	result = /obj/machinery/light/rogue/firebowl/stump
 	reqs = list(/obj/item/grown/log/tree/small = 1,
-				/obj/item/rogueore/coal = 1)
+				/obj/item/ore/coal = 1)
 	verbage = "build"
 	verbage_tp = "builds"
 
@@ -53,7 +53,7 @@
 	name = "standing fire"
 	result = /obj/machinery/light/rogue/firebowl/standing
 	reqs = list(/obj/item/natural/stone = 1,
-				/obj/item/rogueore/coal = 1)
+				/obj/item/ore/coal = 1)
 	verbage = "build"
 	verbage_tp = "builds"
 
@@ -61,7 +61,7 @@
 	name = "standing fire (blue)"
 	result = /obj/machinery/light/rogue/firebowl/standing/blue
 	reqs = list(/obj/item/natural/stone = 1,
-				/obj/item/rogueore/coal = 1,
+				/obj/item/ore/coal = 1,
 				/obj/item/ash = 1)
 	verbage = "build"
 	verbage_tp = "builds"

@@ -278,7 +278,7 @@
 	pixel_y = 8;
 	pixel_x = -5
 	},
-/obj/item/reagent_containers/glass/bottle/rogue/redwine{
+/obj/item/reagent_containers/glass/bottle/redwine{
 	pixel_y = 12;
 	pixel_x = 7
 	},
@@ -406,7 +406,7 @@
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
 "LG" = (
-/obj/structure/fluff/grindwheel,
+/obj/structure/grindwheel,
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
 "My" = (
@@ -428,7 +428,7 @@
 /turf/open/floor/rogue/ruinedwood/darker,
 /area/rogue)
 "MW" = (
-/obj/item/rogueore/coal,
+/obj/item/ore/coal,
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
 "Nd" = (
@@ -566,7 +566,7 @@
 /area/rogue)
 "Xa" = (
 /obj/structure/rack/rogue/shelf/biggest,
-/obj/item/reagent_containers/glass/bottle/rogue/strongpoison,
+/obj/item/reagent_containers/glass/bottle/strongpoison,
 /turf/open/floor/rogue/ruinedwood/darker,
 /area/rogue)
 "Xx" = (
