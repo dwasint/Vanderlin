@@ -333,20 +333,6 @@
 	return
 
 /**
- * React to an EMP of the given severity
- *
- * Default behaviour is to send the COMSIG_ATOM_EMP_ACT signal
- *
- * If the signal does not return protection, and there are attached wires then we call
- * emp_pulse() on the wires
- *
- * We then return the protection value
- */
-/atom/proc/emp_act(severity)
-	var/protection = SEND_SIGNAL(src, COMSIG_ATOM_EMP_ACT, severity)
-	return protection // Pass the protection value collected here upwards
-
-/**
  * React to a hit by a projectile object
  *
  * Default behaviour is to send the COMSIG_ATOM_BULLET_ACT and then call on_hit() on the projectile
@@ -605,9 +591,9 @@
 	var/list/things = src_object.contents()
 	var/datum/progressbar/progress = new(user, things.len, src)
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	while (do_after(user, 10, TRUE, src, FALSE, CALLBACK(STR, TYPE_PROC_REF(/datum/component/storage, handle_mass_item_insertion), things, src_object, user, progress)))
+	while(do_after(user, 1 SECONDS, src, NONE, FALSE, CALLBACK(STR, TYPE_PROC_REF(/datum/component/storage, handle_mass_item_insertion), things, src_object, user, progress)))
 		stoplag(1)
-	qdel(progress)
+	progress.end_progress()
 	to_chat(user, "<span class='notice'>I dump as much of [src_object.parent]'s contents [STR.insert_preposition]to [src] as I can.</span>")
 	STR.orient2hud(user)
 	STR.update_icon()

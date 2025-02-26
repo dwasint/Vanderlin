@@ -11,6 +11,9 @@ SUBSYSTEM_DEF(mobs)
 	var/static/list/camera_players_by_zlevel[][] = list(list()) // Needs to support zlevel 1 here, MaxZChanged only happens when z2 is created and new_players can login before that.
 	var/static/list/cubemonkeys = list()
 
+	var/static/list/matthios_mobs = list()
+	var/list/matthios = list()
+
 /datum/controller/subsystem/mobs/stat_entry()
 	..("P:[GLOB.mob_living_list.len]")
 
@@ -41,6 +44,7 @@ SUBSYSTEM_DEF(mobs)
 	var/seconds = wait * 0.1
 	if (!resumed)
 		src.currentrun = GLOB.mob_living_list.Copy()
+		src.currentrun -= matthios_mobs
 
 	//cache for sanic speed (lists are references anyways)
 	var/list/currentrun = src.currentrun
@@ -56,4 +60,20 @@ SUBSYSTEM_DEF(mobs)
 		else
 			L.Life(seconds, times_fired)
 		if (MC_TICK_CHECK)
+			return
+
+	if(!length(matthios))
+		matthios = matthios_mobs.Copy()
+
+	while(matthios.len)
+		var/mob/living/L = matthios[matthios.len]
+		matthios.len--
+		if(!L || QDELETED(L))
+			GLOB.mob_living_list.Remove(L)
+			continue
+		if(L.stat == DEAD)
+			L.DeadLife()
+		else
+			L.Life(seconds, times_fired)
+		if (TICK_CHECK_LOW)
 			return

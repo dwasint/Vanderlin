@@ -48,6 +48,7 @@ require only minor tweaks.
 // numeric offsets - e.g. {"Down": true} means that chasms will fall to z - 1 rather than oblivion
 #define ZTRAIT_UP "Up"
 #define ZTRAIT_DOWN "Down"
+#define ZTRAIT_IGNORE_WEATHER_TRAIT "NoDayorWeather"
 
 #define ZTRAIT_LEYLINES "Leylines"
 // enum - how space transitions should affect this level
@@ -88,7 +89,7 @@ require only minor tweaks.
 #define CAMERA_LOCK_CENTCOM 4
 
 //Reserved/Transit turf type
-#define RESERVED_TURF_TYPE /turf/open/floor/rogue/blocks			//What the turf is when not being used
+#define RESERVED_TURF_TYPE /turf/open/floor/blocks			//What the turf is when not being used
 
 //Ruin Generation
 

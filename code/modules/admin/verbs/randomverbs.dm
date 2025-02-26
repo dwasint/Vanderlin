@@ -37,7 +37,8 @@
 	if(usr)
 		if (usr.client)
 			if(usr.client.holder)
-				to_chat(M, "<i>I hear a voice in your head... <b>[msg]</i></b>")
+				SEND_SOUND(usr.client, 'sound/misc/yeoldebwoink.ogg')
+				to_chat(M, "<i>I hear a voice in my head... <b>[msg]</i></b>")
 
 	log_admin("SubtlePM: [key_name(usr)] -> [key_name(M)] : [msg]")
 	msg = "<span class='adminnotice'><b> SubtleMessage: [key_name_admin(usr)] -> [key_name_admin(M)] :</b> [msg]</span>"
@@ -432,7 +433,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	var/confirm = alert(src, "Do you want to announce the contents of the report to the crew?", "Announce", "Yes", "No", "Cancel")
 	switch(confirm)
 		if("Yes")
-			priority_announce(input, null, 'sound/blank.ogg')
+			priority_announce(input, GLOB.command_name, 'sound/blank.ogg')
 		if("Cancel")
 			return
 
@@ -507,31 +508,6 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		log_admin("[key_name(usr)] created an explosion ([devastation],[heavy],[light],[hotspots],[flames]) at [AREACOORD(O)]")
 		message_admins("[key_name_admin(usr)] created an explosion ([devastation],[heavy],[light],[hotspots],[flames]) at [AREACOORD(O)]")
 		SSblackbox.record_feedback("tally", "admin_verb", 1, "Explosion") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-		return
-	else
-		return
-
-/client/proc/cmd_admin_emp(atom/O as obj|mob|turf in world)
-	set category = "Special Verbs"
-	set name = "EM Pulse"
-
-	if(!check_rights(R_ADMIN))
-		return
-
-	var/heavy = input("Range of heavy pulse.", text("Input"))  as num|null
-	if(heavy == null)
-		return
-	var/light = input("Range of light pulse.", text("Input"))  as num|null
-	if(light == null)
-		return
-
-	if (heavy || light)
-
-		empulse(O, heavy, light)
-		log_admin("[key_name(usr)] created an EM Pulse ([heavy],[light]) at [AREACOORD(O)]")
-		message_admins("[key_name_admin(usr)] created an EM Pulse ([heavy],[light]) at [AREACOORD(O)]")
-		SSblackbox.record_feedback("tally", "admin_verb", 1, "EM Pulse") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
 		return
 	else
 		return
@@ -827,11 +803,11 @@ Traitors and the like can also be revived with the previous role mostly intact.
 				return
 			ADD_TRAIT(target, TRAIT_ZIZOID_HUNTED, TRAIT_GENERIC) // Gives the victim a trait to track that they are wanted dead.
 			log_hunted("[key_name(target)] playing as [target] had been hunted by Admin punishment.")
-			for (var/mob/living/carbon in world) // Iterate through all mobs in the world
+			for (var/mob/living/carbon in GLOB.carbon_list) // Admin smite, just tell all assassins whether they have their knife or not
 				if (HAS_TRAIT(carbon, TRAIT_ASSASSIN) && !(carbon.stat == DEAD)) //Check if they are an assassin and alive
-					for(var/obj/item/I in carbon) // Checks to see if the assassin has their dagger on them. If so, the dagger will let them know of a new target.
-						if(istype(I, /obj/item/rogueweapon/knife/dagger/steel/profane)) // Checks to see if the assassin has their dagger on them.
-							carbon.visible_message("profane dagger whispers, <span class='danger'>\"The Dark Sun Graggar himself has ordered us to punish [target.real_name] for their crimes!\"</span>")
+					// for(var/obj/item/I in carbon) // Checks to see if the assassin has their dagger on them. If so, the dagger will let them know of a new target.
+					// 	if(istype(I, /obj/item/weapon/knife/dagger/steel/profane)) // Checks to see if the assassin has their dagger on them.
+					to_chat(carbon, "<span class='danger'>\"The Dark Sun Graggar himself has ordered us to punish [target.real_name] for their transgressions!\"</span>")
 			to_chat(target.mind, "<span class='danger'>My hair stands on end. Has someone just said my name? I should watch my back.</span>")
 	punish_log(target, punishment)
 

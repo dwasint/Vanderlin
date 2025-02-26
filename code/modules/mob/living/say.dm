@@ -135,10 +135,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 
 	if(check_whisper(original_message, forced) || !can_speak_basic(original_message, ignore_spam, forced))
 		return
-/* Not the best idea, commenting out subtler
-	if(check_subtler(original_message, forced) || !can_speak_basic(original_message, ignore_spam, forced))
-		return
-*/
+
 	if(in_critical)
 		if(!(crit_allowed_modes[message_mode]))
 			return
@@ -263,7 +260,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 			deaf_message = "<span class='name'>[speaker]</span> [speaker.verb_say] something but you cannot hear [speaker.p_them()]."
 			deaf_type = 1
 	else
-		deaf_message = "<span class='notice'>I can't hear yourself!</span>"
+		deaf_message = "<span class='notice'>I can't hear myself!</span>"
 		deaf_type = 2 // Since you should be able to hear myself without looking
 
 	// Create map text prior to modifying message for goonchat
@@ -466,15 +463,15 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 
 /mob/living/say_mod(input, message_mode)
 	if(message_mode == MODE_WHISPER)
-		. = verb_whisper
+		. = "whispers"
 	else if(message_mode == MODE_WHISPER_CRIT)
-		. = "[verb_whisper] in [p_their()] last breath"
+		. = "whispers in [p_their()] last breath"
 	else if(stuttering)
 		. = "stammers"
 	else if(derpspeech)
 		. = "gibbers"
 	else if(message_mode == MODE_SING)
-		. = verb_sing
+		. = "sings"
 	else
 		. = ..()
 
