@@ -6,11 +6,11 @@
 		"Humen",
 		"Dwarf"
 	)
-	outfit = /datum/outfit/job/roguetown/grenzelhoft_migration/count
+	outfit = /datum/outfit/job/grenzelhoft_migration/count
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
 
-/datum/outfit/job/roguetown/grenzelhoft_migration/count/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/grenzelhoft_migration/count/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/grenzelhoft
 	gloves = /obj/item/clothing/gloves/angle/grenzel
@@ -61,11 +61,11 @@
 		"Humen",
 		"Dwarf"
 	)
-	outfit = /datum/outfit/job/roguetown/grenzelhoft_migration/countess
+	outfit = /datum/outfit/job/grenzelhoft_migration/countess
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
 
-/datum/outfit/job/roguetown/grenzelhoft_migration/countess/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/grenzelhoft_migration/countess/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/grenzelhoft
 	gloves = /obj/item/clothing/gloves/angle/grenzel
@@ -113,10 +113,10 @@
 	greet_text = "Your liege, the count and the countess have both took the duty gaved by the Kaiser itself to voyage to the Isle of Enigma, ensure their survival and obey their orders."
 	allowed_sexes = list(MALE)
 	allowed_races = list("Humen")
-	outfit = /datum/outfit/job/roguetown/grenzelhoft_migration/grenzelhoft_knight
+	outfit = /datum/outfit/job/grenzelhoft_migration/grenzelhoft_knight
 	show_wanderer_examine = FALSE
 
-/datum/outfit/job/roguetown/grenzelhoft_migration/grenzelhoft_knight/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/grenzelhoft_migration/grenzelhoft_knight/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
@@ -164,10 +164,10 @@
 		"Humen",
 		"Dwarf"
 	)
-	outfit = /datum/outfit/job/roguetown/grenzelhoft_migration/grenzelhoft_men_at_arms
+	outfit = /datum/outfit/job/grenzelhoft_migration/grenzelhoft_men_at_arms
 	show_wanderer_examine = FALSE
 
-/datum/outfit/job/roguetown/grenzelhoft_migration/grenzelhoft_men_at_arms/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/grenzelhoft_migration/grenzelhoft_men_at_arms/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)

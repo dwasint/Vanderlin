@@ -1,11 +1,11 @@
 /datum/migrant_role/daywalker
 	name = "Daywalker"
 	greet_text = "Some knaves are always trying to wade upstream. You witnessed your entire village be consumed by a subservient vampiric horde - the local Priest grabbed you, and brought you to a remote Monastery; ever since then you've sworn revenge against the restless dead. The Templars showed you everything you needed to know. You walk in the day, so that the undead may only walk in the night."
-	outfit = /datum/outfit/job/roguetown/daywalker
+	outfit = /datum/outfit/job/daywalker
 	allowed_races = list("Humen")
 	grant_lit_torch = TRUE
 
-/datum/outfit/job/roguetown/daywalker/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/daywalker/pre_equip(mob/living/carbon/human/H)
 	..()
 	wrists = /obj/item/clothing/wrists/bracers/leather
 	neck = /obj/item/clothing/neck/psycross/silver/astrata

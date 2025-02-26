@@ -1,12 +1,12 @@
 /datum/migrant_role/rockhill/mayor
 	name = "Mayor of Rockhill"
 	greet_text = "You are the mayor of Rockhill, you've come to Vanderlin to discuss important matters with their Monarch."
-	outfit = /datum/outfit/job/roguetown/rockhill/mayor
+	outfit = /datum/outfit/job/rockhill/mayor
 	allowed_sexes = list(MALE,FEMALE)
 	allowed_races = list("Humen","Dwarf","Elf","Half-Elf")
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
-/datum/outfit/job/roguetown/rockhill/mayor/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/rockhill/mayor/pre_equip(mob/living/carbon/human/H)
 	..()
 	shirt = /obj/item/clothing/shirt/undershirt
 	belt = /obj/item/storage/belt/leather/black
@@ -59,11 +59,11 @@
 /datum/migrant_role/rockhill_knight
 	name = "Knight of Rockhill"
 	greet_text = "You are a Knight of Rockhill, the notable of said town has taken the journey to your liege, you are to ensure their safety."
-	outfit = /datum/outfit/job/roguetown/rockhill/knight
+	outfit = /datum/outfit/job/rockhill/knight
 	allowed_races = list("Humen","Dwarf","Elf","Half-Elf","Aasimar")
 	grant_lit_torch = TRUE
 	advjob_examine = FALSE
-/datum/outfit/job/roguetown/rockhill/knight/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/rockhill/knight/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/helmet
 	gloves = /obj/item/clothing/gloves/plate
@@ -137,9 +137,9 @@
 		"Half-Elf")
 	grant_lit_torch = TRUE
 	advjob_examine = FALSE
-	outfit = /datum/outfit/job/roguetown/rockhill/serjeant_at_arms
+	outfit = /datum/outfit/job/rockhill/serjeant_at_arms
 
-/datum/outfit/job/roguetown/rockhill/serjeant_at_arms/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/rockhill/serjeant_at_arms/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/helmet/leather
 	pants = /obj/item/clothing/pants/trou/leather
@@ -185,7 +185,7 @@
 /datum/migrant_role/footman_guard
 	name = "Guardsmen of Rockhill"
 	greet_text = "Your serjeant-at-arms has been conscripted by the mayor of rockhill to guard them as they visit the rulers of Vanderlin. Ensure they live."
-	outfit = /datum/outfit/job/roguetown/footman_bannerman
+	outfit = /datum/outfit/job/footman_bannerman
 	allowed_races = list("Humen","Dwarf","Aasimar","Elf","Half-Elf")
 	grant_lit_torch = TRUE
 	advjob_examine = FALSE

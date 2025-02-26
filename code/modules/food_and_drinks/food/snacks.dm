@@ -518,29 +518,6 @@ All foods are distributed among various categories. Use common sense.
 						name = "delicious [name]"
 						desc = "[desc] It is a masterwork."
 
-//Called when you finish tablecrafting a snack.
-/obj/item/reagent_containers/food/snacks/CheckParts(list/parts_list, datum/crafting_recipe/food/R)
-	..()
-//	reagents.clear_reagents()
-	for(var/obj/item/reagent_containers/RC in contents)
-		RC.reagents.trans_to(reagents, RC.reagents.maximum_volume)
-	if(istype(R))
-		contents_loop:
-			for(var/A in contents)
-				for(var/B in R.real_parts)
-					if(istype(A, B))
-						continue contents_loop
-				qdel(A)
-	SSblackbox.record_feedback("tally", "food_made", 1, type)
-
-	if(bonus_reagents && bonus_reagents.len)
-		for(var/r_id in bonus_reagents)
-			var/amount = bonus_reagents[r_id]
-			if(r_id == /datum/reagent/consumable/nutriment || r_id == /datum/reagent/consumable/nutriment/vitamin)
-				reagents.add_reagent(r_id, amount, tastes)
-			else
-				reagents.add_reagent(r_id, amount)
-
 /obj/item/reagent_containers/food/snacks/proc/slice(obj/item/W, mob/user)
 	if((slices_num <= 0 || !slices_num) || !slice_path) //is the food sliceable?
 		return FALSE

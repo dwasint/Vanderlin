@@ -75,10 +75,10 @@
 	for(var/obj/item/bodypart/B in L.bodyparts)
 		B.skeletonize(FALSE)
 	L.unequip_everything()
-	L.equipOutfit(/datum/outfit/job/roguetown/lich)
+	L.equipOutfit(/datum/outfit/job/lich)
 	L.set_patron(/datum/patron/inhumen/zizo)
 
-/datum/outfit/job/roguetown/lich/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/lich/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/helmet/skullcap/cult
 	pants = /obj/item/clothing/pants/chainlegs
@@ -129,7 +129,7 @@
 
 	addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, choose_name_popup), "LICH"), 5 SECONDS)
 
-/datum/outfit/job/roguetown/lich/post_equip(mob/living/carbon/human/H)
+/datum/outfit/job/lich/post_equip(mob/living/carbon/human/H)
 	..()
 	var/datum/antagonist/lich/lichman = H.mind.has_antag_datum(/datum/antagonist/lich)
 	for(var/i in 1 to 3)

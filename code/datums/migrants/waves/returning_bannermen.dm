@@ -10,9 +10,9 @@
 		"Elf")
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
-	outfit = /datum/outfit/job/roguetown/serjeant_at_arms
+	outfit = /datum/outfit/job/serjeant_at_arms
 
-/datum/outfit/job/roguetown/serjeant_at_arms/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/serjeant_at_arms/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/helmet/leather
 	pants = /obj/item/clothing/pants/trou/leather
@@ -61,7 +61,7 @@
 /datum/migrant_role/archer_bannerman
 	name = "Bannermen Archer"
 	greet_text = "You were apart of an expedition sent by the King of Vanderlin to Kingsfield, you and your serjeant-at-arms have returned upon fullfiling your task."
-	outfit = /datum/outfit/job/roguetown/archer_bannerman
+	outfit = /datum/outfit/job/archer_bannerman
 	allowed_races = list("Humen",
 		"Dwarf",
 		"Aasimar",
@@ -69,7 +69,7 @@
 		"Elf")
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
-/datum/outfit/job/roguetown/archer_bannerman/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/archer_bannerman/pre_equip(mob/living/carbon/human/H)
 	..()
 	pants = /obj/item/clothing/pants/trou/leather
 	armor = /obj/item/clothing/armor/leather/hide
@@ -112,12 +112,12 @@
 /datum/migrant_role/crossbow_bannerman
 	name = "Bannermen Crossbowman"
 	greet_text = "You were apart of an expedition sent by the King of Vanderlin to Kingsfield, you and your serjeant-at-arms have returned upon fullfiling your task."
-	outfit = /datum/outfit/job/roguetown/crossbow_bannerman
+	outfit = /datum/outfit/job/crossbow_bannerman
 	allowed_races = list("Humen","Dwarf","Aasimar", "Half-Elf", "Elf")
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
 
-/datum/outfit/job/roguetown/crossbow_bannerman/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/crossbow_bannerman/pre_equip(mob/living/carbon/human/H)
 	..()
 	pants = /obj/item/clothing/pants/trou/leather
 	armor = /obj/item/clothing/armor/leather/hide
@@ -161,12 +161,12 @@
 /datum/migrant_role/footman_bannerman
 	name = "Bannermen Footman"
 	greet_text = "You were apart of an expedition sent by the King of Vanderlin to Kingsfield, you and your serjeant-at-arms have returned upon fullfiling your task."
-	outfit = /datum/outfit/job/roguetown/footman_bannerman
+	outfit = /datum/outfit/job/footman_bannerman
 	allowed_races = list("Humen","Dwarf","Aasimar","Half-Elf","Elf")
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
 
-/datum/outfit/job/roguetown/footman_bannerman/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/footman_bannerman/pre_equip(mob/living/carbon/human/H)
 	..()
 	armor = /obj/item/clothing/armor/cuirass
 	shirt = /obj/item/clothing/armor/chainmail
@@ -201,12 +201,12 @@
 /datum/migrant_role/pikeman_bannerman
 	name = "Bannermen Pikeman"
 	greet_text = "You were apart of an expedition sent by the King of Vanderlin to Kingsfield, you and your serjeant-at-arms have returned upon fullfiling your task."
-	outfit = /datum/outfit/job/roguetown/pikeman_bannerman
+	outfit = /datum/outfit/job/pikeman_bannerman
 	allowed_races = list("Humen","Dwarf","Aasimar","Half-Elf","Elf")
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
 
-/datum/outfit/job/roguetown/pikeman_bannerman/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/pikeman_bannerman/pre_equip(mob/living/carbon/human/H)
 	..()
 	armor = /obj/item/clothing/armor/chainmail
 	shirt = /obj/item/clothing/armor/gambeson

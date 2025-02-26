@@ -3,7 +3,7 @@
 	greet_text = "The lords of Vanderlins sent you to Heartfelt to rappatriate some prisoners that were in their prison, you are now on your way back."
 	allowed_sexes = list(MALE, FEMALE)
 	grant_lit_torch = TRUE
-	outfit = /datum/outfit/job/roguetown/gaoler
+	outfit = /datum/outfit/job/gaoler
 	show_wanderer_examine = FALSE
 	allowed_races = list(
 		"Humen",
@@ -16,7 +16,7 @@
 		"Half-Orc")
 
 
-/datum/outfit/job/roguetown/gaoler/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/gaoler/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/menacing
 	neck = /obj/item/storage/belt/pouch/coins/poor
@@ -56,7 +56,7 @@
 /datum/migrant_role/mig_prisoner
 	name = "Prisoner"
 	greet_text = "You had fled Vanderlin, took refuge in Heartfelt yet the lords over there caught you and thus handed you over to those who seeked you before."
-	outfit = /datum/outfit/job/roguetown/mig_prisoner
+	outfit = /datum/outfit/job/mig_prisoner
 	allowed_races = list(
 		"Humen",
 		"Elf",
@@ -67,7 +67,7 @@
 		"Aasimar",
 		"Half-Orc")
 
-/datum/outfit/job/roguetown/mig_prisoner/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/mig_prisoner/pre_equip(mob/living/carbon/human/H)
 	..()
 	pants = /obj/item/clothing/pants/loincloth/brown
 	mask = /obj/item/clothing/face/facemask/prisoner
@@ -94,12 +94,12 @@
 /datum/migrant_role/prisoner_guard
 	name = "Guard"
 	greet_text = "You are apart of a convoy returning prisoners to Vanderlin. Obey the gaoler and ensure the prisoners get back to the dungeons."
-	outfit = /datum/outfit/job/roguetown/mig_guard
+	outfit = /datum/outfit/job/mig_guard
 	allowed_races = list("Humen","Dwarf","Aasimar")
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
 
-/datum/outfit/job/roguetown/mig_guard/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/mig_guard/pre_equip(mob/living/carbon/human/H)
 	..()
 	armor = /obj/item/clothing/armor/cuirass
 	shirt = /obj/item/clothing/armor/chainmail

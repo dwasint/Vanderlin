@@ -46,7 +46,7 @@ GLOBAL_LIST_EMPTY(rousman_ambush_objects)
 	job = "Ambusher Rousman"
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
-	equipOutfit(new /datum/outfit/job/roguetown/npc/rousman/ambush)
+	equipOutfit(new /datum/outfit/job/npc/rousman/ambush)
 	aggressive=1
 	mode = AI_IDLE
 	dodgetime = 13
@@ -275,7 +275,7 @@ GLOBAL_LIST_EMPTY(rousman_ambush_objects)
 /////////////////////
 /////////////////////
 
-/datum/outfit/job/roguetown/npc/rousman/ambush/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/npc/rousman/ambush/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.TOTALSTR = rand(6, 10)
 	H.TOTALPER = rand(6, 10)

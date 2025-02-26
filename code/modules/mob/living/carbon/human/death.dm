@@ -175,7 +175,7 @@
 		return
 	var/datum/job/human_job = SSjob.GetJob(job)
 	switch(human_job.type)
-		if(/datum/job/roguetown/lord)
+		if(/datum/job/lord)
 			removeomen(OMEN_NOLORD)
-		if(/datum/job/roguetown/priest)
+		if(/datum/job/priest)
 			removeomen(OMEN_NOPRIEST)

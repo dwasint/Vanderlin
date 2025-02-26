@@ -8,7 +8,7 @@
 	bodyparts = list(/obj/item/bodypart/chest/orc, /obj/item/bodypart/head/orc, /obj/item/bodypart/l_arm/orc,
 					/obj/item/bodypart/r_arm/orc, /obj/item/bodypart/r_leg/orc, /obj/item/bodypart/l_leg/orc)
 	rot_type = /datum/component/rot/corpse/orc
-//	var/gob_outfit = /datum/outfit/job/roguetown/npc/orc/ambush removed to apply different classes to the orcs
+//	var/gob_outfit = /datum/outfit/job/npc/orc/ambush removed to apply different classes to the orcs
 	ambushable = FALSE
 	base_intents = list(INTENT_HELP, INTENT_DISARM, INTENT_GRAB, /datum/intent/unarmed/claw, /datum/intent/simple/bite, /datum/intent/kick)
 	possible_rmb_intents = list()
@@ -29,7 +29,7 @@
 	job = "Ambush Orc"
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
-	equipOutfit(new /datum/outfit/job/roguetown/npc/orc/ambush)
+	equipOutfit(new /datum/outfit/job/npc/orc/ambush)
 	aggressive=1
 	mode = AI_IDLE
 	dodgetime = 15
@@ -232,7 +232,7 @@
 ////
 ///
 
-/datum/outfit/job/roguetown/npc/orc/ambush/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/npc/orc/ambush/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.TOTALSTR = 13
 	H.TOTALSPD = 12
@@ -312,14 +312,14 @@
 //NEW ORCS WITH DIFFERENT GEAR AND SHIT
 /mob/living/carbon/human/species/orc/tribal
 	name = "Tribal Orc"
-	var/loadout = /datum/outfit/job/roguetown/npc/orc/tribal
+	var/loadout = /datum/outfit/job/npc/orc/tribal
 	ambushable = FALSE
 
 /mob/living/carbon/human/species/orc/tribal/after_creation()
 	..()
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
-	equipOutfit(new /datum/outfit/job/roguetown/npc/orc/tribal)
+	equipOutfit(new /datum/outfit/job/npc/orc/tribal)
 	aggressive=1
 	mode = AI_IDLE
 	dodgetime = 15
@@ -327,7 +327,7 @@
 	flee_in_pain = FALSE
 	wander = TRUE
 
-/datum/outfit/job/roguetown/npc/orc/tribal/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/npc/orc/tribal/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.TOTALSTR = 13
 	H.TOTALSPD = 13
@@ -363,14 +363,14 @@
 
 /mob/living/carbon/human/species/orc/warrior
 	name = "Warrior Orc"
-	var/loadout = /datum/outfit/job/roguetown/npc/orc/warrior
+	var/loadout = /datum/outfit/job/npc/orc/warrior
 	ambushable = FALSE
 
 /mob/living/carbon/human/species/orc/warrior/after_creation()
 	..()
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
-	equipOutfit(new /datum/outfit/job/roguetown/npc/orc/warrior)
+	equipOutfit(new /datum/outfit/job/npc/orc/warrior)
 	aggressive=1
 	mode = AI_IDLE
 	dodgetime = 15
@@ -378,7 +378,7 @@
 	flee_in_pain = FALSE
 	wander = TRUE
 
-/datum/outfit/job/roguetown/npc/orc/warrior/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/npc/orc/warrior/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.TOTALSTR = 13
 	H.TOTALSPD = 13
@@ -435,14 +435,14 @@
 
 /mob/living/carbon/human/species/orc/marauder
 	name = "Marauder Orc"
-	var/loadout = /datum/outfit/job/roguetown/npc/orc/marauder
+	var/loadout = /datum/outfit/job/npc/orc/marauder
 	ambushable = FALSE
 
 /mob/living/carbon/human/species/orc/marauder/after_creation()
 	..()
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
-	equipOutfit(new /datum/outfit/job/roguetown/npc/orc/marauder)
+	equipOutfit(new /datum/outfit/job/npc/orc/marauder)
 	aggressive=1
 	mode = AI_IDLE
 	dodgetime = 15
@@ -450,7 +450,7 @@
 	flee_in_pain = FALSE
 	wander = TRUE
 
-/datum/outfit/job/roguetown/npc/orc/marauder/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/npc/orc/marauder/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.TOTALSTR = 12
 	H.TOTALSPD = 12
@@ -490,14 +490,14 @@
 ///////////////////////////////////////////////////////////////////////////////////////
 /mob/living/carbon/human/species/orc/warlord
 	name = "Warlord Orc"
-	var/loadout = /datum/outfit/job/roguetown/npc/orc/warlord
+	var/loadout = /datum/outfit/job/npc/orc/warlord
 	ambushable = FALSE
 
 /mob/living/carbon/human/species/orc/warlord/after_creation()
 	..()
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
-	equipOutfit(new /datum/outfit/job/roguetown/npc/orc/warlord)
+	equipOutfit(new /datum/outfit/job/npc/orc/warlord)
 	aggressive=1
 	mode = AI_IDLE
 	dodgetime = 15
@@ -505,7 +505,7 @@
 	flee_in_pain = FALSE
 	wander = TRUE
 
-/datum/outfit/job/roguetown/npc/orc/warlord/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/npc/orc/warlord/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.TOTALSTR = 14
 	H.TOTALSPD = 14
@@ -540,7 +540,7 @@
 	..()
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
-	equipOutfit(new /datum/outfit/job/roguetown/npc/orc/warlord)
+	equipOutfit(new /datum/outfit/job/npc/orc/warlord)
 	aggressive=1
 	mode = AI_IDLE
 	dodgetime = 15

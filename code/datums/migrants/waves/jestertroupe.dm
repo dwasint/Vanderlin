@@ -1,7 +1,7 @@
 /datum/migrant_role/jestertroupe
 	name = "Buffoon"
 	greet_text = "You were once part of a glorious circus from Heartfelt. Long gone are the days of mirth. The tent having been set ablaze so many years ago, you and your lot have been wandering. Here is the perfect town to start the next act. The circus is in town!"
-	outfit = /datum/outfit/job/roguetown/jestertroupe
+	outfit = /datum/outfit/job/jestertroupe
 
 	allowed_races = list(
 		"Humen",
@@ -14,7 +14,7 @@
 		"Half-Orc")
 	grant_lit_torch = TRUE
 
-/datum/outfit/job/roguetown/jestertroupe/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/jestertroupe/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/jester
 	pants = /obj/item/clothing/pants/tights

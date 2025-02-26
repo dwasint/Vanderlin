@@ -13,11 +13,11 @@
 		"Aasimar",
 		"Half-Orc"
 	)
-	outfit = /datum/outfit/job/roguetown/zybantine_migration/emir
+	outfit = /datum/outfit/job/zybantine_migration/emir
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
 
-/datum/outfit/job/roguetown/zybantine_migration/emir/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/zybantine_migration/emir/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/shalal
 	gloves = /obj/item/clothing/gloves/leather
@@ -81,11 +81,11 @@
 		"Aasimar",
 		"Half-Orc"
 	)
-	outfit = /datum/outfit/job/roguetown/zybantine_migration/amirah
+	outfit = /datum/outfit/job/zybantine_migration/amirah
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
 
-/datum/outfit/job/roguetown/zybantine_migration/amirah/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/zybantine_migration/amirah/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/shalal
 	gloves = /obj/item/clothing/gloves/leather
@@ -134,11 +134,11 @@
 	greet_text = "You are a furusiyya, pledged to the Emir and the Amirah. Make sure they come out alive of that place."
 	allowed_sexes = list(MALE)
 	allowed_races = list("Humen")
-	outfit = /datum/outfit/job/roguetown/zybantine_migration/furusiyya
+	outfit = /datum/outfit/job/zybantine_migration/furusiyya
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
 
-/datum/outfit/job/roguetown/zybantine_migration/furusiyya/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/zybantine_migration/furusiyya/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
@@ -204,11 +204,11 @@
 		"Aasimar",
 		"Half-Orc"
 	)
-	outfit = /datum/outfit/job/roguetown/zybantine_migration/zybantine_guard
+	outfit = /datum/outfit/job/zybantine_migration/zybantine_guard
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
 
-/datum/outfit/job/roguetown/zybantine_migration/zybantine_guard/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/zybantine_migration/zybantine_guard/pre_equip(mob/living/carbon/human/H)
 	..()
 	shoes = /obj/item/clothing/shoes/shalal
 	head = /obj/item/clothing/head/helmet/sallet/zybantine
@@ -258,10 +258,10 @@
 		"Dark Elf",
 		"Half-Orc"
 	)
-	outfit = /datum/outfit/job/roguetown/zybantine_migration/qatil
+	outfit = /datum/outfit/job/zybantine_migration/qatil
 	show_wanderer_examine = FALSE
 
-/datum/outfit/job/roguetown/zybantine_migration/qatil/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/zybantine_migration/qatil/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.mind)
 		H.mind?.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE)

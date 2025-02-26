@@ -11,10 +11,6 @@
 
 /datum/outfit/varedit/proc/set_equipement_by_slot(slot,item_path)
 	switch(slot)
-		if(SLOT_PANTS)
-			uniform = item_path
-		if(SLOT_BACK)
-			back = item_path
 		if(SLOT_ARMOR)
 			suit = item_path
 		if(SLOT_BELT)
@@ -29,12 +25,8 @@
 			mask = item_path
 		if(SLOT_NECK)
 			neck = item_path
-		if(SLOT_HEAD)
-			ears = item_path
 		if(SLOT_RING)
 			id = item_path
-		if(SLOT_S_STORE)
-			suit_store = item_path
 		if(SLOT_L_STORE)
 			l_pocket = item_path
 		if(SLOT_R_STORE)

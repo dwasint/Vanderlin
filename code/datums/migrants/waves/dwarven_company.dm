@@ -1,13 +1,13 @@
 /datum/migrant_role/dwarven_company/captain
 	name = "Captain"
 	greet_text = "You are the captain of a dwarven's expedition, following the tracks of Matthios's influence you shall lead your party in Malum's name."
-	outfit = /datum/outfit/job/roguetown/dwarven_company/captain
+	outfit = /datum/outfit/job/dwarven_company/captain
 
 	allowed_races = list("Dwarf")
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
 
-/datum/outfit/job/roguetown/dwarven_company/captain/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/dwarven_company/captain/pre_equip(mob/living/carbon/human/H)
 	..()
 	armor = /obj/item/clothing/armor/cuirass
 	cloak = /obj/item/clothing/cloak/raincloak/furcloak
@@ -54,13 +54,13 @@
 /datum/migrant_role/dwarven_company/weaponsmith
 	name = "Weapon Smith"
 	greet_text = " You are the weaponsmith of a dwarven expedition, obey your foremand as they lead you in Malum's name into the tomb of Matthios."
-	outfit = /datum/outfit/job/roguetown/dwarven_company/weaponsmith
+	outfit = /datum/outfit/job/dwarven_company/weaponsmith
 
 	allowed_races = list("Dwarf")
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
 
-/datum/outfit/job/roguetown/dwarven_company/weaponsmith/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/dwarven_company/weaponsmith/pre_equip(mob/living/carbon/human/H)
 	..()
 	id = /obj/item/clothing/ring/silver/makers_guild
 	head = /obj/item/clothing/head/hatfur
@@ -114,13 +114,13 @@
 /datum/migrant_role/dwarven_company/armorsmith
 	name = "Armor Smith"
 	greet_text = " You are the armorsmith of a dwarven expedition, obey your foremand as they lead you in Malum's name into the tomb of Matthios."
-	outfit = /datum/outfit/job/roguetown/dwarven_company/armorsmith
+	outfit = /datum/outfit/job/dwarven_company/armorsmith
 
 	allowed_races = list("Dwarf")
 	grant_lit_torch = TRUE
 	show_wanderer_examine = FALSE
 
-/datum/outfit/job/roguetown/dwarven_company/armorsmith/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/dwarven_company/armorsmith/pre_equip(mob/living/carbon/human/H)
 	..()
 	id = /obj/item/clothing/ring/silver/makers_guild
 	head = /obj/item/clothing/head/hatfur

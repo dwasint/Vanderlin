@@ -80,7 +80,7 @@
 /obj/structure/toilet,
 /mob/living/carbon/human/species/orc/npc,
 /obj/effect/mapping_helpers/outfit_handler{
-	outfit_to_equip = /datum/outfit/job/roguetown/adventurer/barbarian
+	outfit_to_equip = /datum/outfit/job/adventurer/barbarian
 	},
 /turf/open/floor/rogue/ruinedwood/spiralfade,
 /area/rogue)
@@ -427,7 +427,7 @@
 /area/rogue)
 "Wy" = (
 /obj/effect/mapping_helpers/outfit_handler{
-	outfit_to_equip = /datum/outfit/job/roguetown/adventurer/barbarian
+	outfit_to_equip = /datum/outfit/job/adventurer/barbarian
 	},
 /mob/living/carbon/human/species/orc/npc,
 /turf/open/floor/rogue/ruinedwood/spiralfade,

@@ -1,11 +1,11 @@
 /datum/migrant_role/itinerant_knight
 	name = "Itinerant Knight"
 	greet_text = "You are an itinerant Knight, you have embarked alongside your squire on a voyage to fullfil your knightly vows."
-	outfit = /datum/outfit/job/roguetown/itinerant_knight
+	outfit = /datum/outfit/job/itinerant_knight
 	allowed_races = list("Humen", "Dwarf", "Elf", "Aasimar")
 	grant_lit_torch = TRUE
 	advjob_examine = FALSE
-/datum/outfit/job/roguetown/itinerant_knight/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/itinerant_knight/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/helmet/visored/sallet
 	wrists = /obj/item/clothing/wrists/bracers
@@ -51,11 +51,11 @@
 /datum/migrant_role/itinerant_squire
 	name = "Itinerant Squire"
 	greet_text = "You are the squire of an itinerant knight, they have taken you under their custody as you have shown great talents, if you keep it on, you might become a knight yourself."
-	outfit = /datum/outfit/job/roguetown/itinerant_squire
+	outfit = /datum/outfit/job/itinerant_squire
 	allowed_races = list("Humen", "Dwarf","Elf", "Half-Elf", "Aasimar")
 	grant_lit_torch = TRUE
 	advjob_examine = FALSE
-/datum/outfit/job/roguetown/itinerant_squire/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/itinerant_squire/pre_equip(mob/living/carbon/human/H)
 	..()
 	shirt = /obj/item/clothing/shirt/dress/gen/black
 	pants = /obj/item/clothing/pants/chainlegs/iron

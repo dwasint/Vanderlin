@@ -121,7 +121,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		QDEL_NULL(eyes)
 	eyes = new /obj/item/organ/eyes/night_vision/zombie
 	eyes.Insert(owner.current)
-	H.equipOutfit(/datum/outfit/job/roguetown/vamplord)
+	H.equipOutfit(/datum/outfit/job/vamplord)
 	H.set_patron(/datum/patron/psydon) //Servant forever of he who is forgotten.
 
 	return TRUE
@@ -155,7 +155,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 			equipOutfit(A.outfit)
 			return
 
-/datum/outfit/job/roguetown/vamplord/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/vamplord/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.mind.adjust_skillrank(/datum/skill/magic/blood, 2, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 5, TRUE)

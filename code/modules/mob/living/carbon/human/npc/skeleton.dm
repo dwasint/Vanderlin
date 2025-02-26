@@ -6,7 +6,7 @@
 	bodyparts = list(/obj/item/bodypart/chest, /obj/item/bodypart/head, /obj/item/bodypart/l_arm,
 					/obj/item/bodypart/r_arm, /obj/item/bodypart/r_leg, /obj/item/bodypart/l_leg)
 	faction = list("undead")
-	var/skel_outfit = /datum/outfit/job/roguetown/npc/skeleton
+	var/skel_outfit = /datum/outfit/job/npc/skeleton
 	ambushable = FALSE
 	rot_type = null
 	base_intents = list(INTENT_HELP, INTENT_DISARM, INTENT_GRAB, /datum/intent/unarmed/claw)
@@ -89,7 +89,7 @@
 			equipOutfit(OU)
 
 
-/datum/outfit/job/roguetown/npc/skeleton/random/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/npc/skeleton/random/pre_equip(mob/living/carbon/human/H)
 	..()
 
 	H.TOTALSTR = 6
@@ -99,7 +99,7 @@
 	H.TOTALINT = 1
 
 
-/datum/outfit/job/roguetown/greater_skeleton/pre_equip(mob/living/carbon/human/H) //equipped onto Summon Greater Undead player skeletons only after the mind is added
+/datum/outfit/job/greater_skeleton/pre_equip(mob/living/carbon/human/H) //equipped onto Summon Greater Undead player skeletons only after the mind is added
 	..()
 	wrists = /obj/item/clothing/wrists/bracers/leather
 	armor = /obj/item/clothing/armor/chainmail/iron
@@ -157,7 +157,7 @@
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_EASYDISMEMBER, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_CRITICAL_WEAKNESS, TRAIT_GENERIC)
-	equipOutfit(new /datum/outfit/job/roguetown/species/skeleton/npc/peasant)
+	equipOutfit(new /datum/outfit/job/species/skeleton/npc/peasant)
 	aggressive=1
 	mode = AI_IDLE
 	dodgetime = 15
@@ -165,7 +165,7 @@
 	flee_in_pain = FALSE
 	wander = TRUE
 
-/datum/outfit/job/roguetown/species/skeleton/npc/peasant/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/species/skeleton/npc/peasant/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.TOTALSTR = 6
 	H.TOTALSPD = 8
@@ -207,7 +207,7 @@
 	ADD_TRAIT(src, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_EASYDISMEMBER, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_CRITICAL_WEAKNESS, TRAIT_GENERIC)
-	equipOutfit(new /datum/outfit/job/roguetown/species/skeleton/npc/random)
+	equipOutfit(new /datum/outfit/job/species/skeleton/npc/random)
 	aggressive=1
 	mode = AI_IDLE
 	dodgetime = 15
@@ -215,7 +215,7 @@
 	flee_in_pain = FALSE
 	wander = TRUE
 
-/datum/outfit/job/roguetown/species/skeleton/npc/random/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/species/skeleton/npc/random/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(prob(50))
 		wrists = /obj/item/clothing/wrists/bracers/leather
@@ -247,7 +247,7 @@
 	ADD_TRAIT(src, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_EASYDISMEMBER, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_CRITICAL_WEAKNESS, TRAIT_GENERIC)
-	equipOutfit(new /datum/outfit/job/roguetown/species/skeleton/npc/warrior)
+	equipOutfit(new /datum/outfit/job/species/skeleton/npc/warrior)
 	aggressive=1
 	mode = AI_IDLE
 	dodgetime = 15
@@ -255,7 +255,7 @@
 	flee_in_pain = FALSE
 	wander = TRUE
 
-/datum/outfit/job/roguetown/species/skeleton/npc/warrior/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/species/skeleton/npc/warrior/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.TOTALSTR = 10
 	H.TOTALSPD = 7
@@ -326,7 +326,7 @@
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
-	equipOutfit(new /datum/outfit/job/roguetown/species/skeleton/npc/warrior)
+	equipOutfit(new /datum/outfit/job/species/skeleton/npc/warrior)
 	aggressive=1
 	mode = AI_IDLE
 	d_intent = INTENT_PARRY //these ones will parry instead of dodge, making them much more dangerous
@@ -349,7 +349,7 @@
 
 /mob/living/carbon/human/species/skeleton/death_arena/after_creation()
 	..()
-	equipOutfit(new /datum/outfit/job/roguetown/arena_skeleton)
+	equipOutfit(new /datum/outfit/job/arena_skeleton)
 	ADD_TRAIT(src, TRAIT_CRITICAL_WEAKNESS, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOLIMBDISABLE, TRAIT_GENERIC)
 
