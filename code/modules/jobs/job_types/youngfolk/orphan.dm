@@ -43,7 +43,7 @@
 	if(prob(30))
 		head = pick(/obj/item/clothing/head/knitcap, /obj/item/clothing/head/bardhat, /obj/item/clothing/head/courtierhat, /obj/item/clothing/head/fancyhat)
 	if(prob(15))
-		r_hand = pick(/obj/item/rogue/instrument/lute, /obj/item/rogue/instrument/accord, /obj/item/rogue/instrument/guitar, /obj/item/rogue/instrument/flute, /obj/item/rogue/instrument/hurdygurdy, /obj/item/rogue/instrument/viola)
+		r_hand = pick(/obj/item/instrument/lute, /obj/item/instrument/accord, /obj/item/instrument/guitar, /obj/item/instrument/flute, /obj/item/instrument/hurdygurdy, /obj/item/instrument/viola)
 		if(H.mind)
 			H.mind.adjust_skillrank(/datum/skill/misc/music, pick(2,3,4), TRUE)
 	if(H.mind)

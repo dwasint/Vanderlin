@@ -25,7 +25,7 @@
 /turf/open/floor/herringbone,
 /area/rogue/outdoors/caves)
 "g" = (
-/obj/machinery/light/rogue/firebowl/standing/blue,
+/obj/machinery/light/fueled/firebowl/standing/blue,
 /obj/structure/fluff/walldeco/psybanner{
 	pixel_y = 32
 	},
@@ -70,7 +70,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/outdoors/caves)
 "q" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/outdoors/caves)
 "r" = (
 /obj/structure/spider/stickyweb,
@@ -86,7 +86,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/outdoors/caves)
 "u" = (
-/obj/machinery/light/rogue/firebowl/standing/blue,
+/obj/machinery/light/fueled/firebowl/standing/blue,
 /obj/structure/fluff/walldeco/psybanner{
 	pixel_y = 32
 	},
@@ -142,7 +142,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/outdoors/caves)
 "H" = (
-/obj/structure/bed/rogue/shit,
+/obj/structure/bed/shit,
 /turf/open/floor/blocks,
 /area/rogue/outdoors/caves)
 "I" = (
@@ -199,7 +199,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/bog)
 "V" = (
-/turf/closed/mineral/random/rogue/high,
+/turf/closed/mineral/random/high,
 /area/rogue/outdoors/caves)
 "W" = (
 /obj/structure/spider/stickyweb/solo,

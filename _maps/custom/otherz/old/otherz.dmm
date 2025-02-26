@@ -1,13 +1,13 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/obj/effect/landmark/mapGenerator/rogue/cave/lava{
+/obj/effect/landmark/mapGenerator/cave/lava{
 	startTurfX = 129;
 	startTurfY = 130
 	},
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/under/cave)
 "ab" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/outdoors/woods)
 "ac" = (
 /turf/open/floor/dirt/road,
@@ -25,30 +25,30 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods)
 "ag" = (
-/turf/closed/mineral/rogue/salt,
+/turf/closed/mineral/salt,
 /area/rogue/outdoors/woods)
 "ah" = (
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/bog)
 "ai" = (
-/turf/closed/mineral/random/rogue/med,
+/turf/closed/mineral/random/med,
 /area/rogue/under/cavewet)
 "aj" = (
 /turf/closed/wall/mineral/stone/moss,
 /area/rogue/outdoors/woods)
 "ak" = (
-/obj/machinery/light/rogue/firebowl/stump,
+/obj/machinery/light/fueled/firebowl/stump,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/woods)
 "al" = (
 /turf/open/floor/cobble,
 /area/rogue/outdoors/woods)
 "am" = (
-/obj/machinery/light/rogue/firebowl/stump,
+/obj/machinery/light/fueled/firebowl/stump,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods)
 "an" = (
-/turf/closed/mineral/rogue/coal,
+/turf/closed/mineral/coal,
 /area/rogue/outdoors/woods)
 "ao" = (
 /obj/structure/fluff/traveltile{
@@ -61,23 +61,23 @@
 /turf/closed,
 /area/rogue/under/cavelava)
 "aq" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/under/cave)
 "ar" = (
 /obj/structure/flora/roguetree,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods)
 "as" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/outdoors/mountains/decap)
 "at" = (
-/turf/closed/mineral/random/rogue/high,
+/turf/closed/mineral/random/high,
 /area/rogue/outdoors/mountains/decap)
 "au" = (
 /turf/closed,
 /area/rogue/outdoors/woods)
 "av" = (
-/turf/closed/mineral/random/rogue/high,
+/turf/closed/mineral/random/high,
 /area/rogue/under/cavelava)
 "aw" = (
 /turf/open/floor/dirt/road,
@@ -86,10 +86,10 @@
 /turf/closed,
 /area/rogue/under/cavewet)
 "ay" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/under/cavelava)
 "az" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/indoors/cave)
 "aA" = (
 /turf/open/floor/dirt,
@@ -101,10 +101,10 @@
 /turf/open/floor/volcanic,
 /area/rogue/under/cavelava)
 "aC" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "aD" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/outdoors/bog)
 "aE" = (
 /turf/open/floor/dirt,
@@ -126,7 +126,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/woods)
 "aK" = (
-/turf/closed/mineral/random/rogue/med,
+/turf/closed/mineral/random/med,
 /area/rogue/outdoors/bog)
 "aL" = (
 /obj/effect/landmark/start/adventurerlate{
@@ -170,10 +170,10 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/bog)
 "aV" = (
-/turf/closed/mineral/rogue/salt,
+/turf/closed/mineral/salt,
 /area/rogue/outdoors/bog)
 "aW" = (
-/obj/machinery/light/rogue/firebowl/standing/blue,
+/obj/machinery/light/fueled/firebowl/standing/blue,
 /turf/open/floor/dirt/road,
 /area/rogue/indoors/cave)
 "aX" = (
@@ -187,10 +187,10 @@
 /turf/open/water,
 /area/rogue/indoors/cave)
 "aZ" = (
-/turf/closed/mineral/random/rogue/high,
+/turf/closed/mineral/random/high,
 /area/rogue/outdoors/bog)
 "ba" = (
-/turf/closed/mineral/random/rogue/high,
+/turf/closed/mineral/random/high,
 /area/rogue/indoors/cave)
 "bb" = (
 /obj/structure/fluff/traveltile{
@@ -245,21 +245,21 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/woods)
 "bi" = (
-/obj/effect/landmark/mapGenerator/rogue/cave{
+/obj/effect/landmark/mapGenerator/cave{
 	endTurfX = 126;
 	endTurfY = 254;
 	startTurfX = 2;
 	startTurfY = 130
 	},
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "bj" = (
-/obj/effect/landmark/mapGenerator/rogue/decap,
-/turf/closed/mineral/random/rogue/high,
+/obj/effect/landmark/mapGenerator/decap,
+/turf/closed/mineral/random/high,
 /area/rogue/outdoors/mountains/decap)
 "bk" = (
-/obj/effect/landmark/mapGenerator/rogue/decap,
-/turf/closed/mineral/rogue/bedrock,
+/obj/effect/landmark/mapGenerator/decap,
+/turf/closed/mineral/bedrock,
 /area/rogue/outdoors/mountains/decap)
 "bl" = (
 /turf/open/transparent/openspace,
@@ -271,33 +271,33 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/bog)
 "bn" = (
-/obj/effect/landmark/mapGenerator/rogue/cave{
+/obj/effect/landmark/mapGenerator/cave{
 	endTurfX = 254;
 	endTurfY = 128;
 	startTurfX = 129
 	},
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "bo" = (
-/obj/effect/landmark/mapGenerator/rogue/bog{
+/obj/effect/landmark/mapGenerator/bog{
 	endTurfX = 127;
 	startTurfY = 130
 	},
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "bp" = (
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/woods)
 "bq" = (
 /obj/effect/landmark/start/adventurerlate,
-/turf/closed/mineral/random/rogue/high,
+/turf/closed/mineral/random/high,
 /area/rogue/under/cavelava)
 "bs" = (
 /turf/open/water,
 /area/rogue/under/cavelava)
 "bt" = (
-/obj/machinery/light/rogue/campfire/densefire,
+/obj/machinery/light/fueled/campfire/densefire,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/woods)
 "bu" = (
@@ -317,7 +317,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/mountains/decap)
 "bz" = (
-/turf/closed/mineral/random/rogue/med,
+/turf/closed/mineral/random/med,
 /area/rogue/indoors/cave)
 "bA" = (
 /obj/structure/fluff/traveltile{
@@ -328,14 +328,14 @@
 /turf/open/floor/cobble,
 /area/rogue/outdoors/woods)
 "bB" = (
-/obj/effect/landmark/mapGenerator/rogue/forest{
+/obj/effect/landmark/mapGenerator/forest{
 	endTurfY = 128;
 	startTurfX = 128
 	},
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "bD" = (
-/turf/closed/mineral/random/rogue/high,
+/turf/closed/mineral/random/high,
 /area/rogue/under/cavelava)
 "bE" = (
 /turf/open/floor/dirt,
@@ -352,7 +352,7 @@
 /area/rogue/under/cavewet)
 "bI" = (
 /obj/item/gun/ballistic/revolver,
-/turf/closed/mineral/random/rogue/med,
+/turf/closed/mineral/random/med,
 /area/rogue/under/cavewet)
 "bJ" = (
 /turf/open/transparent/openspace,

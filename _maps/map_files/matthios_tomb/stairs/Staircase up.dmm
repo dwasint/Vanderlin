@@ -6,7 +6,7 @@
 /turf/open/transparent/openspace,
 /area/rogue)
 "q" = (
-/obj/structure/rack/rogue/shelf/biggest{
+/obj/structure/rack/shelf/biggest{
 	pixel_y = 17
 	},
 /obj/item/reagent_containers/food/snacks/meat/salami{
@@ -37,7 +37,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue)
 "X" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 
 (1,1,1) = {"

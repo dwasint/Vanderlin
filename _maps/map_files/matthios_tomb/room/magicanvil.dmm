@@ -33,7 +33,7 @@
 /turf/open/floor/cobble,
 /area/rogue)
 "n" = (
-/obj/machinery/light/rogue/forge,
+/obj/machinery/light/fueled/forge,
 /turf/open/floor/cobblerock,
 /area/rogue)
 "o" = (
@@ -94,7 +94,7 @@
 /turf/open/floor/cobble,
 /area/rogue)
 "A" = (
-/obj/machinery/light/rogue/smelter,
+/obj/machinery/light/fueled/smelter,
 /turf/open/floor/cobblerock,
 /area/rogue)
 "E" = (
@@ -114,7 +114,7 @@
 /turf/open/floor/cobble,
 /area/rogue)
 "H" = (
-/mob/living/simple_animal/hostile/rogue/orc/orc_marauder/spear,
+/mob/living/simple_animal/hostile/orc/orc_marauder/spear,
 /turf/open/floor/cobble,
 /area/rogue)
 "J" = (
@@ -128,7 +128,7 @@
 /turf/open/floor/cobble,
 /area/rogue)
 "K" = (
-/obj/item/roguebin/water,
+/obj/item/bin/water,
 /turf/open/floor/cobblerock,
 /area/rogue)
 "L" = (
@@ -199,7 +199,7 @@
 /turf/open/floor/cobble,
 /area/rogue)
 "Y" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 
 (1,1,1) = {"

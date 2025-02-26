@@ -18,7 +18,7 @@
 
 /datum/crafting_recipe/structure/campfire
 	name = "campfire"
-	result = /obj/machinery/light/rogue/campfire
+	result = /obj/machinery/light/fueled/campfire
 	reqs = list(/obj/item/grown/log/tree/stick = 2)
 	verbage = "build"
 	verbage_tp = "builds"
@@ -26,7 +26,7 @@
 
 /datum/crafting_recipe/structure/densefire
 	name = "greater campfire"
-	result = /obj/machinery/light/rogue/campfire/densefire
+	result = /obj/machinery/light/fueled/campfire/densefire
 	reqs = list(/obj/item/grown/log/tree/stick = 2,
 				/obj/item/natural/stone = 2)
 	verbage = "build"
@@ -34,7 +34,7 @@
 
 /datum/crafting_recipe/structure/cookpit
 	name = "hearth"
-	result = /obj/machinery/light/rogue/hearth
+	result = /obj/machinery/light/fueled/hearth
 	reqs = list(/obj/item/grown/log/tree/stick = 1,
 				/obj/item/natural/stone = 3)
 	verbage = "build"
@@ -43,7 +43,7 @@
 
 /datum/crafting_recipe/structure/brazier
 	name = "brazier"
-	result = /obj/machinery/light/rogue/firebowl/stump
+	result = /obj/machinery/light/fueled/firebowl/stump
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 				/obj/item/ore/coal = 1)
 	verbage = "build"
@@ -51,7 +51,7 @@
 
 /datum/crafting_recipe/structure/standing
 	name = "standing fire"
-	result = /obj/machinery/light/rogue/firebowl/standing
+	result = /obj/machinery/light/fueled/firebowl/standing
 	reqs = list(/obj/item/natural/stone = 1,
 				/obj/item/ore/coal = 1)
 	verbage = "build"
@@ -59,7 +59,7 @@
 
 /datum/crafting_recipe/structure/standingblue
 	name = "standing fire (blue)"
-	result = /obj/machinery/light/rogue/firebowl/standing/blue
+	result = /obj/machinery/light/fueled/firebowl/standing/blue
 	reqs = list(/obj/item/natural/stone = 1,
 				/obj/item/ore/coal = 1,
 				/obj/item/ash = 1)
@@ -68,7 +68,7 @@
 
 /datum/crafting_recipe/structure/rack
 	name = "rack"
-	result = /obj/structure/rack/rogue
+	result = /obj/structure/rack
 	reqs = list(/obj/item/grown/log/tree/stick = 3)
 	verbage = "construct"
 	verbage_tp = "constructs"
@@ -84,7 +84,7 @@
 
 /datum/crafting_recipe/structure/bed
 	name = "bed"
-	result = /obj/structure/bed/rogue/shit
+	result = /obj/structure/bed/shit
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 				/obj/item/natural/fibers = 1)
 	verbage = "carpent"
@@ -103,7 +103,7 @@
 
 /datum/crafting_recipe/structure/torchholder
 	name = "sconce"
-	result = /obj/machinery/light/rogue/torchholder
+	result = /obj/machinery/light/fueled/torchholder
 	reqs = list(/obj/item/natural/stone = 2)
 	verbage = "build"
 	verbage_tp = "builds"
@@ -113,7 +113,7 @@
 
 /datum/crafting_recipe/structure/wallcandle
 	name = "wall candles"
-	result = /obj/machinery/light/rogue/wallfire/candle
+	result = /obj/machinery/light/fueled/wallfire/candle
 	reqs = list(/obj/item/natural/stone = 1, /obj/item/candle/yellow = 1)
 	verbage = "build"
 	verbage_tp = "builds"
@@ -123,7 +123,7 @@
 
 /datum/crafting_recipe/structure/wallcandleblue
 	name = "wall candles (blue)"
-	result = /obj/machinery/light/rogue/wallfire/candle/blue
+	result = /obj/machinery/light/fueled/wallfire/candle/blue
 	reqs = list(/obj/item/natural/stone = 1, /obj/item/candle/yellow = 1, /obj/item/ash = 1)
 	verbage = "build"
 	verbage_tp = "builds"

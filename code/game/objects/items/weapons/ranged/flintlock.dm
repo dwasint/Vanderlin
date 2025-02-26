@@ -210,7 +210,7 @@
 	return ..()
 
 /obj/item/ammo_box/magazine/internal/shot/musk
-	ammo_type = /obj/item/ammo_casing/caseless/rogue/bullet
+	ammo_type = /obj/item/ammo_casing/caseless/bullet
 	caliber = "musketball"
 	max_ammo = 1
 	start_empty = TRUE

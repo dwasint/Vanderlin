@@ -19,14 +19,14 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "x" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "B" = (
-/obj/machinery/light/rogue/torchholder/r,
+/obj/machinery/light/fueled/torchholder/r,
 /turf/open/transparent/openspace,
 /area/rogue)
 "O" = (
-/obj/machinery/light/rogue/torchholder/r,
+/obj/machinery/light/fueled/torchholder/r,
 /obj/item/natural/stone{
 	pixel_y = -9;
 	pixel_x = -5

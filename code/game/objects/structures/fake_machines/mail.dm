@@ -394,7 +394,7 @@
 			max_purchases = 1
 		),
 		"Four Spare Lead Balls (5)" = list(
-			list(type = /obj/item/ammo_casing/caseless/rogue/bullet, count = 4),
+			list(type = /obj/item/ammo_casing/caseless/bullet, count = 4),
 			cost = 5,
 			max_purchases = 1
 		),

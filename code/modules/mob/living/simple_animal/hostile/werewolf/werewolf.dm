@@ -1,5 +1,5 @@
 
-/mob/living/simple_animal/hostile/rogue/werewolf
+/mob/living/simple_animal/hostile/werewolf
 	name = "WEREWOLF"
 	desc = ""
 	icon = 'icons/roguetown/mob/monster/werewolf.dmi'
@@ -26,7 +26,7 @@
 	stat_attack = UNCONSCIOUS
 	footstep_type = FOOTSTEP_MOB_HEAVY
 
-/mob/living/simple_animal/hostile/rogue/werewolf/Initialize()
+/mob/living/simple_animal/hostile/werewolf/Initialize()
 	. = ..()
 	regenerate_icons()
 	ADD_TRAIT(src, TRAIT_SIMPLE_WOUNDS, TRAIT_GENERIC)

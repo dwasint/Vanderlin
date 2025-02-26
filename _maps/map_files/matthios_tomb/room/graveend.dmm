@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "b" = (
 /obj/item/coin/gold{
@@ -10,7 +10,7 @@
 /turf/open/floor/hexstone,
 /area/rogue)
 "c" = (
-/mob/living/simple_animal/hostile/rogue/skeleton/guard,
+/mob/living/simple_animal/hostile/skeleton/guard,
 /turf/open/floor/hexstone,
 /area/rogue)
 "d" = (
@@ -37,7 +37,7 @@
 /turf/closed/wall/mineral/stone/moss,
 /area/rogue)
 "j" = (
-/mob/living/simple_animal/hostile/rogue/demon{
+/mob/living/simple_animal/hostile/demon{
 	name = "Bonetaker"
 	},
 /obj/effect/decal/cleanable/blood/gibs/up,
@@ -48,7 +48,7 @@
 /turf/open/floor/hexstone,
 /area/rogue)
 "n" = (
-/mob/living/simple_animal/hostile/rogue/skeleton/spear,
+/mob/living/simple_animal/hostile/skeleton/spear,
 /turf/open/floor/hexstone,
 /area/rogue)
 "o" = (
@@ -56,7 +56,7 @@
 /turf/open/floor/hexstone,
 /area/rogue)
 "p" = (
-/mob/living/simple_animal/hostile/rogue/skeleton/axe,
+/mob/living/simple_animal/hostile/skeleton/axe,
 /turf/open/floor/hexstone,
 /area/rogue)
 "q" = (
@@ -70,7 +70,7 @@
 /area/rogue)
 "s" = (
 /obj/structure/chair/bench/throne,
-/mob/living/simple_animal/hostile/rogue/skeleton/guard,
+/mob/living/simple_animal/hostile/skeleton/guard,
 /turf/open/floor/hexstone,
 /area/rogue)
 "t" = (
@@ -115,7 +115,7 @@
 /turf/open/floor/hexstone,
 /area/rogue)
 "E" = (
-/mob/living/simple_animal/hostile/rogue/skeleton,
+/mob/living/simple_animal/hostile/skeleton,
 /turf/open/floor/hexstone,
 /area/rogue)
 "F" = (
@@ -173,7 +173,7 @@
 /turf/open/floor/hexstone,
 /area/rogue)
 "X" = (
-/mob/living/simple_animal/hostile/rogue/skeleton/bow,
+/mob/living/simple_animal/hostile/skeleton/bow,
 /turf/open/floor/hexstone,
 /area/rogue)
 

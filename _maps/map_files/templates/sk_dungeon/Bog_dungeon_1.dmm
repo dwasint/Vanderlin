@@ -9,7 +9,7 @@
 /turf/closed/wall/mineral/decostone/center,
 /area/rogue/outdoors/caves)
 "D" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/outdoors/spidercave)
 
 (1,1,1) = {"

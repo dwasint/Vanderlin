@@ -20,7 +20,7 @@
 /turf/open/transparent/openspace,
 /area/rogue)
 "bd" = (
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /mob/living/carbon/human/species/rousman/npc{
 	name = "Spoon Sharpener"
 	},
@@ -121,7 +121,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue)
 "iR" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "jc" = (
 /obj/effect/dungeon_directional_helper/east,
@@ -272,7 +272,7 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "yN" = (
-/turf/closed/mineral/rogue,
+/turf/closed/mineral,
 /area/rogue)
 "zU" = (
 /obj/item/natural/stone{
@@ -287,7 +287,7 @@
 /area/rogue)
 "AF" = (
 /obj/item/grown/log/tree/small,
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "AG" = (
 /obj/structure/gravemarker,
@@ -430,7 +430,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue)
 "IP" = (
-/obj/machinery/light/rogue/firebowl/standing/blue,
+/obj/machinery/light/fueled/firebowl/standing/blue,
 /turf/open/floor/dirt/road,
 /area/rogue)
 "Lx" = (
@@ -456,7 +456,7 @@
 /turf/open/water/swamp,
 /area/rogue)
 "Nr" = (
-/obj/machinery/light/rogue/torchholder/r,
+/obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/naturalstone,
 /area/rogue)
 "NC" = (

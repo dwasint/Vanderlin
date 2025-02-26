@@ -115,7 +115,7 @@
 	appro_skill = /datum/skill/craft/engineering
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/natural/wood/plank)
-	created_item = /obj/item/ammo_casing/caseless/rogue/arrow
+	created_item = /obj/item/ammo_casing/caseless/arrow
 	createmultiple = TRUE
 	createditem_num = 4
 	i_type = "Ammo"
@@ -162,7 +162,7 @@
 	appro_skill = /datum/skill/craft/engineering
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/natural/wood/plank)
-	created_item = /obj/item/ammo_casing/caseless/rogue/bolt
+	created_item = /obj/item/ammo_casing/caseless/bolt
 	createmultiple = TRUE
 	createditem_num = 4
 	i_type = "Ammo"

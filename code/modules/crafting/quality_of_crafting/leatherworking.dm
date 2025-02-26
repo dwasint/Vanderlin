@@ -356,7 +356,7 @@
 		/obj/item/natural/hide/cured = 1,
 		/obj/item/grown/log/tree/small = 1,
 	)
-	output = /obj/item/rogue/instrument/drum
+	output = /obj/item/instrument/drum
 
 /datum/repeatable_crafting_recipe/leather/quiver
 	name = "quiver"

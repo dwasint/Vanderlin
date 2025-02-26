@@ -580,7 +580,7 @@ GLOBAL_LIST_EMPTY(ritualslist)
 /datum/ritual/thecall
 	name = "The Call"
 	circle = "Servantry"
-	center_requirement = /obj/item/bedsheet/rogue
+	center_requirement = /obj/item/bedsheet
 
 	w_req = /obj/item/bodypart/l_leg
 	e_req = /obj/item/bodypart/r_leg

@@ -9,9 +9,9 @@
 /turf/open/floor/naturalstone,
 /area/rogue)
 "aU" = (
-/obj/structure/bed/rogue/hay,
+/obj/structure/bed/hay,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/item/bedsheet/rogue/pelt,
+/obj/item/bedsheet/pelt,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "bi" = (
@@ -57,7 +57,7 @@
 /turf/open/floor/cobble/alt,
 /area/rogue)
 "ev" = (
-/obj/machinery/light/rogue/firebowl/standing,
+/obj/machinery/light/fueled/firebowl/standing,
 /turf/open/floor/cobblerock/alt,
 /area/rogue)
 "fo" = (
@@ -132,13 +132,13 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "iG" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "iH" = (
 /obj/structure/fluff/railing/border{
 	dir = 1
 	},
-/obj/structure/rack/rogue/shelf/big{
+/obj/structure/rack/shelf/big{
 	pixel_y = 0
 	},
 /obj/item/organ/guts{
@@ -213,13 +213,13 @@
 /turf/open/floor/cobblerock,
 /area/rogue)
 "nP" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/effect/spawner/map_spawner/loot/weapon,
 /turf/open/floor/cobble/alt,
 /area/rogue)
 "nS" = (
 /obj/structure/table/wood/plain_alt,
-/obj/machinery/light/rogue/wallfire/candle/r,
+/obj/machinery/light/fueled/wallfire/candle/r,
 /turf/open/floor/cobble/alt,
 /area/rogue)
 "nV" = (
@@ -237,7 +237,7 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "pc" = (
-/obj/machinery/light/rogue/torchholder/c,
+/obj/machinery/light/fueled/torchholder/c,
 /obj/item/ore/iron{
 	pixel_x = 9;
 	pixel_y = 6
@@ -258,7 +258,7 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "pL" = (
-/obj/machinery/light/rogue/oven{
+/obj/machinery/light/fueled/oven{
 	pixel_y = 31
 	},
 /turf/open/floor/ruinedwood/spiral,
@@ -268,7 +268,7 @@
 /turf/open/floor/metal/barograte,
 /area/rogue)
 "qq" = (
-/obj/machinery/light/rogue/smelter,
+/obj/machinery/light/fueled/smelter,
 /turf/open/floor/blocks/paving,
 /area/rogue)
 "qw" = (
@@ -301,7 +301,7 @@
 /turf/open/floor/ruinedwood/darker,
 /area/rogue)
 "rX" = (
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "sx" = (
@@ -334,7 +334,7 @@
 /obj/structure/stairs{
 	dir = 4
 	},
-/obj/machinery/light/rogue/wallfire/candle,
+/obj/machinery/light/fueled/wallfire/candle,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "tO" = (
@@ -350,7 +350,7 @@
 /turf/open/floor/cobble/alt,
 /area/rogue)
 "vk" = (
-/obj/machinery/light/rogue/torchholder/r,
+/obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/concrete,
 /area/rogue)
 "vw" = (
@@ -380,7 +380,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue)
 "wX" = (
-/obj/machinery/light/rogue/wallfire/candle/r,
+/obj/machinery/light/fueled/wallfire/candle/r,
 /turf/open/transparent/openspace,
 /area/rogue)
 "wY" = (
@@ -404,7 +404,7 @@
 /turf/open/water/cleanshallow,
 /area/rogue)
 "yS" = (
-/mob/living/simple_animal/hostile/rogue/skeleton/bow,
+/mob/living/simple_animal/hostile/skeleton/bow,
 /turf/open/floor/concrete,
 /area/rogue)
 "ze" = (
@@ -430,7 +430,7 @@
 /turf/open/floor/cobblerock/alt,
 /area/rogue)
 "AF" = (
-/obj/machinery/light/rogue/campfire,
+/obj/machinery/light/fueled/campfire,
 /turf/open/floor/naturalstone,
 /area/rogue)
 "AM" = (
@@ -477,7 +477,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue)
 "En" = (
-/obj/machinery/light/rogue/lanternpost{
+/obj/machinery/light/fueled/lanternpost{
 	pixel_x = 8;
 	pixel_y = 9
 	},
@@ -499,7 +499,7 @@
 /turf/open/floor/hexstone,
 /area/rogue)
 "Fm" = (
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/blocks/paving,
 /area/rogue)
 "Fn" = (
@@ -509,7 +509,7 @@
 /turf/open/floor/hexstone,
 /area/rogue)
 "Ft" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/ammo_holder/quiver/arrows,
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/long,
 /turf/open/floor/ruinedwood/spiral,
@@ -541,7 +541,7 @@
 /turf/open/floor/cobblerock/alt,
 /area/rogue)
 "HA" = (
-/obj/machinery/light/rogue/firebowl/standing,
+/obj/machinery/light/fueled/firebowl/standing,
 /turf/open/floor/naturalstone,
 /area/rogue)
 "HQ" = (
@@ -581,7 +581,7 @@
 /turf/closed/wall/mineral/wooddark,
 /area/rogue)
 "JT" = (
-/obj/structure/chair/wood/rogue/chair3{
+/obj/structure/chair/wood/alt/chair3{
 	dir = 8
 	},
 /mob/living/carbon/human/species/orc/ambush,
@@ -596,7 +596,7 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "KM" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/clothing/neck/chaincoif/iron,
 /turf/open/floor/ruinedwood/spiralfade,
 /area/rogue)
@@ -665,7 +665,7 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "Ox" = (
-/obj/machinery/light/rogue/wallfire/candle,
+/obj/machinery/light/fueled/wallfire/candle,
 /obj/effect/decal/cleanable/blood/tracks{
 	dir = 9
 	},
@@ -694,7 +694,7 @@
 /obj/structure/table/wood/reinforced_alt{
 	dir = 8
 	},
-/obj/machinery/light/rogue/torchholder/c,
+/obj/machinery/light/fueled/torchholder/c,
 /turf/open/floor/metal/barograte,
 /area/rogue)
 "PR" = (
@@ -705,13 +705,13 @@
 /turf/open/floor/ruinedwood/spiralfade,
 /area/rogue)
 "PT" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/effect/spawner/map_spawner/loot/weapon,
 /turf/open/floor/ruinedwood/spiralfade,
 /area/rogue)
 "Qb" = (
-/obj/machinery/light/rogue/wallfire/candle/l,
-/obj/structure/rack/rogue,
+/obj/machinery/light/fueled/wallfire/candle/l,
+/obj/structure/rack,
 /turf/open/floor/cobble/alt,
 /area/rogue)
 "Qd" = (
@@ -721,7 +721,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue)
 "Qf" = (
-/obj/structure/chair/wood/rogue/chair3,
+/obj/structure/chair/wood/alt/chair3,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/ruinedwood/spiralfade,
 /area/rogue)
@@ -759,8 +759,8 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "RC" = (
-/obj/structure/bed/rogue/wooldouble,
-/obj/item/bedsheet/rogue/double_pelt,
+/obj/structure/bed/wooldouble,
+/obj/item/bedsheet/double_pelt,
 /turf/open/floor/ruinedwood/darker,
 /area/rogue)
 "RL" = (
@@ -797,11 +797,11 @@
 /turf/open/floor/ruinedwood/darker,
 /area/rogue)
 "Tu" = (
-/obj/item/roguebin/water/gross,
+/obj/item/bin/water/gross,
 /turf/open/floor/blocks/paving,
 /area/rogue)
 "Ur" = (
-/obj/machinery/light/rogue/forge,
+/obj/machinery/light/fueled/forge,
 /turf/open/floor/blocks/paving,
 /area/rogue)
 "Uv" = (
@@ -809,7 +809,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue)
 "UZ" = (
-/obj/machinery/light/rogue/wallfire/candle/l,
+/obj/machinery/light/fueled/wallfire/candle/l,
 /obj/structure/table/wood,
 /obj/item/clothing/face/skullmask,
 /turf/open/floor/ruinedwood/darker,
@@ -851,12 +851,12 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "Wr" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/effect/spawner/map_spawner/loot/armor,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "WC" = (
-/obj/machinery/light/rogue/campfire/densefire,
+/obj/machinery/light/fueled/campfire/densefire,
 /turf/open/floor/naturalstone,
 /area/rogue)
 "WV" = (
@@ -884,7 +884,7 @@
 /obj/structure/fluff/railing/wood{
 	dir = 4
 	},
-/obj/structure/chair/wood/rogue/chair3,
+/obj/structure/chair/wood/alt/chair3,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "YU" = (

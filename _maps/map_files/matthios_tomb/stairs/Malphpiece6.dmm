@@ -3,22 +3,22 @@
 /turf/open/floor/cobblerock/alt,
 /area/rogue/outdoors/caves)
 "d" = (
-/obj/machinery/light/rogue/wallfire/candle/l,
+/obj/machinery/light/fueled/wallfire/candle/l,
 /turf/open/floor/cobblerock/alt,
 /area/rogue/outdoors/caves)
 "m" = (
-/obj/machinery/light/rogue/wallfire/candle/blue/l,
+/obj/machinery/light/fueled/wallfire/candle/blue/l,
 /turf/open/floor/cobblerock/alt,
 /area/rogue/outdoors/caves)
 "n" = (
 /turf/closed/wall/mineral/stone/moss,
 /area/rogue/outdoors/caves)
 "v" = (
-/obj/machinery/light/rogue/wallfire/candle/r,
+/obj/machinery/light/fueled/wallfire/candle/r,
 /turf/open/floor/cobblerock/alt,
 /area/rogue/outdoors/caves)
 "w" = (
-/obj/machinery/light/rogue/wallfire/candle/blue/r,
+/obj/machinery/light/fueled/wallfire/candle/blue/r,
 /turf/open/floor/cobblerock/alt,
 /area/rogue/outdoors/caves)
 "M" = (
@@ -26,7 +26,7 @@
 /turf/open/floor/cobblerock/alt,
 /area/rogue/outdoors/caves)
 "S" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/outdoors/caves)
 
 (1,1,1) = {"

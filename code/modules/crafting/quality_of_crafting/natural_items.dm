@@ -38,7 +38,7 @@
 
 	starting_atom = /obj/item/natural/thorn
 	attacking_atom = /obj/item/grown/log/tree/stick
-	output = /obj/item/ammo_casing/caseless/rogue/dart
+	output = /obj/item/ammo_casing/caseless/dart
 	craftdiff = 0
 	uses_attacking_atom = TRUE
 

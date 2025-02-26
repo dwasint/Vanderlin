@@ -4,8 +4,8 @@
 /turf/open/floor/grass,
 /area/rogue)
 "bf" = (
-/obj/structure/rack/rogue/shelf,
-/obj/structure/rack/rogue/shelf/biggest,
+/obj/structure/rack/shelf,
+/obj/structure/rack/shelf/biggest,
 /obj/item/reagent_containers/glass/cup{
 	pixel_y = 14;
 	pixel_x = -7
@@ -41,7 +41,7 @@
 /area/rogue)
 "dc" = (
 /obj/structure/ladder,
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/wood,
 /area/rogue)
 "gg" = (
@@ -69,7 +69,7 @@
 /turf/open/transparent/openspace,
 /area/rogue)
 "jn" = (
-/obj/machinery/light/rogue/hearth,
+/obj/machinery/light/fueled/hearth,
 /obj/item/reagent_containers/glass/bucket/pot/copper,
 /turf/open/floor/blocks,
 /area/rogue)
@@ -155,8 +155,8 @@
 /turf/open/floor/wood,
 /area/rogue)
 "oi" = (
-/obj/structure/bed/rogue/mediocre,
-/obj/item/bedsheet/rogue/pelt,
+/obj/structure/bed/mediocre,
+/obj/item/bedsheet/pelt,
 /turf/open/floor/carpet,
 /area/rogue)
 "oS" = (
@@ -200,7 +200,7 @@
 /turf/open/floor/grass,
 /area/rogue)
 "tQ" = (
-/obj/machinery/light/rogue/torchholder/r,
+/obj/machinery/light/fueled/torchholder/r,
 /obj/structure/closet/crate/chest/wicker,
 /obj/item/natural/chaff/wheat,
 /obj/item/natural/chaff/wheat,
@@ -212,7 +212,7 @@
 /turf/open/floor/blocks,
 /area/rogue)
 "uV" = (
-/obj/structure/rack/rogue/shelf,
+/obj/structure/rack/shelf,
 /obj/structure/bookcase/random_recipes,
 /turf/open/floor/wood,
 /area/rogue)
@@ -259,7 +259,7 @@
 /turf/open/floor/cobble,
 /area/rogue)
 "BR" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "Ct" = (
 /obj/structure/fluff/railing/wood{
@@ -277,8 +277,8 @@
 /turf/open/floor/wood,
 /area/rogue)
 "Ht" = (
-/obj/machinery/light/rogue/torchholder/c,
-/obj/item/roguebin/water,
+/obj/machinery/light/fueled/torchholder/c,
+/obj/item/bin/water,
 /turf/open/floor/grass,
 /area/rogue)
 "Io" = (
@@ -298,7 +298,7 @@
 /turf/open/floor/grass,
 /area/rogue)
 "Ml" = (
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/blocks,
 /area/rogue)
 "NP" = (

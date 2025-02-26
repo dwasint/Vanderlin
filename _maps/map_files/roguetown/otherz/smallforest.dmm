@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/outdoors/river)
 "ab" = (
 /turf/open/floor/cobblerock,
@@ -35,7 +35,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods)
 "aj" = (
-/turf/closed/mineral/random/rogue/high,
+/turf/closed/mineral/random/high,
 /area/rogue/under/town/caverogue)
 "ak" = (
 /obj/structure/flora/newtree,
@@ -49,7 +49,7 @@
 /turf/open/water/cleanshallow,
 /area/rogue/outdoors/river)
 "an" = (
-/turf/closed/mineral/rogue/salt,
+/turf/closed/mineral/salt,
 /area/rogue/outdoors/river)
 "ao" = (
 /obj/structure/flora/newtree,
@@ -124,7 +124,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/river)
 "aJ" = (
-/obj/machinery/light/rogue/firebowl/stump,
+/obj/machinery/light/fueled/firebowl/stump,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/river)
 "aK" = (
@@ -169,7 +169,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/river)
 "cL" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/outdoors/woods)
 "cP" = (
 /obj/item/rope,
@@ -188,7 +188,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/woods)
 "dI" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/outdoors/woods)
 "fk" = (
 /turf/closed/wall/mineral/wooddark,
@@ -210,7 +210,7 @@
 "fZ" = (
 /obj/structure/flora/newtree,
 /obj/structure/flora/newtree,
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/outdoors/woods)
 "gb" = (
 /turf/closed/wall/mineral/tent,
@@ -222,7 +222,7 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors/woods)
 "gI" = (
-/obj/structure/bed/rogue/hay,
+/obj/structure/bed/hay,
 /turf/open/floor/twig,
 /area/rogue/indoors)
 "hD" = (
@@ -266,7 +266,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/woods)
 "lQ" = (
-/turf/closed/mineral/random/rogue/med,
+/turf/closed/mineral/random/med,
 /area/rogue/outdoors/woods)
 "mI" = (
 /obj/structure/stairs{
@@ -275,7 +275,7 @@
 /turf/open/transparent/openspace,
 /area/rogue/indoors)
 "mS" = (
-/obj/structure/chair/wood/rogue{
+/obj/structure/chair/wood/alt{
 	dir = 1
 	},
 /turf/open/floor/dirt,
@@ -320,7 +320,7 @@
 /turf/open/floor/grass,
 /area/rogue/indoors)
 "ru" = (
-/obj/machinery/light/rogue/firebowl/stump,
+/obj/machinery/light/fueled/firebowl/stump,
 /turf/open/floor/grass,
 /area/rogue/outdoors/woods)
 "rB" = (
@@ -334,7 +334,7 @@
 /area/rogue/indoors)
 "sk" = (
 /obj/structure/flora/newtree,
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/outdoors/woods)
 "sN" = (
 /turf/open/floor/grass,
@@ -351,7 +351,7 @@
 /turf/closed/wall/mineral/tent,
 /area/rogue/indoors)
 "uw" = (
-/obj/machinery/light/rogue/torchholder{
+/obj/machinery/light/fueled/torchholder{
 	pixel_y = 26
 	},
 /turf/open/floor/dirt,
@@ -422,18 +422,18 @@
 /turf/open/floor/dirt,
 /area/rogue/indoors)
 "Cd" = (
-/obj/structure/rack/rogue/shelf/notdense,
+/obj/structure/rack/shelf/notdense,
 /turf/open/floor/twig,
 /area/rogue/outdoors/river)
 "Cw" = (
 /turf/open/floor/twig,
 /area/rogue/outdoors/river)
 "CD" = (
-/obj/effect/landmark/mapGenerator/rogue/forest{
+/obj/effect/landmark/mapGenerator/forest{
 	endTurfX = 128;
 	endTurfY = 128
 	},
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/outdoors/river)
 "CN" = (
 /obj/structure/fluff/traveltile/bandit{
@@ -443,7 +443,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/under/town/caverogue)
 "DK" = (
-/obj/machinery/light/rogue/firebowl/stump,
+/obj/machinery/light/fueled/firebowl/stump,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/river)
 "DR" = (
@@ -455,11 +455,11 @@
 /turf/closed/wall/mineral/wooddark,
 /area/rogue/outdoors/woods)
 "Ep" = (
-/obj/machinery/light/rogue/firebowl/stump,
+/obj/machinery/light/fueled/firebowl/stump,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/woods)
 "FT" = (
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/woods)
 "Gm" = (
@@ -489,7 +489,7 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors/woods)
 "IW" = (
-/obj/machinery/light/rogue/firebowl/stump,
+/obj/machinery/light/fueled/firebowl/stump,
 /turf/open/floor/cobble,
 /area/rogue/outdoors/river)
 "IZ" = (
@@ -523,7 +523,7 @@
 /area/rogue/outdoors/woods)
 "LN" = (
 /obj/structure/flora/newtree,
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/outdoors/river)
 "Mp" = (
 /obj/structure/fluff/railing/wood{
@@ -533,7 +533,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods)
 "Ms" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/under/town/caverogue)
 "Nb" = (
 /turf/open/floor/cobble,
@@ -545,7 +545,7 @@
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/woods)
 "NV" = (
-/obj/machinery/light/rogue/firebowl/stump,
+/obj/machinery/light/fueled/firebowl/stump,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods)
 "Ob" = (
@@ -576,7 +576,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/woods)
 "Qf" = (
-/obj/structure/bed/rogue/shit,
+/obj/structure/bed/shit,
 /turf/open/floor/twig,
 /area/rogue/outdoors/river)
 "QV" = (
@@ -591,7 +591,7 @@
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/woods)
 "RU" = (
-/turf/closed/mineral/random/rogue/med,
+/turf/closed/mineral/random/med,
 /area/rogue/under/town/caverogue)
 "Sh" = (
 /obj/structure/fluff/railing/border{
@@ -646,7 +646,7 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors/woods)
 "XR" = (
-/obj/structure/chair/wood/rogue{
+/obj/structure/chair/wood/alt{
 	dir = 4
 	},
 /turf/open/floor/ruinedwood{
@@ -662,7 +662,7 @@
 	},
 /area/rogue/indoors)
 "ZU" = (
-/obj/machinery/light/rogue/firebowl/stump,
+/obj/machinery/light/fueled/firebowl/stump,
 /turf/open/floor/grass,
 /area/rogue/outdoors/river)
 

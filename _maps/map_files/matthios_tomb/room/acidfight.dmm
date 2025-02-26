@@ -64,7 +64,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue)
 "u" = (
-/obj/structure/bed/rogue/shit,
+/obj/structure/bed/shit,
 /turf/open/floor/metal/barograte,
 /area/rogue)
 "v" = (
@@ -186,7 +186,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue)
 "W" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "X" = (
 /obj/structure/fluff/walldeco/chains,
@@ -194,20 +194,20 @@
 /turf/open/transparent/openspace,
 /area/rogue)
 "Y" = (
-/obj/item/ammo_casing/caseless/rogue/bolt{
+/obj/item/ammo_casing/caseless/bolt{
 	pixel_x = -9
 	},
-/obj/item/ammo_casing/caseless/rogue/bolt{
+/obj/item/ammo_casing/caseless/bolt{
 	pixel_y = 11
 	},
-/obj/item/ammo_casing/caseless/rogue/bolt{
+/obj/item/ammo_casing/caseless/bolt{
 	pixel_y = 10;
 	pixel_x = -25
 	},
-/obj/item/ammo_casing/caseless/rogue/bolt{
+/obj/item/ammo_casing/caseless/bolt{
 	pixel_y = -16
 	},
-/obj/item/ammo_casing/caseless/rogue/bolt{
+/obj/item/ammo_casing/caseless/bolt{
 	pixel_x = 11
 	},
 /turf/open/floor/metal/barograte,

@@ -21,7 +21,7 @@
 /turf/closed/wall/mineral/wood,
 /area/rogue/indoors/shelter/bog)
 "g" = (
-/obj/machinery/light/rogue/campfire,
+/obj/machinery/light/fueled/campfire,
 /turf/open/floor/grass,
 /area/rogue/outdoors/bog)
 "h" = (
@@ -34,7 +34,7 @@
 	},
 /area/rogue/indoors/shelter/bog)
 "i" = (
-/obj/structure/chair/wood/rogue/chair3{
+/obj/structure/chair/wood/alt/chair3{
 	dir = 8
 	},
 /turf/open/floor/ruinedwood{
@@ -42,7 +42,7 @@
 	},
 /area/rogue/indoors/shelter/bog)
 "j" = (
-/obj/structure/chair/wood/rogue/chair3{
+/obj/structure/chair/wood/alt/chair3{
 	dir = 1
 	},
 /turf/open/floor/ruinedwood{
@@ -80,7 +80,7 @@
 	},
 /area/rogue/indoors/shelter/bog)
 "p" = (
-/obj/machinery/light/rogue/hearth,
+/obj/machinery/light/fueled/hearth,
 /obj/effect/decal/cleanable/dirt/cobweb{
 	icon_state = "cobweb2"
 	},
@@ -104,7 +104,7 @@
 	},
 /area/rogue/indoors/shelter/bog)
 "s" = (
-/obj/structure/bed/rogue/shit,
+/obj/structure/bed/shit,
 /turf/open/floor/ruinedwood{
 	icon_state = "weird1"
 	},

@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/closed/mineral/rogue,
+/turf/closed/mineral,
 /area/rogue)
 "b" = (
 /obj/item/clothing/pants/chainlegs/iron,
@@ -11,11 +11,11 @@
 /turf/open/floor/naturalstone,
 /area/rogue)
 "f" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "g" = (
 /obj/structure/spider/stickyweb,
-/turf/closed/mineral/rogue,
+/turf/closed/mineral,
 /area/rogue)
 "h" = (
 /obj/structure/spider/stickyweb,
@@ -177,7 +177,7 @@
 /area/rogue)
 "Y" = (
 /obj/effect/decal/remains/human,
-/turf/closed/mineral/rogue,
+/turf/closed/mineral,
 /area/rogue)
 "Z" = (
 /turf/open/transparent/openspace,

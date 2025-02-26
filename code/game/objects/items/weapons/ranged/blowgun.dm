@@ -77,7 +77,7 @@
 		M.update_inv_hands()
 
 /obj/item/ammo_box/magazine/internal/shot/blowgun
-	ammo_type = /obj/item/ammo_casing/caseless/rogue/dart
+	ammo_type = /obj/item/ammo_casing/caseless/dart
 	caliber = "dart"
 	max_ammo = 1
 	start_empty = TRUE

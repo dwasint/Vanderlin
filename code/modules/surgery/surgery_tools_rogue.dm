@@ -135,8 +135,8 @@
 	if(!istype(user.a_intent, /datum/intent/use))
 		return ..()
 	var/heating = 0
-	if(istype(A, /obj/machinery/light/rogue))
-		var/obj/machinery/light/rogue/forge = A
+	if(istype(A, /obj/machinery/light/fueled))
+		var/obj/machinery/light/fueled/forge = A
 		if(forge.on)
 			heating = 20
 	if(heating)

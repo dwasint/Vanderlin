@@ -2,7 +2,7 @@
 "ab" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/machinery/light/rogue/wallfire/candle/blue{
+/obj/machinery/light/fueled/wallfire/candle/blue{
 	pixel_y = -32
 	},
 /turf/open/floor/concrete,
@@ -13,7 +13,7 @@
 /turf/open/floor/cobble/mossy,
 /area/rogue/under/cavelava)
 "as" = (
-/obj/machinery/light/rogue/torchholder{
+/obj/machinery/light/fueled/torchholder{
 	dir = 4
 	},
 /turf/open/floor/tile,
@@ -106,13 +106,13 @@
 	pixel_x = -14;
 	pixel_y = -27
 	},
-/turf/closed/mineral/random/rogue/med,
+/turf/closed/mineral/random/med,
 /area/rogue/outdoors/mountains/decap)
 "cy" = (
 /turf/open/lava,
 /area/rogue/under/cavelava)
 "cB" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/item/clothing/armor/cuirass/iron/rust,
 /turf/open/floor/herringbone,
@@ -151,7 +151,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/mountains/decap)
 "du" = (
-/obj/effect/landmark/mapGenerator/rogue/decap{
+/obj/effect/landmark/mapGenerator/decap{
 	endTurfX = 128;
 	endTurfY = 128
 	},
@@ -159,7 +159,7 @@
 /area/rogue/outdoors/mountains/decap)
 "dG" = (
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/machinery/light/rogue/wallfire/candle/blue,
+/obj/machinery/light/fueled/wallfire/candle/blue,
 /turf/open/floor/blocks,
 /area/rogue/under/cavelava)
 "dX" = (
@@ -280,7 +280,7 @@
 "gm" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/blood,
-/obj/machinery/light/rogue/wallfire/candle/r,
+/obj/machinery/light/fueled/wallfire/candle/r,
 /turf/open/floor/greenstone,
 /area/rogue/under/cavelava)
 "go" = (
@@ -310,11 +310,11 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/mountains/deception)
 "gV" = (
-/obj/effect/landmark/mapGenerator/rogue/mountain{
+/obj/effect/landmark/mapGenerator/mountain{
 	endTurfX = 155;
 	endTurfY = 155
 	},
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/outdoors/mountains/deception)
 "gY" = (
 /turf/open/floor/cobblerock,
@@ -328,12 +328,12 @@
 	pixel_y = -29;
 	pixel_x = 9
 	},
-/turf/closed/mineral/random/rogue/med,
+/turf/closed/mineral/random/med,
 /area/rogue/outdoors/mountains/decap)
 "hd" = (
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/rack/rogue/shelf/biggest,
-/obj/structure/rack/rogue/shelf,
+/obj/structure/rack/shelf/biggest,
+/obj/structure/rack/shelf,
 /obj/item/reagent_containers/glass/bottle/elfblue,
 /turf/open/floor/greenstone,
 /area/rogue/under/cavelava)
@@ -342,7 +342,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/under/cavelava)
 "ho" = (
-/obj/machinery/light/rogue/firebowl/standing,
+/obj/machinery/light/fueled/firebowl/standing,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/dirt,
 /area/rogue/under/cavelava)
@@ -357,12 +357,12 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/caves)
 "hw" = (
-/obj/machinery/light/rogue/campfire/densefire,
+/obj/machinery/light/fueled/campfire/densefire,
 /turf/open/floor/naturalstone,
 /area/rogue/outdoors/mountains)
 "hB" = (
-/obj/structure/bed/rogue/inn/double,
-/obj/item/bedsheet/rogue/fabric_double,
+/obj/structure/bed/inn/double,
+/obj/item/bedsheet/fabric_double,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/carpet/red,
 /area/rogue/under/cavelava)
@@ -392,7 +392,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/outdoors/mountains)
 "ig" = (
-/obj/machinery/light/rogue/torchholder{
+/obj/machinery/light/fueled/torchholder{
 	dir = 4
 	},
 /obj/structure/table/wood/plain,
@@ -450,22 +450,22 @@
 /area/rogue/indoors/town/dwarfin)
 "jz" = (
 /obj/structure/bookcase,
-/obj/item/book/rogue/yeoldecookingmanual,
-/obj/item/book/rogue/magicaltheory,
-/obj/item/book/rogue/nitebeast,
-/obj/item/book/rogue/noc,
-/obj/item/book/rogue/secret/xylix,
-/obj/item/book/rogue/magicaltheory,
-/obj/item/book/rogue/godofdreamsandnightmares,
-/obj/item/book/rogue/knowledge1,
-/obj/item/book/rogue/bibble,
-/obj/item/book/rogue/arcyne,
+/obj/item/book/yeoldecookingmanual,
+/obj/item/book/magicaltheory,
+/obj/item/book/nitebeast,
+/obj/item/book/noc,
+/obj/item/book/secret/xylix,
+/obj/item/book/magicaltheory,
+/obj/item/book/godofdreamsandnightmares,
+/obj/item/book/knowledge1,
+/obj/item/book/bibble,
+/obj/item/book/arcyne,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/concrete,
 /area/rogue/under/cavelava)
 "jE" = (
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/reagent_containers/glass/bottle/manapot,
 /obj/item/reagent_containers/glass/bottle/manapot,
 /turf/open/floor/cobble,
@@ -487,19 +487,19 @@
 /area/rogue/outdoors/mountains/decap)
 "kq" = (
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/machinery/light/rogue/cauldron,
+/obj/machinery/light/fueled/cauldron,
 /turf/open/floor/greenstone,
 /area/rogue/under/cavelava)
 "ky" = (
-/obj/machinery/light/rogue/torchholder,
+/obj/machinery/light/fueled/torchholder,
 /turf/closed/wall/mineral/stonebrick,
 /area/rogue/outdoors/caves)
 "kG" = (
-/obj/item/ammo_casing/caseless/rogue/dart,
+/obj/item/ammo_casing/caseless/dart,
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue/indoors/town/dwarfin)
 "kI" = (
-/obj/machinery/light/rogue/firebowl,
+/obj/machinery/light/fueled/firebowl,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/caves)
 "kM" = (
@@ -520,9 +520,9 @@
 /area/rogue/outdoors/mountains/decap)
 "lq" = (
 /obj/structure/table/wood/reinforced,
-/obj/item/book/rogue/advice_farming,
+/obj/item/book/advice_farming,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/machinery/light/rogue/wallfire/candle/l,
+/obj/machinery/light/fueled/wallfire/candle/l,
 /turf/open/floor/concrete,
 /area/rogue/under/cavelava)
 "lz" = (
@@ -530,11 +530,11 @@
 /turf/open/floor/dirt,
 /area/rogue/under/cavelava)
 "lH" = (
-/obj/machinery/light/rogue/torchholder,
+/obj/machinery/light/fueled/torchholder,
 /turf/closed/wall/mineral/stone,
 /area/rogue/outdoors/mountains/decap)
 "lJ" = (
-/obj/machinery/light/rogue/lanternpost,
+/obj/machinery/light/fueled/lanternpost,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/mountains/decap)
 "lN" = (
@@ -576,7 +576,7 @@
 /area/rogue/indoors/town/dwarfin)
 "mz" = (
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/machinery/light/rogue/wallfire/candle/r,
+/obj/machinery/light/fueled/wallfire/candle/r,
 /turf/open/floor/herringbone,
 /area/rogue/under/cavelava)
 "mG" = (
@@ -587,7 +587,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/cavelava)
 "mH" = (
-/obj/machinery/light/rogue/lanternpost{
+/obj/machinery/light/fueled/lanternpost{
 	dir = 1
 	},
 /turf/open/floor/cobblerock,
@@ -610,7 +610,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/mountains/decap)
 "ne" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/gem/diamond,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/concrete,
@@ -619,7 +619,7 @@
 /turf/open/floor/dirt/ambush,
 /area/rogue/under/cavelava)
 "nz" = (
-/turf/closed/mineral/random/rogue/high,
+/turf/closed/mineral/random/high,
 /area/rogue/under/cavelava)
 "nA" = (
 /obj/item/reagent_containers/glass/cup/wooden/crafted,
@@ -632,7 +632,7 @@
 /turf/open/floor/blocks,
 /area/rogue/under/cavelava)
 "nE" = (
-/obj/machinery/light/rogue/torchholder{
+/obj/machinery/light/fueled/torchholder{
 	dir = 4
 	},
 /turf/open/floor/dirt/road,
@@ -664,7 +664,7 @@
 /turf/open/floor/herringbone,
 /area/rogue/under/cavelava)
 "oc" = (
-/turf/closed/mineral/random/rogue/med,
+/turf/closed/mineral/random/med,
 /area/rogue/outdoors/caves)
 "oh" = (
 /obj/effect/decal/cleanable/dirt/dust,
@@ -673,7 +673,7 @@
 /turf/open/floor/greenstone,
 /area/rogue/under/cavelava)
 "oj" = (
-/obj/item/ammo_casing/caseless/rogue/dart,
+/obj/item/ammo_casing/caseless/dart,
 /turf/open/floor/dirt/road,
 /area/rogue/indoors/town/dwarfin)
 "oo" = (
@@ -681,11 +681,11 @@
 /turf/open/floor/naturalstone,
 /area/rogue/under/cavelava)
 "or" = (
-/obj/structure/bed/rogue/sleepingbag,
+/obj/structure/bed/sleepingbag,
 /turf/open/floor/naturalstone,
 /area/rogue/outdoors/mountains)
 "oG" = (
-/obj/machinery/light/rogue/firebowl/stump,
+/obj/machinery/light/fueled/firebowl/stump,
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/mountains/deception)
 "oH" = (
@@ -709,7 +709,7 @@
 /turf/open/water/cleanshallow,
 /area/rogue/outdoors/mountains/deception)
 "pt" = (
-/turf/closed/mineral/random/rogue/med,
+/turf/closed/mineral/random/med,
 /area/rogue/outdoors/mountains/decap)
 "pv" = (
 /obj/structure/table/wood/plain,
@@ -727,7 +727,7 @@
 /turf/open/floor/blocks,
 /area/rogue/under/cavelava)
 "pM" = (
-/obj/machinery/light/rogue/firebowl/standing,
+/obj/machinery/light/fueled/firebowl/standing,
 /turf/open/floor/hexstone,
 /area/rogue/outdoors/mountains/decap)
 "pO" = (
@@ -735,7 +735,7 @@
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue/indoors/town/dwarfin)
 "pV" = (
-/obj/item/ammo_casing/caseless/rogue/dart,
+/obj/item/ammo_casing/caseless/dart,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/caves)
 "pX" = (
@@ -750,8 +750,8 @@
 /turf/open/floor/tile/kitchen,
 /area/rogue/under/cavelava)
 "qk" = (
-/obj/effect/landmark/mapGenerator/rogue/decap,
-/turf/closed/mineral/rogue/bedrock,
+/obj/effect/landmark/mapGenerator/decap,
+/turf/closed/mineral/bedrock,
 /area/rogue/under/cavelava)
 "qp" = (
 /mob/living/carbon/human/species/skeleton/npc/warrior/skilled,
@@ -767,7 +767,7 @@
 /area/rogue/outdoors/mountains/deception)
 "qI" = (
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/machinery/light/rogue/wallfire/candle/blue,
+/obj/machinery/light/fueled/wallfire/candle/blue,
 /turf/open/floor/concrete,
 /area/rogue/under/cavelava)
 "qO" = (
@@ -779,20 +779,20 @@
 /turf/open/floor/naturalstone,
 /area/rogue/outdoors/mountains/deception)
 "ri" = (
-/obj/machinery/light/rogue/firebowl/standing,
+/obj/machinery/light/fueled/firebowl/standing,
 /turf/open/floor/dirt,
 /area/rogue/under/cavelava)
 "rD" = (
-/turf/closed/mineral/random/rogue,
+/turf/closed/mineral/random,
 /area/rogue/outdoors/mountains/decap)
 "rN" = (
-/obj/machinery/light/rogue/firebowl,
+/obj/machinery/light/fueled/firebowl,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/caves)
 "rO" = (
 /mob/living/simple_animal/hostile/retaliate/spider/mutated,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/machinery/light/rogue/wallfire/candle/blue,
+/obj/machinery/light/fueled/wallfire/candle/blue,
 /turf/open/floor/cobble,
 /area/rogue/under/cavelava)
 "rV" = (
@@ -839,7 +839,7 @@
 /area/rogue/outdoors/caves)
 "sr" = (
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/machinery/light/rogue/wallfire/candle/blue,
+/obj/machinery/light/fueled/wallfire/candle/blue,
 /turf/open/floor/cobble,
 /area/rogue/under/cavelava)
 "su" = (
@@ -876,7 +876,7 @@
 /turf/closed/wall/mineral/stonebrick,
 /area/rogue/outdoors/caves)
 "tz" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/outdoors/mountains/deception)
 "tL" = (
 /obj/structure/fluff/railing/stonehedge,
@@ -899,8 +899,8 @@
 /turf/open/water/swamp/deep,
 /area/rogue/outdoors/mountains/decap)
 "ug" = (
-/obj/effect/landmark/mapGenerator/rogue/cave/lava,
-/turf/closed/mineral/rogue/bedrock,
+/obj/effect/landmark/mapGenerator/cave/lava,
+/turf/closed/mineral/bedrock,
 /area/rogue/under/cavelava)
 "up" = (
 /mob/living/simple_animal/hostile/retaliate/spider,
@@ -908,11 +908,11 @@
 /area/rogue/under/cavelava)
 "uA" = (
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/machinery/light/rogue/wallfire/candle/l,
+/obj/machinery/light/fueled/wallfire/candle/l,
 /turf/open/floor/cobble,
 /area/rogue/under/cavelava)
 "uE" = (
-/obj/machinery/light/rogue/firebowl/standing,
+/obj/machinery/light/fueled/firebowl/standing,
 /obj/structure/bars,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/mountains/decap)
@@ -958,11 +958,11 @@
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue/indoors/town/dwarfin)
 "wH" = (
-/obj/machinery/light/rogue/torchholder{
+/obj/machinery/light/fueled/torchholder{
 	dir = 8
 	},
-/obj/structure/bed/rogue/sleepingbag,
-/obj/structure/bed/rogue/sleepingbag,
+/obj/structure/bed/sleepingbag,
+/obj/structure/bed/sleepingbag,
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue/outdoors/caves)
 "wR" = (
@@ -976,7 +976,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/outdoors/mountains)
 "wW" = (
-/obj/machinery/light/rogue/wallfire/candle/l,
+/obj/machinery/light/fueled/wallfire/candle/l,
 /turf/open/floor/dirt,
 /area/rogue/under/cavelava)
 "wX" = (
@@ -1009,7 +1009,7 @@
 /turf/open/floor/blocks,
 /area/rogue/under/cavelava)
 "xO" = (
-/turf/closed/mineral/random/rogue/high,
+/turf/closed/mineral/random/high,
 /area/rogue/outdoors/caves)
 "xT" = (
 /obj/item/recipe_book/survival,
@@ -1078,7 +1078,7 @@
 /turf/open/floor/ruinedwood,
 /area/rogue/outdoors/mountains/deception)
 "zy" = (
-/obj/structure/bed/rogue/hay,
+/obj/structure/bed/hay,
 /turf/open/floor/cobble/mossy,
 /area/rogue/outdoors/mountains/decap)
 "zE" = (
@@ -1095,7 +1095,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/mountains/deception)
 "Aa" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/under/cavelava)
 "Ad" = (
 /obj/effect/decal/cleanable/dirt/dust,
@@ -1110,7 +1110,7 @@
 /area/rogue/outdoors/mountains/decap)
 "Aq" = (
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/machinery/light/rogue/wallfire/candle/l,
+/obj/machinery/light/fueled/wallfire/candle/l,
 /turf/open/floor/greenstone,
 /area/rogue/under/cavelava)
 "Az" = (
@@ -1128,7 +1128,7 @@
 /obj/structure/closet/crate/crafted_closet/dark,
 /obj/item/clothing/armor/chainmail,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/machinery/light/rogue/wallfire/candle/l,
+/obj/machinery/light/fueled/wallfire/candle/l,
 /turf/open/floor/wood/nosmooth,
 /area/rogue/under/cavelava)
 "AK" = (
@@ -1152,7 +1152,7 @@
 /turf/open/floor/greenstone,
 /area/rogue/under/cavelava)
 "Bs" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/outdoors/caves)
 "Bv" = (
 /obj/structure/handcart,
@@ -1173,7 +1173,7 @@
 /turf/open/floor/tile/kitchen,
 /area/rogue/under/cavelava)
 "Ck" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/clothing/neck/talkstone,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/concrete,
@@ -1191,7 +1191,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/caves)
 "CW" = (
-/obj/machinery/light/rogue/firebowl/stump,
+/obj/machinery/light/fueled/firebowl/stump,
 /turf/open/floor/naturalstone,
 /area/rogue/outdoors/mountains/deception)
 "Dh" = (
@@ -1225,7 +1225,7 @@
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/caves)
 "DM" = (
-/obj/machinery/light/rogue/firebowl/standing,
+/obj/machinery/light/fueled/firebowl/standing,
 /turf/open/floor/hexstone,
 /area/rogue/under/cavelava)
 "DN" = (
@@ -1321,7 +1321,7 @@
 /turf/open/floor/hexstone,
 /area/rogue/under/cavelava)
 "GL" = (
-/obj/machinery/light/rogue/lanternpost,
+/obj/machinery/light/fueled/lanternpost,
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/mountains/decap)
 "GM" = (
@@ -1417,7 +1417,7 @@
 /area/rogue/outdoors/mountains)
 "IH" = (
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/machinery/light/rogue/wallfire/candle/r,
+/obj/machinery/light/fueled/wallfire/candle/r,
 /turf/open/floor/cobble,
 /area/rogue/under/cavelava)
 "II" = (
@@ -1430,7 +1430,7 @@
 /obj/item/alch/feaudust,
 /obj/item/alch/earthdust,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/machinery/light/rogue/wallfire/candle/blue,
+/obj/machinery/light/fueled/wallfire/candle/blue,
 /turf/open/floor/herringbone,
 /area/rogue/under/cavelava)
 "IJ" = (
@@ -1471,7 +1471,7 @@
 /turf/open/floor/cobble/mossy,
 /area/rogue/under/cavelava)
 "Jh" = (
-/turf/closed/mineral/rogue/copper,
+/turf/closed/mineral/copper,
 /area/rogue/under/cavelava)
 "Jk" = (
 /turf/closed/wall/mineral/stone,
@@ -1481,7 +1481,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/caves)
 "JK" = (
-/obj/item/ammo_casing/caseless/rogue/arrow/stone,
+/obj/item/ammo_casing/caseless/arrow/stone,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/caves)
 "JL" = (
@@ -1523,7 +1523,7 @@
 /turf/open/floor/hexstone,
 /area/rogue/outdoors/mountains/decap)
 "KV" = (
-/obj/machinery/light/rogue/campfire,
+/obj/machinery/light/fueled/campfire,
 /turf/open/floor/dirt/road,
 /area/rogue/under/cavelava)
 "KZ" = (
@@ -1556,7 +1556,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/mountains/decap)
 "LF" = (
-/obj/item/ammo_casing/caseless/rogue/arrow/stone,
+/obj/item/ammo_casing/caseless/arrow/stone,
 /turf/open/floor/dirt/road,
 /area/rogue/indoors/town/dwarfin)
 "LG" = (
@@ -1565,7 +1565,7 @@
 /area/rogue/outdoors/mountains/decap)
 "LT" = (
 /mob/living/carbon/human/species/skeleton/npc/warrior/skilled,
-/obj/structure/chair/wood/rogue/fancy{
+/obj/structure/chair/wood/alt/fancy{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt/dust,
@@ -1587,12 +1587,12 @@
 /turf/open/floor/wood/nosmooth,
 /area/rogue/under/cavelava)
 "Mn" = (
-/obj/item/ammo_casing/caseless/rogue/arrow/stone,
+/obj/item/ammo_casing/caseless/arrow/stone,
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/caves)
 "MC" = (
-/obj/structure/rack/rogue/shelf/biggest,
-/obj/structure/rack/rogue/shelf,
+/obj/structure/rack/shelf/biggest,
+/obj/structure/rack/shelf,
 /obj/item/statue/gold,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/herringbone,
@@ -1643,7 +1643,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/mountains/decap)
 "NO" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/item/clothing/neck/gorget/hoplite,
 /turf/open/floor/herringbone,
@@ -1658,7 +1658,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/outdoors/mountains)
 "OM" = (
-/obj/machinery/light/rogue/cauldron,
+/obj/machinery/light/fueled/cauldron,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/herringbone,
 /area/rogue/under/cavelava)
@@ -1684,11 +1684,11 @@
 /area/rogue/under/cavelava)
 "Pg" = (
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/machinery/light/rogue/wallfire/candle/r,
+/obj/machinery/light/fueled/wallfire/candle/r,
 /turf/open/floor/wood/nosmooth,
 /area/rogue/under/cavelava)
 "Ps" = (
-/obj/structure/bed/rogue/sleepingbag,
+/obj/structure/bed/sleepingbag,
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue/outdoors/caves)
 "Pt" = (
@@ -1723,10 +1723,10 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/mountains)
 "PX" = (
-/turf/closed/mineral/random/rogue/high,
+/turf/closed/mineral/random/high,
 /area/rogue/outdoors/mountains/decap)
 "Qf" = (
-/turf/closed/mineral/random/rogue/med,
+/turf/closed/mineral/random/med,
 /area/rogue/outdoors/mountains/deception)
 "Qi" = (
 /turf/closed/wall/mineral/stonebrick,
@@ -1762,7 +1762,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/outdoors/mountains)
 "QZ" = (
-/obj/machinery/light/rogue/hearth,
+/obj/machinery/light/fueled/hearth,
 /obj/item/cooking/pan,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/dirt/dust,
@@ -1770,7 +1770,7 @@
 /area/rogue/under/cavelava)
 "Rb" = (
 /obj/structure/flora/rogueshroom,
-/turf/closed/mineral/random/rogue/med,
+/turf/closed/mineral/random/med,
 /area/rogue/outdoors/mountains/deception)
 "Ro" = (
 /obj/item/sleepingbag,
@@ -1792,7 +1792,7 @@
 /turf/open/floor/cobble/mossy,
 /area/rogue/under/cavelava)
 "RM" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/outdoors/mountains/decap)
 "RW" = (
 /obj/structure/fluff/traveltile{
@@ -1807,7 +1807,7 @@
 /area/rogue/outdoors/mountains/decap)
 "Se" = (
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/reagent_containers/glass/bottle/healthpot,
 /obj/item/reagent_containers/glass/bottle/healthpot,
 /turf/open/floor/greenstone,
@@ -1903,11 +1903,11 @@
 /turf/open/floor/blocks,
 /area/rogue/under/cavelava)
 "Uu" = (
-/obj/machinery/light/rogue/campfire/densefire,
+/obj/machinery/light/fueled/campfire/densefire,
 /turf/open/floor/cobble/mossy,
 /area/rogue/outdoors/mountains/decap)
 "Uv" = (
-/turf/closed/mineral/random/rogue/med,
+/turf/closed/mineral/random/med,
 /area/rogue/under/cavelava)
 "Uz" = (
 /obj/effect/decal/cleanable/dirt/dust,
@@ -1923,7 +1923,7 @@
 /turf/open/floor/dirt,
 /area/rogue/under/cavelava)
 "UT" = (
-/turf/closed/mineral/random/rogue,
+/turf/closed/mineral/random,
 /area/rogue/under/cavelava)
 "Vd" = (
 /obj/effect/decal/cleanable/dirt/dust,
@@ -1950,11 +1950,11 @@
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/mountains/decap)
 "VD" = (
-/obj/item/ammo_casing/caseless/rogue/arrow/stone,
+/obj/item/ammo_casing/caseless/arrow/stone,
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue/indoors/town/dwarfin)
 "VO" = (
-/obj/machinery/light/rogue/torchholder,
+/obj/machinery/light/fueled/torchholder,
 /turf/closed/wall/mineral/stonebrick,
 /area/rogue/indoors/town/dwarfin)
 "Wq" = (
@@ -1986,10 +1986,10 @@
 /turf/open/water/cleanshallow,
 /area/rogue/outdoors/mountains)
 "WP" = (
-/turf/closed/mineral/random/rogue/med,
+/turf/closed/mineral/random/med,
 /area/rogue/outdoors/mountains)
 "WU" = (
-/turf/closed/mineral/random/rogue/high,
+/turf/closed/mineral/random/high,
 /area/rogue/outdoors/mountains)
 "WX" = (
 /obj/structure/spider/stickyweb,
@@ -2007,7 +2007,7 @@
 /turf/open/floor/cobblerock/alt,
 /area/rogue/outdoors/mountains/decap)
 "Xm" = (
-/turf/closed/mineral/random/rogue/high,
+/turf/closed/mineral/random/high,
 /area/rogue/outdoors/mountains/deception)
 "Xp" = (
 /obj/effect/decal/cleanable/dirt/dust,
@@ -2017,7 +2017,7 @@
 /turf/open/floor/blocks,
 /area/rogue/under/cavelava)
 "Xq" = (
-/turf/closed/mineral/rogue/copper,
+/turf/closed/mineral/copper,
 /area/rogue/outdoors/mountains/decap)
 "Xt" = (
 /obj/item/restraints/legcuffs/beartrap/armed/camouflage,
@@ -2025,11 +2025,11 @@
 /turf/open/floor/blocks,
 /area/rogue/under/cavelava)
 "Xw" = (
-/obj/effect/landmark/mapGenerator/rogue/cave{
+/obj/effect/landmark/mapGenerator/cave{
 	endTurfX = 155;
 	endTurfY = 155
 	},
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/outdoors/mountains/deception)
 "Xy" = (
 /turf/open/floor/dirt/road,
@@ -2063,7 +2063,7 @@
 /turf/open/floor/tile,
 /area/rogue/indoors/town/dwarfin)
 "YV" = (
-/turf/closed/mineral/rogue/salt,
+/turf/closed/mineral/salt,
 /area/rogue/outdoors/mountains/decap)
 "YW" = (
 /obj/effect/decal/cleanable/dirt/dust,
@@ -2075,7 +2075,7 @@
 /area/rogue/under/cavelava)
 "Zs" = (
 /obj/structure/fluff/walldeco/customflag,
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/outdoors/mountains/deception)
 "Zu" = (
 /obj/structure/flora/roguegrass/bush{
@@ -2089,7 +2089,7 @@
 /area/rogue/outdoors/mountains/decap)
 "Zv" = (
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/machinery/light/rogue/wallfire/candle/r,
+/obj/machinery/light/fueled/wallfire/candle/r,
 /turf/open/floor/dirt,
 /area/rogue/under/cavelava)
 "ZA" = (
@@ -2100,7 +2100,7 @@
 /turf/open/floor/wood/nosmooth,
 /area/rogue/under/cavelava)
 "ZE" = (
-/obj/item/ammo_casing/caseless/rogue/arrow/stone,
+/obj/item/ammo_casing/caseless/arrow/stone,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/caves)
 "ZF" = (

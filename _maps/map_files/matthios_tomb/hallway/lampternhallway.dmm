@@ -62,7 +62,7 @@
 /turf/open/transparent/openspace,
 /area/rogue)
 "J" = (
-/obj/machinery/light/rogue/lanternpost/fixed,
+/obj/machinery/light/fueled/lanternpost/fixed,
 /turf/open/floor/hexstone,
 /area/rogue)
 "L" = (
@@ -78,7 +78,7 @@
 	},
 /area/rogue)
 "S" = (
-/obj/machinery/light/rogue/lanternpost/fixed{
+/obj/machinery/light/fueled/lanternpost/fixed{
 	dir = 1
 	},
 /turf/open/floor/hexstone,

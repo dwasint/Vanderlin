@@ -1,4 +1,4 @@
-/obj/machinery/light/rogue/smelter
+/obj/machinery/light/fueled/smelter
 	icon = 'icons/roguetown/misc/forge.dmi'
 	name = "stone furnace"
 	desc = "A stone furnace, weathered by time and heat."
@@ -18,7 +18,7 @@
 	fueluse = 5 MINUTES
 	crossfire = FALSE
 
-/obj/machinery/light/rogue/smelter/attackby(obj/item/W, mob/living/user, params)
+/obj/machinery/light/fueled/smelter/attackby(obj/item/W, mob/living/user, params)
 	if(istype(W, /obj/item/weapon/tongs))
 		if(!actively_smelting) // Prevents an exp gain exploit. - Foxtrot
 			var/obj/item/weapon/tongs/T = W
@@ -112,7 +112,7 @@
 	return ..()
 
 // Gaining experience from just retrieving bars with your hands would be a hard-to-patch exploit.
-/obj/machinery/light/rogue/smelter/attack_hand(mob/user, params)
+/obj/machinery/light/fueled/smelter/attack_hand(mob/user, params)
 	if(on)
 		to_chat(user, "<span class='warning'>It's too hot to retrieve bars with your hands.</span>")
 		return
@@ -126,7 +126,7 @@
 		return ..()
 
 
-/obj/machinery/light/rogue/smelter/process()
+/obj/machinery/light/fueled/smelter/process()
 	..()
 	if(maxore > 1)
 		return
@@ -149,12 +149,12 @@
 					cooking = 21
 					actively_smelting = FALSE
 
-/obj/machinery/light/rogue/smelter/burn_out()
+/obj/machinery/light/fueled/smelter/burn_out()
 	cooking = 0
 	actively_smelting = FALSE
 	..()
 
-/obj/machinery/light/rogue/smelter/great
+/obj/machinery/light/fueled/smelter/great
 	icon = 'icons/roguetown/misc/forge.dmi'
 	name = "great furnace"
 	desc = "The pinnacle of dwarven engineering and the miracle of Malum's blessed fire crystal, allowing for greater alloys to be made."
@@ -167,7 +167,7 @@
 	climbable = FALSE
 	max_crucible_temperature = 2000
 
-/obj/machinery/light/rogue/smelter/great/process()
+/obj/machinery/light/fueled/smelter/great/process()
 	..()
 	if(on)
 		if(ore.len)

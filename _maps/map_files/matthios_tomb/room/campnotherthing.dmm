@@ -3,7 +3,7 @@
 /turf/open/floor/cobble,
 /area/rogue)
 "b" = (
-/obj/machinery/light/rogue/torchholder/c,
+/obj/machinery/light/fueled/torchholder/c,
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/ruinedwood/darker,
 /area/rogue)
@@ -14,11 +14,11 @@
 /turf/closed/wall/mineral/stone,
 /area/rogue)
 "e" = (
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/cobble,
 /area/rogue)
 "f" = (
-/obj/machinery/light/rogue/campfire/densefire,
+/obj/machinery/light/fueled/campfire/densefire,
 /turf/open/floor/cobble,
 /area/rogue)
 "g" = (
@@ -31,11 +31,11 @@
 /turf/open/floor/cobble,
 /area/rogue)
 "i" = (
-/obj/machinery/light/rogue/torchholder/r,
+/obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/ruinedwood/darker,
 /area/rogue)
 "k" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "l" = (
 /obj/effect/decal/cleanable/dirt,
@@ -52,11 +52,11 @@
 /area/rogue)
 "o" = (
 /obj/effect/decal/cleanable/blood/old,
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/cobble,
 /area/rogue)
 "p" = (
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/ruinedwood/darker,
 /area/rogue)
 "q" = (
@@ -146,17 +146,17 @@
 /turf/open/floor/cobble,
 /area/rogue)
 "H" = (
-/obj/machinery/light/rogue/torchholder/c,
+/obj/machinery/light/fueled/torchholder/c,
 /turf/open/floor/ruinedwood/darker,
 /area/rogue)
 "I" = (
-/obj/machinery/light/rogue/torchholder{
+/obj/machinery/light/fueled/torchholder{
 	pixel_y = -32
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/rogue)
 "J" = (
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/ruinedwood/darker,
 /area/rogue)
@@ -181,7 +181,7 @@
 /turf/open/floor/cobble,
 /area/rogue)
 "P" = (
-/obj/machinery/light/rogue/torchholder/r,
+/obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/cobble,
 /area/rogue)
 "Q" = (

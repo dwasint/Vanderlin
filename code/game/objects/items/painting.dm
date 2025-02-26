@@ -1,5 +1,5 @@
 
-/obj/item/rogue/painting
+/obj/item/painting
 	name = "painting"
 	icon_state = "painting"
 	desc = ""
@@ -10,7 +10,7 @@
 	icon = 'icons/roguetown/misc/decoration.dmi'
 	var/deployed_structure = /obj/structure/fluff/walldeco/painting
 
-/obj/item/rogue/painting/attack_turf(turf/T, mob/living/user)
+/obj/item/painting/attack_turf(turf/T, mob/living/user)
 	if(isclosedturf(T))
 		if(get_dir(T,user) in GLOB.cardinals)
 			to_chat(user, "<span class='warning'>I place [src] on the wall.</span>")
@@ -37,7 +37,7 @@
 	density = FALSE
 	max_integrity = 0
 	layer = ABOVE_MOB_LAYER
-	var/stolen_painting = /obj/item/rogue/painting
+	var/stolen_painting = /obj/item/painting
 
 /obj/structure/fluff/walldeco/painting/attack_hand(mob/user)
 	if(do_after(user, 3 SECONDS, user))
@@ -48,7 +48,7 @@
 	..()
 
 /* Paintings */
-/obj/item/rogue/painting/queen
+/obj/item/painting/queen
 	icon_state = "queenpainting"
 	desc = "A portrait of Queen Samantha I of Psydonia. Her late husband would be so proud of what she has accomplished in his realm. These mass-reproduced paintings are unfortunately devalued."
 	sellprice = 40
@@ -57,9 +57,9 @@
 /obj/structure/fluff/walldeco/painting/queen
 	desc = "A portrait of Queen Samantha I of Enigma. Her late husband would be so proud of what she has accomplished in his realm."
 	icon_state = "queenpainting_deployed"
-	stolen_painting = /obj/item/rogue/painting/queen
+	stolen_painting = /obj/item/painting/queen
 
-/obj/item/rogue/painting/seraphina
+/obj/item/painting/seraphina
 	icon_state = "seraphinapainting"
 	desc = "A portrait of holy priest Seraphina, first of her name, blessed be her name."
 	sellprice = 40
@@ -68,9 +68,9 @@
 /obj/structure/fluff/walldeco/painting/seraphina
 	desc = "A portrait of holy priest Seraphina, first of her name, blessed be her name."
 	icon_state = "seraphinapainting_deployed"
-	stolen_painting = /obj/item/rogue/painting/seraphina
+	stolen_painting = /obj/item/painting/seraphina
 
-/obj/item/rogue/painting/skull
+/obj/item/painting/skull
 	icon_state = "skullpainting"
 	desc = "A moody scene depicting a skull and candles on a table. Memento mori."
 	sellprice = 40
@@ -79,9 +79,9 @@
 /obj/structure/fluff/walldeco/painting/skull
 	desc = "A moody scene depicting a skull and candles on a table. Memento mori."
 	icon_state = "skullpainting_deployed"
-	stolen_painting = /obj/item/rogue/painting/skull
+	stolen_painting = /obj/item/painting/skull
 
-/obj/item/rogue/painting/castle
+/obj/item/painting/castle
 	icon_state = "castlepainting"
 	desc = "A painting of a dark tower looming beyond mountains and mist."
 	sellprice = 40
@@ -90,9 +90,9 @@
 /obj/structure/fluff/walldeco/painting/castle
 	desc = "A painting of a dark tower looming beyond mountains and mist."
 	icon_state = "castlepainting_deployed"
-	stolen_painting = /obj/item/rogue/painting/castle
+	stolen_painting = /obj/item/painting/castle
 
-/obj/item/rogue/painting/crown
+/obj/item/painting/crown
 	icon_state = "crownpainting"
 	desc = "A painting of a kingly crown resting on a book."
 	sellprice = 40
@@ -101,4 +101,4 @@
 /obj/structure/fluff/walldeco/painting/crown
 	desc = "A painting of a kingly crown resting on a book."
 	icon_state = "crownpainting_deployed"
-	stolen_painting = /obj/item/rogue/painting/crown
+	stolen_painting = /obj/item/painting/crown

@@ -96,7 +96,7 @@
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "ly" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/under/cave)
 "mr" = (
 /obj/structure/fluff/nest,
@@ -129,7 +129,7 @@
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "pw" = (
-/obj/machinery/light/rogue/campfire,
+/obj/machinery/light/fueled/campfire,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "pH" = (
@@ -140,7 +140,7 @@
 /area/rogue/under/cave)
 "pT" = (
 /obj/structure/fluff/walldeco/vinez,
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/under/cave)
 "rj" = (
 /obj/structure/flora/ausbushes/leafybush,
@@ -357,7 +357,7 @@
 "Lu" = (
 /obj/structure/fluff/walldeco/vinez,
 /obj/structure/fluff/walldeco/vinez,
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/under/cave)
 "Mm" = (
 /obj/structure/flora/roguegrass,

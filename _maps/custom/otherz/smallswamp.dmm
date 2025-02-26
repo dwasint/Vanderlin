@@ -3,24 +3,24 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/bog)
 "b" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "c" = (
 /obj/structure/flora/roguetree,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/bog)
 "d" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/indoors/cave)
 "e" = (
 /turf/open/water/swamp/deep,
 /area/rogue/outdoors/bog)
 "f" = (
-/obj/machinery/light/rogue/firebowl/standing/blue,
+/obj/machinery/light/fueled/firebowl/standing/blue,
 /turf/open/floor/dirt/road,
 /area/rogue/indoors/cave)
 "g" = (
-/turf/closed/mineral/random/rogue/high,
+/turf/closed/mineral/random/high,
 /area/rogue/outdoors/bog)
 "h" = (
 /turf/open/water/cleanshallow,
@@ -33,10 +33,10 @@
 /area/rogue/outdoors/bog)
 "k" = (
 /obj/structure/flora/roguetree,
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/outdoors/bog)
 "l" = (
-/turf/closed/mineral/random/rogue/high,
+/turf/closed/mineral/random/high,
 /area/rogue/indoors/cave)
 "m" = (
 /mob/living/simple_animal/hostile/retaliate/spider/mutated,
@@ -44,10 +44,10 @@
 /area/rogue/outdoors/bog)
 "n" = (
 /obj/structure/flora/roguetree,
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "o" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/outdoors/bog)
 "p" = (
 /obj/structure/flora/roguetree,
@@ -74,7 +74,7 @@
 /area/rogue/outdoors/bog)
 "v" = (
 /obj/structure/portal,
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/outdoors/bog)
 "w" = (
 /turf/open/floor/dirt/road,
@@ -119,21 +119,21 @@
 /turf/open/water/swamp/deep,
 /area/rogue/outdoors/bog)
 "Q" = (
-/turf/closed/mineral/random/rogue/med,
+/turf/closed/mineral/random/med,
 /area/rogue/outdoors/bog)
 "U" = (
-/obj/machinery/light/rogue/firebowl/standing,
+/obj/machinery/light/fueled/firebowl/standing,
 /turf/open/floor/hexstone,
 /area/rogue/outdoors/bog)
 "V" = (
-/obj/effect/landmark/mapGenerator/rogue/bog{
+/obj/effect/landmark/mapGenerator/bog{
 	endTurfX = 128;
 	endTurfY = 128
 	},
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "X" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/outdoors/bog)
 "Y" = (
 /obj/structure/fluff/traveltile{
@@ -144,7 +144,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/bog)
 "Z" = (
-/turf/closed/mineral/rogue/salt,
+/turf/closed/mineral/salt,
 /area/rogue/outdoors/bog)
 
 (1,1,1) = {"

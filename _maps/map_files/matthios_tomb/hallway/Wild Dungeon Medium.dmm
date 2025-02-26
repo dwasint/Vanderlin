@@ -186,7 +186,7 @@
 /turf/open/floor/cobble/mossy,
 /area/rogue/under/cave)
 "zL" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/under/cave)
 "zY" = (
 /obj/structure/flora/roguegrass,
@@ -256,7 +256,7 @@
 /turf/open/transparent/openspace,
 /area/rogue/under/cave)
 "Hx" = (
-/obj/structure/bed/rogue/hay,
+/obj/structure/bed/hay,
 /obj/effect/decal/cleanable/blood/gibs,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/grass,
@@ -292,7 +292,7 @@
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "Lm" = (
-/obj/machinery/light/rogue/campfire/densefire,
+/obj/machinery/light/fueled/campfire/densefire,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "ME" = (
@@ -333,7 +333,7 @@
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "Ry" = (
-/obj/structure/bed/rogue/hay,
+/obj/structure/bed/hay,
 /obj/effect/spawner/map_spawner/loot/food,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
@@ -375,7 +375,7 @@
 /area/rogue/under/cave)
 "Ub" = (
 /obj/effect/decal/cleanable/blood,
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/under/cave)
 "US" = (
 /obj/effect/decal/cleanable/blood/gibs/torso,

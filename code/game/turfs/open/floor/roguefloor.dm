@@ -8,7 +8,7 @@
 	tiled_dirt = FALSE
 	landsound = 'sound/foley/jumpland/woodland.wav'
 //	smooth = SMOOTH_MORE
-//	canSmoothWith = list(/turf/closed/mineral/rogue, /turf/closed/mineral, /turf/closed/wall/mineral/stonebrick, /turf/closed/wall/mineral/wood, /turf/closed/wall/mineral/wooddark, /turf/closed/wall/mineral/decowood, /turf/closed/wall/mineral/decostone, /turf/closed/wall/mineral/stone, /turf/closed/wall/mineral/stone/moss, /turf/open/floor/cobble, /turf/open/floor/dirt, /turf/open/floor/grass)
+//	canSmoothWith = list(/turf/closed/mineral, /turf/closed/mineral, /turf/closed/wall/mineral/stonebrick, /turf/closed/wall/mineral/wood, /turf/closed/wall/mineral/wooddark, /turf/closed/wall/mineral/decowood, /turf/closed/wall/mineral/decostone, /turf/closed/wall/mineral/stone, /turf/closed/wall/mineral/stone/moss, /turf/open/floor/cobble, /turf/open/floor/dirt, /turf/open/floor/grass)
 	neighborlay = "dirtedge"
 
 /turf/open/floor/ruinedwood/Initialize()
@@ -643,7 +643,7 @@
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	landsound = 'sound/foley/jumpland/stoneland.wav'
 	smooth = SMOOTH_MORE
-	canSmoothWith = list(/turf/closed/mineral/rogue,
+	canSmoothWith = list(/turf/closed/mineral,
 						/turf/closed/mineral,
 						/turf/closed/wall/mineral/stonebrick,
 						/turf/closed/wall/mineral/wood,
@@ -699,7 +699,7 @@
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	landsound = 'sound/foley/jumpland/stoneland.wav'
 	smooth = SMOOTH_MORE
-	canSmoothWith = list(/turf/closed/mineral/rogue,
+	canSmoothWith = list(/turf/closed/mineral,
 						/turf/open/floor/herringbone,
 						/turf/closed/mineral,
 						/turf/closed/wall/mineral/stonebrick,
@@ -734,7 +734,7 @@
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	landsound = 'sound/foley/jumpland/stoneland.wav'
 	smooth = SMOOTH_MORE
-	canSmoothWith = list(/turf/closed/mineral/rogue,
+	canSmoothWith = list(/turf/closed/mineral,
 						/turf/open/floor/herringbone,
 						/turf/closed/mineral,
 						/turf/closed/wall/mineral/stonebrick,
@@ -768,7 +768,7 @@
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	landsound = 'sound/foley/jumpland/stoneland.wav'
 	smooth = SMOOTH_MORE
-	canSmoothWith = list(/turf/closed/mineral/rogue,
+	canSmoothWith = list(/turf/closed/mineral,
 						/turf/open/floor/herringbone,
 						/turf/closed/mineral,
 						/turf/closed/wall/mineral/stonebrick,
@@ -807,7 +807,7 @@
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	landsound = 'sound/foley/jumpland/stoneland.wav'
 	smooth = SMOOTH_MORE
-	canSmoothWith = list(/turf/closed/mineral/rogue,
+	canSmoothWith = list(/turf/closed/mineral,
 						/turf/open/floor/herringbone,
 						/turf/closed/mineral,
 						/turf/closed/wall/mineral/stonebrick,
@@ -846,7 +846,7 @@
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	landsound = 'sound/foley/jumpland/stoneland.wav'
 	smooth = SMOOTH_MORE
-	canSmoothWith = list(/turf/closed/mineral/rogue,
+	canSmoothWith = list(/turf/closed/mineral,
 						/turf/open/floor/herringbone,
 						/turf/closed/mineral,
 						/turf/closed/wall/mineral/stonebrick,
@@ -1002,7 +1002,7 @@
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	footstepstealth = TRUE
 	smooth = SMOOTH_MORE
-	canSmoothWith = list(/turf/closed/mineral/rogue,
+	canSmoothWith = list(/turf/closed/mineral,
 						/turf/closed/mineral,
 						/turf/closed/wall/mineral/stonebrick,
 						/turf/closed/wall/mineral/wood,
@@ -1074,7 +1074,7 @@
 	clawfootstep = FOOTSTEP_HARD_CLAW
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	smooth = SMOOTH_MORE
-	canSmoothWith = list(/turf/closed/mineral/rogue,
+	canSmoothWith = list(/turf/closed/mineral,
 						/turf/closed/mineral,
 						/turf/closed/wall/mineral/stonebrick,
 						/turf/closed/wall/mineral/wood,
@@ -1112,7 +1112,7 @@
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	footstepstealth = TRUE
 	smooth = SMOOTH_MORE
-	canSmoothWith = list(/turf/closed/mineral/rogue,
+	canSmoothWith = list(/turf/closed/mineral,
 						/turf/closed/mineral,
 						/turf/closed/wall/mineral/stonebrick,
 						/turf/closed/wall/mineral/wood,
@@ -1153,7 +1153,7 @@
 	clawfootstep = FOOTSTEP_SOFT_BAREFOOT
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	smooth = SMOOTH_MORE
-	canSmoothWith = list(/turf/closed/mineral/rogue,
+	canSmoothWith = list(/turf/closed/mineral,
 						/turf/closed/mineral,
 						/turf/closed/wall/mineral/stonebrick,
 						/turf/closed/wall/mineral/wood,

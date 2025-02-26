@@ -189,7 +189,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	var/bloody_icon_state = "itemblood"
 	var/boobed = FALSE
 
-	// Time in deciseconds this item adds to var/fueluse for a /obj/machinery/light/rogue type when fed to it.
+	// Time in deciseconds this item adds to var/fueluse for a /obj/machinery/light/fueled type when fed to it.
 	var/firefuel = 0 //add this idiot
 
 	var/thrown_bclass = BCLASS_BLUNT

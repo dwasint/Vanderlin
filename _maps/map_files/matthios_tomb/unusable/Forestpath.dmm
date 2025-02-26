@@ -33,7 +33,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue)
 "E" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "F" = (
 /obj/effect/spawner/map_spawner/treeorbush,

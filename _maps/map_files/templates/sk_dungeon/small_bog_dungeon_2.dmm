@@ -38,7 +38,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/bog)
 "hC" = (
-/obj/machinery/light/rogue/firebowl/stump,
+/obj/machinery/light/fueled/firebowl/stump,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/bog)
 "ko" = (
@@ -82,7 +82,7 @@
 /turf/closed/wall/mineral/wood,
 /area/rogue/outdoors/bog)
 "rD" = (
-/obj/structure/bed/rogue/shit,
+/obj/structure/bed/shit,
 /turf/open/floor/twig,
 /area/rogue/outdoors/bog)
 "rJ" = (
@@ -160,7 +160,7 @@
 /turf/open/floor/twig,
 /area/rogue/outdoors/bog)
 "Ep" = (
-/obj/machinery/light/rogue/campfire/densefire,
+/obj/machinery/light/fueled/campfire/densefire,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/bog)
 "GU" = (
@@ -188,7 +188,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/bog)
 "KG" = (
-/obj/machinery/light/rogue/firebowl/stump,
+/obj/machinery/light/fueled/firebowl/stump,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/bog)
 "LI" = (
@@ -243,7 +243,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/bog)
 "Yi" = (
-/obj/machinery/light/rogue/firebowl/standing,
+/obj/machinery/light/fueled/firebowl/standing,
 /turf/open/floor/twig,
 /area/rogue/outdoors/bog)
 "Yt" = (

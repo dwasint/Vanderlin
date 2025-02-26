@@ -25,7 +25,7 @@
 /turf/open/floor/carpet/royalblack,
 /area/rogue)
 "cq" = (
-/obj/machinery/light/rogue/wallfire/candle/blue,
+/obj/machinery/light/fueled/wallfire/candle/blue,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "cr" = (
@@ -91,7 +91,7 @@
 /turf/open/transparent/openspace,
 /area/rogue)
 "fz" = (
-/obj/structure/rack/rogue/shelf/biggest,
+/obj/structure/rack/shelf/biggest,
 /obj/item/reagent_containers/glass/bucket,
 /obj/item/natural/bundle/stick,
 /obj/structure/fluff/walldeco/church/line{
@@ -114,7 +114,7 @@
 /turf/open/floor/metal,
 /area/rogue)
 "hi" = (
-/mob/living/simple_animal/hostile/rogue/skeleton/axe,
+/mob/living/simple_animal/hostile/skeleton/axe,
 /turf/open/floor/hexstone,
 /area/rogue)
 "hS" = (
@@ -123,7 +123,7 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "ig" = (
-/obj/machinery/light/rogue/cauldron,
+/obj/machinery/light/fueled/cauldron,
 /obj/effect/decal/cleanable/sigil/N,
 /obj/structure/fluff/walldeco/church/line,
 /turf/open/floor/hexstone,
@@ -147,7 +147,7 @@
 /turf/open/floor/grass/red,
 /area/rogue)
 "kU" = (
-/obj/machinery/light/rogue/hearth,
+/obj/machinery/light/fueled/hearth,
 /turf/open/floor/hexstone,
 /area/rogue)
 "lq" = (
@@ -163,7 +163,7 @@
 /turf/closed/wall/mineral/stone,
 /area/rogue)
 "lW" = (
-/mob/living/simple_animal/hostile/rogue/skeleton/guard,
+/mob/living/simple_animal/hostile/skeleton/guard,
 /turf/open/floor/carpet/royalblack,
 /area/rogue)
 "mo" = (
@@ -171,11 +171,11 @@
 /turf/open/floor/hexstone,
 /area/rogue)
 "mF" = (
-/obj/structure/chair/wood/rogue/chair_noble,
+/obj/structure/chair/wood/alt/chair_noble,
 /turf/open/floor/carpet/royalblack,
 /area/rogue)
 "mY" = (
-/obj/item/roguebin/water,
+/obj/item/bin/water,
 /turf/open/floor/hexstone,
 /area/rogue)
 "mZ" = (
@@ -188,13 +188,13 @@
 /turf/open/transparent/openspace,
 /area/rogue)
 "nm" = (
-/obj/machinery/light/rogue/wallfire/candle/blue{
+/obj/machinery/light/fueled/wallfire/candle/blue{
 	pixel_y = -32
 	},
 /turf/open/floor/hexstone,
 /area/rogue)
 "nu" = (
-/obj/machinery/light/rogue/wallfire/candle/blue{
+/obj/machinery/light/fueled/wallfire/candle/blue{
 	pixel_y = -32
 	},
 /turf/open/floor/ruinedwood/spiral,
@@ -204,7 +204,7 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "oG" = (
-/obj/machinery/light/rogue/wallfire/candle/blue/l,
+/obj/machinery/light/fueled/wallfire/candle/blue/l,
 /turf/open/floor/carpet/royalblack,
 /area/rogue)
 "pY" = (
@@ -249,7 +249,7 @@
 /area/rogue)
 "tF" = (
 /obj/structure/closet/crate/crafted_closet/inn,
-/obj/item/book/rogue/magicaltheory,
+/obj/item/book/magicaltheory,
 /obj/item/book/granter/spell/magick/fireball,
 /obj/item/scomstone/bad,
 /turf/open/floor/carpet/royalblack,
@@ -275,7 +275,7 @@
 /obj/structure/circle_protection,
 /obj/item/alch/firedust,
 /obj/item/weapon/sword/silver,
-/mob/living/simple_animal/hostile/rogue/skeleton/bow,
+/mob/living/simple_animal/hostile/skeleton/bow,
 /turf/open/floor/hexstone,
 /area/rogue)
 "wm" = (
@@ -315,7 +315,7 @@
 /area/rogue)
 "yc" = (
 /obj/effect/decal/cleanable/sigil/NE,
-/obj/machinery/light/rogue/hearth,
+/obj/machinery/light/fueled/hearth,
 /obj/item/reagent_containers/glass/bucket/pot,
 /obj/structure/fluff/walldeco/church/line,
 /turf/open/floor/hexstone,
@@ -351,7 +351,7 @@
 "AD" = (
 /obj/structure/fluff/railing/border,
 /obj/effect/decal/cleanable/sigil/S,
-/mob/living/simple_animal/hostile/rogue/skeleton/bow,
+/mob/living/simple_animal/hostile/skeleton/bow,
 /turf/open/floor/carpet/royalblack,
 /area/rogue)
 "Bk" = (
@@ -387,7 +387,7 @@
 /turf/open/floor/grass/red,
 /area/rogue)
 "Es" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "EQ" = (
 /obj/structure/fluff/railing/border{
@@ -398,7 +398,7 @@
 	},
 /area/rogue)
 "Fa" = (
-/obj/machinery/light/rogue/oven/west,
+/obj/machinery/light/fueled/oven/west,
 /obj/structure/closet/crate/chest,
 /obj/item/cooking/pan,
 /obj/item/reagent_containers/food/snacks/meat/mince,
@@ -410,7 +410,7 @@
 /turf/open/floor/hexstone,
 /area/rogue)
 "Ga" = (
-/obj/machinery/light/rogue/wallfire/candle/blue{
+/obj/machinery/light/fueled/wallfire/candle/blue{
 	pixel_x = -32;
 	pixel_y = 0
 	},
@@ -454,7 +454,7 @@
 /turf/open/transparent/openspace,
 /area/rogue)
 "IH" = (
-/obj/structure/rack/rogue/shelf/biggest,
+/obj/structure/rack/shelf/biggest,
 /obj/item/mortar,
 /obj/item/pestle,
 /turf/open/floor/hexstone,
@@ -472,11 +472,11 @@
 /turf/open/floor/cobble,
 /area/rogue)
 "Kt" = (
-/mob/living/simple_animal/hostile/rogue/skeleton/bow,
+/mob/living/simple_animal/hostile/skeleton/bow,
 /turf/open/floor/hexstone,
 /area/rogue)
 "KP" = (
-/obj/machinery/light/rogue/wallfire/candle/blue/r,
+/obj/machinery/light/fueled/wallfire/candle/blue/r,
 /turf/open/floor/carpet/royalblack,
 /area/rogue)
 "KW" = (
@@ -497,7 +497,7 @@
 /turf/open/floor/hexstone,
 /area/rogue)
 "MG" = (
-/obj/machinery/light/rogue/wallfire/candle/blue,
+/obj/machinery/light/fueled/wallfire/candle/blue,
 /turf/open/floor/hexstone,
 /area/rogue)
 "MH" = (
@@ -517,7 +517,7 @@
 /obj/structure/fluff/railing/border{
 	dir = 4
 	},
-/mob/living/simple_animal/hostile/rogue/skeleton/axe,
+/mob/living/simple_animal/hostile/skeleton/axe,
 /turf/open/floor/carpet/royalblack,
 /area/rogue)
 "OR" = (
@@ -546,7 +546,7 @@
 /turf/open/floor/grass/red,
 /area/rogue)
 "Qf" = (
-/obj/structure/chair/wood/rogue/chair_noble{
+/obj/structure/chair/wood/alt/chair_noble{
 	dir = 4
 	},
 /turf/open/floor/carpet/royalblack,
@@ -613,12 +613,12 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "UG" = (
-/obj/structure/bed/rogue/inn/double,
-/obj/item/bedsheet/rogue/fabric_double,
+/obj/structure/bed/inn/double,
+/obj/item/bedsheet/fabric_double,
 /turf/open/floor/carpet/royalblack,
 /area/rogue)
 "Vh" = (
-/obj/machinery/light/rogue/wallfire/candle,
+/obj/machinery/light/fueled/wallfire/candle,
 /turf/open/floor/grass/red,
 /area/rogue)
 "Vm" = (
@@ -646,7 +646,7 @@
 /obj/structure/fluff/walldeco/church/line{
 	dir = 8
 	},
-/mob/living/simple_animal/hostile/rogue/skeleton/guard,
+/mob/living/simple_animal/hostile/skeleton/guard,
 /turf/open/floor/hexstone,
 /area/rogue)
 "WV" = (
@@ -683,13 +683,13 @@
 /area/rogue)
 "Zr" = (
 /obj/effect/decal/cleanable/sigil/NW,
-/obj/machinery/light/rogue/hearth,
+/obj/machinery/light/fueled/hearth,
 /obj/item/reagent_containers/glass/bucket/pot,
 /obj/structure/fluff/walldeco/church/line,
 /turf/open/floor/hexstone,
 /area/rogue)
 "ZO" = (
-/obj/machinery/light/rogue/wallfire/candle/blue{
+/obj/machinery/light/fueled/wallfire/candle/blue{
 	pixel_x = 32;
 	pixel_y = 0
 	},

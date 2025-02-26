@@ -31,7 +31,7 @@
 	if(!(T.type in AR.ambush_types))
 		return
 	var/campfires = 0
-	for(var/obj/machinery/light/rogue/RF in view(5, src))
+	for(var/obj/machinery/light/fueled/RF in view(5, src))
 		if(RF.on)
 			campfires++
 	if(campfires > 0)

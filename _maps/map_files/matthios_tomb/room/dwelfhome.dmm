@@ -59,7 +59,7 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "D" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "H" = (
 /turf/closed,

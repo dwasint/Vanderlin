@@ -1,4 +1,4 @@
-/*/mob/living/simple_animal/hostile/rogue/werewolf/update_inv_hands()
+/*/mob/living/simple_animal/hostile/werewolf/update_inv_hands()
 	remove_overlay(HANDS_LAYER)
 	remove_overlay(HANDS_BEHIND_LAYER)
 
@@ -154,7 +154,7 @@
 	apply_overlay(HANDS_BEHIND_LAYER)
 	apply_overlay(HANDS_LAYER)*/
 
-/mob/living/simple_animal/hostile/rogue/werewolf/regenerate_icons()
+/mob/living/simple_animal/hostile/werewolf/regenerate_icons()
 	if(gender == MALE)
 		icon_state = "wwolf_m"
 	else
@@ -162,7 +162,7 @@
 	update_inv_hands()
 	update_damage_overlays()
 
-/mob/living/simple_animal/hostile/rogue/werewolf/update_damage_overlays()
+/mob/living/simple_animal/hostile/werewolf/update_damage_overlays()
 	remove_overlay(DAMAGE_LAYER)
 	testing("dambegin")
 	var/list/hands = list()

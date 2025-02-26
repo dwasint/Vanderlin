@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/obj/machinery/light/rogue/torchholder/c,
+/obj/machinery/light/fueled/torchholder/c,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
@@ -8,7 +8,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "am" = (
-/obj/structure/bed/rogue/shit,
+/obj/structure/bed/shit,
 /mob/living/carbon/human/species/goblin/npc/ambush,
 /turf/open/floor/twig,
 /area/rogue/under/mountains/anvil/dungeon)
@@ -39,11 +39,11 @@
 	},
 /obj/item/reagent_containers/food/snacks/rotten/meat,
 /obj/item/reagent_containers/glass/cup/skull,
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "bq" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/clothing/wrists/bracers/leather,
 /obj/item/clothing/wrists/bracers/leather,
 /obj/item/clothing/wrists/bracers/leather,
@@ -55,7 +55,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "bs" = (
-/obj/structure/rack/rogue/shelf/biggest,
+/obj/structure/rack/shelf/biggest,
 /obj/item/broom,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
@@ -64,11 +64,11 @@
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "bG" = (
-/obj/machinery/light/rogue/cauldron,
+/obj/machinery/light/fueled/cauldron,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "bN" = (
-/obj/structure/chair/wood/rogue,
+/obj/structure/chair/wood/alt,
 /mob/living/carbon/human/species/skeleton/npc/peasant,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
@@ -85,7 +85,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "ca" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/item/book/granter/spell_points,
 /obj/item/book_crafting_kit,
@@ -106,11 +106,11 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "cl" = (
 /obj/item/reagent_containers/food/snacks/smallrat,
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "cr" = (
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /obj/structure/handcart{
 	dir = 4
 	},
@@ -151,13 +151,13 @@
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "dc" = (
-/obj/structure/rack/rogue/shelf/biggest,
+/obj/structure/rack/shelf/biggest,
 /obj/item/clothing/armor/plate/orc,
 /obj/item/clothing/armor/plate/orc,
 /turf/open/floor/twig,
 /area/rogue/under/mountains/anvil/dungeon)
 "dd" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "dl" = (
@@ -170,7 +170,7 @@
 /turf/open/floor/carpet,
 /area/rogue/under/mountains/anvil/dungeon)
 "dw" = (
-/obj/structure/chair/wood/rogue/fancy,
+/obj/structure/chair/wood/alt/fancy,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "dC" = (
@@ -185,12 +185,12 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "dH" = (
 /obj/structure/ladder,
-/obj/machinery/light/rogue/torchholder/r,
+/obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "dK" = (
-/obj/machinery/light/rogue/torchholder/r,
-/mob/living/simple_animal/hostile/rogue/skeleton/guard,
+/obj/machinery/light/fueled/torchholder/r,
+/mob/living/simple_animal/hostile/skeleton/guard,
 /turf/open/floor/carpet,
 /area/rogue/under/mountains/anvil/dungeon)
 "dX" = (
@@ -200,7 +200,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "dY" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/coin/silver/pile,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
@@ -218,7 +218,7 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "ek" = (
 /obj/effect/decal/cleanable/blood,
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "eq" = (
 /obj/effect/decal/cleanable/dirt/dust,
@@ -226,11 +226,11 @@
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "er" = (
-/obj/machinery/light/rogue/firebowl/standing,
+/obj/machinery/light/fueled/firebowl/standing,
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "es" = (
-/obj/structure/rack/rogue/shelf/biggest,
+/obj/structure/rack/shelf/biggest,
 /obj/item/kitchen/rollingpin,
 /obj/item/kitchen/rollingpin,
 /obj/item/kitchen/rollingpin,
@@ -266,12 +266,12 @@
 /turf/open/floor/carpet,
 /area/rogue/under/mountains/anvil/dungeon)
 "eG" = (
-/obj/structure/bed/rogue/sleepingbag,
+/obj/structure/bed/sleepingbag,
 /mob/living/carbon/human/species/orc/warrior,
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "eH" = (
-/obj/structure/chair/wood/rogue{
+/obj/structure/chair/wood/alt{
 	dir = 1
 	},
 /turf/open/floor/cobble,
@@ -280,7 +280,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "eQ" = (
-/obj/machinery/light/rogue/torchholder/c,
+/obj/machinery/light/fueled/torchholder/c,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
@@ -298,7 +298,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "fb" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/item/organ/eyes,
 /obj/item/organ/eyes,
@@ -316,7 +316,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "fk" = (
-/obj/machinery/light/rogue/campfire/longlived,
+/obj/machinery/light/fueled/campfire/longlived,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/churchrough,
 /area/rogue/under/mountains/anvil/dungeon)
@@ -326,7 +326,7 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "ft" = (
 /obj/structure/bookcase/random/myths,
-/obj/machinery/light/rogue/wallfire/candle/blue,
+/obj/machinery/light/fueled/wallfire/candle/blue,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "fu" = (
@@ -338,7 +338,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "fH" = (
-/mob/living/simple_animal/hostile/rogue/skeleton/spear,
+/mob/living/simple_animal/hostile/skeleton/spear,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "fQ" = (
@@ -350,7 +350,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "fT" = (
-/mob/living/simple_animal/hostile/rogue/haunt,
+/mob/living/simple_animal/hostile/haunt,
 /turf/open/floor/carpet/stellar,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "fZ" = (
@@ -368,7 +368,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "gh" = (
-/mob/living/simple_animal/hostile/rogue/skeleton/guard,
+/mob/living/simple_animal/hostile/skeleton/guard,
 /turf/open/floor/carpet,
 /area/rogue/under/mountains/anvil/dungeon)
 "gj" = (
@@ -376,7 +376,7 @@
 /turf/closed/wall/mineral/stonebrick,
 /area/rogue/under/mountains/anvil/dungeon)
 "go" = (
-/obj/structure/chair/wood/rogue{
+/obj/structure/chair/wood/alt{
 	dir = 8;
 	icon_state = "chair2"
 	},
@@ -394,17 +394,17 @@
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "gy" = (
-/obj/structure/chair/wood/rogue,
+/obj/structure/chair/wood/alt,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "gE" = (
-/obj/structure/chair/wood/rogue,
+/obj/structure/chair/wood/alt,
 /mob/living/carbon/human/species/skeleton/npc/peasant,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/carpet,
 /area/rogue/under/mountains/anvil/dungeon)
 "gG" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/clothing/head/wizhat/gen,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
@@ -430,13 +430,13 @@
 /turf/open/floor/carpet,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "hn" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/reagent_containers/glass/bottle/healthpot,
 /obj/item/reagent_containers/glass/bottle/healthpot,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "hq" = (
-/obj/machinery/light/rogue/firebowl/standing,
+/obj/machinery/light/fueled/firebowl/standing,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "hr" = (
@@ -444,7 +444,7 @@
 /turf/open/floor/carpet/purple,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "hv" = (
-/turf/closed/mineral/random/rogue/high,
+/turf/closed/mineral/random/high,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "hw" = (
 /obj/effect/decal/cleanable/blood,
@@ -463,8 +463,8 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "hH" = (
-/obj/structure/chair/stool/rogue,
-/mob/living/simple_animal/hostile/rogue/skeleton/axe,
+/obj/structure/chair/stool,
+/mob/living/simple_animal/hostile/skeleton/axe,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "hI" = (
@@ -483,7 +483,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "if" = (
-/mob/living/simple_animal/hostile/rogue/skeleton/spear,
+/mob/living/simple_animal/hostile/skeleton/spear,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/carpet,
 /area/rogue/under/mountains/anvil/dungeon/lower)
@@ -492,7 +492,7 @@
 /turf/closed/wall/mineral/stonebrick,
 /area/rogue/under/mountains/anvil/dungeon)
 "il" = (
-/mob/living/simple_animal/hostile/rogue/skeleton/bow,
+/mob/living/simple_animal/hostile/skeleton/bow,
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "im" = (
@@ -501,12 +501,12 @@
 /turf/open/floor/carpet,
 /area/rogue/under/mountains/anvil/dungeon)
 "io" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/clothing/shirt/robe/wizard,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "ip" = (
-/obj/structure/bed/rogue/sleepingbag,
+/obj/structure/bed/sleepingbag,
 /mob/living/carbon/human/species/goblin/npc/ambush,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/cobblerock,
@@ -518,12 +518,12 @@
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "ix" = (
-/obj/structure/rack/rogue/shelf/biggest,
-/obj/machinery/light/rogue/torchholder/c,
+/obj/structure/rack/shelf/biggest,
+/obj/machinery/light/fueled/torchholder/c,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "iC" = (
-/obj/structure/chair/wood/rogue,
+/obj/structure/chair/wood/alt,
 /turf/open/floor/carpet,
 /area/rogue/under/mountains/anvil/dungeon)
 "iH" = (
@@ -546,12 +546,12 @@
 /turf/open/floor/carpet,
 /area/rogue/under/mountains/anvil/dungeon)
 "iU" = (
-/obj/structure/bed/rogue/shit,
+/obj/structure/bed/shit,
 /mob/living/carbon/human/species/goblin,
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "iV" = (
-/turf/closed/mineral/random/rogue/med,
+/turf/closed/mineral/random/med,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "iZ" = (
 /obj/item/paper{
@@ -564,7 +564,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "jg" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/clothing/head/helmet/skullcap,
 /obj/item/clothing/head/helmet/skullcap,
 /obj/item/clothing/head/helmet/skullcap,
@@ -579,8 +579,8 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "jr" = (
-/obj/structure/rack/rogue,
-/obj/structure/rack/rogue,
+/obj/structure/rack,
+/obj/structure/rack,
 /obj/item/clothing/neck/gorget{
 	pixel_y = -12
 	},
@@ -625,7 +625,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "jQ" = (
-/obj/machinery/light/rogue/firebowl,
+/obj/machinery/light/fueled/firebowl,
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "jR" = (
@@ -637,12 +637,12 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "jS" = (
-/obj/structure/bed/rogue/sleepingbag,
+/obj/structure/bed/sleepingbag,
 /mob/living/carbon/human/species/goblin/npc/ambush,
 /turf/open/floor/churchrough,
 /area/rogue/under/mountains/anvil/dungeon)
 "jW" = (
-/obj/structure/bed/rogue/sleepingbag,
+/obj/structure/bed/sleepingbag,
 /mob/living/carbon/human/species/goblin/npc,
 /obj/item/weapon/pick,
 /obj/item/flashlight/flare/torch/lantern,
@@ -670,7 +670,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "kl" = (
-/obj/machinery/light/rogue/torchholder,
+/obj/machinery/light/fueled/torchholder,
 /turf/closed/wall/mineral/stonebrick,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "kn" = (
@@ -680,7 +680,7 @@
 /turf/open/floor/grass,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "kp" = (
-/obj/structure/rack/rogue/shelf/big,
+/obj/structure/rack/shelf/big,
 /obj/item/reagent_containers/glass/bottle/wine,
 /obj/item/reagent_containers/glass/bottle/wine,
 /obj/item/reagent_containers/glass/bottle/wine,
@@ -704,7 +704,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "kx" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/weapon/polearm/spear,
 /obj/item/weapon/polearm/spear,
 /obj/item/weapon/polearm/spear,
@@ -719,11 +719,11 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "kC" = (
-/obj/item/roguebin/water,
+/obj/item/bin/water,
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "kD" = (
-/obj/item/chair/stool/bar/rogue,
+/obj/item/chair/stool/bar,
 /turf/open/floor/twig,
 /area/rogue/under/mountains/anvil/dungeon)
 "kH" = (
@@ -738,7 +738,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "kI" = (
-/obj/structure/rack/rogue/shelf/biggest,
+/obj/structure/rack/shelf/biggest,
 /obj/item/flashlight/flare/torch/lantern,
 /obj/item/flashlight/flare/torch/lantern,
 /obj/item/flashlight/flare/torch/lantern,
@@ -770,7 +770,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "kY" = (
-/obj/structure/rack/rogue/shelf/big,
+/obj/structure/rack/shelf/big,
 /obj/item/natural/bundle/cloth,
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
@@ -781,7 +781,7 @@
 /obj/effect/decal/cleanable/dirt/cobweb{
 	dir = 4
 	},
-/obj/machinery/light/rogue/firebowl/church,
+/obj/machinery/light/fueled/firebowl/church,
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "lk" = (
@@ -790,7 +790,7 @@
 /turf/open/floor/carpet,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "lm" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/book/granter/spell_points,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
@@ -807,7 +807,7 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "ly" = (
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/carpet/purple,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "lz" = (
@@ -817,7 +817,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "lD" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/flashlight/flare/torch/lantern,
 /obj/item/flashlight/flare/torch/lantern,
 /obj/item/flashlight/flare/torch/lantern,
@@ -828,7 +828,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "lO" = (
-/mob/living/simple_animal/hostile/rogue/haunt,
+/mob/living/simple_animal/hostile/haunt,
 /turf/open/floor/dirt/road,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "lQ" = (
@@ -844,7 +844,7 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "md" = (
 /obj/structure/table/wood,
-/obj/item/book/rogue/magicaltheory,
+/obj/item/book/magicaltheory,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "me" = (
@@ -864,7 +864,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "mn" = (
-/obj/structure/bed/rogue/sleepingbag,
+/obj/structure/bed/sleepingbag,
 /mob/living/carbon/human/species/goblin/npc,
 /obj/item/flashlight/flare/torch/lantern,
 /obj/item/weapon/pick,
@@ -872,11 +872,11 @@
 /turf/open/floor/twig,
 /area/rogue/under/mountains/anvil/dungeon)
 "mo" = (
-/mob/living/simple_animal/hostile/rogue/skeleton/guard,
+/mob/living/simple_animal/hostile/skeleton/guard,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "mp" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/reagent_containers/glass/bottle/diseasecure,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/cobble,
@@ -886,7 +886,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "mt" = (
-/mob/living/simple_animal/hostile/rogue/skeleton/spear,
+/mob/living/simple_animal/hostile/skeleton/spear,
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "mw" = (
@@ -899,11 +899,11 @@
 /turf/open/floor/churchrough,
 /area/rogue/under/mountains/anvil/dungeon)
 "mB" = (
-/mob/living/simple_animal/hostile/rogue/skeleton/guard,
+/mob/living/simple_animal/hostile/skeleton/guard,
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "mC" = (
-/obj/machinery/light/rogue/torchholder,
+/obj/machinery/light/fueled/torchholder,
 /turf/closed/wall/mineral/stonebrick,
 /area/rogue/under/mountains/anvil/dungeon)
 "mJ" = (
@@ -935,17 +935,17 @@
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "mT" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/statue/silver,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "mU" = (
-/obj/structure/rack/rogue/shelf/big,
+/obj/structure/rack/shelf/big,
 /obj/item/broom,
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "mX" = (
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /mob/living/carbon/human/species/skeleton/npc/peasant,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /obj/item/weapon/polearm/spear/stone,
@@ -971,7 +971,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "nM" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/clothing/head/helmet/leather/minershelm,
 /obj/item/clothing/head/helmet/leather/minershelm,
 /obj/item/clothing/head/helmet/leather/minershelm,
@@ -980,7 +980,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "nP" = (
-/obj/item/rogue/instrument/harp,
+/obj/item/instrument/harp,
 /mob/living/carbon/human/species/skeleton/no_equipment{
 	real_name = "Shard"
 	},
@@ -1002,7 +1002,7 @@
 	},
 /obj/item/reagent_containers/food/snacks/rotten/meat,
 /obj/item/reagent_containers/glass/cup/skull,
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "nV" = (
@@ -1011,11 +1011,11 @@
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "oa" = (
-/obj/machinery/light/rogue/campfire/longlived,
+/obj/machinery/light/fueled/campfire/longlived,
 /turf/open/floor/twig,
 /area/rogue/under/mountains/anvil/dungeon)
 "os" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/weapon/mace/goden/shillelagh,
 /obj/item/weapon/mace/goden/shillelagh,
 /obj/item/weapon/mace/goden/shillelagh,
@@ -1032,7 +1032,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "ow" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/weapon/sword/scimitar/messer{
 	pixel_x = -3;
 	pixel_y = 2
@@ -1064,7 +1064,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "oB" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/weapon/shovel,
 /obj/item/weapon/shovel,
 /obj/item/weapon/shovel,
@@ -1089,7 +1089,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "oU" = (
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /obj/item/cooking/skewer,
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
@@ -1122,7 +1122,7 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "pg" = (
 /obj/effect/decal/cleanable/dirt/dust,
-/mob/living/simple_animal/hostile/rogue/skeleton/bow,
+/mob/living/simple_animal/hostile/skeleton/bow,
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "pl" = (
@@ -1139,7 +1139,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "pp" = (
-/obj/structure/chair/wood/rogue{
+/obj/structure/chair/wood/alt{
 	dir = 4;
 	icon_state = "chair2"
 	},
@@ -1149,7 +1149,7 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "pr" = (
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/machinery/light/rogue/torchholder/r,
+/obj/machinery/light/fueled/torchholder/r,
 /obj/item/reagent_containers/food/snacks/smallrat,
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
@@ -1168,7 +1168,7 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "qk" = (
 /obj/structure/bookcase/random/apocrypha,
-/obj/machinery/light/rogue/wallfire/candle/blue,
+/obj/machinery/light/fueled/wallfire/candle/blue,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "qn" = (
@@ -1194,7 +1194,7 @@
 /turf/open/floor/carpet,
 /area/rogue/under/mountains/anvil/dungeon)
 "qq" = (
-/obj/machinery/light/rogue/torchholder/r,
+/obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "qs" = (
@@ -1236,16 +1236,16 @@
 /turf/open/floor/carpet,
 /area/rogue/under/mountains/anvil/dungeon)
 "qV" = (
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "qY" = (
-/obj/structure/bed/rogue/hay,
+/obj/structure/bed/hay,
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "qZ" = (
-/obj/item/rogue/instrument/drum,
+/obj/item/instrument/drum,
 /mob/living/carbon/human/species/skeleton/no_equipment{
 	real_name = "Shriek"
 	},
@@ -1292,8 +1292,8 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "rC" = (
-/obj/machinery/light/rogue/torchholder/l,
-/mob/living/simple_animal/hostile/rogue/skeleton/spear,
+/obj/machinery/light/fueled/torchholder/l,
+/mob/living/simple_animal/hostile/skeleton/spear,
 /turf/open/floor/carpet,
 /area/rogue/under/mountains/anvil/dungeon)
 "rD" = (
@@ -1308,11 +1308,11 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "rM" = (
-/mob/living/simple_animal/hostile/rogue/skeleton/guard,
+/mob/living/simple_animal/hostile/skeleton/guard,
 /turf/open/floor/carpet,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "rO" = (
-/obj/structure/bed/rogue/hay,
+/obj/structure/bed/hay,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
@@ -1322,7 +1322,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "rR" = (
-/obj/item/rogue/instrument/accord,
+/obj/item/instrument/accord,
 /mob/living/carbon/human/species/skeleton/no_equipment{
 	real_name = "Hollow"
 	},
@@ -1382,7 +1382,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "st" = (
-/obj/item/rogue/instrument/flute,
+/obj/item/instrument/flute,
 /mob/living/carbon/human/species/skeleton/no_equipment{
 	real_name = "Clatter"
 	},
@@ -1404,20 +1404,20 @@
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "sB" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/reagent_containers/glass/bottle/elfblue,
 /obj/item/reagent_containers/glass/bottle/elfblue,
 /obj/item/reagent_containers/glass/bottle/elfblue,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "sE" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/coin/silver/pile,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "sL" = (
-/obj/machinery/light/rogue/campfire/longlived,
+/obj/machinery/light/fueled/campfire/longlived,
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "sO" = (
@@ -1433,7 +1433,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "sZ" = (
-/mob/living/simple_animal/hostile/rogue/skeleton/bow,
+/mob/living/simple_animal/hostile/skeleton/bow,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "ta" = (
@@ -1444,7 +1444,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "tb" = (
-/obj/item/chair/stool/bar/rogue,
+/obj/item/chair/stool/bar,
 /obj/item/cooking/skewer,
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
@@ -1453,8 +1453,8 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "ti" = (
-/obj/structure/rack/rogue/shelf/big,
-/obj/structure/rack/rogue/shelf,
+/obj/structure/rack/shelf/big,
+/obj/structure/rack/shelf,
 /obj/item/reagent_containers/glass/cup/wooden,
 /obj/item/reagent_containers/glass/cup/wooden,
 /obj/item/reagent_containers/glass/cup/wooden,
@@ -1468,11 +1468,11 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "tx" = (
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/carpet/purple,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "tz" = (
-/obj/structure/rack/rogue/shelf/big,
+/obj/structure/rack/shelf/big,
 /obj/item/reagent_containers/glass/bottle/redwine,
 /obj/item/reagent_containers/glass/bottle/redwine,
 /obj/item/reagent_containers/glass/bottle/redwine,
@@ -1480,12 +1480,12 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "tB" = (
-/obj/machinery/light/rogue/firebowl,
+/obj/machinery/light/fueled/firebowl,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "tF" = (
-/obj/structure/bed/rogue/sleepingbag,
+/obj/structure/bed/sleepingbag,
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "tY" = (
@@ -1497,7 +1497,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "tZ" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/weapon/axe/iron,
 /obj/item/weapon/axe/iron,
 /obj/item/weapon/axe/iron,
@@ -1530,7 +1530,7 @@
 /turf/open/floor/grass,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "uo" = (
-/obj/structure/chair/wood/rogue{
+/obj/structure/chair/wood/alt{
 	dir = 1
 	},
 /mob/living/carbon/human/species/skeleton/npc/peasant,
@@ -1539,18 +1539,18 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "uq" = (
-/obj/machinery/light/rogue/torchholder/r,
+/obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/twig,
 /area/rogue/under/mountains/anvil/dungeon)
 "ur" = (
-/obj/structure/chair/wood/rogue,
+/obj/structure/chair/wood/alt,
 /mob/living/carbon/human/species/skeleton/npc/peasant,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /obj/item/weapon/knife/cleaver,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "uv" = (
-/obj/machinery/light/rogue/firebowl,
+/obj/machinery/light/fueled/firebowl,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "uw" = (
@@ -1581,21 +1581,21 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "uP" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/coin/copper/pile,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "uQ" = (
 /obj/structure/bookcase/random/legends,
-/obj/machinery/light/rogue/wallfire/candle/blue,
+/obj/machinery/light/fueled/wallfire/candle/blue,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "uT" = (
-/obj/structure/bed/rogue/sleepingbag,
+/obj/structure/bed/sleepingbag,
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "uY" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/clothing/neck/talkstone,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
@@ -1605,11 +1605,11 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "vf" = (
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/carpet,
 /area/rogue/under/mountains/anvil/dungeon)
 "vr" = (
-/mob/living/simple_animal/hostile/rogue/skeleton/spear,
+/mob/living/simple_animal/hostile/skeleton/spear,
 /turf/open/floor/carpet,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "vt" = (
@@ -1619,7 +1619,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "vz" = (
-/obj/item/rogue/instrument/guitar,
+/obj/item/instrument/guitar,
 /mob/living/carbon/human/species/skeleton/no_equipment{
 	real_name = "Grin"
 	},
@@ -1654,7 +1654,7 @@
 /turf/open/floor/grass,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "vG" = (
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /obj/structure/table/wood{
 	icon_state = "longtable";
 	dir = 4
@@ -1673,7 +1673,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "vM" = (
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "vO" = (
@@ -1687,7 +1687,7 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "wg" = (
 /obj/structure/flora/roguegrass,
-/obj/machinery/light/rogue/firebowl/standing/blue,
+/obj/machinery/light/fueled/firebowl/standing/blue,
 /turf/open/floor/grass,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "wj" = (
@@ -1696,7 +1696,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "wt" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/statue/gold,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
@@ -1717,29 +1717,29 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "xc" = (
-/mob/living/simple_animal/hostile/rogue/skeleton/bow,
+/mob/living/simple_animal/hostile/skeleton/bow,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "xg" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/flint,
 /obj/item/flint,
 /obj/item/flint,
 /turf/open/floor/twig,
 /area/rogue/under/mountains/anvil/dungeon)
 "xh" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/clothing/ring/silver/blortz,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "xi" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/organ/brain,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "xn" = (
-/obj/item/rogue/instrument/lute,
+/obj/item/instrument/lute,
 /mob/living/carbon/human/species/skeleton/no_equipment{
 	real_name = "Rattle"
 	},
@@ -1775,7 +1775,7 @@
 /turf/open/floor/carpet,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "xw" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/weapon/sword/iron,
 /obj/item/weapon/sword/iron,
 /obj/item/weapon/sword/iron,
@@ -1793,7 +1793,7 @@
 /turf/open/floor/grass,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "xI" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/weapon/polearm/woodstaff/quarterstaff,
 /obj/item/weapon/polearm/woodstaff/quarterstaff,
 /obj/item/weapon/polearm/woodstaff/quarterstaff,
@@ -1804,7 +1804,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "xM" = (
-/obj/structure/chair/wood/rogue{
+/obj/structure/chair/wood/alt{
 	dir = 8;
 	icon_state = "chair2"
 	},
@@ -1825,7 +1825,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "yv" = (
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /obj/structure/fermentation_keg/beer,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/cobblerock,
@@ -1854,7 +1854,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "yY" = (
-/obj/structure/rack/rogue/shelf/biggest,
+/obj/structure/rack/shelf/biggest,
 /obj/item/natural/bundle/cloth,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
@@ -1872,19 +1872,19 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "zp" = (
-/obj/machinery/light/rogue/campfire/longlived,
+/obj/machinery/light/fueled/campfire/longlived,
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "zu" = (
 /turf/open/transparent/openspace,
 /area/rogue/under/mountains/anvil/dungeon)
 "zv" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/ingot/silver,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "zA" = (
-/obj/structure/bed/rogue/sleepingbag,
+/obj/structure/bed/sleepingbag,
 /mob/living/carbon/human/species/goblin/npc/ambush,
 /obj/structure/fluff/walldeco/skullspike,
 /obj/effect/decal/cleanable/blood,
@@ -1906,7 +1906,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "zV" = (
-/turf/closed/mineral/random/rogue,
+/turf/closed/mineral/random,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Ab" = (
 /obj/structure/fermentation_keg/beer,
@@ -1939,7 +1939,7 @@
 /turf/open/floor/carpet/purple,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Ay" = (
-/obj/structure/rack/rogue/shelf/big,
+/obj/structure/rack/shelf/big,
 /obj/item/reagent_containers/food/snacks/truffles,
 /obj/item/reagent_containers/food/snacks/truffles,
 /obj/item/reagent_containers/food/snacks/truffles,
@@ -1951,12 +1951,12 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "AA" = (
-/obj/machinery/light/rogue/torchholder/r,
+/obj/machinery/light/fueled/torchholder/r,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/carpet,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "AG" = (
-/obj/machinery/light/rogue/wallfire/candle/r,
+/obj/machinery/light/fueled/wallfire/candle/r,
 /turf/closed/wall/mineral/stonebrick,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "AH" = (
@@ -1981,7 +1981,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "AP" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/storage/belt/leather/plaquesilver,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/cobble,
@@ -2003,7 +2003,7 @@
 /turf/open/floor/twig,
 /area/rogue/under/mountains/anvil/dungeon)
 "Bl" = (
-/obj/machinery/light/rogue/torchholder/r,
+/obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "Br" = (
@@ -2019,7 +2019,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "BC" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/item/reagent_containers/powder/moondust_purest,
 /obj/item/reagent_containers/powder/moondust_purest,
@@ -2061,7 +2061,7 @@
 /turf/closed/wall/mineral/stonebrick,
 /area/rogue/under/mountains/anvil/dungeon)
 "Cd" = (
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /mob/living/carbon/human/species/skeleton/npc/peasant,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /obj/item/weapon/axe/iron,
@@ -2085,13 +2085,13 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "CA" = (
-/obj/structure/rack/rogue/shelf/biggest,
+/obj/structure/rack/shelf/biggest,
 /obj/item/clothing/head/helmet/orc/warlord,
 /obj/item/clothing/head/helmet/orc/warlord,
 /turf/open/floor/twig,
 /area/rogue/under/mountains/anvil/dungeon)
 "CB" = (
-/obj/machinery/light/rogue/firebowl/standing/blue,
+/obj/machinery/light/fueled/firebowl/standing/blue,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
@@ -2123,7 +2123,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Do" = (
-/obj/structure/rack/rogue/shelf/biggest,
+/obj/structure/rack/shelf/biggest,
 /obj/item/reagent_containers/glass/bucket/pot,
 /obj/item/reagent_containers/glass/bucket/pot,
 /obj/item/reagent_containers/glass/bucket/pot,
@@ -2146,12 +2146,12 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "DD" = (
-/obj/structure/bed/rogue/sleepingbag,
+/obj/structure/bed/sleepingbag,
 /mob/living/carbon/human/species/goblin/npc/ambush,
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "DE" = (
-/obj/structure/rack/rogue/shelf/big,
+/obj/structure/rack/shelf/big,
 /obj/item/reagent_containers/food/snacks/produce/potato,
 /obj/item/reagent_containers/food/snacks/produce/potato,
 /obj/item/reagent_containers/food/snacks/produce/potato,
@@ -2172,8 +2172,8 @@
 /turf/closed/wall/mineral/stonebrick,
 /area/rogue/under/mountains/anvil/dungeon)
 "DS" = (
-/obj/structure/rack/rogue/shelf/big,
-/obj/structure/rack/rogue/shelf,
+/obj/structure/rack/shelf/big,
+/obj/structure/rack/shelf,
 /obj/item/reagent_containers/glass/cup/wooden,
 /obj/item/reagent_containers/glass/cup/wooden,
 /obj/item/reagent_containers/glass/cup/wooden,
@@ -2195,7 +2195,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "Ed" = (
-/obj/structure/rack/rogue/shelf/big,
+/obj/structure/rack/shelf/big,
 /obj/item/reagent_containers/food/snacks/cheddar,
 /obj/item/reagent_containers/food/snacks/cheddar,
 /obj/item/reagent_containers/food/snacks/cheddar,
@@ -2210,7 +2210,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "Ej" = (
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/twig,
 /area/rogue/under/mountains/anvil/dungeon)
@@ -2223,7 +2223,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "En" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/clothing/armor/chainmail/iron,
 /obj/item/clothing/armor/chainmail/iron,
 /obj/item/clothing/armor/chainmail/iron,
@@ -2234,7 +2234,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "Eo" = (
-/obj/structure/chair/wood/rogue{
+/obj/structure/chair/wood/alt{
 	dir = 1
 	},
 /mob/living/carbon/human/species/skeleton/npc/peasant,
@@ -2253,8 +2253,8 @@
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "EK" = (
-/obj/machinery/light/rogue/torchholder/r,
-/mob/living/simple_animal/hostile/rogue/skeleton/spear,
+/obj/machinery/light/fueled/torchholder/r,
+/mob/living/simple_animal/hostile/skeleton/spear,
 /turf/open/floor/carpet,
 /area/rogue/under/mountains/anvil/dungeon)
 "EM" = (
@@ -2262,7 +2262,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "EP" = (
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/carpet,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "ET" = (
@@ -2270,12 +2270,12 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "EU" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/reagent_containers/glass/cup/silver,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Fa" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/ingot/gold,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
@@ -2301,14 +2301,14 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "Fo" = (
-/obj/structure/rack/rogue/shelf/biggest,
+/obj/structure/rack/shelf/biggest,
 /obj/item/flint,
 /obj/item/flint,
 /obj/item/flint,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "Fr" = (
-/obj/structure/bed/rogue/hay,
+/obj/structure/bed/hay,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "Fu" = (
@@ -2342,13 +2342,13 @@
 /turf/closed/wall/mineral/stonebrick,
 /area/rogue/under/mountains/anvil/dungeon)
 "FT" = (
-/obj/machinery/light/rogue/hearth,
+/obj/machinery/light/fueled/hearth,
 /obj/item/cooking/pan,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "FX" = (
 /obj/structure/bookcase/random/thesis,
-/obj/machinery/light/rogue/wallfire/candle/blue,
+/obj/machinery/light/fueled/wallfire/candle/blue,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "FZ" = (
@@ -2356,7 +2356,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Gc" = (
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
@@ -2386,14 +2386,14 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Go" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/coin/gold/pile,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Gt" = (
-/obj/machinery/light/rogue/wallfire/candle/blue,
+/obj/machinery/light/fueled/wallfire/candle/blue,
 /obj/structure/bookcase,
-/obj/item/book/rogue/yeoldecookingmanual,
+/obj/item/book/yeoldecookingmanual,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Gw" = (
@@ -2408,7 +2408,7 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "GH" = (
 /obj/structure/fermentation_keg/random/water,
-/obj/machinery/light/rogue/torchholder/c,
+/obj/machinery/light/fueled/torchholder/c,
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "GJ" = (
@@ -2416,14 +2416,14 @@
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "GK" = (
-/obj/structure/chair/wood/rogue{
+/obj/structure/chair/wood/alt{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "GS" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/organ/tongue,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
@@ -2440,7 +2440,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Hf" = (
-/obj/structure/rack/rogue/shelf/biggest,
+/obj/structure/rack/shelf/biggest,
 /obj/item/broom,
 /obj/item/broom,
 /obj/item/broom,
@@ -2448,12 +2448,12 @@
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "Hm" = (
-/obj/machinery/light/rogue/wallfire/candle,
+/obj/machinery/light/fueled/wallfire/candle,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Hq" = (
-/obj/machinery/light/rogue/cauldron,
+/obj/machinery/light/fueled/cauldron,
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "Ht" = (
@@ -2488,7 +2488,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "HH" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/flashlight/flare/torch/metal,
 /obj/item/flashlight/flare/torch/metal,
 /obj/item/flashlight/flare/torch/metal,
@@ -2505,20 +2505,20 @@
 /turf/closed/wall/mineral/stonebrick,
 /area/rogue/under/mountains/anvil/dungeon)
 "HS" = (
-/obj/structure/rack/rogue/shelf/biggest,
+/obj/structure/rack/shelf/biggest,
 /obj/item/weapon/shield/tower,
 /obj/item/weapon/sword/short,
 /obj/item/weapon/sword/scimitar/messer,
 /turf/open/floor/twig,
 /area/rogue/under/mountains/anvil/dungeon)
 "HV" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/item/clothing/head/wizhat,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "HX" = (
-/obj/structure/chair/wood/rogue{
+/obj/structure/chair/wood/alt{
 	dir = 4;
 	icon_state = "chair2"
 	},
@@ -2573,7 +2573,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "It" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/reagent_containers/glass/bottle/elfred,
 /obj/item/reagent_containers/glass/bottle/elfred,
 /turf/open/floor/cobble,
@@ -2587,13 +2587,13 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "II" = (
 /obj/structure/table/church/m,
-/obj/item/book/rogue/noc,
+/obj/item/book/noc,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "IK" = (
 /obj/structure/flora/roguegrass,
 /obj/structure/flora/ausbushes/brflowers,
-/obj/machinery/light/rogue/firebowl/standing/blue,
+/obj/machinery/light/fueled/firebowl/standing/blue,
 /turf/open/floor/grass,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "IL" = (
@@ -2601,7 +2601,7 @@
 /turf/closed/wall/mineral/stonebrick,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "IN" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/clothing/armor/gambeson,
 /obj/item/clothing/armor/gambeson,
 /obj/item/clothing/armor/gambeson,
@@ -2617,7 +2617,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "IR" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/clothing/gloves/leather,
 /obj/item/clothing/gloves/leather,
 /obj/item/clothing/gloves/leather,
@@ -2628,7 +2628,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "IV" = (
-/obj/structure/rack/rogue/shelf/biggest,
+/obj/structure/rack/shelf/biggest,
 /obj/structure/fluff/millstone,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/cobble,
@@ -2638,7 +2638,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Jb" = (
-/obj/structure/chair/wood/rogue/fancy{
+/obj/structure/chair/wood/alt/fancy{
 	dir = 8
 	},
 /turf/open/floor/cobble,
@@ -2673,14 +2673,14 @@
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "JB" = (
-/obj/structure/chair/wood/rogue{
+/obj/structure/chair/wood/alt{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/carpet,
 /area/rogue/under/mountains/anvil/dungeon)
 "JH" = (
-/obj/structure/chair/wood/rogue{
+/obj/structure/chair/wood/alt{
 	dir = 1
 	},
 /mob/living/carbon/human/species/skeleton/npc/peasant,
@@ -2689,7 +2689,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "JJ" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/weapon/knife/dagger/silver,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
@@ -2698,26 +2698,26 @@
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "JO" = (
-/obj/machinery/light/rogue/forge,
+/obj/machinery/light/fueled/forge,
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "JR" = (
-/obj/machinery/light/rogue/firebowl/standing,
+/obj/machinery/light/fueled/firebowl/standing,
 /turf/open/floor/carpet,
 /area/rogue/under/mountains/anvil/dungeon)
 "JT" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/storage/belt/leather/plaquegold,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "JV" = (
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /mob/living/carbon/human/species/skeleton/npc/peasant,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "Kd" = (
-/mob/living/simple_animal/hostile/rogue/skeleton/axe,
+/mob/living/simple_animal/hostile/skeleton/axe,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
@@ -2726,7 +2726,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Kl" = (
-/obj/machinery/light/rogue/torchholder/r,
+/obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "Kp" = (
@@ -2770,11 +2770,11 @@
 /turf/open/floor/carpet/purple,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "KI" = (
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "KN" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/weapon/pick,
 /obj/item/weapon/pick,
 /obj/item/weapon/pick,
@@ -2784,8 +2784,8 @@
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "KQ" = (
-/obj/structure/chair/stool/rogue,
-/mob/living/simple_animal/hostile/rogue/skeleton/guard,
+/obj/structure/chair/stool,
+/mob/living/simple_animal/hostile/skeleton/guard,
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "KS" = (
@@ -2806,8 +2806,8 @@
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "Lq" = (
-/obj/structure/chair/stool/rogue,
-/mob/living/simple_animal/hostile/rogue/skeleton/guard,
+/obj/structure/chair/stool,
+/mob/living/simple_animal/hostile/skeleton/guard,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "Ly" = (
@@ -2819,7 +2819,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "LD" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/clothing/pants/trou/leather,
 /obj/item/clothing/pants/trou/leather,
 /obj/item/clothing/pants/trou/leather,
@@ -2831,7 +2831,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "LG" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/organ/heart,
 /obj/item/organ/heart,
 /turf/open/floor/cobble,
@@ -2886,12 +2886,12 @@
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "Mq" = (
-/obj/structure/rack/rogue/shelf/big,
+/obj/structure/rack/shelf/big,
 /obj/item/reagent_containers/glass/bottle/wine/sourwine,
 /obj/item/reagent_containers/glass/bottle/wine/sourwine,
 /obj/item/reagent_containers/glass/bottle/wine/sourwine,
 /obj/item/reagent_containers/glass/bottle/wine/sourwine,
-/obj/machinery/light/rogue/torchholder/r,
+/obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Mr" = (
@@ -2900,14 +2900,14 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "MH" = (
 /mob/living/carbon/human/species/orc/warlord,
-/obj/structure/bed/rogue/sleepingbag,
+/obj/structure/bed/sleepingbag,
 /obj/item/clothing/wrists/bracers,
 /obj/item/clothing/cloak/cape,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /turf/open/floor/twig,
 /area/rogue/under/mountains/anvil/dungeon)
 "MI" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/clothing/ring/gold,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
@@ -2929,7 +2929,7 @@
 /turf/open/floor/carpet,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "ML" = (
-/obj/structure/bed/rogue/sleepingbag,
+/obj/structure/bed/sleepingbag,
 /mob/living/carbon/human/species/goblin/npc,
 /obj/item/flashlight/flare/torch/lantern,
 /obj/item/weapon/pick,
@@ -2937,7 +2937,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "MP" = (
-/obj/machinery/light/rogue/wallfire/candle/r,
+/obj/machinery/light/fueled/wallfire/candle/r,
 /turf/closed/wall/mineral/stonebrick,
 /area/rogue/under/mountains/anvil/dungeon)
 "MS" = (
@@ -2951,7 +2951,7 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Na" = (
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/machinery/light/rogue/torchholder/r,
+/obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Nc" = (
@@ -2959,7 +2959,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Nk" = (
-/obj/structure/chair/wood/rogue{
+/obj/structure/chair/wood/alt{
 	dir = 1
 	},
 /turf/open/floor/cobblerock,
@@ -2968,11 +2968,11 @@
 /obj/structure/fluff/railing/fence{
 	dir = 8
 	},
-/obj/structure/bed/rogue/sleepingbag,
+/obj/structure/bed/sleepingbag,
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "NA" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/weapon/mace/woodclub/train_sword,
 /obj/item/weapon/mace/woodclub/train_sword,
 /obj/item/weapon/mace/woodclub/train_sword,
@@ -2987,7 +2987,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "NO" = (
-/obj/machinery/light/rogue/torchholder/r,
+/obj/machinery/light/fueled/torchholder/r,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
@@ -3003,7 +3003,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "NZ" = (
-/obj/structure/chair/wood/rogue{
+/obj/structure/chair/wood/alt{
 	dir = 1
 	},
 /mob/living/carbon/human/species/skeleton/npc/peasant,
@@ -3042,7 +3042,7 @@
 /turf/open/floor/carpet,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "OB" = (
-/obj/structure/rack/rogue/shelf/big,
+/obj/structure/rack/shelf/big,
 /obj/item/reagent_containers/food/snacks/produce/cabbage,
 /obj/item/reagent_containers/food/snacks/produce/cabbage,
 /obj/item/reagent_containers/food/snacks/produce/cabbage,
@@ -3051,16 +3051,16 @@
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "OC" = (
-/obj/structure/chair/wood/rogue,
+/obj/structure/chair/wood/alt,
 /mob/living/carbon/human/species/skeleton/npc/peasant,
 /turf/open/floor/carpet,
 /area/rogue/under/mountains/anvil/dungeon)
 "OD" = (
-/obj/structure/rack/rogue/shelf/biggest,
+/obj/structure/rack/shelf/biggest,
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "OE" = (
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/carpet,
 /area/rogue/under/mountains/anvil/dungeon/lower)
@@ -3071,7 +3071,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "OL" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/weapon/pick,
 /obj/item/weapon/pick,
 /obj/item/weapon/pick,
@@ -3079,12 +3079,12 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "ON" = (
 /obj/structure/table/vtable/v2,
-/obj/item/book/rogue/secret/xylix,
+/obj/item/book/secret/xylix,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "OQ" = (
-/obj/machinery/light/rogue/torchholder,
+/obj/machinery/light/fueled/torchholder,
 /obj/structure/fluff/walldeco/moon,
 /turf/closed/wall/mineral/stonebrick,
 /area/rogue/under/mountains/anvil/dungeon)
@@ -3102,22 +3102,22 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "Pf" = (
-/obj/structure/rack/rogue/shelf/biggest,
+/obj/structure/rack/shelf/biggest,
 /obj/item/cooking/pan,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "Po" = (
-/obj/machinery/light/rogue/cauldron,
+/obj/machinery/light/fueled/cauldron,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "Pp" = (
 /obj/structure/fermentation_keg/beer,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Pq" = (
-/mob/living/simple_animal/hostile/rogue/skeleton/axe,
+/mob/living/simple_animal/hostile/skeleton/axe,
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "Pt" = (
@@ -3126,7 +3126,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "PG" = (
-/obj/structure/bed/rogue/sleepingbag,
+/obj/structure/bed/sleepingbag,
 /mob/living/carbon/human/species/orc/marauder,
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
@@ -3154,7 +3154,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "PP" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "PQ" = (
@@ -3162,22 +3162,22 @@
 /turf/open/floor/carpet/stellar,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "PS" = (
-/obj/machinery/light/rogue/oven/east,
+/obj/machinery/light/fueled/oven/east,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "PW" = (
-/obj/structure/chair/wood/rogue{
+/obj/structure/chair/wood/alt{
 	dir = 1
 	},
 /turf/open/floor/carpet,
 /area/rogue/under/mountains/anvil/dungeon)
 "Qe" = (
-/mob/living/simple_animal/hostile/rogue/haunt,
+/mob/living/simple_animal/hostile/haunt,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Qf" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/flashlight/flare/torch/lantern,
 /obj/item/flashlight/flare/torch/lantern,
 /obj/item/flashlight/flare/torch/lantern,
@@ -3208,7 +3208,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "Qr" = (
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
@@ -3218,7 +3218,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "QA" = (
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "QI" = (
@@ -3257,7 +3257,7 @@
 /turf/open/floor/carpet/purple,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Rr" = (
-/obj/structure/chair/wood/rogue,
+/obj/structure/chair/wood/alt,
 /mob/living/carbon/human/species/skeleton/npc/warrior,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /obj/item/weapon/knife/cleaver/combat,
@@ -3287,7 +3287,7 @@
 /turf/closed/wall/mineral/stonebrick,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "RQ" = (
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Sa" = (
@@ -3300,7 +3300,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Sk" = (
-/obj/machinery/light/rogue/torchholder/r,
+/obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/carpet,
 /area/rogue/under/mountains/anvil/dungeon)
 "Sm" = (
@@ -3334,14 +3334,14 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "SI" = (
-/obj/structure/chair/wood/rogue,
+/obj/structure/chair/wood/alt,
 /mob/living/carbon/human/species/skeleton/npc/peasant,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /obj/item/weapon/knife/dagger/steel,
 /turf/open/floor/carpet,
 /area/rogue/under/mountains/anvil/dungeon)
 "SP" = (
-/obj/structure/rack/rogue/shelf/big,
+/obj/structure/rack/shelf/big,
 /obj/item/reagent_containers/food/snacks/raisins,
 /obj/item/reagent_containers/food/snacks/raisins,
 /obj/item/reagent_containers/food/snacks/raisins,
@@ -3354,8 +3354,8 @@
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "ST" = (
-/obj/structure/bed/rogue/shit,
-/obj/item/bedsheet/rogue/pelt,
+/obj/structure/bed/shit,
+/obj/item/bedsheet/pelt,
 /turf/open/floor/twig,
 /area/rogue/under/mountains/anvil/dungeon)
 "SU" = (
@@ -3370,7 +3370,7 @@
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "SY" = (
 /obj/structure/bookcase,
-/obj/item/book/rogue/sword,
+/obj/item/book/sword,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Tc" = (
@@ -3379,7 +3379,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "Td" = (
-/obj/machinery/light/rogue/oven/east,
+/obj/machinery/light/fueled/oven/east,
 /obj/effect/decal/cleanable/dirt/cobweb{
 	pixel_y = 5
 	},
@@ -3396,12 +3396,12 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "Tx" = (
 /obj/structure/fluff/walldeco/moon,
-/obj/machinery/light/rogue/torchholder,
+/obj/machinery/light/fueled/torchholder,
 /turf/closed/wall/mineral/stonebrick,
 /area/rogue/under/mountains/anvil/dungeon)
 "Tz" = (
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "TB" = (
@@ -3445,7 +3445,7 @@
 /turf/open/lava,
 /area/rogue/under/mountains/anvil/dungeon)
 "Ub" = (
-/obj/machinery/light/rogue/torchholder/r,
+/obj/machinery/light/fueled/torchholder/r,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/carpet,
 /area/rogue/under/mountains/anvil/dungeon)
@@ -3459,7 +3459,7 @@
 	dir = 1;
 	icon_state = "borderfall"
 	},
-/obj/machinery/light/rogue/firebowl/standing,
+/obj/machinery/light/fueled/firebowl/standing,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "Uo" = (
@@ -3467,7 +3467,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "Uq" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow,
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow,
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow,
@@ -3483,7 +3483,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "UB" = (
-/obj/structure/rack/rogue/shelf/big,
+/obj/structure/rack/shelf/big,
 /obj/item/reagent_containers/glass/bottle/whitewine,
 /obj/item/reagent_containers/glass/bottle/whitewine,
 /obj/item/reagent_containers/glass/bottle/whitewine,
@@ -3514,7 +3514,7 @@
 "UR" = (
 /obj/effect/decal/cleanable/blood/gibs/core,
 /obj/effect/decal/cleanable/blood,
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "US" = (
 /mob/living/carbon/human/species/skeleton/npc/peasant,
@@ -3535,7 +3535,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "UU" = (
-/obj/structure/chair/wood/rogue,
+/obj/structure/chair/wood/alt,
 /mob/living/carbon/human/species/skeleton/npc/warrior,
 /obj/effect/mapping_helpers/floor_clothing_equipper,
 /obj/item/weapon/knife/cleaver,
@@ -3543,7 +3543,7 @@
 /turf/open/floor/carpet,
 /area/rogue/under/mountains/anvil/dungeon)
 "UZ" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/ammo_holder/quiver/arrows,
 /obj/item/ammo_holder/quiver/arrows,
 /obj/item/ammo_holder/quiver/arrows,
@@ -3558,8 +3558,8 @@
 /turf/closed/wall/mineral/stonebrick,
 /area/rogue/under/mountains/anvil/dungeon)
 "Vb" = (
-/obj/structure/rack/rogue/shelf/big,
-/obj/structure/rack/rogue/shelf,
+/obj/structure/rack/shelf/big,
+/obj/structure/rack/shelf,
 /obj/item/reagent_containers/glass/cup/wooden,
 /obj/item/reagent_containers/glass/cup/wooden,
 /obj/item/reagent_containers/glass/cup/wooden,
@@ -3573,7 +3573,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "Vm" = (
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "Vo" = (
@@ -3601,7 +3601,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "VX" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/effect/decal/cleanable/dirt/cobweb{
 	icon_state = "cobweb2"
 	},
@@ -3626,7 +3626,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Wn" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/clothing/shoes/boots,
 /obj/item/clothing/shoes/boots,
 /obj/item/clothing/shoes/boots,
@@ -3645,11 +3645,11 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Wt" = (
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "Wy" = (
-/obj/structure/chair/wood/rogue{
+/obj/structure/chair/wood/alt{
 	dir = 1
 	},
 /mob/living/carbon/human/species/skeleton/npc/peasant,
@@ -3667,7 +3667,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "WF" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/clothing/face/spectacles/golden,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
@@ -3692,7 +3692,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "WW" = (
-/obj/machinery/light/rogue/firebowl/standing/blue,
+/obj/machinery/light/fueled/firebowl/standing/blue,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "WX" = (
@@ -3710,7 +3710,7 @@
 /turf/closed/wall/mineral/stone,
 /area/rogue/under/mountains/anvil/dungeon)
 "Xc" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Xd" = (
 /obj/item/alch/airdust,
@@ -3748,7 +3748,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "XK" = (
-/obj/structure/chair/wood/rogue{
+/obj/structure/chair/wood/alt{
 	dir = 4;
 	icon_state = "chair2"
 	},
@@ -3768,7 +3768,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "XW" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/reagent_containers/glass/cup/golden,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
@@ -3781,7 +3781,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "XZ" = (
-/obj/structure/rack/rogue/shelf/biggest,
+/obj/structure/rack/shelf/biggest,
 /obj/item/soap,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/cobblerock,
@@ -3799,7 +3799,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Yg" = (
-/obj/structure/rack/rogue/shelf/biggest,
+/obj/structure/rack/shelf/biggest,
 /obj/item/reagent_containers/glass/bucket/wooden,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/cobble,
@@ -3810,12 +3810,12 @@
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "Yq" = (
-/obj/structure/bed/rogue/hay,
+/obj/structure/bed/hay,
 /mob/living/carbon/human/species/skeleton/npc/peasant,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "Yw" = (
-/obj/structure/rack/rogue/shelf/biggest,
+/obj/structure/rack/shelf/biggest,
 /obj/item/flashlight/flare/torch/metal,
 /obj/item/flashlight/flare/torch/metal,
 /obj/item/flashlight/flare/torch/metal,
@@ -3849,7 +3849,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "YJ" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/weapon/mace/woodclub,
 /obj/item/weapon/mace/woodclub,
 /obj/item/weapon/mace/woodclub,
@@ -3871,7 +3871,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "YX" = (
-/mob/living/simple_animal/hostile/rogue/haunt,
+/mob/living/simple_animal/hostile/haunt,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
@@ -3892,16 +3892,16 @@
 	dir = 1;
 	icon_state = "borderfall"
 	},
-/obj/item/roguebin,
+/obj/item/bin,
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "Zn" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/clothing/ring/silver,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "ZJ" = (
-/obj/structure/rack/rogue/shelf/biggest,
+/obj/structure/rack/shelf/biggest,
 /obj/item/kitchen/rollingpin,
 /obj/item/kitchen/rollingpin,
 /obj/effect/decal/cleanable/dirt/dust,
@@ -3911,7 +3911,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon)
 "ZK" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/weapon/shield/wood,
 /obj/item/weapon/shield/wood,
 /obj/item/weapon/shield/wood,
@@ -3932,13 +3932,13 @@
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "ZR" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/reagent_containers/glass/bottle/strongpoison,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "ZT" = (
-/obj/machinery/light/rogue/firebowl/church,
+/obj/machinery/light/fueled/firebowl/church,
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon)
 "ZW" = (
@@ -3950,7 +3950,7 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "ZY" = (
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/machinery/light/rogue/torchholder/r,
+/obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/carpet,
 /area/rogue/under/mountains/anvil/dungeon)
 

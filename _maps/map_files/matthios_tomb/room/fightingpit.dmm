@@ -8,7 +8,7 @@
 /area/rogue)
 "ei" = (
 /obj/item/reagent_containers/glass/bottle/whitewine,
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "es" = (
 /obj/structure/mineral_door/wood/donjon{
@@ -20,7 +20,7 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "iA" = (
-/obj/machinery/light/rogue/torchholder/r,
+/obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/dirt,
 /area/rogue)
 "jx" = (
@@ -39,11 +39,11 @@
 /turf/open/floor/metal,
 /area/rogue)
 "lA" = (
-/obj/structure/rack/rogue/shelf,
+/obj/structure/rack/shelf,
 /turf/open/floor/ruinedwood/chevron,
 /area/rogue)
 "me" = (
-/obj/machinery/light/rogue/torchholder{
+/obj/machinery/light/fueled/torchholder{
 	dir = 1
 	},
 /turf/open/floor/dirt,
@@ -56,7 +56,7 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "ox" = (
-/obj/machinery/light/rogue/torchholder/c,
+/obj/machinery/light/fueled/torchholder/c,
 /turf/open/floor/dirt,
 /area/rogue)
 "qp" = (
@@ -70,7 +70,7 @@
 /turf/open/transparent/openspace,
 /area/rogue)
 "tE" = (
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/dirt,
 /area/rogue)
 "tY" = (
@@ -83,7 +83,7 @@
 /turf/open/floor/ruinedwood/chevron,
 /area/rogue)
 "vr" = (
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/ruinedwood,
 /area/rogue)
 "wX" = (
@@ -99,7 +99,7 @@
 /turf/open/floor/ruinedwood/chevron,
 /area/rogue)
 "yA" = (
-/obj/structure/rack/rogue/shelf{
+/obj/structure/rack/shelf{
 	pixel_y = -32
 	},
 /turf/open/floor/ruinedwood/chevron,
@@ -110,11 +110,11 @@
 /area/rogue)
 "zD" = (
 /obj/effect/decal/cleanable/vomit/old,
-/obj/machinery/light/rogue/torchholder/r,
+/obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/ruinedwood/chevron,
 /area/rogue)
 "zM" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "AJ" = (
 /obj/effect/decal/cleanable/blood/old,
@@ -142,10 +142,10 @@
 /area/rogue)
 "CT" = (
 /obj/item/reagent_containers/glass/bottle/redwine,
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "DM" = (
-/obj/structure/chair/wood/rogue/fancy,
+/obj/structure/chair/wood/alt/fancy,
 /turf/open/floor/ruinedwood/chevron,
 /area/rogue)
 "DP" = (
@@ -155,7 +155,7 @@
 /turf/open/floor/ruinedwood/chevron,
 /area/rogue)
 "Em" = (
-/obj/machinery/light/rogue/firebowl/standing,
+/obj/machinery/light/fueled/firebowl/standing,
 /turf/open/transparent/openspace,
 /area/rogue)
 "Fh" = (
@@ -170,7 +170,7 @@
 /turf/open/floor/metal,
 /area/rogue)
 "Ge" = (
-/obj/structure/chair/wood/rogue/fancy,
+/obj/structure/chair/wood/alt/fancy,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/ruinedwood/chevron,
 /area/rogue)
@@ -188,7 +188,7 @@
 /turf/open/floor/ruinedwood,
 /area/rogue)
 "IP" = (
-/obj/structure/chair/wood/rogue/fancy{
+/obj/structure/chair/wood/alt/fancy{
 	dir = 8
 	},
 /turf/open/floor/ruinedwood/chevron,
@@ -232,20 +232,20 @@
 /turf/open/floor/metal,
 /area/rogue)
 "OY" = (
-/obj/machinery/light/rogue/torchholder{
+/obj/machinery/light/fueled/torchholder{
 	dir = 1
 	},
 /turf/open/floor/ruinedwood/chevron,
 /area/rogue)
 "Pn" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/rack/rogue/shelf{
+/obj/structure/rack/shelf{
 	pixel_y = -32
 	},
 /turf/open/floor/ruinedwood/chevron,
 /area/rogue)
 "RS" = (
-/obj/machinery/light/rogue/torchholder/c,
+/obj/machinery/light/fueled/torchholder/c,
 /turf/open/floor/ruinedwood/chevron,
 /area/rogue)
 "SA" = (
@@ -263,13 +263,13 @@
 /turf/open/floor/metal,
 /area/rogue)
 "Vk" = (
-/obj/structure/chair/wood/rogue/fancy{
+/obj/structure/chair/wood/alt/fancy{
 	dir = 1
 	},
 /turf/open/floor/ruinedwood/chevron,
 /area/rogue)
 "Vy" = (
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/ruinedwood/chevron,
 /area/rogue)
 "VZ" = (
@@ -282,12 +282,12 @@
 /turf/open/floor/ruinedwood/chevron,
 /area/rogue)
 "YC" = (
-/obj/structure/chair/wood/rogue/fancy,
+/obj/structure/chair/wood/alt/fancy,
 /obj/effect/decal/cleanable/vomit/old,
 /turf/open/floor/ruinedwood/chevron,
 /area/rogue)
 "YL" = (
-/obj/machinery/light/rogue/torchholder/r,
+/obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/ruinedwood/chevron,
 /area/rogue)
 

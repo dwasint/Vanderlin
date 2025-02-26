@@ -21,7 +21,7 @@
 	dir = 4;
 	desc = "A wooden cart that will help you carry many things. You cant help but notice dried blood, pieces of viscera scattered across the wheel and inside..."
 	},
-/obj/machinery/light/rogue/oven/south,
+/obj/machinery/light/fueled/oven/south,
 /turf/open/floor/tile/checker,
 /area/rogue)
 "bj" = (
@@ -175,7 +175,7 @@
 /obj/structure/fluff/railing/border{
 	layer = 2
 	},
-/obj/structure/chair/wood/rogue{
+/obj/structure/chair/wood/alt{
 	dir = 8
 	},
 /turf/open/floor/blocks/stonered/tiny,
@@ -184,7 +184,7 @@
 /obj/effect/decal/cleanable/blood/tracks{
 	dir = 4
 	},
-/obj/machinery/light/rogue/torchholder/c,
+/obj/machinery/light/fueled/torchholder/c,
 /turf/open/floor/tile/checker,
 /area/rogue)
 "gV" = (
@@ -208,7 +208,7 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "hD" = (
-/obj/machinery/light/rogue/torchholder,
+/obj/machinery/light/fueled/torchholder,
 /turf/closed/wall/mineral/decostone/cand/reddish,
 /area/rogue)
 "hH" = (
@@ -257,7 +257,7 @@
 /turf/open/floor/tile/checker,
 /area/rogue)
 "jo" = (
-/obj/machinery/light/rogue/firebowl/standing,
+/obj/machinery/light/fueled/firebowl/standing,
 /turf/open/floor/blocks/stonered/tiny,
 /area/rogue)
 "jT" = (
@@ -286,7 +286,7 @@
 /obj/structure/fluff/railing/border{
 	dir = 1
 	},
-/obj/structure/chair/wood/rogue{
+/obj/structure/chair/wood/alt{
 	dir = 8
 	},
 /turf/open/floor/blocks/stonered/tiny,
@@ -295,14 +295,14 @@
 /turf/open/transparent/openspace,
 /area/rogue)
 "lz" = (
-/obj/machinery/light/rogue/torchholder,
+/obj/machinery/light/fueled/torchholder,
 /turf/closed/wall/mineral/stonebrick/reddish,
 /area/rogue)
 "lC" = (
 /obj/structure/fluff/railing/border{
 	dir = 8
 	},
-/obj/structure/chair/wood/rogue{
+/obj/structure/chair/wood/alt{
 	dir = 8
 	},
 /turf/open/floor/blocks/stonered/tiny,
@@ -361,7 +361,7 @@
 /turf/open/water/swamp,
 /area/rogue)
 "oF" = (
-/obj/machinery/light/rogue/firebowl,
+/obj/machinery/light/fueled/firebowl,
 /turf/open/floor/blocks/stonered,
 /area/rogue)
 "oJ" = (
@@ -372,7 +372,7 @@
 /turf/open/water/swamp,
 /area/rogue)
 "pu" = (
-/obj/machinery/light/rogue/firebowl,
+/obj/machinery/light/fueled/firebowl,
 /turf/open/floor/grass/red,
 /area/rogue)
 "qj" = (
@@ -436,7 +436,7 @@
 /turf/open/water/swamp,
 /area/rogue)
 "sP" = (
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /obj/item/ingot/gold,
 /turf/open/floor/blocks/stonered,
 /area/rogue)
@@ -471,10 +471,10 @@
 /turf/open/water/swamp,
 /area/rogue)
 "uP" = (
-/obj/structure/chair/wood/rogue{
+/obj/structure/chair/wood/alt{
 	dir = 8
 	},
-/obj/machinery/light/rogue/torchholder/c,
+/obj/machinery/light/fueled/torchholder/c,
 /obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/blocks/stonered/tiny,
 /area/rogue)
@@ -490,7 +490,7 @@
 /obj/structure/fluff/railing/border{
 	dir = 8
 	},
-/obj/machinery/light/rogue/torchholder/c,
+/obj/machinery/light/fueled/torchholder/c,
 /turf/open/floor/blocks/stonered/tiny,
 /area/rogue)
 "wu" = (
@@ -508,7 +508,7 @@
 /turf/open/floor/grass/red,
 /area/rogue)
 "xO" = (
-/obj/structure/chair/wood/rogue/chair_noble/purple{
+/obj/structure/chair/wood/alt/chair_noble/purple{
 	dir = 4
 	},
 /turf/open/floor/carpet/lord/center,
@@ -527,7 +527,7 @@
 /turf/open/floor/tile/checker,
 /area/rogue)
 "zd" = (
-/obj/structure/rack/rogue/shelf/big,
+/obj/structure/rack/shelf/big,
 /turf/open/floor/blocks/stonered,
 /area/rogue)
 "zs" = (
@@ -542,7 +542,7 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "Ar" = (
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/blocks/stonered,
 /area/rogue)
 "AD" = (
@@ -553,8 +553,8 @@
 /turf/open/floor/churchbrick,
 /area/rogue)
 "AR" = (
-/obj/structure/rack/rogue/shelf/big,
-/obj/machinery/light/rogue/torchholder/c,
+/obj/structure/rack/shelf/big,
+/obj/machinery/light/fueled/torchholder/c,
 /turf/open/floor/blocks/stonered,
 /area/rogue)
 "BL" = (
@@ -568,7 +568,7 @@
 /obj/structure/fluff/railing/border{
 	layer = 2
 	},
-/obj/structure/chair/wood/rogue{
+/obj/structure/chair/wood/alt{
 	dir = 8
 	},
 /obj/effect/spawner/map_spawner/loot/common,
@@ -584,7 +584,7 @@
 /obj/structure/fluff/railing/border{
 	layer = 2
 	},
-/obj/structure/chair/wood/rogue{
+/obj/structure/chair/wood/alt{
 	dir = 8
 	},
 /turf/open/floor/blocks/stonered/tiny,
@@ -617,7 +617,7 @@
 /turf/open/floor/carpet/lord/center,
 /area/rogue)
 "Eo" = (
-/obj/machinery/light/rogue/firebowl,
+/obj/machinery/light/fueled/firebowl,
 /turf/open/floor/plasteel/maniac,
 /area/rogue)
 "EC" = (
@@ -743,7 +743,7 @@
 /turf/open/floor/grass/red,
 /area/rogue)
 "LX" = (
-/obj/machinery/light/rogue/firebowl/standing,
+/obj/machinery/light/fueled/firebowl/standing,
 /turf/open/floor/carpet/lord/center,
 /area/rogue)
 "MR" = (
@@ -756,14 +756,14 @@
 /turf/open/floor/blocks/stonered,
 /area/rogue)
 "Nm" = (
-/obj/structure/chair/wood/rogue{
+/obj/structure/chair/wood/alt{
 	dir = 8
 	},
 /obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/blocks/stonered/tiny,
 /area/rogue)
 "No" = (
-/obj/structure/chair/wood/rogue{
+/obj/structure/chair/wood/alt{
 	dir = 8
 	},
 /turf/open/floor/blocks/stonered/tiny,
@@ -803,7 +803,7 @@
 /turf/closed/indestructible/roguewindow,
 /area/rogue)
 "Pb" = (
-/obj/machinery/light/rogue/torchholder/r,
+/obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/blocks/stonered/tiny,
 /area/rogue)
 "PL" = (
@@ -825,7 +825,7 @@
 /turf/open/floor/blocks/stonered/tiny,
 /area/rogue)
 "Sn" = (
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/blocks/stonered/tiny,
 /area/rogue)
 "Sr" = (
@@ -876,7 +876,7 @@
 /obj/structure/fluff/railing/border{
 	dir = 1
 	},
-/obj/structure/chair/wood/rogue{
+/obj/structure/chair/wood/alt{
 	dir = 8
 	},
 /turf/open/floor/blocks/stonered/tiny,
@@ -902,7 +902,7 @@
 /turf/open/floor/blocks/stonered,
 /area/rogue)
 "WW" = (
-/obj/machinery/light/rogue/torchholder/c,
+/obj/machinery/light/fueled/torchholder/c,
 /turf/open/floor/blocks/stonered/tiny,
 /area/rogue)
 "Xb" = (
@@ -924,7 +924,7 @@
 /turf/open/floor/churchbrick,
 /area/rogue)
 "XP" = (
-/obj/structure/chair/wood/rogue{
+/obj/structure/chair/wood/alt{
 	dir = 8
 	},
 /mob/living/carbon/human/species/skeleton/npc/peasant,

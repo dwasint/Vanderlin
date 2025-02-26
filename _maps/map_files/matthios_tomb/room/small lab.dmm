@@ -80,7 +80,7 @@
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue)
 "iX" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "jS" = (
 /obj/structure/ladder,
@@ -100,7 +100,7 @@
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue)
 "mG" = (
-/obj/machinery/light/rogue/campfire/longlived,
+/obj/machinery/light/fueled/campfire/longlived,
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue)
 "mH" = (
@@ -214,7 +214,7 @@
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue)
 "uC" = (
-/obj/structure/bed/rogue/shit,
+/obj/structure/bed/shit,
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue)
 "uK" = (
@@ -296,8 +296,8 @@
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue)
 "EJ" = (
-/obj/structure/bed/rogue/inn/double,
-/obj/item/bedsheet/rogue/fabric_double,
+/obj/structure/bed/inn/double,
+/obj/item/bedsheet/fabric_double,
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue)
 "EK" = (
@@ -419,7 +419,7 @@
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue)
 "Zr" = (
-/obj/structure/bed/rogue/hay,
+/obj/structure/bed/hay,
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue)
 "ZJ" = (
@@ -433,8 +433,8 @@
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue)
 "ZT" = (
-/obj/machinery/light/rogue/oven/west,
-/obj/machinery/light/rogue/oven/south,
+/obj/machinery/light/fueled/oven/west,
+/obj/machinery/light/fueled/oven/south,
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue)
 

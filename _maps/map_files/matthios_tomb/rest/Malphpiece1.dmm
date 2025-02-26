@@ -16,7 +16,7 @@
 /area/rogue/outdoors/caves)
 "d" = (
 /obj/structure/table/vtable/v2,
-/obj/item/book/rogue/godofdreamsandnightmares,
+/obj/item/book/godofdreamsandnightmares,
 /obj/item/natural/feather,
 /turf/open/floor/ruinedwood/chevron,
 /area/rogue/outdoors/caves)
@@ -33,7 +33,7 @@
 /turf/open/floor/cobblerock/alt,
 /area/rogue/outdoors/caves)
 "f" = (
-/obj/machinery/light/rogue/firebowl/standing,
+/obj/machinery/light/fueled/firebowl/standing,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/caves)
 "j" = (
@@ -73,7 +73,7 @@
 /turf/open/floor/ruinedwood/chevron,
 /area/rogue/outdoors/caves)
 "z" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/outdoors/caves)
 "B" = (
 /obj/structure/chair/wood,
@@ -83,7 +83,7 @@
 /turf/closed/wall/mineral/wooddark/vertical,
 /area/rogue/outdoors/caves)
 "D" = (
-/obj/machinery/light/rogue/wallfire/candle/weak/l,
+/obj/machinery/light/fueled/wallfire/candle/weak/l,
 /turf/open/floor/ruinedwood/chevron,
 /area/rogue/outdoors/caves)
 "H" = (
@@ -97,13 +97,13 @@
 /turf/open/floor/ruinedwood/chevron,
 /area/rogue/outdoors/caves)
 "J" = (
-/obj/machinery/light/rogue/wallfire/candle/r,
+/obj/machinery/light/fueled/wallfire/candle/r,
 /mob/living/carbon/human/species/skeleton/npc/warrior/skilled,
 /turf/open/floor/ruinedwood/chevron,
 /area/rogue/outdoors/caves)
 "K" = (
 /obj/structure/table/wood/plain/alt,
-/obj/machinery/light/rogue/wallfire/candle/weak/l,
+/obj/machinery/light/fueled/wallfire/candle/weak/l,
 /obj/item/reagent_containers/food/snacks/cheddar/aged,
 /obj/item/reagent_containers/glass/cup/skull,
 /turf/open/floor/cobblerock/alt,
@@ -112,15 +112,15 @@
 /turf/closed/wall/mineral/wooddark/end,
 /area/rogue/outdoors/caves)
 "O" = (
-/obj/structure/chair/wood/rogue/chair_noble/purple,
+/obj/structure/chair/wood/alt/chair_noble/purple,
 /turf/open/floor/ruinedwood/chevron,
 /area/rogue/outdoors/caves)
 "P" = (
-/obj/machinery/light/rogue/wallfire/candle/r,
+/obj/machinery/light/fueled/wallfire/candle/r,
 /turf/open/floor/ruinedwood/chevron,
 /area/rogue/outdoors/caves)
 "R" = (
-/obj/structure/bed/rogue/shit,
+/obj/structure/bed/shit,
 /turf/open/floor/cobblerock/alt,
 /area/rogue/outdoors/caves)
 "S" = (
@@ -135,7 +135,7 @@
 /turf/open/floor/cobblerock/alt,
 /area/rogue/outdoors/caves)
 "X" = (
-/obj/structure/bed/rogue/inn/double,
+/obj/structure/bed/inn/double,
 /turf/open/floor/ruinedwood/chevron,
 /area/rogue/outdoors/caves)
 "Y" = (

@@ -25,16 +25,16 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "cW" = (
-/obj/machinery/light/rogue/hearth,
-/obj/machinery/light/rogue/oven/east,
+/obj/machinery/light/fueled/hearth,
+/obj/machinery/light/fueled/oven/east,
 /turf/open/floor/dirt,
 /area/rogue)
 "dN" = (
-/obj/machinery/light/rogue/firebowl,
+/obj/machinery/light/fueled/firebowl,
 /turf/open/floor/snow/patchy,
 /area/rogue)
 "fA" = (
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /turf/open/floor/grass/cold,
 /area/rogue)
 "fS" = (
@@ -53,8 +53,8 @@
 /turf/open/floor/grass/cold,
 /area/rogue)
 "hZ" = (
-/obj/machinery/light/rogue/hearth,
-/obj/machinery/light/rogue/oven/east,
+/obj/machinery/light/fueled/hearth,
+/obj/machinery/light/fueled/oven/east,
 /obj/item/cooking/pan,
 /turf/open/floor/dirt,
 /area/rogue)
@@ -71,7 +71,7 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "lu" = (
-/obj/machinery/light/rogue/campfire,
+/obj/machinery/light/fueled/campfire,
 /obj/item/reagent_containers/food/snacks/meat/salami,
 /turf/open/floor/grass/cold,
 /area/rogue)
@@ -100,7 +100,7 @@
 /turf/open/floor/grass/cold,
 /area/rogue)
 "pE" = (
-/obj/machinery/light/rogue/firebowl,
+/obj/machinery/light/fueled/firebowl,
 /turf/open/floor/dirt,
 /area/rogue)
 "rk" = (
@@ -109,7 +109,7 @@
 /turf/open/floor/grass/cold,
 /area/rogue)
 "rl" = (
-/obj/structure/bed/rogue/shit,
+/obj/structure/bed/shit,
 /mob/living/carbon/human/species/goblin/npc/cave,
 /turf/open/floor/dirt,
 /area/rogue)
@@ -144,7 +144,7 @@
 /area/rogue)
 "vJ" = (
 /obj/structure/closet/crate/chest/wicker,
-/obj/machinery/light/rogue/wallfire/candle,
+/obj/machinery/light/fueled/wallfire/candle,
 /obj/effect/spawner/map_spawner/loot/coin/low,
 /turf/open/floor/dirt,
 /area/rogue)
@@ -158,7 +158,7 @@
 /turf/open/floor/snow,
 /area/rogue)
 "wQ" = (
-/obj/structure/bed/rogue/shit,
+/obj/structure/bed/shit,
 /turf/open/floor/dirt,
 /area/rogue)
 "wX" = (
@@ -196,7 +196,7 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "AB" = (
-/mob/living/simple_animal/hostile/rogue/orc/spear2,
+/mob/living/simple_animal/hostile/orc/spear2,
 /turf/open/floor/snow/patchy,
 /area/rogue)
 "Bg" = (
@@ -220,10 +220,10 @@
 /turf/open/floor/ruinedwood,
 /area/rogue)
 "CO" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "Dj" = (
-/obj/machinery/light/rogue/firebowl,
+/obj/machinery/light/fueled/firebowl,
 /turf/open/floor/grass/cold,
 /area/rogue)
 "DA" = (
@@ -234,7 +234,7 @@
 /obj/structure/closet/crate/chest/wicker,
 /obj/item/flashlight/flare/torch/lantern/bronzelamptern,
 /obj/item/flashlight/flare/torch/lantern/bronzelamptern,
-/obj/machinery/light/rogue/wallfire/candle,
+/obj/machinery/light/fueled/wallfire/candle,
 /turf/open/floor/dirt,
 /area/rogue)
 "EU" = (
@@ -284,7 +284,7 @@
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue)
 "Qs" = (
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /obj/item/fishingrod,
 /obj/item/fishing/bait,
 /turf/open/floor/ruinedwood,
@@ -348,7 +348,7 @@
 /turf/open/floor/grass/cold,
 /area/rogue)
 "WV" = (
-/mob/living/simple_animal/hostile/rogue/orc/orc_marauder,
+/mob/living/simple_animal/hostile/orc/orc_marauder,
 /turf/open/floor/snow/patchy,
 /area/rogue)
 "Xk" = (
@@ -360,7 +360,7 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "XY" = (
-/obj/machinery/light/rogue/firebowl,
+/obj/machinery/light/fueled/firebowl,
 /turf/open/floor/snow,
 /area/rogue)
 "Yp" = (

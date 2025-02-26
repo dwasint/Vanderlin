@@ -98,10 +98,10 @@
 				target.blood_volume += BLOOD_VOLUME_SURVIVE/2
 			if(/datum/patron/divine/malum)
 				target.visible_message(span_info("A tempering heat is discharged out of [target]!"), span_notice("I feel the heat of a forge soothing my pains!"))
-				// var/list/firey_stuff = list(/obj/machinery/light/rogue/torchholder, /obj/machinery/light/rogue/campfire, /obj/machinery/light/rogue/hearth, /obj/machinery/light/rogue/wallfire, /obj/machinery/light/rogue/wallfire/candle, /obj/machinery/light/rogue/forge, /obj/machinery/light/rogue/firebowl/stump)
+				// var/list/firey_stuff = list(/obj/machinery/light/fueled/torchholder, /obj/machinery/light/fueled/campfire, /obj/machinery/light/fueled/hearth, /obj/machinery/light/fueled/wallfire, /obj/machinery/light/fueled/wallfire/candle, /obj/machinery/light/fueled/forge, /obj/machinery/light/fueled/firebowl/stump)
 				// extra healing for every source of fire/light near us
 				situational_bonus = 0
-				for (var/obj/machinery/light/rogue/O in oview(5, user))
+				for (var/obj/machinery/light/fueled/O in oview(5, user))
 					if(!O.on)
 						continue
 					situational_bonus = min(situational_bonus + 3, 25)

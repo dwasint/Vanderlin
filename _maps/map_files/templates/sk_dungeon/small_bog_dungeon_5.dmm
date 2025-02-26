@@ -20,7 +20,7 @@
 /turf/open/floor/twig,
 /area/rogue/outdoors/bog)
 "ct" = (
-/obj/machinery/light/rogue/torchholder/r,
+/obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/twig,
 /area/rogue/outdoors/bog)
 "cN" = (
@@ -90,7 +90,7 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors/bog)
 "ka" = (
-/obj/machinery/light/rogue/firebowl/stump,
+/obj/machinery/light/fueled/firebowl/stump,
 /turf/open/floor/grass,
 /area/rogue/outdoors/bog)
 "kp" = (
@@ -100,7 +100,7 @@
 /turf/open/floor/twig,
 /area/rogue/outdoors/bog)
 "lP" = (
-/obj/structure/bed/rogue/sleepingbag,
+/obj/structure/bed/sleepingbag,
 /turf/open/floor/grass,
 /area/rogue/outdoors/bog)
 "lX" = (
@@ -189,7 +189,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/bog)
 "rj" = (
-/obj/structure/bed/rogue/shit,
+/obj/structure/bed/shit,
 /turf/open/floor/twig,
 /area/rogue/outdoors/bog)
 "rF" = (
@@ -310,7 +310,7 @@
 /turf/open/floor/twig,
 /area/rogue/outdoors/bog)
 "zR" = (
-/obj/machinery/light/rogue/firebowl/stump,
+/obj/machinery/light/fueled/firebowl/stump,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/bog)
 "At" = (
@@ -352,7 +352,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/bog)
 "DN" = (
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/twig,
 /area/rogue/outdoors/bog)
 "DY" = (
@@ -386,7 +386,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/bog)
 "Gy" = (
-/obj/structure/bed/rogue/sleepingbag,
+/obj/structure/bed/sleepingbag,
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/bog)
 "GE" = (
@@ -456,7 +456,7 @@
 /turf/open/floor/twig,
 /area/rogue/outdoors/bog)
 "Nj" = (
-/obj/machinery/light/rogue/firebowl/stump,
+/obj/machinery/light/fueled/firebowl/stump,
 /turf/open/floor/twig,
 /area/rogue/outdoors/bog)
 "No" = (
@@ -482,11 +482,11 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/bog)
 "Sc" = (
-/obj/machinery/light/rogue/campfire/longlived,
+/obj/machinery/light/fueled/campfire/longlived,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/bog)
 "St" = (
-/obj/structure/bed/rogue/shit,
+/obj/structure/bed/shit,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/bog)
 "Tg" = (
@@ -521,11 +521,11 @@
 /turf/open/floor/twig,
 /area/rogue/outdoors/bog)
 "Yt" = (
-/obj/structure/bed/rogue/sleepingbag,
+/obj/structure/bed/sleepingbag,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/bog)
 "YK" = (
-/obj/machinery/light/rogue/campfire/densefire,
+/obj/machinery/light/fueled/campfire/densefire,
 /turf/open/floor/grass,
 /area/rogue/outdoors/bog)
 "YQ" = (

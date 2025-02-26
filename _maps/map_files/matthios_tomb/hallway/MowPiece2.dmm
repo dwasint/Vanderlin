@@ -39,7 +39,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue)
 "iB" = (
-/obj/machinery/light/rogue/hearth,
+/obj/machinery/light/fueled/hearth,
 /turf/open/floor/blocks,
 /area/rogue)
 "iH" = (
@@ -77,7 +77,7 @@
 /turf/open/floor/ruinedwood,
 /area/rogue)
 "jK" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "kI" = (
 /obj/item/organ/brain,
@@ -186,7 +186,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue)
 "DW" = (
-/obj/structure/bed/rogue/shit,
+/obj/structure/bed/shit,
 /mob/living/carbon/human/species/skeleton/npc/peasant,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/blood,
@@ -195,7 +195,7 @@
 /area/rogue)
 "EB" = (
 /mob/living/carbon/human/species/skeleton/npc/warrior/skilled,
-/obj/structure/bed/rogue/mediocre,
+/obj/structure/bed/mediocre,
 /obj/item/organ/eyes,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/old,
@@ -220,7 +220,7 @@
 /area/rogue)
 "KV" = (
 /mob/living/carbon/human/species/skeleton/npc/peasant,
-/obj/structure/bed/rogue/mediocre,
+/obj/structure/bed/mediocre,
 /obj/item/reagent_containers/food/snacks/hardtack,
 /obj/effect/decal/cleanable/blood/gibs/old,
 /turf/open/floor/cobble,
@@ -273,7 +273,7 @@
 /area/rogue)
 "QY" = (
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/bed/rogue/mediocre,
+/obj/structure/bed/mediocre,
 /turf/open/floor/cobble,
 /area/rogue)
 "Rl" = (
@@ -289,7 +289,7 @@
 /turf/open/floor/herringbone,
 /area/rogue)
 "Wv" = (
-/obj/structure/bed/rogue/shit,
+/obj/structure/bed/shit,
 /mob/living/carbon/human/species/skeleton/npc/peasant,
 /turf/open/floor/cobblerock,
 /area/rogue)

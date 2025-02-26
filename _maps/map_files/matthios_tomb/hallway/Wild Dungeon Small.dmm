@@ -87,7 +87,7 @@
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "wO" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/under/cave)
 "wS" = (
 /obj/structure/flora/ausbushes/grassybush,
@@ -96,7 +96,7 @@
 /area/rogue/under/cave)
 "yz" = (
 /obj/structure/fluff/walldeco/vinez,
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/under/cave)
 "Aj" = (
 /obj/structure/flora/ausbushes/fullgrass,
@@ -187,7 +187,7 @@
 "PL" = (
 /obj/structure/fluff/walldeco/vinez,
 /obj/structure/fluff/walldeco/vinez,
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/under/cave)
 "QL" = (
 /obj/structure/flora/ausbushes/lavendergrass,

@@ -11,44 +11,44 @@
 /datum/supply_pack/instruments/flute
 	name = "Flute"
 	cost = 10
-	contains = /obj/item/rogue/instrument/flute
+	contains = /obj/item/instrument/flute
 
 /datum/supply_pack/instruments/harp
 	name = "Harp"
 	cost = 20
-	contains = /obj/item/rogue/instrument/harp
+	contains = /obj/item/instrument/harp
 
 /datum/supply_pack/instruments/guitar
 	name = "Guitar"
 	cost = 20
-	contains = /obj/item/rogue/instrument/guitar
+	contains = /obj/item/instrument/guitar
 
 /datum/supply_pack/instruments/accord
 	name = "Accordion"
 	cost = 25
-	contains = /obj/item/rogue/instrument/accord
+	contains = /obj/item/instrument/accord
 
 /datum/supply_pack/instruments/lute
 	name = "Lute"
 	cost = 15
-	contains = /obj/item/rogue/instrument/lute
+	contains = /obj/item/instrument/lute
 
 /datum/supply_pack/instruments/drum
 	name = "Drum"
 	cost = 10
-	contains = /obj/item/rogue/instrument/drum
+	contains = /obj/item/instrument/drum
 
 /datum/supply_pack/instruments/hurdygurdy
 	name = "Hurdy-Gurdy"
 	cost = 30
-	contains = list(/obj/item/rogue/instrument/hurdygurdy)
+	contains = list(/obj/item/instrument/hurdygurdy)
 
 /datum/supply_pack/instruments/viola
 	name = "Viola"
 	cost = 30
-	contains = list(/obj/item/rogue/instrument/viola)
+	contains = list(/obj/item/instrument/viola)
 
 /datum/supply_pack/instruments/vocals
 	name = "Vocalist's Talisman"
 	cost = 40
-	contains = list(/obj/item/rogue/instrument/vocals)
+	contains = list(/obj/item/instrument/vocals)

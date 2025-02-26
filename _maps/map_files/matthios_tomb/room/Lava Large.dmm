@@ -69,7 +69,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/under/cave)
 "u" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/under/cave)
 "x" = (
 /turf/open/transparent/openspace,

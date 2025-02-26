@@ -1,4 +1,4 @@
-/mob/living/simple_animal/hostile/rogue/skeleton
+/mob/living/simple_animal/hostile/skeleton
 	name = "Skeleton"
 	desc = ""
 	icon = 'icons/roguetown/mob/monster/skeletons.dmi'
@@ -37,7 +37,7 @@
 	footstep_type = FOOTSTEP_MOB_BAREFOOT
 	del_on_death = TRUE
 
-/mob/living/simple_animal/hostile/rogue/skeleton/axe
+/mob/living/simple_animal/hostile/skeleton/axe
 	name = "Skeleton"
 	desc = ""
 	icon = 'icons/roguetown/mob/monster/skeletons.dmi'
@@ -49,7 +49,7 @@
 
 
 
-/mob/living/simple_animal/hostile/rogue/skeleton/spear
+/mob/living/simple_animal/hostile/skeleton/spear
 	name = "Skeleton"
 	desc = ""
 	icon = 'icons/roguetown/mob/monster/skeletons.dmi'
@@ -60,7 +60,7 @@
 	attack_sound = 'sound/foley/pierce.ogg'
 	loot = list(/obj/item/alch/bone,	/obj/item/alch/bone, /obj/item/alch/bone,	/obj/item/weapon/polearm/spear, /obj/item/skull)
 
-/mob/living/simple_animal/hostile/rogue/skeleton/guard
+/mob/living/simple_animal/hostile/skeleton/guard
 	name = "Skeleton"
 	desc = ""
 	icon = 'icons/roguetown/mob/monster/skeletons.dmi'
@@ -72,7 +72,7 @@
 	maxHealth = 200
 	health = 200
 
-/mob/living/simple_animal/hostile/rogue/skeleton/bow
+/mob/living/simple_animal/hostile/skeleton/bow
 	name = "Skeleton"
 	desc = ""
 	icon = 'icons/roguetown/mob/monster/skeletons.dmi'
@@ -92,12 +92,12 @@
 		/obj/item/alch/bone,
 		/obj/item/skull,
 		/obj/item/gun/ballistic/revolver/grenadelauncher/bow,
-		/obj/item/ammo_casing/caseless/rogue/arrow,
-		/obj/item/ammo_casing/caseless/rogue/arrow,
-		/obj/item/ammo_casing/caseless/rogue/arrow
+		/obj/item/ammo_casing/caseless/arrow,
+		/obj/item/ammo_casing/caseless/arrow,
+		/obj/item/ammo_casing/caseless/arrow
 	)
 
-/mob/living/simple_animal/hostile/rogue/skeleton/get_sound(input)
+/mob/living/simple_animal/hostile/skeleton/get_sound(input)
 	switch(input)
 		if("aggro")
 			return pick('sound/vo/mobs/skel/skeleton_rage (1).ogg','sound/vo/mobs/skel/skeleton_rage (2).ogg','sound/vo/mobs/skel/skeleton_rage (3).ogg')
@@ -109,25 +109,25 @@
 			return pick('sound/vo/mobs/skel/skeleton_idle (1).ogg','sound/vo/mobs/skel/skeleton_idle (2).ogg','sound/vo/mobs/skel/skeleton_idle (3).ogg')
 
 
-/mob/living/simple_animal/hostile/rogue/skeleton/Initialize(mapload, mob/user, cabal_affine = FALSE)
+/mob/living/simple_animal/hostile/skeleton/Initialize(mapload, mob/user, cabal_affine = FALSE)
 	. = ..()
 	if(user)
 		friends += user.name
 		if (cabal_affine)
 			faction |= "cabal"
 
-/mob/living/simple_animal/hostile/rogue/skeleton/Life()
+/mob/living/simple_animal/hostile/skeleton/Life()
 	. = ..()
 	if(!target)
 		if(prob(60))
 			emote(pick("idle"), TRUE)
 
-/mob/living/simple_animal/hostile/rogue/skeleton/taunted(mob/user)
+/mob/living/simple_animal/hostile/skeleton/taunted(mob/user)
 	emote("aggro")
 	GiveTarget(user)
 	return
 
-/mob/living/simple_animal/hostile/rogue/skeleton/proc/can_control(mob/user)
+/mob/living/simple_animal/hostile/skeleton/proc/can_control(mob/user)
 	if(!(user.mind?.has_antag_datum(/datum/antagonist/lich)))
 		return FALSE
 	if (!(user.name in friends))
@@ -135,21 +135,21 @@
 
 	return TRUE
 
-/mob/living/simple_animal/hostile/rogue/skeleton/beckoned(mob/user)
+/mob/living/simple_animal/hostile/skeleton/beckoned(mob/user)
 	if (can_control(user))
-		for(var/mob/living/simple_animal/hostile/rogue/skeleton/target in viewers(user))
+		for(var/mob/living/simple_animal/hostile/skeleton/target in viewers(user))
 			target.LoseTarget()
 			target.search_objects = 2
 			target.add_overlay("peace_overlay")
 		return
 
-/mob/living/simple_animal/hostile/rogue/skeleton/shood(mob/user)
+/mob/living/simple_animal/hostile/skeleton/shood(mob/user)
 	if (can_control(user))
-		for(var/mob/living/simple_animal/hostile/rogue/skeleton/target in viewers(user))
+		for(var/mob/living/simple_animal/hostile/skeleton/target in viewers(user))
 			target.RegainSearchObjects()
 		return
 
-/mob/living/simple_animal/hostile/rogue/skeleton/RegainSearchObjects(value)
+/mob/living/simple_animal/hostile/skeleton/RegainSearchObjects(value)
 	cut_overlay("peace_overlay")
 	. = ..()
 
@@ -176,7 +176,7 @@
 	armor_penetration = 25
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "arrow_proj"
-	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow
+	ammo_type = /obj/item/ammo_casing/caseless/arrow
 	range = 15
 	hitsound = 'sound/combat/hits/hi_arrow2.ogg'
 	embedchance = 100

@@ -66,13 +66,13 @@
 			backpack_contents = list(/obj/item/flint)
 			if(H.dna?.species)
 				if(H.dna.species.id == "human")
-					backr = /obj/item/rogue/instrument/lute
+					backr = /obj/item/instrument/lute
 				if(H.dna.species.id == "dwarf")
-					backr = /obj/item/rogue/instrument/accord
+					backr = /obj/item/instrument/accord
 				if(H.dna.species.id == "elf")
-					backr = /obj/item/rogue/instrument/harp
+					backr = /obj/item/instrument/harp
 				if(H.dna.species.id == "tiefling")
-					backr = /obj/item/rogue/instrument/guitar
+					backr = /obj/item/instrument/guitar
 		if("Beggar") //The sole "town" disguise available.
 			H.job = "Beggar"
 			belt = /obj/item/storage/belt/leather/assassin

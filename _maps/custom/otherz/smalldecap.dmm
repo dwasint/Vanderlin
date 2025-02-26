@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/outdoors/mountains/decap)
 "b" = (
 /turf/closed,
@@ -23,7 +23,7 @@
 /turf/closed/wall/mineral/craftstone,
 /area/rogue/outdoors/mountains/decap)
 "s" = (
-/obj/machinery/light/rogue/firebowl/standing,
+/obj/machinery/light/fueled/firebowl/standing,
 /obj/structure/bars,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/mountains/decap)
@@ -36,11 +36,11 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/mountains/decap)
 "B" = (
-/obj/effect/landmark/mapGenerator/rogue/decap{
+/obj/effect/landmark/mapGenerator/decap{
 	endTurfX = 128;
 	endTurfY = 128
 	},
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/outdoors/mountains/decap)
 "D" = (
 /turf/open/lava,
@@ -50,11 +50,11 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/mountains/decap)
 "G" = (
-/obj/machinery/light/rogue/campfire,
+/obj/machinery/light/fueled/campfire,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/mountains/decap)
 "I" = (
-/turf/closed/mineral/random/rogue/high,
+/turf/closed/mineral/random/high,
 /area/rogue/outdoors/mountains/decap)
 "M" = (
 /turf/open/floor/volcanic,
@@ -66,7 +66,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/mountains/decap)
 "V" = (
-/obj/machinery/light/rogue/firebowl/standing,
+/obj/machinery/light/fueled/firebowl/standing,
 /turf/open/floor/hexstone,
 /area/rogue/outdoors/mountains/decap)
 "Y" = (

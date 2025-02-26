@@ -138,7 +138,7 @@
 /datum/artificer_recipe/ammo/lead_bullet
 	name = "Lead Bullets 2x"
 	hammers_per_item = 2
-	created_item = /obj/item/ammo_casing/caseless/rogue/bullet
+	created_item = /obj/item/ammo_casing/caseless/bullet
 	required_item = /obj/item/ingot/iron
 	craftdiff = 2
 	created_amount = 2
@@ -147,7 +147,7 @@
 	name = "Crossbow Bolts 5x (+1 Iron)"
 	required_item = /obj/item/natural/wood/plank
 	additional_items = list(/obj/item/ingot/iron)
-	created_item = /obj/item/ammo_casing/caseless/rogue/bolt
+	created_item = /obj/item/ammo_casing/caseless/bolt
 	hammers_per_item = 6
 	craftdiff = 2
 	created_amount = 5
@@ -156,7 +156,7 @@
 	name = "Arrows 5x (+1 Iron)"
 	required_item = /obj/item/natural/wood/plank
 	additional_items = list(/obj/item/ingot/iron)
-	created_item = /obj/item/ammo_casing/caseless/rogue/arrow
+	created_item = /obj/item/ammo_casing/caseless/arrow
 	hammers_per_item = 6
 	craftdiff = 2
 	created_amount = 5

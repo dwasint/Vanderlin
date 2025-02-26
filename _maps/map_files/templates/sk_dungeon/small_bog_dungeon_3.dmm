@@ -8,11 +8,11 @@
 /area/rogue/outdoors/bog)
 "f" = (
 /obj/structure/bookcase,
-/obj/item/book/rogue/blackmountain,
+/obj/item/book/blackmountain,
 /turf/open/floor/blocks,
 /area/rogue/outdoors/bog)
 "g" = (
-/obj/machinery/light/rogue/firebowl/standing/blue,
+/obj/machinery/light/fueled/firebowl/standing/blue,
 /turf/open/floor/blocks,
 /area/rogue/outdoors/bog)
 "h" = (
@@ -33,7 +33,7 @@
 /area/rogue/outdoors/bog)
 "n" = (
 /obj/structure/bookcase,
-/obj/item/book/rogue/tales1,
+/obj/item/book/tales1,
 /turf/open/floor/blocks,
 /area/rogue/outdoors/bog)
 "p" = (
@@ -46,12 +46,12 @@
 /area/rogue/outdoors/bog)
 "r" = (
 /obj/structure/bookcase,
-/obj/item/book/rogue/godofdreamsandnightmares,
+/obj/item/book/godofdreamsandnightmares,
 /turf/open/floor/blocks,
 /area/rogue/outdoors/bog)
 "s" = (
 /obj/structure/bookcase,
-/obj/item/book/rogue/abyssor,
+/obj/item/book/abyssor,
 /turf/open/floor/blocks,
 /area/rogue/outdoors/bog)
 "t" = (
@@ -65,7 +65,7 @@
 /area/rogue/outdoors/bog)
 "v" = (
 /obj/structure/bookcase,
-/obj/item/book/rogue/law,
+/obj/item/book/law,
 /turf/open/floor/blocks,
 /area/rogue/outdoors/bog)
 "w" = (
@@ -74,11 +74,11 @@
 /area/rogue/outdoors/bog)
 "x" = (
 /obj/structure/bookcase,
-/obj/item/book/rogue/tales3,
+/obj/item/book/tales3,
 /turf/open/floor/blocks,
 /area/rogue/outdoors/bog)
 "y" = (
-/obj/machinery/light/rogue/firebowl/standing/blue,
+/obj/machinery/light/fueled/firebowl/standing/blue,
 /obj/effect/decal/cleanable/dirt/cobweb{
 	dir = 4
 	},
@@ -104,7 +104,7 @@
 /area/rogue/outdoors/bog)
 "D" = (
 /obj/structure/bookcase,
-/obj/item/book/rogue/xylix,
+/obj/item/book/xylix,
 /turf/open/floor/blocks,
 /area/rogue/outdoors/bog)
 "F" = (
@@ -114,12 +114,12 @@
 /area/rogue/outdoors/bog)
 "H" = (
 /obj/structure/bookcase,
-/obj/item/book/rogue/arcyne,
+/obj/item/book/arcyne,
 /turf/open/floor/blocks,
 /area/rogue/outdoors/bog)
 "I" = (
 /obj/structure/bookcase,
-/obj/item/book/rogue/nitebeast,
+/obj/item/book/nitebeast,
 /turf/open/floor/blocks,
 /area/rogue/outdoors/bog)
 "L" = (
@@ -151,7 +151,7 @@
 /area/rogue/outdoors/bog)
 "S" = (
 /obj/structure/bookcase,
-/obj/item/book/rogue/beardling,
+/obj/item/book/beardling,
 /turf/open/floor/blocks,
 /area/rogue/outdoors/bog)
 "U" = (
@@ -163,7 +163,7 @@
 /area/rogue/outdoors/bog)
 "W" = (
 /obj/structure/bookcase,
-/obj/item/book/rogue/knowledge1,
+/obj/item/book/knowledge1,
 /turf/open/floor/blocks,
 /area/rogue/outdoors/bog)
 "X" = (
@@ -174,7 +174,7 @@
 /area/rogue/outdoors/bog)
 "Y" = (
 /obj/structure/bookcase,
-/obj/item/book/rogue/robber,
+/obj/item/book/robber,
 /turf/open/floor/blocks,
 /area/rogue/outdoors/bog)
 "Z" = (

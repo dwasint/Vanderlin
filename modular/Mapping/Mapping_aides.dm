@@ -45,7 +45,7 @@
 
 	if(NewLoc)
 		var/NewLocTurf = get_turf(NewLoc)
-		if(istype(NewLocTurf, /turf/closed/mineral/rogue/bedrock)) // prevent going out of bounds.
+		if(istype(NewLocTurf, /turf/closed/mineral/bedrock)) // prevent going out of bounds.
 			return
 		if(istype(NewLocTurf, /turf/closed/wall)) // gas can go through doors/windows but not walls
 			return
@@ -177,12 +177,12 @@
 
 
 /*	..................   Various mapping aides   ................... */
-/obj/machinery/light/rogue/wallfire/big_fireplace
+/obj/machinery/light/fueled/wallfire/big_fireplace
 	icon_state = "fireplace1"
 	base_state = "fireplace"
 	icon = 'icons/roguetown/misc/fireplace64.dmi'
 
-/obj/machinery/light/rogue/hearth/big_fireplace
+/obj/machinery/light/fueled/hearth/big_fireplace
 	name = "fireplace"
 	icon_state = "fireplace1"
 	base_state = "fireplace"

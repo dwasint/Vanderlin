@@ -1,4 +1,4 @@
-/obj/machinery/light/rogue/cauldron
+/obj/machinery/light/fueled/cauldron
 	name = "cauldron"
 	desc = "Bubble, Bubble, toil and trouble. A great iron cauldron for brewing potions."
 	icon = 'icons/roguetown/misc/alchemy.dmi'
@@ -15,7 +15,7 @@
 	fueluse = 20 MINUTES
 	crossfire = FALSE
 
-/obj/machinery/light/rogue/cauldron/update_icon()
+/obj/machinery/light/fueled/cauldron/update_icon()
 	..()
 	cut_overlays()
 	if(reagents.total_volume > 0)
@@ -31,21 +31,21 @@
 			add_overlay(filling)
 	return
 
-/obj/machinery/light/rogue/cauldron/Initialize()
+/obj/machinery/light/fueled/cauldron/Initialize()
 	create_reagents(500, DRAINABLE | AMOUNT_VISIBLE | REFILLABLE)
 	. = ..()
 
-/obj/machinery/light/rogue/cauldron/Destroy()
+/obj/machinery/light/fueled/cauldron/Destroy()
 	chem_splash(loc, 2, list(reagents))
 	qdel(reagents)
 	..()
 
-/obj/machinery/light/rogue/cauldron/burn_out()
+/obj/machinery/light/fueled/cauldron/burn_out()
 	brewing = 0
 	..()
 
 /*
-/obj/machinery/light/rogue/cauldron/examine(mob/user)
+/obj/machinery/light/fueled/cauldron/examine(mob/user)
 	if(ingredients.len)//ingredients.len
 		DISABLE_BITFIELD(reagents.flags, AMOUNT_VISIBLE)
 	else
@@ -53,7 +53,7 @@
 	. = ..()
 */
 
-/obj/machinery/light/rogue/cauldron/process()
+/obj/machinery/light/fueled/cauldron/process()
 	..()
 	update_icon()
 	if(on)
@@ -114,7 +114,7 @@
 					src.visible_message("<span class='info'>The ingredients in the [src] fail to meld together at all...</span>")
 					playsound(src,'sound/misc/smelter_fin.ogg', 30, FALSE)
 
-/obj/machinery/light/rogue/cauldron/attackby(obj/item/I, mob/user, params)
+/obj/machinery/light/fueled/cauldron/attackby(obj/item/I, mob/user, params)
 	if(istype(I,/obj/item/alch))
 		if(ingredients.len >= maxingredients)
 			to_chat(user, "<span class='warning'>Nothing else can fit.</span>")
@@ -140,7 +140,7 @@
 		return TRUE
 	..()
 
-/obj/machinery/light/rogue/cauldron/attack_hand(mob/user, params)
+/obj/machinery/light/fueled/cauldron/attack_hand(mob/user, params)
 	if(on)
 		if(ingredients.len)
 			to_chat(user, "<span class='warning'>Something's brewing.</span>")
@@ -159,7 +159,7 @@
 		to_chat(user, "<span class='info'>It's empty.</span>")
 		return ..()
 
-/obj/machinery/light/rogue/cauldron/onkick(mob/user)
+/obj/machinery/light/fueled/cauldron/onkick(mob/user)
 	if(ingredients.len)
 		for(var/obj/item/in_caul in ingredients)
 			ingredients -= in_caul

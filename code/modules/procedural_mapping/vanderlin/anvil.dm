@@ -1,5 +1,5 @@
 //genstuff
-/obj/effect/landmark/mapGenerator/rogue/anvil
+/obj/effect/landmark/mapGenerator/anvil
 	mapGeneratorType = /datum/mapGenerator/anvil
 	endTurfX = 255
 	endTurfY = 255

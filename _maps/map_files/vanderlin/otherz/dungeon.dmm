@@ -28,11 +28,11 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "o" = (
-/obj/machinery/light/rogue/firebowl,
+/obj/machinery/light/fueled/firebowl,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "p" = (
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/hexstone,
 /area/rogue)
 "q" = (
@@ -69,7 +69,7 @@
 /turf/open/transparent/openspace,
 /area/rogue)
 "D" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "E" = (
 /obj/structure/stairs,
@@ -106,7 +106,7 @@
 /turf/open/floor/hexstone,
 /area/rogue)
 "S" = (
-/obj/machinery/light/rogue/torchholder/r,
+/obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/hexstone,
 /area/rogue)
 "V" = (

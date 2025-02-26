@@ -1,5 +1,5 @@
 
-/obj/effect/landmark/mapGenerator/rogue/cave
+/obj/effect/landmark/mapGenerator/cave
 	mapGeneratorType = /datum/mapGenerator/cave
 	endTurfX = 200
 	endTurfY = 200
@@ -21,7 +21,7 @@
 	spawnableAtoms = list(/obj/structure/flora/rogueshroom=16, /obj/structure/roguerock=8, /obj/structure/closet/dirthole/closed/loot=3, /obj/item/natural/stone=10, /obj/item/natural/rock=8, /obj/structure/kneestingers = 0, /obj/item/restraints/legcuffs/beartrap/armed/camouflage=0)
 	allowed_areas = list(/area/rogue/under/cave/spider,/area/rogue/indoors/cave,/area/rogue/under/cavewet,/area/rogue/under/cave,/area/rogue/under/cavelava)
 
-/obj/effect/landmark/mapGenerator/rogue/cave/lava
+/obj/effect/landmark/mapGenerator/cave/lava
 	mapGeneratorType = /datum/mapGenerator/cave/lava
 
 /datum/mapGenerator/cave/lava
@@ -31,7 +31,7 @@
 	spawnableTurfs = list(/turf/open/lava=2,/turf/open/floor/dirt/road=30)
 
 
-/obj/effect/landmark/mapGenerator/rogue/cave/spider
+/obj/effect/landmark/mapGenerator/cave/spider
 	mapGeneratorType = /datum/mapGenerator/cave/spider
 	endTurfX = 64
 	endTurfY = 64

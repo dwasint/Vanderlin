@@ -14,7 +14,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/bog)
 "e" = (
-/obj/machinery/light/rogue/campfire,
+/obj/machinery/light/fueled/campfire,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/bog)
 "f" = (

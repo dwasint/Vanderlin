@@ -19,7 +19,7 @@
 	static_debris = list(/obj/item/grown/log/tree = 1)
 	alpha = 200
 	var/stump_type = /obj/structure/table/wood/treestump
-	metalizer_result = /obj/machinery/light/roguestreet
+	metalizer_result = /obj/machinery/light/fueledstreet
 	smeltresult = /obj/item/ore/coal
 
 /obj/structure/flora/roguetree/attack_right(mob/user)

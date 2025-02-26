@@ -1619,7 +1619,6 @@
 #include "code\modules\language\thieves_cant.dm"
 #include "code\modules\language\undead.dm"
 #include "code\modules\language\zybantine.dm"
-#include "code\modules\library\book.dm"
 #include "code\modules\library\lib_items.dm"
 #include "code\modules\library\lib_machines.dm"
 #include "code\modules\library\random_books.dm"

@@ -24,7 +24,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue)
 "i" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "j" = (
 /mob/living/simple_animal/hostile/retaliate/spider,
@@ -83,7 +83,7 @@
 /area/rogue)
 "B" = (
 /obj/effect/decal/remains/human,
-/turf/closed/mineral/rogue,
+/turf/closed/mineral,
 /area/rogue)
 "D" = (
 /obj/effect/decal/remains/human,
@@ -107,7 +107,7 @@
 /area/rogue)
 "J" = (
 /obj/structure/spider/stickyweb,
-/turf/closed/mineral/rogue,
+/turf/closed/mineral,
 /area/rogue)
 "K" = (
 /obj/effect/decal/remains/human,
@@ -129,7 +129,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue)
 "M" = (
-/turf/closed/mineral/rogue,
+/turf/closed/mineral,
 /area/rogue)
 "N" = (
 /obj/item/clothing/shirt,

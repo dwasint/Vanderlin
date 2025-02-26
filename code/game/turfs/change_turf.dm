@@ -338,7 +338,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	if(!prob(chance))
 		return
 
-	var/turf/closed/mineral/random/rogue/picked = pickweight(weighted_rocks)
+	var/turf/closed/mineral/random/picked = pickweight(weighted_rocks)
 	GLOB.mined_resource_loc -= src
 
 	ChangeTurf(picked)

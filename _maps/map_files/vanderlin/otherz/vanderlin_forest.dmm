@@ -3,7 +3,7 @@
 /obj/effect/landmark/start/adventurerlate{
 	dir = 8
 	},
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /turf/open/floor/naturalstone,
 /area/rogue/indoors/cave)
 "aK" = (
@@ -23,7 +23,7 @@
 /turf/open/water/swamp/deep,
 /area/rogue/outdoors/woods)
 "aW" = (
-/obj/structure/bed/rogue/hay,
+/obj/structure/bed/hay,
 /turf/open/floor/ruinedwood{
 	icon_state = "horzw"
 	},
@@ -50,7 +50,7 @@
 /turf/closed/wall/mineral/wooddark,
 /area/rogue/indoors)
 "bZ" = (
-/obj/machinery/light/rogue/torchholder{
+/obj/machinery/light/fueled/torchholder{
 	dir = 1
 	},
 /turf/open/floor/grass,
@@ -73,7 +73,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/woods)
 "dh" = (
-/obj/machinery/light/rogue/campfire/longlived,
+/obj/machinery/light/fueled/campfire/longlived,
 /turf/open/floor/naturalstone,
 /area/rogue/indoors/cave)
 "di" = (
@@ -131,7 +131,7 @@
 /turf/open/water/swamp,
 /area/rogue/outdoors/woods)
 "eU" = (
-/turf/closed/mineral/random/rogue/med,
+/turf/closed/mineral/random/med,
 /area/rogue/outdoors/woods)
 "eY" = (
 /obj/structure/stairs{
@@ -143,7 +143,7 @@
 /turf/closed,
 /area/rogue/outdoors/mountains)
 "fA" = (
-/obj/structure/chair/wood/rogue/chair3{
+/obj/structure/chair/wood/alt/chair3{
 	dir = 4
 	},
 /turf/open/floor/naturalstone,
@@ -167,7 +167,7 @@
 /turf/open/floor/grass,
 /area/rogue/indoors)
 "fT" = (
-/obj/machinery/light/rogue/torchholder{
+/obj/machinery/light/fueled/torchholder{
 	icon_state = "torchwall1";
 	dir = 4
 	},
@@ -210,7 +210,7 @@
 	},
 /area/rogue/indoors)
 "hx" = (
-/obj/machinery/light/rogue/torchholder{
+/obj/machinery/light/fueled/torchholder{
 	pixel_y = 26
 	},
 /turf/open/floor/dirt,
@@ -223,7 +223,7 @@
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/mountains)
 "ie" = (
-/obj/structure/bed/rogue/hay,
+/obj/structure/bed/hay,
 /turf/open/floor/dirt,
 /area/rogue/indoors)
 "iL" = (
@@ -248,7 +248,7 @@
 /turf/open/floor/grass,
 /area/rogue/indoors)
 "kb" = (
-/obj/machinery/light/rogue/campfire/longlived,
+/obj/machinery/light/fueled/campfire/longlived,
 /turf/open/floor/grass,
 /area/rogue/outdoors/woods)
 "kf" = (
@@ -277,11 +277,11 @@
 /turf/open/floor/twig,
 /area/rogue/indoors)
 "kG" = (
-/obj/structure/rack/rogue/shelf/big,
+/obj/structure/rack/shelf/big,
 /turf/open/floor/twig,
 /area/rogue/indoors)
 "kW" = (
-/obj/machinery/light/rogue/firebowl/stump,
+/obj/machinery/light/fueled/firebowl/stump,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods)
 "lg" = (
@@ -376,7 +376,7 @@
 	},
 /area/rogue/indoors)
 "oD" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/indoors/cave)
 "pu" = (
 /obj/structure/fluff/railing/fence,
@@ -388,7 +388,7 @@
 /area/rogue/outdoors/woods)
 "pO" = (
 /obj/effect/landmark/start/adventurerlate,
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/woods)
 "pX" = (
@@ -411,7 +411,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods)
 "qB" = (
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/twig,
 /area/rogue/indoors)
 "qK" = (
@@ -454,10 +454,10 @@
 	},
 /area/rogue/outdoors/woods)
 "sH" = (
-/turf/closed/mineral/rogue,
+/turf/closed/mineral,
 /area/rogue/outdoors/woods)
 "sS" = (
-/obj/structure/bed/rogue/mediocre,
+/obj/structure/bed/mediocre,
 /turf/open/floor/ruinedwood{
 	icon_state = "horzw"
 	},
@@ -504,7 +504,7 @@
 /turf/open/floor/dirt,
 /area/rogue/indoors)
 "ua" = (
-/obj/machinery/light/rogue/torchholder/r,
+/obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/twig,
 /area/rogue/indoors)
 "ub" = (
@@ -616,7 +616,7 @@
 /obj/effect/landmark/start/adventurerlate{
 	dir = 4
 	},
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/woods)
 "xF" = (
@@ -645,7 +645,7 @@
 /turf/open/water/river,
 /area/rogue/outdoors/woods)
 "yl" = (
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /turf/open/floor/naturalstone,
 /area/rogue/indoors/cave)
 "yL" = (
@@ -679,17 +679,17 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods)
 "zu" = (
-/obj/structure/bed/rogue/sleepingbag,
+/obj/structure/bed/sleepingbag,
 /turf/open/floor/naturalstone,
 /area/rogue/indoors/cave)
 "zx" = (
-/obj/structure/rack/rogue/shelf/big,
+/obj/structure/rack/shelf/big,
 /turf/open/floor/ruinedwood{
 	icon_state = "horzw"
 	},
 /area/rogue/indoors)
 "Aa" = (
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/ruinedwood{
 	icon_state = "horzw"
 	},
@@ -722,18 +722,18 @@
 	},
 /area/rogue/indoors)
 "Bu" = (
-/obj/structure/chair/wood/rogue,
+/obj/structure/chair/wood/alt,
 /turf/open/floor/twig,
 /area/rogue/indoors)
 "Cd" = (
-/obj/machinery/light/rogue/firebowl/stump,
+/obj/machinery/light/fueled/firebowl/stump,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/woods)
 "Cm" = (
 /obj/effect/landmark/start/adventurerlate{
 	dir = 1
 	},
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /turf/open/floor/naturalstone,
 /area/rogue/indoors/cave)
 "CC" = (
@@ -750,7 +750,7 @@
 /turf/open/floor/ruinedwood/darker,
 /area/rogue/outdoors/mountains)
 "CU" = (
-/turf/closed/mineral/random/rogue/high,
+/turf/closed/mineral/random/high,
 /area/rogue/indoors/cave)
 "CW" = (
 /obj/structure/fluff/railing/border{
@@ -774,17 +774,17 @@
 /turf/closed/wall/mineral/wooddark/end,
 /area/rogue/indoors)
 "DU" = (
-/obj/effect/landmark/mapGenerator/rogue/mountain,
+/obj/effect/landmark/mapGenerator/mountain,
 /turf/closed,
 /area/rogue/outdoors/mountains)
 "Ef" = (
-/obj/structure/bed/rogue/inn,
+/obj/structure/bed/inn,
 /turf/open/floor/ruinedwood{
 	icon_state = "horzw"
 	},
 /area/rogue/indoors)
 "EB" = (
-/obj/structure/chair/wood/rogue{
+/obj/structure/chair/wood/alt{
 	dir = 1
 	},
 /turf/open/floor/twig,
@@ -878,7 +878,7 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors/woods)
 "In" = (
-/obj/effect/landmark/mapGenerator/rogue/forest,
+/obj/effect/landmark/mapGenerator/forest,
 /turf/closed,
 /area/rogue/outdoors/woods)
 "IA" = (
@@ -887,18 +887,18 @@
 /turf/open/floor/twig,
 /area/rogue/indoors)
 "Jg" = (
-/obj/machinery/light/rogue/firebowl/stump,
+/obj/machinery/light/fueled/firebowl/stump,
 /turf/open/floor/grass,
 /area/rogue/outdoors/woods)
 "Jt" = (
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /turf/open/floor/grass,
 /area/rogue/outdoors/woods)
 "JR" = (
 /obj/effect/landmark/start/adventurerlate{
 	dir = 8
 	},
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/woods)
 "JS" = (
@@ -906,7 +906,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/woods)
 "Kr" = (
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods)
 "KH" = (
@@ -935,7 +935,7 @@
 	},
 /area/rogue/indoors)
 "Lc" = (
-/obj/structure/chair/wood/rogue{
+/obj/structure/chair/wood/alt{
 	dir = 1
 	},
 /turf/open/floor/ruinedwood{
@@ -1013,7 +1013,7 @@
 /turf/open/floor/cobble,
 /area/rogue/outdoors/mountains)
 "OI" = (
-/obj/structure/bed/rogue/hay,
+/obj/structure/bed/hay,
 /turf/open/floor/twig,
 /area/rogue/indoors)
 "OJ" = (
@@ -1021,7 +1021,7 @@
 /turf/open/water/swamp,
 /area/rogue/outdoors/woods)
 "Pc" = (
-/obj/machinery/light/rogue/torchholder{
+/obj/machinery/light/fueled/torchholder{
 	pixel_y = 26
 	},
 /turf/open/floor/grass,
@@ -1104,7 +1104,7 @@
 /turf/open/water/swamp/deep,
 /area/rogue/outdoors/woods)
 "Ry" = (
-/obj/machinery/light/rogue/campfire/longlived,
+/obj/machinery/light/fueled/campfire/longlived,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/woods)
 "RD" = (
@@ -1117,14 +1117,14 @@
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/woods)
 "RH" = (
-/obj/machinery/light/rogue/campfire/longlived,
+/obj/machinery/light/fueled/campfire/longlived,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods)
 "Sb" = (
 /turf/open/floor/cobble,
 /area/rogue/outdoors/mountains)
 "Sf" = (
-/obj/structure/chair/wood/rogue/chair3{
+/obj/structure/chair/wood/alt/chair3{
 	dir = 8
 	},
 /turf/open/floor/naturalstone,
@@ -1141,10 +1141,10 @@
 /turf/open/floor/ruinedwood/darker,
 /area/rogue/outdoors/mountains)
 "Su" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/outdoors/mountains)
 "Sy" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/outdoors/woods)
 "SA" = (
 /turf/open/floor/twig,
@@ -1178,7 +1178,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/woods)
 "UK" = (
-/turf/closed/mineral/random/rogue/med,
+/turf/closed/mineral/random/med,
 /area/rogue/outdoors/mountains)
 "UM" = (
 /obj/structure/flora/roguetree,
@@ -1196,11 +1196,11 @@
 	},
 /area/rogue/indoors)
 "VW" = (
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/woods)
 "Wh" = (
-/turf/closed/mineral/random/rogue/med,
+/turf/closed/mineral/random/med,
 /area/rogue/indoors/cave)
 "Wo" = (
 /obj/structure/flora/roguegrass/water,
@@ -1275,7 +1275,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/woods)
 "ZB" = (
-/obj/structure/chair/wood/rogue,
+/obj/structure/chair/wood/alt,
 /turf/open/floor/ruinedwood{
 	icon_state = "horzw"
 	},
@@ -1285,7 +1285,7 @@
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/mountains)
 "ZN" = (
-/obj/machinery/light/rogue/torchholder{
+/obj/machinery/light/fueled/torchholder{
 	pixel_y = 26
 	},
 /turf/open/floor/cobblerock,

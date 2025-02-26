@@ -10,14 +10,14 @@
 | Bolts |
 \------*/
 
-/obj/item/ammo_casing/caseless/rogue/unembedded()
+/obj/item/ammo_casing/caseless/unembedded()
 	if(!QDELETED(src) && prob(25))
 		src.visible_message(span_warning("[src] breaks as it falls out!"), vision_distance = COMBAT_MESSAGE_RANGE)
 		qdel(src)
 		return TRUE
 
 //................ Crossbow Bolt ............... //
-/obj/item/ammo_casing/caseless/rogue/bolt
+/obj/item/ammo_casing/caseless/bolt
 	name = "bolt"
 	desc = "A small and sturdy bolt, with simple plume and metal tip, alongside a groove to load onto a crossbow."
 	projectile_type = /obj/projectile/bullet/reusable/bolt
@@ -38,7 +38,7 @@
 	damage_type = BRUTE
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "bolt_proj"
-	ammo_type = /obj/item/ammo_casing/caseless/rogue/bolt
+	ammo_type = /obj/item/ammo_casing/caseless/bolt
 	range = 30
 	hitsound = 'sound/combat/hits/hi_arrow2.ogg'
 	embedchance = 100
@@ -49,7 +49,7 @@
 	accuracy = 85 //Crossbows have higher accuracy
 
 //................ Poison Bolt ............... //
-/obj/item/ammo_casing/caseless/rogue/bolt/poison
+/obj/item/ammo_casing/caseless/bolt/poison
 	name = "poison bolt"
 	desc = "A bolt dipped with a weak poison."
 	icon_state = "bolt_poison"
@@ -94,7 +94,7 @@
 	reagents.add_reagent(/datum/reagent/berrypoison, 2)
 
 //................ Poison Bolt (potent) ............... //
-/obj/item/ammo_casing/caseless/rogue/bolt/poison/potent
+/obj/item/ammo_casing/caseless/bolt/poison/potent
 	desc = "A bolt dipped with a potent poison."
 	projectile_type = /obj/projectile/bullet/reusable/bolt/poison/potent
 
@@ -106,7 +106,7 @@
 	reagents.add_reagent(/datum/reagent/strongpoison, 2)
 
 //................ Pyro Bolt ............... //
-/obj/item/ammo_casing/caseless/rogue/bolt/pyro
+/obj/item/ammo_casing/caseless/bolt/pyro
 	name = "pyroclastic bolt"
 	desc = "A bolt smeared with a flammable tincture."
 	projectile_type = /obj/projectile/bullet/bolt/pyro
@@ -151,7 +151,7 @@
 \-------*/
 
 //................ Arrow ............... //
-/obj/item/ammo_casing/caseless/rogue/arrow
+/obj/item/ammo_casing/caseless/arrow
 	name = "arrow"
 	desc = "A fletched projectile, with simple plumes and metal tip."
 	projectile_type = /obj/projectile/bullet/reusable/arrow
@@ -172,7 +172,7 @@
 	damage_type = BRUTE
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "arrow_proj"
-	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow
+	ammo_type = /obj/item/ammo_casing/caseless/arrow
 	range = 30
 	hitsound = 'sound/combat/hits/hi_arrow2.ogg'
 	embedchance = 100
@@ -182,7 +182,7 @@
 	speed = 0.4
 
 //................ Stone Arrow ............... //
-/obj/item/ammo_casing/caseless/rogue/arrow/stone
+/obj/item/ammo_casing/caseless/arrow/stone
 	name = "stone arrow"
 	desc = "A fletched projectile with a stone tip."
 	icon_state = "stonearrow"
@@ -190,14 +190,14 @@
 	max_integrity = 5
 
 /obj/projectile/bullet/reusable/arrow/stone
-	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/stone
+	ammo_type = /obj/item/ammo_casing/caseless/arrow/stone
 	embedchance = 80
 	armor_penetration = 0
 	damage = ARROW_DAMAGE-2
 
 
 //................ Poison Arrow ............... //
-/obj/item/ammo_casing/caseless/rogue/arrow/poison
+/obj/item/ammo_casing/caseless/arrow/poison
 	name = "poison arrow"
 	desc = "An arrow with its tip drenched in a weak poison."
 	projectile_type = /obj/projectile/bullet/reusable/arrow/poison/weak
@@ -243,11 +243,11 @@
 	reagents.add_reagent(/datum/reagent/berrypoison, 2)
 
 //................ Poison Arrow (potent) ............... //
-/obj/item/ammo_casing/caseless/rogue/arrow/poison/potent
+/obj/item/ammo_casing/caseless/arrow/poison/potent
 	desc = "An arrow with it's tip drenched in a potent poison."
 	projectile_type = /obj/projectile/bullet/reusable/arrow/poison/potent
 
-/obj/item/ammo_casing/caseless/rogue/arrow/poison/potent
+/obj/item/ammo_casing/caseless/arrow/poison/potent
 	desc = "An arrow with it's tip drenched in a powerful poison."
 
 /obj/projectile/bullet/reusable/arrow/poison/potent/Initialize()
@@ -255,7 +255,7 @@
 	reagents.add_reagent(/datum/reagent/strongpoison, 2)
 
 //................ Pyro Arrow ............... //
-/obj/item/ammo_casing/caseless/rogue/arrow/pyro
+/obj/item/ammo_casing/caseless/arrow/pyro
 	name = "pyroclastic arrow"
 	desc = "An arrow with its tip drenched in a flammable tincture."
 	projectile_type = /obj/projectile/bullet/arrow/pyro
@@ -310,7 +310,7 @@
 	damage_type = BRUTE
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "musketball_proj"
-	ammo_type = /obj/item/ammo_casing/caseless/rogue/bullet
+	ammo_type = /obj/item/ammo_casing/caseless/bullet
 	range = 15
 	jitter = 5
 	eyeblur = 3
@@ -335,13 +335,13 @@
 	stun = 1
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "musketball_proj"
-	ammo_type = /obj/item/ammo_casing/caseless/rogue/cball/grapeshot
+	ammo_type = /obj/item/ammo_casing/caseless/cball/grapeshot
 	impact_effect_type = /obj/effect/temp_visual/impact_effect
 	flag =  "piercing"
 	armor_penetration = BULLET_PENETRATION
 	speed = 0.5
 
-/obj/item/ammo_casing/caseless/rogue/bullet
+/obj/item/ammo_casing/caseless/bullet
 	name = "lead ball"
 	desc = "A round lead shot, simple and spherical."
 	projectile_type = /obj/projectile/bullet/reusable/bullet
@@ -361,7 +361,7 @@
 	damage_type = BRUTE
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "musketball_proj" // No one sees it anyway. I think.
-	ammo_type = /obj/item/ammo_casing/caseless/rogue/cball
+	ammo_type = /obj/item/ammo_casing/caseless/cball
 	range = 999
 	jitter = 5
 	stun = 1
@@ -385,7 +385,7 @@
 	..(target, blocked)
 
 //................ Grapeshot ............... //
-/obj/item/ammo_casing/caseless/rogue/cball
+/obj/item/ammo_casing/caseless/cball
 	name = "large lead ball"
 	desc = "A round lead ball. Complex and still spherical."
 	icon = 'icons/roguetown/weapons/ammo.dmi'
@@ -399,7 +399,7 @@
 	variance = 0
 	force = 20
 
-/obj/item/ammo_casing/caseless/rogue/cball/grapeshot
+/obj/item/ammo_casing/caseless/cball/grapeshot
 	name = "berryshot"
 	desc = "A large pouch of smaller lead balls. Not as complex and not as spherical."
 	icon_state = "grapeshot" // NEEDS SPRITE
@@ -417,7 +417,7 @@
 | Darts |
 \------*/
 
-/obj/item/ammo_casing/caseless/rogue/dart
+/obj/item/ammo_casing/caseless/dart
 	name = "dart"
 	desc = "A thorn fasioned into a primitive dart."
 	projectile_type = /obj/projectile/bullet/reusable/dart
@@ -436,7 +436,7 @@
 	damage_type = BRUTE
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "dart_proj"
-	ammo_type = /obj/item/ammo_casing/caseless/rogue/dart
+	ammo_type = /obj/item/ammo_casing/caseless/dart
 	range = 6
 	hitsound = 'sound/combat/hits/hi_arrow2.ogg'
 	embedchance = 100
@@ -446,7 +446,7 @@
 	accuracy = 50
 
 //................ Poison Dart ............... //
-/obj/item/ammo_casing/caseless/rogue/dart/poison
+/obj/item/ammo_casing/caseless/dart/poison
 	name = "poison dart"
 	desc = "A dart with its tip drenched in a weak poison."
 	projectile_type = /obj/projectile/bullet/reusable/dart/poison

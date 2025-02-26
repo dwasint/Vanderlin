@@ -19,7 +19,7 @@
 /area/rogue/outdoors/caves)
 "ce" = (
 /obj/effect/decal/cleanable/dirt/cobweb,
-/obj/machinery/light/rogue/firebowl/standing/blue,
+/obj/machinery/light/fueled/firebowl/standing/blue,
 /turf/open/floor/naturalstone,
 /area/rogue/outdoors/caves)
 "eU" = (
@@ -129,7 +129,7 @@
 /obj/effect/decal/cleanable/dirt/cobweb{
 	icon_state = "cobweb2"
 	},
-/obj/machinery/light/rogue/firebowl/standing/blue,
+/obj/machinery/light/fueled/firebowl/standing/blue,
 /turf/open/floor/naturalstone,
 /area/rogue/outdoors/caves)
 "vp" = (
@@ -157,7 +157,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/outdoors/caves)
 "xM" = (
-/obj/machinery/light/rogue/firebowl/standing/blue,
+/obj/machinery/light/fueled/firebowl/standing/blue,
 /turf/open/floor/naturalstone,
 /area/rogue/outdoors/caves)
 "yc" = (
@@ -170,7 +170,7 @@
 /obj/effect/decal/cleanable/dirt/cobweb{
 	dir = 4
 	},
-/obj/machinery/light/rogue/firebowl/standing/blue,
+/obj/machinery/light/fueled/firebowl/standing/blue,
 /turf/open/floor/cobble/alt,
 /area/rogue/outdoors/caves)
 "Ab" = (
@@ -244,7 +244,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/outdoors/caves)
 "Mr" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/outdoors/caves)
 "MP" = (
 /obj/structure/fluff/statue/knight/interior/r,
@@ -313,7 +313,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/outdoors/caves)
 "Zi" = (
-/obj/item/rogue/instrument/lute,
+/obj/item/instrument/lute,
 /turf/open/floor/naturalstone,
 /area/rogue/outdoors/caves)
 "ZY" = (

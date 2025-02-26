@@ -137,10 +137,10 @@
 /turf/open/water/cleanshallow,
 /area/rogue/outdoors/woods)
 "bp" = (
-/turf/closed/mineral/rogue/salt,
+/turf/closed/mineral/salt,
 /area/rogue/outdoors/woods)
 "cL" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/outdoors/woods)
 "cM" = (
 /turf/closed/wall/mineral/stone/moss,
@@ -150,11 +150,11 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors/woods)
 "di" = (
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/woods)
 "dI" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/outdoors/woods)
 "dZ" = (
 /mob/living/simple_animal/hostile/retaliate/goat,
@@ -167,7 +167,7 @@
 "fZ" = (
 /obj/structure/flora/newtree,
 /obj/structure/flora/newtree,
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/outdoors/woods)
 "hb" = (
 /obj/structure/fluff/railing/fence,
@@ -190,7 +190,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/woods)
 "mJ" = (
-/turf/closed/mineral/rogue/coal,
+/turf/closed/mineral/coal,
 /area/rogue/outdoors/woods)
 "om" = (
 /turf/open/transparent/openspace,
@@ -216,7 +216,7 @@
 /area/rogue/outdoors/woods)
 "sk" = (
 /obj/structure/flora/newtree,
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/outdoors/woods)
 "sN" = (
 /turf/open/floor/grass,
@@ -240,7 +240,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods)
 "zN" = (
-/obj/machinery/light/rogue/firebowl/stump,
+/obj/machinery/light/fueled/firebowl/stump,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/woods)
 "Bm" = (
@@ -248,11 +248,11 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods)
 "CD" = (
-/obj/effect/landmark/mapGenerator/rogue/forest{
+/obj/effect/landmark/mapGenerator/forest{
 	endTurfY = 128;
 	endTurfX = 128
 	},
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/outdoors/woods)
 "CG" = (
 /obj/structure/fluff/railing/fence{
@@ -280,7 +280,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/woods)
 "GV" = (
-/obj/machinery/light/rogue/firebowl/stump,
+/obj/machinery/light/fueled/firebowl/stump,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods)
 "Hc" = (
@@ -320,7 +320,7 @@
 /turf/open/water/cleanshallow,
 /area/rogue/outdoors/woods)
 "Ou" = (
-/obj/machinery/light/rogue/campfire/densefire,
+/obj/machinery/light/fueled/campfire/densefire,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/woods)
 "PA" = (
@@ -342,14 +342,14 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/woods)
 "UJ" = (
-/obj/machinery/light/rogue/firebowl/standing,
+/obj/machinery/light/fueled/firebowl/standing,
 /turf/open/floor/hexstone,
 /area/rogue/outdoors/woods)
 "Vh" = (
 /turf/open/water/river,
 /area/rogue/outdoors/woods)
 "Zm" = (
-/obj/machinery/light/rogue/firebowl/stump,
+/obj/machinery/light/fueled/firebowl/stump,
 /turf/open/floor/grass,
 /area/rogue/outdoors/woods)
 

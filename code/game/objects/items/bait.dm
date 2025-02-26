@@ -10,7 +10,7 @@
 	var/list/attracted_types = list(/mob/living/simple_animal/hostile/retaliate/bigrat = 10,
 										/mob/living/simple_animal/hostile/retaliate/goat = 33,
 									/mob/living/simple_animal/hostile/retaliate/goatmale = 33,
-									/mob/living/simple_animal/pet/cat/rogue/cabbit = 33,
+									/mob/living/simple_animal/pet/cat/cabbit = 33,
 									/mob/living/simple_animal/hostile/retaliate/chicken = 55)
 	var/attraction_chance = 100
 	var/deployed = 0
@@ -103,7 +103,7 @@
 	icon_state = "baitp"
 	attracted_types = list(/mob/living/simple_animal/hostile/retaliate/goat = 33,
 							/mob/living/simple_animal/hostile/retaliate/goatmale = 33,
-							/mob/living/simple_animal/pet/cat/rogue/cabbit = 50, // Rabbits love sweet things
+							/mob/living/simple_animal/pet/cat/cabbit = 50, // Rabbits love sweet things
 							/mob/living/simple_animal/hostile/retaliate/saiga = 20,
 							/mob/living/simple_animal/hostile/retaliate/saigabuck = 20,
 							/mob/living/simple_animal/hostile/retaliate/wolf = 10)

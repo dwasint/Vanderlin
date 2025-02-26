@@ -185,7 +185,7 @@
 		M.update_inv_hands()
 
 /obj/item/ammo_box/magazine/internal/shot/xbow
-	ammo_type = /obj/item/ammo_casing/caseless/rogue/bolt
+	ammo_type = /obj/item/ammo_casing/caseless/bolt
 	caliber = "regbolt"
 	max_ammo = 1
 	start_empty = TRUE

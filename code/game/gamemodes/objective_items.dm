@@ -27,7 +27,7 @@
 
 /datum/objective_item/steal/rogue/ledger
 	name = "the merchant's catatoma."
-	targetitem = /obj/item/book/rogue/secret/ledger
+	targetitem = /obj/item/book/secret/ledger
 	difficulty = 2
 	excludefromjob = list("Merchant")
 

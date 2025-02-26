@@ -7,7 +7,7 @@
 		/datum/slapcraft_step/item/stone/third,
 		/datum/slapcraft_step/item/stone/fourth,
 		)
-	result_type = /obj/machinery/light/rogue/smelter
+	result_type = /obj/machinery/light/fueled/smelter
 
 /datum/slapcraft_recipe/masonry/structure/great_smelter
 	name = "great furnace"
@@ -18,7 +18,7 @@
 		/datum/slapcraft_step/use_item/masonry/hammer,
 		/datum/slapcraft_step/item/coal,
 		)
-	result_type = /obj/machinery/light/rogue/smelter/great
+	result_type = /obj/machinery/light/fueled/smelter/great
 
 /datum/slapcraft_recipe/masonry/structure/forge
 	name = "forge"
@@ -30,7 +30,7 @@
 		/datum/slapcraft_step/item/stone/fourth,
 		/datum/slapcraft_step/item/small_log,
 		)
-	result_type = /obj/machinery/light/rogue/forge
+	result_type = /obj/machinery/light/fueled/forge
 
 /datum/slapcraft_recipe/masonry/structure/sharp_wheel
 	name = "sharpening wheel"
@@ -49,7 +49,7 @@
 		/datum/slapcraft_step/item/stone/third,
 		/datum/slapcraft_step/use_item/masonry/hammer,
 		)
-	result_type = /obj/machinery/light/rogue/oven
+	result_type = /obj/machinery/light/fueled/oven
 
 //Oven will shift icon based on dir
 /datum/slapcraft_recipe/masonry/structure/oven/check_craft_requirements(mob/user, turf/T)
@@ -89,7 +89,7 @@
 		/datum/slapcraft_step/use_item/masonry/hammer/second,
 		/datum/slapcraft_step/item/small_log,
 		)
-	result_type = /obj/machinery/light/rogue/cauldron
+	result_type = /obj/machinery/light/fueled/cauldron
 
 /datum/slapcraft_recipe/masonry/structure/stonestairsd
 	name = "stone stairs (down)"

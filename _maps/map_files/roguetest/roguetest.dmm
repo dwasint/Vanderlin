@@ -3,7 +3,7 @@
 /turf,
 /area)
 "ab" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/indoors)
 "ac" = (
 /turf/closed,
@@ -17,7 +17,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/indoors)
 "ae" = (
-/obj/machinery/light/rogue/firebowl,
+/obj/machinery/light/fueled/firebowl,
 /turf/open/floor/dirt/road,
 /area/rogue/indoors)
 "af" = (
@@ -72,7 +72,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/indoors)
 "ao" = (
-/obj/machinery/light/rogue/forge,
+/obj/machinery/light/fueled/forge,
 /turf/open/floor/dirt/road,
 /area/rogue/indoors)
 "ap" = (
@@ -104,7 +104,7 @@
 	},
 /area/rogue/indoors)
 "at" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/outdoors)
 "au" = (
 /obj/structure/closet/crate/chest,
@@ -117,11 +117,11 @@
 /turf/open/floor/dirt/road,
 /area/rogue/indoors)
 "av" = (
-/obj/machinery/light/rogue/smelter/great,
+/obj/machinery/light/fueled/smelter/great,
 /turf/open/floor/dirt/road,
 /area/rogue/indoors)
 "aw" = (
-/obj/machinery/light/rogue/smelter,
+/obj/machinery/light/fueled/smelter,
 /turf/open/floor/dirt/road,
 /area/rogue/indoors)
 "ax" = (
@@ -241,7 +241,7 @@
 /turf/open/floor/carpet,
 /area/rogue/indoors)
 "aL" = (
-/obj/machinery/light/rogue/firebowl,
+/obj/machinery/light/fueled/firebowl,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
 "aM" = (
@@ -267,7 +267,7 @@
 /turf/open/floor/carpet,
 /area/rogue/indoors)
 "aP" = (
-/obj/machinery/light/rogue/firebowl,
+/obj/machinery/light/fueled/firebowl,
 /turf/open/floor/carpet,
 /area/rogue/indoors)
 "aQ" = (
@@ -682,7 +682,7 @@
 /turf/open/floor/cobble,
 /area/rogue/indoors)
 "bL" = (
-/obj/item/roguebin/water/gross,
+/obj/item/bin/water/gross,
 /turf/open/floor/cobble,
 /area/rogue/indoors)
 "bM" = (
@@ -721,7 +721,7 @@
 /turf/open/floor/cobble,
 /area/rogue/indoors)
 "bP" = (
-/obj/machinery/light/rogue/firebowl,
+/obj/machinery/light/fueled/firebowl,
 /turf/open/floor/cobble,
 /area/rogue/indoors)
 "bQ" = (
@@ -795,7 +795,7 @@
 /turf/open/floor/cobble,
 /area/rogue/indoors)
 "bY" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area)
 "bZ" = (
 /obj/structure/table/wood{
@@ -908,7 +908,7 @@
 /turf/open/floor/cobble,
 /area/rogue/indoors)
 "ck" = (
-/obj/machinery/light/rogue/firebowl,
+/obj/machinery/light/fueled/firebowl,
 /turf/open/floor/blocks,
 /area/rogue/indoors)
 "cl" = (
@@ -938,7 +938,7 @@
 /turf/open/floor/concrete,
 /area/rogue/outdoors)
 "cq" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/outdoors/beach)
 "cr" = (
 /obj/item/weapon/thresher,
@@ -1108,7 +1108,7 @@
 /turf/open/floor/carpet/lord/center,
 /area/rogue/indoors)
 "cW" = (
-/obj/machinery/light/rogue/firebowl,
+/obj/machinery/light/fueled/firebowl,
 /turf/open/floor/carpet/lord/right,
 /area/rogue/indoors)
 "cX" = (
@@ -1152,7 +1152,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
 "mx" = (
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/dirt/road,
 /area/rogue/indoors)
 "mY" = (
@@ -1247,7 +1247,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
 "zc" = (
-/obj/machinery/light/rogue/torchholder/r,
+/obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/dirt/road,
 /area/rogue/indoors)
 "Az" = (

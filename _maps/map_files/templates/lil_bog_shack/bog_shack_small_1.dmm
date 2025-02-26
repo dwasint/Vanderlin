@@ -22,13 +22,13 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/bog)
 "g" = (
-/obj/structure/chair/wood/rogue{
+/obj/structure/chair/wood/alt{
 	dir = 4
 	},
 /turf/open/floor/dirt,
 /area/rogue/outdoors/bog)
 "h" = (
-/obj/machinery/light/rogue/campfire,
+/obj/machinery/light/fueled/campfire,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/bog)
 "i" = (

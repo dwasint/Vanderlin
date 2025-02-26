@@ -1,4 +1,4 @@
-/mob/living/simple_animal/hostile/rogue/orc
+/mob/living/simple_animal/hostile/orc
 	name = "Savage Orc"
 	desc = ""
 	icon = 'icons/roguetown/mob/monster/simple_orcs.dmi'
@@ -44,7 +44,7 @@
 	ai_controller = /datum/ai_controller/orc
 
 
-/mob/living/simple_animal/hostile/rogue/orc/orc2
+/mob/living/simple_animal/hostile/orc/orc2
 	icon_state = "savageorc2"
 	icon_living = "savageorc2"
 	icon_dead = "savageorc2"
@@ -52,7 +52,7 @@
 			/obj/item/weapon/axe/boneaxe,
 			/obj/effect/decal/cleanable/blood)
 
-/mob/living/simple_animal/hostile/rogue/orc/orc_marauder
+/mob/living/simple_animal/hostile/orc/orc_marauder
 	name = "Orc Marauder"
 	icon_state = "orcmarauder"
 	icon_living = "orcmarauder"
@@ -66,7 +66,7 @@
 			/obj/item/weapon/sword/scimitar/messer,
 			/obj/effect/decal/cleanable/blood)
 
-/mob/living/simple_animal/hostile/rogue/orc/orc_marauder/spear
+/mob/living/simple_animal/hostile/orc/orc_marauder/spear
 	icon_state = "orcmarauder_spear"
 	icon_living = "orcmarauder_spear"
 	icon_dead = "orcmarauder_spear"
@@ -75,7 +75,7 @@
 			/obj/item/weapon/polearm/spear,
 			/obj/effect/decal/cleanable/blood)
 
-/mob/living/simple_animal/hostile/rogue/orc/orc_marauder/ravager
+/mob/living/simple_animal/hostile/orc/orc_marauder/ravager
 	icon_state = "orcravager"
 	icon_living = "orcravager"
 	icon_dead = "orcravager"
@@ -88,7 +88,7 @@
 			/obj/item/weapon/polearm/halberd/bardiche,
 			/obj/effect/decal/cleanable/blood)
 
-/mob/living/simple_animal/hostile/rogue/orc/spear
+/mob/living/simple_animal/hostile/orc/spear
 	icon_state = "savageorc_spear"
 	icon_living = "savageorc_spear"
 	icon_dead = "savageorc_spear"
@@ -104,7 +104,7 @@
 			/obj/effect/decal/cleanable/blood)
 	footstep_type = FOOTSTEP_MOB_BAREFOOT
 
-/mob/living/simple_animal/hostile/rogue/orc/spear2
+/mob/living/simple_animal/hostile/orc/spear2
 	icon_state = "savageorc_spear2"
 	icon_living = "savageorc_spear2"
 	icon_dead = "savageorc_spear2"
@@ -112,7 +112,7 @@
 			/obj/item/weapon/polearm/spear/bonespear,
 			/obj/effect/decal/cleanable/blood)
 
-/mob/living/simple_animal/hostile/rogue/orc/get_sound(input)
+/mob/living/simple_animal/hostile/orc/get_sound(input)
 	switch(input)
 		if("aggro")
 			return pick('sound/vo/mobs/simple_orcs/orc_yell.ogg','sound/vo/mobs/simple_orcs/orc_yell2.ogg','sound/vo/mobs/simple_orcs/orc_yell3.ogg', 'sound/vo/mobs/simple_orcs/orc_yell4.ogg')
@@ -124,18 +124,18 @@
 		if("idle")
 			return pick('sound/vo/mobs/simple_orcs/orc_idle.ogg','sound/vo/mobs/simple_orcs/orc_idle2.ogg','sound/vo/mobs/simple_orcs/orc_idle3.ogg','sound/vo/mobs/simple_orcs/orc_idle4.ogg')
 
-/mob/living/simple_animal/hostile/rogue/orc/Life()
+/mob/living/simple_animal/hostile/orc/Life()
 	. = ..()
 	if(!target)
 		if(prob(3))
 			emote(pick("idle"), TRUE)
 
-/mob/living/simple_animal/hostile/rogue/orc/taunted(mob/user)
+/mob/living/simple_animal/hostile/orc/taunted(mob/user)
 	emote("aggro")
 	GiveTarget(user)
 	return
 
-/mob/living/simple_animal/hostile/rogue/orc/simple_limb_hit(zone)
+/mob/living/simple_animal/hostile/orc/simple_limb_hit(zone)
 	if(!zone)
 		return ""
 	switch(zone)
@@ -183,7 +183,7 @@
 	armor_penetration = 40
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "arrow_proj"
-	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow
+	ammo_type = /obj/item/ammo_casing/caseless/arrow
 	range = 15
 	hitsound = 'sound/combat/hits/hi_arrow2.ogg'
 	embedchance = 100
@@ -191,7 +191,7 @@
 	flag =  "piercing"
 	speed = 0.2
 
-/mob/living/simple_animal/hostile/rogue/orc/ranged
+/mob/living/simple_animal/hostile/orc/ranged
 	name = "savage orc archer"
 	desc = ""
 	icon_state = "orcbow"
@@ -206,7 +206,7 @@
 	check_friendly_fire = 1
 	loot = list(/obj/effect/mob_spawn/human/orc/corpse/savageorc2,
 			/obj/item/gun/ballistic/revolver/grenadelauncher/bow,
-			/obj/item/ammo_casing/caseless/rogue/arrow = 3,
+			/obj/item/ammo_casing/caseless/arrow = 3,
 			/obj/effect/decal/cleanable/blood)
 	maxHealth = 100
 	health = 100

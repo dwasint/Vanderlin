@@ -1,5 +1,5 @@
 
-/obj/machinery/light/rogue/forge
+/obj/machinery/light/fueled/forge
 	icon = 'icons/roguetown/misc/forge.dmi'
 	name = "forge"
 	icon_state = "forge0"
@@ -10,7 +10,7 @@
 	climbable = TRUE
 	climb_time = 0
 
-/obj/machinery/light/rogue/forge/attackby(obj/item/W, mob/living/user, params)
+/obj/machinery/light/fueled/forge/attackby(obj/item/W, mob/living/user, params)
 	if(istype(W, /obj/item/weapon/tongs) && on)
 		var/obj/item/weapon/tongs/T = W
 		if(T.held_item)

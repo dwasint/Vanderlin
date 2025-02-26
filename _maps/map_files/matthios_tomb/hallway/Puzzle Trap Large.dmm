@@ -65,7 +65,7 @@
 	},
 /area/rogue/indoors)
 "gY" = (
-/obj/structure/rack/rogue/shelf/biggest,
+/obj/structure/rack/shelf/biggest,
 /obj/structure/spider/stickyweb,
 /obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/cobble,
@@ -82,7 +82,7 @@
 /turf/open/floor/cobble,
 /area/rogue/indoors)
 "ip" = (
-/obj/structure/rack/rogue/shelf/biggest,
+/obj/structure/rack/shelf/biggest,
 /obj/structure/spider/stickyweb,
 /obj/effect/spawner/map_spawner/loot,
 /turf/open/floor/cobblerock,
@@ -138,7 +138,7 @@
 /area/rogue/indoors)
 "nt" = (
 /obj/structure/mineral_door/wood/donjon/stone,
-/obj/machinery/light/rogue/wallfire/candle,
+/obj/machinery/light/fueled/wallfire/candle,
 /obj/structure/fluff/walldeco/vinez,
 /turf/open/floor/cobble,
 /area/rogue/indoors)
@@ -157,7 +157,7 @@
 /area/rogue/indoors)
 "pA" = (
 /obj/structure/mineral_door/wood/donjon/stone,
-/obj/machinery/light/rogue/wallfire/candle,
+/obj/machinery/light/fueled/wallfire/candle,
 /turf/open/floor/cobble,
 /area/rogue/indoors)
 "qu" = (
@@ -211,7 +211,7 @@
 "uq" = (
 /obj/structure/spider/stickyweb,
 /obj/structure/spider/stickyweb,
-/obj/machinery/light/rogue/wallfire/candle,
+/obj/machinery/light/fueled/wallfire/candle,
 /turf/open/floor/cobble,
 /area/rogue/indoors)
 "uK" = (
@@ -252,7 +252,7 @@
 /turf/open/floor/cobble,
 /area/rogue/indoors)
 "zW" = (
-/obj/machinery/light/rogue/wallfire/candle,
+/obj/machinery/light/fueled/wallfire/candle,
 /turf/open/floor/cobble,
 /area/rogue/indoors)
 "zY" = (
@@ -260,7 +260,7 @@
 /area/rogue/indoors)
 "Aq" = (
 /obj/structure/spider/stickyweb,
-/obj/machinery/light/rogue/wallfire/candle,
+/obj/machinery/light/fueled/wallfire/candle,
 /turf/open/floor/cobblerock,
 /area/rogue/indoors)
 "Ar" = (
@@ -271,7 +271,7 @@
 /area/rogue/indoors)
 "AV" = (
 /obj/structure/mineral_door/wood/donjon/stone,
-/obj/machinery/light/rogue/wallfire/candle,
+/obj/machinery/light/fueled/wallfire/candle,
 /turf/open/floor/cobblerock,
 /area/rogue/indoors)
 "Bi" = (
@@ -286,7 +286,7 @@
 /turf/open/water/river,
 /area/rogue/indoors)
 "CR" = (
-/obj/machinery/light/rogue/campfire/densefire,
+/obj/machinery/light/fueled/campfire/densefire,
 /turf/open/floor/cobblerock,
 /area/rogue/indoors)
 "Fs" = (
@@ -327,7 +327,7 @@
 /turf/open/floor/cobble,
 /area/rogue/indoors)
 "Jx" = (
-/obj/structure/rack/rogue/shelf/biggest,
+/obj/structure/rack/shelf/biggest,
 /obj/structure/spider/stickyweb/solo,
 /obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/cobble,
@@ -337,7 +337,7 @@
 /turf/open/water/river,
 /area/rogue/indoors)
 "Ki" = (
-/obj/structure/bed/rogue/hay,
+/obj/structure/bed/hay,
 /turf/open/floor/cobblerock,
 /area/rogue/indoors)
 "Kr" = (
@@ -423,7 +423,7 @@
 /turf/closed/wall/mineral/stone/window/moss,
 /area/rogue/indoors)
 "Qs" = (
-/obj/machinery/light/rogue/wallfire/candle,
+/obj/machinery/light/fueled/wallfire/candle,
 /obj/structure/fluff/walldeco/vinez,
 /turf/closed/wall/mineral/stone/moss,
 /area/rogue/indoors)
@@ -456,7 +456,7 @@
 	},
 /area/rogue/indoors)
 "Uc" = (
-/obj/machinery/light/rogue/wallfire/candle,
+/obj/machinery/light/fueled/wallfire/candle,
 /turf/open/transparent/openspace,
 /area/rogue/indoors)
 "Us" = (
@@ -470,7 +470,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/indoors)
 "Vh" = (
-/obj/structure/bed/rogue/hay,
+/obj/structure/bed/hay,
 /turf/open/floor/cobble,
 /area/rogue/indoors)
 "Vk" = (
@@ -486,7 +486,7 @@
 	},
 /area/rogue/indoors)
 "Vu" = (
-/obj/machinery/light/rogue/wallfire/candle,
+/obj/machinery/light/fueled/wallfire/candle,
 /turf/open/floor/cobblerock,
 /area/rogue/indoors)
 "Wu" = (

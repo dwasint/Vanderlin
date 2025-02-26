@@ -29,9 +29,9 @@
 /turf/open/floor/dirt/road,
 /area/rogue)
 "bh" = (
-/obj/structure/bed/rogue/mediocre,
-/obj/item/bedsheet/rogue/cloth,
-/obj/item/bedsheet/rogue/cloth,
+/obj/structure/bed/mediocre,
+/obj/item/bedsheet/cloth,
+/obj/item/bedsheet/cloth,
 /mob/living/carbon/human/species/skeleton/npc/warrior,
 /turf/open/floor/churchmarble,
 /area/rogue)
@@ -48,7 +48,7 @@
 /turf/open/water/swamp,
 /area/rogue)
 "cb" = (
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/churchmarble,
 /area/rogue)
 "cd" = (
@@ -61,7 +61,7 @@
 	dir = 4;
 	pixel_x = 1
 	},
-/mob/living/simple_animal/hostile/rogue/skeleton/bow,
+/mob/living/simple_animal/hostile/skeleton/bow,
 /turf/open/floor/tile/masonic/spiral,
 /area/rogue)
 "cF" = (
@@ -86,7 +86,7 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "dD" = (
-/obj/structure/rack/rogue/shelf/big{
+/obj/structure/rack/shelf/big{
 	pixel_y = 0
 	},
 /obj/item/paper/scroll,
@@ -125,7 +125,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue)
 "ep" = (
-/obj/machinery/light/rogue/torchholder/c,
+/obj/machinery/light/fueled/torchholder/c,
 /turf/open/floor/dirt/road,
 /area/rogue)
 "eC" = (
@@ -186,11 +186,11 @@
 /area/rogue)
 "gO" = (
 /obj/structure/barricade/rogue,
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/churchmarble,
 /area/rogue)
 "hf" = (
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /turf/open/floor/churchmarble,
 /area/rogue)
 "hr" = (
@@ -217,7 +217,7 @@
 /turf/open/floor/grass/cold,
 /area/rogue)
 "jl" = (
-/obj/machinery/light/rogue/torchholder/r,
+/obj/machinery/light/fueled/torchholder/r,
 /obj/effect/decal/cleanable/dirt/cobweb/cobweb2,
 /turf/open/floor/churchmarble,
 /area/rogue)
@@ -271,7 +271,7 @@
 /turf/open/floor/churchmarble,
 /area/rogue)
 "mc" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "mt" = (
 /obj/effect/decal/cleanable/blood/puddle,
@@ -282,7 +282,7 @@
 /turf/closed,
 /area/rogue)
 "nb" = (
-/obj/machinery/light/rogue/oven/south,
+/obj/machinery/light/fueled/oven/south,
 /turf/open/floor/churchmarble,
 /area/rogue)
 "nc" = (
@@ -302,7 +302,7 @@
 /turf/open/floor/grass,
 /area/rogue)
 "nY" = (
-/obj/machinery/light/rogue/torchholder/r,
+/obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/churchrough,
 /area/rogue)
 "oy" = (
@@ -322,7 +322,7 @@
 /turf/open/water/swamp,
 /area/rogue)
 "oR" = (
-/obj/machinery/light/rogue/campfire/longlived,
+/obj/machinery/light/fueled/campfire/longlived,
 /turf/open/floor/metal{
 	dir = 1
 	},
@@ -379,7 +379,7 @@
 /turf/open/floor/churchmarble,
 /area/rogue)
 "qF" = (
-/obj/machinery/light/rogue/chand,
+/obj/machinery/light/fueled/chand,
 /turf/open/transparent/openspace,
 /area/rogue)
 "qH" = (
@@ -617,7 +617,7 @@
 /obj/item/clothing/shirt/robe/astrata,
 /obj/item/clothing/head/helmet/heavy/necked/astrata,
 /obj/item/clothing/head/helmet/heavy/necked/astrata,
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /obj/effect/spawner/map_spawner/loot/medium,
 /turf/open/floor/churchmarble,
 /area/rogue)
@@ -642,7 +642,7 @@
 /turf/open/floor/grass/cold,
 /area/rogue)
 "BE" = (
-/obj/structure/chair/wood/rogue/chair3,
+/obj/structure/chair/wood/alt/chair3,
 /turf/open/floor/dirt/road,
 /area/rogue)
 "BI" = (
@@ -660,7 +660,7 @@
 /turf/open/floor/churchmarble,
 /area/rogue)
 "DB" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/natural/bundle/cloth,
 /obj/item/natural/bundle/cloth{
 	amount = 10;
@@ -676,7 +676,7 @@
 /turf/open/floor/churchmarble,
 /area/rogue)
 "Ed" = (
-/obj/machinery/light/rogue/torchholder/r,
+/obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/churchmarble,
 /area/rogue)
 "Ej" = (
@@ -711,7 +711,7 @@
 /turf/open/floor/concrete,
 /area/rogue)
 "EQ" = (
-/turf/closed/mineral/random/rogue,
+/turf/closed/mineral/random,
 /area/rogue)
 "EW" = (
 /obj/effect/decal/cleanable/dirt/cobweb,
@@ -748,7 +748,7 @@
 /turf/open/floor/churchmarble,
 /area/rogue)
 "GB" = (
-/obj/machinery/light/rogue/firebowl,
+/obj/machinery/light/fueled/firebowl,
 /turf/open/floor/dirt,
 /area/rogue)
 "GJ" = (
@@ -762,9 +762,9 @@
 /turf/open/floor/churchmarble,
 /area/rogue)
 "GQ" = (
-/obj/structure/bed/rogue/mediocre,
-/obj/structure/bed/rogue/mediocre,
-/obj/item/bedsheet/rogue/cloth,
+/obj/structure/bed/mediocre,
+/obj/structure/bed/mediocre,
+/obj/item/bedsheet/cloth,
 /obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/churchmarble,
 /area/rogue)
@@ -783,7 +783,7 @@
 /turf/open/floor/grass,
 /area/rogue)
 "If" = (
-/turf/closed/mineral/rogue,
+/turf/closed/mineral,
 /area/rogue)
 "Ii" = (
 /mob/living/carbon/human/species/skeleton/npc/warrior,
@@ -814,7 +814,7 @@
 /obj/structure/fluff/railing/wood{
 	dir = 1
 	},
-/obj/machinery/light/rogue/firebowl/standing,
+/obj/machinery/light/fueled/firebowl/standing,
 /turf/open/floor/churchmarble,
 /area/rogue)
 "IO" = (
@@ -855,8 +855,8 @@
 /turf/open/floor/dirt/road,
 /area/rogue)
 "Lg" = (
-/obj/structure/bed/rogue/hay,
-/obj/structure/bed/rogue/hay{
+/obj/structure/bed/hay,
+/obj/structure/bed/hay{
 	pixel_y = 23
 	},
 /turf/open/floor/churchmarble,
@@ -866,7 +866,7 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "Lm" = (
-/obj/machinery/light/rogue/firebowl,
+/obj/machinery/light/fueled/firebowl,
 /turf/open/floor/grass,
 /area/rogue)
 "Lo" = (
@@ -888,7 +888,7 @@
 /obj/item/clothing/shirt/robe/priest,
 /obj/item/clothing/shirt/undershirt/priest,
 /obj/item/clothing/head/priestmask,
-/obj/machinery/light/rogue/torchholder/r,
+/obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/churchmarble,
 /area/rogue)
 "Mv" = (
@@ -917,16 +917,16 @@
 /turf/open/water/swamp/deep,
 /area/rogue)
 "NQ" = (
-/obj/structure/bed/rogue/inn,
+/obj/structure/bed/inn,
 /turf/open/floor/churchmarble,
 /area/rogue)
 "NZ" = (
-/obj/machinery/light/rogue/torchholder,
-/turf/closed/mineral/rogue/bedrock,
+/obj/machinery/light/fueled/torchholder,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "Om" = (
 /obj/structure/fluff/railing/wood,
-/mob/living/simple_animal/hostile/rogue/skeleton/bow,
+/mob/living/simple_animal/hostile/skeleton/bow,
 /turf/open/floor/tile/masonic/spiral,
 /area/rogue)
 "Ox" = (
@@ -949,8 +949,8 @@
 /turf/open/floor/concrete,
 /area/rogue)
 "ON" = (
-/obj/structure/bed/rogue/mediocre,
-/obj/item/bedsheet/rogue/cloth,
+/obj/structure/bed/mediocre,
+/obj/item/bedsheet/cloth,
 /turf/open/floor/churchmarble,
 /area/rogue)
 "PE" = (
@@ -999,7 +999,7 @@
 /turf/open/floor/concrete,
 /area/rogue)
 "QB" = (
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /obj/item/grown/log/tree/stake,
 /turf/open/floor/churchmarble,
 /area/rogue)
@@ -1029,7 +1029,7 @@
 /turf/open/floor/grass/cold,
 /area/rogue)
 "Rx" = (
-/obj/machinery/light/rogue/campfire/longlived,
+/obj/machinery/light/fueled/campfire/longlived,
 /turf/open/floor/churchmarble,
 /area/rogue)
 "RJ" = (
@@ -1214,7 +1214,7 @@
 /turf/open/floor/churchmarble,
 /area/rogue)
 "Ys" = (
-/obj/structure/rack/rogue/shelf/big{
+/obj/structure/rack/shelf/big{
 	pixel_y = 0
 	},
 /obj/item/natural/feather,
@@ -1227,10 +1227,10 @@
 /turf/open/floor/herringbone,
 /area/rogue)
 "YC" = (
-/obj/structure/bed/rogue/hay{
+/obj/structure/bed/hay{
 	pixel_y = 23
 	},
-/obj/structure/bed/rogue/hay,
+/obj/structure/bed/hay,
 /turf/open/floor/churchmarble,
 /area/rogue)
 "YJ" = (
@@ -1271,8 +1271,8 @@
 /turf/open/floor/woodturned,
 /area/rogue)
 "Zs" = (
-/obj/structure/bed/rogue/mediocre,
-/obj/item/bedsheet/rogue/cloth,
+/obj/structure/bed/mediocre,
+/obj/item/bedsheet/cloth,
 /obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/churchmarble,
 /area/rogue)
@@ -1286,7 +1286,7 @@
 /turf/open/floor/church,
 /area/rogue)
 "Zw" = (
-/obj/machinery/light/rogue/campfire/longlived,
+/obj/machinery/light/fueled/campfire/longlived,
 /turf/open/floor/herringbone,
 /area/rogue)
 "ZF" = (

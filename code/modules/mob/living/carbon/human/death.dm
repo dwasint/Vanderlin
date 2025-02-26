@@ -86,7 +86,7 @@
 
 		var/yeae = TRUE
 		if(buckled)
-			if(istype(buckled, /obj/structure/fluff/psycross) || istype(buckled, /obj/machinery/light/rogue/campfire/pyre))
+			if(istype(buckled, /obj/structure/fluff/psycross) || istype(buckled, /obj/machinery/light/fueled/campfire/pyre))
 				if((real_name in GLOB.excommunicated_players) || (real_name in GLOB.heretical_players))
 					yeae = FALSE
 					tris2take += -2

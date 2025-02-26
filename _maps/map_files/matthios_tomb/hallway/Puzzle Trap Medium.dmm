@@ -119,7 +119,7 @@
 /turf/open/floor/cobble,
 /area/rogue/indoors)
 "oO" = (
-/obj/machinery/light/rogue/campfire/longlived,
+/obj/machinery/light/fueled/campfire/longlived,
 /turf/open/floor/cobble,
 /area/rogue/indoors)
 "pd" = (
@@ -127,7 +127,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/indoors)
 "pp" = (
-/obj/structure/bed/rogue/sleepingbag,
+/obj/structure/bed/sleepingbag,
 /turf/open/floor/cobble,
 /area/rogue/indoors)
 "rQ" = (
@@ -286,7 +286,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/indoors)
 "Ib" = (
-/obj/structure/bed/rogue/sleepingbag,
+/obj/structure/bed/sleepingbag,
 /turf/open/floor/cobblerock,
 /area/rogue/indoors)
 "IB" = (

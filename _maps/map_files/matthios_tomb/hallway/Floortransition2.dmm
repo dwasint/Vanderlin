@@ -20,10 +20,10 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "n" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "p" = (
-/obj/item/ammo_casing/caseless/rogue/arrow,
+/obj/item/ammo_casing/caseless/arrow,
 /turf/open/floor/naturalstone,
 /area/rogue)
 "v" = (

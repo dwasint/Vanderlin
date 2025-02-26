@@ -65,7 +65,7 @@
 		/datum/slapcraft_step/item/small_log/second,
 		/datum/slapcraft_step/use_item/carpentry/hammer/second
 		)
-	result_type = /obj/item/roguebin
+	result_type = /obj/item/bin
 	craftdiff = 0
 
 /datum/slapcraft_recipe/carpentry/structure/chair
@@ -74,14 +74,14 @@
 		/datum/slapcraft_step/item/small_log,
 		/datum/slapcraft_step/use_item/carpentry/hammer
 		)
-	result_type = /obj/structure/chair/wood/rogue/chair3/crafted
+	result_type = /obj/structure/chair/wood/alt/chair3/crafted
 
-/obj/structure/chair/wood/rogue/chair3/crafted
+/obj/structure/chair/wood/alt/chair3/crafted
 	item_chair = /obj/item/chair/rogue/chair3/crafted
 	sellprice = 6
 
 /obj/item/chair/rogue/chair3/crafted
-	origin_type = /obj/structure/chair/wood/rogue/chair3/crafted
+	origin_type = /obj/structure/chair/wood/alt/chair3/crafted
 	sellprice = 6
 
 /datum/slapcraft_recipe/carpentry/structure/fancychair
@@ -91,15 +91,15 @@
 		/datum/slapcraft_step/use_item/carpentry/hammer,
 		/datum/slapcraft_step/item/silk
 		)
-	result_type = /obj/structure/chair/wood/rogue/fancy/crafted
+	result_type = /obj/structure/chair/wood/alt/fancy/crafted
 	craftdiff = 2
 
-/obj/structure/chair/wood/rogue/fancy/crafted
+/obj/structure/chair/wood/alt/fancy/crafted
 	item_chair = /obj/item/chair/rogue/fancy/crafted
 	sellprice = 12
 
 /obj/item/chair/rogue/fancy/crafted
-	origin_type = /obj/structure/chair/wood/rogue/fancy/crafted
+	origin_type = /obj/structure/chair/wood/alt/fancy/crafted
 	sellprice = 12
 
 /datum/slapcraft_recipe/carpentry/structure/stool
@@ -108,14 +108,14 @@
 		/datum/slapcraft_step/item/small_log,
 		/datum/slapcraft_step/use_item/carpentry/hammer
 		)
-	result_type = /obj/structure/chair/stool/rogue/crafted
+	result_type = /obj/structure/chair/stool/crafted
 
-/obj/structure/chair/stool/rogue/crafted
-	item_chair = /obj/item/chair/stool/bar/rogue/crafted
+/obj/structure/chair/stool/crafted
+	item_chair = /obj/item/chair/stool/bar/crafted
 	sellprice = 6
 
-/obj/item/chair/stool/bar/rogue/crafted
-	origin_type = /obj/structure/chair/stool/rogue/crafted
+/obj/item/chair/stool/bar/crafted
+	origin_type = /obj/structure/chair/stool/crafted
 	sellprice = 6
 
 /datum/slapcraft_recipe/carpentry/structure/loom
@@ -188,7 +188,7 @@
 		/datum/slapcraft_step/item/stake/third,
 		/datum/slapcraft_step/use_item/carpentry/hammer/second,
 		)
-	result_type = /obj/machinery/light/rogue/campfire/pyre
+	result_type = /obj/machinery/light/fueled/campfire/pyre
 
 /datum/slapcraft_recipe/carpentry/structure/stairsd
 	name = "wooden stairs (down)"
@@ -302,7 +302,7 @@
 		/datum/slapcraft_step/item/cloth,
 		/datum/slapcraft_step/use_item/sewing/needle,
 		)
-	result_type = /obj/structure/bed/rogue
+	result_type = /obj/structure/bed
 	craftdiff = 2
 
 /datum/slapcraft_recipe/carpentry/structure/sign

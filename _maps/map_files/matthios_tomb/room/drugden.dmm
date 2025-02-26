@@ -1,11 +1,11 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aO" = (
 /obj/effect/decal/cleanable/sigil/N,
-/obj/machinery/light/rogue/wallfire/candle/blue,
+/obj/machinery/light/fueled/wallfire/candle/blue,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "aY" = (
-/obj/machinery/light/rogue/wallfire/candle/blue,
+/obj/machinery/light/fueled/wallfire/candle/blue,
 /obj/structure/table/vtable,
 /obj/item/storage/belt/pouch,
 /turf/open/floor/ruinedwood/spiral,
@@ -44,7 +44,7 @@
 /turf/open/floor/tile,
 /area/rogue)
 "hR" = (
-/obj/machinery/light/rogue/wallfire/candle/blue/r,
+/obj/machinery/light/fueled/wallfire/candle/blue/r,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "iZ" = (
@@ -59,13 +59,13 @@
 /turf/open/water/bath,
 /area/rogue)
 "kJ" = (
-/mob/living/simple_animal/hostile/rogue/skeleton/spear,
+/mob/living/simple_animal/hostile/skeleton/spear,
 /obj/item/coin/copper/pile,
 /turf/open/water/bath,
 /area/rogue)
 "mh" = (
 /obj/structure/closet/crate/crafted_closet/inn,
-/mob/living/simple_animal/hostile/rogue/skeleton/guard,
+/mob/living/simple_animal/hostile/skeleton/guard,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "mx" = (
@@ -76,7 +76,7 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "nn" = (
-/mob/living/simple_animal/hostile/rogue/skeleton/guard,
+/mob/living/simple_animal/hostile/skeleton/guard,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "nu" = (
@@ -85,8 +85,8 @@
 	},
 /area/rogue)
 "nx" = (
-/obj/machinery/light/rogue/wallfire/candle/blue,
-/obj/structure/rack/rogue/shelf/big,
+/obj/machinery/light/fueled/wallfire/candle/blue,
+/obj/structure/rack/shelf/big,
 /obj/item/perfume/random{
 	pixel_y = 25
 	},
@@ -104,7 +104,7 @@
 /turf/open/floor/tile,
 /area/rogue)
 "pA" = (
-/obj/structure/rack/rogue/shelf/big,
+/obj/structure/rack/shelf/big,
 /obj/item/perfume/random{
 	pixel_y = 24
 	},
@@ -138,7 +138,7 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "tJ" = (
-/obj/structure/rack/rogue/shelf/big,
+/obj/structure/rack/shelf/big,
 /obj/item/perfume/random{
 	pixel_y = 24
 	},
@@ -154,7 +154,7 @@
 	},
 /area/rogue)
 "vx" = (
-/mob/living/simple_animal/hostile/rogue/skeleton/bow,
+/mob/living/simple_animal/hostile/skeleton/bow,
 /turf/open/floor/tile,
 /area/rogue)
 "wQ" = (
@@ -162,11 +162,11 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "xx" = (
-/obj/machinery/light/rogue/wallfire/candle/blue,
+/obj/machinery/light/fueled/wallfire/candle/blue,
 /turf/open/water/bath,
 /area/rogue)
 "Ao" = (
-/obj/machinery/light/rogue/wallfire/candle/blue,
+/obj/machinery/light/fueled/wallfire/candle/blue,
 /obj/structure/closet/crate/drawer/inn,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
@@ -175,7 +175,7 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "BX" = (
-/mob/living/simple_animal/hostile/rogue/skeleton/spear,
+/mob/living/simple_animal/hostile/skeleton/spear,
 /turf/open/water/bath,
 /area/rogue)
 "CA" = (
@@ -203,8 +203,8 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "Fx" = (
-/obj/structure/bed/rogue/inn/double,
-/obj/item/bedsheet/rogue/fabric_double,
+/obj/structure/bed/inn/double,
+/obj/item/bedsheet/fabric_double,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "FL" = (
@@ -218,7 +218,7 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "Gp" = (
-/mob/living/simple_animal/hostile/rogue/skeleton/bow,
+/mob/living/simple_animal/hostile/skeleton/bow,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "Hv" = (
@@ -229,13 +229,13 @@
 /turf/open/water/swamp/deep,
 /area/rogue)
 "Ko" = (
-/obj/machinery/light/rogue/wallfire/candle/blue,
-/obj/structure/bed/rogue/shit,
-/mob/living/simple_animal/hostile/rogue/skeleton,
+/obj/machinery/light/fueled/wallfire/candle/blue,
+/obj/structure/bed/shit,
+/mob/living/simple_animal/hostile/skeleton,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "KT" = (
-/obj/structure/rack/rogue/shelf/big,
+/obj/structure/rack/shelf/big,
 /obj/item/perfume/random{
 	pixel_y = 25
 	},
@@ -246,8 +246,8 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "Mj" = (
-/obj/machinery/light/rogue/wallfire/candle/blue,
-/mob/living/simple_animal/hostile/rogue/skeleton/spear,
+/obj/machinery/light/fueled/wallfire/candle/blue,
+/mob/living/simple_animal/hostile/skeleton/spear,
 /turf/open/water/bath,
 /area/rogue)
 "Ph" = (
@@ -294,7 +294,7 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "PQ" = (
-/obj/machinery/light/rogue/wallfire/candle/blue/l,
+/obj/machinery/light/fueled/wallfire/candle/blue/l,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "Qs" = (
@@ -305,7 +305,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue)
 "RG" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "TQ" = (
 /turf/open/transparent/openspace,
@@ -327,12 +327,12 @@
 /turf/open/floor/rooftop,
 /area/rogue)
 "Yy" = (
-/obj/machinery/light/rogue/wallfire/candle/blue,
+/obj/machinery/light/fueled/wallfire/candle/blue,
 /turf/open/floor/tile,
 /area/rogue)
 "YP" = (
-/obj/structure/bed/rogue/shit,
-/mob/living/simple_animal/hostile/rogue/skeleton,
+/obj/structure/bed/shit,
+/mob/living/simple_animal/hostile/skeleton,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "YZ" = (

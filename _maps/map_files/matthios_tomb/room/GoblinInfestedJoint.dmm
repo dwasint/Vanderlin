@@ -15,11 +15,11 @@
 /turf/open/floor/rooftop,
 /area/rogue)
 "bc" = (
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /turf/open/floor/rooftop,
 /area/rogue)
 "bg" = (
-/turf/closed/mineral/rogue/gemeralds,
+/turf/closed/mineral/gemeralds,
 /area/rogue)
 "bw" = (
 /obj/item/clothing/head/helmet/kettle/slit,
@@ -30,7 +30,7 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "bP" = (
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /obj/structure/fluff/railing/border,
 /turf/open/floor/rooftop,
 /area/rogue)
@@ -60,7 +60,7 @@
 /turf/open/floor/rooftop,
 /area/rogue)
 "cp" = (
-/obj/machinery/light/rogue/torchholder/c,
+/obj/machinery/light/fueled/torchholder/c,
 /turf/open/floor/grass,
 /area/rogue)
 "ct" = (
@@ -96,7 +96,7 @@
 /turf/closed/wall/mineral/wooddark/end,
 /area/rogue)
 "eq" = (
-/obj/machinery/light/rogue/wallfire/candle,
+/obj/machinery/light/fueled/wallfire/candle,
 /obj/effect/decal/remains/human,
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue)
@@ -122,10 +122,10 @@
 /turf/open/floor/cobble,
 /area/rogue)
 "fp" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/rope/chain,
 /obj/item/rope/chain,
-/obj/machinery/light/rogue/torchholder/c,
+/obj/machinery/light/fueled/torchholder/c,
 /turf/open/floor/cobble/alt,
 /area/rogue)
 "fs" = (
@@ -238,7 +238,7 @@
 /turf/open/transparent/openspace,
 /area/rogue)
 "iS" = (
-/obj/machinery/light/rogue/wallfire,
+/obj/machinery/light/fueled/wallfire,
 /turf/closed/wall/mineral/wooddark/vertical,
 /area/rogue)
 "jl" = (
@@ -378,7 +378,7 @@
 /turf/open/floor/cobble/alt,
 /area/rogue)
 "pt" = (
-/obj/machinery/light/rogue/torchholder/r,
+/obj/machinery/light/fueled/torchholder/r,
 /obj/structure/flora/roguegrass/thorn_bush,
 /turf/open/floor/dirt,
 /area/rogue)
@@ -463,7 +463,7 @@
 /turf/open/floor/blocks,
 /area/rogue)
 "sR" = (
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/blocks,
 /area/rogue)
 "sV" = (
@@ -489,11 +489,11 @@
 /turf/open/floor/cobble,
 /area/rogue)
 "tK" = (
-/obj/machinery/light/rogue/torchholder/r,
+/obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/dirt,
 /area/rogue)
 "tL" = (
-/obj/machinery/light/rogue/torchholder/c,
+/obj/machinery/light/fueled/torchholder/c,
 /turf/open/floor/cobblerock,
 /area/rogue)
 "tM" = (
@@ -501,7 +501,7 @@
 	pixel_x = 2;
 	pixel_y = 5
 	},
-/obj/structure/rack/rogue/shelf,
+/obj/structure/rack/shelf,
 /obj/effect/decal/remains/human,
 /turf/open/floor/cobble/alt,
 /area/rogue)
@@ -534,7 +534,7 @@
 /turf/open/floor/ruinedwood/turned,
 /area/rogue)
 "uS" = (
-/obj/machinery/light/rogue/hearth{
+/obj/machinery/light/fueled/hearth{
 	brightness = 4
 	},
 /turf/open/floor/cobble,
@@ -543,7 +543,7 @@
 /turf/open/floor/rooftop,
 /area/rogue)
 "vk" = (
-/obj/machinery/light/rogue/torchholder/c,
+/obj/machinery/light/fueled/torchholder/c,
 /turf/open/floor/hexstone,
 /area/rogue)
 "vK" = (
@@ -563,12 +563,12 @@
 /turf/open/transparent/openspace,
 /area/rogue)
 "wF" = (
-/obj/machinery/light/rogue/torchholder/c,
-/obj/structure/chair/stool/rogue,
+/obj/machinery/light/fueled/torchholder/c,
+/obj/structure/chair/stool,
 /turf/open/floor/wood/nosmooth,
 /area/rogue)
 "xp" = (
-/turf/closed/mineral/rogue/gold,
+/turf/closed/mineral/gold,
 /area/rogue)
 "xr" = (
 /turf/open/floor/cobblerock/alt,
@@ -597,7 +597,7 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "yR" = (
-/obj/machinery/light/rogue/campfire,
+/obj/machinery/light/fueled/campfire,
 /obj/item/reagent_containers/food/snacks/friedrat{
 	pixel_x = 3
 	},
@@ -656,7 +656,7 @@
 /turf/open/transparent/openspace,
 /area/rogue)
 "Bj" = (
-/obj/machinery/light/rogue/torchholder/c,
+/obj/machinery/light/fueled/torchholder/c,
 /turf/open/floor/blocks,
 /area/rogue)
 "Bz" = (
@@ -664,7 +664,7 @@
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue)
 "BR" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/effect/spawner/map_spawner/loot/weapon,
 /turf/open/floor/cobble,
 /area/rogue)
@@ -693,14 +693,14 @@
 /turf/open/floor/rooftop,
 /area/rogue)
 "CE" = (
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /obj/structure/fluff/railing/border{
 	dir = 4
 	},
 /turf/open/floor/rooftop,
 /area/rogue)
 "CW" = (
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/cobblerock,
 /area/rogue)
 "Df" = (
@@ -731,7 +731,7 @@
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue)
 "ED" = (
-/obj/machinery/light/rogue/torchholder,
+/obj/machinery/light/fueled/torchholder,
 /turf/closed/wall/mineral/decostone,
 /area/rogue)
 "EU" = (
@@ -756,7 +756,7 @@
 /area/rogue)
 "FF" = (
 /obj/structure/flora/roguegrass,
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "FJ" = (
 /obj/effect/dungeon_directional_helper/east,
@@ -811,7 +811,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue)
 "HT" = (
-/obj/structure/rack/rogue/shelf,
+/obj/structure/rack/shelf,
 /obj/structure/closet/crate/crafted_closet,
 /obj/item/candle/yellow{
 	pixel_x = -9;
@@ -841,7 +841,7 @@
 /turf/open/floor/cobble,
 /area/rogue)
 "Iz" = (
-/obj/structure/bed/rogue/hay,
+/obj/structure/bed/hay,
 /turf/open/floor/ruinedwood/turned,
 /area/rogue)
 "IA" = (
@@ -863,7 +863,7 @@
 /area/rogue)
 "IS" = (
 /obj/effect/decal/cleanable/dirt/cobweb/cobweb2,
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/rope/chain,
 /obj/item/rope/chain,
 /turf/open/floor/cobble/alt,
@@ -896,7 +896,7 @@
 /area/rogue)
 "Kd" = (
 /obj/effect/decal/cleanable/dirt/cobweb/cobweb2,
-/obj/structure/chair/wood/rogue/chair3,
+/obj/structure/chair/wood/alt/chair3,
 /obj/effect/decal/cleanable/blood/gibs/old,
 /obj/effect/decal/cleanable/blood/gibs/down,
 /turf/open/floor/ruinedwood/turned,
@@ -991,7 +991,7 @@
 /obj/structure/fluff/railing/border{
 	dir = 1
 	},
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "Nw" = (
 /turf/closed/wall/mineral/decostone/end,
@@ -1134,7 +1134,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue)
 "Sf" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "Sp" = (
 /obj/effect/decal/cleanable/dirt/cobweb,
@@ -1168,7 +1168,7 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "Td" = (
-/obj/machinery/light/rogue/torchholder/r,
+/obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/blocks,
 /area/rogue)
 "Tf" = (
@@ -1185,7 +1185,7 @@
 /area/rogue)
 "Uo" = (
 /obj/effect/decal/cleanable/blood,
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "Us" = (
 /obj/item/storage/sack{
@@ -1200,11 +1200,11 @@
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue)
 "UP" = (
-/obj/machinery/light/rogue/campfire/densefire,
+/obj/machinery/light/fueled/campfire/densefire,
 /turf/open/floor/cobblerock/alt,
 /area/rogue)
 "UT" = (
-/turf/closed/mineral/rogue/silver,
+/turf/closed/mineral/silver,
 /area/rogue)
 "UW" = (
 /obj/item/natural/rock,
@@ -1247,11 +1247,11 @@
 /turf/open/floor/cobble,
 /area/rogue)
 "Wp" = (
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/hexstone,
 /area/rogue)
 "WC" = (
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /obj/structure/flora/roguegrass/bush_meagre,
 /obj/structure/flora/roguegrass/bush_meagre,
 /turf/open/floor/grass,
@@ -1270,7 +1270,7 @@
 /turf/open/floor/blocks,
 /area/rogue)
 "Yq" = (
-/obj/machinery/light/rogue/torchholder/r,
+/obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/hexstone,
 /area/rogue)
 "Yy" = (
@@ -1306,11 +1306,11 @@
 /turf/open/floor/rooftop,
 /area/rogue)
 "ZT" = (
-/obj/item/chair/stool/bar/rogue,
+/obj/item/chair/stool/bar,
 /turf/open/floor/rooftop,
 /area/rogue)
 "ZX" = (
-/obj/structure/bed/rogue/bear,
+/obj/structure/bed/bear,
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue)
 

@@ -3,7 +3,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue)
 "c" = (
-/obj/structure/bed/rogue/shit,
+/obj/structure/bed/shit,
 /obj/item/reagent_containers/glass/bottle/healthpot{
 	pixel_x = 3;
 	pixel_y = 20
@@ -24,7 +24,7 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "h" = (
-/obj/machinery/light/rogue/campfire/longlived,
+/obj/machinery/light/fueled/campfire/longlived,
 /turf/open/floor/dirt,
 /area/rogue)
 "i" = (
@@ -32,7 +32,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue)
 "j" = (
-/obj/item/chair/stool/bar/rogue/crafted,
+/obj/item/chair/stool/bar/crafted,
 /turf/open/floor/dirt,
 /area/rogue)
 "l" = (
@@ -42,14 +42,14 @@
 /turf/closed/wall/mineral/tent,
 /area/rogue)
 "u" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "D" = (
 /obj/effect/dungeon_directional_helper/north,
 /turf/open/floor/dirt,
 /area/rogue)
 "G" = (
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /turf/open/floor/dirt,
 /area/rogue)
 "H" = (

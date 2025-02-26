@@ -199,10 +199,14 @@
 /obj/structure/chair/stool
 	name = "stool"
 	desc = ""
-	icon_state = "stool"
-	can_buckle = 0
-	buildstackamount = 1
-	item_chair = /obj/item/chair/stool
+	icon_state = "barstool"
+	icon = 'icons/roguetown/misc/structure.dmi'
+	item_chair = /obj/item/chair/stool/bar
+	max_integrity = 100
+	blade_dulling = DULLING_BASHCHOP
+	destroy_sound = 'sound/combat/hits/onwood/destroyfurniture.ogg'
+	attacked_sound = "woodimpact"
+	metalizer_result = /obj/item/cooking/pan
 
 /obj/structure/chair/stool/narsie_act()
 	return

@@ -1,7 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aS" = (
-/obj/structure/chair/stool/rogue,
-/mob/living/simple_animal/hostile/rogue/orc/orc2,
+/obj/structure/chair/stool,
+/mob/living/simple_animal/hostile/orc/orc2,
 /turf/open/floor/dirt,
 /area/rogue)
 "bp" = (
@@ -22,11 +22,11 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "em" = (
-/obj/item/chair/stool/bar/rogue,
+/obj/item/chair/stool/bar,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "eK" = (
-/obj/machinery/light/rogue/campfire/longlived,
+/obj/machinery/light/fueled/campfire/longlived,
 /turf/open/floor/dirt,
 /area/rogue)
 "gd" = (
@@ -34,15 +34,15 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "gz" = (
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "jT" = (
 /turf/open/floor/dirt/road,
 /area/rogue)
 "ln" = (
-/obj/structure/chair/stool/rogue,
-/mob/living/simple_animal/hostile/rogue/orc/spear,
+/obj/structure/chair/stool,
+/mob/living/simple_animal/hostile/orc/spear,
 /turf/open/floor/dirt,
 /area/rogue)
 "ly" = (
@@ -53,12 +53,12 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "lI" = (
-/obj/machinery/light/rogue/wallfire,
+/obj/machinery/light/fueled/wallfire,
 /turf/closed/wall/mineral/wooddark/horizontal,
 /area/rogue)
 "mb" = (
-/obj/structure/chair/stool/rogue,
-/mob/living/simple_animal/hostile/rogue/orc/ranged,
+/obj/structure/chair/stool,
+/mob/living/simple_animal/hostile/orc/ranged,
 /turf/open/floor/dirt,
 /area/rogue)
 "pH" = (
@@ -87,11 +87,11 @@
 /obj/item/natural/poo{
 	pixel_x = -4
 	},
-/mob/living/simple_animal/hostile/rogue/orc/orc2,
+/mob/living/simple_animal/hostile/orc/orc2,
 /turf/open/floor/dirt,
 /area/rogue)
 "rP" = (
-/obj/machinery/light/rogue/firebowl,
+/obj/machinery/light/fueled/firebowl,
 /turf/open/floor/dirt,
 /area/rogue)
 "rQ" = (
@@ -101,17 +101,17 @@
 /turf/closed/wall/mineral/wooddark/horizontal,
 /area/rogue)
 "so" = (
-/obj/structure/chair/stool/rogue,
-/mob/living/simple_animal/hostile/rogue/orc/orc_marauder/spear,
+/obj/structure/chair/stool,
+/mob/living/simple_animal/hostile/orc/orc_marauder/spear,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "sw" = (
 /obj/structure/chair/bench/throne,
-/mob/living/simple_animal/hostile/rogue/orc/orc_marauder/ravager,
+/mob/living/simple_animal/hostile/orc/orc_marauder/ravager,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "tn" = (
-/mob/living/simple_animal/hostile/rogue/orc/orc_marauder,
+/mob/living/simple_animal/hostile/orc/orc_marauder,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "uj" = (
@@ -122,12 +122,12 @@
 /turf/open/transparent/openspace,
 /area/rogue)
 "vm" = (
-/obj/structure/chair/stool/rogue,
-/mob/living/simple_animal/hostile/rogue/orc/spear2,
+/obj/structure/chair/stool,
+/mob/living/simple_animal/hostile/orc/spear2,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "yp" = (
-/mob/living/simple_animal/hostile/rogue/orc/orc_marauder/ravager,
+/mob/living/simple_animal/hostile/orc/orc_marauder/ravager,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "yJ" = (
@@ -164,8 +164,8 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "Jt" = (
-/obj/structure/bed/rogue/shit,
-/mob/living/simple_animal/hostile/rogue/orc,
+/obj/structure/bed/shit,
+/mob/living/simple_animal/hostile/orc,
 /turf/open/floor/dirt,
 /area/rogue)
 "JC" = (
@@ -239,7 +239,7 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "Qq" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "Sx" = (
 /obj/structure/stairs,

@@ -93,7 +93,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue)
 "C" = (
-/obj/structure/bed/rogue/shit,
+/obj/structure/bed/shit,
 /obj/item/clothing/cloak/raincloak,
 /turf/open/floor/naturalstone,
 /area/rogue)
@@ -111,7 +111,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue)
 "I" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "M" = (
 /obj/structure/roguetent,
@@ -123,7 +123,7 @@
 	pixel_y = 4;
 	pixel_x = -5
 	},
-/obj/item/ammo_casing/caseless/rogue/arrow/stone,
+/obj/item/ammo_casing/caseless/arrow/stone,
 /turf/open/floor/naturalstone,
 /area/rogue)
 "R" = (

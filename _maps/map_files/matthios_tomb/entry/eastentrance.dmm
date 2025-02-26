@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "av" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "aF" = (
 /obj/structure/table/wood/plain,
@@ -86,7 +86,7 @@
 /turf/open/floor/herringbone,
 /area/rogue)
 "nK" = (
-/obj/machinery/light/rogue/oven/east,
+/obj/machinery/light/fueled/oven/east,
 /turf/open/floor/herringbone,
 /area/rogue)
 "os" = (
@@ -99,7 +99,7 @@
 /turf/closed/wall/mineral/stone/window,
 /area/rogue)
 "pI" = (
-/obj/machinery/light/rogue/torchholder/c,
+/obj/machinery/light/fueled/torchholder/c,
 /turf/open/floor/herringbone,
 /area/rogue)
 "qs" = (
@@ -171,8 +171,8 @@
 /turf/open/transparent/openspace,
 /area/rogue)
 "AC" = (
-/obj/structure/bed/rogue/inn,
-/obj/machinery/light/rogue/torchholder/c,
+/obj/structure/bed/inn,
+/obj/machinery/light/fueled/torchholder/c,
 /turf/open/floor/herringbone,
 /area/rogue)
 "Bm" = (
@@ -185,7 +185,7 @@
 /turf/closed/wall/mineral/stone/window,
 /area/rogue)
 "CX" = (
-/obj/machinery/light/rogue/hearth,
+/obj/machinery/light/fueled/hearth,
 /obj/item/cooking/pan,
 /turf/open/floor/herringbone,
 /area/rogue)
@@ -218,7 +218,7 @@
 /turf/open/floor/hexstone,
 /area/rogue)
 "Mi" = (
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/hexstone,
 /area/rogue)
 "MC" = (
@@ -230,7 +230,7 @@
 /turf/open/floor/hexstone,
 /area/rogue)
 "OX" = (
-/obj/machinery/light/rogue/firebowl,
+/obj/machinery/light/fueled/firebowl,
 /turf/open/floor/dirt,
 /area/rogue)
 "Rt" = (
@@ -238,7 +238,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue)
 "Ry" = (
-/obj/machinery/light/rogue/hearth,
+/obj/machinery/light/fueled/hearth,
 /obj/item/reagent_containers/glass/bucket/pot,
 /turf/open/floor/herringbone,
 /area/rogue)
@@ -262,7 +262,7 @@
 /turf/open/floor/hexstone,
 /area/rogue)
 "Vt" = (
-/obj/machinery/light/rogue/firebowl,
+/obj/machinery/light/fueled/firebowl,
 /turf/open/floor/hexstone,
 /area/rogue)
 "Vx" = (
@@ -270,7 +270,7 @@
 /turf/open/floor/hexstone,
 /area/rogue)
 "Wo" = (
-/obj/machinery/light/rogue/firebowl,
+/obj/machinery/light/fueled/firebowl,
 /turf/open/floor/naturalstone,
 /area/rogue)
 "Xm" = (

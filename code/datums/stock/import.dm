@@ -5,11 +5,11 @@
 /datum/stock/import/crackers
 	name = "Bin of Rations"
 	desc = "Low moisture bread that keeps well."
-	item_type = /obj/item/roguebin/crackers
+	item_type = /obj/item/bin/crackers
 	export_price = 100
 	importexport_amt = 1
 
-/obj/item/roguebin/crackers/Initialize()
+/obj/item/bin/crackers/Initialize()
 	. = ..()
 	new /obj/item/reagent_containers/food/snacks/hardtack(src)
 	new /obj/item/reagent_containers/food/snacks/hardtack(src)

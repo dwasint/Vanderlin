@@ -200,74 +200,74 @@
 
 /datum/crafting_recipe/stonearrow
 	name = "stone arrow (x2)"
-	result = list(/obj/item/ammo_casing/caseless/rogue/arrow/stone,
-				/obj/item/ammo_casing/caseless/rogue/arrow/stone)
+	result = list(/obj/item/ammo_casing/caseless/arrow/stone,
+				/obj/item/ammo_casing/caseless/arrow/stone)
 	reqs = list(/obj/item/grown/log/tree/stick = 1,
 				/obj/item/natural/stone = 1)
 
 /datum/crafting_recipe/stonearrow_five
 	name = "stone arrow (x10)"
 	result = list(
-				/obj/item/ammo_casing/caseless/rogue/arrow/stone,
-				/obj/item/ammo_casing/caseless/rogue/arrow/stone,
-				/obj/item/ammo_casing/caseless/rogue/arrow/stone,
-				/obj/item/ammo_casing/caseless/rogue/arrow/stone,
-				/obj/item/ammo_casing/caseless/rogue/arrow/stone,
-				/obj/item/ammo_casing/caseless/rogue/arrow/stone,
-				/obj/item/ammo_casing/caseless/rogue/arrow/stone,
-				/obj/item/ammo_casing/caseless/rogue/arrow/stone,
-				/obj/item/ammo_casing/caseless/rogue/arrow/stone,
-				/obj/item/ammo_casing/caseless/rogue/arrow/stone)
+				/obj/item/ammo_casing/caseless/arrow/stone,
+				/obj/item/ammo_casing/caseless/arrow/stone,
+				/obj/item/ammo_casing/caseless/arrow/stone,
+				/obj/item/ammo_casing/caseless/arrow/stone,
+				/obj/item/ammo_casing/caseless/arrow/stone,
+				/obj/item/ammo_casing/caseless/arrow/stone,
+				/obj/item/ammo_casing/caseless/arrow/stone,
+				/obj/item/ammo_casing/caseless/arrow/stone,
+				/obj/item/ammo_casing/caseless/arrow/stone,
+				/obj/item/ammo_casing/caseless/arrow/stone)
 	reqs = list(/obj/item/grown/log/tree/stick = 5,
 				/obj/item/natural/stone = 5)
 
 /datum/crafting_recipe/poisondart
 	name = "poison dart"
-	result = /obj/item/ammo_casing/caseless/rogue/dart/poison
-	reqs = list(/obj/item/ammo_casing/caseless/rogue/dart = 1,
+	result = /obj/item/ammo_casing/caseless/dart/poison
+	reqs = list(/obj/item/ammo_casing/caseless/dart = 1,
 				/obj/item/reagent_containers/food/snacks/produce/jacksberry/poison = 1)
 	craftdiff = 0
 
 /datum/crafting_recipe/poisonarrow
 	name = "poison arrow"
-	result = /obj/item/ammo_casing/caseless/rogue/arrow/poison
-	reqs = list(/obj/item/ammo_casing/caseless/rogue/arrow = 1,
+	result = /obj/item/ammo_casing/caseless/arrow/poison
+	reqs = list(/obj/item/ammo_casing/caseless/arrow = 1,
 				/obj/item/reagent_containers/food/snacks/produce/jacksberry/poison = 1)
 	craftdiff = 0
 
 /datum/crafting_recipe/poisonarrow/alt
-	reqs = list(/obj/item/ammo_casing/caseless/rogue/arrow = 1,
+	reqs = list(/obj/item/ammo_casing/caseless/arrow = 1,
 				/datum/reagent/berrypoison = 5)
 
 /datum/crafting_recipe/poisonarrow/potent
 	name = "poison arrow (potent)"
-	result = /obj/item/ammo_casing/caseless/rogue/arrow/poison/potent
-	reqs = list(/obj/item/ammo_casing/caseless/rogue/arrow = 1,
+	result = /obj/item/ammo_casing/caseless/arrow/poison/potent
+	reqs = list(/obj/item/ammo_casing/caseless/arrow = 1,
 				/datum/reagent/strongpoison = 5)
 
 /datum/crafting_recipe/pyroarrow
 	name = "pyroclastic arrow"
-	result = /obj/item/ammo_casing/caseless/rogue/arrow/pyro
-	reqs = list(/obj/item/ammo_casing/caseless/rogue/arrow = 1,
+	result = /obj/item/ammo_casing/caseless/arrow/pyro
+	reqs = list(/obj/item/ammo_casing/caseless/arrow = 1,
 				/obj/item/reagent_containers/food/snacks/produce/fyritius = 1)
 	craftdiff = 1
 	skillcraft = /datum/skill/craft/engineering
 
 /datum/crafting_recipe/poisonbolt
 	name = "poison bolt"
-	result = /obj/item/ammo_casing/caseless/rogue/bolt/poison
-	reqs = list(/obj/item/ammo_casing/caseless/rogue/bolt = 1,
+	result = /obj/item/ammo_casing/caseless/bolt/poison
+	reqs = list(/obj/item/ammo_casing/caseless/bolt = 1,
 				/obj/item/reagent_containers/food/snacks/produce/jacksberry/poison = 1)
 	craftdiff = 0
 
 /datum/crafting_recipe/poisonbolt/alt
-	reqs = list(/obj/item/ammo_casing/caseless/rogue/bolt = 1,
+	reqs = list(/obj/item/ammo_casing/caseless/bolt = 1,
 				/datum/reagent/berrypoison = 5)
 
 /datum/crafting_recipe/poisonbolt/potent
 	name = "poison bolt (potent)"
-	result = /obj/item/ammo_casing/caseless/rogue/bolt/poison/potent
-	reqs = list(/obj/item/ammo_casing/caseless/rogue/bolt = 1,
+	result = /obj/item/ammo_casing/caseless/bolt/poison/potent
+	reqs = list(/obj/item/ammo_casing/caseless/bolt = 1,
 				/datum/reagent/strongpoison = 5)
 
 /datum/crafting_recipe/bomb
@@ -282,8 +282,8 @@
 
 /datum/crafting_recipe/pyrobolt
 	name = "pyroclastic bolt"
-	result = /obj/item/ammo_casing/caseless/rogue/bolt/pyro
-	reqs = list(/obj/item/ammo_casing/caseless/rogue/bolt = 1,
+	result = /obj/item/ammo_casing/caseless/bolt/pyro
+	reqs = list(/obj/item/ammo_casing/caseless/bolt = 1,
 				/obj/item/reagent_containers/food/snacks/produce/fyritius = 1)
 	craftdiff = 1
 	skillcraft = /datum/skill/craft/engineering
@@ -311,7 +311,7 @@
 	/obj/item/natural/fibers = 8,
 	/obj/item/reagent_containers/food/snacks/fat = 1)
 	skillcraft = /datum/skill/craft/carpentry
-	structurecraft = /obj/machinery/light/rogue/campfire
+	structurecraft = /obj/machinery/light/fueled/campfire
 	craftdiff = 3
 
 /datum/crafting_recipe/flint

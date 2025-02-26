@@ -49,7 +49,7 @@
 /turf/open/floor/hexstone,
 /area/rogue)
 "eJ" = (
-/obj/structure/rack/rogue/shelf/biggest,
+/obj/structure/rack/shelf/biggest,
 /obj/item/reagent_containers/glass/cup/wooden{
 	pixel_y = -7
 	},
@@ -105,11 +105,11 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "jX" = (
-/obj/machinery/light/rogue/firebowl,
+/obj/machinery/light/fueled/firebowl,
 /turf/open/floor/hexstone,
 /area/rogue)
 "kn" = (
-/obj/machinery/light/rogue/firebowl,
+/obj/machinery/light/fueled/firebowl,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "kN" = (
@@ -119,7 +119,7 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "kT" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "lW" = (
 /obj/structure/fluff/railing/border{
@@ -156,7 +156,7 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "pm" = (
-/obj/structure/bed/rogue/hay,
+/obj/structure/bed/hay,
 /turf/open/floor/hexstone,
 /area/rogue)
 "qn" = (
@@ -164,7 +164,7 @@
 /turf/open/floor/hexstone,
 /area/rogue)
 "qo" = (
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /turf/open/floor/naturalstone,
 /area/rogue)
 "qX" = (
@@ -172,7 +172,7 @@
 /turf/open/floor/hexstone,
 /area/rogue)
 "sQ" = (
-/obj/machinery/light/rogue/torchholder/r,
+/obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/hexstone,
 /area/rogue)
 "sX" = (
@@ -188,7 +188,7 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "wx" = (
-/obj/machinery/light/rogue/campfire/longlived,
+/obj/machinery/light/fueled/campfire/longlived,
 /turf/open/floor/naturalstone,
 /area/rogue)
 "xm" = (
@@ -228,7 +228,7 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "Fo" = (
-/obj/structure/rack/rogue/shelf/biggest,
+/obj/structure/rack/shelf/biggest,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "Gx" = (
@@ -245,7 +245,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue)
 "Hq" = (
-/obj/item/chair/stool/bar/rogue/crafted,
+/obj/item/chair/stool/bar/crafted,
 /turf/open/floor/naturalstone,
 /area/rogue)
 "Io" = (
@@ -256,11 +256,11 @@
 /area/rogue)
 "Iv" = (
 /obj/structure/fluff/railing/border,
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "Jv" = (
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /turf/open/floor/dirt,
 /area/rogue)
 "Kk" = (
@@ -271,7 +271,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue)
 "Lo" = (
-/obj/structure/bed/rogue/shit,
+/obj/structure/bed/shit,
 /turf/open/floor/naturalstone,
 /area/rogue)
 "LJ" = (
@@ -293,7 +293,7 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "OS" = (
-/obj/machinery/light/rogue/torchholder/r,
+/obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "PL" = (
@@ -337,20 +337,20 @@
 /turf/open/floor/hexstone,
 /area/rogue)
 "Tq" = (
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "TK" = (
-/obj/structure/bed/rogue/inn,
+/obj/structure/bed/inn,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "Vm" = (
-/obj/machinery/light/rogue/torchholder/l,
+/obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/hexstone,
 /area/rogue)
 "Wd" = (
 /obj/structure/table/wood/plain/alt,
-/obj/machinery/light/rogue/torchholder/r,
+/obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/hexstone,
 /area/rogue)
 "Wl" = (
@@ -361,7 +361,7 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "Yp" = (
-/obj/item/chair/stool/bar/rogue/crafted,
+/obj/item/chair/stool/bar/crafted,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "Yx" = (

@@ -31,7 +31,7 @@
 /turf/open/floor/wood,
 /area/rogue)
 "hC" = (
-/obj/machinery/light/rogue/chand,
+/obj/machinery/light/fueled/chand,
 /turf/open/transparent/openspace,
 /area/rogue)
 "hZ" = (
@@ -47,7 +47,7 @@
 /turf/open/floor/carpet/lord/center,
 /area/rogue)
 "kB" = (
-/obj/structure/chair/wood/rogue/chair_noble/red{
+/obj/structure/chair/wood/alt/chair_noble/red{
 	dir = 8
 	},
 /turf/open/floor/wood,
@@ -179,7 +179,7 @@
 /turf/open/floor/wood,
 /area/rogue)
 "DK" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "EZ" = (
 /obj/structure/fluff/railing/border{
@@ -205,12 +205,12 @@
 /turf/closed/wall/mineral/stone/moss,
 /area/rogue)
 "Ip" = (
-/obj/machinery/light/rogue/chand,
+/obj/machinery/light/fueled/chand,
 /obj/item/coin/copper,
 /turf/open/transparent/openspace,
 /area/rogue)
 "JM" = (
-/obj/structure/chair/wood/rogue/chair_noble/red,
+/obj/structure/chair/wood/alt/chair_noble/red,
 /turf/open/floor/wood,
 /area/rogue)
 "KU" = (

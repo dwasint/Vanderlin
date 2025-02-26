@@ -71,18 +71,18 @@
 		H.invisibility = INVISIBILITY_MAXIMUM
 		H.become_blind("bard_select")
 		var/instruments = list(
-			"Harp" = /obj/item/rogue/instrument/harp,
-			"Lute" = /obj/item/rogue/instrument/lute,
-			"Accordion" = /obj/item/rogue/instrument/accord,
-			"Guitar" = /obj/item/rogue/instrument/guitar,
-			"Flute" = /obj/item/rogue/instrument/flute,
-			"Drum" = /obj/item/rogue/instrument/drum,
-			"Hurdy-Gurdy" = /obj/item/rogue/instrument/hurdygurdy,
-			"Viola" = /obj/item/rogue/instrument/viola)
+			"Harp" = /obj/item/instrument/harp,
+			"Lute" = /obj/item/instrument/lute,
+			"Accordion" = /obj/item/instrument/accord,
+			"Guitar" = /obj/item/instrument/guitar,
+			"Flute" = /obj/item/instrument/flute,
+			"Drum" = /obj/item/instrument/drum,
+			"Hurdy-Gurdy" = /obj/item/instrument/hurdygurdy,
+			"Viola" = /obj/item/instrument/viola)
 		var/instrument_choice = input(M, "Choose your instrument.", "XYLIX") as anything in instruments
 		var/spawn_instrument = instruments[instrument_choice]
 		if(!spawn_instrument)
-			spawn_instrument = /obj/item/rogue/instrument/lute
+			spawn_instrument = /obj/item/instrument/lute
 		H.equip_to_slot_or_del(new spawn_instrument(H),SLOT_BACK_R, TRUE)
 		H.advsetup = 0
 		H.invisibility = initial(H.invisibility)

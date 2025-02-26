@@ -388,7 +388,7 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 		if(ammo.ammo_list.len)
 			var/obj/item/gun/ballistic/revolver/grenadelauncher/B = containment
 			var/obj/item/ammo_box/gun_magazine = B.mag_type
-			var/obj/item/ammo_casing/caseless/rogue/gun_ammo = initial(gun_magazine?.ammo_type)
+			var/obj/item/ammo_casing/caseless/gun_ammo = initial(gun_magazine?.ammo_type)
 			for(var/obj/item/ammo_casing/BT in ammo.ammo_list)
 				if(istype(BT, gun_ammo))
 					ammo.ammo_list -= BT

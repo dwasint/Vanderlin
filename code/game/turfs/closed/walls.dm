@@ -114,7 +114,7 @@
 		return
 
 	// Are you trying to break your instrument? Go ahead!
-	if(istype(W, /obj/item/rogue/instrument))
+	if(istype(W, /obj/item/instrument))
 		user.do_attack_animation(src)
 		visible_message("<span class='warning'>[user] slams \the [W] against \the [src]!</span>",
 						"<span class='warning'>I slam \the [W] against \the [src]!</span>",null ,COMBAT_MESSAGE_RANGE)

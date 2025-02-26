@@ -18,11 +18,11 @@
 /turf/open/floor/ruinedwood,
 /area/rogue)
 "bd" = (
-/obj/machinery/light/rogue/campfire/densefire,
+/obj/machinery/light/fueled/campfire/densefire,
 /turf/open/floor/grass,
 /area/rogue)
 "bg" = (
-/obj/structure/chair/wood/rogue/fancy{
+/obj/structure/chair/wood/alt/fancy{
 	dir = 8
 	},
 /turf/open/floor/ruinedwood/turned,
@@ -36,11 +36,11 @@
 /turf/open/floor/cobble,
 /area/rogue)
 "br" = (
-/obj/item/roguebin,
+/obj/item/bin,
 /turf/open/floor/cobblerock,
 /area/rogue)
 "bs" = (
-/obj/structure/chair/wood/rogue/fancy{
+/obj/structure/chair/wood/alt/fancy{
 	dir = 1
 	},
 /turf/open/floor/blocks/stonered/tiny,
@@ -62,13 +62,13 @@
 /turf/open/floor/ruinedwood/turned,
 /area/rogue)
 "cf" = (
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /turf/open/floor/woodturned,
 /area/rogue)
 "cA" = (
 /obj/structure/flora/roguetree,
 /obj/structure/flora/roguegrass/water/reeds,
-/obj/item/roguebin/water/gross,
+/obj/item/bin/water/gross,
 /area/rogue)
 "cQ" = (
 /obj/structure/flora/roguetree,
@@ -77,11 +77,11 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "dn" = (
-/obj/structure/bed/rogue,
+/obj/structure/bed,
 /turf/open/floor/woodturned,
 /area/rogue)
 "dq" = (
-/obj/machinery/light/rogue/torchholder{
+/obj/machinery/light/fueled/torchholder{
 	dir = 4
 	},
 /turf/open/floor/twig,
@@ -99,13 +99,13 @@
 /turf/open/floor/woodturned,
 /area/rogue)
 "eg" = (
-/obj/machinery/light/rogue/torchholder{
+/obj/machinery/light/fueled/torchholder{
 	dir = 4
 	},
 /turf/open/floor/grass,
 /area/rogue)
 "eh" = (
-/obj/machinery/light/rogue/campfire/densefire,
+/obj/machinery/light/fueled/campfire/densefire,
 /turf/open/floor/dirt/road,
 /area/rogue)
 "ej" = (
@@ -121,17 +121,17 @@
 /turf/closed/wall/mineral/decostone,
 /area/rogue)
 "fg" = (
-/obj/structure/bed/rogue,
+/obj/structure/bed,
 /turf/open/floor/carpet,
 /area/rogue)
 "fk" = (
 /area/rogue)
 "fq" = (
-/obj/machinery/light/rogue/firebowl,
+/obj/machinery/light/fueled/firebowl,
 /turf/open/floor/cobble,
 /area/rogue)
 "fx" = (
-/obj/machinery/light/rogue/wallfire,
+/obj/machinery/light/fueled/wallfire,
 /turf/closed/wall/mineral/stonebrick,
 /area/rogue)
 "fF" = (
@@ -144,7 +144,7 @@
 /turf/open/floor/grass,
 /area/rogue)
 "fL" = (
-/obj/machinery/light/rogue/firebowl/church,
+/obj/machinery/light/fueled/firebowl/church,
 /turf/open/floor/cobble,
 /area/rogue)
 "fN" = (
@@ -156,11 +156,11 @@
 /turf/open/floor/blocks/newstone,
 /area/rogue)
 "gc" = (
-/obj/structure/bed/rogue,
+/obj/structure/bed,
 /turf/open/floor/wood,
 /area/rogue)
 "gk" = (
-/obj/machinery/light/rogue/firebowl,
+/obj/machinery/light/fueled/firebowl,
 /turf/open/floor/dirt/road,
 /area/rogue)
 "gv" = (
@@ -180,7 +180,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue)
 "gO" = (
-/obj/machinery/light/rogue/wallfire,
+/obj/machinery/light/fueled/wallfire,
 /turf/closed/wall/mineral/wood,
 /area/rogue)
 "gQ" = (
@@ -223,7 +223,7 @@
 /turf/open/water,
 /area/rogue)
 "hY" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /turf/open/floor/ruinedwood,
 /area/rogue)
 "in" = (
@@ -234,7 +234,7 @@
 /turf/closed/wall/mineral/decostone,
 /area/rogue)
 "ix" = (
-/obj/structure/chair/wood/rogue/fancy{
+/obj/structure/chair/wood/alt/fancy{
 	dir = 8
 	},
 /turf/open/floor/tile,
@@ -254,7 +254,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue)
 "je" = (
-/obj/structure/bed/rogue,
+/obj/structure/bed,
 /turf/open/floor/twig,
 /area/rogue)
 "jr" = (
@@ -262,7 +262,7 @@
 /turf/open/floor/woodturned,
 /area/rogue)
 "jA" = (
-/obj/machinery/light/rogue/torchholder{
+/obj/machinery/light/fueled/torchholder{
 	dir = 4
 	},
 /turf/open/floor/cobble,
@@ -299,7 +299,7 @@
 /turf/open/floor/woodturned,
 /area/rogue)
 "ko" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /turf/open/floor/cobble,
 /area/rogue)
 "kp" = (
@@ -316,7 +316,7 @@
 /turf/open/floor/ruinedwood,
 /area/rogue)
 "le" = (
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /turf/open/floor/twig,
 /area/rogue)
 "lq" = (
@@ -341,7 +341,7 @@
 /turf/open/floor/woodturned,
 /area/rogue)
 "ml" = (
-/obj/structure/chair/wood/rogue/fancy{
+/obj/structure/chair/wood/alt/fancy{
 	dir = 1
 	},
 /turf/open/floor/blocks/stonered,
@@ -378,7 +378,7 @@
 /turf/open/floor/woodturned,
 /area/rogue)
 "mM" = (
-/obj/structure/chair/wood/rogue/fancy{
+/obj/structure/chair/wood/alt/fancy{
 	dir = 4
 	},
 /turf/open/floor/blocks/stonered,
@@ -391,7 +391,7 @@
 /turf/open/floor/ruinedwood,
 /area/rogue)
 "nr" = (
-/obj/structure/chair/wood/rogue/fancy{
+/obj/structure/chair/wood/alt/fancy{
 	dir = 4
 	},
 /turf/open/floor/woodturned,
@@ -409,7 +409,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue)
 "oa" = (
-/obj/machinery/light/rogue/firebowl/standing,
+/obj/machinery/light/fueled/firebowl/standing,
 /turf/open/floor/ruinedwood,
 /area/rogue)
 "od" = (
@@ -432,11 +432,11 @@
 /obj/structure/bookcase,
 /area/rogue)
 "oE" = (
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /turf/open/floor/blocks/newstone,
 /area/rogue)
 "oH" = (
-/obj/structure/chair/wood/rogue/fancy{
+/obj/structure/chair/wood/alt/fancy{
 	dir = 8
 	},
 /turf/open/floor/ruinedwood,
@@ -454,7 +454,7 @@
 /turf/open/floor/blocks/stonered,
 /area/rogue)
 "oU" = (
-/obj/machinery/light/rogue/torchholder{
+/obj/machinery/light/fueled/torchholder{
 	dir = 8
 	},
 /turf/open/floor/blocks/newstone,
@@ -478,7 +478,7 @@
 /turf/closed,
 /area/rogue)
 "px" = (
-/obj/machinery/light/rogue/firebowl,
+/obj/machinery/light/fueled/firebowl,
 /turf/open/floor/cobblerock,
 /area/rogue)
 "py" = (
@@ -529,7 +529,7 @@
 /turf/open/floor/grass,
 /area/rogue)
 "qC" = (
-/obj/structure/bed/rogue,
+/obj/structure/bed,
 /turf/open/floor/ruinedwood/turned,
 /area/rogue)
 "qG" = (
@@ -567,13 +567,13 @@
 /turf/open/floor/concrete,
 /area/rogue)
 "rY" = (
-/obj/structure/chair/wood/rogue/fancy{
+/obj/structure/chair/wood/alt/fancy{
 	dir = 4
 	},
 /turf/open/floor/ruinedwood,
 /area/rogue)
 "sc" = (
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /turf/open/floor/wood,
 /area/rogue)
 "sg" = (
@@ -602,7 +602,7 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "sP" = (
-/obj/structure/bed/rogue/shit,
+/obj/structure/bed/shit,
 /turf/closed/wall/mineral/tent,
 /area/rogue)
 "sR" = (
@@ -610,7 +610,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue)
 "sW" = (
-/obj/machinery/light/rogue/firebowl,
+/obj/machinery/light/fueled/firebowl,
 /turf/open/floor/grass,
 /area/rogue)
 "tf" = (
@@ -670,7 +670,7 @@
 /area/rogue)
 "wr" = (
 /obj/structure/flora/roguetree,
-/obj/item/roguebin/water/gross,
+/obj/item/bin/water/gross,
 /area/rogue)
 "wK" = (
 /obj/structure/fluff/railing/fence{
@@ -692,7 +692,7 @@
 	},
 /area/rogue)
 "xp" = (
-/obj/structure/chair/wood/rogue/fancy,
+/obj/structure/chair/wood/alt/fancy,
 /turf/open/floor/wood,
 /area/rogue)
 "xA" = (
@@ -710,7 +710,7 @@
 /turf/open/floor/ruinedwood/turned,
 /area/rogue)
 "yn" = (
-/obj/machinery/light/rogue/wallfire/candle,
+/obj/machinery/light/fueled/wallfire/candle,
 /turf/closed/wall/mineral/decowood,
 /area/rogue)
 "yx" = (
@@ -746,11 +746,11 @@
 /turf/open/floor/grass,
 /area/rogue)
 "zk" = (
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /turf/open/floor/dirt/road,
 /area/rogue)
 "zn" = (
-/obj/structure/chair/wood/rogue/fancy{
+/obj/structure/chair/wood/alt/fancy{
 	dir = 8
 	},
 /turf/open/floor/woodturned,
@@ -759,11 +759,11 @@
 /turf/open/floor/blocks/newstone,
 /area/rogue)
 "zE" = (
-/obj/structure/bed/rogue,
+/obj/structure/bed,
 /turf/open/floor/ruinedwood,
 /area/rogue)
 "zQ" = (
-/obj/machinery/light/rogue/hearth,
+/obj/machinery/light/fueled/hearth,
 /turf/open/floor/concrete,
 /area/rogue)
 "zS" = (
@@ -781,7 +781,7 @@
 	},
 /area/rogue)
 "Aa" = (
-/obj/item/roguebin/water/gross,
+/obj/item/bin/water/gross,
 /area/rogue)
 "Bk" = (
 /obj/structure/stairs,
@@ -790,7 +790,7 @@
 	},
 /area/rogue)
 "Bo" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /turf/open/floor/herringbone,
 /area/rogue)
 "Br" = (
@@ -860,14 +860,14 @@
 /turf/open/floor/grass,
 /area/rogue)
 "Do" = (
-/obj/structure/chair/wood/rogue{
+/obj/structure/chair/wood/alt{
 	icon_state = "chair2";
 	dir = 8
 	},
 /turf/open/floor/dirt/road,
 /area/rogue)
 "Dp" = (
-/obj/machinery/light/rogue/torchholder{
+/obj/machinery/light/fueled/torchholder{
 	dir = 8
 	},
 /turf/open/floor/grass,
@@ -881,7 +881,7 @@
 /turf/open/floor/dirt,
 /area/rogue)
 "Dx" = (
-/obj/structure/chair/wood/rogue/fancy{
+/obj/structure/chair/wood/alt/fancy{
 	dir = 1
 	},
 /turf/open/floor/ruinedwood,
@@ -942,13 +942,13 @@
 /turf/open/floor/ruinedwood/turned,
 /area/rogue)
 "Ft" = (
-/obj/machinery/light/rogue/torchholder{
+/obj/machinery/light/fueled/torchholder{
 	dir = 8
 	},
 /turf/open/floor/twig,
 /area/rogue)
 "Fu" = (
-/obj/machinery/light/rogue/firebowl,
+/obj/machinery/light/fueled/firebowl,
 /turf/open/floor/blocks/bluestone,
 /area/rogue)
 "Fy" = (
@@ -958,17 +958,17 @@
 /turf/open/floor/woodturned,
 /area/rogue)
 "FQ" = (
-/obj/structure/chair/stool/rogue,
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
+/obj/structure/chair/stool,
 /turf/open/floor/dirt/road,
 /area/rogue)
 "FT" = (
 /obj/structure/flora/roguegrass/water/reeds,
 /obj/structure/flora/roguegrass/water/reeds,
-/obj/item/roguebin/water/gross,
+/obj/item/bin/water/gross,
 /area/rogue)
 "Go" = (
-/obj/machinery/light/rogue/oven,
+/obj/machinery/light/fueled/oven,
 /turf/open/floor/blocks/newstone/alt,
 /area/rogue)
 "GQ" = (
@@ -986,7 +986,7 @@
 /area/rogue)
 "Hf" = (
 /obj/structure/flora/roguegrass/water/reeds,
-/obj/item/roguebin/water/gross,
+/obj/item/bin/water/gross,
 /area/rogue)
 "Hp" = (
 /obj/structure/fermentation_keg,
@@ -1003,7 +1003,7 @@
 /turf/open/floor/grass,
 /area/rogue)
 "Hv" = (
-/obj/machinery/light/rogue/oven,
+/obj/machinery/light/fueled/oven,
 /turf/closed/wall/mineral/wood,
 /area/rogue)
 "Hx" = (
@@ -1053,7 +1053,7 @@
 /turf/open/floor/woodturned,
 /area/rogue)
 "IY" = (
-/obj/structure/chair/wood/rogue{
+/obj/structure/chair/wood/alt{
 	icon_state = "chair2";
 	dir = 8
 	},
@@ -1078,7 +1078,7 @@
 /turf/closed/wall/mineral/wood/window,
 /area/rogue)
 "JH" = (
-/obj/structure/chair/wood/rogue/fancy{
+/obj/structure/chair/wood/alt/fancy{
 	dir = 4
 	},
 /turf/open/floor/blocks/stonered/tiny,
@@ -1098,10 +1098,10 @@
 /area/rogue)
 "JZ" = (
 /obj/structure/chair/bench/ancientlog,
-/obj/item/roguebin/water/gross,
+/obj/item/bin/water/gross,
 /area/rogue)
 "Kf" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /turf/open/floor/blocks,
 /area/rogue)
 "Kh" = (
@@ -1134,7 +1134,7 @@
 /turf/open/floor/concrete,
 /area/rogue)
 "KW" = (
-/obj/structure/bed/rogue,
+/obj/structure/bed,
 /obj/structure/fluff/wallclock/l,
 /turf/open/floor/woodturned,
 /area/rogue)
@@ -1149,7 +1149,7 @@
 /turf/open/floor/grass,
 /area/rogue)
 "Lp" = (
-/obj/item/roguebin,
+/obj/item/bin,
 /turf/open/floor/grass,
 /area/rogue)
 "Lu" = (
@@ -1157,7 +1157,7 @@
 /turf/open/floor/grass,
 /area/rogue)
 "Mg" = (
-/obj/machinery/light/rogue/firebowl/standing,
+/obj/machinery/light/fueled/firebowl/standing,
 /turf/open/floor/carpet,
 /area/rogue)
 "Mp" = (
@@ -1187,7 +1187,7 @@
 /turf/open/floor/cobble,
 /area/rogue)
 "MJ" = (
-/obj/structure/chair/wood/rogue,
+/obj/structure/chair/wood/alt,
 /turf/open/floor/twig,
 /area/rogue)
 "ML" = (
@@ -1212,7 +1212,7 @@
 /turf/open/floor/ruinedwood/turned,
 /area/rogue)
 "NT" = (
-/obj/structure/bed/rogue/shit,
+/obj/structure/bed/shit,
 /turf/open/floor/twig,
 /area/rogue)
 "OD" = (
@@ -1229,7 +1229,7 @@
 /turf/open/floor/cobble,
 /area/rogue)
 "Pe" = (
-/obj/structure/chair/wood/rogue{
+/obj/structure/chair/wood/alt{
 	icon_state = "chair2";
 	dir = 1
 	},
@@ -1288,7 +1288,7 @@
 /turf/open/floor/woodturned,
 /area/rogue)
 "Rh" = (
-/obj/machinery/light/rogue/firebowl,
+/obj/machinery/light/fueled/firebowl,
 /turf/open/floor/hexstone,
 /area/rogue)
 "Rl" = (
@@ -1331,11 +1331,11 @@
 /turf/open/floor/grass,
 /area/rogue)
 "SA" = (
-/obj/machinery/light/rogue/hearth,
+/obj/machinery/light/fueled/hearth,
 /turf/open/floor/ruinedwood/turned,
 /area/rogue)
 "SN" = (
-/obj/machinery/light/rogue/oven,
+/obj/machinery/light/fueled/oven,
 /turf/open/floor/ruinedwood,
 /area/rogue)
 "SU" = (
@@ -1370,7 +1370,7 @@
 /turf/open/floor/ruinedwood/turned,
 /area/rogue)
 "TO" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /turf/open/floor/twig,
 /area/rogue)
 "TQ" = (
@@ -1412,7 +1412,7 @@
 /area/rogue)
 "UI" = (
 /obj/structure/closet/crate/crafted_closet,
-/obj/machinery/light/rogue/torchholder{
+/obj/machinery/light/fueled/torchholder{
 	dir = 4
 	},
 /turf/open/floor/blocks/newstone,
@@ -1437,7 +1437,7 @@
 /turf/open/floor/ruinedwood,
 /area/rogue)
 "VC" = (
-/obj/item/roguebin,
+/obj/item/bin,
 /turf/open/floor/dirt/road,
 /area/rogue)
 "VZ" = (
@@ -1448,7 +1448,7 @@
 /turf/open/floor/woodturned,
 /area/rogue)
 "Wg" = (
-/obj/machinery/light/rogue/firebowl/standing,
+/obj/machinery/light/fueled/firebowl/standing,
 /turf/open/floor/ruinedwood/turned,
 /area/rogue)
 "Wn" = (
@@ -1480,7 +1480,7 @@
 /area/rogue)
 "Xw" = (
 /obj/structure/fluff/walldeco/serpflag,
-/obj/structure/chair/wood/rogue,
+/obj/structure/chair/wood/alt,
 /turf/open/floor/dirt/road,
 /area/rogue)
 "XC" = (
@@ -1513,18 +1513,18 @@
 /turf/open/floor/dirt/road,
 /area/rogue)
 "Yr" = (
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /turf/open/floor/grass,
 /area/rogue)
 "Yy" = (
-/obj/structure/chair/wood/rogue{
+/obj/structure/chair/wood/alt{
 	icon_state = "chair2";
 	dir = 4
 	},
 /turf/open/floor/twig,
 /area/rogue)
 "YP" = (
-/obj/machinery/light/rogue/wallfire,
+/obj/machinery/light/fueled/wallfire,
 /turf/closed/wall/mineral/decowood,
 /area/rogue)
 "Zb" = (
@@ -1536,7 +1536,7 @@
 /turf/open/floor/grass,
 /area/rogue)
 "Zj" = (
-/obj/machinery/light/rogue/wallfire/candle,
+/obj/machinery/light/fueled/wallfire/candle,
 /turf/closed/wall/mineral/wood,
 /area/rogue)
 "Zs" = (
@@ -1546,7 +1546,7 @@
 /turf/open/floor/grass,
 /area/rogue)
 "ZB" = (
-/obj/machinery/light/rogue/wallfire/candle,
+/obj/machinery/light/fueled/wallfire/candle,
 /turf/closed/wall/mineral/stonebrick,
 /area/rogue)
 "ZC" = (
@@ -1560,7 +1560,7 @@
 /turf/closed/wall/mineral/roofwall/center,
 /area/rogue)
 "ZI" = (
-/obj/machinery/light/rogue/firebowl/standing,
+/obj/machinery/light/fueled/firebowl/standing,
 /turf/open/floor/wood,
 /area/rogue)
 

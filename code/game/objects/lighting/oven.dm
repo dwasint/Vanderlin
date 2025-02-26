@@ -1,6 +1,6 @@
 
 
-/obj/machinery/light/rogue/oven
+/obj/machinery/light/fueled/oven
 	icon = 'icons/roguetown/misc/lighting.dmi'
 	name = "oven"
 	icon_state = "oven1"
@@ -13,12 +13,12 @@
 	var/lastsmoke = 0
 	var/need_underlay_update = TRUE
 
-/obj/machinery/light/rogue/oven/OnCrafted(dirin, mob/user)
+/obj/machinery/light/fueled/oven/OnCrafted(dirin, mob/user)
 	dir = turn(dirin, 180)
 	. = ..()
 	update_icon()
 
-/obj/machinery/light/rogue/oven/attackby(obj/item/W, mob/living/user, params)
+/obj/machinery/light/fueled/oven/attackby(obj/item/W, mob/living/user, params)
 	var/_y = text2num(params2list(params)["icon-y"])
 	var/clicked_top
 	if(_y > 14)
@@ -40,7 +40,7 @@
 			return
 	return ..()
 
-/obj/machinery/light/rogue/oven/process()
+/obj/machinery/light/fueled/oven/process()
 	..()
 	if(on)
 		for(var/obj/item/I in food)
@@ -55,26 +55,26 @@
 		update_icon()
 
 
-/obj/machinery/light/rogue/oven/Crossed(atom/movable/AM, oldLoc)
+/obj/machinery/light/fueled/oven/Crossed(atom/movable/AM, oldLoc)
 	return
 
-/obj/machinery/light/rogue/oven/south
+/obj/machinery/light/fueled/oven/south
 	dir = SOUTH
 	pixel_y = 32 //so we see it in mapper
 
-/obj/machinery/light/rogue/oven/west
+/obj/machinery/light/fueled/oven/west
 	dir = WEST
 	pixel_x = 32
 
-/obj/machinery/light/rogue/oven/east
+/obj/machinery/light/fueled/oven/east
 	dir = EAST
 	pixel_x = -32
 
-/obj/machinery/light/rogue/oven/Initialize()
+/obj/machinery/light/fueled/oven/Initialize()
 	. = ..()
 	update_icon()
 
-/obj/machinery/light/rogue/oven/update_icon()
+/obj/machinery/light/fueled/oven/update_icon()
 	pixel_x = 0
 	pixel_y = 0
 	switch(dir)
@@ -115,7 +115,7 @@
 		M.layer = 4.23
 		underlays += M
 
-/obj/machinery/light/rogue/oven/attack_hand(mob/user, params)
+/obj/machinery/light/fueled/oven/attack_hand(mob/user, params)
 	var/_y = text2num(params2list(params)["icon-y"])
 	var/clicked_top
 	if(_y > 14)

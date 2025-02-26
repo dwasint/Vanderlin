@@ -237,14 +237,14 @@
 
 /datum/repeatable_crafting_recipe/sewing/bedsheet
 	name = "bedsheet"
-	output = /obj/item/bedsheet/rogue/cloth
+	output = /obj/item/bedsheet/cloth
 	requirements = list(/obj/item/natural/cloth = 2,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 2
 
 /datum/repeatable_crafting_recipe/sewing/bedsheetpelt
 	name = "leather bedsheet"
-	output = /obj/item/bedsheet/rogue/pelt
+	output = /obj/item/bedsheet/pelt
 	attacking_atom = /obj/item/natural/hide/cured
 	requirements = list(/obj/item/natural/hide/cured = 2,
 				/obj/item/natural/fibers = 1)

@@ -22,8 +22,8 @@
 	belt = /obj/item/storage/belt/leather
 	beltl = /obj/item/storage/belt/pouch/coins/poor
 	beltr = /obj/item/weapon/knife/villager
-	backl = /obj/item/rogue/instrument/lute
-	backr = /obj/item/rogue/instrument/viola
+	backl = /obj/item/instrument/lute
+	backr = /obj/item/instrument/viola
 	head = /obj/item/clothing/head/jester
 	neck = /obj/item/clothing/neck/coif
 	mask = /obj/item/clothing/face/lordmask

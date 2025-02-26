@@ -55,7 +55,7 @@
 /turf/open/floor/grass,
 /area/rogue)
 "eT" = (
-/obj/machinery/light/rogue/firebowl,
+/obj/machinery/light/fueled/firebowl,
 /obj/structure/trap/fire,
 /turf/open/floor/blocks/stonered/tiny,
 /area/rogue)
@@ -285,7 +285,7 @@
 /turf/open/floor/grass,
 /area/rogue)
 "yI" = (
-/obj/machinery/light/rogue/firebowl/standing/blue,
+/obj/machinery/light/fueled/firebowl/standing/blue,
 /turf/open/floor/cobblerock,
 /area/rogue)
 "yK" = (
@@ -339,10 +339,10 @@
 /area/rogue)
 "Ed" = (
 /obj/structure/flora/roguegrass,
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "Ei" = (
-/obj/machinery/light/rogue/firebowl/standing/blue,
+/obj/machinery/light/fueled/firebowl/standing/blue,
 /turf/open/floor/blocks,
 /area/rogue)
 "Fg" = (
@@ -351,7 +351,7 @@
 /turf/open/floor/cobble,
 /area/rogue)
 "FC" = (
-/obj/machinery/light/rogue/firebowl,
+/obj/machinery/light/fueled/firebowl,
 /turf/open/floor/blocks/stonered/tiny,
 /area/rogue)
 "FO" = (
@@ -441,7 +441,7 @@
 /turf/open/floor/cobble,
 /area/rogue)
 "LR" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "Mo" = (
 /turf/open/floor/blocks/stonered,

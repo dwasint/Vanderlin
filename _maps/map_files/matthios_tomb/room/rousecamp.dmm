@@ -8,7 +8,7 @@
 /turf/open/floor/ruinedwood/darker,
 /area/rogue)
 "bJ" = (
-/obj/machinery/light/rogue/campfire/densefire,
+/obj/machinery/light/fueled/campfire/densefire,
 /turf/open/floor/naturalstone,
 /area/rogue)
 "da" = (
@@ -42,7 +42,7 @@
 /turf/open/lava/acid,
 /area/rogue)
 "hK" = (
-/obj/machinery/light/rogue/campfire,
+/obj/machinery/light/fueled/campfire,
 /turf/open/floor/naturalstone,
 /area/rogue)
 "ih" = (
@@ -73,7 +73,7 @@
 /turf/open/water/swamp/deep,
 /area/rogue)
 "jL" = (
-/obj/structure/bed/rogue/shit,
+/obj/structure/bed/shit,
 /turf/open/floor/dirt,
 /area/rogue)
 "jO" = (
@@ -148,7 +148,7 @@
 /turf/open/floor/churchmarble,
 /area/rogue)
 "qX" = (
-/obj/machinery/light/rogue/firebowl/stump,
+/obj/machinery/light/fueled/firebowl/stump,
 /turf/open/floor/dirt/road,
 /area/rogue)
 "qZ" = (
@@ -194,15 +194,15 @@
 /turf/open/transparent/openspace,
 /area/rogue)
 "zW" = (
-/obj/machinery/light/rogue/campfire/pyre,
+/obj/machinery/light/fueled/campfire/pyre,
 /turf/open/floor/churchmarble,
 /area/rogue)
 "AG" = (
-/obj/structure/bed/rogue/shit,
+/obj/structure/bed/shit,
 /turf/open/floor/naturalstone,
 /area/rogue)
 "Ce" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "Cj" = (
 /turf/open/lava/acid,
@@ -220,7 +220,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue)
 "FK" = (
-/obj/machinery/light/rogue/torchholder/r,
+/obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/dirt,
 /area/rogue)
 "Gf" = (
@@ -230,11 +230,11 @@
 /turf/open/floor/naturalstone,
 /area/rogue)
 "Gk" = (
-/obj/machinery/light/rogue/hearth,
+/obj/machinery/light/fueled/hearth,
 /turf/open/floor/naturalstone,
 /area/rogue)
 "Gs" = (
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /turf/open/floor/naturalstone,
 /area/rogue)
 "Hq" = (
@@ -267,7 +267,7 @@
 /turf/open/water/swamp,
 /area/rogue)
 "IU" = (
-/obj/machinery/light/rogue/firebowl/stump,
+/obj/machinery/light/fueled/firebowl/stump,
 /turf/open/floor/cobblerock,
 /area/rogue)
 "NB" = (
@@ -281,7 +281,7 @@
 /turf/open/floor/cobble,
 /area/rogue)
 "Ou" = (
-/obj/item/roguebin/water/gross,
+/obj/item/bin/water/gross,
 /turf/open/floor/naturalstone,
 /area/rogue)
 "Ow" = (
@@ -315,7 +315,7 @@
 /turf/open/lava/acid,
 /area/rogue)
 "To" = (
-/obj/machinery/light/rogue/firebowl/stump,
+/obj/machinery/light/fueled/firebowl/stump,
 /turf/open/floor/dirt,
 /area/rogue)
 "TI" = (
@@ -342,7 +342,7 @@
 /turf/open/floor/cobble,
 /area/rogue)
 "VO" = (
-/obj/machinery/light/rogue/firebowl/stump,
+/obj/machinery/light/fueled/firebowl/stump,
 /turf/open/floor/naturalstone,
 /area/rogue)
 "Wk" = (
@@ -364,7 +364,7 @@
 /turf/open/floor/metal,
 /area/rogue)
 "WU" = (
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /turf/open/floor/churchrough,
 /area/rogue)
 "YK" = (

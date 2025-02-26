@@ -57,7 +57,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/town/sargoth)
 "kn" = (
-/obj/machinery/light/rogue/campfire/densefire,
+/obj/machinery/light/fueled/campfire/densefire,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/rtfield)
 "kF" = (
@@ -74,7 +74,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield)
 "mD" = (
-/turf/closed/mineral/rogue/salt,
+/turf/closed/mineral/salt,
 /area/rogue/under/cave)
 "mH" = (
 /turf/open/water/cleanshallow,
@@ -83,7 +83,7 @@
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/rtfield)
 "oy" = (
-/turf/closed/mineral/random/rogue/high,
+/turf/closed/mineral/random/high,
 /area/rogue/under/cave)
 "oH" = (
 /obj/structure/spider/stickyweb,
@@ -109,7 +109,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield)
 "rN" = (
-/turf/closed/mineral/rogue/salt,
+/turf/closed/mineral/salt,
 /area/rogue/outdoors/rtfield)
 "rU" = (
 /mob/living/carbon/human/species/skeleton/npc,
@@ -120,7 +120,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/rtfield)
 "rY" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/outdoors/rtfield)
 "sk" = (
 /obj/effect/decal/cleanable/blood/old,
@@ -139,7 +139,7 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors/town/sargoth)
 "ue" = (
-/turf/closed/mineral/random/rogue/med,
+/turf/closed/mineral/random/med,
 /area/rogue/under/cave)
 "ui" = (
 /obj/item/clothing/cloak/raincloak/furcloak/black,
@@ -163,7 +163,7 @@
 	},
 /area/rogue/outdoors/rtfield)
 "zv" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/under/cave)
 "AB" = (
 /obj/item/riddleofsteel,
@@ -202,7 +202,7 @@
 	},
 /area/rogue/outdoors/rtfield)
 "Ha" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/outdoors/rtfield)
 "Hp" = (
 /obj/structure/fluff/traveltile{
@@ -238,21 +238,21 @@
 /turf/open/water/swamp,
 /area/rogue/outdoors/rtfield)
 "OU" = (
-/obj/effect/landmark/mapGenerator/rogue/roguetownfield{
+/obj/effect/landmark/mapGenerator/roguetownfield{
 	endTurfX = 128;
 	endTurfY = 128
 	},
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/outdoors/rtfield)
 "Pl" = (
-/obj/effect/landmark/mapGenerator/rogue/cave{
+/obj/effect/landmark/mapGenerator/cave{
 	endTurfX = 128;
 	endTurfY = 128
 	},
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue/under/cave)
 "Qy" = (
-/turf/closed/mineral/random/rogue,
+/turf/closed/mineral/random,
 /area/rogue/under/cave)
 "QN" = (
 /turf/open/water/river,

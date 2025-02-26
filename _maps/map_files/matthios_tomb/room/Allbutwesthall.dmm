@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "c" = (
 /obj/structure/fluff/railing/fence,
@@ -39,7 +39,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue)
 "k" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/weapon/shield/wood{
 	pixel_x = -5
 	},
@@ -87,23 +87,23 @@
 /obj/structure/fluff/railing/fence{
 	dir = 4
 	},
-/mob/living/simple_animal/hostile/rogue/skeleton/bow,
+/mob/living/simple_animal/hostile/skeleton/bow,
 /turf/open/floor/dirt,
 /area/rogue)
 "y" = (
-/mob/living/simple_animal/hostile/rogue/skeleton/bow,
+/mob/living/simple_animal/hostile/skeleton/bow,
 /turf/open/floor/dirt,
 /area/rogue)
 "z" = (
 /turf/open/floor/dirt,
 /area/rogue)
 "C" = (
-/mob/living/simple_animal/hostile/rogue/skeleton/guard,
+/mob/living/simple_animal/hostile/skeleton/guard,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "D" = (
 /obj/structure/fluff/railing/fence,
-/mob/living/simple_animal/hostile/rogue/skeleton/bow,
+/mob/living/simple_animal/hostile/skeleton/bow,
 /turf/open/floor/dirt,
 /area/rogue)
 "E" = (
@@ -111,7 +111,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue)
 "F" = (
-/mob/living/simple_animal/hostile/rogue/skeleton/bow,
+/mob/living/simple_animal/hostile/skeleton/bow,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "G" = (
@@ -137,8 +137,8 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "M" = (
-/obj/structure/bed/rogue/wool,
-/mob/living/simple_animal/hostile/rogue/skeleton/guard,
+/obj/structure/bed/wool,
+/mob/living/simple_animal/hostile/skeleton/guard,
 /obj/effect/decal/cleanable/dirt/cobweb/cobweb2,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
@@ -161,7 +161,7 @@
 	pixel_x = -1;
 	pixel_y = 17
 	},
-/obj/structure/rack/rogue/shelf/big,
+/obj/structure/rack/shelf/big,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue)
 "Q" = (
@@ -169,7 +169,7 @@
 /turf/open/transparent/openspace,
 /area/rogue)
 "S" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/clothing/armor/leather,
 /obj/item/clothing/pants/trou/leather{
 	pixel_x = 14;
@@ -193,7 +193,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue)
 "W" = (
-/obj/structure/rack/rogue,
+/obj/structure/rack,
 /obj/item/weapon/sword/iron{
 	pixel_x = 10
 	},

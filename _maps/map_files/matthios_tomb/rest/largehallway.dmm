@@ -6,7 +6,7 @@
 /turf/open/floor/twig,
 /area/rogue)
 "i" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "l" = (
 /turf/open/floor/rooftop/green{
@@ -23,11 +23,11 @@
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue)
 "r" = (
-/obj/machinery/light/rogue/firebowl,
-/turf/closed/mineral/rogue/bedrock,
+/obj/machinery/light/fueled/firebowl,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "A" = (
-/obj/machinery/light/rogue/firebowl,
+/obj/machinery/light/fueled/firebowl,
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue)
 "E" = (
@@ -47,7 +47,7 @@
 /obj/effect/decal/remains/human{
 	pixel_y = 12
 	},
-/obj/structure/bed/rogue/shit,
+/obj/structure/bed/shit,
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue)
 "K" = (

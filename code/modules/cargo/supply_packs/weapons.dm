@@ -115,9 +115,9 @@
 /datum/supply_pack/weapons/arrows
 	name = "Arrow"
 	cost = 2
-	contains = /obj/item/ammo_casing/caseless/rogue/arrow
+	contains = /obj/item/ammo_casing/caseless/arrow
 
 /datum/supply_pack/weapons/bolts
 	name = "Crossbow Bolt"
 	cost = 3
-	contains = /obj/item/ammo_casing/caseless/rogue/bolt
+	contains = /obj/item/ammo_casing/caseless/bolt

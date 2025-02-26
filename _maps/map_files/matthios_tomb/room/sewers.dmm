@@ -108,7 +108,7 @@
 /turf/open/floor/hexstone,
 /area/rogue)
 "M" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/rogue)
 "N" = (
 /obj/item/weapon/sword/long/greatsword/zwei,
