@@ -248,9 +248,7 @@
 /obj/structure/water_dam{
 	redstone_id = "test2"
 	},
-/obj/effect/waterfall/acid{
-	pixel_y = 32
-	},
+/obj/effect/waterfall/acid,
 /turf/open/water/acid{
 	water_volume = 500;
 	water_reagent = /datum/reagent/consumable/milk
@@ -1327,6 +1325,10 @@
 "Uv" = (
 /turf/closed,
 /area/rogue)
+"Wo" = (
+/obj/effect/landmark/start/bandit,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/outdoors/woods)
 "WA" = (
 /turf/closed/wall/mineral/rogue/stone,
 /area/rogue/outdoors)
@@ -7724,7 +7726,7 @@ aJ
 aJ
 aL
 aJ
-rh
+Wo
 QR
 QR
 cT
