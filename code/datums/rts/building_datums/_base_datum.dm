@@ -102,7 +102,7 @@ GLOBAL_LIST_INIT(cached_building_images, list())
 
 	var/list/failed_locations = list()
 	for(var/turf/turf in turfs)
-		if(istype(turf, /turf/closed/mineral/rogue/bedrock))
+		if(istype(turf, /turf/closed/mineral/bedrock))
 			failed_locations |= turf
 			continue
 

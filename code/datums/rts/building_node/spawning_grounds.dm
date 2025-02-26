@@ -11,7 +11,7 @@
 		return FALSE
 
 	spawning = TRUE
-	if(!do_atom(src, src, 60 SECONDS))
+	if(!do_after(src, 60 SECONDS, src))
 		return FALSE
 	user.create_new_worker_mob(get_turf(src))
 	return TRUE

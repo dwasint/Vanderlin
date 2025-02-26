@@ -143,7 +143,7 @@
 	gear.forceMove(get_turf(worker))
 
 /datum/worker_mind/proc/add_test_instrument()
-	var/obj/item/rogue/instrument/guitar/guitar = new(get_turf(worker))
+	var/obj/item/instrument/guitar/guitar = new(get_turf(worker))
 	add_gear(guitar)
 
 /datum/worker_mind/proc/play_testing_song()
@@ -151,7 +151,7 @@
 		current_task.stop_work()
 
 	for(var/obj/item/gear in worker_gear)
-		if(!istype(gear, /obj/item/rogue/instrument))
+		if(!istype(gear, /obj/item/instrument))
 			continue
 
 		var/list/turfs = view(6, worker)

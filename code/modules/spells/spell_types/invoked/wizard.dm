@@ -2041,8 +2041,6 @@
 	fueluse = 10 MINUTES
 	color = "#6ab2ee"
 	bulb_colour = "#6ab2ee"
-	cookonme = TRUE
-	can_damage = TRUE
 	max_integrity = 30
 
 /obj/effect/proc_holder/spell/aoe_turf/conjure/createbonfire5e/test
@@ -2581,7 +2579,7 @@
 		if(!fuel)
 			item_state = "[initial(item_state)]"
 		return
-	if(!istype(loc,/obj/machinery/light/rogue/torchholder))
+	if(!istype(loc,/obj/machinery/light/fueled/torchholder))
 		if(!ismob(loc))
 			if(prob(23))
 				//turn_off()

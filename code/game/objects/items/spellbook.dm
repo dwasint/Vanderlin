@@ -5,11 +5,9 @@
   */
 
 /obj/item/book/granter/spellbook
-	var/open = FALSE
 	icon = 'icons/roguetown/items/books.dmi'
 	icon_state = "spellbookbrown_0"
 	slot_flags = ITEM_SLOT_HIP
-	var/base_icon_state = "spellbookbrown"
 	unique = TRUE
 	firefuel = 2 MINUTES
 	dropshrink = 0.6
@@ -308,7 +306,7 @@
 
 /obj/item/spellbook_unfinished/pre_arcyne/attackby(obj/item/P, mob/living/carbon/human/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
-	if(istype(P, /obj/item/roguegem))
+	if(istype(P, /obj/item/gem))
 		if(isturf(loc)&& (found_table))
 			var/crafttime = (100 - ((user.mind?.get_skill_level(/datum/skill/magic/arcane))*5))
 			if(do_after(user, crafttime, target = src))
@@ -470,31 +468,31 @@
 
 // qualityoflearn buff shit
 
-/obj/item/roguegem
+/obj/item/gem
 	var/arcyne_potency = 20
 
-/obj/item/roguegem/yellow
+/obj/item/gem/yellow
 	arcyne_potency = 5
 
-/obj/item/roguegem/green
+/obj/item/gem/green
 	arcyne_potency = 7
 
-/obj/item/roguegem/violet
+/obj/item/gem/violet
 	arcyne_potency = 10
 
-/obj/item/roguegem/blue
+/obj/item/gem/blue
 	arcyne_potency = 25
 
-/obj/item/roguegem/diamond
+/obj/item/gem/diamond
 	arcyne_potency = 15
 
 
 
 /obj/item/book/granter/spellbook/attackby(obj/item/P, mob/living/carbon/human/user, params)
-	if(istype(P, /obj/item/roguegem))
+	if(istype(P, /obj/item/gem))
 		if(!stored_gem)
 			if(isarcyne(user))
-				var/obj/item/roguegem/gem = P
+				var/obj/item/gem/gem = P
 				var/crafttime = (60 - ((user.mind?.get_skill_level(/datum/skill/magic/arcane))*5))
 				if(do_after(user, crafttime, target = src))
 					playsound(loc, 'sound/magic/glass.ogg', 100, TRUE)

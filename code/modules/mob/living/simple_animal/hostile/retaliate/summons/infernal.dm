@@ -1,5 +1,5 @@
 
-/mob/living/simple_animal/hostile/retaliate/rogue/infernal/hellhound/AttackingTarget()
+/mob/living/simple_animal/hostile/retaliate/infernal/hellhound/AttackingTarget()
 	if(SEND_SIGNAL(src, COMSIG_HOSTILE_PRE_ATTACKINGTARGET, target) & COMPONENT_HOSTILE_NO_PREATTACK)
 		return FALSE //but more importantly return before attack_animal called
 	SEND_SIGNAL(src, COMSIG_HOSTILE_ATTACKINGTARGET, target)
@@ -14,7 +14,7 @@
 		src.flame_cd = world.time
 	return target.attack_animal(src)
 
-/mob/living/simple_animal/hostile/retaliate/rogue/infernal/watcher
+/mob/living/simple_animal/hostile/retaliate/infernal/watcher
 	icon = 'icons/mob/summonable/32x32.dmi'
 	name = "infernal watcher"
 	icon_state = "watcher"
@@ -65,7 +65,7 @@
 
 
 
-/mob/living/simple_animal/hostile/retaliate/rogue/infernal/watcher/MeleeAction(patience = TRUE)
+/mob/living/simple_animal/hostile/retaliate/infernal/watcher/MeleeAction(patience = TRUE)
 	for(var/t in RANGE_TURFS(1, src))
 		new /obj/effect/hotspot(t)
 		src.visible_message(span_danger("[src] emits a burst of flames from it's core!"))
@@ -79,14 +79,14 @@
 	if(patience)
 		GainPatience()
 
-/mob/living/simple_animal/hostile/retaliate/rogue/infernal/watcher/death(gibbed)
+/mob/living/simple_animal/hostile/retaliate/infernal/watcher/death(gibbed)
 	..()
 	var/turf/deathspot = get_turf(src)
 	new /obj/item/natural/moltencore(deathspot)
 	update_icon()
 	qdel(src)
 
-/mob/living/simple_animal/hostile/retaliate/rogue/infernal/fiend
+/mob/living/simple_animal/hostile/retaliate/infernal/fiend
 	icon = 'icons/mob/summonable/32x32.dmi'
 	name = "fiend"
 	icon_state = "fiend"
@@ -137,7 +137,7 @@
 	var/summon_cd = 0
 
 
-/mob/living/simple_animal/hostile/retaliate/rogue/infernal/fiend/OpenFire(atom/A)
+/mob/living/simple_animal/hostile/retaliate/infernal/fiend/OpenFire(atom/A)
 	if(CheckFriendlyFire(A))
 		return
 	visible_message(span_danger("<b>[src]</b> [ranged_message] at [A]!"))
@@ -161,7 +161,7 @@
 	ranged_cooldown = world.time + ranged_cooldown_time
 
 
-/mob/living/simple_animal/hostile/retaliate/rogue/infernal/fiend/proc/create_meteors(atom/target)
+/mob/living/simple_animal/hostile/retaliate/infernal/fiend/proc/create_meteors(atom/target)
 	if(!target)
 		return
 	target.visible_message(span_boldwarning("Fire rains from the sky!"))
@@ -170,8 +170,8 @@
 		if(prob(20))
 			new /obj/effect/temp_visual/target(turf)
 
-/mob/living/simple_animal/hostile/retaliate/rogue/infernal/fiend/proc/callforbackup()
-	var/list/spawnLists = list(/mob/living/simple_animal/hostile/retaliate/rogue/infernal/imp,/mob/living/simple_animal/hostile/retaliate/rogue/infernal/imp, /mob/living/simple_animal/hostile/retaliate/rogue/infernal/hellhound, /mob/living/simple_animal/hostile/retaliate/rogue/infernal/hellhound)
+/mob/living/simple_animal/hostile/retaliate/infernal/fiend/proc/callforbackup()
+	var/list/spawnLists = list(/mob/living/simple_animal/hostile/retaliate/infernal/imp,/mob/living/simple_animal/hostile/retaliate/infernal/imp, /mob/living/simple_animal/hostile/retaliate/infernal/hellhound, /mob/living/simple_animal/hostile/retaliate/infernal/hellhound)
 	var/reinforcement_count = 3
 	src.visible_message(span_notice("[src] summons reinforcements from the infernal abyss."))
 	while(reinforcement_count > 0)

@@ -71,7 +71,7 @@
 	desc += "It has [amount] uses left."
 
 /obj/item/chalk/attackby(obj/item/M, mob/user, params)
-	if(istype(M,/obj/item/rogueore/cinnabar))
+	if(istype(M,/obj/item/ore/cinnabar))
 		if(amount < 8)
 			amount = 8
 			to_chat(user, span_notice("I press acryne magic into the [M] and the red crystals within melt into quicksilver, quickly sinking into the [src]."))
@@ -124,31 +124,31 @@
 	return FALSE
 
 
-/obj/item/rogueweapon/knife/dagger/silver/arcyne
+/obj/item/weapon/knife/dagger/silver/arcyne
 	name = "glowing purple silver dagger"
 	desc = "This dagger glows a faint purple. Quicksilver runs across its blade."
 	var/is_bled = FALSE
 	var/obj/effect/decal/cleanable/roguerune/rune_to_scribe = null
 	var/chosen_keyword
 
-/obj/item/rogueweapon/knife/dagger/silver/arcyne/Initialize()
+/obj/item/weapon/knife/dagger/silver/arcyne/Initialize()
 	. = ..()
 	filter(type="drop_shadow", x=0, y=0, size=2, offset=1, color=rgb(128, 0, 128, 1))
 
-/obj/item/rogueweapon/knife/dagger/silver/arcyne/attackby(obj/item/M, mob/user, params)
-	if(istype(M,/obj/item/rogueore/cinnabar))
+/obj/item/weapon/knife/dagger/silver/arcyne/attackby(obj/item/M, mob/user, params)
+	if(istype(M,/obj/item/ore/cinnabar))
 		var/crafttime = (60 - ((user.mind?.get_skill_level(/datum/skill/magic/arcane))*5))
 		if(do_after(user, crafttime, target = src))
 			playsound(loc, 'sound/magic/scrapeblade.ogg', 100, TRUE)
 			to_chat(user, span_notice("I press acryne magic into the blade and it throbs in a deep purple..."))
-			var/obj/arcyne_knife = new /obj/item/rogueweapon/knife/dagger/silver/arcyne
+			var/obj/arcyne_knife = new /obj/item/weapon/knife/dagger/silver/arcyne
 			qdel(M)
 			qdel(src)
 			user.put_in_active_hand(arcyne_knife)
 	else
 		return ..()
 
-/obj/item/rogueweapon/knife/dagger/silver/arcyne/attack_self(mob/living/carbon/human/user)
+/obj/item/weapon/knife/dagger/silver/arcyne/attack_self(mob/living/carbon/human/user)
 
 	if(!isarcyne(user))
 		return
@@ -189,7 +189,7 @@
 		span_notice("I finish dragging the blade in symbols and circles, leaving behind an ritual rune"))
 		new rune_to_scribe(Turf, chosen_keyword)
 
-/obj/item/rogueweapon/knife/dagger/proc/check_for_structures_and_closed_turfs(loc, obj/effect/decal/cleanable/roguerune/rune_to_scribe)
+/obj/item/weapon/knife/dagger/proc/check_for_structures_and_closed_turfs(loc, obj/effect/decal/cleanable/roguerune/rune_to_scribe)
 	for(var/turf/T in range(loc, rune_to_scribe.runesize))
 		//check for /sturcture subtypes in the turf's contents
 		for(var/obj/structure/S in T.contents)
@@ -206,7 +206,7 @@
 
 
 
-/obj/item/roguegem/amethyst
+/obj/item/gem/amethyst
 	name = "amythortz"
 	icon_state = "amethyst"
 	sellprice = 18
@@ -384,7 +384,7 @@
 	var/being_used = FALSE
 	var/sentience_type = SENTIENCE_ORGANIC
 
-/obj/item/rope/chain/bindingshackles/attack(mob/living/simple_animal/hostile/retaliate/rogue/captive, mob/living/user)
+/obj/item/rope/chain/bindingshackles/attack(mob/living/simple_animal/hostile/retaliate/captive, mob/living/user)
 	if(captive.tier >= tier)
 		return
 
@@ -419,7 +419,7 @@
 		return custom_name(awakener, iteration++)
 	return chosen_name
 /*
-/obj/item/rope/chain/bindingshackles/attack(mob/living/simple_animal/hostile/retaliate/rogue/dumb_mob, mob/user)
+/obj/item/rope/chain/bindingshackles/attack(mob/living/simple_animal/hostile/retaliate/dumb_mob, mob/user)
 	if(being_used || !isliving(dumb_mob))//Already in use
 		return
 	if(dumb_mob.ckey) //only works on animals that aren't player controlled

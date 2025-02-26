@@ -1,6 +1,6 @@
 /datum/persistant_workorder/make_drink
 	name = "Make Food"
-	ui_icon = 'modular/Neu_Food/icons/food.dmi'
+	ui_icon = 'icons/roguetown/items/food.dmi'
 	work_type = /datum/work_order/make_drink
 
 /datum/persistant_workorder/make_drink/apply_to_worker(mob/living/worker)

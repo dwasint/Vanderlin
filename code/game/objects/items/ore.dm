@@ -78,7 +78,7 @@
 	icon_state = "orecoal[rand(1,3)]"
 	..()
 
-/obj/item/rogueore/cinnabar
+/obj/item/ore/cinnabar
 	name = "cinnabar"
 	desc = "Red gems that contain the essence of quicksilver."
 	icon_state = "orecinnabar"

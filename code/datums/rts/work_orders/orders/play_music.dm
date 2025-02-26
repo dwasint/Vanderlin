@@ -3,9 +3,9 @@
 	stamina_cost = 0
 	work_time_left = 60 SECONDS
 
-	var/obj/item/rogue/instrument/instrument
+	var/obj/item/instrument/instrument
 
-/datum/work_order/play_music/New(mob/living/new_worker, datum/work_order/type, atom/movement_target, obj/item/rogue/instrument/instrument)
+/datum/work_order/play_music/New(mob/living/new_worker, datum/work_order/type, atom/movement_target, obj/item/instrument/instrument)
 	. = ..()
 	src.instrument = instrument
 	set_movement_target(movement_target)

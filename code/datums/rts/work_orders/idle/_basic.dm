@@ -37,7 +37,7 @@
 		if(71 to 80)
 			if(length(worker.controller_mind.worker_gear))
 				for(var/obj/item/gear in worker.controller_mind.worker_gear)
-					if(!istype(gear, /obj/item/rogue/instrument))
+					if(!istype(gear, /obj/item/instrument))
 						continue
 
 					var/list/turfs = view(6, worker)

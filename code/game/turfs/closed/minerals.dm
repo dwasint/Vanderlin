@@ -222,7 +222,7 @@
 /turf/closed/mineral/random/high
 	icon_state = "minrandhigh"
 	mineralChance = 70
-	mineralSpawnChanceList = list(/turf/closed/mineral/cinnabar = 5, /turf/closed/mineral/rogue/gold = 15 , /turf/closed/mineral/rogue/iron = 25, /turf/closed/mineral/rogue/silver = 15)//, /turf/closed/mineral/rogue/gemeralds = 10)
+	mineralSpawnChanceList = list(/turf/closed/mineral/cinnabar = 5, /turf/closed/mineral/gold = 15 , /turf/closed/mineral/iron = 25, /turf/closed/mineral/silver = 15)//, /turf/closed/mineral/rogue/gemeralds = 10)
 
 /turf/closed/mineral/random/low_nonval
 	icon_state = "cticbad"

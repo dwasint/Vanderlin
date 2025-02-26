@@ -7,10 +7,10 @@
 		/obj/item/natural/stone = TRUE
 	)
 	tool_usage = list(
-		/obj/item/rogueweapon/knife = list("starts to carve out a rune", "start to carve a rune")
+		/obj/item/weapon/knife = list("starts to carve out a rune", "start to carve a rune")
 	)
 
-	attacking_atom = /obj/item/rogueweapon/knife
+	attacking_atom = /obj/item/weapon/knife
 	starting_atom = /obj/item/natural/stone
 	skillcraft = /datum/skill/magic/arcane
 	craftdiff = 0
@@ -18,7 +18,7 @@
 
 /datum/repeatable_crafting_recipe/arcyne/arcana
 	name = "amethyst"
-	output = /obj/item/roguegem/amethyst
+	output = /obj/item/gem/amethyst
 
 /datum/repeatable_crafting_recipe/arcyne/infernal_feather
 	name = "infernal feather"
@@ -38,7 +38,7 @@
 	name = "sending stones"
 	reagent_requirements = list()
 	requirements = list(
-		/obj/item/roguegem/amethyst = 2,
+		/obj/item/gem/amethyst = 2,
 		/obj/item/natural/stone = 2,
 		/obj/item/natural/melded/t1 = 1,
 	)
@@ -68,11 +68,11 @@
 	requirements = list(
 		/obj/item/natural/melded/t2  = 1,
 		/obj/item/clothing/gloves/roguetown/leather = 1,
-		/obj/item/roguegem = 1,
+		/obj/item/gem = 1,
 	)
 	output = /obj/item/clothing/gloves/roguetown/nomagic
 	starting_atom = /obj/item/clothing/gloves/roguetown/leather
-	attacking_atom = /obj/item/roguegem
+	attacking_atom = /obj/item/gem
 	uses_attacking_atom = TRUE
 	craftdiff = 3
 
@@ -83,7 +83,7 @@
 	requirements = list(
 		/obj/item/natural/melded/t2  = 1,
 		/obj/item/natural/glass = 1,
-		/obj/item/roguegem = 1,
+		/obj/item/gem = 1,
 	)
 	output = /obj/item/hourglass/temporal
 	starting_atom = /obj/item/natural/glass
