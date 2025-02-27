@@ -934,3 +934,10 @@
 	M.verbs |= /mob/living/carbon/human/proc/churchannouncement
 	removeomen(OMEN_NOPRIEST)
 	priority_announce("Astrata has anointed [M.real_name] as the new head of the Church of the Ten!", title = "Astrata Shines!", sound = 'sound/misc/bell.ogg')
+
+/datum/admins/proc/fix_death_area()
+	set category = "GameMaster"
+	set desc="Toggle dis bitch"
+	set name="Fix Death Arena"
+	SSdeath_arena.admin_reset()
+	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle LOOC", "[GLOB.ooc_allowed ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
