@@ -94,6 +94,8 @@ GLOBAL_LIST_EMPTY(custom_fermentation_recipes)
 /obj/structure/fermentation_keg/attack_hand(mob/user)
 	if((user.used_intent == /datum/intent/grab) || user.cmode)
 		return ..()
+	if(!selected_recipe)
+		return ..()
 
 	if(try_n_brew(user))
 		start_brew()

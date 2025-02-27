@@ -223,7 +223,7 @@
 
 	if(tcompare)
 		if(object)
-			if(isatom(object) && object != tcompare && mob.atkswinging && tcompare != mob && mob.cmode)
+			if(isatom(object) && object != tcompare && mob.atkswinging && tcompare != mob && (mob.cmode || chargedprog))
 				var/atom/N = object
 				N.Click(location, control, params)
 		tcompare = null
