@@ -1289,6 +1289,10 @@
 /obj/structure/closet/crate/miningcar,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
+"JC" = (
+/obj/structure/fermentation_keg/distiller,
+/turf/open/floor/dirt/road,
+/area/rogue/outdoors)
 "Kh" = (
 /obj/structure/vertical_gearbox,
 /turf/open/floor/dirt/road,
@@ -5140,7 +5144,7 @@ mo
 Ua
 oH
 Ua
-at
+JC
 ab
 ag
 aj
