@@ -125,7 +125,7 @@ SUBSYSTEM_DEF(death_arena)
 	close_death_gate()
 	fight_force_end = null
 
-/datum/controller/subsystem/death_area/proc/admin_reset()
+/datum/controller/subsystem/death_arena/proc/admin_reset()
 	log_admin("[key_name(usr)] cleared death arena.")
 	message_admins("[key_name_admin(usr)] cleared death arena.")
 	if(!force_end_fight())
