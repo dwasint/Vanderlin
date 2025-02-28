@@ -84,12 +84,10 @@ GLOBAL_LIST_EMPTY(custom_fermentation_recipes)
 		return
 
 	if(!brewing && (!selected_recipe || ready_to_bottle))
-		shopping_run(user)
-		return
-
-	if(!brewing && ready_to_bottle)
-		if(try_tapping(user))
-			return
+		if(!shopping_run(user))
+			if(!brewing && ready_to_bottle)
+				if(try_tapping(user))
+					return
 
 /obj/structure/fermentation_keg/attack_hand(mob/user)
 	if((user.used_intent == /datum/intent/grab) || user.cmode)
@@ -236,7 +234,6 @@ GLOBAL_LIST_EMPTY(custom_fermentation_recipes)
 			options[recipe.name] = recipe
 
 	if(options.len == 0)
-		to_chat(user, "Their is no further brewing to be done, clear this barrel out or sell it.")
 		return
 
 	var/choice = input(user,"What brew do you want to make?", name) as anything in options
@@ -261,6 +258,7 @@ GLOBAL_LIST_EMPTY(custom_fermentation_recipes)
 	if(open_icon_state)
 		icon_state = open_icon_state
 	update_overlays()
+	return TRUE
 
 //Remove only chemicals
 /obj/structure/fermentation_keg/proc/clear_keg_reagents()
