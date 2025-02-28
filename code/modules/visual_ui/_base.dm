@@ -86,7 +86,7 @@ GLOBAL_LIST_INIT(visual_ui_id_to_type, list())
 	if (mind)
 		mind.display_ui(ui_ID)
 
-/mob/proc/hide_ui(var/ui_ID)
+/mob/proc/hide_ui(ui_ID)
 	if (mind)
 		mind.hide_ui(ui_ID)
 
