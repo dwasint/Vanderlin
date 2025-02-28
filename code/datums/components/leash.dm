@@ -90,7 +90,6 @@
 	check_distance()
 
 /datum/component/leash/proc/on_owner_qdel()
-	SIGNAL_HANDLER
 	PRIVATE_PROC(TRUE)
 
 	if(break_callback)
@@ -210,7 +209,7 @@
 		else if((get_dir(new_host, to_move) == normal_direction))
 			continue
 
-		beams += new_host.Beam(to_move, beam_icon_state, beam_icon)
+		beams += new_host.Beam(to_move, beam_icon_state, beam_icon, time = INFINITY)
 		normal_direction = get_dir(new_host, to_move)
 		new_host = to_move
 
