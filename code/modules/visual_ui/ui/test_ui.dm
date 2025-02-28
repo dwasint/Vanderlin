@@ -1,5 +1,5 @@
 /*
-	calling DisplayUI("Hello World") on a mob with a client and a mind gives them a panel with a green button that sends "Hello World!" to their chat, and a red button that hides the UI.
+	calling display_ui("Hello World") on a mob with a client and a mind gives them a panel with a green button that sends "Hello World!" to their chat, and a red button that hides the UI.
 */
 ////////////////////////////////////////////////////////////////////
 //																  //
@@ -57,13 +57,13 @@
 	offset_x = 80
 	offset_y = 16
 	mouse_opacity = 1
-/obj/abstract/visual_ui_element/hoverable/test_close/Appear()
+/obj/abstract/visual_ui_element/hoverable/test_close/appear()
 	..()
 	mouse_opacity = 1
 	icon_state = "close"
 	flick("close-spawn", src)
 
-/obj/abstract/visual_ui_element/hoverable/test_close/Hide()
+/obj/abstract/visual_ui_element/hoverable/test_close/hide()
 	mouse_opacity = 0
 	icon_state = "blank"
 	flick("close-click", src)
@@ -71,8 +71,8 @@
 		..()
 
 /obj/abstract/visual_ui_element/hoverable/test_close/Click()
-	var/datum/visual_ui/ancestor = parent.GetAncestor()
-	ancestor.Hide()
+	var/datum/visual_ui/ancestor = parent.get_ancestor()
+	ancestor.hide()
 //------------------------------------------------------------
 /obj/abstract/visual_ui_element/hoverable/test_hello
 	icon = 'icons/visual_ui/32x32.dmi'
@@ -80,9 +80,10 @@
 	layer = VISUAL_UI_BUTTON
 	offset_y = -16
 	mouse_opacity = 1
+
 /obj/abstract/visual_ui_element/hoverable/test_hello/Click()
 	flick("hello-click", src)
-	to_chat(GetUser(), "Hello World!")
+	to_chat(get_user(), "Hello World!")
 //------------------------------------------------------------
 
 
