@@ -7,9 +7,12 @@
 	var/byond_version = "Unknown"
 	var/byond_build
 	var/datum/achievement_data/achievements
+	/// Patreon data for this player.
+	var/datum/patreon_data/patreon
 
 /datum/player_details/New(key)
 	achievements = new(key)
+	patreon = new(src)
 
 /proc/log_played_names(ckey, ...)
 	if(!ckey)
