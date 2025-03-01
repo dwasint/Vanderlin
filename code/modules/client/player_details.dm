@@ -14,7 +14,7 @@
 /datum/player_details/New(key)
 	src.ckey = ckey(key)
 	achievements = new(key)
-	patreon = new(src)
+	//patreon = new(src)
 
 /datum/player_details/Destroy(force)
 	if(!force)
