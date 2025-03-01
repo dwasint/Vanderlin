@@ -184,7 +184,7 @@
 	body += "<h3>Languages</h3><ul>"
 	for(var/datum/language/ld as anything in GLOB.all_languages)
 		body += "<li>[initial(ld.name)] - "
-		if (M.mind?.language_holder.has_language(ld))
+		if (M.mind?.language_holder?.has_language(ld))
 			body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];remove_language=[REF(M)];language=[ld]'>Remove</a></li>"
 		else
 			body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_language=[REF(M)];language=[ld]'>Grant</a></li>"
