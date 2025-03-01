@@ -598,9 +598,6 @@ function ehjaxCallback(data) {
 
 				replaceRegexes[i] = [new RegExp(regexName, regexFlags), regexReplaced];
 			}
-		} else if (data.chatLines) {
-			var lines = data.chatLines;
-			opts.messageLimit = lines;
 		}
 	}
 }
