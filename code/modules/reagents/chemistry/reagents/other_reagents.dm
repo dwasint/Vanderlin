@@ -12,6 +12,7 @@
 
 /datum/reagent/blood/tiefling
 	name = "Tiefling Blood"
+	glows = TRUE
 
 /datum/reagent/blood/reaction_mob(mob/living/L, method=TOUCH, reac_volume)
 	if(iscarbon(L))

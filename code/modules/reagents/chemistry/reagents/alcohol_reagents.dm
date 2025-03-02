@@ -389,21 +389,22 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	name = "Tiefling Blood Wine"
 	boozepwr = 15
 	taste_description = "bitter young wine"
-	color = "#a30c0c"
+	color = "#b32525"
 	quality = DRINK_NICE
+	glows = TRUE
 
 /datum/reagent/consumable/ethanol/tiefling/aged
 	name = "Aged Tiefling Blood Wine"
 	boozepwr = 30
 	taste_description = "bitter aged wine"
-	color = "#5e0b0b"
+	color = "#e21313"
 	quality = DRINK_GOOD
 
 /datum/reagent/consumable/ethanol/tiefling/delectable
 	name = "Delectable Tiefling Blood Wine"
 	boozepwr = 30
 	taste_description = "bitter delectably aged wine"
-	color = "#720000"
+	color = "#ff0000"
 	quality = DRINK_VERYGOOD
 // Elf Production - Berries & Herbal
 

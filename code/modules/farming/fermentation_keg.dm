@@ -72,6 +72,12 @@ GLOBAL_LIST_EMPTY(custom_fermentation_recipes)
 		return
 	var/mutable_appearance/MA = mutable_appearance(icon, "filling")
 	MA.color = mix_color_from_reagents(reagents)
+	for(var/datum/reagent/reagent as anything in reagents.reagent_list)
+		if(reagent.glows)
+			var/mutable_appearance/emissive = mutable_appearance(icon, "filling")
+			emissive.plane = EMISSIVE_PLANE
+			overlays += emissive
+			break
 	overlays += MA
 
 /obj/structure/fermentation_keg/attack_right(mob/user)
