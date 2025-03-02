@@ -64,3 +64,17 @@
 		/datum/reagent/consumable/ethanol/blackberry/aged = 10 MINUTES,
 		/datum/reagent/consumable/ethanol/blackberry/delectable = 20 MINUTES
 	)
+
+
+/datum/brewing_recipe/tiefling_wine
+	name = "Tiefling Blood Wine"
+	reagent_to_brew = /datum/reagent/consumable/ethanol/tiefling
+	needed_reagents = list(/datum/reagent/water = 90, /datum/reagent/blood/tiefling = 60)
+	needed_items = list(/obj/item/reagent_containers/food/snacks/sugar = 1)
+	brewed_amount = 3
+	brew_time = 6 MINUTES
+	sell_value = 90
+	age_times = list(
+		/datum/reagent/consumable/ethanol/tiefling/aged = 10 MINUTES,
+		/datum/reagent/consumable/ethanol/tiefling/delectable = 20 MINUTES
+	)

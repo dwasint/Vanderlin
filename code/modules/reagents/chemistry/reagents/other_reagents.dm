@@ -10,6 +10,9 @@
 	glass_desc = ""
 	shot_glass_icon_state = "shotglassred"
 
+/datum/reagent/blood/tiefling
+	name = "Tiefling Blood"
+
 /datum/reagent/blood/reaction_mob(mob/living/L, method=TOUCH, reac_volume)
 	if(iscarbon(L))
 		var/mob/living/carbon/C = L

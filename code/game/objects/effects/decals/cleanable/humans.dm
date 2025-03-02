@@ -57,6 +57,7 @@
 	blood_timer = addtimer(CALLBACK(src, PROC_REF(become_dry)), rand(5 MINUTES,15 MINUTES), TIMER_STOPPABLE)
 	GLOB.weather_act_upon_list += src
 
+
 /obj/effect/decal/cleanable/blood/proc/become_dry()
 	if(QDELETED(src))
 		return
@@ -64,6 +65,20 @@
 	name = "dry [initial(name)]"
 	color = "#967c69"
 	bloodiness = 0
+
+/obj/effect/decal/cleanable/blood/lazy_init_reagents()
+	var/datum/component/forensics/D = GetComponent(/datum/component/forensics)
+	var/list/all_dna = D?.blood_DNA
+	var/list/reagents_to_add = list()
+	for(var/dna_sample in all_dna)
+		var/datum/blood_type/blood = GLOB.blood_types[all_dna[dna_sample]]
+		reagents_to_add += blood.reagent_type
+
+	reagents.remove_all(reagents.total_volume)
+	var/num_reagents = length(reagents_to_add)
+	for(var/reagent_type in reagents_to_add)
+		reagents.add_reagent(reagent_type, round((bloodiness * 0.1) / num_reagents, 0.01))
+
 
 /obj/effect/decal/cleanable/blood/replace_decal(obj/effect/decal/cleanable/C)
 	. = ..()
