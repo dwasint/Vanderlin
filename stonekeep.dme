@@ -532,6 +532,7 @@
 #include "code\datums\brewing_recipes\mead.dm"
 #include "code\datums\brewing_recipes\onion_beer.dm"
 #include "code\datums\brewing_recipes\sugar.dm"
+#include "code\datums\brewing_recipes\tea.dm"
 #include "code\datums\brewing_recipes\vodden.dm"
 #include "code\datums\brewing_recipes\wine.dm"
 #include "code\datums\brewing_recipes\items\cheese.dm"
