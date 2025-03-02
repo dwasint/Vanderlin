@@ -236,7 +236,7 @@ GLOBAL_LIST_EMPTY(custom_fermentation_recipes)
 	if(options.len == 0)
 		return
 
-	var/choice = input(user,"What brew do you want to make?", name) as anything in options
+	var/choice = input(user,"What brew do you want to make?", name) as null|anything in options
 
 	if(!choice)
 		return

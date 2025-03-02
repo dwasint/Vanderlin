@@ -98,8 +98,11 @@
 /turf/open/floor/dirt/road,
 /area/rogue/indoors)
 "as" = (
-/turf/closed/mineral/bedrock,
-/area/rogue/outdoors/woods)
+/obj/structure/waterwheel,
+/turf/open/water/river{
+	dir = 4
+	},
+/area/rogue/indoors)
 "at" = (
 /turf/closed/mineral/bedrock,
 /area/rogue/outdoors)
@@ -1138,6 +1141,12 @@
 /obj/structure/waterwheel,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
+"kH" = (
+/obj/machinery/light/fueled/torchholder/r,
+/turf/open/water/river{
+	dir = 4
+	},
+/area/rogue/indoors)
 "lY" = (
 /obj/structure/minecart_rail{
 	dir = 9
@@ -1162,12 +1171,7 @@
 /obj/structure/irrigation_channel,
 /turf/open/floor/dirt/road,
 /area/rogue/indoors)
-"ns" = (
-/obj/machinery/light/fueled/torchholder/l,
-/obj/structure/soil/debug_soil/random,
-/turf/open/floor/dirt/road,
-/area/rogue/indoors)
-"op" = (
+"nr" = (
 /obj/structure/water_pump,
 /turf/open/floor/dirt/road,
 /area/rogue/indoors)
@@ -1223,6 +1227,10 @@
 	},
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
+"tA" = (
+/obj/structure/water_pipe,
+/turf/open/floor/dirt/road,
+/area/rogue/indoors)
 "tH" = (
 /obj/structure/water_dam{
 	dir = 1;
@@ -1232,6 +1240,11 @@
 	water_volume = 500
 	},
 /area/rogue/outdoors)
+"uz" = (
+/turf/open/water/river{
+	dir = 4
+	},
+/area/rogue/indoors)
 "uL" = (
 /obj/structure/minecart_rail{
 	dir = 6
@@ -1258,10 +1271,6 @@
 /obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/dirt/road,
 /area/rogue/indoors)
-"Al" = (
-/obj/structure/fermentation_keg/distiller,
-/turf/open/floor/dirt/road,
-/area/rogue/indoors)
 "Az" = (
 /obj/structure/rotation_piece/cog{
 	dir = 4
@@ -1280,6 +1289,11 @@
 	},
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
+"Ch" = (
+/obj/machinery/light/fueled/torchholder/l,
+/obj/structure/soil/debug_soil/random,
+/turf/open/floor/dirt/road,
+/area/rogue/indoors)
 "CO" = (
 /obj/structure/gearbox,
 /turf/open/floor/dirt/road,
@@ -1298,12 +1312,6 @@
 	},
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
-"HV" = (
-/obj/machinery/light/fueled/torchholder/r,
-/turf/open/water/river{
-	dir = 4
-	},
-/area/rogue/indoors)
 "Jj" = (
 /obj/structure/minecart_rail{
 	dir = 4
@@ -1311,10 +1319,6 @@
 /obj/structure/closet/crate/miningcar,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
-"Jq" = (
-/obj/machinery/light/fueled/torchholder/l,
-/turf/open/floor/dirt/road,
-/area/rogue/outdoors/woods)
 "Kh" = (
 /obj/structure/vertical_gearbox,
 /turf/open/floor/dirt/road,
@@ -1327,23 +1331,17 @@
 /obj/structure/rotation_piece/cog,
 /turf/open/floor/dirt/road,
 /area/rogue/indoors)
+"PT" = (
+/obj/structure/fermentation_keg/distiller,
+/turf/open/floor/dirt/road,
+/area/rogue/indoors)
 "QR" = (
 /turf/open/floor/dirt,
-/area/rogue/outdoors/woods)
-"RO" = (
-/obj/machinery/light/fueled/torchholder/r,
-/turf/open/floor/dirt/road,
 /area/rogue/outdoors/woods)
 "Sz" = (
 /obj/structure/boiler,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
-"Ta" = (
-/obj/structure/waterwheel,
-/turf/open/water/river{
-	dir = 4
-	},
-/area/rogue/indoors)
 "Ty" = (
 /obj/effect/landmark/start/lord{
 	dir = 8
@@ -1361,15 +1359,6 @@
 "Uv" = (
 /turf/closed,
 /area/rogue)
-"Vi" = (
-/obj/structure/water_pipe,
-/turf/open/floor/dirt/road,
-/area/rogue/indoors)
-"Vu" = (
-/turf/open/water/river{
-	dir = 4
-	},
-/area/rogue/indoors)
 "Wo" = (
 /obj/effect/landmark/start/bandit,
 /turf/open/floor/dirt/road,
@@ -1856,13 +1845,13 @@ ab
 ab
 ab
 ab
-as
-as
-as
-as
-as
-as
-as
+ab
+ab
+ab
+ab
+ab
+ab
+ab
 aa
 aa
 aa
@@ -2111,15 +2100,15 @@ mY
 mY
 mY
 mY
-ns
+Ch
+mY
+mY
+mY
+mY
+Ch
+mY
+mY
 ab
-rh
-rh
-rh
-Jq
-rh
-rh
-as
 aa
 aa
 aa
@@ -2363,20 +2352,20 @@ at
 at
 at
 ab
-Vu
+uz
+ne
+ne
+ne
+ne
+ne
+ne
+ne
 ne
 ne
 ne
 ne
 ne
 ab
-rh
-rh
-rh
-rh
-rh
-rh
-as
 aa
 aa
 aa
@@ -2620,20 +2609,20 @@ Ua
 Ua
 Ua
 ab
-Vu
+uz
+mY
+mY
+mY
+mY
+mY
+mY
+mY
 mY
 mY
 mY
 mY
 mY
 ab
-rh
-rh
-rh
-rh
-rh
-rh
-as
 aa
 aa
 aa
@@ -2877,20 +2866,20 @@ al
 al
 Ua
 ab
-Vu
+uz
+mY
+mY
+mY
+mY
+mY
+mY
+mY
 mY
 mY
 mY
 mY
 mY
 ab
-rh
-rh
-rh
-rh
-rh
-rh
-as
 aa
 aa
 aa
@@ -3134,20 +3123,20 @@ Ua
 Ua
 Ua
 ab
-Ta
+as
 Nb
 aj
 aj
 aj
 aj
+aj
+aj
+aj
+aj
+aj
+aj
+aj
 ab
-rh
-rh
-rh
-rh
-rh
-rh
-as
 aa
 aa
 aa
@@ -3391,20 +3380,20 @@ al
 al
 al
 ab
-HV
-op
-Vi
-Al
+kH
+nr
+tA
+PT
 aj
 zc
 aj
-rh
-rh
-rh
-RO
-rh
-rh
-as
+aj
+aj
+aj
+zc
+aj
+aj
+ab
 aa
 aa
 aa

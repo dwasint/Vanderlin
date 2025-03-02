@@ -13,7 +13,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////Panels
 
-/datum/admins/proc/show_player_panel(mob/M in GLOB.mob_list, clicked_flag = null)
+/datum/admins/proc/show_player_panel(mob/M in GLOB.mob_list)
 	set category = "GameMaster"
 	set name = "Show Player Panel"
 	set desc="Edit player (respawn, ban, heal, etc)"
@@ -21,6 +21,12 @@
 	if(!check_rights())
 		return
 
+	show_player_panel_next(M)
+
+/client/proc/show_player_panel_next(mob/M)
+	holder?.show_player_panel_next(M)
+
+/datum/admins/proc/show_player_panel_next(mob/M, clicked_flag = null)
 	log_admin("[key_name(usr)] checked the individual player panel for [key_name(M)][isobserver(usr)?"":" while in game"].")
 
 	if(!M)

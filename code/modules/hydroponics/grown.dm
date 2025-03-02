@@ -49,7 +49,7 @@
 				visible_message("<span class='warning'>[H] crushes [src] underfoot.</span>")
 				qdel(src)
 
-/obj/item/reagent_containers/food/snacks/grown/Initialize(mapload, obj/item/newFarm/seed/new_seed)
+/obj/item/reagent_containers/food/snacks/grown/Initialize(mapload, obj/item/neuFarm/seed/new_seed)
 	. = ..()
 	if(!tastes)
 		tastes = list("[name]" = 1)
