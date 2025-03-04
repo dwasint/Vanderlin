@@ -1,6 +1,6 @@
 /datum/patreon_data
 	/// The details of the linked player.
-	var/datum/player_details/owner
+	var/client/owner
 	///the stored patreon client key for the information
 	var/client_key
 	///the stored patreon rank collected from the server
@@ -9,7 +9,7 @@
 	var/access_rank = 0
 
 
-/datum/patreon_data/New(datum/player_details/owner)
+/datum/patreon_data/New(client/owner)
 	. = ..()
 	if(!owner)
 		return
@@ -47,6 +47,8 @@
 /datum/patreon_data/proc/has_access(rank)
 	if(!access_rank)
 		assign_access_rank()
+	if(owner.holder)
+		return TRUE
 	if(rank <= access_rank)
 		return TRUE
 	return FALSE
