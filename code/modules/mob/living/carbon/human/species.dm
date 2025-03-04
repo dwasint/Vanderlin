@@ -210,6 +210,12 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 					message = replacetextEx(message, " [key]", " [value]")
 
 		var/list/species_accent = get_accent_list()
+		var/mob/living/carbon/human/human
+		if(ismob(source))
+			human = source
+			if((human.accent != ACCENT_DEFAULT))
+				species_accent = human.return_accent_list()
+
 		if(species_accent)
 			if(message[1] != "*")
 				message = " [message]"

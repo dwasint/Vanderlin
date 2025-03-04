@@ -98,10 +98,8 @@
 /turf/open/floor/dirt/road,
 /area/rogue/indoors)
 "as" = (
-/obj/structure/waterwheel,
-/turf/open/water/river{
-	dir = 4
-	},
+/obj/structure/soil/debug_soil/random,
+/turf/open/floor/dirt/road,
 /area/rogue/indoors)
 "at" = (
 /turf/closed/mineral/bedrock,
@@ -1141,12 +1139,6 @@
 /obj/structure/waterwheel,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
-"kH" = (
-/obj/machinery/light/fueled/torchholder/r,
-/turf/open/water/river{
-	dir = 4
-	},
-/area/rogue/indoors)
 "lY" = (
 /obj/structure/minecart_rail{
 	dir = 9
@@ -1164,17 +1156,12 @@
 	},
 /area/rogue/indoors)
 "mY" = (
-/obj/structure/soil/debug_soil/random,
-/turf/open/floor/dirt/road,
-/area/rogue/indoors)
-"ne" = (
 /obj/structure/irrigation_channel,
 /turf/open/floor/dirt/road,
 /area/rogue/indoors)
-"nr" = (
-/obj/structure/water_pump,
-/turf/open/floor/dirt/road,
-/area/rogue/indoors)
+"ne" = (
+/turf/open/transparent/openspace,
+/area/rogue)
 "oH" = (
 /obj/structure/lever{
 	redstone_id = "test2"
@@ -1185,6 +1172,10 @@
 /obj/structure/dungeon_entry,
 /turf/open/floor/cobble,
 /area/rogue/indoors/town/vault)
+"pY" = (
+/obj/structure/water_pump,
+/turf/open/floor/dirt/road,
+/area/rogue/indoors)
 "qw" = (
 /obj/structure/fluff/statue/tdummy,
 /turf/open/floor/cobble,
@@ -1227,10 +1218,6 @@
 	},
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
-"tA" = (
-/obj/structure/water_pipe,
-/turf/open/floor/dirt/road,
-/area/rogue/indoors)
 "tH" = (
 /obj/structure/water_dam{
 	dir = 1;
@@ -1240,11 +1227,6 @@
 	water_volume = 500
 	},
 /area/rogue/outdoors)
-"uz" = (
-/turf/open/water/river{
-	dir = 4
-	},
-/area/rogue/indoors)
 "uL" = (
 /obj/structure/minecart_rail{
 	dir = 6
@@ -1271,33 +1253,53 @@
 /obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/dirt/road,
 /area/rogue/indoors)
+"zZ" = (
+/obj/structure/apiary,
+/turf/open/floor/dirt/road,
+/area/rogue/indoors)
 "Az" = (
 /obj/structure/rotation_piece/cog{
 	dir = 4
 	},
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
+"AI" = (
+/obj/structure/waterwheel,
+/turf/open/water/river{
+	dir = 4
+	},
+/area/rogue/indoors)
 "AO" = (
 /obj/structure/rotation_piece{
 	dir = 8
 	},
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
+"Bv" = (
+/obj/structure/water_pipe,
+/turf/open/floor/dirt/road,
+/area/rogue/indoors)
 "BE" = (
 /obj/structure/minecart_rail{
 	dir = 4
 	},
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
-"Ch" = (
-/obj/machinery/light/fueled/torchholder/l,
-/obj/structure/soil/debug_soil/random,
-/turf/open/floor/dirt/road,
-/area/rogue/indoors)
 "CO" = (
 /obj/structure/gearbox,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
+"CZ" = (
+/obj/machinery/light/fueled/torchholder/r,
+/turf/open/water/river{
+	dir = 4
+	},
+/area/rogue/indoors)
+"DW" = (
+/obj/machinery/light/fueled/torchholder/l,
+/obj/structure/soil/debug_soil/random,
+/turf/open/floor/dirt/road,
+/area/rogue/indoors)
 "Fc" = (
 /obj/structure/water_vent,
 /turf/open/floor/dirt/road,
@@ -1305,6 +1307,11 @@
 "Fo" = (
 /obj/effect/landmark/start/consort,
 /turf/open/floor/carpet/lord/left,
+/area/rogue/indoors)
+"Fx" = (
+/turf/open/water/river{
+	dir = 4
+	},
 /area/rogue/indoors)
 "Hl" = (
 /obj/structure/minecart_rail{
@@ -1331,10 +1338,6 @@
 /obj/structure/rotation_piece/cog,
 /turf/open/floor/dirt/road,
 /area/rogue/indoors)
-"PT" = (
-/obj/structure/fermentation_keg/distiller,
-/turf/open/floor/dirt/road,
-/area/rogue/indoors)
 "QR" = (
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods)
@@ -1347,6 +1350,10 @@
 	dir = 8
 	},
 /turf/open/floor/carpet/lord/right,
+/area/rogue/indoors)
+"TJ" = (
+/obj/structure/fermentation_keg/distiller,
+/turf/open/floor/dirt/road,
 /area/rogue/indoors)
 "Ua" = (
 /obj/structure/water_pipe,
@@ -2096,18 +2103,18 @@ aa
 aa
 ab
 mx
-mY
-mY
-mY
-mY
-Ch
-mY
-mY
-mY
-mY
-Ch
-mY
-mY
+as
+as
+as
+as
+DW
+as
+as
+as
+as
+DW
+as
+as
 ab
 aa
 aa
@@ -2352,19 +2359,19 @@ at
 at
 at
 ab
-uz
-ne
-ne
-ne
-ne
-ne
-ne
-ne
-ne
-ne
-ne
-ne
-ne
+Fx
+mY
+mY
+mY
+mY
+mY
+mY
+mY
+mY
+mY
+mY
+mY
+mY
 ab
 aa
 aa
@@ -2609,19 +2616,19 @@ Ua
 Ua
 Ua
 ab
-uz
-mY
-mY
-mY
-mY
-mY
-mY
-mY
-mY
-mY
-mY
-mY
-mY
+Fx
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 ab
 aa
 aa
@@ -2866,19 +2873,19 @@ al
 al
 Ua
 ab
-uz
-mY
-mY
-mY
-mY
-mY
-mY
-mY
-mY
-mY
-mY
-mY
-mY
+Fx
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 ab
 aa
 aa
@@ -3123,7 +3130,7 @@ Ua
 Ua
 Ua
 ab
-as
+AI
 Nb
 aj
 aj
@@ -3380,14 +3387,14 @@ al
 al
 al
 ab
-kH
-nr
-tA
-PT
+CZ
+pY
+Bv
+TJ
 aj
 zc
 aj
-aj
+zZ
 aj
 aj
 zc
@@ -67631,19 +67638,19 @@ Uv
 Uv
 Uv
 Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
+ne
+ne
+ne
+ne
+ne
+ne
+ne
+ne
+ne
+ne
+ne
+ne
+ne
 Uv
 Uv
 Uv
@@ -67888,19 +67895,19 @@ Uv
 Uv
 Uv
 Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
+ne
+ne
+ne
+ne
+ne
+ne
+ne
+ne
+ne
+ne
+ne
+ne
+ne
 Uv
 Uv
 Uv
@@ -68145,19 +68152,19 @@ Uv
 Uv
 Uv
 Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
+ne
+ne
+ne
+ne
+ne
+ne
+ne
+ne
+ne
+ne
+ne
+ne
+ne
 Uv
 Uv
 Uv
@@ -68402,19 +68409,19 @@ Uv
 Uv
 Uv
 Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
+ne
+ne
+ne
+ne
+ne
+ne
+ne
+ne
+ne
+ne
+ne
+ne
+ne
 Uv
 Uv
 Uv
@@ -68659,19 +68666,19 @@ Uv
 Uv
 Uv
 Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
+ne
+ne
+ne
+ne
+ne
+ne
+ne
+ne
+ne
+ne
+ne
+ne
+ne
 Uv
 Uv
 Uv
@@ -68916,19 +68923,19 @@ Uv
 Uv
 Uv
 Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
+ne
+ne
+ne
+ne
+ne
+ne
+ne
+ne
+ne
+ne
+ne
+ne
+ne
 Uv
 Uv
 Uv

@@ -8,13 +8,10 @@
 	var/byond_version = "Unknown"
 	var/byond_build
 	var/datum/achievement_data/achievements
-	/// Patreon data for this player.
-	var/datum/patreon_data/patreon
 
 /datum/player_details/New(key)
 	src.ckey = ckey(key)
 	achievements = new(key)
-	//patreon = new(src)
 
 /datum/player_details/Destroy(force)
 	if(!force)

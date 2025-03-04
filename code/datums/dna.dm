@@ -8,7 +8,6 @@
 	var/list/features = MANDATORY_FEATURE_LIST
 	var/real_name //Stores the real name of the person who originally got this dna datum. Used primarely for changelings,
 	var/mob/living/holder
-	var/list/organ_dna = list()
 	///Body markings of the DNA's owner. This is for storing their original state for re-creating the character. They'll get changed on species mutation
 	var/list/list/body_markings = list()
 	//Familytree variable

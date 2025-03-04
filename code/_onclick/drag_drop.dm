@@ -61,6 +61,7 @@
 	var/progress
 	var/doneset
 	var/aghost_toggle
+	var/datum/patreon_data/patreon
 
 /atom
 	var/blockscharging = FALSE
@@ -178,6 +179,7 @@
 
 /mob
 	var/datum/intent/curplaying
+	var/accent = ACCENT_DEFAULT
 
 /client/MouseUp(object, location, control, params)
 	charging = 0

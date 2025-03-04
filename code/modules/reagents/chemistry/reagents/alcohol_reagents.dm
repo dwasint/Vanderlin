@@ -512,3 +512,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	glass_icon_state = "meadglass"
 	glass_name = "Mead"
 	glass_desc = ""
+
+/datum/reagent/consumable/ethanol/mead/spider
+	color = "#660061"
+	glows = TRUE
