@@ -327,15 +327,3 @@
 	starting_atom  = /obj/item/natural/fibers
 	output = /obj/structure/closet/crate/chest/wicker
 	craftdiff = 1
-
-/datum/repeatable_crafting_recipe/crafting/mantrap
-	name = "mantrap"
-	requirements = list(
-		/obj/item/grown/log/tree/stake = 1,
-		/obj/item/rope = 1,
-		/obj/item/natural/fibers = 1,
-	)
-	attacked_atom = /obj/item/grown/log/tree/stake
-	starting_atom  = /obj/item/rope
-	output = /obj/item/restraints/legcuffs/beartrap
-	craftdiff = 1
