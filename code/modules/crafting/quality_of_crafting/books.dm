@@ -246,6 +246,7 @@
 	types = list(
 		/datum/repeatable_crafting_recipe/narcotics,
 		/datum/pot_recipe/drugs,
+		/datum/repeatable_crafting_recipe/bomb,
 	)
 
 /obj/item/recipe_book/carpentry
