@@ -2,57 +2,6 @@
 	always_availible = TRUE
 	skillcraft = /datum/skill/craft/crafting
 
-/datum/crafting_recipe/poisondart
-	name = "poison dart"
-	result = /obj/item/ammo_casing/caseless/dart/poison
-	reqs = list(/obj/item/ammo_casing/caseless/dart = 1,
-				/obj/item/reagent_containers/food/snacks/produce/jacksberry/poison = 1)
-	craftdiff = 0
-
-/datum/crafting_recipe/poisonarrow/alt
-	reqs = list(/obj/item/ammo_casing/caseless/arrow = 1,
-				/datum/reagent/berrypoison = 5)
-
-/datum/crafting_recipe/poisonarrow/potent
-	name = "poison arrow (potent)"
-	result = /obj/item/ammo_casing/caseless/arrow/poison/potent
-	reqs = list(/obj/item/ammo_casing/caseless/arrow = 1,
-				/datum/reagent/strongpoison = 5)
-
-/datum/crafting_recipe/pyroarrow
-	name = "pyroclastic arrow"
-	result = /obj/item/ammo_casing/caseless/arrow/pyro
-	reqs = list(/obj/item/ammo_casing/caseless/arrow = 1,
-				/obj/item/reagent_containers/food/snacks/produce/fyritius = 1)
-	craftdiff = 1
-	skillcraft = /datum/skill/craft/engineering
-
-/datum/crafting_recipe/poisonbolt
-	name = "poison bolt"
-	result = /obj/item/ammo_casing/caseless/bolt/poison
-	reqs = list(/obj/item/ammo_casing/caseless/bolt = 1,
-				/obj/item/reagent_containers/food/snacks/produce/jacksberry/poison = 1)
-	craftdiff = 0
-
-/datum/crafting_recipe/poisonbolt/alt
-	reqs = list(/obj/item/ammo_casing/caseless/bolt = 1,
-				/datum/reagent/berrypoison = 5)
-
-/datum/crafting_recipe/poisonbolt/potent
-	name = "poison bolt (potent)"
-	result = /obj/item/ammo_casing/caseless/bolt/poison/potent
-	reqs = list(/obj/item/ammo_casing/caseless/bolt = 1,
-				/datum/reagent/strongpoison = 5)
-
-
-/datum/crafting_recipe/pyrobolt
-	name = "pyroclastic bolt"
-	result = /obj/item/ammo_casing/caseless/bolt/pyro
-	reqs = list(/obj/item/ammo_casing/caseless/bolt = 1,
-				/obj/item/reagent_containers/food/snacks/produce/fyritius = 1)
-	craftdiff = 1
-	skillcraft = /datum/skill/craft/engineering
-
 /datum/crafting_recipe/recurve
 	name = "recurve bow"
 	result = list(/obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve)
@@ -79,37 +28,6 @@
 			/obj/item/ingot/iron = 1)
 	skillcraft = /datum/skill/craft/engineering
 	craftdiff = 0 // Something to practice engineering with.
-
-/datum/crafting_recipe/readingscroll
-	name = "novice's guide to literature"
-	result = list(/obj/item/literary)
-	reqs = list(/obj/item/paper/scroll = 3)
-	tools = list(/obj/item/natural/feather)
-	req_table = TRUE
-	skillcraft = /datum/skill/misc/reading
-	craftdiff = 2
-	verbage = "write"
-	verbage_tp  = "writes"
-
-/datum/crafting_recipe/readingscroll/apprentice
-	name = "apprentice's guide to literature"
-	result = list(/obj/item/literary/apprentice)
-	craftdiff = 3
-
-/datum/crafting_recipe/readingscroll/journeyman
-	name = "journeyman's guide to literature"
-	result = list(/obj/item/literary/journeyman)
-	craftdiff = 4
-
-/datum/crafting_recipe/readingscroll/expert
-	name = "expert's guide to literature"
-	result = list(/obj/item/literary/expert)
-	craftdiff = 5
-
-/datum/crafting_recipe/readingscroll/master
-	name = "master's guide to literature"
-	result = list(/obj/item/literary/master)
-	craftdiff = 6
 
 /datum/crafting_recipe/quarterstaff
 	name = "wooden quarterstaff"
@@ -262,46 +180,3 @@
 	result = /obj/item/gear/wood/basic
 	reqs = list(/obj/item/natural/wood/plank = 2)
 	craftdiff = 3
-
-/datum/crafting_recipe/wood_hammer
-	name = "wooden mallet"
-	result = /obj/item/weapon/hammer/wood
-	reqs = list(/obj/item/grown/log/tree/small = 1)
-	craftdiff = 0
-
-/datum/crafting_recipe/confessional
-	name = "confession"
-	result = /obj/item/paper/confession
-	reqs = list(/obj/item/paper = 1)
-	tools = list(/obj/item/natural/feather)
-	skillcraft = /datum/skill/misc/reading
-	always_availible = FALSE
-	craftsound = null
-	craftdiff = 0
-
-/datum/crafting_recipe/wpsycross
-	name = "handheld psycross"
-	reqs = list(/obj/item/grown/log/tree/small = 1)
-	result = /obj/item/clothing/neck/psycross
-	craftdiff = 0
-
-/datum/crafting_recipe/impsaw
-	name = "improvised saw"
-	result = /obj/item/weapon/surgery/saw/improv
-	reqs = list(/obj/item/natural/fibers = 1, /obj/item/natural/stone = 1, /obj/item/grown/log/tree/stick = 1)
-	craftdiff = 1
-	skillcraft = /datum/skill/craft/crafting
-
-/datum/crafting_recipe/impretra
-	name = "improvised clamp"
-	result = /obj/item/weapon/surgery/hemostat/improv
-	reqs = list(/obj/item/natural/fibers = 1, /obj/item/grown/log/tree/stick = 2)
-	craftdiff = 1
-	skillcraft = /datum/skill/craft/crafting
-
-/datum/crafting_recipe/imphemo
-	name = "improvised retractor"
-	result = /obj/item/weapon/surgery/retractor/improv
-	reqs = list(/obj/item/natural/fibers = 1, /obj/item/grown/log/tree/stick = 2)
-	craftdiff = 1
-	skillcraft = /datum/skill/craft/crafting

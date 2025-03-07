@@ -6,7 +6,7 @@
 	var/output_amount = 1
 	var/list/requirements = list()
 	var/list/reagent_requirements = list()
-	///this is a list of tool usage in their order which executes after requirements and reagents are fufilled these are assoc lists going path = list(text, sound)
+	///this is a list of tool usage in their order which executes after requirements and reagents are fufilled these are assoc lists going path = list(text, self_text, sound)
 	var/list/tool_usage = list()
 
 	///do we need to be learned
@@ -16,7 +16,9 @@
 	var/sellprice = 0
 
 	///this is the things we check for in our offhand ie herb pouch or something to repeat the craft
-	var/list/offhand_repeat_check = list(/obj/item/storage/backpack)
+	var/list/offhand_repeat_check = list(
+		/obj/item/storage/backpack
+	)
 	///if this is set we also check the floor on the ground
 	var/check_around_owner = TRUE
 	///this is the atom we need to start the process

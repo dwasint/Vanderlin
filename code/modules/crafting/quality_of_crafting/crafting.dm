@@ -327,3 +327,149 @@
 	starting_atom  = /obj/item/natural/fibers
 	output = /obj/structure/closet/crate/chest/wicker
 	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/crafting/wood_hammer
+	name = "wooden hammer"
+	requirements = list(
+		/obj/item/grown/log/tree/small= 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("starts to whittle", "start whittle", 'sound/items/wood_sharpen.ogg'),
+	)
+	attacked_atom = /obj/item/grown/log/tree/small
+	starting_atom= /obj/item/weapon/knife
+	output = /obj/item/weapon/hammer/wood
+	craft_time = 5 SECONDS
+	uses_attacked_atom = FALSE
+
+/datum/repeatable_crafting_recipe/crafting/wpsycross
+	name = "wooden psycross"
+	requirements = list(
+		/obj/item/grown/log/tree/small= 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("starts to whittle", "start whittle", 'sound/items/wood_sharpen.ogg'),
+	)
+	attacked_atom = /obj/item/grown/log/tree/small
+	starting_atom= /obj/item/weapon/knife
+	output = /obj/item/clothing/neck/psycross
+	craft_time = 5 SECONDS
+	uses_attacked_atom = FALSE
+
+/datum/repeatable_crafting_recipe/crafting/poisonarrow_reagent
+	name = "poison arrow - Dipped"
+	requirements = list(
+		/obj/item/ammo_casing/caseless/arrow/stone= 1,
+	)
+	reagent_requirements = list(
+		/datum/reagent/berrypoison = 5,
+	)
+	starting_atom = /obj/item/ammo_casing/caseless/arrow/stone
+	attacked_atom = /obj/item/reagent_containers/glass
+	output = /obj/item/ammo_casing/caseless/arrow/poison
+	output_amount = 1
+	craft_time = 1 SECONDS
+	uses_attacked_atom = FALSE
+	subtypes_allowed = TRUE
+
+/datum/repeatable_crafting_recipe/crafting/potent_poisonarrow
+	name = "potent poison arrow"
+	requirements = list(
+		/obj/item/ammo_casing/caseless/arrow/stone= 1,
+	)
+	reagent_requirements = list(
+		/datum/reagent/strongpoison = 5,
+	)
+	starting_atom = /obj/item/ammo_casing/caseless/arrow/stone
+	attacked_atom = /obj/item/reagent_containers/glass
+	output = /obj/item/ammo_casing/caseless/arrow/poison/potent
+	output_amount = 1
+	craft_time = 1 SECONDS
+	uses_attacked_atom = FALSE
+	subtypes_allowed = TRUE
+
+/datum/repeatable_crafting_recipe/crafting/pyro_arrow
+	name = "pyroclastic arrow"
+	requirements = list(
+		/obj/item/ammo_casing/caseless/arrow/stone= 1,
+		/obj/item/reagent_containers/food/snacks/produce/fyritius = 1,
+	)
+	starting_atom = /obj/item/ammo_casing/caseless/arrow/stone
+	attacked_atom = /obj/item/reagent_containers/food/snacks/produce/fyritius
+	output = /obj/item/ammo_casing/caseless/arrow/pyro
+	craftdiff = 1
+	skillcraft = /datum/skill/craft/engineering
+	craft_time = 1 SECONDS
+	uses_attacked_atom = TRUE
+
+/datum/repeatable_crafting_recipe/crafting/poisonbolt
+	name = "poison bolt"
+	requirements = list(
+		/obj/item/ammo_casing/caseless/bolt= 1,
+		/obj/item/reagent_containers/food/snacks/produce/jacksberry/poison = 1,
+	)
+	starting_atom = /obj/item/ammo_casing/caseless/bolt
+	attacked_atom = /obj/item/reagent_containers/food/snacks/produce/jacksberry/poison
+	output = /obj/item/ammo_casing/caseless/bolt/poison
+	output_amount = 1
+	craft_time = 1 SECONDS
+	uses_attacked_atom = TRUE
+
+/datum/repeatable_crafting_recipe/crafting/poisonbolt_reagent
+	name = "poison bolt - Dipped"
+	requirements = list(
+		/obj/item/ammo_casing/caseless/bolt= 1,
+	)
+	reagent_requirements = list(
+		/datum/reagent/berrypoison = 5,
+	)
+	starting_atom = /obj/item/ammo_casing/caseless/bolt
+	attacked_atom = /obj/item/reagent_containers/glass
+	output = /obj/item/ammo_casing/caseless/bolt/poison
+	output_amount = 1
+	craft_time = 1 SECONDS
+	uses_attacked_atom = FALSE
+	subtypes_allowed = TRUE
+
+/datum/repeatable_crafting_recipe/crafting/potent_poisonbolt
+	name = "potent poison bolt"
+	requirements = list(
+		/obj/item/ammo_casing/caseless/bolt= 1,
+	)
+	reagent_requirements = list(
+		/datum/reagent/strongpoison = 5,
+	)
+	starting_atom = /obj/item/ammo_casing/caseless/bolt
+	attacked_atom = /obj/item/reagent_containers/glass
+	output = /obj/item/ammo_casing/caseless/bolt/poison/potent
+	output_amount = 1
+	craft_time = 1 SECONDS
+	uses_attacked_atom = FALSE
+	subtypes_allowed = TRUE
+
+/datum/repeatable_crafting_recipe/crafting/pyro_bolt
+	name = "pyroclastic bolt"
+	requirements = list(
+		/obj/item/ammo_casing/caseless/bolt= 1,
+		/obj/item/reagent_containers/food/snacks/produce/fyritius = 1,
+	)
+	starting_atom = /obj/item/ammo_casing/caseless/bolt
+	attacked_atom = /obj/item/reagent_containers/food/snacks/produce/fyritius
+	output = /obj/item/ammo_casing/caseless/bolt/pyro
+	craftdiff = 1
+	skillcraft = /datum/skill/craft/engineering
+	craft_time = 1 SECONDS
+	uses_attacked_atom = TRUE
+
+/datum/repeatable_crafting_recipe/crafting/poison_dart
+	name = "poison dart"
+	requirements = list(
+		/obj/item/ammo_casing/caseless/dart= 1,
+		/obj/item/reagent_containers/food/snacks/produce/jacksberry/poison = 1,
+	)
+	starting_atom = /obj/item/ammo_casing/caseless/dart
+	attacked_atom = /obj/item/reagent_containers/food/snacks/produce/jacksberry/poison
+	output = /obj/item/ammo_casing/caseless/dart/poison
+	output_amount = 1
+	craft_time = 1 SECONDS
+	uses_attacked_atom = TRUE

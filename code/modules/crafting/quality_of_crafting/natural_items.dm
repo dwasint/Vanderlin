@@ -224,3 +224,37 @@
 	starting_atom  = /obj/item/rope
 	output = /obj/item/restraints/legcuffs/beartrap
 	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/survival/imp_saw
+	name = "improvised saw"
+	requirements = list(
+		/obj/item/grown/log/tree/stick = 1,
+		/obj/item/natural/stone = 1,
+		/obj/item/natural/fibers = 1,
+	)
+	attacked_atom = /obj/item/grown/log/tree/stick
+	starting_atom  = /obj/item/natural/fibers
+	output = /obj/item/weapon/surgery/saw/improv
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/survival/imp_clamp
+	name = "improvised clamp"
+	requirements = list(
+		/obj/item/grown/log/tree/stick = 2,
+		/obj/item/natural/fibers = 1,
+	)
+	attacked_atom = /obj/item/grown/log/tree/stick
+	starting_atom  = /obj/item/natural/fibers
+	output = /obj/item/weapon/surgery/hemostat/improv
+	craftdiff = 1
+
+/datum/repeatable_crafting_recipe/survival/imp_retractor
+	name = "improvised retractor"
+	requirements = list(
+		/obj/item/grown/log/tree/stick = 2,
+		/obj/item/natural/fibers = 1,
+	)
+	attacked_atom = /obj/item/grown/log/tree/stick
+	starting_atom  = /obj/item/natural/fibers
+	output = /obj/item/weapon/surgery/retractor/improv
+	craftdiff = 1
