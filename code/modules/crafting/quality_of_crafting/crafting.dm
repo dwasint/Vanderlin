@@ -474,3 +474,91 @@
 	output_amount = 1
 	craft_time = 1 SECONDS
 	uses_attacked_atom = TRUE
+
+/datum/repeatable_crafting_recipe/crafting/bigflail
+	name = "great militia flail"
+	requirements = list(
+		/obj/item/weapon/thresher= 1,
+		/obj/item/rope/chain = 1,
+		/obj/item/ingot/iron = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/hammer = list("starts to hammer", "start hammering", 'sound/items/wood_sharpen.ogg'),
+	)
+	attacked_atom =/obj/item/weapon/thresher
+	starting_atom= /obj/item/weapon/hammer
+	output = /obj/item/weapon/thresher/military
+	craftdiff = 3
+	craft_time = 5 SECONDS
+	uses_attacked_atom = FALSE
+
+/datum/repeatable_crafting_recipe/crafting/militia_flail
+	name = "militia flail"
+	requirements = list(
+		/obj/item/weapon/flail/towner= 1,
+		/obj/item/ingot/iron = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/hammer = list("starts to hammer", "start hammering", 'sound/items/wood_sharpen.ogg'),
+	)
+	attacked_atom = /obj/item/weapon/flail/towner
+	starting_atom= /obj/item/weapon/hammer
+	output = /obj/item/weapon/flail/militia
+	craftdiff = 3
+	craft_time = 5 SECONDS
+	uses_attacked_atom = FALSE
+
+/datum/repeatable_crafting_recipe/crafting/ironcudgel
+	name = "peasant cudgel"
+	requirements = list(
+		/obj/item/grown/log/tree/small = 1,
+		/obj/item/ingot/iron = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/hammer = list("starts to hammer", "start hammering", 'sound/items/wood_sharpen.ogg'),
+	)
+	attacked_atom = /obj/item/grown/log/tree/small
+	starting_atom= /obj/item/weapon/hammer
+	output = /obj/item/weapon/mace/cudgel/carpenter
+	output_amount = 2
+	craftdiff = 3
+	craft_time = 5 SECONDS
+	uses_attacked_atom = FALSE
+
+/datum/repeatable_crafting_recipe/crafting/scroll
+	name = "parchment scroll"
+	requirements = list(
+		/obj/item/paper = 3,
+	)
+	starting_atom = /obj/item/paper
+	attacked_atom = /obj/item/paper
+	output = /obj/item/paper/scroll
+	uses_attacked_atom = TRUE
+	craftdiff = 0
+
+/datum/repeatable_crafting_recipe/crafting/cart_upgrade
+	name = "cart upgrade"
+	requirements = list(
+		/obj/item/natural/wood/plank= 2,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list("starts to whittle", "start whittle", 'sound/items/wood_sharpen.ogg'),
+	)
+	attacked_atom = /obj/item/natural/wood/plank
+	starting_atom  = /obj/item/weapon/knife
+	output = /obj/item/gear/wood/basic
+	craftdiff = 3
+	skillcraft = /datum/skill/labor/lumberjacking
+	uses_attacked_atom = FALSE
+
+/datum/repeatable_crafting_recipe/crafting/flint
+	name = "flint"
+	requirements = list(
+		/obj/item/natural/stone = 1,
+		/obj/item/ingot/iron = 1,
+	)
+	attacked_atom = /obj/item/natural/stone
+	starting_atom  = /obj/item/ingot/iron
+	output = /obj/item/flint
+	craftdiff = 0
+	skillcraft = /datum/skill/craft/engineering
