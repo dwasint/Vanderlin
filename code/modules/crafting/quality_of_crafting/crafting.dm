@@ -306,6 +306,7 @@
 	attacked_atom = /obj/item/grown/log/tree/stick
 	starting_atom  = /obj/item/weapon/knife
 	output = /obj/item/grown/log/tree/stake
+	craftdiff = 0
 	uses_attacked_atom = FALSE
 
 /datum/repeatable_crafting_recipe/crafting/broom
