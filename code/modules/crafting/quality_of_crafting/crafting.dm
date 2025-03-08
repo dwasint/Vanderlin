@@ -174,12 +174,12 @@
 /datum/repeatable_crafting_recipe/crafting/woodenbucket
 	name = "wooden bucket"
 	requirements = list(
-		/obj/item/grown/log/tree= 1,
+		/obj/item/grown/log/tree/small = 1,
 	)
 	tool_usage = list(
 		/obj/item/weapon/knife = list("starts to whittle", "start whittle", 'sound/items/wood_sharpen.ogg'),
 	)
-	attacked_atom = /obj/item/grown/log/tree
+	attacked_atom = /obj/item/grown/log/tree/small
 	starting_atom = /obj/item/weapon/knife
 	output = /obj/item/reagent_containers/glass/bucket/wooden
 	craft_time = 5 SECONDS
