@@ -68,7 +68,6 @@
 		if(user.try_recipes(src, I, user))
 			user.changeNext_move(CLICK_CD_FAST)
 			return TRUE
-		return FALSE
 
 	if(I.obj_flags_ignore)
 		return I.attack_obj(src, user)
