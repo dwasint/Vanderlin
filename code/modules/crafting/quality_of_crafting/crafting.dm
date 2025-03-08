@@ -183,6 +183,7 @@
 	starting_atom = /obj/item/weapon/knife
 	output = /obj/item/reagent_containers/glass/bucket/wooden
 	craft_time = 5 SECONDS
+	craftdiff = 0
 	uses_attacked_atom = FALSE
 
 /datum/repeatable_crafting_recipe/crafting/woodbowl
