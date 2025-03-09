@@ -48,9 +48,9 @@
 		/obj/item/natural/obsidian,
 		/obj/item/natural/obsidian,
 		/obj/item/natural/obsidian,
-		/obj/item/natural/manabloom,
-		/obj/item/natural/manabloom,
-		/obj/item/natural/manabloom,
+		/obj/item/reagent_containers/food/snacks/grown/rogue/manabloom,
+		/obj/item/reagent_containers/food/snacks/grown/rogue/manabloom,
+		/obj/item/reagent_containers/food/snacks/grown/rogue/manabloom,
 	)
 
 /obj/item/chalk
@@ -215,7 +215,7 @@
 
 /obj/item/mimictrinket
 	name = "mimic trinket"
-	desc = "A small mimic, imbued with the arcane to make it docile. It can transform into anything it touchs. "
+	desc = "A small mimic, imbued with the arcane to make it docile. It can transform into most things it touchs. "
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "mimic_trinket"
 	possible_item_intents = list(/datum/intent/use)
@@ -465,7 +465,7 @@
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
 
-/obj/item/natural/manabloom
+/obj/item/reagent_containers/food/snacks/grown/rogue/manabloom
 	name = "mana bloom"
 	icon_state = "manabloom"
 	desc = "Volcanic glass cooled from molten lava rapidly."

@@ -19,6 +19,7 @@
 	name = "infernal watcher"
 	icon_state = "watcher"
 	icon_living = "watcher"
+	summon_primer = "You are an infernal watcher, a creature of lava and rock. You have watched over the chaos of the infernal plane long enough that it was been pointless to keep count."
 	icon_dead = "vvd"
 	gender = MALE
 	emote_hear = null
@@ -63,7 +64,8 @@
 	projectiletype = /obj/projectile/magic/aoe/fireball/rogue
 	ranged_message = "stares"
 
-
+/mob/living/simple_animal/hostile/retaliate/infernal/watcher/simple_add_wound(datum/wound/wound, silent = FALSE, crit_message = FALSE)	//no wounding the watcher
+	return
 
 /mob/living/simple_animal/hostile/retaliate/infernal/watcher/MeleeAction(patience = TRUE)
 	for(var/t in RANGE_TURFS(1, src))
@@ -86,19 +88,25 @@
 	update_icon()
 	qdel(src)
 
+
+/mob/living/simple_animal/hostile/retaliate/infernal/fiend/simple_add_wound(datum/wound/wound, silent = FALSE, crit_message = FALSE)	//no wounding the fiend
+	return
+
 /mob/living/simple_animal/hostile/retaliate/infernal/fiend
 	icon = 'icons/mob/summonable/32x32.dmi'
 	name = "fiend"
 	icon_state = "fiend"
 	icon_living = "fiend"
 	icon_dead = "vvd"
+	summon_primer = "You are fiend, a large sized demon from the infernal plane. You have imps and hounds at your beck and call, able to do whatever you wished. Now you've been pulled from your home into a new world, that is decidedly lacking in fire. How you react to these events, only time can tell."
+	summon_primer = "You are an imp, a small creature spending it's time in the infernal plane amusing itself and eating meat. Now you've been pulled from your home into a new world, that is decidedly lacking in fire. How you react to these events, only time can tell."
 	gender = MALE
 	emote_hear = null
 	emote_see = null
 	speak_chance = 1
 	turns_per_move = 3
 	see_in_dark = 6
-	move_to_delay = 3
+	move_to_delay = 10
 	base_intents = list(/datum/intent/simple/bite)
 	butcher_results = list()
 	faction = list("infernal")
@@ -116,6 +124,7 @@
 	food_type = list()
 	footstep_type = FOOTSTEP_MOB_BAREFOOT
 	pooptype = null
+	STAEND = 15
 	STACON = 13
 	STASTR = 12
 	STASPD = 8
@@ -137,17 +146,24 @@
 	var/summon_cd = 0
 
 
+/mob/living/simple_animal/hostile/retaliate/infernal/fiend/death(gibbed)
+	..()
+	var/turf/deathspot = get_turf(src)
+	new /obj/item/natural/abyssalflame(deathspot)
+	update_icon()
+	qdel(src)
+
 /mob/living/simple_animal/hostile/retaliate/infernal/fiend/OpenFire(atom/A)
 	if(CheckFriendlyFire(A))
 		return
 	visible_message(span_danger("<b>[src]</b> [ranged_message] at [A]!"))
 
-	if(world.time >= src.flame_cd + 100)
+	if(world.time >= src.flame_cd + 250)
 		var/mob/living/targetted = target
 		create_meteors(targetted)
 		src.flame_cd = world.time
 
-	if(world.time >= src.summon_cd + 200)
+	if(world.time >= src.summon_cd + 250)
 		callforbackup()
 
 		src.summon_cd = world.time

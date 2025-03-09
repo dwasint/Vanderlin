@@ -2,8 +2,8 @@
 	title = "Magician's Apprentice"
 	department_flag = APPRENTICES
 	faction = "Station"
-	total_positions = 0
-	spawn_positions = 0
+	total_positions = 2
+	spawn_positions = 2
 
 	allowed_races = list(
 		"Humen",
@@ -35,17 +35,17 @@
 	if(H.gender == MALE)
 		pants = /obj/item/clothing/pants/tights/random
 		shoes = /obj/item/clothing/shoes/simpleshoes
-		shirt = /obj/item/clothing/shirt/undershirt
+		shirt = /obj/item/clothing/shirt/shortshirt
 		belt = /obj/item/storage/belt/leather/rope
-		beltr = /obj/item/key/tower
-		armor = /obj/item/clothing/armor/gambeson/light/striped
+		beltl = /obj/item/storage/keyring/mageapprentice
+		armor = /obj/item/clothing/shirt/robe/newmage/adept
 		backr = /obj/item/storage/backpack/satchel
 	else
 		shoes = /obj/item/clothing/shoes/sandals
 		shirt = /obj/item/clothing/shirt/undershirt
 		belt = /obj/item/storage/belt/leather/rope
-		beltr = /obj/item/key/tower
-		armor = /obj/item/clothing/armor/gambeson/light/striped
+		beltl = /obj/item/storage/keyring/mageapprentice
+		armor = /obj/item/clothing/shirt/robe/newmage/adept
 		backr = /obj/item/storage/backpack/satchel
 
 	H.change_stat(STATKEY_INT, 1)

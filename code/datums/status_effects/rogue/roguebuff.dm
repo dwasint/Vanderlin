@@ -716,3 +716,65 @@
 				continue
 		H.adjust_energy(1)
 		H.adjust_stamina(-0.5, internal_regen = FALSE)
+
+/datum/status_effect/debuff/cold
+	id = "Frostveiled"
+	alert_type =  /atom/movable/screen/alert/status_effect/debuff/cold
+	effectedstats = list("speed" = -2)
+	duration = 12 SECONDS
+
+/datum/status_effect/debuff/cold/on_apply()
+	. = ..()
+	var/mob/living/target = owner
+	var/newcolor = rgb(136, 191, 255)
+	target.add_atom_colour(newcolor, TEMPORARY_COLOUR_PRIORITY)
+	addtimer(CALLBACK(target, TYPE_PROC_REF(/atom, remove_atom_colour), TEMPORARY_COLOUR_PRIORITY, newcolor), 12 SECONDS)
+
+/atom/movable/screen/alert/status_effect/debuff/cold
+	name = "Cold"
+	desc = "Something has chilled me to the bone! It's hard to move."
+	icon_state = "muscles"
+
+/datum/status_effect/buff/frostbite
+	id = "frostbite"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/frostbite
+	duration = 20 SECONDS
+	effectedstats = list("speed" = -2)
+
+/atom/movable/screen/alert/status_effect/buff/frostbite
+	name = "Frostbite"
+	desc = "I can feel myself slowing down."
+	icon_state = "debuff"
+	color = "#00fffb"
+
+/datum/status_effect/buff/frostbite/on_apply()
+	. = ..()
+	var/mob/living/target = owner
+	target.update_vision_cone()
+	var/newcolor = rgb(136, 191, 255)
+	target.add_atom_colour(newcolor, TEMPORARY_COLOUR_PRIORITY)
+	addtimer(CALLBACK(target, TYPE_PROC_REF(/atom, remove_atom_colour), TEMPORARY_COLOUR_PRIORITY, newcolor), 20 SECONDS)
+	target.add_movespeed_modifier(MOVESPEED_ID_ADMIN_VAREDIT, update=TRUE, priority=100, multiplicative_slowdown=4, movetypes=GROUND)
+
+/datum/status_effect/buff/frostbite/on_remove()
+	var/mob/living/target = owner
+	target.update_vision_cone()
+	target.remove_movespeed_modifier(MOVESPEED_ID_ADMIN_VAREDIT, TRUE)
+	. = ..()
+
+/datum/status_effect/buff/nocblessing
+	id = "nocblessing"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/nocblessing
+	effectedstats = list("intelligence" = 1)
+	duration = 30 MINUTES
+
+/atom/movable/screen/alert/status_effect/buff/nocblessing
+	name = "Noc's blessing"
+	desc = "Gazing Noc helps me think."
+	icon_state = "buff"
+
+/datum/status_effect/buff/seelie_drugs
+	id = "seelie drugs"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/druqks
+	effectedstats = list("intelligence" = 2, "endurance" = 4, "speed" = -3)
+	duration = 20 SECONDS

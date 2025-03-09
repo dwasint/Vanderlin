@@ -300,7 +300,7 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 	blacklisted = FALSE
 	tier = 1
 	required_atoms = list(/obj/item/ash = 2, /obj/item/natural/obsidian = 1)
-	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/bigrat//temporary rat 4 testing
+	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/infernal/imp//temporary rat 4 testing
 
 /datum/runerituals/summoning/hellhound
 	name = "summoning hellhound"
@@ -308,7 +308,7 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 	blacklisted = FALSE
 	tier = 2
 	required_atoms = list(/obj/item/natural/infernalash = 3, /obj/item/natural/obsidian = 1, /obj/item/natural/melded/t1 = 1)
-	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/bigrat//temporary rat 4 testing
+	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/infernal/hellhound//temporary rat 4 testing
 
 /datum/runerituals/summoning/watcher
 	name = "summoning infernal watcher"
@@ -316,7 +316,7 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 	blacklisted = FALSE
 	tier = 3
 	required_atoms = list(/obj/item/natural/hellhoundfang = 2, /obj/item/natural/obsidian = 1, /obj/item/natural/melded/t2 =1)
-	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/bigrat//temporary rat 4 testing
+	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/infernal/watcher//temporary rat 4 testing
 
 /datum/runerituals/summoning/archfiend
 	name = "summoning archfiend"
@@ -331,7 +331,7 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 	desc = "summons an fae sprite"
 	blacklisted = FALSE
 	tier = 1
-	required_atoms = list(/obj/item/natural/manabloom = 1, /obj/item/reagent_containers/food/snacks/produce/jacksberry = 2)
+	required_atoms = list(/obj/item/reagent_containers/food/snacks/grown/rogue/manabloom = 1, /obj/item/reagent_containers/food/snacks/produce/jacksberry = 2)
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/bigrat//temporary rat 4 testing
 
 /datum/runerituals/summoning/glimmer
@@ -339,7 +339,7 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 	desc = "summons an fae spirit"
 	blacklisted = FALSE
 	tier = 2
-	required_atoms = list(/obj/item/natural/manabloom = 1, /obj/item/natural/fairydust = 3, /obj/item/natural/melded/t1 = 1)
+	required_atoms = list(/obj/item/reagent_containers/food/snacks/grown/rogue/manabloom = 1, /obj/item/natural/fairydust = 3, /obj/item/natural/melded/t1 = 1)
 
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/bigrat//temporary rat 4 testing
 /datum/runerituals/summoning/dryad
@@ -347,7 +347,7 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 	desc = "summons an drayd"
 	blacklisted = FALSE
 	tier = 3
-	required_atoms = list(/obj/item/natural/manabloom = 1, /obj/item/natural/iridescentscale = 2, /obj/item/natural/melded/t2 = 1)
+	required_atoms = list(/obj/item/reagent_containers/food/snacks/grown/rogue/manabloom = 1, /obj/item/natural/iridescentscale = 2, /obj/item/natural/melded/t2 = 1)
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/bigrat//temporary rat 4 testing
 
 /datum/runerituals/summoning/sylph
@@ -355,7 +355,7 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 	desc = "summons an archfae"
 	blacklisted = FALSE
 	tier = 4
-	required_atoms = list(/obj/item/natural/manabloom = 1, /obj/item/natural/heartwoodcore = 1, /obj/item/natural/melded/t3 = 1)
+	required_atoms = list(/obj/item/reagent_containers/food/snacks/grown/rogue/manabloom = 1, /obj/item/natural/heartwoodcore = 1, /obj/item/natural/melded/t3 = 1)
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/bigrat//temporary rat 4 testing
 
 /datum/runerituals/summoning/crawler

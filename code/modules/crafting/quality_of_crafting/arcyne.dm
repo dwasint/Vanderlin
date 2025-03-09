@@ -66,7 +66,7 @@
 	reagent_requirements = list()
 	tool_usage = list()
 	requirements = list(
-		/obj/item/natural/melded/t2  = 1,
+		/obj/item/natural/melded/t3  = 1,
 		/obj/item/clothing/gloves/roguetown/leather = 1,
 		/obj/item/gem = 1,
 	)
@@ -133,3 +133,18 @@
 	attacking_atom = /obj/item/natural/melded/t2
 	uses_attacking_atom = TRUE
 	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/arcyne/mana_chalk
+	name = "Mana Infused Chalk"
+	requirements = list(
+		/obj/item/rogueore/cinnabar = 1,
+	)
+	reagent_requirements = list(
+		/datum/reagent/medicine/manapot = 15,
+	)
+	starting_atom = /obj/item/rogueore/cinnabar
+	attacked_atom = /obj/item/reagent_containers/glass
+	output = /obj/item/chalk
+	output_amount = 1
+	craft_time = 1 SECONDS
+	subtypes_allowed = TRUE

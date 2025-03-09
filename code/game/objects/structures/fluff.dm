@@ -760,6 +760,11 @@
 			if(affecting && affecting.receive_damage(0, 5))
 				H.update_damage_overlays()
 
+	if(message2send == "You can see noc rotating!")
+		if(do_after(H, 25, target = src))
+			to_chat(H, span_warning("Noc's glow seems to help clear your thoughts."))
+			H.apply_status_effect(/datum/status_effect/buff/nocblessing)
+
 /obj/structure/fluff/globe
 	name = "globe"
 	desc = "A model representing the known world of Psydonia."

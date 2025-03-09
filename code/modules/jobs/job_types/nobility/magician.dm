@@ -74,7 +74,7 @@
 		H.change_stat(STATKEY_INT, 5)
 		H.change_stat(STATKEY_CON, -2)
 		H.change_stat(STATKEY_SPD, -2)
-		H.mind.adjust_spellpoints(8)
+		H.mind.adjust_spellpoints(17)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/aoe_turf/knock)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/ethereal_jaunt)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/learnspell)

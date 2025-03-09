@@ -143,7 +143,7 @@
 		/obj/item/natural/elementalrelic,
 		/obj/item/natural/obsidian,
 		/obj/item/natural/leyline,
-		/obj/item/natural/manabloom,
+		/obj/item/reagent_containers/food/snacks/grown/rogue/manabloom,
 		/obj/item/natural/manacrystal
 		))
 /datum/component/storage/concrete/grid/crucible

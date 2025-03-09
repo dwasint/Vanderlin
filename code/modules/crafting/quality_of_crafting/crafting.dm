@@ -130,12 +130,12 @@
 /datum/repeatable_crafting_recipe/crafting/woodstaff
 	name = "wood staff"
 	requirements = list(
-		/obj/item/grown/log/tree= 1,
+		/obj/item/grown/log/tree/small= 1,
 	)
 	tool_usage = list(
 		/obj/item/weapon/knife = list("starts to whittle", "start whittle", 'sound/items/wood_sharpen.ogg'),
 	)
-	attacked_atom = /obj/item/grown/log/tree
+	attacked_atom = /obj/item/grown/log/tree/small
 	starting_atom = /obj/item/weapon/knife
 	output = /obj/item/weapon/polearm/woodstaff
 	output_amount = 2
@@ -145,12 +145,12 @@
 /datum/repeatable_crafting_recipe/crafting/spoon
 	name = "wooden spoon"
 	requirements = list(
-		/obj/item/grown/log/tree= 1,
+		/obj/item/grown/log/tree/small = 1,
 	)
 	tool_usage = list(
 		/obj/item/weapon/knife = list("starts to whittle", "start whittle", 'sound/items/wood_sharpen.ogg'),
 	)
-	attacked_atom = /obj/item/grown/log/tree
+	attacked_atom = /obj/item/grown/log/tree/small
 	starting_atom = /obj/item/weapon/knife
 	output = /obj/item/kitchen/spoon
 	output_amount = 2
@@ -160,12 +160,12 @@
 /datum/repeatable_crafting_recipe/crafting/rollingpin
 	name = "wooden rollingpin"
 	requirements = list(
-		/obj/item/grown/log/tree= 1,
+		/obj/item/grown/log/tree/small= 1,
 	)
 	tool_usage = list(
 		/obj/item/weapon/knife = list("starts to whittle", "start whittle", 'sound/items/wood_sharpen.ogg'),
 	)
-	attacked_atom = /obj/item/grown/log/tree
+	attacked_atom = /obj/item/grown/log/tree/small
 	starting_atom = /obj/item/weapon/knife
 	output = /obj/item/kitchen/rollingpin
 	craft_time = 5 SECONDS
