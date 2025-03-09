@@ -47,6 +47,7 @@
 #define TRAIT_SEEPRICES				    "Golden Blood" //See prices
 #define TRAIT_SEE_LEYLINES				"Magical Visions"
 #define TRAIT_POISONBITE				"Poison Bite"
+#define TRAIT_FORAGER					"Foraging Knowledge" //Can tell which berries are good to eat when examining
 
 // Divine patron trait bonuses:
 #define TRAIT_SOUL_EXAMINE				"Blessing of Necra"  //can check bodies to see if they have departed
