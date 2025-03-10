@@ -121,6 +121,9 @@
 		else if(ispath(path, /datum/brewing_recipe))
 			var/datum/brewing_recipe/real_path = new path
 			real_path.show_menu(current_reader)
+		else if(ispath(path, /datum/runerituals))
+			var/datum/runerituals/real_path = new path
+			real_path.show_menu(current_reader)
 
 /obj/item/recipe_book/getonmobprop(tag)
 	. = ..()
@@ -312,4 +315,5 @@
 
 	types = list(
 		/datum/repeatable_crafting_recipe/arcyne,
+		/datum/runerituals,
 	)

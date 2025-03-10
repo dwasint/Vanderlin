@@ -106,6 +106,7 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 	return runerituals
 
 /datum/runerituals
+	abstract_type = /datum/runerituals
 	var/name
 	var/desc
 	var/list/required_atoms = list()
@@ -115,6 +116,78 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 	var/blacklisted = FALSE
 	var/tier = 0				/// Tier var is used for 'tier' of ritual, if the ritual has tiers. EX: Summoning rituals. If it doesn't have tiers, set tier to 0.
 
+/datum/runerituals/proc/show_menu(mob/user)
+	user << browse(generate_html(user),"window=recipe;size=500x810")
+
+/datum/runerituals/proc/generate_html(mob/user)
+	var/client/client = user
+	if(!istype(client))
+		client = user.client
+	SSassets.transport.send_assets(client, list("try4_border.png", "try4.png", "slop_menustyle2.css"))
+	user << browse_rsc('html/book.png')
+	var/html = {"
+		<!DOCTYPE html>
+		<html lang="en">
+		<meta charset='UTF-8'>
+		<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'/>
+		<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Charm:wght@700&display=swap');
+			body {
+				font-family: "Charm", cursive;
+				font-size: 1.2em;
+				text-align: center;
+				margin: 20px;
+				background-color: #f4efe6;
+				color: #3e2723;
+				background-color: rgb(31, 20, 24);
+				background:
+					url('[SSassets.transport.get_asset_url("try4_border.png")]'),
+					url('book.png');
+				background-repeat: no-repeat;
+				background-attachment: fixed;
+				background-size: 100% 100%;
+
+			}
+			h1 {
+				text-align: center;
+				font-size: 2.5em;
+				border-bottom: 2px solid #3e2723;
+				padding-bottom: 10px;
+				margin-bottom: 20px;
+			}
+			.icon {
+				width: 96px;
+				height: 96px;
+				vertical-align: middle;
+				margin-right: 10px;
+			}
+		</style>
+		<body>
+		  <div>
+		    <h1>[name]</h1>
+		    <div>
+			  <strong>Complexity Tier: [tier] </strong>
+			  <br>
+			  <strong>Requirements</strong>
+			  <br>
+		"}
+
+	if(length(required_atoms))
+		html += "<strong>Items Required</strong><br>"
+		for(var/atom/path as anything in required_atoms)
+			var/count = required_atoms[path]
+			html += "[icon2html(new path, user)] [count] counts of [initial(path.name)]<br>"
+
+	html += "To start any ritual draw the required rune with Arcyne Chalk, then supply with the above items."
+	html += {"
+		</div>
+		</div>
+	</body>
+	</html>
+	"}
+	return html
 
 /datum/runerituals/proc/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
 	if(!length(result_atoms))
@@ -277,6 +350,7 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 
 ////////////////SUMMONING RITUALS///////////////////
 /datum/runerituals/summoning
+	abstract_type = /datum/runerituals/summoning
 	name = "summoning ritual parent"
 	desc = "summoning parent rituals."
 	blacklisted = TRUE

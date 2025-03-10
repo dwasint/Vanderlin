@@ -66,6 +66,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	var/rune_to_scribe = null
 	var/amount = 8
+
 /obj/item/chalk/examine(mob/user)
 	. = ..()
 	desc += "It has [amount] uses left."
@@ -575,6 +576,7 @@
 /obj/item/reagent_containers/food/snacks/grown/manabloom
 	name = "mana bloom"
 	icon_state = "manabloom"
+	icon = 'icons/roguetown/items/natural.dmi'
 	desc = "Volcanic glass cooled from molten lava rapidly."
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
