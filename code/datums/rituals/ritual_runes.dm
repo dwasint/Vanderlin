@@ -137,46 +137,6 @@ GLOBAL_LIST(teleport_runes)
 	. = ..()
 	if(set_keyword)
 		keyword = set_keyword
-/*	if(!LAZYLEN(GLOB.runeritualslist))
-		testing("initializing ritualslist")
-		GLOB.runeritualslist = list()
-		var/static/list/rituals = subtypesof(/datum/runerituals)
-		for(var/path in rituals)
-			var/datum/ritual/G = path
-			testing("now initializing: [path]")
-			testing("[G.name]")
-			GLOB.runeritualslist[G.name] = G*/
-
-/obj/effect/decal/cleanable/roguerune/examine(mob/user)
-	. = ..()
-	if(magictype == "arcane")
-		if(isarcyne(user))
-			src.desc += "<b>Name:</b> [invoker_name]\n"+\
-			"<b>Effects:</b> [capitalize(invoker_desc)]\n"+\
-			"<b>Required Invokers:</b> [req_invokers_text ? "[req_invokers_text]":"[req_invokers]"]"
-		if(req_keyword && keyword)
-			. += "<b>Keyword:</b> [keyword]"
-	if(magictype == "divine")
-		if(isdivine(user))
-			. += "<b>Name:</b> [invoker_name]\n"+\
-			"<b>Effects:</b> [capitalize(invoker_desc)]\n"+\
-			"<b>Required Invokers:</b> [req_invokers_text ? "[req_invokers_text]":"[req_invokers]"]"
-		if(req_keyword && keyword)
-			. += "<b>Keyword:</b> [keyword]"
-	if(magictype == "druid")
-		if(isdruid(user))
-			. += "<b>Name:</b> [invoker_name]\n"+\
-			"<b>Effects:</b> [capitalize(invoker_desc)]\n"+\
-			"<b>Required Invokers:</b> [req_invokers_text ? "[req_invokers_text]":"[req_invokers]"]"
-		if(req_keyword && keyword)
-			. += "<b>Keyword:</b> [keyword]"
-	if(magictype == "blood")
-		if(isblood(user))
-			. += "<b>Name:</b> [invoker_name]\n"+\
-			"<b>Effects:</b> [capitalize(invoker_desc)]\n"+\
-			"<b>Required Invokers:</b> [req_invokers_text ? "[req_invokers_text]":"[req_invokers]"]"
-		if(req_keyword && keyword)
-			. += "<b>Keyword:</b> [keyword]"
 
 /obj/effect/decal/cleanable/roguerune/proc/do_invoke_glow()
 	set waitfor = FALSE
@@ -193,6 +153,9 @@ GLOBAL_LIST(teleport_runes)
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, update_atom_colour)), 0.5 SECONDS)
 
 /obj/effect/decal/cleanable/roguerune/attack_hand(mob/living/user)
+	if(rune_in_use)
+		to_chat(user, span_notice("Someone is already using this rune."))
+		return
 	if(.)
 		return
 	if(!ritual_number )					//Only one option of ritual for this rune
@@ -235,6 +198,7 @@ GLOBAL_LIST(teleport_runes)
 			var/datum/runerituals/pickritual1
 			pickritual1 = rituals[ritualnameinput]
 			if(!pickritual1 || pickritual1 == null)
+				rune_in_use = FALSE
 				return
 			if(pickritual1.tier > src.tier)
 				to_chat(user, span_hierophant_warning("Your ritual rune is not strong enough to perform this ritual."))
@@ -247,6 +211,7 @@ GLOBAL_LIST(teleport_runes)
 
 
 /obj/effect/decal/cleanable/roguerune/proc/can_invoke(mob/living/user=null)
+	rune_in_use = TRUE
 	//This proc determines if the rune can be invoked at the time. If there are multiple required invokers, it will find all nearby invokers.
 	var/list/invokers = list() //people eligible to invoke the rune
 	if(user)
@@ -257,7 +222,7 @@ GLOBAL_LIST(teleport_runes)
 				continue
 			if(invoker.stat != CONSCIOUS)
 				continue
-			if(magictype == "arcane")
+			if(magictype == "arcyne")
 				if(isarcyne(invoker))
 					invokers += invoker
 			if(magictype == "divine")
@@ -275,6 +240,7 @@ GLOBAL_LIST(teleport_runes)
 	return invokers
 
 /obj/effect/decal/cleanable/roguerune/proc/invoke(list/invokers, datum/runerituals/runeritual)		//Generic invoke proc. This will be defined on every rune, along with effects.If you want to make an object, or provide a buff, do so through this proc., have both here.
+	rune_in_use = TRUE
 	atoms_in_range = list()
 	for(var/atom/close_atom as anything in range(runesize, src))
 		if(!ismovable(close_atom))
@@ -291,7 +257,6 @@ GLOBAL_LIST(teleport_runes)
 			continue
 		atoms_in_range += close_atom
 	pickritual = new runeritual
-	to_chat(invokers, json_encode(pickritual.required_atoms, JSON_PRETTY_PRINT))
 	if(!islist(pickritual.required_atoms))
 		to_chat(invokers, span_notice("required atoms is NOT a list"))	//debug message. Remove later.
 
@@ -553,7 +518,7 @@ GLOBAL_LIST(teleport_runes)
 	name = "fortress accession matrix"
 	desc = "A massive sigil- is that a wall in the center?"
 	icon = 'icons/effects/160x160.dmi'
-	icon_state = "walltest"
+	icon_state = "wall"
 	tier = 3
 	invocation = "Thar’morak dul’vorr keth’alor!"
 	ritual_number = FALSE
@@ -727,6 +692,18 @@ GLOBAL_LIST(teleport_runes)
 	var/summoning = FALSE
 	var/mob/living/simple_animal/summoned_mob
 
+/obj/effect/decal/cleanable/roguerune/arcyne/summoning/Destroy()
+	if(summoning)
+		REMOVE_TRAIT(summoned_mob, TRAIT_PACIFISM, TRAIT_GENERIC)	//can't kill while planar bound.
+		summoned_mob.status_flags -= GODMODE//remove godmode
+		summoned_mob.candodge = TRUE
+		summoned_mob.binded = FALSE
+		summoned_mob.move_resist = MOVE_RESIST_DEFAULT
+		summoned_mob.SetParalyzed(0)
+		summoned_mob = null
+		summoning = FALSE
+	.=..()
+
 /obj/effect/decal/cleanable/roguerune/arcyne/summoning/attack_hand(mob/living/user)
 	if(summoning && isarcyne(user))
 		to_chat(user, span_warning("You release the summon from it's containment!"))
@@ -736,8 +713,10 @@ GLOBAL_LIST(teleport_runes)
 		animate(summoned_mob, color = null,time = 5)
 		REMOVE_TRAIT(summoned_mob, TRAIT_PACIFISM, TRAIT_GENERIC)	//can't kill while planar bound.
 		summoned_mob.status_flags -= GODMODE//remove godmode
-		summoned_mob.binded = FALSE	//BE FREE!!
 		summoned_mob.candodge = TRUE
+		summoned_mob.binded = FALSE
+		summoned_mob.move_resist = MOVE_RESIST_DEFAULT
+		summoned_mob.SetParalyzed(0)
 		summoned_mob = null
 		summoning = FALSE
 		return

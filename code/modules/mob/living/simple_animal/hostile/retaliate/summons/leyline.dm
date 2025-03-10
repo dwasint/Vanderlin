@@ -98,7 +98,9 @@
 	source.guardian = null
 	var/turf/deathspot = get_turf(src)
 	new /obj/item/natural/leyline(deathspot)
+	spill_embedded_objects()
 	update_icon()
+	qdel(src)
 
 /obj/effect/temp_visual/lycan
 	icon = 'icons/effects/effects.dmi'
@@ -108,6 +110,8 @@
 /mob/living/simple_animal/hostile/retaliate/leylinelycan/proc/leyline_teleport(target)
 	var/turf/turf_target = get_step(get_step(get_turf(target), src.dir), src.dir)
 	if(!(turf_target in view(12, src)))
+		return
+	if(!isopenturf(turf_target))
 		return
 	teleport_cooldown = world.time + 70
 	var/turf/source = get_turf(src)

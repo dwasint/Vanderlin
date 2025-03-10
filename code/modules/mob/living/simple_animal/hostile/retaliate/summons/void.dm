@@ -24,6 +24,7 @@
 	icon_living = "obelisk-combined"
 	icon_dead = "obelisk-combined"
 	summon_primer = "You are ancient. A construct built in an age before men, a time of dragons. Your builders don't seem to be around anymore, and time has past with you in standby. How you respond, is up to you."
+	tier = 3
 
 	faction = list("abberant")
 	emote_hear = null
@@ -275,7 +276,6 @@ It will also call down lightning strikes from the sky, and fling people with it'
 	var/obj/effect/proc_holder/spell/aoe_turf/repulse/voiddragon/repulse_action = new /obj/effect/proc_holder/spell/aoe_turf/repulse/voiddragon(src)
 	repulse_action.action.Grant(src)
 	mob_spell_list += repulse_action
-	mob_spell_list += lightning_action
 
 /mob/living/simple_animal/hostile/retaliate/voiddragon/simple_add_wound(datum/wound/wound, silent = FALSE, crit_message = FALSE)	//no wounding the void dragon
 	return
@@ -285,6 +285,14 @@ It will also call down lightning strikes from the sky, and fling people with it'
 	if(pulledby)
 		Retaliate()
 		GiveTarget(pulledby)
+		TailSwipe(pulledby)
+
+/mob/living/simple_animal/hostile/retaliate/voiddragon/proc/TailSwipe(mob/victim)
+	var/mob/living/target = victim
+	src.visible_message(span_notice("[src] slams [target] with it's tail, knocking them to the floor!"))
+	target.Paralyze(5)
+	target.apply_damage(20, BRUTE)
+	shake_camera(target, 2, 1)
 
 
 
@@ -318,6 +326,7 @@ It will also call down lightning strikes from the sky, and fling people with it'
 	attack_sound = 'sound/misc/demon_attack1.ogg'
 	icon = 'icons/mob/96x96/ratwood_dragon.dmi'
 	summon_primer = "You are ancient. A creature long since banished to the void ages past, you were trapped in a seemingly timeless abyss. Now you've been freed, returned to the world- and everything has changed. It seems some of your constructs remain buried beneath the ground. How you react to these events, only time can tell."
+	tier = 5
 	icon_state = "dragon"
 	icon_living = "dragon"
 	icon_dead = "dragon_dead"
@@ -608,7 +617,7 @@ It will also call down lightning strikes from the sky, and fling people with it'
 	SLEEP_CHECK_DEATH(descentTime)
 	swooping &= ~SWOOP_INVULNERABLE
 	mouse_opacity = initial(mouse_opacity)
-	icon_state = "dragon"
+	icon_state = "[initial(icon_state)]"
 	playsound(loc, 'sound/misc/meteorimpact.ogg', 200, TRUE)
 	for(var/mob/living/L in orange(1, src))
 		if(L.stat)
@@ -781,7 +790,7 @@ It will also call down lightning strikes from the sky, and fling people with it'
 	src.move_resist = MOVE_FORCE_VERY_STRONG
 	var/mob/living/carbon/target = targets[1]
 	var/distance = get_dist(user.loc,target.loc)
-	if(distance>7)
+	if(distance>3)
 		to_chat(user, span_colossus("[target.p_theyre(TRUE)] too far away!"))
 
 		return

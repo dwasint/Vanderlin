@@ -58,7 +58,8 @@
 	icon_state = "sprite"
 	icon_living = "sprite"
 	icon_dead = "vvd"
-	summon_primer = "You are an sprite, a small fae. You spend time wandering the wilds. Now you've been pulled from your home into a new world, that is decidedly less wild and natural. How you react to these events, only time can tell."
+	summon_primer = "You are a sprite, a small fae. You spend time wandering the wilds. Now you've been pulled from your home into a new world, that is decidedly less wild and natural. How you react to these events, only time can tell."
+	tier = 1
 	gender = FEMALE
 	emote_hear = null
 	emote_see = null
@@ -79,7 +80,7 @@
 	aggro_vision_range = 11
 	environment_smash = ENVIRONMENT_SMASH_NONE
 	simple_detect_bonus = 20
-	retreat_distance = 6
+	retreat_distance = 3
 	minimum_distance = 0
 	food_type = list()
 	footstep_type = FOOTSTEP_MOB_BAREFOOT
@@ -111,6 +112,7 @@
 	var/turf/deathspot = get_turf(src)
 	new /obj/item/natural/fairydust(deathspot)
 	new /obj/item/natural/fairydust(deathspot)
+	new /obj/item/natural/fairydust(deathspot)
 	update_icon()
 	sleep(1)
 	qdel(src)
@@ -130,6 +132,7 @@
 	icon_living = "glimmerwing"
 	icon_dead = "vvd"
 	summon_primer = "You are a glimmerwing, a moderate sized fae. You spend time wandering forests, cursing unweary travellers. Now you've been pulled from your home into a new world, that is decidedly less wild and natural. How you react to these events, only time can tell."
+	tier = 2
 	gender = MALE
 	emote_hear = null
 	emote_see = null
@@ -178,7 +181,14 @@
 	var/turf/deathspot = get_turf(src)
 	new /obj/item/natural/iridescentscale(deathspot)
 	new /obj/item/natural/iridescentscale(deathspot)
+	new /obj/item/natural/iridescentscale(deathspot)
+	new /obj/item/natural/iridescentscale(deathspot)
+	new /obj/item/natural/fairydust(deathspot)
+	new /obj/item/natural/fairydust(deathspot)
+	new /obj/item/natural/fairydust(deathspot)
+	new /obj/item/natural/fairydust(deathspot)
 	update_icon()
+	spill_embedded_objects()
 	qdel(src)
 
 /mob/living/simple_animal/hostile/retaliate/fae/glimmerwing/AttackingTarget()
@@ -188,10 +198,11 @@
 	in_melee = TRUE
 	if(!target)
 		return
-	if(world.time >= src.drug_cd + 100)
+	if(world.time >= src.drug_cd + 25 SECONDS)
 		var/mob/living/targetted = target
 		targetted.apply_status_effect(/datum/status_effect/buff/seelie_drugs)
 		targetted.visible_message(span_danger("[src] dusts [target] with some kind of powder!"))
+		targetted.adjustToxLoss(15)
 		src.drug_cd = world.time
 	return target.attack_animal(src)
 
@@ -202,13 +213,14 @@
 	icon_living = "dryad"
 	icon_dead = "vvd"
 	summon_primer = "You are a dryad, a large sized fae. You spend time tending to forests, guarding sacred ground from tresspassers. Now you've been pulled from your home into a new world, that is decidedly less wild and natural. How you react to these events, only time can tell."
+	tier = 3
 	gender = MALE
 	emote_hear = null
 	emote_see = null
 	speak_chance = 1
 	turns_per_move = 6
 	see_in_dark = 6
-	move_to_delay = 15
+	move_to_delay = 12
 	base_intents = list(/datum/intent/simple/elementalt2_unarmed)
 	butcher_results = list()
 	faction = list("fae")
@@ -296,8 +308,15 @@
 /mob/living/simple_animal/hostile/retaliate/fae/dryad/death(gibbed)
 	..()
 	var/turf/deathspot = get_turf(src)
+	new /obj/item/natural/melded/t1(deathspot)
+	new /obj/item/natural/iridescentscale(deathspot)
+	new /obj/item/natural/iridescentscale(deathspot)
 	new /obj/item/natural/heartwoodcore(deathspot)
+	new /obj/item/natural/heartwoodcore(deathspot)
+	new /obj/item/natural/fairydust(deathspot)
+	new /obj/item/natural/fairydust(deathspot)
 	update_icon()
+	spill_embedded_objects()
 	qdel(src)
 
 
@@ -310,6 +329,7 @@
 	icon_state = "sylph"
 	icon_living = "sylph"
 	icon_dead = "vvd"
+	tier = 4
 	gender = MALE
 	emote_hear = null
 	emote_see = null
@@ -321,8 +341,8 @@
 	butcher_results = list()
 	faction = list("fae")
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
-	health = 500
-	maxHealth = 500
+	health = 700
+	maxHealth = 700
 	melee_damage_lower = 20
 	melee_damage_upper = 30
 	vision_range = 7
@@ -365,7 +385,7 @@
 		return
 	visible_message(span_danger("<b>[src]</b> [ranged_message] at [A]!"))
 
-	if(world.time >= shroom_cd + 100)
+	if(world.time >= shroom_cd + 25 SECONDS)
 		var/mob/living/targetted = target
 		create_shroom(targetted)
 		src.shroom_cd = world.time
@@ -379,6 +399,7 @@
 
 
 /mob/living/simple_animal/hostile/retaliate/fae/sylph/proc/create_shroom(atom/target)
+	target.visible_message(span_boldwarning("Kneestingers pop out from the ground around [src]!"))
 	if(!target)
 		return
 	for(var/turf/turf as anything in RANGE_TURFS(3,src.loc))
@@ -390,5 +411,14 @@
 	..()
 	var/turf/deathspot = get_turf(src)
 	new /obj/item/natural/sylvanessence(deathspot)
+	new /obj/item/natural/fairydust(deathspot)
+	new /obj/item/natural/fairydust(deathspot)
+	new /obj/item/natural/melded/t2(deathspot)
+	new /obj/item/natural/iridescentscale(deathspot)
+	new /obj/item/natural/heartwoodcore(deathspot)
+	new /obj/item/natural/fairydust(deathspot)
+	new /obj/item/natural/fairydust(deathspot)
+
 	update_icon()
+	spill_embedded_objects()
 	qdel(src)

@@ -303,3 +303,13 @@
 		/datum/molten_recipe,
 		/datum/anvil_recipe,
 	)
+
+/obj/item/recipe_book/arcyne
+	name = "The Arcanum of Arcyne"
+	desc = "Penned by Elyndor Starforge, Grand Arcanist and Keeper of the Ethereal Crucible"
+	icon_state ="book4_0"
+	base_icon_state = "book4"
+
+	types = list(
+		/datum/repeatable_crafting_recipe/arcyne,
+	)

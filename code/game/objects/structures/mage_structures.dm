@@ -298,13 +298,13 @@ s
 	layer = BELOW_MOB_LAYER
 	max_integrity = 60
 	density = FALSE
-	debris = list(/obj/item/natural/fibers = 1, /obj/item/reagent_containers/food/snacks/grown/rogue/manabloom = 1)
+	debris = list(/obj/item/natural/fibers = 1, /obj/item/reagent_containers/food/snacks/grown/manabloom = 1)
 
 /obj/structure/manaflower/attack_hand(mob/living/carbon/human/user)
 	playsound(src.loc, "plantcross", 80, FALSE, -1)
 	user.visible_message(span_warning("[user] harvests [src]."))
 	if(do_after(user, 3 SECONDS, target = src))
-		new /obj/item/reagent_containers/food/snacks/grown/rogue/manabloom (get_turf(src))
+		new /obj/item/reagent_containers/food/snacks/grown/manabloom (get_turf(src))
 		qdel(src)
 /obj/structure/manaflower/Crossed(mob/living/carbon/human/H)
 	playsound(src.loc, "plantcross", 80, FALSE, -1)

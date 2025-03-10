@@ -143,8 +143,8 @@
 		/obj/item/natural/elementalrelic,
 		/obj/item/natural/obsidian,
 		/obj/item/natural/leyline,
-		/obj/item/reagent_containers/food/snacks/grown/rogue/manabloom,
-		/obj/item/natural/manacrystal
+		/obj/item/reagent_containers/food/snacks/grown/manabloom,
+		/obj/item/mana_battery/mana_crystal
 		))
 /datum/component/storage/concrete/grid/crucible
 	screen_max_rows = 5

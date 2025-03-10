@@ -584,7 +584,7 @@
 	id = "intelligence"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/knowledge
 	effectedstats = list("intelligence" = 2)
-	duration = 10 MINUTES
+	duration = 20 MINUTES
 
 /atom/movable/screen/alert/status_effect/buff/knowledge
 	name = "runic cunning"
@@ -595,7 +595,7 @@
 	id = "strength"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/strength
 	effectedstats = list("strength" = 3)
-	duration = 10 MINUTES
+	duration = 20 MINUTES
 
 /atom/movable/screen/alert/status_effect/buff/strength
 	name = "arcane reinforced strength"
@@ -606,7 +606,7 @@
 	id = "lesser strength"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/strength/lesser
 	effectedstats = list("strength" = 1)
-	duration = 10 MINUTES
+	duration = 20 MINUTES
 
 /atom/movable/screen/alert/status_effect/buff/strength/lesser
 	name = "lesser arcane strength"
@@ -618,7 +618,7 @@
 	id = "speed"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/speed
 	effectedstats = list("speed" = 3)
-	duration = 10 MINUTES
+	duration = 20 MINUTES
 
 /atom/movable/screen/alert/status_effect/buff/speed
 	name = "arcane swiftness"
@@ -629,7 +629,7 @@
 	id = "lesser speed"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/speed/lesser
 	effectedstats = list("speed" = 1)
-	duration = 10 MINUTES
+	duration = 20 MINUTES
 
 /atom/movable/screen/alert/status_effect/buff/speed/lesser
 	name = "arcane swiftness"
@@ -640,7 +640,7 @@
 	id = "endurance"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/endurance
 	effectedstats = list("endurance" = 3)
-	duration = 10 MINUTES
+	duration = 20 MINUTES
 
 /atom/movable/screen/alert/status_effect/buff/endurance
 	name = "arcane endurance"
@@ -651,7 +651,7 @@
 	id = "lesser endurance"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/endurance/lesser
 	effectedstats = list("endurance" = 1)
-	duration = 10 MINUTES
+	duration = 20 MINUTES
 
 /atom/movable/screen/alert/status_effect/buff/endurance/lesser
 	name = "lesser arcane endurance"
@@ -663,7 +663,7 @@
 	id = "constitution"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/constitution
 	effectedstats = list("constitution" = 3)
-	duration = 10 MINUTES
+	duration = 20 MINUTES
 
 /atom/movable/screen/alert/status_effect/buff/constitution
 	name = "arcane constitution"
@@ -674,7 +674,7 @@
 	id = "lesser constitution"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/constitution/lesser
 	effectedstats = list("constitution" = 1)
-	duration = 10 MINUTES
+	duration = 20 MINUTES
 
 /atom/movable/screen/alert/status_effect/buff/constitution/lesser
 	name = "lesser arcane constitution"
@@ -685,7 +685,7 @@
 	id = "perception"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/perception
 	effectedstats = list("perception" = 3)
-	duration = 10 MINUTES
+	duration = 20 MINUTES
 
 /atom/movable/screen/alert/status_effect/buff/perception
 	name = "arcane perception"
@@ -696,7 +696,7 @@
 	id = "lesser perception"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/perception/lesser
 	effectedstats = list("perception" = 1)
-	duration = 10 MINUTES
+	duration = 20 MINUTES
 
 /atom/movable/screen/alert/status_effect/buff/perception/lesser
 	name = "lesser arcane perception"

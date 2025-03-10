@@ -23,7 +23,7 @@
 							/obj/structure/leyline = 1,
 							/obj/structure/voidstoneobelisk = 1,
 							/obj/structure/manaflower = 4,
-							/obj/item/natural/manacrystal = 1,
+							/obj/item/mana_battery/mana_crystal = 1,
 							/obj/item/natural/rock = 30,
 							/obj/item/natural/stone = 30,
 							/obj/structure/flora/grass/swampweed = 30,

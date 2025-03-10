@@ -73,6 +73,7 @@
 	summon_primer = "You are an crawler, a small elemental. Elementals such as yourself spend immeasurable time wandering about within your plane. Now you've been pulled from your home into a new world, that is decidedly less peaceful then your carefully guarded plane. How you react to these events, only time can tell."
 	icon_state = "crawler"
 	icon_living = "crawler"
+	tier = 1
 	icon_dead = "vvd"
 	gender = MALE
 	speak_chance = 1
@@ -113,11 +114,6 @@
 	dodgetime = 0
 	aggressive = 1
 
-	///this mob was updated to new ai
-	AIStatus = AI_OFF
-	can_have_ai = FALSE
-	ai_controller = /datum/ai_controller/imp
-
 
 /mob/living/simple_animal/hostile/retaliate/elemental/crawler/Initialize()
 	. = ..()
@@ -125,6 +121,9 @@
 /mob/living/simple_animal/hostile/retaliate/elemental/crawler/death(gibbed)
 	..()
 	var/turf/deathspot = get_turf(src)
+	new /obj/item/natural/elementalmote(deathspot)
+	new /obj/item/natural/elementalmote(deathspot)
+	new /obj/item/natural/elementalmote(deathspot)
 	new /obj/item/natural/elementalmote(deathspot)
 	new /obj/item/natural/elementalmote(deathspot)
 	new /obj/item/natural/elementalmote(deathspot)
@@ -139,6 +138,7 @@
 	icon_living = "warden"
 	icon_dead = "vvd"
 	summon_primer = "You are an warden, a moderate elemental. Elementals such as yourself guard your plane from intrusion zealously. Now you've been pulled from your home into a new world, that is decidedly less peaceful then your carefully guarded plane. How you react to these events, only time can tell."
+	tier = 2
 	gender = MALE
 	emote_hear = null
 	emote_see = null
@@ -148,7 +148,7 @@
 	move_to_delay = 12
 	base_intents = list(/datum/intent/simple/elemental_unarmed)
 	butcher_results = list()
-	faction = list("infernal")
+	faction = list("elemental")
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	health = 240
 	maxHealth = 240
@@ -188,7 +188,14 @@
 	var/turf/deathspot = get_turf(src)
 	new /obj/item/natural/elementalshard(deathspot)
 	new /obj/item/natural/elementalshard(deathspot)
+	new /obj/item/natural/elementalshard(deathspot)
+	new /obj/item/natural/elementalshard(deathspot)
+	new /obj/item/natural/elementalmote(deathspot)
+	new /obj/item/natural/elementalmote(deathspot)
+	new /obj/item/natural/elementalmote(deathspot)
+	new /obj/item/natural/elementalmote(deathspot)
 	update_icon()
+	spill_embedded_objects()
 	qdel(src)
 
 /mob/living/simple_animal/hostile/retaliate/elemental/warden/AttackingTarget()
@@ -214,6 +221,7 @@
 	summon_primer = "You are an behemoth, a large elemental. Elementals such as yourself often lead groups of wardens in defending your plane. Now you've been pulled from your home into a new world, that is decidedly less peaceful then your carefully guarded plane. How you react to these events, only time can tell."
 	icon_state = "behemoth"
 	icon_living = "behemoth"
+	tier = 3
 	icon_dead = "vvd"
 	gender = MALE
 	emote_hear = null
@@ -226,8 +234,8 @@
 	butcher_results = list()
 	faction = list("elemental")
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
-	health = 240
-	maxHealth = 240
+	health = 800
+	maxHealth = 800
 	melee_damage_lower = 55
 	melee_damage_upper = 80
 	vision_range = 7
@@ -262,7 +270,10 @@
 	..()
 	var/turf/deathspot = get_turf(src)
 	new /obj/item/natural/elementalfragment(deathspot)
+	new /obj/item/natural/elementalmote(deathspot)
+	new /obj/item/natural/elementalmote(deathspot)
 	update_icon()
+	spill_embedded_objects()
 	qdel(src)
 
 /mob/living/simple_animal/hostile/retaliate/elemental/behemoth/AttackingTarget()
@@ -272,14 +283,14 @@
 	in_melee = TRUE
 	if(!target)
 		return
-	addtimer(CALLBACK(src,PROC_REF(yeet)), 1 SECONDS)
+	addtimer(CALLBACK(src,PROC_REF(yeet),target), 1 SECONDS)
 	return target.attack_animal(src)
 
 /obj/effect/temp_visual/marker
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "trap"
 	light_outer_range = 2
-	duration = 9
+	duration = 1.5 SECONDS
 	layer = ABOVE_ALL_MOB_LAYER //this doesnt render above mobs? it really should
 
 
@@ -328,7 +339,7 @@
 	var/turf/focalpoint = get_turf(target)
 	for (var/turf/open/visual in view(1, focalpoint))
 		new /obj/effect/temp_visual/marker(visual)
-	sleep(9)
+	sleep(1.5 SECONDS)
 	for (var/mob/living/screenshaken in view(1, focalpoint))
 		shake_camera(screenshaken, 5, 5)
 	for (var/mob/living/shaken in view(1, focalpoint))
@@ -364,6 +375,7 @@
 	icon_living = "collossus"
 	icon_dead = "vvd"
 	summon_primer = "You are an collossus, a massive elemental. Elementals such as yourself are immeasurably old. Now you've been pulled from your home into a new world, that is decidedly less peaceful then your carefully guarded plane. How you react to these events, only time can tell."
+	tier = 4
 	gender = MALE
 	emote_hear = null
 	emote_see = null
@@ -433,7 +445,8 @@
 		if(target)
 			if(targets_from && isturf(targets_from.loc) && target.Adjacent(targets_from)) //If they're next to us, attack
 				MeleeAction()
-				stomp(target)
+				if(world.time >= stomp_cd + 25 SECONDS)
+					stomp(target)
 			else
 				if(rapid_melee > 1 && target_distance <= melee_queue_distance)
 					MeleeAction(FALSE)
@@ -457,6 +470,7 @@
 	var/turf/deathspot = get_turf(src)
 	new /obj/item/natural/elementalrelic(deathspot)
 	update_icon()
+	spill_embedded_objects()
 	qdel(src)
 /mob/living/simple_animal/hostile/retaliate/elemental/collossus/proc/stomp(target)
 	for (var/mob/living/stomped in view(1, src))
@@ -465,6 +479,7 @@
 		var/mob/living/L = stomped
 		L.throw_at(throw_target, 7, 4)
 		L.adjustBruteLoss(20)
+	stomp_cd = world.time
 
 /obj/projectile/earthenchunk
 	name = "Elemental Chunk"
@@ -486,8 +501,8 @@
 	. = ..()
 	var/list/spawnLists = list(/mob/living/simple_animal/hostile/retaliate/elemental/crawler,/mob/living/simple_animal/hostile/retaliate/elemental/crawler, /mob/living/simple_animal/hostile/retaliate/elemental/crawler)
 	var/reinforcement_count = 3
-	src.visible_message(span_notice("[src] breaks apart, scattering minor elementals about!"))
 	if(prob(20))
+		src.visible_message(span_notice("[src] breaks apart, scattering minor elementals about!"))
 		while(reinforcement_count > 0)
 			var/list/turflist = list()
 			for(var/turf/t in RANGE_TURFS(1, src))

@@ -166,7 +166,7 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 	name = "knowledge gain"
 	tier = 1
 	blacklisted = FALSE
-	required_atoms = list(/obj/item/natural/manacrystal = 1)
+	required_atoms = list(/obj/item/mana_battery/mana_crystal = 1)
 
 /datum/runerituals/knowledge/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
 	return TRUE
@@ -179,51 +179,59 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 	buff = /datum/status_effect/buff/magicstrength
 	tier = 2
 	blacklisted = FALSE
-	required_atoms = list(/obj/item/natural/manacrystal = 1,)
+	required_atoms = list(/obj/item/mana_battery/mana_crystal = 2,/obj/item/natural/elementalshard = 2)
 
 /datum/runerituals/buff/lesserstrength
 	name = "lesser arcane augmentation of strength"
 	buff = /datum/status_effect/buff/magicstrength/lesser
 	blacklisted = FALSE
+	required_atoms = list(/obj/item/natural/elementalmote = 2,/obj/item/mana_battery/mana_crystal = 1)
 
 /datum/runerituals/buff/constitution
 	name = "fortify constitution"
 	buff = /datum/status_effect/buff/magicconstitution
 	tier = 2
 	blacklisted = FALSE
+	required_atoms = list(/obj/item/mana_battery/mana_crystal = 2, /obj/item/natural/obsidian = 4)
 
 /datum/runerituals/buff/lesserconstitution
 	name = "lesser fortify constitution"
 	buff = /datum/status_effect/buff/magicconstitution/lesser
 	blacklisted = FALSE
+	required_atoms = list(/obj/item/mana_battery/mana_crystal = 1, /obj/item/natural/obsidian = 2)
 
 /datum/runerituals/buff/speed
 	name = "haste"
 	buff = /datum/status_effect/buff/magicspeed
 	tier = 2
 	blacklisted = FALSE
+	required_atoms = list(/obj/item/natural/artifact = 2, /obj/item/natural/leyline = 2)
 
 /datum/runerituals/buff/lesserspeed
 	name = "lesser haste"
 	buff = /datum/status_effect/buff/magicspeed/lesser
 	blacklisted = FALSE
+	required_atoms = list(/obj/item/natural/artifact = 1, /obj/item/natural/leyline = 1)
 
 /datum/runerituals/buff/perception
 	name = "arcane eyes"
 	buff = /datum/status_effect/buff/magicperception
 	tier = 2
 	blacklisted = FALSE
+	required_atoms = list(/obj/item/reagent_containers/food/snacks/grown/manabloom = 2, /obj/item/natural/hellhoundfang = 1)
 
 /datum/runerituals/buff/lesserperception
 	name = "lesser arcane eyes"
 	buff = /datum/status_effect/buff/magicperception/lesser
 	blacklisted = FALSE
+	required_atoms = list(/obj/item/reagent_containers/food/snacks/grown/manabloom = 1, /obj/item/natural/infernalash = 2)
 
 /datum/runerituals/buff/endurance
 	name = "vitalized endurance"
 	buff = /datum/status_effect/buff/magicendurance
 	tier = 2
 	blacklisted = FALSE
+	required_atoms = list(/obj/item/natural/obsidian = 2, /obj/item/natural/iridescentscale = 1)
 
 /datum/runerituals/buff/lesserendurance
 	name = "lesser vitalized endurance"
@@ -234,15 +242,13 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 	name = "darksight"
 	buff = /datum/status_effect/buff/darkvision
 	blacklisted = FALSE
-
-/datum/runerituals/enchantment
-
+	required_atoms = list(/obj/item/mana_battery/mana_crystal = 2, /obj/item/natural/iridescentscale = 1, /obj/item/natural/elementalshard = 1)
 
 /datum/runerituals/wall
 	name = "lesser arcyne wall"
 	tier = 1
 	blacklisted = FALSE
-	required_atoms = list(/obj/item/natural/elementalmote = 2, /obj/item/natural/manacrystal = 1, /obj/item/natural/melded/t1 = 1)
+	required_atoms = list(/obj/item/natural/elementalmote = 2, /obj/item/mana_battery/mana_crystal = 1, /obj/item/natural/melded/t1 = 1)
 
 /datum/runerituals/wall/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
 	return 1
@@ -250,7 +256,7 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 /datum/runerituals/wall/t2
 	name = "greater arcyne wall"
 	tier = 2
-	required_atoms = list(/obj/item/natural/elementalmote = 4, /obj/item/natural/manacrystal = 2, /obj/item/natural/melded/t1 = 1)
+	required_atoms = list(/obj/item/natural/elementalmote = 4, /obj/item/mana_battery/mana_crystal = 2, /obj/item/natural/melded/t1 = 1)
 
 /datum/runerituals/wall/t2/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
 	return 2
@@ -258,13 +264,14 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 /datum/runerituals/wall/t3
 	name = "arcyne fortress"
 	tier = 3
-	required_atoms = list(/obj/item/natural/artifact = 3, /obj/item/natural/manacrystal = 3, /obj/item/natural/melded/t3 = 1)
+	required_atoms = list(/obj/item/natural/artifact = 3, /obj/item/mana_battery/mana_crystal = 3, /obj/item/natural/melded/t3 = 1)
 
 
 /datum/runerituals/teleport
 	name = "planar convergence"
 	tier = 3
-	required_atoms = list(/obj/item/natural/artifact = 1, /obj/item/natural/manacrystal = 1, /obj/item/natural/melded/t3 = 1) //adjust this later
+	required_atoms = list(/obj/item/natural/artifact = 1, /obj/item/natural/leyline = 1, /obj/item/natural/melded/t2 = 1)
+
 /datum/runerituals/teleport/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
 	return TRUE
 
@@ -288,6 +295,7 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 		ADD_TRAIT(summoned, TRAIT_PACIFISM, TRAIT_GENERIC)	//can't kill while planar bound.
 		summoned.status_flags += GODMODE//It's not meant to be killable until released from it's planar binding.
 		summoned.binded = TRUE	//No auto movement, no moving to targets
+		summoned.SetParalyzed(90 SECONDS)
 		summoned.candodge = FALSE
 		animate(summoned, color = "#ff0000",time = 5)
 		return summoned
@@ -319,11 +327,11 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/infernal/watcher//temporary rat 4 testing
 
 /datum/runerituals/summoning/archfiend
-	name = "summoning archfiend"
-	desc = "summons an archfiend"
+	name = "summoning fiend"
+	desc = "summons an fiend"
 	blacklisted = FALSE
 	tier = 4
-	required_atoms = list(/obj/item/natural/moltencore = 1, /obj/item/natural/obsidian = 1, /obj/item/natural/melded/t3 =1)
+	required_atoms = list(/obj/item/natural/moltencore = 1, /obj/item/natural/obsidian = 3, /obj/item/natural/melded/t3 =1)
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/bigrat//temporary rat 4 testing
 
 /datum/runerituals/summoning/sprite
@@ -331,61 +339,69 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 	desc = "summons an fae sprite"
 	blacklisted = FALSE
 	tier = 1
-	required_atoms = list(/obj/item/reagent_containers/food/snacks/grown/rogue/manabloom = 1, /obj/item/reagent_containers/food/snacks/produce/jacksberry = 2)
-	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/bigrat//temporary rat 4 testing
+	required_atoms = list(/obj/item/reagent_containers/food/snacks/grown/manabloom = 2, /obj/item/natural/fairydust = 3, /obj/item/natural/melded/t1 = 1)
+	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/fae/sprite
 
 /datum/runerituals/summoning/glimmer
 	name = "summoning glimmerwing"
 	desc = "summons an fae spirit"
 	blacklisted = FALSE
 	tier = 2
-	required_atoms = list(/obj/item/reagent_containers/food/snacks/grown/rogue/manabloom = 1, /obj/item/natural/fairydust = 3, /obj/item/natural/melded/t1 = 1)
+	required_atoms = list(/obj/item/reagent_containers/food/snacks/grown/manabloom = 1, /obj/item/natural/fairydust = 3, /obj/item/natural/melded/t1 = 1)
+	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/fae/glimmerwing
 
-	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/bigrat//temporary rat 4 testing
 /datum/runerituals/summoning/dryad
 	name = "summoning dryad"
 	desc = "summons an drayd"
 	blacklisted = FALSE
 	tier = 3
-	required_atoms = list(/obj/item/reagent_containers/food/snacks/grown/rogue/manabloom = 1, /obj/item/natural/iridescentscale = 2, /obj/item/natural/melded/t2 = 1)
-	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/bigrat//temporary rat 4 testing
+	required_atoms = list(/obj/item/reagent_containers/food/snacks/grown/manabloom = 2, /obj/item/natural/iridescentscale = 2, /obj/item/natural/melded/t2 = 1)
+	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/fae/dryad
 
 /datum/runerituals/summoning/sylph
 	name = "summoning sylph"
 	desc = "summons an archfae"
 	blacklisted = FALSE
 	tier = 4
-	required_atoms = list(/obj/item/reagent_containers/food/snacks/grown/rogue/manabloom = 1, /obj/item/natural/heartwoodcore = 1, /obj/item/natural/melded/t3 = 1)
-	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/bigrat//temporary rat 4 testing
+	required_atoms = list(/obj/item/reagent_containers/food/snacks/grown/manabloom = 1, /obj/item/natural/heartwoodcore = 1, /obj/item/natural/melded/t3 = 1)
+	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/fae/sylph
 
 /datum/runerituals/summoning/crawler
 	name = "summoning elemental crawler"
 	desc = "summons a minor elemental"
 	blacklisted = FALSE
 	tier = 1
-	required_atoms = list(/obj/item/natural/stone = 3, /obj/item/natural/manacrystal = 1)
-	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/bigrat//temporary rat 4 testing
+	required_atoms = list(/obj/item/natural/stone = 3, /obj/item/mana_battery/mana_crystal = 1)
+	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/elemental/crawler
 
 /datum/runerituals/summoning/warden
 	name = "summoning elemental warden"
 	desc = "summons an elemental"
 	blacklisted = FALSE
 	tier = 2
-	required_atoms = list(/obj/item/natural/elementalmote = 3, /obj/item/natural/manacrystal = 1, /obj/item/natural/melded/t1 = 1)
-	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/bigrat//temporary rat 4 testing
+	required_atoms = list(/obj/item/natural/elementalmote = 3, /obj/item/mana_battery/mana_crystal = 1, /obj/item/natural/melded/t1 = 1)
+	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/elemental/warden
 
 /datum/runerituals/summoning/behemoth
 	name = "summoning elemental behemoth"
 	desc = "summons a large elemental"
 	blacklisted = FALSE
 	tier = 3
-	required_atoms = list(/obj/item/natural/elementalshard = 2, /obj/item/natural/manacrystal = 1, /obj/item/natural/melded/t2 =1)
-	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/bigrat//temporary rat 4 testing
+	required_atoms = list(/obj/item/natural/elementalshard = 2, /obj/item/mana_battery/mana_crystal = 1, /obj/item/natural/melded/t2 =1)
+	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/elemental/behemoth
 
 /datum/runerituals/summoning/collossus
 	name = "summoning elemental collossus"
 	desc = "summons an huge elemental"
 	blacklisted = FALSE
 	tier = 4
-	required_atoms = list(/obj/item/natural/elementalfragment = 1, /obj/item/natural/manacrystal = 1, /obj/item/natural/melded/t3 =1)
-	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/bigrat//temporary rat 4 testing
+	required_atoms = list(/obj/item/natural/elementalfragment = 1, /obj/item/mana_battery/mana_crystal = 1, /obj/item/natural/melded/t3 =1)
+	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/elemental/collossus
+
+/datum/runerituals/summoning/abberant
+	name = "summoning abberant from the void"
+	desc = "summons a long forgotten creature"
+	blacklisted = FALSE
+	tier = 4
+	required_atoms = list(/obj/item/natural/melded/t5 =1)
+	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/voiddragon

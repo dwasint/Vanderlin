@@ -7,6 +7,7 @@
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/thrust, /datum/intent/dagger/chop)
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_MOUTH
 	icon = 'icons/roguetown/weapons/32.dmi'
+	icon_state = "sdagger"
 	gripsprite = FALSE
 	dropshrink = 0.8
 	thrown_bclass = BCLASS_CUT

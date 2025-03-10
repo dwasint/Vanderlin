@@ -42,15 +42,15 @@
 		/obj/item/natural/infernalash,
 		/obj/item/natural/fairydust,
 		/obj/item/natural/elementalmote,
-		/obj/item/natural/manacrystal,
-		/obj/item/natural/manacrystal,
-		/obj/item/natural/manacrystal,
+		/obj/item/mana_battery/mana_crystal,
+		/obj/item/mana_battery/mana_crystal,
+		/obj/item/mana_battery/mana_crystal,
 		/obj/item/natural/obsidian,
 		/obj/item/natural/obsidian,
 		/obj/item/natural/obsidian,
-		/obj/item/reagent_containers/food/snacks/grown/rogue/manabloom,
-		/obj/item/reagent_containers/food/snacks/grown/rogue/manabloom,
-		/obj/item/reagent_containers/food/snacks/grown/rogue/manabloom,
+		/obj/item/reagent_containers/food/snacks/grown/manabloom,
+		/obj/item/reagent_containers/food/snacks/grown/manabloom,
+		/obj/item/reagent_containers/food/snacks/grown/manabloom,
 	)
 
 /obj/item/chalk
@@ -107,6 +107,8 @@
 		span_notice("I finish dragging the blade in symbols and circles, leaving behind an ritual rune"))
 		src.amount --
 		new rune_to_scribe(Turf)
+	if(amount <= 0)
+		qdel(src)
 
 /obj/item/chalk/proc/check_for_structures_and_closed_turfs(loc, var/obj/effect/decal/cleanable/roguerune/rune_to_scribe)
 	for(var/turf/T in range(loc, rune_to_scribe.runesize))
@@ -294,6 +296,27 @@
 	light_power = -3
 	on = FALSE
 
+/obj/item/clothing/ring/arcanesigil
+	name = "arcane sigil"
+	desc = "A radiantly shimmering sigil within an amulet, It seems to pulse with intense arcanic flows."
+	icon = 'icons/roguetown/items/misc.dmi'
+	icon_state = "amulet"
+	var/cdtime = 30 MINUTES
+	var/ready = TRUE
+
+/obj/item/clothing/ring/arcanesigil/attack_self(mob/living/carbon/human/user)
+	if(ready)
+		if(do_after(user, 25, target = src))
+			to_chat(user,span_notice("[src] heats up to an almost burning temperature, flooding you with overwhelming arcane knowledge!"))
+			ready = FALSE
+			addtimer(CALLBACK(src, PROC_REF(revert), user), cdtime,TIMER_STOPPABLE) // Minus two so we play the sound and decap faster
+			user.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
+	else
+		to_chat(user,span_notice("[src] remains inert. It must be gathering arcana!"))
+
+/obj/item/clothing/ring/arcanesigil/proc/revert()
+	ready = TRUE
+
 /obj/item/clothing/ring/active/shimmeringlens
 	name = "shimmering lens"
 	desc = "A radiantly shimmering glass of lens that shimmers with magick. Looking through it gives you a bit of a headache."
@@ -354,20 +377,20 @@
 	if(input_text)
 		paired_with.say(input_text)
 
-/obj/item/clothing/gloves/roguetown/nomagic
+/obj/item/clothing/gloves/nomagic
 	icon = 'icons/roguetown/clothing/gloves.dmi'
 	bloody_icon_state = "bloodyhands"
 	icon_state = "angle"
 	w_class = WEIGHT_CLASS_SMALL
 	var/active_item
 
-/obj/item/clothing/gloves/roguetown/nomagic/Initialize(mapload)
+/obj/item/clothing/gloves/nomagic/Initialize(mapload)
 	. = ..()
 	name = "mana binding gloves"
 	resistance_flags = FIRE_PROOF
 	///VANDERLIN TO DO
 
-/obj/item/clothing/gloves/roguetown/nomagic/equipped(mob/living/user, slot)
+/obj/item/clothing/gloves/nomagic/equipped(mob/living/user, slot)
 	if(active_item)
 		return
 	var/slotbit = slotdefine2slotbit(slot)
@@ -377,73 +400,157 @@
 	. = ..()
 
 /obj/item/rope/chain/bindingshackles
-	name = "binding shackles"
-	desc = "arcane shackles imbued to bind and call forth the spark of understanding to a creature"
+	name = "planar binding shackles"
+	desc = "arcane shackles imbued to bind other-planar creatures intelligence to this plane. They will not be under your thrall and a deal will need to be made."
 	var/mob/living/fam
-	var/tier
+	var/tier = 1
 	var/being_used = FALSE
 	var/sentience_type = SENTIENCE_ORGANIC
 
+
+/obj/item/rope/chain/bindingshackles/Initialize()
+	.=..()
+	src.filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
+
+/obj/item/rope/chain/bindingshackles/attackby(obj/item/P, mob/living/carbon/human/user, params)
+	var/found_table = locate(/obj/structure/table) in (loc)
+	if(istype(P, /obj/item/natural/melded/t2))
+		if(isturf(loc)&& (found_table))
+			var/crafttime = (100 - ((user.mind?.get_skill_level(/datum/skill/magic/arcane))*5))
+			if(do_after(user, crafttime, target = src))
+				playsound(loc, 'sound/items/book_close.ogg', 100, TRUE)
+				to_chat(user, span_notice("I mold the [P] into the [src] with my arcyne power."))
+				new /obj/item/rope/chain/bindingshackles/t2(loc)
+				qdel(P)
+				qdel(src)
+		else
+			to_chat(user, "<span class='warning'>You need to put the [src] on a table to work on it.</span>")
+	else
+		return ..()
+/obj/item/rope/chain/bindingshackles/t2
+	name = "greater planar binding shackles"
+	tier = 2
+
+/obj/item/rope/chain/bindingshackles/t2/attackby(obj/item/P, mob/living/carbon/human/user, params)
+	var/found_table = locate(/obj/structure/table) in (loc)
+	if(istype(P, /obj/item/natural/melded/t3))
+		if(isturf(loc)&& (found_table))
+			var/crafttime = (100 - ((user.mind?.get_skill_level(/datum/skill/magic/arcane))*5))
+			if(do_after(user, crafttime, target = src))
+				playsound(loc, 'sound/items/book_close.ogg', 100, TRUE)
+				to_chat(user, span_notice("I mold the [P] into the [src] with my arcyne power."))
+				new /obj/item/rope/chain/bindingshackles/t3(loc)
+				qdel(P)
+				qdel(src)
+		else
+			to_chat(user, "<span class='warning'>You need to put the [src] on a table to work on it.</span>")
+	else
+		return ..()
+/obj/item/rope/chain/bindingshackles/t3
+	name = "woven planar binding shackles"
+	tier = 3
+
+/obj/item/rope/chain/bindingshackles/t3/attackby(obj/item/P, mob/living/carbon/human/user, params)
+	var/found_table = locate(/obj/structure/table) in (loc)
+	if(istype(P, /obj/item/natural/melded/t4))
+		if(isturf(loc)&& (found_table))
+			var/crafttime = (100 - ((user.mind?.get_skill_level(/datum/skill/magic/arcane))*5))
+			if(do_after(user, crafttime, target = src))
+				playsound(loc, 'sound/items/book_close.ogg', 100, TRUE)
+				to_chat(user, span_notice("I mold the [P] into the [src] with my arcyne power."))
+				new /obj/item/rope/chain/bindingshackles/t4(loc)
+				qdel(P)
+				qdel(src)
+		else
+			to_chat(user, "<span class='warning'>You need to put the [src] on a table to work on it.</span>")
+	else
+		return ..()
+/obj/item/rope/chain/bindingshackles/t4
+	name = "confluent planar binding shackles"
+	tier = 4
+
+/obj/item/rope/chain/bindingshackles/t4/attackby(obj/item/P, mob/living/carbon/human/user, params)
+	var/found_table = locate(/obj/structure/table) in (loc)
+	if(istype(P, /obj/item/natural/melded/t5))
+		if(isturf(loc)&& (found_table))
+			var/crafttime = (100 - ((user.mind?.get_skill_level(/datum/skill/magic/arcane))*5))
+			if(do_after(user, crafttime, target = src))
+				playsound(loc, 'sound/items/book_close.ogg', 100, TRUE)
+				to_chat(user, span_notice("I mold the [P] into the [src] with my arcyne power."))
+				new /obj/item/rope/chain/bindingshackles/t5(loc)
+				qdel(P)
+				qdel(src)
+		else
+			to_chat(user, "<span class='warning'>You need to put the [src] on a table to work on it.</span>")
+	else
+		return ..()
+
+/obj/item/rope/chain/bindingshackles/t5
+	name = "abberant planar binding shackles"
+	tier = 5
+
 /obj/item/rope/chain/bindingshackles/attack(mob/living/simple_animal/hostile/retaliate/captive, mob/living/user)
-	if(captive.tier >= tier)
+	var/list/summon_types = list(
+		/mob/living/simple_animal/hostile/retaliate/infernal/imp,
+		/mob/living/simple_animal/hostile/retaliate/infernal/hellhound,
+		/mob/living/simple_animal/hostile/retaliate/infernal/watcher,
+		/mob/living/simple_animal/hostile/retaliate/infernal/fiend,
+		/mob/living/simple_animal/hostile/retaliate/elemental/crawler,
+		/mob/living/simple_animal/hostile/retaliate/elemental/warden,
+		/mob/living/simple_animal/hostile/retaliate/elemental/behemoth,
+		/mob/living/simple_animal/hostile/retaliate/elemental/collossus,
+		/mob/living/simple_animal/hostile/retaliate/fae/sprite,
+		/mob/living/simple_animal/hostile/retaliate/fae/glimmerwing,
+		/mob/living/simple_animal/hostile/retaliate/fae/dryad,
+		/mob/living/simple_animal/hostile/retaliate/fae/sylph,
+		/mob/living/simple_animal/hostile/retaliate/voidstoneobelisk,
+		/mob/living/simple_animal/hostile/retaliate/voiddragon)
+
+	if(!(captive.type in summon_types))
+		to_chat(user, span_warning("[captive] cannot be bound by these shackles!"))
+		return
+	if(captive.tier > tier)
+		to_chat(user, span_warning("[src] is not strong enough to bind [captive]!"))
 		return
 
-	to_chat(user, span_notice("Trying to find familiar..."))
-	var/list/L = pollCandidatesForMob(
-		Question = "Do you want to play as [span_notice("[span_danger("[user.real_name]'s")] bound creature?")]?",
-		jobbanType = ROLE_BOUND_BEAST,
-		poll_time = 20 SECONDS,
-		ignore_category = POLL_IGNORE_SENTIENCE_POTION,
-	)
-	if(L.len > 0)
-		var/mob/chosen_one =  pick(L)
-		fam = captive
-		fam.key = chosen_one.key
-		to_chat(user, span_notice("[captive] looks at you with intelligence in it's eyes."))
-		chosen_one.mind.transfer_to(fam)
-		fam.fully_replace_character_name(null, "[user]'s familiar")
-		fam.get_language_holder():omnitongue = TRUE //Grants omnitongue
-		var/valid_input_name = custom_name(user)
-		if(valid_input_name)
-			fam.fully_replace_character_name(null, "[valid_input_name]")
-		qdel(src)
-	else
-		to_chat(user, span_notice("The [captive] stares at you hatefully. The creature's intelligence was not invoked."))
+	var/mob/living/simple_animal/hostile/retaliate/target = captive
+	target.visible_message(span_warning("[target.real_name]'s body is entangled by glowing chains..."), runechat_message = TRUE)
+
+	if(!target.ckey) //player is not inside body or has refused, poll for candidates
+
+		var/list/candidates = pollCandidatesForMob("Do you want to play as a Mage's summon?", null, null, null, 100, target, POLL_IGNORE_MAGE_SUMMON)
+
+		// theres at least one candidate
+		if(LAZYLEN(candidates))
+			var/mob/C = pick(candidates)
+			target.awaken_summon(user, C.ckey)
+			target.visible_message(span_warning("[target.real_name]'s eyes light up with an intelligence as it awakens fully on this plane."), runechat_message = TRUE)
+			custom_name(user,target)
+
+		//no candidates, raise as npc
+		else
+			to_chat(user, span_notice("The [captive] stares at you with mindless hate. The binding attempt failed to draw out it's intelligence!"))
+
+		return FALSE
+	return FALSE
+
+/mob/living/simple_animal/hostile/retaliate/proc/awaken_summon(mob/living/carbon/human/master, ckey)
+	if(!master)
+		return FALSE
+	if(ckey) //player
+		src.ckey = ckey
+
+	to_chat(src, span_userdanger("My summoner is [master.real_name]. They will need to convince me to obey them."))
+	to_chat(src, span_warning("[summon_primer]"))
 
 /obj/item/rope/chain/bindingshackles/proc/custom_name(mob/awakener, var/mob/chosen_one, iteration = 1)
 	if(iteration > 5)
-		return "indecision" // The spirit of indecision
+		return
 	var/chosen_name = sanitize_name(stripped_input(chosen_one, "What are you named?"))
 	if(!chosen_name) // with the way that sanitize_name works, it'll actually send the error message to the awakener as well.
 		to_chat(awakener, span_warning("Your weapon did not select a valid name! Please wait as they try again.")) // more verbose than what sanitize_name might pass in it's error message
 		return custom_name(awakener, iteration++)
 	return chosen_name
-/*
-/obj/item/rope/chain/bindingshackles/attack(mob/living/simple_animal/hostile/retaliate/dumb_mob, mob/user)
-	if(being_used || !isliving(dumb_mob))//Already in use
-		return
-	if(dumb_mob.ckey) //only works on animals that aren't player controlled
-		to_chat(user, span_notice("already bound!"))
-		return
-	if(dumb_mob.stat)
-		to_chat(user, span_notice( "it's dead!"))
-		return
-	if(!dumb_mob.compare_sentience_type(sentience_type)) // Will also return false if not a basic or simple mob, which are the only two we want anyway
-		to_chat(user, span_notice("invalid creature!"))
-		return
-	to_chat(user, span_notice("attempting to bind..."))
-	being_used = TRUE
-	var/mob/chosen_one = pollCandidatesForMob(
-		question = "[span_danger(user.name)] is binding [span_notice(dumb_mob.name)] with [src.name]!]",
-		check_jobban = ROLE_SENTIENCE,
-		poll_time = 20 SECONDS,
-		checked_target = dumb_mob,
-		ignore_category = POLL_IGNORE_SENTIENCE_POTION,
-		alert_pic = dumb_mob,
-		role_name_text = "planar binding",
-		chat_text_border_icon = src,
-	)
-	on_poll_concluded(user, dumb_mob, chosen_one)*/
 
 ////////////////////////////////////////Magic resources go below here////////////////////
 
@@ -465,7 +572,7 @@
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
 
-/obj/item/reagent_containers/food/snacks/grown/rogue/manabloom
+/obj/item/reagent_containers/food/snacks/grown/manabloom
 	name = "mana bloom"
 	icon_state = "manabloom"
 	desc = "Volcanic glass cooled from molten lava rapidly."
@@ -479,7 +586,7 @@
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
 
-/obj/item/natural/manacrystal
+/obj/item/mana_battery/mana_crystal
 	name = "crytalized mana"
 	icon_state = "manacrystal"
 	desc = "Volcanic glass cooled from molten lava rapidly."

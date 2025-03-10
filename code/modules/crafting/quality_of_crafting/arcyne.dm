@@ -1,5 +1,11 @@
 /datum/repeatable_crafting_recipe/arcyne
 	abstract_type = /datum/repeatable_crafting_recipe/arcyne
+	skillcraft = /datum/skill/magic/arcane
+	craftdiff = 0
+
+/datum/repeatable_crafting_recipe/arcyne/arcana
+	name = "amethyst transmutation"
+	output = /obj/item/gem/amethyst
 	reagent_requirements = list(
 		/datum/reagent/medicine/manapot = 15
 	)
@@ -10,15 +16,9 @@
 		/obj/item/weapon/knife = list("starts to carve out a rune", "start to carve a rune")
 	)
 
-	attacking_atom = /obj/item/weapon/knife
+	attacked_atom = /obj/item/weapon/knife
 	starting_atom = /obj/item/natural/stone
-	skillcraft = /datum/skill/magic/arcane
-	craftdiff = 0
 	subtypes_allowed = TRUE // so you can use any subtype of fur
-
-/datum/repeatable_crafting_recipe/arcyne/arcana
-	name = "amethyst"
-	output = /obj/item/gem/amethyst
 
 /datum/repeatable_crafting_recipe/arcyne/infernal_feather
 	name = "infernal feather"
@@ -29,9 +29,9 @@
 		/obj/item/natural/feather = 1,
 	)
 	output = /obj/item/natural/feather/infernal
-	attacking_atom = /obj/item/natural/feather
+	attacked_atom = /obj/item/natural/feather
 	starting_atom = /obj/item/natural/infernalash
-	uses_attacking_atom = TRUE
+	uses_attacked_atom = TRUE
 	craftdiff = 2
 
 /datum/repeatable_crafting_recipe/arcyne/sending_stone
@@ -43,7 +43,7 @@
 		/obj/item/natural/melded/t1 = 1,
 	)
 	output = /obj/item/sendingstonesummoner
-	uses_attacking_atom = TRUE
+	uses_attacked_atom = TRUE
 	craftdiff = 2
 
 /datum/repeatable_crafting_recipe/arcyne/voidlamptern
@@ -57,8 +57,8 @@
 	)
 	output = /obj/item/flashlight/flare/torch/lantern/voidlamptern
 	starting_atom = /obj/item/flashlight/flare/torch/lantern
-	attacking_atom = /obj/item/natural/obsidian
-	uses_attacking_atom = TRUE
+	attacked_atom = /obj/item/natural/obsidian
+	uses_attacked_atom = TRUE
 	craftdiff = 2
 
 /datum/repeatable_crafting_recipe/arcyne/nomagicglove
@@ -67,13 +67,13 @@
 	tool_usage = list()
 	requirements = list(
 		/obj/item/natural/melded/t3  = 1,
-		/obj/item/clothing/gloves/roguetown/leather = 1,
+		/obj/item/clothing/gloves/leather = 1,
 		/obj/item/gem = 1,
 	)
-	output = /obj/item/clothing/gloves/roguetown/nomagic
-	starting_atom = /obj/item/clothing/gloves/roguetown/leather
-	attacking_atom = /obj/item/gem
-	uses_attacking_atom = TRUE
+	output = /obj/item/clothing/gloves/nomagic
+	starting_atom = /obj/item/clothing/gloves/leather
+	attacked_atom = /obj/item/gem
+	uses_attacked_atom = TRUE
 	craftdiff = 3
 
 /datum/repeatable_crafting_recipe/arcyne/temporalhourglass
@@ -81,14 +81,15 @@
 	reagent_requirements = list()
 	tool_usage = list()
 	requirements = list(
+		/obj/item/natural/wood/plank = 4,
 		/obj/item/natural/melded/t2  = 1,
 		/obj/item/natural/glass = 1,
 		/obj/item/gem = 1,
 	)
 	output = /obj/item/hourglass/temporal
 	starting_atom = /obj/item/natural/glass
-	attacking_atom = /obj/item/natural/melded/t2
-	uses_attacking_atom = TRUE
+	attacked_atom = /obj/item/natural/melded/t2
+	uses_attacked_atom = TRUE
 	craftdiff = 3
 
 /datum/repeatable_crafting_recipe/arcyne/shimmeringlens
@@ -96,15 +97,15 @@
 	reagent_requirements = list()
 	tool_usage = list()
 	requirements = list(
-		/obj/item/natural/melded/t2  = 1,
+		/obj/item/natural/melded/t1  = 1,
 		/obj/item/natural/leyline = 1,
 		/obj/item/natural/iridescentscale = 1,
 	)
 	output = /obj/item/clothing/ring/active/shimmeringlens
 	starting_atom = /obj/item/natural/iridescentscale
-	attacking_atom = /obj/item/natural/leyline
-	uses_attacking_atom = TRUE
-	craftdiff = 3
+	attacked_atom = /obj/item/natural/leyline
+	uses_attacked_atom = TRUE
+	craftdiff = 2
 
 /datum/repeatable_crafting_recipe/arcyne/mimictrinket
 	name = "mimic trinket"
@@ -116,8 +117,8 @@
 	)
 	output = /obj/item/mimictrinket
 	starting_atom = /obj/item/natural/wood/plank
-	attacking_atom = /obj/item/natural/melded/t2
-	uses_attacking_atom = TRUE
+	attacked_atom = /obj/item/natural/melded/t2
+	uses_attacked_atom = TRUE
 	craftdiff = 3
 
 /datum/repeatable_crafting_recipe/arcyne/binding
@@ -130,21 +131,109 @@
 	)
 	output = /obj/item/rope/chain/bindingshackles
 	starting_atom = /obj/item/ingot/iron
-	attacking_atom = /obj/item/natural/melded/t2
-	uses_attacking_atom = TRUE
+	attacked_atom = /obj/item/natural/melded/t2
+	uses_attacked_atom = TRUE
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/arcyne/sigil
+	name = "arcyne sigil"
+	reagent_requirements = list()
+	tool_usage = list()
+	requirements = list(
+		/obj/item/natural/melded/t3  = 1,
+		/obj/item/natural/leyline = 1,
+	)
+	output = /obj/item/clothing/ring/arcanesigil
+	starting_atom = /obj/item/natural/leyline
+	attacked_atom = /obj/item/natural/melded/t3
+	uses_attacked_atom = TRUE
 	craftdiff = 2
 
 /datum/repeatable_crafting_recipe/arcyne/mana_chalk
 	name = "Mana Infused Chalk"
 	requirements = list(
-		/obj/item/rogueore/cinnabar = 1,
+		/obj/item/ore/cinnabar = 1,
 	)
 	reagent_requirements = list(
 		/datum/reagent/medicine/manapot = 15,
 	)
-	starting_atom = /obj/item/rogueore/cinnabar
+	starting_atom = /obj/item/ore/cinnabar
 	attacked_atom = /obj/item/reagent_containers/glass
 	output = /obj/item/chalk
 	output_amount = 1
 	craft_time = 1 SECONDS
 	subtypes_allowed = TRUE
+
+/datum/repeatable_crafting_recipe/arcyne/t1_meld
+	name = "arcanic meld"
+	reagent_requirements = list()
+	tool_usage = list()
+	requirements = list(
+		/obj/item/natural/infernalash = 1,
+		/obj/item/natural/fairydust = 1,
+		/obj/item/natural/elementalmote = 1,
+	)
+	output = /obj/item/natural/melded/t1
+	starting_atom = /obj/item/natural/infernalash
+	attacked_atom = /obj/item/natural/elementalmote
+	uses_attacked_atom = TRUE
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/arcyne/t2_meld
+	name = "dense arcanic meld"
+	reagent_requirements = list()
+	tool_usage = list()
+	requirements = list(
+		/obj/item/natural/hellhoundfang = 1,
+		/obj/item/natural/iridescentscale = 1,
+		/obj/item/natural/elementalshard = 1,
+	)
+	output = /obj/item/natural/melded/t2
+	starting_atom = /obj/item/natural/hellhoundfang
+	attacked_atom = /obj/item/natural/elementalshard
+	uses_attacked_atom = TRUE
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/arcyne/t3_meld
+	name = "sorcerous weave"
+	reagent_requirements = list()
+	tool_usage = list()
+	requirements = list(
+		/obj/item/natural/moltencore = 1,
+		/obj/item/natural/heartwoodcore = 1,
+		/obj/item/natural/elementalfragment = 1,
+	)
+	output = /obj/item/natural/melded/t3
+	starting_atom = /obj/item/natural/heartwoodcore
+	attacked_atom = /obj/item/natural/moltencore
+	uses_attacked_atom = TRUE
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/arcyne/t4_meld
+	name = "magical confluence"
+	reagent_requirements = list()
+	tool_usage = list()
+	requirements = list(
+		/obj/item/natural/abyssalflame = 1,
+		/obj/item/natural/sylvanessence = 1,
+		/obj/item/natural/elementalrelic = 1
+	)
+	output = /obj/item/natural/melded/t4
+	starting_atom = /obj/item/natural/abyssalflame
+	attacked_atom = /obj/item/natural/elementalrelic
+	uses_attacked_atom = TRUE
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/arcyne/t5_meld
+	name = "arcanic abberation"
+	reagent_requirements = list()
+	tool_usage = list()
+	requirements = list(
+		/obj/item/natural/melded/t4 = 1,
+		/obj/item/natural/voidstone = 1,
+	)
+	output = /obj/item/natural/melded/t5
+	starting_atom = /obj/item/natural/voidstone
+	attacked_atom = /obj/item/natural/melded/t4
+	uses_attacked_atom = TRUE
+	craftdiff = 2

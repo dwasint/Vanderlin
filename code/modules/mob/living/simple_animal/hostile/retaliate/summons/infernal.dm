@@ -20,20 +20,21 @@
 	icon_state = "watcher"
 	icon_living = "watcher"
 	summon_primer = "You are an infernal watcher, a creature of lava and rock. You have watched over the chaos of the infernal plane long enough that it was been pointless to keep count."
+	tier = 3
 	icon_dead = "vvd"
 	gender = MALE
 	emote_hear = null
 	emote_see = null
 	speak_chance = 1
-	turns_per_move = 3
+	turns_per_move = 6
 	see_in_dark = 6
 	move_to_delay = 5
 	base_intents = list(/datum/intent/simple/bite)
 	butcher_results = list()
 	faction = list("infernal")
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
-	health = 200
-	maxHealth = 200
+	health = 600
+	maxHealth = 600
 	melee_damage_lower = 20
 	melee_damage_upper = 30
 	vision_range = 7
@@ -85,7 +86,14 @@
 	..()
 	var/turf/deathspot = get_turf(src)
 	new /obj/item/natural/moltencore(deathspot)
+	new /obj/item/natural/moltencore(deathspot)
+	new /obj/item/natural/hellhoundfang(deathspot)
+	new /obj/item/natural/hellhoundfang(deathspot)
+	new /obj/item/natural/infernalash(deathspot)
+	new /obj/item/natural/infernalash(deathspot)
+	new /obj/item/natural/melded/t1(deathspot)
 	update_icon()
+	spill_embedded_objects()
 	qdel(src)
 
 
@@ -99,7 +107,7 @@
 	icon_living = "fiend"
 	icon_dead = "vvd"
 	summon_primer = "You are fiend, a large sized demon from the infernal plane. You have imps and hounds at your beck and call, able to do whatever you wished. Now you've been pulled from your home into a new world, that is decidedly lacking in fire. How you react to these events, only time can tell."
-	summon_primer = "You are an imp, a small creature spending it's time in the infernal plane amusing itself and eating meat. Now you've been pulled from your home into a new world, that is decidedly lacking in fire. How you react to these events, only time can tell."
+	tier = 4
 	gender = MALE
 	emote_hear = null
 	emote_see = null
@@ -150,7 +158,13 @@
 	..()
 	var/turf/deathspot = get_turf(src)
 	new /obj/item/natural/abyssalflame(deathspot)
+	new /obj/item/natural/moltencore(deathspot)
+	new /obj/item/natural/hellhoundfang(deathspot)
+	new /obj/item/natural/infernalash(deathspot)
+	new /obj/item/natural/infernalash(deathspot)
+	new /obj/item/natural/melded/t2(deathspot)
 	update_icon()
+	spill_embedded_objects()
 	qdel(src)
 
 /mob/living/simple_animal/hostile/retaliate/infernal/fiend/OpenFire(atom/A)

@@ -306,6 +306,26 @@
 
 /obj/item/spellbook_unfinished/pre_arcyne/attackby(obj/item/P, mob/living/carbon/human/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
+	if(istype(P, /obj/item/gem/amethyst))
+		user.visible_message(span_notice("I run my arcyne energy into the crystal. It's artifical lattices pulse and then fall dormant. It must not be strong enough to make a spellbook with!"))
+		return
+	if(istype(P, /obj/item/gem/violet))
+		if(isturf(loc)&& (found_table))
+			var/crafttime = (100 - ((user.mind?.get_skill_level(/datum/skill/magic/arcane))*5))
+			if(do_after(user, crafttime, target = src))
+				if(isarcyne(user))
+					playsound(loc, 'sound/magic/crystal.ogg', 100, TRUE)
+					user.visible_message(span_warning("[user] crushes [user.p_their()] [P]! Its powder seeps into the [src]."), \
+						span_notice("I run my arcyne energy into the crystal. It shatters and seeps into the cover of the tome! Runes and symbols of an unknowable language cover it's pages now..."))
+					var/obj/item/book/granter/spellbook/newbook = new /obj/item/book/granter/spellbook/expert(loc)
+					newbook.owner = user
+					qdel(P)
+					qdel(src)
+				else
+					to_chat(user, span_notice("I press the gem into the cover of the book. What a pretty design this would make!"))
+					return ..()
+		else
+			to_chat(user, "<span class='warning'>You need to put the [src] on a table to work on it.</span>")
 	if(istype(P, /obj/item/gem))
 		if(isturf(loc)&& (found_table))
 			var/crafttime = (100 - ((user.mind?.get_skill_level(/datum/skill/magic/arcane))*5))
@@ -348,7 +368,7 @@
 							newbook.desc += " Traces of multicolored stone limn its margins."
 							qdel(P)
 							qdel(src)
-						else if(the_rock.magic_power >5 && the_rock.magic_power >=10)
+						else if(the_rock.magic_power >=10)
 							var/obj/item/book/granter/spellbook/newbook = new /obj/item/book/granter/spellbook/apprentice(loc)
 							newbook.owner = user
 							newbook.born_of_rock = TRUE
@@ -375,7 +395,7 @@
 								newbook.desc += " Traces of multicolored stone limn its margins."
 								qdel(P)
 								qdel(src)
-							else if(the_rock.magic_power >10)
+							else if(the_rock.magic_power >=10)
 								var/obj/item/book/granter/spellbook/newbook = new /obj/item/book/granter/spellbook/apprentice(loc)
 								newbook.owner = user
 								newbook.born_of_rock = TRUE

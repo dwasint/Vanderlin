@@ -101,13 +101,6 @@
 	attack_verb_simple = "claw"
 	dodgetime = 30
 	aggressive = 1
-//	stat_attack = UNCONSCIOUS
-	remains_type = /obj/effect/decal/remains/wolf
-
-	///this mob was updated to new ai
-	//AIStatus = AI_OFF
-	//can_have_ai = FALSE
-	//ai_controller = /datum/ai_controller/imp
 
 /obj/projectile/magic/firebolt
 	name = "ball of fire"
@@ -137,6 +130,9 @@
 	new /obj/item/natural/infernalash(deathspot)
 	new /obj/item/natural/infernalash(deathspot)
 	new /obj/item/natural/infernalash(deathspot)
+	new /obj/item/natural/infernalash(deathspot)
+	new /obj/item/natural/infernalash(deathspot)
+	new /obj/item/natural/infernalash(deathspot)
 	update_icon()
 	sleep(1)
 	qdel(src)
@@ -160,12 +156,13 @@
 	icon_state = "hellhound"
 	icon_living = "hellhound"
 	icon_dead = "vvd"
-	summon_primer = "You are an hellhound, a moderate sized canine made of heat and flame. You spend time in the infernal plane hunting and incinerating things to your hearts content. Now you've been pulled from your home into a new world, that is decidedly lacking in fire. How you react to these events, only time can tell."
+	summon_primer = "You are a hellhound, a moderate sized canine made of heat and flame. You spend time in the infernal plane hunting and incinerating things to your hearts content. Now you've been pulled from your home into a new world, that is decidedly lacking in fire. How you react to these events, only time can tell."
+	tier = 2
 	gender = MALE
 	emote_hear = null
 	emote_see = null
 	speak_chance = 1
-	turns_per_move = 3
+	turns_per_move = 6
 	see_in_dark = 6
 	move_to_delay = 3
 	base_intents = list(/datum/intent/simple/bite)
@@ -210,7 +207,13 @@
 	var/turf/deathspot = get_turf(src)
 	new /obj/item/natural/hellhoundfang(deathspot)
 	new /obj/item/natural/hellhoundfang(deathspot)
+	new /obj/item/natural/hellhoundfang(deathspot)
+	new /obj/item/natural/hellhoundfang(deathspot)
+	new /obj/item/natural/infernalash(deathspot)
+	new /obj/item/natural/infernalash(deathspot)
+	new /obj/item/natural/infernalash(deathspot)
 	update_icon()
+	spill_embedded_objects()
 	qdel(src)
 
 
