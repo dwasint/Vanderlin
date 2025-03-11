@@ -117,7 +117,7 @@
 			if(mana_pool.amount > -amount_to_adjust) // not risking negatives
 				mana_pool.adjust_mana(amount_to_adjust)
 		else
-			if(mana_pool.amount < mana_pool.softcap)
+			if(mana_pool.amount < mana_pool.get_softcap())
 				mana_pool.adjust_mana(amount_to_adjust)
 
 /mob/living/carbon/proc/adjust_personal_mana(amount_to_adjust)

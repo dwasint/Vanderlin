@@ -100,7 +100,7 @@
 			if(parent:hud_used)
 				var/datum/hud/human/hud_used = parent:hud_used
 				if(istype(hud_used))
-					var/filled = round((src.amount / softcap) * 100, 20)
+					var/filled = round((src.amount / get_softcap()) * 100, 20)
 					filled = min(filled, 120)
 					hud_used.mana.icon_state = "mana[filled]"
 
@@ -108,10 +108,10 @@
 	SIGNAL_HANDLER
 
 	var/general_amount_estimate
-	var/sc_very_low = (softcap * 0.1)
-	var/sc_low = (softcap * 0.3)
-	var/sc_medium = (softcap * 0.6)
-	var/sc_high = (softcap * 0.8)
+	var/sc_very_low = (get_softcap() * 0.1)
+	var/sc_low = (get_softcap() * 0.3)
+	var/sc_medium = (get_softcap() * 0.6)
+	var/sc_high = (get_softcap() * 0.8)
 
 	//determines what the status displays, it'll be a generic/non-obvious value as a design choice
 	if(amount)
@@ -123,9 +123,9 @@
 			general_amount_estimate = "MEDIUM"
 		else if (amount > sc_medium && amount < sc_high)
 			general_amount_estimate = "HIGH"
-		else if (amount > sc_high && amount <= softcap)
+		else if (amount > sc_high && amount <= get_softcap())
 			general_amount_estimate = "VERY HIGH"
-		else if (amount > softcap)
+		else if (amount > get_softcap())
 			general_amount_estimate = "OVERLOADED"
 	else
 		general_amount_estimate = "ERROR"
@@ -171,7 +171,7 @@
 
 	if (ethereal_recharge_rate != 0)
 		adjust_mana(ethereal_recharge_rate, attunements_to_generate)
-	if((intrinsic_recharge_sources & MANA_ALL_LEYLINES) && amount < softcap)
+	if((intrinsic_recharge_sources & MANA_ALL_LEYLINES) && amount < get_softcap())
 		var/list/leylines = list()
 		for(var/obj/effect/ebeam/beam in range(3, parent))
 			if(!beam.owner.mana_pool)
@@ -188,7 +188,7 @@
 				var/sane_distance = leylines[leyline] + 1
 				leyline.transfer_specific_mana(src, (leyline.get_transfer_rate_for(src) / sane_distance) * 0.1)
 
-	if((intrinsic_recharge_sources & MANA_ALL_PYLONS) && amount < softcap)
+	if((intrinsic_recharge_sources & MANA_ALL_PYLONS) && amount < get_softcap())
 		var/list/pylons = list()
 		for(var/obj/structure/mana_pylon/pylon in range(3, parent))
 			var/sane_distance = get_dist(parent, pylon) + 1
@@ -227,12 +227,12 @@
 		else if (parent.mana_overloaded)
 			parent.stop_mana_overload()
 
-	if (amount > softcap && !length(decay_prevention)) // why was this amount < softcap
+	if (amount > get_softcap() && !length(decay_prevention)) // why was this amount < softcap
 	// exponential decay
 	// exponentially decays amount when amount surpasses softcap, with [exponential_decay_divisor] being the (inverse) decay factor
 	// can only decay however much amount we are over softcap
 	// imperfect as of now (need to test)
-		var/exponential_decay = (max(-((((NUM_E**((amount - softcap)/exponential_decay_divisor)) + 1))), (softcap - amount)))
+		var/exponential_decay = (max(-((((NUM_E**((amount - get_softcap())/exponential_decay_divisor)) + 1))), (get_softcap() - amount)))
 		// in desmos: f\left(x\right)=\max\left(\left(\left(-\left(e\right)^{\left(\frac{\left(x-t\right)}{c}\right)}\right)+1\right),\ \left(t-x\right)\right)\ \left\{x\ge t\right\}
 		// t=50
 		// c=150
@@ -267,7 +267,7 @@
 
 /datum/mana_pool/proc/get_maximum_transfer_for(datum/mana_pool/target_pool)
 	var/cached_cap = transfer_caps[target_pool]
-	return (cached_cap || (transfer_default_softcap ? target_pool.softcap : target_pool.maximum_mana_capacity))
+	return (cached_cap || (transfer_default_softcap ? target_pool.get_softcap() : target_pool.maximum_mana_capacity))
 
 /datum/mana_pool/proc/transfer_specific_mana(datum/mana_pool/other_pool, amount_to_transfer, decrement_budget = TRUE)
 	// ensure we dont give more than we hold and dont give more than they CAN hold
@@ -340,7 +340,7 @@
 			if(parent:hud_used)
 				var/datum/hud/human/hud_used = parent:hud_used
 				if(istype(hud_used))
-					var/filled = round((src.amount / softcap) * 100, 20)
+					var/filled = round((src.amount / get_softcap()) * 100, 20)
 					filled = min(filled, 120)
 					hud_used.mana.icon_state = "mana[filled]"
 
@@ -426,13 +426,17 @@
 	return (amount / maximum_mana_capacity) * 100
 
 /datum/mana_pool/proc/get_percent_to_softcap()
-	SHOULD_BE_PURE(TRUE)
-
-	return (amount / softcap) * 100
+	return (amount / get_softcap()) * 100
 
 /datum/mana_pool/proc/get_percent_of_softcap_to_max()
-	SHOULD_BE_PURE(TRUE)
+	return (get_softcap() / maximum_mana_capacity) * 100
 
-	return (softcap / maximum_mana_capacity) * 100
+/datum/mana_pool/proc/get_softcap()
+	var/mob/living/L = parent
+	if(!istype(L) || !L.mind)
+		return softcap
+
+	var/skill_level = max(1, L.mind.get_skill_level(/datum/skill/magic/arcane))
+	return softcap * skill_level
 
 #undef MANA_POOL_REPLACE_ALL_ATTUNEMENTS
