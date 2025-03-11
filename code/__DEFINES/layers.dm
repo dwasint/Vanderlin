@@ -22,11 +22,11 @@
 #define WEATHER_RENDER_TARGET "*WEATHER_OVERLAY_PLANE"
 
 #define OPENSPACE_LAYER 17 //Openspace layer over all
-#define OPENSPACE_PLANE -8 //Openspace plane below all turfs
-#define OPENSPACE_BACKDROP_PLANE -7
+#define OPENSPACE_PLANE -9 //Openspace plane below all turfs
+#define OPENSPACE_BACKDROP_PLANE -8
 
-#define FLOOR_PLANE -6
-#define GAME_PLANE -5
+#define FLOOR_PLANE -7
+#define GAME_PLANE -6
 #define GAME_PLANE_RENDER_TARGET "GAME_PLANE_RENDER_TARGET"
 #define GAME_PLANE_FOV_HIDDEN -5
 #define GAME_PLANE_UPPER -4
