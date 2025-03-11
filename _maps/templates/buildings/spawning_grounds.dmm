@@ -7,27 +7,27 @@
 	pixel_y = 24;
 	pixel_x = -16
 	},
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/template_noop)
 "m" = (
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/template_noop)
 "z" = (
 /obj/structure/circle_protection{
 	name = null
 	},
 /obj/effect/building_node/spawning_grounds,
-/turf/open/floor/rogue/cobblerock,
+/turf/open/floor/cobblerock,
 /area/template_noop)
 "N" = (
 /obj/machinery/light/fueled/firebowl/stump,
-/turf/open/floor/rogue/cobblerock,
+/turf/open/floor/cobblerock,
 /area/template_noop)
 "T" = (
 /turf/open/floor/blocks,
 /area/template_noop)
 "V" = (
-/turf/open/floor/rogue/cobblerock,
+/turf/open/floor/cobblerock,
 /area/template_noop)
 
 (1,1,1) = {"

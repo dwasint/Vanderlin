@@ -1,9 +1,9 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/template_noop)
 "b" = (
-/turf/open/floor/rogue/cobble,
+/turf/open/floor/cobble,
 /area/template_noop)
 "h" = (
 /turf/open/floor/carpet/inn,
@@ -12,14 +12,14 @@
 /obj/machinery/light/rogue/torchholder{
 	pixel_y = 26
 	},
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/template_noop)
 "n" = (
 /obj/structure/table/wood{
 	icon_state = "longtable_mid"
 	},
 /obj/effect/foodspot,
-/turf/open/floor/rogue/naturalstone,
+/turf/open/floor/naturalstone,
 /area/template_noop)
 "s" = (
 /obj/structure/rack/rogue/shelf/biggest,
@@ -27,7 +27,7 @@
 	pixel_x = 8
 	},
 /obj/item/reagent_containers/glass/cup/wooden,
-/turf/open/floor/rogue/twig,
+/turf/open/floor/twig,
 /area/template_noop)
 "u" = (
 /obj/effect/workspot,
@@ -37,7 +37,7 @@
 /turf/open/floor/blocks,
 /area/template_noop)
 "B" = (
-/turf/open/floor/rogue/twig,
+/turf/open/floor/twig,
 /area/template_noop)
 "C" = (
 /obj/structure/table/wood{
@@ -45,7 +45,7 @@
 	icon_state = "longtable_mid"
 	},
 /obj/effect/foodspot,
-/turf/open/floor/rogue/cobble,
+/turf/open/floor/cobble,
 /area/template_noop)
 "D" = (
 /obj/machinery/light/rogue/torchholder{
@@ -65,7 +65,7 @@
 	},
 /obj/effect/foodspot,
 /obj/effect/building_node/bar,
-/turf/open/floor/rogue/cobble,
+/turf/open/floor/cobble,
 /area/template_noop)
 "Q" = (
 /turf/closed/wall/mineral/rogue/wood,
@@ -79,13 +79,13 @@
 	icon_state = "longtable"
 	},
 /obj/effect/foodspot,
-/turf/open/floor/rogue/twig,
+/turf/open/floor/twig,
 /area/template_noop)
 "U" = (
 /obj/machinery/light/rogue/torchholder{
 	pixel_y = 26
 	},
-/turf/open/floor/rogue/cobble,
+/turf/open/floor/cobble,
 /area/template_noop)
 "W" = (
 /obj/structure/fermentation_keg{
@@ -102,7 +102,7 @@
 	pixel_x = -3;
 	layer = 2.91
 	},
-/turf/open/floor/rogue/twig,
+/turf/open/floor/twig,
 /area/template_noop)
 
 (1,1,1) = {"

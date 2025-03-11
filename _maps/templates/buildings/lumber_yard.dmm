@@ -3,32 +3,32 @@
 /obj/structure/flora/rogueshroom,
 /obj/structure/soil,
 /obj/effect/workspot,
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/template_noop)
 "k" = (
 /obj/structure/soil,
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/template_noop)
 "n" = (
 /obj/effect/building_node/lumber_yard,
-/turf/open/floor/rogue/cobblerock,
+/turf/open/floor/cobblerock,
 /area/template_noop)
 "o" = (
 /obj/machinery/light/fueled/firebowl/stump,
-/turf/open/floor/rogue/cobblerock,
+/turf/open/floor/cobblerock,
 /area/template_noop)
 "r" = (
 /turf/open/floor/blocks,
 /area/template_noop)
 "u" = (
-/turf/open/floor/rogue/cobblerock,
+/turf/open/floor/cobblerock,
 /area/template_noop)
 "z" = (
 /obj/machinery/light/fueled/firebowl/stump,
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/template_noop)
 "R" = (
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/template_noop)
 
 (1,1,1) = {"

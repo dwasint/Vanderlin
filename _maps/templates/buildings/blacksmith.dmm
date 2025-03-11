@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/open/floor/rogue/cobblerock,
+/turf/open/floor/cobblerock,
 /area/template_noop)
 "c" = (
 /obj/machinery/light/rogue/forge,
@@ -12,7 +12,7 @@
 /turf/open/floor/blocks,
 /area/template_noop)
 "n" = (
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/template_noop)
 "s" = (
 /obj/machinery/anvil/crafted,

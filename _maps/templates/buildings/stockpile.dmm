@@ -7,29 +7,29 @@
 /obj/effect/decal/cobbleedge/alt{
 	dir = 6
 	},
-/turf/open/floor/rogue/cobblerock,
+/turf/open/floor/cobblerock,
 /area/template_noop)
 "r" = (
 /obj/effect/building_node/stockpile,
-/turf/open/floor/rogue/cobble/alt,
+/turf/open/floor/cobble/alt,
 /area/template_noop)
 "t" = (
-/turf/open/floor/rogue/cobblerock,
+/turf/open/floor/cobblerock,
 /area/template_noop)
 "v" = (
 /turf/open/floor/blocks,
 /area/template_noop)
 "z" = (
-/turf/open/floor/rogue/cobble/alt,
+/turf/open/floor/cobble/alt,
 /area/template_noop)
 "H" = (
 /obj/effect/decal/cobbleedge/alt{
 	dir = 4
 	},
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/template_noop)
 "N" = (
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/template_noop)
 "Q" = (
 /obj/structure/closet/crate/chest/wicker{
@@ -43,19 +43,19 @@
 /obj/structure/closet/crate/roguecloset/inn/chest{
 	pixel_y = 10
 	},
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/template_noop)
 "S" = (
 /obj/effect/decal/cobbleedge/alt{
 	dir = 10
 	},
-/turf/open/floor/rogue/cobblerock,
+/turf/open/floor/cobblerock,
 /area/template_noop)
 "U" = (
 /obj/effect/decal/cobbleedge/alt{
 	dir = 4
 	},
-/turf/open/floor/rogue/cobblerock,
+/turf/open/floor/cobblerock,
 /area/template_noop)
 "V" = (
 /obj/structure/fermentation_keg{
@@ -69,7 +69,7 @@
 	pixel_y = -16;
 	layer = 3
 	},
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/template_noop)
 
 (1,1,1) = {"

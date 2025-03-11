@@ -23,10 +23,10 @@
 	pixel_x = 8;
 	layer = 2.91
 	},
-/turf/open/floor/rogue/cobblerock,
+/turf/open/floor/cobblerock,
 /area/template_noop)
 "E" = (
-/turf/open/floor/rogue/dirt,
+/turf/open/floor/dirt,
 /area/template_noop)
 "K" = (
 /obj/effect/building_node/mines,
@@ -37,10 +37,10 @@
 /turf/open/floor/blocks,
 /area/template_noop)
 "P" = (
-/turf/open/floor/rogue/cobblerock,
+/turf/open/floor/cobblerock,
 /area/template_noop)
 "S" = (
-/turf/open/floor/rogue/cobblerock{
+/turf/open/floor/cobblerock{
 	icon = 'icons/obj/stairs.dmi';
 	icon_state = "stonestairs"
 	},
