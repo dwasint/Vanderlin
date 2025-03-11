@@ -25,7 +25,7 @@
 
 	RegisterSignal(parent, COMSIG_ATOM_STEAM_USE, PROC_REF(try_use_steam))
 	RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, PROC_REF(register_usage))
-	RegisterSignal(parent, COMSIG_ATOM_STEAM_USE, PROC_REF(try_increase_steam))
+	RegisterSignal(parent, COMSIG_ATOM_STEAM_INCREASE, PROC_REF(try_increase_steam))
 
 /datum/component/steam_storage/proc/try_use_steam(atom/source, amount_used, id)
 	if((!id && tank_id) && source != parent)
