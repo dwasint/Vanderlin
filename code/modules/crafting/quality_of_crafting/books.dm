@@ -315,5 +315,6 @@
 
 	types = list(
 		/datum/repeatable_crafting_recipe/arcyne,
+		/datum/slapcraft_recipe/arcyne,
 		/datum/runerituals,
 	)

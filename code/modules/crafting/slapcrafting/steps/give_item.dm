@@ -114,3 +114,7 @@
 	desc = "Add a finished lock."
 	item_types = list(/obj/item/customlock/finished)
 	insert_item_into_result = TRUE //check contents of finished item to handle lock behavior
+
+/datum/slapcraft_step/item/amethyst
+	desc = "Add an amethyst."
+	item_types = list(/obj/item/gem/amethyst)
