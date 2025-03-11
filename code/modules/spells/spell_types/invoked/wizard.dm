@@ -2154,7 +2154,7 @@
 	invocation_type = "shout"
 
 	summon_type = list(
-		/obj/machinery/light/rogue/campfire/createbonfire5e
+		/obj/machinery/light/fueled/campfire/createbonfire5e
 	)
 	summon_lifespan = 15 MINUTES
 	summon_amt = 1
@@ -2164,7 +2164,7 @@
 		/datum/attunement/fire = 0.3,
 	)
 
-/obj/machinery/light/rogue/campfire/createbonfire5e
+/obj/machinery/light/fueled/campfire/createbonfire5e
 	name = "magical bonfire"
 	icon_state = "churchfire1"
 	base_state = "churchfire"

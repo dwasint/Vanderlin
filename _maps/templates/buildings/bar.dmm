@@ -6,10 +6,10 @@
 /turf/open/floor/cobble,
 /area/template_noop)
 "h" = (
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/template_noop)
 "k" = (
-/obj/machinery/light/rogue/torchholder{
+/obj/machinery/light/fueled/torchholder{
 	pixel_y = 26
 	},
 /turf/open/floor/dirt,
@@ -31,7 +31,7 @@
 /area/template_noop)
 "u" = (
 /obj/effect/workspot,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/template_noop)
 "A" = (
 /turf/open/floor/blocks,
@@ -48,7 +48,7 @@
 /turf/open/floor/cobble,
 /area/template_noop)
 "D" = (
-/obj/machinery/light/rogue/torchholder{
+/obj/machinery/light/fueled/torchholder{
 	pixel_y = 26
 	},
 /obj/structure/rack/rogue/shelf/biggest,
@@ -56,7 +56,7 @@
 	pixel_x = 8
 	},
 /obj/item/reagent_containers/glass/cup/wooden,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/template_noop)
 "O" = (
 /obj/structure/table/wood{
@@ -72,7 +72,7 @@
 /area/template_noop)
 "S" = (
 /obj/structure/mineral_door/swing_door,
-/turf/open/floor/carpet/inn,
+/turf/open/floor/carpet,
 /area/template_noop)
 "T" = (
 /obj/structure/table/wood{
@@ -82,7 +82,7 @@
 /turf/open/floor/twig,
 /area/template_noop)
 "U" = (
-/obj/machinery/light/rogue/torchholder{
+/obj/machinery/light/fueled/torchholder{
 	pixel_y = 26
 	},
 /turf/open/floor/cobble,

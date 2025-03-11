@@ -3,7 +3,7 @@
 /turf/closed/mineral/bedrock,
 /area/template_noop)
 "f" = (
-/obj/machinery/light/rogue/firebowl/church,
+/obj/machinery/light/fueled/firebowl/church,
 /obj/effect/decal/cobbleedge/alt{
 	dir = 6
 	},

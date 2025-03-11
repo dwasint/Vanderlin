@@ -193,14 +193,14 @@ s
 			return
 	else ..()
 
-/obj/machinery/light/rogue/forge/arcane
+/obj/machinery/light/fueled/forge/arcane
 	icon = 'icons/roguetown/misc/forge.dmi'
 	name = "infernal forge"
 	desc = "This forge uses cycling magma from an internal core to heat things."
 	icon_state = "infernal0"
 	base_state = "infernal"
 
-/obj/machinery/light/rogue/forge/arcane/process()
+/obj/machinery/light/fueled/forge/arcane/process()
 	if(isopenturf(loc))
 		var/turf/open/O = loc
 		if(IS_WET_OPEN_TURF(O))

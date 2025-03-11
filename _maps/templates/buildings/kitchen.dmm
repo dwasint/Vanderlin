@@ -74,7 +74,7 @@
 /area/template_noop)
 "J" = (
 /obj/effect/foodspot,
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /turf/open/floor/blocks,
 /area/template_noop)
 "K" = (
@@ -87,7 +87,7 @@
 /area/template_noop)
 "O" = (
 /obj/effect/foodspot,
-/obj/structure/chair/stool/rogue,
+/obj/structure/chair/stool,
 /turf/open/floor/dirt,
 /area/template_noop)
 "P" = (
@@ -98,7 +98,7 @@
 /turf/open/floor/dirt,
 /area/template_noop)
 "T" = (
-/obj/item/chair/stool/bar/rogue/crafted,
+/obj/item/chair/stool/bar/crafted,
 /turf/open/floor/dirt,
 /area/template_noop)
 "U" = (
@@ -117,7 +117,7 @@
 /obj/effect/decal/cobbleedge/alt{
 	dir = 1
 	},
-/obj/machinery/light/rogue/hearth,
+/obj/machinery/light/fueled/hearth,
 /turf/open/floor/dirt,
 /area/template_noop)
 "Z" = (

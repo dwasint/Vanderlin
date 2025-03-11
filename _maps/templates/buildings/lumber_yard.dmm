@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/obj/structure/flora/rogueshroom,
+/obj/structure/flora/shroom_tree,
 /obj/structure/soil,
 /obj/effect/workspot,
 /turf/open/floor/dirt,
