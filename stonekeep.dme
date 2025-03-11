@@ -643,6 +643,7 @@
 #include "code\datums\enchantments\leaping.dm"
 #include "code\datums\enchantments\mana_capacity.dm"
 #include "code\datums\enchantments\mana_regeneration.dm"
+#include "code\datums\enchantments\phoenix_guard.dm"
 #include "code\datums\enchantments\silver.dm"
 #include "code\datums\enchantments\temporal_rewind.dm"
 #include "code\datums\event_groups\_base.dm"
