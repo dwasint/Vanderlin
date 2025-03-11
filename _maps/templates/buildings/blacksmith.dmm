@@ -5,11 +5,11 @@
 "c" = (
 /obj/machinery/light/rogue/forge,
 /obj/effect/workspot,
-/turf/open/floor/rogue/blocks,
+/turf/open/floor/blocks,
 /area/template_noop)
 "k" = (
 /obj/effect/building_node/blacksmith,
-/turf/open/floor/rogue/blocks,
+/turf/open/floor/blocks,
 /area/template_noop)
 "n" = (
 /turf/open/floor/rogue/dirt,
@@ -17,22 +17,22 @@
 "s" = (
 /obj/machinery/anvil/crafted,
 /obj/effect/workspot,
-/turf/open/floor/rogue/blocks,
+/turf/open/floor/blocks,
 /area/template_noop)
 "u" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/template_noop)
 "Q" = (
-/turf/open/floor/rogue/blocks,
+/turf/open/floor/blocks,
 /area/template_noop)
 "Z" = (
-/obj/structure/fermenting_barrel{
+/obj/structure/fermentation_keg{
 	pixel_x = 8;
 	layer = 2.89;
 	density = 0;
 	pixel_y = -2
 	},
-/turf/open/floor/rogue/blocks,
+/turf/open/floor/blocks,
 /area/template_noop)
 
 (1,1,1) = {"

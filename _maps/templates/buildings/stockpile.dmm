@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/template_noop)
 "f" = (
 /obj/machinery/light/rogue/firebowl/church,
@@ -17,7 +17,7 @@
 /turf/open/floor/rogue/cobblerock,
 /area/template_noop)
 "v" = (
-/turf/open/floor/rogue/blocks,
+/turf/open/floor/blocks,
 /area/template_noop)
 "z" = (
 /turf/open/floor/rogue/cobble/alt,
@@ -36,7 +36,7 @@
 	pixel_y = -3;
 	pixel_x = -6
 	},
-/turf/open/floor/rogue/blocks,
+/turf/open/floor/blocks,
 /area/template_noop)
 "R" = (
 /obj/structure/closet/crate/roguecloset/inn/chest,
@@ -58,14 +58,14 @@
 /turf/open/floor/rogue/cobblerock,
 /area/template_noop)
 "V" = (
-/obj/structure/fermenting_barrel{
+/obj/structure/fermentation_keg{
 	layer = 2.8
 	},
-/obj/structure/fermenting_barrel{
+/obj/structure/fermentation_keg{
 	pixel_x = 16;
 	pixel_y = -8
 	},
-/obj/structure/fermenting_barrel{
+/obj/structure/fermentation_keg{
 	pixel_y = -16;
 	layer = 3
 	},

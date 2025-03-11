@@ -34,7 +34,7 @@
 /turf/open/floor/carpet/inn,
 /area/template_noop)
 "A" = (
-/turf/open/floor/rogue/blocks,
+/turf/open/floor/blocks,
 /area/template_noop)
 "B" = (
 /turf/open/floor/rogue/twig,
@@ -88,16 +88,16 @@
 /turf/open/floor/rogue/cobble,
 /area/template_noop)
 "W" = (
-/obj/structure/fermenting_barrel{
+/obj/structure/fermentation_keg{
 	pixel_y = 13;
 	pixel_x = -7;
 	layer = 2.89
 	},
-/obj/structure/fermenting_barrel{
+/obj/structure/fermentation_keg{
 	pixel_y = 13;
 	pixel_x = 8
 	},
-/obj/structure/fermenting_barrel{
+/obj/structure/fermentation_keg{
 	pixel_y = 29;
 	pixel_x = -3;
 	layer = 2.91

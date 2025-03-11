@@ -23,7 +23,7 @@
 /turf/open/floor/rogue/dirt,
 /area/template_noop)
 "p" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/template_noop)
 "r" = (
 /obj/structure/irrigation_channel,
@@ -35,10 +35,10 @@
 /area/template_noop)
 "v" = (
 /obj/structure/irrigation_channel,
-/turf/open/floor/rogue/blocks,
+/turf/open/floor/blocks,
 /area/template_noop)
 "y" = (
-/obj/machinery/light/rogue/firebowl/stump,
+/obj/machinery/light/fueled/firebowl/stump,
 /turf/open/floor/rogue/cobblerock,
 /area/template_noop)
 "z" = (
@@ -49,12 +49,12 @@
 /turf/open/floor/rogue/dirt,
 /area/template_noop)
 "F" = (
-/obj/machinery/light/rogue/firebowl/stump,
+/obj/machinery/light/fueled/firebowl/stump,
 /turf/open/floor/rogue/dirt,
 /area/template_noop)
 "M" = (
 /obj/structure/soil,
-/turf/open/floor/rogue/blocks,
+/turf/open/floor/blocks,
 /area/template_noop)
 "P" = (
 /turf/open/floor/rogue/cobblerock,
@@ -68,7 +68,7 @@
 /turf/open/floor/rogue/dirt,
 /area/template_noop)
 "Z" = (
-/turf/open/floor/rogue/blocks,
+/turf/open/floor/blocks,
 /area/template_noop)
 
 (1,1,1) = {"

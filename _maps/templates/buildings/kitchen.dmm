@@ -27,7 +27,7 @@
 /area/template_noop)
 "m" = (
 /obj/effect/foodspot,
-/turf/open/floor/rogue/blocks,
+/turf/open/floor/blocks,
 /area/template_noop)
 "p" = (
 /obj/effect/building_node/kitchen,
@@ -40,7 +40,7 @@
 /obj/effect/decal/cobbleedge/alt{
 	dir = 10
 	},
-/obj/machinery/light/rogue/firebowl/stump,
+/obj/machinery/light/fueled/firebowl/stump,
 /turf/open/floor/rogue/dirt,
 /area/template_noop)
 "v" = (
@@ -50,7 +50,7 @@
 /turf/open/floor/rogue/dirt,
 /area/template_noop)
 "w" = (
-/turf/open/floor/rogue/blocks,
+/turf/open/floor/blocks,
 /area/template_noop)
 "z" = (
 /obj/effect/decal/cobbleedge/alt{
@@ -62,7 +62,7 @@
 /turf/open/floor/rogue/cobblerock,
 /area/template_noop)
 "C" = (
-/obj/machinery/light/rogue/firebowl/stump,
+/obj/machinery/light/fueled/firebowl/stump,
 /turf/open/floor/rogue/dirt,
 /area/template_noop)
 "D" = (
@@ -70,12 +70,12 @@
 /turf/open/floor/rogue/dirt,
 /area/template_noop)
 "F" = (
-/turf/closed/mineral/rogue/bedrock,
+/turf/closed/mineral/bedrock,
 /area/template_noop)
 "J" = (
 /obj/effect/foodspot,
 /obj/structure/chair/stool/rogue,
-/turf/open/floor/rogue/blocks,
+/turf/open/floor/blocks,
 /area/template_noop)
 "K" = (
 /obj/effect/workspot,
@@ -124,10 +124,10 @@
 /obj/effect/decal/cobbleedge/alt{
 	dir = 9
 	},
-/obj/structure/fermenting_barrel/beer{
+/obj/structure/fermentation_keg/beer{
 	pixel_x = -10
 	},
-/obj/structure/fermenting_barrel/beer{
+/obj/structure/fermentation_keg/beer{
 	pixel_x = 9;
 	pixel_y = 11
 	},

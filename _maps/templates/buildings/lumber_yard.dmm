@@ -14,17 +14,17 @@
 /turf/open/floor/rogue/cobblerock,
 /area/template_noop)
 "o" = (
-/obj/machinery/light/rogue/firebowl/stump,
+/obj/machinery/light/fueled/firebowl/stump,
 /turf/open/floor/rogue/cobblerock,
 /area/template_noop)
 "r" = (
-/turf/open/floor/rogue/blocks,
+/turf/open/floor/blocks,
 /area/template_noop)
 "u" = (
 /turf/open/floor/rogue/cobblerock,
 /area/template_noop)
 "z" = (
-/obj/machinery/light/rogue/firebowl/stump,
+/obj/machinery/light/fueled/firebowl/stump,
 /turf/open/floor/rogue/dirt,
 /area/template_noop)
 "R" = (
