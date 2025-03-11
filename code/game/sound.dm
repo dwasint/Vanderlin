@@ -52,7 +52,6 @@
 			listeners += SSmobs.dead_players_by_zlevel[below_turf.z]
 
 	listeners += SSmobs.dead_players_by_zlevel[source_z]
-	listeners += SSmobs.camera_players_by_zlevel[source_z]
 	. = list()
 
 	for(var/mob/M as anything in listeners)
