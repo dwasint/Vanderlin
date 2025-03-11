@@ -1700,7 +1700,7 @@
 		addtimer(CALLBACK(src, PROC_REF(apply_damage), affected_turfs), wait = i * 1 SECONDS)
 	return TRUE
 
-/obj/effect/proc_holder/spell/invoked/arcyne_storm/proc/apply_damage(var/list/affected_turfs)
+/obj/effect/proc_holder/spell/invoked/arcyne_storm/proc/apply_damage(list/affected_turfs)
 	for(var/turf/damage_turf in affected_turfs)
 		new /obj/effect/temp_visual/hierophant/squares(damage_turf)
 		for(var/mob/living/L in damage_turf.contents)

@@ -111,7 +111,7 @@
 	if(amount <= 0)
 		qdel(src)
 
-/obj/item/chalk/proc/check_for_structures_and_closed_turfs(loc, var/obj/effect/decal/cleanable/roguerune/rune_to_scribe)
+/obj/item/chalk/proc/check_for_structures_and_closed_turfs(loc, obj/effect/decal/cleanable/roguerune/rune_to_scribe)
 	for(var/turf/T in range(loc, rune_to_scribe.runesize))
 		//check for /sturcture subtypes in the turf's contents
 		for(var/obj/structure/S in T.contents)
@@ -544,7 +544,7 @@
 	to_chat(src, span_userdanger("My summoner is [master.real_name]. They will need to convince me to obey them."))
 	to_chat(src, span_warning("[summon_primer]"))
 
-/obj/item/rope/chain/bindingshackles/proc/custom_name(mob/awakener, var/mob/chosen_one, iteration = 1)
+/obj/item/rope/chain/bindingshackles/proc/custom_name(mob/awakener, mob/chosen_one, iteration = 1)
 	if(iteration > 5)
 		return
 	var/chosen_name = sanitize_name(stripped_input(chosen_one, "What are you named?"))

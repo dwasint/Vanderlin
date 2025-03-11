@@ -775,7 +775,7 @@ It will also call down lightning strikes from the sky, and fling people with it'
 	. = ..()
 	INVOKE_ASYNC(src, PROC_REF(fall), flame_hit)
 
-/mob/living/simple_animal/hostile/retaliate/voiddragon/proc/chain_lightning(var/list/targets, mob/user = usr)
+/mob/living/simple_animal/hostile/retaliate/voiddragon/proc/chain_lightning(list/targets, mob/user = usr)
 	targets = list()
 	cl_cd = world.time + 500
 
