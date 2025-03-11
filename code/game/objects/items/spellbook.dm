@@ -1,8 +1,8 @@
 /**
-  * Spellbooks for learning arcane points.
-  * Difficult to learn by default, has multipliers for weed, gems and rituals.
-  * Inherits most of it's functionality from default granters, however also has some copy paste from roguebooks for parity.
-  */
+ * Spellbooks for learning arcane points.
+ * Difficult to learn by default, has multipliers for weed, gems and rituals.
+ * Inherits most of it's functionality from default granters, however also has some copy paste from roguebooks for parity.
+ */
 
 /obj/item/book/granter/spellbook
 	icon = 'icons/roguetown/items/books.dmi'
