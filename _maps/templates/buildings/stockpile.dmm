@@ -39,8 +39,8 @@
 /turf/open/floor/blocks,
 /area/template_noop)
 "R" = (
-/obj/structure/closet/crate/roguecloset/inn/chest,
-/obj/structure/closet/crate/roguecloset/inn/chest{
+/obj/structure/closet/crate/crafted_closet/inn/chest,
+/obj/structure/closet/crate/crafted_closet/inn/chest{
 	pixel_y = 10
 	},
 /turf/open/floor/dirt,

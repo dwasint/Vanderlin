@@ -22,7 +22,7 @@
 /turf/open/floor/naturalstone,
 /area/template_noop)
 "s" = (
-/obj/structure/rack/rogue/shelf/biggest,
+/obj/structure/rack/shelf/biggest,
 /obj/item/reagent_containers/glass/cup/wooden{
 	pixel_x = 8
 	},
@@ -51,7 +51,7 @@
 /obj/machinery/light/fueled/torchholder{
 	pixel_y = 26
 	},
-/obj/structure/rack/rogue/shelf/biggest,
+/obj/structure/rack/shelf/biggest,
 /obj/item/reagent_containers/glass/cup/wooden{
 	pixel_x = 8
 	},
@@ -68,7 +68,7 @@
 /turf/open/floor/cobble,
 /area/template_noop)
 "Q" = (
-/turf/closed/wall/mineral/rogue/wood,
+/turf/closed/wall/mineral/wood,
 /area/template_noop)
 "S" = (
 /obj/structure/mineral_door/swing_door,
