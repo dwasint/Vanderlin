@@ -63,6 +63,8 @@
 
 	var/list/maptext_info = list("Last Generated" = 0, "Total Mana" = 0)
 
+	var/list/decay_prevention
+
 /datum/mana_pool/New(atom/parent = null)
 	. = ..()
 	donation_budget_this_tick = max_donation_rate_per_second
@@ -220,12 +222,12 @@
 
 	if (parent)
 		if (amount > parent.mana_overload_threshold)
-			var/effect_mult = (((amount / parent.mana_overload_threshold) - 1) * parent.mana_overload_coefficient)
+			var/effect_mult = (((amount / (parent.mana_overload_threshold * 0.05)) - 1) * parent.mana_overload_coefficient)
 			parent.process_mana_overload(effect_mult)
 		else if (parent.mana_overloaded)
 			parent.stop_mana_overload()
 
-	if (amount > softcap) // why was this amount < softcap
+	if (amount > softcap && !length(decay_prevention)) // why was this amount < softcap
 	// exponential decay
 	// exponentially decays amount when amount surpasses softcap, with [exponential_decay_divisor] being the (inverse) decay factor
 	// can only decay however much amount we are over softcap
@@ -341,6 +343,18 @@
 					var/filled = round((src.amount / softcap) * 100, 20)
 					filled = min(filled, 120)
 					hud_used.mana.icon_state = "mana[filled]"
+
+///this takes a string and adds it to our halters creates the list if it doesn't exist
+/datum/mana_pool/proc/halt_mana_disperse(string)
+	if(!decay_prevention)
+		decay_prevention = list()
+	decay_prevention |= string
+
+///this takes a string and removes it from our halters returns early if empty
+/datum/mana_pool/proc/restore_mana_disperse(string)
+	if(!decay_prevention)
+		return
+	decay_prevention -= string
 
 /// Returns an adjusted amount of "effective" mana, affected by the attunements.
 /// Will always return a minimum of zero and a maximum of the total amount of mana we can give multiplied by the mults.

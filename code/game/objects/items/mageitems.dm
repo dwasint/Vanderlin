@@ -580,6 +580,8 @@
 	desc = "Volcanic glass cooled from molten lava rapidly."
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
+	list_reagents = list(/datum/reagent/toxin/manabloom_juice = MEAL_FILLING)
+
 
 /obj/item/natural/artifact
 	name = "runed artifact"

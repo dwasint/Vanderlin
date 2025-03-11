@@ -4,6 +4,7 @@
 /mob/process_mana_overload(effect_mult)
 	if (!mana_overloaded)
 		to_chat(src, span_warning("You start feeling fuzzy and tingly all around..."))
+	mana_pool.amount = 0
 
 	return ..()
 
@@ -16,6 +17,7 @@
 
 	if (effect_mult > MANA_OVERLOAD_DAMAGE_THRESHOLD)
 		apply_damage(MANA_OVERLOAD_BASE_DAMAGE * adjusted_mult, damagetype = BRUTE, forced = TRUE, spread_damage = TRUE)
+		blood_volume = max(BLOOD_VOLUME_BAD, blood_volume - round(effect_mult * 0.25, 1))
 
 /atom/movable/proc/stop_mana_overload()
 	mana_overloaded = FALSE

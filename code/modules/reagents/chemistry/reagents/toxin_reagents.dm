@@ -187,3 +187,31 @@
 		return
 	reac_volume = round(reac_volume,0.1)
 	T.acid_act(acidpwr, reac_volume)
+
+/datum/reagent/toxin/manabloom_juice
+	name = "Manabloom Juice"
+	description = "A potent mana regeneration extract, it however has the issue of stopping your bodies ability to naturally disperse mana."
+	glows = TRUE
+	color = "#6eb9e4"
+	taste_description = "flowers"
+	metabolization_rate = 0.1 //this shit will kill you
+
+/datum/reagent/toxin/manabloom_juice/on_mob_metabolize(mob/living/L)
+	. = ..()
+	if(!L.mana_pool)
+		return
+
+	L.mana_pool.halt_mana_disperse("manabloom")
+
+/datum/reagent/toxin/manabloom_juice/on_mob_life(mob/living/carbon/M)
+	. = ..()
+	if(!M.mana_pool)
+		return
+	M.mana_pool.adjust_mana(volume * 3)
+
+/datum/reagent/toxin/manabloom_juice/on_mob_end_metabolize(mob/living/L)
+	. = ..()
+	if(!L.mana_pool)
+		return
+
+	L.mana_pool.restore_mana_disperse("manabloom")
