@@ -4,6 +4,10 @@
 	icon = 'icons/roguetown/clothing/steamknight.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/steamknight_onmob.dmi'
 	icon_state = "steamknight_boots"
+
+	sleeved =  'icons/roguetown/clothing/onmob/steamknight_onmob.dmi'
+	sleevetype = "steamknight_boots"
+
 	anvilrepair = /datum/skill/craft/engineering
 	slowdown = 1.5
 
@@ -55,6 +59,7 @@
 		remove_status_effect(user)
 		for(var/obj/item/clothing/clothing in equipped_items)
 			clothing:power_off(user)
+		UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 		return
 	power_on(user)
 	apply_status_effect(user)
@@ -65,13 +70,12 @@
 /obj/item/clothing/shoes/boots/armor/steam/proc/power_on(mob/living/user)
 	slowdown = 0
 	user.update_equipment_speed_mods()
-	RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(try_steam_usage))
+	RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(try_steam_usage), override = TRUE)
 	return
 
 /obj/item/clothing/shoes/boots/armor/steam/proc/power_off(mob/living/user)
 	slowdown = 1.5
 	user.update_equipment_speed_mods()
-	UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 	return
 
 /obj/item/clothing/shoes/boots/armor/steam/proc/apply_status_effect(mob/living/user)

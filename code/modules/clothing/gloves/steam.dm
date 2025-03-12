@@ -5,6 +5,10 @@
 	icon = 'icons/roguetown/clothing/steamknight.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/steamknight_onmob.dmi'
 	icon_state = "steamknight_gloves"
+
+	sleeved =  'icons/roguetown/clothing/onmob/steamknight_onmob.dmi'
+	sleevetype = "steamknight_gloves"
+
 	anvilrepair = /datum/skill/craft/engineering
 	smeltresult = null
 

@@ -38,7 +38,7 @@
 	return TRUE
 
 /datum/component/steam_storage/proc/try_proxy_use_steam(mob/proxy, atom/source, amount_used, id)
-	if((!id && tank_id) && source != parent)
+	if(tank_id && id != tank_id)
 		return FALSE
 
 	if(amount_used > current_steam)
