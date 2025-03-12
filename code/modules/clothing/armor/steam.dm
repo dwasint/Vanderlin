@@ -6,8 +6,8 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/steamknight_onmob.dmi'
 	icon_state = "steamknight_chest"
 
-	sleeved = null
-	sleevetype = null
+	sleeved =  'icons/roguetown/clothing/onmob/steamknight_onmob.dmi'
+	sleevetype = "steamknight_chest"
 
 	anvilrepair = /datum/skill/craft/engineering
 
