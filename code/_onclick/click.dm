@@ -173,9 +173,9 @@
 //	if(modifiers["alt"]) // alt and alt-gr (rightalt)
 //		AltClickOn(A)
 //		return
-//	if(modifiers["ctrl"])
-//		CtrlClickOn(A)
-//		return
+	if(modifiers["ctrl"])
+		CtrlClickOn(A)
+		return
 	if(modifiers["right"])
 		testing("right")
 		if(!oactive)
