@@ -67,10 +67,29 @@
 	if(length(material_copy))
 		return
 
-	progress += 5 * (rotations_per_minute / 8)
+	progress += 5 * (rotations_per_minute / 16)
 	if(progress >= needed_progress)
 		create_current()
 
+/obj/structure/orphan_smasher/attackby(obj/item/I, mob/living/user)
+	. = ..()
+	if(!working)
+		return
+
+	if(!istype(I, /obj/item/grabbing))
+		return
+	var/obj/item/grabbing/grab = I
+	var/mob/living/carbon/victim = grab.grabbed
+	if(!istype(victim))
+		return
+	user.visible_message(span_danger("[user] starts to put [victim] under [src]!"), span_danger("You start to put [victim] under [src]!"))
+	if(!do_after(user, 10 SECONDS, src))
+		return
+
+	victim.apply_damage(10 * (rotations_per_minute / 8), BRUTE, BODY_ZONE_HEAD)
+	playsound(src.loc, pick('sound/combat/gib (1).ogg','sound/combat/gib (2).ogg'), 200, FALSE, 3)
+	bloodied = TRUE
+	update_animation_effect()
 
 /obj/structure/orphan_smasher/MiddleClick(mob/user, params)
 	if(!user.Adjacent(src))
@@ -125,7 +144,7 @@
 		if(!rotation_network || rotation_network?.overstressed || !rotations_per_minute || !working)
 			animate(src, icon_state = "1", time = 1)
 			return
-		var/frame_stage = 1 / ((rotations_per_minute / 60) * 5)
+		var/frame_stage = 1 / ((rotations_per_minute / 30) * 5)
 		if(rotation_direction == WEST)
 			animate(src, icon_state = "1", time = frame_stage, loop=-1)
 			animate(icon_state = "2", time = frame_stage)
@@ -142,7 +161,7 @@
 		if(!rotation_network || rotation_network?.overstressed || !rotations_per_minute || !working)
 			animate(src, icon_state = "b1", time = 1)
 			return
-		var/frame_stage = 1 / ((rotations_per_minute / 60) * 5)
+		var/frame_stage = 1 / ((rotations_per_minute / 30) * 5)
 		if(rotation_direction == WEST)
 			animate(src, icon_state = "b1", time = frame_stage, loop=-1)
 			animate(icon_state = "b2", time = frame_stage)
@@ -216,19 +235,23 @@
 		body_zone = BODY_ZONE_L_ARM
 	if(working)
 		user.apply_damage(15 * (rotations_per_minute / 8), BRUTE, body_zone)
+		playsound(src.loc, pick('sound/combat/gib (1).ogg','sound/combat/gib (2).ogg'), 200, FALSE, 3)
 		user.visible_message(span_danger("[user] gets their arm crushed by [src]!"), span_danger("You get your arm crushed by [src]!"))
 		bloodied = TRUE
+		update_animation_effect()
 
 	var/step_on = step_list[length(step_list)]
 
 	switch(step_on)
 		if(STEP_FIDDLE)
 			user.apply_damage(5 * (rotations_per_minute / 8), BRUTE, body_zone)
+			playsound(src.loc, pick('sound/combat/gib (1).ogg','sound/combat/gib (2).ogg'), 200, FALSE, 3)
 			user.visible_message(span_danger("[user] get their hand caught in [src]'s cogs!"), span_danger("You get your hand caught in [src]'s cogs!"))
 		if(STEP_LEVER)
 			return
 		if(STEP_BUTTON)
 			user.apply_damage(8 * (rotations_per_minute / 8), BRUTE, body_zone)
+			playsound(src.loc, pick('sound/combat/gib (1).ogg','sound/combat/gib (2).ogg'), 200, FALSE, 3)
 			user.visible_message(span_danger("[user] gets their hand flattened by [src]!"), span_danger("You get your hand flattened by[src]!"))
 
 /obj/structure/orphan_smasher/proc/try_step(step_type, mob/living/user)
@@ -246,6 +269,7 @@
 		if(user.active_hand_index == 1)
 			body_zone = BODY_ZONE_L_ARM
 		user.apply_damage(4 * max(1, (rotations_per_minute / 8)), BRUTE, body_zone)
+		playsound(src.loc, pick('sound/combat/gib (1).ogg','sound/combat/gib (2).ogg'), 200, FALSE, 3)
 		return
 
 	if(!do_after(user, 1.2 SECONDS, src))
