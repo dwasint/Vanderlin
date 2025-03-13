@@ -124,6 +124,9 @@
 		else if(ispath(path, /datum/runerituals))
 			var/datum/runerituals/real_path = new path
 			real_path.show_menu(current_reader)
+		else if(ispath(path, /datum/book_entry))
+			var/datum/book_entry/real_path = new path
+			real_path.show_menu(current_reader)
 
 /obj/item/recipe_book/getonmobprop(tag)
 	. = ..()
@@ -314,6 +317,8 @@
 	base_icon_state = "book4"
 
 	types = list(
+		/datum/book_entry/grimoire,
+		/datum/book_entry/attunement,
 		/datum/repeatable_crafting_recipe/arcyne,
 		/datum/slapcraft_recipe/arcyne,
 		/datum/runerituals,

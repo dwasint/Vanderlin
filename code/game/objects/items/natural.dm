@@ -215,6 +215,12 @@
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
 	sellprice = 20
+	attunement_values = list(
+		/datum/attunement/fire = 0.05,
+		/datum/attunement/blood = -0.1,
+		/datum/attunement/death = 0.05,
+		/datum/attunement/life = -0.05,
+	)
 
 /obj/item/natural/hellhoundfang//T2 mage summon loot
 	name = "hellhound fang"
@@ -223,6 +229,13 @@
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
 	sellprice = 20
+	attunement_values = list(
+		/datum/attunement/fire = 0.1,
+		/datum/attunement/blood = -0.1,
+
+		/datum/attunement/death = 0.05,
+		/datum/attunement/life = -0.05,
+	)
 
 /obj/item/natural/moltencore// T3 mage summon loot
 	name = "molten core"
@@ -231,6 +244,13 @@
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
 	sellprice = 20
+	attunement_values = list(
+		/datum/attunement/fire = 0.15,
+		/datum/attunement/blood = -0.1,
+
+		/datum/attunement/death = 0.1,
+		/datum/attunement/life = -0.1,
+	)
 
 /obj/item/natural/abyssalflame//T4 mage summon loot
 	name = "abyssal flame"
@@ -239,6 +259,13 @@
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
 	sellprice = 20
+	attunement_values = list(
+		/datum/attunement/fire = 0.2,
+		/datum/attunement/blood = -0.1,
+
+		/datum/attunement/death = 0.15,
+		/datum/attunement/life = -0.15,
+	)
 
 //FAIRY
 /obj/item/natural/fairydust	//T1 mage summon loot
@@ -249,6 +276,14 @@
 	w_class = WEIGHT_CLASS_SMALL
 	sellprice = 20
 
+	attunement_values = list(
+		/datum/attunement/earth = 0.05,
+		/datum/attunement/electric = -0.1,
+
+		/datum/attunement/life = 0.05,
+		/datum/attunement/death = -0.05,
+	)
+
 /obj/item/natural/iridescentscale	//T2 mage summon loot
 	name = "iridescent scales"
 	icon_state = "iridescent_scale"
@@ -257,6 +292,14 @@
 	w_class = WEIGHT_CLASS_SMALL
 	sellprice = 20
 
+	attunement_values = list(
+		/datum/attunement/earth = 0.1,
+		/datum/attunement/electric = -0.1,
+
+		/datum/attunement/life = 0.1,
+		/datum/attunement/death = -0.1,
+	)
+
 /obj/item/natural/heartwoodcore	//T3 mage summon loot
 	name = "heartwood core"
 	icon_state = "heartwood_core"
@@ -264,6 +307,13 @@
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
 	sellprice = 20
+	attunement_values = list(
+		/datum/attunement/earth = 0.15,
+		/datum/attunement/electric = -0.1,
+
+		/datum/attunement/life = 0.1,
+		/datum/attunement/death = -0.1,
+	)
 
 /obj/item/natural/sylvanessence	//T4 mage summon loot
 	name = "sylvan essence"
@@ -272,6 +322,13 @@
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
 	sellprice = 20
+	attunement_values = list(
+		/datum/attunement/earth = 0.2,
+		/datum/attunement/electric = -0.1,
+
+		/datum/attunement/life = 0.15,
+		/datum/attunement/death = -0.15,
+	)
 
 //ELEMENTAL
 /obj/item/natural/elementalmote
@@ -282,6 +339,15 @@
 	w_class = WEIGHT_CLASS_SMALL
 	sellprice = 20
 
+	attunement_values = list(
+		/datum/attunement/electric = 0.05,
+		/datum/attunement/ice = 0.05,
+		/datum/attunement/blood = 0.05,
+		/datum/attunement/aeromancy = 0.05,
+
+		/datum/attunement/earth = -0.1,
+	)
+
 /obj/item/natural/elementalshard
 	name = "elemental shard"
 	icon_state = "shard"
@@ -289,6 +355,15 @@
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
 	sellprice = 20
+
+	attunement_values = list(
+		/datum/attunement/electric = 0.1,
+		/datum/attunement/ice = 0.1,
+		/datum/attunement/blood = 0.1,
+		/datum/attunement/aeromancy = 0.1,
+
+		/datum/attunement/earth = -0.2,
+	)
 
 /obj/item/natural/elementalfragment
 	name = "elemental fragment"
@@ -298,6 +373,15 @@
 	w_class = WEIGHT_CLASS_SMALL
 	sellprice = 20
 
+	attunement_values = list(
+		/datum/attunement/electric = 0.1,
+		/datum/attunement/ice = 0.1,
+		/datum/attunement/blood = 0.1,
+		/datum/attunement/aeromancy = 0.1,
+
+		/datum/attunement/earth = -0.15,
+	)
+
 /obj/item/natural/elementalrelic
 	name = "elemental relic"
 	icon_state = "relic"
@@ -305,6 +389,15 @@
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
 	sellprice = 20
+
+	attunement_values = list(
+		/datum/attunement/electric = 0.1,
+		/datum/attunement/ice = 0.1,
+		/datum/attunement/blood = 0.1,
+		/datum/attunement/aeromancy = 0.1,
+
+		/datum/attunement/earth = -0.1,
+	)
 
 //Nullmagic
 /obj/item/natural/voidstone
@@ -314,3 +407,11 @@
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
 	sellprice = 20
+
+	attunement_values = list(
+		/datum/attunement/arcyne = 0.2,
+		/datum/attunement/time = 0.2,
+		/datum/attunement/polymorph = 0.2,
+		/datum/attunement/dark = 0.2,
+		/datum/attunement/illusion = 0.2,
+	)

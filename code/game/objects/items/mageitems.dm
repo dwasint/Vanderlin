@@ -215,6 +215,7 @@
 	sellprice = 18
 	arcyne_potency = 25
 	desc = "A deep lavender crystal, it surges with magical energy, yet it's artificial nature means it' worth little."
+	attuned = /datum/attunement/arcyne
 
 /obj/item/mimictrinket
 	name = "mimic trinket"

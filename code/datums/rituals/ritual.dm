@@ -340,6 +340,22 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 	required_atoms = list(/obj/item/natural/artifact = 3, /obj/item/mana_battery/mana_crystal = 3, /obj/item/natural/melded/t3 = 1)
 
 
+/datum/runerituals/attunement
+	name = "arcyne attunement"
+	required_atoms = list(/obj/item/reagent_containers/food/snacks/grown/manabloom = 1, /obj/item/natural/melded/t1 = 1)
+
+	var/list/attunement_modifiers = list()
+	var/list/attuned_items = list()
+
+/datum/runerituals/attunement/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
+	for(var/obj/item/item in selected_atoms)
+		if(!length(item.attunement_values))
+			continue
+		for(var/attunement in item.attunement_values)
+			attunement_modifiers |= attunement
+			attunement_modifiers[attunement] += item.attunement_values[attunement]
+		attuned_items |= item
+
 /datum/runerituals/teleport
 	name = "planar convergence"
 	tier = 3

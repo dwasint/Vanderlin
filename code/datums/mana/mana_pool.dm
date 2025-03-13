@@ -159,7 +159,7 @@
 	if(!length(attunements))
 		attunements = generate_initial_attunements()
 
-	attunements[attunement_type] += amount
+	attunements[attunement_type] = max(0, attunements[attunement_type] + amount)
 
 // order of operations is as follows:
 // 1. we recharge

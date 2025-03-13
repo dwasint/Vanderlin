@@ -61,6 +61,7 @@
 	var/datum/runerituals/pickritual		//selected
 	var/list/selected_atoms
 	var/associated_ritual = null	//Associated ritual for runes with only 1 ritual. Use in tandom with ritual_number
+	var/takes_all_items = FALSE
 
 /proc/isarcyne(mob/living/carbon/human/A)
 	return istype(A) && A.mind && (A.mind?.get_skill_level(/datum/skill/magic/arcane) > SKILL_LEVEL_NONE)	//checks if person has arcane skill
@@ -286,6 +287,10 @@ GLOBAL_LIST(teleport_runes)
 			// This item is a valid type. Add it to our selected atoms list.
 			selected_atoms |= nearby_atom
 			requirements_list[req_type]--
+
+		if(takes_all_items && isitem(nearby_atom))
+			if(length(nearby_atom:attunement_values))
+				selected_atoms |= nearby_atom
 
 	var/list/what_are_we_missing = list()
 	for(var/req_type in requirements_list)
@@ -590,6 +595,7 @@ GLOBAL_LIST(teleport_runes)
 	can_be_scribed = TRUE
 	associated_ritual = /datum/runerituals/teleport
 	var/listkey
+
 /obj/effect/decal/cleanable/roguerune/arcyne/teleport/Initialize(mapload, set_keyword)
 	. = ..()
 	var/area/A = get_area(src)
@@ -820,3 +826,37 @@ GLOBAL_LIST(teleport_runes)
 		to_chat(user, span_warning("You aren't able to understand the words of [src]."))
 		return
 	. = ..()
+
+
+/obj/effect/decal/cleanable/roguerune/arcyne/attunement
+	name = "arcyne attunement matrix"
+	desc = "A large matrix designed to imbue the energies of materials."
+	icon = 'icons/effects/160x160.dmi'
+	icon_state = "imbuement"
+	tier = 2
+	req_invokers = 2
+	invocation = "Xel’thix un’oral!"
+	ritual_number = FALSE
+	req_keyword = TRUE
+	runesize = 2
+	pixel_x = -64 //So the big ol' 96x96 sprite shows up right
+	pixel_y = -64
+	pixel_z = 0
+	can_be_scribed = TRUE
+	associated_ritual = /datum/runerituals/attunement
+	takes_all_items = TRUE
+
+/obj/effect/decal/cleanable/roguerune/arcyne/attunement/invoke(list/invokers, datum/runerituals/runeritual)
+	runeritual = associated_ritual
+	if(!..())	//VERY important. Calls parent and checks if it fails. parent/invoke has all the checks for ingredients
+		return
+	var/mob/living/user = invokers[1] //the first invoker is always the user
+	var/datum/runerituals/attunement/attune_ritual = pickritual
+
+	var/list/attunements = attune_ritual.attunement_modifiers
+
+	for(var/datum/attunement/attunement as anything in attunements)
+		user.mana_pool?.adjust_attunement(attunement, attunements[attunement])
+
+	pickritual.cleanup_atoms(selected_atoms)
+	do_invoke_glow()
