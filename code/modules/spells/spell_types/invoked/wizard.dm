@@ -2779,7 +2779,7 @@
 //	MAGIC STONE
 //==============================================
 /obj/effect/proc_holder/spell/invoked/magicstone5e
-	name = "Magic Stone"
+	name = "Enchant Stone"
 	overlay_state = "null"
 	releasedrain = 50
 	chargetime = 10
