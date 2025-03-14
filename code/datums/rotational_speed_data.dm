@@ -53,6 +53,8 @@
 
 /obj/structure/proc/find_rotation_network()
 	var/turf/step_forward = get_step(src, dir)
+	if(!step_forward)
+		return
 	for(var/obj/structure/structure in step_forward.contents)
 		if(structure.dir != dir && structure.dir != GLOB.reverse_dir[dir])
 			continue
@@ -334,7 +336,7 @@
 /obj/item/rotation_contraption/update_overlays()
 	. = ..()
 	if(in_stack > 1)
-		name = "pile of [initial(placed_type.name)] x [in_stack]"
+		name = "pile of [initial(placed_type.name)]s x [in_stack]"
 	else
 		name = initial(placed_type.name)
 
@@ -352,3 +354,18 @@
 
 /obj/item/rotation_contraption/cog
 	placed_type = /obj/structure/rotation_piece/cog
+
+/obj/item/rotation_contraption/shaft
+	placed_type = /obj/structure/rotation_piece
+
+/obj/item/rotation_contraption/large_cog
+	placed_type = /obj/structure/rotation_piece/cog/large
+
+/obj/item/rotation_contraption/horizontal
+	placed_type = /obj/structure/gearbox
+
+/obj/item/rotation_contraption/vertical
+	placed_type = /obj/structure/vertical_gearbox
+
+/obj/item/rotation_contraption/waterwheel
+	placed_type = /obj/structure/waterwheel

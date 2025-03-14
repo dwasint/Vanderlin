@@ -272,6 +272,9 @@
 	base_icon_state = "book2"
 
 	types = list(
+		/datum/book_entry/rotation_stress,
+		/datum/book_entry/water_pressure,
+		/datum/repeatable_crafting_recipe/engineering,
 		/datum/slapcraft_recipe/engineering,
 	)
 

@@ -1,8 +1,6 @@
 /datum/book_entry/grimoire
 	name = "Grimoire Assembly"
 
-/obj/item/natural
-
 /datum/book_entry/grimoire/inner_book_html(mob/user)
 	return {"
 		<div>
