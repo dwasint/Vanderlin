@@ -1,3 +1,9 @@
+/obj/effect/faux_density
+	name = ""
+	desc = ""
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	density = TRUE
+
 /obj/structure/mana_pylon
 	name = "mana pylon"
 	desc = ""
@@ -5,8 +11,8 @@
 	icon_state = "pylon"
 	icon = 'icons/roguetown/misc/mana_pylon.dmi'
 	has_initial_mana_pool = TRUE
-	pixel_y = -32
 	plane = GAME_PLANE_UPPER
+	layer = ABOVE_MOB_LAYER
 	light_outer_range = MINIMUM_USEFUL_LIGHT_RANGE
 	light_color = COLOR_CYAN
 
@@ -14,17 +20,27 @@
 
 	var/obj/structure/mana_pylon/linked_pylon
 	var/datum/beam/created_beam
+	var/obj/effect/faux_density/fake_density
 
 	var/list/transferring_mobs = list()
 
 /obj/structure/mana_pylon/Initialize()
 	. = ..()
+	fake_density = new(get_turf(src))
+	fake_density.icon = icon
+	fake_density.icon_state = icon_state
+
+	pixel_y = -32
 	var/turf/step_up = get_step(src, NORTH) //this is dumb but for beams it makes it work
 	if(step_up)
 		forceMove(step_up)
 
 	update_icon()
 	set_light(1.4, 1.4, 0.75, l_color = COLOR_CYAN)
+
+/obj/structure/mana_pylon/Destroy()
+	. = ..()
+	QDEL_NULL(fake_density)
 
 /obj/structure/mana_pylon/update_icon()
 	. = ..()
@@ -80,7 +96,11 @@
 			failed = TRUE
 			qdel(transfer_beam)
 			break
-		mana_pool.transfer_specific_mana(user.mana_pool, transfer_amount, decrement_budget = TRUE)
+		var/obj/item/mana_battery/mana_crystal/small/focus/foci = user.get_active_held_item()
+		if(istype(foci))
+			mana_pool.transfer_specific_mana(foci.mana_pool, transfer_amount, decrement_budget = TRUE)
+		else
+			mana_pool.transfer_specific_mana(user.mana_pool, transfer_amount, decrement_budget = TRUE)
 
 /obj/structure/mana_pylon/attack_right(mob/user)
 	. = ..()

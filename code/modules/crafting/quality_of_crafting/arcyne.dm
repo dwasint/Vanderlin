@@ -101,7 +101,7 @@
 		/obj/item/natural/leyline = 1,
 		/obj/item/natural/iridescentscale = 1,
 	)
-	output = /obj/item/clothing/ring/active/shimmeringlens
+	output = /obj/item/clothing/ring/shimmeringlens
 	starting_atom = /obj/item/natural/iridescentscale
 	attacked_atom = /obj/item/natural/leyline
 	uses_attacked_atom = TRUE
@@ -132,6 +132,20 @@
 	output = /obj/item/rope/chain/bindingshackles
 	starting_atom = /obj/item/ingot/iron
 	attacked_atom = /obj/item/natural/melded/t2
+	uses_attacked_atom = TRUE
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/arcyne/focus
+	requirements = list(
+		/obj/item/natural/melded/t2  = 1,
+		/obj/item/ingot/gold = 1,
+		/obj/item/mana_battery/mana_crystal/small
+	)
+
+	starting_atom = /obj/item/natural/melded/t2
+	attacked_atom = /obj/item/mana_battery/mana_crystal/small
+
+	output = /obj/item/mana_battery/mana_crystal/small/focus
 	uses_attacked_atom = TRUE
 	craftdiff = 2
 

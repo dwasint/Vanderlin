@@ -300,13 +300,13 @@
 
 /turf/closed/mineral/mana_crystal
 	icon_state = "mingold"
-	mineralType = /obj/item/mana_battery/mana_crystal
+	mineralType = /obj/item/mana_battery/mana_crystal/standard
 	rockType = /obj/item/natural/rock/mana_crystal
 	spreadChance = 23
 	spread = 5
 
 /obj/item/natural/rock/mana_crystal
-	mineralType = /obj/item/mana_battery/mana_crystal
+	mineralType = /obj/item/mana_battery/mana_crystal/standard
 
 /obj/item/natural/rock/cinnabar
 	mineralType = /obj/item/ore/cinnabar

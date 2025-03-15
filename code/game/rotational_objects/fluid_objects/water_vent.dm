@@ -1,8 +1,8 @@
 /obj/structure/water_vent
 	name = "water vent"
 	desc = "Shoots out liquids."
-	icon = 'icons/roguetown/misc/vents.dmi'
-	icon_state = "vent"
+	icon = 'icons/obj/structures/rotation_devices/water_vent.dmi'
+	icon_state = "pipevent"
 
 	accepts_water_input = TRUE
 

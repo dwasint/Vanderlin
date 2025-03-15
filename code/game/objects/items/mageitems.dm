@@ -42,9 +42,9 @@
 		/obj/item/natural/infernalash,
 		/obj/item/natural/fairydust,
 		/obj/item/natural/elementalmote,
-		/obj/item/mana_battery/mana_crystal,
-		/obj/item/mana_battery/mana_crystal,
-		/obj/item/mana_battery/mana_crystal,
+		/obj/item/mana_battery/mana_crystal/standard,
+		/obj/item/mana_battery/mana_crystal/standard,
+		/obj/item/mana_battery/mana_crystal/standard,
 		/obj/item/natural/obsidian,
 		/obj/item/natural/obsidian,
 		/obj/item/natural/obsidian,
@@ -319,36 +319,32 @@
 /obj/item/clothing/ring/arcanesigil/proc/revert()
 	ready = TRUE
 
-/obj/item/clothing/ring/active/shimmeringlens
+/obj/item/clothing/ring/shimmeringlens
 	name = "shimmering lens"
 	desc = "A radiantly shimmering glass of lens that shimmers with magick. Looking through it gives you a bit of a headache."
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "lens"
 	w_class = WEIGHT_CLASS_NORMAL
 	resistance_flags = FIRE_PROOF | ACID_PROOF
-	cdtime = 10 MINUTES
-	activetime = 30 SECONDS
+	var/active = FALSE
 
-/obj/item/clothing/ring/active/shimmeringlens/attack_right(mob/user)
+/obj/item/clothing/ring/shimmeringlens/attack_right(mob/user)
 	if(loc != user)
 		return
-	if(cooldowny)
-		if(world.time < cooldowny + cdtime)
-			to_chat(user, span_warning("Nothing happens."))
-			return
-	user.visible_message(span_warning("[user] looks through the [src]!"))
-	if(activate_sound)
-		playsound(user, activate_sound, 100, FALSE, -1)
-	cooldowny = world.time
-	addtimer(CALLBACK(src, PROC_REF(demagicify)), activetime)
-	active = TRUE
-	activate(user)
+	if(!active)
+		user.visible_message(span_warning("[user] looks through the [src]!"))
+		active = TRUE
+		activate(user)
+	else
+		user.visible_message(span_warning("[user] stops looking through the [src]!"))
+		demagicify()
 
-/obj/item/clothing/ring/active/shimmeringlens/activate(mob/user)
+
+/obj/item/clothing/ring/shimmeringlens/proc/activate(mob/user)
 	ADD_TRAIT(user, TRAIT_SEE_LEYLINES, "[type]")
 	user.hud_used?.plane_masters_update()
 
-/obj/item/clothing/ring/active/shimmeringlens/demagicify()
+/obj/item/clothing/ring/shimmeringlens/proc/demagicify()
 	var/mob/living/user = usr
 	REMOVE_TRAIT(user,TRAIT_SEE_LEYLINES, "[type]")
 	user.hud_used?.plane_masters_update()
@@ -587,13 +583,6 @@
 /obj/item/natural/artifact
 	name = "runed artifact"
 	icon_state = "runedartifact"
-	desc = "Volcanic glass cooled from molten lava rapidly."
-	resistance_flags = FLAMMABLE
-	w_class = WEIGHT_CLASS_SMALL
-
-/obj/item/mana_battery/mana_crystal
-	name = "crytalized mana"
-	icon_state = "manacrystal"
 	desc = "Volcanic glass cooled from molten lava rapidly."
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL

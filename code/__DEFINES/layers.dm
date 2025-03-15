@@ -33,6 +33,8 @@
 #define WEATHER_EFFECT_PLANE -3
 #define STRATEGY_PLANE -2
 #define PLANE_LEYLINES -1
+#define UPPER_LEYLINE_LAYER 2
+#define LOWER_LEYLINE_LAYER 1
 #define BLACKNESS_PLANE 0 //To keep from conflicts with SEE_BLACKNESS internals
 
 #define SPACE_LAYER 1.8

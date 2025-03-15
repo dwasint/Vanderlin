@@ -131,6 +131,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"Eyes of Matthios" = TRAIT_MATTHIOS_EYES,
 		"Magical Visions" = TRAIT_SEE_LEYLINES,
 		"Poison Bite" = TRAIT_POISONBITE,
+		"Tiny" = TRAIT_TINY,
 	),
 	/obj/item/bodypart = list(
 		"TRAIT_PARALYSIS" = TRAIT_PARALYSIS

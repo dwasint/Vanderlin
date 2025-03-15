@@ -40,6 +40,12 @@
 		setup_water()
 
 /obj/structure/proc/setup_water()
+	for(var/direction in GLOB.cardinals)
+		var/turf/cardinal_turf = get_step(src, direction)
+		for(var/obj/structure/water_pipe/structure in cardinal_turf)
+			if(!valid_water_connection(GLOB.reverse_dir[direction], structure))
+				continue
+			structure.set_connection(get_dir(structure, src))
 
 /obj/structure/proc/update_animation_effect()
 	return

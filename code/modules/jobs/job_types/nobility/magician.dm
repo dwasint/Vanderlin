@@ -41,7 +41,7 @@
 	beltr = /obj/item/storage/keyring/mage
 	backl = /obj/item/weapon/polearm/woodstaff
 	shoes = /obj/item/clothing/shoes/shortboots
-	backpack_contents = list(/obj/item/scrying = 1, /obj/item/reagent_containers/glass/bottle/killersice = 1, /obj/item/book/granter/spellbook/master = 1, /obj/item/weapon/knife/dagger/silver/arcyne = 1)
+	backpack_contents = list(/obj/item/scrying = 1, /obj/item/chalk = 1,/obj/item/reagent_containers/glass/bottle/killersice = 1, /obj/item/book/granter/spellbook/master = 1, /obj/item/weapon/knife/dagger/silver/arcyne = 1)
 	if(H.mind)
 		if(!(H.patron == /datum/patron/divine/noc || /datum/patron/inhumen/zizo))
 			H.set_patron(/datum/patron/divine/noc)

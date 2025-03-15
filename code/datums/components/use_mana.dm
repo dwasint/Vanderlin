@@ -116,11 +116,17 @@
 	var/mob/user = get_user_callback?.Invoke()
 
 	var/mana_consumed = -get_mana_required(arglist(args))
+	var/total_mana_consumed = -mana_consumed
 	if (isnull(mana_consumed))
 		stack_trace("mana_consumed after get_mana_required is null!")
 		return
 
 	var/list/datum/mana_pool/available_pools = get_mana_to_use()
+	var/mob/living/caster = get_parent_user()
+	var/attunement_total_value = 0
+	var/total_damage = 0
+	for(var/datum/attunement/attunement as anything in attunements)
+		attunement_total_value += attunements[attunement]
 
 	while (mana_consumed <= -0.05)
 		var/mult
@@ -134,6 +140,16 @@
 			if (available_pools.Find(pool) == available_pools.len && mana_consumed <= -0.05) // if we're at the end of the list and mana_consumed is not 0 or near 0 (floating points grrr)
 				stack_trace("cost: [mana_consumed] was not 0 after drain_mana on [src]! This could've been an infinite loop!")
 				mana_consumed = 0 // lets terminate the loop to be safe
+			if(pool.parent == caster)
+				for(var/datum/attunement/attunement as anything in attunements)
+					if(pool.negative_attunements[attunement] < 0)
+						var/composition_gain = attunement_total_value / attunements[attunement]
+						var/negative_impact_mana = total_mana_consumed * composition_gain
+						total_damage += round(negative_impact_mana * 0.1,1)
+	if(total_damage)
+		caster.mana_pool.mana_backlash(total_damage)
+
+
 
 /// Should be the raw conditional we use for determining if the thing that "uses mana" can actually
 /// activate the behavior that "uses mana".

@@ -1748,7 +1748,7 @@
 	name = "Meteor storm"
 	desc = "Summons forth dangerous meteors from the sky to scatter and smash foes."
 	cost = 8
-	releasedrain = 50
+	releasedrain = 90
 	chargedrain = 1
 	chargetime = 50
 	charge_max = 50 SECONDS

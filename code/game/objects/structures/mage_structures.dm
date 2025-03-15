@@ -122,7 +122,7 @@ s
 		if(!istype(movable, find_type))
 			continue
 
-		LeyBeam(movable, "medbeam", time = INFINITY, maxdistance = max_distance)
+		LeyBeam(movable, "drain_life", time = INFINITY, maxdistance = max_distance, layer = LOWER_LEYLINE_LAYER)
 		LAZYADD(mana_beams, movable)
 
 /atom/movable/proc/draw_mana_beams_from_list(list/found_types, max_distance = 3)
@@ -132,7 +132,7 @@ s
 		if(movable in mana_beams)
 			continue
 
-		LeyBeam(movable, "medbeam", time = INFINITY, maxdistance = max_distance)
+		LeyBeam(movable, "drain_life", time = INFINITY, maxdistance = max_distance, layer = LOWER_LEYLINE_LAYER)
 		LAZYADD(mana_beams, movable)
 
 /obj/structure/well/fountain/mana
@@ -167,7 +167,7 @@ s
 		user.visible_message(span_info("[user] starts to drink from [src]."))
 		if(do_after(L, 2.5 SECONDS, target = src))
 			mana_pool.adjust_mana(-50)
-			waterl = list(/datum/reagent/medicine/manapot = 2)
+			waterl = list(/datum/reagent/medicine/manapot/weak = 2)
 			var/datum/reagents/reagents = new()
 			reagents.add_reagent_list(waterl)
 			reagents.trans_to(L, reagents.total_volume, transfered_by = user, method = INGEST)
@@ -186,11 +186,25 @@ s
 			return
 		if(do_after(user, 60, target = src))
 			mana_pool.adjust_mana(-mana_amount * 25)
-			var/list/waterl = list(/datum/reagent/medicine/manapot = mana_amount)
+			var/list/waterl = list(/datum/reagent/medicine/manapot/weak = mana_amount)
 			W.reagents.add_reagent_list(waterl)
 			to_chat(user, "<span class='notice'>I fill [W] from [src].</span>")
 			playsound(user, pick('sound/foley/waterwash (1).ogg','sound/foley/waterwash (2).ogg'), 80, FALSE)
 			return
+	if(istype(I, /obj/item/grabbing))
+		if(mana_pool.amount < 500)
+			to_chat(user, "Their is not enough liquid mana to perform a baptism.")
+			return
+		var/atom/movable/grabbed = I:grabbed
+		if(!grabbed.mana_pool)
+			return
+		user.visible_message(span_notice("[user] starts to submerge [grabbed]."), span_notice("You start to submerge [grabbed]."))
+		if(!do_after(user, 10 SECONDS, src))
+			return
+		grabbed.mana_pool.set_intrinsic_recharge(MANA_ALL_LEYLINES)
+		playsound(user, pick('sound/foley/waterwash (1).ogg','sound/foley/waterwash (2).ogg'), 80, FALSE)
+		return
+
 	else ..()
 
 /obj/machinery/light/fueled/forge/arcane

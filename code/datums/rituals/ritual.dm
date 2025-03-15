@@ -235,11 +235,12 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 	blacklisted = TRUE
 	tier = 1
 	var/buff
+
 /datum/runerituals/knowledge
 	name = "knowledge gain"
 	tier = 1
 	blacklisted = FALSE
-	required_atoms = list(/obj/item/mana_battery/mana_crystal = 1)
+	required_atoms = list(/obj/item/mana_battery/mana_crystal/small = 1)
 
 /datum/runerituals/knowledge/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
 	return TRUE
@@ -252,26 +253,26 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 	buff = /datum/status_effect/buff/magicstrength
 	tier = 2
 	blacklisted = FALSE
-	required_atoms = list(/obj/item/mana_battery/mana_crystal = 2,/obj/item/natural/elementalshard = 2)
+	required_atoms = list(/obj/item/mana_battery/mana_crystal/small = 2,/obj/item/natural/elementalshard = 2)
 
 /datum/runerituals/buff/lesserstrength
 	name = "lesser arcane augmentation of strength"
 	buff = /datum/status_effect/buff/magicstrength/lesser
 	blacklisted = FALSE
-	required_atoms = list(/obj/item/natural/elementalmote = 2,/obj/item/mana_battery/mana_crystal = 1)
+	required_atoms = list(/obj/item/natural/elementalmote = 2,/obj/item/mana_battery/mana_crystal/small = 1)
 
 /datum/runerituals/buff/constitution
 	name = "fortify constitution"
 	buff = /datum/status_effect/buff/magicconstitution
 	tier = 2
 	blacklisted = FALSE
-	required_atoms = list(/obj/item/mana_battery/mana_crystal = 2, /obj/item/natural/obsidian = 4)
+	required_atoms = list(/obj/item/mana_battery/mana_crystal/small = 2, /obj/item/natural/obsidian = 4)
 
 /datum/runerituals/buff/lesserconstitution
 	name = "lesser fortify constitution"
 	buff = /datum/status_effect/buff/magicconstitution/lesser
 	blacklisted = FALSE
-	required_atoms = list(/obj/item/mana_battery/mana_crystal = 1, /obj/item/natural/obsidian = 2)
+	required_atoms = list(/obj/item/mana_battery/mana_crystal/small = 1, /obj/item/natural/obsidian = 2)
 
 /datum/runerituals/buff/speed
 	name = "haste"
@@ -315,13 +316,13 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 	name = "darksight"
 	buff = /datum/status_effect/buff/darkvision
 	blacklisted = FALSE
-	required_atoms = list(/obj/item/mana_battery/mana_crystal = 2, /obj/item/natural/iridescentscale = 1, /obj/item/natural/elementalshard = 1)
+	required_atoms = list(/obj/item/mana_battery/mana_crystal/small = 2, /obj/item/natural/iridescentscale = 1, /obj/item/natural/elementalshard = 1)
 
 /datum/runerituals/wall
 	name = "lesser arcyne wall"
 	tier = 1
 	blacklisted = FALSE
-	required_atoms = list(/obj/item/natural/elementalmote = 2, /obj/item/mana_battery/mana_crystal = 1, /obj/item/natural/melded/t1 = 1)
+	required_atoms = list(/obj/item/natural/elementalmote = 2, /obj/item/mana_battery/mana_crystal/small = 1, /obj/item/natural/melded/t1 = 1)
 
 /datum/runerituals/wall/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
 	return 1
@@ -329,7 +330,7 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 /datum/runerituals/wall/t2
 	name = "greater arcyne wall"
 	tier = 2
-	required_atoms = list(/obj/item/natural/elementalmote = 4, /obj/item/mana_battery/mana_crystal = 2, /obj/item/natural/melded/t1 = 1)
+	required_atoms = list(/obj/item/natural/elementalmote = 4, /obj/item/mana_battery/mana_crystal/small = 2, /obj/item/natural/melded/t1 = 1)
 
 /datum/runerituals/wall/t2/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
 	return 2
@@ -337,7 +338,7 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 /datum/runerituals/wall/t3
 	name = "arcyne fortress"
 	tier = 3
-	required_atoms = list(/obj/item/natural/artifact = 3, /obj/item/mana_battery/mana_crystal = 3, /obj/item/natural/melded/t3 = 1)
+	required_atoms = list(/obj/item/natural/artifact = 3, /obj/item/mana_battery/mana_crystal/small = 3, /obj/item/natural/melded/t3 = 1)
 
 
 /datum/runerituals/attunement
@@ -461,7 +462,7 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 	desc = "summons a minor elemental"
 	blacklisted = FALSE
 	tier = 1
-	required_atoms = list(/obj/item/natural/stone = 3, /obj/item/mana_battery/mana_crystal = 1)
+	required_atoms = list(/obj/item/natural/stone = 3, /obj/item/mana_battery/mana_crystal/small = 1)
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/elemental/crawler
 
 /datum/runerituals/summoning/warden
@@ -469,7 +470,7 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 	desc = "summons an elemental"
 	blacklisted = FALSE
 	tier = 2
-	required_atoms = list(/obj/item/natural/elementalmote = 3, /obj/item/mana_battery/mana_crystal = 1, /obj/item/natural/melded/t1 = 1)
+	required_atoms = list(/obj/item/natural/elementalmote = 3, /obj/item/mana_battery/mana_crystal/small = 1, /obj/item/natural/melded/t1 = 1)
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/elemental/warden
 
 /datum/runerituals/summoning/behemoth
@@ -477,7 +478,7 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 	desc = "summons a large elemental"
 	blacklisted = FALSE
 	tier = 3
-	required_atoms = list(/obj/item/natural/elementalshard = 2, /obj/item/mana_battery/mana_crystal = 1, /obj/item/natural/melded/t2 =1)
+	required_atoms = list(/obj/item/natural/elementalshard = 2, /obj/item/mana_battery/mana_crystal/small = 1, /obj/item/natural/melded/t2 =1)
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/elemental/behemoth
 
 /datum/runerituals/summoning/collossus
@@ -485,7 +486,7 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 	desc = "summons an huge elemental"
 	blacklisted = FALSE
 	tier = 4
-	required_atoms = list(/obj/item/natural/elementalfragment = 1, /obj/item/mana_battery/mana_crystal = 1, /obj/item/natural/melded/t3 =1)
+	required_atoms = list(/obj/item/natural/elementalfragment = 1, /obj/item/mana_battery/mana_crystal/small = 1, /obj/item/natural/melded/t3 =1)
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/elemental/collossus
 
 /datum/runerituals/summoning/abberant

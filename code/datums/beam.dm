@@ -17,6 +17,7 @@
 	var/recalculating = FALSE
 	var/bcolor
 	var/forced_plane
+	var/forced_layer
 
 	var/datum/mana_pool/mana_pool
 
@@ -149,6 +150,8 @@
 		X.color = bcolor
 		if(forced_plane)
 			X.plane = forced_plane
+		if(forced_plane)
+			X.layer = forced_layer
 		CHECK_TICK
 	afterDraw()
 
@@ -166,10 +169,11 @@
 	INVOKE_ASYNC(newbeam, TYPE_PROC_REF(/datum/beam, Start))
 	return newbeam
 
-/atom/proc/LeyBeam(atom/BeamTarget,icon_state="b_beam",icon='icons/effects/beam.dmi',time=50, maxdistance=10,beam_type=/obj/effect/ebeam,beam_sleep_time = 3, beam_color = COLOR_WHITE, datum/mana_pool)
+/atom/proc/LeyBeam(atom/BeamTarget,icon_state="b_beam",icon='icons/effects/beam.dmi',time=INFINITY, maxdistance=10,beam_type=/obj/effect/ebeam,beam_sleep_time = 3, beam_color = COLOR_WHITE, datum/mana_pool, layer = UPPER_LEYLINE_LAYER)
 	var/datum/beam/newbeam = new(src,BeamTarget,icon,icon_state,time,maxdistance,beam_type,beam_sleep_time,beam_color)
 	if(mana_pool)
 		newbeam.mana_pool = mana_pool
 	newbeam.forced_plane = PLANE_LEYLINES
+	newbeam.forced_layer = UPPER_LEYLINE_LAYER
 	INVOKE_ASYNC(newbeam, TYPE_PROC_REF(/datum/beam, Start))
 	return newbeam

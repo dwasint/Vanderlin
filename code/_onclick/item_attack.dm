@@ -108,7 +108,8 @@
 /obj/item/proc/attack(mob/living/M, mob/living/user)
 	if(SEND_SIGNAL(src, COMSIG_ITEM_ATTACK, M, user) & COMPONENT_ITEM_NO_ATTACK)
 		return FALSE
-	SEND_SIGNAL(user, COMSIG_MOB_ITEM_ATTACK, M, user)
+	if(SEND_SIGNAL(user, COMSIG_MOB_ITEM_ATTACK, M, src))
+		return FALSE
 	if(item_flags & NOBLUDGEON)
 		return FALSE
 
@@ -538,11 +539,8 @@
 	var/message_hit_area = ""
 	if(hit_area)
 		message_hit_area = " in the [hit_area]"
-	var/attack_message = "[src] is [message_verb][message_hit_area] with [I]!"
-	var/attack_message_local = "I'm [message_verb][message_hit_area] with [I]!"
-	if(user in viewers(src, null))
-		attack_message = "[user] [message_verb] [src][message_hit_area] with [I]!"
-		attack_message_local = "[user] [message_verb] me[message_hit_area] with [I]!"
+	var/attack_message = "[user] [message_verb] [src][message_hit_area] with [I]!"
+	var/attack_message_local = "[user] [message_verb] me[message_hit_area] with [I]!"
 	visible_message("<span class='danger'>[attack_message][next_attack_msg.Join()]</span>",\
 		"<span class='danger'>[attack_message_local][next_attack_msg.Join()]</span>", null, COMBAT_MESSAGE_RANGE)
 	next_attack_msg.Cut()

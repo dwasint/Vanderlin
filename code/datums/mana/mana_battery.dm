@@ -86,9 +86,22 @@
 	softcap = maximum_mana_capacity
 
 /obj/item/mana_battery/mana_crystal/standard
-	name = "Stabilized Volite Crystal"
-	desc = "A stabilized Volite Crystal, one of the few objects capable of stably storing mana without binding."
+	name = "Stabilized Primordial Quartz Crystal"
+	desc = "A stabilized Primordial Quartz Crystal, one of the few objects capable of stably storing mana without binding."
 	icon_state = "standard"
+
+/obj/item/mana_battery/mana_crystal/standard/attackby(obj/item/I, mob/living/user, params)
+	. = ..()
+	if(!istype(I, /obj/item/weapon/knife))
+		return
+
+	user.visible_message(span_notice("[user] starts to chop up [src]!"), span_notice("You start to chop up [src]!"))
+	if(!do_after(user, 3 SECONDS, src))
+		return
+	new /obj/item/mana_battery/mana_crystal/small
+	new /obj/item/mana_battery/mana_crystal/small
+	visible_message(span_notice("Mana flows freely into the newly created crystals!"))
+	qdel(src)
 
 /obj/item/mana_battery/mana_crystal/standard/get_initial_mana_pool_type()
 	return /datum/mana_pool/mana_battery/mana_crystal/standard
@@ -96,8 +109,8 @@
 /datum/mana_pool/mana_battery/mana_crystal/standard // basically, just, bog standard, none of the variables need to be changed
 
 /obj/item/mana_battery/mana_crystal/small
-	name = "Small Volite Crystal"
-	desc = "A miniaturized Volite crystal, formed using the run-off of cutting larger ones. Able to hold mana still, although not as much as a proper formation."
+	name = "Small Primordial Quartz Crystal"
+	desc = "A miniaturized Primordial Quartz crystal, formed using the run-off of cutting larger ones. Able to hold mana still, although not as much as a proper formation."
 	icon_state = "small"
 	w_class = WEIGHT_CLASS_SMALL
 
@@ -105,14 +118,14 @@
 	return /datum/mana_pool/mana_battery/mana_crystal/small
 
 /obj/item/mana_battery/mana_crystal/cut
-	name = "Cut Volite Crystal"
-	desc = "A cut and shaped Volite Crystal, using a standardized square cut. It lacks power until it is slotted into a proper amulet."
+	name = "Cut Primordial Quartz Crystal"
+	desc = "A cut and shaped Primordial Quartz Crystal, using a standardized square cut. It lacks power until it is slotted into a proper amulet."
 	icon_state = "cut"
 
 /obj/item/mana_battery/mana_crystal/cut/get_initial_mana_pool_type()
 	return /datum/mana_pool/mana_battery/mana_crystal/small
 
-/datum/mana_pool/mana_battery/mana_crystal/small/
+/datum/mana_pool/mana_battery/mana_crystal/small
 	// half the size of the normal crystal
 	maximum_mana_capacity = (MANA_CRYSTAL_BASE_MANA_CAPACITY / 2)
 	softcap = (MANA_CRYSTAL_BASE_MANA_CAPACITY / 2)
@@ -163,14 +176,19 @@
 		mana_pool.transfer_specific_mana(user.mana_pool, drawn_mana, decrement_budget = TRUE)
 
 /obj/item/mana_battery/mana_crystal/small/focus //really only exists for debug.
-	name = "Focused Small Volite Crystal"
+	name = "Focused Small Primordial Quartz Crystal"
 	desc = "A focused variant of the standard small volite crystal. You can draw mana from this while casting."
-	icon_state = "small"
+	icon_state = "foci"
+
+/obj/item/mana_battery/mana_crystal/small/focus/get_initial_mana_pool_type()
+	return /datum/mana_pool/mana_battery/mana_crystal/small/focus
 
 /obj/item/mana_battery/mana_crystal/small/focus/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_POOL_AVAILABLE_FOR_CAST, INNATE_TRAIT)
 
+/datum/mana_pool/mana_battery/mana_crystal/small/focus
+	intrinsic_recharge_sources = MANA_ALL_LEYLINES | MANA_ALL_PYLONS
 
 /datum/mana_pool/mana_pylon
 	// a special type of mana battery that regenerates passively- but cannot be given mana

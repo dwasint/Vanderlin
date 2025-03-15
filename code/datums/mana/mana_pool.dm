@@ -13,6 +13,10 @@
 	// As attunements on mana is actually a tangible thing, and not just a preference, mana attunements should never go below zero.
 	/// A abstract representation of the attunements of [amount]. This is just an abstraction of the overall bias of all stored mana - in reality, every unit of mana has its own attunement.
 	var/list/datum/attunement/attunements
+	///this is a list of the intensity of negative attunements, basically since we can't go negative
+	///this acts as a way for us to get negative effects without modifying all other attunement procs
+	///these are ONLY negative
+	var/list/datum/attunement/negative_attunements
 
 	// In vols
 	/// The absolute maximum [amount] we can hold. Under no circumstances should [amount] ever exceed this value.
@@ -51,7 +55,7 @@
 	var/list/datum/attunement/attunements_to_generate = list()
 
 	/// The mana pool types we will try to discharge excess mana (from exponential decay) into. Uses defines from magic_charge_bitflags.dm.
-	var/discharge_destinations = MANA_ALL_LEYLINES
+	var/discharge_destinations = MANA_ALL_LEYLINES | MANA_ALL_PYLONS
 	/// The priority method we will use to transfer mana to [discharge_destination] mana pools. Any given type does not guarantee all destinations will receive mana if they are full.
 	/// Uses defines from magic_charge_bitflags.dm.
 	var/discharge_method = MANA_SEQUENTIAL
@@ -77,6 +81,7 @@
 /datum/mana_pool/Destroy(force, ...)
 	attunements = null
 	attunements_to_generate = null
+	negative_attunements = null
 
 	QDEL_NULL(transfer_rates)
 	QDEL_NULL(transfer_caps)
@@ -158,8 +163,23 @@
 /datum/mana_pool/proc/adjust_attunement(datum/attunement/attunement_type, amount)
 	if(!length(attunements))
 		attunements = generate_initial_attunements()
+	if(!length(negative_attunements))
+		negative_attunements = generate_initial_attunements()
 
+	if(negative_attunements[attunement_type] < 0 && amount > 0)
+		var/attunement_left = amount + negative_attunements[attunement_type]
+		if(!attunement_left)
+			negative_attunements[attunement_type] += amount
+			return
+		amount = attunement_left
+
+	var/actual_value = attunements[attunement_type] + amount
 	attunements[attunement_type] = max(0, attunements[attunement_type] + amount)
+
+	if(actual_value < 0)
+		negative_attunements[attunement_type] += amount
+
+
 
 // order of operations is as follows:
 // 1. we recharge
@@ -173,11 +193,11 @@
 		adjust_mana(ethereal_recharge_rate, attunements_to_generate)
 	if((intrinsic_recharge_sources & MANA_ALL_LEYLINES) && amount < get_softcap())
 		var/list/leylines = list()
-		for(var/obj/effect/ebeam/beam in range(3, parent))
+		for(var/obj/effect/ebeam/beam in range(3, get_turf(parent)))
 			if(!beam.owner.mana_pool)
 				continue
 			if(beam.owner.mana_pool in leylines)
-				if(leylines[beam.owner.mana_pool] > get_dist(parent, beam))
+				if(leylines[beam.owner.mana_pool] > get_dist(get_turf(parent), beam))
 					leylines[beam.owner.mana_pool] = get_dist(parent, beam)
 			else
 				leylines |= beam.owner.mana_pool
@@ -190,12 +210,12 @@
 
 	if((intrinsic_recharge_sources & MANA_ALL_PYLONS) && amount < get_softcap())
 		var/list/pylons = list()
-		for(var/obj/structure/mana_pylon/pylon in range(3, parent))
-			var/sane_distance = get_dist(parent, pylon) + 1
+		for(var/obj/structure/mana_pylon/pylon in range(3, get_turf(parent)))
+			var/sane_distance = get_dist(get_turf(parent), pylon) + 1
 			pylon.mana_pool.transfer_specific_mana(src, (pylon.mana_pool.get_transfer_rate_for(src) / sane_distance))
 			pylons += pylon
 		if(draws_beams)
-			parent.draw_mana_beams_from_list(pylons)
+			parent.draw_mana_beams_from_list(pylons, 4)
 
 	if (length(transferring_to) > 0)
 		switch (transfer_method)
@@ -239,7 +259,23 @@
 		if (discharge_destinations)
 			var/list/datum/mana_pool/pools_to_discharge_into = list()
 			if (discharge_destinations & MANA_ALL_LEYLINES)
-				pools_to_discharge_into += get_accessable_leylines()
+				var/list/leylines = list()
+				for(var/obj/effect/ebeam/beam in range(3, get_turf(parent)))
+					if(!beam.owner.mana_pool)
+						continue
+					leylines |= beam.owner.mana_pool
+
+				pools_to_discharge_into += leylines
+
+			if (discharge_destinations & MANA_ALL_PYLONS)
+				var/list/pylons = list()
+				for(var/obj/structure/mana_pylon/pylon in range(3, get_turf(parent)))
+					pylons |= pylon.mana_pool
+
+				pools_to_discharge_into += pylons
+
+			if(!length(pools_to_discharge_into))
+				return
 
 			switch (discharge_method)
 				if (MANA_DISPERSE_EVENLY)
@@ -438,5 +474,21 @@
 
 	var/skill_level = max(1, L.mind.get_skill_level(/datum/skill/magic/arcane))
 	return softcap * skill_level
+
+///this is how a mana pool responds to backlash for most pools this is just taking damage
+/datum/mana_pool/proc/mana_backlash(backlash_intensity)
+	if(!backlash_intensity)
+		return
+	if(ismob(parent))
+		switch(backlash_intensity)
+			if(1 to 10)
+				to_chat(parent, span_warning("I feel woozy after casting that spell."))
+			if(10 to 30)
+				to_chat(parent, span_danger("I feel sharp pains coursing through my body!"))
+				parent:blood_volume -= backlash_intensity
+			if(30 to 50)
+				parent.visible_message(span_danger("[parent] collapses as they vomit blood from the recoil."), span_danger("I feel my organs being ripped apart!"))
+				parent:vomit(1, blood = TRUE, stun = FALSE)
+		parent:apply_damage(backlash_intensity, BRUTE, BODY_ZONE_CHEST)
 
 #undef MANA_POOL_REPLACE_ALL_ATTUNEMENTS
