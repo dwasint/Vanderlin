@@ -217,14 +217,6 @@
 			mob.changeNext_move(CLICK_CD_MELEE)
 			mob.cast_move = 0
 
-	for(var/datum/browser/X in open_popups)
-		if(!X.no_close_movement)
-	//		var/datum/browser/popup = new(mob, X, "", 5, 5)
-	//		popup.set_content()
-	//		popup.open()
-	//		popup.close()
-			mob << browse(null, "window=[X.window_id]")
-			open_popups -= X
 /**
  * Checks to see if you're being grabbed and if so attempts to break it
  *
