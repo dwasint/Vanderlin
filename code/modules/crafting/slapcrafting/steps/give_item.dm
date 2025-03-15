@@ -2,6 +2,10 @@
 	desc = "Add some cloth."
 	item_types = list(/obj/item/natural/cloth)
 
+/datum/slapcraft_step/item/cloth/second
+/datum/slapcraft_step/item/cloth/third
+/datum/slapcraft_step/item/cloth/fourth
+
 /datum/slapcraft_step/item/fiber
 	desc = "Add some fiber."
 	item_types = list(/obj/item/natural/fibers)
@@ -85,6 +89,8 @@
 	item_types = list(/obj/item/natural/wood/plank)
 
 /datum/slapcraft_step/item/plank/second
+/datum/slapcraft_step/item/plank/third
+/datum/slapcraft_step/item/plank/fourth
 
 /datum/slapcraft_step/item/cog
 	desc = "Add a cog."
@@ -118,3 +124,11 @@
 /datum/slapcraft_step/item/amethyst
 	desc = "Add an amethyst."
 	item_types = list(/obj/item/gem/amethyst)
+
+/datum/slapcraft_step/item/fur
+	desc = "Add some fur."
+	item_types = list(/obj/item/natural/fur)
+
+/datum/slapcraft_step/item/fur/second
+/datum/slapcraft_step/item/fur/third
+/datum/slapcraft_step/item/fur/fourth

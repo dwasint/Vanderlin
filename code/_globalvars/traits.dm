@@ -132,6 +132,8 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"Magical Visions" = TRAIT_SEE_LEYLINES,
 		"Poison Bite" = TRAIT_POISONBITE,
 		"Tiny" = TRAIT_TINY,
+		"Beautiful" = TRAIT_BEAUTIFUL,
+		"Ugly" = TRAIT_UGLY,
 	),
 	/obj/item/bodypart = list(
 		"TRAIT_PARALYSIS" = TRAIT_PARALYSIS

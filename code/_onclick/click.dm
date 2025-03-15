@@ -794,6 +794,7 @@
 /mob/proc/RightClickOn(atom/A, params)
 	if(stat >= UNCONSCIOUS)
 		return
+	changeNext_move(CLICK_CD_MELEE)
 	if(A.Adjacent(src))
 		if(A.loc == src && (A == get_active_held_item()) )
 			A.rmb_self(src)
@@ -801,7 +802,6 @@
 			rmb_on(A, params)
 	else if(uses_intents && used_intent.rmb_ranged)
 		used_intent.rmb_ranged(A, src) //get the message from the intent
-	changeNext_move(CLICK_CD_MELEE)
 	if(isturf(A.loc))
 		face_atom(A)
 
