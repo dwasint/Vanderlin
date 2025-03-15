@@ -12,6 +12,14 @@
 /datum/species/kobold
 	name = "Kobold"
 	id = "kobold"
+	desc = "Speculated to have originated from the dank depths of Subterra, \
+	Kobolds are a species of stout sea-faring and mountain-dwelling lizardfolk infamous for their skills in trap-making, \
+	their habit of hoarding grandiose amounts of trinkets and artifacts, and their opportunism.\
+	\n\n\
+	They are often in servitude to great beasts such as dragons and giants - trapping their lairs and utilizing pack tactics to dispose of ambitious adventurers and thieves alike. \
+	But in their lonesome, Kobolds are generally weak and quick to die, as they noticeably lack the meaningful amount of constitution, strength, and endurance that other species usually have. \
+	\n\n\
+	WARNING: THIS IS A HEAVILY DISCRIMINATED AGAINST CHALLENGE SPECIES WITH ACTIVE SPECIES DETRIMENTS. YOU CAN AND WILL DIE A LOT; PLAY AT YOUR OWN RISK!"
 	skin_tone_wording = "Fur Color"
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP | SLIME_EXTRACT
 
@@ -74,15 +82,14 @@
 
 /datum/species/kobold/get_skin_list()
 	return sortList(list(
-		"Platinum" = SKIN_COLOR_PLATINUM, // - (White 1)
-		"Aurum" = SKIN_COLOR_AURUM, // - (White 2)
-		"Quicksilver" = SKIN_COLOR_QUICKSILVER, // - (White 3)
-		"Brass" = SKIN_COLOR_BRASS, // - (White 4)
-		"Iron" = SKIN_COLOR_IRON, // - (Tan)
-		"Malachite" = SKIN_COLOR_MALACHITE, // - (Middle-Eastern)
-		"Obsidian" = SKIN_COLOR_OBSIDIAN, // - (Black)
-		"Brimstone" = SKIN_COLOR_BRIMSTONE, // - (Black 2)
-		"Cerargyrite" =	SKIN_COLOR_CERARGYRITE, // - (Purple)
+		"Moonshade" = SKIN_COLOR_MOONSHADE,
+		"Sunstreak" = SKIN_COLOR_SUNSTREAK,
+		"Stonepaw" = SKIN_COLOR_STONEPAW,
+		"Emberhide" = SKIN_COLOR_EMBERHIDE,
+		"Sandswept" = SKIN_COLOR_SANDSWEPT,
+		"Quick Silver" = SKIN_COLOR_QUICKSILVER,
+		"Brass" = SKIN_COLOR_BRASS,
+		"Iron" = SKIN_COLOR_IRON,
 	))
 
 /datum/species/kobold/get_possible_names(gender = MALE)
