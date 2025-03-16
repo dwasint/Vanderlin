@@ -69,7 +69,7 @@
 	held_mob?.setDir(SOUTH)
 	held_mob?.visible_message("<span class='warning'>[held_mob] uncurls!</span>")
 	held_mob = null
-	if(del_on_release && !destroying)
+	if((del_on_release || !held_mob) && !destroying)
 		qdel(src)
 	return TRUE
 

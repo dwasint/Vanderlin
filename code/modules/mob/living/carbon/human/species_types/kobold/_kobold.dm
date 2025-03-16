@@ -50,6 +50,7 @@
 	use_m = FALSE
 	use_f = TRUE
 	inherent_traits = list(TRAIT_TINY)
+	mutant_brain = /obj/item/organ/brain/smooth
 
 	offset_features = list(OFFSET_ID = list(0,0), OFFSET_GLOVES = list(0,0), OFFSET_WRISTS = list(0,0),\
 	OFFSET_CLOAK = list(0,0), OFFSET_FACEMASK = list(0,-4), OFFSET_HEAD = list(0,-4), \
@@ -69,6 +70,7 @@
 /datum/species/kobold/on_species_gain(mob/living/carbon/C, datum/species/old_species, datum/preferences/pref_load)
 	. = ..()
 	C.AddComponent(/datum/component/abberant_eater, list(/obj/item/natural/dirtclod, /obj/item/natural/stone))
+	C.grant_language(/datum/language/common)
 
 /datum/species/kobold/check_roundstart_eligible()
 	return TRUE

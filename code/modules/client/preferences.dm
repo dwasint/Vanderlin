@@ -1725,7 +1725,7 @@ Slots: [job.spawn_positions]</span>
 						var/datum/species/bla = GLOB.species_list[A]
 						bla = new bla()
 						if(user.client)
-							if(bla.patreon_req > user.client.patreonlevel())
+							if(bla.patreon_req && !user.client.patreon?.has_access(ACCESS_ASSISTANT_RANK))
 								continue
 						else
 							continue
@@ -2223,7 +2223,12 @@ Slots: [job.spawn_positions]</span>
 		pref_species = new /datum/species/human/northern
 		random_character(gender)
 	if(parent)
-		if(pref_species.patreon_req > parent.patreonlevel())
+		if(pref_species.patreon_req)
+			if(parent.patreon?.has_access(ACCESS_ASSISTANT_RANK))
+				chosen_species = /datum/species/human/northern
+				pref_species = new /datum/species/human/northern
+				random_character(gender)
+		else
 			chosen_species = /datum/species/human/northern
 			pref_species = new /datum/species/human/northern
 			random_character(gender)

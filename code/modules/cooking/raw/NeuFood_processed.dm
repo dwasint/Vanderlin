@@ -92,7 +92,7 @@
 	else
 		icon_state = "salumoi_slice"
 
-/obj/item/reagent_containers/food/snacks/meat/salami/On_Consume(mob/living/eater)
+/obj/item/reagent_containers/food/snacks/meat/salami/on_consume(mob/living/eater)
 	..()
 	if(slices_num)
 		if(bitecount == 1)
@@ -168,7 +168,7 @@
 	else
 		icon_state = "saloslice"
 
-/obj/item/reagent_containers/food/snacks/fat/salo/On_Consume(mob/living/eater)
+/obj/item/reagent_containers/food/snacks/fat/salo/on_consume(mob/living/eater)
 	..()
 	if(slices_num)
 		if(bitecount == 1)
@@ -252,7 +252,7 @@
 	else
 		icon_state = "butter_slice"
 
-/obj/item/reagent_containers/food/snacks/butter/On_Consume(mob/living/eater)
+/obj/item/reagent_containers/food/snacks/butter/on_consume(mob/living/eater)
 	..()
 	if(slices_num)
 		if(bitecount == 1)

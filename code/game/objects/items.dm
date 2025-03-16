@@ -1318,4 +1318,4 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		if(altgripped || wielded)
 			ungrip(M, FALSE)
 
-
+/obj/item/proc/on_consume(mob/living/eater)
