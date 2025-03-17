@@ -397,6 +397,9 @@
 
 	rotation_structure = TRUE
 	stress_use = 64
+	redstone_structure = TRUE
+
+	var/secondary_direction
 
 /obj/structure/minecart_rail/Initialize(mapload)
 	. = ..()

@@ -9,6 +9,7 @@
 	var/last_stress_added = 0
 	var/accepts_water_input = FALSE
 	var/giving_stress = TRUE
+	var/directional = TRUE
 
 	var/obj/structure/water_pipe/input
 	var/obj/structure/water_pipe/output
@@ -26,11 +27,21 @@
 		rotation_network.remove_connection(src)
 		old_network.reassess_group(src)
 	. = ..()
+
 /obj/structure/return_rotation_chat(atom/movable/screen/movable/mouseover/mouseover)
 	mouseover.maptext_height = 96
 	return {"<span style='font-size:8pt;font-family:"Pterra";color:#e6b120;text-shadow:0 0 1px #fff, 0 0 2px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;' class='center maptext '>
 			RPM:[rotations_per_minute ? rotations_per_minute : "0"]
 			[rotation_network.overstressed ? "Overstressed" : "Stress:[round(((rotation_network?.used_stress / max(1, rotation_network?.total_stress)) * 100), 1)]%"]</span>"}
+
+/obj/structure/setDir(newdir)
+	. = ..()
+	if(rotation_network)
+		var/datum/rotation_network/old_network = rotation_network
+		rotation_network.remove_connection(src)
+		old_network.reassess_group(src)
+
+		find_rotation_network()
 
 /obj/structure/LateInitialize()
 	. = ..()
@@ -267,6 +278,7 @@
 
 	var/obj/structure/placed_type
 	var/in_stack = 1
+	var/directional = TRUE
 
 /obj/item/rotation_contraption/Initialize()
 	. = ..()
@@ -318,6 +330,7 @@
 	name = initial(parent_type.name)
 	desc = initial(parent_type.desc)
 	placed_type = parent_type
+	directional = parent_type.directional
 
 /obj/item/rotation_contraption/attack_turf(turf/T, mob/living/user)
 	. = ..()
@@ -332,7 +345,10 @@
 	visible_message("[user] starts placing down [src]", "You start to place [src]")
 	if(!do_after(user, 1 SECONDS, T))
 		return
-	new placed_type(T)
+	var/obj/structure/structure = new placed_type(T)
+	if(directional)
+		structure.setDir(get_dir(user, T))
+
 	in_stack--
 	if(in_stack <= 0)
 		qdel(src)
@@ -375,9 +391,11 @@
 
 /obj/item/rotation_contraption/waterwheel
 	placed_type = /obj/structure/waterwheel
+	directional = FALSE
 
 /obj/item/rotation_contraption/minecart_rail
 	placed_type = /obj/structure/minecart_rail
 
 /obj/item/rotation_contraption/water_pipe
 	placed_type = /obj/structure/water_pipe
+	directional = FALSE
