@@ -1162,6 +1162,11 @@
 "ne" = (
 /turf/open/transparent/openspace,
 /area/rogue)
+"oB" = (
+/obj/structure/minecart_rail,
+/obj/structure/closet/crate/miningcar,
+/turf/open/floor/dirt/road,
+/area/rogue/outdoors)
 "oH" = (
 /obj/structure/lever{
 	redstone_id = "test2"
@@ -1341,6 +1346,14 @@
 "NF" = (
 /turf/closed/mineral/random/low_nonval,
 /area/rogue)
+"Pq" = (
+/obj/structure/minecart_rail,
+/obj/structure/fluff/traveltile{
+	aportalid = "test-out";
+	aportalgoesto = "test-in"
+	},
+/turf/open/floor/dirt/road,
+/area/rogue/outdoors)
 "QR" = (
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods)
@@ -1378,6 +1391,14 @@
 /area/rogue/outdoors)
 "XC" = (
 /obj/structure/rotation_piece/cog,
+/turf/open/floor/dirt/road,
+/area/rogue/outdoors)
+"Zs" = (
+/obj/structure/fluff/traveltile{
+	aportalid = "test-in";
+	aportalgoesto = "test-out"
+	},
+/obj/structure/minecart_rail,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
 
@@ -5941,10 +5962,10 @@ al
 al
 al
 al
-al
-al
-al
-al
+Zs
+ro
+ro
+oB
 al
 at
 Az
@@ -7224,11 +7245,11 @@ aa
 at
 al
 al
-al
-al
-al
-al
-al
+ro
+ro
+ro
+ro
+Pq
 al
 al
 at

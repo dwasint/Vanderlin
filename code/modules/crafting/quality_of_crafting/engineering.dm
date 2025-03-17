@@ -62,3 +62,49 @@
 	output = /obj/item/rotation_contraption/large_cog
 	craft_time = 5 SECONDS
 	uses_attacked_atom = FALSE
+
+/datum/repeatable_crafting_recipe/engineering/gearbox
+	name = "gearbox"
+	requirements = list(
+		/obj/item/grown/log/tree/small= 2,
+		/obj/item/natural/wood/plank = 4,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list(span_notice("starts to whittle"), span_notice("start to whittle"), 'sound/items/wood_sharpen.ogg'),
+	)
+	attacked_atom = /obj/item/grown/log/tree/small
+	starting_atom= /obj/item/weapon/knife
+	output = /obj/item/rotation_contraption/horizontal
+	craft_time = 5 SECONDS
+	uses_attacked_atom = FALSE
+
+/datum/repeatable_crafting_recipe/engineering/vertical_gearbox
+	name = "vertical gearbox"
+	requirements = list(
+		/obj/item/grown/log/tree/small= 2,
+		/obj/item/natural/wood/plank = 4,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list(span_notice("starts to whittle"), span_notice("start to whittle"), 'sound/items/wood_sharpen.ogg'),
+	)
+	attacked_atom = /obj/item/grown/log/tree/small
+	starting_atom= /obj/item/weapon/knife
+	output = /obj/item/rotation_contraption/vertical
+	craft_time = 5 SECONDS
+	uses_attacked_atom = FALSE
+
+/datum/repeatable_crafting_recipe/engineering/rails
+	name = "minecart rails"
+	requirements = list(
+		/obj/item/grown/log/tree/stick= 1,
+		/obj/item/ingot/iron = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/hammer = list(span_notice("starts to hammer"), span_notice("start to hammer"), 'sound/items/bsmith2.ogg'),
+	)
+	attacked_atom = /obj/item/grown/log/tree/small
+	starting_atom= /obj/item/weapon/hammer
+	output = /obj/item/rotation_contraption/minecart_rail
+	output_amount = 3
+	craft_time = 5 SECONDS
+	uses_attacked_atom = FALSE

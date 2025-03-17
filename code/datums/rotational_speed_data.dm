@@ -375,3 +375,9 @@
 
 /obj/item/rotation_contraption/waterwheel
 	placed_type = /obj/structure/waterwheel
+
+/obj/item/rotation_contraption/minecart_rail
+	placed_type = /obj/structure/minecart_rail
+
+/obj/item/rotation_contraption/water_pipe
+	placed_type = /obj/structure/water_pipe

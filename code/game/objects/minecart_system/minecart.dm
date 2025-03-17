@@ -264,6 +264,13 @@
 		if(!rail)
 			momentum -= 3
 
+	for(var/obj/structure/fluff/traveltile/travel in get_turf(src))
+		for(var/turf/open/viable_turfs in travel.return_connected_turfs())
+			for(var/obj/structure/minecart_rail/rail in viable_turfs)
+				if(rail.dir & (dir|GLOB.reverse_dir[dir]))
+					forceMove(viable_turfs)
+					return NONE
+
 	if(can_travel_on_turf(get_step(src, dir)))
 		return NONE
 	// Trying to turn
@@ -328,6 +335,12 @@
 	for(var/obj/structure/minecart_rail/rail in next_turf)
 		if(rail.dir & (dir_to_check|GLOB.reverse_dir[dir_to_check]))
 			return TRUE
+
+	for(var/obj/structure/fluff/traveltile/travel in next_turf)
+		for(var/turf/open/viable_turfs in travel.return_connected_turfs())
+			for(var/obj/structure/minecart_rail/rail in viable_turfs)
+				if(rail.dir & (dir_to_check|GLOB.reverse_dir[dir_to_check]))
+					return TRUE
 
 	var/turf/above_next = GET_TURF_ABOVE(next_turf)
 	for(var/obj/structure/minecart_rail/rail in above_next)
