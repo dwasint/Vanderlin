@@ -73,7 +73,7 @@
 	if(!step_forward)
 		return
 	for(var/obj/structure/structure in step_forward.contents)
-		if(structure.dir != dir && structure.dir != GLOB.reverse_dir[dir])
+		if(structure.dir != dir && structure.dir != GLOB.reverse_dir[dir] && !istype(structure, /obj/structure/minecart_rail))
 			continue
 		if(structure.rotation_network)
 			if(rotation_network)

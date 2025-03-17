@@ -332,20 +332,94 @@
 	if(istype(get_turf(src), /turf/open/transparent/openspace))
 		return TRUE //we can land
 
+	var/obj/structure/minecart_rail/located_rail = locate(/obj/structure/minecart_rail) in get_turf(src)
+
 	for(var/obj/structure/minecart_rail/rail in next_turf)
-		if(rail.dir & (dir_to_check|GLOB.reverse_dir[dir_to_check]))
-			return TRUE
+		if(!located_rail ||( located_rail?.dir in GLOB.cardinals))
+			if(rail.dir & (dir_to_check|GLOB.reverse_dir[dir_to_check]))
+				return TRUE
+		else
+			var/coming_dir = get_dir(src, next_turf)
+			switch(located_rail.dir)
+				if(SOUTHWEST)
+					if(coming_dir == NORTH || coming_dir == WEST)
+						return TRUE
+					else
+						return FALSE
+				if(SOUTHEAST)
+					if(coming_dir == NORTH || coming_dir == EAST)
+						return TRUE
+					else
+						return FALSE
+				if(NORTHEAST)
+					if(coming_dir == SOUTH || coming_dir == EAST)
+						return TRUE
+					else
+						return FALSE
+				if(NORTHWEST)
+					if(coming_dir == SOUTH || coming_dir == WEST)
+						return TRUE
+					else
+						return FALSE
 
 	for(var/obj/structure/fluff/traveltile/travel in next_turf)
 		for(var/turf/open/viable_turfs in travel.return_connected_turfs())
 			for(var/obj/structure/minecart_rail/rail in viable_turfs)
-				if(rail.dir & (dir_to_check|GLOB.reverse_dir[dir_to_check]))
-					return TRUE
+				if(!located_rail || (located_rail?.dir in GLOB.cardinals))
+					if(rail.dir & (dir_to_check|GLOB.reverse_dir[dir_to_check]))
+						return TRUE
+				else
+					var/coming_dir = get_dir(src, next_turf)
+					switch(located_rail.dir)
+						if(SOUTHWEST)
+							if(coming_dir == NORTH || coming_dir == WEST)
+								return TRUE
+							else
+								return FALSE
+						if(SOUTHEAST)
+							if(coming_dir == NORTH || coming_dir == EAST)
+								return TRUE
+							else
+								return FALSE
+						if(NORTHEAST)
+							if(coming_dir == SOUTH || coming_dir == EAST)
+								return TRUE
+							else
+								return FALSE
+						if(NORTHWEST)
+							if(coming_dir == SOUTH || coming_dir == WEST)
+								return TRUE
+							else
+								return FALSE
 
 	var/turf/above_next = GET_TURF_ABOVE(next_turf)
 	for(var/obj/structure/minecart_rail/rail in above_next)
-		if(rail.dir & (dir_to_check|GLOB.reverse_dir[dir_to_check]))
-			return TRUE
+		if(!located_rail || (located_rail?.dir in GLOB.cardinals))
+			if(rail.dir & (dir_to_check|GLOB.reverse_dir[dir_to_check]))
+				return TRUE
+		else
+			var/coming_dir = get_dir(src, next_turf)
+			switch(located_rail.dir)
+				if(SOUTHWEST)
+					if(coming_dir == NORTH || coming_dir == WEST)
+						return TRUE
+					else
+						return FALSE
+				if(SOUTHEAST)
+					if(coming_dir == NORTH || coming_dir == EAST)
+						return TRUE
+					else
+						return FALSE
+				if(NORTHEAST)
+					if(coming_dir == SOUTH || coming_dir == EAST)
+						return TRUE
+					else
+						return FALSE
+				if(NORTHWEST)
+					if(coming_dir == SOUTH || coming_dir == WEST)
+						return TRUE
+					else
+						return FALSE
 
 	return FALSE
 
@@ -401,6 +475,15 @@
 
 	var/secondary_direction
 
+	var/static/list/directions = list(
+		"South Left Turn" = SOUTHWEST,
+		"South Right Turn" = SOUTHEAST,
+		"North Right Turn" = NORTHEAST,
+		"Straight" = NORTH,
+		"Sideways" = WEST,
+		"North Left Turn" = NORTHWEST,
+	)
+
 /obj/structure/minecart_rail/Initialize(mapload)
 	. = ..()
 	//AddElement(/datum/element/give_turf_traits, string_list(list(TRAIT_TURF_IGNORE_SLOWDOWN)))
@@ -432,6 +515,34 @@
 				if(dir == WEST || dir == EAST)
 					rail.pixel_y = 7
 				rail.icon_state = "vertical_track"
+
+/obj/structure/minecart_rail/redstone_triggered(mob/user)
+	. = ..()
+	if(!secondary_direction)
+		return
+	var/last_direction = secondary_direction
+	secondary_direction = dir
+	dir = last_direction
+
+/obj/structure/minecart_rail/attack_right(mob/user)
+	. = ..()
+	var/obj/item/held_item = user.get_active_held_item()
+	if(held_item?.tool_behaviour == TOOL_MULTITOOL)
+		rotate_direction(user)
+		return
+
+	var/choice = browser_input_list(user, "Choose a direction to have it cycle to.", src, list("South Left Turn", "South Right Turn", "North Right Turn", "Straight", "Sideways", "North Left Turn"))
+	if(!choice)
+		return
+
+	secondary_direction = directions[choice]
+
+/obj/structure/minecart_rail/proc/rotate_direction(mob/user)
+	var/choice = browser_input_list(user, "Choose a direction to rotate it.", src, list("South Left Turn", "South Right Turn", "North Right Turn", "Straight", "Sideways", "North Left Turn"))
+	if(!choice)
+		return
+
+	dir = directions[choice]
 
 /obj/structure/minecart_rail/update_animation_effect()
 	. = ..()
