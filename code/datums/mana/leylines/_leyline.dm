@@ -157,4 +157,4 @@ GLOBAL_LIST_EMPTY_TYPED(all_leylines, /datum/mana_pool/leyline)
 	if(length(themes))
 		theme = themes[1]
 
-	starting.LeyBeam(data[2], icon_state = "blood", maxdistance = world.maxx, time = INFINITY, beam_color = theme?.beam_color, mana_pool = src)
+	starting.LeyBeam(data[2], icon_state = "blood", maxdistance = world.maxx, time = INFINITY, beam_color = theme?.beam_color, mana_pool = src, redraws = FALSE)

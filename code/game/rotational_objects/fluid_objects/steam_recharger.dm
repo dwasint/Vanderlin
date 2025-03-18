@@ -12,6 +12,12 @@
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
+/obj/structure/steam_recharger/examine(mob/user)
+	. = ..()
+	if(placed_atom)
+		. += span_notice("Contains")
+		. += placed_atom.examine()
+
 /obj/structure/steam_recharger/valid_water_connection(direction, obj/structure/water_pipe/pipe)
 	if(direction == dir)
 		input = pipe

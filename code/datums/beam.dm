@@ -20,12 +20,14 @@
 	var/forced_layer
 
 	var/datum/mana_pool/mana_pool
+	var/redraws
 
-/datum/beam/New(beam_origin,beam_target,beam_icon='icons/effects/beam.dmi',beam_icon_state="b_beam",time=50,maxdistance=10,btype = /obj/effect/ebeam,beam_sleep_time=3,beam_color = COLOR_WHITE)
+/datum/beam/New(beam_origin,beam_target,beam_icon='icons/effects/beam.dmi',beam_icon_state="b_beam",time=50,maxdistance=10,btype = /obj/effect/ebeam,beam_sleep_time=3,beam_color = COLOR_WHITE, redraws = TRUE)
 	origin = beam_origin
 	origin_oldloc =	get_turf(origin)
 	target = beam_target
 	target_oldloc = get_turf(target)
+	src.redraws = redraws
 	sleep_time = beam_sleep_time
 	if(origin_oldloc == origin && target_oldloc == target)
 		static_beam = 1
@@ -40,7 +42,8 @@
 
 /datum/beam/proc/Start()
 	Draw()
-	recalculate_in(sleep_time)
+	if(redraws)
+		recalculate_in(sleep_time)
 
 /datum/beam/proc/recalculate()
 	if(recalculating)
@@ -169,8 +172,8 @@
 	INVOKE_ASYNC(newbeam, TYPE_PROC_REF(/datum/beam, Start))
 	return newbeam
 
-/atom/proc/LeyBeam(atom/BeamTarget,icon_state="b_beam",icon='icons/effects/beam.dmi',time=INFINITY, maxdistance=10,beam_type=/obj/effect/ebeam,beam_sleep_time = 3, beam_color = COLOR_WHITE, datum/mana_pool, layer = UPPER_LEYLINE_LAYER)
-	var/datum/beam/newbeam = new(src,BeamTarget,icon,icon_state,time,maxdistance,beam_type,beam_sleep_time,beam_color)
+/atom/proc/LeyBeam(atom/BeamTarget,icon_state="b_beam",icon='icons/effects/beam.dmi',time=INFINITY, maxdistance=10,beam_type=/obj/effect/ebeam,beam_sleep_time = 3, beam_color = COLOR_WHITE, datum/mana_pool, layer = UPPER_LEYLINE_LAYER, redraws = TRUE)
+	var/datum/beam/newbeam = new(src,BeamTarget,icon,icon_state,time,maxdistance,beam_type,beam_sleep_time,beam_color,redraws)
 	if(mana_pool)
 		newbeam.mana_pool = mana_pool
 	newbeam.forced_plane = PLANE_LEYLINES

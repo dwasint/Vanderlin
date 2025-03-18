@@ -64,6 +64,8 @@
 	damtype = BRUTE
 	force = 1
 	w_class = WEIGHT_CLASS_SMALL
+	grid_height = 32
+	grid_width = 32
 	var/rune_to_scribe = null
 	var/amount = 8
 
@@ -566,7 +568,7 @@
 	name = "leyline shards"
 	icon = 'icons/roguetown/items/natural.dmi'
 	icon_state = "leyline"
-	desc = "Volcanic glass cooled from molten lava rapidly."
+	desc = "A shard of a fractured leyline, it glows with lost power."
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
 
@@ -574,7 +576,7 @@
 	name = "mana bloom"
 	icon_state = "manabloom"
 	icon = 'icons/roguetown/items/natural.dmi'
-	desc = "Volcanic glass cooled from molten lava rapidly."
+	desc = "Dense mana that has taken the form of plant life."
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
 	list_reagents = list(/datum/reagent/toxin/manabloom_juice = MEAL_FILLING)
@@ -583,7 +585,7 @@
 /obj/item/natural/artifact
 	name = "runed artifact"
 	icon_state = "runedartifact"
-	desc = "Volcanic glass cooled from molten lava rapidly."
+	desc = "An old stone from age long ago, marked with glowing sigils."
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
 
