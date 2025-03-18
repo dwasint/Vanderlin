@@ -34,6 +34,7 @@
 			if(!(structure in network.connected))
 				continue
 			surrounding |= structure
+	return surrounding
 
 /obj/structure/gearbox/find_and_propagate(list/checked, first = FALSE)
 	if(!length(checked))

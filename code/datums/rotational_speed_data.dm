@@ -35,13 +35,14 @@
 			[rotation_network.overstressed ? "Overstressed" : "Stress:[round(((rotation_network?.used_stress / max(1, rotation_network?.total_stress)) * 100), 1)]%"]</span>"}
 
 /obj/structure/setDir(newdir)
-	. = ..()
 	if(rotation_network)
 		var/datum/rotation_network/old_network = rotation_network
 		rotation_network.remove_connection(src)
 		old_network.reassess_group(src)
-
+		. = ..()
 		find_rotation_network()
+	else
+		. = ..()
 
 /obj/structure/LateInitialize()
 	. = ..()
@@ -186,7 +187,7 @@
 	for(var/obj/structure/structure in step_forward.contents)
 		if(structure in checked)
 			continue
-		if(structure.dir != dir && structure.dir != GLOB.reverse_dir[dir])
+		if(structure.dir != dir && structure.dir != GLOB.reverse_dir[dir] && !istype(structure, /obj/structure/minecart_rail))
 			continue
 		if(structure.rotation_network)
 			propagate_rotation_change(structure, checked, FALSE)
@@ -346,7 +347,7 @@
 	if(!do_after(user, 1 SECONDS, T))
 		return
 	var/obj/structure/structure = new placed_type(T)
-	if(directional)
+	if(directional && (structure.dir != NORTH && structure.dir != SOUTH))
 		structure.setDir(get_dir(user, T))
 
 	in_stack--

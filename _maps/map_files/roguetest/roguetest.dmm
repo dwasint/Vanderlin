@@ -1051,6 +1051,9 @@
 /area/rogue/indoors)
 "cK" = (
 /obj/structure/fake_machine/submission,
+/obj/item/rotation_contraption/shaft{
+	in_stack = 10
+	},
 /turf/open/floor/cobble,
 /area/rogue/outdoors)
 "cL" = (
@@ -1078,9 +1081,9 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors)
 "cQ" = (
-/obj/structure/fake_machine/scomm,
-/turf/open/floor/cobble,
-/area/rogue/outdoors)
+/obj/structure/minecart_rail,
+/turf/open/floor/dirt/road,
+/area/rogue/indoors)
 "cR" = (
 /obj/item/key/merchant,
 /turf/open/floor/dirt,
@@ -1112,6 +1115,12 @@
 "cX" = (
 /turf/open/floor/carpet/lord/right,
 /area/rogue/indoors)
+"ea" = (
+/obj/structure/minecart_rail{
+	dir = 5
+	},
+/turf/open/floor/dirt/road,
+/area/rogue/indoors)
 "eE" = (
 /obj/structure/trench,
 /obj/structure/rotation_piece/cog,
@@ -1121,6 +1130,10 @@
 /obj/structure/rotation_piece/cog/large,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
+"gZ" = (
+/obj/structure/minecart_rail,
+/turf/open/floor/cobble,
+/area/rogue/indoors)
 "hi" = (
 /obj/structure/fluff/millstone,
 /turf/open/floor/dirt/road,
@@ -1139,6 +1152,12 @@
 /obj/structure/waterwheel,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
+"lf" = (
+/obj/structure/minecart_rail{
+	dir = 6
+	},
+/turf/open/floor/dirt/road,
+/area/rogue/indoors)
 "lY" = (
 /obj/structure/minecart_rail{
 	dir = 9
@@ -1162,6 +1181,12 @@
 "ne" = (
 /turf/open/transparent/openspace,
 /area/rogue)
+"nY" = (
+/obj/structure/minecart_rail{
+	dir = 4
+	},
+/turf/open/floor/cobble,
+/area/rogue/outdoors)
 "oB" = (
 /obj/structure/minecart_rail,
 /obj/structure/closet/crate/miningcar,
@@ -1238,6 +1263,10 @@
 	},
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
+"vT" = (
+/obj/structure/rotation_piece,
+/turf/open/floor/cobble,
+/area/rogue/outdoors)
 "vV" = (
 /obj/structure/ladder,
 /turf/open/floor/cobble,
@@ -1254,6 +1283,16 @@
 /obj/structure/rotation_piece,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
+"yC" = (
+/obj/structure/minecart_rail{
+	dir = 9
+	},
+/turf/open/floor/cobble,
+/area/rogue/outdoors)
+"yV" = (
+/obj/structure/rotation_piece,
+/turf/open/floor/cobble,
+/area/rogue/indoors)
 "zc" = (
 /obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/dirt/road,
@@ -6224,7 +6263,7 @@ al
 al
 al
 al
-at
+aJ
 Az
 cN
 al
@@ -6232,13 +6271,13 @@ aL
 jt
 xp
 XC
-al
-at
-ab
-ah
-aj
-aj
-ae
+aJ
+aJ
+am
+gZ
+ea
+cQ
+lf
 ah
 ah
 ah
@@ -6490,12 +6529,12 @@ eE
 xp
 Mn
 hi
-at
-ab
-cQ
+vT
+yV
 aJ
-al
-al
+nY
+aL
+BE
 aQ
 al
 ai
@@ -6750,9 +6789,9 @@ al
 at
 ab
 cK
-aJ
-al
-al
+yC
+ro
+qZ
 al
 al
 ai
