@@ -24,6 +24,13 @@
 
 	var/list/transferring_mobs = list()
 
+	var/different_z = FALSE
+
+/obj/structure/mana_pylon/examine(mob/user)
+	. = ..()
+	if(different_z)
+		. += span_notice("It appears to be transporting mana vertically!")
+
 /obj/structure/mana_pylon/Initialize()
 	. = ..()
 	fake_density = new(get_turf(src))
@@ -46,6 +53,8 @@
 	. = ..()
 	cut_overlays()
 	var/mutable_appearance/MA = mutable_appearance(icon, "pylon-glow", plane = ABOVE_LIGHTING_PLANE)
+	if(different_z)
+		MA.color = COLOR_RED
 	add_overlay(MA)
 
 /obj/structure/mana_pylon/MouseDrop(obj/structure/over, src_location, over_location, src_control, over_control, params)
@@ -68,9 +77,17 @@
 	if(linked_pylon)
 		unlink_pylon(linked_pylon)
 
-	created_beam = LeyBeam(pylon_to_link, icon_state = "medbeam", maxdistance = world.maxx, time = INFINITY)
+	if(pylon_to_link.z == z)
+		created_beam = LeyBeam(pylon_to_link, icon_state = "medbeam", maxdistance = world.maxx, time = INFINITY)
+
+	if(pylon_to_link.z != z)
+		different_z = TRUE
+	else
+		different_z = FALSE
 	linked_pylon = pylon_to_link
 	mana_pool.start_transfer(pylon_to_link.mana_pool, TRUE)
+	update_icon()
+	return TRUE
 
 /obj/structure/mana_pylon/proc/unlink_pylon(obj/structure/pylon_to_unlink)
 	QDEL_NULL(created_beam)
