@@ -452,7 +452,7 @@
 	var/throw_distance = clamp(ceil(momentum / 3) - 4, 1, 255)
 	var/turf/some_distant_turf = get_edge_target_turf(src, dir)
 	for(var/atom/movable/yeeten in to_yeet)
-		yeeten.throw_at(some_distant_turf, throw_distance, 3 + floor(momentum * 0.01, 1))
+		yeeten.throw_at(some_distant_turf, throw_distance, 3 + FLOOR(momentum * 0.01, 1))
 
 	if(was_open)
 		visible_message(span_warning("[src] spills its contents!"))
