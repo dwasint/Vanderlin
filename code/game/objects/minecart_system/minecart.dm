@@ -8,6 +8,7 @@
 	//close_sound = 'sound/machines/trapdoor/trapdoor_shut.ogg'
 	can_buckle = TRUE
 	buckle_lying = FALSE
+	horizontal = FALSE
 	/// Whether we're on a set of rails or just on the ground
 	var/on_rails = FALSE
 	/// How many turfs we are travelling, also functions as speed (more momentum = faster)
@@ -448,7 +449,7 @@
 			visible_message(span_warning("[src] breaks open!"))
 		return
 
-	var/throw_distance = clamp(ceil(momentum / 3) - 4, 1, 20)
+	var/throw_distance = clamp(ceil(momentum / 3) - 4, 1, 255)
 	var/turf/some_distant_turf = get_edge_target_turf(src, dir)
 	for(var/atom/movable/yeeten in to_yeet)
 		yeeten.throw_at(some_distant_turf, throw_distance, 3)

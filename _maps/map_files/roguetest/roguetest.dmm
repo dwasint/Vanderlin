@@ -1081,9 +1081,9 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors)
 "cQ" = (
-/obj/structure/minecart_rail,
-/turf/open/floor/dirt/road,
-/area/rogue/indoors)
+/obj/machinery/light/fueled/firebowl,
+/turf/open/floor/cobble,
+/area)
 "cR" = (
 /obj/item/key/merchant,
 /turf/open/floor/dirt,
@@ -1115,12 +1115,6 @@
 "cX" = (
 /turf/open/floor/carpet/lord/right,
 /area/rogue/indoors)
-"ea" = (
-/obj/structure/minecart_rail{
-	dir = 5
-	},
-/turf/open/floor/dirt/road,
-/area/rogue/indoors)
 "eE" = (
 /obj/structure/trench,
 /obj/structure/rotation_piece/cog,
@@ -1130,10 +1124,6 @@
 /obj/structure/rotation_piece/cog/large,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
-"gZ" = (
-/obj/structure/minecart_rail,
-/turf/open/floor/cobble,
-/area/rogue/indoors)
 "hi" = (
 /obj/structure/fluff/millstone,
 /turf/open/floor/dirt/road,
@@ -1152,12 +1142,6 @@
 /obj/structure/waterwheel,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
-"lf" = (
-/obj/structure/minecart_rail{
-	dir = 6
-	},
-/turf/open/floor/dirt/road,
-/area/rogue/indoors)
 "lY" = (
 /obj/structure/minecart_rail{
 	dir = 9
@@ -1181,12 +1165,9 @@
 "ne" = (
 /turf/open/transparent/openspace,
 /area/rogue)
-"nY" = (
-/obj/structure/minecart_rail{
-	dir = 4
-	},
+"nG" = (
 /turf/open/floor/cobble,
-/area/rogue/outdoors)
+/area)
 "oB" = (
 /obj/structure/minecart_rail,
 /obj/structure/closet/crate/miningcar,
@@ -1223,6 +1204,10 @@
 "rh" = (
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/woods)
+"rm" = (
+/obj/structure/rotation_piece,
+/turf/open/floor/cobble,
+/area/rogue/outdoors)
 "ro" = (
 /obj/structure/minecart_rail,
 /turf/open/floor/dirt/road,
@@ -1263,10 +1248,6 @@
 	},
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
-"vT" = (
-/obj/structure/rotation_piece,
-/turf/open/floor/cobble,
-/area/rogue/outdoors)
 "vV" = (
 /obj/structure/ladder,
 /turf/open/floor/cobble,
@@ -1283,19 +1264,19 @@
 /obj/structure/rotation_piece,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
-"yC" = (
+"yP" = (
 /obj/structure/minecart_rail{
-	dir = 9
+	dir = 4
 	},
 /turf/open/floor/cobble,
 /area/rogue/outdoors)
-"yV" = (
-/obj/structure/rotation_piece,
-/turf/open/floor/cobble,
-/area/rogue/indoors)
 "zc" = (
 /obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/dirt/road,
+/area/rogue/indoors)
+"zM" = (
+/obj/structure/minecart_rail,
+/turf/open/floor/cobble,
 /area/rogue/indoors)
 "zZ" = (
 /obj/structure/apiary,
@@ -1339,6 +1320,10 @@
 	dir = 4
 	},
 /area/rogue/indoors)
+"DJ" = (
+/obj/structure/rotation_piece,
+/turf/open/floor/cobble,
+/area/rogue/indoors)
 "DW" = (
 /obj/machinery/light/fueled/torchholder/l,
 /obj/structure/soil/debug_soil/random,
@@ -1363,6 +1348,12 @@
 	},
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
+"Hr" = (
+/obj/structure/minecart_rail{
+	dir = 6
+	},
+/turf/open/floor/dirt/road,
+/area/rogue/indoors)
 "Jj" = (
 /obj/structure/minecart_rail{
 	dir = 4
@@ -1385,6 +1376,12 @@
 "NF" = (
 /turf/closed/mineral/random/low_nonval,
 /area/rogue)
+"Of" = (
+/obj/structure/minecart_rail{
+	dir = 5
+	},
+/turf/open/floor/dirt/road,
+/area/rogue/indoors)
 "Pq" = (
 /obj/structure/minecart_rail,
 /obj/structure/fluff/traveltile{
@@ -1421,6 +1418,16 @@
 "Uv" = (
 /turf/closed,
 /area/rogue)
+"UY" = (
+/obj/structure/minecart_rail{
+	dir = 9
+	},
+/turf/open/floor/cobble,
+/area/rogue/outdoors)
+"Wi" = (
+/obj/structure/minecart_rail,
+/turf/open/floor/dirt/road,
+/area/rogue/indoors)
 "Wo" = (
 /obj/effect/landmark/start/bandit,
 /turf/open/floor/dirt/road,
@@ -6068,192 +6075,192 @@ aa
 aa
 "}
 (19,1,1) = {"
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-at
+nG
+nG
+cQ
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+cQ
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+cQ
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+cQ
+cQ
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+cQ
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+cQ
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+cQ
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+cQ
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+cQ
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+cQ
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+cQ
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+cQ
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+cQ
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+cQ
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+cQ
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+cQ
+nG
+nG
+nG
+nG
+nG
+nG
+nG
+cQ
+aJ
 al
 al
 al
@@ -6274,10 +6281,10 @@ XC
 aJ
 aJ
 am
-gZ
-ea
-cQ
-lf
+zM
+Of
+Wi
+Hr
 ah
 ah
 ah
@@ -6529,10 +6536,10 @@ eE
 xp
 Mn
 hi
-vT
-yV
+rm
+DJ
 aJ
-nY
+yP
 aL
 BE
 aQ
@@ -6789,7 +6796,7 @@ al
 at
 ab
 cK
-yC
+UY
 ro
 qZ
 al
