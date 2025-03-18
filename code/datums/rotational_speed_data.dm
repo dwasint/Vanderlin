@@ -160,6 +160,7 @@
 		rotation_network.rebuild_group()
 	else
 		propagate_rotation_change(connector)
+	rotation_network.rebuild_group() // <=-- this is dumb as hell but for some reason if you perform a fucking dark ritual or someshit you can trick the game into lobotomizing itself.
 	return TRUE
 
 /obj/structure/proc/propagate_rotation_change(obj/structure/connector, list/checked, first = FALSE)
@@ -347,8 +348,10 @@
 	if(!do_after(user, 1 SECONDS, T))
 		return
 	var/obj/structure/structure = new placed_type(T)
-	if(directional && (structure.dir != NORTH && structure.dir != SOUTH))
-		structure.setDir(get_dir(user, T))
+	if(directional)
+		var/direction = get_dir(user, T)
+		if(direction != NORTH && direction != SOUTH)
+			structure.setDir(get_dir(user, T))
 
 	in_stack--
 	if(in_stack <= 0)

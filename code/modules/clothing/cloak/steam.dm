@@ -12,7 +12,7 @@
 
 /obj/item/clothing/cloak/boiler/Initialize()
 	. = ..()
-	AddComponent(/datum/component/steam_storage, 1000, 1, "steam_armor")
+	AddComponent(/datum/component/steam_storage, 1000, 0.5, "steam_armor")
 
 /obj/item/clothing/cloak/boiler/equipped(mob/living/user, slot)
 	if(!(slotdefine2slotbit(slot) & slot_flags))
