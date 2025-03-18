@@ -136,6 +136,7 @@
 	craftdiff = 2
 
 /datum/repeatable_crafting_recipe/arcyne/focus
+	name = "Primordial Quartz Focus"
 	requirements = list(
 		/obj/item/natural/melded/t2  = 1,
 		/obj/item/ingot/gold = 1,

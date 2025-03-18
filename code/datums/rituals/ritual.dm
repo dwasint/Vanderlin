@@ -311,6 +311,7 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 	name = "lesser vitalized endurance"
 	buff = /datum/status_effect/buff/magicendurance/lesser
 	blacklisted = FALSE
+	required_atoms = list(/obj/item/natural/obsidian = 1, /obj/item/natural/fairydust = 2)
 
 /datum/runerituals/buff/nightvision
 	name = "darksight"
