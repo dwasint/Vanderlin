@@ -177,7 +177,7 @@
 
 /obj/item/mana_battery/mana_crystal/small/focus //really only exists for debug.
 	name = "Focused Small Primordial Quartz Crystal"
-	desc = "A focused variant of the standard small volite crystal. You can draw mana from this while casting."
+	desc = "A crystal entwined in gold and arcyne meld. You can draw mana from this while casting."
 	icon_state = "foci"
 
 /obj/item/mana_battery/mana_crystal/small/focus/get_initial_mana_pool_type()
