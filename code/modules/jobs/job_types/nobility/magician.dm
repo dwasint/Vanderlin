@@ -38,6 +38,7 @@
 	backr = /obj/item/storage/backpack/satchel
 	armor = /obj/item/clothing/shirt/robe/black
 	cloak = /obj/item/clothing/cloak/black_cloak
+	neck = /obj/item/clothing/neck/mana_star
 	id = /obj/item/clothing/ring/gold
 	belt = /obj/item/storage/belt/leather/plaquesilver
 	beltr = /obj/item/storage/keyring/mage

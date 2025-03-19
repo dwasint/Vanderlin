@@ -144,7 +144,8 @@
 		/obj/item/natural/obsidian,
 		/obj/item/natural/leyline,
 		/obj/item/reagent_containers/food/snacks/grown/manabloom,
-		/obj/item/mana_battery/mana_crystal
+		/obj/item/mana_battery/mana_crystal,
+		/obj/item/ash,
 		))
 
 /datum/component/storage/concrete/grid/crucible

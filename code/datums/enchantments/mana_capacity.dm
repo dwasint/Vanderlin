@@ -3,7 +3,7 @@
 	examine_text = "I can feel this objects mana and use it freely."
 
 	var/softcap_increase = 100
-	var/hardcap_increase = 100
+	var/hardcap_increase = 500
 
 	var/list/affecting_mobs = list()
 

@@ -1,5 +1,5 @@
 /datum/job/wapprentice
-	title = "Magician's Apprentice"
+	title = "Magician Apprentice"
 	tutorial = "Your master once saw potential in you, \
 	something you are uncertain if they still do with your recent studies. \
 	The path to using magic is something treacherous and untamed, \
@@ -13,13 +13,16 @@
 	spawn_positions = 2
 
 	allowed_races = ALL_PLAYER_RACES_BY_NAME
+	allowed_sexes = list(MALE, FEMALE)
 	allowed_ages = list(AGE_CHILD, AGE_ADULT)
 
 
 	outfit = /datum/outfit/job/wapprentice
 	display_order = JDO_WAPP
+	min_pq = 0
 	give_bank_account = TRUE
 	bypass_lastclass = TRUE
+	banned_leprosy = FALSE
 	can_have_apprentices = FALSE
 
 

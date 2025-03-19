@@ -13185,7 +13185,6 @@
 /area/rogue/outdoors/town/roofs)
 "jjY" = (
 /obj/structure/mannequin{
-	pixel_x = 0;
 	pixel_y = 9
 	},
 /turf/open/floor/wood,
@@ -13245,6 +13244,10 @@
 	},
 /turf/open/floor/blocks,
 /area/rogue/under/town/basement)
+"jlA" = (
+/obj/machinery/light/fueled/wallfire/candle/blue/r,
+/turf/open/floor/carpet/purple,
+/area/rogue/indoors/town/magician)
 "jlM" = (
 /obj/structure/fluff/railing/border{
 	dir = 8
@@ -18045,6 +18048,10 @@
 /obj/structure/pillory,
 /turf/open/floor/blocks,
 /area/rogue/outdoors/town)
+"mQT" = (
+/obj/machinery/light/fueled/wallfire/candle/blue/l,
+/turf/open/floor/greenstone,
+/area/rogue/indoors/town/magician)
 "mQV" = (
 /turf/open/floor/tile/tilerg,
 /area/rogue/indoors/town/bath)
@@ -33585,6 +33592,10 @@
 /obj/machinery/light/fueled/firebowl,
 /turf/open/floor/ruinedwood/darker,
 /area/rogue/outdoors/town/roofs)
+"xZr" = (
+/obj/machinery/light/fueled/wallfire/candle/blue/r,
+/turf/open/floor/greenstone,
+/area/rogue/indoors/town/magician)
 "xZE" = (
 /obj/effect/landmark/start/hunter,
 /turf/open/floor/wood,
@@ -89859,11 +89870,11 @@ vnF
 cBJ
 cBJ
 xJQ
+xtN
 wGx
 wGx
 wGx
-wGx
-wGx
+xtN
 aFD
 aFD
 cBJ
@@ -90263,11 +90274,11 @@ jdk
 oZC
 eJJ
 aFD
-aFD
+mQT
 lUN
 lUN
 hAY
-aFD
+mQT
 aFD
 aFD
 cBJ
@@ -90667,11 +90678,11 @@ sWL
 iHy
 aFD
 aFD
-aFD
+xZr
 lUN
 lUN
 lUN
-aFD
+xZr
 qeS
 mvk
 cBJ
@@ -91071,11 +91082,11 @@ sWL
 cBJ
 xdM
 xJQ
-wGx
+gjq
 wGx
 fce
 wGx
-wGx
+gjq
 aFD
 cBJ
 cBJ
@@ -130466,7 +130477,7 @@ wGx
 jTa
 jTa
 wGx
-wGx
+gjq
 wGx
 wGx
 cBJ
@@ -130867,7 +130878,7 @@ cBJ
 sKT
 wGx
 wGx
-jTa
+jlA
 jTa
 sKT
 sKT
