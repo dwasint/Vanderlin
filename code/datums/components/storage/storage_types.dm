@@ -146,6 +146,7 @@
 		/obj/item/reagent_containers/food/snacks/grown/manabloom,
 		/obj/item/mana_battery/mana_crystal
 		))
+
 /datum/component/storage/concrete/grid/crucible
 	screen_max_rows = 5
 	screen_max_columns = 3
@@ -173,3 +174,14 @@
 	if(!source.opened)
 		return FALSE
 	. = ..()
+
+/datum/component/storage/concrete/grid/kobold_storage
+	max_w_class = WEIGHT_CLASS_HUGE
+	screen_max_columns = 2
+	screen_max_rows = 3
+
+/datum/component/storage/concrete/grid/kobold_storage/New(datum/P, ...)
+	. = ..()
+	set_holdable(list(
+		/obj/item/clothing/head/mob_holder,
+		))

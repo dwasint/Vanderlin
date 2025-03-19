@@ -22,7 +22,7 @@
 		"Dark Elf",
 		"Aasimar",
 		"Half-Orc",
-		"Kobold"
+		"Kobold",
 	)
 
 	outfit = /datum/outfit/job/cheesemaker

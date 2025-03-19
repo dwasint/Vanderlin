@@ -1641,8 +1641,6 @@
 		return
 	if(!over.Adjacent(src) || (user != src) || !canUseTopic(over))
 		return
-	if(can_be_held || HAS_TRAIT(src, TRAIT_TINY))
-		mob_try_pickup(over)
 
 /mob/living/MouseDrop_T(atom/dropping, atom/user)
 	var/mob/living/U = user
