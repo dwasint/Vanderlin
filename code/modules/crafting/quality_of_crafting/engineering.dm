@@ -108,3 +108,62 @@
 	output_amount = 3
 	craft_time = 5 SECONDS
 	uses_attacked_atom = FALSE
+
+/datum/repeatable_crafting_recipe/engineering/water_pipe
+	name = "fluid transport pipe"
+	requirements = list(
+		/obj/item/ingot/bronze = 1,
+	)
+	tool_usage = list(
+		/obj/item/weapon/hammer = list(span_notice("starts to hammer"), span_notice("start to hammer"), 'sound/items/bsmith2.ogg'),
+	)
+	attacked_atom = /obj/item/ingot/bronze
+	starting_atom= /obj/item/weapon/hammer
+	output = /obj/item/rotation_contraption/water_pipe
+	output_amount = 12
+	craft_time = 5 SECONDS
+	uses_attacked_atom = FALSE
+
+/datum/repeatable_crafting_recipe/engineering/minecart
+	name = "minecart"
+	requirements = list(
+		/obj/item/ingot/iron = 3,
+	)
+	tool_usage = list(
+		/obj/item/weapon/hammer = list(span_notice("starts to hammer"), span_notice("start to hammer"), 'sound/items/bsmith2.ogg'),
+	)
+	attacked_atom = /obj/item/ingot/iron
+	starting_atom= /obj/item/weapon/hammer
+	output = /obj/structure/closet/crate/miningcar
+	craft_time = 5 SECONDS
+	uses_attacked_atom = FALSE
+
+/datum/repeatable_crafting_recipe/engineering/boiler
+	name = "boiler"
+	requirements = list(
+		/obj/item/ingot/copper = 3,
+	)
+	tool_usage = list(
+		/obj/item/weapon/hammer = list(span_notice("starts to hammer"), span_notice("start to hammer"), 'sound/items/bsmith2.ogg'),
+	)
+	attacked_atom = /obj/item/ingot/copper
+	starting_atom= /obj/item/weapon/hammer
+	output = /obj/item/rotation_contraption/boiler
+	craft_time = 5 SECONDS
+	uses_attacked_atom = FALSE
+
+/datum/repeatable_crafting_recipe/engineering/pump
+	name = "liquid pump"
+	requirements = list(
+		/obj/item/grown/log/tree/small= 1,
+		/obj/item/ingot/bronze = 3,
+	)
+	tool_usage = list(
+		/obj/item/weapon/knife = list(span_notice("starts to whittle"), span_notice("start to whittle"), 'sound/items/wood_sharpen.ogg'),
+		/obj/item/weapon/hammer = list(span_notice("starts to hammer"), span_notice("start to hammer"), 'sound/items/bsmith2.ogg'),
+	)
+	attacked_atom = /obj/item/grown/log/tree/small
+	starting_atom= /obj/item/weapon/knife
+	output = /obj/item/rotation_contraption/pump
+	craft_time = 5 SECONDS
+	uses_attacked_atom = FALSE

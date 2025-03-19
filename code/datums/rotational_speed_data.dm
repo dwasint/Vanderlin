@@ -281,6 +281,7 @@
 	var/obj/structure/placed_type
 	var/in_stack = 1
 	var/directional = TRUE
+	var/can_stack = TRUE
 
 /obj/item/rotation_contraption/Initialize()
 	. = ..()
@@ -292,17 +293,17 @@
 
 	if(placed_type)
 		set_type(placed_type)
+	if(can_stack)
+		for(var/obj/item/rotation_contraption/contraption in loc)
+			if(contraption == src)
+				continue
+			if(!istype(contraption, src.type))
+				continue
+			if(placed_type != contraption.placed_type)
+				continue
 
-	for(var/obj/item/rotation_contraption/contraption in loc)
-		if(contraption == src)
-			continue
-		if(!istype(contraption, src.type))
-			continue
-		if(placed_type != contraption.placed_type)
-			continue
-
-		in_stack += contraption.in_stack
-		qdel(contraption)
+			in_stack += contraption.in_stack
+			qdel(contraption)
 	update_overlays()
 
 
@@ -341,7 +342,13 @@
 	if(is_blocked_turf(T))
 		return
 	for(var/obj/structure/structure in T.contents)
-		if(structure.rotation_structure)
+		if(structure.rotation_structure && !ispath(placed_type, /obj/structure/water_pipe))
+			return
+
+		if(structure.accepts_water_input && !ispath(placed_type, /obj/structure/rotation_piece))
+			return
+
+		if(istype(structure, placed_type))
 			return
 
 	visible_message("[user] starts placing down [src]", "You start to place [src]")
@@ -368,6 +375,8 @@
 
 /obj/item/rotation_contraption/attackby(obj/item/I, mob/living/user, params)
 	. = ..()
+	if(!can_stack)
+		return
 	if(!istype(I, src.type))
 		return
 	if(placed_type != I:placed_type)
@@ -397,9 +406,31 @@
 	placed_type = /obj/structure/waterwheel
 	directional = FALSE
 
+	grid_height = 96
+	grid_width = 96
+
 /obj/item/rotation_contraption/minecart_rail
 	placed_type = /obj/structure/minecart_rail
+
+	grid_height = 64
+	grid_width = 32
 
 /obj/item/rotation_contraption/water_pipe
 	placed_type = /obj/structure/water_pipe
 	directional = FALSE
+
+/obj/item/rotation_contraption/pump
+	placed_type = /obj/structure/water_pump
+	directional = FALSE
+	can_stack = FALSE
+
+	grid_height = 96
+	grid_width = 96
+
+/obj/item/rotation_contraption/boiler
+	placed_type = /obj/structure/boiler
+	directional = FALSE
+	can_stack = FALSE
+
+	grid_height = 96
+	grid_width = 96
