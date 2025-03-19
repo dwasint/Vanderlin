@@ -30,6 +30,9 @@
 	. = ..()
 	if(different_z)
 		. += span_notice("It appears to be transporting mana vertically!")
+	if(mana_pool.network_attunement)
+		var/datum/attunement/attunement = mana_pool.network_attunement
+		. += span_blue("It is attuned to [initial(attunement.name)]")
 
 /obj/structure/mana_pylon/Initialize()
 	. = ..()
@@ -56,6 +59,19 @@
 	if(different_z)
 		MA.color = COLOR_RED
 	add_overlay(MA)
+
+/obj/structure/mana_pylon/attackby(obj/item/I, mob/living/user, params)
+	. = ..()
+	if(!istype(I, /obj/item/gem))
+		return
+
+	var/obj/item/gem/gem = I
+	if(!gem.attuned)
+		return
+	user.visible_message(span_notice("[user] starts to attune [src]."), span_notice("You start to attune [src]."))
+	if(!do_after(user, 3 SECONDS, src))
+		return
+	mana_pool.network_attunement = gem.attuned
 
 /obj/structure/mana_pylon/MouseDrop(obj/structure/over, src_location, over_location, src_control, over_control, params)
 	. = ..()

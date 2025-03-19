@@ -69,6 +69,8 @@
 
 	var/list/decay_prevention
 
+	var/datum/attunement/network_attunement
+
 /datum/mana_pool/New(atom/parent = null)
 	. = ..()
 	donation_budget_this_tick = max_donation_rate_per_second
@@ -211,6 +213,8 @@
 	if((intrinsic_recharge_sources & MANA_ALL_PYLONS) && amount < get_softcap())
 		var/list/pylons = list()
 		for(var/obj/structure/mana_pylon/pylon in range(3, get_turf(parent)))
+			if(pylon.mana_pool.network_attunement && (network_attunement != pylon.mana_pool.network_attunement))
+				continue
 			var/sane_distance = get_dist(get_turf(parent), pylon) + 1
 			pylon.mana_pool.transfer_specific_mana(src, (pylon.mana_pool.get_transfer_rate_for(src) / sane_distance))
 			pylons += pylon

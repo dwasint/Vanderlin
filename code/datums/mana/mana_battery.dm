@@ -183,6 +183,25 @@
 /obj/item/mana_battery/mana_crystal/small/focus/get_initial_mana_pool_type()
 	return /datum/mana_pool/mana_battery/mana_crystal/small/focus
 
+/obj/item/mana_battery/mana_crystal/small/focus/examine(mob/user)
+	. = ..()
+	if(mana_pool.network_attunement)
+		var/datum/attunement/attunement = mana_pool.network_attunement
+		. += span_blue("It is attuned to [initial(attunement.name)]")
+
+/obj/item/mana_battery/mana_crystal/small/focus/attackby(obj/item/I, mob/living/user, params)
+	. = ..()
+	if(!istype(I, /obj/item/gem))
+		return
+
+	var/obj/item/gem/gem = I
+	if(!gem.attuned)
+		return
+	user.visible_message(span_notice("[user] starts to attune [src]."), span_notice("You start to attune [src]."))
+	if(!do_after(user, 3 SECONDS, src))
+		return
+	mana_pool.network_attunement = gem.attuned
+
 /obj/item/mana_battery/mana_crystal/small/focus/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_POOL_AVAILABLE_FOR_CAST, INNATE_TRAIT)
