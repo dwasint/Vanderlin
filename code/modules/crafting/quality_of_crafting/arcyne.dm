@@ -7,7 +7,7 @@
 	name = "amethyst transmutation"
 	output = /obj/item/gem/amethyst
 	reagent_requirements = list(
-		/datum/reagent/medicine/manapot = 15
+		/datum/reagent/medicine/manapot/weak = 15
 	)
 	requirements = list(
 		/obj/item/natural/stone = TRUE
@@ -16,8 +16,8 @@
 		/obj/item/weapon/knife = list("starts to carve out a rune", "start to carve a rune")
 	)
 
-	attacked_atom = /obj/item/weapon/knife
-	starting_atom = /obj/item/natural/stone
+	attacked_atom = /obj/item/natural/stone
+	starting_atom = /obj/item/weapon/knife
 	subtypes_allowed = TRUE // so you can use any subtype of fur
 
 /datum/repeatable_crafting_recipe/arcyne/infernal_feather
@@ -74,6 +74,7 @@
 	starting_atom = /obj/item/clothing/gloves/leather
 	attacked_atom = /obj/item/gem
 	uses_attacked_atom = TRUE
+	subtypes_allowed = TRUE
 	craftdiff = 3
 
 /datum/repeatable_crafting_recipe/arcyne/temporalhourglass
