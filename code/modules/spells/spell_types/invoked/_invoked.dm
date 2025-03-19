@@ -63,7 +63,7 @@
 
 /obj/effect/proc_holder/spell/invoked/projectile/cast(list/targets, mob/living/user)
 	var/target = targets[1]
-	var/turf/T = user.loc
+	var/turf/T = get_turf(user)
 	var/turf/U = get_step(user, user.dir) // Get the tile infront of the move, based on their direction
 	if(!isturf(U) || !isturf(T))
 		return FALSE
@@ -76,7 +76,7 @@
 /obj/effect/proc_holder/spell/invoked/projectile/fire_projectile(mob/living/user, atom/target)
 	current_amount--
 	for(var/i in 1 to projectiles_per_fire)
-		var/obj/projectile/P = new projectile_type(user.loc)
+		var/obj/projectile/P = new projectile_type(get_turf(user))
 		if(istype(P, /obj/projectile/magic/bloodsteal))
 			var/obj/projectile/magic/bloodsteal/B = P
 			B.sender = user

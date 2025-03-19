@@ -2832,7 +2832,7 @@
 	name = "Mind Sliver"
 	overlay_state = "null"
 	releasedrain = 30
-	chargetime = 0
+	chargetime = 10
 	charge_max = 15 SECONDS
 	range = 6
 	warnie = "spellwarning"
