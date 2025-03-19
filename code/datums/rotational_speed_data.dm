@@ -21,6 +21,28 @@
 	if(rotation_structure || accepts_water_input)
 		return INITIALIZE_HINT_LATELOAD
 
+/obj/structure/ShiftClick(mob/user)
+	. = ..()
+	if(!user.Adjacent(src))
+		return
+	if(!rotation_structure)
+		return
+	var/obj/item/contraption/linker/linker = user.get_active_held_item()
+	if(!istype(linker))
+		return
+
+	for(var/obj/item/rotation_contraption/item as anything in subtypesof(/obj/item/rotation_contraption))
+		if(istype(src, initial(item.placed_type)))
+			start_deconstruct(user, item)
+			return
+
+/obj/structure/proc/start_deconstruct(mob/user, obj/item/rotation_contraption/type)
+	user.visible_message(span_notice("[user] starts to disassemble [src]."), span_notice("You start to disassemble [src]."))
+	if(!do_after(user, 3 SECONDS, src))
+		return
+	new type(get_turf(src))
+	qdel(src)
+
 /obj/structure/Destroy()
 	if(rotation_network)
 		var/datum/rotation_network/old_network = rotation_network
@@ -223,9 +245,11 @@
 /obj/structure/proc/rotation_break()
 	visible_message(span_warning("[src] breaks apart from the opposing directions!"))
 	playsound(src, 'sound/foley/cartdump.ogg', 75)
-	var/obj/item/rotation_contraption/new_contraption = new (get_turf(src))
-	new_contraption.set_type(src.type)
-	qdel(src)
+	for(var/obj/item/rotation_contraption/item as anything in subtypesof(/obj/item/rotation_contraption))
+		if(istype(src, initial(item.placed_type)))
+			new item(get_turf(src))
+			qdel(src)
+			return
 
 /obj/structure/proc/set_rotations_per_minute(speed)
 	if(speed > 256)
