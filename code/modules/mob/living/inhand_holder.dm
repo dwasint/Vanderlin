@@ -7,6 +7,7 @@
 	icon_state = ""
 	grid_width = 64
 	grid_height = 96
+	sellprice = 20
 	var/mob/living/held_mob
 	var/can_head = TRUE
 	var/destroying = FALSE
@@ -45,6 +46,7 @@
 	update_visuals(L)
 	held_mob = L
 	L.forceMove(src)
+	sellprice = L.sellprice
 	name = L.name
 	desc = L.desc
 	return TRUE

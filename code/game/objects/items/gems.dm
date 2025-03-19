@@ -29,6 +29,11 @@
 		return INITIALIZE_HINT_QDEL
 	update_icon_state()
 
+/obj/item/gem/on_consume(mob/living/eater)
+	. = ..()
+	if(attuned)
+		eater.mana_pool.adjust_attunement(attuned, 0.1)
+
 ///This is a switch incase anyone would like to add more...
 /obj/item/gem/update_icon_state()
 	if(icon_state == "aros")
