@@ -172,7 +172,7 @@
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_JOB_AFTER_SPAWN, src, spawned, player_client)
 
 	if(magic_user)
-		H.mana_pool.set_intrinsic_recharge(MANA_ALL_LEYLINES)
+		spawned.mana_pool.set_intrinsic_recharge(MANA_ALL_LEYLINES)
 
 	for(var/trait in mind_traits)
 		ADD_TRAIT(spawned.mind, trait, JOB_TRAIT)
