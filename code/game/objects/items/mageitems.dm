@@ -140,7 +140,7 @@
 	. = ..()
 	filter(type="drop_shadow", x=0, y=0, size=2, offset=1, color=rgb(128, 0, 128, 1))
 
-/obj/item/weapon/knife/dagger/silver/arcyne/attackby(obj/item/M, mob/user, params)
+/obj/item/weapon/knife/dagger/silver/attackby(obj/item/M, mob/user, params)
 	if(istype(M,/obj/item/ore/cinnabar))
 		var/crafttime = (60 - ((user.mind?.get_skill_level(/datum/skill/magic/arcane))*5))
 		if(do_after(user, crafttime, target = src))
@@ -167,7 +167,7 @@
 		is_bled = TRUE
 		return
 	var/datum/ritual/pickrune
-	var/runenameinput = input(user, "Runes", "RATWOOD") as null|anything in GLOB.t4rune_types
+	var/runenameinput = input(user, "Runes", "Vanderlin") as null|anything in GLOB.t4rune_types
 	testing("runenameinput [runenameinput]")
 	pickrune = GLOB.rune_types[runenameinput]
 	rune_to_scribe = pickrune
@@ -182,7 +182,7 @@
 		to_chat(user, span_cult("There is a structure, rune or wall in the way."))
 		return
 	if(initial(rune_to_scribe.req_keyword))
-		chosen_keyword = stripped_input(user, "Keyword for the new rune", "Ratwood", max_length = MAX_NAME_LEN)
+		chosen_keyword = stripped_input(user, "Keyword for the new rune", "Vanderlin", max_length = MAX_NAME_LEN)
 		if(!chosen_keyword)
 			return FALSE
 	var/crafttime = (100 - ((user.mind?.get_skill_level(/datum/skill/magic/arcane))*5))
