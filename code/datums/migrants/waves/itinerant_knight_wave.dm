@@ -34,6 +34,7 @@
 		H.mind?.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 		H.mind?.adjust_skillrank(/datum/skill/misc/riding, 4, TRUE)
+		H.mind?.adjust_skillrank(/datum/skill/labor/mathematics, 3, TRUE)
 		H.change_stat(STATKEY_STR, 3)
 		H.change_stat(STATKEY_PER, 2)
 		H.change_stat(STATKEY_INT, 3)
@@ -94,7 +95,7 @@
 	H.cmode_music = 'sound/music/cmode/garrison/CombatGarrison.ogg'
 
 /datum/migrant_wave/knight
-	name = "The Knightly journey"
+	name = "The Knightly Journey"
 	max_spawns = 1
 	shared_wave_type = /datum/migrant_wave/knight
 	downgrade_wave = /datum/migrant_wave/knight_down
@@ -106,7 +107,7 @@
 	greet_text = "The weight of Psydon's cross is heavy, the vows you have undertaken heavier, a Knight and their squire has took to the road to fullfill them."
 
 /datum/migrant_wave/knight_down
-	name = "The Knightly journey"
+	name = "The Knightly Journey"
 	max_spawns = 1
 	shared_wave_type = /datum/migrant_wave/knight
 	can_roll = FALSE

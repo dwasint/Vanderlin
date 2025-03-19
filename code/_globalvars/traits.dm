@@ -132,6 +132,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"Magical Visions" = TRAIT_SEE_LEYLINES,
 		"Poison Bite" = TRAIT_POISONBITE,
 		"Tiny" = TRAIT_TINY,
+		"Foreigner" = TRAIT_FOREIGNER,
 		"Beautiful" = TRAIT_BEAUTIFUL,
 		"Ugly" = TRAIT_UGLY,
 	),

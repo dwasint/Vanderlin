@@ -27,7 +27,7 @@
 */
 /datum/stressevent/miasmagas
 	timer = 10 SECONDS
-	stressadd = 2
+	stressadd = 1
 	desc = "<span class='red'>Smells like death here.</span>"
 
 /datum/stressevent/peckish
@@ -147,6 +147,11 @@
 	stressadd = 4
 	desc = "<span class='red'>YUCK! MAGGOTS!</span>"
 
+/datum/stressevent/psycurselight
+	timer = 1 MINUTES
+	stressadd = 5
+	desc = "<span class='red'>Oh no! I've received divine punishment!</span>"
+
 /datum/stressevent/psycurse
 	timer = INFINITY
 	stressadd = 5
@@ -220,6 +225,11 @@
 	timer = 2 MINUTES
 	stressadd = 2
 	desc = "<span class='red'>They are plotting against me in evil tongues..</span>"
+
+/datum/stressevent/paraforeigner
+	timer = 2 MINUTES
+	stressadd = 2
+	desc = "<span class='red'>A foreigner... are they planning to invade us?</span>"
 
 /datum/stressevent/crowd
 	timer = 2 MINUTES

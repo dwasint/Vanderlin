@@ -176,7 +176,8 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_MATTHIOS_EYES = span_notice("I have a sense for what the most valuable item someone has is."),
 	TRAIT_CRATEMOVER = "I am able to drag heavy objects without any difficulty.",
 	TRAIT_SEE_LEYLINES = "I can see the lines that make up this world.",
-	TRAIT_TINY = "I am small, its hard to look people in the eyes."
+	TRAIT_TINY = "I am small, its hard to look people in the eyes.",
+	TRAIT_FOREIGNER = span_notice("I'm not from around here."),
 	))
 
 // trait accessor defines
@@ -332,6 +333,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_ZOMBIE_IMMUNE "zombie_immune" //immune to zombie infection
 #define TRAIT_NO_BITE "no_bite" //prevents biting
 #define TRAIT_HARDDISMEMBER		"hard_dismember"
+#define TRAIT_FOREIGNER "foreigner" // is this guy a foreigner?
 ///trait determines if this mob can breed given by /datum/component/breeding
 #define TRAIT_MOB_BREEDER "mob_breeder"
 #define TRAIT_UNTARGETTABLE "untargettable" //can't be targetted by basic mobs
