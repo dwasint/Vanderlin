@@ -1287,6 +1287,7 @@
 
 /obj/effect/proc_holder/spell/invoked/shadowstep
 	name = "Shadow Step"
+	desc = "Step into the shadows making you invisible for a duration."
 	overlay_state = "invisibility"
 	releasedrain = 0
 	chargedrain = 14
@@ -1331,6 +1332,7 @@
 
 /obj/effect/proc_holder/spell/invoked/mimicry
 	name = "Mimicry"
+	desc = "Takes on the appearance of your target."
 	overlay_state = "invisibility"
 	releasedrain = 20
 	chargedrain = 1
@@ -1579,6 +1581,7 @@
 
 /obj/effect/proc_holder/spell/targeted/lightninglure
 	name = "Lightning Lure"
+	desc = "You create a lash of lightning energy that strikes a target."
 	overlay_state = "null"
 	releasedrain = 50
 	chargetime = 1
@@ -1628,6 +1631,7 @@
 
 /obj/effect/proc_holder/spell/invoked/mending
 	name = "Mending"
+	desc = "Uses arcyne energy to mend an item."
 	overlay_state = "null"
 	releasedrain = 50
 	chargetime = 5
@@ -1839,7 +1843,7 @@
 // Notes: You extend your hand and trace a sigil of warding in the air.
 /obj/effect/proc_holder/spell/self/bladeward5e
 	name = "Blade Ward"
-	desc = ""
+	desc = "Improves your targets constitution for a brief duration."
 	clothes_req = FALSE
 	range = 8
 	overlay_state = "null"
@@ -1907,6 +1911,7 @@
 //==============================================
 /obj/effect/proc_holder/spell/invoked/boomingblade5e
 	name = "Booming Blade"
+	desc = "Causes explosions to ripple out from your target when they move."
 	overlay_state = "blade_burst"
 	releasedrain = 50
 	chargetime = 3
@@ -1999,6 +2004,7 @@
 // This now attaches a ghost hand to a targeted body part and does different things depending on the part
 /obj/effect/proc_holder/spell/invoked/chilltouch5e
 	name = "Chill Touch"
+	desc = "A skeletal hand grips your target, the targetted zone changes the effect."
 	overlay_state = "null"
 	releasedrain = 50
 	chargetime = 10
@@ -2128,7 +2134,7 @@
 //Conjure temporary campfire, why not?
 /obj/effect/proc_holder/spell/aoe_turf/conjure/createbonfire5e
 	name = "Create Bonfire"
-	desc = ""
+	desc = "Creates a magical bonfire to cook on."
 	clothes_req = FALSE
 	range = 0
 	overlay_state = "null"
@@ -2191,6 +2197,7 @@
 // Notes: turn a freshly dead body into a rotman
 /obj/effect/proc_holder/spell/invoked/decompose5e
 	name = "Decompose"
+	desc = "Instantly rots the target, if humanoid creates a deadite."
 	overlay_state = "null"
 	releasedrain = 50
 	chargetime = 5
@@ -2265,7 +2272,7 @@
 // Notes:
 /obj/effect/proc_holder/spell/invoked/projectile/eldritchblast5e
 	name = "Eldritch Blast"
-	desc = ""
+	desc = "A beam of crackling energy streaks toward a target, causing moderate damage."
 	clothes_req = FALSE
 	range = 8
 	projectile_type = /obj/projectile/magic/eldritchblast5e
@@ -2390,6 +2397,7 @@
 //==============================================
 /obj/effect/proc_holder/spell/invoked/greenflameblade5e
 	name = "Green-Flame Blade"
+	desc = "An attack that burns all in an aoe around your target."
 	overlay_state = "null"
 	releasedrain = 50
 	chargetime = 3
@@ -2451,6 +2459,7 @@
 //==============================================
 /obj/effect/proc_holder/spell/invoked/guidance5e
 	name = "Guidance"
+	desc = "Increases a targets Intelligence for a brief duration."
 	overlay_state = "null"
 	releasedrain = 50
 	chargetime = 1
@@ -2517,6 +2526,7 @@
 //==============================================
 /obj/effect/proc_holder/spell/invoked/infestation5e
 	name = "Infestation"
+	desc = "Causes a swarm of bugs to surround your target, bites them and causes sickness."
 	overlay_state = "null"
 	releasedrain = 50
 	chargetime = 10
@@ -2611,6 +2621,7 @@
 //==============================================
 /obj/effect/proc_holder/spell/self/light5e
 	name = "Light"
+	desc = "Summons a condensed orb of light."
 	overlay_state = "null"
 	releasedrain = 50
 	chargetime = 1
@@ -2780,6 +2791,7 @@
 //==============================================
 /obj/effect/proc_holder/spell/invoked/magicstone5e
 	name = "Enchant Stone"
+	desc = "Enchants a held stone empowering it, useful for grimoire making."
 	overlay_state = "null"
 	releasedrain = 50
 	chargetime = 10
@@ -2830,6 +2842,7 @@
 
 /obj/effect/proc_holder/spell/invoked/mindsliver5e
 	name = "Mind Sliver"
+	desc = "You drive a disorienting spike of psychic energy into the mind of your target. Causing brain damage."
 	overlay_state = "null"
 	releasedrain = 30
 	chargetime = 10
@@ -2894,6 +2907,7 @@
 //my hope is that it doesn't work with love poiton...
 /obj/effect/proc_holder/spell/invoked/poisonspray5e
 	name = "Poison Cloud" //renamed to better reflect wtf this does -- vide
+	desc = "Hold a container in your hand, it's contents turn into a 3-radius smoke"
 	overlay_state = "null"
 	releasedrain = 50
 	chargetime = 3
@@ -2959,7 +2973,7 @@
 //==============================================
 /obj/effect/proc_holder/spell/self/primalsavagery5e
 	name = "Primal Savagery"
-	desc = ""
+	desc = "For a short duration you develop the ability to inject targets with poisons with each bite."
 	clothes_req = FALSE
 	range = 8
 	overlay_state = "null"
@@ -3018,7 +3032,7 @@
 // Notes: another projectile, this one slows the target for a short while
 /obj/effect/proc_holder/spell/invoked/projectile/rayoffrost5e
 	name = "Ray of Frost"
-	desc = ""
+	desc = "Shoots a ray of frost out, slowing anyone hit by it."
 	clothes_req = FALSE
 	range = 8
 	projectile_type = /obj/projectile/magic/rayoffrost5e
