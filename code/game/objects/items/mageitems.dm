@@ -48,9 +48,9 @@
 		/obj/item/natural/obsidian,
 		/obj/item/natural/obsidian,
 		/obj/item/natural/obsidian,
-		/obj/item/reagent_containers/food/snacks/grown/manabloom,
-		/obj/item/reagent_containers/food/snacks/grown/manabloom,
-		/obj/item/reagent_containers/food/snacks/grown/manabloom,
+		/obj/item/reagent_containers/food/snacks/produce/manabloom,
+		/obj/item/reagent_containers/food/snacks/produce/manabloom,
+		/obj/item/reagent_containers/food/snacks/produce/manabloom,
 	)
 
 /obj/item/chalk
@@ -572,7 +572,7 @@
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
 
-/obj/item/reagent_containers/food/snacks/grown/manabloom
+/obj/item/reagent_containers/food/snacks/produce/manabloom
 	name = "mana bloom"
 	icon_state = "manabloom"
 	icon = 'icons/roguetown/items/natural.dmi'
@@ -580,6 +580,7 @@
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
 	list_reagents = list(/datum/reagent/toxin/manabloom_juice = SNACK_CHUNKY)
+	seed = /obj/item/neuFarm/seed/manabloom
 
 
 /obj/item/natural/artifact

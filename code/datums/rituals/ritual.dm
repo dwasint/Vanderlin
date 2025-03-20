@@ -292,13 +292,13 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 	buff = /datum/status_effect/buff/magicperception
 	tier = 2
 	blacklisted = FALSE
-	required_atoms = list(/obj/item/reagent_containers/food/snacks/grown/manabloom = 2, /obj/item/natural/hellhoundfang = 1)
+	required_atoms = list(/obj/item/reagent_containers/food/snacks/produce/manabloom = 2, /obj/item/natural/hellhoundfang = 1)
 
 /datum/runerituals/buff/lesserperception
 	name = "lesser arcane eyes"
 	buff = /datum/status_effect/buff/magicperception/lesser
 	blacklisted = FALSE
-	required_atoms = list(/obj/item/reagent_containers/food/snacks/grown/manabloom = 1, /obj/item/natural/infernalash = 2)
+	required_atoms = list(/obj/item/reagent_containers/food/snacks/produce/manabloom = 1, /obj/item/natural/infernalash = 2)
 
 /datum/runerituals/buff/endurance
 	name = "vitalized endurance"
@@ -344,7 +344,7 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 
 /datum/runerituals/attunement
 	name = "arcyne attunement"
-	required_atoms = list(/obj/item/reagent_containers/food/snacks/grown/manabloom = 1, /obj/item/natural/melded/t1 = 1)
+	required_atoms = list(/obj/item/reagent_containers/food/snacks/produce/manabloom = 1, /obj/item/natural/melded/t1 = 1)
 
 	var/list/attunement_modifiers = list()
 	var/list/attuned_items = list()
@@ -431,7 +431,7 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 	desc = "summons an fae sprite"
 	blacklisted = FALSE
 	tier = 1
-	required_atoms = list(/obj/item/reagent_containers/food/snacks/grown/manabloom = 1, /obj/item/reagent_containers/food/snacks/produce/jacksberry = 1)
+	required_atoms = list(/obj/item/reagent_containers/food/snacks/produce/manabloom = 1, /obj/item/reagent_containers/food/snacks/produce/jacksberry = 1)
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/fae/sprite
 
 /datum/runerituals/summoning/glimmer
@@ -439,7 +439,7 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 	desc = "summons an fae spirit"
 	blacklisted = FALSE
 	tier = 2
-	required_atoms = list(/obj/item/reagent_containers/food/snacks/grown/manabloom = 1, /obj/item/natural/fairydust = 3, /obj/item/natural/melded/t1 = 1)
+	required_atoms = list(/obj/item/reagent_containers/food/snacks/produce/manabloom = 1, /obj/item/natural/fairydust = 3, /obj/item/natural/melded/t1 = 1)
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/fae/glimmerwing
 
 /datum/runerituals/summoning/dryad
@@ -447,7 +447,7 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 	desc = "summons an drayd"
 	blacklisted = FALSE
 	tier = 3
-	required_atoms = list(/obj/item/reagent_containers/food/snacks/grown/manabloom = 2, /obj/item/natural/iridescentscale = 2, /obj/item/natural/melded/t2 = 1)
+	required_atoms = list(/obj/item/reagent_containers/food/snacks/produce/manabloom = 2, /obj/item/natural/iridescentscale = 2, /obj/item/natural/melded/t2 = 1)
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/fae/dryad
 
 /datum/runerituals/summoning/sylph
@@ -455,7 +455,7 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 	desc = "summons an archfae"
 	blacklisted = FALSE
 	tier = 4
-	required_atoms = list(/obj/item/reagent_containers/food/snacks/grown/manabloom = 1, /obj/item/natural/heartwoodcore = 1, /obj/item/natural/melded/t3 = 1)
+	required_atoms = list(/obj/item/reagent_containers/food/snacks/produce/manabloom = 1, /obj/item/natural/heartwoodcore = 1, /obj/item/natural/melded/t3 = 1)
 	mob_to_summon = /mob/living/simple_animal/hostile/retaliate/fae/sylph
 
 /datum/runerituals/summoning/crawler

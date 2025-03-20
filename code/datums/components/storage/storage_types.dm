@@ -143,7 +143,7 @@
 		/obj/item/natural/elementalrelic,
 		/obj/item/natural/obsidian,
 		/obj/item/natural/leyline,
-		/obj/item/reagent_containers/food/snacks/grown/manabloom,
+		/obj/item/reagent_containers/food/snacks/produce/manabloom,
 		/obj/item/mana_battery/mana_crystal,
 		/obj/item/ash,
 		))
