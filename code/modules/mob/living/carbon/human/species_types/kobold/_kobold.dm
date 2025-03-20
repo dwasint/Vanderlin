@@ -71,6 +71,7 @@
 	. = ..()
 	C.AddComponent(/datum/component/abberant_eater, list(/obj/item/natural/dirtclod, /obj/item/natural/stone, /obj/item/coin, /obj/item/gem))
 	C.grant_language(/datum/language/common)
+	ADD_TRAIT(C, TRAIT_DARKVISION, SPECIES_TRAIT)
 
 /datum/species/kobold/check_roundstart_eligible()
 	return TRUE
