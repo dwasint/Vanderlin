@@ -322,6 +322,7 @@
 					user.visible_message(span_warning("[user] crushes [user.p_their()] [P]! Its powder seeps into the [src]."), \
 						span_notice("I run my arcyne energy into the crystal. It shatters and seeps into the cover of the tome! Runes and symbols of an unknowable language cover it's pages now..."))
 					var/obj/item/book/granter/spellbook/newbook = new /obj/item/book/granter/spellbook/expert(loc)
+					newbook.owner = user
 					qdel(P)
 					qdel(src)
 				else
@@ -338,6 +339,7 @@
 					user.visible_message(span_warning("[user] crushes [user.p_their()] [P]! Its powder seeps into the [src]."), \
 						span_notice("I run my arcyne energy into the crystal. It shatters and seeps into the cover of the tome! Runes and symbols of an unknowable language cover it's pages now..."))
 					var/obj/item/book/granter/spellbook/newbook = new /obj/item/book/granter/spellbook/adept(loc)
+					newbook.owner = user
 					qdel(P)
 					qdel(src)
 				else
@@ -358,42 +360,48 @@
 						to_chat(user, span_notice("...yet even for an enigma of the arcyne, these characters are unlike anything I've seen before. They're going to be -much- harder to understand..."))
 						if(the_rock.magic_power <=5)
 							var/obj/item/book/granter/spellbook/newbook = new /obj/item/book/granter/spellbook/horrible(loc)
+							newbook.owner = user
 							newbook.born_of_rock = TRUE
 							newbook.desc += " Traces of multicolored stone limn its margins."
 							qdel(P)
 							qdel(src)
 						else if(the_rock.magic_power >5 && the_rock.magic_power <=9)
 							var/obj/item/book/granter/spellbook/newbook = new /obj/item/book/granter/spellbook/mid(loc)
+							newbook.owner = user
 							newbook.born_of_rock = TRUE
 							newbook.desc += " Traces of multicolored stone limn its margins."
 							qdel(P)
 							qdel(src)
 						else if(the_rock.magic_power >=10)
 							var/obj/item/book/granter/spellbook/newbook = new /obj/item/book/granter/spellbook/apprentice(loc)
+							newbook.owner = user
 							newbook.born_of_rock = TRUE
 							newbook.desc += " Traces of multicolored stone limn its margins."
 							qdel(P)
 							qdel(src)
 					else
-						if (prob(the_rock.magic_power * 3)) // for reference, this is never higher than 15 and usually significantly lower
+						if (prob(the_rock.magic_power * 5)) // for reference, this is never higher than 15 and usually significantly lower
 							playsound(loc, 'sound/magic/crystal.ogg', 100, TRUE)
 							user.visible_message(span_warning("[user] carefully sets down [the_rock] upon [src]. Nothing happens for a moment or three, then suddenly, the glow surrounding the stone becomes as liquid, seeps down and soaks into the tome!"), \
 							span_notice("I knew this stone was special! Its colourful magick has soaked into my tome and given me gift of mystery!"))
 							to_chat(user, span_notice("...what in the world does any of this scribbling possibly mean?"))
 							if(the_rock.magic_power <=5)
 								var/obj/item/book/granter/spellbook/newbook = new /obj/item/book/granter/spellbook/horrible(loc)
+								newbook.owner = user
 								newbook.born_of_rock = TRUE
 								newbook.desc += " Traces of multicolored stone limn its margins."
 								qdel(P)
 								qdel(src)
 							else if(the_rock.magic_power >5 && the_rock.magic_power <=9)
 								var/obj/item/book/granter/spellbook/newbook = new /obj/item/book/granter/spellbook/mid(loc)
+								newbook.owner = user
 								newbook.born_of_rock = TRUE
 								newbook.desc += " Traces of multicolored stone limn its margins."
 								qdel(P)
 								qdel(src)
 							else if(the_rock.magic_power >=10)
 								var/obj/item/book/granter/spellbook/newbook = new /obj/item/book/granter/spellbook/apprentice(loc)
+								newbook.owner = user
 								newbook.born_of_rock = TRUE
 								newbook.desc += " Traces of multicolored stone limn its margins."
 								qdel(P)
@@ -416,6 +424,7 @@
 						span_notice("I join my arcyne energy with that of the [P] in my hands, which shudders briefly before dissolving into motes of energy. Runes and symbols of an unknowable language cover its pages now..."))
 					to_chat(user, span_notice("...yet even for an enigma of the arcyne, these characters are unlike anything I've seen before. They're going to be -much- harder to understand..."))
 					var/obj/item/book/granter/spellbook/newbook = new /obj/item/book/granter/spellbook/adept(loc)
+					newbook.owner = user
 					qdel(P)
 					qdel(src)
 				else
@@ -434,6 +443,7 @@
 						span_notice("I join my arcyne energy with that of the [P] in my hands, which shudders briefly before dissolving into motes of energy. Runes and symbols of an unknowable language cover its pages now..."))
 					to_chat(user, span_notice("...yet even for an enigma of the arcyne, these characters are unlike anything I've seen before. They're going to be -much- harder to understand..."))
 					var/obj/item/book/granter/spellbook/newbook = new /obj/item/book/granter/spellbook/expert(loc)
+					newbook.owner = user
 					qdel(P)
 					qdel(src)
 				else
@@ -451,6 +461,7 @@
 						span_notice("I join my arcyne energy with that of the [P] in my hands, which shudders briefly before dissolving into motes of energy. Runes and symbols of an unknowable language cover its pages now..."))
 					to_chat(user, span_notice("...yet even for an enigma of the arcyne, these characters are unlike anything I've seen before. They're going to be -much- harder to understand..."))
 					var/obj/item/book/granter/spellbook/newbook = new /obj/item/book/granter/spellbook/master(loc)
+					newbook.owner = user
 					qdel(P)
 					qdel(src)
 				else
@@ -468,6 +479,7 @@
 						span_notice("I join my arcyne energy with that of the [P] in my hands, which shudders briefly before dissolving into motes of energy. Runes and symbols of an unknowable language cover its pages now..."))
 					to_chat(user, span_notice("...yet even for an enigma of the arcyne, these characters are unlike anything I've seen before. They're going to be -much- harder to understand..."))
 					var/obj/item/book/granter/spellbook/newbook = new /obj/item/book/granter/spellbook/legendary(loc)
+					newbook.owner = user
 					qdel(P)
 					qdel(src)
 				else

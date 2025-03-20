@@ -8,7 +8,6 @@
 	var/list/affecting_mobs = list()
 
 /datum/enchantment/mana_capacity/on_equip(obj/item/source, mob/living/carbon/equipper, slot)
-	affecting_mobs |= source
 	if(!(source in affecting_mobs))
 		affecting_mobs |= source
 		affecting_mobs[source] = list()
@@ -21,7 +20,9 @@
 
 
 /datum/enchantment/mana_capacity/on_drop(datum/source, mob/living/carbon/user)
-	affecting_mobs |= source
+	if(!(source in affecting_mobs))
+		affecting_mobs |= source
+		affecting_mobs[source] = list()
 	if(!istype(user))
 		return
 	if(user in affecting_mobs[source])

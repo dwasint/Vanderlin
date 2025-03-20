@@ -477,7 +477,7 @@
 		return softcap
 
 	var/skill_level = max(1, L.mind.get_skill_level(/datum/skill/magic/arcane))
-	return softcap * skill_level
+	return softcap + (skill_level * 100)
 
 ///this is how a mana pool responds to backlash for most pools this is just taking damage
 /datum/mana_pool/proc/mana_backlash(backlash_intensity)
