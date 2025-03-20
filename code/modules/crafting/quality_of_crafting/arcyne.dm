@@ -42,6 +42,8 @@
 		/obj/item/natural/stone = 2,
 		/obj/item/natural/melded/t1 = 1,
 	)
+	starting_atom = /obj/item/gem/amethyst
+	attacked_atom = /obj/item/natural/stone
 	output = /obj/item/sendingstonesummoner
 	uses_attacked_atom = TRUE
 	craftdiff = 2
