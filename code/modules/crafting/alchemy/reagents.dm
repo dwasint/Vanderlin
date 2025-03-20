@@ -106,6 +106,9 @@
 		M.mana_pool.adjust_mana(8)
 	..()
 
+/datum/reagent/medicine/manapot/weak
+	name = "Weak Mana Potion"
+
 /datum/reagent/medicine/manapot/weak/on_mob_life(mob/living/carbon/M)
 	if(!HAS_TRAIT(M,TRAIT_NOSTAMINA))
 		M.mana_pool.adjust_mana(2)
