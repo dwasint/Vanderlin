@@ -91,6 +91,7 @@
 	..()
 	var/turf/deathspot = get_turf(src)
 	new /obj/item/natural/voidstone(deathspot)
+	new /obj/item/natural/artifact(deathspot)
 	update_icon()
 	sleep(1)
 	qdel(src)

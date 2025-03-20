@@ -238,6 +238,7 @@ s
 	density = FALSE
 	var/time_between_uses = 12000
 	var/last_process = 0
+
 /obj/structure/leyline/Initialize()
 	.=..()
 	last_process = world.time
