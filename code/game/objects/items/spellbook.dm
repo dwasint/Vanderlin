@@ -138,6 +138,7 @@
 	var/mob/living/carbon/human/gamer = user
 	if(gamer != owner && !allowed_readers.Find(gamer))
 		to_chat(user, span_notice("What was that gibberish? Even for the arcyne it was completely illegible!"))
+		recoil(user)
 		return
 	user.mind?.has_studied = TRUE
 	var/mob/living/reader = user
