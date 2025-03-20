@@ -418,9 +418,9 @@
 	name = "parchment scroll"
 	requirements = list(
 		/obj/item/paper = 3,
-		/obj/item/fiber = 1,
+		/obj/item/natural/fiber = 1,
 	)
-	starting_atom = /obj/item/fiber
+	starting_atom = /obj/item/natural/fiber
 	attacked_atom = /obj/item/paper
 	output = /obj/item/paper/scroll
 	uses_attacked_atom = TRUE
