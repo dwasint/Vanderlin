@@ -98,8 +98,8 @@
 	user.visible_message(span_notice("[user] starts to chop up [src]!"), span_notice("You start to chop up [src]!"))
 	if(!do_after(user, 3 SECONDS, src))
 		return
-	new /obj/item/mana_battery/mana_crystal/small
-	new /obj/item/mana_battery/mana_crystal/small
+	new /obj/item/mana_battery/mana_crystal/small (get_turf(src))
+	new /obj/item/mana_battery/mana_crystal/small (get_turf(src))
 	visible_message(span_notice("Mana flows freely into the newly created crystals!"))
 	qdel(src)
 
