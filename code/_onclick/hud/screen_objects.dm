@@ -1788,6 +1788,7 @@
 				info += "<br> Apex [initial(attunement.name)] Attunment"
 
 	return info
+
 /atom/movable/screen/stamina
 	name = "stamina"
 	icon_state = "fat100"

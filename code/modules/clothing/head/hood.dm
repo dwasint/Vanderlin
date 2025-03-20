@@ -150,7 +150,7 @@
 	icon = 'icons/roguetown/clothing/head.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/head.dmi' //Overrides slot icon behavior
 	body_parts_covered = NECK
-	armor = list("blunt" = 15, "slash" = 15, "stab" = 15, "bullet" = 5, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = ARMOR_PADDED_BAD
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
 	max_integrity = 100
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_MASK
