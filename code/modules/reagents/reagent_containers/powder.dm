@@ -259,4 +259,4 @@
 	volume = 5
 	list_reagents = list(/datum/reagent/toxin/manabloom_juice = 5)
 	sellprice = 10
-	coolr = COLOR_CYAN
+	color = COLOR_CYAN
