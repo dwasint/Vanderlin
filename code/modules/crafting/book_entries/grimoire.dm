@@ -26,5 +26,6 @@
 		You need to rest before you can study again this limits how fast you can grow. <br>
 		Performing summoning rituals and finding magic materials is highly recommended to get the better griomires as they drastically increase your study quality. <br>
 		Griomires do not store mana, when fighting it may be better to hold a foci or Primordial Crystal instead to have extra mana reserves. <br>
+		Griomires are bound to their creators, the creator can hit someone with the grimoire will allow them to study with it. <br>
 		</div>
 	"}

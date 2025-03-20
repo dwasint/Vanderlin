@@ -71,6 +71,8 @@
 
 	var/datum/attunement/network_attunement
 
+	var/next_message = 0
+
 /datum/mana_pool/New(atom/parent = null)
 	. = ..()
 	donation_budget_this_tick = max_donation_rate_per_second
@@ -295,6 +297,10 @@
 							break
 
 		adjust_mana(exponential_decay) //just to be safe, in case we have any left over or didnt have a discharge destination
+		if(amount > get_softcap())
+			if(world.time > next_message)
+				next_message = world.time + 1.5 MINUTES
+				to_chat(parent, span_warning("I am feeling tingly all over."))
 
 /// Perform a "natural" transfer where we use the default transfer rate, capped by the usual math
 /datum/mana_pool/proc/transfer_mana_to(datum/mana_pool/target_pool)

@@ -518,7 +518,7 @@
 
 	if(!target.ckey) //player is not inside body or has refused, poll for candidates
 
-		var/list/candidates = pollCandidatesForMob("Do you want to play as a Mage's summon?", null, null, null, 100, target, POLL_IGNORE_MAGE_SUMMON)
+		var/list/candidates = pollCandidatesForMob("Do you want to play as a Mage's summon?", null, null, null, 100, target, POLL_IGNORE_MAGE_SUMMON, new_players = TRUE)
 
 		// theres at least one candidate
 		if(LAZYLEN(candidates))
