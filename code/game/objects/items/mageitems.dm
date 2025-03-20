@@ -237,10 +237,11 @@
 	revert()
 
 /obj/item/mimictrinket/proc/revert()
-	icon = oldicon
-	icon_state = oldicon_state
-	name = oldname
-	desc = olddesc
+	if(oldicon_state)
+		icon = oldicon
+		icon_state = oldicon_state
+		name = oldname
+		desc = olddesc
 	ready = TRUE
 	if(timing_id)
 		deltimer(timing_id)
