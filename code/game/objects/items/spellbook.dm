@@ -169,7 +169,7 @@
 	span_notice("Noc blesses me. I have been granted knowledge and wisdom beyond my years, this tome's mysteries unveiled one at a time."))
 	qualityoflearn = qualityoflearn / 100
 	var/spellpoints = (src.bookquality * qualityoflearn)
-	spellpoints = round(spellpoints)
+	spellpoints = CEILING(spellpoints, 1)
 	user.mind.adjust_spellpoints(spellpoints)
 	if(stored_attunement)
 		user.mana_pool?.adjust_attunement(stored_attunement, 0.1 * (spellpoints / 0.2))
