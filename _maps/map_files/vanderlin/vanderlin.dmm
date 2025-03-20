@@ -6037,6 +6037,10 @@
 /obj/item/bedsheet/fabric,
 /turf/open/floor/tile/masonic/spiral,
 /area/rogue/under/town/basement)
+"ejo" = (
+/obj/machinery/light/fueled/wallfire/candle/blue/l,
+/turf/open/floor/greenstone,
+/area/rogue/indoors/town/magician)
 "ejt" = (
 /obj/structure/flora/grass/bush_meagre,
 /obj/structure/fluff/railing/wood,
@@ -13244,10 +13248,6 @@
 	},
 /turf/open/floor/blocks,
 /area/rogue/under/town/basement)
-"jlA" = (
-/obj/machinery/light/fueled/wallfire/candle/blue/r,
-/turf/open/floor/carpet/purple,
-/area/rogue/indoors/town/magician)
 "jlM" = (
 /obj/structure/fluff/railing/border{
 	dir = 8
@@ -18048,10 +18048,6 @@
 /obj/structure/pillory,
 /turf/open/floor/blocks,
 /area/rogue/outdoors/town)
-"mQT" = (
-/obj/machinery/light/fueled/wallfire/candle/blue/l,
-/turf/open/floor/greenstone,
-/area/rogue/indoors/town/magician)
 "mQV" = (
 /turf/open/floor/tile/tilerg,
 /area/rogue/indoors/town/bath)
@@ -19167,6 +19163,10 @@
 /obj/structure/flora/grass/water/reeds,
 /turf/open/floor/dirt/road,
 /area/rogue/under/town/sewer)
+"nHT" = (
+/obj/machinery/light/fueled/wallfire/candle/blue/r,
+/turf/open/floor/greenstone,
+/area/rogue/indoors/town/magician)
 "nHZ" = (
 /obj/machinery/light/fueled/firebowl/standing,
 /turf/open/floor/dirt/road,
@@ -23914,6 +23914,10 @@
 	},
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue/indoors/town)
+"rnf" = (
+/obj/machinery/light/fueled/wallfire/candle/blue/r,
+/turf/open/floor/carpet/purple,
+/area/rogue/indoors/town/magician)
 "rnG" = (
 /obj/structure/fluff/walldeco/vinez,
 /turf/closed/mineral,
@@ -33592,10 +33596,6 @@
 /obj/machinery/light/fueled/firebowl,
 /turf/open/floor/ruinedwood/darker,
 /area/rogue/outdoors/town/roofs)
-"xZr" = (
-/obj/machinery/light/fueled/wallfire/candle/blue/r,
-/turf/open/floor/greenstone,
-/area/rogue/indoors/town/magician)
 "xZE" = (
 /obj/effect/landmark/start/hunter,
 /turf/open/floor/wood,
@@ -90274,11 +90274,11 @@ jdk
 oZC
 eJJ
 aFD
-mQT
+ejo
 lUN
 lUN
 hAY
-mQT
+ejo
 aFD
 aFD
 cBJ
@@ -90678,11 +90678,11 @@ sWL
 iHy
 aFD
 aFD
-xZr
+nHT
 lUN
 lUN
 lUN
-xZr
+nHT
 qeS
 mvk
 cBJ
@@ -130878,7 +130878,7 @@ cBJ
 sKT
 wGx
 wGx
-jlA
+rnf
 jTa
 sKT
 sKT
@@ -169665,8 +169665,8 @@ vgJ
 shM
 vgJ
 vgJ
-vgJ
-vgJ
+shM
+shM
 vgJ
 vgJ
 nyB
@@ -169866,10 +169866,10 @@ vgJ
 shM
 shM
 shM
-vgJ
-vgJ
-vgJ
-vgJ
+shM
+shM
+shM
+shM
 vgJ
 nyB
 nyB
@@ -170067,9 +170067,9 @@ vgJ
 vgJ
 shM
 shM
-vgJ
-vgJ
-vgJ
+shM
+shM
+shM
 shM
 shM
 shM
