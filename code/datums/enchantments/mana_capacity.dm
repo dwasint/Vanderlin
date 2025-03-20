@@ -29,4 +29,4 @@
 	affecting_mobs[source] -= user
 
 	user.mana_pool.softcap -= softcap_increase
-	user.mana_pool?.set_max_mana(equipper.mana_pool.maximum_mana_capacity - hardcap_increase)
+	user.mana_pool?.set_max_mana(user.mana_pool.maximum_mana_capacity - hardcap_increase)
