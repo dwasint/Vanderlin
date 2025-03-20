@@ -41,7 +41,7 @@
 
 /datum/component/storage/concrete/grid/keyring/New(datum/P, ...)
 	. = ..()
-	can_hold = typecacheof(list(/obj/item/key))
+	set_holdable(typecacheof(list(/obj/item/key)))
 
 /datum/component/storage/concrete/grid/belt/knife_belt
 	screen_max_rows = 6
@@ -49,7 +49,7 @@
 
 /datum/component/storage/concrete/grid/belt/knife_belt/New(datum/P, ...)
 	. = ..()
-	can_hold = typecacheof(list(/obj/item/weapon/knife/throwingknife))
+	set_holdable(typecacheof(list(/obj/item/weapon/knife/throwingknife)))
 
 
 /datum/component/storage/concrete/grid/belt/cloth
