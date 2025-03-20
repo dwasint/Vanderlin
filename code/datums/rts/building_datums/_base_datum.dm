@@ -107,8 +107,9 @@ GLOBAL_LIST_INIT(cached_building_images, list())
 			continue
 
 		for(var/obj/structure/structure in turf.contents)
-			failed_locations |= turf
-			continue
+			if(!is_type_in_list(structure, GLOB.breakable_types))
+				failed_locations |= turf
+				continue
 		for(var/obj/machinery/structure in turf.contents)
 			failed_locations |= turf
 			continue
@@ -121,6 +122,12 @@ GLOBAL_LIST_INIT(cached_building_images, list())
 
 	center_turf = placed_turf
 	for(var/turf/turf in turfs)
+		for(var/obj/structure/structure in turf.contents)
+			if(is_type_in_list(structure, GLOB.breakable_types))
+				if(!turf.break_overlay)
+					create_turf_break_overlay(turf)
+					continue
+
 		if(!isclosedturf(turf))
 			continue
 		needed_broken_turfs |= turf

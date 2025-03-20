@@ -64,6 +64,9 @@
 	new_mob.controller_mind = new(new_mob, src)
 
 /mob/camera/strategy_controller/proc/try_setup_build(datum/building_datum/building)
+	if(held_build)
+		held_build.clean_up(success = FALSE)
+
 	var/datum/building_datum/build = new building(src)
 	build.setup_building_ghost()
 
@@ -88,6 +91,12 @@
 	. = ..()
 
 /mob/camera/strategy_controller/RightClickOn(atom/A, params)
+	var/allow_break = FALSE
+	for(var/obj/structure/structure in A.contents)
+		if(is_type_in_list(structure, GLOB.breakable_types))
+			allow_break = TRUE
+			break
+
 	if (istype(A, /obj/effect/building_node) && displayed_mob_ui)
 		var/mob/living/worker_mob = displayed_mob_ui.worker_mob
 		if(!A:override_click(src))
@@ -108,7 +117,7 @@
 			displayed_mob_ui  = living.controller_mind.stats
 			displayed_mob_ui.add_ui(client)
 
-	else if(isclosedturf(A))
+	else if(isclosedturf(A) || allow_break)
 		var/turf/turf = A
 		if(turf.break_overlay)
 			SEND_SIGNAL(turf, COMSIG_CANCEL_TURF_BREAK)

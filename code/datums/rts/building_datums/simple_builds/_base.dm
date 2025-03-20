@@ -1,3 +1,6 @@
+GLOBAL_LIST_INIT(breakable_types, list(
+	/obj/structure/flora,
+))
 /datum/building_datum/simple
 	var/atom/created_atom
 
@@ -34,8 +37,9 @@
 			continue
 
 		for(var/obj/structure/structure in turf.contents)
-			failed_locations |= turf
-			continue
+			if(!is_type_in_list(structure, GLOB.breakable_types))
+				failed_locations |= turf
+				continue
 		for(var/obj/machinery/structure in turf.contents)
 			failed_locations |= turf
 			continue
@@ -48,6 +52,11 @@
 
 	center_turf = placed_turf
 	for(var/turf/turf in turfs)
+		for(var/obj/structure/structure in turf.contents)
+			if(is_type_in_list(structure, GLOB.breakable_types))
+				if(!turf.break_overlay)
+					create_turf_break_overlay(turf)
+					continue
 		if(!isclosedturf(turf))
 			continue
 		needed_broken_turfs |= turf

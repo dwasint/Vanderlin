@@ -72,6 +72,7 @@
 	current_y = 0
 
 /atom/movable/screen/building_backdrop/proc/open_ui(mob/camera/strategy_controller/opener, list/building_datums)
+	close_uis(opener)
 	for(var/datum/building_datum/datum as anything in building_datums)
 		var/atom/movable/screen/building_button/new_button = new
 		if(ispath(datum, /datum/building_datum/simple))
