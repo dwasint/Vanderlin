@@ -579,7 +579,7 @@
 	desc = "Dense mana that has taken the form of plant life."
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_SMALL
-	list_reagents = list(/datum/reagent/toxin/manabloom_juice = MEAL_FILLING)
+	list_reagents = list(/datum/reagent/toxin/manabloom_juice = SNACK_CHUNKY)
 
 
 /obj/item/natural/artifact

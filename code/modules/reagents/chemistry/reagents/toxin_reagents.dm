@@ -207,7 +207,7 @@
 	. = ..()
 	if(!M.mana_pool)
 		return
-	M.mana_pool.adjust_mana(volume * 3)
+	M.mana_pool.adjust_mana(volume)
 
 /datum/reagent/toxin/manabloom_juice/on_mob_end_metabolize(mob/living/L)
 	. = ..()

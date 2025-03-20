@@ -96,7 +96,7 @@
 	if(!step_forward)
 		return
 	for(var/obj/structure/structure in step_forward.contents)
-		if(structure.dir != dir && structure.dir != GLOB.reverse_dir[dir] && !istype(structure, /obj/structure/minecart_rail))
+		if(structure.dir != dir && structure.dir != GLOB.reverse_dir[dir] && !istype(structure, /obj/structure/gearbox) && !istype(structure, /obj/structure/minecart_rail))
 			continue
 		if(structure.rotation_network)
 			if(rotation_network)
@@ -210,7 +210,7 @@
 	for(var/obj/structure/structure in step_forward.contents)
 		if(structure in checked)
 			continue
-		if(structure.dir != dir && structure.dir != GLOB.reverse_dir[dir] && !istype(structure, /obj/structure/minecart_rail))
+		if(structure.dir != dir && structure.dir != GLOB.reverse_dir[dir] && !istype(structure, /obj/structure/gearbox) && !istype(structure, /obj/structure/minecart_rail))
 			continue
 		if(structure.rotation_network)
 			propagate_rotation_change(structure, checked, FALSE)
