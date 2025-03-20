@@ -222,7 +222,7 @@
 /turf/closed/mineral/random/high
 	icon_state = "minrandhigh"
 	mineralChance = 70
-	mineralSpawnChanceList = list(/turf/closed/mineral/mana_crystal = 5, /turf/closed/mineral/cinnabar = 5, /turf/closed/mineral/gold = 15 , /turf/closed/mineral/iron = 25, /turf/closed/mineral/silver = 15)//, /turf/closed/mineral/rogue/gemeralds = 10)
+	mineralSpawnChanceList = list(/turf/closed/mineral/mana_crystal = 15, /turf/closed/mineral/cinnabar = 5, /turf/closed/mineral/gold = 15 , /turf/closed/mineral/iron = 25, /turf/closed/mineral/silver = 15)//, /turf/closed/mineral/rogue/gemeralds = 10)
 
 /turf/closed/mineral/random/low_nonval
 	icon_state = "cticbad"
@@ -237,22 +237,22 @@
 /turf/closed/mineral/random/high_nonval
 	icon_state = "cticgood"
 	mineralChance = 70
-	mineralSpawnChanceList = list(/turf/closed/mineral/copper = 15,/turf/closed/mineral/tin = 15, /turf/closed/mineral/iron = 25, /turf/closed/mineral/coal = 20)
+	mineralSpawnChanceList = list(/turf/closed/mineral/mana_crystal = 10, /turf/closed/mineral/copper = 15,/turf/closed/mineral/tin = 15, /turf/closed/mineral/iron = 25, /turf/closed/mineral/coal = 20)
 
 /turf/closed/mineral/random/low_valuable
 	icon_state = "gsgbad"
 	mineralChance = 30
-	mineralSpawnChanceList = list(/turf/closed/mineral/gold = 40 , /turf/closed/mineral/gemeralds = 20, /turf/closed/mineral/silver = 40)
+	mineralSpawnChanceList = list(/turf/closed/mineral/mana_crystal = 10, /turf/closed/mineral/gold = 40 , /turf/closed/mineral/gemeralds = 20, /turf/closed/mineral/silver = 40)
 
 /turf/closed/mineral/random/med_valuable
 	icon_state = "gsgmed"
 	mineralChance = 50
-	mineralSpawnChanceList = list(/turf/closed/mineral/gold = 40 , /turf/closed/mineral/gemeralds = 20, /turf/closed/mineral/silver = 40)
+	mineralSpawnChanceList = list(/turf/closed/mineral/mana_crystal = 10, /turf/closed/mineral/gold = 40 , /turf/closed/mineral/gemeralds = 20, /turf/closed/mineral/silver = 40)
 
 /turf/closed/mineral/random/high_valuable
 	icon_state = "gsggood"
 	mineralChance = 70
-	mineralSpawnChanceList = list(/turf/closed/mineral/gold = 40 , /turf/closed/mineral/gemeralds = 20, /turf/closed/mineral/silver = 40)
+	mineralSpawnChanceList = list(/turf/closed/mineral/mana_crystal = 10, /turf/closed/mineral/gold = 40 , /turf/closed/mineral/gemeralds = 20, /turf/closed/mineral/silver = 40)
 
 
 
