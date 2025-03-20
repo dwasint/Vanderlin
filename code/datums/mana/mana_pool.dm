@@ -107,7 +107,7 @@
 			if(parent:hud_used)
 				var/datum/hud/human/hud_used = parent:hud_used
 				if(istype(hud_used))
-					var/filled = round((src.amount / get_softcap()) * 100, 20)
+					var/filled = round((src.amount / get_softcap()) * 100, 10)
 					filled = min(filled, 120)
 					hud_used.mana.icon_state = "mana[filled]"
 
