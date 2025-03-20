@@ -2043,11 +2043,6 @@
 		hand.forceMove(target)
 		bodypart.add_embedded_object(hand, silent = TRUE, crit_message = FALSE)
 		target.visible_message(span_warning("A skeletal hand grips [target]'s [bodypart]!"), span_danger("A skeletal hand grips me [bodypart]!"))
-		if(user.zone_selected == BODY_ZONE_CHEST && !user.cmode && !target.cmode) //must be out of combat mode and have erp panel allowed for this prompt to appear
-			hand.pleasureaccepted = TRUE
-		else
-			hand.pleasureaccepted = FALSE
-		return TRUE
 	return FALSE
 
 /obj/item/chilltouch5e
@@ -2065,7 +2060,6 @@
 	var/pleasure = 5 //pleasurable quicker since they bleed inevitably due embed
 	var/curprocs = 0
 	var/procsmax = 180
-	var/pleasureaccepted = FALSE
 	var/mob/living/host //who are we stuck to?
 	var/obj/item/bodypart/bodypart //where are we stuck to?
 
