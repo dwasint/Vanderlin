@@ -379,7 +379,7 @@
 							qdel(P)
 							qdel(src)
 					else
-						if (prob(the_rock.magic_power)) // for reference, this is never higher than 15 and usually significantly lower
+						if (prob(the_rock.magic_power * 3)) // for reference, this is never higher than 15 and usually significantly lower
 							playsound(loc, 'sound/magic/crystal.ogg', 100, TRUE)
 							user.visible_message(span_warning("[user] carefully sets down [the_rock] upon [src]. Nothing happens for a moment or three, then suddenly, the glow surrounding the stone becomes as liquid, seeps down and soaks into the tome!"), \
 							span_notice("I knew this stone was special! Its colourful magick has soaked into my tome and given me gift of mystery!"))
