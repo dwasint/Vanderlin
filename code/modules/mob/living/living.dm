@@ -1621,6 +1621,8 @@
 					qdel(holder)
 
 	if(HAS_TRAIT(src, TRAIT_TINY) && ismob(over) && over != src)
+		if(stat == DEAD || !Adjacent(over))
+			return
 		var/list/pickable_items = list()
 		for(var/obj/item/item in over.get_all_contents())
 			var/datum/component/storage = item.GetComponent(/datum/component/storage)
@@ -1644,6 +1646,8 @@
 
 /mob/living/MouseDrop_T(atom/dropping, atom/user)
 	var/mob/living/U = user
+	if(!user.Adjacent(src))
+		return
 	if(isliving(dropping))
 		var/mob/living/M = dropping
 		if((M.can_be_held ||  HAS_TRAIT(M, TRAIT_TINY)) && U.cmode)
