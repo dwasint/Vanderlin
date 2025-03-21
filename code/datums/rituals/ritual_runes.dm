@@ -6,6 +6,7 @@
 	icon = 'icons/obj/rune.dmi'
 	icon_state = "6"
 	resistance_flags = FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	obj_flags = NONE
 	layer = SIGIL_LAYER
 	color = null
 	var/magictype = "arcyne"//"arcyne", "divine", "druid", "blood"

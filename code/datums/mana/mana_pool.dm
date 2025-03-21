@@ -404,10 +404,11 @@
 
 /// Returns an adjusted amount of "effective" mana, affected by the attunements.
 /// Will always return a minimum of zero and a maximum of the total amount of mana we can give multiplied by the mults.
+///TODO The math here sucks and is practically always full mana usage now
 /datum/mana_pool/proc/get_attuned_amount(list/datum/attunement/incoming_attunements, atom/caster, amount_to_adjust = src.amount)
 	var/mult = get_overall_attunement_mults(incoming_attunements, caster)
 
-	return clamp(SAFE_DIVIDE(amount_to_adjust, mult), 0, amount*mult)
+	return clamp(SAFE_DIVIDE(amount_to_adjust, mult), 0, amount)
 
 /// Returns the combined attunement mults of all entries in the argument.
 /datum/mana_pool/proc/get_overall_attunement_mults(list/attunements, atom/caster)

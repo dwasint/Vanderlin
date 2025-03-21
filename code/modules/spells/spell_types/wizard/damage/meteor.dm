@@ -21,8 +21,22 @@
 //	var/list/affected_turfs = list()
 	playsound(T,'sound/magic/meteorstorm.ogg', 80, TRUE)
 	sleep(2)
-	create_meteors(T)
+	spawn(0)
+		create_meteors(T)
 	return TRUE
+
+/obj/effect/proc_holder/spell/invoked/meteor_storm/set_attuned_strength(list/incoming_attunements)
+	var/total_value = 1
+	for(var/datum/attunement/attunement as anything in attunements)
+		if(istype(attunement, /datum/attunement/blood))
+			total_value -= incoming_attunements[attunement] * 0.5
+		if(!(attunement in incoming_attunements))
+			continue
+		total_value += incoming_attunements[attunement] - attunements[attunement]
+
+	attuned_strength = total_value
+	attuned_strength = max(attuned_strength, 0.5)
+	return
 
 //meteor storm and lightstorm.
 /obj/effect/proc_holder/spell/invoked/meteor_storm/proc/create_meteors(atom/target)
@@ -30,9 +44,13 @@
 		return
 	target.visible_message(span_boldwarning("Fire rains from the sky!"))
 	var/turf/targetturf = get_turf(target)
-	for(var/turf/turf as anything in RANGE_TURFS(6,targetturf))
-		if(prob(20))
-			new /obj/effect/temp_visual/target(turf)
+	var/value = 20 * attuned_strength
+	while(value > 0)
+		for(var/turf/turf as anything in RANGE_TURFS(6,targetturf))
+			if(prob(min(20, value)))
+				new /obj/effect/temp_visual/target(turf)
+		value -= 100
+		sleep(rand(15, 25))
 
 /obj/effect/temp_visual/fireball
 	icon = 'icons/obj/projectiles.dmi'
@@ -45,7 +63,8 @@
 	duration = 9
 	pixel_z = 270
 
-/obj/effect/temp_visual/fireball/Initialize(mapload)
+/obj/effect/temp_visual/fireball/Initialize(mapload, incoming_duration = 9)
+	duration = incoming_duration
 	. = ..()
 	animate(src, pixel_z = 0, time = duration)
 
@@ -64,13 +83,14 @@
 	var/explode_sound = list('sound/misc/explode/incendiary (1).ogg','sound/misc/explode/incendiary (2).ogg')
 
 /obj/effect/temp_visual/target/Initialize(mapload, list/flame_hit)
+	duration = rand(9, 15)
 	. = ..()
 	INVOKE_ASYNC(src, PROC_REF(fall), flame_hit)
 
 /obj/effect/temp_visual/target/proc/fall(list/flame_hit)	//Potentially minor explosion at each impact point
 	var/turf/T = get_turf(src)
 	playsound(T,'sound/magic/meteorstorm.ogg', 80, TRUE)
-	new /obj/effect/temp_visual/fireball(T)
+	new /obj/effect/temp_visual/fireball(T, duration)
 	sleep(duration)
 	if(ismineralturf(T))
 		var/turf/closed/mineral/M = T

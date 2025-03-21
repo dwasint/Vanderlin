@@ -309,6 +309,9 @@
 	smooth = SMOOTH_MORE
 	canSmoothWith = list(/turf/open/floor/grass,
 						/turf/open/floor/snow)
+
+	spread_chance = 8
+
 	neighborlay = "dirtedge"
 	var/muddy = FALSE
 	var/bloodiness = 20

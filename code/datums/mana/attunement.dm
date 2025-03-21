@@ -24,7 +24,6 @@ GLOBAL_LIST_INIT(default_attunements, create_default_attunement_list())
 	var/desc = "Some coder forgot to set desc"
 
 	var/list/alignments = list() // no alignments by default
-	var/list/negative_influences = list()
 
 /datum/attunement/Destroy(force, ...)
 	stack_trace("Destroy called on [src], [src.type], a singleton attunement instance!")
