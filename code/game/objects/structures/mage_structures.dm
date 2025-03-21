@@ -304,27 +304,6 @@ s
 					update_icon()
 					last_process = world.time
 
-/obj/structure/manaflower
-	name = "manaflower"
-	desc = ""
-	icon = 'icons/roguetown/misc/crops.dmi'
-	icon_state = "manabloom2"
-	color = null
-	layer = BELOW_MOB_LAYER
-	max_integrity = 60
-	density = FALSE
-	debris = list(/obj/item/natural/fibers = 1, /obj/item/reagent_containers/food/snacks/produce/manabloom = 1)
-
-/obj/structure/manaflower/attack_hand(mob/living/carbon/human/user)
-	playsound(src.loc, "plantcross", 80, FALSE, -1)
-	user.visible_message(span_warning("[user] harvests [src]."))
-	if(do_after(user, 3 SECONDS, target = src))
-		new /obj/item/reagent_containers/food/snacks/produce/manabloom (get_turf(src))
-		qdel(src)
-/obj/structure/manaflower/Crossed(mob/living/carbon/human/H)
-	playsound(src.loc, "plantcross", 80, FALSE, -1)
-
-
 /obj/structure/voidstoneobelisk
 	name = "Voidstone Obelisk"
 	desc = "A smooth unnatural Obelisk, looking at it provides the sense of unease."

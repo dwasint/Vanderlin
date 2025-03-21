@@ -11171,7 +11171,7 @@
 /turf/open/floor/ruinedwood/turned,
 /area/rogue/outdoors/town)
 "hPT" = (
-/obj/structure/manaflower,
+/obj/structure/wild_plant/nospread/manabloom,
 /turf/open/floor/dirt/road,
 /area/rogue/indoors/town/magician)
 "hPV" = (
@@ -22415,7 +22415,7 @@
 /turf/open/floor/wood,
 /area/rogue/indoors/town)
 "qgJ" = (
-/obj/structure/manaflower,
+/obj/structure/wild_plant/nospread/manabloom,
 /obj/structure/fluff/railing/border{
 	pixel_y = 32
 	},
