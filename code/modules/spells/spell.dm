@@ -26,8 +26,9 @@
 	var/charging_slowdown = 0
 	var/obj/inhand_requirement = null
 	var/overlay_state = null
-	var/list/attunements
 
+	var/list/attunements
+	var/attuned_strength = 1
 
 /obj/effect/proc_holder/Initialize()
 	. = ..()

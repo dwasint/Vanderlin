@@ -5839,6 +5839,12 @@
 /obj/machinery/light/fueled/firebowl/standing/blue,
 /turf/open/floor/blocks,
 /area/rogue/indoors/town/magician)
+"ecr" = (
+/obj/structure/fluff/signage{
+	name = "We are sick and tired of repairing these blasted gates everytime you bloody bookworms cast arcyne storm!"
+	},
+/turf/open/floor/cobble,
+/area/rogue/indoors/town/magician)
 "ecv" = (
 /obj/structure/flora/grass/water,
 /turf/open/water/cleanshallow,
@@ -49465,9 +49471,9 @@ shM
 tqX
 cBJ
 cBJ
-vNQ
-plh
-vNQ
+ecr
+tqX
+tqX
 cBJ
 cBJ
 cBJ
