@@ -40,6 +40,7 @@ SUBSYSTEM_DEF(dbcore)
 
 /datum/controller/subsystem/dbcore/Recover()
 	connection = SSdbcore.connection
+	connection_cross = SSdbcore.connection_cross
 
 /datum/controller/subsystem/dbcore/Shutdown()
 	//This is as close as we can get to the true round end before Disconnect() without changing where it's called, defeating the reason this is a subsystem
@@ -52,6 +53,8 @@ SUBSYSTEM_DEF(dbcore)
 		qdel(query_round_shutdown)
 	if(IsConnected())
 		Disconnect()
+	if(IsConnectedCross())
+		DisconnectCross()
 
 //nu
 /datum/controller/subsystem/dbcore/can_vv_get(var_name)
@@ -105,7 +108,7 @@ SUBSYSTEM_DEF(dbcore)
 		++failed_connections
 
 /datum/controller/subsystem/dbcore/proc/Connect_Cross()
-	if(IsConnected())
+	if(IsConnectedCross())
 		return TRUE
 
 	if(failed_connection_timeout <= world.time) //it's been more than 5 seconds since we failed to connect, reset the counter
@@ -143,7 +146,7 @@ SUBSYSTEM_DEF(dbcore)
 	else
 		connection_cross = null
 		last_error = result["data"]
-		log_sql("Connect() failed | [last_error]")
+		log_sql("Connect_Cross() failed | [last_error]")
 		++failed_connections
 
 /datum/controller/subsystem/dbcore/proc/CheckSchemaVersion()
@@ -203,6 +206,19 @@ SUBSYSTEM_DEF(dbcore)
 	if (connection)
 		rustg_sql_disconnect_pool(connection)
 	connection = null
+
+/datum/controller/subsystem/dbcore/proc/DisconnectCross()
+	failed_connections = 0
+	if (connection_cross)
+		rustg_sql_disconnect_pool(connection_cross)
+	connection_cross = null
+
+/datum/controller/subsystem/dbcore/proc/IsConnectedCross()
+	if (!CONFIG_GET(flag/sql_enabled))
+		return FALSE
+	if (!connection_cross)
+		return FALSE
+	return json_decode(rustg_sql_connected(connection_cross))["status"] == "online"
 
 /datum/controller/subsystem/dbcore/proc/IsConnected()
 	if (!CONFIG_GET(flag/sql_enabled))
