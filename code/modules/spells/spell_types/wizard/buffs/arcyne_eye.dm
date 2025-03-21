@@ -1,12 +1,11 @@
 /obj/effect/proc_holder/spell/self/arcyne_eye
 	name = "Arcyne Eye"
 	desc = "Tap into the arcyne and see the leylines."
-	clothes_req = FALSE
 	active = FALSE
 	releasedrain = 30
 	chargedrain = 1
 	chargetime = 0
-	charge_max = 10 SECONDS
+	recharge_time = 10 SECONDS
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = TRUE

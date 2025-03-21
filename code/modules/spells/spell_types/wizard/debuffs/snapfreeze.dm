@@ -8,7 +8,7 @@
 	overlay_state = "shieldsparkles"
 	chargedrain = 1
 	chargetime = 15
-	charge_max = 30 SECONDS
+	recharge_time = 30 SECONDS
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = FALSE

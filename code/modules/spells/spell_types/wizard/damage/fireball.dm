@@ -1,7 +1,6 @@
 /obj/effect/proc_holder/spell/invoked/projectile/fireball
 	name = "Fireball"
 	desc = "Shoot out a ball of fire that emits a light explosion on impact, setting the target alight."
-	clothes_req = FALSE
 	range = 8
 	projectile_type = /obj/projectile/magic/aoe/fireball/rogue
 	overlay_state = "fireball"
@@ -10,7 +9,7 @@
 	releasedrain = 30
 	chargedrain = 1
 	chargetime = 15
-	charge_max = 10 SECONDS
+	recharge_time = 10 SECONDS
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = TRUE

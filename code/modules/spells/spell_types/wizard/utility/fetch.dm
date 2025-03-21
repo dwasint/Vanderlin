@@ -2,7 +2,6 @@
 	name = "Fetch"
 	desc = "Shoot out a magical bolt that draws in the target struck towards the caster."
 	overlay_state = "fetch"
-	clothes_req = FALSE
 	range = 15
 	projectile_type = /obj/projectile/magic/fetch
 	sound = list('sound/magic/magnet.ogg')

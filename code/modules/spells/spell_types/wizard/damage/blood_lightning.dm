@@ -1,15 +1,15 @@
 /obj/effect/proc_holder/spell/invoked/projectile/bloodlightning
 	name = "Blood Bolt"
 	desc = ""
-	clothes_req = FALSE
 	overlay_state = "bloodlightning"
 	sound = 'sound/magic/vlightning.ogg'
 	range = 8
+	cost = 6
 	projectile_type = /obj/projectile/magic/bloodlightning
 	releasedrain = 30
 	chargedrain = 1
 	chargetime = 25
-	charge_max = 20 SECONDS
+	recharge_time = 20 SECONDS
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = FALSE

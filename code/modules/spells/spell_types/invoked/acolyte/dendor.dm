@@ -12,7 +12,7 @@
 	range = 5
 	overlay_state = "blesscrop"
 	releasedrain = 30
-	charge_max = 30 SECONDS
+	recharge_time = 30 SECONDS
 	req_items = list(/obj/item/clothing/neck/psycross/silver/dendor)
 	max_targets = 0
 	cast_without_targets = TRUE
@@ -51,7 +51,7 @@
 	name = "Beastial Senses"
 	desc = "Grants the Dendorite a keen sense of smell and excellent vision, to better hunt with."
 	overlay_state = "bestialsense"
-	charge_max = 12 MINUTES
+	recharge_time = 12 MINUTES
 	req_items = list(/obj/item/clothing/neck/psycross/silver/dendor)
 	invocation = "Beast-Lord, lend me the eyes of the zad, the nose of the volf."
 	invocation_type = "whisper"
@@ -86,7 +86,7 @@
 	range = 5
 	overlay_state = "tamebeast"
 	releasedrain = 30
-	charge_max = 6 MINUTES
+	recharge_time = 6 MINUTES
 	req_items = list(/obj/item/clothing/neck/psycross/silver/dendor)
 	max_targets = 0
 	cast_without_targets = TRUE
@@ -129,7 +129,7 @@
 	sound = 'sound/items/dig_shovel.ogg'
 	invocation = "By the Treefather's will, entwine and restrain."
 	invocation_type = "whisper"
-	charge_max = 50 SECONDS
+	recharge_time = 50 SECONDS
 	devotion_cost = 15
 
 /obj/effect/proc_holder/spell/invoked/entangler/cast(list/targets, mob/living/user)
@@ -224,7 +224,7 @@
 	range = 1
 	overlay_state = "kneestinger"
 	releasedrain = 30
-	charge_max = 30 SECONDS
+	recharge_time = 30 SECONDS
 	max_targets = 0
 	cast_without_targets = TRUE
 	sound = 'sound/items/dig_shovel.ogg'
@@ -260,7 +260,7 @@
 	name = "Troll Shape"
 	desc = "Borrow power from the Troll, his favored beast."
 	overlay_state = "trollshape"
-	charge_max = 12 MINUTES // cast once every 30 minutes, lasts for 3 minutes || Monkey station edit, changed it down from 30 to 12!
+	recharge_time = 12 MINUTES // cast once every 30 minutes, lasts for 3 minutes || Monkey station edit, changed it down from 30 to 12!
 	req_items = list(/obj/item/clothing/neck/psycross/silver/dendor)
 	invocation = "DENDOR; LEND ME YOUR POWER!!"
 	invocation_type = "shout"

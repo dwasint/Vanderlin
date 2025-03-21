@@ -2,7 +2,6 @@
 	name = "Bolt of Lightning"
 	desc = "Emit a bolt of lightning that burns and stuns a target."
 	action_icon_state = "lightning"
-	clothes_req = FALSE
 	overlay_state = "lightning"
 	sound = 'sound/magic/lightning.ogg'
 	range = 8
@@ -10,7 +9,7 @@
 	releasedrain = 30
 	chargedrain = 1
 	chargetime = 15
-	charge_max = 20 SECONDS
+	recharge_time = 20 SECONDS
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = FALSE

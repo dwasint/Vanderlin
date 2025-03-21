@@ -1,7 +1,6 @@
 /obj/effect/proc_holder/spell/self/bladeward5e
 	name = "Blade Ward"
 	desc = "Improves your targets constitution for a brief duration."
-	clothes_req = FALSE
 	range = 8
 	overlay_state = "null"
 	sound = list('sound/magic/whiteflame.ogg')
@@ -10,7 +9,7 @@
 	releasedrain = 30
 	chargedrain = 1
 	chargetime = 3
-	charge_max = 60 SECONDS //cooldown
+	recharge_time = 60 SECONDS //cooldown
 
 	warnie = "spellwarning"
 	no_early_release = TRUE

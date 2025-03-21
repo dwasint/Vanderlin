@@ -1,7 +1,6 @@
 /obj/effect/proc_holder/spell/invoked/projectile/rayoffrost5e
 	name = "Ray of Frost"
 	desc = "Shoots a ray of frost out, slowing anyone hit by it."
-	clothes_req = FALSE
 	range = 8
 	projectile_type = /obj/projectile/magic/rayoffrost5e
 	overlay_state = "null"
@@ -11,7 +10,7 @@
 	releasedrain = 30
 	chargedrain = 1
 	chargetime = 3
-	charge_max = 5 SECONDS //cooldown
+	recharge_time = 5 SECONDS //cooldown
 
 	warnie = "spellwarning"
 	no_early_release = TRUE

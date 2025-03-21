@@ -3,7 +3,7 @@
 	desc = "Latch onto the mind of one who is familiar to you, whispering a message into their head."
 	cost = 1
 	releasedrain = 30
-	charge_max = 60 SECONDS
+	recharge_time = 60 SECONDS
 	warnie = "spellwarning"
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane

@@ -12,7 +12,7 @@
 	invocation_type = "none"
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = TRUE
-	charge_max = 5 SECONDS //very stupidly simple spell
+	recharge_time = 5 SECONDS //very stupidly simple spell
 	miracle = TRUE
 	devotion_cost = 5 //come on, this is very basic
 
@@ -47,7 +47,7 @@
 	invocation_type = "none"
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = TRUE
-	charge_max = 60 SECONDS //attaching a limb is pretty intense
+	recharge_time = 60 SECONDS //attaching a limb is pretty intense
 	miracle = TRUE
 	devotion_cost = 80
 
@@ -147,7 +147,7 @@
 	sound = 'sound/magic/revive.ogg'
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = TRUE
-	charge_max = 2 MINUTES
+	recharge_time = 2 MINUTES
 	miracle = TRUE
 	devotion_cost = 100
 

@@ -10,7 +10,7 @@
 	sound = 'sound/magic/whiteflame.ogg'
 	associated_skill = /datum/skill/magic/arcane
 	antimagic_allowed = TRUE
-	charge_max = 15 SECONDS
+	recharge_time = 15 SECONDS
 	miracle = FALSE
 	attunements = list(
 		/datum/attunement/dark = 0.4,
@@ -50,7 +50,7 @@
 	sound = 'sound/items/beartrap.ogg'
 	associated_skill = /datum/skill/magic/arcane
 	antimagic_allowed = TRUE
-	charge_max = 15 SECONDS
+	recharge_time = 15 SECONDS
 	miracle = FALSE
 	attunements = list(
 		/datum/attunement/dark = 0.4,
@@ -70,7 +70,6 @@
 /obj/effect/proc_holder/spell/invoked/raise_undead
 	name = "Raise Undead"
 	desc = ""
-	clothes_req = FALSE
 	range = 7
 	overlay_state = "raiseskele"
 	sound = list('sound/magic/magnet.ogg')
@@ -81,7 +80,7 @@
 	charging_slowdown = 1
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
-	charge_max = 30 SECONDS
+	recharge_time = 30 SECONDS
 	attunements = list(
 		/datum/attunement/dark = 0.4,
 		/datum/attunement/death = 1,
@@ -252,7 +251,6 @@
 /obj/effect/proc_holder/spell/invoked/projectile/sickness
 	name = "Ray of Sickness"
 	desc = ""
-	clothes_req = FALSE
 	range = 15
 	projectile_type = /obj/projectile/magic/sickness
 	overlay_state = "raiseskele"
@@ -265,7 +263,7 @@
 	charging_slowdown = 1
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
-	charge_max = 15 SECONDS
+	recharge_time = 15 SECONDS
 	attunements = list(
 		/datum/attunement/dark = 0.4,
 		/datum/attunement/blood = 0.5,
@@ -279,7 +277,7 @@
 	invocation = "Zuth'gorash vel'thar dral'oth!"
 	invocation_type = "shout"
 	antimagic_allowed = TRUE
-	charge_max = 15 SECONDS
+	recharge_time = 15 SECONDS
 
 /obj/effect/proc_holder/spell/self/command_undead/cast(mob/user = usr)
 	. = ..()

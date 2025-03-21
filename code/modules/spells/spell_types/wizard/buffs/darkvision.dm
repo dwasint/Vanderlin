@@ -1,11 +1,10 @@
 /obj/effect/proc_holder/spell/targeted/touch/darkvision
 	name = "Darkvision"
 	desc = "Enhance the night vision of a target you touch for an hour."
-	clothes_req = FALSE
 	drawmessage = "I prepare to grant Darkvision."
 	dropmessage = "I release my arcyne focus."
 	school = "transmutation"
-	charge_max = 1 MINUTES
+	recharge_time = 1 MINUTES
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
 	hand_path = /obj/item/melee/touch_attack/darkvision

@@ -1,7 +1,6 @@
 /obj/effect/proc_holder/spell/invoked/projectile/fireball/greater
 	name = "Fireball (Greater)"
 	desc = "Shoot out an immense ball of fire that explodes on impact."
-	clothes_req = FALSE
 	range = 8
 	projectile_type = /obj/projectile/magic/aoe/fireball/rogue/great
 	overlay_state = "fireball_greater"
@@ -10,7 +9,7 @@
 	releasedrain = 50
 	chargedrain = 3
 	chargetime = 15
-	charge_max = 20 SECONDS
+	recharge_time = 20 SECONDS
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = TRUE

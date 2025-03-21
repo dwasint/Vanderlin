@@ -5,8 +5,7 @@
 	action_icon_state = "knock"
 	overlay_state = "knock"
 	school = "transmutation"
-	charge_max = 100
-	clothes_req = FALSE
+	recharge_time = 100
 	invocation = "AULIE OXIN FIERA"
 	invocation_type = "whisper"
 	range = 3

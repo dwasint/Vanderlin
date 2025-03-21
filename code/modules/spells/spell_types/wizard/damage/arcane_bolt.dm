@@ -1,7 +1,6 @@
 /obj/effect/proc_holder/spell/invoked/projectile/arcanebolt
 	name = "Arcane Bolt"
 	desc = "Shoot out rapid bolts of arcane magic, that firmly hits on impact."
-	clothes_req = FALSE
 	range = 12
 	projectile_type = /obj/projectile/energy/rogue3
 	overlay_state = "force_dart"
@@ -10,7 +9,7 @@
 	releasedrain = 20
 	chargedrain = 1
 	chargetime = 7
-	charge_max = 5 SECONDS
+	recharge_time = 5 SECONDS
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = FALSE

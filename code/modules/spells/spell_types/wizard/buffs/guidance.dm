@@ -6,7 +6,7 @@
 	releasedrain = 60
 	chargedrain = 1
 	chargetime = 4 SECONDS
-	charge_max = 5 MINUTES
+	recharge_time = 5 MINUTES
 	warnie = "spellwarning"
 	school = "transmutation"
 	no_early_release = TRUE

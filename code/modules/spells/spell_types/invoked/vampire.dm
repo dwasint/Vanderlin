@@ -3,7 +3,7 @@
 	name = "Bat Form"
 	desc = ""
 	invocation = ""
-	charge_max = 50
+	recharge_time = 50
 	cooldown_min = 50
 	die_with_shapeshifted_form =  FALSE
 	shapeshift_type = /mob/living/simple_animal/hostile/retaliate/bat
@@ -16,7 +16,7 @@
 	name = "Mist Form"
 	desc = ""
 	invocation = ""
-	charge_max = 50
+	recharge_time = 50
 	cooldown_min = 50
 	die_with_shapeshifted_form =  FALSE
 	shapeshift_type = /mob/living/simple_animal/hostile/retaliate/gaseousform

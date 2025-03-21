@@ -1,8 +1,7 @@
 /obj/effect/proc_holder/spell/aoe_turf/repulse
 	name = "Repulse"
 	desc = "Conjure forth a wave of energy, repelling anyone around you."
-	charge_max = 400
-	clothes_req = TRUE
+	recharge_time = 400
 	invocation = "GITTAH WEIGH"
 	invocation_type = "shout"
 	range = 5
@@ -59,7 +58,7 @@
 	releasedrain = 50
 	chargedrain = 1
 	chargetime = 3 SECONDS
-	charge_max = 25 SECONDS
+	recharge_time = 25 SECONDS
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = FALSE

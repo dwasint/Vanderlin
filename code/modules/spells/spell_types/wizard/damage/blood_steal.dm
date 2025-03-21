@@ -1,7 +1,6 @@
 /obj/effect/proc_holder/spell/invoked/projectile/bloodsteal
 	name = "Blood Steal"
 	desc = ""
-	clothes_req = FALSE
 	overlay_state = "bloodsteal"
 	sound = 'sound/magic/vlightning.ogg'
 	range = 8
@@ -9,7 +8,7 @@
 	releasedrain = 30
 	chargedrain = 1
 	chargetime = 25
-	charge_max = 20 SECONDS
+	recharge_time = 20 SECONDS
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = FALSE

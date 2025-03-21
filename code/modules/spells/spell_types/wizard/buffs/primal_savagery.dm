@@ -1,7 +1,6 @@
 /obj/effect/proc_holder/spell/self/primalsavagery5e
 	name = "Primal Savagery"
 	desc = "For a short duration you develop the ability to inject targets with poisons with each bite."
-	clothes_req = FALSE
 	range = 8
 	overlay_state = "null"
 	sound = list('sound/magic/whiteflame.ogg')
@@ -10,7 +9,7 @@
 	releasedrain = 50
 	chargedrain = 1
 	chargetime = 3
-	charge_max = 60 SECONDS //cooldown
+	recharge_time = 60 SECONDS //cooldown
 
 	warnie = "spellwarning"
 	no_early_release = TRUE

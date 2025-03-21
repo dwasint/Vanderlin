@@ -1,7 +1,6 @@
 /obj/effect/proc_holder/spell/invoked/projectile/eldritchblast5e
 	name = "Eldritch Blast"
 	desc = "A beam of crackling energy streaks toward a target, causing moderate damage."
-	clothes_req = FALSE
 	range = 8
 	projectile_type = /obj/projectile/magic/eldritchblast5e
 	overlay_state = "force_dart"
@@ -11,7 +10,7 @@
 	releasedrain = 30
 	chargedrain = 1
 	chargetime = 3
-	charge_max = 5 SECONDS //cooldown
+	recharge_time = 5 SECONDS //cooldown
 
 	warnie = "spellwarning"
 	no_early_release = TRUE
@@ -48,7 +47,7 @@
 
 /obj/effect/proc_holder/spell/invoked/projectile/eldritchblast5e/empowered
 	name = "empowered eldritch blast"
-	charge_max = 8 SECONDS //cooldown
+	recharge_time = 8 SECONDS //cooldown
 	releasedrain = 40
 	projectile_type = /obj/projectile/magic/eldritchblast5e/empowered
 

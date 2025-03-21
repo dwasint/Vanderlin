@@ -3,8 +3,7 @@
 	desc = ""
 	overlay_state = "jaunt"
 	school = "transmutation"
-	charge_max = 300
-	clothes_req = FALSE
+	recharge_time = 300
 	invocation = "VANISHIKA"
 	invocation_type = "shout"
 	range = -1

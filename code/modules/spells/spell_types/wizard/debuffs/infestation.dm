@@ -4,7 +4,7 @@
 	overlay_state = "null"
 	releasedrain = 50
 	chargetime = 10
-	charge_max = 20 SECONDS
+	recharge_time = 20 SECONDS
 	range = 8
 	warnie = "spellwarning"
 	movement_interrupt = FALSE

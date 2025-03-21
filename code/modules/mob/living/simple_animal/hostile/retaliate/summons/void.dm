@@ -837,8 +837,7 @@ It will also call down lightning strikes from the sky, and fling people with it'
 	name = "Tail Sweep"
 	desc = "Throw back attackers with a sweep of your tail."
 	sound = 'sound/misc/tail_swing.ogg'
-	charge_max = 150
-	clothes_req = FALSE
+	recharge_time = 150
 	cooldown_min = 150
 	invocation_type = "none"
 	sparkle_path = /obj/effect/temp_visual/dir_setting/tailsweep
