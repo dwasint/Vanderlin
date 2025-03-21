@@ -190,8 +190,6 @@
 
 /obj/item/book/granter/spellbook/attack(mob/living/M, mob/living/carbon/human/user)
 	var/mob/living/carbon/human/gamer = user
-	if(gamer != owner)
-		return
 	if (M.stat != DEAD)
 		if(user == M)
 			to_chat(user, span_warning("I'm already chained to this tome!"))
