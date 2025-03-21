@@ -1610,6 +1610,11 @@
 	. = ..()
 	var/mob/living/user = usr
 	if(HAS_TRAIT(src, TRAIT_TINY) && isturf(over.loc))
+		if(stat == DEAD || !Adjacent(over))
+			return
+		for(var/obj/item/grabbing/G in grabbedby)
+			if(G.grab_state == GRAB_AGGRESSIVE)
+				return
 		var/datum/component/storage = over.GetComponent(/datum/component/storage)
 		if(storage)
 			var/obj/item/clothing/head/mob_holder/holder = new(get_turf(src), src)
@@ -1623,6 +1628,9 @@
 	if(HAS_TRAIT(src, TRAIT_TINY) && ismob(over) && over != src)
 		if(stat == DEAD || !Adjacent(over))
 			return
+		for(var/obj/item/grabbing/G in grabbedby)
+			if(G.grab_state == GRAB_AGGRESSIVE)
+				return
 		var/list/pickable_items = list()
 		for(var/obj/item/item in over.get_all_contents())
 			var/datum/component/storage = item.GetComponent(/datum/component/storage)
