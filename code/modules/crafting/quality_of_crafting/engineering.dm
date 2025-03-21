@@ -13,7 +13,7 @@
 	attacked_atom = /obj/item/grown/log/tree/small
 	starting_atom= /obj/item/weapon/knife
 	output = /obj/item/rotation_contraption/shaft
-	output_amount = 2
+	output_amount = 6
 	craft_time = 5 SECONDS
 	uses_attacked_atom = FALSE
 
