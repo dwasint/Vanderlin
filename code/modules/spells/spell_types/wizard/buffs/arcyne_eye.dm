@@ -28,9 +28,11 @@
 
 /datum/status_effect/arcyne_eye/on_apply()
 	ADD_TRAIT(owner, TRAIT_SEE_LEYLINES, type)
+	owner.see_invisible = SEE_INVISIBLE_LEYLINES
 	owner.hud_used?.plane_masters_update()
 	return TRUE
 
 /datum/status_effect/arcyne_eye/on_remove()
 	REMOVE_TRAIT(owner, TRAIT_SEE_LEYLINES, type)
+	owner.see_invisible = SEE_INVISIBLE_LIVING
 	owner.hud_used?.plane_masters_update()

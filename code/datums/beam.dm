@@ -21,8 +21,9 @@
 
 	var/datum/mana_pool/mana_pool
 	var/redraws
+	var/draws_invis
 
-/datum/beam/New(beam_origin,beam_target,beam_icon='icons/effects/beam.dmi',beam_icon_state="b_beam",time=50,maxdistance=10,btype = /obj/effect/ebeam,beam_sleep_time=3,beam_color = COLOR_WHITE, redraws = TRUE)
+/datum/beam/New(beam_origin,beam_target,beam_icon='icons/effects/beam.dmi',beam_icon_state="b_beam",time=50,maxdistance=10,btype = /obj/effect/ebeam,beam_sleep_time=3,beam_color = COLOR_WHITE, redraws = TRUE, invisible_state)
 	origin = beam_origin
 	origin_oldloc =	get_turf(origin)
 	target = beam_target
@@ -39,6 +40,7 @@
 	bcolor = beam_color
 	if(time < INFINITY)
 		addtimer(CALLBACK(src,PROC_REF(End)), time)
+	draws_invis = invisible_state
 
 /datum/beam/proc/Start()
 	Draw()
@@ -113,6 +115,8 @@
 			break
 		var/obj/effect/ebeam/X = new beam_type(origin_oldloc)
 		X.owner = src
+		if(draws_invis)
+			X.invisibility = draws_invis
 		elements += X
 
 		//Assign icon, for main segments it's base_icon, for the end, it's icon+icon_state
@@ -173,7 +177,7 @@
 	return newbeam
 
 /atom/proc/LeyBeam(atom/BeamTarget,icon_state="b_beam",icon='icons/effects/beam.dmi',time=INFINITY, maxdistance=10,beam_type=/obj/effect/ebeam,beam_sleep_time = 3, beam_color = COLOR_WHITE, datum/mana_pool, layer = UPPER_LEYLINE_LAYER, redraws = TRUE)
-	var/datum/beam/newbeam = new(src,BeamTarget,icon,icon_state,time,maxdistance,beam_type,beam_sleep_time,beam_color,redraws)
+	var/datum/beam/newbeam = new(src,BeamTarget,icon,icon_state,time,maxdistance,beam_type,beam_sleep_time,beam_color,redraws, invisible_state = INVISIBILITY_LEYLINES)
 	if(mana_pool)
 		newbeam.mana_pool = mana_pool
 	newbeam.forced_plane = PLANE_LEYLINES

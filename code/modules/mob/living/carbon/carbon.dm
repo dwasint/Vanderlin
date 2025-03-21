@@ -697,7 +697,10 @@
 	if(!E)
 		update_tint()
 	else
-		see_invisible = E.see_invisible
+		if(HAS_TRAIT(src, TRAIT_SEE_LEYLINES))
+			see_invisible = SEE_INVISIBLE_LEYLINES
+		else
+			see_invisible = E.see_invisible
 		see_in_dark = E.see_in_dark
 		sight |= E.sight_flags
 		if(!isnull(E.lighting_alpha))

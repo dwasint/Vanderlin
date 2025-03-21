@@ -345,11 +345,13 @@
 
 /obj/item/clothing/ring/shimmeringlens/proc/activate(mob/user)
 	ADD_TRAIT(user, TRAIT_SEE_LEYLINES, "[type]")
+	user.see_invisible = SEE_INVISIBLE_LEYLINES
 	user.hud_used?.plane_masters_update()
 
 /obj/item/clothing/ring/shimmeringlens/proc/demagicify()
 	var/mob/living/user = usr
 	REMOVE_TRAIT(user,TRAIT_SEE_LEYLINES, "[type]")
+	user.see_invisible = SEE_INVISIBLE_LIVING
 	user.hud_used?.plane_masters_update()
 	active = FALSE
 
