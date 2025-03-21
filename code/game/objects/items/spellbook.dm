@@ -189,7 +189,6 @@
 	gamer.electrocute_act(5, src)
 
 /obj/item/book/granter/spellbook/attack(mob/living/M, mob/living/carbon/human/user)
-	var/mob/living/carbon/human/gamer = user
 	if (M.stat != DEAD)
 		if(user == M)
 			to_chat(user, span_warning("I'm already chained to this tome!"))

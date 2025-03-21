@@ -324,6 +324,8 @@
 		return FALSE
 	if(target)
 		var/obj/effect/proc_holder/S = target
+		if(owner.ranged_ability && S != owner.ranged_ability)
+			owner.ranged_ability.deactivate(owner)
 		S.Click()
 		return TRUE
 
