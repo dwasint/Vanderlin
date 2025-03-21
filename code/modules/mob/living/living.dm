@@ -1612,6 +1612,8 @@
 	if(HAS_TRAIT(src, TRAIT_TINY) && isturf(over.loc))
 		if(stat == DEAD || !Adjacent(over))
 			return
+		if(incapacitated())
+			return
 		for(var/obj/item/grabbing/G in grabbedby)
 			if(G.grab_state == GRAB_AGGRESSIVE)
 				return
@@ -1627,6 +1629,8 @@
 
 	if(HAS_TRAIT(src, TRAIT_TINY) && ismob(over) && over != src)
 		if(stat == DEAD || !Adjacent(over))
+			return
+		if(incapacitated())
 			return
 		for(var/obj/item/grabbing/G in grabbedby)
 			if(G.grab_state == GRAB_AGGRESSIVE)
