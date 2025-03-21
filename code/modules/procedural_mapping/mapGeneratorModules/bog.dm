@@ -22,7 +22,7 @@
 							/obj/item/natural/artifact = 4,
 							/obj/structure/leyline = 3,
 							/obj/structure/voidstoneobelisk = 3,
-							/obj/structure/manaflower = 4,
+							/obj/structure/wild_plant/manabloom = 4,
 							/obj/item/mana_battery/mana_crystal/small = 3,
 							/obj/item/natural/rock = 30,
 							/obj/item/natural/stone = 30,

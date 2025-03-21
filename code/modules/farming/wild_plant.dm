@@ -84,3 +84,9 @@
 	incoming_type = pick(subtypesof(/datum/plant_def))
 	spread_chance = rand(25, 100)
 	. = ..()
+
+/obj/structure/wild_plant/manabloom/New(loc, datum/plant_def/incoming_type, spread_chance)
+	incoming_type = /datum/plant_def/manabloom
+	spread_chance = rand(25, 100)
+	. = ..()
+
