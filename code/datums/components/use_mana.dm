@@ -85,12 +85,13 @@
 	var/atom/movable/caster = get_parent_user()
 	var/list/datum/mana_pool/usable_pools = list()
 
-	if (!isnull(caster.mana_pool))
-		usable_pools += caster.mana_pool
-
 	for (var/atom/movable/thing as anything in caster.get_all_contents())
 		if (!isnull(thing.mana_pool) && HAS_TRAIT(thing, TRAIT_POOL_AVAILABLE_FOR_CAST))
 			usable_pools += thing.mana_pool
+
+	if (!isnull(caster.mana_pool)) //we want this last so foci run first
+		usable_pools += caster.mana_pool
+
 
 	return usable_pools
 

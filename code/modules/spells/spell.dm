@@ -383,14 +383,35 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 	for(var/datum/attunement/attunement as anything in attunements)
 		if(!(attunement in incoming_attunements))
 			continue
-		total_value += incoming_attunements[attunement] - attunements[attunement]
+		if(attunements[attunement] < 0)
+			total_value += incoming_attunements[attunement] + attunements[attunement]
+		else
+			total_value += incoming_attunements[attunement] - attunements[attunement]
 	attuned_strength = total_value
 	return
 
 /obj/effect/proc_holder/spell/proc/perform(list/targets, recharge = TRUE, mob/user = usr) //if recharge is started is important for the trigger spells
 	before_cast(targets)
 	invocation(user)
-	set_attuned_strength(user.mana_pool.attunements)
+
+	var/list/datum/mana_pool/usable_pools = list()
+
+	for (var/atom/movable/thing as anything in user.get_all_contents())
+		if (!isnull(thing.mana_pool) && HAS_TRAIT(thing, TRAIT_POOL_AVAILABLE_FOR_CAST))
+			usable_pools += thing.mana_pool
+
+	if (!isnull(user.mana_pool))
+		usable_pools += user.mana_pool
+
+	var/list/total_attunements = GLOB.default_attunements.Copy()
+
+	for(var/datum/mana_pool/pool as anything in usable_pools)
+		for(var/negative_attunement in pool.negative_attunements)
+			total_attunements[negative_attunement] += pool.negative_attunements[negative_attunement]
+		for(var/attunement in pool.attunements)
+			total_attunements[attunement] += pool.attunements[attunement]
+
+	set_attuned_strength(total_attunements)
 	if(user && user.ckey)
 		user.log_message("<span class='danger'>cast the spell [name].</span>", LOG_ATTACK)
 	if(recharge)
