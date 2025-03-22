@@ -571,3 +571,7 @@ GLOBAL_LIST_EMPTY(fake_ckeys)
 
 	GLOB.fake_ckeys[ckey] = valid_name
 	return valid_name
+
+/// Returns if the given client is an admin, REGARDLESS of if they're deadminned or not.
+/proc/is_admin(client/client)
+	return !isnull(GLOB.admin_datums[client.ckey]) || !isnull(GLOB.deadmins[client.ckey])

@@ -16,6 +16,7 @@ SUBSYSTEM_DEF(dbcore)
 
 	var/connection  // Arbitrary handle returned from rust_g.
 	var/connection_cross   // Arbitrary handle returned from rust_g.
+	var/shutting_down = FALSE
 
 /datum/controller/subsystem/dbcore/Initialize()
 	//We send warnings to the admins during subsystem init, as the clients will be New'd and messages
@@ -43,6 +44,7 @@ SUBSYSTEM_DEF(dbcore)
 	connection_cross = SSdbcore.connection_cross
 
 /datum/controller/subsystem/dbcore/Shutdown()
+	shutting_down = TRUE
 	//This is as close as we can get to the true round end before Disconnect() without changing where it's called, defeating the reason this is a subsystem
 	if(SSdbcore.Connect())
 		var/datum/DBQuery/query_round_shutdown = SSdbcore.NewQuery(
@@ -264,6 +266,22 @@ SUBSYSTEM_DEF(dbcore)
 		if (qdel)
 			qdel(query)
 
+/**
+ * Creates and executes a query without waiting for or tracking the results.
+ * Query is executed asynchronously (without blocking) and deleted afterwards - any results or errors are discarded.
+ *
+ * Arguments:
+ * * sql_query - The SQL query string to execute
+ * * arguments - List of arguments to pass to the query for parameter binding
+ * * allow_during_shutdown - If TRUE, allows query to be created during subsystem shutdown. Generally, only cleanup queries should set this.
+ */
+/datum/controller/subsystem/dbcore/proc/FireAndForget(sql_query, arguments, allow_during_shutdown = FALSE)
+	var/datum/DBQuery/query = NewQuery(sql_query, arguments, allow_during_shutdown)
+	if(!query)
+		return
+	ASYNC
+		query.Execute()
+		qdel(query)
 
 /*
 Takes a list of rows (each row being an associated list of column => value) and inserts them via a single mass query.
