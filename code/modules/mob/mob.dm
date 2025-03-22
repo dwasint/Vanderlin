@@ -447,6 +447,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 		return FALSE
 
 	new /obj/effect/temp_visual/point(src,invisibility)
+	SEND_SIGNAL(src, COMSIG_MOB_POINTED, A)
 
 	return TRUE
 
@@ -467,6 +468,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 
 	var/turf/our_tile = get_turf(src)
 	var/obj/visual = new /obj/effect/temp_visual/point/still(our_tile, invisibility)
+	SEND_SIGNAL(src, COMSIG_MOB_POINTED, A)
 	animate(visual, pixel_x = (tile.x - our_tile.x) * world.icon_size + A.pixel_x, pixel_y = (tile.y - our_tile.y) * world.icon_size + A.pixel_y, time = 2, easing = EASE_OUT)
 
 	lastpoint = world.time

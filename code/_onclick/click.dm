@@ -170,9 +170,9 @@
 	if(modifiers["shift"])
 		ShiftClickOn(A)
 		return
-//	if(modifiers["alt"]) // alt and alt-gr (rightalt)
-//		AltClickOn(A)
-//		return
+	if(modifiers["alt"]) // alt and alt-gr (rightalt)
+		AltClickOn(A)
+		return
 	if(modifiers["ctrl"])
 		CtrlClickOn(A)
 		return
@@ -594,6 +594,7 @@
 	. = SEND_SIGNAL(src, COMSIG_MOB_ALTCLICKON, A)
 	if(. & COMSIG_MOB_CANCEL_CLICKON)
 		return
+	A.AltClick(src)
 
 /atom/proc/AltClick(mob/user)
 	SEND_SIGNAL(src, COMSIG_CLICK_ALT, user)

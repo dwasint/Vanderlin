@@ -22,7 +22,8 @@
 
 /obj/effect/proc_holder/spell/invoked/findfamiliar/cast(list/targets,mob/user = usr)
 	. = ..()
-	var/mob/M = new /mob/living/simple_animal/hostile/retaliate/wolf/familiar(get_turf(user), user)
+	var/mob/living/M = new /mob/living/simple_animal/hostile/retaliate/wolf/familiar(get_turf(user), user)
+	M.befriend(user)
 	var/atom/A = targets[1]
 	if(isliving(A))
 		M.ai_controller?.set_blackboard_key(BB_BASIC_MOB_PRIORITY_TARGETS, A)

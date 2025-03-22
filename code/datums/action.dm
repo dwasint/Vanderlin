@@ -410,6 +410,14 @@
 		if(next_use_time > world.time)
 			START_PROCESSING(SSfastprocess, src)
 
+/// Intercepts client owner clicks to activate the ability
+/datum/action/cooldown/proc/InterceptClickOn(mob/living/user, params, atom/target)
+	if(!IsAvailable())
+		return FALSE
+	if(!target)
+		return FALSE
+
+	return TRUE
 
 /datum/action/language_menu
 	name = "Language Menu"
