@@ -477,12 +477,12 @@
 	var/secondary_direction
 
 	var/static/list/directions = list(
-		"South Left Turn" = SOUTHWEST,
-		"South Right Turn" = SOUTHEAST,
-		"North Right Turn" = NORTHEAST,
+		"Southwest" = SOUTHWEST,
+		"Southeast" = SOUTHEAST,
+		"Northwest" = NORTHEAST,
+		"Northeast" = NORTHWEST,
 		"Straight" = NORTH,
 		"Sideways" = WEST,
-		"North Left Turn" = NORTHWEST,
 	)
 
 /obj/structure/minecart_rail/Initialize(mapload)
@@ -523,7 +523,7 @@
 		return
 	var/last_direction = secondary_direction
 	secondary_direction = dir
-	dir = last_direction
+	setDir(last_direction)
 
 /obj/structure/minecart_rail/attack_right(mob/user)
 	. = ..()
@@ -543,7 +543,7 @@
 	if(!choice)
 		return
 
-	dir = directions[choice]
+	setDir(directions[choice])
 
 /obj/structure/minecart_rail/update_animation_effect()
 	. = ..()
