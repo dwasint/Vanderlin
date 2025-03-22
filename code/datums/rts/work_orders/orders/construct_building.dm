@@ -14,7 +14,7 @@
 
 /datum/work_order/construct_building/stop_work()
 	. = ..()
-	building.current_workers--
+	building?.current_workers--
 	building = null
 
 /datum/work_order/construct_building/finish_work()
