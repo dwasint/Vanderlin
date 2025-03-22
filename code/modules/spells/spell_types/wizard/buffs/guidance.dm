@@ -24,7 +24,9 @@
 		return FALSE
 
 	var/mob/living/spelltarget = A
-	spelltarget.apply_status_effect(/datum/status_effect/buff/guidance)
+
+	var/duration_increase = min(0, attuned_strength * 60 SECONDS) //basically 1 minute extra per 1 attunement level since its a strong effect
+	spelltarget.apply_status_effect(/datum/status_effect/buff/duration_modification/guidance, duration_increase)
 	playsound(get_turf(spelltarget), 'sound/magic/haste.ogg', 80, TRUE, soundping = TRUE)
 
 	if(spelltarget != user)
@@ -34,20 +36,20 @@
 
 	return TRUE
 
-/datum/status_effect/buff/guidance
+/datum/status_effect/buff/duration_modification/guidance
 	id = "guidance"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/guidance
 	duration = 1 MINUTES
 	effectedstats = list(STATKEY_INT = 2)
 	var/static/mutable_appearance/guided = mutable_appearance('icons/effects/effects.dmi', "blessed")
 
-/datum/status_effect/buff/guidance/on_apply()
+/datum/status_effect/buff/duration_modification/guidance/on_apply()
 	. = ..()
 	ADD_TRAIT(owner, TRAIT_GUIDANCE, MAGIC_TRAIT)
 	var/mob/living/target = owner
 	target.add_overlay(guided)
 
-/datum/status_effect/buff/guidance/on_remove()
+/datum/status_effect/buff/duration_modification/guidance/on_remove()
 	. = ..()
 	REMOVE_TRAIT(owner, TRAIT_GUIDANCE, MAGIC_TRAIT)
 	var/mob/living/target = owner

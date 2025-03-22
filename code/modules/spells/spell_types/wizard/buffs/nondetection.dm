@@ -13,6 +13,10 @@
 		/datum/attunement/illusion = 0.4,
 	)
 
+/obj/effect/proc_holder/spell/targeted/touch/nondetection/adjust_hand_charges()
+	var/increase = FLOOR(attuned_strength * 1.5, 1)
+	attached_hand.charges += increase
+
 /obj/item/melee/touch_attack/nondetection
 	name = "\improper arcyne focus"
 	desc = "Touch a creature to cover them in an anti-scrying shroud for 1 hour, consumes some ash as a catalyst."

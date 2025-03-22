@@ -20,19 +20,20 @@
 	. = ..()
 	user.visible_message("[user] mutters an incantation and a dim pulse of light radiates out from them.")
 
+	var/duration_increase = min(0, attuned_strength * 2 MINUTES)
 	for(var/mob/living/L in range(1, usr))
-		L.apply_status_effect(/datum/status_effect/buff/longstrider)
+		L.apply_status_effect(/datum/status_effect/buff/duration_modification/longstrider, duration_increase)
 
-/datum/status_effect/buff/longstrider
+/datum/status_effect/buff/duration_modification/longstrider
 	id = "longstrider"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/longstrider
 	duration = 5 MINUTES
 
-/datum/status_effect/buff/longstrider/on_apply()
+/datum/status_effect/buff/duration_modification/longstrider/on_apply()
 	. = ..()
 	ADD_TRAIT(owner, TRAIT_LONGSTRIDER, MAGIC_TRAIT)
 
-/datum/status_effect/buff/longstrider/on_remove()
+/datum/status_effect/buff/duration_modification/longstrider/on_remove()
 	. = ..()
 	REMOVE_TRAIT(owner, TRAIT_LONGSTRIDER, MAGIC_TRAIT)
 

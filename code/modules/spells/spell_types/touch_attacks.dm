@@ -54,4 +54,8 @@
 			to_chat(user, "<span class='warning'>My hands are full!</span>")
 		return FALSE
 	to_chat(user, "<span class='notice'>[drawmessage]</span>")
+	adjust_hand_charges()
 	return TRUE
+
+/obj/effect/proc_holder/spell/targeted/touch/proc/adjust_hand_charges()
+	return

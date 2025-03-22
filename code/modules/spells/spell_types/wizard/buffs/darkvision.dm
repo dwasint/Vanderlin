@@ -13,6 +13,10 @@
 		/datum/attunement/light = 0.6,
 	)
 
+/obj/effect/proc_holder/spell/targeted/touch/darkvision/adjust_hand_charges()
+	var/increase = FLOOR(attuned_strength * 1.5, 1)
+	attached_hand.charges += increase
+
 /obj/item/melee/touch_attack/darkvision
 	name = "\improper arcyne focus"
 	desc = "Touch a creature to grant them Darkvision for 10 minutes."
@@ -31,7 +35,8 @@
 		var/mob/living/spelltarget = target
 		if(!do_after(user, 5 SECONDS, spelltarget))
 			return
-		spelltarget.apply_status_effect(/datum/status_effect/buff/darkvision)
+		var/duration_increase = min(0, attached_spell.attuned_strength * 2 MINUTES)
+		spelltarget.apply_status_effect(/datum/status_effect/buff/duration_modification/darkvision, duration_increase)
 		user.adjust_stamina(80)
 		if(spelltarget != user)
 			user.visible_message("[user] draws a glyph in the air and touches [spelltarget] with an arcyne focus.")

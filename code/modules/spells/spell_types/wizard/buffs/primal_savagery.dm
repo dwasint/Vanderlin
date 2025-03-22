@@ -32,12 +32,22 @@
 
 /obj/effect/proc_holder/spell/self/primalsavagery5e/cast(mob/user = usr)
 	var/mob/living/target = user
-	target.apply_status_effect(/datum/status_effect/buff/primalsavagery5e)
+	var/duration_increase = min(0, attuned_strength * 1 MINUTES)
+	target.apply_status_effect(/datum/status_effect/buff/duration_increase/primalsavagery5e, duration_increase)
 	ADD_TRAIT(target, TRAIT_POISONBITE, TRAIT_GENERIC)
 	user.visible_message(span_info("[user] looks more primal!"), span_info("You feel more primal."))
+
+	if(attuned_strength > 1.5)
+		for(var/mob/living/extra_target in range(FLOOR(attuned_strength, 1)))
+			if(extra_target == target)
+				continue
+			extra_target.apply_status_effect(/datum/status_effect/buff/duration_increase/primalsavagery5e, duration_increase)
+			ADD_TRAIT(extra_target, TRAIT_POISONBITE, TRAIT_GENERIC)
+			extra_target.visible_message(span_info("[extra_target] looks more primal!"), span_info("You feel more primal."))
+
 	return TRUE
 
-/datum/status_effect/buff/primalsavagery5e
+/datum/status_effect/buff/duration_increase/primalsavagery5e
 	id = "primal savagery"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/primalsavagery5e
 	duration = 30 SECONDS
@@ -47,7 +57,7 @@
 	desc = "I have grown venomous fangs inject my victims with poison."
 	icon_state = "buff"
 
-/datum/status_effect/buff/primalsavagery5e/on_remove()
+/datum/status_effect/buff/duration_increase/primalsavagery5e/on_remove()
 	var/mob/living/target = owner
 	REMOVE_TRAIT(target, TRAIT_POISONBITE, TRAIT_GENERIC)
 	. = ..()

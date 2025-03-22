@@ -24,7 +24,8 @@
 		return
 
 	var/mob/living/spelltarget = A
-	spelltarget.apply_status_effect(/datum/status_effect/buff/haste)
+	var/duration_increase = min(0, attuned_strength * 30 SECONDS)
+	spelltarget.apply_status_effect(/datum/status_effect/buff/duration_modification/haste, duration_increase)
 	playsound(get_turf(spelltarget), 'sound/magic/haste.ogg', 80, TRUE, soundping = TRUE)
 
 	if(spelltarget != user)

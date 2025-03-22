@@ -19,20 +19,21 @@
 
 /obj/effect/proc_holder/spell/self/arcyne_eye/cast(list/targets, mob/living/user)
 	playsound(get_turf(user), 'sound/vo/smokedrag.ogg', 100, TRUE)
-	user.apply_status_effect(/datum/status_effect/arcyne_eye)
+	var/duration_increase = min(0, attuned_strength * 1.5 MINUTES)
+	user.apply_status_effect(/datum/status_effect/buff/duration_modification/arcyne_eye, duration_increase)
 	return TRUE
 
-/datum/status_effect/arcyne_eye
+/datum/status_effect/buff/duration_modification/arcyne_eye
 	duration = 1 MINUTES
 	alert_type = null
 
-/datum/status_effect/arcyne_eye/on_apply()
+/datum/status_effect/buff/duration_modification/arcyne_eye/on_apply()
 	ADD_TRAIT(owner, TRAIT_SEE_LEYLINES, type)
 	owner.see_invisible = SEE_INVISIBLE_LEYLINES
 	owner.hud_used?.plane_masters_update()
 	return TRUE
 
-/datum/status_effect/arcyne_eye/on_remove()
+/datum/status_effect/buff/duration_modification/arcyne_eye/on_remove()
 	REMOVE_TRAIT(owner, TRAIT_SEE_LEYLINES, type)
 	owner.see_invisible = SEE_INVISIBLE_LIVING
 	owner.hud_used?.plane_masters_update()
