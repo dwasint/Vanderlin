@@ -36,7 +36,7 @@
 	. = ..()
 
 /obj/item/clothing/shoes/boots/armor/steam/proc/try_steam_usage(mob/living/source)
-	if(!SEND_SIGNAL(source, COMSIG_ATOM_PROXY_STEAM_USE, 0.5, "steam_armor"))
+	if(!SEND_SIGNAL(source, COMSIG_ATOM_PROXY_STEAM_USE, src, 0.5, "steam_armor"))
 		for(var/obj/item/clothing/V in source.get_equipped_items(FALSE))
 			if(!is_type_in_list(V, GLOB.steam_armor))
 				continue
