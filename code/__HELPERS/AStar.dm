@@ -259,7 +259,7 @@ Actual Adjacent procs :
 	var/adir = get_dir(src, T)
 	var/rdir = ((adir & MASK_ODD)<<1)|((adir & MASK_EVEN)>>1)
 	for(var/obj/O in T)
-		if(!O.CanAStarPass(ID, rdir, caller))Fi
+		if(!O.CanAStarPass(ID, rdir, caller))
 			return TRUE
 	for(var/mob/living/M in T)
 		if(!M.CanPass(caller, src))
