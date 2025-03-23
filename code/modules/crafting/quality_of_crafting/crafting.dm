@@ -423,6 +423,7 @@
 	starting_atom = /obj/item/natural/fibers
 	attacked_atom = /obj/item/paper
 	output = /obj/item/paper/scroll
+	subtypes_allowed = FALSE
 	uses_attacked_atom = TRUE
 	craftdiff = 0
 
