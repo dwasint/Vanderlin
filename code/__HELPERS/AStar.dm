@@ -72,109 +72,109 @@ Actual Adjacent procs :
 	return path
 
 /proc/AStar(caller, _end, dist, maxnodes, maxnodedepth = 30, mintargetdist, adjacent = /turf/proc/reachableTurftest, id = null, turf/exclude = null, simulated_only = TRUE)
-    var/turf/end = get_turf(_end)
-    var/turf/start = get_turf(caller)
-    if (!start || !end)
-        stack_trace("Invalid A* start or destination")
-        return FALSE
-    if (start == end)
-        return FALSE
-    if (maxnodes && call(start, dist)(end) > maxnodes)
-        return FALSE
-        maxnodedepth = maxnodes
+	var/turf/end = get_turf(_end)
+	var/turf/start = get_turf(caller)
+	if (!start || !end)
+		stack_trace("Invalid A* start or destination")
+		return FALSE
+	if (start == end)
+		return FALSE
+	if (maxnodes && call(start, dist)(end) > maxnodes)
+		return FALSE
+	maxnodedepth = maxnodes
 
-    var/datum/Heap/open = new /datum/Heap(/proc/HeapPathWeightCompare)
-    var/list/openc = new()
-    var/list/path = null
+	var/datum/Heap/open = new /datum/Heap(/proc/HeapPathWeightCompare)
+	var/list/openc = new()
+	var/list/path = null
 
-    // Important: Initialize with bf=63 to enable all 6 directions (bits 0-5)
-    var/datum/PathNode/cur = new /datum/PathNode(start, null, 0, call(start, dist)(end), 0, 63)
-    open.Insert(cur)
-    openc[start] = cur
+	// Important: Initialize with bf=63 to enable all 6 directions (bits 0-5)
+	var/datum/PathNode/cur = new /datum/PathNode(start, null, 0, call(start, dist)(end), 0, 63)
+	open.Insert(cur)
+	openc[start] = cur
 
-    while (!open.IsEmpty() && !path)
-        cur = open.Pop()
+	while (!open.IsEmpty() && !path)
+		cur = open.Pop()
 
-        // Destination check - must be exact match or valid closeenough on same Z-level
-        var/is_destination = (cur.source == end)
+		// Destination check - must be exact match or valid closeenough on same Z-level
+		var/is_destination = (cur.source == end)
 
-        // Only consider "close enough" if on the same Z-level
-        var/closeenough = FALSE
-        if (cur.source.z == end.z)
-            if (mintargetdist)
-                closeenough = call(cur.source, dist)(end) <= mintargetdist
-            else
-                closeenough = call(cur.source, dist)(end) < 1
+		// Only consider "close enough" if on the same Z-level
+		var/closeenough = FALSE
+		if (cur.source.z == end.z)
+			if (mintargetdist)
+				closeenough = call(cur.source, dist)(end) <= mintargetdist
+			else
+				closeenough = call(cur.source, dist)(end) < 1
 
 
-        if (is_destination || closeenough)
-            path = new()
-            path.Add(cur.source)
-            while (cur.prevNode)
-                cur = cur.prevNode
-                path.Add(cur.source)
-            break
+		if (is_destination || closeenough)
+			path = new()
+			path.Add(cur.source)
+			while (cur.prevNode)
+				cur = cur.prevNode
+				path.Add(cur.source)
+			break
 
-        if (!maxnodedepth || cur.nt <= maxnodedepth)
-            // Process all 6 directions (bits 0-5)
-            for (var/i = 0 to 5)
-                var/f = 1 << i
-                if (cur.bf & f)
-                    var/turf/T
+		if (!maxnodedepth || cur.nt <= maxnodedepth)
+			// Process all 6 directions (bits 0-5)
+			for (var/i = 0 to 5)
+				var/f = 1 << i
+				if (cur.bf & f)
+					var/turf/T
 
-                    if (i < 4) // Cardinal directions (bits 0-3)
-                        T = get_step(cur.source, 1 << i)
-                    else // Z-level movement (bits 4-5)
-                        T = get_turf_zchange(cur.source, i)
+					if (i < 4) // Cardinal directions (bits 0-3)
+						T = get_step(cur.source, 1 << i)
+					else // Z-level movement (bits 4-5)
+						T = get_turf_zchange(cur.source, i)
 
-                    if (!T || T == exclude)
-                        continue
+					if (!T || T == exclude)
+						continue
 
-                    var/datum/PathNode/CN = openc[T]
+					var/datum/PathNode/CN = openc[T]
 
-                    // Calculate reverse direction (for 2D only; z-level is handled differently)
-                    var/r
-                    if (i < 4) // For cardinal directions
-                        r = ((f & MASK_ODD) << 1) | ((f & MASK_EVEN) >> 1)
-                    else // For z-level movement
-                        r = 1 << (9 - i) // bit 4 (UP) corresponds to bit 5 (DOWN) and vice versa
+					// Calculate reverse direction (for 2D only; z-level is handled differently)
+					var/r
+					if (i < 4) // For cardinal directions
+						r = ((f & MASK_ODD) << 1) | ((f & MASK_EVEN) >> 1)
+					else // For z-level movement
+						r = 1 << (9 - i) // bit 4 (UP) corresponds to bit 5 (DOWN) and vice versa
 
-                    var/newg = cur.g + call(cur.source, dist)(T)
+					var/newg = cur.g + call(cur.source, dist)(T)
 
-                    // Apply a larger penalty for changing z-levels to prefer same-level paths
-                    if (i >= 4)
-                        newg += 10 // Increased penalty to make same-level paths more preferred
+					// Apply a larger penalty for changing z-levels to prefer same-level paths
+					if (i >= 4)
+						newg += 10 // Increased penalty to make same-level paths more preferred
 
-                    if (CN)
-                        if (i < 4)
-                            CN.bf &= ~r // Clear reverse cardinal direction
-                        else
-                            CN.bf &= ~(1 << (9 - i)) // Clear reverse z-level direction
+					if (CN)
+						if (i < 4)
+							CN.bf &= ~r // Clear reverse cardinal direction
+						else
+							CN.bf &= ~(1 << (9 - i)) // Clear reverse z-level direction
 
-                        if (newg < CN.g && call(cur.source, adjacent)(caller, T, id, simulated_only))
-                            CN.setp(cur, newg, CN.h, cur.nt + 1)
-                            open.ReSort(CN)
-                    else if (call(cur.source, adjacent)(caller, T, id, simulated_only))
-                        // For new nodes, initialize with all directions except the one we came from
-                        var/new_bf = 63
-                        if (i < 4)
-                            new_bf &= ~r
-                        else
-                            new_bf &= ~(1 << (9 - i))
+						if (newg < CN.g && call(cur.source, adjacent)(caller, T, id, simulated_only))
+							CN.setp(cur, newg, CN.h, cur.nt + 1)
+							open.ReSort(CN)
+					else if (call(cur.source, adjacent)(caller, T, id, simulated_only))
+						// For new nodes, initialize with all directions except the one we came from
+						var/new_bf = 63
+						if (i < 4)
+							new_bf &= ~r
+						else
+							new_bf &= ~(1 << (9 - i))
 
-                        CN = new(T, cur, newg, call(T, dist)(end), cur.nt + 1, new_bf)
-                        open.Insert(CN)
-                        openc[T] = CN
+						CN = new(T, cur, newg, call(T, dist)(end), cur.nt + 1, new_bf)
+						open.Insert(CN)
+						openc[T] = CN
 
-        cur.bf = 0 // Mark as processed
-        CHECK_TICK
+		cur.bf = 0 // Mark as processed
+		CHECK_TICK
 
-    if (path)
-        for (var/i = 1 to round(0.5 * path.len))
-            path.Swap(i, path.len - i + 1)
+	if (path)
+		for (var/i = 1 to round(0.5 * path.len))
+			path.Swap(i, path.len - i + 1)
 
-    openc = null
-    return path
+	openc = null
+	return path
 
 /proc/get_turf_zchange(turf/T, dir)
 	if (!T)
