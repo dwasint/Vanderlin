@@ -37,6 +37,9 @@
 /obj/item/book/granter/proc/onlearned(mob/user)
 	used = TRUE
 
+/obj/item/book/granter/dropped(mob/user, silent)
+	. = ..()
+	reading = FALSE
 
 /obj/item/book/granter/attack_self(mob/user)
 	if(user.mind?.has_studied == TRUE)
