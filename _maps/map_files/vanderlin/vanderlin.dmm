@@ -391,6 +391,16 @@
 /obj/structure/fluff/railing/border,
 /turf/open/floor/herringbone,
 /area/rogue/indoors/town)
+"aoO" = (
+/obj/structure/flora/grass,
+/obj/structure/rack,
+/obj/item/clothing/armor/steam,
+/obj/item/clothing/gloves/plate/steam,
+/obj/item/clothing/head/helmet/heavy/steam,
+/obj/item/clothing/cloak/boiler,
+/obj/item/harpoon_gun,
+/turf/open/floor/grass,
+/area/rogue/outdoors/town)
 "aoV" = (
 /obj/structure/fluff/railing/border{
 	dir = 4
@@ -3541,6 +3551,11 @@
 	dir = 4
 	},
 /area/rogue/outdoors/town)
+"ctD" = (
+/turf/open/water/river{
+	dir = 8
+	},
+/area/rogue/outdoors/town)
 "cuc" = (
 /obj/structure/fluff/statue/gargoyle,
 /obj/machinery/light/fueled/torchholder,
@@ -4061,6 +4076,11 @@
 	},
 /turf/open/floor/wood,
 /area/rogue/indoors/town/magician)
+"cMs" = (
+/obj/structure/flora/grass/bush_meagre,
+/obj/structure/bars/pipe,
+/turf/open/floor/dirt,
+/area/rogue/outdoors/town)
 "cME" = (
 /obj/structure/flora/grass/water,
 /turf/open/floor/cobblerock,
@@ -4160,6 +4180,15 @@
 "cOM" = (
 /obj/structure/flora/grass/bush_meagre,
 /turf/open/floor/cobble/mossy,
+/area/rogue/outdoors/town)
+"cOV" = (
+/obj/structure/rack,
+/obj/item/clothing/armor/steam,
+/obj/item/clothing/gloves/plate/steam,
+/obj/item/clothing/head/helmet/heavy/steam,
+/obj/item/clothing/cloak/boiler,
+/obj/item/harpoon_gun,
+/turf/open/floor/grass,
 /area/rogue/outdoors/town)
 "cPr" = (
 /obj/structure/table/wood/plain,
@@ -9063,6 +9092,10 @@
 /obj/effect/landmark/start/guardsman,
 /turf/open/floor/ruinedwood/spiralfade,
 /area/rogue/indoors/town/garrison)
+"goZ" = (
+/obj/structure/boiler,
+/turf/open/floor/dirt,
+/area/rogue/outdoors/town)
 "gpj" = (
 /obj/machinery/light/fueledstreet,
 /turf/open/floor/cobble,
@@ -9537,8 +9570,7 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors/town)
 "gEL" = (
-/obj/structure/rack,
-/obj/item/weapon/mace/woodclub,
+/obj/structure/steam_recharger,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/town)
 "gFb" = (
@@ -9812,6 +9844,15 @@
 /obj/item/coin/copper/pile,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/indoors/town)
+"gPy" = (
+/obj/structure/rack,
+/obj/item/clothing/armor/steam,
+/obj/item/clothing/gloves/plate/steam,
+/obj/item/clothing/head/helmet/heavy/steam,
+/obj/item/clothing/cloak/boiler,
+/obj/item/harpoon_gun,
+/turf/open/floor/cobble/mossy,
+/area/rogue/outdoors/town)
 "gPG" = (
 /obj/structure/mineral_door/wood{
 	lockid = "slums2";
@@ -16039,6 +16080,10 @@
 /obj/item/reagent_containers/food/snacks/crow,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/under/town/basement)
+"lnr" = (
+/obj/structure/boiler,
+/turf/open/floor/grass,
+/area/rogue/outdoors/town)
 "lnG" = (
 /turf/closed/wall/mineral/stone,
 /area/rogue/indoors/town/magician)
@@ -17318,6 +17363,11 @@
 /obj/item/grown/log/tree/small,
 /turf/open/floor/blocks/stonered/tiny,
 /area/rogue/indoors/town/dwarfin)
+"mrP" = (
+/obj/structure/flora/grass/bush/wall/tall,
+/obj/structure/bars/pipe,
+/turf/open/floor/grass,
+/area/rogue/outdoors/town)
 "mso" = (
 /obj/structure/closet/crate/crafted_closet/crafted,
 /obj/item/clothing/shoes/boots,
@@ -17620,6 +17670,12 @@
 /obj/item/bin/water/gross,
 /turf/open/floor/blocks/newstone/alt,
 /area/rogue/indoors/town/smithy)
+"mDh" = (
+/obj/structure/flora/grass,
+/turf/open/water/river{
+	dir = 8
+	},
+/area/rogue/outdoors/town)
 "mDG" = (
 /obj/machinery/light/fueled/torchholder{
 	dir = 8
@@ -17938,6 +17994,12 @@
 "mOp" = (
 /obj/effect/landmark/events/haunts,
 /turf/open/floor/blocks,
+/area/rogue/outdoors/town)
+"mOD" = (
+/obj/structure/waterwheel,
+/turf/open/water/river{
+	dir = 8
+	},
 /area/rogue/outdoors/town)
 "mOJ" = (
 /obj/structure/chair/wood/alt/chair_noble{
@@ -19312,6 +19374,11 @@
 /obj/structure/window/stained/silver,
 /turf/open/floor/church,
 /area/rogue/indoors/town/church)
+"nLy" = (
+/obj/structure/rack,
+/obj/item/weapon/mace/woodclub,
+/turf/open/floor/cobble/mossy,
+/area/rogue/outdoors/town)
 "nLA" = (
 /obj/structure/fluff/walldeco/church/line{
 	dir = 8
@@ -20924,6 +20991,10 @@
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/rogue/indoors/town/orphanage)
+"oYk" = (
+/obj/structure/rotation_piece/cog,
+/turf/open/floor/grass,
+/area/rogue/outdoors/town)
 "oYF" = (
 /obj/structure/mineral_door/wood/violet{
 	locked = 1
@@ -21056,6 +21127,10 @@
 	icon_state = "greenstone"
 	},
 /area/rogue/under/town/sewer)
+"pdv" = (
+/obj/structure/water_pump,
+/turf/open/floor/dirt,
+/area/rogue/outdoors/town)
 "pdO" = (
 /obj/structure/chair/stool,
 /turf/open/floor/blocks,
@@ -24858,6 +24933,7 @@
 /obj/machinery/light/fueled/firebowl{
 	pixel_x = -14
 	},
+/obj/structure/bars/pipe,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/town)
 "rUE" = (
@@ -28076,6 +28152,12 @@
 /obj/structure/bed/shit,
 /turf/open/floor/twig,
 /area/rogue/indoors/butchershop)
+"ubx" = (
+/obj/structure/water_pump,
+/turf/open/water/river{
+	dir = 8
+	},
+/area/rogue/outdoors/town)
 "ubG" = (
 /obj/structure/kneestingers,
 /turf/open/water/swamp/deep,
@@ -29861,6 +29943,10 @@
 /obj/structure/closet/crate/crafted_closet,
 /turf/open/floor/hexstone,
 /area/rogue/indoors/town/steward)
+"vpF" = (
+/obj/structure/bars/pipe,
+/turf/open/floor/dirt,
+/area/rogue/outdoors/town)
 "vpQ" = (
 /obj/structure/chair/wood/alt{
 	dir = 1
@@ -30525,6 +30611,10 @@
 	},
 /turf/open/floor/church,
 /area/rogue/indoors/town/clinic_large)
+"vMP" = (
+/obj/structure/bars/pipe,
+/turf/open/floor/grass,
+/area/rogue/outdoors/town)
 "vMQ" = (
 /obj/structure/table/wood/plain_alt,
 /turf/open/floor/hexstone,
@@ -97550,8 +97640,8 @@ sWL
 gXg
 oks
 qhM
-sWL
-cKJ
+cOV
+gPy
 wXQ
 mpR
 vnF
@@ -97754,7 +97844,7 @@ vnF
 vnF
 vnF
 jdk
-sWL
+cOV
 mpR
 jdk
 vnF
@@ -97956,7 +98046,7 @@ vnF
 vnF
 vnF
 vnF
-qhM
+aoO
 mpR
 jdk
 vnF
@@ -98352,8 +98442,8 @@ mwT
 cFM
 hqn
 bJN
-sWL
-jdk
+vMP
+gEL
 cKJ
 vnF
 vnF
@@ -98756,7 +98846,7 @@ phh
 ldm
 phh
 gOl
-jdk
+goZ
 nGv
 cKJ
 jdk
@@ -98958,14 +99048,14 @@ jSN
 jSN
 jSN
 bJN
-sWL
-jdk
-sWL
+vMP
+vpF
+vMP
 ori
 cdP
-sWL
+vMP
 gEL
-cdP
+nLy
 teu
 mpR
 jdk
@@ -99160,12 +99250,12 @@ gOl
 ivr
 gOl
 gOl
-nux
+ctD
+pdv
+vMP
 kTV
 nux
-kTV
-nux
-nux
+mrP
 nux
 nux
 nux
@@ -99361,13 +99451,13 @@ bJN
 ntp
 jdk
 jdk
-mog
+mDh
+mOD
+oYk
 jdk
 sWL
-jdk
 sWL
-sWL
-sWL
+lnr
 jdk
 mog
 sWL
@@ -99563,13 +99653,13 @@ bJN
 nux
 sWL
 sWL
-sWL
-kTV
-sWL
-jdk
-jdk
-sWL
-ntp
+ctD
+ctD
+ubx
+vpF
+vpF
+vMP
+cMs
 wdY
 jdk
 jdk
@@ -99766,8 +99856,8 @@ nux
 mog
 oIh
 sWL
-jdk
-jdk
+ctD
+ctD
 mog
 sWL
 mHD
@@ -99967,9 +100057,9 @@ jdk
 qhM
 jdk
 jdk
-ntp
-sWL
-jdk
+ctD
+ctD
+ctD
 sWL
 vnF
 vnF
@@ -100169,8 +100259,8 @@ jdk
 sWL
 jdk
 sWL
-mog
-jdk
+mDh
+ctD
 vnF
 vnF
 vnF
@@ -100371,8 +100461,8 @@ vnF
 vnF
 vnF
 vnF
-vnF
-vnF
+fBj
+fBj
 vnF
 vnF
 jdk
@@ -100573,8 +100663,8 @@ vnF
 vnF
 vnF
 jdk
-jdk
-vnF
+fBj
+fBj
 jdk
 xWS
 sWL
@@ -100775,8 +100865,8 @@ cKJ
 cKJ
 jdk
 sWL
-jdk
-jdk
+ctD
+ctD
 sWL
 mog
 jdk
@@ -100976,9 +101066,9 @@ sWL
 cKJ
 sWL
 nux
-kTV
-qhM
-jdk
+ctD
+mDh
+ctD
 jdk
 vee
 oFQ
@@ -101178,8 +101268,8 @@ mXI
 sWL
 cKJ
 xWS
-kTV
-jdk
+ctD
+ctD
 oIh
 sWL
 oaH
@@ -101380,8 +101470,8 @@ cKJ
 sWL
 sWL
 sWL
-nux
-jdk
+ctD
+ctD
 jdk
 mog
 fbt
@@ -101582,8 +101672,8 @@ pzF
 cKJ
 cKJ
 vnF
-nux
-sWL
+ctD
+ctD
 sWL
 wdY
 ctz
@@ -101784,8 +101874,8 @@ cKJ
 sWL
 cKJ
 sWL
-nux
-sWL
+ctD
+ctD
 jdk
 ntp
 vee
@@ -101986,8 +102076,8 @@ mXI
 sWL
 sWL
 xWS
-kTV
-sWL
+ctD
+ctD
 sWL
 vgJ
 vgJ
@@ -102188,8 +102278,8 @@ nux
 nux
 nux
 nux
-kTV
-sWL
+ctD
+ctD
 jdk
 vgJ
 vgJ
@@ -102390,8 +102480,8 @@ jdk
 qhM
 jdk
 sWL
-jdk
-jdk
+ctD
+ctD
 vgJ
 vgJ
 vgJ
