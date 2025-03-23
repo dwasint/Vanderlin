@@ -45,9 +45,6 @@
 	if(user.mind?.has_studied == TRUE)
 		to_chat(user, span_notice("I struggle to study my arcane notes more- Perhaps a good rest would help."))
 		return FALSE
-	if(reading)
-		to_chat(user, "<span class='warning'>You're already reading this!</span>")
-		return FALSE
 	if(!user.can_read(src))
 		return FALSE
 	if(already_known(user))
