@@ -96,11 +96,11 @@
 	sleep(1)
 	qdel(src)
 
-/mob.living/simple_animal/hostile/retaliate/voidstoneobelisk/Destroy()
+/mob/living/simple_animal/hostile/retaliate/voidstoneobelisk/Destroy()
 	. = ..()
 	QDEL_NULL(beam)
 
-/mob.living/simple_animal/hostile/retaliate/voidstoneobelisk/RangedAttack(atom/target, modifiers)
+/mob/living/simple_animal/hostile/retaliate/voidstoneobelisk/RangedAttack(atom/target, modifiers)
 	beam.Activate(target = target)
 
 /mob/living/simple_animal/hostile/retaliate/voidstoneobelisk/get_sound(input)
