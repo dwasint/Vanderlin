@@ -31,6 +31,10 @@
 	if(!istype(linker))
 		return
 
+	if(istype(src, /obj/item/water_pipe))
+		start_deconstruct(user, item)
+		return
+
 	for(var/obj/item/rotation_contraption/item as anything in subtypesof(/obj/item/rotation_contraption))
 		if(istype(src, initial(item.placed_type)))
 			start_deconstruct(user, item)

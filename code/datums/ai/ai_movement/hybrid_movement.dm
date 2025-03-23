@@ -3,6 +3,7 @@
 	requires_processing = TRUE
 	max_pathing_attempts = 4
 	max_path_distance = 30
+	var/fallbacking = FALSE
 
 ///Put your movement behavior in here!
 /datum/ai_movement/hybrid_pathing/process(delta_time)
@@ -14,7 +15,9 @@
 		var/atom/movable/movable_pawn = controller.pawn
 		var/turf/target_turf = get_step_towards(movable_pawn, controller.current_movement_target)
 		var/turf/end_turf = get_turf(controller.current_movement_target)
-		if(end_turf.z == movable_pawn.z)
+		var/advanced = TRUE
+		if(end_turf.z == movable_pawn.z && !length(controller.movement_path))
+			advanced = FALSE
 			var/can_move = TRUE
 
 			if(controller.ai_traits & STOP_MOVING_WHEN_PULLED && movable_pawn.pulledby)
@@ -33,11 +36,18 @@
 			if(!is_type_in_typecache(target_turf, GLOB.dangerous_turfs) && can_move)
 				step_to(movable_pawn, target_turf, controller.blackboard[BB_CURRENT_MIN_MOVE_DISTANCE], controller.movement_delay)
 
-			if(current_loc == get_turf(movable_pawn)) //Did we even move after trying to move?
-				controller.pathing_attempts++
-				if(controller.pathing_attempts >= max_pathing_attempts)
-					controller.CancelActions()
-		else
+				if(current_loc == get_turf(movable_pawn))
+					advanced = TRUE
+					controller.movement_path = null
+					fallbacking = TRUE
+
+
+			if(!advanced)
+				if(current_loc == get_turf(movable_pawn)) //Did we even move after trying to move?
+					controller.pathing_attempts++
+					if(controller.pathing_attempts >= max_pathing_attempts)
+						controller.CancelActions()
+		if(advanced)
 			var/minimum_distance = controller.max_target_distance
 			// right now I'm just taking the shortest minimum distance of our current behaviors, at some point in the future
 			// we should let whatever sets the current_movement_target also set the min distance and max path length
@@ -58,8 +68,11 @@
 				// to the side while moving but could maybe still follow their path without needing a whole new path
 				if(get_turf(movable_pawn) == next_step)
 					controller.movement_path.Cut(1,2)
+					if(!length(controller.movement_path) && fallbacking)
+						fallbacking = FALSE
 				else
-					generate_path = TRUE
+					if(!fallbacking)
+						generate_path = TRUE
 			else
 				generate_path = TRUE
 
