@@ -72,6 +72,8 @@
 		/datum/pet_command/point_targeting/fetch,
 		/datum/pet_command/play_dead,
 		/datum/pet_command/protect_owner,
+		/datum/pet_command/aggressive,
+		/datum/pet_command/calm,
 	)
 
 /obj/effect/decal/remains/bigrat

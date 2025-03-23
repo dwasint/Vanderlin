@@ -81,9 +81,11 @@
 	switch (parent.gender)
 		if (MALE)
 			speech_commands += "good boy"
+			speech_commands += "dobro boy"
 			return
 		if (FEMALE)
 			speech_commands += "good girl"
+			speech_commands += "dobro girl"
 			return
 	// If we get past this point someone has finally added a non-binary dog
 
@@ -255,3 +257,33 @@
 /datum/pet_command/follow/wolf
 	// Nordic-themed for a bit of extra flavor
 	speech_commands = list("heel", "follow", "fylgja", "fyl")
+
+/datum/pet_command/calm
+	command_name = "Calm"
+	command_desc = "Makes the pet calm"
+
+	speech_commands = list("calm")
+
+/datum/pet_command/calm/execute_action(datum/ai_controller/controller)
+	controller.clear_blackboard_key(BB_ACTIVE_PET_COMMAND)
+	var/mob/living/parent = weak_parent.resolve()
+	if (!parent)
+		return SUBTREE_RETURN_FINISH_PLANNING
+
+	parent.pet_passive = TRUE
+	return SUBTREE_RETURN_FINISH_PLANNING
+
+/datum/pet_command/aggressive
+	command_name = "Aggressive"
+	command_desc = "Makes the pet calm"
+
+	speech_commands = list("aggressive")
+
+/datum/pet_command/aggressive/execute_action(datum/ai_controller/controller)
+	controller.clear_blackboard_key(BB_ACTIVE_PET_COMMAND)
+	var/mob/living/parent = weak_parent.resolve()
+	if (!parent)
+		return SUBTREE_RETURN_FINISH_PLANNING
+
+	parent.pet_passive = FALSE
+	return SUBTREE_RETURN_FINISH_PLANNING
