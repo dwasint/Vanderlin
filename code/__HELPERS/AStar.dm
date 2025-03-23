@@ -94,9 +94,20 @@ Actual Adjacent procs :
 
     while (!open.IsEmpty() && !path)
         cur = open.Pop()
-        var/closeenough = mintargetdist ? call(cur.source, dist)(end) <= mintargetdist : call(cur.source, dist)(end) < 1
 
-        if (cur.source == end || closeenough)
+        // Destination check - must be exact match or valid closeenough on same Z-level
+        var/is_destination = (cur.source == end)
+
+        // Only consider "close enough" if on the same Z-level
+        var/closeenough = FALSE
+        if (cur.source.z == end.z)
+            if (mintargetdist)
+                closeenough = call(cur.source, dist)(end) <= mintargetdist
+            else
+                closeenough = call(cur.source, dist)(end) < 1
+
+
+        if (is_destination || closeenough)
             path = new()
             path.Add(cur.source)
             while (cur.prevNode)
@@ -130,9 +141,9 @@ Actual Adjacent procs :
 
                     var/newg = cur.g + call(cur.source, dist)(T)
 
-                    // Apply a small penalty for changing z-levels to prefer same-level paths
+                    // Apply a larger penalty for changing z-levels to prefer same-level paths
                     if (i >= 4)
-                        newg += 1
+                        newg += 10 // Increased penalty to make same-level paths more preferred
 
                     if (CN)
                         if (i < 4)
@@ -166,77 +177,83 @@ Actual Adjacent procs :
     return path
 
 /proc/get_turf_zchange(turf/T, dir)
-    if (!T)
-        return null
+	if (!T)
+		return null
 
-    // Check for up/down movement via stairs
-    if (dir == 4) // UP
-        // Look for stairs at current location
-        for (var/obj/structure/stairs/S in T.contents)
-            // Get the turf above in the stair's direction
-            var/turf/above = get_step_multiz(T, UP)
-            if (!above || !isopenturf(above))
-                continue
+	// Check for up/down movement via stairs
+	if (dir == 4) // UP
+		// Look for stairs at current location
+		for (var/obj/structure/stairs/S in T.contents)
+			// Get the turf above in the stair's direction
+			var/turf/above = get_step_multiz(T, UP)
+			if (!above || !isopenturf(above))
+				continue
 
-            var/turf/dest = get_step(above, S.dir)
-            // Check for matching stairs in the destination
-            for (var/obj/structure/stairs/S2 in dest.contents)
-                if (S2.dir == S.dir)
-                    return dest
+			var/turf/dest = get_step(above, S.dir)
+			// Check for matching stairs in the destination
+			for (var/obj/structure/stairs/S2 in dest.contents)
+				if (S2.dir == S.dir)
+					return dest
 
-    else if (dir == 5) // DOWN
-        // Look for stairs that would lead downward
-        var/turf/below = get_step_multiz(T, DOWN)
-        if (!below || !isopenturf(below))
-            return null
+	else if (dir == 5) // DOWN
+		// Look for stairs at current location that lead down
+		var/turf/below = get_step_multiz(T, DOWN)
+		if (!below || !isopenturf(below))
+			return null
 
-        // Check if any stairs below lead back to our position
-        for (var/obj/structure/stairs/S in below.contents)
-            var/turf/dest = get_step(below, S.dir)
-            if (dest == T)
-                return below
+		// First check if there are stairs in the current turf leading down
+		for (var/obj/structure/stairs/S in T.contents)
+			// Destination would be the turf below in the stair's direction
+			var/turf/dest = get_step(below, S.dir)
+			if (dest && !dest.density)
+				return dest
 
-        // Check surrounding turfs below for stairs that might lead to our position
-        for (var/turf/adjacent_below in get_adjacent_open_turfs(below))
-            for (var/obj/structure/stairs/S in adjacent_below.contents)
-                var/turf/dest = get_step(adjacent_below, S.dir)
-                if (dest == T)
-                    return adjacent_below
+		// If no stairs in current turf, check for stairs in adjacent turfs that might lead to below
+		for (var/turf/adjacent in get_adjacent_open_turfs(T))
+			for (var/obj/structure/stairs/S in adjacent.contents)
+				var/turf/adjacent_below = get_step_multiz(adjacent, DOWN)
+				// If these stairs lead to our target floor
+				var/turf/dest = get_step(adjacent_below, GLOB.reverse_dir[S.dir])
+				if (dest && !dest.density)
+					return dest
 
-    return null
+	return null
 
 /turf/proc/reachableTurftest(caller, turf/T, ID, simulated_only = TRUE)
-    if (!T || !istype(T))
-        return FALSE
+	if (!T || !istype(T))
+		return FALSE
 
-    if (T.density)
-        return FALSE
+	if (T.density)
+		return FALSE
 
-    // Same z-level movement - use standard check
-    if (T.z == z)
-        return !LinkBlockedWithAccess(T, caller, ID)
+	// Same z-level movement - use standard check
+	if (T.z == z)
+		return !LinkBlockedWithAccess(T, caller, ID)
 
-    // Z-level transition - check if it's a valid stair transition
-    if (abs(T.z - z) == 1)
-        if (T.z > z) // Moving up
-            // Check if we can reach T via stairs
-            var/turf/stair_dest = get_turf_zchange(src, 4) // 4 = UP
-            return (stair_dest == T) && !LinkBlockedWithAccess(T, caller, ID)
-        else // Moving down
-            // Check if we can reach T via stairs
-            var/turf/stair_dest = get_turf_zchange(src, 5) // 5 = DOWN
-            return (stair_dest == T) && !LinkBlockedWithAccess(T, caller, ID)
+	// Z-level transition - check if it's a valid stair transition
+	if (abs(T.z - z) == 1)
+		if (T.z > z) // Moving up
+			// Check if we can reach T via stairs
+			var/turf/stair_dest = get_turf_zchange(src, 4) // 4 = UP
+			return (stair_dest == T) && !LinkBlockedWithAccess(T, caller, ID)
+		else // Moving down
+			// Check if we can reach T via stairs
+			var/turf/stair_dest = get_turf_zchange(src, 5) // 5 = DOWN
 
-    return FALSE
+			// Only consider the destination valid if it came from get_turf_zchange
+			// This prevents the pathfinder from considering direct below/above turfs as valid
+			return (stair_dest == T) && !LinkBlockedWithAccess(T, caller, ID)
+
+	return FALSE
 
 // Add a helper function to compute 3D Manhattan distance
 /turf/proc/Distance3D(turf/T)
-    if (!T || !istype(T))
-        return 0
-    var/dx = abs(x - T.x)
-    var/dy = abs(y - T.y)
-    var/dz = abs(z - T.z) * 5 // Weight z-level differences higher
-    return (dx + dy + dz)
+	if (!T || !istype(T))
+		return 0
+	var/dx = abs(x - T.x)
+	var/dy = abs(y - T.y)
+	var/dz = abs(z - T.z) * 5 // Weight z-level differences higher
+	return (dx + dy + dz)
 
 /turf/proc/LinkBlockedWithAccess(turf/T, caller, ID)
 	var/adir = get_dir(src, T)

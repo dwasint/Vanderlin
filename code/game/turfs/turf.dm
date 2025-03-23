@@ -192,6 +192,10 @@
 	return FALSE
 
 /turf/proc/zImpact(atom/movable/A, levels = 1, turf/prev_turf)
+	if(levels == 1 && A.ai_controller)
+		for(var/obj/structure/stairs/S in contents)
+			return FALSE
+
 	var/flags = NONE
 	var/mov_name = A.name
 	for(var/i in contents)
