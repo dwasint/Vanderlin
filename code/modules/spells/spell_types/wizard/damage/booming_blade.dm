@@ -35,7 +35,7 @@
 		var/obj/item/held_item = user.get_active_held_item() //get held item
 		if(held_item)
 			held_item.melee_attack_chain(U, L)
-			target.apply_status_effect(/datum/status_effect/buff/boomingblade5e/) //apply buff
+			target.apply_status_effect(/datum/status_effect/buff/boomingblade5e) //apply buff
 		return TRUE
 	return FALSE
 
@@ -76,7 +76,7 @@
 	var/exp_light = 0
 	var/exp_flash = 2
 	var/exp_fire = 0
-	var/damage = 30
+	var/damage = 10
 	explosion(owner, -1, exp_heavy, exp_light, exp_flash, 0, flame_range = exp_fire)
 	owner.adjustBruteLoss(damage)
 	owner.visible_message(span_warning("A thunderous boom eminates from [owner]!"), span_danger("A thunderous boom eminates from you!"))

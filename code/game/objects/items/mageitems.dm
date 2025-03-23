@@ -69,6 +69,10 @@
 	var/rune_to_scribe = null
 	var/amount = 8
 
+/obj/item/chalk/natural
+	name = "natural stick of chalk"
+	amount = 3
+
 /obj/item/chalk/examine(mob/user)
 	. = ..()
 	desc += "It has [amount] uses left."
