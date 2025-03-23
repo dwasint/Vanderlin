@@ -4,6 +4,7 @@
 	max_pathing_attempts = 4
 	max_path_distance = 30
 	var/fallbacking = FALSE
+	var/fallback_fail = 0
 
 ///Put your movement behavior in here!
 /datum/ai_movement/hybrid_pathing/process(delta_time)
@@ -62,7 +63,8 @@
 			var/generate_path = FALSE // set to TRUE when we either have no path, or we failed a step
 			if(length(controller.movement_path))
 				var/turf/next_step = controller.movement_path[1]
-				movable_pawn.Move(next_step)
+				var/current_loc = get_turf(movable_pawn)
+				step_to(movable_pawn, next_step, controller.blackboard[BB_CURRENT_MIN_MOVE_DISTANCE], controller.movement_delay)
 
 				// this check if we're on exactly the next tile may be overly brittle for dense pawns who may get bumped slightly
 				// to the side while moving but could maybe still follow their path without needing a whole new path
@@ -73,6 +75,11 @@
 				else
 					if(!fallbacking)
 						generate_path = TRUE
+					else
+						fallback_fail++
+						if(fallback_fail >= 2)
+							generate_path = TRUE
+							fallbacking = FALSE
 			else
 				generate_path = TRUE
 

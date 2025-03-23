@@ -403,6 +403,10 @@
 /obj/item/clothing/pants/tights,
 /turf/open/floor/carpet,
 /area/rogue/indoors)
+"be" = (
+/mob/living/simple_animal/hostile/retaliate/cow,
+/turf/open/floor/dirt/road,
+/area/rogue/outdoors)
 "bf" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood2";
@@ -1128,6 +1132,10 @@
 /obj/item/weapon/polearm/woodstaff/aries,
 /turf/open/floor/cobble,
 /area/rogue/outdoors)
+"hQ" = (
+/obj/structure/fluff/railing/wood,
+/turf/open/floor/dirt,
+/area/rogue/outdoors)
 "jt" = (
 /obj/structure/trench,
 /obj/structure/rotation_piece/cog/large,
@@ -1229,6 +1237,10 @@
 	},
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
+"sO" = (
+/obj/structure/fluff/railing/wood,
+/turf/open/floor/dirt/road,
+/area/rogue/outdoors)
 "tH" = (
 /obj/structure/water_dam{
 	dir = 1;
@@ -1253,6 +1265,10 @@
 /area/rogue/indoors/town/warehouse)
 "xh" = (
 /obj/effect/landmark/start,
+/obj/structure/fluff/railing/wood{
+	dir = 8;
+	pixel_y = -1
+	},
 /turf/open/floor/cobble,
 /area/rogue/outdoors)
 "xp" = (
@@ -1376,6 +1392,10 @@
 /obj/structure/rotation_piece/cog,
 /turf/open/floor/dirt/road,
 /area/rogue/indoors)
+"Nz" = (
+/obj/item/reagent_containers/food/snacks/produce/wheat,
+/turf/open/floor/cobble,
+/area/rogue/outdoors)
 "NF" = (
 /turf/closed/mineral/random/low_nonval,
 /area/rogue)
@@ -1399,9 +1419,22 @@
 	},
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
+"QF" = (
+/obj/structure/fluff/railing/wood{
+	dir = 1
+	},
+/turf/open/floor/dirt/road,
+/area/rogue/outdoors)
 "QR" = (
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods)
+"Ru" = (
+/obj/structure/fluff/railing/wood{
+	dir = 8;
+	pixel_y = -1
+	},
+/turf/open/floor/cobble,
+/area/rogue/outdoors)
 "Sz" = (
 /obj/structure/boiler,
 /turf/open/floor/dirt/road,
@@ -8868,7 +8901,7 @@ aJ
 aJ
 aJ
 al
-aJ
+Nz
 al
 bn
 aJ
@@ -9380,10 +9413,10 @@ aJ
 aJ
 aJ
 aJ
-aJ
-aJ
+WA
+Ru
 xh
-aJ
+WA
 aJ
 aJ
 aJ
@@ -9636,11 +9669,11 @@ aJ
 aJ
 aL
 al
-al
-al
 aG
+QF
+be
 al
-al
+sO
 aL
 al
 al
@@ -9894,10 +9927,10 @@ aJ
 ai
 al
 al
-al
+QF
 al
 ai
-ai
+hQ
 ai
 ai
 al
@@ -10151,10 +10184,10 @@ at
 ai
 cP
 cR
+WA
 ai
 ai
-ai
-ai
+WA
 ai
 al
 cn
