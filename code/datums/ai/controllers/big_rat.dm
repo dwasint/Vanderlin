@@ -5,6 +5,7 @@
 
 	blackboard = list(
 		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic/allow_items/not_holding_item(),
+		BB_PET_TARGETING_DATUM = new /datum/targetting_datum/basic/not_friends(),
 		BB_TARGET_HELD_ITEM = /obj/item/reagent_containers/food/snacks/cheese
 	)
 

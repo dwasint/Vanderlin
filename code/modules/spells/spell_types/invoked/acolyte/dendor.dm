@@ -99,6 +99,16 @@
 	attunements = list(
 		/datum/attunement/earth = 1,
 	)
+	var/static/list/pet_commands = list(
+		/datum/pet_command/idle,
+		/datum/pet_command/free,
+		/datum/pet_command/good_boy,
+		/datum/pet_command/follow/wolf,
+		/datum/pet_command/point_targeting/attack,
+		/datum/pet_command/point_targeting/fetch,
+		/datum/pet_command/play_dead,
+		/datum/pet_command/protect_owner,
+	)
 
 /obj/effect/proc_holder/spell/targeted/beasttame/cast(list/targets,mob/user = usr)
 	playsound(get_turf(user), 'sound/vo/smokedrag.ogg', 100, TRUE)
@@ -106,9 +116,13 @@
 	for(var/mob/living/simple_animal/hostile/retaliate/B in oview(2))
 		if((B.mob_biotypes & MOB_UNDEAD))
 			continue
-		B.aggressive = 0
+		var/datum/component/obeys_commands/commands = B.GetComponent(/datum/component/obeys_commands)
+		if(!commands)
+			B.AddComponent(/datum/component/obeys_commands, pet_commands)
+		B.ai_controller?.add_to_top(/datum/ai_planning_subtree/pet_planning)
 		B.ai_controller?.CancelActions()
-		B.tamed(user)
+		B.ai_controller.set_blackboard_key(BB_PET_TARGETING_DATUM, new /datum/targetting_datum/basic/not_friends())
+		B.befriend(user)
 	return ..()
 
 
