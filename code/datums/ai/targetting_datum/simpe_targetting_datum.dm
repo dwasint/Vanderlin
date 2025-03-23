@@ -34,7 +34,7 @@
 	if(HAS_TRAIT(the_target, TRAIT_UNTARGETTABLE))
 		return FALSE
 
-	if(isturf(the_target.loc))
+	if(!isturf(the_target.loc))
 		return FALSE
 
 	if(isliving(the_target)) //Targetting vs living mobs
