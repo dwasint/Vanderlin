@@ -183,8 +183,9 @@
 	grid_width = 32
 
 	attunement_values = list(
-		/datum/attunement/death = 0.1,
+		/datum/attunement/death = 0.05,
 		/datum/attunement/life = -0.1,
+		/datum/attunement/light = -0.1,
 	)
 
 /obj/item/alch/horn

@@ -6,7 +6,7 @@
 	range = 8
 	cost = 6
 	projectile_type = /obj/projectile/magic/bloodlightning
-	releasedrain = 30
+	releasedrain = 50
 	chargedrain = 1
 	chargetime = 25
 	recharge_time = 20 SECONDS
