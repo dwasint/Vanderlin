@@ -87,7 +87,7 @@
 	button.locked = FALSE
 	button.id = null
 
-/datum/action/proc/Trigger()
+/datum/action/proc/Trigger(atom/target)
 	if(!IsAvailable())
 		return FALSE
 	if(SEND_SIGNAL(src, COMSIG_ACTION_TRIGGER, src) & COMPONENT_ACTION_BLOCK_TRIGGER)
@@ -419,16 +419,6 @@
 
 	return TRUE
 
-/datum/action/language_menu
-	name = "Language Menu"
-	desc = ""
-	button_icon_state = "language_menu"
-	check_flags = NONE
-
-/datum/action/language_menu/Trigger()
-	if(!..())
-		return FALSE
-	if(ismob(owner))
-		var/mob/M = owner
-		var/datum/language_holder/H = M.get_language_holder()
-		H.open_language_menu(usr)
+/// To be implemented by subtypes (if not generic)
+/datum/action/cooldown/proc/Activate(atom/target)
+	StartCooldown()
