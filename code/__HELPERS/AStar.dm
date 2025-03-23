@@ -23,171 +23,220 @@ Actual Adjacent procs :
 
 */
 #define PF_TIEBREAKER 0.005
-//tiebreker weight.To help to choose between equal paths
-//////////////////////
-//datum/PathNode object
-//////////////////////
 #define MASK_ODD 85
 #define MASK_EVEN 170
 
-
-//A* nodes variables
 /datum/PathNode
-	var/turf/source //turf associated with the PathNode
-	var/datum/PathNode/prevNode //link to the parent PathNode
-	var/f		//A* Node weight (f = g + h)
-	var/g		//A* movement cost variable
-	var/h		//A* heuristic variable
-	var/nt		//count the number of Nodes traversed
-	var/bf		//bitflag for dir to expand.Some sufficiently advanced motherfuckery
+	var/turf/source
+	var/datum/PathNode/prevNode
+	var/f
+	var/g
+	var/h
+	var/nt
+	var/bf
 
-/datum/PathNode/New(s,p,pg,ph,pnt,_bf)
+/datum/PathNode/New(s, p, pg, ph, pnt, _bf)
 	source = s
 	prevNode = p
 	g = pg
 	h = ph
-	f = g + h*(1+ PF_TIEBREAKER)
+	f = g + h * (1 + PF_TIEBREAKER)
 	nt = pnt
 	bf = _bf
 
-/datum/PathNode/proc/setp(p,pg,ph,pnt)
+/datum/PathNode/proc/setp(p, pg, ph, pnt)
 	prevNode = p
 	g = pg
 	h = ph
-	f = g + h*(1+ PF_TIEBREAKER)
+	f = g + h * (1 + PF_TIEBREAKER)
 	nt = pnt
 
 /datum/PathNode/proc/calc_f()
 	f = g + h
 
-//////////////////////
-//A* procs
-//////////////////////
-
-//the weighting function, used in the A* algorithm
 /proc/PathWeightCompare(datum/PathNode/a, datum/PathNode/b)
 	return a.f - b.f
 
-//reversed so that the Heap is a MinHeap rather than a MaxHeap
 /proc/HeapPathWeightCompare(datum/PathNode/a, datum/PathNode/b)
 	return b.f - a.f
 
-//wrapper that returns an empty list if A* failed to find a path
-/proc/get_path_to(caller, end, dist, maxnodes, maxnodedepth = 30, mintargetdist, adjacent = /turf/proc/reachableTurftest, id=null, turf/exclude=null, simulated_only = TRUE)
+/proc/get_path_to(caller, end, dist, maxnodes, maxnodedepth = 30, mintargetdist, adjacent = /turf/proc/reachableTurftest, id = null, turf/exclude = null, simulated_only = TRUE)
 	var/l = SSpathfinder.mobs.getfree(caller)
-	while(!l)
+	while (!l)
 		stoplag(3)
 		l = SSpathfinder.mobs.getfree(caller)
-	var/list/path = AStar(caller, end, dist, maxnodes, maxnodedepth, mintargetdist, adjacent,id, exclude, simulated_only)
-
+	var/list/path = AStar(caller, end, dist, maxnodes, maxnodedepth, mintargetdist, adjacent, id, exclude, simulated_only)
 	SSpathfinder.mobs.found(l)
-	if(!path)
+	if (!path)
 		path = list()
 	return path
 
-/proc/cir_get_path_to(caller, end, dist, maxnodes, maxnodedepth = 30, mintargetdist, adjacent = /turf/proc/reachableTurftest, id=null, turf/exclude=null, simulated_only = TRUE)
-	var/l = SSpathfinder.circuits.getfree(caller)
-	while(!l)
-		stoplag(3)
-		l = SSpathfinder.circuits.getfree(caller)
-	var/list/path = AStar(caller, end, dist, maxnodes, maxnodedepth, mintargetdist, adjacent,id, exclude, simulated_only)
-	SSpathfinder.circuits.found(l)
-	if(!path)
-		path = list()
-	return path
+/proc/AStar(caller, _end, dist, maxnodes, maxnodedepth = 30, mintargetdist, adjacent = /turf/proc/reachableTurftest, id = null, turf/exclude = null, simulated_only = TRUE)
+    var/turf/end = get_turf(_end)
+    var/turf/start = get_turf(caller)
+    if (!start || !end)
+        stack_trace("Invalid A* start or destination")
+        return FALSE
+    if (start == end)
+        return FALSE
+    if (maxnodes && call(start, dist)(end) > maxnodes)
+        return FALSE
+        maxnodedepth = maxnodes
 
-/proc/AStar(caller, _end, dist, maxnodes, maxnodedepth = 30, mintargetdist, adjacent = /turf/proc/reachableTurftest, id=null, turf/exclude=null, simulated_only = TRUE)
-	//sanitation
-	var/turf/end = get_turf(_end)
-	var/turf/start = get_turf(caller)
-	if(!start || !end)
-		stack_trace("Invalid A* start or destination")
-		return FALSE
-	if( start.z != end.z || start == end ) //no pathfinding between z levels
-		return FALSE
-	if(maxnodes)
-		//if start turf is farther than maxnodes from end turf, no need to do anything
-		if(call(start, dist)(end) > maxnodes)
-			return FALSE
-		maxnodedepth = maxnodes //no need to consider path longer than maxnodes
-	var/datum/Heap/open = new /datum/Heap(/proc/HeapPathWeightCompare) //the open list
-	var/list/openc = new() //open list for node check
-	var/list/path = null //the returned path, if any
-	//initialization
-	var/datum/PathNode/cur = new /datum/PathNode(start,null,0,call(start,dist)(end),0,15,1)//current processed turf
-	open.Insert(cur)
-	openc[start] = cur
-	//then run the main loop
-	while(!open.IsEmpty() && !path)
-		cur = open.Pop() //get the lower f turf in the open list
-		//get the lower f node on the open list
-		//if we only want to get near the target, check if we're close enough
-		var/closeenough
-		if(mintargetdist)
-			closeenough = call(cur.source,dist)(end) <= mintargetdist
-		else
-			closeenough = call(cur.source,dist)(end) < 1
+    var/datum/Heap/open = new /datum/Heap(/proc/HeapPathWeightCompare)
+    var/list/openc = new()
+    var/list/path = null
 
+    // Important: Initialize with bf=63 to enable all 6 directions (bits 0-5)
+    var/datum/PathNode/cur = new /datum/PathNode(start, null, 0, call(start, dist)(end), 0, 63)
+    open.Insert(cur)
+    openc[start] = cur
 
-		//found the target turf (or close enough), let's create the path to it
-		if(cur.source == end || closeenough)
-			path = new()
-			path.Add(cur.source)
-			while(cur.prevNode)
-				cur = cur.prevNode
-				path.Add(cur.source)
-			break
-		//get adjacents turfs using the adjacent proc, checking for access with id
-		if((!maxnodedepth)||(cur.nt <= maxnodedepth))//if too many steps, don't process that path
-			for(var/i = 0 to 3)
-				var/f= 1<<i //get cardinal directions.1,2,4,8
-				if(cur.bf & f)
-					var/T = get_step(cur.source,f)
-					if(T != exclude)
-						var/datum/PathNode/CN = openc[T]  //current checking turf
-						var/r=((f & MASK_ODD)<<1)|((f & MASK_EVEN)>>1) //getting reverse direction throught swapping even and odd bits.((f & 01010101)<<1)|((f & 10101010)>>1)
-						var/newg = cur.g + call(cur.source,dist)(T)
-						if(CN)
-						//is already in open list, check if it's a better way from the current turf
-							CN.bf &= 15^r //we have no closed, so just cut off exceed dir.00001111 ^ reverse_dir.We don't need to expand to checked turf.
-							if((newg < CN.g) )
-								if(call(cur.source,adjacent)(caller, T, id, simulated_only))
-									CN.setp(cur,newg,CN.h,cur.nt+1)
-									open.ReSort(CN)//reorder the changed element in the list
-						else
-						//is not already in open list, so add it
-							if(call(cur.source,adjacent)(caller, T, id, simulated_only))
-								CN = new(T,cur,newg,call(T,dist)(end),cur.nt+1,15^r)
-								open.Insert(CN)
-								openc[T] = CN
-		cur.bf = 0
-		CHECK_TICK
-	//reverse the path to get it from start to finish
-	if(path)
-		for(var/i = 1 to round(0.5*path.len))
-			path.Swap(i,path.len-i+1)
-	openc = null
-	//cleaning after us
-	return path
+    while (!open.IsEmpty() && !path)
+        cur = open.Pop()
+        var/closeenough = mintargetdist ? call(cur.source, dist)(end) <= mintargetdist : call(cur.source, dist)(end) < 1
 
-//Returns adjacent turfs in cardinal directions that are reachable
-//simulated_only controls whether only simulated turfs are considered or not
+        if (cur.source == end || closeenough)
+            path = new()
+            path.Add(cur.source)
+            while (cur.prevNode)
+                cur = cur.prevNode
+                path.Add(cur.source)
+            break
 
-/turf/proc/reachableAdjacentTurfs(caller, ID)
-	var/list/L = new()
-	var/turf/T
+        if (!maxnodedepth || cur.nt <= maxnodedepth)
+            // Process all 6 directions (bits 0-5)
+            for (var/i = 0 to 5)
+                var/f = 1 << i
+                if (cur.bf & f)
+                    var/turf/T
 
-	for(var/k in 1 to GLOB.cardinals.len)
-		T = get_step(src,GLOB.cardinals[k])
-		if(!T)
-			continue
-		if(!T.density && !LinkBlockedWithAccess(T,caller, ID))
-			L.Add(T)
-	return L
+                    if (i < 4) // Cardinal directions (bits 0-3)
+                        T = get_step(cur.source, 1 << i)
+                    else // Z-level movement (bits 4-5)
+                        T = get_turf_zchange(cur.source, i)
 
-/turf/proc/reachableTurftest(caller, turf/T, ID)
-	if(T && !T.density && !LinkBlockedWithAccess(T,caller, ID))
-		return TRUE
+                    if (!T || T == exclude)
+                        continue
+
+                    var/datum/PathNode/CN = openc[T]
+
+                    // Calculate reverse direction (for 2D only; z-level is handled differently)
+                    var/r
+                    if (i < 4) // For cardinal directions
+                        r = ((f & MASK_ODD) << 1) | ((f & MASK_EVEN) >> 1)
+                    else // For z-level movement
+                        r = 1 << (9 - i) // bit 4 (UP) corresponds to bit 5 (DOWN) and vice versa
+
+                    var/newg = cur.g + call(cur.source, dist)(T)
+
+                    // Apply a small penalty for changing z-levels to prefer same-level paths
+                    if (i >= 4)
+                        newg += 1
+
+                    if (CN)
+                        if (i < 4)
+                            CN.bf &= ~r // Clear reverse cardinal direction
+                        else
+                            CN.bf &= ~(1 << (9 - i)) // Clear reverse z-level direction
+
+                        if (newg < CN.g && call(cur.source, adjacent)(caller, T, id, simulated_only))
+                            CN.setp(cur, newg, CN.h, cur.nt + 1)
+                            open.ReSort(CN)
+                    else if (call(cur.source, adjacent)(caller, T, id, simulated_only))
+                        // For new nodes, initialize with all directions except the one we came from
+                        var/new_bf = 63
+                        if (i < 4)
+                            new_bf &= ~r
+                        else
+                            new_bf &= ~(1 << (9 - i))
+
+                        CN = new(T, cur, newg, call(T, dist)(end), cur.nt + 1, new_bf)
+                        open.Insert(CN)
+                        openc[T] = CN
+
+        cur.bf = 0 // Mark as processed
+        CHECK_TICK
+
+    if (path)
+        for (var/i = 1 to round(0.5 * path.len))
+            path.Swap(i, path.len - i + 1)
+
+    openc = null
+    return path
+
+/proc/get_turf_zchange(turf/T, dir)
+    if (!T)
+        return null
+
+    // Check for up/down movement via stairs
+    if (dir == 4) // UP
+        // Look for stairs at current location
+        for (var/obj/structure/stairs/S in T.contents)
+            // Get the turf above in the stair's direction
+            var/turf/above = get_step_multiz(T, UP)
+            if (!above || !isopenturf(above))
+                continue
+
+            var/turf/dest = get_step(above, S.dir)
+            // Check for matching stairs in the destination
+            for (var/obj/structure/stairs/S2 in dest.contents)
+                if (S2.dir == S.dir)
+                    return dest
+
+    else if (dir == 5) // DOWN
+        // Look for stairs that would lead downward
+        var/turf/below = get_step_multiz(T, DOWN)
+        if (!below || !isopenturf(below))
+            return null
+
+        // Check if any stairs below lead back to our position
+        for (var/obj/structure/stairs/S in below.contents)
+            var/turf/dest = get_step(below, S.dir)
+            if (dest == T)
+                return below
+
+        // Check surrounding turfs below for stairs that might lead to our position
+        for (var/turf/adjacent_below in get_adjacent_open_turfs(below))
+            for (var/obj/structure/stairs/S in adjacent_below.contents)
+                var/turf/dest = get_step(adjacent_below, S.dir)
+                if (dest == T)
+                    return adjacent_below
+
+    return null
+
+/turf/proc/reachableTurftest(caller, turf/T, ID, simulated_only = TRUE)
+    if (!T || !istype(T))
+        return FALSE
+
+    if (T.density)
+        return FALSE
+
+    // Same z-level movement - use standard check
+    if (T.z == z)
+        return !LinkBlockedWithAccess(T, caller, ID)
+
+    // Z-level transition - check if it's a valid stair transition
+    if (abs(T.z - z) == 1)
+        if (T.z > z) // Moving up
+            // Check if we can reach T via stairs
+            var/turf/stair_dest = get_turf_zchange(src, 4) // 4 = UP
+            return (stair_dest == T) && !LinkBlockedWithAccess(T, caller, ID)
+        else // Moving down
+            // Check if we can reach T via stairs
+            var/turf/stair_dest = get_turf_zchange(src, 5) // 5 = DOWN
+            return (stair_dest == T) && !LinkBlockedWithAccess(T, caller, ID)
+
+    return FALSE
+
+// Add a helper function to compute 3D Manhattan distance
+/turf/proc/Distance3D(turf/T)
+    if (!T || !istype(T))
+        return 0
+    var/dx = abs(x - T.x)
+    var/dy = abs(y - T.y)
+    var/dz = abs(z - T.z) * 5 // Weight z-level differences higher
+    return (dx + dy + dz)
 
 /turf/proc/LinkBlockedWithAccess(turf/T, caller, ID)
 	var/adir = get_dir(src, T)

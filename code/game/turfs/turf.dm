@@ -438,6 +438,11 @@
 
 //Distance associates with all directions movement
 /turf/proc/Distance(turf/T)
+	while(T.z != z)
+		if(T.z > z)
+			T = GET_TURF_BELOW(T)
+		else
+			T = GET_TURF_ABOVE(T)
 	return get_dist(src,T)
 
 //  This Distance proc assumes that only cardinal movement is

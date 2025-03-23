@@ -296,22 +296,11 @@
 /turf/open/floor/carpet,
 /area/rogue/indoors)
 "aT" = (
-/obj/structure/flora/tree,
-/turf/open/floor/dirt,
+/obj/structure/stairs,
+/turf/open/floor/carpet,
 /area/rogue/outdoors)
 "aU" = (
-/obj/item/reagent_containers/glass/bottle/healthpot,
-/obj/item/reagent_containers/glass/bottle/healthpot,
-/obj/item/reagent_containers/glass/bottle/healthpot,
-/obj/item/reagent_containers/glass/bottle/healthpot,
-/obj/item/reagent_containers/glass/bottle/healthpot,
-/obj/structure/table/wood{
-	icon_state = "tablewood2";
-	dir = 10
-	},
-/obj/item/reagent_containers/glass/bottle/healthpot,
-/obj/item/reagent_containers/glass/bottle/healthpot,
-/turf/open/floor/dirt,
+/turf/open/floor/carpet,
 /area/rogue/outdoors)
 "aV" = (
 /obj/structure/table/wood{
@@ -335,6 +324,13 @@
 /obj/item/needle,
 /obj/item/needle,
 /obj/item/needle,
+/obj/item/reagent_containers/glass/bottle/healthpot,
+/obj/item/reagent_containers/glass/bottle/healthpot,
+/obj/item/reagent_containers/glass/bottle/healthpot,
+/obj/item/reagent_containers/glass/bottle/healthpot,
+/obj/item/reagent_containers/glass/bottle/healthpot,
+/obj/item/reagent_containers/glass/bottle/healthpot,
+/obj/item/reagent_containers/glass/bottle/healthpot,
 /turf/open/floor/dirt,
 /area/rogue/outdoors)
 "aW" = (
@@ -1274,6 +1270,12 @@
 /obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/dirt/road,
 /area/rogue/indoors)
+"zk" = (
+/obj/structure/stairs{
+	dir = 8
+	},
+/turf/open/floor/dirt,
+/area/rogue/outdoors)
 "zM" = (
 /obj/structure/minecart_rail,
 /turf/open/floor/cobble,
@@ -1352,6 +1354,7 @@
 /obj/structure/minecart_rail{
 	dir = 6
 	},
+/obj/structure/stairs,
 /turf/open/floor/dirt/road,
 /area/rogue/indoors)
 "Jj" = (
@@ -1376,6 +1379,12 @@
 "NF" = (
 /turf/closed/mineral/random/low_nonval,
 /area/rogue)
+"NY" = (
+/obj/structure/stairs{
+	dir = 8
+	},
+/turf/open/floor/carpet,
+/area/rogue/outdoors)
 "Of" = (
 /obj/structure/minecart_rail{
 	dir = 5
@@ -6543,9 +6552,9 @@ yP
 aL
 BE
 aQ
-al
-ai
-aU
+cw
+cw
+cw
 aV
 ai
 aJ
@@ -6800,9 +6809,9 @@ UY
 ro
 qZ
 al
-al
-ai
-al
+cw
+zk
+cw
 al
 al
 aJ
@@ -7057,9 +7066,9 @@ aJ
 al
 aJ
 al
-al
-aT
-al
+cw
+ai
+cw
 al
 al
 aJ
@@ -7314,9 +7323,9 @@ qw
 aJ
 cC
 al
-al
-ai
-al
+cw
+cw
+cw
 al
 al
 aJ
@@ -71308,9 +71317,9 @@ Uv
 Uv
 at
 WA
-ss
-ss
-ss
+aU
+aU
+aU
 ss
 ss
 ss
@@ -71565,9 +71574,9 @@ Uv
 Uv
 at
 WA
-ss
-ss
-ss
+aU
+aU
+aU
 ss
 ss
 ss
@@ -71820,11 +71829,11 @@ Uv
 Uv
 Uv
 Uv
-at
-WA
 ss
-ss
-ss
+aT
+aU
+aU
+aU
 ss
 ss
 ss
@@ -72079,9 +72088,9 @@ Uv
 Uv
 at
 WA
-ss
-ss
-ss
+aU
+NY
+aU
 ss
 ss
 ss
