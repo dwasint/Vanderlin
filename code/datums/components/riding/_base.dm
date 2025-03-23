@@ -2,18 +2,25 @@
 	var/last_vehicle_move = 0 //used for move delays
 	var/last_move_diagonal = FALSE
 	var/vehicle_move_delay = 2 //tick delay between movements, lower = faster, higher = slower
-	var/keytype
 
 	var/slowed = FALSE
 	var/slowvalue = 1
 
-	var/list/riding_offsets = list()	//position_of_user = list(dir = list(px, py)), or RIDING_OFFSET_ALL for a generic one.
-	var/list/directional_vehicle_layers = list()	//["[DIRECTION]"] = layer. Don't set it for a direction for default, set a direction to null for no change.
-	var/list/directional_vehicle_offsets = list()	//same as above but instead of layer you have a list(px, py)
+	/// position_of_user = list(dir = list(px, py)), or RIDING_OFFSET_ALL for a generic one.
+	var/list/riding_offsets = list()
+	/// ["[DIRECTION]"] = layer. Don't set it for a direction for default, set a direction to null for no change.
+	var/list/directional_vehicle_layers = list()
+	/// same as above but instead of layer you have a list(px, py)
+	var/list/directional_vehicle_offsets = list()
+	/// allow typecache for only certain turfs, forbid to allow all but those. allow only certain turfs will take precedence.
 	var/list/allowed_turf_typecache
-	var/list/forbid_turf_typecache					//allow typecache for only certain turfs, forbid to allow all but those. allow only certain turfs will take precedence.
-	var/allow_one_away_from_valid_turf = TRUE		//allow moving one tile away from a valid turf but not more.
+	/// allow typecache for only certain turfs, forbid to allow all but those. allow only certain turfs will take precedence.
+	var/list/forbid_turf_typecache
+
+	/// We don't need roads where we're going if this is TRUE, allow normal movement in space tiles
 	var/override_allow_spacemove = FALSE
+
+	var/allow_one_away_from_valid_turf = TRUE		//allow moving one tile away from a valid turf but not more.
 	var/drive_verb = "drive"
 	var/ride_check_rider_incapacitated = FALSE
 	var/ride_check_rider_restrained = FALSE
@@ -136,10 +143,6 @@
 	var/atom/movable/AM = parent
 	return AM.dir
 
-//KEYS
-/datum/component/riding/proc/keycheck(mob/user)
-	return !keytype || user.is_holding_item_of_type(keytype)
-
 //BUCKLE HOOKS
 /datum/component/riding/proc/restore_position(mob/living/buckled_mob)
 	if(buckled_mob)
@@ -165,27 +168,25 @@
 		return
 	last_vehicle_move = world.time
 
-	if(keycheck(user))
-		var/turf/next = get_step(AM, direction)
-		var/turf/current = get_turf(AM)
-		if(!istype(next) || !istype(current))
-			return	//not happening.
-		if(!turf_check(next, current))
-			to_chat(user, "<span class='warning'>My \the [AM] can not go onto [next]!</span>")
-			return
-		if(!Process_Spacemove(direction) || !isturf(AM.loc))
-			return
-		step(AM, direction)
+	var/turf/next = get_step(AM, direction)
+	var/turf/current = get_turf(AM)
+	if(!istype(next) || !istype(current))
+		return	//not happening.
+	if(!turf_check(next, current))
+		to_chat(user, "<span class='warning'>My \the [AM] can not go onto [next]!</span>")
+		return
+	if(!Process_Spacemove(direction) || !isturf(AM.loc))
+		return
+	step(AM, direction)
 
-		if((direction & (direction - 1)) && (AM.loc == next))		//moved diagonally
-			last_move_diagonal = TRUE
-		else
-			last_move_diagonal = FALSE
-
-		handle_vehicle_layer()
-		handle_vehicle_offsets()
+	if((direction & (direction - 1)) && (AM.loc == next))		//moved diagonally
+		last_move_diagonal = TRUE
 	else
-		to_chat(user, "<span class='warning'>You'll need the keys in one of my hands to [drive_verb] [AM].</span>")
+		last_move_diagonal = FALSE
+
+	handle_vehicle_layer()
+	handle_vehicle_offsets()
+
 	SEND_SIGNAL(AM, COMSIG_RIDDEN_DRIVER_MOVE, user, direction)
 	return TRUE
 
@@ -203,119 +204,6 @@
 	else if(slowed)
 		vehicle_move_delay = vehicle_move_delay - slowvalue
 		slowed = FALSE
-
-///////Yes, I said humans. No, this won't end well...//////////
-/datum/component/riding/human
-	del_on_unbuckle_all = TRUE
-
-/datum/component/riding/human/Initialize()
-	. = ..()
-	RegisterSignal(parent, COMSIG_HUMAN_MELEE_UNARMED_ATTACK, PROC_REF(on_host_unarmed_melee))
-
-/datum/component/riding/human/vehicle_mob_unbuckle(datum/source, mob/living/M, force = FALSE)
-	var/mob/living/carbon/human/H = parent
-	H.remove_movespeed_modifier(MOVESPEED_ID_HUMAN_CARRYING)
-	. = ..()
-
-/datum/component/riding/human/vehicle_mob_buckle(datum/source, mob/living/M, force = FALSE)
-	. = ..()
-	var/mob/living/carbon/human/H = parent
-	var/amt2use = HUMAN_CARRY_SLOWDOWN
-	var/reqstrength = 10
-	if(H.r_grab && H.l_grab)
-		if(H.r_grab.grabbed == M)
-			if(H.l_grab.grabbed == M)
-				reqstrength -= 2
-	if(H.STASTR < reqstrength)
-		amt2use += 2
-	H.add_movespeed_modifier(MOVESPEED_ID_HUMAN_CARRYING, multiplicative_slowdown = amt2use)
-
-/datum/component/riding/human/proc/on_host_unarmed_melee(atom/target)
-	var/mob/living/carbon/human/H = parent
-	if(H.used_intent.type == INTENT_DISARM && (target in H.buckled_mobs))
-		force_dismount(target)
-
-/datum/component/riding/human/handle_vehicle_layer()
-	var/atom/movable/AM = parent
-	if(AM.has_buckled_mobs())
-		for(var/mob/M in AM.buckled_mobs) //ensure proper layering of piggyback and carry, sometimes weird offsets get applied
-			M.layer = MOB_LAYER
-		if(!AM.buckle_lying)
-			if(AM.dir == SOUTH)
-				AM.layer = ABOVE_MOB_LAYER
-			else
-				AM.layer = OBJ_LAYER
-		else
-			if(AM.dir == NORTH)
-				AM.layer = OBJ_LAYER
-			else
-				AM.layer = ABOVE_MOB_LAYER
-	else
-		AM.layer = MOB_LAYER
-
-/datum/component/riding/human/get_offsets(pass_index)
-	var/mob/living/carbon/human/H = parent
-	if(H.buckle_lying)
-		return list(TEXT_NORTH = list(0, 6), TEXT_SOUTH = list(0, 6), TEXT_EAST = list(0, 6), TEXT_WEST = list(0, 6))
-	else
-		return list(TEXT_NORTH = list(0, 6), TEXT_SOUTH = list(0, 6), TEXT_EAST = list(-6, 4), TEXT_WEST = list( 6, 4))
-
-
-/datum/component/riding/human/force_dismount(mob/living/user)
-	var/atom/movable/AM = parent
-	AM.unbuckle_mob(user)
-	user.Paralyze(60)
-	user.visible_message("<span class='warning'>[AM] pushes [user] off of [AM.p_them()]!</span>", \
-						"<span class='warning'>[AM] pushes me off of [AM.p_them()]!</span>")
-
-/datum/component/riding/cyborg
-	del_on_unbuckle_all = TRUE
-
-/datum/component/riding/cyborg/ride_check(mob/user)
-	var/atom/movable/AM = parent
-	if(user.incapacitated())
-		var/kick = TRUE
-		if(kick)
-			to_chat(user, "<span class='danger'>I fall off of [AM]!</span>")
-			Unbuckle(user)
-			return
-	if(iscarbon(user))
-		var/mob/living/carbon/carbonuser = user
-		if(!carbonuser.get_num_arms())
-			Unbuckle(user)
-			to_chat(user, "<span class='warning'>I can't grab onto [AM] with no hands!</span>")
-			return
-
-/datum/component/riding/cyborg/handle_vehicle_layer()
-	var/atom/movable/AM = parent
-	if(AM.has_buckled_mobs())
-		if(AM.dir == SOUTH)
-			AM.layer = ABOVE_MOB_LAYER
-		else
-			AM.layer = OBJ_LAYER
-	else
-		AM.layer = MOB_LAYER
-
-/datum/component/riding/cyborg/get_offsets(pass_index) // list(dir = x, y, layer)
-	return list(TEXT_NORTH = list(0, 4), TEXT_SOUTH = list(0, 4), TEXT_EAST = list(-6, 3), TEXT_WEST = list( 6, 3))
-
-/datum/component/riding/cyborg/handle_vehicle_offsets()
-	var/atom/movable/AM = parent
-	if(AM.has_buckled_mobs())
-		for(var/mob/living/M in AM.buckled_mobs)
-			M.setDir(AM.dir)
-			..()
-
-/datum/component/riding/cyborg/force_dismount(mob/living/M)
-	var/atom/movable/AM = parent
-	AM.unbuckle_mob(M)
-	var/turf/target = get_edge_target_turf(AM, AM.dir)
-	var/turf/targetm = get_step(get_turf(AM), AM.dir)
-	M.Move(targetm)
-	M.visible_message("<span class='warning'>[M] is thrown clear of [AM]!</span>", \
-					"<span class='warning'>You're thrown clear of [AM]!</span>")
-	M.throw_at(target, 14, 5, AM)
-	M.Paralyze(60)
 
 /datum/component/riding/proc/equip_buckle_inhands(mob/living/carbon/human/user, amount_required = 1, riding_target_override = null)
 	var/atom/movable/AM = parent
