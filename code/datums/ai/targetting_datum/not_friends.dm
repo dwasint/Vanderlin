@@ -17,7 +17,7 @@
 
 	if (living_mob.see_invisible < target.invisibility)
 		return FALSE
-	if (isturf(target.loc) && living_mob.z != target.z) // z check will always fail if target is in a mech
+	if (!isturf(target.loc)) // z check will always fail if target is in a mech
 		return FALSE
 	if (!living_mob.ai_controller) // How did you get here?
 		return FALSE
