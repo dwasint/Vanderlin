@@ -465,6 +465,7 @@
 #include "code\datums\ai\ai_movement\astar_movement.dm"
 #include "code\datums\ai\ai_movement\basic_avoidance.dm"
 #include "code\datums\ai\ai_movement\dumb_movement.dm"
+#include "code\datums\ai\ai_movement\hybrid_movement.dm"
 #include "code\datums\ai\behaviours\consume.dm"
 #include "code\datums\ai\behaviours\fetch.dm"
 #include "code\datums\ai\behaviours\find_and_set.dm"

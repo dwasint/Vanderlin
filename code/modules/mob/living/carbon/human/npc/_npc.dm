@@ -150,7 +150,7 @@
 					O.climb_structure(src)
 					myPath = list()
 					break
-			myPath = get_path_to(src, turf_of_target, /turf/proc/Distance, MAX_RANGE_FIND + 1, 250,1)
+			myPath = get_path_to(src, turf_of_target, /turf/proc/Distance3D, MAX_RANGE_FIND + 1, 250,1)
 
 		if(myPath)
 			if(myPath.len > 0)
