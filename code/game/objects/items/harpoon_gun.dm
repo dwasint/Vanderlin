@@ -36,7 +36,7 @@
 	bigboy = TRUE
 	wlength = WLENGTH_LONG
 	w_class = WEIGHT_CLASS_BULKY
-	slot_flags = ITEM_SLOT_BACK
+	slot_flags = ITEM_SLOT_HIP
 
 	///is the hook retracted
 	var/retracted_hook = TRUE
@@ -104,8 +104,8 @@
 	leashed = TRUE
 	leash_target = target
 
+	RegisterSignal(target, COMSIG_PARENT_EXAMINE, PROC_REF(leashed_examine))
 	target.apply_damage(15, BRUTE, firer.zone_selected)
-	RegisterSignal(leash_target, COMSIG_PARENT_EXAMINE, PROC_REF(leashed_examine))
 
 /obj/item/harpoon_gun/proc/leashed_examine(datum/source, mob/user, list/examine_list)
 	examine_list += "<a href='byond://?src=[REF(src)];pull_harpoon=1'>You have a harpoon stuck in you!</a>"
@@ -122,6 +122,7 @@
 		leashed = FALSE
 		UnregisterSignal(leash_target, COMSIG_PARENT_EXAMINE)
 		leash_target = null
+		retracted_hook = TRUE
 
 /obj/item/harpoon_gun/proc/reel()
 	leash.set_distance(max(1, leash.distance - 1))
