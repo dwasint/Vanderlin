@@ -70,8 +70,13 @@
 
 				// this check if we're on exactly the next tile may be overly brittle for dense pawns who may get bumped slightly
 				// to the side while moving but could maybe still follow their path without needing a whole new path
-				if(get_turf(movable_pawn) == next_step)
+				if(get_turf(movable_pawn) == next_step || (istype(next_step, /turf/open/transparent) && get_turf(movable_pawn) == GET_TURF_BELOW(next_step)))
 					controller.movement_path.Cut(1,2)
+					var/turf/double_checked = controller.movement_path[1]
+
+					if(get_turf(movable_pawn) == double_checked) //the way z-level stacks work is that it adds the openspace and belowspace so we cull both here
+						controller.movement_path.Cut(1,2)
+
 					if(!length(controller.movement_path) && fallbacking)
 						fallbacking = FALSE
 				else
