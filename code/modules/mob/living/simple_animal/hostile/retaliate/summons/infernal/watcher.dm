@@ -47,7 +47,7 @@
 //	stat_attack = UNCONSCIOUS
 	ranged = TRUE
 	ranged_cooldown = 40
-	projectiletype = /obj/projectile/magic/aoe/fireball/rogue
+	projectiletype = /obj/projectile/magic/firebolt
 	ranged_message = "stares"
 
 /mob/living/simple_animal/hostile/retaliate/infernal/watcher/simple_add_wound(datum/wound/wound, silent = FALSE, crit_message = FALSE)	//no wounding the watcher
