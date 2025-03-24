@@ -291,6 +291,7 @@
 	produce_amount_max = 3
 	maturation_time = FAST_GROWING
 	water_drain_rate = 1 / (2 MINUTES)
+	can_grow_underground = TRUE
 
 /datum/plant_def/poppy
 	name = "poppies"
