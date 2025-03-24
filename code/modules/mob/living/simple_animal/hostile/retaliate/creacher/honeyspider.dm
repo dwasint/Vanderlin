@@ -110,6 +110,26 @@
 	if(!.)
 		return eat_bodies()
 
+/mob/living/simple_animal/hostile/retaliate/spider/try_tame(obj/item/O, mob/user)
+	if(!stat)
+		user.visible_message("<span class='info'>[user] hand-feeds [O] to [src].</span>", "<span class='notice'>I hand-feed [O] to [src].</span>")
+		playsound(loc,'sound/misc/eat.ogg', rand(30,60), TRUE)
+		qdel(O)
+		food = min(food + 30, 100)
+		if(tame && owner == user)
+			return TRUE
+		var/realchance = tame_chance
+		if(is_species(user, /datum/species/elf/dark))
+			realchance += 15
+		if(realchance)
+			if(user.mind)
+				realchance += (user.mind.get_skill_level(/datum/skill/labor/taming) * 20)
+			if(prob(realchance))
+				tamed(user)
+			else
+				tame_chance += bonus_tame_chance
+		return TRUE
+
 /mob/living/simple_animal/hostile/retaliate/spider/death(gibbed)
 	..()
 	update_icon()
