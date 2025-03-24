@@ -31,6 +31,8 @@
 		target.apply_status_effect(/datum/status_effect/buff/frostbite5e/) //apply debuff
 		target.adjustFireLoss(12) //damage
 		target.adjustBruteLoss(12)
+		return TRUE
+	return FALSE
 
 /datum/status_effect/buff/frostbite5e
 	id = "frostbite"
