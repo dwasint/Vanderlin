@@ -1120,6 +1120,10 @@
 /obj/structure/rotation_piece/cog/large,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
+"hd" = (
+/obj/item/reagent_containers/food/snacks/produce/wheat,
+/turf/open/floor/cobble,
+/area/rogue/outdoors)
 "hi" = (
 /obj/structure/fluff/millstone,
 /turf/open/floor/dirt/road,
@@ -1144,10 +1148,6 @@
 	},
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
-"mj" = (
-/obj/structure/stairs,
-/turf/open/transparent/openspace,
-/area/rogue/outdoors)
 "mo" = (
 /obj/structure/water_pump,
 /turf/open/floor/dirt/road,
@@ -1168,10 +1168,6 @@
 "nG" = (
 /turf/open/floor/cobble,
 /area)
-"nW" = (
-/mob/living/simple_animal/hostile/retaliate/cow,
-/turf/open/floor/dirt/road,
-/area/rogue/outdoors)
 "oB" = (
 /obj/structure/minecart_rail,
 /obj/structure/closet/crate/miningcar,
@@ -1182,6 +1178,10 @@
 	redstone_id = "test2"
 	},
 /turf/open/floor/dirt/road,
+/area/rogue/outdoors)
+"pc" = (
+/obj/structure/stairs,
+/turf/open/transparent/openspace,
 /area/rogue/outdoors)
 "pQ" = (
 /obj/structure/dungeon_entry,
@@ -1259,12 +1259,12 @@
 "vW" = (
 /turf/open/floor/cobble,
 /area/rogue/indoors/town/warehouse)
+"we" = (
+/mob/living/simple_animal/hostile/retaliate/cow,
+/turf/open/floor/dirt/road,
+/area/rogue/outdoors)
 "xh" = (
 /obj/effect/landmark/start,
-/obj/structure/fluff/railing/wood{
-	dir = 8;
-	pixel_y = -1
-	},
 /turf/open/floor/cobble,
 /area/rogue/outdoors)
 "xp" = (
@@ -1314,12 +1314,6 @@
 	},
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
-"AS" = (
-/obj/structure/stairs{
-	dir = 4
-	},
-/turf/open/floor/dirt/road,
-/area/rogue/outdoors)
 "Bv" = (
 /obj/structure/water_pipe,
 /turf/open/floor/dirt/road,
@@ -1349,6 +1343,10 @@
 /obj/structure/soil/debug_soil/random,
 /turf/open/floor/dirt/road,
 /area/rogue/indoors)
+"EI" = (
+/obj/structure/stairs,
+/turf/open/floor/dirt/road,
+/area/rogue/outdoors)
 "Fc" = (
 /obj/structure/water_vent,
 /turf/open/floor/dirt/road,
@@ -1362,12 +1360,6 @@
 	dir = 4
 	},
 /area/rogue/indoors)
-"Gf" = (
-/obj/structure/stairs{
-	dir = 4
-	},
-/turf/open/floor/cobble,
-/area/rogue/outdoors)
 "Hl" = (
 /obj/structure/minecart_rail{
 	dir = 5
@@ -1392,6 +1384,18 @@
 /obj/structure/vertical_gearbox,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
+"Lv" = (
+/obj/structure/stairs{
+	dir = 4
+	},
+/turf/open/floor/dirt/road,
+/area/rogue/outdoors)
+"LA" = (
+/obj/structure/stairs{
+	dir = 4
+	},
+/turf/open/floor/cobble,
+/area/rogue/outdoors)
 "Mn" = (
 /obj/structure/rotation_piece,
 /turf/open/floor/dirt/road,
@@ -1415,10 +1419,6 @@
 	},
 /turf/open/floor/dirt/road,
 /area/rogue/indoors)
-"Pa" = (
-/obj/structure/stairs,
-/turf/open/floor/dirt/road,
-/area/rogue/outdoors)
 "Pq" = (
 /obj/structure/minecart_rail,
 /obj/structure/fluff/traveltile{
@@ -1472,13 +1472,16 @@
 "WA" = (
 /turf/closed/wall/mineral/stone,
 /area/rogue/outdoors)
+"WC" = (
+/obj/structure/fluff/railing/wood{
+	dir = 8;
+	pixel_y = -1
+	},
+/turf/open/floor/cobble,
+/area/rogue/outdoors)
 "XC" = (
 /obj/structure/rotation_piece/cog,
 /turf/open/floor/dirt/road,
-/area/rogue/outdoors)
-"Zh" = (
-/obj/item/reagent_containers/food/snacks/produce/wheat,
-/turf/open/floor/cobble,
 /area/rogue/outdoors)
 "Zs" = (
 /obj/structure/fluff/traveltile{
@@ -8900,7 +8903,7 @@ aJ
 aJ
 aJ
 al
-Zh
+hd
 al
 bn
 aJ
@@ -9153,7 +9156,7 @@ at
 cG
 aJ
 aJ
-aJ
+xh
 aJ
 cI
 aJ
@@ -9414,7 +9417,7 @@ aJ
 aJ
 WA
 WA
-xh
+WC
 WA
 aJ
 aJ
@@ -9670,8 +9673,8 @@ aL
 al
 aG
 WA
-nW
-AS
+we
+Lv
 WA
 aL
 al
@@ -9924,7 +9927,7 @@ aJ
 aJ
 aJ
 ai
-Pa
+EI
 WA
 WA
 al
@@ -75461,10 +75464,10 @@ Uv
 Uv
 at
 ss
-mj
+pc
 aJ
 ss
-Gf
+LA
 ss
 ss
 ss
