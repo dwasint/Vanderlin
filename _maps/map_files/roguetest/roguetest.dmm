@@ -403,10 +403,6 @@
 /obj/item/clothing/pants/tights,
 /turf/open/floor/carpet,
 /area/rogue/indoors)
-"be" = (
-/mob/living/simple_animal/hostile/retaliate/cow,
-/turf/open/floor/dirt/road,
-/area/rogue/outdoors)
 "bf" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood2";
@@ -1132,10 +1128,6 @@
 /obj/item/weapon/polearm/woodstaff/aries,
 /turf/open/floor/cobble,
 /area/rogue/outdoors)
-"hQ" = (
-/obj/structure/fluff/railing/wood,
-/turf/open/floor/dirt,
-/area/rogue/outdoors)
 "jt" = (
 /obj/structure/trench,
 /obj/structure/rotation_piece/cog/large,
@@ -1151,6 +1143,10 @@
 	dir = 9
 	},
 /turf/open/floor/dirt/road,
+/area/rogue/outdoors)
+"mj" = (
+/obj/structure/stairs,
+/turf/open/transparent/openspace,
 /area/rogue/outdoors)
 "mo" = (
 /obj/structure/water_pump,
@@ -1172,6 +1168,10 @@
 "nG" = (
 /turf/open/floor/cobble,
 /area)
+"nW" = (
+/mob/living/simple_animal/hostile/retaliate/cow,
+/turf/open/floor/dirt/road,
+/area/rogue/outdoors)
 "oB" = (
 /obj/structure/minecart_rail,
 /obj/structure/closet/crate/miningcar,
@@ -1235,10 +1235,6 @@
 /obj/structure/lever{
 	redstone_id = "test3"
 	},
-/turf/open/floor/dirt/road,
-/area/rogue/outdoors)
-"sO" = (
-/obj/structure/fluff/railing/wood,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
 "tH" = (
@@ -1318,6 +1314,12 @@
 	},
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
+"AS" = (
+/obj/structure/stairs{
+	dir = 4
+	},
+/turf/open/floor/dirt/road,
+/area/rogue/outdoors)
 "Bv" = (
 /obj/structure/water_pipe,
 /turf/open/floor/dirt/road,
@@ -1360,6 +1362,12 @@
 	dir = 4
 	},
 /area/rogue/indoors)
+"Gf" = (
+/obj/structure/stairs{
+	dir = 4
+	},
+/turf/open/floor/cobble,
+/area/rogue/outdoors)
 "Hl" = (
 /obj/structure/minecart_rail{
 	dir = 5
@@ -1392,10 +1400,6 @@
 /obj/structure/rotation_piece/cog,
 /turf/open/floor/dirt/road,
 /area/rogue/indoors)
-"Nz" = (
-/obj/item/reagent_containers/food/snacks/produce/wheat,
-/turf/open/floor/cobble,
-/area/rogue/outdoors)
 "NF" = (
 /turf/closed/mineral/random/low_nonval,
 /area/rogue)
@@ -1411,6 +1415,10 @@
 	},
 /turf/open/floor/dirt/road,
 /area/rogue/indoors)
+"Pa" = (
+/obj/structure/stairs,
+/turf/open/floor/dirt/road,
+/area/rogue/outdoors)
 "Pq" = (
 /obj/structure/minecart_rail,
 /obj/structure/fluff/traveltile{
@@ -1419,22 +1427,9 @@
 	},
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
-"QF" = (
-/obj/structure/fluff/railing/wood{
-	dir = 1
-	},
-/turf/open/floor/dirt/road,
-/area/rogue/outdoors)
 "QR" = (
 /turf/open/floor/dirt,
 /area/rogue/outdoors/woods)
-"Ru" = (
-/obj/structure/fluff/railing/wood{
-	dir = 8;
-	pixel_y = -1
-	},
-/turf/open/floor/cobble,
-/area/rogue/outdoors)
 "Sz" = (
 /obj/structure/boiler,
 /turf/open/floor/dirt/road,
@@ -1480,6 +1475,10 @@
 "XC" = (
 /obj/structure/rotation_piece/cog,
 /turf/open/floor/dirt/road,
+/area/rogue/outdoors)
+"Zh" = (
+/obj/item/reagent_containers/food/snacks/produce/wheat,
+/turf/open/floor/cobble,
 /area/rogue/outdoors)
 "Zs" = (
 /obj/structure/fluff/traveltile{
@@ -8901,7 +8900,7 @@ aJ
 aJ
 aJ
 al
-Nz
+Zh
 al
 bn
 aJ
@@ -9414,7 +9413,7 @@ aJ
 aJ
 aJ
 WA
-Ru
+WA
 xh
 WA
 aJ
@@ -9670,10 +9669,10 @@ aJ
 aL
 al
 aG
-QF
-be
-al
-sO
+WA
+nW
+AS
+WA
 aL
 al
 al
@@ -9925,12 +9924,12 @@ aJ
 aJ
 aJ
 ai
-al
-al
-QF
+Pa
+WA
+WA
 al
 ai
-hQ
+WA
 ai
 ai
 al
@@ -75461,11 +75460,11 @@ Uv
 Uv
 Uv
 at
-WA
 ss
+mj
+aJ
 ss
-ss
-ss
+Gf
 ss
 ss
 ss
@@ -75720,9 +75719,9 @@ Uv
 at
 WA
 ss
-ss
-ss
-ss
+aJ
+aJ
+aJ
 ss
 ss
 ss

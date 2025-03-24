@@ -226,6 +226,15 @@ Actual Adjacent procs :
 	if (T.density)
 		return FALSE
 
+	if (is_type_in_typecache(T, GLOB.dangerous_turfs))
+		if(istype(T, /turf/open/transparent))
+			var/turf/open/below_turf = GET_TURF_BELOW(T)
+			var/obj/structure/stairs/S = locate(/obj/structure/stairs/) in below_turf.contents
+			if(!S)
+				return FALSE
+		else
+			return FALSE
+
 	// Same z-level movement - use standard check
 	if (T.z == z)
 		return !LinkBlockedWithAccess(T, caller, ID)

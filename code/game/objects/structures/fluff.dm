@@ -88,6 +88,25 @@
 		return 0
 	return 1
 
+/obj/structure/fluff/railing/CanAStarPass(ID, to_dir, caller)
+	var/testing_dir = to_dir
+	if(icon_state == "woodrailing" && (dir in CORNERDIRS))
+		var/list/baddirs = list()
+		switch(dir)
+			if(SOUTHEAST)
+				baddirs = list(SOUTHEAST, SOUTH, EAST)
+			if(SOUTHWEST)
+				baddirs = list(SOUTHWEST, SOUTH, WEST)
+			if(NORTHEAST)
+				baddirs = list(NORTHEAST, NORTH, EAST)
+			if(NORTHWEST)
+				baddirs = list(NORTHWEST, NORTH, WEST)
+		if(get_dir(loc, to_dir) in baddirs)
+			return 0
+	else if(to_dir == dir)
+		return 0
+	return 1
+
 /obj/structure/fluff/railing/CheckExit(atom/movable/O, turf/target)
 //	if(istype(O) && (O.pass_flags & PASSTABLE))
 //		return 1

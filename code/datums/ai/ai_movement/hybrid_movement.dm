@@ -17,7 +17,7 @@
 		var/turf/target_turf = get_step_towards(movable_pawn, controller.current_movement_target)
 		var/turf/end_turf = get_turf(controller.current_movement_target)
 		var/advanced = TRUE
-		if(end_turf.z == movable_pawn.z && !length(controller.movement_path))
+		if(end_turf?.z == movable_pawn?.z && !length(controller.movement_path))
 			advanced = FALSE
 			var/can_move = TRUE
 
@@ -63,8 +63,10 @@
 			var/generate_path = FALSE // set to TRUE when we either have no path, or we failed a step
 			if(length(controller.movement_path))
 				var/turf/next_step = controller.movement_path[1]
-				var/current_loc = get_turf(movable_pawn)
-				step_to(movable_pawn, next_step, controller.blackboard[BB_CURRENT_MIN_MOVE_DISTANCE], controller.movement_delay)
+				if(next_step.z != movable_pawn.z)
+					movable_pawn.Move(next_step)
+				else
+					step_to(movable_pawn, next_step, controller.blackboard[BB_CURRENT_MIN_MOVE_DISTANCE], controller.movement_delay)
 
 				// this check if we're on exactly the next tile may be overly brittle for dense pawns who may get bumped slightly
 				// to the side while moving but could maybe still follow their path without needing a whole new path

@@ -302,6 +302,13 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		x.forceMove(get_turf(src))
 		buckle_mob(x, TRUE)
 
+/mob/proc/set_stat(new_stat)
+	if(new_stat == stat)
+		return
+	. = stat
+	stat = new_stat
+	SEND_SIGNAL(src, COMSIG_MOB_STATCHANGE, new_stat, .)
+
 /mob/living/simple_animal/update_stat()
 	if(status_flags & GODMODE)
 		return
@@ -518,6 +525,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 			transform = transform.Turn(180)
 		density = FALSE
 		..()
+		SEND_SIGNAL(src, COMSIG_MOB_STATCHANGE, DEAD)
 
 /mob/living/simple_animal/proc/CanAttack(atom/the_target)
 	if(see_invisible < the_target.invisibility)
