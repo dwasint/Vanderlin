@@ -209,7 +209,7 @@
 	production = 0
 
 /obj/structure/spider/nest/constructed
-	name = "beespider nest"
+	name = "spider nesting house"
 	desc = "A hand built nest for beespiders."
 	icon_state = "constructed_nest"
 
