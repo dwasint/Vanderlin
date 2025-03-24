@@ -952,3 +952,8 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		user.Immobilize(1 SECONDS)
 		user.changeNext_move(1 SECONDS)
 
+
+/mob/living/simple_animal/proc/handle_habitation(obj/structure/home)
+	SHOULD_CALL_PARENT(TRUE)
+	var/drop_location = (src in home.contents) ? get_turf(home) : home
+	forceMove(drop_location)

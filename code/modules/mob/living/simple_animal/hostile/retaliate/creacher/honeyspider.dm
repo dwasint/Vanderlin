@@ -75,6 +75,11 @@
 	ai_controller.set_blackboard_key(BB_BASIC_FOODS, food_type)
 	ADD_TRAIT(src, TRAIT_WEBWALK, TRAIT_GENERIC)
 
+/mob/living/simple_animal/hostile/retaliate/spider/UnarmedAttack(atom/A)
+	if(!..())
+		return
+	production += rand(30, 50)
+
 /mob/living/simple_animal/hostile/retaliate/spider/AttackingTarget()
 	. = ..()
 	if(. && isliving(target))
@@ -118,22 +123,6 @@
 	GiveTarget(user)
 	return
 
-/mob/living/simple_animal/hostile/retaliate/spider/Life()
-	..()
-	if(stat == CONSCIOUS)
-		if(!target)
-			if(production >= 100)
-				production = 0
-				visible_message("<span class='alertalien'>[src] creates some honey.</span>")
-				var/turf/T = get_turf(src)
-				playsound(T, pick('sound/vo/mobs/spider/speak (1).ogg','sound/vo/mobs/spider/speak (2).ogg','sound/vo/mobs/spider/speak (3).ogg','sound/vo/mobs/spider/speak (4).ogg'), 100, TRUE, -1)
-				new /obj/item/reagent_containers/food/snacks/spiderhoney(T)
-	if(pulledby && !tame)
-		if(HAS_TRAIT(pulledby, TRAIT_WEBWALK))
-			return
-		Retaliate()
-		GiveTarget(pulledby)
-
 /mob/living/simple_animal/hostile/retaliate/spider/simple_limb_hit(zone)
 	if(!zone)
 		return ""
@@ -176,3 +165,102 @@
 			return "foreleg"
 	return ..()
 
+/mob/living/simple_animal/hostile/retaliate/spider/handle_habitation(obj/structure/spider/nest/home)
+	. = ..()
+	home.to_process += production
+	production = 0
+
+
+/obj/structure/spider/nest
+	name = "spider nest"
+	desc = "A woven nest for spiders to live in."
+
+	icon = 'icons/obj/structures/spiders/nest.dmi'
+	icon_state = "nest"
+
+	var/to_process = 0
+	var/total_processed = 0
+	var/process_cap = 500
+
+	var/datum/proximity_monitor/advanced/spider_nest/field
+
+	var/last_disturbed = 0
+
+/obj/structure/spider/nest/Initialize()
+	. = ..()
+	AddComponent(/datum/component/mob_home, 6)
+	START_PROCESSING(SSobj, src)
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/structure/spider/nest/LateInitialize()
+	. = ..()
+	field = make_field(/datum/proximity_monitor/advanced/spider_nest, list("parent" = src, "host" = src))
+
+/obj/structure/spider/nest/Destroy()
+	. = ..()
+	STOP_PROCESSING(SSobj, src)
+
+/obj/structure/spider/nest/examine(mob/user)
+	. = ..()
+	var/honey = FLOOR(total_processed * 0.01, 1)
+	var/string = "empty"
+	switch(honey)
+		if(1)
+			string = "slightly filled"
+		if(2)
+			string = "partially filled"
+		if(3)
+			string = "half filled"
+		if(4)
+			string = "almost full"
+		if(5)
+			string = "completely full"
+	. += span_notice("The nest looks [string].")
+
+/obj/structure/spider/nest/attackby(obj/item/I, mob/user, params)
+	. = ..()
+	check_crossed(user)
+
+/obj/structure/spider/nest/process()
+	if(total_processed >= process_cap)
+		return
+	if(!to_process)
+		return
+	var/process_amount = min(5, to_process)
+	to_process -= process_amount
+	total_processed += process_amount
+
+/obj/structure/spider/nest/proc/check_crossed(atom/movable/movable)
+	if(last_disturbed > world.time)
+		return
+	if(!isliving(movable))
+		return
+	if(istype(movable, /mob/living/simple_animal/hostile/retaliate/spider))
+		return
+	for(var/mob/living/simple_animal/hostile/retaliate/spider/spider in contents)
+		spider.handle_habitation(src)
+
+		var/datum/targetting_datum/targeter = spider.ai_controller.blackboard[BB_PET_TARGETING_DATUM]
+		if (!targeter)
+			continue
+		if (!targeter.can_attack(spider, movable))
+			new /obj/effect/temp_visual/heart(spider.loc)
+			continue
+		spider.ai_controller.set_blackboard_key(BB_BASIC_MOB_CURRENT_TARGET, movable)
+		spider.ai_controller.queue_behavior(/datum/ai_behavior/basic_melee_attack, BB_BASIC_MOB_CURRENT_TARGET, BB_PET_TARGETING_DATUM)
+
+	last_disturbed = world.time + 15 SECONDS
+
+/datum/proximity_monitor/advanced/spider_nest
+	field_shape = FIELD_SHAPE_RADIUS_SQUARE
+	current_range = 2
+
+	setup_field_turfs = TRUE
+	setup_edge_turfs = TRUE
+
+	var/obj/structure/spider/nest/parent
+
+
+/datum/proximity_monitor/advanced/spider_nest/field_turf_crossed(atom/movable/AM, obj/effect/abstract/proximity_checker/advanced/field_turf/F)
+	. = ..()
+	parent.check_crossed(AM)

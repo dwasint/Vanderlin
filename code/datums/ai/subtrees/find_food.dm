@@ -35,6 +35,8 @@
 
 	controller.queue_behavior(behavior, BB_BASIC_MOB_FOOD_TARGET, controller.blackboard[BB_BASIC_FOODS], vision_range)
 
+/datum/ai_planning_subtree/find_dead_bodies/spider
+	/datum/ai_behavior/find_and_set/dead_bodies
 /datum/ai_planning_subtree/find_dead_bodies/mole
 	vision_range = 7
 

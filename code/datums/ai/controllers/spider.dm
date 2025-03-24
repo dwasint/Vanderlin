@@ -4,12 +4,19 @@
 	ai_movement = /datum/ai_movement/hybrid_pathing
 
 	blackboard = list(
-		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic/allow_items()
+		BB_HOME_PATH = /obj/structure/spider/nest,
+
+		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic/allow_items(),
+		BB_PET_TARGETING_DATUM = new /datum/targetting_datum/basic/not_friends(),
 
 	)
 
 	planning_subtrees = list(
+		/datum/ai_planning_subtree/pet_planning,
 		/datum/ai_planning_subtree/flee_target,
+
+		/datum/ai_planning_subtree/find_valid_home,
+		/datum/ai_planning_subtree/enter_exit_home,
 
 		/datum/ai_planning_subtree/simple_find_target/spider,
 		/datum/ai_planning_subtree/find_food/spider,

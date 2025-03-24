@@ -440,3 +440,5 @@
 
 #define COMSIG_CANCEL_TURF_BREAK "cancel_turf_break_comsig"
 #define COMSIG_MOUSE_ENTERED "comsig_mouse_entered"
+
+#define COMSIG_HABITABLE_HOME "comsig_habitable_home"

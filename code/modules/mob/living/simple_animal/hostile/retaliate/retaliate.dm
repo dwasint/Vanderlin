@@ -471,3 +471,4 @@
 	playsound(src,'sound/misc/eat.ogg', rand(30,60), TRUE)
 	qdel(A)
 	food = max(food + 30, 100)
+	return TRUE
