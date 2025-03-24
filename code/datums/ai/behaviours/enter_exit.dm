@@ -18,3 +18,6 @@
 	var/datum/callback/callback = CALLBACK(bee_pawn, TYPE_PROC_REF(/mob/living/simple_animal, handle_habitation), current_home)
 	callback.Invoke()
 	finish_action(controller, TRUE)
+
+/datum/ai_behavior/enter_exit_home/no_cooldown
+	action_cooldown = 0

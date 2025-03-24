@@ -32,6 +32,8 @@
 	melee_damage_lower = 17
 	melee_damage_upper = 22
 
+	tame_chance = 25
+
 	TOTALCON = 6
 	TOTALSTR = 10
 	TOTALSPD = 10
@@ -52,6 +54,21 @@
 	AIStatus = AI_OFF
 	can_have_ai = FALSE
 
+	var/static/list/pet_commands = list(
+		/datum/pet_command/idle,
+		/datum/pet_command/free,
+		/datum/pet_command/good_boy,
+		/datum/pet_command/follow,
+		/datum/pet_command/point_targeting/home,
+		/datum/pet_command/go_home,
+		/datum/pet_command/point_targeting/attack,
+		/datum/pet_command/point_targeting/fetch,
+		/datum/pet_command/play_dead,
+		/datum/pet_command/protect_owner,
+		/datum/pet_command/aggressive,
+		/datum/pet_command/calm,
+	)
+
 /mob/living/simple_animal/hostile/retaliate/spider/mutated
 	icon = 'icons/roguetown/mob/monster/spider.dmi'
 	name = "skallax spider"
@@ -71,6 +88,7 @@
 		gender = FEMALE
 	update_icon()
 
+	AddComponent(/datum/component/obeys_commands, pet_commands)
 	AddElement(/datum/element/ai_flee_while_injured, 0.75, retreat_health)
 	ai_controller.set_blackboard_key(BB_BASIC_FOODS, food_type)
 	ADD_TRAIT(src, TRAIT_WEBWALK, TRAIT_GENERIC)
@@ -170,6 +188,10 @@
 	home.to_process += production
 	production = 0
 
+/obj/structure/spider/nest/constructed
+	name = "beespider nest"
+	desc = "A hand built nest for beespiders."
+	icon_state = "constructed_nest"
 
 /obj/structure/spider/nest
 	name = "spider nest"

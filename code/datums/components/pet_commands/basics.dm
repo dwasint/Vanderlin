@@ -287,3 +287,37 @@
 
 	parent.pet_passive = FALSE
 	return SUBTREE_RETURN_FINISH_PLANNING
+
+/datum/pet_command/point_targeting/home
+	command_name = "Set Home"
+	command_desc = "Command your pet to make the targetted area its home."
+	radial_icon = 'icons/mob/actions/actions_spells.dmi'
+	radial_icon_state = "projectile"
+	speech_commands = list("new home")
+	command_feedback = "nods"
+	pointed_reaction = "and nods"
+
+/datum/pet_command/point_targeting/home/execute_action(datum/ai_controller/controller)
+	controller.clear_blackboard_key(BB_ACTIVE_PET_COMMAND)
+	var/obj/structure/target = controller.blackboard[BB_CURRENT_PET_TARGET]
+	if(!target)
+		return
+	if(!istype(target, controller.blackboard[BB_HOME_PATH]))
+		return
+
+	// We don't check if the target exists because we want to 'sit attentively' if we've been instructed to attack but not given one yet
+	// We also don't check if the cooldown is over because there's no way a pet owner can know that, the behaviour will handle it
+	controller.set_blackboard_key(BB_CURRENT_HOME, target)
+	return SUBTREE_RETURN_FINISH_PLANNING
+
+/datum/pet_command/go_home
+	command_name = "Go Home"
+	command_desc = "Sends your pet home."
+	radial_icon = 'icons/roguetown/mob/cabbit.dmi'
+	radial_icon_state = "cabbit_dead"
+	speech_commands = list("go home") // Don't get too creative here, people talk about dying pretty often
+
+/datum/pet_command/go_home/execute_action(datum/ai_controller/controller)
+	controller.clear_blackboard_key(BB_ACTIVE_PET_COMMAND)
+	controller.queue_behavior(/datum/ai_behavior/enter_exit_home/no_cooldown)
+	return SUBTREE_RETURN_FINISH_PLANNING
