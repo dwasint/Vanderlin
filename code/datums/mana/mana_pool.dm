@@ -300,7 +300,7 @@
 		if(amount > get_softcap())
 			if(world.time > next_message)
 				next_message = world.time + 1.5 MINUTES
-				to_chat(parent, span_warning("I am feeling tingly all over."))
+				to_chat(parent, span_boldwarning("I am feeling tingly all over."))
 
 /// Perform a "natural" transfer where we use the default transfer rate, capped by the usual math
 /datum/mana_pool/proc/transfer_mana_to(datum/mana_pool/target_pool)
