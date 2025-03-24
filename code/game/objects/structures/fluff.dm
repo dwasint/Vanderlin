@@ -89,7 +89,6 @@
 	return 1
 
 /obj/structure/fluff/railing/CanAStarPass(ID, to_dir, caller)
-	var/testing_dir = to_dir
 	if(icon_state == "woodrailing" && (dir in CORNERDIRS))
 		var/list/baddirs = list()
 		switch(dir)
@@ -101,7 +100,7 @@
 				baddirs = list(NORTHEAST, NORTH, EAST)
 			if(NORTHWEST)
 				baddirs = list(NORTHWEST, NORTH, WEST)
-		if(get_dir(loc, to_dir) in baddirs)
+		if(to_dir in baddirs)
 			return 0
 	else if(to_dir == dir)
 		return 0
