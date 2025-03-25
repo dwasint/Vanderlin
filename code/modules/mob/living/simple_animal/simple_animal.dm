@@ -898,6 +898,8 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 				else
 					SSidlenpcpool.idle_mobs_by_zlevel[T.z] += src
 			GLOB.simple_animals["[AIStatus]"] -= src
+			if(!(togglestatus in GLOB.simple_animals))
+				GLOB.simple_animals["[togglestatus]"] = list()
 			GLOB.simple_animals["[togglestatus]"] += src
 			AIStatus = togglestatus
 		else

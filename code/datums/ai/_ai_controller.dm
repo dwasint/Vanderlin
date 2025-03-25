@@ -24,6 +24,8 @@ have ways of interacting with a specific atom and control it. They posses a blac
 	var/list/behavior_cooldowns = list()
 	///The idle behavior this AI performs when it has no actions.
 	var/datum/idle_behavior/idle_behavior = null
+	///our current cell grid
+	var/datum/cell_tracker/our_cells
 	///Current status of AI (OFF/ON/IDLE)
 	var/ai_status
 	///Current movement target of the AI, generally set by decision making.
@@ -78,6 +80,7 @@ have ways of interacting with a specific atom and control it. They posses a blac
 /datum/ai_controller/Destroy(force, ...)
 	set_ai_status(AI_STATUS_OFF)
 	UnpossessPawn(FALSE)
+	our_cells = null
 	return ..()
 
 ///Sets the current movement target, with an optional param to override the movement behavior
@@ -142,27 +145,80 @@ have ways of interacting with a specific atom and control it. They posses a blac
 	RegisterSignal(pawn, COMSIG_MOB_LOGIN, PROC_REF(on_sentience_gained))
 	RegisterSignal(pawn, COMSIG_MOB_STATCHANGE, PROC_REF(on_stat_changed))
 
+	our_cells = new(interesting_dist, interesting_dist, 1)
+	set_new_cells()
+
+	RegisterSignal(pawn, COMSIG_MOVABLE_MOVED, PROC_REF(update_grid))
+
+/datum/ai_controller/proc/update_grid(datum/source, datum/spatial_grid_cell/new_cell)
+	SIGNAL_HANDLER
+	set_new_cells()
+
+/datum/ai_controller/proc/set_new_cells()
+	var/turf/our_turf = get_turf(pawn)
+	if(isnull(our_turf))
+		return
+
+	var/list/cell_collections = our_cells.recalculate_cells(our_turf)
+
+	for(var/datum/old_grid as anything in cell_collections[2])
+		UnregisterSignal(old_grid, list(SPATIAL_GRID_CELL_ENTERED(SPATIAL_GRID_CONTENTS_TYPE_CLIENTS), SPATIAL_GRID_CELL_EXITED(SPATIAL_GRID_CONTENTS_TYPE_CLIENTS)))
+
+	for(var/datum/spatial_grid_cell/new_grid as anything in cell_collections[1])
+		RegisterSignal(new_grid, SPATIAL_GRID_CELL_ENTERED(SPATIAL_GRID_CONTENTS_TYPE_CLIENTS), PROC_REF(on_client_enter))
+		RegisterSignal(new_grid, SPATIAL_GRID_CELL_EXITED(SPATIAL_GRID_CONTENTS_TYPE_CLIENTS), PROC_REF(on_client_exit))
+	recalculate_idle()
+
+/datum/ai_controller/proc/should_idle()
+	var/turf/pawn_turf = get_turf(pawn)
+	if(!SSmapping.level_has_any_trait(pawn_turf?.z, list(ZTRAIT_IGNORE_WEATHER_TRAIT)))\
+		return FALSE
+	if(!can_idle)
+		return FALSE
+	for(var/datum/spatial_grid_cell/grid as anything in our_cells.member_cells)
+		if(length(grid.client_contents))
+			return FALSE
+	return TRUE
+
+/datum/ai_controller/proc/recalculate_idle()
+	if(ai_status == AI_STATUS_OFF)
+		return
+	if(should_idle())
+		set_ai_status(AI_STATUS_IDLE)
+
+/datum/ai_controller/proc/on_client_enter(datum/source, atom/target)
+	SIGNAL_HANDLER
+	if(ai_status == AI_STATUS_IDLE)
+		set_ai_status(AI_STATUS_ON)
+
+/datum/ai_controller/proc/on_client_exit(datum/source, datum/exited)
+	SIGNAL_HANDLER
+	recalculate_idle()
+
 /datum/ai_controller/proc/get_current_turf()
 	var/mob/living/mob_pawn = pawn
 	var/turf/pawn_turf = get_turf(mob_pawn)
 	to_chat(world, "[pawn_turf]")
 
 ///Called when the AI controller pawn changes z levels, we check if there's any clients on the new one and wake up the AI if there is.
-/datum/ai_controller/proc/on_changed_z_level(atom/source, turf/old_turf, turf/new_turf, same_z_layer, notify_contents)
+/datum/ai_controller/proc/on_changed_z_level(atom/source, old_z, new_z, same_z_layer, notify_contents)
 	SIGNAL_HANDLER
 	if (ismob(pawn))
 		var/mob/mob_pawn = pawn
 		if((mob_pawn?.client && !continue_processing_when_client))
 			return
-	if(old_turf)
-		GLOB.ai_controllers_by_zlevel[old_turf.z] -= src
-	if(new_turf)
-		GLOB.ai_controllers_by_zlevel[new_turf.z] += src
-		var/new_level_clients = SSmobs.clients_by_zlevel[new_turf.z].len
-		if(new_level_clients)
-			set_ai_status(AI_STATUS_IDLE)
-		else
-			set_ai_status(AI_STATUS_OFF)
+	if(old_z)
+		GLOB.ai_controllers_by_zlevel[old_z] -= src
+
+	if(new_z)
+		GLOB.ai_controllers_by_zlevel[new_z] += src
+		var/turf/pawn_turf = get_turf(pawn)
+		if(SSmapping.level_has_any_trait(pawn_turf?.z, list(ZTRAIT_IGNORE_WEATHER_TRAIT)))
+			var/new_level_clients = SSmobs.clients_by_zlevel[new_z].len
+			if(new_level_clients)
+				set_ai_status(AI_STATUS_IDLE)
+			else
+				set_ai_status(AI_STATUS_OFF)
 
 ///Abstract proc for initializing the pawn to the new controller
 /datum/ai_controller/proc/TryPossessPawn(atom/new_pawn)
@@ -213,8 +269,11 @@ have ways of interacting with a specific atom and control it. They posses a blac
 	if(!pawn_turf)
 		CRASH("AI controller [src] controlling pawn ([pawn]) is not on a turf.")
 #endif
-	if(!length(SSmobs.clients_by_zlevel[pawn_turf?.z]))
-		return AI_STATUS_OFF
+	if(SSmapping.level_has_any_trait(pawn_turf?.z, list(ZTRAIT_IGNORE_WEATHER_TRAIT)))
+		if(!length(SSmobs.clients_by_zlevel[pawn_turf?.z]))
+			return AI_STATUS_OFF
+	if(should_idle())
+		return AI_STATUS_IDLE
 	return AI_STATUS_ON
 
 ///Returns TRUE if the ai controller can actually run at the moment.

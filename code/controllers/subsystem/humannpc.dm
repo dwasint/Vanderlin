@@ -1,7 +1,7 @@
 
 SUBSYSTEM_DEF(humannpc)
 	name = "humannpc"
-	wait = 5
+	wait = 0.5 SECONDS
 	flags = SS_KEEP_TIMING
 	priority = 50
 	var/list/processing = list()
@@ -23,9 +23,14 @@ SUBSYSTEM_DEF(humannpc)
 				return
 			continue
 
+		if(!thing.z)
+			continue
+		if(!SSmobs.clients_by_zlevel[thing.z])
+			continue
+
 		var/will_try = FALSE
 		for(var/client/client_found in GLOB.clients)
-			if(get_dist(get_turf(client_found.mob), get_turf(thing)) <= 14)
+			if(get_dist(get_turf(client_found.mob), get_turf(thing)) <= 45)
 				will_try = TRUE
 				break
 		if(will_try)

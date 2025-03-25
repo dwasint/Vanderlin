@@ -17,7 +17,6 @@
 	blade_dulling = DULLING_BASHCHOP
 	break_sound = 'sound/combat/hits/onwood/destroywalldoor.ogg'
 	attacked_sound = list('sound/combat/hits/onwood/woodimpact (1).ogg','sound/combat/hits/onwood/woodimpact (2).ogg')
-	flags_1 = HEAR_1
 
 	can_add_lock = FALSE
 	redstone_structure = TRUE
@@ -67,6 +66,7 @@
 	icon_state = "stonebrick"
 
 /obj/structure/mineral_door/secret/Initialize()
+	become_hearing_sensitive()
 	open_phrase = open_word() + " " + magic_word()
 	close_phrase = close_word() + " " + magic_word()
 	. = ..()
