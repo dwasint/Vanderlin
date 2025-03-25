@@ -186,7 +186,11 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 
 /mob/living/simple_animal/Initialize()
 	. = ..()
-	GLOB.simple_animals[AIStatus] += src
+	if(!(AIStatus in GLOB.simple_animals))
+		GLOB.simple_animals |= "[AIStatus]"
+		GLOB.simple_animals["[AIStatus]"] = list()
+
+	GLOB.simple_animals["[AIStatus]"] += src
 	if(gender == PLURAL)
 		gender = pick(MALE,FEMALE)
 	if(!real_name)
@@ -200,7 +204,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 //		AddComponent(/datum/component/personal_crafting)
 
 /mob/living/simple_animal/Destroy()
-	GLOB.simple_animals[AIStatus] -= src
+	GLOB.simple_animals["[AIStatus]"] -= src
 	if (SSnpcpool.state == SS_PAUSED && LAZYLEN(SSnpcpool.currentrun))
 		SSnpcpool.currentrun -= src
 
@@ -893,8 +897,8 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 					SSidlenpcpool.idle_mobs_by_zlevel[T.z] -= src
 				else
 					SSidlenpcpool.idle_mobs_by_zlevel[T.z] += src
-			GLOB.simple_animals[AIStatus] -= src
-			GLOB.simple_animals[togglestatus] += src
+			GLOB.simple_animals["[AIStatus]"] -= src
+			GLOB.simple_animals["[togglestatus]"] += src
 			AIStatus = togglestatus
 		else
 			stack_trace("Something attempted to set simple animals AI to an invalid state: [togglestatus]")

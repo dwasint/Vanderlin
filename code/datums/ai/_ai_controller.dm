@@ -60,6 +60,11 @@ have ways of interacting with a specific atom and control it. They posses a blac
 	///Time at which controller became inactive
 	var/inactive_timestamp
 
+	///Can this AI idle?
+	var/can_idle = TRUE
+	///What distance should we be checking for interesting things when considering idling/deidling? Defaults to AI_DEFAULT_INTERESTING_DIST
+	var/interesting_dist = AI_DEFAULT_INTERESTING_DIST
+
 
 /datum/ai_controller/New(atom/new_pawn)
 	change_ai_movement_type(ai_movement)
@@ -104,7 +109,7 @@ have ways of interacting with a specific atom and control it. They posses a blac
 		return
 	var/list/temp_subtree_list = list()
 	for(var/subtree in planning_subtrees)
-		var/subtree_instance = SSai_controllers.ai_subtrees[subtree]
+		var/subtree_instance = GLOB.ai_subtrees[subtree]
 		temp_subtree_list += subtree_instance
 	planning_subtrees = temp_subtree_list
 
@@ -120,6 +125,10 @@ have ways of interacting with a specific atom and control it. They posses a blac
 	pawn = new_pawn
 	pawn.ai_controller = src
 
+	var/turf/pawn_turf = get_turf(pawn)
+	if(pawn_turf)
+		GLOB.ai_controllers_by_zlevel[pawn_turf.z] += src
+
 	if(!continue_processing_when_client && istype(new_pawn, /mob))
 		var/mob/possible_client_holder = new_pawn
 		if(possible_client_holder.client)
@@ -129,8 +138,31 @@ have ways of interacting with a specific atom and control it. They posses a blac
 	else
 		set_ai_status(AI_STATUS_ON)
 
+	RegisterSignal(pawn, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(on_changed_z_level))
 	RegisterSignal(pawn, COMSIG_MOB_LOGIN, PROC_REF(on_sentience_gained))
 	RegisterSignal(pawn, COMSIG_MOB_STATCHANGE, PROC_REF(on_stat_changed))
+
+/datum/ai_controller/proc/get_current_turf()
+	var/mob/living/mob_pawn = pawn
+	var/turf/pawn_turf = get_turf(mob_pawn)
+	to_chat(world, "[pawn_turf]")
+
+///Called when the AI controller pawn changes z levels, we check if there's any clients on the new one and wake up the AI if there is.
+/datum/ai_controller/proc/on_changed_z_level(atom/source, turf/old_turf, turf/new_turf, same_z_layer, notify_contents)
+	SIGNAL_HANDLER
+	if (ismob(pawn))
+		var/mob/mob_pawn = pawn
+		if((mob_pawn?.client && !continue_processing_when_client))
+			return
+	if(old_turf)
+		GLOB.ai_controllers_by_zlevel[old_turf.z] -= src
+	if(new_turf)
+		GLOB.ai_controllers_by_zlevel[new_turf.z] += src
+		var/new_level_clients = SSmobs.clients_by_zlevel[new_turf.z].len
+		if(new_level_clients)
+			set_ai_status(AI_STATUS_IDLE)
+		else
+			set_ai_status(AI_STATUS_OFF)
 
 ///Abstract proc for initializing the pawn to the new controller
 /datum/ai_controller/proc/TryPossessPawn(atom/new_pawn)
@@ -138,7 +170,12 @@ have ways of interacting with a specific atom and control it. They posses a blac
 
 ///Proc for deinitializing the pawn to the old controller
 /datum/ai_controller/proc/UnpossessPawn(destroy)
-	UnregisterSignal(pawn, list(COMSIG_MOB_LOGIN, COMSIG_MOB_LOGOUT, COMSIG_MOB_STATCHANGE))
+	UnregisterSignal(pawn, list(COMSIG_MOVABLE_Z_CHANGED, COMSIG_MOB_LOGIN, COMSIG_MOB_LOGOUT, COMSIG_MOB_STATCHANGE))
+	var/turf/pawn_turf = get_turf(pawn)
+	if(pawn_turf)
+		GLOB.ai_controllers_by_zlevel[pawn_turf.z] -= src
+	if(ai_status)
+		GLOB.ai_controllers_by_status[ai_status] -= src
 	pawn.ai_controller = null
 	pawn = null
 	if(destroy)
@@ -295,19 +332,28 @@ have ways of interacting with a specific atom and control it. They posses a blac
 /datum/ai_controller/proc/set_ai_status(new_ai_status)
 	if(ai_status == new_ai_status)
 		return FALSE //no change
+
+	//remove old status, if we've got one
+	if(ai_status)
+		GLOB.ai_controllers_by_status[ai_status] -= src
+	stop_previous_processing()
 	ai_status = new_ai_status
+	GLOB.ai_controllers_by_status[new_ai_status] += src
 	switch(ai_status)
 		if(AI_STATUS_ON)
-			SSai_controllers.active_ai_controllers += src
-			SSai_controllers.inactive_ai_controllers -= src
-			inactive_timestamp = null
 			START_PROCESSING(SSai_behaviors, src)
-		if(AI_STATUS_OFF)
-			STOP_PROCESSING(SSai_behaviors, src)
-			SSai_controllers.active_ai_controllers -= src
-			SSai_controllers.inactive_ai_controllers += src
-			inactive_timestamp = world.time
+		if(AI_STATUS_IDLE)
+			START_PROCESSING(SSidle_ai_behaviors, src)
 			CancelActions()
+		if(AI_STATUS_OFF)
+			CancelActions()
+
+/datum/ai_controller/proc/stop_previous_processing()
+	switch(ai_status)
+		if(AI_STATUS_ON)
+			STOP_PROCESSING(SSai_behaviors, src)
+		if(AI_STATUS_IDLE)
+			STOP_PROCESSING(SSidle_ai_behaviors, src)
 
 /datum/ai_controller/proc/PauseAi(time)
 	paused_until = world.time + time

@@ -1,8 +1,8 @@
 #define GET_AI_BEHAVIOR(behavior_type) SSai_behaviors.ai_behaviors[behavior_type]
 #define HAS_AI_CONTROLLER_TYPE(thing, type) istype(thing?.ai_controller, type)
-#define AI_STATUS_ON		1
-#define AI_STATUS_OFF		2
-#define AI_STATUS_IDLE      3
+#define AI_STATUS_ON		"ai_on"
+#define AI_STATUS_OFF		"ai_off"
+#define AI_STATUS_IDLE      "ai_idle"
 
 ///Carbon checks
 #define SHOULD_RESIST(source) (source.on_fire || source.buckled || HAS_TRAIT(source, TRAIT_RESTRAINED) || (source.pulledby && source.pulledby.grab_state > GRAB_PASSIVE))

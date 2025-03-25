@@ -22,7 +22,15 @@ SUBSYSTEM_DEF(humannpc)
 			if (MC_TICK_CHECK)
 				return
 			continue
-		try_process_ai(thing)
+
+		var/will_try = FALSE
+		for(var/client/client_found in GLOB.clients)
+			if(get_dist(get_turf(client_found.mob), get_turf(thing)) <= 14)
+				will_try = TRUE
+				break
+		if(will_try)
+			try_process_ai(thing)
+
 		if (MC_TICK_CHECK)
 			return
 
