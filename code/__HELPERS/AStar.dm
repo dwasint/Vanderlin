@@ -60,18 +60,18 @@ Actual Adjacent procs :
 /proc/HeapPathWeightCompare(datum/PathNode/a, datum/PathNode/b)
 	return b.f - a.f
 
-/proc/get_path_to(caller, end, dist, maxnodes, maxnodedepth = 30, mintargetdist, adjacent = /turf/proc/reachableTurftest, id = null, turf/exclude = null, simulated_only = TRUE)
+/proc/get_path_to(caller, end, dist, maxnodes, maxnodedepth = 30, mintargetdist, adjacent = /turf/proc/reachableTurftest, id = null, turf/exclude = null, simulated_only = TRUE, check_z_levels = TRUE)
 	var/l = SSpathfinder.mobs.getfree(caller)
 	while (!l)
 		stoplag(3)
 		l = SSpathfinder.mobs.getfree(caller)
-	var/list/path = AStar(caller, end, dist, maxnodes, maxnodedepth, mintargetdist, adjacent, id, exclude, simulated_only)
+	var/list/path = AStar(caller, end, dist, maxnodes, maxnodedepth, mintargetdist, adjacent, id, exclude, simulated_only, check_z_levels)
 	SSpathfinder.mobs.found(l)
 	if (!path)
 		path = list()
 	return path
 
-/proc/AStar(caller, _end, dist, maxnodes, maxnodedepth = 30, mintargetdist, adjacent = /turf/proc/reachableTurftest, id = null, turf/exclude = null, simulated_only = TRUE)
+/proc/AStar(caller, _end, dist, maxnodes, maxnodedepth = 30, mintargetdist, adjacent = /turf/proc/reachableTurftest, id = null, turf/exclude = null, simulated_only = TRUE, check_z_levels = TRUE)
 	var/turf/end = get_turf(_end)
 	var/turf/start = get_turf(caller)
 	if (!start || !end)
@@ -100,12 +100,11 @@ Actual Adjacent procs :
 
 		// Only consider "close enough" if on the same Z-level
 		var/closeenough = FALSE
-		if (cur.source.z == end.z)
+		if (!check_z_levels || cur.source.z == end.z)
 			if (mintargetdist)
 				closeenough = cur.source.Distance3D(end) <= mintargetdist
 			else
 				closeenough = cur.source.Distance3D(end) < 1
-
 
 		if (is_destination || closeenough)
 			path = new()
@@ -125,6 +124,9 @@ Actual Adjacent procs :
 					if (i < 4) // Cardinal directions (bits 0-3)
 						T = get_step(cur.source, 1 << i)
 					else // Z-level movement (bits 4-5)
+						// Only process z-level movement if check_z_levels is TRUE
+						if (!check_z_levels)
+							continue
 						T = get_turf_zchange(cur.source, i)
 
 					if (!T || T == exclude)
@@ -143,7 +145,7 @@ Actual Adjacent procs :
 
 					newg += cur.source.path_weight
 					// Apply a larger penalty for changing z-levels to prefer same-level paths
-					if (i >= 4)
+					if (i >= 4 && check_z_levels)
 						newg += 10 // Increased penalty to make same-level paths more preferred
 
 					if (CN)
@@ -220,7 +222,7 @@ Actual Adjacent procs :
 
 	return null
 
-/turf/proc/reachableTurftest(caller, turf/T, ID, simulated_only = TRUE)
+/turf/proc/reachableTurftest(caller, turf/T, ID, simulated_only = TRUE, check_z_levels = TRUE)
 	if (!T || !istype(T))
 		return FALSE
 
@@ -237,11 +239,11 @@ Actual Adjacent procs :
 			return FALSE
 
 	// Same z-level movement - use standard check
-	if (T.z == z)
+	if (!check_z_levels || T.z == z)
 		return !LinkBlockedWithAccess(T, caller, ID)
 
 	// Z-level transition - check if it's a valid stair transition
-	if (abs(T.z - z) == 1)
+	if (check_z_levels && abs(T.z - z) == 1)
 		if (T.z > z) // Moving up
 			// Check if we can reach T via stairs
 			var/turf/stair_dest = get_turf_zchange(src, 4) // 4 = UP
