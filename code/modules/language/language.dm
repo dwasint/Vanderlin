@@ -35,8 +35,8 @@
 	var/additional_syllable_high = 3
 
 	var/list/spans = list()
-	var/list/scramble_cache = list()
-
+	/// List of characters that will randomly be inserted between syllables.
+	var/list/special_characters
 	/**
 	 * Cache of recently scrambled text
 	 * This allows commonly reused words to not require a full re-scramble every time.

@@ -172,5 +172,4 @@
 
 	mutual_understanding = list(
 		/datum/language/dwarvish = 33,
-		/datum/language/uncommon = 20,
 	)

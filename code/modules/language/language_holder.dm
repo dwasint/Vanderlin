@@ -56,9 +56,9 @@
 
 /// Grants partial understanding of the passed language.
 /// Giving 100 understanding is basically equivalent to knowning the language, just with butchered punctuation.
-/datum/language_holder/proc/grant_partial_language(language, amount = 50, source = LANGUAGE_MIND)
+/datum/language_holder/proc/grant_partial_language(language, amount = 50)
 	LAZYINITLIST(other_mutual_understanding)
-	LAZYSET(other_mutual_understanding[language], source, amount)
+	other_mutual_understanding[language] = amount
 	return TRUE
 
 /datum/language_holder/proc/remove_language(datum/language/dt, shadow = FALSE)
@@ -72,16 +72,16 @@
 
 
 /// Removes partial understanding of the passed language.
-/datum/language_holder/proc/remove_partial_language(language, source = LANGUAGE_MIND)
-	LAZYREMOVE(other_mutual_understanding[language], source)
+/datum/language_holder/proc/remove_partial_language(language)
+	other_mutual_understanding -= language
 	ASSOC_UNSETEMPTY(other_mutual_understanding, language)
 	UNSETEMPTY(other_mutual_understanding)
 	return TRUE
 
 /// Removes all partial understandings of all languages.
-/datum/language_holder/proc/remove_all_partial_languages(source = LANGUAGE_MIND)
+/datum/language_holder/proc/remove_all_partial_languages()
 	for(var/language in other_mutual_understanding)
-		remove_partial_language(language, source)
+		remove_partial_language(language)
 	return TRUE
 
 /datum/language_holder/proc/has_language(datum/language/dt)
@@ -130,7 +130,7 @@
 /// Gets a list of all mutually understood languages.
 /datum/language_holder/proc/get_partially_understood_languages()
 	var/list/mutual_languages = list()
-	for(var/language_type in understood_languages)
+	for(var/language_type in languages)
 		var/datum/language/language_instance = GLOB.language_datum_instances[language_type]
 		for(var/mutual_language_type in language_instance.mutual_understanding)
 			// add it to the list OR override it if it's a stronger mutual understanding

@@ -7,6 +7,9 @@
  *			Text modification
  *			Misc
  */
+/// BYOND's string procs don't support being used on datum references (as in it doesn't look for a name for stringification)
+/// We just use this macro to ensure that we will only pass strings to this BYOND-level function without developers needing to really worry about it.
+#define LOWER_TEXT(thing) lowertext(UNLINT("[thing]"))
 
 /proc/format_table_name(table as text)
 	return CONFIG_GET(string/feedback_tableprefix) + table
@@ -39,17 +42,6 @@
 		text_parts += copytext_char(t, last_pos)
 
 	return jointext(text_parts, "")
-
-// Removes punctuation
-/proc/strip_punctuation(t,limit=MAX_MESSAGE_LEN)
-	var/list/strip_chars = list(",",".","!","?")
-	t = copytext_char(t,1,limit)
-	for(var/char in strip_chars)
-		var/index = findtext(t, char)
-		while(index)
-			t = copytext_char(t, 1, index) + copytext_char(t, index+1)
-			index = findtext(t, char)
-	return t
 
 //Removes a few problematic characters
 /proc/sanitize_simple(t,list/repl_chars = list("\n"="#","\t"="#"))

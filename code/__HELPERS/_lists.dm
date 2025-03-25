@@ -297,6 +297,24 @@
 
 	return final_list
 
+/**
+ * Like pick_weight, but allowing for nested lists.
+ *
+ * For example, given the following list:
+ * list(A = 1, list(B = 1, C = 1))
+ * A would have a 50% chance of being picked,
+ * and list(B, C) would have a 50% chance of being picked.
+ * If list(B, C) was picked, B and C would then each have a 50% chance of being picked.
+ * So the final probabilities would be 50% for A, 25% for B, and 25% for C.
+ *
+ * Weights should be integers. Entries without weights are assigned weight 1 (so unweighted lists can be used as well)
+ */
+/proc/pick_weight_recursive(list/list_to_pick)
+	var/result = pickweight(fill_with_ones(list_to_pick))
+	while(islist(result))
+		result = pickweight(fill_with_ones(result))
+	return result
+
 //Picks a random element from a list based on a weighting system:
 //1. Adds up the total of weights for each element
 //2. Gets a number between 1 and that total
