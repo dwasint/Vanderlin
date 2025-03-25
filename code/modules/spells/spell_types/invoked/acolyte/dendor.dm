@@ -125,6 +125,7 @@
 		B.ai_controller?.CancelActions()
 		B.ai_controller.set_blackboard_key(BB_PET_TARGETING_DATUM, new /datum/targetting_datum/basic/not_friends())
 		B.befriend(user)
+		B.pet_passive = TRUE
 	return ..()
 
 

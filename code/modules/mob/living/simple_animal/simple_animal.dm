@@ -257,6 +257,25 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	INVOKE_ASYNC(src, PROC_REF(emote), "lower_head", null, null, null, TRUE)
 	tame = TRUE
 	befriend(user)
+	pet_passive = TRUE
+
+	if(ai_controller)
+		var/static/list/pet_commands = list(
+			/datum/pet_command/idle,
+			/datum/pet_command/free,
+			/datum/pet_command/good_boy,
+			/datum/pet_command/follow/wolf,
+			/datum/pet_command/point_targeting/attack,
+			/datum/pet_command/point_targeting/fetch,
+			/datum/pet_command/play_dead,
+			/datum/pet_command/protect_owner,
+			/datum/pet_command/aggressive,
+			/datum/pet_command/calm,
+		)
+		var/datum/component/obeys_commands/commands = GetComponent(/datum/component/obeys_commands)
+		if(!commands)
+			AddComponent(/datum/component/obeys_commands, pet_commands)
+
 	stop_automated_movement_when_pulled = TRUE
 	if(user)
 		owner = user
