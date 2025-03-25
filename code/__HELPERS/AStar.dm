@@ -60,18 +60,18 @@ Actual Adjacent procs :
 /proc/HeapPathWeightCompare(datum/PathNode/a, datum/PathNode/b)
 	return b.f - a.f
 
-/proc/get_path_to(caller, end, dist, maxnodes, maxnodedepth = 30, mintargetdist, id = null, turf/exclude = null, simulated_only = TRUE)
+/proc/get_path_to(caller, end, dist, maxnodes, maxnodedepth = 30, mintargetdist, adjacent = /turf/proc/reachableTurftest, id = null, turf/exclude = null, simulated_only = TRUE)
 	var/l = SSpathfinder.mobs.getfree(caller)
 	while (!l)
 		stoplag(3)
 		l = SSpathfinder.mobs.getfree(caller)
-	var/list/path = AStar(caller, end, maxnodes, maxnodedepth, mintargetdist, id, exclude, simulated_only)
+	var/list/path = AStar(caller, end, dist, maxnodes, maxnodedepth, mintargetdist, adjacent, id, exclude, simulated_only)
 	SSpathfinder.mobs.found(l)
 	if (!path)
 		path = list()
 	return path
 
-/proc/AStar(caller, _end, maxnodes, maxnodedepth = 30, mintargetdist, id = null, turf/exclude = null, simulated_only = TRUE)
+/proc/AStar(caller, _end, dist, maxnodes, maxnodedepth = 30, mintargetdist, adjacent = /turf/proc/reachableTurftest, id = null, turf/exclude = null, simulated_only = TRUE)
 	var/turf/end = get_turf(_end)
 	var/turf/start = get_turf(caller)
 	if (!start || !end)
