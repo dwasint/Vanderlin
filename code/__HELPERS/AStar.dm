@@ -79,7 +79,7 @@ Actual Adjacent procs :
 		return FALSE
 	if (start == end)
 		return FALSE
-	if (maxnodes && call(start, dist)(end) > maxnodes)
+	if (maxnodes && start.Distance3D(end) > maxnodes)
 		return FALSE
 	maxnodedepth = maxnodes
 
@@ -88,7 +88,7 @@ Actual Adjacent procs :
 	var/list/path = null
 
 	// Important: Initialize with bf=63 to enable all 6 directions (bits 0-5)
-	var/datum/PathNode/cur = new /datum/PathNode(start, null, 0, call(start, dist)(end), 0, 63)
+	var/datum/PathNode/cur = new /datum/PathNode(start, null, 0, start.Distance3D(end), 0, 63)
 	open.Insert(cur)
 	openc[start] = cur
 
@@ -102,9 +102,9 @@ Actual Adjacent procs :
 		var/closeenough = FALSE
 		if (cur.source.z == end.z)
 			if (mintargetdist)
-				closeenough = call(cur.source, dist)(end) <= mintargetdist
+				closeenough = cur.source.Distance3D(end) <= mintargetdist
 			else
-				closeenough = call(cur.source, dist)(end) < 1
+				closeenough = cur.source.Distance3D(end) < 1
 
 
 		if (is_destination || closeenough)
@@ -139,7 +139,7 @@ Actual Adjacent procs :
 					else // For z-level movement
 						r = 1 << (9 - i) // bit 4 (UP) corresponds to bit 5 (DOWN) and vice versa
 
-					var/newg = cur.g + call(cur.source, dist)(T)
+					var/newg = cur.g + cur.source.Distance3D(T)
 
 					// Apply a larger penalty for changing z-levels to prefer same-level paths
 					if (i >= 4)
@@ -151,10 +151,10 @@ Actual Adjacent procs :
 						else
 							CN.bf &= ~(1 << (9 - i)) // Clear reverse z-level direction
 
-						if (newg < CN.g && call(cur.source, adjacent)(caller, T, id, simulated_only))
+						if (newg < CN.g && cur.source.reachableTurftest(caller, T, id, simulated_only))
 							CN.setp(cur, newg, CN.h, cur.nt + 1)
 							open.ReSort(CN)
-					else if (call(cur.source, adjacent)(caller, T, id, simulated_only))
+					else if (cur.source.reachableTurftest(caller, T, id, simulated_only))
 						// For new nodes, initialize with all directions except the one we came from
 						var/new_bf = 63
 						if (i < 4)
@@ -162,7 +162,7 @@ Actual Adjacent procs :
 						else
 							new_bf &= ~(1 << (9 - i))
 
-						CN = new(T, cur, newg, call(T, dist)(end), cur.nt + 1, new_bf)
+						CN = new(T, cur, newg, T.Distance3D(end), cur.nt + 1, new_bf)
 						open.Insert(CN)
 						openc[T] = CN
 
