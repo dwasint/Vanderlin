@@ -1079,6 +1079,14 @@
 	var/datum/language_holder/H = get_language_holder()
 	. = H.get_random_understood_language()
 
+/// Gets a list of all mutually understood languages.
+/atom/movable/proc/get_partially_understood_languages()
+	return get_language_holder().get_partially_understood_languages()
+
+/// Grants partial understanding of a language.
+/atom/movable/proc/grant_partial_language(language, amount = 50, source = LANGUAGE_ATOM)
+	return get_language_holder().grant_partial_language(language, amount, source)
+
 /atom/movable/proc/remove_language(datum/language/dt, body = FALSE)
 	var/datum/language_holder/H = get_language_holder(!body)
 	H.remove_language(dt, body)
@@ -1086,6 +1094,14 @@
 /atom/movable/proc/remove_all_languages()
 	var/datum/language_holder/H = get_language_holder()
 	H.remove_all_languages()
+
+/// Removes partial understanding of a language.
+/atom/movable/proc/remove_partial_language(language, source = LANGUAGE_ALL)
+	return get_language_holder().remove_partial_language(language, source)
+
+/// Removes all partial languages.
+/atom/movable/proc/remove_all_partial_languages(source = LANGUAGE_ALL)
+	return get_language_holder().remove_all_partial_languages(source)
 
 /atom/movable/proc/has_language(datum/language/dt)
 	var/datum/language_holder/H = get_language_holder()

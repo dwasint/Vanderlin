@@ -6,7 +6,12 @@
 	exclaim_verb = "shouts"
 	key = "m"
 	flags = LANGUAGE_HIDE_ICON_IF_UNDERSTOOD
-	space_chance = 55
+	space_chance = 20
+	sentence_chance = 0
+	between_word_sentence_chance = 10
+	between_word_space_chance = 75
+	additional_syllable_low = 1
+	additional_syllable_high = 2
 	default_priority = 80
 	icon_state = "psydon"
 	spans = list(SPAN_OLDPSYDONIC)

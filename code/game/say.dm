@@ -185,7 +185,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 		return no_quote ? source.quoteless_say_quote(raw_message, spans, message_mode) : source.say_quote(raw_message, spans, message_mode)
 	else if(language)
 		var/datum/language/D = GLOB.language_datum_instances[language]
-		raw_message = D.scramble(raw_message)
+		raw_message = D.scramble_sentence(raw_message, get_partially_understood_languages())
 		return no_quote ? source.quoteless_say_quote(raw_message, spans, message_mode) : source.say_quote(raw_message, spans, message_mode)
 	else
 		return "makes a strange sound."
