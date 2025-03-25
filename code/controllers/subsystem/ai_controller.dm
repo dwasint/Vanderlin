@@ -13,6 +13,11 @@ SUBSYSTEM_DEF(ai_controllers)
 	///List of all AI controllers that are not running
 	var/list/inactive_ai_controllers = list()
 
+	/// The tick cost of all active AI, calculated on fire.
+	var/cost_on
+	/// The tick cost of all idle AI, calculated on fire.
+	var/cost_idle
+
 #define AI_STATUS_OFF_MAX_TIME 5 SECONDS
 
 /datum/controller/subsystem/ai_controllers/Initialize(timeofday)

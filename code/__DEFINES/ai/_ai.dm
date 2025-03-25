@@ -2,10 +2,15 @@
 #define HAS_AI_CONTROLLER_TYPE(thing, type) istype(thing?.ai_controller, type)
 #define AI_STATUS_ON		1
 #define AI_STATUS_OFF		2
+#define AI_STATUS_IDLE      3
 
 ///Carbon checks
 #define SHOULD_RESIST(source) (source.on_fire || source.buckled || HAS_TRAIT(source, TRAIT_RESTRAINED) || (source.pulledby && source.pulledby.grab_state > GRAB_PASSIVE))
 #define IS_DEAD_OR_INCAP(source) (source.incapacitated() || source.stat)
+
+
+// How far should we, by default, be looking for interesting things to de-idle?
+#define AI_DEFAULT_INTERESTING_DIST 14
 
 ///Max pathing attempts before auto-fail
 #define MAX_PATHING_ATTEMPTS 30
