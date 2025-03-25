@@ -504,7 +504,7 @@
 					item = I
 					break
 		if(item)
-			if(!AStar(src, get_turf(item), /turf/proc/Distance_cardinal))
+			if(!AStar(src, get_turf(item)))
 				item = null
 				continue
 			return item

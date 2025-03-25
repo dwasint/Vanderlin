@@ -100,4 +100,4 @@
 					continue
 
 				COOLDOWN_START(controller, repath_cooldown, 2 SECONDS)
-				controller.movement_path = get_path_to(movable_pawn, controller.current_movement_target, /turf/proc/Distance3D, max_path_distance + 1, 250,  minimum_distance, id=controller.get_access())
+				controller.movement_path = get_path_to(movable_pawn, controller.current_movement_target, max_path_distance + 1, 250,  minimum_distance, id=controller.get_access())
