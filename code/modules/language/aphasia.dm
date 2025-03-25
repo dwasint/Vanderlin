@@ -10,4 +10,4 @@
 	syllables = list("m","n","gh","h","l","s","r","a","e","i","o","u")
 	space_chance = 20
 	default_priority = 10
-	icon_state = "aphasia"
+	icon_state = "gibbering"

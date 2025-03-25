@@ -41,7 +41,7 @@
  * * extra_classes - Extra classes to apply to the span that holds the text
  * * lifespan - The lifespan of the message in deciseconds
  */
-/datum/chatmessage/New(text, atom/target, mob/owner, list/extra_classes = null, lifespan = CHAT_MESSAGE_LIFESPAN)
+/datum/chatmessage/New(text, atom/target, mob/owner, datum/language/language, list/extra_classes = list(), lifespan = CHAT_MESSAGE_LIFESPAN)
 	. = ..()
 	if (!istype(target))
 		CRASH("Invalid target given for chatmessage")
@@ -49,7 +49,7 @@
 		stack_trace("/datum/chatmessage created with [isnull(owner) ? "null" : "invalid"] mob owner")
 		qdel(src)
 		return
-	INVOKE_ASYNC(src, PROC_REF(generate_image), text, target, owner, extra_classes, lifespan)
+	INVOKE_ASYNC(src, PROC_REF(generate_image), text, target, owner, language, extra_classes, lifespan)
 
 /datum/chatmessage/Destroy()
 	if (owned_by)
@@ -71,7 +71,9 @@
  * * extra_classes - Extra classes to apply to the span that holds the text
  * * lifespan - The lifespan of the message in deciseconds
  */
-/datum/chatmessage/proc/generate_image(text, atom/target, mob/owner, list/extra_classes, lifespan)
+/datum/chatmessage/proc/generate_image(text, atom/target, mob/owner, datum/language/language, list/extra_classes, lifespan)
+	/// Cached icons to show what language the user is speaking
+	var/static/list/language_icons
 	// Register client who owns this message
 	owned_by = owner.client
 	RegisterSignal(owned_by, COMSIG_PARENT_QDELETING, PROC_REF(qdel), src)
@@ -110,11 +112,23 @@
 	if (!ismob(target))
 		extra_classes |= "small"
 
+	var/list/prefixes
 	// Append radio icon if from a virtual speaker
 	if (extra_classes.Find("virtual-speaker"))
 		var/image/r_icon = image('icons/UI_Icons/chat/chat_icons.dmi', icon_state = "radio")
-		text =  "\icon[r_icon]&nbsp;" + text
+		LAZYADD(prefixes, "\icon[r_icon]")
 
+	// Append language icon if the language uses one
+	var/datum/language/language_instance = GLOB.language_datum_instances[language]
+	if (language_instance?.display_icon(owner))
+		var/icon/language_icon = LAZYACCESS(language_icons, language)
+		if (isnull(language_icon))
+			language_icon = icon(language_instance.icon, icon_state = language_instance.icon_state)
+			language_icon.Scale(9, 9)
+			LAZYSET(language_icons, language, language_icon)
+		LAZYADD(prefixes, "\icon[language_icon]")
+
+	text = "[prefixes?.Join("&nbsp;")][text]"
 	// We dim italicized text to make it more distinguishable from regular text
 	var/tgt_color = extra_classes.Find("italics") ? target.chat_color_darkened : target.chat_color
 
@@ -229,7 +243,7 @@
 		text = lang_treat(speaker, message_language, raw_message, spans, null, TRUE)
 
 	// Display visual above source
-	new /datum/chatmessage(text, speaker, src, spans)
+	new /datum/chatmessage(text, speaker, src, message_language, spans)
 
 // Tweak these defines to change the available color ranges
 #define CM_COLOR_SAT_MIN	0.6

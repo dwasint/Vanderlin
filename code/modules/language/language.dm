@@ -26,7 +26,7 @@
 
 
 	// if you are seeing someone speak popcorn language, then something is wrong.
-	var/icon = 'icons/misc/language.dmi'
+	var/icon = 'icons/language.dmi'
 	var/icon_state = "popcorn"
 
 /datum/language/proc/display_icon(atom/movable/hearer)
@@ -38,8 +38,7 @@
 	return TRUE
 
 /datum/language/proc/get_icon()
-	var/datum/asset/spritesheet/sheet = get_asset_datum(/datum/asset/spritesheet/goonchat)
-	return sheet.icon_tag("language-[icon_state]")
+	return "[icon2html(icon, world, icon_state)]"
 
 /datum/language/proc/get_random_name(gender, name_count=2, syllable_count=4, syllable_divisor=2)
 	if(!syllables || !syllables.len)

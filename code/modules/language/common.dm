@@ -7,10 +7,10 @@
 	exclaim_verb = "yells"
 	ask_verb = "asks"
 	key = "i"
-	flags = LANGUAGE_HIDE_ICON_IF_UNDERSTOOD | LANGUAGE_HIDE_ICON_IF_NOT_UNDERSTOOD
+	flags = LANGUAGE_HIDE_ICON_IF_UNDERSTOOD
 	default_priority = 100
 //	spans = list(SPAN_HUMAN)
-	icon_state = "galcom"
+	icon_state = "imperial"
 
 //Syllable Lists
 /*
