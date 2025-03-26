@@ -1,65 +1,65 @@
 /datum/Heap
-    var/list/L
-    var/cmp
+	var/list/L
+	var/cmp
 
 /datum/Heap/New(compare)
-    L = new()
-    cmp = compare
+	L = new()
+	cmp = compare
 
 /datum/Heap/proc/IsEmpty()
-    return !L.len
+	return !L.len
 
 /datum/Heap/proc/Insert(atom/A)
-    L.Add(A)
-    Swim(L.len)
+	L.Add(A)
+	Swim(L.len)
 
 /datum/Heap/proc/Pop()
-    if(!L.len)
-        return null
-    . = L[1]
-    L[1] = L[L.len]
-    L.Cut(L.len)
-    if(L.len)
-        Sink(1)
+	if(!L.len)
+		return null
+	. = L[1]
+	L[1] = L[L.len]
+	L.Cut(L.len)
+	if(L.len)
+		Sink(1)
 
 /datum/Heap/proc/Swim(index)
-    while(index > 1)
-        var/parent = round(index * 0.5)
-        if(call(cmp)(L[index], L[parent]) <= 0)
-            break
-        L.Swap(index, parent)
-        index = parent
+	while(index > 1)
+		var/parent = round(index * 0.5)
+		if(call(cmp)(L[index], L[parent]) <= 0)
+			break
+		L.Swap(index, parent)
+		index = parent
 
 /datum/Heap/proc/Sink(index)
-    var/length = L.len
-    var/max_iterations = length
+	var/length = L.len
+	var/max_iterations = length
 
-    while(max_iterations > 0)
-        var/left_child = index * 2
-        var/right_child = index * 2 + 1
-        var/largest = index
+	while(max_iterations > 0)
+		var/left_child = index * 2
+		var/right_child = index * 2 + 1
+		var/largest = index
 
-        if(left_child <= length && call(cmp)(L[left_child], L[largest]) > 0)
-            largest = left_child
+		if(left_child <= length && call(cmp)(L[left_child], L[largest]) > 0)
+			largest = left_child
 
-        if(right_child <= length && call(cmp)(L[right_child], L[largest]) > 0)
-            largest = right_child
+		if(right_child <= length && call(cmp)(L[right_child], L[largest]) > 0)
+			largest = right_child
 
-        if(largest == index)
-            break
+		if(largest == index)
+			break
 
-        L.Swap(index, largest)
-        index = largest
-        max_iterations--
+		L.Swap(index, largest)
+		index = largest
+		max_iterations--
 
-    if(max_iterations <= 0)
-        stack_trace("Potential infinite loop in Heap Sink method")
+	if(max_iterations <= 0)
+		stack_trace("Potential infinite loop in Heap Sink method")
 
 /datum/Heap/proc/ReSort(atom/A)
-    var/index = L.Find(A)
-    if(index)
-        Swim(index)
-        Sink(index)
+	var/index = L.Find(A)
+	if(index)
+		Swim(index)
+		Sink(index)
 
 /datum/Heap/proc/List()
-    return L.Copy()
+	return L.Copy()
