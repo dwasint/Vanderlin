@@ -146,17 +146,10 @@
 				costmod *= 0.5
 			if("small")
 				costmod *= 0.75
-			if("large")
-				costmod *= 1.5
-			if("prize")
-				costmod *= 3
 		switch(fishrarity)
 			if("rare")
 				costmod *= 2
-			if("ultra")
-				costmod *= 4
-			if("gold")
-				costmod *= 10
+
 
 		switch(fishrarity)
 			if("rare")
