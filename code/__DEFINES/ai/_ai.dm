@@ -80,6 +80,8 @@ F
 ///maximum kids we can have
 #define BB_MAX_CHILDREN "BB_max_children"
 
+#define BB_MOB_EQUIP_TARGET "BB_equip_target"
+
 #define BB_WANDER_POINT "BB_wander_point"
 
 #define BB_NEST_LIST "BB_nestlist"
@@ -88,7 +90,8 @@ F
 ///the bee hive we live inside
 #define BB_CURRENT_HOME "BB_current_home"
 #define BB_HOME_PATH "BB_home_path"
-
+#define BB_WEAPON_TYPE "BB_weapon_type"
+#define BB_ARMOR_CLASS "BB_armorclass"
 /// Converts a probability/second chance to probability/seconds_per_tick chance
 /// For example, if you want an event to happen with a 10% per second chance, but your proc only runs every 5 seconds, do `if(prob(100*SPT_PROB_RATE(0.1, 5)))`
 #define SPT_PROB_RATE(prob_per_second, seconds_per_tick) (1 - (1 - (prob_per_second)) ** (seconds_per_tick))

@@ -81,7 +81,8 @@ Actual Adjacent procs :
 		return FALSE
 	if (maxnodes && start.Distance3D(end) > maxnodes)
 		return FALSE
-	maxnodedepth = maxnodes
+	if(maxnodes)
+		maxnodedepth = maxnodes
 
 	var/datum/Heap/open = new /datum/Heap(/proc/HeapPathWeightCompare)
 	var/list/openc = new()

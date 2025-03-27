@@ -197,7 +197,9 @@
 	if(I.anchored)
 		blacklistItems[I] ++
 		return FALSE
-
+	if(istype(I, /obj/item/clothing))
+		if(pickup_and_wear(I))
+			return TRUE
 	// WEAPONS
 	if(istype(I, /obj/item))
 		if(put_in_hands(I))
@@ -210,6 +212,7 @@
 	if(!equip_to_appropriate_slot(C))
 		monkeyDrop(get_item_by_slot(C)) // remove the existing item if worn
 		addtimer(CALLBACK(src, PROC_REF(equip_to_appropriate_slot), C), 5)
+	return TRUE
 
 /mob/living/carbon/human/proc/monkeyDrop(obj/item/A)
 	if(A)
