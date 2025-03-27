@@ -442,3 +442,5 @@
 #define COMSIG_MOUSE_ENTERED "comsig_mouse_entered"
 
 #define COMSIG_HABITABLE_HOME "comsig_habitable_home"
+
+#define COMSIG_COMBAT_TARGET_SET "comsig_combat_target_set"

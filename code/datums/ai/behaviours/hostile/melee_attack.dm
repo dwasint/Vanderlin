@@ -14,6 +14,7 @@
 	if(QDELETED(target))
 		return FALSE
 	set_movement_target(controller, (target))
+	SEND_SIGNAL(controller.pawn, COMSIG_COMBAT_TARGET_SET, TRUE)
 
 /datum/ai_behavior/basic_melee_attack/perform(delta_time, datum/ai_controller/controller, target_key, targetting_datum_key, hiding_location_key)
 	. = ..()
@@ -66,6 +67,7 @@
 		controller.clear_blackboard_key(target_key)
 	var/mob/living/simple_animal/basic_mob = controller.pawn
 	basic_mob.cmode = FALSE
+	SEND_SIGNAL(controller.pawn, COMSIG_COMBAT_TARGET_SET, FALSE)
 
 /datum/ai_behavior/basic_ranged_attack
 	action_cooldown = 0.6 SECONDS

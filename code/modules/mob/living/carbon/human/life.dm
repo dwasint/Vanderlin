@@ -31,9 +31,6 @@
 	if (QDELETED(src))
 		return 0
 
-	if(. && (mode != AI_OFF))
-		handle_ai()
-
 	if(advsetup)
 		Stun(50)
 

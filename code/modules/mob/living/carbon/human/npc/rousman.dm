@@ -34,12 +34,15 @@ GLOBAL_LIST_EMPTY(rousman_ambush_objects)
 	add_overlay(eye_overlay)
 
 /mob/living/carbon/human/species/rousman/npc
-	aggressive = 1
-	mode = AI_IDLE
+	ai_controller = /datum/ai_controller/human_npc
 	dodgetime = 13
 	canparry = TRUE
 	flee_in_pain = TRUE
 	wander = FALSE
+
+/mob/living/carbon/human/species/rousman/npc/Initialize()
+	. = ..()
+	AddComponent(/datum/component/combat_noise, list("scream" = 5, "laugh" = 1))
 
 /mob/living/carbon/human/species/rousman/ambush/after_creation()
 	. = ..()
@@ -196,14 +199,6 @@ GLOBAL_LIST_EMPTY(rousman_ambush_objects)
 /mob/living/carbon/human/species/rousman/Initialize()
 	. = ..()
 	addtimer(CALLBACK(src, PROC_REF(after_creation)), 1 SECONDS)
-
-/mob/living/carbon/human/species/rousman/handle_combat()
-	if(mode == AI_HUNT)
-		if(prob(5))
-			emote("scream")
-		else if(prob(1))
-			emote("laugh")
-	. = ..()
 
 /mob/living/carbon/human/species/rousman/after_creation()
 	..()

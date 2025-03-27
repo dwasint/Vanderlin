@@ -15,14 +15,16 @@
 	vitae_pool = 1000 // Not as much vitae from them as humans to avoid vampires cheesing mobs
 
 /mob/living/carbon/human/species/orc/npc
-	aggressive=1
-	mode = AI_IDLE
+	ai_controller = /datum/ai_controller/human_npc
 	dodgetime = 15 //they can dodge easily, but have a cooldown on it
 	canparry = TRUE
 	flee_in_pain = FALSE
 
 	wander = FALSE
 
+/mob/living/carbon/human/species/orc/npc/Initialize()
+	. = ..()
+	AddComponent(/datum/component/combat_noise, list("aggro" = 2))
 
 /mob/living/carbon/human/species/orc/ambush/after_creation()
 	..()
@@ -99,12 +101,6 @@
 	. = ..()
 	addtimer(CALLBACK(src, PROC_REF(after_creation)), 1 SECONDS)
 
-/mob/living/carbon/human/species/orc/handle_combat()
-	if(mode == AI_HUNT)
-		if(prob(2))
-			emote("aggro")
-	. = ..()
-
 /mob/living/carbon/human/species/orc/proc/configure_mind()
 	if(!mind)
 		mind = new /datum/mind(src)
@@ -116,12 +112,6 @@
 	mind.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 	mind.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 	mind.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE)
-
-/mob/living/carbon/human/species/orc/handle_combat()
-	if(mode == AI_HUNT)
-		if(prob(2))
-			emote("aggro")
-	. = ..()
 
 /mob/living/carbon/human/species/orc/after_creation()
 	..()

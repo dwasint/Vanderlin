@@ -12,6 +12,8 @@
 		var/obj/item/clothing/clothing = local_candidate
 		if(clothing.armor_class != controller.blackboard[BB_ARMOR_CLASS])
 			continue
+		if(!(living_pawn?.dna?.species?.id in local_candidate.allowed_race))
+			continue
 		armor += local_candidate
 	if(armor.len)
 		return pick(armor)
