@@ -157,7 +157,7 @@
 	..()
 
 /atom/movable/screen/movable/action_button/MouseExited()
-	close_tooltip(usr)
+	closeToolTip(usr)
 	..()
 
 /datum/hud/proc/get_action_buttons_icons()

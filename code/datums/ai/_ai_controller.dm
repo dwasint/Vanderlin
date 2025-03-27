@@ -150,6 +150,32 @@ have ways of interacting with a specific atom and control it. They posses a blac
 
 	RegisterSignal(pawn, COMSIG_MOVABLE_MOVED, PROC_REF(update_grid))
 
+///Can this pawn interact with objects?
+/datum/ai_controller/proc/ai_can_interact()
+	SHOULD_CALL_PARENT(TRUE)
+	return !QDELETED(pawn)
+
+///Interact with objects
+/datum/ai_controller/proc/ai_interact(target, combat_mode, list/modifiers)
+	if(!ai_can_interact())
+		return FALSE
+
+	var/atom/final_target = isdatum(target) ? target : blackboard[target] //incase we got a blackboard key instead
+
+	if(QDELETED(final_target))
+		return FALSE
+	var/params = list2params(modifiers)
+	var/mob/living/living_pawn = pawn
+	if(isnull(combat_mode))
+		living_pawn.ClickOn(final_target, params)
+		return TRUE
+
+	var/old_combat_mode = living_pawn.cmode
+	living_pawn.cmode = combat_mode
+	living_pawn.ClickOn(final_target, params)
+	living_pawn.cmode = old_combat_mode
+	return TRUE
+
 /datum/ai_controller/proc/update_grid(datum/source, datum/spatial_grid_cell/new_cell)
 	SIGNAL_HANDLER
 	set_new_cells()

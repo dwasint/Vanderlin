@@ -1122,7 +1122,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 /obj/item/MouseExited()
 	. = ..()
 	deltimer(tip_timer)//delete any in-progress timer if the mouse is moved off the item before it finishes
-	close_tooltip(usr)
+	closeToolTip(usr)
 
 
 // Called when a mob tries to use the item as a tool.

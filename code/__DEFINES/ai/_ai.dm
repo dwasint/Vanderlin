@@ -99,3 +99,18 @@ F
 /// Like SPT_PROB_RATE but easier to use, simply put `if(SPT_PROB(10, 5))`
 #define SPT_PROB(prob_per_second_percent, seconds_per_tick) (prob(100*SPT_PROB_RATE((prob_per_second_percent)/100, (seconds_per_tick))))
 // )
+
+///our fishing target
+#define BB_FISHING_TARGET "BB_fishing_target"
+
+///key holding the list of things we are able to fish from
+#define BB_FISHABLE_LIST "BB_fishable_list"
+
+///key holding our cooldown between fishing attempts
+#define BB_FISHING_COOLDOWN "BB_fishing_cooldown"
+
+///key that holds the next time we will start fishing
+#define BB_FISHING_TIMER "BB_fishing_timer"
+
+///are we ONLY allowed to fish when we're hungry?
+#define BB_ONLY_FISH_WHILE_HUNGRY "BB_only_fish_while_hungry"

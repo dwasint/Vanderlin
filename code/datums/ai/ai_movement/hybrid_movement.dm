@@ -17,7 +17,14 @@
 		var/turf/target_turf = get_step_towards(movable_pawn, controller.current_movement_target)
 		var/turf/end_turf = get_turf(controller.current_movement_target)
 		var/advanced = TRUE
-		if(end_turf?.z == movable_pawn?.z && !length(controller.movement_path))
+
+		var/mob/cliented_mob = controller.current_movement_target
+		var/cliented = FALSE
+		if(istype(cliented_mob))
+			if(cliented_mob.client)
+				cliented = TRUE
+
+		if(end_turf?.z == movable_pawn?.z && !length(controller.movement_path) && !cliented)
 			advanced = FALSE
 			var/can_move = TRUE
 
