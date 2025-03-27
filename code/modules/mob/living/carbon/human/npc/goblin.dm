@@ -35,7 +35,7 @@
 	wander = TRUE
 	attack_speed = 2
 
-/mob/living/carbon/human/species/goblin/hell
+/mob/living/carbon/human/species/goblin/npc/hell
 	name = "hell goblin"
 	race = /datum/species/goblin/hell
 

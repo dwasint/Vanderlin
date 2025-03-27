@@ -1984,6 +1984,10 @@
 	ai_controller?.insert_blackboard_key_lazylist(BB_FRIENDS_LIST, new_friend)
 
 	SEND_SIGNAL(src, COMSIG_LIVING_BEFRIENDED, new_friend)
+
+	if(src in SSmobs.matthios_mobs)
+		SSmobs.matthios_mobs -= src
+
 	return TRUE
 
 /// Proc for removing a friend you added with the proc 'befriend'. Returns true if you removed a friend.
