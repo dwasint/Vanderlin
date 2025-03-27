@@ -13,9 +13,13 @@
 	var/obj/item/target = controller.blackboard[target_key]
 	var/mob/living/carbon/human/pawn = controller.pawn
 	if(!isturf(target.loc))
-		finish_action(controller, FALSE)
+		finish_action(controller, FALSE, target_key)
 		return
 	if(pawn.equip_item(target))
-		finish_action(controller, TRUE)
+		finish_action(controller, TRUE, target_key)
 		return
-	finish_action(controller, FALSE)
+	finish_action(controller, FALSE, target_key)
+
+/datum/ai_behavior/equip_target/finish_action(datum/ai_controller/controller, succeeded, target_key)
+	. = ..()
+	controller.clear_blackboard_key(target_key)
