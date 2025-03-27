@@ -6,6 +6,7 @@
 	var/atom/target = controller.blackboard[target_key]
 	if(QDELETED(target))
 		return FALSE
+	set_movement_target(controller, target)
 
 /datum/ai_behavior/equip_target/perform(seconds_per_tick, datum/ai_controller/controller, target_key)
 	. = ..()

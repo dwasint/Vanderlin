@@ -197,9 +197,11 @@
 	if(I.anchored)
 		blacklistItems[I] ++
 		return FALSE
+
 	if(istype(I, /obj/item/clothing))
 		if(pickup_and_wear(I))
 			return TRUE
+
 	// WEAPONS
 	if(istype(I, /obj/item))
 		if(put_in_hands(I))

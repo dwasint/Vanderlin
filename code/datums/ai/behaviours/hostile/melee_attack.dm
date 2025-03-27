@@ -32,7 +32,13 @@
 
 	basic_mob.face_atom()
 	basic_mob.a_intent = pick(basic_mob.possible_a_intents)
+
+	if(!basic_mob.CanReach(target))
+		finish_action(controller, FALSE, target_key)
+		return
+
 	if(hiding_target) //Slap it!
+		basic_mob.cmode = TRUE
 		basic_mob.ClickOn(hiding_target, list())
 	else
 		basic_mob.ClickOn(target, list())
@@ -58,6 +64,8 @@
 	. = ..()
 	if(!succeeded)
 		controller.clear_blackboard_key(target_key)
+	var/mob/living/simple_animal/basic_mob = controller.pawn
+	basic_mob.cmode = FALSE
 
 /datum/ai_behavior/basic_ranged_attack
 	action_cooldown = 0.6 SECONDS
