@@ -228,6 +228,18 @@
 
 	var/last_disturbed = 0
 
+/obj/structure/spider/nest/attack_hand(mob/user)
+	. = ..()
+	var/honey = FLOOR(total_processed * 0.01, 1)
+	if(!honey)
+		return
+	user.visible_message(span_warning("[user] starts to collect the honey from [src]!"), span_warning("You start to collect the honey from [src]!"))
+	if(!do_after(user, 5 SECONDS * honey, src))
+		return
+	for(var/i = 1 to honey)
+		new /obj/item/reagent_containers/food/snacks/spiderhoney(get_turf(src))
+	total_processed -= honey * 100
+
 /obj/structure/spider/nest/Initialize()
 	. = ..()
 	AddComponent(/datum/component/mob_home, 6)

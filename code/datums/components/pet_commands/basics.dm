@@ -308,7 +308,7 @@
 
 /datum/pet_command/fish/execute_action(datum/ai_controller/controller)
 	if(controller.blackboard_key_exists(BB_CURRENT_PET_TARGET))
-		controller.queue_behavior(/datum/ai_behavior/interact_with_target/fishing, BB_CURRENT_PET_TARGET)
+		controller.queue_behavior(/datum/ai_behavior/fishing/wolf, BB_CURRENT_PET_TARGET)
 	return SUBTREE_RETURN_FINISH_PLANNING
 
 /datum/pet_command/fish/retrieve_command_text(atom/living_pet, atom/target)

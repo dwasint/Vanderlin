@@ -65,6 +65,7 @@
 	can_have_ai = FALSE
 	ai_controller = /datum/ai_controller/volf
 	var/static/list/pet_commands = list(
+		/datum/pet_command/fish,
 		/datum/pet_command/idle,
 		/datum/pet_command/free,
 		/datum/pet_command/good_boy,
