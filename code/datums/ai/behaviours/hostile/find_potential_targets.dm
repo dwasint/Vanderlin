@@ -96,3 +96,9 @@
 	. = ..()
 	if(succeeded)
 		controller.pawn.icon_state = "Trolla"
+
+/datum/ai_behavior/find_potential_targets/bum/finish_action(datum/ai_controller/controller, succeeded, ...)
+	. = ..()
+	if(succeeded)
+		var/mob/living/pawn = controller.pawn
+		pawn.say(pick(GLOB.bum_aggro))

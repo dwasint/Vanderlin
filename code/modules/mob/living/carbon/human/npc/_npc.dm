@@ -1,31 +1,15 @@
 #define MAX_RANGE_FIND 32
 
 /mob/living/carbon/human
-	var/aggressive=0 //0= retaliate only
-	var/frustration=0
-	var/pickupTimer=0
-	var/list/enemies = list()
-	var/list/friends = list()
-	var/mob/living/target
-	var/obj/item/pickupTarget
-	var/mode = AI_OFF
-	var/list/myPath = list()
-	var/list/blacklistItems = list()
-	var/maxStepsTick = 6
 	var/resisting = FALSE
 	var/pickpocketing = FALSE
 	var/del_on_deaggro = null
 	var/last_aggro_loss = null
 	var/wander = TRUE
 	var/ai_when_client = FALSE
-	var/next_idle = 0
-	var/next_seek = 0
-	var/next_stand = 0
-	var/next_passive_detect = 0
 	var/flee_in_pain = FALSE
 	var/stand_attempts = 0
 	var/resist_attempts = 0
-	var/ai_currently_active = FALSE
 	var/attack_speed = 0
 
 	var/returning_home = FALSE
@@ -65,7 +49,6 @@
 		return TRUE
 
 	if(I.anchored)
-		blacklistItems[I] ++
 		return FALSE
 
 	if(istype(I, /obj/item/clothing))
@@ -77,7 +60,6 @@
 		if(put_in_hands(I))
 			return TRUE
 
-	blacklistItems[I] ++
 	return FALSE
 
 /mob/living/carbon/human/proc/pickup_and_wear(obj/item/clothing/C)
@@ -143,38 +125,6 @@
 	if(istype(rmb_intent, /datum/rmb_intent/swift))
 		adf = round(adf * 0.6)
 	changeNext_move(adf)
-
-	// no de-aggro
-	if(aggressive)
-		return
-
-// get angry at a mob
-/mob/living/carbon/human/proc/retaliate(mob/living/L)
-	if(!wander)
-		wander = TRUE
-	if(L == src)
-		return
-	if(mode != AI_OFF)
-		if(L.alpha == 0 && L.rogue_sneaking)
-			// we just got hit by something hidden so try and find them
-			if (prob(5))
-				visible_message(span_notice("[src] begins searching around frantically..."))
-			var/extra_chance = (health <= maxHealth * 50) ? 30 : 0 // if we're below half health, we're way more alert
-			if (!npc_detect_sneak(L, extra_chance))
-				return
-		mode = AI_HUNT
-		last_aggro_loss = null
-		face_atom(L)
-		if(!target)
-			emote("aggro")
-		target = L
-		enemies |= L
-
-
-/mob/living/carbon/human/attackby(obj/item/W, mob/user, params)
-	. = ..()
-	if((W.force) && (!target) && (W.damtype != STAMINA) )
-		retaliate(user)
 
 
 /mob/living/proc/npc_detect_sneak(mob/living/target, extra_prob = 0)

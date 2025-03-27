@@ -19,7 +19,7 @@
 		/datum/ai_planning_subtree/find_armor,
 		/datum/ai_planning_subtree/equip_item,
 
-		/datum/ai_planning_subtree/target_retaliate,
+		/datum/ai_planning_subtree/target_retaliate/bum,
 		/datum/ai_planning_subtree/basic_melee_attack_subtree,
 
 	)
@@ -36,7 +36,7 @@
 		/datum/ai_planning_subtree/find_armor,
 		/datum/ai_planning_subtree/equip_item,
 
-		/datum/ai_planning_subtree/simple_find_target,
+		/datum/ai_planning_subtree/simple_find_target/bum,
 		/datum/ai_planning_subtree/basic_melee_attack_subtree,
 
 	)

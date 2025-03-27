@@ -17,19 +17,7 @@ GLOBAL_LIST_INIT(bum_aggro, world.file2list('strings/rt/bumaggrolines.txt'))
 
 /mob/living/carbon/human/species/human/northern/bum/ambush
 	ai_controller = /datum/ai_controller/human_bum/aggressive
-	aggressive=1
-
 	wander = TRUE
-
-/mob/living/carbon/human/species/human/northern/bum/retaliate(mob/living/L)
-	var/newtarg = target
-	.=..()
-	if(target)
-		aggressive=1
-		wander = TRUE
-		if(target != newtarg)
-			say(pick(GLOB.bum_aggro))
-			linepoint(target)
 
 /mob/living/carbon/human/species/human/northern/bum/Initialize()
 	. = ..()
