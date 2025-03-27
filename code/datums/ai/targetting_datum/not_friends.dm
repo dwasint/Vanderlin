@@ -24,6 +24,9 @@
 	if (!living_mob.ai_controller) // How did you get here?
 		return FALSE
 
+	if((living_mob in SSmobs.matthios_mobs) && (target in SSmobs.matthios_mobs))
+		return FALSE
+
 	if (!(target in living_mob.ai_controller.blackboard[BB_FRIENDS_LIST]))
 		// We don't have any friends, anything's fair game
 		// OR This is not our friend, fire at will

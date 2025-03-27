@@ -171,7 +171,7 @@ have ways of interacting with a specific atom and control it. They posses a blac
 
 /datum/ai_controller/proc/should_idle()
 	var/turf/pawn_turf = get_turf(pawn)
-	if(!SSmapping.level_has_any_trait(pawn_turf?.z, list(ZTRAIT_IGNORE_WEATHER_TRAIT)))\
+	if(!SSmapping.level_has_any_trait(pawn_turf?.z, list(ZTRAIT_IGNORE_WEATHER_TRAIT)))
 		return FALSE
 	if(!can_idle)
 		return FALSE

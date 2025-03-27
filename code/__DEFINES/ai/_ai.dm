@@ -10,7 +10,7 @@
 
 
 // How far should we, by default, be looking for interesting things to de-idle?
-#define AI_DEFAULT_INTERESTING_DIST 10
+#define AI_DEFAULT_INTERESTING_DIST 25
 
 ///Max pathing attempts before auto-fail
 #define MAX_PATHING_ATTEMPTS 30

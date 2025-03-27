@@ -16,7 +16,6 @@
 		/datum/ai_planning_subtree/flee_target,
 
 		/datum/ai_planning_subtree/find_weapon,
-		/datum/ai_planning_subtree/find_armor,
 		/datum/ai_planning_subtree/equip_item,
 
 		/datum/ai_planning_subtree/target_retaliate/bum,
