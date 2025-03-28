@@ -264,6 +264,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	pet_passive = TRUE
 
 	if(ai_controller)
+		ai_controller.can_idle = FALSE
 		var/static/list/pet_commands = list(
 			/datum/pet_command/idle,
 			/datum/pet_command/free,
