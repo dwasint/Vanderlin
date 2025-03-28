@@ -5,7 +5,7 @@
 #define AI_STATUS_IDLE      "ai_idle"
 
 ///Carbon checks
-#define SHOULD_RESIST(source) (source.on_fire || source.buckled || HAS_TRAIT(source, TRAIT_RESTRAINED) || (source.pulledby && source.pulledby.grab_state > GRAB_PASSIVE))
+#define SHOULD_RESIST(source) (source.on_fire || source.buckled  || (source.pulledby && source.pulledby.grab_state > GRAB_PASSIVE))
 #define IS_DEAD_OR_INCAP(source) (source.incapacitated() || source.stat)
 
 
@@ -114,3 +114,5 @@ F
 
 ///are we ONLY allowed to fish when we're hungry?
 #define BB_ONLY_FISH_WHILE_HUNGRY "BB_only_fish_while_hungry"
+
+#define BB_RESISTING "BB_resisting"

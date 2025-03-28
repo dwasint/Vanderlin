@@ -553,6 +553,7 @@
 #include "code\datums\ai\subtrees\fishing.dm"
 #include "code\datums\ai\subtrees\flee_nearest_target.dm"
 #include "code\datums\ai\subtrees\flee_target.dm"
+#include "code\datums\ai\subtrees\generic_resist.dm"
 #include "code\datums\ai\subtrees\lay_egg.dm"
 #include "code\datums\ai\subtrees\look_for_adult.dm"
 #include "code\datums\ai\subtrees\make_babies.dm"
