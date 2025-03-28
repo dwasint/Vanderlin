@@ -196,9 +196,6 @@ have ways of interacting with a specific atom and control it. They posses a blac
 	recalculate_idle()
 
 /datum/ai_controller/proc/should_idle()
-	var/turf/pawn_turf = get_turf(pawn)
-	if(!SSmapping.level_has_any_trait(pawn_turf?.z, list(ZTRAIT_IGNORE_WEATHER_TRAIT)))
-		return FALSE
 	if(!can_idle)
 		return FALSE
 	for(var/datum/spatial_grid_cell/grid as anything in our_cells.member_cells)
@@ -238,13 +235,9 @@ have ways of interacting with a specific atom and control it. They posses a blac
 
 	if(new_z)
 		GLOB.ai_controllers_by_zlevel[new_z] += src
-		var/turf/pawn_turf = get_turf(pawn)
-		if(SSmapping.level_has_any_trait(pawn_turf?.z, list(ZTRAIT_IGNORE_WEATHER_TRAIT)))
-			var/new_level_clients = SSmobs.clients_by_zlevel[new_z].len
-			if(new_level_clients)
-				set_ai_status(AI_STATUS_IDLE)
-			else
-				set_ai_status(AI_STATUS_OFF)
+		var/new_level_clients = SSmobs.clients_by_zlevel[new_z].len
+		if(new_level_clients)
+			set_ai_status(AI_STATUS_IDLE)
 
 ///Abstract proc for initializing the pawn to the new controller
 /datum/ai_controller/proc/TryPossessPawn(atom/new_pawn)
