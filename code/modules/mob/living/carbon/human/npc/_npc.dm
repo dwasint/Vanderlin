@@ -57,6 +57,8 @@
 
 	// WEAPONS
 	if(istype(I, /obj/item))
+		if(get_active_held_item())
+			dropItemToGround(get_active_held_item())
 		if(put_in_hands(I))
 			return TRUE
 

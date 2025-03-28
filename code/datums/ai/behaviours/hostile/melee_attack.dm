@@ -27,6 +27,11 @@
 		finish_action(controller, FALSE, target_key)
 		return
 
+	if(ismob(target))
+		if(target:stat == DEAD)
+			finish_action(controller, FALSE, target_key)
+			return
+
 	var/hiding_target = targetting_datum.find_hidden_mobs(basic_mob, target) //If this is valid, theyre hidden in something!
 
 	controller.set_blackboard_key(hiding_location_key, hiding_target)
