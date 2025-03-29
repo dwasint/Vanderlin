@@ -44,10 +44,9 @@
 		return
 
 	if(hiding_target) //Slap it!
-		basic_mob.cmode = TRUE
-		basic_mob.ClickOn(hiding_target, list())
+		controller.ai_interact(hiding_target, TRUE)
 	else
-		basic_mob.ClickOn(target, list())
+		controller.ai_interact(target, TRUE)
 
 	if(sidesteps_after && prob(33)) //this is so fucking hacky, but going off og code this is exactly how it goes ignoring movetimers
 		if(!target || !isturf(target.loc) || !isturf(basic_mob.loc) || basic_mob.stat == DEAD)
