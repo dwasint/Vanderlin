@@ -396,3 +396,17 @@
 
 	parent.pet_passive = TRUE
 	return SUBTREE_RETURN_FINISH_PLANNING
+
+/datum/pet_command/truffle_sniff
+	command_name = "Truffle Sniff"
+	command_desc = "Sniffs for truffle"
+	speech_commands = list("sniff")
+	radial_icon_state = "sniff"
+	command_feedback = "perks up"
+	pointed_reaction = "and perks up"
+	requires_pointing = TRUE
+
+/datum/pet_command/truffle_sniff/execute_action(datum/ai_controller/controller)
+	if(controller.blackboard_key_exists(BB_CURRENT_PET_TARGET))
+		controller.queue_behavior(/datum/ai_behavior/truffle_sniff, BB_CURRENT_PET_TARGET)
+	return SUBTREE_RETURN_FINISH_PLANNING

@@ -260,7 +260,8 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 /mob/living/simple_animal/proc/tamed(mob/user)
 	INVOKE_ASYNC(src, PROC_REF(emote), "lower_head", null, null, null, TRUE)
 	tame = TRUE
-	befriend(user)
+	if(user)
+		befriend(user)
 	pet_passive = TRUE
 
 	if(ai_controller)
