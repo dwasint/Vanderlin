@@ -88,7 +88,7 @@
 		return 0
 	return 1
 
-/obj/structure/fluff/railing/CanAStarPass(ID, to_dir, caller)
+/obj/structure/fluff/railing/CanAStarPass(ID, to_dir, requester)
 	if(icon_state == "woodrailing" && (dir in CORNERDIRS))
 		var/list/baddirs = list()
 		switch(dir)

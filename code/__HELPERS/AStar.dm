@@ -60,20 +60,20 @@ Actual Adjacent procs :
 /proc/HeapPathWeightCompare(datum/PathNode/a, datum/PathNode/b)
 	return b.f - a.f
 
-/proc/get_path_to(caller, end, dist, maxnodes, maxnodedepth = 30, mintargetdist, adjacent = /turf/proc/reachableTurftest, id = null, turf/exclude = null, simulated_only = TRUE, check_z_levels = TRUE)
-	var/l = SSpathfinder.mobs.getfree(caller)
+/proc/get_path_to(requester, end, dist, maxnodes, maxnodedepth = 30, mintargetdist, adjacent = /turf/proc/reachableTurftest, id = null, turf/exclude = null, simulated_only = TRUE, check_z_levels = TRUE)
+	var/l = SSpathfinder.mobs.getfree(requester)
 	while (!l)
 		stoplag(3)
-		l = SSpathfinder.mobs.getfree(caller)
-	var/list/path = AStar(caller, end, dist, maxnodes, maxnodedepth, mintargetdist, adjacent, id, exclude, simulated_only, check_z_levels)
+		l = SSpathfinder.mobs.getfree(requester)
+	var/list/path = AStar(requester, end, dist, maxnodes, maxnodedepth, mintargetdist, adjacent, id, exclude, simulated_only, check_z_levels)
 	SSpathfinder.mobs.found(l)
 	if (!path)
 		path = list()
 	return path
 
-/proc/AStar(caller, _end, dist, maxnodes, maxnodedepth = 30, mintargetdist, adjacent = /turf/proc/reachableTurftest, id = null, turf/exclude = null, simulated_only = TRUE, check_z_levels = TRUE)
+/proc/AStar(requester, _end, dist, maxnodes, maxnodedepth = 30, mintargetdist, adjacent = /turf/proc/reachableTurftest, id = null, turf/exclude = null, simulated_only = TRUE, check_z_levels = TRUE)
 	var/turf/end = get_turf(_end)
-	var/turf/start = get_turf(caller)
+	var/turf/start = get_turf(requester)
 	if (!start || !end)
 		stack_trace("Invalid A* start or destination")
 		return FALSE
@@ -155,10 +155,10 @@ Actual Adjacent procs :
 						else
 							CN.bf &= ~(1 << (9 - i)) // Clear reverse z-level direction
 
-						if (newg < CN.g && cur.source.reachableTurftest(caller, T, id, simulated_only))
+						if (newg < CN.g && cur.source.reachableTurftest(requester, T, id, simulated_only))
 							CN.setp(cur, newg, CN.h, cur.nt + 1)
 							open.ReSort(CN)
-					else if (cur.source.reachableTurftest(caller, T, id, simulated_only))
+					else if (cur.source.reachableTurftest(requester, T, id, simulated_only))
 						// For new nodes, initialize with all directions except the one we came from
 						var/new_bf = 63
 						if (i < 4)
@@ -223,7 +223,7 @@ Actual Adjacent procs :
 
 	return null
 
-/turf/proc/reachableTurftest(caller, turf/T, ID, simulated_only = TRUE, check_z_levels = TRUE)
+/turf/proc/reachableTurftest(requester, turf/T, ID, simulated_only = TRUE, check_z_levels = TRUE)
 	if (!T || !istype(T))
 		return FALSE
 
@@ -241,21 +241,21 @@ Actual Adjacent procs :
 
 	// Same z-level movement - use standard check
 	if (!check_z_levels || T.z == z)
-		return !LinkBlockedWithAccess(T, caller, ID)
+		return !LinkBlockedWithAccess(T, requester, ID)
 
 	// Z-level transition - check if it's a valid stair transition
 	if (check_z_levels && abs(T.z - z) == 1)
 		if (T.z > z) // Moving up
 			// Check if we can reach T via stairs
 			var/turf/stair_dest = get_turf_zchange(src, 4) // 4 = UP
-			return (stair_dest == T) && !LinkBlockedWithAccess(T, caller, ID)
+			return (stair_dest == T) && !LinkBlockedWithAccess(T, requester, ID)
 		else // Moving down
 			// Check if we can reach T via stairs
 			var/turf/stair_dest = get_turf_zchange(src, 5) // 5 = DOWN
 
 			// Only consider the destination valid if it came from get_turf_zchange
 			// This prevents the pathfinder from considering direct below/above turfs as valid
-			return (stair_dest == T) && !LinkBlockedWithAccess(T, caller, ID)
+			return (stair_dest == T) && !LinkBlockedWithAccess(T, requester, ID)
 
 	return FALSE
 
@@ -268,20 +268,20 @@ Actual Adjacent procs :
 	var/dz = abs(z - T.z) * 5 // Weight z-level differences higher
 	return (dx + dy + dz)
 
-/turf/proc/LinkBlockedWithAccess(turf/T, caller, ID)
+/turf/proc/LinkBlockedWithAccess(turf/T, requester, ID)
 	var/adir = get_dir(src, T)
 	var/rdir = ((adir & MASK_ODD)<<1)|((adir & MASK_EVEN)>>1)
 	for(var/obj/O in T)
-		if(!O.CanAStarPass(ID, rdir, caller))
+		if(!O.CanAStarPass(ID, rdir, requester))
 			return TRUE
 	for(var/obj/O in src)
-		if(!O.CanAStarPass(ID, adir, caller))
+		if(!O.CanAStarPass(ID, adir, requester))
 			return TRUE
 
 	for(var/mob/living/M in T)
-		if(!M.CanPass(caller, src))
+		if(!M.CanPass(requester, src))
 			return TRUE
 	for(var/obj/structure/M in T)
-		if(!M.CanPass(caller, src))
+		if(!M.CanPass(requester, src))
 			return TRUE
 	return FALSE

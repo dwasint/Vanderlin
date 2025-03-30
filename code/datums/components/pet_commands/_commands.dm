@@ -65,7 +65,7 @@
 	try_activate_command(commander = speaker, radial_command = FALSE)
 
 /// Respond to a callout
-/datum/pet_command/proc/respond_to_callout(mob/living/caller, datum/callout_option/callout, atom/target)
+/datum/pet_command/proc/respond_to_callout(mob/living/requester, datum/callout_option/callout, atom/target)
 
 	if (isnull(callout_type) || !ispath(callout, callout_type))
 		return
@@ -74,21 +74,21 @@
 	if (!parent)
 		return
 
-	if (!valid_callout_target(caller, callout, target))
+	if (!valid_callout_target(requester, callout, target))
 		var/found_new_target = FALSE
 		for (var/atom/new_target in range(2, target))
-			if (valid_callout_target(caller, callout, new_target))
+			if (valid_callout_target(requester, callout, new_target))
 				target = new_target
 				found_new_target = TRUE
 
 		if (!found_new_target)
 			return
 
-	if (try_activate_command(commander = caller, radial_command = FALSE))
+	if (try_activate_command(commander = requester, radial_command = FALSE))
 		look_for_target(parent, target)
 
 /// Does this callout with this target trigger this command?
-/datum/pet_command/proc/valid_callout_target(mob/living/caller, datum/callout_option/callout, atom/target)
+/datum/pet_command/proc/valid_callout_target(mob/living/requester, datum/callout_option/callout, atom/target)
 	return TRUE
 
 /**

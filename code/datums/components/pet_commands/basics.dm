@@ -276,8 +276,8 @@
 	. = ..()
 	set_command_target(parent, victim)
 
-/datum/pet_command/protect_owner/valid_callout_target(mob/living/caller, datum/callout_option/callout, atom/target)
-	return target == caller || get_dist(caller, target) <= 1
+/datum/pet_command/protect_owner/valid_callout_target(mob/living/requester, datum/callout_option/callout, atom/target)
+	return target == requester || get_dist(requester, target) <= 1
 
 /datum/pet_command/protect_owner/proc/set_attacking_target(atom/source, mob/living/attacker)
 	var/mob/living/owner = weak_parent.resolve()
