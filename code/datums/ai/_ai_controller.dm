@@ -422,7 +422,6 @@ have ways of interacting with a specific atom and control it. They posses a blac
 			START_PROCESSING(SSai_behaviors, src)
 		if(AI_STATUS_IDLE)
 			START_PROCESSING(SSidle_ai_behaviors, src)
-			CancelActions()
 		if(AI_STATUS_OFF)
 			CancelActions()
 
