@@ -43,6 +43,12 @@
 	for(var/obj/structure/S in get_turf(target))
 		if(S.obj_flags & BLOCK_Z_OUT_DOWN)
 			return
+
+	if(isobj(target))
+		var/obj/obj = target
+		if(obj.obj_flags & IGNORE_SINK)
+			return
+
 	if(istype(target, /obj/structure/hotspring))
 		return
 

@@ -1,12 +1,6 @@
 /particles/hotspring_steam
 	icon = 'icons/effects/particles/smoke.dmi'
-	icon_state = list(
-		"steam_cloud_1" = 1,
-		"steam_cloud_2" = 1,
-		"steam_cloud_3" = 1,
-		"steam_cloud_4" = 1,
-		"steam_cloud_5" = 1,
-	)
+
 	color = "#FFFFFF8A"
 	count = 5
 	spawning = 0.3
@@ -22,10 +16,14 @@
 	grow = 0.037
 
 /obj/structure/hotspring
+	abstract_type = /obj/structure/hotspring
 	nomouseover = TRUE
 	plane = FLOOR_PLANE
 	icon = 'icons/obj/structures/hotspring.dmi'
 	icon_state = "hotspring"
+	object_slowdown = 5
+
+	var/edge = FALSE
 
 	var/obj/effect/abstract/particle_holder/cached/particle_effect
 
@@ -35,55 +33,94 @@
 	//render the steam over mobs and objects on the game plane
 	particle_effect.vis_flags &= ~VIS_INHERIT_PLANE
 
-	AddElement(/datum/element/mob_overlay_effect, 2, -2, 100)
+	if(!edge)
+		AddElement(/datum/element/mob_overlay_effect, 2, -2, 100)
+
+/obj/structure/hotspring/Crossed(atom/movable/AM)
+	. = ..()
+	for(var/obj/structure/S in get_turf(src))
+		if(S.obj_flags & BLOCK_Z_OUT_DOWN)
+			return
+
+	if(!edge)
+		playsound(AM, pick('sound/foley/watermove (1).ogg','sound/foley/watermove (2).ogg'), 40, FALSE)
 
 /obj/structure/hotspring/border
 	icon_state = "hotspring_border_1"
+	object_slowdown = 0
+	edge = TRUE
 
 /obj/structure/hotspring/border/two
 	icon_state = "hotspring_border_2"
+	object_slowdown = 5
+	edge = FALSE
 
 /obj/structure/hotspring/border/three
 	icon_state = "hotspring_border_3"
+	object_slowdown = 0
+	edge = TRUE
 
 /obj/structure/hotspring/border/four
 	icon_state = "hotspring_border_4"
+	object_slowdown = 5
+	edge = FALSE
 
 /obj/structure/hotspring/border/five
 	icon_state = "hotspring_border_5"
+	object_slowdown = 5
+	edge = FALSE
 
 /obj/structure/hotspring/border/six
 	icon_state = "hotspring_border_6"
+	object_slowdown = 5
+	edge = FALSE
 
 /obj/structure/hotspring/border/seven
 	icon_state = "hotspring_border_7"
+	object_slowdown = 5
+	edge = FALSE
 
 /obj/structure/hotspring/border/eight
 	icon_state = "hotspring_border_8"
+	object_slowdown = 5
+	edge = FALSE
 
 /obj/structure/hotspring/border/nine
 	icon_state = "hotspring_border_9"
+	object_slowdown = 5
+	edge = FALSE
 
 /obj/structure/hotspring/border/ten
 	icon_state = "hotspring_border_10"
+	object_slowdown = 5
+	edge = FALSE
 
 /obj/structure/hotspring/border/eleven
 	icon_state = "hotspring_border_11"
+	object_slowdown = 5
+	edge = FALSE
 
 /obj/structure/hotspring/border/twelve
 	icon_state = "hotspring_border_12"
+	object_slowdown = 5
+	edge = FALSE
 
 /obj/structure/hotspring/border/thirteen
 	icon_state = "hotspring_border_13"
+	object_slowdown = 0
+	edge = TRUE
 
 /obj/structure/hotspring/border/fourteen
 	icon_state = "hotspring_border_14"
+	object_slowdown = 0
+	edge = TRUE
 
 /obj/structure/flora/rock/hotspring
 	name = "large rock"
 
 	icon = 'icons/obj/structures/hotspring.dmi'
 	icon_state = "bigrock"
+	obj_flags = CAN_BE_HIT | IGNORE_SINK
 
 /obj/structure/flora/rock/hotspring/grassy
 	name = "grassy large rock"
@@ -143,3 +180,11 @@
 
 /obj/structure/chair/hotspring_bench/corner
 	icon_state = "parkbench_corner"
+
+/obj/structure/flora/sakura
+	icon = 'icons/obj/structures/sakura_tree.dmi'
+	icon_state = "sakura_tree"
+	obj_flags = CAN_BE_HIT | IGNORE_SINK
+
+	bound_height = 128
+	bound_width = 128
