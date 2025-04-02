@@ -1009,24 +1009,6 @@
 /obj/structure/fermentation_keg/beer,
 /turf/open/floor/dirt,
 /area/rogue/outdoors)
-"cC" = (
-/obj/structure/fluff/statue/femalestatue{
-	icon_state = "2"
-	},
-/turf/open/floor/cobble,
-/area/rogue/outdoors)
-"cD" = (
-/obj/structure/fluff/statue/femalestatue{
-	icon_state = "4"
-	},
-/turf/open/floor/cobble,
-/area/rogue/outdoors)
-"cE" = (
-/obj/structure/fluff/statue/femalestatue{
-	icon_state = "5"
-	},
-/turf/open/floor/cobble,
-/area/rogue/outdoors)
 "cF" = (
 /turf/open/floor/cobble,
 /area/rogue/indoors/town/vault)
@@ -1189,8 +1171,8 @@
 /turf/open/floor/dirt/road,
 /area/rogue/indoors)
 "qw" = (
-/obj/structure/fluff/statue/tdummy,
-/turf/open/floor/cobble,
+/obj/structure/lootable_structure/fish_barrel,
+/turf/open/floor/dirt/road,
 /area/rogue/outdoors)
 "qG" = (
 /obj/effect/landmark/observer_start,
@@ -7115,7 +7097,7 @@ at
 ab
 cL
 aJ
-al
+qw
 aJ
 al
 cw
@@ -7371,9 +7353,9 @@ cU
 Fo
 cU
 aJ
-qw
 aJ
-cC
+aJ
+aJ
 al
 cw
 cw
@@ -7887,7 +7869,7 @@ cX
 aJ
 aJ
 aJ
-cD
+aJ
 al
 al
 WA
@@ -8401,7 +8383,7 @@ ab
 aF
 al
 aJ
-cE
+aJ
 aJ
 al
 al

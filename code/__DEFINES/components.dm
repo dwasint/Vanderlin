@@ -54,7 +54,7 @@
 /// generic topic handler (usr, href_list)
 #define COMSIG_TOPIC "handle_topic"
 #define COMSIG_PARENT_TRAP_TRIGGERED "trap_triggered_parent"
-
+#define COMSIG_LOOT_SPAWNER_EMPTY "loot_spawner_empty"
 // /atom signals
 #define COMSIG_ATOM_REMOVE_TRAIT "atom_remove_trait"
 #define COMSIG_ATOM_ADD_TRAIT "atom_add_trait"
@@ -213,7 +213,7 @@
 	#define SPEECH_SPANS 3
 	#define SPEECH_LANGUAGE 5
 	/* #define SPEECH_SANITIZE 4
-	
+
 	#define SPEECH_IGNORE_SPAM 6
 	#define SPEECH_FORCED 7 */
 #define COMSIG_MOB_DEADSAY "mob_deadsay" // from /mob/say_dead(): (mob/speaker, message)
