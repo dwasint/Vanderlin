@@ -40,6 +40,12 @@
 
 /datum/element/mob_overlay_effect/proc/on_add(datum/source, datum/target)
 	SIGNAL_HANDLER
+	for(var/obj/structure/S in get_turf(target))
+		if(S.obj_flags & BLOCK_Z_OUT_DOWN)
+			return
+	if(istype(target, /obj/structure/hotspring))
+		return
+
 	var/offset = 0
 	if(istype(target, /obj/structure/flora/tree))
 		offset = -24

@@ -36,3 +36,33 @@
 	spawned_table = /datum/loot_table/fish_barrel
 	max_spawns = 4
 	spawns_per_person = 1
+
+/obj/structure/lootable_structure/grain_barrel
+	name = "grain barrel"
+
+	icon_state = "grain_barrel_full"
+	empty_icon_state = "grain_barrel_empty"
+
+	spawned_table = /datum/loot_table/grain_barrel
+	max_spawns = 4
+	spawns_per_person = 1
+
+/obj/structure/lootable_structure/powder_sack
+	name = "powder sack"
+
+	icon_state = "flour_sack_full"
+	empty_icon_state = "flour_sack_empty"
+
+	spawned_table = /datum/loot_table/powder_sack
+	max_spawns = 4
+	spawns_per_person = 1
+
+/obj/structure/lootable_structure/mining_cache
+	name = "mining sack"
+
+	icon_state = "ore_sack_full"
+	empty_icon_state = "ore_sack_empty"
+
+	spawned_table = /datum/loot_table/mining_cache
+	max_spawns = 4
+	spawns_per_person = 1
