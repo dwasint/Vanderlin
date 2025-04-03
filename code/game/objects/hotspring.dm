@@ -115,32 +115,33 @@
 	object_slowdown = 0
 	edge = TRUE
 
-/obj/structure/flora/rock/hotspring
+/obj/structure/flora/hotspring_rocks
 	name = "large rock"
 
 	icon = 'icons/obj/structures/hotspring.dmi'
 	icon_state = "bigrock"
 	obj_flags = CAN_BE_HIT | IGNORE_SINK
+	density = TRUE
 
-/obj/structure/flora/rock/hotspring/grassy
+/obj/structure/flora/hotspring_rocks/grassy
 	name = "grassy large rock"
 	icon_state = "bigrock_grass"
 
-/obj/structure/flora/rock/hotspring/small
+/obj/structure/flora/hotspring_rocks/small
 	name = "small rock"
 	density = FALSE
 	icon_state = "stones_1"
 
-/obj/structure/flora/rock/hotspring/small/two
+/obj/structure/flora/hotspring_rocks/small/two
 	icon_state = "stones_2"
 
-/obj/structure/flora/rock/hotspring/small/three
+/obj/structure/flora/hotspring_rocks/small/three
 	icon_state = "stones_3"
 
-/obj/structure/flora/rock/hotspring/small/four
+/obj/structure/flora/hotspring_rocks/small/four
 	icon_state = "stones_4"
 
-/obj/structure/flora/rock/hotspring/small/five
+/obj/structure/flora/hotspring_rocks/small/five
 	icon_state = "stones_5"
 
 /obj/machinery/light/fueled/torchholder/hotspring
