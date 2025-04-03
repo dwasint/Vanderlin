@@ -1418,7 +1418,7 @@
 /area/rogue/outdoors)
 "qr" = (
 /obj/structure/hotspring/border/five,
-/obj/structure/flora/rock/hotspring{
+/obj/structure/flora/hotspring_rock{
 	pixel_y = -4;
 	pixel_x = 4
 	},
@@ -1533,7 +1533,7 @@
 /area/rogue/outdoors)
 "tW" = (
 /obj/structure/hotspring/border/ten,
-/obj/structure/flora/rock/hotspring/grassy{
+/obj/structure/flora/hotspring_rock/grassy{
 	pixel_y = -9;
 	pixel_x = 15;
 	layer = 3
@@ -1901,7 +1901,7 @@
 /area/rogue/outdoors/mountains/decap)
 "JU" = (
 /obj/structure/hotspring/border/twelve,
-/obj/structure/flora/rock/hotspring/grassy{
+/obj/structure/flora/hotspring_rock/grassy{
 	pixel_y = -10;
 	pixel_x = 1
 	},
