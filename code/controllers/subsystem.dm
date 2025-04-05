@@ -139,13 +139,10 @@
 		queue_node.queue_prev = src
 
 	if (queue_next == src || queue_prev == src)
-		// Self-reference detected, fix it
-		if (queue_next == src)
-			queue_next = null
-		if (queue_prev == src)
-			queue_prev = null
 		// Log the error for debugging
 		message_admins("SS:[name] had self-reference in queue. Fixed.")
+		return FALSE
+	return TRUE
 
 
 

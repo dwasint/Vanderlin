@@ -465,7 +465,8 @@ GLOBAL_REAL(Master, /datum/controller/master)
 			continue
 		if ((SS_flags & (SS_TICKER|SS_KEEP_TIMING)) == SS_KEEP_TIMING && SS.last_fire + (SS.wait * 0.75) > world.time)
 			continue
-		SS.enqueue()
+		if(!SS.enqueue())
+			return FALSE
 	. = 1
 
 
