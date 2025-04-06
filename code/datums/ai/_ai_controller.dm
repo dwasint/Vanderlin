@@ -156,7 +156,7 @@ have ways of interacting with a specific atom and control it. They posses a blac
 	return !QDELETED(pawn)
 
 ///Interact with objects
-/datum/ai_controller/proc/ai_interact(target, combat_mode, list/modifiers)
+/datum/ai_controller/proc/ai_interact(target, combat_mode, list/modifiers, nextmove = FALSE)
 	if(!ai_can_interact())
 		return FALSE
 
@@ -166,6 +166,9 @@ have ways of interacting with a specific atom and control it. They posses a blac
 		return FALSE
 	var/params = list2params(modifiers)
 	var/mob/living/living_pawn = pawn
+	if(nextmove && living_pawn.next_move > world.time)
+		return FALSE
+
 	if(isnull(combat_mode))
 		living_pawn.ClickOn(final_target, params)
 		return TRUE
