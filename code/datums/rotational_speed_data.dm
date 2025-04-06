@@ -163,8 +163,6 @@
 	if(connector.rotation_direction && connector.rotation_direction != rotation_direction)
 		if(connector.rotations_per_minute && rotations_per_minute)
 			return FALSE
-	if(connector.stress_generator && connector.giving_stress && !stress_generator)
-		return FALSE
 	return TRUE
 
 /obj/structure/proc/try_network_merge(obj/structure/connector)
