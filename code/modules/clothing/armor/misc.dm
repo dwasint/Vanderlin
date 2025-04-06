@@ -53,7 +53,7 @@
 	max_integrity = INTEGRITY_STRONGEST
 	prevent_crits = ALL_EXCEPT_STAB
 	do_sound_plate = TRUE
-	item_weight = IRON_MULTIPLIER
+	item_weight = 5.4 * IRON_MULTIPLIER
 
 /obj/item/clothing/armor/brigandine/update_icon()
 	cut_overlays()
