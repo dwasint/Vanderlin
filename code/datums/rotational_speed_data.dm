@@ -99,9 +99,7 @@
 
 /obj/structure/proc/find_rotation_network()
 	var/turf/step_forward = get_step(src, dir)
-	if(!step_forward)
-		return
-	for(var/obj/structure/structure in step_forward.contents)
+	for(var/obj/structure/structure in step_forward?.contents)
 		if(structure.dir != dir && structure.dir != GLOB.reverse_dir[dir] && !istype(structure, /obj/structure/gearbox) && !istype(structure, /obj/structure/minecart_rail))
 			continue
 		if(structure.rotation_network)
@@ -113,7 +111,7 @@
 					rotation_break()
 
 	var/turf/step_back = get_step(src, GLOB.reverse_dir[dir])
-	for(var/obj/structure/structure in step_back.contents)
+	for(var/obj/structure/structure in step_back?.contents)
 		if(structure.dir != dir && structure.dir != GLOB.reverse_dir[dir])
 			continue
 		if(structure.rotation_network)
