@@ -60,6 +60,7 @@
 	antimagic_allowed = TRUE
 	recharge_time = 2 MINUTES
 	miracle = TRUE
+	healing_miracle = TRUE
 	devotion_cost = 100
 //	req_inhand = list(/obj/item/coin/gold)
 

@@ -14,6 +14,7 @@
 	antimagic_allowed = TRUE
 	recharge_time = 5 SECONDS //very stupidly simple spell
 	miracle = TRUE
+	healing_miracle = TRUE
 	devotion_cost = 5 //come on, this is very basic
 
 /obj/effect/proc_holder/spell/invoked/diagnose/secular
@@ -24,6 +25,7 @@
 	miracle = FALSE
 	devotion_cost = 0 //Doctors are not clerics
 	uses_mana = FALSE
+	healing_miracle = FALSE
 
 /obj/effect/proc_holder/spell/invoked/diagnose/cast(list/targets, mob/living/user)
 	if(ishuman(targets[1]))
@@ -49,6 +51,7 @@
 	antimagic_allowed = TRUE
 	recharge_time = 60 SECONDS //attaching a limb is pretty intense
 	miracle = TRUE
+	healing_miracle = TRUE
 	devotion_cost = 80
 
 /obj/effect/proc_holder/spell/invoked/attach_bodypart/proc/get_organs(mob/living/target, mob/living/user)
@@ -149,6 +152,7 @@
 	antimagic_allowed = TRUE
 	recharge_time = 2 MINUTES
 	miracle = TRUE
+	healing_miracle = TRUE
 	devotion_cost = 100
 
 /obj/effect/proc_holder/spell/invoked/cure_rot/cast(list/targets, mob/living/user)
