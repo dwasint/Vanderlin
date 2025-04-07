@@ -82,7 +82,7 @@ GLOBAL_LIST_INIT_TYPED(blood_types, /datum/blood_type, init_subtypes_w_path_keys
 		/datum/blood_type/human/o_minus,
 	)
 	reagent_type = /datum/reagent/blood/tiefling
-	contains_lux = FALSE
+	contains_lux = TRUE
 
 /datum/blood_type/human/kobold
 	name = "Kobold"
