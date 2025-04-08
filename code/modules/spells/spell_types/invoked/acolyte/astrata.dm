@@ -68,6 +68,9 @@
 	if(isliving(targets[1]))
 		testing("revived1")
 		var/mob/living/target = targets[1]
+		var/lux_state = target.get_lux_status()
+		if(lux_state != LUX_HAS_LUX)
+			return
 		if(target == user)
 			return FALSE
 		if(target.stat < DEAD)
