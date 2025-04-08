@@ -807,7 +807,7 @@
 /datum/status_effect/buff/lux_drained
 	id = "lux_drained"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/lux_drained
-	effectedstats = list(STATKEY_LCK = -6, STATKEY_CON = -2, STATKEY_END = -2, STATKEY_INT = -2, STATKEY_PER = -2, STATKEY_SPD = -2, STATKEY_STR = -2)
+	effectedstats = list(STATKEY_LCK = -3, STATKEY_CON = -1, STATKEY_END = -1, STATKEY_INT = -1, STATKEY_PER = -1, STATKEY_SPD = -1, STATKEY_STR = -1)
 	duration = -1
 
 /atom/movable/screen/alert/status_effect/buff/lux_drained
