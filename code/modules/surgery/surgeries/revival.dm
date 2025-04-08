@@ -61,6 +61,7 @@
 		if(revive_pq && !HAS_TRAIT(target, TRAIT_IWASREVIVED) && user?.ckey)
 			adjust_playerquality(revive_pq, user.ckey)
 			ADD_TRAIT(target, TRAIT_IWASREVIVED, "[type]")
+	target.remove_status_effect(/datum/status_effect/buff/lux_drained)
 	return TRUE
 
 /datum/surgery_step/infuse_lux/failure(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent, success_prob)
