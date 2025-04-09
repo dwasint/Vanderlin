@@ -141,6 +141,8 @@
 	if (queue_next == src || queue_prev == src)
 		// Log the error for debugging
 		message_admins("SS:[name] had self-reference in queue. Fixed.")
+		if(queue_prev != src)
+			dequeue()
 		return FALSE
 	return TRUE
 
