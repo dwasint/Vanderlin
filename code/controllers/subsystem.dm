@@ -143,6 +143,8 @@
 		message_admins("SS:[name] had self-reference in queue. Fixed.")
 		if(queue_prev != src)
 			dequeue()
+			if(!Master.queue_head)
+				Master.queue_head = Master.last_type_processed
 		return FALSE
 	return TRUE
 
