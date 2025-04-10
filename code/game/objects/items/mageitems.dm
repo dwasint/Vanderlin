@@ -651,6 +651,7 @@
 	icon_state = "soul"
 
 	plane = PLANE_LEYLINES
+	invisibility = INVISIBILITY_LEYLINES
 	anchored = TRUE
 
 	var/mana_amount = 75
