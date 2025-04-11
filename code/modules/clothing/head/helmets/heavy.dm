@@ -17,9 +17,14 @@
 	max_integrity = INTEGRITY_STRONGEST // no moving parts, steel
 
 /obj/item/clothing/head/helmet/heavy/necked		// includes a coif or gorget part to cover neck. Why? So templars can wear their cross on their neck basically, also special thing for Temple
+	name = "bastion helm"
+	desc = "A modified great helm designed for Templars, this helmet with integrated neck protection serves as an unyielding bastion of protection for the devout."
+	icon_state = "topfhelm"
+	armor = ARMOR_PLATE
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 	body_parts_covered = HEAD_NECK
 	prevent_crits = ALL_EXCEPT_BLUNT
+	block2add = FOV_BEHIND
 
 
 //................ Iron Plate Helmet ............... //
@@ -109,6 +114,7 @@
 	desc = "A sleek and rounded heavy helmet with a maille neck cover. Its unique craft is said to allow holy warriors of Noc additional insight before battle."
 	icon_state = "nochelm"
 	item_weight = 6 * SILVER_MULTIPLIER
+	flags_inv = HIDEEARS
 
 //............... Necra Helmet ............... //
 /obj/item/clothing/head/helmet/heavy/necked/necra
@@ -122,7 +128,6 @@
 	name = "dendor helmet"
 	desc = "A great helmet with twisted metalwork that imitates the twisting of bark, or the horns of a beast."
 	icon_state = "dendorhelm"
-	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 	prevent_crits = ALL_EXCEPT_BLUNT
 	item_weight = 9 * IRON_MULTIPLIER
 
@@ -141,7 +146,6 @@
 	desc = "A great helmet made of coarse, tainted steel. It is modeled after a plagued carrion, a blessed abomination of Pestra."
 	icon_state = "pestrahelm"
 	item_state = "pestrahelm"
-	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 	item_weight = 9 * IRON_MULTIPLIER
 
 //................ Malum Helmet ............. //
@@ -150,7 +154,6 @@
 	desc = "A great helmet of sturdy dark steel. Its chiseled countenance reminds the viewer of Malum's stern gaze."
 	icon_state = "malumhelm"
 	item_state = "malumhelm"
-	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 	item_weight = 9 * IRON_MULTIPLIER
 
 /obj/item/clothing/head/helmet/heavy/necked/ravox
@@ -158,7 +161,6 @@
 	desc = "Headwear commonly worn by Templars in service to Ravox. It resembles an heavily adorned visored sallet."
 	icon_state = "ravoxhelm"
 	item_state = "ravoxhelm"
-	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 	item_weight = 9 * IRON_MULTIPLIER
 
 //............... Sinistar (Graggar) Helmet ............... //
