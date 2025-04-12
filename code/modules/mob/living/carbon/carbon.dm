@@ -1263,7 +1263,7 @@
 
 	update_body_parts(TRUE)
 
-/mob/living/carbon/get_encumberance()
+/mob/living/carbon/get_encumbrance()
 	return round(get_total_weight() / get_carry_capacity(), 0.01)
 
 /mob/living/carbon/human/dummy/get_total_weight()
@@ -1298,19 +1298,19 @@
 	return held_weight
 
 /mob/living/carbon/encumbrance_to_dodge()
-	var/encumberance = get_encumberance()
+	var/encumbrance = get_encumbrance()
 	if(!HAS_TRAIT(src, TRAIT_DODGEEXPERT))
-		encumberance *= 1.5
-	if(encumberance <= 0.3 && HAS_TRAIT(src, TRAIT_DODGEEXPERT))
+		encumbrance *= 1.5
+	if(encumbrance <= 0.3 && HAS_TRAIT(src, TRAIT_DODGEEXPERT))
 		return 1
-	if(encumberance >= 1)
+	if(encumbrance >= 1)
 		return 0
-	return 1 - (encumberance * 1)
+	return 1 - (encumbrance * 1)
 
 /mob/living/carbon/encumbrance_to_speed()
-	var/exponential = (2.71 ** -(get_encumberance() - 0.6)) * 10
+	var/exponential = (2.71 ** -(get_encumbrance() - 0.6)) * 10
 	var/speed_factor = 1 / (1 + exponential)
 	var/precentage =  CLAMP(speed_factor * (1 - (STAEND / 20)), 0, 1)
 
-	add_movespeed_modifier("encumberance", override = TRUE, multiplicative_slowdown = 5 * precentage)
+	add_movespeed_modifier("encumbrance", override = TRUE, multiplicative_slowdown = 5 * precentage)
 

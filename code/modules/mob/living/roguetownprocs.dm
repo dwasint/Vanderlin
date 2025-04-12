@@ -438,7 +438,7 @@
 		dodge_score += (defending_item.wdodgebonus)
 	dodge_score += (defending_mob.used_intent?.idodgebonus)							//Some weapon intents help with dodging
 	if(istype(defending_human))
-		if((defending_human.get_encumberance() > 0.7) || defending_human?.legcuffed)
+		if((defending_human.get_encumbrance() > 0.7) || defending_human?.legcuffed)
 			defending_human.Knockdown(1)
 			return FALSE
 		if(attacking_item)															//Attacker attacked us with a weapon

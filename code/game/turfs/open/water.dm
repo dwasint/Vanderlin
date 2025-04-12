@@ -278,7 +278,7 @@
 			if(user.mind && !user.buckled)
 				var/drained = max(15 - (user.mind.get_skill_level(/datum/skill/misc/swimming) * 5), 1)
 //				drained += (user.checkwornweight()*2)
-				drained += user.get_encumberance() * 50
+				drained += user.get_encumbrance() * 50
 				if(!user.adjust_stamina(drained))
 					user.Immobilize(30)
 					addtimer(CALLBACK(user, TYPE_PROC_REF(/mob/living, Knockdown), 30), 10)

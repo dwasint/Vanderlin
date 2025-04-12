@@ -2063,7 +2063,7 @@
 	return max(45, STASTR * 12)
 
 ///this is returned as decimal value between 0 and 1
-/mob/living/proc/get_encumberance()
+/mob/living/proc/get_encumbrance()
 	return 0
 
 /mob/living/proc/get_total_weight()

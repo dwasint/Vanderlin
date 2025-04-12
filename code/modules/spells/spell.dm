@@ -219,7 +219,7 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 			var/diffy = 10 - ranged_ability_user.STAINT
 			newdrain = newdrain + (releasedrain * (diffy * 0.02))
 //		newdrain = newdrain + (ranged_ability_user.checkwornweight() * 10)
-		if(ranged_ability_user.get_encumberance() > 0.4)
+		if(ranged_ability_user.get_encumbrance() > 0.4)
 			newdrain += 40
 		testing("[releasedrain] newdrain [newdrain]")
 		if(newdrain > 0)
