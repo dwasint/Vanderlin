@@ -649,7 +649,7 @@
 					return
 				if(ishuman(L))
 					var/mob/living/carbon/human/H = L
-					if(!H.check_armor_skill())
+					if(H.get_encumberance() >= 0.7)
 						to_chat(H, span_info("Your armor is too heavy to run in!"))
 						return
 			m_intent = MOVE_INTENT_RUN
@@ -658,19 +658,6 @@
 			selector.update_icon()
 	if(!silent)
 		playsound_local(src, 'sound/misc/click.ogg', 100)
-
-/mob/living/proc/check_armor_skill()
-	return TRUE
-
-/mob/living/carbon/human/check_armor_skill()
-	if(worn_armor_class == AC_HEAVY)
-		if(!HAS_TRAIT(src, TRAIT_HEAVYARMOR))
-			return FALSE
-	if(worn_armor_class == AC_MEDIUM)
-		if(!HAS_TRAIT(src, TRAIT_HEAVYARMOR))
-			if(!HAS_TRAIT(src, TRAIT_MEDIUMARMOR))
-				return FALSE
-	return TRUE
 
 /mob/living/proc/check_armor_weight()
 	return "Light"

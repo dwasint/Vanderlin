@@ -1264,7 +1264,7 @@
 	update_body_parts(TRUE)
 
 /mob/living/carbon/get_encumberance()
-	return get_total_weight() / get_carry_capacity()
+	return round(get_total_weight() / get_carry_capacity(), 0.01)
 
 /mob/living/carbon/human/dummy/get_total_weight()
 	return 0
@@ -1278,16 +1278,18 @@
 		if(isclothing(worn_item))
 			switch(worn_item:armor_class)
 				if(AC_HEAVY)
-					if(HAS_TRAIT(src, TRAIT_HEAVYARMOR))
-						held_weight += worn_item.item_weight * 0.75
+					if(!HAS_TRAIT(src, TRAIT_HEAVYARMOR))
+						held_weight += worn_item.item_weight * 1.5
 					else
 						held_weight += worn_item.item_weight
 				if(AC_MEDIUM)
-					if(HAS_TRAIT(src, TRAIT_MEDIUMARMOR))
-						held_weight += worn_item.item_weight * 0.5
+					if(!HAS_TRAIT(src, TRAIT_MEDIUMARMOR))
+						held_weight += worn_item.item_weight * 2
 					else
 						held_weight += worn_item.item_weight
 				if(AC_LIGHT)
+					held_weight += worn_item.item_weight
+				else
 					held_weight += worn_item.item_weight
 		else
 			held_weight += worn_item.item_weight
