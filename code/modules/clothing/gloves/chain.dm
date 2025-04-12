@@ -34,10 +34,10 @@
 	desc = "Gauntlets with gilded fingers fashioned into talons. The tips are all too dull to be of harm."
 	icon_state = "shadowgauntlets"
 	allowed_race = list("elf", "dark elf")
-	item_weight = 9 * STEEL_MULTIPLIER
+	item_weight = 6 * STEEL_MULTIPLIER
 
 /obj/item/clothing/gloves/chain/vampire
 	name = "ancient ceremonial gloves"
 	icon_state = "vgloves"
 	smeltresult = /obj/item/ingot/steel
-	item_weight = 9 * STEEL_MULTIPLIER
+	item_weight = 6 * STEEL_MULTIPLIER

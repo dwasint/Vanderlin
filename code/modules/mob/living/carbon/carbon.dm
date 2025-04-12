@@ -1279,12 +1279,12 @@
 			switch(worn_item:armor_class)
 				if(AC_HEAVY)
 					if(!HAS_TRAIT(src, TRAIT_HEAVYARMOR))
-						held_weight += worn_item.item_weight * 1.5
+						held_weight += worn_item.item_weight * 2
 					else
 						held_weight += worn_item.item_weight
 				if(AC_MEDIUM)
 					if(!HAS_TRAIT(src, TRAIT_MEDIUMARMOR))
-						held_weight += worn_item.item_weight * 1.5
+						held_weight += worn_item.item_weight * 2
 					else
 						held_weight += worn_item.item_weight
 				if(AC_LIGHT)

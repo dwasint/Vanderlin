@@ -19,7 +19,7 @@
 	max_integrity = INTEGRITY_STANDARD
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide/cured
-	item_weight = 3
+	item_weight = 1.6
 
 
 /obj/item/clothing/head/helmet/leather/advanced
@@ -98,7 +98,7 @@
 
 	armor = ARMOR_PADDED
 	prevent_crits = list(BCLASS_LASHING, BCLASS_BITE, BCLASS_TWIST, BCLASS_BLUNT)
-	item_weight = 7 * IRON_MULTIPLIER
+	item_weight = 3 * IRON_MULTIPLIER
 
 	var/brightness_on = 4 //less than a torch; basically good for one person.
 	var/on = FALSE

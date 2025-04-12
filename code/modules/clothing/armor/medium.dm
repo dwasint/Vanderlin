@@ -19,7 +19,7 @@
 	body_parts_covered = COVERAGE_ALL_BUT_ARMS
 	prevent_crits = ALL_CRITICAL_HITS
 	max_integrity = INTEGRITY_STRONG
-	item_weight = 10
+	item_weight = 7
 
 
 //................ Armored Surcoat ............... //	- splint mail looking armor thats colored

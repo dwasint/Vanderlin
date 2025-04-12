@@ -53,7 +53,7 @@
 	max_integrity = INTEGRITY_STRONGEST
 	prevent_crits = ALL_EXCEPT_STAB
 	do_sound_plate = TRUE
-	item_weight = 5.4 * IRON_MULTIPLIER
+	item_weight = 3.2 * IRON_MULTIPLIER
 
 /obj/item/clothing/armor/brigandine/update_icon()
 	cut_overlays()
@@ -162,7 +162,7 @@
 	smeltresult = /obj/item/ingot/steel
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
-	item_weight = 8 * STEEL_MULTIPLIER
+	item_weight = 5.5 * STEEL_MULTIPLIER
 
 /obj/item/clothing/shirt/vampire
 	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR

@@ -38,7 +38,7 @@
 
 	armor = ARMOR_PLATE_BAD
 	max_integrity = INTEGRITY_STRONG //isn't the same as a steel helmet but is better than a skullcap, costs 2 bars and protects the mouth
-	item_weight = 12 * IRON_MULTIPLIER
+	item_weight = 6 * IRON_MULTIPLIER
 
 //............... Rusted Barbute ............... //
 /obj/item/clothing/head/helmet/heavy/rust
@@ -53,7 +53,7 @@
 	sellprice = VALUE_IRON_ARMOR/2
 	armor = ARMOR_PLATE_BAD
 	max_integrity = INTEGRITY_STANDARD
-	item_weight = 12 * IRON_MULTIPLIER
+	item_weight = 6 * IRON_MULTIPLIER
 
 //............... Great Helm ............... //
 /obj/item/clothing/head/helmet/heavy/bucket
@@ -64,11 +64,11 @@
 
 	armor = ARMOR_PLATE
 	prevent_crits = ALL_CRITICAL_HITS
-	item_weight = 14 * IRON_MULTIPLIER
+	item_weight = 9 * IRON_MULTIPLIER
 
 /obj/item/clothing/head/helmet/heavy/bucket/gold
 	icon_state = "topfhelm_gold"
-	item_weight = 14 * GOLD_MULITPLIER
+	item_weight = 9 * GOLD_MULITPLIER
 
 
 // Vampire Lord is no longer as OP, but the armor should protect against dreaded stabs or it makes the vitae spent on it pointless.
@@ -83,7 +83,7 @@
 	armor = ARMOR_PLATE
 	prevent_crits = ALL_CRITICAL_HITS_VAMP
 	max_integrity = INTEGRITY_STRONG
-	item_weight = 9 * IRON_MULTIPLIER
+	item_weight = 6 * IRON_MULTIPLIER
 
 
 //............... Frog Helmet ............... //
@@ -98,7 +98,7 @@
 
 	armor = ARMOR_PLATE_GOOD
 	prevent_crits = ALL_CRITICAL_HITS
-	item_weight = 13 * IRON_MULTIPLIER
+	item_weight = 9 * IRON_MULTIPLIER
 
 //............... Temple heavy helmets ......................//
 //............... Astrata Helmet ............... //
@@ -129,7 +129,7 @@
 	desc = "A great helmet with twisted metalwork that imitates the twisting of bark, or the horns of a beast."
 	icon_state = "dendorhelm"
 	prevent_crits = ALL_EXCEPT_BLUNT
-	item_weight = 9 * IRON_MULTIPLIER
+	item_weight = 6 * IRON_MULTIPLIER
 
 //............... Eora Helmet ............... //
 /obj/item/clothing/head/helmet/sallet/eoran
@@ -146,7 +146,7 @@
 	desc = "A great helmet made of coarse, tainted steel. It is modeled after a plagued carrion, a blessed abomination of Pestra."
 	icon_state = "pestrahelm"
 	item_state = "pestrahelm"
-	item_weight = 9 * IRON_MULTIPLIER
+	item_weight = 6 * IRON_MULTIPLIER
 
 //................ Malum Helmet ............. //
 /obj/item/clothing/head/helmet/heavy/necked/malumhelm
@@ -154,14 +154,14 @@
 	desc = "A great helmet of sturdy dark steel. Its chiseled countenance reminds the viewer of Malum's stern gaze."
 	icon_state = "malumhelm"
 	item_state = "malumhelm"
-	item_weight = 9 * IRON_MULTIPLIER
+	item_weight = 6 * IRON_MULTIPLIER
 
 /obj/item/clothing/head/helmet/heavy/necked/ravox
 	name = "ravoxian helmet"
 	desc = "Headwear commonly worn by Templars in service to Ravox. It resembles an heavily adorned visored sallet."
 	icon_state = "ravoxhelm"
 	item_state = "ravoxhelm"
-	item_weight = 9 * IRON_MULTIPLIER
+	item_weight = 6 * IRON_MULTIPLIER
 
 //............... Sinistar (Graggar) Helmet ............... //
 /obj/item/clothing/head/helmet/heavy/sinistar
@@ -176,7 +176,7 @@
 	dropshrink = 0.9
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 	smeltresult = /obj/item/ingot/iron
-	item_weight = 11 * IRON_MULTIPLIER
+	item_weight = 7 * IRON_MULTIPLIER
 
 /obj/item/clothing/head/helmet/heavy/decorated	// template
 	name = "a template"
@@ -206,7 +206,7 @@
 	name = "knights helmet"
 	desc = "A lavish knights helmet which allows a crest to be mounted on top."
 	icon_state = "decorated_knight"
-	item_weight = 12 * IRON_MULTIPLIER
+	item_weight = 9 * IRON_MULTIPLIER
 
 /obj/item/clothing/head/helmet/heavy/decorated/knight/attack_right(mob/user)
 	..()
@@ -230,7 +230,7 @@
 	armor = ARMOR_PLATE_GOOD
 	max_integrity = INTEGRITY_STRONG
 	prevent_crits = ALL_CRITICAL_HITS
-	item_weight = 12 * IRON_MULTIPLIER
+	item_weight = 9 * IRON_MULTIPLIER
 
 
 /obj/item/clothing/head/helmet/heavy/decorated/hounskull/attack_right(mob/user)
@@ -253,7 +253,7 @@
 	desc = "A lavish great helm which allows a crest to be mounted on top."
 	icon_state = "decorated_bucket"
 	prevent_crits = ALL_CRITICAL_HITS
-	item_weight = 13 * IRON_MULTIPLIER
+	item_weight = 9 * IRON_MULTIPLIER
 
 /obj/item/clothing/head/helmet/heavy/decorated/bucket/attack_right(mob/user)
 	..()
@@ -275,7 +275,7 @@
 	desc = "A lavish gold-trimmed greathelm which allows a crest to be mounted on top."
 	icon_state = "decorated_gbucket"
 	prevent_crits = ALL_CRITICAL_HITS
-	item_weight = 12 * GOLD_MULITPLIER
+	item_weight = 7 * GOLD_MULITPLIER
 
 /obj/item/clothing/head/helmet/heavy/decorated/golden/attack_right(mob/user)
 	..()
@@ -302,7 +302,7 @@
 	block2add = null
 
 	body_parts_covered = HEAD|HAIR|EARS
-	item_weight = 12 * STEEL_MULTIPLIER
+	item_weight = 9 * STEEL_MULTIPLIER
 
 /obj/item/clothing/head/helmet/heavy/decorated/bascinet/attack_right(mob/user)
 	..()
