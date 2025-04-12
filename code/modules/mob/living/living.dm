@@ -2070,6 +2070,6 @@
 	return 0
 
 /mob/living/proc/encumbrance_to_dodge()
-	return 100
+	return 1
 
 /mob/living/proc/encumbrance_to_speed()

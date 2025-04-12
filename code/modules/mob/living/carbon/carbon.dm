@@ -1301,7 +1301,11 @@
 	var/encumberance = get_encumberance()
 	if(!HAS_TRAIT(src, TRAIT_DODGEEXPERT))
 		encumberance *= 1.5
-	return 100 - (encumberance * 100)
+	if(encumberance <= 0.3 && HAS_TRAIT(src, TRAIT_DODGEEXPERT))
+		return 1
+	if(encumberance >= 1)
+		return 0
+	return 1 - (encumberance * 1)
 
 /mob/living/carbon/encumbrance_to_speed()
 	var/exponential = (2.71 ** -(get_encumberance() - 0.6)) * 10
