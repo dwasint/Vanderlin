@@ -19,7 +19,7 @@
 	max_integrity = INTEGRITY_STANDARD
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide/cured
-	item_weight = 5
+	item_weight = 3
 
 
 /obj/item/clothing/head/helmet/leather/advanced
@@ -53,7 +53,7 @@
 	prevent_crits =  MINOR_CRITICALS
 	max_integrity = INTEGRITY_POOR
 	clothing_flags = NONE
-	item_weight = 3
+	item_weight = 0.5
 
 //............... Buckled Hat ............... //
 /obj/item/clothing/head/helmet/leather/inquisitor

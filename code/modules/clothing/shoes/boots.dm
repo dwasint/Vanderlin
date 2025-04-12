@@ -69,7 +69,7 @@
 	sellprice = 10
 	salvage_result = /obj/item/natural/hide/cured
 	salvage_amount = 1
-	item_weight = 5
+	item_weight = 3
 
 /obj/item/clothing/shoes/boots/leather/advanced
 	name = "hardened leather boots"
@@ -99,7 +99,7 @@
 	armor = list("blunt" = 30, "slash" = 10, "stab" = 20,  "piercing" = 0, "fire" = 0, "acid" = 0)
 	salvage_result = /obj/item/natural/fur
 	salvage_amount = 1
-	item_weight = 4
+	item_weight = 3
 
 /obj/item/clothing/shoes/boots/furlinedanklets
 	name = "fur lined anklets"
