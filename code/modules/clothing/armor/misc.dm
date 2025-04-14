@@ -51,7 +51,7 @@
 	armor = ARMOR_BRIGANDINE
 	body_parts_covered = COVERAGE_ALL_BUT_LEGS
 	max_integrity = INTEGRITY_STRONGEST
-	prevent_crits = ALL_EXCEPT_STAB
+	prevent_crits = ALL_EXCEPT_BLUNT
 	do_sound_plate = TRUE
 	item_weight = 3.2 * IRON_MULTIPLIER
 
@@ -84,7 +84,7 @@
 	armor = ARMOR_PLATE_BAD
 	body_parts_covered = COVERAGE_ALL_BUT_LEGS
 	max_integrity = INTEGRITY_STRONGEST
-	prevent_crits = ALL_EXCEPT_STAB
+	prevent_crits = ALL_EXCEPT_BLUNT
 	do_sound_plate = TRUE
 	item_weight = 7 * STEEL_MULTIPLIER
 
