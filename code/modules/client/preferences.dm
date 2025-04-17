@@ -986,9 +986,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 				if(job.whitelist_req && (!user.client.whitelisted()))
 					HTML += "<font color=#6183a5>[used_name]</font></td> <td> </td></tr>"
 					continue
-			if(job.plevel_req > user.client.patreonlevel())
-				HTML += "<font color=#a59461>[used_name]</font></td> <td> </td></tr>"
-				continue
+
 			if(get_playerquality(user.ckey) < job.min_pq)
 				HTML += "<font color=#a36c63>[used_name] (Min PQ: [job.min_pq])</font></td> <td> </td></tr>"
 				continue

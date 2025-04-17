@@ -344,8 +344,6 @@ GLOBAL_LIST_EMPTY(fake_ckeys)
 		return "some invalid"
 	var/ckey = ckey(key)
 
-	if(!(ckey in GLOB.anonymize))
-		return ckey
 	if(GLOB.fake_ckeys[ckey])
 		return GLOB.fake_ckeys[ckey]
 

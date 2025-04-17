@@ -1286,7 +1286,6 @@
 #include "code\modules\admin\holder2.dm"
 #include "code\modules\admin\IsBanned.dm"
 #include "code\modules\admin\outfits.dm"
-#include "code\modules\admin\patreon.dm"
 #include "code\modules\admin\permissionedit.dm"
 #include "code\modules\admin\player_curses.dm"
 #include "code\modules\admin\player_panel.dm"

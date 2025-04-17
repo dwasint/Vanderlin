@@ -905,10 +905,6 @@ GLOBAL_LIST_EMPTY(respawncounts)
 		convert_notes_sql(ckey)
 
 
-
-	add_patreon_verbs()
-
-
 	to_chat(src, get_message_output("message", ckey))
 
 
