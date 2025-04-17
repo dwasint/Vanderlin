@@ -2267,6 +2267,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	character.socks = socks
 
 	/* V: */
+	
 	character.headshot_link = headshot_link
 	character.flavortext = flavortext
 
@@ -2311,7 +2312,10 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	if(is_misc_banned(parent.ckey, BAN_MISC_PUNISHMENT_CURSE))
 		ADD_TRAIT(character, TRAIT_PUNISHMENT_CURSE, TRAIT_BAN_PUNISHMENT)
 
-	/* V */
+	if(parent?.patreon?.has_access(ACCESS_ASSISTANT_RANK))
+		character.accent = selected_accent
+
+	/* :V */
 
 	if("tail_lizard" in pref_species.default_features)
 		character.dna.species.mutant_bodyparts |= "tail_lizard"
@@ -2320,9 +2324,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 		character.update_body()
 		character.update_hair()
 		character.update_body_parts(redraw = TRUE)
-
-	if(parent?.patreon?.has_access(ACCESS_ASSISTANT_RANK))
-		character.accent = selected_accent
 
 /datum/preferences/proc/get_default_name(name_id)
 	switch(name_id)
