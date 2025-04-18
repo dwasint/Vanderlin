@@ -350,3 +350,12 @@
 	message_admins("[key_name_admin(usr)] started weather of type [weather_type].")
 	log_admin("[key_name(usr)] started weather of type [weather_type].")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Run Particle Weather")
+
+
+/datum/weather_effect
+	var/name = "effect"
+	var/probability = 0
+	var/datum/particle_weather/initiator_ref
+
+/datum/weather_effect/proc/effect_affect(turf/target_turf)
+	return FALSE

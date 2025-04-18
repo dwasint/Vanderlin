@@ -53,14 +53,6 @@
 	target_trait = PARTICLEWEATHER_SNOW
 	weather_special_effect = /datum/weather_effect/snow
 
-/datum/weather_effect
-	var/name = "effect"
-	var/probability = 0
-	var/datum/particle_weather/initiator_ref
-
-/datum/weather_effect/proc/effect_affect(turf/target_turf)
-	return FALSE
-
 /datum/weather_effect/snow
 	name = "snow effect"
 	probability = 40
