@@ -50,7 +50,7 @@
 	scale_vol_with_severity = TRUE
 	weather_sounds = list(/datum/looping_sound/rain)
 	indoor_weather_sounds = list(/datum/looping_sound/indoor_rain)
-	weather_messages = list("The rain cools your skin.")
+	weather_messages = null
 
 	minSeverity = 5
 	maxSeverity = 15
@@ -88,3 +88,13 @@
 			area.blend_mode   	  = initial(area.blend_mode)
 			area.invisibility 	  = initial(area.invisibility)
 	old_plane = null
+
+/datum/particle_weather/fog/swamp
+	name = "Swamp Fog"
+	particleEffectType = /particles/weather/fog/swamp
+
+/datum/particle_weather/fog/darkness
+	name = "Omen of Darkness Fog"
+	particleEffectType = /particles/weather/dark
+
+
