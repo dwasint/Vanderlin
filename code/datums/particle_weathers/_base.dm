@@ -130,6 +130,7 @@
 
 	var/blend_type
 	var/filter_type
+	var/secondary_filter_type
 
 	var/datum/weather_effect/weather_special_effect
 
@@ -164,7 +165,7 @@
 	addtimer(CALLBACK(src, PROC_REF(wind_down)), weather_duration)
 
 	if(particleEffectType)
-		SSParticleWeather.SetparticleEffect(new particleEffectType, blend_type, filter_type);
+		SSParticleWeather.SetparticleEffect(new particleEffectType, blend_type, filter_type, secondary_filter_type);
 
 	if(weather_special_effect)
 		SSParticleWeather.weather_special_effect = new weather_special_effect(src)

@@ -87,7 +87,7 @@ SUBSYSTEM_DEF(ParticleWeather)
 		weatherEffect.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	return weatherEffect
 
-/datum/controller/subsystem/ParticleWeather/proc/SetparticleEffect(particles/P, blend_type, filter_type)
+/datum/controller/subsystem/ParticleWeather/proc/SetparticleEffect(particles/P, blend_type, filter_type, secondary_filter_type)
 	particleEffect = P
 	weatherEffect.particles = particleEffect
 	if(!blend_type)
@@ -98,6 +98,8 @@ SUBSYSTEM_DEF(ParticleWeather)
 	weatherEffect.filters += filter(type="alpha", render_source=WEATHER_RENDER_TARGET)
 	if(filter_type)
 		weatherEffect.filters += filter_type
+	if(secondary_filter_type)
+		weatherEffect.filters += secondary_filter_type
 
 /datum/controller/subsystem/ParticleWeather/proc/stopWeather()
 	for(var/obj/act_on as anything in GLOB.weather_act_upon_list)
