@@ -144,7 +144,17 @@ Actual Adjacent procs :
 
 					var/newg = cur.g + cur.source.Distance3D(T)
 
-					newg += cur.source.path_weight
+					// Check if the turf has objects with BLOCK_Z_OUT_DOWN flag
+					var/has_block_z_out_down = FALSE
+					for(var/obj/structure/O in T.contents)
+						if(O.obj_flags & BLOCK_Z_OUT_DOWN)
+							has_block_z_out_down = TRUE
+							break
+
+					// Only add path_weight if the turf doesn't have objects with BLOCK_Z_OUT_DOWN flag
+					if(!has_block_z_out_down)
+						newg += cur.source.path_weight
+
 					// Apply a larger penalty for changing z-levels to prefer same-level paths
 					if (i >= 4 && check_z_levels)
 						newg += 10 // Increased penalty to make same-level paths more preferred
@@ -233,7 +243,7 @@ Actual Adjacent procs :
 	if (is_type_in_typecache(T, GLOB.dangerous_turfs))
 		// Check if there's an object with BLOCK_Z_OUT_DOWN flag on the turf
 		var/has_block_z_out_down = FALSE
-		for(var/obj/O in T.contents)
+		for(var/obj/structure/O in T.contents)
 			if(O.obj_flags & BLOCK_Z_OUT_DOWN)
 				has_block_z_out_down = TRUE
 				break
