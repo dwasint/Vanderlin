@@ -220,7 +220,9 @@ Actual Adjacent procs :
 			// Destination would be the turf below in the stair's direction
 			var/turf/dest = get_step(below, S.dir)
 			if (dest && !dest.density)
-				return dest
+				for (var/obj/structure/stairs/S2 in dest.contents)
+					if (S2.dir == S.dir)
+						return dest
 
 		// If no stairs in current turf, check for stairs in adjacent turfs that might lead to below
 		for (var/turf/adjacent in get_adjacent_open_turfs(T))
