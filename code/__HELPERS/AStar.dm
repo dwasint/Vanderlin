@@ -231,13 +231,22 @@ Actual Adjacent procs :
 		return FALSE
 
 	if (is_type_in_typecache(T, GLOB.dangerous_turfs))
-		if(istype(T, /turf/open/transparent))
-			var/turf/open/below_turf = GET_TURF_BELOW(T)
-			var/obj/structure/stairs/S = locate(/obj/structure/stairs/) in below_turf.contents
-			if(!S)
+		// Check if there's an object with BLOCK_Z_OUT_DOWN flag on the turf
+		var/has_block_z_out_down = FALSE
+		for(var/obj/O in T.contents)
+			if(O.obj_flags & BLOCK_Z_OUT_DOWN)
+				has_block_z_out_down = TRUE
+				break
+
+		// If it's a dangerous turf WITHOUT the BLOCK_Z_OUT_DOWN flag, handle as before
+		if(!has_block_z_out_down)
+			if(istype(T, /turf/open/transparent))
+				var/turf/open/below_turf = GET_TURF_BELOW(T)
+				var/obj/structure/stairs/S = locate(/obj/structure/stairs/) in below_turf.contents
+				if(!S)
+					return FALSE
+			else
 				return FALSE
-		else
-			return FALSE
 
 	// Same z-level movement - use standard check
 	if (!check_z_levels || T.z == z)
