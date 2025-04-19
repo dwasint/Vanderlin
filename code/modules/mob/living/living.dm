@@ -19,7 +19,7 @@
 	init_faith()
 	if(has_reflection)
 		basic_reflection = new/obj/reflection(null,src)
-	create_reflection()
+		create_reflection()
 
 /mob/living/Destroy()
 	if(FACTION_MATTHIOS in faction)
@@ -102,6 +102,8 @@
 	return
 
 /mob/living/proc/update_reflection()
+	if(!has_reflection)
+		return
 	if(!reflective_icon)
 		create_reflection()
 	cut_overlay(reflective_icon)

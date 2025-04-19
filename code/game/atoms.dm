@@ -276,6 +276,7 @@
 		if(SHINE_SHINY)
 			r_overlay = "whiteOverlay"
 	reflection = mutable_appearance('icons/turf/overlays.dmi', r_overlay, plane = _reflection_plane)
+	reflection.blend_mode = BLEND_INSET_OVERLAY
 	reflection_displacement = mutable_appearance('icons/turf/overlays.dmi', "flip", plane = REFLECTIVE_DISPLACEMENT_PLANE)
 	reflection_displacement.appearance_flags = 0 //Have to do this to make map work. Why? IDK, displacements are special like that
 	var/masking_plane = _reflection_plane == REFLECTIVE_PLANE ? REFLECTIVE_ALL_PLANE : REFLECTIVE_ALL_ABOVE_PLANE
