@@ -28,6 +28,7 @@
 	immunity_type = TRAIT_SNOWSTORM_IMMUNE
 	probability = 1
 	target_trait = PARTICLEWEATHER_SNOW
+	forecast_tag = "snow"
 
 //Makes you a little chilly
 /datum/particle_weather/snow_gentle/weather_act(mob/living/L)
@@ -46,12 +47,17 @@
 
 	minSeverity = 40
 	maxSeverity = 100
+
+	weather_duration_lower = 4 MINUTES
+	weather_duration_upper = 10 MINUTES
+
 	maxSeverityChange = 50
 	severitySteps = 50
 	immunity_type = TRAIT_SNOWSTORM_IMMUNE
 	probability = 1
 	target_trait = PARTICLEWEATHER_SNOW
 	weather_special_effect = /datum/weather_effect/snow
+	forecast_tag = "snow"
 
 /datum/weather_effect/snow
 	name = "snow effect"

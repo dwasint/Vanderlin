@@ -15,6 +15,8 @@ SUBSYSTEM_DEF(ParticleWeather)
 	var/list/turfs_to_process = list()
 	var/list/weathered_turfs = list()
 
+	var/datum/forecast/selected_forecast
+
 /datum/controller/subsystem/ParticleWeather/fire()
 	// process active weather
 	if(runningWeather)
@@ -49,6 +51,12 @@ SUBSYSTEM_DEF(ParticleWeather)
 		if (probability && (target_trait in GLOB.vanderlin_weather)) //TODO VANDERLIN: Map trait this.
 			LAZYINITLIST(elligble_weather)
 			elligble_weather[W] = probability
+
+	switch(SSmapping.config.map_name)
+		if("Rosewood")
+			selected_forecast = new /datum/forecast/rosewood()
+		else
+			selected_forecast = new /datum/forecast/vanderlin()
 	return ..()
 
 /datum/controller/subsystem/ParticleWeather/proc/run_weather(datum/particle_weather/weather_datum_type, force = 0)
@@ -108,3 +116,14 @@ SUBSYSTEM_DEF(ParticleWeather)
 	QDEL_NULL(runningWeather)
 	QDEL_NULL(particleEffect)
 	QDEL_NULL(weather_special_effect)
+
+/datum/controller/subsystem/ParticleWeather/proc/check_forecast(time_of_day)
+	if(GLOB.forecast)
+		GLOB.forecast = null
+		return
+	var/datum/particle_weather/weather = selected_forecast.pick_weather(time_of_day)
+	if(runningWeather && runningWeather.target_trait == initial(weather.target_trait))
+		return
+	GLOB.forecast = initial(weather.forecast_tag)
+	run_weather(weather)
+

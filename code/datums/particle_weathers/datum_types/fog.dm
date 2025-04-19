@@ -52,6 +52,7 @@
 	indoor_weather_sounds = list(/datum/looping_sound/indoor_rain)
 	weather_messages = null
 
+	weather_duration_upper = 10 MINUTES
 	minSeverity = 5
 	maxSeverity = 15
 	maxSeverityChange = 2
@@ -59,6 +60,7 @@
 	immunity_type = TRAIT_RAINSTORM_IMMUNE
 	probability = 1
 	target_trait = PARTICLEWEATHER_RAIN
+	forecast_tag = "fog"
 	#ifndef  SPACEMAN_DMM
 	filter_type = filter(type="alpha", render_source = O_LIGHTING_VISUAL_RENDER_TARGET, flags = MASK_INVERSE)
 	secondary_filter_type = filter(type="alpha", render_source = FOG_RENDER_TARGET, flags = MASK_INVERSE)

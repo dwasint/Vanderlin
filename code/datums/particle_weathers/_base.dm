@@ -131,6 +131,7 @@
 	var/blend_type
 	var/filter_type
 	var/secondary_filter_type
+	var/forecast_tag
 
 	var/datum/weather_effect/weather_special_effect
 

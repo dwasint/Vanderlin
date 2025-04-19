@@ -32,6 +32,7 @@
 	immunity_type = TRAIT_RAINSTORM_IMMUNE
 	probability = 1
 	target_trait = PARTICLEWEATHER_RAIN
+	forecast_tag = "rain"
 
 //Makes you a little chilly
 /datum/particle_weather/rain_gentle/weather_act(mob/living/L)
@@ -54,6 +55,7 @@
 	immunity_type = TRAIT_RAINSTORM_IMMUNE
 	probability = 1
 	target_trait = PARTICLEWEATHER_RAIN
+	forecast_tag = "rain"
 
 	COOLDOWN_DECLARE(thunder)
 
