@@ -218,6 +218,9 @@ Actual Adjacent procs :
 		// First check if there are stairs in the current turf leading down
 		for (var/obj/structure/stairs/S in T.contents)
 			// Destination would be the turf below in the stair's direction
+			var/turf/direction = get_step(T, S.dir)
+			if(!istransparentturf(direction))
+				continue
 			var/turf/dest = get_step(below, S.dir)
 			if (dest && !dest.density)
 				for (var/obj/structure/stairs/S2 in dest.contents)
