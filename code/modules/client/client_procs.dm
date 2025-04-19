@@ -37,6 +37,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 
 /client
 	var/commendedsomeone
+	var/atom/movable/movingmob
 	var/whitelisted = 2
 
 /client/Topic(href, href_list, hsrc)
