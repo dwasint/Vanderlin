@@ -359,61 +359,6 @@
 	diged["[dir]"] = world.time + 1 MINUTES
 	update_overlays()
 
-/turf
-	var/list/wall_connections = list("0", "0", "0", "0")
-	var/neighbors_list = 0
-	var/special_icon = TRUE
-	var/list/blend_turfs = list()
-	var/list/noblend_turfs = list() //Turfs to avoid blending with
-	var/list/blend_objects = list() // Objects which to blend with
-	var/list/noblend_objects = list() //Objects to avoid blending with (such as children of listed blend objects.
-
-/turf/proc/update_connections(propagate = 0)
-	var/list/turf_dirs = list()
-
-	for(var/turf/turf in orange(src, 1))
-		switch(can_join_with(turf))
-			if(FALSE)
-				continue
-			if(TRUE)
-				turf_dirs += get_dir(src, turf)
-		if(propagate)
-			turf.update_connections()
-			turf.update_icon()
-
-	for(var/turf/turf in orange(src, 1))
-		var/success = 0
-		for(var/obj/obj in turf)
-			for(var/b_type in blend_objects)
-				if(istype(obj, b_type))
-					success = TRUE
-				for(var/nb_type in noblend_objects)
-					if(istype(obj, nb_type))
-						success = FALSE
-				if(success)
-					break
-			if(success)
-				break
-
-		if(success)
-			if(get_dir(src, turf) in GLOB.cardinals)
-				turf_dirs += get_dir(src, turf)
-
-	for(var/neighbor in turf_dirs)
-		neighbors_list |= neighbor
-	wall_connections = dirs_to_corner_states(turf_dirs)
-
-/turf/proc/can_join_with(turf/target_turf)
-	if(target_turf.type == type)
-		return TRUE
-	for(var/wb_type in blend_turfs)
-		for(var/nb_type in noblend_turfs)
-			if(istype(target_turf, nb_type))
-				return FALSE
-		if(istype(target_turf, wb_type))
-			return TRUE
-	return FALSE
-
 #define CORNER_NONE 0
 #define CORNER_COUNTERCLOCKWISE 1
 #define CORNER_DIAGONAL 2
