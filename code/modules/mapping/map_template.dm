@@ -58,7 +58,7 @@
 	var/x = round((world.maxx - width)/2)
 	var/y = round((world.maxy - height)/2)
 
-	var/datum/space_level/level = SSmapping.add_new_zlevel(name, list(ZTRAIT_AWAY = TRUE), contain_turfs = FALSE)
+	var/datum/space_level/level = SSmapping.add_new_zlevel(name, list(ZTRAIT_AWAY = TRUE))
 	var/datum/parsed_map/parsed = load_map(
 		file(mappath),
 		x,
