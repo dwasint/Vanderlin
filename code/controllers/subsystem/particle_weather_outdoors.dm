@@ -92,41 +92,8 @@ SUBSYSTEM_DEF(outdoor_effects)
 		init_z_turfs(z)
 
 /datum/controller/subsystem/outdoor_effects/proc/init_z_turfs(z)
-	var/list/turfs = block(locate(1,1,z), locate(world.maxx,world.maxy,z))
-	var/list/skyvisible_cache = list()
-
-	for(var/turf/T in turfs)
-		skyvisible_cache[T] = T.get_ceiling_status()["SKYVISIBLE"]
-
-	for(var/turf/T in turfs)
-		var/ceiling_data = T.get_ceiling_status()
-		var/sky_visible = skyvisible_cache[T]
-		var/weatherproof = ceiling_data["WEATHERPROOF"]
-		var/state = SKY_BLOCKED
-		var/needs_effect = !weatherproof // Start with indoor turfs that need protection
-
-		if(sky_visible)
-			state = SKY_VISIBLE
-			needs_effect = TRUE
-
-			for(var/turf/adjacent in RANGE_TURFS(1, T))
-				if(!skyvisible_cache[adjacent])
-					state = SKY_VISIBLE_BORDER
-
-					if(iswallturf(adjacent) && !adjacent.outdoor_effect)
-						adjacent.outdoor_effect = new /atom/movable/outdoor_effect(adjacent)
-						var/atom/movable/outdoor_effect/OE = adjacent.outdoor_effect
-						OE.state = SKY_VISIBLE_BORDER
-						OE.weatherproof = TRUE
-						update_outdoor_effect_overlays(OE)
-					break
-
-		if(needs_effect && !T.outdoor_effect)
-			T.outdoor_effect = new /atom/movable/outdoor_effect(T)
-			var/atom/movable/outdoor_effect/OE = T.outdoor_effect
-			OE.state = state
-			OE.weatherproof = weatherproof
-			update_outdoor_effect_overlays(OE)
+	for (var/turf/T in block(locate(1,1,z), locate(world.maxx,world.maxy,z)))
+		GLOB.SUNLIGHT_QUEUE_WORK += T
 
 
 /datum/controller/subsystem/outdoor_effects/proc/check_cycle()
