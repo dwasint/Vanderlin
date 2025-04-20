@@ -48,7 +48,7 @@
 	)
 
 	return lock_difficulties[lockid] || 5
-
+  
 /obj/structure/mineral_door
 	name = "metal door"
 	density = TRUE
