@@ -30,8 +30,7 @@
 		to_chat(usr, span_warning("You're not an Eye!"))
 		return
 	var/list/filtered = list()
-	for(var/V in GLOB.sortedAreas)
-		var/area/A = V
+	for(var/area/A as anything in get_sorted_areas())
 		if(!A.hidden)
 			filtered += A
 	var/area/thearea  = input("Area to jump to", "VANDERLIN") as null|anything in filtered
