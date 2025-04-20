@@ -146,7 +146,7 @@
 		return
 	var/list/sorted_areas = get_sorted_areas()
 	if(!length(sorted_areas))
-		to_chat(src, "No areas found.", confidential = TRUE)
+		to_chat(src, "No areas found.")
 		return
 	var/area/A = input(usr, "Pick an area.", "Pick an area") in sorted_areas
 	if(A && istype(A))
