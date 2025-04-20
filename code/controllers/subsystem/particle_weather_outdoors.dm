@@ -94,7 +94,6 @@ SUBSYSTEM_DEF(outdoor_effects)
 /datum/controller/subsystem/outdoor_effects/proc/init_z_turfs(z)
 	var/list/ceiling_cache = list()
 	var/list/skyvisible_flags = list()
-
 	for (var/turf/T in block(locate(1,1,z), locate(world.maxx,world.maxy,z)))
 		ceiling_cache[T] = T.get_ceiling_status()
 
@@ -109,7 +108,6 @@ SUBSYSTEM_DEF(outdoor_effects)
 
 		if (sky)
 			state = SKY_VISIBLE
-			// Check adjacent turfs to see if this is a border tile
 			for (var/turf/CT in RANGE_TURFS(1, T))
 				if (!skyvisible_flags[CT])
 					state = SKY_VISIBLE_BORDER
@@ -122,12 +120,11 @@ SUBSYSTEM_DEF(outdoor_effects)
 			var/atom/movable/outdoor_effect/OE = T.outdoor_effect //least obvious ragebait
 			OE.state = state
 			OE.weatherproof = roofStat["WEATHERPROOF"]
-
 			if (OE.weatherproof)
 				SSParticleWeather.weathered_turfs -= T
-			else if ((T.turf_flags & TURF_EFFECT_AFFECTABLE) && (z in SSoutdoor_effects.turf_weather_affectable_z_levels))
-				SSParticleWeather.weathered_turfs |= T
-
+			else
+				if ((T.turf_flags & TURF_EFFECT_AFFECTABLE) && (z in SSoutdoor_effects.turf_weather_affectable_z_levels))
+					SSParticleWeather.weathered_turfs |= T
 			update_outdoor_effect_overlays(OE)
 
 
