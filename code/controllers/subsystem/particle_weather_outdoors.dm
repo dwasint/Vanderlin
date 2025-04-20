@@ -92,39 +92,40 @@ SUBSYSTEM_DEF(outdoor_effects)
 		init_z_turfs(z)
 
 /datum/controller/subsystem/outdoor_effects/proc/init_z_turfs(z)
-	var/list/ceiling_cache = list()
-	var/list/skyvisible_flags = list()
-	for (var/turf/T in block(locate(1,1,z), locate(world.maxx,world.maxy,z)))
-		ceiling_cache[T] = T.get_ceiling_status()
+	var/list/turfs = block(locate(1,1,z), locate(world.maxx,world.maxy,z))
+	var/list/skyvisible_cache = list()
 
-	for (var/turf/T in ceiling_cache)
-		var/roofStat = ceiling_cache[T]
-		skyvisible_flags[T] = roofStat["SKYVISIBLE"]
+	for(var/turf/T in turfs)
+		skyvisible_cache[T] = T.get_ceiling_status()["SKYVISIBLE"]
 
-	for (var/turf/T in ceiling_cache)
-		var/sky = skyvisible_flags[T]
+	for(var/turf/T in turfs)
+		var/ceiling_data = T.get_ceiling_status()
+		var/sky_visible = skyvisible_cache[T]
+		var/weatherproof = ceiling_data["WEATHERPROOF"]
 		var/state = SKY_BLOCKED
-		var/roofStat = ceiling_cache[T]
+		var/needs_effect = !weatherproof // Start with indoor turfs that need protection
 
-		if (sky)
+		if(sky_visible)
 			state = SKY_VISIBLE
-			for (var/turf/CT in RANGE_TURFS(1, T))
-				if (!skyvisible_flags[CT])
+			needs_effect = TRUE
+
+			for(var/turf/adjacent in RANGE_TURFS(1, T))
+				if(!skyvisible_cache[adjacent])
 					state = SKY_VISIBLE_BORDER
+
+					if(iswallturf(adjacent) && !adjacent.outdoor_effect)
+						adjacent.outdoor_effect = new /atom/movable/outdoor_effect(adjacent)
+						var/atom/movable/outdoor_effect/OE = adjacent.outdoor_effect
+						OE.state = SKY_VISIBLE_BORDER
+						OE.weatherproof = TRUE
+						update_outdoor_effect_overlays(OE)
 					break
 
-		if (!T.outdoor_effect && (state != SKY_BLOCKED || !roofStat["WEATHERPROOF"]))
+		if(needs_effect && !T.outdoor_effect)
 			T.outdoor_effect = new /atom/movable/outdoor_effect(T)
-
-		if (T.outdoor_effect)
-			var/atom/movable/outdoor_effect/OE = T.outdoor_effect //least obvious ragebait
+			var/atom/movable/outdoor_effect/OE = T.outdoor_effect
 			OE.state = state
-			OE.weatherproof = roofStat["WEATHERPROOF"]
-			if (OE.weatherproof)
-				SSParticleWeather.weathered_turfs -= T
-			else
-				if ((T.turf_flags & TURF_EFFECT_AFFECTABLE) && (z in SSoutdoor_effects.turf_weather_affectable_z_levels))
-					SSParticleWeather.weathered_turfs |= T
+			OE.weatherproof = weatherproof
 			update_outdoor_effect_overlays(OE)
 
 

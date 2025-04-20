@@ -209,10 +209,8 @@ SUBSYSTEM_DEF(mapping)
 
 	var/list/otherZ = list()
 
-	#ifndef LOWMEMORYMODE
 	for(var/map_json in config.other_z)
 		otherZ += load_map_config(map_json)
-	#endif
 	#ifndef NO_DUNGEON
 	otherZ += load_map_config("_maps/map_files/shared/dungeon.json")
 	#endif
