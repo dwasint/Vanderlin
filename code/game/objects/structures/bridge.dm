@@ -59,7 +59,7 @@
 	. = ..()
 
 /obj/structure/bridge/CanPass(atom/movable/O, turf/target)
-	if(istype(mover, /mob/camera))
+	if(istype(O, /mob/camera))
 		return TRUE
 	var/direction = get_dir(loc, target)
 	if(direction != dir && direction != GLOB.reverse_dir[dir])
