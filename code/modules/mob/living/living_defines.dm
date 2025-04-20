@@ -190,8 +190,6 @@
 	var/skinned = FALSE
 
 	///our reflection child
-	var/tmp/obj/reflection/basic_reflection
 	var/has_reflection = TRUE
 
-	var/mutable_appearance/reflective_mask
 	var/mutable_appearance/reflective_icon

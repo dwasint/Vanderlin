@@ -18,7 +18,6 @@
 	GLOB.mob_living_list += src
 	init_faith()
 	if(has_reflection)
-		basic_reflection = new/obj/reflection(null,src)
 		create_reflection()
 
 /mob/living/Destroy()
@@ -48,10 +47,6 @@
 		S.sharerDies(FALSE)
 		S.removeSoulsharer(src) //If a sharer is destroy()'d, they are simply removed
 	sharedSoullinks = null
-	if(basic_reflection)
-		if(ismovableatom(src))
-			src:vis_contents -= basic_reflection
-		QDEL_NULL(basic_reflection)
 	return ..()
 
 
@@ -65,16 +60,6 @@
 
 
 /mob/living/proc/create_reflection()
-	//Add custom reflection mask
-	var/mutable_appearance/MA = new()
-	//appearance stuff
-	MA.appearance = appearance
-	if(render_target)
-		MA.render_source = render_target
-	MA.plane = MANUAL_REFLECTIVE_MASK_PLANE
-	reflective_mask = MA
-	add_overlay(MA)
-
 	//Add custom reflection image
 	var/mutable_appearance/MAM = new()
 	//appearance stuff

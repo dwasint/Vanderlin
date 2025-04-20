@@ -389,11 +389,6 @@
 /atom/movable/proc/set_glide_size(target = 0)
 	SEND_SIGNAL(src, COMSIG_MOVABLE_UPDATE_GLIDE_SIZE, target)
 	glide_size = target
-	if(isliving(src))
-		var/mob/living/living =  src
-		if(living.basic_reflection)
-			living.basic_reflection.glide_size = target
-
 	for(var/atom/movable/AM in buckled_mobs)
 		AM.set_glide_size(target)
 ////////////////////////////////////////

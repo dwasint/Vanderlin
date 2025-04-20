@@ -71,9 +71,7 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 
 /datum/antagonist/vampire/on_gain()
 	owner.current.has_reflection = FALSE
-	owner.current.vis_contents -= owner.current.basic_reflection
 	owner.current.cut_overlay(owner.current.reflective_icon)
-	QDEL_NULL(owner.current.basic_reflection)
 	SSmapping.retainer.vampires |= owner
 	move_to_spawnpoint()
 	owner.special_role = name
