@@ -15,6 +15,8 @@
 	friction = 0.3
 	grow = 0.037
 
+///these were unfortunately requested to not be smoothed. I will likely create a smooth helper version aswell though
+///the issue is they would need atleast a 2x2 to smooth proper.
 /obj/structure/hotspring
 	abstract_type = /obj/structure/hotspring
 	nomouseover = TRUE
@@ -33,14 +35,15 @@
 	//render the steam over mobs and objects on the game plane
 	particle_effect.vis_flags &= ~VIS_INHERIT_PLANE
 
-	var/turf/turf = get_turf(src)
-	turf.path_weight += 100
 	if(!edge)
+		var/turf/turf = get_turf(src)
+		turf.path_weight += 100
 		AddElement(/datum/element/mob_overlay_effect, 2, -2, 100)
 
 /obj/structure/hotspring/Destroy()
-	var/turf/turf = get_turf(src)
-	turf.path_weight -= 100
+	if(!edge)
+		var/turf/turf = get_turf(src)
+		turf.path_weight -= 100
 	. = ..()
 
 
