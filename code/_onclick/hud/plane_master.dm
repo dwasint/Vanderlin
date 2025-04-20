@@ -66,7 +66,7 @@
 	plane = GAME_PLANE
 	appearance_flags = PLANE_MASTER //should use client color
 	blend_mode = BLEND_OVERLAY
-	//render_target = GAME_PLANE_RENDER_TARGET
+	render_target = GAME_PLANE_RENDER_TARGET
 
 /atom/movable/screen/plane_master/game_world/backdrop(mob/mymob)
 	filters = list()
@@ -350,7 +350,7 @@
 	name = "reflection plane master"
 	plane = REFLECTION_PLANE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	//render_source = GAME_PLANE_RENDER_TARGET
+	render_source = GAME_PLANE_RENDER_TARGET
 	screen_loc = "CENTER, CENTER-1:-16"
 	color = "#c4c4c4"
 	///What plane we're masked by
