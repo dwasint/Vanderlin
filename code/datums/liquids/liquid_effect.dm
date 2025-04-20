@@ -61,32 +61,16 @@
 	make_shiny(initial(shine))
 
 
-/obj/effect/abstract/liquid_turf/make_shiny(_shine = SHINE_REFLECTIVE, _reflection_plane = REFLECTIVE_PLANE)
-	if(reflection || reflection_displacement)
+/obj/effect/abstract/liquid_turf/make_shiny(_shine = SHINE_REFLECTIVE)
+	if(total_reflection_mask)
 		if(shine != _shine)
-			cut_overlay(reflection)
-			cut_overlay(reflection_displacement)
+			cut_overlay(total_reflection_mask)
 		else
 			return
-	var/r_overlay
 	switch(_shine)
 		if(SHINE_MATTE)
 			return
-		if(SHINE_REFLECTIVE)
-			r_overlay = "partialOverlay"
-		if(SHINE_SHINY)
-			r_overlay = "whiteOverlay"
-	reflection = mutable_appearance('icons/turf/overlays.dmi', r_overlay, plane = _reflection_plane)
-	reflection.blend_mode = BLEND_INSET_OVERLAY
-	reflection_displacement = mutable_appearance('icons/turf/overlays.dmi', "flip", plane = REFLECTIVE_DISPLACEMENT_PLANE)
-	reflection_displacement.appearance_flags = 0 //Have to do this to make map work. Why? IDK, displacements are special like that
-	var/masking_plane = REFLECTIVE_ALL_PLANE
-	total_reflection_mask = mutable_appearance(icon, "[icon_state]-puddle-reflective", plane = masking_plane)
-	reflection.pixel_y -= 32
-	total_reflection_mask.pixel_y -= 32
-	reflection_displacement.pixel_y -= 32
-	add_overlay(reflection)
-	add_overlay(reflection_displacement)
+	total_reflection_mask = mutable_appearance(icon, "[icon_state]-puddle-reflective", plane = REFLECTIVE_DISPLACEMENT_PLANE)
 	add_overlay(total_reflection_mask)
 	shine = _shine
 
