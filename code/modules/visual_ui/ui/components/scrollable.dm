@@ -75,12 +75,11 @@
 	return element
 
 /obj/abstract/visual_ui_element/scrollable/proc/recalculate_content_height()
-	var/old_height = max_height
 	max_height = 0
 	for(var/obj/abstract/visual_ui_element/E in container_elements)
 		max_height += E.scroll_height
 
-	max_height = max(old_height, abs(max_height))
+	max_height = max(initial(max_height), abs(max_height))
 
 /obj/abstract/visual_ui_element/scrollable/proc/update_element_positions()
 	// Manually update filter offsets to account for scrolling
@@ -100,21 +99,6 @@
 			animate(F, y = (relative_y - (const_offset * 2) + special_offset))
 
 	update_scroll_handle()
-
-
-///this is a dogshit system refactor to use an object mask
-/obj/abstract/visual_ui_element/scrollable/proc/check_element_visibility(obj/abstract/visual_ui_element/E)
-	var/element_height = 32 // Default height
-	var/element_top = E.offset_y + element_height
-	var/element_bottom = E.offset_y
-
-	var/visible_top = offset_y + visible_height
-	var/visible_bottom = offset_y
-
-	if(element_bottom > visible_top || element_top < visible_bottom)
-		E.invisibility = 101 // Outside bounds - hide
-	else
-		E.invisibility = 0 // Inside bounds - show
 
 /obj/abstract/visual_ui_element/scrollable/proc/scroll_up()
 	if(scroll_position < 0)

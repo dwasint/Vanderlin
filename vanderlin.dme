@@ -2330,6 +2330,7 @@
 #include "code\modules\visual_ui\recipe_booklet\ui.dm"
 #include "code\modules\visual_ui\recipe_booklet\elements\background.dm"
 #include "code\modules\visual_ui\recipe_booklet\elements\scrollable_recipe_ancestor.dm"
+#include "code\modules\visual_ui\recipe_booklet\elements\tab_selection.dm"
 #include "code\modules\visual_ui\ui\test_ui.dm"
 #include "code\modules\visual_ui\ui\components\hoverable.dm"
 #include "code\modules\visual_ui\ui\components\movable.dm"

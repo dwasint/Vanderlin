@@ -31,34 +31,66 @@
 	visible_width = 94
 	visible_height = 133
 
-
+	var/current_key = "survival"
+	var/selected_tab
 	var/static/list/id_keys = list(
 		"survival" = list(
-			/datum/repeatable_crafting_recipe/survival,
-			/datum/repeatable_crafting_recipe/cooking/soap,
-			/datum/repeatable_crafting_recipe/cooking/soap/bath,
-			/datum/repeatable_crafting_recipe/fishing,
-			/datum/repeatable_crafting_recipe/sigsweet,
-			/datum/repeatable_crafting_recipe/sigdry,
-			/datum/repeatable_crafting_recipe/dryleaf,
-			/datum/repeatable_crafting_recipe/westleach,
-			/datum/repeatable_crafting_recipe/salami,
-			/datum/repeatable_crafting_recipe/coppiette,
-			/datum/repeatable_crafting_recipe/salo,
-			/datum/repeatable_crafting_recipe/saltfish,
-			/datum/repeatable_crafting_recipe/raisins,
-			/datum/repeatable_crafting_recipe/parchment,
-			/datum/repeatable_crafting_recipe/crafting,
+			"fishing" = list(
+				/datum/repeatable_crafting_recipe/fishing,
+			),
+			"cooking" = list(
+				/datum/repeatable_crafting_recipe/dryleaf,
+				/datum/repeatable_crafting_recipe/westleach,
+				/datum/repeatable_crafting_recipe/salami,
+				/datum/repeatable_crafting_recipe/coppiette,
+				/datum/repeatable_crafting_recipe/salo,
+				/datum/repeatable_crafting_recipe/saltfish,
+				/datum/repeatable_crafting_recipe/raisins,
+				/datum/repeatable_crafting_recipe/cooking/soap,
+				/datum/repeatable_crafting_recipe/cooking/soap/bath,
+			),
+			"survival" = list(
+				/datum/repeatable_crafting_recipe/survival,
+				/datum/repeatable_crafting_recipe/sigsweet,
+				/datum/repeatable_crafting_recipe/sigdry,
+				/datum/repeatable_crafting_recipe/parchment,
+				/datum/repeatable_crafting_recipe/crafting,
+			)
 		)
 	)
+
 /obj/abstract/visual_ui_element/scrollable/recipe_group/New(turf/loc, datum/visual_ui/P)
 	. = ..()
-	create_recipe_group()
+	create_top_tabs(current_key)
+	create_recipe_group(current_key)
 
-/obj/abstract/visual_ui_element/scrollable/recipe_group/proc/create_recipe_group(id_key = "survival")
+
+/obj/abstract/visual_ui_element/scrollable/recipe_group/proc/create_top_tabs(id_key)
+	var/list/recipes = id_keys[id_key]
+	var/key_length = length(recipes)
+
+	for(var/i = 1 to key_length)
+		var/obj/abstract/visual_ui_element/hoverable/tab_selection/tab
+		switch(i)//this is pure lazyness simply trannslate the x/y and use a random icon TRAIT_BASHDOORS
+			if(1)
+				tab = new /obj/abstract/visual_ui_element/hoverable/tab_selection(null, parent)
+			if(2)
+				tab = new /obj/abstract/visual_ui_element/hoverable/tab_selection/two(null, parent)
+			if(3)
+				tab = new /obj/abstract/visual_ui_element/hoverable/tab_selection/three(null, parent)
+			else
+				tab = new /obj/abstract/visual_ui_element/hoverable/tab_selection/four(null, parent)
+		tab.tab_key = recipes[i]
+		tab.update_ui_screen_loc()
+		parent.elements += tab
+
+/obj/abstract/visual_ui_element/scrollable/recipe_group/proc/create_recipe_group(id_key, after_add)
 	var/list/recipe_list = id_keys[id_key]
+	if(!selected_tab)
+		selected_tab = recipe_list[1]
+	var/list/true_recipes = recipe_list[selected_tab]
 	var/length = 1
-	for(var/datum/repeatable_crafting_recipe/recipe as anything in recipe_list)
+	for(var/datum/repeatable_crafting_recipe/recipe as anything in true_recipes)
 		if(is_abstract(recipe))
 			for(var/atom/sub_path as anything in subtypesof(recipe))
 				var/obj/abstract/visual_ui_element/hoverable/recipe_button/button = new /obj/abstract/visual_ui_element/hoverable/recipe_button(null, parent)
@@ -66,6 +98,8 @@
 				button.offset_y = offset_y + (18 * (length-1))
 				button.update_ui_screen_loc()
 				parent.elements += button
+				if(after_add)
+					parent.mind.current.client.screen |= button
 
 				button.maptext = {"<span style='font-size:8pt;font-family:"Pterra";color:[hover_color]' class='center maptext '>[initial(sub_path.name)]</span>"}
 				button.recipe = sub_path
@@ -77,8 +111,28 @@
 			button.offset_y = offset_y + (18 * (length-1))
 			button.update_ui_screen_loc()
 			parent.elements += button
+			if(after_add)
+				parent.mind.current.client.screen |= button
 
 			button.maptext = {"<span style='font-size:8pt;font-family:"Pterra";color:[hover_color]' class='center maptext '>[initial(recipe.name)]</span>"}
 			button.recipe = recipe
 			register_element(button)
 			length++
+
+/obj/abstract/visual_ui_element/scrollable/recipe_group/proc/tab_selection_click(id_key)
+	if(id_key == selected_tab)
+		return
+	selected_tab = id_key
+
+	for(var/obj/abstract/visual_ui_element/element as anything in container_elements)
+		element.scrollable_parent = null
+		container_elements -= element
+		parent.elements -= element
+		parent.mind.current.client.screen -= element
+		qdel(element)
+
+	scroll_position = 0
+	update_element_positions()
+	update_scroll_handle()
+
+	create_recipe_group(current_key, TRUE)
