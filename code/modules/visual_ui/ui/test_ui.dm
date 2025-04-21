@@ -26,6 +26,7 @@
 	plane = FULLSCREEN_PLANE
 	blend_mode = BLEND_ADD
 	mouse_opacity = 0
+
 ////////////////////////////////////////////////////////////////////
 //																  //
 //						   HELLO WORLD CHILD					  //
@@ -38,8 +39,35 @@
 		/obj/abstract/visual_ui_element/hoverable/test_close,
 		/obj/abstract/visual_ui_element/hoverable/test_hello,
 		/obj/abstract/visual_ui_element/hoverable/movable/test_move,
+		/obj/abstract/visual_ui_element/scrollable/test_scroll,
 		)
 	display_with_parent = TRUE
+
+/obj/abstract/visual_ui_element/scrollable/test_scroll
+	icon = 'icons/visual_ui/192x192.dmi'
+	icon_state = "scroll_back"
+	layer = VISUAL_UI_BACK
+	offset_x = 140
+	offset_y = -40
+
+	spawned_contained_elements = list(
+		/obj/abstract/visual_ui_element/hoverable/scroll_one,
+		/obj/abstract/visual_ui_element/hoverable/scroll_two,
+	)
+
+
+/obj/abstract/visual_ui_element/hoverable/scroll_one
+	icon = 'icons/visual_ui/192x192.dmi'
+	icon_state = "1"
+	layer = VISUAL_UI_BUTTON
+	mouse_opacity = 1
+
+/obj/abstract/visual_ui_element/hoverable/scroll_two
+	icon = 'icons/visual_ui/192x192.dmi'
+	icon_state = "2"
+	layer = VISUAL_UI_BUTTON
+	mouse_opacity = 1
+
 //------------------------------------------------------------
 /obj/abstract/visual_ui_element/test_window
 	icon = 'icons/visual_ui/192x192.dmi'
