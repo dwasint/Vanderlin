@@ -100,6 +100,7 @@
 	offset_x = 80
 	offset_y = 16
 	mouse_opacity = 1
+
 /obj/abstract/visual_ui_element/hoverable/test_close/appear()
 	..()
 	mouse_opacity = 1
