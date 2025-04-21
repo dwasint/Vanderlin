@@ -82,7 +82,7 @@ GLOBAL_LIST_INIT(visual_ui_id_to_type, list())
 	if (mind)
 		mind.remove_all_uis()
 
-/mob/proc/display_ui(ui_ID)
+/mob/proc/display_ui(ui_ID = "Hello World")
 	if (mind)
 		mind.display_ui(ui_ID)
 
@@ -538,10 +538,30 @@ GLOBAL_LIST_INIT(visual_ui_id_to_type, list())
 	// Scroll bar elements
 	var/obj/abstract/visual_ui_element/hoverable/scroll_handle
 	var/obj/abstract/visual_ui_element/scroll_track
+	var/obj/abstract/visual_ui_element/mask
 	var/list/spawned_contained_elements = list()
+
+	var/scroll_render_target = "scroll_area"  // Unique ID for this scrollable area
+	var/static/last_render_target_index = 0
+
+	var/mask_icon_state = "scroll_mask"
+	var/matrix/scroll_transform = matrix()
 
 /obj/abstract/visual_ui_element/scrollable/New(turf/loc, datum/visual_ui/P)
 	..()
+
+	last_render_target_index++
+	scroll_render_target = "*scroll_area_[last_render_target_index]"
+
+	mask = new /obj/abstract/visual_ui_element(null, parent)
+	mask.icon = icon
+	mask.icon_state = mask_icon_state
+	mask.render_target = scroll_render_target
+	mask.offset_x = offset_x
+	mask.offset_y = offset_y
+	mask.update_ui_screen_loc()
+	parent.elements += mask
+
 	scroll_track = new /obj/abstract/visual_ui_element/scroll_track(null, parent)
 	scroll_track.offset_x = offset_x - 20
 	scroll_track.offset_y = offset_y
@@ -559,6 +579,8 @@ GLOBAL_LIST_INIT(visual_ui_id_to_type, list())
 		new_element.offset_x = offset_x
 		new_element.offset_y = offset_y
 		new_element.update_ui_screen_loc()
+
+		new_element.filters += filter(type = "alpha", render_source = scroll_render_target)
 		parent.elements += new_element
 		register_element(new_element)
 
@@ -581,6 +603,7 @@ GLOBAL_LIST_INIT(visual_ui_id_to_type, list())
 	max_height = abs(max_height) + 16
 
 /obj/abstract/visual_ui_element/scrollable/proc/update_element_positions()
+	// Manually update filter offsets to account for scrolling
 	for(var/obj/abstract/visual_ui_element/E in container_elements)
 		if(!E.initial_offset_y_set)
 			E.initial_offset_y = E.offset_y
@@ -589,7 +612,12 @@ GLOBAL_LIST_INIT(visual_ui_id_to_type, list())
 		E.offset_y = E.initial_offset_y + scroll_position
 		E.update_ui_screen_loc()
 
-		check_element_visibility(E)
+		// Update the filter's y-offset dynamically
+		if(length(E.filters))
+			var/F = E.filters[1]
+			animate(F, y = -scroll_position)
+
+	update_scroll_handle()
 
 
 ///this is a dogshit system refactor to use an object mask
