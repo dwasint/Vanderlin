@@ -270,6 +270,8 @@ GLOBAL_LIST_INIT(visual_ui_id_to_type, list())
 	var/const_offset_x = 0 //these are constant offsets to ensure moving is seemless
 
 	var/obj/abstract/visual_ui_element/scrollable/scrollable_parent = null
+	var/scroll_height = 0
+
 	var/initial_offset_y = 0
 	var/initial_offset_y_set = FALSE
 
@@ -580,7 +582,6 @@ GLOBAL_LIST_INIT(visual_ui_id_to_type, list())
 		new_element.offset_y = offset_y
 		new_element.update_ui_screen_loc()
 
-		new_element.filters += filter(type = "alpha", render_source = scroll_render_target)
 		parent.elements += new_element
 		register_element(new_element)
 
@@ -588,19 +589,19 @@ GLOBAL_LIST_INIT(visual_ui_id_to_type, list())
 /obj/abstract/visual_ui_element/scrollable/proc/register_element(obj/abstract/visual_ui_element/element)
 	container_elements += element
 	element.scrollable_parent = src // Store reference to scrollable parent
+	element.filters += filter(type = "alpha", render_source = scroll_render_target)
 
-	//recalculate_content_height()
+	recalculate_content_height()
 	update_element_positions()
 	return element
 
 /obj/abstract/visual_ui_element/scrollable/proc/recalculate_content_height()
+	var/old_height = max_height
 	max_height = 0
 	for(var/obj/abstract/visual_ui_element/E in container_elements)
-		var/element_bottom = E.offset_y
-		if(element_bottom < max_height)
-			max_height = element_bottom
+		max_height += E.scroll_height
 
-	max_height = abs(max_height) + 16
+	max_height = max(old_height, abs(max_height))
 
 /obj/abstract/visual_ui_element/scrollable/proc/update_element_positions()
 	// Manually update filter offsets to account for scrolling
@@ -611,11 +612,13 @@ GLOBAL_LIST_INIT(visual_ui_id_to_type, list())
 
 		E.offset_y = E.initial_offset_y + scroll_position
 		E.update_ui_screen_loc()
+		var/element_screen_y = offset_y + E.offset_y
+		var/relative_y = offset_y - element_screen_y
 
 		// Update the filter's y-offset dynamically
 		if(length(E.filters))
 			var/F = E.filters[1]
-			animate(F, y = -scroll_position)
+			animate(F, y = (relative_y - 40))
 
 	update_scroll_handle()
 
@@ -652,27 +655,27 @@ GLOBAL_LIST_INIT(visual_ui_id_to_type, list())
 		update_scroll_handle()
 
 /obj/abstract/visual_ui_element/scrollable/proc/update_scroll_handle()
-    var/track_height = visible_height - 32
+	var/track_height = visible_height - 32
 
-    var/handle_size = min(16, (visible_height / max(max_height, 1)) * track_height)
-    handle_size = max(handle_size, 8)  // Ensure minimum handle size
+	var/handle_size = min(16, (visible_height / max(max_height, 1)) * track_height)
+	handle_size = max(handle_size, 8)  // Ensure minimum handle size
 
-    var/scroll_ratio = 0
-    if(max_height > visible_height)  // Only if content exceeds visible area
-        scroll_ratio = abs(scroll_position) / (max_height - visible_height)
-        scroll_ratio = clamp(scroll_ratio, 0, 1)
+	var/scroll_ratio = 0
+	if(max_height > visible_height)  // Only if content exceeds visible area
+		scroll_ratio = scroll_position / (max_height - visible_height)
+		scroll_ratio = clamp(scroll_ratio, 0, 1)
 
-    var/usable_track = track_height - handle_size
-    var/handle_position = scroll_ratio * usable_track
+	var/usable_track = track_height - handle_size
+	var/handle_position = scroll_ratio * usable_track
 
-    scroll_handle.offset_y = FLOOR(offset_y + track_height - handle_position - handle_size,1)
-    scroll_handle.update_ui_screen_loc()
+	scroll_handle.offset_y = FLOOR(offset_y + track_height - handle_position - handle_size,1)
+	scroll_handle.update_ui_screen_loc()
 
 /obj/abstract/visual_ui_element/scrollable/MouseWheel(delta_x, delta_y, location, control, params)
 	if(delta_y > 0)
-		scroll_up()
-	else if(delta_y < 0)
 		scroll_down()
+	else if(delta_y < 0)
+		scroll_up()
 	return TRUE
 
 /obj/abstract/visual_ui_element/scroll_track
