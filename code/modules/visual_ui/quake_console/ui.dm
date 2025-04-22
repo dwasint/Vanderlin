@@ -83,19 +83,15 @@
 	var/command = arg_list[1]
 	arg_list.Cut(1, 2) // Remove the command, leaving only arguments
 
-	switch(command)
-		if("help")
-			output.add_line("Available commands:")
-			output.add_line("help - Display this help text")
-			output.add_line("clear - Clear console output")
-			output.add_line("echo [text] - Display text in console")
-			output.add_line("close - Close the console")
-		if("clear")
-			output.clear()
-		if("echo")
-			output.add_line(arg_list.Join(" "))
-		if("close")
-			close_console()
-		else
-			output.add_line("Unknown command: [command]")
-			output.add_line("Type 'help' for available commands")
+	var/executed = FALSE
+	for(var/datum/console_command/listed_command in GLOB.console_commands)
+		if(command != listed_command.command_key)
+			continue
+		if(!listed_command.can_execute(mind.current))
+			continue
+		listed_command.execute(output, arg_list)
+		executed = TRUE
+		break
+	if(!executed)
+		output.add_line("Unknown command: [command]")
+		output.add_line("Type 'help' for available commands")
