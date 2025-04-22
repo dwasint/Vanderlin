@@ -2330,6 +2330,7 @@
 #include "code\modules\visual_ui\_base.dm"
 #include "code\modules\visual_ui\recipe_booklet\ui.dm"
 #include "code\modules\visual_ui\recipe_booklet\elements\background.dm"
+#include "code\modules\visual_ui\recipe_booklet\elements\recipe_display.dm"
 #include "code\modules\visual_ui\recipe_booklet\elements\scrollable_recipe_ancestor.dm"
 #include "code\modules\visual_ui\recipe_booklet\elements\tab_selection.dm"
 #include "code\modules\visual_ui\ui\test_ui.dm"

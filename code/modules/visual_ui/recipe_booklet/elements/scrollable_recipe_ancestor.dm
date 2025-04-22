@@ -16,8 +16,13 @@
 	scroll_height = 18
 	maptext_width = 130
 	maptext_x = 48
-	maptext_y = 32
+	maptext_y = 40
 	var/recipe
+
+/obj/abstract/visual_ui_element/hoverable/recipe_button/Click(location, control, params)
+	var/datum/visual_ui/ancestor = parent.get_ancestor()
+	var/obj/abstract/visual_ui_element/scrollable/recipe_group/grouping = locate(/obj/abstract/visual_ui_element/scrollable/recipe_group) in ancestor.elements
+	grouping?.set_selection(src)
 
 /obj/abstract/visual_ui_element/scrollable/recipe_group
 	icon = 'icons/visual_ui/booklet.dmi'
@@ -30,6 +35,8 @@
 
 	visible_width = 94
 	visible_height = 133
+
+	var/obj/abstract/visual_ui_element/hoverable/recipe_button/selected_button
 
 	var/current_key = "survival"
 	var/selected_tab
@@ -94,6 +101,7 @@
 		if(is_abstract(recipe))
 			for(var/atom/sub_path as anything in subtypesof(recipe))
 				var/obj/abstract/visual_ui_element/hoverable/recipe_button/button = new /obj/abstract/visual_ui_element/hoverable/recipe_button(null, parent)
+				button.name = initial(sub_path.name)
 				button.offset_x = offset_x
 				button.offset_y = offset_y + (18 * (length-1))
 				button.update_ui_screen_loc()
@@ -101,12 +109,13 @@
 				if(after_add)
 					parent.mind.current.client.screen |= button
 
-				button.maptext = {"<span style='font-size:8pt;font-family:"Pterra";color:[hover_color]' class='center maptext '>[initial(sub_path.name)]</span>"}
+				button.maptext = {"<span style='font-size:8pt;font-family:"Papyrus";color:[hover_color]' class='center maptext '>[initial(sub_path.name)]</span>"}
 				button.recipe = sub_path
 				register_element(button)
 				length++
 		else
 			var/obj/abstract/visual_ui_element/hoverable/recipe_button/button = new /obj/abstract/visual_ui_element/hoverable/recipe_button(null, parent)
+			button.name = initial(recipe.name)
 			button.offset_x = offset_x
 			button.offset_y = offset_y + (18 * (length-1))
 			button.update_ui_screen_loc()
@@ -114,7 +123,7 @@
 			if(after_add)
 				parent.mind.current.client.screen |= button
 
-			button.maptext = {"<span style='font-size:8pt;font-family:"Pterra";color:[hover_color]' class='center maptext '>[initial(recipe.name)]</span>"}
+			button.maptext = {"<span style='font-size:8pt;font-family:"Papyrus";color:[hover_color]' class='center maptext '>[initial(recipe.name)]</span>"}
 			button.recipe = recipe
 			register_element(button)
 			length++
@@ -132,7 +141,45 @@
 		qdel(element)
 
 	scroll_position = 0
+	unset_button()
+	clear_selected_recipe()
 	update_element_positions()
 	update_scroll_handle()
 
 	create_recipe_group(current_key, TRUE)
+
+/obj/abstract/visual_ui_element/scrollable/recipe_group/proc/set_selection(obj/abstract/visual_ui_element/hoverable/recipe_button/recipe)
+	if(selected_button == recipe)
+		return
+
+	if(selected_button)
+		unset_button()
+
+	selected_button = recipe
+	selected_button.base_icon_state = "recipe_button-selected"
+	selected_button.icon_state = "recipe_button-selected"
+
+	set_selected_recipe()
+
+/obj/abstract/visual_ui_element/scrollable/recipe_group/proc/unset_button()
+	selected_button.base_icon_state = initial(selected_button.icon_state)
+	selected_button.icon_state = initial(selected_button.icon_state)
+	selected_button = null
+
+/obj/abstract/visual_ui_element/scrollable/recipe_group/proc/set_selected_recipe()
+	var/datum/visual_ui/ancestor = parent.get_ancestor()
+	var/obj/abstract/visual_ui_element/scrollable/selected_recipe/grouping = locate(/obj/abstract/visual_ui_element/scrollable/selected_recipe) in ancestor.elements
+	var/obj/abstract/visual_ui_element/current_recipe/header = locate(/obj/abstract/visual_ui_element/current_recipe) in ancestor.elements
+
+	header.maptext = {"<span style='font-size:8pt;font-family:"Papyrus";color:[hover_color]' class='center maptext '>[selected_button.name]</span>"}
+	grouping.recipe_selection = selected_button.recipe
+	grouping.build_recipe()
+
+/obj/abstract/visual_ui_element/scrollable/recipe_group/proc/clear_selected_recipe()
+	var/datum/visual_ui/ancestor = parent.get_ancestor()
+	var/obj/abstract/visual_ui_element/scrollable/selected_recipe/grouping = locate(/obj/abstract/visual_ui_element/scrollable/selected_recipe) in ancestor.elements
+	var/obj/abstract/visual_ui_element/current_recipe/header = locate(/obj/abstract/visual_ui_element/current_recipe) in ancestor.elements
+
+	header.maptext = null
+	grouping.recipe_selection = null
+	grouping.build_recipe()
