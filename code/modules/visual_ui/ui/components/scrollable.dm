@@ -14,6 +14,8 @@
 	var/const_offset = 20
 	///this is because we have non conformed scrollzones
 	var/special_offset = 0
+	///this is for our filter's x incases where we do weird modifications
+	var/special_x_offset = 0
 
 
 	// Scroll bar elements
@@ -68,7 +70,7 @@
 /obj/abstract/visual_ui_element/scrollable/proc/register_element(obj/abstract/visual_ui_element/element)
 	container_elements += element
 	element.scrollable_parent = src // Store reference to scrollable parent
-	element.filters += filter(type = "alpha", render_source = scroll_render_target)
+	element.filters += filter(type = "alpha", render_source = scroll_render_target, x = special_x_offset)
 
 	recalculate_content_height()
 	update_element_positions()
@@ -96,7 +98,7 @@
 		// Update the filter's y-offset dynamically
 		if(length(E.filters))
 			var/F = E.filters[1]
-			animate(F, y = (relative_y - (const_offset * 2) + special_offset))
+			animate(F, y = (relative_y - (const_offset * 2) + special_offset), x = special_x_offset)
 
 	update_scroll_handle()
 

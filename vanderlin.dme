@@ -2335,6 +2335,8 @@
 #include "code\modules\visual_ui\quake_console\commands\close.dm"
 #include "code\modules\visual_ui\quake_console\commands\echo.dm"
 #include "code\modules\visual_ui\quake_console\commands\help.dm"
+#include "code\modules\visual_ui\quake_console\commands\spawn.dm"
+#include "code\modules\visual_ui\quake_console\commands\update.dm"
 #include "code\modules\visual_ui\quake_console\elements\input.dm"
 #include "code\modules\visual_ui\quake_console\elements\output.dm"
 #include "code\modules\visual_ui\recipe_booklet\ui.dm"

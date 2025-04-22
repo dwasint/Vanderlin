@@ -66,12 +66,18 @@
 	if(user_mob)
 		user_mob.focus = src
 
+	if(user.client)
+		user.client.set_macros(TRUE, TRUE)
+
 /obj/abstract/visual_ui_element/console_input/proc/unfocus()
 	focused = FALSE
 	UpdateIcon()
 	// Restore normal keyboard input
 	var/mob/user_mob = get_user()
 	user_mob.focus = user_mob
+	if(user_mob.client)
+		user_mob.client.set_macros(skip_macro_mode = TRUE)
+
 
 /obj/abstract/visual_ui_element/console_input/Click(location, control, params)
 	focus()
@@ -144,10 +150,6 @@
 			var/datum/visual_ui/console/console = parent
 			if(istype(console))
 				console.close_console()
-		if("Space")
-			special_key = TRUE
-			input_text = copytext(input_text, 1, cursor_position + 1) + " " + copytext(input_text, cursor_position + 1)
-			cursor_position++
 
 	// If not a special key, handle as normal character (in keyUp)
 	if(special_key)
@@ -167,6 +169,7 @@
 
 	if(key == "`")
 		return TRUE
+
 	// Handle modifier keys
 	switch(key)
 		if("Shift")
@@ -180,13 +183,38 @@
 			return TRUE
 
 	// Check for character input (not special keys)
-	if(length(key) == 1 && key != " ")
-		// Apply shift modifier if needed
+	if((length(key) == 1 && key != " ") || key == "Space")
 		var/char_to_add = key
-		if(shift_down)
-			char_to_add = uppertext(char_to_add)
-		else
-			char_to_add = lowertext(char_to_add)
+		if(key != "Space")
+			if(shift_down)
+				switch(key) //chat I think I'm cooked gonna be honest, if yandere dev can have a like 5k line if chain I can have this. Please let me have this.
+					if("1") char_to_add = "!"
+					if("2") char_to_add = "@"
+					if("3") char_to_add = "#"
+					if("4") char_to_add = "$"
+					if("5") char_to_add = "%"
+					if("6") char_to_add = "^"
+					if("7") char_to_add = "&"
+					if("8") char_to_add = "*"
+					if("9") char_to_add = "("
+					if("0") char_to_add = ")"
+					if("-") char_to_add = "_"
+					if("=") char_to_add = "+"
+					if("\[") char_to_add = "{"
+					if("]") char_to_add = "}"
+					if("\\") char_to_add = "|"
+					if(";") char_to_add = ":"
+					if("'") char_to_add = "\""
+					if(",") char_to_add = "<"
+					if(".") char_to_add = ">"
+					if("/") char_to_add = "?"
+					if("`") char_to_add = "~"
+					else char_to_add = uppertext(char_to_add)
+			else
+				char_to_add = lowertext(char_to_add)
+
+		if(key == "Space")///this may look like shitcode but because we deliberately have this on keyup to act as a semi queue, this needs to be handled specially
+			char_to_add = " "
 
 		input_text = copytext(input_text, 1, cursor_position + 1) + char_to_add + copytext(input_text, cursor_position + 1)
 		cursor_position++

@@ -96,18 +96,18 @@
 		if(findtext(arg, "="))
 			var/list/key_val = splittext(arg, "=")
 			if(length(key_val) == 2)
-				named_args[key_val[1]] = key_val[2]
+				named_args[key_val[1]] = convert_arg_type(key_val[2], mind.current, mind.current.client.holder?.marked_datum)
 		else
-			positional_args += arg
+			positional_args += convert_arg_type(arg, mind.current, mind.current.client.holder?.marked_datum)
 
 	// Combine positional and named args
 	var/list/final_args = positional_args.Copy()
 	if(length(named_args))
 		final_args += named_args
 
-	// First try on the user's mob
+	// First try on the user's mob or marked datum
 	var/atom/user = mind.current
-	var/datum/marked_datum = mind.current.client.holder.marked_datum
+	var/datum/marked_datum = mind.current.client.holder?.marked_datum
 	if(marked_datum)
 		user = marked_datum
 	var/proc_found = FALSE
@@ -132,3 +132,41 @@
 	var/return_text = mind.current.client.get_callproc_returnval(returnval, procname)
 	if(return_text)
 		output.add_line(return_text)
+
+/datum/visual_ui/console/proc/convert_arg_type(arg, mob/sender, datum/marked)
+	switch(lowertext(arg))
+		if("src")
+			return sender
+		if("marked")
+			return marked
+		if("usr")
+			return sender
+		if("here")
+			return get_turf(sender)
+		if("loc")
+			return sender?.loc
+
+	if(isnum(arg) || isnum(text2num(arg)))
+		return text2num(arg)
+
+	var/path = text2path(arg)
+	if(path)
+		return path
+
+	switch(lowertext(arg))
+		if("true", "yes", "on")
+			return TRUE
+		if("false", "no", "off")
+			return FALSE
+		if("null")
+			return null
+
+	// Check if it's a list (comma-separated)
+	if(findtext(arg, ","))
+		var/list/result = list()
+		for(var/item in splittext(arg, ","))
+			result += convert_arg_type(trim(item), sender, marked)
+		return result
+
+	// Default to string
+	return arg

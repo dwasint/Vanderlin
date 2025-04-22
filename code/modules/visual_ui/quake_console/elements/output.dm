@@ -16,6 +16,7 @@
 	offset_x = -190
 	offset_y = -215
 	special_offset = -70
+	special_x_offset = 180
 
 	scroll_handle = /obj/abstract/visual_ui_element/hoverable/scroll_handle/dummy
 	scroll_track = /obj/abstract/visual_ui_element/scroll_track/dummy

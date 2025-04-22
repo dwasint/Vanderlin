@@ -13,6 +13,8 @@ GLOBAL_LIST_INIT(console_commands, init_possible_commands())
 	return
 
 /datum/console_command/proc/can_execute(mob/anchor)
+	if(!anchor.client.holder)
+		return FALSE
 	return TRUE
 
 /datum/console_command/proc/execute(obj/abstract/visual_ui_element/scrollable/console_output/output, list/arg_list)
