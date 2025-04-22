@@ -24,7 +24,7 @@
 	mouse_opacity = 1
 	var/list/lines = list()
 	var/max_lines = 1000
-	var/line_height = 16
+	var/line_height = 18
 	var/obj/abstract/visual_ui_element/console_text/text_element
 
 	// Scroll dimensions
@@ -44,8 +44,13 @@
 	parent.elements += text_element
 	register_element(text_element)
 
-	add_line("Quake-Style Console")
+	add_line("Psydon's Awesome Epic Powers")
 	add_line("Type 'help' for available commands")
+
+/obj/abstract/visual_ui_element/scrollable/console_output/Click(location, control, params)
+	var/obj/abstract/visual_ui_element/console_input/input = locate(/obj/abstract/visual_ui_element/console_input) in parent.elements
+	if(input && !input.focused)
+		input.focus()
 
 /obj/abstract/visual_ui_element/scrollable/console_output/UpdateIcon(appear = FALSE)
 	text_element.lines = lines.Copy()
@@ -72,6 +77,7 @@
 
 /obj/abstract/visual_ui_element/scrollable/console_output/proc/clear()
 	lines.Cut()
+	text_element.lines.Cut()
 	scroll_position = 0
 	recalculate_content_height()
 	UpdateIcon()
@@ -82,7 +88,7 @@
 	for(var/obj/abstract/visual_ui_element/E in container_elements)
 		max_height += E.scroll_height
 
-	max_height = max(initial(max_height), abs( lines.len * line_height))
+	max_height = max(initial(max_height), abs( (lines.len * line_height) + 64))
 
 // The scrollable text content
 /obj/abstract/visual_ui_element/console_text
@@ -104,7 +110,7 @@
 		display_text += "[line]<br>"
 
 	maptext = {"<span style='color:#00FF00;font-size:8pt;font-family:\"Consolas\";'>[display_text]</span>"}
-	maptext_width = 608
+	maptext_width = 380
 	maptext_height = content_height
-	maptext_x = 5
+	maptext_x = 8
 	maptext_y = 30

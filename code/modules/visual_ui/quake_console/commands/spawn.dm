@@ -1,5 +1,6 @@
 /datum/console_command/spawn
 	command_key = "spawn"
+	required_args = 1
 
 /datum/console_command/spawn/help_information(obj/abstract/visual_ui_element/scrollable/console_output/output)
 	output.add_line("spawn {PATH or partial path} - spawns a mob at your feet")

@@ -8,6 +8,10 @@
 	var/history_position = 0
 	var/current_input = ""
 
+	var/list/listeners = list()
+	var/list/executors = list()
+	var/list/executors_delayed = list()
+
 	element_types_to_spawn = list(
 		/obj/abstract/visual_ui_element/console_input,
 		/obj/abstract/visual_ui_element/scrollable/console_output
@@ -73,7 +77,7 @@
 	for(var/datum/console_command/listed_command in GLOB.console_commands)
 		if(command != listed_command.command_key)
 			continue
-		if(!listed_command.can_execute(mind.current))
+		if(!listed_command.can_execute(mind.current, arg_list, output))
 			continue
 		listed_command.execute(output, arg_list)
 		executed = TRUE
@@ -170,3 +174,201 @@
 
 	// Default to string
 	return arg
+
+/datum/visual_ui/console/proc/setup_listen(signal, datum/listener)
+	var/datum/weakref/ref = WEAKREF(listener)
+	var/list/listened = list()
+	var/obj/abstract/visual_ui_element/scrollable/console_output/output = locate(/obj/abstract/visual_ui_element/scrollable/console_output) in elements
+	if(ref in listeners)
+		listened = listeners[ref]
+	if(signal in listened)
+		UnregisterSignal(listener, signal)
+		listeners[ref] -= signal
+		output.add_line("Unregistered [signal] from [listener]")
+		return
+	listeners |= ref
+	if(!length(listeners[ref]))
+		listeners[ref] = list()
+	listeners[ref] |= signal
+	RegisterSignal(listener, signal, PROC_REF(output_data))
+	output.add_line("Registed [signal] to [listener]")
+
+
+/datum/visual_ui/console/proc/setup_execute(signal, datum/listener, list/arg_check)
+	var/datum/weakref/ref = WEAKREF(listener)
+	var/obj/abstract/visual_ui_element/scrollable/console_output/output = locate(/obj/abstract/visual_ui_element/scrollable/console_output) in elements
+	var/list/listened = list()
+	if(ref in executors)
+		listened = executors[ref]
+	if(signal in executors)
+		UnregisterSignal(executors, signal)
+		listened[ref] -= signal
+		output.add_line("Unregistered [signal] from [listener]")
+		return
+
+	var/proc_protocall = arg_check[1]
+	var/proc_found = FALSE
+	if(hascall(listener, proc_protocall))
+		proc_found = TRUE
+	else
+		// Try global procs
+		var/procpath = "/proc/[proc_protocall]"
+		if(text2path(procpath))
+			proc_found = TRUE
+
+	if(!proc_found)
+		return
+
+	executors |= ref
+	if(!length(executors[ref]))
+		executors[ref] = list()
+	executors[ref] |= signal
+	executors[ref][signal] = arg_check
+
+	RegisterSignal(listener, signal, PROC_REF(trigger_proc))
+	output.add_line("Registed [signal] to [listener] for proc [proc_protocall]")
+
+
+/datum/visual_ui/console/proc/setup_execute_delayed(signal, datum/listener, list/arg_check)
+	var/datum/weakref/ref = WEAKREF(listener)
+	var/obj/abstract/visual_ui_element/scrollable/console_output/output = locate(/obj/abstract/visual_ui_element/scrollable/console_output) in elements
+	var/list/listened = list()
+	if(ref in executors_delayed)
+		listened = executors_delayed[ref]
+	if(signal in executors_delayed)
+		UnregisterSignal(executors, signal)
+		listened[ref] -= signal
+		output.add_line("Unregistered [signal] from [listener]")
+		return
+
+	var/proc_protocall = arg_check[2]
+	var/proc_found = FALSE
+	if(hascall(listener, proc_protocall))
+		proc_found = TRUE
+	else
+		// Try global procs
+		var/procpath = "/proc/[proc_protocall]"
+		if(text2path(procpath))
+			proc_found = TRUE
+
+	if(!proc_found)
+		return
+
+	executors_delayed |= ref
+	if(!length(executors_delayed[ref]))
+		executors_delayed[ref] = list()
+	executors_delayed[ref] |= signal
+	executors_delayed[ref][signal] = arg_check
+
+	RegisterSignal(listener, signal, PROC_REF(trigger_proc_delayed))
+	output.add_line("Registed [signal] to [listener] for proc [proc_protocall]")
+
+/datum/visual_ui/console/proc/output_data(datum/source, ...)
+	var/list/arguments = args.Copy(2, 0)
+	var/obj/abstract/visual_ui_element/scrollable/console_output/output = locate(/obj/abstract/visual_ui_element/scrollable/console_output) in elements
+	output.add_line("[source] triggered listen:")
+	for(var/argument in arguments)
+		if(islist(argument))
+			var/list/list = argument
+			output.add_line("  list(")
+			for(var/thing in list)
+				output.add_line("     [thing]")
+			output.add_line("  )")
+		else
+			output.add_line("  [argument]")
+
+/datum/visual_ui/console/proc/trigger_proc(datum/source, ...)
+	var/sigtype = args[length(args)]
+
+	var/datum/weakref/ref = WEAKREF(source)
+	var/list/registered = executors[ref]
+
+	var/list/pre_parsed_args = registered[sigtype]
+
+	var/procname = pre_parsed_args[1]
+	pre_parsed_args -= procname
+
+	// Parse named arguments (key=value pairs)
+	var/list/named_args = list()
+	var/list/positional_args = list()
+
+	for(var/arg in pre_parsed_args)
+		if(findtext(arg, "="))
+			var/list/key_val = splittext(arg, "=")
+			if(length(key_val) == 2)
+				named_args[key_val[1]] = convert_arg_type(key_val[2], mind.current, mind.current.client.holder?.marked_datum)
+		else
+			positional_args += convert_arg_type(arg, mind.current, mind.current.client.holder?.marked_datum)
+
+	// Combine positional and named args
+	var/list/final_args = positional_args.Copy()
+	if(length(named_args))
+		final_args += named_args
+
+	var/obj/abstract/visual_ui_element/scrollable/console_output/output = locate(/obj/abstract/visual_ui_element/scrollable/console_output) in elements
+	var/returnval
+
+	if(hascall(source, procname))
+		returnval = WrapAdminProcCall(mind.current, procname, final_args)
+	else
+		// Try global procs
+		var/procpath = "/proc/[procname]"
+		if(text2path(procpath))
+			returnval = WrapAdminProcCall(GLOBAL_PROC, procname, final_args)
+
+	// Display return value
+	var/return_text = mind.current.client.get_callproc_returnval(returnval, procname)
+	if(return_text)
+		output.add_line(return_text)
+
+
+/datum/visual_ui/console/proc/trigger_proc_delayed(datum/source, ...)
+	var/sigtype = args[length(args)]
+
+	var/datum/weakref/ref = WEAKREF(source)
+	var/list/registered = executors_delayed[ref]
+
+	var/list/pre_parsed_args = registered[sigtype]
+
+	var/procname = pre_parsed_args[2]
+	var/timer = pre_parsed_args[1]
+	pre_parsed_args -= procname
+	pre_parsed_args -= timer
+
+	addtimer(CALLBACK(src, PROC_REF(execute_delay),source ,procname, pre_parsed_args), text2num(timer) SECONDS)
+	var/obj/abstract/visual_ui_element/scrollable/console_output/output = locate(/obj/abstract/visual_ui_element/scrollable/console_output) in elements
+	output.add_line("[source] triggering [procname] in [timer] Seconds")
+
+/datum/visual_ui/console/proc/execute_delay(datum/source, procname, list/pre_parsed_args)
+	// Parse named arguments (key=value pairs)
+	var/list/named_args = list()
+	var/list/positional_args = list()
+
+	for(var/arg in pre_parsed_args)
+		if(findtext(arg, "="))
+			var/list/key_val = splittext(arg, "=")
+			if(length(key_val) == 2)
+				named_args[key_val[1]] = convert_arg_type(key_val[2], mind.current, mind.current.client.holder?.marked_datum)
+		else
+			positional_args += convert_arg_type(arg, mind.current, mind.current.client.holder?.marked_datum)
+
+	// Combine positional and named args
+	var/list/final_args = positional_args.Copy()
+	if(length(named_args))
+		final_args += named_args
+
+	var/obj/abstract/visual_ui_element/scrollable/console_output/output = locate(/obj/abstract/visual_ui_element/scrollable/console_output) in elements
+	var/returnval
+
+	if(hascall(source, procname))
+		returnval = WrapAdminProcCall(mind.current, procname, final_args)
+	else
+		// Try global procs
+		var/procpath = "/proc/[procname]"
+		if(text2path(procpath))
+			returnval = WrapAdminProcCall(GLOBAL_PROC, procname, final_args)
+
+	// Display return value
+	var/return_text = mind.current.client.get_callproc_returnval(returnval, procname)
+	if(return_text)
+		output.add_line(return_text)

@@ -1,5 +1,6 @@
 /datum/console_command/update
 	command_key = "update"
+	required_args = 1
 
 /datum/console_command/update/help_information(obj/abstract/visual_ui_element/scrollable/console_output/output)
 	output.add_line("update {VAR} value - checks and sets the var specified")

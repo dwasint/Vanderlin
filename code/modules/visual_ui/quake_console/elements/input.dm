@@ -39,9 +39,9 @@
 	// Input text
 	var/image/text_image = image(icon = null)
 	text_image.maptext = {"<span style='color:#00FF00;font-size:8pt;font-family:\"Consolas\";'>>[display_text]</span>"}
-	text_image.maptext_width = 640
+	text_image.maptext_width = 380
 	text_image.maptext_height = 32
-	text_image.maptext_x = 5
+	text_image.maptext_x = 8
 	text_image.maptext_y = 8
 	add_overlay(text_image)
 
@@ -99,7 +99,27 @@
 			alt_down = TRUE
 			return TRUE
 
-	var/reading_key = key
+	return TRUE
+
+/obj/abstract/visual_ui_element/console_input/proc/handle_keyup(key)
+	if(!focused)
+		return FALSE
+
+	if(key == "`")
+		return TRUE
+
+	// Handle modifier keys
+	switch(key)
+		if("Shift")
+			shift_down = FALSE
+			return TRUE
+		if("Ctrl")
+			ctrl_down = FALSE
+			return TRUE
+		if("Alt")
+			alt_down = FALSE
+			return TRUE
+
 	// Intercept keystrokes and hand	le them
 	var/special_key = FALSE
 	switch(key)
@@ -160,27 +180,6 @@
 
 		UpdateIcon()
 		return TRUE
-
-	return TRUE
-
-/obj/abstract/visual_ui_element/console_input/proc/handle_keyup(key)
-	if(!focused)
-		return FALSE
-
-	if(key == "`")
-		return TRUE
-
-	// Handle modifier keys
-	switch(key)
-		if("Shift")
-			shift_down = FALSE
-			return TRUE
-		if("Ctrl")
-			ctrl_down = FALSE
-			return TRUE
-		if("Alt")
-			alt_down = FALSE
-			return TRUE
 
 	// Check for character input (not special keys)
 	if((length(key) == 1 && key != " ") || key == "Space")
