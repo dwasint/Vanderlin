@@ -49,6 +49,9 @@
 */
 /atom/Click(location,control,params)
 	if(flags_1 & INITIALIZED_1)
+		if(ismob(usr))
+			if(istype(usr:focus, /obj/abstract/visual_ui_element/console_input))
+				usr:focus:unfocus()
 		SEND_SIGNAL(src, COMSIG_CLICK, location, control, params, usr)
 		usr.ClickOn(src, params)
 	return
