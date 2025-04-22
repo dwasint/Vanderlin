@@ -80,6 +80,14 @@
 /mob/proc/ClickOn( atom/A, params )
 	var/list/modifiers = params2list(params)
 
+	if(LAZYACCESS(modifiers, RIGHT_CLICK) && LAZYACCESS(modifiers, "shift"))
+		if(mind && mind.active_uis["quake_console"])
+			if(client.holder)
+				client.holder.marked_datum = A
+				var/datum/visual_ui/console/console =  mind.active_uis["quake_console"]
+				var/obj/abstract/visual_ui_element/scrollable/console_output/output = locate(/obj/abstract/visual_ui_element/scrollable/console_output) in console.elements
+				output.add_line("MARKED: [A]")
+
 	if(curplaying)
 		curplaying.on_mouse_up()
 

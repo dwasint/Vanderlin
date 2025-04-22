@@ -9,11 +9,12 @@ GLOBAL_LIST_INIT(console_commands, init_possible_commands())
 /datum/console_command
 	var/command_key
 
-/datum/console_command/proc/help_information(obj/abstract/visual_ui_element/console_output/output)
+/datum/console_command/proc/help_information(obj/abstract/visual_ui_element/scrollable/console_output/output)
 	return
 
 /datum/console_command/proc/can_execute(mob/anchor)
 	return TRUE
 
-/datum/console_command/proc/execute(obj/abstract/visual_ui_element/console_output/output, list/arg_list)
+/datum/console_command/proc/execute(obj/abstract/visual_ui_element/scrollable/console_output/output, list/arg_list)
 	return TRUE
+

@@ -1,61 +1,109 @@
 
-// Output field
-/obj/abstract/visual_ui_element/console_output
+/obj/abstract/visual_ui_element/scroll_track/dummy
+	icon = null
+	icon_state = null
+
+/obj/abstract/visual_ui_element/hoverable/scroll_handle/dummy
+	icon = null
+	icon_state = null
+
+/obj/abstract/visual_ui_element/scrollable/console_output
 	name = "Console Output"
-	icon = 'icons/visual_ui/32x32.dmi'
-	icon_state = "blank"
-	mouse_opacity = 0
+	icon = 'icons/visual_ui/quake_console.dmi'
+	icon_state = "quake_background"
+	mask_icon_state = "quake_scroll_mask"
+
+	offset_x = -190
+	offset_y = -215
+	special_offset = -70
+
+	scroll_handle = /obj/abstract/visual_ui_element/hoverable/scroll_handle/dummy
+	scroll_track = /obj/abstract/visual_ui_element/scroll_track/dummy
+
+	mouse_opacity = 1
 	var/list/lines = list()
-	var/max_lines = 100
+	var/max_lines = 1000
+	var/line_height = 16
+	var/obj/abstract/visual_ui_element/console_text/text_element
 
-/obj/abstract/visual_ui_element/console_output/New(turf/loc, datum/visual_ui/P)
+	// Scroll dimensions
+	var/console_width = 19 // tiles
+	var/console_height = 10 // tiles
+	visible_width = 608 // 19 * 32
+	visible_height = 320 // 10 * 32
+	max_height = 320
+
+/obj/abstract/visual_ui_element/scrollable/console_output/New(turf/loc, datum/visual_ui/P)
 	. = ..()
-	offset_y = 0
-	update_ui_screen_loc()
+	// Create the text display element
+	text_element = new(null, parent)
+	text_element.offset_x = offset_x
+	text_element.offset_y = offset_y
+	text_element.parent = parent
+	parent.elements += text_element
+	register_element(text_element)
 
-	// Add welcome message
 	add_line("Quake-Style Console")
 	add_line("Type 'help' for available commands")
 
-/obj/abstract/visual_ui_element/console_output/UpdateIcon(appear = FALSE)
-	cut_overlays()
+/obj/abstract/visual_ui_element/scrollable/console_output/UpdateIcon(appear = FALSE)
+	text_element.lines = lines.Copy()
+	text_element.content_height = lines.len * line_height
+	text_element.UpdateIcon()
 
-	// Background
-	var/image/background = image('icons/visual_ui/32x32.dmi', "blank")
-	var/matrix/M = matrix()
-	M.Scale(20, ((parent.vars["console_height"] || 14) - 3)) // Full console height minus input and borders
-	background.transform = M
-	background.color = "#000000"
-	background.alpha = 100
-	add_overlay(background)
-
-	// Text output
-	var/image/text_image = image(icon = null)
-	var/display_text = ""
-
-	// Show last 20 lines max (or however many fit in our console)
-	var/available_lines = min(((parent.vars["console_height"] || 14) - 3) * 2, lines.len)
-	var/start_line = max(1, lines.len - available_lines + 1)
-
-	for(var/i = start_line to lines.len)
-		display_text += "[lines[i]]<br>"
-
-	text_image.maptext = {"<span style='color:#00FF00;font-size:8pt;font-family:\"Consolas\";'>[display_text]</span>"}
-	text_image.maptext_width = 640
-	text_image.maptext_height = 512
-	text_image.maptext_x = 5
-	text_image.maptext_y = 8
-	add_overlay(text_image)
-
-/obj/abstract/visual_ui_element/console_output/animate_slide(target_y, duration)
-	slide_ui_element(offset_x, target_y, duration)
-
-/obj/abstract/visual_ui_element/console_output/proc/add_line(text)
+/obj/abstract/visual_ui_element/scrollable/console_output/proc/add_line(text)
 	lines += text
 	if(lines.len > max_lines)
 		lines.Cut(1, 2) // Remove oldest line
-	UpdateIcon()
 
-/obj/abstract/visual_ui_element/console_output/proc/clear()
-	lines.Cut()
+	// Auto-scroll to bottom unless user has scrolled up
+	if(scroll_position >= 0)
+		scroll_position = 0
+	else
+		// Maintain relative scroll position
+		var/new_content_height = lines.len * line_height
+		var/new_scroll_max = max(0, new_content_height - visible_height)
+		scroll_position = max(-new_scroll_max, scroll_position)
+
+	recalculate_content_height()
 	UpdateIcon()
+	update_element_positions()
+
+/obj/abstract/visual_ui_element/scrollable/console_output/proc/clear()
+	lines.Cut()
+	scroll_position = 0
+	recalculate_content_height()
+	UpdateIcon()
+	update_element_positions()
+
+/obj/abstract/visual_ui_element/scrollable/console_output/recalculate_content_height()
+	max_height = 0
+	for(var/obj/abstract/visual_ui_element/E in container_elements)
+		max_height += E.scroll_height
+
+	max_height = max(initial(max_height), abs( lines.len * line_height))
+
+// The scrollable text content
+/obj/abstract/visual_ui_element/console_text
+	name = "Console Text"
+	icon = 'icons/visual_ui/32x32.dmi'
+	icon_state = "blank"
+	mouse_opacity = 0
+	layer = VISUAL_UI_FRONT
+	var/list/lines = list()
+	var/content_height = 0
+
+/obj/abstract/visual_ui_element/console_text/UpdateIcon(appear = FALSE)
+	if(!lines.len)
+		return
+
+	var/display_text = ""
+
+	for(var/line in lines)
+		display_text += "[line]<br>"
+
+	maptext = {"<span style='color:#00FF00;font-size:8pt;font-family:\"Consolas\";'>[display_text]</span>"}
+	maptext_width = 608
+	maptext_height = content_height
+	maptext_x = 5
+	maptext_y = 30

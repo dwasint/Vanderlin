@@ -1,8 +1,11 @@
 /obj/abstract/visual_ui_element/console_input
 	name = "Console Input"
-	icon = 'icons/visual_ui/32x32.dmi'
-	icon_state = "blank"
-	mouse_opacity = 2
+	icon = 'icons/visual_ui/quake_console.dmi'
+	icon_state = "quake_input"
+	layer = VISUAL_UI_BUTTON
+	mouse_opacity = 1
+	offset_x = -190
+	offset_y = -215
 
 	///modifiers
 	var/shift_down = FALSE
@@ -33,14 +36,6 @@
 			display_text += "_"
 		else
 			display_text = copytext(display_text, 1, cursor_position + 1) + "_" + copytext(display_text, cursor_position + 1)
-	// Background
-	var/image/background = image('icons/visual_ui/32x32.dmi', "blank")
-	var/matrix/M = matrix()
-	M.Scale(20, 1) // Same width as console, 1 tile high
-	background.transform = M
-	background.color = "#111111"
-	background.alpha = 200
-	add_overlay(background)
 	// Input text
 	var/image/text_image = image(icon = null)
 	text_image.maptext = {"<span style='color:#00FF00;font-size:8pt;font-family:\"Consolas\";'>>[display_text]</span>"}
@@ -50,8 +45,6 @@
 	text_image.maptext_y = 8
 	add_overlay(text_image)
 
-/obj/abstract/visual_ui_element/console_input/animate_slide(target_y, duration)
-	slide_ui_element(offset_x, target_y-32, duration)
 
 /obj/abstract/visual_ui_element/console_input/proc/set_text(new_text)
 	input_text = new_text

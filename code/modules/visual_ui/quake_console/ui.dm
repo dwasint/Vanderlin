@@ -9,9 +9,8 @@
 	var/current_input = ""
 
 	element_types_to_spawn = list(
-		/obj/abstract/visual_ui_element/console_background,
 		/obj/abstract/visual_ui_element/console_input,
-		/obj/abstract/visual_ui_element/console_output
+		/obj/abstract/visual_ui_element/scrollable/console_output
 	)
 
 /datum/visual_ui/console/New(datum/mind/M)
@@ -27,16 +26,7 @@
 	if(console_open)
 		return
 	console_open = TRUE
-	// Make all elements visible but off-screen (position above screen)
-	for(var/obj/abstract/visual_ui_element/element in elements)
-		element.invisibility = 0
-		// Move elements above the screen (negative offset_y would move them below)
-		element.offset_y = console_height * 32
-		element.update_ui_screen_loc()
-	// Begin animations - slide down into view (from offset_y to 0)
-	for(var/obj/abstract/visual_ui_element/element in elements)
-		element.animate_slide(0,  0.5 SECONDS) // Reduced from 300 to 100 for faster animation
-	// Focus the input field
+	display()
 	var/obj/abstract/visual_ui_element/console_input/input = locate(/obj/abstract/visual_ui_element/console_input) in elements
 	if(input)
 		input.focus()
@@ -48,11 +38,8 @@
 	var/obj/abstract/visual_ui_element/console_input/input = locate(/obj/abstract/visual_ui_element/console_input) in elements
 	if(input)
 		input.unfocus()
-	for(var/obj/abstract/visual_ui_element/element in elements)
-		element.animate_slide(console_height * 32, 0.5 SECONDS)
-	spawn( 0.5 SECONDS)
-		if(!console_open)
-			hide()
+	if(!console_open)
+		hide()
 
 /datum/visual_ui/console/proc/submit_command(text)
 	if(!text || text == "")
@@ -67,21 +54,20 @@
 	current_input = ""
 
 	// Process command
-	var/obj/abstract/visual_ui_element/console_output/output = locate(/obj/abstract/visual_ui_element/console_output) in elements
+	var/obj/abstract/visual_ui_element/scrollable/console_output/output = locate(/obj/abstract/visual_ui_element/scrollable/console_output) in elements
 	if(output)
 		output.add_line("> [text]")
 		process_command(text, output)
 
-	// Clear input field
 	var/obj/abstract/visual_ui_element/console_input/input = locate(/obj/abstract/visual_ui_element/console_input) in elements
 	if(input)
 		input.set_text("")
 		input.focus()
 
-/datum/visual_ui/console/proc/process_command(text, obj/abstract/visual_ui_element/console_output/output)
+/datum/visual_ui/console/proc/process_command(text, obj/abstract/visual_ui_element/scrollable/console_output/output)
 	var/list/arg_list = splittext(text, " ")
 	var/command = arg_list[1]
-	arg_list.Cut(1, 2) // Remove the command, leaving only arguments
+	arg_list.Cut(1, 2)
 
 	var/executed = FALSE
 	for(var/datum/console_command/listed_command in GLOB.console_commands)
@@ -92,6 +78,57 @@
 		listed_command.execute(output, arg_list)
 		executed = TRUE
 		break
+
 	if(!executed)
-		output.add_line("Unknown command: [command]")
+		try_proccall(command, arg_list, output)
+
+/datum/visual_ui/console/proc/try_proccall(procname, list/arg_list, obj/abstract/visual_ui_element/scrollable/console_output/output)
+	if(!mind?.current?.client || !check_rights(R_DEBUG, FALSE, mind.current.client))
+		output.add_line("Unknown command: [procname]")
 		output.add_line("Type 'help' for available commands")
+		return
+
+	// Parse named arguments (key=value pairs)
+	var/list/named_args = list()
+	var/list/positional_args = list()
+
+	for(var/arg in arg_list)
+		if(findtext(arg, "="))
+			var/list/key_val = splittext(arg, "=")
+			if(length(key_val) == 2)
+				named_args[key_val[1]] = key_val[2]
+		else
+			positional_args += arg
+
+	// Combine positional and named args
+	var/list/final_args = positional_args.Copy()
+	if(length(named_args))
+		final_args += named_args
+
+	// First try on the user's mob
+	var/atom/user = mind.current
+	var/datum/marked_datum = mind.current.client.holder.marked_datum
+	if(marked_datum)
+		user = marked_datum
+	var/proc_found = FALSE
+	var/returnval
+
+	if(hascall(user, procname))
+		proc_found = TRUE
+		returnval = WrapAdminProcCall(user, procname, final_args)
+	else
+		// Try global procs
+		var/procpath = "/proc/[procname]"
+		if(text2path(procpath))
+			proc_found = TRUE
+			returnval = WrapAdminProcCall(GLOBAL_PROC, procname, final_args)
+
+	if(!proc_found)
+		output.add_line("Unknown command or proc: [procname]")
+		output.add_line("Type 'help' for available commands")
+		return
+
+	// Display return value
+	var/return_text = mind.current.client.get_callproc_returnval(returnval, procname)
+	if(return_text)
+		output.add_line(return_text)
