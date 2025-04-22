@@ -122,6 +122,8 @@ SUBSYSTEM_DEF(ParticleWeather)
 		GLOB.forecast = null
 		return
 	var/datum/particle_weather/weather = selected_forecast.pick_weather(time_of_day)
+	if(!weather)
+		return
 	if(runningWeather && runningWeather.target_trait == initial(weather.target_trait))
 		return
 	GLOB.forecast = initial(weather.forecast_tag)
