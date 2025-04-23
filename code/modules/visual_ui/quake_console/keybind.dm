@@ -1,5 +1,5 @@
 /datum/keybinding/client/toggle_console
-	hotkey_keys = list("Tilde", "F1") // Tilde key and F1 as alternate
+	hotkey_keys = list("`", "F1") // Tilde key and F1 as alternate
 	name = "toggle_console"
 	full_name = "Toggle Console"
 	description = "Toggles the Quake-style console"
