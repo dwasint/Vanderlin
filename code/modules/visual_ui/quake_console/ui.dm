@@ -9,6 +9,7 @@
 	var/list/command_history = list()
 	var/history_position = 0
 	var/current_input = ""
+	var/animating = FALSE // Track animation state
 
 	var/list/listeners = list()
 	var/list/executors = list()
@@ -24,28 +25,101 @@
 	hide()
 
 /datum/visual_ui/console/proc/toggle(skip_animation = FALSE)
-	if(console_open)
-		close_console()
-	else
-		open_console()
-/datum/visual_ui/console/proc/open_console()
-	if(console_open)
+	if(animating)
 		return
+	if(console_open)
+		close_console(skip_animation)
+	else
+		open_console(skip_animation)
+
+/datum/visual_ui/console/proc/open_console(skip_animation = FALSE)
+	if(console_open || animating)
+		return
+
 	console_open = TRUE
-	display()
+	active = TRUE // Set UI to active
+
+	display() // Show console elements immediately
 	var/obj/abstract/visual_ui_element/console_input/input = locate(/obj/abstract/visual_ui_element/console_input) in elements
 	if(input)
 		input.focus()
 
-/datum/visual_ui/console/proc/close_console()
-	if(!console_open)
+/datum/visual_ui/console/display()
+	if(animating)
 		return
-	console_open = FALSE
+	. = ..()
+
+/datum/visual_ui/console/proc/close_console(skip_animation = FALSE)
+	if(!console_open || animating)
+		return
+
 	var/obj/abstract/visual_ui_element/console_input/input = locate(/obj/abstract/visual_ui_element/console_input) in elements
 	if(input)
 		input.unfocus()
-	if(!console_open)
+
+	if(skip_animation)
+		console_open = FALSE
 		hide()
+		return
+
+	animating = TRUE
+
+	var/offscreen_offset = (console_height * 32)
+
+	// Create temporary images for smooth animation
+	var/list/animation_images = list()
+	var/mob/user = get_user()
+
+	if(user?.client)
+		for(var/obj/abstract/visual_ui_element/element in elements)
+			var/image/img = image(element.icon, element, element.icon_state, element.layer)
+			img.appearance = element.appearance
+			img.screen_loc = element.screen_loc
+
+			img.pixel_y = 0
+
+			user.client.images += img
+			animation_images[element] = img
+
+			element.invisibility = INVISIBILITY_ABSTRACT
+
+
+		for(var/obj/abstract/visual_ui_element/element in animation_images)
+			var/image/img = animation_images[element]
+			animate(img, pixel_y = offscreen_offset, time = 0.3 SECONDS)
+
+	spawn(0.3 SECONDS)//this is a spawn because of pregame
+		finish_close_animation(animation_images)
+
+/datum/visual_ui/console/proc/finish_open_animation(list/animation_images)
+	animating = FALSE
+
+	// Reset element positions
+	for(var/obj/abstract/visual_ui_element/element in elements)
+		element.offset_y = element.initial_offset_y
+		element.update_ui_screen_loc()
+		element.invisibility = 0
+
+	var/mob/user = get_user()
+	if(user?.client)
+		for(var/obj/abstract/visual_ui_element/element in animation_images)
+			user.client.images -= animation_images[element]
+
+	var/obj/abstract/visual_ui_element/console_input/input = locate(/obj/abstract/visual_ui_element/console_input) in elements
+	if(input)
+		input.focus()
+
+/datum/visual_ui/console/proc/finish_close_animation(list/animation_images)
+	animating = FALSE
+	console_open = FALSE
+
+	// Remove animation images
+	var/mob/user = get_user()
+	if(user?.client)
+		for(var/obj/abstract/visual_ui_element/element in animation_images)
+			user.client.images -= animation_images[element]
+
+	hide()
 
 /datum/visual_ui/console/proc/submit_command(text)
 	if(!text || text == "")

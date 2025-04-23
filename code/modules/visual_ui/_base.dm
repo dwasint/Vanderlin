@@ -380,3 +380,16 @@ GLOBAL_LIST_INIT(visual_ui_id_to_type, list())
 /obj/abstract/visual_ui_element/failsafe
 	icon_state = "blank"
 	mouse_opacity = 0
+
+/datum/visual_ui/proc/animate_elements(start_y_offset, end_y_offset, duration, on_complete)
+	for(var/obj/abstract/visual_ui_element/element in elements)
+		// We're using pixel_y for smooth animation rather than screen_loc
+		// because screen_loc updates are not as smooth
+		var/start_pixel_y = start_y_offset
+		var/end_pixel_y = end_y_offset
+
+		element.pixel_y = start_pixel_y
+		animate(element, pixel_y = end_pixel_y, time = duration)
+
+	if(on_complete)
+		addtimer(on_complete, duration + 1)
