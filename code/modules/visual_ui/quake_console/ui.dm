@@ -74,7 +74,9 @@
 		for(var/obj/abstract/visual_ui_element/element in elements)
 			var/image/img = image(element.icon, element, element.icon_state, element.layer)
 			img.appearance = element.appearance
+			#ifndef OPENDREAM
 			img.screen_loc = element.screen_loc
+			#endif
 
 			img.pixel_y = 0
 
