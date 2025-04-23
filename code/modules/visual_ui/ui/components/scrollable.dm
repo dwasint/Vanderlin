@@ -120,21 +120,21 @@
 		update_scroll_handle()
 
 /obj/abstract/visual_ui_element/scrollable/proc/update_scroll_handle()
-    var/track_height = visible_height - 32
+	var/track_height = visible_height - 32
 
-    var/handle_size = min(16, (visible_height / max(max_height, 1)) * track_height)
-    handle_size = max(handle_size, 8)  // Ensure minimum handle size
+	var/handle_size = min(16, (visible_height / max(max_height, 1)) * track_height)
+	handle_size = max(handle_size, 8)  // Ensure minimum handle size
 
-    var/scroll_ratio = 0
-    if(max_height > visible_height)  // Only if content exceeds visible area
-        scroll_ratio = abs(scroll_position) / (max_height - visible_height)
-        scroll_ratio = clamp(scroll_ratio, 0, 1)
+	var/scroll_ratio = 0
+	if(max_height > visible_height)  // Only if content exceeds visible area
+		scroll_ratio = abs(scroll_position) / (max_height - visible_height)
+		scroll_ratio = clamp(scroll_ratio, 0, 1)
 
-    var/usable_track = track_height - handle_size
-    var/handle_position = scroll_ratio * usable_track
+	var/usable_track = track_height - handle_size
+	var/handle_position = scroll_ratio * usable_track
 
-    scroll_handle.offset_y = FLOOR(offset_y + track_height - handle_position - handle_size,1)
-    scroll_handle.update_ui_screen_loc()
+	scroll_handle.offset_y = FLOOR(offset_y + track_height - handle_position - handle_size,1)
+	scroll_handle.update_ui_screen_loc()
 
 /obj/abstract/visual_ui_element/scrollable/MouseWheel(delta_x, delta_y, location, control, params)
 	if(delta_y > 0)
