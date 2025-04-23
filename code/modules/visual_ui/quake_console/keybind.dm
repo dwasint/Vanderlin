@@ -8,6 +8,10 @@
 /datum/keybinding/client/toggle_console/down(client/user)
 	. = ..()
 	var/mob/M = user.mob
+	if(isdead(M) && !M.mind)
+		M.mind = new /datum/mind(M.key)
+		M.mind.current_ghost = src
+
 	if(!M || !M.mind)
 		return FALSE
 
