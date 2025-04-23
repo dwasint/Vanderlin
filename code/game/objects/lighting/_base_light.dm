@@ -144,14 +144,6 @@
 // update the icon_state and luminosity of the light depending on its state
 /obj/machinery/light/proc/update(trigger = TRUE)
 	emergency_mode = FALSE
-	if(light_system == MOVABLE_LIGHT)
-		light_color = bulb_colour
-		set_light_on(brightness)
-		update_icon()
-		if(!on)
-			START_PROCESSING(SSmachines, src)
-		return
-
 	if(on)
 		var/BR = brightness
 		var/PO = bulb_power
