@@ -2,6 +2,9 @@
     command_key = "ponytown"
     required_args = 0
 
+/datum/console_command/ponytown/can_execute(mob/anchor, list/arg_list, obj/abstract/visual_ui_element/scrollable/console_output/output, fake = FALSE)
+	return TRUE
+
 /datum/console_command/ponytown/help_information(obj/abstract/visual_ui_element/scrollable/console_output/output)
     output.add_line("ponytown - Hello everypony")
 
