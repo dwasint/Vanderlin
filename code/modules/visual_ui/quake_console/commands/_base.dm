@@ -10,6 +10,12 @@ GLOBAL_LIST_INIT(console_commands, init_possible_commands())
 	var/command_key
 	var/required_args = 0
 
+/datum/console_command/proc/get_secondary_args()
+	return list()
+
+/datum/console_command/proc/get_tertiary_args(secondary_arg)
+	return list()
+
 /datum/console_command/proc/help_information(obj/abstract/visual_ui_element/scrollable/console_output/output)
 	return
 

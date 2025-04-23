@@ -43,7 +43,7 @@
 	var/list/macro_set = SSinput.macro_set
 	for(var/k in 1 to length(macro_set))
 		var/key = macro_set[k]
-		if(skip_chats && (key == "T" || key == "M"))//macros supercede internal key_downs and key_ups
+		if(skip_chats && (key == "T" || key == "M" || key == "Tab"))//macros supercede internal key_downs and key_ups
 			continue
 		var/command = macro_set[key]
 		winset(src, "default-[REF(key)]", "parent=default;name=[key];command=[command]")

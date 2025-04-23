@@ -3,6 +3,14 @@
 	required_args = 2
 
 
+/datum/console_command/time/get_secondary_args()
+	return list("set", "add", "remove")
+
+/datum/console_command/time/get_tertiary_args(secondary_arg)
+	if(secondary_arg == "set")
+		return list("day", "night", "dawn", "dusk")
+	return list()
+
 /datum/console_command/time/help_information(obj/abstract/visual_ui_element/scrollable/console_output/output)
 	output.add_line("time {set|add|remove} {amount} - will modify the time of day in deciseconds")
 	output.add_line(" accepts: dawn, dusk, night, day")
