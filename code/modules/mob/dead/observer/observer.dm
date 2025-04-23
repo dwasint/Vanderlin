@@ -235,6 +235,7 @@ GLOBAL_LIST_INIT(ghost_verbs, list(
 		verbs += GLOB.ghost_verbs
 
 	grant_all_languages()
+
 //	show_data_huds()
 //	data_huds_on = 1
 
@@ -516,6 +517,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	remove_client_colour(/datum/client_colour/monochrome)
 	client.change_view(CONFIG_GET(string/default_view))
 	SStgui.on_transfer(src, mind.current) // Transfer NanoUIs.
+	mind.current_ghost = null
 	mind.current.key = key
 	return TRUE
 

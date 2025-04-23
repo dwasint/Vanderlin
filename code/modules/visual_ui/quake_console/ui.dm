@@ -2,6 +2,8 @@
 	uniqueID = "quake_console"
 	x = "CENTER"
 	y = "NORTH"
+
+	display_with_parent = TRUE
 	var/console_height = 14 // height in tiles
 	var/console_open = FALSE
 	var/list/command_history = list()
@@ -21,7 +23,7 @@
 	. = ..()
 	hide()
 
-/datum/visual_ui/console/proc/toggle()
+/datum/visual_ui/console/proc/toggle(skip_animation = FALSE)
 	if(console_open)
 		close_console()
 	else
