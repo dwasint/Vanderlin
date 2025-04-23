@@ -38,7 +38,7 @@
 			display_text = copytext(display_text, 1, cursor_position + 1) + "_" + copytext(display_text, cursor_position + 1)
 	// Input text
 	var/image/text_image = image(icon = null)
-	text_image.maptext = {"<span style='color:#00FF00;font-size:8pt;font-family:\"Consolas\";'>>[display_text]</span>"}
+	text_image.maptext = {"<span style='color:#00FF00;font-size:8pt;font-family:\"Pixelify Sans\";'>>[display_text]</span>"}
 	text_image.maptext_width = 380
 	text_image.maptext_height = 32
 	text_image.maptext_x = 8
