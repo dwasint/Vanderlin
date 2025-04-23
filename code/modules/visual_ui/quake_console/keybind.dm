@@ -6,6 +6,7 @@
 	category = CATEGORY_CLIENT
 
 /datum/keybinding/client/toggle_console/down(client/user)
+	. = ..()
 	var/mob/M = user.mob
 	if(!M || !M.mind)
 		return FALSE
