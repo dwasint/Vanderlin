@@ -77,7 +77,7 @@
 	for(var/datum/console_command/listed_command in GLOB.console_commands)
 		if(command != listed_command.command_key)
 			continue
-		if(!listed_command.can_execute(mind.current, arg_list, output))
+		if(!listed_command.can_execute(get_user(), arg_list, output))
 			continue
 		listed_command.execute(output, arg_list)
 		executed = TRUE
@@ -87,7 +87,8 @@
 		try_proccall(command, arg_list, output)
 
 /datum/visual_ui/console/proc/try_proccall(procname, list/arg_list, obj/abstract/visual_ui_element/scrollable/console_output/output)
-	if(!mind?.current?.client || !check_rights(R_DEBUG, FALSE, mind.current.client))
+	var/mob/current = get_user()
+	if(!current?.client || !check_rights(R_DEBUG, FALSE, current.client))
 		output.add_line("Unknown command: [procname]")
 		output.add_line("Type 'help' for available commands")
 		return
@@ -100,9 +101,9 @@
 		if(findtext(arg, "="))
 			var/list/key_val = splittext(arg, "=")
 			if(length(key_val) == 2)
-				named_args[key_val[1]] = convert_arg_type(key_val[2], mind.current, mind.current.client.holder?.marked_datum)
+				named_args[key_val[1]] = convert_arg_type(key_val[2], current, current.client.holder?.marked_datum)
 		else
-			positional_args += convert_arg_type(arg, mind.current, mind.current.client.holder?.marked_datum)
+			positional_args += convert_arg_type(arg, current, current.client.holder?.marked_datum)
 
 	// Combine positional and named args
 	var/list/final_args = positional_args.Copy()
@@ -110,8 +111,8 @@
 		final_args += named_args
 
 	// First try on the user's mob or marked datum
-	var/atom/user = mind.current
-	var/datum/marked_datum = mind.current.client.holder?.marked_datum
+	var/mob/user = get_user()
+	var/datum/marked_datum = user.client.holder?.marked_datum
 	if(marked_datum)
 		user = marked_datum
 	var/proc_found = FALSE
@@ -133,7 +134,7 @@
 		return
 
 	// Display return value
-	var/return_text = mind.current.client.get_callproc_returnval(returnval, procname)
+	var/return_text = user.client.get_callproc_returnval(returnval, procname)
 	if(return_text)
 		output.add_line(return_text)
 
@@ -279,6 +280,7 @@
 
 /datum/visual_ui/console/proc/trigger_proc(datum/source, ...)
 	var/sigtype = args[length(args)]
+	var/mob/current = get_user()
 
 	var/datum/weakref/ref = WEAKREF(source)
 	var/list/registered = executors[ref]
@@ -296,9 +298,9 @@
 		if(findtext(arg, "="))
 			var/list/key_val = splittext(arg, "=")
 			if(length(key_val) == 2)
-				named_args[key_val[1]] = convert_arg_type(key_val[2], mind.current, mind.current.client.holder?.marked_datum)
+				named_args[key_val[1]] = convert_arg_type(key_val[2], current, current.client.holder?.marked_datum)
 		else
-			positional_args += convert_arg_type(arg, mind.current, mind.current.client.holder?.marked_datum)
+			positional_args += convert_arg_type(arg, current, current.client.holder?.marked_datum)
 
 	// Combine positional and named args
 	var/list/final_args = positional_args.Copy()
@@ -309,7 +311,7 @@
 	var/returnval
 
 	if(hascall(source, procname))
-		returnval = WrapAdminProcCall(mind.current, procname, final_args)
+		returnval = WrapAdminProcCall(current, procname, final_args)
 	else
 		// Try global procs
 		var/procpath = "/proc/[procname]"
@@ -317,7 +319,7 @@
 			returnval = WrapAdminProcCall(GLOBAL_PROC, procname, final_args)
 
 	// Display return value
-	var/return_text = mind.current.client.get_callproc_returnval(returnval, procname)
+	var/return_text = current.client.get_callproc_returnval(returnval, procname)
 	if(return_text)
 		output.add_line(return_text)
 
@@ -340,6 +342,7 @@
 	output.add_line("[source] triggering [procname] in [timer] Seconds")
 
 /datum/visual_ui/console/proc/execute_delay(datum/source, procname, list/pre_parsed_args)
+	var/mob/current = get_user()
 	// Parse named arguments (key=value pairs)
 	var/list/named_args = list()
 	var/list/positional_args = list()
@@ -348,9 +351,9 @@
 		if(findtext(arg, "="))
 			var/list/key_val = splittext(arg, "=")
 			if(length(key_val) == 2)
-				named_args[key_val[1]] = convert_arg_type(key_val[2], mind.current, mind.current.client.holder?.marked_datum)
+				named_args[key_val[1]] = convert_arg_type(key_val[2], current, current.client.holder?.marked_datum)
 		else
-			positional_args += convert_arg_type(arg, mind.current, mind.current.client.holder?.marked_datum)
+			positional_args += convert_arg_type(arg, current, current.client.holder?.marked_datum)
 
 	// Combine positional and named args
 	var/list/final_args = positional_args.Copy()
@@ -361,7 +364,7 @@
 	var/returnval
 
 	if(hascall(source, procname))
-		returnval = WrapAdminProcCall(mind.current, procname, final_args)
+		returnval = WrapAdminProcCall(current, procname, final_args)
 	else
 		// Try global procs
 		var/procpath = "/proc/[procname]"
@@ -369,6 +372,6 @@
 			returnval = WrapAdminProcCall(GLOBAL_PROC, procname, final_args)
 
 	// Display return value
-	var/return_text = mind.current.client.get_callproc_returnval(returnval, procname)
+	var/return_text = current.client.get_callproc_returnval(returnval, procname)
 	if(return_text)
 		output.add_line(return_text)

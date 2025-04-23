@@ -75,13 +75,14 @@
 	output.add_line("debug_ai - Displays path data to you, and logs when movement targets are set in console")
 
 /datum/console_command/debug_ai/execute(obj/abstract/visual_ui_element/scrollable/console_output/output, list/arg_list)
-	var/datum/component/ai_path_renderer/render = output.parent.mind.current.GetComponent(/datum/component/ai_path_renderer)
+	var/mob/current = output.parent.get_user()
+	var/datum/component/ai_path_renderer/render = current.GetComponent(/datum/component/ai_path_renderer)
 	if(render)
 		output.add_line("Stopped tracking [render.mob]'s AI controller.")
 		qdel(render)
 		return
 
-	var/atom/marked_datum = output.parent.mind.current.client.holder?.marked_datum
+	var/atom/marked_datum = current.client.holder?.marked_datum
 	if(!marked_datum)
 		output.add_line("ERROR: No marked datum")
 		return
@@ -89,6 +90,6 @@
 		output.add_line("ERROR: No AI controller")
 		return
 
-	output.parent.mind.current.AddComponent(/datum/component/ai_path_renderer, output, marked_datum)
-	render = output.parent.mind.current.GetComponent(/datum/component/ai_path_renderer)
+	current.AddComponent(/datum/component/ai_path_renderer, output, marked_datum)
+	render = current.GetComponent(/datum/component/ai_path_renderer)
 	output.add_line("Started tracking [render.mob]'s AI controller.")

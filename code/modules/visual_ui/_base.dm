@@ -157,25 +157,25 @@ GLOBAL_LIST_INIT(visual_ui_id_to_type, list())
 
 // Send every element to the client, called on Login() and when the UI is first added to a mind
 /datum/visual_ui/proc/send_to_client()
-	if (mind.current)
-		var/mob/M = mind.current
-		if (!M.client)
+	var/mob/current = get_user()
+	if (current)
+		if (!current.client)
 			return
 
 		if (!valid() || !display_with_parent) // Makes sure the UI isn't still active when we should have lost it (such as coming out of a mecha while disconnected)
 			hide(TRUE)
 
 		for (var/obj/abstract/visual_ui_element/element in elements)
-			mind.current.client.screen |= element
+			current.client.screen |= element
 
 // Removes every element from the client, called on Logout()
 /datum/visual_ui/proc/remove_from_client()
-	if (mind.current)
-		var/mob/M = mind.current
-		if (!M.client)
+	var/mob/current = get_user()
+	if (current)
+		if (!current.client)
 			return
 
-		mind.current.client.screen -= elements
+		current.client.screen -= elements
 
 // Makes every element visible
 /datum/visual_ui/proc/display()
@@ -184,7 +184,7 @@ GLOBAL_LIST_INIT(visual_ui_id_to_type, list())
 		return
 	active = TRUE
 
-	var/mob/M = mind.current
+	var/mob/M = get_user()
 	if (failsafe && M.client && !(failsafe in M.client.screen))
 		send_to_client() // The elements disappeared from the client screen due to some fuckery, send them back!
 
@@ -243,6 +243,8 @@ GLOBAL_LIST_INIT(visual_ui_id_to_type, list())
 
 /datum/visual_ui/proc/get_user()
 	ASSERT(mind && mind.current)
+	if(mind.current_ghost)
+		return mind.current_ghost
 	return mind.current
 
 ////////////////////////////////////////////////////////////////////
@@ -314,6 +316,8 @@ GLOBAL_LIST_INIT(visual_ui_id_to_type, list())
 
 /obj/abstract/visual_ui_element/proc/get_user()
 	ASSERT(parent && parent.mind && parent.mind.current)
+	if(parent.mind.current_ghost)
+		return parent.mind.current_ghost
 	return parent.mind.current
 
 /obj/abstract/visual_ui_element/proc/update_ui_screen_loc()

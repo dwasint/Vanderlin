@@ -9,7 +9,8 @@
 	. = ..()
 	var/signal = arg_list[1]
 
-	var/datum/marked_datum = output.parent.mind.current.client.holder?.marked_datum
+	var/mob/current = output.parent.get_user()
+	var/datum/marked_datum = current.client.holder?.marked_datum
 	if(!marked_datum)
 		output.add_line("ERROR: No marked datum")
 		return

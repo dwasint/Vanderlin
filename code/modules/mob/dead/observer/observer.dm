@@ -173,6 +173,7 @@ GLOBAL_LIST_INIT(ghost_verbs, list(
 				name = random_unique_name(gender)
 
 		mind = body.mind	//we don't transfer the mind but we keep a reference to it.
+		mind.current_ghost = src
 
 		set_suicide(body.suiciding) // Transfer whether they committed suicide.
 
@@ -244,6 +245,8 @@ GLOBAL_LIST_INIT(ghost_verbs, list(
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, update_atom_colour)), 10)
 
 /mob/dead/observer/Destroy()
+	mind.current_ghost = null
+
 	GLOB.ghost_images_default -= ghostimage_default
 	QDEL_NULL(ghostimage_default)
 

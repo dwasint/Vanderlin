@@ -12,10 +12,9 @@
 
 /datum/console_command/update/execute(obj/abstract/visual_ui_element/scrollable/console_output/output, list/arg_list)
 	var/variable = arg_list[1]
-	var/value = output.parent:convert_arg_type(arg_list[2], output.parent.mind.current, output.parent.mind.current.client.holder?.marked_datum)
-
-	var/atom/user = output.parent.mind.current
-	var/datum/marked_datum = output.parent.mind.current.client.holder?.marked_datum
+	var/mob/user = output.parent.get_user()
+	var/value = output.parent:convert_arg_type(arg_list[2], user, user.client.holder?.marked_datum)
+	var/datum/marked_datum = user.client.holder?.marked_datum
 	if(marked_datum)
 		user = marked_datum
 

@@ -53,11 +53,12 @@
 
 
 /obj/abstract/visual_ui_element/scrollable/selected_recipe/proc/unbuild_recipe()
+	var/mob/current = parent.get_user()
 	for(var/obj/abstract/visual_ui_element/element as anything in container_elements)
 		element.scrollable_parent = null
 		container_elements -= element
 		parent.elements -= element
-		parent.mind.current.client.screen -= element
+		current.client.screen -= element
 		qdel(element)
 
 	scroll_position = 0
@@ -69,6 +70,7 @@
 		unbuild_recipe()
 	if(!recipe_selection)
 		return
+	var/mob/current = parent.get_user()
 	var/datum/repeatable_crafting_recipe/recipe = new recipe_selection
 	var/length = 1
 	var/obj/abstract/visual_ui_element/recipe_info_break/requirements_start = new /obj/abstract/visual_ui_element/recipe_info_break(null, parent)
@@ -76,7 +78,7 @@
 	requirements_start.offset_y = offset_y + (18 * (length-1))
 	requirements_start.update_ui_screen_loc()
 	parent.elements += requirements_start
-	parent.mind.current.client.screen |= requirements_start
+	current.client.screen |= requirements_start
 	register_element(requirements_start)
 	length++
 
@@ -86,7 +88,7 @@
 		requirement.offset_y = offset_y + (18 * (length-1))
 		requirement.update_ui_screen_loc()
 		parent.elements += requirement
-		parent.mind.current.client.screen |= requirement
+		current.client.screen |= requirement
 		register_element(requirement)
 		length++
 		requirement.maptext = {"<span style='font-size:8pt;font-family:"Papyrus";color:[hover_color]' class='center maptext '>[recipe.requirements[path]] x [initial(path.name)]</span>"}
@@ -97,7 +99,7 @@
 		requirement.offset_y = offset_y + (18 * (length-1))
 		requirement.update_ui_screen_loc()
 		parent.elements += requirement
-		parent.mind.current.client.screen |= requirement
+		current.client.screen |= requirement
 		register_element(requirement)
 		length++
 		requirement.maptext = {"<span style='font-size:8pt;font-family:"Papyrus";color:[hover_color]' class='center maptext '>[CEILING(recipe.reagent_requirements[path] / 3, 1)] Oz of [initial(path.name)]</span>"}
@@ -107,6 +109,6 @@
 	requirements_end.offset_y = offset_y + (18 * (length-1))
 	requirements_start.update_ui_screen_loc()
 	parent.elements += requirements_end
-	parent.mind.current.client.screen |= requirements_end
+	current.client.screen |= requirements_end
 	register_element(requirements_end)
 	length++

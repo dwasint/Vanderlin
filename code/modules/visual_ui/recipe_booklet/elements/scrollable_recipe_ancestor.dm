@@ -107,7 +107,8 @@
 				button.update_ui_screen_loc()
 				parent.elements += button
 				if(after_add)
-					parent.mind.current.client.screen |= button
+					var/mob/current = parent.get_user()
+					current.client.screen |= button
 
 				button.maptext = {"<span style='font-size:8pt;font-family:"Papyrus";color:[hover_color]' class='center maptext '>[initial(sub_path.name)]</span>"}
 				button.recipe = sub_path
@@ -121,7 +122,8 @@
 			button.update_ui_screen_loc()
 			parent.elements += button
 			if(after_add)
-				parent.mind.current.client.screen |= button
+				var/mob/current = parent.get_user()
+				current.client.screen |= button
 
 			button.maptext = {"<span style='font-size:8pt;font-family:"Papyrus";color:[hover_color]' class='center maptext '>[initial(recipe.name)]</span>"}
 			button.recipe = recipe
@@ -137,7 +139,8 @@
 		element.scrollable_parent = null
 		container_elements -= element
 		parent.elements -= element
-		parent.mind.current.client.screen -= element
+		var/mob/current = parent.get_user()
+		current.client.screen -= element
 		qdel(element)
 
 	scroll_position = 0
