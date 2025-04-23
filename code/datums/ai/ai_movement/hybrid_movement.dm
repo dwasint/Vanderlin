@@ -63,6 +63,7 @@
 					advanced = TRUE
 					controller.movement_path = null
 					fallbacking = TRUE
+					SEND_SIGNAL(movable_pawn, COMSIG_AI_GENERAL_CHANGE, "Unable to Basic Move swapping to AStar.")
 
 
 			if(!advanced)
@@ -70,6 +71,7 @@
 					controller.pathing_attempts++
 					if(controller.pathing_attempts >= max_pathing_attempts)
 						controller.CancelActions()
+						SEND_SIGNAL(movable_pawn, COMSIG_AI_GENERAL_CHANGE, "Failed pathfinding cancelling.")
 		if(advanced)
 			var/minimum_distance = controller.max_target_distance
 			// right now I'm just taking the shortest minimum distance of our current behaviors, at some point in the future
@@ -129,3 +131,4 @@
 
 				COOLDOWN_START(controller, repath_cooldown, 2 SECONDS)
 				controller.movement_path = get_path_to(movable_pawn, controller.current_movement_target, /turf/proc/Distance3D, max_path_distance + 1, 250,  minimum_distance, id=controller.get_access())
+				SEND_SIGNAL(controller.pawn, COMSIG_AI_PATH_GENERATED, controller.movement_path)

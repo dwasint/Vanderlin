@@ -85,6 +85,7 @@ have ways of interacting with a specific atom and control it. They posses a blac
 
 ///Sets the current movement target, with an optional param to override the movement behavior
 /datum/ai_controller/proc/set_movement_target(source, atom/target, datum/ai_movement/new_movement)
+	SEND_SIGNAL(pawn, COMSIG_AI_MOVEMENT_SET, current_movement_target, target)
 	movement_target_source = source
 	current_movement_target = target
 	if(new_movement)
