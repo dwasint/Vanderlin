@@ -248,7 +248,7 @@ GLOBAL_LIST_INIT(ghost_verbs, list(
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, update_atom_colour)), 10)
 
 /mob/dead/observer/Destroy()
-	mind.current_ghost = null
+	mind?.current_ghost = null
 
 	GLOB.ghost_images_default -= ghostimage_default
 	QDEL_NULL(ghostimage_default)
