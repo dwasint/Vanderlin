@@ -1309,6 +1309,13 @@
 /obj/structure/water_pipe,
 /turf/open/floor/grass/yel,
 /area/rogue/outdoors)
+"mq" = (
+/obj/structure/flora/grass,
+/obj/structure/minecart_rail{
+	dir = 4
+	},
+/turf/open/floor/grass/yel,
+/area/rogue/outdoors)
 "mx" = (
 /obj/structure/bridge_stakes{
 	dir = 8
@@ -1514,6 +1521,13 @@
 /obj/structure/hotspring,
 /obj/effect/falling_sakura,
 /turf/open/floor/dirt/road,
+/area/rogue/outdoors)
+"tz" = (
+/obj/structure/flora/grass/herb/symphitum,
+/obj/structure/minecart_rail{
+	dir = 4
+	},
+/turf/open/floor/grass/yel,
 /area/rogue/outdoors)
 "tH" = (
 /turf/closed,
@@ -1920,6 +1934,12 @@
 	},
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
+"In" = (
+/obj/structure/minecart_rail{
+	dir = 4
+	},
+/turf/open/floor/dirt,
+/area/rogue/outdoors)
 "IW" = (
 /obj/structure/hotspring/border/nine,
 /obj/effect/falling_sakura,
@@ -1973,6 +1993,12 @@
 	dir = 1
 	},
 /turf/open/floor/dirt/road,
+/area/rogue/outdoors)
+"Lc" = (
+/obj/structure/minecart_rail{
+	dir = 4
+	},
+/turf/open/floor/grass/yel,
 /area/rogue/outdoors)
 "Ln" = (
 /obj/structure/chair/hotspring_bench/left{
@@ -2259,6 +2285,14 @@
 /obj/structure/fermentation_keg/distiller,
 /turf/open/floor/carpet,
 /area/rogue/indoors)
+"Xg" = (
+/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/minecart_rail{
+	dir = 4
+	},
+/obj/structure/closet/crate/miningcar,
+/turf/open/floor/grass/yel,
+/area/rogue/outdoors)
 "XC" = (
 /obj/structure/flora/grass,
 /mob/living/simple_animal/hostile/retaliate/cow,
@@ -11776,7 +11810,7 @@ RF
 ky
 qc
 FN
-qc
+mq
 qc
 qc
 Wr
@@ -12033,7 +12067,7 @@ RC
 eq
 jC
 QN
-jC
+Xg
 QN
 qc
 QN
@@ -12290,7 +12324,7 @@ SZ
 RF
 Qi
 QN
-ai
+In
 al
 Wr
 ai
@@ -76541,7 +76575,7 @@ zc
 Mn
 QN
 QN
-QN
+Lc
 QN
 QN
 eE
@@ -76798,7 +76832,7 @@ Zs
 aj
 QN
 jC
-QN
+Lc
 ky
 jC
 ss
@@ -77055,7 +77089,7 @@ aj
 Kh
 QN
 QN
-sd
+tz
 QN
 QN
 ss
