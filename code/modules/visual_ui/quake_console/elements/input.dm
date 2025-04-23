@@ -72,6 +72,9 @@
 /obj/abstract/visual_ui_element/console_input/proc/unfocus()
 	focused = FALSE
 	UpdateIcon()
+	shift_down = FALSE
+	ctrl_down = FALSE
+	alt_down = FALSE
 	// Restore normal keyboard input
 	var/mob/user_mob = get_user()
 	user_mob.focus = user_mob
