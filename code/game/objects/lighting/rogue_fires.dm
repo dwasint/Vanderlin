@@ -517,6 +517,9 @@
 	base_state = "badfire"
 	density = FALSE
 	layer = 2.8
+	light_system = MOVABLE_LIGHT
+	light_outer_range = 5
+	light_power = 1
 	brightness = 5
 	on = FALSE
 	fueluse = 15 MINUTES
