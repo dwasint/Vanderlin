@@ -158,6 +158,13 @@
 		if(!listed_command.can_execute(get_user(), arg_list, output))
 			continue
 		listed_command.execute(output, arg_list)
+		if(listed_command.notify_admins)
+			var/string = "[get_user()] ran command [listed_command.command_key] with args:"
+			for(var/arg in arg_list)
+				string += arg
+			log_admin(string)
+			message_admins(string)
+
 		executed = TRUE
 		break
 
@@ -215,6 +222,11 @@
 	var/return_text = user.client.get_callproc_returnval(returnval, procname)
 	if(return_text)
 		output.add_line(return_text)
+		var/string = "[get_user()] ran proc [procname] with args:"
+		for(var/arg in final_args)
+			string += arg
+		log_admin(string)
+		message_admins(string)
 
 /datum/visual_ui/console/proc/convert_arg_type(arg, mob/sender, datum/marked)
 	switch(lowertext(arg))

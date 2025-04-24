@@ -1,5 +1,6 @@
 /datum/console_command/help
 	command_key = "help"
+	notify_admins = FALSE
 
 /datum/console_command/help/help_information(obj/abstract/visual_ui_element/scrollable/console_output/output)
 	output.add_line("help - Display this help text")
