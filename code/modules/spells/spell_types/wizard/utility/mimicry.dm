@@ -99,7 +99,7 @@
 	user.Immobilize(4 SECONDS)
 	if(!do_after(user, 10 SECONDS, target = user))
 		return
-	old_dna.transfer_identity(user, prefs = user?.client.prefs)
+	old_dna.transfer_identity(user)
 	user.real_name = old_dna.real_name
 	user.name = user.get_visible_name()
 	user.gender = old_gender
