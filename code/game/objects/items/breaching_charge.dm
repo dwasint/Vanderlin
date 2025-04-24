@@ -21,7 +21,7 @@
 		return
 
 	// Only works on destructable wall turfs.
-	if(!iswallturf(bomb_target) || isindestructiblewall(bomb_target))
+	if((!iswallturf(bomb_target)  && !ismineralturf(target_turf) || isindestructiblewall(bomb_target))
 		to_chat(user, span_warning("I can only use this on destructable walls!"))
 		return
 
