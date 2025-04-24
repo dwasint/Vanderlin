@@ -1183,13 +1183,16 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 					var/new_age = browser_input_list(user, "SELECT YOUR HERO'S AGE", "YILS DEAD", pref_species.possible_ages, age)
 					if(new_age)
 						age = new_age
+						/*
 						var/list/hairs
 						if((age == AGE_OLD) && (OLDGREY in pref_species.species_traits))
 							hairs = pref_species.get_oldhc_list()
 						else
 							hairs = pref_species.get_hairc_list()
-					//	hair_color = hairs[pick(hairs)]
-					//	facial_hair_color = hair_color
+
+						hair_color = hairs[pick(hairs)]
+						facial_hair_color = hair_color
+					*/
 						ResetJobs()
 						to_chat(user, "<font color='red'>Classes reset.</font>")
 

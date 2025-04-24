@@ -182,18 +182,18 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 		spawnturf = get_turf(trey)
 	if(spawnturf)
 		var/mob/living/carbon/human/trey_liam = new /mob/living/carbon/human/species/human/northern(spawnturf)
-		var/datum/bodypart_feature/hair/feature = trey_liam.get_bodypart_feature_of_slot(BODYPART_FEATURE_HAIR)
-		var/datum/bodypart_feature/hair/facial = trey_liam.get_bodypart_feature_of_slot(BODYPART_FEATURE_FACIAL_HAIR)
 		trey_liam.fully_replace_character_name(trey_liam.name, "Trey Liam")
 		trey_liam.gender = MALE
 		trey_liam.skin_tone = "ffe0d1"
-		feature.accessory_colors = "#999999"
-		feature?.accessory_type = /datum/sprite_accessory/hair/head/thicklong_alt
-		facial.accessory_colors = "#999999"
-		facial?.accessory_type = /datum/sprite_accessory/hair/facial/know
+
+		trey_liam.set_hair_color("#999999", FALSE)
+		trey_liam.set_facial_hair_color("#999999", FALSE)
+		trey_liam.set_hair_style(/datum/sprite_accessory/hair/head/thicklong_alt, FALSE)
+		trey_liam.set_facial_hair_style(/datum/sprite_accessory/hair/facial/know, FALSE)
 		trey_liam.age = AGE_OLD
 		trey_liam.equipOutfit(/datum/outfit/treyliam)
 		trey_liam.regenerate_icons()
+		trey_liam.update_body_parts()
 		for(var/obj/structure/chair/chair in spawnturf)
 			chair.buckle_mob(trey_liam)
 			break

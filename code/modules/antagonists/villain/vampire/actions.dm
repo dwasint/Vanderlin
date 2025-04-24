@@ -159,13 +159,11 @@
 		return
 	VD.disguised = TRUE
 	skin_tone = VD.cache_skin
-	var/datum/bodypart_feature/hair/facial = get_bodypart_feature_of_slot(BODYPART_FEATURE_FACIAL_HAIR)
-	var/datum/bodypart_feature/hair/feature = get_bodypart_feature_of_slot(BODYPART_FEATURE_HAIR)
 	var/obj/item/organ/eyes/eyes = getorganslot(ORGAN_SLOT_EYES)
 
-	facial.hair_color = VD.cache_hair
+	set_hair_color(VD.cache_hair, FALSE)
+	set_facial_hair_color(VD.cache_hair, FALSE)
 	eyes.eye_color = VD.cache_eyes
-	feature.hair_color = VD.cache_hair
 	mob_biotypes = MOB_ORGANIC
 	update_body()
 	update_body_parts(redraw = TRUE)
@@ -176,14 +174,12 @@
 		return
 	VD.disguised = FALSE
 
-	var/datum/bodypart_feature/hair/facial = get_bodypart_feature_of_slot(BODYPART_FEATURE_FACIAL_HAIR)
-	var/datum/bodypart_feature/hair/feature = get_bodypart_feature_of_slot(BODYPART_FEATURE_HAIR)
 	var/obj/item/organ/eyes/eyes = getorganslot(ORGAN_SLOT_EYES)
 
 	mob_biotypes = MOB_UNDEAD
 	skin_tone = "c9d3de"
-	facial.hair_color = "#181a1d"
-	feature.hair_color = "#181a1d"
+	set_hair_color("#181a1d", FALSE)
+	set_facial_hair_color("#181a1d", FALSE)
 	eyes.eye_color = "#ff0000"
 	update_body()
 	update_body_parts(redraw = TRUE)

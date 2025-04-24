@@ -118,13 +118,10 @@
 /obj/item/razor/proc/shave(mob/living/carbon/human/H, location = BODY_ZONE_PRECISE_MOUTH)
 
 	if(location == BODY_ZONE_PRECISE_MOUTH)
-		var/datum/bodypart_feature/hair/facial = H.get_bodypart_feature_of_slot(BODYPART_FEATURE_FACIAL_HAIR)
-		facial?.accessory_type = /datum/sprite_accessory/hair/facial/shaved
+		H.set_facial_hair_style(/datum/sprite_accessory/hair/facial/shaved)
 	else
-		var/datum/bodypart_feature/hair/feature = H.get_bodypart_feature_of_slot(BODYPART_FEATURE_HAIR)
-		feature?.accessory_type = /datum/sprite_accessory/hair/head/bald
+		H.set_hair_style(/datum/sprite_accessory/hair/head/bald)
 
-	H.update_body_parts()
 	playsound(loc, 'sound/blank.ogg', 20, TRUE)
 
 
@@ -137,7 +134,6 @@
 			return
 		if(location == BODY_ZONE_PRECISE_MOUTH)
 			if(user.used_intent.type == INTENT_HELP)
-				var/datum/bodypart_feature/hair/facial = H.get_bodypart_feature_of_slot(BODYPART_FEATURE_FACIAL_HAIR)
 				if(H.gender == MALE)
 					if (H == user)
 						to_chat(user, "<span class='warning'>I need a mirror to properly style your own facial hair!</span>")
@@ -151,8 +147,7 @@
 					user.visible_message("<span class='notice'>[user] tries to change [H]'s facial hairstyle using [src].</span>", "<span class='notice'>I try to change [H]'s facial hairstyle using [src].</span>")
 					if(new_style && do_after(user, 6 SECONDS, H))
 						user.visible_message("<span class='notice'>[user] successfully changes [H]'s facial hairstyle using [src].</span>", "<span class='notice'>I successfully change [H]'s facial hairstyle using [src].</span>")
-						facial?.accessory_type = GLOB.hairstyles_list[new_style]
-						H.update_body_parts()
+						H.set_facial_hair_style(GLOB.hairstyles_list[new_style])
 						return
 				else
 					return

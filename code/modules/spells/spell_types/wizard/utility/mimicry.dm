@@ -58,9 +58,6 @@
 	user.name = target.get_visible_name()
 	user.gender = target.gender
 
-	var/datum/bodypart_feature/hair/feature = user.get_bodypart_feature_of_slot(BODYPART_FEATURE_HAIR)
-	var/datum/bodypart_feature/hair/facial = user.get_bodypart_feature_of_slot(BODYPART_FEATURE_FACIAL_HAIR)
-
 	var/datum/bodypart_feature/hair/target_feature = target.get_bodypart_feature_of_slot(BODYPART_FEATURE_HAIR)
 	var/datum/bodypart_feature/hair/target_facial = target.get_bodypart_feature_of_slot(BODYPART_FEATURE_FACIAL_HAIR)
 
@@ -72,22 +69,22 @@
 		picked = TRUE
 
 	if(prob(70) && !picked)
-		feature.accessory_colors = target.get_hair_color()
+		user.set_hair_color(target.get_hair_color(), FALSE)
 	else
 		picked = TRUE
 
 	if(prob(70) && !picked)
-		feature?.accessory_type = target_feature?.accessory_type
+		user.set_hair_style(target_feature?.accessory_type, FALSE)
 	else
 		picked = TRUE
 
 	if(prob(70) && !picked)
-		facial.accessory_colors = target.get_facial_hair_color()
+		user.set_facial_hair_color(target.get_facial_hair_color(), FALSE)
 	else
 		picked = TRUE
 
 	if(prob(70) && !picked)
-		facial?.accessory_type = target_facial?.accessory_type
+		user.set_facial_hair_style(target_facial?.accessory_type, FALSE)
 	else
 		picked = TRUE
 
@@ -103,15 +100,12 @@
 	user.real_name = old_dna.real_name
 	user.name = user.get_visible_name()
 	user.gender = old_gender
-	var/datum/bodypart_feature/hair/feature = user.get_bodypart_feature_of_slot(BODYPART_FEATURE_HAIR)
-	var/datum/bodypart_feature/hair/facial = user.get_bodypart_feature_of_slot(BODYPART_FEATURE_FACIAL_HAIR)
 	var/obj/item/organ/eyes/eyes = user.getorganslot(ORGAN_SLOT_EYES)
 
-
-	feature.accessory_colors = old_hair_color
 	eyes.eye_color = old_eye_color
-	feature?.accessory_type = old_hair
-	facial.accessory_colors = old_facial_hair_color
-	facial?.accessory_type = old_facial_hair
+	user.set_facial_hair_color(old_facial_hair_color, FALSE)
+	user.set_facial_hair_style(old_facial_hair, FALSE)
+	user.set_hair_color(old_hair_color, FALSE)
+	user.set_hair_style(old_hair, FALSE)
 
 	user.updateappearance(mutcolor_update = TRUE)

@@ -571,21 +571,12 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	H.real_name = random_name(H.gender,1)
 //	H.age = pick(possible_ages)
 	H.underwear = random_underwear(H.gender)
-	var/list/hairs
-	if((H.age == AGE_OLD) && (OLDGREY in species_traits))
-		hairs = get_oldhc_list()
-	else
-		hairs = get_hairc_list()
 	var/list/skins = get_skin_list()
 	H.skin_tone = skins[pick(skins)]
 	H.accessory = "Nothing"
 	if(H.dna)
 		H.dna.real_name = H.real_name
 		var/list/features = random_features()
-		if(default_features["ears"])
-			features["ears"] = default_features["ears"]
-		if(default_features["tail_human"])
-			features["tail_human"] = default_features["tail_human"]
 		H.dna.features = features.Copy()
 	validate_customizer_entries(H)
 	reset_all_customizer_accessory_colors(H)
@@ -1339,14 +1330,11 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 /datum/species/proc/go_bald(mob/living/carbon/human/H)
 	if(QDELETED(H))	//may be called from a timer
 		return
-	var/datum/bodypart_feature/hair/feature = H.get_bodypart_feature_of_slot(BODYPART_FEATURE_HAIR)
-	var/datum/bodypart_feature/hair/facial = H.get_bodypart_feature_of_slot(BODYPART_FEATURE_FACIAL_HAIR)
 	if(H.gender == MALE)
-		facial?.accessory_type = /datum/sprite_accessory/hair/facial/shaved
+		H.set_facial_hair_style(/datum/sprite_accessory/hair/facial/shaved, FALSE)
 	if(H.gender == FEMALE)
-		facial?.accessory_type = /datum/sprite_accessory/hair/facial/none
-	feature?.accessory_type = /datum/sprite_accessory/hair/head/bald
-	H.update_body_parts()
+		H.set_facial_hair_style(/datum/sprite_accessory/hair/facial/none, FALSE)
+	H.set_hair_style(/datum/sprite_accessory/hair/head/bald)
 
 //////////////////
 // ATTACK PROCS //

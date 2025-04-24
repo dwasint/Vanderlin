@@ -167,12 +167,10 @@
 	H.underwear = "Nude"
 	H.undershirt = "Nude"
 	H.socks = "Nude"
-	var/datum/bodypart_feature/hair/facial = H.get_bodypart_feature_of_slot(BODYPART_FEATURE_FACIAL_HAIR)
-	var/datum/bodypart_feature/hair/feature = H.get_bodypart_feature_of_slot(BODYPART_FEATURE_HAIR)
 	if(hairstyle)
-		feature?.accessory_type = GLOB.hairstyles_list[hairstyle]
+		H.set_hair_style(GLOB.hairstyles_list[hairstyle], FALSE)
 	if(facial_hairstyle)
-		facial?.accessory_type = GLOB.facial_hairstyles_list[facial_hairstyle]
+		H.set_facial_hair_style(GLOB.facial_hairstyles_list[facial_hairstyle], FALSE)
 	if(skin_tone)
 		H.skin_tone = skin_tone
 	H.update_body()

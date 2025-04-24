@@ -40,7 +40,6 @@
 	var/should_update
 	switch(chosen)
 		if("hairstyle")
-			var/datum/bodypart_feature/hair/feature = H.get_bodypart_feature_of_slot(BODYPART_FEATURE_HAIR)
 			var/list/spec_hair = H.dna.species.get_spec_hair_list(H.gender)
 			var/list/hairlist = list()
 			for(var/datum/sprite_accessory/X in spec_hair)
@@ -48,22 +47,19 @@
 			var/new_hairstyle
 			new_hairstyle = input(user, "Choose your character's hairstyle:", "Barber")  as null|anything in hairlist
 			if(new_hairstyle)
-				feature?.accessory_type = GLOB.hairstyles_list[new_hairstyle]
+				H.set_hair_style(GLOB.hairstyles_list[new_hairstyle])
 				should_update = TRUE
 		if("facial hairstyle")
 			var/list/spec_hair = H.dna.species.get_spec_facial_list(H.gender)
-			var/datum/bodypart_feature/hair/facial = H.get_bodypart_feature_of_slot(BODYPART_FEATURE_FACIAL_HAIR)
 			var/list/hairlist = list()
 			for(var/datum/sprite_accessory/X in spec_hair)
 				hairlist += X.name
 			var/new_hairstyle
 			new_hairstyle = input(user, "Choose your character's beard:", "Barber")  as null|anything in hairlist
 			if(new_hairstyle)
-				facial?.accessory_type = GLOB.facial_hairstyles_list[new_hairstyle]
+				H.set_facial_hair_style(GLOB.facial_hairstyles_list[new_hairstyle])
 				should_update = TRUE
 		if("hair color")
-			var/datum/bodypart_feature/hair/feature = H.get_bodypart_feature_of_slot(BODYPART_FEATURE_HAIR)
-			var/datum/bodypart_feature/hair/facial = H.get_bodypart_feature_of_slot(BODYPART_FEATURE_FACIAL_HAIR)
 			var/new_hair
 			var/list/hairs
 			if(H.age == AGE_OLD && (OLDGREY in H.dna.species.species_traits))
@@ -73,8 +69,8 @@
 				hairs = H.dna.species.get_hairc_list()
 				new_hair = input(user, "Choose your character's hair color:", "") as null|anything in hairs
 			if(new_hair)
-				feature.hair_color = hairs[new_hair]
-				facial.hair_color = feature.hair_color
+				H.set_hair_color(hairs[new_hair], FALSE)
+				H.set_facial_hair_color(hairs[new_hair], FALSE)
 				should_update = TRUE
 		if("skin")
 			var/listy = H.dna.species.get_skin_list()
@@ -260,17 +256,16 @@
 			if(hairchoice == "Style") //So you just want to use a mirror then?
 				..()
 			else
-				var/datum/bodypart_feature/hair/feature = H.get_bodypart_feature_of_slot(BODYPART_FEATURE_HAIR)
-				var/new_hair_color = input(H, "Choose your hair color", "Hair Color",feature.hair_color) as color|null
+				var/new_hair_color = input(H, "Choose your hair color", "Hair Color", H.get_hair_color()) as color|null
 				if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 					return
 				if(new_hair_color)
-					feature.hair_color = sanitize_hexcolor(feature)
+					H.set_hair_color(sanitize_hexcolor(new_hair_color), FALSE)
 					H.dna.update_ui_block(DNA_HAIR_COLOR_BLOCK)
 				if(H.gender == "male")
-					var/new_face_color = input(H, "Choose your facial hair color", "Hair Color",feature.hair_color) as color|null
+					var/new_face_color = input(H, "Choose your facial hair color", "Hair Color", H.get_facial_hair_color()) as color|null
 					if(new_face_color)
-						feature.hair_color = sanitize_hexcolor(new_face_color)
+						H.set_facial_hair_color(sanitize_hexcolor(new_face_color), FALSE)
 						H.dna.update_ui_block(DNA_FACIAL_HAIR_COLOR_BLOCK)
 				H.update_body()
 

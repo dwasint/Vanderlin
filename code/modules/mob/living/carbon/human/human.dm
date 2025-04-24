@@ -25,7 +25,7 @@
 				else
 					user.visible_message("<span class='danger'>[user] starts to shave [src]'s facehairs with [held_item].</span>")
 				if(do_after(user, 5 SECONDS, src))
-					facial?.accessory_type = /datum/sprite_accessory/hair/facial/none
+					set_facial_hair_style(/datum/sprite_accessory/hair/facial/none)
 					update_body()
 					GLOB.vanderlin_round_stats[STATS_BEARDS_SHAVED]++
 					if(dna?.species)

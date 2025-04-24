@@ -102,15 +102,13 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 
 /datum/antagonist/vampire/proc/vamp_look()
 	var/mob/living/carbon/human/V = owner.current
-	var/datum/bodypart_feature/hair/facial = V.get_bodypart_feature_of_slot(BODYPART_FEATURE_FACIAL_HAIR)
-	var/datum/bodypart_feature/hair/feature = V.get_bodypart_feature_of_slot(BODYPART_FEATURE_HAIR)
 	var/obj/item/organ/eyes/eyes = V.getorganslot(ORGAN_SLOT_EYES)
 	cache_skin = V.skin_tone
 	cache_eyes = V.get_eye_color()
 	cache_hair = V.get_hair_color()
 	V.skin_tone = "c9d3de"
-	feature.hair_color = "#181a1d"
-	facial.hair_color = "#181a1d"
+	V.set_hair_color("#181a1d", FALSE)
+	V.set_facial_hair_color("#181a1d", FALSE)
 
 	eyes.heterochromia = FALSE
 	eyes.eye_color = "#FF0000"
