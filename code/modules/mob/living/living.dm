@@ -2161,7 +2161,7 @@
 	SEND_SIGNAL(src, COMSIG_LIVING_UNFRIENDED, old_friend)
 	return TRUE
 /mob/living/proc/get_carry_capacity()
-	return max(45, STASTR * 12)
+	return max(45, STAEND * 12)
 
 ///this is returned as decimal value between 0 and 1
 /mob/living/proc/get_encumbrance()
