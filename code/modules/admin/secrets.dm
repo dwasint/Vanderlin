@@ -260,7 +260,6 @@
 					var/forename = names.len > 1 ? names[2] : names[1]
 					var/newname = "[forename]-[pick(honorifics["[H.gender]"])]"
 					H.fully_replace_character_name(H.real_name,newname)
-					H.update_mutant_bodyparts()
 				else
 					to_chat(H, "<span class='warning'>You're not kawaii enough for this!</span>")
 

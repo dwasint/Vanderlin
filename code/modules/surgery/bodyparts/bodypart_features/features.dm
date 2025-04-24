@@ -40,4 +40,3 @@
 	name = "Accessory"
 	feature_slot = BODYPART_FEATURE_ACCESSORY
 	body_zone = BODY_ZONE_HEAD
-

@@ -6,6 +6,11 @@
 	slot = ORGAN_SLOT_EYES
 	gender = PLURAL
 
+	visible_organ = TRUE
+
+	organ_dna_type = /datum/organ_dna/eyes
+	accessory_type = /datum/sprite_accessory/eyes/humanoid
+
 	healing_factor = STANDARD_ORGAN_HEALING
 	decay_factor = STANDARD_ORGAN_DECAY
 	maxHealth = 0.5 * STANDARD_ORGAN_THRESHOLD		//half the normal health max since we go blind at 30, a permanent blindness at 50 therefore makes sense unless medicine is administered
@@ -44,13 +49,11 @@
 
 /obj/item/organ/eyes/update_accessory_colors()
 	var/list/colors_list = list()
-	if(initial(eye_color))
+	colors_list += eye_color
+	if(heterochromia)
+		colors_list += second_color
+	else
 		colors_list += eye_color
-	if(initial(second_color))
-		if(heterochromia)
-			colors_list += second_color
-		else
-			colors_list += eye_color
 	accessory_colors = color_list_to_string(colors_list)
 
 /obj/item/organ/eyes/imprint_organ_dna(datum/organ_dna/organ_dna)

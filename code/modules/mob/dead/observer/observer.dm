@@ -199,14 +199,6 @@ GLOBAL_LIST_INIT(ghost_verbs, list(
 				invisibility = INVISIBILITY_OBSERVER
 //				icon = out_icon
 				alpha = 100
-/*			if(HAIR in body_human.dna.species.species_traits)
-				hairstyle = body_human.hairstyle
-				hair_color = brighten_color(body_human.hair_color)
-			if(FACEHAIR in body_human.dna.species.species_traits)
-				facial_hairstyle = body_human.facial_hairstyle
-				facial_hair_color = brighten_color(body_human.facial_hair_color)
-			if("ears" in body_human.dna.species.mutant_bodyparts)
-				ear_style = body_human.dna.species.default_features["ears"]*/
 	update_icon()
 
 	if(!T)
@@ -1046,13 +1038,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		icon_state = client?.prefs.admin_ghost_icon
 
 	client.prefs.apply_character_randomization_prefs()
-
-	if(HAIR in client.prefs.pref_species.species_traits)
-		hairstyle = client.prefs.hairstyle
-		hair_color = brighten_color(client.prefs.hair_color)
-	if(FACEHAIR in client.prefs.pref_species.species_traits)
-		facial_hairstyle = client.prefs.facial_hairstyle
-		facial_hair_color = brighten_color(client.prefs.facial_hair_color)
 
 	update_icon()
 

@@ -579,6 +579,31 @@
 				. += aux
 		return
 
+	var/draw_organ_features = TRUE
+	var/draw_bodypart_features = TRUE
+	if(owner && owner.dna)
+		var/datum/species/owner_species = owner.dna.species
+		if(NO_ORGAN_FEATURES in owner_species.species_traits)
+			draw_organ_features = FALSE
+		if(NO_BODYPART_FEATURES in owner_species.species_traits)
+			draw_bodypart_features = FALSE
+
+	if(!skeletonized && draw_organ_features)
+		for(var/obj/item/organ/organ as anything in get_organs())
+			if(!organ.is_visible())
+				continue
+			var/mutable_appearance/organ_appearance = organ.get_bodypart_overlay(src)
+			if(organ_appearance)
+				. += organ_appearance
+
+	// Feature overlays
+	if(!skeletonized && draw_bodypart_features)
+		for(var/datum/bodypart_feature/feature as anything in bodypart_features)
+			var/overlays = feature.get_bodypart_overlay(src)
+			if(!overlays)
+				continue
+			. += overlays
+
 	if(should_draw_greyscale && !skeletonized)
 		var/draw_color =  mutation_color || species_color || skin_tone
 		if(rotted || (owner && HAS_TRAIT(owner, TRAIT_ROTMAN)))
@@ -587,6 +612,18 @@
 			limb.color = "#[draw_color]"
 			if(aux_zone && !hideaux)
 				aux.color = "#[draw_color]"
+
+///since organs aren't actually stored in the bodypart themselves while attached to a person, we have to query the owner for what we should have
+/obj/item/bodypart/proc/get_organs()
+	if(!owner)
+		return FALSE
+
+	var/list/bodypart_organs
+	for(var/obj/item/organ/organ_check as anything in owner.internal_organs) //internal organs inside the dismembered limb are dropped.
+		if(check_zone(organ_check.zone) == body_zone)
+			LAZYADD(bodypart_organs, organ_check) // this way if we don't have any, it'll just return null
+
+	return bodypart_organs
 
 /obj/item/bodypart/deconstruct(disassembled = TRUE)
 	drop_organs()

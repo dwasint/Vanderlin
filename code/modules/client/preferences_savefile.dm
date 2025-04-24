@@ -118,10 +118,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 			randomise[RANDOM_BODY] = TRUE
 		if(S["species_is_always_random"] == 1)
 			randomise[RANDOM_SPECIES] = TRUE
-		if(S["hair_style_name"])
-			S["hair_style_name"]	>> hairstyle
-		if(S["facial_style_name"])
-			S["facial_style_name"]	>> facial_hairstyle
 	if(current_version < 30)
 		S["voice_color"]		>> voice_color
 
@@ -321,13 +317,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["domhand"]			>> domhand
 //	S["alignment"]			>> alignment
 	S["age"]				>> age
-	S["hair_color"]			>> hair_color
-	S["facial_hair_color"]	>> facial_hair_color
 	S["eye_color"]			>> eye_color
 	S["voice_color"]		>> voice_color
 	S["skin_tone"]			>> skin_tone
-	S["hairstyle_name"]	>> hairstyle
-	S["facial_style_name"]	>> facial_hairstyle
 	S["underwear"]			>> underwear
 	S["underwear_color"]	>> underwear_color
 	S["undershirt"]			>> undershirt
@@ -352,18 +344,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["family"]			>> family
 	S["setspouse"]			>> setspouse
 	S["feature_mcolor"]					>> features["mcolor"]
-	S["feature_ethcolor"]					>> features["ethcolor"]
-	S["feature_lizard_tail"]			>> features["tail_lizard"]
-	S["feature_lizard_snout"]			>> features["snout"]
-	S["feature_lizard_horns"]			>> features["horns"]
-	S["feature_lizard_frills"]			>> features["frills"]
-	S["feature_lizard_spines"]			>> features["spines"]
-	S["feature_lizard_body_markings"]	>> features["body_markings"]
-	S["feature_lizard_legs"]			>> features["legs"]
-	S["feature_moth_wings"]				>> features["moth_wings"]
-	S["feature_moth_markings"]			>> features["moth_markings"]
-	S["feature_human_tail"]				>> features["tail_human"]
-	S["feature_human_ears"]				>> features["ears"]
 	S["selected_accent"]	>> selected_accent
 
 /datum/preferences/proc/load_character(slot)
@@ -453,33 +433,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	randomise = SANITIZE_LIST(randomise)
 
-	if(gender == MALE)
-		hairstyle			= sanitize_inlist(hairstyle, GLOB.hairstyles_male_list)
-		facial_hairstyle			= sanitize_inlist(facial_hairstyle, GLOB.facial_hairstyles_male_list)
-		underwear		= sanitize_inlist(underwear, GLOB.underwear_m)
-		undershirt 		= sanitize_inlist(undershirt, GLOB.undershirt_m)
-		accessory		= sanitize_inlist(accessory, GLOB.accessories_m)
-		detail		= sanitize_inlist(detail, GLOB.detail_m)
-	else if(gender == FEMALE)
-		hairstyle			= sanitize_inlist(hairstyle, GLOB.hairstyles_female_list)
-		if(istype(pref_species, /datum/species/dwarf))
-			facial_hairstyle			= sanitize_inlist(facial_hairstyle, GLOB.facial_hairstyles_female_list)
-		else
-			facial_hairstyle			= sanitize_inlist(facial_hairstyle, list("None"))
-		underwear		= sanitize_inlist(underwear, GLOB.underwear_f)
-		undershirt		= sanitize_inlist(undershirt, GLOB.undershirt_f)
-		accessory		= sanitize_inlist(accessory, GLOB.accessories_f)
-		detail		= sanitize_inlist(detail, GLOB.detail_f)
-	else
-		hairstyle			= sanitize_inlist(hairstyle, GLOB.hairstyles_list)
-		facial_hairstyle			= sanitize_inlist(facial_hairstyle, GLOB.facial_hairstyles_list)
-		underwear		= sanitize_inlist(underwear, GLOB.underwear_list)
-		undershirt 		= sanitize_inlist(undershirt, GLOB.undershirt_list)
-
 	socks			= sanitize_inlist(socks, GLOB.socks_list)
 	age = sanitize_inlist(age, pref_species.possible_ages)
-	hair_color			= sanitize_hexcolor(hair_color, 3, 0)
-	facial_hair_color			= sanitize_hexcolor(facial_hair_color, 3, 0)
 	underwear_color			= sanitize_hexcolor(underwear_color, 3, 0)
 	eye_color		= sanitize_hexcolor(eye_color, 3, 0)
 	voice_color		= voice_color
@@ -487,18 +442,11 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	family = family
 	setspouse = setspouse
 	selected_accent ||= ACCENT_DEFAULT
+	features["mcolor"]	= sanitize_hexcolor(features["mcolor"], 3, 0)
 	features["mcolor2"]	= sanitize_hexcolor(features["mcolor2"], 6, 0)
 	features["mcolor3"]	= sanitize_hexcolor(features["mcolor3"], 6, 0)
 	features["ethcolor"]	= copytext(features["ethcolor"],1,7)
-	features["tail_lizard"]	= sanitize_inlist(features["tail_lizard"], GLOB.tails_list_lizard)
-	features["tail_human"] 	= sanitize_inlist(features["tail_human"], GLOB.tails_list_human, "None")
-	features["snout"]	= sanitize_inlist(features["snout"], GLOB.snouts_list)
-	features["horns"] 	= sanitize_inlist(features["horns"], GLOB.horns_list)
-	features["ears"]	= sanitize_inlist(features["ears"], GLOB.ears_list, "None")
-	features["frills"] 	= sanitize_inlist(features["frills"], GLOB.frills_list)
-	features["spines"] 	= sanitize_inlist(features["spines"], GLOB.spines_list)
 	features["body_markings"] 	= sanitize_inlist(features["body_markings"], GLOB.body_markings_list)
-	features["feature_lizard_legs"]	= sanitize_inlist(features["legs"], GLOB.legs_list, "Normal Legs")
 	S["body_markings"] >> body_markings
 	body_markings = SANITIZE_LIST(body_markings)
 	validate_body_markings()
@@ -514,6 +462,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	for(var/j in job_preferences)
 		if(job_preferences[j] != JP_LOW && job_preferences[j] != JP_MEDIUM && job_preferences[j] != JP_HIGH)
 			job_preferences -= j
+
+	S["customizer_entries"] >> customizer_entries
+	validate_customizer_entries()
 
 	return TRUE
 
@@ -533,13 +484,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["domhand"]				, domhand)
 //	WRITE_FILE(S["alignment"]			, alignment)
 	WRITE_FILE(S["age"]					, age)
-	WRITE_FILE(S["hair_color"]			, hair_color)
-	WRITE_FILE(S["facial_hair_color"]	, facial_hair_color)
 	WRITE_FILE(S["eye_color"]			, eye_color)
 	WRITE_FILE(S["voice_color"]			, voice_color)
 	WRITE_FILE(S["skin_tone"]			, skin_tone)
-	WRITE_FILE(S["hairstyle_name"]		, hairstyle)
-	WRITE_FILE(S["facial_style_name"]	, facial_hairstyle)
 	WRITE_FILE(S["underwear"]			, underwear)
 	WRITE_FILE(S["underwear_color"]		, underwear_color)
 	WRITE_FILE(S["undershirt"]			, undershirt)
@@ -552,18 +499,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["family"]			, 	family)
 	WRITE_FILE(S["setspouse"]			, 	setspouse)
 	WRITE_FILE(S["feature_mcolor"]					, features["mcolor"])
-	WRITE_FILE(S["feature_ethcolor"]					, features["ethcolor"])
-	WRITE_FILE(S["feature_lizard_tail"]			, features["tail_lizard"])
-	WRITE_FILE(S["feature_human_tail"]				, features["tail_human"])
-	WRITE_FILE(S["feature_lizard_snout"]			, features["snout"])
-	WRITE_FILE(S["feature_lizard_horns"]			, features["horns"])
-	WRITE_FILE(S["feature_human_ears"]				, features["ears"])
-	WRITE_FILE(S["feature_lizard_frills"]			, features["frills"])
-	WRITE_FILE(S["feature_lizard_spines"]			, features["spines"])
-	WRITE_FILE(S["feature_lizard_body_markings"]	, features["body_markings"])
-	WRITE_FILE(S["feature_lizard_legs"]			, features["legs"])
-	WRITE_FILE(S["feature_moth_wings"]			, features["moth_wings"])
-	WRITE_FILE(S["feature_moth_markings"]		, features["moth_markings"])
 	WRITE_FILE(S["selected_accent"], selected_accent)
 
 
