@@ -10,7 +10,7 @@ GLOBAL_LIST_INIT(console_commands, init_possible_commands())
 	var/command_key
 	var/required_args = 0
 
-/datum/console_command/proc/get_secondary_args()
+/datum/console_command/proc/get_secondary_args(mob/user)
 	return list()
 
 /datum/console_command/proc/get_tertiary_args(secondary_arg)

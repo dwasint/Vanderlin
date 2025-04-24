@@ -57,8 +57,8 @@
 	if(!found_command)
 		return list()
 
-	if(istype(found_command) && found_command.get_secondary_args())
-		return found_command.get_secondary_args()
+	if(istype(found_command) && found_command.get_secondary_args(get_user()))
+		return found_command.get_secondary_args(get_user())
 
 	return list()
 

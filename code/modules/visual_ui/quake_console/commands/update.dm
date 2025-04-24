@@ -10,6 +10,13 @@
 	output.add_line("    marked = marked datum")
 	output.add_line("    loc = senders loc")
 
+/datum/console_command/update/get_secondary_args(mob/user)
+	var/datum/marked_datum = user.client.holder?.marked_datum
+	if(!marked_datum)
+		marked_datum = user
+	return marked_datum.vars
+
+
 /datum/console_command/update/execute(obj/abstract/visual_ui_element/scrollable/console_output/output, list/arg_list)
 	var/variable = arg_list[1]
 	var/mob/user = output.parent.get_user()
