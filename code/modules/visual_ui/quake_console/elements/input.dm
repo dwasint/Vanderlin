@@ -125,11 +125,10 @@
 
 	focused = TRUE
 	UpdateIcon()
-	var/mob/user_mob = get_user()
-	if(user_mob)
-		user_mob.focus = src
+	if(user)
+		user.focus = src
 
-	if(user.client)
+	if(user?.client)
 		user.client.set_macros(TRUE, TRUE)
 
 /obj/abstract/visual_ui_element/console_input/proc/unfocus()

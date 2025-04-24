@@ -242,7 +242,6 @@ GLOBAL_LIST_INIT(visual_ui_id_to_type, list())
 		return src
 
 /datum/visual_ui/proc/get_user()
-	ASSERT(mind && mind.current)
 	if(mind.current_ghost)
 		return mind.current_ghost
 	return mind.current
@@ -315,7 +314,6 @@ GLOBAL_LIST_INIT(visual_ui_id_to_type, list())
 	invisibility = 101
 
 /obj/abstract/visual_ui_element/proc/get_user()
-	ASSERT(parent && parent.mind && parent.mind.current)
 	if(parent.mind.current_ghost)
 		return parent.mind.current_ghost
 	return parent.mind.current

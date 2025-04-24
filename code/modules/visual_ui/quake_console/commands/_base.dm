@@ -32,4 +32,3 @@ GLOBAL_LIST_INIT(console_commands, init_possible_commands())
 
 /datum/console_command/proc/execute(obj/abstract/visual_ui_element/scrollable/console_output/output, list/arg_list)
 	return TRUE
-
