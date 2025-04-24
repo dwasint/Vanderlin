@@ -79,7 +79,10 @@
 		ORGAN_SLOT_HORNS = /obj/item/organ/horns/tiefling,
 		ORGAN_SLOT_TAIL = /obj/item/organ/tail/tiefling
 	)
-
+	bodypart_features = list(
+		/datum/bodypart_feature/hair/head,
+		/datum/bodypart_feature/hair/facial,
+	)
 	customizers = list(
 		/datum/customizer/organ/ears/tiefling,
 		/datum/customizer/organ/horns/tiefling,

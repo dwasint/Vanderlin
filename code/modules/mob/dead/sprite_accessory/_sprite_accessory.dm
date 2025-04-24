@@ -218,24 +218,28 @@
 			return KEY_MUT_COLOR_THREE
 
 /proc/color_key_source_list_from_prefs(datum/preferences/prefs)
-	var/list/features = prefs.features
-	var/list/sources = list()
-	sources[KEY_MUT_COLOR_ONE] = features["mcolor"]
-	sources[KEY_MUT_COLOR_TWO] = features["mcolor2"]
-	sources[KEY_MUT_COLOR_THREE] = features["mcolor3"]
-	/// Read specific organ entries to deduce eye, hair and facial hair color
-	if(MUTCOLORS in prefs.pref_species.species_traits)
-		sources[KEY_SKIN_COLOR] = sources[KEY_MUT_COLOR_ONE]
+	if(istype(prefs))
+		var/list/features = prefs.features
+		var/list/sources = list()
+		sources[KEY_MUT_COLOR_ONE] = features["mcolor"]
+		sources[KEY_MUT_COLOR_TWO] = features["mcolor2"]
+		sources[KEY_MUT_COLOR_THREE] = features["mcolor3"]
+		/// Read specific organ entries to deduce eye, hair and facial hair color
+		if(MUTCOLORS in prefs.pref_species.species_traits)
+			sources[KEY_SKIN_COLOR] = sources[KEY_MUT_COLOR_ONE]
+		else
+			sources[KEY_SKIN_COLOR] = prefs.skin_tone
+		sources[KEY_EYE_COLOR] = prefs.get_eye_color()
+		sources[KEY_HAIR_COLOR] = prefs.get_hair_color()
+		sources[KEY_FACE_HAIR_COLOR] = prefs.get_facial_hair_color()
+		sources[KEY_CHEST_COLOR] = sources[KEY_SKIN_COLOR]
+		var/chest_color = prefs.get_chest_color()
+		if(chest_color)
+			sources[KEY_CHEST_COLOR] = chest_color
+		return sources
 	else
-		sources[KEY_SKIN_COLOR] = prefs.skin_tone
-	sources[KEY_EYE_COLOR] = prefs.get_eye_color()
-	sources[KEY_HAIR_COLOR] = prefs.get_hair_color()
-	sources[KEY_FACE_HAIR_COLOR] = prefs.get_facial_hair_color()
-	sources[KEY_CHEST_COLOR] = sources[KEY_SKIN_COLOR]
-	var/chest_color = prefs.get_chest_color()
-	if(chest_color)
-		sources[KEY_CHEST_COLOR] = chest_color
-	return sources
+		return color_key_source_list_from_carbon(prefs)
+
 
 /proc/color_key_source_list_from_carbon(mob/living/carbon/carbon)
 	var/datum/dna/dna = carbon.dna

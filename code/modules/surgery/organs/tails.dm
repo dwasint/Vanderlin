@@ -32,7 +32,7 @@
 	if(istype(H))
 		H.dna.features["tail_human"] = "None"
 		H.dna.species.mutant_bodyparts -= "tail_human"
-		color = H.hair_color
+		color = H.get_hair_color()
 		H.update_body()
 
 /obj/item/organ/tail/lizard

@@ -93,6 +93,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 	var/breathid = "o2"
 
+	var/list/customizer_entries = list()
+
 	/// List of organs this species has.
 	var/list/organs = list(
 		ORGAN_SLOT_BRAIN = /obj/item/organ/brain,
@@ -569,18 +571,13 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	H.real_name = random_name(H.gender,1)
 //	H.age = pick(possible_ages)
 	H.underwear = random_underwear(H.gender)
-	H.hairstyle = random_hairstyle(H.gender)
-	H.facial_hairstyle = random_facial_hairstyle(H.gender)
 	var/list/hairs
 	if((H.age == AGE_OLD) && (OLDGREY in species_traits))
 		hairs = get_oldhc_list()
 	else
 		hairs = get_hairc_list()
-	H.hair_color = hairs[pick(hairs)]
-	H.facial_hair_color = H.hair_color
 	var/list/skins = get_skin_list()
 	H.skin_tone = skins[pick(skins)]
-	H.eye_color = random_eye_color()
 	H.accessory = "Nothing"
 	if(H.dna)
 		H.dna.real_name = H.real_name
@@ -590,12 +587,91 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if(default_features["tail_human"])
 			features["tail_human"] = default_features["tail_human"]
 		H.dna.features = features.Copy()
-	//reset_all_customizer_accessory_colors()
-	//randomize_all_customizer_accessories()
+	validate_customizer_entries(H)
+	reset_all_customizer_accessory_colors(H)
+	randomize_all_customizer_accessories(H)
+	apply_customizers_to_character(H)
+	if(!H.client && H.dna)
+		var/list/organ_list = list()
+		for(var/datum/customizer_entry/entry as anything in customizer_entries)
+			var/datum/customizer_choice/customizer_choice = CUSTOMIZER_CHOICE(entry.customizer_choice_type)
+			var/datum/customizer/customizer = CUSTOMIZER(entry.customizer_type)
+			if(!customizer.is_allowed(H))
+				continue
+			if(entry.disabled)
+				continue
+			var/datum/organ_dna/dna = customizer_choice.create_organ_dna(entry, H)
+			if(!dna)
+				continue
+			organ_list[customizer_choice.get_organ_slot()] = dna
+
+		H.dna.organ_dna = list()
+		var/list/organ_dna_list = organ_list
+		for(var/organ_slot in organ_dna_list)
+			H.dna.organ_dna[organ_slot] = organ_dna_list[organ_slot]
+		regenerate_organs(H)
+
 	H.update_body()
-	H.update_hair()
 	H.update_body_parts()
 
+
+/datum/species/proc/apply_customizers_to_character(mob/living/carbon/human/human)
+	for(var/datum/customizer_entry/entry as anything in customizer_entries)
+		var/datum/customizer_choice/customizer_choice = CUSTOMIZER_CHOICE(entry.customizer_choice_type)
+		var/datum/customizer/customizer = CUSTOMIZER(entry.customizer_type)
+		if(!customizer.is_allowed(human))
+			continue
+		if(entry.disabled)
+			continue
+		customizer_choice.apply_customizer_to_character(human, human, entry)
+
+/datum/species/proc/reset_all_customizer_accessory_colors(mob/living/carbon/human/human)
+	for(var/datum/customizer_entry/entry as anything in customizer_entries)
+		var/datum/customizer_choice/choice = CUSTOMIZER_CHOICE(entry.customizer_choice_type)
+		choice.reset_accessory_colors(human, entry)
+
+/datum/species/proc/randomize_all_customizer_accessories(mob/living/carbon/human/human)
+	for(var/datum/customizer_entry/entry as anything in customizer_entries)
+		var/datum/customizer_choice/choice = CUSTOMIZER_CHOICE(entry.customizer_choice_type)
+		choice.randomize_entry(entry, human)
+
+/datum/species/proc/validate_customizer_entries(mob/living/carbon/human/human)
+	customizer_entries = SANITIZE_LIST(customizer_entries)
+	listclearnulls(customizer_entries)
+	/// Check if we have any customizer entries that don't match.
+	for(var/datum/customizer_entry/entry as anything in customizer_entries)
+		var/validated = FALSE
+		for(var/customizer_type as anything in customizers)
+			if(customizer_type != entry.customizer_type)
+				continue
+			var/datum/customizer/customizer = CUSTOMIZER(customizer_type)
+			if(!(entry.customizer_choice_type in customizer.customizer_choices))
+				continue
+			var/datum/customizer_choice/customizer_choice = CUSTOMIZER_CHOICE(entry.customizer_choice_type)
+			if(entry.type != customizer_choice.customizer_entry_type)
+				continue
+			validated = TRUE
+			break
+
+		if(!validated)
+			customizer_entries -= entry
+
+	/// Check if we have any missing customizer entries
+	for(var/customizer_type as anything in customizers)
+		var/found = FALSE
+		for(var/datum/customizer_entry/entry as anything in customizer_entries)
+			if(entry.customizer_type != customizer_type)
+				continue
+			found = TRUE
+			break
+		var/datum/customizer/customizer = CUSTOMIZER(customizer_type)
+		if(!found)
+			customizer_entries += customizer.make_default_customizer_entry(human, FALSE)
+
+	/// Validate the variables within customizer entries
+	for(var/datum/customizer_entry/entry as anything in customizer_entries)
+		var/datum/customizer_choice/customizer_choice = CUSTOMIZER_CHOICE(entry.customizer_choice_type)
+		customizer_choice.validate_entry(human, entry)
 
 /datum/species/proc/on_species_gain(mob/living/carbon/C, datum/species/old_species, datum/preferences/pref_load)
 	// Drop the items the new species can't wear
@@ -666,9 +742,12 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if(!is_bodypart_feature_slot_allowed(C, feature.feature_slot))
 			continue
 		C.add_bodypart_feature(feature)
+
 	if(pref_load)
 		pref_load.apply_customizers_to_character(C)
 		pref_load.apply_descriptors(C)
+	else
+		apply_customizers_to_character(C)
 
 	SEND_SIGNAL(C, COMSIG_SPECIES_GAIN, src, old_species)
 
@@ -722,7 +801,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				bodyhair_overlay = mutable_appearance(H.dna.species.limbs_icon_m, "[H.dna.species.hairyness]", -BODY_LAYER)
 			else
 				bodyhair_overlay = mutable_appearance(H.dna.species.limbs_icon_f, "[H.dna.species.hairyness]", -BODY_LAYER)
-			bodyhair_overlay.color = "#" + H.hair_color
+			bodyhair_overlay.color = "#" + H.get_hair_color()
 			standing += bodyhair_overlay
 #endif
 
@@ -1260,12 +1339,14 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 /datum/species/proc/go_bald(mob/living/carbon/human/H)
 	if(QDELETED(H))	//may be called from a timer
 		return
+	var/datum/bodypart_feature/hair/feature = H.get_bodypart_feature_of_slot(BODYPART_FEATURE_HAIR)
+	var/datum/bodypart_feature/hair/facial = H.get_bodypart_feature_of_slot(BODYPART_FEATURE_FACIAL_HAIR)
 	if(H.gender == MALE)
-		H.facial_hairstyle = "Shaved"
+		facial?.accessory_type = /datum/sprite_accessory/hair/facial/shaved
 	if(H.gender == FEMALE)
-		H.facial_hairstyle = "Nothing"
-	H.hairstyle = "Bald"
-	H.update_hair()
+		facial?.accessory_type = /datum/sprite_accessory/hair/facial/none
+	feature?.accessory_type = /datum/sprite_accessory/hair/head/bald
+	H.update_body_parts()
 
 //////////////////
 // ATTACK PROCS //

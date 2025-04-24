@@ -19,12 +19,12 @@
 
 /datum/customizer_choice/organ/imprint_organ_dna(datum/organ_dna/organ_dna, datum/customizer_entry/entry, datum/preferences/prefs)
 	organ_dna.organ_type = organ_type
-	if(entry.accessory_type)
-		organ_dna.accessory_type = entry.accessory_type
+	if(entry?.accessory_type)
+		organ_dna?.accessory_type = entry?.accessory_type
 		if(allows_accessory_color_customization)
 			organ_dna.accessory_colors = entry.accessory_colors
 		else
-			var/datum/sprite_accessory/accessory = SPRITE_ACCESSORY(entry.accessory_type)
+			var/datum/sprite_accessory/accessory = SPRITE_ACCESSORY(entry?.accessory_type)
 			organ_dna.accessory_colors = accessory.get_default_colors(color_key_source_list_from_prefs(prefs))
 
 /datum/customizer_choice/organ/create_organ_dna(datum/customizer_entry/entry, datum/preferences/prefs)

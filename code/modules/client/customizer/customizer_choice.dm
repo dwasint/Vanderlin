@@ -40,7 +40,7 @@
 		random_accessory = get_random_accessory(entry, prefs)
 	if(random_accessory)
 		set_accessory_type(prefs, random_accessory, entry)
-	var/random_color = get_random_color(entry, prefs, entry.accessory_type)
+	var/random_color = get_random_color(entry, prefs, entry?.accessory_type)
 	if(random_color)
 		entry.accessory_colors = random_color
 	on_randomize_entry(entry, prefs)
@@ -61,8 +61,8 @@
 
 /datum/customizer_choice/proc/generate_pref_choices(list/dat, datum/preferences/prefs, datum/customizer_entry/entry, customizer_type)
 	var/datum/sprite_accessory/accessory
-	if(sprite_accessories && entry.accessory_type)
-		accessory = SPRITE_ACCESSORY(entry.accessory_type)
+	if(sprite_accessories && entry?.accessory_type)
+		accessory = SPRITE_ACCESSORY(entry?.accessory_type)
 
 	if(accessory)
 		var/accessory_link
@@ -105,7 +105,7 @@
 			var/i = 0
 			for(var/accessory_type in sprite_accessories)
 				i++
-				if(entry.accessory_type != accessory_type)
+				if(entry?.accessory_type != accessory_type)
 					continue
 				current_index = i
 				break
@@ -127,7 +127,7 @@
 			if(!sprite_accessories || !allows_accessory_color_customization)
 				return
 			var/index = text2num(href_list["color_index"])
-			var/datum/sprite_accessory/accessory = SPRITE_ACCESSORY(entry.accessory_type)
+			var/datum/sprite_accessory/accessory = SPRITE_ACCESSORY(entry?.accessory_type)
 			if(index > accessory.color_keys)
 				return
 			var/list/color_list = color_string_to_list(entry.accessory_colors)
@@ -143,14 +143,14 @@
 
 /datum/customizer_choice/proc/validate_entry(datum/preferences/prefs, datum/customizer_entry/entry)
 	/// Validate chosen accessory
-	if(entry.accessory_type && !sprite_accessories)
-		entry.accessory_type = null
+	if(entry?.accessory_type && !sprite_accessories)
+		entry?.accessory_type = null
 		entry.accessory_colors = null
-	else if (sprite_accessories && !(entry.accessory_type in sprite_accessories))
+	else if (sprite_accessories && !(entry?.accessory_type in sprite_accessories))
 		set_accessory_type(prefs, default_accessory, entry)
 	/// Validate colors
-	if(entry.accessory_type)
-		var/datum/sprite_accessory/accessory = SPRITE_ACCESSORY(entry.accessory_type)
+	if(entry?.accessory_type)
+		var/datum/sprite_accessory/accessory = SPRITE_ACCESSORY(entry?.accessory_type)
 		if(accessory.color_keys != 0)
 			var/reset_colors = FALSE
 			if(!entry.accessory_colors)
@@ -163,21 +163,21 @@
 				entry.accessory_colors = accessory.get_default_colors(color_key_source_list_from_prefs(prefs))
 
 /datum/customizer_choice/proc/set_accessory_type(datum/preferences/prefs, new_accessory_type, datum/customizer_entry/entry)
-	if(entry.accessory_type == new_accessory_type)
+	if(entry?.accessory_type == new_accessory_type)
 		return
 	if(!entry.customizer_choice_type)
 		CRASH("Tried to set a customizer entry accessory without a customizer choice.")
 	if(!(new_accessory_type in sprite_accessories))
 		CRASH("Tried to set an customizer entry accessory that isn't allowed for the customizer choice.")
 
-	entry.accessory_type = new_accessory_type
-	var/datum/sprite_accessory/accessory = SPRITE_ACCESSORY(entry.accessory_type)
+	entry?.accessory_type = new_accessory_type
+	var/datum/sprite_accessory/accessory = SPRITE_ACCESSORY(entry?.accessory_type)
 	entry.accessory_colors = accessory.get_default_colors(color_key_source_list_from_prefs(prefs))
 
 /datum/customizer_choice/proc/reset_accessory_colors(datum/preferences/prefs, datum/customizer_entry/entry)
-	if(!entry.accessory_type)
+	if(!entry?.accessory_type)
 		return
-	var/datum/sprite_accessory/accessory = SPRITE_ACCESSORY(entry.accessory_type)
+	var/datum/sprite_accessory/accessory = SPRITE_ACCESSORY(entry?.accessory_type)
 	entry.accessory_colors = accessory.get_default_colors(color_key_source_list_from_prefs(prefs))
 
 /// When you want to customize an organ but not through DNA (hair dye for example)

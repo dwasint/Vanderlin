@@ -40,6 +40,7 @@
 	var/should_update
 	switch(chosen)
 		if("hairstyle")
+			var/datum/bodypart_feature/hair/feature = H.get_bodypart_feature_of_slot(BODYPART_FEATURE_HAIR)
 			var/list/spec_hair = H.dna.species.get_spec_hair_list(H.gender)
 			var/list/hairlist = list()
 			for(var/datum/sprite_accessory/X in spec_hair)
@@ -47,19 +48,22 @@
 			var/new_hairstyle
 			new_hairstyle = input(user, "Choose your character's hairstyle:", "Barber")  as null|anything in hairlist
 			if(new_hairstyle)
-				H.hairstyle = new_hairstyle
+				feature?.accessory_type = GLOB.hairstyles_list[new_hairstyle]
 				should_update = TRUE
 		if("facial hairstyle")
 			var/list/spec_hair = H.dna.species.get_spec_facial_list(H.gender)
+			var/datum/bodypart_feature/hair/facial = H.get_bodypart_feature_of_slot(BODYPART_FEATURE_FACIAL_HAIR)
 			var/list/hairlist = list()
 			for(var/datum/sprite_accessory/X in spec_hair)
 				hairlist += X.name
 			var/new_hairstyle
 			new_hairstyle = input(user, "Choose your character's beard:", "Barber")  as null|anything in hairlist
 			if(new_hairstyle)
-				H.facial_hairstyle = new_hairstyle
+				facial?.accessory_type = GLOB.facial_hairstyles_list[new_hairstyle]
 				should_update = TRUE
 		if("hair color")
+			var/datum/bodypart_feature/hair/feature = H.get_bodypart_feature_of_slot(BODYPART_FEATURE_HAIR)
+			var/datum/bodypart_feature/hair/facial = H.get_bodypart_feature_of_slot(BODYPART_FEATURE_FACIAL_HAIR)
 			var/new_hair
 			var/list/hairs
 			if(H.age == AGE_OLD && (OLDGREY in H.dna.species.species_traits))
@@ -69,8 +73,8 @@
 				hairs = H.dna.species.get_hairc_list()
 				new_hair = input(user, "Choose your character's hair color:", "") as null|anything in hairs
 			if(new_hair)
-				H.hair_color = hairs[new_hair]
-				H.facial_hair_color = H.hair_color
+				feature.hair_color = hairs[new_hair]
+				facial.hair_color = feature.hair_color
 				should_update = TRUE
 		if("skin")
 			var/listy = H.dna.species.get_skin_list()
@@ -89,39 +93,14 @@
 				H.detail = new_detail
 				should_update = TRUE
 		if("eye color")
-			var/new_eyes = input(user, "Choose your character's eye color:", "Character Preference","#"+H.eye_color) as color|null
+			var/obj/item/organ/eyes/eyes = H.getorganslot(ORGAN_SLOT_EYES)
+			var/new_eyes = input(user, "Choose your character's eye color:", "Character Preference",eyes.eye_color) as color|null
 			if(new_eyes)
-				H.eye_color = sanitize_hexcolor(new_eyes)
+				eyes.eye_color = sanitize_hexcolor(new_eyes)
 				should_update = TRUE
 	if(should_update)
 		H.update_body()
-		H.update_hair()
 		H.update_body_parts()
-/*
-	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
-
-		//see code/modules/mob/dead/new_player/preferences.dm at approx line 545 for comments!
-		//this is largely copypasted from there.
-
-		//handle facial hair (if necessary)
-		if(H.gender != FEMALE)
-			var/new_style = input(user, "Select a facial hairstyle", "Grooming")  as null|anything in GLOB.facial_hairstyles_list
-			if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
-				return	//no tele-grooming
-			if(new_style)
-				H.facial_hairstyle = new_style
-		else
-			H.facial_hairstyle = "Shaved"
-
-		//handle normal hair
-		var/new_style = input(user, "Select a hairstyle", "Grooming")  as null|anything in GLOB.hairstyles_list
-		if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
-			return	//no tele-grooming
-		if(new_style)
-			H.hairstyle = new_style
-
-		H.update_hair()*/
 
 /obj/structure/mirror/examine_status(mob/user)
 	if(broken)
@@ -137,9 +116,6 @@
 	..()
 
 /obj/structure/mirror/deconstruct(disassembled = TRUE)
-//	if(!(flags_1 & NODECONSTRUCT_1))
-//		if(!disassembled)
-//			new /obj/item/natural/glass/shard( src.loc )
 	..()
 
 /obj/structure/mirror/welder_act(mob/living/user, obj/item/I)
@@ -252,7 +228,6 @@
 						to_chat(H, "<span class='notice'>Invalid color. Your color is not bright enough.</span>")
 
 			H.update_body()
-			H.update_hair()
 			H.update_body_parts()
 
 		if("gender")
@@ -285,25 +260,27 @@
 			if(hairchoice == "Style") //So you just want to use a mirror then?
 				..()
 			else
-				var/new_hair_color = input(H, "Choose your hair color", "Hair Color","#"+H.hair_color) as color|null
+				var/datum/bodypart_feature/hair/feature = H.get_bodypart_feature_of_slot(BODYPART_FEATURE_HAIR)
+				var/new_hair_color = input(H, "Choose your hair color", "Hair Color",feature.hair_color) as color|null
 				if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 					return
 				if(new_hair_color)
-					H.hair_color = sanitize_hexcolor(new_hair_color)
+					feature.hair_color = sanitize_hexcolor(feature)
 					H.dna.update_ui_block(DNA_HAIR_COLOR_BLOCK)
 				if(H.gender == "male")
-					var/new_face_color = input(H, "Choose your facial hair color", "Hair Color","#"+H.facial_hair_color) as color|null
+					var/new_face_color = input(H, "Choose your facial hair color", "Hair Color",feature.hair_color) as color|null
 					if(new_face_color)
-						H.facial_hair_color = sanitize_hexcolor(new_face_color)
+						feature.hair_color = sanitize_hexcolor(new_face_color)
 						H.dna.update_ui_block(DNA_FACIAL_HAIR_COLOR_BLOCK)
-				H.update_hair()
+				H.update_body()
 
 		if(BODY_ZONE_PRECISE_R_EYE)
-			var/new_eye_color = input(H, "Choose your eye color", "Eye Color","#"+H.eye_color) as color|null
+			var/obj/item/organ/eyes/eyes = H.getorganslot(ORGAN_SLOT_EYES)
+			var/new_eye_color = input(H, "Choose your eye color", "Eye Color",eyes.eye_color) as color|null
 			if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 				return
 			if(new_eye_color)
-				H.eye_color = sanitize_hexcolor(new_eye_color)
+				eyes.eye_color = sanitize_hexcolor(new_eye_color)
 				H.dna.update_ui_block(DNA_EYE_COLOR_BLOCK)
 				H.update_body()
 	if(choice)

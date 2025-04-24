@@ -26,12 +26,14 @@
 
 /obj/effect/proc_holder/spell/invoked/mimicry/on_gain(mob/living/carbon/human/user)
 	. = ..()
+	var/datum/bodypart_feature/hair/feature = user.get_bodypart_feature_of_slot(BODYPART_FEATURE_HAIR)
+	var/datum/bodypart_feature/hair/facial = user.get_bodypart_feature_of_slot(BODYPART_FEATURE_FACIAL_HAIR)
 	old_dna = user.dna
-	old_hair = user.hairstyle
-	old_hair_color = user.hair_color
-	old_eye_color = user.eye_color
-	old_facial_hair_color = user.facial_hair_color
-	old_facial_hair = user.facial_hair_color
+	old_hair = feature?.accessory_type
+	old_hair_color = user.get_hair_color()
+	old_eye_color = user.get_eye_color()
+	old_facial_hair_color = user.get_facial_hair_color()
+	old_facial_hair = facial?.accessory_type
 	old_gender = user.gender
 
 /obj/effect/proc_holder/spell/invoked/mimicry/cast(list/targets, mob/living/user)
@@ -56,29 +58,36 @@
 	user.name = target.get_visible_name()
 	user.gender = target.gender
 
+	var/datum/bodypart_feature/hair/feature = user.get_bodypart_feature_of_slot(BODYPART_FEATURE_HAIR)
+	var/datum/bodypart_feature/hair/facial = user.get_bodypart_feature_of_slot(BODYPART_FEATURE_FACIAL_HAIR)
+
+	var/datum/bodypart_feature/hair/target_feature = target.get_bodypart_feature_of_slot(BODYPART_FEATURE_HAIR)
+	var/datum/bodypart_feature/hair/target_facial = target.get_bodypart_feature_of_slot(BODYPART_FEATURE_FACIAL_HAIR)
+
 	var/picked = FALSE
 	if(prob(40))
-		user.eye_color = target.eye_color
+		var/obj/item/organ/eyes/eyes = user.getorganslot(ORGAN_SLOT_EYES)
+		eyes.eye_color = target.get_eye_color()
 	else
 		picked = TRUE
 
 	if(prob(70) && !picked)
-		user.hair_color = target.hair_color
+		feature.accessory_colors = target.get_hair_color()
 	else
 		picked = TRUE
 
 	if(prob(70) && !picked)
-		user.hairstyle = target.hairstyle
+		feature?.accessory_type = target_feature?.accessory_type
 	else
 		picked = TRUE
 
 	if(prob(70) && !picked)
-		user.facial_hair_color = target.facial_hair_color
+		facial.accessory_colors = target.get_facial_hair_color()
 	else
 		picked = TRUE
 
 	if(prob(70) && !picked)
-		user.facial_hairstyle = target.facial_hairstyle
+		facial?.accessory_type = target_facial?.accessory_type
 	else
 		picked = TRUE
 
@@ -94,11 +103,15 @@
 	user.real_name = old_dna.real_name
 	user.name = user.get_visible_name()
 	user.gender = old_gender
+	var/datum/bodypart_feature/hair/feature = user.get_bodypart_feature_of_slot(BODYPART_FEATURE_HAIR)
+	var/datum/bodypart_feature/hair/facial = user.get_bodypart_feature_of_slot(BODYPART_FEATURE_FACIAL_HAIR)
+	var/obj/item/organ/eyes/eyes = user.getorganslot(ORGAN_SLOT_EYES)
 
-	user.hair_color = old_hair_color
-	user.eye_color = old_eye_color
-	user.hairstyle = old_hair
-	user.facial_hair_color = old_facial_hair_color
-	user.facial_hairstyle = old_facial_hair
+
+	feature.accessory_colors = old_hair_color
+	eyes.eye_color = old_eye_color
+	feature?.accessory_type = old_hair
+	facial.accessory_colors = old_facial_hair_color
+	facial?.accessory_type = old_facial_hair
 
 	user.updateappearance(mutcolor_update = TRUE)

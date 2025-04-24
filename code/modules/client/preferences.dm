@@ -1639,7 +1639,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	//character.alignment = ALIGNMENT_TN
 	//#endif
 
-	character.eye_color = eye_color
 	var/obj/item/organ/eyes/organ_eyes = character.getorgan(/obj/item/organ/eyes)
 	if(organ_eyes)
 		organ_eyes.eye_color = eye_color
@@ -1704,7 +1703,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 	if(icon_updates)
 		character.update_body()
-		character.update_hair()
 		character.update_body_parts(redraw = TRUE)
 
 /datum/preferences/proc/get_default_name(name_id)

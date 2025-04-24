@@ -62,16 +62,20 @@
 			L[DNA_GENDER_BLOCK] = construct_block(G_PLURAL, 3)
 	if(ishuman(holder))
 		var/mob/living/carbon/human/H = holder
+		var/datum/bodypart_feature/hair/feature = H.get_bodypart_feature_of_slot(BODYPART_FEATURE_HAIR)
+		var/datum/bodypart_feature/hair/facial = H.get_bodypart_feature_of_slot(BODYPART_FEATURE_FACIAL_HAIR)
+		var/datum/sprite_accessory/facial_accessory = facial?.accessory_type
+		var/datum/sprite_accessory/hair_accessory = feature?.accessory_colors
 		if(!GLOB.hairstyles_list.len)
 			init_sprite_accessory_subtypes(/datum/sprite_accessory/hair/head,GLOB.hairstyles_list, GLOB.hairstyles_male_list, GLOB.hairstyles_female_list)
-		L[DNA_HAIRSTYLE_BLOCK] = construct_block(GLOB.hairstyles_list.Find(H.hairstyle), GLOB.hairstyles_list.len)
-		L[DNA_HAIR_COLOR_BLOCK] = H.hair_color
+		L[DNA_HAIRSTYLE_BLOCK] = construct_block(GLOB.hairstyles_list.Find(initial(hair_accessory?.name)), GLOB.hairstyles_list.len)
+		L[DNA_HAIR_COLOR_BLOCK] = H.get_hair_color()
 		if(!GLOB.facial_hairstyles_list.len)
 			init_sprite_accessory_subtypes(/datum/sprite_accessory/hair/facial, GLOB.facial_hairstyles_list, GLOB.facial_hairstyles_male_list, GLOB.facial_hairstyles_female_list)
-		L[DNA_FACIAL_HAIRSTYLE_BLOCK] = construct_block(GLOB.facial_hairstyles_list.Find(H.facial_hairstyle), GLOB.facial_hairstyles_list.len)
-		L[DNA_FACIAL_HAIR_COLOR_BLOCK] = sanitize_hexcolor(H.facial_hair_color)
+		L[DNA_FACIAL_HAIRSTYLE_BLOCK] = construct_block(GLOB.facial_hairstyles_list.Find(initial(facial_accessory?.name)), GLOB.facial_hairstyles_list.len)
+		L[DNA_FACIAL_HAIR_COLOR_BLOCK] = sanitize_hexcolor(H.get_facial_hair_color())
 		L[DNA_SKIN_TONE_BLOCK] = H.skin_tone
-		L[DNA_EYE_COLOR_BLOCK] = H.eye_color
+		L[DNA_EYE_COLOR_BLOCK] = H.get_eye_color()
 
 	for(var/i=1, i<=DNA_UNI_IDENTITY_BLOCKS, i++)
 		if(L[i])
@@ -93,15 +97,19 @@
 	if(!blocknumber || !ishuman(holder))
 		return
 	var/mob/living/carbon/human/H = holder
+	var/datum/bodypart_feature/hair/feature = H.get_bodypart_feature_of_slot(BODYPART_FEATURE_HAIR)
+	var/datum/bodypart_feature/hair/facial = H.get_bodypart_feature_of_slot(BODYPART_FEATURE_FACIAL_HAIR)
+	var/datum/sprite_accessory/facial_accessory = facial?.accessory_type
+	var/datum/sprite_accessory/hair_accessory = feature?.accessory_colors
 	switch(blocknumber)
 		if(DNA_HAIR_COLOR_BLOCK)
-			setblock(uni_identity, blocknumber, sanitize_hexcolor(H.hair_color))
+			setblock(uni_identity, blocknumber, sanitize_hexcolor(H.get_hair_color()))
 		if(DNA_FACIAL_HAIR_COLOR_BLOCK)
-			setblock(uni_identity, blocknumber, sanitize_hexcolor(H.facial_hair_color))
+			setblock(uni_identity, blocknumber, sanitize_hexcolor(H.get_facial_hair_color()))
 		if(DNA_SKIN_TONE_BLOCK)
 			setblock(uni_identity, blocknumber, sanitize_hexcolor(H.skin_tone))
 		if(DNA_EYE_COLOR_BLOCK)
-			setblock(uni_identity, blocknumber, sanitize_hexcolor(H.eye_color))
+			setblock(uni_identity, blocknumber, sanitize_hexcolor(H.get_eye_color()))
 		if(DNA_GENDER_BLOCK)
 			switch(H.gender)
 				if(MALE)
@@ -111,9 +119,9 @@
 				else
 					setblock(uni_identity, blocknumber, construct_block(G_PLURAL, 3))
 		if(DNA_FACIAL_HAIRSTYLE_BLOCK)
-			setblock(uni_identity, blocknumber, construct_block(GLOB.facial_hairstyles_list.Find(H.facial_hairstyle), GLOB.facial_hairstyles_list.len))
+			setblock(uni_identity, blocknumber, construct_block(GLOB.facial_hairstyles_list.Find(initial(facial_accessory?.name)), GLOB.facial_hairstyles_list.len))
 		if(DNA_HAIRSTYLE_BLOCK)
-			setblock(uni_identity, blocknumber, construct_block(GLOB.hairstyles_list.Find(H.hairstyle), GLOB.hairstyles_list.len))
+			setblock(uni_identity, blocknumber, construct_block(GLOB.hairstyles_list.Find(initial(hair_accessory?.name)), GLOB.hairstyles_list.len))
 
 
 /datum/dna/proc/is_same_as(datum/dna/D)
@@ -175,7 +183,6 @@
 	..()
 	if(icon_update)
 		update_body()
-		update_hair()
 		update_body_parts(TRUE)
 
 /mob/proc/has_dna()
@@ -208,7 +215,6 @@
 
 	if(mrace || newfeatures || ui)
 		update_body()
-		update_hair()
 		update_body_parts()
 
 /mob/living/carbon/proc/create_dna()
@@ -234,7 +240,6 @@
 	..()
 	if(icon_update)
 		update_body()
-		update_hair()
 		if(mutcolor_update)
 			update_body_parts()
 

@@ -63,7 +63,7 @@
 								"<span class='notice'>I take a moment to apply \the [src]. Perfect!</span>")
 			H.lip_style = "lipstick"
 			H.lip_color = colour
-			H.update_body()
+			H.update_body_parts()
 		else
 			user.visible_message("<span class='warning'>[user] begins to do [H]'s lips with \the [src].</span>", \
 								"<span class='notice'>I begin to apply \the [src] on [H]'s lips...</span>")
@@ -72,7 +72,7 @@
 									"<span class='notice'>I apply \the [src] on [H]'s lips.</span>")
 				H.lip_style = "lipstick"
 				H.lip_color = colour
-				H.update_body()
+				H.update_body_parts()
 	else
 		to_chat(user, "<span class='warning'>Where are the lips on that?</span>")
 
@@ -89,7 +89,7 @@
 			if(H == user)
 				to_chat(user, "<span class='notice'>I wipe off the lipstick with [src].</span>")
 				H.lip_style = null
-				H.update_body()
+				H.update_body_parts()
 			else
 				user.visible_message("<span class='warning'>[user] begins to wipe [H]'s lipstick off with \the [src].</span>", \
 									"<span class='notice'>I begin to wipe off [H]'s lipstick...</span>")
@@ -97,7 +97,7 @@
 					user.visible_message("<span class='notice'>[user] wipes [H]'s lipstick off with \the [src].</span>", \
 										"<span class='notice'>I wipe off [H]'s lipstick.</span>")
 					H.lip_style = null
-					H.update_body()
+					H.update_body_parts()
 	else
 		..()
 
@@ -116,12 +116,15 @@
 	return BRUTELOSS
 
 /obj/item/razor/proc/shave(mob/living/carbon/human/H, location = BODY_ZONE_PRECISE_MOUTH)
-	if(location == BODY_ZONE_PRECISE_MOUTH)
-		H.facial_hairstyle = "Shaved"
-	else
-		H.hairstyle = "Skinhead"
 
-	H.update_hair()
+	if(location == BODY_ZONE_PRECISE_MOUTH)
+		var/datum/bodypart_feature/hair/facial = H.get_bodypart_feature_of_slot(BODYPART_FEATURE_FACIAL_HAIR)
+		facial?.accessory_type = /datum/sprite_accessory/hair/facial/shaved
+	else
+		var/datum/bodypart_feature/hair/feature = H.get_bodypart_feature_of_slot(BODYPART_FEATURE_HAIR)
+		feature?.accessory_type = /datum/sprite_accessory/hair/head/bald
+
+	H.update_body_parts()
 	playsound(loc, 'sound/blank.ogg', 20, TRUE)
 
 
@@ -134,6 +137,7 @@
 			return
 		if(location == BODY_ZONE_PRECISE_MOUTH)
 			if(user.used_intent.type == INTENT_HELP)
+				var/datum/bodypart_feature/hair/facial = H.get_bodypart_feature_of_slot(BODYPART_FEATURE_FACIAL_HAIR)
 				if(H.gender == MALE)
 					if (H == user)
 						to_chat(user, "<span class='warning'>I need a mirror to properly style your own facial hair!</span>")
@@ -147,20 +151,21 @@
 					user.visible_message("<span class='notice'>[user] tries to change [H]'s facial hairstyle using [src].</span>", "<span class='notice'>I try to change [H]'s facial hairstyle using [src].</span>")
 					if(new_style && do_after(user, 6 SECONDS, H))
 						user.visible_message("<span class='notice'>[user] successfully changes [H]'s facial hairstyle using [src].</span>", "<span class='notice'>I successfully change [H]'s facial hairstyle using [src].</span>")
-						H.facial_hairstyle = new_style
-						H.update_hair()
+						facial?.accessory_type = GLOB.hairstyles_list[new_style]
+						H.update_body_parts()
 						return
 				else
 					return
 
 			else
+				var/datum/bodypart_feature/hair/facial = H.get_bodypart_feature_of_slot(BODYPART_FEATURE_FACIAL_HAIR)
 				if(!(FACEHAIR in H.dna.species.species_traits))
 					to_chat(user, "<span class='warning'>There is no facial hair to shave!</span>")
 					return
 				if(!get_location_accessible(H, location))
 					to_chat(user, "<span class='warning'>The mask is in the way!</span>")
 					return
-				if(H.facial_hairstyle == "Shaved")
+				if(facial?.accessory_type == /datum/sprite_accessory/hair/head/shaved)
 					to_chat(user, "<span class='warning'>Already clean-shaven!</span>")
 					return
 
@@ -181,6 +186,7 @@
 
 		else if(location == BODY_ZONE_HEAD)
 			if(user.used_intent.type == INTENT_HELP)
+				var/datum/bodypart_feature/hair/feature = H.get_bodypart_feature_of_slot(BODYPART_FEATURE_HAIR)
 				if (H == user)
 					to_chat(user, "<span class='warning'>I need a mirror to properly style your own hair!</span>")
 					return
@@ -193,18 +199,19 @@
 				user.visible_message("<span class='notice'>[user] tries to change [H]'s hairstyle using [src].</span>", "<span class='notice'>I try to change [H]'s hairstyle using [src].</span>")
 				if(new_style && do_after(user, 6 SECONDS, H))
 					user.visible_message("<span class='notice'>[user] successfully changes [H]'s hairstyle using [src].</span>", "<span class='notice'>I successfully change [H]'s hairstyle using [src].</span>")
-					H.hairstyle = new_style
-					H.update_hair()
+					feature?.accessory_type = GLOB.hairstyles_list[new_style]
+					H.update_body_parts()
 					return
 
 			else
+				var/datum/bodypart_feature/hair/feature = H.get_bodypart_feature_of_slot(BODYPART_FEATURE_HAIR)
 				if(!(HAIR in H.dna.species.species_traits))
 					to_chat(user, "<span class='warning'>There is no hair to shave!</span>")
 					return
 				if(!get_location_accessible(H, location))
 					to_chat(user, "<span class='warning'>The headgear is in the way!</span>")
 					return
-				if(H.hairstyle == "Bald" || H.hairstyle == "Balding Hair" || H.hairstyle == "Skinhead")
+				if(feature?.accessory_type == /datum/sprite_accessory/hair/head/bald)
 					to_chat(user, "<span class='warning'>There is not enough hair left to shave!</span>")
 					return
 

@@ -291,16 +291,6 @@
 			else
 				priority_announce("The NAP has been revoked.", null, 'sound/blank.ogg')
 
-		if("dorf")
-			if(!check_rights(R_FUN))
-				return
-			SSblackbox.record_feedback("nested tally", "admin_secrets_fun_used", 1, list("Dwarf Beards"))
-			for(var/i in GLOB.human_list)
-				var/mob/living/carbon/human/B = i
-				B.facial_hairstyle = "Dward Beard"
-				B.update_hair()
-			message_admins("[key_name_admin(usr)] activated dorf mode")
-
 	if(E)
 		E.processing = FALSE
 		if(E.announceWhen>0)

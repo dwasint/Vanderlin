@@ -14,7 +14,7 @@ Most of the time we only wish to update one overlay:
 In these cases, instead of updating every overlay using the old behaviour (regenerate_icons), we instead call
 the appropriate update_X proc.
 	e.g. - update_l_hand()
-	e.g.2 - update_hair()
+	e.g.2 - update_body()
 
 Note: Recent changes by aranclanos+carn:
 	update_icons() no longer needs to be called.
@@ -42,7 +42,7 @@ There are several things that need to be remembered:
 		update_body()				//Handles updating your mob's body layer and mutant bodyparts
 									as well as sprite-accessories that didn't really fit elsewhere (underwear, undershirts, socks, lips, eyes)
 									//NOTE: update_mutantrace() is now merged into this!
-		update_hair()				//Handles updating your hair overlay (used to be update_face, but mouth and
+		update_body()				//Handles updating your hair overlay (used to be update_face, but mouth and
 									eyes were merged into update_body())
 
 
@@ -57,10 +57,6 @@ There are several things that need to be remembered:
 		if(affecting.body_part == limbl)
 			jazz += 2
 	return jazz
-
-//HAIR OVERLAY
-/mob/living/carbon/human/update_hair()
-	return
 
 
 /mob/living/carbon/human/update_body()
@@ -129,7 +125,7 @@ There are several things that need to be remembered:
 		if(gender == FEMALE || dna.species.use_f)
 			g = BP.offset_f
 		if(BP.body_zone == BODY_ZONE_HEAD)
-			update_hair()
+			update_body()
 		var/bleed_checker = FALSE
 		var/list/wound_overlays
 		if(!BP.skeletonized)
@@ -265,19 +261,13 @@ There are several things that need to be remembered:
 			if(dna.species.regenerate_icons(src))
 				return
 		update_body()
-		update_hair()
-//		update_inv_w_uniform()
 		update_inv_wear_id()
 		update_inv_gloves()
-//		update_inv_glasses()
-//		update_inv_ears()
 		update_inv_shoes()
-//		update_inv_s_store()
 		update_inv_wear_mask()
 		update_inv_head()
 		update_inv_belt()
 		update_inv_back()
-//		update_inv_wear_suit()
 		update_inv_armor()
 		update_inv_pockets()
 		update_inv_neck()
@@ -340,7 +330,7 @@ There are several things that need to be remembered:
 			overlays_standing[NECK_LAYER] = neck_overlay
 
 		update_hud_neck(wear_neck)
-	update_hair()
+	update_body()
 	apply_overlay(NECK_LAYER)
 
 /mob/living/carbon/human/update_inv_wear_id()
@@ -615,7 +605,7 @@ There are several things that need to be remembered:
 			overlays_standing[HEAD_LAYER] = head_overlay
 		apply_overlay(HEAD_LAYER)
 
-	update_hair() //hoodies
+	update_body() //hoodies
 
 /mob/living/carbon/human/update_inv_belt()
 	remove_overlay(BELT_LAYER)
@@ -1170,7 +1160,7 @@ There are several things that need to be remembered:
 	if(gender == FEMALE && dna?.species)
 		update_body_parts(redraw = TRUE)
 		dna.species.handle_body(src)
-	update_hair()
+	update_body()
 
 	apply_overlay(SHIRT_LAYER)
 	apply_overlay(SHIRTSLEEVE_LAYER)
@@ -1247,7 +1237,7 @@ There are several things that need to be remembered:
 	if(gender == FEMALE && dna?.species)
 		update_body_parts(redraw = TRUE)
 		dna.species.handle_body(src)
-	update_hair()
+	update_body()
 	update_inv_shirt() // fix boob
 
 	apply_overlay(ARMOR_LAYER)
@@ -1320,7 +1310,7 @@ There are several things that need to be remembered:
 							S.pixel_y += offsets[OFFSET_PANTS_F][2]
 				overlays_standing[LEGSLEEVE_LAYER] = sleeves
 
-	update_hair()
+	update_body()
 
 	apply_overlay(PANTS_LAYER)
 	apply_overlay(LEGSLEEVE_LAYER)
@@ -1738,12 +1728,15 @@ generate/load female uniform sprites matching all previously decided variables
 		if(BP.dmg_overlay_type)
 			. += "-[BP.dmg_overlay_type]"
 
+		for(var/datum/bodypart_feature/feature in BP.bodypart_features)
+			. += "-[feature.accessory_type]-[feature.accessory_colors]"
+
 	if(HAS_TRAIT(src, TRAIT_HUSK))
 		. += "-husk"
 
 /mob/living/carbon/human/load_limb_from_cache()
 	..()
-	update_hair()
+	update_body()
 
 
 

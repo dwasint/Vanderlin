@@ -18,11 +18,6 @@
 	H.underwear = random_underwear(H.gender)
 //	H.underwear_color = random_short_color()
 	H.skin_tone = random_skin_tone()
-	H.hairstyle = random_hairstyle(H.gender)
-	H.facial_hairstyle = random_facial_hairstyle(H.gender)
-	H.hair_color = random_haircolor()
-	H.facial_hair_color = H.hair_color
-	H.eye_color = random_eye_color()
 	H.dna.human_blood_type = random_human_blood_type()
 
 	// Mutant randomizing, doesn't affect the mob appearance unless it's the specific mutant.
@@ -31,5 +26,4 @@
 	H.dna.features["body_markings"] = pick(GLOB.body_markings_list)
 
 	H.update_body()
-	H.update_hair()
 	H.update_body_parts()
