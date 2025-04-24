@@ -29,13 +29,16 @@
 
 	return ..()
 
-/datum/dna/proc/transfer_identity(mob/living/carbon/destination, transfer_SE = 0)
+/datum/dna/proc/transfer_identity(mob/living/carbon/destination, transfer_SE = 0, datum/preferences/prefs)
 	if(!istype(destination))
 		return
 	destination.dna.unique_enzymes = unique_enzymes
 	destination.dna.uni_identity = uni_identity
 	destination.dna.human_blood_type = human_blood_type
-	destination.set_species(species.type, icon_update=0)
+	if(prefs)
+		destination.set_species(species.type, icon_update=0, prefs)
+	else
+		destination.set_species(species.type, icon_update=0, holder.client?.prefs)
 	destination.dna.body_markings = deepCopyList(body_markings)
 	destination.dna.features = features.Copy()
 	destination.dna.real_name = real_name
