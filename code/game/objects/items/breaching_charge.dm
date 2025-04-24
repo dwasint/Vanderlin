@@ -5,6 +5,8 @@
 	icon_state = "breach_charge"
 	icon = 'icons/roguetown/items/misc.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
+	grid_height = 64
+	grid_width = 32
 	var/detonation_time = 0 // When the charge should explode.
 	var/deployed = FALSE // Is the charge placed?
 	var/ignited = FALSE // Is the fuse lit?
@@ -21,7 +23,7 @@
 		return
 
 	// Only works on destructable wall turfs.
-	if((!iswallturf(bomb_target)  && !ismineralturf(target_turf) || isindestructiblewall(bomb_target))
+	if((!iswallturf(bomb_target)  && !ismineralturf(bomb_target) || isindestructiblewall(bomb_target))
 		to_chat(user, span_warning("I can only use this on destructable walls!"))
 		return
 
