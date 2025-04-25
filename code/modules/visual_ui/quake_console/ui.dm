@@ -164,7 +164,7 @@
 			continue
 		listed_command.execute(output, arg_list)
 		if(listed_command.notify_admins)
-			var/string = "[get_user()] ran command [listed_command.command_key] with args:"
+			var/string = "[key_name(get_user())] ran command [listed_command.command_key] with args:"
 			for(var/arg in arg_list)
 				string += arg
 			log_admin(string)
