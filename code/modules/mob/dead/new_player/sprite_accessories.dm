@@ -49,6 +49,7 @@
 	return L
 
 /datum/sprite_accessory
+	var/dynamic_file	//if we have dynamic culling this is the location
 	var/icon			//the icon file the accessory is located in
 	var/icon_state		//the icon_state of the accessory
 	var/name			//the preview name of the accessory. Even if they have different paths and say gender requirements the MUST BE UNIQUE or they wont show

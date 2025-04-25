@@ -4,6 +4,8 @@
 //////////////////////
 /datum/sprite_accessory/hair/head
 	icon = 'icons/roguetown/mob/hair.dmi'	  // default icon for all hairs
+	dynamic_file = 'icons/roguetown/mob/hair_extensions.dmi'
+	var/static/list/extensions
 
 	// please make sure they're sorted alphabetically and, where needed, categorized
 	// try to capitalize the names please~
@@ -17,6 +19,43 @@
 	// dual - nomadic, shrine
 	// aasimar - amazon, topknot, martial, forsaken
 	// tiefling - junia, performer, tribal, lover
+
+
+/// Gets the appearance of the sprite accessory as a mutable appearance for an organ on a bodypart.
+/datum/sprite_accessory/hair/head/get_icon_state(obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
+	var/dynamic_hair_suffix = ""
+
+	var/mob/living/carbon/H = bodypart.owner
+
+	if(H.head)
+		var/obj/item/I = H.head
+		if(isclothing(I))
+			var/obj/item/clothing/C = I
+			dynamic_hair_suffix = C.dynamic_hair_suffix
+
+	if(H.wear_mask)
+		var/obj/item/I = H.wear_mask
+		if(!dynamic_hair_suffix && isclothing(I)) //head > mask in terms of head hair
+			var/obj/item/clothing/C = I
+			dynamic_hair_suffix = C.dynamic_hair_suffix
+
+	if(H.wear_neck)
+		var/obj/item/I = H.wear_neck
+		if(!dynamic_hair_suffix && isclothing(I)) //head > mask in terms of head hair
+			var/obj/item/clothing/C = I
+			dynamic_hair_suffix = C.dynamic_hair_suffix
+
+	if(!extensions)
+		var/icon/hair_extensions = icon('icons/roguetown/mob/hair_extensions.dmi') //hehe
+		extensions = list()
+		for(var/s in hair_extensions.IconStates(1))
+			extensions[s] = TRUE
+		qdel(hair_extensions)
+
+	if(extensions[icon_state+dynamic_hair_suffix])
+		return "[icon_state][dynamic_hair_suffix]"
+
+	return icon_state
 
 /datum/sprite_accessory/hair/head/bald
 	name = "Bald"
