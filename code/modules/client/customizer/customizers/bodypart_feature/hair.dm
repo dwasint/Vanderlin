@@ -308,8 +308,14 @@
 
 /datum/customizer_choice/bodypart_feature/hair/head/humanoid/on_randomize_entry(datum/customizer_entry/entry, datum/preferences/prefs)
 	var/datum/customizer_entry/hair/hair_entry = entry
-	var/color = pick(HAIR_COLOR_LIST)
-	hair_entry.hair_color = color
+	var/list/hairs
+	var/new_color
+	if(prefs.age == AGE_OLD)
+		hairs = GLOB.oldhc
+	else
+		hairs = GLOB.haircolor
+	new_color = hairs[pick(hairs)]
+	hair_entry.hair_color = sanitize_hexcolor(new_color, 6, TRUE)
 
 /datum/customizer/bodypart_feature/hair/head/humanoid/bald_default
 	customizer_choices = list(/datum/customizer_choice/bodypart_feature/hair/head/humanoid/bald_default)
@@ -352,8 +358,14 @@
 
 /datum/customizer_choice/bodypart_feature/hair/facial/humanoid/on_randomize_entry(datum/customizer_entry/entry, datum/preferences/prefs)
 	var/datum/customizer_entry/hair/hair_entry = entry
-	var/color = pick(HAIR_COLOR_LIST)
-	hair_entry.hair_color = color
+	var/list/hairs
+	var/new_color
+	if(prefs.age == AGE_OLD)
+		hairs = GLOB.oldhc
+	else
+		hairs = GLOB.haircolor
+	new_color = hairs[pick(hairs)]
+	hair_entry.hair_color = sanitize_hexcolor(new_color, 6, TRUE)
 
 /datum/customizer/bodypart_feature/hair/facial/humanoid/shaved_default
 	customizer_choices = list(/datum/customizer_choice/bodypart_feature/hair/facial/humanoid/shaved_default)

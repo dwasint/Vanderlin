@@ -32,8 +32,6 @@
 		return
 	var/mob/living/carbon/human/H = user
 
-	if(!MOBTIMER_FINISHED(H, MT_MIRRORTIME, 6 MINUTES))
-		return
 
 	var/list/options = list("hairstyle", "facial hairstyle", "hair color", "skin", "detail", "eye color")
 	var/chosen = input(user, "Change what?", "VANDERLIN")  as null|anything in options

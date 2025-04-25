@@ -5,7 +5,42 @@
 	var/hair_dye_gradient = /datum/hair_gradient/none
 	var/hair_dye_color = "#FFFFFF"
 
-/datum/bodypart_feature/hair/bodypart_overlays(mutable_appearance/standing)
+	var/static/list/extensions
+
+/datum/bodypart_feature/hair/bodypart_overlays(mutable_appearance/standing, obj/item/bodypart/bodypart)
+	var/dynamic_hair_suffix = ""
+
+	var/mob/living/carbon/H = bodypart.owner
+
+	if(H.head)
+		var/obj/item/I = H.head
+		if(isclothing(I))
+			var/obj/item/clothing/C = I
+			dynamic_hair_suffix = C.dynamic_hair_suffix
+
+	if(H.wear_mask)
+		var/obj/item/I = H.wear_mask
+		if(!dynamic_hair_suffix && isclothing(I)) //head > mask in terms of head hair
+			var/obj/item/clothing/C = I
+			dynamic_hair_suffix = C.dynamic_hair_suffix
+
+	if(H.wear_neck)
+		var/obj/item/I = H.wear_neck
+		if(!dynamic_hair_suffix && isclothing(I)) //head > mask in terms of head hair
+			var/obj/item/clothing/C = I
+			dynamic_hair_suffix = C.dynamic_hair_suffix
+
+	if(!extensions)
+		var/icon/hair_extensions = icon('icons/roguetown/mob/hair_extensions.dmi') //hehe
+		extensions = list()
+		for(var/s in hair_extensions.IconStates(1))
+			extensions[s] = TRUE
+		qdel(hair_extensions)
+
+	if(extensions[standing.icon_state+dynamic_hair_suffix])
+		standing.icon_state = "[standing.icon_state][dynamic_hair_suffix]"
+		standing.icon = 'icons/roguetown/mob/hair_extensions.dmi'
+
 	add_gradient_overlay(standing, natural_gradient, natural_color)
 	add_gradient_overlay(standing, hair_dye_gradient, hair_dye_color)
 
