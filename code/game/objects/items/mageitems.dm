@@ -650,7 +650,6 @@
 	icon = 'icons/roguetown/misc/mana.dmi'
 	icon_state = "soul"
 
-	resistance_flags = INDESTRUCTIBLE
 	plane = PLANE_LEYLINES
 	invisibility = INVISIBILITY_LEYLINES
 	anchored = TRUE
@@ -667,6 +666,7 @@
 	animate(src, pixel_y = 4, time = 1 SECONDS, loop = -1, flags = ANIMATION_RELATIVE)
 	animate(pixel_y = -4, time = 1 SECONDS, flags = ANIMATION_RELATIVE)
 	QDEL_IN(src, 10 MINUTES)
+	. = ..()
 
 /obj/structure/soul/attack_hand(mob/living/user)
 	. = ..()
