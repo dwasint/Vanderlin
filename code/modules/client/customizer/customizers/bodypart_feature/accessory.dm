@@ -46,7 +46,7 @@
 /datum/customizer_choice/bodypart_feature/accessory
 	name = "Accessory"
 	feature_type = /datum/bodypart_feature/accessory
-	allows_accessory_color_customization = FALSE
+	allows_accessory_color_customization = TRUE
 	sprite_accessories = list(
 		/datum/sprite_accessory/accessories/nothing,
 		/datum/sprite_accessory/accessories/earrings/sil,
