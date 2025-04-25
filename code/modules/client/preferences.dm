@@ -216,326 +216,163 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 		load_character(default_slot) // Reloads the character slot. Prevents random features from overwriting the slot if saved.
 		slot_randomized = FALSE
 	var/list/dat = list("<center>")
-	if(tabchoice)
-		current_tab = tabchoice
-	if(tabchoice == 4)
-		current_tab = 0
-
 	dat += "</center>"
 
-	var/used_title
-	switch(current_tab)
-		if (0) // Character Settings#
-			used_title = "Character Sheet"
-
-			// Top-level menu table
-			dat += "<table style='width: 100%; line-height: 20px;'>"
-			// FIRST ROW
-			dat += "<tr>"
-			dat += "<td style='width:33%;text-align:left'>"
-			dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=changeslot;'>Change Character</a>"
-			dat += "</td>"
+	// Top-level menu table
+	dat += "<table style='width: 100%; line-height: 20px;'>"
+	// FIRST ROW
+	dat += "<tr>"
+	dat += "<td style='width:33%;text-align:left'>"
+	dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=changeslot;'>Change Character</a>"
+	dat += "</td>"
 
 
-			dat += "<td style='width:33%;text-align:center'>"
-			if(SStriumphs.triumph_buys_enabled)
-				dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=triumph_buy_menu'>Triumph Buy</a>"
-			dat += "</td>"
+	dat += "<td style='width:33%;text-align:center'>"
+	if(SStriumphs.triumph_buys_enabled)
+		dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=triumph_buy_menu'>Triumph Buy</a>"
+	dat += "</td>"
 
-			dat += "<td style='width:33%;text-align:right'>"
-			dat += "<a href='?_src_=prefs;preference=keybinds;task=menu'>Keybinds</a>"
-			dat += "</td>"
-			dat += "</tr>"
-
-
-			// NEXT ROW
-			dat += "<tr>"
-			dat += "<td style='width:33%;text-align:left'>"
-			dat += "</td>"
-
-			dat += "<td style='width:33%;text-align:center'>"
-			dat += "<a href='?_src_=prefs;preference=job;task=menu'>Class Selection</a>"
-			dat += "</td>"
-
-			dat += "<td style='width:33%;text-align:right'>"
-
-			dat += "</td>"
-			dat += "</tr>"
-
-			// ANOTHA ROW
-			dat += "<tr style='padding-top: 0px;padding-bottom:0px'>"
-			dat += "<td style='width:33%;text-align:left'>"
-			dat += "</td>"
-
-			dat += "<td style='width:33%;text-align:center'>"
-			dat += "<a href='?_src_=prefs;preference=antag;task=menu'>Villain Selection</a>"
-			dat += "</td>"
-
-			dat += "<td style='width:33%;text-align:right'>"
-			dat += "</td>"
-			dat += "</tr>"
-
-			// ANOTHER ROW HOLY SHIT WE FINALLY A GOD DAMN GRID NOW! WHOA!
-			dat += "<tr style='padding-top: 0px;padding-bottom:0px'>"
-			dat += "<td style='width:33%; text-align:left'>"
-			dat += "<a href='?_src_=prefs;preference=playerquality;task=menu'><b>PQ:</b></a> [get_playerquality(user.ckey, text = TRUE)]"
-			dat += "</td>"
-
-			dat += "<td style='width:33%;text-align:center'>"
-			dat += "<a href='?_src_=prefs;preference=triumphs;task=menu'><b>TRIUMPHS:</b></a> [user.get_triumphs() ? "\Roman [user.get_triumphs()]" : "None"]"
-			dat += "</td>"
-
-			dat += "<td style='width:33%;text-align:right'>"
-			dat += "</td>"
-
-			dat += "</table>"
-
-			// Encapsulating table
-			dat += "<table width = '100%'>"
-			// Only one Row
-			dat += "<tr>"
-			// Leftmost Column, 40% width
-			dat += "<td width=40% valign='top'>"
-
-			//-----------START OF IDENT TABLE-----------//
-			dat += "<h2>Identity</h2>"
-			dat += "<table width='100%'><tr><td width='75%' valign='top'>"
-			//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_NAME]'>Always Random Name: [(randomise[RANDOM_NAME]) ? "Yes" : "No"]</a>"
-			//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_NAME_ANTAG]'>When Antagonist: [(randomise[RANDOM_NAME_ANTAG]) ? "Yes" : "No"]</a>"
-			dat += "<b>Name:</b> "
-			if(check_nameban(user.ckey))
-				dat += "<a href='?_src_=prefs;preference=name;task=input'>NAMEBANNED</a><BR>"
-			else
-				dat += "<a href='?_src_=prefs;preference=name;task=input'>[real_name]</a> <a href='?_src_=prefs;preference=name;task=random'>\[R\]</a>"
-
-			dat += "<BR>"
-			dat += "<b>Species:</b> <a href='?_src_=prefs;preference=species;task=input'>[pref_species.name]</a>[spec_check(user) ? "" : " (!)"]<BR>"
-			//dat += "<a href='?_src_=prefs;preference=species;task=random'>Random Species</A> "
-			//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_SPECIES]'>Always Random Species: [(randomise[RANDOM_SPECIES]) ? "Yes" : "No"]</A><br>"
-
-			if(!(AGENDER in pref_species.species_traits))
-				var/dispGender
-				if(gender == MALE)
-					dispGender = "Man"
-				else if(gender == FEMALE)
-					dispGender = "Woman"
-				else
-					dispGender = "Other"
-				dat += "<b>Sex:</b> <a href='?_src_=prefs;preference=gender'>[dispGender]</a><BR>"
-				if(randomise[RANDOM_BODY] || randomise[RANDOM_BODY_ANTAG]) //doesn't work unless random body
-					dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_GENDER]'>Always Random Gender: [(randomise[RANDOM_GENDER]) ? "Yes" : "No"]</A>"
-					dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_GENDER_ANTAG]'>When Antagonist: [(randomise[RANDOM_GENDER_ANTAG]) ? "Yes" : "No"]</A>"
-
-			if(AGE_IMMORTAL in pref_species.possible_ages)
-				dat += "<b>Age:</b> <a href='?_src_=prefs;preference=age;task=input'>[AGE_IMMORTAL]</a><BR>"
-			else
-				dat += "<b>Age:</b> <a href='?_src_=prefs;preference=age;task=input'>[age]</a><BR>"
-
-			//dat += "<br><b>Age:</b> <a href='?_src_=prefs;preference=age;task=input'>[age]</a>"
-			//if(randomise[RANDOM_BODY] || randomise[RANDOM_BODY_ANTAG]) //doesn't work unless random body
-			//	dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_AGE]'>Always Random Age: [(randomise[RANDOM_AGE]) ? "Yes" : "No"]</A>"
-			//	dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_AGE_ANTAG]'>When Antagonist: [(randomise[RANDOM_AGE_ANTAG]) ? "Yes" : "No"]</A>"
-
-			//dat += "<b><a href='?_src_=prefs;preference=name;task=random'>Random Name</A></b><BR>"
-			dat += "<b>Flaw:</b> <a href='?_src_=prefs;preference=charflaw;task=input'>[charflaw]</a><BR>"
-			var/datum/faith/selected_faith = GLOB.faithlist[selected_patron?.associated_faith]
-			dat += "<b>Faith:</b> <a href='?_src_=prefs;preference=faith;task=input'>[selected_faith?.name || "FUCK!"]</a><BR>"
-			dat += "<b>Patron:</b> <a href='?_src_=prefs;preference=patron;task=input'>[selected_patron?.name || "FUCK!"]</a><BR>"
-			dat += "<b>Family:</b> <a href='?_src_=prefs;preference=family'>[family ? family : "None"]</a><BR>"
-			if(family == FAMILY_FULL || family == FAMILY_NEWLYWED)
-				dat += "<b>Preferred Spouse:</b> <a href='?_src_=prefs;preference=setspouse'>[setspouse ? setspouse : "None"]</a><BR>"
-			dat += "<b>Dominance:</b> <a href='?_src_=prefs;preference=domhand'>[domhand == 1 ? "Left-handed" : "Right-handed"]</a><BR>"
-			dat += "</tr></table>"
-			//-----------END OF IDENT TABLE-----------//
+	dat += "<td style='width:33%;text-align:right'>"
+	dat += "<a href='?_src_=prefs;preference=keybinds;task=menu'>Keybinds</a>"
+	dat += "</td>"
+	dat += "</tr>"
 
 
-			// Middle dummy Column, 20% width
-			dat += "</td>"
-			dat += "<td width=20% valign='top'>"
-			// Rightmost column, 40% width
-			dat += "<td width=40% valign='top'>"
-			dat += "<h2>Body</h2>"
+	// NEXT ROW
+	dat += "<tr>"
+	dat += "<td style='width:33%;text-align:left'>"
+	dat += "</td>"
 
-			//-----------START OF BODY TABLE-----------
-			dat += "<table width='100%'><tr><td width='1%' valign='top'>"
+	dat += "<td style='width:33%;text-align:center'>"
+	dat += "<a href='?_src_=prefs;preference=job;task=menu'>Class Selection</a>"
+	dat += "</td>"
 
-			var/use_skintones = pref_species.use_skintones
-			if(use_skintones)
+	dat += "<td style='width:33%;text-align:right'>"
 
-				//dat += APPEARANCE_CATEGORY_COLUMN
-				var/skin_tone_wording = pref_species.skin_tone_wording // Both the skintone names and the word swap here is useless fluff
+	dat += "</td>"
+	dat += "</tr>"
 
-				dat += "<b>[skin_tone_wording]: </b><a href='?_src_=prefs;preference=s_tone;task=input'>Change </a>"
-				//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_SKIN_TONE]'>[(randomise[RANDOM_SKIN_TONE]) ? "Lock" : "Unlock"]</A>"
-				dat += "<br>"
+	// ANOTHA ROW
+	dat += "<tr style='padding-top: 0px;padding-bottom:0px'>"
+	dat += "<td style='width:33%;text-align:left'>"
+	dat += "</td>"
 
-			if((MUTCOLORS in pref_species.species_traits) || (MUTCOLORS_PARTSONLY in pref_species.species_traits))
-				dat += "<h3>Mutant color</h3>"
-				dat += "<span style='border: 1px solid #161616; background-color: #[features["mcolor"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color;task=input'>Change</a><BR>"
+	dat += "<td style='width:33%;text-align:center'>"
+	dat += "<a href='?_src_=prefs;preference=antag;task=menu'>Villain Selection</a>"
+	dat += "</td>"
+
+	dat += "<td style='width:33%;text-align:right'>"
+	dat += "</td>"
+	dat += "</tr>"
+
+	// ANOTHER ROW HOLY SHIT WE FINALLY A GOD DAMN GRID NOW! WHOA!
+	dat += "<tr style='padding-top: 0px;padding-bottom:0px'>"
+	dat += "<td style='width:33%; text-align:left'>"
+	dat += "<a href='?_src_=prefs;preference=playerquality;task=menu'><b>PQ:</b></a> [get_playerquality(user.ckey, text = TRUE)]"
+	dat += "</td>"
+
+	dat += "<td style='width:33%;text-align:center'>"
+	dat += "<a href='?_src_=prefs;preference=triumphs;task=menu'><b>TRIUMPHS:</b></a> [user.get_triumphs() ? "\Roman [user.get_triumphs()]" : "None"]"
+	dat += "</td>"
+
+	dat += "<td style='width:33%;text-align:right'>"
+	dat += "</td>"
+
+	dat += "</table>"
+
+	// Encapsulating table
+	dat += "<table width = '100%'>"
+	// Only one Row
+	dat += "<tr>"
+	// Leftmost Column, 40% width
+	dat += "<td width=40% valign='top'>"
+
+	//-----------START OF IDENT TABLE-----------//
+	dat += "<h2>Identity</h2>"
+	dat += "<table width='100%'><tr><td width='75%' valign='top'>"
+	dat += "<b>Name:</b> "
+	if(check_nameban(user.ckey))
+		dat += "<a href='?_src_=prefs;preference=name;task=input'>NAMEBANNED</a><BR>"
+	else
+		dat += "<a href='?_src_=prefs;preference=name;task=input'>[real_name]</a> <a href='?_src_=prefs;preference=name;task=random'>\[R\]</a>"
+
+	dat += "<BR>"
+	dat += "<b>Species:</b> <a href='?_src_=prefs;preference=species;task=input'>[pref_species.name]</a>[spec_check(user) ? "" : " (!)"]<BR>"
+
+	if(!(AGENDER in pref_species.species_traits))
+		var/dispGender
+		if(gender == MALE)
+			dispGender = "Man"
+		else if(gender == FEMALE)
+			dispGender = "Woman"
+		else
+			dispGender = "Other"
+		dat += "<b>Sex:</b> <a href='?_src_=prefs;preference=gender'>[dispGender]</a><BR>"
+		if(randomise[RANDOM_BODY] || randomise[RANDOM_BODY_ANTAG]) //doesn't work unless random body
+			dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_GENDER]'>Always Random Gender: [(randomise[RANDOM_GENDER]) ? "Yes" : "No"]</A>"
+			dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_GENDER_ANTAG]'>When Antagonist: [(randomise[RANDOM_GENDER_ANTAG]) ? "Yes" : "No"]</A>"
+
+	if(AGE_IMMORTAL in pref_species.possible_ages)
+		dat += "<b>Age:</b> <a href='?_src_=prefs;preference=age;task=input'>[AGE_IMMORTAL]</a><BR>"
+	else
+		dat += "<b>Age:</b> <a href='?_src_=prefs;preference=age;task=input'>[age]</a><BR>"
+
+	dat += "<b>Flaw:</b> <a href='?_src_=prefs;preference=charflaw;task=input'>[charflaw]</a><BR>"
+	var/datum/faith/selected_faith = GLOB.faithlist[selected_patron?.associated_faith]
+	dat += "<b>Faith:</b> <a href='?_src_=prefs;preference=faith;task=input'>[selected_faith?.name || "FUCK!"]</a><BR>"
+	dat += "<b>Patron:</b> <a href='?_src_=prefs;preference=patron;task=input'>[selected_patron?.name || "FUCK!"]</a><BR>"
+	dat += "<b>Family:</b> <a href='?_src_=prefs;preference=family'>[family ? family : "None"]</a><BR>"
+	if(family == FAMILY_FULL || family == FAMILY_NEWLYWED)
+		dat += "<b>Preferred Spouse:</b> <a href='?_src_=prefs;preference=setspouse'>[setspouse ? setspouse : "None"]</a><BR>"
+	dat += "<b>Dominance:</b> <a href='?_src_=prefs;preference=domhand'>[domhand == 1 ? "Left-handed" : "Right-handed"]</a><BR>"
+	dat += "</tr></table>"
+	//-----------END OF IDENT TABLE-----------//
 
 
-			dat += "<b>Voice Color: </b><a href='?_src_=prefs;preference=voice;task=input'>Change</a>"
-			dat += "<br><b>Accent:</b> <a href='?_src_=prefs;preference=selected_accent;task=input'>[selected_accent]</a>"
-			dat += "<br>"
-			dat += "<br><b>Features:</b> <a href='?_src_=prefs;preference=customizers;task=menu'>Change</a>"
-			if(length(pref_species.descriptor_choices))
-				dat += "<br><b>Descriptors:</b> <a href='?_src_=prefs;preference=descriptors;task=menu'>Change</a>"
-				dat += "<br>"
+	// Middle dummy Column, 20% width
+	dat += "</td>"
+	dat += "<td width=20% valign='top'>"
+	// Rightmost column, 40% width
+	dat += "<td width=40% valign='top'>"
+	dat += "<h2>Body</h2>"
 
-			dat += "<br><b>Headshot:</b> <a href='?_src_=prefs;preference=headshot;task=input'>Change</a>"
-			if(headshot_link != null)
-				dat += "<br><img src='[headshot_link]' width='100px' height='100px'>"
-			dat += "<br><b>Flavortext:</b> <a href='?_src_=prefs;preference=flavortext;task=input'>Change</a>"
-			dat += "<br></td>"
+	//-----------START OF BODY TABLE-----------
+	dat += "<table width='100%'><tr><td width='1%' valign='top'>"
 
-			dat += "</tr></table>"
-			//-----------END OF BODY TABLE-----------//
-			dat += "</td>"
-			dat += "</tr>"
-			dat += "</table>"
+	var/use_skintones = pref_species.use_skintones
+	if(use_skintones)
 
-		if (1) // Game Preferences
-			used_title = "Options"
-			dat += "<table><tr><td width='340px' height='300px' valign='top'>"
-			dat += "<h2>General Settings</h2>"
-			dat += "<b>FPS:</b> <a href='?_src_=prefs;preference=clientfps;task=input'>[clientfps]</a><br>"
-			dat += "</td><td width='300px' height='300px' valign='top'>"
+		//dat += APPEARANCE_CATEGORY_COLUMN
+		var/skin_tone_wording = pref_species.skin_tone_wording // Both the skintone names and the word swap here is useless fluff
 
-			dat += "<h2>Special Role Settings</h2>"
+		dat += "<b>[skin_tone_wording]: </b><a href='?_src_=prefs;preference=s_tone;task=input'>Change </a>"
+		//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_SKIN_TONE]'>[(randomise[RANDOM_SKIN_TONE]) ? "Lock" : "Unlock"]</A>"
+		dat += "<br>"
 
-			if(is_total_antag_banned(user.ckey))
-				dat += "<font color=red><b>I am banned from antagonist roles.</b></font><br>"
-				src.be_special = list()
+	if((MUTCOLORS in pref_species.species_traits) || (MUTCOLORS_PARTSONLY in pref_species.species_traits))
+		dat += "<h3>Mutant color</h3>"
+		dat += "<span style='border: 1px solid #161616; background-color: #[features["mcolor"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color;task=input'>Change</a><BR>"
 
 
-			for (var/i in GLOB.special_roles_rogue)
-				if(is_antag_banned(user.ckey, i))
-					dat += "<b>[capitalize(i)]:</b> <a href='?_src_=prefs;bancheck=[i]'>BANNED</a><br>"
-				else
-					var/days_remaining = null
-					if(ispath(GLOB.special_roles_rogue[i]) && CONFIG_GET(flag/use_age_restriction_for_jobs)) //If it's a game mode antag, check if the player meets the minimum age
-						days_remaining = get_remaining_days(user.client)
+	dat += "<b>Voice Color: </b><a href='?_src_=prefs;preference=voice;task=input'>Change</a>"
+	dat += "<br><b>Accent:</b> <a href='?_src_=prefs;preference=selected_accent;task=input'>[selected_accent]</a>"
+	dat += "<br>"
+	dat += "<br><b>Features:</b> <a href='?_src_=prefs;preference=customizers;task=menu'>Change</a>"
+	if(length(pref_species.descriptor_choices))
+		dat += "<br><b>Descriptors:</b> <a href='?_src_=prefs;preference=descriptors;task=menu'>Change</a>"
+		dat += "<br>"
 
-					if(days_remaining)
-						dat += "<b>[capitalize(i)]:</b> <font color=red> \[IN [days_remaining] DAYS]</font><br>"
-					else
-						dat += "<b>[capitalize(i)]:</b> <a href='?_src_=prefs;preference=be_special;be_special_type=[i]'>[(i in be_special) ? "Enabled" : "Disabled"]</a><br>"
-			//dat += "<br>"
-			//dat += "<b>Midround Antagonist:</b> <a href='?_src_=prefs;preference=allow_midround_antag'>[(toggles & MIDROUND_ANTAG) ? "Enabled" : "Disabled"]</a><br>"
-			dat += "</td></tr></table>"
+	dat += "<br><b>Headshot:</b> <a href='?_src_=prefs;preference=headshot;task=input'>Change</a>"
+	if(headshot_link != null)
+		dat += "<br><img src='[headshot_link]' width='100px' height='100px'>"
+	dat += "<br><b>Flavortext:</b> <a href='?_src_=prefs;preference=flavortext;task=input'>Change</a>"
+	dat += "<br></td>"
 
-		if(2) //OOC Preferences
-			used_title = "ooc"
-			dat += "<table><tr><td width='340px' height='300px' valign='top'>"
-			dat += "<h2>OOC Settings</h2>"
-			dat += "<b>Window Flashing:</b> <a href='?_src_=prefs;preference=winflash'>[(windowflashing) ? "Enabled":"Disabled"]</a><br>"
-			dat += "<br>"
-			dat += "<b>Play Admin MIDIs:</b> <a href='?_src_=prefs;preference=hear_midis'>[(toggles & SOUND_MIDI) ? "Enabled":"Disabled"]</a><br>"
-			dat += "<b>Play Lobby Music:</b> <a href='?_src_=prefs;preference=lobby_music'>[(toggles & SOUND_LOBBY) ? "Enabled":"Disabled"]</a><br>"
-			dat += "<b>See Pull Requests:</b> <a href='?_src_=prefs;preference=pull_requests'>[(chat_toggles & CHAT_PULLR) ? "Enabled":"Disabled"]</a><br>"
-			dat += "<br>"
-
-
-			if(user.client)
-				if(unlock_content)
-					dat += "<b>BYOND Membership Publicity:</b> <a href='?_src_=prefs;preference=publicity'>[(toggles & MEMBER_PUBLIC) ? "Public" : "Hidden"]</a><br>"
-
-				if(unlock_content || check_rights_for(user.client, R_ADMIN))
-					dat += "<b>OOC Color:</b> <span style='border: 1px solid #161616; background-color: [ooccolor ? ooccolor : GLOB.OOC_COLOR];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=ooccolor;task=input'>Change</a><br>"
-
-			dat += "</td>"
-
-			if(user.client.holder)
-				dat +="<td width='300px' height='300px' valign='top'>"
-
-				dat += "<h2>Admin Settings</h2>"
-
-				dat += "<b>Adminhelp Sounds:</b> <a href='?_src_=prefs;preference=hear_adminhelps'>[(toggles & SOUND_ADMINHELP)?"Enabled":"Disabled"]</a><br>"
-				dat += "<b>Prayer Sounds:</b> <a href = '?_src_=prefs;preference=hear_prayers'>[(toggles & SOUND_PRAYERS)?"Enabled":"Disabled"]</a><br>"
-				dat += "<b>Announce Login:</b> <a href='?_src_=prefs;preference=announce_login'>[(toggles & ANNOUNCE_LOGIN)?"Enabled":"Disabled"]</a><br>"
-				dat += "<br>"
-				dat += "<b>Combo HUD Lighting:</b> <a href = '?_src_=prefs;preference=combohud_lighting'>[(toggles & COMBOHUD_LIGHTING)?"Full-bright":"No Change"]</a><br>"
-				dat += "<br>"
-				dat += "<b>Hide Dead Chat:</b> <a href = '?_src_=prefs;preference=toggle_dead_chat'>[(chat_toggles & CHAT_DEAD)?"Shown":"Hidden"]</a><br>"
-				dat += "<b>Hide Radio Messages:</b> <a href = '?_src_=prefs;preference=toggle_radio_chatter'>[(chat_toggles & CHAT_RADIO)?"Shown":"Hidden"]</a><br>"
-				dat += "<b>Hide Prayers:</b> <a href = '?_src_=prefs;preference=toggle_prayers'>[(chat_toggles & CHAT_PRAYER)?"Shown":"Hidden"]</a><br>"
-				if(CONFIG_GET(flag/allow_admin_asaycolor))
-					dat += "<br>"
-					dat += "<b>ASAY Color:</b> <span style='border: 1px solid #161616; background-color: [asaycolor ? asaycolor : "#FF4500"];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=asaycolor;task=input'>Change</a><br>"
-
-				//deadmin
-				dat += "<h2>Deadmin While Playing</h2>"
-				if(CONFIG_GET(flag/auto_deadmin_players))
-					dat += "<b>Always Deadmin:</b> FORCED</a><br>"
-				else
-					dat += "<b>Always Deadmin:</b> <a href = '?_src_=prefs;preference=toggle_deadmin_always'>[(toggles & DEADMIN_ALWAYS)?"Enabled":"Disabled"]</a><br>"
-					if(!(toggles & DEADMIN_ALWAYS))
-						dat += "<br>"
-						if(!CONFIG_GET(flag/auto_deadmin_antagonists))
-							dat += "<b>As Antag:</b> <a href = '?_src_=prefs;preference=toggle_deadmin_antag'>[(toggles & DEADMIN_ANTAGONIST)?"Deadmin":"Keep Admin"]</a><br>"
-						else
-							dat += "<b>As Antag:</b> FORCED<br>"
-
-						if(!CONFIG_GET(flag/auto_deadmin_heads))
-							dat += "<b>As Command:</b> <a href = '?_src_=prefs;preference=toggle_deadmin_head'>[(toggles & DEADMIN_POSITION_HEAD)?"Deadmin":"Keep Admin"]</a><br>"
-						else
-							dat += "<b>As Command:</b> FORCED<br>"
-
-						if(!CONFIG_GET(flag/auto_deadmin_security))
-							dat += "<b>As Security:</b> <a href = '?_src_=prefs;preference=toggle_deadmin_security'>[(toggles & DEADMIN_POSITION_SECURITY)?"Deadmin":"Keep Admin"]</a><br>"
-						else
-							dat += "<b>As Security:</b> FORCED<br>"
-
-						if(!CONFIG_GET(flag/auto_deadmin_silicons))
-							dat += "<b>As Silicon:</b> <a href = '?_src_=prefs;preference=toggle_deadmin_silicon'>[(toggles & DEADMIN_POSITION_SILICON)?"Deadmin":"Keep Admin"]</a><br>"
-						else
-							dat += "<b>As Silicon:</b> FORCED<br>"
-
-				dat += "</td>"
-			dat += "</tr></table>"
-
-		if(3) // Custom keybindings
-			used_title = "Keybinds"
-			// Create an inverted list of keybindings -> key
-			var/list/user_binds = list()
-			for (var/key in key_bindings)
-				for(var/kb_name in key_bindings[key])
-					user_binds[kb_name] += list(key)
-
-			var/list/kb_categories = list()
-			// Group keybinds by category
-			for (var/name in GLOB.keybindings_by_name)
-				var/datum/keybinding/kb = GLOB.keybindings_by_name[name]
-				kb_categories[kb.category] += list(kb)
-
-			dat += "<style>label { display: inline-block; width: 200px; }</style><body>"
-
-			for (var/category in kb_categories)
-				for (var/i in kb_categories[category])
-					var/datum/keybinding/kb = i
-					if(!length(user_binds[kb.name]))
-						dat += "<label>[kb.full_name]</label> <a href ='?_src_=prefs;preference=keybindings_capture;keybinding=[kb.name];old_key=["Unbound"]'>Unbound</a>"
-						//var/list/default_keys = hotkeys ? kb.hotkey_keys : kb.classic_keys
-						//if(LAZYLEN(default_keys))
-						//	dat += "| Default: [default_keys.Join(", ")]"
-						dat += "<br>"
-					else
-						var/bound_key = user_binds[kb.name][1]
-						dat += "<label>[kb.full_name]</label> <a href ='?_src_=prefs;preference=keybindings_capture;keybinding=[kb.name];old_key=[bound_key]'>[bound_key]</a>"
-						for(var/bound_key_index in 2 to length(user_binds[kb.name]))
-							bound_key = user_binds[kb.name][bound_key_index]
-							dat += " | <a href ='?_src_=prefs;preference=keybindings_capture;keybinding=[kb.name];old_key=[bound_key]'>[bound_key]</a>"
-						if(length(user_binds[kb.name]) < MAX_KEYS_PER_KEYBIND)
-							dat += "| <a href ='?_src_=prefs;preference=keybindings_capture;keybinding=[kb.name]'>Add Secondary</a>"
-						var/list/default_keys = hotkeys ? kb.classic_keys : kb.hotkey_keys
-						if(LAZYLEN(default_keys))
-							dat += "| Default: [default_keys.Join(", ")]"
-						dat += "<br>"
-
-			dat += "<br><br>"
-			dat += "<a href ='?_src_=prefs;preference=keybinds;task=keybindings_set'>\[Reset to default\]</a>"
-			dat += "</body>"
-
+	dat += "</tr></table>"
+	//-----------END OF BODY TABLE-----------//
+	dat += "</td>"
+	dat += "</tr>"
+	dat += "</table>"
 
 	if(!IsGuestKey(user.key))
 		dat += "<a href='?_src_=prefs;preference=save'>Save</a><br>"
@@ -577,7 +414,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 	winshow(user, "stonekeep_prefwin", TRUE)
 	winshow(user, "stonekeep_prefwin.character_preview_map", TRUE)
-	var/datum/browser/noclose/popup = new(user, "preferences_browser", "<div align='center'>[used_title]</div>")
+	var/datum/browser/noclose/popup = new(user, "preferences_browser", "<div align='center'>Character Sheet</div>")
 	popup.set_window_options(can_close = FALSE)
 	popup.set_content(dat.Join())
 	popup.open(FALSE)
