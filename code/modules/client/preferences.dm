@@ -378,17 +378,9 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 			dat += "<br><b>Accent:</b> <a href='?_src_=prefs;preference=selected_accent;task=input'>[selected_accent]</a>"
 			dat += "<br>"
 			dat += "<br><b>Features:</b> <a href='?_src_=prefs;preference=customizers;task=menu'>Change</a>"
-			//dat += "<br>"
-			//dat += "<br><b>Markings:</b> <a href='?_src_=prefs;preference=markings;task=menu'>Change</a>"
-			//dat += "<br>" // These can be commented back in whenever someone figures out how to add markings to the menu. I'm a bad coder, so someone who's really smart and good at coding should take up my sword.
 			if(length(pref_species.descriptor_choices))
 				dat += "<br><b>Descriptors:</b> <a href='?_src_=prefs;preference=descriptors;task=menu'>Change</a>"
 				dat += "<br>"
-			dat += "<b>Face Detail:</b> <a href='?_src_=prefs;preference=detail;task=input'>[detail]</a>"
-			//dat += "<br>"
-			//dat += "<b>Body Detail:</b> <a href='?_src_=prefs;preference=bdetail;task=input'>None</a>"
-			//if(gender == FEMALE)
-			//	dat += "<br>"
 
 			dat += "<br><b>Headshot:</b> <a href='?_src_=prefs;preference=headshot;task=input'>Change</a>"
 			if(headshot_link != null)

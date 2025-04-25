@@ -140,14 +140,15 @@
 						return
 					if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 						return
-					var/new_style = input(user, "Select a facial hairstyle", "Grooming")  as null|anything in GLOB.facial_hairstyles_list
+					var/new_style = browser_input_list(user, "Select a facial hairstyle", "Grooming", GLOB.facial_hairstyles_list)
 					if(!get_location_accessible(H, location))
 						to_chat(user, "<span class='warning'>The mask is in the way!</span>")
 						return
 					user.visible_message("<span class='notice'>[user] tries to change [H]'s facial hairstyle using [src].</span>", "<span class='notice'>I try to change [H]'s facial hairstyle using [src].</span>")
 					if(new_style && do_after(user, 6 SECONDS, H))
 						user.visible_message("<span class='notice'>[user] successfully changes [H]'s facial hairstyle using [src].</span>", "<span class='notice'>I successfully change [H]'s facial hairstyle using [src].</span>")
-						H.set_facial_hair_style(GLOB.hairstyles_list[new_style])
+						var/datum/sprite_accessory/created = GLOB.facial_hairstyles_list[new_style]
+						H.set_facial_hair_style(created?.type)
 						return
 				else
 					return
@@ -181,20 +182,20 @@
 
 		else if(location == BODY_ZONE_HEAD)
 			if(user.used_intent.type == INTENT_HELP)
-				var/datum/bodypart_feature/hair/feature = H.get_bodypart_feature_of_slot(BODYPART_FEATURE_HAIR)
 				if (H == user)
 					to_chat(user, "<span class='warning'>I need a mirror to properly style your own hair!</span>")
 					return
 				if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 					return
-				var/new_style = input(user, "Select a hairstyle", "Grooming")  as null|anything in GLOB.hairstyles_list
+				var/new_style = browser_input_list(user, "Select a hairstyle", "Grooming", GLOB.hairstyles_list)
 				if(!get_location_accessible(H, location))
 					to_chat(user, "<span class='warning'>The headgear is in the way!</span>")
 					return
 				user.visible_message("<span class='notice'>[user] tries to change [H]'s hairstyle using [src].</span>", "<span class='notice'>I try to change [H]'s hairstyle using [src].</span>")
 				if(new_style && do_after(user, 6 SECONDS, H))
 					user.visible_message("<span class='notice'>[user] successfully changes [H]'s hairstyle using [src].</span>", "<span class='notice'>I successfully change [H]'s hairstyle using [src].</span>")
-					feature?.accessory_type = GLOB.hairstyles_list[new_style]
+					var/datum/sprite_accessory/created = GLOB.hairstyles_list[new_style]
+					H.set_hair_style(created.type)
 					H.update_body_parts()
 					return
 

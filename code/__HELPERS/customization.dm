@@ -63,8 +63,10 @@
 		update_body_parts()
 
 /mob/living/carbon/human/proc/set_hair_style(datum/sprite_accessory/hair/head/style, updates_body = TRUE)
-	if(!istype(style))
+	if(!ispath(style) && !istype(style))
 		return
+	if(istype(style))
+		style = style.type
 	var/datum/bodypart_feature/hair/feature = get_bodypart_feature_of_slot(BODYPART_FEATURE_HAIR)
 	if(!feature)
 		return
@@ -73,8 +75,10 @@
 		update_body_parts()
 
 /mob/living/carbon/human/proc/set_facial_hair_style(datum/sprite_accessory/hair/facial/style, updates_body = TRUE)
-	if(!istype(style))
+	if(!ispath(style) && !istype(style))
 		return
+	if(istype(style))
+		style = style.type
 	var/datum/bodypart_feature/hair/feature = get_bodypart_feature_of_slot(BODYPART_FEATURE_FACIAL_HAIR)
 	if(!feature)
 		return

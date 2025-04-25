@@ -34,7 +34,7 @@
 
 
 	var/list/options = list("hairstyle", "facial hairstyle", "hair color", "skin", "detail", "eye color")
-	var/chosen = input(user, "Change what?", "VANDERLIN")  as null|anything in options
+	var/chosen = browser_input_list(user, "Change what?", "VANDERLIN", options)
 	var/should_update
 	switch(chosen)
 		if("hairstyle")
@@ -43,9 +43,10 @@
 			for(var/datum/sprite_accessory/X in spec_hair)
 				hairlist += X.name
 			var/new_hairstyle
-			new_hairstyle = input(user, "Choose your character's hairstyle:", "Barber")  as null|anything in hairlist
+			new_hairstyle = browser_input_list(user, "Choose your character's hairstyle:", "Barber", hairlist)
 			if(new_hairstyle)
-				H.set_hair_style(GLOB.hairstyles_list[new_hairstyle])
+				var/datum/sprite_accessory/created = GLOB.hairstyles_list[new_hairstyle]
+				H.set_hair_style(created?.type, FALSE)
 				should_update = TRUE
 		if("facial hairstyle")
 			var/list/spec_hair = H.dna.species.get_spec_facial_list(H.gender)
@@ -53,26 +54,27 @@
 			for(var/datum/sprite_accessory/X in spec_hair)
 				hairlist += X.name
 			var/new_hairstyle
-			new_hairstyle = input(user, "Choose your character's beard:", "Barber")  as null|anything in hairlist
+			new_hairstyle = browser_input_list(user, "Choose your character's beard:", "Barber", hairlist)
 			if(new_hairstyle)
-				H.set_facial_hair_style(GLOB.facial_hairstyles_list[new_hairstyle])
+				var/datum/sprite_accessory/created = GLOB.facial_hairstyles_list[new_hairstyle]
+				H.set_facial_hair_style(created?.type)
 				should_update = TRUE
 		if("hair color")
 			var/new_hair
 			var/list/hairs
 			if(H.age == AGE_OLD && (OLDGREY in H.dna.species.species_traits))
 				hairs = H.dna.species.get_oldhc_list()
-				new_hair = input(user, "Choose your character's hair color:", "") as null|anything in hairs
+				new_hair = browser_input_list(user, "Choose your character's hair color:", "", hairs)
 			else
 				hairs = H.dna.species.get_hairc_list()
-				new_hair = input(user, "Choose your character's hair color:", "") as null|anything in hairs
+				new_hair = browser_input_list(user, "Choose your character's hair color:", "", hairs)
 			if(new_hair)
 				H.set_hair_color(hairs[new_hair], FALSE)
 				H.set_facial_hair_color(hairs[new_hair], FALSE)
 				should_update = TRUE
 		if("skin")
 			var/listy = H.dna.species.get_skin_list()
-			var/new_s_tone = input(user, "Choose your character's skin tone:", "Sun")  as null|anything in listy
+			var/new_s_tone = browser_input_list(user, "Choose your character's skin tone:", "Sun", listy)
 			if(new_s_tone)
 				H.skin_tone = listy[new_s_tone]
 				should_update = TRUE
@@ -82,7 +84,7 @@
 			for(var/datum/sprite_accessory/X in spec_detail)
 				detaillist += X.name
 			var/new_detail
-			new_detail = input(user, "Choose your character's detail:", "Make me unique")  as null|anything in detaillist //don't ask
+			new_detail = browser_input_list(user, "Choose your character's detail:", "Make me unique", detaillist) //don't ask
 			if(new_detail)
 				H.detail = new_detail
 				should_update = TRUE
@@ -168,7 +170,7 @@
 
 	var/mob/living/carbon/human/H = user
 
-	var/choice = input(user, "Something to change?", "Magical Grooming") as null|anything in list("name", "race", "gender", "hair", "eyes")
+	var/choice = browser_input_list(user, "Something to change?", "Magical Grooming", list("name", "race", "gender", "hair", "eyes"))
 
 	if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 		return
@@ -190,7 +192,7 @@
 
 		if("race")
 			var/newrace
-			var/racechoice = input(H, "What are we again?", "Race change") as null|anything in choosable_races
+			var/racechoice = browser_input_list(H, "What are we again?", "Race change", choosable_races)
 			newrace = GLOB.species_list[racechoice]
 
 			if(!newrace)
@@ -200,7 +202,7 @@
 			H.set_species(newrace, icon_update=0)
 
 			if(H.dna.species.use_skintones)
-				var/new_s_tone = input(user, "Choose your skin tone:", "Race change")  as null|anything in GLOB.skin_tones
+				var/new_s_tone = browser_input_list(user, "Choose your skin tone:", "Race change", GLOB.skin_tones)
 				if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 					return
 
