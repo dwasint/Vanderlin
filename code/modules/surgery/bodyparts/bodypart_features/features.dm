@@ -37,20 +37,24 @@
 			extensions[s] = TRUE
 		qdel(hair_extensions)
 
+	var/dynamic = FALSE
 	if(extensions[standing.icon_state+dynamic_hair_suffix])
 		standing.icon_state = "[standing.icon_state][dynamic_hair_suffix]"
 		standing.icon = 'icons/roguetown/mob/hair_extensions.dmi'
+		dynamic = TRUE
 
-	add_gradient_overlay(standing, natural_gradient, natural_color)
-	add_gradient_overlay(standing, hair_dye_gradient, hair_dye_color)
+	add_gradient_overlay(standing, natural_gradient, natural_color, dynamic)
+	add_gradient_overlay(standing, hair_dye_gradient, hair_dye_color, dynamic)
 
-/datum/bodypart_feature/hair/proc/add_gradient_overlay(mutable_appearance/standing, gradient_type, gradient_color)
+/datum/bodypart_feature/hair/proc/add_gradient_overlay(mutable_appearance/standing, gradient_type, gradient_color, dynamic = FALSE)
 	if(gradient_type == /datum/hair_gradient/none)
 		return
 	var/datum/hair_gradient/gradient = HAIR_GRADIENT(gradient_type)
 	var/icon/temp = icon(gradient.icon, gradient.icon_state)
 	var/datum/sprite_accessory/accessory = SPRITE_ACCESSORY(accessory_type)
 	var/icon/temp_hair = icon(accessory.icon, accessory.icon_state)
+	if(dynamic)
+		temp_hair = icon('icons/roguetown/mob/hair_extensions.dmi', standing.icon_state)
 	temp.Blend(temp_hair, ICON_ADD)
 	var/mutable_appearance/gradient_appearance = mutable_appearance(temp)
 	gradient_appearance.color = gradient_color
