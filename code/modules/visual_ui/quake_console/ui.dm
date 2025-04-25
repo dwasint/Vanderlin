@@ -147,11 +147,16 @@
 		input.focus()
 
 /datum/visual_ui/console/proc/process_command(text, obj/abstract/visual_ui_element/scrollable/console_output/output)
-	var/list/arg_list = splittext(text, " ")
+	// Parse the command text respecting quotes
+	var/list/arg_list = parse_command_arguments(text)
+
+	if(!length(arg_list))
+		return
+
 	var/command = arg_list[1]
 	arg_list.Cut(1, 2)
-
 	var/executed = FALSE
+
 	for(var/datum/console_command/listed_command in GLOB.console_commands)
 		if(command != listed_command.command_key)
 			continue
@@ -170,6 +175,39 @@
 
 	if(!executed)
 		try_proccall(command, arg_list, output)
+
+/datum/visual_ui/console/proc/parse_command_arguments(text)
+	var/list/result = list()
+	var/current_arg = ""
+	var/in_quotes = FALSE
+
+	for(var/i = 1, i <= length(text), i++)
+		var/char = text[i]
+
+		// Handle quote character
+		if(char == "\"" && (i == 1 || text[i-1] != "\\"))
+			in_quotes = !in_quotes
+			continue
+
+		// Handle spaces
+		if(char == " " && !in_quotes)
+			if(length(current_arg) > 0)
+				result += current_arg
+				current_arg = ""
+			continue
+
+		if(char == "\\" && i < length(text) && text[i+1] == "\"")
+			current_arg += "\""
+			i++
+			continue
+
+		current_arg += char
+
+	// Add the last argument if there is one
+	if(length(current_arg) > 0)
+		result += current_arg
+
+	return result
 
 /datum/visual_ui/console/proc/try_proccall(procname, list/arg_list, obj/abstract/visual_ui_element/scrollable/console_output/output)
 	var/mob/current = get_user()
