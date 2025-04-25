@@ -165,8 +165,7 @@
 		listed_command.execute(output, arg_list)
 		if(listed_command.notify_admins)
 			var/string = "[get_user()] ran command [listed_command.command_key] with args:"
-			for(var/arg in arg_list)
-				string += arg
+			string += arg_list.join(", ")
 			log_admin(string)
 			message_admins(string)
 
