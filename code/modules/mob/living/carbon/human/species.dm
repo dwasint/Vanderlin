@@ -515,6 +515,10 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			var/datum/organ_dna/organ_dna = C.dna.organ_dna[slot]
 			if(organ_dna.can_create_organ())
 				neworgan = organ_dna.create_organ()
+				if(!istype(neworgan, slot_mutantorgans[slot]))
+					var/new_type = slot_mutantorgans[slot]
+					neworgan = new new_type()
+					organ_dna.imprint_organ(neworgan)
 				if(pref_load)
 					pref_load.customize_organ(neworgan)
 		else
