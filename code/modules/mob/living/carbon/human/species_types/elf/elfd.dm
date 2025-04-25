@@ -40,7 +40,6 @@
 	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_male.dmi'
 	dam_icon_f = 'icons/roguetown/mob/bodies/dam/dam_female.dmi'
 	hairyness = "t3"
-	mutant_bodyparts = list("ears")
 	exotic_bloodtype = /datum/blood_type/human/delf
 
 	organs = list(

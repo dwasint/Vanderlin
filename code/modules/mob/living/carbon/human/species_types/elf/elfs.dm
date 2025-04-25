@@ -42,7 +42,6 @@
 	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_male.dmi'
 	dam_icon_f = 'icons/roguetown/mob/bodies/dam/dam_female.dmi'
 	hairyness = "t1"
-	mutant_bodyparts = list("ears")
 
 	customizers = list(
 		/datum/customizer/organ/ears/elf,
