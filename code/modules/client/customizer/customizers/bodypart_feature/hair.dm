@@ -60,7 +60,7 @@
 			if(!allows_natural_gradient)
 				return
 			var/list/choice_list = hair_gradient_name_to_type_list()
-			var/chosen_input = input(user, "Choose your natural gradient:", "Character Preference")  as null|anything in choice_list
+			var/chosen_input = browser_input_list(user, "Choose your natural gradient:", "Character Preference", choice_list)
 			if(!chosen_input)
 				return
 			hair_entry.natural_gradient = choice_list[chosen_input]
@@ -75,7 +75,7 @@
 			if(!allows_dye_gradient)
 				return
 			var/list/choice_list = hair_gradient_name_to_type_list()
-			var/chosen_input = input(user, "Choose your dye gradient:", "Character Preference")  as null|anything in choice_list
+			var/chosen_input = browser_input_list(user, "Choose your dye gradient:", "Character Preference", choice_list)
 			if(!chosen_input)
 				return
 			hair_entry.dye_gradient = choice_list[chosen_input]

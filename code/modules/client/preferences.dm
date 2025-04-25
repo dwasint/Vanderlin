@@ -396,26 +396,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 			dat += "<br><b>Flavortext:</b> <a href='?_src_=prefs;preference=flavortext;task=input'>Change</a>"
 			dat += "<br></td>"
 
-
-			//Mutant stuff
-			var/mutant_category = 0
-
-			if("legs" in pref_species.default_features)
-				if(!mutant_category)
-					dat += APPEARANCE_CATEGORY_COLUMN
-
-				dat += "<h3>Legs</h3>"
-
-				dat += "<a href='?_src_=prefs;preference=legs;task=input'>[features["legs"]]</a><BR>"
-
-				mutant_category++
-				if(mutant_category >= MAX_MUTANT_ROWS)
-					dat += "</td>"
-					mutant_category = 0
-
-			if(mutant_category)
-				dat += "</td>"
-				mutant_category = 0
 			dat += "</tr></table>"
 			//-----------END OF BODY TABLE-----------//
 			dat += "</td>"

@@ -192,9 +192,6 @@
 /datum/sprite_accessory/legs/none
 	name = "Normal Legs"
 
-/datum/sprite_accessory/legs/digitigrade_lizard
-	name = "Digitigrade Legs"
-
 /datum/sprite_accessory/caps
 	icon = 'icons/mob/mutant_bodyparts.dmi'
 	color_src = HAIR
