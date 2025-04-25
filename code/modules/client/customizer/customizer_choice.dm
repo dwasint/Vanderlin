@@ -21,6 +21,14 @@
 		if(!(default_accessory in sprite_accessories))
 			CRASH("Customizer choice [type] has a default accessory which is unavailable in its accessory list.")
 
+//this exists because npcs don't have perfs so load based on carbon dna
+/datum/customizer_choice/proc/return_species(datum/preferences/prefs)
+	if(istype(prefs))
+		return prefs.pref_species
+	else
+		var/mob/living/carbon/carbon = prefs
+		return carbon?.dna?.species
+
 /datum/customizer_choice/proc/apply_customizer_to_character(mob/living/carbon/human/human, datum/preferences/prefs, datum/customizer_entry/entry)
 	return
 

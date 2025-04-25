@@ -60,6 +60,7 @@
 		/datum/customizer/bodypart_feature/hair/head/humanoid,
 		/datum/customizer/bodypart_feature/hair/facial/humanoid,
 		/datum/customizer/bodypart_feature/accessory,
+		/datum/customizer/bodypart_feature/face_detail,
 	)
 	bodypart_features = list(
 		/datum/bodypart_feature/hair/head,
