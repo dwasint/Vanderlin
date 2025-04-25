@@ -679,7 +679,7 @@
 
 	var/failed = FALSE
 	while(!failed)
-		var/mob/living/drained = drainer.resolve()
+		var/mob/living/drained = drainer?.resolve()
 		if(!do_after(user, 3 SECONDS, target = src))
 			qdel(transfer_beam)
 			failed = TRUE
