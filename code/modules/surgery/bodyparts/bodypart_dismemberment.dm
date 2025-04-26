@@ -180,9 +180,9 @@
 		was_owner.dropItemToGround(owner.get_item_for_held_index(held_index), force = TRUE)
 		was_owner.hand_bodyparts[held_index] = null
 	was_owner.bodyparts -= src
-	owner = null
-
 	update_icon_dropped()
+
+	owner = null
 	was_owner.update_health_hud() //update the healthdoll
 	was_owner.update_body()
 	was_owner.update_mobility()
