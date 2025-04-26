@@ -48,7 +48,6 @@
 	starter.drop_all_held_items()
 
 	starter.put_in_active_hand(starting_atom, TRUE)
-	sleep(8)
-	starter.Click(attacked_item)
+	attacked_item.attackby(starting_atom, starter)
 
 	qdel(crafter)
