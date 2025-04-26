@@ -12,6 +12,14 @@
 		generate_testing_datums()
 	return testing_vars
 
+/datum/console_command/tester/get_tertiary_args(secondary_arg)
+	. = ..()
+	if(!length(testing_vars))
+		generate_testing_datums()
+	var/datum/test_situation/sitaution = testing_vars[secondary_arg]
+	return sitaution.arguements()
+
+
 /datum/console_command/tester/execute(obj/abstract/visual_ui_element/scrollable/console_output/output, list/arg_list)
 	if(!length(testing_vars))
 		generate_testing_datums()

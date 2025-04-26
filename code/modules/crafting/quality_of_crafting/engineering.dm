@@ -182,7 +182,7 @@
 	)
 
 	attacked_atom = /obj/item/mortar
-	starting_atom = /obj/item/natural/stone
+	starting_atom = /obj/item/pestle
 	output = /obj/item/reagent_containers/powder/blastpowder
 	output_amount = 3
 	craft_time = 5 SECONDS

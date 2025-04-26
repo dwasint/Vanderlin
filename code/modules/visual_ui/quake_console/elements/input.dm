@@ -72,7 +72,7 @@
 	if(!found_command)
 		return list()
 
-	if(istype(found_command) && found_command.get_tertiary_args())
+	if(istype(found_command) && found_command.get_tertiary_args(secondary_arg))
 		return found_command.get_tertiary_args(secondary_arg)
 
 	return list()
