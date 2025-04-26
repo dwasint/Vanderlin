@@ -17,8 +17,6 @@
 		underwear_color = random_short_color()
 	if(randomise_flags & RANDOMIZE_UNDERSHIRT)
 		undershirt = random_undershirt(gender)
-	if(randomise_flags & RANDOMIZE_SOCKS)
-		socks = random_socks()
 	if(randomise_flags & RANDOMIZE_SKIN_TONE)
 		var/list/skin_list = pref_species.get_skin_list()
 		skin_tone = pick_assoc(skin_list)
@@ -45,9 +43,6 @@
 		underwear_color = random_short_color()
 	if(randomise[RANDOM_UNDERSHIRT])
 		undershirt = random_undershirt(gender)
-	if(randomise[RANDOM_SOCKS])
-		socks = random_socks()
-
 	if(randomise[RANDOM_UNDERWEAR])
 		underwear = pref_species.random_underwear(gender)
 	if(randomise[RANDOM_SKIN_TONE])

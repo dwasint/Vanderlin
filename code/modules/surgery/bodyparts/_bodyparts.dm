@@ -440,14 +440,7 @@
 		body_gender = H.gender
 		should_draw_gender = S.sexes
 
-		if((MUTCOLORS in S.species_traits) || (DYNCOLORS in S.species_traits))
-			if(S.fixed_mut_color)
-				species_color = S.fixed_mut_color
-			else
-				species_color = H.dna.features["mcolor"]
-			should_draw_greyscale = TRUE
-		else
-			species_color = ""
+		species_color = ""
 
 		mutation_color = ""
 

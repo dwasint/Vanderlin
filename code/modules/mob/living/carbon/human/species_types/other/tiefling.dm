@@ -35,7 +35,6 @@
 
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE,OLDGREY)
 	inherent_traits = list(TRAIT_NOMOBSWAP,TRAIT_NOFIRE)
-	default_features = list("mcolor" = "FFF", "ears" = "ElfW", "tail_human" = "TiebTail")
 	use_skintones = 1
 	disliked_food = NONE
 	liked_food = NONE

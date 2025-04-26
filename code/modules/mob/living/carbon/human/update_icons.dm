@@ -1702,10 +1702,6 @@ generate/load female uniform sprites matching all previously decided variables
 
 	if(dna.species.use_skintones)
 		. += "-coloured-[skin_tone]"
-	else if(dna.species.fixed_mut_color)
-		. += "-coloured-[dna.species.fixed_mut_color]"
-	else if(dna.features["mcolor"])
-		. += "-coloured-[dna.features["mcolor"]]"
 	else
 		. += "-not_coloured"
 

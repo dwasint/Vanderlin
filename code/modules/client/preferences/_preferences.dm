@@ -93,7 +93,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 		(RANDOM_UNDERWEAR) = FALSE,
 		(RANDOM_UNDERWEAR_COLOR) = FALSE,
 		(RANDOM_UNDERSHIRT) = FALSE,
-		(RANDOM_SOCKS) = FALSE,
 		(RANDOM_SKIN_TONE) = FALSE,
 		(RANDOM_EYE_COLOR) = FALSE
 	)
@@ -344,11 +343,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 		dat += "<b>[skin_tone_wording]: </b><a href='?_src_=prefs;preference=s_tone;task=input'>Change </a>"
 		//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_SKIN_TONE]'>[(randomise[RANDOM_SKIN_TONE]) ? "Lock" : "Unlock"]</A>"
 		dat += "<br>"
-
-	if((MUTCOLORS in pref_species.species_traits) || (MUTCOLORS_PARTSONLY in pref_species.species_traits))
-		dat += "<h3>Mutant color</h3>"
-		dat += "<span style='border: 1px solid #161616; background-color: #[features["mcolor"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color;task=input'>Change</a><BR>"
-
 
 	dat += "<b>Voice Color: </b><a href='?_src_=prefs;preference=voice;task=input'>Change</a>"
 	dat += "<br><b>Accent:</b> <a href='?_src_=prefs;preference=selected_accent;task=input'>[selected_accent]</a>"
@@ -988,16 +982,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 					var/new_age = browser_input_list(user, "SELECT YOUR HERO'S AGE", "YILS DEAD", pref_species.possible_ages, age)
 					if(new_age)
 						age = new_age
-						/*
-						var/list/hairs
-						if((age == AGE_OLD) && (OLDGREY in pref_species.species_traits))
-							hairs = pref_species.get_oldhc_list()
-						else
-							hairs = pref_species.get_hairc_list()
-
-						hair_color = hairs[pick(hairs)]
-						facial_hair_color = hair_color
-					*/
 						ResetJobs()
 						to_chat(user, "<font color='red'>Classes reset.</font>")
 
@@ -1083,9 +1067,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 							to_chat(user, "[pref_species.desc]")
 
 						//Now that we changed our species, we must verify that the mutant colour is still allowed.
-						var/temp_hsv = RGBtoHSV(features["mcolor"])
-						if(features["mcolor"] == "#000" || (!(MUTCOLORS_PARTSONLY in pref_species.species_traits) && ReadHSV(temp_hsv)[3] < ReadHSV("#7F7F7F")[3]))
-							features["mcolor"] = pref_species.default_color
 						real_name = pref_species.random_name(gender,1)
 						ResetJobs()
 						age = pick(pref_species.possible_ages)
@@ -1119,25 +1100,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 					flavortext = new_flavortext
 					to_chat(user, "<span class='notice'>Successfully updated flavortext</span>")
 					log_game("[user] has set their flavortext'.")
-
-				if("mutant_color")
-					var/new_mutantcolor = input(user, "Choose your character's alien/mutant #1 color:", "Character Preference","#"+features["mcolor"]) as color|null
-					if(new_mutantcolor)
-
-						features["mcolor"] = sanitize_hexcolor(new_mutantcolor)
-						reset_all_customizer_accessory_colors()
-
-				if("mutant_color2")
-					var/new_mutantcolor = input(user, "Choose your character's alien/mutant #2 color:", "Character Preference","#"+features["mcolor2"]) as color|null
-					if(new_mutantcolor)
-						features["mcolor2"] = sanitize_hexcolor(new_mutantcolor)
-						reset_all_customizer_accessory_colors()
-
-				if("mutant_color3")
-					var/new_mutantcolor = input(user, "Choose your character's alien/mutant #3 color:", "Character Preference","#"+features["mcolor3"]) as color|null
-					if(new_mutantcolor)
-						features["mcolor3"] = sanitize_hexcolor(new_mutantcolor)
-						reset_all_customizer_accessory_colors()
 
 				if("s_tone")
 					var/listy = pref_species.get_skin_list()

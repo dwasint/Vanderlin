@@ -86,7 +86,6 @@
 #define RANDOM_UNDERWEAR "random_underwear"
 #define RANDOM_UNDERWEAR_COLOR "random_underwear_color"
 #define RANDOM_UNDERSHIRT "random_undershirt"
-#define RANDOM_SOCKS "random_socks"
 #define RANDOM_SKIN_TONE "random_skin_tone"
 #define RANDOM_EYE_COLOR "random_eye_color"
 

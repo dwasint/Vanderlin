@@ -53,11 +53,6 @@
 		else
 			return pick(GLOB.undershirt_list)
 
-/proc/random_socks()
-	if(!GLOB.socks_list.len)
-		init_sprite_accessory_subtypes(/datum/sprite_accessory/socks, GLOB.socks_list)
-	return pick(GLOB.socks_list)
-
 /// TO BE DELETED
 /proc/random_backpack()
 	return pick(GLOB.backpacklist)

@@ -33,7 +33,6 @@
 
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,OLDGREY)
 	inherent_traits = list(TRAIT_NOMOBSWAP)
-	default_features = list("mcolor" = "FFF", "wings" = "None")
 	use_skintones = 1
 	disliked_food = NONE
 	liked_food = NONE

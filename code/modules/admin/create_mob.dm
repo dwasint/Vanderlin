@@ -20,9 +20,5 @@
 	H.skin_tone = random_skin_tone()
 	H.dna.human_blood_type = random_human_blood_type()
 
-	// Mutant randomizing, doesn't affect the mob appearance unless it's the specific mutant.
-	H.dna.features["mcolor"] = random_short_color()
-	H.dna.features["ethcolor"] = GLOB.color_list_ethereal[pick(GLOB.color_list_ethereal)]
-
 	H.update_body()
 	H.update_body_parts()

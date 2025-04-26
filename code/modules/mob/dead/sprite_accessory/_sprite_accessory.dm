@@ -225,16 +225,8 @@
 
 /proc/color_key_source_list_from_prefs(datum/preferences/prefs)
 	if(istype(prefs))
-		var/list/features = prefs.features
 		var/list/sources = list()
-		sources[KEY_MUT_COLOR_ONE] = features["mcolor"]
-		sources[KEY_MUT_COLOR_TWO] = features["mcolor2"]
-		sources[KEY_MUT_COLOR_THREE] = features["mcolor3"]
-		/// Read specific organ entries to deduce eye, hair and facial hair color
-		if(MUTCOLORS in prefs.pref_species.species_traits)
-			sources[KEY_SKIN_COLOR] = sources[KEY_MUT_COLOR_ONE]
-		else
-			sources[KEY_SKIN_COLOR] = prefs.skin_tone
+		sources[KEY_SKIN_COLOR] = prefs.skin_tone
 		sources[KEY_EYE_COLOR] = prefs.get_eye_color()
 		sources[KEY_HAIR_COLOR] = prefs.get_hair_color()
 		sources[KEY_FACE_HAIR_COLOR] = prefs.get_facial_hair_color()
@@ -249,19 +241,11 @@
 
 /proc/color_key_source_list_from_carbon(mob/living/carbon/carbon)
 	var/datum/dna/dna = carbon.dna
-	var/datum/species/species = dna.species
-	var/list/features = dna.features
 	var/list/sources = list()
-	sources[KEY_MUT_COLOR_ONE] = features["mcolor"]
-	sources[KEY_MUT_COLOR_TWO] = features["mcolor2"]
-	sources[KEY_MUT_COLOR_THREE] = features["mcolor3"]
 	/// Read specific organ DNA entries to deduce eye, hair and facial hair color
 	if(ishuman(carbon))
 		var/mob/living/carbon/human/human = carbon
-		if(MUTCOLORS in species.species_traits)
-			sources[KEY_SKIN_COLOR] = sources[KEY_MUT_COLOR_ONE]
-		else
-			sources[KEY_SKIN_COLOR] = human.skin_tone
+		sources[KEY_SKIN_COLOR] = human.skin_tone
 		sources[KEY_EYE_COLOR] = human.get_eye_color()
 		sources[KEY_HAIR_COLOR] = human.get_hair_color()
 		sources[KEY_FACE_HAIR_COLOR] = human.get_facial_hair_color()

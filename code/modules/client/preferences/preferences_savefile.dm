@@ -52,8 +52,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		pda_style = "mono"
 	if(current_version < 20)
 		pda_color = "#808000"
-	if((current_version < 21) && features["ethcolor"] && (features["ethcolor"] == "#9c3030"))
-		features["ethcolor"] = "9c3030"
 	if(current_version < 22)
 		job_preferences = list() //It loaded null from nonexistant savefile field.
 		var/job_civilian_high = 0
@@ -111,7 +109,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		if (!(underwear in GLOB.underwear_list))
 			underwear = "Nude"
 	if(current_version < 25)
-		randomise = list(RANDOM_UNDERWEAR = TRUE, RANDOM_UNDERWEAR_COLOR = TRUE, RANDOM_UNDERSHIRT = TRUE, RANDOM_SOCKS = TRUE, RANDOM_SKIN_TONE = TRUE, RANDOM_EYE_COLOR = TRUE)
+		randomise = list(RANDOM_UNDERWEAR = TRUE, RANDOM_UNDERWEAR_COLOR = TRUE, RANDOM_UNDERSHIRT = TRUE, RANDOM_SKIN_TONE = TRUE, RANDOM_EYE_COLOR = TRUE)
 		if(S["name_is_always_random"] == 1)
 			randomise[RANDOM_NAME] = TRUE
 		if(S["body_is_always_random"] == 1)
@@ -333,13 +331,11 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	randomise[RANDOM_UNDERWEAR] = FALSE
 	randomise[RANDOM_UNDERWEAR_COLOR] = FALSE
 	randomise[RANDOM_UNDERSHIRT] = FALSE
-	randomise[RANDOM_SOCKS] = FALSE
 	randomise[RANDOM_SKIN_TONE] = FALSE
 	randomise[RANDOM_EYE_COLOR] = FALSE
 
 	S["family"]			>> family
 	S["setspouse"]			>> setspouse
-	S["feature_mcolor"]					>> features["mcolor"]
 	S["selected_accent"]	>> selected_accent
 
 /datum/preferences/proc/load_character(slot)
@@ -367,12 +363,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	_load_species(S)
 
 	_load_flaw(S)
-
-	if(!S["features["mcolor"]"] || S["features["mcolor"]"] == "#000")
-		WRITE_FILE(S["features["mcolor"]"]	, "#FFF")
-
-	if(!S["feature_ethcolor"] || S["feature_ethcolor"] == "#000")
-		WRITE_FILE(S["feature_ethcolor"]	, "9c3030")
 
 	//Character
 	_load_appearence(S)
@@ -421,15 +411,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		if(!custom_names[custom_name_id])
 			custom_names[custom_name_id] = get_default_name(custom_name_id)
 
-	if(!features["mcolor"] || features["mcolor"] == "#000")
-		features["mcolor"] = pick("FFFFFF","7F7F7F", "7FFF7F", "7F7FFF", "FF7F7F", "7FFFFF", "FF7FFF", "FFFF7F")
-
-	if(!features["ethcolor"] || features["ethcolor"] == "#000")
-		features["ethcolor"] = GLOB.color_list_ethereal[pick(GLOB.color_list_ethereal)]
-
 	randomise = SANITIZE_LIST(randomise)
 
-	socks			= sanitize_inlist(socks, GLOB.socks_list)
 	age = sanitize_inlist(age, pref_species.possible_ages)
 	underwear_color			= sanitize_hexcolor(underwear_color, 3, 0)
 	eye_color		= sanitize_hexcolor(eye_color, 3, 0)
@@ -438,10 +421,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	family = family
 	setspouse = setspouse
 	selected_accent ||= ACCENT_DEFAULT
-	features["mcolor"]	= sanitize_hexcolor(features["mcolor"], 3, 0)
-	features["mcolor2"]	= sanitize_hexcolor(features["mcolor2"], 6, 0)
-	features["mcolor3"]	= sanitize_hexcolor(features["mcolor3"], 6, 0)
-	features["ethcolor"]	= copytext(features["ethcolor"],1,7)
 	S["body_markings"] >> body_markings
 	body_markings = SANITIZE_LIST(body_markings)
 	validate_body_markings()
@@ -493,7 +472,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["charflaw"]			, charflaw.type)
 	WRITE_FILE(S["family"]			, 	family)
 	WRITE_FILE(S["setspouse"]			, 	setspouse)
-	WRITE_FILE(S["feature_mcolor"]					, features["mcolor"])
 	WRITE_FILE(S["selected_accent"], selected_accent)
 
 

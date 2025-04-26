@@ -53,7 +53,6 @@
 #define CLONER_MATURE_CLONE "mature"
 
 //species traits for mutantraces
-#define MUTCOLORS		1
 //#define HAIR			2 //This is redefined in a bitflag in inventory.dm
 #define FACEHAIR		3
 #define EYECOLOR		4
@@ -61,7 +60,6 @@
 #define NOBLOOD			6
 #define NOTRANSSTING	7
 /// Used if we want the mutant colour to be only used by mutant bodyparts. Don't combine this with MUTCOLORS, or it will be useless.
-#define MUTCOLORS_PARTSONLY	8
 #define NOZOMBIE		9
 /// Uses weird leg sprites. Optional for Lizards, required for ashwalkers. Don't give it to other races unless you make sprites for this (see human_parts_greyscale.dmi)
 #define DIGITIGRADE		10
@@ -96,7 +94,7 @@
 #define G_FEMALE 2
 #define G_PLURAL 3
 
-#define MANDATORY_FEATURE_LIST list("mcolor" = "FFF", "mcolor2" = "FFF", "mcolor3" = "FFF", "ethcolor" = "9c3030", "legs" = "Normal Legs")
+#define MANDATORY_FEATURE_LIST list("mcolor" = "FFF", "mcolor2" = "FFF", "mcolor3" = "FFF")
 
 #define HAIR_COLOR_LIST list("#8f5a00", "#593800", "#362200", "#4e422e", "#8c8271", "#bfb7ab", "#31302e", "#f0dc48")
 #define EYE_COLOR_LIST list("#865900", "#06b400", "#312f27", "#008e83", "#002d8e", "#c16c00")

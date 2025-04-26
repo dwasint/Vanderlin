@@ -62,7 +62,6 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/punchstunthreshold = 0//damage at which punches from this race will stun //yes it should be to the attacked race but it's not useful that way even if it's logical
 	var/siemens_coeff = 1 //base electrocution coefficient
 	var/damage_overlay_type = "human" //what kind of damage overlays (if any) appear on our species when wounded?
-	var/fixed_mut_color = "" //to use MUTCOLOR with a fixed color that's independent of dna.feature["mcolor"]
 	var/deathsound //used to set the mobs deathsound on species change
 	var/grab_sound //Special sound for grabbing
 	var/datum/outfit/outfit_important_for_life /// A path to an outfit that is important for species life e.g. plasmaman outfit
@@ -255,16 +254,6 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			return (human.gender == MALE)
 	return TRUE
 
-/datum/species/proc/add_marking_sets_to_markings()
-	if(!body_marking_sets)
-		return
-	if(!body_markings)
-		body_markings = list()
-	var/datum/body_marking_set/bodyset
-	for(var/set_type in body_marking_sets)
-		bodyset = GLOB.body_marking_sets_by_type[set_type]
-		for(var/body_marking_type in bodyset.body_marking_list)
-			body_markings |= body_marking_type
 
 /datum/species/New()
 

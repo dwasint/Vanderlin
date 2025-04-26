@@ -1933,7 +1933,6 @@
 #include "code\modules\mob\dead\new_player\sprite_accessories\hairs\_base_hair.dm"
 #include "code\modules\mob\dead\new_player\sprite_accessories\hairs\facial_hair.dm"
 #include "code\modules\mob\dead\new_player\sprite_accessories\hairs\head_hair.dm"
-#include "code\modules\mob\dead\new_player\sprite_accessories\under_clothes\socks.dm"
 #include "code\modules\mob\dead\new_player\sprite_accessories\under_clothes\undershirt.dm"
 #include "code\modules\mob\dead\new_player\sprite_accessories\under_clothes\underwear.dm"
 #include "code\modules\mob\dead\observer\login.dm"
