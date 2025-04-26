@@ -89,6 +89,8 @@
 		owner = organ.owner
 	else if (bodypart)
 		owner = bodypart.owner
+		if(!owner)
+			owner = bodypart.original_owner
 	else
 		return
 	if(!is_visible(organ, bodypart, owner))

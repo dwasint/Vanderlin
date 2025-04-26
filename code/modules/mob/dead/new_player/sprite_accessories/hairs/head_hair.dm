@@ -26,6 +26,8 @@
 	var/dynamic_hair_suffix = ""
 
 	var/mob/living/carbon/H = bodypart.owner
+	if(!H)
+		H = bodypart.original_owner
 
 	if(H.head)
 		var/obj/item/I = H.head

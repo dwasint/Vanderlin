@@ -144,7 +144,7 @@
 		return FALSE
 	var/atom/drop_location = owner.drop_location()
 	var/mob/living/carbon/was_owner = owner
-	update_limb(dropping_limb = TRUE)
+	update_limb(TRUE, owner)
 
 	if(length(wounds))
 		var/list/stored_wounds = list()
@@ -180,9 +180,8 @@
 		was_owner.dropItemToGround(owner.get_item_for_held_index(held_index), force = TRUE)
 		was_owner.hand_bodyparts[held_index] = null
 	was_owner.bodyparts -= src
-	update_icon_dropped()
-
 	owner = null
+	update_icon_dropped()
 	was_owner.update_health_hud() //update the healthdoll
 	was_owner.update_body()
 	was_owner.update_mobility()
