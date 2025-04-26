@@ -32,6 +32,11 @@
 	for(var/tool as anything in crafter.tool_usage)
 		new tool(get_turf(starter))
 
+	if(crafter.required_table)
+		for(var/turf/open/turf in range(1, crafter))
+			new /obj/structure/table(turf)
+			break
+
 	var/obj/item/attacked_item = locate(crafter.attacked_atom) in get_turf(starter)
 	if(!attacked_item)
 		attacked_item = new crafter.attacked_atom(get_turf(starter))
