@@ -189,7 +189,7 @@
 			can_break = FALSE
 		if(!can_break)
 			continue
-		object.fire_act(temperature * firelevel)
+		object.fire_act(temperature * firelevel * 0.1)
 
 	var/burn_power = 0
 	var/modifier = 1
@@ -197,7 +197,7 @@
 		var/turf/floor= get_turf(src)
 		if(!floor?.outdoor_effect?.weatherproof)
 			modifier = 0.5
-	if(isfloorturf(get_turf(src)))
+	if(isturf(get_turf(src)))
 		var/turf/floor= get_turf(src)
 		floor.burn_power = max(0, floor.burn_power - (1 * firelevel))
 		if(floor.burn_power == 0)
