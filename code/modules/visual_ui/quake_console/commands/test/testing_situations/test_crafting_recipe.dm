@@ -7,7 +7,7 @@
 		for(var/datum/repeatable_crafting_recipe/recipe as anything in subtypesof(/datum/repeatable_crafting_recipe))
 			if(is_abstract(recipe))
 				continue
-			crafting_recipes |= recipe
+			crafting_recipes |= "[recipe]"
 	return crafting_recipes
 
 /datum/test_situation/test_craft/execute_test(obj/abstract/visual_ui_element/scrollable/console_output/output, list/arg_list)
@@ -43,7 +43,7 @@
 	starter.drop_all_held_items()
 
 	starter.put_in_active_hand(starting_atom, TRUE)
-
+	sleep(8)
 	starter.Click(attacked_item)
 
 	qdel(crafter)
