@@ -612,6 +612,10 @@
 		if(check_zone(organ_check.zone) == body_zone)
 			LAZYADD(bodypart_organs, organ_check) // this way if we don't have any, it'll just return null
 
+	for(var/obj/item/organ/organ_check as anything in contents)
+		if(check_zone(organ_check.zone) == body_zone)
+			LAZYADD(bodypart_organs, organ_check) // this way if we don't have any, it'll just return null
+
 	return bodypart_organs
 
 /obj/item/bodypart/deconstruct(disassembled = TRUE)
