@@ -19,28 +19,24 @@
 	name = "Elf"
 	icon_state = "elf"
 	specuse = list("elf")
-	color_src = SKINCOLOR
-	offsetti = TRUE
+	color_key_defaults = list(KEY_SKIN_COLOR)
 
 /datum/sprite_accessory/ears/elfw
 	icon = 'icons/roguetown/mob/bodies/attachments.dmi'
 	name = "ElfW"
 	icon_state = "elfw"
 	specuse = list("elf", "tiefling") //tiebs use these
-	color_src = SKINCOLOR
-	offsetti = TRUE
+	color_key_defaults = list(KEY_SKIN_COLOR)
 
 /datum/sprite_accessory/ears/elfh //halfelfs are humens techincally
 	icon = 'icons/roguetown/mob/bodies/attachments.dmi'
 	name = "ElfH"
 	icon_state = "elf"
 	specuse = list("human")
-	color_src = SKINCOLOR
-	offsetti = TRUE
+	color_key_defaults = list(KEY_SKIN_COLOR)
 
 /datum/sprite_accessory/ears/cat
 	name = "Cat"
 	icon_state = "cat"
-	hasinner = 1
-	color_src = HAIR
+	color_key_defaults = list(KEY_HAIR_COLOR)
 	specuse = list("cattan")

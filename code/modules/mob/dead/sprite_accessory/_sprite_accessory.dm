@@ -1,5 +1,15 @@
 /datum/sprite_accessory
 	abstract_type = /datum/sprite_accessory
+	/// Name of the sprite accessories, which may be presented to pick from in the preferences menu
+	var/name
+	/// Icon file of the accessory
+	var/icon
+	/// Icon state of the accessory
+	var/icon_state
+	///our dynamic file used incases where we need to cull a specific portion like hair
+	var/dynamic_file
+	///this accessories gender
+	var/gender = NEUTER
 	/// Whether the states for this accessory have an extra state that will get overlayed ontop of the resulting state. Per layer, suffix "_extra"
 	var/extra_state = FALSE
 	/// Pixel x offset
@@ -189,10 +199,6 @@
 	var/list/color_list = list()
 	for(var/i in 1 to color_keys)
 		var/color
-		if(color_src == SKINCOLOR)
-			color = key_source_list[KEY_SKIN_COLOR]
-			color_list += "#[color]"
-			continue
 		if(length(default_colors) >= i && !isnull(default_colors[i]))
 			color = default_colors[i]
 		else

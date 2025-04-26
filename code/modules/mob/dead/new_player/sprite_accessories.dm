@@ -49,22 +49,10 @@
 	return L
 
 /datum/sprite_accessory
-	var/dynamic_file	//if we have dynamic culling this is the location
-	var/icon			//the icon file the accessory is located in
-	var/icon_state		//the icon_state of the accessory
-	var/name			//the preview name of the accessory. Even if they have different paths and say gender requirements the MUST BE UNIQUE or they wont show
-	var/gender = NEUTER	//Determines if the accessory will be skipped or included in random hair generations
-	var/gender_specific //Something that can be worn by either gender, but looks different on each
 	var/use_static		//determines if the accessory will be skipped by color preferences
-	var/color_src = MUTCOLORS	//Currently only used by mutantparts so don't worry about hair and stuff. This is the source that this accessory will get its color from. Default is MUTCOLOR, but can also be HAIR, FACEHAIR, EYECOLOR and 0 if none.
-	var/hasinner		//Decides if this sprite has an "inner" part, such as the fleshy parts on ears.
 	var/locked = FALSE		//Is this part locked from roundstart selection? Used for parts that apply effects
-	var/dimension_x = 32
-	var/dimension_y = 32
-	var/center = FALSE	//Should we center the sprite?
 	var/list/specuse = list("human") //what species can use dis
 	var/additional = FALSE //added hairbands/metal in hair/beards
-	var/offsetti = FALSE
 	var/roundstart = TRUE
 	var/under_layer = FALSE
 
@@ -82,17 +70,14 @@
 /datum/sprite_accessory/body_markings/dtiger
 	name = "Dark Tiger Body"
 	icon_state = "dtiger"
-	gender_specific = 1
 
 /datum/sprite_accessory/body_markings/ltiger
 	name = "Light Tiger Body"
 	icon_state = "ltiger"
-	gender_specific = 1
 
 /datum/sprite_accessory/body_markings/lbelly
 	name = "Light Belly"
 	icon_state = "lbelly"
-	gender_specific = 1
 
 /datum/sprite_accessory/snouts
 	icon = 'icons/mob/mutant_bodyparts.dmi'
@@ -195,7 +180,7 @@
 
 /datum/sprite_accessory/caps
 	icon = 'icons/mob/mutant_bodyparts.dmi'
-	color_src = HAIR
+	color_key_defaults = list(KEY_HAIR_COLOR)
 
 /datum/sprite_accessory/caps/round
 	name = "Round"

@@ -3,7 +3,6 @@
 	icon = 'icons/mob/mutant_bodyparts.dmi'
 	color_key_name = "Horns"
 	relevant_layers = list(BODY_FRONT_LAYER)
-	default_colors = list("#555555")
 
 /datum/sprite_accessory/horns/is_visible(obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
 	return is_human_part_visible(owner, HIDEEARS|HIDEHAIR)
@@ -16,13 +15,11 @@
 	name = "TiebHorns"
 	icon_state = "tiebhorns"
 	specuse = list("tiefling")
-	color_src = SKINCOLOR
-	offsetti = TRUE
+	color_key_defaults = list(KEY_SKIN_COLOR)
 
 /datum/sprite_accessory/horns/tiefling/alt
 	icon = 'icons/roguetown/mob/bodies/attachments.dmi'
 	name = "TiebHornies"
 	icon_state = "tiebhornsalt"
 	specuse = list("tiefling")
-	color_src = SKINCOLOR
-	offsetti = TRUE
+	color_key_defaults = list(KEY_SKIN_COLOR)

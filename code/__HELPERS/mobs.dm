@@ -66,26 +66,6 @@
 /proc/random_features()
 	return MANDATORY_FEATURE_LIST
 
-/// TO BE DELETED
-/proc/random_hairstyle(gender)
-	switch(gender)
-		if(MALE)
-			return pick(GLOB.hairstyles_male_list)
-		if(FEMALE)
-			return pick(GLOB.hairstyles_female_list)
-		else
-			return pick(GLOB.hairstyles_list)
-
-/// TO BE DELETED
-/proc/random_facial_hairstyle(gender)
-	switch(gender)
-		if(MALE)
-			return pick(GLOB.facial_hairstyles_male_list)
-		if(FEMALE)
-			return "None"
-		else
-			return pick(GLOB.facial_hairstyles_list)
-
 /proc/random_unique_name(gender, attempts_to_find_unique_name=10)
 	for(var/i in 1 to attempts_to_find_unique_name)
 		if(gender==FEMALE)

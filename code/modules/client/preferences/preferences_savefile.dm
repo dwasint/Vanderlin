@@ -334,10 +334,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	randomise[RANDOM_UNDERWEAR_COLOR] = FALSE
 	randomise[RANDOM_UNDERSHIRT] = FALSE
 	randomise[RANDOM_SOCKS] = FALSE
-	randomise[RANDOM_HAIRSTYLE] = FALSE
-	randomise[RANDOM_HAIR_COLOR] = FALSE
-	randomise[RANDOM_FACIAL_HAIRSTYLE] = FALSE
-	randomise[RANDOM_FACIAL_HAIR_COLOR] = FALSE
 	randomise[RANDOM_SKIN_TONE] = FALSE
 	randomise[RANDOM_EYE_COLOR] = FALSE
 
@@ -446,7 +442,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	features["mcolor2"]	= sanitize_hexcolor(features["mcolor2"], 6, 0)
 	features["mcolor3"]	= sanitize_hexcolor(features["mcolor3"], 6, 0)
 	features["ethcolor"]	= copytext(features["ethcolor"],1,7)
-	features["body_markings"] 	= sanitize_inlist(features["body_markings"], GLOB.body_markings_list)
 	S["body_markings"] >> body_markings
 	body_markings = SANITIZE_LIST(body_markings)
 	validate_body_markings()

@@ -29,11 +29,9 @@
 #define DNA_SKIN_TONE_BLOCK			3
 #define DNA_EYE_COLOR_BLOCK			4
 #define DNA_GENDER_BLOCK			5
-#define DNA_FACIAL_HAIRSTYLE_BLOCK	6
-#define DNA_HAIRSTYLE_BLOCK		7
 
 #define DNA_SEQUENCE_LENGTH			4
-#define DNA_MUTATION_BLOCKS			8
+#define DNA_MUTATION_BLOCKS			6
 #define DNA_UNIQUE_ENZYMES_LEN		32
 
 //Transformation proc stuff

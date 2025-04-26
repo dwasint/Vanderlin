@@ -346,112 +346,11 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		X = pick(spec_undies)
 		return X.name
 
-/datum/species/proc/get_spec_hair_list(gender)
-	if(!GLOB.hairstyles_list.len)
-		init_sprite_accessory_subtypes(/datum/sprite_accessory/hair/head,GLOB.hairstyles_list, GLOB.hairstyles_male_list, GLOB.hairstyles_female_list)
-	var/datum/sprite_accessory/X
-	var/list/spec_hair = list()
-	switch(gender)
-		if(MALE)
-			for(var/O in GLOB.hairstyles_male_list)
-				X = GLOB.hairstyles_list[O]
-				if(X)
-					if(id in X.specuse)
-						spec_hair += X
-		if(FEMALE)
-			for(var/O in GLOB.hairstyles_female_list)
-				X = GLOB.hairstyles_list[O]
-				if(X)
-					if(id in X.specuse)
-						spec_hair += X
-	return spec_hair
-
-/datum/species/proc/random_hairstyle(gender)
-	var/list/spec_hair = get_spec_hair_list(gender)
-	var/datum/sprite_accessory/X
-	if(spec_hair.len)
-		X = pick(spec_hair)
-		return X.name
-
 /datum/species/proc/regenerate_icons(mob/living/carbon/human/H)
 	return FALSE
 
 /datum/species/proc/update_damage_overlays(mob/living/carbon/human/H)
 	return FALSE
-
-/datum/species/proc/get_spec_facial_list(gender)
-	if(!GLOB.facial_hairstyles_list.len)
-		init_sprite_accessory_subtypes(/datum/sprite_accessory/hair/head, GLOB.facial_hairstyles_list, GLOB.facial_hairstyles_male_list, GLOB.facial_hairstyles_female_list)
-	var/datum/sprite_accessory/X
-	var/list/spec_hair = list()
-	switch(gender)
-		if(MALE)
-			for(var/O in GLOB.facial_hairstyles_male_list)
-				X = GLOB.facial_hairstyles_list[O]
-				if(X)
-					if(id in X.specuse)
-						spec_hair += X
-		if(FEMALE)
-			for(var/O in GLOB.facial_hairstyles_female_list)
-				if(!istype(src, /datum/species/dwarf))
-					X = null
-				else
-					X = GLOB.facial_hairstyles_list[O]
-				if(X)
-					if(id in X.specuse)
-						spec_hair += X
-	return spec_hair
-
-/datum/species/proc/random_facial_hairstyle(gender)
-	var/list/spec_hair = get_spec_facial_list(gender)
-	var/datum/sprite_accessory/X
-	if(spec_hair.len)
-		X = pick(spec_hair)
-		return X.name
-
-/datum/species/proc/get_spec_accessory_list(gender)
-	if(!GLOB.accessories_list.len)
-		init_sprite_accessory_subtypes(/datum/sprite_accessory/accessories, GLOB.accessories_list, GLOB.accessories_m, GLOB.accessories_f)
-	var/datum/sprite_accessory/X
-	var/list/spec_hair = list()
-	switch(gender)
-		if(MALE)
-			for(var/O in GLOB.accessories_m)
-				X = GLOB.accessories_list[O]
-				if(X)
-					if(id in X.specuse)
-						spec_hair += X
-			return spec_hair
-		if(FEMALE)
-			for(var/O in GLOB.accessories_f)
-				X = GLOB.accessories_list[O]
-				if(X)
-					if(id in X.specuse)
-						spec_hair += X
-			return spec_hair
-
-/datum/species/proc/get_spec_detail_list(gender)
-	if(!GLOB.detail_list.len)
-		init_sprite_accessory_subtypes(/datum/sprite_accessory/detail, GLOB.detail_list, GLOB.detail_m, GLOB.detail_f)
-	testing("get spec detail [id]")
-	var/datum/sprite_accessory/X
-	var/list/spec_hair = list()
-	switch(gender)
-		if(MALE)
-			for(var/O in GLOB.detail_m)
-				X = GLOB.detail_list[O]
-				if(X)
-					if(id in X.specuse)
-						testing("added detail[X]")
-						spec_hair += X
-			return spec_hair
-		if(FEMALE)
-			for(var/O in GLOB.detail_f)
-				X = GLOB.detail_list[O]
-				if(X)
-					if(id in X.specuse)
-						spec_hair += X
-			return spec_hair
 
 /datum/species/proc/get_hexcolor(list/L)
 	return L

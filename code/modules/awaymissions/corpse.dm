@@ -168,11 +168,9 @@
 	H.undershirt = "Nude"
 	H.socks = "Nude"
 	if(hairstyle)
-		var/datum/sprite_accessory/created = GLOB.hairstyles_list[hairstyle]
-		H.set_hair_style(created?.type, FALSE)
+		H.set_hair_style(hairstyle, FALSE)
 	if(facial_hairstyle)
-		var/datum/sprite_accessory/created = GLOB.facial_hairstyles_list[facial_hairstyle]
-		H.set_facial_hair_style(created?.type, FALSE)
+		H.set_facial_hair_style(facial_hairstyle, FALSE)
 	if(skin_tone)
 		H.skin_tone = skin_tone
 	H.update_body()

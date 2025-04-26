@@ -119,11 +119,11 @@
 /datum/sprite_accessory/detail/brows
 	name = "Thick Eyebrows"
 	icon_state = "brows"
-	color_src = HAIR
+	color_key_defaults = list(KEY_HAIR_COLOR)
 	use_static = FALSE
 
 /datum/sprite_accessory/detail/unibrow
 	name = "Unibrow"
 	icon_state = "unibrow"
-	color_src = HAIR
+	color_key_defaults = list(KEY_HAIR_COLOR)
 	use_static = FALSE

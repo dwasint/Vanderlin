@@ -17,5 +17,4 @@
 	icon_state = "tiebtail"
 	specuse = list("tiefling")
 	gender = NEUTER
-	color_src = SKINCOLOR
-	offsetti = TRUE
+	color_key_defaults = list(KEY_SKIN_COLOR)
