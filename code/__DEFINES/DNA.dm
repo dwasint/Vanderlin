@@ -59,10 +59,7 @@
 #define LIPS			5
 #define NOBLOOD			6
 #define NOTRANSSTING	7
-/// Used if we want the mutant colour to be only used by mutant bodyparts. Don't combine this with MUTCOLORS, or it will be useless.
 #define NOZOMBIE		9
-/// Uses weird leg sprites. Optional for Lizards, required for ashwalkers. Don't give it to other races unless you make sprites for this (see human_parts_greyscale.dmi)
-#define DIGITIGRADE		10
 #define NO_UNDERWEAR	11
 #define NOSTOMACH		12
 #define NO_DNA_COPY     13

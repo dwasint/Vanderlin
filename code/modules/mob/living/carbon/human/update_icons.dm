@@ -1715,8 +1715,6 @@ generate/load female uniform sprites matching all previously decided variables
 			. += "-organic"
 		else
 			. += "-robotic"
-		if(BP.use_digitigrade)
-			. += "-digitigrade[BP.use_digitigrade]"
 		if(BP.rotted)
 			. += "-rotted"
 		if(BP.skeletonized)

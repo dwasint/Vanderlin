@@ -18,7 +18,6 @@
 	var/aux_zone // used for hands
 	var/aux_layer
 	var/body_part = 0 //bitflag used to check which clothes cover this bodypart
-	var/use_digitigrade = NOT_DIGITIGRADE //Used for alternate legs, useless elsewhere
 	var/held_index = 0 //are we a hand? if so, which one!
 
 	var/disabled = BODYPART_NOT_DISABLED //If disabled, limb is as good as missing
@@ -527,8 +526,6 @@
 						skeleton.filters += alpha_mask_filter(icon=icon('icons/effects/wounds.dmi', "[body_zone]_acid[acid_damage_intensity]"))
 					skeleton.dir = image_dir
 					. += skeleton
-			else if(use_digitigrade)
-				limb.icon_state = "digitigrade_[use_digitigrade]_[body_zone]"
 			else
 				limb.icon_state = "[body_zone][skel]"
 				if(wound_icon_state || acid_damage_intensity)
@@ -815,10 +812,6 @@
 		if(owner.stat < DEAD)
 			to_chat(owner, "<span class='danger'>I can no longer feel my [name].</span>")
 
-/obj/item/bodypart/l_leg/digitigrade
-	name = "left digitigrade leg"
-	use_digitigrade = FULL_DIGITIGRADE
-
 /obj/item/bodypart/l_leg/monkey
 	icon = 'icons/mob/animal_parts.dmi'
 	icon_state = "default_monkey_l_leg"
@@ -863,10 +856,6 @@
 	else if(disabled == BODYPART_DISABLED_PARALYSIS)
 		if(owner.stat < DEAD)
 			to_chat(owner, "<span class='danger'>I can no longer feel my [name].</span>")
-
-/obj/item/bodypart/r_leg/digitigrade
-	name = "right digitigrade leg"
-	use_digitigrade = FULL_DIGITIGRADE
 
 /obj/item/bodypart/r_leg/monkey
 	icon = 'icons/mob/animal_parts.dmi'

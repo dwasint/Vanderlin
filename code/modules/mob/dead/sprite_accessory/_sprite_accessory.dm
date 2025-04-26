@@ -240,7 +240,6 @@
 
 
 /proc/color_key_source_list_from_carbon(mob/living/carbon/carbon)
-	var/datum/dna/dna = carbon.dna
 	var/list/sources = list()
 	/// Read specific organ DNA entries to deduce eye, hair and facial hair color
 	if(ishuman(carbon))
