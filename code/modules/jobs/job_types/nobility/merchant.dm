@@ -23,6 +23,7 @@
 		"Dark Elf",
 		"Aasimar",
 		"Rakshari",
+		"Half-Kin",
 	)
 
 	outfit = /datum/outfit/job/merchant

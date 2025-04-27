@@ -116,7 +116,7 @@
 	name = "Tattoo (l Eye)"
 	icon_state = "tattoo_eye_l"
 
-/datum/sprite_accessory/detail/brows
+/datum/sprite_accessory/detail/browsz
 	name = "Thick Eyebrows"
 	icon_state = "brows"
 	color_key_defaults = list(KEY_HAIR_COLOR)
