@@ -114,6 +114,7 @@
 
 /datum/species/demihuman/on_species_gain(mob/living/carbon/foreign, datum/species/old_species)
 	..()
+	C.grant_language(/datum/language/common)
 //	languages(foreign)
 
 /*
