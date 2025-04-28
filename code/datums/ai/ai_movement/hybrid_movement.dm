@@ -56,6 +56,7 @@
 					controller.clear_blackboard_key(future_path_blackboard_key)
 					fallbacking = FALSE
 					fallback_fail = 0
+					continue
 
 		// Basic movement for targets on the same z-level with no existing path
 		if(end_turf?.z == movable_pawn?.z && !length(controller.movement_path) && !cliented)
