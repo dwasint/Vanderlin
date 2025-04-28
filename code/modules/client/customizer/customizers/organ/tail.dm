@@ -43,7 +43,6 @@
 		/datum/sprite_accessory/tail/twocat,
 		/datum/sprite_accessory/tail/corvid,
 		/datum/sprite_accessory/tail/cow,
-		/datum/sprite_accessory/tail/data_shark,
 		/datum/sprite_accessory/tail/eevee,
 		/datum/sprite_accessory/tail/fennec,
 		/datum/sprite_accessory/tail/fish,

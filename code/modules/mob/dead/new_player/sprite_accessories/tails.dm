@@ -81,13 +81,6 @@
 	name = "Cow"
 	icon_state = "cow"
 
-/datum/sprite_accessory/tail/data_shark
-	name = "Data Shark"
-	icon_state = "datashark"
-	color_keys = 2
-	color_key_names = list("Tail", "Neons")
-	can_wag = TRUE
-
 /datum/sprite_accessory/tail/eevee
 	name = "Eevee"
 	icon_state = "eevee"
