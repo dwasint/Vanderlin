@@ -29,7 +29,7 @@
 	allows_disabling = TRUE
 
 /datum/customizer_choice/organ/tail/demihuman
-	name = "Half-Kinhuman Tail"
+	name = "Hollow-Kin Tail"
 	organ_type = /obj/item/organ/tail
 	generic_random_pick = TRUE
 	sprite_accessories = list(

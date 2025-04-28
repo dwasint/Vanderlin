@@ -2,16 +2,16 @@
 #define ALL_RACES_LIST					list("human", "demihuman", "rakshari", "dwarf", "elf", "tiefling", "aasimar", "halforc", "orc", "zizombie", "kobold")
 
 /// All playable races from character selection menu.
-#define RACES_PLAYER_ALL				list("Humen", "Half-Kin", "Rakshari", "Half-Elf", "Dark Elf", "Elf", "Dwarf", "Tiefling", "Half-Orc", "Aasimar", "Kobold")
+#define RACES_PLAYER_ALL				list("Humen", "Hollow-Kin", "Rakshari", "Half-Elf", "Dark Elf", "Elf", "Dwarf", "Tiefling", "Half-Orc", "Aasimar", "Kobold")
 
 /// Races not considered discriminated against in Vanderlin. Used for nobility, guards, etc.
 #define RACES_PLAYER_NONDISCRIMINATED	list("Humen", "Half-Elf", "Elf", "Dwarf", "Aasimar")
 /// Races who are nonheretical to the church. Excluded races typically have an inhumen god associated, like Zizo. Used for church/faith roles.
 #define RACES_PLAYER_NONHERETICAL		list("Humen", "Half-Elf", "Elf", "Dwarf", "Aasimar")
 /// Races who are non-exotic to Vanderlin. These are races from foreign lands with no local pull or uncommon races. Used in miscellaneous cases, when they would not be that role.
-#define RACES_PLAYER_NONEXOTIC			list("Humen", "Half-Kin", "Half-Elf", "Dark Elf", "Elf", "Dwarf", "Tiefling", "Half-Orc", "Aasimar")
+#define RACES_PLAYER_NONEXOTIC			list("Humen", "Hollow-Kin", "Half-Elf", "Dark Elf", "Elf", "Dwarf", "Tiefling", "Half-Orc", "Aasimar")
 ///Races that lack lux
-#define RACES_PLAYER_LUXLESS			list("Kobold", "Half-Kin", "Rakshari", "Dark Elf", "Tiefling", "Half-Orc", "Dark Elf")
+#define RACES_PLAYER_LUXLESS			list("Kobold", "Hollow-Kin", "Rakshari", "Dark Elf", "Tiefling", "Half-Orc", "Dark Elf")
 
 /// Races who are affiliated with Grenzelhoft or Psydon specifically.
 #define RACES_PLAYER_GRENZ				list("Humen", "Dwarf", "Aasimar")
@@ -21,7 +21,7 @@
 #define RACES_PLAYER_ELF_D				list("Half-Elf", "Dark Elf", "Elf")
 
 /// Patreon only races.
-#define RACES_PLAYER_PATREON			list("Kobold", "Half-Kin")
+#define RACES_PLAYER_PATREON			list("Kobold", "Hollow-Kin")
 
 
 

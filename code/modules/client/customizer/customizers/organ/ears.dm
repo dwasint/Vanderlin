@@ -131,7 +131,7 @@
 	allows_disabling = TRUE
 
 /datum/customizer_choice/organ/ears/demihuman
-	name = "Half-Kinhuman Ears"
+	name = "Hollow-Kin Ears"
 	organ_type = /obj/item/organ/ears
 	generic_random_pick = TRUE
 	sprite_accessories = list(
