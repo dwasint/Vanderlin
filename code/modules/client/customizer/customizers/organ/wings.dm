@@ -4,8 +4,6 @@
 	visible_organ = TRUE
 	zone = BODY_ZONE_CHEST
 	slot = ORGAN_SLOT_WINGS
-	///Whether the wings should grant flight on insertion.
-	var/unconditional_flight
 	///What species get flights thanks to those wings. Important for moth wings
 	var/list/flight_for_species
 	///Whether a wing can be opened by the *wing emote. The sprite use a "_open" suffix, before their layer
@@ -14,6 +12,9 @@
 	var/is_open
 	///Whether the owner of wings has flight thanks to the wings
 	var/granted_flight
+
+/obj/item/organ/wings/flight
+	var/obj/effect/proc_holder/spell/self/flight
 
 /datum/customizer/organ/wings
 	name = "Wings"
@@ -36,6 +37,18 @@
 /datum/customizer_choice/organ/wings/anthro
 	name = "Wings"
 	organ_type = /obj/item/organ/wings/anthro
+	sprite_accessories = list(
+		/datum/sprite_accessory/wings/large/harpyswept,
+		)
+
+/datum/customizer/organ/wings/harpy
+	customizer_choices = list(/datum/customizer_choice/organ/wings/harpy)
+	allows_disabling = TRUE
+	default_disabled = TRUE
+
+/datum/customizer_choice/organ/wings/harpy
+	name = "Wings"
+	organ_type = /obj/item/organ/wings/flight
 	sprite_accessories = list(
 		/datum/sprite_accessory/wings/large/harpyswept,
 		)

@@ -1,27 +1,21 @@
-/mob/living/carbon/human/species/demihuman
-	race = /datum/species/demihuman
+/mob/living/carbon/human/species/harpy
+	race = /datum/species/harpy
 
-/datum/species/demihuman
-	name = "Hollow-Kin"
-	id = "demihuman"
-	desc = "Amber Hollow is a \"nation\" to the North of Vanderlin and East of Rosewood. It is located atop a great, earthen mound of tightly-rooted Redwoods. At this mound's peak lies a chasm, bordered by a woven, almost quilt-like ring of sequoias. This chasm is the largest entry point of many in Psydonia to Subterra, the land of the drow.\
-	This ring has been built upon and turned into a civilization of Hollowkin, a people showing traits of an animal nature. These people are short lived, diverse, and have an insatiable hatred for drow. This hate has been from their long standing political neighbor, the dark-elven kingdoms of Subterra.\
-	The patrons of these people are by in large Dendor and Xylix. They view freedom to be of the upmost importance due to their dark-elven neighbors' tendencies toward slavery and their own history of subjugation. They worship Dendor for the boon of their animalistic nature, seeing him as the provider for their traits and talents.\
-	In actuality, however, they are the product of dark-elven ingenuity and fleshcrafting. Their creation is a simple story of malice and greed- the desire for a house slave that is cute and cat-like, a person turned product which they could market and sell to other great houses of modern Zizonian Subterra. \
-	The history of their origin was centuries ago, and the true nature of their existence is largely lost to the Hollowkin. The drow still recall, of course, viciously mocking their creations from deep within their caves, treating them but nothing more than animals or pets. The Hollowkin react violently to drow attempts at oppression, this leads to conflicts across the world of Psydonia.\
-	To the unaligned observer, Hollowkin are often seen amongst bandit bands, Working openly with Agents of Matthios, conflating the idea of freedom between the two deities. There is, of course, the old wives' tales that circulate... how Hollowkin lead to infestations of Werewolves. Weather this is true or not is unknown to the normal man, but to those familiar with the horrendous magics used by the drow, they have no choice but to assume. To Orcs and goblins, they are good eats.\
-	Hollowkin are often denied nobility due to these rumors alone, though their animalism certainly does not help. If one miraculously does appear in the court, they are treated at best like a pet, though more likely distrusted as just another bandit people of Amber Hollow."
+/datum/species/harpy
+	name = "Harpies"
+	id = "harpy"
+	desc = "TBA"
 	skin_tone_wording = "Ancestry"
 	default_color = "FFFFFF"
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE,OLDGREY)
 	default_features = MANDATORY_FEATURE_LIST
 	use_skintones = TRUE
-	possible_ages = ALL_AGES_LIST_WITH_CHILD
+	possible_ages = ALL_AGES_LIST
 	disliked_food = NONE
 	liked_food = NONE
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP | SLIME_EXTRACT
-	limbs_icon_m = 'icons/roguetown/mob/bodies/m/mt.dmi'
-	limbs_icon_f = 'icons/roguetown/mob/bodies/f/fm.dmi'
+	limbs_icon_m = 'icons/roguetown/mob/bodies/m/harpy.dmi'
+	limbs_icon_f = 'icons/roguetown/mob/bodies/f/harpy.dmi'
 	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_male.dmi'
 	dam_icon_f = 'icons/roguetown/mob/bodies/dam/dam_female.dmi'
 	soundpack_m = /datum/voicepack/male
@@ -38,8 +32,11 @@
 		OFFSET_NECK_F = list(0,-1), OFFSET_MOUTH_F = list(0,-1), OFFSET_PANTS_F = list(0,0), \
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,-1), \
 		)
-	specstats = list(STAT_PERCEPTION = 1)
-	specstats_f = list(STAT_PERCEPTION = 1)
+
+	inherent_traits = list(TRAIT_HOLLOWBONES, TRAIT_CRITICAL_WEAKNESS, TRAIT_AMAZING_BACK, TRAIT_DODGEEXPERT)
+
+	specstats = list(STATKEY_STR = -4, STATKEY_PER = 2, STATKEY_INT = -2, STATKEY_CON = -4, STATKEY_END = -4, STATKEY_SPD = 3, STATKEY_LCK = 0)
+	specstats_f = list(STATKEY_STR = -4, STATKEY_PER = 2, STATKEY_INT = -2, STATKEY_CON = -4, STATKEY_END = -4, STATKEY_SPD = 3, STATKEY_LCK = 0)
 	enflamed_icon = "widefire"
 	organs = list(
 		ORGAN_SLOT_BRAIN = /obj/item/organ/brain,
@@ -63,10 +60,12 @@
 		/datum/customizer/bodypart_feature/hair/facial/humanoid,
 		/datum/customizer/bodypart_feature/accessory,
 		/datum/customizer/bodypart_feature/face_detail,
+
 		/datum/customizer/organ/ears/demihuman,
-		/datum/customizer/organ/horns/demihuman,
-		/datum/customizer/organ/tail/demihuman,
-		/datum/customizer/organ/wings/anthro,
+		/datum/customizer/organ/tail/harpy,
+		/datum/customizer/organ/wings/harpy,
+		/datum/customizer/organ/snout/harpy,
+
 		)
 
 	descriptor_choices = list(
@@ -83,9 +82,7 @@
 		/datum/descriptor_choice/prominent_four_wild,
 	)
 
-	patreon_req = TRUE
-
-/datum/species/demihuman/get_hairc_list()
+/datum/species/harpy/get_hairc_list()
 	return sortList(list(
 	"blond - pale" = "9d8d6e",
 	"blond - dirty" = "88754f",
@@ -111,24 +108,25 @@
 
 	))
 
-/datum/species/demihuman/check_roundstart_eligible()
+/datum/species/harpy/check_roundstart_eligible()
+	return FALSE
+
+/datum/species/harpy/qualifies_for_rank(rank, list/features)
 	return TRUE
 
-/datum/species/demihuman/qualifies_for_rank(rank, list/features)
-	return TRUE
-
-/datum/species/demihuman/on_species_gain(mob/living/carbon/foreign, datum/species/old_species)
+/datum/species/harpy/on_species_gain(mob/living/carbon/foreign, datum/species/old_species)
 	..()
+	foreign.AddComponent(/datum/component/abberant_eater, list(/obj/item/herbseed, /obj/item/neuFarm/seed))
 	foreign.grant_language(/datum/language/common)
 //	languages(foreign)
 
 /*
-/datum/species/demihuman/proc/languages(mob/living/carbon/human/foreign)
+/datum/species/harpy/proc/languages(mob/living/carbon/human/foreign)
 	if(foreign.skin_tone == SKIN_COLOR_GRENZELHOFT)
 		foreign.grant_language(/datum/language/grenzelhoftian)
 */
 
-/datum/species/demihuman/get_skin_list()
+/datum/species/harpy/get_skin_list()
 	return list(
 		"Grenzelhoft" = SKIN_COLOR_GRENZELHOFT,
 		"Hammerhold" = SKIN_COLOR_HAMMERHOLD,
