@@ -1304,9 +1304,10 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		return
 
 	var/target_zone = BODY_ZONE_HEAD
+	/*
 	if(impactee.lying)
 		target_zone = BODY_ZONE_CHEST
-
+	*/
 	playsound(impactee.loc, pick('sound/combat/gib (1).ogg','sound/combat/gib (2).ogg'), 200, FALSE, 3)
 	add_blood_DNA(impactee.return_blood_DNA())
 	impactee.visible_message(span_danger("[src] crashes into [impactee]'s [target_zone]!"), span_danger("A [src] hits you in your [target_zone]!"))
