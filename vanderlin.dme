@@ -1571,7 +1571,6 @@
 #include "code\modules\crafting\alchemy\cauldron_recipes.dm"
 #include "code\modules\crafting\alchemy\grind_recipes.dm"
 #include "code\modules\crafting\alchemy\ingredients.dm"
-#include "code\modules\crafting\alchemy\mortarpestle.dm"
 #include "code\modules\crafting\alchemy\potionbuffs.dm"
 #include "code\modules\crafting\alchemy\reagents.dm"
 #include "code\modules\crafting\anvil_recipes\_anvil_recipe.dm"
