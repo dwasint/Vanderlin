@@ -181,7 +181,7 @@
 		/obj/item/pestle = list(span_notice("starts to grind together"), span_notice("start to grind together"), 'sound/foley/mortarpestle.ogg'),
 	)
 
-	attacked_atom = /obj/item/mortar
+	attacked_atom = /obj/item/reagent_containers/glass/mortar
 	starting_atom = /obj/item/pestle
 	output = /obj/item/reagent_containers/powder/blastpowder
 	output_amount = 3
