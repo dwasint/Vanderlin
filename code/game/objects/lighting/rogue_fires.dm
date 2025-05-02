@@ -114,7 +114,7 @@
 	fueluse = 0
 	crossfire = FALSE
 	cookonme = TRUE
-	temperature_change = 0
+	temperature_change = 35
 
 /obj/machinery/light/fueled/wallfire/candle
 	name = "candles"
@@ -125,6 +125,7 @@
 	cookonme = FALSE
 	pixel_y = 32
 	soundloop = null
+	temperature_change = 0
 
 /obj/machinery/light/fueled/wallfire/candle/OnCrafted(dirin, mob/user)
 	pixel_x = 0

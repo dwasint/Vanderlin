@@ -2,6 +2,9 @@
 	command_key = "help"
 	notify_admins = FALSE
 
+/datum/console_command/help/can_execute(mob/anchor, list/arg_list, obj/abstract/visual_ui_element/scrollable/console_output/output, fake = FALSE)
+	return TRUE
+
 /datum/console_command/help/help_information(obj/abstract/visual_ui_element/scrollable/console_output/output)
 	output.add_line("help - Display this help text")
 
