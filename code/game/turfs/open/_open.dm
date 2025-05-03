@@ -172,7 +172,7 @@
 	var/delta = total_weight ? (total / total_weight) : 0
 	temperature_modification = delta
 
-/turf/open/proc/return_temperature()
+/turf/proc/return_temperature()
 	var/ambient_temperature = SSParticleWeather.selected_forecast.current_ambient_temperature
 	if(ambient_temperature < 15 && (outdoor_effect?.weatherproof || !outdoor_effect))
 		ambient_temperature += 5
