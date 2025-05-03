@@ -129,18 +129,6 @@
 /obj/item/organ/wings/anthro
 	name = "wild-kin wings"
 
-/datum/customizer/organ/wings/anthro
-	customizer_choices = list(/datum/customizer_choice/organ/wings/anthro)
-	allows_disabling = TRUE
-	default_disabled = TRUE
-
-/datum/customizer_choice/organ/wings/anthro
-	name = "Wings"
-	organ_type = /obj/item/organ/wings/anthro
-	sprite_accessories = list(
-		/datum/sprite_accessory/wings/large/harpyswept,
-		)
-
 /datum/customizer/organ/wings/harpy
 	customizer_choices = list(/datum/customizer_choice/organ/wings/harpy)
 	allows_disabling = FALSE
