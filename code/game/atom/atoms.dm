@@ -1200,36 +1200,36 @@
 		ai_controller = new ai_controller(src)
 
 /obj/proc/propagate_temp_change(value, weight, falloff = 0.5, max_depth = 3)
-    var/key = REF(src)
-    temperature_affected_turfs = list()
-    _propagate_turf_heat(src, get_turf(src), key, value, weight, falloff, max_depth)
+	var/key = REF(src)
+	temperature_affected_turfs = list()
+	_propagate_turf_heat(src, get_turf(src), key, value, weight, falloff, max_depth)
 
 /obj/proc/remove_temp_effect()
-    var/key = REF(src)
-    for(var/turf/T in temperature_affected_turfs)
-        T.remove_turf_temperature(key)
-    temperature_affected_turfs = null
+	var/key = REF(src)
+	for(var/turf/T in temperature_affected_turfs)
+		T.remove_turf_temperature(key)
+	temperature_affected_turfs = null
 
 /atom/proc/_propagate_turf_heat(obj/source, turf/start, key, value, weight, falloff, max_depth, depth = 0, seen = null)
-    if(!start || depth > max_depth || (abs(value) < 0.1 && weight < 0.1))
-        return
-    if(!seen)
-        seen = list()
-    if(start in seen)
-        return
-    seen += start
-    start.add_turf_temperature(key, value, weight)
-    if(!source.temperature_affected_turfs)
-        source.temperature_affected_turfs = list()
-    source.temperature_affected_turfs |= start
+	if(!start || depth > max_depth || (abs(value) < 0.1 && weight < 0.1))
+		return
+	if(!seen)
+		seen = list()
+	if(start in seen)
+		return
+	seen += start
+	start.add_turf_temperature(key, value, weight)
+	if(!source.temperature_affected_turfs)
+		source.temperature_affected_turfs = list()
+	source.temperature_affected_turfs |= start
 
-    var/next_value = value * falloff
-    var/next_weight = weight * falloff
+	var/next_value = value * falloff
+	var/next_weight = weight * falloff
 
-    for(var/dir in GLOB.cardinals)
-        var/turf/adj = get_step(start, dir)
-        if(istype(adj))
-            // Check if there's a wall blocking propagation
-            if(!start.CanAtmosPass(adj))
-                continue
-            _propagate_turf_heat(source, adj, key, next_value, next_weight, falloff, max_depth, depth + 1, seen)
+	for(var/dir in GLOB.cardinals)
+		var/turf/adj = get_step(start, dir)
+		if(istype(adj))
+			// Check if there's a wall blocking propagation
+			if(!start.CanAtmosPass(adj))
+				continue
+			_propagate_turf_heat(source, adj, key, next_value, next_weight, falloff, max_depth, depth + 1, seen)
