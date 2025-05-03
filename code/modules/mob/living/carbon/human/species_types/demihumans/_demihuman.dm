@@ -66,7 +66,6 @@
 		/datum/customizer/organ/ears/demihuman,
 		/datum/customizer/organ/horns/demihuman,
 		/datum/customizer/organ/tail/demihuman,
-		/datum/customizer/organ/wings/anthro,
 		)
 
 	descriptor_choices = list(

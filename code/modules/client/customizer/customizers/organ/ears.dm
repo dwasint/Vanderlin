@@ -179,3 +179,16 @@
 		/datum/sprite_accessory/ears/big/acrador_long,
 		/datum/sprite_accessory/ears/big/acrador_short,
 		)
+
+
+/datum/customizer/organ/ears/harpy
+	customizer_choices = list(/datum/customizer_choice/organ/ears/harpy)
+	allows_disabling = FALSE
+
+/datum/customizer_choice/organ/ears/harpy
+	name = "Harpy Ears"
+	organ_type = /obj/item/organ/ears
+	generic_random_pick = TRUE
+	sprite_accessories = list(
+		/datum/sprite_accessory/ears/miqote,
+		)

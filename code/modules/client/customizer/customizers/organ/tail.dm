@@ -48,7 +48,6 @@
 		/datum/sprite_accessory/tail/fish,
 		/datum/sprite_accessory/tail/fox,
 		/datum/sprite_accessory/tail/fox2,
-		/datum/sprite_accessory/tail/hawk,
 		/datum/sprite_accessory/tail/horse,
 		/datum/sprite_accessory/tail/husky,
 		/datum/sprite_accessory/tail/insect,

@@ -61,7 +61,7 @@
 		/datum/customizer/bodypart_feature/accessory,
 		/datum/customizer/bodypart_feature/face_detail,
 
-		/datum/customizer/organ/ears/demihuman,
+		/datum/customizer/organ/ears/harpy,
 		/datum/customizer/organ/tail/harpy,
 		/datum/customizer/organ/wings/harpy,
 		/datum/customizer/organ/snout/harpy,
@@ -109,7 +109,7 @@
 	))
 
 /datum/species/harpy/check_roundstart_eligible()
-	return FALSE
+	return TRUE
 
 /datum/species/harpy/qualifies_for_rank(rank, list/features)
 	return TRUE
