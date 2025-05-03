@@ -71,7 +71,7 @@
 
 /datum/particle_weather/fog/start()
 	. = ..()
-	for(var/area/area in world)
+	for(var/area/area in GLOB.areas)
 		if(area.outdoors)
 			if(!old_plane)
 				old_plane = area.plane
@@ -83,7 +83,7 @@
 
 /datum/particle_weather/fog/end()
 	. = ..()
-	for(var/area/area in world)
+	for(var/area/area in GLOB.areas)
 		if(area.outdoors)
 			area.icon = initial(area.icon)
 			area.icon_state = ""
