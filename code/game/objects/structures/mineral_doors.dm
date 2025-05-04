@@ -187,11 +187,11 @@
 	..()
 	if(door_opened)
 		return
-	if(world.time < last_bump+20)
+	if(world.time < last_bump + 2 SECONDS)
 		return
 	last_bump = world.time
-	if(ismob(AM))
-		var/mob/user = AM
+	if(isliving(AM))
+		var/mob/living/user = AM
 		if(HAS_TRAIT(user, TRAIT_BASHDOORS))
 			if(locked)
 				user.visible_message(span_warning("[user] bashes into [src]!"))
@@ -209,6 +209,8 @@
 				playsound(src, 'sound/combat/hits/onwood/woodimpact (1).ogg', 90)
 				force_open()
 				user.visible_message(span_warning("The deadite smashes through [src]!"))
+			return
+		if(world.time - user.last_bumped <= 0.3 SECONDS)
 			return
 		if(locked)
 			door_rattle()
@@ -246,7 +248,7 @@
 			if(L.m_intent == MOVE_INTENT_SNEAK)
 				to_chat(user, span_warning("This door is locked."))
 				return
-		if(world.time >= last_bump+20 && can_knock)
+		if((world.time >= last_bump	+ 2 SECONDS) && can_knock)
 			last_bump = world.time
 			if(user.a_intent.name == "punch")
 				playsound(src, 'sound/foley/doors/knocking.ogg', 100)
@@ -267,6 +269,17 @@
 		return !opacity
 	return !density
 
+/obj/structure/mineral_door/CanAStarPass(ID, to_dir, datum/caller)
+	. = ..()
+	if(.) // we can already go through it
+		return TRUE
+	if(!anchored)
+		return FALSE
+	if(HAS_TRAIT(caller, TRAIT_BASHDOORS))
+		return TRUE // bash into it!
+	// it's openable
+	return ishuman(caller) && !locked
+
 /obj/structure/mineral_door/proc/TryToSwitchState(atom/user)
 	if(isSwitchingStates || !anchored)
 		return
@@ -274,8 +287,6 @@
 		return
 	if(isliving(user))
 		var/mob/living/M = user
-		if(world.time - M.last_bumped <= 60)
-			return //NOTE do we really need that?
 		if(M.client)
 			if(iscarbon(M))
 				var/mob/living/carbon/C = M

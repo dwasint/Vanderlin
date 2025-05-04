@@ -23,6 +23,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	smooth = SMOOTH_MORE
 	neighborlay_override = "staticedge"
 	turf_flags = NONE
+	path_weight = 500
 
 /turf/open/transparent/openspace/cardinal_smooth(adjacencies)
 	smooth(adjacencies)
@@ -34,6 +35,19 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 		M.layer = SPLASHSCREEN_LAYER + 0.01
 		M.plane = OPENSPACE_BACKDROP_PLANE + 0.01
 		add_overlay(M)
+
+/turf/open/transparent/openspace/can_traverse_safely(atom/movable/traveler)
+	var/turf/destination = GET_TURF_BELOW(src)
+	if(!destination)
+		return TRUE // this shouldn't happen
+	for(var/obj/structure/O in contents)
+		if(O.obj_flags & BLOCK_Z_OUT_DOWN)
+			return TRUE
+	if(!traveler.can_zTravel(destination, DOWN, src)) // something is blocking their fall!
+		return TRUE
+	if(!traveler.can_zFall(src, DOWN, destination)) // they can't fall!
+		return TRUE
+	return FALSE
 
 ///No bottom level for openspace.
 /turf/open/transparent/openspace/show_bottom_level()
