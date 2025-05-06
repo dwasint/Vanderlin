@@ -19,6 +19,9 @@
 	var/list/optional_wildcard_requirements
 	var/list/optional_reagent_requirements
 
+	///Maximum number of optional ingredients to use per craft, set to 0 for unlimited
+	var/max_optionals = 0
+
 	var/crafting_time = 0
 
 /datum/container_craft/proc/try_craft(obj/item/crafter, list/pathed_items, mob/initiator, datum/callback/on_craft_start, datum/callback/on_craft_failed)
@@ -157,37 +160,55 @@
 
 				passed_wildcards[wildcard] = wildcarded_types
 
+		// Track how many optional ingredients we've used so far
+		var/optionals_used = 0
+
 		// Check optional requirements
-		if(length(optional_requirements))
+		if(length(optional_requirements) && (max_optionals <= 0 || optionals_used < max_optionals))
 			for(var/opt_req in optional_requirements)
 				if(stored_items[opt_req] >= optional_requirements[opt_req])
+					// If we have a cap and we've reached it, stop adding optionals
+					if(max_optionals > 0 && optionals_used >= max_optionals)
+						break
+
 					found_optional_requirements |= opt_req
 					found_optional_requirements[opt_req] = optional_requirements[opt_req]
 
 					if(!items_to_remove[opt_req])
 						items_to_remove[opt_req] = 0
 					items_to_remove[opt_req] += optional_requirements[opt_req]
+					optionals_used++
 
 		// Check optional wildcards
-		if(length(optional_wildcard_requirements))
+		if(length(optional_wildcard_requirements) && (max_optionals <= 0 || optionals_used < max_optionals))
 			for(var/opt_wildcard in optional_wildcard_requirements)
+				// If we have a cap and we've reached it, stop adding optionals
+				if(max_optionals > 0 && optionals_used >= max_optionals)
+					break
+
 				var/found = FALSE
 				for(var/obj/item/candidate_item in crafter.contents)
 					if(ispath(candidate_item.type, opt_wildcard) && !(candidate_item in items_to_delete))
-						found_optional_wildcards[opt_wildcard] = candidate_item.type
+						found_optional_wildcards[opt_wildcard] = candidate_item
 						items_to_delete += candidate_item
 						found = TRUE
+						optionals_used++
 						break
 
 				if(found)
 					found_optional_wildcards |= opt_wildcard
 
 		// Check optional reagents
-		if(length(optional_reagent_requirements))
+		if(length(optional_reagent_requirements) && (max_optionals <= 0 || optionals_used < max_optionals))
 			for(var/opt_reagent in optional_reagent_requirements)
+				// If we have a cap and we've reached it, stop adding optionals
+				if(max_optionals > 0 && optionals_used >= max_optionals)
+					break
+
 				if(crafter.reagents.has_reagent(opt_reagent, optional_reagent_requirements[opt_reagent]))
 					found_optional_reagents |= opt_reagent
 					found_optional_reagents[opt_reagent] = optional_reagent_requirements[opt_reagent]
+					optionals_used++
 
 		// Now that we've verified everything, execute the removals
 
