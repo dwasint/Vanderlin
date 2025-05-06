@@ -434,11 +434,11 @@
 	if(M.active_storage == src)
 		M.active_storage = null
 	LAZYREMOVE(is_using, M)
-	SEND_SIGNAL(parent, COMSIG_STORAGE_CLOSED, M)
 	return TRUE
 
 /datum/component/storage/proc/close(mob/M)
 	hide_from(M)
+	SEND_SIGNAL(parent, COMSIG_STORAGE_CLOSED, M)
 
 /datum/component/storage/proc/close_all()
 	. = FALSE
