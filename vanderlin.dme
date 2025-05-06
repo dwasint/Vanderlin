@@ -681,6 +681,8 @@
 #include "code\datums\components\walking_stick.dm"
 #include "code\datums\components\wearertargeting.dm"
 #include "code\datums\components\wet_floor.dm"
+#include "code\datums\components\container_craft\_container_craft.dm"
+#include "code\datums\components\container_craft\recipes\_base.dm"
 #include "code\datums\components\crafting\crafting.dm"
 #include "code\datums\components\crafting\recipes.dm"
 #include "code\datums\components\decals\blood.dm"

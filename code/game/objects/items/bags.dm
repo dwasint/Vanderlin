@@ -17,6 +17,10 @@
 	experimental_onback = FALSE
 	component_type = /datum/component/storage/concrete/grid/sack
 
+/obj/item/storage/sack/Initialize()
+	. = ..()
+	AddComponent(/datum/component/container_craft, list(/datum/container_craft/dough_bait))
+
 /obj/item/storage/sack/examine(mob/user)
 	. = ..()
 	if(length(contents))
