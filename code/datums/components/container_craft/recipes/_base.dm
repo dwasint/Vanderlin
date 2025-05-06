@@ -160,55 +160,83 @@
 
 				passed_wildcards[wildcard] = wildcarded_types
 
-		// Track how many optional ingredients we've used so far
-		var/optionals_used = 0
+		// Process optionals with respect to max_optionals
+
+		// Build a list of all available optional items to consider
+		var/list/potential_optionals = list()
 
 		// Check optional requirements
-		if(length(optional_requirements) && (max_optionals <= 0 || optionals_used < max_optionals))
+		if(length(optional_requirements))
 			for(var/opt_req in optional_requirements)
 				if(stored_items[opt_req] >= optional_requirements[opt_req])
-					// If we have a cap and we've reached it, stop adding optionals
-					if(max_optionals > 0 && optionals_used >= max_optionals)
-						break
-
-					found_optional_requirements |= opt_req
-					found_optional_requirements[opt_req] = optional_requirements[opt_req]
-
-					if(!items_to_remove[opt_req])
-						items_to_remove[opt_req] = 0
-					items_to_remove[opt_req] += optional_requirements[opt_req]
-					optionals_used++
+					potential_optionals += list(list(
+						"type" = "requirement",
+						"path" = opt_req,
+						"amount" = optional_requirements[opt_req]
+					))
 
 		// Check optional wildcards
-		if(length(optional_wildcard_requirements) && (max_optionals <= 0 || optionals_used < max_optionals))
+		if(length(optional_wildcard_requirements))
 			for(var/opt_wildcard in optional_wildcard_requirements)
-				// If we have a cap and we've reached it, stop adding optionals
-				if(max_optionals > 0 && optionals_used >= max_optionals)
-					break
+				var/remaining_wildcards = optional_wildcard_requirements[opt_wildcard]
 
-				var/found = FALSE
+				// Group candidate items by wildcard type
+				var/list/wildcard_candidates = list()
 				for(var/obj/item/candidate_item in crafter.contents)
 					if(ispath(candidate_item.type, opt_wildcard) && !(candidate_item in items_to_delete))
-						found_optional_wildcards[opt_wildcard] = candidate_item
-						items_to_delete += candidate_item
-						found = TRUE
-						optionals_used++
-						break
+						wildcard_candidates += candidate_item
 
-				if(found)
-					found_optional_wildcards |= opt_wildcard
+				// Add each item as a potential optional
+				for(var/obj/item/candidate_item in wildcard_candidates)
+					if(remaining_wildcards > 0)
+						potential_optionals += list(list(
+							"type" = "wildcard",
+							"wildcard_type" = opt_wildcard,
+							"item" = candidate_item
+						))
+						remaining_wildcards--
 
 		// Check optional reagents
-		if(length(optional_reagent_requirements) && (max_optionals <= 0 || optionals_used < max_optionals))
+		if(length(optional_reagent_requirements))
 			for(var/opt_reagent in optional_reagent_requirements)
-				// If we have a cap and we've reached it, stop adding optionals
-				if(max_optionals > 0 && optionals_used >= max_optionals)
-					break
-
 				if(crafter.reagents.has_reagent(opt_reagent, optional_reagent_requirements[opt_reagent]))
-					found_optional_reagents |= opt_reagent
-					found_optional_reagents[opt_reagent] = optional_reagent_requirements[opt_reagent]
-					optionals_used++
+					potential_optionals += list(list(
+						"type" = "reagent",
+						"reagent" = opt_reagent,
+						"amount" = optional_reagent_requirements[opt_reagent]
+					))
+
+		// Apply the cap and process the optionals
+		var/optionals_used = 0
+		for(var/list/optional in potential_optionals)
+			if(max_optionals > 0 && optionals_used >= max_optionals)
+				break
+
+			if(optional["type"] == "requirement")
+				var/opt_req = optional["path"]
+				found_optional_requirements[opt_req] = optional["amount"]
+				if(!items_to_remove[opt_req])
+					items_to_remove[opt_req] = 0
+				items_to_remove[opt_req] += optional["amount"]
+				optionals_used++
+
+			else if(optional["type"] == "wildcard")
+				var/opt_wildcard = optional["wildcard_type"]
+				var/obj/item/candidate_item = optional["item"]
+
+				// Make sure we have a list for this wildcard type
+				if(!islist(found_optional_wildcards[opt_wildcard]))
+					found_optional_wildcards[opt_wildcard] = list()
+
+				// Add the item to the list for this wildcard type
+				found_optional_wildcards[opt_wildcard] += candidate_item
+				items_to_delete += candidate_item
+				optionals_used++
+
+			else if(optional["type"] == "reagent")
+				var/opt_reagent = optional["reagent"]
+				found_optional_reagents[opt_reagent] = optional["amount"]
+				optionals_used++
 
 		// Now that we've verified everything, execute the removals
 
