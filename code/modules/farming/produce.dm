@@ -10,6 +10,15 @@
 	var/seed
 	var/bitesize_mod = 0
 
+/obj/item/reagent_containers/food/snacks/produce/fruit
+	name = "fruit"
+
+/obj/item/reagent_containers/food/snacks/produce/vegetable
+	name = "vegetable"
+
+/obj/item/reagent_containers/food/snacks/produce/grain
+	name = "grain"
+
 /obj/item/reagent_containers/food/snacks/produce/Initialize(mapload)
 	. = ..()
 	if(!tastes)
@@ -50,7 +59,7 @@
 
 /obj/item/reagent_containers/food/snacks/produce/grain/wheat
 	seed = /obj/item/neuFarm/seed/wheat
-	name = "grain"
+	name = "wheat grain"
 	desc = ""
 	icon_state = "wheat"
 	gender = PLURAL
@@ -70,7 +79,7 @@
 
 /obj/item/reagent_containers/food/snacks/produce/grain/oat
 	seed = /obj/item/neuFarm/seed/oat
-	name = "grain"
+	name = "oat grain"
 	desc = ""
 	icon_state = "oat"
 	gender = PLURAL

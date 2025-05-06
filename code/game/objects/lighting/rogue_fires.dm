@@ -410,7 +410,7 @@
 
 /obj/machinery/light/fueled/hearth/attackby(obj/item/W, mob/living/user, params)
 	if(!attachment)
-		if(istype(W, /obj/item/cooking/pan) || istype(W, /obj/item/reagent_containers/glass/bucket/pot))
+		if(istype(W, /obj/item/cooking/pan) || istype(W, /obj/item/reagent_containers/glass/bucket/pot) || istype(W, /obj/item/reagent_containers/glass/bottle/teapot))
 			playsound(get_turf(user), 'sound/foley/dropsound/shovel_drop.ogg', 40, TRUE, -1)
 
 			if(user.transferItemToLoc(W, src, silent = TRUE))
@@ -443,19 +443,10 @@
 							playsound(src.loc, 'sound/misc/frying.ogg', 80, FALSE, extrarange = 5)
 					return
 
-		else if(istype(attachment, /obj/item/reagent_containers/glass/bucket/pot))
+		else if(istype(attachment, /obj/item/reagent_containers/glass/bucket/pot) || istype(attachment, /obj/item/reagent_containers/glass/bottle/teapot))
 			var/obj/item/reagent_containers/glass/bucket/pot/pot = attachment
 
-			if(!pot.reagents.has_reagent(/datum/reagent/water, 33))
-				to_chat(user, "<span class='notice'>Not enough water.</span>")
-				return TRUE
-
-			if(pot.reagents.chem_temp < 374)
-				to_chat(user, "<span class='warning'>[pot] isn't boiling!</span>")
-				return
-
-			pot.attempt_pot_recipes(W, user)
-
+			SEND_SIGNAL(pot, COMSIG_TRY_STORAGE_SHOW, user, TRUE)
 	. = ..()
 
 //////////////////////////////////
