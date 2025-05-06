@@ -683,6 +683,8 @@
 #include "code\datums\components\wet_floor.dm"
 #include "code\datums\components\container_craft\_container_craft.dm"
 #include "code\datums\components\container_craft\recipes\_base.dm"
+#include "code\datums\components\container_craft\recipes\cooking_pot\_cooking_pot.dm"
+#include "code\datums\components\container_craft\recipes\cooking_pot\oatmeal.dm"
 #include "code\datums\components\crafting\crafting.dm"
 #include "code\datums\components\crafting\recipes.dm"
 #include "code\datums\components\decals\blood.dm"

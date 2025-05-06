@@ -15,6 +15,10 @@
 
 	var/static/list/checker_recipes = list()
 
+/obj/item/reagent_containers/glass/bucket/pot/Initialize(mapload, vol)
+	. = ..()
+	AddComponent(/datum/component/storage/concrete/grid/sack)
+	AddComponent(/datum/component/container_craft, list(/datum/container_craft/cooking/oatmeal))
 /obj/item/reagent_containers/glass/bucket/pot/copper
 	icon_state = "pote_copper"
 
@@ -201,7 +205,7 @@
 /datum/pot_recipe/cooking/oatmeal
 	name = "oatmeal"
 	produced_reagent = /datum/reagent/consumable/soup/oatmeal
-	required_items = list(/obj/item/reagent_containers/food/snacks/produce/oat = 1)
+	required_items = list(/obj/item/reagent_containers/food/snacks/produce/grain/oat = 1)
 	finished_smell = /datum/pollutant/food/oatmeal
 
 /datum/pot_recipe/cooking/potato_stew
@@ -351,7 +355,7 @@
 	hides_from_books = TRUE
 	cooking_time = 60 SECONDS
 	produced_reagent = /datum/reagent/yuck/cursed_soup
-	required_items = list(/obj/item/reagent_containers/food/snacks/produce/jacksberry/poison = 1)
+	required_items = list(/obj/item/reagent_containers/food/snacks/produce/fruit/jacksberry/poison = 1)
 
 /datum/pot_recipe/yuck_soup/poo
 	required_items = list(/obj/item/natural/poo = 1)

@@ -83,7 +83,7 @@
 /datum/container_craft/proc/execute_craft(obj/item/crafter, mob/initiator, estimated_multiplier, datum/callback/on_craft_failed)
 
 	if(user_craft)
-		if(!do_after(initiator, crafting_time * estimated_multiplier, crafter))
+		if(!do_after(initiator, get_real_time(crafter, initiator, estimated_multiplier), crafter))
 			if(on_craft_failed)
 				on_craft_failed.InvokeAsync(crafter, initiator)
 			return
@@ -213,13 +213,19 @@
 			SEND_SIGNAL(crafter, COMSIG_TRY_STORAGE_TAKE, item_to_delete, get_turf(crafter))
 			qdel(item_to_delete)
 
-		// Create output items
-		for(var/j = 1 to output_amount)
-			var/atom/created_output = new output(get_turf(crafter))
-			SEND_SIGNAL(crafter, COMSIG_TRY_STORAGE_INSERT, created_output, null, null, TRUE, TRUE)
-			after_craft(created_output, crafter, initiator, found_optional_requirements, found_optional_wildcards, found_optional_reagents)
+		create_item(crafter, initiator, found_optional_requirements, found_optional_wildcards, found_optional_reagents)
+
+/datum/container_craft/proc/create_item(obj/item/crafter, mob/initiator, list/found_optional_requirements, list/found_optional_wildcards, list/found_optional_reagents)
+	for(var/j = 1 to output_amount)
+		var/atom/created_output = new output(get_turf(crafter))
+		SEND_SIGNAL(crafter, COMSIG_TRY_STORAGE_INSERT, created_output, null, null, TRUE, TRUE)
+		after_craft(created_output, crafter, initiator, found_optional_requirements, found_optional_wildcards, found_optional_reagents)
+
 
 /datum/container_craft/proc/after_craft(atom/created_output, obj/item/crafter, mob/initiator, list/found_optional_requirements, list/found_optional_wildcards, list/found_optional_reagents)
 	// This is an extension point for specific crafting types to do additional processing
 	// basically used exclusively for optional requirements
 	return
+
+/datum/container_craft/proc/get_real_time(atom/host, mob/user, estimated_multiplier)
+	return crafting_time * estimated_multiplier
