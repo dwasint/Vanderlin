@@ -86,6 +86,8 @@
 /datum/container_craft/proc/execute_craft(obj/item/crafter, mob/initiator, estimated_multiplier, datum/callback/on_craft_failed)
 
 	if(user_craft)
+		if(!initiator)
+			return
 		if(!do_after(initiator, get_real_time(crafter, initiator, estimated_multiplier), crafter))
 			if(on_craft_failed)
 				on_craft_failed.InvokeAsync(crafter, initiator)
@@ -95,6 +97,9 @@
 			if(on_craft_failed)
 				on_craft_failed.InvokeAsync(crafter, initiator)
 			return
+
+	if(check_failure(crafter, initiator))
+		return
 
 	for(var/i = 1 to estimated_multiplier)
 		// First validate that all requirements are still present
@@ -278,3 +283,6 @@
 
 /datum/container_craft/proc/get_real_time(atom/host, mob/user, estimated_multiplier)
 	return crafting_time * estimated_multiplier
+
+/datum/container_craft/proc/check_failure(obj/item/crafter, mob/user)
+	return FALSE

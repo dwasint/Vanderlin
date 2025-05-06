@@ -18,7 +18,9 @@ GLOBAL_LIST_INIT(container_craft_to_singleton, init_container_crafts())
 	var/datum/callback/on_craft_failed //this isn't failing to find recipe its something caused the recipe to end early, like lack of temperature on a cooking recipe
 	var/datum/callback/on_craft_finished
 
-/datum/component/container_craft/Initialize(list/recipes, datum/callback/start, datum/callback/fail, datum/callback/success)
+	var/crafting = FALSE
+
+/datum/component/container_craft/Initialize(list/recipes, temperature_listener, datum/callback/start, datum/callback/fail, datum/callback/success)
 	. = ..()
 	if(!length(recipes))
 		return FALSE
@@ -29,12 +31,16 @@ GLOBAL_LIST_INIT(container_craft_to_singleton, init_container_crafts())
 	on_craft_finished = success
 
 	RegisterSignal(parent, COMSIG_STORAGE_CLOSED, PROC_REF(async_start))
+	if(temperature_listener)
+		RegisterSignal(parent, COMSIG_REAGENTS_EXPOSE_TEMPERATURE, PROC_REF(async_start))
 
 /datum/component/container_craft/proc/async_start(datum/source, mob/user)
 	INVOKE_ASYNC(src, PROC_REF(attempt_crafts), source, user)
 
 /datum/component/container_craft/proc/attempt_crafts(datum/source, mob/user)
-
+	if(crafting)
+		return
+	crafting = TRUE
 	var/list/stored_items = list()
 	var/obj/item/host = parent
 	for(var/obj/item/item in host.contents)
@@ -55,3 +61,4 @@ GLOBAL_LIST_INIT(container_craft_to_singleton, init_container_crafts())
 			stored_items |= item.type
 			stored_items[item.type]++
 
+	crafting = FALSE

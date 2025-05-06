@@ -11,6 +11,18 @@
 	var/datum/pollutant/finished_smell
 	///the amount we pollute
 	var/pollute_amount = 600
+	///our required_baking temperature
+	var/required_chem_temp = 374
+
+/datum/container_craft/cooking/try_craft(obj/item/crafter, list/pathed_items, mob/initiator, datum/callback/on_craft_start, datum/callback/on_craft_failed)
+	if(crafter.reagents.chem_temp < required_chem_temp)
+		return FALSE
+	. = ..()
+
+/datum/container_craft/cooking/check_failure(obj/item/crafter, mob/user)
+	if(crafter.reagents.chem_temp < required_chem_temp)
+		return TRUE
+	return FALSE
 
 /datum/container_craft/cooking/get_real_time(atom/host, mob/user, estimated_multiplier)
 	var/real_cooking_time = crafting_time * estimated_multiplier

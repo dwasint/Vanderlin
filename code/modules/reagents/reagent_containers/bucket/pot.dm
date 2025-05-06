@@ -18,7 +18,7 @@
 /obj/item/reagent_containers/glass/bucket/pot/Initialize(mapload, vol)
 	. = ..()
 	AddComponent(/datum/component/storage/concrete/grid/sack)
-	AddComponent(/datum/component/container_craft, list(/datum/container_craft/cooking/oatmeal))
+	AddComponent(/datum/component/container_craft, list(/datum/container_craft/cooking/oatmeal), TRUE)
 /obj/item/reagent_containers/glass/bucket/pot/copper
 	icon_state = "pote_copper"
 
@@ -201,12 +201,6 @@
 
 /datum/pot_recipe/cooking
 	abstract_type = /datum/pot_recipe/cooking
-
-/datum/pot_recipe/cooking/oatmeal
-	name = "oatmeal"
-	produced_reagent = /datum/reagent/consumable/soup/oatmeal
-	required_items = list(/obj/item/reagent_containers/food/snacks/produce/grain/oat = 1)
-	finished_smell = /datum/pollutant/food/oatmeal
 
 /datum/pot_recipe/cooking/potato_stew
 	name = "potato stew"
