@@ -50,6 +50,8 @@ GLOBAL_LIST_INIT(container_craft_to_singleton, init_container_crafts())
 
 	for(var/datum/container_craft/recipe as anything in viable_recipe_types)
 		var/datum/container_craft/singleton = GLOB.container_craft_to_singleton[recipe]
+		if(!singleton)
+			continue
 		if(!singleton.try_craft(host, stored_items, user, on_craft_start, on_craft_failed))
 			continue
 		if(on_craft_finished)

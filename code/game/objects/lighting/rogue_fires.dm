@@ -445,9 +445,13 @@
 
 		else if(istype(attachment, /obj/item/reagent_containers/glass/bucket/pot) || istype(attachment, /obj/item/reagent_containers/glass/bottle/teapot))
 			var/obj/item/reagent_containers/glass/bucket/pot/pot = attachment
-
-			SEND_SIGNAL(pot, COMSIG_TRY_STORAGE_SHOW, user, TRUE)
+			SEND_SIGNAL(pot, COMSIG_TRY_STORAGE_INSERT, W, user, null, TRUE, TRUE)
 	. = ..()
+
+/obj/machinery/light/fueled/hearth/MouseDrop(atom/over, src_location, over_location, src_control, over_control, params)
+	. = ..()
+	if(attachment && over == usr)
+		SEND_SIGNAL(attachment, COMSIG_TRY_STORAGE_SHOW, over, TRUE)
 
 //////////////////////////////////
 
