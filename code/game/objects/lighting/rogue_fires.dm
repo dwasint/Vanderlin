@@ -450,7 +450,7 @@
 
 /obj/machinery/light/fueled/hearth/MouseDrop(atom/over, src_location, over_location, src_control, over_control, params)
 	. = ..()
-	if(attachment && over == usr)
+	if(attachment && over == usr && over.CanReach(src))
 		SEND_SIGNAL(attachment, COMSIG_TRY_STORAGE_SHOW, over, TRUE)
 
 //////////////////////////////////
