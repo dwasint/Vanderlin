@@ -448,8 +448,11 @@
 			SEND_SIGNAL(pot, COMSIG_TRY_STORAGE_INSERT, W, user, null, TRUE, TRUE)
 	. = ..()
 
-/obj/machinery/light/fueled/hearth/MouseDrop(atom/over, src_location, over_location, src_control, over_control, params)
+/obj/machinery/light/fueled/hearth/MouseDrop(mob/over, src_location, over_location, src_control, over_control, params)
 	. = ..()
+	if(!istype(over))
+		return
+
 	if(attachment && over == usr && over.CanReach(src))
 		SEND_SIGNAL(attachment, COMSIG_TRY_STORAGE_SHOW, over, TRUE)
 
