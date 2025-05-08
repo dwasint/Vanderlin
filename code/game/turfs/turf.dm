@@ -460,7 +460,7 @@
 		if(some_object.density && some_object.climbable)
 			. += 1 // extra tile penalty
 			break
-	var/obj/structure/mineral_door/door = locate() in src
+	var/obj/structure/door/door = locate() in src
 	if(door && door.density && !door.locked && door.anchored) // door will have to be opened
 		. += 2 // try to avoid closed doors where possible
 
