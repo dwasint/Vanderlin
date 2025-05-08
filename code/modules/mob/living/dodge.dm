@@ -107,8 +107,9 @@
 /mob/living/proc/is_valid_dodge_turf(turf/target_turf)
 	if(!target_turf || target_turf.density)
 		return FALSE
+
 	for(var/atom/movable/AM in target_turf)
-		if(AM.density)
+		if(!AM.CanPass(mover, target_turf))
 			return FALSE
 
 	return TRUE
