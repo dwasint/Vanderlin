@@ -118,7 +118,7 @@
 					var/mob/living/carbon/H = user
 					H.update_inv_head()
 		user.update_fov_angles()
-		user.update_body_parts()
+		user.regenerate_clothes()
 
 
 //............... Feldshers Hood ............... //
