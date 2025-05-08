@@ -9,8 +9,6 @@
 	// Early return conditions specifically for dodging
 	if((pulledby && pulledby.grab_state >= GRAB_AGGRESSIVE) || pulling == user || (world.time < last_dodge + dodgetime && !istype(rmb_intent, /datum/rmb_intent/riposte)) ||  has_status_effect(/datum/status_effect/debuff/riposted) || src.loc == user.loc || (intenty && !intenty.candodge) || !candodge)
 		return FALSE
-
-	// Set dodge cooldown
 	last_dodge = world.time
 
 	// Calculate dodge directions based on relative positions
@@ -24,13 +22,9 @@
 		to_chat(src, "<span class='boldwarning'>There's nowhere to dodge to!</span>")
 		return FALSE
 
-
-	// Execute the dodge
 	if(do_dodge(user, turfy))
 		flash_fullscreen("blackflash2")
 		user.aftermiss()
-
-		// Log and stats
 		var/attacking_item = user.get_active_held_item()
 		if(!(!src.mind || !user.mind))
 			log_defense(src, user, "dodged", attacking_atom = attacking_item,
