@@ -467,7 +467,7 @@
 	cut_overlays()
 	icon_state = "[base_state][on]"
 	if(attachment)
-		if(istype(attachment, /obj/item/cooking/pan) || istype(attachment, /obj/item/reagent_containers/glass/bucket/pot))
+		if(istype(attachment, /obj/item/cooking/pan) || istype(attachment, /obj/item/reagent_containers/glass/bucket/pot) || istype(attachment, /obj/item/reagent_containers/glass/bottle/teapot))
 			var/obj/item/I = attachment
 			I.pixel_x = 0
 			I.pixel_y = 0
@@ -506,6 +506,13 @@
 			attachment = null
 			update_icon()
 			boilloop.stop()
+		if(istype(attachment, /obj/item/reagent_containers/glass/bottle/teapot))
+			if(!user.put_in_active_hand(attachment))
+				attachment.forceMove(user.loc)
+			attachment = null
+			update_icon()
+			boilloop.stop()
+
 	else
 		if(on)
 			var/mob/living/carbon/human/H = user
