@@ -2,14 +2,14 @@
 /obj/effect/overlay/water
 	icon = 'icons/turf/newwater.dmi'
 	icon_state = "bottom"
-	density = 0
-	mouse_opacity = 0
-	layer = BELOW_MOB_LAYER
+	density = FALSE
+	mouse_opacity = FALSE
+	layer = MID_TURF_LAYER
 	anchored = TRUE
 
 /obj/effect/overlay/water/top
 	icon_state = "top"
-	layer = BELOW_MOB_LAYER
+	layer = MID_TURF_LAYER
 
 
 /turf/open/water
@@ -25,14 +25,17 @@
 	var/obj/effect/overlay/water/top/water_top_overlay
 	bullet_sizzle = TRUE
 	bullet_bounce_sound = null //needs a splashing sound one day.
-	smooth = SMOOTH_MORE
-	canSmoothWith = list(/turf/closed/mineral,/turf/closed/wall/mineral, /turf/open/floor)
+	smoothing_flags = SMOOTH_EDGE
+	smoothing_groups = SMOOTH_GROUP_FLOOR_LIQUID
+	smoothing_list = SMOOTH_GROUP_OPEN_FLOOR + SMOOTH_GROUP_CLOSED
+	neighborlay_self = "edge"
 	footstep = null
 	barefootstep = null
 	clawfootstep = null
 	heavyfootstep = null
 	landsound = 'sound/foley/jumpland/waterland.wav'
 	neighborlay_override = "edge"
+	path_weight = 90
 	shine = SHINE_SHINY
 	var/datum/reagent/water_reagent = /datum/reagent/water
 	var/mapped = TRUE // infinite source of water
@@ -144,7 +147,7 @@
 			water_overlay = new(src)
 		if(!water_top_overlay)
 			water_top_overlay = new(src)
-			queue_smooth(src)
+			QUEUE_SMOOTH(src)
 
 	if(!river_processes)
 		icon_state = "together"
@@ -213,11 +216,12 @@
 
 /turf/open/water/Initialize()
 	. = ..()
-	if(!mapped)
-		START_PROCESSING(SSobj, src)
+	if(mapped)
+		if(prob(0.1))
+			new /obj/item/bottlemessage/ancient(src)
 	else
-		if(prob(rand(0,1)))
-			new /obj/item/bottlemessage/ancient(src.loc)
+		START_PROCESSING(SSobj, src)
+
 	water_overlay = new(src)
 	water_top_overlay = new(src)
 	update_icon()
@@ -245,7 +249,7 @@
 			water_overlay = new()
 		if(!water_top_overlay)
 			water_top_overlay = new()
-			queue_smooth(src)
+			QUEUE_SMOOTH(src)
 
 	if(water_overlay)
 		water_overlay.color = water_reagent.color
@@ -288,23 +292,6 @@
 /turf/open/water/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum, damage_type = "blunt")
 	..()
 	playsound(src, pick('sound/foley/water_land1.ogg','sound/foley/water_land2.ogg','sound/foley/water_land3.ogg'), 100, FALSE)
-
-
-/turf/open/water/cardinal_smooth(adjacencies)
-	smooth(adjacencies)
-
-/turf/open/water/smooth(adjacencies)
-	make_unshiny()
-	var/list/Yeah = ..()
-	if(water_overlay)
-		water_overlay.cut_overlays(TRUE)
-		if(Yeah)
-			water_overlay.add_overlay(Yeah)
-	if(water_top_overlay)
-		water_top_overlay.cut_overlays(TRUE)
-		if(Yeah)
-			water_top_overlay.add_overlay(Yeah)
-	make_shiny(initial(shine))
 
 /turf/open/water/Entered(atom/movable/AM, atom/oldLoc)
 	. = ..()
@@ -659,7 +646,7 @@
 			water_overlay = new(src)
 		if(!water_top_overlay)
 			water_top_overlay = new(src)
-			queue_smooth(src)
+			QUEUE_SMOOTH(src)
 
 	if(water_overlay)
 		water_overlay.color = water_reagent.color
