@@ -3,13 +3,13 @@ GLOBAL_LIST_EMPTY(active_container_crafts)
 GLOBAL_LIST_INIT(container_craft_to_singleton, init_container_crafts())
 
 /proc/init_container_crafts()
-    var/list/recipes = list()
-    for(var/datum/container_craft/craft as anything in subtypesof(/datum/container_craft))
-        if(is_abstract(craft))
-            continue
-        recipes |= craft
-        recipes[craft] = new craft
-    return recipes
+	var/list/recipes = list()
+	for(var/datum/container_craft/craft as anything in subtypesof(/datum/container_craft))
+		if(is_abstract(craft))
+			continue
+		recipes |= craft
+		recipes[craft] = new craft
+	return recipes
 
 /datum/container_craft
 	var/name = "GENERIC RECIPE CHANGE THIS"
