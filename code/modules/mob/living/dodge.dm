@@ -109,7 +109,7 @@
 		return FALSE
 
 	for(var/atom/movable/AM in target_turf)
-		if(!AM.CanPass(mover, target_turf))
+		if(!AM.CanPass(src, target_turf))
 			return FALSE
 
 	return TRUE

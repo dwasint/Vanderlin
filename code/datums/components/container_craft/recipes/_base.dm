@@ -1,3 +1,16 @@
+// Global tracking lists
+GLOBAL_LIST_EMPTY(active_container_crafts)
+GLOBAL_LIST_INIT(container_craft_to_singleton, init_container_crafts())
+
+/proc/init_container_crafts()
+    var/list/recipes = list()
+    for(var/datum/container_craft/craft as anything in subtypesof(/datum/container_craft))
+        if(is_abstract(craft))
+            continue
+        recipes |= craft
+        recipes[craft] = new craft
+    return recipes
+
 /datum/container_craft
 	var/name = "GENERIC RECIPE CHANGE THIS"
 	abstract_type = /datum/container_craft
@@ -31,7 +44,45 @@
 	///do we show up in recipe guides
 	var/hides_from_books = FALSE
 
+/**
+ * Validates if recipe requirements are still met during crafting
+ * @param obj/item/crafter The container being crafted in
+ * @param list/pathed_items The existing items by type
+ * @return TRUE if requirements are still met, FALSE otherwise
+ */
+/datum/container_craft/proc/requirements_still_met(obj/item/crafter, list/pathed_items)
+	if(length(reagent_requirements))
+		for(var/reagent_type in reagent_requirements)
+			if(!crafter.reagents.has_reagent(reagent_type, reagent_requirements[reagent_type]))
+				return FALSE
+
+	// Clone the lists for validation
+	var/list/fake_requirements = requirements?.Copy()
+	var/list/fake_wildcards = wildcard_requirements?.Copy()
+
+	if(fake_requirements)
+		for(var/obj/item/path as anything in fake_requirements)
+			if(!pathed_items[path] || pathed_items[path] < fake_requirements[path])
+				return FALSE
+
+	if(fake_wildcards)
+		for(var/wildcard in fake_wildcards)
+			var/found = 0
+			for(var/obj/item/path as anything in pathed_items)
+				if(ispath(path, wildcard))
+					found += min(pathed_items[path], fake_wildcards[wildcard])
+					if(found >= fake_wildcards[wildcard])
+						break
+			if(found < fake_wildcards[wildcard])
+				return FALSE
+
+	return TRUE
+
 /datum/container_craft/proc/try_craft(obj/item/crafter, list/pathed_items, mob/initiator, datum/callback/on_craft_start, datum/callback/on_craft_failed)
+	// Check for existing crafts of the same type
+	for(var/datum/container_craft_operation/op in GLOB.active_container_crafts)
+		if(op.crafter == crafter && op.recipe.type == type)
+			return FALSE // Already crafting this recipe
 
 	var/highest_multiplier = 0
 	if(length(reagent_requirements))
@@ -75,7 +126,6 @@
 				pathed_items -= path
 				continue
 
-
 	if(length(fake_wildcards))
 		return FALSE
 
@@ -85,29 +135,14 @@
 	if(isolation_craft && length(pathed_items))
 		return FALSE
 
-	if(on_craft_start)
-		on_craft_start.InvokeAsync(crafter, initiator)
-	execute_craft(crafter, initiator, highest_multiplier, on_craft_failed)
+	// Create the crafting operation
+	new /datum/container_craft_operation(crafter, src, initiator, highest_multiplier, on_craft_start, on_craft_failed)
 	return TRUE
 
-/datum/container_craft/proc/execute_craft(obj/item/crafter, mob/initiator, estimated_multiplier, datum/callback/on_craft_failed)
-
-	if(user_craft)
-		if(!initiator)
-			return
-		if(!do_after(initiator, get_real_time(crafter, initiator, estimated_multiplier), crafter))
-			if(on_craft_failed)
-				on_craft_failed.InvokeAsync(crafter, initiator)
-			return
-	else
-		if(!do_atom(crafter, crafting_time * estimated_multiplier, crafter))
-			if(on_craft_failed)
-				on_craft_failed.InvokeAsync(crafter, initiator)
-			return
-
-	if(check_failure(crafter, initiator))
-		return
-
+/**
+ * Handles the final execution of the craft after processing is complete
+ */
+/datum/container_craft/proc/execute_craft_completion(obj/item/crafter, mob/initiator, estimated_multiplier)
 	for(var/i = 1 to estimated_multiplier)
 		// First validate that all requirements are still present
 		var/list/stored_items = list()
@@ -120,7 +155,6 @@
 		// Track which actual item objects we'll remove
 		var/list/obj/item/items_to_delete = list()
 
-		// Track all the data about what was used in crafting
 		var/list/passed_reagents = list()
 		var/list/passed_wildcards = list()
 		var/list/passed_requirements = list()
@@ -128,7 +162,6 @@
 		var/list/found_optional_wildcards = list()
 		var/list/found_optional_reagents = list()
 
-		// Check reagent requirements
 		if(length(reagent_requirements))
 			for(var/reagent as anything in reagent_requirements)
 				if(!crafter.reagents.has_reagent(reagent, reagent_requirements[reagent]))
@@ -136,7 +169,6 @@
 				passed_reagents |= reagent
 				passed_reagents[reagent] = reagent_requirements[reagent]
 
-		// Check item requirements
 		if(length(requirements))
 			for(var/item_type in requirements)
 				if(stored_items[item_type] < requirements[item_type])
@@ -145,7 +177,6 @@
 				passed_requirements[item_type] = requirements[item_type]
 				items_to_remove[item_type] = requirements[item_type]
 
-		// Check wildcard requirements
 		if(length(wildcard_requirements))
 			var/list/wildcarded_types = list()
 			for(var/wildcard in wildcard_requirements)
@@ -250,8 +281,6 @@
 				found_optional_reagents[opt_reagent] = optional["amount"]
 				optionals_used++
 
-		// Now that we've verified everything, execute the removals
-
 		// Remove reagents first
 		for(var/reagent in passed_reagents)
 			crafter.reagents.remove_reagent(reagent, passed_reagents[reagent])
@@ -282,7 +311,6 @@
 		SEND_SIGNAL(crafter, COMSIG_TRY_STORAGE_INSERT, created_output, null, null, TRUE, TRUE)
 		after_craft(created_output, crafter, initiator, found_optional_requirements, found_optional_wildcards, found_optional_reagents)
 
-
 /datum/container_craft/proc/after_craft(atom/created_output, obj/item/crafter, mob/initiator, list/found_optional_requirements, list/found_optional_wildcards, list/found_optional_reagents)
 	// This is an extension point for specific crafting types to do additional processing
 	// basically used exclusively for optional requirements
@@ -293,7 +321,6 @@
 
 /datum/container_craft/proc/check_failure(obj/item/crafter, mob/user)
 	return FALSE
-
 
 /datum/container_craft/proc/generate_html(mob/user)
 	var/client/client = user
@@ -430,3 +457,4 @@
 	user << browse(generate_html(user), "window=container_craft;size=500x810")
 
 /datum/container_craft/proc/extra_html()
+	return
