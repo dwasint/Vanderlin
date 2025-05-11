@@ -1,7 +1,7 @@
 /datum/anvil_recipe
 	abstract_type = /datum/anvil_recipe
 	var/name
-	var/category
+	var/category = "Misc"
 	var/list/additional_items = list() // List of the object(s) we need to complete this recipe.
 	var/material_quality = 0 // Quality of the bar(s) used. Accumulated per added ingot.
 	var/num_of_materials = 1 // Total number of materials used. Quality divided among them.

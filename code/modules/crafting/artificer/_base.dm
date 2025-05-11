@@ -15,6 +15,7 @@
 	/// I_type is like "sub category"
 	var/i_type
 	var/created_amount = 1
+	var/category
 	var/datum/parent
 
 // Small design rules for Artificer!
