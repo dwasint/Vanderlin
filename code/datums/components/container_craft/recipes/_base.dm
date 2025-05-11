@@ -17,6 +17,7 @@ GLOBAL_LIST_INIT(container_craft_to_singleton, init_container_crafts())
 
 	var/atom/output
 	var/output_amount = 1
+	var/category
 
 	var/user_craft = TRUE
 

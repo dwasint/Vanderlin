@@ -34,3 +34,69 @@
 		/obj/item/alch/mentha = 1,
 	)
 	output = /obj/item/soap/bath
+
+/datum/repeatable_crafting_recipe/cooking/chescake_poison
+	hides_from_books = TRUE
+	name = "Unbaked Cake of Cheese"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/produce/fruit/jacksberry/poison = 1,
+		/obj/item/reagent_containers/food/snacks/cake = 1,
+	)
+	attacked_atom = /obj/item/reagent_containers/food/snacks/cake
+	starting_atom = /obj/item/reagent_containers/food/snacks/produce/fruit/jacksberry/poison
+	output = /obj/item/reagent_containers/food/snacks/chescake_poison
+	uses_attacked_atom = TRUE
+	required_table = TRUE
+	craft_time = 6 SECONDS
+	crafting_sound = 'sound/foley/dropsound/food_drop.ogg'
+	crafting_message = "Adding some juicy fruit filling..."
+
+/datum/repeatable_crafting_recipe/cooking/chescake_poison_raisan
+	hides_from_books = TRUE
+	name = "Unbaked Cake of Cheese"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/raisins/poison = 1,
+		/obj/item/reagent_containers/food/snacks/cake = 1,
+	)
+	attacked_atom = /obj/item/reagent_containers/food/snacks/cake
+	starting_atom = /obj/item/reagent_containers/food/snacks/raisins/poison
+	output = /obj/item/reagent_containers/food/snacks/chescake_poison
+	uses_attacked_atom = TRUE
+	required_table = TRUE
+	craft_time = 6 SECONDS
+	crafting_sound = 'sound/foley/dropsound/food_drop.ogg'
+	crafting_message = "Adding some juicy fruit filling..."
+
+/datum/repeatable_crafting_recipe/cooking/chescake
+	name = "Unbaked Berry Cake of Cheese"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/produce/fruit/jacksberry = 1,
+		/obj/item/reagent_containers/food/snacks/cake = 1,
+	)
+	attacked_atom = /obj/item/reagent_containers/food/snacks/cake
+	starting_atom = /obj/item/reagent_containers/food/snacks/produce/fruit/jacksberry
+	output = /obj/item/reagent_containers/food/snacks/chescake_poison
+	uses_attacked_atom = TRUE
+	required_table = TRUE
+	craft_time = 6 SECONDS
+	crafting_sound = 'sound/foley/dropsound/food_drop.ogg'
+	crafting_message = "Adding some juicy fruit filling..."
+
+/datum/repeatable_crafting_recipe/cooking/chescake_raisan
+	name = "Unbaked Raisan Cake of Cheese"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/raisins = 1,
+		/obj/item/reagent_containers/food/snacks/cake = 1,
+	)
+	attacked_atom = /obj/item/reagent_containers/food/snacks/cake
+	starting_atom = /obj/item/reagent_containers/food/snacks/raisins
+	output = /obj/item/reagent_containers/food/snacks/chescake_poison
+	uses_attacked_atom = TRUE
+	required_table = TRUE
+	craft_time = 6 SECONDS
+	crafting_sound = 'sound/foley/dropsound/food_drop.ogg'
+	crafting_message = "Adding some juicy fruit filling..."

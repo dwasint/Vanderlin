@@ -799,17 +799,6 @@
 	if(user.mind)
 		long_cooktime = (90 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*15))
 
-	if(istype(I, /obj/item/reagent_containers/food/snacks/produce/fruit/jacksberry/poison) || istype(I, /obj/item/reagent_containers/food/snacks/raisins/poison))
-		if(isturf(loc)&& (found_table))
-			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Adding some juicy fruit filling..."))
-			if(do_after(user,long_cooktime, src))
-				new /obj/item/reagent_containers/food/snacks/chescake_poison(loc)
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT))
-				qdel(I)
-				qdel(src)
-		else
-			to_chat(user, span_warning("Put [src] on a table before working it!"))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/produce/fruit/pear))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
@@ -821,17 +810,7 @@
 				qdel(src)
 		else
 			to_chat(user, span_warning("Put [src] on a table before working it!"))
-	if(istype(I, /obj/item/reagent_containers/food/snacks/produce/fruit/jacksberry) || istype(I, /obj/item/reagent_containers/food/snacks/raisins) || istype(I, /obj/item/reagent_containers/food/snacks/produce/fruit/apple))
-		if(isturf(loc)&& (found_table))
-			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Adding some juicy fruit filling..."))
-			if(do_after(user,long_cooktime, src))
-				new /obj/item/reagent_containers/food/snacks/chescake(loc)
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT))
-				qdel(I)
-				qdel(src)
-		else
-			to_chat(user, span_warning("Put [src] on a table before working it!"))
+
 	if(istype(I, /obj/item/reagent_containers/food/snacks/produce/fruit/plum) || istype(I, /obj/item/reagent_containers/food/snacks/plum_dried))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)

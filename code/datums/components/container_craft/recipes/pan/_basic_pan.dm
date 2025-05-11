@@ -2,6 +2,7 @@
 	abstract_type = /datum/container_craft/pan
 	required_container = /obj/item/cooking/pan
 	crafting_time = 25 SECONDS
+	category = "Pan"
 
 	var/datum/pollutant/cooked_smell
 
@@ -143,97 +144,97 @@
 
 /datum/container_craft/pan/wiener
 	name = "Fried Wiener"
-	wildcard_requirements = list(/obj/item/reagent_containers/food/snacks/meat/wiener = 1)
+	requirements = list(/obj/item/reagent_containers/food/snacks/meat/wiener = 1)
 	output = /obj/item/reagent_containers/food/snacks/cooked/sausage/wiener
 	cooked_smell = /datum/pollutant/food/sausage
 
 /datum/container_craft/pan/sausage
 	name = "Fried Sausage"
-	wildcard_requirements = list(/obj/item/reagent_containers/food/snacks/meat/sausage = 1)
+	requirements = list(/obj/item/reagent_containers/food/snacks/meat/sausage = 1)
 	output = /obj/item/reagent_containers/food/snacks/cooked/sausage
 	cooked_smell = /datum/pollutant/food/sausage
 
 /datum/container_craft/pan/minced_poultry
 	name = "Fried Minced Poultry"
-	wildcard_requirements = list(/obj/item/reagent_containers/food/snacks/meat/mince/poultry = 1)
+	requirements = list(/obj/item/reagent_containers/food/snacks/meat/mince/poultry = 1)
 	output = /obj/item/reagent_containers/food/snacks/meat/mince/poultry/cooked
 	cooked_smell = /datum/pollutant/food/fried_chicken
 
 /datum/container_craft/pan/minced_fish
 	name = "Fried Minced Fish"
-	wildcard_requirements = list(/obj/item/reagent_containers/food/snacks/meat/mince/fish = 1)
+	requirements = list(/obj/item/reagent_containers/food/snacks/meat/mince/fish = 1)
 	output = /obj/item/reagent_containers/food/snacks/meat/mince/fish/cooked
 	cooked_smell = /datum/pollutant/food/baked_carp
 
 /datum/container_craft/pan/minced_beef
 	name = "Fried Minced Beef"
-	wildcard_requirements = list(/obj/item/reagent_containers/food/snacks/meat/mince/beef = 1)
+	requirements = list(/obj/item/reagent_containers/food/snacks/meat/mince/beef = 1)
 	output = /obj/item/reagent_containers/food/snacks/meat/mince/beef/cooked
 	cooked_smell = /datum/pollutant/food/fried_meat
 
 /datum/container_craft/pan/frybird
 	name = "Fry Bird"
-	wildcard_requirements = list(/obj/item/reagent_containers/food/snacks/meat/poultry/cutlet = 1)
+	requirements = list(/obj/item/reagent_containers/food/snacks/meat/poultry/cutlet = 1)
 	output = /obj/item/reagent_containers/food/snacks/cooked/frybird
 	cooked_smell = /datum/pollutant/food/fried_chicken
 
 /datum/container_craft/pan/strange
 	name = "Fried Strange Meat"
-	wildcard_requirements = list(/obj/item/reagent_containers/food/snacks/meat/strange = 1)
+	requirements = list(/obj/item/reagent_containers/food/snacks/meat/strange = 1)
 	output = /obj/item/reagent_containers/food/snacks/cooked/strange
 	cooked_smell = /datum/pollutant/food/fried_meat
 
 /datum/container_craft/pan/ham
 	name = "Ham"
-	wildcard_requirements = list(/obj/item/reagent_containers/food/snacks/meat/fatty = 1)
+	requirements = list(/obj/item/reagent_containers/food/snacks/meat/fatty = 1)
 	output = /obj/item/reagent_containers/food/snacks/cooked/ham
 	cooked_smell = /datum/pollutant/food/bacon
 
 /datum/container_craft/pan/ham
 	name = "Fry Steak"
-	wildcard_requirements = list(/obj/item/reagent_containers/food/snacks/meat/steak = 1)
+	requirements = list(/obj/item/reagent_containers/food/snacks/meat/steak = 1)
 	output = /obj/item/reagent_containers/food/snacks/cooked/frysteak
 	cooked_smell = /datum/pollutant/food/fried_meat
 
 /datum/container_craft/pan/griddle_dog
 	name = "Griddledog"
-	wildcard_requirements = list(/obj/item/reagent_containers/food/snacks/foodbase/griddledog_raw = 1)
+	requirements = list(/obj/item/reagent_containers/food/snacks/foodbase/griddledog_raw = 1)
 	output = /obj/item/reagent_containers/food/snacks/cooked/griddledog
 	cooked_smell = /datum/pollutant/food/sausage
 
 /datum/container_craft/pan/frybread
 	name = "Frybread"
-	wildcard_requirements = list(/obj/item/reagent_containers/food/snacks/butterdough_slice = 1)
+	requirements = list(/obj/item/reagent_containers/food/snacks/butterdough_slice = 1)
 	output = /obj/item/reagent_containers/food/snacks/frybread
 	cooked_smell = /datum/pollutant/food/pastry
 
 /datum/container_craft/pan/griddlecake
 	name = "Griddlecake"
-	wildcard_requirements = list(/obj/item/reagent_containers/food/snacks/foodbase/griddlecake_raw = 1)
+	requirements = list(/obj/item/reagent_containers/food/snacks/foodbase/griddlecake_raw = 1)
 	output = /obj/item/reagent_containers/food/snacks/griddlecake
 	cooked_smell = /datum/pollutant/food/griddlecake
 
 /datum/container_craft/pan/griddlecakelemon
 	name = "Lemon Griddlecake"
-	wildcard_requirements = list(/obj/item/reagent_containers/food/snacks/foodbase/lemongriddlecake_raw = 1)
+	requirements = list(/obj/item/reagent_containers/food/snacks/foodbase/lemongriddlecake_raw = 1)
 	output = /obj/item/reagent_containers/food/snacks/griddlecake/lemon
 	cooked_smell = /datum/pollutant/food/griddlecake
 
 /datum/container_craft/pan/griddlecakeapple
 	name = "Apple Griddlecake"
-	wildcard_requirements = list(/obj/item/reagent_containers/food/snacks/foodbase/applegriddlecake_raw = 1)
+	requirements = list(/obj/item/reagent_containers/food/snacks/foodbase/applegriddlecake_raw = 1)
 	output = /obj/item/reagent_containers/food/snacks/griddlecake/apple
 	cooked_smell = /datum/pollutant/food/griddlecake
 
 /datum/container_craft/pan/griddlecakeapple
 	name = "Jacksberry Griddlecake"
-	wildcard_requirements = list(/obj/item/reagent_containers/food/snacks/foodbase/berrygriddlecake_raw = 1)
+	requirements = list(/obj/item/reagent_containers/food/snacks/foodbase/berrygriddlecake_raw = 1)
 	output = /obj/item/reagent_containers/food/snacks/griddlecake/berry
 	cooked_smell = /datum/pollutant/food/griddlecake
 
 /datum/container_craft/pan/griddlecakepoisonberry
 	name = "Jacksberry Griddlecake"
-	wildcard_requirements = list(/obj/item/reagent_containers/food/snacks/foodbase/poisonberrygriddlecake_raw = 1)
+	requirements = list(/obj/item/reagent_containers/food/snacks/foodbase/poisonberrygriddlecake_raw = 1)
 	output = /obj/item/reagent_containers/food/snacks/griddlecake/berry_poison
 	cooked_smell = /datum/pollutant/food/griddlecake
 	hides_from_books = TRUE

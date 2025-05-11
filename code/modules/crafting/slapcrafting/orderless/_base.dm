@@ -1,6 +1,7 @@
 ///this is a super simple base compared to slapcrafting
 /datum/orderless_slapcraft
 	var/name = "Generic Recipe"
+	var/category
 	abstract_type = /datum/orderless_slapcraft
 
 	///if set we read this incases of creating radials
@@ -26,7 +27,7 @@
 
 /datum/orderless_slapcraft/Destroy(force, ...)
 	. = ..()
-	hosted_source.in_progress_slapcraft = null
+	hosted_source?.in_progress_slapcraft = null
 	hosted_source = null
 
 /datum/orderless_slapcraft/proc/early_end()
@@ -182,9 +183,9 @@
 			var/first = TRUE
 			var/list/paths = path
 			for(var/atom/sub_path as anything in paths)
-				html += "[icon2html(new sub_path, user)] [count] of any [initial(sub_path.name)]<br>"
 				if(!first)
 					html += "or <br>"
+				html += "[icon2html(new sub_path, user)] [count] of any [initial(sub_path.name)]<br>"
 				first = FALSE
 		else
 			html += "[icon2html(new path, user)] [count] of any [initial(path.name)]<br>"

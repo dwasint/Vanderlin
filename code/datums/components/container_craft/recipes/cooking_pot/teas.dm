@@ -1,4 +1,5 @@
 /datum/container_craft/cooking/tea
+	category = "Teas"
 	abstract_type = /datum/container_craft/cooking/tea
 	pollute_amount = 100
 	finished_smell = /datum/pollutant/food/teas

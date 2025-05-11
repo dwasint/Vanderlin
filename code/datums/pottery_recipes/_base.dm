@@ -1,5 +1,6 @@
 /datum/pottery_recipe
 	abstract_type = /datum/pottery_recipe
+	var/category = "Pottery"
 	var/name
 	///the thing created by the recipe
 	var/atom/created_item

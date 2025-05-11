@@ -2,6 +2,7 @@
 	abstract_type = /datum/container_craft/oven
 	required_container = /obj/machinery/light/fueled/oven
 	crafting_time = 25 SECONDS
+	category = "Oven"
 
 	var/datum/pollutant/cooked_smell
 
@@ -73,6 +74,7 @@
 
 /datum/container_craft/oven/pie
 	abstract_type = /datum/container_craft/oven/pie
+	category = "Pies"
 	var/atom/good_path
 
 /datum/container_craft/oven/pie/create_item(obj/item/crafter, mob/initiator, list/found_optional_requirements, list/found_optional_wildcards, list/found_optional_reagents, list/removing_items)

@@ -1,6 +1,7 @@
 /datum/brewing_recipe
 	abstract_type = /datum/brewing_recipe
-	var/name = "Generic Recipe"
+	var/name = "Alcohols"
+	var/category = "Alcohols"
 	///the type path of the reagent
 	var/reagent_to_brew = /datum/reagent/consumable/ethanol
 	///pre-reqs: Essentially do we need past recipes made of this, uses the reagent_to_brew var to know if this has been done

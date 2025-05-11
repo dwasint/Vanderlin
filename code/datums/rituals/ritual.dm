@@ -107,6 +107,7 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 
 /datum/runerituals
 	abstract_type = /datum/runerituals
+	var/category = "Rituals"
 	var/name
 	var/desc
 	var/list/required_atoms = list()

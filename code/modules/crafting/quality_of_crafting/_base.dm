@@ -2,6 +2,7 @@
 	abstract_type = /datum/repeatable_crafting_recipe
 
 	var/name = "Generic Recipe"
+	var/category
 	var/atom/output
 	var/output_amount = 1
 	var/list/requirements = list()
@@ -61,6 +62,11 @@
 	var/list/pass_types_in_end = list()
 	///this is our extra % added after all skills and such
 	var/extra_chance = 0
+	///do we hide from recipe books
+	var/hides_from_books = FALSE
+	///sound we use for crafting
+	var/crafting_sound
+	var/sound_volume = 40
 
 /**
  * Checks if the recipe can be started with the given items
@@ -662,6 +668,10 @@
 	if(crafting_message)
 		user.visible_message(span_info("[user] [crafting_message]."), span_info("I [crafting_message]."))
 
+	if(crafting_sound)
+		playsound(user, crafting_sound, sound_volume, TRUE, -1)
+	if(crafting_message)
+		to_chat(user, span_notice(crafting_message))
 	if(!do_after(user, craft_time))
 		return FALSE
 

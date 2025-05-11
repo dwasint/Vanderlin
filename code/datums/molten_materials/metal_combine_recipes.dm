@@ -3,6 +3,7 @@ GLOBAL_LIST_INIT(molten_recipes, list())
 /datum/molten_recipe
 	abstract_type = /datum/molten_recipe
 	var/name = "Generic Molten Recipe"
+	var/category = "Metallurgy"
 
 	var/list/materials_required = list()
 	var/list/output = list()
