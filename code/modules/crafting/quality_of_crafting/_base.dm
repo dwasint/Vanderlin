@@ -62,6 +62,14 @@
 	///this is our extra % added after all skills and such
 	var/extra_chance = 0
 
+/**
+ * Checks if the recipe can be started with the given items
+ *
+ * @param {obj/item} attacked_item - The item being acted upon
+ * @param {obj/item} attacking_item - The item the user is using to interact
+ * @param {mob} user - The user attempting to craft
+ * @return {boolean} - TRUE if recipe can start, FALSE otherwise
+ */
 /datum/repeatable_crafting_recipe/proc/check_start(obj/item/attacked_item, obj/item/attacking_item, mob/user)
 	if((!istype(attacked_item, attacked_atom) && !istype(attacked_item, /obj/item/natural/bundle)) || (required_intent && user.used_intent.type != required_intent))
 		return FALSE
@@ -115,6 +123,14 @@
 
 	return !(length(copied_requirements) || length(copied_reagent_requirements) || length(copied_tool_usage))
 
+/**
+ * Checks the maximum number of repeats possible with available resources
+ *
+ * @param {obj/item} attacked_item - The item being acted upon
+ * @param {obj/item} attacking_item - The item the user is using to interact
+ * @param {mob} user - The user attempting to craft
+ * @return {number} - Maximum number of crafts possible
+ */
 /datum/repeatable_crafting_recipe/proc/check_max_repeats(obj/item/attacked_item, obj/item/attacking_item, mob/user)
 	var/list/usable_contents = list()
 	if(uses_attacked_atom)
@@ -146,6 +162,12 @@
 
 	return max_crafts
 
+/**
+ * Gathers usable contents from the user and surroundings
+ *
+ * @param {mob} user - The user attempting to craft
+ * @param {list} usable_contents - List to populate with available items
+ */
 /datum/repeatable_crafting_recipe/proc/gather_usable_contents(mob/user, list/usable_contents)
 	for(var/obj/item/I in user.held_items)
 		if(istype(I, /obj/item/natural/bundle))
@@ -178,6 +200,12 @@
 					usable_contents |= item.type
 					usable_contents[item.type]++
 
+/**
+ * Gathers reagents from containers within reach
+ *
+ * @param {mob} user - The user attempting to craft
+ * @return {list} - List of available reagents and their volumes
+ */
 /datum/repeatable_crafting_recipe/proc/gather_reagents(mob/user)
 	var/list/reagent_values = list()
 
@@ -189,18 +217,40 @@
 
 	return reagent_values
 
+/**
+ * Collects reagents from containers in a list
+ *
+ * @param {list} items - List of items to check for reagents
+ * @param {list} reagent_values - List to populate with reagent data
+ */
 /datum/repeatable_crafting_recipe/proc/collect_reagents_from_containers(list/items, list/reagent_values)
 	for(var/obj/item/reagent_containers/container in items)
 		for(var/datum/reagent/reagent as anything in container.reagents.reagent_list)
 			reagent_values |= reagent.type
 			reagent_values[reagent.type] += reagent.volume
 
+/**
+ * Converts a list of paths to a list of all their subtypes
+ *
+ * @param {list} paths - List of typepaths
+ * @return {list} - List containing all typepaths and their subtypes
+ */
 /datum/repeatable_crafting_recipe/proc/typesof_list(list/paths)
 	var/list/all_types = list()
 	for(var/path in paths)
 		all_types |= typesof(path)
 	return all_types
 
+/**
+ * Processes a bundle item for crafting
+ *
+ * @param {obj/item/natural/bundle} item - The bundle to process
+ * @param {mob} user - The user performing the crafting
+ * @param {list} copied_requirements - Current requirements list
+ * @param {list} to_delete - List of items marked for deletion
+ * @param {list} all_blacklisted - List of blacklisted item types
+ * @return {boolean} - TRUE if processing should stop, FALSE otherwise
+ */
 /datum/repeatable_crafting_recipe/proc/process_bundle(obj/item/natural/bundle/item, mob/user, list/copied_requirements, list/to_delete, list/all_blacklisted)
 	var/early_ass_break = FALSE
 	var/bundle_path = item:stacktype
@@ -221,8 +271,8 @@
 			if(item:amount == 0)
 				qdel(item)
 
-			user.visible_message(span_small("[user] starts grabbing \a [sub_item] from [item]."),
-								span_small("I start grabbing \a [sub_item] from [item]."))
+			user.visible_message(span_info("[user] starts grabbing \a [sub_item] from [item]."),
+								span_info("I start grabbing \a [sub_item] from [item]."))
 
 			if(do_after(user, ground_use_time, sub_item, extra_checks = CALLBACK(user, TYPE_PROC_REF(/atom/movable, CanReach), sub_item)))
 				if(put_items_in_hand)
@@ -243,6 +293,13 @@
 						break
 	return early_ass_break
 
+/**
+ * Handles reagent requirements for crafting
+ *
+ * @param {list} copied_reagent_requirements - Current reagent requirements
+ * @param {mob} user - The user performing the crafting
+ * @return {boolean} - TRUE if successful, FALSE otherwise
+ */
 /datum/repeatable_crafting_recipe/proc/handle_reagent_requirements(list/copied_reagent_requirements, mob/user)
 	var/obj/item/inactive_held = user.get_inactive_held_item()
 
@@ -262,6 +319,18 @@
 
 	return TRUE
 
+/**
+ * Processes a reagent container for crafting
+ *
+ * @param {obj/item/reagent_containers} container - The container to process
+ * @param {list} copied_reagent_requirements - Current reagent requirements
+ * @param {mob} user - The user performing the crafting
+ * @param {atom} return_loc - Location to return container to
+ * @param {boolean} is_storage - Whether the container is from storage
+ * @param {number} stored_pixel_x - Original pixel_x of container
+ * @param {number} stored_pixel_y - Original pixel_y of container
+ * @return {boolean} - TRUE if successful, FALSE otherwise
+ */
 /datum/repeatable_crafting_recipe/proc/process_reagent_container(obj/item/reagent_containers/container, list/copied_reagent_requirements, mob/user, atom/return_loc, is_storage, stored_pixel_x = 0, stored_pixel_y = 0)
 	for(var/required_path as anything in copied_reagent_requirements)
 		var/list/reagent_paths = list(required_path)
@@ -276,8 +345,8 @@
 			if(!reagent_value)
 				continue
 
-			user.visible_message(span_small("[user] starts to incorporate some liquid into [name]."),
-								span_small("You start to pour some liquid into [name]."))
+			user.visible_message(span_info("[user] starts to incorporate some liquid into [name]."),
+								span_info("You start to pour some liquid into [name]."))
 
 			if(put_items_in_hand)
 				var/pickup_time = is_storage ? storage_use_time : ground_use_time
@@ -313,6 +382,13 @@
 
 	return TRUE
 
+/**
+ * Handles tool usage for crafting
+ *
+ * @param {list} copied_tool_usage - Current tool requirements
+ * @param {mob} user - The user performing the crafting
+ * @return {boolean} - TRUE if successful, FALSE otherwise
+ */
 /datum/repeatable_crafting_recipe/proc/handle_tool_usage(list/copied_tool_usage, mob/user)
 	var/obj/item/inactive_held = user.get_inactive_held_item()
 
@@ -342,6 +418,19 @@
 
 	return TRUE
 
+/**
+ * Processes a tool for crafting
+ *
+ * @param {obj/item} potential_tool - The tool to process
+ * @param {typepath} tool_path - The required tool typepath
+ * @param {list} copied_tool_usage - Current tool requirements
+ * @param {mob} user - The user performing the crafting
+ * @param {atom} return_loc - Location to return tool to
+ * @param {boolean} is_storage - Whether the tool is from storage
+ * @param {number} stored_pixel_x - Original pixel_x of tool
+ * @param {number} stored_pixel_y - Original pixel_y of tool
+ * @return {boolean} - TRUE if successful, FALSE otherwise
+ */
 /datum/repeatable_crafting_recipe/proc/process_tool(obj/item/potential_tool, tool_path, list/copied_tool_usage, mob/user, atom/return_loc, is_storage, stored_pixel_x = 0, stored_pixel_y = 0)
 	var/list/tool_path_extra = copied_tool_usage[tool_path]
 
@@ -351,7 +440,7 @@
 			return FALSE
 		user.put_in_active_hand(potential_tool)
 
-	user.visible_message(span_small("[user] [tool_path_extra[1]]."), span_small("You [tool_path_extra[2]]."))
+	user.visible_message(span_info("[user] [tool_path_extra[1]]."), span_info("You [tool_path_extra[2]]."))
 
 	if(length(tool_path_extra) >= 3)
 		playsound(get_turf(user), tool_path_extra[3], 100, FALSE)
@@ -371,6 +460,12 @@
 
 	return TRUE
 
+/**
+ * Gets items from user's storage
+ *
+ * @param {mob} user - The user performing the crafting
+ * @return {list} - List of items in storage
+ */
 /datum/repeatable_crafting_recipe/proc/get_storage_contents(mob/user)
 	var/list/storage_contents = list()
 	var/obj/item/inactive_hand = user.get_inactive_held_item()
@@ -379,6 +474,12 @@
 			storage_contents |= item
 	return storage_contents
 
+/**
+ * Gets items usable for crafting from user and surroundings
+ *
+ * @param {mob} user - The user performing the crafting
+ * @return {list} - List of usable items
+ */
 /datum/repeatable_crafting_recipe/proc/get_usable_contents(mob/user)
 	var/list/usable_contents = list()
 	for(var/obj/item/I in user.held_items)
@@ -391,25 +492,36 @@
 
 	return usable_contents
 
+/**
+ * Starts the crafting process
+ *
+ * @param {obj/item} attacked_item - The item being acted upon
+ * @param {obj/item} attacking_item - The item the user is using to interact
+ * @param {mob} user - The user attempting to craft
+ * @return {boolean} - TRUE if successful, FALSE otherwise
+ */
 /datum/repeatable_crafting_recipe/proc/start_recipe(obj/item/attacked_item, obj/item/attacking_item, mob/user)
 	var/max_crafts = check_max_repeats(attacked_item, attacking_item, user)
-	var/actual_crafts = 1
+	var/requested_crafts = 1
+	var/successful_crafts = 0
 
 	if(max_crafts > 1)
-		actual_crafts = input(user, "How many [name] do you want to craft?", "Repeat Option", max_crafts) as null|num
+		requested_crafts = input(user, "How many [name] do you want to craft?", "Repeat Option", max_crafts) as null|num
 
-	if(!actual_crafts)
+	if(!requested_crafts)
 		return
 
-	actual_crafts = CLAMP(actual_crafts, 1, max_crafts)
+	requested_crafts = CLAMP(requested_crafts, 1, max_crafts)
 
 	if((!istype(attacked_item, attacked_atom) && !istype(attacked_item, /obj/item/natural/bundle)) || (istype(attacked_item, /obj/item/natural/bundle) && !ispath(attacked_item:stacktype, attacked_atom)))
 		return FALSE
 
 	var/list/all_blacklisted = typesof_list(blacklisted_paths)
+	var/attempts = 0
+	var/max_attempts = requested_crafts * 20 // Safety to prevent infinite loops
 
-	while(actual_crafts)
-		actual_crafts--
+	while(successful_crafts < requested_crafts && attempts < max_attempts)
+		attempts++
 
 		var/list/usable_contents = get_usable_contents(user)
 		var/list/storage_contents = get_storage_contents(user)
@@ -438,7 +550,7 @@
 					break
 				continue
 
-			user.visible_message(span_small("[user] starts picking up [item]."), span_small("I start picking up [item]."))
+			user.visible_message(span_info("[user] starts picking up [item]."), span_info("I start picking up [item]."))
 
 			if(do_after(user, ground_use_time, item, extra_checks = CALLBACK(user, TYPE_PROC_REF(/atom/movable, CanReach), item)))
 				if(put_items_in_hand)
@@ -498,17 +610,37 @@
 		// Complete crafting if all requirements met
 		if(crafting_success && !length(copied_requirements) && !length(copied_reagent_requirements) && !length(copied_tool_usage))
 			if(complete_crafting(to_delete, user))
+				successful_crafts++
+				// Let the user know about progress
+				to_chat(user, span_notice("Successfully crafted \a [name]. ([successful_crafts]/[requested_crafts])"))
 				continue
 
 		// Move items back if failed
 		move_items_back(to_delete, user)
-		if(!crafting_success)
-			actual_crafts++
-		else
-			move_products(list(), user)
+
+		// If we failed at some point in the process, ask if they want to continue trying
+		if(!crafting_success && successful_crafts < requested_crafts)
+			var/continue_crafting = alert(user, "Crafting failed. Continue attempting to craft [requested_crafts - successful_crafts] more [name]?", "Continue Crafting?", "Yes", "No")
+			if(continue_crafting != "Yes")
+				break
+
+		// After each successful or failed craft, give the user a moment to react
+		sleep(0.5 SECONDS)
+
+	// Final completion message
+	if(successful_crafts > 0)
+		to_chat(user, span_notice("Finished crafting [successful_crafts] [name][successful_crafts > 1 ? "s" : ""]."))
+	else
+		to_chat(user, span_warning("Failed to craft any [name]."))
 
 	return TRUE
 
+/**
+ * Handles placing active item somewhere safe
+ *
+ * @param {obj/item} active_item - Item currently in active hand
+ * @param {mob} user - The user performing the crafting
+ */
 /datum/repeatable_crafting_recipe/proc/handle_active_item_placement(obj/item/active_item, mob/user)
 	if(!active_item)
 		return
@@ -519,9 +651,16 @@
 
 	user.transferItemToLoc(active_item, get_turf(user), TRUE)
 
+/**
+ * Completes the crafting process
+ *
+ * @param {list} to_delete - List of items to consume
+ * @param {mob} user - The user performing the crafting
+ * @return {boolean} - TRUE if successful, FALSE otherwise
+ */
 /datum/repeatable_crafting_recipe/proc/complete_crafting(list/to_delete, mob/user)
 	if(crafting_message)
-		user.visible_message(span_small("[user] [crafting_message]."), span_small("I [crafting_message]."))
+		user.visible_message(span_info("[user] [crafting_message]."), span_info("I [crafting_message]."))
 
 	if(!do_after(user, craft_time))
 		return FALSE
@@ -558,6 +697,12 @@
 
 	return TRUE
 
+/**
+ * Calculates chance of successful crafting
+ *
+ * @param {mob} user - The user performing the crafting
+ * @return {number} - Percentage chance of success
+ */
 /datum/repeatable_crafting_recipe/proc/calculate_craft_chance(mob/user)
 	var/prob2craft = 25
 
@@ -579,6 +724,12 @@
 
 	return CLAMP(prob2craft, 5, 99)
 
+/**
+ * Calculates chance of failing crafting
+ *
+ * @param {mob} user - The user performing the crafting
+ * @return {number} - Percentage chance of success
+ */
 /datum/repeatable_crafting_recipe/proc/calculate_fail_chance(mob/user)
 	var/prob2fail = 1
 
@@ -591,6 +742,13 @@
 
 	return prob2fail
 
+/**
+ * Creates the output items
+ *
+ * @param {list} to_delete - List of items to delete
+ * @param {mob} user - The user performing the crafting
+ * @return {list} - created outputs
+ */
 /datum/repeatable_crafting_recipe/proc/create_outputs(list/to_delete, mob/user)
 	var/list/outputs = list()
 
