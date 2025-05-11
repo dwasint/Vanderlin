@@ -103,9 +103,6 @@
 	if(current_reader)
 		current_reader << browse(null,"window=recipe")
 		current_reader = null
-		current_recipe = null
-		search_query = ""
-		current_category = "All"
 
 /obj/item/recipe_book/attack_self(mob/user)
 	. = ..()
