@@ -251,3 +251,14 @@
 	screen_max_rows = 1
 	screen_max_columns = 5
 	max_w_class = WEIGHT_CLASS_HUGE
+
+/datum/component/storage/concrete/grid/pan
+	screen_max_rows = 2
+	screen_max_columns = 5
+	max_w_class = WEIGHT_CLASS_HUGE
+
+/datum/component/storage/concrete/grid/pan/New(datum/P, ...)
+	. = ..()
+	set_holdable(list(
+		typecacheof(/obj/item/reagent_containers/food),
+		))

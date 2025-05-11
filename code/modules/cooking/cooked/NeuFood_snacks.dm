@@ -354,7 +354,6 @@
 /obj/item/reagent_containers/food/snacks/foodbase/griddledog_raw
 	name = "uncooked griddledog"
 	desc = "A sausage covered with dough, begging to be fried."
-	fried_type = /obj/item/reagent_containers/food/snacks/cooked/griddledog
 	list_reagents = list(/datum/reagent/consumable/nutriment = SAUSAGE_NUTRITION+BUTTERDOUGHSLICE_NUTRITION)
 	icon_state = "rawgriddledog"
 	tastes = list("savory sausage" = 2, "butterdough" = 1)

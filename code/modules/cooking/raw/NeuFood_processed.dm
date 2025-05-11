@@ -73,7 +73,6 @@
 	desc = "Traveling food invented by dwarves. Said to last for ten yils before spoiling"
 	icon_state = "salumoi5"
 	eat_effect = null
-	fried_type = null
 	slices_num = 4
 	bitesize = 5
 	slice_batch = FALSE
@@ -107,7 +106,6 @@
 	slices_num = 0
 	name = "salumoi"
 	icon_state = "salumoi_slice"
-	fried_type = null
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_POOR)
 	bitesize = 1
 	tastes = list("salted meat" = 1)
@@ -121,7 +119,6 @@
 	base_icon_state = "coppiette"
 	biting = TRUE
 	bitesize = 5
-	fried_type = null
 	tastes = list("salted meat" = 1)
 	rotprocess = null
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
@@ -135,7 +132,6 @@
 	name = "saltfish"
 	icon_state = ""
 	desc = "Dried fish."
-	fried_type = null
 	bitesize = 4
 	slice_path = null
 	tastes = list("salted meat" = 1)

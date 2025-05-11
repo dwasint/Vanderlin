@@ -214,6 +214,8 @@
 	types = list(
 		/datum/brewing_recipe,
 		/datum/container_craft/cooking,
+		/datum/container_craft/oven,
+		/datum/container_craft/pan,
 		/datum/repeatable_crafting_recipe/cooking,
 		/datum/repeatable_crafting_recipe/salami,
 		/datum/repeatable_crafting_recipe/coppiette,

@@ -42,6 +42,7 @@ All foods are distributed among various categories. Use common sense.
 	foodtype = GRAIN
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
 	w_class = WEIGHT_CLASS_SMALL
+	var/transfers_tastes = FALSE
 	var/bitesize = 3 // how many times you need to bite to consume it fully
 	var/bitecount = 0
 	var/trash = null
@@ -54,8 +55,6 @@ All foods are distributed among various categories. Use common sense.
 	var/dry = 0
 	var/dunkable = FALSE // for dunkable food, make true
 	var/dunk_amount = 10 // how much reagent is transferred per dunk
-	var/cooked_type = null  //for overn cooking
-	var/fried_type = null	//instead of becoming
 	var/filling_color = "#FFFFFF" //color to use when added to custom food.
 	var/custom_food_type = null  //for food customizing. path of the custom food to create
 	var/junkiness = 0  //for junk food. used to lower human satiety.
@@ -128,8 +127,6 @@ All foods are distributed among various categories. Use common sense.
 /obj/item/reagent_containers/food/snacks/Initialize()
 	if(rotprocess)
 		SSticker.OnRoundstart(CALLBACK(src, PROC_REF(begin_rotting)))
-	if(cooked_type || fried_type)
-		cooktime = 30 SECONDS
 	..()
 
 /obj/item/reagent_containers/food/snacks/proc/begin_rotting()
@@ -217,26 +214,6 @@ All foods are distributed among various categories. Use common sense.
 	burning(input)
 
 /obj/item/reagent_containers/food/snacks/heating_act(atom/A)
-	if(istype(A,/obj/machinery/light/fueled/oven))
-		var/obj/item/result
-		if(cooked_type)
-			result = new cooked_type(A)
-			if(cooked_smell)
-				result.AddComponent(/datum/component/temporary_pollution_emission, cooked_smell, 20, 5 MINUTES)
-		else
-			result = new /obj/item/reagent_containers/food/snacks/badrecipe(A)
-		initialize_cooked_food(result, 1)
-		return result
-	if(istype(A,/obj/machinery/light/fueled/hearth) || istype(A,/obj/machinery/light/fueled/firebowl) || istype(A,/obj/machinery/light/fueled/campfire))
-		var/obj/item/result
-		if(fried_type)
-			result = new fried_type(A)
-			if(cooked_smell)
-				result.AddComponent(/datum/component/temporary_pollution_emission, cooked_smell, 20, 5 MINUTES)
-		else
-			result = new /obj/item/reagent_containers/food/snacks/badrecipe(A)
-		initialize_cooked_food(result, 1)
-		return result
 	var/obj/item/result = new /obj/item/reagent_containers/food/snacks/badrecipe(A)
 	initialize_cooked_food(result, 1)
 	return result
@@ -631,6 +608,11 @@ All foods are distributed among various categories. Use common sense.
 				S.reagents.add_reagent(r_id, amount)
 			else
 				S.reagents.add_reagent(r_id, amount)
+
+	if(transfers_tastes)
+		S.foodtype |= foodtype
+		S.tastes |= tastes
+
 	S.filling_color = filling_color
 	S.update_snack_overlays(src)
 

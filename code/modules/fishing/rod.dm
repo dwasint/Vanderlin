@@ -672,6 +672,9 @@
 		fisher.mind.adjust_experience(/datum/skill/labor/fishing, clamp(difficulty, 1, 3) * fisher.STAINT)
 		if(ispath(fishtype, /obj/item/reagent_containers/food/snacks/fish))
 			var/obj/item/reagent_containers/food/snacks/caughtfish = new fishtype(get_turf(fisher))
+			if(fishrarity != "com")
+				var/obj/item/reagent_containers/food/snacks/fish/oldfish = caughtfish
+				oldfish.rare = TRUE
 			var/raritydesc
 			var/sizedesc
 
@@ -690,20 +693,6 @@
 						else
 							raritydesc = "common"
 					caughtfish.icon_state = "[caughtfish.icon_state][fishrarity]"
-					if(fishrarity != "com")
-						switch(fishtype)
-							if(/obj/item/reagent_containers/food/snacks/fish/carp)
-								caughtfish.fried_type = /obj/item/reagent_containers/food/snacks/fryfish/carp/rare
-								caughtfish.cooked_type = /obj/item/reagent_containers/food/snacks/fryfish/carp/rare
-							if(/obj/item/reagent_containers/food/snacks/fish/eel)
-								caughtfish.fried_type = /obj/item/reagent_containers/food/snacks/fryfish/eel/rare
-								caughtfish.cooked_type = /obj/item/reagent_containers/food/snacks/fryfish/eel/rare
-							if(/obj/item/reagent_containers/food/snacks/fish/angler)
-								caughtfish.fried_type = /obj/item/reagent_containers/food/snacks/fryfish/angler/rare
-								caughtfish.cooked_type = /obj/item/reagent_containers/food/snacks/fryfish/angler/rare
-							if(/obj/item/reagent_containers/food/snacks/fish/clownfish)
-								caughtfish.fried_type = /obj/item/reagent_containers/food/snacks/fryfish/clownfish/rare
-								caughtfish.cooked_type = /obj/item/reagent_containers/food/snacks/fryfish/clownfish/rare
 				else
 					raritydesc = fishrarity
 

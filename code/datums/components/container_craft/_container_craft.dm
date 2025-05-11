@@ -7,8 +7,6 @@
 	var/datum/callback/on_craft_failed
 	/// Callback when craft is successful
 	var/datum/callback/on_craft_finished
-	/// Whether crafting is currently being attempted
-	var/crafting = FALSE
 
 /**
  * Initialize the component
@@ -35,10 +33,6 @@
  * Attempt to craft all possible recipes
  */
 /datum/component/container_craft/proc/attempt_crafts(datum/source, mob/user)
-	if(crafting)
-		return
-	crafting = TRUE
-
 	var/list/stored_items = list()
 	var/obj/item/host = parent
 	if(!length(host.contents))
@@ -67,5 +61,3 @@
 				for(var/obj/item/item in host.contents)
 					stored_items |= item.type
 					stored_items[item.type]++
-
-	crafting = FALSE

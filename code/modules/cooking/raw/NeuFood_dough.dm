@@ -42,11 +42,10 @@
 	slices_num = 2
 	slice_batch = TRUE
 	slice_path = /obj/item/reagent_containers/food/snacks/dough_slice
-	cooked_type = /obj/item/reagent_containers/food/snacks/bread
-	cooked_smell = /datum/pollutant/food/bread
 	w_class = WEIGHT_CLASS_NORMAL
 	rotprocess = SHELFLIFE_LONG
 	slice_sound = TRUE
+
 /obj/item/reagent_containers/food/snacks/dough/attackby(obj/item/I, mob/living/user, params)
 	..()
 	if(user.mind)
@@ -92,8 +91,6 @@
 	icon_state = "doughslice"
 	slices_num = 0
 	bitesize = 10
-	cooked_type = /obj/item/reagent_containers/food/snacks/bun
-	cooked_smell = /datum/pollutant/food/bun
 	w_class = WEIGHT_CLASS_NORMAL
 	tastes = list("dough" = 1)
 /obj/item/reagent_containers/food/snacks/dough_slice/attackby(obj/item/I, mob/living/user, params)
@@ -192,9 +189,6 @@
 	desc = "A slice of pedigree, to create lines of history."
 	icon_state = "butterdoughslice"
 	slices_num = 0
-	fried_type = /obj/item/reagent_containers/food/snacks/frybread
-	cooked_type = /obj/item/reagent_containers/food/snacks/pastry
-	cooked_smell = /datum/pollutant/food/pastry
 	rotprocess = SHELFLIFE_EXTREME
 	w_class = WEIGHT_CLASS_NORMAL
 /obj/item/reagent_containers/food/snacks/butterdough_slice/attackby(obj/item/I, mob/living/user, params)
@@ -291,7 +285,6 @@
 	name = "raw hardtack"
 	desc = "Doughy, soft, unacceptable."
 	icon_state = "raw_tack"
-	cooked_type = /obj/item/reagent_containers/food/snacks/hardtack
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
 	rotprocess = SHELFLIFE_LONG
@@ -314,10 +307,9 @@
 	desc = "The beginning of greater things to come."
 	icon_state = "piedough"
 	dropshrink = 0.9
-	cooked_type = /obj/item/reagent_containers/food/snacks/foodbase/piebottom
-	cooked_smell = /datum/pollutant/food/pie_base
 	w_class = WEIGHT_CLASS_NORMAL
 	rotprocess = SHELFLIFE_LONG
+
 /obj/item/reagent_containers/food/snacks/piedough/attackby(obj/item/I, mob/living/user, params)
 	if(user.mind)
 		short_cooktime = (50 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*8))
@@ -326,9 +318,6 @@
 		to_chat(user, span_notice("Making a handpie..."))
 		if(do_after(user, short_cooktime, src))
 			var/obj/item/reagent_containers/food/snacks/foodbase/handpieraw/mushroom/handpie= new(get_turf(user))
-			if(user.mind.get_skill_level(/datum/skill/craft/cooking) >= 2)
-				handpie.cooked_type = /obj/item/reagent_containers/food/snacks/handpie/good
-				handpie.fried_type = /obj/item/reagent_containers/food/snacks/handpie/good
 			user.put_in_hands(handpie)
 			user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
 			qdel(I)
@@ -338,9 +327,6 @@
 		to_chat(user, span_notice("Making a handpie..."))
 		if(do_after(user, short_cooktime, src))
 			var/obj/item/reagent_containers/food/snacks/foodbase/handpieraw/mince/handpie= new(get_turf(user))
-			if(user.mind.get_skill_level(/datum/skill/craft/cooking) >= 2)
-				handpie.cooked_type = /obj/item/reagent_containers/food/snacks/handpie/good
-				handpie.fried_type = /obj/item/reagent_containers/food/snacks/handpie/good
 			user.put_in_hands(handpie)
 			user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
 			qdel(I)
@@ -350,9 +336,6 @@
 		to_chat(user, span_notice("Making a handpie..."))
 		if(do_after(user, short_cooktime, src))
 			var/obj/item/reagent_containers/food/snacks/foodbase/handpieraw/poison/handpie= new(get_turf(user))
-			if(user.mind.get_skill_level(/datum/skill/craft/cooking) >= 2)
-				handpie.cooked_type = /obj/item/reagent_containers/food/snacks/handpie/good
-				handpie.fried_type = /obj/item/reagent_containers/food/snacks/handpie/good
 			user.put_in_hands(handpie)
 			user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
 			qdel(I)
@@ -362,9 +345,6 @@
 		to_chat(user, span_notice("Making a handpie..."))
 		if(do_after(user, short_cooktime, src))
 			var/obj/item/reagent_containers/food/snacks/foodbase/handpieraw/apple/handpie= new(get_turf(user))
-			if(user.mind.get_skill_level(/datum/skill/craft/cooking) >= 2)
-				handpie.cooked_type = /obj/item/reagent_containers/food/snacks/handpie/good
-				handpie.fried_type = /obj/item/reagent_containers/food/snacks/handpie/good
 			user.put_in_hands(handpie)
 			user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
 			qdel(I)
@@ -374,9 +354,6 @@
 		to_chat(user, span_notice("Making a handpie..."))
 		if(do_after(user, short_cooktime, src))
 			var/obj/item/reagent_containers/food/snacks/foodbase/handpieraw/cheese/handpie= new(get_turf(user))
-			if(user.mind.get_skill_level(/datum/skill/craft/cooking) >= 2)
-				handpie.cooked_type = /obj/item/reagent_containers/food/snacks/handpie/good
-				handpie.fried_type = /obj/item/reagent_containers/food/snacks/handpie/good
 			user.put_in_hands(handpie)
 			user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
 			qdel(I)
@@ -386,9 +363,6 @@
 		to_chat(user, span_notice("Making a handpie..."))
 		if(do_after(user, short_cooktime, src))
 			var/obj/item/reagent_containers/food/snacks/foodbase/handpieraw/cheese/handpie= new(get_turf(user))
-			if(user.mind.get_skill_level(/datum/skill/craft/cooking) >= 2)
-				handpie.cooked_type = /obj/item/reagent_containers/food/snacks/handpie/good
-				handpie.fried_type = /obj/item/reagent_containers/food/snacks/handpie/good
 			user.put_in_hands(handpie)
 			user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
 			qdel(I)
@@ -398,9 +372,6 @@
 		to_chat(user, span_notice("Making a handpie..."))
 		if(do_after(user, short_cooktime, src))
 			var/obj/item/reagent_containers/food/snacks/foodbase/handpieraw/cheese/handpie= new(get_turf(user))
-			if(user.mind.get_skill_level(/datum/skill/craft/cooking) >= 2)
-				handpie.cooked_type = /obj/item/reagent_containers/food/snacks/handpie/good
-				handpie.fried_type = /obj/item/reagent_containers/food/snacks/handpie/good
 			user.put_in_hands(handpie)
 			user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
 			qdel(I)
@@ -410,9 +381,6 @@
 		to_chat(user, span_notice("Making a handpie..."))
 		if(do_after(user, short_cooktime, src))
 			var/obj/item/reagent_containers/food/snacks/foodbase/handpieraw/berry/handpie= new(get_turf(user))
-			if(user.mind.get_skill_level(/datum/skill/craft/cooking) >= 2)
-				handpie.cooked_type = /obj/item/reagent_containers/food/snacks/handpie/good
-				handpie.fried_type = /obj/item/reagent_containers/food/snacks/handpie/good
 			user.put_in_hands(handpie)
 			user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
 			qdel(I)
@@ -471,8 +439,6 @@
 	name = "sliced bread"
 	desc = "A bit of comfort to start your dae."
 	icon_state = "loaf_slice"
-	cooked_type = /obj/item/reagent_containers/food/snacks/breadslice/toast
-	cooked_smell = /datum/pollutant/food/toast
 	list_reagents = list(/datum/reagent/consumable/nutriment = BREADSLICE_NUTRITION)
 	rotprocess = SHELFLIFE_LONG
 	dropshrink = 0.8
@@ -558,7 +524,6 @@
 	name = "toasted bread"
 	icon_state = "toast"
 	tastes = list("crispy bread" = 1)
-	cooked_type = /obj/item/reagent_containers/food/snacks/badrecipe
 	rotprocess = SHELFLIFE_EXTREME
 
 /obj/item/reagent_containers/food/snacks/stale_bread
@@ -583,8 +548,6 @@
 	name = "dough of raisins"
 	icon_state = "dough_raisin"
 	slices_num = 0
-	cooked_type = /obj/item/reagent_containers/food/snacks/bread/raisin
-	cooked_smell = /datum/pollutant/food/raisin_bread
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
 	w_class = WEIGHT_CLASS_NORMAL
 
@@ -604,8 +567,6 @@
 	name = "loaf of raisins"
 	icon_state = "raisinbreaduncooked"
 	slices_num = 0
-	cooked_type = /obj/item/reagent_containers/food/snacks/bread/raisin/poison
-	cooked_smell = /datum/pollutant/food/raisin_bread
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/berrypoison = 12)
 	w_class = WEIGHT_CLASS_NORMAL
 
@@ -627,7 +588,6 @@
 	name = "raisin loaf slice"
 	icon_state = "raisinbread_slice"
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_POOR, /datum/reagent/berrypoison = 4)
-	cooked_type = /obj/item/reagent_containers/food/snacks/badrecipe
 	tastes = list("bread" = 1,"dried fruit" = 1)
 	rotprocess = SHELFLIFE_LONG
 
@@ -680,8 +640,6 @@
 	name = "raw cheese bun"
 	desc = "Portable, quaint and entirely consumable"
 	icon_state = "cheesebun_raw"
-	cooked_type = /obj/item/reagent_containers/food/snacks/cheesebun
-	cooked_smell = /datum/pollutant/food/cheese_bun
 	list_reagents = list(/datum/reagent/consumable/nutriment = 4)
 	w_class = WEIGHT_CLASS_NORMAL
 	foodtype = GRAIN | DAIRY
@@ -731,12 +689,9 @@
 /obj/item/reagent_containers/food/snacks/foodbase/biscuit_raw
 	name = "uncooked raisin biscuit"
 	icon_state = "biscuit_raw"
-	cooked_type = /obj/item/reagent_containers/food/snacks/biscuit
-	cooked_smell = /datum/pollutant/food/biscuit
 	eat_effect = null
 	rotprocess = SHELFLIFE_EXTREME
 /obj/item/reagent_containers/food/snacks/foodbase/biscuit_raw/good
-	cooked_type = /obj/item/reagent_containers/food/snacks/biscuit/good
 
 /obj/item/reagent_containers/food/snacks/biscuit
 	name = "biscuit"
@@ -757,8 +712,6 @@
 /obj/item/reagent_containers/food/snacks/foodbase/biscuitpoison_raw
 	name = "uncooked raisin biscuit"
 	icon_state = "biscuit_raw"
-	cooked_type = /obj/item/reagent_containers/food/snacks/biscuit_poison
-	cooked_smell = /datum/pollutant/food/biscuit
 	eat_effect = null
 	rotprocess = SHELFLIFE_EXTREME
 
@@ -777,12 +730,10 @@
 	name = "uncooked prezzel"
 	icon_state = "prezzel_raw"
 	dropshrink = 0.8
-	cooked_type = /obj/item/reagent_containers/food/snacks/prezzel
-	cooked_smell = /datum/pollutant/food/prezzel
 	eat_effect = null
 	rotprocess = SHELFLIFE_LONG
+
 /obj/item/reagent_containers/food/snacks/foodbase/prezzel_raw/good
-	cooked_type = /obj/item/reagent_containers/food/snacks/prezzel/good
 
 /obj/item/reagent_containers/food/snacks/prezzel
 	name = "lacklustre prezzel"
@@ -808,13 +759,10 @@
 	name = "uncooked apple fritter"
 	icon_state = "applefritterraw"
 	dropshrink = 0.8
-	cooked_type = /obj/item/reagent_containers/food/snacks/fritter
-	fried_type = /obj/item/reagent_containers/food/snacks/fritter
-	cooked_smell = /datum/pollutant/food/fritter
 	eat_effect = null
 	rotprocess = SHELFLIFE_LONG
+
 /obj/item/reagent_containers/food/snacks/foodbase/fritter_raw/good
-	cooked_type = /obj/item/reagent_containers/food/snacks/fritter/good
 
 /obj/item/reagent_containers/food/snacks/fritter
 	name = "apple fritter"
@@ -1004,8 +952,6 @@
 	icon_state = "honeycakeuncook"
 	dropshrink = 0.8
 	slices_num = 0
-	cooked_type = /obj/item/reagent_containers/food/snacks/zybcake_cooked
-	cooked_smell = /datum/pollutant/food/honey_cake
 	w_class = WEIGHT_CLASS_NORMAL
 	rotprocess = SHELFLIFE_DECENT
 
@@ -1048,8 +994,6 @@
 	icon_state = "cheesecakeuncook"
 	dropshrink = 0.8
 	slices_num = 0
-	cooked_type = /obj/item/reagent_containers/food/snacks/cheesecake_cooked
-	cooked_smell = /datum/pollutant/food/cheese_cake
 	w_class = WEIGHT_CLASS_NORMAL
 	rotprocess = SHELFLIFE_DECENT
 
@@ -1058,8 +1002,6 @@
 	icon_state = "cheesecakeuncook"
 	dropshrink = 0.8
 	slices_num = 0
-	cooked_type = /obj/item/reagent_containers/food/snacks/cheesecake_poison_cooked
-	cooked_smell = /datum/pollutant/food/cheese_cake
 	w_class = WEIGHT_CLASS_NORMAL
 	rotprocess = SHELFLIFE_DECENT
 
@@ -1163,8 +1105,6 @@
 	icon_state = "strawberrycakeuncooked"
 	dropshrink = 0.8
 	slices_num = 0
-	cooked_type = /obj/item/reagent_containers/food/snacks/strawbycake_cooked
-	cooked_smell = /datum/pollutant/food/strawberry_cake
 	w_class = WEIGHT_CLASS_NORMAL
 	rotprocess = SHELFLIFE_DECENT
 
@@ -1230,8 +1170,6 @@
 	name = "unbaked crimson pine cake"
 	icon_state = "crimsonpinecakeraw"
 	slices_num = 0
-	cooked_type = /obj/item/reagent_containers/food/snacks/crimsoncake_cooked
-	cooked_smell = /datum/pollutant/food/crimson_cake
 	w_class = WEIGHT_CLASS_NORMAL
 	rotprocess = SHELFLIFE_DECENT
 
@@ -1296,8 +1234,6 @@
 	icon_state = "tangerinecakeraw"
 	dropshrink = 0.9
 	slices_num = 0
-	cooked_type = /obj/item/reagent_containers/food/snacks/tangerinecake_cooked
-	cooked_smell = /datum/pollutant/food/strawberry_cake
 	w_class = WEIGHT_CLASS_NORMAL
 	rotprocess = SHELFLIFE_DECENT
 
@@ -1341,8 +1277,6 @@
 /obj/item/reagent_containers/food/snacks/foodbase/scone_raw
 	name = "unbaked scone"
 	icon_state = "uncookedsconebase"
-	cooked_type = /obj/item/reagent_containers/food/snacks/scone
-	cooked_smell = /datum/pollutant/food/scone
 	rotprocess = SHELFLIFE_EXTREME
 	eat_effect = null
 /obj/item/reagent_containers/food/snacks/foodbase/scone_raw/attackby(obj/item/I, mob/living/user, params)
@@ -1384,8 +1318,6 @@
 /obj/item/reagent_containers/food/snacks/foodbase/scone_raw_tangerine
 	name = "unbaked tangerine scone"
 	icon_state = "uncookedtangerinescone"
-	cooked_type = /obj/item/reagent_containers/food/snacks/scone_tangerine
-	cooked_smell = /datum/pollutant/food/scone
 	rotprocess = SHELFLIFE_EXTREME
 	eat_effect = null
 
@@ -1403,8 +1335,6 @@
 /obj/item/reagent_containers/food/snacks/foodbase/scone_raw_plum
 	name = "unbaked plum scone"
 	icon_state = "uncookedplumscone"
-	cooked_type = /obj/item/reagent_containers/food/snacks/scone_plum
-	cooked_smell = /datum/pollutant/food/scone
 	rotprocess = SHELFLIFE_EXTREME
 	eat_effect = null
 
@@ -1426,8 +1356,6 @@
 /obj/item/reagent_containers/food/snacks/foodbase/griddlecake_raw
 	name = "raw griddlecake"
 	icon_state = "rawgriddlecake"
-	fried_type = /obj/item/reagent_containers/food/snacks/griddlecake
-	cooked_smell = /datum/pollutant/food/griddlecake
 	rotprocess = SHELFLIFE_LONG
 	eat_effect = null
 
@@ -1487,8 +1415,6 @@
 /obj/item/reagent_containers/food/snacks/foodbase/lemongriddlecake_raw
 	name = "raw lemon griddlecake"
 	icon_state = "rawgriddlecakelemon"
-	fried_type = /obj/item/reagent_containers/food/snacks/griddlecake/lemon
-	cooked_smell = /datum/pollutant/food/griddlecake
 	rotprocess = SHELFLIFE_LONG
 	eat_effect = null
 
@@ -1508,8 +1434,6 @@
 /obj/item/reagent_containers/food/snacks/foodbase/applegriddlecake_raw
 	name = "raw apple griddlecake"
 	icon_state = "rawgriddlecakeapple"
-	fried_type = /obj/item/reagent_containers/food/snacks/griddlecake/apple
-	cooked_smell = /datum/pollutant/food/griddlecake
 	rotprocess = SHELFLIFE_LONG
 	eat_effect = null
 
@@ -1529,8 +1453,6 @@
 /obj/item/reagent_containers/food/snacks/foodbase/berrygriddlecake_raw
 	name = "raw jacksberry griddlecake"
 	icon_state = "rawgriddlecakeberry"
-	fried_type = /obj/item/reagent_containers/food/snacks/griddlecake/berry
-	cooked_smell = /datum/pollutant/food/griddlecake
 	rotprocess = SHELFLIFE_LONG
 	eat_effect = null
 
@@ -1548,8 +1470,6 @@
 /obj/item/reagent_containers/food/snacks/foodbase/poisonberrygriddlecake_raw
 	name = "raw jacksberry griddlecake"
 	icon_state = "rawgriddlecakeberry"
-	fried_type = /obj/item/reagent_containers/food/snacks/griddlecake/berry_poison
-	cooked_smell = /datum/pollutant/food/griddlecake
 	rotprocess = SHELFLIFE_LONG
 	eat_effect = null
 

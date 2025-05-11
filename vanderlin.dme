@@ -694,6 +694,7 @@
 #include "code\datums\components\container_craft\recipes\cooking_pot\teas.dm"
 #include "code\datums\components\container_craft\recipes\cooking_pot\unsorted.dm"
 #include "code\datums\components\container_craft\recipes\cooking_pot\yuck_soup.dm"
+#include "code\datums\components\container_craft\recipes\oven\_basic_oven.dm"
 #include "code\datums\components\container_craft\recipes\pan\_basic_pan.dm"
 #include "code\datums\components\crafting\crafting.dm"
 #include "code\datums\components\crafting\recipes.dm"

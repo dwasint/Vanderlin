@@ -14,6 +14,11 @@
 	var/lastsmoke = 0
 	var/need_underlay_update = TRUE
 
+/obj/machinery/light/fueled/oven/Initialize()
+	. = ..()
+	AddComponent(/datum/component/storage/concrete/grid/pan)
+	AddComponent(/datum/component/container_craft, subtypesof(/datum/container_craft/oven))
+
 /obj/machinery/light/fueled/oven/OnCrafted(dirin, mob/user)
 	dir = turn(dirin, 180)
 	. = ..()

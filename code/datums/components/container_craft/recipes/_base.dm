@@ -112,7 +112,7 @@ GLOBAL_LIST_INIT(container_craft_to_singleton, init_container_crafts())
 			else if(potential_multiplier < highest_multiplier)
 				highest_multiplier = potential_multiplier
 			if(potential_multiplier > 0)
-				fake_wildcards -= path
+				fake_wildcards -= wildcard
 				pathed_items -= path
 				continue
 		if(path in fake_requirements)
@@ -298,20 +298,22 @@ GLOBAL_LIST_INIT(container_craft_to_singleton, init_container_crafts())
 					items_to_delete += candidate_item
 					amount_to_remove--
 
-		// Remove all tracked items
 		for(var/obj/item/item_to_delete in items_to_delete)
 			SEND_SIGNAL(crafter, COMSIG_TRY_STORAGE_TAKE, item_to_delete, get_turf(crafter))
+
+		create_item(crafter, initiator, found_optional_requirements, found_optional_wildcards, found_optional_reagents, items_to_delete)
+
+		// Remove all tracked items
+		for(var/obj/item/item_to_delete in items_to_delete)
 			qdel(item_to_delete)
 
-		create_item(crafter, initiator, found_optional_requirements, found_optional_wildcards, found_optional_reagents)
-
-/datum/container_craft/proc/create_item(obj/item/crafter, mob/initiator, list/found_optional_requirements, list/found_optional_wildcards, list/found_optional_reagents)
+/datum/container_craft/proc/create_item(obj/item/crafter, mob/initiator, list/found_optional_requirements, list/found_optional_wildcards, list/found_optional_reagents, list/removing_items)
 	for(var/j = 1 to output_amount)
 		var/atom/created_output = new output(get_turf(crafter))
 		SEND_SIGNAL(crafter, COMSIG_TRY_STORAGE_INSERT, created_output, null, null, TRUE, TRUE)
-		after_craft(created_output, crafter, initiator, found_optional_requirements, found_optional_wildcards, found_optional_reagents)
+		after_craft(created_output, crafter, initiator, found_optional_requirements, found_optional_wildcards, found_optional_reagents, removing_items)
 
-/datum/container_craft/proc/after_craft(atom/created_output, obj/item/crafter, mob/initiator, list/found_optional_requirements, list/found_optional_wildcards, list/found_optional_reagents)
+/datum/container_craft/proc/after_craft(atom/created_output, obj/item/crafter, mob/initiator, list/found_optional_requirements, list/found_optional_wildcards, list/found_optional_reagents, list/removing_items)
 	// This is an extension point for specific crafting types to do additional processing
 	// basically used exclusively for optional requirements
 	return

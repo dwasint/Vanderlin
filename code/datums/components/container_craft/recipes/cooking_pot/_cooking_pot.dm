@@ -54,7 +54,7 @@
 
 
 
-/datum/container_craft/cooking/after_craft(atom/created_output, obj/item/crafter, mob/initiator, list/found_optional_requirements, list/found_optional_wildcards, list/found_optional_reagents)
+/datum/container_craft/cooking/after_craft(atom/created_output, obj/item/crafter, mob/initiator, list/found_optional_requirements, list/found_optional_wildcards, list/found_optional_reagents, list/removing_items)
 	. = ..()
 	var/datum/reagent/found_product = crafter.reagents.get_reagent(created_reagent)
 

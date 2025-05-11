@@ -16,7 +16,7 @@
 	pollute_amount = 100
 	water_conversion = 0.45
 
-/datum/container_craft/cooking/drugs/drukqs/after_craft(atom/created_output, obj/item/crafter, mob/initiator, list/found_optional_requirements, list/found_optional_wildcards, list/found_optional_reagents)
+/datum/container_craft/cooking/drugs/drukqs/after_craft(atom/created_output, obj/item/crafter, mob/initiator, list/found_optional_requirements, list/found_optional_wildcards, list/found_optional_reagents, list/removing_items)
 	. = ..()
 	var/remaining_water = crafter.reagents.get_reagent_amount(/datum/reagent/water) - CEILING(crafter.reagents.get_reagent_amount(/datum/reagent/water) * water_conversion, 1)
 	crafter.reagents.add_reagent(/datum/reagent/water/spicy, remaining_water)
@@ -31,7 +31,7 @@
 	pollute_amount = 100
 	water_conversion = 0.45
 
-/datum/container_craft/cooking/drugs/ozium/after_craft(atom/created_output, obj/item/crafter, mob/initiator, list/found_optional_requirements, list/found_optional_wildcards, list/found_optional_reagents)
+/datum/container_craft/cooking/drugs/ozium/after_craft(atom/created_output, obj/item/crafter, mob/initiator, list/found_optional_requirements, list/found_optional_wildcards, list/found_optional_reagents, list/removing_items)
 	. = ..()
 	var/remaining_water = crafter.reagents.get_reagent_amount(/datum/reagent/water) - CEILING(crafter.reagents.get_reagent_amount(/datum/reagent/water) * water_conversion, 1)
 	crafter.reagents.add_reagent(/datum/reagent/water/spicy, remaining_water)
@@ -46,7 +46,7 @@
 	pollute_amount = 100
 	water_conversion = 0.45
 
-/datum/container_craft/cooking/drugs/moondust/after_craft(atom/created_output, obj/item/crafter, mob/initiator, list/found_optional_requirements, list/found_optional_wildcards, list/found_optional_reagents)
+/datum/container_craft/cooking/drugs/moondust/after_craft(atom/created_output, obj/item/crafter, mob/initiator, list/found_optional_requirements, list/found_optional_wildcards, list/found_optional_reagents, list/removing_items)
 	. = ..()
 	var/remaining_water = crafter.reagents.get_reagent_amount(/datum/reagent/water) - CEILING(crafter.reagents.get_reagent_amount(/datum/reagent/water) * water_conversion, 1)
 	crafter.reagents.add_reagent(/datum/reagent/water/spicy, remaining_water)
@@ -61,7 +61,7 @@
 	pollute_amount = 100
 	water_conversion = 0.45
 
-/datum/container_craft/cooking/drugs/moondust_purest/after_craft(atom/created_output, obj/item/crafter, mob/initiator, list/found_optional_requirements, list/found_optional_wildcards, list/found_optional_reagents)
+/datum/container_craft/cooking/drugs/moondust_purest/after_craft(atom/created_output, obj/item/crafter, mob/initiator, list/found_optional_requirements, list/found_optional_wildcards, list/found_optional_reagents, list/removing_items)
 	. = ..()
 	var/remaining_water = crafter.reagents.get_reagent_amount(/datum/reagent/water) - CEILING(crafter.reagents.get_reagent_amount(/datum/reagent/water) * water_conversion, 1)
 	crafter.reagents.add_reagent(/datum/reagent/water/spicy, remaining_water)
