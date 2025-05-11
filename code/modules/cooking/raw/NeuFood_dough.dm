@@ -793,6 +793,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	foodtype = GRAIN | DAIRY
 	rotprocess = SHELFLIFE_LONG
+
 /obj/item/reagent_containers/food/snacks/cake/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
 	if(user.mind)
