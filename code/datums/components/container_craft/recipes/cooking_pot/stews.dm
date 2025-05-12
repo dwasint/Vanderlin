@@ -81,7 +81,7 @@
 /datum/container_craft/cooking/generic_meat_stew //this is a generic so its removed from the subtypes of and added back so its always bottom of the list
 	name = "Meat Stew"
 	created_reagent = /datum/reagent/consumable/soup/stew/meat
-	requirements = list(/obj/item/reagent_containers/food/snacks/meat = 1)
+	wildcard_requirements = list(/obj/item/reagent_containers/food/snacks/meat = 1)
 	max_optionals = 2
 	optional_wildcard_requirements = list(
 		/obj/item/reagent_containers/food/snacks/produce/vegetable = 2

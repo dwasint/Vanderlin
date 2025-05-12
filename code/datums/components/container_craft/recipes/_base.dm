@@ -382,7 +382,6 @@ GLOBAL_LIST_INIT(container_craft_to_singleton, init_container_crafts())
 			<h1>[name]</h1>
 			<div class="requirements">
 			  <h2>Requirements</h2>
-			  <br>
 	"}
 
 	// Add required items
@@ -392,7 +391,7 @@ GLOBAL_LIST_INIT(container_craft_to_singleton, init_container_crafts())
 
 	// Add required reagents
 	if(length(reagent_requirements))
-		html += "<div class='reagents'><strong>Required Reagents:</strong><br>"
+		html += "<div class='reagents'><strong>Required Liquids:</strong><br>"
 		for(var/reagent_type in reagent_requirements)
 			var/reagent_amount = reagent_requirements[reagent_type]
 			var/datum/reagent/R = new reagent_type
