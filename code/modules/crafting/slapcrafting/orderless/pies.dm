@@ -23,7 +23,7 @@
 	hosted_source.add_overlay(fill_state)
 
 /datum/orderless_slapcraft/pie/fish
-	name = "fish pie"
+	name = "Unbaked Fish Pie"
 	requirements = list(
 		/obj/item/reagent_containers/food/snacks/meat/mince/fish = 2,
 		list(
@@ -33,7 +33,7 @@
 	output_item = /obj/item/reagent_containers/food/snacks/raw_pie/fish
 
 /datum/orderless_slapcraft/pie/pot
-	name = "pot pie"
+	name = "Unbaked Pot Pie"
 	requirements = list(
 		list(
 			/obj/item/reagent_containers/food/snacks/cheese_wedge,
@@ -56,7 +56,7 @@
 	output_item = /obj/item/reagent_containers/food/snacks/raw_pie/pot_pie
 
 /datum/orderless_slapcraft/pie/apple
-	name = "apple pie"
+	name = "Unbaked Apple Pie"
 	requirements = list(
 		/obj/item/reagent_containers/food/snacks/produce/fruit/apple = 3
 	)
@@ -64,7 +64,7 @@
 	output_item = /obj/item/reagent_containers/food/snacks/raw_pie/apple
 
 /datum/orderless_slapcraft/pie/pear
-	name = "pear pie"
+	name = "Unbaked Pear Pie"
 	requirements = list(
 		/obj/item/reagent_containers/food/snacks/produce/fruit/pear = 3
 	)
@@ -72,7 +72,7 @@
 	output_item = /obj/item/reagent_containers/food/snacks/raw_pie/pear
 
 /datum/orderless_slapcraft/pie/berry
-	name = "berry pie"
+	name = "Unbaked Berry Pie"
 	requirements = list(
 		list(
 			/obj/item/reagent_containers/food/snacks/produce/fruit/jacksberry/poison,
@@ -87,7 +87,7 @@
 		output_item = /obj/item/reagent_containers/food/snacks/raw_pie/berry/poison
 
 /datum/orderless_slapcraft/pie/meat
-	name = "meat pie"
+	name = "Unbaked Meat Pie"
 	requirements = list(
 		/obj/item/reagent_containers/food/snacks/meat/mince/beef = 2,
 		list(

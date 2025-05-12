@@ -638,7 +638,10 @@
 	icon_state ="book7_0"
 	base_icon_state = "book7"
 
-	types = list(/datum/repeatable_crafting_recipe/sewing)
+	types = list(
+		/datum/repeatable_crafting_recipe/sewing,
+		/datum/orderless_slapcraft/flowercrown,
+		)
 
 /obj/item/recipe_book/cooking
 	name = "The Hearthstone Grimoire: Culinary Secrets of the Realm"

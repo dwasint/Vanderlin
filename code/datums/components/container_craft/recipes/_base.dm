@@ -354,17 +354,18 @@ GLOBAL_LIST_INIT(container_craft_to_singleton, init_container_crafts())
 				background-repeat: no-repeat;
 				background-attachment: fixed;
 				background-size: 100% 100%;
+
 			}
 			h1 {
 				text-align: center;
-				font-size: 2.5em;
+				font-size: 2em;
 				border-bottom: 2px solid #3e2723;
 				padding-bottom: 10px;
-				margin-bottom: 20px;
+				margin-bottom: 10px;
 			}
 			.icon {
-				width: 96px;
-				height: 96px;
+				width: 64px;
+				height: 64px;
 				vertical-align: middle;
 				margin-right: 10px;
 			}
@@ -380,7 +381,7 @@ GLOBAL_LIST_INIT(container_craft_to_singleton, init_container_crafts())
 		  <div>
 			<h1>[name]</h1>
 			<div class="requirements">
-			  <strong>Requirements</strong>
+			  <h2>Requirements</h2>
 			  <br>
 	"}
 
@@ -438,7 +439,7 @@ GLOBAL_LIST_INIT(container_craft_to_singleton, init_container_crafts())
 	html += "<strong class='scroll'>After [craft_verb][crafting_time * 0.1] Seconds<br>"
 	if(required_container)
 		var/obj/item/new_container = new required_container
-		html += "<strong class='scroll'>inside of a [initial(new_container.name)]<br> [icon2html(new_container, user)] <br>"
+		html += "[icon2html(new_container, user)] <strong class='scroll'>inside of a [initial(new_container.name)]<br>"
 		qdel(new_container)
 
 	// Result information

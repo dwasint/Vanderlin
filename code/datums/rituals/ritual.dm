@@ -153,14 +153,14 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 			}
 			h1 {
 				text-align: center;
-				font-size: 2.5em;
+				font-size: 2em;
 				border-bottom: 2px solid #3e2723;
 				padding-bottom: 10px;
-				margin-bottom: 20px;
+				margin-bottom: 10px;
 			}
 			.icon {
-				width: 96px;
-				height: 96px;
+				width: 64px;
+				height: 64px;
 				vertical-align: middle;
 				margin-right: 10px;
 			}
@@ -169,9 +169,9 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 		  <div>
 		    <h1>[name]</h1>
 		    <div>
-			  <strong>Complexity Tier: [tier] </strong>
+			  <h2>Complexity Tier: [tier] </h2>
 			  <br>
-			  <strong>Requirements</strong>
+			  <h2>Requirements</h2>
 			  <br>
 		"}
 
@@ -181,6 +181,7 @@ GLOBAL_LIST_INIT(t2buffrunerituallist, generate_t2buff_rituallist())
 			var/count = required_atoms[path]
 			html += "[icon2html(new path, user)] [count] counts of [initial(path.name)]<br>"
 
+	html += "<h1>Steps</h1>"
 	html += "To start any ritual draw the required rune with Arcyne Chalk, then supply with the above items."
 	html += {"
 		</div>

@@ -161,27 +161,6 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	slice_sound = TRUE
 	rotprocess = SHELFLIFE_EXTREME
-/obj/item/reagent_containers/food/snacks/butterdough/attackby(obj/item/I, mob/living/user, params)
-	..()
-	var/found_table = locate(/obj/structure/table) in (loc)
-	if(user.mind)
-		short_cooktime = (50 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*8))
-		long_cooktime = (90 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*15))
-	if(isturf(loc)&& (found_table))
-		if(istype(I, /obj/item/reagent_containers/food/snacks/egg))
-			if(user.mind.get_skill_level(/datum/skill/craft/cooking) <= 2) // cooks with less than 2 skill don´t know this recipe
-				to_chat(user, span_warning("Cakes are not for the likes of you."))
-				return
-			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Working egg into the dough, shaping it into a cake..."))
-			playsound(get_turf(user), 'sound/foley/eggbreak.ogg', 100, TRUE, -1)
-			if(do_after(user,long_cooktime, src))
-				new /obj/item/reagent_containers/food/snacks/cake(loc)
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
-				qdel(I)
-				qdel(src)
-	else
-		to_chat(user, span_warning("Put [src] on a table before working it!"))
 
 /*	.................   Butterdough piece   ................... */
 /obj/item/reagent_containers/food/snacks/butterdough_slice
@@ -191,6 +170,7 @@
 	slices_num = 0
 	rotprocess = SHELFLIFE_EXTREME
 	w_class = WEIGHT_CLASS_NORMAL
+
 /obj/item/reagent_containers/food/snacks/butterdough_slice/attackby(obj/item/I, mob/living/user, params)
 	..()
 	if(user.mind)
@@ -204,14 +184,6 @@
 				new /obj/item/reagent_containers/food/snacks/piedough(loc)
 				user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
 				qdel(src)
-		if(istype(I, /obj/item/reagent_containers/food/snacks/raisins/poison))
-			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Adding raisins to the dough..."))
-			if(do_after(user, short_cooktime, src))
-				new /obj/item/reagent_containers/food/snacks/foodbase/biscuitpoison_raw(loc)
-				qdel(I)
-				qdel(src)
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
 		if(I.get_sharpness())
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
 			to_chat(user, span_notice("Cutting the dough in strips and making a prezzel..."))
@@ -222,17 +194,7 @@
 					new /obj/item/reagent_containers/food/snacks/foodbase/prezzel_raw(loc)
 				qdel(src)
 				user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
-		if(istype(I, /obj/item/reagent_containers/food/snacks/sugar))
-			if(user.mind.get_skill_level(/datum/skill/craft/cooking) <= 2) // cooks with less than 2 skill don´t know this recipe
-				to_chat(user, span_warning("Scones are much too fancy for you."))
-				return
-			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Adding sugar to the dough..."))
-			if(do_after(user, short_cooktime, src))
-				new /obj/item/reagent_containers/food/snacks/foodbase/scone_raw(loc)
-				qdel(I)
-				qdel(src)
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
+
 		if(istype(I, /obj/item/reagent_containers/food/snacks/produce/fruit/apple) || istype(I, /obj/item/reagent_containers/food/snacks/apple_dried))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
 			to_chat(user, span_notice("Adding apple bits to the dough..."))
@@ -244,6 +206,7 @@
 				qdel(src)
 				qdel(I)
 				user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
+
 		if(istype(I, /obj/item/reagent_containers/food/snacks/cooked/sausage_sticked))
 			playsound(get_turf(user), 'sound/foley/kneading_alt.ogg', 90, TRUE, -1)
 			to_chat(user, span_notice("Covering sausage with dough..."))
@@ -264,17 +227,6 @@
 				user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
 				qdel(I)
 				qdel(src)
-		else if(istype(I, /obj/item/reagent_containers/food/snacks/raisins))
-			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Adding raisins to the dough..."))
-			if(do_after(user, short_cooktime, src))
-				if(user.mind.get_skill_level(/datum/skill/craft/cooking) >= 2)
-					new /obj/item/reagent_containers/food/snacks/foodbase/biscuit_raw/good(loc)
-				else
-					new /obj/item/reagent_containers/food/snacks/foodbase/biscuit_raw(loc)
-				qdel(I)
-				qdel(src)
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
 	else
 		to_chat(user, span_warning("Put [src] on a table before working it!"))
 

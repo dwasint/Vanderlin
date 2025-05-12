@@ -156,14 +156,14 @@
 			}
 			h1 {
 				text-align: center;
-				font-size: 2.5em;
+				font-size: 2em;
 				border-bottom: 2px solid #3e2723;
 				padding-bottom: 10px;
-				margin-bottom: 20px;
+				margin-bottom: 10px;
 			}
 			.icon {
-				width: 96px;
-				height: 96px;
+				width: 64px;
+				height: 64px;
 				vertical-align: middle;
 				margin-right: 10px;
 			}
@@ -172,10 +172,8 @@
 		  <div>
 		    <h1>[name]</h1>
 		    <div>
-		      <strong>Requirements</strong>
-			  <br>
 		"}
-	html += "<strong class=class='scroll'>start the process with</strong> <br>[icon2html(new starting_item, user)] <br> [initial(starting_item.name)]<br>"
+	html += "[icon2html(new starting_item, user)] <strong class=class='scroll'>Start the process with [initial(starting_item.name)]</strong><br>"
 	html += "<strong> then add </strong> <br>"
 	for(var/atom/path as anything in requirements)
 		var/count = requirements[path]
@@ -195,7 +193,8 @@
 		<div>
 		"}
 
-	html += "<strong class=class='scroll'>finish with</strong> <br> [icon2html(new finishing_item, user)] <br> any [initial(finishing_item.name)]<br>"
+	if(finishing_item)
+		html += "[icon2html(new finishing_item, user)] <strong class=class='scroll'>finish with any [initial(finishing_item.name)]</strong> <br>"
 
 
 	html += {"

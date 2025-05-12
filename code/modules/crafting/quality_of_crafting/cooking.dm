@@ -51,6 +51,7 @@
 	craft_time = 6 SECONDS
 	crafting_sound = 'sound/foley/dropsound/food_drop.ogg'
 	crafting_message = "Adding some juicy fruit filling..."
+	extra_chance = 100
 
 /datum/repeatable_crafting_recipe/cooking/chescake_poison_raisan
 	hides_from_books = TRUE
@@ -68,6 +69,7 @@
 	craft_time = 6 SECONDS
 	crafting_sound = 'sound/foley/dropsound/food_drop.ogg'
 	crafting_message = "Adding some juicy fruit filling..."
+	extra_chance = 100
 
 /datum/repeatable_crafting_recipe/cooking/chescake
 	name = "Unbaked Berry Cake of Cheese"
@@ -84,6 +86,7 @@
 	craft_time = 6 SECONDS
 	crafting_sound = 'sound/foley/dropsound/food_drop.ogg'
 	crafting_message = "Adding some juicy fruit filling..."
+	extra_chance = 100
 
 /datum/repeatable_crafting_recipe/cooking/chescake_raisan
 	name = "Unbaked Raisan Cake of Cheese"
@@ -100,3 +103,97 @@
 	craft_time = 6 SECONDS
 	crafting_sound = 'sound/foley/dropsound/food_drop.ogg'
 	crafting_message = "Adding some juicy fruit filling..."
+	extra_chance = 100
+
+/datum/repeatable_crafting_recipe/cooking/cake_base
+	name = "Unbaked Cake"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/egg = 1,
+		/obj/item/reagent_containers/food/snacks/butterdough = 1,
+	)
+	attacked_atom = /obj/item/reagent_containers/food/snacks/butterdough
+	starting_atom = /obj/item/reagent_containers/food/snacks/egg
+	output = /obj/item/reagent_containers/food/snacks/cake
+	uses_attacked_atom = TRUE
+	required_table = TRUE
+	craft_time = 6 SECONDS
+	crafting_sound = 'sound/foley/dropsound/food_drop.ogg'
+	crafting_message = "Working egg into the dough, shaping it into a cake..."
+	minimum_skill_level = 2
+	extra_chance = 100
+
+/datum/repeatable_crafting_recipe/cooking/biscuit_poison
+	hides_from_books = TRUE
+	name = "Unbaked Raisan Biscuit"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/raisins/poison = 1,
+		/obj/item/reagent_containers/food/snacks/butterdough_slice = 1,
+	)
+	attacked_atom = /obj/item/reagent_containers/food/snacks/butterdough_slice
+	starting_atom = /obj/item/reagent_containers/food/snacks/raisins/poison
+	output = /obj/item/reagent_containers/food/snacks/foodbase/biscuitpoison_raw
+	uses_attacked_atom = TRUE
+	required_table = TRUE
+	craft_time = 6 SECONDS
+	crafting_sound = 'sound/foley/dropsound/food_drop.ogg'
+	crafting_message = "Adding raisins to the dough..."
+
+/datum/repeatable_crafting_recipe/cooking/biscuit_berry
+	name = "Unbaked Raisan Biscuit"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/raisins = 1,
+		/obj/item/reagent_containers/food/snacks/butterdough_slice = 1,
+	)
+	attacked_atom = /obj/item/reagent_containers/food/snacks/butterdough_slice
+	starting_atom = /obj/item/reagent_containers/food/snacks/raisins
+	output = /obj/item/reagent_containers/food/snacks/foodbase/biscuit_raw
+	uses_attacked_atom = TRUE
+	required_table = TRUE
+	craft_time = 6 SECONDS
+	crafting_sound = 'sound/foley/dropsound/food_drop.ogg'
+	crafting_message = "Adding berries to the dough..."
+
+/datum/repeatable_crafting_recipe/cooking/biscuit_berry/create_outputs(list/to_delete, mob/user)
+	var/output_path = output
+	if(user.mind.get_skill_level(/datum/skill/craft/cooking) >= 2)
+		output_path =  /obj/item/reagent_containers/food/snacks/foodbase/biscuit_raw/good
+	var/list/outputs = list()
+
+	for(var/spawn_count = 1 to output_amount)
+		var/obj/item/new_item = new output_path(get_turf(user))
+
+		new_item.sellprice = sellprice
+		new_item.randomize_price()
+
+		if(length(pass_types_in_end))
+			var/list/parts = list()
+			for(var/obj/item/listed as anything in to_delete)
+				if(!is_type_in_list(listed, pass_types_in_end))
+					continue
+				parts += listed
+			new_item.CheckParts(parts)
+			new_item.OnCrafted(user.dir, user)
+
+		outputs += new_item
+
+	return outputs
+
+/datum/repeatable_crafting_recipe/cooking/unbaked_scones
+	name = "Unbaked Scones"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/sugar = 1,
+		/obj/item/reagent_containers/food/snacks/butterdough_slice = 1,
+	)
+	attacked_atom = /obj/item/reagent_containers/food/snacks/butterdough_slice
+	starting_atom = /obj/item/reagent_containers/food/snacks/sugar
+	output = /obj/item/reagent_containers/food/snacks/foodbase/scone_raw
+	uses_attacked_atom = TRUE
+	required_table = TRUE
+	craft_time = 6 SECONDS
+	minimum_skill_level = 2
+	crafting_sound = 'sound/foley/dropsound/food_drop.ogg'
+	crafting_message = "Adding sugar to the dough..."

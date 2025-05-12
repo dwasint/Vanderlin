@@ -33,7 +33,7 @@
 	var/craftdiff = 1
 	///our skilltype
 	var/datum/skill/skillcraft = /datum/skill/craft/crafting
-
+	var/minimum_skill_level = 0
 	///the amount of time the atom in question spends doing this recipe
 	var/craft_time = 1 SECONDS
 	///do we put in hand?
@@ -80,6 +80,10 @@
 	if((!istype(attacked_item, attacked_atom) && !istype(attacked_item, /obj/item/natural/bundle)) || (required_intent && user.used_intent.type != required_intent))
 		return FALSE
 
+	if(minimum_skill_level)
+		if(user?.mind?.get_skill_level(skillcraft) <= minimum_skill_level)
+			return FALSE
+
 	if(istype(attacked_item, /obj/item/natural/bundle))
 		var/bundle_path = attacked_item:stacktype
 		if(!ispath(bundle_path, attacked_atom))
@@ -89,7 +93,7 @@
 		if(attacked_item in typesof(path))
 			return FALSE
 
-	if(required_table && !locate(/obj/structure/table) in get_turf(attacked_atom))
+	if(required_table && !locate(/obj/structure/table) in get_turf(attacked_item))
 		return FALSE
 
 	var/list/copied_requirements = requirements.Copy()
@@ -866,14 +870,14 @@
 			}
 			h1 {
 				text-align: center;
-				font-size: 2.5em;
+				font-size: 2em;
 				border-bottom: 2px solid #3e2723;
 				padding-bottom: 10px;
-				margin-bottom: 20px;
+				margin-bottom: 10px;
 			}
 			.icon {
-				width: 96px;
-				height: 96px;
+				width: 64px;
+				height: 64px;
 				vertical-align: middle;
 				margin-right: 10px;
 			}
@@ -882,7 +886,7 @@
 		  <div>
 		    <h1>[name]</h1>
 		    <div>
-		      <strong>Requirements</strong>
+		      <h2>Requirements</h2>
 			  <br>
 		"}
 	for(var/atom/path as anything in requirements)
@@ -929,12 +933,13 @@
 		<div>
 		"}
 
-	html += "<strong class=class='scroll'>start the process with</strong> <br>[icon2html(new attacked_atom, user)] <br> [initial(attacked_atom.name)]<br>"
+	html += "<h1>Steps</h1><br>"
 	if(subtypes_allowed)
-		html += "<strong class=class='scroll'>using</strong> <br> [icon2html(new starting_atom, user)] <br> any [initial(starting_atom.name)] on it<br>"
+		html += " [icon2html(new starting_atom, user)] <strong class=class='scroll'>start the process by using any [initial(starting_atom.name)] </strong><br>"
 	else
-		html += "<strong class=class='scroll'>using</strong> <br> [icon2html(new starting_atom, user)] <br> [initial(starting_atom.name)] on it<br>"
+		html += "[icon2html(new starting_atom, user)] <strong class=class='scroll'>start the process by using [initial(starting_atom.name)] </strong><br>"
 
+	html += "[icon2html(new attacked_atom, user)] <strong class=class='scroll'>on [initial(attacked_atom.name)]</strong><br>"
 
 	html += {"
 		</div>
