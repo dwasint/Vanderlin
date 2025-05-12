@@ -17,23 +17,6 @@
 	icon_state = "dough_base"
 	w_class = WEIGHT_CLASS_NORMAL
 	rotprocess = SHELFLIFE_LONG
-/obj/item/reagent_containers/food/snacks/dough_base/attackby(obj/item/I, mob/living/user, params)
-	. = ..()
-	if(user.mind)
-		short_cooktime = (50 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*8))
-	var/found_table = locate(/obj/structure/table) in (loc)
-	if(isturf(loc)&& (found_table))
-		if(istype(I, /obj/item/reagent_containers/powder/flour))
-			playsound(get_turf(user), 'sound/foley/kneading.ogg', 100, TRUE, -1)
-			to_chat(user, span_notice("Kneading in more powder..."))
-			if(do_after(user, short_cooktime, src))
-				new /obj/item/reagent_containers/food/snacks/dough(loc)
-				qdel(I)
-				qdel(src)
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
-	else
-		to_chat(user, span_warning("Put [src] on a table before working it!"))
-
 
 /obj/item/reagent_containers/food/snacks/dough
 	name = "dough"
@@ -46,45 +29,6 @@
 	rotprocess = SHELFLIFE_LONG
 	slice_sound = TRUE
 
-/obj/item/reagent_containers/food/snacks/dough/attackby(obj/item/I, mob/living/user, params)
-	..()
-	if(user.mind)
-		short_cooktime = (50 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*7))
-		long_cooktime = (90 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*14))
-	var/found_table = locate(/obj/structure/table) in (loc)
-	if(istype(I, /obj/item/reagent_containers/food/snacks/butterslice))
-		if(isturf(loc)&& (found_table))
-			playsound(get_turf(user), 'sound/foley/kneading_alt.ogg', 90, TRUE, -1)
-			to_chat(user, span_notice("Kneading butter into the dough..."))
-			if(do_after(user,long_cooktime, src))
-				new /obj/item/reagent_containers/food/snacks/butterdough(loc)
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
-				qdel(I)
-				qdel(src)
-		else
-			to_chat(user, span_warning("Put [src] on a table before working it!"))
-	if(istype(I, /obj/item/reagent_containers/food/snacks/raisins/poison))
-		if(isturf(loc)&& (found_table))
-			playsound(get_turf(user), 'sound/foley/kneading.ogg', 100, TRUE, -1)
-			to_chat(user, span_notice("Kneading the dough and adding raisins..."))
-			if(do_after(user, short_cooktime, src))
-				new /obj/item/reagent_containers/food/snacks/raisindough_poison(loc)
-				qdel(I)
-				qdel(src)
-		else
-			to_chat(user, span_warning("Put [src] on a table before working it!"))
-	else if(istype(I, /obj/item/reagent_containers/food/snacks/raisins))
-		if(isturf(loc)&& (found_table))
-			playsound(get_turf(user), 'sound/foley/kneading.ogg', 100, TRUE, -1)
-			to_chat(user, span_notice("Kneading the dough and adding raisins..."))
-			if(do_after(user, short_cooktime, src))
-				new /obj/item/reagent_containers/food/snacks/raisindough(loc)
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
-				qdel(I)
-				qdel(src)
-		else
-			to_chat(user, span_warning("Put [src] on a table before working it!"))
-
 /*	.................   Smalldough   ................... */
 /obj/item/reagent_containers/food/snacks/dough_slice
 	name = "smalldough"
@@ -93,6 +37,7 @@
 	bitesize = 10
 	w_class = WEIGHT_CLASS_NORMAL
 	tastes = list("dough" = 1)
+
 /obj/item/reagent_containers/food/snacks/dough_slice/attackby(obj/item/I, mob/living/user, params)
 	. = ..()
 	if(user.mind)
@@ -109,38 +54,6 @@
 		else
 			to_chat(user, span_warning("Put [src] on a table before working it!"))
 		return TRUE
-	if(isturf(loc)&& (found_table))
-		if(istype(I, /obj/item/reagent_containers/food/snacks/cheese/gote))
-			playsound(get_turf(user), 'sound/foley/kneading_alt.ogg', 90, TRUE, -1)
-			to_chat(user, span_notice("Adding fresh gote cheese..."))
-			if(do_after(user, short_cooktime, src))
-				new /obj/item/reagent_containers/food/snacks/foodbase/cheesebun_raw(loc)
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
-				qdel(I)
-				qdel(src)
-		if(istype(I, /obj/item/reagent_containers/food/snacks/cheese_wedge))
-			playsound(get_turf(user), 'sound/foley/kneading_alt.ogg', 90, TRUE, -1)
-			to_chat(user, span_notice("Adding cheese..."))
-			if(do_after(user, short_cooktime, src))
-				new /obj/item/reagent_containers/food/snacks/foodbase/cheesebun_raw(loc)
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
-				qdel(I)
-				qdel(src)
-		if(istype(I, /obj/item/reagent_containers/food/snacks/dough_slice))
-			playsound(get_turf(user), 'sound/foley/kneading.ogg', 100, TRUE, -1)
-			to_chat(user, span_notice("Combining dough..."))
-			if(do_after(user, short_cooktime, src))
-				new /obj/item/reagent_containers/food/snacks/dough(loc)
-				qdel(I)
-				qdel(src)
-		else if(istype(I, /obj/item/reagent_containers/food/snacks/cheese))
-			playsound(get_turf(user), 'sound/foley/kneading_alt.ogg', 90, TRUE, -1)
-			to_chat(user, span_notice("Adding fresh cheese..."))
-			if(do_after(user, short_cooktime, src))
-				new /obj/item/reagent_containers/food/snacks/foodbase/cheesebun_raw(loc)
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
-				qdel(I)
-				qdel(src)
 	else
 		to_chat(user, span_warning("Put [src] on a table before working it!"))
 
@@ -195,38 +108,6 @@
 				qdel(src)
 				user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
 
-		if(istype(I, /obj/item/reagent_containers/food/snacks/produce/fruit/apple) || istype(I, /obj/item/reagent_containers/food/snacks/apple_dried))
-			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Adding apple bits to the dough..."))
-			if(do_after(user, short_cooktime, src))
-				if(user.mind.get_skill_level(/datum/skill/craft/cooking) >= 2)
-					new /obj/item/reagent_containers/food/snacks/foodbase/fritter_raw/good(loc)
-				else
-					new /obj/item/reagent_containers/food/snacks/foodbase/fritter_raw(loc)
-				qdel(src)
-				qdel(I)
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
-
-		if(istype(I, /obj/item/reagent_containers/food/snacks/cooked/sausage_sticked))
-			playsound(get_turf(user), 'sound/foley/kneading_alt.ogg', 90, TRUE, -1)
-			to_chat(user, span_notice("Covering sausage with dough..."))
-			if(do_after(user, short_cooktime, src))
-				new /obj/item/reagent_containers/food/snacks/foodbase/griddledog_raw(loc)
-				qdel(I)
-				qdel(src)
-
-		if(istype(I, /obj/item/reagent_containers/food/snacks/egg))
-			if(user.mind.get_skill_level(/datum/skill/craft/cooking) <= 1) // cooks with less than 1 skill don´t know this recipe
-				to_chat(user, span_warning("Griddle cakes are not for the likes of you."))
-				return
-			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Working egg into the dough..."))
-			playsound(get_turf(user), 'sound/foley/eggbreak.ogg', 100, TRUE, -1)
-			if(do_after(user, short_cooktime, src))
-				new /obj/item/reagent_containers/food/snacks/foodbase/griddlecake_raw(loc)
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
-				qdel(I)
-				qdel(src)
 	else
 		to_chat(user, span_warning("Put [src] on a table before working it!"))
 
@@ -261,86 +142,6 @@
 	dropshrink = 0.9
 	w_class = WEIGHT_CLASS_NORMAL
 	rotprocess = SHELFLIFE_LONG
-
-/obj/item/reagent_containers/food/snacks/piedough/attackby(obj/item/I, mob/living/user, params)
-	if(user.mind)
-		short_cooktime = (50 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*8))
-	if(istype(I, /obj/item/reagent_containers/food/snacks/truffles))
-		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 50, TRUE, -1)
-		to_chat(user, span_notice("Making a handpie..."))
-		if(do_after(user, short_cooktime, src))
-			var/obj/item/reagent_containers/food/snacks/foodbase/handpieraw/mushroom/handpie= new(get_turf(user))
-			user.put_in_hands(handpie)
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
-			qdel(I)
-			qdel(src)
-	if(istype(I, /obj/item/reagent_containers/food/snacks/meat/mince))
-		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 50, TRUE, -1)
-		to_chat(user, span_notice("Making a handpie..."))
-		if(do_after(user, short_cooktime, src))
-			var/obj/item/reagent_containers/food/snacks/foodbase/handpieraw/mince/handpie= new(get_turf(user))
-			user.put_in_hands(handpie)
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
-			qdel(I)
-			qdel(src)
-	if(istype(I, /obj/item/reagent_containers/food/snacks/produce/fruit/jacksberry/poison))
-		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 50, TRUE, -1)
-		to_chat(user, span_notice("Making a handpie..."))
-		if(do_after(user, short_cooktime, src))
-			var/obj/item/reagent_containers/food/snacks/foodbase/handpieraw/poison/handpie= new(get_turf(user))
-			user.put_in_hands(handpie)
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
-			qdel(I)
-			qdel(src)
-	if(istype(I, /obj/item/reagent_containers/food/snacks/produce/fruit/apple))
-		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 50, TRUE, -1)
-		to_chat(user, span_notice("Making a handpie..."))
-		if(do_after(user, short_cooktime, src))
-			var/obj/item/reagent_containers/food/snacks/foodbase/handpieraw/apple/handpie= new(get_turf(user))
-			user.put_in_hands(handpie)
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
-			qdel(I)
-			qdel(src)
-	if(istype(I, /obj/item/reagent_containers/food/snacks/cheese/gote))
-		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 50, TRUE, -1)
-		to_chat(user, span_notice("Making a handpie..."))
-		if(do_after(user, short_cooktime, src))
-			var/obj/item/reagent_containers/food/snacks/foodbase/handpieraw/cheese/handpie= new(get_turf(user))
-			user.put_in_hands(handpie)
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
-			qdel(I)
-			qdel(src)
-	if(istype(I, /obj/item/reagent_containers/food/snacks/cheese))
-		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 50, TRUE, -1)
-		to_chat(user, span_notice("Making a handpie..."))
-		if(do_after(user, short_cooktime, src))
-			var/obj/item/reagent_containers/food/snacks/foodbase/handpieraw/cheese/handpie= new(get_turf(user))
-			user.put_in_hands(handpie)
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
-			qdel(I)
-			qdel(src)
-	if(istype(I, /obj/item/reagent_containers/food/snacks/cheese_wedge))
-		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 50, TRUE, -1)
-		to_chat(user, span_notice("Making a handpie..."))
-		if(do_after(user, short_cooktime, src))
-			var/obj/item/reagent_containers/food/snacks/foodbase/handpieraw/cheese/handpie= new(get_turf(user))
-			user.put_in_hands(handpie)
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
-			qdel(I)
-			qdel(src)
-	else if(istype(I, /obj/item/reagent_containers/food/snacks/produce/fruit/jacksberry))
-		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 50, TRUE, -1)
-		to_chat(user, span_notice("Making a handpie..."))
-		if(do_after(user, short_cooktime, src))
-			var/obj/item/reagent_containers/food/snacks/foodbase/handpieraw/berry/handpie= new(get_turf(user))
-			user.put_in_hands(handpie)
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
-			qdel(I)
-			qdel(src)
-	else
-		return ..()
-
-
 
 /*----------------\
 | Sliceable bread |
@@ -561,31 +362,19 @@
 	rotprocess = SHELFLIFE_EXTREME
 	faretype = FARE_POOR
 
-/obj/item/reagent_containers/food/snacks/bun/attackby(obj/item/I, mob/living/user, params)
-	if(user.mind)
-		short_cooktime = (50 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*8))
-	if(modified)
-		return TRUE
-	if(bitecount >0)
-		to_chat(user, span_warning("Leftovers aren´t suitable for this."))
-		return TRUE
-	if(istype(I, /obj/item/reagent_containers/food/snacks/cooked/sausage))
-		playsound(get_turf(user), 'sound/foley/dropsound/gen_drop.ogg', 30, TRUE, -1)
-		if(do_after(user, short_cooktime, src))
-			name = "grenzelbun"
-			desc = "Originally an elven cuisine composed of mortal races flesh and bread, the classic wiener in a bun, now modified and staple food of Grenzelhoft cuisine."
-			list_reagents = list(/datum/reagent/consumable/nutriment = SAUSAGE_NUTRITION+SMALLDOUGH_NUTRITION)
-			tastes = list("savory sausage" = 1)
-			icon_state = "grenzbun"
-			base_icon_state = "grenzbun"
-			faretype = FARE_NEUTRAL
-			foodtype = GRAIN | MEAT
-			modified = TRUE
-			meal_properties()
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
-			qdel(I)
-	return ..()
-
+/obj/item/reagent_containers/food/snacks/grenzelbun
+	name = "grenzelbun"
+	desc = "Originally an elven cuisine composed of mortal races flesh and bread, the classic wiener in a bun, now modified and staple food of Grenzelhoft cuisine."
+	list_reagents = list(/datum/reagent/consumable/nutriment = SAUSAGE_NUTRITION+SMALLDOUGH_NUTRITION)
+	tastes = list("savory sausage" = 1)
+	icon_state = "grenzbun"
+	base_icon_state = "grenzbun"
+	faretype = FARE_NEUTRAL
+	foodtype = GRAIN | MEAT
+	plateable = TRUE
+	foodbuff_skillcheck = TRUE
+	rotprocess = SHELFLIFE_DECENT
+	bitesize = 5
 
 /*	.................   Cheese bun   ................... */
 /obj/item/reagent_containers/food/snacks/foodbase/cheesebun_raw

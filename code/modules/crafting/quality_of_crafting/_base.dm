@@ -887,7 +887,6 @@
 		    <h1>[name]</h1>
 		    <div>
 		      <h2>Requirements</h2>
-			  <br>
 		"}
 	for(var/atom/path as anything in requirements)
 		var/count = requirements[path]
