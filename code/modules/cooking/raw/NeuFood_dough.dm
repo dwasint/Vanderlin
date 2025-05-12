@@ -535,58 +535,6 @@
 	foodtype = GRAIN | DAIRY
 	rotprocess = SHELFLIFE_LONG
 
-/obj/item/reagent_containers/food/snacks/cake/attackby(obj/item/I, mob/living/user, params)
-	var/found_table = locate(/obj/structure/table) in (loc)
-	if(user.mind)
-		long_cooktime = (90 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*15))
-
-	if(istype(I, /obj/item/reagent_containers/food/snacks/produce/fruit/pear))
-		if(isturf(loc)&& (found_table))
-			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Adding mouth-watering pear filling..."))
-			if(do_after(user,long_cooktime, src))
-				new /obj/item/reagent_containers/food/snacks/zybcake(loc)
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT))
-				qdel(I)
-				qdel(src)
-		else
-			to_chat(user, span_warning("Put [src] on a table before working it!"))
-
-	if(istype(I, /obj/item/reagent_containers/food/snacks/produce/fruit/plum) || istype(I, /obj/item/reagent_containers/food/snacks/plum_dried))
-		if(isturf(loc)&& (found_table))
-			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Adding some fine plum filling..."))
-			if(do_after(user,long_cooktime, src))
-				new /obj/item/reagent_containers/food/snacks/crimsoncake(loc)
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT))
-				qdel(I)
-				qdel(src)
-		else
-	if(istype(I, /obj/item/reagent_containers/food/snacks/produce/fruit/tangerine) || istype(I, /obj/item/reagent_containers/food/snacks/tangerine_dried))
-		if(isturf(loc)&& (found_table))
-			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Adding some tangy tangerine filling..."))
-			if(do_after(user,long_cooktime, src))
-				new /obj/item/reagent_containers/food/snacks/tangerinecake(loc)
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT))
-				qdel(I)
-				qdel(src)
-		else
-			to_chat(user, span_warning("Put [src] on a table before working it!"))
-	else if(istype(I, /obj/item/reagent_containers/food/snacks/produce/fruit/strawberry) || istype(I, /obj/item/reagent_containers/food/snacks/strawberry_dried))
-		if(isturf(loc)&& (found_table))
-			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Adding some sweet strawberry filling..."))
-			if(do_after(user,long_cooktime, src))
-				new /obj/item/reagent_containers/food/snacks/strawbycake(loc)
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT))
-				qdel(I)
-				qdel(src)
-		else
-			to_chat(user, span_warning("Put [src] on a table before working it!"))
-	else
-		return ..()
-
 /obj/item/reagent_containers/food/snacks/chescake
 	name = "cheesecake base"
 	desc = "With this sweet thing, you shall make them sing. Lacking fresh cheese glazing."
@@ -595,23 +543,6 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	foodtype = GRAIN | DAIRY
 	rotprocess = SHELFLIFE_LONG
-/obj/item/reagent_containers/food/snacks/chescake/attackby(obj/item/I, mob/living/user, params)
-	var/found_table = locate(/obj/structure/table) in (loc)
-	if(user.mind)
-		long_cooktime = (90 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*15))
-	if(istype(I, /obj/item/reagent_containers/food/snacks/cheese))
-		if(isturf(loc)&& (found_table))
-			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Spreading fresh cheese on the cake..."))
-			if(do_after(user,long_cooktime, src))
-				new /obj/item/reagent_containers/food/snacks/chescake_ready(loc)
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT))
-				qdel(I)
-				qdel(src)
-		else
-			to_chat(user, span_warning("Put [src] on a table before working it!"))
-	else
-		return ..()
 
 /obj/item/reagent_containers/food/snacks/chescake_poison
 	name = "cheesecake base"
@@ -621,23 +552,6 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	foodtype = GRAIN | DAIRY
 	rotprocess = SHELFLIFE_LONG
-/obj/item/reagent_containers/food/snacks/chescake_poison/attackby(obj/item/I, mob/living/user, params)
-	var/found_table = locate(/obj/structure/table) in (loc)
-	if(user.mind)
-		long_cooktime = (90 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*15))
-	if(istype(I, /obj/item/reagent_containers/food/snacks/cheese))
-		if(isturf(loc)&& (found_table))
-			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Spreading fresh cheese on the cake..."))
-			if(do_after(user,long_cooktime, src))
-				new /obj/item/reagent_containers/food/snacks/chescake_poison_ready(loc)
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT))
-				qdel(I)
-				qdel(src)
-		else
-			to_chat(user, span_warning("Put [src] on a table before working it!"))
-	else
-		return ..()
 
 /obj/item/reagent_containers/food/snacks/zybcake
 	name = "zybantu cake base"
@@ -647,25 +561,6 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	foodtype = GRAIN | DAIRY
 	rotprocess = SHELFLIFE_LONG
-/obj/item/reagent_containers/food/snacks/zybcake/attackby(obj/item/I, mob/living/user, params)
-	var/found_table = locate(/obj/structure/table) in (loc)
-	if(user.mind)
-		long_cooktime = (90 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*15))
-	if(istype(I, /obj/item/reagent_containers/food/snacks/spiderhoney))
-		if(isturf(loc)&& (found_table))
-			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Spreading spider-honey on the cake..."))
-			if(do_after(user,long_cooktime, src))
-				new /obj/item/reagent_containers/food/snacks/zybcake_ready(loc)
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT))
-				qdel(I)
-				qdel(src)
-		else
-			to_chat(user, span_warning("Put [src] on a table before working it!"))
-	else
-		return ..()
-
-
 
 // -------------- SPIDER-HONEY CAKE (Zybantu) -----------------
 /obj/item/reagent_containers/food/snacks/zybcake_ready
@@ -803,23 +698,6 @@
 	dropshrink = 0.8
 	w_class = WEIGHT_CLASS_NORMAL
 	rotprocess = SHELFLIFE_DECENT
-/obj/item/reagent_containers/food/snacks/strawbycake/attackby(obj/item/I, mob/living/user, params)
-	var/found_table = locate(/obj/structure/table) in (loc)
-	if(user.mind)
-		long_cooktime = (90 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*15))
-	if(istype(I, /obj/item/reagent_containers/food/snacks/sugar))
-		if(isturf(loc)&& (found_table))
-			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Spreading sugar frosting on the cake..."))
-			if(do_after(user,long_cooktime, src))
-				new /obj/item/reagent_containers/food/snacks/strawbycake_ready(loc)
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT))
-				qdel(I)
-				qdel(src)
-		else
-			to_chat(user, span_warning("Put [src] on a table before working it!"))
-	else
-		return ..()
 
 /obj/item/reagent_containers/food/snacks/strawbycake_ready
 	name = "unbaked strawberry cake"
@@ -869,23 +747,6 @@
 	dropshrink = 0.8
 	w_class = WEIGHT_CLASS_NORMAL
 	rotprocess = SHELFLIFE_DECENT
-/obj/item/reagent_containers/food/snacks/crimsoncake/attackby(obj/item/I, mob/living/user, params)
-	var/found_table = locate(/obj/structure/table) in (loc)
-	if(user.mind)
-		long_cooktime = (90 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*15))
-	if(istype(I, /obj/item/reagent_containers/food/snacks/chocolate))
-		if(isturf(loc)&& (found_table))
-			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Adding chocolate to the dough..."))
-			if(do_after(user,long_cooktime, src))
-				new /obj/item/reagent_containers/food/snacks/crimsoncake_ready(loc)
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT))
-				qdel(I)
-				qdel(src)
-		else
-			to_chat(user, span_warning("Put [src] on a table before working it!"))
-	else
-		return ..()
 
 /obj/item/reagent_containers/food/snacks/crimsoncake_ready
 	name = "unbaked crimson pine cake"
@@ -932,23 +793,6 @@
 	dropshrink = 0.8
 	w_class = WEIGHT_CLASS_NORMAL
 	rotprocess = SHELFLIFE_DECENT
-/obj/item/reagent_containers/food/snacks/tangerinecake/attackby(obj/item/I, mob/living/user, params)
-	var/found_table = locate(/obj/structure/table) in (loc)
-	if(user.mind)
-		long_cooktime = (90 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*15))
-	if(istype(I, /obj/item/reagent_containers/food/snacks/sugar))
-		if(isturf(loc)&& (found_table))
-			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Spreading sugar frosting on the cake..."))
-			if(do_after(user,long_cooktime, src))
-				new /obj/item/reagent_containers/food/snacks/tangerinecake_ready(loc)
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT))
-				qdel(I)
-				qdel(src)
-		else
-			to_chat(user, span_warning("Put [src] on a table before working it!"))
-	else
-		return ..()
 
 /obj/item/reagent_containers/food/snacks/tangerinecake_ready
 	name = "unbaked scarletharp cake"
@@ -1000,30 +844,6 @@
 	icon_state = "uncookedsconebase"
 	rotprocess = SHELFLIFE_EXTREME
 	eat_effect = null
-/obj/item/reagent_containers/food/snacks/foodbase/scone_raw/attackby(obj/item/I, mob/living/user, params)
-	..()
-	if(user.mind)
-		short_cooktime = (50 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*8))
-	var/found_table = locate(/obj/structure/table) in (loc)
-	if(isturf(loc)&& (found_table))
-		if(istype(I, /obj/item/reagent_containers/food/snacks/produce/fruit/tangerine) || istype(I, /obj/item/reagent_containers/food/snacks/tangerine_dried))
-			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Adding tangerine to the scone..."))
-			if(do_after(user, short_cooktime, src))
-				new /obj/item/reagent_containers/food/snacks/foodbase/scone_raw_tangerine(loc)
-				qdel(I)
-				qdel(src)
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
-		else if(istype(I, /obj/item/reagent_containers/food/snacks/produce/fruit/plum) || istype(I, /obj/item/reagent_containers/food/snacks/plum_dried))
-			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Adding plum to the scone..."))
-			if(do_after(user, short_cooktime, src))
-				new /obj/item/reagent_containers/food/snacks/foodbase/scone_raw_plum(loc)
-				qdel(I)
-				qdel(src)
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
-	else
-		to_chat(user, span_warning("Put [src] on a table before working it!"))
 
 /obj/item/reagent_containers/food/snacks/scone
 	name = "plain scone"
@@ -1079,47 +899,6 @@
 	icon_state = "rawgriddlecake"
 	rotprocess = SHELFLIFE_LONG
 	eat_effect = null
-
-/obj/item/reagent_containers/food/snacks/foodbase/griddlecake_raw/attackby(obj/item/I, mob/living/user, params)
-	..()
-	if(user.mind)
-		short_cooktime = (50 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*8))
-	var/found_table = locate(/obj/structure/table) in (loc)
-	if(isturf(loc)&& (found_table))
-		if(istype(I, /obj/item/reagent_containers/food/snacks/produce/fruit/lemon))
-			playsound(get_turf(user), 'sound/foley/kneading.ogg', 100, TRUE, -1)
-			to_chat(user, span_notice("Adding lemon to the griddlecake..."))
-			if(do_after(user, short_cooktime, src))
-				new /obj/item/reagent_containers/food/snacks/foodbase/lemongriddlecake_raw(loc)
-				qdel(I)
-				qdel(src)
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
-		if(istype(I, /obj/item/reagent_containers/food/snacks/produce/fruit/apple) || istype(I, /obj/item/reagent_containers/food/snacks/apple_dried))
-			playsound(get_turf(user), 'sound/foley/kneading.ogg', 100, TRUE, -1)
-			to_chat(user, span_notice("Adding apple to the griddlecake..."))
-			if(do_after(user, short_cooktime, src))
-				new /obj/item/reagent_containers/food/snacks/foodbase/applegriddlecake_raw(loc)
-				qdel(I)
-				qdel(src)
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
-		if(istype(I, /obj/item/reagent_containers/food/snacks/produce/fruit/jacksberry) || istype(I, /obj/item/reagent_containers/food/snacks/raisins))
-			playsound(get_turf(user), 'sound/foley/kneading.ogg', 100, TRUE, -1)
-			to_chat(user, span_notice("Adding jacksberry to the griddlecake..."))
-			if(do_after(user, short_cooktime, src))
-				new /obj/item/reagent_containers/food/snacks/foodbase/berrygriddlecake_raw(loc)
-				qdel(I)
-				qdel(src)
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
-		else if(istype(I, /obj/item/reagent_containers/food/snacks/produce/fruit/jacksberry/poison) || istype(I, /obj/item/reagent_containers/food/snacks/raisins/poison))
-			playsound(get_turf(user), 'sound/foley/kneading.ogg', 100, TRUE, -1)
-			to_chat(user, span_notice("Adding jacksberry to the griddlecake..."))
-			if(do_after(user, short_cooktime, src))
-				new /obj/item/reagent_containers/food/snacks/foodbase/poisonberrygriddlecake_raw(loc)
-				qdel(I)
-				qdel(src)
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
-	else
-		to_chat(user, span_warning("Put [src] on a table before working it!"))
 
 /obj/item/reagent_containers/food/snacks/griddlecake
 	name = "griddlecake"

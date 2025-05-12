@@ -12,20 +12,13 @@
 	icon_state = "fat"
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_POOR)
 	eat_effect = /datum/status_effect/debuff/uncookedfood
+
 /obj/item/reagent_containers/food/snacks/fat/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
 	var/obj/item/reagent_containers/glass/R = I
 	if(user.mind)
 		long_cooktime = (90 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*15))
 	if(isturf(loc)&& (found_table))
-		if(istype(I, /obj/item/reagent_containers/food/snacks/meat/mince))
-			to_chat(user, span_notice("Stuffing a wiener..."))
-			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			if(do_after(user, long_cooktime, src))
-				new /obj/item/reagent_containers/food/snacks/meat/sausage(loc)
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
-				qdel(I)
-				qdel(src)
 		if(!istype(R))
 			return ..()
 		if(!R.reagents.has_reagent(/datum/reagent/consumable/sugar, 33))
@@ -335,22 +328,6 @@
 	bitesize = 6
 	slice_sound = TRUE
 	faretype = FARE_IMPOVERISHED
-/obj/item/reagent_containers/food/snacks/butter/attackby(obj/item/I, mob/living/user, params)
-	. = ..()
-	if(user.mind)
-		short_cooktime = (50 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*8))
-	var/found_table = locate(/obj/structure/table) in (loc)
-	if(isturf(loc)&& (found_table))
-		if(istype(I, /obj/item/grown/log/tree/stick))
-			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 50, TRUE, -1)
-			to_chat(user, span_notice("Skewering the butter..."))
-			if(do_after(user, short_cooktime, src))
-				new /obj/item/reagent_containers/food/snacks/pestranstick(loc)
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
-				qdel(I)
-				qdel(src)
-	else
-		to_chat(user, span_warning("Put [src] on a table before working it!"))
 
 /obj/item/reagent_containers/food/snacks/butter/update_icon()
 	if(slices_num)
@@ -645,53 +622,6 @@
 	rotprocess = null
 	bitesize = 4
 	faretype = FARE_POOR
-/obj/item/reagent_containers/food/snacks/jellycake_base/attackby(obj/item/I, mob/living/user, params)
-	var/found_table = locate(/obj/structure/table) in (loc)
-	if(user.mind)
-		long_cooktime = (90 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*15))
-	if(isturf(loc)&& (found_table))
-		if(istype(I, /obj/item/reagent_containers/food/snacks/produce/fruit/apple) || istype(I, /obj/item/reagent_containers/food/snacks/apple_dried))
-			playsound(get_turf(user), 'sound/foley/kneading_alt.ogg', 90, TRUE, -1)
-			to_chat(user, span_notice("Mixing apple into the gelatine..."))
-			if(do_after(user,long_cooktime, src))
-				new /obj/item/reagent_containers/food/snacks/jellycake_apple(loc)
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT))
-				qdel(I)
-				qdel(src)
-		if(istype(I, /obj/item/reagent_containers/food/snacks/produce/fruit/tangerine) || istype(I, /obj/item/reagent_containers/food/snacks/tangerine_dried))
-			playsound(get_turf(user), 'sound/foley/kneading_alt.ogg', 90, TRUE, -1)
-			to_chat(user, span_notice("Mixing tangerine into the gelatine..."))
-			if(do_after(user,long_cooktime, src))
-				new /obj/item/reagent_containers/food/snacks/jellycake_tangerine(loc)
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT))
-				qdel(I)
-				qdel(src)
-		if(istype(I, /obj/item/reagent_containers/food/snacks/produce/fruit/plum) || istype(I, /obj/item/reagent_containers/food/snacks/plum_dried))
-			playsound(get_turf(user), 'sound/foley/kneading_alt.ogg', 90, TRUE, -1)
-			to_chat(user, span_notice("Mixing plum into the gelatine..."))
-			if(do_after(user,long_cooktime, src))
-				new /obj/item/reagent_containers/food/snacks/jellycake_plum(loc)
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT))
-				qdel(I)
-				qdel(src)
-		if(istype(I, /obj/item/reagent_containers/food/snacks/produce/fruit/lime))
-			playsound(get_turf(user), 'sound/foley/kneading_alt.ogg', 90, TRUE, -1)
-			to_chat(user, span_notice("Mixing lime into the gelatine..."))
-			if(do_after(user,long_cooktime, src))
-				new /obj/item/reagent_containers/food/snacks/jellycake_lime(loc)
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT))
-				qdel(I)
-				qdel(src)
-		if(istype(I, /obj/item/reagent_containers/food/snacks/produce/fruit/pear) || istype(I, /obj/item/reagent_containers/food/snacks/pear_dried))
-			playsound(get_turf(user), 'sound/foley/kneading_alt.ogg', 90, TRUE, -1)
-			to_chat(user, span_warning("Mixing pear into the gelatine..."))
-			if(do_after(user,long_cooktime, src))
-				new /obj/item/reagent_containers/food/snacks/jellycake_pear(loc)
-				user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT))
-				qdel(I)
-				qdel(src)
-	else
-		to_chat(user, span_warning("Put [src] on a table before working it!"))
 
 /obj/item/reagent_containers/food/snacks/jellyslice_base
 	name = "plain gelatine slice"

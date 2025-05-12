@@ -37,7 +37,7 @@
 
 /datum/repeatable_crafting_recipe/cooking/chescake_poison
 	hides_from_books = TRUE
-	name = "Unbaked Cake of Cheese"
+	name = "Cheesecake Base"
 
 	requirements = list(
 		/obj/item/reagent_containers/food/snacks/produce/fruit/jacksberry/poison = 1,
@@ -55,7 +55,7 @@
 
 /datum/repeatable_crafting_recipe/cooking/chescake_poison_raisan
 	hides_from_books = TRUE
-	name = "Unbaked Cake of Cheese"
+	name = "Berry Cheesecake Base"
 
 	requirements = list(
 		/obj/item/reagent_containers/food/snacks/raisins/poison = 1,
@@ -72,7 +72,7 @@
 	extra_chance = 100
 
 /datum/repeatable_crafting_recipe/cooking/chescake
-	name = "Unbaked Berry Cake of Cheese"
+	name = "Raisin Cheesecake Base"
 
 	requirements = list(
 		/obj/item/reagent_containers/food/snacks/produce/fruit/jacksberry = 1,
@@ -80,7 +80,7 @@
 	)
 	attacked_atom = /obj/item/reagent_containers/food/snacks/cake
 	starting_atom = /obj/item/reagent_containers/food/snacks/produce/fruit/jacksberry
-	output = /obj/item/reagent_containers/food/snacks/chescake_poison
+	output = /obj/item/reagent_containers/food/snacks/chescake
 	uses_attacked_atom = TRUE
 	required_table = TRUE
 	craft_time = 6 SECONDS
@@ -89,7 +89,7 @@
 	extra_chance = 100
 
 /datum/repeatable_crafting_recipe/cooking/chescake_raisan
-	name = "Unbaked Raisan Cake of Cheese"
+	name = "Cheesecake Base"
 
 	requirements = list(
 		/obj/item/reagent_containers/food/snacks/raisins = 1,
@@ -106,7 +106,7 @@
 	extra_chance = 100
 
 /datum/repeatable_crafting_recipe/cooking/cake_base
-	name = "Unbaked Cake"
+	name = "Cake Base"
 
 	requirements = list(
 		/obj/item/reagent_containers/food/snacks/egg = 1,
@@ -571,7 +571,7 @@
 	crafting_sound = 'sound/foley/dropsound/gen_drop.ogg'
 	extra_chance = 100
 
-/datum/repeatable_crafting_recipe/cooking/grenzelbun
+/datum/repeatable_crafting_recipe/cooking/grenzelbun_alt
 	hides_from_books = TRUE
 	name = "Grenzel Bun"
 
@@ -585,4 +585,562 @@
 	uses_attacked_atom = TRUE
 	craft_time = 6 SECONDS
 	crafting_sound = 'sound/foley/dropsound/gen_drop.ogg'
+	extra_chance = 100
+
+/datum/repeatable_crafting_recipe/cooking/cake_pear
+	name = "Zybantu Cake Base"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/produce/fruit/pear = 1,
+		/obj/item/reagent_containers/food/snacks/cake = 1,
+	)
+	required_table = TRUE
+	attacked_atom = /obj/item/reagent_containers/food/snacks/cake
+	starting_atom = /obj/item/reagent_containers/food/snacks/produce/fruit/pear
+	output = /obj/item/reagent_containers/food/snacks/zybcake
+	uses_attacked_atom = TRUE
+	craft_time = 9 SECONDS
+	crafting_sound = 'sound/foley/dropsound/gen_drop.ogg'
+	crafting_message = "Adding mouth-watering pear filling..."
+	extra_chance = 100
+
+/datum/repeatable_crafting_recipe/cooking/cake_plum
+	name = "Crimson Pine Cake Base"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/produce/fruit/plum = 1,
+		/obj/item/reagent_containers/food/snacks/cake = 1,
+	)
+	required_table = TRUE
+	attacked_atom = /obj/item/reagent_containers/food/snacks/cake
+	starting_atom = /obj/item/reagent_containers/food/snacks/produce/fruit/plum
+	output = /obj/item/reagent_containers/food/snacks/crimsoncake
+	uses_attacked_atom = TRUE
+	craft_time = 9 SECONDS
+	crafting_sound = 'sound/foley/dropsound/gen_drop.ogg'
+	crafting_message = "Adding some fine plum filling..."
+	extra_chance = 100
+
+/datum/repeatable_crafting_recipe/cooking/cake_tangerine
+	name = "Scarletharp Cake Base"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/produce/fruit/tangerine = 1,
+		/obj/item/reagent_containers/food/snacks/cake = 1,
+	)
+	required_table = TRUE
+	attacked_atom = /obj/item/reagent_containers/food/snacks/cake
+	starting_atom = /obj/item/reagent_containers/food/snacks/produce/fruit/tangerine
+	output = /obj/item/reagent_containers/food/snacks/tangerinecake
+	uses_attacked_atom = TRUE
+	craft_time = 9 SECONDS
+	crafting_sound = 'sound/foley/dropsound/gen_drop.ogg'
+	crafting_message = "Adding some tangy tangerine filling..."
+	extra_chance = 100
+
+/datum/repeatable_crafting_recipe/cooking/cake_strawberry
+	name = "Strawberry Cake Base"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/produce/fruit/strawberry = 1,
+		/obj/item/reagent_containers/food/snacks/cake = 1,
+	)
+	required_table = TRUE
+	attacked_atom = /obj/item/reagent_containers/food/snacks/cake
+	starting_atom = /obj/item/reagent_containers/food/snacks/produce/fruit/strawberry
+	output = /obj/item/reagent_containers/food/snacks/strawbycake
+	uses_attacked_atom = TRUE
+	craft_time = 9 SECONDS
+	crafting_sound = 'sound/foley/dropsound/gen_drop.ogg'
+	crafting_message = "Adding some tangy tangerine filling..."
+	extra_chance = 100
+
+/datum/repeatable_crafting_recipe/cooking/unbaked_cheesecake
+	name = "Unbaked Cheesecake"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/cheese = 1,
+		/obj/item/reagent_containers/food/snacks/chescake = 1,
+	)
+	required_table = TRUE
+	attacked_atom = /obj/item/reagent_containers/food/snacks/chescake
+	starting_atom = /obj/item/reagent_containers/food/snacks/cheese
+	output = /obj/item/reagent_containers/food/snacks/chescake_ready
+	uses_attacked_atom = TRUE
+	craft_time = 9 SECONDS
+	crafting_sound = 'sound/foley/dropsound/gen_drop.ogg'
+	crafting_message = "Spreading fresh cheese on the cake..."
+	extra_chance = 100
+
+/datum/repeatable_crafting_recipe/cooking/unbaked_cheesecake_poison
+	hides_from_books = TRUE
+	name = "Unbaked Cheesecake"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/cheese = 1,
+		/obj/item/reagent_containers/food/snacks/chescake_poison = 1,
+	)
+	required_table = TRUE
+	attacked_atom = /obj/item/reagent_containers/food/snacks/chescake_poison
+	starting_atom = /obj/item/reagent_containers/food/snacks/cheese
+	output = /obj/item/reagent_containers/food/snacks/chescake_poison_ready
+	uses_attacked_atom = TRUE
+	craft_time = 9 SECONDS
+	crafting_sound = 'sound/foley/dropsound/gen_drop.ogg'
+	crafting_message = "Spreading fresh cheese on the cake..."
+	extra_chance = 100
+
+/datum/repeatable_crafting_recipe/cooking/unbaked_zybcake
+	name = "Unbaked Zybantu Cake"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/spiderhoney = 1,
+		/obj/item/reagent_containers/food/snacks/zybcake = 1,
+	)
+	required_table = TRUE
+	attacked_atom = /obj/item/reagent_containers/food/snacks/zybcake
+	starting_atom = /obj/item/reagent_containers/food/snacks/spiderhoney
+	output = /obj/item/reagent_containers/food/snacks/zybcake_ready
+	uses_attacked_atom = TRUE
+	craft_time = 9 SECONDS
+	crafting_sound = 'sound/foley/dropsound/gen_drop.ogg'
+	crafting_message = "Spreading spider-honey on the cake..."
+	extra_chance = 100
+
+/datum/repeatable_crafting_recipe/cooking/unbaked_strawberrycake
+	name = "Unbaked Strawberry Cake"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/sugar = 1,
+		/obj/item/reagent_containers/food/snacks/strawbycake = 1,
+	)
+	required_table = TRUE
+	attacked_atom = /obj/item/reagent_containers/food/snacks/strawbycake
+	starting_atom = /obj/item/reagent_containers/food/snacks/sugar
+	output = /obj/item/reagent_containers/food/snacks/strawbycake_ready
+	uses_attacked_atom = TRUE
+	craft_time = 9 SECONDS
+	crafting_sound = 'sound/foley/dropsound/gen_drop.ogg'
+	crafting_message = "Spreading sugar frosting on the cake..."
+	extra_chance = 100
+
+/datum/repeatable_crafting_recipe/cooking/unbaked_crimsoncake
+	name = "Unbaked Crimson Cake"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/chocolate = 1,
+		/obj/item/reagent_containers/food/snacks/crimsoncake = 1,
+	)
+	required_table = TRUE
+	attacked_atom = /obj/item/reagent_containers/food/snacks/crimsoncake
+	starting_atom = /obj/item/reagent_containers/food/snacks/chocolate
+	output = /obj/item/reagent_containers/food/snacks/crimsoncake_ready
+	uses_attacked_atom = TRUE
+	craft_time = 9 SECONDS
+	crafting_sound = 'sound/foley/dropsound/gen_drop.ogg'
+	crafting_message = "Adding chocolate to the dough..."
+	extra_chance = 100
+
+/datum/repeatable_crafting_recipe/cooking/unbaked_tangerinecake
+	name = "Unbaked Scarletharp Cake"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/sugar = 1,
+		/obj/item/reagent_containers/food/snacks/tangerinecake = 1,
+	)
+	required_table = TRUE
+	attacked_atom = /obj/item/reagent_containers/food/snacks/tangerinecake
+	starting_atom = /obj/item/reagent_containers/food/snacks/sugar
+	output = /obj/item/reagent_containers/food/snacks/tangerinecake_ready
+	uses_attacked_atom = TRUE
+	craft_time = 9 SECONDS
+	crafting_sound = 'sound/foley/dropsound/gen_drop.ogg'
+	crafting_message = "Spreading sugar frosting on the cake..."
+	extra_chance = 100
+
+/datum/repeatable_crafting_recipe/cooking/unbaked_scone_tangerine
+	name = "Unbaked Tangerine Scone"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/produce/fruit/tangerine = 1,
+		/obj/item/reagent_containers/food/snacks/foodbase/scone_raw = 1,
+	)
+	required_table = TRUE
+	attacked_atom = /obj/item/reagent_containers/food/snacks/foodbase/scone_raw
+	starting_atom = /obj/item/reagent_containers/food/snacks/produce/fruit/tangerine
+	output = /obj/item/reagent_containers/food/snacks/foodbase/scone_raw_tangerine
+	uses_attacked_atom = TRUE
+	craft_time = 5 SECONDS
+	crafting_sound = 'sound/foley/dropsound/gen_drop.ogg'
+	crafting_message = "Adding tangerine to the scone..."
+	extra_chance = 100
+
+/datum/repeatable_crafting_recipe/cooking/unbaked_scone_plum
+	name = "Unbaked Plum Scone"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/produce/fruit/plum = 1,
+		/obj/item/reagent_containers/food/snacks/foodbase/scone_raw = 1,
+	)
+	required_table = TRUE
+	attacked_atom = /obj/item/reagent_containers/food/snacks/foodbase/scone_raw
+	starting_atom = /obj/item/reagent_containers/food/snacks/produce/fruit/plum
+	output = /obj/item/reagent_containers/food/snacks/foodbase/scone_raw_plum
+	uses_attacked_atom = TRUE
+	craft_time = 5 SECONDS
+	crafting_sound = 'sound/foley/dropsound/gen_drop.ogg'
+	crafting_message = "Adding plum to the scone..."
+	extra_chance = 100
+
+/datum/repeatable_crafting_recipe/cooking/unbaked_griddlecake_lemon
+	name = "Unbaked Lemon Griddlecake"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/produce/fruit/lemon = 1,
+		/obj/item/reagent_containers/food/snacks/foodbase/griddlecake_raw = 1,
+	)
+	required_table = TRUE
+	attacked_atom = /obj/item/reagent_containers/food/snacks/foodbase/griddlecake_raw
+	starting_atom = /obj/item/reagent_containers/food/snacks/produce/fruit/lemon
+	output = /obj/item/reagent_containers/food/snacks/foodbase/lemongriddlecake_raw
+	uses_attacked_atom = TRUE
+	craft_time = 5 SECONDS
+	crafting_sound = 'sound/foley/dropsound/gen_drop.ogg'
+	crafting_message = "Adding lemon to the griddlecake..."
+	extra_chance = 100
+
+/datum/repeatable_crafting_recipe/cooking/unbaked_griddlecake_apple
+	name = "Unbaked Apple Griddlecake"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/produce/fruit/apple = 1,
+		/obj/item/reagent_containers/food/snacks/foodbase/griddlecake_raw = 1,
+	)
+	required_table = TRUE
+	attacked_atom = /obj/item/reagent_containers/food/snacks/foodbase/griddlecake_raw
+	starting_atom = /obj/item/reagent_containers/food/snacks/produce/fruit/apple
+	output = /obj/item/reagent_containers/food/snacks/foodbase/applegriddlecake_raw
+	uses_attacked_atom = TRUE
+	craft_time = 5 SECONDS
+	crafting_sound = 'sound/foley/dropsound/gen_drop.ogg'
+	crafting_message = "Adding apple to the griddlecake..."
+	extra_chance = 100
+
+/datum/repeatable_crafting_recipe/cooking/unbaked_griddlecake_apple_alt
+	name = "Unbaked Dried Apple Griddlecake"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/apple_dried = 1,
+		/obj/item/reagent_containers/food/snacks/foodbase/griddlecake_raw = 1,
+	)
+	required_table = TRUE
+	attacked_atom = /obj/item/reagent_containers/food/snacks/foodbase/griddlecake_raw
+	starting_atom = /obj/item/reagent_containers/food/snacks/apple_dried
+	output = /obj/item/reagent_containers/food/snacks/foodbase/applegriddlecake_raw
+	uses_attacked_atom = TRUE
+	craft_time = 5 SECONDS
+	crafting_sound = 'sound/foley/dropsound/gen_drop.ogg'
+	crafting_message = "Adding dried apple to the griddlecake..."
+	extra_chance = 100
+
+/datum/repeatable_crafting_recipe/cooking/unbaked_griddlecake_berry
+	name = "Unbaked Berry Griddlecake"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/produce/fruit/jacksberry = 1,
+		/obj/item/reagent_containers/food/snacks/foodbase/griddlecake_raw = 1,
+	)
+	required_table = TRUE
+	attacked_atom = /obj/item/reagent_containers/food/snacks/foodbase/griddlecake_raw
+	starting_atom = /obj/item/reagent_containers/food/snacks/produce/fruit/jacksberry
+	output = /obj/item/reagent_containers/food/snacks/foodbase/berrygriddlecake_raw
+	uses_attacked_atom = TRUE
+	craft_time = 5 SECONDS
+	crafting_sound = 'sound/foley/dropsound/gen_drop.ogg'
+	crafting_message = "Adding jacksberry to the griddlecake..."
+	extra_chance = 100
+
+/datum/repeatable_crafting_recipe/cooking/unbaked_griddlecake_berry_alt
+	name = "Unbaked Raisin Griddlecake"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/raisins = 1,
+		/obj/item/reagent_containers/food/snacks/foodbase/griddlecake_raw = 1,
+	)
+	required_table = TRUE
+	attacked_atom = /obj/item/reagent_containers/food/snacks/foodbase/griddlecake_raw
+	starting_atom = /obj/item/reagent_containers/food/snacks/raisins
+	output = /obj/item/reagent_containers/food/snacks/foodbase/berrygriddlecake_raw
+	uses_attacked_atom = TRUE
+	craft_time = 5 SECONDS
+	crafting_sound = 'sound/foley/dropsound/gen_drop.ogg'
+	crafting_message = "Adding raisins to the griddlecake..."
+	extra_chance = 100
+
+/datum/repeatable_crafting_recipe/cooking/unbaked_griddlecake_berry_poison
+	hides_from_books = TRUE
+	name = "Unbaked Berry Griddlecake"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/produce/fruit/jacksberry/poison = 1,
+		/obj/item/reagent_containers/food/snacks/foodbase/griddlecake_raw = 1,
+	)
+	required_table = TRUE
+	attacked_atom = /obj/item/reagent_containers/food/snacks/foodbase/griddlecake_raw
+	starting_atom = /obj/item/reagent_containers/food/snacks/produce/fruit/jacksberry/poison
+	output = /obj/item/reagent_containers/food/snacks/foodbase/poisonberrygriddlecake_raw
+	uses_attacked_atom = TRUE
+	craft_time = 5 SECONDS
+	crafting_sound = 'sound/foley/dropsound/gen_drop.ogg'
+	crafting_message = "Adding jacksberry to the griddlecake..."
+	extra_chance = 100
+
+/datum/repeatable_crafting_recipe/cooking/beef_mett
+	name = "Grenzel Mett"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/veg/onion_sliced = 1,
+		/obj/item/reagent_containers/food/snacks/meat/mince/beef = 1,
+	)
+	required_table = TRUE
+	attacked_atom = /obj/item/reagent_containers/food/snacks/meat/mince/beef
+	starting_atom = /obj/item/reagent_containers/food/snacks/veg/onion_sliced
+	output = /obj/item/reagent_containers/food/snacks/meat/mince/beef/mett
+	uses_attacked_atom = TRUE
+	craft_time = 5 SECONDS
+	crafting_sound = 'sound/foley/kneading_alt.ogg'
+	crafting_message = "Kneading onions into the mince..."
+	extra_chance = 100
+
+/datum/repeatable_crafting_recipe/cooking/raw_sausage
+	name = "Fatty Raw Sausage"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/fat = 1,
+		/obj/item/reagent_containers/food/snacks/meat/mince = 1,
+	)
+	subtypes_allowed = TRUE
+	required_table = TRUE
+	attacked_atom = /obj/item/reagent_containers/food/snacks/meat/mince
+	starting_atom = /obj/item/reagent_containers/food/snacks/fat
+	output = /obj/item/reagent_containers/food/snacks/meat/sausage
+	uses_attacked_atom = TRUE
+	craft_time = 9 SECONDS
+	crafting_sound = 'sound/foley/dropsound/food_drop.ogg'
+	crafting_message = "Stuffing a wiener..."
+	extra_chance = 100
+
+/datum/repeatable_crafting_recipe/cooking/raw_sausage_inverse
+	hides_from_books = TRUE
+	name = "Fatty Raw Sausage"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/fat = 1,
+		/obj/item/reagent_containers/food/snacks/meat/mince = 1,
+	)
+	subtypes_allowed = TRUE
+	required_table = TRUE
+	attacked_atom = /obj/item/reagent_containers/food/snacks/fat
+	starting_atom = /obj/item/reagent_containers/food/snacks/meat/mince
+	output = /obj/item/reagent_containers/food/snacks/meat/sausage
+	uses_attacked_atom = TRUE
+	craft_time = 9 SECONDS
+	crafting_sound = 'sound/foley/dropsound/food_drop.ogg'
+	crafting_message = "Stuffing a wiener..."
+	extra_chance = 100
+
+/datum/repeatable_crafting_recipe/cooking/raw_sausage_alt
+	name = "Lean Raw Sausage"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/meat/mince = 2,
+	)
+	subtypes_allowed = TRUE
+	required_table = TRUE
+	attacked_atom = /obj/item/reagent_containers/food/snacks/meat/mince
+	starting_atom = /obj/item/reagent_containers/food/snacks/meat/mince
+	output = /obj/item/reagent_containers/food/snacks/meat/sausage
+	uses_attacked_atom = TRUE
+	craft_time = 9 SECONDS
+	crafting_sound = 'sound/foley/dropsound/food_drop.ogg'
+	crafting_message = "Stuffing a wiener..."
+	extra_chance = 100
+
+/datum/repeatable_crafting_recipe/cooking/pestranstick
+	name = "Pestran Stick"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/butter = 1,
+		/obj/item/grown/log/tree/stick = 1,
+	)
+	required_table = TRUE
+	attacked_atom = /obj/item/reagent_containers/food/snacks/butter
+	starting_atom = /obj/item/grown/log/tree/stick
+	output = /obj/item/reagent_containers/food/snacks/pestranstick
+	uses_attacked_atom = TRUE
+	craft_time = 5 SECONDS
+	crafting_sound = 'sound/foley/dropsound/food_drop.ogg'
+	crafting_message = "Skewering the butter..."
+	extra_chance = 100
+
+/datum/repeatable_crafting_recipe/cooking/jellycake_apple
+	name = "Apple Jellycake"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/produce/fruit/apple = 1,
+		/obj/item/reagent_containers/food/snacks/jellycake_base = 1,
+	)
+	required_table = TRUE
+	attacked_atom = /obj/item/reagent_containers/food/snacks/jellycake_base
+	starting_atom = /obj/item/reagent_containers/food/snacks/produce/fruit/apple
+	output = /obj/item/reagent_containers/food/snacks/jellycake_apple
+	minimum_skill_level = 3
+	uses_attacked_atom = TRUE
+	craft_time = 9 SECONDS
+	crafting_sound = 'sound/foley/kneading_alt.ogg'
+	crafting_message = "Mixing apple into the gelatine..."
+	extra_chance = 100
+
+/datum/repeatable_crafting_recipe/cooking/jellycake_apple_alt
+	name = "Dried Apple Jellycake"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/apple_dried = 1,
+		/obj/item/reagent_containers/food/snacks/jellycake_base = 1,
+	)
+	required_table = TRUE
+	attacked_atom = /obj/item/reagent_containers/food/snacks/jellycake_base
+	starting_atom = /obj/item/reagent_containers/food/snacks/apple_dried
+	output = /obj/item/reagent_containers/food/snacks/jellycake_apple
+	minimum_skill_level = 3
+	uses_attacked_atom = TRUE
+	craft_time = 9 SECONDS
+	crafting_sound = 'sound/foley/kneading_alt.ogg'
+	crafting_message = "Mixing dried apple into the gelatine..."
+	extra_chance = 100
+
+/datum/repeatable_crafting_recipe/cooking/jellycake_tangerine
+	name = "Tangerine Jellycake"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/produce/fruit/tangerine = 1,
+		/obj/item/reagent_containers/food/snacks/jellycake_base = 1,
+	)
+	required_table = TRUE
+	attacked_atom = /obj/item/reagent_containers/food/snacks/jellycake_base
+	starting_atom = /obj/item/reagent_containers/food/snacks/produce/fruit/tangerine
+	output = /obj/item/reagent_containers/food/snacks/jellycake_tangerine
+	minimum_skill_level = 3
+	uses_attacked_atom = TRUE
+	craft_time = 9 SECONDS
+	crafting_sound = 'sound/foley/kneading_alt.ogg'
+	crafting_message = "Mixing tangerine into the gelatine..."
+	extra_chance = 100
+
+/datum/repeatable_crafting_recipe/cooking/jellycake_tangerine_alt
+	name = "Dried Tangerine Jellycake"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/tangerine_dried = 1,
+		/obj/item/reagent_containers/food/snacks/jellycake_base = 1,
+	)
+	required_table = TRUE
+	attacked_atom = /obj/item/reagent_containers/food/snacks/jellycake_base
+	starting_atom = /obj/item/reagent_containers/food/snacks/tangerine_dried
+	output = /obj/item/reagent_containers/food/snacks/jellycake_tangerine
+	minimum_skill_level = 3
+	uses_attacked_atom = TRUE
+	craft_time = 9 SECONDS
+	crafting_sound = 'sound/foley/kneading_alt.ogg'
+	crafting_message = "Mixing dried tangerine into the gelatine..."
+	extra_chance = 100
+
+/datum/repeatable_crafting_recipe/cooking/jellycake_plum
+	name = "Plum Jellycake"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/produce/fruit/plum = 1,
+		/obj/item/reagent_containers/food/snacks/jellycake_base = 1,
+	)
+	required_table = TRUE
+	attacked_atom = /obj/item/reagent_containers/food/snacks/jellycake_base
+	starting_atom = /obj/item/reagent_containers/food/snacks/produce/fruit/plum
+	output = /obj/item/reagent_containers/food/snacks/jellycake_plum
+	minimum_skill_level = 3
+	uses_attacked_atom = TRUE
+	craft_time = 9 SECONDS
+	crafting_sound = 'sound/foley/kneading_alt.ogg'
+	crafting_message = "Mixing plum into the gelatine..."
+	extra_chance = 100
+
+/datum/repeatable_crafting_recipe/cooking/jellycake_plum_alt
+	name = "Dried Plum Jellycake"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/plum_dried = 1,
+		/obj/item/reagent_containers/food/snacks/jellycake_base = 1,
+	)
+	required_table = TRUE
+	attacked_atom = /obj/item/reagent_containers/food/snacks/jellycake_base
+	starting_atom = /obj/item/reagent_containers/food/snacks/plum_dried
+	output = /obj/item/reagent_containers/food/snacks/jellycake_plum
+	minimum_skill_level = 3
+	uses_attacked_atom = TRUE
+	craft_time = 9 SECONDS
+	crafting_sound = 'sound/foley/kneading_alt.ogg'
+	crafting_message = "Mixing dried plum into the gelatine..."
+	extra_chance = 100
+
+/datum/repeatable_crafting_recipe/cooking/jellycake_pear
+	name = "Pear Jellycake"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/produce/fruit/pear = 1,
+		/obj/item/reagent_containers/food/snacks/jellycake_base = 1,
+	)
+	required_table = TRUE
+	attacked_atom = /obj/item/reagent_containers/food/snacks/jellycake_base
+	starting_atom = /obj/item/reagent_containers/food/snacks/produce/fruit/pear
+	output = /obj/item/reagent_containers/food/snacks/jellycake_pear
+	minimum_skill_level = 3
+	uses_attacked_atom = TRUE
+	craft_time = 9 SECONDS
+	crafting_sound = 'sound/foley/kneading_alt.ogg'
+	crafting_message = "Mixing pear into the gelatine..."
+	extra_chance = 100
+
+/datum/repeatable_crafting_recipe/cooking/jellycake_pear_alt
+	name = "Dried Pear Jellycake"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/pear_dried = 1,
+		/obj/item/reagent_containers/food/snacks/jellycake_base = 1,
+	)
+	required_table = TRUE
+	attacked_atom = /obj/item/reagent_containers/food/snacks/jellycake_base
+	starting_atom = /obj/item/reagent_containers/food/snacks/pear_dried
+	output = /obj/item/reagent_containers/food/snacks/jellycake_pear
+	minimum_skill_level = 3
+	uses_attacked_atom = TRUE
+	craft_time = 9 SECONDS
+	crafting_sound = 'sound/foley/kneading_alt.ogg'
+	crafting_message = "Mixing dried pear into the gelatine..."
+	extra_chance = 100
+
+/datum/repeatable_crafting_recipe/cooking/jellycake_lime
+	name = "Lime Jellycake"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/produce/fruit/lime = 1,
+		/obj/item/reagent_containers/food/snacks/jellycake_base = 1,
+	)
+	required_table = TRUE
+	attacked_atom = /obj/item/reagent_containers/food/snacks/jellycake_base
+	starting_atom = /obj/item/reagent_containers/food/snacks/produce/fruit/lime
+	output = /obj/item/reagent_containers/food/snacks/jellycake_lime
+	minimum_skill_level = 3
+	uses_attacked_atom = TRUE
+	craft_time = 9 SECONDS
+	crafting_sound = 'sound/foley/kneading_alt.ogg'
+	crafting_message = "Mixing lime into the gelatine..."
 	extra_chance = 100
