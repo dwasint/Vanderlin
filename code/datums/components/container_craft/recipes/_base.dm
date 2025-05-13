@@ -19,7 +19,7 @@ GLOBAL_LIST_INIT(container_craft_to_singleton, init_container_crafts())
 	var/output_amount = 1
 	var/category
 
-	var/user_craft = TRUE
+	var/user_craft = FALSE
 
 	///if this is set we will only ever craft if only the contents are in the bag
 	var/isolation_craft = FALSE
@@ -308,6 +308,7 @@ GLOBAL_LIST_INIT(container_craft_to_singleton, init_container_crafts())
 		var/atom/created_output = new output(get_turf(crafter))
 		SEND_SIGNAL(crafter, COMSIG_TRY_STORAGE_INSERT, created_output, null, null, TRUE, TRUE)
 		after_craft(created_output, crafter, initiator, found_optional_requirements, found_optional_wildcards, found_optional_reagents, removing_items)
+		SEND_SIGNAL(crafter, COMSIG_CONTAINER_CRAFT_COMPLETE, created_output)
 
 /datum/container_craft/proc/after_craft(atom/created_output, obj/item/crafter, mob/initiator, list/found_optional_requirements, list/found_optional_wildcards, list/found_optional_reagents, list/removing_items)
 	// This is an extension point for specific crafting types to do additional processing

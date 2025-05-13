@@ -645,6 +645,7 @@
 #include "code\datums\components\earprotection.dm"
 #include "code\datums\components\edit_complainer.dm"
 #include "code\datums\components\explodable.dm"
+#include "code\datums\components\food_burner.dm"
 #include "code\datums\components\footstep.dm"
 #include "code\datums\components\forced_gravity.dm"
 #include "code\datums\components\forensics.dm"

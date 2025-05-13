@@ -14,6 +14,12 @@
 	. = ..()
 	AddComponent(/datum/component/storage/concrete/grid/pan)
 	AddComponent(/datum/component/container_craft, subtypesof(/datum/container_craft/oven))
+	AddComponent(/datum/component/food_burner, 2 MINUTES, TRUE, CALLBACK(src, PROC_REF(can_burn)))
+
+/obj/machinery/light/fueled/oven/proc/can_burn()
+	if(on)
+		return TRUE
+	return FALSE
 
 /obj/machinery/light/fueled/oven/OnCrafted(dirin, mob/user)
 	dir = turn(dirin, 180)

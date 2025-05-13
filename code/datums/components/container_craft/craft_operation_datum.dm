@@ -70,7 +70,11 @@
  */
 /datum/container_craft_operation/process()
 	// Check if the container or user are still valid
-	if(QDELETED(crafter) || (recipe.user_craft && (QDELETED(initiator) || !initiator.canUseTopic(crafter, BE_CLOSE))))
+	if(recipe.user_craft)
+		if((QDELETED(initiator) || !initiator.canUseTopic(crafter, BE_CLOSE)))
+			return FALSE
+
+	if(QDELETED(crafter))
 		abort_craft("Container or user no longer valid")
 		return
 

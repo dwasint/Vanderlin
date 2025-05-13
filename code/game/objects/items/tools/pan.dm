@@ -18,9 +18,18 @@
 	. = ..()
 	AddComponent(/datum/component/storage/concrete/grid/pan)
 	AddComponent(/datum/component/container_craft, subtypesof(/datum/container_craft/pan))
+	AddComponent(/datum/component/food_burner, 2 MINUTES, TRUE, CALLBACK(src, PROC_REF(can_burn)))
 
 /obj/item/cooking/pan/examine(mob/user)
 	. = ..()
+
+/obj/item/cooking/pan/proc/can_burn()
+	if(!istype(loc, /obj/machinery/light/fueled))
+		return FALSE
+	var/obj/machinery/light/fueled/fueled = loc
+	if(!fueled.fueluse)
+		return FALSE
+	return TRUE
 
 /obj/item/cooking/pan/proc/add_to_visible(obj/item/our_item)
 	var/mutable_appearance/MA = mutable_appearance(our_item.icon, our_item.icon_state)

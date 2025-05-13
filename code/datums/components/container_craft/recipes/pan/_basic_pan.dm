@@ -70,6 +70,7 @@
 		var/atom/created_output = new create_path(get_turf(crafter))
 		SEND_SIGNAL(crafter, COMSIG_TRY_STORAGE_INSERT, created_output, null, null, TRUE, TRUE)
 		after_craft(created_output, crafter, initiator, found_optional_requirements, found_optional_wildcards, found_optional_reagents, removing_items)
+		SEND_SIGNAL(crafter, COMSIG_CONTAINER_CRAFT_COMPLETE, created_output)
 
 /datum/container_craft/pan/fish/swordfish
 	name = "Fried Swordfish"

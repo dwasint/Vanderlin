@@ -8,7 +8,6 @@
 	abstract_type = /datum/container_craft/cooking
 	category = "Soups"
 	crafting_time = 5 SECONDS
-	user_craft = FALSE
 	reagent_requirements = list(
 		/datum/reagent/water = 33
 	)
