@@ -1,6 +1,7 @@
 
 /datum/repeatable_crafting_recipe/cooking/chescake_poison
 	hides_from_books = TRUE
+	category = "Cakes"
 	name = "Cheesecake Base"
 
 	requirements = list(
@@ -19,6 +20,7 @@
 
 /datum/repeatable_crafting_recipe/cooking/chescake_poison_raisan
 	hides_from_books = TRUE
+	category = "Cakes"
 	name = "Berry Cheesecake Base"
 
 	requirements = list(
@@ -36,6 +38,7 @@
 	extra_chance = 100
 
 /datum/repeatable_crafting_recipe/cooking/chescake
+	category = "Cakes"
 	name = "Raisin Cheesecake Base"
 
 	requirements = list(
@@ -53,6 +56,7 @@
 	extra_chance = 100
 
 /datum/repeatable_crafting_recipe/cooking/chescake_raisan
+	category = "Cakes"
 	name = "Cheesecake Base"
 
 	requirements = list(
@@ -70,6 +74,7 @@
 	extra_chance = 100
 
 /datum/repeatable_crafting_recipe/cooking/cake_base
+	category = "Cakes"
 	name = "Cake Base"
 
 	requirements = list(
@@ -89,6 +94,7 @@
 
 
 /datum/repeatable_crafting_recipe/cooking/cake_pear
+	category = "Cakes"
 	name = "Zybantu Cake Base"
 
 	requirements = list(
@@ -106,6 +112,7 @@
 	extra_chance = 100
 
 /datum/repeatable_crafting_recipe/cooking/cake_plum
+	category = "Cakes"
 	name = "Crimson Pine Cake Base"
 
 	requirements = list(
@@ -123,6 +130,7 @@
 	extra_chance = 100
 
 /datum/repeatable_crafting_recipe/cooking/cake_tangerine
+	category = "Cakes"
 	name = "Scarletharp Cake Base"
 
 	requirements = list(
@@ -140,6 +148,7 @@
 	extra_chance = 100
 
 /datum/repeatable_crafting_recipe/cooking/cake_strawberry
+	category = "Cakes"
 	name = "Strawberry Cake Base"
 
 	requirements = list(
@@ -157,6 +166,7 @@
 	extra_chance = 100
 
 /datum/repeatable_crafting_recipe/cooking/unbaked_cheesecake
+	category = "Cakes"
 	name = "Unbaked Cheesecake"
 
 	requirements = list(
@@ -175,6 +185,7 @@
 
 /datum/repeatable_crafting_recipe/cooking/unbaked_cheesecake_poison
 	hides_from_books = TRUE
+	category = "Cakes"
 	name = "Unbaked Cheesecake"
 
 	requirements = list(
@@ -192,6 +203,7 @@
 	extra_chance = 100
 
 /datum/repeatable_crafting_recipe/cooking/unbaked_zybcake
+	category = "Cakes"
 	name = "Unbaked Zybantu Cake"
 
 	requirements = list(
@@ -209,6 +221,7 @@
 	extra_chance = 100
 
 /datum/repeatable_crafting_recipe/cooking/unbaked_strawberrycake
+	category = "Cakes"
 	name = "Unbaked Strawberry Cake"
 
 	requirements = list(
@@ -226,6 +239,7 @@
 	extra_chance = 100
 
 /datum/repeatable_crafting_recipe/cooking/unbaked_crimsoncake
+	category = "Cakes"
 	name = "Unbaked Crimson Cake"
 
 	requirements = list(
@@ -243,6 +257,7 @@
 	extra_chance = 100
 
 /datum/repeatable_crafting_recipe/cooking/unbaked_tangerinecake
+	category = "Cakes"
 	name = "Unbaked Scarletharp Cake"
 
 	requirements = list(

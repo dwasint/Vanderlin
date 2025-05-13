@@ -184,18 +184,21 @@
 	cooked_smell = /datum/pollutant/food/scone
 
 /datum/container_craft/oven/tangerinecake
+	category = "Cakes"
 	name = "Baked Scarletharp Cake"
 	requirements = list(/obj/item/reagent_containers/food/snacks/tangerinecake_ready= 1)
 	output = /obj/item/reagent_containers/food/snacks/tangerinecake_cooked
 	cooked_smell = /datum/pollutant/food/strawberry_cake
 
 /datum/container_craft/oven/crimsoncake
+	category = "Cakes"
 	name = "Baked Crimson Pine Cake"
 	requirements = list(/obj/item/reagent_containers/food/snacks/crimsoncake_ready= 1)
 	output = /obj/item/reagent_containers/food/snacks/crimsoncake_cooked
 	cooked_smell = /datum/pollutant/food/crimson_cake
 
 /datum/container_craft/oven/strawberrycake
+	category = "Cakes"
 	name = "Baked Strawberry Cake"
 	requirements = list(/obj/item/reagent_containers/food/snacks/strawbycake_ready= 1)
 	output = /obj/item/reagent_containers/food/snacks/strawbycake_cooked
@@ -203,18 +206,21 @@
 
 /datum/container_craft/oven/poisoncheesecake
 	hides_from_books = TRUE
+	category = "Cakes"
 	name = "Baked Poison Cheesecake"
 	requirements = list(/obj/item/reagent_containers/food/snacks/chescake_poison_ready= 1)
 	output = /obj/item/reagent_containers/food/snacks/cheesecake_poison_cooked
 	cooked_smell = /datum/pollutant/food/cheese_cake
 
 /datum/container_craft/oven/cheesecake
+	category = "Cakes"
 	name = "Baked Cheesecake"
 	requirements = list(/obj/item/reagent_containers/food/snacks/chescake_ready= 1)
 	output = /obj/item/reagent_containers/food/snacks/cheesecake_cooked
 	cooked_smell = /datum/pollutant/food/cheese_cake
 
 /datum/container_craft/oven/honey_cake
+	category = "Cakes"
 	name = "Baked Zybantu Cake"
 	requirements = list(/obj/item/reagent_containers/food/snacks/zybcake_ready= 1)
 	output = /obj/item/reagent_containers/food/snacks/zybcake_cooked

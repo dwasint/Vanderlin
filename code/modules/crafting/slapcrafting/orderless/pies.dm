@@ -1,6 +1,7 @@
 ///this in theory should be better then the old system pies are funky as they don't create a new type at the end.
 /datum/orderless_slapcraft/pie
 	abstract_type = /datum/orderless_slapcraft/pie
+	category = "Pies"
 
 	finishing_item = /obj/item/reagent_containers/food/snacks/piedough
 	starting_item = /obj/item/reagent_containers/food/snacks/foodbase/piebottom
