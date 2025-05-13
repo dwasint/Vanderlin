@@ -429,30 +429,8 @@
 		if(istype(W, /obj/item/reagent_containers/glass/bowl))
 			to_chat(user, "<span class='notice'>Remove the pot from the hearth first.</span>")
 			return
-
-		if(istype(attachment, /obj/item/cooking/pan))
-			if(W.type in subtypesof(/obj/item/reagent_containers/food/snacks))
-				var/obj/item/reagent_containers/food/snacks/S = W
-
-				if(istype(W, /obj/item/reagent_containers/food/snacks/egg))
-					if(W.icon_state != "rawegg")
-						playsound(get_turf(user), 'sound/foley/eggbreak.ogg', 100, TRUE, -1)
-						if(!do_after(user, 25))
-							return
-						W.icon_state = "rawegg"
-					rawegg = TRUE
-
-				if(!food)
-					if(user.transferItemToLoc(S, src, silent = TRUE))
-						food = S
-						update_icon()
-						if(on)
-							playsound(src.loc, 'sound/misc/frying.ogg', 80, FALSE, extrarange = 5)
-					return
-
-		else if(istype(attachment, /obj/item/reagent_containers/glass/bucket/pot) || istype(attachment, /obj/item/reagent_containers/glass/bottle/teapot))
-			var/obj/item/reagent_containers/glass/bucket/pot/pot = attachment
-			SEND_SIGNAL(pot, COMSIG_TRY_STORAGE_INSERT, W, user, null, TRUE, TRUE)
+		else
+			SEND_SIGNAL(attachment, COMSIG_TRY_STORAGE_INSERT, W, user, null, TRUE, TRUE)
 	. = ..()
 
 /obj/machinery/light/fueled/hearth/MouseDrop(mob/over, src_location, over_location, src_control, over_control, params)
