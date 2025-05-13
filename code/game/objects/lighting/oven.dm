@@ -24,28 +24,6 @@
 	. = ..()
 	update_icon()
 
-/obj/machinery/light/fueled/oven/attackby(obj/item/W, mob/living/user, params)
-	var/_y = text2num(params2list(params)["icon-y"])
-	var/clicked_top
-	if(_y > 14)
-		clicked_top = TRUE
-
-	if(clicked_top)
-		if((W.item_flags & ABSTRACT) || HAS_TRAIT(W, TRAIT_NODROP))
-			return ..()
-		if(W.wlength > WLENGTH_NORMAL)
-			return ..()
-		if(food.len < maxfood)
-			donefoods = FALSE
-			W.forceMove(src)
-			food += W
-			playsound(get_turf(src.loc), 'sound/items/wood_sharpen.ogg', 50) // neu cooking
-			user.visible_message("<span class='warning'>[user] puts something in the oven.</span>")
-			need_underlay_update = TRUE
-			update_icon()
-			return
-	return ..()
-
 /obj/machinery/light/fueled/oven/process()
 	..()
 	if(on)
