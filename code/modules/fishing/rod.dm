@@ -671,10 +671,9 @@
 		playsound(loc, 'sound/items/Fish_out.ogg', 100, TRUE)
 		fisher.mind.adjust_experience(/datum/skill/labor/fishing, clamp(difficulty, 1, 3) * fisher.STAINT)
 		if(ispath(fishtype, /obj/item/reagent_containers/food/snacks/fish))
-			var/obj/item/reagent_containers/food/snacks/caughtfish = new fishtype(get_turf(fisher))
+			var/obj/item/reagent_containers/food/snacks/fish/caughtfish = new fishtype(get_turf(fisher))
 			if(fishrarity != "com")
-				var/obj/item/reagent_containers/food/snacks/fish/oldfish = caughtfish
-				oldfish.rare = TRUE
+				caughtfish.rare = TRUE
 			var/raritydesc
 			var/sizedesc
 
