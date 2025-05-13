@@ -81,7 +81,7 @@
 		return FALSE
 
 	if(minimum_skill_level)
-		if(user?.mind?.get_skill_level(skillcraft) <= minimum_skill_level)
+		if(user?.get_skill_level(skillcraft) <= minimum_skill_level)
 			return FALSE
 
 	if(istype(attacked_item, /obj/item/natural/bundle))
@@ -369,7 +369,7 @@
 				if(bottle.closed)
 					bottle.rmb_self(user)
 
-			var/reagent_use_time_real = max(reagent_use_time * 0.1, reagent_use_time / max(1, user.mind?.get_skill_level(skillcraft)))
+			var/reagent_use_time_real = max(reagent_use_time * 0.1, reagent_use_time / max(1, user.get_skill_level(skillcraft)))
 			if(!do_after(user, reagent_use_time_real, container, extra_checks = CALLBACK(user, TYPE_PROC_REF(/atom/movable, CanReach), container)))
 				continue
 
@@ -455,7 +455,7 @@
 
 	if(length(tool_path_extra) >= 3)
 		playsound(get_turf(user), tool_path_extra[3], 100, FALSE)
-	var/tool_use_time_real = max(tool_use_time * 0.1, tool_use_time / max(1, user.mind?.get_skill_level(skillcraft)))
+	var/tool_use_time_real = max(tool_use_time * 0.1, tool_use_time / max(1, user.get_skill_level(skillcraft)))
 	if(!do_after(user, tool_use_time_real, potential_tool, extra_checks = CALLBACK(user, TYPE_PROC_REF(/atom/movable, CanReach), potential_tool)))
 		return FALSE
 
@@ -677,7 +677,7 @@
 		playsound(user, crafting_sound, sound_volume, TRUE, -1)
 	if(crafting_message)
 		to_chat(user, span_notice(crafting_message))
-	var/crafting_time = max(craft_time * 0.1, craft_time / max(1, user.mind?.get_skill_level(skillcraft)))
+	var/crafting_time = max(craft_time * 0.1, craft_time / max(1, user.get_skill_level(skillcraft)))
 	if(!do_after(user, crafting_time))
 		return FALSE
 
@@ -727,7 +727,7 @@
 
 	if(skillcraft)
 		if(user.mind)
-			prob2craft += (user.mind.get_skill_level(skillcraft) * 25)
+			prob2craft += (user.get_skill_level(skillcraft) * 25)
 	else
 		prob2craft = 100
 

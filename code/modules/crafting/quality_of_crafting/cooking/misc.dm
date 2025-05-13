@@ -54,7 +54,7 @@
 
 /datum/repeatable_crafting_recipe/cooking/apple_fritter_raw/create_outputs(list/to_delete, mob/user)
 	var/output_path = output
-	if(user.mind.get_skill_level(/datum/skill/craft/cooking) >= 2)
+	if(user.get_skill_level(/datum/skill/craft/cooking) >= 2)
 		output_path =  /obj/item/reagent_containers/food/snacks/foodbase/fritter_raw/good
 	var/list/outputs = list()
 

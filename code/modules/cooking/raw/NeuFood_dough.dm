@@ -41,7 +41,7 @@
 /obj/item/reagent_containers/food/snacks/dough_slice/attackby(obj/item/I, mob/living/user, params)
 	. = ..()
 	if(user.mind)
-		short_cooktime = (50 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*8))
+		short_cooktime = (50 - ((user.get_skill_level(/datum/skill/craft/cooking))*8))
 	var/found_table = locate(/obj/structure/table) in (loc)
 	if(istype(I, /obj/item/kitchen/rollingpin))
 		if(isturf(loc)&& (found_table))
@@ -87,7 +87,7 @@
 /obj/item/reagent_containers/food/snacks/butterdough_slice/attackby(obj/item/I, mob/living/user, params)
 	..()
 	if(user.mind)
-		short_cooktime = (50 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*8))
+		short_cooktime = (50 - ((user.get_skill_level(/datum/skill/craft/cooking))*8))
 	var/found_table = locate(/obj/structure/table) in (loc)
 	if(isturf(loc)&& (found_table))
 		if(istype(I, /obj/item/kitchen/rollingpin))
@@ -101,7 +101,7 @@
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
 			to_chat(user, span_notice("Cutting the dough in strips and making a prezzel..."))
 			if(do_after(user, short_cooktime, src))
-				if(user.mind.get_skill_level(/datum/skill/craft/cooking) >= 2 || isdwarf(user))
+				if(user.get_skill_level(/datum/skill/craft/cooking) >= 2 || isdwarf(user))
 					new /obj/item/reagent_containers/food/snacks/foodbase/prezzel_raw/good(loc)
 				else
 					new /obj/item/reagent_containers/food/snacks/foodbase/prezzel_raw(loc)
@@ -200,7 +200,7 @@
 
 /obj/item/reagent_containers/food/snacks/breadslice/attackby(obj/item/I, mob/living/user, params)
 	if(user.mind)
-		short_cooktime = (50 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*8))
+		short_cooktime = (50 - ((user.get_skill_level(/datum/skill/craft/cooking))*8))
 	if(modified)
 		return TRUE
 	if(istype(I, /obj/item/reagent_containers/food/snacks/meat/salami/slice))
@@ -988,7 +988,7 @@
 
 /obj/item/reagent_containers/food/snacks/griddlecake/attackby(obj/item/I, mob/living/user, params)
 	if(user.mind)
-		short_cooktime = (50 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*8))
+		short_cooktime = (50 - ((user.get_skill_level(/datum/skill/craft/cooking))*8))
 	if(modified)
 		return TRUE
 	if(istype(I, /obj/item/reagent_containers/food/snacks/butterslice))

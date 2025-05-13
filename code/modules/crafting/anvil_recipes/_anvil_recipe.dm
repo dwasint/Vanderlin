@@ -30,7 +30,7 @@
 /datum/anvil_recipe/proc/advance(mob/user, breakthrough = FALSE)
 	var/moveup = 1
 	var/proab = 0 // Probability to not spoil the bar
-	var/skill_level	= user.mind.get_skill_level(appro_skill)
+	var/skill_level	= user.get_skill_level(appro_skill)
 	if(progress == 100)
 		to_chat(user, "<span class='info'>It's ready.</span>")
 		user.visible_message("<span class='warning'>[user] strikes the bar!</span>")
@@ -96,7 +96,7 @@
 		if(user.mind && isliving(user))
 			var/mob/living/L = user
 			var/amt2raise = L.STAINT // It would be impossible to level up otherwise
-			var/boon = user.mind.get_learning_boon(appro_skill)
+			var/boon = user.get_learning_boon(appro_skill)
 			if(amt2raise > 0)
 				if(!HAS_TRAIT(user, TRAIT_MALUMFIRE))
 					skill_quality += (rand(skill_level*6, skill_level*15) * moveup) // Lesser quality for self-learned non-professional smiths by trade

@@ -142,7 +142,7 @@
 
 	if(attacking_item)
 		if(attacking_human?.mind)
-			dodge_score -= (attacking_human.mind.get_skill_level(attacking_item.associated_skill) * 10)
+			dodge_score -= (attacking_human.get_skill_level(attacking_item.associated_skill) * 10)
 
 		if(attacking_item.wbalance > 0)
 			dodge_score -= ((user.STASPD - STASPD) * 5)
@@ -170,11 +170,11 @@
 		if(!attacking_item.associated_skill)
 			dodge_score += 10  // Improvised weapon penalty
 		else
-			dodge_score += (defending_human.mind.get_skill_level(attacking_item.associated_skill) * 10)
+			dodge_score += (defending_human.get_skill_level(attacking_item.associated_skill) * 10)
 
 	if(defending_human?.mind && attacking_human?.mind && attacking_human.used_intent.unarmed)
-		dodge_score -= (attacking_human.mind.get_skill_level(/datum/skill/combat/unarmed) * 10)
-		dodge_score += (defending_human.mind.get_skill_level(/datum/skill/combat/unarmed) * 10)
+		dodge_score -= (attacking_human.get_skill_level(/datum/skill/combat/unarmed) * 10)
+		dodge_score += (defending_human.get_skill_level(/datum/skill/combat/unarmed) * 10)
 
 	return dodge_score
 

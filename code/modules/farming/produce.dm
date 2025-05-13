@@ -72,7 +72,7 @@
 	mill_result = /obj/item/reagent_containers/powder/flour
 
 /obj/item/reagent_containers/food/snacks/produce/grain/wheat/examine(mob/user)
-	var/farminglvl = user.mind?.get_skill_level(/datum/skill/labor/farming)
+	var/farminglvl = user.get_skill_level(/datum/skill/labor/farming)
 	. += ..()
 	if(farminglvl >= 0)
 		. += "I can easily tell that these are wheat grains."
@@ -89,7 +89,7 @@
 	tastes = list("oat" = 1)
 	grind_results = list(/datum/reagent/flour = 10)
 /obj/item/reagent_containers/food/snacks/produce/grain/oat/examine(mob/user)
-	var/farminglvl = user.mind?.get_skill_level(/datum/skill/labor/farming)
+	var/farminglvl = user.get_skill_level(/datum/skill/labor/farming)
 	. += ..()
 	if(farminglvl >= 0)
 		. += "I can easily tell that these are oat groats."
@@ -247,7 +247,7 @@
 	poisonous = TRUE
 
 /obj/item/reagent_containers/food/snacks/produce/fruit/jacksberry/examine(mob/user)
-	var/farminglvl = user.mind?.get_skill_level(/datum/skill/labor/farming)
+	var/farminglvl = user.get_skill_level(/datum/skill/labor/farming)
 	. = ..()
 	// Foragers can always detect if a berry is safe or poisoned
 	if(HAS_TRAIT(user, TRAIT_FORAGER))

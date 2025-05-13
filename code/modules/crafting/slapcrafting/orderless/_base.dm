@@ -47,7 +47,7 @@
 
 /datum/orderless_slapcraft/proc/try_process_item(obj/item/attacking_item, mob/user)
 	var/return_value = FALSE
-	var/short_cooktime = (action_time - ((user?.mind?.get_skill_level(related_skill)) * 5))
+	var/short_cooktime = (action_time - ((user?.get_skill_level(related_skill)) * 5))
 
 	for(var/obj/item/item as anything in requirements)
 		if(islist(item))

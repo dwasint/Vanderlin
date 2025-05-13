@@ -53,20 +53,20 @@
 		if(H.patron != /datum/patron/divine/astrata) // For some stupid reason this was checking for Dendor before.
 			H.set_patron(/datum/patron/divine/astrata)
 
-		H.mind?.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
-		H.mind?.adjust_skillrank(/datum/skill/magic/holy, 4, TRUE)
-		H.mind?.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
-		H.mind?.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
-		H.mind?.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE) // Privilege of being the SECOND biggest target in the game, and arguably the worse of the two targets to lose
-		H.mind?.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)
-		H.mind?.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-		H.mind?.adjust_skillrank(/datum/skill/misc/sewing, 3, TRUE)
-		H.mind?.adjust_skillrank(/datum/skill/misc/medicine, 3, TRUE)
-		H.mind?.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
-		H.mind?.adjust_skillrank(/datum/skill/labor/mathematics, 3, TRUE)
+		H.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
+		H.adjust_skillrank(/datum/skill/magic/holy, 4, TRUE)
+		H.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
+		H.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
+		H.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE) // Privilege of being the SECOND biggest target in the game, and arguably the worse of the two targets to lose
+		H.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)
+		H.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+		H.adjust_skillrank(/datum/skill/misc/sewing, 3, TRUE)
+		H.adjust_skillrank(/datum/skill/misc/medicine, 3, TRUE)
+		H.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
+		H.adjust_skillrank(/datum/skill/labor/mathematics, 3, TRUE)
 		if(H.age == AGE_OLD)
-			H.mind?.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
-			H.mind?.adjust_skillrank(/datum/skill/magic/holy, 1, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
+			H.adjust_skillrank(/datum/skill/magic/holy, 1, TRUE)
 		H.change_stat(STATKEY_STR, 1) // One slot and a VERY important role, it deserves a half-decent statline
 		H.change_stat(STATKEY_INT, 2)
 		H.change_stat(STATKEY_END, 2)
@@ -276,7 +276,7 @@
 	if(!recruit.mind)
 		return FALSE
 	//only orphans who aren't apprentices
-	if(istype(recruit.mind.assigned_role, /datum/job/orphan) && !recruit.mind.apprentice)
+	if(istype(recruit.mind.assigned_role, /datum/job/orphan) && !recruit.is_apprentice())
 		return FALSE
 	//need to see their damn face
 	if(!recruit.get_face_name(null))

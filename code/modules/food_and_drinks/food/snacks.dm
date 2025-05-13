@@ -459,7 +459,7 @@ All foods are distributed among various categories. Use common sense.
 
 	if(user.mind)
 		if(foodbuff_skillcheck)		// cooks with less than 3 skill don´t add bonus buff
-			if(user.mind.get_skill_level(/datum/skill/craft/cooking) <= 1) // cooks with 0 skill make shitty meals when trying to be fancy
+			if(user.get_skill_level(/datum/skill/craft/cooking) <= 1) // cooks with 0 skill make shitty meals when trying to be fancy
 				tastes = list("blandness" = 1)
 				quality = 0
 				switch(rand(1,6))
@@ -481,10 +481,10 @@ All foods are distributed among various categories. Use common sense.
 					if(6)
 						name = "bland [name]"
 						desc = "Is this food?"
-			if(user.mind.get_skill_level(/datum/skill/craft/cooking) >= 2)
+			if(user.get_skill_level(/datum/skill/craft/cooking) >= 2)
 				eat_effect = /datum/status_effect/buff/foodbuff
 				quality = 2
-			if(user.mind.get_skill_level(/datum/skill/craft/cooking) == 4)
+			if(user.get_skill_level(/datum/skill/craft/cooking) == 4)
 				quality = 3
 				switch(rand(1,7))
 					if(1)
@@ -508,7 +508,7 @@ All foods are distributed among various categories. Use common sense.
 					if(7)
 						name = "flavorful [name]"
 						desc = "[desc] It looks like good eating."
-			if(user.mind.get_skill_level(/datum/skill/craft/cooking) >= 5)
+			if(user.get_skill_level(/datum/skill/craft/cooking) >= 5)
 				quality = 4
 				switch(rand(1,5))
 					if(1)

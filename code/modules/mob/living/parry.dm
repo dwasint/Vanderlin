@@ -67,7 +67,7 @@
 		if(do_unarmed_parry(drained, user))
 			// Handle unarmed experience gain
 			if((body_position != LYING_DOWN) && attacker_skill && (defender_skill < attacker_skill - SKILL_LEVEL_NOVICE))
-				mind?.adjust_experience(/datum/skill/combat/unarmed, max(round(STAINT/2), 0), FALSE)
+				adjust_experience(/datum/skill/combat/unarmed, max(round(STAINT/2), 0), FALSE)
 
 			flash_fullscreen("blackflash2")
 			return TRUE
@@ -90,11 +90,11 @@
 	var/weapon_parry = FALSE
 
 	if(mainhand && mainhand.can_parry)
-		mainhand_defense += (mind ? (mind.get_skill_level(mainhand.associated_skill) * 20) : 20)
+		mainhand_defense += (mind ? (get_skill_level(mainhand.associated_skill) * 20) : 20)
 		mainhand_defense += (mainhand.wdefense * 10)
 
 	if(offhand && offhand.can_parry)
-		offhand_defense += (mind ? (mind.get_skill_level(offhand.associated_skill) * 20) : 20)
+		offhand_defense += (mind ? (get_skill_level(offhand.associated_skill) * 20) : 20)
 		offhand_defense += (offhand.wdefense * 10)
 		if(istype(offhand, /obj/item/weapon/shield))
 			force_shield = TRUE
@@ -110,7 +110,7 @@
 		used_weapon = offhand
 		highest_defense += offhand_defense
 
-	var/unarmed_defense = mind ? (mind.get_skill_level(/datum/skill/combat/unarmed) * 20) : 20
+	var/unarmed_defense = mind ? (get_skill_level(/datum/skill/combat/unarmed) * 20) : 20
 	if(highest_defense <= unarmed_defense)
 		weapon_parry = FALSE
 	else
@@ -119,7 +119,7 @@
 	return list(
 		"used_weapon" = used_weapon,
 		"weapon_parry" = weapon_parry,
-		"defense_bonus" = weapon_parry ? highest_defense : (mind?.get_skill_level(/datum/skill/combat/unarmed) * 20)
+		"defense_bonus" = weapon_parry ? highest_defense : (get_skill_level(/datum/skill/combat/unarmed) * 20)
 	)
 
 /**
@@ -136,19 +136,19 @@
 	var/skill_modifier = 0
 
 	if(weapon_parry)
-		defender_skill = mind?.get_skill_level(used_weapon.associated_skill)
+		defender_skill = get_skill_level(used_weapon.associated_skill)
 	else
-		defender_skill = mind?.get_skill_level(/datum/skill/combat/unarmed)
+		defender_skill = get_skill_level(/datum/skill/combat/unarmed)
 
 	if(user.mind)
 		if(intenty.masteritem)
-			attacker_skill = user.mind.get_skill_level(intenty.masteritem.associated_skill)
+			attacker_skill = user.get_skill_level(intenty.masteritem.associated_skill)
 			skill_modifier -= (attacker_skill * 20)
 
 			if(intenty.masteritem.wbalance > 0 && user.STASPD > src.STASPD)
 				skill_modifier -= (intenty.masteritem.wbalance * ((user.STASPD - src.STASPD) * 10))
 		else
-			attacker_skill = user.mind.get_skill_level(/datum/skill/combat/unarmed)
+			attacker_skill = user.get_skill_level(/datum/skill/combat/unarmed)
 			skill_modifier -= (attacker_skill * 20)
 
 
@@ -178,18 +178,18 @@
 	// Defender skill gain
 	if((body_position != LYING_DOWN) && attacker_skill && (defender_skill < attacker_skill - SKILL_LEVEL_NOVICE))
 		if(used_weapon == get_inactive_held_item() && istype(used_weapon, /obj/item/weapon/shield))
-			var/boon = H.mind?.get_learning_boon(/obj/item/weapon/shield)
-			H.mind?.adjust_experience(/datum/skill/combat/shields, max(round(H.STAINT * boon), 0), FALSE)
+			var/boon = H.get_learning_boon(/obj/item/weapon/shield)
+			H.adjust_experience(/datum/skill/combat/shields, max(round(H.STAINT * boon), 0), FALSE)
 		else
-			H.mind?.adjust_experience(used_weapon.associated_skill, max(round(H.STAINT/2), 0), FALSE)
+			H.adjust_experience(used_weapon.associated_skill, max(round(H.STAINT/2), 0), FALSE)
 
 	// Attacker skill gain
 	var/obj/item/AB = intenty.masteritem
 	if((U.body_position != LYING_DOWN) && defender_skill && (attacker_skill < defender_skill - SKILL_LEVEL_NOVICE))
 		if(AB)
-			U.mind?.adjust_experience(AB.associated_skill, max(round(U.STAINT/2), 0), FALSE)
+			U.adjust_experience(AB.associated_skill, max(round(U.STAINT/2), 0), FALSE)
 		else
-			U.mind?.adjust_experience(/datum/skill/combat/unarmed, max(round(U.STAINT/2), 0), FALSE)
+			U.adjust_experience(/datum/skill/combat/unarmed, max(round(U.STAINT/2), 0), FALSE)
 
 	var/obj/effect/temp_visual/dir_setting/block/blk = new(get_turf(src), get_dir(H, U))
 	blk.icon_state = "p[U.used_intent.animname]"
