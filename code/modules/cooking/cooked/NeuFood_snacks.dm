@@ -279,21 +279,6 @@
 	rotprocess = SHELFLIFE_EXTREME
 	faretype = FARE_NEUTRAL
 	foodtype = MEAT
-/obj/item/reagent_containers/food/snacks/cooked/sausage_sticked/attackby(obj/item/I, mob/living/user, params)
-	..()
-	if(user.mind)
-		short_cooktime = (50 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*8))
-	var/found_table = locate(/obj/structure/table) in (loc)
-	if(isturf(loc)&& (found_table))
-		if(istype(I, /obj/item/reagent_containers/food/snacks/butterdough_slice))
-			playsound(get_turf(user), 'sound/foley/kneading_alt.ogg', 90, TRUE, -1)
-			to_chat(user, span_notice("Covering sausage with dough..."))
-			if(do_after(user, short_cooktime, src))
-				new /obj/item/reagent_containers/food/snacks/foodbase/griddledog_raw(loc)
-				qdel(I)
-				qdel(src)
-	else
-		to_chat(user, span_warning("Put [src] on a table before working it!"))
 
 /obj/item/reagent_containers/food/snacks/foodbase/griddledog_raw
 	name = "uncooked griddledog"
@@ -335,28 +320,6 @@
 	faretype = FARE_POOR
 	portable = FALSE
 
-/obj/item/reagent_containers/food/snacks/cabbage_fried/attackby(obj/item/I, mob/living/user, params)
-	if(user.mind)
-		short_cooktime = (50 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*8))
-	if(modified)
-		return TRUE
-	if(bitecount >0)
-		to_chat(user, span_warning("Leftovers aren´t suitable for this."))
-		return TRUE
-	if(istype(I, /obj/item/reagent_containers/food/snacks/cooked/sausage) && (!modified))
-		if(do_after(user, short_cooktime, src))
-			name = "wiener on cabbage"
-			desc = "A rich and heavy meal, perfect ration for a soldier on the march."
-			list_reagents = list(/datum/reagent/consumable/nutriment = SAUSAGE_NUTRITION+FRYVEGGIE_NUTRITION+1)
-			tastes = list("savory sausage" = 2, "cabbage" = 1)
-			icon_state = "wienercabbage"
-			base_icon_state = "wienercabbage"
-			foodtype = VEGETABLES | MEAT
-			meal_properties()
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
-			qdel(I)
-	return ..()
-
 
 /*	.............   Baked potato   ................ */
 /obj/item/reagent_containers/food/snacks/produce/vegetable/potato/baked
@@ -369,44 +332,6 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = FRYVEGGIE_NUTRITION)
 	rotprocess = SHELFLIFE_LONG
 	faretype = FARE_POOR
-
-/obj/item/reagent_containers/food/snacks/produce/vegetable/potato/baked/attackby(obj/item/I, mob/living/user, params)
-	if(user.mind)
-		short_cooktime = (50 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*8))
-	if(modified)
-		return TRUE
-	if(bitecount >0)
-		to_chat(user, span_warning("Leftovers aren´t suitable for this."))
-		return TRUE
-	if(istype(I, /obj/item/reagent_containers/food/snacks/cooked/sausage) && (!modified))
-		playsound(get_turf(user), 'sound/foley/dropsound/gen_drop.ogg', 30, TRUE, -1)
-		if(do_after(user, short_cooktime, src))
-			name = "wiener on tato"
-			desc = "Stout and nourishing."
-			list_reagents = list(/datum/reagent/consumable/nutriment = SAUSAGE_NUTRITION+FRYVEGGIE_NUTRITION+2)
-			tastes = list("savory sausage" = 1, "potato" = 1)
-			icon_state = "wienerpotato"
-			base_icon_state = "wienerpotato"
-			foodtype = VEGETABLES | MEAT
-			meal_properties()
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
-			qdel(I)
-	if(istype(I, /obj/item/reagent_containers/food/snacks/cooked/frybird) && (!modified))
-		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-		if(do_after(user, short_cooktime, src))
-			name = "[name] and tatos"
-			desc = "[desc] Some warm tatos accompany it."
-			icon_state = "frybirdtato"
-			base_icon_state = "frybirdtato"
-			faretype = FARE_FINE
-			portable = FALSE
-			tastes = list("frybird" = 1, "warm tato" = 1)
-			list_reagents = list(/datum/reagent/consumable/nutriment = COOKED_MEAT_NUTRITION+FRYVEGGIE_NUTRITION+2)
-			meal_properties()
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
-			qdel(I)
-	return ..()
-
 
 /*	.............   Fried onions   ................ */
 /obj/item/reagent_containers/food/snacks/onion_fried
@@ -421,29 +346,6 @@
 	faretype = FARE_POOR
 	portable = FALSE
 
-/obj/item/reagent_containers/food/snacks/onion_fried/attackby(obj/item/I, mob/living/user, params)
-	if(user.mind)
-		short_cooktime = (50 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*8))
-	if(modified)
-		return TRUE
-	if(bitecount >0)
-		to_chat(user, span_warning("Leftovers aren´t suitable for this."))
-		return TRUE
-	if(istype(I, /obj/item/reagent_containers/food/snacks/cooked/sausage) && (!modified))
-		if(do_after(user, short_cooktime, src))
-			name = "wiener and onions"
-			desc = "Stout and flavourful."
-			icon_state = "wieneronion"
-			base_icon_state = "wieneronion"
-			list_reagents = list(/datum/reagent/consumable/nutriment = SAUSAGE_NUTRITION+FRYVEGGIE_NUTRITION+1)
-			tastes = list("savory sausage" = 1, "fried onions" = 1)
-			foodtype = VEGETABLES | MEAT
-			faretype = FARE_NEUTRAL
-			meal_properties()
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
-			qdel(I)
-	return ..()
-
 /*	.............   Fried potato   ................ */
 /obj/item/reagent_containers/food/snacks/produce/vegetable/potato/fried
 	name = "fried potato"
@@ -457,45 +359,6 @@
 	rotprocess = SHELFLIFE_EXTREME
 	faretype = FARE_NEUTRAL
 	portable = FALSE
-
-/obj/item/reagent_containers/food/snacks/produce/vegetable/potato/fried/attackby(obj/item/I, mob/living/user, params)
-	if(user.mind)
-		short_cooktime = (50 - ((user.mind.get_skill_level(/datum/skill/craft/cooking))*8))
-	if(modified)
-		return TRUE
-	if(bitecount >0)
-		to_chat(user, span_warning("Leftovers aren´t suitable for this."))
-		return TRUE
-	if(istype(I, /obj/item/reagent_containers/food/snacks/cooked/sausage) && (!modified))
-		playsound(get_turf(user), 'sound/foley/dropsound/gen_drop.ogg', 30, TRUE, -1)
-		if(do_after(user, short_cooktime, src))
-			name = "wiener on tato"
-			desc = "Stout and nourishing."
-			list_reagents = list(/datum/reagent/consumable/nutriment = SAUSAGE_NUTRITION+FRYVEGGIE_NUTRITION+2)
-			tastes = list("savory sausage" = 1)
-			icon_state = "wienerpotato"
-			base_icon_state = "wienerpotato"
-			faretype = FARE_FINE
-			foodtype = VEGETABLES | MEAT
-			meal_properties()
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
-			qdel(I)
-	if(istype(I, /obj/item/reagent_containers/food/snacks/cooked/frybird) && (!modified))
-		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-		if(do_after(user, short_cooktime, src))
-			name = "[name] and tatos"
-			desc = "[desc] Some warm tatos accompany it."
-			icon_state = "frybirdtato"
-			base_icon_state = "frybirdtato"
-			tastes = list("frybird" = 1)
-			faretype = FARE_FINE
-			portable = FALSE
-			list_reagents = list(/datum/reagent/consumable/nutriment = COOKED_MEAT_NUTRITION+FRYVEGGIE_NUTRITION+2)
-			meal_properties()
-			user.mind.add_sleep_experience(/datum/skill/craft/cooking, (user.STAINT*0.5))
-			qdel(I)
-	return ..()
-
 
 /*---------------\
 | Chicken meals |
