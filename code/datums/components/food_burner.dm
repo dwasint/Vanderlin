@@ -133,16 +133,14 @@
 			container.visible_message(span_warning("Something inside [container] is starting to smoke!"))
 			playsound(get_turf(container), 'sound/foley/dropsound/food_drop.ogg', 30, TRUE)
 			if(create_smoke)
-				var/datum/effect_system/smoke_spread/smoke = new
-				smoke.set_up(0, container)
-				smoke.start()
+				var/turf/turf = get_turf(container)
+				turf.pollute_turf(/datum/pollutant/smoke, 50)
 		if(BURN_STAGE_CRITICAL)
 			container.visible_message(span_danger("Something inside [container] is burning!"))
 			playsound(get_turf(container), 'sound/foley/dropsound/food_drop.ogg', 50, TRUE)
 			if(create_smoke)
-				var/datum/effect_system/smoke_spread/smoke = new
-				smoke.set_up(0, container)
-				smoke.start()
+				var/turf/turf = get_turf(container)
+				turf.pollute_turf(/datum/pollutant/smoke, 75)
 
 /**
  * Remove items from tracking when they're taken out
