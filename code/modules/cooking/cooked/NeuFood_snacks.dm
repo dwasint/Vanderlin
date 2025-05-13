@@ -325,6 +325,7 @@
 /obj/item/reagent_containers/food/snacks/produce/vegetable/potato/baked
 	name = "baked potatos"
 	desc = "A dwarven favorite, as a meal or a game of hot potato."
+	icon = 'icons/roguetown/items/food.dmi'
 	icon_state = "potato_baked"
 	base_icon_state = "potato_baked"
 	bitesize = 3
@@ -350,6 +351,7 @@
 /obj/item/reagent_containers/food/snacks/produce/vegetable/potato/fried
 	name = "fried potato"
 	desc = "Potato bits, well roasted."
+	icon = 'icons/roguetown/items/food.dmi'
 	icon_state = "potato_fried"
 	base_icon_state = "potato_fried"
 	bitesize = 3
