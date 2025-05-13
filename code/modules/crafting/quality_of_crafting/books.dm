@@ -650,6 +650,7 @@
 	base_icon_state = "book6"
 
 	types = list(
+		/datum/book_entry/container_craft,
 		/datum/brewing_recipe,
 		/datum/container_craft/cooking,
 		/datum/container_craft/oven,

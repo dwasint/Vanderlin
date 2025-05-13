@@ -41,23 +41,28 @@
 		stored_items |= item.type
 		stored_items[item.type]++
 
-	// Check if we already have active crafts for this container
-	var/has_active_crafts = FALSE
 	for(var/datum/container_craft_operation/op in GLOB.active_container_crafts)
 		if(op.crafter == host)
-			has_active_crafts = TRUE
-			break
+			for(var/path in op.stored_items)
+				stored_items[path] -= op.stored_items[path]
+				if(stored_items[path] <= 0)
+					stored_items -= path
 
 	// If no active crafts, try to start new ones
-	if(!has_active_crafts)
-		for(var/datum/container_craft/recipe as anything in viable_recipe_types)
-			var/datum/container_craft/singleton = GLOB.container_craft_to_singleton[recipe]
-			if(!singleton)
-				continue
+	for(var/datum/container_craft/recipe as anything in viable_recipe_types)
+		var/datum/container_craft/singleton = GLOB.container_craft_to_singleton[recipe]
+		if(!singleton)
+			continue
 
-			// Try to start the craft
-			if(singleton.try_craft(host, stored_items.Copy(), user, on_craft_start, on_craft_failed))
-				stored_items.Cut()
-				for(var/obj/item/item in host.contents)
-					stored_items |= item.type
-					stored_items[item.type]++
+		// Try to start the craft
+		if(singleton.try_craft(host, stored_items.Copy(), user, on_craft_start, on_craft_failed))
+			stored_items.Cut()
+			for(var/obj/item/item in host.contents)
+				stored_items |= item.type
+				stored_items[item.type]++
+				for(var/datum/container_craft_operation/op in GLOB.active_container_crafts)
+					if(op.crafter == host)
+						for(var/path in op.stored_items)
+							stored_items[path] -= op.stored_items[path]
+							if(stored_items[path] <= 0)
+								stored_items -= path

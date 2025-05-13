@@ -7,6 +7,10 @@
 	var/datum/pollutant/cooked_smell
 
 /datum/container_craft/pan/after_craft(atom/created_output, obj/item/crafter, mob/initiator, list/found_optional_requirements, list/found_optional_wildcards, list/found_optional_reagents, list/removing_items)
+	. = ..()
+	if(cooked_smell)
+		created_output.AddComponent(/datum/component/temporary_pollution_emission, cooked_smell, 20, 5 MINUTES)
+
 	for(var/obj/item/reagent_containers/food/snacks/item in removing_items)
 		item.initialize_cooked_food(created_output, 1)
 
@@ -26,10 +30,6 @@
 		return TRUE
 	return FALSE
 
-/datum/container_craft/pan/after_craft(atom/created_output, obj/item/crafter, mob/initiator, list/found_optional_requirements, list/found_optional_wildcards, list/found_optional_reagents, list/removing_items)
-	. = ..()
-	if(cooked_smell)
-		created_output.AddComponent(/datum/component/temporary_pollution_emission, cooked_smell, 20, 5 MINUTES)
 
 /datum/container_craft/pan/fried_crow
 	name = "Fried Crow"
@@ -190,7 +190,7 @@
 	output = /obj/item/reagent_containers/food/snacks/cooked/ham
 	cooked_smell = /datum/pollutant/food/bacon
 
-/datum/container_craft/pan/ham
+/datum/container_craft/pan/frysteak
 	name = "Fry Steak"
 	requirements = list(/obj/item/reagent_containers/food/snacks/meat/steak = 1)
 	output = /obj/item/reagent_containers/food/snacks/cooked/frysteak

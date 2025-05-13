@@ -64,3 +64,4 @@
 		shoes = /obj/item/clothing/shoes/simpleshoes
 		neck = /obj/item/storage/belt/pouch/coins/poor
 		H.change_stat(STATKEY_CON, 2)
+	backpack_contents = list(/obj/item/recipe_book/cooking)

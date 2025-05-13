@@ -80,11 +80,6 @@ GLOBAL_LIST_INIT(container_craft_to_singleton, init_container_crafts())
 	return TRUE
 
 /datum/container_craft/proc/try_craft(obj/item/crafter, list/pathed_items, mob/initiator, datum/callback/on_craft_start, datum/callback/on_craft_failed)
-	// Check for existing crafts of the same type
-	for(var/datum/container_craft_operation/op in GLOB.active_container_crafts)
-		if(op.crafter == crafter && op.recipe.type == type)
-			return FALSE // Already crafting this recipe
-
 	var/highest_multiplier = 0
 	if(length(reagent_requirements))
 		var/list/fake_reagents = reagent_requirements.Copy()
