@@ -44,6 +44,8 @@ GLOBAL_LIST_INIT(container_craft_to_singleton, init_container_crafts())
 	var/craft_verb
 	///do we show up in recipe guides
 	var/hides_from_books = FALSE
+	///our completed message
+	var/complete_message = "Something smells good!"
 
 /**
  * Validates if recipe requirements are still met during crafting
@@ -302,6 +304,8 @@ GLOBAL_LIST_INIT(container_craft_to_singleton, init_container_crafts())
 		// Remove all tracked items
 		for(var/obj/item/item_to_delete in items_to_delete)
 			qdel(item_to_delete)
+		var/turf/turf = get_turf(crafter)
+		turf.visible_message(span_notice(complete_message))
 
 /datum/container_craft/proc/create_item(obj/item/crafter, mob/initiator, list/found_optional_requirements, list/found_optional_wildcards, list/found_optional_reagents, list/removing_items)
 	for(var/j = 1 to output_amount)
