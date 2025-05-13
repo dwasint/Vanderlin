@@ -46,6 +46,7 @@ GLOBAL_LIST_INIT(container_craft_to_singleton, init_container_crafts())
 	var/hides_from_books = FALSE
 	///our completed message
 	var/complete_message = "Something smells good!"
+	var/datum/skill/used_skill = /datum/skill/craft/cooking
 
 /**
  * Validates if recipe requirements are still met during crafting
@@ -140,7 +141,7 @@ GLOBAL_LIST_INIT(container_craft_to_singleton, init_container_crafts())
 /**
  * Handles the final execution of the craft after processing is complete
  */
-/datum/container_craft/proc/execute_craft_completion(obj/item/crafter, mob/initiator, estimated_multiplier)
+/datum/container_craft/proc/execute_craft_completion(obj/item/crafter, mob/living/initiator, estimated_multiplier)
 	for(var/i = 1 to estimated_multiplier)
 		// First validate that all requirements are still present
 		var/list/stored_items = list()
@@ -301,6 +302,7 @@ GLOBAL_LIST_INIT(container_craft_to_singleton, init_container_crafts())
 
 		create_item(crafter, initiator, found_optional_requirements, found_optional_wildcards, found_optional_reagents, items_to_delete)
 
+		initiator.mind?.add_sleep_experience(used_skill, initiator.STAINT * 0.5)
 		// Remove all tracked items
 		for(var/obj/item/item_to_delete in items_to_delete)
 			qdel(item_to_delete)

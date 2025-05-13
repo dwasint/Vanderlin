@@ -6,6 +6,13 @@
 
 	var/datum/pollutant/cooked_smell
 
+/datum/container_craft/pan/get_real_time(atom/host, mob/user, estimated_multiplier)
+	var/real_cooking_time = crafting_time * estimated_multiplier
+	if(user.mind)
+		real_cooking_time /= 1 + (user.mind.get_skill_level(/datum/skill/craft/cooking) * 0.5)
+		real_cooking_time = round(real_cooking_time)
+	return real_cooking_time
+
 /datum/container_craft/pan/after_craft(atom/created_output, obj/item/crafter, mob/initiator, list/found_optional_requirements, list/found_optional_wildcards, list/found_optional_reagents, list/removing_items)
 	. = ..()
 	if(cooked_smell)
