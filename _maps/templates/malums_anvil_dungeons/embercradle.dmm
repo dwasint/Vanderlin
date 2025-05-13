@@ -3258,7 +3258,7 @@
 /turf/open/floor/cobble,
 /area/rogue/under/mountains/anvil/dungeon/lower)
 "Rf" = (
-/obj/item/reagent_containers/food/snacks/potato/baked,
+/obj/item/reagent_containers/food/snacks/produce/vegetable/potato/baked,
 /obj/structure/spider/stickyweb,
 /turf/open/floor/cobblerock,
 /area/rogue/under/mountains/anvil/dungeon/lower)

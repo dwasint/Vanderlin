@@ -989,7 +989,7 @@
 /area/rogue/under/mountains/anvil/dungeon)
 "nk" = (
 /obj/item/storage/sack,
-/obj/item/reagent_containers/food/snacks/potato/baked{
+/obj/item/reagent_containers/food/snacks/produce/vegetable/potato/baked{
 	pixel_x = -6
 	},
 /obj/structure/table/wood/plain_alt,
