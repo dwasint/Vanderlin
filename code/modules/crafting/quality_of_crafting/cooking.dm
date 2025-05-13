@@ -1144,3 +1144,181 @@
 	crafting_sound = 'sound/foley/kneading_alt.ogg'
 	crafting_message = "Mixing lime into the gelatine..."
 	extra_chance = 100
+
+/datum/repeatable_crafting_recipe/cooking/twoegg
+	name = "Twin Eggs"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/cooked/egg = 2,
+	)
+	required_table = TRUE
+	attacked_atom = /obj/item/reagent_containers/food/snacks/cooked/egg
+	starting_atom = /obj/item/reagent_containers/food/snacks/cooked/egg
+	output = /obj/item/reagent_containers/food/snacks/cooked/twin_egg
+	uses_attacked_atom = TRUE
+	craft_time = 5 SECONDS
+	crafting_sound = 'sound/foley/dropsound/food_drop.ogg'
+	extra_chance = 100
+
+/datum/repeatable_crafting_recipe/cooking/valorian_omlette
+	name = "Valorian Omlette"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/cooked/twin_egg = 1,
+		/obj/item/reagent_containers/food/snacks/cheese_wedge = 1,
+	)
+	required_table = TRUE
+	attacked_atom = /obj/item/reagent_containers/food/snacks/cooked/twin_egg
+	starting_atom = /obj/item/reagent_containers/food/snacks/cheese_wedge
+	output = /obj/item/reagent_containers/food/snacks/cooked/valorian_omlette
+	uses_attacked_atom = TRUE
+	craft_time = 5 SECONDS
+	crafting_sound = 'sound/foley/dropsound/food_drop.ogg'
+	extra_chance = 100
+
+/datum/repeatable_crafting_recipe/cooking/frybird_tato
+	name = "Frybird and Tatos"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/cooked/frybird = 1,
+		/obj/item/reagent_containers/food/snacks/produce/vegetable/potato = 1,
+	)
+	required_table = TRUE
+	attacked_atom = /obj/item/reagent_containers/food/snacks/cooked/frybird
+	starting_atom =/obj/item/reagent_containers/food/snacks/produce/vegetable/potato
+	output = /obj/item/reagent_containers/food/snacks/cooked/frybird_tatos
+	uses_attacked_atom = TRUE
+	craft_time = 2 SECONDS
+	crafting_sound = 'sound/foley/dropsound/food_drop.ogg'
+	extra_chance = 100
+
+/datum/repeatable_crafting_recipe/cooking/royal_truffle
+	name = "Royal Truffles"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/cooked/ham = 1,
+		/obj/item/reagent_containers/food/snacks/cooked/truffle = 1,
+	)
+	required_table = TRUE
+	attacked_atom = /obj/item/reagent_containers/food/snacks/cooked/ham
+	starting_atom = /obj/item/reagent_containers/food/snacks/cooked/truffle
+	output = /obj/item/reagent_containers/food/snacks/cooked/royal_truffle
+	uses_attacked_atom = TRUE
+	craft_time = 2 SECONDS
+	crafting_sound = 'sound/foley/dropsound/food_drop.ogg'
+	extra_chance = 100
+
+/datum/repeatable_crafting_recipe/cooking/royal_truffle_toxic
+	hides_from_books = TRUE
+	name = "Royal Truffles"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/cooked/ham = 1,
+		/obj/item/reagent_containers/food/snacks/cooked/truffle_toxic = 1,
+	)
+	required_table = TRUE
+	attacked_atom = /obj/item/reagent_containers/food/snacks/cooked/ham
+	starting_atom = /obj/item/reagent_containers/food/snacks/cooked/truffle_toxic
+	output = /obj/item/reagent_containers/food/snacks/cooked/royal_truffle/toxin
+	uses_attacked_atom = TRUE
+	craft_time = 2 SECONDS
+	crafting_sound = 'sound/foley/dropsound/food_drop.ogg'
+	extra_chance = 100
+
+/datum/repeatable_crafting_recipe/cooking/frysteak_tato
+	name = "Frysteak and Tatos"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/cooked/frysteak = 1,
+		/obj/item/reagent_containers/food/snacks/produce/vegetable/potato = 1,
+	)
+	required_table = TRUE
+	attacked_atom = /obj/item/reagent_containers/food/snacks/cooked/frysteak
+	starting_atom =/obj/item/reagent_containers/food/snacks/produce/vegetable/potato
+	output = /obj/item/reagent_containers/food/snacks/cooked/frysteak_tatos
+	uses_attacked_atom = TRUE
+	craft_time = 2 SECONDS
+	crafting_sound = 'sound/foley/dropsound/food_drop.ogg'
+	extra_chance = 100
+	crafting_message = "Adding potato..."
+
+/datum/repeatable_crafting_recipe/cooking/frysteak_tato
+	name = "Frysteak and Onions"
+
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/cooked/frysteak = 1,
+		/obj/item/reagent_containers/food/snacks/produce/vegetable/onion = 1,
+	)
+	required_table = TRUE
+	attacked_atom = /obj/item/reagent_containers/food/snacks/cooked/frysteak
+	starting_atom =/obj/item/reagent_containers/food/snacks/produce/vegetable/onion
+	output = /obj/item/reagent_containers/food/snacks/cooked/frysteak_onion
+	uses_attacked_atom = TRUE
+	craft_time = 2 SECONDS
+	crafting_sound = 'sound/foley/dropsound/food_drop.ogg'
+	extra_chance = 100
+	crafting_message = "Adding onions..."
+
+/datum/repeatable_crafting_recipe/cooking/wiener_cabbage
+	name = "Wiener on Cabbage"
+	subtypes_allowed = TRUE
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/cooked/sausage = 1,
+		/obj/item/reagent_containers/food/snacks/produce/vegetable/cabbage = 1,
+	)
+	attacked_atom = /obj/item/reagent_containers/food/snacks/cooked/sausage
+	starting_atom =/obj/item/reagent_containers/food/snacks/produce/vegetable/cabbage
+	output = /obj/item/reagent_containers/food/snacks/cooked/sausage_cabbage
+	uses_attacked_atom = TRUE
+	craft_time = 2 SECONDS
+	crafting_sound = 'sound/foley/dropsound/food_drop.ogg'
+	extra_chance = 100
+	crafting_message = "Adding cabbage..."
+
+/datum/repeatable_crafting_recipe/cooking/wiener_potato
+	name = "Wiener on Tato"
+	subtypes_allowed = TRUE
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/cooked/sausage = 1,
+		/obj/item/reagent_containers/food/snacks/produce/vegetable/potato = 1,
+	)
+	attacked_atom = /obj/item/reagent_containers/food/snacks/cooked/sausage
+	starting_atom =/obj/item/reagent_containers/food/snacks/produce/vegetable/potato
+	output = /obj/item/reagent_containers/food/snacks/cooked/sausage_potato
+	uses_attacked_atom = TRUE
+	craft_time = 2 SECONDS
+	crafting_sound = 'sound/foley/dropsound/food_drop.ogg'
+	extra_chance = 100
+	crafting_message = "Adding potato..."
+
+/datum/repeatable_crafting_recipe/cooking/wiener_potato
+	name = "Wiener on Onions"
+	subtypes_allowed = TRUE
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/cooked/sausage = 1,
+		/obj/item/reagent_containers/food/snacks/produce/vegetable/onion = 1,
+	)
+	attacked_atom = /obj/item/reagent_containers/food/snacks/cooked/sausage
+	starting_atom =/obj/item/reagent_containers/food/snacks/produce/vegetable/onion
+	output = /obj/item/reagent_containers/food/snacks/cooked/sausage_onion
+	uses_attacked_atom = TRUE
+	craft_time = 2 SECONDS
+	crafting_sound = 'sound/foley/dropsound/food_drop.ogg'
+	extra_chance = 100
+	crafting_message = "Adding Onions..."
+
+/datum/repeatable_crafting_recipe/cooking/wiener_stick
+	name = "Skewered Wiener"
+	subtypes_allowed = TRUE
+	requirements = list(
+		/obj/item/reagent_containers/food/snacks/cooked/sausage = 1,
+		/obj/item/grown/log/tree/stick = 1,
+	)
+	attacked_atom = /obj/item/reagent_containers/food/snacks/cooked/sausage
+	starting_atom = /obj/item/grown/log/tree/stick
+	output = /obj/item/reagent_containers/food/snacks/cooked/sausage_onion
+	uses_attacked_atom = TRUE
+	craft_time = 3 SECONDS
+	crafting_sound = 'sound/foley/dropsound/food_drop.ogg'
+	extra_chance = 100
+	crafting_message = "Skewering the sausage..."

@@ -127,7 +127,7 @@
 /datum/container_craft/pan/fried_potato
 	name = "Fried Potato"
 	requirements = list(/obj/item/reagent_containers/food/snacks/veg/potato_sliced = 1)
-	output = /obj/item/reagent_containers/food/snacks/potato/fried
+	output = /obj/item/reagent_containers/food/snacks/produce/vegetable/potato/fried
 	cooked_smell = /datum/pollutant/food/baked_potato
 
 /datum/container_craft/pan/fried_cabbage

@@ -162,7 +162,7 @@
 /datum/container_craft/oven/baked_potato
 	name = "Baked Potato"
 	requirements = list(/obj/item/reagent_containers/food/snacks/produce/vegetable/potato = 1)
-	output = /obj/item/reagent_containers/food/snacks/potato/baked
+	output = /obj/item/reagent_containers/food/snacks/produce/vegetable/potato/baked
 	cooked_smell = /datum/pollutant/food/baked_potato
 
 /datum/container_craft/oven/plum_scone
