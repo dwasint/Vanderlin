@@ -683,15 +683,19 @@
 					switch(fishrarity)
 						if("rare")
 							raritydesc = "rare"
+							caughtfish.rarity_rank = 1
 							caughtfish.raritymod = list("com"= -30)//some incentive to use rarer tiny fish as bait
 						if("ultra")
 							raritydesc = "ultra-rare"
+							caughtfish.rarity_rank = 2
 							caughtfish.raritymod = list("com"= -50)
 						if("gold")
 							raritydesc = "legendary"
+							caughtfish.rarity_rank = 3
 							caughtfish.raritymod = list("com"= -70, "rare" = -20)
 						else
 							raritydesc = "common"
+							caughtfish.rarity_rank = 0
 					caughtfish.icon_state = "[caughtfish.icon_state][fishrarity]"
 				else
 					raritydesc = fishrarity
@@ -717,8 +721,9 @@
 				else
 					caughtfish.name = "[sizedesc] [raritydesc] [caughtfish.name]"
 					caughtfish.sellprice *= costmod
-			record_featured_stat(FEATURED_STATS_FISHERS, fisher)
-			GLOB.vanderlin_round_stats[STATS_FISH_CAUGHT]++
+			if(fisher.mind)
+				record_featured_stat(FEATURED_STATS_FISHERS, fisher)
+				GLOB.vanderlin_round_stats[STATS_FISH_CAUGHT]++
 		else//only occurs on special catch that most likely won't have special modifiers
 			if(turfcatch)
 				var/atom/caughtthing = new fishtype(targeted)
