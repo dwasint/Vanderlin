@@ -44,7 +44,7 @@
 		target_time = recipe.get_real_time(crafter, initiator, estimated_multiplier)
 		src.requires_proximity = TRUE
 	else
-		target_time = recipe.crafting_time * estimated_multiplier
+		target_time = recipe.crafting_time
 
 	// Store current inventory state
 	refresh_stored_items()
