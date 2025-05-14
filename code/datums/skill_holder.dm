@@ -2,6 +2,7 @@
 	var/datum/skill_holder/skills
 
 /mob/proc/ensure_skills()
+	RETURN_TYPE(/datum/skill_holder)
 	if(!skills)
 		skills = new /datum/skill_holder()
 		skills.set_current(src)
@@ -29,7 +30,7 @@
 	ensure_skills().apprentice_name = apprentice_name
 
 /mob/proc/set_apprentice_training_skills(list/trainable_skills = list())
-	ensure_skills().trainable_skills = trainable_skills
+	ensure_skills().apprentice_training_skills = trainable_skills
 
 
 /mob/proc/return_max_apprentices()
