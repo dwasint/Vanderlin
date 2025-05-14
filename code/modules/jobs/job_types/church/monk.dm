@@ -150,25 +150,24 @@
 			H.cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'
 
 
-	if(H.mind)
-		H.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
-		H.adjust_skillrank(/datum/skill/misc/medicine, 3, TRUE)
-		H.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE) // They get this and a wooden staff to defend themselves
-		H.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-		H.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
-		H.adjust_skillrank(/datum/skill/combat/axesmaces, 1, TRUE)
-		H.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
-		H.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
-		H.adjust_skillrank(/datum/skill/magic/holy, 3, TRUE)
-		H.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
-		if(H.age == AGE_OLD)
-			H.adjust_skillrank(/datum/skill/magic/holy, 1, TRUE)
-		H.change_stat(STATKEY_INT, 1)
-		H.change_stat(STATKEY_END, 2) // For casting lots of spells, and working long hours without sleep at the church
-		H.change_stat(STATKEY_PER, -1)
-		if(!H.has_language(/datum/language/celestial)) // For discussing church matters with the other Clergy
-			H.grant_language(/datum/language/celestial)
-			to_chat(H, "<span class='info'>I can speak Celestial with ,c before my speech.</span>")
+	H.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/medicine, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE) // They get this and a wooden staff to defend themselves
+	H.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/axesmaces, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/magic/holy, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
+	if(H.age == AGE_OLD)
+		H.adjust_skillrank(/datum/skill/magic/holy, 1, TRUE)
+	H.change_stat(STATKEY_INT, 1)
+	H.change_stat(STATKEY_END, 2) // For casting lots of spells, and working long hours without sleep at the church
+	H.change_stat(STATKEY_PER, -1)
+	if(!H.has_language(/datum/language/celestial)) // For discussing church matters with the other Clergy
+		H.grant_language(/datum/language/celestial)
+		to_chat(H, "<span class='info'>I can speak Celestial with ,c before my speech.</span>")
 
 	var/datum/devotion/cleric_holder/C = new /datum/devotion/cleric_holder(H, H.patron)
 	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)

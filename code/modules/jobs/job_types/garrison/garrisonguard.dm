@@ -65,25 +65,26 @@
 	beltr = /obj/item/weapon/sword/short
 	beltl = /obj/item/weapon/mace/cudgel
 	backpack_contents = list(/obj/item/storage/keyring/guard, /obj/item/weapon/knife/dagger/steel/special)
-	if(H.mind)
-		H.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE) // Main weapon
-		H.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE) // Main off-hand weapon
-		H.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE) // Backup
-		H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-		H.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
-		H.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE) // Guards should be going for less than lethal in reality. Unarmed would be a primary thing.
-		H.change_stat(STATKEY_STR, 1)
-		H.change_stat(STATKEY_END, 2)
-		H.change_stat(STATKEY_CON, 1)
-		ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
-		H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
-		H.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
-		H.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE) // Wrestling is cardio intensive, and guards wrestle with the populace a lot.
-		H.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
-		H.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
-		H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-		ADD_TRAIT(H, TRAIT_KNOWBANDITS, TRAIT_GENERIC)
-		H.verbs |= /mob/proc/haltyell
+
+
+	H.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE) // Main weapon
+	H.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE) // Main off-hand weapon
+	H.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE) // Backup
+	H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE) // Guards should be going for less than lethal in reality. Unarmed would be a primary thing.
+	H.change_stat(STATKEY_STR, 1)
+	H.change_stat(STATKEY_END, 2)
+	H.change_stat(STATKEY_CON, 1)
+	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE) // Wrestling is cardio intensive, and guards wrestle with the populace a lot.
+	H.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
+	ADD_TRAIT(H, TRAIT_KNOWBANDITS, TRAIT_GENERIC)
+	H.verbs |= /mob/proc/haltyell
 
 //................. Archer .............. //
 /datum/advclass/garrison/archer
