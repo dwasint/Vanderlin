@@ -1922,7 +1922,6 @@
 	},
 /obj/machinery/light/fueled/lanternpost/fixed{
 	dir = 1;
-	pixel_x = 0;
 	pixel_y = 10
 	},
 /turf/open/floor/herringbone,
@@ -2997,6 +2996,11 @@
 /obj/item/neuFarm/seed/pear,
 /obj/item/neuFarm/seed/tangerine,
 /obj/item/neuFarm/seed/plum,
+/obj/item/neuFarm/seed/sugarcane,
+/obj/item/neuFarm/seed/sugarcane,
+/obj/item/neuFarm/seed/westleach,
+/obj/item/neuFarm/seed/westleach,
+/obj/item/neuFarm/seed/westleach,
 /turf/open/floor/wood,
 /area/rogue/indoors/soilsons)
 "bMp" = (
@@ -4822,7 +4826,6 @@
 "cWB" = (
 /obj/structure/fluff/buysign{
 	name = "Vanderlin Train Station";
-	pixel_x = 0;
 	pixel_y = 5
 	},
 /turf/open/floor/cobblerock,
@@ -11588,10 +11591,7 @@
 	pixel_x = 4;
 	pixel_y = -20
 	},
-/turf/open/floor/dirt/road{
-	pixel_x = 0;
-	pixel_y = 0
-	},
+/turf/open/floor/dirt/road,
 /area/rogue/indoors/town)
 "hwx" = (
 /obj/machinery/light/fueled/wallfire/candle/blue/l,
@@ -14729,11 +14729,9 @@
 /obj/machinery/light/fueled/wallfire/candle,
 /obj/structure/bars/pipe,
 /obj/structure/bars/pipe{
-	pixel_x = 0;
 	pixel_y = 14
 	},
 /obj/structure/fluff/railing/border{
-	pixel_x = 0;
 	pixel_y = 27
 	},
 /turf/open/floor/herringbone,
@@ -21212,7 +21210,6 @@
 	},
 /obj/structure/fluff/buysign{
 	name = "Vanderlin Train Station";
-	pixel_x = 0;
 	pixel_y = 5
 	},
 /turf/open/floor/herringbone,
@@ -30037,11 +30034,9 @@
 /obj/structure/fluff/railing/border,
 /obj/structure/bars/pipe,
 /obj/structure/bars/pipe{
-	pixel_x = 0;
 	pixel_y = 14
 	},
 /obj/structure/fluff/railing/border{
-	pixel_x = 0;
 	pixel_y = 27
 	},
 /turf/open/floor/herringbone,
@@ -32001,7 +31996,6 @@
 /area/rogue/outdoors/rtfield)
 "uRF" = (
 /obj/structure/train{
-	pixel_x = 0;
 	pixel_y = 8
 	},
 /obj/structure/minecart_rail{
@@ -34386,7 +34380,6 @@
 	},
 /obj/structure/fluff/buysign{
 	name = "Vanderlin Train Station";
-	pixel_x = 0;
 	pixel_y = 5
 	},
 /turf/open/floor/cobblerock,
@@ -35729,12 +35722,7 @@
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue/indoors/town)
 "xww" = (
-/obj/structure/closet/crate/chest/wicker,
-/obj/item/neuFarm/seed/westleach,
-/obj/item/neuFarm/seed/westleach,
-/obj/item/neuFarm/seed/westleach,
-/obj/item/neuFarm/seed/sugarcane,
-/obj/item/neuFarm/seed/sugarcane,
+/obj/structure/closet/crate/chest/wicker/random_soilson,
 /turf/open/floor/wood,
 /area/rogue/indoors/soilsons)
 "xwD" = (
