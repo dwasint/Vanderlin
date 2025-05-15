@@ -178,6 +178,7 @@
 						if(do_after(user, chosen_recipe.crafting_time || (4 SECONDS), src))
 							var/obj/item/result
 							if(prob(prob2spoil))
+								var/obj/item/reagent_containers/food/snacks/S = W
 								user.visible_message("<span class='warning'>[user] burns [S].</span>")
 								if(user.client?.prefs.showrolls)
 									to_chat(user, "<span class='warning'>Critfail... [prob2spoil]%.</span>")
