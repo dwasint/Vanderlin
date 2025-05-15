@@ -89,6 +89,13 @@
 	var/list/apprentice_training_skills = list()
 	var/our_apprentice_name
 
+/datum/skill_holder/New()
+	. = ..()
+	for(var/datum/skill/skill as anything in SSskills.all_skills)
+		if(!(skill in skill_experience))
+			skill_experience |= skill
+			skill_experience[skill] = 0
+
 /datum/skill_holder/proc/set_current(mob/incoming)
 	current = incoming
 	RegisterSignal(incoming, COMSIG_MIND_TRANSFER, PROC_REF(transfer_skills))

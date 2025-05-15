@@ -47,6 +47,7 @@ GLOBAL_LIST_INIT(container_craft_to_singleton, init_container_crafts())
 	///our completed message
 	var/complete_message = "Something smells good!"
 	var/datum/skill/used_skill = /datum/skill/craft/cooking
+	var/quality_modifier = 1.0  // Default modifier, recipes can override this
 
 /**
  * Validates if recipe requirements are still met during crafting
@@ -310,11 +311,71 @@ GLOBAL_LIST_INIT(container_craft_to_singleton, init_container_crafts())
 		turf.visible_message(span_notice(complete_message))
 
 /datum/container_craft/proc/create_item(obj/item/crafter, mob/initiator, list/found_optional_requirements, list/found_optional_wildcards, list/found_optional_reagents, list/removing_items)
+	// Variables for quality calculation
+	var/total_freshness = 0
+	var/ingredient_count = 0
+	var/highest_quality = 0
+
+	// Calculate average freshness and find highest quality ingredient
+	for(var/obj/item/food_item in removing_items)
+		if(istype(food_item, /obj/item/reagent_containers/food/snacks) || istype(food_item, /obj/item/grown))
+			ingredient_count++
+			// Check warming value for freshness (higher means fresher)
+			if(istype(food_item, /obj/item/reagent_containers/food/snacks))
+				var/obj/item/reagent_containers/food/snacks/F = food_item
+				total_freshness += max(0, (F.warming + F.rotprocess))
+				highest_quality = max(highest_quality, F.quality)
+			// Handle crops/grown items
+			else if(istype(food_item, /obj/item/reagent_containers/food/snacks/produce))
+				var/obj/item/reagent_containers/food/snacks/produce/G = food_item
+				highest_quality = max(highest_quality, G.crop_quality - 1)
+
+	// Calculate average freshness
+	var/average_freshness = (ingredient_count > 0) ? (total_freshness / ingredient_count) : 0
+
+	// Get the initiator's cooking skill
+	var/cooking_skill = initiator.get_skill_level(/datum/skill/craft/cooking)
+
+	// Create the output items
 	for(var/j = 1 to output_amount)
 		var/atom/created_output = new output(get_turf(crafter))
+
+		// Apply quality and freshness if the output item is food
+		if(istype(created_output, /obj/item/reagent_containers/food/snacks))
+			var/obj/item/reagent_containers/food/snacks/food_item = created_output
+			// Apply freshness to the new food item
+			food_item.warming = min(5 MINUTES, average_freshness)
+
+			// Calculate final quality based on ingredients, skill, and recipe
+			var/final_quality = calculate_quality(cooking_skill, highest_quality, average_freshness)
+			food_item.quality = round(final_quality)
+
+			apply_quality_description(food_item, final_quality)
+
 		SEND_SIGNAL(crafter, COMSIG_TRY_STORAGE_INSERT, created_output, null, null, TRUE, TRUE)
 		after_craft(created_output, crafter, initiator, found_optional_requirements, found_optional_wildcards, found_optional_reagents, removing_items)
 		SEND_SIGNAL(crafter, COMSIG_CONTAINER_CRAFT_COMPLETE, created_output)
+
+/**
+ * Calculates the quality of crafted food based on cooking skill, ingredient quality, and freshness.
+ *
+ * @param cooking_skill The cooking skill level of the crafter
+ * @param ingredient_quality The highest quality ingredient used
+ * @param freshness The average freshness of ingredients
+ * @param quality_modifier Optional modifier from the recipe
+ * @return The calculated quality value
+ */
+/datum/container_craft/proc/calculate_quality(cooking_skill, ingredient_quality, freshness, quality_modifier = 1.0)
+	return calculate_food_quality(cooking_skill, ingredient_quality, freshness, quality_modifier)
+
+/**
+ * Applies visual and descriptive modifications to food based on its quality.
+ *
+ * @param food_item The food item to modify
+ * @param quality The calculated quality value
+ */
+/datum/container_craft/proc/apply_quality_description(obj/item/reagent_containers/food/snacks/food_item, quality)
+	apply_food_quality(food_item, quality)
 
 /datum/container_craft/proc/after_craft(atom/created_output, obj/item/crafter, mob/initiator, list/found_optional_requirements, list/found_optional_wildcards, list/found_optional_reagents, list/removing_items)
 	// This is an extension point for specific crafting types to do additional processing
