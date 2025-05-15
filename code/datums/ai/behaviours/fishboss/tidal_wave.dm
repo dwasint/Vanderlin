@@ -10,7 +10,7 @@
 		return
 
 	boss.visible_message("<span class='warning'>[boss] swells and releases a massive tidal wave!</span>")
-	 // Replace with appropriate sound
+	// Replace with appropriate sound
 
 	// Set cooldown
 	controller.set_blackboard_key(BB_FISHBOSS_TIDAL_WAVE_COOLDOWN, world.time + 30 SECONDS)
