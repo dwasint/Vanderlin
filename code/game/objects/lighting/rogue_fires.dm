@@ -469,35 +469,10 @@
 		return
 
 	if(attachment)
-		if(istype(attachment, /obj/item/cooking/pan))
-			if(food)
-				if(rawegg)
-					to_chat(user, "<span class='notice'>You throw away the raw egg.</span>")
-					rawegg = FALSE
-					qdel(food)
-					update_icon()
-				if(!user.put_in_active_hand(food))
-					food.forceMove(user.loc)
-				food = null
-				update_icon()
-			else
-				if(!user.put_in_active_hand(attachment))
-					attachment.forceMove(user.loc)
-				attachment = null
-				update_icon()
-		if(istype(attachment, /obj/item/reagent_containers/glass/bucket/pot))
-			if(!user.put_in_active_hand(attachment))
-				attachment.forceMove(user.loc)
-			attachment = null
-			update_icon()
-			boilloop.stop()
-		if(istype(attachment, /obj/item/reagent_containers/glass/bottle/teapot))
-			if(!user.put_in_active_hand(attachment))
-				attachment.forceMove(user.loc)
-			attachment = null
-			update_icon()
-			boilloop.stop()
-
+		if(!user.put_in_active_hand(attachment))
+			attachment.forceMove(user.loc)
+		attachment = null
+		update_icon()
 	else
 		if(on)
 			var/mob/living/carbon/human/H = user

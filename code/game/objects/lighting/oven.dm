@@ -16,6 +16,10 @@
 	AddComponent(/datum/component/container_craft, subtypesof(/datum/container_craft/oven))
 	AddComponent(/datum/component/food_burner, 2 MINUTES, TRUE, CALLBACK(src, PROC_REF(can_burn)))
 
+/obj/machinery/light/fueled/oven/attack_hand(mob/living/carbon/human/user)
+	. = ..()
+	SEND_SIGNAL(src, COMSIG_TRY_STORAGE_SHOW, user, TRUE)
+
 /obj/machinery/light/fueled/oven/proc/can_burn()
 	if(on)
 		return TRUE
