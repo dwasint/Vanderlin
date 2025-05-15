@@ -228,7 +228,6 @@
 						else
 							break
 					return TRUE
-		return FALSE
 	if(W.firefuel)
 		if(initial(fueluse))
 			if(fueluse > initial(fueluse) - 5 SECONDS)
