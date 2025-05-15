@@ -479,10 +479,6 @@
 			if(istype(H))
 				H.visible_message("<span class='info'>[H] warms \his hand over the embers.</span>")
 				if(do_after(H, 5 SECONDS, src))
-					// var/obj/item/bodypart/affecting = H.get_bodypart("[(user.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
-					// to_chat(H, "<span class='warning'>HOT!</span>")
-					// if(affecting && affecting.receive_damage( 0, 5 ))		// 5 burn damage
-					// 	H.update_damage_overlays()
 					H.adjust_bodytemperature(40)
 			return TRUE
 
