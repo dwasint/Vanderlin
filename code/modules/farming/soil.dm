@@ -97,9 +97,19 @@
 	return FALSE
 
 /obj/structure/soil/proc/try_handle_seed_planting(obj/item/attacking_item, mob/user, params)
+	var/obj/item/old_item
+	if(istype(attacking_item, /obj/item/storage/sack))
+		var/list/seeds = list()
+		for(var/obj/item/neuFarm/seed/seed in attacking_item.contents)
+			seeds |= seed
+		old_item = attacking_item
+		attacking_item = pick(seeds)
+
 	if(istype(attacking_item, /obj/item/neuFarm/seed) || istype(attacking_item, /obj/item/herbseed)) //SLOP OBJECT PROC SHARING
 		playsound(src, pick('sound/foley/touch1.ogg','sound/foley/touch2.ogg','sound/foley/touch3.ogg'), 170, TRUE)
 		if(do_after(user, get_farming_do_time(user, 15), src))
+			if(old_item)
+				SEND_SIGNAL(old_item, COMSIG_TRY_STORAGE_TAKE, attacking_item, get_turf(user), TRUE)
 			var/obj/item/neuFarm/seed/seeds = attacking_item
 			seeds.try_plant_seed(user, src)
 		return TRUE
@@ -750,7 +760,7 @@
 	var/obj/item/neuFarm/seed/seed_to_grow
 
 /obj/structure/soil/debug_soil/random/Initialize()
-	seed_to_grow = pick(subtypesof(/obj/item/neuFarm/seed))
+	seed_to_grow = pick(subtypesof(/obj/item/neuFarm/seed) - /obj/item/neuFarm/seed/mixed_seed)
 	. = ..()
 
 /obj/structure/soil/debug_soil/Initialize()

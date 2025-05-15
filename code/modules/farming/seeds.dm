@@ -1,3 +1,11 @@
+/obj/item/neuFarm/seed/mixed_seed
+	name = "mixed seeds"
+
+/obj/item/neuFarm/seed/mixed_seed/Initialize()
+	plant_def_type = pick(GLOB.plant_defs)
+	seed_identity = "[plant_def_type.name] seed"
+	. = ..()
+
 /obj/item/neuFarm/seed
 	name = "seeds"
 	icon = 'icons/roguetown/items/produce.dmi'
@@ -5,7 +13,7 @@
 	w_class = WEIGHT_CLASS_TINY
 	resistance_flags = FLAMMABLE
 	possible_item_intents = list(/datum/intent/use)
-	var/plant_def_type
+	var/datum/plant_def/plant_def_type
 	var/seed_identity = "some seed"
 
 /obj/item/neuFarm/seed/Initialize()

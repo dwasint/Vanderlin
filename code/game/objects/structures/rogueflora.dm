@@ -215,6 +215,11 @@
 	AddComponent(/datum/component/grass)
 	. = ..()
 
+/obj/structure/flora/grass/Destroy()
+	if(prob(5))
+		new /obj/item/neuFarm/seed/mixed_seed(get_turf(src))
+	. = ..()
+
 /obj/structure/flora/grass/update_icon()
 	icon_state = "grass[rand(1, 6)]"
 
