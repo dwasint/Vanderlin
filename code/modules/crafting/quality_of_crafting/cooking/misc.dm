@@ -1,17 +1,17 @@
 /proc/calculate_food_quality(cooking_skill, ingredient_quality, freshness, quality_modifier = 1.0)
-    var/skill_factor = cooking_skill / 6
-    var/freshness_factor = min(1, freshness / (5 MINUTES))
+	var/skill_factor = cooking_skill / 6
+	var/freshness_factor = min(1, freshness / (5 MINUTES))
 
-    var/skill_component = skill_factor * 1.5
-    var/ingredient_component = ingredient_quality * 0.5
-    var/freshness_component = freshness_factor * 0.5
-    var/modifier_component = quality_modifier * 0.5
-    var/final_quality = 1 + skill_component + ingredient_component + freshness_component + modifier_component
-    // Ensures no skill = max quality 1, 1 skill = max quality 2, etc.
-    var/skill_cap = 1 + cooking_skill
+	var/skill_component = skill_factor * 1.5
+	var/ingredient_component = ingredient_quality * 0.5
+	var/freshness_component = freshness_factor * 0.5
+	var/modifier_component = quality_modifier * 0.5
+	var/final_quality = 1 + skill_component + ingredient_component + freshness_component + modifier_component
+	// Ensures no skill = max quality 1, 1 skill = max quality 2, etc.
+	var/skill_cap = 1 + cooking_skill
 
-    // Apply both the skill cap and the absolute maximum of 4
-    return min(4, min(skill_cap, final_quality))
+	// Apply both the skill cap and the absolute maximum of 4
+	return min(4, min(skill_cap, final_quality))
 
 // Shared method to apply quality descriptions to food
 /proc/apply_food_quality(obj/item/reagent_containers/food/snacks/food_item, quality, rot_threshold = -0.5)
