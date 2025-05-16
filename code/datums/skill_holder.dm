@@ -406,6 +406,10 @@
 /datum/skill_holder/proc/purge_all_skills(silent = TRUE)
 	known_skills = list()
 	skill_experience = list()
+	for(var/datum/skill/skill as anything in SSskills.all_skills)
+		if(!(skill in skill_experience))
+			skill_experience |= skill
+			skill_experience[skill] = 0
 	if(!silent)
 		to_chat(current, span_boldwarning("I forget all my skills!"))
 
