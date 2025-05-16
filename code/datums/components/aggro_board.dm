@@ -35,7 +35,6 @@
 
 	// Register signals
 	RegisterSignal(parent, COMSIG_ATOM_WAS_ATTACKED, PROC_REF(on_attacked))
-	RegisterSignal(parent, COMSIG_LIVING_HEALTH_UPDATE, PROC_REF(on_health_changed))
 	RegisterSignal(parent, COMSIG_MOB_DEATH, PROC_REF(on_death))
 
 /datum/component/ai_aggro_system/Destroy(force, silent)
@@ -47,7 +46,6 @@
 	// Unregister signals
 	UnregisterSignal(parent, list(
 		COMSIG_ATOM_WAS_ATTACKED,
-		COMSIG_LIVING_HEALTH_UPDATE,
 		COMSIG_MOB_DEATH
 	))
 
@@ -93,20 +91,6 @@
 		threat_to_add += damage * 0.5
 
 	add_threat(victim, attacker, threat_to_add)
-
-/// Updates threat table when health changes (for healing, etc.)
-/datum/component/ai_aggro_system/proc/on_health_changed(mob/living/source, health_diff)
-	SIGNAL_HANDLER
-
-	if(!source.ai_controller)
-		return
-
-	// If health increased (healing), find who did it
-	if(health_diff > 0)
-		var/mob/healer = source.ai_controller.blackboard[BB_HEALING_SOURCE]
-		if(healer && ismob(healer))
-			// Healing reduces threat (negative threat modifier)
-			add_threat(source, healer, -health_diff * 0.3)
 
 /// Clears the aggro table when the mob dies
 /datum/component/ai_aggro_system/proc/on_death(mob/living/source)
