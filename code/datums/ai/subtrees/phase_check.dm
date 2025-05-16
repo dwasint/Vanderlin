@@ -22,4 +22,3 @@
 		controller.set_blackboard_key(BB_RAGE_PHASE, new_phase)
 		SEND_SIGNAL(boss, COMSIG_PHASE_CHANGE, new_phase)
 		INVOKE_ASYNC(boss, TYPE_PROC_REF(/mob/living/simple_animal/hostile/boss/fishboss, enter_new_phase), new_phase)
-		controller.blackboard[BB_MOB_AGGRO_TABLE] = list() //lol restart

@@ -137,3 +137,5 @@ F
 #define BB_AGGRO_RANGE "aggro_range" // Range at which mobs can detect and add threats
 #define BB_AGGRO_MAINTAIN_RANGE "aggro_maintain_range" // Range at which target is dropped if exceeded
 #define BB_HEALING_SOURCE "healing_source" // Who last healed the mob
+#define BB_SNEAKING "bb_sneaking"
+#define BB_SNEAK_COOLDOWN "bb_sneak_cooldown"
