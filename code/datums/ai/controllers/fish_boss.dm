@@ -19,8 +19,7 @@
 		/datum/ai_planning_subtree/fishboss_check_phase,
 		/datum/ai_planning_subtree/fishboss_summon_minions,
 		/datum/ai_planning_subtree/fishboss_special_ability,
-		/datum/ai_planning_subtree/basic_ranged_attack_subtree,
-		/datum/ai_planning_subtree/basic_melee_attack_subtree,
+		/datum/ai_planning_subtree/basic_hybrid_attack,
 	)
 	idle_behavior = /datum/idle_behavior/idle_random_walk
 
