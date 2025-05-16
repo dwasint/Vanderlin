@@ -70,7 +70,7 @@
 	if(!length(aggro_table))
 		add_threat(living_mob, target, amount)
 	var/aggro = aggro_table[living_mob]
-	if(aggro > cap)
+	if(aggro >= cap)
 		return
 	amount -= aggro
 	add_threat(living_mob, target, amount)
