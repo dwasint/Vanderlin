@@ -84,10 +84,10 @@
 	H.change_stat(STATKEY_END, 1)
 	if(!H.has_language(/datum/language/oldpsydonic))
 		H.grant_language(/datum/language/oldpsydonic)
-	if(H.mind.has_antag_datum(/datum/antagonist))
+	if(H.mind?.has_antag_datum(/datum/antagonist))
 		return
 	var/datum/antagonist/new_antag = new /datum/antagonist/purishep()
-	H.mind.add_antag_datum(new_antag)
+	H.mind?.add_antag_datum(new_antag)
 	H.set_patron(/datum/patron/psydon)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
