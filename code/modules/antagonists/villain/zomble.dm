@@ -90,7 +90,7 @@
 	base_intents = zombie.base_intents
 	old_cmode_music = zombie.cmode_music
 	patron = zombie.patron
-	stored_skills = owner.current.ensure_skills().skills.Copy()
+	stored_skills = owner.current.ensure_skills().known_skills.Copy()
 	stored_experience = owner.current.skills?.skill_experience.Copy()
 	owner.current.skills?.known_skills = list()
 	owner.current.skills?.skill_experience = list()
