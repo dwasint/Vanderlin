@@ -61,6 +61,20 @@
 	var/mob/living/living_mob = parent
 	add_threat(living_mob, target, amount)
 
+/// Public method to add threat to specific mob
+/datum/component/ai_aggro_system/proc/add_threat_to_mob_capped(mob/target, amount, cap)
+	if(!target || !parent)
+		return
+	var/mob/living/living_mob = parent
+	var/list/aggro_table = living_mob.ai_controller.blackboard[BB_MOB_AGGRO_TABLE]
+	if(!length(aggro_table))
+		add_threat(living_mob, target, amount)
+	var/aggro = aggro_table[living_mob]
+	if(aggro > cap)
+		return
+	amount -= aggro
+	add_threat(living_mob, target, amount)
+
 /// Adds threat to an attacker based on damage dealt
 /datum/component/ai_aggro_system/proc/on_attacked(mob/victim, atom/attacker, damage)
 	SIGNAL_HANDLER

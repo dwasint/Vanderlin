@@ -38,6 +38,6 @@
 
 /datum/ai_planning_subtree/aggro_find_target/bum
 
-/datum/ai_planning_subtree/aggro_find_target/SelectBehaviors(datum/ai_controller/controller, delta_time)
+/datum/ai_planning_subtree/aggro_find_target/bum/SelectBehaviors(datum/ai_controller/controller, delta_time)
 	controller.queue_behavior(/datum/ai_behavior/find_aggro_targets/bum, BB_BASIC_MOB_CURRENT_TARGET, BB_TARGETTING_DATUM, BB_BASIC_MOB_CURRENT_TARGET_HIDING_LOCATION)
 

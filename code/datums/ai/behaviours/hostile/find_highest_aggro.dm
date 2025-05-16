@@ -38,6 +38,9 @@
 
 	// If we have a valid target, set it
 	if(current_target)
+		if(current_target == controller.blackboard[target_key])
+			finish_action(controller, succeeded = FALSE)
+			return
 		controller.set_blackboard_key(target_key, current_target)
 
 		// Check if target is hiding in something
@@ -89,8 +92,8 @@
 	var/datum/component/ai_aggro_system/aggro_comp = living_mob.GetComponent(/datum/component/ai_aggro_system)
 	if(aggro_comp)
 		// Add initial threat to start aggro mechanic
-		aggro_comp.add_threat_to_mob(chosen_target, 15)
-
+		aggro_comp.add_threat_to_mob_capped(chosen_target, 15, 15)
+		aggro_comp.add_threat_to_mob(chosen_target, 1)
 	// Check if this pushed the target over the threshold
 	var/mob/highest_threat = controller.blackboard[BB_HIGHEST_THREAT_MOB]
 	if(highest_threat)
