@@ -67,6 +67,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/infernal/imp/Initialize()
 	. = ..()
+	AddComponent(/datum/component/ai_aggro_system)
 
 /mob/living/simple_animal/hostile/retaliate/infernal/imp/death(gibbed)
 	..()

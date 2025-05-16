@@ -15,7 +15,7 @@
 	)
 	planning_subtrees = list(
 		/datum/ai_planning_subtree/fishboss_check_environment,
-		/datum/ai_planning_subtree/simple_find_target,
+		/datum/ai_planning_subtree/aggro_find_target,
 		/datum/ai_planning_subtree/fishboss_check_phase,
 		/datum/ai_planning_subtree/fishboss_summon_minions,
 		/datum/ai_planning_subtree/fishboss_special_ability,
