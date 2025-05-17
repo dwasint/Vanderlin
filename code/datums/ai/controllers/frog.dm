@@ -1,4 +1,5 @@
 /datum/ai_controller/frog
+	movement_delay = 0.3 SECONDS
 	blackboard = list(
 		BB_TARGET_HELD_ITEM = /obj/item/fishingrod,
 		BB_BASIC_MOB_STOP_FLEEING = TRUE, //We only flee from scary fishermen.
