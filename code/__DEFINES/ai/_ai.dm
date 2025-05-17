@@ -148,3 +148,11 @@ F
 #define BB_CURRENTLY_SWIMMING "currently_swimming"
 ///key holds how long we will be swimming for
 #define BB_KEY_SWIMMER_COOLDOWN "key_swimmer_cooldown"
+
+#define BB_LEYLINE_SOURCE "leyline_source"
+#define BB_TELEPORT_COOLDOWN "teleport_cooldown"
+#define BB_ENERGY_SURGE_COOLDOWN "energy_surge_cooldown"
+#define BB_LEYLINE_ENERGY "leyline_energy"
+#define BB_SHOCKWAVE_COOLDOWN "shockwave_cooldown"
+#define BB_MAX_LEYLINE_ENERGY "max_leyline_energy"
+#define BB_ENERGY_REGEN_RATE "energy_regen"

@@ -810,7 +810,7 @@
 		if(prob(spread_chance - (get_dist(owner, L) * 10)))
 			to_chat(L, span_danger("Void energy jumps from [owner] to you!"))
 			to_chat(owner, span_warning("Your corruption spreads to [L]!"))
-			var/spread_duration = max(5 SECONDS, duration * 0.5)
+			var/spread_duration = max(5 SECONDS, duration * 0.9)
 			L.apply_status_effect(/datum/status_effect/void_corruption, spread_duration, source_dragon)
 			new /obj/effect/temp_visual/void_corruption_spread(get_turf(L))
 			break
