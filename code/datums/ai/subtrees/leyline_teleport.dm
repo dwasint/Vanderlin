@@ -5,8 +5,9 @@
 	. = ..()
 	var/atom/target = controller.blackboard[BB_BASIC_MOB_CURRENT_TARGET]
 	var/cooldown = controller.blackboard[BB_TELEPORT_COOLDOWN]
+	var/energy_level = controller.blackboard[BB_LEYLINE_ENERGY]
 
-	if(QDELETED(target) || world.time < cooldown)
+	if(QDELETED(target) || (world.time < cooldown) || (energy_level < 20))
 		return
 
 	controller.queue_behavior(teleport_behavior, BB_BASIC_MOB_CURRENT_TARGET)
@@ -59,6 +60,7 @@
 		finish_action(controller, FALSE)
 		return
 
+	controller.set_blackboard_key(BB_LEYLINE_ENERGY, energy_level - 20)
 	lycan.forceMove(target_turf)
 	animate(lycan, alpha = 255, time = 2, easing = EASE_IN) // fade in
 	lycan.visible_message(span_warning("[lycan] tears it's way out of the leyline rift!"))
