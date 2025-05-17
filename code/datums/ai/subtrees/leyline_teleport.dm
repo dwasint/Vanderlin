@@ -59,6 +59,7 @@
 	if(QDELETED(lycan) || QDELETED(target_turf))
 		finish_action(controller, FALSE)
 		return
+	var/energy_level = controller.blackboard[BB_LEYLINE_ENERGY]
 
 	controller.set_blackboard_key(BB_LEYLINE_ENERGY, energy_level - 20)
 	lycan.forceMove(target_turf)

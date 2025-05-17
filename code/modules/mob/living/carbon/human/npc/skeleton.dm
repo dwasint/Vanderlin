@@ -16,6 +16,7 @@
 	possible_rmb_intents = list(/datum/rmb_intent/feint, /datum/rmb_intent/aimed, /datum/rmb_intent/strong, /datum/rmb_intent/weak)
 	stand_attempts = 4
 	cmode_music = 'sound/music/cmode/antag/combatskeleton.ogg'
+	var/should_have_aggro = TRUE
 
 /mob/living/carbon/human/species/skeleton/npc/no_equipment
 	skel_outfit = null
@@ -29,7 +30,6 @@
 	simpmob_defend = 0
 	wander = TRUE
 	attack_speed = -10
-	var/should_have_aggro = TRUE
 
 /mob/living/carbon/human/species/skeleton/Initialize()
 	. = ..()
