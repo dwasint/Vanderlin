@@ -13,8 +13,8 @@
 	)
 	planning_subtrees = list(
 		/datum/ai_planning_subtree/aggro_find_target,
-		/datum/ai_planning_subtree/leyline_teleport,
 		/datum/ai_planning_subtree/leyline_special_abilities,
+		/datum/ai_planning_subtree/leyline_teleport,
 		/datum/ai_planning_subtree/leyline_melee_attack,
 		/datum/ai_planning_subtree/defend_leyline,
 		/datum/ai_planning_subtree/leyline_energy_management,
