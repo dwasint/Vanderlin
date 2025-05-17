@@ -18,6 +18,7 @@
 		return COMPONENT_INCOMPATIBLE
 
 	var/mob/living/living_mob = parent
+	living_mob.AddElement(/datum/element/relay_attackers)
 	if(!living_mob.ai_controller)
 		return COMPONENT_INCOMPATIBLE
 
