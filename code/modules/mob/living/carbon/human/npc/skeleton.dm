@@ -29,10 +29,12 @@
 	simpmob_defend = 0
 	wander = TRUE
 	attack_speed = -10
+	var/should_have_aggro = TRUE
 
 /mob/living/carbon/human/species/skeleton/Initialize()
 	. = ..()
-	AddComponent(/datum/component/ai_aggro_system)
+	if(should_have_aggro)
+		AddComponent(/datum/component/ai_aggro_system)
 	addtimer(CALLBACK(src, PROC_REF(after_creation)), 1 SECONDS)
 
 /mob/living/carbon/human/species/skeleton/after_creation()
@@ -318,6 +320,9 @@
 	adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 	adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE)
 	adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)
+
+/mob/living/carbon/human/species/skeleton/death_arena
+	should_have_aggro = FALSE
 
 /mob/living/carbon/human/species/skeleton/death_arena/after_creation()
 	..()
