@@ -1152,9 +1152,8 @@ There are several things that need to be remembered:
 							S.pixel_y += offsets[OFFSET_SHIRT_F][2]
 				overlays_standing[SHIRTSLEEVE_LAYER] = sleeves
 
-	if(gender == FEMALE && dna?.species)
-		update_body_parts(redraw = TRUE)
-		dna.species.handle_body(src)
+	update_body_parts(redraw = TRUE)
+	dna.species.handle_body(src)
 	update_body()
 
 	apply_overlay(SHIRT_LAYER)

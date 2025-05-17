@@ -41,8 +41,8 @@
 		var/obj/item/clothing/head/new_hat = new hat(get_turf(human))
 		human.equip_to_appropriate_slot(new_hat)
 		human.skin_tone = "#9d8d6e"
-		human.set_hair_style(/datum/sprite_accessory/hair/head/ponytail8, FALSE)
-		human.set_hair_color("#FFFFFF", FALSE)
+		human.set_hair_style(/datum/sprite_accessory/hair/head/warrior, FALSE)
+		human.set_hair_color("#aca918", FALSE)
 		human.set_facial_hair_style(/datum/sprite_accessory/hair/facial/none)
 		human.real_name = initial(hat.name)
 		human.name = initial(hat.name)
