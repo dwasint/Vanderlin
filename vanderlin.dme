@@ -2491,6 +2491,7 @@
 #include "code\modules\visual_ui\quake_console\commands\test\_test_command.dm"
 #include "code\modules\visual_ui\quake_console\commands\test\testing_situations\_base.dm"
 #include "code\modules\visual_ui\quake_console\commands\test\testing_situations\hair_examine.dm"
+#include "code\modules\visual_ui\quake_console\commands\test\testing_situations\hat_render.dm"
 #include "code\modules\visual_ui\quake_console\commands\test\testing_situations\job_render.dm"
 #include "code\modules\visual_ui\quake_console\commands\test\testing_situations\test_crafting_recipe.dm"
 #include "code\modules\visual_ui\quake_console\commands\test\testing_situations\test_debug_follower.dm"
