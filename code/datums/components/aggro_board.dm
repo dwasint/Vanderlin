@@ -31,7 +31,7 @@
 
 	// Set up decay timer
 	var/decay = decay_rate || default_decay_rate
-	decay_timer = addtimer(CALLBACK(src, PROC_REF(decay_aggro), decay), decay_timer_interval SECONDS, TIMER_LOOP)
+	decay_timer = addtimer(CALLBACK(src, PROC_REF(decay_aggro), decay), decay_timer_interval SECONDS, TIMER_LOOP | TIMER_STOPPABLE)
 
 	// Register signals
 	RegisterSignal(parent, COMSIG_ATOM_WAS_ATTACKED, PROC_REF(on_attacked))
