@@ -139,3 +139,12 @@ F
 #define BB_HEALING_SOURCE "healing_source" // Who last healed the mob
 #define BB_SNEAKING "bb_sneaking"
 #define BB_SNEAK_COOLDOWN "bb_sneak_cooldown"
+
+///key holds the world timer for swimming
+#define BB_KEY_SWIM_TIME "key_swim_time"
+///key holds the water or land target turf
+#define BB_SWIM_ALTERNATE_TURF "swim_alternate_turf"
+///key holds our state of swimming
+#define BB_CURRENTLY_SWIMMING "currently_swimming"
+///key holds how long we will be swimming for
+#define BB_KEY_SWIMMER_COOLDOWN "key_swimmer_cooldown"
