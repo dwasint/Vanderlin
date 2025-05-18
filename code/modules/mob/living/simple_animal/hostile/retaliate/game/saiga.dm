@@ -12,13 +12,6 @@
 			var/mutable_appearance/mounted = mutable_appearance(icon, "saiga_mounted", 4.3)
 			add_overlay(mounted)
 
-/mob/living/simple_animal/hostile/retaliate/saiga/find_food()
-	..()
-	var/obj/structure/vine/SV = locate(/obj/structure/vine) in loc
-	if(SV)
-		SV.eat(src)
-		food = max(food + 30, 100)
-
 /mob/living/simple_animal/hostile/retaliate/saiga/tamed(mob/user)
 	..()
 	deaggroprob = 30
@@ -94,6 +87,24 @@
 	aggressive = TRUE
 	remains_type = /obj/effect/decal/remains/saiga
 
+	ai_controller = /datum/ai_controller/saiga
+	can_have_ai = FALSE
+	AIStatus = AI_OFF
+
+	var/static/list/pet_commands = list(
+		/datum/pet_command/idle,
+		/datum/pet_command/free,
+		/datum/pet_command/good_boy,
+		/datum/pet_command/follow,
+		/datum/pet_command/attack,
+		/datum/pet_command/fetch,
+		/datum/pet_command/play_dead,
+		/datum/pet_command/protect_owner,
+		/datum/pet_command/aggressive,
+		/datum/pet_command/calm,
+	)
+
+
 /obj/effect/decal/remains/saiga
 	name = "remains"
 	gender = PLURAL
@@ -102,6 +113,9 @@
 
 /mob/living/simple_animal/hostile/retaliate/saiga/Initialize()
 	. = ..()
+	AddComponent(/datum/component/obeys_commands, pet_commands)
+	AddElement(/datum/element/ai_retaliate)
+	ai_controller.set_blackboard_key(BB_BASIC_FOODS, food_type)
 	if(tame)
 		tamed(owner)
 	ADD_TRAIT(src, TRAIT_IGNOREDAMAGESLOWDOWN, TRAIT_GENERIC)
@@ -218,6 +232,23 @@
 	aggressive = TRUE
 	remains_type = /obj/effect/decal/remains/saiga
 
+	ai_controller = /datum/ai_controller/saiga
+	can_have_ai = FALSE
+	AIStatus = AI_OFF
+
+	var/static/list/pet_commands = list(
+		/datum/pet_command/idle,
+		/datum/pet_command/free,
+		/datum/pet_command/good_boy,
+		/datum/pet_command/follow,
+		/datum/pet_command/attack,
+		/datum/pet_command/fetch,
+		/datum/pet_command/play_dead,
+		/datum/pet_command/protect_owner,
+		/datum/pet_command/aggressive,
+		/datum/pet_command/calm,
+	)
+
 /mob/living/simple_animal/hostile/retaliate/saigabuck/update_icon()
 	cut_overlays()
 	..()
@@ -245,6 +276,10 @@
 
 /mob/living/simple_animal/hostile/retaliate/saigabuck/Initialize()
 	. = ..()
+	AddComponent(/datum/component/obeys_commands, pet_commands)
+	AddElement(/datum/element/ai_retaliate)
+	ai_controller.set_blackboard_key(BB_BASIC_FOODS, food_type)
+
 	if(tame)
 		tamed(owner)
 	ADD_TRAIT(src, TRAIT_IGNOREDAMAGESLOWDOWN, TRAIT_GENERIC)
@@ -261,13 +296,6 @@
 	deaggroprob = 20
 	if(can_buckle)
 		AddComponent(/datum/component/riding/saiga)
-
-/mob/living/simple_animal/hostile/retaliate/saigabuck/eat_plants()
-	//..()
-	var/obj/structure/vine/SV = locate(/obj/structure/vine) in loc
-	if(SV)
-		SV.eat(src)
-		food = max(food + 30, 100)
 
 
 /mob/living/simple_animal/hostile/retaliate/saigabuck/simple_limb_hit(zone)
@@ -345,6 +373,8 @@
 	tame = TRUE
 	can_buckle = FALSE
 	aggressive = TRUE
+
+	ai_controller = /datum/ai_controller/saiga_kid
 
 /mob/living/simple_animal/hostile/retaliate/saiga/saigakid/boy
 	icon_state = "saigaboy"

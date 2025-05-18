@@ -570,6 +570,7 @@
 #include "code\datums\ai\controllers\minoutaur.dm"
 #include "code\datums\ai\controllers\mole.dm"
 #include "code\datums\ai\controllers\pig.dm"
+#include "code\datums\ai\controllers\saiga.dm"
 #include "code\datums\ai\controllers\spider.dm"
 #include "code\datums\ai\controllers\summon.dm"
 #include "code\datums\ai\controllers\troll.dm"
