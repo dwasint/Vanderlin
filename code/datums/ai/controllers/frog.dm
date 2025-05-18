@@ -2,7 +2,7 @@
 	movement_delay = 0.3 SECONDS
 	blackboard = list(
 		BB_TARGET_HELD_ITEM = /obj/item/fishingrod,
-		BB_BASIC_MOB_STOP_FLEEING = TRUE, //We only flee from scary fishermen.
+		BB_BASIC_MOB_FLEEING = TRUE, //We only flee from scary fishermen.
 		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic/allow_items/holding_item,
 		BB_PET_TARGETING_DATUM = new /datum/targetting_datum/basic/not_friends,
 	)

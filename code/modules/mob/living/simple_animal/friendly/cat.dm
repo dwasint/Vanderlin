@@ -22,7 +22,6 @@
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	minbodytemp = 200
 	maxbodytemp = 400
-	unsuitable_atmos_damage = 1
 	animal_species = /mob/living/simple_animal/pet/cat
 	childtype = list(/mob/living/simple_animal/pet/cat/kitten)
 	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 1)

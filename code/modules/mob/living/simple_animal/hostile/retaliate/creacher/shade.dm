@@ -57,7 +57,6 @@
 	* vulnerable to fire damage
 	*/
 	damage_coeff = list(BRUTE = 0, BURN = 1.3)
-	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	retreat_distance = 0
 	minimum_distance = 0
 	//Shades are unintrested in the material world and have no foodtype list.
@@ -79,6 +78,11 @@
 	aggressive = 1
 	retreat_health = null
 	remains_type = null
+
+	can_have_ai = FALSE
+	AIStatus = AI_OFF
+	ai_controller = /datum/ai_controller/shade
+
 	/*
 	* When a shade is defeated it collapses into
 	* a large pile of ash.
@@ -88,24 +92,10 @@
 
 /mob/living/simple_animal/hostile/retaliate/shade/Initialize()
 	..()
+	AddComponent(/datum/component/ai_aggro_system)
 	ADD_TRAIT(src, TRAIT_BLOODLOSS_IMMUNE, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_IGNOREDAMAGESLOWDOWN, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
-
-// Despite being stoic undead they still reel from the agony of burning.
-/*
-* Automated action only happens when in combat or when the AI is on.
-* Idle mobs or mobs with their AI turned off will not consider if they
-* are on fire or not. -IP
-*/
-/mob/living/simple_animal/hostile/retaliate/shade/handle_automated_action()
-	if(on_fire)
-		retreat_distance = 10
-		minimum_distance = 10
-	else
-		retreat_distance = initial(retreat_distance)
-		minimum_distance = initial(minimum_distance)
-	return ..()
 
 /*
 * Shades are supprisingly flammable

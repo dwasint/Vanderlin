@@ -5,7 +5,7 @@
 
 	blackboard = list(
 		BB_TARGET_HELD_ITEM = /obj/item/clothing/neck/psycross,
-		BB_BASIC_MOB_STOP_FLEEING = TRUE, //We only flee from scary priests.
+		BB_BASIC_MOB_FLEEING = TRUE, //We only flee from scary priests.
 		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic/allow_items/holding_item,
 		BB_PET_TARGETING_DATUM = new /datum/targetting_datum/basic/not_friends(),
 	)

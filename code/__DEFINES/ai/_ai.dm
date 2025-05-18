@@ -156,3 +156,4 @@ F
 #define BB_SHOCKWAVE_COOLDOWN "shockwave_cooldown"
 #define BB_MAX_LEYLINE_ENERGY "max_leyline_energy"
 #define BB_ENERGY_REGEN_RATE "energy_regen"
+#define BB_BASIC_MOB_STOP_FLEEING "bb_stop_fleeing"
