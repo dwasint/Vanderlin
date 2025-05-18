@@ -3,8 +3,8 @@
 	blackboard = list(
 		BB_TARGET_HELD_ITEM = /obj/item/fishingrod,
 		BB_BASIC_MOB_STOP_FLEEING = TRUE, //We only flee from scary fishermen.
-		BB_TARGETING_STRATEGY = /datum/targetting_datum/basic/allow_items/holding_item,
-		BB_PET_TARGETING_STRATEGY = /datum/targetting_datum/basic/not_friends,
+		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic/allow_items/holding_item,
+		BB_PET_TARGETING_DATUM = new /datum/targetting_datum/basic/not_friends,
 	)
 	ai_movement = /datum/ai_movement/hybrid_pathing
 	idle_behavior = /datum/idle_behavior/idle_random_walk
