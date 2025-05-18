@@ -158,11 +158,19 @@
 
 /obj/effect/proc_holder/spell/self/flight/proc/check_movement(mob/living/user)
 	if(user.movement_type & FLYING)
+		if(user.get_encumbrance() > 0.7)
+			to_chat(user, span_warning("I am too heavy to fly."))
+			stop_flying(user)
 		if(!user.adjust_stamina(-3))
 			to_chat(user, span_warning("You're too exhausted to keep flying!"))
 			stop_flying(user)
 
 		if(shadow)
+			if(!istransparentturf(get_turf(user)))
+				shadow.alpha= 0
+			else
+				shadow.alpha = 255
+
 			var/turf/below_turf = GET_TURF_BELOW(get_turf(user))
 			if(below_turf)
 				shadow.forceMove(below_turf)
