@@ -68,10 +68,10 @@
 	bonus_tame_chance = 15
 	pooptype = /obj/item/natural/poo/horse
 
-	base_intents = list(/datum/intent/simple/headbutt)
+	base_intents = list(/datum/intent/simple/hind_kick)
 	attack_sound = list('sound/vo/mobs/saiga/attack (1).ogg','sound/vo/mobs/saiga/attack (2).ogg')
-	attack_verb_continuous = "headbutts"
-	attack_verb_simple = "headbutt"
+	attack_verb_continuous = "kicks"
+	attack_verb_simple = "kick"
 	melee_damage_lower = 10
 	melee_damage_upper = 20
 	retreat_distance = 10
@@ -210,10 +210,10 @@
 					/obj/item/reagent_containers/food/snacks/produce/fruit/apple)
 	pooptype = /obj/item/natural/poo/horse
 
-	base_intents = list(/datum/intent/simple/headbutt)
+	base_intents = list(/datum/intent/simple/hind_kick)
 	attack_sound = list('sound/vo/mobs/saiga/attack (1).ogg','sound/vo/mobs/saiga/attack (2).ogg')
-	attack_verb_continuous = "headbutts"
-	attack_verb_simple = "headbutt"
+	attack_verb_continuous = "kicks"
+	attack_verb_simple = "kick"
 	melee_damage_lower = 15
 	melee_damage_upper = 20
 	environment_smash = ENVIRONMENT_SMASH_NONE
@@ -360,7 +360,7 @@
 	health = CALF_HEALTH
 	maxHealth = CALF_HEALTH
 
-	base_intents = list(/datum/intent/simple/headbutt)
+	base_intents = list(/datum/intent/simple/hind_kick)
 	melee_damage_lower = 1
 	melee_damage_upper = 6
 
