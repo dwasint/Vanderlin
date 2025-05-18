@@ -19,8 +19,6 @@
 	response_help_simple = "pass through"
 	maxHealth = 50
 	health = 50
-	layer = 16
-	plane = 16
 	spacewalk = TRUE
 	stat_attack = UNCONSCIOUS
 	robust_searching = 1
@@ -48,8 +46,35 @@
 
 	base_fortune = 11
 
+	ai_controller = /datum/ai_controller/dragger
+	can_have_ai = FALSE
+	AIStatus = AI_OFF
+
 /mob/living/simple_animal/hostile/dragger/electrocute_act(shock_damage, source, siemens_coeff = 1, flags = NONE)
 	return FALSE
+
+/mob/living/simple_animal/hostile/dragger/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_IGNOREDAMAGESLOWDOWN, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
+
+
+/mob/living/simple_animal/hostile/dragger/death(gibbed)
+	emote("death")
+	..()
+
+/mob/living/simple_animal/hostile/dragger/get_sound(input)
+	switch(input)
+		if("laugh")
+			return pick('sound/vo/mobs/ghost/laugh (1).ogg','sound/vo/mobs/ghost/laugh (2).ogg','sound/vo/mobs/ghost/laugh (3).ogg','sound/vo/mobs/ghost/laugh (4).ogg','sound/vo/mobs/ghost/laugh (5).ogg','sound/vo/mobs/ghost/laugh (6).ogg')
+		if("moan")
+			return pick('sound/vo/mobs/ghost/moan (1).ogg','sound/vo/mobs/ghost/laugh (2).ogg','sound/vo/mobs/ghost/laugh (3).ogg')
+		if("death")
+			return 'sound/vo/mobs/ghost/death.ogg'
+		if("whisper")
+			return pick('sound/vo/mobs/ghost/whisper (1).ogg','sound/vo/mobs/ghost/whisper (2).ogg','sound/vo/mobs/ghost/whisper (3).ogg')
+		if("aggro")
+			return pick('sound/vo/mobs/ghost/aggro (1).ogg','sound/vo/mobs/ghost/aggro (2).ogg','sound/vo/mobs/ghost/aggro (3).ogg','sound/vo/mobs/ghost/aggro (4).ogg','sound/vo/mobs/ghost/aggro (5).ogg','sound/vo/mobs/ghost/aggro (6).ogg')
 
 /mob/living/simple_animal/hostile/dragger/simple_limb_hit(zone)
 	if(!zone)
@@ -100,42 +125,26 @@
 
 	return ..()
 
-/mob/living/simple_animal/hostile/dragger/taunted(mob/user)
-	GiveTarget(user)
-	return
+/obj/effect/temp_visual/dir_setting/wraith_phase_out
+	name = "phase out"
+	icon = 'icons/effects/ghost_effects.dmi'
+	icon_state = "wraith_phase_out"
+	duration = 6
 
-/mob/living/simple_animal/hostile/dragger/Initialize()
-	. = ..()
-	set_light(2, 2, 2, l_color =  "#c0523f")
-	ADD_TRAIT(src, TRAIT_IGNOREDAMAGESLOWDOWN, TRAIT_GENERIC)
-	ADD_TRAIT(src, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
+/obj/effect/temp_visual/dir_setting/wraith_phase_in
+	name = "phase in"
+	icon = 'icons/effects/ghost_effects.dmi'
+	icon_state = "wraith_phase_in"
+	duration = 6
 
+/obj/effect/temp_visual/dir_setting/wraith_sway
+	name = "sway"
+	icon = 'icons/effects/ghost_effects.dmi'
+	icon_state = "wraith_sway"
+	duration = 10
 
-/mob/living/simple_animal/hostile/dragger/death(gibbed)
-	emote("death")
-	..()
-
-/mob/living/simple_animal/hostile/dragger/Life()
-	. = ..()
-
-/mob/living/simple_animal/hostile/dragger/get_sound(input)
-	switch(input)
-		if("laugh")
-			return pick('sound/vo/mobs/ghost/laugh (1).ogg','sound/vo/mobs/ghost/laugh (2).ogg','sound/vo/mobs/ghost/laugh (3).ogg','sound/vo/mobs/ghost/laugh (4).ogg','sound/vo/mobs/ghost/laugh (5).ogg','sound/vo/mobs/ghost/laugh (6).ogg')
-		if("moan")
-			return pick('sound/vo/mobs/ghost/moan (1).ogg','sound/vo/mobs/ghost/laugh (2).ogg','sound/vo/mobs/ghost/laugh (3).ogg')
-		if("death")
-			return 'sound/vo/mobs/ghost/death.ogg'
-		if("whisper")
-			return pick('sound/vo/mobs/ghost/whisper (1).ogg','sound/vo/mobs/ghost/whisper (2).ogg','sound/vo/mobs/ghost/whisper (3).ogg')
-		if("aggro")
-			return pick('sound/vo/mobs/ghost/aggro (1).ogg','sound/vo/mobs/ghost/aggro (2).ogg','sound/vo/mobs/ghost/aggro (3).ogg','sound/vo/mobs/ghost/aggro (4).ogg','sound/vo/mobs/ghost/aggro (5).ogg','sound/vo/mobs/ghost/aggro (6).ogg')
-
-/mob/living/simple_animal/hostile/dragger/AttackingTarget()
-	. = ..()
-	if(. && prob(8) && iscarbon(target))
-		var/mob/living/carbon/C = target
-		C.Immobilize(50)
-		C.visible_message(span_danger("\The [src] paralyzes \the [C] in fear!"), \
-				span_danger("\The [src] paralyzes me!"))
-		emote("laugh")
+/obj/effect/temp_visual/dir_setting/wraith_grab
+	name = "ghostly grasp"
+	icon = 'icons/effects/ghost_effects.dmi'
+	icon_state = "wraith_grasp"
+	duration = 8

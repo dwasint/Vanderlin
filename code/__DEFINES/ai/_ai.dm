@@ -157,3 +157,10 @@ F
 #define BB_MAX_LEYLINE_ENERGY "max_leyline_energy"
 #define BB_ENERGY_REGEN_RATE "energy_regen"
 #define BB_BASIC_MOB_STOP_FLEEING "bb_stop_fleeing"
+
+#define BB_DRAGGER_HUNTING_COOLDOWN "dragger_hunting_cooldown"
+#define BB_DRAGGER_TELEPORT_COOLDOWN "dragger_teleport_cooldown"
+#define BB_DRAGGER_DRAG_COOLDOWN "dragger_drag_cooldown"
+#define BB_DRAGGER_DARKNESS_TARGET "dragger_darkness_target"
+#define BB_DRAGGER_VICTIM "dragger_victim"
+#define BB_DARKNESS_THRESHOLD "darkness_threshold"
