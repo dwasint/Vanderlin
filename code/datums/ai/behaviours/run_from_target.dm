@@ -96,3 +96,6 @@
 /datum/ai_behavior/run_away_from_target/until_destination/finish_action(datum/ai_controller/controller, succeeded, ...)
 	. = ..()
 	controller.set_blackboard_key(BB_BASIC_MOB_RUN_WITH_ITEM, FALSE)
+
+/datum/ai_behavior/run_away_from_target/saiga
+	run_distance = 3

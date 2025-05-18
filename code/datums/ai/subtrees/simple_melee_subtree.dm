@@ -91,3 +91,20 @@
 
 	// Set cooldown
 	controller.set_blackboard_key(BB_GATOR_DEATH_ROLL_COOLDOWN, world.time + death_roll_cooldown)
+
+
+/datum/ai_planning_subtree/basic_melee_attack_subtree/saiga
+	melee_attack_behavior = /datum/ai_behavior/basic_melee_attack/saiga
+	var/datum/ai_behavior/basic_melee_attack/opportunistic/alternative = /datum/ai_behavior/basic_melee_attack/opportunistic
+
+/datum/ai_planning_subtree/basic_melee_attack_subtree/saiga/SelectBehaviors(datum/ai_controller/controller, delta_time)
+	var/atom/target = controller.blackboard[BB_BASIC_MOB_CURRENT_TARGET]
+	if(QDELETED(target))
+		return
+	if(controller.blackboard[BB_BASIC_MOB_FLEEING] && istype(target, /mob))
+		controller.queue_behavior(alternative, BB_BASIC_MOB_CURRENT_TARGET, BB_TARGETTING_DATUM, BB_BASIC_MOB_CURRENT_TARGET_HIDING_LOCATION)
+		end_planning = FALSE
+	else
+		controller.queue_behavior(melee_attack_behavior, BB_BASIC_MOB_CURRENT_TARGET, BB_TARGETTING_DATUM, BB_BASIC_MOB_CURRENT_TARGET_HIDING_LOCATION)
+	if (end_planning)
+		return SUBTREE_RETURN_FINISH_PLANNING //we are going into battle...no distractions.

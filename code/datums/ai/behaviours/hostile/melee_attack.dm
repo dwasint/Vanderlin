@@ -210,3 +210,50 @@
 				chosen_dir = turn(target_dir,chosen_dir)
 				basic_mob.Move(get_step(basic_mob,chosen_dir))
 				basic_mob.face_atom(target) //Looks better if they keep looking at you when dodging
+
+/datum/ai_behavior/basic_melee_attack/saiga
+	action_cooldown = 0.2 SECONDS // We gotta check unfortunately often because we're in a race condition with nextmove
+	behavior_flags = AI_BEHAVIOR_REQUIRE_MOVEMENT | AI_BEHAVIOR_REQUIRE_REACH | AI_BEHAVIOR_CAN_PLAN_DURING_EXECUTION
+
+/datum/ai_behavior/basic_melee_attack/saiga/perform(delta_time, datum/ai_controller/controller, target_key, targetting_datum_key, hiding_location_key)
+	var/mob/living/simple_animal/basic_mob = controller.pawn
+	//targetting datum will kill the action if not real anymore
+	var/atom/target = controller.blackboard[target_key]
+	var/datum/targetting_datum/targetting_datum = controller.blackboard[targetting_datum_key]
+
+	if(!targetting_datum.can_attack(basic_mob, target))
+		finish_action(controller, FALSE, target_key)
+		return
+
+	if(ismob(target))
+		if(target:stat == DEAD)
+			finish_action(controller, FALSE, target_key)
+			return
+
+	var/hiding_target = targetting_datum.find_hidden_mobs(basic_mob, target) //If this is valid, theyre hidden in something!
+
+	controller.set_blackboard_key(hiding_location_key, hiding_target)
+
+	basic_mob.face_atom(target)
+	var/list/possible_intents = list()
+	for(var/datum/intent/intent as anything in basic_mob.possible_a_intents)
+		if(istype(intent, /datum/intent/unarmed/help) || istype(intent, /datum/intent/unarmed/shove) || istype(intent, /datum/intent/unarmed/grab))
+			continue
+		possible_intents |= intent
+
+	if(length(possible_intents))
+		basic_mob.a_intent = pick(possible_intents)
+		basic_mob.used_intent = basic_mob.a_intent
+
+	if(!basic_mob.CanReach(target))
+		finish_action(controller, FALSE, target_key)
+		return
+
+	if(hiding_target) //Slap it!
+		controller.ai_interact(hiding_target, TRUE, TRUE)
+	else
+		controller.ai_interact(target, TRUE, TRUE)
+	if(basic_mob.next_click < world.time && istype(basic_mob)) //oopsie I hate that roguecode fucks change_nextMove
+		basic_mob.next_click = world.time + basic_mob.melee_attack_cooldown
+		SEND_SIGNAL(basic_mob, COMSIG_MOB_BREAK_SNEAK)
+		finish_action(controller, TRUE, target_key)
