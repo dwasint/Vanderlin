@@ -1,10 +1,12 @@
-/mob/living/simple_animal/hostile/demon
-	name = "demon"
+
+// why not also some mob stuff too
+/mob/living/simple_animal/hostile/dragger
+	name = "dragger"
 	desc = ""
-	icon = 'icons/roguetown/mob/monster/wraith.dmi'
-	icon_state = "haunt"
-	icon_living = "haunt"
-	icon_dead = null
+	icon = 'icons/roguetown/underworld/enigma_dragger.dmi'
+	icon_state = "dragger"
+	icon_living = "dragger"
+	icon_dead = "dragger_dead"
 	mob_biotypes = MOB_UNDEAD|MOB_HUMANOID
 	movement_type = FLYING
 	environment_smash = ENVIRONMENT_SMASH_NONE
@@ -43,14 +45,13 @@
 	defdrain = 20
 	canparry = TRUE
 	retreat_health = null
-	var/obj/structure/bonepile/slavepile
 
 	base_fortune = 11
 
-/mob/living/simple_animal/hostile/demon/electrocute_act(shock_damage, source, siemens_coeff = 1, flags = NONE)
+/mob/living/simple_animal/hostile/dragger/electrocute_act(shock_damage, source, siemens_coeff = 1, flags = NONE)
 	return FALSE
 
-/mob/living/simple_animal/hostile/demon/simple_limb_hit(zone)
+/mob/living/simple_animal/hostile/dragger/simple_limb_hit(zone)
 	if(!zone)
 		return ""
 	switch(zone)
@@ -99,36 +100,25 @@
 
 	return ..()
 
-/mob/living/simple_animal/hostile/demon/taunted(mob/user)
+/mob/living/simple_animal/hostile/dragger/taunted(mob/user)
 	GiveTarget(user)
 	return
 
-/mob/living/simple_animal/hostile/demon/Initialize()
+/mob/living/simple_animal/hostile/dragger/Initialize()
 	. = ..()
-	set_light(2, 2, 2, l_color = "#c0523f")
+	set_light(2, 2, 2, l_color =  "#c0523f")
 	ADD_TRAIT(src, TRAIT_IGNOREDAMAGESLOWDOWN, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
 
 
-/mob/living/simple_animal/hostile/demon/death(gibbed)
+/mob/living/simple_animal/hostile/dragger/death(gibbed)
 	emote("death")
 	..()
 
-/mob/living/simple_animal/hostile/demon/Life()
+/mob/living/simple_animal/hostile/dragger/Life()
 	. = ..()
-	if(slavepile)
-		var/offset_x = x - slavepile.x
-		var/offset_y = y - slavepile.y
-		if(offset_x > 8 || offset_x < -8 || offset_y > 8 || offset_y < -8 || (z != slavepile.z))
-			if(isturf(slavepile.loc))
-				src.forceMove(slavepile.loc)
-			else
-				death()
-	if(!target)
-		if(prob(3))
-			emote(pick("laugh", "moan", "whisper"), TRUE)
 
-/mob/living/simple_animal/hostile/demon/get_sound(input)
+/mob/living/simple_animal/hostile/dragger/get_sound(input)
 	switch(input)
 		if("laugh")
 			return pick('sound/vo/mobs/ghost/laugh (1).ogg','sound/vo/mobs/ghost/laugh (2).ogg','sound/vo/mobs/ghost/laugh (3).ogg','sound/vo/mobs/ghost/laugh (4).ogg','sound/vo/mobs/ghost/laugh (5).ogg','sound/vo/mobs/ghost/laugh (6).ogg')
@@ -141,23 +131,11 @@
 		if("aggro")
 			return pick('sound/vo/mobs/ghost/aggro (1).ogg','sound/vo/mobs/ghost/aggro (2).ogg','sound/vo/mobs/ghost/aggro (3).ogg','sound/vo/mobs/ghost/aggro (4).ogg','sound/vo/mobs/ghost/aggro (5).ogg','sound/vo/mobs/ghost/aggro (6).ogg')
 
-/mob/living/simple_animal/hostile/demon/AttackingTarget()
+/mob/living/simple_animal/hostile/dragger/AttackingTarget()
 	. = ..()
 	if(. && prob(8) && iscarbon(target))
 		var/mob/living/carbon/C = target
 		C.Immobilize(50)
-		C.visible_message("<span class='danger'>\The [src] paralyzes \the [C] in fear!</span>", \
-				"<span class='danger'>\The [src] paralyzes me!</span>")
+		C.visible_message(span_danger("\The [src] paralyzes \the [C] in fear!"), \
+				span_danger("\The [src] paralyzes me!"))
 		emote("laugh")
-
-/datum/intent/simple/slash
-	name = "slash"
-	icon_state = "inchop"
-	attack_verb = list("cuts", "slashes")
-	animname = "slash"
-	blade_class = BCLASS_CHOP
-	hitsound = list('sound/combat/hits/bladed/genchop (1).ogg', 'sound/combat/hits/bladed/genchop (2).ogg', 'sound/combat/hits/bladed/genchop (3).ogg')
-	chargetime = 0
-	penfactor = 10
-	swingdelay = 3
-	item_damage_type = "slash"

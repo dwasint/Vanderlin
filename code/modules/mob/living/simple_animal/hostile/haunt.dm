@@ -1,3 +1,15 @@
+/datum/intent/simple/slash
+	name = "slash"
+	icon_state = "inchop"
+	attack_verb = list("cuts", "slashes")
+	animname = "slash"
+	blade_class = BCLASS_CHOP
+	hitsound = list('sound/combat/hits/bladed/genchop (1).ogg', 'sound/combat/hits/bladed/genchop (2).ogg', 'sound/combat/hits/bladed/genchop (3).ogg')
+	chargetime = 0
+	penfactor = 10
+	swingdelay = 3
+	item_damage_type = "slash"
+
 /mob/living/simple_animal/hostile/haunt
 	name = "haunt"
 	desc = ""
@@ -43,6 +55,14 @@
 	var/obj/structure/bonepile/slavepile
 
 	base_fortune = 11
+
+	ai_controller = /datum/ai_controller/haunt
+	can_have_ai = FALSE
+	AIStatus = AI_OFF
+
+/mob/living/simple_animal/hostile/haunt/Initialize()
+	. = ..()
+	AddComponent(/datum/component/ai_aggro_system)
 
 /mob/living/simple_animal/hostile/haunt/electrocute_act(shock_damage, source, siemens_coeff = 1, flags = NONE)
 	return FALSE
@@ -139,6 +159,7 @@
 	spawning_haunt = FALSE
 	var/mob/living/simple_animal/hostile/haunt/H = new (get_turf(src))
 	H.slavepile = src
+	H.ai_controller.set_blackboard_key(BB_LEYLINE_SOURCE, src)
 	haunts += H
 	update_icon()
 
