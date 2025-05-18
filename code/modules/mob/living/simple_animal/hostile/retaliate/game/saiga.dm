@@ -41,7 +41,7 @@
 	gender = FEMALE
 	footstep_type = FOOTSTEP_MOB_SHOE
 	emote_see = list("looks around.", "chews some leaves.")
-	move_to_delay = 7
+	move_to_delay = 9
 
 	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 1,
 						/obj/item/natural/hide = 1,
@@ -186,6 +186,7 @@
 	footstep_type = FOOTSTEP_MOB_SHOE
 	emote_see = list("stares.")
 	turns_per_move = 3
+	move_to_delay = 9
 
 	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/steak = 1,
 						/obj/item/reagent_containers/food/snacks/fat = 1,
