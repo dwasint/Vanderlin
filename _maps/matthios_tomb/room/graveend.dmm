@@ -69,7 +69,7 @@
 /turf/open/floor/dirt,
 /area/rogue/under/tomb)
 "iE" = (
-/mob/living/simple_animal/hostile/demon{
+/mob/living/simple_animal/hostile/haunt{
 	name = "Bonetaker";
 	base_constitution = 15;
 	base_endurance = 15;
