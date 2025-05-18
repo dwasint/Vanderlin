@@ -63,18 +63,24 @@
 		playsound(get_turf(carbon_victim), 'sound/magic/enter_blood.ogg', 50, TRUE)
 
 		var/list/wilderness_turfs = list()
-		for(var/turf/T in orange(100, dragger_pawn))
-			if(istype(T, /turf/open/floor/dirt) || istype(T, /turf/open/floor/grass))
-				if(!T.density && T.get_lumcount() <= 0.4)
-					wilderness_turfs += T
+		if(!controller.blackboard[BB_DRAGGER_DUNGEONEER])
+			for(var/turf/T in orange(100, dragger_pawn))
+				if(istype(T, /turf/open/floor/dirt) || istype(T, /turf/open/floor/grass))
+					if(!T.density && T.get_lumcount() <= 0.4)
+						wilderness_turfs += T
 
-		if(!length(wilderness_turfs))
-			for(var/turf/T in orange(50, dragger_pawn))
-				if(!T.density && T.get_lumcount() <= 0.3)
-					wilderness_turfs += T
+			if(!length(wilderness_turfs))
+				for(var/turf/T in orange(50, dragger_pawn))
+					if(!T.density && T.get_lumcount() <= 0.3)
+						wilderness_turfs += T
 
-		if(!length(wilderness_turfs))
-			for(var/turf/T in orange(15, dragger_pawn))
+			if(!length(wilderness_turfs))
+				for(var/turf/T in orange(15, dragger_pawn))
+					if(!T.density)
+						wilderness_turfs += T
+		else
+			var/mob/random_dungeon_mob = pick(SSmobs.matthios_mobs)
+			for(var/turf/T in orange(15, random_dungeon_mob))
 				if(!T.density)
 					wilderness_turfs += T
 

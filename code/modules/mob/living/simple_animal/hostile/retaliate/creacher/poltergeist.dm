@@ -39,20 +39,13 @@
 	AIStatus = AI_OFF
 	can_have_ai = FALSE
 
-//Can't hit most of the time with thrown objects against prone mobs, so it's commented out. Maybe return later.
-//	stat_attack = UNCONSCIOUS
-	var/flick_timer = 0
-
 /mob/living/simple_animal/hostile/retaliate/poltergeist/Initialize()
 	. = ..()
-	flick_timer = rand(1,15)
+	addtimer(CALLBACK(src, PROC_REF(flicker)), rand(9, 33))
 
-/mob/living/simple_animal/hostile/retaliate/poltergeist/Life()
-	..()
-	flick_timer--
-	if(flick_timer == 0)
-		flick("polter1", src)
-		flick_timer = rand(1,15)
+/mob/living/simple_animal/hostile/retaliate/poltergeist/proc/flicker()
+	flick("polter1", src)
+	addtimer(CALLBACK(src, PROC_REF(flicker)), rand(9, 33))
 
 /mob/living/simple_animal/hostile/retaliate/poltergeist/death()
 	..()

@@ -6,7 +6,8 @@
 		BB_DARKNESS_THRESHOLD = 3, // Threshold for considering an area "dark"
 		BB_DRAGGER_HUNTING_COOLDOWN = 0,
 		BB_DRAGGER_TELEPORT_COOLDOWN = 0,
-		BB_DRAGGER_DRAG_COOLDOWN = 0
+		BB_DRAGGER_DRAG_COOLDOWN = 0,
+		BB_DRAGGER_DUNGEONEER = TRUE,
 	)
 	planning_subtrees = list(
 		/datum/ai_planning_subtree/dragger_hunting,

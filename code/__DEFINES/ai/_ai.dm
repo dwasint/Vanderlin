@@ -164,3 +164,4 @@ F
 #define BB_DRAGGER_DARKNESS_TARGET "dragger_darkness_target"
 #define BB_DRAGGER_VICTIM "dragger_victim"
 #define BB_DARKNESS_THRESHOLD "darkness_threshold"
+#define BB_DRAGGER_DUNGEONEER "dragger_dungeon"

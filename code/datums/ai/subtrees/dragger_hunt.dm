@@ -34,6 +34,8 @@
 
 	var/list/potential_victims = list()
 	for(var/mob/living/carbon/human/H in GLOB.player_list)
+		if(SSmapping.level_has_any_trait(H.z, list(ZTRAIT_IGNORE_WEATHER_TRAIT)))
+			continue
 		if(H.stat == CONSCIOUS && !is_blind(H))
 			potential_victims += H
 
