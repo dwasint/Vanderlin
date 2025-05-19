@@ -106,3 +106,7 @@
 
 /datum/ai_planning_subtree/basic_melee_attack_subtree/hellhound
 	melee_attack_behavior = /datum/ai_behavior/basic_melee_attack/hellhound
+
+
+/datum/ai_planning_subtree/basic_melee_attack_subtree/warden
+	melee_attack_behavior = /datum/ai_behavior/basic_melee_attack/warden

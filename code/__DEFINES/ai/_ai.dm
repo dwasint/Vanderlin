@@ -172,3 +172,8 @@ F
 #define BB_FIEND_SUMMON_CD "fiend_summon_cd"
 #define BB_MINION_COUNT "minion_count"
 #define BB_MAX_MINIONS "max_minions"
+#define BB_SHROOM_COOLDOWN "shroom_cd"
+#define BB_DRUG_COOLDOWN "drug_cd"
+
+#define BB_QUAKE_COOLDOWN "quake_cooldown"
+#define BB_EARTHQUAKE_COOLDOWN "earthquake_cooldown"
