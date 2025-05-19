@@ -180,13 +180,14 @@ All foods are distributed among various categories. Use common sense.
 		if(ismob(loc))
 			return FALSE
 		else
-			var/obj/item/reagent_containers/NU = new become_rot_type(loc)
 			var/atom/movable/location = loc
+			var/obj/item/reagent_containers/NU = new become_rot_type(location)
 			NU.reagents.clear_reagents()
 			reagents.trans_to(NU.reagents, reagents.maximum_volume)
 			qdel(src)
-			if(!location || !SEND_SIGNAL(location, COMSIG_TRY_STORAGE_INSERT, NU, null, TRUE, TRUE))
-				NU.forceMove(get_turf(NU.loc))
+			if(!isturf(location))
+				if(!istype(location, /obj/structure/closet) && !SEND_SIGNAL(location, COMSIG_TRY_STORAGE_INSERT, NU, null, TRUE, TRUE))
+					NU.forceMove(get_turf(location))
 			GLOB.vanderlin_round_stats[STATS_FOOD_ROTTED]++
 			return TRUE
 	else
@@ -314,8 +315,9 @@ All foods are distributed among various categories. Use common sense.
 	eater.taste(reagents)
 
 	if(!reagents.total_volume)
+		record_featured_stat(FEATURED_STATS_EATERS, eater)
+		record_featured_object_stat(FEATURED_STATS_FOOD, name)
 		if(faretype == FARE_LAVISH || faretype == FARE_FINE)
-			record_featured_stat(FEATURED_STATS_GOURMETS, eater)
 			GLOB.vanderlin_round_stats[STATS_LUXURIOUS_FOOD_EATEN]++
 		var/atom/current_loc = loc
 		qdel(src)
