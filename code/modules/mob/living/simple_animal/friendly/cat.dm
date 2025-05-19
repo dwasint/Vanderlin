@@ -61,7 +61,7 @@
 	AddComponent(\
 			/datum/component/breed,\
 			list(/mob/living/simple_animal/pet/cat),\
-			3 MINUTES,
+			3 MINUTES,\
 			list(/mob/living/simple_animal/pet/cat/kitten = 100),\
 			CALLBACK(src, PROC_REF(after_birth)),\
 		)
