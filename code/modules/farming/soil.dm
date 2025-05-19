@@ -508,23 +508,23 @@
 
 	// Factors that improve quality
 	if(tilled_time > 0)
-		quality_rate *= 1.5
+		quality_rate *= 1.1
+
 	if(blessed_time > 0)
 		quality_rate *= 2.0
+
 	if(has_world_trait(/datum/world_trait/dendor_fertility))
 		quality_rate *= 1.5
-
-	// Perfect growing conditions boost quality
-	if(plant_health >= MAX_PLANT_HEALTH * 0.9)
-		quality_rate *= 1.25
 
 	// Nutrition levels affect quality
 	if(nutrition >= MAX_PLANT_NUTRITION * 0.7)
 		quality_rate *= 1.2
 
 	// Water levels affect quality
-	if(water >= MAX_PLANT_WATER * 0.7)
+	if(water >= MAX_PLANT_WATER * 0.9)
 		quality_rate *= 1.2
+	if(water < MAX_PLANT_WATER * 0.7)
+		quality_rate *= 0.8
 
 	// Weeds negatively affect quality
 	if(weeds >= MAX_PLANT_WEEDS * 0.3)
@@ -533,7 +533,7 @@
 		quality_rate *= 0.7
 
 	// Adjust quality points
-	quality_points += dt * quality_rate * 0.1
+	quality_points += dt * quality_rate * 0.05
 
 	// Determine quality tier based on accumulated points
 	// The thresholds are designed to make higher qualities progressively harder to achieve
