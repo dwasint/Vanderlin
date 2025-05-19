@@ -38,9 +38,6 @@
 	faction = list(FACTION_ORCS)
 	footstep_type = FOOTSTEP_MOB_BAREFOOT
 	del_on_death = TRUE
-
- //disable native ai
-
 	ai_controller = /datum/ai_controller/orc
 
 /mob/living/simple_animal/hostile/orc/Initialize()
@@ -211,7 +208,4 @@
 			/obj/effect/decal/cleanable/blood)
 	maxHealth = 100
 	health = 100
-
- //disable native ai
-
 	ai_controller = /datum/ai_controller/orc_ranged

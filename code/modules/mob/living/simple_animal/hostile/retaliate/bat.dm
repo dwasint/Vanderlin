@@ -32,7 +32,7 @@
 	movement_type = FLYING
 	speak_emote = list("squeaks")
 
- //this is literally a shapeshift and ai can't actually use it
+//this is literally a shapeshift and ai can't actually use it
 	ai_controller = /datum/ai_controller/bat
 
 
