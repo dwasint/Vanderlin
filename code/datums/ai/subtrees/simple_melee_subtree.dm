@@ -118,3 +118,6 @@
 	controller.queue_behavior(melee_attack_behavior, BB_BASIC_MOB_CURRENT_TARGET, BB_TARGETTING_DATUM, BB_BASIC_MOB_CURRENT_TARGET_HIDING_LOCATION)
 	if (end_planning)
 		return SUBTREE_RETURN_FINISH_PLANNING //we are going into battle...no distractions.
+
+/datum/ai_planning_subtree/basic_melee_attack_subtree/hellhound
+	melee_attack_behavior = /datum/ai_behavior/basic_melee_attack/hellhound

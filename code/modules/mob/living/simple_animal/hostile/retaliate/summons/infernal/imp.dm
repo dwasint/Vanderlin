@@ -89,12 +89,4 @@
 
 /mob/living/simple_animal/hostile/retaliate/infernal/imp/taunted(mob/user)
 	emote("aggro")
-	Retaliate()
-	GiveTarget(user)
 	return
-
-/mob/living/simple_animal/hostile/retaliate/infernal/imp/Life()
-	..()
-	if(pulledby)
-		Retaliate()
-		GiveTarget(pulledby)

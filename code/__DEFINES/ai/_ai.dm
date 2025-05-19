@@ -165,3 +165,10 @@ F
 #define BB_DRAGGER_VICTIM "dragger_victim"
 #define BB_DARKNESS_THRESHOLD "darkness_threshold"
 #define BB_DRAGGER_DUNGEONEER "dragger_dungeon"
+
+#define BB_HELLHOUND_FIRE "hellhound_fire"
+
+#define BB_FIEND_FLAME_CD "fiend_flame_cd"
+#define BB_FIEND_SUMMON_CD "fiend_summon_cd"
+#define BB_MINION_COUNT "minion_count"
+#define BB_MAX_MINIONS "max_minions"

@@ -83,9 +83,7 @@
 		finish_action(controller, FALSE)
 		return
 
-	// Create beam effect
-	var/obj/effect/ebeam/leyline/beam = new(get_turf(lycan))
-	beam.Beam(target, "lightning", 'icons/effects/beam.dmi', 3 SECONDS)
+	lycan.Beam(target, "lightning", 'icons/effects/beam.dmi', 3 SECONDS)
 
 	playsound(lycan, 'sound/magic/lightning.ogg', 75, TRUE)
 
@@ -93,11 +91,8 @@
 	if(isliving(target))
 		var/mob/living/L = target
 		L.apply_damage(40, BURN)
-		L.Paralyze(10)
+		L.Paralyze(1 SECONDS)
 		to_chat(L, span_danger("Crackling energy from [lycan] surges through your body!"))
-
-	// Cleanup beam after effect duration
-	QDEL_IN(beam, 5)
 
 	finish_action(controller, TRUE)
 
@@ -141,7 +136,7 @@
 	playsound(lycan, 'sound/magic/lightning.ogg', 100, TRUE)
 	new /obj/effect/temp_visual/gravpush(get_turf(lycan))
 
-	for(var/mob/living/L in view(5, lycan))
+	for(var/mob/living/L in view(3, lycan))
 		if((L == lycan) || ("leyline" in L.faction))
 			continue
 
