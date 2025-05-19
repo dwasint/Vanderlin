@@ -28,7 +28,6 @@
 	obj_damage = 1
 	melee_damage_lower = 15
 	melee_damage_upper = 25
-	attack_same = FALSE
 	attack_sound = 'sound/combat/wooshes/bladed/wooshmed (1).ogg'
 	dodge_sound = 'sound/combat/dodge.ogg'
 	parry_sound = "sword"
@@ -47,8 +46,8 @@
 	base_fortune = 11
 
 	ai_controller = /datum/ai_controller/dragger
-	can_have_ai = FALSE
-	AIStatus = AI_OFF
+
+
 
 /mob/living/simple_animal/hostile/dragger/electrocute_act(shock_damage, source, siemens_coeff = 1, flags = NONE)
 	return FALSE

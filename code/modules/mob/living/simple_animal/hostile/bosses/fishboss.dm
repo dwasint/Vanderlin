@@ -33,8 +33,8 @@
 	projectiletype = /obj/projectile/bullet/reusable/deepone
 	projectilesound = 'sound/combat/wooshes/punch/punchwoosh (1).ogg'
 	patron = /datum/patron/divine/abyssor
-	can_have_ai = FALSE
-	AIStatus = AI_OFF
+
+
 	stat_attack = SOFT_CRIT
 	loot = list(/obj/item/weapon/mace/goden/deepduke)
 	ai_controller = /datum/ai_controller/fishboss

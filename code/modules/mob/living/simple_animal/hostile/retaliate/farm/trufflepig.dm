@@ -100,7 +100,6 @@
 	emote_see = list("eyes the surroundings.", "flicks its ears.")
 	deathsound = 'sound/vo/mobs/pig/hangry.ogg'
 
-	stop_automated_movement_when_pulled = TRUE
 	response_help_continuous = "pets"
 	response_help_simple = "give the signal to the"
 
@@ -135,8 +134,8 @@
 	can_saddle = TRUE
 
 	ai_controller = /datum/ai_controller/pig
-	AIStatus = AI_OFF
-	can_have_ai = FALSE
+
+
 
 	var/static/list/pet_commands = list(
 			/datum/pet_command/idle,
@@ -171,8 +170,6 @@
 
 /mob/living/simple_animal/hostile/retaliate/trufflepig/taunted(mob/user)
 	emote("aggro")
-	Retaliate()
-	GiveTarget(user)
 	return
 
 /obj/effect/decal/remains/pig
@@ -196,7 +193,6 @@
 				walk_towards(src, M, 1)
 				sleep(3)
 				visible_message("<span class='notice'>The pig devours the vulnerable truffles!</span>")
-				stop_automated_movement = 0
 				hangry_meter = 0
 				playsound(src,'sound/misc/eat.ogg', rand(30,60), TRUE)
 				qdel(M)

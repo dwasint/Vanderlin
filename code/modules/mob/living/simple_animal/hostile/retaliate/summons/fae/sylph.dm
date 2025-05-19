@@ -51,8 +51,8 @@
 	ranged_message = "throws icey magick"
 
 	ai_controller = /datum/ai_controller/sylph
-	can_have_ai = FALSE
-	AIStatus = AI_OFF
+
+
 
 /mob/living/simple_animal/hostile/retaliate/fae/sylph/Initialize()
 	. = ..()

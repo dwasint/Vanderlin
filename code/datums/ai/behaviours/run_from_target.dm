@@ -30,6 +30,8 @@
 	/// How far do we try to run? Further makes for smoother running, but potentially weirder pathfinding
 	var/run_distance = 9
 	var/until_destination = FALSE
+	/// Clear target if we finish the action unsuccessfully
+	var/clear_failed_targets = TRUE
 
 /datum/ai_behavior/run_away_from_target/setup(datum/ai_controller/controller, target_key, hiding_location_key)
 	var/atom/target = controller.blackboard[hiding_location_key] || controller.blackboard[target_key]
@@ -88,6 +90,11 @@
 			break
 		return_turf = test_destination
 	return return_turf
+
+/datum/ai_behavior/run_away_from_target/finish_action(datum/ai_controller/controller, succeeded, target_key, hiding_location_key)
+	. = ..()
+	if (clear_failed_targets)
+		controller.clear_blackboard_key(target_key)
 
 /datum/ai_behavior/run_away_from_target/until_destination
 	until_destination = TRUE

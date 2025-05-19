@@ -49,8 +49,8 @@
 	aggressive = 1
 	body_eater = FALSE
 
-	AIStatus = AI_OFF
-	can_have_ai = FALSE
+
+
 	ai_controller = /datum/ai_controller/lycan
 
 

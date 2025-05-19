@@ -48,8 +48,8 @@
 	base_speed = 5
 
 	ai_controller = /datum/ai_controller/behemoth
-	can_have_ai = FALSE
-	AIStatus = AI_OFF
+
+
 
 /mob/living/simple_animal/hostile/retaliate/elemental/behemoth/Initialize()
 	. = ..()

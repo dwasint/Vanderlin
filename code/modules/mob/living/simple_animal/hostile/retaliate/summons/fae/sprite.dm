@@ -49,8 +49,8 @@
 	aggressive = 1
 
 	ai_controller = /datum/ai_controller/sprite
-	can_have_ai = FALSE
-	AIStatus = AI_OFF
+
+
 
 /mob/living/simple_animal/hostile/retaliate/fae/sprite/Initialize()
 	. = ..()
@@ -69,6 +69,4 @@
 
 /mob/living/simple_animal/hostile/retaliate/fae/sprite/taunted(mob/user)
 	emote("aggro")
-	Retaliate()
-	GiveTarget(user)
 	return

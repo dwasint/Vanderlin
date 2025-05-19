@@ -65,8 +65,8 @@
 	remains_type = /obj/effect/decal/remains/troll
 
 	ai_controller = /datum/ai_controller/troll
-	AIStatus = AI_OFF
-	can_have_ai = FALSE
+
+
 	var/range = 9
 
 /mob/living/simple_animal/hostile/retaliate/troll/Initialize()

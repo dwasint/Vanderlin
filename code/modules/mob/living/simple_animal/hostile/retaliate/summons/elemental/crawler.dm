@@ -48,8 +48,8 @@
 	base_speed = 8
 
 	ai_controller = /datum/ai_controller/crawler
-	can_have_ai = FALSE
-	AIStatus = AI_OFF
+
+
 
 /mob/living/simple_animal/hostile/retaliate/elemental/crawler/Initialize()
 	. = ..()

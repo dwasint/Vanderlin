@@ -48,8 +48,8 @@
 	aggressive = 1
 
 	ai_controller = /datum/ai_controller/hellhound
-	AIStatus = AI_OFF
-	can_have_ai = FALSE
+
+
 
 /mob/living/simple_animal/hostile/retaliate/infernal/hellhound/Initialize()
 	. = ..()

@@ -44,8 +44,8 @@
 	remains_type = /obj/item/weapon/axe/battle
 
 	ai_controller = /datum/ai_controller/minotaur
-	can_have_ai = FALSE
-	AIStatus = AI_OFF
+
+
 
 /mob/living/simple_animal/hostile/retaliate/minotaur/female
 	icon_state = "MinotaurFem"
@@ -71,15 +71,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/minotaur/taunted(mob/user)
 	emote("aggro")
-	Retaliate()
-	GiveTarget(user)
 	return
-
-/mob/living/simple_animal/hostile/retaliate/minotaur/Life()
-	..()
-	if(pulledby)
-		Retaliate()
-		GiveTarget(pulledby)
 
 /mob/living/simple_animal/hostile/retaliate/minotaur/get_sound(input)
 	switch(input)

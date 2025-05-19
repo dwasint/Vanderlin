@@ -18,14 +18,6 @@
 	if(can_buckle)
 		AddComponent(/datum/component/riding/saiga)
 
-/mob/living/simple_animal/hostile/retaliate/saiga/UniqueAttack()
-	if(istype(target, /obj/structure/vine))
-		var/obj/structure/vine/SV = target
-		SV.eat(src)
-		food = max(food + 30, food_max + 50)
-		return
-	return ..()
-
 /mob/living/simple_animal/hostile/retaliate/saiga
 	icon = 'icons/roguetown/mob/monster/saiga.dmi'
 	name = "saiga"
@@ -88,8 +80,8 @@
 	remains_type = /obj/effect/decal/remains/saiga
 
 	ai_controller = /datum/ai_controller/saiga
-	can_have_ai = FALSE
-	AIStatus = AI_OFF
+
+
 
 	var/static/list/pet_commands = list(
 		/datum/pet_command/idle,
@@ -115,7 +107,7 @@
 	. = ..()
 	AddComponent(/datum/component/obeys_commands, pet_commands)
 	AddElement(/datum/element/ai_retaliate)
-	ai_controller.set_blackboard_key(BB_BASIC_FOODS, food_type)
+
 	if(tame)
 		tamed(owner)
 	ADD_TRAIT(src, TRAIT_IGNOREDAMAGESLOWDOWN, TRAIT_GENERIC)
@@ -234,8 +226,8 @@
 	remains_type = /obj/effect/decal/remains/saiga
 
 	ai_controller = /datum/ai_controller/saiga
-	can_have_ai = FALSE
-	AIStatus = AI_OFF
+
+
 
 	var/static/list/pet_commands = list(
 		/datum/pet_command/idle,
@@ -279,7 +271,7 @@
 	. = ..()
 	AddComponent(/datum/component/obeys_commands, pet_commands)
 	AddElement(/datum/element/ai_retaliate)
-	ai_controller.set_blackboard_key(BB_BASIC_FOODS, food_type)
+
 
 	if(tame)
 		tamed(owner)
@@ -287,8 +279,6 @@
 
 /mob/living/simple_animal/hostile/retaliate/saigabuck/taunted(mob/user)
 	emote("aggro")
-	Retaliate()
-	GiveTarget(user)
 	return
 
 

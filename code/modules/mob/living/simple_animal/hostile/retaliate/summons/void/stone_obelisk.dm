@@ -15,12 +15,6 @@
 /mob/living/simple_animal/hostile/retaliate/voidstoneobelisk/simple_add_wound(datum/wound/wound, silent = FALSE, crit_message = FALSE)	//no wounding the obelisk
 	return
 
-/mob/living/simple_animal/hostile/retaliate/voidstoneobelisk/Life()
-	..()
-	if(pulledby)
-		Retaliate()
-		GiveTarget(pulledby)
-
 /mob/living/simple_animal/hostile/retaliate/voidstoneobelisk
 	icon = 'icons/mob/summonable/32x32.dmi'
 	name = "voidstone obelisk"
@@ -68,8 +62,8 @@
 	dodgetime = 17
 	aggressive = 1
 
-	AIStatus = AI_OFF
-	can_have_ai = FALSE
+
+
 	ai_controller = /datum/ai_controller/void_obelisk
 
 	var/datum/action/cooldown/mob_cooldown/voidblast/beam

@@ -39,7 +39,6 @@
 	obj_damage = 1
 	melee_damage_lower = 15
 	melee_damage_upper = 20
-	attack_same = FALSE
 	attack_sound = 'sound/combat/wooshes/bladed/wooshmed (1).ogg'
 	dodge_sound = 'sound/combat/dodge.ogg'
 	parry_sound = "sword"
@@ -57,8 +56,8 @@
 	base_fortune = 11
 
 	ai_controller = /datum/ai_controller/haunt
-	can_have_ai = FALSE
-	AIStatus = AI_OFF
+
+
 
 /mob/living/simple_animal/hostile/haunt/Initialize()
 	. = ..()
@@ -179,17 +178,6 @@
 	var/spawned = pick(/obj/item/reagent_containers/powder/spice)
 	new spawned(get_turf(src))
 	. = ..()
-
-/obj/structure/bonepile/attackby(obj/item/W, mob/user, params)
-	. = ..()
-	if(user)
-		for(var/H in haunts)
-			var/mob/living/simple_animal/hostile/haunt/D = H
-			D.GiveTarget(user)
-
-/mob/living/simple_animal/hostile/haunt/taunted(mob/user)
-	GiveTarget(user)
-	return
 
 /mob/living/simple_animal/hostile/haunt/Initialize()
 	. = ..()

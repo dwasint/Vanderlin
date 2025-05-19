@@ -42,8 +42,8 @@
 	body_eater = TRUE
 
 	ai_controller = /datum/ai_controller/zizoid
-	AIStatus = AI_OFF
-	can_have_ai = FALSE
+
+
 
 /mob/living/simple_animal/hostile/retaliate/blood/Initialize()
 	. = ..()
@@ -115,15 +115,8 @@
 
 /mob/living/simple_animal/hostile/retaliate/blood/taunted(mob/user)
 	emote("aggro")
-	Retaliate()
-	GiveTarget(user)
 	return
 
-/mob/living/simple_animal/hostile/retaliate/blood/Life()
-	..()
-	if(pulledby)
-		Retaliate()
-		GiveTarget(pulledby)
 
 /mob/living/simple_animal/hostile/retaliate/blood/simple_limb_hit(zone)
 	if(!zone)

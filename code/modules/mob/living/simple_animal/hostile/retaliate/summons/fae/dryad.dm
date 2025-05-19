@@ -69,8 +69,8 @@
 	ranged = FALSE
 
 	ai_controller = /datum/ai_controller/basic_controller/dryad
-	can_have_ai = FALSE
-	AIStatus = AI_OFF
+
+
 
 /mob/living/simple_animal/hostile/retaliate/fae/dryad/Initialize()
 	. = ..()

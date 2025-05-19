@@ -59,8 +59,6 @@
 	damage_coeff = list(BRUTE = 0, BURN = 1.3)
 	retreat_distance = 0
 	minimum_distance = 0
-	//Shades are unintrested in the material world and have no foodtype list.
-	search_objects = FALSE
 	//Why wander when you know your fate.
 	wander = FALSE
 	base_constitution = 6
@@ -79,8 +77,8 @@
 	retreat_health = null
 	remains_type = null
 
-	can_have_ai = FALSE
-	AIStatus = AI_OFF
+
+
 	ai_controller = /datum/ai_controller/shade
 
 	/*

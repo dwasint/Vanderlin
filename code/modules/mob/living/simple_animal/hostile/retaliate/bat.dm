@@ -32,9 +32,9 @@
 	movement_type = FLYING
 	speak_emote = list("squeaks")
 
-	can_have_ai = FALSE //this is literally a shapeshift and ai can't actually use it
+ //this is literally a shapeshift and ai can't actually use it
 	ai_controller = /datum/ai_controller/bat
-	AIStatus = AI_OFF
+
 
 /mob/living/simple_animal/hostile/retaliate/bat/Initialize()
 	. = ..()

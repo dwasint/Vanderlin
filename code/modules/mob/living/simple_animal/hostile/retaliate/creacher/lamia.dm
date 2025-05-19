@@ -44,8 +44,8 @@
 	remains_type = null
 
 	ai_controller = /datum/ai_controller/lamia
-	AIStatus = AI_OFF
-	can_have_ai = FALSE
+
+
 
 /mob/living/simple_animal/hostile/retaliate/lamia/Initialize()
 	. = ..()

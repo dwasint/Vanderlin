@@ -116,9 +116,5 @@
 	new /obj/effect/temp_visual/dir_setting/wraith_phase_in(get_turf(dragger_pawn), dragger_pawn.dir)
 	playsound(get_turf(dragger_pawn), 'sound/magic/ethereal_enter.ogg', 50, TRUE)
 
-	var/mob/living/victim = controller.blackboard[BB_DRAGGER_VICTIM]
-	if(!QDELETED(victim))
-		dragger_pawn.GiveTarget(victim)
-
 	controller.blackboard[BB_DRAGGER_TELEPORT_COOLDOWN] = world.time + 10 SECONDS
 	finish_action(controller, TRUE)

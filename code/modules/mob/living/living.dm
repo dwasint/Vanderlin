@@ -1620,13 +1620,6 @@
 						//This isn't a problem for AIs with a client since the client will prevent this from being called anyway.
 						controller.set_ai_status(controller.get_expected_ai_status())
 
-				for (var/I in length(SSidlenpcpool.idle_mobs_by_zlevel[new_z]) to 1 step -1) //Backwards loop because we're removing (guarantees optimal rather than worst-case performance), it's fine to use .len here but doesn't compile on 511
-					var/mob/living/simple_animal/SA = SSidlenpcpool.idle_mobs_by_zlevel[new_z][I]
-					if (SA)
-						SA.toggle_ai(AI_ON) // Guarantees responsiveness for when appearing right next to mobs
-					else
-						SSidlenpcpool.idle_mobs_by_zlevel[new_z] -= SA
-
 			registered_z = new_z
 		else
 			registered_z = null
@@ -2278,8 +2271,6 @@
 	for(var/mob/living/simple_animal/hostile/retaliate/A in view(7,src))
 		if(A.owner == user)
 			A.emote("aggro")
-			A.Retaliate()
-			A.GiveTarget(src)
 	return
 
 /mob/proc/shood(mob/user)

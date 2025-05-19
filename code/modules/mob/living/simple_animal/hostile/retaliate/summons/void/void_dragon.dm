@@ -41,8 +41,8 @@
 	deathmessage = "collapses to the floor with a final roar, the impact rocking the ground."
 	footstep_type = FOOTSTEP_MOB_HEAVY
 
-	AIStatus = AI_OFF
-	can_have_ai = FALSE
+
+
 	ai_controller = /datum/ai_controller/voiddragon
 
 /mob/living/simple_animal/hostile/retaliate/voiddragon/Initialize()
@@ -202,7 +202,6 @@
 		return
 
 	playsound(loc, 'sound/vo/mobs/vdragon/drgnroar.ogg', 50, TRUE, -1)
-	stop_automated_movement = TRUE
 	controller.blackboard[BB_DRAGON_SWOOPING] |= SWOOP_DAMAGEABLE
 	movement_type = FLYING
 	density = FALSE

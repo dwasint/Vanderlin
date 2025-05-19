@@ -49,8 +49,8 @@
 	base_speed = 6
 
 	ai_controller = /datum/ai_controller/warden
-	can_have_ai = FALSE
-	AIStatus = AI_OFF
+
+
 
 /mob/living/simple_animal/hostile/retaliate/elemental/warden/Initialize()
 	. = ..()

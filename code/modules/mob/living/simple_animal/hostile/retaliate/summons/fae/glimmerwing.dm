@@ -46,8 +46,8 @@
 	aggressive = 1
 
 	ai_controller = /datum/ai_controller/glimmerwing
-	can_have_ai = FALSE
-	AIStatus = AI_OFF
+
+
 
 /mob/living/simple_animal/hostile/retaliate/fae/glimmerwing/Initialize()
 	. = ..()

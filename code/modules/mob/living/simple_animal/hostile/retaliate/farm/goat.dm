@@ -36,14 +36,6 @@
 			var/mutable_appearance/mounted = mutable_appearance(icon, "goat_mounted", 4.3)
 			add_overlay(mounted)
 
-/mob/living/simple_animal/hostile/retaliate/goat/UniqueAttack()
-	if(istype(target, /obj/structure/vine))
-		var/obj/structure/vine/SV = target
-		SV.eat(src)
-		food = max(food + 30, food_max + 50)
-		return
-	return ..()
-
 /mob/living/simple_animal/hostile/retaliate/goat
 	icon = 'icons/roguetown/mob/monster/gote.dmi'
 	name = "gote"
@@ -106,8 +98,8 @@
 	remains_type = /obj/effect/decal/remains/cow
 
 	ai_controller = /datum/ai_controller/gote
-	AIStatus = AI_OFF
-	can_have_ai = FALSE
+
+
 
 /mob/living/simple_animal/hostile/retaliate/goat/get_sound(input)
 	switch(input)
@@ -223,8 +215,8 @@
 	remains_type = /obj/effect/decal/remains/cow
 
 	ai_controller = /datum/ai_controller/gote
-	AIStatus = AI_OFF
-	can_have_ai = FALSE
+
+
 
 /mob/living/simple_animal/hostile/retaliate/goatmale/Initialize()
 	. = ..()
@@ -280,8 +272,6 @@
 
 /mob/living/simple_animal/hostile/retaliate/goatmale/taunted(mob/user)
 	emote("aggro")
-	Retaliate()
-	GiveTarget(user)
 	return
 
 /mob/living/simple_animal/hostile/retaliate/proc/eat_plant(obj/target)

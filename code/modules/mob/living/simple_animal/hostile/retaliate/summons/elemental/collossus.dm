@@ -51,8 +51,8 @@
 	base_speed = 3
 
 	ai_controller = /datum/ai_controller/collossus
-	can_have_ai = FALSE
-	AIStatus = AI_OFF
+
+
 
 
 /mob/living/simple_animal/hostile/retaliate/elemental/collossus/Initialize()

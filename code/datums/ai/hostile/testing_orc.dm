@@ -25,7 +25,9 @@
 
 	planning_subtrees = list(
 		/datum/ai_planning_subtree/aggro_find_target,
+		/datum/ai_planning_subtree/spacing/ranged,
 		/datum/ai_planning_subtree/basic_ranged_attack_subtree,
+		/datum/ai_planning_subtree/basic_melee_attack_subtree/opportunistic,
 	)
 
 	idle_behavior = /datum/idle_behavior/idle_random_walk

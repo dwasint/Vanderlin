@@ -54,8 +54,8 @@
 	body_eater = TRUE
 
 	ai_controller = /datum/ai_controller/bog_bug
-	AIStatus = AI_OFF
-	can_have_ai = FALSE
+
+
 
 /obj/effect/decal/remains/bogbug
 	name = "remains"
@@ -67,7 +67,7 @@
 	. = ..()
 	AddComponent(/datum/component/ai_aggro_system)
 	gender = MALE
-	ai_controller.set_blackboard_key(BB_BASIC_FOODS, food_type)
+
 
 /mob/living/simple_animal/hostile/retaliate/bogbug/death(gibbed)
 	..()
@@ -93,15 +93,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/bogbug/taunted(mob/user)
 	emote("aggro")
-	Retaliate()
-	GiveTarget(user)
 	return
-
-/mob/living/simple_animal/hostile/retaliate/bogbug/Life()
-	..()
-	if(pulledby)
-		Retaliate()
-		GiveTarget(pulledby)
 
 /mob/living/simple_animal/hostile/retaliate/bogbug/simple_limb_hit(zone)
 	if(!zone)

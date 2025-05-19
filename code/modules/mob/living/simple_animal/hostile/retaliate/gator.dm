@@ -53,7 +53,6 @@
 	deaggroprob = 0
 	defprob = 35
 	defdrain = 5
-	attack_same = FALSE
 	retreat_health = 0.2
 
 	aggressive = TRUE
@@ -62,8 +61,8 @@
 	can_buckle = TRUE
 
 	ai_controller = /datum/ai_controller/gator
-	AIStatus = AI_OFF
-	can_have_ai = FALSE
+
+
 
 	var/static/list/pet_commands = list(
 		/datum/pet_command/idle,
@@ -85,7 +84,7 @@
 	if(prob(33))
 		gender = FEMALE
 	update_icon()
-	ai_controller.set_blackboard_key(BB_BASIC_FOODS, food_type)
+
 
 /mob/living/simple_animal/hostile/retaliate/gator/tamed(mob/user)
 	. = ..()

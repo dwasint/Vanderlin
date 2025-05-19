@@ -36,8 +36,8 @@
 	aggressive = 1
 
 	ai_controller = /datum/ai_controller/polter
-	AIStatus = AI_OFF
-	can_have_ai = FALSE
+
+
 
 /mob/living/simple_animal/hostile/retaliate/poltergeist/Initialize()
 	. = ..()

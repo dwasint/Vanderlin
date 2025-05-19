@@ -75,5 +75,3 @@
 		return
 
 	controller.queue_behavior(/datum/ai_behavior/find_and_set/in_list/saiga, BB_BASIC_MOB_CURRENT_TARGET, controller.blackboard[BB_BASIC_FOODS], vision_range)
-
-

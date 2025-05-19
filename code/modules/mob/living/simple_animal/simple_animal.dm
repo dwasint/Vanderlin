@@ -36,13 +36,9 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	var/action_skip = FALSE
 
 	var/turns_per_move = 1
-	var/turns_since_move = 0
-	///Use this to temporarely stop random movement or to if you write special movement code for animals.
-	var/stop_automated_movement = 0
+
 	///Does the mob wander around when idle?
 	var/wander = 1
-	///When set to 1 this stops the animal from moving when someone is pulling it.
-	var/stop_automated_movement_when_pulled = 1
 
 	var/obj/item/handcuffed = null //Whether or not the mob is handcuffed
 	var/obj/item/legcuffed = null  //Same as handcuffs but for legs. Bear traps use this.
@@ -105,8 +101,6 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	var/animal_species
 	var/adult_growth
 	var/growth_prog = 0
-	var/breedcd = 5 MINUTES
-	var/breedchildren = 3
 
 	///Simple_animal access.
 	var/list/lock_hashes
@@ -126,22 +120,12 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	var/del_on_death = 0
 	var/deathmessage = ""
 
-	var/allow_movement_on_non_turfs = FALSE
-
 	///Played when someone punches the creature.
 	var/attacked_sound = "punch"
 
 	///If the creature has, and can use, hands.
 	var/dextrous = FALSE
 	var/dextrous_hud_type = /datum/hud/dextrous
-
-	///The Status of our AI, can be set to AI_ON (On, usual processing), AI_IDLE (Will not process, but will return to AI_ON if an enemy comes near), AI_OFF (Off, Not processing ever), AI_Z_OFF (Temporarily off due to nonpresence of players).
-	var/AIStatus = AI_ON
-	///once we have become sentient, we can never go back.
-	var/can_have_ai = TRUE
-
-	///convenience var for forcibly waking up an idling AI on next check.
-	var/shouldwakeup = FALSE
 
 	///Domestication.
 	var/tame = FALSE
@@ -181,11 +165,6 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 
 /mob/living/simple_animal/Initialize()
 	. = ..()
-	if(!(AIStatus in GLOB.simple_animals))
-		GLOB.simple_animals |= "[AIStatus]"
-		GLOB.simple_animals["[AIStatus]"] = list()
-
-	GLOB.simple_animals["[AIStatus]"] += src
 	if(gender == PLURAL)
 		gender = pick(MALE,FEMALE)
 	if(!real_name)
@@ -195,14 +174,11 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	update_simplemob_varspeed()
 	if(milk_reagent)
 		udder = new(src, milk_reagent)
-//	if(dextrous)
-//		AddComponent(/datum/component/personal_crafting)
+	if(!length(ai_controller.blackboard[BB_BASIC_FOODS]))
+		ai_controller.set_blackboard_key(BB_BASIC_FOODS, typecacheof(food_type))
+
 
 /mob/living/simple_animal/Destroy()
-	GLOB.simple_animals["[AIStatus]"] -= src
-	if (SSnpcpool.state == SS_PAUSED && LAZYLEN(SSnpcpool.currentrun))
-		SSnpcpool.currentrun -= src
-
 	if(nest)
 		nest.spawned_mobs -= src
 		nest = null
@@ -210,10 +186,6 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	if(ssaddle)
 		QDEL_NULL(ssaddle)
 		ssaddle = null
-
-	var/turf/T = get_turf(src)
-	if (T && AIStatus == AI_Z_OFF)
-		SSidlenpcpool.idle_mobs_by_zlevel[T.z] -= src
 
 	qdel(udder)
 	udder = null
@@ -278,7 +250,6 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		if(!commands)
 			AddComponent(/datum/component/obeys_commands, pet_commands)
 
-	stop_automated_movement_when_pulled = TRUE
 	if(user)
 		owner = user
 	return
@@ -346,29 +317,6 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	..()
 	if(stuttering)
 		stuttering = 0
-
-/mob/living/simple_animal/proc/handle_automated_action()
-	set waitfor = FALSE
-	return
-
-/mob/living/simple_animal/proc/handle_automated_movement()
-	set waitfor = FALSE
-	if(binded)
-		return
-	if(ai_controller)
-		return
-	if(!stop_automated_movement && wander && !doing())
-		if(ssaddle && has_buckled_mobs())
-			return 0
-		if((isturf(loc) || allow_movement_on_non_turfs) && !HAS_TRAIT(src, TRAIT_IMMOBILIZED))		//This is so it only moves if it's not inside a closet, gentics machine, etc.
-			turns_since_move++
-			if(turns_since_move >= turns_per_move)
-				if(!(stop_automated_movement_when_pulled && pulledby)) //Some animals don't move when pulled
-					var/anydir = pick(GLOB.cardinals)
-					if(Process_Spacemove(anydir))
-						Move(get_step(src, anydir), anydir)
-						turns_since_move = 0
-			return 1
 
 /mob/living/simple_animal/proc/handle_automated_speech(override)
 	set waitfor = FALSE
@@ -547,19 +495,6 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		..()
 		// SEND_SIGNAL(src, COMSIG_MOB_STATCHANGE, DEAD)
 
-/mob/living/simple_animal/proc/CanAttack(atom/the_target)
-	if(see_invisible < the_target.invisibility)
-		return FALSE
-	if(ismob(the_target))
-		var/mob/M = the_target
-		if(M.status_flags & GODMODE)
-			return FALSE
-	if (isliving(the_target))
-		var/mob/living/L = the_target
-		if(L.stat == DEAD)
-			return FALSE
-	return TRUE
-
 /mob/living/simple_animal/handle_fire()
 	. = ..()
 	if(!on_fire)
@@ -569,12 +504,6 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		if(fire_stacks + divine_fire_stacks > 5)
 			apply_damage(10, BURN)
 
-//mob/living/simple_animal/IgniteMob()
-//	return FALSE
-
-///mob/living/simple_animal/ExtinguishMob()
-//	return
-
 /mob/living/simple_animal/revive(full_heal = FALSE, admin_revive = FALSE)
 	. = ..()
 	if(!.)
@@ -583,49 +512,6 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	icon_state = icon_living
 	density = initial(density)
 	setMovetype(initial(movement_type))
-
-/mob/living/simple_animal/proc/make_babies() // <3 <3 <3
-	if(gender != FEMALE || stat || next_scan_time > world.time || !childtype || !animal_species || !SSticker.IsRoundInProgress())
-		return
-	if(GLOB.farm_animals >= MAX_FARM_ANIMALS)
-		return
-	if(food < 10)
-		return
-	if(next_scan_time == 0)
-		next_scan_time = world.time + breedcd
-		return
-	if(breedchildren <= 0)
-		childtype = null //we no longer can br33d bro
-		return
-	next_scan_time = world.time + breedcd
-	var/alone = TRUE
-	var/children = 0
-	var/mob/living/simple_animal/partner
-	for(var/mob/M in view(7, src))
-		if(M.stat != CONSCIOUS) //Check if it's conscious FIRST.
-			continue
-		else if(istype(M, childtype)) //Check for children SECOND.
-			children++
-		else if(istype(M, animal_species))
-			if(M.ckey)
-				continue
-			else if(!istype(M, childtype) && M.gender == MALE && !(M.flags_1 & HOLOGRAM_1)) //Better safe than sorry ;_;
-				partner = M
-				testing("[src] foudnpartner [M]")
-
-//		else if(isliving(M) && !faction_check_mob(M)) //shyness check. we're not shy in front of things that share a faction with us.
-//			testing("[src] wenotalon [M]")
-//			return //we never mate when not alone, so just abort early
-
-	if(alone && partner && children < 3)
-		var/childspawn = pickweight(childtype)
-		var/turf/target = get_turf(loc)
-		if(target)
-			GLOB.vanderlin_round_stats[STATS_ANIMALS_BRED]++
-			return new childspawn(target)
-//			visible_message("<span class='warning'>[src] finally gives birth.</span>")
-//			playsound(src, 'sound/foley/gross.ogg', 100, FALSE)
-//			breedchildren--
 
 /mob/living/simple_animal/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE)
 	if(incapacitated(ignore_grab = TRUE))
@@ -669,10 +555,6 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 
 	if(changed)
 		animate(src, transform = ntransform, time = 2, easing = EASE_IN|EASE_OUT)
-
-/mob/living/simple_animal/proc/sentience_act() //Called when a simple animal gains sentience via gold slime potion
-	toggle_ai(AI_OFF) // To prevent any weirdness.
-	can_have_ai = FALSE
 
 /mob/living/simple_animal/update_sight()
 	if(!client)
@@ -861,48 +743,6 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 /mob/living/simple_animal/buckle_mob(mob/living/buckled_mob, force = 0, check_loc = 1)
 	. = ..()
 	LoadComponent(/datum/component/riding)
-
-/mob/living/simple_animal/proc/toggle_ai(togglestatus)
-	if(!can_have_ai && (togglestatus != AI_OFF))
-		return
-	if (AIStatus != togglestatus)
-		if (togglestatus > 0 && togglestatus < 5)
-			if (togglestatus == AI_Z_OFF || AIStatus == AI_Z_OFF)
-				var/turf/T = get_turf(src)
-				if (AIStatus == AI_Z_OFF)
-					SSidlenpcpool.idle_mobs_by_zlevel[T.z] -= src
-				else
-					SSidlenpcpool.idle_mobs_by_zlevel[T.z] += src
-			GLOB.simple_animals["[AIStatus]"] -= src
-			if(!(togglestatus in GLOB.simple_animals))
-				GLOB.simple_animals["[togglestatus]"] = list()
-			GLOB.simple_animals["[togglestatus]"] += src
-			AIStatus = togglestatus
-		else
-			stack_trace("Something attempted to set simple animals AI to an invalid state: [togglestatus]")
-
-/mob/living/simple_animal/proc/consider_wakeup()
-	if (pulledby || shouldwakeup)
-		toggle_ai(AI_ON)
-
-/mob/living/simple_animal/adjustHealth(amount, updating_health = TRUE, forced = FALSE)
-	. = ..()
-	if(!ckey && !stat)//Not unconscious
-		if(AIStatus == AI_IDLE)
-			toggle_ai(AI_ON)
-
-
-/mob/living/simple_animal/onTransitZ(old_z, new_z)
-	..()
-	if (AIStatus == AI_Z_OFF)
-		SSidlenpcpool.idle_mobs_by_zlevel[old_z] -= src
-		toggle_ai(initial(AIStatus))
-
-/mob/living/simple_animal/proc/eat_plants()
-	var/obj/item/reagent_containers/food/I = locate(/obj/item/reagent_containers/food) in loc
-	if(is_type_in_list(I, food_type))
-		qdel(I)
-		food = max(food + 30, 100)
 
 /mob/living/simple_animal/Life()
 	. = ..()

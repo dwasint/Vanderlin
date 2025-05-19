@@ -30,8 +30,8 @@
 	gold_core_spawnable = HOSTILE_SPAWN
 
 	ai_controller = /datum/ai_controller/frog
-	AIStatus = AI_OFF
-	can_have_ai = FALSE
+
+
 
 	var/stepped_sound = 'sound/blank.ogg'
 

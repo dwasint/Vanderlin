@@ -39,8 +39,8 @@
 	footstep_type = FOOTSTEP_MOB_BAREFOOT
 	del_on_death = TRUE
 
-	can_have_ai = FALSE //disable native ai
-	AIStatus = AI_OFF
+ //disable native ai
+
 	ai_controller = /datum/ai_controller/orc
 
 /mob/living/simple_animal/hostile/orc/Initialize()
@@ -135,7 +135,6 @@
 
 /mob/living/simple_animal/hostile/orc/taunted(mob/user)
 	emote("aggro")
-	GiveTarget(user)
 	return
 
 /mob/living/simple_animal/hostile/orc/simple_limb_hit(zone)
@@ -206,7 +205,6 @@
 	retreat_distance = 2
 	minimum_distance = 5
 	ranged_cooldown_time = 60
-	check_friendly_fire = 1
 	loot = list(/obj/effect/mob_spawn/human/orc/corpse/savageorc2,
 			/obj/item/gun/ballistic/revolver/grenadelauncher/bow,
 			/obj/item/ammo_casing/caseless/arrow = 3,
@@ -214,6 +212,6 @@
 	maxHealth = 100
 	health = 100
 
-	can_have_ai = FALSE //disable native ai
-	AIStatus = AI_OFF
+ //disable native ai
+
 	ai_controller = /datum/ai_controller/orc_ranged

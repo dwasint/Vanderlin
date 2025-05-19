@@ -51,8 +51,8 @@
 	ranged_message = "stares"
 
 	ai_controller = /datum/ai_controller/watcher
-	can_have_ai = FALSE
-	AIStatus = AI_OFF
+
+
 
 /mob/living/simple_animal/hostile/retaliate/infernal/watcher/Initialize()
 	. = ..()
