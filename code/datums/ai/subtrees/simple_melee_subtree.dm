@@ -35,21 +35,6 @@
 /datum/ai_planning_subtree/basic_melee_attack_subtree/mimic
 	melee_attack_behavior = /datum/ai_behavior/basic_melee_attack/mimic
 
-
-/datum/ai_planning_subtree/basic_hybrid_attack
-	var/datum/ai_behavior/basic_hybrid_attack/melee_attack_behavior = /datum/ai_behavior/basic_hybrid_attack
-	/// Is this the last thing we do? (if we set a movement target, this will usually be yes)
-	var/end_planning = TRUE
-
-/datum/ai_planning_subtree/basic_hybrid_attack/SelectBehaviors(datum/ai_controller/controller, delta_time)
-	. = ..()
-	var/atom/target = controller.blackboard[BB_BASIC_MOB_CURRENT_TARGET]
-	if(QDELETED(target))
-		return
-	controller.queue_behavior(melee_attack_behavior, BB_BASIC_MOB_CURRENT_TARGET, BB_TARGETTING_DATUM, BB_BASIC_MOB_CURRENT_TARGET_HIDING_LOCATION)
-	if (end_planning)
-		return SUBTREE_RETURN_FINISH_PLANNING //we are going into battle...no distractions.
-
 /datum/ai_planning_subtree/basic_melee_attack_subtree/gator_attack
 	melee_attack_behavior = /datum/ai_behavior/basic_melee_attack/gator_attack
 

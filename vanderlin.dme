@@ -584,6 +584,7 @@
 #include "code\datums\ai\controllers\void_dragon.dm"
 #include "code\datums\ai\controllers\void_obelisk.dm"
 #include "code\datums\ai\controllers\volf.dm"
+#include "code\datums\ai\controllers\watcher.dm"
 #include "code\datums\ai\controllers\zizoid.dm"
 #include "code\datums\ai\controllers\zombie.dm"
 #include "code\datums\ai\controllers\basic_controllers\chicken.dm"
