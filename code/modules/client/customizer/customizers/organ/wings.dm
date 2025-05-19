@@ -161,6 +161,8 @@
 		if(user.get_encumbrance() > 0.7)
 			to_chat(user, span_warning("I am too heavy to fly."))
 			stop_flying(user)
+			return
+
 		if(!user.adjust_stamina(-3))
 			to_chat(user, span_warning("You're too exhausted to keep flying!"))
 			stop_flying(user)
@@ -176,7 +178,7 @@
 				shadow.forceMove(below_turf)
 		else
 			var/turf/below_turf = GET_TURF_BELOW(get_turf(user))
-			if(below_turf)
+			if(below_turf && istransparentturf(get_turf(user)))
 				shadow = new /obj/effect/flyer_shadow(below_turf)
 				shadow.flying_mob = user
 				shadow.flight_spell = src
