@@ -54,6 +54,8 @@
 
 	ai_controller = /datum/ai_controller/cat
 
+	var/obj/item/held_item
+
 /mob/living/simple_animal/pet/cat/Initialize()
 	. = ..()
 	AddElement(/datum/element/ai_retaliate)
@@ -66,6 +68,9 @@
 			CALLBACK(src, PROC_REF(after_birth)),\
 		)
 
+/mob/living/simple_animal/pet/cat/proc/drop_held_item()
+	held_item.forceMove(get_turf(src))
+	held_item = null
 
 /mob/living/simple_animal/pet/cat/Crossed(mob/living/L) // Gato Basado - makes it leave when people step too close
 	. = ..()

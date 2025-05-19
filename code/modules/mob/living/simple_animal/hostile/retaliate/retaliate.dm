@@ -201,14 +201,8 @@
 	if(!src.CanReach(A))
 		return
 
-	if(!should_eat(A))
-		return
-
 	face_atom(A)
 	playsound(src,'sound/misc/eat.ogg', rand(30,60), TRUE)
 	qdel(A)
 	food = min(food + 30, food_max)
-	return TRUE
-
-/mob/living/simple_animal/proc/should_eat(atom/A)
 	return TRUE
