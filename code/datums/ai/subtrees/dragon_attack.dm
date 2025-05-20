@@ -167,5 +167,5 @@
 			dragon.phase_shift()
 			controller.set_blackboard_key(BB_DRAGON_PHASE_COOLDOWN, world.time + 90 SECONDS)
 
-	controller.set_blackboard_key(BB_DRAGON_SPECIAL_COOLDOWN, world.time + 15 SECONDS)
+	controller.set_blackboard_key(BB_DRAGON_SPECIAL_COOLDOWN, world.time + 5 SECONDS)
 	finish_action(controller, TRUE)
