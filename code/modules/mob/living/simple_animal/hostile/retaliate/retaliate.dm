@@ -127,6 +127,8 @@
 	if(tame)
 		tamed(owner)
 	ADD_TRAIT(src, TRAIT_SIMPLE_WOUNDS, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_NOPAIN, TRAIT_GENERIC) //this causes too many mob issues
+	ADD_TRAIT(src, TRAIT_NOPAINSTUN, TRAIT_GENERIC) //this causes too many mob issues
 
 /mob/living/simple_animal/hostile/retaliate/tamed(mob/user)
 	. = ..()

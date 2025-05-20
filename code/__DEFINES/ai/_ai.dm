@@ -214,3 +214,11 @@ F
 #define BB_CAT_KITTEN_TARGET "BB_cat_kitten_target"
 #define BB_CAT_HOLDING_FOOD "BB_cat_holding_food"
 #define BB_KITTEN_FOOD_TARGET "BB_kitten_food_target"
+
+#define BB_MINOTAUR_RAGE_METER "minotaur_rage"
+#define BB_MINOTAUR_SLAM_COOLDOWN "minotaur_slam"
+#define BB_MINOTAUR_PHASE "minotaur_phase"
+#define BB_MINOTAUR_CHARGE_COOLDOWN "minotaur_charge"
+#define BB_MINOTAUR_FURY_COOLDOWN "minotaur_fury"
+#define BB_MINOTAUR_LAST_SPECIAL_ATTACK "minotaur_last_special"
+#define BB_MINOTAUR_ENRAGE_BONUS "minotaur_enrage"
