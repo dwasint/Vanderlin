@@ -75,9 +75,11 @@
 		return FALSE
 
 	pollinating = TRUE
-	addtimer(CALLBACK(src, PROC_REF(finish_pollinating)), 30 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(finish_pollinating), turf), 30 SECONDS)
 
-/obj/effect/bees/proc/finish_pollinating()
+/obj/effect/bees/proc/finish_pollinating(turf/turf)
+	var/obj/structure/soil/soil = locate(/obj/structure/soil) in turf
+	soil?.pollination_time = 5 MINUTES
 	pollinating = FALSE
 	last_pollinated = get_turf(src)
 	stored_pollen += rand(1, 2) * bee_count
@@ -87,6 +89,9 @@
 
 /obj/effect/bees/proc/return_to_hive()
 	target = hive
+
+/obj/structure/apiary/starter
+	bee_count = 5
 
 /obj/structure/apiary
 	name = "apiary"
