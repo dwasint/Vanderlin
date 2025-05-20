@@ -42,60 +42,110 @@
 
 	return SUBTREE_RETURN_FINISH_PLANNING
 
-
 /datum/ai_planning_subtree/dragon_attack_subtree/proc/choose_attack(datum/ai_controller/controller, health_percentage, enraged)
+	var/mob/living/simple_animal/hostile/retaliate/voiddragon/dragon = controller.pawn
+	var/atom/target = controller.blackboard[BB_BASIC_MOB_CURRENT_TARGET]
 	var/list/possible_attacks = list()
-	if(world.time >= controller.blackboard[BB_DRAGON_CL_COOLDOWN])
-		possible_attacks += DRAGON_ATTACK_LIGHTNING_BREATH
-	possible_attacks += DRAGON_ATTACK_SLAM
-	if(health_percentage <= 0.75)
-		possible_attacks += DRAGON_ATTACK_LAVA_SWOOP
+	var/list/priority_attacks = list()
 
-	if(health_percentage <= 0.75 && world.time >= controller.blackboard[BB_DRAGON_SUMMON_COOLDOWN])
-		possible_attacks += DRAGON_ATTACK_SUMMON_OBELISK
+	// Get distance to target for range-based decision making
+	var/distance_to_target = get_dist(dragon, target)
 
+	// Track if target is in melee range
+	var/target_in_melee = distance_to_target <= 1
+
+	// Always available attacks (if not on cooldown)
 	if(world.time >= controller.blackboard[BB_DRAGON_LIGHTNING_COOLDOWN])
 		possible_attacks += DRAGON_ATTACK_SUNDERING_LIGHTNING
 
-	// Add new attacks based on health thresholds
+	if(world.time >= controller.blackboard[BB_DRAGON_CL_COOLDOWN])
+		possible_attacks += DRAGON_ATTACK_LIGHTNING_BREATH
+
+	possible_attacks += DRAGON_ATTACK_SLAM
+
+	// Phase 1 attacks (75% health and below)
+	if(health_percentage <= 0.75)
+		if(world.time >= controller.blackboard[BB_DRAGON_SUMMON_COOLDOWN])
+			possible_attacks += DRAGON_ATTACK_SUMMON_OBELISK
+
+		possible_attacks += DRAGON_ATTACK_LAVA_SWOOP
+		// Prioritize swoop when target is far away
+		if(distance_to_target > 5)
+			priority_attacks += DRAGON_ATTACK_LAVA_SWOOP
+
+	// Phase 2 attacks (50% health and below)
 	if(health_percentage <= 0.9 && world.time >= controller.blackboard[BB_DRAGON_WING_COOLDOWN])
 		possible_attacks += DRAGON_ATTACK_WING_GUST
+		// Prioritize wing gust when surrounded or target is in melee range
+		if(target_in_melee)
+			priority_attacks += DRAGON_ATTACK_WING_GUST
 
 	if(health_percentage <= 0.6 && world.time >= controller.blackboard[BB_DRAGON_VOID_COOLDOWN])
 		possible_attacks += DRAGON_ATTACK_VOID_PULL
+		// Prioritize void pull when target is at medium range
+		if(distance_to_target >= 3)
+			priority_attacks += DRAGON_ATTACK_VOID_PULL
 
+	// Phase 3 attacks (50% health and below)
 	if(health_percentage <= 0.5 && world.time >= controller.blackboard[BB_DRAGON_CLONE_COOLDOWN])
 		possible_attacks += DRAGON_ATTACK_SHADOW_CLONE
+		// Prioritize shadow clone when health is low for distraction
+		if(health_percentage <= 0.35)
+			priority_attacks += DRAGON_ATTACK_SHADOW_CLONE
 
+	// Phase 4 attacks (30% health and below)
 	if(health_percentage <= 0.3 && world.time >= controller.blackboard[BB_DRAGON_EXPLOSION_COOLDOWN])
 		possible_attacks += DRAGON_ATTACK_VOID_EXPLOSION
+		// Always prioritize void explosion when available at low health
+		priority_attacks += DRAGON_ATTACK_VOID_EXPLOSION
 
+	// Final phase attack (25% health and below)
 	if(health_percentage <= 0.25 && world.time >= controller.blackboard[BB_DRAGON_PHASE_COOLDOWN])
 		possible_attacks += DRAGON_ATTACK_PHASE_SHIFT
+		// Always prioritize phase shift when available
+		priority_attacks += DRAGON_ATTACK_PHASE_SHIFT
 
 	// If no attacks are available, default to slam
 	if(!length(possible_attacks))
 		return DRAGON_ATTACK_SLAM
 
-	var/attack_choice = pick(possible_attacks)
-
-	if(enraged && prob(60))
-		// Add new options for enraged state
-		var/list/enraged_priority = list()
-		if(DRAGON_ATTACK_LAVA_SWOOP in possible_attacks)
-			enraged_priority += DRAGON_ATTACK_LAVA_SWOOP
+	// Enrage mode handling - more aggressive decision making
+	if(enraged)
+		// Add high-damage attacks to priority when enraged
 		if(DRAGON_ATTACK_LIGHTNING_BREATH in possible_attacks)
-			enraged_priority += DRAGON_ATTACK_LIGHTNING_BREATH
+			priority_attacks += DRAGON_ATTACK_LIGHTNING_BREATH
 		if(DRAGON_ATTACK_VOID_EXPLOSION in possible_attacks)
-			enraged_priority += DRAGON_ATTACK_VOID_EXPLOSION
+			priority_attacks += DRAGON_ATTACK_VOID_EXPLOSION
 		if(DRAGON_ATTACK_PHASE_SHIFT in possible_attacks)
-			enraged_priority += DRAGON_ATTACK_PHASE_SHIFT
+			priority_attacks += DRAGON_ATTACK_PHASE_SHIFT
 
-		if(length(enraged_priority))
-			attack_choice = pick(enraged_priority)
+		// When enraged, if low health, prioritize defensive abilities
+		if(health_percentage <= 0.3)
+			if(DRAGON_ATTACK_WING_GUST in possible_attacks && target_in_melee)
+				priority_attacks += DRAGON_ATTACK_WING_GUST
+			if(DRAGON_ATTACK_SHADOW_CLONE in possible_attacks)
+				priority_attacks += DRAGON_ATTACK_SHADOW_CLONE
+
+		// When enraged, if at range, prioritize gap closers
+		if(distance_to_target > 3)
+			if(DRAGON_ATTACK_LAVA_SWOOP in possible_attacks)
+				priority_attacks += DRAGON_ATTACK_LAVA_SWOOP
+			if(DRAGON_ATTACK_VOID_PULL in possible_attacks)
+				priority_attacks += DRAGON_ATTACK_VOID_PULL
+
+	// Make the final attack selection
+	var/attack_choice
+
+	// If we have priority attacks available, use those with high probability
+	if(length(priority_attacks))
+		if(prob(75)) // 75% chance to use a priority attack when available
+			attack_choice = pick(priority_attacks)
+		else // 25% chance to use any possible attack for variety
+			attack_choice = pick(possible_attacks)
+	else
+		attack_choice = pick(possible_attacks)
 
 	return attack_choice
-
 
 /datum/ai_behavior/dragon_attack
 	action_cooldown = 2 SECONDS
