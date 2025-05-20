@@ -49,6 +49,7 @@
 	base_speed = 3
 	base_constitution = 3
 	gold_core_spawnable = FRIENDLY_SPAWN
+	tame_chance = 25
 
 	footstep_type = FOOTSTEP_MOB_CLAW
 
