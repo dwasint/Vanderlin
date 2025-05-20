@@ -648,7 +648,7 @@ All foods are distributed among various categories. Use common sense.
 			if(bitecount == 0 || prob(50))
 				M.emote("me", 1, "nibbles away at \the [src]")
 			bitecount++
-			cat.food = min(cat.food + 30, cat.food_max)
+			L.food = min(L.food + 30, L.food_max)
 			L.taste(reagents) // why should carbons get all the fun?
 			if(bitecount >= 5)
 				var/sattisfaction_text = pick("burps from enjoyment", "meows for more", "looks at the area where \the [src] was")
