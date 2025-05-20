@@ -69,9 +69,9 @@
 	return
 
 /mob/living/simple_animal/hostile/AttackingTarget(mob/living/passed_target)
-	if(SEND_SIGNAL(src, COMSIG_HOSTILE_PRE_ATTACKINGTARGET, target) & COMPONENT_HOSTILE_NO_PREATTACK)
+	if(SEND_SIGNAL(src, COMSIG_HOSTILE_PRE_ATTACKINGTARGET, passed_target) & COMPONENT_HOSTILE_NO_PREATTACK)
 		return FALSE //but more importantly return before attack_animal called
-	SEND_SIGNAL(src, COMSIG_HOSTILE_ATTACKINGTARGET, target)
+	SEND_SIGNAL(src, COMSIG_HOSTILE_ATTACKINGTARGET, passed_target)
 	var/mob/living/actual_target = passed_target
 	if(!actual_target)
 		actual_target = target
