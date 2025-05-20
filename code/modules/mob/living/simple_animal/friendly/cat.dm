@@ -58,6 +58,8 @@
 
 /mob/living/simple_animal/pet/cat/Initialize()
 	. = ..()
+	if(prob(50))
+		gender = FEMALE
 	AddElement(/datum/element/ai_retaliate)
 	verbs += /mob/living/proc/lay_down
 	AddComponent(\
