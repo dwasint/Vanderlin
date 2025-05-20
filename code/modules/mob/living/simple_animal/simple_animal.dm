@@ -696,6 +696,47 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 /mob/living/simple_animal/hostile
 	var/do_footstep = FALSE
 
+/mob/living/simple_animal/hostile/RangedAttack(atom/A, params) //Player firing
+	if(ranged && ranged_cooldown <= world.time)
+		target = A
+		OpenFire(A)
+	..()
+
+/mob/living/simple_animal/hostile/proc/OpenFire(atom/A)
+	visible_message("<span class='danger'><b>[src]</b> [ranged_message] at [A]!</span>")
+
+
+	if(rapid > 1)
+		var/datum/callback/cb = CALLBACK(src, PROC_REF(Shoot), A)
+		for(var/i in 1 to rapid)
+			addtimer(cb, (i - 1)*rapid_fire_delay)
+	else
+		Shoot(A)
+	ranged_cooldown = world.time + ranged_cooldown_time
+
+/mob/living/proc/Shoot(atom/targeted_atom)
+
+/mob/living/simple_animal/hostile/Shoot(atom/targeted_atom)
+	if( QDELETED(targeted_atom) || targeted_atom == targets_from.loc || targeted_atom == targets_from )
+		return
+	var/turf/startloc = get_turf(targets_from)
+	if(casingtype)
+		var/obj/item/ammo_casing/casing = new casingtype(startloc)
+		playsound(src, projectilesound, 100, TRUE)
+		casing.fire_casing(targeted_atom, src, null, null, null, ran_zone(), 0,  src)
+	else if(projectiletype)
+		var/obj/projectile/P = new projectiletype(startloc)
+		playsound(src, projectilesound, 100, TRUE)
+		P.starting = startloc
+		P.firer = src
+		P.fired_from = src
+		P.yo = targeted_atom.y - startloc.y
+		P.xo = targeted_atom.x - startloc.x
+		P.original = targeted_atom
+		P.preparePixelProjectile(targeted_atom, src)
+		P.fire()
+		return P
+
 /mob/living/simple_animal/hostile/relaymove(mob/user, direction)
 	if (stat == DEAD)
 		return

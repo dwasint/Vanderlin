@@ -10,8 +10,8 @@
 		/datum/ai_planning_subtree/pet_planning,
 		/datum/ai_planning_subtree/flee_target,
 		/datum/ai_planning_subtree/aggro_find_target,
+		/datum/ai_planning_subtree/basic_melee_attack_subtree/opportunistic,
 		/datum/ai_planning_subtree/basic_ranged_attack_subtree,
 		/datum/ai_planning_subtree/sylph_special_abilities,
-		/datum/ai_planning_subtree/basic_melee_attack_subtree/opportunistic
 	)
 	idle_behavior = /datum/idle_behavior/idle_random_walk
