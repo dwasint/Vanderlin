@@ -84,6 +84,14 @@
 	tastes = list("off-putting" = 2)
 	biting = TRUE
 
+/mob/living/simple_animal/hostile/retaliate/trufflepig/female
+	gender = FEMALE
+	random_gender = FALSE
+
+/mob/living/simple_animal/hostile/retaliate/trufflepig/male
+	gender = MALE
+	random_gender = FALSE
+
 //	........   Truffle Pig   ................
 /mob/living/simple_animal/hostile/retaliate/trufflepig
 	icon = 'icons/roguetown/mob/monster/piggie.dmi'
@@ -115,7 +123,12 @@
 
 	health = FEMALE_GOTE_HEALTH
 	maxHealth = FEMALE_GOTE_HEALTH
-	food_type = list(/obj/item/reagent_containers/food/snacks/truffles)
+	food_type = list(
+		/obj/item/reagent_containers/food/snacks/truffles,
+		/obj/item/trash/applecore,
+		/obj/item/reagent_containers/food/snacks/badrecipe,
+		/obj/item/reagent_containers/food/snacks/produce,
+		)
 	pooptype = /obj/item/natural/poo/horse
 	remains_type = /obj/effect/decal/remains/pig
 	tame = TRUE
@@ -132,6 +145,8 @@
 	can_buckle = TRUE
 	buckle_lying = FALSE
 	can_saddle = TRUE
+
+	childtype = list(/mob/living/simple_animal/hostile/retaliate/trufflepig/piglet = 90, /mob/living/simple_animal/hostile/retaliate/trufflepig/piglet/boy = 10)
 
 	ai_controller = /datum/ai_controller/pig
 
@@ -152,10 +167,29 @@
 		)
 
 	var/hangry_meter = 0
+	var/random_gender = TRUE
+	var/can_breed = TRUE
+
 
 /mob/living/simple_animal/hostile/retaliate/trufflepig/Initialize()
+	if(random_gender)
+		if(prob(50))
+			gender = FEMALE
 	AddComponent(/datum/component/obeys_commands, pet_commands)
 	. = ..()
+
+	if(can_breed)
+		AddComponent(\
+			/datum/component/breed,\
+			list(/mob/living/simple_animal/hostile/retaliate/trufflepig, /mob/living/simple_animal/hostile/retaliate/trufflepig/male, /mob/living/simple_animal/hostile/retaliate/trufflepig/female),\
+			3 MINUTES,
+			list(/mob/living/simple_animal/hostile/retaliate/trufflepig/piglet = 90, /mob/living/simple_animal/hostile/retaliate/trufflepig/piglet/boy = 10),\
+			CALLBACK(src, PROC_REF(after_birth)),\
+		)
+
+/mob/living/simple_animal/hostile/retaliate/trufflepig/proc/after_birth(mob/living/simple_animal/hostile/retaliate/cow/cowlet/baby, mob/living/partner)
+	return
+
 
 /mob/living/simple_animal/hostile/retaliate/trufflepig/get_sound(input)
 	switch(input)
@@ -263,3 +297,20 @@
 	duration = 35
 	pixel_x = -224
 	pixel_y = -224
+
+/mob/living/simple_animal/hostile/retaliate/trufflepig/piglet/boy
+	adult_growth = /mob/living/simple_animal/hostile/retaliate/trufflepig/male
+	gender = MALE
+
+/mob/living/simple_animal/hostile/retaliate/trufflepig/piglet
+	gender = FEMALE
+	name = "truffle piglet"
+	adult_growth = /mob/living/simple_animal/hostile/retaliate/trufflepig/female
+	can_breed = FALSE
+	random_gender = FALSE
+
+/mob/living/simple_animal/hostile/retaliate/trufflepig/piglet/Initialize()
+	. = ..()
+	var/matrix/matrix = matrix()
+	matrix.Scale(0.75, 0.75)
+	transform = matrix

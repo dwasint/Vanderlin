@@ -6,6 +6,18 @@
 	if(tame)
 		tamed(owner)
 
+	if(can_breed)
+		AddComponent(\
+			/datum/component/breed,\
+			list(/mob/living/simple_animal/hostile/retaliate/goat, /mob/living/simple_animal/hostile/retaliate/goatmale),\
+			3 MINUTES,
+			list(/mob/living/simple_animal/hostile/retaliate/goat/goatlet = 90, /mob/living/simple_animal/hostile/retaliate/goat/goatlet/boy = 10),\
+			CALLBACK(src, PROC_REF(after_birth)),\
+		)
+
+/mob/living/simple_animal/hostile/retaliate/goat/proc/after_birth(mob/living/simple_animal/hostile/retaliate/cow/cowlet/baby, mob/living/partner)
+	return
+
 /mob/living/simple_animal/hostile/retaliate/goat/Destroy()
 	..()
 	GLOB.farm_animals = max(GLOB.farm_animals - 1, 0)
@@ -98,6 +110,8 @@
 	remains_type = /obj/effect/decal/remains/cow
 
 	ai_controller = /datum/ai_controller/gote
+
+	var/can_breed = TRUE
 
 
 
@@ -356,6 +370,7 @@
 
 	adult_growth = /mob/living/simple_animal/hostile/retaliate/goat
 	can_buckle = FALSE
+	can_breed = FALSE
 
 
 
