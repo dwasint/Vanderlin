@@ -44,9 +44,10 @@
 		/datum/ai_planning_subtree/pet_planning,
 		/datum/ai_planning_subtree/simple_find_nearest_target_to_flee,
 		/datum/ai_planning_subtree/flee_target,
+		/datum/ai_planning_subtree/detect_vampire_or_race,
 		/datum/ai_planning_subtree/beg_human,
 		/datum/ai_planning_subtree/find_food/rat,
 		/datum/ai_planning_subtree/basic_melee_attack_subtree/cat,
-		/datum/ai_planning_subtree/look_for_adult,
+		/datum/ai_planning_subtree/look_for_adult/kitten,
 	)
 	idle_behavior = /datum/idle_behavior/idle_random_walk
