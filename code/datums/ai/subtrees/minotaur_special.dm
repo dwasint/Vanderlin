@@ -79,10 +79,10 @@
 	var/distance = get_dist(start_turf, target_turf)
 
 	var/charge_distance = min(distance + 2, 15)
-	var/charge_speed = 2 // How many tiles per step
+	var/charge_speed = 1 // How many tiles per step
 
 	var/obj/effect/temp_visual/decoy/fading/D = new(start_turf, boss)
-	D.dir = boss.dir
+	D.dir = direction
 
 	boss.setDir(direction)
 	boss.visible_message("<span class='danger'>[boss] charges forward!</span>")
@@ -93,10 +93,21 @@
 			break
 
 		var/turf/next_turf = get_step(boss, direction)
-		for(var/j in 1 to charge_speed)
-			next_turf = get_step(next_turf, direction)
+		if(isclosedturf(next_turf))
+			if(next_turf.density)
+				break
 
-		new /obj/effect/temp_visual/minotaur_charge(get_turf(boss))
+		var/break_early
+		for(var/obj/structure/A in next_turf)
+			if(A.density)
+				S.take_damage(30)
+				break_early = TRUE
+				break
+
+		if(break_early)
+			break
+
+		new /obj/effect/temp_visual/decoy/fading(start_turf, boss)
 
 		for(var/atom/A in get_turf(next_turf))
 			if(isliving(A) && A != boss)
