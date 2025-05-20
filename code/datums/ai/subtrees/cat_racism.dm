@@ -31,18 +31,28 @@
 	// Find nearby mobs
 	for(var/mob/living/M in oview(detection_range, cat_pawn))
 		var/should_hiss = FALSE
+		var/slap = FALSE
 
 		if(M.mind && M.mind.has_antag_datum(/datum/antagonist/vampire))
 			should_hiss = TRUE
+			if(cat_pawn.CanReach(M))
+				slap = TRUE
 
 		else if(racism_enabled && (isdarkelf(M) || ishalforc(M) || istiefling(M)))
 			should_hiss = TRUE
+			if(cat_pawn.CanReach(M))
+				slap = TRUE
 
 		if(should_hiss)
 			cat_pawn.visible_message("<span class='notice'>\The [cat_pawn] hisses at [M] and recoils in disgust.</span>")
 			cat_pawn.icon_state = "[cat_pawn.icon_living]"
 			cat_pawn.set_resting(FALSE)
 			playsound(get_turf(cat_pawn), 'sound/vo/mobs/cat/cathiss.ogg', 80, TRUE, -1)
+			if(slap)
+				playsound(M, "smallslash", 100, TRUE, -1)
+				M.do_attack_animation(cat_pawn, "claw")
+				M.adjustBruteLoss(1)
+
 			cat_pawn.dir = pick(GLOB.alldirs)
 			step(cat_pawn, cat_pawn.dir)
 
