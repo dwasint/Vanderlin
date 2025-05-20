@@ -7,7 +7,7 @@
 
 /datum/ai_planning_subtree/territorial_struggle
 	///chance we become hostile to another cat
-	var/hostility_chance = 5
+	var/hostility_chance = 20
 
 /datum/ai_planning_subtree/territorial_struggle/SelectBehaviors(datum/ai_controller/controller, seconds_per_tick)
 	var/mob/living/living_pawn = controller.pawn
@@ -39,9 +39,9 @@
 
 /datum/ai_behavior/territorial_struggle
 	behavior_flags = AI_BEHAVIOR_REQUIRE_MOVEMENT | AI_BEHAVIOR_CAN_PLAN_DURING_EXECUTION | AI_BEHAVIOR_REQUIRE_REACH
-	action_cooldown = 5 SECONDS
+	action_cooldown = 0.25 SECONDS
 	///chance the battle ends!
-	var/end_battle_chance = 25
+	var/end_battle_chance = 15
 
 /datum/ai_behavior/territorial_struggle/setup(datum/ai_controller/controller, target_key)
 	. = ..()
@@ -64,7 +64,25 @@
 	var/mob/living/living_pawn = controller.pawn
 	var/list/threaten_list = controller.blackboard[cries_key]
 	if(length(threaten_list))
-		living_pawn.say(pick(threaten_list), forced = "ai_controller")
+		if(prob(50))
+			if(prob(50))
+				living_pawn.say(pick(threaten_list), forced = "ai_controller")
+			else
+				playsound(living_pawn, 'sound/vo/mobs/cat/cathiss.ogg', 80, TRUE, -1)
+
+		else
+			if(prob(50))
+				target.say(pick(threaten_list), forced = "ai_controller")
+			else
+				playsound(target, 'sound/vo/mobs/cat/cathiss.ogg', 80, TRUE, -1)
+
+	if(prob(35))
+		if(prob(50))
+			playsound(target, "smallslash", 100, TRUE, -1)
+			target.do_attack_animation(living_pawn, "claw")
+		else
+			playsound(living_pawn, "smallslash", 100, TRUE, -1)
+			living_pawn.do_attack_animation(target, "claw")
 
 	if(!prob(end_battle_chance))
 		return
@@ -73,6 +91,8 @@
 	var/datum/ai_controller/loser_controller = prob(50) ? controller : target.ai_controller
 
 	loser_controller.set_blackboard_key(BB_BASIC_MOB_FLEE_TARGET, target)
+	loser_controller.set_blackboard_key(BB_BASIC_MOB_FLEEING, TRUE)
+	addtimer(CALLBACK(loser_controller, TYPE_PROC_REF(/datum/ai_controller, set_blackboard_key), BB_BASIC_MOB_FLEEING, FALSE), 10 SECONDS)
 	target.ai_controller.clear_blackboard_key(BB_TRESSPASSER_TARGET)
 	finish_action(controller, TRUE, target_key)
 

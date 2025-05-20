@@ -22,7 +22,6 @@
 		/datum/ai_planning_subtree/flee_target/from_flee_key/cat_struggle,
 		/datum/ai_planning_subtree/cat_rest_behavior,
 		/datum/ai_planning_subtree/detect_vampire_or_race,
-		/datum/ai_planning_subtree/flee_target,
 		/datum/ai_planning_subtree/find_food,
 		/datum/ai_planning_subtree/bring_food_to_babies,
 		/datum/ai_planning_subtree/basic_melee_attack_subtree/cat,

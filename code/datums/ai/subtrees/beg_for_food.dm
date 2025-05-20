@@ -25,6 +25,15 @@
 
 /datum/ai_behavior/beacon_for_food
 	action_cooldown = 5 SECONDS
+	behavior_flags = AI_BEHAVIOR_REQUIRE_MOVEMENT | AI_BEHAVIOR_MOVE_AND_PERFORM | AI_BEHAVIOR_CAN_PLAN_DURING_EXECUTION
+	required_distance = 2
+
+/datum/ai_behavior/beacon_for_food/setup(datum/ai_controller/controller, target_key, meows_key)
+	. = ..()
+	var/atom/target = controller.blackboard[target_key]
+	if(QDELETED(target))
+		return FALSE
+	set_movement_target(controller, (target))
 
 /datum/ai_behavior/beacon_for_food/perform(seconds_per_tick, datum/ai_controller/controller, target_key, meows_key)
 	. = ..()
