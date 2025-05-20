@@ -10,7 +10,7 @@
 		AddComponent(\
 			/datum/component/breed,\
 			list(/mob/living/simple_animal/hostile/retaliate/goat, /mob/living/simple_animal/hostile/retaliate/goatmale),\
-			3 MINUTES,
+			3 MINUTES, \
 			list(/mob/living/simple_animal/hostile/retaliate/goat/goatlet = 90, /mob/living/simple_animal/hostile/retaliate/goat/goatlet/boy = 10),\
 			CALLBACK(src, PROC_REF(after_birth)),\
 		)
