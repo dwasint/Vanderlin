@@ -222,3 +222,12 @@ F
 #define BB_MINOTAUR_FURY_COOLDOWN "minotaur_fury"
 #define BB_MINOTAUR_LAST_SPECIAL_ATTACK "minotaur_last_special"
 #define BB_MINOTAUR_ENRAGE_BONUS "minotaur_enrage"
+
+#define BB_FLESH_IS_REGENERATING "flesh_regenerating"
+#define BB_FLESH_FRENZY_ACTIVE "flesh_frenzy"
+#define BB_FLESH_HUNGER "flesh_hunger"
+#define BB_FLESH_LAST_HEALTH "flesh_last_health"
+#define BB_FLESH_AMBUSH_TARGET "flesh_ambush_target"
+#define BB_TEMP_FOOD_TARGET "temp_food_target"
+#define BB_FLESH_FRENZY_COOLDOWN "frenzy_cooldown"
+#define BB_FLESH_CONSUMED_BODIES "flesh_consumed_bodies"
