@@ -35,7 +35,6 @@
 	var/list/meowing_list = controller.blackboard[meows_key]
 	if(length(meowing_list))
 		living_pawn.say(pick(meowing_list), forced = "ai_controller")
-	living_pawn.linepoint(target)
 	finish_action(controller, TRUE, target_key)
 
 /datum/ai_behavior/beacon_for_food/finish_action(datum/ai_controller/controller, success, target_key)
