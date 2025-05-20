@@ -75,8 +75,7 @@
 			flesh.UnarmedAttack(target)
 			if(prob(40) && ismob(target))
 				var/mob/living/L = target
-				if(L.grabbedby(flesh))
-					L.grippedby(flesh, TRUE)
+				L.OffBalance(8 SECONDS)
 				L.visible_message("<span class='danger'>[L] is caught in [flesh]'s grasp!</span>")
 
 		if("slam")
