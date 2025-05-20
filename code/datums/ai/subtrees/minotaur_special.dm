@@ -100,7 +100,7 @@
 		var/break_early
 		for(var/obj/structure/A in next_turf)
 			if(A.density)
-				S.take_damage(30)
+				A.take_damage(30)
 				break_early = TRUE
 				break
 
