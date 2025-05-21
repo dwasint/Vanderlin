@@ -406,7 +406,7 @@
 	else if(disease_type == "wax_moths")
 		// Wax moths destroy combs
 		if(prob(disease_severity / 5) && stored_combs > 0)
-			stored_combs--
+			stored_combs = max(0, stored_combs - 1)
 			update_icon_state()
 
 
@@ -637,7 +637,7 @@
 	queen_deceased = FALSE
 	max_bees = 30 + (queen_bee.bee_efficiency * 10) // Queen efficiency affects max colony size
 	visible_message("<span class='notice'>The bees in [src] welcome their new queen!</span>")
-	qdel(new_queen) // Remove the item version
+	new_queen.forceMove(src)
 
 /obj/item/queen_bee
 	name = "queen bee"
@@ -657,6 +657,10 @@
 /obj/item/queen_bee/Initialize()
 	. = ..()
 	START_PROCESSING(SSobj, src)
+
+/obj/item/queen_bee/Destroy()
+	. = ..()
+	message_admins("QUEEN DEAD")
 
 /obj/item/queen_bee/process()
 	// Age the queen
