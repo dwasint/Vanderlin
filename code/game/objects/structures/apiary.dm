@@ -658,10 +658,6 @@
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
-/obj/item/queen_bee/Destroy()
-	. = ..()
-	message_admins("QUEEN DEAD")
-
 /obj/item/queen_bee/process()
 	// Age the queen
 	queen_age += 0.01
