@@ -286,7 +286,6 @@
 
 	if(bee_count > (max_bees * 0.8) && queen_bee && can_swarm)
 		process_swarm()
-	process_swarm()
 
 /obj/structure/apiary/attack_hand(mob/user)
 	if(queen_bee && user.a_intent == INTENT_HELP && is_wearing_bee_protection(user))
