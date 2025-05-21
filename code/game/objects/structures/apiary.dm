@@ -194,6 +194,10 @@
 /obj/structure/apiary/starter
 	bee_count = 5
 
+/obj/structure/apiary/starter/Initialize()
+	. = ..()
+	create_new_queen()
+
 /obj/structure/apiary
 	name = "apiary"
 	desc = "A structure housing bees that produce honey and pollinate plants."
