@@ -527,11 +527,11 @@
 	var/obj/item/queen_bee/new_queen = new(get_turf(src))
 
 	// Copy genetics from current queen with slight variations
-	new_queen.bee_efficiency = queen_bee.bee_efficiency + rand(-20, 20)/100
-	new_queen.bee_aggression = queen_bee.bee_aggression + rand(-10, 10)
-	new_queen.bee_lifespan = queen_bee.bee_lifespan + rand(-20, 20)/100
-	new_queen.bee_color = queen_bee.bee_color
-	new_queen.bee_disease_resistance = queen_bee.bee_disease_resistance + rand(-20, 20)/100
+	new_queen.bee_efficiency = queen_bee?.bee_efficiency + rand(-20, 20)/100
+	new_queen.bee_aggression = queen_bee?.bee_aggression + rand(-10, 10)
+	new_queen.bee_lifespan = queen_bee?.bee_lifespan + rand(-20, 20)/100
+	new_queen.bee_color = queen_bee?.bee_color
+	new_queen.bee_disease_resistance = queen_bee?.bee_disease_resistance + rand(-20, 20)/100
 
 	// Clamp values to reasonable ranges
 	new_queen.bee_efficiency = clamp(new_queen.bee_efficiency, 0.5, 2.0)
