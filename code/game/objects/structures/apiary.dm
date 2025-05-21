@@ -121,6 +121,10 @@
 		var/plant_type = soil.plant.type
 		if(hive && !isnull(hive))
 			hive.record_pollen_source(plant_type)
+	var/obj/structure/flora/grass/herb/herb = locate(/obj/structure/flora/grass/herb) in turf
+	if(herb)
+		if(hive && !isnull(hive))
+			hive.record_pollen_source(herb.type)
 
 	if(stored_pollen > (5 * bee_count))
 		return_to_hive()
