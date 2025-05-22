@@ -1,9 +1,6 @@
 
 // Global cache for appearance objects
 GLOBAL_LIST_EMPTY(buildmode_appearance_cache)
-
-GLOBAL_LIST_EMPTY(cached_buildmode_html)
-
 /**
  * Enhanced BuildMode Datum
  *
@@ -50,6 +47,8 @@ GLOBAL_LIST_EMPTY(cached_buildmode_html)
 	// Pixel positioning mode
 	var/pixel_positioning_mode = FALSE
 	var/atom/movable/buildmode_pixel_dummy/pixel_positioning_dummy = null
+
+	var/list/cached_buildmode_html = list()
 
 /**
  * Creates a new buildmode instance

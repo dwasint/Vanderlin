@@ -15,8 +15,8 @@
 	filtered_types = sortTim(filtered_types, /proc/cmp_typepaths_asc)
 
 	var/list/mob_html = list()
-	if("[BM_CATEGORY_TURF]" in GLOB.cached_buildmode_html)
-		mob_html = GLOB.cached_buildmode_html["[BM_CATEGORY_TURF]"]
+	if("[BM_CATEGORY_TURF]" in cached_buildmode_html)
+		mob_html = cached_buildmode_html["[BM_CATEGORY_TURF]"]
 
 	if(!length(mob_html))
 		for(var/obj_path in filtered_types)
@@ -26,8 +26,8 @@
 			dat += "<div class='item-icon'><img src='\ref[O.icon]?state=[O.icon_state]&dir=[O.dir]'/></div>"
 			dat += "<div class='item-name'>[name_display]</div>"
 			dat += "</div>"
-		GLOB.cached_buildmode_html |= "[BM_CATEGORY_TURF]"
-		GLOB.cached_buildmode_html["[BM_CATEGORY_TURF]"] = dat.Copy()
+		cached_buildmode_html |= "[BM_CATEGORY_TURF]"
+		cached_buildmode_html["[BM_CATEGORY_TURF]"] = dat.Copy()
 
 	else
 		dat += mob_html
@@ -61,8 +61,8 @@
 	var/count = 0
 
 	var/list/mob_html = list()
-	if("[BM_CATEGORY_OBJ]" in GLOB.cached_buildmode_html)
-		mob_html = GLOB.cached_buildmode_html["[BM_CATEGORY_OBJ]"]
+	if("[BM_CATEGORY_OBJ]" in cached_buildmode_html)
+		mob_html = cached_buildmode_html["[BM_CATEGORY_OBJ]"]
 
 	if(!length(mob_html))
 		for(var/obj_path in filtered_types)
@@ -77,8 +77,8 @@
 			dat += "<div class='item-icon'><img src='\ref[O.icon]?state=[O.icon_state]&dir=[O.dir]'/></div>"
 			dat += "<div class='item-name'>[name_display]</div>"
 			dat += "</div>"
-		GLOB.cached_buildmode_html |= "[BM_CATEGORY_OBJ]"
-		GLOB.cached_buildmode_html["[BM_CATEGORY_OBJ]"] = dat.Copy()
+		cached_buildmode_html |= "[BM_CATEGORY_OBJ]"
+		cached_buildmode_html["[BM_CATEGORY_OBJ]"] = dat.Copy()
 
 	else
 		dat += mob_html
@@ -106,8 +106,8 @@
 	var/count = 0
 
 	var/list/mob_html = list()
-	if("[BM_CATEGORY_MOB]" in GLOB.cached_buildmode_html)
-		mob_html = GLOB.cached_buildmode_html["[BM_CATEGORY_MOB]"]
+	if("[BM_CATEGORY_MOB]" in cached_buildmode_html)
+		mob_html = cached_buildmode_html["[BM_CATEGORY_MOB]"]
 
 	if(!length(mob_html))
 		for(var/obj_path in filtered_types)
@@ -122,8 +122,8 @@
 			dat += "<div class='item-icon'><img src='\ref[O.icon]?state=[O.icon_state]&dir=[O.dir]'/></div>"
 			dat += "<div class='item-name'>[name_display]</div>"
 			dat += "</div>"
-		GLOB.cached_buildmode_html |= "[BM_CATEGORY_MOB]"
-		GLOB.cached_buildmode_html["[BM_CATEGORY_MOB]"] = dat.Copy()
+		cached_buildmode_html |= "[BM_CATEGORY_MOB]"
+		cached_buildmode_html["[BM_CATEGORY_MOB]"] = dat.Copy()
 
 	else
 		dat += mob_html
@@ -153,8 +153,8 @@
 	var/count = 0
 
 	var/list/mob_html = list()
-	if("[BM_CATEGORY_ITEM]" in GLOB.cached_buildmode_html)
-		mob_html = GLOB.cached_buildmode_html["[BM_CATEGORY_ITEM]"]
+	if("[BM_CATEGORY_ITEM]" in cached_buildmode_html)
+		mob_html = cached_buildmode_html["[BM_CATEGORY_ITEM]"]
 
 	if(!length(mob_html))
 		for(var/obj_path in filtered_types)
@@ -168,8 +168,8 @@
 			dat += "<div class='item-icon'><img src='\ref[O.icon]?state=[O.icon_state]&dir=[O.dir]'/></div>"
 			dat += "<div class='item-name'>[name_display]</div>"
 			dat += "</div>"
-		GLOB.cached_buildmode_html |= "[BM_CATEGORY_ITEM]"
-		GLOB.cached_buildmode_html["[BM_CATEGORY_ITEM]"] = dat.Copy()
+		cached_buildmode_html |= "[BM_CATEGORY_ITEM]"
+		cached_buildmode_html["[BM_CATEGORY_ITEM]"] = dat.Copy()
 
 	else
 		dat += mob_html
@@ -192,8 +192,8 @@
 	var/count = 0
 
 	var/list/mob_html = list()
-	if("[BM_CATEGORY_FOOD]" in GLOB.cached_buildmode_html)
-		mob_html = GLOB.cached_buildmode_html["[BM_CATEGORY_FOOD]"]
+	if("[BM_CATEGORY_FOOD]" in cached_buildmode_html)
+		mob_html = cached_buildmode_html["[BM_CATEGORY_FOOD]"]
 
 	if(!length(mob_html))
 		for(var/obj_path in filtered_types)
@@ -207,8 +207,8 @@
 			dat += "<div class='item-icon'><img src='\ref[O.icon]?state=[O.icon_state]&dir=[O.dir]'/></div>"
 			dat += "<div class='item-name'>[name_display]</div>"
 			dat += "</div>"
-		GLOB.cached_buildmode_html |= "[BM_CATEGORY_FOOD]"
-		GLOB.cached_buildmode_html["[BM_CATEGORY_FOOD]"] = dat.Copy()
+		cached_buildmode_html |= "[BM_CATEGORY_FOOD]"
+		cached_buildmode_html["[BM_CATEGORY_FOOD]"] = dat.Copy()
 
 	else
 		dat += mob_html
@@ -234,8 +234,8 @@
 	var/count = 0
 
 	var/list/mob_html = list()
-	if("[BM_CATEGORY_REAGENT_CONTAINERS]" in GLOB.cached_buildmode_html)
-		mob_html = GLOB.cached_buildmode_html["[BM_CATEGORY_REAGENT_CONTAINERS]"]
+	if("[BM_CATEGORY_REAGENT_CONTAINERS]" in cached_buildmode_html)
+		mob_html = cached_buildmode_html["[BM_CATEGORY_REAGENT_CONTAINERS]"]
 
 	if(!length(mob_html))
 		for(var/obj_path in filtered_types)
@@ -249,8 +249,8 @@
 			dat += "<div class='item-icon'><img src='\ref[O.icon]?state=[O.icon_state]&dir=[O.dir]'/></div>"
 			dat += "<div class='item-name'>[name_display]</div>"
 			dat += "</div>"
-		GLOB.cached_buildmode_html |= "[BM_CATEGORY_REAGENT_CONTAINERS]"
-		GLOB.cached_buildmode_html["[BM_CATEGORY_REAGENT_CONTAINERS]"] = dat.Copy()
+		cached_buildmode_html |= "[BM_CATEGORY_REAGENT_CONTAINERS]"
+		cached_buildmode_html["[BM_CATEGORY_REAGENT_CONTAINERS]"] = dat.Copy()
 
 	else
 		dat += mob_html
@@ -276,8 +276,8 @@
 	var/count = 0
 
 	var/list/mob_html = list()
-	if("[BM_CATEGORY_CLOTHING]" in GLOB.cached_buildmode_html)
-		mob_html = GLOB.cached_buildmode_html["[BM_CATEGORY_CLOTHING]"]
+	if("[BM_CATEGORY_CLOTHING]" in cached_buildmode_html)
+		mob_html = cached_buildmode_html["[BM_CATEGORY_CLOTHING]"]
 
 	if(!length(mob_html))
 		for(var/obj_path in filtered_types)
@@ -291,8 +291,8 @@
 			dat += "<div class='item-icon'><img src='\ref[O.icon]?state=[O.icon_state]&dir=[O.dir]'/></div>"
 			dat += "<div class='item-name'>[name_display]</div>"
 			dat += "</div>"
-		GLOB.cached_buildmode_html |= "[BM_CATEGORY_CLOTHING]"
-		GLOB.cached_buildmode_html["[BM_CATEGORY_CLOTHING]"] = dat.Copy()
+		cached_buildmode_html |= "[BM_CATEGORY_CLOTHING]"
+		cached_buildmode_html["[BM_CATEGORY_CLOTHING]"] = dat.Copy()
 
 	else
 		dat += mob_html
@@ -320,8 +320,8 @@
 	var/count = 0
 
 	var/list/mob_html = list()
-	if("[BM_CATEGORY_WEAPON]" in GLOB.cached_buildmode_html)
-		mob_html = GLOB.cached_buildmode_html["[BM_CATEGORY_WEAPON]"]
+	if("[BM_CATEGORY_WEAPON]" in cached_buildmode_html)
+		mob_html = cached_buildmode_html["[BM_CATEGORY_WEAPON]"]
 
 	if(!length(mob_html))
 		for(var/obj_path in filtered_types)
@@ -335,8 +335,8 @@
 			dat += "<div class='item-icon'><img src='\ref[O.icon]?state=[O.icon_state]&dir=[O.dir]'/></div>"
 			dat += "<div class='item-name'>[name_display]</div>"
 			dat += "</div>"
-		GLOB.cached_buildmode_html |= "[BM_CATEGORY_WEAPON]"
-		GLOB.cached_buildmode_html["[BM_CATEGORY_WEAPON]"] = dat.Copy()
+		cached_buildmode_html |= "[BM_CATEGORY_WEAPON]"
+		cached_buildmode_html["[BM_CATEGORY_WEAPON]"] = dat.Copy()
 
 	else
 		dat += mob_html
