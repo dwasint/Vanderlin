@@ -266,7 +266,7 @@
 /datum/component/storage/concrete/grid/food/cooking/New(datum/P, ...)
 	. = ..()
 	set_holdable(
-		typecacheof(list(/obj/item/reagent_containers/food, /obj/item/alch)),
+		typecacheof(list(/obj/item/reagent_containers/food, /obj/item/alch, /obj/item/mana_battery/mana_crystal, /obj/item/reagent_containers/powder)),
 		)
 
 /datum/component/storage/concrete/grid/food/cooking/pan
