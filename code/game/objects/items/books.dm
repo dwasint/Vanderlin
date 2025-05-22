@@ -239,6 +239,12 @@
 	current_reader << browse(generate_html(user),"window=ledger;size=800x810")
 
 /obj/item/book/secret/ledger/proc/generate_html(mob/user)
+	if(!length(types))
+		for(var/pack in SSmerchant.supply_packs)
+			var/datum/supply_pack/PA = SSmerchant.supply_packs[pack]
+			if(!PA.contraband) // You can add a var to control whether to show contraband
+				types += PA
+
 	var/client/client = user
 	if(!istype(client))
 		client = user.client
