@@ -183,12 +183,12 @@
 
 	// Check head slot for beekeeper hat or similar
 	var/obj/item/clothing/head/head_item = H.get_item_by_slot(SLOT_HEAD)
-	if(head_item && (istype(head_item, /obj/item/clothing/head/beekeeper_head) || (head_item.flags_cover & HEADCOVERSMOUTH)))
+	if(head_item && (head_item.flags_cover & HEADCOVERSMOUTH))
 		head_protected = TRUE
 
 	// Check suit slot for beekeeper suit or similar
 	var/obj/item/clothing/armor/suit_item = H.get_item_by_slot(SLOT_ARMOR)
-	if(suit_item && (istype(suit_item, /obj/item/clothing/armor/beekeeper_suit) || (suit_item.body_parts_covered & CHEST)))
+	if(suit_item &&  (suit_item.body_parts_covered & CHEST))
 		body_protected = TRUE
 
 	return head_protected && body_protected
@@ -671,7 +671,7 @@
 		qdel(src)
 
 
-
+/*
 /obj/item/clothing/head/beekeeper_head
 	name = "beekeeper hat"
 	desc = "A hat with a mesh veil to protect from angry bees."
@@ -686,6 +686,7 @@
 	clothing_flags = THICKMATERIAL
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
 	allowed = list(/obj/item/bee_smoker)
+*/
 
 /obj/item/bee_smoker
 	name = "bee smoker"
