@@ -335,30 +335,60 @@ GLOBAL_LIST_EMPTY(cached_buildmode_html)
 
 	dat += {"
 	<script type='text/javascript'>
-	window.onload = function() {
+	(function setupListeners() {
+		if (window.buildmodeScriptLoaded) return;
+		window.buildmodeScriptLoaded = true;
+
 		var input = document.getElementById('item-search');
-		if (!input) return;
+		if (input) {
+			input.addEventListener('keyup', function() {
+				var filter = input.value.toUpperCase();
+				var grid = document.getElementById('item-grid');
+				if (!grid) return;
 
-		input.addEventListener('keyup', function() {
-			var filter = input.value.toUpperCase();
-			var grid = document.getElementById('item-grid');
-			if (!grid) return;
-
-			var items = grid.getElementsByClassName('item');
-			for (var i = 0; i < items.length; i++) {
-				var itemName = items\[i\].getElementsByClassName('item-name')\[0\];
-				if (itemName) {
-					if (itemName.innerHTML.toUpperCase().indexOf(filter) > -1) {
-						items\[i\].style.display = '';
-					} else {
-						items\[i\].style.display = 'none';
+				var items = grid.getElementsByClassName('item');
+				for (var i = 0; i < items.length; i++) {
+					var itemName = items\[i\].getElementsByClassName('item-name')\[0\];
+					if (itemName) {
+						if (itemName.innerHTML.toUpperCase().indexOf(filter) > -1) {
+							items\[i\].style.display = '';
+						} else {
+							items\[i\].style.display = 'none';
+						}
 					}
 				}
+			});
+		}
+
+		let shiftWasDown = false;
+
+		function sendTogglePixel(toggled) {
+			var a = document.createElement('a');
+			a.href = '?src=[REF(src)]&toggle_pixel=' + toggled;
+			document.body.appendChild(a);
+			a.click();
+			document.body.removeChild(a);
+		}
+
+		document.addEventListener('keydown', function(event) {
+			if (event.key === 'Shift' && !shiftWasDown) {
+				shiftWasDown = true;
+				sendTogglePixel(1);
 			}
 		});
-	};
+
+		document.addEventListener('keyup', function(event) {
+			if (event.key === 'Shift') {
+				shiftWasDown = false;
+				sendTogglePixel(0);
+			}
+		});
+	})();
 	</script>
 	"}
+
+
+
 	dat += "<div class='item-grid' id='item-grid'>"
 
 	switch(current_category)
@@ -685,6 +715,11 @@ GLOBAL_LIST_EMPTY(cached_buildmode_html)
 			select_item(path)
 			return TRUE
 
+	if(href_list["toggle_pixel"])
+		var/toggled = text2num(href_list["toggle_pixel"])
+		toggle_pixel_positioning_mode(toggled)
+		return TRUE
+
 	return FALSE
 
 /**
@@ -809,8 +844,8 @@ GLOBAL_LIST_EMPTY(cached_buildmode_html)
 /**
  * Toggle pixel positioning mode
  */
-/datum/buildmode/proc/toggle_pixel_positioning_mode()
-	pixel_positioning_mode = !pixel_positioning_mode
+/datum/buildmode/proc/toggle_pixel_positioning_mode(toggled)
+	pixel_positioning_mode = toggled
 
 
 	if(pixel_positioning_mode)

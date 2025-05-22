@@ -10,7 +10,7 @@
 			return
 	if(istype(click_intercept, /datum/buildmode) && (_key == "Shift"))
 		var/datum/buildmode/B = click_intercept
-		B.toggle_pixel_positioning_mode()
+		B.toggle_pixel_positioning_mode(TRUE)
 
 	// If not handled by console, continue with normal key handling
 	client_keysend_amount += 1
@@ -95,7 +95,7 @@
 
 	if(istype(click_intercept, /datum/buildmode) && (_key == "Shift"))
 		var/datum/buildmode/B = click_intercept
-		B.toggle_pixel_positioning_mode()
+		B.toggle_pixel_positioning_mode(FALSE)
 
 	//Can't just do a remove because it would alter the length of the rolling buffer, instead search for the key then null it out if it exists
 	for(var/i in 1 to HELD_KEY_BUFFER_LENGTH)
