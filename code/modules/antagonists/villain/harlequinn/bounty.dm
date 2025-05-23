@@ -97,42 +97,51 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 	<style>
 		@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@700&display=swap');
 
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
 		body {
 			background: linear-gradient(135deg, #2d1810 0%, #1a0e08 100%);
 			color: #d4c4a0;
 			font-family: 'Cinzel', serif;
-			margin: 0;
-			padding: 15px;
-			min-height: 100vh;
-			overflow-x: hidden;
+			height: 100vh;
+			overflow: hidden;
 		}
 
 		.container {
-			max-width: 1000px;
-			margin: 0 auto;
+			width: 100vw;
+			height: 100vh;
+			display: flex;
+			flex-direction: column;
 		}
 
 		.board-frame {
 			background: linear-gradient(145deg, #8B4513 0%, #654321 50%, #3e2723 100%);
 			border: 6px solid #5d4e37;
 			border-radius: 12px;
+			margin: 8px;
 			padding: 20px;
 			box-shadow: inset 0 0 15px rgba(0,0,0,0.5), 0 8px 25px rgba(0,0,0,0.8);
 			position: relative;
-			height: 90vh;
+			flex: 1;
 			display: flex;
 			flex-direction: column;
+			min-height: 0;
 		}
 
 		.header {
 			text-align: center;
 			margin-bottom: 15px;
+			flex-shrink: 0;
 		}
 
 		.title {
 			font-family: 'Cinzel Decorative', serif;
 			color: #ffd700;
-			font-size: 2.2em;
+			font-size: 2.5em;
 			margin: 0;
 			text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
 			letter-spacing: 2px;
@@ -142,69 +151,20 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 			color: #d4c4a0;
 			font-style: italic;
 			margin: 5px 0;
-			font-size: 0.9em;
-		}
-
-		.stats-scroll {
-			background: linear-gradient(145deg, #f4e4bc 0%, #e6d7b8 100%);
-			border: 2px solid #8B4513;
-			border-radius: 8px;
-			padding: 12px;
-			margin-bottom: 15px;
-			color: #3e2723;
-			box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
-		}
-
-		.stats-bar {
-			display: flex;
-			justify-content: space-around;
-		}
-
-		.stat {
-			text-align: center;
-		}
-
-		.stat-value {
-			font-size: 1.3em;
-			font-weight: bold;
-			color: #8B4513;
-		}
-
-		.stat-label {
-			font-size: 0.7em;
-			color: #5d4e37;
-			text-transform: uppercase;
-			letter-spacing: 1px;
-		}
-
-		.reputation-badge {
-			background: linear-gradient(145deg, #ffd700 0%, #ffed4a 100%);
-			color: #3e2723;
-			padding: 2px 8px;
-			border-radius: 10px;
-			font-size: 0.7em;
-			font-weight: bold;
-			border: 1px solid #8B4513;
-			text-transform: uppercase;
-			margin-top: 2px;
+			font-size: 1em;
 		}
 
 		.main-content {
 			display: flex;
-			gap: 20px;
 			flex: 1;
 			min-height: 0;
+			gap: 20px;
 		}
 
 		.contracts-section {
-			flex: 2;
+			flex: 1;
 			display: flex;
 			flex-direction: column;
-			min-height: 0;
-		}
-
-		.sidebar {
-			flex: 1;
 			min-height: 0;
 		}
 
@@ -212,13 +172,14 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
-			margin-bottom: 10px;
+			margin-bottom: 15px;
+			flex-shrink: 0;
 		}
 
 		.section-title {
 			color: #ffd700;
 			margin: 0;
-			font-size: 1.4em;
+			font-size: 1.6em;
 			font-weight: 600;
 			text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
 		}
@@ -227,7 +188,7 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 			background: linear-gradient(145deg, #8B4513 0%, #654321 100%);
 			color: #ffd700;
 			border: 2px solid #5d4e37;
-			padding: 8px 16px;
+			padding: 10px 20px;
 			border-radius: 6px;
 			cursor: pointer;
 			font-family: 'Cinzel', serif;
@@ -236,7 +197,7 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 			letter-spacing: 1px;
 			transition: all 0.3s ease;
 			box-shadow: 0 3px 6px rgba(0,0,0,0.3);
-			font-size: 0.8em;
+			font-size: 0.9em;
 		}
 
 		.btn:hover {
@@ -246,8 +207,8 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 		}
 
 		.btn-small {
-			padding: 4px 8px;
-			font-size: 0.7em;
+			padding: 6px 12px;
+			font-size: 0.75em;
 		}
 
 		.btn-accept { background: linear-gradient(145deg, #228B22 0%, #006400 100%); }
@@ -264,23 +225,23 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 			overflow-y: auto;
 			padding-right: 10px;
 			display: grid;
-			grid-template-columns: 1fr 1fr;
-			gap: 12px;
+			grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+			gap: 15px;
 			align-content: start;
 		}
 
 		#contracts-list::-webkit-scrollbar {
-			width: 8px;
+			width: 10px;
 		}
 
 		#contracts-list::-webkit-scrollbar-track {
 			background: rgba(139, 69, 19, 0.2);
-			border-radius: 4px;
+			border-radius: 5px;
 		}
 
 		#contracts-list::-webkit-scrollbar-thumb {
 			background: linear-gradient(145deg, #8B4513, #654321);
-			border-radius: 4px;
+			border-radius: 5px;
 		}
 
 		.bounty-note {
@@ -291,60 +252,43 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 			color: #3e2723;
 			box-shadow: 0 4px 8px rgba(0,0,0,0.3), inset 0 1px 3px rgba(255,255,255,0.2);
 			position: relative;
-			transform: rotate(-0.3deg);
 			height: fit-content;
-
-			/* Ripped paper effect */
-			clip-path: polygon(
-				0% 5px,
-				5px 0%,
-				15px 9px,
-				25px 0%,
-				35px 6px,
-				45px 0%,
-				55px 12px,
-				65px 0%,
-				75px 6px,
-				85px 0%,
-				95% 9px,
-				100% 0%,
-				100% calc(100% - 5px),
-				calc(100% - 5px) 100%,
-				calc(100% - 15px) calc(100% - 9px),
-				calc(100% - 25px) 100%,
-				calc(100% - 35px) calc(100% - 6px),
-				calc(100% - 45px) 100%,
-				calc(100% - 55px) calc(100% - 12px),
-				calc(100% - 65px) 100%,
-				calc(100% - 75px) calc(100% - 6px),
-				calc(100% - 85px) 100%,
-				5px 100%,
-				0% calc(100% - 15px)
-			);
-		}
-
-		.bounty-note:nth-child(even) {
-			transform: rotate(0.3deg);
+			transition: all 0.3s ease;
+			cursor: pointer;
 		}
 
 		.bounty-note:hover {
-			transform: rotate(0deg) scale(1.02);
+			transform: scale(1.02);
 			z-index: 10;
+			box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+		}
+
+		/* Note nail */
+		.note-nail {
+			position: absolute;
+			width: 8px;
+			height: 8px;
+			background: radial-gradient(circle, #654321 0%, #3e2723 100%);
+			border-radius: 50%;
+			box-shadow: inset 0 1px 2px rgba(0,0,0,0.5);
+			top: 8px;
+			right: 12px;
+			z-index: 5;
 		}
 
 		.contract-header {
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
-			margin-bottom: 8px;
+			margin-bottom: 10px;
 		}
 
 		.contract-type {
 			background: linear-gradient(145deg, #8B0000 0%, #DC143C 100%);
 			color: #ffd700;
-			padding: 3px 8px;
+			padding: 4px 10px;
 			border-radius: 12px;
-			font-size: 0.7em;
+			font-size: 0.75em;
 			text-transform: uppercase;
 			font-weight: bold;
 			letter-spacing: 1px;
@@ -352,47 +296,47 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 		}
 
 		.contract-payment {
-			font-size: 1em;
+			font-size: 1.1em;
 			font-weight: bold;
 			color: #8B4513;
 		}
 
 		.contract-target {
-			font-size: 0.9em;
+			font-size: 1em;
 			font-weight: bold;
-			margin-bottom: 6px;
+			margin-bottom: 8px;
 			color: #5d4e37;
 		}
 
 		.contract-details {
 			color: #6b5b47;
-			margin-bottom: 6px;
-			line-height: 1.3;
-			font-size: 0.8em;
+			margin-bottom: 8px;
+			line-height: 1.4;
+			font-size: 0.85em;
 		}
 
 		.contract-instructions {
 			background: rgba(139, 69, 19, 0.1);
 			border-left: 3px solid #8B4513;
-			padding: 6px;
-			margin: 8px 0;
+			padding: 8px;
+			margin: 10px 0;
 			font-style: italic;
 			border-radius: 0 3px 3px 0;
-			font-size: 0.8em;
+			font-size: 0.85em;
 		}
 
 		.contract-footer {
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
-			margin-top: 8px;
-			font-size: 0.8em;
+			margin-top: 10px;
+			font-size: 0.85em;
 		}
 
 		.contract-actions {
 			display: flex;
-			gap: 4px;
-			margin-top: 8px;
+			gap: 6px;
+			margin-top: 10px;
 			flex-wrap: wrap;
 		}
 
@@ -405,7 +349,7 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 		.time-remaining {
 			color: #8B4513;
 			font-style: italic;
-			}
+		}
 
 		.scratched-out {
 			filter: blur(2px) brightness(0.6);
@@ -435,67 +379,117 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 		.waiting-indicator {
 			background: rgba(255, 140, 0, 0.2);
 			border-left: 3px solid #FF8C00;
-			padding: 6px;
+			padding: 8px;
 			border-radius: 0 3px 3px 0;
-			margin: 8px 0;
+			margin: 10px 0;
 			color: #8B4513;
-			font-size: 0.8em;
+			font-size: 0.85em;
 		}
 
 		.contraband-spawned {
 			background: rgba(34, 139, 34, 0.2);
 			border-left: 3px solid #228B22;
-			padding: 6px;
+			padding: 8px;
 			border-radius: 0 3px 3px 0;
-			margin: 8px 0;
+			margin: 10px 0;
 			color: #228B22;
-			font-size: 0.8em;
+			font-size: 0.85em;
 		}
 
 		.no-contracts {
 			grid-column: 1 / -1;
 			text-align: center;
 			color: #8B4513;
-			padding: 40px;
-			font-size: 1.1em;
+			padding: 60px;
+			font-size: 1.2em;
 			font-style: italic;
 		}
 
-		.hidden {
-			display: none;
+		/* Form Overlay */
+		.form-overlay {
+			position: fixed;
+			top: 0;
+			right: -400px;
+			width: 400px;
+			height: 100vh;
+			background: linear-gradient(145deg, #8B4513 0%, #654321 50%, #3e2723 100%);
+			border-left: 6px solid #5d4e37;
+			box-shadow: -8px 0 25px rgba(0,0,0,0.8);
+			transition: right 0.4s ease;
+			z-index: 1000;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.form-overlay.active {
+			right: 0;
+		}
+
+		.form-header {
+			background: linear-gradient(135deg, #f4e4bc 0%, #e6d7b8 100%);
+			color: #3e2723;
+			padding: 20px;
+			border-bottom: 3px solid #8B4513;
+			flex-shrink: 0;
+		}
+
+		.form-title {
+			font-family: 'Cinzel Decorative', serif;
+			font-size: 1.5em;
+			margin: 0;
+			text-align: center;
+			color: #5d4e37;
+		}
+
+		.form-content {
+			flex: 1;
+			overflow-y: auto;
+			padding: 20px;
+		}
+
+		.form-content::-webkit-scrollbar {
+			width: 8px;
+		}
+
+		.form-content::-webkit-scrollbar-track {
+			background: rgba(139, 69, 19, 0.2);
+			border-radius: 4px;
+		}
+
+		.form-content::-webkit-scrollbar-thumb {
+			background: linear-gradient(145deg, #8B4513, #654321);
+			border-radius: 4px;
 		}
 
 		.parchment-form {
 			background: linear-gradient(135deg, #f4e4bc 0%, #e6d7b8 100%);
 			border: 3px solid #8B4513;
 			border-radius: 8px;
-			padding: 15px;
+			padding: 20px;
 			color: #3e2723;
 			box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-			height: fit-content;
-			overflow-y: auto;
 		}
 
 		.form-group {
-			margin-bottom: 12px;
+			margin-bottom: 15px;
 		}
 
 		.form-label {
 			display: block;
-			margin-bottom: 4px;
+			margin-bottom: 6px;
 			color: #5d4e37;
 			font-weight: 600;
 			text-transform: uppercase;
 			letter-spacing: 1px;
-			font-size: 0.8em;
+			font-size: 0.85em;
 		}
 
 		.form-input, .form-select, .form-textarea {
 			width: 100%;
-			padding: 8px;
-			background: rgba(255, 255, 255, 0.8);
+			padding: 10px;
+			background: rgba(255, 255, 255, 0.9);
 			border: 2px solid #8B4513;
-			border-radius: 4px;
+			border-radius: 6px;
 			color: #3e2723;
 			font-family: 'Cinzel', serif;
 			font-size: 0.9em;
@@ -505,63 +499,83 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 		.form-input:focus, .form-select:focus, .form-textarea:focus {
 			outline: none;
 			border-color: #ffd700;
-			box-shadow: 0 0 6px rgba(255, 215, 0, 0.3);
+			box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
 		}
 
 		.form-textarea {
 			resize: vertical;
-			min-height: 60px;
+			min-height: 80px;
 		}
 
-		.rules-scroll {
-			background: linear-gradient(135deg, #f4e4bc 0%, #e6d7b8 100%);
-			border: 3px solid #8B4513;
-			border-radius: 8px;
-			padding: 15px;
-			color: #3e2723;
-			box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-			height: fit-content;
-			overflow-y: auto;
-		}
-
-		.rules-scroll p {
-			margin: 4px 0;
-			line-height: 1.4;
-			font-size: 0.85em;
+		.hidden {
+			display: none;
 		}
 
 		.nail {
 			position: absolute;
-			width: 10px;
-			height: 10px;
+			width: 12px;
+			height: 12px;
 			background: radial-gradient(circle, #654321 0%, #3e2723 100%);
 			border-radius: 50%;
 			box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
 		}
 
-		.nail-1 { top: 15px; left: 15px; }
-		.nail-2 { top: 15px; right: 15px; }
-		.nail-3 { bottom: 15px; left: 15px; }
-		.nail-4 { bottom: 15px; right: 15px; }
+		.nail-1 { top: 20px; left: 20px; }
+		.nail-2 { top: 20px; right: 20px; }
+		.nail-3 { bottom: 20px; left: 20px; }
+		.nail-4 { bottom: 20px; right: 20px; }
+
+		/* Background overlay when form is open */
+		.overlay-backdrop {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100vw;
+			height: 100vh;
+			background: rgba(0,0,0,0.5);
+			opacity: 0;
+			visibility: hidden;
+			transition: all 0.3s ease;
+			z-index: 999;
+		}
+
+		.overlay-backdrop.active {
+			opacity: 1;
+			visibility: visible;
+		}
+
+		@media (max-width: 1200px) {
+			#contracts-list {
+				grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+			}
+		}
 
 		@media (max-width: 768px) {
-			#contracts-list {
-				grid-template-columns: 1fr;
+			.form-overlay {
+				width: 100vw;
+				right: -100vw;
 			}
 
-			.main-content {
-				flex-direction: column;
+			#contracts-list {
+				grid-template-columns: 1fr;
 			}
 		}
 	</style>
 </head>
 <body>
+	<div class="overlay-backdrop" id="overlay-backdrop" onclick="toggleCreateForm()"></div>
+
 	<div class="container">
 		<div class="board-frame">
 			<div class="nail nail-1"></div>
 			<div class="nail nail-2"></div>
 			<div class="nail nail-3"></div>
 			<div class="nail nail-4"></div>
+
+			<div class="header">
+				<h1 class="title">The Bounty Board</h1>
+				<p class="subtitle">Guild of Shadows & Fortune</p>
+			</div>
 
 			<div class="main-content">
 				<div class="contracts-section">
@@ -613,7 +627,13 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 			var/should_obscure = !is_contractor && !is_bountyhunter
 			var/obscure_class = should_obscure ? "scratched-out" : ""
 			var/click_handler = (can_accept ? "onclick=\"acceptContract('[contract.contract_id]')\"" : "")
-			html += {"<div class=\"bounty-note [obscure_class]\" [click_handler]>"}
+
+			// Generate random tear pattern and rotation for each note
+			var/tear_seed = text2num(copytext(contract.contract_id, 1, 3)) % 8 + 1
+			var/rotation = ((text2num(copytext(contract.contract_id, -2)) % 21) - 10) * 0.1 // -1 to 1 degrees
+
+			html += {"<div class=\"bounty-note [obscure_class]\" [click_handler] style=\"transform: rotate([rotation]deg); clip-path: [get_tear_pattern(tear_seed)];\">"}
+			html += {"<div class=\"note-nail\"></div>"}
 			html += {"
 							<div class="contract-header">
 								<span class="contract-type">[contract.contract_type]</span>
@@ -621,8 +641,8 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 							</div>
 							<div class="contract-target">Target: [contract.target_name]</div>
 							<div class="contract-details">
-								By: [should_obscure ? "" : contract.contractor_name]<br>
-								Time: [minutes]m
+								By: [should_obscure ? "???" : contract.contractor_name]<br>
+								Time: [minutes]m remaining
 							</div>
 			"}
 
@@ -701,63 +721,66 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 	html += {"
 					</div>
 				</div>
+			</div>
+		</div>
+	</div>
 
-				<div class="sidebar">
-					<div id="create-form" class="hidden">
-						<div class="parchment-form">
-							<h3 class="section-title">Post New Bounty</h3>
-							<form onsubmit="submitContract(event)">
-								<div class="form-group">
-									<label class="form-label">Bounty Type</label>
-									<select class="form-select" id="contract-type" required>
-										<option value="">Choose your task...</option>
-										<option value="theft">Theft</option>
-										<option value="kidnapping">Kidnapping</option>
-										<option value="assassination">Assassination</option>
-										<option value="smuggling">Smuggling</option>
-										<option value="sabotage">Sabotage</option>
-										<option value="impersonation">Impersonation</option>
-										<option value="burial">Burial Job</option>
-									</select>
-								</div>
-								<div class="form-group" id="target-group">
-									<label class="form-label">Target/Description</label>
-									<input type="text" class="form-input" id="target-name" required>
-								</div>
-								<div class="form-group" id="contraband-group" style="display:none;">
-									<label class="form-label">Contraband Type</label>
-									<select class="form-select" id="contraband-type">
-										<option value="">Select contraband...</option>
-										[contraband_options]
-									</select>
-								</div>
-								<div class="form-group">
-									<label class="form-label">Mammons</label>
-									<input type="number" class="form-input" id="payment" min="1" required>
-								</div>
-								<div class="form-group">
-									<label class="form-label">Time Limit (minutes)</label>
-									<input type="number" class="form-input" id="time-limit" value="60" min="1" required>
-								</div>
-								<div class="form-group">
-									<label class="form-label">Special Instructions</label>
-									<textarea class="form-textarea" id="instructions" placeholder="Additional details..."></textarea>
-								</div>
-								<div class="form-group" id="location-group" style="display:none;">
-									<label class="form-label">Location</label>
-									<select class="form-select" id="location">
-										<option value="">Select location...</option>
-										[location_options]
-									</select>
-								</div>
-								<div class="form-group">
-									<button type="submit" class="btn" style="width: 100%; margin-bottom: 8px;">Post Bounty</button>
-									<button type="button" class="btn" onclick="toggleCreateForm()" style="width: 100%; background: linear-gradient(145deg, #696969 0%, #2F4F4F 100%);">Cancel</button>
-								</div>
-							</form>
-						</div>
+	<!-- Form Overlay -->
+	<div class="form-overlay" id="create-form">
+		<div class="form-header">
+			<h3 class="form-title">Post New Bounty</h3>
+		</div>
+		<div class="form-content">
+			<div class="parchment-form">
+				<form onsubmit="submitContract(event)">
+					<div class="form-group">
+						<label class="form-label">Bounty Type</label>
+						<select class="form-select" id="contract-type" required>
+							<option value="">Choose your task...</option>
+							<option value="theft">Theft</option>
+							<option value="kidnapping">Kidnapping</option>
+							<option value="assassination">Assassination</option>
+							<option value="smuggling">Smuggling</option>
+							<option value="sabotage">Sabotage</option>
+							<option value="impersonation">Impersonation</option>
+							<option value="burial">Burial Job</option>
+						</select>
 					</div>
-				</div>
+					<div class="form-group" id="target-group">
+						<label class="form-label">Target/Description</label>
+						<input type="text" class="form-input" id="target-name" required>
+					</div>
+					<div class="form-group" id="contraband-group" style="display:none;">
+						<label class="form-label">Contraband Type</label>
+						<select class="form-select" id="contraband-type">
+							<option value="">Select contraband...</option>
+							[contraband_options]
+						</select>
+					</div>
+					<div class="form-group">
+						<label class="form-label">Mammons</label>
+						<input type="number" class="form-input" id="payment" min="1" required>
+					</div>
+					<div class="form-group">
+						<label class="form-label">Time Limit (minutes)</label>
+						<input type="number" class="form-input" id="time-limit" value="60" min="1" required>
+					</div>
+					<div class="form-group">
+						<label class="form-label">Special Instructions</label>
+						<textarea class="form-textarea" id="instructions" placeholder="Additional details..."></textarea>
+					</div>
+					<div class="form-group" id="location-group" style="display:none;">
+						<label class="form-label">Location</label>
+						<select class="form-select" id="location">
+							<option value="">Select location...</option>
+							[location_options]
+						</select>
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn" style="width: 100%; margin-bottom: 10px;">Post Bounty</button>
+						<button type="button" class="btn" onclick="toggleCreateForm()" style="width: 100%; background: linear-gradient(145deg, #696969 0%, #2F4F4F 100%);">Cancel</button>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -765,13 +788,14 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 	<script>
 		function toggleCreateForm() {
 			const form = document.getElementById('create-form');
-			const info = document.getElementById('sidebar-info');
-			if (form.classList.contains('hidden')) {
-				form.classList.remove('hidden');
-				info.classList.add('hidden');
+			const backdrop = document.getElementById('overlay-backdrop');
+
+			if (form.classList.contains('active')) {
+				form.classList.remove('active');
+				backdrop.classList.remove('active');
 			} else {
-				form.classList.add('hidden');
-				info.classList.remove('hidden');
+				form.classList.add('active');
+				backdrop.classList.add('active');
 			}
 		}
 
@@ -841,6 +865,25 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 </html>
 	"}
 	return html
+
+/obj/structure/bounty_board/proc/get_tear_pattern(seed)
+	switch(seed)
+		if(1)
+			return "polygon(0% 3px, 8px 0%, 18px 6px, 28px 0%, 38px 9px, 48px 0%, 58px 12px, 68px 0%, 78px 6px, 88px 0%, 98% 9px, 100% 0%, 100% calc(100% - 3px), calc(100% - 8px) 100%, calc(100% - 18px) calc(100% - 6px), calc(100% - 28px) 100%, calc(100% - 38px) calc(100% - 9px), calc(100% - 48px) 100%, calc(100% - 58px) calc(100% - 12px), calc(100% - 68px) 100%, calc(100% - 78px) calc(100% - 6px), calc(100% - 88px) 100%, 3px 100%, 0% calc(100% - 15px))"
+		if(2)
+			return "polygon(0% 6px, 12px 0%, 24px 8px, 36px 0%, 48px 15px, 60px 0%, 72px 4px, 84px 0%, 96% 11px, 100% 0%, 100% calc(100% - 6px), calc(100% - 12px) 100%, calc(100% - 24px) calc(100% - 8px), calc(100% - 36px) 100%, calc(100% - 48px) calc(100% - 15px), calc(100% - 60px) 100%, calc(100% - 72px) calc(100% - 4px), calc(100% - 84px) 100%, 6px 100%, 0% calc(100% - 11px))"
+		if(3)
+			return "polygon(0% 9px, 15px 0%, 30px 12px, 45px 0%, 60px 6px, 75px 0%, 90% 18px, 100% 0%, 100% calc(100% - 9px), calc(100% - 15px) 100%, calc(100% - 30px) calc(100% - 12px), calc(100% - 45px) 100%, calc(100% - 60px) calc(100% - 6px), calc(100% - 75px) 100%, 9px 100%, 0% calc(100% - 18px))"
+		if(4)
+			return "polygon(0% 4px, 10px 0%, 20px 14px, 30px 0%, 40px 7px, 50px 0%, 60px 21px, 70px 0%, 80px 5px, 90px 0%, 100% 16px, 100% calc(100% - 4px), calc(100% - 10px) 100%, calc(100% - 20px) calc(100% - 14px), calc(100% - 30px) 100%, calc(100% - 40px) calc(100% - 7px), calc(100% - 50px) 100%, calc(100% - 60px) calc(100% - 21px), calc(100% - 70px) 100%, calc(100% - 80px) calc(100% - 5px), calc(100% - 90px) 100%, 4px 100%, 0% calc(100% - 16px))"
+		if(5)
+			return "polygon(0% 12px, 18px 0%, 36px 9px, 54px 0%, 72px 24px, 90% 0%, 100% 6px, 100% calc(100% - 12px), calc(100% - 18px) 100%, calc(100% - 36px) calc(100% - 9px), calc(100% - 54px) 100%, calc(100% - 72px) calc(100% - 24px), 12px 100%, 0% calc(100% - 6px))"
+		if(6)
+			return "polygon(0% 8px, 16px 0%, 32px 20px, 48px 0%, 64px 3px, 80px 0%, 96% 13px, 100% 0%, 100% calc(100% - 8px), calc(100% - 16px) 100%, calc(100% - 32px) calc(100% - 20px), calc(100% - 48px) 100%, calc(100% - 64px) calc(100% - 3px), calc(100% - 80px) 100%, 8px 100%, 0% calc(100% - 13px))"
+		if(7)
+			return "polygon(0% 15px, 25px 0%, 50px 18px, 75px 0%, 100% 9px, 100% calc(100% - 15px), calc(100% - 25px) 100%, calc(100% - 50px) calc(100% - 18px), calc(100% - 75px) 100%, 15px 100%, 0% calc(100% - 9px))"
+		else
+			return "polygon(0% 5px, 14px 0%, 28px 11px, 42px 0%, 56px 17px, 70px 0%, 84px 8px, 98% 0%, 100% 2px, 100% calc(100% - 5px), calc(100% - 14px) 100%, calc(100% - 28px) calc(100% - 11px), calc(100% - 42px) 100%, calc(100% - 56px) calc(100% - 17px), calc(100% - 70px) 100%, calc(100% - 84px) calc(100% - 8px), 5px 100%, 0% calc(100% - 2px))"
 
 /obj/structure/bounty_board/Topic(href, href_list)
 	if(!usr || !usr.client)
