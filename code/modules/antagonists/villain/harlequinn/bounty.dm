@@ -3,8 +3,8 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 /obj/structure/bounty_board
 	name = "bounty board"
 	desc = "A weathered wooden board covered in various contracts and notices. Dark stains suggest not all jobs end well."
-	icon = 'icons/obj/structures.dmi'
-	icon_state = "fancy_table"
+	icon = 'icons/obj/bounty_board.dmi'
+	icon_state = "bounty_board"
 	anchored = TRUE
 	density = FALSE
 	var/list/active_contracts = list()
@@ -89,6 +89,7 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 		contraband_options += "<option value=\"[pack_name]\">[pack_name]</option>"
 
 	user << browse_rsc('html/book.png')
+	user << browse_rsc('html/tiled_wood.jpg')
 	var/html = {"
 <!DOCTYPE html>
 <html>
@@ -119,7 +120,7 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 		}
 
 		.board-frame {
-			background: linear-gradient(145deg, #8B4513 0%, #654321 50%, #3e2723 100%);
+			background: url('tiled_wood.jpg'); background-repeat: repeat;
 			border: 6px solid #5d4e37;
 			border-radius: 12px;
 			margin: 8px;
@@ -246,53 +247,178 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 
 		.bounty-note {
 			background: url('book.png');
-			border: 2px solid #8B4513;
-			border-radius: 8px;
-			padding: 12px;
-			color: #3e2723;
-			box-shadow: 0 4px 8px rgba(0,0,0,0.3), inset 0 1px 3px rgba(255,255,255,0.2);
+			border: 2px solid #1a0e08;
+			border-radius: 0;
+			padding: 20px 18px 15px 18px;
+			color: #8b7355;
+			box-shadow:
+				0 6px 12px rgba(0,0,0,0.8),
+				inset 0 1px 0 rgba(93,78,55,0.15),
+				inset 0 -2px 0 rgba(0,0,0,0.4);
 			position: relative;
 			height: fit-content;
 			transition: all 0.3s ease;
 			cursor: pointer;
+			margin: 8px;
+			/* Torn paper effect */
+			clip-path: polygon(
+				0% 8px, 15px 0%, 25px 12px, 40px 0%, 55px 16px, 70px 0%, 85px 10px, 100% 0%,
+				100% calc(100% - 15px), calc(100% - 12px) 100%, calc(100% - 28px) calc(100% - 8px),
+				calc(100% - 45px) 100%, calc(100% - 62px) calc(100% - 12px), calc(100% - 78px) 100%,
+				calc(100% - 90px) calc(100% - 6px), 8px 100%, 0% calc(100% - 20px)
+			);
 		}
 
 		.bounty-note:hover {
-			transform: scale(1.02);
+			transform: scale(1.02) rotate(0deg) !important;
 			z-index: 10;
-			box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+			box-shadow:
+				0 10px 20px rgba(0,0,0,0.9),
+				inset 0 1px 0 rgba(93,78,55,0.2),
+				inset 0 -2px 0 rgba(0,0,0,0.6);
 		}
 
-		/* Note nail */
+		/* Multiple nail types for variety */
 		.note-nail {
+			position: absolute;
+			width: 12px;
+			height: 12px;
+			background: radial-gradient(circle at 30% 30%, #2d1810 0%, #1a0e08 50%, #0d0603 100%);
+			border-radius: 50%;
+			box-shadow:
+				inset 0 2px 3px rgba(0,0,0,0.9),
+				inset 0 -1px 1px rgba(45,32,16,0.1),
+				0 2px 4px rgba(0,0,0,0.7);
+			top: 12px;
+			left: 50%;
+			transform: translateX(-50%);
+			z-index: 5;
+			border: 1px solid #0d0603;
+		}
+
+		/* Add secondary nails for more authentic look */
+		.bounty-note::before {
+			content: '';
 			position: absolute;
 			width: 8px;
 			height: 8px;
-			background: radial-gradient(circle, #654321 0%, #3e2723 100%);
+			background: radial-gradient(circle at 30% 30%, #1a0e08 0%, #0d0603 50%, #000000 100%);
 			border-radius: 50%;
-			box-shadow: inset 0 1px 2px rgba(0,0,0,0.5);
+			box-shadow:
+				inset 0 1px 2px rgba(0,0,0,0.9),
+				inset 0 -1px 1px rgba(26,14,8,0.05),
+				0 2px 3px rgba(0,0,0,0.8);
 			top: 8px;
-			right: 12px;
+			right: 15px;
 			z-index: 5;
 		}
 
+		.bounty-note::after {
+			content: '';
+			position: absolute;
+			width: 6px;
+			height: 6px;
+			background: radial-gradient(circle at 30% 30%, #0d0603 0%, #000000 100%);
+			border-radius: 50%;
+			box-shadow:
+				inset 0 1px 1px rgba(0,0,0,0.95),
+				0 2px 2px rgba(0,0,0,0.8);
+			bottom: 12px;
+			left: 20px;
+			z-index: 5;
+		}
+
+		/* Enhanced torn edges with more realistic tears */
+		.bounty-note:nth-child(odd) {
+			clip-path: polygon(
+				0% 12px, 18px 0%, 32px 15px, 48px 0%, 62px 20px, 78px 0%, 92% 8px, 100% 0%,
+				100% calc(100% - 10px), calc(100% - 15px) 100%, calc(100% - 30px) calc(100% - 12px),
+				calc(100% - 48px) 100%, calc(100% - 65px) calc(100% - 18px), calc(100% - 80px) 100%,
+				10px 100%, 0% calc(100% - 25px)
+			);
+		}
+
+		.bounty-note:nth-child(even) {
+			clip-path: polygon(
+				0% 6px, 12px 0%, 28px 18px, 44px 0%, 58px 14px, 74px 0%, 88% 22px, 100% 0%,
+				100% calc(100% - 16px), calc(100% - 20px) 100%, calc(100% - 35px) calc(100% - 10px),
+				calc(100% - 52px) 100%, calc(100% - 70px) calc(100% - 14px), calc(100% - 85px) 100%,
+				6px 100%, 0% calc(100% - 12px)
+			);
+		}
+
+		/* Additional weathering for every third note */
+		.bounty-note:nth-child(3n) {
+			/* Heavily torn edge */
+			clip-path: polygon(
+				0% 20px, 25px 0%, 45px 25px, 65px 0%, 85% 15px, 100% 0%,
+				100% calc(100% - 25px), calc(100% - 25px) 100%, calc(100% - 50px) calc(100% - 15px),
+				calc(100% - 75px) 100%, 15px 100%, 0% calc(100% - 30px)
+			);
+		}
+
+		/* Skull icons positioning adjustments for torn layout */
+		.contract-type {
+			background: linear-gradient(145deg, #4a0000 0%, #660000 100%);
+			color: #cc9900;
+			padding: 3px 8px;
+			border-radius: 8px;
+			font-size: 0.7em;
+			text-transform: uppercase;
+			font-weight: bold;
+			letter-spacing: 1px;
+			border: 1px solid #1a0e08;
+			position: relative;
+			z-index: 10;
+			box-shadow: 0 2px 4px rgba(0,0,0,0.8);
+		}
+
+		/* Enhance the scratched out effect for more realism */
+		.scratched-out {
+			filter: blur(2px) brightness(0.4) contrast(1.2);
+			user-select: none;
+			pointer-events: none;
+		}
+
+		.scratched-out::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background:
+				repeating-linear-gradient(
+					-15deg,
+					transparent,
+					transparent 2px,
+					rgba(0, 0, 0, 0.8) 2px,
+					rgba(0, 0, 0, 0.8) 4px
+				),
+				repeating-linear-gradient(
+					45deg,
+					transparent,
+					transparent 3px,
+					rgba(26, 14, 8, 0.9) 3px,
+					rgba(26, 14, 8, 0.9) 5px
+				);
+			pointer-events: none;
+			z-index: 20;
+		}
+
+		.bounty-note:hover {
+			transform: scale(1.02) rotate(0deg) !important;
+			z-index: 10;
+			box-shadow:
+				0 8px 16px rgba(0,0,0,0.5),
+				inset 0 1px 0 rgba(255,255,255,0.4),
+				inset 0 -1px 0 rgba(0,0,0,0.15);
+		}
 		.contract-header {
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
 			margin-bottom: 10px;
-		}
-
-		.contract-type {
-			background: linear-gradient(145deg, #8B0000 0%, #DC143C 100%);
-			color: #ffd700;
-			padding: 4px 10px;
-			border-radius: 12px;
-			font-size: 0.75em;
-			text-transform: uppercase;
-			font-weight: bold;
-			letter-spacing: 1px;
-			border: 1px solid #654321;
 		}
 
 		.contract-payment {
@@ -628,11 +754,7 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 			var/obscure_class = should_obscure ? "scratched-out" : ""
 			var/click_handler = (can_accept ? "onclick=\"acceptContract('[contract.contract_id]')\"" : "")
 
-			// Generate random tear pattern and rotation for each note
-			var/tear_seed = text2num(copytext(contract.contract_id, 1, 3)) % 8 + 1
-			var/rotation = ((text2num(copytext(contract.contract_id, -2)) % 21) - 10) * 0.1 // -1 to 1 degrees
-
-			html += {"<div class=\"bounty-note [obscure_class]\" [click_handler] style=\"transform: rotate([rotation]deg); clip-path: [get_tear_pattern(tear_seed)];\">"}
+			html += {"<div class=\"bounty-note [obscure_class]\" [click_handler]>"}
 			html += {"<div class=\"note-nail\"></div>"}
 			html += {"
 							<div class="contract-header">
@@ -865,25 +987,6 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 </html>
 	"}
 	return html
-
-/obj/structure/bounty_board/proc/get_tear_pattern(seed)
-	switch(seed)
-		if(1)
-			return "polygon(0% 3px, 8px 0%, 18px 6px, 28px 0%, 38px 9px, 48px 0%, 58px 12px, 68px 0%, 78px 6px, 88px 0%, 98% 9px, 100% 0%, 100% calc(100% - 3px), calc(100% - 8px) 100%, calc(100% - 18px) calc(100% - 6px), calc(100% - 28px) 100%, calc(100% - 38px) calc(100% - 9px), calc(100% - 48px) 100%, calc(100% - 58px) calc(100% - 12px), calc(100% - 68px) 100%, calc(100% - 78px) calc(100% - 6px), calc(100% - 88px) 100%, 3px 100%, 0% calc(100% - 15px))"
-		if(2)
-			return "polygon(0% 6px, 12px 0%, 24px 8px, 36px 0%, 48px 15px, 60px 0%, 72px 4px, 84px 0%, 96% 11px, 100% 0%, 100% calc(100% - 6px), calc(100% - 12px) 100%, calc(100% - 24px) calc(100% - 8px), calc(100% - 36px) 100%, calc(100% - 48px) calc(100% - 15px), calc(100% - 60px) 100%, calc(100% - 72px) calc(100% - 4px), calc(100% - 84px) 100%, 6px 100%, 0% calc(100% - 11px))"
-		if(3)
-			return "polygon(0% 9px, 15px 0%, 30px 12px, 45px 0%, 60px 6px, 75px 0%, 90% 18px, 100% 0%, 100% calc(100% - 9px), calc(100% - 15px) 100%, calc(100% - 30px) calc(100% - 12px), calc(100% - 45px) 100%, calc(100% - 60px) calc(100% - 6px), calc(100% - 75px) 100%, 9px 100%, 0% calc(100% - 18px))"
-		if(4)
-			return "polygon(0% 4px, 10px 0%, 20px 14px, 30px 0%, 40px 7px, 50px 0%, 60px 21px, 70px 0%, 80px 5px, 90px 0%, 100% 16px, 100% calc(100% - 4px), calc(100% - 10px) 100%, calc(100% - 20px) calc(100% - 14px), calc(100% - 30px) 100%, calc(100% - 40px) calc(100% - 7px), calc(100% - 50px) 100%, calc(100% - 60px) calc(100% - 21px), calc(100% - 70px) 100%, calc(100% - 80px) calc(100% - 5px), calc(100% - 90px) 100%, 4px 100%, 0% calc(100% - 16px))"
-		if(5)
-			return "polygon(0% 12px, 18px 0%, 36px 9px, 54px 0%, 72px 24px, 90% 0%, 100% 6px, 100% calc(100% - 12px), calc(100% - 18px) 100%, calc(100% - 36px) calc(100% - 9px), calc(100% - 54px) 100%, calc(100% - 72px) calc(100% - 24px), 12px 100%, 0% calc(100% - 6px))"
-		if(6)
-			return "polygon(0% 8px, 16px 0%, 32px 20px, 48px 0%, 64px 3px, 80px 0%, 96% 13px, 100% 0%, 100% calc(100% - 8px), calc(100% - 16px) 100%, calc(100% - 32px) calc(100% - 20px), calc(100% - 48px) 100%, calc(100% - 64px) calc(100% - 3px), calc(100% - 80px) 100%, 8px 100%, 0% calc(100% - 13px))"
-		if(7)
-			return "polygon(0% 15px, 25px 0%, 50px 18px, 75px 0%, 100% 9px, 100% calc(100% - 15px), calc(100% - 25px) 100%, calc(100% - 50px) calc(100% - 18px), calc(100% - 75px) 100%, 15px 100%, 0% calc(100% - 9px))"
-		else
-			return "polygon(0% 5px, 14px 0%, 28px 11px, 42px 0%, 56px 17px, 70px 0%, 84px 8px, 98% 0%, 100% 2px, 100% calc(100% - 5px), calc(100% - 14px) 100%, calc(100% - 28px) calc(100% - 11px), calc(100% - 42px) 100%, calc(100% - 56px) calc(100% - 17px), calc(100% - 70px) 100%, calc(100% - 84px) calc(100% - 8px), 5px 100%, 0% calc(100% - 2px))"
 
 /obj/structure/bounty_board/Topic(href, href_list)
 	if(!usr || !usr.client)
