@@ -76,6 +76,7 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 	var/html = get_bounty_board_html(user)
 	user << browse(html, "window=bounty_board;size=900x700;titlebar=1;can_minimize=1;can_resize=1")
 	onclose(user, "bounty_board")
+
 /obj/structure/bounty_board/proc/get_bounty_board_html(mob/user)
 	var/is_bountyhunter = is_bounty_hunter(user)
 	var/location_options = ""
@@ -1118,7 +1119,6 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 
 					if("burial")
 						// Check if they're carrying a corpse or have burial tools
-						var/has_corpse = FALSE
 						var/has_shovel = FALSE
 						for(var/obj/item in harlequinn.get_contents())
 							if(istype(item, /obj/item/weapon/shovel))
