@@ -33,12 +33,12 @@
 			if(cliented_mob.client)
 				cliented = TRUE
 
-		// Check if we've moved to a lower Z-level (possibly thrown) and our path expects us to be higher
+		// Check if we've been displaced from our expected path position
 		if(length(controller.movement_path) && controller.movement_path[1])
 			var/turf/next_step = controller.movement_path[1]
+			var/path_disrupted = FALSE
 
-			// If the next step is on a higher Z-level than our current position,
-			// verify that there are stairs at our current position leading up
+			// Check for Z-level displacement requiring stairs
 			if(next_step.z > current_turf.z)
 				// Check if there's a valid stair to go up
 				var/turf/above = get_step_multiz(current_turf, UP)
@@ -52,14 +52,39 @@
 							can_go_up = TRUE
 							break
 
-				// If we can't go up but our path expects us to, we've likely been thrown down
-				// So regenerate the path from our current position
+				// If we can't go up but our path expects us to, path is disrupted
 				if(!can_go_up)
+					path_disrupted = TRUE
+
+			// Check for horizontal displacement (dragging on same level)
+			else if(next_step.z == current_turf.z)
+				// If we're more than 1 tile away from our next step, we might have been dragged
+				if(get_dist(current_turf, next_step) > 1)
+					// Only consider it disrupted if we're significantly off course
+					// and not just slightly misaligned due to movement timing
+					var/dist_to_target = get_dist(current_turf, end_turf)
+					var/path_length = length(controller.movement_path)
+
+					// If we're much closer to target than our path suggests, or much further,
+					// we've likely been displaced
+					if(path_length > 0 && (dist_to_target < (path_length * 0.5) || dist_to_target > (path_length * 1.5)))
+						path_disrupted = TRUE
+
+			// Clear path if disrupted, but only after a brief delay to avoid flicker from normal movement
+			if(path_disrupted)
+				// Use a small delay to prevent constant re-pathing from minor displacement
+				if(!controller.movement_displacement_time)
+					controller.movement_displacement_time = world.time
+				else if(world.time - controller.movement_displacement_time > 0.5 SECONDS)
 					controller.movement_path = null
 					controller.clear_blackboard_key(future_path_blackboard_key)
+					controller.movement_displacement_time = null
 					fallbacking = FALSE
 					fallback_fail = 0
 					continue
+			else
+				// Reset displacement timer if we're back on track
+				controller.movement_displacement_time = null
 
 		// Basic movement for targets on the same z-level with no existing path
 		if(end_turf?.z == movable_pawn?.z && !length(controller.movement_path) && !cliented)
