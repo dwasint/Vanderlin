@@ -1141,25 +1141,42 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 		switch(contract.contract_type)
 			if("assassination")
 				if(action_type == "death" && target.stat == DEAD)
-					contract_completed = TRUE
+					// Verify the harlequinn was involved in the kill
+					if(actor && actor.ckey == contract.harlequinn_ckey)
+						contract_completed = TRUE
+						log_game("BOUNTY: Assassination contract [contract.contract_id] completed by [actor.ckey] on target [target.real_name]")
+					else
+						// Check if harlequinn was nearby or assisted
+						var/mob/harlequinn = get_harlequinn_mob(contract.harlequinn_ckey)
+						if(harlequinn && get_dist(harlequinn, target) <= 7) // Within reasonable range
+							contract_completed = TRUE
+							log_game("BOUNTY: Assassination contract [contract.contract_id] completed by proximity by [contract.harlequinn_ckey] on target [target.real_name]")
+
 			if("kidnapping")
-				if(action_type == "kidnap" && target.stat == UNCONSCIOUS)
+				if(action_type == "kidnap" && (target.stat == UNCONSCIOUS))
 					contract_completed = TRUE
+					log_game("BOUNTY: Kidnapping contract [contract.contract_id] completed on target [target.real_name]")
+
 			if("impersonation")
 				if(action_type == "impersonate") // Custom action for impersonation
 					contract_completed = TRUE
-			if("burial")
-				if(action_type == "burial" && target.stat == DEAD) // Custom burial action
-					contract_completed = TRUE
+					log_game("BOUNTY: Impersonation contract [contract.contract_id] completed on target [target.real_name]")
 
-		if(contract_completed)
+			if("burial")
+				if(action_type == "death" && target.stat == DEAD)
+					// Mark the corpse as available for burial
+					contract.burial_corpse_available = TRUE
+					to_chat(get_harlequinn_mob(contract.harlequinn_ckey), span_notice("Target eliminated! Retrieve the body and take it to [contract.delivery_location] for burial."))
+					log_game("BOUNTY: Burial contract [contract.contract_id] target [target.real_name] eliminated, awaiting burial")
+
+		if(contract_completed && contract.contract_type != "burial") // Burial has special handling
 			contract.complete_contract(src)
 			// Find the bounty hunter and reward them
-			for(var/mob/M in GLOB.player_list)
-				if(M.ckey == contract.harlequinn_ckey)
-					modify_reputation(M, get_reputation_reward(contract.contract_type))
-					to_chat(M, span_notice("Contract '[contract.target_name]' completed automatically!"))
-					break
+			var/mob/harlequinn = get_harlequinn_mob(contract.harlequinn_ckey)
+			if(harlequinn)
+				modify_reputation(harlequinn, get_reputation_reward(contract.contract_type))
+				to_chat(harlequinn, span_notice("Contract '[contract.target_name]' completed automatically!"))
+
 
 /obj/structure/bounty_board/proc/get_reputation_reward(contract_type)
 	switch(contract_type)
@@ -1373,7 +1390,7 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 				// Different completion logic based on contract type
 				switch(contract.contract_type)
 					if("smuggling")
-						// Check if they have the smuggling pouch
+						// ... existing smuggling code ...
 						var/obj/item/storage/smuggling_pouch/pouch = locate() in harlequinn.get_contents()
 						if(pouch && pouch.contract_id == contract.contract_id)
 							contract.complete_contract(src)
@@ -1384,24 +1401,142 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 							to_chat(harlequinn, span_warning("You need to bring the smuggling pouch to complete this contract!"))
 
 					if("kidnapping")
-						// Start kidnapping timer
+						// ... existing kidnapping code ...
 						if(!contract.kidnapping_timer_active)
 							contract.start_kidnapping_timer(harlequinn, location, src)
 
 					if("burial")
-						// Check if they're carrying a corpse or have burial tools
+						// Check if they're carrying the target's corpse and have burial tools
 						var/has_shovel = FALSE
+						var/has_target_corpse = FALSE
+						var/obj/structure/closet/dirthole/burial_hole = locate(/obj/structure/closet/dirthole) in location.loc
+
+						// Check for shovel
 						for(var/obj/item in harlequinn.get_contents())
 							if(istype(item, /obj/item/weapon/shovel))
 								has_shovel = TRUE
-							// Add corpse checking logic here based on your game's corpse types
+								break
 
-						if(has_shovel) // Simplified for now
-							contract.complete_contract(src)
-							modify_reputation(harlequinn, 6)
-							to_chat(harlequinn, span_notice("Burial contract completed at [location.location_name]!"))
+						// Check for the specific target's corpse
+						if(contract.target_marker && contract.burial_corpse_available)
+							var/mob/target_corpse = contract.target_marker.get_target()
+							if(target_corpse && target_corpse.stat == DEAD)
+								// Check if corpse is being carried/dragged or nearby
+								if(harlequinn.pulling == target_corpse || get_dist(harlequinn, target_corpse) <= 2)
+									has_target_corpse = TRUE
+
+						// Check if there's a suitable dirthole (pit stage or deeper)
+						var/has_burial_site = FALSE
+						if(burial_hole && burial_hole.stage >= 3)
+							has_burial_site = TRUE
+
+						if(has_shovel && has_target_corpse && has_burial_site)
+							if(!contract.burial_timer_active)
+								contract.start_burial_timer(harlequinn, location, src)
 						else
-							to_chat(harlequinn, span_warning("You need proper burial tools to complete this contract!"))
+							var/missing_items = list()
+							if(!has_shovel)
+								missing_items += "burial tools (shovel)"
+							if(!has_target_corpse)
+								missing_items += "the target's corpse nearby"
+							if(!has_burial_site)
+								missing_items += "a proper burial pit (dig deeper with your shovel)"
+							to_chat(harlequinn, span_warning("You need [english_list(missing_items)] to complete this burial contract!"))
+
+
+/datum/bounty_contract/proc/start_burial_timer(mob/harlequinn, obj/effect/landmark/bounty_location/location, obj/structure/bounty_board/board)
+	burial_timer_active = TRUE
+	burial_completion_time = world.time + 600
+	burial_target_location = location
+
+	to_chat(harlequinn, span_notice("Beginning burial process... Stay in the area for 60 seconds to complete the contract."))
+	to_chat(harlequinn, span_warning("Do not move too far from the burial site or the contract will fail!"))
+
+	// Start a timer to check if they stay in the area
+	spawn(100)
+		while(burial_timer_active && world.time < burial_completion_time)
+			if(get_dist(harlequinn, location) > location.completion_range)
+				burial_timer_active = FALSE
+				to_chat(harlequinn, span_warning("You moved too far from the burial site! Burial contract failed."))
+				return
+
+			var/mob/target_corpse = target_marker?.get_target()
+			if(!target_corpse || target_corpse.stat != DEAD || get_dist(harlequinn, target_corpse) > 2)
+				burial_timer_active = FALSE
+				to_chat(harlequinn, span_warning("You lost the corpse! Burial contract failed."))
+				return
+
+			var/time_left = (burial_completion_time - world.time) / 10
+			if(time_left > 0 && time_left % 20 == 0) // Every 20 seconds
+				to_chat(harlequinn, span_notice("Burial in progress... [time_left] seconds remaining."))
+
+			sleep(100)
+
+
+/datum/bounty_contract/proc/complete_burial(obj/structure/bounty_board/board)
+	if(!burial_timer_active)
+		return
+
+	burial_timer_active = FALSE
+
+	// Properly bury the corpse using the dirthole system
+	var/mob/target_corpse = target_marker?.get_target()
+	var/mob/harlequinn = board.get_harlequinn_mob(harlequinn_ckey)
+
+	if(target_corpse && harlequinn)
+		// Find or create a dirthole at the burial location
+		var/turf/burial_turf = get_turf(burial_target_location)
+		var/obj/structure/closet/dirthole/grave_hole = locate(/obj/structure/closet/dirthole) in burial_turf
+
+		if(!grave_hole)
+			// Create a new dirthole for burial
+			grave_hole = new /obj/structure/closet/dirthole(burial_turf)
+			grave_hole.stage = 3 // Set to pit stage for burial
+			grave_hole.update_icon()
+
+		// Ensure the hole is at the right stage for burial
+		if(grave_hole.stage < 3)
+			grave_hole.stage = 3
+			grave_hole.update_icon()
+
+		// Open the grave if it's closed
+		if(!grave_hole.opened)
+			grave_hole.open()
+
+		// Place the corpse in the grave
+		target_corpse.forceMove(burial_turf)
+		grave_hole.user_buckle_mob(target_corpse, harlequinn)
+
+		// Close and bless the grave
+		grave_hole.close()
+
+		// Set the buried flag properly
+		if(istype(target_corpse, /mob/living/carbon/human))
+			var/mob/living/carbon/human/buried_human = target_corpse
+			buried_human.buried = TRUE
+
+		// Create a grave marker for the blessed burial
+		var/obj/structure/gravemarker/marker = new(burial_turf)
+		marker.name = "grave of [target_corpse.real_name]"
+
+		// Bless the burial - remove any curses and provide protection
+		if(harlequinn && isliving(harlequinn))
+			var/mob/living/living_harlequinn = harlequinn
+			// Remove curse status if they have the graverobber trait (blessed burial)
+			if(HAS_TRAIT(living_harlequinn, TRAIT_GRAVEROBBER))
+				living_harlequinn.remove_status_effect(/datum/status_effect/debuff/cursed)
+				to_chat(harlequinn, span_notice("Necra smiles upon this proper burial. Any curses are lifted."))
+			else
+				to_chat(harlequinn, span_notice("The proper burial brings peace to the departed soul."))
+
+		log_game("BOUNTY: Burial contract [contract_id] completed, corpse of [target_corpse.real_name] properly buried and blessed at [burial_turf]")
+
+	complete_contract(board)
+
+	// Find the harlequinn and notify them
+	if(harlequinn)
+		board.modify_reputation(harlequinn, 6)
+		to_chat(harlequinn, span_notice("Burial contract completed! The body has been properly interred and blessed."))
 
 // Process contract timeouts and kidnapping timers
 /obj/structure/bounty_board/proc/process_contracts()
@@ -1412,15 +1547,24 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 				contract.fail_contract(src)
 				// Reduce reputation for timeout
 				if(contract.assigned_to_harlequinn)
-					for(var/mob/M in GLOB.player_list)
-						if(M.ckey == contract.harlequinn_ckey)
-							modify_reputation(M, -10)
-							to_chat(M, span_warning("Contract '[contract.target_name]' has timed out!"))
-							break
+					var/mob/harlequinn = get_harlequinn_mob(contract.harlequinn_ckey)
+					if(harlequinn)
+						modify_reputation(harlequinn, -10)
+						to_chat(harlequinn, span_warning("Contract '[contract.target_name]' has timed out!"))
 
 		// Process kidnapping timers
 		if(contract.kidnapping_timer_active && world.time > contract.kidnapping_completion_time)
 			contract.complete_kidnapping(src)
+
+		// Process burial timers
+		if(contract.burial_timer_active && world.time > contract.burial_completion_time)
+			contract.complete_burial(src)
+
+/obj/structure/bounty_board/proc/get_harlequinn_mob(ckey)
+	for(var/mob/M in GLOB.player_list)
+		if(M.ckey == ckey)
+			return M
+	return null
 
 /datum/bounty_contract
 	var/contract_id
@@ -1447,6 +1591,12 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 	var/kidnapping_completion_time = 0
 	var/kidnapping_target_location
 	var/datum/marked_target/target_marker
+
+	var/burial_timer_active = FALSE
+	var/burial_completion_time = 0
+	var/burial_target_location
+	var/obj/item/corpse_carried // Track if carrying the right corpse
+	var/burial_corpse_available = FALSE
 
 /datum/bounty_contract/proc/is_area_based()
 	return contract_type in list("kidnapping", "smuggling", "burial")
@@ -1846,3 +1996,15 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 // Helper comparison function for sorting coins by value
 /proc/cmp_coin_value_desc(obj/item/coin/a, obj/item/coin/b)
 	return b.sellprice - a.sellprice
+
+/proc/notify_bounty_boards_death(mob/dying_mob, mob/killer)
+	for(var/obj/structure/bounty_board/board in GLOB.bounty_boards)
+		board.check_target_action(killer, dying_mob, "death")
+
+/proc/notify_bounty_boards_kidnap(mob/actor, mob/victim)
+	for(var/obj/structure/bounty_board/board in GLOB.bounty_boards)
+		board.check_target_action(actor, victim, "kidnap")
+
+/proc/notify_bounty_boards_impersonate(mob/actor, mob/target)
+	for(var/obj/structure/bounty_board/board in GLOB.bounty_boards)
+		board.check_target_action(actor, target, "impersonate")

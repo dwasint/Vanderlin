@@ -312,7 +312,7 @@
 	return all_types
 
 /**
- * Processes a bundle item for crafting
+ * Processes a bundle item for crafting - OPTIMIZED VERSION
  *
  * @param {obj/item/natural/bundle} item - The bundle to process
  * @param {mob} user - The user performing the crafting
@@ -322,46 +322,62 @@
  * @return {boolean} - TRUE if processing should stop, FALSE otherwise
  */
 /datum/repeatable_crafting_recipe/proc/process_bundle(obj/item/natural/bundle/item, mob/user, list/copied_requirements, list/to_delete, list/all_blacklisted)
-	var/early_ass_break = FALSE
-	var/bundle_path = item:stacktype
+	var/obj/item/bundle_path = item:stacktype
 	if(bundle_path in all_blacklisted)
-		return early_ass_break
+		return FALSE
 
+	// Check if this bundle type matches any of our requirements
+	var/matching_requirement = null
 	for(var/path in copied_requirements)
-		if(QDELETED(item))
+		if(type_matches_requirement(bundle_path, path))
+			matching_requirement = path
 			break
-		if(!ispath(bundle_path, path))
-			continue
-		for(var/i = 1 to item:amount)
-			if(QDELETED(item) || early_ass_break || !(bundle_path in copied_requirements))
-				break
 
-			item:amount--
-			var/obj/item/sub_item = new bundle_path(get_turf(item))
-			if(item:amount == 0)
-				qdel(item)
+	if(!matching_requirement)
+		return FALSE
 
-			user.visible_message(span_info("[user] starts grabbing \a [sub_item] from [item]."),
-								span_info("I start grabbing \a [sub_item] from [item]."))
+	// Calculate how many items we need from this bundle
+	var/needed_amount = copied_requirements[matching_requirement]
+	var/available_amount = item:amount
+	var/use_amount = min(needed_amount, available_amount)
 
-			if(do_after(user, ground_use_time, sub_item, extra_checks = CALLBACK(user, TYPE_PROC_REF(/atom/movable, CanReach), sub_item)))
-				if(put_items_in_hand)
-					user.put_in_active_hand(sub_item)
+	if(use_amount <= 0)
+		return FALSE
 
-				for(var/requirement in copied_requirements)
-					if(!item_matches_requirement(item, requirement))
-						continue
-					copied_requirements[requirement]--
-					to_delete += sub_item
-					sub_item.forceMove(locate(1,1,1))
-					if(copied_requirements[requirement] <= 0)
-						copied_requirements -= requirement
-						early_ass_break = TRUE
-						if(item && item:amount == 1) // to remove 1 count bundles
-							new bundle_path(get_turf(item))
-							qdel(item)
-						break
-	return early_ass_break
+	// Single do_after for the entire bundle operation
+	user.visible_message(span_info("[user] starts gathering [use_amount] [initial(bundle_path.name)]\s from [item]."),
+						span_info("I start gathering [use_amount] [initial(bundle_path.name)]\s from [item]."))
+
+	if(!do_after(user, ground_use_time, item, extra_checks = CALLBACK(user, TYPE_PROC_REF(/atom/movable, CanReach), item)))
+		return FALSE
+
+	// Process the bundle efficiently
+	item:amount -= use_amount
+	copied_requirements[matching_requirement] -= use_amount
+
+	// Create items only if we need to put them in hand or they're needed for other purposes
+	if(put_items_in_hand && use_amount == 1)
+		var/obj/item/sub_item = new bundle_path(get_turf(item))
+		user.put_in_active_hand(sub_item)
+		to_delete += sub_item
+		sub_item.forceMove(locate(1,1,1))
+	else
+		// For multiple items or when not putting in hand, create a temporary reference
+		// This avoids creating individual items unnecessarily
+		for(var/i = 1 to use_amount)
+			var/obj/item/temp_item = new bundle_path(locate(1,1,1))
+			to_delete += temp_item
+
+	// Clean up the bundle if empty
+	if(item:amount <= 0)
+		qdel(item)
+
+	// Remove requirement if fulfilled
+	if(copied_requirements[matching_requirement] <= 0)
+		copied_requirements -= matching_requirement
+		return TRUE // Early break since requirement is fulfilled
+
+	return FALSE
 
 /**
  * Handles reagent requirements for crafting
