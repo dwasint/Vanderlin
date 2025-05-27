@@ -6,7 +6,6 @@ SUBSYSTEM_DEF(bounties)
 
 
 /datum/controller/subsystem/bounties/fire(resumed)
-	. = ..()
 	for(var/obj/structure/bounty_board/board in GLOB.bounty_boards)
 		board.process_contracts()
 
