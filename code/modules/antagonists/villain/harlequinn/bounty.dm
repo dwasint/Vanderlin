@@ -240,6 +240,14 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 			border-radius: 5px;
 		}
 
+		#marker-target-group small {
+			display: block;
+			margin-top: 5px;
+			font-size: 0.8em;
+			color: #888;
+			font-style: italic;
+		}
+
 		#contracts-list::-webkit-scrollbar-thumb {
 			background: linear-gradient(145deg, #8B4513, #654321);
 			border-radius: 5px;
@@ -859,7 +867,6 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 						<label class="form-label">Bounty Type</label>
 						<select class="form-select" id="contract-type" required>
 							<option value="">Choose your task...</option>
-							<option value="theft">Theft</option>
 							<option value="kidnapping">Kidnapping</option>
 							<option value="assassination">Assassination</option>
 							<option value="smuggling">Smuggling</option>
@@ -868,6 +875,15 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 							<option value="burial">Burial Job</option>
 						</select>
 					</div>
+					<div class="form-group" id="marker-target-group" style="display:none;">
+						<label class="form-label">Marked Target</label>
+						<select class="form-select" id="marker-target" required>
+							<option value="">Select marked target...</option>
+							[get_marker_targets_html(user)]
+						</select>
+						<small style="color: #888; font-style: italic;">Use your bounty marker to mark targets first</small>
+					</div>
+
 					<div class="form-group" id="target-group">
 						<label class="form-label">Target/Description</label>
 						<input type="text" class="form-input" id="target-name" required>
@@ -908,6 +924,7 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 	</div>
 
 	<script>
+		const MARKER_REQUIRED_TYPES = \['kidnapping', 'assassination', 'impersonation', 'burial'\];
 		function toggleCreateForm() {
 			const form = document.getElementById('create-form');
 			const backdrop = document.getElementById('overlay-backdrop');
@@ -922,46 +939,60 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 		}
 
 		document.getElementById('contract-type').addEventListener('change', function() {
+			const contractType = this.value;
 			const locationGroup = document.getElementById('location-group');
 			const contrabandGroup = document.getElementById('contraband-group');
 			const targetGroup = document.getElementById('target-group');
+			const markerTargetGroup = document.getElementById('marker-target-group');
 
-			const needsLocation = \['kidnapping', 'smuggling', 'burial', 'theft'\].includes(this.value);
-			const isSmuggling = this.value === 'smuggling';
+			const needsLocation = \['kidnapping', 'smuggling', 'burial'\].includes(contractType);
+			const isSmuggling = contractType === 'smuggling';
+			const requiresMarker = MARKER_REQUIRED_TYPES.includes(contractType);
 
 			locationGroup.style.display = needsLocation ? 'block' : 'none';
 			contrabandGroup.style.display = isSmuggling ? 'block' : 'none';
 
-			if (needsLocation) {
-				document.getElementById('location').required = true;
-			} else {
-				document.getElementById('location').required = false;
-			}
-
-			if (isSmuggling) {
-				document.getElementById('contraband-type').required = true;
+			if (requiresMarker) {
+				markerTargetGroup.style.display = 'block';
+				targetGroup.style.display = 'none';
+				document.getElementById('marker-target').required = true;
+				document.getElementById('target-name').required = false;
+				refreshMarkerTargets(); // Refresh available targets
+			} else if (isSmuggling) {
+				markerTargetGroup.style.display = 'none';
+				targetGroup.style.display = 'none';
+				document.getElementById('marker-target').required = false;
 				document.getElementById('target-name').required = false;
 				document.getElementById('target-name').value = 'Contraband Delivery';
-				targetGroup.style.display = 'none';
 			} else {
-				document.getElementById('contraband-type').required = false;
-				document.getElementById('target-name').required = true;
+				markerTargetGroup.style.display = 'none';
 				targetGroup.style.display = 'block';
+				document.getElementById('marker-target').required = false;
+				document.getElementById('target-name').required = true;
 			}
 		});
 
 		function submitContract(event) {
 			event.preventDefault();
 
+			const contractType = document.getElementById('contract-type').value;
+			const requiresMarker = MARKER_REQUIRED_TYPES.includes(contractType);
+
 			const formData = {
-				type: document.getElementById('contract-type').value,
-				target: document.getElementById('target-name').value,
+				type: contractType,
+				target: requiresMarker ? '' : document.getElementById('target-name').value,
+				marker_target: requiresMarker ? document.getElementById('marker-target').value : '',
 				payment: parseInt(document.getElementById('payment').value),
 				time_limit: parseInt(document.getElementById('time-limit').value),
 				instructions: document.getElementById('instructions').value,
 				location: document.getElementById('location').value,
 				contraband: document.getElementById('contraband-type').value
 			};
+
+			if (requiresMarker && !formData.marker_target) {
+				alert('Please select a marked target for this contract type!');
+				return;
+			}
 
 			window.location.href = 'byond://?src=' + encodeURIComponent('[REF(src)]') + '&action=create_contract&' +
 				Object.keys(formData).map(key => key + '=' + encodeURIComponent(formData\[key\])).join('&');
@@ -1013,10 +1044,39 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 	var/special_instructions = params["instructions"]
 	var/delivery_location = params["location"]
 	var/contraband_type = params["contraband"]
+	var/marker_target_id = params["marker_target"] // New parameter
 
 	if(!contract_type || !payment || payment <= 0)
 		to_chat(user, span_warning("Invalid contract parameters!"))
 		return
+
+	var/requires_marker = (contract_type in list("kidnapping", "assassination", "impersonation", "burial"))
+	var/datum/marked_target/selected_target
+
+	if(requires_marker)
+		// Find bounty marker in user's inventory
+		var/obj/item/bounty_marker/marker = locate() in user.get_contents()
+		if(!marker)
+			to_chat(user, span_warning("You need a bounty marker to create this type of contract!"))
+			return
+
+		if(!marker.marked_targets.len)
+			to_chat(user, span_warning("You need to mark a target first using your bounty marker!"))
+			return
+
+		// Find the selected target by ID or name
+		if(marker_target_id)
+			for(var/datum/marked_target/mt in marker.marked_targets)
+				if(mt.target_name == marker_target_id && mt.is_valid())
+					selected_target = mt
+					break
+
+		if(!selected_target)
+			to_chat(user, span_warning("Selected target is no longer valid!"))
+			return
+
+		target_name = selected_target.target_name
+		selected_target.mark_as_used()
 
 	// Special validation for smuggling contracts
 	if(contract_type == "smuggling")
@@ -1024,7 +1084,7 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 			to_chat(user, span_warning("Smuggling contracts require contraband type and delivery location!"))
 			return
 		target_name = "Contraband Delivery: [contraband_type]"
-	else if(!target_name)
+	else if(!target_name && !requires_marker)
 		to_chat(user, span_warning("Target name is required!"))
 		return
 
@@ -1050,14 +1110,79 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 	new_contract.contractor_ckey = user.ckey
 	new_contract.creation_time = world.time
 	new_contract.contract_id = "[new_contract.contract_type]_[world.time]_[rand(1000,9999)]"
+	new_contract.target_marker = selected_target // Store reference to marked target
 
 	active_contracts += new_contract
 	total_bounty_pool += payment
 
 	to_chat(user, span_notice("Contract posted successfully! Payment held in escrow."))
+	if(selected_target)
+		to_chat(user, span_notice("Target: [selected_target.target_name] has been assigned to this contract."))
 
 	// Refresh the interface
 	ui_interact(user)
+
+
+/obj/structure/bounty_board/proc/check_target_action(mob/actor, mob/target, action_type)
+	// This proc should be called when significant actions happen (death, theft, etc.)
+	for(var/datum/bounty_contract/contract in active_contracts)
+		if(!contract.assigned_to_harlequinn || contract.completed || contract.failed)
+			continue
+
+		if(!contract.target_marker)
+			continue
+
+		var/mob/marked_target = contract.target_marker.get_target()
+		if(!marked_target || marked_target != target)
+			continue
+
+		// Check if the action matches the contract type
+		var/contract_completed = FALSE
+		switch(contract.contract_type)
+			if("assassination")
+				if(action_type == "death" && target.stat == DEAD)
+					contract_completed = TRUE
+			if("kidnapping")
+				if(action_type == "kidnap" && target.stat == UNCONSCIOUS)
+					contract_completed = TRUE
+			if("impersonation")
+				if(action_type == "impersonate") // Custom action for impersonation
+					contract_completed = TRUE
+			if("burial")
+				if(action_type == "burial" && target.stat == DEAD) // Custom burial action
+					contract_completed = TRUE
+
+		if(contract_completed)
+			contract.complete_contract(src)
+			// Find the bounty hunter and reward them
+			for(var/mob/M in GLOB.player_list)
+				if(M.ckey == contract.harlequinn_ckey)
+					modify_reputation(M, get_reputation_reward(contract.contract_type))
+					to_chat(M, span_notice("Contract '[contract.target_name]' completed automatically!"))
+					break
+
+/obj/structure/bounty_board/proc/get_reputation_reward(contract_type)
+	switch(contract_type)
+		if("burial")
+			return 5
+		if("kidnapping", "impersonation")
+			return 8
+		if("assassination")
+			return 12
+		else
+			return 5
+
+/obj/structure/bounty_board/proc/get_marker_targets_html(mob/user)
+	var/obj/item/bounty_marker/marker = locate() in user.get_contents()
+	if(!marker || !marker.marked_targets.len)
+		return ""
+
+	var/html = ""
+	for(var/datum/marked_target/target in marker.marked_targets)
+		if(target.is_valid())
+			html += "<option value=\"[target.target_name]\">[target.get_display_name()]</option>"
+
+	return html
 
 /obj/structure/bounty_board/proc/accept_contract(mob/user, contract_id)
 	if(!is_bounty_hunter(user))
@@ -1094,7 +1219,7 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 
 /obj/structure/bounty_board/proc/get_required_reputation(contract_type)
 	switch(contract_type)
-		if("theft", "burial")
+		if("burial")
 			return -10 // Even low rep can do these
 		if("smuggling", "kidnapping")
 			return 0 // Neutral reputation required
@@ -1278,12 +1403,6 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 						else
 							to_chat(harlequinn, span_warning("You need proper burial tools to complete this contract!"))
 
-					if("theft")
-						// Generic area completion for theft
-						contract.complete_contract(src)
-						modify_reputation(harlequinn, 5)
-						to_chat(harlequinn, span_notice("Theft contract completed at [location.location_name]!"))
-
 // Process contract timeouts and kidnapping timers
 /obj/structure/bounty_board/proc/process_contracts()
 	for(var/datum/bounty_contract/contract in active_contracts)
@@ -1327,9 +1446,10 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 	var/kidnapping_timer_active = FALSE
 	var/kidnapping_completion_time = 0
 	var/kidnapping_target_location
+	var/datum/marked_target/target_marker
 
 /datum/bounty_contract/proc/is_area_based()
-	return contract_type in list("kidnapping", "smuggling", "burial", "theft")
+	return contract_type in list("kidnapping", "smuggling", "burial")
 
 /datum/bounty_contract/proc/is_verification_based()
 	return contract_type in list("assassination", "sabotage", "impersonation")
@@ -1482,6 +1602,108 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 	name = "Dark Alley"
 	location_name = "Dark Alley"
 	completion_range = 3
+
+/obj/item/bounty_marker
+	name = "bounty marker"
+	desc = "Brands a target spiritually from afar and stores them as a bounty."
+	icon = 'icons/roguetown/items/misc.dmi'
+	icon_state = "beartrap"
+	w_class = WEIGHT_CLASS_SMALL
+	var/list/marked_targets = list()
+	var/max_targets = 5 // Maximum number of targets that can be marked
+
+/obj/item/bounty_marker/attack_self(mob/user)
+	if(!marked_targets.len)
+		to_chat(user, span_warning("No targets have been marked with this device."))
+		return
+
+	var/list/target_names = list()
+	for(var/datum/marked_target/target in marked_targets)
+		if(target.is_valid())
+			target_names[target.get_display_name()] = target
+
+	if(!target_names.len)
+		to_chat(user, span_warning("All marked targets are no longer valid."))
+		marked_targets = list()
+		return
+
+	var/choice = input(user, "Select a marked target:", "Bounty Marker") as null|anything in target_names
+	if(!choice)
+		return
+
+	var/datum/marked_target/selected = target_names[choice]
+	to_chat(user, span_notice("Selected target: [selected.get_display_name()]"))
+	to_chat(user, span_notice("Status: [selected.is_valid() ? "Valid" : "Invalid"]"))
+	to_chat(user, span_notice("Marked: [selected.mark_time ? time2text(selected.mark_time, "hh:mm:ss") : "Unknown"]"))
+
+/obj/item/bounty_marker/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+	. = ..()
+	if(!proximity_flag && get_dist(user, target) > 7) // Allow reasonable range
+		return
+
+	if(!isliving(target))
+		to_chat(user, span_warning("You can only mark living targets."))
+		return
+
+	var/mob/living/living_target = target
+	if(living_target == user)
+		to_chat(user, span_warning("You cannot mark yourself as a target."))
+		return
+
+	// Check if target is already marked
+	for(var/datum/marked_target/existing in marked_targets)
+		if(existing.target_ref && existing.target_ref.resolve() == living_target)
+			to_chat(user, span_warning("[living_target.real_name] is already marked."))
+			return
+
+	// Remove oldest target if at max capacity
+	if(marked_targets.len >= max_targets)
+		var/datum/marked_target/oldest = marked_targets[1]
+		marked_targets -= oldest
+		qdel(oldest)
+
+	// Create new marked target
+	var/datum/marked_target/new_target = new()
+	new_target.target_ref = WEAKREF(living_target)
+	new_target.target_name = living_target.real_name
+	new_target.target_ckey = living_target.ckey
+	new_target.mark_time = world.time
+	new_target.marker_user = user.real_name
+
+	marked_targets += new_target
+
+	to_chat(user, span_notice("Target marked: [living_target.real_name]"))
+
+	// Silent marking - no message to target
+	// Optional: Add a subtle effect or log for admins
+	log_game("[user.real_name] marked [living_target.real_name] as a bounty target using a bounty marker.")
+
+// Data structure for marked targets
+/datum/marked_target
+	var/datum/weakref/target_ref
+	var/target_name
+	var/target_ckey
+	var/mark_time
+	var/marker_user
+	var/used_in_contract = FALSE
+
+/datum/marked_target/proc/is_valid()
+	if(used_in_contract)
+		return FALSE
+	var/mob/target = target_ref?.resolve()
+	return target && target.stat != DEAD // Allow unconscious targets
+
+/datum/marked_target/proc/get_display_name()
+	var/mob/target = target_ref?.resolve()
+	if(target)
+		return "[target_name] ([target.stat == DEAD ? "DEAD" : "ALIVE"])"
+	return "[target_name] (MISSING)"
+
+/datum/marked_target/proc/get_target()
+	return target_ref?.resolve()
+
+/datum/marked_target/proc/mark_as_used()
+	used_in_contract = TRUE
 
 /proc/add_mammons_to_atom(atom/movable/target, mammons_to_add)
 	if(!target || mammons_to_add <= 0)
