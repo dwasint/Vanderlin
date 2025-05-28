@@ -555,7 +555,7 @@
 		O.update_hands(src)
 		update_grab_intents()
 
-/mob/living/carbon/proc/is_limb_covered(obj/item/bodypart/limb)
+/mob/living/proc/is_limb_covered(obj/item/bodypart/limb)
 	if(!limb)
 		return FALSE
 
