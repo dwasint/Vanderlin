@@ -1451,8 +1451,8 @@
 	if(moving_resist) //we resisted by trying to move
 		client?.move_delay = world.time + 20
 
-	adjust_stamina(rand(3,7)
-	pulledby.adjust_stamina(rand(3,6)
+	adjust_stamina(rand(3,7))
+	pulledby.adjust_stamina(rand(3,6))
 
 	MOBTIMER_SET(pulledby, MT_RESIST_GRAB)
 
