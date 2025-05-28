@@ -422,12 +422,10 @@
 	if(CZ)
 		if( !(check_zone(L.zone_selected) in acceptable) )
 			to_chat(L, "<span class='warning'>I can't reach that.</span>")
-			testing("reach2")
 			return FALSE
 	else
 		if( !(L.zone_selected in acceptable) )
 			to_chat(L, "<span class='warning'>I can't reach that.</span>")
-			testing("reach2")
 			return FALSE
 	return TRUE
 
@@ -1384,6 +1382,9 @@
 /mob/living/resist_grab(moving_resist)
 	. = TRUE
 
+	if(!MOBTIMER_FINISHED(pulledby, MT_RESIST_GRAB, 2 SECONDS))
+		return
+
 	var/wrestling_diff = 0
 	var/resist_chance = BASE_GRAB_RESIST_CHANCE + 15 // BUFF: Base chance increased
 	var/mob/living/L = pulledby
@@ -1447,10 +1448,13 @@
 	if(time_grabbed > 10 SECONDS)
 		resist_chance += min(time_grabbed / 50, 20) // Up to +20% after long grabs
 
-	client?.move_delay = world.time + 15 // BUFF: Reduced delay (was 20)
-	changeNext_move(CLICK_CD_RESIST)
-	adjust_stamina(rand(3,7)) // BUFF: Reduced stamina cost (was 4-9)
-	pulledby.adjust_stamina(rand(3,6)) // Increased grabber stamina cost (was 2-5)
+	if(moving_resist) //we resisted by trying to move
+		client?.move_delay = world.time + 20
+
+	adjust_stamina(rand(3,7)
+	pulledby.adjust_stamina(rand(3,6)
+
+	MOBTIMER_SET(pulledby, MT_RESIST_GRAB)
 
 	if(prob(resist_chance))
 		visible_message("<span class='warning'>[src] breaks free of [pulledby]'s grip!</span>", \
@@ -1754,7 +1758,6 @@
 	if (HAS_TRAIT(src, TRAIT_NOFIRE))
 		return
 	if((fire_stacks > 0 || divine_fire_stacks > 0) && !on_fire)
-		testing("ignis")
 		on_fire = TRUE
 		src.visible_message("<span class='warning'>[src] catches fire!</span>", \
 						"<span class='danger'>I'm set on fire!</span>")
