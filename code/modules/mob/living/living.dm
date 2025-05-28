@@ -1386,9 +1386,12 @@
 		return
 
 	var/wrestling_diff = 0
-	var/resist_chance = BASE_GRAB_RESIST_CHANCE + 15 // BUFF: Base chance increased
+	var/resist_chance = BASE_GRAB_RESIST_CHANCE
 	var/mob/living/L = pulledby
 	var/combat_modifier = 1
+
+	var/positioning_modifier = L.get_positioning_modifier(src)
+	positioning_modifier = 2.0 - positioning_modifier
 
 	if(mind)
 		wrestling_diff += (get_skill_level(/datum/skill/combat/wrestling))
@@ -1396,16 +1399,15 @@
 		wrestling_diff -= (L.get_skill_level(/datum/skill/combat/wrestling))
 
 	if(has_status_effect(/datum/status_effect/buff/oiled))
-		combat_modifier += 0.6
-		resist_chance += 25
+		var/obj/item/grabbing/grabbed = L.get_active_held_item()
+		if(!grabbed)
+			grabbed = L.get_inactive_held_item()
+		if(is_limb_covered(grabbed.limb_grabbed))
+			combat_modifier += 0.6
+			resist_chance += 25
 
 	if(HAS_TRAIT(src, TRAIT_RESTRAINED))
 		combat_modifier -= 0.2
-
-	if(L.body_position == LYING_DOWN && body_position != LYING_DOWN)
-		combat_modifier += 0.15
-	if(body_position == LYING_DOWN)
-		combat_modifier -= 0.05
 
 	if(pulledby.grab_state >= GRAB_AGGRESSIVE)
 		combat_modifier -= 0.05
@@ -1441,11 +1443,11 @@
 			combat_modifier -= 0.1 // BUFF: Reduced chokehold penalty (was 0.15)
 
 	resist_chance += ((((STASTR - L.STASTR)/2) + wrestling_diff) * 7 + rand(-5, 5))
-	resist_chance *= combat_modifier * stamina_factor
-	resist_chance = clamp(resist_chance, 15, 90) // BUFF: Minimum chance increased, max reduced
+	resist_chance *= combat_modifier * stamina_factor * positioning_modifier
+	resist_chance = clamp(resist_chance, 8, 90)
 
-	var/time_grabbed = world.time - S_TIMER_COOLDOWN_TIMELEFT(src, "broke_free")
-	if(time_grabbed > 10 SECONDS)
+	var/time_grabbed = S_TIMER_COOLDOWN_TIMELEFT(src, "broke_free")
+	if(time_grabbed)
 		resist_chance += min(time_grabbed / 50, 20) // Up to +20% after long grabs
 
 	if(moving_resist) //we resisted by trying to move
