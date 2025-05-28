@@ -33,6 +33,24 @@
 	alert_type = /atom/movable/screen/alert/status_effect/oiled
 	var/slip_chance = 15 // chance to slip when moving
 
+/datum/status_effect/buff/oiled/on_apply()
+	. = ..()
+	RegisterSignal(owner, COMSIG_MOVABLE_MOVED, PROC_REF(on_move))
+
+/datum/status_effect/buff/oiled/on_remove()
+	. = ..()
+	UnregisterSignal(owner, COMSIG_MOVABLE_MOVED)
+
+/datum/status_effect/buff/oiled/proc/on_move(mob/living/mover)
+	if(!mover.is_limb_covered(mover.get_bodypart(BODY_ZONE_L_LEG)))
+		var/mob/living/carbon/human/human = mover
+		if(prob(6))
+			if(istype(human))
+				if(human.job == /datum/job/jester)
+					mover.oil_slip(total_time = 0.8 SECONDS, stun_duration = 0.8 SECONDS, height = 30, flip_count = 10)
+			else
+				mover.oil_slip(total_time = 0.8 SECONDS, stun_duration = 0.8 SECONDS, height = 12, flip_count = 0)
+
 /atom/movable/screen/alert/status_effect/oiled
 	name = "Oiled"
 	desc = "I'm covered in oil, making me slippery and harder to grab!"
