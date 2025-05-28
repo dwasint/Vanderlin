@@ -331,9 +331,6 @@
 			if(M.grippedby(user)) // grab was strengthened
 				bleed_suppressing = 0.5
 		if(/datum/intent/grab/choke)
-			if(user.buckled)
-				to_chat(user, span_warning("I can't do this while buckled!"))
-				return FALSE
 			if(limb_grabbed && grab_state > 0) //this implies a carbon victim
 				if(iscarbon(M) && M != user)
 					user.adjust_stamina(rand(1,3) * spam_penalty)
@@ -354,9 +351,6 @@
 						to_chat(user, span_warning("I can't reach [C]'s throat!"))
 					user.changeNext_move(CLICK_CD_MELEE)
 		if(/datum/intent/grab/hostage)
-			if(user.buckled)
-				to_chat(user, span_warning("I can't do this while buckled!"))
-				return FALSE
 			if(limb_grabbed && grab_state > GRAB_PASSIVE) //this implies a carbon victim
 				if(ishuman(M) && M != user)
 					var/mob/living/carbon/human/H = M
@@ -373,34 +367,22 @@
 						U.hostage = H
 						H.hostagetaker = U
 		if(/datum/intent/grab/twist)
-			if(user.buckled)
-				to_chat(user, span_warning("I can't do this while buckled!"))
-				return FALSE
 			if(limb_grabbed && grab_state > 0) //this implies a carbon victim
 				if(iscarbon(M))
 					user.adjust_stamina(rand(3,8) * spam_penalty)
 					twistlimb(user)
 		if(/datum/intent/grab/twistitem)
-			if(user.buckled)
-				to_chat(user, span_warning("I can't do this while buckled!"))
-				return FALSE
 			if(limb_grabbed && grab_state > 0) //this implies a carbon victim
 				if(ismob(M))
 					user.adjust_stamina(rand(3,8) * spam_penalty)
 					twistitemlimb(user)
 		if(/datum/intent/grab/remove)
-			if(user.buckled)
-				to_chat(user, span_warning("I can't do this while buckled!"))
-				return FALSE
 			if(isitem(sublimb_grabbed))
 				user.adjust_stamina(rand(3,8) * spam_penalty)
 				removeembeddeditem(user)
 			else
 				user.stop_pulling()
 		if(/datum/intent/grab/shove)
-			if(user.buckled)
-				to_chat(user, span_warning("I can't do this while buckled!"))
-				return FALSE
 			if(user.body_position == LYING_DOWN)
 				to_chat(user, "<span class='warning'>I must stand up first.</span>")
 				return
@@ -427,7 +409,7 @@
 				user.adjust_stamina(rand(5,15) * spam_penalty)
 				if(prob(clamp((((4 + ((user.STASTR - (M.STACON+2))/2) + skill_diff) * 10 + rand(-5, 5)) * combat_modifier), 5, 95)))
 					M.Knockdown(max(10 + (skill_diff * 2), 1))
-					M.drop_all_held_items()
+					M.set_resting(TRUE, TRUE)
 					playsound(src,"genblunt",100,TRUE)
 					if(user.l_grab && user.l_grab.grabbed == M && user.r_grab && user.r_grab.grabbed == M && user.r_grab.grab_state == GRAB_AGGRESSIVE )
 						M.visible_message(span_danger("[user] throws [M] to the ground!"), \
@@ -439,13 +421,8 @@
 				else
 					M.visible_message(span_warning("[user] tries to shove [M]!"), \
 									span_danger("[user] tries to shove me!"), span_hear("I hear aggressive shuffling!"), COMBAT_MESSAGE_RANGE)
-					user.dropItemToGround(src, force = TRUE, silent = TRUE)
-					user.start_pulling(M, suppress_message = TRUE, accurate = TRUE)
 				user.changeNext_move(CLICK_CD_GRABBING)
 		if(/datum/intent/grab/disarm)
-			if(user.buckled)
-				to_chat(user, span_warning("I can't do this while buckled!"))
-				return FALSE
 			var/obj/item/I
 			if(sublimb_grabbed == BODY_ZONE_PRECISE_L_HAND && M.active_hand_index == 1)
 				I = M.get_active_held_item()
@@ -488,9 +465,6 @@
 				to_chat(user, span_warning("They aren't holding anything in that hand!"))
 				return
 		if(/datum/intent/grab/armdrag)
-			if(user.buckled)
-				to_chat(user, span_warning("I can't do this while buckled!"))
-				return FALSE
 			var/obj/item/I
 			if(ispath(limb_grabbed.type, /obj/item/bodypart/l_arm))
 				I = M.get_item_for_held_index(1)
