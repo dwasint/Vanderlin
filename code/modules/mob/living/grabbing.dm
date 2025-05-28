@@ -29,7 +29,7 @@
 
 /datum/status_effect/buff/oiled
 	id = "oiled"
-	duration = 30 SECONDS
+	duration = 5 MINUTES
 	alert_type = /atom/movable/screen/alert/status_effect/oiled
 	var/slip_chance = 15 // chance to slip when moving
 
