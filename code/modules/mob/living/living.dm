@@ -1410,7 +1410,7 @@
 		combat_modifier -= 0.2
 
 	if(pulledby.grab_state >= GRAB_AGGRESSIVE)
-		combat_modifier -= 0.1
+		combat_modifier -= 0.15
 
 	var/obj/item/puller_hand = pulledby.get_active_held_item()
 	if(isitem(puller_hand))
