@@ -2,6 +2,15 @@
 	. = ..()
 	stop_looking()
 	update_turf_movespeed(loc)
+	if(has_status_effect(/datum/status_effect/buff/oiled))
+		if(!is_limb_covered(get_bodypart(BODY_ZONE_L_LEG)))
+			var/mob/living/carbon/human/human = src
+			if(prob(6))
+				if(istype(human))
+					if(human.job == /datum/job/jester)
+						oil_slip(total_time = 0.8 SECONDS, stun_duration = 0.8 SECONDS, height = 30, flip_count = 10)
+				else
+					oil_slip(total_time = 0.8 SECONDS, stun_duration = 0.8 SECONDS, height = 12, flip_count = 0)
 	if(m_intent == MOVE_INTENT_RUN)
 		consider_ambush()
 

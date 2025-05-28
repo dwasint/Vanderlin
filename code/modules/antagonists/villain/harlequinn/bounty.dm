@@ -1,5 +1,8 @@
 GLOBAL_LIST_EMPTY(bounty_locations)
 GLOBAL_LIST_EMPTY(bounty_boards)
+
+GLOBAL_LIST_INIT(bounty_rep, list())  // ckey -> reputation score
+
 /obj/structure/bounty_board
 	name = "bounty board"
 	desc = "A weathered wooden board covered in various contracts and notices. Dark stains suggest not all jobs end well."
@@ -12,7 +15,6 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 	var/total_bounty_pool = 0
 	var/list/delivery_locations = list() // Populated from landmarks
 	var/list/contraband_packs = list() // Available contraband supply packs
-	var/static/list/harlequinn_reputation = list() // ckey -> reputation score
 
 /obj/structure/bounty_board/Initialize()
 	. = ..()
@@ -37,15 +39,15 @@ GLOBAL_LIST_EMPTY(bounty_boards)
 /obj/structure/bounty_board/proc/get_reputation(mob/user)
 	if(!user.ckey)
 		return 0
-	return harlequinn_reputation[user.ckey] || 0
+	return GLOB.bounty_rep[user.ckey] || 0
 
 /obj/structure/bounty_board/proc/modify_reputation(mob/user, amount)
 	if(!user.ckey)
 		return
 	var/current = get_reputation(user)
-	harlequinn_reputation[user.ckey] = current + amount
+	GLOB.bounty_rep[user.ckey] = current + amount
 
-	var/new_rep = harlequinn_reputation[user.ckey]
+	var/new_rep = GLOB.bounty_rep[user.ckey]
 	var/rep_text = get_reputation_text(new_rep)
 	to_chat(user, span_notice("Your reputation has [amount > 0 ? "increased" : "decreased"] to [new_rep] ([rep_text])"))
 
