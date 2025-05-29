@@ -14,7 +14,6 @@
 	pass_flags = PASSCLOSEDTURF | PASSMOB | PASSTABLE
 	next_move_modifier = 0
 
-
 	var/list/learned_routes = list() // AI learns efficient paths
 	var/list/worker_relationships = list() // Track worker interactions
 	var/list/recent_events = list() // Event history affects behavior
@@ -38,7 +37,7 @@
 
 	var/datum/building_datum/held_build
 
-	var/worker_type = /mob/living/simple_animal/hostile/retaliate/leylinelycan
+	var/worker_type = /mob/living/simple_animal/hostile/retaliate/fae/sprite
 
 /mob/camera/strategy_controller/Initialize()
 	. = ..()

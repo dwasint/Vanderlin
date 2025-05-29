@@ -74,6 +74,9 @@
 	return TRUE
 
 /datum/worker_mind/proc/head_to_target()
+	if(!movement_target)
+		return
+
 	if(next_recalc < world.time)
 		enhanced_pathfinding()
 		next_recalc = world.time + 2 SECONDS

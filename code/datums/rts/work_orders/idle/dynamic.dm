@@ -159,7 +159,7 @@
 /datum/work_order/explore_area/finish_work()
 	. = ..()
 	var/turf/open/T = get_turf(work_target)
-	T.explored_by_workers = TRUE
+	T?.explored_by_workers = TRUE
 	worker.controller_mind.experience_level++
 	worker.controller_mind.adjust_mood(2, "discovery")
 
