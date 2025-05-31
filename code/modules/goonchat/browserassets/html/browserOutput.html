@@ -23,14 +23,22 @@
     <div id="messages">
     </div>
 
+    <div id="filterTabs">
+        <div class="filter-tab active" data-filter="all">All</div>
+        <button id="addTabBtn">+ Add Tab</button>
+    </div>
+
+    <div id="addTabForm">
+        <h3>Add Custom Filter Tab</h3>
+        <input type="text" id="tabName" placeholder="Tab name (e.g., 'Security')">
+        <input type="text" id="tabClasses" placeholder="CSS classes (comma-separated, e.g., 'security,secradio')">
+        <div>
+            <button class="save" onclick="saveCustomTab()">Save</button>
+            <button class="cancel" onclick="cancelAddTab()">Cancel</button>
+        </div>
+    </div>
+
     <div id="userBar" style="display: none;">
-        <!--		<div id="ping">
-                    <i class="fas fa-circle" id="pingDot"></i>
-                    <span class="ms" id="pingMs">--ms</span>
-                </div>-->
-        <!--		<div id="darkmodething">
-                    <a href="#" class="subCell toggle" id="darkmodetoggle" title="Darkmode"><i class="fas fa-adjust"></i></a>
-                </div>-->
                 <div id="audio">
                     <a href="#" class="subCell toggle" id="toggleAudio" title="Audio"><i class="fas fa-volume-up"></i></a>
                 </div>
@@ -51,14 +59,12 @@
                 </div>
             </div>
 
-    <!-- Context menu -->
     <div id="contextMenu">
         <ul>
         </ul>
     </div>
 
     <div id="userBar" style="display: none;">
-        <!-- Your user bar content here -->
     </div>
 
     <script type="text/javascript" src="errorHandler.js"></script>

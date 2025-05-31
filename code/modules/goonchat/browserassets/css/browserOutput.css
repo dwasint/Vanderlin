@@ -141,11 +141,147 @@ a.popt {text-decoration: none;}
 }
 #loading i {display: block; padding-bottom: 3px;}
 
+#filterTabs {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	background: #2d2d2d;
+	border-bottom: 2px solid #4CAF50;
+	z-index: 100;
+	display: flex;
+	flex-wrap: wrap;
+	padding: 5px;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.filter-tab {
+	background: #3d3d3d;
+	color: #ffffff;
+	border: 1px solid #000000;
+	padding: 8px 15px;
+	margin: 2px;
+	cursor: pointer;
+	border-radius: 4px;
+	transition: all 0.3s ease;
+	font-size: 12px;
+	position: relative;
+	user-select: none;
+}
+
+.filter-tab:hover {
+	background: #4d4d4d;
+	transform: translateY(-1px);
+}
+
+.filter-tab.active {
+	background: #1b1b1b;
+	font-weight: bold;
+}
+
+.filter-tab.custom {
+	background: #413e3c;
+}
+
+.filter-tab.custom.active {
+	background: #555251;
+}
+
+.filter-tab .remove-tab {
+	margin-left: 8px;
+	color: #ff4444;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.filter-tab .remove-tab:hover {
+	color: #ff0000;
+}
+
+#addTabBtn {
+	background: #6c757d;
+	color: white;
+	border: none;
+	padding: 8px 12px;
+	margin: 2px;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 12px;
+	transition: background 0.3s ease;
+}
+
+#addTabBtn:hover {
+	background: #5a6268;
+}
+
+#addTabForm {
+	display: none;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: #2d2d2d;
+	border: 1px solid #555;
+	border-radius: 8px;
+	padding: 20px;
+	z-index: 1000;
+	min-width: 300px;
+}
+
+#addTabForm input {
+	width: 100%;
+	padding: 8px;
+	margin: 5px 0;
+	background: #3d3d3d;
+	border: 1px solid #555;
+	border-radius: 4px;
+	color: #ffffff;
+}
+
+#addTabForm button {
+	padding: 8px 15px;
+	margin: 5px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+#addTabForm .save {
+	background: #4CAF50;
+	color: white;
+}
+
+#addTabForm .cancel {
+	background: #6c757d;
+	color: white;
+}
+
+.hidden {
+	display: none !important;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+	#filterTabs {
+		font-size: 11px;
+	}
+
+	.filter-tab {
+		padding: 6px 10px;
+		font-size: 11px;
+	}
+
+	#userBar {
+		flex-direction: column;
+		gap: 5px;
+	}
+}
 #messages {
 	font-size: 13px;
 	padding: 3px;
 	margin: 0;
 	word-wrap: break-word;
+	padding-top: 60px;
 }
 #newMessages {
 	position: fixed;
@@ -182,6 +318,7 @@ a.popt {text-decoration: none;}
 	position: fixed;
 	top: 0;
 	right: 0;
+	padding-top: 60px;
 }
 #userBar .subCell {
 	background: #202020;
