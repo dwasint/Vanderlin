@@ -47,14 +47,12 @@
 	if(!installed_node)
 		return
 
-	// Boost node recharge when installed
 	if(installed_node.current_essence < installed_node.max_essence && world.time >= installed_node.last_recharge + 1 MINUTES)
 		var/boosted_recharge = round(installed_node.recharge_rate * efficiency_bonus)
 		installed_node.current_essence = min(installed_node.max_essence, installed_node.current_essence + boosted_recharge)
 		installed_node.last_recharge = world.time
 		installed_node.update_icon()
 
-	// Harvest essence automatically
 	if(installed_node.current_essence > 0)
 		var/harvest_amount = min(installed_node.current_essence, harvest_rate)
 		if(harvest_amount > 0 && storage.add_essence(installed_node.essence_type.type, harvest_amount))
@@ -113,7 +111,6 @@
 		to_chat(user, span_warning("No node is installed."))
 		return
 
-	// Convert back to structure when removed
 	var/obj/structure/essence_node/structure_node = new(get_turf(src))
 	structure_node.essence_type = installed_node.essence_type
 	structure_node.tier = installed_node.tier
@@ -139,7 +136,6 @@
 				to_chat(user, span_warning("There's already a node installed."))
 				return
 
-			// Install from jar
 			var/obj/item/essence_node_portable/portable = jar.contained_node
 			jar.contained_node = null
 			jar.update_icon()
