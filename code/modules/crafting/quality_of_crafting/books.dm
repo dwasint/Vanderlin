@@ -91,6 +91,18 @@
 			temp_recipe = new path()
 			var/datum/book_entry/r = temp_recipe
 			category = r.category
+		else if(ispath(path, /datum/alch_cauldron_recipe))
+			temp_recipe = new path()
+			var/datum/alch_cauldron_recipe/r = temp_recipe
+			category = r.category
+		else if(ispath(path, /datum/essence_combination))
+			temp_recipe = new path()
+			var/datum/essence_combination/r = temp_recipe
+			category = r.category
+		else if(ispath(path, /datum/natural_precursor))
+			temp_recipe = new path()
+			var/datum/natural_precursor/r = temp_recipe
+			category = r.category
 
 		// Clean up our temporary instance
 		if(temp_recipe)
@@ -309,6 +321,9 @@
 						continue
 
 				var/recipe_name = initial(sub_path.name)
+				if(ispath(sub_path, /datum/alch_cauldron_recipe))
+					var/datum/alch_cauldron_recipe/typed_sub = sub_path
+					recipe_name = typed_sub.recipe_name
 
 				// Check if this recipe belongs to the current category
 				var/should_show = TRUE
@@ -474,6 +489,21 @@
 	else if(ispath(path, /datum/book_entry))
 		temp_recipe = new path()
 		var/datum/book_entry/r = temp_recipe
+		recipe_name = initial(r.name)
+		recipe_html = get_recipe_specific_html(r, user)
+	else if(ispath(path, /datum/alch_cauldron_recipe))
+		temp_recipe = new path()
+		var/datum/alch_cauldron_recipe/r = temp_recipe
+		recipe_name = initial(r.recipe_name)
+		recipe_html = get_recipe_specific_html(r, user)
+	else if(ispath(path, /datum/natural_precursor))
+		temp_recipe = new path()
+		var/datum/natural_precursor/r = temp_recipe
+		recipe_name = initial(r.name)
+		recipe_html = get_recipe_specific_html(r, user)
+	else if(ispath(path, /datum/essence_combination))
+		temp_recipe = new path()
+		var/datum/essence_combination/r = temp_recipe
 		recipe_name = initial(r.name)
 		recipe_html = get_recipe_specific_html(r, user)
 
@@ -774,4 +804,19 @@
 		/datum/slapcraft_recipe/arcyne,
 		/datum/container_craft/cooking/arcyne,
 		/datum/runerituals,
+	)
+
+
+/obj/item/recipe_book/alchemy
+	name = "Codex Virellia"
+	desc = "Transcribed by Maerion Duskwind, avid hater of gnomes."
+	icon_state ="book4_0"
+	base_icon_state = "book4"
+
+	types = list(
+		/datum/book_entry/gnome_homunculus,
+		/datum/book_entry/essence_crafting,
+		/datum/alch_cauldron_recipe,
+		/datum/essence_combination,
+		/datum/natural_precursor,
 	)

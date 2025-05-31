@@ -24,6 +24,8 @@
 	var/should_process = FALSE
 	var/enchantment_color = COLOR_BLUE_GRAY
 
+	var/list/essence_recipe = list() // Format: list(/datum/thaumaturgical_essence/type = amount)
+
 /datum/enchantment/New()
 	. = ..()
 	if(should_process)

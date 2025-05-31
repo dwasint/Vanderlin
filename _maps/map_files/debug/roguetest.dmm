@@ -918,7 +918,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
 "cq" = (
-/turf/closed/mineral/bedrock,
+/turf/closed/wall/mineral/stone,
 /area/rogue/outdoors/beach)
 "cr" = (
 /obj/structure/flora/grass/herb/calendula,
@@ -1074,12 +1074,13 @@
 /obj/structure/kneestingers,
 /turf/open/water/river,
 /area/rogue/outdoors/mountains/decap)
+"do" = (
+/obj/item/reagent_containers/glass/bucket,
+/turf/open/floor/cobblerock,
+/area)
 "dw" = (
-/obj/effect/landmark/start/lord{
-	dir = 8
-	},
-/turf/open/floor/grass/yel,
-/area/rogue/outdoors)
+/turf/open/floor/wood,
+/area/rogue)
 "ef" = (
 /obj/structure/hotspring/border/five,
 /obj/structure/flora/hotspring_rocks{
@@ -1099,6 +1100,10 @@
 /obj/structure/flora/grass/herb/symphitum,
 /turf/open/floor/grass/yel,
 /area/rogue/outdoors)
+"et" = (
+/obj/structure/window/openclose,
+/turf/open/floor/churchbrick,
+/area/rogue/indoors)
 "ew" = (
 /obj/structure/hotspring/border/thirteen,
 /turf/open/floor/dirt/road,
@@ -1107,6 +1112,9 @@
 /obj/structure/rotation_piece/cog,
 /turf/open/floor/grass/yel,
 /area/rogue/outdoors)
+"eA" = (
+/turf/open/floor/cobblerock,
+/area)
 "eD" = (
 /obj/structure/hotspring,
 /obj/effect/lily_petal/three,
@@ -1121,6 +1129,111 @@
 	},
 /turf/open/floor/grass/yel,
 /area/rogue/outdoors)
+"eV" = (
+/obj/item/reagent_containers/food/snacks/apple_dried{
+	pixel_x = -9
+	},
+/obj/item/natural/stone{
+	pixel_y = 12;
+	pixel_x = -9
+	},
+/obj/item/natural/stone{
+	pixel_y = 12;
+	pixel_x = -9
+	},
+/obj/item/natural/stone{
+	pixel_y = 12;
+	pixel_x = -9
+	},
+/obj/item/natural/stone{
+	pixel_y = 12;
+	pixel_x = -9
+	},
+/obj/item/natural/stone{
+	pixel_y = 12;
+	pixel_x = -9
+	},
+/obj/item/natural/stone{
+	pixel_y = 12;
+	pixel_x = -9
+	},
+/obj/item/natural/stone{
+	pixel_y = 12;
+	pixel_x = -9
+	},
+/obj/item/natural/stone{
+	pixel_y = 12;
+	pixel_x = -9
+	},
+/obj/item/natural/stone{
+	pixel_y = 12;
+	pixel_x = -9
+	},
+/obj/item/reagent_containers/food/snacks/apple_dried{
+	pixel_x = -9
+	},
+/obj/item/reagent_containers/food/snacks/apple_dried{
+	pixel_x = -9
+	},
+/obj/item/reagent_containers/food/snacks/apple_dried{
+	pixel_x = -9
+	},
+/obj/item/reagent_containers/food/snacks/apple_dried{
+	pixel_x = -9
+	},
+/obj/item/reagent_containers/food/snacks/apple_dried{
+	pixel_x = -9
+	},
+/obj/item/reagent_containers/food/snacks/apple_dried{
+	pixel_x = -9
+	},
+/obj/item/reagent_containers/food/snacks/apple_dried{
+	pixel_x = -9
+	},
+/obj/item/alch/bone{
+	pixel_x = 2;
+	pixel_y = 13
+	},
+/obj/item/alch/bone{
+	pixel_x = 2;
+	pixel_y = 13
+	},
+/obj/item/alch/bone{
+	pixel_x = 2;
+	pixel_y = 13
+	},
+/obj/item/alch/bone{
+	pixel_x = 2;
+	pixel_y = 13
+	},
+/obj/item/alch/bone{
+	pixel_x = 2;
+	pixel_y = 13
+	},
+/obj/item/alch/bone{
+	pixel_x = 2;
+	pixel_y = 13
+	},
+/obj/item/alch/bone{
+	pixel_x = 2;
+	pixel_y = 13
+	},
+/obj/item/alch/bone{
+	pixel_x = 2;
+	pixel_y = 13
+	},
+/obj/item/alch/bone{
+	pixel_x = 2;
+	pixel_y = 13
+	},
+/obj/item/essence_connector{
+	pixel_x = 7
+	},
+/obj/structure/table/wood/counter/end{
+	dir = 4
+	},
+/turf/open/floor/churchbrick,
+/area/rogue/indoors)
 "fe" = (
 /obj/structure/closet/crate/chest,
 /obj/item/weapon/hammer/iron,
@@ -1143,6 +1256,9 @@
 /obj/structure/flora/grass,
 /turf/open/floor/grass/yel,
 /area/rogue/outdoors)
+"fO" = (
+/turf/closed/mineral/bedrock,
+/area)
 "fQ" = (
 /obj/structure/bridge_stakes,
 /turf/open/floor/dirt/road,
@@ -1181,6 +1297,11 @@
 	pixel_x = 2
 	},
 /turf/open/floor/wood,
+/area/rogue/indoors)
+"gK" = (
+/obj/machinery/light/fueled/torchholder/l,
+/obj/machinery/essence/reservoir,
+/turf/open/floor/churchbrick,
 /area/rogue/indoors)
 "hd" = (
 /obj/structure/hotspring/border/five,
@@ -1221,6 +1342,10 @@
 /obj/structure/hotspring/border/three,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
+"jn" = (
+/obj/structure/soil/debug_soil/random,
+/turf/open/floor/dirt/road,
+/area)
 "jt" = (
 /obj/structure/hotspring/border/three,
 /obj/machinery/light/fueled/torchholder/hotspring/standing{
@@ -1237,6 +1362,13 @@
 /obj/item/bedsheet/pelt,
 /turf/open/floor/carpet,
 /area/rogue/indoors)
+"jR" = (
+/obj/effect/decal/carpet/kover_darkred{
+	pixel_y = 16;
+	pixel_x = -9
+	},
+/turf/open/floor/wood,
+/area/rogue/indoors)
 "jV" = (
 /obj/structure/rotation_piece,
 /obj/machinery/light/fueled/torchholder/hotspring/standing{
@@ -1252,6 +1384,10 @@
 /obj/structure/closet/crate/miningcar,
 /turf/open/floor/grass/yel,
 /area/rogue/outdoors)
+"kj" = (
+/obj/structure/well,
+/turf/open/floor/cobblerock,
+/area)
 "ky" = (
 /obj/structure/flora/ausbushes/ywflowers,
 /turf/open/floor/grass/yel,
@@ -1282,6 +1418,17 @@
 	},
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/mountains/decap)
+"lU" = (
+/obj/effect/decal/carpet/kover_purple{
+	dir = 4;
+	pixel_y = 17;
+	pixel_x = -5
+	},
+/obj/structure/mannequin/male,
+/obj/item/clothing/head/wizhat/witch,
+/obj/item/clothing/shirt/robe/magus,
+/turf/open/floor/churchbrick,
+/area/rogue/indoors)
 "lV" = (
 /obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/cobble,
@@ -1384,6 +1531,16 @@
 "pc" = (
 /turf/open/floor/cobblerock,
 /area/rogue/indoors)
+"pe" = (
+/obj/effect/decal/carpet/square{
+	pixel_y = -17;
+	pixel_x = -16
+	},
+/obj/effect/landmark/start/lord{
+	dir = 8
+	},
+/turf/open/floor/churchbrick,
+/area/rogue/indoors)
 "pD" = (
 /obj/structure/hotspring/border/fourteen,
 /turf/open/floor/dirt/road,
@@ -1439,6 +1596,9 @@
 "qZ" = (
 /turf/closed/mineral/random/high,
 /area/rogue/outdoors/mountains/decap)
+"rd" = (
+/turf/open/floor/churchbrick,
+/area/rogue/indoors)
 "rf" = (
 /obj/structure/window/openclose{
 	dir = 8
@@ -1490,6 +1650,10 @@
 /obj/structure/flora/grass/herb/symphitum,
 /turf/open/floor/grass/yel,
 /area/rogue/outdoors)
+"si" = (
+/obj/machinery/essence/reservoir,
+/turf/open/floor/churchbrick,
+/area/rogue/indoors)
 "ss" = (
 /turf/open/transparent/openspace,
 /area/rogue/outdoors)
@@ -1584,6 +1748,11 @@
 /obj/structure/hotspring/border/two,
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/mountains/decap)
+"uO" = (
+/obj/machinery/light/fueled/torchholder/r,
+/obj/machinery/essence/reservoir,
+/turf/open/floor/churchbrick,
+/area/rogue/indoors)
 "uV" = (
 /turf/open/lava/flow{
 	dir = 8
@@ -1597,6 +1766,14 @@
 /obj/effect/lily_petal/two,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
+"vJ" = (
+/obj/machinery/light/fueled/torchholder/r,
+/turf/open/floor/churchbrick,
+/area/rogue/indoors)
+"vM" = (
+/obj/machinery/essence/reservoir/filled/life,
+/turf/open/floor/wood,
+/area/rogue/indoors)
 "vV" = (
 /obj/machinery/light/fueled/campfire/densefire,
 /turf/open/floor/cobblerock,
@@ -1649,6 +1826,17 @@
 	},
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors)
+"wR" = (
+/obj/item/reagent_containers/glass/carafe/water,
+/turf/open/floor/cobblerock,
+/area)
+"wS" = (
+/obj/machinery/essence/combiner{
+	pixel_y = 10
+	},
+/obj/structure/table/stone_small,
+/turf/open/floor/wood,
+/area/rogue/indoors)
 "wY" = (
 /obj/structure/flora/sakura{
 	pixel_y = -13
@@ -1738,6 +1926,10 @@
 /obj/structure/hotspring/border/eleven,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
+"zL" = (
+/obj/structure/door,
+/turf/open/floor/churchbrick,
+/area/rogue/indoors)
 "zM" = (
 /obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/blocks,
@@ -1805,6 +1997,10 @@
 	},
 /turf/open/floor/dirt,
 /area/rogue/outdoors/mountains/decap)
+"AP" = (
+/obj/structure/soil,
+/turf/open/floor/dirt/road,
+/area)
 "AQ" = (
 /obj/item/bottle_kit{
 	pixel_x = -3
@@ -1863,6 +2059,182 @@
 /obj/structure/hotspring,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
+"Ea" = (
+/obj/item/reagent_containers/food/snacks/produce/fruit/jacksberry{
+	pixel_y = -7;
+	pixel_x = -11
+	},
+/obj/item/reagent_containers/food/snacks/produce/fruit/jacksberry{
+	pixel_y = -7;
+	pixel_x = -11
+	},
+/obj/item/reagent_containers/food/snacks/produce/fruit/jacksberry{
+	pixel_y = -7;
+	pixel_x = -11
+	},
+/obj/item/reagent_containers/food/snacks/produce/fruit/jacksberry{
+	pixel_y = -7;
+	pixel_x = -11
+	},
+/obj/item/reagent_containers/food/snacks/produce/fruit/jacksberry{
+	pixel_y = -7;
+	pixel_x = -11
+	},
+/obj/item/reagent_containers/food/snacks/produce/fruit/jacksberry{
+	pixel_y = -7;
+	pixel_x = -11
+	},
+/obj/item/reagent_containers/food/snacks/produce/fruit/jacksberry{
+	pixel_y = -7;
+	pixel_x = -11
+	},
+/obj/item/reagent_containers/food/snacks/produce/fruit/jacksberry{
+	pixel_y = -7;
+	pixel_x = -11
+	},
+/obj/item/ore/coal{
+	pixel_y = 16;
+	pixel_x = -9
+	},
+/obj/structure/table/wood/counter/end{
+	dir = 8
+	},
+/obj/item/ore/coal{
+	pixel_y = 16;
+	pixel_x = -9
+	},
+/obj/item/ore/coal{
+	pixel_y = 16;
+	pixel_x = -9
+	},
+/obj/item/ore/coal{
+	pixel_y = 16;
+	pixel_x = -9
+	},
+/obj/item/ore/coal{
+	pixel_y = 16;
+	pixel_x = -9
+	},
+/obj/item/ore/coal{
+	pixel_y = 16;
+	pixel_x = -9
+	},
+/obj/item/ore/coal{
+	pixel_y = 16;
+	pixel_x = -9
+	},
+/obj/item/ore/coal{
+	pixel_y = 16;
+	pixel_x = -9
+	},
+/obj/item/ore/coal{
+	pixel_y = 16;
+	pixel_x = -9
+	},
+/obj/item/ore/coal{
+	pixel_y = 16;
+	pixel_x = -9
+	},
+/obj/item/ore/coal{
+	pixel_y = 16;
+	pixel_x = -9
+	},
+/obj/item/ore/coal{
+	pixel_y = 16;
+	pixel_x = -9
+	},
+/obj/item/reagent_containers/food/snacks/produce/fyritius{
+	pixel_y = -12
+	},
+/obj/item/reagent_containers/food/snacks/produce/fyritius{
+	pixel_y = -12
+	},
+/obj/item/reagent_containers/food/snacks/produce/fyritius{
+	pixel_y = -12
+	},
+/obj/item/reagent_containers/food/snacks/produce/fyritius{
+	pixel_y = -12
+	},
+/obj/item/reagent_containers/food/snacks/produce/fyritius{
+	pixel_y = -12
+	},
+/obj/item/reagent_containers/food/snacks/produce/fyritius{
+	pixel_y = -12
+	},
+/obj/item/reagent_containers/food/snacks/produce/fyritius{
+	pixel_y = -12
+	},
+/obj/item/reagent_containers/food/snacks/produce/fyritius{
+	pixel_y = -12
+	},
+/obj/item/reagent_containers/food/snacks/produce/fyritius{
+	pixel_y = -12
+	},
+/obj/item/reagent_containers/food/snacks/produce/fyritius{
+	pixel_y = -12
+	},
+/obj/item/reagent_containers/food/snacks/produce/fyritius{
+	pixel_y = -12
+	},
+/obj/item/reagent_containers/food/snacks/produce/fyritius{
+	pixel_y = -12
+	},
+/obj/item/reagent_containers/food/snacks/produce/fyritius{
+	pixel_y = -12
+	},
+/obj/item/reagent_containers/food/snacks/produce/fyritius{
+	pixel_y = -12
+	},
+/obj/item/gem{
+	pixel_y = 13;
+	pixel_x = 4
+	},
+/obj/item/gem{
+	pixel_y = 13;
+	pixel_x = 4
+	},
+/obj/item/gem{
+	pixel_y = 13;
+	pixel_x = 4
+	},
+/obj/item/gem{
+	pixel_y = 13;
+	pixel_x = 4
+	},
+/obj/item/gem{
+	pixel_y = 13;
+	pixel_x = 4
+	},
+/obj/item/gem{
+	pixel_y = 13;
+	pixel_x = 4
+	},
+/obj/item/gem{
+	pixel_y = 13;
+	pixel_x = 4
+	},
+/obj/item/gem{
+	pixel_y = 13;
+	pixel_x = 4
+	},
+/obj/item/gem{
+	pixel_y = 13;
+	pixel_x = 4
+	},
+/obj/item/gem{
+	pixel_y = 13;
+	pixel_x = 4
+	},
+/obj/item/gem{
+	pixel_y = 13;
+	pixel_x = 4
+	},
+/obj/item/gem{
+	pixel_y = 13;
+	pixel_x = 4
+	},
+/turf/open/floor/churchbrick,
+/area/rogue/indoors)
 "EH" = (
 /obj/structure/fluff/railing/wood{
 	dir = 4;
@@ -1875,6 +2247,10 @@
 /obj/structure/gearbox,
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/mountains/decap)
+"EW" = (
+/obj/structure/closet/crate/chest/wicker/random_soilson,
+/turf/open/floor/cobblerock,
+/area)
 "EX" = (
 /obj/structure/hotspring/border/two,
 /obj/structure/bridge{
@@ -1964,6 +2340,9 @@
 	},
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
+"Il" = (
+/turf/open/floor/grass/yel,
+/area)
 "IW" = (
 /obj/structure/hotspring/border/nine,
 /obj/effect/falling_sakura,
@@ -1981,6 +2360,11 @@
 /obj/structure/hotspring/border/eight,
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/mountains/decap)
+"Jy" = (
+/obj/machinery/light/fueled/torchholder/l,
+/obj/machinery/light/fueled/cauldron,
+/turf/open/floor/churchbrick,
+/area/rogue/indoors)
 "JM" = (
 /obj/structure/well,
 /turf/open/floor/cobblerock,
@@ -2067,6 +2451,19 @@
 /obj/structure/irrigation_channel,
 /turf/open/floor/grass/yel,
 /area/rogue/outdoors)
+"NG" = (
+/obj/machinery/essence/splitter,
+/obj/structure/table/vtable,
+/turf/open/floor/wood,
+/area/rogue/indoors)
+"NO" = (
+/obj/item/reagent_containers/glass/bucket/wooden{
+	pixel_y = 17;
+	pixel_x = 1
+	},
+/obj/structure/well,
+/turf/open/floor/churchbrick,
+/area/rogue/indoors)
 "NY" = (
 /obj/effect/falling_sakura,
 /turf/open/floor/grass/yel,
@@ -2157,6 +2554,26 @@
 	},
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
+"SH" = (
+/obj/item/essence_vial{
+	pixel_y = 18;
+	pixel_x = -9
+	},
+/obj/item/essence_vial{
+	pixel_y = 14;
+	pixel_x = -4
+	},
+/obj/item/essence_vial{
+	pixel_y = 8;
+	pixel_x = 3
+	},
+/obj/item/essence_vial{
+	pixel_y = 7;
+	pixel_x = -6
+	},
+/obj/structure/table/vtable/v2,
+/turf/open/floor/wood,
+/area/rogue/indoors)
 "SS" = (
 /obj/structure/stairs/stone{
 	dir = 8
@@ -2230,6 +2647,13 @@
 "Uo" = (
 /turf/closed/basic,
 /area/rogue)
+"Uu" = (
+/obj/effect/decal/carpet/kover_black{
+	dir = 1;
+	pixel_y = -5
+	},
+/turf/open/floor/wood,
+/area/rogue/indoors)
 "Uv" = (
 /turf/closed,
 /area/rogue)
@@ -2269,6 +2693,10 @@
 /obj/structure/flora/grass/herb/urtica,
 /turf/open/floor/grass/yel,
 /area/rogue/outdoors)
+"VT" = (
+/obj/machinery/essence/enchantment_altar,
+/turf/open/floor/churchbrick,
+/area/rogue/indoors)
 "Wa" = (
 /obj/structure/rotation_piece,
 /turf/open/floor/grass/yel,
@@ -2350,6 +2778,11 @@
 /obj/structure/hotspring/border/twelve,
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/mountains/decap)
+"YZ" = (
+/obj/machinery/light/fueled/torchholder/r,
+/obj/machinery/essence/test_tube,
+/turf/open/floor/wood,
+/area/rogue/indoors)
 "Zs" = (
 /turf/closed/wall/mineral/wood,
 /area/rogue/indoors)
@@ -13617,12 +14050,12 @@ as
 as
 as
 as
-as
-as
-as
-at
+ax
+ax
+ax
+ax
 cq
-at
+QN
 Pm
 FN
 ky
@@ -13873,16 +14306,16 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-ac
-at
+ax
+ax
+Jy
+eV
+Ea
+ax
+ax
 Ln
 qg
-dw
+QN
 FN
 ew
 XL
@@ -14130,14 +14563,14 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-ac
-at
-at
+ax
+NG
+mY
+rd
+rd
+rd
+zL
+Wr
 ew
 Pl
 Pl
@@ -14387,13 +14820,13 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-ac
-at
+ax
+SH
+jR
+VT
+pe
+rd
+et
 ew
 XL
 cp
@@ -14644,13 +15077,13 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-ac
-at
+ax
+wS
+mY
+rd
+rd
+NO
+ax
 Fj
 cp
 ji
@@ -14901,13 +15334,13 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
-ac
-at
+ax
+ax
+rd
+si
+uO
+ax
+ax
 cp
 ji
 Wr
@@ -15158,13 +15591,13 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
-ac
-at
+ax
+ax
+zL
+ax
+ax
+ax
+ax
 yW
 Nb
 jC
@@ -15415,13 +15848,13 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
-ac
-at
+ax
+vM
+mY
+rd
+rd
+gK
+ax
 ui
 Sx
 ak
@@ -15672,12 +16105,12 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
-ac
+ax
+Uu
+mY
+rd
+rd
+rd
 ax
 ax
 rf
@@ -15929,11 +16362,11 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
+ax
+YZ
+mY
+rd
+rd
 ax
 rB
 zM
@@ -16184,13 +16617,13 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+fO
+fO
+ax
+ax
+ax
+rd
+rd
 ax
 yB
 bq
@@ -16441,13 +16874,13 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+fO
+jn
+jn
+Il
+zL
+vJ
+lU
 ax
 ro
 mi
@@ -16698,13 +17131,13 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+fO
+jn
+jn
+Il
+ax
+ax
+ax
 ax
 ro
 Wo
@@ -16955,14 +17388,14 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+fO
+jn
+jn
+Il
+jn
+jn
+jn
+jn
 ax
 ax
 ax
@@ -17212,15 +17645,15 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+fO
+jn
+jn
+Il
+jn
+jn
+jn
+jn
+fO
 ac
 ac
 at
@@ -17469,15 +17902,15 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+fO
+jn
+jn
+Il
+Il
+Il
+Il
+Il
+fO
 ac
 ac
 at
@@ -17726,15 +18159,15 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+fO
+Il
+Il
+Il
+AP
+AP
+AP
+AP
+fO
 ac
 ac
 at
@@ -17983,15 +18416,15 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+fO
+EW
+do
+kj
+wR
+eA
+EW
+fO
+fO
 ac
 ac
 at
@@ -18240,14 +18673,14 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+fO
+fO
+eA
+eA
+eA
+fO
+fO
+fO
 ac
 ac
 ac
@@ -18498,11 +18931,11 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
+fO
+fO
+fO
+fO
+fO
 ac
 ac
 ac
@@ -79153,9 +79586,9 @@ Uv
 Uv
 Uv
 Uv
-Uv
-Uv
-Uv
+dw
+dw
+dw
 at
 at
 at
@@ -79409,12 +79842,12 @@ Uv
 Uv
 Uv
 Uv
-Uv
-Uv
-Uv
-Uv
-ss
-ss
+dw
+dw
+dw
+dw
+DW
+DW
 at
 ss
 ss
@@ -79666,12 +80099,12 @@ Uv
 Uv
 Uv
 Uv
-Uv
-Uv
-Uv
-Uv
-tH
-ss
+dw
+dw
+dw
+dw
+DW
+DW
 at
 ss
 ss
@@ -79923,12 +80356,12 @@ Uv
 Uv
 Uv
 Uv
-Uv
-Uv
-Uv
-Uv
-tH
-ss
+dw
+dw
+dw
+dw
+DW
+DW
 at
 ss
 ss
@@ -80180,12 +80613,12 @@ Uv
 Uv
 Uv
 Uv
-Uv
-Uv
-Uv
-Uv
-tH
-ss
+dw
+dw
+dw
+dw
+DW
+DW
 at
 ss
 ss
@@ -80437,12 +80870,12 @@ Uv
 Uv
 Uv
 Uv
-Uv
-Uv
-Uv
-Uv
-tH
-ss
+dw
+dw
+dw
+dw
+DW
+DW
 at
 ss
 ss
@@ -80695,11 +81128,11 @@ Uv
 Uv
 Uv
 Uv
-Uv
-Uv
-Uv
-tH
-ss
+dw
+dw
+dw
+DW
+DW
 at
 ss
 ss

@@ -1,4 +1,7 @@
 ///Uses Byond's basic obstacle avoidance movement unless the target is on a z-level different to ours
+/datum/ai_movement/hybrid_pathing/gnome
+	max_path_distance = 300 //gnomes are psydon's smartest genetic freak
+
 /datum/ai_movement/hybrid_pathing
 	requires_processing = TRUE
 	max_pathing_attempts = 12

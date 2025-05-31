@@ -345,7 +345,7 @@ have ways of interacting with a specific atom and control it. They posses a blac
 			CancelActions()
 			return
 
-		if(get_dist(pawn, current_movement_target) > max_target_distance) //The distance is out of range
+		if(get_dist_3d(pawn, current_movement_target) > max_target_distance) //The distance is out of range
 			CancelActions()
 			return
 

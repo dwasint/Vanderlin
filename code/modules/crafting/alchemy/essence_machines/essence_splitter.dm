@@ -1,0 +1,184 @@
+/obj/machinery/essence/splitter
+	name = "essence splitter"
+	desc = "A complex alchemical device used to extract thaumaturgical essences from natural materials. Can process multiple items at once for efficiency."
+	icon = 'icons/roguetown/misc/splitter.dmi'
+	icon_state = "splitter"
+	density = TRUE
+	anchored = TRUE
+	var/list/current_items = list()
+	var/max_items = 5
+	var/datum/essence_storage/storage
+	processing_priority = 2
+
+/obj/machinery/essence/splitter/Initialize()
+	. = ..()
+	storage = new /datum/essence_storage(src)
+	storage.max_total_capacity = 200
+	storage.max_essence_types = 15
+
+
+/obj/machinery/essence/splitter/process()
+	if(!connection_processing || !output_connections.len)
+		return
+	var/list/prioritized_connections = sort_connections_by_priority(output_connections)
+	for(var/datum/essence_connection/connection in prioritized_connections)
+		if(!connection.active || !connection.target)
+			continue
+		var/datum/essence_storage/target_storage = get_target_storage(connection.target)
+		if(!target_storage)
+			continue
+		var/essence_transferred = FALSE
+		for(var/essence_type in storage.stored_essences)
+			var/available = storage.get_essence_amount(essence_type)
+			if(available > 0)
+				if(!can_target_accept_essence(connection.target, essence_type))
+					continue
+
+				var/to_transfer = min(available, connection.transfer_rate)
+				var/transferred = storage.transfer_to(target_storage, essence_type, to_transfer)
+				if(transferred > 0)
+					create_essence_transfer_effect(connection.target, essence_type, transferred)
+					essence_transferred = TRUE
+					break // Only transfer one type per cycle per connection
+
+		if(essence_transferred)
+			continue
+
+/obj/machinery/essence/splitter/attackby(obj/item/I, mob/user, params)
+	if(istype(I, /obj/item/essence_connector))
+		return
+
+	if(istype(I, /obj/item/essence_vial))
+		var/obj/item/essence_vial/vial = I
+		if(vial.contained_essence || vial.essence_amount > 0)
+			to_chat(user, span_warning("The vial must be empty to extract essences."))
+			return
+
+		if(!length(storage.stored_essences))
+			to_chat(user, span_warning("The splitter contains no essences to extract."))
+			return
+
+		var/list/available_essences = list()
+		for(var/essence_type in storage.stored_essences)
+			var/datum/thaumaturgical_essence/essence = new essence_type
+			available_essences["[essence.name] ([storage.stored_essences[essence_type]] units)"] = essence_type
+			qdel(essence)
+
+		var/choice = input(user, "Which essence would you like to extract?", "Extract Essence") in available_essences
+		if(!choice)
+			return
+
+		var/essence_type = available_essences[choice]
+		var/max_extract = min(storage.get_essence_amount(essence_type), vial.max_essence)
+		var/amount_to_extract = input(user, "How much would you like to extract? (Max: [max_extract])", "Extract Amount", max_extract) as num
+
+		if(amount_to_extract <= 0 || amount_to_extract > max_extract)
+			return
+
+		var/extracted = storage.remove_essence(essence_type, amount_to_extract)
+		if(extracted > 0)
+			vial.contained_essence = new essence_type
+			vial.essence_amount = extracted
+			vial.update_icon()
+			to_chat(user, span_info("You extract [extracted] units of essence into the vial."))
+		return
+
+	if(processing)
+		to_chat(user, span_warning("The splitter is currently processing."))
+		return
+
+	if(current_items.len >= max_items)
+		to_chat(user, span_warning("The splitter is full. Maximum [max_items] items can be processed at once."))
+		return
+
+	var/datum/natural_precursor/precursor = get_precursor_data(I)
+	if(!precursor)
+		to_chat(user, span_warning("[I] cannot be processed by the essence splitter."))
+		return
+
+	if(!user.transferItemToLoc(I, src))
+		to_chat(user, span_warning("[I] is stuck to your hand!"))
+		return
+
+	current_items += I
+	to_chat(user, span_info("You place [I] into the essence splitter. ([current_items.len]/[max_items] slots used)"))
+	return TRUE
+
+/obj/machinery/essence/splitter/attack_hand(mob/user, params)
+	if(processing)
+		to_chat(user, span_warning("The splitter is currently processing."))
+		return
+
+	begin_bulk_splitting(user)
+
+
+/obj/machinery/essence/splitter/proc/remove_all_items(mob/user)
+	for(var/obj/item/I in current_items)
+		I.forceMove(get_turf(src))
+
+	to_chat(user, span_info("You remove all items from the splitter."))
+	current_items = list()
+
+/obj/machinery/essence/splitter/proc/begin_bulk_splitting(mob/user)
+	if(!current_items.len)
+		return
+
+	var/total_essence_yield = 0
+	var/list/all_precursors = list()
+
+	for(var/obj/item/I in current_items)
+		var/datum/natural_precursor/precursor = get_precursor_data(I)
+		if(precursor)
+			all_precursors += precursor
+			for(var/essence_type in precursor.essence_yields)
+				total_essence_yield += precursor.essence_yields[essence_type]
+
+	if(storage.get_available_space() < total_essence_yield)
+		to_chat(user, span_warning("The splitter doesn't have enough storage space for this bulk operation."))
+		return
+
+	processing = TRUE
+	user.visible_message(span_info("[user] activates the essence splitter."))
+	update_overlays()
+
+	var/process_time = 3 SECONDS + (length(current_items) * 1 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(finish_bulk_splitting), all_precursors, user), process_time)
+
+/obj/machinery/essence/splitter/proc/finish_bulk_splitting(list/precursors, mob/living/user)
+	flick_overlay_view(image(icon, src, "split", ABOVE_MOB_LAYER), 1.2 SECONDS)
+
+	var/list/total_produced = list()
+	for(var/datum/natural_precursor/precursor in precursors)
+		for(var/essence_type in precursor.essence_yields)
+			var/amount = precursor.essence_yields[essence_type]
+			if(storage.add_essence(essence_type, amount))
+				if(total_produced[essence_type])
+					total_produced[essence_type] += amount
+				else
+					total_produced[essence_type] = amount
+
+	for(var/obj/item/I in current_items)
+		qdel(I)
+	current_items = list()
+	processing = FALSE
+
+	user.visible_message(span_info("The essence splitter sparks."))
+
+	var/boon = user.get_learning_boon(/datum/skill/craft/alchemy)
+	var/amt2raise = (user.STAINT * precursors.len) / 2
+	user.adjust_experience(/datum/skill/craft/alchemy, amt2raise * boon, FALSE)
+
+/obj/machinery/essence/splitter/examine(mob/user)
+	. = ..()
+	. += span_notice("Storage: [storage.get_total_stored()]/[storage.max_total_capacity] units")
+	. += span_notice("Processing slots: [current_items.len]/[max_items] used")
+
+	if(output_connections.len > 0)
+		. += span_notice("Output connections: [output_connections.len]")
+
+	if(storage.stored_essences.len > 0)
+		. += span_notice("Stored essences:")
+		for(var/essence_type in storage.stored_essences)
+			var/datum/thaumaturgical_essence/essence = new essence_type
+			. += span_notice("- [essence.name]: [storage.stored_essences[essence_type]] units")
+			qdel(essence)
