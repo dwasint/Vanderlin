@@ -16,7 +16,6 @@
 	storage.max_total_capacity = 200
 	storage.max_essence_types = 15
 
-
 /obj/machinery/essence/splitter/process()
 	if(!connection_processing || !output_connections.len)
 		return
@@ -58,21 +57,43 @@
 			to_chat(user, span_warning("The splitter contains no essences to extract."))
 			return
 
-		var/list/available_essences = list()
+		// Create radial menu for essence selection
+		var/list/radial_options = list()
+		var/list/essence_mapping = list()
+
 		for(var/essence_type in storage.stored_essences)
 			var/datum/thaumaturgical_essence/essence = new essence_type
-			available_essences["[essence.name] ([storage.stored_essences[essence_type]] units)"] = essence_type
+			var/display_name
+			if(HAS_TRAIT(user, TRAIT_LEGENDARY_ALCHEMIST))
+				display_name = essence.name
+			else
+				display_name = "Essence smelling of [essence.smells_like]"
+
+			var/option_key = "[display_name] ([storage.stored_essences[essence_type]] units)"
+			var/datum/radial_menu_choice/choice = new()
+			var/image/image = image(icon = 'icons/roguetown/misc/alchemy.dmi', icon_state = "essence")
+			image.color = essence.color
+			choice.image = image
+			choice.name = display_name
+			if(HAS_TRAIT(user, TRAIT_LEGENDARY_ALCHEMIST))
+				choice.info = "Extract [essence.name] essence. Smells of [essence.smells_like]."
+			else
+				choice.info = "Extract unknown essence. Smells of [essence.smells_like]."
+
+			radial_options[option_key] = choice
+			essence_mapping[option_key] = essence_type
 			qdel(essence)
 
-		var/choice = input(user, "Which essence would you like to extract?", "Extract Essence") in available_essences
-		if(!choice)
+		var/choice = show_radial_menu(user, src, radial_options, custom_check = CALLBACK(src, PROC_REF(check_menu_validity), user, vial))
+		if(!choice || !essence_mapping[choice])
 			return
 
-		var/essence_type = available_essences[choice]
+		var/essence_type = essence_mapping[choice]
 		var/max_extract = min(storage.get_essence_amount(essence_type), vial.max_essence)
-		var/amount_to_extract = input(user, "How much would you like to extract? (Max: [max_extract])", "Extract Amount", max_extract) as num
+		var/amount_to_extract = min(max_extract, vial.extract_amount)
 
-		if(amount_to_extract <= 0 || amount_to_extract > max_extract)
+		if(amount_to_extract <= 0)
+			to_chat(user, span_warning("Cannot extract any essence with current vial settings."))
 			return
 
 		var/extracted = storage.remove_essence(essence_type, amount_to_extract)
@@ -104,13 +125,15 @@
 	to_chat(user, span_info("You place [I] into the essence splitter. ([current_items.len]/[max_items] slots used)"))
 	return TRUE
 
+/obj/machinery/essence/splitter/proc/check_menu_validity(mob/user, obj/item/essence_vial/vial)
+	return user && vial && (vial in user.contents) && !vial.contained_essence && vial.essence_amount <= 0
+
 /obj/machinery/essence/splitter/attack_hand(mob/user, params)
 	if(processing)
 		to_chat(user, span_warning("The splitter is currently processing."))
 		return
 
 	begin_bulk_splitting(user)
-
 
 /obj/machinery/essence/splitter/proc/remove_all_items(mob/user)
 	for(var/obj/item/I in current_items)
@@ -180,5 +203,10 @@
 		. += span_notice("Stored essences:")
 		for(var/essence_type in storage.stored_essences)
 			var/datum/thaumaturgical_essence/essence = new essence_type
-			. += span_notice("- [essence.name]: [storage.stored_essences[essence_type]] units")
+			var/display_name
+			if(HAS_TRAIT(user, TRAIT_LEGENDARY_ALCHEMIST))
+				display_name = essence.name
+			else
+				display_name = "Unknown Essence"
+			. += span_notice("- [display_name]: [storage.stored_essences[essence_type]] units")
 			qdel(essence)

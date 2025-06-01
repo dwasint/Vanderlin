@@ -7,10 +7,22 @@
 	var/datum/thaumaturgical_essence/contained_essence = null
 	var/essence_amount = 0
 	var/max_essence = 10
+	var/extract_amount = 10 // Amount to try to extract when used
 
 /obj/item/essence_vial/Initialize()
 	. = ..()
 	update_icon()
+
+/obj/item/essence_vial/attack_self(mob/user)
+	if(extract_amount == 10)
+		extract_amount = 1
+	else
+		extract_amount = 10
+
+	to_chat(user, span_info("You adjust the vial to extract [extract_amount] unit[extract_amount > 1 ? "s" : ""] of essence."))
+
+/obj/item/essence_vial/proc/check_vial_menu_validity(mob/user)
+	return user && (src in user.contents)
 
 /obj/item/essence_vial/update_icon()
 	..()
@@ -21,19 +33,16 @@
 		essence_overlay.color = contained_essence.color
 		essence_overlay.alpha = min(255, 100 + (essence_amount * 15))
 		add_overlay(essence_overlay)
-
 		var/mutable_appearance/emissive = mutable_appearance(icon, "essence_liquid")
 		emissive.plane = EMISSIVE_PLANE
 		emissive.alpha = min(255, 100 + (essence_amount * 15))
 		add_overlay(emissive)
-
 	else
 		icon_state = "essence_vial"
 
 /obj/item/essence_vial/examine(mob/user)
 	. = ..()
 	if(contained_essence && essence_amount > 0)
-
 		if(!HAS_TRAIT(user, TRAIT_LEGENDARY_ALCHEMIST))
 			. += span_notice("Contains [essence_amount] units of essence smelling of [contained_essence.smells_like].")
 		else
@@ -42,11 +51,14 @@
 	else
 		. += span_notice("It appears to be empty.")
 
+	. += span_notice("Set to extract [extract_amount] unit[extract_amount > 1 ? "s" : ""] when used. Use in hand to adjust.")
+
 /obj/item/essence_vial/proc/can_hold_essence()
 	return essence_amount < max_essence
 
 /obj/item/essence_vial/proc/get_available_space()
 	return max_essence - essence_amount
+
 
 /datum/thaumaturgical_essence
 	var/name = "essence"
