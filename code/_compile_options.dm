@@ -49,17 +49,12 @@
 // 1 to use the default behaviour;
 // 2 for preloading absolutely everything;
 #ifndef PRELOAD_RSC
-#define PRELOAD_RSC 0
+#define PRELOAD_RSC 1
 #endif
 
 #ifdef UNIT_TESTS
 #define DEPLOY_TEST
 #endif
-
-#ifndef PRELOAD_RSC					//set to:
-#define PRELOAD_RSC		0			//	0 to allow using external resources or on-demand behaviour;
-#endif								//	1 to use the default behaviour;
-									//	2 for preloading absolutely everything;
 
 //#define LOWMEMORYMODE //uncomment this to load centcom and roguetest and thats it.
 
