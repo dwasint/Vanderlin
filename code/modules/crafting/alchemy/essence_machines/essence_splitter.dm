@@ -125,9 +125,6 @@
 	to_chat(user, span_info("You place [I] into the essence splitter. ([current_items.len]/[max_items] slots used)"))
 	return TRUE
 
-/obj/machinery/essence/splitter/proc/check_menu_validity(mob/user, obj/item/essence_vial/vial)
-	return user && vial && (vial in user.contents) && !vial.contained_essence && vial.essence_amount <= 0
-
 /obj/machinery/essence/splitter/attack_hand(mob/user, params)
 	if(processing)
 		to_chat(user, span_warning("The splitter is currently processing."))
@@ -203,10 +200,8 @@
 		. += span_notice("Stored essences:")
 		for(var/essence_type in storage.stored_essences)
 			var/datum/thaumaturgical_essence/essence = new essence_type
-			var/display_name
 			if(HAS_TRAIT(user, TRAIT_LEGENDARY_ALCHEMIST))
-				display_name = essence.name
+				. += span_notice("Contains [storage.stored_essences[essence_type]] units of [essence.name].")
 			else
-				display_name = "Unknown Essence"
-			. += span_notice("- [display_name]: [storage.stored_essences[essence_type]] units")
+				. += span_notice("Contains [storage.stored_essences[essence_type]] units of essence smelling of [essence.smells_like].")
 			qdel(essence)

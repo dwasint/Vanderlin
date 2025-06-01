@@ -480,7 +480,11 @@
 				var/current = altar_storage.stored_essences[essence_type]
 				amount_text += " ([min(current, required)]/[required] for recipe)"
 
-			. += span_notice("- [essence.name]: [amount_text]")
+			if(HAS_TRAIT(user, TRAIT_LEGENDARY_ALCHEMIST))
+				. += span_notice("Contains [amount_text] units of [essence.name].")
+			else
+				. += span_notice("Contains [amount_text] units of essence smelling of [essence.smells_like].")
+
 			qdel(essence)
 	else
 		. += span_notice("No essences are currently stored in the altar.")

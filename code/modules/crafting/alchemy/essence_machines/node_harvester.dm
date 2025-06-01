@@ -201,7 +201,10 @@
 
 	if(installed_node)
 		var/datum/thaumaturgical_essence/temp = new installed_node.essence_type.type
-		. += span_notice("Installed: [installed_node.name] ([temp.name], Tier [installed_node.tier])")
+		if(HAS_TRAIT(user, TRAIT_LEGENDARY_ALCHEMIST))
+			. += span_notice("Installed: [installed_node.name] ([temp.name], Tier [installed_node.tier])")
+		else
+			. += span_notice("Installed: [installed_node.name] (essence smelling of [temp.smells_like], Tier [installed_node.tier])")
 		. += span_notice("Node Essence: [installed_node.current_essence]/[installed_node.max_essence]")
 		qdel(temp)
 	else

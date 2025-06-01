@@ -165,6 +165,11 @@
 /obj/structure/essence_node/examine(mob/user)
 	. = ..()
 	var/datum/thaumaturgical_essence/temp_essence = new essence_type.type
+	if(HAS_TRAIT(user, TRAIT_LEGENDARY_ALCHEMIST))
+		. += span_notice("This node generates [temp_essence.name].")
+	else
+		. += span_notice("This node generate essence smelling of [temp_essence.smells_like].")
+
 	. += span_notice("This node generates [temp_essence.name].")
 	. += span_notice("Essence: [current_essence]/[max_essence] units")
 	. += span_notice("Tier: [tier] ([tier ? "Rare" : "Common"])")

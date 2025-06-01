@@ -115,59 +115,67 @@
 
 	to_chat(user, span_boldnotice("Your gnome homunculus has been successfully created!"))
 
+
 /obj/machinery/essence/test_tube/attackby(obj/item/I, mob/user, params)
-	if(istype(I, /obj/item/essence_vial))
-		var/obj/item/essence_vial/vial = I
-
-		if(!vial.contained_essence || vial.essence_amount <= 0)
-			if(!length(storage.stored_essences))
-				to_chat(user, span_warning("The test tube is empty."))
-				return
-
-			var/list/available_essences = list()
-			for(var/essence_type in storage.stored_essences)
-				var/datum/thaumaturgical_essence/essence = new essence_type
-				available_essences["[essence.name] ([storage.stored_essences[essence_type]] units)"] = essence_type
-				qdel(essence)
-
-			var/choice = input(user, "Which essence would you like to extract?", "Extract Essence") in available_essences
-			if(!choice)
-				return
-
-			var/essence_type = available_essences[choice]
-			var/max_extract = min(storage.get_essence_amount(essence_type), vial.max_essence)
-			var/amount_to_extract = input(user, "How much would you like to extract? (Max: [max_extract])", "Extract Amount", max_extract) as num
-
-			if(amount_to_extract <= 0 || amount_to_extract > max_extract)
-				return
-
-			var/extracted = storage.remove_essence(essence_type, amount_to_extract)
-			if(extracted > 0)
-				vial.contained_essence = new essence_type
-				vial.essence_amount = extracted
-				vial.update_icon()
-				to_chat(user, span_info("You extract [extracted] units of essence from the reservoir."))
-			return
-
-		var/essence_type = vial.contained_essence.type
-		var/amount = vial.essence_amount
-
-		if(!can_accept_essence(essence_type))
-			to_chat(user, span_warning("The test tube cannot accept this essence."))
-			return
-
-		if(!storage.add_essence(essence_type, amount))
-			to_chat(user, span_warning("The test tube cannot accept this essence."))
-			return
-
-		to_chat(user, span_info("You pour the [vial.contained_essence.name] into the reservoir."))
-
-		vial.contained_essence = null
-		vial.essence_amount = 0
-		vial.update_icon()
-		return TRUE
-
-	..()
+    if(istype(I, /obj/item/essence_vial))
+        var/obj/item/essence_vial/vial = I
+        if(!vial.contained_essence || vial.essence_amount <= 0)
+            if(!length(storage.stored_essences))
+                to_chat(user, span_warning("The test tube is empty."))
+                return
+            // Create radial menu for essence selection
+            var/list/radial_options = list()
+            var/list/essence_mapping = list()
+            for(var/essence_type in storage.stored_essences)
+                var/datum/thaumaturgical_essence/essence = new essence_type
+                var/display_name
+                if(HAS_TRAIT(user, TRAIT_LEGENDARY_ALCHEMIST))
+                    display_name = essence.name
+                else
+                    display_name = "Essence smelling of [essence.smells_like]"
+                var/option_key = "[display_name] ([storage.stored_essences[essence_type]] units)"
+                var/datum/radial_menu_choice/choice = new()
+                var/image/image = image(icon = 'icons/roguetown/misc/alchemy.dmi', icon_state = "essence")
+                image.color = essence.color
+                choice.image = image
+                choice.name = display_name
+                if(HAS_TRAIT(user, TRAIT_LEGENDARY_ALCHEMIST))
+                    choice.info = "Extract [essence.name] essence. Smells of [essence.smells_like]."
+                else
+                    choice.info = "Extract unknown essence. Smells of [essence.smells_like]."
+                radial_options[option_key] = choice
+                essence_mapping[option_key] = essence_type
+                qdel(essence)
+            var/choice = show_radial_menu(user, src, radial_options, custom_check = CALLBACK(src, PROC_REF(check_menu_validity), user, vial))
+            if(!choice || !essence_mapping[choice])
+                return
+            var/essence_type = essence_mapping[choice]
+            var/max_extract = min(storage.get_essence_amount(essence_type), vial.max_essence)
+            var/amount_to_extract = min(max_extract, vial.extract_amount)
+            if(amount_to_extract <= 0)
+                to_chat(user, span_warning("Cannot extract any essence with current vial settings."))
+                return
+            var/extracted = storage.remove_essence(essence_type, amount_to_extract)
+            if(extracted > 0)
+                vial.contained_essence = new essence_type
+                vial.essence_amount = extracted
+                vial.update_icon()
+                to_chat(user, span_info("You extract [extracted] units of essence from the test tube."))
+            return
+        var/essence_type = vial.contained_essence.type
+        var/amount = vial.essence_amount
+        if(!can_accept_essence(essence_type))
+            to_chat(user, span_warning("The test tube cannot accept this essence."))
+            return
+        if(!storage.add_essence(essence_type, amount))
+            to_chat(user, span_warning("The test tube cannot accept this essence."))
+            return
+        to_chat(user, span_info("You pour the [vial.contained_essence.name] into the test tube."))
+        vial.contained_essence = null
+        vial.essence_amount = 0
+        vial.update_icon()
+        return TRUE
+    ..()
 
 /obj/machinery/essence/test_tube/examine(mob/user)
 	. = ..()
@@ -186,7 +194,10 @@
 		. += span_notice("Stored essences:")
 		for(var/essence_type in storage.stored_essences)
 			var/datum/thaumaturgical_essence/essence = new essence_type
-			. += span_notice("- [essence.name]: [storage.stored_essences[essence_type]] units")
+			if(HAS_TRAIT(user, TRAIT_LEGENDARY_ALCHEMIST))
+				display_name = essence.name
+			else
+				. += span_notice("Contains [storage.stored_essences[essence_type]] units of essence smelling of [essence.smells_like].")
 			qdel(essence)
 	else
 		. += span_notice("The test tube is empty.")

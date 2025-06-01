@@ -11,6 +11,9 @@
 
 	var/processing_priority
 
+/obj/machinery/essence/proc/check_menu_validity(mob/user, obj/item/essence_vial/vial)
+	return user && vial && (vial in user.contents) && !vial.contained_essence && vial.essence_amount <= 0
+
 /obj/machinery/essence/proc/is_essence_allowed(essence_type)
 	return TRUE
 
