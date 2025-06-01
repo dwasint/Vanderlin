@@ -991,7 +991,7 @@ var highlightSystem = {
         input.value = ''; // Reset input
     },
 
-    // Save filters to cookie/localStorage
+    // Save filters to cookie
     saveFilters: function() {
         var data = JSON.stringify(this.filters);
         try {
@@ -1003,7 +1003,7 @@ var highlightSystem = {
         }
     },
 
-    // Load filters from cookie/localStorage
+    // Load filters from cookie
     loadFilters: function() {
 		var saved = null;
 
