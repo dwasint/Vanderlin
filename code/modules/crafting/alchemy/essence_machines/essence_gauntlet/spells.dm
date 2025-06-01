@@ -55,7 +55,7 @@
 	visible_message(span_notice("[user] gestures, creating a cleansing mist around [target]."))
 	//playsound(get_turf(target), 'sound/magic/splash.ogg', 50, TRUE)
 
-	wash_atom(target, clean = CLEAN_STRENGTH_BLOOD)
+	target.wash(CLEAN_WASH)
 
 	return TRUE
 
