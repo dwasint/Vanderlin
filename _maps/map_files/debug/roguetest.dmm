@@ -1076,11 +1076,15 @@
 /area/rogue/outdoors/mountains/decap)
 "do" = (
 /obj/item/reagent_containers/glass/bucket,
-/turf/open/floor/cobblerock,
+/turf/open/floor/grass/yel,
 /area)
 "dw" = (
 /turf/open/floor/wood,
 /area/rogue)
+"dO" = (
+/obj/machinery/essence/harvester,
+/turf/open/floor/cobblerock,
+/area)
 "ef" = (
 /obj/structure/hotspring/border/five,
 /obj/structure/flora/hotspring_rocks{
@@ -1386,7 +1390,7 @@
 /area/rogue/outdoors)
 "kj" = (
 /obj/structure/well,
-/turf/open/floor/cobblerock,
+/turf/open/floor/grass/yel,
 /area)
 "ky" = (
 /obj/structure/flora/ausbushes/ywflowers,
@@ -1427,6 +1431,8 @@
 /obj/structure/mannequin/male,
 /obj/item/clothing/head/wizhat/witch,
 /obj/item/clothing/shirt/robe/magus,
+/obj/item/clothing/gloves/essence_gauntlet,
+/obj/item/clothing/shoes/nobleboot/thighboots,
 /turf/open/floor/churchbrick,
 /area/rogue/indoors)
 "lV" = (
@@ -1503,6 +1509,12 @@
 /obj/effect/waterfall,
 /turf/open/water/river,
 /area/rogue/outdoors/mountains/decap)
+"ny" = (
+/obj/structure/window/openclose{
+	dir = 1
+	},
+/turf/open/floor/churchbrick,
+/area/rogue/indoors)
 "nG" = (
 /turf/open/floor/cobble,
 /area)
@@ -1709,6 +1721,10 @@
 "tH" = (
 /turf/closed,
 /area/rogue/outdoors)
+"tL" = (
+/obj/structure/essence_node/rare,
+/turf/open/floor/grass/yel,
+/area)
 "tN" = (
 /obj/structure/hotspring/border/eight,
 /obj/structure/bridge{
@@ -1828,7 +1844,7 @@
 /area/rogue/outdoors)
 "wR" = (
 /obj/item/reagent_containers/glass/carafe/water,
-/turf/open/floor/cobblerock,
+/turf/open/floor/grass/yel,
 /area)
 "wS" = (
 /obj/machinery/essence/combiner{
@@ -2249,7 +2265,7 @@
 /area/rogue/outdoors/mountains/decap)
 "EW" = (
 /obj/structure/closet/crate/chest/wicker/random_soilson,
-/turf/open/floor/cobblerock,
+/turf/open/floor/grass/yel,
 /area)
 "EX" = (
 /obj/structure/hotspring/border/two,
@@ -14303,9 +14319,9 @@ as
 as
 as
 as
-as
-as
-as
+fO
+fO
+fO
 ax
 ax
 Jy
@@ -14560,9 +14576,9 @@ as
 as
 as
 as
-as
-as
-as
+fO
+tL
+Il
 ax
 NG
 mY
@@ -14815,11 +14831,11 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
+fO
+fO
+fO
+Il
+eA
 ax
 SH
 jR
@@ -15072,12 +15088,12 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-ax
+fO
+Il
+tL
+Il
+eA
+ny
 wS
 mY
 rd
@@ -15329,11 +15345,11 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
+fO
+Il
+Il
+eA
+eA
 ax
 ax
 rd
@@ -15586,11 +15602,11 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
+fO
+eA
+dO
+eA
+tL
 ax
 ax
 zL
@@ -15843,11 +15859,11 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
+fO
+Il
+Il
+eA
+Il
 ax
 vM
 mY
@@ -16100,12 +16116,12 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
-ax
+fO
+tL
+Il
+eA
+eA
+ny
 Uu
 mY
 rd
@@ -16357,11 +16373,11 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
+fO
+Il
+Il
+tL
+eA
 ax
 YZ
 mY
@@ -16614,11 +16630,11 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
 fO
 fO
+fO
+Il
+eA
 ax
 ax
 ax
@@ -16873,11 +16889,11 @@ ac
 ac
 ac
 ac
-ac
 fO
-jn
-jn
 Il
+eA
+eA
+eA
 zL
 vJ
 lU
@@ -17130,11 +17146,11 @@ ac
 ac
 ac
 ac
-ac
+fO
 fO
 jn
 jn
-Il
+eA
 ax
 ax
 ax
@@ -17391,7 +17407,7 @@ ac
 fO
 jn
 jn
-Il
+eA
 jn
 jn
 jn
@@ -17648,7 +17664,7 @@ ac
 fO
 jn
 jn
-Il
+eA
 jn
 jn
 jn
@@ -17905,11 +17921,11 @@ ac
 fO
 jn
 jn
-Il
-Il
-Il
-Il
-Il
+eA
+eA
+eA
+eA
+eA
 fO
 ac
 ac
@@ -18160,9 +18176,9 @@ ac
 ac
 ac
 fO
-Il
-Il
-Il
+eA
+eA
+eA
 AP
 AP
 AP
@@ -18421,7 +18437,7 @@ EW
 do
 kj
 wR
-eA
+Il
 EW
 fO
 fO
@@ -18675,9 +18691,9 @@ ac
 ac
 fO
 fO
-eA
-eA
-eA
+Il
+Il
+Il
 fO
 fO
 fO

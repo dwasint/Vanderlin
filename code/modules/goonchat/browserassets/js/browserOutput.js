@@ -997,8 +997,6 @@ var highlightSystem = {
         try {
             if (typeof setCookie === 'function') {
                 setCookie('highlightFilters', data, 365);
-            } else if (typeof localStorage !== 'undefined') {
-                localStorage.setItem('highlightFilters', data);
             }
         } catch (e) {
             console.warn('Failed to save highlight filters:', e);
@@ -1012,8 +1010,6 @@ var highlightSystem = {
 		try {
 			if (typeof getCookie === 'function') {
 				saved = getCookie('highlightFilters');
-			} else if (typeof localStorage !== 'undefined') {
-				saved = localStorage.getItem('highlightFilters');
 			}
 
 			if (saved) {
@@ -1245,7 +1241,6 @@ function highlightTerms(el) {
     }
 }
 
-// Keep your old function as fallback (rename it)
 function legacyHighlightTerms(el) {
     if (el.children.length > 0) {
         for(var h = 0; h < el.children.length; h++){
