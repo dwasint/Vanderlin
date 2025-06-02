@@ -2526,6 +2526,7 @@
 #include "code\modules\spells\spell_types\wizard\learnspell\learn_spell.dm"
 #include "code\modules\spells\spell_types\wizard\learnspell\nodes\_base_spellnode.dm"
 #include "code\modules\spells\spell_types\wizard\learnspell\nodes\nodes.dm"
+#include "code\modules\spells\spell_types\wizard\learnspell\nodes\passives.dm"
 #include "code\modules\spells\spell_types\wizard\summoning\find_familiar.dm"
 #include "code\modules\spells\spell_types\wizard\utility\chill_touch.dm"
 #include "code\modules\spells\spell_types\wizard\utility\create_bonfire.dm"

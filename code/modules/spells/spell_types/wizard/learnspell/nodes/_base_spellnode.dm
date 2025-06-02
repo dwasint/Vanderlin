@@ -17,3 +17,6 @@
 		cost = spell_type.cost
 		icon = spell_type.action_icon
 		icon_state = spell_type.overlay_state
+
+/datum/spell_node/proc/on_node_buy(mob/user)
+	return

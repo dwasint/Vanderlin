@@ -46,7 +46,7 @@
 		unlocked_spells += spell_type
 
 		if(node.is_passive)
-			apply_passive_effect(usr, node)
+			node.on_node_buy(usr)
 			to_chat(usr, span_notice("You have learned the passive technique: [node.name]"))
 		else
 			if(node.spell_type)
@@ -62,8 +62,6 @@
 	var/datum/spell_interface/interface = new(src, user)
 	interface.show()
 
-/obj/effect/proc_holder/spell/self/learnspell/proc/apply_passive_effect(mob/user, datum/spell_node/node)
-	return
 
 /datum/spell_interface
 	var/obj/effect/proc_holder/spell/self/learnspell/matrix
