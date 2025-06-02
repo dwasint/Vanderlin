@@ -15,7 +15,7 @@
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
 	attunements = list(
-		/datum/attunement/arcyne = 1,
+		/datum/attunement/earth = 1,
 	)
 
 /obj/effect/proc_holder/spell/invoked/guidance/cast(list/targets, mob/user)

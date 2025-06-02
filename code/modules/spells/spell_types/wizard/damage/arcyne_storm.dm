@@ -2,7 +2,7 @@
 /obj/effect/proc_holder/spell/invoked/arcyne_storm
 	name = "Arcyne storm"
 	desc = "Conjure ripples of force into existance over a large area, injuring any who enter"
-	cost = 2
+	cost = 8
 	releasedrain = 50
 	chargedrain = 1
 	chargetime = 12 SECONDS
