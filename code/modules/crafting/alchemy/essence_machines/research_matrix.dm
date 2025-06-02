@@ -565,6 +565,20 @@
 			let currentX = 400, currentY = 300;
 			let scale = 1;
 
+			try {
+				const savedX = sessionStorage.getItem('research_pos_x');
+				const savedY = sessionStorage.getItem('research_pos_y');
+				const savedScale = sessionStorage.getItem('research_scale');
+				if (savedX !== null) currentX = parseFloat(savedX);
+				if (savedY !== null) currentY = parseFloat(savedY);
+				if (savedScale !== null) scale = parseFloat(savedScale);
+			} catch(e) {
+				// Fallback to defaults if sessionStorage not available
+				currentX = 400;
+				currentY = 300;
+				scale = 1;
+			}
+
 			const container = document.getElementById('container');
 			const canvas = document.getElementById('canvas');
 			const tooltip = document.getElementById('tooltip');
@@ -591,6 +605,7 @@
 					currentY = e.clientY - startY;
 					updateCanvasTransform();
 					updateParallax();
+					savePosition();
 				}
 
 				// Tooltip handling
@@ -626,6 +641,7 @@
 
 				updateCanvasTransform();
 				updateParallax();
+				savePosition();
 			});
 
 			function updateCanvasTransform() {
@@ -656,22 +672,35 @@
 				parallaxNeb.style.transform = 'translate(' + nebX + 'px, ' + nebY + 'px)';
 			}
 
+			function savePosition() {
+				try {
+					sessionStorage.setItem('research_pos_x', currentX.toString());
+					sessionStorage.setItem('research_pos_y', currentY.toString());
+					sessionStorage.setItem('research_scale', scale.toString());
+				} catch(e) {
+					// Silently fail if sessionStorage not available
+				}
+			}
+
 			function resetView() {
 				currentX = 400;
 				currentY = 300;
 				scale = 1;
 				updateCanvasTransform();
 				updateParallax();
+				savePosition();
 			}
 
 			function zoomIn() {
 				scale = Math.min(3, scale + 0.2);
 				updateCanvasTransform();
+				savePosition();
 			}
 
 			function zoomOut() {
 				scale = Math.max(0.3, scale - 0.2);
 				updateCanvasTransform();
+				savePosition();
 			}
 
 			function showTooltip(e, node) {
@@ -708,7 +737,7 @@
 			}
 
 			function selectNode(nodeType) {
-				// Send selection to server
+				savePosition();
 				window.location.href = "byond://?src=[REF(matrix)];action=select_research;node=" + nodeType;
 			}
 
@@ -861,4 +890,4 @@
 		selected_research = node
 		to_chat(usr, span_info("Selected research: [node.name]"))
 		if(current_user == usr)
-			addtimer(CALLBACK(src, PROC_REF(open_research_interface), usr), 0.5)
+			addtimer(CALLBACK(src, PROC_REF(open_research_interface), usr), 0.1)
