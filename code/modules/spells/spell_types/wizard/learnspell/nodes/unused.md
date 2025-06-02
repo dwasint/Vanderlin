@@ -11,6 +11,19 @@
 	user.mana_pool?.set_max_mana(current_max + 25, TRUE, TRUE)
 	to_chat(user, span_notice("Your magical reserves expand."))
 
+/datum/spell_node/mana_well
+	name = "Mana Well"
+	desc = "Dig deeper into your magical reserves."
+	node_x = -50
+	node_y = -50
+	cost = 6
+	prerequisites = list(/datum/spell_node/earth_affinity, /datum/spell_node/arcyne_affinity)
+
+/datum/spell_node/mana_well/on_node_buy(mob/user)
+	var/current_max = user.mana_pool?.maximum_mana_capacity || 100
+	user.mana_pool?.set_max_mana(current_max + 50, TRUE, TRUE)
+	to_chat(user, span_notice("Your magical well deepens considerably."))
+
 /datum/spell_node/arcane_focus
 	name = "Arcane Focus"
 	desc = "Concentrate pure magical energy."

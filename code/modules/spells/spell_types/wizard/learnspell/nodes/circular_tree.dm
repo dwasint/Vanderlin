@@ -53,15 +53,15 @@
 	desc = "Summon an animal to serve as your familiar."
 	node_x = -110
 	node_y = -110
-	prerequisites = list(/datum/spell_node/mana_well)
+	prerequisites = list(/datum/spell_node/primal_savagery)
 	spell_type = /obj/effect/proc_holder/spell/invoked/findfamiliar
 
 /datum/spell_node/primal_savagery
 	name = "Primal Savagery"
 	desc = "Channel primal magic to grow claws or fangs."
-	node_x = -140
-	node_y = -140
-	prerequisites = list(/datum/spell_node/find_familiar, /datum/spell_node/earth_affinity)
+	node_x = -50
+	node_y = -50
+	prerequisites = list(/datum/spell_node/earth_affinity, /datum/spell_node/arcyne_affinity)
 	spell_type = /obj/effect/proc_holder/spell/self/primalsavagery5e
 
 
