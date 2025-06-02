@@ -712,14 +712,14 @@
 					if (nodeData.requirements && nodeData.requirements.length > 0) {
 						html += '<p class="requirements"><strong>Requirements:</strong></p>';
 						nodeData.requirements.forEach(function(req) {
-							html += '<p class="requirements">• ' + req + '</p>';
+							html += '<p class="requirements">' + req + '</p>';
 						});
 					}
 
 					if (nodeData.unlocks && nodeData.unlocks.length > 0) {
 						html += '<p class="unlocks"><strong>Unlocks:</strong></p>';
 						nodeData.unlocks.forEach(function(unlock) {
-							html += '<p class="unlocks">• ' + unlock + '</p>';
+							html += '<p class="unlocks">' + unlock + '</p>';
 						});
 					}
 
