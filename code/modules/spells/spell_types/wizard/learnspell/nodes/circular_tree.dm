@@ -546,3 +546,15 @@
 	node_y = UP_Y_TIER_3
 	prerequisites = list(/datum/spell_node/ray_of_frost)
 	spell_type = /obj/effect/proc_holder/spell/invoked/projectile/frostbolt
+
+
+/datum/spell_node/gib
+	name = "Xylix's Cruel Prank"
+	desc = "Fucked up and evil."
+	node_x = -100000
+	node_y = -100000
+	is_passive = TRUE
+
+/datum/spell_node/gib/on_node_buy(mob/user)
+	. = ..()
+	user.gib()
