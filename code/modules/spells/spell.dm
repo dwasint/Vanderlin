@@ -440,12 +440,15 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 		if(sound)
 			playMagSound()
 		after_cast(targets)
+		if(uses_mana && length(attunements))
+			finish_spell_visual_effects(user, src)
 		if(action)
 			action.UpdateButtonIcon()
 		return TRUE
 	else
 		to_chat(user,span_warn("Your spell [name] fizzles!"))
 		revert_cast(user)
+		cancel_spell_visual_effects(user)
 
 /obj/effect/proc_holder/spell/proc/before_cast(list/targets)
 	if(overlay)

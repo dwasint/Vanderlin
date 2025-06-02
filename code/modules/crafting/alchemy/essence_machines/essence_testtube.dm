@@ -19,6 +19,30 @@
 	storage.max_total_capacity = 1000
 	storage.max_essence_types = 1
 
+
+/obj/machinery/essence/test_tube/update_icon()
+	. = ..()
+	cut_overlays()
+
+	if(gnome_progress)
+		var/image/gnome_overlay = image('icons/mob/gnome2.dmi', "gnome-tube")
+		gnome_overlay.pixel_y = 6
+		gnome_overlay.layer = layer - 0.1
+		overlays += gnome_overlay
+
+	var/essence_percent = (storage.get_total_stored()) / (100)
+	if(!essence_percent)
+		return
+	var/level = clamp(CEILING(essence_percent * 4, 1), 1, 4)
+
+	var/mutable_appearance/MA = mutable_appearance(icon, "tank_[level]")
+	MA.color = calculate_mixture_color()
+	overlays += MA
+
+	var/mutable_appearance/emissive = mutable_appearance(icon, "tank_[level]")
+	emissive.plane = EMISSIVE_PLANE
+	overlays += emissive
+
 /obj/machinery/essence/test_tube/return_storage()
 	return storage
 
@@ -48,17 +72,6 @@
 
 		if(essence_transferred)
 			continue
-
-/obj/machinery/essence/test_tube/update_icon()
-	..()
-	if(gnome_progress)
-		overlays.Cut()
-		var/image/gnome_overlay = image('icons/mob/gnome2.dmi', "gnome-tube")
-		gnome_overlay.pixel_y = 6
-		gnome_overlay.layer = layer - 0.1
-		overlays += gnome_overlay
-	else
-		overlays.Cut()
 
 /obj/machinery/essence/test_tube/is_essence_allowed(essence_type)
 	return (essence_type in allowed_essence_types)
@@ -146,7 +159,7 @@
                 radial_options[option_key] = choice
                 essence_mapping[option_key] = essence_type
                 qdel(essence)
-            var/choice = show_radial_menu(user, src, radial_options, custom_check = CALLBACK(src, PROC_REF(check_menu_validity), user, vial))
+            var/choice = show_radial_menu(user, src, radial_options, custom_check = CALLBACK(src, PROC_REF(check_menu_validity), user, vial), radial_slice_icon = "radial_thaum")
             if(!choice || !essence_mapping[choice])
                 return
             var/essence_type = essence_mapping[choice]
@@ -195,9 +208,45 @@
 		for(var/essence_type in storage.stored_essences)
 			var/datum/thaumaturgical_essence/essence = new essence_type
 			if(HAS_TRAIT(user, TRAIT_LEGENDARY_ALCHEMIST))
-				display_name = essence.name
+				. += span_notice("Contains [storage.stored_essences[essence_type]] units of [essence.name].")
 			else
 				. += span_notice("Contains [storage.stored_essences[essence_type]] units of essence smelling of [essence.smells_like].")
 			qdel(essence)
 	else
 		. += span_notice("The test tube is empty.")
+
+
+/obj/machinery/essence/test_tube/proc/calculate_mixture_color()
+	var/list/essence_contents = list()
+
+	essence_contents |= storage.stored_essences
+
+	if(!length(essence_contents))
+		return "#4A90E2"
+
+	var/total_weight = 0
+	var/r = 0, g = 0, b = 0
+
+	for(var/essence_type in essence_contents)
+		var/datum/thaumaturgical_essence/essence = new essence_type
+		var/amount = essence_contents[essence_type]
+		var/weight = amount * (essence.tier + 1) // Higher tier essences have more color influence
+
+		total_weight += weight
+		var/color_val = hex2num(copytext(essence.color, 2, 4))
+		r += color_val * weight
+		color_val = hex2num(copytext(essence.color, 4, 6))
+		g += color_val * weight
+		color_val = hex2num(copytext(essence.color, 6, 8))
+		b += color_val * weight
+
+		qdel(essence)
+
+	if(total_weight == 0)
+		return "#4A90E2"
+
+	r = FLOOR(r / total_weight, 1)
+	g = FLOOR(g / total_weight, 1)
+	b = FLOOR(b / total_weight, 1)
+
+	return rgb(r, g, b)

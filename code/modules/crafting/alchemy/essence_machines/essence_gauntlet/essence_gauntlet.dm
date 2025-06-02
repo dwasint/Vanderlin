@@ -99,7 +99,7 @@
             display_name = "Empty vial"
 
         var/datum/radial_menu_choice/choice = new()
-        var/image/image = image(icon = 'icons/roguetown/items/misc.dmi', icon_state = "vial")
+        var/image/image = image(icon = 'icons/roguetown/misc/alchemy.dmi', icon_state = "essence")
         if(vial.contained_essence && vial.essence_amount > 0)
             image.color = vial.contained_essence.color
         choice.image = image
@@ -114,7 +114,7 @@
         radial_options[vial_desc] = choice
         vial_mapping[vial_desc] = vial
 
-    var/choice = show_radial_menu(user, src, radial_options, custom_check = CALLBACK(src, PROC_REF(check_gauntlet_validity), user))
+    var/choice = show_radial_menu(user, src, radial_options, custom_check = CALLBACK(src, PROC_REF(check_gauntlet_validity), user), radial_slice_icon = "radial_thaum")
     if(!choice || !vial_mapping[choice])
         return
     var/obj/item/essence_vial/chosen_vial = vial_mapping[choice]

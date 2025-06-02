@@ -1,7 +1,7 @@
 /obj/machinery/essence/reservoir
 	name = "essence reservoir"
 	desc = "A large crystalline tank for storing massive quantities of thaumaturgical essences."
-	icon = 'icons/roguetown/misc/splitter.dmi'
+	icon = 'icons/roguetown/misc/alchemy.dmi'
 	icon_state = "essence_tank"
 	density = TRUE
 	anchored = TRUE
@@ -17,6 +17,24 @@
 	storage = new /datum/essence_storage(src)
 	storage.max_total_capacity = 1000
 	storage.max_essence_types = 25
+
+/obj/machinery/essence/reservoir/update_icon()
+	. = ..()
+	cut_overlays()
+
+	var/essence_percent = (storage.get_total_stored()) / (storage.max_total_capacity)
+	if(!essence_percent)
+		return
+	var/level = clamp(CEILING(essence_percent * 5, 1), 1, 5)
+
+	var/mutable_appearance/MA = mutable_appearance(icon, "liquid_[level]")
+	MA.color = calculate_mixture_color()
+	overlays += MA
+
+	var/mutable_appearance/emissive = mutable_appearance(icon, "liquid_[level]")
+	emissive.plane = EMISSIVE_PLANE
+	overlays += emissive
+
 
 /obj/machinery/essence/reservoir/return_storage()
 	return storage
@@ -202,7 +220,7 @@
                 radial_options[option_key] = choice
                 essence_mapping[option_key] = essence_type
                 qdel(essence)
-            var/choice = show_radial_menu(user, src, radial_options, custom_check = CALLBACK(src, PROC_REF(check_menu_validity), user, vial))
+            var/choice = show_radial_menu(user, src, radial_options, custom_check = CALLBACK(src, PROC_REF(check_menu_validity), user, vial), radial_slice_icon = "radial_thaum")
             if(!choice || !essence_mapping[choice])
                 return
             var/essence_type = essence_mapping[choice]
@@ -266,6 +284,43 @@
 	else
 		. += span_notice("The reservoir is empty.")
 
+
+/obj/machinery/essence/reservoir/proc/calculate_mixture_color()
+	var/list/essence_contents = list()
+
+	essence_contents |= storage.stored_essences
+
+	if(!length(essence_contents))
+		return "#4A90E2"
+
+	var/total_weight = 0
+	var/r = 0, g = 0, b = 0
+
+	for(var/essence_type in essence_contents)
+		var/datum/thaumaturgical_essence/essence = new essence_type
+		var/amount = essence_contents[essence_type]
+		var/weight = amount * (essence.tier + 1) // Higher tier essences have more color influence
+
+		total_weight += weight
+		var/color_val = hex2num(copytext(essence.color, 2, 4))
+		r += color_val * weight
+		color_val = hex2num(copytext(essence.color, 4, 6))
+		g += color_val * weight
+		color_val = hex2num(copytext(essence.color, 6, 8))
+		b += color_val * weight
+
+		qdel(essence)
+
+	if(total_weight == 0)
+		return "#4A90E2"
+
+	r = FLOOR(r / total_weight, 1)
+	g = FLOOR(g / total_weight, 1)
+	b = FLOOR(b / total_weight, 1)
+
+	return rgb(r, g, b)
+
+
 /obj/machinery/essence/reservoir/filled
 	var/list/essence_list = list()
 
@@ -276,3 +331,4 @@
 
 /obj/machinery/essence/reservoir/filled/life
 	essence_list = list(/datum/thaumaturgical_essence/life = 1000)
+

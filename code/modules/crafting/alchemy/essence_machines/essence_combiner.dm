@@ -49,6 +49,8 @@
 		cut_overlays()
 
 	var/essence_percent = (output_storage.get_total_stored() + input_storage.get_total_stored()) / (input_storage.max_total_capacity + output_storage.max_total_capacity)
+	if(!essence_percent)
+		return
 	var/level = clamp(CEILING(essence_percent * 7, 1), 1, 7)
 
 	var/mutable_appearance/MA = mutable_appearance(icon, "liquid_[level]")
@@ -127,7 +129,7 @@
                 radial_options[option_key] = choice
                 essence_mapping[option_key] = essence_type
                 qdel(essence)
-            var/choice = show_radial_menu(user, src, radial_options, custom_check = CALLBACK(src, PROC_REF(check_menu_validity), user, vial))
+            var/choice = show_radial_menu(user, src, radial_options, custom_check = CALLBACK(src, PROC_REF(check_menu_validity), user, vial), radial_slice_icon = "radial_thaum")
             if(!choice || !essence_mapping[choice])
                 return
             var/essence_type = essence_mapping[choice]
