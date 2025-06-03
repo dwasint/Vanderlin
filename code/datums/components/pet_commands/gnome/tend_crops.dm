@@ -11,7 +11,7 @@
 	var/obj/item/storage/seed_storage = find_seed_source(controller)
 
 	if(!water_source && !seed_storage)
-		pawn.visible_message(span_warning("[pawn] looks confusedly - no water source or seeds found nearby!"))
+		pawn.visible_message(span_warning("[pawn] looks confusedly - no water source or basket found nearby!"))
 		controller.clear_blackboard_key(BB_ACTIVE_PET_COMMAND)
 		return
 
