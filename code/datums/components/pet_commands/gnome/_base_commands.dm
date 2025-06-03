@@ -67,9 +67,11 @@
 	var/mob/living/simple_animal/hostile/gnome_homunculus/gnome = controller.pawn
 	if(!istype(gnome))
 		return
+
 	var/turf/turf =  controller.blackboard[key]
 	if(turf)
-		gnome.waypoints -= target
+		gnome.waypoints -= turf
+
 	gnome.waypoints |= target
 	gnome.visible_message(span_notice("[gnome] looks and nods, marking this location."))
 	controller.set_blackboard_key(key, target)
