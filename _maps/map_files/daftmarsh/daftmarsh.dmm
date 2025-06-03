@@ -2717,6 +2717,14 @@
 /area/rogue/indoors/town/church/inquisition)
 "cyY" = (
 /obj/structure/closet/crate/chest/neu,
+/obj/item/essence_vial,
+/obj/item/essence_vial,
+/obj/item/essence_vial,
+/obj/item/essence_vial,
+/obj/item/essence_vial,
+/obj/item/essence_vial,
+/obj/item/recipe_book/alchemy,
+/obj/item/recipe_book/alchemy,
 /turf/open/floor/twig,
 /area/rogue/indoors/town/bath)
 "czd" = (
@@ -3562,6 +3570,7 @@
 /obj/machinery/light/fueled/wallfire/candle,
 /obj/item/recipe_book/underworld,
 /obj/item/reagent_containers/glass/mortar,
+/obj/item/reagent_containers/glass/bucket/wooden,
 /turf/open/floor/cobble,
 /area/rogue/indoors/town/bath)
 "dxH" = (
@@ -7885,6 +7894,13 @@
 "hLp" = (
 /turf/closed/wall/mineral/stone/window,
 /area/rogue/indoors/town/dwarfin)
+"hLI" = (
+/obj/machinery/essence/reservoir{
+	pixel_y = -3;
+	pixel_x = -4
+	},
+/turf/open/floor/blocks/stonered/tiny,
+/area/rogue/indoors/town/bath)
 "hLQ" = (
 /obj/structure/table/wood/large/corner{
 	dir = 9
@@ -9478,10 +9494,11 @@
 	dir = 1;
 	icon_state = "largetable"
 	},
-/obj/item/reagent_containers/glass/bottle/vial{
-	pixel_x = -1;
-	pixel_y = -6
+/obj/machinery/essence/reservoir{
+	pixel_y = -4;
+	pixel_x = 10
 	},
+/obj/item/recipe_book/alchemy,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/indoors/town/bath)
 "jkX" = (
@@ -13852,10 +13869,10 @@
 	pixel_x = 11;
 	pixel_y = 6
 	},
-/obj/item/reagent_containers/glass/bottle/vial,
 /obj/machinery/light/fueled/wallfire/candle{
 	pixel_y = -32
 	},
+/obj/item/reagent_containers/glass/bottle/vial/intpot,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/indoors/town/bath)
 "nEf" = (
@@ -14012,6 +14029,20 @@
 /obj/structure/fluff/railing/wood,
 /turf/closed/wall/mineral/wooddark,
 /area/rogue/outdoors/town)
+"nMH" = (
+/obj/structure/closet/crate/chest/neu,
+/obj/item/essence_vial,
+/obj/item/essence_vial,
+/obj/item/essence_vial,
+/obj/item/essence_vial,
+/obj/item/recipe_book/alchemy,
+/obj/item/recipe_book/alchemy,
+/obj/item/essence_connector,
+/obj/item/essence_connector,
+/obj/item/essence_connector,
+/obj/item/essence_connector,
+/turf/open/floor/twig,
+/area/rogue/indoors/town/bath)
 "nMP" = (
 /obj/structure/rack/shelf/biggest,
 /obj/item/weapon/pick,
@@ -14475,6 +14506,13 @@
 /obj/machinery/light/fueled/wallfire/candle/l,
 /turf/open/floor/woodturned,
 /area/rogue/indoors/town/smithy)
+"okU" = (
+/obj/machinery/essence/combiner{
+	pixel_y = 7
+	},
+/obj/structure/table/wood/plain_alt,
+/turf/open/floor/twig,
+/area/rogue/indoors/town/bath)
 "okY" = (
 /turf/open/transparent/openspace,
 /area/rogue/indoors/town/church)
@@ -14826,8 +14864,9 @@
 /turf/open/floor/blocks/bluestone,
 /area/rogue/indoors/town/warehouse)
 "oEA" = (
-/obj/structure/table/wood/plain_alt,
-/obj/item/reagent_containers/glass/bucket/wooden,
+/obj/machinery/essence/test_tube{
+	pixel_y = 13
+	},
 /turf/open/floor/cobble,
 /area/rogue/indoors/town/bath)
 "oFk" = (
@@ -15855,15 +15894,10 @@
 	dir = 10
 	},
 /obj/item/plate/tray{
-	pixel_x = 0;
 	pixel_y = 5
 	},
+/obj/item/plate/tray,
 /obj/item/plate/tray{
-	pixel_x = 0;
-	pixel_y = 0
-	},
-/obj/item/plate/tray{
-	pixel_x = 0;
 	pixel_y = -6
 	},
 /obj/structure/rack/shelf/biggest,
@@ -21587,9 +21621,12 @@
 	icon_state = "largetable";
 	dir = 9
 	},
-/obj/item/reagent_containers/glass/bottle/vial/intpot,
 /obj/structure/fake_machine/scomm{
 	pixel_y = -32
+	},
+/obj/machinery/essence/splitter{
+	pixel_y = -6;
+	pixel_x = 4
 	},
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/indoors/town/bath)
@@ -22837,6 +22874,17 @@
 	dir = 1
 	},
 /area/rogue/indoors/town/tavern)
+"wiA" = (
+/obj/machinery/essence/reservoir{
+	pixel_y = 8;
+	pixel_x = -14
+	},
+/obj/machinery/essence/reservoir{
+	pixel_y = -3;
+	pixel_x = 1
+	},
+/turf/open/floor/blocks/stonered/tiny,
+/area/rogue/indoors/town/bath)
 "wiU" = (
 /obj/structure/flora/grass/bush,
 /turf/open/floor/grass/yel,
@@ -159275,7 +159323,7 @@ nRt
 wCS
 wCS
 bMl
-rsM
+okU
 wCS
 jkU
 afm
@@ -159477,7 +159525,7 @@ mJj
 wFI
 wCS
 rsM
-cyY
+nMH
 wCS
 nDU
 mJj
@@ -160284,7 +160332,7 @@ oAt
 reu
 vnl
 vnl
-reu
+hLI
 fYk
 dKR
 dKR
@@ -160486,7 +160534,7 @@ pnU
 sek
 vnl
 vnl
-reu
+wiA
 fYk
 dKR
 dKR
