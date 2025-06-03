@@ -229,7 +229,7 @@ GLOBAL_LIST_EMPTY(radial_menus)
 			if (!click_on_hover)
 				continue
 			if (anim_flag)
-				addtimer(VARSET_CALLBACK(element, click_on_hover, TRUE), i * 0.5)
+				addtimer(VARSET_CALLBACK(element, click_on_hover, TRUE), i * 1)
 			else
 				element.click_on_hover = TRUE
 

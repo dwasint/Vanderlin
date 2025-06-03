@@ -575,6 +575,9 @@
 			rog_intent_change(1)
 		rog_intent_change(l_index, 1)
 
+/mob/proc/check_spell_quickselect()
+    return (mind && !incapacitated())
+
 /mob/verb/mmb_intent_change(input as text)
 	set name = "mmb-change"
 	set hidden = 1
@@ -582,6 +585,7 @@
 		return
 	if(atkswinging)
 		stop_attack()
+
 	if(!input)
 		qdel(mmb_intent)
 		cancel_spell_visual_effects(src)

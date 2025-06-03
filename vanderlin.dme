@@ -2212,6 +2212,7 @@
 #include "code\modules\mob\living\overhead_effects.dm"
 #include "code\modules\mob\living\parry.dm"
 #include "code\modules\mob\living\say.dm"
+#include "code\modules\mob\living\spell_quickselect.dm"
 #include "code\modules\mob\living\stats.dm"
 #include "code\modules\mob\living\status_procs.dm"
 #include "code\modules\mob\living\taste.dm"
