@@ -6,7 +6,7 @@
 	var/list/inputs = list() // essence_type = amount_needed
 	var/datum/thaumaturgical_essence/output_type = null
 	var/output_amount = 1
-	var/skill_required = SKILL_LEVEL_NOVICE
+	var/skill_required = SKILL_LEVEL_NONE
 
 
 /datum/essence_combination/proc/generate_html(mob/user)
