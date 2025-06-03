@@ -249,6 +249,7 @@ F
 #define BB_GNOME_CROP_MODE "bb_gnome_crop_mode"
 #define BB_GNOME_WATER_SOURCE "gnome_water_source"
 #define BB_GNOME_SEED_SOURCE "gnome_seed_source"
+#define BB_GNOME_SEARCH_RANGE "gnome_search_range"
 
 #define BB_GNOME_ALCHEMY_MODE "alch_mode"
 #define BB_GNOME_TARGET_CAULDRON "target_cauldron"

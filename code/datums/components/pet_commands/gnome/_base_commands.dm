@@ -169,15 +169,16 @@
 	if(!source)
 		return null
 
-	for(var/turf/check_turf in list(source))
-		for(var/obj/item/I in check_turf.contents)
-			if(I.anchored)
-				continue
-			if(I.w_class > gnome.max_carry_size)
-				continue
-			if(!gnome.item_matches_filter(I))
-				continue
-			return I
+	for(var/turf/turf in list(source))
+		for(var/turf/check_turf in view(controller.blackboard[BB_GNOME_SEARCH_RANGE], turf))
+			for(var/obj/item/I in check_turf.contents)
+				if(I.anchored)
+					continue
+				if(I.w_class > gnome.max_carry_size)
+					continue
+				if(!gnome.item_matches_filter(I))
+					continue
+				return I
 	return null
 
 /datum/ai_behavior/gnome_transport_cycle/proc/determine_delivery_location(datum/ai_controller/controller, obj/item/carried_item)
@@ -210,3 +211,26 @@
 
 	if(get_turf(pawn) == home_turf)
 		finish_action(controller, TRUE)
+
+/datum/pet_command/gnome/search_range
+	command_name = "Transport Search Range"
+	command_desc = "Change the range at which the gnome looks for items"
+	radial_icon_state = "range"
+	speech_commands = list("range")
+
+/datum/pet_command/gnome/search_range/try_activate_command(mob/living/commander, radial_command) // this is shit but it feels easier to use for players
+	var/mob/living/simple_animal/hostile/gnome_homunculus/gnome = weak_parent.resolve()
+	var/datum/ai_controller/controller = gnome.ai_controller
+
+	if(!commander)
+		return
+
+	var/choice = input(commander, "Choose a range for your gnome to look for items", "Search Range") as num|null
+
+	if(!choice || choice <= 0)
+		controller.clear_blackboard_key(BB_ACTIVE_PET_COMMAND)
+		return
+
+	controller.set_blackboard_key(BB_GNOME_SEARCH_RANGE, choice)
+	gnome.visible_message(span_notice("[gnome] nods."))
+	controller.clear_blackboard_key(BB_ACTIVE_PET_COMMAND)
