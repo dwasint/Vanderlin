@@ -423,7 +423,7 @@ GLOBAL_LIST_INIT(natural_precursor_registry, list())
 		/datum/thaumaturgical_essence/earth = 5
 	)
 	init_types = list(
-		 /obj/item/natural/stone,
+		/obj/item/natural/stone,
 	)
 
 /datum/natural_precursor/gem
