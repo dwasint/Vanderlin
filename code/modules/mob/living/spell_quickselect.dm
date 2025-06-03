@@ -11,9 +11,6 @@
 	if(!length(spell_quickslots))
 		initialize_spell_quickslots()
 
-	if(!client.keys_held["Shift"])
-		return
-
 	var/list/radial_options = list()
 
 	for(var/i in 1 to MAX_SPELL_SLOTS)
