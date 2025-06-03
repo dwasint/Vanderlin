@@ -72,4 +72,4 @@
 /mob/living/simple_animal/hostile/gnome_homunculus/proc/item_matches_filter(obj/item/target_item)
 	if(!length(item_filters))
 		return TRUE
-	return (target_item.type in item_filters)
+	return (is_type_in_list(target_item, item_filters))
