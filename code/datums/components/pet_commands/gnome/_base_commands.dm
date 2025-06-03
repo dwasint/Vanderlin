@@ -231,6 +231,9 @@
 		controller.clear_blackboard_key(BB_ACTIVE_PET_COMMAND)
 		return
 
+	if(choice >10)
+		choice = 10
+
 	controller.set_blackboard_key(BB_GNOME_SEARCH_RANGE, choice)
 	gnome.visible_message(span_notice("[gnome] nods."))
 	controller.clear_blackboard_key(BB_ACTIVE_PET_COMMAND)
