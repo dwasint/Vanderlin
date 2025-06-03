@@ -1,3 +1,5 @@
+/atom/proc/on_transfer_in(essence_type, amount, datum/essence_storage/source)
+
 /obj/machinery/essence
 	plane = GAME_PLANE_UPPER
 	layer = ABOVE_MOB_LAYER
@@ -188,3 +190,125 @@
 	for(var/datum/essence_connection/conn in input_connections.Copy())
 		if(!conn.source || QDELETED(conn.source))
 			remove_connection(conn)
+
+
+GLOBAL_DATUM_INIT(thaumic_research, /datum/thaumic_research_network, new())
+
+/datum/thaumic_research_network
+	var/list/unlocked_research = list()
+	var/list/research_nodes = list()
+
+/datum/thaumic_research_network/New()
+	. = ..()
+	// Initialize with basic research
+	unlocked_research += /datum/thaumic_research_node/basic_transmutation
+
+	// Cache all research node types for easy access
+	for(var/node_type in subtypesof(/datum/thaumic_research_node))
+		var/datum/thaumic_research_node/node = new node_type
+		research_nodes[node_type] = node
+
+/datum/thaumic_research_network/proc/has_research(research_type)
+	return research_type in unlocked_research
+
+/datum/thaumic_research_network/proc/unlock_research(research_type)
+	if(research_type in unlocked_research)
+		return FALSE
+	unlocked_research += research_type
+	return TRUE
+
+/datum/thaumic_research_network/proc/get_research_bonus(bonus_type)
+	var/bonus = 1.0
+	switch(bonus_type)
+		if("essence_production")
+			if(has_research(/datum/thaumic_research_node/essence_refinement))
+				bonus += 0.25
+			if(has_research(/datum/thaumic_research_node/advanced_enchantment))
+				bonus += 0.15
+			if(has_research(/datum/thaumic_research_node/master_artifice))
+				bonus += 0.35
+
+		if("harvester_efficiency")
+			if(has_research(/datum/thaumic_research_node/botanical_alchemy))
+				bonus += 0.20
+			if(has_research(/datum/thaumic_research_node/crystalline_resonance))
+				bonus += 0.30
+			if(has_research(/datum/thaumic_research_node/elemental_mastery))
+				bonus += 0.25
+
+		if("combination_speed")
+			if(has_research(/datum/thaumic_research_node/elemental_binding))
+				bonus += 0.15
+			if(has_research(/datum/thaumic_research_node/dimensional_manipulation))
+				bonus += 0.25
+
+		if("splitting_efficiency")
+			if(has_research(/datum/thaumic_research_node/natural_philosophy))
+				bonus += 0.20
+			if(has_research(/datum/thaumic_research_node/pure_creation))
+				bonus += 0.40
+
+	return bonus
+
+/datum/thaumic_research_network/proc/get_cost_reduction(cost_type)
+	var/reduction = 1.0
+	switch(cost_type)
+		if("life_essence_cost")
+			if(has_research(/datum/thaumic_research_node/master_artifice))
+				reduction -= 0.25
+			if(has_research(/datum/thaumic_research_node/transcendence))
+				reduction -= 0.50
+		if("general_essence_cost")
+			if(has_research(/datum/thaumic_research_node/essence_refinement))
+				reduction -= 0.10
+			if(has_research(/datum/thaumic_research_node/reality_shaping))
+				reduction -= 0.15
+	return max(reduction, 0.1) // Never reduce below 10% of original cost
+
+/datum/thaumic_research_network/proc/get_speed_multiplier(speed_type)
+	var/multiplier = 1.0
+	switch(speed_type)
+		if("construct_creation")
+			if(has_research(/datum/thaumic_research_node/advanced_enchantment))
+				multiplier += 0.33
+			if(has_research(/datum/thaumic_research_node/transcendence))
+				multiplier += 0.67
+		if("essence_processing")
+			if(has_research(/datum/thaumic_research_node/dimensional_manipulation))
+				multiplier += 0.25
+			if(has_research(/datum/thaumic_research_node/elemental_mastery))
+				multiplier += 0.20
+	return multiplier
+
+/datum/thaumic_research_network/proc/can_use_machine(machine_type)
+	switch(machine_type)
+		if("test_tube")
+			return has_research(/datum/thaumic_research_node/living_constructs)
+		if("advanced_combiner")
+			return has_research(/datum/thaumic_research_node/advanced_enchantment)
+		if("reality_forge")
+			return has_research(/datum/thaumic_research_node/reality_shaping)
+	return TRUE
+
+/datum/thaumic_research_network/proc/get_available_research()
+	var/list/available = list()
+	for(var/node_type in subtypesof(/datum/thaumic_research_node))
+		if(node_type in unlocked_research)
+			continue
+		var/datum/thaumic_research_node/node = research_nodes[node_type]
+		if(!node)
+			continue
+
+		var/can_research = TRUE
+		for(var/prereq in node.prerequisites)
+			if(!(prereq in unlocked_research))
+				can_research = FALSE
+				break
+
+		if(can_research)
+			available += node_type
+
+	return available
+
+/datum/thaumic_research_network/proc/can_research(datum/thaumic_research_node/node_type)
+	return(node_type in get_available_research())

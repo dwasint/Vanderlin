@@ -89,6 +89,7 @@
 /datum/essence_storage/proc/on_essence_transferred_out(essence_type, amount, datum/essence_storage/target)
 
 /datum/essence_storage/proc/on_essence_transferred_in(essence_type, amount, datum/essence_storage/source)
+	parent_atom.on_transfer_in(essence_type, amount, source)
 
 /datum/essence_storage/proc/force_visual_update()
 	update_icon_and_overlays()

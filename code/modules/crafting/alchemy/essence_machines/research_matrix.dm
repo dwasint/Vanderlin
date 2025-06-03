@@ -8,7 +8,6 @@
 	processing_priority = 3
 	var/datum/essence_storage/storage
 	var/datum/thaumic_research_node/selected_research
-	var/list/unlocked_research = list()
 	var/mob/current_user
 
 /obj/machinery/essence/research_matrix/Initialize()
@@ -16,15 +15,31 @@
 	storage = new /datum/essence_storage(src)
 	storage.max_total_capacity = 100
 	storage.max_essence_types = 10
-	unlocked_research += /datum/thaumic_research_node/basic_transmutation
 
 /obj/machinery/essence/research_matrix/attack_hand(mob/user, params)
-	if(current_user && current_user != user)
-		to_chat(user, span_warning("Someone else is already using the research matrix."))
-		return
-
 	current_user = user
 	open_research_interface(user)
+
+/obj/machinery/essence/research_matrix/return_storage()
+	return storage
+
+/obj/machinery/essence/research_matrix/can_target_accept_essence(target, essence_type)
+	return is_essence_allowed(essence_type)
+
+/obj/machinery/essence/research_matrix/is_essence_allowed(essence_type)
+	if(!selected_research)
+		return FALSE
+	if(!(essence_type in selected_research.required_essences))
+		return
+
+	var/needed = selected_research.required_essences[essence_type]
+	var/current = storage.get_essence_amount(essence_type)
+	var/remaining_needed = needed - current
+
+	if(remaining_needed <= 0)
+		return FALSE
+
+	return TRUE
 
 /obj/machinery/essence/research_matrix/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/essence_connector))
@@ -41,17 +56,12 @@
 			return
 
 		var/essence_type = vial.contained_essence.type
-		if(!(essence_type in selected_research.required_essences))
-			to_chat(user, span_warning("This essence is not required for the selected research."))
+		if(!is_essence_allowed(essence_type))
 			return
 
 		var/needed = selected_research.required_essences[essence_type]
 		var/current = storage.get_essence_amount(essence_type)
 		var/remaining_needed = needed - current
-
-		if(remaining_needed <= 0)
-			to_chat(user, span_warning("You already have enough of this essence for the selected research."))
-			return
 
 		var/to_transfer = min(vial.essence_amount, remaining_needed)
 		var/transferred = storage.add_essence(essence_type, to_transfer)
@@ -62,7 +72,6 @@
 				vial.contained_essence = null
 			vial.update_icon()
 			to_chat(user, span_info("You pour [transferred] units of essence into the matrix."))
-			check_research_completion(user)
 		return
 
 	return ..()
@@ -70,6 +79,9 @@
 /obj/machinery/essence/research_matrix/proc/open_research_interface(mob/user)
 	var/datum/research_interface/interface = new(src, user)
 	interface.show()
+
+/obj/machinery/essence/research_matrix/on_transfer_in(essence_type, amount, datum/essence_storage/source)
+	check_research_completion(current_user)
 
 /obj/machinery/essence/research_matrix/proc/check_research_completion(mob/user)
 	if(!selected_research)
@@ -94,17 +106,17 @@
 		var/needed = selected_research.required_essences[essence_type]
 		storage.remove_essence(essence_type, needed)
 
-	unlocked_research |= selected_research.type
+	GLOB.thaumic_research.unlock_research(selected_research.type)
 
 	for(var/datum/thaumic_research_node/node_type as anything in subtypesof(/datum/thaumic_research_node))
 		var/datum/thaumic_research_node/temp_node = new node_type
 		if(selected_research.type in temp_node.prerequisites)
 			var/can_unlock = TRUE
 			for(var/prereq in temp_node.prerequisites)
-				if(!(prereq in unlocked_research))
+				if(!GLOB.thaumic_research.has_research(prereq))
 					can_unlock = FALSE
 					break
-			if(can_unlock && !(node_type in unlocked_research))
+			if(can_unlock && !GLOB.thaumic_research.has_research(node_type))
 				message_admins("test")
 		qdel(temp_node)
 
@@ -115,13 +127,12 @@
 
 	selected_research = null
 
-	if(current_user == user)
-		addtimer(CALLBACK(src, PROC_REF(open_research_interface), user), 1)
+	addtimer(CALLBACK(src, PROC_REF(open_research_interface), user), 1)
 
 /obj/machinery/essence/research_matrix/examine(mob/user)
 	. = ..()
 	. += span_notice("Storage: [storage.get_total_stored()]/[storage.max_total_capacity] units")
-	. += span_notice("Unlocked research nodes: [unlocked_research.len]")
+	. += span_notice("Unlocked research nodes: [GLOB.thaumic_research.unlocked_research.len]")
 
 	if(selected_research)
 		. += span_notice("Selected research: [selected_research.name]")
@@ -750,15 +761,17 @@
 
 	return html
 
+
 /datum/research_interface/proc/generate_nodes_html()
 	var/html = ""
 	var/center_x = 0
 	var/center_y = 0
+	var/list/available_research = GLOB.thaumic_research.get_available_research()
 
 	for(var/datum/thaumic_research_node/node_type as anything in subtypesof(/datum/thaumic_research_node))
 		var/datum/thaumic_research_node/node = new node_type
-		var/is_unlocked = (node_type in matrix.unlocked_research)
-		var/is_available = is_unlocked || can_research_node(node)
+		var/is_unlocked = GLOB.thaumic_research.has_research(node_type)
+		var/is_available = (node_type in available_research)
 		var/is_selected = (matrix.selected_research && matrix.selected_research.type == node_type)
 
 		var/class_list = "research-node"
@@ -772,7 +785,7 @@
 		if(is_selected)
 			class_list += " selected"
 
-		var/node_x = center_x + node.node_x - 16  // Center the 32px node (16px offset)
+		var/node_x = center_x + node.node_x - 16
 		var/node_y = center_y + node.node_y - 16
 
 		var/list/req_text = list()
@@ -850,7 +863,7 @@
 			var/start_y = start_center_y
 			var/line_length = distance
 
-			var/is_unlocked_connection = (prereq_type in matrix.unlocked_research) && (node_type in matrix.unlocked_research)
+			var/is_unlocked_connection = (GLOB.thaumic_research.has_research(prereq_type)) && (GLOB.thaumic_research.has_research(node_type))
 			var/connection_class = "connection-line"
 			if(is_unlocked_connection)
 				connection_class += " unlocked"
@@ -863,12 +876,8 @@
 	return html
 
 /datum/research_interface/proc/can_research_node(datum/thaumic_research_node/node)
-	for(var/prereq in node.prerequisites)
-		if(!(prereq in matrix.unlocked_research))
-			return FALSE
-	return TRUE
+	return GLOB.thaumic_research.can_research(node.type)
 
-// Topic handler for the matrix
 /obj/machinery/essence/research_matrix/Topic(href, href_list)
 	if(href_list["action"] == "select_research")
 		var/node_type = text2path(href_list["node"])
@@ -876,18 +885,17 @@
 			return
 
 		var/datum/thaumic_research_node/node = new node_type
-		if(node_type in unlocked_research)
+		if(GLOB.thaumic_research.has_research(node_type))
 			to_chat(usr, span_warning("This research has already been completed."))
 			qdel(node)
 			return
 
-		for(var/prereq in node.prerequisites)
-			if(!(prereq in unlocked_research))
-				to_chat(usr, span_warning("Prerequisites not met for this research."))
-				qdel(node)
-				return
+		if(!GLOB.thaumic_research.can_research(node_type))
+			to_chat(usr, span_warning("Prerequisites not met for this research."))
+			qdel(node)
+			return
 
 		selected_research = node
 		to_chat(usr, span_info("Selected research: [node.name]"))
-		if(current_user == usr)
-			addtimer(CALLBACK(src, PROC_REF(open_research_interface), usr), 0.1)
+		addtimer(CALLBACK(src, PROC_REF(open_research_interface), usr), 0.1)
+
