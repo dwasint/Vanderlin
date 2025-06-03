@@ -339,7 +339,15 @@
 				// Default display style - will be changed by JS if searching
 				var/display_style = should_show ? "" : "display: none;"
 
-				html += "<a class='recipe-link' href='byond://?src=\ref[src];action=view_recipe&recipe=[sub_path]' style='[display_style]'>[recipe_name]</a>"
+				// In the recipe list generation section, modify the recipe link to include essence data:
+				var/essence_data = ""
+				if(ispath(sub_path, /datum/natural_precursor))
+					var/datum/natural_precursor/temp = new sub_path()
+					for(var/datum/thaumaturgical_essence/essence_type as anything in temp.essence_yields)
+						essence_data += "[initial(essence_type.name)],"
+					qdel(temp)
+
+				html += "<a class='recipe-link' href='byond://?src=\ref[src];action=view_recipe&recipe=[sub_path]' style='[display_style]' data-essences='[essence_data]'>[recipe_name]</a>"
 		else
 			var/recipe_name = initial(path.name)
 
@@ -393,11 +401,13 @@
 
 					recipeLinks.forEach(function(link) {
 						const recipeName = link.textContent.toLowerCase();
+						const essences = (link.getAttribute('data-essences') || "").toLowerCase();
 
-						// Check if it matches the search query
-						const matchesQuery = query === '' || recipeName.includes(query);
+						// Check if it matches either the recipe name or any of the essences
+						const matchesQuery = query === '' ||
+							recipeName.includes(query) ||
+							essences.includes(query);
 
-						// If we have both a query and active category, respect both filters
 						if (matchesQuery) {
 							link.style.display = 'block';
 							anyVisible = true;
@@ -412,11 +422,6 @@
 
 					// Remember the query
 					window.location.replace(`byond://?src=\\ref[src];action=remember_query&query=${encodeURIComponent(query)}`);
-				}
-
-				// Initialize search based on any current query
-				if ("[search_query]" !== "") {
-					filterRecipes("[search_query]".toLowerCase());
 				}
 			</script>
 		</body>
