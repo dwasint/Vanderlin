@@ -389,8 +389,8 @@ GLOBAL_LIST_INIT(natural_precursor_registry, list())
 		/datum/thaumaturgical_essence/order = 1
 	)
 	init_types = list(
-		 /obj/item/reagent_containers/food/snacks/produce/fruit/apple,
-		 /obj/item/reagent_containers/food/snacks/apple_dried,
+		/obj/item/reagent_containers/food/snacks/produce/fruit/apple,
+		/obj/item/reagent_containers/food/snacks/apple_dried,
 	)
 
 
@@ -401,7 +401,7 @@ GLOBAL_LIST_INIT(natural_precursor_registry, list())
 		/datum/thaumaturgical_essence/earth = 1
 	)
 	init_types = list(
-		 /obj/item/alch/hypericum,
+		/obj/item/alch/hypericum,
 	)
 
 /datum/natural_precursor/leech
@@ -433,7 +433,7 @@ GLOBAL_LIST_INIT(natural_precursor_registry, list())
 		/datum/thaumaturgical_essence/order = 2
 	)
 	init_types = list(
-		 /obj/item/gem,
+		/obj/item/gem,
 	)
 
 /datum/natural_precursor/coal
@@ -443,7 +443,7 @@ GLOBAL_LIST_INIT(natural_precursor_registry, list())
 		/datum/thaumaturgical_essence/earth = 2
 	)
 	init_types = list(
-		 /obj/item/ore/coal,
+		/obj/item/ore/coal,
 	)
 
 /datum/natural_precursor/bone
@@ -453,8 +453,8 @@ GLOBAL_LIST_INIT(natural_precursor_registry, list())
 		/datum/thaumaturgical_essence/order = 1
 	)
 	init_types = list(
-		 /obj/item/alch/bone,
-		 /obj/item/alch/bonemeal,
+		/obj/item/alch/bone,
+		/obj/item/alch/bonemeal,
 	)
 
 /datum/natural_precursor/feather
