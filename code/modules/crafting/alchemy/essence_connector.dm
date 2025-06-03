@@ -92,7 +92,6 @@
 		   istype(target, /obj/machinery/essence/infuser) || \
 		   istype(target, /obj/machinery/essence/research_matrix)
 
-// Clean connection datum
 /datum/essence_connection
 	var/obj/machinery/essence/source
 	var/obj/machinery/essence/target
@@ -105,7 +104,6 @@
 	target = null
 	return ..()
 
-// Improved essence orb with better animation
 /obj/effect/essence_orb
 	name = "essence orb"
 	desc = "A concentrated ball of thaumaturgical essence traveling between devices."
