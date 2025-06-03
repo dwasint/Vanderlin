@@ -103,6 +103,10 @@
 			temp_recipe = new path()
 			var/datum/natural_precursor/r = temp_recipe
 			category = r.category
+		else if(ispath(path, /datum/essence_infusion_recipe))
+			temp_recipe = new path()
+			var/datum/essence_infusion_recipe/r = temp_recipe
+			category = r.category
 
 		// Clean up our temporary instance
 		if(temp_recipe)
@@ -506,6 +510,11 @@
 		var/datum/essence_combination/r = temp_recipe
 		recipe_name = initial(r.name)
 		recipe_html = get_recipe_specific_html(r, user)
+	else if(ispath(path, /datum/essence_infusion_recipe))
+		temp_recipe = new path()
+		var/datum/essence_infusion_recipe/r = temp_recipe
+		recipe_name = initial(r.name)
+		recipe_html = get_recipe_specific_html(r, user)
 
 	if(temp_recipe)
 		qdel(temp_recipe)
@@ -819,4 +828,5 @@
 		/datum/alch_cauldron_recipe,
 		/datum/essence_combination,
 		/datum/natural_precursor,
+		/datum/essence_infusion_recipe,
 	)

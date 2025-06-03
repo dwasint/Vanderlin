@@ -76,18 +76,18 @@
 /obj/item/essence_connector/proc/can_connect(obj/machinery/source, obj/machinery/target)
 	// Splitter can output to combiner or reservoir
 	if(istype(source, /obj/machinery/essence/splitter))
-		return istype(target, /obj/machinery/essence/combiner) || istype(target, /obj/machinery/essence/reservoir) || istype(target, /obj/machinery/essence/enchantment_altar) || istype(target, /obj/machinery/essence/test_tube)
+		return istype(target, /obj/machinery/essence/combiner) || istype(target, /obj/machinery/essence/reservoir) || istype(target, /obj/machinery/essence/enchantment_altar) || istype(target, /obj/machinery/essence/test_tube) || istype(target, /obj/machinery/essence/infuser) || istype(target, /obj/machinery/essence/research_matrix)
 
 	// Combiner can output to reservoir
 	if(istype(source, /obj/machinery/essence/combiner))
-		return istype(target, /obj/machinery/essence/reservoir) || istype(target, /obj/machinery/essence/enchantment_altar) || istype(target, /obj/machinery/essence/test_tube)
+		return istype(target, /obj/machinery/essence/reservoir) || istype(target, /obj/machinery/essence/enchantment_altar) || istype(target, /obj/machinery/essence/test_tube) || istype(target, /obj/machinery/essence/infuser) || istype(target, /obj/machinery/essence/research_matrix)
 
 	// Reservoir can output to combiner
 	if(istype(source, /obj/machinery/essence/reservoir))
-		return istype(target, /obj/machinery/essence/combiner) || istype(target, /obj/machinery/essence/reservoir) || istype(target, /obj/machinery/essence/enchantment_altar) || istype(target, /obj/machinery/essence/test_tube)
+		return istype(target, /obj/machinery/essence/combiner) || istype(target, /obj/machinery/essence/reservoir) || istype(target, /obj/machinery/essence/enchantment_altar) || istype(target, /obj/machinery/essence/test_tube) || istype(target, /obj/machinery/essence/infuser) || istype(target, /obj/machinery/essence/research_matrix)
 
 	if(istype(source, /obj/machinery/essence/harvester))
-		return istype(target, /obj/machinery/essence/combiner) || istype(target, /obj/machinery/essence/reservoir) || istype(target, /obj/machinery/essence/enchantment_altar) || istype(target, /obj/machinery/essence/test_tube)
+		return istype(target, /obj/machinery/essence/combiner) || istype(target, /obj/machinery/essence/reservoir) || istype(target, /obj/machinery/essence/enchantment_altar) || istype(target, /obj/machinery/essence/test_tube) || istype(target, /obj/machinery/essence/infuser) || istype(target, /obj/machinery/essence/research_matrix)
 
 	return FALSE
 

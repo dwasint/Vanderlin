@@ -76,59 +76,59 @@
 
 
 /obj/item/clothing/gloves/essence_gauntlet/attack_right(mob/user)
-    if(!stored_vials.len)
-        to_chat(user, span_warning("[src] has no vials to remove!"))
-        return
+	if(!stored_vials.len)
+		to_chat(user, span_warning("[src] has no vials to remove!"))
+		return
 
-    // Create radial menu for vial selection
-    var/list/radial_options = list()
-    var/list/vial_mapping = list()
-    for(var/i in 1 to stored_vials.len)
-        var/obj/item/essence_vial/vial = stored_vials[i]
-        var/vial_desc = "Vial [i]"
-        var/display_name = "Vial [i]"
-        if(vial.contained_essence && vial.essence_amount > 0)
-            if(HAS_TRAIT(user, TRAIT_LEGENDARY_ALCHEMIST))
-                vial_desc += " - [vial.contained_essence.name] ([vial.essence_amount] units)"
-                display_name = "[vial.contained_essence.name]"
-            else
-                vial_desc += " - essence smelling of [vial.contained_essence.smells_like] ([vial.essence_amount] units)"
-                display_name = "Essence smelling of [vial.contained_essence.smells_like]"
-        else
-            vial_desc += " - empty"
-            display_name = "Empty vial"
+	// Create radial menu for vial selection
+	var/list/radial_options = list()
+	var/list/vial_mapping = list()
+	for(var/i in 1 to stored_vials.len)
+		var/obj/item/essence_vial/vial = stored_vials[i]
+		var/vial_desc = "Vial [i]"
+		var/display_name = "Vial [i]"
+		if(vial.contained_essence && vial.essence_amount > 0)
+			if(HAS_TRAIT(user, TRAIT_LEGENDARY_ALCHEMIST))
+				vial_desc += " - [vial.contained_essence.name] ([vial.essence_amount] units)"
+				display_name = "[vial.contained_essence.name]"
+			else
+				vial_desc += " - essence smelling of [vial.contained_essence.smells_like] ([vial.essence_amount] units)"
+				display_name = "Essence smelling of [vial.contained_essence.smells_like]"
+		else
+			vial_desc += " - empty"
+			display_name = "Empty vial"
 
-        var/datum/radial_menu_choice/choice = new()
-        var/image/image = image(icon = 'icons/roguetown/misc/alchemy.dmi', icon_state = "essence")
-        if(vial.contained_essence && vial.essence_amount > 0)
-            image.color = vial.contained_essence.color
-        choice.image = image
-        choice.name = display_name
-        if(vial.contained_essence && vial.essence_amount > 0)
-            if(HAS_TRAIT(user, TRAIT_LEGENDARY_ALCHEMIST))
-                choice.info = "Remove vial containing [vial.contained_essence.name] ([vial.essence_amount] units)"
-            else
-                choice.info = "Remove vial containing essence smelling of [vial.contained_essence.smells_like] ([vial.essence_amount] units)"
-        else
-            choice.info = "Remove empty vial"
-        radial_options[vial_desc] = choice
-        vial_mapping[vial_desc] = vial
+		var/datum/radial_menu_choice/choice = new()
+		var/image/image = image(icon = 'icons/roguetown/misc/alchemy.dmi', icon_state = "essence")
+		if(vial.contained_essence && vial.essence_amount > 0)
+			image.color = vial.contained_essence.color
+		choice.image = image
+		choice.name = display_name
+		if(vial.contained_essence && vial.essence_amount > 0)
+			if(HAS_TRAIT(user, TRAIT_LEGENDARY_ALCHEMIST))
+				choice.info = "Remove vial containing [vial.contained_essence.name] ([vial.essence_amount] units)"
+			else
+				choice.info = "Remove vial containing essence smelling of [vial.contained_essence.smells_like] ([vial.essence_amount] units)"
+		else
+			choice.info = "Remove empty vial"
+		radial_options[vial_desc] = choice
+		vial_mapping[vial_desc] = vial
 
-    var/choice = show_radial_menu(user, src, radial_options, custom_check = CALLBACK(src, PROC_REF(check_gauntlet_validity), user), radial_slice_icon = "radial_thaum")
-    if(!choice || !vial_mapping[choice])
-        return
-    var/obj/item/essence_vial/chosen_vial = vial_mapping[choice]
-    stored_vials -= chosen_vial
-    chosen_vial.forceMove(get_turf(user))
-    user.put_in_hands(chosen_vial)
-    to_chat(user, span_notice("You remove [chosen_vial] from [src]."))
-    // Update spells if currently equipped
-    if(ishuman(user) && user.get_item_by_slot(SLOT_GLOVES) == src)
-        remove_essence_spells(user)
-        grant_essence_spells(user)
+	var/choice = show_radial_menu(user, src, radial_options, custom_check = CALLBACK(src, PROC_REF(check_gauntlet_validity), user), radial_slice_icon = "radial_thaum")
+	if(!choice || !vial_mapping[choice])
+		return
+	var/obj/item/essence_vial/chosen_vial = vial_mapping[choice]
+	stored_vials -= chosen_vial
+	chosen_vial.forceMove(get_turf(user))
+	user.put_in_hands(chosen_vial)
+	to_chat(user, span_notice("You remove [chosen_vial] from [src]."))
+	// Update spells if currently equipped
+	if(ishuman(user) && user.get_item_by_slot(SLOT_GLOVES) == src)
+		remove_essence_spells(user)
+		grant_essence_spells(user)
 
 /obj/item/clothing/gloves/essence_gauntlet/proc/check_gauntlet_validity(mob/user)
-    return user && src.loc == user
+	return user && src.loc == user
 
 /obj/item/clothing/gloves/essence_gauntlet/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/essence_vial))
