@@ -104,19 +104,156 @@
 
 
 /datum/recipe_tree_interface/proc/scan_slapcraft_recipes()
-	return
+	for(var/recipe_path in subtypesof(/datum/slapcraft_recipe))
+		var/datum/slapcraft_recipe/recipe = new recipe_path()
+
+		if(!recipe.result_type && !length(recipe.result_list))
+			qdel(recipe)
+			continue
+
+		var/list/unique_items = list()
+
+		// Just get unique item types from steps
+		if(islist(recipe.steps))
+			for(var/step_type in recipe.steps)
+				var/datum/slapcraft_step/step = new step_type()
+
+				if(step.check_types && length(step.item_types))
+					unique_items |= step.item_types
+
+				qdel(step)
+
+		add_recipe_to_cache(
+			recipe.result_type,
+			recipe_path,
+			"slapcraft",
+			recipe.name,
+			unique_items,
+			list(
+				"category" = recipe.category,
+				"subcategory" = recipe.subcategory,
+				"craft_difficulty" = recipe.craftdiff,
+				"skill_required" = recipe.skillcraft,
+				"assembly_weight" = recipe.assembly_weight_class,
+				"can_disassemble" = recipe.can_disassemble
+			)
+		)
+
+		qdel(recipe)
 
 /datum/recipe_tree_interface/proc/scan_crafting_recipes()
-	return
+	for(var/recipe_path in subtypesof(/datum/crafting_recipe))
+		var/datum/crafting_recipe/recipe = new recipe_path()
+
+		if(!recipe.result)
+			qdel(recipe)
+			continue
+
+		var/list/ingredients = list()
+		ingredients += recipe.reqs
+		ingredients += recipe.tools
+
+		add_recipe_to_cache(
+			recipe.result,
+			recipe_path,
+			"crafting",
+			recipe.name,
+			ingredients,
+			list(
+				"category" = recipe.category,
+				"subcategory" = recipe.subcategory,
+				"craft_difficulty" = recipe.craftdiff,
+				"skill_required" = recipe.skillcraft,
+				"time" = recipe.time,
+				"req_table" = recipe.req_table,
+				"always_available" = recipe.always_availible
+			)
+		)
+
+		qdel(recipe)
 
 /datum/recipe_tree_interface/proc/scan_molten_recipes()
-	return
+	for(var/recipe_path in subtypesof(/datum/molten_recipe))
+		var/datum/molten_recipe/recipe = new recipe_path()
+
+		if(!length(recipe.output))
+			qdel(recipe)
+			continue
+
+		var/list/ingredients = list()
+		for(var/material in recipe.materials_required)
+			ingredients += material
+
+		for(var/output in recipe.output)
+			add_recipe_to_cache(
+				output,
+				recipe_path,
+				"molten",
+				recipe.name,
+				ingredients,
+				list(
+					"category" = recipe.category,
+					"temperature" = recipe.temperature_required,
+					"materials" = recipe.materials_required
+				)
+			)
+
+		qdel(recipe)
 
 /datum/recipe_tree_interface/proc/scan_pottery_recipes()
-	return
+	for(var/recipe_path in subtypesof(/datum/pottery_recipe))
+		var/datum/pottery_recipe/recipe = new recipe_path()
+
+		if(!recipe.created_item)
+			qdel(recipe)
+			continue
+
+		add_recipe_to_cache(
+			recipe.created_item,
+			recipe_path,
+			"pottery",
+			recipe.name,
+			recipe.recipe_steps,
+			list(
+				"category" = recipe.category,
+				"difficulty" = recipe.difficulty,
+				"speed_sweetspot" = recipe.speed_sweetspot,
+				"step_times" = recipe.step_to_time
+			)
+		)
+
+		qdel(recipe)
 
 /datum/recipe_tree_interface/proc/scan_runerituals_recipes()
-	return
+	for(var/recipe_path in subtypesof(/datum/runerituals))
+		var/datum/runerituals/recipe = new recipe_path()
+
+		if(!length(recipe.result_atoms) && !recipe.mob_to_summon)
+			qdel(recipe)
+			continue
+
+		var/result
+		if(length(recipe.result_atoms))
+			result = recipe.result_atoms[1]
+		else
+			result = recipe.mob_to_summon
+
+		add_recipe_to_cache(
+			result,
+			recipe_path,
+			"ritual",
+			recipe.name,
+			recipe.required_atoms,
+			list(
+				"category" = recipe.category,
+				"description" = recipe.desc,
+				"tier" = recipe.tier,
+				"blacklisted" = recipe.blacklisted,
+				"banned_types" = recipe.banned_atom_types
+			)
+		)
+
+		qdel(recipe)
 
 /datum/recipe_tree_interface/proc/scan_repeatable_crafting_recipes()
 	for(var/recipe_path in subtypesof(/datum/repeatable_crafting_recipe))
