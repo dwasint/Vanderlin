@@ -521,7 +521,7 @@
 	node_x = UP_X_RIGHT
 	node_y = UP_Y_TIER_2
 	prerequisites = list(/datum/spell_node/frost_affinity)
-	spell_type = /obj/effect/proc_holder/spell/invoked/projectile/rayoffrost5e
+	spell_type = /obj/effect/proc_holder/spell/invoked/beam/rayoffrost5e
 
 /datum/spell_node/chill_touch
 	name = "Chill Touch"
