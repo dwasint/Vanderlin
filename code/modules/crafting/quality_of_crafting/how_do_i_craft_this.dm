@@ -40,7 +40,7 @@
 		for(var/i = 1; i <= node_count; i++)
 			var/datum/recipe_tree_node/node = nodes_at_depth[i]
 			node.node_x = start_x + (i - 1) * spacing
-			node.node_y = depth * 120 // Vertical spacing between levels
+			node.node_y = text2num(depth) * 120 // Vertical spacing between levels
 
 /datum/recipe_tree_interface/proc/organize_nodes_by_depth(datum/recipe_tree_node/node, list/levels, visited = null)
 	if(!visited)
