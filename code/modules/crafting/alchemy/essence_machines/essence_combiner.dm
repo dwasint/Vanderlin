@@ -227,6 +227,7 @@
 
 	var/list/possible_recipes = list()
 	var/list/available_essences = input_storage.stored_essences.Copy()
+	var/efficiency_bonus = GLOB.thaumic_research.get_research_bonus("combining_output")
 
 	while(possible_recipes.len < max_concurrent_recipes)
 		var/datum/essence_combination/recipe = find_matching_combination(available_essences)
@@ -261,7 +262,7 @@
 
 	var/total_output = 0
 	for(var/datum/essence_combination/recipe in possible_recipes)
-		total_output += recipe.output_amount
+		total_output += round(recipe.output_amount * efficiency_bonus, 1)
 
 	if(output_storage.get_available_space() < total_output)
 		to_chat(user, span_warning("Not enough space in output storage for bulk combination."))
@@ -277,24 +278,26 @@
 	user.visible_message(span_info("[user] activates the essence combiner for bulk processing ([recipes.len] recipes)."))
 	update_overlays()
 
-	var/process_time = 5 SECONDS + (recipes.len * 2 SECONDS)
+	var/speed_divide = GLOB.thaumic_research.get_speed_multiplier("essence_combining")
+	var/process_time = (5 SECONDS + (recipes.len * 2 SECONDS)) / speed_divide
 	addtimer(CALLBACK(src, PROC_REF(finish_bulk_combination), user, recipes), process_time)
 
 /obj/machinery/essence/combiner/proc/finish_bulk_combination(mob/living/user, list/recipes)
 	var/list/produced_essences = list()
+	var/efficiency_bonus = GLOB.thaumic_research.get_research_bonus("combining_output")
 
 	for(var/datum/essence_combination/recipe in recipes)
 		for(var/essence_type in recipe.inputs)
 			var/required_amount = recipe.inputs[essence_type]
 			input_storage.remove_essence(essence_type, required_amount)
 
-		output_storage.add_essence(recipe.output_type, recipe.output_amount)
+		output_storage.add_essence(recipe.output_type, round(recipe.output_amount * efficiency_bonus, 1))
 
 		var/datum/thaumaturgical_essence/output_essence = new recipe.output_type
 		if(produced_essences[output_essence.name])
-			produced_essences[output_essence.name] += recipe.output_amount
+			produced_essences[output_essence.name] += round(recipe.output_amount * efficiency_bonus, 1)
 		else
-			produced_essences[output_essence.name] = recipe.output_amount
+			produced_essences[output_essence.name] = round(recipe.output_amount * efficiency_bonus, 1)
 		qdel(output_essence)
 		qdel(recipe)
 

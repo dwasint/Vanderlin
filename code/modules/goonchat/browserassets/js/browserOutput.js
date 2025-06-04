@@ -1310,6 +1310,26 @@ function output(message, flag) {
 
     message = byondDecode(message).trim();
 
+	 if (flag !== 'internal' && typeof window.WebSocketManager !== 'undefined') {
+        // Extract plain text for WebSocket transmission
+        var tempDiv = document.createElement('div');
+        tempDiv.innerHTML = message;
+        var plainText = tempDiv.textContent || tempDiv.innerText || "";
+
+		var payload = JSON.stringify({
+                content: {
+                    html: message,
+                    text: plainText,
+                    timestamp: Date.now(),
+                    flag: flag
+                }
+            });
+
+        // Send through WebSocket
+        window.WebSocketManager.sendMessage('chat/message', payload);
+    }
+
+
     // Rest of the existing filter logic for admin filters...
     var filteredOut = false;
     if (opts.hasOwnProperty('showMessagesFilters') && !opts.showMessagesFilters['All'].show) {
@@ -1464,6 +1484,320 @@ function highlightTerms(element) {
 
 	textNodes.forEach(highlightInTextNode);
 }
+class WebSocketManager {
+            constructor() {
+                this.websocket = null;
+                this.settings = {
+                    websocketEnabled: false,
+                    websocketServer: 'localhost:1234'
+                };
+                this.WEBSOCKET_DISABLED = 4555;
+                this.WEBSOCKET_REATTEMPT = 4556;
+                this.reconnectAttempts = 0;
+                this.maxReconnectAttempts = 5;
+
+                this.loadSettings();
+                this.initializeUI();
+            }
+
+            // Send WebSocket notices to chat
+            sendWSNotice(message, small = false) {
+                const html = small
+                    ? `<span class='adminsay'>${message}</span>`
+                    : `<div class="boxed_message"><center><span class='alertwarning'>${message}</span></center></div>`;
+
+                // Assuming you have a chat renderer function
+                if (typeof processChatMessage === 'function') {
+                    processChatMessage({ html: html });
+                } else {
+                    // Fallback: append directly to messages
+                    const messagesDiv = document.getElementById('messages');
+                    if (messagesDiv) {
+                        const messageElement = document.createElement('div');
+                        messageElement.innerHTML = html;
+                        messagesDiv.appendChild(messageElement);
+                        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+                    }
+                }
+            }
+
+            // Update WebSocket status indicator
+            updateStatus(status, message = '') {
+                const statusElement = document.getElementById('websocketStatus');
+                if (statusElement) {
+                    statusElement.className = `websocket-status ${status}`;
+                    statusElement.textContent = message || status.charAt(0).toUpperCase() + status.slice(1);
+                }
+            }
+
+            // Setup WebSocket connection
+            setupWebsocket() {
+                if (!this.settings.websocketEnabled) {
+                    if (this.websocket) {
+                        this.websocket.close(this.WEBSOCKET_REATTEMPT);
+                        this.websocket = null;
+                    }
+                    this.updateStatus('disconnected');
+                    return;
+                }
+
+                // Close existing connection
+                if (this.websocket) {
+                    this.websocket.close(this.WEBSOCKET_REATTEMPT);
+                }
+
+                this.updateStatus('connecting');
+
+                try {
+                    this.websocket = new WebSocket(`ws://${this.settings.websocketServer}`);
+                } catch (e) {
+                    if (e.name === 'SyntaxError') {
+                        this.sendWSNotice(
+                            `Error creating websocket: Invalid address! Make sure you're following the placeholder. Example: <code>localhost:1234</code>`
+                        );
+                        this.updateStatus('disconnected', 'Invalid Address');
+                        return;
+                    }
+                    this.sendWSNotice(`Error creating websocket: ${e.name} - ${e.message}`);
+                    this.updateStatus('disconnected', 'Connection Error');
+                    return;
+                }
+
+                this.websocket.addEventListener('open', () => {
+                    this.sendWSNotice('Websocket connected!', true);
+                    this.updateStatus('connected');
+                    this.reconnectAttempts = 0;
+                });
+
+                this.websocket.addEventListener('close', (ev) => {
+                    if (!this.settings.websocketEnabled) {
+                        this.updateStatus('disconnected');
+                        return;
+                    }
+
+                    if (ev.code !== this.WEBSOCKET_DISABLED && ev.code !== this.WEBSOCKET_REATTEMPT) {
+                        this.sendWSNotice(
+                            `Websocket disconnected! Code: ${ev.code} Reason: ${ev.reason || 'None provided'}`
+                        );
+                        this.updateStatus('disconnected', 'Connection Lost');
+
+                        // Auto-reconnect logic
+                        if (this.settings.websocketEnabled && this.reconnectAttempts < this.maxReconnectAttempts) {
+                            this.reconnectAttempts++;
+                            setTimeout(() => {
+                                this.sendWSNotice(`Attempting to reconnect... (${this.reconnectAttempts}/${this.maxReconnectAttempts})`, true);
+                                this.setupWebsocket();
+                            }, 2000 * this.reconnectAttempts);
+                        }
+                    } else {
+                        this.updateStatus('disconnected');
+                    }
+                });
+
+                this.websocket.addEventListener('error', (error) => {
+                    console.error('WebSocket error:', error);
+                    this.updateStatus('disconnected', 'Connection Error');
+                });
+
+                // Handle incoming messages
+                this.websocket.addEventListener('message', (event) => {
+                    try {
+                        const data = JSON.parse(event.data);
+                        this.handleWebSocketMessage(data);
+                    } catch (e) {
+                        console.error('Error parsing WebSocket message:', e);
+                    }
+                });
+            }
+
+            // Handle incoming WebSocket messages
+            handleWebSocketMessage(data) {
+                // Process incoming messages based on type
+                console.log('Received WebSocket message:', data);
+
+                // You can extend this to handle different message types
+                if (data.type === 'chat/message') {
+                    // Handle chat messages
+                    this.sendWSNotice(data.message, data.small || false);
+                } else if (data.type === 'system/message') {
+                    // Handle system messages
+                    this.sendWSNotice(data.message, true);
+                }
+            }
+
+            // Send message through WebSocket
+            sendMessage(type, payload) {
+                if (this.websocket && this.websocket.readyState === WebSocket.OPEN) {
+                    this.websocket.send(JSON.stringify({
+                        type: type,
+                        payload: payload
+                    }));
+                    return true;
+                }
+                return false;
+            }
+
+            // Connect WebSocket
+            connect() {
+                this.settings.websocketEnabled = true;
+                this.saveSettings();
+                this.sendWSNotice('Websocket enabled.', true);
+                this.setupWebsocket();
+            }
+
+            // Disconnect WebSocket
+            disconnect() {
+                this.settings.websocketEnabled = false;
+                this.saveSettings();
+                if (this.websocket) {
+                    this.websocket.close(this.WEBSOCKET_DISABLED);
+                    this.websocket = null;
+                }
+                this.sendWSNotice('Websocket forcefully disconnected.', true);
+                this.updateStatus('disconnected');
+            }
+
+            // Reconnect WebSocket
+            reconnect() {
+                if (this.settings.websocketEnabled) {
+                    this.reconnectAttempts = 0;
+                    this.setupWebsocket();
+                }
+            }
+
+            // Update server address
+            updateServer(server) {
+                this.settings.websocketServer = server;
+                this.saveSettings();
+
+                if (this.settings.websocketEnabled) {
+                    if (this.websocket) {
+                        this.websocket.close(this.WEBSOCKET_REATTEMPT, 'Websocket settings changed');
+                    }
+                    this.setupWebsocket();
+                }
+            }
+
+            // Save settings to localStorage
+            saveSettings() {
+                try {
+                    localStorage.setItem('websocketSettings', JSON.stringify(this.settings));
+                } catch (e) {
+                    console.error('Failed to save WebSocket settings:', e);
+                }
+
+                // Update UI
+                const enabledCheckbox = document.getElementById('websocketEnabled');
+                const serverInput = document.getElementById('websocketServer');
+
+                if (enabledCheckbox) {
+                    enabledCheckbox.checked = this.settings.websocketEnabled;
+                }
+                if (serverInput) {
+                    serverInput.value = this.settings.websocketServer;
+                }
+            }
+
+            // Load settings from localStorage
+            loadSettings() {
+                try {
+                    const saved = localStorage.getItem('websocketSettings');
+                    if (saved) {
+                        this.settings = { ...this.settings, ...JSON.parse(saved) };
+                    }
+                } catch (e) {
+                    console.error('Failed to load WebSocket settings:', e);
+                }
+            }
+
+            // Initialize UI event listeners
+            initializeUI() {
+                // Wait for DOM to be ready
+                if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', () => this.setupUIListeners());
+                } else {
+                    this.setupUIListeners();
+                }
+            }
+
+            setupUIListeners() {
+                // WebSocket toggle button
+                const toggleWebsocket = document.getElementById('toggleWebsocket');
+                if (toggleWebsocket) {
+                    toggleWebsocket.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const subWebsocket = document.getElementById('subWebsocket');
+                        if (subWebsocket) {
+                            subWebsocket.style.display = subWebsocket.style.display === 'block' ? 'none' : 'block';
+                        }
+                    });
+                }
+
+                // Enable/disable checkbox
+                const enabledCheckbox = document.getElementById('websocketEnabled');
+                if (enabledCheckbox) {
+                    enabledCheckbox.checked = this.settings.websocketEnabled;
+                    enabledCheckbox.addEventListener('change', (e) => {
+                        if (e.target.checked) {
+                            this.connect();
+                        } else {
+                            this.disconnect();
+                        }
+                    });
+                }
+
+                // Server input
+                const serverInput = document.getElementById('websocketServer');
+                if (serverInput) {
+                    serverInput.value = this.settings.websocketServer;
+                    serverInput.addEventListener('change', (e) => {
+                        this.updateServer(e.target.value);
+                    });
+                    serverInput.addEventListener('keypress', (e) => {
+                        if (e.key === 'Enter') {
+                            this.updateServer(e.target.value);
+                        }
+                    });
+                }
+
+                // Control buttons
+                const connectBtn = document.getElementById('connectWebsocket');
+                const disconnectBtn = document.getElementById('disconnectWebsocket');
+                const reconnectBtn = document.getElementById('reconnectWebsocket');
+
+                if (connectBtn) {
+                    connectBtn.addEventListener('click', () => this.connect());
+                }
+                if (disconnectBtn) {
+                    disconnectBtn.addEventListener('click', () => this.disconnect());
+                }
+                if (reconnectBtn) {
+                    reconnectBtn.addEventListener('click', () => this.reconnect());
+                }
+
+                // Initialize connection if enabled
+                if (this.settings.websocketEnabled) {
+                    setTimeout(() => this.setupWebsocket(), 1000);
+                }
+            }
+        }
+
+        // Initialize WebSocket Manager
+        const wsManager = new WebSocketManager();
+
+        // Make it globally accessible for integration with existing chat system
+        window.WebSocketManager = wsManager;
+
+        // Example integration with existing chat system
+        // You can call these functions from your existing browserOutput.js
+        window.sendWebSocketMessage = function(type, payload) {
+            return wsManager.sendMessage(type, payload);
+        };
+
+        window.getWebSocketStatus = function() {
+            return wsManager.websocket ? wsManager.websocket.readyState : WebSocket.CLOSED;
+        };
+
 // Fixed filter function that looks at nested elements for chat classes
 function applyFilterToMessage(messageElement) {
     if (!messageElement) return;

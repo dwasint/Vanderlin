@@ -10,6 +10,8 @@
 	icon_living = "gnome"
 	icon_dead = "gnome_dead"
 
+	pass_flags = PASSMOB
+
 	maxHealth = 50
 	health = 50
 	harm_intent_damage = 8
@@ -40,6 +42,8 @@
 	var/max_carry_size = WEIGHT_CLASS_NORMAL
 	var/list/item_filters = list()
 
+	var/hat_state
+
 	var/static/list/pet_commands = list(
 		/datum/pet_command/follow,
 		/datum/pet_command/idle,
@@ -69,7 +73,18 @@
 	. = ..()
 	AddComponent(/datum/component/obeys_commands, pet_commands)
 
+/mob/living/simple_animal/hostile/gnome_homunculus/update_icon()
+	. = ..()
+	cut_overlays()
+
+	if(hat_state)
+		overlays += mutable_appearance(icon, hat_state)
+
 /mob/living/simple_animal/hostile/gnome_homunculus/proc/item_matches_filter(obj/item/target_item)
 	if(!length(item_filters))
 		return TRUE
 	return (is_type_in_list(target_item, item_filters))
+
+/mob/living/simple_animal/hostile/gnome_homunculus/proc/hat()
+	hat_state = pick("spike_helm", "fungi_helm", "fungi_helm_bog", "gnome_helm", null)
+	update_icon()

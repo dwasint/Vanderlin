@@ -1156,8 +1156,8 @@ GLOBAL_LIST_INIT(natural_precursor_registry, list())
 /datum/natural_precursor/meat_salami
 	name = "salami"
 	essence_yields = list(
-		/datum/thaumaturgical_essence/life = 2,
-		/datum/thaumaturgical_essence/chaos = 1
+		/datum/thaumaturgical_essence/life = 8,
+		/datum/thaumaturgical_essence/chaos = 4
 	)
 	init_types = list(
 		/obj/item/reagent_containers/food/snacks/meat/salami

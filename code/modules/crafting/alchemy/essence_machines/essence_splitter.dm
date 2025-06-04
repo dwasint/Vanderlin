@@ -16,6 +16,11 @@
 	storage.max_total_capacity = 200
 	storage.max_essence_types = 15
 
+	if(GLOB.thaumic_research.has_research(/datum/thaumic_research_node/splitter_output_four))
+		max_items = 9
+	else if(GLOB.thaumic_research.has_research(/datum/thaumic_research_node/splitter_output_five))
+		max_items = 10
+
 /obj/machinery/essence/splitter/process()
 	if(!connection_processing || !output_connections.len)
 		return
@@ -146,12 +151,13 @@
 	var/total_essence_yield = 0
 	var/list/all_precursors = list()
 
+	var/efficiency_bonus = GLOB.thaumic_research.get_research_bonus("splitting_efficiency")
 	for(var/obj/item/I in current_items)
 		var/datum/natural_precursor/precursor = get_precursor_data(I)
 		if(precursor)
 			all_precursors += precursor
 			for(var/essence_type in precursor.essence_yields)
-				total_essence_yield += precursor.essence_yields[essence_type]
+				total_essence_yield += round(precursor.essence_yields[essence_type] * efficiency_bonus, 1)
 
 	if(storage.get_available_space() < total_essence_yield)
 		to_chat(user, span_warning("The splitter doesn't have enough storage space for this bulk operation."))
@@ -161,21 +167,23 @@
 	user.visible_message(span_info("[user] activates the essence splitter."))
 	update_overlays()
 
-	var/process_time = 3 SECONDS + (length(current_items) * 1 SECONDS)
+	var/speed_divide = GLOB.thaumic_research.get_speed_multiplier("essence_splitting")
+	var/process_time = (3 SECONDS + (length(current_items) * 1 SECONDS)) / speed_divide
 	addtimer(CALLBACK(src, PROC_REF(finish_bulk_splitting), all_precursors, user), process_time)
 
 /obj/machinery/essence/splitter/proc/finish_bulk_splitting(list/precursors, mob/living/user)
 	flick_overlay_view(image(icon, src, "split", ABOVE_MOB_LAYER), 1.2 SECONDS)
 
+	var/efficiency_bonus = GLOB.thaumic_research.get_research_bonus("splitting_efficiency")
 	var/list/total_produced = list()
 	for(var/datum/natural_precursor/precursor in precursors)
 		for(var/essence_type in precursor.essence_yields)
 			var/amount = precursor.essence_yields[essence_type]
-			if(storage.add_essence(essence_type, amount))
+			if(storage.add_essence(essence_type, round(amount * efficiency_bonus, 1)))
 				if(total_produced[essence_type])
-					total_produced[essence_type] += amount
+					total_produced[essence_type] += round(amount * efficiency_bonus, 1)
 				else
-					total_produced[essence_type] = amount
+					total_produced[essence_type] = round(amount * efficiency_bonus, 1)
 
 	for(var/obj/item/I in current_items)
 		qdel(I)

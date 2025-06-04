@@ -10,6 +10,9 @@
 	var/list/allowed_essence_types = list() // Empty list = allow all types
 	var/filter_mode = FALSE // FALSE = allow all, TRUE = whitelist mode
 
+	var/void_mode = FALSE // TRUE = continuously destroy stored essences
+	var/void_rate = 10 // Units of essence destroyed per process cycle
+
 	processing_priority = 1
 
 /obj/machinery/essence/reservoir/Initialize()
@@ -39,7 +42,39 @@
 /obj/machinery/essence/reservoir/return_storage()
 	return storage
 
+
 /obj/machinery/essence/reservoir/process()
+	// Handle void mode processing
+	if(void_mode && GLOB.thaumic_research && GLOB.thaumic_research.can_use_machine("resevoir_void"))
+		if(storage.get_total_stored() > 0)
+			var/total_voided = 0
+			var/remaining_void_capacity = void_rate
+
+			// Void essences randomly to make it feel more chaotic
+			var/list/essence_types_to_void = storage.stored_essences.Copy()
+			while(remaining_void_capacity > 0 && length(essence_types_to_void))
+				var/essence_type = pick(essence_types_to_void)
+				var/available = storage.get_essence_amount(essence_type)
+				if(available <= 0)
+					essence_types_to_void -= essence_type
+					continue
+
+				var/to_void = min(available, remaining_void_capacity, rand(1, 5)) // Random amount 1-5
+				var/voided = storage.remove_essence(essence_type, to_void)
+				total_voided += voided
+				remaining_void_capacity -= voided
+
+				if(storage.get_essence_amount(essence_type) <= 0)
+					essence_types_to_void -= essence_type
+
+			if(total_voided > 0)
+				update_icon()
+				// Create void effect
+				var/datum/effect_system/spark_spread/quantum/void_effect = new
+				void_effect.set_up(3, 0, src)
+				void_effect.start()
+
+	// Handle normal connection processing
 	if(!connection_processing || !output_connections.len)
 		return
 	var/list/prioritized_connections = sort_connections_by_priority(output_connections)
@@ -65,7 +100,6 @@
 
 		if(essence_transferred)
 			continue
-
 
 /obj/machinery/essence/reservoir/is_essence_allowed(essence_type)
 	if(!filter_mode)
@@ -119,7 +153,13 @@
 
 /obj/machinery/essence/reservoir/proc/show_filter_menu(mob/user)
 	var/list/options = list()
-	options["Toggle Filter Mode ([filter_mode ? "ON" : "OFF"])"] = "toggle"
+	options["Toggle Filter Mode ([filter_mode ? "ON" : "OFF"])"] = "toggle_filter"
+
+	if(GLOB.thaumic_research && GLOB.thaumic_research.can_use_machine("resevoir_void"))
+		options["Toggle Void Mode ([void_mode ? "ON" : "OFF"])"] = "toggle_void"
+		if(void_mode)
+			options["Adjust Void Rate ([void_rate]/cycle)"] = "adjust_void"
+
 	options["Add Essence Type to Filter"] = "add"
 
 	if(allowed_essence_types.len > 0)
@@ -134,8 +174,14 @@
 		return
 
 	switch(options[choice])
-		if("toggle")
+		if("toggle_filter")
 			toggle_filter_mode(user)
+
+		if("toggle_void")
+			toggle_void_mode(user)
+
+		if("adjust_void")
+			adjust_void_rate(user)
 
 		if("add")
 			var/list/available_types = list()
@@ -284,6 +330,34 @@
 	else
 		. += span_notice("The reservoir is empty.")
 
+
+/obj/machinery/essence/reservoir/proc/toggle_void_mode(mob/user)
+	if(!GLOB.thaumic_research || !GLOB.thaumic_research.can_use_machine("resevoir_void"))
+		to_chat(user, span_warning("You lack the knowledge to operate this reservoir in void mode."))
+		return FALSE
+
+	void_mode = !void_mode
+	if(void_mode)
+		to_chat(user, span_warning("Void mode enabled. This reservoir will continuously destroy stored essences!"))
+		to_chat(user, span_danger("Warning: Essences will be permanently lost at a rate of [void_rate] units per cycle."))
+	else
+		to_chat(user, span_info("Void mode disabled. Normal operation resumed."))
+
+	update_icon()
+	return TRUE
+
+/obj/machinery/essence/reservoir/proc/adjust_void_rate(mob/user)
+	if(!void_mode)
+		to_chat(user, span_warning("Void mode must be enabled to adjust void rate."))
+		return
+
+	var/new_rate = input(user, "Set void rate (units destroyed per cycle):", "Void Rate", void_rate) as num|null
+	if(isnull(new_rate))
+		return
+
+	new_rate = clamp(new_rate, 1, 50)
+	void_rate = new_rate
+	to_chat(user, span_info("Void rate set to [void_rate] units per cycle."))
 
 /obj/machinery/essence/reservoir/proc/calculate_mixture_color()
 	var/list/essence_contents = list()

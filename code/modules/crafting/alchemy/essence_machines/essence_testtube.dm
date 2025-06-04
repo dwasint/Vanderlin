@@ -88,8 +88,9 @@
 
 /obj/machinery/essence/test_tube/attack_hand(mob/living/user)
 	. = ..()
-	if(!storage.has_essence(/datum/thaumaturgical_essence/life, 100))
-		to_chat(user, span_warning("The tube requires at least 100 units of life essence to begin the process."))
+	var/essence_amount = 200 * GLOB.thaumic_research.get_cost_reduction("life_tube")
+	if(!storage.has_essence(/datum/thaumaturgical_essence/life, essence_amount))
+		to_chat(user, span_warning("The tube requires at least [essence_amount] units of life essence to begin the process."))
 		return
 	if(gnome_progress)
 		to_chat(user, span_notice("A gnome is already growing in the tube. Please wait..."))
@@ -98,9 +99,11 @@
 	to_chat(user, span_info("You activate the breeding process. The life essence begins to swirl and coalesce..."))
 
 	gnome_progress = TRUE
-	addtimer(CALLBACK(src, PROC_REF(create_gnome), user), 30 SECONDS)
-	addtimer(CALLBACK(src, PROC_REF(growth_sound_feedback)), 10 SECONDS)
-	addtimer(CALLBACK(src, PROC_REF(growth_sound_feedback)), 20 SECONDS)
+	var/sound_time = 10 SECONDS * GLOB.thaumic_research.get_speed_multiplier("test_tube")
+	var/grow_time = 30 SECONDS * GLOB.thaumic_research.get_speed_multiplier("test_tube")
+	addtimer(CALLBACK(src, PROC_REF(create_gnome), user), grow_time)
+	addtimer(CALLBACK(src, PROC_REF(growth_sound_feedback)), sound_time)
+	addtimer(CALLBACK(src, PROC_REF(growth_sound_feedback)), sound_time)
 	update_icon()
 
 /obj/machinery/essence/test_tube/proc/growth_sound_feedback()
@@ -108,22 +111,28 @@
 		visible_message(span_notice("The essence in [src] bubbles and shifts as the homunculus develops."))
 
 /obj/machinery/essence/test_tube/proc/create_gnome(mob/living/user)
-	if(!storage.has_essence(/datum/thaumaturgical_essence/life, 100))
+	var/essence_amount = 200 * GLOB.thaumic_research.get_cost_reduction("life_tube")
+	if(!storage.has_essence(/datum/thaumaturgical_essence/life, essence_amount))
 		to_chat(user, span_warning("Insufficient life essence! The process fails..."))
 		gnome_progress = FALSE
 		update_icon()
 		return
 
-	storage.remove_essence(/datum/thaumaturgical_essence/life, 100)
+	storage.remove_essence(/datum/thaumaturgical_essence/life, essence_amount)
 	gnome_progress = FALSE
 	update_icon()
 
 	// Success sounds and effects
 	visible_message(span_info("The crystalline tube glows brightly as the homunculus reaches maturity!"))
 
+	var/hat_chance = 1 - GLOB.thaumic_research.get_research_bonus("gnome_hat_chance")
 	var/mob/living/simple_animal/hostile/gnome_homunculus/gnome = new(get_turf(src))
 	gnome.tamed(user)
 	gnome.color = COLOR_PINK
+
+	if(hat_chance)
+		gnome.hat()
+
 	animate(gnome, color = COLOR_WHITE, time = 45 SECONDS)
 
 	to_chat(user, span_boldnotice("Your gnome homunculus has been successfully created!"))
