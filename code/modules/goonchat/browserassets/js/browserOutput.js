@@ -1330,13 +1330,7 @@ function output(message, flag) {
     }
 
 
-    // Rest of the existing filter logic for admin filters...
     var filteredOut = false;
-    if (opts.hasOwnProperty('showMessagesFilters') && !opts.showMessagesFilters['All'].show) {
-        // [Keep existing admin filter logic here]
-    }
-
-    // Existing scroll logic...
     var atBottom = false;
     if (!filteredOut) {
         var bodyHeight = $('body').height();
