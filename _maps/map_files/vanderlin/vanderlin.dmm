@@ -34113,6 +34113,12 @@
 "weA" = (
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/indoors/town/smithy)
+"weF" = (
+/obj/machinery/essence/research_matrix{
+	pixel_y = -6
+	},
+/turf/open/floor/twig,
+/area/rogue/indoors/town)
 "weH" = (
 /obj/structure/table/wood{
 	dir = 5;
@@ -93043,7 +93049,7 @@ dkK
 qyU
 rFo
 rFo
-rFo
+weF
 qcb
 ehF
 qhM

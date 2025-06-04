@@ -7137,6 +7137,14 @@
 /obj/effect/spawner/map_spawner/loot/common,
 /turf/open/water/cleanshallow,
 /area/rogue/under/town/sewer)
+"dOJ" = (
+/obj/structure/table/wood/plain,
+/obj/machinery/essence/combiner{
+	pixel_x = 5;
+	pixel_y = 10
+	},
+/turf/open/floor/cobble,
+/area/rogue/indoors/town/magician)
 "dOP" = (
 /obj/machinery/light/fueled/wallfire/candle/r,
 /turf/open/floor/herringbone,
@@ -7257,6 +7265,14 @@
 	},
 /turf/open/floor/cobble,
 /area/rogue/outdoors/town)
+"dSm" = (
+/obj/structure/table/wood/plain_alt,
+/obj/machinery/essence/combiner{
+	pixel_y = 9;
+	pixel_x = -2
+	},
+/turf/open/floor/cobble,
+/area/rogue/indoors/town/bath)
 "dSI" = (
 /obj/structure/wild_plant/nospread/manabloom,
 /obj/machinery/light/fueled/wallfire/candle/blue{
@@ -17420,6 +17436,19 @@
 	},
 /turf/open/floor/cobble,
 /area/rogue/outdoors/town/roofs)
+"jJU" = (
+/obj/structure/fluff/railing/border{
+	dir = 8
+	},
+/obj/structure/fluff/walldeco/med4{
+	pixel_y = 32
+	},
+/obj/machinery/essence/test_tube{
+	pixel_y = 14;
+	pixel_x = 3
+	},
+/turf/open/floor/blocks/newstone,
+/area/rogue/indoors/town/bath)
 "jJV" = (
 /obj/structure/hotspring/border/nine,
 /turf/open/floor/cobblerock/alt,
@@ -18235,10 +18264,11 @@
 /turf/open/floor/blocks/bluestone,
 /area/rogue/indoors/town)
 "khJ" = (
-/obj/structure/table/wood/plain_alt,
-/obj/machinery/essence/combiner{
-	pixel_y = 9;
-	pixel_x = -2
+/obj/structure/fluff/railing/border{
+	dir = 1
+	},
+/obj/machinery/essence/research_matrix{
+	pixel_y = 3
 	},
 /turf/open/floor/cobble,
 /area/rogue/indoors/town/bath)
@@ -27547,11 +27577,6 @@
 /obj/item/clothing/cloak/half,
 /turf/open/floor/carpet/lord/center,
 /area/rogue/indoors/town/manor)
-"pgq" = (
-/obj/structure/table/wood/plain_alt,
-/obj/machinery/essence/splitter,
-/turf/open/floor/cobble,
-/area/rogue/indoors/town/bath)
 "pgr" = (
 /mob/living/simple_animal/hostile/retaliate/goatmale,
 /turf/open/floor/dirt,
@@ -33140,28 +33165,6 @@
 /obj/machinery/light/fueled/wallfire/candle/l,
 /turf/open/floor/hexstone,
 /area/rogue/indoors/town)
-"snJ" = (
-/obj/structure/fluff/railing/border,
-/obj/structure/fluff/railing/border{
-	dir = 4
-	},
-/obj/item/natural/worms/leech{
-	pixel_x = -2;
-	pixel_y = 3
-	},
-/obj/item/natural/worms/leech{
-	pixel_x = 5;
-	pixel_y = -3
-	},
-/obj/item/natural/worms/leech{
-	pixel_x = -6;
-	pixel_y = -3
-	},
-/obj/structure/fluff/walldeco/med4{
-	pixel_y = 32
-	},
-/turf/open/water/sewer,
-/area/rogue/indoors/town/bath)
 "snN" = (
 /obj/machinery/light/fueled/firebowl/standing,
 /obj/structure/fluff/railing/border{
@@ -33523,6 +33526,28 @@
 /obj/structure/fake_machine/scomm,
 /turf/open/floor/grass/cold,
 /area/rogue/outdoors/town)
+"swX" = (
+/obj/structure/fluff/railing/border,
+/obj/structure/fluff/railing/border{
+	dir = 4
+	},
+/obj/item/natural/worms/leech{
+	pixel_x = -2;
+	pixel_y = 3
+	},
+/obj/item/natural/worms/leech{
+	pixel_x = 5;
+	pixel_y = -3
+	},
+/obj/item/natural/worms/leech{
+	pixel_x = -6;
+	pixel_y = -3
+	},
+/obj/structure/fluff/walldeco/med4{
+	pixel_y = 32
+	},
+/turf/open/water/sewer,
+/area/rogue/indoors/town/bath)
 "sxj" = (
 /obj/machinery/light/fueled/firebowl/firebowlb,
 /turf/open/transparent/openspace,
@@ -36814,14 +36839,6 @@
 /obj/structure/spider/stickyweb,
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/town)
-"upw" = (
-/obj/structure/table/wood/plain,
-/obj/machinery/essence/combiner{
-	pixel_x = 5;
-	pixel_y = 10
-	},
-/turf/open/floor/cobble,
-/area/rogue/indoors/town/magician)
 "upI" = (
 /obj/structure/closet/crate/chest/neu_fancy,
 /obj/item/key/apothecary,
@@ -39693,16 +39710,7 @@
 /turf/open/floor/wood,
 /area/rogue/indoors/town/tavern)
 "vNh" = (
-/obj/structure/fluff/railing/border{
-	dir = 8
-	},
-/obj/structure/fluff/walldeco/med4{
-	pixel_y = 32
-	},
-/obj/machinery/essence/test_tube{
-	pixel_y = 14;
-	pixel_x = 3
-	},
+/obj/structure/well,
 /turf/open/floor/blocks/newstone,
 /area/rogue/indoors/town/bath)
 "vNn" = (
@@ -40506,8 +40514,9 @@
 /turf/open/water/swamp,
 /area/rogue/outdoors/rtfield)
 "wjz" = (
-/obj/structure/well,
-/turf/open/floor/blocks/newstone,
+/obj/structure/table/wood/plain_alt,
+/obj/machinery/essence/splitter,
+/turf/open/floor/cobble,
 /area/rogue/indoors/town/bath)
 "wjV" = (
 /obj/structure/stairs,
@@ -92713,7 +92722,7 @@ ehP
 ehP
 gzt
 vqa
-snJ
+swX
 sTS
 enx
 enx
@@ -93117,8 +93126,8 @@ ehP
 ehP
 csx
 vqa
-wjz
-ulu
+vNh
+khJ
 enx
 uej
 enx
@@ -93322,7 +93331,7 @@ vqa
 cHX
 ulu
 enx
-khJ
+dSm
 enx
 rCh
 iob
@@ -93521,10 +93530,10 @@ ehP
 csx
 csx
 vqa
-vNh
+jJU
 hPs
 enx
-pgq
+wjz
 enx
 iob
 iob
@@ -96101,7 +96110,7 @@ kZF
 xBg
 kZb
 uKy
-upw
+dOJ
 woy
 exq
 vZB
