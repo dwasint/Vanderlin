@@ -1212,16 +1212,16 @@
 
 		// Both get briefly stunned from the struggle
 		Immobilize(10)
-		pulledby.Immobilize(10)
+		pulledby?.Immobilize(10)
 		adjust_stamina(rand(5,10))
-		pulledby.adjust_stamina(rand(5,10))
+		pulledby?.adjust_stamina(rand(5,10))
 
 		playsound(loc, 'sound/combat/grabbreak.ogg', 75, TRUE, -1)
 		return TRUE
 	else
 		visible_message("<span class='warning'>[src] and [pulledby] struggle against each other's grips!</span>")
 		adjust_stamina(rand(2,5))
-		pulledby.adjust_stamina(rand(2,5))
+		pulledby?.adjust_stamina(rand(2,5))
 
 	return FALSE
 
