@@ -28,6 +28,94 @@
 	if(!majority_species && progenator)
 		dominant_species = progenator.dna?.species?.type
 
+/datum/heritage/proc/GetAgeRank(age_category)
+	switch(age_category)
+		if(AGE_CHILD)
+			return 1
+		if(AGE_ADULT)
+			return 2
+		if(AGE_MIDDLEAGED)
+			return 3
+		if(AGE_OLD)
+			return 4
+		if(AGE_IMMORTAL)
+			return 5
+	return 0
+
+/datum/heritage/proc/CanBeParentOf(potential_parent_age, potential_child_age)
+	var/parent_rank = GetAgeRank(potential_parent_age)
+	var/child_rank = GetAgeRank(potential_child_age)
+
+	// Parents must be at least same age category or higher than children
+	// Adults can parent other Adults, Children, etc.
+	if(parent_rank >= child_rank)
+		return TRUE
+	return FALSE
+
+/datum/heritage/proc/CanBeSiblings(age1, age2)
+	var/rank1 = GetAgeRank(age1)
+	var/rank2 = GetAgeRank(age2)
+
+	// Siblings should be within 1-2 age categories of each other
+	// But if one is Adult and other is Adult, they can be siblings
+	// Middle-Aged siblings with Adults is fine
+	// But Children shouldn't be siblings with Old+ people
+	var/age_diff = abs(rank1 - rank2)
+
+	// Allow closer age gaps more freely
+	if(age_diff <= 1)
+		return TRUE
+	// Allow Adult-Middle-Aged sibling relationships
+	if(age_diff == 2 && ((rank1 == 2 && rank2 == 3) || (rank1 == 3 && rank2 == 2)))
+		return TRUE
+
+	return FALSE
+
+/datum/heritage/proc/CanBeUncleAunt(person_age, parent_age)
+	var/person_rank = GetAgeRank(person_age)
+	var/parent_rank = GetAgeRank(parent_age)
+
+	// Uncle/Aunt should be same age category or close to parents
+	// They can be 1 category younger or older than parents
+	var/age_diff = abs(person_rank - parent_rank)
+	return age_diff <= 1
+
+/datum/heritage/proc/ValidateAndFixRelationships()
+	var/list/fixes_needed = list()
+
+	// Check for age-based conflicts
+	for(var/mob/living/carbon/human/person in family)
+		var/role = family[person]
+
+		// Children shouldn't be older than parents
+		if((role == FAMILY_PROGENY || role == FAMILY_ADOPTED))
+			if(patriarch && !CanBeParentOf(patriarch.age, person.age))
+				fixes_needed[person] = FAMILY_OMMER
+			else if(matriarch && !CanBeParentOf(matriarch.age, person.age))
+				fixes_needed[person] = FAMILY_OMMER
+
+		// Uncle/aunts should be appropriate age relative to parents
+		if(role == FAMILY_OMMER && (patriarch || matriarch))
+			var/valid_uncle_aunt = FALSE
+			if(patriarch && CanBeUncleAunt(person.age, patriarch.age))
+				valid_uncle_aunt = TRUE
+			if(matriarch && CanBeUncleAunt(person.age, matriarch.age))
+				valid_uncle_aunt = TRUE
+
+			if(!valid_uncle_aunt)
+				// If they're too young, make them a child instead
+				if(patriarch && CanBeParentOf(patriarch.age, person.age))
+					fixes_needed[person] = FAMILY_PROGENY
+				else if(matriarch && CanBeParentOf(matriarch.age, person.age))
+					fixes_needed[person] = FAMILY_PROGENY
+
+	// Apply fixes
+	for(var/mob/living/carbon/human/person in fixes_needed)
+		var/old_role = family[person]
+		var/new_role = fixes_needed[person]
+		family[person] = new_role
+		to_chat(person, span_notice("Your family role has been adjusted from [old_role] to [new_role] for consistency."))
+
 /*
 * Renames entire house. Useful for default houses.
 */
@@ -221,6 +309,20 @@
 			BloodRevelation(H)
 		else
 			family[H] = FAMILY_ADOPTED
+
+	// Validate relationships after blood ties are established
+	ValidateAndFixRelationships()
+
+/datum/heritage/proc/GetGenerationLevel(mob/living/carbon/human/person)
+	var/role = family[person]
+	switch(role)
+		if(FAMILY_FATHER, FAMILY_MOTHER)
+			return 1 // Parents are generation 1
+		if(FAMILY_OMMER, FAMILY_INLAW)
+			return 1 // Uncle/aunts are same generation as parents
+		if(FAMILY_PROGENY, FAMILY_ADOPTED)
+			return 2 // Children are generation 2
+	return 0 // Unknown
 
 /*
 * Causes the offspring to have the

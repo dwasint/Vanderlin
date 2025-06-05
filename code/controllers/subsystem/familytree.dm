@@ -74,6 +74,62 @@ SUBSYSTEM_DEF(familytree)
 
 	return ..()
 
+/datum/controller/subsystem/familytree/proc/WouldCreateAgeConflict(datum/heritage/house, mob/living/carbon/human/person)
+	// Check against parents - person shouldn't be older than parents unless they're uncle/aunt
+	if(house.patriarch && !house.CanBeParentOf(house.patriarch.age, person.age))
+		// Check if they could be uncle/aunt instead
+		if(!house.CanBeUncleAunt(person.age, house.patriarch.age))
+			return TRUE
+
+	if(house.matriarch && !house.CanBeParentOf(house.matriarch.age, person.age))
+		if(!house.CanBeUncleAunt(person.age, house.matriarch.age))
+			return TRUE
+
+	// Check against existing children for sibling compatibility
+	for(var/mob/living/carbon/human/family_member in house.family)
+		var/role = house.family[family_member]
+		if(role == FAMILY_PROGENY || role == FAMILY_ADOPTED)
+			if(!house.CanBeSiblings(person.age, family_member.age))
+				return TRUE
+
+	return FALSE
+
+/datum/controller/subsystem/familytree/proc/DetermineAppropriateRole(datum/heritage/house, mob/living/carbon/human/person, adopted = FALSE)
+	// Children always become progeny/adopted
+	if(person.age == AGE_CHILD)
+		return adopted ? FAMILY_ADOPTED : FAMILY_PROGENY
+
+	// Check if person should be uncle/aunt based on age relative to parents
+	if(house.patriarch || house.matriarch)
+		var/should_be_uncle_aunt = FALSE
+
+		if(house.patriarch && house.CanBeUncleAunt(person.age, house.patriarch.age))
+			// If person is same age category as parent, make them uncle/aunt
+			if(house.GetAgeRank(person.age) >= house.GetAgeRank(house.patriarch.age))
+				should_be_uncle_aunt = TRUE
+
+		if(house.matriarch && house.CanBeUncleAunt(person.age, house.matriarch.age))
+			if(house.GetAgeRank(person.age) >= house.GetAgeRank(house.matriarch.age))
+				should_be_uncle_aunt = TRUE
+
+		if(should_be_uncle_aunt)
+			return FAMILY_OMMER
+
+	// Check if person is too old to be sibling with existing children
+	var/too_old_for_siblings = FALSE
+	for(var/mob/living/carbon/human/family_member in house.family)
+		var/role = house.family[family_member]
+		if(role == FAMILY_PROGENY || role == FAMILY_ADOPTED)
+			if(!house.CanBeSiblings(person.age, family_member.age))
+				too_old_for_siblings = TRUE
+				break
+
+	if(too_old_for_siblings)
+		return FAMILY_OMMER
+
+	// Default to child role if age allows
+	return adopted ? FAMILY_ADOPTED : FAMILY_PROGENY
+
 /*
 * In order for us to use age in sorting of generations we would need to
 * make the king & queen older than the prince.
@@ -122,46 +178,41 @@ SUBSYSTEM_DEF(familytree)
 * famlies of Rockhill based on their species.
 */
 /datum/controller/subsystem/familytree/proc/AssignToHouse(mob/living/carbon/human/H)
-	//If no human and they are older than adult age.
 	if(!H)
 		return
-	//Akward way of assigning people as aunts and uncles to houses.
-	if(H.age > AGE_ADULT)
-		AssignAuntUncle(H)
-		return
-	if(H.age > AGE_CHILD)
-		AssignAuntUncle(H)
-		return
+
 	var/species = H.dna.species.type
 	var/adopted = FALSE
 	var/datum/heritage/chosen_house
 	var/list/low_priority_houses = list()
 	var/list/high_priority_houses = list()
+
 	for(var/datum/heritage/I in families)
 		if(I.housename && (I.family.len >= 1 && I.family.len < 6))
 			high_priority_houses.Add(I)
 		else
 			low_priority_houses.Add(I)
-	//Extremely sloppy but shorter code than writing the same code twice. -IP
+
 	for(var/i = 1 to 2)
 		var/list/what_we_checkin = high_priority_houses
-		//If second run then check the other houses.
 		if(i == 2)
 			what_we_checkin = low_priority_houses
 		for(var/datum/heritage/I in what_we_checkin)
 			if(I.dominant_species == species && (I.family.len >= 1 && I.family.len < 4))
-				chosen_house = I
-				break
-			//Its weird to be placed as a foster child in a family with no people in it.
+				if(!WouldCreateAgeConflict(I, H))
+					chosen_house = I
+					break
 			if(prob(20) && (I.family.len > 1 && I.family.len <= 8))
-				chosen_house = I
-				adopted = TRUE
-				break
+				if(!WouldCreateAgeConflict(I, H))
+					chosen_house = I
+					adopted = TRUE
+					break
 		if(chosen_house)
 			break
 
 	if(chosen_house)
-		chosen_house.addToHouse(H, adopted ? FAMILY_ADOPTED : FAMILY_PROGENY)
+		var/role = DetermineAppropriateRole(chosen_house, H, adopted)
+		chosen_house.addToHouse(H, role)
 
 /*
 * Allows players to claim a
@@ -314,23 +365,31 @@ SUBSYSTEM_DEF(familytree)
 	var/datum/heritage/chosen_house
 	var/list/low_priority_houses = list()
 	var/list/high_priority_houses = list()
+
 	for(var/datum/heritage/I in families)
-		if(I.housename && (I.family.len >= 1 && I.family.len > 6))
-			high_priority_houses.Add(I)
-		else
+		if(I.housename && I.family.len >= 2 && (I.patriarch || I.matriarch))
+			// Check if person can be uncle/aunt based on age
+			var/can_be_uncle_aunt = FALSE
+
+			if(I.patriarch && I.CanBeUncleAunt(H.age, I.patriarch.age))
+				can_be_uncle_aunt = TRUE
+			if(I.matriarch && I.CanBeUncleAunt(H.age, I.matriarch.age))
+				can_be_uncle_aunt = TRUE
+
+			if(can_be_uncle_aunt)
+				high_priority_houses.Add(I)
+		else if(I.family.len >= 1)
 			low_priority_houses.Add(I)
 
-	//Extremely sloppy but shorter code than writing the same code twice. -IP
 	for(var/i = 1 to 2)
 		var/list/what_we_checkin = high_priority_houses
-		//If second run then check the other houses.
 		if(i == 2)
 			what_we_checkin = low_priority_houses
 		for(var/datum/heritage/I in what_we_checkin)
-			if((I.dominant_species == species && (I.family.len > 1 || I.family.len <=6 )) && I.housename)
+			if(I.dominant_species == species && I.housename)
 				chosen_house = I
 				break
-			if((prob(2) && (I.family.len > 1)) && I.housename)
+			if(prob(2) && I.housename)
 				chosen_house = I
 				inlaw = TRUE
 				break
@@ -338,7 +397,7 @@ SUBSYSTEM_DEF(familytree)
 			break
 
 	if(chosen_house)
-		chosen_house.addToHouse(H, inlaw ?  FAMILY_INLAW : FAMILY_OMMER)
+		chosen_house.addToHouse(H, inlaw ? FAMILY_INLAW : FAMILY_OMMER)
 
 /*
 * For admins to view EVERY FAMILY and see all the
@@ -353,6 +412,13 @@ SUBSYSTEM_DEF(familytree)
 			continue
 		. += I.FormatFamilyList()
 
+/datum/controller/subsystem/familytree/proc/ValidateAllFamilies()
+	if(ruling_family)
+		ruling_family.ValidateAndFixRelationships()
+	for(var/datum/heritage/family in families)
+		if(family.family.len)
+			family.ValidateAndFixRelationships()
+
 /datum/family_tree_interface
 	var/datum/heritage/current_family
 	var/mob/viewer
@@ -362,326 +428,326 @@ SUBSYSTEM_DEF(familytree)
 	viewer = user
 
 /datum/family_tree_interface/proc/show_interface()
-    var/html = generate_interface_html()
-    usr << browse(html, "window=family_tree;size=800x600")
+	var/html = generate_interface_html()
+	usr << browse(html, "window=family_tree;size=800x600")
 
 /datum/family_tree_interface/proc/generate_interface_html()
-    var/html = {"
-    <html>
-    <head>
-        <style>
-            body {
-                margin: 0;
-                padding: 0;
-                background: #000;
-                color: #eee;
-                font-family: Arial, sans-serif;
-                overflow: hidden;
-            }
+	var/html = {"
+	<html>
+	<head>
+		<style>
+			body {
+				margin: 0;
+				padding: 0;
+				background: #000;
+				color: #eee;
+				font-family: Arial, sans-serif;
+				overflow: hidden;
+			}
 
-            .family-tree-container {
-                position: relative;
-                width: 100%;
-                height: 100vh;
-                overflow: hidden;
-                cursor: grab;
-            }
+			.family-tree-container {
+				position: relative;
+				width: 100%;
+				height: 100vh;
+				overflow: hidden;
+				cursor: grab;
+			}
 
-            .family-canvas {
-                position: absolute;
-                transform-origin: 0 0;
-            }
+			.family-canvas {
+				position: absolute;
+				transform-origin: 0 0;
+			}
 
-            .connection-line {
-                position: absolute;
-                height: 2px;
-                background: linear-gradient(90deg,
-                    rgba(255,215,0,0.8) 0%,
-                    rgba(218,165,32,0.6) 50%,
-                    rgba(255,215,0,0.4) 100%);
-                transform-origin: left center;
-                z-index: 1;
-                border-radius: 1px;
-                box-shadow: 0 0 4px rgba(255,215,0,0.3);
-            }
+			.connection-line {
+				position: absolute;
+				height: 2px;
+				background: linear-gradient(90deg,
+					rgba(255,215,0,0.8) 0%,
+					rgba(218,165,32,0.6) 50%,
+					rgba(255,215,0,0.4) 100%);
+				transform-origin: left center;
+				z-index: 1;
+				border-radius: 1px;
+				box-shadow: 0 0 4px rgba(255,215,0,0.3);
+			}
 
-            .family-node {
-                position: absolute;
-                width: 80px;
-                height: 100px;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                cursor: pointer;
-                transition: all 0.2s;
-                z-index: 2;
-            }
+			.family-node {
+				position: absolute;
+				width: 80px;
+				height: 100px;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				cursor: pointer;
+				transition: all 0.2s;
+				z-index: 2;
+			}
 
-            .node-border {
-                width: 64px;
-                height: 64px;
-                border: 3px solid;
-                border-radius: 50%;
-                overflow: hidden;
-                box-shadow: 0 0 10px rgba(0,0,0,0.5);
-            }
+			.node-border {
+				width: 64px;
+				height: 64px;
+				border: 3px solid;
+				border-radius: 50%;
+				overflow: hidden;
+				box-shadow: 0 0 10px rgba(0,0,0,0.5);
+			}
 
-            .patriarch .node-border { border-color: #4169E1; }
-            .matriarch .node-border { border-color: #FF69B4; }
-            .progeny .node-border { border-color: #32CD32; }
-            .adopted .node-border { border-color: #FFD700; }
-            .ommer .node-border { border-color: #9370DB; }
+			.patriarch .node-border { border-color: #4169E1; }
+			.matriarch .node-border { border-color: #FF69B4; }
+			.progeny .node-border { border-color: #32CD32; }
+			.adopted .node-border { border-color: #FFD700; }
+			.ommer .node-border { border-color: #9370DB; }
 
-            .family-node img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
+			.family-node img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
 
-            .family-node .name {
-                margin-top: 5px;
-                font-size: 12px;
-                text-align: center;
-                text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
-            }
+			.family-node .name {
+				margin-top: 5px;
+				font-size: 12px;
+				text-align: center;
+				text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+			}
 
-            .family-node .role {
-                font-size: 10px;
-                color: #888;
-                text-align: center;
-            }
+			.family-node .role {
+				font-size: 10px;
+				color: #888;
+				text-align: center;
+			}
 
-            .family-node:hover {
-                transform: scale(1.1);
-                z-index: 100;
-            }
+			.family-node:hover {
+				transform: scale(1.1);
+				z-index: 100;
+			}
 
-            .tooltip {
-                position: absolute;
-                background: rgba(0,0,0,0.9);
-                border: 1px solid #444;
-                padding: 10px;
-                border-radius: 5px;
-                display: none;
-                z-index: 1000;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="family-tree-container" id="container">
-            <div class="family-canvas" id="canvas">
-                [generate_family_connections()]
-                [generate_family_nodes()]
-            </div>
-        </div>
-        <div class="tooltip" id="tooltip"></div>
+			.tooltip {
+				position: absolute;
+				background: rgba(0,0,0,0.9);
+				border: 1px solid #444;
+				padding: 10px;
+				border-radius: 5px;
+				display: none;
+				z-index: 1000;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="family-tree-container" id="container">
+			<div class="family-canvas" id="canvas">
+				[generate_family_connections()]
+				[generate_family_nodes()]
+			</div>
+		</div>
+		<div class="tooltip" id="tooltip"></div>
 
-        <script>
-            let isDragging = false;
-            let startX, startY;
-            let currentX = 400, currentY = 300;
-            let scale = 1;
+		<script>
+			let isDragging = false;
+			let startX, startY;
+			let currentX = 400, currentY = 300;
+			let scale = 1;
 
-            const container = document.getElementById('container');
-            const canvas = document.getElementById('canvas');
-            const tooltip = document.getElementById('tooltip');
+			const container = document.getElementById('container');
+			const canvas = document.getElementById('canvas');
+			const tooltip = document.getElementById('tooltip');
 
-            function updateTransform() {
-                canvas.style.transform = `translate(${currentX}px, ${currentY}px) scale(${scale})`;
-            }
+			function updateTransform() {
+				canvas.style.transform = `translate(${currentX}px, ${currentY}px) scale(${scale})`;
+			}
 
-            container.addEventListener('mousedown', function(e) {
-                if (e.target === container || e.target === canvas) {
-                    isDragging = true;
-                    startX = e.clientX - currentX;
-                    startY = e.clientY - currentY;
-                    container.style.cursor = 'grabbing';
-                }
-            });
+			container.addEventListener('mousedown', function(e) {
+				if (e.target === container || e.target === canvas) {
+					isDragging = true;
+					startX = e.clientX - currentX;
+					startY = e.clientY - currentY;
+					container.style.cursor = 'grabbing';
+				}
+			});
 
-            document.addEventListener('mousemove', function(e) {
-                if (isDragging) {
-                    currentX = e.clientX - startX;
-                    currentY = e.clientY - startY;
-                    updateTransform();
-                }
-            });
+			document.addEventListener('mousemove', function(e) {
+				if (isDragging) {
+					currentX = e.clientX - startX;
+					currentY = e.clientY - startY;
+					updateTransform();
+				}
+			});
 
-            document.addEventListener('mouseup', function() {
-                isDragging = false;
-                container.style.cursor = 'grab';
-            });
+			document.addEventListener('mouseup', function() {
+				isDragging = false;
+				container.style.cursor = 'grab';
+			});
 
-            container.addEventListener('wheel', function(e) {
-                e.preventDefault();
-                const delta = e.deltaY > 0 ? -0.1 : 0.1;
-                scale = Math.max(0.5, Math.min(2, scale + delta));
-                updateTransform();
-            });
+			container.addEventListener('wheel', function(e) {
+				e.preventDefault();
+				const delta = e.deltaY > 0 ? -0.1 : 0.1;
+				scale = Math.max(0.5, Math.min(2, scale + delta));
+				updateTransform();
+			});
 
-            updateTransform();
-        </script>
-    </body>
-    </html>
-    "}
-    return html
+			updateTransform();
+		</script>
+	</body>
+	</html>
+	"}
+	return html
 
 /datum/family_tree_interface/proc/generate_family_nodes()
-    var/html = ""
+	var/html = ""
 
-    // Position nodes in tree layout
-    var/y_level = 0
+	// Position nodes in tree layout
+	var/y_level = 0
 
-    // Rulers at top
-    if(current_family.patriarch)
-        html += generate_node(current_family.patriarch, 100, y_level, "patriarch")
-    if(current_family.matriarch)
-        html += generate_node(current_family.matriarch, 300, y_level, "matriarch")
+	// Rulers at top
+	if(current_family.patriarch)
+		html += generate_node(current_family.patriarch, 100, y_level, "patriarch")
+	if(current_family.matriarch)
+		html += generate_node(current_family.matriarch, 300, y_level, "matriarch")
 
-    y_level += 100
+	y_level += 100
 
-    // Children below
-    var/x = 50
-    for(var/mob/living/carbon/human/member in current_family.family)
-        var/member_status = current_family.family[member]
-        if(member_status == FAMILY_PROGENY || member_status == FAMILY_ADOPTED)
-            html += generate_node(member, x, y_level, member_status == FAMILY_PROGENY ? "progeny" : "adopted")
-            x += 100
+	// Children below
+	var/x = 50
+	for(var/mob/living/carbon/human/member in current_family.family)
+		var/member_status = current_family.family[member]
+		if(member_status == FAMILY_PROGENY || member_status == FAMILY_ADOPTED)
+			html += generate_node(member, x, y_level, member_status == FAMILY_PROGENY ? "progeny" : "adopted")
+			x += 100
 
-    // Extended family
-    y_level += 50
-    x = 400
-    for(var/mob/living/carbon/human/member in current_family.family)
-        var/member_status = current_family.family[member]
-        if(member_status == FAMILY_OMMER || member_status == FAMILY_INLAW)
-            html += generate_node(member, x, y_level, lowertext(member_status))
-            x += 100
+	// Extended family
+	y_level += 50
+	x = 400
+	for(var/mob/living/carbon/human/member in current_family.family)
+		var/member_status = current_family.family[member]
+		if(member_status == FAMILY_OMMER || member_status == FAMILY_INLAW)
+			html += generate_node(member, x, y_level, lowertext(member_status))
+			x += 100
 
-    return html
+	return html
 
 /datum/family_tree_interface/proc/generate_family_connections()
-    var/html = ""
+	var/html = ""
 
-    // Store node positions for connection calculations
-    var/list/node_positions = list()
+	// Store node positions for connection calculations
+	var/list/node_positions = list()
 
-    // Map positions for rulers
-    if(current_family.patriarch)
-        node_positions[current_family.patriarch] = list("x" = 100, "y" = 0)
-    if(current_family.matriarch)
-        node_positions[current_family.matriarch] = list("x" = 300, "y" = 0)
+	// Map positions for rulers
+	if(current_family.patriarch)
+		node_positions[current_family.patriarch] = list("x" = 100, "y" = 0)
+	if(current_family.matriarch)
+		node_positions[current_family.matriarch] = list("x" = 300, "y" = 0)
 
-    // Map positions for children
-    var/child_x = 50
-    var/child_y = 100
-    for(var/mob/living/carbon/human/member in current_family.family)
-        var/member_status = current_family.family[member]
-        if(member_status == FAMILY_PROGENY || member_status == FAMILY_ADOPTED)
-            node_positions[member] = list("x" = child_x, "y" = child_y)
-            child_x += 100
+	// Map positions for children
+	var/child_x = 50
+	var/child_y = 100
+	for(var/mob/living/carbon/human/member in current_family.family)
+		var/member_status = current_family.family[member]
+		if(member_status == FAMILY_PROGENY || member_status == FAMILY_ADOPTED)
+			node_positions[member] = list("x" = child_x, "y" = child_y)
+			child_x += 100
 
-    // Draw connections
-    for(var/mob/living/carbon/human/member in current_family.family)
-        var/member_status = current_family.family[member]
-        if(member_status == FAMILY_PROGENY || member_status == FAMILY_ADOPTED)
-            // Connect to patriarch
-            if(current_family.patriarch && node_positions[current_family.patriarch])
-                html += draw_connection(
-                    node_positions[current_family.patriarch]["x"] + 40,
-                    node_positions[current_family.patriarch]["y"] + 40,
-                    node_positions[member]["x"] + 40,
-                    node_positions[member]["y"] + 40
-                )
+	// Draw connections
+	for(var/mob/living/carbon/human/member in current_family.family)
+		var/member_status = current_family.family[member]
+		if(member_status == FAMILY_PROGENY || member_status == FAMILY_ADOPTED)
+			// Connect to patriarch
+			if(current_family.patriarch && node_positions[current_family.patriarch])
+				html += draw_connection(
+					node_positions[current_family.patriarch]["x"] + 40,
+					node_positions[current_family.patriarch]["y"] + 40,
+					node_positions[member]["x"] + 40,
+					node_positions[member]["y"] + 40
+				)
 
-            // Connect to matriarch
-            if(current_family.matriarch && node_positions[current_family.matriarch])
-                html += draw_connection(
-                    node_positions[current_family.matriarch]["x"] + 40,
-                    node_positions[current_family.matriarch]["y"] + 40,
-                    node_positions[member]["x"] + 40,
-                    node_positions[member]["y"] + 40
-                )
+			// Connect to matriarch
+			if(current_family.matriarch && node_positions[current_family.matriarch])
+				html += draw_connection(
+					node_positions[current_family.matriarch]["x"] + 40,
+					node_positions[current_family.matriarch]["y"] + 40,
+					node_positions[member]["x"] + 40,
+					node_positions[member]["y"] + 40
+				)
 
-    return html
+	return html
 
 /datum/family_tree_interface/proc/draw_connection(start_x, start_y, end_x, end_y)
-    var/dx = end_x - start_x
-    var/dy = end_y - start_y
-    var/distance = sqrt(dx*dx + dy*dy)
-    var/angle = arctan(dy/dx)
-    if(dx < 0)
-        angle += 180
+	var/dx = end_x - start_x
+	var/dy = end_y - start_y
+	var/distance = sqrt(dx*dx + dy*dy)
+	var/angle = arctan(dy/dx)
+	if(dx < 0)
+		angle += 180
 
-    return {"<div class="connection-line" style="
-        left: [start_x]px;
-        top: [start_y]px;
-        width: [distance]px;
-        transform: rotate([angle]deg);
-    "></div>"}
+	return {"<div class="connection-line" style="
+		left: [start_x]px;
+		top: [start_y]px;
+		width: [distance]px;
+		transform: rotate([angle]deg);
+	"></div>"}
 
 /datum/family_tree_interface/proc/generate_node(mob/living/carbon/human/H, x, y, class)
-    var/status_color
-    switch(class)
-        if("patriarch")
-            status_color = "#4169E1" // Royal Blue
-        if("matriarch")
-            status_color = "#FF69B4" // Hot Pink
-        if("progeny")
-            status_color = "#32CD32" // Lime Green
-        if("adopted")
-            status_color = "#FFD700" // Gold
-        if("ommer", "inlaw")
-            status_color = "#9370DB" // Medium Purple
-        else
-            status_color = "#FFFFFF" // White
+	var/status_color
+	switch(class)
+		if("patriarch")
+			status_color = "#4169E1" // Royal Blue
+		if("matriarch")
+			status_color = "#FF69B4" // Hot Pink
+		if("progeny")
+			status_color = "#32CD32" // Lime Green
+		if("adopted")
+			status_color = "#FFD700" // Gold
+		if("ommer", "inlaw")
+			status_color = "#9370DB" // Medium Purple
+		else
+			status_color = "#FFFFFF" // White
 
-    var/role_title = ""
-    switch(class)
-        if("patriarch")
-            role_title = "Patriarch"
-        if("matriarch")
-            role_title = "Matriarch"
-        if("progeny")
-            role_title = H.gender == MALE ? "Son" : "Daughter"
-        if("adopted")
-            role_title = "Adopted [H.gender == MALE ? "Son" : "Daughter"]"
-        if("ommer")
-            role_title = H.gender == MALE ? "Uncle" : "Aunt"
-        if("inlaw")
-            role_title = "In-law"
+	var/role_title = ""
+	switch(class)
+		if("patriarch")
+			role_title = "Patriarch"
+		if("matriarch")
+			role_title = "Matriarch"
+		if("progeny")
+			role_title = H.gender == MALE ? "Son" : "Daughter"
+		if("adopted")
+			role_title = "Adopted [H.gender == MALE ? "Son" : "Daughter"]"
+		if("ommer")
+			role_title = H.gender == MALE ? "Uncle" : "Aunt"
+		if("inlaw")
+			role_title = "In-law"
 
-    // Use ma2html for the appearance
-    var/image_data = ma2html(H.appearance, usr)
+	// Use ma2html for the appearance
+	var/image_data = ma2html(H.appearance, usr)
 
-    return {"
-    <div class="family-node [class]" style="left: [x]px; top: [y]px"
-         data-name="[H.real_name]"
-         data-role="[role_title]"
-         data-species="[H.dna?.species?.name]"
-         onclick="showMemberDetails(this)">
-        <div class="node-border" style="border-color: [status_color]">
-            [image_data]
-        </div>
-        <div class="name" style="color: [status_color]">[H.real_name]</div>
-        <div class="role">[role_title]</div>
-    </div>
-    "}
+	return {"
+	<div class="family-node [class]" style="left: [x]px; top: [y]px"
+		 data-name="[H.real_name]"
+		 data-role="[role_title]"
+		 data-species="[H.dna?.species?.name]"
+		 onclick="showMemberDetails(this)">
+		<div class="node-border" style="border-color: [status_color]">
+			[image_data]
+		</div>
+		<div class="name" style="color: [status_color]">[H.real_name]</div>
+		<div class="role">[role_title]</div>
+	</div>
+	"}
 
 /datum/family_tree_interface/proc/get_role_title(mob/living/carbon/human/H, class)
-    switch(class)
-        if("patriarch")
-            return "Patriarch"
-        if("matriarch")
-            return "Matriarch"
-        if("progeny")
-            return H.gender == MALE ? "Son" : "Daughter"
-        if("adopted")
-            return "Adopted [H.gender == MALE ? "Son" : "Daughter"]"
-        if("ommer")
-            return H.gender == MALE ? "Uncle" : "Aunt"
-        if("inlaw")
-            return "In-law"
-    return "Unknown"
+	switch(class)
+		if("patriarch")
+			return "Patriarch"
+		if("matriarch")
+			return "Matriarch"
+		if("progeny")
+			return H.gender == MALE ? "Son" : "Daughter"
+		if("adopted")
+			return "Adopted [H.gender == MALE ? "Son" : "Daughter"]"
+		if("ommer")
+			return H.gender == MALE ? "Uncle" : "Aunt"
+		if("inlaw")
+			return "In-law"
+	return "Unknown"
 
 /datum/family_tree_interface/proc/get_node_x(mob/living/carbon/human/H)
 	// Calculate x position based on role and family structure
