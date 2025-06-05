@@ -4,7 +4,7 @@
 	var/curse_type
 	var/severity = 1 // 1-3 scale
 	var/inherited = TRUE // Whether curse passes to children
-	var/datum/weakref/cursed_by // Who placed the curse
+	var/tmp/datum/weakref/cursed_by // Who placed the curse
 	var/when_cursed
 	var/blessing = FALSE
 
@@ -145,11 +145,12 @@
 	bride.HandleBiologicalChildren(groom)
 
 	return TRUE
+
 /mob/living/carbon/human
 	var/datum/family_member/family_member_datum
 
 /datum/family_member
-	var/mob/living/carbon/human/person
+	var/tmp/mob/living/carbon/human/person
 	var/datum/heritage/family
 	var/list/parents = list() // Direct parents (max 2)
 	var/list/children = list() // Direct children

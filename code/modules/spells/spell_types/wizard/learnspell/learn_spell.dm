@@ -36,13 +36,20 @@
 				to_chat(usr, span_warning("Prerequisites not met for this [node.is_passive ? "technique" : "spell"]."))
 				qdel(node)
 				return
+		var/mob/living/user = usr
+		var/cost = node.cost
+		if(node.spell_type)
+			for(var/obj/effect/proc_holder/spell in user.mind?.spell_list)
+				if(istype(spell, node.spell_type))
+					cost = 0
+					break
 
-		if(node.cost > usr.mind.spell_points - usr.mind.used_spell_points)
+		if(cost > usr.mind.spell_points - usr.mind.used_spell_points)
 			to_chat(usr, span_warning("You do not have enough spell points to learn this."))
 			qdel(node)
 			return
 
-		usr.mind.used_spell_points += node.cost
+		usr.mind.used_spell_points += cost
 		unlocked_spells += spell_type
 
 		if(node.is_passive)
