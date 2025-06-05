@@ -1,9 +1,114 @@
+/datum/family_curse
+	var/name
+	var/description
+	var/curse_type
+	var/severity = 1 // 1-3 scale
+	var/inherited = TRUE // Whether curse passes to children
+	var/datum/weakref/cursed_by // Who placed the curse
+	var/when_cursed
+	var/blessing = FALSE
+
+	var/list/curse_effects = list()
+
+/datum/family_curse/misfortune
+	name = "Family Misfortune"
+	description = "Bad luck follows this bloodline"
+	curse_effects = list(/datum/status_effect/misfortune)
+
+/datum/status_effect/misfortune
+	id = "family_misfortune"
+	duration = -1
+	alert_type = /atom/movable/screen/alert/status_effect/misfortune
+
+/datum/status_effect/misfortune/on_apply()
+	. = ..()
+	owner.set_stat_modifier("[type]", STATKEY_LCK, -2)
+
+/datum/status_effect/misfortune/on_remove()
+	. = ..()
+	owner.remove_stat_modifier("[type]")
+
+/atom/movable/screen/alert/status_effect/misfortune
+	name = "Family Misfortune"
+	desc = "Your family's curse brings ill fortune to your steps."
+	icon_state = "debuff"
+
+	var/static/list/misfortune_tips = list(
+		"Dark clouds seem to follow you wherever you go...",
+		"You feel the weight of your family's curse.",
+		"Even simple tasks seem to go wrong more often.",
+		"The fates seem to conspire against you.",
+		"Your ancestors' misdeeds continue to haunt you."
+	)
+
+/atom/movable/screen/alert/status_effect/misfortune/New()
+	..()
+	if(desc == initial(desc))
+		desc = "[initial(desc)] [pick(misfortune_tips)]"
+
+/atom/movable/screen/alert/status_effect/misfortune/Click(location, control, params)
+	. = ..()
+	if(!ishuman(usr))
+		return
+	var/mob/living/carbon/human/user = usr
+	if(user.family_datum)
+		var/curse_info = ""
+		for(var/datum/family_curse/curse in user.family_datum.family_curses)
+			if(curse.curse_type == /datum/family_curse/misfortune)
+				curse_info += "<b>[curse.name]</b><br>"
+				curse_info += "[curse.description]<br>"
+				if(curse.cursed_by)
+					var/mob/curser = curse.cursed_by.resolve()
+					if(curser)
+						curse_info += "[blessed ? "Blessed" : "Cursed"] by: [curser.real_name]<br>"
+				curse_info += "Severity: [curse.severity]/3<br>"
+				curse_info += "Time cursed: [DisplayTimeText(world.time - curse.when_cursed)] ago<br>"
+
+		if(curse_info)
+			var/datum/browser/popup = new(usr, "curse_info", "Family [blessing ? "Blessing" : "Curse"] Details", 300, 200)
+			popup.set_content(curse_info)
+			popup.open()
+
 /datum/heritage
 	var/housename
 	var/datum/species/dominant_species
 	var/list/members = list() // All family members
 	var/list/family_icons = list()
 	var/datum/family_member/founder // The person who started this family line
+
+	var/list/family_curses = list()
+	var/list/curse_history = list() // Track when/how curses were gained
+
+/datum/heritage/proc/AddFamilyCurse(datum/family_curse/curse_type, severity, mob/curser)
+	var/datum/family_curse/new_curse = new curse_type()
+	new_curse.curse_type = curse_type
+	new_curse.severity = severity
+	new_curse.cursed_by = WEAKREF(curser)
+	new_curse.when_cursed = world.time
+
+	family_curses += new_curse
+
+	// Record curse history
+	curse_history += "The [housename] family was cursed with [new_curse.name] by [curser]"
+
+	// Apply curse effects to all members
+	ApplyCurseEffects(new_curse)
+
+	return new_curse
+
+/datum/heritage/proc/ApplyCurseEffects(datum/family_curse/curse)
+	for(var/datum/family_member/F in members)
+		if(F.person)
+			for(var/effect in curse.curse_effects)
+				F.person.apply_status_effect(effect)
+
+/datum/heritage/proc/InheritCurses(datum/family_member/child)
+	// Pass inherited curses to new family members
+	for(var/datum/family_curse/curse in family_curses)
+		if(curse.inherited)
+			for(var/effect in curse.curse_effects)
+				child.person?.apply_status_effect(effect)
+
 
 /datum/heritage/proc/TransferToFamily(mob/living/carbon/human/person, relationship_type)
 	var/datum/family_member/member = CreateFamilyMember(person)
@@ -442,6 +547,7 @@
 			new_member.adoption_status = TRUE
 
 	to_chat(person, span_notice("You have been added to the [housename] family."))
+	InheritCurses(new_member)
 	return new_member
 
 /datum/heritage/proc/MarryMembers(datum/family_member/person1, datum/family_member/person2)
