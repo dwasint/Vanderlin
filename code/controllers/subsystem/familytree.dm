@@ -3,20 +3,11 @@
 * assist RP by setting people up as related roundstart.
 * This relation can be based on role (IE king and prince
 * being father and son) or random chance.
+*
+* Updated to work with the new multi-generational heritage system
+* Fixed to properly handle string age constants
 */
-/*
-* NOTES: There is some areas of this
-* subsystem that can be more fleshed out
-* such as how right now a house is just
-* a bunch of names. Potentially this system
-* can be used to create family curses/boons that
-* effect all family members.
-* There is also a additional variable i placed
-* in human.dna called parent_mix that could be
-* used for intrigue but currently it has
-* no use and is only changed by the
-* heritage datum BloodTies() proc.`
-*/
+
 SUBSYSTEM_DEF(familytree)
 	name = "familytree"
 	flags = SS_NO_FIRE
@@ -66,74 +57,101 @@ SUBSYSTEM_DEF(familytree)
 		)
 
 /datum/controller/subsystem/familytree/Initialize()
-	ruling_family = new /datum/heritage(majority_species = /datum/species/human/northern)
+	ruling_family = new /datum/heritage(null, "Royal", /datum/species/human/northern)
 	//Blank starter families that we can customize for players.
 	for(var/pioneer_household in preset_family_species)
 		for(var/I = 1 to 2)
-		families += new /datum/heritage(majority_species = pioneer_household)
+			families += new /datum/heritage(null, null, pioneer_household)
 
 	return ..()
 
+/datum/controller/subsystem/familytree/proc/GetAgeValue(age_string)
+	// Convert age string to numeric value for comparison
+	switch(age_string)
+		if(AGE_CHILD)
+			return 0
+		if(AGE_ADULT)
+			return 1
+		if(AGE_MIDDLEAGED)
+			return 2
+		if(AGE_OLD)
+			return 3
+		if(AGE_IMMORTAL)
+			return 4
+		else
+			return 1 // Default to adult
+
 /datum/controller/subsystem/familytree/proc/WouldCreateAgeConflict(datum/heritage/house, mob/living/carbon/human/person)
-	// Check against parents - person shouldn't be older than parents unless they're uncle/aunt
-	if(house.patriarch && !house.CanBeParentOf(house.patriarch.age, person.age))
-		// Check if they could be uncle/aunt instead
-		if(!house.CanBeUncleAunt(person.age, house.patriarch.age))
-			return TRUE
+	if(!house.members.len)
+		return FALSE
+	// Check against existing family members for age conflicts
+	for(var/datum/family_member/member in house.members)
+		if(!member.person)
+			continue
 
-	if(house.matriarch && !house.CanBeParentOf(house.matriarch.age, person.age))
-		if(!house.CanBeUncleAunt(person.age, house.matriarch.age))
-			return TRUE
+		// Check if person is too young to be parent of existing children
+		for(var/datum/family_member/child in member.children)
+			if(child.person && !CanBeParentOf(person.age, child.person.age))
+				return TRUE
 
-	// Check against existing children for sibling compatibility
-	for(var/mob/living/carbon/human/family_member in house.family)
-		var/role = house.family[family_member]
-		if(role == FAMILY_PROGENY || role == FAMILY_ADOPTED)
-			if(!house.CanBeSiblings(person.age, family_member.age))
+		// Check if person is too old to be child of existing parents
+		for(var/datum/family_member/parent in member.parents)
+			if(parent.person && !CanBeParentOf(parent.person.age, person.age))
 				return TRUE
 
 	return FALSE
 
+/datum/controller/subsystem/familytree/proc/CanBeParentOf(parent_age, child_age)
+	// Parent must be at least one age category higher than child
+	// Exception: Adults can have Youngling children
+	if(parent_age == AGE_ADULT && child_age == AGE_CHILD)
+		return TRUE
+	if(parent_age == AGE_MIDDLEAGED && (child_age == AGE_CHILD || child_age == AGE_ADULT))
+		return TRUE
+	if(parent_age == AGE_OLD && child_age != AGE_OLD && child_age != AGE_IMMORTAL)
+		return TRUE
+	if(parent_age == AGE_IMMORTAL && child_age != AGE_IMMORTAL)
+		return TRUE
+
+	return FALSE
+
+/datum/controller/subsystem/familytree/proc/CanBeSiblings(age1, age2)
+	// Siblings can be same age category or adjacent categories
+	if(age1 == age2)
+		return TRUE
+
+	var/age1_value = GetAgeValue(age1)
+	var/age2_value = GetAgeValue(age2)
+
+	// Allow siblings to be within 1 age category of each other
+	if(abs(age1_value - age2_value) <= 1)
+		return TRUE
+
+	return FALSE
+
 /datum/controller/subsystem/familytree/proc/DetermineAppropriateRole(datum/heritage/house, mob/living/carbon/human/person, adopted = FALSE)
-	// Children always become progeny/adopted
+	// For children, always make them children
 	if(person.age == AGE_CHILD)
-		return adopted ? FAMILY_ADOPTED : FAMILY_PROGENY
+		return "child"
 
-	// Check if person should be uncle/aunt based on age relative to parents
-	if(house.patriarch || house.matriarch)
-		var/should_be_uncle_aunt = FALSE
+	// Look for potential parents (older members who could be parents)
+	var/list/potential_parents = list()
+	for(var/datum/family_member/member in house.members)
+		if(member.person && CanBeParentOf(member.person.age, person.age))
+			potential_parents += member
 
-		if(house.patriarch && house.CanBeUncleAunt(person.age, house.patriarch.age))
-			// If person is same age category as parent, make them uncle/aunt
-			if(house.GetAgeRank(person.age) >= house.GetAgeRank(house.patriarch.age))
-				should_be_uncle_aunt = TRUE
+	// If we have potential parents, make this person a child
+	if(potential_parents.len)
+		return "child"
 
-		if(house.matriarch && house.CanBeUncleAunt(person.age, house.matriarch.age))
-			if(house.GetAgeRank(person.age) >= house.GetAgeRank(house.matriarch.age))
-				should_be_uncle_aunt = TRUE
+	// Look for potential siblings (similar age)
+	for(var/datum/family_member/member in house.members)
+		if(member.person && CanBeSiblings(member.person.age, person.age))
+			return "sibling"
 
-		if(should_be_uncle_aunt)
-			return FAMILY_OMMER
+	// Default to founder/parent role
+	return "parent"
 
-	// Check if person is too old to be sibling with existing children
-	var/too_old_for_siblings = FALSE
-	for(var/mob/living/carbon/human/family_member in house.family)
-		var/role = house.family[family_member]
-		if(role == FAMILY_PROGENY || role == FAMILY_ADOPTED)
-			if(!house.CanBeSiblings(person.age, family_member.age))
-				too_old_for_siblings = TRUE
-				break
-
-	if(too_old_for_siblings)
-		return FAMILY_OMMER
-
-	// Default to child role if age allows
-	return adopted ? FAMILY_ADOPTED : FAMILY_PROGENY
-
-/*
-* In order for us to use age in sorting of generations we would need to
-* make the king & queen older than the prince.
-*/
 /datum/controller/subsystem/familytree/proc/AddLocal(mob/living/carbon/human/H, status)
 	if(!H || !status || istype(H, /mob/living/carbon/human/dummy))
 		return
@@ -159,24 +177,120 @@ SUBSYSTEM_DEF(familytree)
 				return
 			AssignToFamily(H)
 
-/*
-* Assigns lord and lady to the royal family.
-* If they are father or mother they claim the house in their name.
-*/
 /datum/controller/subsystem/familytree/proc/AddRoyal(mob/living/carbon/human/H, status)
-	if(status == FAMILY_FATHER || status == FAMILY_MOTHER)
-		if(!ruling_family.housename)
-			ruling_family.ClaimHouse(H)
-			return
-		//If king has already married another, the queen is not added to the royal family by default. Get angry!
-		if(ruling_family.matriarch && ruling_family.patriarch)
-			return
-	ruling_family.addToHouse(H, status)
+	if(!ruling_family.housename)
+		ruling_family.housename = "Royal"
 
-/*
-* Assigns people randomly as heirs to one of the major
-* famlies of Rockhill based on their species.
-*/
+	var/datum/family_member/member = ruling_family.CreateFamilyMember(H)
+	if(!member)
+		return
+
+	// If this is the first royal, generate a historical lineage
+	if(!ruling_family.founder)
+		GenerateRoyalLineage(member)
+		return
+
+	// Handle adding new royals to existing family
+	switch(status)
+		if(FAMILY_FATHER, FAMILY_MOTHER)
+			// Try to find appropriate position in family
+			var/datum/family_member/current_monarch = ruling_family.founder
+			while(current_monarch && current_monarch.children.len)
+				current_monarch = current_monarch.children[1]  // Follow main line
+
+			if(current_monarch)
+				ruling_family.MarryMembers(current_monarch, member)
+		if("Prince", "Princess")
+			// Find the current generation's monarch
+			var/datum/family_member/current_monarch = ruling_family.founder
+			while(current_monarch && current_monarch.children.len)
+				current_monarch = current_monarch.children[1]
+
+			if(current_monarch)
+				member.AddParent(current_monarch)
+				if(current_monarch.spouses.len)
+					member.AddParent(current_monarch.spouses[1])
+
+/datum/controller/subsystem/familytree/proc/GenerateRoyalLineage(datum/family_member/current_royal)
+    // Set as current generation
+    ruling_family.founder = current_royal
+    current_royal.generation = 16  // Start at generation 16 to leave room for ancestors
+
+    // Update ruling family's species based on first member
+    ruling_family.dominant_species = current_royal.person.dna.species.type
+
+    // Generate ancestors
+    var/datum/family_member/current_ancestor = current_royal
+    var/list/age_progression = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD, AGE_OLD)
+
+    for(var/i = current_royal.generation - 1; i >= 0; i--)
+        // Create parent
+        var/mob/living/carbon/human/dummy/ancestor = new()
+        ancestor.age = age_progression[min(current_royal.generation - i, age_progression.len)]
+        ancestor.gender = prob(50) ? MALE : FEMALE
+        ancestor.real_name = GenerateRoyalName(ancestor.gender, i)
+        set_species_type(ancestor, ruling_family.dominant_species)
+        var/datum/family_member/parent = ruling_family.CreateFamilyMember(ancestor)
+        parent.generation = i
+
+        // Create spouse for parent
+        var/mob/living/carbon/human/dummy/spouse = new()
+        spouse.age = ancestor.age
+        spouse.gender = ancestor.gender == MALE ? FEMALE : MALE
+        spouse.real_name = GenerateRoyalName(spouse.gender, i)
+        set_species_type(spouse, ruling_family.dominant_species)
+        var/datum/family_member/parent_spouse = ruling_family.CreateFamilyMember(spouse)
+        parent_spouse.generation = i
+
+        // Connect family members
+        ruling_family.MarryMembers(parent, parent_spouse)
+        current_ancestor.AddParent(parent)
+        current_ancestor.AddParent(parent_spouse)
+
+        // Add 0-1 siblings with 30% chance
+        if(prob(30))
+            var/mob/living/carbon/human/dummy/sibling = new()
+            sibling.age = ancestor.age
+            sibling.gender = prob(50) ? MALE : FEMALE
+            sibling.real_name = GenerateRoyalName(sibling.gender, i)
+            set_species_type(sibling, ruling_family.dominant_species)
+            var/datum/family_member/sibling_member = ruling_family.CreateFamilyMember(sibling)
+            sibling_member.generation = i
+            sibling_member.AddParent(parent)
+            sibling_member.AddParent(parent_spouse)
+
+        current_ancestor = parent
+
+/datum/controller/subsystem/familytree/proc/set_species_type(mob/living/carbon/human/H, species_type)
+	if(!H || !species_type)
+		return
+
+	var/datum/species/S = new species_type
+	H.set_species(S)
+	H.dna.species = S
+
+/datum/controller/subsystem/familytree/proc/GenerateRoyalName(gender, generation)
+	var/list/male_names = list(
+		"King" = list("Alexander", "William", "Edward", "Henry", "Richard", "George"),
+		"Prince" = list("Charles", "Philip", "Arthur", "Frederick", "Edmund")
+	)
+	var/list/female_names = list(
+		"Queen" = list("Victoria", "Elizabeth", "Mary", "Anne", "Catherine"),
+		"Princess" = list("Margaret", "Charlotte", "Sophia", "Alexandra")
+	)
+
+	var/title
+	var/list/names
+	if(gender == MALE)
+		title = generation > 2 ? "King" : "Prince"
+		names = male_names[title]
+	else
+		title = generation > 2 ? "Queen" : "Princess"
+		names = female_names[title]
+
+	var/list/roman_numerals = list("I", "II", "III", "IV", "V")
+	return "[title] [pick(names)] [pick(roman_numerals)]"
+
 /datum/controller/subsystem/familytree/proc/AssignToHouse(mob/living/carbon/human/H)
 	if(!H)
 		return
@@ -187,796 +301,241 @@ SUBSYSTEM_DEF(familytree)
 	var/list/low_priority_houses = list()
 	var/list/high_priority_houses = list()
 
-	for(var/datum/heritage/I in families)
-		if(I.housename && (I.family.len >= 1 && I.family.len < 6))
-			high_priority_houses.Add(I)
+	// Prioritize houses with existing members but not too many
+	for(var/datum/heritage/house in families)
+		if(house.housename && house.members.len >= 1 && house.members.len < 6)
+			high_priority_houses += house
 		else
-			low_priority_houses.Add(I)
+			low_priority_houses += house
 
-	for(var/i = 1 to 2)
-		var/list/what_we_checkin = high_priority_houses
-		if(i == 2)
-			what_we_checkin = low_priority_houses
-		for(var/datum/heritage/I in what_we_checkin)
-			if(I.dominant_species == species && (I.family.len >= 1 && I.family.len < 4))
-				if(!WouldCreateAgeConflict(I, H))
-					chosen_house = I
+	// Try high priority houses first
+	for(var/datum/heritage/house in high_priority_houses)
+		if(house.dominant_species == species && house.members.len < 4)
+			if(!WouldCreateAgeConflict(house, H))
+				chosen_house = house
+				break
+		// Small chance for adoption into different species family
+		if(prob(20) && house.members.len <= 8)
+			if(!WouldCreateAgeConflict(house, H))
+				chosen_house = house
+				adopted = TRUE
+				break
+
+	// Try low priority houses if no high priority match
+	if(!chosen_house)
+		for(var/datum/heritage/house in low_priority_houses)
+			if(house.dominant_species == species)
+				if(!WouldCreateAgeConflict(house, H))
+					chosen_house = house
 					break
-			if(prob(20) && (I.family.len > 1 && I.family.len <= 8))
-				if(!WouldCreateAgeConflict(I, H))
-					chosen_house = I
-					adopted = TRUE
-					break
-		if(chosen_house)
-			break
 
 	if(chosen_house)
-		var/role = DetermineAppropriateRole(chosen_house, H, adopted)
-		chosen_house.addToHouse(H, role)
+		AddPersonToHouse(chosen_house, H, adopted)
 
-/*
-* Allows players to claim a
-* house as patriarch or matriarch.
-* Currently roundstart families are
-* male and female since it makes
-* species calulcation easier on me.
-*/
+/datum/controller/subsystem/familytree/proc/AddPersonToHouse(datum/heritage/house, mob/living/carbon/human/person, adopted = FALSE)
+	var/role = DetermineAppropriateRole(house, person, adopted)
+
+	switch(role)
+		if("child")
+			// Find suitable parents
+			var/list/potential_parents = list()
+			for(var/datum/family_member/member in house.members)
+				if(member.person && CanBeParentOf(member.person.age, person.age))
+					potential_parents += member
+
+			// Add as child with up to 2 parents
+			var/datum/family_member/parent1 = potential_parents.len > 0 ? potential_parents[1] : null
+			var/datum/family_member/parent2 = potential_parents.len > 1 ? potential_parents[2] : null
+
+			house.AddToFamily(person, parent1, parent2, adopted)
+
+		if("sibling")
+			// Find a sibling and share their parents
+			for(var/datum/family_member/member in house.members)
+				if(member.person && CanBeSiblings(member.person.age, person.age))
+					var/datum/family_member/parent1 = member.parents.len > 0 ? member.parents[1] : null
+					var/datum/family_member/parent2 = member.parents.len > 1 ? member.parents[2] : null
+					house.AddToFamily(person, parent1, parent2, adopted)
+					break
+
+		if("parent")
+			// Add as founder/parent
+			var/datum/family_member/new_member = house.CreateFamilyMember(person)
+			if(!house.founder)
+				house.founder = new_member
+				new_member.generation = 0
+			if(!house.housename)
+				house.housename = house.SurnameFormatting(person)
+
 /datum/controller/subsystem/familytree/proc/AssignToFamily(mob/living/carbon/human/H)
 	if(!H)
 		return
 	var/our_species = H.dna.species.type
-	var/list/low_priority_houses = list()
-	var/list/medium_priority_houses = list()
-	var/list/high_priority_houses = list()
-	for(var/datum/heritage/I in families)
-		//This house is full.
-		if(I.matriarch && I.patriarch)
-			continue
-		//The accursed setspouse code so people can preset their spouses
-		var/mob/living/carbon/human/spouse_to_be
-		if(ishuman(I.matriarch))
-			spouse_to_be = I.matriarch
-		if(ishuman(I.patriarch))
-			spouse_to_be = I.patriarch
-		//There is someone in this house.
-		if(spouse_to_be)
-			//If this player has the name of the spouse you want.
-			if(spouse_to_be.real_name == H.setspouse)
-				//You have eachothers names as your setspouse
-				if(spouse_to_be.setspouse == H.real_name)
-					high_priority_houses.Add(I)
-				//They are impartial
-				if(!spouse_to_be.setspouse)
-					medium_priority_houses.Add(I)
-				continue
-			//They would like you as their spouse and your impartial to it.
-			if(!H.setspouse && spouse_to_be.setspouse == H.real_name)
-				medium_priority_houses.Add(I)
-				continue
-			//They are waiting for someone else.
-			if(spouse_to_be.setspouse)
-				continue
-		//Normal Code
-		if(I.dominant_species != our_species)
-			continue
-		low_priority_houses.Add(I)
+	var/list/eligible_houses = list()
 
-	/*
-	* Checks 3 lists.
-	* 1 High Priority: Houses that have the setspouse player.
-	* 2 Medium Priority: Houses without spouses
-	* 3 Low Priority: Everything else that applies
-	*/
-	var/list/what_we_checkin = list()
-	for(var/cycle = 1 to 3)
-		//If second run then check the other houses.
-		switch(cycle)
-			if(1)
-				what_we_checkin = high_priority_houses
-			if(2)
-				what_we_checkin = medium_priority_houses
-			if(3)
-				what_we_checkin = low_priority_houses
-		for(var/datum/heritage/eligable_house in what_we_checkin)
-			var/mob/living/carbon/human/mat = eligable_house.matriarch
-			var/mob/living/carbon/human/pat = eligable_house.patriarch
-			if(!eligable_house.housename)
-				eligable_house.ClaimHouse(H)
+	// Find houses that need a spouse
+	for(var/datum/heritage/house in families)
+		if(house.dominant_species != our_species)
+			continue
+
+		// Check if there's a potential spouse
+		var/has_single_adult = FALSE
+		for(var/datum/family_member/member in house.members)
+			if(member.person && member.person.age != AGE_CHILD && !member.spouses.len)
+				// Check setspouse compatibility
+				if(H.setspouse && member.person.real_name == H.setspouse)
+					eligible_houses.Insert(1, house) // High priority
+					has_single_adult = TRUE
+					break
+				else if(!H.setspouse && (!member.person.setspouse || member.person.setspouse == H.real_name))
+					eligible_houses += house
+					has_single_adult = TRUE
+					break
+
+		if(!has_single_adult && !house.housename)
+			eligible_houses += house // Empty house for founding
+
+	// Try to assign to a house
+	for(var/datum/heritage/house in eligible_houses)
+		// Find a spouse
+		for(var/datum/family_member/member in house.members)
+			if(member.person && member.person.age != AGE_CHILD && !member.spouses.len)
+				// Check compatibility
+				var/compatible = FALSE
+				if(H.setspouse && member.person.real_name == H.setspouse)
+					compatible = TRUE
+				else if(!H.setspouse && (!member.person.setspouse || member.person.setspouse == H.real_name))
+					compatible = TRUE
+
+				if(compatible)
+					var/datum/family_member/new_member = house.CreateFamilyMember(H)
+					if(new_member)
+						house.MarryMembers(new_member, member)
+						return
+
+		// Or found a new house
+		if(!house.housename)
+			var/datum/family_member/new_member = house.CreateFamilyMember(H)
+			if(new_member)
+				house.founder = new_member
+				new_member.generation = 0
+				house.housename = house.SurnameFormatting(H)
 				return
-			//Sloppy method to check husband and wife one after another.
-			if(!mat && H.gender == FEMALE)
-				eligable_house.addToHouse(H, FAMILY_MOTHER)
-				return
-			if(!pat && H.gender == MALE)
-				eligable_house.addToHouse(H, FAMILY_FATHER)
-				return
-	//None of the above added the person to a family. This means we must add them to a entirely new house.
+
+	// Create entirely new house if no match found
 	if(our_species != /datum/species/aasimar)
-		families += new /datum/heritage(H)
+		var/datum/heritage/new_house = new /datum/heritage(H, null, our_species)
+		families += new_house
 
-/*
-* For marrying two people together based on spousename.
-*/
 /datum/controller/subsystem/familytree/proc/AssignNewlyWed(mob/living/carbon/human/H)
-	viable_spouses.Add(H)
-	var/list/high_priority_lover = list()
-	var/list/mid_priority_lover = list()
-	var/list/low_priority_lover = list()
-	for(var/vs in viable_spouses)
-		//Thats no one.
-		if(!vs || !ishuman(vs))
-			continue
-		var/mob/living/carbon/human/L = vs
-		//Thats you dude.
-		if(L == H)
-			continue
-		//They already have a spouse so skip this one.
-		if(L.spouse_mob)
-			continue
-		//True love! They chose you and chose love them!
-		if(H.setspouse == L.real_name && L.setspouse == H.real_name)
-			high_priority_lover.Add(L)
-			break
-		/*
-		* This person has the name of the
-		* spouse you want. But their setspouse is none.
-		*/
-		if(H.setspouse == L.real_name && !L.setspouse)
-			high_priority_lover.Add(L)
-			continue
-		// This person wants you but you didnt choose them.
-		if(L.setspouse == H.real_name)
-			mid_priority_lover.Add(L)
-			continue
-		//Everyone else is placed in the loser pile.
-		low_priority_lover.Add(L)
+	viable_spouses += H
+	var/list/potential_matches = list()
 
-	var/lover
-	//Im sorry its convoluted but i think its more COMPRESSED.
-	for(var/cycle = 1 to 3)
-		//WE FOUND THEM!!!
-		if(lover)
-			break
-		if(cycle > 2 && H.setspouse)
-			break
-		var/list/what_we_checkin = list()
-		switch(cycle)
-			if(1)
-				what_we_checkin = high_priority_lover
-			if(2)
-				what_we_checkin = mid_priority_lover
-			if(3)
-				what_we_checkin = low_priority_lover
-		//To avoid runtime errors due to picking from a empty list.
-		if(what_we_checkin.len)
-			lover = pick(what_we_checkin)
-	//Success YOUR MARRIED!!!
-	if(ishuman(lover) && lover)
-		viable_spouses -= lover
-		viable_spouses -= H
-		H.MarryTo(lover)
+	for(var/mob/living/carbon/human/potential_spouse in viable_spouses)
+		if(!potential_spouse || potential_spouse == H || potential_spouse.spouse_mob)
+			continue
 
-/*
-* Assings people as uncles and aunts.
-*/
+		// Check setspouse compatibility
+		var/priority = 0
+		if(H.setspouse == potential_spouse.real_name && potential_spouse.setspouse == H.real_name)
+			priority = 3 // Perfect match
+		else if(H.setspouse == potential_spouse.real_name && !potential_spouse.setspouse)
+			priority = 2 // Good match
+		else if(potential_spouse.setspouse == H.real_name)
+			priority = 1 // Decent match
+		else if(!H.setspouse && !potential_spouse.setspouse)
+			priority = 0 // Random match
+		else
+			continue // Incompatible
+
+		potential_matches += list(list(potential_spouse, priority))
+
+	// Sort by priority and pick best match
+	if(potential_matches.len)
+		var/best_priority = -1
+		var/list/best_matches = list()
+
+		for(var/list/match_data in potential_matches)
+			var/match_priority = match_data[2]
+			if(match_priority > best_priority)
+				best_priority = match_priority
+				best_matches = list(match_data[1])
+			else if(match_priority == best_priority)
+				best_matches += match_data[1]
+
+		if(best_matches.len)
+			var/mob/living/carbon/human/chosen_spouse = pick(best_matches)
+			viable_spouses -= chosen_spouse
+			viable_spouses -= H
+			H.MarryTo(chosen_spouse)
+
 /datum/controller/subsystem/familytree/proc/AssignAuntUncle(mob/living/carbon/human/H)
 	var/species = H.dna.species.type
-	var/inlaw = FALSE
 	var/datum/heritage/chosen_house
-	var/list/low_priority_houses = list()
-	var/list/high_priority_houses = list()
 
-	for(var/datum/heritage/I in families)
-		if(I.housename && I.family.len >= 2 && (I.patriarch || I.matriarch))
-			// Check if person can be uncle/aunt based on age
-			var/can_be_uncle_aunt = FALSE
+	// Find houses with established families that could use an aunt/uncle
+	for(var/datum/heritage/house in families)
+		if(house.dominant_species != species)
+			continue
+		if(!house.housename || house.members.len < 2)
+			continue
 
-			if(I.patriarch && I.CanBeUncleAunt(H.age, I.patriarch.age))
-				can_be_uncle_aunt = TRUE
-			if(I.matriarch && I.CanBeUncleAunt(H.age, I.matriarch.age))
-				can_be_uncle_aunt = TRUE
-
-			if(can_be_uncle_aunt)
-				high_priority_houses.Add(I)
-		else if(I.family.len >= 1)
-			low_priority_houses.Add(I)
-
-	for(var/i = 1 to 2)
-		var/list/what_we_checkin = high_priority_houses
-		if(i == 2)
-			what_we_checkin = low_priority_houses
-		for(var/datum/heritage/I in what_we_checkin)
-			if(I.dominant_species == species && I.housename)
-				chosen_house = I
+		// Check if there are children who could use an aunt/uncle
+		var/has_children = FALSE
+		for(var/datum/family_member/member in house.members)
+			if(member.children.len > 0)
+				has_children = TRUE
 				break
-			if(prob(2) && I.housename)
-				chosen_house = I
-				inlaw = TRUE
-				break
-		if(chosen_house)
+
+		if(has_children && !WouldCreateAgeConflict(house, H))
+			chosen_house = house
 			break
 
 	if(chosen_house)
-		chosen_house.addToHouse(H, inlaw ? FAMILY_INLAW : FAMILY_OMMER)
+		// Add as sibling to one of the parents
+		var/datum/family_member/new_member = chosen_house.CreateFamilyMember(H)
+		if(new_member)
+			// Find a parent to be sibling to
+			for(var/datum/family_member/member in chosen_house.members)
+				if(member.children.len > 0 && CanBeSiblings(H.age, member.person.age))
+					// Share the same parents as this member
+					for(var/datum/family_member/grandparent in member.parents)
+						new_member.AddParent(grandparent)
+					break
 
-/*
-* For admins to view EVERY FAMILY and see all the
-* akward and convoluted coding.
-*/
 /datum/controller/subsystem/familytree/proc/ReturnAllFamilies()
 	. = ""
-	if(ruling_family)
+	if(ruling_family && ruling_family.members.len)
 		. += ruling_family.FormatFamilyList()
-	for(var/datum/heritage/I in families)
-		if(!I.housename && !I.family.len)
+	for(var/datum/heritage/house in families)
+		if(!house.housename && !house.members.len)
 			continue
-		. += I.FormatFamilyList()
+		. += house.FormatFamilyList()
 
 /datum/controller/subsystem/familytree/proc/ValidateAllFamilies()
-	if(ruling_family)
-		ruling_family.ValidateAndFixRelationships()
+	if(ruling_family && ruling_family.members.len)
+		ValidateFamily(ruling_family)
 	for(var/datum/heritage/family in families)
-		if(family.family.len)
-			family.ValidateAndFixRelationships()
+		if(family.members.len)
+			ValidateFamily(family)
 
-/datum/family_tree_interface
-	var/datum/heritage/current_family
-	var/mob/viewer
-
-/datum/family_tree_interface/New(datum/heritage/family, mob/user)
-	current_family = family
-	viewer = user
-
-/datum/family_tree_interface/proc/show_interface()
-	var/html = generate_interface_html()
-	usr << browse(html, "window=family_tree;size=800x600")
-
-/datum/family_tree_interface/proc/generate_interface_html()
-	var/html = {"
-	<html>
-	<head>
-		<style>
-			body {
-				margin: 0;
-				padding: 0;
-				background: #000;
-				color: #eee;
-				font-family: Arial, sans-serif;
-				overflow: hidden;
-			}
-
-			.family-tree-container {
-				position: relative;
-				width: 100%;
-				height: 100vh;
-				overflow: hidden;
-				cursor: grab;
-			}
-
-			.family-canvas {
-				position: absolute;
-				transform-origin: 0 0;
-			}
-
-			.connection-line {
-				position: absolute;
-				height: 2px;
-				background: linear-gradient(90deg,
-					rgba(255,215,0,0.8) 0%,
-					rgba(218,165,32,0.6) 50%,
-					rgba(255,215,0,0.4) 100%);
-				transform-origin: left center;
-				z-index: 1;
-				border-radius: 1px;
-				box-shadow: 0 0 4px rgba(255,215,0,0.3);
-			}
-
-			.family-node {
-				position: absolute;
-				width: 80px;
-				height: 100px;
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				cursor: pointer;
-				transition: all 0.2s;
-				z-index: 2;
-			}
-
-			.node-border {
-				width: 64px;
-				height: 64px;
-				border: 3px solid;
-				border-radius: 50%;
-				overflow: hidden;
-				box-shadow: 0 0 10px rgba(0,0,0,0.5);
-			}
-
-			.patriarch .node-border { border-color: #4169E1; }
-			.matriarch .node-border { border-color: #FF69B4; }
-			.progeny .node-border { border-color: #32CD32; }
-			.adopted .node-border { border-color: #FFD700; }
-			.ommer .node-border { border-color: #9370DB; }
-
-			.family-node img {
-				width: 100%;
-				height: 100%;
-				object-fit: cover;
-			}
-
-			.family-node .name {
-				margin-top: 5px;
-				font-size: 12px;
-				text-align: center;
-				text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
-			}
-
-			.family-node .role {
-				font-size: 10px;
-				color: #888;
-				text-align: center;
-			}
-
-			.family-node:hover {
-				transform: scale(1.1);
-				z-index: 100;
-			}
-
-			.tooltip {
-				position: absolute;
-				background: rgba(0,0,0,0.9);
-				border: 1px solid #444;
-				padding: 10px;
-				border-radius: 5px;
-				display: none;
-				z-index: 1000;
-			}
-		</style>
-	</head>
-	<body>
-		<div class="family-tree-container" id="container">
-			<div class="family-canvas" id="canvas">
-				[generate_family_connections()]
-				[generate_family_nodes()]
-			</div>
-		</div>
-		<div class="tooltip" id="tooltip"></div>
-
-		<script>
-			let isDragging = false;
-			let startX, startY;
-			let currentX = 400, currentY = 300;
-			let scale = 1;
-
-			const container = document.getElementById('container');
-			const canvas = document.getElementById('canvas');
-			const tooltip = document.getElementById('tooltip');
-
-			function updateTransform() {
-				canvas.style.transform = `translate(${currentX}px, ${currentY}px) scale(${scale})`;
-			}
-
-			container.addEventListener('mousedown', function(e) {
-				if (e.target === container || e.target === canvas) {
-					isDragging = true;
-					startX = e.clientX - currentX;
-					startY = e.clientY - currentY;
-					container.style.cursor = 'grabbing';
-				}
-			});
-
-			document.addEventListener('mousemove', function(e) {
-				if (isDragging) {
-					currentX = e.clientX - startX;
-					currentY = e.clientY - startY;
-					updateTransform();
-				}
-			});
-
-			document.addEventListener('mouseup', function() {
-				isDragging = false;
-				container.style.cursor = 'grab';
-			});
-
-			container.addEventListener('wheel', function(e) {
-				e.preventDefault();
-				const delta = e.deltaY > 0 ? -0.1 : 0.1;
-				scale = Math.max(0.5, Math.min(2, scale + delta));
-				updateTransform();
-			});
-
-			updateTransform();
-		</script>
-	</body>
-	</html>
-	"}
-	return html
-
-/datum/family_tree_interface/proc/generate_family_nodes()
-	var/html = ""
-
-	// Position nodes in tree layout
-	var/y_level = 0
-
-	// Rulers at top
-	if(current_family.patriarch)
-		html += generate_node(current_family.patriarch, 100, y_level, "patriarch")
-	if(current_family.matriarch)
-		html += generate_node(current_family.matriarch, 300, y_level, "matriarch")
-
-	y_level += 100
-
-	// Children below
-	var/x = 50
-	for(var/mob/living/carbon/human/member in current_family.family)
-		var/member_status = current_family.family[member]
-		if(member_status == FAMILY_PROGENY || member_status == FAMILY_ADOPTED)
-			html += generate_node(member, x, y_level, member_status == FAMILY_PROGENY ? "progeny" : "adopted")
-			x += 100
-
-	// Extended family
-	y_level += 50
-	x = 400
-	for(var/mob/living/carbon/human/member in current_family.family)
-		var/member_status = current_family.family[member]
-		if(member_status == FAMILY_OMMER || member_status == FAMILY_INLAW)
-			html += generate_node(member, x, y_level, lowertext(member_status))
-			x += 100
-
-	return html
-
-/datum/family_tree_interface/proc/generate_family_connections()
-	var/html = ""
-
-	// Store node positions for connection calculations
-	var/list/node_positions = list()
-
-	// Map positions for rulers
-	if(current_family.patriarch)
-		node_positions[current_family.patriarch] = list("x" = 100, "y" = 0)
-	if(current_family.matriarch)
-		node_positions[current_family.matriarch] = list("x" = 300, "y" = 0)
-
-	// Map positions for children
-	var/child_x = 50
-	var/child_y = 100
-	for(var/mob/living/carbon/human/member in current_family.family)
-		var/member_status = current_family.family[member]
-		if(member_status == FAMILY_PROGENY || member_status == FAMILY_ADOPTED)
-			node_positions[member] = list("x" = child_x, "y" = child_y)
-			child_x += 100
-
-	// Draw connections
-	for(var/mob/living/carbon/human/member in current_family.family)
-		var/member_status = current_family.family[member]
-		if(member_status == FAMILY_PROGENY || member_status == FAMILY_ADOPTED)
-			// Connect to patriarch
-			if(current_family.patriarch && node_positions[current_family.patriarch])
-				html += draw_connection(
-					node_positions[current_family.patriarch]["x"] + 40,
-					node_positions[current_family.patriarch]["y"] + 40,
-					node_positions[member]["x"] + 40,
-					node_positions[member]["y"] + 40
-				)
-
-			// Connect to matriarch
-			if(current_family.matriarch && node_positions[current_family.matriarch])
-				html += draw_connection(
-					node_positions[current_family.matriarch]["x"] + 40,
-					node_positions[current_family.matriarch]["y"] + 40,
-					node_positions[member]["x"] + 40,
-					node_positions[member]["y"] + 40
-				)
-
-	return html
-
-/datum/family_tree_interface/proc/draw_connection(start_x, start_y, end_x, end_y)
-	var/dx = end_x - start_x
-	var/dy = end_y - start_y
-	var/distance = sqrt(dx*dx + dy*dy)
-	var/angle = arctan(dy/dx)
-	if(dx < 0)
-		angle += 180
-
-	return {"<div class="connection-line" style="
-		left: [start_x]px;
-		top: [start_y]px;
-		width: [distance]px;
-		transform: rotate([angle]deg);
-	"></div>"}
-
-/datum/family_tree_interface/proc/generate_node(mob/living/carbon/human/H, x, y, class)
-	var/status_color
-	switch(class)
-		if("patriarch")
-			status_color = "#4169E1" // Royal Blue
-		if("matriarch")
-			status_color = "#FF69B4" // Hot Pink
-		if("progeny")
-			status_color = "#32CD32" // Lime Green
-		if("adopted")
-			status_color = "#FFD700" // Gold
-		if("ommer", "inlaw")
-			status_color = "#9370DB" // Medium Purple
-		else
-			status_color = "#FFFFFF" // White
-
-	var/role_title = ""
-	switch(class)
-		if("patriarch")
-			role_title = "Patriarch"
-		if("matriarch")
-			role_title = "Matriarch"
-		if("progeny")
-			role_title = H.gender == MALE ? "Son" : "Daughter"
-		if("adopted")
-			role_title = "Adopted [H.gender == MALE ? "Son" : "Daughter"]"
-		if("ommer")
-			role_title = H.gender == MALE ? "Uncle" : "Aunt"
-		if("inlaw")
-			role_title = "In-law"
-
-	// Use ma2html for the appearance
-	var/image_data = ma2html(H.appearance, usr)
-
-	return {"
-	<div class="family-node [class]" style="left: [x]px; top: [y]px"
-		 data-name="[H.real_name]"
-		 data-role="[role_title]"
-		 data-species="[H.dna?.species?.name]"
-		 onclick="showMemberDetails(this)">
-		<div class="node-border" style="border-color: [status_color]">
-			[image_data]
-		</div>
-		<div class="name" style="color: [status_color]">[H.real_name]</div>
-		<div class="role">[role_title]</div>
-	</div>
-	"}
-
-/datum/family_tree_interface/proc/get_role_title(mob/living/carbon/human/H, class)
-	switch(class)
-		if("patriarch")
-			return "Patriarch"
-		if("matriarch")
-			return "Matriarch"
-		if("progeny")
-			return H.gender == MALE ? "Son" : "Daughter"
-		if("adopted")
-			return "Adopted [H.gender == MALE ? "Son" : "Daughter"]"
-		if("ommer")
-			return H.gender == MALE ? "Uncle" : "Aunt"
-		if("inlaw")
-			return "In-law"
-	return "Unknown"
-
-/datum/family_tree_interface/proc/get_node_x(mob/living/carbon/human/H)
-	// Calculate x position based on role and family structure
-	var/status = current_family.family[H]
-	var/base_x = 400 // Center point
-
-	switch(status)
-		if(FAMILY_FATHER)
-			return base_x - 100
-		if(FAMILY_MOTHER)
-			return base_x + 100
-		if(FAMILY_PROGENY, FAMILY_ADOPTED)
-			var/child_index = 0
-			var/total_children = 0
-			for(var/mob/living/carbon/human/child in current_family.family)
-				var/child_status = current_family.family[child]
-				if(child_status == FAMILY_PROGENY || child_status == FAMILY_ADOPTED)
-					total_children++
-					if(child == H)
-						child_index = total_children
-
-			var/spread = min(total_children * 80, 400)
-			return base_x - (spread/2) + (child_index * (spread/(total_children+1)))
-
-		if(FAMILY_OMMER)
-			return base_x + rand(-200, 200) // Random offset for extended family
-
-	return base_x
-
-/datum/family_tree_interface/proc/get_node_y(mob/living/carbon/human/H)
-	// Calculate y position based on generation/role
-	var/status = current_family.family[H]
-	var/base_y = 100
-
-	switch(status)
-		if(FAMILY_FATHER, FAMILY_MOTHER)
-			return base_y
-		if(FAMILY_PROGENY, FAMILY_ADOPTED)
-			return base_y + 150
-		if(FAMILY_OMMER)
-			return base_y + 75
-
-	return base_y
-
-// Usage:
-/datum/controller/subsystem/familytree/proc/show_family_tree(datum/heritage/family, mob/user)
-	var/datum/family_tree_interface/interface = new(family, user)
-	var/html = interface.generate_interface_html()
-	user << browse(html, "window=family_tree;size=800x600")
-
-
-/client/proc/family_tree_debug_menu()
-	set name = "Family Tree Debug Menu"
-	set category = "Debug"
-
-	var/html = {"
-	<html>
-	<head>
-		<style>
-			body {
-				font-family: Arial, sans-serif;
-				margin: 20px;
-				background: #1a1a1a;
-				color: #eee;
-			}
-			.container {
-				max-width: 1000px;
-				margin: 0 auto;
-				background: #2a2a2a;
-				padding: 20px;
-				border-radius: 10px;
-				border: 1px solid #444;
-			}
-			.section {
-				margin-bottom: 30px;
-				padding: 15px;
-				border: 1px solid #444;
-				border-radius: 5px;
-				background: #333;
-			}
-			.family-card {
-				border: 1px solid #666;
-				margin: 10px 0;
-				padding: 10px;
-				border-radius: 5px;
-				background: #3a3a3a;
-				cursor: pointer;
-				transition: all 0.2s;
-			}
-			.family-card:hover {
-				background: #4a4a4a;
-				border-color: #0f0;
-			}
-			.family-member {
-				margin: 5px 0;
-				padding: 5px;
-				border-left: 3px solid #0f0;
-			}
-			.button {
-				background: #1a472a;
-				color: #0f0;
-				padding: 10px 15px;
-				border: 1px solid #0f0;
-				border-radius: 5px;
-				cursor: pointer;
-				margin: 5px;
-				display: inline-block;
-				text-decoration: none;
-			}
-			.button:hover {
-				background: #2a573a;
-				box-shadow: 0 0 10px #0f0;
-			}
-		</style>
-	</head>
-	<body>
-		<div class="container">
-			<h1>Family Tree Debug Menu</h1>
-
-			<div class="section">
-				<h2>Quick Actions</h2>
-				<a href="?src=\ref[src];action=view_ruling_tree" class="button">View Ruling Family Tree</a>
-				<a href="?src=\ref[src];action=generate_test" class="button">Generate Test Family</a>
-				<a href="?src=\ref[src];action=list_all" class="button">List All Families</a>
-				<a href="?src=\ref[src];action=clear_all" class="button">Clear All Families</a>
-			</div>
-
-			<div class="section">
-				<h2>Active Families</h2>
-				<div id="family-list">
-					[generate_family_list_with_trees()]
-				</div>
-			</div>
-		</div>
-	</body>
-	</html>
-	"}
-
-	usr << browse(html, "window=family_debug;size=1000x800")
-
-/proc/generate_family_list_with_trees()
-	var/list/output = list()
-
-	// Ruling family first
-	if(SSfamilytree.ruling_family)
-		output += generate_family_list_entry(SSfamilytree.ruling_family, TRUE)
-
-	// Then other families
-	for(var/datum/heritage/H in SSfamilytree.families)
-		if(H == SSfamilytree.ruling_family)
+/datum/controller/subsystem/familytree/proc/ValidateFamily(datum/heritage/family)
+	// Clean up any broken references
+	for(var/datum/family_member/member in family.members)
+		if(!member.person)
+			family.members -= member
 			continue
-		output += generate_family_list_entry(H)
 
-	return output.Join()
+		// Validate parent relationships
+		for(var/datum/family_member/parent in member.parents)
+			if(!parent.person || !(member in parent.children))
+				member.parents -= parent
+				if(parent.person)
+					parent.children -= member
 
-/proc/generate_family_list_entry(datum/heritage/H, is_ruling = FALSE)
-	var/house_ref = "\ref[H]"
-	var/html = "<div class='family-card' onclick='window.location=\"?src=\ref[usr.client];action=view_tree;family=[house_ref]\"'>"
-	html += "<h3>[H.housename ? H.housename : "Unnamed House"][is_ruling ? " (Ruling Family)" : ""]</h3>"
-
-	// Add basic family info
-	var/member_count = H.family.len
-	var/adopted_count = 0
-	for(var/mob/living/carbon/human/member in H.family)
-		if(H.family[member] == FAMILY_ADOPTED)
-			adopted_count++
-
-	html += "<div>Members: [member_count] ([adopted_count] adopted)</div>"
-
-	if(H.patriarch)
-		html += "<div>Patriarch: [H.patriarch.real_name]</div>"
-	if(H.matriarch)
-		html += "<div>Matriarch: [H.matriarch.real_name]</div>"
-
-	html += "<div style='text-align: right; font-style: italic;'>Click to view family tree</div>"
-	html += "</div>"
-	return html
-
-// Then in the client Topic(), change the calls to:
-/client/Topic(href, list/href_list)
-	. = ..()
-	if(!check_rights(R_DEBUG))
-		return
-
-	switch(href_list["action"])
-		if("view_ruling_tree")
-			if(SSfamilytree.ruling_family)
-				SSfamilytree.show_family_tree(SSfamilytree.ruling_family, usr)
-			else
-				to_chat(usr, "No ruling family exists!")
-
-		if("view_tree")
-			var/datum/heritage/H = locate(href_list["family"])
-			if(H)
-				SSfamilytree.show_family_tree(H, usr)
-			else
-				to_chat(usr, "Could not locate family!")
-
-		if("generate_test")
-			var/datum/heritage/test_family = generate_test_family()
-			SSfamilytree.show_family_tree(test_family, usr)
-
-
-/proc/generate_test_family()
-	var/datum/heritage/H = new()
-	H.housename = "House [pick("Storm", "Fire", "Ice", "Shadow", "Light", "Dawn", "Dusk")]"
-
-	// Create patriarch
-	var/mob/living/carbon/human/species/human/northern/father = new()
-	var/last_name = pick(GLOB.last_names)
-	father.real_name = "Lord [last_name]"
-	father.gender = MALE
-	father.age = rand(30, 60)
-	H.addToHouse(father, FAMILY_FATHER)
-
-	// Create matriarch
-	var/mob/living/carbon/human/species/human/northern/mother = new()
-	mother.real_name = "Lady [last_name]"
-	mother.gender = FEMALE
-	mother.age = rand(25, 55)
-	H.addToHouse(mother, FAMILY_MOTHER)
-
-	// Add 1-4 children
-	var/num_children = rand(1, 4)
-	for(var/i in 1 to num_children)
-		var/mob/living/carbon/human/species/human/northern/child = new()
-		child.gender = prob(50) ? MALE : FEMALE
-		child.real_name = "[pick(child.gender == MALE ? GLOB.first_names_male : GLOB.first_names_female)] [last_name]"
-		child.age = AGE_CHILD
-		H.addToHouse(child, prob(80) ? FAMILY_PROGENY : FAMILY_ADOPTED)
-	SSfamilytree.families += H
-	return H
+		// Validate child relationships
+		for(var/datum/family_member/child in member.children)
+			if(!child.person || !(member in child.parents))
+				member.children -= child
+				if(child.person)
+					child.parents -= member

@@ -1,351 +1,583 @@
-/*
-* Family Defines
-* FAMILY_FATHER, FAMILY_MOTHER,
-* FAMILY_PROGENY, FAMILY_ADOPTED
-* The Familytree subsystem places
-* people into the heritage datum
-* and several people can share the
-* same heritage datum.
-*/
-
 /datum/heritage
 	var/housename
 	var/datum/species/dominant_species
-	var/mob/living/carbon/human/matriarch
-	var/mob/living/carbon/human/patriarch
-	var/list/family = list()
+	var/list/members = list() // All family members
 	var/list/family_icons = list()
+	var/datum/family_member/founder // The person who started this family line
 
-/datum/heritage/New(mob/living/carbon/human/progenator, new_name, majority_species)
-	if(progenator)
+/datum/heritage/proc/TransferToFamily(mob/living/carbon/human/person, relationship_type)
+	var/datum/family_member/member = CreateFamilyMember(person)
+	if(!member)
+		return FALSE
+
+	// Handle different relationship types
+	switch(relationship_type)
+		if(FAMILY_INLAW)
+			// Just add as family member, don't change parent/child relationships
+			member.adoption_status = FALSE
+		if(FAMILY_FATHER, FAMILY_MOTHER)
+			pass()
+
+	to_chat(person, span_notice("You have joined the [housename] family as [relationship_type]."))
+	return member
+
+/datum/heritage/proc/ConductWedding(datum/family_member/bride, datum/family_member/groom, mob/living/carbon/human/officiant)
+	if(!bride || !groom || !officiant)
+		return FALSE
+
+	// Perform the marriage
+	if(!MarryMembers(bride, groom))
+		return FALSE
+
+	// Announce to all family members
+	var/announcement = "[bride.person?.real_name] and [groom.person?.real_name] have been wed in the [housename] family!"
+
+	for(var/datum/family_member/member in members)
+		if(member.person && member.person?.client)
+			to_chat(member.person, span_love(announcement))
+
+	// Handle any children that should now be biological
+	bride.HandleBiologicalChildren(groom)
+
+	return TRUE
+/mob/living/carbon/human
+	var/datum/family_member/family_member_datum
+
+/datum/family_member
+	var/mob/living/carbon/human/person
+	var/datum/heritage/family
+	var/list/parents = list() // Direct parents (max 2)
+	var/list/children = list() // Direct children
+	var/list/spouses = list() // Current spouses
+	var/list/former_spouses = list() // Divorced spouses
+	var/adoption_status = FALSE // TRUE if adopted into family
+	var/generation = 0 // 0 = founder, 1 = their children, etc.
+	var/tmp/recalculating_generation = FALSE
+	var/mutable_appearance/cloned_look
+
+/datum/family_member/New(mob/living/carbon/human/new_person, datum/heritage/new_family)
+	person = new_person
+	family = new_family
+	person?.family_member_datum = src
+	var/old_dir = person?.dir
+	person?.dir = SOUTH
+	cloned_look = new_person?.appearance
+	person?.dir = old_dir
+
+/datum/family_member/proc/AddParent(datum/family_member/parent, skip_reciprocal = FALSE)
+	if(!parent || (parent in parents))
+		return FALSE
+	if(parents.len >= 2)
+		return FALSE // Can't have more than 2 parents
+
+	// Prevent circular relationships (can't be parent of your own ancestor)
+	if(IsAncestorOf(parent))
+		return FALSE
+
+	parents += parent
+
+	// Only add reciprocal relationship if not already doing so
+	if(!skip_reciprocal && !(src in parent.children))
+		parent.AddChild(src, TRUE) // TRUE = skip reciprocal call
+
+	RecalculateGeneration()
+	return TRUE
+
+/datum/family_member/proc/RemoveParent(datum/family_member/parent, skip_reciprocal = FALSE)
+	if(!parent || !(parent in parents))
+		return FALSE
+
+	parents -= parent
+
+	// Only remove reciprocal relationship if not already doing so
+	if(!skip_reciprocal && (src in parent.children))
+		parent.RemoveChild(src, TRUE) // TRUE = skip reciprocal call
+
+	RecalculateGeneration()
+	return TRUE
+
+/datum/family_member/proc/AddChild(datum/family_member/child, skip_reciprocal = FALSE)
+	if(!child || (child in children))
+		return FALSE
+
+	// Prevent circular relationships (can't be child of your own descendant)
+	if(IsDescendantOf(child))
+		return FALSE
+
+	children += child
+
+	// Only add reciprocal relationship if not already doing so
+	if(!skip_reciprocal && !(src in child.parents))
+		child.AddParent(src, TRUE) // TRUE = skip reciprocal call
+
+	child.RecalculateGeneration()
+	return TRUE
+
+/datum/family_member/proc/RemoveChild(datum/family_member/child, skip_reciprocal = FALSE)
+	if(!child || !(child in children))
+		return FALSE
+
+	children -= child
+
+	// Only remove reciprocal relationship if not already doing so
+	if(!skip_reciprocal && (src in child.parents))
+		child.RemoveParent(src, TRUE) // TRUE = skip reciprocal call
+
+	child.RecalculateGeneration()
+	return TRUE
+
+/datum/family_member/proc/AddSpouse(datum/family_member/spouse, skip_reciprocal = FALSE)
+	if(!spouse || (spouse in spouses))
+		return FALSE
+
+	spouses += spouse
+
+	// Only add reciprocal relationship if not already doing so
+	if(!skip_reciprocal && !(src in spouse.spouses))
+		spouse.AddSpouse(src, TRUE) // TRUE = skip reciprocal call
+
+	// Handle biological children when both parents are present
+	HandleBiologicalChildren(spouse)
+	return TRUE
+
+/datum/family_member/proc/RemoveSpouse(datum/family_member/spouse, divorce = FALSE, skip_reciprocal = FALSE)
+	if(!spouse || !(spouse in spouses))
+		return FALSE
+
+	spouses -= spouse
+
+	// Only remove reciprocal relationship if not already doing so
+	if(!skip_reciprocal && (src in spouse.spouses))
+		spouse.RemoveSpouse(src, divorce, TRUE) // TRUE = skip reciprocal call
+
+	if(divorce)
+		if(!(spouse in former_spouses))
+			former_spouses += spouse
+		if(!skip_reciprocal && !(src in spouse.former_spouses))
+			spouse.former_spouses += src
+
+	return TRUE
+
+/datum/family_member/proc/IsAncestorOf(datum/family_member/other)
+	if(!other || other == src)
+		return FALSE
+
+	// Check if other is in our descendant chain
+	var/list/checked = list(src)
+	var/list/to_check = children.Copy()
+
+	while(to_check.len)
+		var/datum/family_member/current = to_check[1]
+		to_check -= current
+
+		if(current == other)
+			return TRUE
+
+		if(!(current in checked))
+			checked += current
+			to_check += current.children
+
+	return FALSE
+
+/datum/family_member/proc/IsDescendantOf(datum/family_member/other)
+	if(!other || other == src)
+		return FALSE
+
+	// Check if other is in our ancestor chain
+	var/list/checked = list(src)
+	var/list/to_check = parents.Copy()
+
+	while(to_check.len)
+		var/datum/family_member/current = to_check[1]
+		to_check -= current
+
+		if(current == other)
+			return TRUE
+
+		if(!(current in checked))
+			checked += current
+			to_check += current.parents
+
+	return FALSE
+
+/datum/family_member/proc/HandleBiologicalChildren(datum/family_member/spouse)
+	// Check if any children should be biological offspring of both parents
+	for(var/datum/family_member/child in children)
+		if(child in spouse.children)
+			// Both are parents of this child
+			if(family.SpeciesCalculation(child.person, person, spouse.person))
+				child.adoption_status = FALSE
+				child.person?.MixDNA(person, spouse.person, override = TRUE)
+
+/datum/family_member/proc/RecalculateGeneration()
+	if(recalculating_generation)
+		return
+	recalculating_generation = TRUE
+
+	if(!parents.len)
+		generation = 0 // Founder/root generation
+	else
+		var/max_parent_gen = -1
+		for(var/datum/family_member/parent in parents)
+			if(parent.generation > max_parent_gen)
+				max_parent_gen = parent.generation
+		generation = max_parent_gen + 1
+
+	recalculating_generation = FALSE
+
+	for(var/datum/family_member/child in children)
+		if(!child.recalculating_generation)
+			child.RecalculateGeneration()
+
+/datum/family_member/proc/GetRelationshipTo(datum/family_member/other)
+	if(!other || other == src)
+		return null
+
+	// Direct relationships
+	if(other in parents)
+		return other.person?.gender == MALE ? "father" : "mother"
+	if(other in children)
+		return other.person?.gender == MALE ? "son" : "daughter"
+	if(other in spouses)
+		return other.person?.gender == MALE ? "husband" : "wife"
+
+	// Sibling check
+	if(AreSiblings(other))
+		return other.person?.gender == MALE ? "brother" : "sister"
+
+	// Grandparent/Grandchild
+	var/grandparent_rel = GetGrandparentRelation(other)
+	if(grandparent_rel)
+		return grandparent_rel
+
+	var/grandchild_rel = GetGrandchildRelation(other)
+	if(grandchild_rel)
+		return grandchild_rel
+
+	// Aunt/Uncle/Niece/Nephew
+	var/aunt_uncle_rel = GetAuntUncleRelation(other)
+	if(aunt_uncle_rel)
+		return aunt_uncle_rel
+
+	var/niece_nephew_rel = GetNieceNephewRelation(other)
+	if(niece_nephew_rel)
+		return niece_nephew_rel
+
+	// Cousin relationships
+	var/cousin_rel = GetCousinRelation(other)
+	if(cousin_rel)
+		return cousin_rel
+
+	// In-law relationships
+	var/inlaw_rel = GetInLawRelation(other)
+	if(inlaw_rel)
+		return inlaw_rel
+
+	// Great-relationships (great-grandparent, etc.)
+	var/great_rel = GetGreatRelation(other)
+	if(great_rel)
+		return great_rel
+
+	return "distant relative"
+
+/datum/family_member/proc/AreSiblings(datum/family_member/other)
+	if(!parents.len || !other.parents.len)
+		return FALSE
+
+	// Check if they share at least one parent
+	for(var/datum/family_member/my_parent in parents)
+		if(my_parent in other.parents)
+			return TRUE
+	return FALSE
+
+/datum/family_member/proc/GetGrandparentRelation(datum/family_member/other)
+	// Check if other is grandparent of src
+	for(var/datum/family_member/parent in parents)
+		if(other in parent.parents)
+			if(other.person?.gender == MALE)
+				return "grandfather"
+			else
+				return "grandmother"
+	return null
+
+/datum/family_member/proc/GetGrandchildRelation(datum/family_member/other)
+	// Check if other is grandchild of src
+	for(var/datum/family_member/child in children)
+		if(other in child.children)
+			if(other.person?.gender == MALE)
+				return "grandson"
+			else
+				return "granddaughter"
+	return null
+
+/datum/family_member/proc/GetAuntUncleRelation(datum/family_member/other)
+	// Check if other is aunt/uncle of src (sibling of parent)
+	for(var/datum/family_member/parent in parents)
+		if(other.AreSiblings(parent) && other != parent)
+			if(other.person?.gender == MALE)
+				return "uncle"
+			else
+				return "aunt"
+	return null
+
+/datum/family_member/proc/GetNieceNephewRelation(datum/family_member/other)
+	// Check if other is niece/nephew of src (child of sibling)
+	for(var/datum/family_member/child in children)
+		if(other.AreSiblings(child) && other != child)
+			if(other.person?.gender == MALE)
+				return "nephew"
+			else
+				return "niece"
+	return null
+
+/datum/family_member/proc/GetCousinRelation(datum/family_member/other)
+	// First cousins: their parents are siblings
+	for(var/datum/family_member/my_parent in parents)
+		for(var/datum/family_member/their_parent in other.parents)
+			if(my_parent.AreSiblings(their_parent))
+				return "cousin"
+
+	// Second cousins, etc. could be added here
+	return null
+
+/datum/family_member/proc/GetInLawRelation(datum/family_member/other)
+	// Check spouse's family
+	for(var/datum/family_member/spouse in spouses)
+		var/spouse_rel = spouse.GetRelationshipTo(other)
+		if(spouse_rel)
+			switch(spouse_rel)
+				if("father")
+					return "father-in-law"
+				if("mother")
+					return "mother-in-law"
+				if("son")
+					return "son-in-law"
+				if("daughter")
+					return "daughter-in-law"
+				if("brother")
+					return "brother-in-law"
+				if("sister")
+					return "sister-in-law"
+
+	// Check if other is married to our sibling
+	for(var/datum/family_member/member in family.members)
+		if(AreSiblings(member) && (other in member.spouses))
+			if(other.person?.gender == MALE)
+				return "brother-in-law"
+			else
+				return "sister-in-law"
+
+	return null
+
+/datum/family_member/proc/GetGreatRelation(datum/family_member/other)
+	// Great-grandparent: parent of grandparent
+	for(var/datum/family_member/parent in parents)
+		for(var/datum/family_member/grandparent in parent.parents)
+			if(other in grandparent.parents)
+				if(other.person?.gender == MALE)
+					return "great-grandfather"
+				else
+					return "great-grandmother"
+
+	// Great-grandchild: child of grandchild
+	for(var/datum/family_member/child in children)
+		for(var/datum/family_member/grandchild in child.children)
+			if(other in grandchild.children)
+				if(other.person?.gender == MALE)
+					return "great-grandson"
+				else
+					return "great-granddaughter"
+
+	return null
+
+/datum/heritage/New(mob/living/carbon/human/founder_person, new_name, majority_species)
+	if(founder_person)
+		founder = CreateFamilyMember(founder_person)
+		founder.generation = 0
+
 		if(!new_name)
-			ClaimHouse(progenator)
-			return
-		addToHouse(progenator)
-	if(new_name)
-		housename = new_name
-	dominant_species = majority_species
-	if(!majority_species && progenator)
-		dominant_species = progenator.dna?.species?.type
-
-/datum/heritage/proc/GetAgeRank(age_category)
-	switch(age_category)
-		if(AGE_CHILD)
-			return 1
-		if(AGE_ADULT)
-			return 2
-		if(AGE_MIDDLEAGED)
-			return 3
-		if(AGE_OLD)
-			return 4
-		if(AGE_IMMORTAL)
-			return 5
-	return 0
-
-/datum/heritage/proc/CanBeParentOf(potential_parent_age, potential_child_age)
-	var/parent_rank = GetAgeRank(potential_parent_age)
-	var/child_rank = GetAgeRank(potential_child_age)
-
-	// Parents must be at least same age category or higher than children
-	// Adults can parent other Adults, Children, etc.
-	if(parent_rank >= child_rank)
-		return TRUE
-	return FALSE
-
-/datum/heritage/proc/CanBeSiblings(age1, age2)
-	var/rank1 = GetAgeRank(age1)
-	var/rank2 = GetAgeRank(age2)
-
-	// Siblings should be within 1-2 age categories of each other
-	// But if one is Adult and other is Adult, they can be siblings
-	// Middle-Aged siblings with Adults is fine
-	// But Children shouldn't be siblings with Old+ people
-	var/age_diff = abs(rank1 - rank2)
-
-	// Allow closer age gaps more freely
-	if(age_diff <= 1)
-		return TRUE
-	// Allow Adult-Middle-Aged sibling relationships
-	if(age_diff == 2 && ((rank1 == 2 && rank2 == 3) || (rank1 == 3 && rank2 == 2)))
-		return TRUE
-
-	return FALSE
-
-/datum/heritage/proc/CanBeUncleAunt(person_age, parent_age)
-	var/person_rank = GetAgeRank(person_age)
-	var/parent_rank = GetAgeRank(parent_age)
-
-	// Uncle/Aunt should be same age category or close to parents
-	// They can be 1 category younger or older than parents
-	var/age_diff = abs(person_rank - parent_rank)
-	return age_diff <= 1
-
-/datum/heritage/proc/ValidateAndFixRelationships()
-	var/list/fixes_needed = list()
-
-	// Check for age-based conflicts
-	for(var/mob/living/carbon/human/person in family)
-		var/role = family[person]
-
-		// Children shouldn't be older than parents
-		if((role == FAMILY_PROGENY || role == FAMILY_ADOPTED))
-			if(patriarch && !CanBeParentOf(patriarch.age, person.age))
-				fixes_needed[person] = FAMILY_OMMER
-			else if(matriarch && !CanBeParentOf(matriarch.age, person.age))
-				fixes_needed[person] = FAMILY_OMMER
-
-		// Uncle/aunts should be appropriate age relative to parents
-		if(role == FAMILY_OMMER && (patriarch || matriarch))
-			var/valid_uncle_aunt = FALSE
-			if(patriarch && CanBeUncleAunt(person.age, patriarch.age))
-				valid_uncle_aunt = TRUE
-			if(matriarch && CanBeUncleAunt(person.age, matriarch.age))
-				valid_uncle_aunt = TRUE
-
-			if(!valid_uncle_aunt)
-				// If they're too young, make them a child instead
-				if(patriarch && CanBeParentOf(patriarch.age, person.age))
-					fixes_needed[person] = FAMILY_PROGENY
-				else if(matriarch && CanBeParentOf(matriarch.age, person.age))
-					fixes_needed[person] = FAMILY_PROGENY
-
-	// Apply fixes
-	for(var/mob/living/carbon/human/person in fixes_needed)
-		var/old_role = family[person]
-		var/new_role = fixes_needed[person]
-		family[person] = new_role
-		to_chat(person, span_notice("Your family role has been adjusted from [old_role] to [new_role] for consistency."))
-
-/*
-* Renames entire house. Useful for default houses.
-*/
-/datum/heritage/proc/ClaimHouse(mob/living/carbon/human/person)
-	var/gender_male
-	if(person.gender == MALE)
-		gender_male = TRUE
-	addToHouse(person, gender_male ? FAMILY_FATHER : FAMILY_MOTHER)
-	housename = SurnameFormatting(person)
-	dominant_species = person.dna?.species?.type
-
-/*
-* Adds someone to the family using a mob and a status.
-*/
-/datum/heritage/proc/addToHouse(mob/living/carbon/human/person, status)
-	//You are not a human. Get outta ere.
-	if(!ishuman(person))
-		return
-	//Your already in the family. We dont have the system for more than one role.
-	if(family[person])
-		return
-	//Species that are logical decendents.
-	var/list/heir_species = list(dominant_species)
-	if(matriarch)
-		heir_species += SpeciesHeirs(matriarch.dna?.species)
-	if(patriarch)
-		heir_species += SpeciesHeirs(patriarch.dna?.species)
-	//Make a seperate list so we not mistake the status for another duplicate status role.
-	var/list/temp_list = list()
-	if(status == FAMILY_PROGENY && heir_species)
-		if(person.dna?.species?.type in heir_species)
-			//This has no purpose other than to add their TRUE PARENTS to their DNA/blood
-			person.MixDNA(patriarch, matriarch, override = TRUE)
+			housename = SurnameFormatting(founder_person)
 		else
-			status = FAMILY_ADOPTED
+			housename = new_name
 
-	//Add the human as a key then assign its value as its familial role.
-	temp_list += person
-	temp_list[person] = status
-	family.Add(temp_list)
-	//Your now part of the family. Hold onto this datum so we can always call upon the old blood!
-	person.family_datum = src
-	var/checkmarriage = FALSE
-	//Spagetti code.
-	if(!patriarch && status == FAMILY_FATHER)
-		patriarch = person
-		checkmarriage = TRUE
-	if(!matriarch && status == FAMILY_MOTHER)
-		matriarch = person
-		checkmarriage = TRUE
-	if(patriarch && matriarch && checkmarriage)
-		patriarch.MarryTo(matriarch)
-		//This goes through the family and "logically" sorts out true heirs to step children.
-		BloodTies()
-	//Adds a preset hud icon to the heritage datum. Helps with rapidly adding the icon to family members UI.
+		dominant_species = majority_species
+		if(!majority_species)
+			dominant_species = founder_person?.dna?.species?.type
+
+/datum/heritage/proc/CreateFamilyMember(mob/living/carbon/human/person)
+	if(!ishuman(person))
+		return null
+
+	// Check if already in family
+	for(var/datum/family_member/existing in members)
+		if(existing.person == person)
+			return existing
+
+	var/datum/family_member/new_member = new(person, src)
+	members += new_member
+	person?.family_datum = src
+
 	AddFamilyIcon(person)
-	//Applys latejoin UI to family members with the UI on. Optimize later. -IP
 	LateJoinAddToUI(person)
 
-/*
-* Returns text to human examine
-* based on their familial relation to
-* The Looker.
-*/
+	return new_member
+
+/datum/heritage/proc/AddToFamily(mob/living/carbon/human/person, datum/family_member/parent1, datum/family_member/parent2, adopt = FALSE)
+	var/datum/family_member/new_member = CreateFamilyMember(person)
+	if(!new_member)
+		return FALSE
+
+	new_member.adoption_status = adopt
+
+	if(parent1)
+		new_member.AddParent(parent1)
+	if(parent2)
+		new_member.AddParent(parent2)
+
+	// Handle biological inheritance
+	if(!adopt && parent1 && parent2)
+		if(SpeciesCalculation(person, parent1.person, parent2.person))
+			person?.MixDNA(parent1.person, parent2.person, override = TRUE)
+		else
+			new_member.adoption_status = TRUE
+
+	to_chat(person, span_notice("You have been added to the [housename] family."))
+	return new_member
+
+/datum/heritage/proc/MarryMembers(datum/family_member/person1, datum/family_member/person2)
+	if(!person1 || !person2)
+		return FALSE
+
+	// Check if already married to each other
+	if(person2 in person1.spouses)
+		return FALSE
+
+	person1.AddSpouse(person2)
+
+	// Only call MarryTo if it exists and won't cause loops
+	if(person1.person && person2.person)
+		// Instead of calling MarryTo which might have loops, handle name change here
+		// or make sure MarryTo doesn't call back to family system
+		// person1.person?.MarryTo(person2.person)
+		pass()
+
+	to_chat(person1.person, span_love("You are now married to [person2.person?.real_name]!"))
+	to_chat(person2.person, span_love("You are now married to [person1.person?.real_name]!"))
+
+	return TRUE
+
+/datum/heritage/proc/GetFamilyMember(mob/living/carbon/human/person)
+	for(var/datum/family_member/member in members)
+		if(member.person == person)
+			return member
+	return null
+
 /datum/heritage/proc/ReturnRelation(mob/living/carbon/human/lookee, mob/living/carbon/human/looker)
 	if(lookee == looker)
-		return
-	/*
-	* Perspective: Looker is looking at Lookee (A --> B)
-	* So the tone returned is "Lookee is my Father"
-	*/
-	var/familialrole_a = family[looker]
-	var/familialrole_b = family[lookee]
-	/*
-	* Familytree Subsystem Recognition
-	* H is who examines us so the
-	* perspective is looker looking at lookee.
-	*/
+		return null
+
+	var/datum/family_member/looker_member = GetFamilyMember(looker)
+	var/datum/family_member/lookee_member = GetFamilyMember(lookee)
+
+	if(!looker_member || !lookee_member)
+		return null
+
+	var/relationship = looker_member.GetRelationshipTo(lookee_member)
+	if(!relationship)
+		return null
+
 	var/p_He = p_they(TRUE)
-	var/is_male = FALSE
-	///Son or daughter?
-	var/progeny_title = "daughter"
-	var/txt = ""
-	//With the addition of uncle/aunt this does look a bit like spagetti code.
-	//Perspective Mother/Father
-	if(lookee.gender == MALE)
-		is_male = TRUE
-		progeny_title = "son"
+	var/relationship_text = "[p_He] is my [relationship]"
 
-	switch(familialrole_a)
-		if(FAMILY_FATHER, FAMILY_MOTHER)
-			switch(familialrole_b)
-				if(FAMILY_PROGENY)
-					txt = "[p_He] is my [progeny_title]!"
-				if(FAMILY_OMMER)
-					txt = "[p_He] is my [is_male ? "brother" : "sister"]."
-				if(FAMILY_INLAW)
-					txt = "[p_He] is my [progeny_title] in law!"
-				if(FAMILY_ADOPTED)
-					txt = "[p_He] is my [looker.dna?.species?.type == lookee.dna?.species?.type ? "bastard [progeny_title]" : "adopted [progeny_title]"]."
+	if(lookee_member.adoption_status && (relationship in list("son", "daughter", "child")))
+		relationship_text += " (adopted)"
 
-		if(FAMILY_PROGENY, FAMILY_ADOPTED)
-			switch(familialrole_b)
-				if(FAMILY_PROGENY, FAMILY_ADOPTED)
-					txt = "[p_He] is my [is_male ? "brother" : "sister"]."
-				if(FAMILY_FATHER)
-					txt = "[p_He] is my father."
-				if(FAMILY_MOTHER)
-					txt = "[p_He] is my mother."
-				if(FAMILY_OMMER)
-					txt = "[p_He] is my [is_male ? "uncle" : "aunt"]."
+	return span_love(span_bold("[relationship_text]."))
 
-		if(FAMILY_OMMER)
-			switch(familialrole_b)
-				if(FAMILY_FATHER, FAMILY_MOTHER, FAMILY_OMMER)
-					txt = "[p_He] is my [is_male ? "brother" : "sister"]."
-				if(FAMILY_PROGENY, FAMILY_ADOPTED)
-					txt = "[p_He] is my [is_male ? "nephew" : "niece"]."
-
-	if(txt == "")
-		return
-	return span_love(span_bold("[txt]"))
-
-/*
-* Transfers someone from another family to
-* our family.
-*/
-/datum/heritage/proc/TransferFamilies(mob/living/carbon/human/outsider, status, expel = FALSE)
-	var/datum/heritage/old_house = outsider.family_datum
-	if(old_house && expel)
-		old_house.ExpelFromHouse(outsider)
-	addToHouse(outsider, status)
-	to_chat(outsider, "Youve been accepted into the [housename] household.")
-
-/*
-* Currently unused except in TransferFamilies.
-* Expels a family member from the family.
-* What this means is upto the expeller.
-*/
-/datum/heritage/proc/ExpelFromHouse(mob/living/carbon/human/shunned)
-	family.Remove(shunned)
-	to_chat(src, "You're no longer part of the [housename] household.")
-
-/*
-* Mechanical proc for listing families.
-* This is seperate from Formate Family List
-* so that admins can click a verb and see
-* all families.
-*/
-/datum/heritage/proc/ListFamily(mob/living/carbon/human/checker)
-	if(!checker)
-		return
-	if(!family.len)
-		return
-	var/contents = FormatFamilyList()
-	var/datum/browser/popup = new(checker, "FAMILYDISPLAY", "", 260, 400)
-	popup.set_content(contents)
-	popup.open()
-
-/*
-* This proc returns text of each family house.
-* You may be wondering why i seperated this
-* from ListFamily and it was to mass return
-* information from every family for the admin
-* ListAllFamlies verb.
-*/
 /datum/heritage/proc/FormatFamilyList()
 	var/household = uppertext(housename)
 	var/house_title = "THE [household] HOUSE"
 	. = "<center>[household ? house_title : "Nameless House"]:</center><BR>"
 	. += "-----<br>"
-	for(var/mob/living/carbon/human/person as anything in family)
-		. += "<B><font color=#[COLOR_RED];text-shadow:0 0 10px #8d5958, 0 0 20px #8d5958, 0 0 30px #8d5958, 0 0 40px #8d5958, 0 0 50px #e60073, 0 0 60px #8d5958, 0 0 70px #8d5958;>\
-			[person.real_name]</font></B> [capitalize(family[person])]<BR>"
+
+	// Sort by generation
+	var/list/by_generation = list()
+	for(var/datum/family_member/member in members)
+		var/gen = member.generation
+		if(!by_generation["[gen]"])
+			by_generation["[gen]"] = list()
+		by_generation["[gen]"] += member
+
+	// Display by generation
+	for(var/gen_text in by_generation)
+		var/gen_num = text2num(gen_text)
+		var/gen_name = GetGenerationName(gen_num)
+		. += "<B>[gen_name]:</B><BR>"
+
+		for(var/datum/family_member/member in by_generation[gen_text])
+			var/status_text = ""
+			if(member.adoption_status)
+				status_text = " (Adopted)"
+			if(member.spouses.len)
+				var/spouse_names = ""
+				for(var/datum/family_member/spouse in member.spouses)
+					if(spouse_names)
+						spouse_names += ", "
+					spouse_names += spouse.person?.real_name
+				status_text += " (Married to: [spouse_names])"
+
+			. += "<B><font color=#[COLOR_RED];text-shadow:0 0 10px #8d5958, 0 0 20px #8d5958, 0 0 30px #8d5958, 0 0 40px #8d5958, 0 0 50px #e60073, 0 0 60px #8d5958, 0 0 70px #8d5958;>\
+				[member.person?.real_name]</font></B>[status_text]<BR>"
+		. += "<BR>"
+
 	. += "----------<br>"
 
-/*
-* This proc goes through the family
-* and considers if each of the children
-* are related to the patriarch and matriarch.
-*/
-/datum/heritage/proc/BloodTies()
-	if(!patriarch || !matriarch)
-		return
-	for(var/mob/living/carbon/human/H in family)
-		var/our_role = family[H]
-		if(our_role == FAMILY_FATHER || our_role == FAMILY_MOTHER)
-			continue
-		if(SpeciesCalculation(H, patriarch, matriarch))
-			family[H] = FAMILY_PROGENY
-			BloodRevelation(H)
+/datum/heritage/proc/GetGenerationName(generation)
+	switch(generation)
+		if(0)
+			return "Founders"
+		if(1)
+			return "First Generation"
+		if(2)
+			return "Second Generation"
+		if(3)
+			return "Third Generation"
+		if(4)
+			return "Fourth Generation"
 		else
-			family[H] = FAMILY_ADOPTED
+			return "Generation [generation]"
 
-	// Validate relationships after blood ties are established
-	ValidateAndFixRelationships()
+/datum/heritage/proc/ListFamily(mob/living/carbon/human/checker)
+	if(!checker)
+		return
+	if(!members.len)
+		return
+	var/contents = FormatFamilyList()
+	var/datum/browser/popup = new(checker, "FAMILYDISPLAY", "", 300, 500)
+	popup.set_content(contents)
+	popup.open()
 
-/datum/heritage/proc/GetGenerationLevel(mob/living/carbon/human/person)
-	var/role = family[person]
-	switch(role)
-		if(FAMILY_FATHER, FAMILY_MOTHER)
-			return 1 // Parents are generation 1
-		if(FAMILY_OMMER, FAMILY_INLAW)
-			return 1 // Uncle/aunts are same generation as parents
-		if(FAMILY_PROGENY, FAMILY_ADOPTED)
-			return 2 // Children are generation 2
-	return 0 // Unknown
+/datum/heritage/proc/SpeciesCalculation(mob/living/carbon/human/child, mob/living/carbon/human/parent1, mob/living/carbon/human/parent2)
+	var/datum/species/child_species = child.dna?.species
+	var/datum/species/dad_species = parent1.dna?.species
+	var/datum/species/mom_species = parent2.dna?.species
 
-/*
-* Causes the offspring to have the
-* matriarch and patriarch as their
-* biological parents.
-*/
-/datum/heritage/proc/BloodRevelation(mob/living/carbon/human/progeny)
-	progeny.MixDNA(patriarch, matriarch)
+	if(!child_species || !dad_species || !mom_species)
+		return FALSE
 
-/*
-* If the parents of the individual lead to this species
-*/
-/datum/heritage/proc/SpeciesCalculation(datum/species/fledgling_species, datum/species/dad_species, datum/species/mom_species)
 	var/list/mixes = list(
 		"human+elf+" = /datum/species/human/halfelf,
 		"human+horc+" = /datum/species/halforc,
-		)
+	)
+
 	var/mix_text = ""
-	//Extremely straightforward basic parentage
+
+	// Straightforward basic parentage
 	if(istype(dad_species, mom_species))
-		if(istype(fledgling_species, dad_species))
+		if(istype(child_species, dad_species))
 			return TRUE
-	//Essentially making a bar code.
+
+	// Build mix string
 	if(istype(dad_species, /datum/species/human/northern) || istype(mom_species, /datum/species/human/northern))
 		mix_text += "human+"
 	if(istype(dad_species, /datum/species/elf) || istype(mom_species, /datum/species/elf))
@@ -356,80 +588,27 @@
 		mix_text += "dwarf+"
 	if(istype(dad_species, /datum/species/tieberian) || istype(mom_species, /datum/species/tieberian))
 		mix_text += "tiefling+"
-	if(istype(dad_species, /datum/species/rakshari	) || istype(mom_species, /datum/species/rakshari	))
+	if(istype(dad_species, /datum/species/rakshari) || istype(mom_species, /datum/species/rakshari))
 		mix_text += "rakshari+"
 
-	//If new hyrbids are made add the logic of their conception here.
-	if(istype(fledgling_species, mixes[mix_text]))
+	if(istype(child_species, mixes[mix_text]))
 		return TRUE
 
-/*
-* For calculating if this individual can lead to this species. One for One rather than Two for One calculation.
-*/
-/datum/heritage/proc/SpeciesHeirs(datum/species/core_species)
-	if(QDELETED(core_species))
-		return
-	. = list(core_species.type)
-	if(istype(core_species, /datum/species/human/northern) || istype(core_species, /datum/species/elf))
-		. += /datum/species/human/halfelf
-	if(istype(core_species, /datum/species/elf/dark) || istype(core_species, /datum/species/human/northern))
-		. += /datum/species/human/halfelf
-	if(istype(core_species, /datum/species/human/northern) || istype(core_species, /datum/species/dwarf/mountain))
-		. += /datum/species/dwarf/mountain
-	if(istype(core_species, /datum/species/human/northern) || istype(core_species, /datum/species/halforc))
-		. += /datum/species/halforc
-	if(istype(core_species, /datum/species/elf/dark) || istype(core_species, /datum/species/elf))
-		. += list(/datum/species/elf,/datum/species/elf/dark)
+	return FALSE
 
-/*
-* Taken from marriage alter. This formats a name into its surname
-* if there is one.
-*/
 /datum/heritage/proc/SurnameFormatting(mob/living/carbon/human/person)
-	//Alright now for the boring surname formatting.
 	var/surname2use
-	var/index = findtext(person.real_name, " ")
-	person.original_name = person.real_name
+	var/index = findtext(person?.real_name, " ")
+	person?.original_name = person?.real_name
 	if(!index)
-		surname2use = person.dna?.species?.random_surname()
+		surname2use = person?.dna?.species?.random_surname()
 	else
-		/*
-		* This code prevents inheriting the last name of
-		* " of wolves" or " the wolf"
-		* remove this if you want "Skibbins of wolves" to
-		* have his bride become "Sarah of wolves".
-		*/
-		if(findtext(person.real_name, " of ") || findtext(person.real_name, " the "))
-			surname2use = person.dna?.species?.random_surname()
+		if(findtext(person?.real_name, " of ") || findtext(person?.real_name, " the "))
+			surname2use = person?.dna?.species?.random_surname()
 		else
-			surname2use = copytext(person.real_name, index)
+			surname2use = copytext(person?.real_name, index)
 	return surname2use
 
-/*
-* Currently unused. Replaces the surname of someone with
-* their houses surname. Essentially if Dan Jobbers became
-* Prince and his household name was "Glimmals" then he would
-* become Dan Glimmals.
-*/
-/datum/heritage/proc/ForceSurname(mob/living/carbon/human/person, surname2use = housename)
-	if(findtext(person.real_name, surname2use))
-		return
-	//Alright now for the boring surname formatting.
-	var/index = findtext(person.real_name, " ")
-	var/firstname = person.real_name
-	//Titles override the forced surname
-	if(findtext(firstname, " of ") || findtext(firstname, " the "))
-		return
-	else
-		person.change_name(copytext(firstname, 1,index))
-	return person.change_name(firstname + surname2use)
-
-/*
-* ISSUE: This applies a prexisting list of icons to a human hud.
-* If the human ghosts then all the icons will dissapear.
-* If a human is removed from the family while these icons are up
-* there is a chance that the icon will remain and be unremovable.
-*/
 /datum/heritage/proc/ApplyUI(mob/living/carbon/human/iconer, toggle_true = FALSE)
 	if(!iconer.client)
 		return FALSE
@@ -441,43 +620,27 @@
 			continue
 		iconer.client.images.Add(family_icons[H])
 
-//Sloppy bandaid way to apply latejoin family member icons.
 /datum/heritage/proc/LateJoinAddToUI(mob/living/carbon/human/new_fam)
-	for(var/mob/living/carbon/human/H in family)
-		if(H.family_UI && H.client)
-			H.client.images.Add(family_icons[new_fam])
+	for(var/datum/family_member/member in members)
+		var/mob/living/carbon/human/H = member.person
+		if(H && H.family_UI && H.client && H != new_fam)
+			if(new_fam in family_icons)
+				H.client.images.Add(family_icons[new_fam])
 
-//Adds family icon to the list.
 /datum/heritage/proc/AddFamilyIcon(mob/living/carbon/human/famicon)
-	var/family_role = family[famicon]
-	var/newfamly_icon = CalcFamilyIcon(family_role)
-	if(!family_role)
+	var/datum/family_member/member = GetFamilyMember(famicon)
+	if(!member)
 		return FALSE
-	var/image/I = new('icons/relations.dmi', loc = famicon, icon_state = newfamly_icon)
+
+	var/icon_state = member.adoption_status ? "adopted" : "related"
+	var/image/I = new('icons/relations.dmi', loc = famicon, icon_state = icon_state)
+
 	if(famicon in family_icons)
 		family_icons.Remove(famicon)
-	family_icons.Add(famicon)
 	family_icons[famicon] = I
-	return list(famicon = I)
 
-/mob/living/carbon/human/proc/ApplySpouseUI(toggle_true = FALSE)
-	if(!spouse_mob)
-		return
-	if(!spouse_indicator)
-		spouse_indicator = new('icons/relations.dmi', loc = spouse_mob, icon_state = "related")
-	if(toggle_true)
-		client.images.Remove(spouse_indicator)
-		return
-	client.images.Add(spouse_indicator)
-/*
-* Returns what UI icon this person should have.
-*/
-/datum/heritage/proc/CalcFamilyIcon(famrole)
-	. = "related"
-	if(famrole == FAMILY_ADOPTED)
-		return "adopted"
+	return TRUE
 
-//Lists the users family. Unsure where to put this other than here.
 /mob/living/carbon/human/verb/ReturnFamilyList()
 	set name = "List Family"
 	set category = "Memory"
@@ -488,7 +651,6 @@
 	else
 		to_chat(src, "You're not part of any notable family.")
 
-//Applies UI indicators for family members.
 /mob/living/carbon/human/verb/ToggleFamilyUI()
 	set name = "Toggle Family UI"
 	set category = "Memory"
@@ -506,3 +668,13 @@
 
 	if(!silent)
 		to_chat(src, "FamilyUI Toggled [family_UI ? "On" : "Off"]")
+
+/mob/living/carbon/human/proc/ApplySpouseUI(toggle_true = FALSE)
+	if(!spouse_mob)
+		return
+	if(!spouse_indicator)
+		spouse_indicator = new('icons/relations.dmi', loc = spouse_mob, icon_state = "related")
+	if(toggle_true)
+		client.images.Remove(spouse_indicator)
+		return
+	client.images.Add(spouse_indicator)

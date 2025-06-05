@@ -454,6 +454,7 @@
 #include "code\datums\emissive_blocker.dm"
 #include "code\datums\emotes.dm"
 #include "code\datums\explosion.dm"
+#include "code\datums\family_interface.dm"
 #include "code\datums\forced_movement.dm"
 #include "code\datums\heritage.dm"
 #include "code\datums\http_request.dm"

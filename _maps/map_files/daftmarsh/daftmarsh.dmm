@@ -7463,6 +7463,14 @@
 /obj/item/reagent_containers/glass/bottle,
 /obj/item/reagent_containers/glass/bottle,
 /obj/item/reagent_containers/glass/bottle,
+/obj/item/essence_vial,
+/obj/item/essence_vial,
+/obj/item/essence_vial,
+/obj/item/essence_vial,
+/obj/item/essence_vial,
+/obj/item/essence_vial,
+/obj/item/essence_vial,
+/obj/item/essence_vial,
 /turf/open/floor/hexstone,
 /area/rogue/indoors/town/magician)
 "hqt" = (
@@ -7869,6 +7877,10 @@
 	},
 /turf/open/floor/church,
 /area/rogue/indoors/town/manor)
+"hJz" = (
+/obj/machinery/essence/reservoir,
+/turf/open/floor/hexstone,
+/area/rogue/indoors/town/magician)
 "hKl" = (
 /obj/structure/closet/crate/chest/neu_iron,
 /obj/item/key/medroomi,
@@ -11610,6 +11622,13 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/manor)
+"lof" = (
+/obj/machinery/essence/reservoir{
+	pixel_y = 6;
+	pixel_x = -4
+	},
+/turf/open/floor/hexstone,
+/area/rogue/indoors/town/magician)
 "loU" = (
 /obj/structure/fluff/railing/wood,
 /turf/open/floor/wood,
@@ -11753,6 +11772,7 @@
 	},
 /obj/item/reagent_containers/glass/mortar,
 /obj/item/pestle,
+/obj/item/clothing/face/spectacles/golden,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/indoors/town/magician)
 "luM" = (
@@ -11959,8 +11979,8 @@
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
 	},
-/obj/item/clothing/face/spectacles/golden,
 /obj/machinery/light/fueled/wallfire/candle/blue,
+/obj/machinery/essence/splitter,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/indoors/town/magician)
 "lFq" = (
@@ -18893,6 +18913,17 @@
 	},
 /turf/open/floor/churchrough,
 /area/rogue/indoors/town/church/chapel)
+"svV" = (
+/obj/machinery/essence/combiner{
+	pixel_x = 2;
+	pixel_y = 12
+	},
+/obj/structure/table/wood{
+	icon_state = "tablewood1"
+	},
+/obj/item/essence_connector,
+/turf/open/floor/hexstone,
+/area/rogue/indoors/town/magician)
 "swj" = (
 /turf/open/floor/cobble,
 /area/rogue/outdoors/rtfield)
@@ -19517,6 +19548,10 @@
 /obj/machinery/light/fueled/wallfire/candle/blue/l,
 /obj/structure/rack/shelf/biggest,
 /obj/item/natural/bundle/stick,
+/obj/item/essence_vial,
+/obj/item/essence_vial,
+/obj/item/essence_vial,
+/obj/item/essence_vial,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/indoors/town/magician)
 "tbS" = (
@@ -162307,7 +162342,7 @@ jHH
 tFO
 eDx
 knZ
-iSk
+hJz
 iSk
 iSk
 akK
@@ -162509,7 +162544,7 @@ swK
 tFO
 gtc
 knZ
-iSk
+lof
 iSk
 ili
 akK
@@ -162711,7 +162746,7 @@ auu
 vLz
 aTT
 knZ
-iSk
+svV
 iSk
 lLT
 tFO

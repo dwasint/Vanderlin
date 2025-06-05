@@ -1333,9 +1333,9 @@ function output(message, flag) {
     var filteredOut = false;
     var atBottom = false;
     if (!filteredOut) {
-        var bodyHeight = $('body').height();
-        var messagesHeight = $messages.outerHeight();
-        var scrollPos = $('body,html').scrollTop();
+        var bodyHeight = window.innerHeight;
+		var messagesHeight = $messages[0].scrollHeight;
+		var scrollPos = window.pageYOffset || document.documentElement.scrollTop;
 
         if (bodyHeight + scrollPos >= messagesHeight - opts.scrollSnapTolerance) {
             atBottom = true;
