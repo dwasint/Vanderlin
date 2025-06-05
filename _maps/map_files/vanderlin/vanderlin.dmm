@@ -15272,6 +15272,10 @@
 /obj/structure/fluff/millstone,
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue/indoors/town)
+"jKw" = (
+/obj/machinery/essence/enchantment_altar,
+/turf/open/floor/twig,
+/area/rogue/indoors/town)
 "jKy" = (
 /obj/machinery/light/fueled/wallfire/candle/l,
 /turf/open/floor/cobble,
@@ -93249,7 +93253,7 @@ iZm
 dkK
 dkK
 rFo
-rFo
+jKw
 cNl
 jkM
 nlk

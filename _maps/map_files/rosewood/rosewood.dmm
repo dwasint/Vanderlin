@@ -25520,6 +25520,10 @@
 /obj/machinery/light/fueled/wallfire/candle/l,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town)
+"oec" = (
+/obj/machinery/essence/enchantment_altar,
+/turf/open/floor/twig,
+/area/rogue/indoors/town/bath)
 "oeg" = (
 /turf/closed/wall/mineral/wooddark/end,
 /area/rogue/indoors/town/garrison)
@@ -93132,7 +93136,7 @@ enx
 uej
 enx
 ylY
-iob
+oec
 iob
 fak
 pmI

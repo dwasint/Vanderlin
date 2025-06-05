@@ -17576,7 +17576,7 @@
 /turf/closed/wall/mineral/wooddark/horizontal,
 /area/rogue/indoors/town/bath)
 "rsM" = (
-/obj/structure/chair/stool,
+/obj/machinery/essence/enchantment_altar,
 /turf/open/floor/twig,
 /area/rogue/indoors/town/bath)
 "rsN" = (
