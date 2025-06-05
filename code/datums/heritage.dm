@@ -60,12 +60,12 @@
 				if(curse.cursed_by)
 					var/mob/curser = curse.cursed_by.resolve()
 					if(curser)
-						curse_info += "[blessed ? "Blessed" : "Cursed"] by: [curser.real_name]<br>"
+						curse_info += "[curse.blessing ? "Blessed" : "Cursed"] by: [curser.real_name]<br>"
 				curse_info += "Severity: [curse.severity]/3<br>"
 				curse_info += "Time cursed: [DisplayTimeText(world.time - curse.when_cursed)] ago<br>"
 
 		if(curse_info)
-			var/datum/browser/popup = new(usr, "curse_info", "Family [blessing ? "Blessing" : "Curse"] Details", 300, 200)
+			var/datum/browser/popup = new(usr, "curse_info", "Family [curse.blessing ? "Blessing" : "Curse"] Details", 300, 200)
 			popup.set_content(curse_info)
 			popup.open()
 
