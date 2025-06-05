@@ -212,54 +212,54 @@ SUBSYSTEM_DEF(familytree)
 					member.AddParent(current_monarch.spouses[1])
 
 /datum/controller/subsystem/familytree/proc/GenerateRoyalLineage(datum/family_member/current_royal)
-    // Set as current generation
-    ruling_family.founder = current_royal
-    current_royal.generation = 12  // Start at generation 12 to leave room for ancestors
+	// Set as current generation
+	ruling_family.founder = current_royal
+	current_royal.generation = 12  // Start at generation 12 to leave room for ancestors
 
-    // Update ruling family's species based on first member
-    ruling_family.dominant_species = current_royal.person.dna.species.type
+	// Update ruling family's species based on first member
+	ruling_family.dominant_species = current_royal.person.dna.species.type
 
-    // Generate ancestors
-    var/datum/family_member/current_ancestor = current_royal
-    var/list/age_progression = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD, AGE_OLD)
+	// Generate ancestors
+	var/datum/family_member/current_ancestor = current_royal
+	var/list/age_progression = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD, AGE_OLD)
 
-    for(var/i = current_royal.generation - 1; i >= 0; i--)
-        // Create parent
-        var/mob/living/carbon/human/dummy/ancestor = new()
-        ancestor.age = age_progression[min(current_royal.generation - i, age_progression.len)]
-        ancestor.gender = prob(50) ? MALE : FEMALE
-        ancestor.real_name = GenerateRoyalName(ancestor.gender, i)
-        set_species_type(ancestor, ruling_family.dominant_species)
-        var/datum/family_member/parent = ruling_family.CreateFamilyMember(ancestor)
-        parent.generation = i
+	for(var/i = current_royal.generation - 1; i >= 0; i--)
+		// Create parent
+		var/mob/living/carbon/human/dummy/ancestor = new()
+		ancestor.age = age_progression[min(current_royal.generation - i, age_progression.len)]
+		ancestor.gender = prob(50) ? MALE : FEMALE
+		ancestor.real_name = GenerateRoyalName(ancestor.gender, i)
+		set_species_type(ancestor, ruling_family.dominant_species)
+		var/datum/family_member/parent = ruling_family.CreateFamilyMember(ancestor)
+		parent.generation = i
 
-        // Create spouse for parent
-        var/mob/living/carbon/human/dummy/spouse = new()
-        spouse.age = ancestor.age
-        spouse.gender = ancestor.gender == MALE ? FEMALE : MALE
-        spouse.real_name = GenerateRoyalName(spouse.gender, i)
-        set_species_type(spouse, ruling_family.dominant_species)
-        var/datum/family_member/parent_spouse = ruling_family.CreateFamilyMember(spouse)
-        parent_spouse.generation = i
+		// Create spouse for parent
+		var/mob/living/carbon/human/dummy/spouse = new()
+		spouse.age = ancestor.age
+		spouse.gender = ancestor.gender == MALE ? FEMALE : MALE
+		spouse.real_name = GenerateRoyalName(spouse.gender, i)
+		set_species_type(spouse, ruling_family.dominant_species)
+		var/datum/family_member/parent_spouse = ruling_family.CreateFamilyMember(spouse)
+		parent_spouse.generation = i
 
-        // Connect family members
-        ruling_family.MarryMembers(parent, parent_spouse)
-        current_ancestor.AddParent(parent)
-        current_ancestor.AddParent(parent_spouse)
+		// Connect family members
+		ruling_family.MarryMembers(parent, parent_spouse)
+		current_ancestor.AddParent(parent)
+		current_ancestor.AddParent(parent_spouse)
 
-        // Add 0-1 siblings with 30% chance
-        if(prob(30))
-            var/mob/living/carbon/human/dummy/sibling = new()
-            sibling.age = ancestor.age
-            sibling.gender = prob(50) ? MALE : FEMALE
-            sibling.real_name = GenerateRoyalName(sibling.gender, i)
-            set_species_type(sibling, ruling_family.dominant_species)
-            var/datum/family_member/sibling_member = ruling_family.CreateFamilyMember(sibling)
-            sibling_member.generation = i
-            sibling_member.AddParent(parent)
-            sibling_member.AddParent(parent_spouse)
+		// Add 0-1 siblings with 30% chance
+		if(prob(30))
+			var/mob/living/carbon/human/dummy/sibling = new()
+			sibling.age = ancestor.age
+			sibling.gender = prob(50) ? MALE : FEMALE
+			sibling.real_name = GenerateRoyalName(sibling.gender, i)
+			set_species_type(sibling, ruling_family.dominant_species)
+			var/datum/family_member/sibling_member = ruling_family.CreateFamilyMember(sibling)
+			sibling_member.generation = i
+			sibling_member.AddParent(parent)
+			sibling_member.AddParent(parent_spouse)
 
-        current_ancestor = parent
+		current_ancestor = parent
 
 /datum/controller/subsystem/familytree/proc/set_species_type(mob/living/carbon/human/H, species_type)
 	if(!H || !species_type)
