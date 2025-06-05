@@ -214,7 +214,7 @@ SUBSYSTEM_DEF(familytree)
 /datum/controller/subsystem/familytree/proc/GenerateRoyalLineage(datum/family_member/current_royal)
     // Set as current generation
     ruling_family.founder = current_royal
-    current_royal.generation = 16  // Start at generation 16 to leave room for ancestors
+    current_royal.generation = 12  // Start at generation 12 to leave room for ancestors
 
     // Update ruling family's species based on first member
     ruling_family.dominant_species = current_royal.person.dna.species.type
