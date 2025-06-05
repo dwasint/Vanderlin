@@ -57,8 +57,6 @@
 		// Try to start the craft
 		if(singleton.try_craft(host, stored_items.Copy(), user, on_craft_start, on_craft_failed))
 			stored_items.Cut()
-			if(!user)
-				user = get_mob_by_ckey(parent.fingerprintslast)
 			for(var/obj/item/item in host.contents)
 				stored_items |= item.type
 				stored_items[item.type]++
