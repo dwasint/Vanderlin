@@ -65,7 +65,7 @@
 				curse_info += "Time cursed: [DisplayTimeText(world.time - curse.when_cursed)] ago<br>"
 
 		if(curse_info)
-			var/datum/browser/popup = new(usr, "curse_info", "Family [curse.blessing ? "Blessing" : "Curse"] Details", 300, 200)
+			var/datum/browser/popup = new(usr, "curse_info", "Family Modifier Details", 300, 200)
 			popup.set_content(curse_info)
 			popup.open()
 
