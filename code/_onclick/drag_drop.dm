@@ -84,7 +84,7 @@
 	var/atom/AD = object
 
 	if(mob.uses_intents)
-		if(mob.used_intent)
+		if(mob.used_intent && istype(mob.used_intent))
 			mob.used_intent.on_mouse_up()
 
 	if(mob.stat != CONSCIOUS)
