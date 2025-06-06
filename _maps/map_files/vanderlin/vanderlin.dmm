@@ -1146,6 +1146,14 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/wood,
 /area/rogue/indoors/town)
+"aFf" = (
+/obj/effect/landmark/bounty_location{
+	location_name = "Infront of the Clinic";
+	name = "Infront of the Clinic";
+	completion_range = 5
+	},
+/turf/open/floor/cobble,
+/area/rogue/outdoors/town)
 "aFh" = (
 /obj/structure/rack,
 /obj/machinery/light/fueled/wallfire/candle{
@@ -15204,6 +15212,14 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/magician)
+"jGw" = (
+/obj/effect/landmark/bounty_location{
+	location_name = "By the Trains Seats";
+	name = "By the Trains Seats";
+	completion_range = 5
+	},
+/turf/open/floor/herringbone,
+/area/rogue/indoors/town)
 "jGJ" = (
 /obj/structure/fluff/statue/knight,
 /obj/structure/fluff/railing/border{
@@ -17791,6 +17807,14 @@
 /obj/structure/minecart_rail,
 /turf/open/floor/naturalstone,
 /area/rogue/under/cave)
+"lmW" = (
+/obj/effect/landmark/bounty_location{
+	location_name = "End of the Cargo Docks";
+	name = "End of the Cargo Docks";
+	completion_range = 5
+	},
+/turf/open/floor/ruinedwood/spiral,
+/area/rogue/outdoors/river)
 "lmX" = (
 /obj/effect/decal/cleanable/dirt/cobweb,
 /obj/effect/spawner/map_spawner/loot/coin/med,
@@ -22919,6 +22943,14 @@
 	},
 /turf/open/floor/metal/barograte,
 /area/rogue/indoors/town/clocktower)
+"oGf" = (
+/obj/effect/landmark/bounty_location{
+	location_name = "Infront of the Graveyard Gates";
+	name = "Infront of the Graveyard Gates";
+	completion_range = 5
+	},
+/turf/open/floor/cobblerock,
+/area/rogue/outdoors/town)
 "oGi" = (
 /turf/open/floor/greenstone,
 /area/rogue/under/town/sewer)
@@ -26891,6 +26923,11 @@
 "rsU" = (
 /turf/open/floor/blocks,
 /area/rogue/under/town/sewer)
+"rsW" = (
+/obj/structure/chair/stool,
+/obj/structure/bounty_board,
+/turf/open/floor/naturalstone,
+/area/rogue/under/town/sewer)
 "rtn" = (
 /obj/structure/closet/dirthole/closed/loot,
 /obj/structure/gravemarker,
@@ -29005,6 +29042,14 @@
 /obj/structure/closet/crate/chest/neu,
 /turf/open/floor/ruinedwood/darker,
 /area/rogue/outdoors/river)
+"sJT" = (
+/obj/effect/landmark/bounty_location{
+	location_name = "By the Forest Garrisons Noose";
+	completion_range = 5;
+	name = "By the Forest Garrisons Noose"
+	},
+/turf/open/floor/wood,
+/area/rogue/outdoors/rtfield/safe)
 "sJX" = (
 /obj/structure/door/window,
 /obj/effect/mapping_helpers/access/locker,
@@ -61178,7 +61223,7 @@ cDP
 cDP
 oGi
 lfU
-qWT
+rsW
 fyC
 nVB
 fyC
@@ -61215,7 +61260,7 @@ iGx
 han
 qqE
 qqE
-qqE
+jGw
 bwL
 pGi
 vMb
@@ -80525,7 +80570,7 @@ xYa
 xYa
 jhz
 kRP
-kRP
+lmW
 fhE
 xYa
 xYa
@@ -94281,7 +94326,7 @@ cmr
 cmr
 nlk
 mBo
-elp
+aFf
 ehF
 ehF
 anM
@@ -98203,7 +98248,7 @@ nlp
 nlp
 wEo
 uQe
-uQe
+sJT
 kDq
 lxy
 nlp
@@ -107825,7 +107870,7 @@ ehF
 vnF
 vnF
 mUs
-ehF
+oGf
 ehF
 ehF
 ehF

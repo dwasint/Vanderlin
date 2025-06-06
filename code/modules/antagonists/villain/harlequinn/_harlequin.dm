@@ -1,3 +1,15 @@
+/datum/migrant_wave/harlequinn
+	name = "Harlequinn"
+	roles = list(
+		/datum/migrant_role/harlequinn = 1,
+	)
+	can_roll = FALSE
+
+/datum/migrant_role/harlequinn
+	name = "Harlequinn"
+	antag_datum = /datum/antagonist/harlequinn
+
+
 /datum/antagonist/harlequinn
 	name = "Harlequinn"
 	roundend_category = "harlequinn"

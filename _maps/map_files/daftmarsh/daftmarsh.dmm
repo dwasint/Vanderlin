@@ -85,6 +85,14 @@
 	},
 /turf/open/floor/carpet/purple,
 /area/rogue/indoors/town/steward)
+"aeM" = (
+/obj/effect/landmark/bounty_location{
+	location_name = "Beside the Town's Dungeon";
+	name = "Beside the Town's Dungeon";
+	completion_range = 5
+	},
+/turf/open/floor/cobble/mossy,
+/area/rogue/under/cavewet)
 "aeO" = (
 /obj/structure/bookcase/random/myths,
 /turf/open/floor/blocks,
@@ -9644,6 +9652,14 @@
 /obj/effect/decal/cleanable/roguerune/arcyne/summoning/mid,
 /turf/open/floor/cobble,
 /area/rogue/under/town/basement)
+"jrX" = (
+/obj/effect/landmark/bounty_location{
+	location_name = "End of the Cargo Docks";
+	name = "End of the Cargo Docks";
+	completion_range = 5
+	},
+/turf/open/floor/twig,
+/area/rogue/outdoors/town)
 "jsr" = (
 /obj/structure/bed/wool/double,
 /obj/item/bedsheet/double_pelt,
@@ -23305,6 +23321,10 @@
 /obj/machinery/light/fueled/wallfire/candle,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/indoors/town/bath)
+"wFR" = (
+/obj/structure/bounty_board,
+/turf/open/floor/dirt,
+/area/rogue/under/town/sewer)
 "wFU" = (
 /obj/machinery/light/fueled/chand,
 /obj/effect/landmark/start/orphanlate,
@@ -23396,6 +23416,14 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town/church)
+"wLP" = (
+/obj/effect/landmark/bounty_location{
+	location_name = "Infront of the Clinic";
+	name = "Infront of the Clinic";
+	completion_range = 5
+	},
+/turf/open/floor/twig,
+/area/rogue/outdoors/town)
 "wLV" = (
 /obj/structure/fluff/globe,
 /turf/open/floor/carpet/royalblack,
@@ -23522,6 +23550,14 @@
 	},
 /turf/open/floor/wood,
 /area/rogue/indoors/town)
+"wQw" = (
+/obj/effect/landmark/bounty_location{
+	location_name = "Beside the Church Gate";
+	name = "Beside the Church Gate";
+	completion_range = 5
+	},
+/turf/open/floor/dirt,
+/area/rogue/outdoors/town)
 "wQz" = (
 /obj/structure/window/stained/silver/alt,
 /turf/open/floor/church,
@@ -24632,6 +24668,15 @@
 	},
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/indoors/town/bath)
+"xMM" = (
+/obj/structure/kneestingers,
+/obj/effect/landmark/bounty_location{
+	location_name = "Across the River by the Bounty Board";
+	name = "Across the River by the Bounty Board";
+	completion_range = 5
+	},
+/turf/open/water/river/dirt,
+/area/rogue/under/town/sewer)
 "xMX" = (
 /obj/structure/lever/hidden/keep{
 	redstone_id = "KeepBathPassage"
@@ -45044,7 +45089,7 @@ ahQ
 uAt
 qJO
 wMB
-lOO
+wFR
 nGi
 nGi
 lOO
@@ -47875,7 +47920,7 @@ sbz
 sbz
 aSs
 sbz
-aSs
+xMM
 tbS
 hOT
 sbz
@@ -91268,7 +91313,7 @@ lVp
 lVp
 lVp
 tma
-vDk
+wQw
 vDk
 vDk
 jKy
@@ -109178,7 +109223,7 @@ diT
 stV
 ksE
 stV
-stV
+aeM
 ksE
 stV
 ksE
@@ -112112,7 +112157,7 @@ sWx
 sWx
 sWx
 tBF
-oyT
+jrX
 oyT
 aKo
 sWx
@@ -119977,7 +120022,7 @@ gtS
 nrE
 iXk
 iUA
-oyT
+wLP
 nrE
 nrE
 nrE

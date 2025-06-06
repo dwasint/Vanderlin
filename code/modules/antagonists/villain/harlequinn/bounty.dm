@@ -10,17 +10,33 @@ GLOBAL_LIST_INIT(bounty_rep, list())  // ckey -> reputation score
 	icon_state = "bounty_board"
 	anchored = TRUE
 	density = FALSE
+	pixel_y = 32
 	var/list/active_contracts = list()
 	var/list/completed_contracts = list()
 	var/total_bounty_pool = 0
 	var/list/delivery_locations = list() // Populated from landmarks
 	var/list/contraband_packs = list() // Available contraband supply packs
+	var/last_harlequin_spawn = 0
+	COOLDOWN_DECLARE(bounty_marker)
+
+/obj/structure/bounty_board/attack_right(mob/user)
+	. = ..()
+	if(!COOLDOWN_FINISHED(src, bounty_marker))
+		return
+	COOLDOWN_START(src, bounty_marker, 30 SECONDS)
+	new /obj/item/bounty_marker(get_turf(src))
 
 /obj/structure/bounty_board/Initialize()
 	. = ..()
 	LAZYADD(GLOB.bounty_boards, src)
 	populate_delivery_locations()
 	populate_contraband_packs()
+
+/obj/structure/bounty_board/proc/check_harlequin_injection()
+	var/mammons_since_last = total_bounty_pool - last_harlequin_spawn
+	if(prob(mammons_since_last * 0.1))
+		SSmigrants.set_current_wave(/datum/migrant_wave/harlequinn, 1 MINUTES)
+		last_harlequin_spawn = total_bounty_pool
 
 /obj/structure/bounty_board/proc/populate_delivery_locations()
 	delivery_locations = list()
@@ -1119,6 +1135,7 @@ GLOBAL_LIST_INIT(bounty_rep, list())  // ckey -> reputation score
 
 	active_contracts += new_contract
 	total_bounty_pool += payment
+	check_harlequin_injection()
 
 	to_chat(user, span_notice("Contract posted successfully! Payment held in escrow."))
 	if(selected_target)
@@ -1634,6 +1651,7 @@ GLOBAL_LIST_INIT(bounty_rep, list())  // ckey -> reputation score
 		board.completed_contracts += src
 		board.total_bounty_pool -= payment
 
+
 /datum/bounty_contract/proc/fail_contract(obj/structure/bounty_board/board)
 	failed = TRUE
 	waiting_for_area_completion = FALSE
@@ -1653,6 +1671,8 @@ GLOBAL_LIST_INIT(bounty_rep, list())  // ckey -> reputation score
 	if(board)
 		board.active_contracts -= src
 		board.total_bounty_pool -= payment
+		if(board.last_harlequin_spawn)
+			board.last_harlequin_spawn = max(0, board.last_harlequin_spawn - payment)
 
 /datum/bounty_contract/proc/start_kidnapping_timer(mob/harlequinn, obj/effect/landmark/bounty_location/location, obj/structure/bounty_board/board)
 	kidnapping_timer_active = TRUE
@@ -1760,7 +1780,7 @@ GLOBAL_LIST_INIT(bounty_rep, list())  // ckey -> reputation score
 	name = "bounty marker"
 	desc = "Brands a target spiritually from afar and stores them as a bounty."
 	icon = 'icons/roguetown/items/misc.dmi'
-	icon_state = "beartrap"
+	icon_state = "scryeye"
 	w_class = WEIGHT_CLASS_SMALL
 	var/list/marked_targets = list()
 	var/max_targets = 5 // Maximum number of targets that can be marked

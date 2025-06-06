@@ -2510,6 +2510,14 @@
 /obj/machinery/light/fueled/wallfire/candle/blue/l,
 /turf/open/floor/cobble,
 /area/rogue/indoors/town/clocktower)
+"bsk" = (
+/obj/effect/landmark/bounty_location{
+	location_name = "By the Right Trains Seats";
+	name = "By the Right Trains Seats";
+	completion_range = 5
+	},
+/turf/open/floor/herringbone,
+/area/rogue/under/town/sewer)
 "bsM" = (
 /obj/structure/noticeboard{
 	pixel_y = 32;
@@ -14211,6 +14219,14 @@
 /obj/structure/table/wood/reinforced_alter,
 /turf/open/floor/hexstone,
 /area/rogue/indoors/town)
+"hOs" = (
+/obj/effect/landmark/bounty_location{
+	location_name = "End of the Cargo Docks";
+	name = "End of the Cargo Docks";
+	completion_range = 5
+	},
+/turf/open/floor/ruinedwood/spiral,
+/area/rogue/outdoors/mountains)
 "hON" = (
 /obj/structure/door{
 	lockid = "roomhunt";
@@ -14845,6 +14861,14 @@
 	},
 /turf/open/floor/grass/cold,
 /area/rogue/outdoors/mountains)
+"iiU" = (
+/obj/effect/landmark/bounty_location{
+	location_name = "Infront of the Clinic";
+	name = "Infront of the Clinic";
+	completion_range = 5
+	},
+/turf/open/floor/cobblerock,
+/area/rogue/outdoors/town)
 "ijb" = (
 /obj/structure/stairs{
 	dir = 4
@@ -35092,6 +35116,14 @@
 	},
 /turf/open/floor/greenstone,
 /area/rogue/indoors/town/bath)
+"tmy" = (
+/obj/effect/landmark/bounty_location{
+	location_name = "By the Left Trains Seats";
+	name = "By the Left Trains Seats";
+	completion_range = 5
+	},
+/turf/open/floor/herringbone,
+/area/rogue/under/town/sewer)
 "tmG" = (
 /obj/structure/fluff/railing/fence,
 /obj/structure/spider/stickyweb{
@@ -38736,6 +38768,14 @@
 	},
 /turf/open/floor/carpet,
 /area/rogue/indoors/town/tavern)
+"vkE" = (
+/obj/effect/landmark/bounty_location{
+	completion_range = 5;
+	location_name = "In Front of Astrata's Statue";
+	name = "In Front of Astrata's Statue"
+	},
+/turf/open/floor/cobblerock/alt,
+/area/rogue/outdoors/town)
 "vkM" = (
 /obj/structure/table/church,
 /obj/item/candle/yellow/lit/infinite/strong/skull,
@@ -40069,6 +40109,10 @@
 	},
 /turf/open/floor/metal/alt,
 /area/rogue/indoors/town/shop)
+"vWK" = (
+/obj/structure/bounty_board,
+/turf/open/floor/greenstone,
+/area/rogue/under/town/sewer)
 "vWM" = (
 /obj/structure/flora/grass/water,
 /obj/structure/flora/grass/water,
@@ -60883,7 +60927,7 @@ fTm
 cKQ
 fTm
 fTm
-eMs
+tmy
 eMs
 xdm
 hhK
@@ -61642,7 +61686,7 @@ phG
 hhJ
 sGM
 rbI
-tuM
+vWK
 qRF
 qRF
 ids
@@ -62499,7 +62543,7 @@ fTm
 cKQ
 fTm
 fTm
-eMs
+bsk
 eMs
 xdm
 oRF
@@ -94757,7 +94801,7 @@ tjV
 cgZ
 bZD
 pOD
-omp
+iiU
 prz
 omp
 pmI
@@ -102037,7 +102081,7 @@ jxN
 gpm
 bvL
 eBH
-crD
+vkE
 ipE
 aBN
 jxf
@@ -120186,7 +120230,7 @@ ehP
 ehP
 uVF
 eay
-eay
+hOs
 dLG
 ehP
 ehP
