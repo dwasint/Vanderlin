@@ -166,9 +166,12 @@
 	family = new_family
 	person?.family_member_datum = src
 	var/old_dir = person?.dir
+	var/old_inivisiity = person?.invisibility
+	person?.invisibility = 0
 	person?.dir = SOUTH
 	cloned_look = new_person?.appearance
 	person?.dir = old_dir
+	person?.invisibility = old_inivisiity
 
 /datum/family_member/proc/AddParent(datum/family_member/parent, skip_reciprocal = FALSE)
 	if(!parent || (parent in parents))

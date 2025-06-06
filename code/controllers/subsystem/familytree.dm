@@ -180,38 +180,74 @@ SUBSYSTEM_DEF(familytree)
 /datum/controller/subsystem/familytree/proc/AddRoyal(mob/living/carbon/human/H, status)
 	if(!ruling_family.housename)
 		ruling_family.housename = "Royal"
-
 	var/datum/family_member/member = ruling_family.CreateFamilyMember(H)
 	if(!member)
 		return
 
 	// If this is the first royal, generate a historical lineage
 	if(!ruling_family.founder)
-		GenerateRoyalLineage(member)
+		GenerateRoyalLineage(member, status)
 		return
 
 	// Handle adding new royals to existing family
 	switch(status)
 		if(FAMILY_FATHER, FAMILY_MOTHER)
-			// Try to find appropriate position in family
-			var/datum/family_member/current_monarch = ruling_family.founder
-			while(current_monarch && current_monarch.children.len)
-				current_monarch = current_monarch.children[1]  // Follow main line
+			// This should be the monarch - they're the current generation ruler
+			member.generation = 12  // Same as founder generation
+			// If there's already a monarch, make them spouses
+			var/datum/family_member/existing_monarch = GetCurrentMonarch()
+			if(existing_monarch)
+				ruling_family.MarryMembers(existing_monarch, member)
 
-			if(current_monarch)
-				ruling_family.MarryMembers(current_monarch, member)
-		if("Prince", "Princess")
-			// Find the current generation's monarch
-			var/datum/family_member/current_monarch = ruling_family.founder
-			while(current_monarch && current_monarch.children.len)
-				current_monarch = current_monarch.children[1]
+		if(FAMILY_PROGENY)  // Prince/Princess
+			// Children of the current monarch
+			var/datum/family_member/monarch = GetCurrentMonarch()
+			if(monarch)
+				member.generation = monarch.generation + 1
+				member.AddParent(monarch)
+				// Add other parent if monarch has spouse
+				if(monarch.spouses.len)
+					member.AddParent(monarch.spouses[1])
 
-			if(current_monarch)
-				member.AddParent(current_monarch)
-				if(current_monarch.spouses.len)
-					member.AddParent(current_monarch.spouses[1])
+		if(FAMILY_OMMER)  // Hand - sibling or cousin of monarch
+			CreateBranchFamily(member)
 
-/datum/controller/subsystem/familytree/proc/GenerateRoyalLineage(datum/family_member/current_royal)
+/datum/controller/subsystem/familytree/proc/GetCurrentMonarch()
+	// Find the monarch at generation 12 (current ruling generation)
+	for(var/datum/family_member/member in ruling_family.members)
+		if(member.generation == 12)
+			return member
+	return null
+
+/datum/controller/subsystem/familytree/proc/CreateBranchFamily(datum/family_member/hand_member)
+	var/datum/family_member/monarch = GetCurrentMonarch()
+	if(!monarch)
+		return
+
+	// Make the hand a sibling of the monarch's parent (so uncle/aunt to any princes/princesses)
+	if(monarch.parents.len)
+		var/datum/family_member/monarch_parent = monarch.parents[1]
+		hand_member.generation = monarch_parent.generation
+
+		// Add the hand as child of the monarch's grandparents
+		if(monarch_parent.parents.len)
+			for(var/datum/family_member/grandparent in monarch_parent.parents)
+				hand_member.AddParent(grandparent)
+
+		// Create a spouse for the hand
+		var/mob/living/carbon/human/dummy/spouse = new()
+		spouse.age = hand_member.person.age
+		spouse.gender = hand_member.person.gender == MALE ? FEMALE : MALE
+		spouse.real_name = GenerateRoyalName(spouse.gender, hand_member.generation)
+		set_species_type(spouse, ruling_family.dominant_species)
+		var/datum/family_member/hand_spouse = ruling_family.CreateFamilyMember(spouse)
+		hand_spouse.generation = hand_member.generation
+		ruling_family.MarryMembers(hand_member, hand_spouse)
+	else
+		// Fallback: make them a cousin at the same generation as monarch
+		hand_member.generation = monarch.generation
+
+/datum/controller/subsystem/familytree/proc/GenerateRoyalLineage(datum/family_member/current_royal, status)
 	// Set as current generation
 	ruling_family.founder = current_royal
 	current_royal.generation = 12  // Start at generation 12 to leave room for ancestors
@@ -223,7 +259,7 @@ SUBSYSTEM_DEF(familytree)
 	var/datum/family_member/current_ancestor = current_royal
 	var/list/age_progression = list(AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD, AGE_OLD)
 
-	for(var/i = current_royal.generation - 1; i >= 0; i--)
+	for(var/i = current_royal.generation - 1; i >= 6; i--)  // Generate 6 generations of ancestors
 		// Create parent
 		var/mob/living/carbon/human/dummy/ancestor = new()
 		ancestor.age = age_progression[min(current_royal.generation - i, age_progression.len)]
@@ -247,19 +283,20 @@ SUBSYSTEM_DEF(familytree)
 		current_ancestor.AddParent(parent)
 		current_ancestor.AddParent(parent_spouse)
 
-		// Add 0-1 siblings with 30% chance
+		// Add 0-1 siblings with 30% chance (for branch families later)
 		if(prob(30))
 			var/mob/living/carbon/human/dummy/sibling = new()
 			sibling.age = ancestor.age
 			sibling.gender = prob(50) ? MALE : FEMALE
-			sibling.real_name = GenerateRoyalName(sibling.gender, i)
+			sibling.real_name = GenerateRoyalName(sibling.gender, i + 1)
 			set_species_type(sibling, ruling_family.dominant_species)
 			var/datum/family_member/sibling_member = ruling_family.CreateFamilyMember(sibling)
-			sibling_member.generation = i
+			sibling_member.generation = i + 1
 			sibling_member.AddParent(parent)
 			sibling_member.AddParent(parent_spouse)
 
 		current_ancestor = parent
+
 
 /datum/controller/subsystem/familytree/proc/set_species_type(mob/living/carbon/human/H, species_type)
 	if(!H || !species_type)
