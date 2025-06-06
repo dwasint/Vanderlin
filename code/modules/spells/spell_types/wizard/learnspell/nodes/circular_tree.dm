@@ -12,6 +12,7 @@
 	node_x = 50
 	node_y = -50
 	prerequisites = list(/datum/spell_node/air_affinity, /datum/spell_node/death_affinity)
+	is_passive = TRUE
 
 /datum/spell_node/illusionist/on_node_buy(mob/user)
 	user.mana_pool?.adjust_attunement(/datum/attunement/illusion, 0.3)
@@ -41,6 +42,7 @@
 	node_x = -290
 	node_y = 290
 	cost = 6
+	is_passive = TRUE
 
 /datum/spell_node/mana_well/on_node_buy(mob/user)
 	var/current_max = user.mana_pool?.maximum_mana_capacity || 100
@@ -54,6 +56,7 @@
 	node_x = -290
 	node_y = 390
 	prerequisites = list(/datum/spell_node/mana_well)
+	is_passive = TRUE
 
 /datum/spell_node/meditation/on_node_buy(mob/user)
 	user.mana_pool?.set_natural_recharge(user.mana_pool.ethereal_recharge_rate + 0.25)
@@ -66,6 +69,7 @@
 	node_x = -390
 	node_y = 290
 	prerequisites = list(/datum/spell_node/mana_well)
+	is_passive = TRUE
 
 /datum/spell_node/expanded_reserves/on_node_buy(mob/user)
 	var/current_max = user.mana_pool?.maximum_mana_capacity || 100
@@ -79,6 +83,7 @@
 	node_x = -440
 	node_y = 440
 	prerequisites = list(/datum/spell_node/expanded_reserves, /datum/spell_node/meditation)
+	is_passive = TRUE
 
 /datum/spell_node/eternal_wellspring/on_node_buy(mob/user)
 	var/current_max = user.mana_pool?.maximum_mana_capacity || 100
@@ -111,6 +116,7 @@
 	node_x = -50
 	node_y = 50
 	prerequisites = list(/datum/spell_node/dark_attunement, /datum/spell_node/electric_affinity)
+	is_passive = TRUE
 
 /datum/spell_node/blood_pact/on_node_buy(mob/user)
 	user.mana_pool?.adjust_attunement(/datum/attunement/death, 0.12)
@@ -132,6 +138,7 @@
 	node_x = 50
 	node_y = 50
 	prerequisites = list(/datum/spell_node/fire_affinity, /datum/spell_node/frost_affinity)
+	is_passive = TRUE
 
 /datum/spell_node/elemental_harmony/on_node_buy(mob/user)
 	user.mana_pool?.adjust_attunement(/datum/attunement/fire, 0.1)
@@ -160,6 +167,7 @@
 	node_x = RIGHT_X_TIER_1
 	node_y = RIGHT_Y_RIGHT
 	prerequisites = list(/datum/spell_node/create_bonfire)
+	is_passive = TRUE
 
 /datum/spell_node/fire_affinity/on_node_buy(mob/user)
 	user.mana_pool?.adjust_attunement(/datum/attunement/fire, 0.15)
@@ -172,6 +180,7 @@
 	node_x = RIGHT_X_TIER_1
 	node_y = RIGHT_Y_LEFT
 	prerequisites = list(/datum/spell_node/create_bonfire)
+	is_passive = TRUE
 
 /datum/spell_node/death_affinity/on_node_buy(mob/user)
 	user.mana_pool?.adjust_attunement(/datum/attunement/death, 0.15)
@@ -263,6 +272,7 @@
 	node_x = DOWN_X_LEFT
 	node_y = DOWN_Y_TIER_1
 	prerequisites = list(/datum/spell_node/message)
+	is_passive = TRUE
 
 /datum/spell_node/arcyne_affinity/on_node_buy(mob/user)
 	user.mana_pool?.adjust_attunement(/datum/attunement/arcyne, 0.15)
@@ -274,6 +284,7 @@
 	cost = 3
 	node_x = DOWN_X_RIGHT
 	node_y = DOWN_Y_TIER_1
+	is_passive = TRUE
 	prerequisites = list(/datum/spell_node/message)
 
 /datum/spell_node/booming_blade
@@ -291,6 +302,7 @@
 	node_y = DOWN_Y_TIER_1 - 70
 	prerequisites = list(/datum/spell_node/air_affinity, /datum/spell_node/arcyne_affinity)
 	spell_type = /obj/effect/proc_holder/spell/self/bladeward5e
+	is_passive = TRUE
 
 /datum/spell_node/air_affinity/on_node_buy(mob/user)
 	user.mana_pool?.adjust_attunement(/datum/attunement/aeromancy, 0.15)
@@ -391,6 +403,7 @@
 	node_x = LEFT_X_TIER_1
 	node_y = LEFT_Y_RIGHT
 	prerequisites = list(/datum/spell_node/light)
+	is_passive = TRUE
 
 /datum/spell_node/electric_affinity/on_node_buy(mob/user)
 	user.mana_pool?.adjust_attunement(/datum/attunement/electric, 0.15)
@@ -403,6 +416,7 @@
 	node_x = LEFT_X_TIER_1
 	node_y = LEFT_Y_LEFT
 	prerequisites = list(/datum/spell_node/light)
+	is_passive = TRUE
 
 /datum/spell_node/earth_affinity/on_node_buy(mob/user)
 	user.mana_pool?.adjust_attunement(/datum/attunement/earth, 0.15)
@@ -431,7 +445,7 @@
 	node_x = LEFT_X_TIER_2
 	node_y = LEFT_Y_RIGHT
 	prerequisites = list(/datum/spell_node/electric_affinity)
-
+	is_passive = TRUE
 
 /datum/spell_node/storm_caller/on_node_buy(mob/user)
 	user.mana_pool?.adjust_attunement(/datum/attunement/electric, 0.12)
@@ -453,6 +467,7 @@
 	node_x = LEFT_X_TIER_3
 	node_y = LEFT_Y_RIGHT
 	prerequisites = list(/datum/spell_node/storm_caller)
+	is_passive = TRUE
 
 /datum/spell_node/mana_conservation/on_node_buy(mob/user)
 	user.mana_pool?.set_natural_recharge(user.mana_pool.ethereal_recharge_rate + 0.1)
@@ -496,6 +511,7 @@
 	node_x = UP_X_RIGHT
 	node_y = UP_Y_TIER_1
 	prerequisites = list(/datum/spell_node/prestidigitation)
+	is_passive = TRUE
 
 /datum/spell_node/frost_affinity/on_node_buy(mob/user)
 	user.mana_pool?.adjust_attunement(/datum/attunement/ice, 0.15)
@@ -516,6 +532,7 @@
 	node_x = UP_X_LEFT
 	node_y = UP_Y_TIER_1
 	prerequisites = list(/datum/spell_node/prestidigitation)
+	is_passive = TRUE
 
 /datum/spell_node/death_affinity/on_node_buy(mob/user)
 	user.mana_pool?.adjust_attunement(/datum/attunement/dark, 0.15)
