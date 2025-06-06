@@ -1045,7 +1045,7 @@ GLOBAL_LIST_INIT(bounty_rep, list())  // ckey -> reputation score
 	var/time_limit = text2num(params["time_limit"])
 	var/special_instructions = params["instructions"]
 	var/delivery_location = params["location"]
-	var/contraband_type = params["contraband"]
+	var/datum/supply_pack/contraband_type = params["contraband"]
 	var/marker_target_id = params["marker_target"] // New parameter
 
 	if(!contract_type || !payment || payment <= 0)
@@ -1093,11 +1093,14 @@ GLOBAL_LIST_INIT(bounty_rep, list())  // ckey -> reputation score
 	// Verify user has funds
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-		if(get_mammons_in_atom(H) < payment)
+		var/extra = 0
+		if(contract_type == "smuggling")
+			extra = contraband_type.cost
+		if(get_mammons_in_atom(H) < payment + extra)
 			to_chat(user, span_warning("Insufficient funds!"))
 			return
 		// Deduct payment and hold in escrow
-		remove_mammons_from_atom(H, payment)
+		remove_mammons_from_atom(H, payment + extra)
 
 	// Create the contract
 	var/datum/bounty_contract/new_contract = new()
@@ -1392,7 +1395,6 @@ GLOBAL_LIST_INIT(bounty_rep, list())  // ckey -> reputation score
 				// Different completion logic based on contract type
 				switch(contract.contract_type)
 					if("smuggling")
-						// ... existing smuggling code ...
 						var/obj/item/storage/smuggling_pouch/pouch = locate() in harlequinn.get_contents()
 						if(pouch && pouch.contract_id == contract.contract_id)
 							contract.complete_contract(src)
@@ -1403,7 +1405,6 @@ GLOBAL_LIST_INIT(bounty_rep, list())  // ckey -> reputation score
 							to_chat(harlequinn, span_warning("You need to bring the smuggling pouch to complete this contract!"))
 
 					if("kidnapping")
-						// ... existing kidnapping code ...
 						if(!contract.kidnapping_timer_active)
 							contract.start_kidnapping_timer(harlequinn, location, src)
 
