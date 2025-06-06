@@ -17,6 +17,7 @@
 	attunements = list(
 		/datum/attunement/earth = 1,
 	)
+	overlay_state = "guidance"
 
 /obj/effect/proc_holder/spell/invoked/guidance/cast(list/targets, mob/user)
 	var/atom/A = targets[1]

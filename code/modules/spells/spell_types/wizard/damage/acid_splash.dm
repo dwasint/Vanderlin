@@ -21,6 +21,7 @@
 		/datum/attunement/blood = 0.3,
 		/datum/attunement/death = 0.4,
 	)
+	overlay_state = "acid_splash"
 
 /obj/effect/proc_holder/spell/invoked/projectile/acidsplash5e/set_attuned_strength(list/incoming_attunements)
 	var/total_value = 1

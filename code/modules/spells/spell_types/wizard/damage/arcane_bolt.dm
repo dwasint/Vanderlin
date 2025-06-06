@@ -20,6 +20,7 @@
 	attunements = list(
 		/datum/attunement/arcyne = 0.7,
 	)
+	overlay_state = "arcane_bolt"
 
 /obj/effect/proc_holder/spell/invoked/projectile/arcanebolt/set_attuned_strength(list/incoming_attunements)
 	var/total_value = 1

@@ -2,7 +2,7 @@
 	var/name = "Unknown Spell"
 	var/desc = "A mysterious magical technique."
 	var/icon = 'icons/mob/actions/roguespells.dmi'
-	var/icon_state = "fireball"
+	var/icon_state = "rune1"
 	var/node_x = 0  // Position on the research tree
 	var/node_y = 0
 	var/list/prerequisites = list()  // List of spell node types required

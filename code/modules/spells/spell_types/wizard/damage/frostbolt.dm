@@ -12,6 +12,7 @@
 	chargetime = 3
 	recharge_time = 15 SECONDS //cooldown
 
+	overlay_state = "frost_bolt"
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = FALSE

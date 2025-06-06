@@ -38,15 +38,54 @@
 /datum/spell_node/mana_well
 	name = "Mana Well"
 	desc = "Dig deeper into your magical reserves."
-	node_x = -50
-	node_y = -50
+	node_x = -290
+	node_y = 290
 	cost = 6
-	prerequisites = list(/datum/spell_node/earth_affinity, /datum/spell_node/arcyne_affinity)
 
 /datum/spell_node/mana_well/on_node_buy(mob/user)
 	var/current_max = user.mana_pool?.maximum_mana_capacity || 100
 	user.mana_pool?.set_max_mana(current_max + 50, TRUE, TRUE)
 	to_chat(user, span_notice("Your magical well deepens considerably."))
+
+/datum/spell_node/meditation
+	name = "Meditation"
+	desc = "Improve your natural mana recovery."
+	cost = 6
+	node_x = -290
+	node_y = 390
+	prerequisites = list(/datum/spell_node/mana_well)
+
+/datum/spell_node/meditation/on_node_buy(mob/user)
+	user.mana_pool?.set_natural_recharge(user.mana_pool.ethereal_recharge_rate + 0.25)
+	to_chat(user, span_notice("Your mind achieves greater focus and clarity."))
+
+/datum/spell_node/expanded_reserves
+	name = "Expanded Reserves"
+	desc = "Increase your magical capacity."
+	cost = 8
+	node_x = -390
+	node_y = 290
+	prerequisites = list(/datum/spell_node/mana_well)
+
+/datum/spell_node/expanded_reserves/on_node_buy(mob/user)
+	var/current_max = user.mana_pool?.maximum_mana_capacity || 100
+	user.mana_pool?.set_max_mana(current_max + 100, TRUE, TRUE)
+	to_chat(user, span_notice("Your magical reserves expand."))
+
+/datum/spell_node/eternal_wellspring
+	name = "Eternal Wellspring"
+	desc = "Achieve perfect harmony with magical forces."
+	cost = 12
+	node_x = -440
+	node_y = 440
+	prerequisites = list(/datum/spell_node/expanded_reserves, /datum/spell_node/meditation)
+
+/datum/spell_node/eternal_wellspring/on_node_buy(mob/user)
+	var/current_max = user.mana_pool?.maximum_mana_capacity || 100
+	user.mana_pool?.set_max_mana(current_max + 200, TRUE, TRUE)
+	user.mana_pool?.set_natural_recharge(user.mana_pool.ethereal_recharge_rate + 1.0)
+	to_chat(user, span_notice("You become one with the eternal flow of magic."))
+
 
 /datum/spell_node/find_familiar
 	name = "Find Familiar"
@@ -378,12 +417,12 @@
 	spell_type = /obj/effect/proc_holder/spell/invoked/guidance
 
 /datum/spell_node/magic_stone
-	name = "Magic Stone"
-	desc = "Imbue up to three pebbles with magical force."
+	name = "Magician's Brick"
+	desc = "Conjure a magical brick in your hand"
 	node_x = LEFT_X_TIER_2
 	node_y = LEFT_Y_LEFT - 50
 	prerequisites = list(/datum/spell_node/earth_affinity)
-	spell_type = /obj/effect/proc_holder/spell/invoked/magicstone5e
+	spell_type = /obj/effect/proc_holder/spell/self/magicians_brick
 
 /datum/spell_node/storm_caller
 	name = "Storm Caller"
