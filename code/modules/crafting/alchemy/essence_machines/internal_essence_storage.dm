@@ -83,6 +83,7 @@
 
 
 /datum/essence_storage/proc/on_essence_added(essence_type, amount, was_new_type)
+	parent_atom.on_transfer_in(essence_type, amount, null)
 
 /datum/essence_storage/proc/on_essence_removed(essence_type, amount, was_removed_completely)
 

@@ -374,19 +374,48 @@
 	if(cousin_rel)
 		return cousin_rel
 
-	// In-law relationships
-	var/inlaw_rel = GetInLawRelation(other)
-	if(inlaw_rel)
-		return inlaw_rel
-
 	// Great-relationships (great-grandparent, etc.)
 	var/great_rel = GetGreatRelation(other)
 	if(great_rel)
 		return great_rel
 
+	// In-law relationships (moved to end to avoid recursion)
+	var/inlaw_rel = GetInLawRelation(other)
+	if(inlaw_rel)
+		return inlaw_rel
+
 	return "distant relative"
 
+/datum/family_member/proc/GetInLawRelation(datum/family_member/other)
+	for(var/datum/family_member/spouse in spouses)
+		// Check direct relationships to spouse's family
+		if(other in spouse.parents)
+			return other.person?.gender == MALE ? "father-in-law" : "mother-in-law"
+		if(other in spouse.children)
+			return other.person?.gender == MALE ? "son-in-law" : "daughter-in-law"
+		if(spouse.AreSiblings(other))
+			return other.person?.gender == MALE ? "brother-in-law" : "sister-in-law"
+
+		// Check spouse's grandparents
+		for(var/datum/family_member/spouse_parent in spouse.parents)
+			if(other in spouse_parent.parents)
+				return other.person?.gender == MALE ? "grandfather-in-law" : "grandmother-in-law"
+
+	// Check if other is married to our sibling
+	for(var/datum/family_member/member in family.members)
+		if(AreSiblings(member) && (other in member.spouses))
+			return other.person?.gender == MALE ? "brother-in-law" : "sister-in-law"
+
+	// Check if other is married to our child (son/daughter-in-law)
+	for(var/datum/family_member/child in children)
+		if(other in child.spouses)
+			return other.person?.gender == MALE ? "son-in-law" : "daughter-in-law"
+
+	return null
+
 /datum/family_member/proc/AreSiblings(datum/family_member/other)
+	if(!other || other == src)
+		return FALSE
 	if(!parents.len || !other.parents.len)
 		return FALSE
 
@@ -395,6 +424,21 @@
 		if(my_parent in other.parents)
 			return TRUE
 	return FALSE
+
+/datum/family_member/proc/GetAuntUncleRelation(datum/family_member/other)
+	// Check if other is aunt/uncle of src (sibling of parent)
+	for(var/datum/family_member/parent in parents)
+		if(other.AreSiblings(parent) && other != parent)
+			return other.person?.gender == MALE ? "uncle" : "aunt"
+	return null
+
+/datum/family_member/proc/GetNieceNephewRelation(datum/family_member/other)
+	// Check if other is niece/nephew of src (child of sibling)
+	for(var/datum/family_member/sibling in family.members)
+		if(AreSiblings(sibling) && (sibling != src) && (other in sibling.children))
+			return other.person?.gender == MALE ? "nephew" : "niece"
+	return null
+
 
 /datum/family_member/proc/GetGrandparentRelation(datum/family_member/other)
 	// Check if other is grandparent of src
@@ -416,25 +460,6 @@
 				return "granddaughter"
 	return null
 
-/datum/family_member/proc/GetAuntUncleRelation(datum/family_member/other)
-	// Check if other is aunt/uncle of src (sibling of parent)
-	for(var/datum/family_member/parent in parents)
-		if(other.AreSiblings(parent) && other != parent)
-			if(other.person?.gender == MALE)
-				return "uncle"
-			else
-				return "aunt"
-	return null
-
-/datum/family_member/proc/GetNieceNephewRelation(datum/family_member/other)
-	// Check if other is niece/nephew of src (child of sibling)
-	for(var/datum/family_member/child in children)
-		if(other.AreSiblings(child) && other != child)
-			if(other.person?.gender == MALE)
-				return "nephew"
-			else
-				return "niece"
-	return null
 
 /datum/family_member/proc/GetCousinRelation(datum/family_member/other)
 	// First cousins: their parents are siblings
@@ -446,34 +471,6 @@
 	// Second cousins, etc. could be added here
 	return null
 
-/datum/family_member/proc/GetInLawRelation(datum/family_member/other)
-	// Check spouse's family
-	for(var/datum/family_member/spouse in spouses)
-		var/spouse_rel = spouse.GetRelationshipTo(other)
-		if(spouse_rel)
-			switch(spouse_rel)
-				if("father")
-					return "father-in-law"
-				if("mother")
-					return "mother-in-law"
-				if("son")
-					return "son-in-law"
-				if("daughter")
-					return "daughter-in-law"
-				if("brother")
-					return "brother-in-law"
-				if("sister")
-					return "sister-in-law"
-
-	// Check if other is married to our sibling
-	for(var/datum/family_member/member in family.members)
-		if(AreSiblings(member) && (other in member.spouses))
-			if(other.person?.gender == MALE)
-				return "brother-in-law"
-			else
-				return "sister-in-law"
-
-	return null
 
 /datum/family_member/proc/GetGreatRelation(datum/family_member/other)
 	// Great-grandparent: parent of grandparent
