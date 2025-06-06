@@ -48,6 +48,7 @@
 		/datum/pet_command/follow,
 		/datum/pet_command/idle,
 		/datum/pet_command/fetch,
+		/datum/pet_command/gnome/search_range,
 
 		/datum/pet_command/gnome/set_waypoint,
 		/datum/pet_command/gnome/set_waypoint/b,

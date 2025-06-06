@@ -167,11 +167,14 @@
 /datum/ai_behavior/gnome_transport_cycle/proc/find_transport_item(datum/ai_controller/controller)
 	var/mob/living/simple_animal/hostile/gnome_homunculus/gnome = controller.pawn
 	var/turf/source = controller.blackboard[BB_GNOME_TRANSPORT_SOURCE]
+	var/range = controller.blackboard[BB_GNOME_SEARCH_RANGE]
+	var/list/turfs = view(range, source)
+	turfs |= source
 
 	if(!source)
 		return null
 
-	for(var/turf/turf in list(source))
+	for(var/turf/turf in turfs)
 		for(var/turf/check_turf in view(controller.blackboard[BB_GNOME_SEARCH_RANGE], turf))
 			for(var/obj/item/I in check_turf.contents)
 				if(I.anchored)

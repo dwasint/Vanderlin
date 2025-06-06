@@ -22,9 +22,6 @@
 		return
 
 	if(!target_splitter)
-		var/mob/living/pawn = controller.pawn
-		pawn.visible_message(span_warning("[pawn] beeps confusedly - no splitter target!"))
-		controller.clear_blackboard_key(BB_ACTIVE_PET_COMMAND)
 		return
 
 	controller.set_blackboard_key(BB_GNOME_SPLITTER_MODE, TRUE)
@@ -111,24 +108,27 @@
 
 /datum/ai_behavior/gnome_splitter_cycle/proc/find_splitter_item(datum/ai_controller/controller)
 	var/mob/living/simple_animal/hostile/gnome_homunculus/gnome = controller.pawn
-	var/turf/source = controller.blackboard[BB_GNOME_WAYPOINT_A]
-
-	if(!source)
+	var/turf/start = controller.blackboard[BB_GNOME_WAYPOINT_A]
+	var/range = controller.blackboard[BB_GNOME_SEARCH_RANGE]
+	var/list/turfs = view(range, start)
+	turfs |= start
+	if(!start)
 		return null
 
-	for(var/obj/item/I in source.contents)
-		if(I.anchored)
-			continue
-		if(I.w_class > gnome.max_carry_size)
-			continue
-		if(!gnome.item_matches_filter(I))
-			continue
+	for(var/turf/open/source in turfs)
+		for(var/obj/item/I in source.contents)
+			if(I.anchored)
+				continue
+			if(I.w_class > gnome.max_carry_size)
+				continue
+			if(!gnome.item_matches_filter(I))
+				continue
 
-		var/datum/natural_precursor/precursor = get_precursor_data(I)
-		if(!precursor)
-			continue
+			var/datum/natural_precursor/precursor = get_precursor_data(I)
+			if(!precursor)
+				continue
 
-		return I
+			return I
 	return null
 
 /datum/ai_behavior/gnome_splitter_cycle/proc/should_activate_splitter(datum/ai_controller/controller, obj/machinery/essence/splitter/splitter)

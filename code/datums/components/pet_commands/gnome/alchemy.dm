@@ -43,7 +43,7 @@
 	var/atom/target = controller.blackboard[BB_CURRENT_PET_TARGET]
 	var/mob/living/simple_animal/hostile/gnome_homunculus/gnome = controller.pawn
 
-	if(!istype(target, /obj/machinery/light/fueled/cauldron))
+	if(!istype(target, /obj/machinery/light/fueled/cauldron) && target)
 		gnome.visible_message(span_warning("[gnome] looks confusedly - that's not a cauldron!"))
 		controller.clear_blackboard_key(BB_ACTIVE_PET_COMMAND)
 		return
