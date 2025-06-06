@@ -1165,7 +1165,7 @@
 		client.chargedprog = 0
 		client.tcompare = null //so we don't shoot the attack off
 		client.mouse_pointer_icon = 'icons/effects/mousemice/human.dmi'
-	if(used_intent)
+	if(used_intent && istype(used_intent))
 		used_intent.on_mouse_up()
 	if(mmb_intent)
 		mmb_intent.on_mouse_up()
