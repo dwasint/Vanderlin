@@ -13,6 +13,7 @@
 	faction = FACTION_STATION
 	total_positions = 11
 	spawn_positions = 11
+	allowed_ages = ALL_AGES_LIST_WITH_CHILD
 	min_pq = -100
 	bypass_lastclass = TRUE
 	selection_color = "#553e01"
