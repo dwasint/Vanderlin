@@ -534,6 +534,9 @@
 	filters += filter(type = "layer", render_source = WALLS_FOV_PLANE_8_RENDER_TARGET)
 	filters += filter(type = "blur", size = 1)
 
+/atom/movable/atom_shadow/tree
+	icon_state = "tree"
+
 /atom/movable/atom_shadow
 	name = "shadow"
 	icon = 'icons/effects/shadow.dmi'
