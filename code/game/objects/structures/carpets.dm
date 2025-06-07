@@ -1,5 +1,6 @@
 /obj/structure/carpet
 	name = "carpet"
+	layer = TABLE_LAYER
 	icon = 'icons/obj/smooth_structures/carpet_brown.dmi'
 	icon_state = "carpet_brown"
 	smoothing_flags = SMOOTH_BITMASK | SMOOTH_OBJ
