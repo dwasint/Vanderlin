@@ -1105,7 +1105,7 @@
 /turf/open/floor/grass/yel,
 /area/rogue/outdoors)
 "et" = (
-/obj/structure/window/openclose,
+/obj/structure/bars,
 /turf/open/floor/churchbrick,
 /area/rogue/indoors)
 "ew" = (
@@ -1380,6 +1380,11 @@
 	},
 /turf/open/floor/dirt,
 /area/rogue/outdoors/mountains/decap)
+"jZ" = (
+/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/carpet,
+/turf/open/floor/grass/yel,
+/area/rogue/outdoors)
 "kb" = (
 /obj/structure/flora/ausbushes/ppflowers,
 /obj/structure/minecart_rail{
@@ -1769,6 +1774,12 @@
 /obj/machinery/essence/reservoir,
 /turf/open/floor/churchbrick,
 /area/rogue/indoors)
+"uT" = (
+/obj/structure/flora/grass,
+/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/carpet,
+/turf/open/floor/grass/yel,
+/area/rogue/outdoors)
 "uV" = (
 /turf/open/lava/flow{
 	dir = 8
@@ -2325,6 +2336,11 @@
 /obj/structure/pottery_lathe,
 /turf/open/floor/wood,
 /area/rogue/indoors)
+"GE" = (
+/obj/structure/flora/grass,
+/obj/structure/carpet,
+/turf/open/floor/grass/yel,
+/area/rogue/outdoors)
 "GU" = (
 /obj/structure/hotspring/border/eleven,
 /obj/effect/lily_petal/three{
@@ -2499,6 +2515,10 @@
 /obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/wood,
 /area/rogue/indoors)
+"Pb" = (
+/obj/structure/carpet,
+/turf/open/floor/grass/yel,
+/area/rogue/outdoors)
 "Pd" = (
 /obj/structure/roguerock,
 /turf/open/water,
@@ -2528,6 +2548,10 @@
 "Pr" = (
 /obj/machinery/light/fueled/firebowl,
 /turf/open/floor/grass/yel,
+/area/rogue/outdoors)
+"PU" = (
+/obj/structure/carpet,
+/turf/open/floor/cobblerock,
 /area/rogue/outdoors)
 "Qi" = (
 /obj/structure/flora/ausbushes/lavendergrass,
@@ -14851,7 +14875,7 @@ zF
 HK
 QN
 QN
-QN
+Pb
 qc
 QN
 bs
@@ -15108,8 +15132,8 @@ qi
 RC
 QN
 Wg
-QN
-qc
+Pb
+GE
 jC
 fS
 bs
@@ -15364,10 +15388,10 @@ xM
 Pg
 EX
 Gi
-ky
-QN
-aq
-QN
+jZ
+Pb
+uT
+Pb
 Wr
 QN
 aq
@@ -15622,7 +15646,7 @@ qi
 SZ
 RF
 QN
-Wr
+PU
 ct
 Wr
 qc
