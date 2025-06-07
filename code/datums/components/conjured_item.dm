@@ -11,7 +11,7 @@ by Arcane user after a duration
 	var/overridden_duration = null
 	var/mob/living/current_user = null // The current user of the item
 
-/datum/component/conjured_item/Initialize(duration_override, allow_refresh_override, refresh_skill_override, outline_color_override, var/mob/living/owner_override)
+/datum/component/conjured_item/Initialize(duration_override, allow_refresh_override, refresh_skill_override, outline_color_override, mob/living/owner_override)
 	if(!isitem(parent))
 		return COMPONENT_INCOMPATIBLE
 

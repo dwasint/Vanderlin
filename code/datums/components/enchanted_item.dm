@@ -27,7 +27,7 @@ There used to be a concept for a blade to set people on fire - but it was too br
 	var/mob/living/current_user = null // The current user of the item
 	var/enchant_type = FORCE_BLADE_ENCHANT // The type of enchantment
 
-/datum/component/enchanted_weapon/Initialize(duration_override, allow_refresh_override, refresh_skill_override, var/mob/living/owner_override, enchant_type_override)
+/datum/component/enchanted_weapon/Initialize(duration_override, allow_refresh_override, refresh_skill_override, mob/living/owner_override, enchant_type_override)
 	if(!istype(parent, /obj/item/weapon))
 		return COMPONENT_INCOMPATIBLE
 	var/obj/item/I = parent
