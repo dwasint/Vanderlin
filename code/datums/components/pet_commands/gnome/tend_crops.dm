@@ -86,7 +86,7 @@
 			set_movement_target(controller, harvest_soil)
 			return TRUE
 
-		// PRIORITY 2: Deweed crops (NEW FEATURE)
+		// PRIORITY 2: Deweed crops
 		var/obj/structure/soil/weedy_soil = find_soil_needing_deweed(controller)
 		if(weedy_soil)
 			set_movement_target(controller, weedy_soil)
@@ -178,7 +178,6 @@
 			harvest_soil(controller, soil)
 			finish_action(controller, TRUE)
 			return
-		// Deweed crops (NEW FEATURE)
 		else if(soil.plant && soil.weeds > 0)
 			deweed_soil(controller, soil)
 			finish_action(controller, TRUE)
@@ -208,11 +207,11 @@
 			return soil
 	return null
 
-// NEW: Find soil that needs deweeding
+// Find soil that needs deweeding
 /datum/ai_behavior/gnome_crop_tending/proc/find_soil_needing_deweed(datum/ai_controller/controller)
 	var/mob/living/pawn = controller.pawn
 	for(var/obj/structure/soil/soil in oview(7, pawn))
-		if(soil.plant && soil.weeds > 0)
+		if(soil.plant && soil.weeds > 25)
 			return soil
 	return null
 
