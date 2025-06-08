@@ -215,7 +215,7 @@
 			return soil
 	return null
 
-// Dynamic source finding (NEW)
+// Dynamic source finding
 /datum/ai_behavior/gnome_crop_tending/proc/find_water_source_dynamic(datum/ai_controller/controller)
 	var/mob/living/pawn = controller.pawn
 	for(var/obj/item/reagent_containers/container in oview(7, pawn))
