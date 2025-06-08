@@ -47,6 +47,7 @@
 /datum/spell_node/mana_well/on_node_buy(mob/user)
 	var/current_max = user.mana_pool?.maximum_mana_capacity || 100
 	user.mana_pool?.set_max_mana(current_max + 50, TRUE, TRUE)
+	user.mana_overload_threshold += 50
 	to_chat(user, span_notice("Your magical well deepens considerably."))
 
 /datum/spell_node/meditation
@@ -74,6 +75,7 @@
 /datum/spell_node/expanded_reserves/on_node_buy(mob/user)
 	var/current_max = user.mana_pool?.maximum_mana_capacity || 100
 	user.mana_pool?.set_max_mana(current_max + 100, TRUE, TRUE)
+	user.mana_overload_threshold += 100
 	to_chat(user, span_notice("Your magical reserves expand."))
 
 /datum/spell_node/eternal_wellspring
@@ -89,6 +91,7 @@
 	var/current_max = user.mana_pool?.maximum_mana_capacity || 100
 	user.mana_pool?.set_max_mana(current_max + 200, TRUE, TRUE)
 	user.mana_pool?.set_natural_recharge(user.mana_pool.ethereal_recharge_rate + 1.0)
+	user.mana_overload_threshold += 200
 	to_chat(user, span_notice("You become one with the eternal flow of magic."))
 
 

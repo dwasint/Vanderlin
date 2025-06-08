@@ -20,23 +20,37 @@
 	///how much each point of luck affects the max and minimum
 	var/scaling_factor = 0.4
 
-/datum/loot_table/proc/spawn_loot(mob/living/looter)
+/datum/loot_table/proc/spawn_loot(mob/living/looter = null)
 	var/list/weighted_list = return_list(looter)
-	var/mob_stat_level = looter.get_stat_level(STATKEY_LCK)
+	var/mob_stat_level = 0
+
+	if(istype(looter))
+		mob_stat_level = looter.get_stat_level(STATKEY_LCK)
 
 	var/adjusted_min = base_min + round(mob_stat_level * scaling_factor, 1)
 	var/adjusted_max = base_max + round(mob_stat_level * scaling_factor, 1)
 	adjusted_min = min(adjusted_min, adjusted_max)
-
 	var/spawn_count = rand(adjusted_min, adjusted_max)
+
+	var/turf/spawn_location = looter ? get_turf(looter) : null
 
 	for(var/i = 1 to spawn_count)
 		var/atom/spawn_path = pickweight(weighted_list)
-		var/atom/movable/new_spawn = new spawn_path(get_turf(looter))
-		looter.put_in_active_hand(new_spawn)
+		if(spawn_location)
+			var/atom/movable/new_spawn = new spawn_path(spawn_location)
+			if(istype(looter))
+				looter.put_in_active_hand(new_spawn)
 
-/datum/loot_table/proc/return_list(mob/looter)
+
+
+/datum/loot_table/proc/return_list(mob/looter = null)
 	var/list/weighted_list = list()
+
+	if(!istype(looter))
+		for(var/thing in loot_table)
+			if(islist(thing))
+				weighted_list |= thing
+		return weighted_list
 
 	for(var/thing in loot_table)
 		if(islist(thing))
@@ -51,7 +65,7 @@
 	var/list/weighted_list = list()
 	var/list/pre_weight_list = loot_table[stat_key]
 
-	var/mob_stat_level = looter.get_stat_level(stat_key)
+	var/mob_stat_level = looter?.get_stat_level(stat_key)
 	var/minimum_stat_level = 0
 	var/growth_factor = 1.02
 	if(stat_key in growth_factor_list)
