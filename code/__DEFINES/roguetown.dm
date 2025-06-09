@@ -11,7 +11,7 @@
 /// Races who are non-exotic to Vanderlin. These are races from foreign lands with no local pull or uncommon races. Used in miscellaneous cases, when they would not be that role.
 #define RACES_PLAYER_NONEXOTIC			list("Humen", "Hollow-Kin", "Harpy", "Half-Elf", "Half-Drow", "Dark Elf", "Elf", "Dwarf", "Tiefling", "Half-Orc", "Aasimar")
 ///Races that lack lux
-#define RACES_PLAYER_LUXLESS			list("Kobold", "Hollow-Kin", "Rakshari")
+#define RACES_PLAYER_LUXLESS			list("Kobold", "Hollow-Kin", "Rakshari", "Orc", "Half-Orc", "Goblin", "Rousman")
 
 /// Races who are affiliated with Grenzelhoft or Psydon specifically.
 #define RACES_PLAYER_GRENZ				list("Humen", "Dwarf", "Aasimar")
