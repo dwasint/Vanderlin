@@ -385,6 +385,9 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 /obj/effect/proc_holder/spell/process()
 	if(recharging && (charge_counter < recharge_time))
 		charge_counter += 2	//processes 5 times per second instead of 10.
+		if(ranged_ability_user)
+			if(HAS_TRAIT(ranged_ability_user, TRAIT_MOONWATER_ELIXIR))
+				charge_counter++
 		if(charge_counter >= recharge_time)
 			action.UpdateButtonIcon()
 			charge_counter = recharge_time

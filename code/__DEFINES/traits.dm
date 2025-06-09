@@ -58,6 +58,7 @@
 #define TRAIT_AMAZING_BACK				"Light Load"
 #define TRAIT_KITTEN_MOM				"Loved By Kittens"
 #define TRAIT_WATER_BREATHING			"Waterbreathing"
+#define TRAIT_MOONWATER_ELIXIR			"Moonwater Elixir"
 /// applied to orphans
 #define TRAIT_ORPHAN 					"Orphan"
 #define TRAIT_RECRUITED					"Recruit" //Trait used to give foreigners their new title
@@ -213,7 +214,8 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_RECRUITED = "I have been recruited!",
 	TRAIT_EARGRAB = span_info("I can keep a tight grip on the ear of unruly children."),
 	TRAIT_KITTEN_MOM = span_info("Kittens love you, they see you are a parent."),
-	TRAIT_WATER_BREATHING = span_info("You can breath underwater, you have no fear of drowning.")
+	TRAIT_WATER_BREATHING = span_info("You can breath underwater, you have no fear of drowning."),
+	TRAIT_MOONWATER_ELIXIR = span_info("Your mind is open, you can understand magic runes."),
 	))
 
 #define SIGNAL_ADDTRAIT(trait_ref) ("addtrait " + trait_ref)
