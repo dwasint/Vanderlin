@@ -637,7 +637,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 			wounded.brute_dam += rand(3, 8) // Some permanent damage
 
 			var/wound_location = wounded.name
-			var/wound_desc = pick("shrapnel wound", "old bullet wound", "deep scar", "poorly healed fracture")
+			var/wound_desc = pick("shrapnel wound", "old arrow wound", "deep scar", "poorly healed fracture")
 			to_chat(user, span_warning("You feel the familiar ache of your old [wound_desc] in your [wound_location]."))
 
 /datum/charflaw/old_war_wound/flaw_on_life(mob/user)

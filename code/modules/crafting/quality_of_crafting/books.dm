@@ -834,4 +834,9 @@
 		/datum/essence_combination,
 		/datum/natural_precursor,
 		/datum/essence_infusion_recipe,
+		/datum/container_craft/cooking/herbal_salve,
+		/datum/container_craft/cooking/herbal_tea,
+		/datum/container_craft/cooking/herbal_oil,
+		/datum/slapcraft_recipe/alchemy,
+		/datum/repeatable_crafting_recipe/alchemy,
 	)
