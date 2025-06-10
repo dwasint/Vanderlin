@@ -59,12 +59,12 @@
 
 /obj/machinery/essence/infuser/process()
 	if(!working || !current_recipe)
-		return PROCESS_KILL
+		return
 
 	progress += 1 * GLOB.thaumic_research.get_speed_multiplier("transmutation_speed")
 	if(progress >= completion_time)
 		complete_infusion()
-		return PROCESS_KILL
+		return
 
 	if(prob(25))
 		var/datum/effect_system/spark_spread/sparks = new
