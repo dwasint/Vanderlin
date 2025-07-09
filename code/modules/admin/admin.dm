@@ -1065,9 +1065,9 @@
 	var/mob/user = usr
 	if(!user.client.holder)
 		return
-var/answer = input(user, "ARE YOU ABSOLUTELY SURE? THIS WILL GIVE TRIUMPHS TO EVERYONE CONNECTED.", "TRIUMPHS") as anything in list("Yes", "No")
-if(answer != "Yes")
-    return
+	var/answer = input(user, "ARE YOU ABSOLUTELY SURE? THIS WILL GIVE TRIUMPHS TO EVERYONE CONNECTED.", "TRIUMPHS") as anything in list("Yes", "No")
+	if(answer != "Yes")
+		return
 	var/amount = input(user, "Choose the amount of triumphs", "Triumph Giver") as num|null
 	if(!amount)
 		return
