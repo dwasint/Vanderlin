@@ -18,6 +18,7 @@
 	var/list/possible_shapes = list(
 		/mob/living/simple_animal/pet/cat
 	)
+
 /obj/effect/proc_holder/spell/targeted/shapeshift/cast(list/targets,mob/user = usr)
 	if(src in user.mob_spell_list)
 		user.mob_spell_list.Remove(src)

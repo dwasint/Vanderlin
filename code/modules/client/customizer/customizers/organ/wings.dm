@@ -252,3 +252,7 @@
 	sprite_accessories = list(
 		/datum/sprite_accessory/wings/large/harpyswept,
 		)
+
+/obj/item/organ/wings/flight/night_kin
+	name = "Vampire Wings"
+	accessory_type = /datum/sprite_accessory/wings/large/gargoyle

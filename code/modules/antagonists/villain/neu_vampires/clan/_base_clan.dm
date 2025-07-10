@@ -62,7 +62,7 @@ And it also helps for the character set panel
 	SHOULD_CALL_PARENT(TRUE)
 
 	var/datum/action/clan_menu/menu_action = new /datum/action/clan_menu()
-	menu_action.Grant(H)
+	H.mind?.AddAction(menu_action)
 
 	RegisterSignal(H, COMSIG_HUMAN_LIFE, PROC_REF(on_vampire_life))
 
@@ -98,8 +98,13 @@ And it also helps for the character set panel
 
 	clan_members |= H
 
+	if(!hierarchy_root)
+		initialize_hierarchy()
+
+	handle_member_joining(H)
 
 	H.playsound_local(get_turf(H), 'sound/music/vampintro.ogg', 80, FALSE, pressure_affected = FALSE)
+
 
 /datum/clan/proc/initialize_hierarchy()
 	if(hierarchy_root)
@@ -112,10 +117,16 @@ And it also helps for the character set panel
 	hierarchy_root.max_subordinates = 10
 	all_positions += hierarchy_root
 
-	// Assign current clan leader if exists
-	if(clan_leader)
-		hierarchy_root.assign_member(clan_leader)
+/datum/clan/proc/handle_member_joining(mob/living/carbon/human/H)
+	// If no clan leader exists, make this person the leader
+	if(!clan_leader)
+		hierarchy_root.assign_member(H)
+		clan_leader = H
+		to_chat(H, "<span class='notice'>You have been appointed as the [leader_title] of [name]!</span>")
+		return
 
+	// Otherwise, they join as an unassigned member (can be assigned later via hierarchy interface)
+	to_chat(H, "<span class='notice'>You have joined [name]! Speak with leadership for position assignment.</span>")
 
 /datum/clan/proc/create_position(position_name, position_desc, datum/clan_hierarchy_node/superior_position, rank_level)
 	if(!superior_position || !superior_position.can_assign_positions)
@@ -189,6 +200,48 @@ And it also helps for the character set panel
 
 	clan_members -= vampire
 
+	if(vampire.clan_position)
+		vampire.clan_position.remove_member()
+
+	if(vampire == clan_leader)
+		clan_leader = null
+		handle_leadership_succession()
+
+/datum/clan/proc/handle_leadership_succession()
+	// Find someone else with a position to promote
+	var/mob/living/carbon/human/new_leader
+
+	// Look for someone with can_assign_positions (like a lieutenant)
+	for(var/datum/clan_hierarchy_node/position in all_positions)
+		if(position.can_assign_positions && position.assigned_member)
+			new_leader = position.assigned_member
+			position.remove_member() // Remove from old position
+			break
+
+	// If no lieutenants, pick any positioned member
+	if(!new_leader)
+		for(var/datum/clan_hierarchy_node/position in all_positions)
+			if(position != hierarchy_root && position.assigned_member)
+				new_leader = position.assigned_member
+				position.remove_member() // Remove from old position
+				break
+
+	// If still no one, pick any clan member
+	if(!new_leader && length(clan_members))
+		new_leader = pick(clan_members)
+
+	if(new_leader)
+		hierarchy_root.assign_member(new_leader)
+		clan_leader = new_leader
+
+		to_chat(new_leader, "<span class='notice'>You have been promoted to [leader_title] of [name]!</span>")
+
+		// Announce to clan
+		for(var/mob/living/carbon/human/member in clan_members)
+			if(member != new_leader)
+				to_chat(member, "<span class='notice'>[new_leader.real_name] has become the new [leader_title] of [name].</span>")
+
+
 /datum/clan/proc/frenzy_message(mob/living/message)
 	to_chat(message,"I'm full of <span class='danger'><b>ANGER</b></span>, and I'm about to flare up in <span class='danger'><b>RAGE</b></span>.")
 
@@ -200,17 +253,13 @@ And it also helps for the character set panel
 	H.process_vampire_life()
 
 /datum/clan/proc/setup_vampire_abilities(mob/living/carbon/human/H)
-	// Add vampire verbs
 	H.verbs |= /mob/living/carbon/human/proc/vamp_regenerate
 	H.verbs |= /mob/living/carbon/human/proc/disguise_button
 
-	// Set combat music
 	H.cmode_music = 'sound/music/cmode/antag/CombatThrall.ogg'
 
-	// Add blood magic skill
 	H.adjust_skillrank(/datum/skill/magic/blood, 2, TRUE)
 
-	// Add basic spell
 	H.AddSpell(new /obj/effect/proc_holder/spell/targeted/transfix)
 
 
@@ -263,19 +312,15 @@ And it also helps for the character set panel
 	// Convert typepaths to Clan singletons, or just directly assign if already singleton
 	var/datum/clan/new_clan = ispath(setting_clan) ? GLOB.vampire_clans[setting_clan] : setting_clan
 
-	// Handle losing Clan
 	previous_clan?.on_lose(src)
 
 	clan = new_clan
 
-	// Clan's been cleared, don't apply effects
 	if (!new_clan)
 		return
 
-	// Gaining Clan effects
 	clan.on_gain(src, joining_round)
 
-// Add to clan datum for easy access
 /datum/clan/proc/open_clan_menu(mob/living/carbon/human/user)
 	if(!user.covens || !length(user.covens))
 		to_chat(user, "<span class='warning'>You have no covens to manage!</span>")
@@ -283,12 +328,11 @@ And it also helps for the character set panel
 
 	user.open_clan_menu()
 
-// Add action button for clan menu
 /datum/action/clan_menu
 	name = "Clan Menu"
 	desc = "Open your clan's power management interface"
-	background_icon_state = "spell" //And this is the state for the background icon
-	button_icon_state = "coven" //And this is the state for the action icon
+	background_icon_state = "spell"
+	button_icon_state = "coven"
 
 /datum/action/clan_menu/Trigger()
 	if(!owner || !ishuman(owner))

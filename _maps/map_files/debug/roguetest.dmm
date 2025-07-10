@@ -1074,6 +1074,10 @@
 /obj/structure/kneestingers,
 /turf/open/water/river,
 /area/rogue/outdoors/mountains/decap)
+"dl" = (
+/obj/structure/redstone/dust,
+/turf/open/floor/wood,
+/area)
 "do" = (
 /obj/item/reagent_containers/glass/bucket,
 /turf/open/floor/grass/yel,
@@ -1236,6 +1240,7 @@
 /obj/structure/table/wood/counter/end{
 	dir = 4
 	},
+/obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/churchbrick,
 /area/rogue/indoors)
 "fe" = (
@@ -1260,6 +1265,12 @@
 /obj/structure/flora/grass,
 /turf/open/floor/grass/yel,
 /area/rogue/outdoors)
+"fB" = (
+/obj/structure/redstone/comparator{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/rogue/indoors)
 "fO" = (
 /turf/closed/mineral/bedrock,
 /area)
@@ -1319,6 +1330,12 @@
 /obj/structure/dungeon_entry/center,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/mountains/decap)
+"hH" = (
+/obj/structure/redstone/comparator{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area)
 "hN" = (
 /obj/structure/window/openclose{
 	dir = 1
@@ -1335,6 +1352,13 @@
 	dir = 8
 	},
 /area/rogue/outdoors/mountains/decap)
+"id" = (
+/obj/machinery/light/fueled/torchholder/l,
+/obj/structure/redstone/piston/sticky{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/rogue/indoors)
 "iE" = (
 /obj/machinery/light/fueled/torchholder/hotspring/standing{
 	pixel_x = 15
@@ -1417,6 +1441,15 @@
 /obj/structure/vertical_gearbox,
 /turf/open/floor/wood,
 /area/rogue/indoors)
+"lA" = (
+/obj/structure/redstone/repeater{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area)
+"lO" = (
+/turf/open/floor/wood,
+/area)
 "lQ" = (
 /obj/structure/minecart_rail{
 	dir = 4
@@ -1507,6 +1540,12 @@
 "mY" = (
 /turf/open/floor/wood,
 /area/rogue/indoors)
+"nd" = (
+/obj/structure/redstone/comparator{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area)
 "ne" = (
 /turf/open/transparent/openspace,
 /area/rogue)
@@ -1663,13 +1702,24 @@
 /obj/structure/ladder,
 /turf/open/floor/blocks,
 /area/rogue/indoors)
+"rY" = (
+/obj/structure/redstone/pressure_plate,
+/turf/open/floor/wood,
+/area/rogue/indoors)
 "sd" = (
 /obj/structure/flora/grass/herb/symphitum,
 /turf/open/floor/grass/yel,
 /area/rogue/outdoors)
 "si" = (
-/obj/machinery/essence/reservoir,
+/obj/machinery/light/fueled/cauldron,
 /turf/open/floor/churchbrick,
+/area/rogue/indoors)
+"so" = (
+/obj/machinery/light/fueled/torchholder/l,
+/obj/structure/redstone/comparator{
+	dir = 1
+	},
+/turf/open/floor/wood,
 /area/rogue/indoors)
 "ss" = (
 /turf/open/transparent/openspace,
@@ -1678,6 +1728,12 @@
 /obj/item/recipe_book/survival,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/mountains/decap)
+"sB" = (
+/obj/structure/redstone/repeater{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/rogue/indoors)
 "sG" = (
 /obj/structure/rack/shelf,
 /obj/structure/rack/shelf/biggest,
@@ -1723,6 +1779,10 @@
 /obj/effect/falling_sakura,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
+"tC" = (
+/obj/structure/redstone/dust,
+/turf/open/floor/wood,
+/area/rogue/indoors)
 "tH" = (
 /turf/closed,
 /area/rogue/outdoors)
@@ -2059,6 +2119,11 @@
 /obj/effect/landmark/observer_start,
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors)
+"CZ" = (
+/obj/machinery/light/fueled/torchholder/r,
+/obj/structure/redstone/dust,
+/turf/open/floor/wood,
+/area/rogue/indoors)
 "Di" = (
 /obj/structure/flora/ausbushes/ppflowers,
 /obj/structure/flora/ausbushes/lavendergrass,
@@ -2262,6 +2327,10 @@
 	},
 /turf/open/floor/churchbrick,
 /area/rogue/indoors)
+"Es" = (
+/obj/structure/redstone/comparator,
+/turf/open/floor/wood,
+/area/rogue/indoors)
 "EH" = (
 /obj/structure/fluff/railing/wood{
 	dir = 4;
@@ -2302,6 +2371,10 @@
 /obj/machinery/anvil,
 /turf/open/floor/cobble,
 /area/rogue/indoors)
+"Fv" = (
+/obj/structure/redstone/torch,
+/turf/open/floor/wood,
+/area/rogue/indoors)
 "Fx" = (
 /obj/structure/bridge{
 	layer = 4;
@@ -2341,6 +2414,13 @@
 /obj/structure/carpet,
 /turf/open/floor/grass/yel,
 /area/rogue/outdoors)
+"GK" = (
+/turf/closed/wall/mineral/stone,
+/area/rogue/outdoors/mountains/decap)
+"GM" = (
+/obj/structure/redstone/pressure_plate,
+/turf/open/floor/wood,
+/area)
 "GU" = (
 /obj/structure/hotspring/border/eleven,
 /obj/effect/lily_petal/three{
@@ -2392,11 +2472,6 @@
 /obj/structure/hotspring/border/eight,
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/mountains/decap)
-"Jy" = (
-/obj/machinery/light/fueled/torchholder/l,
-/obj/machinery/light/fueled/cauldron,
-/turf/open/floor/churchbrick,
-/area/rogue/indoors)
 "JM" = (
 /obj/structure/well,
 /turf/open/floor/cobblerock,
@@ -2434,6 +2509,10 @@
 	},
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
+"KY" = (
+/obj/machinery/light/fueled/torchholder/r,
+/turf/open/floor/wood,
+/area/rogue/indoors)
 "Ln" = (
 /obj/structure/chair/hotspring_bench/left{
 	pixel_y = 12
@@ -2445,6 +2524,9 @@
 	dir = 1
 	},
 /area/rogue/outdoors/mountains/decap)
+"Ly" = (
+/turf/closed/wall/mineral/stone,
+/area)
 "LA" = (
 /obj/structure/flora/ausbushes/brflowers,
 /obj/structure/flora/grass,
@@ -2557,6 +2639,16 @@
 /obj/structure/flora/ausbushes/lavendergrass,
 /turf/open/floor/grass/yel,
 /area/rogue/outdoors)
+"Qn" = (
+/obj/structure/redstone/repeater{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area)
+"Qr" = (
+/obj/item/bin,
+/turf/open/floor/wood,
+/area/rogue/indoors)
 "QN" = (
 /turf/open/floor/grass/yel,
 /area/rogue/outdoors)
@@ -2566,6 +2658,16 @@
 	},
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/mountains/decap)
+"Re" = (
+/obj/machinery/light/fueled/torchholder/c,
+/turf/open/floor/wood,
+/area/rogue/indoors)
+"Rq" = (
+/obj/structure/redstone/torch{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area)
 "RC" = (
 /obj/structure/hotspring/border/two,
 /turf/open/floor/dirt/road,
@@ -5321,15 +5423,15 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+as
+as
+as
+as
+as
+as
+as
+as
+as
 as
 as
 as
@@ -5578,15 +5680,15 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+as
+as
+as
+as
+as
+as
+as
+as
+as
 as
 as
 as
@@ -5835,15 +5937,15 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+as
+as
+as
+as
+as
+as
+as
+as
+as
 as
 as
 as
@@ -6092,15 +6194,15 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+as
+as
+as
+as
+as
+as
+as
+as
+as
 as
 as
 as
@@ -6349,15 +6451,15 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+as
+as
+as
+as
+as
+as
+as
+as
+as
 as
 as
 as
@@ -6606,15 +6708,15 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+as
+as
+as
+as
+as
+as
+as
+as
+as
 as
 as
 as
@@ -6863,15 +6965,15 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+as
+as
+as
+as
+as
+as
+as
+as
+as
 as
 as
 as
@@ -7120,15 +7222,15 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+as
+as
+as
+as
+as
+as
+as
+as
+as
 as
 as
 as
@@ -7377,15 +7479,15 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
-ac
+as
+as
+as
+as
+as
+as
+as
+as
+as
 as
 as
 as
@@ -9709,14 +9811,14 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
+dl
+dl
+dl
+dl
+Ly
+dl
+lO
+lO
 as
 as
 as
@@ -9966,14 +10068,14 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
+lO
+lO
+lO
+lO
+nd
+hH
+dl
+lO
 as
 as
 as
@@ -10223,14 +10325,14 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
+lO
+lO
+lO
+lO
+dl
+Ly
+Rq
+lO
 as
 as
 as
@@ -10480,14 +10582,14 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
+lO
+lO
+lO
+lO
+nd
+Qn
+Ly
+lO
 as
 as
 as
@@ -10737,14 +10839,14 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
+dl
+dl
+dl
+dl
+GM
+lO
+lA
+lO
 as
 as
 as
@@ -10994,14 +11096,14 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
+lO
+lO
+lO
+lO
+lO
+lO
+GM
+lO
 as
 as
 as
@@ -11256,7 +11358,7 @@ as
 as
 as
 as
-as
+lO
 as
 as
 as
@@ -11509,21 +11611,21 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-yP
-yP
+ax
+ax
+ax
+ax
+mY
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+GK
 yP
 yP
 yP
@@ -11766,21 +11868,21 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-at
+ax
+OZ
+mY
+mY
+mY
+OZ
+mY
+ax
+id
+tC
+tC
+tC
+so
+Qr
+ax
 at
 at
 at
@@ -12023,21 +12125,21 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-at
+ax
+tC
+tC
+Es
+tC
+rY
+ax
+ax
+mY
+mY
+mY
+mY
+mY
+mY
+ax
 at
 at
 at
@@ -12280,21 +12382,21 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-at
+ax
+mY
+ax
+fB
+tC
+mY
+ax
+Re
+mY
+Fv
+ax
+sB
+rY
+mY
+ax
 ew
 Pl
 Pl
@@ -12533,25 +12635,25 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-at
+ax
+ax
+ax
+ax
+ax
+mY
+mY
+mY
+mY
+mY
+ax
+mY
+tC
+tC
+mY
+mY
+mY
+mY
+ax
 qi
 DY
 Kd
@@ -12790,25 +12892,25 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-at
+ax
+OZ
+mY
+mY
+OZ
+mY
+mY
+mY
+mY
+mY
+OZ
+mY
+mY
+Fv
+ax
+sB
+rY
+mY
+ax
 qi
 DY
 DY
@@ -13047,25 +13149,25 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-at
+ax
+mY
+mY
+mY
+tC
+tC
+tC
+tC
+mY
+mY
+mY
+mY
+mY
+mY
+mY
+mY
+mY
+mY
+ax
 qi
 eD
 tp
@@ -13304,25 +13406,25 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-at
+ax
+Fv
+ax
+sB
+tC
+mY
+mY
+Fv
+ax
+sB
+rY
+mY
+mY
+mY
+mY
+mY
+mY
+mY
+ax
 qi
 tp
 gp
@@ -13561,25 +13663,25 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-at
+ax
+tC
+mY
+mY
+Fv
+ax
+sB
+tC
+mY
+mY
+mY
+mY
+mY
+mY
+mY
+mY
+mY
+mY
+ax
 qi
 DY
 zm
@@ -13818,25 +13920,25 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-at
+ax
+Fv
+ax
+sB
+tC
+mY
+mY
+Fv
+ax
+sB
+rY
+mY
+mY
+mY
+mY
+KY
+mY
+mY
+ax
 pD
 uf
 uf
@@ -14075,23 +14177,23 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
 ax
+KY
+mY
+mY
+tC
+CZ
+tC
+tC
+mY
+mY
+KY
+mY
+KY
+mY
+mY
 ax
+tf
 ax
 ax
 cq
@@ -14332,23 +14434,23 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-fO
-fO
-fO
 ax
 ax
-Jy
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+rd
 eV
 Ea
 ax

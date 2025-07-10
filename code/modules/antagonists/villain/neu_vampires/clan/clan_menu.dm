@@ -4,15 +4,28 @@
 	var/datum/clan/user_clan
 	var/list/datum/coven/user_covens
 	var/current_coven // Currently selected coven for research view
+	var/datum/clan_hierarchy_interface/hierarchy_interface // Hierarchy management
+	var/datum/clan_hierarchy_node/selected_position // Currently selected position
 
 /datum/clan_menu_interface/New(mob/living/carbon/human/target_user)
 	user = target_user
 	user_clan = user.clan
 	user_covens = user.covens
+	if(user_clan)
+		hierarchy_interface = new /datum/clan_hierarchy_interface(user)
 	..()
 
+/datum/clan_menu_interface/proc/show_hierarchy()
+	if(!hierarchy_interface)
+		return
+	current_coven = null
+
+	var/hierarchy_html = hierarchy_interface.generate_hierarchy_html()
+
+	user << browse(generate_combined_html(hierarchy_html), "window=clan_menu")
+
 /datum/clan_menu_interface/proc/generate_interface()
-	// Send required resources
+	//probably should make this an asset instead
 	user << browse_rsc('html/research_hover.png')
 	user << browse_rsc('html/research_base.png')
 	user << browse_rsc('html/research_known.png')
@@ -20,294 +33,21 @@
 	user << browse_rsc('html/KettleParallaxBG.png')
 	user << browse_rsc('html/KettleParallaxNeb.png')
 
-	var/html = generate_main_html()
+	var/html = generate_combined_html(generate_welcome_screen_html())
 	user << browse(html, "window=clan_menu;size=1400x900;can_resize=1")
 
-/datum/clan_menu_interface/proc/generate_main_html()
-	var/html = {"
-	<html>
-	<head>
-		<style>
-			body {
-				margin: 0;
-				padding: 0;
-				background: #000;
-				color: #eee;
-				font-family: Arial, sans-serif;
-				overflow: hidden;
-			}
-
-			.clan-header {
-				position: fixed;
-				top: 0;
-				left: 0;
-				right: 0;
-				height: 80px;
-				background: linear-gradient(135deg, rgba(139, 69, 19, 0.95), rgba(160, 82, 45, 0.95));
-				border-bottom: 3px solid #8B4513;
-				z-index: 1001;
-				display: flex;
-				align-items: center;
-				padding: 0 30px;
-				box-shadow: 0 4px 15px rgba(0,0,0,0.6);
-			}
-
-			.clan-info {
-				display: flex;
-				align-items: center;
-				gap: 30px;
-				flex-grow: 1;
-			}
-
-			.clan-name {
-				font-size: 28px;
-				font-weight: bold;
-				color: #FFD700;
-				text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
-			}
-
-			.clan-desc {
-				font-size: 14px;
-				color: #DDD;
-				max-width: 400px;
-				font-style: italic;
-			}
-
-			.header-controls {
-				display: flex;
-				gap: 15px;
-			}
-
-			.header-btn {
-				background: rgba(0,0,0,0.4);
-				border: 2px solid #8B4513;
-				color: #FFD700;
-				padding: 10px 20px;
-				border-radius: 8px;
-				cursor: pointer;
-				font-weight: bold;
-				transition: all 0.3s ease;
-			}
-
-			.header-btn:hover {
-				background: rgba(160, 82, 45, 0.6);
-				transform: translateY(-2px);
-			}
-
-			.main-container {
-				display: flex;
-				margin-top: 80px;
-				height: calc(100vh - 80px);
-			}
-
-			.sidebar {
-				width: 300px;
-				background: linear-gradient(180deg, rgba(139, 69, 19, 0.3), rgba(0, 0, 0, 0.8));
-				border-right: 2px solid #8B4513;
-				padding: 20px;
-				overflow-y: auto;
-			}
-
-			.sidebar h3 {
-				color: #FFD700;
-				border-bottom: 2px solid #8B4513;
-				padding-bottom: 8px;
-				margin-bottom: 15px;
-			}
-
-			.coven-list {
-				list-style: none;
-				padding: 0;
-				margin: 0;
-			}
-
-			.coven-item {
-				background: rgba(0,0,0,0.4);
-				border: 1px solid #8B4513;
-				border-radius: 8px;
-				margin-bottom: 10px;
-				padding: 15px;
-				cursor: pointer;
-				transition: all 0.3s ease;
-				position: relative;
-			}
-
-			.coven-item:hover {
-				background: rgba(139, 69, 19, 0.4);
-				transform: translateX(5px);
-			}
-
-			.coven-item.selected {
-				background: rgba(160, 82, 45, 0.5);
-				border-color: #FFD700;
-				box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
-			}
-
-			.coven-name {
-				font-weight: bold;
-				color: #FFD700;
-				font-size: 16px;
-				margin-bottom: 5px;
-			}
-
-			.coven-stats {
-				font-size: 12px;
-				color: #CCC;
-				display: flex;
-				justify-content: space-between;
-				margin-bottom: 8px;
-			}
-
-			.coven-progress {
-				width: 100%;
-				height: 6px;
-				background: rgba(0,0,0,0.5);
-				border-radius: 3px;
-				overflow: hidden;
-				margin-bottom: 5px;
-			}
-
-			.coven-progress-fill {
-				height: 100%;
-				background: linear-gradient(90deg, #FF6B35, #F7931E);
-				border-radius: 3px;
-				transition: width 0.3s ease;
-			}
-
-			.research-points {
-				background: rgba(106, 90, 205, 0.3);
-				color: #ADD8E6;
-				padding: 4px 8px;
-				border-radius: 4px;
-				font-size: 11px;
-				display: inline-block;
-			}
-
-			.content-area {
-				flex: 1;
-				position: relative;
-				overflow: hidden;
-			}
-
-			.welcome-screen {
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				justify-content: center;
-				height: 100%;
-				text-align: center;
-				padding: 40px;
-			}
-
-			.welcome-screen h2 {
-				color: #FFD700;
-				font-size: 36px;
-				margin-bottom: 20px;
-				text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-			}
-
-			.welcome-screen p {
-				font-size: 18px;
-				color: #CCC;
-				max-width: 600px;
-				line-height: 1.6;
-				margin-bottom: 30px;
-			}
-
-			.clan-emblem {
-				width: 120px;
-				height: 120px;
-				background: rgba(139, 69, 19, 0.3);
-				border: 3px solid #8B4513;
-				border-radius: 50%;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				font-size: 48px;
-				color: #FFD700;
-				margin-bottom: 30px;
-			}
-
-			/* Research tree container that will be populated when coven is selected */
-			.research-tree-container {
-				width: 100%;
-				height: 100%;
-				position: relative;
-			}
-
-			.close-btn {
-				position: fixed;
-				bottom: 30px;
-				right: 30px;
-				background: rgba(139, 69, 19, 0.9);
-				border: 2px solid #8B4513;
-				color: #FFD700;
-				padding: 15px 25px;
-				border-radius: 8px;
-				cursor: pointer;
-				font-weight: bold;
-				z-index: 1000;
-				transition: all 0.3s ease;
-			}
-
-			.close-btn:hover {
-				background: rgba(160, 82, 45, 0.9);
-				transform: translateY(-3px);
-			}
-		</style>
-	</head>
-	<body>
-		<div class="clan-header">
-			<div class="clan-info">
-				<div class="clan-name">[user_clan ? user_clan.name : "Unknown Clan"]</div>
-				<div class="clan-desc">[user_clan ? user_clan.desc : ""]</div>
-			</div>
-			<div class="header-controls">
-				<a href="?src=[REF(src)];action=refresh_clan_menu" class="header-btn">Refresh</a>
-			</div>
-		</div>
-
-		<div class="main-container">
-			<div class="sidebar">
-				<h3>Your Covens</h3>
-				<ul class="coven-list">
-					[generate_coven_list_html()]
-				</ul>
-			</div>
-
-			<div class="content-area" id="content-area">
-				<div class="welcome-screen">
-					<div class="clan-emblem">🗡️</div>
-					<h2>Welcome to your Clan</h2>
-					<p>Select a coven from the sidebar to view its research tree and manage your powers.
-					Each coven represents a different aspect of your vampiric abilities.</p>
-					<p>Use your research points to unlock new powers and enhance existing ones.
-					Gain experience through using your abilities to level up your covens.</p>
-				</div>
-			</div>
-		</div>
-
-		<a href="byond://?src=[REF(src)];action=close_clan_menu" class="close-btn">Close</a>
-
-		<script>
-			function selectCoven(covenName) {
-				// Remove previous selection
-				document.querySelectorAll('.coven-item').forEach(item => {
-					item.classList.remove('selected');
-				});
-
-				// Add selection to clicked item
-				event.target.closest('.coven-item').classList.add('selected');
-
-				// Load coven research tree via BYOND - use user reference instead of src
-				window.location.href = 'byond://?src=[REF(src)];action=load_coven_tree;coven_name=' + encodeURIComponent(covenName);
-			}
-		</script>
-	</body>
-	</html>
+/datum/clan_menu_interface/proc/generate_welcome_screen_html()
+	return {"
+	<div class="welcome-screen">
+		<div class="clan-emblem">🗡️</div>
+		<h2>Welcome to your Clan</h2>
+		<p>Select a coven from the sidebar to view its research tree and manage your powers.
+		Each coven represents a different aspect of your vampiric abilities.</p>
+		<p>Use your research points to unlock new powers and enhance existing ones.
+		Gain experience through using your abilities to level up your covens.</p>
+	</div>
 	"}
 
-	return html
 
 /datum/clan_menu_interface/proc/generate_coven_list_html()
 	var/html = ""
@@ -336,11 +76,244 @@
 	return html
 
 /datum/clan_menu_interface/proc/generate_combined_html(research_content)
-	// Generate the full interface with the research tree loaded
+	// shitcode
 	var/html = {"
 	<html>
 	<head>
 		<style>
+			.hierarchy-container {
+				display: flex;
+				width: 100%;
+				height: 100vh;
+				position: relative;
+			}
+
+			.research-container {
+				flex: 1;
+				position: relative;
+				overflow: auto;
+				background: #1a1a1a;
+			}
+
+			.hierarchy-sidebar {
+				width: 300px;
+				background: #2a2a2a;
+				border-left: 1px solid #444;
+				padding: 15px;
+				overflow-y: auto;
+				position: fixed;
+				right: 0;
+				top: 0;
+				height: 100vh;
+				z-index: 1000;
+			}
+
+			.sidebar-header {
+				margin-bottom: 20px;
+				border-bottom: 1px solid #444;
+				padding-bottom: 10px;
+			}
+
+			.sidebar-header h3 {
+				color: #fff;
+				margin: 0 0 10px 0;
+			}
+
+			.sidebar-content {
+				color: #ccc;
+			}
+
+			.position-details h4 {
+				color: #fff;
+				margin-bottom: 15px;
+			}
+
+			.position-details p {
+				margin: 8px 0;
+				line-height: 1.4;
+			}
+
+			.position-actions {
+				margin-top: 15px;
+			}
+
+			.btn-primary, .btn-secondary, .btn-danger {
+				padding: 8px 16px;
+				margin: 5px 5px 5px 0;
+				border: none;
+				border-radius: 4px;
+				cursor: pointer;
+				font-size: 14px;
+			}
+
+			.btn-primary {
+				background: #007bff;
+				color: white;
+			}
+
+			.btn-secondary {
+				background: #6c757d;
+				color: white;
+			}
+
+			.btn-danger {
+				background: #dc3545;
+				color: white;
+			}
+
+			.btn-primary:hover {
+				background: #0056b3;
+			}
+
+			.btn-secondary:hover {
+				background: #545b62;
+			}
+
+			.btn-danger:hover {
+				background: #c82333;
+			}
+
+			/* Adjust main content to account for sidebar */
+			.research-canvas {
+				margin-right: 320px; /* Account for sidebar width */
+				min-height: 600px;
+				position: relative;
+			}
+
+			.member-name {
+				font-size: 9px;
+				color: #ccc;
+				text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+				margin-top: 2px;
+				line-height: 1.1;
+				word-wrap: break-word;
+				max-width: 100%;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+
+			.hierarchy-connection {
+				position: absolute;
+				height: 3px;
+				background: linear-gradient(90deg, #666, #888, #666);
+				border-radius: 1px;
+				opacity: 0.8;
+			}
+
+			/* Node selection styles */
+			.hierarchy-node {
+				position: absolute;
+				width: 120px;
+				height: 80px;
+				background: rgba(40, 40, 50, 0.9);
+				border: 2px solid #666;
+				border-radius: 8px;
+				cursor: pointer;
+				transition: all 0.3s ease;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				text-align: center;
+				padding: 5px;
+				box-sizing: border-box;
+			}
+
+			.hierarchy-node.selected {
+				border-color: #4CAF50;
+				box-shadow: 0 0 15px rgba(76, 175, 80, 0.5);
+			}
+
+			.hierarchy-node.filled {
+				background: rgba(60, 80, 60, 0.9);
+				border-color: #4CAF50;
+			}
+
+			.hierarchy-node.vacant {
+				background: rgba(60, 40, 40, 0.9);
+				border-color: #f44336;
+			}
+
+			.hierarchy-node.leader {
+				background: rgba(80, 60, 40, 0.9);
+				border-color: #FF9800;
+				box-shadow: 0 0 10px rgba(255, 152, 0, 0.3);
+			}
+
+			.hierarchy-node:hover {
+				transform: scale(1.05);
+				box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+			}
+
+			/* Icon container within the node */
+			.hierarchy-node .icon-container {
+				width: 32px;
+				height: 32px;
+				margin-bottom: 5px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				background: rgba(0, 0, 0, 0.3);
+				border-radius: 4px;
+			}
+
+			/* Modal styles */
+			.modal {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: rgba(0,0,0,0.8);
+				z-index: 2000;
+			}
+
+			.modal-content {
+				position: relative;
+				background: #2a2a2a;
+				margin: 5% auto;
+				padding: 20px;
+				width: 500px;
+				border-radius: 8px;
+				color: #fff;
+			}
+
+			.close {
+				position: absolute;
+				top: 10px;
+				right: 15px;
+				font-size: 24px;
+				cursor: pointer;
+				color: #ccc;
+			}
+
+			.close:hover {
+				color: #fff;
+			}
+
+			.form-group {
+				margin-bottom: 15px;
+			}
+
+			.form-group label {
+				display: block;
+				margin-bottom: 5px;
+				color: #ccc;
+			}
+
+			.form-group input, .form-group textarea, .form-group select {
+				width: 100%;
+				padding: 8px;
+				border: 1px solid #555;
+				background: #1a1a1a;
+				color: #fff;
+				border-radius: 4px;
+			}
+
+			.form-actions {
+				margin-top: 20px;
+				text-align: right;
+			}
 			body {
 				margin: 0;
 				padding: 0;
@@ -779,6 +752,10 @@
 
 		<div class="main-container">
 			<div class="sidebar">
+				<h3>Clan Hierarchy</h3>
+				<ul class="menu-list">
+					<li><a href="?src=[REF(src)];action=show_hierarchy" class="menu-item">Clan Hierarchy</a></li>
+				</ul>
 				<h3>Your Covens</h3>
 				<ul class="coven-list">
 					[generate_coven_list_html()]
@@ -793,6 +770,106 @@
 		<a href="byond://?src=[REF(src)];action=close_clan_menu" class="close-btn">Close</a>
 
 		<script>
+			function selectPosition(positionId) {
+				// Remove previous selection
+				document.querySelectorAll('.hierarchy-node').forEach(node => {
+					node.classList.remove('selected');
+				});
+
+				// Add selection to clicked node
+				event.target.classList.add('selected');
+
+				// Load position details
+				window.location.href = '?src=[REF(src)];action=select_position;position_id=' + positionId;
+			}
+
+
+		function showCreatePosition() {
+			window.location.href = '?src=[REF(src)];action=create_position';
+		}
+
+		function assignMember() {
+			window.location.href = '?src=[REF(src)];action=assign_member';
+		}
+
+		function removePosition() {
+			if(confirm('Are you sure you want to remove this position? All subordinates will be reassigned to the superior position.')) {
+				window.location.href = '?src=[REF(src)];action=remove_position';
+			}
+		}
+
+		function closeModal() {
+			document.getElementById('management-modal').style.display = 'none';
+		}
+
+		function submitCreatePosition() {
+			const form = document.getElementById('create-position-form');
+			const formData = new FormData(form);
+
+			let params = '?src=[REF(src)];action=submit_create_position';
+			for(let \[key, value\] of formData.entries()) {
+				params += ';' + key + '=' + encodeURIComponent(value);
+			}
+
+			window.location.href = params;
+		}
+
+		function submitAssignMember() {
+			const form = document.getElementById('assign-member-form');
+			const formData = new FormData(form);
+
+			let params = '?src=[REF(src)];action=submit_assign_member';
+			for(let \[key, value\] of formData.entries()) {
+				params += ';' + key + '=' + encodeURIComponent(value);
+			}
+
+			window.location.href = params;
+		}
+
+		// Modal click-outside-to-close functionality
+		window.onclick = function(event) {
+			const modal = document.getElementById('management-modal');
+			if (event.target == modal) {
+				modal.style.display = 'none';
+			}
+		}
+
+		// Initialize hierarchy controls when the hierarchy is loaded
+		document.addEventListener('DOMContentLoaded', function() {
+			initializeHierarchyControls();
+		});
+
+			// Hierarchy canvas dragging
+			let hierarchyDragging = false;
+			let hierarchyStartX, hierarchyStartY;
+			let hierarchyCurrentX = 400, hierarchyCurrentY = 300;
+
+			function initializeHierarchyControls() {
+				const canvas = document.getElementById('hierarchy-canvas');
+				const container = document.getElementById('hierarchy-container');
+
+				if(!canvas || !container) return;
+
+				container.addEventListener('mousedown', function(e) {
+					if(e.target === container || e.target === canvas) {
+						hierarchyDragging = true;
+						hierarchyStartX = e.clientX - hierarchyCurrentX;
+						hierarchyStartY = e.clientY - hierarchyCurrentY;
+					}
+				});
+
+				document.addEventListener('mousemove', function(e) {
+					if(hierarchyDragging) {
+						hierarchyCurrentX = e.clientX - hierarchyStartX;
+						hierarchyCurrentY = e.clientY - hierarchyStartY;
+						canvas.style.transform = `translate(${hierarchyCurrentX}px, ${hierarchyCurrentY}px)`;
+					}
+				});
+
+				document.addEventListener('mouseup', function() {
+					hierarchyDragging = false;
+				});
+			}
 			// Coven selection
 			function selectCoven(covenName) {
 				document.querySelectorAll('.coven-item').forEach(item => {
@@ -808,12 +885,36 @@
 			let currentX = 400, currentY = 300;
 			let scale = 1;
 
+
 			const container = document.getElementById('container');
 			const canvas = document.getElementById('canvas');
 			const tooltip = document.getElementById('tooltip');
 			const parallaxBg = document.getElementById('parallax-bg');
 			const parallaxStars1 = document.getElementById('parallax-stars-1');
 			const parallaxNeb = document.getElementById('parallax-neb');
+			// Load saved position
+			try {
+				const savedX = sessionStorage.getItem('research_pos_x');
+				const savedY = sessionStorage.getItem('research_pos_y');
+				const savedScale = sessionStorage.getItem('research_scale');
+				if (savedX !== null) currentX = parseFloat(savedX);
+				if (savedY !== null) currentY = parseFloat(savedY);
+				if (savedScale !== null) scale = parseFloat(savedScale);
+			} catch(e) {
+				currentX = 400;
+				currentY = 300;
+				scale = 1;
+			}
+
+			function savePosition() {
+				try {
+					sessionStorage.setItem('research_pos_x', currentX.toString());
+					sessionStorage.setItem('research_pos_y', currentY.toString());
+					sessionStorage.setItem('research_scale', scale.toString());
+				} catch(e) {
+					// Silently fail
+				}
+			}
 
 			// Initialize research tree if elements exist
 			if (container && canvas) {
@@ -837,6 +938,7 @@
 						currentY = e.clientY - startY;
 						updateCanvasTransform();
 						updateParallax();
+						savePosition();
 					}
 
 					// Tooltip handling
@@ -874,6 +976,7 @@
 
 					updateCanvasTransform();
 					updateParallax();
+					savePosition()
 				});
 
 				// Node click handling
@@ -976,11 +1079,9 @@
 	var/datum/coven/selected_coven = user_covens[coven_name]
 	current_coven = coven_name
 
-	// Initialize research tree if not already done
 	if(!selected_coven.research_interface)
 		selected_coven.initialize_research_tree()
 
-	// Generate the research tree content
 	var/research_html = {"
 	<div class="parallax-container">
 		<div class="parallax-layer parallax-bg" id="parallax-bg"></div>
@@ -998,10 +1099,8 @@
 	<div class="tooltip" id="tooltip" style="display: none;"></div>
 	"}
 
-	// Send updated content to the browser
 	user << browse(generate_combined_html(research_html), "window=clan_menu")
 
-// Modified topic handling to properly pass through research actions
 /datum/clan_menu_interface/Topic(href, href_list)
 	if(!user)
 		return
@@ -1010,6 +1109,9 @@
 		if("load_coven_tree")
 			var/coven_name = href_list["coven_name"]
 			load_coven_research_tree(coven_name)
+
+		if("show_hierarchy")
+			show_hierarchy()
 
 		if("refresh_clan_menu")
 			generate_interface()
@@ -1021,8 +1123,11 @@
 			if(current_coven && (current_coven in user_covens))
 				var/datum/coven/coven = user_covens[current_coven]
 				if(coven.research_interface)
-					// Set the user for the research interface
 					coven.research_interface.user = user
 					coven.research_interface.Topic(href, href_list)
-					// Refresh the interface after research
+
 					load_coven_research_tree(current_coven)
+
+		if("select_position", "create_position", "submit_create_position", "assign_member", "submit_assign_member", "remove_position")
+			if(hierarchy_interface)
+				hierarchy_interface.Topic(href, href_list)

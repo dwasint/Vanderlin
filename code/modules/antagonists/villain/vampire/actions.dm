@@ -5,12 +5,7 @@
 	if(!mind)
 		return
 
-	var/datum/antagonist/vampire/vamp_datum = mind.has_antag_datum(/datum/antagonist/vampire)
-	if(!vamp_datum)
-		return
-
-	var/datum/team/vampires/vamp_team = vamp_datum.team
-	if(!vamp_team)
+	if(!clan)
 		return
 
 
@@ -21,7 +16,7 @@
 		return
 
 	var/message = span_narsie("<B>A message from <span style='color:#[voice_color]'>[real_name]</span>: [msg]</B>")
-	to_chat(vamp_team.members, message)
+	to_chat(clan?.clan_members, message)
 
 // Spells
 /obj/effect/proc_holder/spell/targeted/transfix
@@ -140,53 +135,27 @@
 	set name = "Disguise"
 	set category = "VAMPIRE"
 
-	var/datum/antagonist/vampire/VD = mind?.has_antag_datum(/datum/antagonist/vampire)
-	if(!VD)
+	var/datum/component/vampire_disguise/disguise_comp = GetComponent(/datum/component/vampire_disguise)
+	if(!disguise_comp)
+		to_chat(src, span_warning("I cannot disguise myself."))
 		return
-	if(world.time < VD.last_transform + 30 SECONDS)
-		var/timet2 = (VD.last_transform + 30 SECONDS) - world.time
-		to_chat(src, "<span class='warning'>No.. not yet. [round(timet2/10)]s</span>")
-		return
-	if(VD.disguised)
-		VD.last_transform = world.time
-		vampire_undisguise(VD)
+
+	if(disguise_comp.disguised)
+		disguise_comp.remove_disguise(src)
 	else
-		if(VD.vitae < 100)
-			to_chat(src, "<span class='warning'>I don't have enough Vitae!</span>")
-			return
-		VD.last_transform = world.time
-		vampire_disguise(VD)
+		disguise_comp.apply_disguise(src)
 
 /mob/living/carbon/human/proc/vampire_disguise(datum/antagonist/vampire/VD)
-	if(!VD)
+	if(clan)
 		return
-	VD.disguised = TRUE
-	skin_tone = VD.cache_skin
-	var/obj/item/organ/eyes/eyes = getorganslot(ORGAN_SLOT_EYES)
-
-	set_hair_color(VD.cache_hair, FALSE)
-	set_facial_hair_color(VD.cache_hair, FALSE)
-	eyes.eye_color = VD.cache_eyes
-	mob_biotypes = MOB_ORGANIC
-	update_body()
-	update_body_parts(redraw = TRUE)
-	to_chat(src, span_notice("My true form is hidden."))
+	var/datum/component/vampire_disguise/disguise_comp = GetComponent(/datum/component/vampire_disguise)
+	disguise_comp.apply_disguise(src)
 
 /mob/living/carbon/human/proc/vampire_undisguise(datum/antagonist/vampire/VD)
-	if(!VD)
+	if(clan)
 		return
-	VD.disguised = FALSE
-
-	var/obj/item/organ/eyes/eyes = getorganslot(ORGAN_SLOT_EYES)
-
-	mob_biotypes = MOB_UNDEAD
-	skin_tone = "c9d3de"
-	set_hair_color("#181a1d", FALSE)
-	set_facial_hair_color("#181a1d", FALSE)
-	eyes.eye_color = "#ff0000"
-	update_body()
-	update_body_parts(redraw = TRUE)
-	to_chat(src, span_danger("My true form is revealed."))
+	var/datum/component/vampire_disguise/disguise_comp = GetComponent(/datum/component/vampire_disguise)
+	disguise_comp.remove_disguise(src)
 
 
 /mob/living/carbon/human/proc/blood_strength()
@@ -196,13 +165,12 @@
 	var/cooldown = FALSE
 	var/cooldown_time = 3000 // Five minutes cooldown
 
-	var/datum/antagonist/vampire/VD = mind.has_antag_datum(/datum/antagonist/vampire)
-	if(!VD)
+	if(!clan)
 		return
-	if(VD.disguised)
+	if(SEND_SIGNAL(src, COMSIG_DISGUISE_STATUS))
 		to_chat(src, span_warning("My curse is hidden."))
 		return
-	if(VD.vitae < 500)
+	if(bloodpool < 500)
 		to_chat(src, span_warning("Not enough vitae."))
 		return
 	if(has_status_effect(/datum/status_effect/buff/bloodstrength))
@@ -216,7 +184,7 @@
 	var/boon = usr.get_learning_boon(/datum/skill/magic/blood)
 	var/amt2raise = licker.STAINT*2
 	usr.adjust_experience(/datum/skill/magic/blood, floor(amt2raise * boon), FALSE)
-	VD.adjust_vitae(-500)
+	adjust_bloodpool(-500)
 	apply_status_effect(/datum/status_effect/buff/bloodstrength)
 	to_chat(src, "<span class='greentext'>! NIGHT MUSCLES !</span>")
 	src.playsound_local(get_turf(src), 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
@@ -243,13 +211,12 @@
 	var/cooldown = FALSE
 	var/cooldown_time = 3000 // Five minutes cooldown
 
-	var/datum/antagonist/vampire/VD = mind.has_antag_datum(/datum/antagonist/vampire)
-	if(!VD)
+	if(!clan)
 		return
-	if(VD.disguised)
+	if(SEND_SIGNAL(src, COMSIG_DISGUISE_STATUS))
 		to_chat(src, "<span class='warning'>My curse is hidden.</span>")
 		return
-	if(VD.vitae < 500)
+	if(bloodpool < 500)
 		to_chat(src, "<span class='warning'>Not enough vitae.</span>")
 		return
 	if(has_status_effect(/datum/status_effect/buff/celerity))
@@ -262,7 +229,7 @@
 	var/boon = usr.get_learning_boon(/datum/skill/magic/blood)
 	var/amt2raise = licker.STAINT*2
 	usr.adjust_experience(/datum/skill/magic/blood, floor(amt2raise * boon), FALSE)
-	VD.adjust_vitae(-500)
+	adjust_bloodpool(-500)
 	apply_status_effect(/datum/status_effect/buff/celerity)
 	to_chat(src, "<span class='greentext'>! QUICKENING !</span>")
 	src.playsound_local(get_turf(src), 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
@@ -291,13 +258,13 @@
 	var/cooldown = FALSE
 	var/cooldown_time = 6000 // Ten minutes cooldown, you get an anticrit 100 melee armor for free with the stats.
 
-	var/datum/antagonist/vampire/VD = mind.has_antag_datum(/datum/antagonist/vampire)
-	if(!VD)
+
+	if(clan)
 		return
-	if(VD.disguised)
+	if(SEND_SIGNAL(src, COMSIG_DISGUISE_STATUS))
 		to_chat(src, "<span class='warning'>My curse is hidden.</span>")
 		return
-	if(VD.vitae < 500)
+	if(bloodpool < 500)
 		to_chat(src, "<span class='warning'>Not enough vitae.</span>")
 		return
 	if(has_status_effect(/datum/status_effect/buff/fortitude))
@@ -310,7 +277,7 @@
 	var/boon = usr.get_learning_boon(/datum/skill/magic/blood)
 	var/amt2raise = licker.STAINT*2
 	usr.adjust_experience(/datum/skill/magic/blood, floor(amt2raise * boon), FALSE)
-	VD.adjust_vitae(-500)
+	adjust_bloodpool(-500)
 	apply_status_effect(/datum/status_effect/buff/fortitude)
 	to_chat(src, "<span class='greentext'>! ARMOR OF DARKNESS !</span>")
 	src.playsound_local(get_turf(src), 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
@@ -368,23 +335,23 @@
 	for(var/datum/status_effect/debuff/silver_curse/SC in status_effects)
 		silver_curse_status = TRUE
 		break
-	var/datum/antagonist/vampire/VD = mind.has_antag_datum(/datum/antagonist/vampire)
-	if(!VD)
+
+	if(clan)
 		return
-	if(VD.disguised)
+	if(SEND_SIGNAL(src, COMSIG_DISGUISE_STATUS))
 		to_chat(src, "<span class='warning'>My curse is hidden.</span>")
 		return
 	if(silver_curse_status)
 		to_chat(src, "<span class='warning'>My BANE is not letting me REGENERATE!.</span>")
 		return
-	if(VD.vitae < 500)
+	if(bloodpool < 500)
 		to_chat(src, "<span class='warning'>Not enough vitae.</span>")
 		return
 	if(cooldown)
 		to_chat(src, "<span class='warning'>I can't cast it yet!</span>")
 	to_chat(src, "<span class='greentext'>! REGENERATE !</span>")
 	src.playsound_local(get_turf(src), 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
-	VD.adjust_vitae(-500)
+	adjust_bloodpool(-500)
 	// Gain experience towards blood magic
 	var/mob/living/carbon/human/licker = usr
 	var/boon = usr.get_learning_boon(/datum/skill/magic/blood)

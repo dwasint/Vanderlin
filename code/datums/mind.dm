@@ -79,6 +79,9 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 	var/list/restricted_roles = list()
 	/// list of spells this mind has
 	var/list/spell_list = list() // Wizard mode & "Give Spell" badmin button.
+	///list of all actions this mind has unattached from spells
+	var/list/action_list = list() // This is exclusively for actions without a spelltype
+
 	/// amount of spell points this mind currently has
 	var/spell_points
 	/// amount of spell points this mind has used
@@ -762,6 +765,21 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 		to_chat(current, "<span class='boldnotice'>I have learned a new spell: [spell_type]</span>")
 	spell_type.action.Grant(current)
 
+
+/**
+ * add an action to a mind
+ * Vars:
+ ** action_type - the type of action to give
+ ** silent - is the player notified of the action gain?
+*/
+/datum/mind/proc/AddAction(datum/action/action_type, silent = TRUE)
+	if(!action_type)
+		CRASH("AddAction was called without a specified spell type")
+	action_list |= action_type
+	if(!silent)
+		to_chat(current, "<span class='boldnotice'>I have learned a new spell: [action_type]</span>")
+	action_type.Grant(current)
+
 /**
  * check if we have a learnspell, give them a learnspell spell if they have excess spell points, remove it if we don't have excess spell points
  * Vars:
@@ -829,6 +847,9 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 	for(var/X in spell_list)
 		var/obj/effect/proc_holder/spell/spell_type = X
 		spell_type.action.Grant(new_character)
+	for(var/X in action_list)
+		var/datum/action/action_type = X
+		action_type.Grant(new_character)
 
 /**
  * delay usage of all spells except the ones passed into the exceptions list

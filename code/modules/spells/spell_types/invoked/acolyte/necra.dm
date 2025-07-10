@@ -158,8 +158,8 @@
 			continue
 		if(L.mind)
 			var/datum/antagonist/vampire/V = L.mind.has_antag_datum(/datum/antagonist/vampire)
-			if(V)
-				if(!V.disguised)
+			if(L.clan)
+				if(!SEND_SIGNAL(L, COMSIG_DISGUISE_STATUS))
 					isvampire = TRUE
 			if(L.mind.has_antag_datum(/datum/antagonist/zombie))
 				iszombie = TRUE
