@@ -15,6 +15,7 @@
 	mouse_drag_pointer = MOUSE_ACTIVE_POINTER
 	throwforce = 10
 	vis_flags = VIS_INHERIT_PLANE
+	blocks_emissive = EMISSIVE_BLOCK_GENERIC
 
 	//FOV STUFF
 	plane = GAME_PLANE_FOV_HIDDEN
@@ -287,3 +288,6 @@
 	var/sprinted_tiles = 0
 	///how many tiles we can move while casting
 	var/cast_move = 0
+
+	/// A ref of the area we're taking our ambient loop from.
+	var/area/ambience_tracked_area

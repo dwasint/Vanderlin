@@ -148,13 +148,6 @@
 	user.mana_pool?.adjust_attunement(/datum/attunement/ice, 0.1)
 	to_chat(user, span_notice("Fire and ice flow in harmony within you."))
 
-
-#define RIGHT_X_TIER_1 150
-#define RIGHT_X_TIER_2 RIGHT_X_TIER_1 + 50
-#define RIGHT_X_TIER_3 RIGHT_X_TIER_2 + 90
-#define RIGHT_Y_RIGHT 50
-#define RIGHT_Y_LEFT -50
-
 /datum/spell_node/create_bonfire
 	name = "Create Bonfire"
 	desc = "Create a bonfire on the ground."
@@ -252,13 +245,6 @@
 	node_y = RIGHT_Y_RIGHT + 50
 	prerequisites = list(/datum/spell_node/fireball, /datum/spell_node/green_flame_blade)
 	spell_type = /obj/effect/proc_holder/spell/invoked/meteor_storm
-
-
-#define DOWN_Y_TIER_1 -150
-#define DOWN_X_RIGHT 50
-#define DOWN_X_LEFT -50
-#define DOWN_Y_TIER_2 DOWN_Y_TIER_1 -50
-#define DOWN_Y_TIER_3 DOWN_Y_TIER_2 -90
 
 /datum/spell_node/message
 	name = "Message"
@@ -375,14 +361,6 @@
 	prerequisites = list(/datum/spell_node/arcane_bolt, /datum/spell_node/fetch)
 	spell_type = /obj/effect/proc_holder/spell/invoked/arcyne_storm
 
-
-
-#define LEFT_X_TIER_1 -150
-#define LEFT_X_TIER_2 LEFT_X_TIER_1 - 50
-#define LEFT_X_TIER_3 LEFT_X_TIER_1 - 90
-#define LEFT_Y_RIGHT 50
-#define LEFT_Y_LEFT -50
-
 /datum/spell_node/light
 	name = "Light"
 	desc = "Create a magical source of illumination."
@@ -441,6 +419,15 @@
 	prerequisites = list(/datum/spell_node/earth_affinity)
 	spell_type = /obj/effect/proc_holder/spell/self/magicians_brick
 
+/datum/spell_node/flower_field
+	name = "Flower Field"
+	desc = "Summons a field of flowers"
+	node_x = LEFT_X_TIER_3
+	node_y = LEFT_Y_LEFT - 50
+	prerequisites = list(/datum/spell_node/magic_stone)
+	spell_type = /obj/effect/proc_holder/spell/invoked/flowerfield
+
+
 /datum/spell_node/storm_caller
 	name = "Storm Caller"
 	desc = "Channel the fury of tempests."
@@ -491,13 +478,6 @@
 	node_y = LEFT_Y_LEFT
 	prerequisites = list(/datum/spell_node/guidance)
 	spell_type = /obj/effect/proc_holder/spell/invoked/blade_burst
-
-
-#define UP_Y_TIER_1 150
-#define UP_Y_TIER_2 UP_Y_TIER_1 + 50
-#define UP_Y_TIER_3 UP_Y_TIER_2 + 90
-#define UP_X_RIGHT 50
-#define UP_X_LEFT -50
 
 /datum/spell_node/prestidigitation
 	name = "Prestidigitation"

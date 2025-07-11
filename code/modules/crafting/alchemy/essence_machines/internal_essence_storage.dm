@@ -5,9 +5,13 @@
 	var/atom/parent_atom // Reference to the object this storage belongs to
 
 /datum/essence_storage/New(atom/parent)
-	..()
+	. = ..()
 	if(parent)
 		parent_atom = parent
+
+/datum/essence_storage/Destroy(force, ...)
+	parent_atom = null
+	return ..()
 
 /datum/essence_storage/proc/add_essence(essence_type, amount)
 	var/current_total = get_total_stored()
@@ -78,9 +82,7 @@
 /datum/essence_storage/proc/update_icon_and_overlays()
 	if(!parent_atom)
 		return
-	parent_atom.update_icon()
-	parent_atom.update_overlays()
-
+	parent_atom.update_appearance(UPDATE_ICON)
 
 /datum/essence_storage/proc/on_essence_added(essence_type, amount, was_new_type)
 	parent_atom.on_transfer_in(essence_type, amount, null)

@@ -19,26 +19,30 @@
 	storage.max_essence_types = 10
 	START_PROCESSING(SSobj, src)
 
-/obj/machinery/essence/harvester/update_icon()
-	. = ..()
-	cut_overlays()
-	if(installed_node)
-		var/mutable_appearance/node = mutable_appearance(installed_node.icon, installed_node.icon_state)
-		node.color = installed_node.color
-		node.layer = layer + 0.1
-		node.pixel_y = 12
-		overlays += node
-
-		var/mutable_appearance/node_emissive = mutable_appearance(installed_node.icon, installed_node.icon_state)
-		node_emissive.plane = EMISSIVE_PLANE
-		node_emissive.pixel_y = 12
-		overlays += node_emissive
-
 /obj/machinery/essence/harvester/Destroy()
 	STOP_PROCESSING(SSobj, src)
+	if(storage)
+		qdel(storage)
 	if(installed_node)
 		installed_node.forceMove(get_turf(src))
+	installed_node = null
 	return ..()
+
+/obj/machinery/essence/harvester/update_overlays()
+	. = ..()
+	if(installed_node)
+		var/mutable_appearance/node = mutable_appearance(
+			installed_node.icon,
+			installed_node.icon_state,
+			layer = src.layer + 0.1,
+			color = installed_node.color,
+		)
+		node.pixel_y = 12
+		. += node
+
+		var/mutable_appearance/node_emissive = emissive_appearance(installed_node.icon, installed_node.icon_state, alpha = node.alpha)
+		node_emissive.pixel_y = 12
+		. += node_emissive
 
 /obj/machinery/essence/harvester/return_storage()
 	return storage
@@ -51,13 +55,13 @@
 		var/boosted_recharge = round(installed_node.recharge_rate * efficiency_bonus)
 		installed_node.current_essence = min(installed_node.max_essence, installed_node.current_essence + boosted_recharge)
 		installed_node.last_recharge = world.time
-		installed_node.update_icon()
+		installed_node.update_appearance(UPDATE_ICON)
 
 	if(installed_node.current_essence > 0)
 		var/harvest_amount = min(installed_node.current_essence, harvest_rate)
 		if(harvest_amount > 0 && storage.add_essence(installed_node.essence_type.type, harvest_amount))
 			installed_node.current_essence -= harvest_amount
-			installed_node.update_icon()
+			installed_node.update_appearance(UPDATE_ICON)
 			create_harvest_effect()
 
 	if(!connection_processing || !output_connections.len)
@@ -102,7 +106,7 @@
 	to_chat(user, span_info("You install the [node.name] into the harvester. It will now automatically extract [temp.name]."))
 	qdel(temp)
 
-	update_icon()
+	update_appearance(UPDATE_OVERLAYS)
 	return TRUE
 
 
@@ -117,13 +121,13 @@
 	structure_node.max_essence = installed_node.max_essence
 	structure_node.current_essence = installed_node.current_essence
 	structure_node.recharge_rate = installed_node.recharge_rate
-	structure_node.update_icon()
+	structure_node.update_appearance(UPDATE_ICON)
 
 	to_chat(user, span_info("You carefully remove the essence node from the harvester and deploy it nearby."))
 
 	qdel(installed_node)
 	installed_node = null
-	update_icon()
+	update_appearance(UPDATE_OVERLAYS)
 
 /obj/machinery/essence/harvester/proc/create_harvest_effect()
 	new /obj/effect/temp_visual/harvest_glow(get_turf(src))
@@ -138,7 +142,7 @@
 
 			var/obj/item/essence_node_portable/portable = jar.contained_node
 			jar.contained_node = null
-			jar.update_icon()
+			jar.update_appearance(UPDATE_OVERLAYS)
 
 			installed_node = portable
 			portable.forceMove(src)
@@ -148,7 +152,7 @@
 			to_chat(user, span_info("You install the essence node from the jar into the harvester. It will now automatically extract [temp.name]."))
 			qdel(temp)
 
-			update_icon()
+			update_appearance(UPDATE_OVERLAYS)
 		else
 			to_chat(user, span_warning("The jar is empty."))
 		return

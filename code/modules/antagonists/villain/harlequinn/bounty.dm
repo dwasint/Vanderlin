@@ -32,6 +32,15 @@ GLOBAL_LIST_INIT(bounty_rep, list())  // ckey -> reputation score
 	populate_delivery_locations()
 	populate_contraband_packs()
 
+/obj/structure/bounty_board/Destroy()
+	LAZYREMOVE(GLOB.bounty_boards, src)
+	for(var/datum/bounty_contract/contract as anything in (active_contracts + completed_contracts))
+		qdel(contract)
+	active_contracts = null
+	completed_contracts = null
+	delivery_locations = null
+	return ..()
+
 /obj/structure/bounty_board/proc/check_harlequin_injection()
 	var/mammons_since_last = total_bounty_pool - last_harlequin_spawn
 	if(prob(mammons_since_last * 0.1))
@@ -1512,13 +1521,12 @@ GLOBAL_LIST_INIT(bounty_rep, list())  // ckey -> reputation score
 			// Create a new dirthole for burial
 			grave_hole = new /obj/structure/closet/dirthole(burial_turf)
 			grave_hole.stage = 3 // Set to pit stage for burial
-			grave_hole.update_icon()
+			grave_hole.update_appearance()
 
 		// Ensure the hole is at the right stage for burial
 		if(grave_hole.stage < 3)
 			grave_hole.stage = 3
-			grave_hole.update_icon()
-
+			grave_hole.update_appearance()
 		// Open the grave if it's closed
 		if(!grave_hole.opened)
 			grave_hole.open()
@@ -1750,6 +1758,10 @@ GLOBAL_LIST_INIT(bounty_rep, list())  // ckey -> reputation score
 	if(!location_name || location_name == "Unknown Location")
 		location_name = name
 
+/obj/effect/landmark/bounty_location/Destroy()
+	LAZYREMOVE(GLOB.bounty_locations, src)
+	return ..()
+
 // Example locations - add these around your map
 /obj/effect/landmark/bounty_location/bathhouse
 	name = "Behind the Bathhouse"
@@ -1891,8 +1903,7 @@ GLOBAL_LIST_INIT(bounty_rep, list())  // ckey -> reputation score
 			if(can_add > 0)
 				existing_coin.quantity += can_add
 				remaining_mammons -= can_add * existing_coin.sellprice
-				existing_coin.update_icon()
-				existing_coin.update_transform()
+				existing_coin.update_appearance(UPDATE_ICON_STATE | UPDATE_NAME | UPDATE_DESC)
 
 	// If we still have mammons to add, create new coins
 	while(remaining_mammons > 0)
@@ -1914,8 +1925,7 @@ GLOBAL_LIST_INIT(bounty_rep, list())  // ckey -> reputation score
 		var/quantity_to_add = min(remaining_mammons / best_value, 20) // Max stack
 		new_coin.quantity = quantity_to_add
 		remaining_mammons -= quantity_to_add * best_value
-		new_coin.update_icon()
-		new_coin.update_transform()
+		new_coin.update_appearance(UPDATE_ICON_STATE | UPDATE_NAME | UPDATE_DESC)
 
 	return mammons_to_add - remaining_mammons // Return actual amount added
 
@@ -1935,7 +1945,7 @@ GLOBAL_LIST_INIT(bounty_rep, list())  // ckey -> reputation score
 			coin_list += coin
 
 	// Sort coins by sellprice (descending)
-	coin_list = sortTim(coin_list, /proc/cmp_coin_value_desc)
+	sortTim(coin_list, GLOBAL_PROC_REF(cmp_coin_value_desc))
 
 	// Remove from coins starting with highest value
 	for(var/obj/item/coin/coin in coin_list)
@@ -1956,8 +1966,7 @@ GLOBAL_LIST_INIT(bounty_rep, list())  // ckey -> reputation score
 				var/value_removed = quantity_to_remove * coin.sellprice
 				remaining_to_remove -= value_removed
 				total_removed += value_removed
-				coin.update_icon()
-				coin.update_transform()
+				coin.update_appearance(UPDATE_ICON_STATE | UPDATE_NAME | UPDATE_DESC)
 
 		// Also check contents recursively
 		if(remaining_to_remove > 0)
@@ -2002,8 +2011,7 @@ GLOBAL_LIST_INIT(bounty_rep, list())  // ckey -> reputation score
 					var/value_removed = quantity_to_remove * coin.sellprice
 					remaining_to_remove -= value_removed
 					total_removed += value_removed
-					coin.update_icon()
-					coin.update_transform()
+					coin.update_appearance(UPDATE_ICON_STATE | UPDATE_NAME | UPDATE_DESC)
 
 	// Then check other contents recursively
 	for(var/atom/movable/content in target.contents)

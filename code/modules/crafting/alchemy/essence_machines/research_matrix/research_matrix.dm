@@ -2,13 +2,13 @@
 	name = "thaumaturgical research matrix"
 	desc = "A complex crystalline construct that allows researchers to visualize and unlock the interconnected web of thaumaturgical knowledge. The surface shimmers with arcane symbols."
 	icon = 'icons/roguetown/misc/splitter.dmi'
-	icon_state = "research_matrix"
+	icon_state = "splitter"
 	density = TRUE
 	anchored = TRUE
 	processing_priority = 3
 	var/datum/essence_storage/storage
 	var/datum/thaumic_research_node/selected_research
-	var/mob/current_user
+	var/datum/weakref/current_user
 
 /obj/machinery/essence/research_matrix/Initialize()
 	. = ..()
@@ -16,8 +16,16 @@
 	storage.max_total_capacity = 800
 	storage.max_essence_types = 10
 
+/obj/machinery/essence/research_matrix/Destroy()
+	if(storage)
+		qdel(storage)
+	if(selected_research)
+		qdel(selected_research)
+	current_user = null
+	return ..()
+
 /obj/machinery/essence/research_matrix/attack_hand(mob/user, params)
-	current_user = user
+	current_user = WEAKREF(user)
 	open_research_interface(user)
 
 /obj/machinery/essence/research_matrix/return_storage()
@@ -70,7 +78,7 @@
 			vial.essence_amount -= transferred
 			if(vial.essence_amount <= 0)
 				vial.contained_essence = null
-			vial.update_icon()
+			vial.update_appearance(UPDATE_OVERLAYS)
 			to_chat(user, span_info("You pour [transferred] units of essence into the matrix."))
 		return
 
@@ -81,7 +89,10 @@
 	interface.show()
 
 /obj/machinery/essence/research_matrix/on_transfer_in(essence_type, amount, datum/essence_storage/source)
-	check_research_completion(current_user)
+	var/mob/user = current_user.resolve()
+	if(!user)
+		return
+	check_research_completion(user)
 
 /obj/machinery/essence/research_matrix/proc/check_research_completion(mob/user)
 	if(!selected_research)
@@ -146,12 +157,18 @@
 
 /datum/research_interface
 	var/obj/machinery/essence/research_matrix/matrix
-	var/mob/user
 	var/datum/browser/window
+	var/mob/user
 
 /datum/research_interface/New(obj/machinery/essence/research_matrix/M, mob/U)
 	matrix = M
 	user = U
+
+/datum/research_interface/Destroy(force, ...)
+	matrix = null
+	user = null
+	window = null
+	return ..()
 
 /datum/research_interface/proc/show()
 	if(!user || !matrix)

@@ -67,7 +67,7 @@
 
 /obj/item/clothing/gloves/essence_gauntlet/equipped(mob/user, slot)
 	. = ..()
-	if(slot == SLOT_GLOVES)
+	if(slot & ITEM_SLOT_GLOVES)
 		grant_essence_spells(user)
 
 /obj/item/clothing/gloves/essence_gauntlet/dropped(mob/user)
@@ -123,7 +123,7 @@
 	user.put_in_hands(chosen_vial)
 	to_chat(user, span_notice("You remove [chosen_vial] from [src]."))
 	// Update spells if currently equipped
-	if(ishuman(user) && user.get_item_by_slot(SLOT_GLOVES) == src)
+	if(ishuman(user) && user.get_item_by_slot(ITEM_SLOT_GLOVES) == src)
 		remove_essence_spells(user)
 		grant_essence_spells(user)
 
@@ -148,7 +148,7 @@
 		to_chat(user, span_notice("You insert [vial] into [src]."))
 
 		// Update spells if currently equipped
-		if(ishuman(user) && user.get_item_by_slot(SLOT_GLOVES) == src)
+		if(ishuman(user) && user.get_item_by_slot(ITEM_SLOT_GLOVES) == src)
 			remove_essence_spells(user)
 			grant_essence_spells(user)
 		return
@@ -185,7 +185,7 @@
 				remaining_to_consume -= to_consume
 				if(vial.essence_amount <= 0)
 					vial.contained_essence = null
-				vial.update_icon()
+				vial.update_appearance(UPDATE_OVERLAYS)
 		return remaining_to_consume <= 0
 
 	for(var/attunement_path in required_attunements)
@@ -201,7 +201,7 @@
 				remaining_to_consume -= to_consume
 				if(vial.essence_amount <= 0)
 					vial.contained_essence = null
-				vial.update_icon()
+				vial.update_appearance(UPDATE_OVERLAYS)
 
 	return remaining_to_consume <= 0
 

@@ -114,10 +114,23 @@
 /obj/projectile/proc/handle_drop()
 	return
 
-/obj/projectile/Initialize()
+/obj/projectile/Initialize(mapload, ...)
 	. = ..()
 	permutated = list()
 	decayedRange = range
+
+/obj/projectile/Destroy()
+	if(hitscan)
+		finalize_hitscan_and_generate_tracers()
+	dropped = null
+	firer = null
+	starting = null
+	original = null
+	fired_from = null
+	STOP_PROCESSING(SSprojectiles, src)
+	cleanup_beam_segments()
+	qdel(trajectory)
+	return ..()
 
 /obj/projectile/proc/Range()
 	range--
@@ -656,14 +669,6 @@
 		if(fired && can_hit_target(original, permutated, (newloc == original)))
 			Bump(original)
 
-/obj/projectile/Destroy()
-	if(hitscan)
-		finalize_hitscan_and_generate_tracers()
-	STOP_PROCESSING(SSprojectiles, src)
-	cleanup_beam_segments()
-	qdel(trajectory)
-	return ..()
-
 /obj/projectile/proc/cleanup_beam_segments()
 	QDEL_LIST_ASSOC(beam_segments)
 	beam_segments = list()
@@ -704,3 +709,6 @@
 		QDEL_IN(thing, duration)
 	if(cleanup)
 		cleanup_beam_segments()
+
+#undef MOVES_HITSCAN
+#undef MUZZLE_EFFECT_PIXEL_INCREMENT

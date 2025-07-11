@@ -11,6 +11,12 @@
 #define TEXT_EAST			"[EAST]"
 #define TEXT_WEST			"[WEST]"
 
+/// Use male sprites
+#define MALE_SPRITES 	0
+/// Use female sprites only
+#define FEMALE_SPRITES 	1
+/// Use female sprites and boob
+#define FEMALE_BOOB 	2
 
 //Human Overlays Indexes/////////
 #define REFLECTION_LAYER		51
@@ -180,6 +186,9 @@ GLOBAL_LIST_EMPTY(bloody_footprints_cache)
 
 //subtypesof(), typesof() without the parent path
 #define subtypesof(typepath) ( typesof(typepath) - typepath )
+
+/// Takes a datum as input, returns its ref string
+#define text_ref(datum) ref(datum)
 
 //Gets the turf this atom inhabits
 #define get_turf(A) (get_step(A, 0))

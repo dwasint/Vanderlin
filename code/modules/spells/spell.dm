@@ -37,6 +37,7 @@
 	update_icon()
 
 /obj/effect/proc_holder/spell/update_icon()
+	. = ..()
 	if(!action)
 		return
 	action.button_icon_state = "[base_icon_state][active]"
@@ -71,8 +72,8 @@
 GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for the badmin verb for now
 
 /obj/effect/proc_holder/Destroy()
-	if (action)
-		qdel(action)
+	if(action)
+		QDEL_NULL(action)
 	if(ranged_ability_user)
 		remove_ranged_ability()
 	return ..()
@@ -244,7 +245,6 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 
 	return releasedrain
 
-
 /obj/effect/proc_holder/spell/proc/cast_check(skipcharge = 0, mob/user = usr) //checks if the spell can be cast based on its settings; skipcharge is used when an additional cast_check is called inside the spell
 	if(user.mmb_intent && !skipcharge)
 		if(SEND_SIGNAL(user?.mmb_intent, COMSIG_SPELL_BEFORE_CAST))
@@ -305,15 +305,17 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 			return FALSE
 
 	if(req_items.len)
-		var/list/confirmed_items = list()
+		var/list/confirmed_types = list()
 		for(var/I in req_items)
+			var/found = FALSE
 			for(var/obj/item/IN in user.contents)
-				if(istype(IN, I))
-					confirmed_items += IN
-					continue
-		if(confirmed_items.len != req_items.len)
-			to_chat(user, "<span class='warning'>I'm missing something to cast this.</span>")
-			return FALSE
+				if(istype(IN, I) && !(IN.type in confirmed_types))
+					confirmed_types += IN.type
+					found = TRUE
+					break
+			if(!found)
+				to_chat(user, "<span class='warning'>I'm missing something to cast this.</span>")
+				return FALSE
 
 	if(req_inhand)
 		if(!istype(user.get_active_held_item(), req_inhand))
@@ -362,11 +364,6 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 
 	still_recharging_msg = "<span class='warning'>[name] is still recharging!</span>"
 	charge_counter = recharge_time
-
-/obj/effect/proc_holder/spell/Destroy()
-	STOP_PROCESSING(SSfastprocess, src)
-	qdel(action)
-	return ..()
 
 /obj/effect/proc_holder/spell/Click()
 	if(cast_check())
@@ -486,6 +483,7 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 
 
 /obj/effect/proc_holder/spell/proc/cast(list/targets,mob/user = usr)
+	SHOULD_CALL_PARENT(TRUE)
 	if(miracle)
 		var/mob/living/carbon/human/C = user
 		var/datum/devotion/cleric_holder/D = C.cleric
@@ -692,3 +690,8 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 	user.visible_message("<span class='warning'>A wreath of gentle light passes over [user]!</span>", "<span class='notice'>I wreath myself in healing light!</span>")
 	user.adjustBruteLoss(-10)
 	user.adjustFireLoss(-10)
+	return ..()
+
+#undef TARGET_CLOSEST
+#undef TARGET_RANDOM
+#undef MAGIC_XP_MULTIPLIER

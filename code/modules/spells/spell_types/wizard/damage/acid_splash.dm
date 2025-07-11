@@ -3,7 +3,7 @@
 	desc = "A slow-moving glob of acid that sprays over an area upon impact."
 	range = 8
 	projectile_type = /obj/projectile/magic/acidsplash5e
-	overlay_state = "null"
+	overlay_state = "acidsplash"
 	sound = list('sound/magic/whiteflame.ogg')
 	active = FALSE
 	releasedrain = 30
@@ -35,7 +35,7 @@
 
 /obj/projectile/magic/acidsplash5e
 	name = "acid bubble"
-	icon_state = "green_laser"
+	icon_state = "acid_splash"
 	damage = 10
 	damage_type = BURN
 	flag = "magic"
@@ -96,7 +96,7 @@
 
 /obj/effect/temp_visual/acidsplash5e
 	icon = 'icons/effects/effects.dmi'
-	icon_state = "greenshatter2"
+	icon_state = "acid_pop"
 	name = "horrible acrid brine"
 	desc = "Best not touch this."
 	randomdir = TRUE

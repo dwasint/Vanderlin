@@ -34,8 +34,11 @@
 				qdel(S)
 			else
 				S.be_replaced()
+	for(var/obj/effect/proc_holder/spell/S as anything in mob_spell_list)
+		QDEL_NULL(S)
+	mob_spell_list.Cut()
 	if(ranged_ability)
-		ranged_ability.remove_ranged_ability(src)
+		QDEL_NULL(ranged_ability)
 	if(buckled)
 		buckled.unbuckle_mob(src,force=1)
 
@@ -45,44 +48,32 @@
 		S.ownerDies(FALSE)
 		qdel(s) //If the owner is destroy()'d, the soullink is destroy()'d
 	ownedSoullinks = null
-	for(var/s in sharedSoullinks)
-		var/datum/soullink/S = s
+	for(var/datum/soullink/S as anything in sharedSoullinks)
 		S.sharerDies(FALSE)
 		S.removeSoulsharer(src) //If a sharer is destroy()'d, they are simply removed
 	sharedSoullinks = null
+	if(craftingthing)
+		QDEL_NULL(craftingthing)
 	return ..()
 
-
-/mob/living/update_overlays()
+/mob/living/update_appearance(updates)
 	. = ..()
 	update_reflection()
-
-/mob/living/update_icon()
-	. = ..()
-	update_reflection()
-
 
 /mob/living/proc/create_reflection()
 	//Add custom reflection image
-	var/mutable_appearance/MAM = new()
-	//appearance stuff
-	MAM.appearance = appearance
+	reflective_icon = copy_appearance_filter_overlays(appearance)
 	if(render_target)
-		MAM.render_source = render_target
-	MAM.plane = REFLECTION_PLANE
-	//transform stuff
-	var/matrix/n_transform = MAM.transform
-	n_transform.Scale(1, -1)
-	MAM.transform = n_transform
-	MAM.vis_flags = VIS_INHERIT_DIR
+		reflective_icon.render_source = render_target
+	reflective_icon.plane = REFLECTION_PLANE
+	reflective_icon.pixel_y = -32
+	reflective_icon.transform = matrix().Scale(1, -1)
+	reflective_icon.vis_flags = VIS_INHERIT_DIR
 	//filters
 	var/icon/I = icon('icons/turf/overlays.dmi', "whiteOverlay")
 	I.Flip(NORTH)
-	MAM.filters += filter(type = "alpha", icon = I)
-	reflective_icon = MAM
-	reflective_icon.pixel_y = -32
+	reflective_icon.filters += filter(type = "alpha", icon = I)
 	add_overlay(reflective_icon)
-	update_vision_cone()
 
 /mob/living/carbon/human/dummy
 	has_reflection = FALSE
@@ -96,22 +87,17 @@
 	if(!reflective_icon)
 		create_reflection()
 	cut_overlay(reflective_icon)
-	reflective_icon.appearance = appearance
+	reflective_icon = copy_appearance_filter_overlays(appearance)
 	if(render_target)
 		reflective_icon.render_source = render_target
 	reflective_icon.plane = REFLECTION_PLANE
 	reflective_icon.pixel_y = -32
-	//transform stuff
-	var/matrix/n_transform = reflective_icon.transform
-	n_transform.Scale(1, -1)
-	reflective_icon.transform = n_transform
+	reflective_icon.transform = matrix().Scale(1, -1)
 	reflective_icon.vis_flags = VIS_INHERIT_DIR
-	//filters
-	var/icon/I = icon('icons/turf/overlays.dmi', "partialOverlay")
+	var/icon/I = icon('icons/turf/overlays.dmi', "whiteOverlay")
 	I.Flip(NORTH)
 	reflective_icon.filters += filter(type = "alpha", icon = I)
 	add_overlay(reflective_icon)
-	update_vision_cone()
 
 /mob/living/onZImpact(turf/T, levels)
 	if(HAS_TRAIT(src, TRAIT_NOFALLDAMAGE2))
@@ -1705,11 +1691,6 @@
 			to_chat(src, span_warning("You are too far away!"))
 			return FALSE
 
-		// var/datum/dna/mob_DNA = has_dna()
-		// if(!mob_DNA || !mob_DNA.check_mutation(/datum/mutation/human/telekinesis) || !tkMaxRangeCheck(src, target))
-		to_chat(src, span_warning("You are too far away!"))
-		return FALSE
-
 	if((action_bitflags & NEED_DEXTERITY) && !IsAdvancedToolUser()) // !ISADVANCEDTOOLUSER(src)
 		to_chat(src, span_warning("You don't have the dexterity to do this!"))
 		return FALSE
@@ -1808,6 +1789,8 @@
 		SEND_SIGNAL(src, COMSIG_CLEAR_MOOD_EVENT, "on_fire")
 		SEND_SIGNAL(src, COMSIG_LIVING_EXTINGUISHED, src)
 		update_fire()
+	for(var/obj/item/I in (get_equipped_items() + held_items))
+		I.extinguish()
 
 /mob/living/proc/adjust_fire_stacks(add_fire_stacks) //Adjusting the amount of fire_stacks we have on person
 	if(HAS_TRAIT(src, TRAIT_NOFIRE) && add_fire_stacks > 0)
@@ -2281,12 +2264,12 @@
 		return
 	changeNext_move(CLICK_CD_EXHAUSTED)
 	if(m_intent != MOVE_INTENT_SNEAK)
-		visible_message("<span class='info'>[src] looks around.</span>")
+		visible_message(span_info("[src] looks around."), span_info("I look around."))
 	var/looktime = 5 SECONDS - (STAPER * 2)
 	if(do_after(src, looktime))
 		// var/huhsneak
-		SEND_GLOBAL_SIGNAL(COMSIG_MOB_ACTIVE_PERCEPTION,src)
-		for(var/mob/living/M in oview(7,src))
+		SEND_GLOBAL_SIGNAL(COMSIG_MOB_ACTIVE_PERCEPTION, src)
+		for(var/mob/living/M in oview(7, src))
 			if(see_invisible < M.invisibility)
 				continue
 			if(HAS_TRAIT(M, TRAIT_IMPERCEPTIBLE)) // Check if the mob is affected by the invisibility spell
@@ -2326,17 +2309,12 @@
 			found_ping(get_turf(potential_track), client, "hidden")
 			potential_track.handle_revealing(src)
 
-
 /proc/found_ping(atom/A, client/C, state)
 	if(!A || !C || !state)
 		return
-	var/image/I = image(icon = 'icons/effects/effects.dmi', loc = A, icon_state = state, layer = 19)
-	I.layer = 19
-	I.plane = 19
-	if(!I)
-		return
-	I.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	flick_overlay(I, list(C), 30)
+	var/image/I = image('icons/effects/effects.dmi', A, state)
+	I.plane = ABOVE_LIGHTING_PLANE
+	flick_overlay(I, list(C), 3 SECONDS)
 
 /**
  * look_up Changes the perspective of the mob to any openspace turf above the mob
@@ -2509,13 +2487,16 @@
 			log_combat(src, src, "lost consciousness")
 		if(DEAD)
 			log_combat(src, src, "died")
+	if(!can_hear())
+		stop_sound_channel(CHANNEL_AMBIENCE)
+	refresh_looping_ambience()
 
 /mob/living/set_pulledby(new_pulledby)
 	. = ..()
 	if(hud_used)
 		for(var/hand in hud_used.hand_slots)
 			var/atom/movable/screen/inventory/hand/H = hud_used.hand_slots[hand]
-			H?.update_icon()
+			H?.update_appearance()
 	if(. == FALSE) //null is a valid value here, we only want to return if FALSE is explicitly passed.
 		return
 	if(pulledby)

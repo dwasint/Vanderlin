@@ -280,6 +280,8 @@ have ways of interacting with a specific atom and control it. They posses a blac
 	set_ai_status(get_expected_ai_status())
 
 /datum/ai_controller/proc/can_move()
+	if(QDELETED(pawn))
+		return
 	var/mob/living/living_pawn = pawn
 	if(HAS_TRAIT(living_pawn, TRAIT_INCAPACITATED))
 		return FALSE
@@ -581,7 +583,7 @@ have ways of interacting with a specific atom and control it. They posses a blac
  */
 /datum/ai_controller/proc/set_blackboard_key(key, thing)
 	// Assume it is an error when trying to set a value overtop a list
-	if(islist(blackboard[key]))
+	if(islist(blackboard[key]) && !islist(thing))
 		CRASH("set_blackboard_key attempting to set a blackboard value to key [key] when it's a list!")
 
 	// Clear existing values

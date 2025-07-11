@@ -140,7 +140,7 @@
 		if(!was_i_undead)
 			zombie.mob_biotypes &= ~MOB_UNDEAD
 		zombie.faction -= FACTION_UNDEAD
-		zombie.faction += FACTION_STATION
+		zombie.faction += FACTION_TOWN
 		zombie.faction += FACTION_NEUTRAL
 		zombie.regenerate_organs()
 		if(has_turned)
@@ -199,7 +199,7 @@
 		zombie.charflaw.ephemeral = TRUE
 	zombie.mob_biotypes |= MOB_UNDEAD
 	zombie.faction += FACTION_UNDEAD
-	zombie.faction -= FACTION_STATION
+	zombie.faction -= FACTION_TOWN
 	zombie.faction -= FACTION_NEUTRAL
 	zombie.verbs |= /mob/living/carbon/human/proc/zombie_seek
 	for(var/obj/item/bodypart/zombie_part as anything in zombie.bodyparts)

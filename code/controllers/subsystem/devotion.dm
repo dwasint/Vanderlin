@@ -127,6 +127,8 @@
 
 	var/datum/patron/A = H.patron
 	var/list/spelllist = list(A.t0, A.t1)
+	if(istype(A, /datum/patron/divine/necra))
+		spelllist += /obj/effect/proc_holder/spell/invoked/avert
 	for(var/spell_type in spelllist)
 		if(!spell_type || H.mind.has_spell(spell_type))
 			continue
@@ -140,6 +142,8 @@
 
 	var/datum/patron/A = H.patron
 	var/list/spelllist = list(/obj/effect/proc_holder/spell/targeted/abrogation, A.t0, A.t1)
+	if(istype(A, /datum/patron/divine/necra))
+		spelllist += /obj/effect/proc_holder/spell/invoked/avert
 	for(var/spell_type in spelllist)
 		if(!spell_type || H.mind.has_spell(spell_type))
 			continue
@@ -240,3 +244,12 @@
 	to_chat(holder_mob, span_boldnotice("I have been welcomed back into the folds of the Ten."))
 	if(passive_devotion_gain || passive_progression_gain)
 		START_PROCESSING(SSprocessing, src)
+
+#undef CLERIC_T0
+#undef CLERIC_T1
+#undef CLERIC_T2
+#undef CLERIC_T3
+
+#undef CLERIC_REQ_1
+#undef CLERIC_REQ_2
+#undef CLERIC_REQ_3

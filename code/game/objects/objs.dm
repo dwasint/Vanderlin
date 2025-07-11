@@ -76,6 +76,9 @@
 	/// If this is currently being lockpicked
 	var/being_picked = FALSE
 
+	/// Uses colours defined by the monarch roundstart see [lordcolor.dm]
+	var/uses_lord_coloring = FALSE
+
 	vis_flags = VIS_INHERIT_PLANE
 
 /obj/vv_edit_var(vname, vval)
@@ -104,7 +107,7 @@
 	if(obj_integrity == null)
 		obj_integrity = max_integrity
 	if(lockid)
-		log_mapping("[src] ([type]) at [AREACOORD(src)] has a depreciated lockid varedit.")
+		//log_mapping("[src] ([type]) at [AREACOORD(src)] has a depreciated lockid varedit.")
 		if(!lockids)
 			lockids = list(lockid)
 			lockid = null
@@ -122,6 +125,8 @@
 	set_material_information()
 
 /obj/Destroy(force=FALSE)
+	if(lock)
+		QDEL_NULL(lock)
 	if(!ismachinery(src))
 		STOP_PROCESSING(SSobj, src) // TODO: Have a processing bitflag to reduce on unnecessary loops through the processing lists
 	SStgui.close_uis(src)

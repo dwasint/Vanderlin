@@ -47,6 +47,7 @@
 				spawn(100)
 					Restore(M)
 			Shapeshift(M)
+	return ..()
 
 /obj/effect/proc_holder/spell/targeted/shapeshift/proc/Shapeshift(mob/living/caster)
 	var/obj/shapeshift_holder/H = locate() in caster

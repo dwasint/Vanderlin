@@ -49,6 +49,11 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 /datum/antagonist/vampire/lord/on_gain()
 	. = ..()
 	owner.special_role = span_redtext("[name]")
+	owner.current.mana_pool.ethereal_recharge_rate += 0.2
+
+/datum/antagonist/vampire/lord/on_removal()
+	owner.current.mana_pool.ethereal_recharge_rate -= 0.2
+	return ..()
 
 /datum/antagonist/vampire/proc/after_gain()
 	return

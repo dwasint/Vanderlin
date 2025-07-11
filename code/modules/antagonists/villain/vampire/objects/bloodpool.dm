@@ -97,3 +97,8 @@
 		if(abs(change) > current)
 			return FALSE
 		return TRUE
+
+#undef VAMPCOST_ONE
+#undef VAMPCOST_TWO
+#undef VAMPCOST_THREE
+#undef VAMPCOST_FOUR

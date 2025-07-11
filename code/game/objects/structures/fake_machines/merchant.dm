@@ -37,19 +37,11 @@
 	popup.set_content(contents)
 	popup.open()
 
-/obj/item/roguemachine/merchant/update_icon()
-	if(!anchored)
-		w_class = WEIGHT_CLASS_BULKY
-		set_light(0)
-		return
-	w_class = WEIGHT_CLASS_GIGANTIC
-	set_light(2, 2, 2, l_color =  "#1b7bf1")
-
 /obj/item/roguemachine/merchant/Initialize()
 	. = ..()
 	if(anchored)
 		START_PROCESSING(SSroguemachine, src)
-	update_icon()
+	set_light(2, 2, 2, l_color =  "#1b7bf1")
 	for(var/X in GLOB.alldirs)
 		var/T = get_step(src, X)
 		if(!T)
@@ -62,8 +54,6 @@
 	return ..()
 
 /obj/item/roguemachine/merchant/process()
-	if(!anchored)
-		return TRUE
 	if(world.time > next_airlift)
 		next_airlift = world.time + rand(2 MINUTES, 3 MINUTES)
 #ifdef TESTSERVER
@@ -104,11 +94,6 @@
 /////////////////////////////////////////////////////////////////
 
 #define UPGRADE_NOTAX		(1<<0)
-/*
-#define UPGRADE_ARMOR		(1<<1)
-#define UPGRADE_WEAPONS		(1<<2)
-#define UPGRADE_FOOD		(1<<3)
-*/
 
 /obj/structure/fake_machine/merchantvend
 	name = "GOLDFACE"

@@ -9,7 +9,7 @@
 	department_flag = GARRISON
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
 	display_order = JDO_CHIEF
-	faction = FACTION_STATION
+	faction = FACTION_TOWN
 	total_positions = 1
 	spawn_positions = 1
 	min_pq = 10 // Requires knowledge and good rp for the classes.
@@ -71,7 +71,7 @@
 	var/spawn_instrument = instruments[instrument_choice]
 	if(!spawn_instrument)
 		spawn_instrument = /obj/item/instrument/lute
-	H.equip_to_slot_or_del(new spawn_instrument(H),SLOT_BACK_R, TRUE)
+	H.equip_to_slot_or_del(new spawn_instrument(H),ITEM_SLOT_BACK_R, TRUE)
 	H.advsetup = 0
 	H.invisibility = initial(H.invisibility)
 	H.cure_blind("bard_select")
@@ -92,7 +92,7 @@
 	f_title = "Town Militiawoman"
 	flag = GUARDSMAN
 	department_flag = GARRISON
-	faction = FACTION_STATION
+	faction = FACTION_TOWN
 	total_positions = 0
 	spawn_positions = 0
 	display_order = JDO_CITYWATCHMEN
@@ -273,7 +273,7 @@
 	beltr = /obj/item/storage/keyring/elder
 	beltl = /obj/item/flashlight/flare/torch/lantern
 	backl = /obj/item/storage/backpack/satchel
-	
+
 	backpack_contents = list(/obj/item/storage/belt/pouch/coins/mid = 1, /obj/item/needle = 1 )
 
 	switch(H.patron?.type)
@@ -292,7 +292,7 @@
 		if(/datum/patron/divine/noc)
 			neck = /obj/item/clothing/neck/psycross/noc
 			H.cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'
-			var/language = pickweight(list("Dwarvish" = 1, "Elvish" = 1, "Hellspeak" = 1, "Zybantu" = 1, "Orcish" = 1,))
+			var/language = pickweight(list("Dwarvish" = 1, "Elvish" = 1, "Hellspeak" = 1, "Zaladin" = 1, "Orcish" = 1,))
 			switch(language)
 				if("Dwarvish")
 					H.grant_language(/datum/language/dwarvish)
@@ -309,10 +309,10 @@
 					to_chat(H,span_info("\
 					I learned the tongue of the hellspawn.")
 					)
-				if("Zybantu")
-					H.grant_language(/datum/language/zybantine)
+				if("Zaladin")
+					H.grant_language(/datum/language/zalad)
 					to_chat(H,span_info("\
-					I learned the tongue of Zybantu.")
+					I learned the tongue of Zaladin.")
 					)
 				if("Orcish")
 					H.grant_language(/datum/language/orcish)

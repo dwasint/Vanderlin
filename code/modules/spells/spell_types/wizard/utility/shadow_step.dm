@@ -9,7 +9,7 @@
 	range = 3
 	warnie = "sydwarning"
 	movement_interrupt = FALSE
-	sound = 'sound/misc/area.ogg'
+	sound = 'sound/misc/stings/generic.ogg'
 	associated_skill = /datum/skill/misc/sneaking
 	attunements = list(
 		/datum/attunement/dark = 0.4
@@ -27,6 +27,5 @@
 		)
 		animate(target, alpha = 0, time = 1 SECONDS, easing = EASE_IN)
 		target.apply_status_effect(/datum/status_effect/invisibility, 7 SECONDS)
-		return TRUE
-	revert_cast()
+		return ..()
 	return FALSE

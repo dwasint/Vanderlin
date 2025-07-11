@@ -1,4 +1,3 @@
-#define QDEL_LIST_CONTENTS(L) if(L) { for(var/I in L) qdel(I); L.Cut(); }
 /obj/effect/decal/cleanable/roguerune	// basis for all rituals
 	name = "ritualrune"
 	desc = "Strange symbols pulse upon the ground..."
@@ -606,7 +605,7 @@ GLOBAL_LIST(teleport_runes)
 	listkey = set_keyword ? "[set_keyword] [locname]":"[locname]"
 	LAZYADD(GLOB.teleport_runes, src)
 
-/obj/effect/rune/teleport/Destroy()
+/obj/effect/decal/cleanable/roguerune/arcyne/teleport/Destroy()
 	LAZYREMOVE(GLOB.teleport_runes, src)
 	return ..()
 
@@ -633,7 +632,7 @@ GLOBAL_LIST(teleport_runes)
 	if(isnull(potential_runes[input_rune_key]))
 		fail_invoke()
 		return
-	var/obj/effect/rune/teleport/actual_selected_rune = potential_runes[input_rune_key] //what rune does that key correspond to?
+	var/obj/effect/decal/cleanable/roguerune/arcyne/teleport/actual_selected_rune = potential_runes[input_rune_key] //what rune does that key correspond to?
 	if(!Adjacent(user) || QDELETED(src) || !actual_selected_rune)
 		fail_invoke()
 		return
