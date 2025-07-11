@@ -3,6 +3,7 @@
 	var/desc = "A research node description"
 	var/list/prerequisites = list()
 	var/research_cost = 10
+	var/required_level = 1
 	var/unlocks_power = null
 	var/special_effect = null
 	var/node_x = 0
@@ -24,23 +25,26 @@
 /datum/coven_research_interface/proc/initialize_coven_tree()
 	// Create research nodes for each power and enhancement
 	for(var/power_type in parent_coven.all_powers)
-		var/datum/coven_power/power = power_type
+		var/datum/coven_power/power = new power_type(parent_coven)
 		var/datum/coven_research_node/node = new /datum/coven_research_node()
-		node.name = initial(power.name)
-		node.desc = initial(power.desc)
-		node.unlocks_power = initial(power_type)
-		node.research_cost = initial(power.level) * 10
-		node.node_x = (initial(power.level) - 1) * 150
+		node.name = power.name
+		node.desc = power.desc
+		node.unlocks_power = power_type
+		node.research_cost = power.level * 10  // Keep for compatibility
+		node.required_level = power.level      // NEW: Use power level
+		node.node_x = (power.level - 1) * 150
 		node.node_y = rand(-100, 100)
 
 		// Set prerequisites based on power level
 		if(power.level > 1)
 			for(var/other_power in parent_coven.all_powers)
-				var/datum/coven_power/other = other_power
-				if(other.level == initial(power.level) - 1)
+				var/datum/coven_power/other = new other_power(parent_coven)
+				if(other.level == power.level - 1)
 					node.prerequisites += other_power
+				qdel(other)
 
 		research_nodes[power_type] = node
+		qdel(power)
 
 /datum/coven_research_interface/proc/get_research_node(research_type)
 	return research_nodes[research_type]
@@ -54,7 +58,13 @@
 	var/list/available = list()
 	for(var/research_type in research_nodes)
 		var/datum/coven_research_node/node = research_nodes[research_type]
+
+		// Check if already unlocked
 		if(research_type in parent_coven.unlocked_research)
+			continue
+
+		// Check if player level is high enough
+		if(parent_coven.level < node.required_level)
 			continue
 
 		// Check prerequisites
@@ -114,7 +124,6 @@
 
 /datum/coven_research_interface/proc/generate_coven_nodes_html()
 	var/html = ""
-	var/available_research = get_available_research()
 
 	for(var/research_type in research_nodes)
 		var/datum/coven_research_node/node = research_nodes[research_type]
@@ -122,21 +131,31 @@
 		var/node_classes = "research-node"
 		var/power_level_html = ""
 
-		// Determine node state and styling
+		// Determine node state and styling based on level
 		if(research_type in parent_coven.unlocked_research)
 			node_classes += " unlocked"
-		else if(research_type in available_research && parent_coven.research_points >= node.research_cost)
-			node_classes += " available"
+		else if(parent_coven.level >= node.required_level)
+			// Check if prerequisites are met
+			var/prereqs_met = TRUE
+			for(var/prereq in node.prerequisites)
+				if(!(prereq in parent_coven.unlocked_research))
+					prereqs_met = FALSE
+					break
+
+			if(prereqs_met)
+				node_classes += " available"
+			else
+				node_classes += " prereq-locked"
 		else
-			node_classes += " locked"
+			node_classes += " level-locked"
 
 		// Special node types
 		if(node.unlocks_power)
-			var/datum/coven_power/power = node.unlocks_power
+			var/datum/coven_power/power = new node.unlocks_power(parent_coven)
 			if(power.level >= 3)
 				node_classes += " power-node"
-				power_level_html = "<div class='power-level'>[initial(power.level)]</div>"
-
+				power_level_html = "<div class='power-level'>[power.level]</div>"
+			qdel(power)
 		else if(node.special_effect)
 			node_classes += " enhancement-node"
 
@@ -144,15 +163,17 @@
 		var/list/node_data = list(
 			"name" = node.name,
 			"desc" = node.desc,
-			"research_cost" = node.research_cost,
+			"required_level" = node.required_level,
+			"current_level" = parent_coven.level,
+			"research_cost" = node.research_cost,  // Keep for compatibility
 			"special_effect" = node.special_effect
 		)
 
 		if(node.unlocks_power)
-			var/datum/coven_power/power = node.unlocks_power
-			node_data["level"] = initial(power.level)
-			node_data["vitae_cost"] = initial(power.vitae_cost)
-
+			var/datum/coven_power/power = new node.unlocks_power(parent_coven)
+			node_data["level"] = power.level
+			node_data["vitae_cost"] = power.vitae_cost
+			qdel(power)
 
 		if(length(node.prerequisites))
 			var/list/prereq_names = list()
@@ -193,38 +214,45 @@
 		return 100
 	return round((parent_coven.experience / parent_coven.experience_needed) * 100, 1)
 
-// Topic handling for research interactions
 /datum/coven_research_interface/Topic(href, href_list)
 	if(!user || !parent_coven)
 		return
 
 	if(href_list["action"] == "research_node")
-		var/node_id = href_list["node_id"]
+		var/node_id = text2path(href_list["node_id"])
 		if(!node_id || !(node_id in research_nodes))
 			return
 
 		var/datum/coven_research_node/node = research_nodes[node_id]
 
-		// Check if research is possible
-		if(!parent_coven.can_research(node_id))
-			var/reason = ""
-			if(node_id in parent_coven.unlocked_research)
-				reason = "already researched"
-			else if(parent_coven.research_points < node.research_cost)
-				reason = "insufficient research points ([parent_coven.research_points]/[node.research_cost])"
+		// Show information about the node
+		var/info_text = ""
+
+		if(node_id in parent_coven.unlocked_research)
+			info_text = "<span class='boldnotice'>[node.name] is already unlocked!</span>"
+		else if(parent_coven.level >= node.required_level)
+			// Check prerequisites
+			var/prereqs_met = TRUE
+			var/missing_prereqs = list()
+			for(var/prereq in node.prerequisites)
+				if(!(prereq in parent_coven.unlocked_research))
+					prereqs_met = FALSE
+					var/datum/coven_research_node/prereq_node = research_nodes[prereq]
+					if(prereq_node)
+						missing_prereqs += prereq_node.name
+
+			if(prereqs_met)
+				// Auto-unlock if available
+				if(parent_coven.unlock_power_from_tree(node_id))
+					info_text = "<span class='boldnotice'>[node.name] has been unlocked!</span>"
+				else
+					info_text = "<span class='warning'>Unable to unlock [node.name].</span>"
 			else
-				reason = "prerequisites not met"
+				info_text = "<span class='warning'>[node.name] requires: [jointext(missing_prereqs, ", ")]</span>"
+		else
+			info_text = "<span class='warning'>[node.name] requires level [node.required_level] (currently level [parent_coven.level])</span>"
 
-			to_chat(user, "<span class='warning'>Cannot research [node.name]: [reason].</span>")
-			return
-
-		// Confirm research
-		var/confirm = alert(user, "Research [node.name] for [node.research_cost] research points?",
-			"Research Confirmation", "Yes", "No")
-
-		if(confirm == "Yes")
-			if(!parent_coven.research_power(node_id))
-				to_chat(user, "<span class='warning'>Failed to research [node.name].</span>")
+		to_chat(user, info_text)
 
 	else if(href_list["action"] == "close_research")
 		user << browse(null, "window=coven_research")

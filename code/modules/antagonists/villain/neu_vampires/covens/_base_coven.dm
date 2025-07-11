@@ -29,7 +29,7 @@
 	var/level_casting = 1
 	///The power that is currently in use.
 	var/datum/coven_power/current_power
-	///All Coven powers under this Coven that the owner knows. Derived from all_powers.
+	///All Coven powers under this Coven that the owner knows. LIST OF INSTANCES, NOT TYPES.
 	var/list/datum/coven_power/known_powers = list()
 	///The typepaths of possible powers for every rank in this Coven.
 	var/all_powers = list()
@@ -43,7 +43,7 @@
 	///List of research nodes unlocked for this coven
 	var/list/unlocked_research = list()
 	///Current research points available to spend
-	var/research_points = 0
+	var/research_points = 10
 
 	///Base XP gain for successful power use
 	var/base_power_xp = 5
@@ -62,12 +62,31 @@
 	if (!level)
 		return
 
-	src.level = level
-	for (var/i in 1 to level)
-		var/type_to_create = all_powers[i]
-		var/datum/coven_power/new_power = new type_to_create(src)
-		known_powers += new_power
-	current_power = known_powers[1]
+	// Initialize powers for the starting level
+	initialize_powers_for_level(level)
+
+/**
+ * Helper proc to initialize powers for a given level
+ * This ensures we don't duplicate code between New() and set_level()
+ */
+/datum/coven/proc/initialize_powers_for_level(target_level)
+	// Clear existing powers
+	if(length(known_powers))
+		QDEL_LIST(known_powers)
+		known_powers = list()
+
+	// Add powers for each level up to target_level
+	for(var/i in 1 to target_level)
+		if(i <= length(all_powers))
+			var/type_to_create = all_powers[i]
+			var/datum/coven_power/new_power = new type_to_create(src)
+			known_powers += new_power
+
+	// Set the current power to the first one if we have any
+	if(length(known_powers))
+		current_power = known_powers[1]
+
+	src.level = target_level
 
 /**
  * Modifies a Coven's level, updating its available powers
@@ -82,23 +101,7 @@
 	if (level == src.level)
 		return
 
-	var/list/datum/coven_power/new_known_powers = list()
-	for (var/i in 1 to level)
-		if (length(known_powers) >= level)
-			new_known_powers.Add(known_powers[i])
-		else
-			var/adding_power_type = all_powers[i]
-			var/datum/coven_power/new_power = new adding_power_type(src)
-			new_known_powers.Add(new_power)
-			new_power.post_gain()
-
-	//delete orphaned powers
-	var/list/datum/coven_power/leftover_powers = known_powers - new_known_powers
-	if (length(leftover_powers))
-		QDEL_LIST(leftover_powers)
-
-	known_powers = new_known_powers
-	src.level = level
+	initialize_powers_for_level(level)
 
 /**
  * Assigns the Coven to a mob, setting its owner and applying
@@ -114,6 +117,8 @@
 		UnregisterSignal(owner, COMSIG_PARENT_QDELETING)
 	RegisterSignal(new_owner, COMSIG_PARENT_QDELETING, PROC_REF(on_owner_qdel))
 	owner = new_owner
+
+	// Set owner for all known powers
 	for (var/datum/coven_power/power in known_powers)
 		power.set_owner(owner)
 
@@ -130,6 +135,7 @@
 	SIGNAL_HANDLER
 	owner = null
 	current_power = null
+	QDEL_LIST(known_powers)
 	known_powers = null
 
 /**
@@ -137,14 +143,23 @@
  * searching by type.
  *
  * Arguments:
- * * power - the power type to search for
+ * * power_type - the power type to search for
  */
-/datum/coven/proc/get_power(power)
-	if (!ispath(power))
-		return
-	for (var/datum/coven_power/found_power in known_powers)
-		if (found_power.type == power)
-			return found_power
+/datum/coven/proc/get_power(power_type)
+	if (!ispath(power_type))
+		return null
+
+	for (var/datum/coven_power/power in known_powers)
+		if (power.type == power_type)
+			return power
+
+	return null
+
+/**
+ * Check if we already have a power of this type
+ */
+/datum/coven/proc/has_power(power_type)
+	return get_power(power_type) != null
 
 /**
  * Applies effects specific to the Coven to
@@ -158,10 +173,14 @@
 	for (var/datum/coven_power/power in known_powers)
 		power.post_gain()
 
-
 /datum/coven/proc/initialize_research_tree()
 	research_interface = new /datum/coven_research_interface(src)
 	research_interface.initialize_coven_tree()
+
+	for(var/research_type in research_interface.research_nodes)
+		var/datum/coven_research_node/node = research_interface.get_research_node(research_type)
+		if(node.required_level <= level)
+			unlock_power_from_tree(research_type)
 
 /datum/coven/proc/gain_experience(amount)
 	experience += amount
@@ -191,9 +210,61 @@
 		to_chat(owner, "<span class='boldannounce'>Your [name] has reached level [level]!</span>")
 		to_chat(owner, "<span class='notice'>You gain [level * 5] bonus research points!</span>")
 
+	// Auto-unlock any powers that become available at this level
+	if(level <= length(all_powers))
+		var/new_power_type = all_powers[level]
+		if(!has_power(new_power_type))
+			grant_power(new_power_type, "level_unlock")
+
+	// Auto-unlock research nodes that become available
+	if(research_interface)
+		var/list/newly_available = research_interface.get_available_research()
+		var/list/unlocked_this_level = list()
+
+		for(var/research_type in newly_available)
+			if(unlock_power_from_tree(research_type))
+				var/datum/coven_research_node/node = research_interface.get_research_node(research_type)
+				unlocked_this_level += node.name
+
+		if(length(unlocked_this_level) && owner)
+			to_chat(owner, "<span class='boldnotice'>New powers unlocked: [jointext(unlocked_this_level, ", ")]</span>")
+
+/datum/coven/proc/unlock_power_from_tree(research_type)
+	if(research_type in unlocked_research)
+		return FALSE
+
+	if(!research_interface)
+		return FALSE
+
+	var/datum/coven_research_node/node = research_interface.get_research_node(research_type)
+	if(!node)
+		return FALSE
+
+	// Check level requirement
+	if(level < node.required_level)
+		return FALSE
+
+	// Check prerequisites
+	for(var/prereq in node.prerequisites)
+		if(!(prereq in unlocked_research))
+			return FALSE
+
+	// Unlock the power
+	unlocked_research += research_type
+
+	// Grant the power
+	if(node.unlocks_power)
+		grant_power(node.unlocks_power, "level_unlock")
+
+	// Apply special effects
+	if(node.special_effect)
+		apply_research_effect(node.special_effect)
+
+	return TRUE
 
 /**
  * Unified power granting system with different sources
+ * FIXED: Now properly checks for existing powers and manages instances correctly
  *
  * Arguments:
  * * power_type - The type of power to grant
@@ -201,18 +272,21 @@
  * * silent - Whether to suppress messages
  */
 /datum/coven/proc/grant_power(power_type, source = "unknown", silent = FALSE)
-	if(power_type in known_powers)
+	// Check if we already have this power
+	if(has_power(power_type))
 		return FALSE
 
-	// Validate power type
+	// Validate power type is in our available powers
 	if(!(power_type in all_powers))
 		return FALSE
 
-	// Create and initialize the power
+	// Create and initialize the power INSTANCE
 	var/datum/coven_power/new_power = new power_type(src)
 	new_power.owner = owner
 	new_power.discipline = src
-	known_powers[power_type] = new_power
+
+	// Add the INSTANCE to known_powers (not the type!)
+	known_powers += new_power
 
 	// Apply source-specific effects
 	switch(source)
@@ -252,19 +326,12 @@
 
 	return TRUE
 
+/**
+ * DEPRECATED: Use grant_power instead
+ * Keeping for backwards compatibility but it now just calls grant_power
+ */
 /datum/coven/proc/learn_power(power_type)
-	if(power_type in known_powers)
-		return FALSE
-
-	var/datum/coven_power/power = new power_type
-	power.owner = owner
-	power.discipline = src
-	known_powers[power_type] = power
-
-	if(owner)
-		to_chat(owner, "<span class='boldnotice'>You have learned [power.name]!</span>")
-
-	return TRUE
+	return grant_power(power_type, "unknown", FALSE)
 
 /datum/coven/proc/can_research(research_type)
 	if(!research_interface)
@@ -272,6 +339,10 @@
 
 	var/datum/coven_research_node/node = research_interface.get_research_node(research_type)
 	if(!node)
+		return FALSE
+
+	// Check if already researched
+	if(research_type in unlocked_research)
 		return FALSE
 
 	// Check if prerequisites are met
@@ -289,21 +360,16 @@
 	switch(effect_type)
 		if("reduce_vitae_cost")
 			// Reduce vitae costs of all powers by 10%
-			for(var/power_type in known_powers)
-				var/datum/coven_power/power = known_powers[power_type]
+			for(var/datum/coven_power/power in known_powers)
 				power.vitae_cost = max(1, round(power.vitae_cost * 0.9))
 		if("increase_range")
 			// Increase range of all powers by 1
-			for(var/power_type in known_powers)
-				var/datum/coven_power/power = known_powers[power_type]
+			for(var/datum/coven_power/power in known_powers)
 				power.range += 1
 		if("reduce_cooldown")
 			// Reduce cooldowns by 20%
-			for(var/power_type in known_powers)
-				var/datum/coven_power/power = known_powers[power_type]
+			for(var/datum/coven_power/power in known_powers)
 				power.cooldown_length = max(0, round(power.cooldown_length * 0.8))
-
-
 
 /**
  * Main XP gain function with multiple sources
@@ -403,7 +469,6 @@
 	var/xp_gain = 10 * intensity
 	gain_experience_from_source(xp_gain, "roleplay")
 
-
 /datum/coven/proc/research_power(research_type)
 	if(!can_research(research_type))
 		return FALSE
@@ -443,7 +508,7 @@
 
 	// Find powers that could be discovered
 	for(var/power_type in all_powers)
-		if(power_type in known_powers)
+		if(has_power(power_type))
 			continue
 
 		var/datum/coven_power/temp_power = new power_type
