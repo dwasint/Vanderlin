@@ -69,7 +69,7 @@
 
 /obj/structure/redstone/torch/get_power_directions()
 	// Torches output to all sides except the attached side
-	var/list/output_dirs = GLOB.cardinals
+	var/list/output_dirs = GLOB.cardinals.Copy()
 	output_dirs -= attached_dir
 	return output_dirs
 
