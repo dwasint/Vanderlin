@@ -2,7 +2,6 @@
 	name = "Fae Trickery"
 	desc = "This coven typically develops in vampires born near the swamps of Daftmarsh surrounded by the Fae."
 	icon_state = "mytherceria"
-	clan_restricted = TRUE
 	power_type = /datum/coven_power/fae_trickery
 
 /datum/coven_power/fae_trickery

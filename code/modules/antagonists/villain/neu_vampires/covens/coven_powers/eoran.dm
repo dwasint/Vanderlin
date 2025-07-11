@@ -1,5 +1,5 @@
 /datum/coven/eora
-	name = "Eora's Embrace"
+	name = "Eoran Embrace"
 	desc = "Blessed by the Goddess of Love, Family, and Art, these vampires have developed powers that strengthen bonds, inspire beauty, and heal emotional wounds."
 	icon_state = "eora"
 	power_type = /datum/coven_power/eora

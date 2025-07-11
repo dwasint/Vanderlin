@@ -591,7 +591,6 @@
 		return
 
 	var/list/available_members = list()
-
 	for(var/mob/living/carbon/human/member in user_clan.clan_members)
 		if(!member.clan_position || member.clan_position == selected_position)
 			available_members += member
@@ -599,9 +598,7 @@
 	var/modal_content = {"
 	<div class='dialog-content'>
 		<h3>Assign Member to [selected_position.name]</h3>
-
 		[selected_position.assigned_member ? "<p><strong>Current Assignment:</strong> [selected_position.assigned_member.real_name]</p>" : "<p><strong>Current Assignment:</strong> Vacant</p>"]
-
 		<form id='assign-member-form'>
 			<div class='form-group' style='margin-bottom: 15px;'>
 				<label for='member-select' style='display: block; margin-bottom: 5px; color: #fff;'>Select Member:</label>
@@ -610,15 +607,21 @@
 					[generate_member_options(available_members)]
 				</select>
 			</div>
-
 			<div class='form-actions' style='text-align: right; margin-top: 20px;'>
 				<button type='button' onclick='submitAssignMember()' class='btn-primary' style='padding: 8px 16px; background: #0066cc; color: white; border: none; border-radius: 3px; cursor: pointer; margin-right: 10px;'>Assign Member</button>
 				<button type='button' onclick='closeHierarchyModal()' class='btn-secondary' style='padding: 8px 16px; background: #666; color: white; border: none; border-radius: 3px; cursor: pointer;'>Cancel</button>
 			</div>
 		</form>
 	</div>
+
+	<script>
+		document.getElementById('management-modal').style.display = 'block';
+		document.getElementById('modal-title').textContent = 'Assign Member to [selected_position.name]';
+		document.getElementById('modal-body').innerHTML = document.querySelector('.dialog-content').outerHTML;
+	</script>
 	"}
 
+	// Generate updated HTML with modal open
 	var/updated_html = generate_hierarchy_html()
 	updated_html = replacetext(updated_html, "<!-- Dynamic content goes here -->", modal_content)
 

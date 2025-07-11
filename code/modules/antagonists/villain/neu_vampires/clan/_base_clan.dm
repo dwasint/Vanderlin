@@ -34,6 +34,11 @@ And it also helps for the character set panel
 
 
 	var/list/clan_members = list()
+	var/list/non_vampire_members = list()
+	/// Whether this clan allows non-vampire members
+	var/allows_non_vampires = TRUE
+	/// Title for non-vampire members
+	var/non_vampire_title = "Slave"
 	var/datum/clan_hierarchy_node/hierarchy_root
 	var/list/datum/clan_hierarchy_node/all_positions = list()
 
@@ -59,20 +64,48 @@ And it also helps for the character set panel
 	var/datum/clan_leader/leader = /datum/clan_leader/lord
 	var/selectable_by_vampires = TRUE // Set to FALSE for clans that shouldn't be selectable
 
-/datum/clan/proc/on_gain(mob/living/carbon/human/H)
+/datum/clan/proc/on_gain(mob/living/carbon/human/H, is_vampire = TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 
 	var/datum/action/clan_menu/menu_action = new /datum/action/clan_menu(H.mind)
 	menu_action.Grant(H)
 
-	RegisterSignal(H, COMSIG_HUMAN_LIFE, PROC_REF(on_vampire_life))
+	// Add to appropriate member lists
+	clan_members |= H
+	if(is_vampire)
+		RegisterSignal(H, COMSIG_HUMAN_LIFE, PROC_REF(on_vampire_life))
 
-	for (var/trait in clane_traits)
-		ADD_TRAIT(H, trait, "clan")
+		// Apply vampire-specific traits
+		for (var/trait in clane_traits)
+			ADD_TRAIT(H, trait, "clan")
 
+		// Apply vampire-specific changes
+		H.has_reflection = FALSE
+		H.cut_overlay(H.reflective_icon)
+		H.mob_biotypes = MOB_UNDEAD
+
+		if(alt_sprite)
+			if (!alt_sprite_greyscale)
+				H.skin_tone = "#fff4e6"
+			H.dna.species.limbs_id = alt_sprite
+			H.update_body_parts()
+			H.update_body()
+
+		apply_clan_components(H)
+		setup_vampire_abilities(H)
+		apply_vampire_look(H)
+
+		H.playsound_local(get_turf(H), 'sound/music/vampintro.ogg', 80, FALSE, pressure_affected = FALSE)
+	else
+		non_vampire_members |= H
+		// Apply non-vampire specific benefits (lighter version)
+		apply_non_vampire_look(H)
+
+	// Apply covens to all members (vampire or not)
 	for(var/datum/coven/coven as anything in clane_covens)
 		H.give_coven(coven)
 
+	// Handle accessories for all members
 	if(length(accessories))
 		if(current_accessory)
 			H.remove_overlay(accessories_layers[current_accessory])
@@ -80,32 +113,54 @@ And it also helps for the character set panel
 			H.overlays_standing[accessories_layers[current_accessory]] = acc_overlay
 			H.apply_overlay(accessories_layers[current_accessory])
 
-	if(alt_sprite)
-		if (!alt_sprite_greyscale)
-			H.skin_tone = "#fff4e6"
-		H.dna.species.limbs_id = alt_sprite
-		H.update_body_parts()
-		H.update_body()
-
-	apply_clan_components(H)
-
-
-	setup_vampire_abilities(H)
-	apply_vampire_look(H)
-
-	H.has_reflection = FALSE
-	H.cut_overlay(H.reflective_icon)
-	H.mob_biotypes = MOB_UNDEAD
-
-	clan_members |= H
-
 	if(!hierarchy_root)
 		initialize_hierarchy()
 
-	handle_member_joining(H)
+	handle_member_joining(H, is_vampire)
 
-	H.playsound_local(get_turf(H), 'sound/music/vampintro.ogg', 80, FALSE, pressure_affected = FALSE)
 
+/datum/clan/proc/apply_non_vampire_look(mob/living/carbon/human/H)
+	// Subtle changes for non-vampires - they look more human but with slight clan influence
+	var/obj/item/organ/eyes/eyes = H.getorganslot(ORGAN_SLOT_EYES)
+
+	if(eyes && prob(50)) // Only sometimes change eye color
+		eyes.heterochromia = FALSE
+		eyes.eye_color = "#AA0000" // Darker red than vampires
+
+	H.update_body()
+	H.update_body_parts(redraw = TRUE)
+
+
+/datum/clan/proc/add_non_vampire_member(mob/living/carbon/human/H)
+	if(!allows_non_vampires)
+		return FALSE
+
+	if(H in clan_members)
+		return FALSE // Already a member
+
+	H.clan = src
+	on_gain(H, is_vampire = FALSE)
+
+	to_chat(H, "<span class='notice'>You have been inducted into [name] as a [non_vampire_title]!</span>")
+
+	// Announce to clan
+	for(var/mob/living/carbon/human/member in clan_members)
+		if(member != H)
+			to_chat(member, "<span class='notice'>[H.real_name] has joined [name] as a [non_vampire_title].</span>")
+
+	return TRUE
+
+/datum/clan/proc/handle_member_joining(mob/living/carbon/human/H, is_vampire = TRUE)
+	// If no clan leader exists, make this person the leader (vampires only)
+	if(!clan_leader && is_vampire)
+		hierarchy_root.assign_member(H)
+		clan_leader = H
+		to_chat(H, "<span class='notice'>You have been appointed as the [leader_title] of [name]!</span>")
+		return
+
+	// Otherwise, they join as an unassigned member
+	var/member_type = is_vampire ? "vampire" : non_vampire_title
+	to_chat(H, "<span class='notice'>You have joined [name] as a [member_type]! Speak with leadership for position assignment.</span>")
 
 /datum/clan/proc/initialize_hierarchy()
 	if(hierarchy_root)
@@ -118,16 +173,6 @@ And it also helps for the character set panel
 	hierarchy_root.max_subordinates = 10
 	all_positions += hierarchy_root
 
-/datum/clan/proc/handle_member_joining(mob/living/carbon/human/H)
-	// If no clan leader exists, make this person the leader
-	if(!clan_leader)
-		hierarchy_root.assign_member(H)
-		clan_leader = H
-		to_chat(H, "<span class='notice'>You have been appointed as the [leader_title] of [name]!</span>")
-		return
-
-	// Otherwise, they join as an unassigned member (can be assigned later via hierarchy interface)
-	to_chat(H, "<span class='notice'>You have joined [name]! Speak with leadership for position assignment.</span>")
 
 /datum/clan/proc/create_position(position_name, position_desc, datum/clan_hierarchy_node/superior_position, rank_level)
 	if(!superior_position || !superior_position.can_assign_positions)
@@ -288,6 +333,23 @@ And it also helps for the character set panel
 		leader.lord_title = leader_title
 		leader.make_new_leader(H)
 		clan_leader = H
+
+
+/datum/clan/proc/add_coven_to_clan(datum/coven/new_coven, give_to_all = TRUE)
+	if(new_coven in clane_covens)
+		return FALSE // Already have this coven
+
+	clane_covens += new_coven
+
+	if(give_to_all)
+		// Give the coven to all current clan members
+		for(var/mob/living/carbon/human/member in clan_members)
+			if(member in non_vampire_members)
+				continue
+			member.give_coven(new_coven)
+			to_chat(member, "<span class='notice'>Your clan has gained access to the [new_coven.name] coven!</span>")
+
+	return TRUE
 
 /**
  * Gives the human an established vampiric Clan, applying

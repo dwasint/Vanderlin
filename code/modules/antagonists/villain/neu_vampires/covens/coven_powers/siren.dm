@@ -1,8 +1,7 @@
 /datum/coven/siren
-	name = "Siren's Blessing"
+	name = "Siren Blessing"
 	desc = "Typically found in vampires who frequent the seas of Enigma, they've developed the ability to adapt much like sirens."
 	icon_state = "melpominee"
-	clan_restricted = TRUE
 	power_type = /datum/coven_power/siren
 
 /datum/coven_power/siren
