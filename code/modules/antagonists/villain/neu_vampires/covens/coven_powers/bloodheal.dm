@@ -6,7 +6,6 @@
 	desc = "Use the power of your Vitae to mend your flesh."
 	icon_state = "bloodheal"
 	power_type = /datum/coven_power/bloodheal
-	selectable = FALSE
 	max_level = 10
 
 /datum/coven_power/bloodheal

@@ -887,7 +887,7 @@
 				user.visible_message(span_danger("Some dark energy begins to flow from [user] into [C]..."), span_userdanger("I begin siring [C]..."))
 				if(do_after(user, 3 SECONDS, C))
 					C.visible_message(span_red("[C] rises as a new spawn!"))
-					var/datum/antagonist/vampire/new_antag = new /datum/antagonist/vampire(user.clan?.type)
+					var/datum/antagonist/vampire/new_antag = new /datum/antagonist/vampire(user.clan, TRUE)
 					C.mind.add_antag_datum(new_antag)
 					// this is bad, should give them a healing buff instead
 					sleep(2 SECONDS)

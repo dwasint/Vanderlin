@@ -9,8 +9,6 @@
 	var/clan_restricted = FALSE
 	///The root type of the powers this Coven uses.
 	var/power_type = /datum/coven_power
-	///If this Coven can be selected at all, or has special handling.
-	var/selectable = TRUE
 
 	/* LEVELING SYSTEM */
 	///What rank, or how many dots the caster has in this Coven.

@@ -57,6 +57,7 @@ And it also helps for the character set panel
 	var/mob/living/clan_leader
 	var/leader_title = "Vampire Lord"
 	var/datum/clan_leader/leader = /datum/clan_leader/lord
+	var/selectable_by_vampires = TRUE // Set to FALSE for clans that shouldn't be selectable
 
 /datum/clan/proc/on_gain(mob/living/carbon/human/H)
 	SHOULD_CALL_PARENT(TRUE)
@@ -288,6 +289,25 @@ And it also helps for the character set panel
 		leader.make_new_leader(H)
 		clan_leader = H
 
+/**
+ * Gives the human an established vampiric Clan, applying
+ * on_gain effects and post_gain effects if the
+ * parameter is true. Can also remove Clans
+ * with or without a replacement, and apply
+ * on_lose effects. Will have no effect the human
+ * is being given the Clan it already has.
+ *
+ * Arguments:
+ * * setting_clan - Typepath or Clan singleton to give to the human
+ * * joining_round - If this Clan is being given at roundstart and should call on_join_round
+ */
+/mob/living/carbon/human/proc/set_clan_direct(datum/clan/new_clan)
+    var/datum/clan/previous_clan = clan
+    previous_clan?.on_lose(src)
+    clan = new_clan
+    if (!new_clan)
+        return
+    clan.on_gain(src)
 
 /**
  * Gives the human a vampiric Clan, applying
@@ -301,6 +321,7 @@ And it also helps for the character set panel
  * * setting_clan - Typepath or Clan singleton to give to the human
  * * joining_round - If this Clan is being given at roundstart and should call on_join_round
  */
+
 /mob/living/carbon/human/proc/set_clan(setting_clan, joining_round)
 	if(!length(GLOB.vampire_clans))
 		for(var/clan_type in subtypesof(/datum/clan))

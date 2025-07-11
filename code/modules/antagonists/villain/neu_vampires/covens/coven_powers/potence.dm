@@ -3,6 +3,7 @@
 	desc = "Boosts melee and unarmed damage."
 	icon_state = "potence"
 	power_type = /datum/coven_power/potence
+	clan_restricted = TRUE
 
 /datum/coven_power/potence
 	name = "Potence power name"
