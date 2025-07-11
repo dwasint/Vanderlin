@@ -171,7 +171,6 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	//overloaded
 	if(hsrc && hsrc != holder && DEFAULT_TRY_QUEUE_VERB(VERB_CALLBACK(src, PROC_REF(_Topic), hsrc, href, href_list)))
 		return
-	message_admins(hsrc)
 
 	..()	//redirect to hsrc.Topic()
 
