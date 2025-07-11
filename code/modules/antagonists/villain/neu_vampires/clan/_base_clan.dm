@@ -96,14 +96,12 @@ And it also helps for the character set panel
 		apply_vampire_look(H)
 
 		H.playsound_local(get_turf(H), 'sound/music/vampintro.ogg', 80, FALSE, pressure_affected = FALSE)
+		for(var/datum/coven/coven as anything in clane_covens)
+			H.give_coven(coven)
 	else
 		non_vampire_members |= H
 		// Apply non-vampire specific benefits (lighter version)
 		apply_non_vampire_look(H)
-
-	// Apply covens to all members (vampire or not)
-	for(var/datum/coven/coven as anything in clane_covens)
-		H.give_coven(coven)
 
 	// Handle accessories for all members
 	if(length(accessories))
