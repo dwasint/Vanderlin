@@ -14,7 +14,7 @@
 	var/mob/living/carbon/vampire = owner.current
 	remove_job()
 	owner.current?.roll_mob_stats()
-	owner.purge_combat_knowledge()
+	owner.current?.purge_combat_knowledge()
 	. = ..()
 	addtimer(CALLBACK(owner.current, TYPE_PROC_REF(/mob/living/carbon/human, choose_name_popup), "[name]"), 5 SECONDS)
 	vampire.grant_undead_eyes()
@@ -35,7 +35,6 @@
 	for(var/datum/mind/MF in get_minds("Death Knight"))
 		owner.i_know_person(MF)
 		owner.person_knows_me(MF)
-
 
 	var/mob/living/carbon/human/H = owner.current
 	H.equipOutfit(/datum/outfit/job/vamplord)

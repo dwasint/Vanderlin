@@ -46,6 +46,10 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	. = ..()
 	equip()
 
+/datum/antagonist/vampire/on_removal()
+	. = ..()
+	owner.current.remove_spells(source = src)
+
 /datum/antagonist/vampire/lord/on_gain()
 	. = ..()
 	owner.special_role = span_redtext("[name]")
