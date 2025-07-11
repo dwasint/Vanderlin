@@ -456,18 +456,9 @@
 
 	owner.update_action_buttons()
 
-	// Store context for XP calculation
-	last_target = target
-	last_action_context = determine_action_context(target)
-
-	// Check for critical success conditions
-	var/is_critical = check_critical_success(target)
-	if(is_critical)
-		last_use_was_critical = TRUE
-
 	// Grant XP for successful power use
-	if(discipline && owner)
-		discipline.on_power_use_success(src, is_critical)
+	if(!toggled)
+		grant_usage_xp(target, FALSE)
 
 	return TRUE
 
@@ -641,6 +632,31 @@
 
 	return FALSE
 
+/datum/coven_power/proc/grant_usage_xp(atom/target, is_refresh = FALSE)
+	if(!discipline || !owner)
+		return
+
+	// Store context for XP calculation
+	last_target = target
+	last_action_context = determine_action_context(target)
+
+	// Check for critical success conditions
+	var/is_critical = check_critical_success(target)
+	if(is_critical)
+		last_use_was_critical = TRUE
+
+	// Calculate XP multiplier for refresh vs initial activation
+	var/xp_multiplier = 1.0
+	if(is_refresh)
+		// Refresh grants reduced XP but still rewards maintaining the power
+		xp_multiplier = 0.3
+		// Give bonus for maintaining expensive powers
+		if(vitae_cost >= 3)
+			xp_multiplier = 0.5
+
+	// Grant XP for successful power use
+	discipline.on_power_use_success(src, is_critical, xp_multiplier)
+
 /**
  * Overridable proc called by the duration timer to handle
  * duration expiring. Will refresh if toggled, or deactivate
@@ -811,6 +827,7 @@
 	if (spend_resources())
 		if(vitae_cost > 0)
 			to_chat(owner, span_warning("[src] consumes your blood to stay active."))
+		grant_usage_xp(target, TRUE)
 		if (!duration_override)
 			do_duration(target)
 	else

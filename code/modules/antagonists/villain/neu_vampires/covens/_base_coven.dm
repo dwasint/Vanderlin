@@ -364,11 +364,16 @@
  */
 
 // Called when a power is successfully used
-/datum/coven/proc/on_power_use_success(datum/coven_power/power, was_critical = FALSE)
-	if(was_critical)
-		power.last_use_was_critical = TRUE
+/datum/coven/proc/on_power_use_success(datum/coven_power/power, is_critical = FALSE, xp_multiplier = 1.0)
+	var/base_xp = power.level * 2 // Base XP based on power level
 
-	gain_experience_from_source(base_power_xp, "power_use", power)
+	if(is_critical)
+		base_xp *= 1.5
+
+	// Apply the multiplier for refresh vs activation
+	base_xp *= xp_multiplier
+
+	gain_experience_from_source(base_xp, "power_usage", power, 1.0)
 
 // Called when player discovers something new about their coven
 /datum/coven/proc/on_discovery_event(discovery_type)
