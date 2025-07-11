@@ -29,13 +29,14 @@
 		TRAIT_LIMBATTACHMENT,
 	)
 
-/datum/clan/nosferatu/on_gain(mob/living/carbon/human/H)
+/datum/clan/nosferatu/on_gain(mob/living/carbon/human/H, is_vampire = TRUE)
 	. = ..()
 
-	var/obj/item/organ/eyes/night_vision/NV = new()
-	NV.Insert(H, TRUE, FALSE)
-	H.ventcrawler = VENTCRAWLER_ALWAYS //I don't think this does anything because we have no vents
-	H.AddComponent(/datum/component/hideous_face, CALLBACK(TYPE_PROC_REF(/datum/clan/nosferatu, face_seen)))
+	if(is_vampire)
+		var/obj/item/organ/eyes/night_vision/NV = new()
+		NV.Insert(H, TRUE, FALSE)
+		H.ventcrawler = VENTCRAWLER_ALWAYS //I don't think this does anything because we have no vents
+		H.AddComponent(/datum/component/hideous_face, CALLBACK(TYPE_PROC_REF(/datum/clan/nosferatu, face_seen)))
 
 /datum/clan/nosferatu/proc/face_seen(mob/living/carbon/human/nosferatu)
 	nosferatu.AdjustMasquerade(-1)

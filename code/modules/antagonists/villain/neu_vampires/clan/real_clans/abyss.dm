@@ -8,7 +8,7 @@
 		/datum/coven/demonic
 	)
 
-/datum/clan/abyss/on_gain(mob/living/carbon/human/H)
+/datum/clan/abyss/on_gain(mob/living/carbon/human/H, is_vampire = TRUE)
 	. = ..()
 	H.faction |= "Baali"
 	H.AddElement(/datum/element/holy_weakness)
