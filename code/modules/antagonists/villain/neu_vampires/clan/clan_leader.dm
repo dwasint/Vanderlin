@@ -47,17 +47,14 @@
 
 /datum/clan_leader/proc/remove_leader(mob/living/carbon/human/H)
 	REMOVE_TRAIT(H, TRAIT_CLAN_LEADER, "clan")
-	// Remove lord spells
 	for(var/spell_type in lord_spells)
 		var/obj/effect/proc_holder/spell/spell_instance = locate(spell_type) in H.mind.spell_list
 		if(spell_instance)
 			H.RemoveSpell(spell_instance)
 
-	// Remove lord verbs
 	for(var/verb_path in lord_verbs)
 		H.verbs -= verb_path
 
-	// Remove lord traits
 	for(var/trait in lord_traits)
 		REMOVE_TRAIT(H, trait, "lord_component")
 	H.maxbloodpool -= vitae_bonus

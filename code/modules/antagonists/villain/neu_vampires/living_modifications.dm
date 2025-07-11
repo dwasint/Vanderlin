@@ -43,6 +43,27 @@
 		return FALSE
 	return TRUE
 
+/datum/clan/proc/grant_hierarchy_actions(mob/living/carbon/human/H)
+	if(!H.clan_position)
+		return
+
+	for(var/datum/action/clan_hierarchy/action in H.actions)
+		action.Remove(H)
+
+	if(length(H.clan_position.subordinates))
+		var/datum/action/clan_hierarchy/command_subordinate/command_action = new()
+		command_action.Grant(H)
+
+		var/datum/action/clan_hierarchy/locate_subordinate/locate_action = new()
+		locate_action.Grant(H)
+
+	if(H.clan_position.can_assign_positions)
+		var/datum/action/clan_hierarchy/summon_subordinate/summon_action = new()
+		summon_action.Grant(H)
+
+		var/datum/action/clan_hierarchy/mass_command/mass_action = new()
+		mass_action.Grant(H)
+
 /mob/living/proc/adjust_bloodpool(adjust)
 	bloodpool = CLAMP(bloodpool + adjust, 0, maxbloodpool)
 
@@ -121,6 +142,14 @@
 		var/datum/action/coven/action = new(coven)
 		mind?.AddAction(action)
 
+/mob/living/carbon/human/proc/get_coven(datum/coven/coven_type)
+	if(!length(covens))
+		return null
+	for(var/datum/coven/coven as anything in covens)
+		if(coven.type != coven_type)
+			continue
+		return coven
+	return null
 
 /**
  * Opens the unified clan menu showing all covens and research trees
@@ -175,3 +204,30 @@
 	// Maintain blood volume for vampires
 	if(bloodpool > 0)
 		blood_volume = BLOOD_VOLUME_NORMAL
+
+/mob/living/carbon/human/proc/get_clan_hierarchy_examine(mob/living/carbon/human/examiner)
+	if(!clan || !clan_position || !examiner.clan)
+		return ""
+
+	if(examiner.clan != clan)
+		return ""
+
+	var/examine_text = ""
+
+	examine_text += "<span class='info'><b>Clan Position:</b> [clan_position.name]</span>\n"
+
+	if(clan_position.superior && clan_position.superior.assigned_member)
+		var/mob/living/carbon/human/superior = clan_position.superior.assigned_member
+		examine_text += "<span class='info'><b>Reports to:</b> [superior.real_name] ([clan_position.superior.name])</span>\n"
+
+	if(examiner.clan_position && (examiner.clan_position.can_assign_positions || examiner.clan_position.is_superior_to(clan_position)))
+		if(length(clan_position.subordinates))
+			examine_text += "<span class='info'><b>Subordinates:</b> "
+			var/list/sub_names = list()
+			for(var/datum/clan_hierarchy_node/sub in clan_position.subordinates)
+				if(sub.assigned_member)
+					sub_names += "[sub.assigned_member.real_name] ([sub.name])"
+			examine_text += english_list(sub_names)
+			examine_text += "</span>\n"
+
+	return examine_text

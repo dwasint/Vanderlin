@@ -63,6 +63,13 @@
 	/// The player using this Discipline power.
 	var/mob/living/carbon/human/owner
 
+	/// Track if the last use was a critical success for XP bonus
+	var/last_use_was_critical = FALSE
+	/// Track what type of action this was for XP categorization
+	var/last_action_context = null
+	/// Track the target for context-sensitive XP
+	var/last_target = null
+
 /datum/coven_power/New(datum/coven/discipline)
 	if(!discipline)
 		CRASH("coven_power [src.name] created without a parent discipline!")
@@ -449,8 +456,74 @@
 
 	owner.update_action_buttons()
 
+	// Store context for XP calculation
+	last_target = target
+	last_action_context = determine_action_context(target)
+
+	// Check for critical success conditions
+	var/is_critical = check_critical_success(target)
+	if(is_critical)
+		last_use_was_critical = TRUE
+
+	// Grant XP for successful power use
+	if(discipline && owner)
+		discipline.on_power_use_success(src, is_critical)
+
 	return TRUE
 
+/datum/coven_power/proc/determine_action_context(atom/target)
+	// Check if this is combat usage
+	if(target && (hostile))
+		if(isliving(target))
+			var/mob/living/living_target = target
+			if(living_target.stat != DEAD && living_target.health < living_target.maxHealth * 0.5)
+				return "combat_critical" // Bonus for using on wounded enemies
+			return "combat"
+		return "hostile_action"
+
+	// Check if this is helping/healing
+	if(target && !hostile && isliving(target))
+		var/mob/living/living_target = target
+		if(living_target != owner && living_target.health < living_target.maxHealth)
+			return "healing"
+		if(living_target != owner)
+			return "social"
+
+	// Check if this is self-improvement
+	if(target == owner || target_type == NONE)
+		return "self_improvement"
+
+	// Check if this is utility/exploration
+	if(target && isobj(target))
+		return "utility"
+
+	return "general"
+
+/datum/coven_power/proc/check_critical_success(atom/target)
+	var/base_chance = 5 // Base 5% chance
+
+	// Higher level powers have higher crit chance
+	base_chance += (level * 2)
+
+	// Owner's discipline level affects crit chance
+	if(discipline)
+		base_chance += (discipline.level * 1.5)
+
+	// Context-based bonuses
+	switch(last_action_context)
+		if("combat_critical")
+			base_chance += 10 // Higher chance in dangerous combat
+		if("healing")
+			base_chance += 5 // Bonus for helping others
+		if("social")
+			base_chance += 3 // Small bonus for social actions
+		if("discovery")
+			base_chance += 15 // High bonus for experimental use
+
+	// Cap at 25% chance
+	base_chance = min(base_chance, 25)
+
+	return prob(base_chance)
 
 /**
  * Signal handler for members of a power_group to react to the activation of other disciplines.
@@ -673,6 +746,24 @@
 
 	owner.update_action_buttons()
 
+	if(duration_length > 0 && !direct)
+		// Grant bonus XP for maintaining powers successfully
+		var/maintenance_xp = round(duration_length / 100) // 1 XP per 10 seconds maintained
+		if(maintenance_xp > 0 && discipline)
+			discipline.gain_experience_from_source(
+				maintenance_xp,
+				"power_maintenance",
+				src,
+				1.0
+			)
+
+	// Clear XP tracking variables
+	last_use_was_critical = FALSE
+	last_action_context = null
+	last_target = null
+
+	// Call parent deactivate
+
 /**
  * Checks if the power can_deactivate() and deactivate()s if it can.
  * Also sends feedback the user if they successfully manually cancel it.
@@ -746,3 +837,97 @@
 
 	deltimer(duration_timers[to_clear])
 	duration_timers.Cut(to_clear, to_clear + 1)
+
+/// Trigger discovery XP when using powers in new ways
+/datum/coven_power/proc/trigger_discovery_xp(discovery_type)
+	if(!discipline)
+		return
+
+	switch(discovery_type)
+		if("new_target_type")
+			discipline.on_discovery_event("target_experimentation")
+		if("environmental_interaction")
+			discipline.on_discovery_event("environmental_mastery")
+		if("power_combination")
+			discipline.on_discovery_event("power_synergy")
+		if("creative_usage")
+			discipline.on_discovery_event("creative_application")
+
+/// Trigger teaching XP when demonstrating powers to others
+/datum/coven_power/proc/trigger_teaching_xp(mob/living/carbon/human/student)
+	if(!discipline || !student)
+		return
+
+	// Check if student is watching and learning
+	if(get_dist(owner, student) <= 3 && student.client)
+		discipline.on_teaching_event(student, src)
+
+		// Give student a small discovery XP boost
+		var/datum/coven/student_coven = student.get_coven(discipline.type)
+		if(student_coven)
+			student_coven.gain_experience_from_source(5, "observation", src, 1.0)
+
+/// Trigger roleplay XP for good character moments
+/datum/coven_power/proc/trigger_roleplay_xp(intensity = 1)
+	if(!discipline)
+		return
+
+	discipline.on_roleplay_moment(intensity)
+
+/datum/coven_power/proc/setup_xp_hooks()
+	if(!owner || !discipline)
+		return
+	RegisterSignal(owner, COMSIG_LIVING_DEATH, PROC_REF(on_owner_death))
+	RegisterSignal(owner, COMSIG_MOB_SAY, PROC_REF(on_owner_speak))
+	if(hostile)
+		RegisterSignal(owner, COMSIG_PARENT_ATTACKBY, PROC_REF(on_owner_attacked))
+
+/// XP trigger for dangerous situations
+/datum/coven_power/proc/on_owner_death(mob/living/source)
+	SIGNAL_HANDLER
+
+	if(active && discipline)
+		// Bonus XP for powers that were active during death
+		discipline.gain_experience_from_source(20, "survival_experience", src, 1.0)
+
+/// XP trigger for speaking while using social powers
+/datum/coven_power/proc/on_owner_speak(mob/living/source, message)
+	SIGNAL_HANDLER
+
+	if(active && !hostile && last_action_context == "social")
+		discipline.gain_experience_from_source(2, "roleplay", src, 1.0)
+
+/// XP trigger for being attacked while using defensive powers
+/datum/coven_power/proc/on_owner_attacked(mob/living/source, obj/item/weapon)
+	SIGNAL_HANDLER
+
+	if(active && !hostile && discipline)
+		discipline.gain_experience_from_source(8, "defensive_usage", src, 1.0)
+
+
+/datum/coven_power/proc/admin_grant_xp(amount, reason)
+	if(!discipline)
+		return
+
+	discipline.gain_experience_from_source(amount, "admin_grant", src, 1.0)
+
+	if(owner)
+		to_chat(owner, span_boldnotice("You have been granted [amount] XP in [discipline.name] for: [reason]"))
+
+	log_admin("[key_name(usr)] granted [amount] XP to [key_name(owner)] in [discipline.name] for: [reason]")
+
+/// Admin proc to view XP statistics
+/datum/coven_power/proc/admin_view_xp_stats()
+	if(!discipline)
+		return "No discipline found"
+
+	var/stats = ""
+	stats += "=== XP STATISTICS FOR [discipline.name] ===\n"
+	stats += "Current Level: [discipline.level]/[discipline.max_level]\n"
+	stats += "Experience: [discipline.experience]/[discipline.experience_needed]\n"
+	stats += "Research Points: [discipline.research_points]\n"
+	stats += "Powers Known: [length(discipline.known_powers)]\n"
+	stats += "Last Action Context: [last_action_context || "None"]\n"
+	stats += "Last Critical: [last_use_was_critical ? "Yes" : "No"]\n"
+
+	return stats

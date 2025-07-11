@@ -38,7 +38,6 @@
 	///If this Coven has been assigned before and post_gain effects have already been applied.
 	var/post_gain_applied
 
-	/* RESEARCH TREE INTEGRATION */
 	///Associated research interface for this coven's power tree
 	var/datum/coven_research_interface/research_interface
 	///List of research nodes unlocked for this coven
@@ -46,7 +45,17 @@
 	///Current research points available to spend
 	var/research_points = 0
 
-//TODO: rework this and set_level to use proper loadouts instead of a default set every time
+	///Base XP gain for successful power use
+	var/base_power_xp = 5
+	///XP multiplier for higher level powers
+	var/power_level_multiplier = 1.5
+	///XP gain for discovering new things or unique actions
+	var/discovery_xp = 25
+	///XP gain for teaching others or mentoring
+	var/teaching_xp = 15
+	///XP gain for critical successes
+	var/critical_success_xp = 10
+
 /datum/coven/New(level)
 	all_powers = subtypesof(power_type)
 
@@ -186,17 +195,83 @@
 	unlock_powers_for_level(level)
 
 /datum/coven/proc/unlock_powers_for_level(new_level)
+	// First, check for automatic unlocks (basic powers)
 	for(var/power_type in all_powers)
-		var/datum/coven_power/power = new power_type
-		if(power.level <= new_level && !(power_type in known_powers))
-			// Auto-unlock basic powers, but advanced ones require research
-			if(power.level <= 2)
-				learn_power(power_type)
-			else
-				// Make available for research
-				if(research_interface)
-					research_interface.unlock_research_node(power_type)
-		qdel(power)
+		var/datum/coven_power/temp_power = new power_type
+
+		// Auto-unlock basic powers at appropriate levels
+		if(temp_power.level <= new_level && temp_power.level <= 2)
+			if(!(power_type in known_powers))
+				grant_power(power_type, "level_unlock")
+
+		// Make advanced powers available for research
+		else if(temp_power.level <= new_level && temp_power.level > 2)
+			if(research_interface && !(power_type in known_powers))
+				research_interface.unlock_research_node(power_type)
+				if(owner)
+					to_chat(owner, "<span class='notice'>[temp_power.name] is now available for research!</span>")
+
+		qdel(temp_power)
+
+/**
+ * Unified power granting system with different sources
+ *
+ * Arguments:
+ * * power_type - The type of power to grant
+ * * source - How the power was obtained ("level_unlock", "research", "discovery", "teaching", "special")
+ * * silent - Whether to suppress messages
+ */
+/datum/coven/proc/grant_power(power_type, source = "unknown", silent = FALSE)
+	if(power_type in known_powers)
+		return FALSE
+
+	// Validate power type
+	if(!(power_type in all_powers))
+		return FALSE
+
+	// Create and initialize the power
+	var/datum/coven_power/new_power = new power_type(src)
+	new_power.owner = owner
+	new_power.discipline = src
+	known_powers[power_type] = new_power
+
+	// Apply source-specific effects
+	switch(source)
+		if("research")
+			// Powers learned through research might have reduced costs
+			new_power.vitae_cost = max(1, round(new_power.vitae_cost * 0.9))
+			if(!silent && owner)
+				to_chat(owner, "<span class='boldnotice'>Through careful study, you have mastered [new_power.name]!</span>")
+
+		if("discovery")
+			// Powers discovered through experimentation might have unique properties
+			new_power.range += 1
+			if(!silent && owner)
+				to_chat(owner, "<span class='boldannounce'>Your experimentation has revealed the secrets of [new_power.name]!</span>")
+
+		if("teaching")
+			// Powers learned from others might have social bonuses
+			new_power.cooldown_length = max(0, round(new_power.cooldown_length * 0.8))
+			if(!silent && owner)
+				to_chat(owner, "<span class='boldnotice'>Through the guidance of another, you have learned [new_power.name]!</span>")
+
+		if("special")
+			// Special powers might have enhanced effects
+			if(!silent && owner)
+				to_chat(owner, "<span class='boldannounce'>You have unlocked the forbidden knowledge of [new_power.name]!</span>")
+
+		else // level_unlock or unknown
+			if(!silent && owner)
+				to_chat(owner, "<span class='boldnotice'>You have learned [new_power.name]!</span>")
+
+	// Apply post-gain effects
+	new_power.post_gain()
+
+	// Update current power if this is the first one
+	if(!current_power)
+		current_power = new_power
+
+	return TRUE
 
 /datum/coven/proc/learn_power(power_type)
 	if(power_type in known_powers)
@@ -231,27 +306,6 @@
 
 	return TRUE
 
-/datum/coven/proc/research_power(research_type)
-	if(!can_research(research_type))
-		return FALSE
-
-	var/datum/coven_research_node/node = research_interface.get_research_node(research_type)
-	research_points -= node.research_cost
-	unlocked_research += research_type
-
-	// Learn the associated power
-	if(node.unlocks_power)
-		learn_power(node.unlocks_power)
-
-	// Apply any special effects
-	if(node.special_effect)
-		apply_research_effect(node.special_effect)
-
-	if(owner)
-		to_chat(owner, "<span class='boldnotice'>You have researched [node.name]!</span>")
-
-	return TRUE
-
 /datum/coven/proc/apply_research_effect(effect_type)
 	switch(effect_type)
 		if("reduce_vitae_cost")
@@ -270,3 +324,171 @@
 				var/datum/coven_power/power = known_powers[power_type]
 				power.cooldown_length = max(0, round(power.cooldown_length * 0.8))
 
+
+
+/**
+ * Main XP gain function with multiple sources
+ *
+ * Arguments:
+ * * amount - Base XP amount
+ * * source - What caused the XP gain
+ * * power_used - If from power use, which power
+ * * multiplier - Additional multiplier
+ */
+/datum/coven/proc/gain_experience_from_source(amount, source, datum/coven_power/power_used = null, multiplier = 1)
+	var/final_amount = amount * multiplier
+
+	// Apply source-specific bonuses
+	switch(source)
+		if("power_use")
+			if(power_used)
+				// Higher level powers give more XP
+				final_amount = base_power_xp * (power_used.level * power_level_multiplier)
+
+				// Bonus for successful difficult actions
+				if(power_used.last_use_was_critical)
+					final_amount += critical_success_xp
+					power_used.last_use_was_critical = FALSE
+
+		if("discovery")
+			final_amount = discovery_xp
+
+		if("teaching")
+			final_amount = teaching_xp
+
+		if("meditation")
+			// Slower but steady XP gain
+			final_amount = amount * 0.5
+
+		if("combat")
+			// Combat use of powers gives bonus XP
+			final_amount = amount * 1.2
+
+		if("roleplay")
+			// Encourage roleplay with XP
+			final_amount = amount * 0.8
+
+	// Apply level-based diminishing returns for power use
+	if(source == "power_use" && power_used)
+		var/level_difference = level - power_used.level
+		if(level_difference > 2)
+			final_amount *= 0.5 // Reduced XP for using powers way below your level
+
+	gain_experience(round(final_amount))
+
+	// Log XP gain for debugging/admin purposes
+	if(owner)
+		log_game("[owner] gained [final_amount] XP in [name] from [source]")
+
+/**
+ * XP gain triggers for various game events
+ */
+
+// Called when a power is successfully used
+/datum/coven/proc/on_power_use_success(datum/coven_power/power, was_critical = FALSE)
+	if(was_critical)
+		power.last_use_was_critical = TRUE
+
+	gain_experience_from_source(base_power_xp, "power_use", power)
+
+// Called when player discovers something new about their coven
+/datum/coven/proc/on_discovery_event(discovery_type)
+	gain_experience_from_source(discovery_xp, "discovery")
+
+	if(owner)
+		to_chat(owner, "<span class='boldnotice'>Your understanding of [name] deepens through discovery!</span>")
+
+// Called when player teaches someone else
+/datum/coven/proc/on_teaching_event(mob/student, datum/coven_power/power_taught)
+	gain_experience_from_source(teaching_xp, "teaching")
+
+	if(owner)
+		to_chat(owner, "<span class='notice'>Sharing your knowledge of [power_taught.name] has deepened your own understanding.</span>")
+
+// Called during meditation or study actions
+/datum/coven/proc/on_meditation_complete(duration_minutes)
+	var/xp_gain = duration_minutes * 2 // 2 XP per minute of meditation
+	gain_experience_from_source(xp_gain, "meditation")
+
+// Called when powers are used in combat
+/datum/coven/proc/on_combat_power_use(datum/coven_power/power, target)
+	gain_experience_from_source(base_power_xp, "combat", power)
+
+// Called for good roleplay moments
+/datum/coven/proc/on_roleplay_moment(intensity = 1)
+	var/xp_gain = 10 * intensity
+	gain_experience_from_source(xp_gain, "roleplay")
+
+
+/datum/coven/proc/research_power(research_type)
+	if(!can_research(research_type))
+		return FALSE
+
+	var/datum/coven_research_node/node = research_interface.get_research_node(research_type)
+	research_points -= node.research_cost
+	unlocked_research += research_type
+
+	// Grant the power through research pathway
+	if(node.unlocks_power)
+		grant_power(node.unlocks_power, "research")
+
+	// Apply special effects
+	if(node.special_effect)
+		apply_research_effect(node.special_effect)
+
+	// Gain XP for successful research
+	gain_experience_from_source(node.research_cost, "discovery")
+
+	if(owner)
+		to_chat(owner, "<span class='boldnotice'>You have researched [node.name]!</span>")
+
+	return TRUE
+
+/**
+ * Power discovery system - allows finding powers through experimentation
+ */
+/datum/coven/proc/attempt_power_discovery(experimentation_type)
+	if(!owner)
+		return FALSE
+
+	// Check if player has the minimum level for discovery
+	if(level < 2)
+		return FALSE
+
+	var/list/discoverable_powers = list()
+
+	// Find powers that could be discovered
+	for(var/power_type in all_powers)
+		if(power_type in known_powers)
+			continue
+
+		var/datum/coven_power/temp_power = new power_type
+
+		// Can discover powers up to current level + 1
+		if(temp_power.level <= level + 1 && temp_power.level <= max_level)
+			discoverable_powers += power_type
+
+		qdel(temp_power)
+
+	if(!length(discoverable_powers))
+		return FALSE
+
+	// Discovery chance based on experimentation type and level
+	var/discovery_chance = 0
+	switch(experimentation_type)
+		if("careful_study")
+			discovery_chance = 15 + (level * 5)
+		if("bold_experimentation")
+			discovery_chance = 25 + (level * 3)
+		if("guided_meditation")
+			discovery_chance = 10 + (level * 7)
+		if("combat_stress")
+			discovery_chance = 20 + (level * 2)
+
+	if(prob(discovery_chance))
+		var/discovered_power = pick(discoverable_powers)
+		grant_power(discovered_power, "discovery")
+		on_discovery_event("power_discovery")
+		return TRUE
+
+	return FALSE
