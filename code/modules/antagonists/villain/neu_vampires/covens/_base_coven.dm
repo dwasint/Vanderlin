@@ -191,27 +191,6 @@
 		to_chat(owner, "<span class='boldannounce'>Your [name] has reached level [level]!</span>")
 		to_chat(owner, "<span class='notice'>You gain [level * 5] bonus research points!</span>")
 
-	// Unlock new power tiers
-	unlock_powers_for_level(level)
-
-/datum/coven/proc/unlock_powers_for_level(new_level)
-	// First, check for automatic unlocks (basic powers)
-	for(var/power_type in all_powers)
-		var/datum/coven_power/temp_power = new power_type
-
-		// Auto-unlock basic powers at appropriate levels
-		if(temp_power.level <= new_level && temp_power.level <= 2)
-			if(!(power_type in known_powers))
-				grant_power(power_type, "level_unlock")
-
-		// Make advanced powers available for research
-		else if(temp_power.level <= new_level && temp_power.level > 2)
-			if(research_interface && !(power_type in known_powers))
-				research_interface.unlock_research_node(power_type)
-				if(owner)
-					to_chat(owner, "<span class='notice'>[temp_power.name] is now available for research!</span>")
-
-		qdel(temp_power)
 
 /**
  * Unified power granting system with different sources

@@ -149,7 +149,7 @@
 
 	return FALSE
 
-/datum/action/clan_hierarchy/command_subordinate/Trigger()
+/datum/action/clan_hierarchy/command_subordinate/Trigger(trigger_flags)
 	. = ..()
 
 	var/mob/living/carbon/human/user = owner
@@ -210,7 +210,7 @@
 
 	return FALSE
 
-/datum/action/clan_hierarchy/summon_subordinate/Trigger()
+/datum/action/clan_hierarchy/summon_subordinate/Trigger(trigger_flags)
 	. = ..()
 
 	var/mob/living/carbon/human/user = owner
@@ -277,7 +277,7 @@
 
 	return FALSE
 
-/datum/action/clan_hierarchy/mass_command/Trigger()
+/datum/action/clan_hierarchy/mass_command/Trigger(trigger_flags)
 	. = ..()
 
 	var/mob/living/carbon/human/user = owner
@@ -327,7 +327,7 @@
 
 	return FALSE
 
-/datum/action/clan_hierarchy/locate_subordinate/Trigger()
+/datum/action/clan_hierarchy/locate_subordinate/Trigger(trigger_flags)
 	. = ..()
 
 	var/mob/living/carbon/human/user = owner
@@ -351,22 +351,3 @@
 	to_chat(user, "<span class='notice'><b>Subordinate Locations:</b></span>")
 	for(var/info in location_info)
 		to_chat(user, "<span class='info'>[info]</span>")
-
-/datum/action/clan_hierarchy/UpdateButtonIcon(status_only = FALSE, force = FALSE)
-	if(!button)
-		return
-
-	// Show cooldown status
-	if(cooldown > world.time)
-		var/time_left = (cooldown - world.time) / 10
-		button.maptext = "<b>[time_left]s</b>"
-		button.color = "#666666"
-	else
-		button.maptext = ""
-		button.color = "#ffffff"
-
-	// Update availability
-	if(IsAvailable())
-		button.color = "#ffffff"
-	else
-		button.color = "#666666"

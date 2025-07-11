@@ -99,24 +99,19 @@
 
 /datum/coven_power/demonic/conflagration/post_gain()
 	. = ..()
-	var/obj/effect/proc_holder/spell/invoked/projectile/fireball/baali/balefire = new(owner)
-	owner.mind.AddSpell(balefire)
+	var/datum/action/cooldown/spell/projectile/fireball/baali/balefire = new(owner)
+	balefire.Grant(owner)
 
-/obj/effect/proc_holder/spell/invoked/projectile/fireball/baali
+/datum/action/cooldown/spell/projectile/fireball/baali
 	name = "Infernal Fireball"
 	desc = "This spell fires an explosive fireball at a target."
 	school = "evocation"
-	chargetime = 60
+	charge_time = 4 SECONDS
 	invocation = "FR BRTH"
 	invocation_type = "whisper"
-	range = 20
-	cooldown_min = 20 //10 deciseconds reduction per rank
+	cooldown_time = 20 //10 deciseconds reduction per rank
 	projectile_type = /obj/projectile/magic/aoe/fireball/rogue
-	base_icon_state = "infernaball"
-	action_icon_state = "infernaball0"
 	sound = 'sound/magic/fireball.ogg'
-	active = FALSE
-	uses_mana = FALSE
 
 //PSYCHOMACHIA
 /datum/coven_power/demonic/psychomachia
@@ -132,7 +127,7 @@
 	cooldown_length = 10 SECONDS
 	grouped_powers = list(/datum/coven_power/demonic/condemnation)
 
-	var/obj/effect/proc_holder/spell/targeted/shapeshift/bat/bat_shapeshift
+	var/datum/action/cooldown/spell/undirected/shapeshift/bat/bat_shapeshift
 
 /datum/coven_power/demonic/psychomachia/activate()
 	. = ..()
@@ -140,11 +135,11 @@
 		bat_shapeshift = new(owner)
 
 	owner.drop_all_held_items()
-	bat_shapeshift.Shapeshift(owner)
+	bat_shapeshift.do_shapeshift(owner)
 
 /datum/coven_power/demonic/psychomachia/deactivate()
 	. = ..()
-	//bat_shapeshift.Restore(bat_shapeshift.myshape)
+	bat_shapeshift.restore_form(owner)
 	owner.Stun(1.5 SECONDS)
 	owner.do_jitter_animation(30)
 
@@ -162,7 +157,7 @@
 	cooldown_length = 10 SECONDS
 	grouped_powers = list(/datum/coven_power/demonic/psychomachia)
 
-	var/obj/effect/proc_holder/spell/targeted/shapeshift/bat/bat_shapeshift
+	var/datum/action/cooldown/spell/undirected/shapeshift/bat/bat_shapeshift
 
 /datum/coven_power/demonic/condemnation/activate()
 	. = ..()
@@ -170,11 +165,11 @@
 		bat_shapeshift = new(owner)
 
 	owner.drop_all_held_items()
-	bat_shapeshift.Shapeshift(owner)
+	bat_shapeshift.do_shapeshift(owner)
 
 /datum/coven_power/demonic/condemnation/deactivate()
 	. = ..()
-	//bat_shapeshift.Restore(bat_shapeshift.myshape)
+	bat_shapeshift.restore_form(owner)
 	owner.Stun(1.5 SECONDS)
 	owner.do_jitter_animation(30)
 
@@ -190,7 +185,7 @@
 	check_flags = AB_CHECK_HANDS_BLOCKED|AB_CHECK_IMMOBILE|AB_CHECK_LYING|AB_CHECK_CONSCIOUS
 	var/used = FALSE
 
-/datum/action/antifrenzy/Trigger()
+/datum/action/antifrenzy/Trigger(trigger_flags)
 	var/mob/living/carbon/human/user = owner
 	if(user.stat >= UNCONSCIOUS || user.IsSleeping() || user.IsUnconscious() || user.IsParalyzed() || user.IsKnockdown() || user.IsStun() || HAS_TRAIT(user, TRAIT_RESTRAINED) || !isturf(user.loc))
 		return

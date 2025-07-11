@@ -1,8 +1,8 @@
 
 /datum/clan_leader/thronleer
 	lord_spells = list(
-		/obj/effect/proc_holder/spell/targeted/mansion_portal,
-		/obj/effect/proc_holder/spell/targeted/shapeshift/gaseousform
+		/datum/action/cooldown/spell/undirected/mansion_portal,
+		/datum/action/cooldown/spell/undirected/shapeshift/mist
 	)
 	lord_verbs = list(
 		/mob/living/carbon/human/proc/demand_submission,

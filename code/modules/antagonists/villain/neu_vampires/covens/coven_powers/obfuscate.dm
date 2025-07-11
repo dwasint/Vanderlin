@@ -16,7 +16,7 @@
 		COMSIG_MOB_ATTACK_HAND,
 		COMSIG_ATOM_HITBY,
 		COMSIG_ATOM_ATTACK_HAND,
-		COMSIG_PARENT_ATTACKBY,
+		COMSIG_ATOM_ATTACKBY,
 	)
 
 /datum/coven_power/obfuscate/proc/on_combat_signal(datum/source)

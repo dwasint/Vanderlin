@@ -880,7 +880,7 @@
 	RegisterSignal(owner, COMSIG_LIVING_DEATH, PROC_REF(on_owner_death))
 	RegisterSignal(owner, COMSIG_MOB_SAY, PROC_REF(on_owner_speak))
 	if(hostile)
-		RegisterSignal(owner, COMSIG_PARENT_ATTACKBY, PROC_REF(on_owner_attacked))
+		RegisterSignal(owner, COMSIG_ATOM_ATTACKBY, PROC_REF(on_owner_attacked))
 
 /// XP trigger for dangerous situations
 /datum/coven_power/proc/on_owner_death(mob/living/source)

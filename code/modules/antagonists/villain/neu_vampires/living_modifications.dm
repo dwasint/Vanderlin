@@ -139,8 +139,8 @@
 	covens[coven.name] = coven
 
 	if(coven.level > 0)
-		var/datum/action/coven/action = new(coven)
-		mind?.AddAction(action)
+		var/datum/action/coven/action = new(src, coven)
+		action.Grant(src)
 
 /mob/living/carbon/human/proc/get_coven(datum/coven/coven_type)
 	if(!length(covens))

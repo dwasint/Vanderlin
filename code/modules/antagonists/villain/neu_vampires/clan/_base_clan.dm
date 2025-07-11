@@ -61,8 +61,8 @@ And it also helps for the character set panel
 /datum/clan/proc/on_gain(mob/living/carbon/human/H)
 	SHOULD_CALL_PARENT(TRUE)
 
-	var/datum/action/clan_menu/menu_action = new /datum/action/clan_menu()
-	H.mind?.AddAction(menu_action)
+	var/datum/action/clan_menu/menu_action = new /datum/action/clan_menu(H.mind)
+	menu_action.Grant(H)
 
 	RegisterSignal(H, COMSIG_HUMAN_LIFE, PROC_REF(on_vampire_life))
 
@@ -260,7 +260,8 @@ And it also helps for the character set panel
 
 	H.adjust_skillrank(/datum/skill/magic/blood, 2, TRUE)
 
-	H.AddSpell(new /obj/effect/proc_holder/spell/targeted/transfix)
+	var/datum/action/cooldown/spell/undirected/transfix/transfix = new(H.mind)
+	transfix.Grant(H)
 
 
 /datum/clan/proc/apply_vampire_look(mob/living/carbon/human/H)
@@ -334,7 +335,7 @@ And it also helps for the character set panel
 	background_icon_state = "spell"
 	button_icon_state = "coven"
 
-/datum/action/clan_menu/Trigger()
+/datum/action/clan_menu/Trigger(trigger_flags)
 	if(!owner || !ishuman(owner))
 		return
 

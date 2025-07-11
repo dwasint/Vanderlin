@@ -7,7 +7,7 @@
 	var/datum/coven/coven
 	var/targeting = FALSE
 
-/datum/action/coven/New(datum/coven/coven)
+/datum/action/coven/New(target, datum/coven/coven)
 	. = ..()
 	src.coven = coven
 
@@ -55,10 +55,10 @@
 /datum/action/coven/IsAvailable()
 	return coven.current_power.can_activate_untargeted()
 
-/datum/action/coven/Trigger()
+/datum/action/coven/Trigger(trigger_flags)
 	. = ..()
 
-	UpdateButtonIcon()
+	build_all_button_icons()
 
 	//easy de-targeting
 	if (targeting)
@@ -89,22 +89,33 @@
 		else //ranged targeted activation
 			begin_targeting()
 
-	UpdateButtonIcon()
+	build_all_button_icons()
 
 	return .
 
-/datum/action/coven/ApplyIcon(atom/movable/screen/movable/action_button/current_button, force = FALSE)
-	if(icon_icon && button_icon_state && ((current_button.button_icon_state != button_icon_state) || force))
-		current_button.cut_overlays(TRUE)
-		if(coven)
-			current_button.name = coven.current_power.name
-			current_button.desc = coven.current_power.desc
-			current_button.add_overlay(mutable_appearance(icon_icon, "[coven.icon_state]"))
-			current_button.button_icon_state = "[coven.icon_state]"
-			current_button.add_overlay(mutable_appearance(icon_icon, "[coven.level_casting]"))
-		else
-			current_button.add_overlay(mutable_appearance(icon_icon, button_icon_state))
-			current_button.button_icon_state = button_icon_state
+
+/datum/action/coven/update_button_name(atom/movable/screen/movable/action_button/button, force)
+	. = ..()
+	if(coven)
+		name = coven.current_power.name
+		desc = coven.current_power.desc
+
+/datum/action/coven/apply_button_icon(atom/movable/screen/movable/action_button/current_button, force)
+	if(coven)
+		button_icon_state = coven.icon_state
+	else
+		button_icon_state = initial(button_icon_state)
+	. = ..()
+
+/datum/action/coven/apply_button_overlay(atom/movable/screen/movable/action_button/current_button, force)
+	if(coven)
+		overlay_icon_state = "[coven.level_casting]"
+	else
+		overlay_icon_state = initial(overlay_icon_state)
+
+	. = ..()
+
+
 
 /datum/action/coven/proc/switch_level(to_advance = 1)
 	if (coven.level_casting + to_advance > length(coven.known_powers))
@@ -118,10 +129,7 @@
 		end_targeting()
 
 	coven.current_power = coven.known_powers[coven.level_casting]
-	if (button)
-		ApplyIcon(button, TRUE)
-
-	UpdateButtonIcon()
+	build_all_button_icons()
 
 /datum/action/coven/proc/end_targeting()
 	var/client/client = owner?.client

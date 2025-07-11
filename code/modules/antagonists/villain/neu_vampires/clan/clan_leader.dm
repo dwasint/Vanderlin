@@ -10,9 +10,9 @@
 
 /datum/clan_leader/lord
 	lord_spells = list(
-		/obj/effect/proc_holder/spell/targeted/shapeshift/bat,
-		/obj/effect/proc_holder/spell/targeted/mansion_portal,
-		/obj/effect/proc_holder/spell/targeted/shapeshift/gaseousform
+		/datum/action/cooldown/spell/undirected/shapeshift/bat,
+		/datum/action/cooldown/spell/undirected/mansion_portal,
+		/datum/action/cooldown/spell/undirected/shapeshift/mist
 	)
 	lord_verbs = list(
 		/mob/living/carbon/human/proc/demand_submission,
@@ -28,7 +28,8 @@
 
 	// Add lord spells
 	for(var/spell_type in lord_spells)
-		H.AddSpell(new spell_type())
+		var/datum/action/new_action = new spell_type(H.mind)
+		new_action.Grant(H)
 
 	// Add lord verbs
 	for(var/verb_path in lord_verbs)
@@ -48,9 +49,9 @@
 /datum/clan_leader/proc/remove_leader(mob/living/carbon/human/H)
 	REMOVE_TRAIT(H, TRAIT_CLAN_LEADER, "clan")
 	for(var/spell_type in lord_spells)
-		var/obj/effect/proc_holder/spell/spell_instance = locate(spell_type) in H.mind.spell_list
+		var/datum/action/spell_instance = locate(spell_type) in H.actions
 		if(spell_instance)
-			H.RemoveSpell(spell_instance)
+			spell_instance.Remove(H)
 
 	for(var/verb_path in lord_verbs)
 		H.verbs -= verb_path

@@ -253,7 +253,7 @@
 	button_icon_state = "mytherceria"
 	check_flags = AB_CHECK_HANDS_BLOCKED|AB_CHECK_IMMOBILE|AB_CHECK_LYING|AB_CHECK_CONSCIOUS
 
-/datum/action/fae_trickery/Trigger()
+/datum/action/fae_trickery/Trigger(trigger_flags)
 	. = ..()
 	var/mob/living/carbon/human/H = owner
 	var/try_trap = input(H, "Select a Trap:", "Trap") as null|anything in list("Brutal", "Spin", "Drop")
