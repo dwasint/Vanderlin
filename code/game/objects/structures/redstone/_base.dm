@@ -136,7 +136,7 @@
 
 /obj/structure/redstone/proc/send_wall_power_in_direction(direction, turf/wall_turf, mob/user, obj/structure/redstone/source)
 	for(var/check_direction in GLOB.cardinals)
-		if(check_direction == GLOB.reverse_dir[direction])
+		if(check_direction == REVERSE_DIR(direction))
 			continue
 		var/turf/beyond_wall = get_step(wall_turf, check_direction)
 

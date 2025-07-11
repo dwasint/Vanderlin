@@ -252,6 +252,8 @@ GLOBAL_LIST_EMPTY(patreon_races)
 	/// Amount of times we got autocorrected?? why is this a thing?
 	var/amtfail = 0
 
+	var/punch_damage = 0
+
 ///////////
 // PROCS //
 ///////////

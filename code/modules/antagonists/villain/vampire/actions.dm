@@ -163,10 +163,6 @@
 	set name = "Night Muscles"
 	set category = "VAMPIRE"
 
-	var/ability_name = "Night Muscles"
-
-	var/cooldown_time = 3000 // Five minutes cooldown
-
 	if(!clan)
 		return
 	if(SEND_SIGNAL(src, COMSIG_DISGUISE_STATUS))
@@ -201,10 +197,6 @@
 /mob/living/carbon/human/proc/blood_celerity()
 	set name = "Quickening"
 	set category = "VAMPIRE"
-
-	var/ability_name = "Quickening"
-
-	var/cooldown_time = 3000 // Five minutes cooldown
 
 	if(!clan)
 		return
@@ -243,8 +235,6 @@
 /mob/living/carbon/human/proc/blood_fortitude()
 	set name = "Armor of Darkness"
 	set category = "VAMPIRE"
-	var/cooldown_time = 6000 // Ten minutes cooldown, you get an anticrit 100 melee armor for free with the stats.
-
 
 	if(clan)
 		return
@@ -310,10 +300,6 @@
 /mob/living/carbon/human/proc/vamp_regenerate()
 	set name = "Regenerate"
 	set category = "VAMPIRE"
-
-	var/ability_name = "Regenerate"
-
-	var/cooldown_time = 600 // 1 minute
 
 	var/silver_curse_status = FALSE
 	for(var/datum/status_effect/debuff/silver_curse/SC in status_effects)
