@@ -20,7 +20,7 @@
 	///Current experience points in this coven
 	var/experience = 0
 	///Experience needed to reach next level
-	var/experience_needed = 100
+	var/experience_needed = 500
 	///Experience multiplier for each level (gets harder to level)
 	var/experience_multiplier = 1.5
 
