@@ -67,10 +67,9 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	var/list/clan_options = list()
 	var/list/available_clans = list()
 
-	// Get all available clans (you'll need to define these)
 	for(var/clan_type in subtypesof(/datum/clan))
 		var/datum/clan/temp_clan = new clan_type
-		if(temp_clan.selectable_by_vampires) // Add this var to clan datums
+		if(temp_clan.selectable_by_vampires)
 			available_clans += clan_type
 			clan_options[temp_clan.name] = clan_type
 		qdel(temp_clan)
