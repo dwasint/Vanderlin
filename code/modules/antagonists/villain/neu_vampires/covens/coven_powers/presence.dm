@@ -24,8 +24,8 @@
 	duration_length = 5 SECONDS
 
 /datum/coven_power/presence/awe/pre_activation_checks(mob/living/target)
-	var/mypower = owner.STAPER
-	var/theirpower = owner.STAINT
+	var/mypower = owner.STAINT
+	var/theirpower = owner.STAINT - 5
 	if((theirpower >= mypower))
 		to_chat(owner, span_warning("[target]'s mind is too powerful to sway!"))
 		return FALSE
@@ -73,8 +73,8 @@
 	duration_length = 5 SECONDS
 
 /datum/coven_power/presence/dread_gaze/pre_activation_checks(mob/living/target)
-	var/mypower = owner.STAPER
-	var/theirpower = owner.STAINT
+	var/mypower = owner.STAINT
+	var/theirpower = owner.STAINT - 5
 	if((theirpower >= mypower))
 		to_chat(owner, span_warning("[target]'s mind is too powerful to sway!"))
 		return FALSE
@@ -122,8 +122,8 @@
 	duration_length = 5 SECONDS
 
 /datum/coven_power/presence/fall/pre_activation_checks(mob/living/target)
-	var/mypower = owner.STAPER
-	var/theirpower = owner.STAINT
+	var/mypower = owner.STAINT
+	var/theirpower = owner.STAINT - 5
 	if((theirpower >= mypower))
 		to_chat(owner, span_warning("[target]'s mind is too powerful to sway!"))
 		return FALSE
@@ -165,8 +165,8 @@
 	duration_length = 5 SECONDS
 
 /datum/coven_power/presence/summon/pre_activation_checks(mob/living/target)
-	var/mypower = owner.STAPER
-	var/theirpower = owner.STAINT
+	var/mypower = owner.STAINT
+	var/theirpower = owner.STAINT - 5
 	if((theirpower >= mypower))
 		to_chat(owner, span_warning("[target]'s mind is too powerful to sway!"))
 		return FALSE
@@ -215,8 +215,8 @@
 	duration_length = 5 SECONDS
 
 /datum/coven_power/presence/majesty/pre_activation_checks(mob/living/target)
-	var/mypower = owner.STAPER
-	var/theirpower = owner.STAINT
+	var/mypower = owner.STAINT
+	var/theirpower = owner.STAINT - 5
 	if((theirpower >= mypower))
 		to_chat(owner, span_warning("[target]'s mind is too powerful to sway!"))
 		return FALSE

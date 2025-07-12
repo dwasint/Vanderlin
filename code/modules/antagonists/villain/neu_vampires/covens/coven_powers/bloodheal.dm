@@ -14,7 +14,7 @@
 
 	level = 1
 	check_flags = COVEN_CHECK_TORPORED
-	vitae_cost = 1
+	vitae_cost = 50
 
 	violates_masquerade = FALSE
 
@@ -105,7 +105,7 @@
 	desc = "Slowly mend your undead flesh."
 
 	level = 1
-	vitae_cost = 1
+	vitae_cost = 50
 
 	violates_masquerade = FALSE
 
@@ -115,7 +115,7 @@
 	desc = "Mend your undead flesh."
 
 	level = 2
-	vitae_cost = 2
+	vitae_cost = 100
 
 	violates_masquerade = FALSE
 
@@ -125,7 +125,7 @@
 	desc = "Mend your undead flesh with unnatural speed."
 
 	level = 3
-	vitae_cost = 3
+	vitae_cost = 150
 
 	violates_masquerade = TRUE
 
@@ -135,7 +135,7 @@
 	desc = "Heal even the most grievous wounds in short order."
 
 	level = 4
-	vitae_cost = 4
+	vitae_cost = 200
 
 	violates_masquerade = TRUE
 
@@ -145,7 +145,7 @@
 	desc = "Regrow entire bodyparts without breaking a sweat."
 
 	level = 5
-	vitae_cost = 5
+	vitae_cost = 250
 
 	violates_masquerade = TRUE
 
@@ -155,7 +155,7 @@
 	desc = "Regrow entire bodyparts without breaking a sweat."
 
 	level = 6
-	vitae_cost = 6
+	vitae_cost = 300
 
 	violates_masquerade = TRUE
 
@@ -165,7 +165,7 @@
 	desc = "Reconstitute your body from near nothing."
 
 	level = 7
-	vitae_cost = 7
+	vitae_cost = 350
 
 	violates_masquerade = TRUE
 
@@ -175,7 +175,7 @@
 	desc = "On the edge of Final Death, let your blood explode outwards and recreate you."
 
 	level = 8
-	vitae_cost = 8
+	vitae_cost = 400
 
 	violates_masquerade = TRUE
 
@@ -185,7 +185,7 @@
 	desc = "Even as a titanic beast, you could restore your physical form in short order."
 
 	level = 9
-	vitae_cost = 9
+	vitae_cost = 450
 
 	violates_masquerade = TRUE
 
@@ -195,7 +195,7 @@
 	desc = "So long as you have access to blood, you cannot die. Your curse will not allow it."
 
 	level = 10
-	vitae_cost = 10
+	vitae_cost = 500
 
 	violates_masquerade = TRUE
 

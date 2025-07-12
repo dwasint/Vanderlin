@@ -10,7 +10,7 @@
 	/// Bitflags determining the requirements to cast this power
 	var/check_flags = COVEN_CHECK_CONSCIOUS | COVEN_CHECK_CAPABLE
 	/// How many blood points this power costs to activate
-	var/vitae_cost = 1
+	var/vitae_cost = 50
 	/// Bitflags determining what types of entities this power is allowed to target. NONE if self-targeting only.
 	var/target_type = NONE
 	/// How many tiles away this power can be used from.

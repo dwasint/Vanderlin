@@ -2,6 +2,7 @@
 	check_flags = NONE
 	background_icon_state = "spell" //And this is the state for the background icon
 	button_icon_state = "coven" //And this is the state for the action icon
+	overlay_icon = 'icons/mob/actions/roguespells.dmi'
 
 	var/level_icon_state = "1" //And this is the state for the action icon
 	var/datum/coven/coven
