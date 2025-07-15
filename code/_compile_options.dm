@@ -56,14 +56,11 @@
 #define DEPLOY_TEST
 #endif
 
-#ifndef PRELOAD_RSC					//set to:
-#define PRELOAD_RSC		0			//	0 to allow using external resources or on-demand behaviour;
-#endif								//	1 to use the default behaviour;
-									//	2 for preloading absolutely everything;
+#define FORCE_RANDOM_WORLD_GEN
 
 //#define LOWMEMORYMODE //uncomment this to load centcom and roguetest and thats it.
 
-//#define NO_DUNGEON //comment this to load dungeons.
+#define NO_DUNGEON //comment this to load dungeons.
 
 #ifdef LOWMEMORYMODE
 #define FORCE_MAP "_maps/roguetest.json"
