@@ -12,6 +12,7 @@
 #define STATS_ALIVE_TIEFLINGS "alive_tieflings"
 #define STATS_ALIVE_HOLLOWKINS "alive_hollowkins"
 #define STATS_ALIVE_HARPIES "alive_harpies"
+#define STATS_ALIVE_TRITONS "alive_tritons"
 #define STATS_VAMPIRES "vampires"
 
 #define STATS_ALIVE_GARRISON "alive_garrison"
@@ -44,6 +45,7 @@
 #define STATS_DEADITES_ALIVE "deadites_alive"
 #define STATS_KLEPTOMANIACS "kleptomaniacs"
 #define STATS_LUX_REVIVALS "lux_revivals"
+#define STATS_TAXES_COLLECTED "taxes_collected"
 
 // Influence related statistics
 
@@ -57,7 +59,7 @@
 #define STATS_ALIVE_NOBLES "alive_nobles"
 #define STATS_NOBLE_DEATHS "noble_deaths"
 #define STATS_ASTRATA_REVIVALS "astrata_revivals"
-#define STATS_TAXES_COLLECTED "taxes_collected"
+#define STATS_SLURS_SPOKEN "slurs_spoken"
 
 // Noc
 #define STATS_BOOKS_PRINTED "books_printed"
@@ -119,7 +121,7 @@
 #define STATS_PARENTS "parents"
 #define STATS_MARRIAGES "marriages"
 #define STATS_HUGS_MADE "hugs_made"
-#define STATS_CLINGY_PEOPLE "clingy_people"
+#define STATS_HANDS_HELD "hands_held"
 #define STATS_PACIFISTS "pacifists"
 
 // Zizo
@@ -201,7 +203,6 @@ GLOBAL_LIST_INIT(vanderlin_round_stats, list(
 	STATS_LEECHES_EMBEDDED = 0,
 	STATS_MARRIAGES = 0,
 	STATS_HUGS_MADE = 0,
-	STATS_CLINGY_PEOPLE = 0,
 	STATS_ZIZO_PRAISED = 0,
 	STATS_DEADITES_ALIVE = 0,
 	STATS_CLERGY_DEATHS = 0,
@@ -228,6 +229,7 @@ GLOBAL_LIST_INIT(vanderlin_round_stats, list(
 	STATS_ALIVE_TIEFLINGS = 0,
 	STATS_ALIVE_HOLLOWKINS = 0,
 	STATS_ALIVE_HARPIES = 0,
+	STATS_ALIVE_TRITONS = 0,
 	STATS_PEOPLE_DROWNED = 0,
 	STATS_MANA_SPENT = 0,
 	STATS_WATER_CONSUMED  = 0,
@@ -261,6 +263,8 @@ GLOBAL_LIST_INIT(vanderlin_round_stats, list(
 	STATS_ALIVE_CLERGY = 0,
 	STATS_ALIVE_TRADESMEN = 0,
 	STATS_LUX_REVIVALS = 0,
+	STATS_SLURS_SPOKEN = 0,
+	STATS_HANDS_HELD = 0,
 ))
 
 GLOBAL_LIST_EMPTY(patron_follower_counts)
@@ -272,6 +276,8 @@ GLOBAL_LIST_EMPTY(patron_follower_counts)
 #define FEATURED_STATS_TAX_PAYERS "tax_payers"
 #define FEATURED_STATS_ALCOHOLICS "alcohol_drinkers"
 #define FEATURED_STATS_SPEAKERS "speakers"
+#define FEATURED_STATS_SLURS "slurs"
+#define FEATURED_STATS_SPECIESISTS "speciesists"
 #define FEATURED_STATS_FISHERS "fishers"
 #define FEATURED_STATS_EATERS "eaters"
 #define FEATURED_STATS_SCREAMERS "screamers"
@@ -312,6 +318,16 @@ GLOBAL_LIST_INIT(featured_stats, list(
 	FEATURED_STATS_SPEAKERS = list(
 		"name" = "TOP Speakers",
 		"color" = "#93cabe",
+		"entries" = list()
+	),
+	FEATURED_STATS_SLURS = list(
+		"name" = "TOP Slurs",
+		"color" = "#6e56bd",
+		"entries" = list()
+	),
+	FEATURED_STATS_SPECIESISTS = list(
+		"name" = "TOP Speciesists",
+		"color" = "#b153dd",
 		"entries" = list()
 	),
 	FEATURED_STATS_MINERS = list(
@@ -431,10 +447,10 @@ GLOBAL_LIST_INIT(featured_stats, list(
 	for(var/key in stat_data["entries"])
 		entries += list(list("name" = key, "count" = stat_data["entries"][key]))
 
-	entries = sortList(entries, /proc/cmp_stat_count_desc)
+	sortTim(entries, GLOBAL_PROC_REF(cmp_stat_count_desc))
 
 	var/list/result = list()
-	for(var/i in 1 to min(11, entries.len))
+	for(var/i in 1 to min(13, entries.len))
 		var/list/entry = entries[i]
 		var/rounded_count = round(entry["count"])
 		result += "[i]. [entry["name"]] - [rounded_count]"
@@ -450,10 +466,10 @@ GLOBAL_LIST_INIT(featured_stats, list(
 	for(var/key in stat_data["entries"])
 		entries += list(list("name" = key, "count" = stat_data["entries"][key]))
 
-	entries = sortList(entries, /proc/cmp_stat_count_desc)
+	sortTim(entries, GLOBAL_PROC_REF(cmp_stat_count_desc))
 
 	var/list/result = list()
-	for(var/i in 1 to min(11, entries.len))
+	for(var/i in 1 to min(13, entries.len))
 		var/list/entry = entries[i]
 		var/rounded_count = round(entry["count"])
 		result += "[i]. [entry["name"]] - [rounded_count]"
@@ -468,21 +484,23 @@ GLOBAL_LIST_INIT(featured_stats, list(
 		return
 	if(!stat_category || !user?.real_name || !GLOB.featured_stats[stat_category])
 		return
+	if(!user)
+		return
 
 	var/list/stat_data = GLOB.featured_stats[stat_category]
-	var/job_title = ""
+	var/job_title = " (Jobless)"
+	var/datum/mind/M = user.mind
 
-	if(user.mind?.assigned_role.title != "Unassigned" && !is_unassigned_job(user.mind?.assigned_role))
-		if(user.gender == FEMALE && user.mind.assigned_role.f_title)
-			job_title = " ([user.mind.assigned_role.f_title])"
-		else
-			job_title = " ([user.mind.assigned_role.title])"
-	else if(user.job && user.job != "Unassigned")
-		job_title = " ([user.job])"
-	else if(user.mind?.special_role)
-		job_title = " ([user.mind.special_role])"
-	else
-		job_title = " (Jobless)"
+	if(M)
+		if(M.assigned_role.title != "Unassigned" && !is_unassigned_job(M.assigned_role))
+			if(user.gender == FEMALE && M.assigned_role.f_title)
+				job_title = " ([M.assigned_role.f_title])"
+			else
+				job_title = " ([M.assigned_role.title])"
+		else if(user.job && user.job != "Unassigned")
+			job_title = " ([user.job])"
+		else if(M.special_role)
+			job_title = " ([M.special_role])"
 
 	var/key = "[user.real_name][job_title]"
 

@@ -22,7 +22,7 @@
 	var/mask_adjusted = 0
 	var/adjusted_flags = null
 
-/obj/item/clothing/face/attack_self(mob/user)
+/obj/item/clothing/face/attack_self(mob/user, params)
 	if(CHECK_BITFIELD(clothing_flags, VOICEBOX_TOGGLABLE))
 		TOGGLE_BITFIELD(clothing_flags, VOICEBOX_DISABLED)
 		var/status = !CHECK_BITFIELD(clothing_flags, VOICEBOX_DISABLED)
@@ -30,7 +30,7 @@
 
 /obj/item/clothing/face/equipped(mob/user, slot)
 	. = ..()
-	if (slot == SLOT_WEAR_MASK && modifies_speech)
+	if ((slot & ITEM_SLOT_MASK) && modifies_speech)
 		RegisterSignal(user, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 	else
 		UnregisterSignal(user, COMSIG_MOB_SAY)
@@ -78,4 +78,3 @@
 			slot_flags = adjusted_flags
 	if(user)
 		user.wear_mask_update(src, toggle_off = mask_adjusted)
-		user.update_action_buttons_icon() //when mask is adjusted out, we update all buttons icon so the user's potential internal tank correctly shows as off.

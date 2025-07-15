@@ -33,28 +33,11 @@
 
 	var/area/A = get_area(src)
 
-	if(client)
-		SSdroning.kill_droning(client)
-		SSdroning.kill_loop(client)
-		SSdroning.kill_rain(client)
-
 	if(mind)
 		if(!gibbed)
 			var/datum/antagonist/vampire/VD = mind.has_antag_datum(/datum/antagonist/vampire)
 			if(VD)
 				dust(just_ash=TRUE,drop_items=TRUE)
-				return
-
-		var/datum/antagonist/lich/L = mind.has_antag_datum(/datum/antagonist/lich)
-		if (L && !L.out_of_lives)
-			if(L.consume_phylactery())
-				visible_message(span_warning("[src]'s body begins to shake violently, as eldritch forces begin to whisk them away!"))
-				to_chat(src, span_userdanger("Death is not the end for me. I begin to rise again."))
-				playsound(src, 'sound/magic/antimagic.ogg', 100, FALSE)
-			else
-				to_chat(src, span_userdanger("No, NO! This cannot be!"))
-				L.out_of_lives = TRUE
-				gib()
 				return
 
 	if(client || mind)
@@ -152,11 +135,12 @@
 /mob/living/carbon/human/proc/zombie_check()
 	if(!mind)
 		return
+	var/datum/antagonist/zombie = mind.has_antag_datum(/datum/antagonist/zombie)
+	if(zombie)
+		return zombie
 	if(mind.has_antag_datum(/datum/antagonist/vampire))
 		return
 	if(mind.has_antag_datum(/datum/antagonist/werewolf))
-		return
-	if(mind.has_antag_datum(/datum/antagonist/zombie))
 		return
 	if(mind.has_antag_datum(/datum/antagonist/skeleton))
 		return

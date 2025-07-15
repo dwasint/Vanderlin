@@ -11,7 +11,7 @@
 	max_integrity = 100
 	integrity_failure = 0.1
 	blade_dulling = DULLING_BASHCHOP
-	pass_flags = LETPASSTHROW
+	pass_flags_self = LETPASSTHROW
 	climb_time = 20
 	climb_offset = 10
 	attacked_sound = 'sound/combat/hits/onglass/glasshit.ogg'
@@ -28,14 +28,12 @@
 	var/repair_skill = /datum/skill/craft/masonry // i copypasted this code from the repairable doors and now it's got defines in the base
 
 /obj/structure/window/Initialize()
-	update_icon()
-	..()
+	. = ..()
+	update_appearance(UPDATE_ICON_STATE)
 
-/obj/structure/window/update_icon()
-	if(brokenstate)
-		icon_state = "[initial(icon_state)]br"
-		return
-	icon_state = "[initial(icon_state)]"
+/obj/structure/window/update_icon_state()
+	. = ..()
+	icon_state = "[initial(icon_state)][brokenstate ? "br" : ""]"
 
 /obj/structure/window/proc/repairwindow(obj/item/I, mob/user)
 	if(brokenstate)
@@ -124,18 +122,28 @@
 	integrity_failure = 0.5
 
 /obj/structure/window/openclose/Initialize()
+	. = ..()
 	lockdir = dir
 	GLOB.TodUpdate += src
-	..()
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_MAGICALLY_UNLOCKED = PROC_REF(on_magic_unlock),
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
 
 /obj/structure/window/openclose/Destroy()
 	GLOB.TodUpdate -= src
 	return ..()
 
-/obj/structure/window/openclose/update_tod(todd)
-	update_icon()
+/obj/structure/window/openclose/proc/on_magic_unlock(datum/source, datum/action/cooldown/spell/aoe/knock, mob/living/caster)
+	SIGNAL_HANDLER
 
-/obj/structure/window/openclose/update_icon()
+	INVOKE_ASYNC(src, PROC_REF(open_up))
+
+/obj/structure/window/openclose/update_tod(todd)
+	update_appearance(UPDATE_ICON_STATE)
+
+/obj/structure/window/openclose/update_icon_state()
+	. = ..()
 	var/icon
 	if(GLOB.tod == "night")
 		icon += "w-"
@@ -148,17 +156,22 @@
 		return
 	icon_state = "[icon]"
 
-/obj/structure/window/openclose/attack_right(mob/user)
-	if(get_dir(src,user) == lockdir)
+/obj/structure/window/openclose/attack_hand_secondary(mob/user, params)
+	. = ..()
+	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
+		return
+	if(get_dir(src, user) == lockdir)
 		if(brokenstate)
 			to_chat(user, "<span class='warning'>It's broken, that would be foolish.</span>")
-			return
+			return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 		if(climbable)
 			close_up(user)
 		else
 			open_up(user)
 	else
 		to_chat(user, "<span class='warning'>The window doesn't close from this side.</span>")
+
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/structure/window/openclose/attackby(obj/item/attacking_item, mob/user, params)
 	if(istype(attacking_item, /obj/item/weapon/knife/dagger) && !climbable && !user.cmode)
@@ -178,41 +191,58 @@
 	smeltresult = /obj/item/ingot/iron
 
 /obj/structure/window/proc/open_up(mob/user)
-	visible_message("<span class='info'>[user] opens [src].</span>")
+	if(user)
+		visible_message("<span class='info'>[user] opens [src].</span>")
 	playsound(src, 'sound/foley/doors/windowup.ogg', 100, FALSE)
 	climbable = TRUE
-	update_icon()
+	update_appearance(UPDATE_ICON_STATE)
 
 /obj/structure/window/proc/close_up(mob/user)
-	visible_message("<span class='info'>[user] closes [src].</span>")
+	if(user)
+		visible_message("<span class='info'>[user] closes [src].</span>")
 	playsound(src, 'sound/foley/doors/windowdown.ogg', 100, FALSE)
 	climbable = FALSE
-	update_icon()
+	update_appearance(UPDATE_ICON_STATE)
 
-/obj/structure/window/CanPass(atom/movable/mover, turf/target)
+/obj/structure/window/CanAllowThrough(atom/movable/mover, turf/target)
+	. = ..()
 	if(istype(mover) && climbable && ((mover.pass_flags & PASSTABLE) || (mover.pass_flags & PASSGRILLE)))
 		return 1
 	if(isliving(mover))
 		if(mover.throwing)
 			if(!climbable)
-				take_damage(10)
-			if(brokenstate)
-				return 1
+				if(!iscarbon(mover))
+					take_damage(10)
+				else
+					var/mob/living/carbon/dude = mover
+					var/base_damage = 20
+					take_damage(base_damage * (dude.STASTR / 10))
+			if(brokenstate || climbable)
+				if(ishuman(mover))
+					var/mob/living/carbon/human/dude = mover
+					var/is_jumping = dude.has_status_effect(/datum/status_effect/is_jumping)
+					if(prob(100 - clamp((dude.get_skill_level(/datum/skill/misc/athletics) + dude.get_skill_level(/datum/skill/misc/climbing)) * 10 - (!is_jumping * 30), 10, 100)))
+						var/obj/item/bodypart/head/head = dude.get_bodypart(BODY_ZONE_HEAD)
+						head.receive_damage(20)
+						dude.Stun(5 SECONDS)
+						dude.Knockdown(5 SECONDS)
+						dude.add_stress(/datum/stressevent/hithead)
+						dude.visible_message(
+							span_warning("[dude] hits their head as they fly through the window!"),
+							span_danger("I hit my head on the window frame!"))
+				return TRUE
 	else if(isitem(mover))
 		var/obj/item/I = mover
+		if(brokenstate)
+			return TRUE
 		if(I.throwforce >= 10)
-			take_damage(10)
-			if(brokenstate)
-				return 1
-		else
-			return !density
-	return ..()
+			take_damage(I.throwforce)
 
 /obj/structure/window/proc/force_open()
 	playsound(src, 'sound/foley/doors/windowup.ogg', 100, FALSE)
 	climbable = TRUE
 	opacity = FALSE
-	update_icon()
+	update_appearance(UPDATE_ICON_STATE)
 
 /obj/structure/window/attackby(obj/item/W, mob/user, params)
 	return ..()
@@ -236,11 +266,11 @@
 	playsound(src, 'sound/misc/glassknock.ogg', 100)
 
 
-/obj/structure/window/obj_break(damage_flag)
+/obj/structure/window/obj_break(damage_flag, silent)
 	if(!brokenstate)
 		attacked_sound = list('sound/combat/hits/onwood/woodimpact (1).ogg','sound/combat/hits/onwood/woodimpact (2).ogg')
 		new /obj/item/natural/glass/shard (get_turf(src))
 		climbable = TRUE
 		brokenstate = TRUE
-	update_icon()
+	update_appearance(UPDATE_ICON_STATE)
 	..()

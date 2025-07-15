@@ -1,17 +1,13 @@
-////click cooldowns, in tenths of a second, used for various combat actions
-//#define CLICK_CD_EXHAUSTED 35
-//#define CLICK_CD_MELEE 12
-//#define CLICK_CD_RANGE 4
-//#define CLICK_CD_RAPID 2
-
 /datum/intent
 	var/name = "intent"
 	var/desc = ""
 //	icon = 'icons/mob/roguehud.dmi'		so you can find the icons
 	var/icon_state = "instrike"
 	var/list/attack_verb = list("hits", "strikes")
-	var/obj/item/masteritem
-	var/mob/living/mastermob
+	/// Weakref to the item the mastermob is holding
+	var/datum/weakref/masteritem
+	/// Weakref to the master mob or our holder
+	var/datum/weakref/mastermob
 	var/unarmed = FALSE
 	var/intent_type
 	var/animname = "strike"
@@ -53,17 +49,17 @@
 	var/item_damage_type = "blunt"
 	var/move_limit = 0
 
-	var/list/static/bonk_animation_types = list(
+	var/static/list/bonk_animation_types = list(
 		BCLASS_BLUNT,
 		BCLASS_SMASH,
 		BCLASS_DRILL,
 	)
-	var/list/static/swipe_animation_types = list(
+	var/static/list/swipe_animation_types = list(
 		BCLASS_CUT,
 		BCLASS_CHOP,
 
 	)
-	var/list/static/thrust_animation_types = list(
+	var/static/list/thrust_animation_types = list(
 		BCLASS_STAB,
 		BCLASS_SHOT,
 		BCLASS_PICK,
@@ -72,10 +68,11 @@
 /datum/intent/Destroy()
 	if(chargedloop)
 		chargedloop.stop()
-	if(mastermob.curplaying == src)
-		mastermob.curplaying = null
-	mastermob = null
+	var/mob/master = get_master_mob()
+	if(master?.curplaying == src)
+		master.curplaying = null
 	masteritem = null
+	mastermob = null
 	return ..()
 
 /// returns the attack animation type this intent uses
@@ -128,13 +125,6 @@
 	else
 		return 0
 
-/datum/intent/proc/spell_cannot_activate()
-	to_chat(mastermob, span_warning("I am too drained for this."))
-	return FALSE
-
-/datum/intent/proc/get_owner()
-	return mastermob
-
 /datum/intent/proc/get_chargedrain()
 	if(chargedrain)
 		return chargedrain
@@ -160,15 +150,16 @@
 	return TRUE
 
 /datum/intent/proc/afterchange()
-	if(masteritem)
-		masteritem.damage_type = item_damage_type
+	var/obj/item/master_item = get_master_item()
+	var/mob/master_mob = get_master_mob()
+	if(master_item)
+		master_item.damage_type = item_damage_type
 		var/list/benis = hitsound
 		if(benis)
-			masteritem.hitsound = benis
-	if(istype(mastermob, /mob/living/simple_animal))
-		var/mob/living/simple_animal/master = mastermob
+			master_item.hitsound = benis
+	if(istype(master_mob, /mob/living/simple_animal))
+		var/mob/living/simple_animal/master = master_mob
 		master.damage_type = item_damage_type
-	return
 
 /datum/intent/proc/height2limb(height as num)
 	var/list/returned
@@ -182,38 +173,54 @@
 	return returned
 
 /datum/intent/New(Mastermob, Masteritem)
-	..()
+	. = ..()
 	if(Mastermob)
 		if(isliving(Mastermob))
-			mastermob = Mastermob
+			mastermob = WEAKREF(Mastermob)
 			if(chargedloop)
 				update_chargeloop()
 	if(Masteritem)
-		masteritem = Masteritem
+		masteritem = WEAKREF(Masteritem)
+
+/datum/intent/proc/get_master_item()
+	var/obj/item/master = masteritem?.resolve()
+	if(!master)
+		return
+	return master
+
+/datum/intent/proc/get_master_mob()
+	var/mob/master = mastermob?.resolve()
+	if(!master)
+		return
+	return master
 
 /datum/intent/proc/update_chargeloop() //what the fuck is going on here lol
-	if(mastermob)
-		if(chargedloop)
-			if(!istype(chargedloop))
-				chargedloop = new chargedloop(mastermob)
+	var/mob/master = get_master_mob()
+	if(master && chargedloop)
+		if(!istype(chargedloop))
+			chargedloop = new chargedloop(master)
 
 /datum/intent/proc/on_charge_start() //what the fuck is going on here lol
-	if(mastermob.curplaying)
-		mastermob.curplaying.chargedloop.stop()
-		mastermob.curplaying = null
+	var/mob/master = get_master_mob()
+	if(!master)
+		return
+	if(master.curplaying)
+		master.curplaying.chargedloop.stop()
+		master.curplaying = null
 	if(chargedloop)
 		if(!istype(chargedloop, /datum/looping_sound))
-			chargedloop = new chargedloop(mastermob)
+			chargedloop = new chargedloop(master)
 		else
 			chargedloop.stop()
 		chargedloop.start(chargedloop.parent)
-		mastermob.curplaying = src
+		master.curplaying = src
 
 /datum/intent/proc/on_mouse_up()
+	var/mob/master = get_master_mob()
 	if(chargedloop)
 		chargedloop.stop()
-	if(mastermob?.curplaying == src)
-		mastermob?.curplaying = null
+	if(master?.curplaying == src)
+		master?.curplaying = null
 
 
 /datum/intent/use
@@ -279,17 +286,6 @@
 	chargedrain = 0
 	chargetime = 0
 	noaa = TRUE
-
-/datum/intent/spell
-	name = "spell"
-	tranged = 1
-	chargedrain = 0
-	chargetime = 0
-	warnie = "aimwarn"
-	warnoffset = 0
-	move_limit = 6
-	charge_pointer = 'icons/effects/mousemice/charge/spell_charging.dmi'
-	charged_pointer = 'icons/effects/mousemice/charge/spell_charged.dmi'
 
 /datum/looping_sound/invokegen
 	mid_sounds = list('sound/magic/charging.ogg')
@@ -375,8 +371,10 @@
 	warnoffset = 20
 
 /datum/intent/shoot/prewarning()
-	if(masteritem && mastermob)
-		mastermob.visible_message("<span class='warning'>[mastermob] aims [masteritem]!</span>")
+	var/mob/master_mob = get_master_mob()
+	var/obj/item/master_item = get_master_item()
+	if(master_item && master_mob)
+		master_mob.visible_message("<span class='warning'>[master_mob] aims [master_item]!</span>")
 
 /datum/intent/arc
 	name = "arc"
@@ -392,13 +390,15 @@
 
 /datum/intent/proc/arc_check()
 	return FALSE
+
 /datum/intent/arc/arc_check()
 	return TRUE
 
 /datum/intent/arc/prewarning()
-	if(masteritem && mastermob)
-		mastermob.visible_message("<span class='warning'>[mastermob] aims [masteritem]!</span>")
-
+	var/mob/master_mob = get_master_mob()
+	var/obj/item/master_item = get_master_item()
+	if(master_item && master_mob)
+		master_mob.visible_message("<span class='warning'>[master_mob] aims [master_item]!</span>")
 
 /datum/intent/unarmed
 	unarmed = TRUE
@@ -517,6 +517,22 @@
 	canparry = TRUE
 	item_damage_type = "blunt"
 	miss_text = "thrusts their head at nothing!"
+	miss_sound = PUNCHWOOSH
+
+/datum/intent/simple/hind_kick
+	name = "kick"
+	icon_state = "instrike"
+	attack_verb = list("kicks", "rams")
+	animname = "smash"
+	blade_class = BCLASS_BLUNT
+	hitsound = "punch_hard"
+	chargetime = 0
+	penfactor = 13
+	swingdelay = 0
+	candodge = TRUE
+	canparry = TRUE
+	item_damage_type = "blunt"
+	miss_text = "thrusts their legs at nothing!"
 	miss_sound = PUNCHWOOSH
 
 /datum/intent/simple/claw

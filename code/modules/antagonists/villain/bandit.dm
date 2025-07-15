@@ -17,13 +17,13 @@
 		TRAIT_VILLAIN,
 	)
 
-/datum/antagonist/bandit/examine_friendorfoe(datum/antagonist/examined_datum,mob/examiner,mob/examined)
+/datum/antagonist/bandit/examine_friendorfoe(datum/antagonist/examined_datum, mob/examiner, mob/examined)
 	if(istype(examined_datum, /datum/antagonist/bandit))
 		return "<span class='boldnotice'>Another free man. My ally.</span>"
 
 /datum/antagonist/bandit/on_gain()
 	owner.special_role = "Bandit"
-	owner.purge_combat_knowledge()
+	owner.current?.purge_combat_knowledge()
 	move_to_spawnpoint()
 	owner.current.roll_mob_stats()
 	forge_objectives()

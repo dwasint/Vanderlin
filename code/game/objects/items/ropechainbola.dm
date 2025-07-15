@@ -20,15 +20,15 @@
 /obj/item/rope/mob_can_equip(mob/living/M, mob/living/equipper, slot, disable_warning, bypass_equip_delay_self)
 	. = ..()
 	if(.)
-		if(slot == SLOT_BELT && !equipper)
+		if((slot & ITEM_SLOT_BELT) && !equipper)
 			if(!do_after(M, 1.5 SECONDS, src))
 				return FALSE
 
 /obj/item/rope/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
-	if(slot == SLOT_BELT)
+	if(slot & ITEM_SLOT_BELT)
 		user.temporarilyRemoveItemFromInventory(src)
-		user.equip_to_slot_if_possible(new /obj/item/storage/belt/leather/rope(get_turf(user)), SLOT_BELT)
+		user.equip_to_slot_if_possible(new /obj/item/storage/belt/leather/rope(get_turf(user)), ITEM_SLOT_BELT)
 		qdel(src)
 
 /datum/intent/tie
@@ -257,11 +257,11 @@
 	else
 		return ..()
 
-/obj/structure/noose/bullet_act(obj/projectile/P)
+/obj/structure/noose/bullet_act(obj/projectile/P, def_zone, piercing_hit = FALSE)
 	. = ..()
 	new /obj/item/rope(loc)
 	playsound(src, 'sound/foley/dropsound/cloth_drop.ogg', 50, TRUE)
-	if (istype(src, /obj/structure/noose/gallows))
+	if(istype(src, /obj/structure/noose/gallows))
 		new /obj/machinery/light/fueled/lanternpost/unfixed(loc)
 		visible_message(span_danger("The noose is shot down from the gallows!"))
 	else

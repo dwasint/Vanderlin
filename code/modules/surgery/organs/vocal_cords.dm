@@ -1,8 +1,3 @@
-#define COOLDOWN_STUN 1200
-#define COOLDOWN_DAMAGE 600
-#define COOLDOWN_MEME 300
-#define COOLDOWN_NONE 100
-
 /obj/item/organ/vocal_cords //organs that are activated through speech with the :x/MODE_KEY_VOCALCORDS channel
 	name = "vocal cords"
 	icon_state = "vocal_cords"
@@ -26,3 +21,30 @@
 	name = "harpy's song"
 	icon_state = "harpysong"		//Pulsating heart energy thing.
 	desc = "The blessed essence of harpysong. How did you get this... you monster!"
+	actions_types = list(/datum/action/item_action/organ_action/use/harpy_sing)
+	var/obj/item/instrument/vocals/harpy_vocals/vocals
+
+/obj/item/organ/vocal_cords/harpy/Initialize()
+	. = ..()
+	vocals = new(src)  //okay, i think it'll be tied to the organ
+
+/obj/item/organ/vocal_cords/harpy/Insert(mob/living/carbon/M, special = FALSE, drop_if_replaced = TRUE)
+	. = ..()
+	M.adjust_skillrank(/datum/skill/misc/music, 1, TRUE)
+
+/obj/item/organ/vocal_cords/harpy/Remove(mob/living/carbon/M, special = FALSE, drop_if_replaced = TRUE)
+	. = ..()
+	M.adjust_skillrank(/datum/skill/misc/music, -1, TRUE)
+
+/datum/action/item_action/organ_action/use/harpy_sing
+	name = "Harpy's song"
+	desc = "Project your voice through song."
+	button_icon = 'icons/obj/surgery.dmi'
+	button_icon_state = "harpysong"
+
+/datum/action/item_action/organ_action/use/harpy_sing/do_effect(trigger_flags)
+	. = ..()
+	var/obj/item/organ/vocal_cords/harpy/vocal_cords = owner.getorganslot(ORGAN_SLOT_VOICE)
+	if(!istype(vocal_cords) || !vocal_cords.vocals)
+		return
+	vocal_cords.vocals.attack_self(owner)

@@ -16,7 +16,7 @@
 	var/requires_learning = FALSE
 
 	///our sellprice
-	var/sellprice = 0
+	var/sellprice = null
 
 	///this is the things we check for in our offhand ie herb pouch or something to repeat the craft
 	var/list/offhand_repeat_check = list(
@@ -108,8 +108,20 @@
 
 	for(var/path as anything in total_list)
 		for(var/required_path as anything in requirements)
-			if(!ispath(path, required_path) || (!subtypes_allowed && (path in subtypesof(required_path))) || (path in all_blacklisted))
+			// Check if path matches the requirement
+			var/type_matches = FALSE
+
+			if(subtypes_allowed)
+				// Allow both exact matches and subtypes
+				type_matches = ispath(path, required_path)
+			else
+				// Allow only exact matches
+				type_matches = (path == required_path)
+
+			// Skip if type doesn't match or is blacklisted
+			if(!type_matches || (path in all_blacklisted))
 				continue
+
 			copied_requirements[required_path] -= total_list[path]
 			if(copied_requirements[required_path] <= 0)
 				copied_requirements -= required_path
@@ -143,34 +155,82 @@
  */
 /datum/repeatable_crafting_recipe/proc/check_max_repeats(obj/item/attacked_item, obj/item/attacking_item, mob/user)
 	var/list/usable_contents = list()
-	if(uses_attacked_atom)
-		usable_contents |= attacked_item.type
-		usable_contents[attacked_item.type]++
 
 	gather_usable_contents(user, usable_contents)
+
+	// Handle uses_attacked_atom properly - if we use the attacked atom, we need to include it in our calculations
+	if(uses_attacked_atom)
+		var/attacked_type = attacked_item.type
+		if(istype(attacked_item, /obj/item/natural/bundle))
+			attacked_type = attacked_item:stacktype
+			usable_contents |= attacked_type
+			usable_contents[attacked_type] += attacked_item:amount
+		else
+			usable_contents |= attacked_type
+			usable_contents[attacked_type] += 1
 
 	var/max_crafts = 10000
 	var/list/total_list = usable_contents
 	var/list/all_blacklisted = typesof_list(blacklisted_paths)
 
-	for(var/path as anything in total_list)
-		for(var/required_path as anything in requirements)
-			if(!ispath(path, required_path) || (path in all_blacklisted))
-				continue
-			var/holder_max_crafts = FLOOR(total_list[path] / requirements[required_path], 1)
-			max_crafts = min(max_crafts, holder_max_crafts)
+	// Check each requirement against available items
+	for(var/required_path as anything in requirements)
+		var/required_amount = requirements[required_path]
+		var/available_amount = 0
 
+		// Count available items that match this requirement
+		for(var/path as anything in total_list)
+			// Check if path matches the requirement
+			var/type_matches = FALSE
+
+			if(subtypes_allowed)
+				// Allow both exact matches and subtypes
+				type_matches = ispath(path, required_path)
+			else
+				// Allow only exact matches
+				type_matches = (path == required_path)
+
+			// Skip if type doesn't match or is blacklisted
+			if(!type_matches || (path in all_blacklisted))
+				continue
+
+			available_amount += total_list[path]
+
+		if(available_amount == 0)
+			return 0 // Can't craft any if we're missing a required component
+
+		var/holder_max_crafts = FLOOR(available_amount / required_amount, 1)
+		max_crafts = min(max_crafts, holder_max_crafts)
+
+	// Check reagent requirements
 	if(length(reagent_requirements))
 		var/list/reagent_values = gather_reagents(user)
 
-		for(var/path in reagent_values)
-			for(var/required_path as anything in reagent_requirements)
+		for(var/required_path as anything in reagent_requirements)
+			var/required_amount = reagent_requirements[required_path]
+			var/available_amount = 0
+
+			// Count available reagents that match this requirement
+			for(var/path in reagent_values)
 				if(!ispath(path, required_path))
 					continue
-				var/holder_max_crafts = FLOOR(reagent_values[path] / reagent_requirements[required_path], 1)
-				max_crafts = min(max_crafts, holder_max_crafts)
+				if(!reagent_subtypes_allowed && (path in subtypesof(required_path)))
+					continue
+				available_amount += reagent_values[path]
+
+			if(available_amount == 0)
+				return 0 // Can't craft any if we're missing required reagents
+
+			var/holder_max_crafts = FLOOR(available_amount / required_amount, 1)
+			max_crafts = min(max_crafts, holder_max_crafts)
 
 	return max_crafts
+
+/datum/repeatable_crafting_recipe/proc/item_in_requirements(obj/item/item, list/requirement_list)
+	for(var/required_type in requirement_list)
+		if(item_matches_requirement(item, required_type))
+			return TRUE
+	return FALSE
 
 /**
  * Gathers usable contents from the user and surroundings
@@ -189,7 +249,7 @@
 			usable_contents[I.type]++
 
 	var/obj/item/inactive_hand = user.get_inactive_held_item()
-	if(is_type_in_list(inactive_hand, offhand_repeat_check))
+	if(item_in_requirements(inactive_hand, offhand_repeat_check))
 		for(var/obj/item/item in inactive_hand.contents)
 			if(istype(item, /obj/item/natural/bundle))
 				var/bundle_path = item:stacktype
@@ -252,7 +312,7 @@
 	return all_types
 
 /**
- * Processes a bundle item for crafting
+ * Processes a bundle item for crafting - OPTIMIZED VERSION
  *
  * @param {obj/item/natural/bundle} item - The bundle to process
  * @param {mob} user - The user performing the crafting
@@ -262,60 +322,80 @@
  * @return {boolean} - TRUE if processing should stop, FALSE otherwise
  */
 /datum/repeatable_crafting_recipe/proc/process_bundle(obj/item/natural/bundle/item, mob/user, list/copied_requirements, list/to_delete, list/all_blacklisted)
-	var/early_ass_break = FALSE
-	var/bundle_path = item:stacktype
+	var/obj/item/bundle_path = item:stacktype
 	if(bundle_path in all_blacklisted)
-		return early_ass_break
+		return FALSE
 
+	// Check if this bundle type matches any of our requirements
+	var/matching_requirement = null
 	for(var/path in copied_requirements)
-		if(QDELETED(item))
+		if(type_matches_requirement(bundle_path, path))
+			matching_requirement = path
 			break
-		if(!ispath(bundle_path, path))
-			continue
-		for(var/i = 1 to item:amount)
-			if(QDELETED(item) || early_ass_break || !(bundle_path in copied_requirements))
-				break
 
-			item:amount--
-			var/obj/item/sub_item = new bundle_path(get_turf(item))
-			if(item:amount == 0)
-				qdel(item)
+	if(!matching_requirement)
+		return FALSE
 
-			user.visible_message(span_info("[user] starts grabbing \a [sub_item] from [item]."),
-								span_info("I start grabbing \a [sub_item] from [item]."))
+	// Calculate how many items we need from this bundle
+	var/needed_amount = copied_requirements[matching_requirement]
+	var/available_amount = item:amount
+	var/use_amount = min(needed_amount, available_amount)
 
-			if(do_after(user, ground_use_time, sub_item, extra_checks = CALLBACK(user, TYPE_PROC_REF(/atom/movable, CanReach), sub_item)))
-				if(put_items_in_hand)
-					user.put_in_active_hand(sub_item)
+	if(use_amount <= 0)
+		return FALSE
 
-				for(var/requirement in copied_requirements)
-					if(!istype(sub_item, requirement))
-						continue
-					copied_requirements[requirement]--
-					to_delete += sub_item
-					sub_item.forceMove(locate(1,1,1))
-					if(copied_requirements[requirement] <= 0)
-						copied_requirements -= requirement
-						early_ass_break = TRUE
-						if(item && item:amount == 1) // to remove 1 count bundles
-							new bundle_path(get_turf(item))
-							qdel(item)
-						break
-	return early_ass_break
+	// Single do_after for the entire bundle operation
+	user.visible_message(span_info("[user] starts gathering [use_amount] [initial(bundle_path.name)]\s from [item]."),
+						span_info("I start gathering [use_amount] [initial(bundle_path.name)]\s from [item]."))
+
+	if(!do_after(user, ground_use_time, item, extra_checks = CALLBACK(user, TYPE_PROC_REF(/atom/movable, CanReach), item)))
+		return FALSE
+
+	// Process the bundle efficiently
+	item:amount -= use_amount
+	copied_requirements[matching_requirement] -= use_amount
+
+	// Create items only if we need to put them in hand or they're needed for other purposes
+	if(put_items_in_hand && use_amount == 1)
+		var/obj/item/sub_item = new bundle_path(get_turf(item))
+		user.put_in_active_hand(sub_item)
+		to_delete += sub_item
+		sub_item.forceMove(locate(1,1,1))
+	else
+		// For multiple items or when not putting in hand, create a temporary reference
+		// This avoids creating individual items unnecessarily
+		for(var/i = 1 to use_amount)
+			var/obj/item/temp_item = new bundle_path(locate(1,1,1))
+			to_delete += temp_item
+
+	// Clean up the bundle if empty
+	if(item:amount <= 0)
+		qdel(item)
+
+	// Remove requirement if fulfilled
+	if(copied_requirements[matching_requirement] <= 0)
+		copied_requirements -= matching_requirement
+		return TRUE // Early break since requirement is fulfilled
+
+	return FALSE
 
 /**
  * Handles reagent requirements for crafting
  *
  * @param {list} copied_reagent_requirements - Current reagent requirements
  * @param {mob} user - The user performing the crafting
+ * @param {list} copied_containers - Key/Value list of original containers and associated holders
  * @return {boolean} - TRUE if successful, FALSE otherwise
  */
-/datum/repeatable_crafting_recipe/proc/handle_reagent_requirements(list/copied_reagent_requirements, mob/user)
+/datum/repeatable_crafting_recipe/proc/handle_reagent_requirements(list/copied_reagent_requirements, mob/user, list/copied_containers)
 	var/obj/item/inactive_held = user.get_inactive_held_item()
 
 	// First check storage
 	for(var/obj/item/reagent_containers/container in get_storage_contents(user))
-		if(!process_reagent_container(container, copied_reagent_requirements, user, inactive_held, TRUE))
+		if(!process_reagent_container(container, copied_reagent_requirements, user, inactive_held, TRUE, 0, 0, copied_containers))
+			for(var/obj/item/reagent_containers/key in copied_containers)
+				var/obj/item/reagent_containers/doomed = copied_containers[key]
+				qdel(doomed)
 			return FALSE
 
 	// Then check general area
@@ -324,7 +404,10 @@
 		var/stored_pixel_x = container.pixel_x
 		var/stored_pixel_y = container.pixel_y
 
-		if(!process_reagent_container(container, copied_reagent_requirements, user, container_loc, FALSE, stored_pixel_x, stored_pixel_y))
+		if(!process_reagent_container(container, copied_reagent_requirements, user, container_loc, FALSE, stored_pixel_x, stored_pixel_y, copied_containers))
+			for(var/obj/item/reagent_containers/key in copied_containers)
+				var/obj/item/reagent_containers/doomed = copied_containers[key]
+				qdel(doomed)
 			return FALSE
 
 	return TRUE
@@ -339,9 +422,15 @@
  * @param {boolean} is_storage - Whether the container is from storage
  * @param {number} stored_pixel_x - Original pixel_x of container
  * @param {number} stored_pixel_y - Original pixel_y of container
+ * @param {list} copied_containers - Key/Value list of original containers and associated holders
  * @return {boolean} - TRUE if successful, FALSE otherwise
  */
-/datum/repeatable_crafting_recipe/proc/process_reagent_container(obj/item/reagent_containers/container, list/copied_reagent_requirements, mob/user, atom/return_loc, is_storage, stored_pixel_x = 0, stored_pixel_y = 0)
+/datum/repeatable_crafting_recipe/proc/process_reagent_container(obj/item/reagent_containers/container, list/copied_reagent_requirements, mob/user, atom/return_loc, is_storage, stored_pixel_x = 0, stored_pixel_y = 0, list/copied_containers)
+	var/obj/item/reagent_containers/concopy = null
+	concopy = new /obj/item/reagent_containers() // We make a new container to pair with the original
+	concopy.loc = null // We banish the copy to nullspace before adding it to the copy list
+	copied_containers[container] += concopy
+
 	for(var/required_path as anything in copied_reagent_requirements)
 		var/list/reagent_paths = list(required_path)
 		if(reagent_subtypes_allowed)
@@ -367,7 +456,7 @@
 			if(istype(container, /obj/item/reagent_containers/glass/bottle))
 				var/obj/item/reagent_containers/glass/bottle/bottle = container
 				if(bottle.closed)
-					bottle.rmb_self(user)
+					bottle.attack_self_secondary(user)
 
 			var/reagent_use_time_real = max(reagent_use_time * 0.1, reagent_use_time / max(1, user.get_skill_level(skillcraft)))
 			if(!do_after(user, reagent_use_time_real, container, extra_checks = CALLBACK(user, TYPE_PROC_REF(/atom/movable, CanReach), container)))
@@ -375,12 +464,13 @@
 
 			playsound(get_turf(user), pick(container.poursounds), 100, TRUE)
 
+			// We transfer reagents to the copied container instead of deletion, so we can control reagent removal AFTER a successful crafting attempt
 			if(reagent_value < copied_reagent_requirements[required_path])
-				container.reagents.remove_reagent(possible_reagent_path, reagent_value)
+				container.reagents.trans_to(copied_containers[container], reagent_value)
 				copied_reagent_requirements[required_path] -= reagent_value
 				break
 			else
-				container.reagents.remove_reagent(possible_reagent_path, copied_reagent_requirements[required_path])
+				container.reagents.trans_to(copied_containers[container], copied_reagent_requirements[required_path])
 				copied_reagent_requirements -= required_path
 
 			if(put_items_in_hand)
@@ -480,7 +570,7 @@
 /datum/repeatable_crafting_recipe/proc/get_storage_contents(mob/user)
 	var/list/storage_contents = list()
 	var/obj/item/inactive_hand = user.get_inactive_held_item()
-	if(is_type_in_list(inactive_hand, offhand_repeat_check))
+	if(item_in_requirements(inactive_hand, offhand_repeat_check))
 		for(var/obj/item/item in inactive_hand.contents)
 			storage_contents |= item
 	return storage_contents
@@ -541,10 +631,11 @@
 		var/list/copied_reagent_requirements = reagent_requirements.Copy()
 		var/list/copied_tool_usage = tool_usage.Copy()
 		var/list/to_delete = list()
+		var/list/copied_containers = list()
 
 		var/obj/item/active_item = user.get_active_held_item()
 
-		if(put_items_in_hand && !is_type_in_list(active_item, requirements))
+		if(put_items_in_hand && !item_in_requirements(active_item, requirements))
 			handle_active_item_placement(active_item, user)
 
 		// Process items from usable contents
@@ -553,7 +644,7 @@
 			if(!length(copied_requirements))
 				break
 
-			if((!is_type_in_list(item, copied_requirements) && !istype(item, /obj/item/natural/bundle)) || (item.type in all_blacklisted))
+			if((!item_in_requirements(item, copied_requirements) && !istype(item, /obj/item/natural/bundle)) || (item.type in all_blacklisted))
 				continue
 
 			if(istype(item, /obj/item/natural/bundle))
@@ -568,7 +659,7 @@
 					user.put_in_active_hand(item)
 
 				for(var/requirement in copied_requirements)
-					if(!istype(item, requirement))
+					if(!item_matches_requirement(item, requirement))
 						continue
 					copied_requirements[requirement]--
 					if(copied_requirements[requirement] <= 0)
@@ -586,7 +677,7 @@
 				if(!length(copied_requirements))
 					break
 
-				if(!is_type_in_list(item, copied_requirements) || (item.type in all_blacklisted))
+				if(!item_in_requirements(item, copied_requirements) || (item.type in all_blacklisted))
 					continue
 
 				to_chat(user, "You start grabbing [item] from your bag.")
@@ -598,7 +689,7 @@
 						user.put_in_active_hand(item)
 
 					for(var/requirement in copied_requirements)
-						if(!istype(item, requirement))
+						if(!item_matches_requirement(item, requirement))
 							continue
 						copied_requirements[requirement]--
 						if(copied_requirements[requirement] <= 0)
@@ -612,7 +703,7 @@
 
 		// Process reagents
 		if(crafting_success && length(copied_reagent_requirements))
-			crafting_success = handle_reagent_requirements(copied_reagent_requirements, user)
+			crafting_success = handle_reagent_requirements(copied_reagent_requirements, user, copied_containers)
 
 		// Process tools
 		if(crafting_success && length(copied_tool_usage))
@@ -622,6 +713,10 @@
 		if(crafting_success && !length(copied_requirements) && !length(copied_reagent_requirements) && !length(copied_tool_usage))
 			if(complete_crafting(to_delete, user))
 				successful_crafts++
+				// Crafting successful, delete unused copied reagent containers used for control
+				for(var/obj/item/reagent_containers/key in copied_containers)
+					var/obj/item/reagent_containers/doomed = copied_containers[key]
+					qdel(doomed)
 				// Let the user know about progress
 				to_chat(user, span_notice("Successfully crafted \a [name]. ([successful_crafts]/[requested_crafts])"))
 				continue
@@ -629,11 +724,24 @@
 		// Move items back if failed
 		move_items_back(to_delete, user)
 
-		// If we failed at some point in the process, ask if they want to continue trying
+		// If we failed at some point in the process, restore reagents and ask if they want to continue trying
 		if(!crafting_success && successful_crafts < requested_crafts)
+
+			// Crafting unsuccessful, transfer all reagents to the original containers then delete the container copies
+			for(var/obj/item/reagent_containers/key in copied_containers)
+				var/obj/item/reagent_containers/doomed = copied_containers[key]
+				doomed.reagents.trans_to(key, doomed.reagents.total_volume)
+				qdel(doomed)
+
 			var/continue_crafting = alert(user, "Crafting failed. Continue attempting to craft [requested_crafts - successful_crafts] more [name]?", "Continue Crafting?", "Yes", "No")
 			if(continue_crafting != "Yes")
 				break
+
+		// Crafting unsuccessful, transfer all reagents to the original containers then delete the container copies
+		for(var/obj/item/reagent_containers/key in copied_containers)
+			var/obj/item/reagent_containers/doomed = copied_containers[key]
+			doomed.reagents.trans_to(key, doomed.reagents.total_volume)
+			qdel(doomed)
 
 		// After each successful or failed craft, give the user a moment to react
 		sleep(0.5 SECONDS)
@@ -645,6 +753,19 @@
 		to_chat(user, span_warning("Failed to craft any [name]."))
 
 	return TRUE
+
+
+/datum/repeatable_crafting_recipe/proc/item_matches_requirement(obj/item/item, atom/required_type)
+	if(subtypes_allowed)
+		return istype(item, required_type)
+	else
+		return (item?.type == required_type)
+
+/datum/repeatable_crafting_recipe/proc/type_matches_requirement(atom/item_type, atom/required_type)
+	if(subtypes_allowed)
+		return ispath(item_type, required_type)
+	else
+		return (item_type == required_type)
 
 /**
  * Handles placing active item somewhere safe
@@ -671,12 +792,11 @@
  */
 /datum/repeatable_crafting_recipe/proc/complete_crafting(list/to_delete, mob/user)
 	if(crafting_message)
-		user.visible_message(span_info("[user] [crafting_message]."), span_info("I [crafting_message]."))
+		user.visible_message(span_notice("[user] [crafting_message]."), span_notice("I [crafting_message]."))
 
 	if(crafting_sound)
 		playsound(user, crafting_sound, sound_volume, TRUE, -1)
-	if(crafting_message)
-		to_chat(user, span_notice(crafting_message))
+
 	var/crafting_time = max(craft_time * 0.1, craft_time / max(1, user.get_skill_level(skillcraft)))
 	if(!do_after(user, crafting_time))
 		return FALSE
@@ -771,17 +891,19 @@
 	for(var/spawn_count = 1 to output_amount)
 		var/obj/item/new_item = new output(get_turf(user))
 
-		new_item.sellprice = sellprice
-		new_item.randomize_price()
+		if(isnum(sellprice)) // if the item has no price override we make it take its original price. in the future we could add "labor" price increase but for now this should allow people to sell crafted items.
+			new_item.sellprice = sellprice
+			new_item.randomize_price()
 
 		if(length(pass_types_in_end))
 			var/list/parts = list()
 			for(var/obj/item/listed as anything in to_delete)
-				if(!is_type_in_list(listed, pass_types_in_end))
+				if(!item_in_requirements(listed, pass_types_in_end))
 					continue
 				parts += listed
 			new_item.CheckParts(parts)
-			new_item.OnCrafted(user.dir, user)
+
+		new_item.OnCrafted(user.dir, user)
 
 		outputs += new_item
 

@@ -74,11 +74,9 @@
 				if(wonder_code == 4)
 					message_admins("Maniac [ADMIN_LOOKUPFLW(user)] has obtained the fourth and final heart code.")
 
-/obj/item/organ/heart/update_icon()
-	if(beating)
-		icon_state = "[icon_base]-on"
-	else
-		icon_state = "[icon_base]-off"
+/obj/item/organ/heart/update_icon_state()
+	. = ..()
+	icon_state = "[icon_base][beating ? "-on" : "-off"]"
 
 /obj/item/organ/heart/Remove(mob/living/carbon/M, special = 0)
 	..()
@@ -89,7 +87,7 @@
 	if(!owner)
 		Stop()
 
-/obj/item/organ/heart/attack_self(mob/user)
+/obj/item/organ/heart/attack_self(mob/user, params)
 	..()
 	if(!beating)
 		user.visible_message("<span class='notice'>[user] squeezes [src] to \
@@ -99,27 +97,18 @@
 
 /obj/item/organ/heart/proc/Stop()
 	beating = 0
-	update_icon()
+	update_appearance(UPDATE_ICON_STATE)
 	return 1
 
 /obj/item/organ/heart/proc/Restart()
 	beating = 1
-	update_icon()
+	update_appearance(UPDATE_ICON_STATE)
 	return 1
 
 /obj/item/organ/heart/prepare_eat(mob/living/carbon/human/user)
 	var/obj/item/reagent_containers/food/snacks/organ/S = ..()
 	S.icon_state = "heart-off"
 	var/nothing = FALSE
-/*	if(user.mind)
-		var/datum/antagonist/werewolf/C = user.mind.has_antag_datum(/datum/antagonist/werewolf)
-		if(C)
-			var/datum/objective/hearteating/H = locate(/datum/objective/hearteating) in C.objectives
-			if(H)
-				testing("heartseaten++")
-				H.hearts_eaten++
-				nothing = TRUE
-				S.eat_effect = /datum/status_effect/buff/foodbuff*/
 	if(!nothing)
 		S.eat_effect = /datum/status_effect/debuff/uncookedfood
 	return S
@@ -208,7 +197,7 @@
 	name = "Pump my blood"
 
 //You are now brea- pumping blood manually
-/datum/action/item_action/organ_action/cursed_heart/Trigger()
+/datum/action/item_action/organ_action/cursed_heart/Trigger(trigger_flags)
 	. = ..()
 	if(. && istype(target, /obj/item/organ/heart/cursed))
 		var/obj/item/organ/heart/cursed/cursed_heart = target

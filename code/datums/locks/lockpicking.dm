@@ -1,11 +1,6 @@
 #define LOCKPICK_MOUSEUP 0
 #define LOCKPICK_MOUSEDOWN 1
 
-//base element, tells thing it can be lockpicked
-/obj
-	//check if object is being picked if can be picked
-	var/being_picked = FALSE
-
 //user is told its picking
 /mob/living/proc/try_pick(obj/P, obj/item/L, list/obj/lockpicks, list/obj/wedges, difficulty)
 	if(!isobj(P))
@@ -40,14 +35,14 @@
 
 	if(prob(60 - (skill_level * 10)))
 		to_chat(user, span_notice("My \the [lockpick_used] broke!"))
-		playsound(loc, 'sound/items/LPBreak.ogg', 100 - (15 * skill_level))
+		playsound(loc, 'sound/items/LPBreak.ogg', 100 - (15 * skill_level), extrarange = SILENCED_SOUND_EXTRARANGE)
 		qdel(lockpick_used)
 
 	if(lock)
 		lock.locked = FALSE
 		lock.tampered = TRUE
 
-	playsound(loc, 'sound/items/LPWin.ogg', 150 - (15 * skill_level))
+	playsound(loc, 'sound/items/LPWin.ogg', 150 - (15 * skill_level), extrarange = SILENCED_SOUND_EXTRARANGE)
 
 	var/amt2raise = user.STAINT + (50 / difficulty)
 	var/boon = user.get_learning_boon(/datum/skill/misc/lockpicking)
@@ -89,7 +84,7 @@
 	imagery.skill_level = skill_level
 	lock.being_picked = TRUE
 
-	playsound(user, 'sound/items/LPstart.ogg', 100 - (15 * skill_level))
+	playsound(user, 'sound/items/LPstart.ogg', 100 - (15 * skill_level), extrarange = SILENCED_SOUND_EXTRARANGE)
 
 	screen += imagery
 	imagery.autofire_on(imagery.clicker)
@@ -189,10 +184,10 @@
 	. = ..()
 
 	if(!frozen && linked_pick)
-		var/list/new_params = params2list(params)
+		var/list/modifiers = params2list(params)
 
-		var/icon_x = text2num(new_params["icon-x"]) - 240
-		var/icon_y = text2num(new_params["icon-y"]) - 240
+		var/icon_x = text2num(LAZYACCESS(modifiers, ICON_X)) - 240
+		var/icon_y = text2num(LAZYACCESS(modifiers, ICON_Y)) - 240
 
 		icon_y = max(1,icon_y)
 
@@ -229,9 +224,9 @@
 	SIGNAL_HANDLER
 	var/list/modifiers = params2list(params)
 
-	if(LAZYACCESS(modifiers, "middle"))
+	if(LAZYACCESS(modifiers, MIDDLE_CLICK))
 		return
-	if(LAZYACCESS(modifiers, "right")) //right click to close
+	if(LAZYACCESS(modifiers, RIGHT_CLICK)) //right click to close
 		close_lockpick()
 		return
 	if(source.mob.in_throw_mode)
@@ -310,12 +305,12 @@
 		if(break_checking_cooldown <= world.time)
 			if(prob(10 - skill_level))
 				to_chat(picker, span_notice("My \the [the_lockpick] broke!"))
-				playsound(loc, 'sound/items/LPBreak.ogg', 100 - (15 * skill_level))
+				playsound(loc, 'sound/items/LPBreak.ogg', 100 - (15 * skill_level), extrarange = SILENCED_SOUND_EXTRARANGE)
 				qdel(the_lockpick)
 			break_checking_cooldown = world.time + 7 SECONDS
 
 		lock_angle -= 20
-		playsound(picker.loc, pick('sound/items/LPtry.ogg', 'sound/items/LPtry2.ogg'), 100 - (15 * skill_level))
+		playsound(picker.loc, pick('sound/items/LPtry.ogg', 'sound/items/LPtry2.ogg'), 100 - (15 * skill_level), extrarange = SILENCED_SOUND_EXTRARANGE)
 	if(lock_angle >= 1 && !failing && !playing_lock_sound)
 		play_turn_sound()
 		playing_lock_sound = TRUE
@@ -340,3 +335,6 @@
 
 /atom/movable/screen/movable/snap/lockpicking/proc/turn_sound_reset()
 	playing_lock_sound = FALSE
+
+#undef LOCKPICK_MOUSEUP
+#undef LOCKPICK_MOUSEDOWN

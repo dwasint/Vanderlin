@@ -11,6 +11,12 @@
 #define TEXT_EAST			"[EAST]"
 #define TEXT_WEST			"[WEST]"
 
+/// Use male sprites
+#define MALE_SPRITES 	0
+/// Use female sprites only
+#define FEMALE_SPRITES 	1
+/// Use female sprites and boob
+#define FEMALE_BOOB 	2
 
 //Human Overlays Indexes/////////
 #define REFLECTION_LAYER		49
@@ -92,11 +98,6 @@
 #define MANIFEST_ERROR_ITEM			4
 
 #define TRANSITIONEDGE			7 //Distance from edge to move to another z-level
-
-#define BE_CLOSE TRUE		//in the case of a silicon, to select if they need to be next to the atom
-#define NO_DEXTERITY TRUE	//if other mobs (monkeys, aliens, etc) can use this // I had to change 20+ files because some non-dnd-playing fuckchumbis can't spell "dexterity"
-#define NO_TK TRUE
-//used by canUseTopic()
 
 //singularity defines
 #define STAGE_ONE 1
@@ -184,6 +185,9 @@ GLOBAL_LIST_EMPTY(bloody_footprints_cache)
 //subtypesof(), typesof() without the parent path
 #define subtypesof(typepath) ( typesof(typepath) - typepath )
 
+/// Takes a datum as input, returns its ref string
+#define text_ref(datum) ref(datum)
+
 //Gets the turf this atom inhabits
 #define get_turf(A) (get_step(A, 0))
 
@@ -256,10 +260,6 @@ GLOBAL_LIST_INIT(pda_styles, sortList(list(MONO, VT, ORBITRON, SHARE)))
 #define APPEARANCE_LONG_GLIDE				LONG_GLIDE
 
 */
-
-// Consider these images/atoms as part of the UI/HUD
-#define APPEARANCE_UI_IGNORE_ALPHA			(RESET_COLOR|RESET_TRANSFORM|NO_CLIENT_COLOR|RESET_ALPHA|PIXEL_SCALE)
-#define APPEARANCE_UI						(RESET_COLOR|RESET_TRANSFORM|NO_CLIENT_COLOR|PIXEL_SCALE)
 
 //Just space
 #define SPACE_ICON_STATE	"[((x + y) ^ ~(x * y) + z) % 25]"

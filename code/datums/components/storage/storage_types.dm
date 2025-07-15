@@ -119,7 +119,7 @@
 	click_gather = TRUE
 	collection_mode = COLLECT_EVERYTHING
 	dump_time = 0
-	allow_quick_gather = FALSE
+	allow_quick_gather = TRUE
 	allow_quick_empty = TRUE
 	insert_preposition = "in"
 
@@ -266,7 +266,16 @@
 /datum/component/storage/concrete/grid/food/cooking/New(datum/P, ...)
 	. = ..()
 	set_holdable(
-		typecacheof(list(/obj/item/reagent_containers/food, /obj/item/alch)),
+		typecacheof(
+			list(
+				/obj/item/reagent_containers/food,
+				/obj/item/natural,
+				/obj/item/alch,
+				/obj/item/mana_battery/mana_crystal,
+				/obj/item/reagent_containers/powder,
+				/obj/item/organ,
+				)
+			),
 		)
 
 /datum/component/storage/concrete/grid/food/cooking/pan

@@ -38,19 +38,11 @@
 	popup.set_content(contents)
 	popup.open()
 
-/obj/item/roguemachine/drugtrade/update_icon()
-	if(!anchored)
-		w_class = WEIGHT_CLASS_BULKY
-		set_light(0)
-		return
-	w_class = WEIGHT_CLASS_GIGANTIC
-	set_light(2, 2, 2, l_color =  "#9C37B5")
-
 /obj/item/roguemachine/drugtrade/Initialize()
 	. = ..()
 	if(anchored)
 		START_PROCESSING(SSroguemachine, src)
-	update_icon()
+	set_light(2, 2, 2, l_color =  "#9C37B5")
 	for(var/X in GLOB.alldirs)
 		var/T = get_step(src, X)
 		if(!T)
@@ -126,7 +118,7 @@
 	. = ..()
 	set_light(1, 1, 1, l_color =  "#8f06b5")
 
-/obj/structure/fake_machine/drugmachine/obj_break(damage_flag)
+/obj/structure/fake_machine/drugmachine/obj_break(damage_flag, silent)
 	. = ..()
 	budget2change(budget)
 	set_light(0)
@@ -150,7 +142,7 @@
 	. = ..()
 	if(!ishuman(usr))
 		return
-	if(!usr.canUseTopic(src, BE_CLOSE) || locked())
+	if(!usr.can_perform_action(src, NEED_DEXTERITY|FORBID_TELEKINESIS_REACH) || locked())
 		return
 	var/mob/living/carbon/human/human_mob = usr
 	if(href_list["buy"])
@@ -192,7 +184,7 @@
 		var/select = input(usr, "Please select an option.", "", null) as null|anything in options
 		if(!select)
 			return
-		if(!usr.canUseTopic(src, BE_CLOSE) || locked())
+		if(!usr.can_perform_action(src, NEED_DEXTERITY|FORBID_TELEKINESIS_REACH) || locked())
 			return
 		switch(select)
 			if("Enable Paying Taxes")

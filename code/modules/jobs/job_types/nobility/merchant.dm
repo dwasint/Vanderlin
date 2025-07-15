@@ -1,29 +1,33 @@
 /datum/job/merchant
 	title = "Merchant"
-	tutorial = "Born a wastrel in the dirt, you clawed your way up. Either by luck or, gods forbid, effort to earn a place in the Merchant's Guild.\
-	Now, you are either a ruthless economist or a disgraced steward from distant lands. Where you came from no longer matters.\
+	tutorial = "Born a wastrel in the dirt, you clawed your way up. Either by luck or, gods forbid, effort to earn a place in the Merchant's Guild. \
+	Now, you are either a ruthless economist or a disgraced steward from distant lands. Where you came from no longer matters. \
 	What matters now is you make sure the fools around you keep buying what you sell. Everything has a price, and you shall be the beating heart of this economy."
 	flag = MERCHANT
 	department_flag = COMPANY
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE )
 	display_order = JDO_MERCHANT
-	faction = FACTION_STATION
+	faction = FACTION_TOWN
 	total_positions = 1
 	spawn_positions = 1
 	min_pq = 1
 	bypass_lastclass = TRUE
 	selection_color = "#192bc2"
+	cmode_music = 'sound/music/cmode/towner/CombatTowner2.ogg'
 
 	allowed_races = list(
-		"Humen",
-		"Elf",
-		"Half-Elf",
-		"Dwarf",
-		"Tiefling",
-		"Dark Elf",
-		"Aasimar",
-		"Rakshari",
-		"Hollow-Kin",
+		RACE_HUMEN,
+		RACE_ELF,
+		RACE_HALF_ELF,
+		RACE_DWARF,
+		RACE_TIEFLING,
+		RACE_DROW,
+		RACE_HALF_DROW,
+		RACE_AASIMAR,
+		RACE_RAKSHARI,
+		RACE_HOLLOWKIN,
+		RACE_TRITON,
+		RACE_HARPY,
 	)
 
 	outfit = /datum/outfit/job/merchant
@@ -32,7 +36,7 @@
 /datum/outfit/job/merchant/pre_equip(mob/living/carbon/human/H)
 	..()
 
-	neck = /obj/item/clothing/neck/horus
+	neck = /obj/item/clothing/neck/mercator
 	backr = /obj/item/storage/backpack/satchel
 	backpack_contents = list(/obj/item/storage/belt/pouch/coins/veryrich = 1, /obj/item/merctoken = 1)
 	beltr = /obj/item/weapon/sword/rapier

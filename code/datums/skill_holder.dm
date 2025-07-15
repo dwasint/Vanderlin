@@ -51,24 +51,53 @@
 /mob/proc/get_skill_level(skill)
 	return ensure_skills().get_skill_level(skill)
 
+/mob/proc/has_skill(skill)
+	return ensure_skills().has_skill(skill)
+
 /mob/proc/get_skill_speed_modifier(skill)
 	return ensure_skills().get_skill_speed_modifier(skill)
 
 /mob/proc/adjust_experience(skill, amt, silent=FALSE, check_apprentice=TRUE)
 	return ensure_skills().adjust_experience(skill, amt, silent, check_apprentice)
 
+/**
+ * adjusts the skill level
+ * Vars:
+ ** skill - associated skill to change
+ ** amt - how much to change the skill
+ ** silent - wether the player will be notified about their skill change or not
+*/
 /mob/proc/adjust_skillrank(skill, amt, silent=FALSE)
 	return ensure_skills().adjust_skillrank(skill, amt, silent)
 
 /mob/proc/return_our_apprentice_name()
 	return ensure_skills().our_apprentice_name
 
+/**
+ * increases the skill level up to a certain maximum
+ * Vars:
+ ** skill - associated skill to change
+ ** amt - how much to change the skill
+ ** max - maximum amount up to which the skill will be changed
+*/
 /mob/proc/clamped_adjust_skillrank(skill, amt, max, silent=FALSE)
 	return ensure_skills().clamped_adjust_skillrank(skill, amt, max, silent)
 
+/**
+ * sets the skill level to a specific amount
+ * Vars:
+ ** skill - associated skill
+ ** level - which level to set the skill to
+ ** silent - do we notify the player of this change?
+*/
 /mob/proc/set_skillrank(skill, level, silent=TRUE)
 	return ensure_skills().set_skillrank(skill, level, silent)
 
+/**
+ * purges all skill levels back down to 0
+ * Vars:
+ ** silent - do we notify the player of this change?
+*/
 /mob/proc/purge_all_skills(silent=TRUE)
 	return ensure_skills().purge_all_skills(silent)
 
@@ -98,12 +127,7 @@
 
 /datum/skill_holder/proc/set_current(mob/incoming)
 	current = incoming
-	RegisterSignal(incoming, COMSIG_MIND_TRANSFER, PROC_REF(transfer_skills))
 	incoming.skills = src
-
-/datum/skill_holder/proc/transfer_skills(mob/source, mob/destination)
-	UnregisterSignal(source, COMSIG_MIND_TRANSFER)
-	set_current(destination)
 
 /**
  * Offer apprenticeship to a youngling
@@ -137,6 +161,7 @@
 		title = apprentice_name
 	youngling.ensure_skills().our_apprentice_name = "[current.real_name]'s [title]"
 	to_chat(current, span_notice("[youngling.real_name] has become your apprentice."))
+	SEND_SIGNAL(current, COMSIG_APPRENTICE_MADE, youngling)
 
 /datum/skill_holder/proc/print_levels(user)
 	var/list/shown_skills = list()
@@ -197,6 +222,17 @@
 	if(!(skill_ref in known_skills))
 		return SKILL_LEVEL_NONE
 	return known_skills[skill_ref] || SKILL_LEVEL_NONE
+
+/**
+ * Returns boolean for presence of skill
+ * Vars:
+ ** skill - the skill
+ */
+/datum/skill_holder/proc/has_skill(skill)
+	var/datum/skill/skill_ref = GetSkillRef(skill)
+	if(!(skill_ref in known_skills))
+		return FALSE
+	return TRUE
 
 /**
  * Gets the skill's singleton and returns the result of its get_skill_speed_modifier
@@ -271,7 +307,7 @@
 			if(skill == /datum/skill/misc/reading && old_level == SKILL_LEVEL_NONE && current.is_literate())
 				GLOB.vanderlin_round_stats[STATS_LITERACY_TAUGHT]++
 		if(skill == /datum/skill/magic/arcane)
-			current?.mind?.adjust_spellpoints(1)
+			current?.adjust_spellpoints(1)
 
 		return TRUE
 	else
@@ -296,7 +332,7 @@
 	var/amt2gain = 0
 	// Give spellpoints if the skill is arcane
 	if(skill == /datum/skill/magic/arcane)
-		current.mind?.adjust_spellpoints(amt)
+		current?.adjust_spellpoints(amt)
 	if(amt > 0)
 		for(var/i in 1 to amt)
 			switch(skill_experience[skill_ref])

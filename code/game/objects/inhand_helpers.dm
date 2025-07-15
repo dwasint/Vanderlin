@@ -20,7 +20,7 @@ GLOBAL_LIST_INIT(IconStates_cache, list())
 	var/extra_index = get_extra_onmob_index()
 	if(extra_index) //WIP, unimplemented
 		used_index += extra_index
-	if(HAS_BLOOD_DNA(src))
+	if(GET_ATOM_BLOOD_DNA_LENGTH(src))
 		used_index += "_b"
 	var/static/list/onmob_sprites = list()
 	var/icon/onmob = onmob_sprites["[tag][behind][mirrored][used_index]"]
@@ -90,11 +90,10 @@ GLOBAL_LIST_INIT(IconStates_cache, list())
 	if(!blended)
 		return
 	if(!skipoverlays)
-		for(var/V in overlays)
-			var/image/IM = V
-			var/icon/image_overlay = new(IM.icon,IM.icon_state)
-			if(IM.color)
-				image_overlay.Blend(IM.color,ICON_MULTIPLY)
+		for(var/image/IM in overlays)
+			var/icon/image_overlay = new(IM.icon, IM.icon_state)
+			if(image_overlay && IM.color)
+				image_overlay.Blend(IM.color, ICON_MULTIPLY)
 			blended.Blend(image_overlay,ICON_OVERLAY)
 
 	var/icon/holder

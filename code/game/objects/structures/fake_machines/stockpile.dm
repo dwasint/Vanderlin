@@ -16,11 +16,12 @@
 
 /obj/structure/fake_machine/stockpile/Destroy()
 	SSroguemachine.stock_machines -= src
+	QDEL_NULL(withdraw_tab)
 	return ..()
 
 /obj/structure/fake_machine/stockpile/Topic(href, href_list)
 	. = ..()
-	if(!usr.canUseTopic(src, BE_CLOSE))
+	if(!usr.can_perform_action(src, NEED_DEXTERITY|FORBID_TELEKINESIS_REACH))
 		return
 	if(href_list["navigate"])
 		return attack_hand(usr, href_list["navigate"])
@@ -147,7 +148,11 @@
 		else
 			attemptsell(P, user, TRUE, TRUE)
 
-/obj/structure/fake_machine/stockpile/attack_right(mob/user)
+/obj/structure/fake_machine/stockpile/attack_hand_secondary(mob/user, params)
+	. = ..()
+	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
+		return
+	. = SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	if(ishuman(user))
 		if(user.real_name in GLOB.outlawed_players)
 			say("OUTLAW DETECTED! REFUSING SERVICE!")
@@ -227,13 +232,13 @@
 			playsound(parent_structure.loc, 'sound/misc/hiss.ogg', 100, FALSE, -1)
 		return TRUE
 	if(href_list["compact"])
-		if(!usr.canUseTopic(parent_structure, BE_CLOSE))
+		if(!usr.can_perform_action(parent_structure, NEED_DEXTERITY|FORBID_TELEKINESIS_REACH))
 			return FALSE
 		if(ishuman(usr))
 			compact = !compact
 		return TRUE
 	if(href_list["change"])
-		if(!usr.canUseTopic(parent_structure, BE_CLOSE))
+		if(!usr.can_perform_action(parent_structure, NEED_DEXTERITY|FORBID_TELEKINESIS_REACH))
 			return FALSE
 		if(ishuman(usr))
 			if(budget > 0)
@@ -244,7 +249,7 @@
 /datum/withdraw_tab/proc/insert_coins(obj/item/coin/C)
 	budget += C.get_real_price()
 	qdel(C)
-	parent_structure.update_icon()
+	parent_structure.update_appearance()
 	playsound(parent_structure.loc, 'sound/misc/coininsert.ogg', 100, TRUE, -1)
 
 /proc/stock_announce(message)

@@ -76,7 +76,7 @@
 #define GRAB_KILL					3
 
 //Grab breakout odds
-#define BASE_GRAB_RESIST_CHANCE 	30
+#define BASE_GRAB_RESIST_CHANCE 	45
 
 //slowdown when in softcrit. Note that crawling slowdown will also apply at the same time!
 #define SOFTCRIT_ADD_SLOWDOWN 1
@@ -186,6 +186,9 @@
 
 #define INTENT_USE			/datum/intent/use
 
+#define SHIELD_BASH		/datum/intent/shield/bash
+#define SHIELD_BLOCK		/datum/intent/shield/block
+
 // animation types
 #define ATTACK_ANIMATION_BONK "bonk"
 #define ATTACK_ANIMATION_SWIPE "swipe"
@@ -200,7 +203,7 @@
 #define BCLASS_STAB			"stab"
 #define BCLASS_PIERCE		"pierce"
 #define BCLASS_SHOT			"shot"
-#define BCLASS_PICK			"stab"
+#define BCLASS_PICK			"pick"
 #define BCLASS_TWIST		"twist"
 #define BCLASS_PUNCH		"punch"
 #define BCLASS_BITE			"bite"
@@ -338,8 +341,20 @@ GLOBAL_LIST_INIT(shove_disarming_types, typecacheof(list(
 #define DAMAGE_PRECISION 0.1
 
 //bullet_act() return values
-#define BULLET_ACT_HIT				"HIT"		//It's a successful hit, whatever that means in the context of the thing it's hitting.
-#define BULLET_ACT_BLOCK			"BLOCK"		//It's a blocked hit, whatever that means in the context of the thing it's hitting.
-#define BULLET_ACT_FORCE_PIERCE		"PIERCE"	//It pierces through the object regardless of the bullet being piercing by default.
-#define BULLET_ACT_TURF				"TURF"		//It hit us but it should hit something on the same turf too. Usually used for turfs.
-#define BULLET_ACT_MISS				"MISS"
+/// It's a successful hit, whatever that means in the context of the thing it's hitting.
+#define BULLET_ACT_HIT "HIT"
+// /It's a blocked hit, whatever that means in the context of the thing it's hitting.
+#define BULLET_ACT_BLOCK "BLOCK"
+/// It pierces through the object regardless of the bullet being piercing by default.
+#define BULLET_ACT_FORCE_PIERCE		"PIERCE"
+
+/// Alternate attack defines. Return these at the end of procs like afterattack_secondary.
+/// Calls the normal attack proc. For example, if returned in afterattack_secondary, will call afterattack.
+/// Will continue the chain depending on the return value of the non-alternate proc, like with normal attacks.
+#define SECONDARY_ATTACK_CALL_NORMAL 1
+
+/// Cancels the attack chain entirely.
+#define SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN 2
+
+/// Proceed with the attack chain, but don't call the normal methods.
+#define SECONDARY_ATTACK_CONTINUE_CHAIN 3

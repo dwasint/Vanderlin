@@ -1,33 +1,33 @@
 /obj/item/natural/chaff
-	icon = 'icons/roguetown/items/produce.dmi'
-	var/foodextracted = null
 	name = "chaff"
-	icon_state = "chaff1"
 	desc = "Grain that has not yet been made suitable for grinding and baking."
+	icon = 'icons/roguetown/items/produce.dmi'
+	icon_state = "chaff1"
+	var/foodextracted = null
 	var/canthresh = TRUE
 
-/obj/item/natural/chaff/attack_right(mob/user)
-	if(foodextracted && !user.get_active_held_item())
+/obj/item/natural/chaff/attack_hand_secondary(mob/user, params)
+	. = ..()
+	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
+		return
+	if(foodextracted)
 		to_chat(user, span_warning("I start to shuck [src]..."))
-		if(do_after(user, 4 SECONDS, src)) //ROGTODO make this based on farming skill and speed
+		if(do_after(user, 4 SECONDS, src))
 			user.visible_message(span_notice("[user] shucks [src]."), \
 								span_notice("I shuck [src]."))
-			testing("1")
 			var/obj/item/G = new foodextracted(get_turf(src))
 			user.put_in_active_hand(G)
 			new /obj/item/natural/fibers(get_turf(src))
 			qdel(src)
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/item/natural/chaff/proc/thresh()
 	if(foodextracted && canthresh)
 		new foodextracted(loc)
 		new /obj/item/natural/fibers(loc)
-//		playsound(loc,"plantcross", 90, FALSE) Causes loud reverb in current setup
-//		playsound(loc,"smashlimb", 50, FALSE)
 		qdel(src)
 
 /obj/item/natural/chaff/attackby(obj/item/I, mob/living/user, params)
-	testing("attackb")
 	if(istype(I, /obj/item/weapon/pitchfork))
 		if(user.used_intent.type == DUMP_INTENT)
 			var/obj/item/weapon/pitchfork/W = I

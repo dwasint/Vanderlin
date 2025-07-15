@@ -75,7 +75,7 @@
 	var/highest_quality = 0
 
 	// Calculate average freshness and find highest quality ingredient
-	for(var/obj/item/food_item in to_delete)
+	for(var/obj/item/reagent_containers/food_item in to_delete)
 		if(istype(food_item, /obj/item/reagent_containers/food/snacks) || istype(food_item, /obj/item/grown))
 			ingredient_count++
 
@@ -119,7 +119,8 @@
 					continue
 				parts += listed
 			new_item.CheckParts(parts)
-			new_item.OnCrafted(user.dir, user)
+
+		new_item.OnCrafted(user.dir, user)
 
 		outputs += new_item
 
@@ -178,7 +179,7 @@
 	required_table = TRUE
 	craft_time = 6 SECONDS
 	crafting_sound = 'sound/foley/dropsound/food_drop.ogg'
-	crafting_message = "Adding apple bits to the dough..."
+	crafting_message = "add apple bits to the dough"
 	extra_chance = 100
 
 /datum/repeatable_crafting_recipe/cooking/apple_fritter_raw/create_outputs(list/to_delete, mob/user)
@@ -200,7 +201,8 @@
 					continue
 				parts += listed
 			new_item.CheckParts(parts)
-			new_item.OnCrafted(user.dir, user)
+
+		new_item.OnCrafted(user.dir, user)
 
 		outputs += new_item
 
@@ -214,13 +216,14 @@
 		/obj/item/reagent_containers/food/snacks/meat/mince/beef = 1,
 	)
 	required_table = TRUE
+	subtypes_allowed = FALSE
 	attacked_atom = /obj/item/reagent_containers/food/snacks/meat/mince/beef
 	starting_atom = /obj/item/reagent_containers/food/snacks/veg/onion_sliced
 	output = /obj/item/reagent_containers/food/snacks/meat/mince/beef/mett
 	uses_attacked_atom = TRUE
 	craft_time = 5 SECONDS
 	crafting_sound = 'sound/foley/kneading_alt.ogg'
-	crafting_message = "Kneading onions into the mince..."
+	crafting_message = "knead onions into the mince"
 	extra_chance = 100
 
 /datum/repeatable_crafting_recipe/cooking/raw_sausage
@@ -238,7 +241,7 @@
 	uses_attacked_atom = TRUE
 	craft_time = 9 SECONDS
 	crafting_sound = 'sound/foley/dropsound/food_drop.ogg'
-	crafting_message = "Stuffing a wiener..."
+	crafting_message = "stuff a wiener"
 	extra_chance = 100
 
 /datum/repeatable_crafting_recipe/cooking/raw_sausage_inverse
@@ -257,7 +260,7 @@
 	uses_attacked_atom = TRUE
 	craft_time = 9 SECONDS
 	crafting_sound = 'sound/foley/dropsound/food_drop.ogg'
-	crafting_message = "Stuffing a wiener..."
+	crafting_message = "stuff a wiener"
 	extra_chance = 100
 
 /datum/repeatable_crafting_recipe/cooking/raw_sausage_alt
@@ -274,7 +277,7 @@
 	uses_attacked_atom = TRUE
 	craft_time = 9 SECONDS
 	crafting_sound = 'sound/foley/dropsound/food_drop.ogg'
-	crafting_message = "Stuffing a wiener..."
+	crafting_message = "stuff a wiener"
 	extra_chance = 100
 
 /datum/repeatable_crafting_recipe/cooking/pestranstick
@@ -291,7 +294,7 @@
 	uses_attacked_atom = TRUE
 	craft_time = 5 SECONDS
 	crafting_sound = 'sound/foley/dropsound/food_drop.ogg'
-	crafting_message = "Skewering the butter..."
+	crafting_message = "skewer the butter"
 	extra_chance = 100
 
 /datum/repeatable_crafting_recipe/cooking/twoegg

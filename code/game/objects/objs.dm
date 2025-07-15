@@ -46,6 +46,15 @@
 
 	var/animate_dmg = TRUE
 
+	var/object_slowdown = 0
+	var/weatherproof = FALSE
+	var/weather = FALSE
+	var/list/temperature_affected_turfs
+
+	var/component_block = FALSE
+
+	var/attacked_sound = 'sound/blank.ogg'
+
 	// See /code/datums/locks
 
 	/**
@@ -64,6 +73,11 @@
 	var/unlock_sound = 'sound/foley/unlock.ogg'
 	/// Sound we play when a key fails to unlock
 	var/rattle_sound = 'sound/foley/lockrattle.ogg'
+	/// If this is currently being lockpicked
+	var/being_picked = FALSE
+
+	/// Uses colours defined by the monarch roundstart see [lordcolor.dm]
+	var/uses_lord_coloring = FALSE
 
 	vis_flags = VIS_INHERIT_PLANE
 
@@ -93,7 +107,7 @@
 	if(obj_integrity == null)
 		obj_integrity = max_integrity
 	if(lockid)
-		log_mapping("[src] ([type]) at [AREACOORD(src)] has a depreciated lockid varedit.")
+		//log_mapping("[src] ([type]) at [AREACOORD(src)] has a depreciated lockid varedit.")
 		if(!lockids)
 			lockids = list(lockid)
 			lockid = null
@@ -111,6 +125,8 @@
 	set_material_information()
 
 /obj/Destroy(force=FALSE)
+	if(lock)
+		QDEL_NULL(lock)
 	if(!ismachinery(src))
 		STOP_PROCESSING(SSobj, src) // TODO: Have a processing bitflag to reduce on unnecessary loops through the processing lists
 	SStgui.close_uis(src)
@@ -196,6 +212,10 @@
 	return get_turf(src)
 
 /obj/proc/CanAStarPass(ID, to_dir, requester)
+	if(ismovable(requester))
+		var/atom/movable/AM = requester
+		if(AM.pass_flags & pass_flags_self)
+			return TRUE
 	. = !density
 
 /obj/proc/check_uplink_validity()
@@ -261,7 +281,7 @@
 
 /obj/AltClick(mob/user)
 	. = ..()
-	if(unique_reskin && !current_skin && user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY))
+	if(unique_reskin && !current_skin && user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 		reskin_obj(user)
 
 /obj/proc/reskin_obj(mob/M)

@@ -8,7 +8,7 @@
 	department_flag = PEASANTS
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
 	display_order = JDO_HUNTER
-	faction = FACTION_STATION
+	faction = FACTION_TOWN
 	total_positions = 4
 	spawn_positions = 4
 	min_pq = 0
@@ -20,6 +20,7 @@
 	outfit = /datum/outfit/job/hunter
 	give_bank_account = 15
 	apprentice_name = "Hunter"
+	cmode_music = 'sound/music/cmode/towner/CombatTowner2.ogg'
 
 /datum/outfit/job/hunter
 	job_bitflag = BITFLAG_CONSTRUCTOR
