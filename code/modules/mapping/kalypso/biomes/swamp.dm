@@ -8,8 +8,8 @@
 	understory_chance = 35
 
 
-	temp_preference = 0.65     // Warm preference, range 0.4-0.9
-	temp_tolerance = 0.25      // Accepts 0.4-0.9
+	temp_preference = 0.65
+	temp_tolerance = 0.25
 	temp_falloff = 0.3
 
 	trees = list(
@@ -17,22 +17,19 @@
 	)
 
 /datum/biome/swamp/calculate_height(elevation, x, y)
-	// Add elevation noise for more variation
-	var/elevation_noise = perlin_noise(x * 0.01, y * 0.01, 9999) * 0.15
+	// Swamp-specific seed
+	var/elevation_noise = dot_point_noise(x * 0.01, y * 0.01, 3001) * 0.15
 	var/modified_elevation = elevation + elevation_noise
 
-	// Slightly more common swamp hills (10-15% of swamps)
-	if(modified_elevation > 0.75)  // Lowered from 0.9
+	if(modified_elevation > 0.75)
 		return 1
 	else
 		return 0
 
 /datum/biome/swamp/apply_height_noise(height, elevation, x, y)
-	var/elevation_noise = perlin_noise(x * 0.01, y * 0.01, 9999) * 0.15
-	var/modified_elevation = elevation + elevation_noise
-	var/height_noise = perlin_noise(x * 0.02, y * 0.02, 8000)
+	var/height_noise = dot_point_noise(x * 0.02, y * 0.02, 3002)
 
-	if(height_noise > 0.6 && modified_elevation > 0.5)  // More achievable
+	if(height_noise > 0.6 && elevation > 0.5)
 		height = 1
 	else if(height_noise < -0.4 && height > 0)
 		height = 0
@@ -63,8 +60,8 @@
 	return max(0, score)
 
 /datum/biome/swamp/generate_ground_terrain(turf/T, temp, moisture, elevation, x, y)
-	var/water_noise1 = perlin_noise(x * 0.005, y * 0.005, 5002)
-	var/water_noise2 = perlin_noise(x * 0.02, y * 0.02, 5003)
+	var/water_noise1 = dot_point_noise(x * 0.005, y * 0.005, 5002)
+	var/water_noise2 = dot_point_noise(x * 0.02, y * 0.02, 5003)
 
 	var/water_threshold = 0.0
 

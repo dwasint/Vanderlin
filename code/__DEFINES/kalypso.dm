@@ -15,3 +15,14 @@
 #define ORE_UNCOMMON "2"
 #define ORE_RARE "3"
 #define ORE_LEGENDARY "4"
+
+#define CAVE_EMPTY 0
+#define CAVE_WALL 1
+#define CAVE_TUNNEL 2
+#define CAVE_CHAMBER 3
+#define CAVE_LAVA_LAKE 4
+#define CAVE_LAVA_RIVER 5
+#define CAVE_LAVA_STREAM 6
+#define CAVE_WATER 7
+#define CAVE_MUD 8
+#define CAVE_CRYSTAL 9

@@ -8,8 +8,8 @@
 	understory_chance = 20
 	tree = 15
 
-	temp_preference = 0.35     // Cooler preference, range 0.1-0.6
-	temp_tolerance = 0.25      // Accepts 0.1-0.6
+	temp_preference = 0.35
+	temp_tolerance = 0.25
 	temp_falloff = 0.3
 
 	trees = list(
@@ -18,11 +18,10 @@
 	)
 
 /datum/biome/mountain/calculate_height(elevation, x, y)
-	// Add elevation noise for more variation
-	var/elevation_noise = perlin_noise(x * 0.01, y * 0.01, 9999) * 0.15
+	// Mountain-specific seed
+	var/elevation_noise = dot_point_noise(x * 0.01, y * 0.01, 2001) * 0.15
 	var/modified_elevation = elevation + elevation_noise
 
-	// More gradual mountain heights
 	if(modified_elevation > 0.75)
 		return 3
 	else if(modified_elevation > 0.55)
@@ -33,11 +32,9 @@
 		return 0
 
 /datum/biome/mountain/apply_height_noise(height, elevation, x, y)
-	var/elevation_noise = perlin_noise(x * 0.01, y * 0.01, 9999) * 0.15
-	var/modified_elevation = elevation + elevation_noise
-	var/height_noise = perlin_noise(x * 0.02, y * 0.02, 8000)
+	var/height_noise = dot_point_noise(x * 0.02, y * 0.02, 2002)
 
-	if(height_noise > 0.3 && height < 3)  // Allow upward variation
+	if(height_noise > 0.3 && height < 3)
 		height = min(height + 1, 3)
 	else if(height_noise < -0.3 && height > 0)
 		height = max(height - 1, 0)

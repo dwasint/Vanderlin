@@ -4,28 +4,27 @@
 
 	flora_density_base = 1.2
 
-	temp_preference = 0.5      // Ideal at 0.5, range 0.3-0.7
-	temp_tolerance = 0.2       // Accepts 0.3-0.7
+	temp_preference = 0.5
+	temp_tolerance = 0.2
 	temp_falloff = 0.3
 
 /datum/biome/forest/calculate_height(elevation, x, y)
-	var/elevation_noise = perlin_noise(x * 0.01, y * 0.01, 9999) * 0.15
+	// Use biome-specific seed
+	var/elevation_noise = dot_point_noise(x * 0.01, y * 0.01, 1001) * 0.15
 	var/modified_elevation = elevation + elevation_noise
 
-	// More common forest hills (25-30% of forests)
-	if(modified_elevation > 0.7)  // Lowered from 0.85
+	if(modified_elevation > 0.7)
 		return 2
-	else if(modified_elevation > 0.5)  // Lowered from 0.75
+	else if(modified_elevation > 0.5)
 		return 1
 	else
 		return 0
 
 /datum/biome/forest/apply_height_noise(height, elevation, x, y)
-	var/elevation_noise = perlin_noise(x * 0.01, y * 0.01, 9999) * 0.15
-	var/modified_elevation = elevation + elevation_noise
-	var/height_noise = perlin_noise(x * 0.02, y * 0.02, 8000)
+	// Different seed and scale for height variation
+	var/height_noise = dot_point_noise(x * 0.02, y * 0.02, 1002)
 
-	if(height_noise > 0.5 && modified_elevation > 0.4)
+	if(height_noise > 0.6 && elevation > 0.5)
 		height = min(height + 1, 2)
 	else if(height_noise < -0.6 && height > 0)
 		height = max(height - 1, 0)
@@ -197,11 +196,11 @@
 /datum/biome/forest/select_tree(temp, moisture, elevation)
 	var/list/possible_trees = list()
 	if(temp > 0.4 && moisture > 0.2)
-		possible_trees += /obj/structure/flora/tree/pine
+		possible_trees += /obj/structure/flora/newtree
 	if(temp < 0.6 && elevation > 0.3)
 		possible_trees += /obj/structure/flora/newtree
 	if(temp > 0.3 && moisture > 0.4)
-		possible_trees += /obj/structure/flora/tree/pine/dead
+		possible_trees += /obj/structure/flora/tree/pine
 	if(temp > 0.5 && moisture > 0.3)
 		possible_trees += /obj/structure/flora/newtree
 	return possible_trees.len ? pick(possible_trees) : null

@@ -1,5 +1,9 @@
 /datum/map_template/world_feature
-	var/list/allowed_biomes	= list()	 // Preferred biome (BIOME_FOREST, BIOME_SWAMP, etc.)
+	var/list/allowed_biomes	= list(
+		BIOME_FOREST,
+		BIOME_MOUNTAIN,
+		BIOME_SWAMP,
+	)	 // Preferred biome (BIOME_FOREST, BIOME_SWAMP, etc.)
 	var/list/biome_blacklist = list()    // Biomes to avoid
 	var/min_elevation = 0                // Minimum elevation requirement
 	var/max_elevation = 1                // Maximum elevation requirement
@@ -11,7 +15,6 @@
 	var/avoid_rivers = TRUE              // Whether to avoid river tiles
 	var/avoid_walls = TRUE               // Whether to avoid solid walls
 	var/avoid_water = TRUE              // Whether to avoid water tiles
-	var/require_flat_ground = FALSE      // Whether to require relatively flat terrain - This works by checking if everything is a singular type DON'T USE UNLESS THATS TRUE
 	var/min_distance_from_features = 5   // Minimum distance from other features
 	var/max_per_biome = 3               // Maximum instances per biome area
 	var/ignores_z_restrictions = FALSE  //Do we ignore spawn_on_z_level
