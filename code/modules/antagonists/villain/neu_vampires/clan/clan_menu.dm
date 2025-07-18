@@ -607,7 +607,6 @@
 				transform: scale(1.15);
 				z-index: 100;
 			}
-
 			.power-level {
 				position: absolute;
 				top: -5px;
@@ -744,8 +743,13 @@
 		<div class="main-container">
 			<div class="sidebar">
 				<h3>Clan Hierarchy</h3>
-				<ul class="menu-list">
-					<li><a href="?src=[REF(src)];action=show_hierarchy" class="menu-item">Clan Hierarchy</a></li>
+				<ul class="coven-list">
+					<li class="coven-item hierarchy-button" onclick="window.location.href='?src=[REF(src)];action=show_hierarchy'">
+					<div class="coven-name">Clan Hierarchy</div>
+					<div class="coven-stats">
+						<span>Management</span>
+						<span>View & Edit</span>
+					</div>
 				</ul>
 				<h3>Your Covens</h3>
 				<ul class="coven-list">
