@@ -21,6 +21,11 @@
 		return "<div class='error'>No clan hierarchy found</div>"
 
 	var/hierarchy_html = {"
+	<div class="parallax-container">
+		<div class="parallax-layer parallax-bg" id="parallax-bg"></div>
+		<div class="parallax-layer parallax-stars-1" id="parallax-stars-1"></div>
+		<div class="parallax-layer parallax-neb" id="parallax-neb"></div>
+	</div>
 	<div class="research-container" id="container">
 		<div class="research-canvas" id="canvas">
 			[generate_hierarchy_connections_html()]
@@ -189,7 +194,7 @@
 		.hierarchy-sidebar {
 			position: fixed;
 			right: 10px;
-			top: 60px; /* Account for header height */
+			top: 90px; /* Account for header height */
 			width: 280px;
 			height: calc(100vh - 80px); /* Full height minus header and padding */
 			background: rgba(20, 20, 30, 0.95);
