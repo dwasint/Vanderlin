@@ -129,7 +129,7 @@
 
 	for(var/datum/clan_hierarchy_node/position in user_clan.all_positions)
 		var/member_name = position.assigned_member ? position.assigned_member.real_name : "Vacant"
-		var/node_classes = "research-node hierarchy-node"
+		var/node_classes = "hierarchy-node"
 
 		if(position.assigned_member)
 			node_classes += " filled"

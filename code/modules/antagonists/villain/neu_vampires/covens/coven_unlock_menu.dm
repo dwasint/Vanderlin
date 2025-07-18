@@ -30,10 +30,12 @@
 		node.name = power.name
 		node.desc = power.desc
 		node.unlocks_power = power_type
-		node.research_cost = power.level * 10  // Keep for compatibility
-		node.required_level = power.level      // NEW: Use power level
+		node.research_cost = power.level * 10
+		node.required_level = power.level
 		node.node_x = (power.level - 1) * 150
 		node.node_y = rand(-100, 100)
+		node.icon_state = power.discipline?.icon_state
+		node.icon = 'icons/mob/actions/roguespells.dmi'
 
 		// Set prerequisites based on power level
 		if(power.level > 1)
@@ -188,15 +190,15 @@
 		// Get icon for the node
 		var/icon_html = ""
 		if(node.icon && node.icon_state)
-			icon_html = "<img src='[icon2base64(icon(node.icon, node.icon_state))]' alt='[node.name]'>"
+			icon_html = "<img src='\ref[node.icon]?state=[node.icon_state]' alt=\"[node.name]\" />"
 		else
 			// Default icons based on node type
 			if(node.special_effect)
-				icon_html = "<img src='[icon2base64(icon('icons/effects/clan.dmi', "enhancement"))]' alt='[node.name]'>"
+				icon_html = "<img src='\ref['icons/effects/clan.dmi']?state=vampire' alt=\"[node.name]\" />"
 			else if(node.unlocks_power)
-				icon_html = "<img src='[icon2base64(icon('icons/effects/clan.dmi', "power"))]' alt='[node.name]'>"
+				icon_html = "<img src='\ref['icons/effects/clan.dmi']?state=howl' alt=\"[node.name]\" />"
 			else
-				icon_html = "<img src='[icon2base64(icon('icons/effects/clan.dmi', "research_node"))]' alt='[node.name]'>"
+				icon_html = "<img src='\ref['icons/effects/clan.dmi']?state=watch' alt=\"[node.name]\" />"
 
 		html += {"<div class="[node_classes]"
 			style="left: [node.node_x]px; top: [node.node_y]px;"

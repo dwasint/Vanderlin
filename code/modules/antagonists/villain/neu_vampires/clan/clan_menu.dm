@@ -410,8 +410,6 @@
 
 			.coven-item {
 				background: rgba(0,0,0,0.4);
-				border: 1px solid #8B4513;
-				border-radius: 8px;
 				margin-bottom: 10px;
 				padding: 15px;
 				cursor: pointer;
@@ -569,8 +567,6 @@
 				align-items: center;
 				justify-content: center;
 				z-index: 10;
-				border-radius: 8px;
-				border: 2px solid #8B4513;
 			}
 
 			.research-node img {
@@ -581,7 +577,6 @@
 
 			.research-node.unlocked {
 				background: url('research_known.png');
-				border-color: #FFD700;
 			}
 
 			.research-node.unlocked img {
@@ -589,8 +584,6 @@
 			}
 
 			.research-node.available {
-				border-color: #32CD32;
-				box-shadow: 0 0 8px rgba(50, 205, 50, 0.5);
 			}
 
 			.research-node.available img {
@@ -603,12 +596,9 @@
 			}
 
 			.research-node.power-node {
-				border-color: #FF6B35;
 			}
 
 			.research-node.enhancement-node {
-				border-color: #6a5acd;
-				border-radius: 50%;
 			}
 
 			.research-node:hover {
