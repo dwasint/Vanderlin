@@ -8,17 +8,13 @@
 	var/bloodpool = 1000
 	var/maxbloodpool = 3000
 	var/masquerade = 5
-	var/datum/weakref/conditioner
-	var/conditioned = FALSE
+
 	var/last_masquerade_violation = 0
 	var/resistant_to_covens = FALSE
 
 	var/coven_time_plus = 0
-	var/bloodpower_time_plus = 0
 
 	var/last_rage_hit = 0
-	var/antifrenzy = FALSE
-	var/in_frenzy = FALSE
 	var/frenzy_hardness = 1
 	var/last_frenzy_check = 0
 	var/atom/frenzy_target = null

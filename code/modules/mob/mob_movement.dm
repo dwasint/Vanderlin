@@ -85,7 +85,7 @@
 	if(!isliving(mob))
 		return mob.Move(n, direct)
 	else
-		if(mob:in_frenzy)
+		if (HAS_TRAIT(mob, TRAIT_IN_FRENZY))
 			return FALSE
 
 	if(mob.stat == DEAD)

@@ -330,7 +330,7 @@
 		if (ishuman(target))
 			var/mob/living/carbon/human/human_target = living_target
 			//todo: remove this variable and refactor it and TRAIT_ANTIMAGIC into a tiered system
-			if (human_target.resistant_to_covens)
+			if (HAS_TRAIT(human_target, TRAIT_COVEN_RESISTANT))
 				if (alert)
 					to_chat(owner, span_warning("[target] resists your Disciplines!"))
 				return FALSE

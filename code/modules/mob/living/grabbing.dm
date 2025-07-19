@@ -816,6 +816,9 @@
 		if(istype(H.wear_neck, /obj/item/clothing/neck/psycross/silver))
 			to_chat(user, "<span class='userdanger'>SILVER! HISSS!!!</span>")
 			return
+		// Add bite animation to the victim
+		H.add_bite_animation()
+
 	last_drink = world.time
 	user.changeNext_move(CLICK_CD_MELEE)
 

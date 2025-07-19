@@ -6,7 +6,7 @@
 	if(isatom(object))
 		if(ishuman(mob))
 			var/mob/living/carbon/human/H = mob
-			if(H.in_frenzy)
+			if (HAS_TRAIT(H, TRAIT_IN_FRENZY))
 				return
 	..()
 
@@ -77,17 +77,17 @@
 				frenzy_hardness = min(10, frenzy_hardness + 1)
 
 /mob/living/carbon/proc/enter_frenzymod()
-	if (in_frenzy)
+	if (HAS_TRAIT(src, TRAIT_IN_FRENZY))
 		return
-	in_frenzy = TRUE
+	ADD_TRAIT(src, TRAIT_IN_FRENZY, MAGIC_TRAIT)
 	add_client_colour(/datum/client_colour/glass_colour/red)
 	GLOB.frenzy_list += src
 
 /mob/living/carbon/proc/exit_frenzymod()
-	if (!in_frenzy)
+	if (!HAS_TRAIT(src, TRAIT_IN_FRENZY))
 		return
 
-	in_frenzy = FALSE
+	REMOVE_TRAIT(src, TRAIT_IN_FRENZY, MAGIC_TRAIT)
 	remove_client_colour(/datum/client_colour/glass_colour/red)
 	GLOB.frenzy_list -= src
 
@@ -113,7 +113,6 @@
 	if(m_intent == MOVE_INTENT_WALK)
 		toggle_move_intent(src)
 	set_glide_size(DELAY_TO_GLIDE_SIZE(total_multiplicative_slowdown()))
-
 	var/atom/fear
 	var/list/fears = GLOB.fires_list + SShotspots.hotspots
 	for(var/obj/F in fears)
@@ -132,9 +131,6 @@
 				if(get_dist(src, F) < 1)
 					fear = F
 
-//	if(!fear && !frenzy_target)
-//		return
-
 	if(clan)
 		if(fear)
 			step_away(src,fear,99)
@@ -144,18 +140,33 @@
 			var/mob/living/carbon/human/H = src
 			if(get_dist(frenzy_target, src) <= 1)
 				if(isliving(frenzy_target))
-					var/mob/living/L = frenzy_target
+					var/mob/living/carbon/L = frenzy_target
 					if(L.bloodpool && L.stat != DEAD && last_drinkblood_use+95 <= world.time)
-						L.grabbedby(src)
-						if(ishuman(L))
-							L.emote("scream")
-							var/mob/living/carbon/human/BT = L
-							BT.add_bite_animation()
-						if(CheckEyewitness(L, src, 7, FALSE))
-							H.AdjustMasquerade(-1)
-						L.visible_message("<span class='warning'><b>[src] bites [L]'s neck!</b></span>", "<span class='warning'><b>[src] bites your neck!</b></span>")
-						face_atom(L)
-						H.drinksomeblood(L)
+						if(!H.mouth) // Only bite if mouth is free
+							var/obj/item/grabbing/bite/B = new()
+							H.equip_to_slot_or_del(B, ITEM_SLOT_MOUTH)
+							if(H.mouth == B)
+								var/used_limb = L.find_used_grab_limb(H, accurate = TRUE)
+								B.name = "[L]'s [parse_zone(used_limb)]"
+								var/obj/item/bodypart/BP = L.get_bodypart(check_zone(used_limb))
+								BP.grabbedby += B
+								B.grabbed = L
+								B.grabbee = H
+								B.limb_grabbed = BP
+								B.sublimb_grabbed = used_limb
+								L.lastattacker = H.real_name
+								L.lastattackerckey = H.ckey
+								if(L.mind)
+									L.mind.attackedme[H.real_name] = world.time
+								log_combat(H, L, "bit")
+								if(ishuman(L))
+									var/mob/living/carbon/human/victim = L
+									victim.add_bite_animation()
+								B.drinklimb(H)
+							if(CheckEyewitness(L, src, 7, FALSE))
+								H.AdjustMasquerade(-1)
+						else
+							emote("scream")
 			else
 				step_to(src,frenzy_target,0)
 				face_atom(frenzy_target)

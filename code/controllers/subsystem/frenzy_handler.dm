@@ -29,7 +29,7 @@ SUBSYSTEM_DEF(frenzy_handler)
 			log_world("Found a null in frenzy list!")
 			continue
 
-		if(H.in_frenzy)
+		if(HAS_TRAIT(H, TRAIT_IN_FRENZY))
 			H.handle_automated_frenzy()
 		else
 			GLOB.frenzy_list -= H

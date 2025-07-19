@@ -478,13 +478,20 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_SENSITIVE_HUMANITY "sensitive_humanity"
 /// Duration of frenzy is doubled
 #define TRAIT_LONGER_FRENZY "longer_frenzy"
-// TODO: [Lucia] refactor these traits into mutant bodyparts and a component maybe
 /// If eyes are uncovered, they will be obviously supernatural to everyone nearby
 #define TRAIT_MASQUERADE_VIOLATING_EYES "masquerade_violating_eyes"
 /// If face is uncovered, they will be obviously supernatural to everyone nearby
 #define TRAIT_MASQUERADE_VIOLATING_FACE "masquerade_violating_face"
 /// This mob is phased out of reality from magic, either a jaunt or rod form
 #define TRAIT_MAGICALLY_PHASED "magically_phased"
+/// Mob has lost control to their rage, their Beast, whatever and is frenzying
+#define TRAIT_IN_FRENZY "in_frenzy"
+/// Incapable of losing control and entering frenzy
+#define TRAIT_IMMUNE_TO_FRENZY "immune_to_frenzy"
+#define TRAIT_COVEN_RESISTANT "coven_resistance"
+
+/// Trait given as a result of vampiric activities
+#define VAMPIRE_TRAIT "vampire"
 
 /// Is runechat for this atom/movable currently disabled, regardless of prefs or anything?
 #define TRAIT_RUNECHAT_HIDDEN "runechat_hiddenn"
