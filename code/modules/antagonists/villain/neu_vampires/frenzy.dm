@@ -107,62 +107,40 @@
 	if(HAS_TRAIT(src, TRAIT_RESTRAINED))
 		return TRUE
 
+/mob/living/carbon/proc/handle_fear(atom/fear)
+	if(!fear)
+		return FALSE
+	if(!clan?.handle_fear(src, fear))
+		return FALSE
+	step_away(src,fear,99)
+	if(prob(25))
+		emote("scream")
+	return TRUE
+
 /mob/living/carbon/proc/frenzystep()
 	if(!isturf(loc) || CheckFrenzyMove())
 		return
 	if(m_intent == MOVE_INTENT_WALK)
 		toggle_move_intent(src)
 	set_glide_size(DELAY_TO_GLIDE_SIZE(total_multiplicative_slowdown()))
-	var/atom/fear
-	var/list/fears = GLOB.fires_list + SShotspots.hotspots
-	for(var/obj/F in fears)
-		if(F)
-			if(get_dist(src, F) < 7 && F.z == src.z)
-				if(get_dist(src, F) < 6)
-					fear = F
-				if(get_dist(src, F) < 5)
-					fear = F
-				if(get_dist(src, F) < 4)
-					fear = F
-				if(get_dist(src, F) < 3)
-					fear = F
-				if(get_dist(src, F) < 2)
-					fear = F
-				if(get_dist(src, F) < 1)
-					fear = F
+	var/atom/fear = clan?.return_fear(src)
 
 	if(clan)
-		if(fear)
-			step_away(src,fear,99)
-			if(prob(25))
-				emote("scream")
-		else
+		if(!handle_fear(fear))
 			var/mob/living/carbon/human/H = src
 			if(get_dist(frenzy_target, src) <= 1)
 				if(isliving(frenzy_target))
 					var/mob/living/carbon/L = frenzy_target
-					if(L.bloodpool && L.stat != DEAD && last_drinkblood_use+95 <= world.time)
+					var/obj/item/grabbing/bite/bite = H.mouth
+					if(istype(bite))
+						qdel(bite)
+					if(L.bloodpool && L.stat != DEAD && last_drinkblood_use + 9.5 SECONDS <= world.time)
 						if(!H.mouth) // Only bite if mouth is free
-							var/obj/item/grabbing/bite/B = new()
-							H.equip_to_slot_or_del(B, ITEM_SLOT_MOUTH)
-							if(H.mouth == B)
-								var/used_limb = L.find_used_grab_limb(H, accurate = TRUE)
-								B.name = "[L]'s [parse_zone(used_limb)]"
-								var/obj/item/bodypart/BP = L.get_bodypart(check_zone(used_limb))
-								BP.grabbedby += B
-								B.grabbed = L
-								B.grabbee = H
-								B.limb_grabbed = BP
-								B.sublimb_grabbed = used_limb
-								L.lastattacker = H.real_name
-								L.lastattackerckey = H.ckey
-								if(L.mind)
-									L.mind.attackedme[H.real_name] = world.time
-								log_combat(H, L, "bit")
-								if(ishuman(L))
-									var/mob/living/carbon/human/victim = L
-									victim.add_bite_animation()
-								B.drinklimb(H)
+							if(L.pulledby != src)
+								L.grabbedby(src)
+							L.visible_message("<span class='warning'><b>[src] bites [L]'s neck!</b></span>", "<span class='warning'><b>[src] bites your neck!</b></span>")
+							face_atom(L)
+							H.drinksomeblood(L)
 							if(CheckEyewitness(L, src, 7, FALSE))
 								H.AdjustMasquerade(-1)
 						else

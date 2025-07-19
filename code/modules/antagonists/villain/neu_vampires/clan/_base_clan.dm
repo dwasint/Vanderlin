@@ -115,6 +115,7 @@ And it also helps for the character set panel
 		initialize_hierarchy()
 
 	handle_member_joining(H, is_vampire)
+	post_gain(H)
 
 
 /datum/clan/proc/apply_non_vampire_look(mob/living/carbon/human/H)
@@ -152,6 +153,10 @@ And it also helps for the character set panel
 	// If no clan leader exists, make this person the leader (vampires only)
 	if(!clan_leader && is_vampire)
 		hierarchy_root.assign_member(H)
+		var/datum/clan_leader/new_leader = new leader()
+		leader = new_leader
+		leader.lord_title = leader_title
+		leader.make_new_leader(H)
 		clan_leader = H
 		to_chat(H, "<span class='notice'>You have been appointed as the [leader_title] of [name]!</span>")
 		return
@@ -276,7 +281,7 @@ And it also helps for the character set panel
 
 	if(new_leader)
 		hierarchy_root.assign_member(new_leader)
-		clan_leader = new_leader
+		leader.make_new_leader(new_leader)
 
 		to_chat(new_leader, "<span class='notice'>You have been promoted to [leader_title] of [name]!</span>")
 
@@ -349,6 +354,20 @@ And it also helps for the character set panel
 
 	return TRUE
 
+/datum/clan/proc/handle_fear(mob/vampire, atom/fear)
+	return FALSE
+
+/datum/clan/proc/return_fear_list()
+	return GLOB.fires_list + SShotspots.hotspots
+
+/datum/clan/proc/return_fear(mob/vampire)
+	var/list/fears = return_fear_list()
+	for(var/atom/atom in fears)
+		if(atom.z != vampire.z)
+			continue
+		if(get_dist(vampire, atom) > 7)
+			continue
+		return atom
 /**
  * Gives the human an established vampiric Clan, applying
  * on_gain effects and post_gain effects if the
@@ -426,4 +445,3 @@ And it also helps for the character set panel
 		return
 
 	user.open_clan_menu()
-
