@@ -194,15 +194,11 @@ And it also helps for the character set panel
 	if(!position || position == hierarchy_root)
 		return FALSE // Can't remove root position
 
-	// Reassign subordinates to this position's superior
 	if(position.superior)
 		for(var/datum/clan_hierarchy_node/subordinate in position.subordinates)
 			position.superior.add_subordinate(subordinate)
 
-	// Remove member assignment
 	position.remove_member()
-
-	// Remove from superior's subordinates
 	if(position.superior)
 		position.superior.remove_subordinate(position)
 

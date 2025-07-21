@@ -783,13 +783,13 @@
 			window.location.href = '?src=[REF(src)];action=create_position';
 		}
 
-		function assignMember() {
-			window.location.href = '?src=[REF(src)];action=assign_member';
+		function assignMember(positionRef) {
+			window.location.href = '?src=[REF(src)];action=assign_member;position_id=' + positionRef;
 		}
 
-		function removePosition() {
-			if(confirm('Are you sure you want to remove this position? All subordinates will be reassigned to the superior position.')) {
-				window.location.href = '?src=[REF(src)];action=remove_position';
+		function removePosition(positionRef) {
+			if(confirm('Are you sure you want to remove this position?')) {
+				window.location.href = '?src=[REF(src)];action=remove_position;position_id=' + positionRef;
 			}
 		}
 

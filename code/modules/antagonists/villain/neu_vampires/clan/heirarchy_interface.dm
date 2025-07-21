@@ -3,6 +3,7 @@
 	var/mob/living/carbon/human/user
 	var/datum/clan/user_clan
 	var/datum/clan_hierarchy_node/selected_position
+	COOLDOWN_DECLARE(last_creation)
 
 /datum/clan_hierarchy_interface/New(mob/living/carbon/human/target_user)
 	user = target_user
@@ -14,6 +15,41 @@
 	if(!user.clan_position)
 		return user == user_clan.clan_leader
 	return user.clan_position.can_assign_positions
+
+/datum/clan_hierarchy_interface/proc/can_manage_position(datum/clan_hierarchy_node/target_position)
+	if(!target_position)
+		return FALSE
+
+	// Clan leader can manage any position
+	if(user == user_clan.clan_leader)
+		return TRUE
+
+	if(!user.clan_position || !user.clan_position.can_assign_positions)
+		return FALSE
+
+	// Can only manage positions within your hierarchy section
+	// This includes: direct subordinates, subordinates of subordinates, etc.
+	var/list/manageable_positions = user.clan_position.get_all_subordinates()
+	return (target_position in manageable_positions)
+
+/datum/clan_hierarchy_interface/proc/can_create_position_under(datum/clan_hierarchy_node/superior_position)
+	if(!superior_position)
+		return FALSE
+
+	// Clan leader can create anywhere
+	if(user == user_clan.clan_leader)
+		return TRUE
+
+	if(!user.clan_position || !user.clan_position.can_assign_positions)
+		return FALSE
+
+	// Can create under your own position
+	if(superior_position == user.clan_position)
+		return TRUE
+
+	// Can create under any position in your subordinate tree
+	var/list/manageable_positions = user.clan_position.get_all_subordinates()
+	return (superior_position in manageable_positions)
 
 // This should match the coven research tree structure - Kinda important since it just replaces the dynamic content with it.
 /datum/clan_hierarchy_interface/proc/generate_hierarchy_html()
@@ -310,7 +346,7 @@
 		return "<p>No position selected</p>"
 
 	var/member_info = selected_position.assigned_member ? selected_position.assigned_member.real_name : "Vacant"
-	var/can_modify = can_manage_hierarchy()
+	var/can_modify = can_manage_position(selected_position)
 
 	var/html = {"
 	<div class="position-details">
@@ -326,6 +362,10 @@
 			<button onclick='assignMember("[REF(selected_position)]")' class='btn-secondary' style='width: 100%; margin-bottom: 5px; padding: 6px; background: #666; color: white; border: none; border-radius: 3px; cursor: pointer;'>Assign Member</button>
 			<button onclick='toggleAssignPermission("[REF(selected_position)]")' class='btn-secondary' style='width: 100%; margin-bottom: 5px; padding: 6px; background: #006600; color: white; border: none; border-radius: 3px; cursor: pointer;'>[selected_position.can_assign_positions ? "Remove" : "Grant"] Assign Permission</button>
 			[selected_position != user_clan.hierarchy_root ? "<button onclick='removePosition(\"[REF(selected_position)]\")' class='btn-danger' style='width: 100%; margin-bottom: 5px; padding: 6px; background: #cc0000; color: white; border: none; border-radius: 3px; cursor: pointer;'>Remove Position</button>" : ""]
+		</div>
+		"} : can_manage_hierarchy() ? {"
+		<div class="position-actions" style="margin-top: 15px;">
+			<p style="color: #888; font-style: italic; font-size: 11px;">This position is outside your management scope.</p>
 		</div>
 		"} : ""]
 	</div>
@@ -470,37 +510,50 @@
 				handle_create_position(href_list)
 
 		if("assign_member")
-			if(can_manage_hierarchy())
-				var/position_ref = href_list["position_id"]
-				for(var/datum/clan_hierarchy_node/position in user_clan.all_positions)
-					if(REF(position) == position_ref)
-						selected_position = position
-						break
+			var/position_ref = href_list["position_id"]
+			var/list/href_fucked = href_list
+			var/datum/clan_hierarchy_node/target_position
+			for(var/datum/clan_hierarchy_node/position in user_clan.all_positions)
+				if(REF(position) == position_ref)
+					target_position = position
+					break
+
+			if(target_position && can_manage_position(target_position))
+				selected_position = target_position
 				show_assign_member_dialog()
+			else
+				to_chat(user, "<span class='warning'>You don't have permission to assign members to this position.</span>")
 
 		if("submit_assign_member")
-			if(can_manage_hierarchy() && selected_position)
+			if(selected_position && can_manage_position(selected_position))
 				handle_assign_member(href_list)
+			else
+				to_chat(user, "<span class='warning'>You don't have permission to manage this position.</span>")
 
 		if("toggle_assign_permission")
-			if(can_manage_hierarchy())
-				var/position_ref = href_list["position_id"]
-				for(var/datum/clan_hierarchy_node/position in user_clan.all_positions)
-					if(REF(position) == position_ref)
+			var/position_ref = href_list["position_id"]
+			for(var/datum/clan_hierarchy_node/position in user_clan.all_positions)
+				if(REF(position) == position_ref)
+					if(can_manage_position(position))
 						position.can_assign_positions = !position.can_assign_positions
 						to_chat(user, "<span class='notice'>[position.name] assignment permission [position.can_assign_positions ? "granted" : "removed"]</span>")
-						break
-				refresh_hierarchy()
+					else
+						to_chat(user, "<span class='warning'>You don't have permission to modify this position.</span>")
+					break
+			refresh_hierarchy()
 
 		if("remove_position")
-			if(can_manage_hierarchy())
-				var/position_ref = href_list["position_id"]
-				for(var/datum/clan_hierarchy_node/position in user_clan.all_positions)
-					if(REF(position) == position_ref)
+			var/position_ref = href_list["position_id"]
+			for(var/datum/clan_hierarchy_node/position in user_clan.all_positions)
+				if(REF(position) == position_ref)
+					if(can_manage_position(position) && position != user_clan.hierarchy_root)
 						user_clan.remove_position(position)
 						selected_position = null
-						break
-				refresh_hierarchy()
+						to_chat(user, "<span class='notice'>Position removed successfully.</span>")
+					else
+						to_chat(user, "<span class='warning'>You don't have permission to remove this position.</span>")
+					break
+			refresh_hierarchy()
 
 /datum/clan_hierarchy_interface/proc/refresh_hierarchy()
 	if(!user_clan)
@@ -586,8 +639,14 @@
 	var/html = ""
 
 	for(var/datum/clan_hierarchy_node/position in user_clan.all_positions)
-		if(position.subordinates.len < position.max_subordinates)
-			html += "<option value='[REF(position)]'>[position.name] (Level [position.rank_level]) - [position.subordinates.len]/[position.max_subordinates] slots</option>"
+		if(position.subordinates.len >= position.max_subordinates)
+			continue
+
+		// Check if user can create positions under this position
+		if(!can_create_position_under(position))
+			continue
+
+		html += "<option value='[REF(position)]'>[position.name] (Level [position.rank_level]) - [position.subordinates.len]/[position.max_subordinates] slots</option>"
 
 	return html
 
@@ -662,11 +721,20 @@
 	for(var/mob/living/carbon/human/member in available_members)
 		if(!member || !member.real_name)
 			continue
+
+		// Only show members that can be assigned to positions we can manage
+		if(member.clan_position && !can_manage_position(member.clan_position))
+			continue
+
 		html += "<option value='[REF(member)]'>[member.real_name]</option>"
 
 	return html
 
 /datum/clan_hierarchy_interface/proc/handle_create_position(list/params)
+	if(!COOLDOWN_FINISHED(src, last_creation))
+		return
+	COOLDOWN_START(src, last_creation, 0.1 SECONDS) //
+
 	if(!can_manage_hierarchy())
 		return
 
@@ -693,19 +761,25 @@
 		to_chat(user, "<span class='warning'>Error: Invalid superior position</span>")
 		return
 
+	// Check if user can create position under this superior
+	if(!can_create_position_under(superior_position))
+		to_chat(user, "<span class='warning'>Error: You don't have permission to create positions under [superior_position.name]</span>")
+		return
+
 	var/datum/clan_hierarchy_node/new_position = user_clan.create_position(position_name, position_desc, superior_position, rank_level)
 
 	if(new_position)
 		new_position.max_subordinates = max_subordinates
 		new_position.position_color = position_color
-		new_position.can_assign_positions = can_assign // Set assignment permissions
+		new_position.can_assign_positions = can_assign
 		to_chat(user, "<span class='notice'>Position '[position_name]' created successfully!</span>")
 		refresh_hierarchy()
 	else
 		to_chat(user, "<span class='warning'>Error: Failed to create position</span>")
 
 /datum/clan_hierarchy_interface/proc/handle_assign_member(list/params)
-	if(!can_manage_hierarchy() || !selected_position)
+	if(!selected_position || !can_manage_position(selected_position))
+		to_chat(user, "<span class='warning'>You don't have permission to manage this position.</span>")
 		return
 
 	var/member_ref = params["member_ref"]
@@ -726,8 +800,14 @@
 		to_chat(user, "<span class='warning'>Error: Invalid member selection</span>")
 		return
 
+	// Check if the member currently has a position we can't manage
+	if(target_member.clan_position && !can_manage_position(target_member.clan_position))
+		to_chat(user, "<span class='warning'>Error: You don't have permission to reassign [target_member.real_name] from their current position</span>")
+		return
+
 	if(selected_position.assign_member(target_member))
 		to_chat(user, "<span class='notice'>[target_member.real_name] assigned to [selected_position.name]</span>")
 		refresh_hierarchy()
 	else
 		to_chat(user, "<span class='warning'>Error: Failed to assign member</span>")
+
