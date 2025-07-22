@@ -41,11 +41,6 @@
 				to_chat(src, "<span class='warning'>You need [mob]'s attention to do that...</span>")
 				return
 
-	/*
-	if(!HAS_TRAIT(src, TRAIT_BLOODY_LOVER))
-		if(CheckEyewitness(src, src, 7, FALSE))
-			AdjustMasquerade(-1)
-	*/
 	if(do_after(src, 3 SECONDS, target = mob, timed_action_flags = NONE, progress = FALSE))
 		mob.bloodpool = max(0, mob.bloodpool - 50)
 		if(ishuman(mob))
@@ -56,10 +51,7 @@
 				if(length(H.reagents.reagent_list))
 					if(prob(50))
 						H.reagents.trans_to(src, min(10, H.reagents.total_volume), transfered_by = mob)
-		/*
-		if(HAS_TRAIT(src, TRAIT_PAINFUL_VAMPIRE_KISS))
-			mob.adjustBruteLoss(20, TRUE)
-		*/
+
 		to_chat(src, "<span class='warning'>You sip some <b>BLOOD</b> from your victim. It feels good.</span>")
 		bloodpool = min(maxbloodpool, bloodpool+1)
 		adjustBruteLoss(-10, TRUE)
@@ -106,9 +98,4 @@
 			drinksomeblood(mob)
 	else
 		last_drinkblood_use = 0
-
-		/*
-		if(!(SEND_SIGNAL(mob, COMSIG_MOB_VAMPIRE_SUCKED, mob) & COMPONENT_RESIST_VAMPIRE_KISS))
-			mob.SetSleeping(50)
-		*/
 		mob.SetSleeping(5 SECONDS)

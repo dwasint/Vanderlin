@@ -29,6 +29,8 @@ And it also helps for the character set panel
 		TRAIT_LIMBATTACHMENT,
 	)
 
+	var/blood_preference = BLOOD_PREFERENCE_ALL
+
 	var/list/disliked_clans = list()
 	var/list/liked_clans = list()
 
@@ -70,6 +72,14 @@ And it also helps for the character set panel
 /datum/clan/proc/get_blood_preference_string()
 	return "any blood"
 
+/datum/clan/proc/handle_bloodsuck(mob/living/carbon/human/drinker, blood_types)
+	var/unwanted_blood = (blood_types & ~blood_preference)
+
+	if(!unwanted_blood)
+		return
+	drinker.apply_status_effect(/datum/status_effect/debuff/blood_disgust)
+	to_chat(drinker, span_warning("This blood tastes revolting to you!"))
+
 /datum/clan/proc/on_gain(mob/living/carbon/human/H, is_vampire = TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 
@@ -79,6 +89,7 @@ And it also helps for the character set panel
 	// Add to appropriate member lists
 	clan_members |= H
 	if(is_vampire)
+		apply_clan_components(H)
 		RegisterSignal(H, COMSIG_HUMAN_LIFE, PROC_REF(on_vampire_life))
 
 		// Apply vampire-specific traits
@@ -97,7 +108,6 @@ And it also helps for the character set panel
 			H.update_body_parts()
 			H.update_body()
 
-		apply_clan_components(H)
 		setup_vampire_abilities(H)
 		apply_vampire_look(H)
 
@@ -383,12 +393,12 @@ And it also helps for the character set panel
  * * joining_round - If this Clan is being given at roundstart and should call on_join_round
  */
 /mob/living/carbon/human/proc/set_clan_direct(datum/clan/new_clan)
-    var/datum/clan/previous_clan = clan
-    previous_clan?.on_lose(src)
-    clan = new_clan
-    if (!new_clan)
-        return
-    clan.on_gain(src)
+	var/datum/clan/previous_clan = clan
+	previous_clan?.on_lose(src)
+	clan = new_clan
+	if (!new_clan)
+		return
+	clan.on_gain(src)
 
 /**
  * Gives the human a vampiric Clan, applying
@@ -447,3 +457,24 @@ And it also helps for the character set panel
 		return
 
 	user.open_clan_menu()
+
+
+/datum/status_effect/debuff/blood_disgust
+	id = "blood_disgust"
+	duration = 30 SECONDS
+	status_type = STATUS_EFFECT_REFRESH
+
+/datum/status_effect/debuff/blood_disgust/on_apply()
+	. = ..()
+	if(.)
+		owner.add_stress(/datum/stressevent/bad_blood)
+		owner.adjustBruteLoss(5)
+
+/datum/status_effect/debuff/blood_disgust/on_remove()
+	. = ..()
+	owner.remove_stress(/datum/stressevent/bad_blood)
+
+/datum/stressevent/bad_blood
+	desc = span_warning("That blood was revolting!")
+	stressadd = 3
+	timer = 10 MINUTES

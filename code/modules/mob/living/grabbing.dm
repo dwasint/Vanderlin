@@ -834,10 +834,18 @@
 				to_chat(user, "<span class='danger'>I'm going to puke...</span>")
 				addtimer(CALLBACK(user, TYPE_PROC_REF(/mob/living/carbon, vomit), 0, TRUE), rand(8 SECONDS, 15 SECONDS))
 			else
+				var/blood_handle
+				if(C.stat == DEAD)
+					blood_handle |= BLOOD_PREFERENCE_DEAD
+				else
+					blood_handle |= BLOOD_PREFERENCE_LIVING
+
+				if(C.job in list("Priest", "Priestess", "Cleric", "Acolyte", "Templar", "Churchling", "Crusader", "Inquisitor"))
+					blood_handle |= BLOOD_PREFERENCE_HOLY
 				if(VVictim)
-					to_chat(user, "<span class='warning'>I cannot drain vitae from a fellow nitewalker.</span>")
-					return
-				else if(C.bloodpool > 500)
+					blood_handle |= BLOOD_PREFERENCE_KIN
+
+				if(C.bloodpool > 500)
 					C.blood_volume = max(C.blood_volume-45, 0)
 					if(ishuman(C))
 						var/mob/living/carbon/human/H = C
@@ -852,12 +860,17 @@
 							else
 								used_vitae = C.bloodpool // We assume they're left with 250 vitae or less, so we take it all
 								to_chat(user, "<span class='warning'>...But alas, only leftovers...</span>")
-							user.adjust_bloodpool(used_vitae, used_vitae)
+							user.adjust_bloodpool(used_vitae)
+							if(VVictim)
+								C.adjust_bloodpool(used_vitae)
 							C.bloodpool -= used_vitae
 
 						else
-							user.adjust_bloodpool(500, 500)
+							user.adjust_bloodpool(500)
+							if(VVictim)
+								C.adjust_bloodpool(-500)
 							C.bloodpool -= 500
+					user.clan.handle_bloodsuck(user, blood_handle)
 				else
 					to_chat(user, span_warning("No more vitae from this blood..."))
 		else // Don't larp as a vampire, kids.

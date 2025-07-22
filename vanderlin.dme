@@ -2743,6 +2743,7 @@
 #include "code\modules\spells\spell_types\undirected\shapeshift\_shapeshift.dm"
 #include "code\modules\spells\spell_types\undirected\shapeshift\bat.dm"
 #include "code\modules\spells\spell_types\undirected\shapeshift\gaseous_form.dm"
+#include "code\modules\spells\spell_types\undirected\shapeshift\rat.dm"
 #include "code\modules\spells\spell_types\undirected\teleport\_teleport.dm"
 #include "code\modules\spells\spell_types\undirected\touch\_touch.dm"
 #include "code\modules\spells\spell_types\undirected\touch\darkvision.dm"

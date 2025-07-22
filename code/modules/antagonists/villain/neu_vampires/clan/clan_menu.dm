@@ -50,8 +50,6 @@
 		<div class="intro-section">
 			<p>Select a coven from the sidebar to view its research tree and manage your powers.
 			Each coven represents a different aspect of your vampiric abilities.</p>
-			<p>Use your research points to unlock new powers and enhance existing ones.
-			Gain experience through using your abilities to level up your covens.</p>
 		</div>
 
 		<div class="vampire-mechanics">
