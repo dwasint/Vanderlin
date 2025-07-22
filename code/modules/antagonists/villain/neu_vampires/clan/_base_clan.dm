@@ -64,6 +64,12 @@ And it also helps for the character set panel
 	var/datum/clan_leader/leader = /datum/clan_leader/lord
 	var/selectable_by_vampires = TRUE // Set to FALSE for clans that shouldn't be selectable
 
+/datum/clan/proc/get_downside_string()
+	return "burn in sunlight"
+
+/datum/clan/proc/get_blood_preference_string()
+	return "any blood"
+
 /datum/clan/proc/on_gain(mob/living/carbon/human/H, is_vampire = TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 

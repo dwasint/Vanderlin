@@ -10,5 +10,8 @@
 
 /datum/clan/abyss/on_gain(mob/living/carbon/human/H, is_vampire = TRUE)
 	. = ..()
-	H.faction |= "Baali"
+	H.faction |= "Abyss"
 	H.AddElement(/datum/element/holy_weakness)
+
+/datum/clan/abyss/get_downside_string()
+	return "burn in sunlight, and in the presence of the Ten"

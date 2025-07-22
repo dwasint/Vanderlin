@@ -1,4 +1,3 @@
-// New unified clan menu interface
 /datum/clan_menu_interface
 	var/mob/living/carbon/human/user
 	var/datum/clan/user_clan
@@ -37,14 +36,46 @@
 	user << browse(html, "window=clan_menu;size=1400x900;can_resize=1")
 
 /datum/clan_menu_interface/proc/generate_welcome_screen_html()
+	var/clan_downside = "burn in sunlight"
+	var/blood_preference = "any blood"
+
+	if(user_clan)
+		clan_downside = user_clan.get_downside_string()
+		blood_preference = user_clan.get_blood_preference_string()
+
 	return {"
 	<div class="welcome-screen">
-		<div class="clan-emblem">🗡️</div>
 		<h2>Welcome to your Clan</h2>
-		<p>Select a coven from the sidebar to view its research tree and manage your powers.
-		Each coven represents a different aspect of your vampiric abilities.</p>
-		<p>Use your research points to unlock new powers and enhance existing ones.
-		Gain experience through using your abilities to level up your covens.</p>
+
+		<div class="intro-section">
+			<p>Select a coven from the sidebar to view its research tree and manage your powers.
+			Each coven represents a different aspect of your vampiric abilities.</p>
+			<p>Use your research points to unlock new powers and enhance existing ones.
+			Gain experience through using your abilities to level up your covens.</p>
+		</div>
+
+		<div class="vampire-mechanics">
+			<h3>Vampiric Nature</h3>
+			<div class="mechanic-item">
+				<strong>Blood Hunger:</strong> You must drink blood to survive. You prefer <span class="blood-type">[blood_preference]</span>.
+			</div>
+			<div class="mechanic-item">
+				<strong>Clan Weakness:</strong> Your clan's curse means you <span class="weakness">[clan_downside]</span>.
+			</div>
+			<div class="mechanic-item">
+				<strong>Silver Vulnerability:</strong> Silver weaponry may trigger a blood frenzy, causing you to lose control and attack indiscriminately.
+			</div>
+		</div>
+
+		<div class="gameplay-tips">
+			<h3>Gameplay Tips</h3>
+			<div class="tip-item">
+				<strong>Coven Abilities:</strong> Right-click on any coven ability to switch between different powers from that coven.
+			</div>
+			<div class="tip-item">
+				<strong>Creating Progeny:</strong> Drain someone's blood to critical levels to gain the option to embrace them as a new vampire.
+			</div>
+		</div>
 	</div>
 	"}
 
@@ -765,61 +796,13 @@
 		<a href="byond://?src=[REF(src)];action=close_clan_menu" class="close-btn">Close</a>
 
 		<script>
-			function selectPosition(positionId) {
-				// Remove previous selection
-				document.querySelectorAll('.hierarchy-node').forEach(node => {
-					node.classList.remove('selected');
-				});
 
-				// Add selection to clicked node
-				event.target.classList.add('selected');
-
-				// Load position details
-				window.location.href = '?src=[REF(src)];action=select_position;position_id=' + positionId;
-			}
-
-
-		function showCreatePosition() {
-			window.location.href = '?src=[REF(src)];action=create_position';
-		}
-
-		function assignMember(positionRef) {
-			window.location.href = '?src=[REF(src)];action=assign_member;position_id=' + positionRef;
-		}
-
-		function removePosition(positionRef) {
-			if(confirm('Are you sure you want to remove this position?')) {
-				window.location.href = '?src=[REF(src)];action=remove_position;position_id=' + positionRef;
-			}
-		}
 
 		function closeModal() {
 			document.getElementById('management-modal').style.display = 'none';
 		}
 
-		function submitCreatePosition() {
-			const form = document.getElementById('create-position-form');
-			const formData = new FormData(form);
 
-			let params = '?src=[REF(src)];action=submit_create_position';
-			for(let \[key, value\] of formData.entries()) {
-				params += ';' + key + '=' + encodeURIComponent(value);
-			}
-
-			window.location.href = params;
-		}
-
-		function submitAssignMember() {
-			const form = document.getElementById('assign-member-form');
-			const formData = new FormData(form);
-
-			let params = '?src=[REF(src)];action=submit_assign_member';
-			for(let \[key, value\] of formData.entries()) {
-				params += ';' + key + '=' + encodeURIComponent(value);
-			}
-
-			window.location.href = params;
-		}
 
 		// Modal click-outside-to-close functionality
 		window.onclick = function(event) {
@@ -1123,6 +1106,6 @@
 
 					load_coven_research_tree(current_coven)
 
-		if("select_position", "create_position", "submit_create_position", "assign_member", "submit_assign_member", "remove_position")
+		if("edit_position", "submit_edit_position", "select_position", "create_position", "submit_create_position", "assign_member", "submit_assign_member", "remove_position")
 			if(hierarchy_interface)
 				hierarchy_interface.Topic(href, href_list)

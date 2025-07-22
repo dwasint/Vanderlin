@@ -359,6 +359,7 @@
 
 		[can_modify ? {"
 		<div class="position-actions" style="margin-top: 15px;">
+			<button onclick='editPosition("[REF(selected_position)]")' class='btn-primary' style='width: 100%; margin-bottom: 5px; padding: 6px; background: #2196F3; color: white; border: none; border-radius: 3px; cursor: pointer;'>Edit Position</button>
 			<button onclick='assignMember("[REF(selected_position)]")' class='btn-secondary' style='width: 100%; margin-bottom: 5px; padding: 6px; background: #666; color: white; border: none; border-radius: 3px; cursor: pointer;'>Assign Member</button>
 			<button onclick='toggleAssignPermission("[REF(selected_position)]")' class='btn-secondary' style='width: 100%; margin-bottom: 5px; padding: 6px; background: #006600; color: white; border: none; border-radius: 3px; cursor: pointer;'>[selected_position.can_assign_positions ? "Remove" : "Grant"] Assign Permission</button>
 			[selected_position != user_clan.hierarchy_root ? "<button onclick='removePosition(\"[REF(selected_position)]\")' class='btn-danger' style='width: 100%; margin-bottom: 5px; padding: 6px; background: #cc0000; color: white; border: none; border-radius: 3px; cursor: pointer;'>Remove Position</button>" : ""]
@@ -441,6 +442,9 @@
 			window.location.href = '?src=[REF(src)];action=create_position';
 		}
 
+		function editPosition(positionRef) {
+			window.location.href = '?src=[REF(src)];action=edit_position;position_id=' + positionRef;
+		}
 		function assignMember(positionRef) {
 			window.location.href = '?src=[REF(src)];action=assign_member;position_id=' + positionRef;
 		}
@@ -460,33 +464,105 @@
 		}
 
 		function submitCreatePosition() {
-			var form = document.getElementById('create-position-form');
-			var formData = new FormData(form);
-			var params = new URLSearchParams();
+			const form = document.getElementById('create-position-form');
+			const formData = new FormData(form);
 
-			for(var pair of formData.entries()) {
-				params.append(pair[0], pair[1]);
+			let params = '?src=[REF(src)];action=submit_create_position';
+			for(let \[key, value\] of formData.entries()) {
+				params += ';' + key + '=' + encodeURIComponent(value);
 			}
 
-			params.append('action', 'submit_create_position');
-			window.location.href = '?src=[REF(src)];' + params.toString();
+			window.location.href = params;
 		}
 
 		function submitAssignMember() {
-			var form = document.getElementById('assign-member-form');
-			var formData = new FormData(form);
-			var params = new URLSearchParams();
+			const form = document.getElementById('assign-member-form');
+			const formData = new FormData(form);
 
-			for(var pair of formData.entries()) {
-				params.append(pair[0], pair[1]);
+			let params = '?src=[REF(src)];action=submit_assign_member';
+			for(let \[key, value\] of formData.entries()) {
+				params += ';' + key + '=' + encodeURIComponent(value);
 			}
 
-			params.append('action', 'submit_assign_member');
-			params.append('position_id', selectedPosition);
-			window.location.href = '?src=[REF(src)];' + params.toString();
+			window.location.href = params;
+		}
+
+	</script>
+	"}
+
+
+/datum/clan_hierarchy_interface/proc/show_edit_position_dialog()
+	if(!can_manage_position(selected_position))
+		return
+
+	var/modal_content = {"
+	<div class='dialog-content'>
+		<h3>Edit Position: [selected_position.name]</h3>
+		<form id='edit-position-form'>
+			<div class='form-group'>
+				<label for='edit-position-name'>Position Name:</label>
+				<input type='text' id='edit-position-name' name='position_name' value='[selected_position.name]' required maxlength='50'>
+			</div>
+
+			<div class='form-group'>
+				<label for='edit-position-desc'>Description:</label>
+				<textarea id='edit-position-desc' name='position_desc' rows='3' maxlength='200'>[selected_position.desc]</textarea>
+			</div>
+
+			<div class='form-group'>
+				<label for='edit-rank-level'>Rank Level:</label>
+				<input type='number' id='edit-rank-level' name='rank_level' min='1' max='10' value='[selected_position.rank_level]'>
+			</div>
+
+			<div class='form-group'>
+				<label for='edit-max-subordinates'>Max Subordinates:</label>
+				<input type='number' id='edit-max-subordinates' name='max_subordinates' min='1' max='20' value='[selected_position.max_subordinates]'>
+			</div>
+
+			<div class='form-group'>
+				<label for='edit-position-color'>Position Color:</label>
+				<input type='color' id='edit-position-color' name='position_color' value='[selected_position.position_color]'>
+			</div>
+
+			<div class='form-group'>
+				<label>
+					<input type='checkbox' id='edit-can-assign-positions' name='can_assign_positions' value='1' [selected_position.can_assign_positions ? "checked" : ""]>
+					Can assign subordinate positions
+				</label>
+			</div>
+
+			<div class='form-actions'>
+				<button type='button' onclick='submitEditPosition()' class='btn-primary'>Save Changes</button>
+				<button type='button' onclick='closeHierarchyModal()' class='btn-secondary'>Cancel</button>
+			</div>
+		</form>
+	</div>
+
+	<script>
+		document.getElementById('management-modal').style.display = 'block';
+		document.getElementById('modal-title').textContent = 'Edit Position: [selected_position.name]';
+		document.getElementById('modal-body').innerHTML = document.querySelector('.dialog-content').outerHTML;
+
+		function submitEditPosition() {
+			const form = document.getElementById('edit-position-form');
+			const formData = new FormData(form);
+			let params = '?src=[REF(src)];action=submit_edit_position';
+			for(let \[key, value\] of formData.entries()) {
+				params += ';' + key + '=' + encodeURIComponent(value);
+			}
+			params += ';position_id=' + selectedPosition;
+			window.location.href = params;
 		}
 	</script>
 	"}
+
+	// Generate updated HTML with modal open
+	var/updated_html = generate_hierarchy_html()
+	updated_html = replacetext(updated_html, "<!-- Dynamic content goes here -->", modal_content)
+
+	var/datum/clan_menu_interface/menu = user.clan_menu_interface
+	if(menu)
+		user << browse(menu.generate_combined_html(updated_html), "window=clan_menu")
 
 /datum/clan_hierarchy_interface/Topic(href, href_list)
 	if(!user || !user_clan)
@@ -511,7 +587,6 @@
 
 		if("assign_member")
 			var/position_ref = href_list["position_id"]
-			var/list/href_fucked = href_list
 			var/datum/clan_hierarchy_node/target_position
 			for(var/datum/clan_hierarchy_node/position in user_clan.all_positions)
 				if(REF(position) == position_ref)
@@ -554,6 +629,27 @@
 						to_chat(user, "<span class='warning'>You don't have permission to remove this position.</span>")
 					break
 			refresh_hierarchy()
+
+		if("edit_position")
+			var/position_ref = href_list["position_id"]
+			var/datum/clan_hierarchy_node/target_position
+			for(var/datum/clan_hierarchy_node/position in user_clan.all_positions)
+				if(REF(position) == position_ref)
+					target_position = position
+					break
+
+			if(target_position && can_manage_position(target_position))
+				selected_position = target_position
+				show_edit_position_dialog()
+			else
+				to_chat(user, "<span class='warning'>You don't have permission to edit this position.</span>")
+
+		if("submit_edit_position")
+			if(selected_position && can_manage_position(selected_position))
+				handle_edit_position(href_list)
+			else
+				to_chat(user, "<span class='warning'>You don't have permission to edit this position.</span>")
+
 
 /datum/clan_hierarchy_interface/proc/refresh_hierarchy()
 	if(!user_clan)
@@ -598,7 +694,7 @@
 
 			<div class='form-group'>
 				<label for='max-subordinates'>Max Subordinates:</label>
-				<input type='number' id='max-subordinates' name='max_subordinates' min='1' max='20' value='5'>
+				<input type='number' id='max-subordinates' name='max_subordinates' min='1' max='100' value='5'>
 			</div>
 
 			<div class='form-group'>
@@ -729,6 +825,39 @@
 		html += "<option value='[REF(member)]'>[member.real_name]</option>"
 
 	return html
+
+
+/datum/clan_hierarchy_interface/proc/handle_edit_position(list/params)
+	if(!selected_position || !can_manage_position(selected_position))
+		to_chat(user, "<span class='warning'>You don't have permission to edit this position.</span>")
+		return
+
+	var/position_name = params["position_name"]
+	var/position_desc = params["position_desc"]
+	var/rank_level = text2num(params["rank_level"])
+	var/max_subordinates = text2num(params["max_subordinates"])
+	var/position_color = params["position_color"]
+	var/can_assign = params["can_assign_positions"] ? TRUE : FALSE
+
+	if(!position_name || !max_subordinates)
+		to_chat(user, "<span class='warning'>Error: Missing required fields</span>")
+		return
+
+	// Validate max_subordinates - can't be less than current subordinates
+	if(max_subordinates < selected_position.subordinates.len)
+		to_chat(user, "<span class='warning'>Error: Cannot set max subordinates below current count ([selected_position.subordinates.len])</span>")
+		return
+
+	// Update the position
+	selected_position.name = position_name
+	selected_position.desc = position_desc
+	selected_position.rank_level = rank_level
+	selected_position.max_subordinates = max_subordinates
+	selected_position.position_color = position_color
+	selected_position.can_assign_positions = can_assign
+
+	to_chat(user, "<span class='notice'>Position '[position_name]' updated successfully!</span>")
+	refresh_hierarchy()
 
 /datum/clan_hierarchy_interface/proc/handle_create_position(list/params)
 	if(!COOLDOWN_FINISHED(src, last_creation))
