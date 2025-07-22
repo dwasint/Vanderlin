@@ -16,7 +16,7 @@
 		/datum/supply_pack/apparel/hood,
 		/datum/supply_pack/apparel/boots,
 		/datum/supply_pack/apparel/shortboots,
-		/datum/supply_pack/apparel/fingerl,
+		/datum/supply_pack/apparel/fingerless_gloves,
 		/datum/supply_pack/food/carp,
 		/datum/supply_pack/food/beer,
 		/datum/supply_pack/tools/bottle,
