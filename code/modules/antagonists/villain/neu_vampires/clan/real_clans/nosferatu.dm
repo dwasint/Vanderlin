@@ -45,7 +45,7 @@
 	)
 
 /datum/clan/nosferatu/get_downside_string()
-	return "a hideous face, suffers in the sun"
+	return "have a hideous face, and suffer in the sun"
 
 /datum/clan/nosferatu/get_blood_preference_string()
 	return "kindred blood, the blood of the dead, blood of vermin"
