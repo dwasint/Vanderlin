@@ -743,9 +743,6 @@
 /datum/coven_power/proc/deactivate(atom/target, direct = FALSE)
 	SHOULD_CALL_PARENT(TRUE)
 
-	if (direct)
-		clear_duration_timer()
-
 	SEND_SIGNAL(src, COMSIG_POWER_DEACTIVATE, src, target)
 	SEND_SIGNAL(owner, COMSIG_POWER_DEACTIVATE, src, target)
 	if (target)
@@ -762,9 +759,9 @@
 
 	owner.update_action_buttons()
 
-	if(duration_length > 0 && !direct)
+	if(duration_length > 0)
 		// Grant bonus XP for maintaining powers successfully
-		var/maintenance_xp = round(duration_length / 100) // 1 XP per 10 seconds maintained
+		var/maintenance_xp = FLOOR(duration_length / 100, 1) // 1 XP per 10 seconds maintained
 		if(maintenance_xp > 0 && discipline)
 			discipline.gain_experience_from_source(
 				maintenance_xp,
@@ -772,6 +769,7 @@
 				src,
 				1.0
 			)
+		clear_duration_timer()
 
 	// Clear XP tracking variables
 	last_use_was_critical = FALSE

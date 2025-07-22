@@ -7,6 +7,7 @@
 	var/level_icon_state = "1" //And this is the state for the action icon
 	var/datum/coven/coven
 	var/targeting = FALSE
+	var/active = FALSE
 
 /datum/action/coven/New(target, datum/coven/coven)
 	. = ..()
@@ -82,13 +83,16 @@
 	if (power.active) //deactivation logic
 		if (power.cancelable || power.toggled)
 			power.try_deactivate(direct = TRUE, alert = TRUE)
+			active = FALSE
 		else
 			to_chat(owner, span_warning("[power] is already active!"))
 	else //activate
 		if (power.target_type == NONE) //self activation
 			power.try_activate()
+			active = TRUE
 		else //ranged targeted activation
 			begin_targeting()
+			active = TRUE
 
 	build_all_button_icons()
 
@@ -104,8 +108,10 @@
 /datum/action/coven/apply_button_icon(atom/movable/screen/movable/action_button/current_button, force)
 	if(coven)
 		button_icon_state = coven.icon_state
+		background_icon_state = "[initial(background_icon_state)][active]"
 	else
 		button_icon_state = initial(button_icon_state)
+		background_icon_state = "[initial(background_icon_state)][active]"
 	. = ..()
 
 /datum/action/coven/apply_button_overlay(atom/movable/screen/movable/action_button/current_button, force)
@@ -141,7 +147,9 @@
 
 	UnregisterSignal(owner, COMSIG_MOB_CLICKON)
 	targeting = FALSE
+	active = FALSE
 	client.mouse_pointer_icon = initial(client.mouse_pointer_icon)
+	build_all_button_icons()
 
 /datum/action/coven/proc/handle_click(mob/source, atom/target, click_parameters)
 	SIGNAL_HANDLER
