@@ -66,6 +66,7 @@
 #include "component_tests.dm"
 #include "connect_loc.dm"
 #include "create_and_destroy.dm"
+#include "faction_supply_packs.dm"
 #include "focus_only_tests.dm"
 #include "map_landmarks.dm"
 #include "mapping.dm"
