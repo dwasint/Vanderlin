@@ -31,11 +31,10 @@
 		if(!(supply_pack_type in used_supply_packs))
 			unused_supply_packs += supply_pack_type
 
-	if(unused_supply_packs.len > 0)
-		var/unused_list = ""
-		for(var/i = 1; i <= unused_supply_packs.len; i++)
-			unused_list += "[unused_supply_packs[i]]"
-			if(i < unused_supply_packs.len)
-				unused_list += ", "
+	var/unused_list = ""
+	for(var/i = 1; i <= unused_supply_packs.len; i++)
+		unused_list += "[unused_supply_packs[i]]"
+		if(i < unused_supply_packs.len)
+			unused_list += ", "
 
 	TEST_ASSERT(!length(unused_supply_packs), "The following supply packs are not used by any world faction: [unused_list]")
