@@ -363,7 +363,7 @@
 									SEND_SIGNAL(U, COMSIG_ITEM_STOLEN, V)
 									record_featured_stat(FEATURED_STATS_THIEVES, U)
 									record_featured_stat(FEATURED_STATS_CRIMINALS, U)
-									GLOB.vanderlin_round_stats[STATS_ITEMS_PICKPOCKETED]++
+									record_round_statistic(STATS_ITEMS_PICKPOCKETED)
 								if(has_flaw(/datum/charflaw/addiction/kleptomaniac))
 									sate_addiction()
 							else
@@ -484,7 +484,7 @@
 			to_chat(src, span_warning("That's too high for me..."))
 			return
 
-	changeNext_move(mmb_intent.clickcd)
+	changeNext_move(mmb_intent?.clickcd ? mmb_intent.clickcd : CLICK_CD_MELEE)
 
 	face_atom(A)
 
@@ -506,7 +506,7 @@
 
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
-		jadded += H.get_complex_pain()/50
+		jadded += H.get_complex_pain() / 50
 		if(H.get_encumbrance() >= 0.7)
 			jadded += 50
 			jrange = 1
@@ -582,11 +582,6 @@
 					PushAM(AM, MOVE_FORCE_STRONG)
 				else
 					visible_message(span_warning("[src] pushes [AM]."))
-				return
-
-		if(LAZYACCESS(params2list(params), RIGHT_CLICK))
-			if(uses_intents && used_intent.rmb_ranged)
-				used_intent.rmb_ranged(A, src) //get the message from the intent
 				return
 
 	A.attack_animal(src)

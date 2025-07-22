@@ -11,7 +11,7 @@
 
 /datum/species/demihuman
 	name = "Hollow-Kin"
-	id = "demihuman"
+	id = SPEC_ID_HOLLOWKIN
 	desc = "Hollowkin are short lived, widely diverse, and have an insatiable hatred for dark elves. \
 	This hate stems from their long standing political neighbor and rival, \
 	the Zizonic dark-elven kingdoms of Subterra. \
@@ -35,6 +35,7 @@
 	\n\n\
 	THIS IS A DISCRIMINATED SPECIES. EXPECT A MORE DIFFICULT EXPERIENCE. PLAY AT YOUR OWN RISK."
 
+	allowed_pronouns = PRONOUNS_LIST
 	skin_tone_wording = "Ancestry"
 	default_color = "FFFFFF"
 	species_traits = list(EYECOLOR, HAIR ,FACEHAIR, LIPS, STUBBLE, OLDGREY)

@@ -187,21 +187,7 @@ All foods are distributed among various categories. Use common sense.
 /obj/item/reagent_containers/food/snacks/proc/become_rotten()
 	if(QDELETED(src))
 		return
-	if(become_rot_type)
-		if(ismob(loc))
-			return FALSE
-		else
-			var/atom/movable/location = loc
-			var/obj/item/reagent_containers/NU = new become_rot_type(location)
-			NU.reagents.clear_reagents()
-			reagents.trans_to(NU.reagents, reagents.maximum_volume)
-			qdel(src)
-			if(!isturf(location))
-				if(!istype(location, /obj/structure/closet) && !SEND_SIGNAL(location, COMSIG_TRY_STORAGE_INSERT, NU, null, TRUE, TRUE))
-					NU.forceMove(get_turf(location))
-			GLOB.vanderlin_round_stats[STATS_FOOD_ROTTED]++
-			return TRUE
-	else
+	if(!become_rot_type)
 		color = "#6c6897"
 		var/mutable_appearance/rotflies = mutable_appearance('icons/roguetown/mob/rotten.dmi', "rotten")
 		add_overlay(rotflies)
@@ -212,9 +198,15 @@ All foods are distributed among various categories. Use common sense.
 		cooktime = 0
 		modified = TRUE
 		rot_away_timer = QDEL_IN_STOPPABLE(src, 10 MINUTES)
-		GLOB.vanderlin_round_stats[STATS_FOOD_ROTTED]++
+		record_round_statistic(STATS_FOOD_ROTTED)
 		return TRUE
-
+	if(!ismob(loc) && loc)
+		var/obj/item/reagent_containers/NU = new become_rot_type(loc)
+		reagents.trans_to(NU.reagents, reagents.maximum_volume)
+		qdel(src)
+		record_round_statistic(STATS_FOOD_ROTTED)
+		return TRUE
+	return FALSE
 
 /obj/item/proc/cooking(input as num)
 	return
@@ -327,7 +319,7 @@ All foods are distributed among various categories. Use common sense.
 		record_featured_stat(FEATURED_STATS_EATERS, eater)
 		record_featured_object_stat(FEATURED_STATS_FOOD, name)
 		if(faretype == FARE_LAVISH || faretype == FARE_FINE)
-			GLOB.vanderlin_round_stats[STATS_LUXURIOUS_FOOD_EATEN]++
+			record_round_statistic(STATS_LUXURIOUS_FOOD_EATEN)
 		if(eat_effect == /datum/status_effect/debuff/rotfood)
 			SEND_SIGNAL(eater, COMSIG_ROTTEN_FOOD_EATEN, src)
 		var/atom/current_loc = loc

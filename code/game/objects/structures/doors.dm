@@ -8,6 +8,7 @@
 	opacity = TRUE
 	layer = OPEN_DOOR_LAYER
 	resistance_flags = FLAMMABLE
+	pass_flags_self = PASSDOORS|PASSSTRUCTURE
 	max_integrity = 1000
 	integrity_failure = 0.5
 	armor = list("blunt" = 10, "slash" = 10, "stab" = 10,  "piercing" = 0, "fire" = 0, "acid" = 0)
@@ -192,10 +193,9 @@
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
+	if(user.cmode)
+		return SECONDARY_ATTACK_CALL_NORMAL
 	user.changeNext_move(CLICK_CD_FAST)
-	if((has_bolt || has_viewport) && user.get_active_held_item())
-		to_chat(user, span_warning("I need a free hand."))
-		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	if(has_bolt)
 		if(obj_broken)
 			to_chat(user, span_warning("The bolt has nothing to latch to!"))

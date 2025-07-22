@@ -13,6 +13,7 @@
  */
 /datum/action/cooldown/spell/projectile
 	self_cast_possible = FALSE
+	experience_modifer = 0.4 // More earned when hitting a target
 
 	/// What projectile we create when we shoot our spell.
 	var/obj/projectile/magic/projectile_type = /obj/projectile/magic/teleport
@@ -29,6 +30,7 @@
 	if(!click_to_activate)
 		stack_trace("Projectile spell [type] created without having (click_to_activate = TRUE), this won't work.")
 		qdel(src)
+		return
 	if(projectile_amount > 1)
 		unset_after_click = FALSE
 
@@ -80,7 +82,7 @@
 /datum/action/cooldown/spell/projectile/proc/ready_projectile(obj/projectile/to_fire, atom/target, mob/user, iteration)
 	to_fire.firer = owner
 	to_fire.fired_from = get_turf(owner)
-	to_fire.scale = attuned_strength
+	to_fire.scale = clamp(attuned_strength, 0.5, 1.5)
 	to_fire.preparePixelProjectile(target, owner)
 
 	RegisterSignal(to_fire, COMSIG_PROJECTILE_ON_HIT, PROC_REF(on_cast_hit))
@@ -95,3 +97,15 @@
 	SIGNAL_HANDLER
 
 	SEND_SIGNAL(src, COMSIG_SPELL_PROJECTILE_HIT, hit, firer, source)
+
+	if(QDELETED(owner))
+		return
+
+	if(!ismob(hit))
+		return
+
+	var/mob/victim = hit
+	if(victim.stat == DEAD)
+		return
+
+	handle_exp(get_adjusted_cost() / 2)

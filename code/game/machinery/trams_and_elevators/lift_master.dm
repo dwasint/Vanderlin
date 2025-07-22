@@ -790,6 +790,7 @@ GLOBAL_LIST_EMPTY(active_lifts_by_type)
 
 	// Track spending (unchanged)
 	if(spent_amount)
+		record_round_statistic(STATS_TRADE_VALUE_IMPORTED, spent_amount)
 		add_abstract_elastic_data(ELASCAT_ECONOMY, ELASDATA_MAMMONS_SPENT, spent_amount, 1)
 
 /datum/lift_master/tram/proc/calculate_reputation_cost_for_processing(datum/supply_pack/pack)
@@ -957,6 +958,7 @@ GLOBAL_LIST_EMPTY(active_lifts_by_type)
 			qdel(listed_atom)
 
 		var/atom/location = spawn_coins(total_coin_value, platform) // try_process_order will eat these coins, so don't spawn a chest
+		record_round_statistic(STATS_TRADE_VALUE_EXPORTED, total_coin_value)
 		add_abstract_elastic_data(ELASCAT_ECONOMY, ELASDATA_MAMMONS_GAINED, total_coin_value)
 
 		if(length(sold_items) && !fence)

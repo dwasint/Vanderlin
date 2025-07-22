@@ -8,10 +8,10 @@
 		/datum/attunement/ice = 0.6,
 	)
 
-	charge_time = 4 SECONDS
+	charge_time = 2.5 SECONDS
 	charge_drain = 1
-	cooldown_time = 30 SECONDS
-	spell_cost = 40
+	cooldown_time = 20 SECONDS
+	spell_cost = 30
 
 	invocation = "Chill!"
 	invocation_type = INVOCATION_SHOUT
@@ -82,7 +82,7 @@
 	var/strength_multiplier = 1
 	var/static/mutable_appearance/frost = mutable_appearance('icons/roguetown/mob/coldbreath.dmi', "breath_m", ABOVE_ALL_MOB_LAYER)
 
-/datum/status_effect/debuff/frostbite/on_creation(mob/living/new_owner, duration_override, strength)
+/datum/status_effect/debuff/frostbite/on_creation(mob/living/new_owner, duration_override, strength = 1)
 	strength_multiplier = strength
 	duration *= strength
 	effectedstats = list(STATKEY_SPD = round(-2 * strength))

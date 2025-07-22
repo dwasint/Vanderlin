@@ -6,10 +6,15 @@
 
 	antimagic_flags = NONE
 
+	associated_skill = /datum/skill/combat/unarmed
+	associated_stat = STATKEY_STR
+
 	charge_required = FALSE
 	has_visual_effects = FALSE
-	cooldown_time = 2 MINUTES
-	spell_cost = 0
+	cooldown_time = 1 MINUTES
+
+	spell_type = SPELL_STAMINA
+	spell_cost = 10
 
 /datum/action/cooldown/spell/undirected/barbrage/can_cast_spell(feedback)
 	. = ..()
