@@ -11,6 +11,8 @@
 		/datum/supply_pack/rawmats/coal
 	)
 	common_pool = list(
+		/datum/supply_pack/armor/skullcap,
+		/datum/supply_pack/armor/minerhelmet,
 		/datum/supply_pack/apparel/hatfur,
 		/datum/supply_pack/apparel/leather_boots,
 		/datum/supply_pack/apparel/workervest,

@@ -4,6 +4,9 @@
 	desc = "Nomadic traders from the harsh desert regions"
 	faction_color = "#D2691E"
 	essential_packs = list(
+		/datum/supply_pack/apparel/backpack,
+		/datum/supply_pack/apparel/satchel,
+		/datum/supply_pack/apparel/pouch,
 		/datum/supply_pack/tools/rope,
 		/datum/supply_pack/food/water,
 		/datum/supply_pack/food/hardtack,
@@ -30,6 +33,7 @@
 	uncommon_pool = list(
 		/datum/supply_pack/apparel/raincloak_random,
 		/datum/supply_pack/apparel/leather_gloves,
+		/datum/supply_pack/apparel/black_leather_belt,
 		/datum/supply_pack/apparel/raincloak_furcloak_brown,
 		/datum/supply_pack/apparel/dress_gen_random,
 		/datum/supply_pack/armor/leather_armor,

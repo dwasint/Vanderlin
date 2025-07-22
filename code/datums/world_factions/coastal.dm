@@ -30,7 +30,6 @@
 		/datum/supply_pack/apparel/silkdress_random,
 		/datum/supply_pack/apparel/tabard,
 		/datum/supply_pack/apparel/halfcloak_random,
-		/datum/supply_pack/apparel,  // Base apparel pack
 		/datum/supply_pack/food/angler,
 		/datum/supply_pack/food/winezaladin,
 		/datum/supply_pack/food/winegrenzel,
@@ -40,6 +39,7 @@
 		/datum/supply_pack/seeds/tangerine
 	)
 	rare_pool = list(
+		/datum/supply_pack/apparel/luxurydyes,
 		/datum/supply_pack/apparel/fancyhat,
 		/datum/supply_pack/apparel/hennin,
 		/datum/supply_pack/apparel/chaperon,

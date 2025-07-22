@@ -31,6 +31,10 @@
 		if(!(supply_pack_type in used_supply_packs))
 			unused_supply_packs += supply_pack_type
 
+	for(var/datum/supply_pack/pack as anything in unused_supply_packs)
+		if(!initial(pack.contains))
+			unused_supply_packs -= pack
+
 	var/unused_list = ""
 	for(var/i = 1; i <= unused_supply_packs.len; i++)
 		unused_list += "[unused_supply_packs[i]]"
