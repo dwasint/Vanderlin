@@ -394,6 +394,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_BEAUTIFUL "Beautiful"
 #define TRAIT_UGLY "Ugly"
 #define TRAIT_SCHIZO_FLAW "Schizophrenic"
+#define TRAIT_VIOLATOR					"Violator of the Coven"
+#define TRAIT_TORPOR					"Endless Slumber"
 
 // JOB RELATED TRAITS
 
