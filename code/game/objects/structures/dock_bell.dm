@@ -21,19 +21,33 @@
 	. = ..()
 	if(!COOLDOWN_FINISHED(src, ring_bell))
 		return
+
 	var/datum/job/user_job = SSjob.GetJob(user.job)
 	if(user_job && !(initial(user_job.type) in approved_jobs))
 		if(!COOLDOWN_FINISHED(src, outsider_ring_bell))
 			return
+
 	if(!do_after(user, 5 SECONDS, src))
 		return
+
 	if(!COOLDOWN_FINISHED(src, ring_bell))
 		return
+
 	visible_message(span_notice("[user] starts ringing the dock bell."))
 	playsound(get_turf(src), 'sound/misc/handbell.ogg', 50, 1)
+
+	// Handle trader return
+	recall_faction_traders()
+
 	if(!SSmerchant.cargo_docked && SSmerchant.cargo_boat.check_living())
 		SSmerchant.send_cargo_ship_back()
 	else if(SSmerchant.cargo_docked)
 		SSmerchant.prepare_cargo_shipment()
+
 	COOLDOWN_START(src, ring_bell, 3 MINUTES)
 	COOLDOWN_START(src, outsider_ring_bell, 20 MINUTES)
+
+/obj/structure/dock_bell/proc/recall_faction_traders()
+	for(var/mob/living/simple_animal/hostile/retaliate/trader/faction_trader/trader in SSmerchant.active_faction_traders)
+		if(!trader.returning_to_boat)
+			trader.return_to_boat()

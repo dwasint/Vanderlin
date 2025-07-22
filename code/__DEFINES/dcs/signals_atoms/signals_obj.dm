@@ -30,3 +30,10 @@
 #define COMSIG_ITEM_SPEC_ATTACKEDBY "item_spec_attackedby"
 
 #define COMSIG_ITEM_EQUIPPED "item_equip"						//from base of obj/item/equipped(): (/mob/equipper, slot)
+
+#define COMSIG_QUALITY_ADD_MATERIAL "quality_add_material"
+#define COMSIG_QUALITY_MODIFY "quality_modify"
+#define COMSIG_QUALITY_GET "quality_get"
+#define COMSIG_QUALITY_DECAY "quality_decay"
+#define COMSIG_QUALITY_LOCK "quality_lock"
+#define COMSIG_QUALITY_RESET "quality_reset"

@@ -45,6 +45,26 @@
 	var/base_rare_picks = 2
 	var/base_exotic_picks = 1
 
+	var/list/allowed_maps = list()
+
+	var/list/trader_outfits = list(
+		/obj/effect/mob_spawn/human/rakshari/trader
+	)
+
+	/// Chance for this faction to send a trader (0-100)
+	var/trader_chance = 15
+	/// Weighted preferences for trader types - higher numbers = more likely
+	var/list/trader_type_weights = list(
+		/datum/trader_data/food_merchant = 10,
+		/datum/trader_data/clothing_merchant = 10,
+		/datum/trader_data/tool_merchant = 10,
+		/datum/trader_data/luxury_merchant = 10,
+		/datum/trader_data/alchemist = 10,
+		/datum/trader_data/material_merchant = 10
+	)
+	/// Current trader on the boat (if any)
+	var/datum/weakref/current_trader_ref
+
 /datum/world_faction/New()
 	..()
 	initialize_faction_stock()
@@ -373,6 +393,169 @@
 	sell_value_modifiers |= sell_type
 	sell_value_modifiers[sell_type] = 1
 
+/datum/world_faction/proc/get_pack_category(datum/supply_pack/pack)
+	var/type_path = pack.type
+	var/type_string = "[type_path]"
+
+	if(findtext(type_string, "/food/"))
+		return "food"
+	if(findtext(type_string, "/apparel/"))
+		return "apparel"
+	if(findtext(type_string, "/tools/"))
+		return "tools"
+	if(findtext(type_string, "/luxury/") || findtext(type_string, "/jewelry/"))
+		return "luxury"
+	if(findtext(type_string, "/narcotics/"))
+		return "narcotics"
+	if(findtext(type_string, "/rawmats/"))
+		return "rawmats"
+	return null
+
+/datum/world_faction/proc/should_send_trader()
+	if(!length(trader_type_weights))
+		return FALSE
+	return prob(trader_chance)
+
+/datum/world_faction/proc/create_faction_trader(turf/spawn_location)
+	if(!length(trader_type_weights))
+		return null
+
+	var/trader_type = pickweight(trader_type_weights)
+	var/datum/trader_data/trader_data = new trader_type()
+
+	// Customize trader with faction-specific items
+	customize_trader_inventory(trader_data)
+
+	var/mob/living/simple_animal/hostile/retaliate/trader/faction_trader/new_trader = new(spawn_location, TRUE, pick(trader_outfits), WEAKREF(src))
+	new_trader.set_custom_trade(trader_data)
+	new_trader.faction_ref = WEAKREF(src)
+	current_trader_ref = WEAKREF(new_trader)
+
+	return new_trader
+
+/datum/world_faction/proc/customize_trader_inventory(datum/trader_data/trader_data)
+	var/list/all_packs = essential_packs + common_pool + uncommon_pool + rare_pool + exotic_pool
+	var/list/compatible_packs = list()
+	var/list/faction_products = list()
+
+	// First, find all compatible packs with this trader type
+	for(var/pack_type in all_packs)
+		var/datum/supply_pack/pack = new pack_type()
+		if(is_compatible_with_trader_type(pack, trader_data))
+			compatible_packs[pack_type] = pack
+		else
+			qdel(pack)
+
+	// Determine how many items this trader should have based on reputation
+	var/tier = get_reputation_tier()
+	var/base_items = 8 // Base number of different items a trader carries
+	var/max_items = base_items + (tier * 2) // More items available at higher reputation
+
+	// Limit selection to prevent traders from having everything
+	var/items_to_select = min(max_items, length(compatible_packs))
+
+	if(items_to_select <= 0)
+		// Clean up and exit if no compatible items
+		for(var/pack_type in compatible_packs)
+			var/datum/supply_pack/pack = compatible_packs[pack_type]
+			qdel(pack)
+		return
+
+	var/list/weighted_selection = list()
+	for(var/pack_type in compatible_packs)
+		var/weight = 10
+
+		if(pack_type in essential_packs)
+			weight = 15
+		else if(pack_type in common_pool)
+			weight = 12
+		else if(pack_type in uncommon_pool)
+			weight = 8
+		else if(pack_type in rare_pool)
+			weight = 5 + tier // Rare items more likely at higher rep
+		else if(pack_type in exotic_pool)
+			weight = 2 + (tier * 2) // Exotic items much more likely at higher rep
+
+		weighted_selection[pack_type] = weight
+
+	var/list/selected_packs = list()
+	for(var/i = 1 to items_to_select)
+		if(!length(weighted_selection))
+			break
+
+		var/selected_pack = pickweight(weighted_selection)
+		selected_packs += selected_pack
+		weighted_selection -= selected_pack
+
+	for(var/pack_type in selected_packs)
+		var/datum/supply_pack/pack = compatible_packs[pack_type]
+
+		if(islist(pack.contains))
+			for(var/item_type in pack.contains)
+				var/price = calculate_trader_price(pack, item_type)
+				var/quantity = calculate_trader_quantity(pack, tier)
+				faction_products[item_type] = list(price, quantity)
+		else if(pack.contains)
+			var/price = calculate_trader_price(pack, pack.contains)
+			var/quantity = calculate_trader_quantity(pack, tier)
+			faction_products[pack.contains] = list(price, quantity)
+
+	// Clean up all pack instances
+	for(var/pack_type in compatible_packs)
+		var/datum/supply_pack/pack = compatible_packs[pack_type]
+		qdel(pack)
+
+	if(length(faction_products))
+		trader_data.initial_products = faction_products
+
+/datum/world_faction/proc/calculate_trader_quantity(datum/supply_pack/pack, reputation_tier)
+	var/base_quantity = 2
+
+	if(pack.type in essential_packs)
+		base_quantity = 3 + reputation_tier
+	else if(pack.type in common_pool)
+		base_quantity = 2 + (reputation_tier / 2)
+	else if(pack.type in uncommon_pool)
+		base_quantity = 2
+	else if(pack.type in rare_pool)
+		base_quantity = 1 + (reputation_tier / 3)
+	else if(pack.type in exotic_pool)
+		base_quantity = 1
+
+	return max(1, rand(base_quantity, base_quantity + 2))
+
+/datum/world_faction/proc/is_compatible_with_trader_type(datum/supply_pack/pack, datum/trader_data/trader_data)
+	var/pack_category = get_pack_category(pack)
+	var/trader_type = trader_data.type
+
+	switch(trader_type)
+		if(/datum/trader_data/food_merchant)
+			return pack_category == "food"
+		if(/datum/trader_data/clothing_merchant)
+			return pack_category == "apparel"
+		if(/datum/trader_data/tool_merchant)
+			return pack_category == "tools"
+		if(/datum/trader_data/luxury_merchant)
+			return pack_category in list("luxury", "jewelry")
+		if(/datum/trader_data/alchemist)
+			return pack_category == "narcotics"
+		if(/datum/trader_data/material_merchant)
+			return pack_category == "rawmats"
+	return FALSE
+
+/datum/world_faction/proc/calculate_trader_price(datum/supply_pack/pack, item_type)
+	var/base_price = 20 // Default base price
+
+	// Adjust price based on pack rarity
+	if(pack.type in rare_pool)
+		base_price *= 2
+	else if(pack.type in exotic_pool)
+		base_price *= 3
+	else if(pack.type in uncommon_pool)
+		base_price *= 1.5
+
+	return base_price
+
 /datum/world_faction/proc/get_reputation_status()
 	var/tier = get_reputation_tier()
 	var/list/tier_names = list("Neutral", "Friendly", "Trusted", "Honored", "Revered", "Exalted", "Legendary")
@@ -383,3 +566,48 @@
 		next_threshold = reputation_thresholds[tier + 2]
 
 	return "[tier_name] ([faction_reputation]/[next_threshold])"
+
+/datum/world_faction/proc/debug_spawn_trader(mob/spawner)
+	if(!spawner)
+		return null
+
+	var/turf/spawn_location = get_turf(spawner)
+	if(!spawn_location)
+		to_chat(spawner, "<span class='warning'>Could not find valid spawn location!</span>")
+		return null
+
+	// Remove existing trader if any
+	var/mob/living/simple_animal/hostile/retaliate/trader/faction_trader/old_trader = current_trader_ref?.resolve()
+	if(old_trader)
+		to_chat(spawner, "<span class='notice'>Removing existing trader...</span>")
+		qdel(old_trader)
+		current_trader_ref = null
+
+	var/new_trader = create_faction_trader(spawn_location)
+	if(new_trader)
+		to_chat(spawner, "<span class='notice'>Spawned [faction_name] trader at your location!</span>")
+		return new_trader
+	else
+		to_chat(spawner, "<span class='warning'>Failed to spawn trader!</span>")
+		return null
+
+/proc/debug_spawn_random_faction_trader(mob/spawner)
+	if(!spawner)
+		return
+
+	var/list/available_factions = list()
+
+	for(var/datum/world_faction/faction in SSmerchant.world_factions)
+		available_factions += faction
+
+	var/datum/world_faction/chosen_faction = pick(available_factions)
+	return chosen_faction.debug_spawn_trader(spawner)
+
+/client/proc/spawn_faction_trader()
+	set name = "Spawn Faction Trader"
+	set category = "Debug"
+
+	if(!check_rights(R_ADMIN))
+		return
+
+	debug_spawn_random_faction_trader(mob)

@@ -1,7 +1,34 @@
+/obj/effect/mob_spawn/human/demi
+	mob_species = /datum/species/demihuman
+
+/obj/effect/mob_spawn/human/demi/trader
+	outfit = /datum/outfit/job/tailor
+
+/obj/effect/mob_spawn/human/elf
+	mob_species = /datum/species/elf/snow
+
+/obj/effect/mob_spawn/human/elf/trader
+	outfit = /datum/outfit/job/tailor
+
 /datum/world_faction/coastal_merchants
 	faction_name = "Coastal Trade Union"
 	desc = "Seafaring traders with exotic wares"
 	faction_color = "#4682B4"
+
+	trader_outfits = list(
+		/obj/effect/mob_spawn/human/demi/trader,
+		/obj/effect/mob_spawn/human/elf/trader
+	)
+
+	trader_type_weights = list(
+		/datum/trader_data/luxury_merchant = 25,
+		/datum/trader_data/food_merchant = 20,
+		/datum/trader_data/alchemist = 15,
+		/datum/trader_data/material_merchant = 12,
+		/datum/trader_data/clothing_merchant = 10,
+		/datum/trader_data/tool_merchant = 5,
+	)
+
 	essential_packs = list(
 		/datum/supply_pack/tools/fishingrod,
 		/datum/supply_pack/tools/bait,

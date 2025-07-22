@@ -24,6 +24,7 @@ SUBSYSTEM_DEF(merchant)
 	// New faction management
 	var/datum/world_faction/active_faction // Currently selected faction for trading
 	var/list/faction_rotation_schedule = list() // When each faction becomes active
+	var/list/active_faction_traders = list()
 
 /datum/controller/subsystem/merchant/Initialize(timeofday)
 	// Initialize supply packs
@@ -40,8 +41,11 @@ SUBSYSTEM_DEF(merchant)
 	return ..()
 
 /datum/controller/subsystem/merchant/proc/initialize_factions()
+
 	for(var/datum/world_faction/faction as anything in subtypesof(/datum/world_faction))
-		world_factions |= new faction
+		var/datum/world_faction/new_faction = new faction
+		if((SSmapping.config.map_name in new_faction.allowed_maps) || !length(new_faction.allowed_maps))
+			world_factions |= new_faction
 
 	// Set initial active faction
 	active_faction = world_factions[rand(1, length(world_factions))]
@@ -192,6 +196,33 @@ SUBSYSTEM_DEF(merchant)
 	staticly_setup_types |= sell_type
 	for(var/datum/world_faction/active_faction in world_factions)
 		active_faction.setup_sell_data(sell_type)
+
+/datum/controller/subsystem/merchant/proc/spawn_faction_trader()
+    if(!cargo_docked || !length(world_factions))
+        return
+
+    var/datum/world_faction/selected_faction
+    for(var/datum/world_faction/faction in world_factions)
+        if(faction.should_send_trader())
+            selected_faction = faction
+            break
+
+    if(!selected_faction)
+        return
+
+    // Find spawn location on or near the boat
+    var/obj/structure/industrial_lift/tram/platform = cargo_boat?.lift_platforms?[1]
+    if(!platform)
+        return
+
+    var/turf/spawn_turf = get_turf(platform)
+    if(!spawn_turf)
+        return
+
+    var/mob/living/simple_animal/hostile/retaliate/trader/faction_trader/new_trader = selected_faction.create_faction_trader(spawn_turf)
+    if(new_trader)
+        active_faction_traders += new_trader
+        new_trader.ai_controller?.set_blackboard_key(BB_CURRENT_MIN_MOVE_DISTANCE, 0)
 
 /obj/Initialize()
 	. = ..()

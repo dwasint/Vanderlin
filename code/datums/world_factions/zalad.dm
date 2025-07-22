@@ -3,6 +3,16 @@
 	faction_name = "Zalad Traders"
 	desc = "Nomadic traders from the harsh desert regions"
 	faction_color = "#D2691E"
+
+	trader_type_weights = list(
+		/datum/trader_data/luxury_merchant = 10,
+		/datum/trader_data/food_merchant = 5,
+		/datum/trader_data/alchemist = 25,
+		/datum/trader_data/material_merchant = 12,
+		/datum/trader_data/clothing_merchant = 20,
+		/datum/trader_data/tool_merchant = 10,
+	)
+
 	essential_packs = list(
 		/datum/supply_pack/apparel/backpack,
 		/datum/supply_pack/apparel/satchel,

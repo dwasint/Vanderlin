@@ -1,8 +1,27 @@
 
+/obj/effect/mob_spawn/human/dwarf
+	mob_species = /datum/species/dwarf/mountain
+
+/obj/effect/mob_spawn/human/dwarf/trader
+	outfit = /datum/outfit/job/tailor
+
 /datum/world_faction/mountain_clans
 	faction_name = "Dwarven Clans"
 	desc = "Hardy dwarves from the mountain passes"
 	faction_color = "#708090"
+
+	trader_outfits = list(
+		/obj/effect/mob_spawn/human/dwarf/trader
+	)
+	trader_type_weights = list(
+		/datum/trader_data/luxury_merchant = 5,
+		/datum/trader_data/food_merchant = 12,
+		/datum/trader_data/alchemist = 7,
+		/datum/trader_data/material_merchant = 20,
+		/datum/trader_data/clothing_merchant = 10,
+		/datum/trader_data/tool_merchant = 25,
+	)
+
 	essential_packs = list(
 		/datum/supply_pack/tools/pick,
 		/datum/supply_pack/tools/hammer,
