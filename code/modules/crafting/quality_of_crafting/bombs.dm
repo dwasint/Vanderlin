@@ -46,9 +46,6 @@
 		/obj/item/reagent_containers/powder/blastpowder = 2,
 		/obj/item/reagent_containers/glass/bottle = 1,
 	)
-	reagent_requirements = list(
-		/datum/reagent/consumable/ethanol = 10
-	)
 
 	starting_atom = /obj/item/natural/fibers
 	attacked_atom = /obj/item/reagent_containers/glass/bottle
