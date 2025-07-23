@@ -21,6 +21,11 @@
 	grid_height = 64
 	grid_width = 32
 
+	///do we explode on impact?
+	var/impact_explode = FALSE
+	///odds we fail on ignite
+	var/prob2fail = 5
+
 	/// Bitfields which prevent the grenade from detonating if set. Includes ([GRENADE_DUD]|[GRENADE_USED])
 	var/dud_flags = NONE
 	///Were we made sticky?
@@ -33,11 +38,20 @@
 	var/ex_light = 2
 	///how big of a flame explosion radius on prime
 	var/ex_flame = 0
+	///how big the hotspot range is
+	var/ex_hotspot_range = 0
+	///do we smoke?
+	var/ex_smoke = FALSE
+
+	///our ignite timer
+	var/explode_timer
 
 	///Is this grenade currently armed?
 	var/active = FALSE
 	///How long it takes for a grenade to explode after being armed
 	var/det_time = 5 SECONDS
+
+	var/turf_debris = /obj/item/natural/glass/shard
 
 	// dealing with creating a [/datum/component/pellet_cloud] on detonate
 	/// if set, will spew out projectiles of this type
@@ -47,6 +61,10 @@
 	///Did we add the component responsible for spawning sharpnel to this?
 	var/shrapnel_initialized
 
+/obj/item/explosive/Initialize()
+	. = ..()
+	det_time = rand(det_time * 0.5, det_time)
+
 /**
  * Checks for various ways to botch priming a grenade.
  *
@@ -54,10 +72,12 @@
  * * mob/living/carbon/human/user - who is priming our grenade?
  */
 /obj/item/explosive/proc/botch_check(mob/living/carbon/human/user)
+	if(prob(prob2fail))
+		return TRUE
+
 	if(sticky && prob(50)) // to add risk to sticky tape grenade cheese, no return cause we still prime as normal after.
 		to_chat(user, span_warning("What the... [src] is stuck to your hand!"))
 		ADD_TRAIT(src, TRAIT_NODROP, "sticky")
-
 
 /obj/item/explosive/attack_self(mob/user)
 	if(HAS_TRAIT(src, TRAIT_NODROP))
@@ -77,6 +97,22 @@
 		arm_grenade(null)
 	. = ..()
 
+/obj/item/explosive/spark_act()
+	if (active)
+		return
+	if(usr)
+		if(!botch_check(usr)) // if they botch the prime, it'll be handled in botch_check
+			arm_grenade(usr)
+	else
+		arm_grenade(null)
+	. = ..()
+
+/obj/item/explosive/extinguish()
+	. = ..()
+	if(explode_timer)
+		deltimer(explode_timer)
+		explode_timer = null
+	icon_state = initial(icon_state)
 
 /obj/item/explosive/proc/log_grenade(mob/user)
 	log_bomber(user, "has primed a", src, "for detonation", message_admins = !dud_flags)
@@ -99,7 +135,7 @@
 	active = TRUE
 	icon_state = initial(icon_state) + "_active"
 	SEND_SIGNAL(src, COMSIG_GRENADE_ARMED, det_time, delayoverride)
-	addtimer(CALLBACK(src, PROC_REF(detonate)), isnull(delayoverride)? det_time : delayoverride)
+	explode_timer = addtimer(CALLBACK(src, PROC_REF(detonate)), isnull(delayoverride)? det_time : delayoverride)
 
 
 /**
@@ -120,7 +156,9 @@
 
 	SEND_SIGNAL(src, COMSIG_GRENADE_DETONATE, lanced_by)
 	if(ex_dev || ex_heavy || ex_light || ex_flame)
-		explosion(src, ex_dev, ex_heavy, ex_light, flame_range = ex_flame, soundin = 'sound/misc/explode/bomb.ogg')
+		explosion(src, ex_dev, ex_heavy, ex_light, flame_range = ex_flame, smoke = ex_smoke, hotspot_range = ex_hotspot_range, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
+
+	new turf_debris (get_turf(src))
 
 	qdel(src)
 	return TRUE
@@ -135,3 +173,12 @@
 	if(active)
 		user.throw_item(target)
 		return
+
+/obj/item/explosive/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
+	..()
+	if(impact_explode)
+		if(active)
+			detonate(throwingdatum.thrower)
+		else
+			new turf_debris (get_turf(src))
+			qdel(src)

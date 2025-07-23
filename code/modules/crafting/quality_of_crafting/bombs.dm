@@ -18,7 +18,7 @@
 
 	starting_atom = /obj/item/natural/cloth
 	attacked_atom = /obj/item/reagent_containers/glass/bottle
-	output = /obj/item/bomb/homemade
+	output = /obj/item/explosive/bottle/homemade
 	craft_time = 1 SECONDS
 	subtypes_allowed = TRUE
 	reagent_subtypes_allowed = TRUE

@@ -313,7 +313,7 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 	return TRUE
 
 /obj/structure/activator/attackby(obj/item/I, mob/user, params)
-	if(!containment && (istype(I, /obj/item/gun/ballistic/revolver/grenadelauncher) || istype(I, /obj/item/bomb) || istype(I, /obj/item/flint)))
+	if(!containment && (istype(I, /obj/item/gun/ballistic/revolver/grenadelauncher) || istype(I, /obj/item/explosive/bottle) || istype(I, /obj/item/flint)))
 		if(!user.transferItemToLoc(I, src))
 			return ..()
 		containment = I
@@ -331,9 +331,9 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 /obj/structure/activator/redstone_triggered(mob/user)
 	if(!containment)
 		return
-	if(istype(containment, /obj/item/bomb))
-		var/obj/item/bomb/bomba = containment
-		bomba.light()
+	if(istype(containment, /obj/item/explosive/bottle))
+		var/obj/item/explosive/bottle/bomba = containment
+		bomba.arm_grenade()
 	if(istype(containment, /obj/item/flint))
 		var/datum/effect_system/spark_spread/S = new()
 		var/turf/front = get_step(src, dir)

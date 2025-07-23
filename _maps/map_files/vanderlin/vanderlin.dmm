@@ -3549,7 +3549,7 @@
 	pixel_y = -32
 	},
 /obj/structure/table/wood/plain_alt,
-/obj/item/bomb,
+/obj/item/explosive/bottle,
 /turf/open/floor/blocks/newstone/alt,
 /area/rogue/indoors/town/dwarfin)
 "bYT" = (

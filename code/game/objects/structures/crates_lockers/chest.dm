@@ -31,7 +31,7 @@
 	var/list/loot = list(
 		/obj/item/storage/fancy/cigarettes/zig/empty=40,
 		/obj/item/reagent_containers/powder/spice=20,
-		/obj/item/bomb=6,
+		/obj/item/explosive/bottle=6,
 		/obj/item/weapon/knife/dagger=33,
 		/obj/item/reagent_containers/food/snacks/produce/fyritius=10,
 		/obj/item/clothing/armor/gambeson=33,

@@ -38750,7 +38750,7 @@
 /area/rogue/indoors/town)
 "vio" = (
 /obj/structure/table/wood/plain_alt,
-/obj/item/bomb,
+/obj/item/explosive/bottle,
 /turf/open/floor/ruinedwood/turned,
 /area/rogue/indoors/town/dwarfin)
 "vix" = (
