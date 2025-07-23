@@ -1,76 +1,3 @@
-/datum/repeatable_crafting_recipe/cooking
-	abstract_type = /datum/repeatable_crafting_recipe/cooking
-	skillcraft = /datum/skill/craft/cooking
-	var/quality_modifier = 1.0  // Base modifier for recipe quality
-
-/datum/repeatable_crafting_recipe/cooking/create_outputs(list/to_delete, mob/user)
-	var/list/outputs = list()
-	var/total_freshness = 0
-	var/ingredient_count = 0
-	var/highest_quality = 0
-
-	// Calculate average freshness and find highest quality ingredient
-	for(var/obj/item/reagent_containers/food_item in to_delete)
-		if(istype(food_item, /obj/item/reagent_containers/food/snacks) || istype(food_item, /obj/item/grown))
-			ingredient_count++
-
-			// Check warming value for freshness (higher means fresher)
-			if(istype(food_item, /obj/item/reagent_containers/food/snacks))
-				var/obj/item/reagent_containers/food/snacks/F = food_item
-				total_freshness += max(0, (F.warming + F.rotprocess))
-				highest_quality = max(highest_quality, F.quality)
-
-			// Handle crops/grown items
-			else if(istype(food_item, /obj/item/reagent_containers/food/snacks/produce))
-				var/obj/item/reagent_containers/food/snacks/produce/G = food_item
-				highest_quality = max(highest_quality, G.crop_quality - 1)
-
-	// Calculate average freshness
-	var/average_freshness = (ingredient_count > 0) ? (total_freshness / ingredient_count) : 0
-
-	// Get the user's cooking skill
-	var/cooking_skill = user.get_skill_level(/datum/skill/craft/cooking)
-
-	// Create output items
-	for(var/spawn_count = 1 to output_amount)
-		var/obj/item/reagent_containers/food/snacks/new_item = new output(get_turf(user))
-		new_item.sellprice = sellprice
-		new_item.randomize_price()
-
-		// Apply freshness to the new food item
-		new_item.warming = min(5 MINUTES, average_freshness)
-
-		// Calculate final quality based on ingredients, skill, and recipe
-		apply_food_quality(new_item, cooking_skill, highest_quality, average_freshness)
-
-		if(length(pass_types_in_end))
-			var/list/parts = list()
-			for(var/obj/item/listed as anything in to_delete)
-				if(!is_type_in_list(listed, pass_types_in_end))
-					continue
-				parts += listed
-			new_item.CheckParts(parts)
-
-		new_item.OnCrafted(user.dir, user)
-
-		outputs += new_item
-
-	return outputs
-
-/datum/repeatable_crafting_recipe/cooking/proc/apply_food_quality(obj/item/reagent_containers/food/snacks/food_item, cooking_skill, ingredient_quality, freshness)
-	var/datum/quality_calculator/cooking/cook_calc = new(
-		base_qual = 0,
-		mat_qual = ingredient_quality,
-		skill_qual = cooking_skill,
-		perf_qual = 0,
-		diff_mod = 0,
-		components = 1,
-		fresh = freshness,
-		recipe_mod = quality_modifier
-	)
-	cook_calc.apply_quality_to_item(food_item)
-	qdel(cook_calc)
-
 
 /datum/repeatable_crafting_recipe/cooking/soap
 	name = "soap"
@@ -114,7 +41,6 @@
 	attacked_atom = /obj/item/reagent_containers/food/snacks/butterdough_slice
 	starting_atom = /obj/item/reagent_containers/food/snacks/produce/fruit/apple
 	output = /obj/item/reagent_containers/food/snacks/foodbase/fritter_raw
-	uses_attacked_atom = TRUE
 	required_table = TRUE
 	craft_time = 6 SECONDS
 	crafting_sound = 'sound/foley/dropsound/food_drop.ogg'
@@ -158,8 +84,8 @@
 	subtypes_allowed = FALSE
 	attacked_atom = /obj/item/reagent_containers/food/snacks/meat/mince/beef
 	starting_atom = /obj/item/reagent_containers/food/snacks/veg/onion_sliced
+	allow_inverse_start = TRUE
 	output = /obj/item/reagent_containers/food/snacks/meat/mince/beef/mett
-	uses_attacked_atom = TRUE
 	craft_time = 5 SECONDS
 	crafting_sound = 'sound/foley/kneading_alt.ogg'
 	crafting_message = "knead onions into the mince"
@@ -176,27 +102,8 @@
 	required_table = TRUE
 	attacked_atom = /obj/item/reagent_containers/food/snacks/meat/mince
 	starting_atom = /obj/item/reagent_containers/food/snacks/fat
+	allow_inverse_start = TRUE
 	output = /obj/item/reagent_containers/food/snacks/meat/sausage
-	uses_attacked_atom = TRUE
-	craft_time = 9 SECONDS
-	crafting_sound = 'sound/foley/dropsound/food_drop.ogg'
-	crafting_message = "stuff a wiener"
-	extra_chance = 100
-
-/datum/repeatable_crafting_recipe/cooking/raw_sausage_inverse
-	hides_from_books = TRUE
-	name = "Fatty Raw Sausage"
-
-	requirements = list(
-		/obj/item/reagent_containers/food/snacks/fat = 1,
-		/obj/item/reagent_containers/food/snacks/meat/mince = 1,
-	)
-	subtypes_allowed = TRUE
-	required_table = TRUE
-	attacked_atom = /obj/item/reagent_containers/food/snacks/fat
-	starting_atom = /obj/item/reagent_containers/food/snacks/meat/mince
-	output = /obj/item/reagent_containers/food/snacks/meat/sausage
-	uses_attacked_atom = TRUE
 	craft_time = 9 SECONDS
 	crafting_sound = 'sound/foley/dropsound/food_drop.ogg'
 	crafting_message = "stuff a wiener"
@@ -213,7 +120,6 @@
 	attacked_atom = /obj/item/reagent_containers/food/snacks/meat/mince
 	starting_atom = /obj/item/reagent_containers/food/snacks/meat/mince
 	output = /obj/item/reagent_containers/food/snacks/meat/sausage
-	uses_attacked_atom = TRUE
 	craft_time = 9 SECONDS
 	crafting_sound = 'sound/foley/dropsound/food_drop.ogg'
 	crafting_message = "stuff a wiener"
@@ -230,7 +136,6 @@
 	attacked_atom = /obj/item/reagent_containers/food/snacks/butter
 	starting_atom = /obj/item/grown/log/tree/stick
 	output = /obj/item/reagent_containers/food/snacks/pestranstick
-	uses_attacked_atom = TRUE
 	craft_time = 5 SECONDS
 	crafting_sound = 'sound/foley/dropsound/food_drop.ogg'
 	crafting_message = "skewer the butter"
@@ -246,7 +151,6 @@
 	attacked_atom = /obj/item/reagent_containers/food/snacks/cooked/egg
 	starting_atom = /obj/item/reagent_containers/food/snacks/cooked/egg
 	output = /obj/item/reagent_containers/food/snacks/cooked/twin_egg
-	uses_attacked_atom = TRUE
 	craft_time = 5 SECONDS
 	crafting_sound = 'sound/foley/dropsound/food_drop.ogg'
 	extra_chance = 100
@@ -261,8 +165,8 @@
 	required_table = TRUE
 	attacked_atom = /obj/item/reagent_containers/food/snacks/cooked/twin_egg
 	starting_atom = /obj/item/reagent_containers/food/snacks/cheese_wedge
+	allow_inverse_start = TRUE
 	output = /obj/item/reagent_containers/food/snacks/cooked/valorian_omlette
-	uses_attacked_atom = TRUE
 	craft_time = 5 SECONDS
 	crafting_sound = 'sound/foley/dropsound/food_drop.ogg'
 	extra_chance = 100
@@ -277,8 +181,8 @@
 	required_table = TRUE
 	attacked_atom = /obj/item/reagent_containers/food/snacks/cooked/ham
 	starting_atom = /obj/item/reagent_containers/food/snacks/cooked/truffle
+	allow_inverse_start = TRUE
 	output = /obj/item/reagent_containers/food/snacks/cooked/royal_truffle
-	uses_attacked_atom = TRUE
 	craft_time = 2 SECONDS
 	crafting_sound = 'sound/foley/dropsound/food_drop.ogg'
 	extra_chance = 100
@@ -294,8 +198,8 @@
 	required_table = TRUE
 	attacked_atom = /obj/item/reagent_containers/food/snacks/cooked/ham
 	starting_atom = /obj/item/reagent_containers/food/snacks/cooked/truffle_toxic
+	allow_inverse_start = TRUE
 	output = /obj/item/reagent_containers/food/snacks/cooked/royal_truffle/toxin
-	uses_attacked_atom = TRUE
 	craft_time = 2 SECONDS
 	crafting_sound = 'sound/foley/dropsound/food_drop.ogg'
 	extra_chance = 100
