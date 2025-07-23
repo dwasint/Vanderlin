@@ -37,3 +37,22 @@
 	output = /obj/item/smokebomb
 	craft_time = 1 SECONDS
 	subtypes_allowed = TRUE
+
+/datum/repeatable_crafting_recipe/bomb/pipe_bomb
+	name = "homemade pipe bomb"
+
+	requirements = list(
+		/obj/item/natural/fibers = 1,
+		/obj/item/reagent_containers/powder/blastpowder = 2,
+		/obj/item/reagent_containers/glass/bottle = 1,
+	)
+	reagent_requirements = list(
+		/datum/reagent/consumable/ethanol = 10
+	)
+
+	starting_atom = /obj/item/natural/fibers
+	attacked_atom = /obj/item/reagent_containers/glass/bottle
+	output = /obj/item/explosive
+	craft_time = 1 SECONDS
+	subtypes_allowed = TRUE
+	reagent_subtypes_allowed = TRUE
