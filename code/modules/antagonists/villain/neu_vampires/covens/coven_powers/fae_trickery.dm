@@ -129,7 +129,7 @@
 		if(CONSCIOUS)
 			. += "<span class='boldannounce'>[src] seems to be active!</span>"
 
-/obj/item/clothing/face/goblin_mask/throw_at(atom/target, range, speed, mob/thrower, spin=1, diagonals_first = 0, datum/callback/callback, quickstart = TRUE)
+/obj/item/clothing/face/goblin_mask/throw_at(atom/target, range, speed, mob/thrower, spin = FALSE, diagonals_first = FALSE, datum/callback/callback, force = MOVE_FORCE_STRONG, gentle = FALSE) //If this returns FALSE then callback will not be called.
 	. = ..()
 	if(!.)
 		return
