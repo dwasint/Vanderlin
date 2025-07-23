@@ -1,9 +1,12 @@
 /datum/ai_controller/basic_controller/trader
+	max_target_distance = 300
+	movement_delay = 0.4 SECONDS
+
 	blackboard = list(
 		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic,
 	)
 
-	ai_movement = /datum/ai_movement/basic_avoidance
+	ai_movement = /datum/ai_movement/hybrid_pathing/gnome
 	idle_behavior = /datum/idle_behavior/idle_random_walk/not_while_on_target/trader
 	planning_subtrees = list(
 		/datum/ai_planning_subtree/target_retaliate,
@@ -43,26 +46,31 @@
 	if(controller.blackboard_key_exists(BB_SHOP_SPOT))
 		return
 
-	//If we don't have a costurmer to greet, look for one
-	if(!controller.blackboard_key_exists(BB_FIRST_CUSTOMER))
-		controller.queue_behavior(/datum/ai_behavior/find_and_set/conscious_person, BB_FIRST_CUSTOMER, /mob/living/carbon/human)
+	//If we don't have a target stall, look for an unclaimed one
+	if(!controller.blackboard_key_exists(BB_TARGET_STALL))
+		controller.queue_behavior(/datum/ai_behavior/find_and_set/unclaimed_stall, BB_TARGET_STALL, /obj/effect/landmark/stall) // or whatever your stall type is
 		return
 
-	//We have our first customer, time to tell them about incredible deals
-	controller.queue_behavior(setup_shop_behavior, BB_FIRST_CUSTOMER)
+	//We have our target stall, time to set up shop there
+	controller.queue_behavior(setup_shop_behavior, BB_TARGET_STALL)
 	return SUBTREE_RETURN_FINISH_PLANNING
 
-///The ai will create a shop the moment they see a potential costumer
+///The ai will create a shop at an unclaimed stall
 /datum/ai_behavior/setup_shop
+	behavior_flags = AI_BEHAVIOR_REQUIRE_MOVEMENT | AI_BEHAVIOR_REQUIRE_REACH
+
 
 /datum/ai_behavior/setup_shop/setup(datum/ai_controller/controller, target_key)
 	var/obj/target = controller.blackboard[target_key]
+	if(!target)
+		return FALSE
+	set_movement_target(controller, target)
 	return !QDELETED(target)
 
 /datum/ai_behavior/setup_shop/perform(seconds_per_tick, datum/ai_controller/controller, target_key)
 	. = ..()
 
-	//We lost track of our costumer or our ability, abort
+	//We lost track of our stall or our ability, abort
 	if(!controller.blackboard_key_exists(target_key) || !controller.blackboard_key_exists(BB_SETUP_SHOP))
 		finish_action(controller, FALSE, target_key)
 		return
@@ -70,7 +78,11 @@
 	var/datum/action/setup_shop/shop = controller.blackboard[BB_SETUP_SHOP]
 	shop.Trigger()
 
-	controller.clear_blackboard_key(BB_FIRST_CUSTOMER)
+	// Set the stall as our shop spot
+	var/obj/effect/landmark/stall/stall = controller.blackboard[target_key]
+	stall.claimed_by_trader = TRUE
+	controller.set_blackboard_key(BB_SHOP_SPOT, stall)
+	controller.clear_blackboard_key(BB_TARGET_STALL)
 
 	finish_action(controller, TRUE, target_key)
 

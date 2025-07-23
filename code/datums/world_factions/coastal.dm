@@ -17,11 +17,18 @@
 	)
 	trader_type_weights = list(
 		/datum/trader_data/luxury_merchant = 25,
+		/datum/trader_data/instrument_merchant = 20,
 		/datum/trader_data/food_merchant = 20,
+		/datum/trader_data/book_merchant = 15,
 		/datum/trader_data/alchemist = 15,
-		/datum/trader_data/material_merchant = 12,
+		/datum/trader_data/livestock_merchant = 12,
 		/datum/trader_data/clothing_merchant = 10,
+		/datum/trader_data/material_merchant = 8,
+		/datum/trader_data/medicine_merchant = 8,
+		/datum/trader_data/exotic_merchant = 7,
+		/datum/trader_data/seed_merchant = 5,
 		/datum/trader_data/tool_merchant = 5,
+		/datum/trader_data/weapon_merchant = 3,
 	)
 	essential_packs = list(
 		/datum/supply_pack/tools/fishingrod,

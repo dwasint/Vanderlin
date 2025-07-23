@@ -171,7 +171,17 @@ Can accept both a type path, and an instance of a datum. Type path has priority.
 	var/list/product_info
 
 	for(var/obj/item/thing as anything in products)
-		display_names["[initial(thing.name)]"] = thing
+		var/path_name = initial(thing.name)
+		if(ispath(thing, /obj/item/neuFarm/seed))
+			path_name = initial(thing:seed_identity)
+		if(ispath(thing, /obj/item/reagent_containers))
+			var/obj/item/reagent_containers/created_container = new(null)
+			if(length(created_container.list_reagents))
+				var/datum/reagent/reagent = created_container.list_reagents[1]
+				path_name = "[initial(thing.name)] of [initial(reagent.name)]"
+			qdel(created_container)
+
+		display_names["[path_name]"] = thing
 
 		if(!radial_icons_cache[thing])
 			radial_icons_cache[thing] = image(icon = initial(thing.icon), icon_state = initial(thing.icon_state))
@@ -182,7 +192,7 @@ Can accept both a type path, and an instance of a datum. Type path has priority.
 		if(product_info[TRADER_PRODUCT_INFO_QUANTITY] <= 0) //out of stock
 			item_image.overlays += radial_icons_cache[TRADER_RADIAL_OUT_OF_STOCK]
 
-		items += list("[initial(thing.name)]" = item_image)
+		items += list("[path_name]" = item_image)
 
 	var/pick = show_radial_menu(customer, parent, items, custom_check = CALLBACK(src, PROC_REF(check_menu), customer), require_near = TRUE, radial_slice_icon = "radial_thaum")
 	if(!pick || !can_trade(customer))
@@ -224,6 +234,7 @@ Can accept both a type path, and an instance of a datum. Type path has priority.
 	if(get_mammons_in_atom(customer) < the_cost)
 		return
 	remove_mammons_from_atom(customer, the_cost)
+	return TRUE
 
 /**
  * Tries to call sell_item on one of the customer's held items, if fail gives a chat message

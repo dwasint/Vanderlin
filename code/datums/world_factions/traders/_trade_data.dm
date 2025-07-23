@@ -9,6 +9,8 @@
 	var/sell_sound = 'sound/blank.ogg'
 	///The currency name
 	var/currency_name = "zennies"
+	///Which types of supply packs can we use here
+	var/list/base_type = list()
 	///The initial products that the trader offers
 	var/list/initial_products = list(
 		/obj/item/ore/cinnabar = list(20, INFINITY),

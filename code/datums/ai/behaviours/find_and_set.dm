@@ -175,3 +175,19 @@
 		if(!is_type_in_typecache(possible_turf, locate_paths) || !can_see(controller.pawn, possible_turf, search_range))
 			found -= possible_turf
 	return (length(found)) ? get_closest_atom(/turf, found, controller.pawn) : null
+
+/datum/ai_behavior/find_and_set/unclaimed_stall
+
+/datum/ai_behavior/find_and_set/unclaimed_stall/search_tactic(datum/ai_controller/controller, locate_path, search_range)
+	var/list/found_stalls = list()
+
+	// Find all stalls in world
+	for(var/obj/effect/landmark/stall/stall in GLOB.trader_location)
+		if(!stall.claimed_by_trader)
+			found_stalls += stall
+
+	// Return a random unclaimed stall
+	if(length(found_stalls))
+		return pick(found_stalls)
+
+	return null

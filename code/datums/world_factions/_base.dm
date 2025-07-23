@@ -393,24 +393,6 @@
 	sell_value_modifiers |= sell_type
 	sell_value_modifiers[sell_type] = 1
 
-/datum/world_faction/proc/get_pack_category(datum/supply_pack/pack)
-	var/type_path = pack.type
-	var/type_string = "[type_path]"
-
-	if(findtext(type_string, "/food/"))
-		return "food"
-	if(findtext(type_string, "/apparel/"))
-		return "apparel"
-	if(findtext(type_string, "/tools/"))
-		return "tools"
-	if(findtext(type_string, "/luxury/") || findtext(type_string, "/jewelry/"))
-		return "luxury"
-	if(findtext(type_string, "/narcotics/"))
-		return "narcotics"
-	if(findtext(type_string, "/rawmats/"))
-		return "rawmats"
-	return null
-
 /datum/world_faction/proc/should_send_trader()
 	if(!length(trader_type_weights))
 		return FALSE
@@ -440,10 +422,14 @@
 
 	// First, find all compatible packs with this trader type
 	for(var/pack_type in all_packs)
+		var/passed = FALSE
 		var/datum/supply_pack/pack = new pack_type()
-		if(is_compatible_with_trader_type(pack, trader_data))
-			compatible_packs[pack_type] = pack
-		else
+		for(var/datum/supply_pack/allowed_pack_type as anything in trader_data.base_type)
+			if(istype(pack, allowed_pack_type))
+				compatible_packs[pack_type] = pack
+				passed = TRUE
+				break
+		if(!passed)
 			qdel(pack)
 
 	// Determine how many items this trader should have based on reputation
@@ -523,25 +509,6 @@
 		base_quantity = 1
 
 	return max(1, rand(base_quantity, base_quantity + 2))
-
-/datum/world_faction/proc/is_compatible_with_trader_type(datum/supply_pack/pack, datum/trader_data/trader_data)
-	var/pack_category = get_pack_category(pack)
-	var/trader_type = trader_data.type
-
-	switch(trader_type)
-		if(/datum/trader_data/food_merchant)
-			return pack_category == "food"
-		if(/datum/trader_data/clothing_merchant)
-			return pack_category == "apparel"
-		if(/datum/trader_data/tool_merchant)
-			return pack_category == "tools"
-		if(/datum/trader_data/luxury_merchant)
-			return pack_category in list("luxury", "jewelry")
-		if(/datum/trader_data/alchemist)
-			return pack_category == "narcotics"
-		if(/datum/trader_data/material_merchant)
-			return pack_category == "rawmats"
-	return FALSE
 
 /datum/world_faction/proc/calculate_trader_price(datum/supply_pack/pack, item_type)
 	var/base_price = 20 // Default base price

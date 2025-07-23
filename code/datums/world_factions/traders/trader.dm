@@ -116,9 +116,12 @@
 		name = "[faction.faction_name] [trader_data.name] Trader"
 		desc = "A [lowertext(trader_data.name)] trader from the [faction.faction_name]."
 
-/mob/living/simple_animal/hostile/retaliate/trader/faction_trader/proc/return_to_boat()
+/mob/living/simple_animal/hostile/retaliate/trader/proc/return_to_boat()
 	returning_to_boat = TRUE
 	say(pick(list("Time to head back to the ship!", "The captain calls!", "My voyage here is complete.")))
+	var/obj/effect/landmark/stall/stall = ai_controller.blackboard[BB_SHOP_SPOT]
+	if(istype(stall))
+		stall.claimed_by_trader = FALSE
 
 	// Set AI to move back to boat
 	var/obj/structure/industrial_lift/tram/boat_platform = SSmerchant.cargo_boat?.lift_platforms?[1]
@@ -127,6 +130,30 @@
 		ai_controller?.set_movement_target(src, boat_platform)
 
 	// Clean up shop
+	var/datum/action/setup_shop/shop_action = locate() in actions
+	if(shop_action)
+		var/obj/shop_spot = shop_action.shop_spot_ref?.resolve()
+		var/obj/sign = shop_action.sign_ref?.resolve()
+		qdel(shop_spot)
+		qdel(sign)
+
+/mob/living/simple_animal/hostile/retaliate/trader/Destroy()
+	var/obj/effect/landmark/stall/stall = ai_controller.blackboard[BB_SHOP_SPOT]
+	if(istype(stall))
+		stall.claimed_by_trader = FALSE
+	var/datum/action/setup_shop/shop_action = locate() in actions
+	if(shop_action)
+		var/obj/shop_spot = shop_action.shop_spot_ref?.resolve()
+		var/obj/sign = shop_action.sign_ref?.resolve()
+		qdel(shop_spot)
+		qdel(sign)
+	. = ..()
+
+/mob/living/simple_animal/hostile/retaliate/trader/death(gibbed)
+	. = ..()
+	var/obj/effect/landmark/stall/stall = ai_controller.blackboard[BB_SHOP_SPOT]
+	if(istype(stall))
+		stall.claimed_by_trader = FALSE
 	var/datum/action/setup_shop/shop_action = locate() in actions
 	if(shop_action)
 		var/obj/shop_spot = shop_action.shop_spot_ref?.resolve()

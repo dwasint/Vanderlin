@@ -22,3 +22,4 @@
 ///Reference to our first customer to harass with deals
 #define BB_FIRST_CUSTOMER "BB_first_customer"
 #define BB_TRAVEL_DESTINATION "BB_travel_destination"
+#define BB_TARGET_STALL "BB_stall"
