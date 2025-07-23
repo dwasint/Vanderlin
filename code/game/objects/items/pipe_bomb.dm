@@ -32,7 +32,7 @@
 	///how big of a light explosion radius on prime
 	var/ex_light = 2
 	///how big of a flame explosion radius on prime
-	var/ex_flame = 1
+	var/ex_flame = 0
 
 	///Is this grenade currently armed?
 	var/active = FALSE
