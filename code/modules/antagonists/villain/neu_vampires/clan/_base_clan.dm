@@ -337,6 +337,7 @@ And it also helps for the character set panel
 		eyes.heterochromia = FALSE
 		eyes.eye_color = "#FF0000"
 
+	H.update_organ_colors()
 	H.update_body()
 	H.update_body_parts(redraw = TRUE)
 

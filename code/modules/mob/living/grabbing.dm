@@ -849,7 +849,7 @@
 				if(VVictim)
 					blood_handle |= BLOOD_PREFERENCE_KIN
 
-				if(C.bloodpool > 500)
+				if(C.bloodpool > 0)
 					C.blood_volume = max(C.blood_volume-45, 0)
 					if(ishuman(C))
 						var/mob/living/carbon/human/H = C
@@ -857,11 +857,11 @@
 							to_chat(user, span_love("Virgin blood, delicious!"))
 							var/mob/living/carbon/V = user
 							V.add_stress(/datum/stressevent/vblood)
-							var/used_vitae = 750
+							var/used_vitae = 150
 
 							if(C.bloodpool >= 750)
 								to_chat(user, "<span class='love'>...And empowering!</span>")
-							else
+							else if(C.bloodpool < used_vitae)
 								used_vitae = C.bloodpool // We assume they're left with 250 vitae or less, so we take it all
 								to_chat(user, "<span class='warning'>...But alas, only leftovers...</span>")
 							user.adjust_bloodpool(used_vitae)
@@ -870,10 +870,14 @@
 							C.bloodpool -= used_vitae
 
 						else
-							user.adjust_bloodpool(500)
+							var/used_vitae = 150
+							if(C.bloodpool < used_vitae)
+								used_vitae = C.bloodpool // We assume they're left with 250 vitae or less, so we take it all
+								to_chat(user, "<span class='warning'>...But alas, only leftovers...</span>")
+							user.adjust_bloodpool(used_vitae)
 							if(VVictim)
-								C.adjust_bloodpool(-500)
-							C.bloodpool -= 500
+								C.adjust_bloodpool(-used_vitae) //twice the loss
+							C.adjust_bloodpool(-used_vitae)
 					user.clan.handle_bloodsuck(user, blood_handle)
 				else
 					to_chat(user, span_warning("No more vitae from this blood..."))
@@ -900,7 +904,7 @@
 	log_combat(user, C, "drank blood from ")
 
 	if(ishuman(C) && C.mind)
-		if(HAS_TRAIT(user, TRAIT_CLAN_LEADER) && C.blood_volume <= BLOOD_VOLUME_SURVIVE)
+		if(user.clan_position?.can_assign_positions && C.blood_volume <= BLOOD_VOLUME_SURVIVE)
 			if(browser_alert(user, "Would you like to sire a new spawn?", "THE CURSE OF KAIN", DEFAULT_INPUT_CHOICES) != CHOICE_YES)
 				to_chat(user, span_warning("I decide [C] is unworthy."))
 			else

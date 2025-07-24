@@ -62,6 +62,11 @@ There are several things that need to be remembered:
 	dna?.species?.handle_body(src) //create destroy moment
 	..()
 
+/mob/living/carbon/human/proc/update_organ_colors()
+	var/list/colors = color_key_source_list_from_carbon(src)
+	for(var/obj/item/organ/organ in internal_organs)
+		organ.build_colors_for_accessory(colors)
+
 /mob/living/carbon/human/update_fire()
 	if(fire_stacks + divine_fire_stacks < 10)
 		return ..("Generic_mob_burning")

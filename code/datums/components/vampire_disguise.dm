@@ -8,11 +8,11 @@
 	/// Transform cooldown
 	COOLDOWN_DECLARE(transform_cooldown)
 	/// Bloodpool cost per life tick while disguised
-	var/disguise_upkeep = 1
+	var/disguise_upkeep = 0
 	/// Minimum bloodpool required to maintain disguise
 	var/min_bloodpool = 50
 
-/datum/component/vampire_disguise/Initialize(upkeep = 1, min_blood = 50)
+/datum/component/vampire_disguise/Initialize(upkeep = 0, min_blood = 50)
 	if(!ishuman(parent))
 		return COMPONENT_INCOMPATIBLE
 
@@ -69,6 +69,7 @@
 	if(eyes)
 		eyes.eye_color = cache_eyes
 
+	H.update_organ_colors()
 	H.update_body()
 	H.update_body_parts(redraw = TRUE)
 
