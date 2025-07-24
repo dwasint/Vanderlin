@@ -45,23 +45,21 @@
 		if(isliving(user))
 			var/mob/living/lmob = user
 			perint = FLOOR((lmob.STAPER + lmob.STAINT)/2,1)
-		if(HAS_TRAIT(user,TRAIT_LEGENDARY_ALCHEMIST))
-			if(!isnull(major_name))
-				. += span_notice(" Strongly attuned to making [major_name].")
-			if(!isnull(med_name))
-				. += span_notice(" Moderately attuned to making [med_name].")
-			if(!isnull(minor_name))
-				. += span_notice(" Minorly attuned to making [minor_name].")
-		else
-			if(!isnull(major_smell))
-				if(alch_skill >= SKILL_LEVEL_NOVICE || perint >= 6)
-					. += span_notice(" Smells strongly of [major_smell].")
-			if(!isnull(med_smell))
-				if(alch_skill >= SKILL_LEVEL_APPRENTICE || perint >= 10)
-					. += span_notice(" Smells slightly of [med_smell].")
-			if(!isnull(minor_smell))
-				if(alch_skill >= SKILL_LEVEL_EXPERT || perint >= 16)
-					. += span_notice(" Smells weakly of [minor_smell].")
+
+		var/datum/natural_precursor/precursor = get_precursor_data(src)
+		for(var/datum/thaumaturgical_essence/essence as anything in precursor.essence_yields)
+			var/amount = precursor.essence_yields[essence]
+			var/smell = initial(essence.smells_like)
+			switch(amount)
+				if(10 to 1000)
+					if(alch_skill >= SKILL_LEVEL_NOVICE || perint >= 6)
+						. += span_notice(" Smells strongly of [smell].")
+				if(5 to 9)
+					if(alch_skill >= SKILL_LEVEL_APPRENTICE || perint >= 10)
+						. += span_notice(" Smells slightly of [smell].")
+				if(1 to 4)
+					if(alch_skill >= SKILL_LEVEL_EXPERT || perint >= 16)
+						. += span_notice(" Smells weakly of [smell].")
 /obj/item/alch/viscera
 	name = "viscera"
 	icon_state = "viscera"
