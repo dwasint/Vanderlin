@@ -43,8 +43,13 @@
 	var/datum/cb = CALLBACK(target, /mob/living/carbon/human/proc/walk_to_caster, owner)
 	for(var/i in 1 to 30)
 		addtimer(cb, (i - 1) * target.total_multiplicative_slowdown())
-	to_chat(target, "<span class='userlove'><b>COME HERE</b></span>")
-	owner.say("COME HERE!!")
+
+	if(!owner.cmode)
+		to_chat(target, "<span class='userlove'><b>Follow me~</b></span>")
+		owner.say("Follow me~")
+	else
+		to_chat(target, "<span class='userlove'><b>COME HERE</b></span>")
+		owner.say("COME HERE!!")
 
 /datum/coven_power/presence/awe/deactivate(mob/living/carbon/human/target)
 	. = ..()

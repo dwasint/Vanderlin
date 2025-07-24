@@ -82,47 +82,47 @@
 	return available
 
 /datum/coven_research_interface/proc/generate_coven_connections_html()
-    var/html = ""
-    var/center_x = 0
-    var/center_y = 0
+	var/html = ""
+	var/center_x = 0
+	var/center_y = 0
 
-    for(var/research_type in research_nodes)
-        var/datum/coven_research_node/node = research_nodes[research_type]
+	for(var/research_type in research_nodes)
+		var/datum/coven_research_node/node = research_nodes[research_type]
 
-        // Draw connections to prerequisites
-        for(var/prereq_type in node.prerequisites)
-            var/datum/coven_research_node/prereq_node = research_nodes[prereq_type]
-            if(!prereq_node) continue
+		// Draw connections to prerequisites
+		for(var/prereq_type in node.prerequisites)
+			var/datum/coven_research_node/prereq_node = research_nodes[prereq_type]
+			if(!prereq_node) continue
 
-            // Calculate center positions (adding center offsets)
-            var/start_center_x = center_x + prereq_node.node_x + 16 // Center of prereq node
-            var/start_center_y = center_y + prereq_node.node_y + 16
-            var/end_center_x = center_x + node.node_x + 16  // Center of current node
-            var/end_center_y = center_y + node.node_y + 16
+			// Calculate center positions (adding center offsets)
+			var/start_center_x = center_x + prereq_node.node_x + 16 // Center of prereq node
+			var/start_center_y = center_y + prereq_node.node_y + 16
+			var/end_center_x = center_x + node.node_x + 16  // Center of current node
+			var/end_center_y = center_y + node.node_y + 16
 
-            // Calculate distance and angle using corrected method
-            var/dx = end_center_x - start_center_x
-            var/dy = end_center_y - start_center_y
-            var/distance = sqrt(dx*dx + dy*dy)
+			// Calculate distance and angle using corrected method
+			var/dx = end_center_x - start_center_x
+			var/dy = end_center_y - start_center_y
+			var/distance = sqrt(dx*dx + dy*dy)
 
-            if(distance == 0)
-                continue
+			if(distance == 0)
+				continue
 
-            // Use corrected arctan parameter order and angle normalization
-            var/angle = arctan(dx, dy)
-            if(angle < 0)
-                angle += 360
+			// Use corrected arctan parameter order and angle normalization
+			var/angle = arctan(dx, dy)
+			if(angle < 0)
+				angle += 360
 
-            var/unlocked_class = ""
-            if((prereq_type in parent_coven.unlocked_research) && (research_type in parent_coven.unlocked_research))
-                unlocked_class = " unlocked"
+			var/unlocked_class = ""
+			if((prereq_type in parent_coven.unlocked_research) && (research_type in parent_coven.unlocked_research))
+				unlocked_class = " unlocked"
 
-            // Use corrected positioning with transform-origin and z-index
-            html += {"<div class="connection-line[unlocked_class]"
-                style="left: [start_center_x]px; top: [start_center_y - 1.5]px; width: [distance]px;
-                transform: rotate([angle]deg); transform-origin: 0 50%; z-index: 1;"></div>"}
+			// Use corrected positioning with transform-origin and z-index
+			html += {"<div class="connection-line[unlocked_class]"
+				style="left: [start_center_x]px; top: [start_center_y - 1.5]px; width: [distance]px;
+				transform: rotate([angle]deg); transform-origin: 0 50%; z-index: 1;"></div>"}
 
-    return html
+	return html
 
 /datum/coven_research_interface/proc/generate_coven_nodes_html()
 	var/html = ""
@@ -174,7 +174,11 @@
 		if(node.unlocks_power)
 			var/datum/coven_power/power = new node.unlocks_power(parent_coven)
 			node_data["level"] = power.level
-			node_data["vitae_cost"] = power.vitae_cost
+			if(power.toggled && power.duration_length)
+				node_data["upkeep_cost"] = power.vitae_cost
+				node_data["upkeep_duration"] = power.duration_length * 0.1
+			else
+				node_data["vitae_cost"] = power.vitae_cost
 			qdel(power)
 
 		if(length(node.prerequisites))
@@ -200,11 +204,12 @@
 			else
 				icon_html = "<img src='\ref['icons/effects/clan.dmi']?state=watch' alt=\"[node.name]\" />"
 
+		var/encoded_json = replacetext(node_data_json, "'", "&#39;")
 		html += {"<div class="[node_classes]"
 			style="left: [node.node_x]px; top: [node.node_y]px;"
 			data-node-id="[research_type]"
 			data-user-ref="[REF(user)]"
-			data-node-data='[node_data_json]'>
+			data-node-data='[encoded_json]'>
 			[icon_html]
 			[power_level_html]
 		</div>"}

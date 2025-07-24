@@ -999,6 +999,10 @@
 					tooltipContent += '<div class="power-stats">Power Level: ' + nodeData.level + '</div>';
 				}
 
+				if (nodeData.upkeep_cost && nodeData.upkeep_cost > 0) {
+					tooltipContent += '<div class="power-stats">Upkeep Cost: ' + nodeData.upkeep_cost + ' every ' + nodeData.upkeep_duration + ' Seconds</div>';
+				}
+
 				if (nodeData.vitae_cost && nodeData.vitae_cost > 0) {
 					tooltipContent += '<div class="power-stats">Vitae Cost: ' + nodeData.vitae_cost + '</div>';
 				}
