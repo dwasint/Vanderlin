@@ -190,12 +190,12 @@
 /obj/effect/temp_visual/vamp_teleport
 	icon = 'icons/effects/clan.dmi'
 	icon_state = "rune_teleport"
-	duration = 2.5 SECONDS
+	duration = 2 SECONDS
 
 /obj/effect/temp_visual/vamp_summon
 	icon = 'icons/effects/clan.dmi'
 	icon_state = "teleport"
-	duration = 2.5 SECONDS
+	duration = 2 SECONDS
 
 /obj/effect/temp_visual/vamp_summon/end
 	icon_state = "teleport_trigger"
@@ -250,10 +250,10 @@
 
 	//playsound(user, 'sound/magic/summon.ogg', 50, TRUE)
 
-	target.Immobilize(2 SECONDS)
+	target.Immobilize(1.5 SECONDS)
 	new /obj/effect/temp_visual/vamp_summon (get_turf(target))
 	new /obj/effect/temp_visual/vamp_summon/end (get_turf(user))
-	addtimer(CALLBACK(src, PROC_REF(finish_teleport), user, target, get_turf(user)), 2 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(finish_teleport), user, target, get_turf(user)), 1.5 SECONDS)
 
 /datum/action/clan_hierarchy/summon_subordinate/proc/finish_teleport(mob/living/user, mob/living/target, turf/target_turf)
 	// Teleport subordinate to user
