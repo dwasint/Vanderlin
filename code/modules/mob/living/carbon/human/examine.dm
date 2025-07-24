@@ -29,13 +29,12 @@
 		user.add_stress(/datum/stressevent/saw_old_party)
 
 /mob/living/carbon/human/examine(mob/user)
+	var/ignore_pronouns = FALSE
+	if(user != src && !user.mind?.do_i_know(null, real_name))
+		ignore_pronouns = TRUE
 	//this is very slightly better than it was because you can use it more places. still can't do \his[src] though.
-	var/ignore_pronouns
-	if(user != src)
-		ignore_pronouns = !user.mind?.do_i_know(null, real_name)
 	var/t_He = p_they(TRUE, ignore_pronouns = ignore_pronouns)
 	var/t_his = p_their(ignore_pronouns = ignore_pronouns)
-//	var/t_him = p_them()
 	var/t_has = p_have(ignore_pronouns = ignore_pronouns)
 	var/t_is = p_are(ignore_pronouns = ignore_pronouns)
 	var/obscure_name
@@ -155,21 +154,23 @@
 		if(real_name in GLOB.heretical_players)
 			. += span_userdanger("HERETIC! SHAME!")
 
-		if(real_name in GLOB.outlawed_players)
-			. += span_userdanger("OUTLAW!")
-
 		if(iszizocultist(user) || iszizolackey(user))
 			if(virginity)
 				. += span_userdanger("VIRGIN!")
 
-		if(mind && mind.special_role)
-			if(mind && mind.special_role == "Bandit" && HAS_TRAIT(user, TRAIT_KNOWBANDITS))
+		var/is_bandit = FALSE
+		if(mind?.special_role == "Bandit")
+			is_bandit = TRUE
+			if((real_name in GLOB.outlawed_players) && HAS_TRAIT(user, TRAIT_KNOWBANDITS))
 				. += span_userdanger("BANDIT!")
 
 			if(mind && mind.special_role == "Vampire Lord")
 				var/datum/component/vampire_disguise/disguise_comp = GetComponent(/datum/component/vampire_disguise)
 				if(!disguise_comp.disguised)
 					. += span_userdanger("A MONSTER!")
+          
+		if(!is_bandit && (real_name in GLOB.outlawed_players))
+			. += span_userdanger("OUTLAW!")
 
 		var/list/known_frumentarii = user.mind?.cached_frumentarii
 		if(name in known_frumentarii)
