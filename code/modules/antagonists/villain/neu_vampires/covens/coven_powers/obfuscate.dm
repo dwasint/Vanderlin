@@ -50,7 +50,7 @@
 
 	level = 1
 	check_flags = COVEN_CHECK_CAPABLE
-	vitae_cost = 0
+	vitae_cost = 25
 
 	toggled = TRUE
 
@@ -96,7 +96,7 @@
 
 	level = 2
 	check_flags = COVEN_CHECK_CAPABLE
-	vitae_cost = 0
+	vitae_cost = 25
 
 	toggled = TRUE
 
