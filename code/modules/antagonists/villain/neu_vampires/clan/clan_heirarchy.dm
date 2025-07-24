@@ -186,6 +186,20 @@
 	// Play sound to target
 	//playsound(target, 'sound/magic/whisper.ogg', 30, TRUE)
 
+
+/obj/effect/temp_visual/vamp_teleport
+	icon = 'icons/effects/clan.dmi'
+	icon_state = "rune_teleport"
+	duration = 2.5 SECONDS
+
+/obj/effect/temp_visual/vamp_summon
+	icon = 'icons/effects/clan.dmi'
+	icon_state = "teleport"
+	duration = 2.5 SECONDS
+
+/obj/effect/temp_visual/vamp_summon/end
+	icon_state = "teleport_trigger"
+
 // Summon Subordinate Action
 /datum/action/clan_hierarchy/summon_subordinate
 	name = "Summon Subordinate"
@@ -236,13 +250,16 @@
 
 	//playsound(user, 'sound/magic/summon.ogg', 50, TRUE)
 
-	// Teleport subordinate to user
-	var/turf/target_turf = get_turf(user)
-	if(target_turf)
-		target.forceMove(target_turf)
+	target.Immobilize(2 SECONDS)
+	new /obj/effect/temp_visual/vamp_summon (get_turf(target))
+	new /obj/effect/temp_visual/vamp_summon/end (get_turf(user))
+	addtimer(CALLBACK(src, PROC_REF(finish_teleport), user, target, get_turf(user)), 2 SECONDS)
 
-		// Visual effects
-		new /obj/effect/temp_visual/cult/sparks(get_turf(target))
+/datum/action/clan_hierarchy/summon_subordinate/proc/finish_teleport(mob/living/user, mob/living/target, turf/target_turf)
+	// Teleport subordinate to user
+	if(target_turf)
+		new /obj/effect/temp_visual/vamp_teleport(get_turf(target))
+		target.forceMove(target_turf)
 
 		// Messages
 		to_chat(user, "<span class='notice'>You summon [target.real_name] to your location.</span>")
