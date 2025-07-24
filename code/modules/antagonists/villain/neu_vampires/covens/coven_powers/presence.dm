@@ -40,9 +40,7 @@
 	target.overlays_standing[MUTATIONS_LAYER] = presence_overlay
 	target.apply_overlay(MUTATIONS_LAYER)
 
-	var/datum/cb = CALLBACK(target, /mob/living/carbon/human/proc/walk_to_caster, owner)
-	for(var/i in 1 to 30)
-		addtimer(cb, (i - 1) * target.total_multiplicative_slowdown())
+	target.create_walk_to(3 SECONDS, owner)
 
 	if(!owner.cmode)
 		to_chat(target, "<span class='userlove'><b>Follow me~</b></span>")
@@ -51,16 +49,10 @@
 		to_chat(target, "<span class='userlove'><b>COME HERE</b></span>")
 		owner.say("COME HERE!!")
 
+
 /datum/coven_power/presence/awe/deactivate(mob/living/carbon/human/target)
 	. = ..()
 	target.remove_overlay(MUTATIONS_LAYER)
-
-/mob/living/carbon/human/proc/walk_to_caster(mob/living/step_to)
-	walk(src, 0)
-	if(!CheckFrenzyMove())
-		set_glide_size(DELAY_TO_GLIDE_SIZE(total_multiplicative_slowdown()))
-		step_to(src, step_to, 0)
-		face_atom(step_to)
 
 //DREAD GAZE
 /datum/coven_power/presence/dread_gaze

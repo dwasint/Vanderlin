@@ -473,6 +473,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_MAGICALLY_PHASED "magically_phased"
 /// Mob has lost control to their rage, their Beast, whatever and is frenzying
 #define TRAIT_IN_FRENZY "in_frenzy"
+#define TRAIT_MOVEMENT_BLOCKED "movement_blocked"
 /// Incapable of losing control and entering frenzy
 #define TRAIT_IMMUNE_TO_FRENZY "immune_to_frenzy"
 #define TRAIT_COVEN_RESISTANT "coven_resistance"

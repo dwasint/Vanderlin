@@ -125,9 +125,24 @@
 		addtimer(CALLBACK(src, PROC_REF(deactivate), listener), 2 SECONDS)
 
 /mob/living/carbon/human/proc/create_walk_to(duration, mob/living/walk_to)
+	ADD_TRAIT(src, TRAIT_MOVEMENT_BLOCKED, VAMPIRE_TRAIT)
 	var/datum/cb = CALLBACK(src, TYPE_PROC_REF(/mob/living/carbon/human, walk_to_caster), walk_to)
 	for(var/i in 1 to duration)
 		addtimer(cb, (i - 1) * total_multiplicative_slowdown())
+	addtimer(CALLBACK(src, PROC_REF(remove_walk_to_trait)), duration * total_multiplicative_slowdown())
+
+/mob/living/carbon/human/proc/remove_walk_to_trait()
+	REMOVE_TRAIT(src, TRAIT_MOVEMENT_BLOCKED, VAMPIRE_TRAIT)
+
+/mob/living/carbon/human/proc/walk_to_caster(mob/living/step_to)
+	walk(src, 0)
+	if(!CheckFrenzyMove())
+		var/list/path = get_path_to(src, get_turf(step_to), TYPE_PROC_REF(/turf, Heuristic_cardinal_3d), 33, 250,1)
+		if(length(path))
+			set_glide_size(DELAY_TO_GLIDE_SIZE(total_multiplicative_slowdown()))
+			step_to(src, path[1], 0)
+			face_atom(step_to)
+
 
 /datum/coven_power/siren/madrigal/deactivate(mob/living/carbon/human/target)
 	. = ..()

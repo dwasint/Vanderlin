@@ -972,7 +972,8 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	var/failed = FALSE
 	SSoverwatch.CollectClientData(src)
 	failed = SSoverwatch.HandleClientAccessCheck(src)
-	SSoverwatch.HandleASNbanCheck(src)
+	if(!failed)
+		SSoverwatch.HandleASNbanCheck(src)
 
 	var/string
 	if(ip_info)

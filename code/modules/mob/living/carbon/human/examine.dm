@@ -165,8 +165,11 @@
 		if(mind && mind.special_role)
 			if(mind && mind.special_role == "Bandit" && HAS_TRAIT(user, TRAIT_KNOWBANDITS))
 				. += span_userdanger("BANDIT!")
+
 			if(mind && mind.special_role == "Vampire Lord")
-				. += span_userdanger("A MONSTER!")
+				var/datum/component/vampire_disguise/disguise_comp = GetComponent(/datum/component/vampire_disguise)
+				if(!disguise_comp.disguised)
+					. += span_userdanger("A MONSTER!")
 
 		var/list/known_frumentarii = user.mind?.cached_frumentarii
 		if(name in known_frumentarii)
