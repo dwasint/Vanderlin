@@ -4,7 +4,7 @@
 	///The item that marks the shopkeeper will sit on
 	var/shop_spot_type =  /obj/structure/chair/stool
 	///The sign that will greet the customers
-	var/sign_type = /obj/structure/trader_sign
+	var/sign_type
 	///Sound used when item sold/bought
 	var/sell_sound = 'sound/blank.ogg'
 	///The currency name

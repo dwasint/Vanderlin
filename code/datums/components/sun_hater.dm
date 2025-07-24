@@ -29,7 +29,7 @@
 	// Check if outside and in light
 	if(isturf(H.loc))
 		var/turf/T = H.loc
-		if(T.can_see_sky() && T.get_lumcount() > 0.15)
+		if(T.can_see_sky())
 			if(!in_sunlight)
 				in_sunlight = TRUE
 				to_chat(H, span_danger("The sunlight burns my flesh!"))
@@ -41,17 +41,16 @@
 		in_sunlight = FALSE
 
 /datum/component/sunlight_vulnerability/proc/apply_sunlight_damage(mob/living/carbon/human/H)
-	// Force undisguise if disguised
+	H.adjust_bloodpool(-bloodpool_drain)
 	var/datum/component/vampire_disguise/disguise_comp = H.GetComponent(/datum/component/vampire_disguise)
 	if(disguise_comp && disguise_comp.disguised)
+		if(H.bloodpool > disguise_comp.min_bloodpool * 2)
+			return
 		disguise_comp.force_undisguise(H)
 		to_chat(H, span_warning("The sunlight breaks my disguise!"))
 
 	// Apply fire damage
 	H.fire_act(1, burn_damage)
-
-	// Drain bloodpool
-	H.bloodpool = max(0, H.bloodpool - bloodpool_drain)
 
 	// Freak out if on fire
 	if(H.on_fire)

@@ -26,7 +26,7 @@
 		return FALSE
 	return TRUE
 
-/datum/action/setup_shop/New(Target, shop_spot_type = /obj/structure/chair/stool, sign_type = /obj/structure/trader_sign, sell_sound = 'sound/blank.ogg', opening_lines = list("Welcome to my shop, friend!"))
+/datum/action/setup_shop/New(Target, shop_spot_type = /obj/structure/chair/stool, sign_type, sell_sound = 'sound/blank.ogg', opening_lines = list("Welcome to my shop, friend!"))
 	. = ..()
 
 	src.shop_spot_type = shop_spot_type
@@ -57,7 +57,7 @@
 		return
 
 	var/obj/sign = sign_ref?.resolve()
-	if(QDELETED(sign))
+	if(QDELETED(sign) && sign_type)
 		var/obj/new_sign = new sign_type(sign_turf)
 		sign_ref = WEAKREF(sign)
 		do_sparks(3, FALSE, new_sign)
