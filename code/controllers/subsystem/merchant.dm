@@ -198,31 +198,31 @@ SUBSYSTEM_DEF(merchant)
 		active_faction.setup_sell_data(sell_type)
 
 /datum/controller/subsystem/merchant/proc/spawn_faction_trader()
-    if(!cargo_docked || !length(world_factions))
-        return
+	if(!cargo_docked || !length(world_factions))
+		return
 
-    var/datum/world_faction/selected_faction
-    for(var/datum/world_faction/faction in world_factions)
-        if(faction.should_send_trader())
-            selected_faction = faction
-            break
+	var/datum/world_faction/selected_faction
+	for(var/datum/world_faction/faction in world_factions)
+		if(faction.should_send_trader())
+			selected_faction = faction
+			break
 
-    if(!selected_faction)
-        return
+	if(!selected_faction)
+		return
 
-    // Find spawn location on or near the boat
-    var/obj/structure/industrial_lift/tram/platform = cargo_boat?.lift_platforms?[1]
-    if(!platform)
-        return
+	// Find spawn location on or near the boat
+	var/obj/structure/industrial_lift/tram/platform = cargo_boat?.lift_platforms?[1]
+	if(!platform)
+		return
 
-    var/turf/spawn_turf = get_turf(platform)
-    if(!spawn_turf)
-        return
+	var/turf/spawn_turf = get_turf(platform)
+	if(!spawn_turf)
+		return
 
-    var/mob/living/simple_animal/hostile/retaliate/trader/faction_trader/new_trader = selected_faction.create_faction_trader(spawn_turf)
-    if(new_trader)
-        active_faction_traders += new_trader
-        new_trader.ai_controller?.set_blackboard_key(BB_CURRENT_MIN_MOVE_DISTANCE, 0)
+	var/mob/living/simple_animal/hostile/retaliate/trader/faction_trader/new_trader = selected_faction.create_faction_trader(spawn_turf)
+	if(new_trader)
+		active_faction_traders += new_trader
+		new_trader.ai_controller?.set_blackboard_key(BB_CURRENT_MIN_MOVE_DISTANCE, 0)
 
 /obj/Initialize()
 	. = ..()

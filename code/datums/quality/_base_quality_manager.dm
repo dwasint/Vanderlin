@@ -1,11 +1,11 @@
-#define QUALITY_LEVEL_SPOILED -10
-#define QUALITY_LEVEL_AWFUL -5
-#define QUALITY_LEVEL_CRUDE -2
-#define QUALITY_LEVEL_ROUGH -1
-#define QUALITY_LEVEL_COMPETENT 0
-#define QUALITY_LEVEL_FINE 2
-#define QUALITY_LEVEL_FLAWLESS 5
-#define QUALITY_LEVEL_LEGENDARY 8
+#define QUALITY_LEVEL_SPOILED "-10"
+#define QUALITY_LEVEL_AWFUL "-5"
+#define QUALITY_LEVEL_CRUDE "-2"
+#define QUALITY_LEVEL_ROUGH "-1"
+#define QUALITY_LEVEL_COMPETENT "0"
+#define QUALITY_LEVEL_FINE "2"
+#define QUALITY_LEVEL_FLAWLESS "5"
+#define QUALITY_LEVEL_LEGENDARY "8"
 
 /proc/create_quality_item(obj/item/base_item, datum/quality_calculator/calculator)
 	if(!calculator || !base_item)
@@ -54,10 +54,10 @@
 	return final_quality
 
 /datum/quality_calculator/proc/get_quality_tier(quality_value)
-	var/best_tier = QUALITY_LEVEL_SPOILED
+	var/best_tier = text2num(QUALITY_LEVEL_SPOILED)
 	for(var/tier in quality_descriptors)
-		if(quality_value >= tier && tier > best_tier)
-			best_tier = tier
+		if(quality_value >= text2num(tier) && text2num(tier) > best_tier)
+			best_tier = text2num(tier)
 	return best_tier
 
 /datum/quality_calculator/proc/get_quality_data(quality_value = null)
@@ -88,7 +88,7 @@
 		target.sellprice *= modifier
 
 	// Track masterworks if enabled
-	if(track_masterworks && final_quality >= QUALITY_LEVEL_LEGENDARY)
+	if(track_masterworks && final_quality >= text2num(QUALITY_LEVEL_LEGENDARY))
 		record_round_statistic(STATS_MASTERWORKS_FORGED, 1)
 
 	apply_specialized_modifiers(target, modifier)

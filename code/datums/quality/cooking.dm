@@ -2,7 +2,7 @@
 	name = "Cooking Quality"
 
 	quality_descriptors = list(
-		-1 = list(
+		"-1" = list(
 			"name_prefix" = list("unappealing", "sloppy", "failed", "woeful", "soggy", "bland"),
 			"description" = list(
 				"It is made without love or care.",
@@ -15,25 +15,25 @@
 			"eat_effect" = null,
 			"tastes" = list("blandness" = 1)
 		),
-		0 = list(
+		"0" = list(
 			"name_prefix" = "",
 			"description" = "",
 			"eat_effect" = null,
 			"tastes" = null
 		),
-		1 = list(
+		"1" = list(
 			"name_prefix" = "",
 			"description" = "",
 			"eat_effect" = null,
 			"tastes" = null
 		),
-		2 = list(
+		"2" = list(
 			"name_prefix" = list("tasty", "well-made", "appealing"),
 			"description" = "It looks good.",
 			"eat_effect" = /datum/status_effect/buff/foodbuff,
 			"tastes" = null
 		),
-		3 = list(
+		"3" = list(
 			"name_prefix" = list("fine", "tasty", "well-made", "appealing", "appetising", "savory", "flavorful"),
 			"description" = list(
 				"It looks tasty.",
@@ -47,7 +47,7 @@
 			"eat_effect" = /datum/status_effect/buff/foodbuff,
 			"tastes" = null
 		),
-		4 = list(
+		"4" = list(
 			"name_prefix" = list("masterful", "exquisite", "perfected", "gourmet", "delicious"),
 			"description" = list(
 				"It looks perfect.",
@@ -86,10 +86,19 @@
 
 /datum/quality_calculator/cooking/get_quality_tier(quality_value)
 	var/best_tier = -1
-	for(var/tier in quality_descriptors)
+	for(var/tier_str in quality_descriptors)
+		var/tier = text2num(tier_str)
 		if(quality_value >= tier && tier > best_tier)
 			best_tier = tier
 	return best_tier
+
+/datum/quality_calculator/cooking/get_quality_data(quality_value = null)
+	if(isnull(quality_value))
+		quality_value = calculate_final_quality()
+
+	var/tier = get_quality_tier(quality_value)
+	var/tier_str = num2text(tier)
+	return quality_descriptors[tier_str]
 
 /datum/quality_calculator/cooking/apply_quality_to_item(obj/item/target, track_masterworks = FALSE)
 	if(!istype(target, /obj/item/reagent_containers/food/snacks))
