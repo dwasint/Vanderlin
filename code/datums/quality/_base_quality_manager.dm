@@ -65,7 +65,7 @@
 		quality_value = calculate_final_quality()
 
 	var/tier = get_quality_tier(quality_value)
-	return quality_descriptors[tier]
+	return quality_descriptors[num2text(best_tier)]
 
 /datum/quality_calculator/proc/apply_quality_to_item(obj/item/target, track_masterworks = FALSE)
 	var/final_quality = calculate_final_quality()
