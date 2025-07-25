@@ -38,7 +38,7 @@
 		entered |= cursed_mob
 
 	if (!prob(6.25))
-		continue
+		return
 
 	to_chat(cursed_mob, span_warning("You don't belong in this holy place!"))
 
