@@ -913,6 +913,7 @@
 					C.visible_message(span_red("[C] rises as a new spawn!"))
 					var/datum/antagonist/vampire/new_antag = new /datum/antagonist/vampire(user.clan, TRUE)
 					C.mind.add_antag_datum(new_antag)
+					C.adjust_bloodpool(500)
 					// this is bad, should give them a healing buff instead
 					sleep(2 SECONDS)
 					C.fully_heal()

@@ -8,9 +8,7 @@
  */
 /datum/element/holy_weakness
 	element_flags = ELEMENT_DETACH
-
-	/// Mobs being exposed to and harmed by holiness
-	var/list/mob/living/exposed_to_holiness
+	var/list/entered = list()
 
 /datum/element/holy_weakness/Attach(datum/target)
 	. = ..()
@@ -18,53 +16,34 @@
 	if (!isliving(target))
 		return ELEMENT_INCOMPATIBLE
 
-	RegisterSignal(target, COMSIG_ENTER_AREA, PROC_REF(handle_enter_area))
+	RegisterSignal(target, COMSIG_HUMAN_LIFE, PROC_REF(handle_church))
 
 /datum/element/holy_weakness/Detach(datum/source, force)
-	UnregisterSignal(source, COMSIG_ENTER_AREA)
-	UnregisterSignal(source, COMSIG_EXIT_AREA)
-
-	LAZYREMOVE(exposed_to_holiness, source)
+	UnregisterSignal(source, COMSIG_HUMAN_LIFE)
+	entered -= source
 
 	return ..()
 
-/datum/element/holy_weakness/proc/handle_enter_area(mob/living/source, area/entered_area)
+/datum/element/holy_weakness/proc/handle_church(mob/living/cursed_mob)
 	SIGNAL_HANDLER
 
 	// Holy weakness only triggers on entering churches
-	if (!istype(entered_area, /area/rogue/indoors/town/church))
+	if (!istype(get_area(cursed_mob), /area/rogue/indoors/town/church))
+		if((cursed_mob in entered))
+			entered -= cursed_mob
 		return
 
-	to_chat(source, span_danger("Leave this holy place!"))
+	if(!(cursed_mob in entered))
+		to_chat(source, span_danger("Leave this holy place!"))
+		entered |= cursed_mob
 
-	// Start repeatedly setting this mob on fire if they stay in the holy area
-	START_PROCESSING(SSdcs, src)
-	LAZYADD(exposed_to_holiness, source)
+	if (!prob(6.25))
+		continue
 
-	// Stop effects when the mob leaves this area
-	RegisterSignal(source, COMSIG_EXIT_AREA, PROC_REF(handle_exit_area))
+	to_chat(cursed_mob, span_warning("You don't belong in this holy place!"))
 
-/datum/element/holy_weakness/proc/handle_exit_area(mob/living/source, area/exited_area)
-	SIGNAL_HANDLER
+	cursed_mob.apply_damage(20, BURN)
+	cursed_mob.adjust_fire_stacks(6)
+	cursed_mob.IgniteMob()
 
-	// Signal should only trigger when the mob leaves a holy area, but just to be safe
-	if (!istype(exited_area, /area/rogue/indoors/town/church))
-		return
 
-	// Stop setting this mob on fire, stop processing if everyone's been removed
-	LAZYREMOVE(exposed_to_holiness, source)
-	if (!exposed_to_holiness)
-		STOP_PROCESSING(SSdcs, src)
-	UnregisterSignal(source, COMSIG_EXIT_AREA)
-
-/datum/element/holy_weakness/process(delta_time)
-	// Ignite all exposed mobs on a probability of ~25% per 4 seconds
-	for (var/mob/living/cursed_mob as anything in exposed_to_holiness)
-		if (!prob(6.25))
-			continue
-
-		to_chat(cursed_mob, span_warning("You don't belong in this holy place!"))
-
-		cursed_mob.apply_damage(20, BURN)
-		cursed_mob.adjust_fire_stacks(6)
-		cursed_mob.IgniteMob()
