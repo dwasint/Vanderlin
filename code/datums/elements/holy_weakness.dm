@@ -34,7 +34,7 @@
 		return
 
 	if(!(cursed_mob in entered))
-		to_chat(source, span_danger("Leave this holy place!"))
+		to_chat(cursed_mob, span_danger("Leave this holy place!"))
 		entered |= cursed_mob
 
 	if (!prob(6.25))
