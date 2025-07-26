@@ -207,6 +207,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	tame = TRUE
 	if(user)
 		befriend(user)
+		record_round_statistic(STATS_ANIMALS_TAMED)
 		SEND_SIGNAL(user, COMSIG_ANIMAL_TAMED, src)
 	pet_passive = TRUE
 
@@ -420,8 +421,8 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	if(icon_gib)
 		new /obj/effect/temp_visual/gib_animation/animal(loc, icon_gib)
 
-/mob/living/simple_animal/say_mod(input, message_mode)
-	if(speak_emote && speak_emote.len)
+/mob/living/simple_animal/say_mod(input, list/message_mods = list())
+	if(length(speak_emote))
 		verb_say = pick(speak_emote)
 	. = ..()
 
@@ -753,7 +754,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	if(.)
 		food = max(food - 0.5, 0)
 		if(food > 0)
-			pooprog++
+			pooprog += 0.5
 			if(pooprog >= 100)
 				pooprog = 0
 				poop()

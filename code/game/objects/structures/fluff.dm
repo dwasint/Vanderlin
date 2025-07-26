@@ -25,12 +25,12 @@
 	name = "railing"
 	icon = 'icons/roguetown/misc/railing.dmi'
 	icon_state = "railing"
-	density = FALSE
+	density = TRUE
 	anchored = TRUE
 	deconstructible = FALSE
 	flags_1 = ON_BORDER_1
 	climbable = TRUE
-	pass_flags_self = PASSTABLE|LETPASSTHROW
+	pass_flags_self = LETPASSTHROW|PASSSTRUCTURE
 	var/passcrawl = TRUE
 	layer = ABOVE_MOB_LAYER
 
@@ -57,19 +57,15 @@
 			layer = ABOVE_MOB_LAYER
 			plane = GAME_PLANE_UPPER
 
-/obj/structure/fluff/railing/CanAllowThrough(atom/movable/mover, turf/target)
+/obj/structure/fluff/railing/CanPass(atom/movable/mover, turf/target)
 	. = ..()
-	if(dir in CORNERDIRS)
-		return TRUE
-	if(mover.throwing || mover.pass_flags & (FLOATING|FLYING))
-		return TRUE
 	if(get_dir(loc, target) == dir)
-		if(!passcrawl || !isliving(mover))
-			return FALSE
-		var/mob/living/M = mover
-		if(M.body_position != LYING_DOWN)
-			return FALSE
-		return TRUE
+		if(passcrawl && isliving(mover))
+			var/mob/living/M = mover
+			if(M.body_position == LYING_DOWN)
+				return TRUE
+		return . || mover.throwing || (mover.movement_type & (FLOATING|FLYING))
+	return TRUE
 
 /obj/structure/fluff/railing/CanAStarPass(ID, to_dir, requester)
 	if(dir in CORNERDIRS)
@@ -137,10 +133,31 @@
 	layer = 2.91
 	climbable = FALSE
 	max_integrity = 400
+	pass_flags_self = PASSSTRUCTURE
 	passcrawl = FALSE
 	climb_offset = 6
 
 /obj/structure/fluff/railing/fence/CanAllowThrough(atom/movable/mover, turf/target)
+	. = ..()
+	if(get_dir(loc, target) == dir)
+		return FALSE
+	return TRUE
+
+/obj/structure/fluff/railing/woodfence
+	name = "wooden fence"
+	desc = "A sturdy fence of wooden planks."
+	icon = 'icons/roguetown/misc/tallwoodenrailing.dmi'
+	icon_state = "tallwoodenrailing"
+	density = TRUE
+	opacity = FALSE
+	anchored = TRUE
+	layer = 2.91
+	climbable = FALSE
+	max_integrity = 500
+	passcrawl = FALSE
+	climb_offset = 6
+
+/obj/structure/fluff/railing/woodfence/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
 	if(get_dir(loc, target) == dir)
 		return FALSE
@@ -298,7 +315,7 @@
 	desc = "An intricately-carved grandfather clock. On its pendulum is engraved the sigil of clan Kharzarad, a sickle behind an hourglass."
 	icon = 'icons/roguetown/misc/tallstructure.dmi'
 	icon_state = "clock"
-	density = FALSE
+	density = TRUE
 	anchored = FALSE
 	layer = ABOVE_MOB_LAYER
 	plane = GAME_PLANE_UPPER
@@ -373,10 +390,11 @@
 		. += "Oh no, it's [station_time_timestamp("hh:mm")] on a [day]."
 		// . += span_info("(Round Time: [gameTimestamp("hh:mm:ss", REALTIMEOFDAY - SSticker.round_start_irl)].)")
 
-/obj/structure/fluff/clock/CanAllowThrough(atom/movable/mover, turf/target)
+/obj/structure/fluff/clock/CanPass(atom/movable/mover, turf/target)
 	. = ..()
-	if(get_dir(loc, mover) == dir)
-		return FALSE
+	if(get_dir(loc, target) == dir)
+		return
+	return TRUE
 
 /obj/structure/fluff/clock/proc/on_exit(datum/source, atom/movable/leaving, atom/new_location)
 	SIGNAL_HANDLER
@@ -567,7 +585,7 @@
 	desc = ""
 	icon = 'icons/roguetown/misc/tallstructure.dmi'
 	icon_state = "bstatue"
-	density = FALSE
+	density = TRUE
 	anchored = TRUE
 	layer = ABOVE_MOB_LAYER
 	plane = GAME_PLANE_UPPER
@@ -579,6 +597,12 @@
 	. = ..()
 	var/static/list/loc_connections = list(COMSIG_ATOM_EXIT = PROC_REF(on_exit))
 	AddElement(/datum/element/connect_loc, loc_connections)
+
+/obj/structure/fluff/statue/bullet_act(obj/projectile/P)
+	. = ..()
+	if(. != BULLET_ACT_FORCE_PIERCE)
+		P.handle_drop()
+		return BULLET_ACT_HIT
 
 /obj/structure/fluff/statue/attack_hand_secondary(mob/user, params)
 	. = ..()
@@ -596,10 +620,11 @@
 						user.put_in_hands(I)
 			return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
-/obj/structure/fluff/statue/CanAllowThrough(atom/movable/mover, turf/target)
+/obj/structure/fluff/statue/CanPass(atom/movable/mover, turf/target)
 	. = ..()
-	if(get_dir(loc, mover) == dir)
-		return FALSE
+	if(get_dir(loc, target) == dir)
+		return
+	return TRUE
 
 /obj/structure/fluff/statue/proc/on_exit(datum/source, atom/movable/leaving, atom/new_location)
 	SIGNAL_HANDLER
@@ -785,8 +810,23 @@
 	if(!ishuman(user))
 		return
 
+	flick("globe1", src)
 	var/mob/living/carbon/human/H = user
-	var/random_message = pick("You spin the globe!", "You land on Rockhill!", "You land on Vanderlin!", "You land on Heartfelt!", "You land on Zaladin!", "You land on Port Thornvale!", "You land on Grenzelhoft!", "You land on Valoria!", "You land on the Fog Islands!")
+	var/random_message = pick(
+	"You spin the globe!",
+	"You land on Rockhill!",
+	"You land on Vanderlin!",
+	"You land on Heartfelt!",
+	"You land on Zaladin!",
+	"You land on Grenzelhoft!",
+	"You land on Valoria!",
+	"You land on Rosewood!",
+	"You land on Wintermare!",
+	"You land on Deshret!",
+	"You land on Kingsfield",
+	"You land on Amber Hollow!",
+	"You land on the lands of Z!",
+	"You land on the Fog Islands!")
 	to_chat(H, "<span class='notice'>[random_message]</span>")
 
 /obj/structure/fluff/statue/femalestatue/Initialize()
@@ -919,10 +959,10 @@
 					return
 				if(!istype(W, /obj/item/coin))
 					B.contrib += (W.get_real_price() / 2) //sell jewerly and other fineries, though at a lesser price compared to fencing them first
-					GLOB.vanderlin_round_stats[STATS_SHRINE_VALUE] += (W.get_real_price() / 2)
+					record_round_statistic(STATS_SHRINE_VALUE, (W.get_real_price() / 2))
 				else
 					B.contrib += W.get_real_price()
-					GLOB.vanderlin_round_stats[STATS_SHRINE_VALUE] += W.get_real_price()
+					record_round_statistic(STATS_SHRINE_VALUE, W.get_real_price())
 				if(B.contrib >= 100)
 					B.tri_amt++
 					user.mind.adjust_triumphs(1)
@@ -966,7 +1006,7 @@
 	icon = 'icons/roguetown/misc/tallstructure.dmi'
 	break_sound = 'sound/combat/hits/onwood/destroyfurniture.ogg'
 	attacked_sound = list('sound/combat/hits/onwood/woodimpact (1).ogg','sound/combat/hits/onwood/woodimpact (2).ogg')
-	density = FALSE
+	density = TRUE
 	anchored = TRUE
 	blade_dulling = DULLING_BASHCHOP
 	layer = BELOW_MOB_LAYER
@@ -1001,10 +1041,11 @@
 	..()
 	M.reset_offsets("bed_buckle")
 
-/obj/structure/fluff/psycross/CanAllowThrough(atom/movable/mover, turf/target)
+/obj/structure/fluff/psycross/CanPass(atom/movable/mover, turf/target)
 	. = ..()
 	if(get_dir(loc, mover) == dir)
-		return FALSE
+		return
+	return TRUE
 
 /obj/structure/fluff/psycross/proc/on_exit(datum/source, atom/movable/leaving, atom/new_location)
 	SIGNAL_HANDLER
@@ -1149,7 +1190,7 @@
 						thegroom.remove_stress(/datum/stressevent/eora_matchmaking)
 						thebride.remove_stress(/datum/stressevent/eora_matchmaking)
 						SEND_GLOBAL_SIGNAL(COMSIG_GLOBAL_MARRIAGE, thegroom, thebride)
-						GLOB.vanderlin_round_stats[STATS_MARRIAGES]++
+						record_round_statistic(STATS_MARRIAGES)
 						marriage = TRUE
 						qdel(A)
 
@@ -1303,3 +1344,16 @@
 	. = ..()
 	AddComponent(/datum/component/simple_rotation)
 
+/obj/structure/fluff/steamvent
+	name = "steam vent"
+	desc = "An underground heating pipe outlet."
+	icon = 'icons/roguetown/misc/structure.dmi'
+	icon_state = "steam_vent"
+	density = FALSE
+	anchored = TRUE
+	max_integrity = 300
+	layer = 2.1
+
+/obj/structure/fluff/steamvent/Initialize()
+	. = ..()
+	MakeParticleEmitter(/particles/smoke/cig/big)

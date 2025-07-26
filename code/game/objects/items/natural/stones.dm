@@ -328,7 +328,6 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	force_wielded = 15
 	gripped_intents = list(INTENT_GENERIC)
 	w_class = WEIGHT_CLASS_HUGE
-	twohands_required = TRUE
 	var/obj/item/ore/mineralType = null
 	var/mineralAmt = 1
 	blade_dulling = DULLING_BASH
@@ -336,6 +335,8 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	destroy_sound = 'sound/foley/smash_rock.ogg'
 	attacked_sound = 'sound/foley/hit_rock.ogg'
 
+/obj/item/natural/rock/apply_components()
+	AddComponent(/datum/component/two_handed, require_twohands=TRUE)
 
 /obj/item/natural/rock/Initialize()
 	. = ..()
@@ -369,7 +370,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 			var/obj/item/S = new /obj/item/natural/stone(src.loc)
 			S.pixel_x = rand(25,-25)
 			S.pixel_y = rand(25,-25)
-		GLOB.vanderlin_round_stats[STATS_ROCKS_MINED]++
+		record_round_statistic(STATS_ROCKS_MINED)
 	qdel(src)
 
 /obj/item/natural/rock/take_damage(damage_amount, damage_type = BRUTE, damage_flag = 0, sound_effect = 1, attack_dir)
