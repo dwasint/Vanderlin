@@ -11,6 +11,7 @@
 /datum/coven_power/obfuscate
 	name = "Obfuscate power name"
 	desc = "Obfuscate power description"
+	duration_length = 1 MINUTES
 
 	var/static/list/aggressive_signals = list(
 		COMSIG_MOB_ATTACK_HAND,

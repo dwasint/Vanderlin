@@ -84,6 +84,13 @@
 		to_chat(caster, span_warning("You're already shapeshifted!"))
 		CRASH("[type] called do_shapeshift while shapeshifted.")
 
+	for(var/listed_coven as anything in caster.covens)
+		var/datum/coven/coven = caster.covens[listed_coven]
+		var/datum/coven_power/power = coven?.current_power
+		if(!power)
+			continue
+		power.try_deactivate(direct = TRUE, alert = FALSE)
+
 	var/mob/living/new_shape = new shapeshift_type(caster.loc)
 	var/obj/shapeshift_holder/new_shape_holder = new(new_shape, src, caster)
 
