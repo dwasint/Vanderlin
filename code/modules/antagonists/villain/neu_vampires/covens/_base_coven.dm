@@ -184,14 +184,6 @@
 	experience += amount
 	check_level_up()
 
-	// Gain research points based on experience
-	research_points += round(amount * 0.1) // 10% of experience becomes research points
-
-	if(owner)
-		to_chat(owner, "<span class='notice'>You gain [amount] experience in [name]. ([experience]/[experience_needed])</span>")
-		if(research_points > 0)
-			to_chat(owner, "<span class='boldnotice'>You have [research_points] research points to spend!</span>")
-
 /datum/coven/proc/check_level_up()
 	while(experience >= experience_needed && level < max_level)
 		level_up()
