@@ -19,6 +19,7 @@
 	clane_covens = list(
 		/datum/coven/obfuscate,
 		/datum/coven/presence,
+		/datum/coven/bloodheal
 	)
 	leader = /datum/clan_leader/thronleer
 

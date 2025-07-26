@@ -5,7 +5,8 @@
 	clane_covens = list(
 		/datum/coven/obfuscate,
 		/datum/coven/presence,
-		/datum/coven/demonic
+		/datum/coven/demonic,
+		/datum/coven/bloodheal
 	)
 
 /datum/clan/abyss/on_gain(mob/living/carbon/human/H, is_vampire = TRUE)

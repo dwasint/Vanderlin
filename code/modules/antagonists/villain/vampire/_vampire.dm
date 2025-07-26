@@ -130,6 +130,13 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 		var/second_choice = input(vampdude, "Choose your second coven:", "Coven Selection") as null|anything in coven_options
 		if(second_choice)
 			selected_covens += coven_options[second_choice]
+			coven_options -= second_choice
+
+	if(length(coven_options))
+		var/third_choice = input(vampdude, "Choose your third coven:", "Coven Selection") as null|anything in coven_options
+		if(third_choice)
+			selected_covens += coven_options[third_choice]
+			coven_options -= third_choice
 
 	finalize_custom_clan(vampdude)
 
