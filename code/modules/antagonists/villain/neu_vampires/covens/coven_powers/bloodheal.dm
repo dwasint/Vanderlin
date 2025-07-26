@@ -39,7 +39,7 @@
 	. = ..()
 
 	//normal bashing/lethal damage
-	owner.heal_ordered_damage(HEAL_BASHING_LETHAL * vitae_cost, list(BRUTE, TOX, OXY, STAMINA))
+	owner.heal_ordered_damage(HEAL_BASHING_LETHAL * (vitae_cost * 0.1), list(BRUTE, TOX, OXY, STAMINA))
 
 	if(length(owner.get_wounds()))
 		for (var/i in 1 to min(vitae_cost, length(owner.get_wounds())))
@@ -47,20 +47,20 @@
 			wound.heal_wound(10000)
 
 	//aggravated damage
-	owner.heal_ordered_damage(HEAL_AGGRAVATED * vitae_cost, list(BURN, CLONE))
+	owner.heal_ordered_damage(HEAL_AGGRAVATED * (vitae_cost * 0.1), list(BURN, CLONE))
 
 	//brain damage and traumas healing
 	var/obj/item/organ/brain/brain = owner.getorganslot(ORGAN_SLOT_BRAIN)
 	if (brain)
-		brain.applyOrganDamage(-HEAL_BASHING_LETHAL * vitae_cost)
+		brain.applyOrganDamage(-HEAL_BASHING_LETHAL * (vitae_cost * 0.1))
 
 	//miscellaneous organ damage healing
 	var/obj/item/organ/eyes/eyes = owner.getorganslot(ORGAN_SLOT_EYES)
 	if (eyes)
-		eyes.applyOrganDamage(-HEAL_BASHING_LETHAL * vitae_cost)
+		eyes.applyOrganDamage(-HEAL_BASHING_LETHAL * (vitae_cost * 0.1))
 
-		owner.adjust_blindness(-HEAL_AGGRAVATED * vitae_cost)
-		owner.adjust_blurriness(-HEAL_AGGRAVATED * vitae_cost)
+		owner.adjust_blindness(-HEAL_AGGRAVATED * (vitae_cost * 0.1))
+		owner.adjust_blurriness(-HEAL_AGGRAVATED * (vitae_cost * 0.1))
 
 	//healing too quickly attracts attention
 	if (violates_masquerade)
