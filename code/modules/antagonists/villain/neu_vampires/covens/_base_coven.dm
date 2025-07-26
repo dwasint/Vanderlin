@@ -36,6 +36,9 @@
 	///If this Coven has been assigned before and post_gain effects have already been applied.
 	var/post_gain_applied
 
+	///our coven action
+	var/datum/action/coven/coven_action
+
 	///Associated research interface for this coven's power tree
 	var/datum/coven_research_interface/research_interface
 	///List of research nodes unlocked for this coven
@@ -420,16 +423,23 @@
  */
 
 // Called when a power is successfully used
-/datum/coven/proc/on_power_use_success(datum/coven_power/power, is_critical = FALSE, xp_multiplier = 1.0)
-	var/base_xp = power.level * 2 // Base XP based on power level
+/datum/coven/proc/on_power_use_success(datum/coven_power/power, is_critical = FALSE, exp_multiplier = 1, vitae_spent = 0)
+	var/base_xp = 0
+
+	if(vitae_spent > 0)
+		base_xp = round(sqrt(vitae_spent) * 2) // sqrt(50) * 2 = ~14 XP
+	else if(power.vitae_cost > 0)
+		base_xp = round(sqrt(power.vitae_cost) * 2)
+	else
+		base_xp = 2
+
+	base_xp += power.level
 
 	if(is_critical)
-		base_xp *= 1.5
+		base_xp = round(base_xp * 1.5)
 
-	// Apply the multiplier for refresh vs activation
-	base_xp *= xp_multiplier
-
-	gain_experience_from_source(base_xp, "power_usage", power, 1.0)
+	var/final_xp = round(base_xp * exp_multiplier)
+	gain_experience(final_xp)
 
 // Called when player discovers something new about their coven
 /datum/coven/proc/on_discovery_event(discovery_type)

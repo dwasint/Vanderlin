@@ -12,6 +12,7 @@
 /datum/action/coven/New(target, datum/coven/coven)
 	. = ..()
 	src.coven = coven
+	coven.coven_action = src
 
 /datum/action/coven/Grant(mob/M)
 	. = ..()

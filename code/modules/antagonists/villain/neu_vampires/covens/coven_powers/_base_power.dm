@@ -387,6 +387,8 @@
 		return
 
 	if (!pre_activation_checks(target))
+		discipline.coven_action.active = FALSE
+		discipline.coven_action.build_all_button_icons()
 		return
 
 	activate(target)
@@ -644,18 +646,9 @@
 	var/is_critical = check_critical_success(target)
 	if(is_critical)
 		last_use_was_critical = TRUE
-
-	// Calculate XP multiplier for refresh vs initial activation
-	var/xp_multiplier = 1.0
-	if(is_refresh)
-		// Refresh grants reduced XP but still rewards maintaining the power
-		xp_multiplier = 0.3
-		// Give bonus for maintaining expensive powers
-		if(vitae_cost >= 3)
-			xp_multiplier = 0.5
-
 	// Grant XP for successful power use
-	discipline.on_power_use_success(src, is_critical, xp_multiplier)
+
+	discipline.on_power_use_success(src, is_critical, is_refresh ? 1.2 : 1)
 
 /**
  * Overridable proc called by the duration timer to handle
@@ -760,15 +753,6 @@
 	owner.update_action_buttons()
 
 	if(duration_length > 0)
-		// Grant bonus XP for maintaining powers successfully
-		var/maintenance_xp = FLOOR(duration_length / 100, 1) // 1 XP per 10 seconds maintained
-		if(maintenance_xp > 0 && discipline)
-			discipline.gain_experience_from_source(
-				maintenance_xp,
-				"power_maintenance",
-				src,
-				1.0
-			)
 		clear_duration_timer()
 
 	// Clear XP tracking variables
@@ -776,7 +760,9 @@
 	last_action_context = null
 	last_target = null
 
-	// Call parent deactivate
+	discipline.coven_action.active = FALSE
+	discipline.coven_action.build_all_button_icons()
+
 
 /**
  * Checks if the power can_deactivate() and deactivate()s if it can.
