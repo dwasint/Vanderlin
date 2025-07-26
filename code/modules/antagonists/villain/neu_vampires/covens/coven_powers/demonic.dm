@@ -24,11 +24,13 @@
 /datum/coven_power/demonic/sense_the_sin/activate()
 	. = ..()
 	owner.physiology.burn_mod /= 100
+	ADD_TRAIT(owner, TRAIT_NOFIRE, VAMPIRE_TRAIT)
 	owner.color = "#884200"
 
 /datum/coven_power/demonic/sense_the_sin/deactivate()
 	. = ..()
 	owner.color = initial(owner.color)
+	REMOVE_TRAIT(owner, TRAIT_NOFIRE, VAMPIRE_TRAIT)
 	owner.physiology.burn_mod *= 100
 
 //FEAR OF THE VOID BELOW
