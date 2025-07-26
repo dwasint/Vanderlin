@@ -68,6 +68,9 @@
 			span_warning("[owner]'s wounds heal with unnatural speed!"),
 			span_warning("Your wounds visibly heal with unnatural speed!")
 		)
+		var/datum/component/vampire_disguise/disguise_comp = owner.GetComponent(/datum/component/vampire_disguise)
+		if(disguise_comp?.disguised)
+			disguise_comp.remove_disguise(src)
 
 	//update UI
 	owner.update_damage_overlays()

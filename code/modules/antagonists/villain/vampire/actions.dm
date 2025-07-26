@@ -182,37 +182,3 @@
 	max_integrity = 0
 
 
-
-/mob/living/carbon/human/proc/vamp_regenerate()
-	set name = "Regenerate"
-	set category = "VAMPIRE"
-
-	var/silver_curse_status = FALSE
-	for(var/datum/status_effect/debuff/silver_curse/SC in status_effects)
-		silver_curse_status = TRUE
-		break
-
-	if(clan)
-		return
-	if(SEND_SIGNAL(src, COMSIG_DISGUISE_STATUS))
-		to_chat(src, "<span class='warning'>My curse is hidden.</span>")
-		return
-	if(silver_curse_status)
-		to_chat(src, "<span class='warning'>My BANE is not letting me REGENERATE!.</span>")
-		return
-	if(bloodpool < 500)
-		to_chat(src, "<span class='warning'>Not enough vitae.</span>")
-		return
-
-
-	to_chat(src, "<span class='greentext'>! REGENERATE !</span>")
-	src.playsound_local(get_turf(src), 'sound/misc/vampirespell.ogg', 100, FALSE, pressure_affected = FALSE)
-	adjust_bloodpool(-500)
-	// Gain experience towards blood magic
-	var/mob/living/carbon/human/licker = usr
-	var/boon = usr.get_learning_boon(/datum/skill/magic/blood)
-	var/amt2raise = licker.STAINT*2
-	usr.adjust_experience(/datum/skill/magic/blood, floor(amt2raise * boon), FALSE)
-	fully_heal(admin_revive = TRUE)
-	licker.grant_undead_eyes()
-
