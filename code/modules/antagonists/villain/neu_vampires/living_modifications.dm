@@ -3,6 +3,12 @@
 	return !area.coven_protected
 
 /mob/living
+	var/mob/living/walk_to_target
+	var/walk_to_duration = 0
+	var/walk_to_steps_taken = 0
+	var/turf/walk_to_last_pos
+	var/list/walk_to_cached_path
+
 	var/enhanced_strip = FALSE
 	var/datum/clan/clan
 	var/bloodpool = 1000
