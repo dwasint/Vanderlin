@@ -169,8 +169,9 @@ And it also helps for the character set panel
 	// If no clan leader exists, make this person the leader (vampires only)
 	if(!clan_leader && is_vampire)
 		hierarchy_root.assign_member(H)
-		var/datum/clan_leader/new_leader = new leader()
-		leader = new_leader
+		if(ispath(leader))
+			var/datum/clan_leader/new_leader = new leader()
+			leader = new_leader
 		leader.lord_title = leader_title
 		leader.make_new_leader(H)
 		clan_leader = H
