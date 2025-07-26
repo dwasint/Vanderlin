@@ -193,6 +193,8 @@
 		)
 
 		var/node_data_json = json_encode(node_data)
+		// Escape single quotes in the JSON for HTML attribute safety
+		var/escaped_node_data_json = replacetext(node_data_json, "'", "&#39;")
 
 		var/icon_html = ""
 		if(position.cloned_look)
@@ -202,9 +204,9 @@
 			style="left: [position.node_x]px; top: [position.node_y]px; border-color: [position.position_color]; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 120px; height: 80px;"
 			data-node-id="[REF(position)]"
 			data-user-ref="[REF(user)]"
-			data-node-data='[node_data_json]'
+			data-node-data='[escaped_node_data_json]'
 			onclick="selectHierarchyPosition('[REF(position)]')"
-			onmouseover="showNodeTooltip(event, '[node_data_json]')"
+			onmouseover="showNodeTooltip(event, '[escaped_node_data_json]')"
 			onmouseout="hideNodeTooltip()">
 
 			[icon_html]
@@ -540,7 +542,7 @@
 
 	<script>
 		document.getElementById('management-modal').style.display = 'block';
-		document.getElementById('modal-title').textContent = 'Edit Position: [selected_position.name]';
+		document.getElementById('modal-title').textContent = '';
 		document.getElementById('modal-body').innerHTML = document.querySelector('.dialog-content').outerHTML;
 
 		function submitEditPosition() {
@@ -776,7 +778,7 @@
 
 	<script>
 		document.getElementById('management-modal').style.display = 'block';
-		document.getElementById('modal-title').textContent = 'Assign Member to [selected_position.name]';
+		document.getElementById('modal-title').textContent = '';
 		document.getElementById('modal-body').innerHTML = document.querySelector('.dialog-content').outerHTML;
 	</script>
 	"}
