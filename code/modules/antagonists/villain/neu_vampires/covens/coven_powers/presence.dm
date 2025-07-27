@@ -12,6 +12,7 @@
 /datum/coven_power/presence/awe
 	name = "Awe"
 	desc = "Make those around you admire and want to be closer to you."
+	gif = "Awe.gif"
 
 	level = 1
 

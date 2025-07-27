@@ -178,6 +178,7 @@
 	if (!coven.current_power.can_activate_untargeted(TRUE))
 		return
 	RegisterSignal(owner, COMSIG_MOB_CLICKON, PROC_REF(handle_click))
+	client.mouse_pointer_icon = 'icons/effects/mousemice/charge/spell_charged.dmi'
 	targeting = TRUE
 
 /atom/movable/screen/movable/action_button/Click(location, control, params)

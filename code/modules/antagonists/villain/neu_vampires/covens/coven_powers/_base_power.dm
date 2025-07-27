@@ -70,6 +70,9 @@
 	/// Track the target for context-sensitive XP
 	var/last_target = null
 
+	///the gif name we use in the menu
+	var/gif
+
 /datum/coven_power/New(datum/coven/discipline)
 	if(!discipline)
 		CRASH("coven_power [src.name] created without a parent discipline!")

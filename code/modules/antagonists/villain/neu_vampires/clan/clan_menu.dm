@@ -32,6 +32,8 @@
 	user << browse_rsc('html/KettleParallaxBG.png')
 	user << browse_rsc('html/KettleParallaxNeb.png')
 
+	user << browse_rsc('html/gifs/Awe.gif')
+
 	var/html = generate_combined_html(generate_welcome_screen_html())
 	user << browse(html, "window=clan_menu;size=1400x900;can_resize=1")
 
@@ -540,6 +542,48 @@
 				opacity: 0.8;
 			}
 
+			.gif-showcase {
+				margin: 12px 0;
+				text-align: center;
+				border-top: 1px solid rgba(139, 0, 0, 0.3);
+				border-bottom: 1px solid rgba(139, 0, 0, 0.3);
+				padding: 12px 0;
+			}
+
+			.gif-container {
+				position: relative;
+				margin: 0 auto;
+				border-radius: 8px;
+				overflow: hidden;
+				background: #000;
+				box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+				border: 2px solid #8b0000;
+			}
+
+			.gif-overlay {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+				padding: 6px;
+				transform: translateY(100%);
+				transition: transform 0.3s ease;
+			}
+
+			.gif-container:hover .gif-overlay {
+				transform: translateY(0);
+			}
+
+			.gif-label {
+				color: #ff6b6b;
+				font-size: 11px;
+				font-weight: bold;
+				text-transform: uppercase;
+				letter-spacing: 1px;
+				text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+			}
+
 			.parallax-neb {
 				background-image: url('KettleParallaxNeb.png');
 				background-size: cover;
@@ -995,8 +1039,22 @@
 					tooltipContent += '<p>' + nodeData.desc + '</p>';
 				}
 
-				if (nodeData.level && nodeData.level > 0) {
-					tooltipContent += '<div class="power-stats">Power Level: ' + nodeData.level + '</div>';
+				if (nodeData.showcase_gif) {
+					const gifWidth = parseInt(nodeData.gif_width) || 200;
+					const gifHeight = parseInt(nodeData.gif_height) || 150;
+					const gifUrl = String(nodeData.showcase_gif).replace(/"/g, '&quot;');
+
+					tooltipContent += '<div class="gif-showcase">';
+					tooltipContent += '<div class="gif-container" style="width: ' + gifWidth + 'px; height: ' + gifHeight + 'px; background-image: url(' + gifUrl + '); background-size: cover; background-position: center; background-repeat: no-repeat;">';
+					tooltipContent += '<div class="gif-overlay">';
+					tooltipContent += '<span class="gif-label">Ability Preview</span>';
+					tooltipContent += '</div>';
+					tooltipContent += '</div>';
+					tooltipContent += '</div>';
+				}
+
+				if (nodeData.cooldown && nodeData.cooldown > 0) {
+					tooltipContent += '<div class="power-stats">Cooldown: ' + nodeData.cooldown + Seconds'</div>';
 				}
 
 				if (nodeData.upkeep_cost && nodeData.upkeep_cost > 0) {

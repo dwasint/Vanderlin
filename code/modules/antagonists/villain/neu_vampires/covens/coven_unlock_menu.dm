@@ -11,6 +11,10 @@
 	var/icon = 'icons/effects/clan.dmi'
 	var/icon_state = "research_node"
 
+	var/showcase_gif = null
+	var/gif_width = 160
+	var/gif_height = 160
+
 /datum/coven_research_interface
 	var/datum/coven/parent_coven
 	var/mob/living/carbon/human/user
@@ -36,6 +40,7 @@
 		node.node_y = rand(-100, 100)
 		node.icon_state = power.discipline?.icon_state
 		node.icon = 'icons/mob/actions/roguespells.dmi'
+		node.showcase_gif = power.gif
 
 		// Set prerequisites based on power level
 		if(power.level > 1)
@@ -172,13 +177,18 @@
 
 		if(node.unlocks_power)
 			var/datum/coven_power/power = new node.unlocks_power(parent_coven)
-			node_data["level"] = power.level
+			node_data["cooldown"] = power.cooldown_length * 0.1
 			if(power.toggled && power.duration_length)
 				node_data["upkeep_cost"] = power.vitae_cost
 				node_data["upkeep_duration"] = power.duration_length * 0.1
 			else
 				node_data["vitae_cost"] = power.vitae_cost
 			qdel(power)
+
+		if(node.showcase_gif)
+			node_data["showcase_gif"] = node.showcase_gif
+			node_data["gif_width"] = node.gif_width
+			node_data["gif_height"] = node.gif_height
 
 		if(length(node.prerequisites))
 			var/list/prereq_names = list()
