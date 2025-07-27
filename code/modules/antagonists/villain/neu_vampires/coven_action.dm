@@ -53,7 +53,10 @@
 		SIGNAL_REMOVETRAIT(TRAIT_PACIFISM),
 	)
 
-	RegisterSignal(owner, relevant_signals, TYPE_PROC_REF(/mob, update_action_buttons))
+	RegisterSignal(owner, relevant_signals, PROC_REF(update_mob_buttons))
+
+/datum/action/coven/proc/update_mob_buttons()
+	owner.update_action_buttons()
 
 /datum/action/coven/IsAvailable()
 	return coven.current_power.can_activate_untargeted()
