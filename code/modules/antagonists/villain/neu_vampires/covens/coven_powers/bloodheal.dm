@@ -1,5 +1,5 @@
-#define HEAL_BASHING_LETHAL 30
-#define HEAL_AGGRAVATED 6
+#define HEAL_BASHING_LETHAL 5
+#define HEAL_AGGRAVATED 2
 
 /datum/coven/bloodheal
 	name = "Bloodheal"
@@ -38,16 +38,12 @@
 
 	. = ..()
 
-	//normal bashing/lethal damage
-	owner.heal_ordered_damage(HEAL_BASHING_LETHAL * (vitae_cost * 0.1), list(BRUTE, TOX, OXY, STAMINA))
+	owner.heal_overall_damage((vitae_cost * 0.2), HEAL_BASHING_LETHAL * (vitae_cost * 0.2))
 
 	if(length(owner.get_wounds()))
 		for (var/i in 1 to min(vitae_cost, length(owner.get_wounds())))
 			var/datum/wound/wound = owner.get_wounds()[i]
 			wound.heal_wound(10000)
-
-	//aggravated damage
-	owner.heal_ordered_damage(HEAL_AGGRAVATED * (vitae_cost * 0.1), list(BURN, CLONE))
 
 	//brain damage and traumas healing
 	var/obj/item/organ/brain/brain = owner.getorganslot(ORGAN_SLOT_BRAIN)
@@ -72,7 +68,6 @@
 		if(disguise_comp?.disguised)
 			disguise_comp.remove_disguise(src)
 
-	//update UI
 	owner.update_damage_overlays()
 	owner.update_health_hud()
 
