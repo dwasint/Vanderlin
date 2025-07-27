@@ -1,5 +1,5 @@
-#define HEAL_BASHING_LETHAL 5
-#define HEAL_AGGRAVATED 2
+#define HEAL_BASHING_LETHAL 30
+#define HEAL_AGGRAVATED 6
 
 /datum/coven/bloodheal
 	name = "Bloodheal"
@@ -38,7 +38,7 @@
 
 	. = ..()
 
-	owner.heal_overall_damage((vitae_cost * 0.2), HEAL_BASHING_LETHAL * (vitae_cost * 0.2))
+	owner.heal_overall_damage(HEAL_BASHING_LETHAL * vitae_cost, HEAL_BASHING_LETHAL * vitae_cost)
 
 	if(length(owner.get_wounds()))
 		for (var/i in 1 to min(vitae_cost, length(owner.get_wounds())))
