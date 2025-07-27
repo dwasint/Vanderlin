@@ -33,8 +33,8 @@
 	var/blood_overlay_type = "suit"
 	var/togglename = null
 
-/obj/item/clothing/shirt/worn_overlays(isinhands = FALSE)
-	. = list()
+/obj/item/clothing/shirt/worn_overlays(mutable_appearance/standing, isinhands = FALSE, icon_file, dummy_block = FALSE)
+	. = ..()
 	if(!isinhands)
 		var/mob/living/carbon/human/M = loc
 		if(ishuman(M) && M.wear_pants)

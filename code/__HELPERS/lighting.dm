@@ -1,11 +1,11 @@
-/proc/emissive_appearance(icon, icon_state = "", layer = FLOAT_LAYER, alpha = 255, appearance_flags = NONE)
+/proc/emissive_appearance(icon, icon_state = "", layer = FLOAT_LAYER, alpha = 255, appearance_flags = EMISSIVE_APPEARANCE_FLAGS)
 	var/mutable_appearance/appearance = mutable_appearance(\
 		icon,\
 		icon_state,\
 		layer,\
 		EMISSIVE_PLANE,\
 		255,
-		appearance_flags = appearance_flags | EMISSIVE_APPEARANCE_FLAGS,\
+		appearance_flags = appearance_flags,\
 	)
 	if(alpha == 255)
 		appearance.color = GLOB.emissive_color
@@ -21,14 +21,14 @@
 	return appearance
 
 /// Produces a mutable appearance glued to the [EMISSIVE_PLANE] dyed to be the [EM_BLOCK_COLOR].
-/proc/emissive_blocker(icon, icon_state = "", layer = FLOAT_LAYER, alpha = 255, appearance_flags = NONE)
+/proc/emissive_blocker(icon, icon_state = "", layer = FLOAT_LAYER, alpha = 255, appearance_flags = EMISSIVE_APPEARANCE_FLAGS)
 	var/mutable_appearance/appearance = mutable_appearance(\
 		icon,\
 		icon_state,\
 		layer,\
 		EMISSIVE_PLANE,\
 		alpha,\
-		appearance_flags = appearance_flags | EMISSIVE_APPEARANCE_FLAGS,\
+		appearance_flags = appearance_flags,\
 	)
 	if(alpha == 255)
 		appearance.color = GLOB.em_block_color

@@ -1386,7 +1386,8 @@ generate/load female uniform sprites matching all previously decided variables
 
 	//Get the overlays for this item when it's being worn
 	//eg: ammo counters, primed grenade flashes, etc.
-	var/list/worn_overlays = worn_overlays(isinhands, file2use)
+	var/mob/mob_type = loc
+	var/list/worn_overlays = worn_overlays(standing, isinhands, file2use, dummy_block = istype(mob_type, /mob/living/carbon/human/dummy))
 	if(worn_overlays && worn_overlays.len)
 //		for(var/mutable_appearance/MA in worn_overlays)
 //			MA.blend_mode = BLEND_MULTIPLY

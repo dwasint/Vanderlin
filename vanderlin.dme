@@ -2355,6 +2355,7 @@
 #include "code\modules\mob\dead\new_player\preferences_setup.dm"
 #include "code\modules\mob\dead\new_player\sprite_accessories.dm"
 #include "code\modules\mob\dead\new_player\sprite_accessories\accessory.dm"
+#include "code\modules\mob\dead\new_player\sprite_accessories\brands.dm"
 #include "code\modules\mob\dead\new_player\sprite_accessories\ears.dm"
 #include "code\modules\mob\dead\new_player\sprite_accessories\facial_details.dm"
 #include "code\modules\mob\dead\new_player\sprite_accessories\horns.dm"

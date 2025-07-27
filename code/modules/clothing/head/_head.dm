@@ -55,9 +55,6 @@
 	user.update_fov_angles()
 	flags_inv = initial(flags_inv)
 
-/obj/item/clothing/head/worn_overlays(isinhands = FALSE)
-	. = list()
-
 /obj/item/clothing/head/update_clothes_damaged_state(damaging = TRUE)
 	..()
 	if(ismob(loc))

@@ -167,7 +167,6 @@
 			"desc" = node.desc,
 			"required_level" = node.required_level,
 			"current_level" = parent_coven.level,
-			"research_cost" = node.research_cost,  // Keep for compatibility
 			"special_effect" = node.special_effect
 		)
 

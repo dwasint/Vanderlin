@@ -674,6 +674,18 @@
 						skeleton.filters += alpha_mask_filter(icon=icon('icons/effects/wounds.dmi', "[aux_zone]_acid[acid_damage_intensity]"))
 					skeleton.dir = image_dir
 					. += skeleton
+		if(blocks_emissive != EMISSIVE_BLOCK_NONE && !istype(owner, /mob/living/carbon/human/dummy))
+			var/mutable_appearance/limb_em_block = mutable_appearance(limb.icon, limb.icon_state, plane = EMISSIVE_PLANE, appearance_flags = KEEP_APART)
+			limb_em_block.dir = image_dir
+			limb_em_block.color = GLOB.em_block_color
+			limb.overlays += limb_em_block
+
+			if(aux_zone)
+				var/mutable_appearance/aux_em_block = mutable_appearance(aux.icon, aux.icon_state, plane = EMISSIVE_PLANE, appearance_flags = KEEP_APART)
+				aux_em_block.dir = image_dir
+				aux_em_block.color = GLOB.em_block_color
+				aux.overlays += aux_em_block
+
 
 	else
 		limb.icon = species_icon

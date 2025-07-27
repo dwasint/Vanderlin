@@ -233,3 +233,10 @@
 			examine_text += "</span>\n"
 
 	return examine_text
+
+
+/mob/living/carbon/human/proc/make_vampire_slave(mob/living/carbon/human/master)
+	if(!master.clan)
+		return
+	master.clan.add_non_vampire_member(src)
+	add_bodypart_feature(new /datum/bodypart_feature/vamprire_seal)

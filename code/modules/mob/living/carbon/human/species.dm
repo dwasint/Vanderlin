@@ -833,6 +833,7 @@ GLOBAL_LIST_EMPTY(patreon_races)
 
 			if(underwear)
 				var/mutable_appearance/underwear_overlay
+				var/mutable_appearance/underwear_emissive
 				if(!hide_bottom)
 					underwear_overlay = mutable_appearance(underwear.icon, underwear.icon_state, -BODY_LAYER)
 					if(LAZYACCESS(offsets, OFFSET_UNDIES))
@@ -845,6 +846,10 @@ GLOBAL_LIST_EMPTY(patreon_races)
 							H.underwear_color = "#755f46"
 							underwear_overlay.color = "#755f46"
 					standing += underwear_overlay
+					underwear_emissive = emissive_blocker(underwear.icon, underwear.icon_state, -BODY_LAYER)
+					underwear_emissive.pixel_y = underwear_overlay.pixel_y
+					underwear_emissive.pixel_x = underwear_overlay.pixel_x
+					standing += underwear_emissive
 
 				if(!hide_top && H.gender == FEMALE)
 					underwear_overlay = mutable_appearance(underwear.icon, "[underwear.icon_state]_boob", -BODY_LAYER)
@@ -858,6 +863,10 @@ GLOBAL_LIST_EMPTY(patreon_races)
 							H.underwear_color = "#755f46"
 							underwear_overlay.color = "#755f46"
 					standing += underwear_overlay
+					underwear_emissive = emissive_blocker(underwear.icon, "[underwear.icon_state]_boob", -BODY_LAYER)
+					underwear_emissive.pixel_y = underwear_overlay.pixel_y
+					underwear_emissive.pixel_x = underwear_overlay.pixel_x
+					standing += underwear_emissive
 
 	if(length(standing))
 		H.overlays_standing[BODY_LAYER] = standing
