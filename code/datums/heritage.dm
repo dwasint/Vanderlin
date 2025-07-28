@@ -54,15 +54,14 @@
 	if(user.family_datum)
 		var/curse_info = ""
 		for(var/datum/family_curse/curse in user.family_datum.family_curses)
-			if(curse.curse_type == /datum/family_curse/misfortune)
-				curse_info += "<b>[curse.name]</b><br>"
-				curse_info += "[curse.description]<br>"
-				if(curse.cursed_by)
-					var/mob/curser = curse.cursed_by.resolve()
-					if(curser)
-						curse_info += "[curse.blessing ? "Blessed" : "Cursed"] by: [curser.real_name]<br>"
-				curse_info += "Severity: [curse.severity]/3<br>"
-				curse_info += "Time cursed: [DisplayTimeText(world.time - curse.when_cursed)] ago<br>"
+			curse_info += "<b>[curse.name]</b><br>"
+			curse_info += "[curse.description]<br>"
+			if(curse.cursed_by)
+				var/mob/curser = curse.cursed_by.resolve()
+				if(curser)
+					curse_info += "[curse.blessing ? "Blessed" : "Cursed"] by: [curser.real_name]<br>"
+			curse_info += "Severity: [curse.severity]/3<br>"
+			curse_info += "Time cursed: [DisplayTimeText(world.time - curse.when_cursed)] ago<br>"
 
 		if(curse_info)
 			var/datum/browser/popup = new(usr, "curse_info", "Family Modifier Details", 300, 200)
