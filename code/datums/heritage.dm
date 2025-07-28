@@ -18,7 +18,7 @@
 /datum/status_effect/misfortune
 	id = "family_misfortune"
 	duration = -1
-	alert_type = /atom/movable/screen/alert/status_effect/misfortune
+	alert_type = /atom/movable/screen/alert/status_effect/family_curse/mmisfortune
 
 /datum/status_effect/misfortune/on_apply()
 	. = ..()
@@ -28,7 +28,7 @@
 	. = ..()
 	owner.remove_stat_modifier("[type]")
 
-/atom/movable/screen/alert/status_effect/misfortune
+/atom/movable/screen/alert/status_effect/family_curse/mmisfortune
 	name = "Family Misfortune"
 	desc = "Your family's curse brings ill fortune to your steps."
 	icon_state = "debuff"
@@ -41,12 +41,12 @@
 		"Your ancestors' misdeeds continue to haunt you."
 	)
 
-/atom/movable/screen/alert/status_effect/misfortune/New()
+/atom/movable/screen/alert/status_effect/family_curse/mmisfortune/New()
 	..()
 	if(desc == initial(desc))
 		desc = "[initial(desc)] [pick(misfortune_tips)]"
 
-/atom/movable/screen/alert/status_effect/misfortune/Click(location, control, params)
+/atom/movable/screen/alert/status_effect/family_curse/Click(location, control, params)
 	. = ..()
 	if(!ishuman(usr))
 		return

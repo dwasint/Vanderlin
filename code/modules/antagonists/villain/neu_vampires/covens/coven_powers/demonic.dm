@@ -118,83 +118,84 @@
 //PSYCHOMACHIA
 /datum/coven_power/demonic/psychomachia
 	name = "Psychomachia"
-	desc = "Become a bat."
+	desc = "Bring forth the target's greatest fear."
 
 	level = 4
 	check_flags = COVEN_CHECK_CONSCIOUS | COVEN_CHECK_CAPABLE | COVEN_CHECK_IMMOBILE | COVEN_CHECK_LYING
 
 	violates_masquerade = TRUE
+	target_type = TARGET_LIVING
+	vitae_cost = 100
 
-	duration_length = 30 SECONDS
-	cooldown_length = 10 SECONDS
-	grouped_powers = list(/datum/coven_power/demonic/condemnation)
+	cooldown_length = 60 SECONDS
 
-	var/datum/action/cooldown/spell/undirected/shapeshift/bat/bat_shapeshift
-
-/datum/coven_power/demonic/psychomachia/activate()
+/datum/coven_power/demonic/psychomachia/activate(mob/living/target)
 	. = ..()
-	if(!bat_shapeshift)
-		bat_shapeshift = new(owner)
-
-	owner.drop_all_held_items()
-	bat_shapeshift.do_shapeshift(owner)
-
-/datum/coven_power/demonic/psychomachia/deactivate()
-	. = ..()
-	bat_shapeshift.restore_form(owner)
-	owner.Stun(1.5 SECONDS)
-	owner.do_jitter_animation(30)
+	to_chat(target, span_boldwarning("You hear an infernal laugh!"))
+	handle_maniac_hallucinations(target)
+	handle_maniac_walls(target)
+	return TRUE
 
 //CONDEMNTATION
 /datum/coven_power/demonic/condemnation
 	name = "Condemnation"
-	desc = "Become a bat."
-
+	desc = "Condemn a soul and their bloodline to suffering."
 	level = 5
-	check_flags = COVEN_CHECK_CONSCIOUS | COVEN_CHECK_CAPABLE | COVEN_CHECK_IMMOBILE | COVEN_CHECK_LYING
-
+	check_flags = COVEN_CHECK_CONSCIOUS | COVEN_CHECK_CAPABLE | COVEN_CHECK_IMMOBILE
+	target_type = TARGET_LIVING
+	range = 7
+	vitae_cost = 250
+	cooldown_length = 120 SECONDS
 	violates_masquerade = TRUE
+	var/initialized_curses = FALSE
+	var/list/curse_names = list()
+	var/list/curses = list()
 
-	duration_length = 30 SECONDS
-	cooldown_length = 10 SECONDS
-	grouped_powers = list(/datum/coven_power/demonic/psychomachia)
-
-	var/datum/action/cooldown/spell/undirected/shapeshift/bat/bat_shapeshift
-
-/datum/coven_power/demonic/condemnation/activate()
+/datum/coven_power/demonic/condemnation/activate(mob/living/target)
 	. = ..()
-	if(!bat_shapeshift)
-		bat_shapeshift = new(owner)
+	if(!initialized_curses)
+		for(var/i in subtypesof(/datum/family_curse/demonic))
+			var/datum/family_curse/demonic/demonic_curse = new i
+			curses += demonic_curse
+			curse_names += initial(demonic_curse.name)
+		initialized_curses = TRUE
 
-	owner.drop_all_held_items()
-	bat_shapeshift.do_shapeshift(owner)
-
-/datum/coven_power/demonic/condemnation/deactivate()
-	. = ..()
-	bat_shapeshift.restore_form(owner)
-	owner.Stun(1.5 SECONDS)
-	owner.do_jitter_animation(30)
-
-/datum/coven_power/demonic/condemnation/post_gain()
-	. = ..()
-	var/datum/action/antifrenzy/antifrenzy_contract = new()
-	antifrenzy_contract.Grant(owner)
-
-/datum/action/antifrenzy
-	name = "Resist Beast"
-	desc = "Resist Frenzy and Rotshreck by signing a contract with Demons."
-	button_icon_state = "resist"
-	check_flags = AB_CHECK_HANDS_BLOCKED|AB_CHECK_IMMOBILE|AB_CHECK_LYING|AB_CHECK_CONSCIOUS
-	var/used = FALSE
-
-/datum/action/antifrenzy/Trigger(trigger_flags)
-	var/mob/living/carbon/human/user = owner
-	if(user.stat >= UNCONSCIOUS || user.IsSleeping() || user.IsUnconscious() || user.IsParalyzed() || user.IsKnockdown() || user.IsStun() || HAS_TRAIT(user, TRAIT_RESTRAINED) || !isturf(user.loc))
+	to_chat(owner, span_userdanger("The greatest of curses come with the greatest of costs. Are you willing to condemn an entire bloodline?"))
+	var/chosencurse = browser_input_list(owner, "Pick a curse to bestow upon their family:", "Demonic Condemnation", curse_names)
+	if(!chosencurse)
 		return
-	if(used)
-		to_chat(owner, span_warning("You've already signed this contract!"))
-		return
-	used = TRUE
-	ADD_TRAIT(user, TRAIT_IMMUNE_TO_FRENZY, VAMPIRE_TRAIT)
-	to_chat(owner, span_warning("You feel control over your Beast, but at what cost..."))
-	qdel(src)
+
+	for(var/datum/family_curse/demonic/C in curses)
+		if(C.name == chosencurse)
+			// Get or create heritage for the target
+			var/datum/heritage/target_heritage = get_or_create_heritage(target)
+			if(!target_heritage)
+				to_chat(owner, span_warning("Something prevents you from cursing their bloodline!"))
+				return
+
+			// Apply the family curse
+			target_heritage.AddFamilyCurse(C.type, C.severity, owner)
+
+			// Reduce caster's blood pool based on curse severity
+			var/blood_cost = C.severity * 50 // Scale cost with severity
+			owner.maxbloodpool -= blood_cost
+			if(owner.bloodpool > owner.maxbloodpool)
+				owner.bloodpool = owner.maxbloodpool
+
+			to_chat(owner, span_userdanger("You have condemned [target]'s entire bloodline with [C.name]!"))
+			to_chat(target, span_userdanger("A terrible curse settles upon your family line! You feel the weight of [C.name]!"))
+
+			return TRUE
+
+/datum/coven_power/demonic/condemnation/proc/get_or_create_heritage(mob/living/carbon/human/target)
+	if(!istype(target))
+		return null
+
+	// Check if target already has a heritage
+	if(target.family_datum)
+		return target.family_datum
+
+	// Create new heritage if none exists
+	var/datum/heritage/new_heritage = new /datum/heritage(src, "Cursed Bloodline")
+	target.family_datum = new_heritage
+	return new_heritage

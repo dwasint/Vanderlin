@@ -1668,6 +1668,7 @@
 #include "code\modules\antagonists\villain\maniac\wonders.dm"
 #include "code\modules\antagonists\villain\neu_vampires\bloodsuck.dm"
 #include "code\modules\antagonists\villain\neu_vampires\coven_action.dm"
+#include "code\modules\antagonists\villain\neu_vampires\demonic_curses.dm"
 #include "code\modules\antagonists\villain\neu_vampires\frenzy.dm"
 #include "code\modules\antagonists\villain\neu_vampires\living_modifications.dm"
 #include "code\modules\antagonists\villain\neu_vampires\clan\_base_clan.dm"
