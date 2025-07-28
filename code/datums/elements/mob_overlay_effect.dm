@@ -42,7 +42,7 @@
 
 /datum/element/mob_overlay_effect/proc/on_add(datum/source, datum/target)
 	SIGNAL_HANDLER
-	if(istype(mob, /mob/living/simple_animal/hostile/retaliate/astral_projection))
+	if(istype(target, /mob/living/simple_animal/hostile/retaliate/astral_projection))
 		return
 	for(var/obj/structure/S in get_turf(target))
 		if(S.obj_flags & BLOCK_Z_OUT_DOWN)
