@@ -57,7 +57,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////
 GLOBAL_LIST_INIT(astral_projections, list())
 
-/datum/action/cooldown/spell/astral_return
+/datum/action/cooldown/spell/undirected/astral_return
 	name = "Re-enter Body"
 	desc = "End your astral projection and re-awaken inside your body. If used while tangible you might spook on-lookers, so be mindful."
 	button_icon_state = "astral_return"
@@ -65,20 +65,20 @@ GLOBAL_LIST_INIT(astral_projections, list())
 	spell_requirements = NONE
 
 
-/datum/action/cooldown/spell/astral_return/cast(mob/living/user)
+/datum/action/cooldown/spell/undirected/astral_return/cast(mob/living/user)
 	. = ..()
 	var/mob/living/simple_animal/hostile/retaliate/astral_projection/astral = user
 	if (istype(astral))
 		astral.death()//pretty straightforward isn't it?
 
-/datum/action/cooldown/spell/astral_toggle
+/datum/action/cooldown/spell/undirected/astral_toggle
 	name = "Toggle Tangibility"
 	desc = "Turn into a visible copy of your body, able to speak and bump into doors. But note that the slightest source of damage will dispel your astral projection altogether."
 	button_icon_state = "astral_toggle"
 	button_icon = 'icons/mob/actions/spells/vampire.dmi'
 	spell_requirements = NONE
 
-/datum/action/cooldown/spell/astral_toggle/cast(mob/living/user)
+/datum/action/cooldown/spell/undirected/astral_toggle/cast(mob/living/user)
 	. = ..()
 	var/mob/living/simple_animal/hostile/retaliate/astral_projection/astral = user
 	astral.toggle_tangibility()
@@ -127,8 +127,8 @@ GLOBAL_LIST_INIT(astral_projections, list())
 	var/last_devotion_gain = 0
 	var/devotion_gain_delay = 60 SECONDS
 
-	var/datum/action/cooldown/spell/astral_return/astral_return
-	var/datum/action/cooldown/spell/astral_toggle/astral_toggle
+	var/datum/action/cooldown/spell/undirected/astral_return/astral_return
+	var/datum/action/cooldown/spell/undirected/astral_toggle/astral_toggle
 
 /mob/living/simple_animal/hostile/retaliate/astral_projection/New()
 	..()
