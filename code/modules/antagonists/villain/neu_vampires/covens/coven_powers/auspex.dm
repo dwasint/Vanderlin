@@ -240,7 +240,7 @@ GLOBAL_LIST_INIT(astral_projections, list())
 	return
 
 //this should prevent most other edge cases
-/mob/living/simple_animal/hostile/retaliate/astral_projection/incapacitated(ignore_restraints = FALSE, ignore_grab = TRUE)
+/mob/living/simple_animal/hostile/retaliate/astral_projection/incapacitated(ignore_restraints = FALSE, ignore_grab = TRUE, ignore_stasis = TRUE)
 	return TRUE
 
 //bullets instantly end us

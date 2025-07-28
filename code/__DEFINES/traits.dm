@@ -455,6 +455,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_NO_REFLECTION "no_reflection"
 /// Vampire cannot drink from anyone who doesn't consent to it
 #define TRAIT_CONSENSUAL_FEEDING_ONLY "consensual_feeding_only"
+#define TRAIT_COVEN_BANE "coven_bane"
 /// Instead of knocking someone out when fed on, this vampire's Kiss inflicts pain
 #define TRAIT_PAINFUL_VAMPIRE_KISS "painful_vampire_kiss"
 /// Vampires will always diablerise this vampire given the chance

@@ -159,6 +159,8 @@
 	//can't be casted without an actual caster
 	if (!owner)
 		return FALSE
+	if(HAS_TRAIT(owner, TRAIT_COVEN_BANE))
+		return FALSE
 
 	//can always be deactivated if that's an option
 	if (active && (toggled || cancelable))

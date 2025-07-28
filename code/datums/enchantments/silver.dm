@@ -40,26 +40,15 @@
 	var/datum/antagonist/vampire/vamp_datum = target.mind?.has_antag_datum(/datum/antagonist/vampire)
 	var/datum/antagonist/werewolf/wolf_datum = target.mind?.has_antag_datum(/datum/antagonist/werewolf)
 
-	///Check if it is the vamp lord and if they are ascended aka lvl 4 vampire lord
-	if(istype(vamp_datum, /datum/antagonist/vampire/lord))
-		var/datum/antagonist/vampire/lord/lord_datum = vamp_datum
-		if(lord_datum.ascended)
-			user.Stun(10)
-			user.Paralyze(10)
-			user.adjustFireLoss(25)
-			user.fire_act(1,10)
-			to_chat(user, span_userdanger("The silver enchantment fails!"))
-			target.visible_message(span_userdanger("[user] suddenly bursts into flames!"), span_greentextbig("Feeble metal cannot hurt me, I AM THE ANCIENT!"))
-
 	///Normal check for the vampire and werewolves
 	if(affected)
 		to_chat(target, span_userdanger("I am struck by my BANE!"))
 		target.rollfrenzy()
-		target.Stun(20)
-		target.Knockdown(10)
-		target.Paralyze(10)
+		ADD_TRAIT(target, TRAIT_COVEN_BANE, VAMPIRE_TRAIT)
 		target.adjustFireLoss(25)
 		target.fire_act(1,10)
+		addtimer(TRAIT_CALLBACK_REMOVE(target, TRAIT_COVEN_BANE, VAMPIRE_TRAIT), 30 SECONDS)
+		target.clan.disable_covens(target)
 		if(wolf_datum)
 			target.apply_status_effect(/datum/status_effect/debuff/silver_curse)
 		if(vamp_datum && affected != AFFECTED_VLORD)
