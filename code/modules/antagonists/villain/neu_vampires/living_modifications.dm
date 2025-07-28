@@ -6,8 +6,11 @@
 	var/mob/living/walk_to_target
 	var/walk_to_duration = 0
 	var/walk_to_steps_taken = 0
+
 	var/turf/walk_to_last_pos
 	var/list/walk_to_cached_path
+	var/list/frenzy_cached_path = null
+	var/turf/frenzy_last_pos = null
 
 	var/list/taboos
 
@@ -262,9 +265,17 @@
 	handle_bloodpool_effects()
 
 	// Coffin regeneration
-	if(stat && istype(loc, /obj/structure/closet/crate/coffin))
-		fully_heal()
-		bloodpool = min(maxbloodpool, bloodpool + 10)
+	var/total_damage = getBruteLoss() + getFireLoss()
+	var/obj/structure/closet/crate/coffin/coffin = loc
+	if(istype(coffin) && total_damage && (src in coffin.contents))
+		if(!HAS_TRAIT(src, TRAIT_DEATHCOMA))
+			to_chat(src, span_notice("You enter the horrible slumber of deathless Torpor. You will heal until you are renewed."))
+			ADD_TRAIT(src, TRAIT_DEATHCOMA, VAMPIRE_TRAIT)
+		heal_overall_damage(5, 5)
+		bloodpool = min(maxbloodpool * 0.25, bloodpool + 10)
+	if(HAS_TRAIT(src, TRAIT_DEATHCOMA) && (total_damage <= 0 || (!istype(coffin) || !(src in coffin.contents))))
+		REMOVE_TRAIT(src, TRAIT_DEATHCOMA, VAMPIRE_TRAIT)
+		to_chat(src, span_warning("You have recovered from Torpor."))
 
 /mob/living/carbon/human/proc/handle_bloodpool_effects()
 	// Apply thirst effects based on bloodpool levels
@@ -284,9 +295,9 @@
 			if(prob(3))
 				playsound(get_turf(src), pick('sound/vo/hungry1.ogg','sound/vo/hungry2.ogg','sound/vo/hungry3.ogg'), 100, TRUE, -1)
 
-	// Maintain blood volume for vampires
-	if(bloodpool > 0)
-		blood_volume = BLOOD_VOLUME_NORMAL
+	if(bloodpool < 100 && prob(9))
+		if(last_frenzy_check + 5 MINUTES < world.time)
+			rollfrenzy()
 
 /mob/living/carbon/human/proc/get_clan_hierarchy_examine(mob/living/carbon/human/examiner)
 	if(!clan || !clan_position || !examiner.clan)
@@ -314,7 +325,6 @@
 			examine_text += "</span>\n"
 
 	return examine_text
-
 
 /mob/living/carbon/human/proc/make_vampire_slave(mob/living/carbon/human/master)
 	if(!master.clan)
