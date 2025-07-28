@@ -812,7 +812,7 @@
 		return
 
 	if (spend_resources())
-		if(vitae_cost > 0)
+		if(vitae_cost > 0 && duration_length > 10 SECONDS) // No spam please
 			to_chat(owner, span_warning("[src] consumes your blood to stay active."))
 		grant_usage_xp(target, TRUE)
 		if (!duration_override)
