@@ -1054,7 +1054,7 @@
 				}
 
 				if (nodeData.cooldown && nodeData.cooldown > 0) {
-					tooltipContent += '<div class="power-stats">Cooldown: ' + nodeData.cooldown + Seconds'</div>';
+					tooltipContent += '<div class="power-stats">Cooldown: ' + nodeData.cooldown + ' Seconds</div>';
 				}
 
 				if (nodeData.upkeep_cost && nodeData.upkeep_cost > 0) {
