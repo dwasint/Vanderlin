@@ -40,6 +40,12 @@
 	if(!.)
 		return
 
+	trigger_healing()
+
+/datum/coven_power/bloodheal/on_refresh()
+	trigger_healing()
+
+/datum/coven_power/bloodheal/proc/trigger_healing()
 	// Calculate healing amounts based on level
 	var/bashing_lethal_heal = HEAL_BASHING_LETHAL * level
 	var/aggravated_heal = HEAL_AGGRAVATED * level
@@ -82,6 +88,7 @@
 
 	owner.update_damage_overlays()
 	owner.update_health_hud()
+
 
 //BLOODHEAL 1
 /datum/coven_power/bloodheal/one

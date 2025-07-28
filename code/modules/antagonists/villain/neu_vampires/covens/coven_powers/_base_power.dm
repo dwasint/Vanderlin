@@ -817,9 +817,21 @@
 		grant_usage_xp(target, TRUE)
 		if (!duration_override)
 			do_duration(target)
+		on_refresh(target)
 	else
 		to_chat(owner, span_warning("You don't have enough blood to keep [src] active!"))
 		try_deactivate(target)
+
+/**
+ * Handles doing effects after a refresh has been spent
+ * resources and restarting the duration timer if it can proceed. If
+ * it can't proceed, it directly deactivates the power.
+ *
+ * Arguments:
+ * * target - what the targeted Discipline (null otherwise) is being used on.
+ */
+/datum/coven_power/proc/on_refresh(atom/target)
+	return
 
 /**
  * Overridable proc that allows for extra modular code

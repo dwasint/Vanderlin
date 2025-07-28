@@ -227,6 +227,9 @@ GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
 			file_name = p.file
 			line_num = p.line || 0
 
+		if(findtext(file_name, "master.dm") && (proc_name == "Loop" || proc_name == "StartProcessing"))
+			break
+
 		var/list/frame = list()
 		frame["filename"] = file_name
 		frame["lineno"] = line_num

@@ -244,6 +244,20 @@
 	to_chat(owner, "<span class='notice'>You radiate an aura of absolute authority and grandeur. Others find themselves compelled to obey.</span>")
 	owner.visible_message("<span class='warning'>[owner] seems to become incredibly imposing and majestic!</span>", "<span class='notice'>You feel your presence become overwhelming.</span>")
 
+/datum/coven_power/presence/majesty/on_refresh()
+	var/list/nearby_mobs = range(7, owner)
+	var/list/checked_mobs = list()
+	for(var/mob/living/M in nearby_mobs)
+		checked_mobs |= M
+		if(M == owner || !can_affect_target(M))
+			continue
+		apply_majesty_effect(M)
+
+	for(var/mob/living/mob in affected_mobs)
+		if(!(mob in checked_mobs))
+			remove_majesty_effect(mob)
+			affected_mobs -= mob
+
 /datum/coven_power/presence/majesty/deactivate(mob/living/carbon/human/target)
 	. = ..()
 	owner.remove_overlay(MUTATIONS_LAYER)
@@ -261,6 +275,8 @@
 	if(target.stat == DEAD)
 		return FALSE
 	if(target.clan == owner.clan)
+		return FALSE
+	if(target in affected_mobs)
 		return FALSE
 	return TRUE
 
