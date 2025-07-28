@@ -76,9 +76,7 @@
 				span_warning("[owner]'s wounds slowly knit themselves back together!"),
 				span_warning("Your flesh slowly regenerates!")
 			)
-			var/datum/component/vampire_disguise/disguise_comp = owner.GetComponent(/datum/component/vampire_disguise)
-			if(disguise_comp?.disguised)
-				disguise_comp.remove_disguise(src)
+			owner.vampire_undisguise()
 	else
 		violates_masquerade = FALSE
 

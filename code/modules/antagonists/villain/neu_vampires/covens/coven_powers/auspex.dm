@@ -81,6 +81,8 @@ GLOBAL_LIST_INIT(astral_projections, list())
 /datum/action/cooldown/spell/undirected/astral_toggle/cast(mob/living/user)
 	. = ..()
 	var/mob/living/simple_animal/hostile/retaliate/astral_projection/astral = user
+	if(!istype(astral))
+		return
 	astral.toggle_tangibility()
 	if (astral.tangibility)
 		desc = "Turn back into an invisible projection of your soul."
