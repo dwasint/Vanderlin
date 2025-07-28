@@ -9,6 +9,8 @@
 	var/turf/walk_to_last_pos
 	var/list/walk_to_cached_path
 
+	var/list/taboos
+
 	var/enhanced_strip = FALSE
 	var/datum/clan/clan
 	var/bloodpool = 1000
