@@ -336,6 +336,7 @@
 
 /datum/status_effect/majesty_compulsion/on_creation(mob/living/new_owner, mob/living/user)
 	majesty_user = user
+	to_chat(new_owner, span_cultbigbold("You are compelled by an overwhelming presence. You find it nearly impossible to act against them."))
 	return ..()
 
 /datum/status_effect/majesty_compulsion/on_apply()
