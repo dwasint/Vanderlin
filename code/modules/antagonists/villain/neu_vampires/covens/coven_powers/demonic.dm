@@ -125,6 +125,7 @@
 
 	violates_masquerade = TRUE
 	target_type = TARGET_LIVING
+	range = 7
 	vitae_cost = 100
 
 	cooldown_length = 60 SECONDS
