@@ -57,13 +57,13 @@
 	var/obj/effect/blood_rune/R = spell_holder
 	R.one_pulse()
 
-	new/obj/effect/cult_ritual/stun(R.loc, 1, activator)
+	new/obj/effect/blood_ritual/stun(R.loc, 1, activator)
 
 	qdel(R)
 
 /datum/rune_spell/stun/cast_talisman()
 	var/turf/T = get_turf(spell_holder)
-	new/obj/effect/cult_ritual/stun(T, 2, activator)
+	new/obj/effect/blood_ritual/stun(T, 2, activator)
 	qdel(src)
 
 /datum/rune_spell/stun/cast_touch(mob/living/M)
@@ -83,17 +83,16 @@
 
 	qdel(src)
 
-/obj/effect/cult_ritual/stun
-	//icon_state = "stun_warning"
-	icon_state = null
+/obj/effect/blood_ritual/stun
+	icon_state = "stun_warning"
 	color = "black"
 	anchored = 1
 	alpha = 0
-	//plane = HIDING_MOB_PLANE
+	plane = GAME_PLANE_UPPER
 	mouse_opacity = 0
 	var/stun_duration = 10 SECONDS
 
-/obj/effect/cult_ritual/stun/New(turf/loc, type = 1, mob/living/carbon/caster)
+/obj/effect/blood_ritual/stun/New(turf/loc, type = 1, mob/living/carbon/caster)
 	..()
 
 	switch (type)

@@ -152,10 +152,6 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 
 	to_chat(vampdude, span_notice("You are now a member of the [custom_clan_name] clan with [length(selected_covens)] coven(s)."))
 
-/datum/antagonist/vampire/on_removal()
-	. = ..()
-	owner.current.remove_spells(source = src)
-
 /datum/antagonist/vampire/proc/after_gain()
 	return
 

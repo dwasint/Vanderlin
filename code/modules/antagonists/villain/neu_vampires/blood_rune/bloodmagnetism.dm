@@ -91,7 +91,7 @@
 		spell_holder.overlays += image('icons/effects/vampire.dmi', "rune_summon")
 	else
 		feet_portals.Add(activator)
-		var/obj/effect/cult_ritual/feet_portal/P = new (activator.loc, activator, src)
+		var/obj/effect/blood_ritual/feet_portal/P = new (activator.loc, activator, src)
 		feet_portals[activator] = P
 	to_chat(activator, span_rose("This ritual's blood toll can be substantially reduced by having multiple cultists partake in it.") )
 	spawn()
@@ -112,7 +112,7 @@
 		add_cultist.client.images |= progbar
 	if (rejoin)
 		feet_portals.Add(add_cultist)
-		var/obj/effect/cult_ritual/feet_portal/P = new (add_cultist.loc, add_cultist, src)
+		var/obj/effect/blood_ritual/feet_portal/P = new (add_cultist.loc, add_cultist, src)
 		feet_portals[add_cultist] = P
 
 /datum/rune_spell/bloodmagnetism/proc/payment()//an extra payment is spent at the end of the channeling, and shared between contributors
@@ -124,7 +124,7 @@
 			if (!contributor.clan || !(contributor in range(spell_holder, 1)) || (contributor.stat != CONSCIOUS))
 				if (contributor.client)
 					contributor.client.images -= progbar
-				var/obj/effect/cult_ritual/feet_portal/P = feet_portals[contributor]
+				var/obj/effect/blood_ritual/feet_portal/P = feet_portals[contributor]
 				qdel(P)
 				feet_portals.Remove(contributor)
 				contributors.Remove(contributor)
@@ -134,7 +134,7 @@
 			var/data = use_available_blood(contributor, cost_upkeep/contributors.len, contributors[contributor])//always 1u total per payment
 			if (data[BLOODCOST_RESULT] == BLOODCOST_FAILURE)//out of blood are we?
 				contributors.Remove(contributor)
-				var/obj/effect/cult_ritual/feet_portal/P = feet_portals[contributor]
+				var/obj/effect/blood_ritual/feet_portal/P = feet_portals[contributor]
 				qdel(P)
 				feet_portals.Remove(contributor)
 			else
@@ -216,7 +216,12 @@
 	else
 		qdel(src)
 
-/obj/effect/cult_ritual/feet_portal
+/obj/effect/blood_ritual
+	icon_state = ""
+	icon = 'icons/effects/vampire.dmi'
+	anchored = 1
+
+/obj/effect/blood_ritual/feet_portal
 	anchored = 1
 	icon_state = "rune_rejoin"
 	pixel_y = -10
@@ -225,7 +230,7 @@
 	var/mob/living/caster = null
 	var/turf/source = null
 
-/obj/effect/cult_ritual/feet_portal/New(turf/loc, mob/living/user, datum/rune_spell/seer/runespell)
+/obj/effect/blood_ritual/feet_portal/New(turf/loc, mob/living/user, datum/rune_spell/seer/runespell)
 	..()
 	caster = user
 	source = get_turf(runespell?.spell_holder)
@@ -233,11 +238,11 @@
 		qdel(src)
 		return
 
-/obj/effect/cult_ritual/feet_portal/Destroy()
+/obj/effect/blood_ritual/feet_portal/Destroy()
 	caster = null
 	source = null
 	..()
 
-/obj/effect/cult_ritual/feet_portal/HasProximity(atom/movable/AM)
+/obj/effect/blood_ritual/feet_portal/HasProximity(atom/movable/AM)
 	if (caster && caster.loc != loc)
 		forceMove(get_turf(caster))

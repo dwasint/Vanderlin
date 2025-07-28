@@ -266,7 +266,20 @@ And it also helps for the character set panel
 	if(vampire.clan_position)
 		vampire.clan_position.remove_member()
 
+	for(var/datum/coven/coven as anything in clane_covens)
+		vampire.remove_coven(coven)
+
+	var/list/spells_to_remove = list(
+		/datum/action/clan_menu,
+		/datum/action/cooldown/spell/undirected/transfix,
+	)
+	for(var/spell_type in spells_to_remove)
+		var/datum/action/spell_instance = locate(spell_type) in vampire.actions
+		if(spell_instance)
+			spell_instance.Remove(vampire)
+
 	if(vampire == clan_leader)
+		leader.remove_leader(vampire)
 		clan_leader = null
 		handle_leadership_succession()
 

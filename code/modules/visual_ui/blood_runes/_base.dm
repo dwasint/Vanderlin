@@ -142,4 +142,4 @@ GLOBAL_LIST_INIT(blood_communion, list())
 	move_whole_ui = TRUE
 
 	const_offset_y = -32
-	const_offset_x = -16
+	const_offset_x = -256

@@ -71,7 +71,7 @@
 						shocked[L] = 2
 
 	for(var/mob/living/L in shocked)
-		new /obj/effect/cult_ritual/reveal(L.loc, L, shocked[L])
+		new /obj/effect/blood_ritual/reveal(L.loc, L, shocked[L])
 		to_chat(L, span_danger("You feel a terrifying shock resonate within your body as the hidden runes are revealed!") )
 		L.update_fullscreen_alpha("shockborder", 100, 5)
 		spawn(8)
@@ -135,19 +135,19 @@
 	cast()
 
 
-/obj/effect/cult_ritual/reveal
+/obj/effect/blood_ritual/reveal
 	anchored = 1
 	icon_state = "rune_reveal"
 	plane = ABOVE_LIGHTING_PLANE
 	var/mob/living/victim = null
 	var/duration = 2
 
-/obj/effect/cult_ritual/reveal/Destroy()
+/obj/effect/blood_ritual/reveal/Destroy()
 	victim = null
 	anim(target = loc, a_icon = 'icons/effects/vampire.dmi', flick_anim = "rune_reveal-stop", plane = ABOVE_LIGHTING_PLANE)
 	..()
 
-/obj/effect/cult_ritual/reveal/New(turf/loc, mob/living/vic = null, dur = 2)
+/obj/effect/blood_ritual/reveal/New(turf/loc, mob/living/vic = null, dur = 2)
 	..()
 	if (!vic)
 		vic = locate() in loc
@@ -165,7 +165,7 @@
 			victim = null
 		qdel(src)
 
-/obj/effect/cult_ritual/reveal/HasProximity(atom/movable/AM)//Pulling victims will immediately dispel the effects
+/obj/effect/blood_ritual/reveal/HasProximity(atom/movable/AM)//Pulling victims will immediately dispel the effects
 	if (!victim)
 		qdel(src)
 		return

@@ -23,18 +23,18 @@ GLOBAL_LIST_INIT(confusion_victims, list())
 	var/turf/T = get_turf(mob)
 	invoke(activator, invocation, 1)
 
-	new /obj/effect/cult_ritual/confusion(T, rune_duration, hallucination_radius, mob, activator)
+	new /obj/effect/blood_ritual/confusion(T, rune_duration, hallucination_radius, mob, activator)
 
 	qdel(src)
 
 /datum/rune_spell/confusion/cast(duration = rune_duration)
-	new /obj/effect/cult_ritual/confusion(spell_holder, duration, hallucination_radius, null, activator)
+	new /obj/effect/blood_ritual/confusion(spell_holder, duration, hallucination_radius, null, activator)
 	qdel(spell_holder)
 
 /datum/rune_spell/confusion/cast_talisman()//talismans have the same range, but the effect lasts shorter.
 	cast(talisman_duration)
 
-/obj/effect/cult_ritual/confusion
+/obj/effect/blood_ritual/confusion
 	anchored = 1
 	icon = 'icons/effects/vampire/64x64.dmi'
 	icon_state = ""
@@ -45,7 +45,7 @@ GLOBAL_LIST_INIT(confusion_victims, list())
 	var/duration = 5
 	var/hallucination_radius = 25
 
-/obj/effect/cult_ritual/confusion/New(turf/loc, duration = 30 SECONDS, radius = 25, mob/specific_victim = null, mob/culprit)
+/obj/effect/blood_ritual/confusion/New(turf/loc, duration = 30 SECONDS, radius = 25, mob/specific_victim = null, mob/culprit)
 	..()
 	//Alright, this is a pretty interesting rune, first of all we prepare the fake cult floors & walls that the victims will see.
 	var/turf/T = get_turf(src)

@@ -865,6 +865,7 @@
 								used_vitae = C.bloodpool // We assume they're left with 250 vitae or less, so we take it all
 								to_chat(user, "<span class='warning'>...But alas, only leftovers...</span>")
 							user.adjust_bloodpool(used_vitae)
+							user.adjust_hydration(used_vitae * 0.1)
 							if(VVictim)
 								C.adjust_bloodpool(used_vitae)
 							C.bloodpool -= used_vitae
@@ -875,6 +876,7 @@
 								used_vitae = C.bloodpool // We assume they're left with 250 vitae or less, so we take it all
 								to_chat(user, "<span class='warning'>...But alas, only leftovers...</span>")
 							user.adjust_bloodpool(used_vitae)
+							user.adjust_hydration(used_vitae * 0.1)
 							if(VVictim)
 								C.adjust_bloodpool(-used_vitae) //twice the loss
 							C.adjust_bloodpool(-used_vitae)

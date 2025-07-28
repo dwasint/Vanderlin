@@ -146,6 +146,85 @@
 		var/datum/action/coven/action = new(src, coven)
 		action.Grant(src)
 
+/**
+ * Removes a coven from the mob, cleaning up all associated data and effects.
+ * Handles action removal, power cleanup, and proper memory management.
+ *
+ * Arguments:
+ * * coven - Either a coven datum instance, coven type path, or coven name string
+ * * silent - If TRUE, suppresses removal messages to the player
+ * * keep_experience - If TRUE, preserves XP for potential future restoration
+ *
+ * Returns:
+ * * TRUE if coven was successfully removed
+ * * FALSE if coven was not found or removal failed
+ */
+/mob/living/carbon/human/proc/remove_coven(coven, silent = FALSE)
+	if(!length(covens))
+		return FALSE
+
+	var/datum/coven/target_coven
+	var/coven_name
+
+	// Handle different input types
+	if(istype(coven, /datum/coven))
+		// Direct coven datum
+		target_coven = coven
+		coven_name = target_coven.name
+	else if(ispath(coven))
+		// Coven type path - find by type
+		for(var/name in covens)
+			var/datum/coven/stored_coven = covens[name]
+			if(stored_coven.type == coven)
+				target_coven = stored_coven
+				coven_name = name
+				break
+	else if(istext(coven))
+		// Coven name string
+		coven_name = coven
+		target_coven = covens[coven_name]
+	else
+		return FALSE
+
+	// Verify we found a valid coven
+	if(!target_coven || !coven_name)
+		return FALSE
+
+	if(target_coven.coven_action)
+		target_coven.coven_action.Remove(src)
+		QDEL_NULL(target_coven.coven_action)
+
+	if(target_coven.research_interface)
+		QDEL_NULL(target_coven.research_interface)
+
+	pre_coven_removal(target_coven)
+
+	for(var/datum/coven_power/power in target_coven.known_powers)
+		power.deactivate()
+		if(power.discipline.coven_action)
+			power.discipline.coven_action.Remove(src)
+
+	target_coven.owner = null
+	target_coven.current_power = null
+
+	covens -= coven_name
+
+	if(!silent)
+		to_chat(src, "<span class='boldwarning'>You have lost your knowledge of [target_coven.name].</span>")
+
+	QDEL_NULL(target_coven)
+	return TRUE
+
+/**
+ * Pre-removal hook for covens. Override this in specific coven types
+ * to handle coven-specific cleanup before removal.
+ *
+ * Arguments:
+ * * coven - The coven being removed
+ */
+/mob/living/carbon/human/proc/pre_coven_removal(datum/coven/coven)
+	return
+
 /mob/living/carbon/human/proc/get_coven(datum/coven/coven_type)
 	if(!length(covens))
 		return null

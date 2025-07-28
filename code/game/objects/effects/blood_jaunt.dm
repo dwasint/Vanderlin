@@ -202,7 +202,7 @@
 	if (dist < 10 && !landing)
 		landing = 1
 		playsound(src.target, 'sound/effects/vampire/cultjaunt_prepare.ogg', 75, 0, -3)
-		landing_animation = anim(target = src.target, a_icon = 'icons/effects/vampire.dmi', flick_anim = "cult_jaunt_prepare", plane = GAME_PLANE_UPPER)
+		landing_animation = anim(target = src.target, a_icon = 'icons/effects/vampire.dmi', flick_anim = "cult_jaunt_prepare", plane = GAME_PLANE_UPPER, lay = ABOVE_ALL_MOB_LAYER)
 	return make_bresenham_step(distA, distB, dA, dB)
 
 /obj/effect/bloodcult_jaunt/proc/make_bresenham_step(distA, distB, dA, dB)
@@ -262,7 +262,7 @@
 				var/mob/M = rider
 				M.see_invisible = 0
 				var/jaunter = FALSE
-				for (var/obj/effect/cult_ritual/seer/seer_ritual in GLOB.seer_rituals)
+				for (var/obj/effect/blood_ritual/seer/seer_ritual in GLOB.seer_rituals)
 					if (seer_ritual.caster == M)
 						jaunter = TRUE
 						break
@@ -276,7 +276,7 @@
 				if (ismob(AM))
 					var/mob/M = AM
 					M.see_invisible = SEE_INVISIBLE_LIVING
-					for (var/obj/effect/cult_ritual/seer/seer_ritual in GLOB.seer_rituals)
+					for (var/obj/effect/blood_ritual/seer/seer_ritual in GLOB.seer_rituals)
 						if (seer_ritual.caster == M)
 							break
 			packed = list()

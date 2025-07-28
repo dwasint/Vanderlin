@@ -16,7 +16,7 @@
 		<br><br>Also note that you can activate runes while they are concealed. In talisman form, it has 10 uses that last for a minute each. Activate the talisman before moving into a public area so nobody hears you whisper the invocation.\
 		<br><br>This rune persists upon use, allowing repeated usage."
 	cost_invoke = 5
-	var/obj/effect/cult_ritual/seer/seer_ritual = null
+	var/obj/effect/blood_ritual/seer/seer_ritual = null
 	var/talisman_duration = 60 SECONDS
 
 /datum/rune_spell/seer/Destroy()
@@ -31,14 +31,14 @@
 	R.one_pulse()
 
 	if (pay_blood())
-		seer_ritual = new /obj/effect/cult_ritual/seer(R.loc, activator, src)
+		seer_ritual = new /obj/effect/blood_ritual/seer(R.loc, activator, src)
 	else
 		qdel(src)
 
 /datum/rune_spell/seer/cast_talisman()
 	var/mob/living/M = activator
 
-	if (locate(/obj/effect/cult_ritual/seer) in M)
+	if (locate(/obj/effect/blood_ritual/seer) in M)
 		var/obj/item/talisman/T = spell_holder
 		T.uses++
 		to_chat(M, span_warning("You are still under the effects of a Seer talisman.") )
@@ -47,12 +47,12 @@
 
 	M.see_invisible = SEE_INVISIBLE_OBSERVER
 	anim(target = M, a_icon = 'icons/effects/vampire/160x160.dmi', a_icon_state = "rune_seer", lay = ABOVE_OBJ_LAYER, offX = -32*2, offY = -32*2, plane = GAME_PLANE, invis = INVISIBILITY_OBSERVER, alph = 200, sleeptime = talisman_duration, animate_movement = TRUE)
-	new /obj/effect/cult_ritual/seer(activator, activator, null, TRUE, talisman_duration)
+	new /obj/effect/blood_ritual/seer(activator, activator, null, TRUE, talisman_duration)
 	qdel(src)
 
 GLOBAL_LIST_EMPTY(seer_rituals)
 
-/obj/effect/cult_ritual/seer
+/obj/effect/blood_ritual/seer
 	anchored = 1
 	icon = 'icons/effects/vampire/160x160.dmi'
 	icon_state = "rune_seer"
@@ -70,7 +70,7 @@ GLOBAL_LIST_EMPTY(seer_rituals)
 	///Proximity monitor associated with this atom, needed for proximity checks.
 	var/datum/proximity_monitor/proximity_monitor
 
-/obj/effect/cult_ritual/seer/New(turf/loc, mob/living/user, datum/rune_spell/seer/runespell, talisman_ritual = FALSE, talisman_duration = 60 SECONDS)
+/obj/effect/blood_ritual/seer/New(turf/loc, mob/living/user, datum/rune_spell/seer/runespell, talisman_ritual = FALSE, talisman_duration = 60 SECONDS)
 	..()
 	proximity_monitor = new(src, 1)
 	LAZYADD(GLOB.seer_rituals, src)
@@ -89,7 +89,7 @@ GLOBAL_LIST_EMPTY(seer_rituals)
 			qdel(src)
 
 
-/obj/effect/cult_ritual/seer/Destroy()
+/obj/effect/blood_ritual/seer/Destroy()
 	LAZYREMOVE(GLOB.seer_rituals, src)
 	if(caster)
 		to_chat(caster, span_notice("You can no longer discern through the veil."))
@@ -100,7 +100,7 @@ GLOBAL_LIST_EMPTY(seer_rituals)
 	source = null
 	..()
 
-/obj/effect/cult_ritual/seer/HasProximity(atom/movable/AM)
+/obj/effect/blood_ritual/seer/HasProximity(atom/movable/AM)
 	if (!talisman)
 		if (!caster || caster.loc != loc)
 			qdel(src)
