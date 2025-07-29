@@ -757,9 +757,6 @@
 
 	owner.update_action_buttons()
 
-	if(duration_length > 0)
-		clear_duration_timer()
-
 	// Clear XP tracking variables
 	last_use_was_critical = FALSE
 	last_action_context = null
