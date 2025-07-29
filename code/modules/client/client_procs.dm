@@ -998,6 +998,9 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	return failed
 
 /client/Click(atom/object, atom/location, control, params)
+	if(isatom(object) && HAS_TRAIT(mob, TRAIT_IN_FRENZY))
+		return
+
 	if(click_intercept_time)
 		if(click_intercept_time >= world.time)
 			click_intercept_time = 0 //Reset and return. Next click should work, but not this one.

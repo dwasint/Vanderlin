@@ -1,16 +1,3 @@
-//Here's things for future madness
-
-//add_client_colour(/datum/client_colour/glass_colour/red)
-//remove_client_colour(/datum/client_colour/glass_colour/red)
-/client/Click(object,location,control,params)
-	if(isatom(object))
-		if(ishuman(mob))
-			var/mob/living/carbon/human/H = mob
-			if (HAS_TRAIT(H, TRAIT_IN_FRENZY))
-				return
-	..()
-
-
 /mob/proc/dice_roll(dices_num = 1, hardness = 1, atom/rollviewer)
 	var/wins = 0
 	var/crits = 0
