@@ -158,7 +158,7 @@
 		uses = initial(spell.talisman_uses)
 
 		var/talisman_interaction = initial(spell.talisman_absorb)
-		var/datum/rune_spell/active_spell = R.active_spell
+		var/datum/rune_spell/active_spell = get_rune_spell(user, src, "examine", R.word1, R.word2, R.word3)
 		if(!istype(R))
 			return
 		name = "[active_spell.name] Talisman"

@@ -175,6 +175,10 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_FOREIGNER "foreigner" // is this guy a foreigner?
 #define TRAIT_NOAMBUSH "no_ambush" //! mob cannot be ambushed for any reason
 #define TRAIT_CLAN_LEADER "clan_leader"
+/// Receives echolocation images.
+#define TRAIT_ECHOLOCATION_RECEIVER "echolocation_receiver"
+/// Echolocation has a higher range.
+#define TRAIT_ECHOLOCATION_EXTRA_RANGE "echolocation_extra_range"
 
 /// Can swim ignoring water flow and slowdown
 #define TRAIT_GOOD_SWIM "good_swim"
@@ -482,6 +486,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 /// Trait given as a result of vampiric activities
 #define VAMPIRE_TRAIT "vampire"
+#define TABOO_TRAIT "taboo"
 
 /// Is runechat for this atom/movable currently disabled, regardless of prefs or anything?
 #define TRAIT_RUNECHAT_HIDDEN "runechat_hiddenn"
@@ -504,3 +509,5 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_WIELDED "wielded"
 /// The items needs two hands to be carried
 #define TRAIT_NEEDS_TWO_HANDS "needstwohands"
+/// Trait given by echolocation component.
+#define ECHOLOCATION_TRAIT "echolocation"

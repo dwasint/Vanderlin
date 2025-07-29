@@ -28,16 +28,10 @@
 			var/list/valid_tomes = list()
 			var/i = 0
 			for (var/obj/item/tome/T in GLOB.arcane_tomes)
-				var/mob/M = locate(/mob/living) in T.contents
-				if (M && IS_CULTIST(M))
+				var/mob/living/M = locate(/mob/living) in T.contents
+				if (M && M.clan)
 					i++
 					valid_tomes["[i] - Tome carried by [M.real_name] ([T.talismans.len]/[MAX_TALISMAN_PER_TOME])"] = T
-
-			for (var/datum/action/cooldown/spell/cult/arcane_dimension/A in GLOB.arcane_pockets)
-				if (A.owner && A.owner.loc && ismob(A.owner) && A.stored_tome)
-					i++
-					var/mob/M = A.owner
-					valid_tomes["[i] - Tome in [M.real_name]'s arcane dimension ([A.stored_tome.talismans.len]/[MAX_TALISMAN_PER_TOME])"] = A.stored_tome
 
 			if (valid_tomes.len <= 0)
 				to_chat(user, span_warning("No cultists are currently carrying a tome.") )
@@ -124,7 +118,7 @@
 
 		//are our payers still here and about?
 		for(var/mob/living/L in contributors)
-			if (!IS_CULTIST(L) || !(L in range(spell_holder, 1)) || (L.stat != CONSCIOUS))
+			if (!L.clan || !(L in range(spell_holder, 1)) || (L.stat != CONSCIOUS))
 				if (L.client)
 					L.client.images -= progbar
 				contributors.Remove(L)

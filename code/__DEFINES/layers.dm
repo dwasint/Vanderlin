@@ -181,7 +181,8 @@
 #define BLIND_LAYER 4
 #define CRIT_LAYER 5
 #define CURSE_LAYER 6
-#define BACKHUD_LAYER 7
+#define ECHO_LAYER 7
+#define BACKHUD_LAYER 8
 
 //-------------------- HUD ---------------------
 //HUD layer defines

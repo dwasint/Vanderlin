@@ -31,6 +31,9 @@
 					new /obj/item/natural/worms/leech(T)
 			else
 				new /obj/item/natural/worms(T)
+		if(!(locate(/obj/item/natural/clay) in T))
+			if(prob(25))
+				new /obj/item/natural/clay(T)
 	else
 		if(!(locate(/obj/item/natural/stone) in T))
 			if(prob(23))
