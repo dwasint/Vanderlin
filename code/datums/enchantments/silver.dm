@@ -43,7 +43,7 @@
 	///Normal check for the vampire and werewolves
 	if(affected)
 		to_chat(target, span_userdanger("I am struck by my BANE!"))
-		if(affected.clan)
+		if(target.clan)
 			target.rollfrenzy()
 			ADD_TRAIT(target, TRAIT_COVEN_BANE, VAMPIRE_TRAIT)
 			addtimer(TRAIT_CALLBACK_REMOVE(target, TRAIT_COVEN_BANE, VAMPIRE_TRAIT), 30 SECONDS)
