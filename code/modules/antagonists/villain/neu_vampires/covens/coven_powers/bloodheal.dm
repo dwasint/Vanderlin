@@ -7,7 +7,7 @@
 	icon_state = "bloodheal"
 	power_type = /datum/coven_power/bloodheal
 	max_level = 10
-	experience_multiplier = 10
+	experience_multiplier = 1.25
 
 /datum/coven_power/bloodheal
 	name = "Bloodheal power name"

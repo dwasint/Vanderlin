@@ -145,6 +145,7 @@
 	level = 3
 	check_flags = COVEN_CHECK_CAPABLE
 	vitae_cost = 50
+	duration_length = 30 SECONDS
 
 	toggled = FALSE
 
@@ -170,15 +171,17 @@
 	)
 
 /datum/coven_power/obfuscate/mask_of_a_thousand_faces/proc/store_original_appearance(mob/living/carbon/human/user)
-	var/datum/bodypart_feature/hair/feature = user.get_bodypart_feature_of_slot(BODYPART_FEATURE_HAIR)
-	var/datum/bodypart_feature/hair/facial = user.get_bodypart_feature_of_slot(BODYPART_FEATURE_FACIAL_HAIR)
-	old_dna = user.dna
+	var/mob/living/carbon/human/transformer = owner
+
+	var/datum/bodypart_feature/hair/feature = transformer.get_bodypart_feature_of_slot(BODYPART_FEATURE_HAIR)
+	var/datum/bodypart_feature/hair/facial = transformer.get_bodypart_feature_of_slot(BODYPART_FEATURE_FACIAL_HAIR)
+	old_dna = transformer.dna
 	old_hair = feature?.accessory_type
-	old_hair_color = user.get_hair_color()
-	old_eye_color = user.get_eye_color()
-	old_facial_hair_color = user.get_facial_hair_color()
+	old_hair_color = transformer.get_hair_color()
+	old_eye_color = transformer.get_eye_color()
+	old_facial_hair_color = transformer.get_facial_hair_color()
 	old_facial_hair = facial?.accessory_type
-	old_gender = user.gender
+	old_gender = transformer.gender
 
 /datum/coven_power/obfuscate/mask_of_a_thousand_faces/activate()
 	. = ..()
@@ -206,9 +209,6 @@
 	// Store original appearance and copy target's
 	store_original_appearance(owner)
 	transform_into_target(target, owner)
-
-	// Set duration timer
-	mask_timer = addtimer(CALLBACK(src, PROC_REF(mask_expire)), MASK_DURATION, TIMER_STOPPABLE)
 
 	to_chat(owner, span_notice("You assume the appearance of [target.real_name]."))
 
@@ -239,22 +239,15 @@
 	UnregisterSignal(owner, aggressive_signals)
 
 	deltimer(mask_timer)
-	to_chat(owner, span_notice("You return to your true form."))
 	return_to_normal(owner)
-
-/datum/coven_power/obfuscate/mask_of_a_thousand_faces/proc/mask_expire()
 	to_chat(owner, span_warning("Your disguise begins to fade..."))
-	try_deactivate(direct = TRUE)
 
 /datum/coven_power/obfuscate/mask_of_a_thousand_faces/proc/return_to_normal(mob/living/carbon/human/user)
 	if(!transformed)
 		return
 
 	owner.visible_message(span_notice("[owner]'s form begins to revert to its original state."))
-	user.Immobilize(30)
-
-	if(!do_after(user, 50 SECONDS, target = user))
-		return
+	user.Immobilize(1.5 SECONDS)
 
 	old_dna.transfer_identity(user)
 	user.real_name = old_dna.real_name
@@ -271,6 +264,7 @@
 	user.updateappearance(mutcolor_update = TRUE)
 	transformed = FALSE
 	current_target = null
+	return TRUE
 
 //VANISH FROM THE MIND'S EYE - Instant stealth activation + memory wipe
 /datum/coven_power/obfuscate/vanish_from_the_minds_eye
