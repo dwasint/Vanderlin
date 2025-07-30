@@ -160,3 +160,98 @@
 	build_time = 6 SECONDS
 	category = "Walls"
 	floor_object = TRUE
+
+/datum/blueprint_recipe/wall/solid_window
+	name = "Solid Glass Window"
+	desc = "A solid framed window."
+	required_materials = list(
+		/obj/item/natural/wood/plank = 4,
+		/obj/item/natural/glass = 2,
+	)
+	craftdiff = 2
+	skillcraft = /datum/skill/craft/carpentry
+	result_type = /turf/closed/wall/window
+
+/datum/blueprint_recipe/wall/solid_window/alt
+	name = "Alternative Solid Glass Window"
+	result_type = /turf/closed/wall/openclose
+
+/datum/blueprint_recipe/wall/silver_window
+	name = "Solid Silver Stained Glass Window"
+	desc = "A solid framed window."
+	required_materials = list(
+		/obj/item/ingot/silver = 2,
+		/obj/item/natural/glass = 2,
+	)
+	craftdiff = 2
+	skillcraft = /datum/skill/craft/blacksmithing
+	result_type = /turf/closed/wall/window/stained
+
+/datum/blueprint_recipe/wall/silver_window
+	name = "Alternative Solid Silver Stained Glass Window"
+	result_type = /turf/closed/wall/window/alt
+
+/datum/blueprint_recipe/wall/red_window
+	name = "Solid Red Stained Glass Window"
+	desc = "A solid framed window."
+	required_materials = list(
+		/obj/item/ingot/iron = 2,
+		/obj/item/natural/glass = 2,
+	)
+	craftdiff = 2
+	skillcraft = /datum/skill/craft/blacksmithing
+	result_type = /turf/closed/wall/window/red
+
+/datum/blueprint_recipe/wall/yellow_window
+	name = "Solid Yellow Stained Glass Window"
+	desc = "A solid framed window."
+	required_materials = list(
+		/obj/item/ingot/iron = 2,
+		/obj/item/natural/glass = 2,
+	)
+	craftdiff = 2
+	skillcraft = /datum/skill/craft/blacksmithing
+	result_type = /turf/closed/wall/window/yellow
+
+
+/datum/blueprint_recipe/wall/stonewindow
+	name = "Solid Stone Window"
+	desc = "A solid framed window."
+	required_materials = list(
+		/obj/item/natural/stoneblock = 2,
+		/obj/item/natural/fibers = 2,
+	)
+	craftdiff = 2
+	skillcraft = /datum/skill/craft/masonry
+	result_type = /turf/closed/wall/mineral/stone/window
+
+/datum/blueprint_recipe/wall/stonewindow/moss
+	name = "Solid Mossy Stone Window"
+	result_type = /turf/closed/wall/mineral/stone/window/moss
+
+/datum/blueprint_recipe/wall/stonewindow/blue
+	name = "Solid Mossy Bluestone Window"
+	result_type = /turf/closed/wall/mineral/stone/window/moss/blue
+
+/datum/blueprint_recipe/wall/stonewindow/red
+	name = "Solid Mossy Redstone Window"
+	result_type = /turf/closed/wall/mineral/stone/window/moss/red
+
+/datum/blueprint_recipe/wall/mossstone
+	name = "Mossy Stone Wall"
+	desc = "A stone wall covered in moss."
+	required_materials = list(
+		/obj/item/natural/stoneblock = 2,
+		/obj/item/natural/fibers = 2,
+	)
+	craftdiff = 2
+	skillcraft = /datum/skill/craft/masonry
+	result_type = /turf/closed/wall/mineral/stone/moss
+
+/datum/blueprint_recipe/wall/mossstone/blue
+	name = "Mossy Bluestone Wall"
+	result_type = /turf/closed/wall/mineral/stone/blue
+
+/datum/blueprint_recipe/wall/mossstone/red
+	name = "Mossy Redstone Wall"
+	result_type = /turf/closed/wall/mineral/stone/red

@@ -97,6 +97,19 @@
 	skillcraft = /datum/skill/craft/masonry
 	craftdiff = 0
 
+/datum/blueprint_recipe/floor/stonefloor_cobblestone/alt
+	name = "Alternative Cobblestone Floor"
+	result_type = /turf/open/floor/cobble/alt
+
+/datum/blueprint_recipe/floor/stonefloor_cobblestone/mossy
+	name = "Mossy Cobblestone Floor"
+	result_type = /turf/open/floor/cobble/mossy
+	required_materials = list(
+		/obj/item/natural/stone = 1
+		/obj/item/natural/fibers = 1,
+		/obj/item/natural/dirtclod = 1
+	)
+
 /datum/blueprint_recipe/floor/stonefloor_blocks
 	name = "Stone Block Floor"
 	desc = "A stone block floor."
@@ -890,7 +903,7 @@
 	skillcraft = /datum/skill/craft/masonry
 	craftdiff = 1
 
-/datum/blueprint_recipe/floor/greenstone/glyph
+/datum/blueprint_recipe/floor/greenstone/runed
 	name = "Rough Runed Greenstone Floors"
 	required_materials = list(
 		/obj/item/natural/stone = 2,
@@ -924,3 +937,46 @@
 
 /datum/blueprint_recipe/floor/greenstone/glyph/six
 	result_type = /turf/open/floor/greenstone/glyph6
+
+/datum/blueprint_recipe/floor/glass
+	name = "Wood Framed Glass Floor"
+	desc = "A glass floor."
+	required_materials = list(
+		/obj/item/natural/wood/plank = 2,
+		/obj/item/natural/glass = 2,
+	)
+	craftdiff = 2
+	skillcraft = /datum/skill/craft/carpentry
+	result_type = /turf/open/transparent/glass
+
+/datum/blueprint_recipe/floor/concrete
+	name = "Concrete Floor"
+	desc = "A slab of stone"
+	required_materials = list(
+		/obj/item/natural/natural/stone = 2,
+	)
+	craftdiff = 2
+	skillcraft = /datum/skill/craft/masonry
+	result_type = /turf/open/floor/concrete
+
+/datum/blueprint_recipe/floor/metal
+	name = "Metal Floor"
+	desc = "Ingots hammered into a floor"
+	required_materials = list(
+		/obj/item/ingot/iron = 2,
+	)
+	craftdiff = 2
+	skillcraft = /datum/skill/craft/blacksmithing
+	result_type = /turf/open/floor/metal
+
+/datum/blueprint_recipe/floor/metal/alt
+	name = "Alternative Metal Floor"
+	result_type = /turf/open/floor/metal/alt
+
+/datum/blueprint_recipe/floor/metal/grate
+	name = "Metal Grate (Closed)"
+	result_type = /turf/open/floor/metal/barograte
+
+/datum/blueprint_recipe/floor/metal/opengrate
+	name = "Metal Grate (Open)"
+	result_type = /turf/open/floor/metal/barograte/open
