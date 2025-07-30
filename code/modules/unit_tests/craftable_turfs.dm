@@ -20,8 +20,13 @@
 		/turf/open/floor/cobble/snow,
 		/turf/open/floor/volcanic,
 		/turf/open/floor/blocks/snow,
+		/turf/open/transparent,
+		/turf/open/transparent/openspace,
+		/turf/baseturf_skipover,
+		/turf/baseturf_bottom,
+		/turf/closed/basic,
 
-	) + typesof(/turf/closed/indestructible) + typesof(/turf/open/floor/underworld) + typesof(/turf/open/floor/snow) + typesof(/turf/open/floor/woodturned/nosmooth) + typesof(/turf/open/floor/wood/nosmooth) + typesof(/turf/open/water) + typesof(/turf/open/lava) + typesof(/turf/open/floor/carpet)
+	) + typesof(/turf/closed/indestructible) + typesof(/turf/open/floor/plasteel/maniac) + typesof(/turf/closed/mineral) + typesof(/turf/open/floor/underworld) + typesof(/turf/open/floor/snow) + typesof(/turf/open/floor/woodturned/nosmooth) + typesof(/turf/open/floor/wood/nosmooth) + typesof(/turf/open/water) + typesof(/turf/open/lava) + typesof(/turf/open/floor/carpet)
 	used_turfs |= blacklisted_turfs
 
 	// Find unused turfs

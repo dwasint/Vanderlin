@@ -35,7 +35,7 @@
 	var/look_for_land = controller.blackboard[BB_CURRENTLY_SWIMMING]
 	var/list/possible_turfs = list()
 	for(var/turf/possible_turf in oview(search_range, living_pawn))
-		if(isclosedturf(possible_turf) || istransparentturf(possible_turf))
+		if(isclosedturf(possible_turf) || isopenspace(possible_turf))
 			continue
 		if(possible_turf.is_blocked_turf())
 			continue
