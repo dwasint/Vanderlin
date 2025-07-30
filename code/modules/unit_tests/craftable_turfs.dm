@@ -27,7 +27,7 @@
 		/turf/closed/basic,
 		/turf/open/floor/cobblerock/snow,
 		/turf/open/floor/plasteel,
-		/turf/open/naturalstone,
+		/turf/open/floor/naturalstone,
 		/turf/open/floor/plank/h,
 		/turf/open/floor/plank,
 		/turf/closed/wall,
