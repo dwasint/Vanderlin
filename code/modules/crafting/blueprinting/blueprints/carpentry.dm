@@ -108,17 +108,6 @@
 	supports_directions = TRUE
 	craftdiff = 1
 
-/datum/blueprint_recipe/carpentry/handcart
-	name = "handcart"
-	desc = "A wheeled cart for hauling goods."
-	result_type = /obj/structure/handcart
-	required_materials = list(
-		/obj/item/grown/log/tree/small = 3,
-		/obj/item/rope = 1
-	)
-	supports_directions = TRUE
-	craftdiff = 1
-
 /datum/blueprint_recipe/carpentry/lantern_post
 	name = "lantern post"
 	desc = "A tall wooden post for mounting lanterns."
