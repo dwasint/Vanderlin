@@ -14,8 +14,11 @@
 		/turf/closed/splashscreen,
 		/turf/open/floor,
 		/turf/open,
+		/turf/open/floor/grass/hell,
+		/turf/open/floor/grass/eora,
+		/turf/open/floor/snow,
 
-	) + typesof(/turf/closed/indestructible) + typesof(/turf/open/water) + typesof(/turf/open/lava) + typesof(/turf/open/floor/carpet/lord)
+	) + typesof(/turf/closed/indestructible) + typesof(/turf/open/floor/woodturned/nosmooth) + typesof(/turf/open/floor/wood/nosmooth) + typesof(/turf/open/water) + typesof(/turf/open/lava) + typesof(/turf/open/floor/carpet)
 	used_turfs |= blacklisted_turfs
 
 	// Find unused turfs

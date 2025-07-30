@@ -16,6 +16,21 @@
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 1
 
+/datum/blueprint_recipe/floor/woodfloor
+	name = "Rotated Wooden Floor"
+	desc = "A ruined wooden floor."
+	result_type = /turf/open/floor/woodturned
+	required_materials = list(
+		/obj/item/grown/log/tree/small = 1
+	)
+	construct_tool = /obj/item/weapon/hammer
+	build_time = 3 SECONDS
+	category = "Floors"
+	floor_object = TRUE
+
+	skillcraft = /datum/skill/craft/carpentry
+	craftdiff = 1
+
 /datum/blueprint_recipe/floor/woodfloor_dark
 	name = "Dark Wooden Floor"
 	desc = "A dark wooden floor."
@@ -204,7 +219,7 @@
 		/obj/item/natural/fibers = 1,
 		/obj/item/natural/dirtclod = 3
 	)
-	construct_tool = /obj/item/weapon/hammer
+	construct_tool = /obj/item/weapon/shovel
 	build_time = 4 SECONDS
 	category = "Floors"
 	floor_object = TRUE
@@ -213,6 +228,22 @@
 	name = "Checkered Floor"
 	desc = "Checkered floor of stone and clay bricks."
 	result_type = /turf/open/floor/tile/kitchen
+	required_materials = list(
+		/obj/item/natural/stoneblock = 2,
+		/obj/item/natural/brick = 2
+	)
+	construct_tool = /obj/item/weapon/hammer
+	build_time = 4 SECONDS
+	category = "Floors"
+	floor_object = TRUE
+
+	skillcraft = /datum/skill/craft/masonry
+	craftdiff = 2
+
+/datum/blueprint_recipe/floor/tavern
+	name = "Tiled Floor"
+	desc = "Tiled floor of stone and clay bricks."
+	result_type = /turf/open/floor/tile
 	required_materials = list(
 		/obj/item/natural/stoneblock = 2,
 		/obj/item/natural/brick = 2
@@ -468,3 +499,73 @@
 	floor_object = TRUE
 	skillcraft = /datum/skill/craft/masonry
 	craftdiff = 2
+
+/datum/blueprint_recipe/floor/grass
+	name = "Grass"
+	desc = "Some grass."
+	result_type = /turf/open/floor/grass
+	required_materials = list(
+		/obj/item/natural/fibers = 2,
+		/obj/item/neuFarm/seed = 1,
+		/obj/item/natural/dirtclod = 2
+	)
+	construct_tool = /obj/item/weapon/shovel
+	build_time = 4 SECONDS
+	category = "Floors"
+	floor_object = TRUE
+
+/datum/blueprint_recipe/floor/grassyellow
+	name = "Yellow Grass"
+	desc = "Some grass."
+	result_type = /turf/open/floor/grass/yel
+	required_materials = list(
+		/obj/item/natural/fibers = 2,
+		/obj/item/neuFarm/seed = 1,
+		/obj/item/natural/dirtclod = 2
+	)
+	construct_tool = /obj/item/weapon/shovel
+	build_time = 4 SECONDS
+	category = "Floors"
+	floor_object = TRUE
+
+/datum/blueprint_recipe/floor/grassred
+	name = "Red Grass"
+	desc = "Some grass."
+	result_type = /turf/open/floor/grass/red
+	required_materials = list(
+		/obj/item/natural/fibers = 2,
+		/obj/item/neuFarm/seed = 1,
+		/obj/item/natural/dirtclod = 2
+	)
+	construct_tool = /obj/item/weapon/shovel
+	build_time = 4 SECONDS
+	category = "Floors"
+	floor_object = TRUE
+
+/datum/blueprint_recipe/floor/grassmixyel
+	name = "Mixed Yellow Grass"
+	desc = "Some grass."
+	result_type = /turf/open/floor/grass/mixyel
+	required_materials = list(
+		/obj/item/natural/fibers = 2,
+		/obj/item/neuFarm/seed = 1,
+		/obj/item/natural/dirtclod = 2
+	)
+	construct_tool = /obj/item/weapon/shovel
+	build_time = 4 SECONDS
+	category = "Floors"
+	floor_object = TRUE
+
+/datum/blueprint_recipe/floor/grasscold
+	name = "Tundra Grass"
+	desc = "Some grass."
+	result_type = /turf/open/floor/grass/cold
+	required_materials = list(
+		/obj/item/natural/fibers = 2,
+		/obj/item/neuFarm/seed = 1,
+		/obj/item/natural/dirtclod = 2
+	)
+	construct_tool = /obj/item/weapon/shovel
+	build_time = 4 SECONDS
+	category = "Floors"
+	floor_object = TRUE
