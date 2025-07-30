@@ -105,7 +105,7 @@
 	name = "Mossy Cobblestone Floor"
 	result_type = /turf/open/floor/cobble/mossy
 	required_materials = list(
-		/obj/item/natural/stone = 1
+		/obj/item/natural/stone = 1,
 		/obj/item/natural/fibers = 1,
 		/obj/item/natural/dirtclod = 1
 	)
