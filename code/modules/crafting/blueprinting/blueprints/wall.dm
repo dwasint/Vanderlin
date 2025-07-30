@@ -1,5 +1,6 @@
 /datum/blueprint_recipe/wall
 	abstract_type = /datum/blueprint_recipe/wall
+	category = "Walls"
 
 /datum/blueprint_recipe/wall/woodwall
 	name = "Wood Wall"
@@ -174,7 +175,7 @@
 
 /datum/blueprint_recipe/wall/solid_window/alt
 	name = "Alternative Solid Glass Window"
-	result_type = /turf/closed/wall/openclose
+	result_type = /turf/closed/wall/window/openclose
 
 /datum/blueprint_recipe/wall/silver_window
 	name = "Solid Silver Stained Glass Window"
@@ -189,7 +190,7 @@
 
 /datum/blueprint_recipe/wall/silver_window
 	name = "Alternative Solid Silver Stained Glass Window"
-	result_type = /turf/closed/wall/window/alt
+	result_type = /turf/closed/wall/window/stained/alt
 
 /datum/blueprint_recipe/wall/red_window
 	name = "Solid Red Stained Glass Window"
@@ -200,7 +201,7 @@
 	)
 	craftdiff = 2
 	skillcraft = /datum/skill/craft/blacksmithing
-	result_type = /turf/closed/wall/window/red
+	result_type = /turf/closed/wall/window/stained/red
 
 /datum/blueprint_recipe/wall/yellow_window
 	name = "Solid Yellow Stained Glass Window"
@@ -211,7 +212,7 @@
 	)
 	craftdiff = 2
 	skillcraft = /datum/skill/craft/blacksmithing
-	result_type = /turf/closed/wall/window/yellow
+	result_type = /turf/closed/wall/window/stained/yellow
 
 
 /datum/blueprint_recipe/wall/stonewindow
@@ -250,8 +251,8 @@
 
 /datum/blueprint_recipe/wall/mossstone/blue
 	name = "Mossy Bluestone Wall"
-	result_type = /turf/closed/wall/mineral/stone/blue
+	result_type = /turf/closed/wall/mineral/stone/moss/blue
 
 /datum/blueprint_recipe/wall/mossstone/red
 	name = "Mossy Redstone Wall"
-	result_type = /turf/closed/wall/mineral/stone/red
+	result_type = /turf/closed/wall/mineral/stone/moss/red

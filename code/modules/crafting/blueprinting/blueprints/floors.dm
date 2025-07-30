@@ -953,7 +953,7 @@
 	name = "Concrete Floor"
 	desc = "A slab of stone"
 	required_materials = list(
-		/obj/item/natural/natural/stone = 2,
+		/obj/item/natural/stone = 2,
 	)
 	craftdiff = 2
 	skillcraft = /datum/skill/craft/masonry

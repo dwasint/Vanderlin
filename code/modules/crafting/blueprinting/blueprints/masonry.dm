@@ -145,7 +145,7 @@
 	craftdiff = 1
 
 /datum/blueprint_recipe/masonry/solid_window
-	name = "solid glass window"
+	name = "fixed glass window"
 	desc = "A fixed glass window for letting in light."
 	result_type = /obj/structure/window/solid
 	required_materials = list(
