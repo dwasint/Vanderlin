@@ -74,7 +74,7 @@
 			option.image = image(icon = 'icons/obj/vampire_radial3.dmi', icon_state = choice[2])
 			option.info = span_boldnotice(choice[3])
 			made_choices[choice[1]] = option
-		var/task = show_radial_menu(activator, get_turf(spell_holder), made_choices, tooltips = TRUE, radial_icon = 'icons/obj/vampire_radial3.dmi')
+		var/task = show_radial_menu(activator, get_turf(spell_holder), made_choices, tooltips = TRUE)
 		if (!spell_holder.Adjacent(activator) || !task || QDELETED(src))
 			qdel(src)
 			return
