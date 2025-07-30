@@ -211,10 +211,23 @@
 
 	craftdiff = 1
 
-/datum/blueprint_recipe/floor/dirt
+/datum/blueprint_recipe/floor/dirtroad
 	name = "Dirt Road"
 	desc = "A dirt road."
 	result_type = /turf/open/floor/dirt/road
+	required_materials = list(
+		/obj/item/natural/fibers = 1,
+		/obj/item/natural/dirtclod = 3
+	)
+	construct_tool = /obj/item/weapon/shovel
+	build_time = 4 SECONDS
+	category = "Floors"
+	floor_object = TRUE
+
+/datum/blueprint_recipe/floor/dirt
+	name = "Dirt"
+	desc = "Some dirt."
+	result_type = /turf/open/floor/dirt
 	required_materials = list(
 		/obj/item/natural/fibers = 1,
 		/obj/item/natural/dirtclod = 3
@@ -240,7 +253,7 @@
 	skillcraft = /datum/skill/craft/masonry
 	craftdiff = 2
 
-/datum/blueprint_recipe/floor/tavern
+/datum/blueprint_recipe/floor/tile
 	name = "Tiled Floor"
 	desc = "Tiled floor of stone and clay bricks."
 	result_type = /turf/open/floor/tile
@@ -569,3 +582,152 @@
 	build_time = 4 SECONDS
 	category = "Floors"
 	floor_object = TRUE
+
+/datum/blueprint_recipe/floor/hay
+	name = "Hay"
+	desc = "Some hay."
+	result_type = /turf/open/floor/hay
+	required_materials = list(
+		/obj/item/natural/fibers = 3,
+		/obj/item/natural/chaff = 2,
+		/obj/item/natural/dirtclod = 1
+	)
+	construct_tool = /obj/item/weapon/pitchfork
+	build_time = 4 SECONDS
+	category = "Floors"
+	floor_object = TRUE
+
+/datum/blueprint_recipe/floor/woodflooralt
+	name = "Alternative Wooden Floor"
+	desc = "A ruined wooden floor."
+	result_type = /turf/open/floor/ruinedwood/alt
+	required_materials = list(
+		/obj/item/grown/log/tree/small = 1
+	)
+	construct_tool = /obj/item/weapon/hammer
+	build_time = 3 SECONDS
+	category = "Floors"
+	floor_object = TRUE
+
+	skillcraft = /datum/skill/craft/carpentry
+	craftdiff = 1
+
+/datum/blueprint_recipe/floor/woodfloorturned
+	name = "Rotated Wooden Floor"
+	desc = "A ruined wooden floor."
+	result_type = /turf/open/floor/ruinedwood/turned
+	required_materials = list(
+		/obj/item/grown/log/tree/small = 1
+	)
+	construct_tool = /obj/item/weapon/hammer
+	build_time = 3 SECONDS
+	category = "Floors"
+	floor_object = TRUE
+
+	skillcraft = /datum/skill/craft/carpentry
+	craftdiff = 1
+
+/datum/blueprint_recipe/floor/woodfloorturnedalt
+	name = "Alternative Rotated Ruined Wooden Floor"
+	desc = "A ruined wooden floor."
+	result_type = /turf/open/floor/ruinedwood/turned/alt
+	required_materials = list(
+		/obj/item/grown/log/tree/small = 1
+	)
+	construct_tool = /obj/item/weapon/hammer
+	build_time = 3 SECONDS
+	category = "Floors"
+	floor_object = TRUE
+
+	skillcraft = /datum/skill/craft/carpentry
+	craftdiff = 1
+
+/datum/blueprint_recipe/floor/woodfloorturned
+	name = "Rotated Ruined Wooden Floor"
+	desc = "A ruined wooden floor."
+	result_type = /turf/open/floor/ruinedwood/turned
+	required_materials = list(
+		/obj/item/grown/log/tree/small = 1
+	)
+	construct_tool = /obj/item/weapon/hammer
+	build_time = 3 SECONDS
+	category = "Floors"
+	floor_object = TRUE
+
+	skillcraft = /datum/skill/craft/carpentry
+	craftdiff = 1
+
+/datum/blueprint_recipe/floor/ruinedspiral
+	name = "Spiral Ruined Wooden Floor"
+	desc = "A ruined wooden floor."
+	result_type = /turf/open/floor/ruinedwood/spiral
+	required_materials = list(
+		/obj/item/grown/log/tree/small = 1
+	)
+	construct_tool = /obj/item/weapon/hammer
+	build_time = 3 SECONDS
+	category = "Floors"
+	floor_object = TRUE
+
+	skillcraft = /datum/skill/craft/carpentry
+	craftdiff = 1
+
+/datum/blueprint_recipe/floor/ruinedspiralfade
+	name = "Faded Spiral Ruined Wooden Floor"
+	desc = "A ruined wooden floor."
+	result_type = /turf/open/floor/ruinedwood/spiralfade
+	required_materials = list(
+		/obj/item/grown/log/tree/small = 1
+	)
+	construct_tool = /obj/item/weapon/hammer
+	build_time = 3 SECONDS
+	category = "Floors"
+	floor_object = TRUE
+
+	skillcraft = /datum/skill/craft/carpentry
+	craftdiff = 1
+
+/datum/blueprint_recipe/floor/ruinedchevron
+	name = "Chevron Ruined Wooden Floor"
+	desc = "A ruined wooden floor."
+	result_type = /turf/open/floor/ruinedwood/chevron
+	required_materials = list(
+		/obj/item/grown/log/tree/small = 1
+	)
+	construct_tool = /obj/item/weapon/hammer
+	build_time = 3 SECONDS
+	category = "Floors"
+	floor_object = TRUE
+
+	skillcraft = /datum/skill/craft/carpentry
+	craftdiff = 1
+
+/datum/blueprint_recipe/floor/ruineddark
+	name = "Dark Ruined Wooden Floor"
+	desc = "A ruined wooden floor."
+	result_type = /turf/open/floor/ruinedwood/darker
+	required_materials = list(
+		/obj/item/grown/log/tree/small = 1
+	)
+	construct_tool = /obj/item/weapon/hammer
+	build_time = 3 SECONDS
+	category = "Floors"
+	floor_object = TRUE
+
+	skillcraft = /datum/skill/craft/carpentry
+	craftdiff = 1
+
+/datum/blueprint_recipe/floor/ruineddarkturned
+	name = "Rotated Dark Ruined Wooden Floor"
+	desc = "A ruined wooden floor."
+	result_type = /turf/open/floor/ruinedwood/turned/darker
+	required_materials = list(
+		/obj/item/grown/log/tree/small = 1
+	)
+	construct_tool = /obj/item/weapon/hammer
+	build_time = 3 SECONDS
+	category = "Floors"
+	floor_object = TRUE
+
+	skillcraft = /datum/skill/craft/carpentry
+	craftdiff = 1
