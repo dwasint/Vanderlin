@@ -16,7 +16,7 @@
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 1
 
-/datum/blueprint_recipe/floor/woodfloor
+/datum/blueprint_recipe/floor/woodfloor_turned
 	name = "Rotated Wooden Floor"
 	desc = "A ruined wooden floor."
 	result_type = /turf/open/floor/woodturned
@@ -76,6 +76,11 @@
 
 	skillcraft = /datum/skill/craft/masonry
 	craftdiff = 0
+
+/datum/blueprint_recipe/floor/stonefloor/alt
+	name = "Alterantive Stone Floor"
+	desc = "A cobbled stone floor."
+	result_type = /turf/open/floor/cobblerock/alt
 
 /datum/blueprint_recipe/floor/stonefloor_cobblestone
 	name = "Cobblestone Floor"
@@ -269,6 +274,22 @@
 	skillcraft = /datum/skill/craft/masonry
 	craftdiff = 2
 
+/datum/blueprint_recipe/floor/tile_green
+	name = "Green Tiled Floor"
+	desc = "Tiled floor of stone and clay bricks."
+	result_type = /turf/open/floor/tile/checker_green
+	required_materials = list(
+		/obj/item/natural/stoneblock = 2,
+		/obj/item/natural/brick = 2
+	)
+	construct_tool = /obj/item/weapon/hammer
+	build_time = 4 SECONDS
+	category = "Floors"
+	floor_object = TRUE
+
+	skillcraft = /datum/skill/craft/masonry
+	craftdiff = 2
+
 /datum/blueprint_recipe/floor/masonic
 	name = "Masonic Tile"
 	desc = "Masonic flooring made of stoneblocks."
@@ -434,7 +455,7 @@
 	desc = "Flooring fit for a clergy."
 	result_type = /turf/open/floor/church
 	required_materials = list(
-		/obj/item/natural/brick = 2
+		/obj/item/natural/stoneblock = 2
 	)
 	construct_tool = /obj/item/weapon/hammer
 	build_time = 4 SECONDS
@@ -462,7 +483,7 @@
 	desc = "Flooring fit for a clergy."
 	result_type = /turf/open/floor/churchmarble
 	required_materials = list(
-		/obj/item/natural/brick = 3
+		/obj/item/natural/stoneblock = 3
 	)
 	construct_tool = /obj/item/weapon/hammer
 	build_time = 4 SECONDS
@@ -490,7 +511,7 @@
 	desc = "Flooring fit for a clergy."
 	result_type = /turf/open/floor/churchrough
 	required_materials = list(
-		/obj/item/natural/brick = 2
+		/obj/item/natural/stoneblock = 2
 	)
 	construct_tool = /obj/item/weapon/hammer
 	build_time = 4 SECONDS
@@ -499,7 +520,7 @@
 	skillcraft = /datum/skill/craft/masonry
 	craftdiff = 2
 
-/datum/blueprint_recipe/floor/roughchurch
+/datum/blueprint_recipe/floor/roughchurch_purple
 	name = "Purple Rough Church Brick Floor"
 	desc = "Flooring fit for a clergy."
 	result_type = /turf/open/floor/churchrough/purple
@@ -731,3 +752,175 @@
 
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 1
+
+/datum/blueprint_recipe/floor/roof
+	name = "Tile Roofing"
+	desc = "Tiled roof made of clay bricks."
+	result_type = /turf/open/floor/rooftop
+	required_materials = list(
+		/obj/item/natural/brick = 2
+	)
+	supports_directions = TRUE
+	construct_tool = /obj/item/weapon/hammer
+	build_time = 4 SECONDS
+	category = "Floors"
+	floor_object = TRUE
+
+	skillcraft = /datum/skill/craft/masonry
+	craftdiff = 2
+
+/datum/blueprint_recipe/floor/roof
+	name = "Stone Tile Roofing"
+	desc = "Tiled roof made of stone blocks."
+	result_type = /turf/open/floor/rooftop/green
+	required_materials = list(
+		/obj/item/natural/stoneblock = 2
+	)
+	supports_directions = TRUE
+	construct_tool = /obj/item/weapon/hammer
+	build_time = 4 SECONDS
+	category = "Floors"
+	floor_object = TRUE
+
+	skillcraft = /datum/skill/craft/masonry
+	craftdiff = 2
+
+/datum/blueprint_recipe/floor/stonefloor_blocksred
+	name = "Red Stone Block Floor"
+	desc = "A stone block floor."
+	result_type = /turf/open/floor/blocks/stonered
+	required_materials = list(
+		/obj/item/natural/stoneblock = 1
+	)
+	construct_tool = /obj/item/weapon/hammer
+	build_time = 5 SECONDS
+	category = "Floors"
+	floor_object = TRUE
+
+	skillcraft = /datum/skill/craft/masonry
+	craftdiff = 1
+
+/datum/blueprint_recipe/floor/stonefloor_blocksgreen
+	name = "Green Stone Block Floor"
+	desc = "A stone block floor."
+	result_type = /turf/open/floor/blocks/green
+	required_materials = list(
+		/obj/item/natural/stoneblock = 1
+	)
+	construct_tool = /obj/item/weapon/hammer
+	build_time = 5 SECONDS
+	category = "Floors"
+	floor_object = TRUE
+
+	skillcraft = /datum/skill/craft/masonry
+	craftdiff = 1
+
+/datum/blueprint_recipe/floor/stonefloor_blocksredtiny
+	name = "Tiny Red Stone Block Floor"
+	desc = "A stone block floor."
+	result_type = /turf/open/floor/blocks/stonered/tiny
+	required_materials = list(
+		/obj/item/natural/stoneblock = 1
+	)
+	construct_tool = /obj/item/weapon/hammer
+	build_time = 5 SECONDS
+	category = "Floors"
+	floor_object = TRUE
+
+	skillcraft = /datum/skill/craft/masonry
+	craftdiff = 1
+
+/datum/blueprint_recipe/floor/stonefloor_newblue
+	name = "New Blue Stone Block Floor"
+	desc = "A stone block floor."
+	result_type = /turf/open/floor/blocks/newstone/alt
+	required_materials = list(
+		/obj/item/natural/stoneblock = 1
+	)
+	construct_tool = /obj/item/weapon/hammer
+	build_time = 5 SECONDS
+	category = "Floors"
+	floor_object = TRUE
+
+	skillcraft = /datum/skill/craft/masonry
+	craftdiff = 1
+
+/datum/blueprint_recipe/floor/paving
+	name = "Paved Stone Block Floor"
+	desc = "A stone block floor."
+	result_type = /turf/open/floor/blocks/paving
+	required_materials = list(
+		/obj/item/natural/stoneblock = 2
+	)
+	construct_tool = /obj/item/weapon/hammer
+	build_time = 5 SECONDS
+	category = "Floors"
+	floor_object = TRUE
+
+	skillcraft = /datum/skill/craft/masonry
+	craftdiff = 2
+
+/datum/blueprint_recipe/floor/pavingvertical
+	name = "Vertical Paved Stone Block Floor"
+	desc = "A stone block floor."
+	result_type = /turf/open/floor/blocks/paving/vert
+	required_materials = list(
+		/obj/item/natural/stoneblock = 2
+	)
+	construct_tool = /obj/item/weapon/hammer
+	build_time = 5 SECONDS
+	category = "Floors"
+	floor_object = TRUE
+
+	skillcraft = /datum/skill/craft/masonry
+	craftdiff = 2
+
+/datum/blueprint_recipe/floor/greenstone
+	name = "Rough Greenstone Floors"
+	desc = "A stone floor."
+	result_type = /turf/open/floor/greenstone
+	required_materials = list(
+		/obj/item/natural/stone = 2
+	)
+	construct_tool = /obj/item/weapon/hammer
+	build_time = 5 SECONDS
+	category = "Floors"
+	floor_object = TRUE
+
+	skillcraft = /datum/skill/craft/masonry
+	craftdiff = 1
+
+/datum/blueprint_recipe/floor/greenstone/glyph
+	name = "Rough Runed Greenstone Floors"
+	required_materials = list(
+		/obj/item/natural/stone = 2,
+		/obj/item/gem/amethyst = 1,
+	)
+	craftdiff = 3
+	skillcraft = /datum/skill/magic/arcane
+	result_type = /turf/open/floor/greenstone/runed
+
+/datum/blueprint_recipe/floor/greenstone/glyph
+	name = "Rough Glyph Greenstone Floors"
+	required_materials = list(
+		/obj/item/natural/stone = 2,
+		/obj/item/gem/amethyst = 1,
+	)
+	craftdiff = 2
+	skillcraft = /datum/skill/magic/arcane
+	result_type = /turf/open/floor/greenstone/glyph1
+
+/datum/blueprint_recipe/floor/greenstone/glyph/two
+	result_type = /turf/open/floor/greenstone/glyph2
+
+/datum/blueprint_recipe/floor/greenstone/glyph/three
+	result_type = /turf/open/floor/greenstone/glyph3
+
+/datum/blueprint_recipe/floor/greenstone/glyph/four
+	result_type = /turf/open/floor/greenstone/glyph4
+
+/datum/blueprint_recipe/floor/greenstone/glyph/five
+	result_type = /turf/open/floor/greenstone/glyph5
+
+/datum/blueprint_recipe/floor/greenstone/glyph/six
+	result_type = /turf/open/floor/greenstone/glyph6
