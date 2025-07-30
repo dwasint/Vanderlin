@@ -159,6 +159,7 @@ GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
 	return uuid
 
 /proc/send_to_glitchtip(exception/E, list/extra_data = null)
+	#ifndef SPACEMAN_DMM
 	if(!CONFIG_GET(string/glitchtip_dsn))
 		return
 	var/glitchtip_dsn = CONFIG_GET(string/glitchtip_dsn)
@@ -361,6 +362,7 @@ GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
 	event_data["fingerprint"] = list("[E.file]:[E.line]", E.name)
 
 	send_glitchtip_request(event_data, host, project_id, key)
+	#endif
 
 /proc/send_glitchtip_request(list/event_data, host, project_id, key)
 	var/glitchtip_url = "https://[host]/api/[project_id]/store/"
