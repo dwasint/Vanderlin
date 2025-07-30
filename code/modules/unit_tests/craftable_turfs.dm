@@ -12,7 +12,10 @@
 	var/list/blacklisted_turfs = list(
 		/turf/closed,
 		/turf/closed/splashscreen,
-	) + typesof(/turf/closed/indestructible) + typesof(/turf/open/water) + typesof(/turf/open/lava)
+		/turf/open/floor,
+		/turf/open,
+
+	) + typesof(/turf/closed/indestructible) + typesof(/turf/open/water) + typesof(/turf/open/lava) + typesof(/turf/open/floor/carpet/lord)
 	used_turfs |= blacklisted_turfs
 
 	// Find unused turfs
