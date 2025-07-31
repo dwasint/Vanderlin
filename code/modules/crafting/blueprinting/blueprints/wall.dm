@@ -1,6 +1,7 @@
 /datum/blueprint_recipe/wall
 	abstract_type = /datum/blueprint_recipe/wall
 	category = "Walls"
+	pixel_offsets = FALSE
 
 /datum/blueprint_recipe/wall/woodwall
 	name = "Wood Wall"

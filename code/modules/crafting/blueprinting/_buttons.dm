@@ -98,8 +98,8 @@
 /atom/movable/blueprint_pixel_dummy
 	name = "pixel positioning tracker"
 	icon = 'icons/effects/alphacolors.dmi'
-	icon_state = "tile_outline"
-	alpha = 255
+	icon_state = "white"
+	alpha = 1
 	glide_size = 1000
 	plane = HUD_PLANE
 	var/datum/blueprint_system/parent_blueprint

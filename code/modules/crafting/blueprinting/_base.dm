@@ -33,6 +33,7 @@ GLOBAL_LIST_EMPTY(blueprint_recipes)
 	var/craftsound = 'sound/foley/bandage.ogg'
 	var/edge_density = TRUE
 	var/requires_learning = FALSE
+	var/pixel_offsets = TRUE
 
 /datum/blueprint_recipe/proc/generate_html(mob/user)
 	var/client/client = user

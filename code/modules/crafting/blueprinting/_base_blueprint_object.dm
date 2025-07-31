@@ -5,7 +5,7 @@
 	icon = 'icons/effects/alphacolors.dmi'
 	icon_state = "white"
 	alpha = 0 // Keep parent invisible
-	invisibility = 101 /// byond will still send data to clients if this is set
+	invisibility = 100 /// on_hover still triggers on no alpha objects
 	anchored = TRUE
 	density = FALSE
 	var/datum/blueprint_recipe/recipe
@@ -81,13 +81,14 @@
 	if(smoothing_flags & SMOOTH_EDGE)
 		smoothing_flags &= ~SMOOTH_EDGE
 
-	SETUP_SMOOTHING()
-	for(var/obj/structure/blueprint/print in GLOB.active_blueprints)// This is shitcode but range() and oranges() don't work with invisiblity objects
-		QUEUE_SMOOTH(print)
+	if(smoothing_flags)
+		SETUP_SMOOTHING()
+		QUEUE_SMOOTH(src)
+		QUEUE_SMOOTH_NEIGHBORS(src)
 	dir = recipe.supports_directions ? blueprint_dir : initial(result.dir)
 
 	// Update all existing images when appearance changes
-	update_all_images()
+	update_all_images(FALSE)
 
 /obj/structure/blueprint/proc/add_viewer(mob/living/viewer)
 	if(!viewer.client || viewing_images[viewer.client])
