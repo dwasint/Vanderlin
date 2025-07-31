@@ -145,7 +145,7 @@
 /obj/effect/blood_ritual/reveal/Destroy()
 	victim = null
 	anim(target = loc, a_icon = 'icons/effects/vampire.dmi', flick_anim = "rune_reveal-stop", plane = ABOVE_LIGHTING_PLANE)
-	..()
+	. = ..()
 
 /obj/effect/blood_ritual/reveal/New(turf/loc, mob/living/vic = null, dur = 2)
 	..()

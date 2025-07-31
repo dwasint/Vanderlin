@@ -204,7 +204,7 @@ GLOBAL_LIST_INIT(astral_projections, list())
 		invisibility = 101
 		density = FALSE
 		anchor = null
-	..()
+	. = ..()
 
 /mob/living/simple_animal/hostile/retaliate/astral_projection/Life()
 	. = ..()

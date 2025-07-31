@@ -85,4 +85,4 @@
 		C.images -= indicator
 	indicator = null
 	victim = null
-	..()
+	. = ..()

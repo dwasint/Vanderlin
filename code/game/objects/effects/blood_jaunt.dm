@@ -46,6 +46,9 @@
 	if (!user && !packup && !force_jaunt)
 		qdel(src)
 		return
+	if(!destination)
+		qdel(src)
+		return
 	if (user)
 		var/muted = FALSE
 		if (user.anchored)
@@ -108,7 +111,7 @@
 		for(var/atom/A in packed)
 			qdel(A)
 	packed = list()
-	..()
+	. = ..()
 
 /obj/effect/bloodcult_jaunt/narsie_act()
 	return

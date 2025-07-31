@@ -241,7 +241,7 @@
 /obj/effect/blood_ritual/feet_portal/Destroy()
 	caster = null
 	source = null
-	..()
+	. = ..()
 
 /obj/effect/blood_ritual/feet_portal/HasProximity(atom/movable/AM)
 	if (caster && caster.loc != loc)

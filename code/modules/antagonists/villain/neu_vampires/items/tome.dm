@@ -29,11 +29,8 @@ GLOBAL_LIST_INIT(arcane_tomes, list())
 
 /obj/item/tome/Destroy()
 	GLOB.arcane_tomes.Remove(src)
-	for(var/obj/O in talismans)
-		talismans.Remove(O)
-		qdel(O)
-	talismans=list()
-	..()
+	QDEL_LIST(talismans)
+	. = ..()
 
 /obj/item/tome/proc/tome_text()
 	var/page_data=null

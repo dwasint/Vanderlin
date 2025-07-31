@@ -136,7 +136,7 @@ GLOBAL_LIST_EMPTY(rune_appearances_cache)
 
 	LAZYREMOVE(GLOB.runes, src)
 
-	..()
+	. = ..()
 
 /obj/effect/blood_rune/examine(mob/user)
 	. = ..()

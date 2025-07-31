@@ -98,7 +98,7 @@ GLOBAL_LIST_EMPTY(seer_rituals)
 	if (source)
 		source.abort()
 	source = null
-	..()
+	. = ..()
 
 /obj/effect/blood_ritual/seer/HasProximity(atom/movable/AM)
 	if (!talisman)
