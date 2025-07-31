@@ -40,6 +40,7 @@
 		/turf/closed/wall/mineral/stonebrick/reddish,
 		/turf/closed/wall/mineral/decostone/cand/reddish,
 		/obj/structure/stairs/stone/reddish,
+		/turf/closed/wall/mineral/roofwall,
 
 	) + typesof(/turf/closed/indestructible) + typesof(/turf/closed/wall/mineral/decostone/fluffstone) + typesof(/turf/open/floor/plasteel/maniac) + typesof(/turf/closed/mineral) + typesof(/turf/open/floor/underworld) + typesof(/turf/open/floor/snow) + typesof(/turf/open/floor/woodturned/nosmooth) + typesof(/turf/open/floor/wood/nosmooth) + typesof(/turf/open/water) + typesof(/turf/open/lava) + typesof(/turf/open/floor/carpet)
 	used_turfs |= blacklisted_turfs

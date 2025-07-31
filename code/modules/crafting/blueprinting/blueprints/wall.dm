@@ -442,19 +442,15 @@
 	result_type = /turf/closed/wall/mineral/decostone/moss/blue/end
 
 /datum/blueprint_recipe/wall/roof
-	name = "Brick Roof"
+	name = "Center Brick Roof"
 	desc = "A large brick roof."
 	required_materials = list(
 		/obj/item/natural/brick = 4,
 	)
 	craftdiff = 4
 	skillcraft = /datum/skill/craft/masonry
-	result_type = /turf/closed/wall/mineral/roofwall
-	supports_directions = TRUE
-
-/datum/blueprint_recipe/wall/roof/center
-	name = "Center Brick Roof"
 	result_type = /turf/closed/wall/mineral/roofwall/center
+	supports_directions = TRUE
 
 /datum/blueprint_recipe/wall/roof/middle
 	name = "Middle Brick Roof"
