@@ -634,11 +634,6 @@
 
 	if(selected_recipe)
 		if(left_click)
-			if(pixel_positioning_mode && initial(selected_recipe.pixel_offsets))
-				var/list/offsets = get_pixel_offsets_from_screenloc(params)
-				if(offsets)
-					pixel_x_offset =offsets["x"]
-					pixel_y_offset = offsets["y"]
 			place_blueprint(get_turf(object), user)
 			return TRUE
 		if(right_click)
