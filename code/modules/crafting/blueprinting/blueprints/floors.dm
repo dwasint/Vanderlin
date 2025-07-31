@@ -782,7 +782,7 @@
 	skillcraft = /datum/skill/craft/masonry
 	craftdiff = 2
 
-/datum/blueprint_recipe/floor/roof
+/datum/blueprint_recipe/floor/roof_green
 	name = "Stone Tile Roofing"
 	desc = "Tiled roof made of stone blocks."
 	result_type = /turf/open/floor/rooftop/green

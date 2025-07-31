@@ -277,6 +277,22 @@
 	skillcraft = /datum/skill/craft/masonry
 	result_type = /turf/closed/wall/mineral/decorstone/window
 
+/datum/blueprint_recipe/wall/decorstonealt/moss
+	name = "Alternative Mossy Decor Stone Wall"
+	required_materials = list(
+		/obj/item/natural/stoneblock = 4,
+		/obj/item/natural/fibers = 2,
+	)
+	result_type = /turf/closed/wall/mineral/decorstone/moss
+
+/datum/blueprint_recipe/wall/decorstonealt/moss/red
+	name = "Alternative Mossy Decor Redstone Wall"
+	result_type = /turf/closed/wall/mineral/decorstone/moss/red
+
+/datum/blueprint_recipe/wall/decorstonealt/moss/blue
+	name = "Alternative Mossy Decor Bluestone Wall"
+	result_type = /turf/closed/wall/mineral/decorstone/moss/blue
+
 /datum/blueprint_recipe/wall/decorstone/moss
 	name = "Mossy Decor Stone Wall"
 	required_materials = list(
@@ -355,7 +371,7 @@
 	skillcraft = /datum/skill/craft/masonry
 	result_type = /turf/closed/wall/mineral/decostone/end
 
-/datum/blueprint_recipe/wall/decorstonelong/moss
+/datum/blueprint_recipe/wall/decorstoneend/moss
 	name = "Mossy Decor Stone End Wall"
 	required_materials = list(
 		/obj/item/natural/stoneblock = 4,
@@ -363,10 +379,10 @@
 	)
 	result_type = /turf/closed/wall/mineral/decostone/moss/end
 
-/datum/blueprint_recipe/wall/decorstonelong/moss/red
+/datum/blueprint_recipe/wall/decorstoneend/moss/red
 	name = "Mossy Decor Redstone End Wall"
 	result_type = /turf/closed/wall/mineral/decostone/moss/red/end
 
-/datum/blueprint_recipe/wall/decorstonelong/moss/blue
+/datum/blueprint_recipe/wall/decorstoneend/moss/blue
 	name = "Mossy Decor Bluestone End Wall"
 	result_type = /turf/closed/wall/mineral/decostone/moss/blue/end
