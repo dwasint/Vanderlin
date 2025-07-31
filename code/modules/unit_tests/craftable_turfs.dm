@@ -39,7 +39,7 @@
 		/turf/closed/wall/mineral,
 
 
-	) + typesof(/turf/closed/indestructible) + typesof(/turf/closed/wall/mineral/fluffstone) + typesof(/turf/open/floor/plasteel/maniac) + typesof(/turf/closed/mineral) + typesof(/turf/open/floor/underworld) + typesof(/turf/open/floor/snow) + typesof(/turf/open/floor/woodturned/nosmooth) + typesof(/turf/open/floor/wood/nosmooth) + typesof(/turf/open/water) + typesof(/turf/open/lava) + typesof(/turf/open/floor/carpet)
+	) + typesof(/turf/closed/indestructible) + typesof(/turf/closed/wall/mineral/decostone/fluffstone) + typesof(/turf/open/floor/plasteel/maniac) + typesof(/turf/closed/mineral) + typesof(/turf/open/floor/underworld) + typesof(/turf/open/floor/snow) + typesof(/turf/open/floor/woodturned/nosmooth) + typesof(/turf/open/floor/wood/nosmooth) + typesof(/turf/open/water) + typesof(/turf/open/lava) + typesof(/turf/open/floor/carpet)
 	used_turfs |= blacklisted_turfs
 
 	// Find unused turfs
