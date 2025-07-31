@@ -179,11 +179,6 @@ All foods are distributed among various categories. Use common sense.
 					STOP_PROCESSING(SSobj, src)
 					return PROCESS_KILL
 
-/obj/item/reagent_containers/food/snacks/can_craft_with()
-	if(eat_effect == /datum/status_effect/debuff/rotfood)
-		return FALSE
-	return ..()
-
 /obj/item/reagent_containers/food/snacks/proc/become_rotten()
 	if(QDELETED(src))
 		return

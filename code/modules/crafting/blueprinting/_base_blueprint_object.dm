@@ -1,24 +1,30 @@
+
 /obj/structure/blueprint
 	name = "construction blueprint"
 	desc = "A holographic blueprint for construction."
 	icon = 'icons/effects/alphacolors.dmi'
 	icon_state = "white"
-	alpha = 150
+	alpha = 0 // Keep parent invisible
+	invisibility = 101 /// byond will still send data to clients if this is set
 	anchored = TRUE
 	density = FALSE
 	var/datum/blueprint_recipe/recipe
 	var/mob/creator
 	var/construction_progress = 0
 	var/max_construction_progress = 100
-	var/list/viewing_clients = list() // Clients who can see this blueprint
+	var/list/viewing_images = list() // Track images by client
 	var/blueprint_dir = SOUTH // Direction this blueprint will be built in
+
+	var/image/cached_image
 
 /obj/structure/blueprint/Initialize(mapload)
 	. = ..()
 	GLOB.active_blueprints += src
+	SSblueprints.add_new_blueprint(src)
 
 /obj/structure/blueprint/Destroy()
 	GLOB.active_blueprints -= src
+	SSblueprints.remove_blueprint(src)
 	clear_all_viewers()
 	return ..()
 
@@ -32,7 +38,37 @@
 		return
 
 	name = "[recipe.name] blueprint"
-	desc = "A blueprint for constructing [recipe.name]. [recipe.desc]"
+	var/list/desc_lines = list()
+	desc_lines += "[recipe.desc]"
+	desc_lines += ""
+
+	if(recipe.construct_tool)
+		var/obj/item/tool = new recipe.construct_tool
+		desc_lines += span_notice("Required tool: [initial(tool.name)]")
+		qdel(tool)
+
+	if(length(recipe.required_materials))
+		desc_lines += span_notice("Required materials:")
+		for(var/atom/material_path as anything in recipe.required_materials)
+			var/count = recipe.required_materials[material_path]
+			desc_lines += "- [count] [initial(material_path.name)]"
+
+	if(recipe.skillcraft)
+		var/datum/skill/recipe_skill = recipe.skillcraft
+		var/difficulty_text = ""
+		if(recipe.craftdiff > 0)
+			difficulty_text = " (Difficulty: [recipe.craftdiff])"
+		desc_lines += span_notice("Required skill: [initial(recipe_skill.name)][difficulty_text]")
+
+	desc_lines += span_notice("Construction time: [recipe.build_time * 0.1] seconds")
+
+	if(recipe.supports_directions)
+		desc_lines += "Can be rotated during construction"
+	if(recipe.floor_object)
+		desc_lines += "Covers entire floor tile"
+
+	desc = desc_lines.Join("\n")
+
 
 	var/atom/result = recipe.result_type
 	icon = initial(result.icon)
@@ -46,36 +82,74 @@
 		smoothing_flags &= ~SMOOTH_EDGE
 
 	SETUP_SMOOTHING()
-	QUEUE_SMOOTH(src)
-	QUEUE_SMOOTH_NEIGHBORS(src)
+	for(var/obj/structure/blueprint/print in GLOB.active_blueprints)// This is shitcode but range() and oranges() don't work with invisiblity objects
+		QUEUE_SMOOTH(print)
 	dir = recipe.supports_directions ? blueprint_dir : initial(result.dir)
-	color = "#00FFFF"
+
+	// Update all existing images when appearance changes
+	update_all_images()
 
 /obj/structure/blueprint/proc/add_viewer(mob/living/viewer)
-	if(!viewer.client || (viewer.client in viewing_clients))
+	if(!viewer.client || viewing_images[viewer.client])
 		return
+	if(recipe) // this helps me visualize it give me a break
+		if(recipe?.requires_learning && !(recipe?.type in viewer.mind?.learned_recipes))
+			return
 
-	viewing_clients += viewer.client
-	var/image/blueprint_image = image(icon, src, icon_state, layer, dir)
-	blueprint_image.color = color
-	blueprint_image.alpha = alpha
+	var/image/blueprint_image = create_blueprint_image()
+	viewing_images[viewer.client] = blueprint_image
 	viewer.client.images += blueprint_image
 
 /obj/structure/blueprint/proc/remove_viewer(mob/living/viewer)
-	if(!viewer.client || !(viewer.client in viewing_clients))
+	if(!viewer.client || !viewing_images[viewer.client])
 		return
 
-	viewing_clients -= viewer.client
-	for(var/image/I in viewer.client.images)
-		if(I.loc == src)
-			viewer.client.images -= I
+	var/image/blueprint_image = viewing_images[viewer.client]
+	viewer.client.images -= blueprint_image
+	viewing_images -= viewer.client
 
 /obj/structure/blueprint/proc/clear_all_viewers()
-	for(var/client/C in viewing_clients)
-		for(var/image/I in C.images)
-			if(I.loc == src)
-				C.images -= I
-	viewing_clients.Cut()
+	for(var/client/C in viewing_images)
+		var/image/blueprint_image = viewing_images[C]
+		C.images -= blueprint_image
+	viewing_images.Cut()
+
+/obj/structure/blueprint/proc/create_blueprint_image(use_cache = TRUE)
+	if(use_cache && cached_image)
+		return cached_image
+	var/image/blueprint_image = image(icon, src, icon_state, layer, dir)
+	blueprint_image.appearance = appearance
+	blueprint_image.invisibility = 0
+
+	blueprint_image.color = "#00FFFF"
+	blueprint_image.alpha = 150 // Set desired alpha on the image
+	blueprint_image.pixel_x = pixel_x
+	blueprint_image.pixel_y = pixel_y
+	blueprint_image.override = TRUE
+	blueprint_image.appearance_flags = RESET_ALPHA | KEEP_APART
+	cached_image = blueprint_image
+	return blueprint_image
+
+/obj/structure/blueprint/proc/update_all_images(use_cache = TRUE)
+	for(var/client/C in viewing_images)
+		var/image/old_image = viewing_images[C]
+		C.images -= old_image
+
+		var/image/new_image = create_blueprint_image(use_cache)
+		viewing_images[C] = new_image
+		C.images += new_image
+
+/obj/structure/blueprint/set_smoothed_icon_state()
+	. = ..()
+	update_all_images(FALSE)
+
+/obj/structure/blueprint/smooth_icon()
+	. = ..()
+	update_all_images(FALSE)
+
+/obj/structure/blueprint/update_appearance(updates)
+	. = ..()
+	update_all_images(FALSE)
 
 /obj/structure/blueprint/proc/try_construct(mob/user, obj/item/weapon/hammer/hammer)
 	if(!recipe)
@@ -155,7 +229,7 @@
 			new_structure.pixel_y = pixel_y
 			if(!initial(recipe.edge_density) && ((abs(pixel_x) >= 14) || (abs(pixel_y) >= 14)))
 				new_structure.density = FALSE
-			new_structure.OnCrafted(user.dir, user) //!TODO This is likely fucked with the new stuff
+			new_structure.OnCrafted(user.dir, user)
 		else
 			var/turf/turf = get_turf(src)
 			var/turf/new_turf = turf.ChangeTurf(recipe.result_type)
@@ -165,7 +239,6 @@
 		user.visible_message("<span class='notice'>[user] [recipe.verbage_tp] [recipe.name]!</span>", \
 							"<span class='notice'>I [recipe.verbage] [recipe.name]!</span>")
 
-
 		if(recipe.craftsound)
 			playsound(get_turf(src), recipe.craftsound, 100, TRUE)
 
@@ -173,7 +246,7 @@
 			if(isliving(user))
 				var/mob/living/L = user
 				var/amt2raise = L.STAINT * 2
-				if(recipe.craftdiff > 0) // Difficult recipe gives more XP
+				if(recipe.craftdiff > 0)
 					amt2raise += (recipe.craftdiff * 10)
 				if(amt2raise > 0)
 					user.mind.add_sleep_experience(recipe.skillcraft, amt2raise, FALSE)

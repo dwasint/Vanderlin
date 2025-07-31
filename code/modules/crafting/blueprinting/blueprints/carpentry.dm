@@ -399,3 +399,21 @@
 	result_type = /obj/structure/spider/nest/constructed
 	required_materials = list(/obj/item/natural/wood/plank = 3)
 	craftdiff = 1
+
+/datum/blueprint_recipe/carpentry/composter
+	name = "composter"
+	desc = "A constructed composter."
+	result_type = /obj/structure/composter
+	required_materials = list(/obj/item/grown/log/tree/small = 1)
+	craftdiff = 0
+	build_time = 2 SECONDS
+
+/datum/blueprint_recipe/carpentry/structure/plough
+	name = "plough"
+	desc = "A plough."
+	result_type = /obj/structure/plough
+	required_materials = list(
+		/obj/item/grown/log/tree/small = 2,
+		/obj/item/ingot/iron = 1
+	)
+	build_time = 4 SECONDS

@@ -54,7 +54,6 @@
 
 	if(!CONFIG_GET(flag/disable_human_mood))
 		AddComponent(/datum/component/mood)
-	AddComponent(/datum/component/personal_crafting)
 	AddElement(/datum/element/footstep, footstep_type, 1, -6)
 	GLOB.human_list += src
 	if(ai_controller && flee_in_pain)

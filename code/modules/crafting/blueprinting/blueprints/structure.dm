@@ -1,5 +1,6 @@
 /datum/blueprint_recipe/structure
 	abstract_type = /datum/blueprint_recipe/structure
+	category = "Structures"
 
 /datum/blueprint_recipe/structure/tentdoor
 	name = "Tent Door"

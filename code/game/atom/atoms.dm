@@ -356,12 +356,8 @@
 			else
 				M.forceMove(src)
 
-/obj/item/CheckParts(list/parts_list, datum/crafting_recipe/R)
+/obj/item/CheckParts(list/parts_list)
 	..()
-	if(R)
-		if(R.sellprice)
-			sellprice = R.sellprice
-			randomize_price()
 
 ///Hook for multiz???
 /atom/proc/update_multiz(prune_on_fail = FALSE)

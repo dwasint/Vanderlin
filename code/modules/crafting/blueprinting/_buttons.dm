@@ -92,6 +92,7 @@
 
 /atom/movable/screen/blueprint/quit/Click()
 	if(bd)
+		REMOVE_TRAIT(usr, TRAIT_BLUEPRINT_VISION, TRAIT_GENERIC)
 		bd.quit()
 
 /atom/movable/blueprint_pixel_dummy

@@ -86,7 +86,6 @@
 	scan_repeatable_crafting_recipes()
 	scan_orderless_slapcraft_recipes()
 	scan_slapcraft_recipes()
-	scan_crafting_recipes()
 	scan_container_craft_recipes()
 	scan_molten_recipes()
 	scan_anvil_recipes()
@@ -137,37 +136,6 @@
 				"skill_required" = recipe.skillcraft,
 				"assembly_weight" = recipe.assembly_weight_class,
 				"can_disassemble" = recipe.can_disassemble
-			)
-		)
-
-		qdel(recipe)
-
-/datum/recipe_tree_interface/proc/scan_crafting_recipes()
-	for(var/recipe_path in subtypesof(/datum/crafting_recipe))
-		var/datum/crafting_recipe/recipe = new recipe_path()
-
-		if(!recipe.result)
-			qdel(recipe)
-			continue
-
-		var/list/ingredients = list()
-		ingredients += recipe.reqs
-		ingredients += recipe.tools
-
-		add_recipe_to_cache(
-			recipe.result,
-			recipe_path,
-			"crafting",
-			recipe.name,
-			ingredients,
-			list(
-				"category" = recipe.category,
-				"subcategory" = recipe.subcategory,
-				"craft_difficulty" = recipe.craftdiff,
-				"skill_required" = recipe.skillcraft,
-				"time" = recipe.time,
-				"req_table" = recipe.req_table,
-				"always_available" = recipe.always_availible
 			)
 		)
 

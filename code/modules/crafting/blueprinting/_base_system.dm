@@ -196,7 +196,7 @@
 
 /datum/blueprint_system/proc/open_recipe_browser()
 	if(!recipe_browser)
-		recipe_browser = new(holder, "blueprint_recipes", "Blueprint Recipes", 600, 800)
+		recipe_browser = new(holder.mob, "blueprint_recipes", "Blueprint Recipes", 600, 800)
 
 	var/content = generate_recipe_html()
 	recipe_browser.set_content(content)
@@ -207,12 +207,15 @@
 
 /datum/blueprint_system/proc/generate_recipe_html()
 	var/list/dat = list()
+	var/mob/user = usr
 	dat += "<div class='buildmode-browser'>"
 	dat += "<h3>Blueprint Recipe Selection</h3>"
 
 	var/list/categories = list()
 	for(var/recipe_id in GLOB.blueprint_recipes)
 		var/datum/blueprint_recipe/recipe = GLOB.blueprint_recipes[recipe_id]
+		if(recipe.requires_learning && !(recipe.type in user.mind?.learned_recipes))
+			continue
 		if(!categories[recipe.category])
 			categories[recipe.category] = list()
 		categories[recipe.category] += recipe_id
