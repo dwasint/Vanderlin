@@ -9,8 +9,8 @@
 	var/assembled = FALSE
 	var/list/tent_walls = list() // Stored wall objects
 	var/list/tent_doors = list() // Stored door objects
-	var/tent_width = 3 // Always 3 wide
-	var/tent_length = 5 // Default length, can be adjusted
+	var/tent_width = 3 //! Always 3 wide
+	var/tent_length = 5 // Default length, can be adjusted for deluxes
 
 /obj/item/tent_kit/Initialize()
 	. = ..()
@@ -422,7 +422,7 @@
 	else
 		. += "<span class='notice'>All [total_doors] tent doors are in good condition.</span>"
 
-// Tent wall object - stores damage between assemblies
+// Tent wall object - NOT the turf varient so we can store damage and other vars between placements
 /obj/structure/tent_wall
 	name = "tent wall"
 	desc = "Made from durable fabric and wooden branches. Provides excellent protection from weather."
