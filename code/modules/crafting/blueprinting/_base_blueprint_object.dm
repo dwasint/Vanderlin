@@ -16,6 +16,8 @@
 	var/blueprint_dir = SOUTH // Direction this blueprint will be built in
 
 	var/image/cached_image
+	var/stored_pixel_y = 0
+	var/stored_pixel_x = 0
 
 /obj/structure/blueprint/Initialize(mapload)
 	. = ..()
@@ -124,8 +126,8 @@
 
 	blueprint_image.color = "#00FFFF"
 	blueprint_image.alpha = 150 // Set desired alpha on the image
-	blueprint_image.pixel_x = pixel_x
-	blueprint_image.pixel_y = pixel_y
+	blueprint_image.pixel_x = stored_pixel_x
+	blueprint_image.pixel_y = stored_pixel_y
 	blueprint_image.override = TRUE
 	blueprint_image.appearance_flags = RESET_ALPHA | KEEP_APART
 	cached_image = blueprint_image
@@ -226,8 +228,8 @@
 			var/atom/new_structure = new recipe.result_type(get_turf(src))
 			if(recipe.supports_directions)
 				new_structure.dir = blueprint_dir
-			new_structure.pixel_x = pixel_x
-			new_structure.pixel_y = pixel_y
+			new_structure.pixel_x = stored_pixel_x
+			new_structure.pixel_y = stored_pixel_y
 			if(!initial(recipe.edge_density) && ((abs(pixel_x) >= 14) || (abs(pixel_y) >= 14)))
 				new_structure.density = FALSE
 			new_structure.OnCrafted(user.dir, user)

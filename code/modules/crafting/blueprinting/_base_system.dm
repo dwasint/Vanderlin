@@ -661,8 +661,8 @@
 	B.recipe = selected_recipe
 	B.creator = user
 	B.blueprint_dir = build_dir
-	B.pixel_x = pixel_x_offset
-	B.pixel_y = pixel_y_offset
+	B.stored_pixel_x = pixel_x_offset
+	B.stored_pixel_y = pixel_y_offset
 	B.setup_blueprint()
 
 	to_chat(user, "<span class='notice'>Blueprint placed! Use a hammer to construct [selected_recipe.name].</span>")
