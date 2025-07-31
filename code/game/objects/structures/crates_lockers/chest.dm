@@ -109,3 +109,12 @@
 	name = "crate"
 	base_icon_state = "woodchest"
 	icon_state = "woodchest"
+
+/obj/structure/closet/crate/chest/crafted
+	name = "handcrafted chest"
+	icon_state = "chest_neu"
+	base_icon_state = "chest_neu"
+	sellprice = 6
+
+/obj/structure/closet/crate/crafted_closet/crafted
+	sellprice = 6
