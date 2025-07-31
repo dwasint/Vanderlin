@@ -182,7 +182,7 @@
 	category = "Walls"
 	floor_object = TRUE
 
-/datum/blueprint_recipe/wall/daubwall
+/datum/blueprint_recipe/wall/daubwall/vert
 	name = "Vertical Daub Wall"
 	desc = "A daub wall made of sticks and dirt."
 	result_type = /turf/closed/wall/mineral/decowood/vert
@@ -311,7 +311,7 @@
 	skillcraft = /datum/skill/craft/masonry
 	result_type = /turf/closed/wall/mineral/decorstone
 
-/datum/blueprint_recipe/wall/decorstone_alt
+/datum/blueprint_recipe/wall/decorstone_center_alt
 	name = "Alternative Center Decor Stone Wall"
 	desc = "A wall with etched details."
 	required_materials = list(
