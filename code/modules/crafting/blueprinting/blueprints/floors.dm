@@ -1,5 +1,6 @@
 /datum/blueprint_recipe/floor
 	abstract_type = /datum/blueprint_recipe/floor
+	category = "Floors"
 
 /datum/blueprint_recipe/floor/woodfloor
 	name = "Wooden Floor"
