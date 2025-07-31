@@ -46,6 +46,26 @@
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 2
 
+/datum/blueprint_recipe/wall/dwoodwall/horizontal
+	name = "Horizontal Dark Wood Wall"
+	desc = "A dark wooden wall."
+	result_type = /turf/closed/wall/mineral/wooddark/horizontal
+
+/datum/blueprint_recipe/wall/dwoodwall/vertical
+	name = "Vertical Dark Wood Wall"
+	desc = "A dark wooden wall."
+	result_type = /turf/closed/wall/mineral/wooddark/vertical
+
+/datum/blueprint_recipe/wall/dwoodwall/end
+	name = "Dark Wood End Wall"
+	desc = "A dark wooden wall."
+	result_type = /turf/closed/wall/mineral/wooddark/end
+
+/datum/blueprint_recipe/wall/dwoodwall/slit
+	name = "Dark Wood Slit Wall"
+	desc = "A dark wooden wall."
+	result_type = /turf/closed/wall/mineral/wooddark/slitted
+
 /datum/blueprint_recipe/wall/dwoodwindow
 	name = "Dark Wood Window"
 	desc = "A dark wooden wall with a window."
@@ -162,6 +182,19 @@
 	category = "Walls"
 	floor_object = TRUE
 
+/datum/blueprint_recipe/wall/daubwall
+	name = "Vertical Daub Wall"
+	desc = "A daub wall made of sticks and dirt."
+	result_type = /turf/closed/wall/mineral/decowood/vert
+	required_materials = list(
+		/obj/item/grown/log/tree/stick = 3,
+		/obj/item/natural/dirtclod = 2
+	)
+	construct_tool = /obj/item/weapon/hammer
+	build_time = 6 SECONDS
+	category = "Walls"
+	floor_object = TRUE
+
 /datum/blueprint_recipe/wall/solid_window
 	name = "Solid Glass Window"
 	desc = "A solid framed window."
@@ -266,6 +299,27 @@
 	craftdiff = 4
 	skillcraft = /datum/skill/craft/masonry
 	result_type = /turf/closed/wall/mineral/decostone
+
+
+/datum/blueprint_recipe/wall/decorstone_alt
+	name = "Alternative Decor Stone Wall"
+	desc = "A wall with etched details."
+	required_materials = list(
+		/obj/item/natural/stoneblock = 4,
+	)
+	craftdiff = 4
+	skillcraft = /datum/skill/craft/masonry
+	result_type = /turf/closed/wall/mineral/decorstone
+
+/datum/blueprint_recipe/wall/decorstone_alt
+	name = "Alternative Center Decor Stone Wall"
+	desc = "A wall with etched details."
+	required_materials = list(
+		/obj/item/natural/stoneblock = 4,
+	)
+	craftdiff = 4
+	skillcraft = /datum/skill/craft/masonry
+	result_type = /turf/closed/wall/mineral/decostone/center
 
 /datum/blueprint_recipe/wall/decorstonewindow
 	name = "Decor Stone Window"
@@ -386,3 +440,51 @@
 /datum/blueprint_recipe/wall/decorstoneend/moss/blue
 	name = "Mossy Decor Bluestone End Wall"
 	result_type = /turf/closed/wall/mineral/decostone/moss/blue/end
+
+/datum/blueprint_recipe/wall/roof
+	name = "Brick Roof"
+	desc = "A large brick roof."
+	required_materials = list(
+		/obj/item/natural/brick = 4,
+	)
+	craftdiff = 4
+	skillcraft = /datum/skill/craft/masonry
+	result_type = /turf/closed/wall/mineral/roofwall
+	supports_directions = TRUE
+
+/datum/blueprint_recipe/wall/roof/center
+	name = "Center Brick Roof"
+	result_type = /turf/closed/wall/mineral/roofwall/center
+
+/datum/blueprint_recipe/wall/roof/middle
+	name = "Middle Brick Roof"
+	result_type = /turf/closed/wall/mineral/roofwall/middle
+
+/datum/blueprint_recipe/wall/roof/outercorner
+	name = "Outer Brick Roof"
+	result_type = /turf/closed/wall/mineral/roofwall/outercorner
+
+/datum/blueprint_recipe/wall/roof/innercorner
+	name = "Inner Brick Roof"
+	result_type = /turf/closed/wall/mineral/roofwall/innercorner
+
+/datum/blueprint_recipe/wall/underbrick
+	name = "Underbrick Wall"
+	desc = "A large stoneblock wall."
+	required_materials = list(
+		/obj/item/natural/stoneblock = 4,
+	)
+	craftdiff = 4
+	skillcraft = /datum/skill/craft/masonry
+	result_type = /turf/closed/wall/mineral/underbrick
+
+/datum/blueprint_recipe/wall/pipe
+	name = "Pipe Wall"
+	desc = "A wall with a pipe embeded into it."
+	required_materials = list(
+		/obj/item/natural/brick = 2,
+		/obj/item/ingot/bronze = 1,
+	)
+	craftdiff = 4
+	skillcraft = /datum/skill/craft/masonry
+	result_type = /turf/closed/wall/mineral/pipe
