@@ -1397,6 +1397,7 @@
 #include "code\game\objects\items\painting\paint_palette.dm"
 #include "code\game\objects\items\storage\backpack.dm"
 #include "code\game\objects\items\storage\bag.dm"
+#include "code\game\objects\items\storage\cook_kit.dm"
 #include "code\game\objects\items\storage\fancy.dm"
 #include "code\game\objects\items\storage\storage.dm"
 #include "code\game\objects\items\tools\chisel.dm"

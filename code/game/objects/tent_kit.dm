@@ -436,3 +436,11 @@
 	attacked_sound = list('sound/combat/hits/onwood/woodimpact (1).ogg','sound/combat/hits/onwood/woodimpact (2).ogg')
 	destroy_sound = 'sound/combat/hits/onwood/destroywalldoor.ogg'
 	weatherproof = TRUE
+	var/damaged = FALSE
+
+/obj/structure/tent_wall/take_damage(damage_amount, damage_type, damage_flag, sound_effect, attack_dir, armor_penetration)
+	. = ..()
+	if(obj_integrity < 100)
+		obj_integrity = 100
+		damaged = TRUE
+		opacity = FALSE
