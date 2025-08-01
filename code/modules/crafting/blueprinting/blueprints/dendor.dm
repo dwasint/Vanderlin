@@ -2,6 +2,7 @@
 	craftdiff = 0
 	category = "Structure"
 	requires_learning = TRUE
+	construct_tool = null
 
 /datum/blueprint_recipe/dendor/shrine
 	name = "growing shrine to Dendor (unique)"

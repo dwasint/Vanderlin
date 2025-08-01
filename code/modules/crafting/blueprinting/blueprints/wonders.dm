@@ -9,6 +9,7 @@
 	craftsound = 'sound/foley/Building-01.ogg'
 	skillcraft = null
 	requires_learning = TRUE
+	construct_tool = null
 
 /datum/blueprint_recipe/structure/wonder/first
 	name = "first wonder (2 bodyparts, 1 stomach)"
