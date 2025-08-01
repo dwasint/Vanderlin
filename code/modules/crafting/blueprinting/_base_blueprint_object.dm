@@ -264,20 +264,27 @@
 	var/list/materials = list()
 
 	for(var/obj/item/I in range(range, src))
-		if(!materials[I.type])
-			materials[I.type] = 0
+		// Check each material type in the recipe to see if this item matches
+		for(var/mat_type in recipe.required_materials)
+			if(istype(I, mat_type))
+				if(!materials[mat_type])
+					materials[mat_type] = 0
 
-		if(istype(I, /obj/item/natural/bundle))
-			var/obj/item/natural/bundle/S = I
-			materials[I.type] += S.amount
-		else
-			materials[I.type] += 1
+				if(istype(I, /obj/item/natural/bundle))
+					var/obj/item/natural/bundle/S = I
+					materials[mat_type] += S.amount
+				else
+					materials[mat_type] += 1
+				break // Don't double-count items that match multiple types
 
 	for(var/obj/item/natural/bundle/B in range(range, src))
 		var/bundle_type = B.stacktype || B.type
-		if(!materials[bundle_type])
-			materials[bundle_type] = 0
-		materials[bundle_type] += B.amount
+		for(var/mat_type in recipe.required_materials)
+			if(istype(new bundle_type, mat_type) || bundle_type == mat_type)
+				if(!materials[mat_type])
+					materials[mat_type] = 0
+				materials[mat_type] += B.amount
+				break
 
 	return materials
 
@@ -285,9 +292,12 @@
 	for(var/mat_type in needed_materials)
 		var/needed_amount = needed_materials[mat_type]
 
+		// First consume from bundles
 		for(var/obj/item/natural/bundle/B in range(3, src))
+			if(needed_amount <= 0)
+				break
 			var/bundle_type = B.stacktype || B.type
-			if(bundle_type == mat_type && needed_amount > 0)
+			if(istype(new bundle_type, mat_type) || bundle_type == mat_type)
 				var/consumed = min(needed_amount, B.amount)
 				B.amount -= consumed
 				if(B.amount <= 0)
@@ -296,7 +306,9 @@
 
 		if(needed_amount > 0)
 			for(var/obj/item/I in range(3, src))
-				if(I.type == mat_type && needed_amount > 0)
+				if(needed_amount <= 0)
+					break
+				if(istype(I, mat_type))
 					if(istype(I, /obj/item/natural/bundle))
 						var/obj/item/natural/bundle/S = I
 						var/consumed = min(needed_amount, S.amount)
