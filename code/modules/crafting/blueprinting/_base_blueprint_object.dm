@@ -162,7 +162,7 @@
 		if(!recipe.check_craft_requirements(user, get_turf(src), src))
 			return FALSE
 
-	var/list/available_materials = get_materials_in_range()
+	var/list/available_materials = get_materials_in_range(user)
 	var/list/needed_materials = recipe.required_materials.Copy()
 
 	for(var/mat_type in needed_materials)
@@ -183,7 +183,7 @@
 			if(!recipe.check_craft_requirements(user, get_turf(src), src))
 				return FALSE
 
-		available_materials = get_materials_in_range()
+		available_materials = get_materials_in_range(user)
 		for(var/mat_type in needed_materials)
 			var/needed_amount = needed_materials[mat_type]
 			var/available_amount = available_materials[mat_type] || 0
@@ -230,7 +230,7 @@
 					to_chat(user, "<span class='danger'>I've failed to construct [recipe.name].</span>")
 				continue
 
-		consume_materials(needed_materials)
+		consume_materials(user, needed_materials)
 
 		if(!ispath(recipe.result_type, /turf))
 			var/atom/new_structure = new recipe.result_type(get_turf(src))
@@ -268,10 +268,14 @@
 	to_chat(user, "<span class='danger'>After many attempts, I cannot manage to construct [recipe.name].</span>")
 	return FALSE
 
-/obj/structure/blueprint/proc/get_materials_in_range(range = 3)
+/obj/structure/blueprint/proc/get_materials_in_range(mob/user, range = 3)
 	var/list/materials = list()
 
-	for(var/obj/item/I in range(range, src))
+	var/list/range_stuff =  range(range, src)
+	range_stuff += user.get_active_held_item()
+	range_stuff += user.get_inactive_held_item()
+
+	for(var/obj/item/I in range_stuff)
 		// Check each material type in the recipe to see if this item matches
 		for(var/mat_type in recipe.required_materials)
 			if(istype(I, mat_type))
@@ -296,7 +300,7 @@
 
 	return materials
 
-/obj/structure/blueprint/proc/consume_materials(list/needed_materials)
+/obj/structure/blueprint/proc/consume_materials(mob/user, list/needed_materials)
 	for(var/mat_type in needed_materials)
 		var/needed_amount = needed_materials[mat_type]
 
@@ -313,7 +317,10 @@
 				needed_amount -= consumed
 
 		if(needed_amount > 0)
-			for(var/obj/item/I in range(3, src))
+			var/list/materials = range(3, src)
+			materials += user.get_active_held_item()
+			materials += user.get_inactive_held_item()
+			for(var/obj/item/I in materials)
 				if(needed_amount <= 0)
 					break
 				if(istype(I, mat_type))
