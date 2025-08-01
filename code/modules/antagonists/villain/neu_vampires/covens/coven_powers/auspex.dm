@@ -63,6 +63,7 @@ GLOBAL_LIST_INIT(astral_projections, list())
 	button_icon_state = "astral_return"
 	button_icon = 'icons/mob/actions/spells/vampire.dmi'
 	spell_requirements = NONE
+	charge_required = FALSE
 
 
 /datum/action/cooldown/spell/undirected/astral_return/cast(mob/living/user)
@@ -77,6 +78,7 @@ GLOBAL_LIST_INIT(astral_projections, list())
 	button_icon_state = "astral_toggle"
 	button_icon = 'icons/mob/actions/spells/vampire.dmi'
 	spell_requirements = NONE
+	charge_required = FALSE
 
 /datum/action/cooldown/spell/undirected/astral_toggle/cast(mob/living/user)
 	. = ..()

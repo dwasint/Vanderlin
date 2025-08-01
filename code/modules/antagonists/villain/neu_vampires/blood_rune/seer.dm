@@ -72,17 +72,18 @@ GLOBAL_LIST_EMPTY(seer_rituals)
 
 /obj/effect/blood_ritual/seer/New(turf/loc, mob/living/user, datum/rune_spell/seer/runespell, talisman_ritual = FALSE, talisman_duration = 60 SECONDS)
 	..()
+	if (!caster)
+		if (source)
+			source.abort(RITUALABORT_GONE)
+		qdel(src)
+		return
+
 	proximity_monitor = new(src, 1)
 	LAZYADD(GLOB.seer_rituals, src)
 	talisman = talisman_ritual
 	caster = user
 	caster.see_invisible = SEE_INVISIBLE_OBSERVER
 	source = runespell
-	if (!caster)
-		if (source)
-			source.abort(RITUALABORT_GONE)
-		qdel(src)
-		return
 	to_chat(caster, span_notice("You find yourself able to see through the gaps in the veil. You can see and interact with the other side, and also find out the crew's propensity to be successfully converted, whether they are <b><font color = 'green'>Willing</font></b>, <b><font color = 'orange'>Uncertain</font></b>, or <b><font color = 'red'>Unconvertible</font></b>.") )
 	if (talisman)
 		spawn(talisman_duration)
