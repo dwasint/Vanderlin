@@ -34,6 +34,42 @@ GLOBAL_LIST_EMPTY(blueprint_recipes)
 	var/edge_density = TRUE
 	var/requires_learning = FALSE
 	var/pixel_offsets = TRUE
+	var/check_placement = FALSE // Whether to run placement checks
+	var/check_above_space = FALSE // Check if space above is clear
+	var/check_adjacent_wall = FALSE // Check for adjacent wall
+	var/requires_ceiling = FALSE
+
+/datum/blueprint_recipe/proc/check_craft_requirements(mob/user, turf/T, obj/structure/blueprint/blueprint)
+	if(check_above_space)
+		var/turf/checking = GET_TURF_ABOVE(T)
+		if(!isopenspace(checking))
+			return FALSE
+
+	if(requires_ceiling)
+		var/turf/checking = GET_TURF_ABOVE(T)
+		if(!checking)
+			to_chat(user, "<span class='warning'>Need a ceiling above to hang this!</span>")
+			return FALSE
+		if(istype(checking, /turf/open/transparent/openspace))
+			to_chat(user, "<span class='warning'>Need a solid ceiling above!</span>")
+			return FALSE
+
+	if(check_placement)
+		if(locate(/obj/machinery/light/fueled/lanternpost) in T)
+			to_chat(user, "<span class='warning'>There's already a light post here!</span>")
+			return FALSE
+		if(locate(/obj/machinery/light/fueledstreet) in T)
+			to_chat(user, "<span class='warning'>There's already a street light here!</span>")
+			return FALSE
+		if(locate(/obj/structure/noose) in T)
+			to_chat(user, "<span class='warning'>There's already a noose here!</span>")
+			return FALSE
+
+	if(check_adjacent_wall)
+		var/turf/check_turf = get_step(T, blueprint.blueprint_dir)
+		if(!isclosedturf(check_turf))
+			to_chat(user, "<span class='warning'>Need a wall to attach this to!</span>")
+			return FALSE
 
 /datum/blueprint_recipe/proc/generate_html(mob/user)
 	var/client/client = user

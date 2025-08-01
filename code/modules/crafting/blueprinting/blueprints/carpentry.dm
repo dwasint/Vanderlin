@@ -339,6 +339,7 @@
 	)
 	supports_directions = TRUE
 	craftdiff = 0
+	check_adjacent_wall = TRUE
 
 /datum/blueprint_recipe/carpentry/wooden_table
 	name = "wooden table"

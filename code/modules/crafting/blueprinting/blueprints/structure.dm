@@ -181,6 +181,7 @@
 	category = "Wall Fixtures"
 	floor_object = FALSE
 	skillcraft = /datum/skill/craft/masonry
+	check_adjacent_wall = TRUE
 
 /datum/blueprint_recipe/structure/wallcandle
 	name = "Wall Candles"
@@ -195,6 +196,7 @@
 	category = "Wall Fixtures"
 	floor_object = FALSE
 	skillcraft = /datum/skill/craft/masonry
+	check_adjacent_wall = TRUE
 
 /datum/blueprint_recipe/structure/wallcandleblue
 	name = "Wall Candles (Blue)"
@@ -210,3 +212,4 @@
 	category = "Wall Fixtures"
 	floor_object = FALSE
 	skillcraft = /datum/skill/craft/masonry
+	check_adjacent_wall = TRUE

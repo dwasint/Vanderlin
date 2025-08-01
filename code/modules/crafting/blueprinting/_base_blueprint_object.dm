@@ -158,6 +158,10 @@
 	if(!recipe)
 		return FALSE
 
+	if(recipe.check_placement || recipe.check_above_space || recipe.check_adjacent_wall || recipe.requires_ceiling)
+		if(!recipe.check_craft_requirements(user, get_turf(src), src))
+			return FALSE
+
 	var/list/available_materials = get_materials_in_range()
 	var/list/needed_materials = recipe.required_materials.Copy()
 
@@ -174,6 +178,10 @@
 	for(var/i = 1 to 100)
 		if(!do_after(user, recipe.build_time, target = src))
 			return FALSE
+
+		if(recipe.check_placement || recipe.check_above_space || recipe.check_adjacent_wall || recipe.requires_ceiling)
+			if(!recipe.check_craft_requirements(user, get_turf(src), src))
+				return FALSE
 
 		available_materials = get_materials_in_range()
 		for(var/mat_type in needed_materials)
