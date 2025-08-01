@@ -649,23 +649,99 @@
 				qdel(object)
 	return FALSE
 
+// Modified blueprint system proc to handle wall fixture placement
 /datum/blueprint_system/proc/place_blueprint(turf/location, mob/user)
 	if(!selected_recipe || !location)
 		return
 
-	if(!can_place_at(location))
+	var/turf/final_location = location
+
+	// Handle wall fixtures - place blueprint on adjacent floor when clicking on wall
+	if(selected_recipe.check_adjacent_wall && selected_recipe.place_on_wall && !selected_recipe.floor_object)
+		var/turf/wall_turf = location
+
+		// If we clicked on a wall, find the adjacent floor turf
+		if(wall_turf.density || istype(wall_turf, /turf/closed))
+			// Determine direction from wall to adjacent floor
+			var/wall_dir = get_wall_direction(wall_turf, user)
+			if(wall_dir)
+				var/turf/adjacent_floor = get_step(wall_turf, turn(wall_dir, 180)) // Opposite direction
+				if(adjacent_floor && !adjacent_floor.density && istype(adjacent_floor, /turf/open))
+					final_location = adjacent_floor
+					// Set build direction to face the wall
+					build_dir = wall_dir
+				else
+					to_chat(user, "<span class='warning'>No valid floor space adjacent to wall!</span>")
+					return
+			else
+				to_chat(user, "<span class='warning'>Cannot determine wall orientation!</span>")
+				return
+		// If we clicked on floor, check if there's an adjacent wall in the build direction
+		else if(!wall_turf.density)
+			var/turf/target_wall = get_step(wall_turf, build_dir)
+			if(!target_wall || (!target_wall.density && !istype(target_wall, /turf/closed)))
+				to_chat(user, "<span class='warning'>No adjacent wall found in that direction!</span>")
+				return
+			// final_location remains the clicked floor turf
+
+	if(!can_place_at(final_location))
 		to_chat(user, "<span class='warning'>Cannot place blueprint here!</span>")
 		return
 
-	var/obj/structure/blueprint/B = new(location)
+	var/obj/structure/blueprint/B = new(final_location)
 	B.recipe = selected_recipe
 	B.creator = user
 	B.blueprint_dir = build_dir
-	B.stored_pixel_x = pixel_x_offset
-	B.stored_pixel_y = pixel_y_offset
+
+	// Calculate wall fixture pixel offsets
+	var/final_pixel_x = pixel_x_offset
+	var/final_pixel_y = pixel_y_offset
+
+	if(selected_recipe.check_adjacent_wall && selected_recipe.place_on_wall && !selected_recipe.floor_object)
+		switch(build_dir)
+			if(NORTH)
+				final_pixel_y += 32
+			if(SOUTH)
+				final_pixel_y -= 32
+			if(EAST)
+				final_pixel_x += 32
+			if(WEST)
+				final_pixel_x -= 32
+
+	B.stored_pixel_x = final_pixel_x
+	B.stored_pixel_y = final_pixel_y
 	B.setup_blueprint()
 
 	to_chat(user, "<span class='notice'>Blueprint placed! Use a hammer to construct [selected_recipe.name].</span>")
+
+/datum/blueprint_system/proc/get_wall_direction(turf/wall_turf, mob/user)
+	// Check all cardinal directions for open floor space
+	var/list/possible_dirs = list(NORTH, SOUTH, EAST, WEST)
+	var/list/valid_dirs = list()
+
+	for(var/dir in possible_dirs)
+		var/turf/check_turf = get_step(wall_turf, turn(dir, 180))
+		if(check_turf && !check_turf.density && istype(check_turf, /turf/open))
+			valid_dirs += dir
+
+	if(!valid_dirs.len)
+		return null
+
+	if(valid_dirs.len == 1)
+		return valid_dirs[1]
+
+	// Multiple valid directions - prefer the one closest to user's position
+	var/best_dir = valid_dirs[1]
+	var/best_distance = get_dist(user, get_step(wall_turf, turn(best_dir, 180)))
+
+	for(var/dir in valid_dirs)
+		var/turf/floor_turf = get_step(wall_turf, turn(dir, 180))
+		var/distance = get_dist(user, floor_turf)
+		if(distance < best_distance)
+			best_distance = distance
+			best_dir = dir
+
+	return best_dir
 
 /datum/blueprint_system/proc/can_place_at(turf/location)
 	for(var/obj/structure/blueprint/print in location)

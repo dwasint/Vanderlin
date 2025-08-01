@@ -38,6 +38,7 @@ GLOBAL_LIST_EMPTY(blueprint_recipes)
 	var/check_above_space = FALSE // Check if space above is clear
 	var/check_adjacent_wall = FALSE // Check for adjacent wall
 	var/requires_ceiling = FALSE
+	var/place_on_wall = FALSE /// do we need to be placed directly on the wall turf itself and then offset?
 
 /datum/blueprint_recipe/proc/check_craft_requirements(mob/user, turf/T, obj/structure/blueprint/blueprint)
 	if(check_above_space)

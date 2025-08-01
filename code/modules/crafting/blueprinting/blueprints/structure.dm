@@ -182,6 +182,7 @@
 	floor_object = FALSE
 	skillcraft = /datum/skill/craft/masonry
 	check_adjacent_wall = TRUE
+	supports_directions = TRUE
 
 /datum/blueprint_recipe/structure/wallcandle
 	name = "Wall Candles"
@@ -197,6 +198,8 @@
 	floor_object = FALSE
 	skillcraft = /datum/skill/craft/masonry
 	check_adjacent_wall = TRUE
+	supports_directions = TRUE
+	place_on_wall = TRUE
 
 /datum/blueprint_recipe/structure/wallcandleblue
 	name = "Wall Candles (Blue)"
@@ -213,3 +216,5 @@
 	floor_object = FALSE
 	skillcraft = /datum/skill/craft/masonry
 	check_adjacent_wall = TRUE
+	supports_directions = TRUE
+	place_on_wall = TRUE
