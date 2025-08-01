@@ -745,7 +745,7 @@
 
 /datum/blueprint_system/proc/can_place_at(turf/location)
 	for(var/obj/structure/blueprint/print in location)
-		if(print.recipe.floor_object)
+		if(print.recipe.floor_object && selected_recipe.floor_object)
 			return FALSE
 	if(location.density)
 		return FALSE
