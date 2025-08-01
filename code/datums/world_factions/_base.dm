@@ -52,7 +52,7 @@
 	)
 
 	/// Chance for this faction to send a trader (0-100)
-	var/trader_chance = 15
+	var/trader_chance = 60
 	/// Weighted preferences for trader types - higher numbers = more likely
 	var/list/trader_type_weights = list(
 		/datum/trader_data/food_merchant = 10,
