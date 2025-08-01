@@ -111,6 +111,7 @@ SUBSYSTEM_DEF(merchant)
 			item.forceMove(boat_turf)
 
 	requestlist = list()
+	spawn_faction_trader()
 	cargo_docked = FALSE
 	SEND_GLOBAL_SIGNAL(COMSIG_DISPATCH_CARGO, cargo_boat)
 
@@ -223,6 +224,7 @@ SUBSYSTEM_DEF(merchant)
 	if(new_trader)
 		active_faction_traders += new_trader
 		new_trader.ai_controller?.set_blackboard_key(BB_CURRENT_MIN_MOVE_DISTANCE, 0)
+	new_trader.ai_controller.PauseAi(1 MINUTES) //basically spawn them in, wait a minute then they get off the boat.
 
 /obj/Initialize()
 	. = ..()

@@ -872,6 +872,8 @@ GLOBAL_LIST_EMPTY(active_lifts_by_type)
 /datum/lift_master/tram/proc/check_living()
 	for(var/obj/structure/industrial_lift/tram/platform in lift_platforms)
 		var/mob/living/mob = locate(/mob/living) in platform
+		if(istype(mob, /mob/living/simple_animal/hostile/retaliate/trader))
+			continue
 		if(istype(mob))
 			return FALSE
 
