@@ -848,6 +848,7 @@
 					blood_handle |= BLOOD_PREFERENCE_HOLY
 				if(VVictim)
 					blood_handle |= BLOOD_PREFERENCE_KIN
+					blood_handle  &= ~BLOOD_PREFERENCE_LIVING
 
 				if(C.bloodpool > 0)
 					C.blood_volume = max(C.blood_volume-45, 0)
