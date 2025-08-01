@@ -13,7 +13,7 @@
 	construct_tool = /obj/item/weapon/knife
 	build_time = 4 SECONDS
 	category = "Structures"
-	floor_object = TRUE
+
 
 /datum/blueprint_recipe/structure/anvil
 	name = "Anvil"
@@ -25,7 +25,7 @@
 	construct_tool = /obj/item/weapon/hammer
 	build_time = 8 SECONDS
 	category = "Structures"
-	floor_object = TRUE
+
 
 /datum/blueprint_recipe/structure/campfire
 	name = "Campfire"
@@ -37,7 +37,7 @@
 	construct_tool = /obj/item/grown/log/tree/stick
 	build_time = 4 SECONDS
 	category = "Structures"
-	floor_object = TRUE
+
 
 /datum/blueprint_recipe/structure/densefire
 	name = "Greater Campfire"
@@ -50,7 +50,7 @@
 	construct_tool = /obj/item/grown/log/tree/stick
 	build_time = 6 SECONDS
 	category = "Structures"
-	floor_object = TRUE
+
 
 /datum/blueprint_recipe/structure/cookpit
 	name = "Hearth"
@@ -63,7 +63,7 @@
 	construct_tool = /obj/item/grown/log/tree/stick
 	build_time = 7 SECONDS
 	category = "Structures"
-	floor_object = TRUE
+
 
 /datum/blueprint_recipe/structure/brazier
 	name = "Brazier"
@@ -76,7 +76,7 @@
 	construct_tool = /obj/item/grown/log/tree/small
 	build_time = 5 SECONDS
 	category = "Structures"
-	floor_object = TRUE
+
 
 /datum/blueprint_recipe/structure/standing
 	name = "Standing Fire"
@@ -89,7 +89,7 @@
 	construct_tool = /obj/item/weapon/hammer
 	build_time = 5 SECONDS
 	category = "Structures"
-	floor_object = TRUE
+
 
 /datum/blueprint_recipe/structure/standingblue
 	name = "Standing Fire (Blue)"
@@ -103,7 +103,7 @@
 	construct_tool = /obj/item/weapon/hammer
 	build_time = 6 SECONDS
 	category = "Structures"
-	floor_object = TRUE
+
 
 /datum/blueprint_recipe/structure/rack
 	name = "Rack"
@@ -115,7 +115,7 @@
 	construct_tool = /obj/item/weapon/knife
 	build_time = 4 SECONDS
 	category = "Structures"
-	floor_object = TRUE
+
 
 /datum/blueprint_recipe/structure/dryingrack
 	name = "Drying Rack"
@@ -124,10 +124,10 @@
 	required_materials = list(
 		/obj/item/grown/log/tree/stick = 3
 	)
-	construct_tool = /obj/item/weapon/knife
+	construct_tool = null
 	build_time = 5 SECONDS
 	category = "Structures"
-	floor_object = TRUE
+
 
 /datum/blueprint_recipe/structure/bed
 	name = "Bed"
@@ -140,7 +140,7 @@
 	construct_tool = /obj/item/weapon/knife
 	build_time = 6 SECONDS
 	category = "Structures"
-	floor_object = TRUE
+
 
 /datum/blueprint_recipe/structure/millstone
 	name = "Millstone"
@@ -152,7 +152,7 @@
 	construct_tool = /obj/item/weapon/hammer
 	build_time = 10 SECONDS
 	category = "Structures"
-	floor_object = TRUE
+
 	skillcraft = /datum/skill/craft/masonry
 
 /datum/blueprint_recipe/structure/pottery_lathe
@@ -166,7 +166,7 @@
 	construct_tool = /obj/item/weapon/hammer
 	build_time = 8 SECONDS
 	category = "Structures"
-	floor_object = TRUE
+
 	skillcraft = /datum/skill/craft/carpentry
 
 /datum/blueprint_recipe/structure/torchholder

@@ -35,6 +35,10 @@
 		return
 	try_construct(user, I)
 
+/obj/structure/blueprint/attack_hand(mob/user)
+	if(recipe.construct_tool)
+		return
+	try_construct(user)
 /obj/structure/blueprint/proc/setup_blueprint()
 	if(!recipe)
 		return
