@@ -211,7 +211,7 @@
 	required_materials = list(
 		/obj/item/grown/log/tree/stick = 2
 	)
-	construct_tool = /obj/item/weapon/hammer
+	construct_tool = /obj/item/weapon/knife
 	build_time = 3 SECONDS
 	category = "Floors"
 	floor_object = TRUE

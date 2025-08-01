@@ -165,7 +165,7 @@
 		/obj/item/grown/log/tree/stick = 1,
 		/obj/item/natural/cloth = 1
 	)
-	construct_tool = /obj/item/weapon/hammer
+	construct_tool = /obj/item/weapon/knife
 	build_time = 3 SECONDS
 	category = "Walls"
 	floor_object = TRUE
@@ -178,7 +178,7 @@
 		/obj/item/grown/log/tree/stick = 3,
 		/obj/item/natural/dirtclod = 2
 	)
-	construct_tool = /obj/item/weapon/hammer
+	construct_tool = /obj/item/weapon/knife
 	build_time = 6 SECONDS
 	category = "Walls"
 	floor_object = TRUE

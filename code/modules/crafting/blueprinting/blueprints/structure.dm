@@ -10,7 +10,7 @@
 		/obj/item/grown/log/tree/stick = 1,
 		/obj/item/natural/cloth = 1
 	)
-	construct_tool = /obj/item/weapon/hammer
+	construct_tool = /obj/item/weapon/knife
 	build_time = 4 SECONDS
 	category = "Structures"
 	floor_object = TRUE
@@ -112,7 +112,7 @@
 	required_materials = list(
 		/obj/item/grown/log/tree/stick = 3
 	)
-	construct_tool = /obj/item/weapon/hammer
+	construct_tool = /obj/item/weapon/knife
 	build_time = 4 SECONDS
 	category = "Structures"
 	floor_object = TRUE
@@ -124,7 +124,7 @@
 	required_materials = list(
 		/obj/item/grown/log/tree/stick = 3
 	)
-	construct_tool = /obj/item/weapon/hammer
+	construct_tool = /obj/item/weapon/knife
 	build_time = 5 SECONDS
 	category = "Structures"
 	floor_object = TRUE
@@ -137,7 +137,7 @@
 		/obj/item/grown/log/tree/small = 1,
 		/obj/item/natural/fibers = 1
 	)
-	construct_tool = /obj/item/weapon/hammer
+	construct_tool = /obj/item/weapon/knife
 	build_time = 6 SECONDS
 	category = "Structures"
 	floor_object = TRUE

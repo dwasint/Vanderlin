@@ -418,3 +418,23 @@
 		/obj/item/ingot/iron = 1
 	)
 	build_time = 4 SECONDS
+
+/datum/blueprint_recipe/carpentry/handcart
+	name = "wooden handcart"
+	desc = "A wooden handcart."
+	result_type = /obj/structure/handcart
+	required_materials = list(
+		/obj/item/grown/log/tree/small = 3,
+		/obj/item/rope = 1
+	)
+	craftdiff = 1
+
+/datum/blueprint_recipe/carpentry/noose
+	name = "noose"
+	desc = "hangs from the ceiling."
+	result_type = /obj/structure/noose
+	required_materials = list(
+		/obj/item/rope = 1
+	)
+	craftdiff = 1
+	requires_ceiling = TRUE
