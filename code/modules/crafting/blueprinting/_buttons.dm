@@ -82,7 +82,6 @@
 		• Right click to clear selection<br>
 		• Use direction button to rotate (if supported)<br>
 		• Use pixel mode for precise positioning<br>
-		• Use hammer on blueprints to construct them
 		</span>"})
 
 /atom/movable/screen/blueprint/quit
