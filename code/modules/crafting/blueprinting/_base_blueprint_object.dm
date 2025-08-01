@@ -177,7 +177,7 @@
 			to_chat(user, "<span class='warning'>Need [needed_amount - available_amount] more [initial(temp.name)]!</span>")
 			return FALSE
 
-	to_chat(user, "<span class='notice'>You begin constructing [recipe.name]...</span>")
+	to_chat(user, "<span class='notice'>You begin constructing \the [recipe.name]...</span>")
 
 	for(var/i = 1 to 100)
 		if(!do_after(user, recipe.build_time, target = src))
@@ -229,9 +229,9 @@
 
 			if(!prob(prob2craft))
 				if(user.client?.prefs.showrolls)
-					to_chat(user, "<span class='danger'>I've failed to construct [recipe.name]. (Success chance: [prob2craft]%)</span>")
+					to_chat(user, "<span class='danger'>I've failed to construct \the [recipe.name]. (Success chance: [prob2craft]%)</span>")
 				else
-					to_chat(user, "<span class='danger'>I've failed to construct [recipe.name].</span>")
+					to_chat(user, "<span class='danger'>I've failed to construct \the [recipe.name].</span>")
 				continue
 
 		consume_materials(user, needed_materials)
@@ -251,8 +251,8 @@
 			if(new_turf)
 				new_turf.OnCrafted(user.dir, user)
 
-		user.visible_message("<span class='notice'>[user] [recipe.verbage_tp] [recipe.name]!</span>", \
-							"<span class='notice'>I [recipe.verbage] [recipe.name]!</span>")
+		user.visible_message("<span class='notice'>[user] [recipe.verbage_tp] \the [recipe.name]!</span>", \
+							"<span class='notice'>I \the [recipe.verbage] [recipe.name]!</span>")
 
 		if(recipe.craftsound)
 			playsound(get_turf(src), recipe.craftsound, 100, TRUE)
@@ -269,7 +269,7 @@
 		qdel(src)
 		return TRUE
 
-	to_chat(user, "<span class='danger'>After many attempts, I cannot manage to construct [recipe.name].</span>")
+	to_chat(user, "<span class='danger'>After many attempts, I cannot manage to construct \the [recipe.name].</span>")
 	return FALSE
 
 /obj/structure/blueprint/proc/get_materials_in_range(mob/user, range = 3)
