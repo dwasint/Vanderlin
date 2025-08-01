@@ -293,7 +293,7 @@
 					materials[mat_type] += 1
 				break // Don't double-count items that match multiple types
 
-	for(var/obj/item/natural/bundle/B in range(range, src))
+	for(var/obj/item/natural/bundle/B in range_stuff)
 		var/bundle_type = B.stacktype || B.type
 		for(var/mat_type in recipe.required_materials)
 			if(istype(new bundle_type, mat_type) || bundle_type == mat_type)
@@ -308,8 +308,12 @@
 	for(var/mat_type in needed_materials)
 		var/needed_amount = needed_materials[mat_type]
 
+		var/list/materials = range(3, src)
+		materials += user.get_active_held_item()
+		materials += user.get_inactive_held_item()
+
 		// First consume from bundles
-		for(var/obj/item/natural/bundle/B in range(3, src))
+		for(var/obj/item/natural/bundle/B in materials)
 			if(needed_amount <= 0)
 				break
 			var/bundle_type = B.stacktype || B.type
@@ -317,13 +321,11 @@
 				var/consumed = min(needed_amount, B.amount)
 				B.amount -= consumed
 				if(B.amount <= 0)
+					materials -= B
 					qdel(B)
 				needed_amount -= consumed
 
 		if(needed_amount > 0)
-			var/list/materials = range(3, src)
-			materials += user.get_active_held_item()
-			materials += user.get_inactive_held_item()
 			for(var/obj/item/I in materials)
 				if(needed_amount <= 0)
 					break
@@ -333,8 +335,10 @@
 						var/consumed = min(needed_amount, S.amount)
 						S.amount -= consumed
 						if(S.amount <= 0)
+							materials -= S
 							qdel(S)
 						needed_amount -= consumed
 					else
+						materials -= I
 						qdel(I)
 						needed_amount -= 1

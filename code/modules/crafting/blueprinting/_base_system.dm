@@ -647,6 +647,7 @@
 				if(print.creator != user)
 					return TRUE
 				qdel(object)
+				to_chat(user, "<span class='notice'>Blueprint removed!.</span>")
 	return FALSE
 
 // Modified blueprint system proc to handle wall fixture placement
@@ -711,6 +712,8 @@
 	B.stored_pixel_x = final_pixel_x
 	B.stored_pixel_y = final_pixel_y
 	B.setup_blueprint()
+
+	to_chat(user, "<span class='notice'>Blueprint placed!.</span>")
 
 /datum/blueprint_system/proc/get_wall_direction(turf/wall_turf, mob/user)
 	// Check all cardinal directions for open floor space

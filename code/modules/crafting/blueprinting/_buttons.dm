@@ -10,8 +10,8 @@
 
 /atom/movable/screen/blueprint/recipe
 	name = "Recipes"
-	icon_state = "buildmode"
-	screen_loc = "SOUTH-1:6,CENTER-4:24"
+	icon_state = "buildmode_basic"
+	screen_loc = "NORTH,WEST"
 
 /atom/movable/screen/blueprint/recipe/Click()
 	if(bd)
@@ -27,7 +27,7 @@
 /atom/movable/screen/blueprint/direction
 	name = "Direction: South"
 	icon_state = "build"
-	screen_loc = "NORTH,WEST"
+	screen_loc = "NORTH,WEST+1"
 
 /atom/movable/screen/blueprint/direction/Click()
 	if(bd)
@@ -51,7 +51,7 @@
 /atom/movable/screen/blueprint/pixel_mode
 	name = "Pixel Mode: OFF"
 	icon_state = "template"
-	screen_loc = "NORTH,WEST+1"
+	screen_loc = "NORTH,WEST+2"
 
 /atom/movable/screen/blueprint/pixel_mode/Click()
 	if(bd)
@@ -72,7 +72,7 @@
 /atom/movable/screen/blueprint/help
 	name = "Help"
 	icon_state = "buildhelp"
-	screen_loc = "NORTH,WEST+2"
+	screen_loc = "NORTH,WEST+3"
 
 /atom/movable/screen/blueprint/help/Click()
 	if(bd?.holder?.mob)
@@ -88,7 +88,7 @@
 /atom/movable/screen/blueprint/quit
 	name = "Quit"
 	icon_state = "buildquit"
-	screen_loc = "NORTH,WEST+3"
+	screen_loc = "NORTH,WEST+4"
 
 /atom/movable/screen/blueprint/quit/Click()
 	if(bd)
