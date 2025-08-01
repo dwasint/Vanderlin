@@ -398,21 +398,18 @@
 		return FALSE
 	return prob(trader_chance)
 
+
 /datum/world_faction/proc/create_faction_trader(turf/spawn_location)
 	if(!length(trader_type_weights))
 		return null
-
 	var/trader_type = pickweight(trader_type_weights)
 	var/datum/trader_data/trader_data = new trader_type()
-
 	// Customize trader with faction-specific items
 	customize_trader_inventory(trader_data)
-
 	var/mob/living/simple_animal/hostile/retaliate/trader/faction_trader/new_trader = new(spawn_location, TRUE, pick(trader_outfits), WEAKREF(src))
 	new_trader.set_custom_trade(trader_data)
 	new_trader.faction_ref = WEAKREF(src)
 	current_trader_ref = WEAKREF(new_trader)
-
 	return new_trader
 
 /datum/world_faction/proc/customize_trader_inventory(datum/trader_data/trader_data)
@@ -437,54 +434,51 @@
 	var/base_items = 8 // Base number of different items a trader carries
 	var/max_items = base_items + (tier * 2) // More items available at higher reputation
 
-	// Limit selection to prevent traders from having everything
-	var/items_to_select = min(max_items, length(compatible_packs))
+	// Process custom items first
+	var/list/selected_custom_items = select_custom_items(trader_data, tier)
+	for(var/item_type in selected_custom_items)
+		var/list/item_data = selected_custom_items[item_type]
+		faction_products[item_type] = item_data
 
-	if(items_to_select <= 0)
-		// Clean up and exit if no compatible items
+	// Adjust remaining slots for supply pack items
+	var/remaining_slots = max_items - length(selected_custom_items)
+	var/items_to_select = min(remaining_slots, length(compatible_packs))
+
+	if(items_to_select > 0)
+		var/list/weighted_selection = list()
 		for(var/pack_type in compatible_packs)
+			var/weight = 10
+			if(pack_type in essential_packs)
+				weight = 15
+			else if(pack_type in common_pool)
+				weight = 12
+			else if(pack_type in uncommon_pool)
+				weight = 8
+			else if(pack_type in rare_pool)
+				weight = 5 + tier // Rare items more likely at higher rep
+			else if(pack_type in exotic_pool)
+				weight = 2 + (tier * 2) // Exotic items much more likely at higher rep
+			weighted_selection[pack_type] = weight
+
+		var/list/selected_packs = list()
+		for(var/i = 1 to items_to_select)
+			if(!length(weighted_selection))
+				break
+			var/selected_pack = pickweight(weighted_selection)
+			selected_packs += selected_pack
+			weighted_selection -= selected_pack
+
+		for(var/pack_type in selected_packs)
 			var/datum/supply_pack/pack = compatible_packs[pack_type]
-			qdel(pack)
-		return
-
-	var/list/weighted_selection = list()
-	for(var/pack_type in compatible_packs)
-		var/weight = 10
-
-		if(pack_type in essential_packs)
-			weight = 15
-		else if(pack_type in common_pool)
-			weight = 12
-		else if(pack_type in uncommon_pool)
-			weight = 8
-		else if(pack_type in rare_pool)
-			weight = 5 + tier // Rare items more likely at higher rep
-		else if(pack_type in exotic_pool)
-			weight = 2 + (tier * 2) // Exotic items much more likely at higher rep
-
-		weighted_selection[pack_type] = weight
-
-	var/list/selected_packs = list()
-	for(var/i = 1 to items_to_select)
-		if(!length(weighted_selection))
-			break
-
-		var/selected_pack = pickweight(weighted_selection)
-		selected_packs += selected_pack
-		weighted_selection -= selected_pack
-
-	for(var/pack_type in selected_packs)
-		var/datum/supply_pack/pack = compatible_packs[pack_type]
-
-		if(islist(pack.contains))
-			for(var/item_type in pack.contains)
-				var/price = calculate_trader_price(pack, item_type)
+			if(islist(pack.contains))
+				for(var/item_type in pack.contains)
+					var/price = calculate_trader_price(pack, item_type)
+					var/quantity = calculate_trader_quantity(pack, tier)
+					faction_products[item_type] = list(price, quantity)
+			else if(pack.contains)
+				var/price = calculate_trader_price(pack, pack.contains)
 				var/quantity = calculate_trader_quantity(pack, tier)
-				faction_products[item_type] = list(price, quantity)
-		else if(pack.contains)
-			var/price = calculate_trader_price(pack, pack.contains)
-			var/quantity = calculate_trader_quantity(pack, tier)
-			faction_products[pack.contains] = list(price, quantity)
+				faction_products[pack.contains] = list(price, quantity)
 
 	// Clean up all pack instances
 	for(var/pack_type in compatible_packs)
@@ -493,6 +487,81 @@
 
 	if(length(faction_products))
 		trader_data.initial_products = faction_products
+
+/**
+ * Selects custom items for the trader based on weights and reputation tier
+ * Arguments:
+ *   trader_data - The trader data containing custom item definitions
+ *   tier - The faction's reputation tier
+ * Returns:
+ *   A list of selected custom items with their price and quantity data
+ */
+/datum/world_faction/proc/select_custom_items(datum/trader_data/trader_data, tier)
+	var/list/selected_items = list()
+
+	if(!length(trader_data.custom_items))
+		return selected_items
+
+	// Create weighted selection from custom items
+	var/list/weighted_custom_items = list()
+	for(var/item_type in trader_data.custom_items)
+		var/list/item_data = trader_data.custom_items[item_type]
+		if(length(item_data) >= 3)
+			var/weight = item_data[1] // First element is weight
+			var/base_price = item_data[2] // Second element is base price
+
+			// Adjust weight based on tier for rarer items
+			var/adjusted_weight = weight
+			if(base_price > 100) // Higher priced items are rarer
+				adjusted_weight += tier
+
+			weighted_custom_items[item_type] = adjusted_weight
+
+	// Select items based on max_custom_items limit
+	var/items_to_select = min(trader_data.max_custom_items, length(weighted_custom_items))
+
+	for(var/i = 1 to items_to_select)
+		if(!length(weighted_custom_items))
+			break
+
+		var/selected_item = pickweight(weighted_custom_items)
+		var/list/original_data = trader_data.custom_items[selected_item]
+
+		// Calculate final price and quantity with tier adjustments
+		var/final_price = calculate_custom_item_price(original_data[2], tier)
+		var/final_quantity = calculate_custom_item_quantity(original_data[3], tier)
+
+		selected_items[selected_item] = list(final_price, final_quantity)
+		weighted_custom_items -= selected_item
+
+	return selected_items
+
+/**
+ * Calculates the final price for a custom item based on tier
+ * Arguments:
+ *   base_price - The base price of the item
+ *   tier - The faction's reputation tier
+ * Returns:
+ *   The adjusted price
+ */
+/datum/world_faction/proc/calculate_custom_item_price(base_price, tier)
+	// Higher tier = slightly lower prices (better deals)
+	var/price_modifier = 1.0 - (tier * 0.05) // 5% discount per tier
+	return max(1, round(base_price * price_modifier))
+
+/**
+ * Calculates the final quantity for a custom item based on tier
+ * Arguments:
+ *   base_quantity - The base quantity of the item
+ *   tier - The faction's reputation tier
+ * Returns:
+ *   The adjusted quantity
+ */
+/datum/world_faction/proc/calculate_custom_item_quantity(base_quantity, tier)
+	// Higher tier = more stock available
+	if(base_quantity == INFINITY)
+		return INFINITY
+	return base_quantity + tier
 
 /datum/world_faction/proc/calculate_trader_quantity(datum/supply_pack/pack, reputation_tier)
 	var/base_quantity = 2
