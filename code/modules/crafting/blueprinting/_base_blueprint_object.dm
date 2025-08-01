@@ -129,7 +129,7 @@
 	blueprint_image.invisibility = 0
 
 	blueprint_image.color = "#00FFFF"
-	blueprint_image.alpha = 150 // Set desired alpha on the image
+	blueprint_image.alpha = 190 // Set desired alpha on the image
 	blueprint_image.pixel_x = stored_pixel_x
 	blueprint_image.pixel_y = stored_pixel_y
 	blueprint_image.override = TRUE
