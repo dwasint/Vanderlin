@@ -183,6 +183,7 @@
 	skillcraft = /datum/skill/craft/masonry
 	check_adjacent_wall = TRUE
 	supports_directions = TRUE
+	inverse_check = TRUE
 
 /datum/blueprint_recipe/structure/wallcandle
 	name = "Wall Candles"

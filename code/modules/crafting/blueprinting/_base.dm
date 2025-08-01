@@ -39,6 +39,7 @@ GLOBAL_LIST_EMPTY(blueprint_recipes)
 	var/check_adjacent_wall = FALSE // Check for adjacent wall
 	var/requires_ceiling = FALSE
 	var/place_on_wall = FALSE /// do we need to be placed directly on the wall turf itself and then offset?
+	var/inverse_check = FALSE
 
 /datum/blueprint_recipe/proc/check_craft_requirements(mob/user, turf/T, obj/structure/blueprint/blueprint)
 	if(check_above_space)
@@ -68,6 +69,8 @@ GLOBAL_LIST_EMPTY(blueprint_recipes)
 
 	if(check_adjacent_wall)
 		var/turf/check_turf = get_step(T, blueprint.blueprint_dir)
+		if(inverse_check)
+			check_turf = get_step(T, REVERSE_DIR(blueprint.blueprint_dir))
 		if(!isclosedturf(check_turf))
 			to_chat(user, "<span class='warning'>Need a wall to attach this to!</span>")
 			return FALSE
