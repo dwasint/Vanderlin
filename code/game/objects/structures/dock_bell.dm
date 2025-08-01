@@ -37,29 +37,21 @@
 	playsound(get_turf(src), 'sound/misc/handbell.ogg', 50, 1)
 
 	// Handle trader return
-	recall_faction_traders()
-	COOLDOWN_START(src, ring_bell, 1.5 MINUTES)
-	COOLDOWN_START(src, outsider_ring_bell, 10 MINUTES)
-
-	addtimer(CALLBACK(src, PROC_REF(send_boat)), 30 SECONDS)
-
-/obj/structure/dock_bell/proc/send_boat()
-	kill_traders()
 	if(!SSmerchant.cargo_docked && SSmerchant.cargo_boat.check_living())
+		recall_faction_traders()
 		SSmerchant.send_cargo_ship_back()
 	else if(SSmerchant.cargo_docked)
 		SSmerchant.prepare_cargo_shipment()
 
+	COOLDOWN_START(src, ring_bell, 1.5 MINUTES)
+	COOLDOWN_START(src, outsider_ring_bell, 10 MINUTES)
+
 /obj/structure/dock_bell/proc/recall_faction_traders()
 	for(var/mob/living/simple_animal/hostile/retaliate/trader/faction_trader/trader in SSmerchant.active_faction_traders)
-		if(!trader.returning_to_boat)
-			trader.return_to_boat()
+		playsound(trader.loc, 'sound/items/smokebomb.ogg' , 50)
+		var/datum/effect_system/smoke_spread/S = new /datum/effect_system/smoke_spread
+		S.set_up(3, get_turf(trader))
+		S.start()
+		SSmerchant.active_faction_traders -= trader
+		qdel(trader)
 
-/obj/structure/dock_bell/proc/kill_traders()
-	for(var/mob/living/simple_animal/hostile/retaliate/trader/faction_trader/trader in SSmerchant.active_faction_traders)
-		if(trader.returning_to_boat)
-			playsound(trader.loc, 'sound/items/smokebomb.ogg' , 50)
-			var/datum/effect_system/smoke_spread/S = new /datum/effect_system/smoke_spread
-			S.set_up(3, get_turf(trader))
-			S.start()
-			qdel(trader)
