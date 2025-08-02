@@ -823,7 +823,9 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	set name = "Delete Player Made Book"
 	if(!holder)
 		return
-	var/book = input(src, "What is the book file you want to delete?") in SSlibrarian.books
+	var/book = input(src, "What is the book file you want to delete?") as null|anything in SSlibrarian.books
+	if(!book)
+		return
 	if(SSlibrarian.del_player_book(book))
 		to_chat(src, "<span class='notice'>Book has been successfully deleted</span>")
 	else
