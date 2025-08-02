@@ -344,7 +344,9 @@ Can accept both a type path, and an instance of a datum. Type path has priority.
 	if(istype(selling, /obj/item/natural/bundle))
 		var/obj/item/natural/bundle/the_stack = selling
 		var/actually_sold = min(the_stack.amount, product_info[TRADER_PRODUCT_INFO_QUANTITY])
-		the_stack.use(actually_sold)
+		the_stack.amount -= actually_sold
+		if(the_stack.amount <= 0)
+			qdel(the_stack)
 		product_info[TRADER_PRODUCT_INFO_QUANTITY] -= (actually_sold)
 	else
 		qdel(selling)
