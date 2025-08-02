@@ -92,8 +92,8 @@
 	var/target_x = end_x
 	var/target_y = end_y
 
-	var/curve_intensity = rand(10, 30)
-	var/meander_frequency = rand(15, 22)
+	var/curve_intensity = rand(10, 50)
+	var/meander_frequency = rand(15, 35)
 	var/current_curve_bias_x = 0
 	var/current_curve_bias_y = 0
 	var/steps_since_direction_change = 0
