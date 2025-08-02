@@ -18,62 +18,119 @@
 
 /proc/spawn_features_on_z_level(list/env_data, list/feature_templates, z_level)
 	var/list/biome_map = env_data["biomes"]
+	var/list/river_map = env_data["rivers"]
 
 	var/list/biome_locations = index_biome_locations(biome_map, feature_templates)
+	var/list/river_locations = index_river_locations(river_map, feature_templates)
 
 	var/list/biome_feature_counts = list()
+	var/list/total_feature_counts = list() // Track total spawns per template
 
 	for(var/datum/map_template/world_feature/template in feature_templates)
 		if(!template.ignores_z_restrictions)
-			if(template.spawn_on_z_level != z_level)
-				continue
+			if(!islist(template.spawn_on_z_level))
+				if(template.spawn_on_z_level != z_level)
+					continue
+			else
+				if(!(z_level in template.spawn_on_z_level))
+					continue
 
 		var/list/valid_biomes = get_valid_biomes_for_template(template)
+		var/current_total = total_feature_counts[template.id] || 0
+
+		// Check if we've reached the total limit for this template
+		if(template.max_total > 0 && current_total >= template.max_total)
+			continue
 
 		var/attempts = 0
-		var/max_attempts = 50
+		var/max_attempts = 500 ///eh probably better we give them alot
 
 		while(attempts < max_attempts)
 			attempts++
 
-			var/target_biome = pick(valid_biomes)
+			// Check total limit again in case we spawned some during this loop
+			current_total = total_feature_counts[template.id] || 0
+			if(template.max_total > 0 && current_total >= template.max_total)
+				break
 
-			var/current_count = biome_feature_counts["[target_biome]_[template.id]"] || 0
-			if(current_count >= template.max_per_biome)
-				valid_biomes -= target_biome
-				if(!valid_biomes.len)
-					break
-				continue
+			var/spawn_success = FALSE
 
-			// Check rarity
-			if(!prob(template.rarity * 100)) //TODO: for ease change this to just a 0 to 100 range
-				continue
+			if(template.spawn_on_rivers)
+				// Try to spawn on rivers
+				spawn_success = try_spawn_on_rivers(template, river_locations, biome_feature_counts, total_feature_counts, z_level, env_data)
+			else
+				// Try to spawn on biomes (existing logic)
+				spawn_success = try_spawn_on_biomes(template, valid_biomes, biome_locations, biome_feature_counts, total_feature_counts, z_level, env_data)
 
-			var/list/biome_coords = biome_locations[target_biome]
-			if(!biome_coords || !biome_coords.len)
-				continue
+			if(spawn_success)
+				break
 
-			var/list/coord = pick(biome_coords)
-			var/x = coord[1]
-			var/y = coord[2]
+/proc/try_spawn_on_biomes(datum/map_template/world_feature/template, list/valid_biomes, list/biome_locations, list/biome_feature_counts, list/total_feature_counts, z_level, list/env_data)
+	var/target_biome = pick(valid_biomes)
 
-			x = max(1 + template.width/2, min(MAP_SIZE - template.width/2, x))
-			y = max(1 + template.height/2, min(MAP_SIZE - template.height/2, y))
+	var/current_count = biome_feature_counts["[target_biome]_[template.id]"] || 0
+	if(current_count >= template.max_per_biome)
+		valid_biomes -= target_biome
+		if(!valid_biomes.len)
+			return FALSE
+		return FALSE // Let the main loop try again with remaining biomes
 
-			if(can_spawn_feature(template, x, y, z_level, env_data))
-				if(spawn_feature_at_location(template, x, y, z_level))
-					biome_feature_counts["[target_biome]_[template.id]"] = current_count + 1
-					world.log << "Spawned [template.name] at ([x],[y],[z_level]) in biome [target_biome]"
-					break
+	// Check rarity
+	if(!prob(template.rarity * 100)) //TODO: for ease change this to just a 0 to 100 range
+		return FALSE
+
+	var/list/biome_coords = biome_locations[target_biome]
+	if(!biome_coords || !biome_coords.len)
+		return FALSE
+
+	var/list/coord = pick(biome_coords)
+	var/x = coord[1]
+	var/y = coord[2]
+
+	x = max(1 + template.width/2, min(MAP_SIZE - template.width/2, x))
+	y = max(1 + template.height/2, min(MAP_SIZE - template.height/2, y))
+
+	if(can_spawn_feature(template, x, y, z_level, env_data))
+		if(spawn_feature_at_location(template, x, y, z_level))
+			biome_feature_counts["[target_biome]_[template.id]"] = current_count + 1
+			total_feature_counts[template.id] = (total_feature_counts[template.id] || 0) + 1
+			world.log << "Spawned [template.name] at ([x],[y],[z_level]) in biome [target_biome]"
+			return TRUE
+
+	return FALSE
+
+/proc/try_spawn_on_rivers(datum/map_template/world_feature/template, list/river_locations, list/biome_feature_counts, list/total_feature_counts, z_level, list/env_data)
+	if(!river_locations || !river_locations.len)
+		return FALSE
+
+	// Check rarity
+	if(!prob(template.rarity * 100))
+		return FALSE
+
+	var/list/coord = pick(river_locations)
+	var/x = coord[1]
+	var/y = coord[2]
+
+	x = max(1 + template.width/2, min(MAP_SIZE - template.width/2, x))
+	y = max(1 + template.height/2, min(MAP_SIZE - template.height/2, y))
+
+	if(can_spawn_feature(template, x, y, z_level, env_data))
+		if(spawn_feature_at_location(template, x, y, z_level))
+			total_feature_counts[template.id] = (total_feature_counts[template.id] || 0) + 1
+			world.log << "Spawned [template.name] at ([x],[y],[z_level]) on river"
+			return TRUE
+
+	return FALSE
 
 /proc/index_biome_locations(list/biome_map, list/feature_templates)
 	var/list/biome_locations = list()
 
 	var/list/relevant_biomes = list()
 	for(var/datum/map_template/world_feature/template in feature_templates)
-		var/list/valid_biomes = get_valid_biomes_for_template(template)
-		for(var/biome in valid_biomes)
-			relevant_biomes[biome] = TRUE
+		if(!template.spawn_on_rivers) // Only index biomes for non-river features
+			var/list/valid_biomes = get_valid_biomes_for_template(template)
+			for(var/biome in valid_biomes)
+				relevant_biomes[biome] = TRUE
 
 	for(var/biome in relevant_biomes)
 		biome_locations[biome] = list()
@@ -85,6 +142,26 @@
 				biome_locations[biome] += list(list(x, y))
 
 	return biome_locations
+
+/proc/index_river_locations(list/river_map, list/feature_templates)
+	var/list/river_locations = list()
+
+	// Check if any templates need river spawning
+	var/needs_rivers = FALSE
+	for(var/datum/map_template/world_feature/template in feature_templates)
+		if(template.spawn_on_rivers)
+			needs_rivers = TRUE
+			break
+
+	if(!needs_rivers || !river_map)
+		return river_locations
+
+	for(var/x in 1 to MAP_SIZE)
+		for(var/y in 1 to MAP_SIZE)
+			if(river_map["[x]"]["[y]"])
+				river_locations += list(list(x, y))
+
+	return river_locations
 
 /proc/get_valid_biomes_for_template(datum/map_template/world_feature/template)
 	var/list/valid_biomes = list()
@@ -105,8 +182,8 @@
 	// Check all tiles the feature would occupy
 	for(var/dx = -(template.width/2); dx <= (template.width/2); dx++)
 		for(var/dy = -(template.height/2); dy <= (template.height/2); dy++)
-			var/check_x = x + dx
-			var/check_y = y + dy
+			var/check_x = round(x + dx, 1)
+			var/check_y = round(y + dy, 1)
 
 			// Bounds check
 			if(check_x < 1 || check_x > MAP_SIZE || check_y < 1 || check_y > MAP_SIZE)
@@ -127,8 +204,12 @@
 			if(temperature < template.min_temperature || temperature > template.max_temperature)
 				return FALSE
 
-			if(template.avoid_rivers && river_map && river_map["[check_x]"]["[check_y]"])
-				return FALSE
+			// River requirements logic
+			var/is_river_tile = river_map && river_map["[check_x]"]["[check_y]"]
+			if(template.spawn_on_rivers && !is_river_tile)
+				return FALSE // Must be on river if spawn_on_rivers is TRUE
+			else if(template.avoid_rivers && is_river_tile)
+				return FALSE // Must avoid rivers if avoid_rivers is TRUE
 
 			var/turf/T = locate(check_x, check_y, z_level)
 			if(!T || istransparentturf(T))
@@ -151,6 +232,8 @@
 				var/distance = sqrt((x - feature_x) ** 2 + (y - feature_y) ** 2)
 				if(distance < template.min_distance_from_features)
 					return FALSE
+
+	return TRUE
 
 /proc/spawn_feature_at_location(datum/map_template/world_feature/template, x, y, z_level)
 	if(!template.mappath)

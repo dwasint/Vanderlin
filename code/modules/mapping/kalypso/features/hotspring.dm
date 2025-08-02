@@ -1,4 +1,5 @@
 /datum/map_template/world_feature/hotspring
+	name = "Hotspring"
 	id = "feature_hotspring"
 	mappath = "_maps/kalypso/hotspring.dmm"
 
