@@ -570,11 +570,11 @@
 /turf/open/floor/naturalstone,
 /area/rogue/under/tomb/cave)
 "vc" = (
-/obj/item/ash{
+/obj/item/fertilizer/ash{
 	pixel_y = -4;
 	pixel_x = -4
 	},
-/obj/item/ash{
+/obj/item/fertilizer/ash{
 	pixel_y = 5;
 	pixel_x = 6
 	},
@@ -845,7 +845,7 @@
 /turf/open/floor/carpet,
 /area/rogue/under/tomb/indoors)
 "GY" = (
-/obj/item/ash{
+/obj/item/fertilizer/ash{
 	pixel_x = 5;
 	pixel_y = 7
 	},
