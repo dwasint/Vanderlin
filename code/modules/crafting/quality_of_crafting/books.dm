@@ -110,6 +110,10 @@
 			temp_recipe = new path()
 			var/datum/essence_infusion_recipe/r = temp_recipe
 			category = r.category
+		else if(ispath(path, /datum/plant_def))
+			temp_recipe = new path()
+			var/datum/plant_def/r = temp_recipe
+			category = r.get_family_name()
 
 		// Clean up our temporary instance
 		if(temp_recipe)
@@ -525,6 +529,12 @@
 		var/datum/essence_infusion_recipe/r = temp_recipe
 		recipe_name = initial(r.name)
 		recipe_html = get_recipe_specific_html(r, user)
+	else if(ispath(path, /datum/plant_def))
+		temp_recipe = new path()
+		var/datum/plant_def/r = temp_recipe
+		recipe_name = initial(r.name)
+		recipe_html = get_recipe_specific_html(r, user)
+
 
 	if(temp_recipe)
 		qdel(temp_recipe)
@@ -870,3 +880,17 @@
 	can_spawn = FALSE
 	types = list(
 		/datum/repeatable_crafting_recipe/survival)
+
+/obj/item/recipe_book/agriculture
+	name = "The Farmers Almanac: Principles of Growth and Harvest"
+	desc = "Compiled by Elira Greenshade."
+	icon_state = "book_0"
+	base_icon_state = "book"
+
+	types = list(
+		/datum/book_entry/farming_basics,
+		/datum/book_entry/soil_management,
+		/datum/book_entry/plant_families,
+		/datum/book_entry/plant_genetics,
+		/datum/plant_def,
+	)

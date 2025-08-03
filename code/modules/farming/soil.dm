@@ -946,12 +946,14 @@
 	adjust_phosphorus(plant.phosphorus_production)
 	adjust_potassium(plant.potassium_production)
 
-	for(var/obj/structure/soil/soil in range(1, src))
-		if(soil == src)
-			continue
-		soil.adjust_nitrogen(FLOOR(plant.nitrogen_production, 1))
-		soil.adjust_phosphorus(FLOOR(plant.phosphorus_production, 1))
-		soil.adjust_potassium(FLOOR(plant.potassium_production, 1))
+	for(var/direction in GLOB.cardinals)
+		var/turf/cardinal_turf = get_step(src, direction)
+		for(var/obj/structure/soil/soil in cardinal_turf)
+			if(soil == src)
+				continue
+			soil.adjust_nitrogen(FLOOR(plant.nitrogen_production, 1))
+			soil.adjust_phosphorus(FLOOR(plant.phosphorus_production, 1))
+			soil.adjust_potassium(FLOOR(plant.potassium_production, 1))
 
 /obj/structure/soil/proc/add_growth(added_growth)
 	if(!plant)
@@ -1114,7 +1116,6 @@
 	add_growth(plant.produce_time)
 
 #undef MAX_PLANT_HEALTH
-#undef MAX_PLANT_WATER
 #undef MAX_PLANT_NUTRITION
 #undef MAX_PLANT_WEEDS
 #undef SOIL_DECAY_TIME
