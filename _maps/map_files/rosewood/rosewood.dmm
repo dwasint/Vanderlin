@@ -12221,8 +12221,8 @@
 /area/rogue/indoors/town/merc_guild)
 "gLT" = (
 /obj/structure/closet/crate/chest/crate,
-/obj/item/alch/bonemeal,
-/obj/item/alch/bonemeal,
+/obj/item/fertilizer/bone_meal,
+/obj/item/fertilizer/bone_meal,
 /obj/item/alch/bone,
 /obj/item/alch/bone,
 /obj/item/alch/swampdust,

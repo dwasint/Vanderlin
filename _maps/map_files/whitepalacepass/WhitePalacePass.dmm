@@ -9603,8 +9603,8 @@
 /area/rogue/outdoors/rtfield)
 "jfL" = (
 /obj/structure/closet/crate/chest/neu_iron,
-/obj/item/alch/bonemeal,
-/obj/item/alch/bonemeal,
+/obj/item/fertilizer/bone_meal,
+/obj/item/fertilizer/bone_meal,
 /obj/item/alch/coaldust,
 /obj/item/alch/coaldust,
 /obj/item/alch/airdust,
