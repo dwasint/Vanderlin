@@ -31,9 +31,12 @@
 	maturation_nutrition = HUNGRINESS_DEMANDING
 	maturation_time = FAST_GROWING
 	plant_family = FAMILY_ROSACEAE
-	nitrogen_requirement = 25
-	phosphorus_requirement = 30
+	nitrogen_requirement = 0
+	phosphorus_requirement = 0
 	potassium_requirement = 35
+	nitrogen_production = 0
+	phosphorus_production = 25
+	potassium_production = 0
 
 /datum/plant_def/jacksberry_poison/set_genetic_tendencies(datum/plant_genetics/base_genetics)
 	base_genetics.disease_resistance = TRAIT_GRADE_EXCELLENT  // Poisonous = pest resistant
@@ -50,9 +53,12 @@
 	maturation_nutrition = HUNGRINESS_DEMANDING
 	maturation_time = FAST_GROWING
 	plant_family = FAMILY_ROSACEAE
-	nitrogen_requirement = 25
+	nitrogen_requirement = 0
 	phosphorus_requirement = 40
-	potassium_requirement = 35
+	potassium_requirement = 0
+	nitrogen_production = 0
+	phosphorus_production = 0
+	potassium_production = 25
 
 /datum/plant_def/strawberry/set_genetic_tendencies(datum/plant_genetics/base_genetics)
 	base_genetics.quality_trait = TRAIT_GRADE_EXCELLENT
@@ -70,8 +76,11 @@
 	maturation_time = FAST_GROWING
 	plant_family = FAMILY_ROSACEAE
 	nitrogen_requirement = 28
-	phosphorus_requirement = 38
-	potassium_requirement = 40
+	phosphorus_requirement = 0
+	potassium_requirement = 0
+	nitrogen_production = 0
+	phosphorus_production = 0
+	potassium_production = 25
 
 /datum/plant_def/blackberry/set_genetic_tendencies(datum/plant_genetics/base_genetics)
 	base_genetics.disease_resistance = TRAIT_GRADE_GOOD  // Thorny = pest resistant
@@ -88,9 +97,12 @@
 	maturation_nutrition = HUNGRINESS_DEMANDING
 	maturation_time = FAST_GROWING
 	plant_family = FAMILY_ROSACEAE
-	nitrogen_requirement = 28
-	phosphorus_requirement = 38
+	nitrogen_requirement = 0
+	phosphorus_requirement = 0
 	potassium_requirement = 38
+	nitrogen_production = 20
+	phosphorus_production = 0
+	potassium_production = 0
 
 /datum/plant_def/raspberry/set_genetic_tendencies(datum/plant_genetics/base_genetics)
 	base_genetics.quality_trait = TRAIT_GRADE_EXCELLENT
@@ -106,12 +118,13 @@
 	produce_amount_max = 4
 	maturation_nutrition = HUNGRINESS_DEMANDING
 	plant_family = FAMILY_ROSACEAE
-	nitrogen_requirement = 35
-	phosphorus_requirement = 45
+	nitrogen_requirement = 0
+	phosphorus_requirement = 0
 	potassium_requirement = 50
-	nitrogen_production = 8
-	phosphorus_production = 20
-	potassium_production = 30
+	nitrogen_production = 0
+	phosphorus_production = 30
+	potassium_production = 0
+
 
 /datum/plant_def/apple/set_genetic_tendencies(datum/plant_genetics/base_genetics)
 	base_genetics.quality_trait = TRAIT_GRADE_EXCELLENT

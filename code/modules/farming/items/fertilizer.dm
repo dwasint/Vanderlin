@@ -9,6 +9,15 @@
 	var/phosphorus_content = 20
 	var/potassium_content = 20
 
+/obj/item/fertilizer/examine(mob/user)
+	. = ..()
+	if(nitrogen_content)
+		. += "Restores [nitrogen_content] Nitrogen"
+	if(phosphorus_content)
+		. += "Restores [phosphorus_content] Phosphorus"
+	if(potassium_content)
+		. += "Restores [potassium_content] Potassium}"
+
 /obj/item/fertilizer/bone_meal
 	name = "bone meal"
 	desc = "Crushed bones, perfect for the garden."

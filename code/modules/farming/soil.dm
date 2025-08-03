@@ -42,9 +42,9 @@
 	var/water = 0
 	/// Amount of weeds in the soil. The more of them the more water and nutrition they eat.
 	var/weeds = 0
-	var/nitrogen = 0      // N - For leafy growth, chlorophyll production
-	var/phosphorus = 0    // P - For root development, flowering, fruiting
-	var/potassium = 0     // K - For overall plant health, disease resistance
+	var/nitrogen = MAX_PLANT_NITROGEN      // N - For leafy growth, chlorophyll production
+	var/phosphorus = MAX_PLANT_PHOSPHORUS    // P - For root development, flowering, fruiting
+	var/potassium = MAX_PLANT_POTASSIUM     // K - For overall plant health, disease resistance
 	/// Amount of plant health, if it drops to zero the plant won't grow, make produce and will have to be uprooted.
 	var/plant_health = MAX_PLANT_HEALTH
 	/// The plant that is currently planted, it is a reference to a singleton
@@ -520,12 +520,12 @@
 	else
 		. += span_info("The soil is wet.")
 	// Nutrition feedback
-	if(get_total_npk() <= MAX_PLANT_NUTRITION * 0.15)
-		. += span_warning("The soil is hungry.")
-	else if (get_total_npk() <= MAX_PLANT_NUTRITION * 0.5)
-		. += span_info("The soil is sated.")
-	else
-		. += span_info("The soil looks fertile.")
+	if(nitrogen < MAX_PLANT_NITROGEN * 0.15)
+		. += span_info("The plant is lacking Nitrogen")
+	if(potassium < MAX_PLANT_POTASSIUM * 0.15)
+		. += span_info("The plant is lacking Potassium")
+	if(phosphorus < MAX_PLANT_PHOSPHORUS * 0.15)
+		. += span_info("The plant is lacking Phosphorus")
 	// Weeds feedback
 	if(weeds >= MAX_PLANT_WEEDS * 0.6)
 		. += span_warning("It's overtaken by the weeds!")
@@ -556,11 +556,6 @@
 	// Weeds eat water and NPK nutrients to grow
 	var/weed_factor = weeds / MAX_PLANT_WEEDS
 	adjust_water(-dt * weed_factor * WEED_WATER_CONSUMPTION_RATE)
-
-	// Weeds consume NPK at different rates
-	adjust_nitrogen(-dt * weed_factor * WEED_NITROGEN_CONSUMPTION_RATE)
-	adjust_phosphorus(-dt * weed_factor * WEED_PHOSPHORUS_CONSUMPTION_RATE)
-	adjust_potassium(-dt * weed_factor * WEED_POTASSIUM_CONSUMPTION_RATE)
 
 	if(get_total_npk() > 0)
 		adjust_weeds(dt * WEED_GROWTH_RATE)
@@ -809,57 +804,88 @@
 	if(!plant)
 		return
 
-	// Calculate NPK requirements based on growth phase
-	var/nitrogen_needed, phosphorus_needed, potassium_needed
+	// Calculate base NPK requirements for this time step
+	var/nitrogen_needed = 0
+	var/phosphorus_needed = 0
+	var/potassium_needed = 0
 	var/total_growth_time
 
 	if(!matured)
-		// Maturation phase - higher nitrogen for vegetative growth
+		// Maturation phase
 		total_growth_time = plant.maturation_time
-		nitrogen_needed = (plant.nitrogen_requirement / total_growth_time) * target_growth_time
-		phosphorus_needed = (plant.phosphorus_requirement / total_growth_time) * target_growth_time * 0.7
-		potassium_needed = (plant.potassium_requirement / total_growth_time) * target_growth_time
+		if(plant.nitrogen_requirement > 0)
+			nitrogen_needed = (plant.nitrogen_requirement / total_growth_time) * target_growth_time
+		if(plant.phosphorus_requirement > 0)
+			phosphorus_needed = (plant.phosphorus_requirement / total_growth_time) * target_growth_time * 0.7
+		if(plant.potassium_requirement > 0)
+			potassium_needed = (plant.potassium_requirement / total_growth_time) * target_growth_time
 	else
-		// Production phase - higher phosphorus for flowering/fruiting
+		// Production phase
 		total_growth_time = plant.produce_time
-		nitrogen_needed = (plant.nitrogen_requirement / total_growth_time) * target_growth_time * 0.6
-		phosphorus_needed = (plant.phosphorus_requirement / total_growth_time) * target_growth_time * 1.3
-		potassium_needed = (plant.potassium_requirement / total_growth_time) * target_growth_time
+		if(plant.nitrogen_requirement > 0)
+			nitrogen_needed = (plant.nitrogen_requirement / total_growth_time) * target_growth_time * 0.6
+		if(plant.phosphorus_requirement > 0)
+			phosphorus_needed = (plant.phosphorus_requirement / total_growth_time) * target_growth_time * 1.3
+		if(plant.potassium_requirement > 0)
+			potassium_needed = (plant.potassium_requirement / total_growth_time) * target_growth_time
 
-	// Apply nutrient multipliers
-	nitrogen_needed *= nutriment_multiplier
-	phosphorus_needed *= nutriment_multiplier
-	potassium_needed *= nutriment_multiplier
+	// Apply nutrient multipliers only to nutrients that are actually needed
+	if(nitrogen_needed > 0)
+		nitrogen_needed *= nutriment_multiplier
+	if(phosphorus_needed > 0)
+		phosphorus_needed *= nutriment_multiplier
+	if(potassium_needed > 0)
+		potassium_needed *= nutriment_multiplier
 
 	// Apply genetics modifiers if available
 	if(plant_genetics)
 		var/efficiency_modifier = (plant_genetics.water_efficiency - TRAIT_GRADE_AVERAGE) / 100
-		nitrogen_needed *= (1 - efficiency_modifier * 0.3)
-		phosphorus_needed *= (1 - efficiency_modifier * 0.3)
-		potassium_needed *= (1 - efficiency_modifier * 0.3)
+		if(nitrogen_needed > 0)
+			nitrogen_needed *= (1 - efficiency_modifier * 0.3)
+		if(phosphorus_needed > 0)
+			phosphorus_needed *= (1 - efficiency_modifier * 0.3)
+		if(potassium_needed > 0)
+			potassium_needed *= (1 - efficiency_modifier * 0.3)
 
-	// Check availability and calculate limiting factor
-	var/nitrogen_available = min(nitrogen_needed, nitrogen)
-	var/phosphorus_available = min(phosphorus_needed, phosphorus)
-	var/potassium_available = min(potassium_needed, potassium)
+	// Check availability and calculate factors for each nutrient that's actually needed
+	var/nitrogen_factor = 0
+	var/phosphorus_factor = 0
+	var/potassium_factor = 0
 
-	// Growth is limited by the most scarce nutrient (Liebig's Law of the Minimum)
-	var/nitrogen_factor = nitrogen_available / nitrogen_needed
-	var/phosphorus_factor = phosphorus_available / phosphorus_needed
-	var/potassium_factor = potassium_available / potassium_needed
+	if(nitrogen_needed > 0)
+		var/nitrogen_available = min(nitrogen_needed, nitrogen)
+		nitrogen_factor = nitrogen_available / nitrogen_needed
 
-	var/limiting_factor = min(nitrogen_factor, phosphorus_factor, potassium_factor)
+	if(phosphorus_needed > 0)
+		var/phosphorus_available = min(phosphorus_needed, phosphorus)
+		phosphorus_factor = phosphorus_available / phosphorus_needed
 
-	// Consume nutrients proportionally
-	adjust_nitrogen(-nitrogen_available * limiting_factor)
-	adjust_phosphorus(-phosphorus_available * limiting_factor)
-	adjust_potassium(-potassium_available * limiting_factor)
+	if(potassium_needed > 0)
+		var/potassium_available = min(potassium_needed, potassium)
+		potassium_factor = potassium_available / potassium_needed
+
+	// Find the best available nutrient (highest satisfaction ratio)
+	var/limiting_factor = max(nitrogen_factor, phosphorus_factor, potassium_factor)
+
+	// If no nutrients are needed, allow full growth
+	if(nitrogen_needed == 0 && phosphorus_needed == 0 && potassium_needed == 0)
+		limiting_factor = 1.0
+
+	// Consume only the nutrient that's providing the growth
+	if(limiting_factor > 0)
+		if(nitrogen_factor == limiting_factor && nitrogen_needed > 0)
+			adjust_nitrogen(-nitrogen_needed * limiting_factor)
+		else if(phosphorus_factor == limiting_factor && phosphorus_needed > 0)
+			adjust_phosphorus(-phosphorus_needed * limiting_factor)
+		else if(potassium_factor == limiting_factor && potassium_needed > 0)
+			adjust_potassium(-potassium_needed * limiting_factor)
 
 	// Apply growth based on limiting factor
 	var/actual_growth_time = target_growth_time * limiting_factor
 
-	// Nutrient deficiency affects plant health
-	if(limiting_factor < 0.5)
+	// Nutrient deficiency affects plant health only if nutrients are required but unavailable
+	var/any_nutrients_needed = (nitrogen_needed > 0 || phosphorus_needed > 0 || potassium_needed > 0)
+	if(any_nutrients_needed && limiting_factor < 0.1)
 		adjust_plant_health(-dt * NUTRIENT_DEFICIENCY_DAMAGE_RATE)
 
 	return add_growth(actual_growth_time)
