@@ -907,7 +907,7 @@
 	log_combat(user, C, "drank blood from ")
 
 	if(ishuman(C) && C.mind)
-		if(user.clan_position?.can_assign_positions && C.blood_volume <= BLOOD_VOLUME_SURVIVE)
+		if(user.clan_position?.can_assign_positions && C.bloodpool <= 150)
 			if(browser_alert(user, "Would you like to sire a new spawn?", "THE CURSE OF KAIN", DEFAULT_INPUT_CHOICES) != CHOICE_YES)
 				to_chat(user, span_warning("I decide [C] is unworthy."))
 			else

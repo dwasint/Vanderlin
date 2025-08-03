@@ -504,4 +504,6 @@ And it also helps for the character set panel
 /datum/stressevent/bad_blood
 	desc = span_warning("That blood was revolting!")
 	stressadd = 3
+	max_stacks = 10
+	stressadd_per_extra_stack = 3
 	timer = 10 MINUTES
