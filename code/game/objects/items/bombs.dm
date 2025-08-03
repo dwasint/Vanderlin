@@ -35,7 +35,7 @@
 	S.set_up(radius, T)
 	S.start()
 	if(prob(25))
-		new /obj/item/ash(T)
+		new /obj/item/fertilizer/ash(T)
 	qdel(src)
 
 /obj/item/holy_grenade

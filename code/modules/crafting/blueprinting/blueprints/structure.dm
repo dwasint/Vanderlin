@@ -98,7 +98,7 @@
 	required_materials = list(
 		/obj/item/natural/stone = 1,
 		/obj/item/ore/coal = 1,
-		/obj/item/ash = 1
+		/obj/item/fertilizer/ash = 1
 	)
 	construct_tool = /obj/item/weapon/hammer
 	build_time = 6 SECONDS
@@ -209,7 +209,7 @@
 	required_materials = list(
 		/obj/item/natural/stone = 1,
 		/obj/item/candle/yellow = 1,
-		/obj/item/ash = 1
+		/obj/item/fertilizer/ash = 1
 	)
 	construct_tool = /obj/item/weapon/hammer
 	build_time = 5 SECONDS

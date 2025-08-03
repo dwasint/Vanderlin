@@ -106,7 +106,7 @@
 		return TRUE
 	apply_farming_fatigue(user, 5)
 	to_chat(user, span_notice("I take out some ready compost."))
-	var/obj/item/compost/compost = take_out_compost()
+	var/obj/item/fertilizer/compost/compost = take_out_compost()
 	if(compost)
 		user.put_in_active_hand(compost)
 	return TRUE
@@ -115,7 +115,7 @@
 	if(ready_compost < COMPOST_PER_PRODUCED_ITEM)
 		return
 	ready_compost -= COMPOST_PER_PRODUCED_ITEM
-	. = new /obj/item/compost(get_turf(src))
+	. = new /obj/item/fertilizer/compost(get_turf(src))
 	update_appearance(UPDATE_OVERLAYS)
 
 /obj/structure/composter/attackby(obj/item/attacking_item, mob/user, params)
@@ -193,15 +193,6 @@
 		. += "post_compost_mid"
 	else if (total_processed >= COMPOST_PER_PRODUCED_ITEM)
 		. += "post_compost_low"
-
-/obj/item/compost
-	name = "compost"
-	desc = "Decomposed produce ready to give life to plants."
-	icon = 'icons/roguetown/misc/composter.dmi'
-	icon_state = "compost"
-	w_class = WEIGHT_CLASS_SMALL
-	grid_width = 32
-	grid_height = 32
 
 #undef MAXIMUM_TOTAL_COMPOST
 #undef COMPOST_PER_PRODUCED_ITEM

@@ -74,6 +74,7 @@ GLOBAL_LIST_EMPTY(blueprint_recipes)
 		if(!isclosedturf(check_turf))
 			to_chat(user, "<span class='warning'>Need a wall to attach this to!</span>")
 			return FALSE
+	return TRUE
 
 /datum/blueprint_recipe/proc/generate_html(mob/user)
 	var/client/client = user

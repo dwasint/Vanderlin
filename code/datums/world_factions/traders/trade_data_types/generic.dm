@@ -248,7 +248,7 @@
 	initial_products = list()
 	initial_wanteds = list(
 		/obj/item/natural/bundle/fibers = list(6, INFINITY, ""),
-		/obj/item/ash = list(10, INFINITY, ""),
+		/obj/item/fertilizer/ash = list(10, INFINITY, ""),
 	)
 	say_phrases = list(
 		ITEM_REJECTED_PHRASE = list(
@@ -497,7 +497,7 @@
 	base_type = list(/datum/supply_pack/seeds)
 	initial_products = list()
 	initial_wanteds = list(
-		/obj/item/ash = list(5, INFINITY, ""),
+		/obj/item/fertilizer/ash = list(5, INFINITY, ""),
 		/obj/item/natural/bundle/fibers = list(8, INFINITY, ""),
 		/obj/item/reagent_containers/glass = list(3, INFINITY, ""),
 	)
@@ -625,7 +625,7 @@
 	initial_products = list()
 	initial_wanteds = list(
 		/obj/item/natural/feather = list(8, INFINITY, ""),
-		/obj/item/ash = list(5, INFINITY, ""),
+		/obj/item/fertilizer/ash = list(5, INFINITY, ""),
 		/obj/item/natural/hide = list(15, INFINITY, ""),
 	)
 	say_phrases = list(

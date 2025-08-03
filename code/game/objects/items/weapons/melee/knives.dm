@@ -486,7 +486,7 @@
 	max_integrity = 30
 	max_blade_int = 30
 	wdefense = TERRIBLE_PARRY
-	smeltresult = /obj/item/ash
+	smeltresult = /obj/item/fertilizer/ash
 	melting_material = null
 	sellprice = 5
 

@@ -29,10 +29,10 @@
 	requirements = list(
 		/obj/item/reagent_containers/food/snacks/produce/fyritius = 1,
 		/obj/item/reagent_containers/glass/bottle = 1,
-		/obj/item/ash = 2,
+		/obj/item/fertilizer/ash = 2,
 	)
 
-	starting_atom = /obj/item/ash
+	starting_atom = /obj/item/fertilizer/ash
 	attacked_atom = /obj/item/reagent_containers/glass/bottle
 	output = /obj/item/smokebomb
 	craft_time = 1 SECONDS

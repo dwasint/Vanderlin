@@ -10,6 +10,7 @@
 	var/seed
 	var/bitesize_mod = 0
 	var/crop_quality = 1
+	var/datum/plant_genetics/source_genetics
 
 /obj/item/reagent_containers/food/snacks/produce/proc/set_quality(quality)
 	crop_quality = quality
@@ -64,13 +65,13 @@
 				qdel(src)
 				return
 			user.visible_message("<span class='info'>[user] extracts the seeds.</span>")
-			new seed(location)
+			new seed(location, source_genetics)
 			if(prob(90))
-				new seed(location)
+				new seed(location, source_genetics)
 			if(prob(23))
-				new seed(location)
+				new seed(location, source_genetics)
 			if(prob(6))
-				new seed(location)
+				new seed(location, source_genetics)
 			qdel(src)
 			return
 		else

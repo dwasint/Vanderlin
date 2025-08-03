@@ -27,7 +27,7 @@
 	grid_width = 64
 	grid_height = 32
 
-	smeltresult = /obj/item/ash
+	smeltresult = /obj/item/fertilizer/ash
 	sellprice = 5
 	item_weight = 4
 

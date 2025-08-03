@@ -32,7 +32,7 @@
 	attacked_atom = /obj/item/grown/log/tree/small
 	starting_atom = /obj/item/reagent_containers/food/snacks/fat
 	requirements = list(/obj/item/grown/log/tree/small = 1,
-				/obj/item/ash = 1,
+				/obj/item/fertilizer/ash = 1,
 				/obj/item/reagent_containers/food/snacks/fat =1 )
 	craftdiff = 1
 

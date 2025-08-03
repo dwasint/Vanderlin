@@ -30,7 +30,7 @@
 
 	sewrepair = TRUE
 	anvilrepair = null
-	smeltresult = /obj/item/ash
+	smeltresult = /obj/item/fertilizer/ash
 	sewrepair = TRUE
 	fiber_salvage = FALSE
 	salvage_amount = 1

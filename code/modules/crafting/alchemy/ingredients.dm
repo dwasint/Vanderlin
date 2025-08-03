@@ -74,13 +74,6 @@
 	med_pot = /datum/alch_cauldron_recipe/big_mana_potion
 	minor_pot = /datum/alch_cauldron_recipe/per_potion
 
-/obj/item/alch/bonemeal
-	name = "bone meal"
-	icon_state = "bonemeal"
-	major_pot = /datum/alch_cauldron_recipe/mana_potion
-	med_pot = /datum/alch_cauldron_recipe/per_potion
-	minor_pot = /datum/alch_cauldron_recipe/antidote
-
 /obj/item/alch/seeddust
 	name = "seed dust"
 	icon_state = "seeddust"

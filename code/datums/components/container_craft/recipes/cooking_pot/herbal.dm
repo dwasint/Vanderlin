@@ -114,7 +114,7 @@
 		/obj/item/alch/salvia = 2
 	)
 	optional_requirements = list(
-		/obj/item/alch/bonemeal = 1 // Bone meal enhances wisdom
+		/obj/item/fertilizer/bone_meal = 1 // Bone meal enhances wisdom
 	)
 	output_amount = 30
 	max_optionals = 1

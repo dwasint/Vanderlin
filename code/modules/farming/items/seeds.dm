@@ -16,13 +16,25 @@
 	var/datum/plant_def/plant_def_type
 	var/seed_identity = "some seed"
 
-/obj/item/neuFarm/seed/Initialize()
+	var/datum/plant_genetics/seed_genetics
+
+/obj/item/neuFarm/seed/Initialize(mapload, datum/plant_genetics/passed_genetics)
 	. = ..()
 	if(plant_def_type)
 		var/datum/plant_def/def = GLOB.plant_defs[plant_def_type]
 		color = def.seed_color
 	if(icon_state == "seeds")
 		icon_state = "seeds[rand(1,3)]"
+
+	if(!passed_genetics)
+		if(!seed_genetics)
+			var/datum/plant_def/plant_def_instance = GLOB.plant_defs[plant_def_type]
+			seed_genetics = new /datum/plant_genetics()
+			plant_def_instance.set_genetic_tendencies(seed_genetics)
+		else
+			seed_genetics = new seed_genetics()
+	else
+		seed_genetics = passed_genetics.copy()
 
 /obj/item/neuFarm/seed/Crossed(mob/living/L)
 	. = ..()
@@ -46,6 +58,8 @@
 		show_real_identity = TRUE
 	if(show_real_identity)
 		. += span_info("I can tell these are [seed_identity]")
+		var/datum/plant_def/plant_def_instance = GLOB.plant_defs[plant_def_type]
+		. += plant_def_instance.get_examine_details()
 
 /obj/item/neuFarm/seed/attack_turf(turf/T, mob/living/user)
 	var/obj/structure/soil/soil = get_soil_on_turf(T)
@@ -72,12 +86,17 @@
 	if(!plant_def_type)
 		return
 	to_chat(user, span_notice("I plant \the [src] in \the [soil]."))
-	soil.insert_plant(GLOB.plant_defs[plant_def_type])
+	soil.insert_plant(GLOB.plant_defs[plant_def_type], seed_genetics)
 	qdel(src)
 
 /obj/item/neuFarm/seed/wheat
 	seed_identity = "wheat seeds"
 	plant_def_type = /datum/plant_def/wheat
+
+/obj/item/neuFarm/seed/wheat/ancient
+	seed_identity = "ancient wheat seeds"
+	plant_def_type = /datum/plant_def/wheat
+	seed_genetics = /datum/plant_genetics/heirloom/wheat_ancient
 
 /obj/item/neuFarm/seed/oat
 	seed_identity = "oat seeds"
