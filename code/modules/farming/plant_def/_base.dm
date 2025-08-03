@@ -59,13 +59,13 @@
 	var/list/details = list()
 
 	// Nutritional requirements
-	details += "<span class='notice'><b>Nutritional Requirements:</b></span>"
+	details += "<span class='notice'><b>Nutritional Requirements (Perennials consume the full amount for growth, and again for harvest.):</b></span>"
 	if(nitrogen_requirement > 0)
-		details += "- Nitrogen: [nitrogen_requirement] units"
+		details += "- Nitrogen: [nitrogen_requirement] units [perennial ? "per stage" : ""]"
 	if(phosphorus_requirement > 0)
-		details += "- Phosphorus: [phosphorus_requirement] units"
+		details += "- Phosphorus: [phosphorus_requirement] units [perennial ? "per stage" : ""]"
 	if(potassium_requirement > 0)
-		details += "- Potassium: [potassium_requirement] units"
+		details += "- Potassium: [potassium_requirement] units [perennial ? "per stage" : ""]"
 
 	if(nitrogen_requirement == 0 && phosphorus_requirement == 0 && potassium_requirement == 0)
 		details += "- No special nutrient requirements"

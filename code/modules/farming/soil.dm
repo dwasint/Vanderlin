@@ -37,9 +37,9 @@
 	var/water = 0
 	/// Amount of weeds in the soil. The more of them the more water and nutrition they eat.
 	var/weeds = 0
-	var/nitrogen = MAX_PLANT_NITROGEN      // N - For leafy growth, chlorophyll production
-	var/phosphorus = MAX_PLANT_PHOSPHORUS    // P - For root development, flowering, fruiting
-	var/potassium = MAX_PLANT_POTASSIUM     // K - For overall plant health, disease resistance
+	var/nitrogen = MAX_PLANT_NITROGEN * 0.5        // N - For leafy growth, chlorophyll production
+	var/phosphorus = MAX_PLANT_PHOSPHORUS * 0.5    // P - For root development, flowering, fruiting
+	var/potassium = MAX_PLANT_POTASSIUM * 0.5      // K - For overall plant health, disease resistance
 	/// Amount of plant health, if it drops to zero the plant won't grow, make produce and will have to be uprooted.
 	var/plant_health = MAX_PLANT_HEALTH
 	/// The plant that is currently planted, it is a reference to a singleton
@@ -853,22 +853,31 @@
 	var/potassium_needed = 0
 	var/total_growth_time
 
-	if(!matured)
-		// Maturation phase
-		total_growth_time = plant.maturation_time
+	if(plant.perennial) //perennials are hungry fucks
+		if(!matured)
+			// Maturation phase
+			total_growth_time = plant.maturation_time
+			if(plant.nitrogen_requirement > 0)
+				nitrogen_needed = (plant.nitrogen_requirement / total_growth_time) * target_growth_time
+			if(plant.phosphorus_requirement > 0)
+				phosphorus_needed = (plant.phosphorus_requirement / total_growth_time) * target_growth_time
+			if(plant.potassium_requirement > 0)
+				potassium_needed = (plant.potassium_requirement / total_growth_time) * target_growth_time
+		else
+			// Production phase
+			total_growth_time = plant.produce_time
+			if(plant.nitrogen_requirement > 0)
+				nitrogen_needed = (plant.nitrogen_requirement / total_growth_time) * target_growth_time
+			if(plant.phosphorus_requirement > 0)
+				phosphorus_needed = (plant.phosphorus_requirement / total_growth_time) * target_growth_time
+			if(plant.potassium_requirement > 0)
+				potassium_needed = (plant.potassium_requirement / total_growth_time) * target_growth_time
+	else
+		total_growth_time = plant.maturation_time + plant.produce_time
 		if(plant.nitrogen_requirement > 0)
 			nitrogen_needed = (plant.nitrogen_requirement / total_growth_time) * target_growth_time
 		if(plant.phosphorus_requirement > 0)
-			phosphorus_needed = (plant.phosphorus_requirement / total_growth_time) * target_growth_time * 0.7
-		if(plant.potassium_requirement > 0)
-			potassium_needed = (plant.potassium_requirement / total_growth_time) * target_growth_time
-	else
-		// Production phase
-		total_growth_time = plant.produce_time
-		if(plant.nitrogen_requirement > 0)
-			nitrogen_needed = (plant.nitrogen_requirement / total_growth_time) * target_growth_time * 0.6
-		if(plant.phosphorus_requirement > 0)
-			phosphorus_needed = (plant.phosphorus_requirement / total_growth_time) * target_growth_time * 1.3
+			phosphorus_needed = (plant.phosphorus_requirement / total_growth_time) * target_growth_time
 		if(plant.potassium_requirement > 0)
 			potassium_needed = (plant.potassium_requirement / total_growth_time) * target_growth_time
 

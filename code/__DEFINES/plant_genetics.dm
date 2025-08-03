@@ -1,8 +1,8 @@
 #define MAX_PLANT_HEALTH 100
 #define MAX_PLANT_WATER 150
 #define MAX_PLANT_NITROGEN 200  // N - for leafy growth
-#define MAX_PLANT_PHOSPHORUS 150 // P - for root/flower development
-#define MAX_PLANT_POTASSIUM 100  // K - for overall plant health
+#define MAX_PLANT_PHOSPHORUS 200 // P - for root/flower development
+#define MAX_PLANT_POTASSIUM 200  // K - for overall plant health
 #define MAX_PLANT_WEEDS 100
 
 #define WEED_NITROGEN_CONSUMPTION_RATE 5
