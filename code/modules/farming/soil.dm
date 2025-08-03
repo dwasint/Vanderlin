@@ -681,9 +681,9 @@
 	var/availability_modifier = clamp(0.5 + (availability_ratio * 1.5), 0.5, 2.0)
 
 	// Individual nutrient sufficiency checks
-	var/n_sufficiency = min(nitrogen / plant.nitrogen_requirement, 1.0)
-	var/p_sufficiency = min(phosphorus / plant.phosphorus_requirement, 1.0)
-	var/k_sufficiency = min(potassium / plant.potassium_requirement, 1.0)
+	var/n_sufficiency = min(nitrogen / max(plant.nitrogen_requirement, 1), 1.0)
+	var/p_sufficiency = min(phosphorus / max(plant.phosphorus_requirement, 1), 1.0)
+	var/k_sufficiency = min(potassium / max(plant.potassium_requirement, 1), 1.0)
 	var/avg_sufficiency = (n_sufficiency + p_sufficiency + k_sufficiency) / 3
 
 	// Combine all factors
