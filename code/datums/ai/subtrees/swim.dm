@@ -48,6 +48,16 @@
 
 	return(pick(possible_turfs))
 
+/datum/ai_behavior/find_and_set/swim_alternate/atom_allowed(atom/movable/checking, locate_path, atom/pawn)
+	if(checking == pawn)
+		return FALSE
+	// This one is turf-based, so we need to handle it differently
+	return FALSE // Always return false since we check turfs in setup_field_turf
+
+/datum/ai_behavior/find_and_set/swim_alternate/new_atoms_found(list/atom/movable/found, datum/ai_controller/controller, set_key, locate_path, search_range)
+	// This behavior looks for turfs, not movable atoms, so we override this
+	return FALSE
+
 /datum/ai_behavior/travel_towards/swimming
 	clear_target = TRUE
 

@@ -1048,6 +1048,7 @@
 #include "code\datums\pottery_recipes\pottery.dm"
 #include "code\datums\proximity_monitor\_field.dm"
 #include "code\datums\proximity_monitor\proximity_monitor.dm"
+#include "code\datums\proximity_monitor\fields\ai_targetting.dm"
 #include "code\datums\proximity_monitor\fields\gravity.dm"
 #include "code\datums\quality\_base_quality_manager.dm"
 #include "code\datums\quality\blacksmithing.dm"
