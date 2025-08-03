@@ -652,39 +652,87 @@
 	if(!plant)
 		return 1.0
 
-	// Calculate ideal vs actual NPK ratios
+	// Check which nutrients are actually required
+	var/needs_nitrogen = plant.nitrogen_requirement > 0
+	var/needs_phosphorus = plant.phosphorus_requirement > 0
+	var/needs_potassium = plant.potassium_requirement > 0
+	var/nutrients_needed = needs_nitrogen + needs_phosphorus + needs_potassium
+
+	// If plant needs no nutrients, return perfect quality
+	if(nutrients_needed == 0)
+		return 1.4
+
+	// Calculate sufficiency for each required nutrient
+	var/quality_factors = list()
+
+	if(needs_nitrogen)
+		var/n_sufficiency = min(nitrogen / plant.nitrogen_requirement, 2.0)
+		quality_factors += n_sufficiency
+
+	if(needs_phosphorus)
+		var/p_sufficiency = min(phosphorus / plant.phosphorus_requirement, 2.0)
+		quality_factors += p_sufficiency
+
+	if(needs_potassium)
+		var/k_sufficiency = min(potassium / plant.potassium_requirement, 2.0)
+		quality_factors += k_sufficiency
+
+	// For single-nutrient plants, use simple sufficiency
+	if(nutrients_needed == 1)
+		var/sufficiency = quality_factors[1]
+		// Convert sufficiency to quality modifier (0.5 to 1.4 range)
+		if(sufficiency <= 0.1)
+			return 0.5  // Severe deficiency
+		else if(sufficiency >= 1.0)
+			return clamp(1.0 + (sufficiency - 1.0) * 0.4, 1.0, 1.4)  // Bonus for excess
+		else
+			return clamp(0.5 + (sufficiency * 0.5), 0.5, 1.0)  // Scaling up to normal
+
+	// For multi-nutrient plants, calculate balance
 	var/total_requirements = plant.nitrogen_requirement + plant.phosphorus_requirement + plant.potassium_requirement
-	var/ideal_n_ratio = plant.nitrogen_requirement / total_requirements
-	var/ideal_p_ratio = plant.phosphorus_requirement / total_requirements
-	var/ideal_k_ratio = plant.potassium_requirement / total_requirements
+	var/total_available = 0
 
-	var/total_available = nitrogen + phosphorus + potassium
+	if(needs_nitrogen)
+		total_available += nitrogen
+	if(needs_phosphorus)
+		total_available += phosphorus
+	if(needs_potassium)
+		total_available += potassium
+
 	if(total_available <= 0)
-		return 0.5 // Severe nutrient deficiency
+		return 0.5  // Severe nutrient deficiency
 
-	var/actual_n_ratio = nitrogen / total_available
-	var/actual_p_ratio = phosphorus / total_available
-	var/actual_k_ratio = potassium / total_available
+	// Calculate ideal vs actual ratios only for required nutrients
+	var/deviation_sum = 0
 
-	// Calculate balance score (lower deviation = better quality)
-	var/n_deviation = abs(actual_n_ratio - ideal_n_ratio)
-	var/p_deviation = abs(actual_p_ratio - ideal_p_ratio)
-	var/k_deviation = abs(actual_k_ratio - ideal_k_ratio)
-	var/total_deviation = n_deviation + p_deviation + k_deviation
+	if(needs_nitrogen)
+		var/ideal_n_ratio = plant.nitrogen_requirement / total_requirements
+		var/actual_n_ratio = nitrogen / total_available
+		deviation_sum += abs(actual_n_ratio - ideal_n_ratio)
 
-	// Convert deviation to quality modifier (0.6 to 1.4 range)
-	var/balance_modifier = clamp(1.4 - (total_deviation * 2), 0.6, 1.4)
+	if(needs_phosphorus)
+		var/ideal_p_ratio = plant.phosphorus_requirement / total_requirements
+		var/actual_p_ratio = phosphorus / total_available
+		deviation_sum += abs(actual_p_ratio - ideal_p_ratio)
 
-	// Overall nutrient availability modifier
-	var/max_possible = MAX_PLANT_NITROGEN + MAX_PLANT_PHOSPHORUS + MAX_PLANT_POTASSIUM
-	var/availability_ratio = total_available / max_possible
-	var/availability_modifier = clamp(0.5 + (availability_ratio * 1.5), 0.5, 2.0)
+	if(needs_potassium)
+		var/ideal_k_ratio = plant.potassium_requirement / total_requirements
+		var/actual_k_ratio = potassium / total_available
+		deviation_sum += abs(actual_k_ratio - ideal_k_ratio)
 
-	// Individual nutrient sufficiency checks
-	var/n_sufficiency = min(nitrogen / max(plant.nitrogen_requirement, 1), 1.0)
-	var/p_sufficiency = min(phosphorus / max(plant.phosphorus_requirement, 1), 1.0)
-	var/k_sufficiency = min(potassium / max(plant.potassium_requirement, 1), 1.0)
-	var/avg_sufficiency = (n_sufficiency + p_sufficiency + k_sufficiency) / 3
+	// Convert deviation to balance modifier
+	var/balance_modifier = clamp(1.4 - (deviation_sum * 2), 0.6, 1.4)
+
+	// Overall availability modifier
+	var/availability_ratio = total_available / total_requirements
+	var/availability_modifier = clamp(0.5 + (availability_ratio * 0.5), 0.5, 1.4)
+
+	// Average sufficiency of required nutrients
+	var/avg_sufficiency = 0
+	for(var/factor in quality_factors)
+		avg_sufficiency += factor
+	avg_sufficiency /= nutrients_needed
+	avg_sufficiency = min(avg_sufficiency, 1.0)
 
 	// Combine all factors
 	return balance_modifier * availability_modifier * (0.8 + avg_sufficiency * 0.4)
