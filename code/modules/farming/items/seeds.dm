@@ -30,7 +30,7 @@
 		if(!seed_genetics)
 			var/datum/plant_def/plant_def_instance = GLOB.plant_defs[plant_def_type]
 			seed_genetics = new /datum/plant_genetics()
-			plant_def_instance.set_genetic_tendencies(seed_genetics)
+			plant_def_instance?.set_genetic_tendencies(seed_genetics)
 		else
 			seed_genetics = new seed_genetics()
 	else
