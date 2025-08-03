@@ -66,15 +66,15 @@
 		return
 
 	// If we don't have a target, check for new targets in range
-	scan_for_new_targets(controller, living_mob, target_key, targetting_datum, hiding_location_key)
+	scan_for_new_targets(controller, living_mob, target_key, targetting_datum, hiding_location_key, targetting_datum_key)
 
 /// Scans for new potential targets
-/datum/ai_behavior/find_aggro_targets/proc/scan_for_new_targets(datum/ai_controller/controller, mob/living/living_mob, target_key, datum/targetting_datum/targetting_datum, hiding_location_key)
+/datum/ai_behavior/find_aggro_targets/proc/scan_for_new_targets(datum/ai_controller/controller, mob/living/living_mob, target_key, datum/targetting_datum/targetting_datum, hiding_location_key, targetting_datum_key)
 	var/aggro_range = controller.blackboard[BB_AGGRO_RANGE] || 9
 	var/list/potential_targets = hearers(aggro_range, living_mob) - living_mob
 
 	if(!potential_targets.len)
-		failed_to_find_anyone(controller, target_key, target_key, hiding_location_key)
+		failed_to_find_anyone(controller, target_key, targetting_datum_key, hiding_location_key)
 		finish_action(controller, succeeded = FALSE)
 		return
 
@@ -95,7 +95,7 @@
 		filtered_targets += pot_target
 
 	if(!filtered_targets.len)
-		failed_to_find_anyone(controller, target_key, target_key, hiding_location_key)
+		failed_to_find_anyone(controller, target_key, targetting_datum_key, hiding_location_key)
 		finish_action(controller, succeeded = FALSE)
 		return
 
@@ -123,13 +123,12 @@
 	else
 		finish_action(controller, succeeded = FALSE)
 
-/// Called when no targets are found - sets up proximity monitoring
 /datum/ai_behavior/find_aggro_targets/proc/failed_to_find_anyone(datum/ai_controller/controller, target_key, targeting_strategy_key, hiding_location_key)
 	var/aggro_range = controller.blackboard[BB_AGGRO_RANGE] || 9
 	// takes the larger between our range() input and our implicit hearers() input (world.view)
 	aggro_range = max(aggro_range, ROUND_UP(max(getviewsize(world.view)) / 2))
 	// Set up proximity field to await someone interesting to come along
-	var/datum/proximity_monitor/advanced/ai_target_tracking/detection_field = new(
+	var/datum/proximity_monitor/advanced/ai_aggro_tracking/detection_field = new(
 		controller.pawn,
 		aggro_range,
 		TRUE,
