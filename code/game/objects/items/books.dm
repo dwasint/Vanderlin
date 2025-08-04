@@ -882,6 +882,9 @@
 	if(!faction)
 		return ""
 
+	// Schedule traders for next boat if not done
+	faction.schedule_next_boat_traders()
+
 	var/html = {"
 		<div class="faction-info" style="--faction-color: [faction.faction_color];">
 			<h2 class="faction-header">[faction.faction_name] - [faction.get_reputation_status()]</h2>
@@ -913,11 +916,33 @@
 
 	html += {"
 						</ul>
+						<p style="font-size: 0.8em; color: [faction.faction_color]; margin-top: 10px;">
+							<strong>Next bounty rotation:</strong><br>
+							[time_to_text(faction.next_bounty_rotation - world.time)]
+						</p>
 					</div>
 					<div>
 						<h3 style="color: [faction.faction_color]; margin: 0 0 10px 0;">Supply Status:</h3>
 						<p><strong>[length(faction.faction_supply_packs)]</strong> items in stock</p>
 						<p>Next rotation: <strong>[time_to_text(faction.next_supply_rotation - world.time)]</strong></p>
+
+						<h3 style="color: [faction.faction_color]; margin: 15px 0 10px 0;">Next Boat Traders:</h3>
+	"}
+
+	// Display trader information
+	if(faction.next_boat_trader_count > 0)
+		html += "<p><strong>[faction.next_boat_trader_count]</strong> traders scheduled</p>"
+		html += "<ul class='bounty-list' style='font-size: 0.9em;'>"
+
+		for(var/datum/trader_data/trader in faction.next_boat_traders)
+			var/trader_type_name = trader.name || "Unknown Trader"
+			html += "<li class='bounty-item'>[trader_type_name]</li>"
+
+		html += "</ul>"
+	else
+		html += "<p><em>No traders scheduled</em></p>"
+
+	html += {"
 					</div>
 				</div>
 			</div>

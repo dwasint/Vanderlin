@@ -65,10 +65,18 @@
 	/// Current trader on the boat (if any)
 	var/datum/weakref/current_trader_ref
 
+	var/list/next_boat_traders = list() // List of trader data for the next boat
+	var/next_boat_trader_count = 0 // How many traders will come on next boat
+	var/trader_schedule_generated = FALSE // Whether we've prepared for next boat
+
+	// Bounty timer tracking
+	var/next_bounty_rotation = 0 // When bounties will next rotate
+
 /datum/world_faction/New()
 	..()
 	initialize_faction_stock()
 	generate_initial_bounties()
+	next_bounty_rotation = world.time + bounty_rotation_interval
 
 // Get current reputation tier (0-6)
 /datum/world_faction/proc/get_reputation_tier()
@@ -79,6 +87,56 @@
 		else
 			break
 	return max(0, tier - 1) // Adjust since we increment before breaking
+
+/datum/world_faction/proc/schedule_next_boat_traders()
+	if(trader_schedule_generated)
+		return // Already scheduled
+
+	next_boat_traders.Cut()
+	next_boat_trader_count = 0
+
+	if(!should_send_trader())
+		trader_schedule_generated = TRUE
+		return
+
+	// Random number of traders between 1 and 5
+	var/max_traders = min(4, length(trader_type_weights)) // Don't exceed available types
+	next_boat_trader_count = rand(1, max_traders)
+
+	// Pick trader types (avoid duplicates if possible)
+	var/list/available_types = trader_type_weights.Copy()
+
+	for(var/i = 1 to next_boat_trader_count)
+		if(!length(available_types))
+			// If we run out of unique types, refill the list
+			available_types = trader_type_weights.Copy()
+
+		var/trader_type = pickweight(available_types)
+		var/datum/trader_data/trader_data = new trader_type()
+		customize_trader_inventory(trader_data)
+
+		next_boat_traders += trader_data
+		available_types -= trader_type // Remove to avoid duplicates
+
+	trader_schedule_generated = TRUE
+
+// Reset trader schedule when boat leaves
+/datum/world_faction/proc/reset_trader_schedule()
+	trader_schedule_generated = FALSE
+	next_boat_traders.Cut()
+	next_boat_trader_count = 0
+
+// Create multiple traders from scheduled list
+/datum/world_faction/proc/create_scheduled_traders(turf/spawn_location)
+	var/list/created_traders = list()
+
+	for(var/datum/trader_data/trader_data in next_boat_traders)
+		var/mob/living/simple_animal/hostile/retaliate/trader/faction_trader/new_trader = new(spawn_location, TRUE, pick(trader_outfits), WEAKREF(src))
+		new_trader.set_custom_trade(trader_data)
+		new_trader.faction_ref = WEAKREF(src)
+		created_traders += new_trader
+
+	return created_traders
 
 // Get maximum bounties based on reputation
 /datum/world_faction/proc/get_max_bounties()
@@ -263,6 +321,9 @@
 			potential_bounties -= new_bounty
 			add_bounty(new_bounty)
 
+	// Update next rotation time
+	next_bounty_rotation = world.time + bounty_rotation_interval
+
 // Award reputation for completing bounties
 /datum/world_faction/proc/award_bounty_reputation(atom/bounty_type)
 	var/base_reward = bounty_rep_reward_base
@@ -303,6 +364,10 @@
 
 	rotate_supply_packs()
 	rotate_bounties()
+
+	// Schedule traders for next boat if boat is coming soon or just left
+	if(!trader_schedule_generated)
+		schedule_next_boat_traders()
 
 /datum/world_faction/proc/return_sell_modifier(atom/sell_type)
 	var/static_modifer = 1
@@ -434,42 +499,69 @@
 	var/base_items = 8 // Base number of different items a trader carries
 	var/max_items = base_items + (tier * 2) // More items available at higher reputation
 
-	// Process custom items first
-	var/list/selected_custom_items = select_custom_items(trader_data, tier)
-	for(var/item_type in selected_custom_items)
-		var/list/item_data = selected_custom_items[item_type]
-		faction_products[item_type] = item_data
+	// Create unified weighted selection including both custom items and supply packs
+	var/list/unified_selection = list()
 
-	// Adjust remaining slots for supply pack items
-	var/remaining_slots = max_items - length(selected_custom_items)
-	var/items_to_select = min(remaining_slots, length(compatible_packs))
+	// Add custom items to unified selection
+	if(length(trader_data.custom_items))
+		for(var/item_type in trader_data.custom_items)
+			var/list/item_data = trader_data.custom_items[item_type]
+			if(length(item_data) >= 3)
+				var/weight = item_data[1] // First element is weight
+				var/base_price = item_data[2] // Second element is base price
 
-	if(items_to_select > 0)
-		var/list/weighted_selection = list()
-		for(var/pack_type in compatible_packs)
-			var/weight = 10
-			if(pack_type in essential_packs)
-				weight = 15
-			else if(pack_type in common_pool)
-				weight = 12
-			else if(pack_type in uncommon_pool)
-				weight = 8
-			else if(pack_type in rare_pool)
-				weight = 5 + tier // Rare items more likely at higher rep
-			else if(pack_type in exotic_pool)
-				weight = 2 + (tier * 2) // Exotic items much more likely at higher rep
-			weighted_selection[pack_type] = weight
+				// Adjust weight based on tier for rarer items
+				var/adjusted_weight = weight
+				if(base_price > 100) // Higher priced items are rarer
+					adjusted_weight += tier
 
-		var/list/selected_packs = list()
-		for(var/i = 1 to items_to_select)
-			if(!length(weighted_selection))
-				break
-			var/selected_pack = pickweight(weighted_selection)
-			selected_packs += selected_pack
-			weighted_selection -= selected_pack
+				unified_selection[item_type] = adjusted_weight
 
-		for(var/pack_type in selected_packs)
-			var/datum/supply_pack/pack = compatible_packs[pack_type]
+	// Add supply packs to unified selection
+	for(var/pack_type in compatible_packs)
+		var/weight = 10
+		if(pack_type in essential_packs)
+			weight = 15
+		else if(pack_type in common_pool)
+			weight = 12
+		else if(pack_type in uncommon_pool)
+			weight = 8
+		else if(pack_type in rare_pool)
+			weight = 5 + tier // Rare items more likely at higher rep
+		else if(pack_type in exotic_pool)
+			weight = 2 + (tier * 2) // Exotic items much more likely at higher rep
+		unified_selection[pack_type] = weight
+
+	// Select items from unified pool
+	var/items_to_select = min(max_items, length(unified_selection))
+	var/custom_items_selected = 0
+
+	for(var/i = 1 to items_to_select)
+		if(!length(unified_selection))
+			break
+
+		var/selected_entry = pickweight(unified_selection)
+
+		// Check if it's a custom item (exists in trader_data.custom_items)
+		if(selected_entry in trader_data.custom_items)
+			// Check if we've hit the custom item limit
+			if(custom_items_selected >= trader_data.max_custom_items)
+				unified_selection -= selected_entry
+				i-- // Don't count this iteration
+				continue
+
+			var/list/original_data = trader_data.custom_items[selected_entry]
+
+			// Calculate final price and quantity with tier adjustments
+			var/final_price = calculate_custom_item_price(original_data[2], tier)
+			var/final_quantity = calculate_custom_item_quantity(original_data[3], tier)
+
+			faction_products[selected_entry] = list(final_price, final_quantity)
+			custom_items_selected++
+		else
+			// It's a supply pack
+			var/datum/supply_pack/pack = compatible_packs[selected_entry]
+
 			if(islist(pack.contains))
 				for(var/item_type in pack.contains)
 					var/price = calculate_trader_price(pack, item_type)
@@ -480,6 +572,8 @@
 				var/quantity = calculate_trader_quantity(pack, tier)
 				faction_products[pack.contains] = list(price, quantity)
 
+		unified_selection -= selected_entry
+
 	// Clean up all pack instances
 	for(var/pack_type in compatible_packs)
 		var/datum/supply_pack/pack = compatible_packs[pack_type]
@@ -487,54 +581,6 @@
 
 	if(length(faction_products))
 		trader_data.initial_products = faction_products
-
-/**
- * Selects custom items for the trader based on weights and reputation tier
- * Arguments:
- *   trader_data - The trader data containing custom item definitions
- *   tier - The faction's reputation tier
- * Returns:
- *   A list of selected custom items with their price and quantity data
- */
-/datum/world_faction/proc/select_custom_items(datum/trader_data/trader_data, tier)
-	var/list/selected_items = list()
-
-	if(!length(trader_data.custom_items))
-		return selected_items
-
-	// Create weighted selection from custom items
-	var/list/weighted_custom_items = list()
-	for(var/item_type in trader_data.custom_items)
-		var/list/item_data = trader_data.custom_items[item_type]
-		if(length(item_data) >= 3)
-			var/weight = item_data[1] // First element is weight
-			var/base_price = item_data[2] // Second element is base price
-
-			// Adjust weight based on tier for rarer items
-			var/adjusted_weight = weight
-			if(base_price > 100) // Higher priced items are rarer
-				adjusted_weight += tier
-
-			weighted_custom_items[item_type] = adjusted_weight
-
-	// Select items based on max_custom_items limit
-	var/items_to_select = min(trader_data.max_custom_items, length(weighted_custom_items))
-
-	for(var/i = 1 to items_to_select)
-		if(!length(weighted_custom_items))
-			break
-
-		var/selected_item = pickweight(weighted_custom_items)
-		var/list/original_data = trader_data.custom_items[selected_item]
-
-		// Calculate final price and quantity with tier adjustments
-		var/final_price = calculate_custom_item_price(original_data[2], tier)
-		var/final_quantity = calculate_custom_item_quantity(original_data[3], tier)
-
-		selected_items[selected_item] = list(final_price, final_quantity)
-		weighted_custom_items -= selected_item
-
-	return selected_items
 
 /**
  * Calculates the final price for a custom item based on tier

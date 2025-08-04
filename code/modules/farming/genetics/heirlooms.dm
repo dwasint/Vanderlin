@@ -11,7 +11,7 @@
 /datum/plant_genetics/heirloom/wheat_ancient
 	variety_name = "Ancient Grain"
 	quality_trait = 95
-	disease_resistance = 85
+	disease_resistance = 100
 	yield_trait = 60  // Lower yield but premium quality
 	cold_resistance = 90
 

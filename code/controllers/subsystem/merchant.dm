@@ -82,14 +82,11 @@ SUBSYSTEM_DEF(merchant)
 /datum/controller/subsystem/merchant/proc/prepare_cargo_shipment()
 	if(!cargo_boat || !cargo_docked)
 		return
-
 	draw_selling_changes()
-
 	cargo_boat.show_tram()
 	var/list/boat_spaces = list()
 	for(var/obj/structure/industrial_lift/lift in cargo_boat.lift_platforms)
 		boat_spaces |= cargo_boat.get_valid_turfs(lift)
-
 	for(var/datum/supply_pack/requested as anything in requestlist)
 		if(!requestlist[requested])
 			continue
@@ -102,16 +99,14 @@ SUBSYSTEM_DEF(merchant)
 				requested.fill(crate_to_use)
 		for(var/obj/structure/industrial_lift/lift in cargo_boat.lift_platforms)
 			lift.held_cargo |= crate_to_use
-
 	for(var/atom/movable/item as anything in sending_stuff)
 		var/turf/boat_turf = pick(boat_spaces)
 		if(ispath(item))
 			new item(boat_turf)
 		else
 			item.forceMove(boat_turf)
-
 	requestlist = list()
-	spawn_faction_trader()
+	spawn_faction_traders()
 	cargo_docked = FALSE
 	SEND_GLOBAL_SIGNAL(COMSIG_DISPATCH_CARGO, cargo_boat)
 
@@ -198,13 +193,13 @@ SUBSYSTEM_DEF(merchant)
 	for(var/datum/world_faction/active_faction in world_factions)
 		active_faction.setup_sell_data(sell_type)
 
-/datum/controller/subsystem/merchant/proc/spawn_faction_trader()
+/datum/controller/subsystem/merchant/proc/spawn_faction_traders()
 	if(!cargo_docked || !length(world_factions))
 		return
 
 	var/datum/world_faction/selected_faction
 	for(var/datum/world_faction/faction in world_factions)
-		if(faction.should_send_trader())
+		if(faction.trader_schedule_generated && faction.next_boat_trader_count > 0)
 			selected_faction = faction
 			break
 
@@ -215,16 +210,20 @@ SUBSYSTEM_DEF(merchant)
 	var/obj/structure/industrial_lift/tram/platform = cargo_boat?.lift_platforms?[1]
 	if(!platform)
 		return
-
 	var/turf/spawn_turf = get_turf(platform)
 	if(!spawn_turf)
 		return
 
-	var/mob/living/simple_animal/hostile/retaliate/trader/faction_trader/new_trader = selected_faction.create_faction_trader(spawn_turf)
-	if(new_trader)
-		active_faction_traders += new_trader
-		new_trader.ai_controller?.set_blackboard_key(BB_CURRENT_MIN_MOVE_DISTANCE, 0)
-	new_trader.ai_controller.PauseAi(1 MINUTES) //basically spawn them in, wait a minute then they get off the boat.
+	// Create all scheduled traders
+	var/list/new_traders = selected_faction.create_scheduled_traders(spawn_turf)
+
+	for(var/mob/living/simple_animal/hostile/retaliate/trader/faction_trader/trader in new_traders)
+		active_faction_traders += trader
+		trader.ai_controller?.set_blackboard_key(BB_CURRENT_MIN_MOVE_DISTANCE, 0)
+		trader.ai_controller.PauseAi(1 MINUTES) // Wait a minute then they get off the boat
+
+	// Reset for next boat
+	selected_faction.reset_trader_schedule()
 
 /obj/Initialize()
 	. = ..()

@@ -553,7 +553,8 @@
 	adjust_water(-dt * weed_factor * WEED_WATER_CONSUMPTION_RATE)
 
 	if(get_total_npk() > 0)
-		adjust_weeds(dt * WEED_GROWTH_RATE)
+		var/genetic_value = (100 - plant_genetics.disease_resistance) * 0.03
+		adjust_weeds(dt * WEED_GROWTH_RATE * genetic_value)
 
 /obj/structure/soil/proc/process_plant(dt)
 	if(!plant)

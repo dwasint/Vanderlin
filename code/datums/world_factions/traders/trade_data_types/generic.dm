@@ -501,6 +501,9 @@
 		/obj/item/natural/bundle/fibers = list(8, INFINITY, ""),
 		/obj/item/reagent_containers/glass = list(3, INFINITY, ""),
 	)
+	custom_items = list(
+		/obj/item/neuFarm/seed/wheat/ancient = list(4, 15, 1),
+	)
 	say_phrases = list(
 		ITEM_REJECTED_PHRASE = list(
 			"Sorry, I'm not a fan of anything you're showing me. Give me something better and we'll talk.",
