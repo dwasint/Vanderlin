@@ -51,6 +51,8 @@
 		/datum/supply_pack/apparel/apron_brown,
 		/datum/supply_pack/apparel/black_leather_gloves,
 		/datum/supply_pack/armor/leather_bracers,
+		/datum/supply_pack/apparel/scabbard,
+		/datum/supply_pack/apparel/sheath,
 		// Tools - Core dwarven crafting tools
 		/datum/supply_pack/tools/shovel,
 		/datum/supply_pack/tools/rope,

@@ -56,6 +56,7 @@
 		/datum/supply_pack/food/elfcab,
 		// Tools for maritime trade
 		/datum/supply_pack/tools/bottle,
+		/datum/supply_pack/tools/bottle_kit,
 		/datum/supply_pack/tools/alch_bottle,
 		/datum/supply_pack/tools/alch_bottles,
 		/datum/supply_pack/tools/fryingpan,
