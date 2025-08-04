@@ -45,3 +45,5 @@
 #define FAMILY_ASTERACEAE 7    // Sunflower family
 #define FAMILY_HERB 8          // Alchemical herbs
 #define FAMILY_ROOT 9          // Root vegetables
+#define FAMILY_RUBIACEAE  10   // Coffee
+#define FAMILY_THEACEAE  11    // Tea

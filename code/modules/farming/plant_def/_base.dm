@@ -107,6 +107,10 @@
 				family_name = "Herb"
 			if(FAMILY_ROOT)
 				family_name = "Root"
+			if(FAMILY_RUBIACEAE)
+				family_name = "Madder"
+			if(FAMILY_THEACEAE)
+				family_name = "Theaceae"
 			else
 				family_name = "Unknown family"
 		details += "<span class='notice'><b>Plant Family:</b> [family_name]</span>"
@@ -244,5 +248,9 @@
 			return "Herb"
 		if(FAMILY_ROOT)
 			return "Root"
+		if(FAMILY_RUBIACEAE)
+			return "Madder"
+		if(FAMILY_THEACEAE)
+			return "Theaceae"
 		else
 			return "Unknown"

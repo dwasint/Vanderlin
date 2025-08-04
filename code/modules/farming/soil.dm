@@ -552,7 +552,7 @@
 	var/weed_factor = weeds / MAX_PLANT_WEEDS
 	adjust_water(-dt * weed_factor * WEED_WATER_CONSUMPTION_RATE)
 
-	if(get_total_npk() > 0)
+	if((get_total_npk() > 0 )&& plant_genetics)
 		var/genetic_value = (100 - plant_genetics.disease_resistance) * 0.03
 		adjust_weeds(dt * WEED_GROWTH_RATE * genetic_value)
 

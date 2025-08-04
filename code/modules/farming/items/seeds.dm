@@ -256,24 +256,10 @@
 	seed_identity = "euphorbia seeds"
 	plant_def_type = /datum/plant_def/alchemical/euphorbia
 
-/*
-/obj/item/neuFarm/seed/nut
-	seed_identity = "rocknut seeds"
-	plant_def_type = /datum/plant_def/nut
-
-/obj/item/neuFarm/seed/garlic
-	seed_identity = "garlic seeds"
-	plant_def_type = /datum/plant_def/garlic
-
-/obj/item/neuFarm/seed/rice
-	seed_identity = "rice seeds"
-	plant_def_type = /datum/plant_def/rice
+/obj/item/neuFarm/seed/coffee
+	seed_identity = "coffee seeds"
+	plant_def_type = /datum/plant_def/coffee
 
 /obj/item/neuFarm/seed/tea
 	seed_identity = "tea seeds"
 	plant_def_type = /datum/plant_def/tea
-
-/obj/item/neuFarm/seed/mycelium/amanita
-	seed_identity = "red mushroom spores"
-	plant_def_type = /datum/plant_def/amanita
-*/

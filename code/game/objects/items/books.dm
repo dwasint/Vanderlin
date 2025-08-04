@@ -42,6 +42,7 @@
 	var/textper = 100
 	var/our_font = "Rosemary Roman"
 	var/override_find_book = FALSE
+	var/special_book = FALSE
 
 /obj/item/book/examine(mob/user)
 	. = ..()
@@ -131,6 +132,8 @@
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/item/book/proc/read(mob/user)
+	if(special_book)
+		return
 	if(!open)
 		to_chat(user, "<span class='info'>Open me first.</span>")
 		return FALSE
@@ -219,6 +222,7 @@
 	base_icon_state = "ledger"
 	title = "Catatoma"
 	dat = "To create a shipping order, use a scroll on me."
+	special_book = TRUE
 	var/fence = FALSE
 	var/mob/current_reader
 	var/current_category = "All"
@@ -229,7 +233,6 @@
 	var/list/types = list()
 	var/list/cart = list() // Track items in cart
 	var/list/reputation_cart = list()
-	// Removed selected_item variable as we're not using it anymore
 
 /obj/item/book/secret/ledger/Initialize()
 	. = ..()
@@ -882,22 +885,28 @@
 	if(!faction)
 		return ""
 
-	// Schedule traders for next boat if not done
 	faction.schedule_next_boat_traders()
+
+	// Find the earliest bounty expiration time
+	var/earliest_bounty_expiration = 0
+	if(length(faction.bounty_refresh_times))
+		earliest_bounty_expiration = INFINITY
+		for(var/bounty_type in faction.bounty_refresh_times)
+			var/expiration_time = faction.bounty_refresh_times[bounty_type]
+			expiration_time -= world.time
+			if(expiration_time < earliest_bounty_expiration)
+				earliest_bounty_expiration = expiration_time
 
 	var/html = {"
 		<div class="faction-info" style="--faction-color: [faction.faction_color];">
 			<h2 class="faction-header">[faction.faction_name] - [faction.get_reputation_status()]</h2>
 			<button class="faction-toggle" onclick="toggleFactionInfo()">+</button>
-
 			<div class="faction-summary">
 				<span><strong>[length(faction.faction_supply_packs)]</strong> items in stock</span>
 				<span>Next rotation: <strong>[time_to_text(faction.next_supply_rotation - world.time)]</strong></span>
 			</div>
-
 			<div class="faction-details">
 				<p style="font-style: italic; margin: 10px 0; text-align: center;">[faction.desc]</p>
-
 				<div class="bounty-grid">
 					<div>
 						<h3 style="color: [faction.faction_color]; margin: 0 0 10px 0;">Active Bounties:</h3>
@@ -909,23 +918,24 @@
 			var/obj/temp = new bounty_type()
 			var/bounty_name = temp.name
 			var/multiplier = faction.bounty_items[bounty_type]
+			var/expiration_time = faction.bounty_refresh_times[bounty_type]
+			var/time_remaining = expiration_time - world.time
 			qdel(temp)
-			html += "<li class='bounty-item'>[bounty_name] ([multiplier]x price)</li>"
+			html += "<li class='bounty-item'>[bounty_name] ([multiplier]x price) - <small>[time_to_text(time_remaining)]</small></li>"
 	else
 		html += "<li>No active bounties</li>"
 
 	html += {"
 						</ul>
 						<p style="font-size: 0.8em; color: [faction.faction_color]; margin-top: 10px;">
-							<strong>Next bounty rotation:</strong><br>
-							[time_to_text(faction.next_bounty_rotation - world.time)]
+							<strong>Next bounty check:</strong><br>
+							[time_to_text(earliest_bounty_expiration)]
 						</p>
 					</div>
 					<div>
 						<h3 style="color: [faction.faction_color]; margin: 0 0 10px 0;">Supply Status:</h3>
 						<p><strong>[length(faction.faction_supply_packs)]</strong> items in stock</p>
 						<p>Next rotation: <strong>[time_to_text(faction.next_supply_rotation - world.time)]</strong></p>
-
 						<h3 style="color: [faction.faction_color]; margin: 15px 0 10px 0;">Next Boat Traders:</h3>
 	"}
 
@@ -933,11 +943,9 @@
 	if(faction.next_boat_trader_count > 0)
 		html += "<p><strong>[faction.next_boat_trader_count]</strong> traders scheduled</p>"
 		html += "<ul class='bounty-list' style='font-size: 0.9em;'>"
-
 		for(var/datum/trader_data/trader in faction.next_boat_traders)
 			var/trader_type_name = trader.name || "Unknown Trader"
 			html += "<li class='bounty-item'>[trader_type_name]</li>"
-
 		html += "</ul>"
 	else
 		html += "<p><em>No traders scheduled</em></p>"
@@ -948,7 +956,6 @@
 			</div>
 		</div>
 	"}
-
 	return html
 
 // Helper proc for color conversion

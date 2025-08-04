@@ -298,3 +298,9 @@
 	requirements = list(/obj/item/natural/raw_brick= 1)
 	output = /obj/item/natural/brick
 	cooked_smell = null
+
+/datum/container_craft/oven/coffeebean
+	name = "Roasted Coffee-Beans"
+	requirements = list(/obj/item/reagent_containers/food/snacks/produce/coffeebeans= 1)
+	output = /obj/item/reagent_containers/food/snacks/produce/coffeebeansroasted
+	cooked_smell = null

@@ -69,14 +69,10 @@
 	var/next_boat_trader_count = 0 // How many traders will come on next boat
 	var/trader_schedule_generated = FALSE // Whether we've prepared for next boat
 
-	// Bounty timer tracking
-	var/next_bounty_rotation = 0 // When bounties will next rotate
-
 /datum/world_faction/New()
 	..()
 	initialize_faction_stock()
 	generate_initial_bounties()
-	next_bounty_rotation = world.time + bounty_rotation_interval
 
 // Get current reputation tier (0-6)
 /datum/world_faction/proc/get_reputation_tier()
@@ -320,9 +316,6 @@
 			var/new_bounty = pick(potential_bounties)
 			potential_bounties -= new_bounty
 			add_bounty(new_bounty)
-
-	// Update next rotation time
-	next_bounty_rotation = world.time + bounty_rotation_interval
 
 // Award reputation for completing bounties
 /datum/world_faction/proc/award_bounty_reputation(atom/bounty_type)

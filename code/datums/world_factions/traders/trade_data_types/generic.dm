@@ -128,6 +128,10 @@
 		/obj/item/ingot/gold = list(30, INFINITY, ""),
 		/obj/item/gem = list(20, INFINITY, ""),
 	)
+	custom_items = list(
+		/obj/item/reagent_containers/glass/bottle/glazed_teacup = list(5, 10, 6),
+		/obj/item/reagent_containers/glass/bottle/glazed_teapot = list(5, 40, 1),
+	)
 	say_phrases = list(
 		ITEM_REJECTED_PHRASE = list(
 			"Sorry, I'm not a fan of anything you're showing me. Give me something better and we'll talk.",
@@ -503,6 +507,8 @@
 	)
 	custom_items = list(
 		/obj/item/neuFarm/seed/wheat/ancient = list(4, 15, 1),
+		/obj/item/neuFarm/seed/tea = list(4, 19, 3),
+		/obj/item/neuFarm/seed/coffee = list(4, 22, 5),
 	)
 	say_phrases = list(
 		ITEM_REJECTED_PHRASE = list(

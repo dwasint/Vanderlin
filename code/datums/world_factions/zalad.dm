@@ -5,7 +5,7 @@
 	faction_color = "#D2691E"
 	trader_type_weights = list(
 		/datum/trader_data/exotic_merchant = 15,
-		/datum/trader_data/seed_merchant = 1800000,
+		/datum/trader_data/seed_merchant = 18,
 		/datum/trader_data/alchemist = 25,
 		/datum/trader_data/clothing_merchant = 20,
 		/datum/trader_data/material_merchant = 12,

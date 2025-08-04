@@ -460,6 +460,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 		update_movement_keys()
 
 //	chatOutput.start() // Starts the chat
+	INVOKE_ASYNC(src, PROC_REF(acquire_dpi))
 
 	if(alert_mob_dupe_login)
 		spawn()
@@ -618,6 +619,12 @@ GLOBAL_LIST_EMPTY(respawncounts)
 //////////////
 //DISCONNECT//
 //////////////
+
+/// This grabs the DPI of the user per their skin
+/client/proc/acquire_dpi()
+	window_scaling = text2num(winget(src, null, "dpi"))
+
+	debug_admins("scalies: [window_scaling]")
 
 /client/Del()
 	if(!gc_destroyed)
