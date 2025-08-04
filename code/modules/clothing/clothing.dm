@@ -58,6 +58,7 @@
 	var/dynamic_hair_suffix = ""//head > mask for head hair
 	var/dynamic_fhair_suffix = ""//mask > head for facial hair
 	var/list/allowed_sex = list(MALE, FEMALE)
+	var/list/allowed_ages = ALL_AGES_LIST_CHILD
 	var/list/allowed_race = ALL_RACES_LIST
 	var/armor_class = ARMOR_CLASS_NONE
 
@@ -233,6 +234,8 @@
 			if(ishuman(M))
 				var/mob/living/carbon/human/H = M
 				if(H.dna)
+					if(!(H.age in allowed_ages))
+						return FALSE
 					if(H.dna.species.id in allowed_race)
 						return TRUE
 					else
@@ -257,7 +260,7 @@
 	. = ..()
 	var/mob/M = usr
 
-	if(!M.incapacitated(ignore_grab = TRUE) && loc == M && istype(over_object, /atom/movable/screen/inventory/hand))
+	if(!M.incapacitated(IGNORE_GRAB) && loc == M && istype(over_object, /atom/movable/screen/inventory/hand))
 		if(!allow_attack_hand_drop(M))
 			return
 		var/atom/movable/screen/inventory/hand/H = over_object
@@ -266,7 +269,7 @@
 
 /obj/item/clothing/proc/can_use(mob/user)
 	if(user && ismob(user))
-		if(!user.incapacitated(ignore_grab = TRUE))
+		if(!user.incapacitated(IGNORE_GRAB))
 			return TRUE
 	return FALSE
 
@@ -441,15 +444,13 @@ BLIND     // can't see anything
 		hood = W
 
 /obj/item/clothing/attack_hand_secondary(mob/user, params)
-	. = ..()
-	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
-		return
 	if(hoodtype && (loc == user))
 		ToggleHood()
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	if(adjustable > 0 && (loc == user))
 		AdjustClothes(user)
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+	. = ..()
 
 /obj/item/clothing/proc/AdjustClothes(mob/usFer)
 	return //override this in the clothing item itself so we can update the right inv

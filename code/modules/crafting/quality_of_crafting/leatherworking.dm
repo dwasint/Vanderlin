@@ -80,13 +80,38 @@
 	output = /obj/item/storage/backpack/satchel
 	craftdiff = 1
 
+/datum/repeatable_crafting_recipe/leather/storage/satchel/create_blacklisted_paths()
+	blacklisted_paths = subtypesof(/obj/item/rope)
+
 /datum/repeatable_crafting_recipe/leather/storage/backpack
 	name = "leather backpack"
 	requirements = list(
 		/obj/item/natural/hide/cured = 3,
-		/obj/item/rope = 2,
+		/obj/item/rope = 1,
 	)
 	output = /obj/item/storage/backpack/backpack
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/leather/storage/backpack/create_blacklisted_paths()
+	blacklisted_paths = subtypesof(/obj/item/rope)
+
+/datum/repeatable_crafting_recipe/leather/storage/knife_sheath
+	name = "knife sheath"
+	output = /obj/item/weapon/scabbard/knife
+	requirements = list(
+		/obj/item/natural/hide/cured = 2,
+		/obj/item/grown/log/tree/stick = 2,
+	)
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/leather/storage/sword_scabbard
+	name = "scabbard"
+	output = /obj/item/weapon/scabbard/sword
+	requirements = list(
+		/obj/item/natural/hide/cured = 2,
+		/obj/item/grown/log/tree/small = 1,
+		/obj/item/rope = 1,
+	)
 	craftdiff = 2
 
 /// Misc Leatherworking
@@ -116,6 +141,9 @@
 				/obj/item/rope = 1)
 	craftdiff = 2
 	category = "Misc Leather"
+
+/datum/repeatable_crafting_recipe/leather/sleepingbag_deluxe/create_blacklisted_paths()
+	blacklisted_paths = subtypesof(/obj/item/rope)
 
 /datum/repeatable_crafting_recipe/leather/saddle
 	name = "saddle"
@@ -380,6 +408,21 @@
 	craftdiff = 2
 
 /// Standalones
+
+/datum/repeatable_crafting_recipe/leather/leathercollar
+	name = "leather collar"
+	output = /obj/item/clothing/neck/leathercollar
+	requirements = list(/obj/item/natural/hide/cured = 1,
+				/obj/item/natural/fibers = 2)
+	craftdiff = 2
+
+/datum/repeatable_crafting_recipe/leather/bellcollar
+	name = "bell collar"
+	output = /obj/item/clothing/neck/bellcollar
+	requirements = list(/obj/item/natural/hide/cured = 1,
+				/obj/item/natural/fibers = 2,
+				/obj/item/jingle_bells = 1)
+	craftdiff = 2
 
 /datum/repeatable_crafting_recipe/leather/standalone
 	abstract_type = /datum/repeatable_crafting_recipe/leather/standalone

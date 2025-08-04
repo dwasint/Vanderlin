@@ -103,6 +103,7 @@
 	desc = "An iron sword of shortened design, a reduced grip for primarily single hand use."
 	icon_state = "iswordshort"
 	possible_item_intents = list(/datum/intent/sword/cut/short, /datum/intent/sword/thrust/short)
+	force_wielded = 0
 	gripped_intents = null
 	smeltresult = /obj/item/ingot/iron
 	max_integrity = INTEGRITY_STANDARD
@@ -121,6 +122,7 @@
 	desc = "A swift sabre, favored by duelists and cut-throats alike."
 	icon_state = "saber"
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust/curved)
+	force_wielded = 0
 	gripped_intents = null
 	parrysound = list('sound/combat/parry/bladed/bladedthin (1).ogg', 'sound/combat/parry/bladed/bladedthin (2).ogg', 'sound/combat/parry/bladed/bladedthin (3).ogg')
 	swingsound = BLADEWOOSH_SMALL
@@ -241,6 +243,7 @@
 	bigboy = TRUE
 	possible_item_intents = list(/datum/intent/sword/thrust/rapier, /datum/intent/sword/cut/rapier)
 	parrysound = list('sound/combat/parry/bladed/bladedthin (1).ogg', 'sound/combat/parry/bladed/bladedthin (2).ogg', 'sound/combat/parry/bladed/bladedthin (3).ogg')
+	force_wielded = 0
 	gripped_intents = null
 	parrysound = "rapier"
 	swingsound = BLADEWOOSH_SMALL
@@ -367,6 +370,7 @@
 	desc = "A bronze weapon of war from the era of Apotheosis. This blade is older than a few elven generations, but has been very well-maintained and still keeps a good edge."
 	force = 22 // Unique weapon from rare job, slightly more force than most one-handers
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/chop, /datum/intent/sword/strike)
+	force_wielded = 0
 	gripped_intents = null
 	icon = 'icons/roguetown/weapons/64.dmi'
 	icon_state = "khopesh"
@@ -563,6 +567,23 @@
 	. = ..()
 	enchant(/datum/enchantment/silver)
 
+/obj/item/weapon/sword/long/decorated
+	force = 15
+	force_wielded = 30
+	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike)
+	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust/long, /datum/intent/sword/strike, /datum/intent/sword/chop/long)
+	icon_state = "declong"
+	name = "decorated silver longsword"
+	desc = "A finely crafted silver longsword with a decorated golden hilt."
+	max_blade_int = 200
+	max_integrity = 300
+	smeltresult = /obj/item/ingot/silver
+	sellprice = 160
+	last_used = 0
+
+/obj/item/weapon/sword/long/decorated/Initialize(mapload)
+	. = ..()
+	enchant(/datum/enchantment/silver)
 
 //................ Greatsword ............... //
 /obj/item/weapon/sword/long/greatsword
@@ -990,9 +1011,10 @@
 
 /obj/item/weapon/sword/gladius
 	force = 22
-	name = "Gladius"
+	name = "gladius"
 	desc = "A bronze short sword with a slightly wider end, and no guard. Compliments a shield."
 	icon_state = "gladius"
+	force_wielded = 0
 	gripped_intents = null
 	smeltresult = /obj/item/ingot/bronze
 	max_blade_int = 100
