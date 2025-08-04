@@ -43,6 +43,7 @@
 		/datum/supply_pack/food/pepper,
 		/datum/supply_pack/food/honey,
 		/datum/supply_pack/food/cutlery,
+		/datum/supply_pack/farming/queen_bee,
 		// Tools for survival
 		/datum/supply_pack/tools/candles,
 		/datum/supply_pack/tools/flint,

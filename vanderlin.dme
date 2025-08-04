@@ -1876,6 +1876,7 @@
 #include "code\modules\clothing\gloves\rare.dm"
 #include "code\modules\clothing\gloves\steam.dm"
 #include "code\modules\clothing\head\_head.dm"
+#include "code\modules\clothing\head\beehood.dm"
 #include "code\modules\clothing\head\chaperon.dm"
 #include "code\modules\clothing\head\crown.dm"
 #include "code\modules\clothing\head\god_hats.dm"
