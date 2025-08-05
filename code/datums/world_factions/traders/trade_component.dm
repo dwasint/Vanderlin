@@ -174,13 +174,13 @@ Can accept both a type path, and an instance of a datum. Type path has priority.
 		var/path_name = initial(thing.name)
 		if(ispath(thing, /obj/item/neuFarm/seed))
 			path_name = initial(thing:seed_identity)
-		if(ispath(thing, /obj/item/reagent_containers))
-			var/obj/item/reagent_containers/created_container = new(null)
-			if(length(created_container.list_reagents))
+		if(ispath(thing, /obj/item/reagent_containers/glass))
+			var/obj/item/reagent_containers/glass/created_container = new thing
+			var/list/reagent_list = created_container.list_reagents
+			if(length(reagent_list))
 				var/datum/reagent/reagent = created_container.list_reagents[1]
 				path_name = "[initial(thing.name)] of [initial(reagent.name)]"
 			qdel(created_container)
-
 		display_names["[path_name]"] = thing
 
 		if(!radial_icons_cache[thing])

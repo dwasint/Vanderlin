@@ -123,7 +123,7 @@
 		return
 	var/window_size = ""
 	var/scaling = 1
-	if(user?.client.window_scaling)
+	if(user?.client?.window_scaling)
 		scaling = user?.client.window_scaling
 	if (width && height)
 		window_size = "size=[width * scaling]x[height * scaling];"
