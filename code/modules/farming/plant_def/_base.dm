@@ -80,6 +80,10 @@
 		if(potassium_production > 0)
 			details += "- Produces [potassium_production] potassium"
 
+	// Growth time
+	if(maturation_time)
+		var/minutes = maturation_time / (1 MINUTES)
+		details += "<span class='notice'><b>Growth Time:</b> [minutes] minute\s</span>"
 
 	// Plant family (for crop rotation, companion planting, etc.)
 	if(plant_family)
