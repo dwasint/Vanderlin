@@ -1387,6 +1387,7 @@
 #include "code\game\objects\items\undies.dm"
 #include "code\game\objects\items\waterskins.dm"
 #include "code\game\objects\items\weaponry.dm"
+#include "code\game\objects\items\artifacts\censer.dm"
 #include "code\game\objects\items\devices\devies.dm"
 #include "code\game\objects\items\devices\flashlight.dm"
 #include "code\game\objects\items\explosives\_base.dm"

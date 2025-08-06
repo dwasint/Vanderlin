@@ -1,3 +1,8 @@
+#define PRICE_GOD_ARTIFACT 6000
+#define PRICE_SUBGOD_ARTIFACT 3000
+#define PRICE_BOSS_ARTIFACT 1000
+#define PRICE_ARTIFACT 500
+
 /datum/outfit/artifact
 	head = /obj/item/clothing/head/leather/duelhat
 	mask = /obj/item/clothing/face/mask/facemask/steel/harlequin
@@ -11,22 +16,23 @@
 	outfit = /datum/outfit/artifact
 
 /datum/trader_data/artifact_weapons
-	name = "Artifact Weapon Dealer"
+	name = "Artifact"
 	outfit_override = list(/obj/effect/mob_spawn/human/elf/artifact)
 
 	initial_products = list()
 	max_custom_items = 1
 	custom_items = list(
-		/obj/item/weapon/mace/goden/steel/ravox = list(1, 6000, 1),
-		/obj/item/weapon/flail/peasantwarflail/matthios = list(1, 6000, 1),
-		/obj/item/weapon/sword/long/martyr = list(1, 6000, 1),
-		/obj/item/weapon/greataxe/dreamscape = list(1, 6000, 1),
-		/obj/item/weapon/greataxe/steel/doublehead/graggar = list(1, 6000, 1),
-		/obj/item/weapon/polearm/woodstaff/naledi = list(1, 6000, 1),
-		/obj/item/weapon/polearm/halberd/bardiche/woodcutter/gorefeast = list(1, 6000, 1),
-		/obj/item/weapon/polearm/neant = list(1, 6000, 1),
-		/obj/item/gun/ballistic/revolver/grenadelauncher/bow/turbulenta = list(1, 6000, 1),
-		/obj/item/weapon/sword/long/pleonexia = list(1, 6000, 1),
+		/obj/item/weapon/mace/goden/steel/ravox = list(1, PRICE_SUBGOD_ARTIFACT, 1),
+		/obj/item/weapon/flail/peasantwarflail/matthios = list(1, PRICE_SUBGOD_ARTIFACT, 1),
+		/obj/item/weapon/sword/long/martyr = list(1, PRICE_SUBGOD_ARTIFACT, 1),
+		/obj/item/weapon/greataxe/dreamscape = list(1, PRICE_SUBGOD_ARTIFACT, 1),
+		/obj/item/weapon/greataxe/steel/doublehead/graggar = list(1, PRICE_SUBGOD_ARTIFACT, 1),
+		/obj/item/weapon/polearm/woodstaff/naledi = list(1, PRICE_BOSS_ARTIFACT, 1),
+		/obj/item/weapon/polearm/halberd/bardiche/woodcutter/gorefeast = list(1, PRICE_GOD_ARTIFACT, 1),
+		/obj/item/weapon/polearm/neant = list(1, PRICE_GOD_ARTIFACT, 1),
+		/obj/item/gun/ballistic/revolver/grenadelauncher/bow/turbulenta = list(1, PRICE_GOD_ARTIFACT, 1),
+		/obj/item/weapon/sword/long/pleonexia = list(1, PRICE_GOD_ARTIFACT, 1),
+		/obj/item/flashlight/flare/torch/lantern/psycenser = list(1, PRICE_ARTIFACT, 1),
 	)
 
 	initial_wanteds = list(
@@ -101,3 +107,8 @@
 			"Welcome to my shop of wonders! Each weapon here is worth a king's ransom!",
 		),
 	)
+
+#undef PRICE_GOD_ARTIFACT
+#undef PRICE_SUBGOD_ARTIFACT
+#undef PRICE_BOSS_ARTIFACT
+#undef PRICE_ARTIFACT
