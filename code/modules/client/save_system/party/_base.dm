@@ -281,7 +281,7 @@ GLOBAL_LIST_EMPTY(pending_party_invites) // Format: invitee_ckey = list(party, i
 
 		// Create name HUD
 		var/atom/movable/screen/party_member_name/name_hud = new()
-		name_hud.screen_loc = "EAST:28,CENTER+[2-hud_index]:15"
+		name_hud.screen_loc = "EAST-1,CENTER+[2-hud_index]:15"
 		name_hud.set_party_member(member_mob, current_party, member_rank)
 
 		// Add to screen
