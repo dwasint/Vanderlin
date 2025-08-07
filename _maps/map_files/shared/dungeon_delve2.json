@@ -3,5 +3,5 @@
     "map_path": "map_files/shared",
     "map_file": "dungeon.dmm",
 	"traits": [{"Up": true, "NoDayorWeather": true}, {"Down": true, "NoDayorWeather": true, "Baseturf": "/turf/open/transparent/openspace"}],
-    "delve": 1
+    "delve": 2
 }

@@ -323,3 +323,5 @@
 #define COMSIG_MOB_GRENADE_ARMED "grenade_mob_armed"
 ///called in /obj/item/gun/process_fire (user, target, params, zone_override)
 #define COMSIG_GRENADE_ARMED "grenade_armed"
+
+#define COMSIG_MOB_HEALTHHUD_UPDATE "update_healthhud"
