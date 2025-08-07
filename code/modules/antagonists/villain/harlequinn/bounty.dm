@@ -1084,7 +1084,6 @@ GLOBAL_LIST_INIT(bounty_rep, list())  // ckey -> reputation score
 	var/datum/marked_target/selected_target
 
 	if(requires_marker)
-		// Find bounty marker in user's inventory
 		var/obj/item/bounty_marker/marker = locate() in user.get_contents()
 		if(!marker)
 			to_chat(user, span_warning("You need a bounty marker to create this type of contract!"))
@@ -1127,7 +1126,6 @@ GLOBAL_LIST_INIT(bounty_rep, list())  // ckey -> reputation score
 		if(get_mammons_in_atom(H) < payment + extra)
 			to_chat(user, span_warning("Insufficient funds!"))
 			return
-		// Deduct payment and hold in escrow
 		remove_mammons_from_atom(H, payment + extra)
 
 	// Create the contract
@@ -1152,8 +1150,6 @@ GLOBAL_LIST_INIT(bounty_rep, list())  // ckey -> reputation score
 	to_chat(user, span_notice("Contract posted successfully! Payment held in escrow."))
 	if(selected_target)
 		to_chat(user, span_notice("Target: [selected_target.target_name] has been assigned to this contract."))
-
-	// Refresh the interface
 	ui_interact(user)
 
 /// This proc should be called when significant actions happen (death, theft, etc.) basically this is the check completion proc
