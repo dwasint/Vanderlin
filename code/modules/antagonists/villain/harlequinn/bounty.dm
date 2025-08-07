@@ -1156,9 +1156,8 @@ GLOBAL_LIST_INIT(bounty_rep, list())  // ckey -> reputation score
 	// Refresh the interface
 	ui_interact(user)
 
-
+/// This proc should be called when significant actions happen (death, theft, etc.) basically this is the check completion proc
 /obj/structure/bounty_board/proc/check_target_action(mob/actor, mob/target, action_type)
-	// This proc should be called when significant actions happen (death, theft, etc.)
 	for(var/datum/bounty_contract/contract in active_contracts)
 		if(!contract.assigned_to_harlequinn || contract.completed || contract.failed)
 			continue
