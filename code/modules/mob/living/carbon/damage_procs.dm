@@ -1,4 +1,19 @@
 
+/mob/living/carbon/get_elemental_resistance(resistance_type = COLD_DAMAGE)
+	var/resistance = 0
+	var/max_resistance_modifers = 0
+	for(var/obj/item/item in get_equipped_items())
+		resistance += item.return_resistance(resistance_type)
+		max_resistance_modifers += item.return_max_resistance_modifier(resistance_type)
+
+	switch(resistance_type)
+		if(COLD_DAMAGE)
+			return min(cold_res + resistance, max_cold_res + max_resistance_modifers)
+		if(FIRE_DAMAGE)
+			return min(fire_res + resistance, max_fire_res + max_resistance_modifers)
+		if(LIGHTNING_DAMAGE)
+			return min(lightning_res + resistance, max_lightning_res + max_resistance_modifers)
+
 
 /mob/living/carbon/apply_damage(damage, damagetype = BRUTE, def_zone = null, blocked = FALSE, forced = FALSE, spread_damage = FALSE)
 	SEND_SIGNAL(src, COMSIG_MOB_APPLY_DAMGE, damage, damagetype, def_zone)

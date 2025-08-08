@@ -842,7 +842,15 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	if(!isnull(action_slots))
 		return (slot & action_slots)
 	else if (slot_flags)
-		return (slot & slot_flags)
+		if(isweapon(src))
+			var/obj/item/active = user.get_active_held_item()
+			var/obj/item/inactive = user.get_inactive_hand_index()
+			if(active == src || inactive == src)
+				return TRUE
+			else
+				return FALSE
+		else
+			return (slot & slot_flags)
 	return TRUE
 
 //the mob M is attempting to equip this item into the slot passed through as 'slot'. Return 1 if it can do this and 0 if it can't.

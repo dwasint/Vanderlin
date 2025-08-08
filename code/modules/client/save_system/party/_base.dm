@@ -127,9 +127,12 @@ GLOBAL_LIST_EMPTY(pending_party_invites) // Format: invitee_ckey = list(party, i
 	set name = "Invite to Party"
 	set category = "IC"
 	set desc = "Invite someone to your party"
-	set src in view(7)
 
 	var/mob/living/carbon/inviter = usr
+	var/list/mobs = view(7, inviter)
+	var/mob/living/carbon/invitee = browser_input_list(inviter, "Choose a target to invite.", "Party Invite", mobs)
+	if(!invitee)
+		return
 	if(!inviter.current_party)
 		to_chat(inviter, "<span class='warning'>You are not in a party!</span>")
 		return
@@ -138,15 +141,15 @@ GLOBAL_LIST_EMPTY(pending_party_invites) // Format: invitee_ckey = list(party, i
 		to_chat(inviter, "<span class='warning'>Only the party leader can invite members!</span>")
 		return
 
-	if(!src.ckey)
+	if(!invitee.ckey)
 		to_chat(inviter, "<span class='warning'>This person cannot join parties!</span>")
 		return
 
-	if(src.current_party)
-		to_chat(inviter, "<span class='warning'>[src.real_name] is already in a party!</span>")
+	if(invitee.current_party)
+		to_chat(inviter, "<span class='warning'>[invitee.real_name] is already in a party!</span>")
 		return
 
-	send_party_invite(src, inviter.current_party, inviter)
+	send_party_invite(invitee, inviter.current_party, inviter)
 
 /datum/party
 	var/party_id
