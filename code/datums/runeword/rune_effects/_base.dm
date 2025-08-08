@@ -13,3 +13,5 @@
 
 /datum/rune_effect/proc/apply_combat_effect(mob/living/target, mob/living/user, damage_dealt)
 	return
+
+/datum/rune_effect/proc/apply_stat_effect(obj/item/item)

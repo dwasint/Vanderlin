@@ -8,6 +8,11 @@
 		if(LIGHTNING_DAMAGE)
 			return min(lightning_res, max_lightning_res)
 
+/mob/living/proc/get_status_mod(status_key)
+	if(!length(status_modifiers))
+		return 0
+	return LAZYACCESS(status_modifiers, status_key)
+
 /mob/living/proc/apply_elemental_damage(damage = 0, damage_type = COLD_DAMAGE, elemental_pen = 0)
 	var/elemental_resistance = get_elemental_resistance(damage_type)
 	elemental_resistance = max(0, elemental_resistance - elemental_pen)

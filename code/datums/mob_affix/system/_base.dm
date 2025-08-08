@@ -9,6 +9,8 @@
 	var/lightning_res = 0
 	var/max_lightning_res = 75
 
+	var/list/status_modifiers
+
 /datum/mob_affix_system
 	var/list/available_affixes = list()
 

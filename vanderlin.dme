@@ -1147,6 +1147,8 @@
 #include "code\datums\runeword\rune_effects\_base.dm"
 #include "code\datums\runeword\rune_effects\damage.dm"
 #include "code\datums\runeword\rune_effects\elemental_resistance.dm"
+#include "code\datums\runeword\rune_effects\stats.dm"
+#include "code\datums\runeword\rune_effects\status_effect.dm"
 #include "code\datums\runeword\word_combos\_base.dm"
 #include "code\datums\runeword\word_combos\flamebrand.dm"
 #include "code\datums\skills\_skill.dm"

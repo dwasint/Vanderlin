@@ -31,6 +31,11 @@ GLOBAL_LIST_INIT(all_runewords, initialize_runewords())
 	for(var/datum/rune_effect/effect as anything in combat_effects)
 		new_combat |= new effect(combat_effects[effect])
 
+	var/list/new_stat_bonuses = list()
+	for(var/datum/rune_effect/effect as anything in stat_bonuses)
+		new_stat_bonuses |= new effect(stat_bonuses[effect])
+
+	stat_bonuses = new_stat_bonuses
 	combat_effects = new_combat
 
 /datum/runeword/Destroy()
@@ -187,21 +192,8 @@ GLOBAL_LIST_INIT(all_runewords, initialize_runewords())
 			res_effect.apply_to_item(src)
 
 /obj/item/proc/apply_runeword_stats(datum/runeword/RW)
-	for(var/stat in RW.stat_bonuses)
-		var/value = RW.stat_bonuses[stat]
-
-		switch(stat)
-			if("force_bonus")
-				if(istype(src, /obj/item/weapon))
-					var/obj/item/weapon/W = src
-					W.force += value
-
-			if("throwforce_bonus")
-				throwforce += value
-
-			if("max_integrity_bonus")
-				max_integrity += value
-				obj_integrity = min(obj_integrity + value, max_integrity)
+	for(var/datum/rune_effect/effect as anything in RW.stat_bonuses)
+		effect.apply_stat_effect(src)
 
 /obj/item/proc/apply_runeword_spells(datum/runeword/RW)
 	for(var/spell_type in RW.spell_actions)
