@@ -168,6 +168,7 @@ GLOBAL_LIST_INIT(save_file_chars, list(
 	obj_blacklist -= typesof(/obj/effect/decal)
 	obj_blacklist -= typesof(/obj/effect/turf_decal)
 	obj_blacklist -= typesof(/obj/effect/landmark) // most landmarks get deleted except for latejoin arrivals shuttle
+	obj_blacklist += /obj/effect/fog_parter
 
 	//Step 0: Calculate the amount of letters we need (26 ^ n > turf count)
 	var/turfs_needed = width * height
@@ -213,7 +214,7 @@ GLOBAL_LIST_INIT(save_file_chars, list(
 				if(save_flag & SAVE_OBJECTS)
 					for(var/obj/thing in pull_from)
 						CHECK_TICK
-						if(obj_blacklist[thing.type])
+						if(thing.type in obj_blacklist)
 							continue
 						var/metadata = generate_tgm_metadata(thing)
 						current_header += "[empty ? "" : ",\n"][thing.type][metadata]"
