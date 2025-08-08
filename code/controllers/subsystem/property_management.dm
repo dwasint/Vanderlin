@@ -166,7 +166,6 @@ GLOBAL_LIST_INIT(save_file_chars, list(
 	var/list/header = list() //The actual header in text
 	var/list/contents = list() //The contents in text (bit at the end)
 	var/key_index = 1 // How many keys we've generated so far
-	var/list/blacklist = obj_blacklist
 	for(var/z in 0 to depth)
 		for(var/x in 0 to width)
 			contents += "\n([x + 1],1,[z + 1]) = {\"\n"
