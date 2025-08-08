@@ -1,7 +1,7 @@
 /datum/outfit/zhongese
 	head = /obj/item/clothing/head/takuhatsugasa
 	armor = /obj/item/clothing/shirt/robe/kimono
-	cloak = /obj/item/clothing/cloak/raincloak/purple
+	//cloak = /obj/item/clothing/cloak/raincloak/purple
 
 /obj/effect/mob_spawn/human/trition
 	mob_species = /datum/species/triton
