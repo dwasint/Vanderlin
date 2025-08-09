@@ -50,6 +50,8 @@
 	craftdiff = 4
 
 // COPPER TIER - TODO: Move these to redsmithing in future
+/datum/anvil_recipe/weapons/copper
+	abstract_type = /datum/anvil_recipe/weapons/copper
 
 /datum/anvil_recipe/weapons/copper/caxe
 	name = "Copper Hatchet (+Bar)"
