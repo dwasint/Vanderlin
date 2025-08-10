@@ -296,12 +296,6 @@
 	},
 /turf/open/floor/naturalstone,
 /area/template_noop)
-"Wl" = (
-/obj/structure/stairs{
-	dir = 4
-	},
-/turf/open/transparent/openspace,
-/area/template_noop)
 "Xn" = (
 /obj/item/chair/stool/bar,
 /turf/open/floor/hexstone,
@@ -913,8 +907,8 @@ Hf
 ru
 Hf
 Hf
-Wl
-Wl
+ZR
+ZR
 Ss
 "}
 (9,1,3) = {"

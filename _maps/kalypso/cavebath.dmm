@@ -7,7 +7,7 @@
 /obj/structure/stairs/stone{
 	dir = 1
 	},
-/turf/open/transparent/openspace,
+/turf/open/floor/naturalstone,
 /area/template_noop)
 "bS" = (
 /obj/structure/table/wood/treestump,
@@ -52,7 +52,7 @@
 /obj/structure/stairs/stone{
 	dir = 1
 	},
-/turf/closed/basic,
+/turf/template_noop,
 /area/template_noop)
 "yV" = (
 /obj/effect/lily_petal/two,
