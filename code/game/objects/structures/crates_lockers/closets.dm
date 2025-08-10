@@ -59,7 +59,7 @@
 /obj/structure/closet/Initialize(mapload)
 	if(length(spawn_contents))
 		for(var/atom/movable/spawning_atom as anything in spawn_contents)
-			var/atom/movable/new_atom = new spawning_atom(get_turf(src))
+			new spawning_atom(get_turf(src))
 	if(mapload && !opened)		// if closed, any item at the crate's loc is put in the contents
 		addtimer(CALLBACK(src, PROC_REF(take_contents)), 0)
 	. = ..()
