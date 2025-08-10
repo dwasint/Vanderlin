@@ -182,17 +182,24 @@ Can accept both a type path, and an instance of a datum. Type path has priority.
 
 	var/picking = TRUE
 	while(picking)
-		var/recipe_to_learn = browser_input_list(customer, "Choose a recipe to learn", "Recipe Learning", trainable_recipes)
+		var/list/named = list()
+		for(var/atom/listed_datum as anything in trainable_recipes)
+			named[initial(listed_datum.name)] = listed_datum
+
+		var/recipe_to_learn = browser_input_list(customer, "Choose a recipe to learn", "Recipe Learning", named)
 		if(!recipe_to_learn)
 			picking = FALSE
 			return
-		var/cost = trainable_recipes[recipe_to_learn]
+		var/choice = named[recipe_to_learn]
+		var/cost = trainable_recipes[choice]
 		trader.face_atom(customer)
 
 		if(!spend_buyer_offhand_money(customer, cost))
 			trader.say(trader_data.return_trader_phrase(NO_CASH_PHRASE))
 			return
-		learn_recipe(customer.ckey, recipe_to_learn, training_data.return_recipe_profession(recipe_to_learn))
+		learn_recipe(customer.ckey, recipe_to_learn, training_data.return_recipe_profession(choice))
+		trainable_recipes = training_data.return_viable_recipes(customer)
+
 
 /datum/component/blacksmith/proc/smelt(mob/living/carbon/customer)
 	var/list/smeltable_ores = list()

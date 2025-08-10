@@ -33,6 +33,7 @@
 	density = FALSE
 	climbable = FALSE
 	max_integrity = 0
+	UUID_saving = TRUE
 	/// Amount of water in the soil. It makes the plant and weeds not loose health
 	var/water = 0
 	/// Amount of weeds in the soil. The more of them the more water and nutrition they eat.

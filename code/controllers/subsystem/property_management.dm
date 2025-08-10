@@ -4,6 +4,7 @@
 #define SAVE_TURFS (1 << 3) //! Save turfs?
 #define SAVE_AREAS (1 << 4) //! Save areas?
 #define SAVE_OBJECT_PROPERTIES (1 << 5) //! Save custom properties of objects (obj.on_object_saved() output)
+#define SAVE_UUID_STASIS (1 << 6) //! Save objects with UUID_saving to stasis files
 
 //Ignore turf if it contains
 #define SAVE_SHUTTLEAREA_DONTCARE 0
@@ -36,6 +37,69 @@
 			text = copytext(text, 1, index) + repl_chars[char] + copytext(text, index + length(char))
 			index = findtext(text, char, index + length(char))
 	return text
+
+/proc/generate_uuid()
+	var/static/uuid_counter = 0
+	uuid_counter++
+	return "[GLOB.rogue_round_id]_[uuid_counter]_[rand(10000,99999)]"
+
+
+/obj
+	var/UUID_saving = FALSE
+	var/object_uuid = null
+
+/obj/Initialize(mapload, ...)
+	. = ..()
+	if(UUID_saving)
+		if(!object_uuid)
+			object_uuid = generate_uuid()
+		else
+			// We have a UUID from the map, try to restore from stasis
+			handle_stasis_restoration()
+
+/obj/proc/handle_stasis_restoration()
+	if(!UUID_saving || !object_uuid)
+		return FALSE
+
+	var/stasis_path = "data/object_stasis/[object_uuid].sav"
+	if(!fexists(stasis_path))
+		return FALSE
+
+	var/savefile/F = new(stasis_path)
+	if(!F)
+		return FALSE
+
+	F.cd = "/"
+	var/obj/restored_obj
+	F >> restored_obj  // This does an instance restore - creates new object from saved type and data
+
+	if(restored_obj && istype(restored_obj))
+		// Move restored object to our location
+		restored_obj.forceMove(loc)
+
+		// Delete ourselves as we've been replaced
+		qdel(src)
+		return TRUE
+
+	return FALSE
+
+/proc/save_object_to_stasis(obj/target)
+	if(!target || !target.UUID_saving || !target.object_uuid)
+		return FALSE
+
+	var/stasis_path = "data/object_stasis/[target.object_uuid].sav"
+
+	// Clean up any existing stasis file first - this reduces churn
+	if(fexists(stasis_path))
+		fdel(file(stasis_path))
+
+	var/savefile/F = new(stasis_path)
+	if(!F)
+		return FALSE
+
+	F.cd = "/"
+	F << target  // This does an instance save - saves the full object with type info
+	return TRUE
 
 /**
  * A procedure for saving non-standard properties of an object.
@@ -76,7 +140,10 @@
 
 /obj/get_save_vars()
 	. = ..()
+	if(UUID_saving)
+		. += NAMEOF(src, object_uuid)
 	return .
+
 
 GLOBAL_LIST_INIT(save_file_chars, list(
 	"a","b","c","d","e",
@@ -203,6 +270,20 @@ GLOBAL_LIST_INIT(save_file_chars, list(
 						CHECK_TICK
 						if(thing.type in obj_blacklist)
 							continue
+
+						//====HANDLE UUID STASIS SAVING====
+						if((save_flag & SAVE_UUID_STASIS) && thing.UUID_saving)
+							// Generate UUID if not present
+							if(!thing.object_uuid)
+								thing.object_uuid = generate_uuid()
+							// Save object to stasis
+							save_object_to_stasis(thing)
+							// Include the object in the map with its UUID saved
+							var/metadata = generate_tgm_metadata(thing)
+							current_header += "[empty ? "" : ",\n"][thing.type][metadata]"
+							empty = FALSE
+							continue
+
 						var/metadata = generate_tgm_metadata(thing)
 						current_header += "[empty ? "" : ",\n"][thing.type][metadata]"
 						empty = FALSE
@@ -360,7 +441,7 @@ SUBSYSTEM_DEF(housing)
 	var/maxz = minz + property.template_z - 1
 
 	// Generate the map data (save objects and turfs, but not mobs)
-	var/save_flags = SAVE_OBJECTS | SAVE_TURFS | SAVE_AREAS | SAVE_OBJECT_PROPERTIES
+	var/save_flags = SAVE_OBJECTS | SAVE_TURFS | SAVE_AREAS | SAVE_OBJECT_PROPERTIES | SAVE_UUID_STASIS
 	var/map_data = write_map(minx, miny, minz, maxx, maxy, maxz, save_flags, SAVE_SHUTTLEAREA_DONTCARE)
 
 	if(!map_data)
