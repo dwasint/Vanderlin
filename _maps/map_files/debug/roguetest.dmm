@@ -1346,6 +1346,10 @@
 /obj/structure/hotspring/border/three,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
+"jo" = (
+/mob/living/simple_animal/hostile/retaliate/blacksmith,
+/turf/open/floor/dirt,
+/area/rogue/outdoors)
 "jt" = (
 /obj/structure/hotspring/border/three,
 /obj/machinery/light/fueled/torchholder/hotspring/standing{
@@ -19559,7 +19563,7 @@ ai
 ai
 Wr
 Wr
-ai
+jo
 ai
 Wr
 ai
