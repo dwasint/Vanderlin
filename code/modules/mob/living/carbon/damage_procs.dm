@@ -3,8 +3,13 @@
 	var/resistance = 0
 	var/max_resistance_modifers = 0
 	for(var/obj/item/item in get_equipped_items())
-		resistance += item.return_resistance(resistance_type)
-		max_resistance_modifers += item.return_max_resistance_modifier(resistance_type)
+		var/item_resistance = SEND_SIGNAL(item, COMSIG_ATOM_GET_RESISTANCE, resistance_type)
+		var/item_max_resistance = SEND_SIGNAL(item, COMSIG_ATOM_GET_MAX_RESISTANCE, resistance_type)
+
+		if(item_resistance)
+			resistance += item_resistance
+		if(item_max_resistance)
+			max_resistance_modifers += item_max_resistance
 
 	switch(resistance_type)
 		if(COLD_DAMAGE)
@@ -13,6 +18,15 @@
 			return min(fire_res + resistance, max_fire_res + max_resistance_modifers)
 		if(LIGHTNING_DAMAGE)
 			return min(lightning_res + resistance, max_lightning_res + max_resistance_modifers)
+
+
+/mob/living/carbon/get_status_mod(status_key)
+	var/total_modifier = LAZYACCESS(status_modifiers, status_key)
+	for(var/obj/item/item in get_equipped_items())
+		var/item_modifier = SEND_SIGNAL(item, COMSIG_ATOM_GET_STATUS_MOD, status_key)
+		if(item_modifier)
+			total_modifier += item_modifier
+	return total_modifier
 
 
 /mob/living/carbon/apply_damage(damage, damagetype = BRUTE, def_zone = null, blocked = FALSE, forced = FALSE, spread_damage = FALSE)

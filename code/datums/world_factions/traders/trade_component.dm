@@ -150,7 +150,7 @@ Can accept both a type path, and an instance of a datum. Type path has priority.
 /datum/component/trader/proc/check_menu(mob/customer)
 	if(!istype(customer))
 		return FALSE
-	if(IS_DEAD_OR_INCAP(customer) || !customer.Adjacent(parent))
+	if(IS_DEAD_OR_INCAP(customer) || (get_dist(parent, customer) > 2))
 		return FALSE
 	return TRUE
 

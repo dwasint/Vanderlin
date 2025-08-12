@@ -70,6 +70,7 @@
 
 /datum/component/banker/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_ATOM_ATTACK_HAND, PROC_REF(on_attack_hand))
+	RegisterSignal(parent, COMSIG_ATOM_CLICKEDON, PROC_REF(on_source_clicked))
 
 /datum/component/banker/UnregisterFromParent()
 	UnregisterSignal(parent, COMSIG_ATOM_ATTACK_HAND)
@@ -78,6 +79,12 @@
 		var/datum/component/storage/storage_comp = player_storage_containers[ckey]
 		if(storage_comp)
 			qdel(storage_comp.parent) // Delete the storage object
+
+/datum/component/banker/proc/on_source_clicked(atom/source, mob/living/carbon/customer)
+	var/dist = get_dist(source, customer)
+	if(dist != 2)
+		return
+	on_attack_hand(source, customer)
 
 ///If our banker is alive, and the customer left clicks them with an empty hand without combat mode
 /datum/component/banker/proc/on_attack_hand(atom/source, mob/living/carbon/customer)
@@ -133,7 +140,7 @@
 /datum/component/banker/proc/check_menu(mob/customer)
 	if(!istype(customer))
 		return FALSE
-	if(IS_DEAD_OR_INCAP(customer) || !customer.Adjacent(parent))
+	if(IS_DEAD_OR_INCAP(customer) || (get_dist(parent, customer) > 2))
 		return FALSE
 	return TRUE
 

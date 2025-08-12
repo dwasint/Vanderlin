@@ -7,7 +7,7 @@
 	var/list/possible_recipes = list()
 	for(var/datum/profession/profession as anything in learnable_recipes)
 		var/list/profession_recipes = learnable_recipes[profession]
-		var/level = get_profession_level(customer.key, initial(profession.name))
+		var/level = get_profession_level(customer.key, profession)
 		for(var/item in profession_recipes)
 			var/list/data = profession_recipes[item]
 			if(level < data[1])

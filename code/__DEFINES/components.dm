@@ -93,6 +93,7 @@
 #define COMSIG_MOB_CREATED_CALLOUT "mob_created_callout"
 
 #define COMSIG_MOB_CLICKON "mob_clickon"						//from base of mob/clickon(): (atom/A, params)
+#define COMSIG_ATOM_CLICKEDON "atom_clickedon"
 #define COMSIG_MOB_MIDDLECLICKON "mob_middleclickon"			//from base of mob/MiddleClickOn(): (atom/A)
 #define COMSIG_MOB_ALTCLICKON "mob_altclickon"				//from base of mob/AltClickOn(): (atom/A)
 	#define COMSIG_MOB_CANCEL_CLICKON 1

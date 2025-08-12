@@ -68,6 +68,7 @@
 	var/carpet_type = /obj/structure/carpet
 
 /obj/item/natural/bundle/carpet_roll/afterattack(atom/target, mob/living/user, proximity_flag, click_parameters)
+	. = ..()
 	if(!isturf(target))
 		return
 	if(amount < 1)
@@ -107,6 +108,7 @@
 	var/carpet_type = /obj/structure/carpet
 
 /obj/item/natural/carpet_fibers/afterattack(atom/target, mob/living/user, proximity_flag, click_parameters)
+	. = ..()
 	if(!isturf(target))
 		return
 	var/turf/T = get_turf(target)

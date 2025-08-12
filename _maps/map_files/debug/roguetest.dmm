@@ -494,10 +494,6 @@
 /obj/structure/bed/hay,
 /turf/open/floor/cobble/mossy,
 /area/rogue/outdoors/mountains/decap)
-"bs" = (
-/obj/effect/landmark/latejoin,
-/turf/open/floor/grass/yel,
-/area/rogue/outdoors)
 "bt" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood2";
@@ -1451,9 +1447,11 @@
 /turf/open/floor/grass/yel,
 /area/rogue/outdoors)
 "kn" = (
-/obj/machinery/light/fueled/smelter,
-/turf/open/floor/blocks/stonered/tiny,
-/area/rogue/indoors/town/manor)
+/obj/effect/landmark/start/adventurerlate,
+/obj/machinery/light/fueled/wallfire/candle,
+/obj/effect/landmark/latejoin,
+/turf/open/floor/ruinedwood,
+/area/rogue/outdoors)
 "ky" = (
 /obj/structure/flora/ausbushes/ywflowers,
 /turf/open/floor/grass/yel,
@@ -3202,9 +3200,9 @@
 /turf/open/floor/grass/yel,
 /area/rogue/outdoors)
 "XG" = (
-/obj/effect/landmark/start/adventurerlate,
-/turf/open/floor/grass/yel,
-/area/rogue/outdoors)
+/obj/structure/carpet/red,
+/turf/open/floor/tile,
+/area/rogue/indoors/town/manor)
 "XJ" = (
 /obj/structure/table/wood{
 	dir = 8;
@@ -14830,7 +14828,7 @@ jC
 VG
 QN
 LA
-bs
+QN
 jC
 al
 QN
@@ -15342,7 +15340,7 @@ QN
 QN
 qc
 QN
-bs
+QN
 QN
 al
 al
@@ -15596,14 +15594,14 @@ qi
 RC
 QN
 Wg
-XG
+QN
 qc
 jC
 fS
-bs
+QN
 aq
 jC
-bs
+QN
 qc
 qc
 qi
@@ -19689,7 +19687,7 @@ Ps
 BV
 iR
 Ps
-kn
+rR
 Wr
 qw
 Wr
@@ -21995,7 +21993,7 @@ Sk
 Sk
 lW
 Sk
-rq
+XG
 yb
 rq
 rq
@@ -22251,7 +22249,7 @@ SM
 Sk
 lW
 lW
-Sk
+lW
 Sk
 Sk
 Sk
@@ -22505,7 +22503,7 @@ Ps
 Tu
 Tu
 SM
-lW
+Sk
 lW
 lW
 lW
@@ -22518,7 +22516,7 @@ lW
 lW
 lW
 Ps
-RW
+kn
 RW
 QN
 QN
@@ -22765,7 +22763,7 @@ SM
 Sk
 lW
 lW
-Sk
+lW
 Sk
 Sk
 Sk
@@ -23023,7 +23021,7 @@ Sk
 Sk
 lW
 Sk
-rq
+XG
 Yz
 rq
 rq

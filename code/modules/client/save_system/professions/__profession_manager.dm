@@ -692,13 +692,13 @@ GLOBAL_LIST_EMPTY(player_profession_managers)
 		return PM.add_xp(profession_name, amount)
 	return FALSE
 
-/proc/get_profession_level(ckey, profession_name)
+/proc/get_profession_level(ckey, datum/profession/profession_type)
 	var/datum/profession_manager/PM = get_profession_manager(ckey)
 	if(PM)
 		// Only return actual level if profession is active
-		if(!(profession_name in PM.active_professions))
+		if(!(initial(profession_type.name) in PM.active_professions))
 			return 1  // Inactive professions appear as level 1
-		var/list/info = PM.get_profession_info(profession_name)
+		var/list/info = PM.get_profession_info(initial(profession_type.name))
 		return info["level"]
 	return 1
 
