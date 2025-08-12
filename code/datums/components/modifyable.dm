@@ -29,6 +29,7 @@
 	RegisterSignal(parent, COMSIG_ATOM_GET_MAX_RESISTANCE, PROC_REF(on_get_max_resistance))
 	RegisterSignal(parent, COMSIG_ATOM_GET_STATUS_MOD, PROC_REF(on_get_status_mod))
 	RegisterSignal(parent, COMSIG_ITEM_AFTERATTACK, PROC_REF(on_apply_combat_effects))
+	RegisterSignal(parent, COMSIG_PROJECTILE_ON_HIT, PROC_REF(on_apply_combat_effects_ranged))
 
 /datum/component/modifications/proc/on_attackby(obj/item/source, obj/item/attacking_item, mob/user, params)
 	SIGNAL_HANDLER
@@ -90,6 +91,15 @@
 	SIGNAL_HANDLER
 
 	return LAZYACCESS(status_modifiers, status_key)
+
+/datum/component/modifications/proc/on_apply_combat_effects_ranged(obj/item/source, mob/living/user, mob/living/target, angle)
+	SIGNAL_HANDLER
+
+	if(!length(combat_gem_effects))
+		return
+
+	for(var/datum/rune_effect/effect in combat_gem_effects)
+		effect.apply_combat_effect(target, user)
 
 /datum/component/modifications/proc/on_apply_combat_effects(obj/item/source, mob/living/target, mob/living/user, damage_dealt)
 	SIGNAL_HANDLER
