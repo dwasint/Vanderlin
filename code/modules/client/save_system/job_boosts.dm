@@ -107,7 +107,6 @@
 	var/target_ckey
 	var/boost_type
 	var/boost_amount
-	var/uses
 	if(!check_rights(R_DEBUG))
 		return
 
@@ -160,10 +159,6 @@
 		boost_amount = input("Enter a boost amount") as num|null
 	if(boost_amount != 0)
 		boost.boost_amount = boost_amount
-
-	// Allow customization of uses for limited boosts
-	if(uses > 0 && istype(boost, /datum/job_priority_boost/limited_use))
-		boost.uses_remaining = uses
 
 	if(SSjob.give_job_boost(target_client, boost))
 		to_chat(src, "<span class='notice'>Successfully gave '[boost.name]' to '[target_ckey]'.</span>")
