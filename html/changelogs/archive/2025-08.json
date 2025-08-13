@@ -184,5 +184,119 @@
                 "bugfix": "Fix Vampire Lord undisguised unique warning not appearing"
             }
         ]
+    },
+    "2025-08-11": {
+        "SarmentiCampbell": [
+            {
+                "balance": "Added min-pop to roll vampire/werewolf event at roundstart"
+            },
+            {
+                "rscadd": "Added new hallucination for maniac/zizo curse/wonder"
+            },
+            {
+                "balance": "lessened the chance of receiving a mob's jumpscare"
+            }
+        ],
+        "Wrench-1": [
+            {
+                "rscadd": "Psydonian Whip and Psydonian Flail"
+            }
+        ],
+        "PotatoTomahto": [
+            {
+                "bugfix": "altgrip onmob sprite"
+            }
+        ],
+        "Eagletanker": [
+            {
+                "balance": "Corsair no longer has it's perception malus."
+            }
+        ],
+        "Arkatos": [
+            {
+                "rscadd": "Added a new triumph buy - Psydon's Favourite."
+            },
+            {
+                "rscadd": "Added a new triumph buy - Psydon's Retirement Fund."
+            },
+            {
+                "rscadd": "Storyteller bonus influence triumph buys are now limited to 2 per round and their price has decreased from 5 to 3."
+            },
+            {
+                "rscadd": "All personal god objectives now award 1 extra triumph upon completion."
+            },
+            {
+                "qol": "Improved Triumph Leaderboard menu."
+            },
+            {
+                "qol": "Improved Triumph Shop menu formatting, layout, pagination and texts."
+            },
+            {
+                "admin": "Triumph changes are now logged."
+            }
+        ],
+        "wgtjunior743": [
+            {
+                "bugfix": "Only silver rapier got the silver enchantment now"
+            }
+        ],
+        "PineappleMan929": [
+            {
+                "balance": "Thieflings can be barbarians"
+            }
+        ]
+    },
+    "2025-08-12": {
+        "wgtjunior743": [
+            {
+                "rscadd": "Foreigner Trait Title first letter now is in uppercase."
+            },
+            {
+                "bugfix": "Fix armor datums appearing on the armor recipe."
+            },
+            {
+                "bugfix": "Steel Templar helmets lacking info about additional bar/items."
+            }
+        ],
+        "Sulaboy": [
+            {
+                "spellcheck": "Simplified Triton accent, now it is just some fish/fishing terms."
+            },
+            {
+                "balance": "Torches can be used slightly more"
+            },
+            {
+                "bugfix": "Metal torches last longer"
+            }
+        ],
+        "CheffieGithub": [
+            {
+                "bugfix": "Fixed seek orphan"
+            },
+            {
+                "bugfix": "Fix species clothing restrictions for species that use the base body proportions (Not dwarves)"
+            }
+        ],
+        "Wrench-1": [
+            {
+                "image": "xylixian surcoat for Templars and Clerics"
+            }
+        ],
+        "Arkatos": [
+            {
+                "rscadd": "Added a new triumph buy - Adoption Ability."
+            },
+            {
+                "rscadd": "Added a new triumph buy - Orphanage Renovation."
+            }
+        ],
+        "SarmentiCampbell": [
+            {
+                "bugfix": "fixed maniac not stopping their music as soon as they die."
+            },
+            {
+                "bugfix": "stamina regen is no longer affected by the energy bar if you have the boundless energy trait."
+            }
+        ]
     }
 }
