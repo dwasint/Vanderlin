@@ -28,7 +28,7 @@
 	for(var/obj/obj_path as anything in subtypesof(/obj/item/clothing))
 		if(ispath(obj_path, /obj/item))
 			var/obj/item/item_path = obj_path
-			if(initial(item_path.item_flags) & ABSTRACT)
+			if(initial(item_path.item_flags) & ABSRTACT)
 				continue
 
 			var/icon = initial(obj_path.icon)

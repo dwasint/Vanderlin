@@ -370,3 +370,4 @@
 	item_state = "kimono"
 	sleeved = null
 	sleevetype = null
+	item_flags = ABSRTACT

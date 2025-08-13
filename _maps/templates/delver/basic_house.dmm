@@ -3,9 +3,7 @@
 /turf/closed/wall/mineral/wood,
 /area/template_noop)
 "c" = (
-/obj/structure/sign/property_for_sale{
-	property_id = "roguetest"
-	},
+/obj/structure/sign/property_for_sale,
 /turf/open/floor/grass,
 /area/template_noop)
 "d" = (

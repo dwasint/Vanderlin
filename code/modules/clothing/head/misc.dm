@@ -295,3 +295,4 @@
 	name = "takuhatsugasa"
 	desc = ""
 	icon_state = "takuhatsugasa"
+	item_flags = ABSRTACT

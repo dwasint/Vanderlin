@@ -494,6 +494,10 @@
 /obj/structure/bed/hay,
 /turf/open/floor/cobble/mossy,
 /area/rogue/outdoors/mountains/decap)
+"bs" = (
+/obj/structure/carpet/red,
+/turf/open/floor/tile,
+/area/rogue/indoors/town/manor)
 "bt" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood2";
@@ -2937,7 +2941,6 @@
 /turf/open/floor/grass/yel,
 /area/rogue/outdoors)
 "Sy" = (
-/obj/structure/stairs/d,
 /obj/structure/stairs/d{
 	dir = 8
 	},
@@ -3199,10 +3202,6 @@
 /mob/living/simple_animal/hostile/retaliate/cow,
 /turf/open/floor/grass/yel,
 /area/rogue/outdoors)
-"XG" = (
-/obj/structure/carpet/red,
-/turf/open/floor/tile,
-/area/rogue/indoors/town/manor)
 "XJ" = (
 /obj/structure/table/wood{
 	dir = 8;
@@ -3259,10 +3258,6 @@
 /obj/structure/rack/shelf/biggest,
 /obj/structure/carpet/green,
 /turf/open/floor/blocks,
-/area/rogue/indoors/town/manor)
-"YD" = (
-/obj/structure/door/fancy,
-/turf/closed/basic,
 /area/rogue/indoors/town/manor)
 "YH" = (
 /obj/machinery/light/fueled/forge,
@@ -20459,7 +20454,7 @@ Ps
 le
 Ps
 Ps
-YD
+Oi
 Ps
 QN
 QN
@@ -21993,7 +21988,7 @@ Sk
 Sk
 lW
 Sk
-XG
+bs
 yb
 rq
 rq
@@ -23021,7 +23016,7 @@ Sk
 Sk
 lW
 Sk
-XG
+bs
 Yz
 rq
 rq
