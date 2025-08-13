@@ -30,3 +30,9 @@ GLOBAL_LIST_INIT(gem_quality_names, list(
 	GEM_PERFECT = "Perfect"
 ))
 
+
+#define DIRTY_SPLIT			(1<<0)
+#define DIRTY_FORK		(1<<1)
+#define DIRTY_EXTRA		(1<<2)
+
+#define BOOST_TYPE_GENERAL 1

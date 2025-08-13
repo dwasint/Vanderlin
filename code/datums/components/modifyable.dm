@@ -54,7 +54,7 @@
 			examine_list += "<span class='notice'>Socketed gems: [english_list(socketed_runes)]</span>"
 
 			// Show gem effect details
-			if(combat_gem_effects && combat_gem_effects.len)
+			if(length(combat_gem_effects) || active_runeword)
 				examine_list += "<span class='info'>Gem Effects:</span>"
 				var/list/grouped_effects = get_grouped_gem_effects()
 				for(var/effect_desc in grouped_effects)
@@ -245,23 +245,37 @@
 	return TRUE
 
 /datum/component/modifications/proc/get_grouped_gem_effects()
-	if(!combat_gem_effects || !combat_gem_effects.len)
+	var/list/all_effects = list()
+
+	// Add gem effects
+	if(combat_gem_effects && combat_gem_effects.len)
+		all_effects += combat_gem_effects
+
+	// Add runeword effects
+	if(active_runeword)
+		if(active_runeword.stat_bonuses && length(active_runeword.stat_bonuses))
+			all_effects += active_runeword.stat_bonuses
+		if(active_runeword.combat_effects && length(active_runeword.combat_effects))
+			all_effects += active_runeword.combat_effects
+
+	if(!length(all_effects))
 		return list()
 
-	// Group effects by their grouping key
 	var/list/effect_groups = list()
-
-	for(var/datum/rune_effect/effect in combat_gem_effects)
+	for(var/datum/rune_effect/effect in all_effects)
 		var/group_key = effect.get_group_key()
 		if(!effect_groups[group_key])
 			effect_groups[group_key] = list()
 		effect_groups[group_key] += effect
 
-	// Get combined descriptions from each group
 	var/list/descriptions = list()
 	for(var/group_key in effect_groups)
 		var/list/effects_in_group = effect_groups[group_key]
 		var/datum/rune_effect/first_effect = effects_in_group[1]
 		descriptions += first_effect.get_combined_description(effects_in_group)
+
+	if(active_runeword && active_runeword.spell_actions && length(active_runeword.spell_actions))
+		for(var/datum/action/spell_action as anything in active_runeword.spell_actions)
+			descriptions += "Gives [initial(spell_action.name)]"
 
 	return descriptions

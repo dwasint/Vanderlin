@@ -142,6 +142,8 @@
 
 	var/accuracy = 65 //How likely the project will hit it's intended target area. Decreases over distance moved, increased from perception.
 	var/bonus_accuracy = 0 //bonus accuracy that cannot be affected by range drop off.
+	///this is basically do we ignore projectile effects?
+	var/dirty = NONE
 
 /obj/projectile/proc/handle_drop()
 	return
@@ -618,7 +620,7 @@
 
 /obj/projectile/proc/fire(angle, atom/direct_target)
 	if(fired_from)
-		SEND_SIGNAL(fired_from, COMSIG_PROJECTILE_BEFORE_FIRE, src, original)
+		SEND_SIGNAL(fired_from, COMSIG_PROJECTILE_BEFORE_FIRE, src, original, firer)
 	//If no angle needs to resolve it from xo/yo!
 	if(!log_override && firer && original)
 		log_combat(firer, original, "fired at", src, "from [get_area_name(src, TRUE)]")
