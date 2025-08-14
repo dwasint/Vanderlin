@@ -6,6 +6,7 @@
 	stat_bonuses = list(
 		/datum/rune_effect/stat/force = list(5),
 		/datum/rune_effect/stat/throw_force = list(3),
+		/datum/rune_effect/melee_orbital = list(3)
 	)
 	combat_effects = list(
 		/datum/rune_effect/damage/fire = list(3, 8)

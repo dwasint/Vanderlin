@@ -1,4 +1,5 @@
 /datum/rune_effect/projectile
+	ranged = TRUE
 	var/list/effect_values = list()
 
 /datum/rune_effect/projectile/apply_effects_from_list(list/effects)

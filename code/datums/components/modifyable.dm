@@ -99,6 +99,8 @@
 		return
 
 	for(var/datum/rune_effect/effect in combat_gem_effects)
+		if(!effect.ranged)
+			continue
 		effect.apply_combat_effect(target, user)
 
 /datum/component/modifications/proc/on_apply_combat_effects(obj/item/source, mob/living/target, mob/living/user, damage_dealt)

@@ -1189,6 +1189,7 @@
 #include "code\datums\runeword\rune_effects\fear_aura.dm"
 #include "code\datums\runeword\rune_effects\lifesteal.dm"
 #include "code\datums\runeword\rune_effects\mana_drain.dm"
+#include "code\datums\runeword\rune_effects\melee_conversions.dm"
 #include "code\datums\runeword\rune_effects\player_stats.dm"
 #include "code\datums\runeword\rune_effects\projectiles.dm"
 #include "code\datums\runeword\rune_effects\reflection.dm"

@@ -1,4 +1,5 @@
 /datum/rune_effect/mana_drain
+	ranged = TRUE
 	var/stealing_amount = 0
 
 /datum/rune_effect/mana_drain/get_description()

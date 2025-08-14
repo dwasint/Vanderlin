@@ -1,4 +1,5 @@
 /datum/rune_effect/life_steal
+	ranged = TRUE
 	var/stealing_amount = 0
 
 /datum/rune_effect/life_steal/get_description()

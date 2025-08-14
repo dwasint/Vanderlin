@@ -1,5 +1,6 @@
 /datum/rune_effect
 	var/name = ""
+	var/ranged = FALSE
 
 /datum/rune_effect/New(list/effect_data)
 	if(effect_data)

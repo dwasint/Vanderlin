@@ -1,4 +1,5 @@
 /datum/rune_effect/damage
+	ranged = TRUE
 	var/damage_type = FIRE_DAMAGE
 	var/elemental_penetration = 0
 	var/min_damage = 1

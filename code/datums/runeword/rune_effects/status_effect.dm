@@ -1,4 +1,5 @@
 /datum/rune_effect/status
+	ranged = TRUE
 	var/trigger_chance = 25
 	var/status_key = STATUS_KEY_BLEED
 	var/intensity = 1
