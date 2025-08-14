@@ -2,10 +2,12 @@
 	var/increase = 3
 	var/stat_key = STATKEY_CON
 	var/static/number = 1
+	var/my_number = 1
 
 /datum/rune_effect/player_stat/New(list/effect_data)
 	. = ..()
 	number++
+	my_number = number
 
 /datum/rune_effect/player_stat/apply_effects_from_list(list/effects)
 	if(effects.len >= 1)
@@ -28,10 +30,10 @@
 	if(!source.item_action_slot_check(slot, equipper))
 		remove_stats(source, equipper)
 		return
-	equipper.set_stat_modifier("[number]_[type]", stat_key, increase)
+	equipper.set_stat_modifier("[my_number]_[type]", stat_key, increase)
 
 /datum/rune_effect/player_stat/proc/remove_stats(obj/item/source, mob/living/carbon/equipper, slot)
-	equipper.remove_stat_modifier("[number]_[type]")
+	equipper.remove_stat_modifier("[my_number]_[type]")
 
 /datum/rune_effect/player_stat/constitution
 
