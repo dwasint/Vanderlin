@@ -232,15 +232,16 @@ SUBSYSTEM_DEF(job)
 					player_weight += boost.boost_amount
 
 			// Add player multiple times based on weight
-			for(var/i = 1 to player_weight)
-				weighted_players += player
+			weighted_players[player] = player_weight
 
 		// Shuffle the weighted player list
 		weighted_players = shuffle(weighted_players)
 
 		// Loop through weighted players (players with boosts appear more often)
-		for(var/mob/dead/new_player/player in weighted_players)
+		for(var/i = 1 to length(weighted_players))
+			var/mob/dead/new_player/player = pickweight(weighted_players)
 			if(!(player in unassigned)) // Skip if already assigned
+				weighted_players -= player
 				continue
 
 			if(PopcapReached())
