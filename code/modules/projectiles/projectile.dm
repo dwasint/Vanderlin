@@ -325,7 +325,7 @@
  * Also, we select_target to find what to process_hit first.
  */
 /obj/projectile/proc/Impact(atom/A)
-	if(!trajectory)
+	if(!trajectory && !istype(src, /obj/projectile/orbital))
 		qdel(src)
 		return FALSE
 	if(impacted[A])

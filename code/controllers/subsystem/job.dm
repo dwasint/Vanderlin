@@ -240,13 +240,9 @@ SUBSYSTEM_DEF(job)
 		// Loop through weighted players (players with boosts appear more often)
 		for(var/i = 1 to length(weighted_players))
 			var/mob/dead/new_player/player = pickweight(weighted_players)
-			if(!(player in unassigned)) // Skip if already assigned
-				weighted_players -= player
+			weighted_players -= player
+			if(!player)
 				continue
-
-			if(PopcapReached())
-				RejectPlayer(player)
-
 			// Loop through all jobs
 			for(var/datum/job/job in shuffledoccupations)
 				if(!job)
