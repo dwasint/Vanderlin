@@ -135,6 +135,10 @@
 	if(!HAS_TRAIT(usr, TRAIT_BLUEPRINT_VISION))
 		var/mob/vision = usr
 		vision.enter_blueprint()
+	else
+		var/mob/vision = usr
+		vision.blueprints.quit()
+		vision.blueprints = null
 
 /atom/movable/screen/craft/Destroy()
 	QDEL_NULL(book)
