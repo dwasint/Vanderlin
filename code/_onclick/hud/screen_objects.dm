@@ -137,6 +137,7 @@
 		vision.enter_blueprint()
 	else
 		var/mob/vision = usr
+		REMOVE_TRAIT(usr, TRAIT_BLUEPRINT_VISION, TRAIT_GENERIC)
 		vision.blueprints.quit()
 		vision.blueprints = null
 
