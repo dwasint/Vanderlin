@@ -863,24 +863,33 @@
 	var/potassium_needed = 0
 	var/total_growth_time
 
-	if(!matured)
-		// Maturation phase
-		total_growth_time = plant.maturation_time
-		if(plant.nitrogen_requirement > 0)
-			nitrogen_needed = ((plant.nitrogen_requirement * 0.25) / total_growth_time) * target_growth_time
-		if(plant.phosphorus_requirement > 0)
-			phosphorus_needed = ((plant.phosphorus_requirement * 0.25) / total_growth_time) * target_growth_time
-		if(plant.potassium_requirement > 0)
-			potassium_needed = ((plant.potassium_requirement * 0.25) / total_growth_time) * target_growth_time
+	if(plant.perennial) //perennials are hungry fucks
+		if(!matured)
+			// Maturation phase
+			total_growth_time = plant.maturation_time
+			if(plant.nitrogen_requirement > 0)
+				nitrogen_needed = (plant.nitrogen_requirement / total_growth_time) * target_growth_time
+			if(plant.phosphorus_requirement > 0)
+				phosphorus_needed = (plant.phosphorus_requirement / total_growth_time) * target_growth_time
+			if(plant.potassium_requirement > 0)
+				potassium_needed = (plant.potassium_requirement / total_growth_time) * target_growth_time
+		else
+			// Production phase
+			total_growth_time = plant.produce_time
+			if(plant.nitrogen_requirement > 0)
+				nitrogen_needed = (plant.nitrogen_requirement / total_growth_time) * target_growth_time
+			if(plant.phosphorus_requirement > 0)
+				phosphorus_needed = (plant.phosphorus_requirement / total_growth_time) * target_growth_time
+			if(plant.potassium_requirement > 0)
+				potassium_needed = (plant.potassium_requirement / total_growth_time) * target_growth_time
 	else
-		// Production phase
-		total_growth_time = plant.produce_time
+		total_growth_time = plant.maturation_time + plant.produce_time
 		if(plant.nitrogen_requirement > 0)
-			nitrogen_needed = ((plant.nitrogen_requirement * 0.75) / total_growth_time) * target_growth_time
+			nitrogen_needed = (plant.nitrogen_requirement / total_growth_time) * target_growth_time
 		if(plant.phosphorus_requirement > 0)
-			phosphorus_needed = ((plant.phosphorus_requirement * 0.75) / total_growth_time) * target_growth_time
+			phosphorus_needed = (plant.phosphorus_requirement / total_growth_time) * target_growth_time
 		if(plant.potassium_requirement > 0)
-			potassium_needed = ((plant.potassium_requirement * 0.75) / total_growth_time) * target_growth_time
+			potassium_needed = (plant.potassium_requirement / total_growth_time) * target_growth_time
 
 	// Apply nutrient multipliers only to nutrients that are actually needed
 	if(nitrogen_needed > 0)
