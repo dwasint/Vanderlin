@@ -34,3 +34,5 @@
 #define COMSIG_HUNGER_UPDATED "update_hunger_mob"
 #define COMSIG_LIVING_ATE "living_ate_object"
 #define COMSIG_MOB_ADJUST_HUNGER "adjust_hunger_mob"
+#define COMSIG_MOB_FILL_HUNGER "fill_hunger"
+#define COMSIG_MOB_DRAIN_HUNGER "drain_hunger"

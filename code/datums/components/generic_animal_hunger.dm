@@ -14,10 +14,10 @@
 	src.max_hunger = max_hunger
 	src.feed_pause_time = feed_pause_time
 	src.current_hunger = starting_hunger || max_hunger
-	START_PROCESSING(SSobj, src)
+	START_PROCESSING(SSmob_functions, src)
 
 /datum/component/generic_mob_hunger/Destroy(force)
-	STOP_PROCESSING(SSobj, src)
+	STOP_PROCESSING(SSmob_functions, src)
 	if(remove_overfed_timer)
 		deltimer(remove_overfed_timer)
 	return ..()
@@ -25,7 +25,9 @@
 /datum/component/generic_mob_hunger/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_MOB_STOP_HUNGER, PROC_REF(stop_hunger))
 	RegisterSignal(parent, COMSIG_MOB_START_HUNGER, PROC_REF(start_hunger))
+	RegisterSignal(parent, COMSIG_MOB_DRAIN_HUNGER, PROC_REF(on_drain_hunger))
 	RegisterSignal(parent, COMSIG_MOB_FEED, PROC_REF(on_feed))
+	RegisterSignal(parent, COMSIG_MOB_FILL_HUNGER, PROC_REF(on_fill_hunger))
 	RegisterSignal(parent, COMSIG_MOB_RETURN_HUNGER, PROC_REF(return_hunger))
 	RegisterSignal(parent, COMSIG_MOB_ADJUST_HUNGER, PROC_REF(adjust_hunger))
 	RegisterSignal(parent, COMSIG_ATOM_MOUSE_ENTERED, PROC_REF(view_hunger))
@@ -40,7 +42,9 @@
 		COMSIG_MOB_FEED,
 		COMSIG_MOB_RETURN_HUNGER,
 		COMSIG_MOB_ADJUST_HUNGER,
-		COMSIG_ATOM_MOUSE_ENTERED
+		COMSIG_ATOM_MOUSE_ENTERED,
+		COMSIG_MOB_START_HUNGER,
+		COMSIG_MOB_FILL_HUNGER
 	))
 
 /datum/component/generic_mob_hunger/proc/stop_hunger()
@@ -48,6 +52,14 @@
 
 /datum/component/generic_mob_hunger/proc/start_hunger()
 	hunger_paused = FALSE
+
+/datum/component/generic_mob_hunger/proc/on_fill_hunger()
+	current_hunger = max_hunger
+
+/datum/component/generic_mob_hunger/proc/on_drain_hunger(precent)
+	if(!precent)
+		return
+	current_hunger = max(current_hunger - (max_hunger * precent), 0)
 
 /datum/component/generic_mob_hunger/proc/on_feed(datum/source, atom/target, feed_amount)
 	SIGNAL_HANDLER
@@ -102,6 +114,8 @@
 
 /datum/component/generic_mob_hunger/proc/view_hunger(mob/living/source, mob/living/clicker)
 	if(!istype(clicker) || !clicker.client)
+		return
+	if(!SEND_SIGNAL(parent, COMSIG_FRIENDSHIP_CHECK_LEVEL, clicker, "friend"))
 		return
 
 	var/alist/offset_to_add = get_icon_dimensions(source.icon)

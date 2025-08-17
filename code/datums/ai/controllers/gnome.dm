@@ -4,6 +4,7 @@
 	var/datum/gnome_state_manager/state_manager
 
 	blackboard = list(
+		BB_BASIC_MOB_SCARED_ITEM = /obj/item/weapon/whip,
 		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic(),
 		BB_PET_TARGETING_DATUM = new /datum/targetting_datum/basic(),
 		BB_GNOME_WAYPOINT_A = null,
@@ -35,6 +36,8 @@
 	ai_movement = /datum/ai_movement/hybrid_pathing/gnome
 	idle_behavior = /datum/idle_behavior/gnome_enhanced_idle
 	planning_subtrees = list(
+		/datum/ai_planning_subtree/simple_find_nearest_target_to_flee_has_item,
+		/datum/ai_planning_subtree/flee_target,
 		/datum/ai_planning_subtree/pet_planning/gnome_state_based,
 	)
 
