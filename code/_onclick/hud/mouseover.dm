@@ -2,6 +2,8 @@
 	. = ..()
 	if(!nomouseover && name && ismob(usr))
 		handle_mouseover(location, control, params)
+		if(usr.client)
+			SEND_SIGNAL(usr.client, COMSIG_CLIENT_HOVER_NEW, src)
 	SEND_SIGNAL(usr, COMSIG_ATOM_MOUSE_ENTERED, src, params)
 
 /turf/MouseEntered(location, control, params)
