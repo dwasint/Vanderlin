@@ -18,6 +18,9 @@
 	. = ..()
 	if(!controller.able_to_run())
 		return
+	var/mob/living/simple_animal/hostile/gnome_homunculus/gnome_pawn = controller.pawn
+	if(!istype(gnome_pawn))
+		return
 	// Check for death messages to deliver (highest priority)
 	if(prob(death_message_check_chance))
 		check_for_death_messages(gnome_pawn)
@@ -31,9 +34,6 @@
 	if(controller.blackboard[BB_IS_BEING_RIDDEN])
 		return
 
-	var/mob/living/simple_animal/hostile/gnome_homunculus/gnome_pawn = controller.pawn
-	if(!istype(gnome_pawn))
-		return
 
 	if(gnome_pawn.binded)
 		return
