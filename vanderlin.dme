@@ -809,6 +809,7 @@
 #include "code\datums\components\happiness_system.dm"
 #include "code\datums\components\hideous_face.dm"
 #include "code\datums\components\hostage.dm"
+#include "code\datums\components\hovering_data.dm"
 #include "code\datums\components\igniter.dm"
 #include "code\datums\components\item_equipped_movement_rustle.dm"
 #include "code\datums\components\item_fear.dm"
