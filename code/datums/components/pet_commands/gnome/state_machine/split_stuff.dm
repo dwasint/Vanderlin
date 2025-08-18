@@ -1,21 +1,21 @@
 
-/datum/gnome_state/splitter
+/datum/action_state/splitter
 	name = "splitter"
 	description = "Processing items in splitter"
 	var/current_task = "finding_item"
 
-/datum/gnome_state/splitter/enter_state(datum/ai_controller/controller)
+/datum/action_state/splitter/enter_state(datum/ai_controller/controller)
 	current_task = "finding_item"
 
-/datum/gnome_state/splitter/process_state(datum/ai_controller/controller, delta_time)
+/datum/action_state/splitter/process_state(datum/ai_controller/controller, delta_time)
 	if(!controller.blackboard[BB_GNOME_SPLITTER_MODE])
-		return GNOME_STATE_COMPLETE
+		return ACTION_STATE_COMPLETE
 
 	var/mob/living/pawn = controller.pawn
 	var/obj/machinery/essence/splitter/target_splitter = controller.blackboard[BB_GNOME_TARGET_SPLITTER]
 
 	if(!target_splitter)
-		return GNOME_STATE_FAILED
+		return ACTION_STATE_FAILED
 
 	switch(current_task)
 		if("finding_item")
@@ -23,27 +23,27 @@
 			if(carried)
 				current_task = "delivering"
 				manager.set_movement_target(controller, target_splitter)
-				return GNOME_STATE_CONTINUE
+				return ACTION_STATE_CONTINUE
 
 			var/obj/item/found_item = find_splitter_item(controller)
 			if(!found_item)
-				return GNOME_STATE_CONTINUE
+				return ACTION_STATE_CONTINUE
 
 			controller.set_blackboard_key(BB_GNOME_FOUND_ITEM, found_item)
 			manager.set_movement_target(controller, found_item)
 			current_task = "picking_up"
-			return GNOME_STATE_CONTINUE
+			return ACTION_STATE_CONTINUE
 
 		if("picking_up")
 			var/obj/item/found_item = controller.blackboard[BB_GNOME_FOUND_ITEM]
 			if(!found_item)
 				current_task = "finding_item"
-				return GNOME_STATE_CONTINUE
+				return ACTION_STATE_CONTINUE
 
 			if(get_dist(pawn, found_item) > 1)
-				var/datum/gnome_state_manager/manager = controller.blackboard[BB_GNOME_STATE_MANAGER]
+				var/datum/action_state_manager/manager = controller.blackboard[BB_ACTION_STATE_MANAGER]
 				manager.set_movement_target(controller, found_item)
-				return GNOME_STATE_CONTINUE
+				return ACTION_STATE_CONTINUE
 
 			if(found_item.forceMove(pawn))
 				controller.set_blackboard_key(BB_SIMPLE_CARRY_ITEM, found_item)
@@ -52,31 +52,31 @@
 				current_task = "delivering"
 			else
 				current_task = "finding_item"
-			return GNOME_STATE_CONTINUE
+			return ACTION_STATE_CONTINUE
 
 		if("delivering")
 			var/obj/item/carried = controller.blackboard[BB_SIMPLE_CARRY_ITEM]
 			if(!carried)
 				current_task = "finding_item"
-				return GNOME_STATE_CONTINUE
+				return ACTION_STATE_CONTINUE
 
 			if(get_dist(pawn, target_splitter) > 1)
-				var/datum/gnome_state_manager/manager = controller.blackboard[BB_GNOME_STATE_MANAGER]
+				var/datum/action_state_manager/manager = controller.blackboard[BB_ACTION_STATE_MANAGER]
 				manager.set_movement_target(controller, target_splitter)
-				return GNOME_STATE_CONTINUE
+				return ACTION_STATE_CONTINUE
 
 			if(target_splitter.processing)
-				return GNOME_STATE_CONTINUE
+				return ACTION_STATE_CONTINUE
 
 			if(target_splitter.current_items.len >= target_splitter.max_items)
-				return GNOME_STATE_CONTINUE
+				return ACTION_STATE_CONTINUE
 
 			var/datum/natural_precursor/precursor = get_precursor_data(carried)
 			if(!precursor)
 				pawn.dropItemToGround(carried)
 				controller.clear_blackboard_key(BB_SIMPLE_CARRY_ITEM)
 				current_task = "finding_item"
-				return GNOME_STATE_CONTINUE
+				return ACTION_STATE_CONTINUE
 
 			if(carried.forceMove(target_splitter))
 				target_splitter.current_items += carried
@@ -87,11 +87,11 @@
 				current_task = "finding_item"
 			else
 				current_task = "finding_item"
-			return GNOME_STATE_CONTINUE
+			return ACTION_STATE_CONTINUE
 
-	return GNOME_STATE_CONTINUE
+	return ACTION_STATE_CONTINUE
 
-/datum/gnome_state/splitter/proc/find_splitter_item(datum/ai_controller/controller)
+/datum/action_state/splitter/proc/find_splitter_item(datum/ai_controller/controller)
 	var/mob/living/simple_animal/hostile/gnome_homunculus/gnome = controller.pawn
 	var/turf/start = controller.blackboard[BB_GNOME_WAYPOINT_A]
 	var/range = controller.blackboard[BB_GNOME_SEARCH_RANGE] || 1

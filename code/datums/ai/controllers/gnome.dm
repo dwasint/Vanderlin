@@ -1,7 +1,7 @@
 
 /datum/ai_controller/basic_controller/gnome_homunculus
 	max_target_distance = 300
-	var/datum/gnome_state_manager/state_manager
+	var/datum/action_state_manager/state_manager
 
 	blackboard = list(
 		BB_BASIC_MOB_SCARED_ITEM = /obj/item/weapon/whip,
@@ -29,16 +29,17 @@
 		BB_GNOME_ESSENCE_STORAGE = null,
 		BB_GNOME_BOTTLE_STORAGE = null,
 		BB_GNOME_SEARCH_RANGE = 1,
-		BB_GNOME_STATE_MANAGER = null
+		BB_ACTION_STATE_MANAGER = null
 	)
 
 	ai_traits = STOP_MOVING_WHEN_PULLED
 	ai_movement = /datum/ai_movement/hybrid_pathing/gnome
 	idle_behavior = /datum/idle_behavior/gnome_enhanced_idle
 	planning_subtrees = list(
+		/datum/ai_planning_subtree/pet_planning,
 		/datum/ai_planning_subtree/simple_find_nearest_target_to_flee_has_item,
 		/datum/ai_planning_subtree/flee_target,
-		/datum/ai_planning_subtree/pet_planning/gnome_state_based,
+		/datum/ai_planning_subtree/action_state_manager,
 	)
 
 /datum/ai_controller/basic_controller/gnome_homunculus/TryPossessPawn(atom/new_pawn)
@@ -46,8 +47,8 @@
 	if(. & AI_CONTROLLER_INCOMPATIBLE)
 		return
 
-	state_manager = new /datum/gnome_state_manager()
-	blackboard[BB_GNOME_STATE_MANAGER] = state_manager
+	state_manager = new /datum/action_state_manager()
+	blackboard[BB_ACTION_STATE_MANAGER] = state_manager
 
 	RegisterSignal(new_pawn, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
 
@@ -123,11 +124,11 @@
 
 
 
-/datum/ai_planning_subtree/pet_planning/gnome_state_based/SelectBehaviors(datum/ai_controller/controller, delta_time)
-	var/datum/gnome_state_manager/manager = controller.blackboard[BB_GNOME_STATE_MANAGER]
+/datum/ai_planning_subtree/action_state_manager/SelectBehaviors(datum/ai_controller/controller, delta_time)
+	var/datum/action_state_manager/manager = controller.blackboard[BB_ACTION_STATE_MANAGER]
 
 	if(!manager)
-		return SUBTREE_RETURN_FINISH_PLANNING
+		return
 
 	if(controller.blackboard[BB_GNOME_TRANSPORT_MODE] && manager.get_state_name() != "transport")
 		manager.queue_state("transport")
@@ -138,6 +139,29 @@
 	else if(controller.blackboard[BB_GNOME_SPLITTER_MODE] && manager.get_state_name() != "splitter")
 		manager.queue_state("splitter")
 
-	manager.process_machine(controller, delta_time)
+	if(manager.process_machine(controller, delta_time))
+		return SUBTREE_RETURN_FINISH_PLANNING
 
-	return SUBTREE_RETURN_FINISH_PLANNING
+/datum/ai_planning_subtree/goap_action_state_manager/SelectBehaviors(datum/ai_controller/controller, delta_time)
+	var/datum/action_state_manager/manager = controller.blackboard[BB_ACTION_STATE_MANAGER]
+	if(!manager)
+		return
+
+	var/best_state = null
+	var/lowest_cost = INFINITY
+
+	for(var/state_name in manager.available_states)
+		if(state_name == "idle")
+			continue
+
+		var/datum/action_state/state = manager.available_states[state_name]
+
+		if(state.can_execute(controller) && state.get_cost(controller) < lowest_cost)
+			lowest_cost = state.get_cost(controller)
+			best_state = state_name
+
+	if(best_state && manager.get_state_name() != best_state)
+		manager.queue_state(best_state)
+
+	if(manager.process_machine(controller, delta_time))
+		return SUBTREE_RETURN_FINISH_PLANNING
