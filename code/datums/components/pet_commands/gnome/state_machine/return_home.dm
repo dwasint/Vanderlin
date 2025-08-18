@@ -13,5 +13,5 @@
 	if(get_turf(pawn) == home_turf)
 		return GNOME_STATE_COMPLETE
 
-	controller.set_movement_target(home_turf)
+	manager.set_movement_target(controller, home_turf)
 	return GNOME_STATE_CONTINUE

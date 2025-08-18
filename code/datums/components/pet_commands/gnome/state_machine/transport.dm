@@ -2,9 +2,11 @@
 	name = "transport"
 	description = "Moving items between waypoints"
 	var/current_task = "finding_item"
+	var/moving_to_target = FALSE
 
 /datum/gnome_state/transport/enter_state(datum/ai_controller/controller)
 	current_task = "finding_item"
+	moving_to_target = FALSE
 
 /datum/gnome_state/transport/process_state(datum/ai_controller/controller, delta_time)
 	if(!controller.blackboard[BB_GNOME_TRANSPORT_MODE])
@@ -17,6 +19,9 @@
 			var/obj/item/carried = controller.blackboard[BB_SIMPLE_CARRY_ITEM]
 			if(carried)
 				current_task = "delivering"
+				var/turf/dest = controller.blackboard[BB_GNOME_TRANSPORT_DEST]
+				if(dest)
+					manager.set_movement_target(controller, dest)
 				return GNOME_STATE_CONTINUE
 
 			var/obj/item/found_item = find_transport_item(controller)
@@ -24,7 +29,7 @@
 				return GNOME_STATE_CONTINUE
 
 			controller.set_blackboard_key(BB_GNOME_FOUND_ITEM, found_item)
-			controller.set_movement_target(found_item)
+			manager.set_movement_target(controller, found_item)
 			current_task = "picking_up"
 			return GNOME_STATE_CONTINUE
 
@@ -32,9 +37,13 @@
 			var/obj/item/found_item = controller.blackboard[BB_GNOME_FOUND_ITEM]
 			if(!found_item)
 				current_task = "finding_item"
+				moving_to_target = FALSE
 				return GNOME_STATE_CONTINUE
 
 			if(get_dist(pawn, found_item) > 1)
+				if(!moving_to_target)
+					manager.set_movement_target(controller, found_item)
+					moving_to_target = TRUE
 				return GNOME_STATE_CONTINUE
 
 			if(found_item.forceMove(pawn))
@@ -42,9 +51,13 @@
 				controller.clear_blackboard_key(BB_GNOME_FOUND_ITEM)
 				pawn.visible_message(span_notice("[pawn] picks up [found_item]."))
 				current_task = "delivering"
+				moving_to_target = FALSE
+				var/turf/dest = controller.blackboard[BB_GNOME_TRANSPORT_DEST]
+				if(dest)
+					manager.set_movement_target(controller, dest)
 			else
 				current_task = "finding_item"
-
+				moving_to_target = FALSE
 			return GNOME_STATE_CONTINUE
 
 		if("delivering")
@@ -53,16 +66,18 @@
 				return GNOME_STATE_FAILED
 
 			if(get_dist(pawn, dest) > 1)
-				controller.set_movement_target(dest)
+				if(!moving_to_target)
+					manager.set_movement_target(controller, dest)
+					moving_to_target = TRUE
 				return GNOME_STATE_CONTINUE
 
 			current_task = "dropping"
+			moving_to_target = FALSE
 			return GNOME_STATE_CONTINUE
 
 		if("dropping")
 			var/obj/item/carried = controller.blackboard[BB_SIMPLE_CARRY_ITEM]
 			var/turf/dest = controller.blackboard[BB_GNOME_TRANSPORT_DEST]
-
 			if(!carried)
 				current_task = "finding_item"
 				return GNOME_STATE_CONTINUE
@@ -72,6 +87,7 @@
 			controller.clear_blackboard_key(BB_SIMPLE_CARRY_ITEM)
 			pawn.visible_message(span_notice("[pawn] carefully sets down [carried]."))
 			current_task = "finding_item"
+			moving_to_target = FALSE
 			return GNOME_STATE_CONTINUE
 
 	return GNOME_STATE_CONTINUE
@@ -93,5 +109,4 @@
 			if(!gnome.item_matches_filter(I))
 				continue
 			return I
-
 	return null

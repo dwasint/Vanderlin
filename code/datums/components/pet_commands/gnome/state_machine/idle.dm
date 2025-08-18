@@ -1,4 +1,3 @@
-
 /datum/gnome_state/idle
 	name = "idle"
 	description = "Waiting for commands or returning home"

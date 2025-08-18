@@ -21,12 +21,12 @@
 			if(!carried || !is_water_container(carried))
 				var/obj/item/water_container = find_water_container_nearby(controller)
 				if(water_container)
-					controller.set_movement_target(water_container)
+					manager.set_movement_target(controller,water_container)
 					current_phase = "getting_water_container"
 				else
 					return GNOME_STATE_FAILED
 			else
-				controller.set_movement_target(well)
+				manager.set_movement_target(controller, well)
 				current_phase = "filling_water"
 			return GNOME_STATE_CONTINUE
 
@@ -43,7 +43,7 @@
 				controller.set_blackboard_key(BB_SIMPLE_CARRY_ITEM, water_container)
 				pawn.visible_message(span_notice("[pawn] picks up [water_container]."))
 				current_phase = "filling_water"
-				controller.set_movement_target(well)
+				manager.set_movement_target(controller, well)
 
 			return GNOME_STATE_CONTINUE
 
@@ -59,7 +59,7 @@
 			carried.reagents?.add_reagent(/datum/reagent/water, 50)
 			pawn.visible_message(span_notice("[pawn] fills [carried] with water."))
 			current_phase = "adding_water"
-			controller.set_movement_target(cauldron)
+			manager.set_movement_target(controller, cauldron)
 			return GNOME_STATE_CONTINUE
 
 		if("adding_water")
@@ -86,12 +86,12 @@
 
 			var/obj/item/essence_vial/vial = find_essence_vial_with_type(controller, needed_essence)
 			if(vial)
-				controller.set_movement_target(vial)
+				manager.set_movement_target(controller, vial)
 				current_phase = "getting_essence_vial"
 			else
 				var/obj/machinery/essence/machinery = find_essence_machinery_with_type(controller, needed_essence)
 				if(machinery)
-					controller.set_movement_target(machinery)
+					manager.set_movement_target(controller, machinery)
 					current_phase = "getting_essence_from_machinery"
 				else
 					pawn.visible_message(span_warning("[pawn] looks confusedly - no [needed_essence] essence found!"))
@@ -114,7 +114,7 @@
 				controller.set_blackboard_key(BB_SIMPLE_CARRY_ITEM, vial)
 				pawn.visible_message(span_notice("[pawn] picks up [vial] containing [vial.contained_essence.name]."))
 				current_phase = "adding_essence"
-				controller.set_movement_target(cauldron)
+				manager.set_movement_target(controller, cauldron)
 
 			return GNOME_STATE_CONTINUE
 
@@ -134,7 +134,7 @@
 
 		if("waiting_brew")
 			if(get_dist(pawn, cauldron) > 1)
-				controller.set_movement_target(cauldron)
+				manager.set_movement_target(controller, cauldron)
 				return GNOME_STATE_CONTINUE
 
 			if(cauldron.brewing >= 21 && cauldron.reagents.total_volume > 0)
@@ -149,7 +149,7 @@
 			if(!bottle)
 				return GNOME_STATE_CONTINUE
 
-			controller.set_movement_target(bottle)
+			manager.set_movement_target(controller, bottle)
 			current_phase = "getting_bottle"
 			return GNOME_STATE_CONTINUE
 
@@ -166,7 +166,7 @@
 				controller.set_blackboard_key(BB_SIMPLE_CARRY_ITEM, bottle)
 				pawn.visible_message(span_notice("[pawn] picks up [bottle]."))
 				current_phase = "bottling"
-				controller.set_movement_target(cauldron)
+				manager.set_movement_target(controller, cauldron)
 
 			return GNOME_STATE_CONTINUE
 

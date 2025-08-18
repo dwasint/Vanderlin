@@ -21,7 +21,7 @@
 			for(var/obj/structure/soil/soil in oview(7, pawn))
 				if(soil.produce_ready)
 					current_target = soil
-					controller.set_movement_target(soil)
+					manager.set_movement_target(controller, soil)
 					current_task = "harvesting"
 					return GNOME_STATE_CONTINUE
 
@@ -29,7 +29,7 @@
 			for(var/obj/structure/soil/soil in oview(7, pawn))
 				if(soil.plant && soil.weeds > 25)
 					current_target = soil
-					controller.set_movement_target(soil)
+					manager.set_movement_target(controller, soil)
 					current_task = "deweeding"
 					return GNOME_STATE_CONTINUE
 
@@ -39,7 +39,7 @@
 				for(var/obj/structure/soil/soil in oview(7, pawn))
 					if(soil.plant && !soil.plant_dead && soil.water < 150 * 0.3)
 						current_target = soil
-						controller.set_movement_target(soil)
+						manager.set_movement_target(controller, soil)
 						current_task = "watering"
 						return GNOME_STATE_CONTINUE
 			else
@@ -48,7 +48,7 @@
 						var/obj/item/water_source = find_water_source_nearby(controller)
 						if(water_source)
 							current_target = water_source
-							controller.set_movement_target(water_source)
+							manager.set_movement_target(controller, water_source)
 							current_task = "getting_water"
 							return GNOME_STATE_CONTINUE
 
@@ -57,7 +57,7 @@
 				for(var/obj/structure/soil/soil in oview(7, pawn))
 					if(!soil.plant)
 						current_target = soil
-						controller.set_movement_target(soil)
+						manager.set_movement_target(controller, soil)
 						current_task = "planting"
 						return GNOME_STATE_CONTINUE
 			else
@@ -66,7 +66,7 @@
 						var/obj/structure/closet/seed_source = find_seed_source_nearby(controller)
 						if(seed_source)
 							current_target = seed_source
-							controller.set_movement_target(seed_source)
+							manager.set_movement_target(controller, seed_source)
 							current_task = "getting_seeds"
 							return GNOME_STATE_CONTINUE
 

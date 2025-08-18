@@ -122,7 +122,6 @@
 		examine_list += span_notice("Current state: [state_manager.get_state_name()]")
 
 
-/datum/ai_planning_subtree/pet_planning/gnome_state_based
 
 /datum/ai_planning_subtree/pet_planning/gnome_state_based/SelectBehaviors(datum/ai_controller/controller, delta_time)
 	var/datum/gnome_state_manager/manager = controller.blackboard[BB_GNOME_STATE_MANAGER]

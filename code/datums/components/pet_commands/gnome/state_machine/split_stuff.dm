@@ -22,7 +22,7 @@
 			var/obj/item/carried = controller.blackboard[BB_SIMPLE_CARRY_ITEM]
 			if(carried)
 				current_task = "delivering"
-				controller.set_movement_target(target_splitter)
+				manager.set_movement_target(controller, target_splitter)
 				return GNOME_STATE_CONTINUE
 
 			var/obj/item/found_item = find_splitter_item(controller)
@@ -30,7 +30,7 @@
 				return GNOME_STATE_CONTINUE
 
 			controller.set_blackboard_key(BB_GNOME_FOUND_ITEM, found_item)
-			controller.set_movement_target(found_item)
+			manager.set_movement_target(controller, found_item)
 			current_task = "picking_up"
 			return GNOME_STATE_CONTINUE
 
@@ -41,6 +41,8 @@
 				return GNOME_STATE_CONTINUE
 
 			if(get_dist(pawn, found_item) > 1)
+				var/datum/gnome_state_manager/manager = controller.blackboard[BB_GNOME_STATE_MANAGER]
+				manager.set_movement_target(controller, found_item)
 				return GNOME_STATE_CONTINUE
 
 			if(found_item.forceMove(pawn))
@@ -48,10 +50,8 @@
 				controller.clear_blackboard_key(BB_GNOME_FOUND_ITEM)
 				pawn.visible_message(span_notice("[pawn] picks up [found_item]."))
 				current_task = "delivering"
-				controller.set_movement_target(target_splitter)
 			else
 				current_task = "finding_item"
-
 			return GNOME_STATE_CONTINUE
 
 		if("delivering")
@@ -61,6 +61,8 @@
 				return GNOME_STATE_CONTINUE
 
 			if(get_dist(pawn, target_splitter) > 1)
+				var/datum/gnome_state_manager/manager = controller.blackboard[BB_GNOME_STATE_MANAGER]
+				manager.set_movement_target(controller, target_splitter)
 				return GNOME_STATE_CONTINUE
 
 			if(target_splitter.processing)
@@ -80,14 +82,11 @@
 				target_splitter.current_items += carried
 				controller.clear_blackboard_key(BB_SIMPLE_CARRY_ITEM)
 				pawn.visible_message(span_notice("[pawn] carefully places [carried] into the splitter."))
-
 				if(target_splitter.current_items.len >= target_splitter.max_items)
 					target_splitter.begin_bulk_splitting(pawn)
-
 				current_task = "finding_item"
 			else
 				current_task = "finding_item"
-
 			return GNOME_STATE_CONTINUE
 
 	return GNOME_STATE_CONTINUE
@@ -108,11 +107,8 @@
 				continue
 			if(!gnome.item_matches_filter(I))
 				continue
-
 			var/datum/natural_precursor/precursor = get_precursor_data(I)
 			if(!precursor)
 				continue
-
 			return I
-
 	return null
