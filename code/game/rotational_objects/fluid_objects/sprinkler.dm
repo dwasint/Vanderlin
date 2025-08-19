@@ -86,7 +86,14 @@
 		if(T == center)
 			continue
 
+		var/datum/reagents/splash_holder
 		if(can_spray_reach(center, T))
+			for(var/mob/living/mob in T.contents)
+				if(!splash_holder)
+					splash_holder = new/datum/reagents(FLOOR(water_pressure * 0.5, 1))
+					splash_holder.my_atom = src
+					splash_holder.add_reagent(pipe_reagent, FLOOR(water_pressure * 0.5, 1))
+				splash_holder.reaction(mob, TOUCH, 1)
 			for(var/obj/structure/soil/crop in T)
 				crop.adjust_water(water_pressure * 2)
 
