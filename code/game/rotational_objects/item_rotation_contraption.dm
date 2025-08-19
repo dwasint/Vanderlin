@@ -205,3 +205,9 @@
 	grid_height = 64
 
 	place_behavior = PLACE_ON_PIPE
+
+/obj/item/rotation_contraption/pressurizer
+	placed_type = /obj/structure/pressurizer
+	grid_height = 64
+
+	place_behavior = PLACE_ON_PIPE
