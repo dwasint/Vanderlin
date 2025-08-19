@@ -47,6 +47,7 @@
 
 	var/datum/reagents/splash_holder
 	for(var/i = 1 to range)
+		var/fallen = FALSE
 		var/turf/pipe_turf
 		if(!pipe_turf)
 			pipe_turf = get_turf(src)
@@ -56,6 +57,7 @@
 		if(isclosedturf(pipe_turf))
 			break
 		if(isopenspace(pipe_turf))
+			fallen = TRUE
 			while(isopenspace(pipe_turf))
 				for(var/mob/living/mob in pipe_turf.contents)
 					if(!splash_holder)
@@ -78,6 +80,9 @@
 				splash_holder.my_atom = src
 				splash_holder.add_reagent(reagent, FLOOR(input.water_pressure * 0.5, 1))
 			splash_holder.reaction(mob, TOUCH, 1)
+			if(!fallen && range == 3 && i < 2)
+				mob.safe_throw_at(get_edge_target_turf(src, dir), 2, 3, spin = FALSE)
+
 
 
 /obj/structure/water_vent/return_rotation_chat(atom/movable/screen/movable/mouseover/mouseover)
