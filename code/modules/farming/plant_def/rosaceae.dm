@@ -114,6 +114,7 @@
 	base_genetics.cold_resistance = TRAIT_GRADE_GOOD
 
 /datum/plant_def/apple
+	see_through = TRUE
 	name = "apple tree"
 	icon_state = "apple"
 	produce_type = /obj/item/reagent_containers/food/snacks/produce/fruit/apple
@@ -130,7 +131,6 @@
 	phosphorus_production = 30
 	potassium_production = 0
 	seed_identity = "apple seeds"
-	see_through = TRUE
 
 /datum/plant_def/apple/set_genetic_tendencies(datum/plant_genetics/base_genetics)
 	base_genetics.quality_trait = TRAIT_GRADE_EXCELLENT
@@ -138,6 +138,7 @@
 	base_genetics.cold_resistance = TRAIT_GRADE_GOOD
 
 /datum/plant_def/pear
+	see_through = TRUE
 	name = "pear tree"
 	icon_state = "pear"
 	produce_type = /obj/item/reagent_containers/food/snacks/produce/fruit/pear
@@ -154,13 +155,13 @@
 	phosphorus_production = 0
 	potassium_production = 0
 	seed_identity = "pear seeds"
-	see_through = TRUE
 
 /datum/plant_def/pear/set_genetic_tendencies(datum/plant_genetics/base_genetics)
 	base_genetics.quality_trait = TRAIT_GRADE_EXCELLENT
 	base_genetics.water_efficiency = TRAIT_GRADE_GOOD
 
 /datum/plant_def/plum
+	see_through = TRUE
 	name = "plum tree"
 	icon_state = "plumtree"
 	produce_type = /obj/item/reagent_containers/food/snacks/produce/fruit/plum
@@ -177,4 +178,3 @@
 	phosphorus_production = 32
 	potassium_production = 0
 	seed_identity = "plum seeds"
-	see_through = TRUE
