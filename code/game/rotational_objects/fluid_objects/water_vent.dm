@@ -37,6 +37,17 @@
 		if(WEST)
 			matrix.Turn(270)
 	emitter.transform = matrix
+	var/turf/pipe_turf = get_turf(src)
+	if(isopenspace(pipe_turf))
+		while(isopenspace(pipe_turf))
+			pipe_turf = get_step_multiz(pipe_turf, DOWN)
+	if(istype(pipe_turf, /turf/open/water))
+		var/turf/open/water/water = pipe_turf
+		if(water.mapped)
+			return
+		var/taking_pressure = input.water_pressure
+		use_water_pressure(taking_pressure)
+		water.water_volume = min(water.water_volume + taking_pressure, water.water_maximum)
 
 /obj/structure/water_vent/return_rotation_chat(atom/movable/screen/movable/mouseover/mouseover)
 	mouseover.maptext_height = 96

@@ -309,6 +309,7 @@
 #define COMSIG_MOUSE_ENTERED "comsig_mouse_entered"
 /// signal sent when a mouse is hovering over us, sent by atom/proc/on_mouse_entered
 #define COMSIG_ATOM_MOUSE_ENTERED "mouse_entered"
+#define COMSIG_USER_MOUSE_ENTERED "user_mouse_entered"
 
 #define COMSIG_HABITABLE_HOME "comsig_habitable_home"
 

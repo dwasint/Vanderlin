@@ -1660,6 +1660,7 @@
 #include "code\game\rotational_objects\waterwheel.dm"
 #include "code\game\rotational_objects\fluid_objects\boiler.dm"
 #include "code\game\rotational_objects\fluid_objects\pipe_system.dm"
+#include "code\game\rotational_objects\fluid_objects\sprinkler.dm"
 #include "code\game\rotational_objects\fluid_objects\steam_recharger.dm"
 #include "code\game\rotational_objects\fluid_objects\water_pump.dm"
 #include "code\game\rotational_objects\fluid_objects\water_vent.dm"

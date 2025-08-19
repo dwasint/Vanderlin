@@ -1267,6 +1267,12 @@
 	},
 /turf/open/floor/grass/yel,
 /area/rogue/outdoors)
+"fX" = (
+/obj/structure/water_pump{
+	dir = 1
+	},
+/turf/open/floor/grass/yel,
+/area/rogue/outdoors)
 "ge" = (
 /obj/structure/table/wood{
 	dir = 5;
@@ -1649,6 +1655,10 @@
 /obj/structure/flora/grass,
 /obj/structure/fluff/railing/wood,
 /turf/open/floor/grass/yel,
+/area/rogue/outdoors)
+"oF" = (
+/obj/structure/water_pipe,
+/turf/open/floor/wood,
 /area/rogue/outdoors)
 "oH" = (
 /obj/structure/soil/debug_soil/random,
@@ -2644,6 +2654,13 @@
 	},
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors)
+"Hy" = (
+/obj/machinery/light/fueled/torchholder/hotspring/standing{
+	pixel_x = -15
+	},
+/obj/structure/soil/debug_soil/random,
+/turf/open/floor/dirt/road,
+/area/rogue/outdoors)
 "HA" = (
 /obj/effect/temp_visual/wave_up,
 /turf/open/floor/tile/bfloorz,
@@ -2811,6 +2828,7 @@
 /area/rogue/outdoors)
 "Nv" = (
 /obj/structure/water_pipe,
+/obj/structure/sprinkler,
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors)
 "NF" = (
@@ -2930,6 +2948,11 @@
 /area/rogue/outdoors)
 "RW" = (
 /turf/open/floor/ruinedwood,
+/area/rogue/outdoors)
+"Se" = (
+/obj/structure/water_pipe,
+/obj/structure/sprinkler,
+/turf/open/floor/grass/yel,
 /area/rogue/outdoors)
 "Sk" = (
 /obj/structure/carpet/red,
@@ -3074,6 +3097,12 @@
 "Uv" = (
 /turf/closed,
 /area/rogue)
+"UF" = (
+/obj/structure/water_vent{
+	dir = 4
+	},
+/turf/open/water/river/creatable,
+/area/rogue/outdoors)
 "UP" = (
 /obj/structure/fluff/railing/wood,
 /turf/open/floor/ruinedwood,
@@ -3225,6 +3254,7 @@
 	pixel_x = 15;
 	pixel_y = 32
 	},
+/obj/structure/irrigation_channel,
 /turf/open/floor/grass/yel,
 /area/rogue/outdoors)
 "Yr" = (
@@ -15344,9 +15374,9 @@ QN
 qc
 qi
 RC
-cU
-QN
-QN
+Hy
+NF
+oH
 Fy
 KJ
 Ad
@@ -15601,7 +15631,7 @@ qc
 qc
 qi
 RC
-QN
+oH
 NF
 oH
 ou
@@ -15858,17 +15888,17 @@ ky
 ew
 XL
 RC
-QN
+oH
 NF
 oH
-oH
+QN
 at
 at
-ac
-ac
-ac
-ac
-ac
+at
+at
+at
+at
+at
 ac
 ac
 ac
@@ -16115,17 +16145,17 @@ ew
 Ko
 vB
 RC
-QN
 NF
 NF
 oH
 QN
+Se
+aQ
+aQ
+aQ
 at
-ac
-ac
-ac
-ac
-ac
+Ua
+at
 ac
 ac
 ac
@@ -16372,17 +16402,17 @@ Fj
 cp
 zF
 RC
-QN
+NF
 oH
-NF
-NF
-QN
+oH
+oH
+oH
+oH
+oH
+aQ
 at
-ac
-ac
-ac
-ac
-ac
+Ua
+at
 ac
 ac
 ac
@@ -16629,17 +16659,17 @@ cp
 ji
 qi
 RC
-QN
-NF
 NF
 oH
 oH
+oH
+oH
+oH
+oH
+aQ
+fX
+Ua
 at
-ac
-ac
-ac
-ac
-ac
 ac
 ac
 ac
@@ -16888,15 +16918,15 @@ qi
 RC
 Yi
 oH
-NF
 oH
 oH
+oH
+oH
+oH
+aQ
+ez
+xh
 at
-ac
-ac
-ac
-ac
-ac
 ac
 ac
 ac
@@ -17143,17 +17173,17 @@ QN
 jC
 qi
 RC
-QN
-oH
-sK
 NF
-QN
+oH
+oH
+oH
+oH
+oH
+oH
+aQ
 at
-ac
-ac
-ac
-ac
-ac
+Ua
+at
 ac
 ac
 ac
@@ -17400,17 +17430,17 @@ Wr
 QN
 qi
 RC
-QN
-oH
+NF
 NF
 oH
-oH
+QN
+Se
+aQ
+aQ
+aQ
 at
-ac
-ac
-ac
-ac
-ac
+Ua
+at
 ac
 ac
 ac
@@ -17659,15 +17689,15 @@ Pg
 EX
 Gi
 NF
-NF
 oH
-oH
+QN
+QN
+QN
+QN
+aQ
 at
-ac
-ac
-ac
-ac
-ac
+at
+at
 ac
 ac
 ac
@@ -17914,15 +17944,15 @@ Zs
 QN
 qi
 RC
-QN
+NF
 NF
 oH
+oH
+oH
 QN
+QN
+UF
 at
-at
-ac
-ac
-ac
 ac
 ac
 ac
@@ -18172,14 +18202,14 @@ QN
 qi
 RC
 Yi
+oH
 NF
+NF
+NF
+oH
 oH
 at
 at
-ac
-ac
-ac
-ac
 ac
 ac
 ac
@@ -18428,14 +18458,14 @@ Zs
 QN
 qi
 RC
+sK
+NF
+NF
+QN
+NF
+NF
 at
 at
-at
-at
-ac
-ac
-ac
-ac
 ac
 ac
 ac
@@ -18688,10 +18718,10 @@ at
 at
 at
 at
-ac
-ac
-ac
-ac
+at
+at
+at
+at
 ac
 ac
 ac
@@ -81400,9 +81430,9 @@ ss
 ss
 at
 at
-Uv
-Uv
-Uv
+at
+at
+at
 Uv
 Uv
 Uv
@@ -81656,10 +81686,10 @@ ss
 ss
 ss
 ss
+ss
+ss
+ss
 at
-Uv
-Uv
-Uv
 Uv
 Uv
 Uv
@@ -81913,10 +81943,10 @@ ss
 ss
 ss
 ss
+ss
+ss
+ss
 at
-Uv
-Uv
-Uv
 Uv
 Uv
 Uv
@@ -82170,10 +82200,10 @@ ss
 ss
 ss
 ss
+ss
+ss
+ss
 at
-Uv
-Uv
-Uv
 Uv
 Uv
 Uv
@@ -82427,10 +82457,10 @@ ss
 ss
 ss
 ss
+ss
+ss
+ss
 at
-Uv
-Uv
-Uv
 Uv
 Uv
 Uv
@@ -82684,10 +82714,10 @@ ss
 ss
 ss
 ss
+ss
+ss
+ss
 at
-Uv
-Uv
-Uv
 Uv
 Uv
 Uv
@@ -82941,10 +82971,10 @@ ss
 ss
 ss
 ss
+ss
+ss
+ss
 at
-Uv
-Uv
-Uv
 Uv
 Uv
 Uv
@@ -83198,10 +83228,10 @@ ss
 ss
 ss
 ss
+ss
+ss
+ss
 at
-Uv
-Uv
-Uv
 Uv
 Uv
 Uv
@@ -83454,11 +83484,11 @@ ss
 ss
 ss
 ss
+ss
+ss
+ss
+ss
 at
-at
-Uv
-Uv
-Uv
 Uv
 Uv
 Uv
@@ -83710,12 +83740,12 @@ ss
 ss
 ss
 ss
+ss
+ss
+ss
+ss
 at
 at
-Uv
-Uv
-Uv
-Uv
 Uv
 Uv
 Uv
@@ -83964,14 +83994,14 @@ DW
 DW
 ss
 ss
+ss
+ss
+ss
+ss
+ss
+ss
 at
 at
-at
-at
-Uv
-Uv
-Uv
-Uv
 Uv
 Uv
 Uv
@@ -84222,12 +84252,12 @@ DW
 at
 at
 at
-Uv
-Uv
-Uv
-Uv
-Uv
-Uv
+at
+at
+at
+at
+at
+at
 Uv
 Uv
 Uv
@@ -84467,9 +84497,9 @@ ss
 ss
 ss
 ss
-DW
-DW
-DW
+oF
+oF
+oF
 DW
 DW
 DW
