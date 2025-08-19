@@ -1267,12 +1267,6 @@
 	},
 /turf/open/floor/grass/yel,
 /area/rogue/outdoors)
-"fX" = (
-/obj/structure/water_pump{
-	dir = 1
-	},
-/turf/open/floor/grass/yel,
-/area/rogue/outdoors)
 "ge" = (
 /obj/structure/table/wood{
 	dir = 5;
@@ -1326,6 +1320,13 @@
 /obj/machinery/essence/reservoir,
 /turf/open/floor/churchbrick,
 /area/rogue/indoors/town/manor)
+"gV" = (
+/obj/structure/water_pipe,
+/obj/structure/rotation_piece{
+	dir = 8
+	},
+/turf/open/floor/grass/yel,
+/area/rogue/outdoors)
 "hd" = (
 /obj/structure/hotspring/border/five,
 /turf/open/floor/cobblerock,
@@ -1562,6 +1563,12 @@
 /obj/structure/water_pipe,
 /turf/open/floor/grass/yel,
 /area/rogue/outdoors)
+"mv" = (
+/obj/structure/water_vent{
+	dir = 4
+	},
+/turf/open/water/river/creatable,
+/area/rogue/outdoors)
 "mx" = (
 /obj/structure/bridge_stakes{
 	dir = 8
@@ -1712,6 +1719,13 @@
 /obj/structure/rotation_piece,
 /turf/open/floor/wood,
 /area/rogue/indoors)
+"pV" = (
+/obj/machinery/light/fueled/torchholder/hotspring/standing{
+	pixel_x = -15
+	},
+/obj/structure/soil/debug_soil/random,
+/turf/open/floor/dirt/road,
+/area/rogue/outdoors)
 "pY" = (
 /obj/structure/bridge_stakes{
 	dir = 8
@@ -1958,6 +1972,18 @@
 /obj/machinery/essence/reservoir,
 /turf/open/floor/churchbrick,
 /area/rogue/indoors/town/manor)
+"uQ" = (
+/obj/structure/water_pipe,
+/obj/structure/gearbox,
+/turf/open/floor/grass/yel,
+/area/rogue/outdoors)
+"uU" = (
+/obj/structure/water_pipe,
+/obj/structure/pressurizer{
+	dir = 4
+	},
+/turf/open/floor/grass/yel,
+/area/rogue/outdoors)
 "uV" = (
 /turf/open/lava/flow{
 	dir = 8
@@ -2107,6 +2133,12 @@
 /area/rogue/indoors/town/manor)
 "xM" = (
 /obj/structure/bridge_stakes,
+/turf/open/floor/grass/yel,
+/area/rogue/outdoors)
+"xO" = (
+/obj/structure/rotation_piece{
+	dir = 1
+	},
 /turf/open/floor/grass/yel,
 /area/rogue/outdoors)
 "yb" = (
@@ -2654,13 +2686,6 @@
 	},
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors)
-"Hy" = (
-/obj/machinery/light/fueled/torchholder/hotspring/standing{
-	pixel_x = -15
-	},
-/obj/structure/soil/debug_soil/random,
-/turf/open/floor/dirt/road,
-/area/rogue/outdoors)
 "HA" = (
 /obj/effect/temp_visual/wave_up,
 /turf/open/floor/tile/bfloorz,
@@ -2708,6 +2733,11 @@
 /obj/structure/well,
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/mountains/decap)
+"JS" = (
+/obj/structure/water_pipe,
+/obj/structure/sprinkler,
+/turf/open/floor/grass/yel,
+/area/rogue/outdoors)
 "JU" = (
 /obj/structure/hotspring/border/twelve,
 /obj/structure/flora/hotspring_rocks/grassy{
@@ -2949,11 +2979,6 @@
 "RW" = (
 /turf/open/floor/ruinedwood,
 /area/rogue/outdoors)
-"Se" = (
-/obj/structure/water_pipe,
-/obj/structure/sprinkler,
-/turf/open/floor/grass/yel,
-/area/rogue/outdoors)
 "Sk" = (
 /obj/structure/carpet/red,
 /turf/open/floor/blocks,
@@ -3097,12 +3122,6 @@
 "Uv" = (
 /turf/closed,
 /area/rogue)
-"UF" = (
-/obj/structure/water_vent{
-	dir = 4
-	},
-/turf/open/water/river/creatable,
-/area/rogue/outdoors)
 "UP" = (
 /obj/structure/fluff/railing/wood,
 /turf/open/floor/ruinedwood,
@@ -3199,6 +3218,12 @@
 	dir = 4
 	},
 /turf/open/floor/dirt/road,
+/area/rogue/outdoors)
+"WS" = (
+/obj/structure/water_pump{
+	dir = 1
+	},
+/turf/open/floor/grass/yel,
 /area/rogue/outdoors)
 "WW" = (
 /obj/structure/table/wood{
@@ -15374,7 +15399,7 @@ QN
 qc
 qi
 RC
-Hy
+pV
 NF
 oH
 Fy
@@ -16149,7 +16174,7 @@ NF
 NF
 oH
 QN
-Se
+JS
 aQ
 aQ
 aQ
@@ -16667,7 +16692,7 @@ oH
 oH
 oH
 aQ
-fX
+WS
 Ua
 at
 ac
@@ -16923,7 +16948,7 @@ oH
 oH
 oH
 oH
-aQ
+uQ
 ez
 xh
 at
@@ -17180,7 +17205,7 @@ oH
 oH
 oH
 oH
-aQ
+gV
 at
 Ua
 at
@@ -17434,10 +17459,10 @@ NF
 NF
 oH
 QN
-Se
+JS
+uU
 aQ
-aQ
-aQ
+gV
 at
 Ua
 at
@@ -17692,9 +17717,9 @@ NF
 oH
 QN
 QN
-QN
-QN
-aQ
+hO
+xO
+uQ
 at
 at
 at
@@ -17951,7 +17976,7 @@ oH
 oH
 QN
 QN
-UF
+mv
 at
 ac
 ac

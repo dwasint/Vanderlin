@@ -136,7 +136,7 @@
 	var/obj/structure/water_pipe/pipe  = locate(/obj/structure/water_pipe) in pipe_turf
 
 
-	var/new_pressure = rotations_per_minute
+	var/new_pressure = rotations_per_minute + bonus_pressure
 	// if(last_provided_pressure != new_pressure)
 	pipe.make_provider(pumping_from.water_reagent, new_pressure, src)
 	last_provided_pressure = new_pressure
