@@ -92,7 +92,8 @@
 /mob/living/simple_animal/hostile/gnome_homunculus/Initialize()
 	AddComponent(/datum/component/obeys_commands, pet_commands) // here due to signal overridings from pet commands
 	AddComponent(/datum/component/emotion_buffer)
-	AddComponent(/datum/component/friendship_container, gnome_friendship_levels, "friend")
+	AddComponent(/datum/component/friendship_container, gnome_friendship_levels, "friend", FALSE)
+	AddComponent(/datum/component/scared_of_item, 5)
 	. = ..()
 
 	setup_emotional_responses()

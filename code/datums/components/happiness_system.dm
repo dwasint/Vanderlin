@@ -7,14 +7,15 @@
 	var/befriend_level
 	///list of all befriended refs
 	var/list/befriended_refs = list()
+	var/visible_level = TRUE
 
-/datum/component/friendship_container/Initialize(friendship_levels = list(), befriend_level)
+/datum/component/friendship_container/Initialize(friendship_levels = list(), befriend_level , visible_level)
 	. = ..()
 	if(!length(friendship_levels))
 		return COMPONENT_INCOMPATIBLE
 	src.friendship_levels = friendship_levels
 	src.befriend_level = befriend_level
-
+	src.visible_level = visible_level
 
 /datum/component/friendship_container/Destroy(force)
 	befriended_refs = null
@@ -26,7 +27,8 @@
 	RegisterSignal(parent, COMSIG_FRIENDSHIP_CHECK_LEVEL, PROC_REF(check_friendship_level))
 	RegisterSignal(parent, COMSIG_FRIENDSHIP_CHANGE, PROC_REF(change_friendship))
 	RegisterSignal(parent, COMSIG_FRIENDSHIP_PASS_FRIENDSHIP, PROC_REF(pass_friendship))
-	RegisterSignal(parent, COMSIG_ATOM_MOUSE_ENTERED, PROC_REF(view_friendship))
+	if(visible_level)
+		RegisterSignal(parent, COMSIG_ATOM_MOUSE_ENTERED, PROC_REF(view_friendship))
 
 /datum/component/friendship_container/UnregisterFromParent()
 	UnregisterSignal(parent, COMSIG_FRIENDSHIP_CHECK_LEVEL)
