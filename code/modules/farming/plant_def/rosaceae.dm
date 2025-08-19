@@ -130,6 +130,7 @@
 	phosphorus_production = 30
 	potassium_production = 0
 	seed_identity = "apple seeds"
+	see_through = TRUE
 
 /datum/plant_def/apple/set_genetic_tendencies(datum/plant_genetics/base_genetics)
 	base_genetics.quality_trait = TRAIT_GRADE_EXCELLENT
@@ -153,6 +154,7 @@
 	phosphorus_production = 0
 	potassium_production = 0
 	seed_identity = "pear seeds"
+	see_through = TRUE
 
 /datum/plant_def/pear/set_genetic_tendencies(datum/plant_genetics/base_genetics)
 	base_genetics.quality_trait = TRAIT_GRADE_EXCELLENT
@@ -175,3 +177,4 @@
 	phosphorus_production = 32
 	potassium_production = 0
 	seed_identity = "plum seeds"
+	see_through = TRUE
