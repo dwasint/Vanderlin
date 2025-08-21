@@ -78,11 +78,6 @@
 		new_turf = V.get_other_end_turf()
 	if(stairs)
 		new_turf = stairs.get_target_loc(stairs.dir)
-		if(!new_turf)
-			var/turf/turf = get_step(stairs, REVERSE_DIR(stairs.dir))
-			if(isopenspace(turf))
-				new_turf = GET_TURF_BELOW(turf)
-
 	if(!new_turf)
 		return
 
