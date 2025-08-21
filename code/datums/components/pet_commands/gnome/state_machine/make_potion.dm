@@ -118,6 +118,56 @@
 
 			return ACTION_STATE_CONTINUE
 
+
+		if("getting_essence_from_machinery")
+			var/needed_essence = find_needed_essence_type(controller)
+			var/obj/machinery/essence/machinery = find_essence_machinery_with_type(controller, needed_essence)
+
+			if(!machinery)
+				current_phase = "need_essences"
+				return ACTION_STATE_CONTINUE
+
+			if(get_dist(pawn, machinery) > 1)
+				return ACTION_STATE_CONTINUE
+
+			// Look for empty vial near the machinery
+			var/obj/item/essence_vial/empty_vial = find_empty_vial_near_machinery(machinery)
+			if(!empty_vial)
+				pawn.visible_message(span_warning("[pawn] looks around - no empty vials found near the essence machinery!"))
+				return ACTION_STATE_FAILED
+
+			// Pick up the empty vial
+			if(empty_vial.forceMove(pawn))
+				controller.set_blackboard_key(BB_SIMPLE_CARRY_ITEM, empty_vial)
+				pawn.visible_message(span_notice("[pawn] picks up an empty vial."))
+				current_phase = "extracting_essence"
+
+			return ACTION_STATE_CONTINUE
+
+		if("extracting_essence")
+			var/obj/item/essence_vial/vial = controller.blackboard[BB_SIMPLE_CARRY_ITEM]
+			var/needed_essence = find_needed_essence_type(controller)
+			var/obj/machinery/essence/machinery = find_essence_machinery_with_type(controller, needed_essence)
+
+			if(!istype(vial) || !machinery)
+				current_phase = "need_essences"
+				return ACTION_STATE_CONTINUE
+
+			if(get_dist(pawn, machinery) > 1)
+				return ACTION_STATE_CONTINUE
+
+			// Extract essence from machinery
+			if(extract_essence_from_machinery(machinery, vial, needed_essence, pawn))
+				pawn.visible_message(span_notice("[pawn] extracts [vial.contained_essence.name] from the essence machinery."))
+				current_phase = "adding_essence"
+				manager.set_movement_target(controller, controller.blackboard[BB_GNOME_TARGET_CAULDRON])
+			else
+				pawn.visible_message(span_warning("[pawn] failed to extract essence from the machinery!"))
+				return ACTION_STATE_FAILED
+
+			return ACTION_STATE_CONTINUE
+
+
 		if("adding_essence")
 			var/obj/item/essence_vial/vial = controller.blackboard[BB_SIMPLE_CARRY_ITEM]
 			if(!istype(vial))
@@ -129,6 +179,7 @@
 
 			cauldron.attackby(vial, pawn)
 			pawn.visible_message(span_notice("[pawn] adds essence to the cauldron."))
+			vial.forceMove(get_turf(pawn))
 			current_phase = "need_essences"
 			return ACTION_STATE_CONTINUE
 
@@ -279,3 +330,43 @@
 				return I
 
 	return null
+
+
+/datum/action_state/alchemy/proc/find_empty_vial_near_machinery(obj/machinery/essence/target_machinery)
+	for(var/obj/item/essence_vial/vial in range(3, target_machinery))
+		if(!vial.contained_essence || vial.essence_amount <= 0)
+			return vial
+
+	for(var/obj/machinery/essence/machinery in range(15, target_machinery))
+		if(machinery == target_machinery)
+			continue
+		for(var/obj/item/essence_vial/vial in range(3, machinery))
+			if(!vial.contained_essence || vial.essence_amount <= 0)
+				return vial
+
+	return null
+
+/datum/action_state/alchemy/proc/extract_essence_from_machinery(obj/machinery/essence/machinery, obj/item/essence_vial/vial, essence_type, mob/living/pawn)
+	if(istype(machinery, /obj/machinery/essence/reservoir))
+		return extract_from_reservoir(machinery, vial, essence_type, pawn)
+
+	return FALSE
+
+/datum/action_state/alchemy/proc/extract_from_reservoir(obj/machinery/essence/reservoir/reservoir, obj/item/essence_vial/vial, essence_type, mob/living/pawn)
+	var/datum/essence_storage/storage = reservoir.return_storage()
+
+	if(!storage || storage.get_essence_amount(essence_type) <= 0)
+		return FALSE
+
+	var/max_extract = min(storage.get_essence_amount(essence_type), vial.max_essence)
+	if(max_extract <= 0)
+		return FALSE
+
+	var/extracted = storage.remove_essence(essence_type, max_extract)
+	if(extracted > 0)
+		vial.contained_essence = new essence_type
+		vial.essence_amount = extracted
+		vial.update_appearance(UPDATE_OVERLAYS)
+		return TRUE
+
+	return FALSE
