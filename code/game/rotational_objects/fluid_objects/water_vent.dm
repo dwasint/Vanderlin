@@ -18,7 +18,7 @@
 		return TRUE
 
 /obj/structure/water_vent/process()
-	if(input)
+	if(length(input?.providers))
 		spew_water()
 
 /obj/structure/water_vent/proc/spew_water()
