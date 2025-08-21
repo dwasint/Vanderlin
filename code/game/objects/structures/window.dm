@@ -32,6 +32,12 @@
 	. = ..()
 	update_appearance(UPDATE_ICON_STATE)
 
+/obj/structure/window/get_explosion_resistance()
+	if(!climbable)
+		return max_integrity
+	else
+		return 0
+
 /obj/structure/window/CanAtmosPass(turf/T)
 	return climbable
 

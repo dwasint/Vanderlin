@@ -74,6 +74,12 @@
 	. = ..()
 	UnregisterSignal(loc, COMSIG_ATOM_ATTACK_HAND, PROC_REF(redirect_attack))
 
+/obj/structure/door/get_explosion_resistance()
+	if(!door_opened)
+		return max_integrity
+	else
+		return 0
+
 /obj/structure/door/proc/redirect_attack(turf/source, mob/user)
 	attack_hand(user)
 
