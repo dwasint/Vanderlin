@@ -214,3 +214,9 @@
 	grid_height = 64
 
 	place_behavior = PLACE_ON_PIPE
+
+/obj/item/rotation_contraption/drain
+	placed_type = /obj/structure/fluid_drain
+	grid_height = 32
+
+	place_behavior = PLACE_ON_PIPE

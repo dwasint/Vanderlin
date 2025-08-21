@@ -156,6 +156,9 @@
 		while(isopenspace(pipe_turf))
 			pipe_turf = get_step_multiz(pipe_turf, DOWN)
 
+	var/datum/reagent/faux_reagent = new pumping_from.water_reagent
+	faux_reagent.on_aeration(rotations_per_minute, get_turf(src))
+
 	if(istype(pipe_turf, /turf/open/water))
 		var/turf/open/water/water = pipe_turf
 		if(water.mapped)

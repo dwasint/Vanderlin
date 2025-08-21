@@ -1659,6 +1659,7 @@
 #include "code\game\rotational_objects\vertical_gearbox.dm"
 #include "code\game\rotational_objects\waterwheel.dm"
 #include "code\game\rotational_objects\fluid_objects\boiler.dm"
+#include "code\game\rotational_objects\fluid_objects\drain.dm"
 #include "code\game\rotational_objects\fluid_objects\pipe_system.dm"
 #include "code\game\rotational_objects\fluid_objects\pressurizer.dm"
 #include "code\game\rotational_objects\fluid_objects\sprinkler.dm"

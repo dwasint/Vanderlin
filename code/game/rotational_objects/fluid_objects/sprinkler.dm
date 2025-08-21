@@ -80,6 +80,9 @@
 	var/datum/reagent/pipe_reagent = connected_pipe.carrying_reagent
 	effect.color = initial(pipe_reagent.color)
 
+	var/datum/reagent/faux_reagent = new pipe_reagent
+	faux_reagent.on_aeration(water_pressure, get_turf(src))
+
 	// Get all turfs within range
 	for(var/turf/T in range(spray_range, center))
 		// Skip our own turf

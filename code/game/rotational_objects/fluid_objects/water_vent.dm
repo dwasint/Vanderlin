@@ -43,10 +43,13 @@
 
 	var/list/emitter_velocity = list(0, 0.25 * range, 0)
 	emitter.particles.velocity = emitter_velocity
-
+	if(reagent)
+		var/datum/reagent/faux_reagent = new reagent
+		faux_reagent.on_aeration(input.water_pressure, get_turf(src))
 
 	var/datum/reagents/splash_holder
 	for(var/i = 1 to range)
+		var/taking_pressure = input.water_pressure
 		var/fallen = FALSE
 		var/turf/pipe_turf
 		if(!pipe_turf)
@@ -70,8 +73,6 @@
 			var/turf/open/water/water = pipe_turf
 			if(water.mapped)
 				return
-			var/taking_pressure = input.water_pressure
-			use_water_pressure(taking_pressure)
 			water.water_volume = min(water.water_volume + taking_pressure, water.water_maximum)
 
 		for(var/mob/living/mob in pipe_turf.contents)
@@ -82,6 +83,10 @@
 			splash_holder.reaction(mob, TOUCH, 1)
 			if(!fallen && range == 3 && i < 2)
 				mob.safe_throw_at(get_edge_target_turf(src, dir), 2, 3, spin = FALSE)
+		var/obj/structure/water_pipe/picked_provider = pick(input.providers)
+		picked_provider?.taking_from?.use_water_pressure(taking_pressure)
+		if(!istype(pipe_turf, /turf/open/water) && !ispath(reagent, /datum/reagent/water))
+			pipe_turf.add_liquid(reagent, taking_pressure)
 
 
 

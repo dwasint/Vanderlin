@@ -11,6 +11,9 @@
 /area/rogue/outdoors)
 "af" = (
 /obj/structure/bridge_stakes,
+/obj/structure/rotation_piece{
+	dir = 1
+	},
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors)
 "ag" = (
@@ -1053,13 +1056,20 @@
 /turf/open/floor/grass/yel,
 /area/rogue/outdoors)
 "cX" = (
-/obj/structure/table/wood/plain,
+/obj/structure/window/openclose,
 /turf/open/floor/carpet,
 /area/rogue/indoors)
 "cZ" = (
 /obj/structure/kneestingers,
 /turf/open/water/river,
 /area/rogue/outdoors/mountains/decap)
+"da" = (
+/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/rotation_piece{
+	dir = 1
+	},
+/turf/open/floor/grass/yel,
+/area/rogue/outdoors)
 "dh" = (
 /obj/structure/table/wood{
 	icon_state = "largetable"
@@ -1273,12 +1283,15 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/mountains/decap)
 "hN" = (
-/obj/structure/window/openclose{
+/obj/structure/hotspring/border/two,
+/obj/structure/bridge{
+	layer = 4
+	},
+/obj/structure/rotation_piece{
 	dir = 1
 	},
-/obj/structure/water_pipe,
-/turf/open/floor/wood,
-/area/rogue/indoors)
+/turf/open/floor/dirt/road,
+/area/rogue/outdoors)
 "hO" = (
 /obj/structure/gearbox,
 /turf/open/floor/grass/yel,
@@ -1288,6 +1301,13 @@
 	dir = 8
 	},
 /area/rogue/outdoors/mountains/decap)
+"hY" = (
+/obj/structure/soil/debug_soil/random,
+/obj/structure/rotation_piece{
+	dir = 1
+	},
+/turf/open/floor/dirt/road,
+/area/rogue/outdoors)
 "iC" = (
 /obj/structure/ladder,
 /turf/open/floor/blocks,
@@ -1467,9 +1487,13 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors/mountains/decap)
 "mo" = (
-/obj/structure/flora/grass,
-/obj/structure/water_pipe,
-/turf/open/floor/grass/yel,
+/obj/structure/bridge_stakes{
+	dir = 1
+	},
+/obj/structure/rotation_piece{
+	dir = 1
+	},
+/turf/open/floor/cobblerock,
 /area/rogue/outdoors)
 "mx" = (
 /obj/structure/bridge_stakes{
@@ -2225,10 +2249,8 @@
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors/mountains/decap)
 "zp" = (
-/obj/structure/rack/shelf/biggest{
-	pixel_y = 18
-	},
 /obj/machinery/light/fueled/torchholder/r,
+/obj/structure/water_vent,
 /turf/open/floor/carpet,
 /area/rogue/indoors)
 "zA" = (
@@ -2347,12 +2369,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
 "AQ" = (
-/obj/item/bottle_kit{
-	pixel_x = -3
-	},
-/obj/item/bottle_kit{
-	pixel_x = 10
-	},
+/obj/structure/water_pipe,
 /turf/closed/wall/mineral/wood,
 /area/rogue/indoors)
 "Be" = (
@@ -2764,6 +2781,13 @@
 	},
 /turf/open/floor/cobblerock,
 /area/rogue/outdoors)
+"IK" = (
+/obj/structure/irrigation_channel,
+/obj/structure/rotation_piece{
+	dir = 1
+	},
+/turf/open/floor/grass/yel,
+/area/rogue/outdoors)
 "IR" = (
 /obj/structure/rotation_piece{
 	dir = 8
@@ -2865,6 +2889,12 @@
 	},
 /turf/open/floor/grass/yel,
 /area/rogue/outdoors)
+"KQ" = (
+/obj/structure/rotation_piece{
+	dir = 1
+	},
+/turf/open/floor/dirt,
+/area/rogue/outdoors)
 "Lm" = (
 /mob/living/simple_animal/hostile/retaliate/trufflepig/male{
 	name = "GENERIC BLOCKER TESTER"
@@ -2912,6 +2942,10 @@
 	dir = 8
 	},
 /turf/open/floor/wood,
+/area/rogue/outdoors)
+"MG" = (
+/obj/structure/gearbox,
+/turf/open/floor/dirt,
 /area/rogue/outdoors)
 "MJ" = (
 /turf/open/floor/churchbrick,
@@ -3169,6 +3203,12 @@
 "Uv" = (
 /turf/closed,
 /area/rogue)
+"UX" = (
+/obj/structure/rotation_piece{
+	dir = 1
+	},
+/turf/open/floor/cobblerock,
+/area/rogue/outdoors)
 "UY" = (
 /obj/structure/flora/grass,
 /turf/open/floor/grass/mixyel,
@@ -3180,6 +3220,9 @@
 	},
 /turf/open/floor/tile/kitchen,
 /area/rogue/indoors/town/manor)
+"Vk" = (
+/turf/open/water/sewer,
+/area/rogue/outdoors)
 "Vp" = (
 /obj/structure/flora/grass,
 /obj/structure/flora/grass/herb/urtica,
@@ -3287,9 +3330,15 @@
 /turf/open/floor/blocks,
 /area/rogue/indoors/town/manor)
 "Xa" = (
-/obj/structure/fermentation_keg/distiller,
-/turf/open/floor/carpet,
-/area/rogue/indoors)
+/obj/structure/hotspring/border/five,
+/obj/structure/bridge{
+	layer = 4
+	},
+/obj/structure/rotation_piece{
+	dir = 1
+	},
+/turf/open/floor/dirt/road,
+/area/rogue/outdoors)
 "XL" = (
 /obj/structure/hotspring/border/twelve,
 /turf/open/floor/dirt/road,
@@ -17704,19 +17753,19 @@ Wr
 ai
 QN
 QN
-ai
-Wr
-jC
-ai
-ai
+MG
+UX
+da
+KQ
+KQ
 af
-Pg
-EX
-Gi
-NF
-oH
-QN
-QN
+Xa
+hN
+mo
+IK
+hY
+WH
+WH
 hO
 WH
 xt
@@ -17961,7 +18010,7 @@ Wr
 QN
 QN
 jC
-QN
+cJ
 Zs
 Zs
 Zs
@@ -18218,7 +18267,7 @@ jC
 ai
 QN
 QN
-QN
+cJ
 tf
 mY
 OZ
@@ -18729,9 +18778,9 @@ xh
 hO
 ez
 Dq
-mo
-hN
-Xa
+qc
+ag
+aI
 KG
 cX
 mY
@@ -18983,14 +19032,14 @@ at
 at
 ez
 Ua
-Ua
+Vk
 zA
 gr
 aQ
 AQ
 zp
 aI
-aI
+cX
 mY
 mY
 Zs
