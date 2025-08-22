@@ -300,7 +300,11 @@
 /datum/action_state/alchemy/proc/find_essence_machinery_with_type(datum/ai_controller/controller, essence_type)
 	var/mob/living/pawn = controller.pawn
 
-	for(var/obj/machinery/essence/machinery in range(20, pawn))
+	for(var/obj/machinery/essence/machinery in view(20, pawn))
+		if(essence_machinery_has_essence(machinery, essence_type))
+			return machinery
+
+	for(var/obj/machinery/essence/machinery in range(10, pawn))/// last resort
 		if(essence_machinery_has_essence(machinery, essence_type))
 			return machinery
 
@@ -321,13 +325,23 @@
 	var/list/search_areas = list()
 	if(bottle_storage)
 		search_areas += bottle_storage
-	for(var/obj/machinery/essence/machinery in range(15, pawn))
-		search_areas += get_turf(machinery)
+	var/obj/machinery/light/fueled/cauldron/cauldron = controller.blackboard[BB_GNOME_TARGET_CAULDRON]
+	if(cauldron)
+		search_areas += get_turf(cauldron)
 
 	for(var/turf/area in search_areas)
-		for(var/obj/item/reagent_containers/I in range(2, area))
+		for(var/obj/item/reagent_containers/I in range(3, area))
 			if(I.reagents && I.reagents.total_volume == 0)
 				return I
+
+	for(var/obj/machinery/essence/machinery in view(15, pawn))
+			search_areas += get_turf(machinery)
+
+	for(var/turf/area in search_areas) ///meh this forces the gnome to do work close and this as a fallback
+		for(var/obj/item/reagent_containers/I in range(3, area))
+			if(I.reagents && I.reagents.total_volume == 0)
+				return I
+
 
 	return null
 
@@ -337,7 +351,7 @@
 		if(!vial.contained_essence || vial.essence_amount <= 0)
 			return vial
 
-	for(var/obj/machinery/essence/machinery in range(15, target_machinery))
+	for(var/obj/machinery/essence/machinery in view(15, target_machinery))
 		if(machinery == target_machinery)
 			continue
 		for(var/obj/item/essence_vial/vial in range(3, machinery))
