@@ -335,7 +335,7 @@
 				return I
 
 	for(var/obj/machinery/essence/machinery in view(15, pawn))
-			search_areas += get_turf(machinery)
+		search_areas += get_turf(machinery)
 
 	for(var/turf/area in search_areas) ///meh this forces the gnome to do work close and this as a fallback
 		for(var/obj/item/reagent_containers/I in range(3, area))
