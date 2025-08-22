@@ -24,7 +24,7 @@
 
 /obj/item/essence_vial/attack_self_secondary(mob/user, params)
 	if(extract_amount != 10)
-		extract_amount  10
+		extract_amount = 10
 		to_chat(user, span_info("You adjust the vial to extract [extract_amount] unit[extract_amount > 1 ? "s" : ""] of essence."))
 
 /obj/item/essence_vial/proc/check_vial_menu_validity(mob/user)
