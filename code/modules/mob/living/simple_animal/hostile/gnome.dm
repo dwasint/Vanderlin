@@ -94,6 +94,7 @@
 	AddComponent(/datum/component/emotion_buffer)
 	AddComponent(/datum/component/friendship_container, gnome_friendship_levels, "friend", FALSE)
 	AddComponent(/datum/component/scared_of_item, 5)
+	AddComponent(/datum/component/hovering_information, /datum/hover_data/gnome_status)
 	. = ..()
 
 	setup_emotional_responses()
