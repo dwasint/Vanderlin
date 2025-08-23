@@ -1191,6 +1191,16 @@
 	crossed.client.images -= overlay
 	LAZYREMOVE(vanished, crossed)
 
+/obj/structure/soil/proc/pop_image(mob/popper)
+	if(!isliving(popper))
+		return
+	if(!popper.client)
+		return
+	var/image/overlay = LAZYACCESS(vanished, popper)
+	if(!overlay)
+		return
+	crossed.client.images -= overlay
+	LAZYREMOVE(vanished, crossed)
 
 /obj/structure/soil/debug_soil
 	var/obj/item/neuFarm/seed/seed_to_grow
