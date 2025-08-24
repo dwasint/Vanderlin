@@ -976,7 +976,7 @@
 /turf/open/floor/sand
 	name = "sand"
 	desc = "Warm sand that, sadly, have been mixed with dirt."
-	icon_state = "sand_abyss"
+	icon_state = "sand-1"
 	icon = 'icons/delver/desert_objects.dmi'
 	layer = MID_TURF_LAYER
 	footstep = FOOTSTEP_SAND
