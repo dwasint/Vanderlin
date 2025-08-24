@@ -1048,10 +1048,10 @@
 	icon_state = "sandstonefloor-3"
 
 /turf/open/floor/sandstone_tile/four
-	icon_state = "sandstonefloor-3"
+	icon_state = "sandstonefloor-4"
 
 /turf/open/floor/sandstone_tile/five
-	icon_state = "sandstonefloor-3"
+	icon_state = "sandstonefloor-5"
 
 /turf/open/floor/sandstone_tile/six
-	icon_state = "sandstonefloor-3"
+	icon_state = "sandstonefloor-6"
