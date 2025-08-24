@@ -278,6 +278,7 @@
 #include "code\__HELPERS\unsorted.dm"
 #include "code\__HELPERS\view.dm"
 #include "code\__HELPERS\weakref.dm"
+#include "code\__HELPERS\paths\mapping_helpers.dm"
 #include "code\__HELPERS\sorts\helpers.dm"
 #include "code\__HELPERS\sorts\sort_instances.dm"
 #include "code\_globalvars\bitfields.dm"
