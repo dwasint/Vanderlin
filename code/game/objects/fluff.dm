@@ -225,7 +225,7 @@
 
 /obj/structure/flora/rock/jungle/Initialize()
 	. = ..()
-	icon_state = "[initial(icon_state)]-[rand(1,5)]"
+	icon_state = "[initial(icon_state)][rand(1,5)]"
 
 /obj/structure/abyss_window
 	name = "abyssal window"
