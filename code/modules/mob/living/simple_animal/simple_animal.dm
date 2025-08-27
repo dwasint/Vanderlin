@@ -232,6 +232,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 /mob/living/simple_animal/proc/tamed(mob/user)
 	INVOKE_ASYNC(src, PROC_REF(emote), "lower_head", null, null, null, TRUE)
 	tame = TRUE
+	SEND_SIGNAL(src, COMSIG_FRIENDSHIP_CHANGE, user, 55)
 	if(user)
 		befriend(user)
 		record_round_statistic(STATS_ANIMALS_TAMED)
