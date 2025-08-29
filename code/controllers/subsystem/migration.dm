@@ -14,6 +14,9 @@ SUBSYSTEM_DEF(migrants)
 	var/list/spawned_waves = list()
 	/// Track triumph contributions across all waves
 	var/list/global_triumph_contributions = list()
+	/// Track parent wave for downgrades
+	var/current_parent_wave = null
+
 
 
 /datum/controller/subsystem/migrants/Initialize()
@@ -23,9 +26,11 @@ SUBSYSTEM_DEF(migrants)
 	process_migrants(2 SECONDS)
 	update_ui()
 
-/datum/controller/subsystem/migrants/proc/set_current_wave(wave_type, time)
+/datum/controller/subsystem/migrants/proc/set_current_wave(wave_type, time, parent_wave = -1)
 	current_wave = wave_type
 	wave_timer = time
+	if(parent_wave != -1)
+		current_parent_wave = parent_wave
 
 /datum/controller/subsystem/migrants/proc/process_migrants(dt)
 	if(current_wave)
@@ -43,16 +48,44 @@ SUBSYSTEM_DEF(migrants)
 		log_game("Migrants: Successfully spawned wave: [current_wave]")
 	else
 		log_game("Migrants: FAILED to spawn wave: [current_wave]")
+
+	// Handle downgrade logic
+	var/datum/migrant_wave/wave = MIGRANT_WAVE(current_wave)
+	var/parent_wave = current_parent_wave
+
 	// Unset some values, increment wave number if success
 	if(success)
 		wave_number++
-	var/datum/migrant_wave/wave = MIGRANT_WAVE(current_wave)
+		// Reset parent wave triumph if this was a downgrade that succeeded
+		if(parent_wave)
+			reset_wave_contributions(MIGRANT_WAVE(parent_wave))
+
 	set_current_wave(null, 0)
+
 	if(success)
 		time_until_next_wave = time_between_waves
+		current_parent_wave = null
 	else
 		if(wave.downgrade_wave)
-			set_current_wave(wave.downgrade_wave, wave_wait_time)
+			// Apply triumph weighting to downgrade decision
+			var/datum/migrant_wave/downgrade_wave = MIGRANT_WAVE(wave.downgrade_wave)
+			var/downgrade_weight = calculate_triumph_weight(downgrade_wave)
+			var/no_downgrade_weight = 100 // Base weight for not downgrading
+
+			var/list/downgrade_options = list()
+			downgrade_options[wave.downgrade_wave] = downgrade_weight
+			downgrade_options["no_downgrade"] = no_downgrade_weight
+
+			var/choice = pickweight(downgrade_options)
+			if(choice != "no_downgrade")
+				// Use parent wave if this was already a downgrade, otherwise use current wave as parent
+				var/new_parent = parent_wave ? parent_wave : current_wave
+				set_current_wave(wave.downgrade_wave, wave_wait_time, new_parent)
+				log_game("Migrants: Downgrading to [wave.downgrade_wave] (parent: [new_parent]) with triumph weight [downgrade_weight]")
+			else
+				time_until_next_wave = time_between_fail_wave
+				current_parent_wave = null
+				log_game("Migrants: Chose not to downgrade (triumph weight favored waiting)")
 		else
 			time_until_next_wave = time_between_fail_wave
 
@@ -182,7 +215,11 @@ SUBSYSTEM_DEF(migrants)
 	var/string = ""
 	if(current_wave)
 		var/datum/migrant_wave/wave = MIGRANT_WAVE(current_wave)
-		string = "[wave.name] ([get_active_migrant_amount()]/[wave.get_roles_amount()]) - [wave_timer / (1 SECONDS)]s"
+		var/parent_info = ""
+		if(current_parent_wave)
+			var/datum/migrant_wave/parent = MIGRANT_WAVE(current_parent_wave)
+			parent_info = " (downgrade from [parent.name])"
+		string = "[wave.name][parent_info] ([get_active_migrant_amount()]/[wave.get_roles_amount()]) - [wave_timer / (1 SECONDS)]s"
 	else
 		string = "Mist - [time_until_next_wave / (1 SECONDS)]s"
 	return "Migrants: [string]"
@@ -349,7 +386,7 @@ SUBSYSTEM_DEF(migrants)
 	var/wave_type = roll_wave()
 	if(wave_type)
 		log_game("Migrants: Rolled wave: [wave_type]")
-		set_current_wave(wave_type, wave_wait_time)
+		set_current_wave(wave_type, wave_wait_time, wave_type)
 
 	time_until_next_wave = time_between_fail_wave
 
@@ -486,6 +523,8 @@ SUBSYSTEM_DEF(migrants)
 	return TRUE
 
 /datum/controller/subsystem/migrants/proc/get_triumph_selection_bonus(client/player, wave_type)
+	if(current_parent_wave)
+		wave_type = current_parent_wave
 	if(!player?.ckey)
 		return 0
 

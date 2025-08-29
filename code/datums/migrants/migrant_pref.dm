@@ -111,9 +111,21 @@
 		var/threshold_reached = wave.triumph_total >= wave.triumph_threshold
 		var/player_contribution = wave.triumph_contributions[client.ckey] ? wave.triumph_contributions[client.ckey] : 0
 
+		// Check if wave has hit max spawns
+		var/is_maxed_out = FALSE
+		if(!isnull(wave.max_spawns))
+			var/used_wave_type = wave.type
+			if(wave.shared_wave_type)
+				used_wave_type = wave.shared_wave_type
+			if(SSmigrants.spawned_waves[used_wave_type] && SSmigrants.spawned_waves[used_wave_type] >= wave.max_spawns)
+				is_maxed_out = TRUE
+
 		var/wave_color = "#ffffff"
 		var/wave_name = wave.name
-		if(threshold_reached)
+		if(is_maxed_out)
+			wave_color = "#666666"
+			wave_name = "[wave.name] (MAXED)"
+		else if(threshold_reached)
 			wave_color = "gold"
 			wave_name = "[wave.name] (READY!)"
 		else if(player_contribution > 0)
@@ -125,7 +137,9 @@
 
 		// Calculate roll percentage
 		var/roll_percentage = 0
-		if(threshold_reached)
+		if(is_maxed_out)
+			roll_percentage = "0% (Maxed)"
+		else if(threshold_reached)
 			roll_percentage = "100% (Guaranteed)"
 		else if(total_weight > 0)
 			var/wave_weight = wave_weights[wave_type]
@@ -136,11 +150,17 @@
 		sidebar_dat += "<div style='margin-bottom: 12px; padding: 8px; border: 1px solid #444; border-radius: 4px;' title='Roll Chance: [roll_percentage] (Base: [wave.weight], Triumph: +[wave.triumph_total * 2])'>"
 		sidebar_dat += "<div style='color: [wave_color]; font-weight: bold; margin-bottom: 4px;'>[wave_name]</div>"
 		sidebar_dat += "<div style='background-color: #333; height: 12px; border-radius: 6px; margin-bottom: 4px;'>"
-		sidebar_dat += "<div style='background-color: [threshold_reached ? "gold" : "cyan"]; height: 100%; width: [progress_percent]%; border-radius: 6px;'></div>"
+		sidebar_dat += "<div style='background-color: [threshold_reached ? "gold" : (is_maxed_out ? "#666666" : "cyan")]; height: 100%; width: [progress_percent]%; border-radius: 6px;'></div>"
 		sidebar_dat += "</div>"
 		sidebar_dat += "<div style='display: flex; justify-content: space-between; align-items: center; font-size: 12px;'>"
 		sidebar_dat += "<span>[triumph_display]</span>"
-		sidebar_dat += "<a href='byond://?src=[REF(src)];task=contribute_triumph;wave=[wave_type]' style='background-color: #4a4a4a; color: white; text-decoration: none; padding: 2px 6px; border-radius: 3px; font-size: 11px;'>+T</a>"
+
+		// Only show contribution button if wave isn't maxed out
+		if(!is_maxed_out)
+			sidebar_dat += "<a href='byond://?src=[REF(src)];task=contribute_triumph;wave=[wave_type]' style='background-color: #4a4a4a; color: white; text-decoration: none; padding: 2px 6px; border-radius: 3px; font-size: 11px;'>+T</a>"
+		else
+			sidebar_dat += "<span style='background-color: #333; color: #666; padding: 2px 6px; border-radius: 3px; font-size: 11px;'>MAX</span>"
+
 		sidebar_dat += "</div>"
 		sidebar_dat += "</div>"
 
