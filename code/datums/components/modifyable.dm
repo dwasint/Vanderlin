@@ -105,6 +105,8 @@
 
 /datum/component/modifications/proc/on_apply_combat_effects(obj/item/source, mob/living/target, mob/living/user, damage_dealt)
 	SIGNAL_HANDLER
+	if(!proximity_flag)
+		return
 
 	if(!length(combat_gem_effects))
 		return
