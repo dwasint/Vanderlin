@@ -23,46 +23,12 @@
 	var/faretype = FARE_NEUTRAL
 	/// If false, this will inflict mood debuffs on nobles who eat it without being near a table.
 	var/portable = TRUE
-	var/recipe_quality = 1
 
 /obj/item/reagent_containers/food/Initialize(mapload)
 	. = ..()
 	if(!mapload && do_random_pixel_offset)
 		pixel_x = base_pixel_x + rand(-4, 4)
 		pixel_y = base_pixel_y + rand(-4, 4)
-
-/obj/item/reagent_containers/food/proc/set_quality(quality)
-	recipe_quality = clamp(quality, 0, 4)
-	update_appearance(UPDATE_OVERLAYS)
-	if(recipe_quality >= 3) // gold tier and above
-		AddComponent(/datum/component/particle_spewer/sparkle)
-	else
-		var/datum/component/particle_spewer = GetComponent(/datum/component/particle_spewer/sparkle)
-		if(particle_spewer)
-			particle_spewer.RemoveComponent()
-
-/obj/item/reagent_containers/food/update_overlays()
-	. = ..()
-	// Add quality overlay to the food item
-	if(recipe_quality <= 0 || !ismob(loc))
-		return
-	var/list/quality_icons = list(
-		null, // Regular has no overlay
-		// "bronze",
-		"silver",
-		"gold",
-		"diamond",
-	)
-	if(recipe_quality <= length(quality_icons) && quality_icons[recipe_quality])
-		. += mutable_appearance('icons/effects/crop_quality.dmi', quality_icons[recipe_quality])
-
-/obj/item/reagent_containers/food/snacks/dropped(mob/user, silent)
-	. = ..()
-	update_appearance(UPDATE_OVERLAYS)
-
-/obj/item/reagent_containers/food/snacks/equipped(mob/user, slot, initial)
-	. = ..()
-	update_appearance(UPDATE_OVERLAYS)
 
 /obj/item/reagent_containers/food/proc/checkLiked(fraction, mob/M)
 	if(last_check_time + 50 < world.time)

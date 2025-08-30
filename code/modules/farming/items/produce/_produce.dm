@@ -89,6 +89,7 @@
 	foodtype = GRAIN
 	tastes = list("oat" = 1)
 	grind_results = list(/datum/reagent/flour = 10)
+
 /obj/item/reagent_containers/food/snacks/produce/grain/oat/examine(mob/user)
 	var/farminglvl = user.get_skill_level(/datum/skill/labor/farming)
 	. += ..()
