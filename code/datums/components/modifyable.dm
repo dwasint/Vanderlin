@@ -112,7 +112,7 @@
 		return
 
 	for(var/datum/rune_effect/effect in combat_gem_effects)
-		effect.apply_combat_effect(target, user, damage_dealt)
+		effect.apply_combat_effect(target, user, 0)
 
 /datum/component/modifications/proc/can_socket_gem(obj/item/gem/G)
 	if(!G || !istype(G, /obj/item/gem))
