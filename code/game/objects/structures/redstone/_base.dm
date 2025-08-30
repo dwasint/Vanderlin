@@ -22,7 +22,7 @@
 	. = ..()
 	if(can_connect_wires)
 		update_wire_connections()
-	update_overlays()
+	update_appearance()
 
 /obj/structure/redstone/Destroy()
 	. = ..()
@@ -31,7 +31,7 @@
 		component.connected_components -= src
 		component.clear_power_source(src) // Remove us as a power source
 		component.update_wire_connections()
-		component.update_overlays()
+		component.update_appearance()
 
 /obj/structure/redstone/proc/update_wire_connections()
 	if(!can_connect_wires)
@@ -59,6 +59,7 @@
 				if(component.can_connect_to(src, reverse_dir))
 					component.wire_connections["[reverse_dir]"] = 1
 					component.connected_components |= src
+					component.update_appearance()
 
 /obj/structure/redstone/proc/can_connect_to(obj/structure/redstone/other, dir)
 	return TRUE // Override in subclasses for specific connection rules
@@ -88,7 +89,7 @@
 	if(max_power != power_level)
 		power_level = max_power
 		powered = (power_level > 0)
-		update_overlays()
+		update_appearance()
 
 		// Propagate power to connected components (but not back to sources)
 		propagate_power(user, source)
@@ -188,8 +189,6 @@
 
 /obj/structure/redstone/update_overlays()
 	. = ..()
-	cut_overlays()
-
 	if(!can_connect_wires)
 		return
 
@@ -201,8 +200,17 @@
 
 	if(wire_pattern)
 		var/mutable_appearance/wire_overlay = mutable_appearance(icon, "wire_[wire_pattern]")
+		wire_overlay.layer = layer - 0.01
 		if(powered)
 			wire_overlay.color = "#FF0000" // Red when powered
 		else
 			wire_overlay.color = "#8B4513" // Brown when unpowered
-		overlays += wire_overlay
+		. += wire_overlay
+	else
+		var/mutable_appearance/wire_overlay = mutable_appearance(icon, "wire")
+		wire_overlay.layer = layer - 0.01
+		if(powered)
+			wire_overlay.color = "#FF0000" // Red when powered
+		else
+			wire_overlay.color = "#8B4513" // Brown when unpowered
+		. += wire_overlay
