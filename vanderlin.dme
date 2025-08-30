@@ -813,6 +813,7 @@
 #include "code\datums\components\explodable.dm"
 #include "code\datums\components\food_burner.dm"
 #include "code\datums\components\generic_animal_hunger.dm"
+#include "code\datums\components\happiness.dm"
 #include "code\datums\components\happiness_system.dm"
 #include "code\datums\components\hideous_face.dm"
 #include "code\datums\components\hostage.dm"
