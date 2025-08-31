@@ -1123,6 +1123,7 @@
 #include "code\datums\proximity_monitor\fields\gravity.dm"
 #include "code\datums\quality\_base_quality_manager.dm"
 #include "code\datums\quality\blacksmithing.dm"
+#include "code\datums\quality\brewing.dm"
 #include "code\datums\quality\cooking.dm"
 #include "code\datums\rituals\ritual.dm"
 #include "code\datums\rituals\ritual_runes.dm"
