@@ -73,7 +73,7 @@
 
 /datum/component/happiness_container/proc/on_eat(datum/source, atom/ate, amount, atom/came_from)
 	ate_type(ate.type, came_from)
-	for(var/datum/reagent/reagent  as anything in ate.reagents.reagent_list)
+	for(var/datum/reagent/reagent  as anything in ate.reagents?.reagent_list)
 		if(reagent.type in liked_reagents)
 			adjust_happiness(parent, liked_reagents[reagent.type] * reagent.volume, came_from)
 		if(reagent.type in disliked_reagents)
