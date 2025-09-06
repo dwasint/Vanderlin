@@ -381,6 +381,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_FLOWERFIELD_IMMUNITY		"Flower Strider"
 #define TRAIT_SECRET_OFFICIANT			"Secret Officiant"
 #define TRAIT_NOENERGY 					"Boundless Energy" //Specifically, You don't lose fatigue, but you do continue losing stamina.
+#define TRAIT_KEENEARS					"Keen Ears"
 #define TRAIT_HEAD_BUTCHER				"Head Butcher"
 /// applied to orphans
 #define TRAIT_ORPHAN 					"Orphan"
@@ -549,3 +550,5 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_HARD_TO_STEAL "hard_to_steal"
 /// Trait given by echolocation component.
 #define ECHOLOCATION_TRAIT "echolocation"
+/// trait that makes you bounce when speaking
+#define TRAIT_SHAKY_SPEECH "Shaky Speech"

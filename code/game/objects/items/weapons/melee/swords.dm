@@ -97,6 +97,25 @@
 	wdefense = GOOD_PARRY
 	smeltresult = /obj/item/ingot/iron
 
+/obj/item/weapon/sword/kaskara
+	name = "steel kaskara"
+	desc = "A steel sword of ancient Lakkarian design, predating the standard equipment of pegasus riders."
+	icon = 'icons/roguetown/weapons/lakkari.dmi'
+	icon_state = "kaskara_steel"
+	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/chop)
+	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/chop)
+
+/obj/item/weapon/sword/kaskara/iron
+	name = "iron kaskara"
+	force = DAMAGE_SWORD-1
+	force_wielded = DAMAGE_SWORD_WIELD-1
+	desc = "A sword of ancient Lakkarian design, predating the standard equipment of pegasus riders."
+	icon_state = "kaskara_iron"
+	max_blade_int = 200
+	max_integrity = INTEGRITY_STRONG
+	wdefense = GOOD_PARRY
+	smeltresult = /obj/item/ingot/iron
+
 /obj/item/weapon/sword/short
 	force = DAMAGE_SHORTSWORD
 	name = "short sword"
@@ -112,7 +131,31 @@
 	wbalance = HARD_TO_DODGE
 	sellprice = 15
 
+/obj/item/weapon/sword/ida
+	force = DAMAGE_SHORTSWORD
+	name = "steel ida"
+	desc = "A Lakkarian short sword with a tapered leaf-shaped blade. It's popular amongst the lower class of Ei Osalla."
+	icon = 'icons/roguetown/weapons/lakkari.dmi'
+	icon_state = "ida_steel"
+	possible_item_intents = list(/datum/intent/sword/cut/short, /datum/intent/sword/thrust/short)
+	gripped_intents = null
+	minstr = 5
+	wdefense = GOOD_PARRY
+	wbalance = HARD_TO_DODGE
+	sellprice = 50
 
+/obj/item/weapon/sword/ida/iron
+	force = DAMAGE_SHORTSWORD
+	name = "iron ida"
+	desc = "A Lakkarian short sword with a tapered leaf-shaped blade. It's popular amongst the lower class of Ei Osalla."
+	icon = 'icons/roguetown/weapons/lakkari.dmi'
+	icon_state = "ida_iron"
+	possible_item_intents = list(/datum/intent/sword/cut/short, /datum/intent/sword/thrust/short)
+	minstr = 4
+	wdefense = GOOD_PARRY
+	wbalance = HARD_TO_DODGE
+	sellprice = 20
+	smeltresult = /obj/item/ingot/iron
 
 /*-------\
 | Sabres |	Onehanded, slightly weaker thrust, better for parries. Think rapier but cutting focus.
@@ -129,9 +172,28 @@
 	minstr = 5
 	wdefense = ULTMATE_PARRY
 
+/obj/item/weapon/sword/sabre/hwi
+	name = "steel hwi"
+	desc = "A hefty steel sabre of Lakkarian origin. It's defensive design is great for stopping lethal blows"
+	icon = 'icons/roguetown/weapons/lakkari.dmi'
+	icon_state = "hwi_steel"
+	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/chop)
+	force = DAMAGE_SWORD-1
+	force_wielded = DAMAGE_SWORD_WIELD-1
+	minstr = 7
+	wdefense = GREAT_PARRY
+	swingsound = BLADEWOOSH_LARGE
+
+/obj/item/weapon/sword/sabre/hwi/iron
+	name = "iron hwi"
+	desc = "A hefty iron sabre of Lakkarian origin. It's defensive design is great for stopping lethal blows."
+	icon = 'icons/roguetown/weapons/lakkari.dmi'
+	icon_state = "hwi_iron"
+	smeltresult = /obj/item/ingot/iron
+
 /obj/item/weapon/sword/sabre/dec
 	name = "decorated sabre"
-	desc = "A saber decorated with fashionable gold accents without sacrificing its lethal practicality."
+	desc = "A sabre decorated with fashionable gold accents without sacrificing its lethal practicality."
 	icon_state = "decsaber"
 	sellprice = 140
 
@@ -147,6 +209,10 @@
 	desc = "Glittering moonlight upon blued steel."
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust/short, /datum/intent/sword/chop)
 	max_integrity = 200
+
+/obj/item/weapon/sword/sabre/noc/Initialize(mapload)
+	. = ..()
+	enchant(/datum/enchantment/silver)
 
 //................ Cutlass ............... //
 /obj/item/weapon/sword/sabre/cutlass
@@ -220,6 +286,16 @@
 	wbalance = EASY_TO_DODGE
 	sellprice = 100
 
+/obj/item/weapon/sword/scimitar/ngombe
+	name = "ngombe ngulu"
+	desc = "A heavy executioner's sword originating from Lakkari. It was used by Astratans to behead Psydonites settlers responsible for the Red Dune Massacre."
+	icon = 'icons/roguetown/weapons/lakkari.dmi'
+	icon_state = "ngombe"
+	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/axe/chop)
+	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/axe/chop,)
+	minstr = 8 //this thing is HEAVY
+	swingsound = BLADEWOOSH_HUGE
+
 /obj/item/weapon/sword/scimitar/messer
 	name = "messer"
 	desc = "Straight iron blade, simple cutting edge, no nonsense and a popular northern blade."
@@ -231,6 +307,93 @@
 	sellprice = 20
 	smeltresult = /obj/item/ingot/iron
 
+/obj/item/weapon/sword/scimitar/lakkarikhopesh/iron
+	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/axe/chop)
+	gripped_intents = list(/datum/intent/sword/chop, /datum/intent/sword/thrust)
+	name = "iron khopesh"
+	desc = "An iron sword of Lakkarian origin. It's popular among traveling Noccian scholars."
+	icon = 'icons/roguetown/weapons/lakkari.dmi'
+	icon_state = "khopesh_iron"
+	swingsound = BLADEWOOSH_LARGE
+	wbalance = EASY_TO_DODGE
+	sellprice = 20
+	smeltresult = /obj/item/ingot/iron
+
+/obj/item/weapon/sword/scimitar/lakkarikhopesh
+	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/axe/chop)
+	gripped_intents = list(/datum/intent/sword/chop, /datum/intent/sword/thrust)
+	name = "steel khopesh"
+	desc = "A steel sword of Lakkarian origin. It's popular among traveling Noccian scholars."
+	icon = 'icons/roguetown/weapons/lakkari.dmi'
+	icon_state = "khopesh_steel"
+	swingsound = BLADEWOOSH_LARGE
+	wbalance = EASY_TO_DODGE
+	sellprice = 45
+
+/obj/item/weapon/sword/scimitar/ada/iron
+	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/chop)
+	gripped_intents = list(/datum/intent/sword/chop, /datum/intent/sword/thrust)
+	name = "iron ada"
+	desc = "An iron falchion hailing from the eastern dunes of Lakkari. The usual backup weapon of Lakkarian pegasus knights."
+	icon = 'icons/roguetown/weapons/lakkari.dmi'
+	icon_state = "ada_iron"
+	swingsound = BLADEWOOSH_LARGE
+	wdefense = AVERAGE_PARRY
+	sellprice = 20
+	smeltresult = /obj/item/ingot/iron
+
+/obj/item/weapon/sword/scimitar/ada
+	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/chop)
+	gripped_intents = list(/datum/intent/sword/chop, /datum/intent/sword/thrust)
+	name = "steel ada"
+	desc = "A steel falchion hailing from the eastern dunes of Lakkari. The usual backup weapon of Lakkarian pegasus knights."
+	icon = 'icons/roguetown/weapons/lakkari.dmi'
+	icon_state = "ada_steel"
+	swingsound = BLADEWOOSH_LARGE
+	wdefense = AVERAGE_PARRY
+	sellprice = 45
+
+/obj/item/weapon/sword/scimitar/sengese/iron
+	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/chop)
+	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/chop, /datum/intent/sword/thrust)
+	name = "iron sengese"
+	desc = "A curved sword of Lakkarian origin. Many inexperienced swordsmen struggle to use it well due to its shape, but its a force to be reckoned with in the hands of a master."
+	icon = 'icons/roguetown/weapons/lakkari.dmi'
+	icon_state = "sengese_iron"
+	swingsound = BLADEWOOSH_SMALL
+	wdefense = AVERAGE_PARRY
+	minstr = 7
+	sellprice = 20
+	smeltresult = /obj/item/ingot/iron
+
+/obj/item/weapon/sword/scimitar/sengese
+	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/chop)
+	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/chop, /datum/intent/sword/thrust)
+	name = "steel sengese"
+	desc = "A curved sword of Lakkarian origin. Many inexperienced swordsmen struggle to use it well due to its shape, but its a force to be reckoned with in the hands of a master."
+	icon = 'icons/roguetown/weapons/lakkari.dmi'
+	icon_state = "sengese_steel"
+	swingsound = BLADEWOOSH_SMALL
+	wdefense = AVERAGE_PARRY
+	minstr = 7
+	sellprice = 45
+
+/obj/item/weapon/sword/scimitar/sengese/silver
+	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/chop)
+	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/chop, /datum/intent/sword/thrust)
+	name = "silver sengese"
+	desc = "A curved sword of Lakkarian origin. Many inexperienced swordsmen struggle to use it well due to its shape, but its a force to be reckoned with in the hands of a master."
+	icon = 'icons/roguetown/weapons/lakkari.dmi'
+	icon_state = "sengese_silver"
+	swingsound = BLADEWOOSH_SMALL
+	wdefense = AVERAGE_PARRY
+	minstr = 7
+	sellprice = 30
+	smeltresult = /obj/item/ingot/silver
+
+/obj/item/weapon/sword/scimitar/sengese/silver/Initialize(mapload)
+	. = ..()
+	enchant(/datum/enchantment/silver)
 
 /*--------\
 | Rapiers |		Onehanded, slightly weaker cut, more AP thrust, harder to dodge.
@@ -335,6 +498,14 @@
 	desc = "A rapier decorated with gold inlaid on its hilt. A regal weapon fit for nobility."
 	sellprice = 140
 
+/obj/item/weapon/sword/rapier/nimcha
+	name = "nimcha"
+	icon = 'icons/roguetown/weapons/64.dmi'
+	icon_state = "nimcha"
+	desc = "A swift sword of Lakkarian origin. It's popular with the noblewomen of Ei Osalla."
+	wbalance = HARD_TO_DODGE
+	sellprice = 140 // its made with gold and steel, thats pretty valuable
+
 //................ Lord's Rapier ............... //
 /obj/item/weapon/sword/rapier/dec/lord
 	force = DAMAGE_SWORD_WIELD
@@ -419,6 +590,99 @@
 	slot_flags = ITEM_SLOT_BACK|ITEM_SLOT_HIP
 	dropshrink = 0.75
 	sellprice = 60
+
+/obj/item/weapon/sword/long/shotel
+	name = "steel shotel"
+	icon_state = "shotel_steel"
+	icon = 'icons/roguetown/weapons/64.dmi'
+	desc = "a long curved blade of Lakkarian Design. Shotels are the weapon of choice for pegasus knights."
+	possible_item_intents = list(/datum/intent/sword/cut/long/, /datum/intent/sword/chop/long/)
+	gripped_intents = list(/datum/intent/sword/cut/long/, /datum/intent/sword/chop/long/shotel)
+	swingsound = BLADEWOOSH_LARGE
+	parrysound = "largeblade"
+	pickup_sound = "brandish_blade"
+	bigboy = TRUE
+	wlength = WLENGTH_LONG
+	gripsprite = FALSE // OAUGHHHH!!! OAUGUUGHh!!!!1 aaaaAAAAAHH!!!
+	pixel_y = -16
+	pixel_x = -16
+	inhand_x_dimension = 64
+	inhand_y_dimension = 64
+	slot_flags = ITEM_SLOT_BACK|ITEM_SLOT_HIP
+	dropshrink = 0.8
+	sellprice = 80
+	max_integrity = 150 //this thing is long as hell, it would be more likely to break over time
+
+/obj/item/weapon/sword/long/shotel/getonmobprop(tag)
+	. = ..()
+	if(tag)
+		switch(tag)
+			if("gen")
+				return list("shrink" = 0.5,"sx" = -14,"sy" = -8,"nx" = 15,"ny" = -7,"wx" = -10,"wy" = -5,"ex" = 7,"ey" = -6,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = -13,"sturn" = 110,"wturn" = -60,"eturn" = -30,"nflip" = 1,"sflip" = 1,"wflip" = 8,"eflip" = 1)
+			if("altgrip")
+				return list("shrink" = 0.5,"sx" = -14,"sy" = -8,"nx" = 15,"ny" = -7,"wx" = -10,"wy" = -5,"ex" = 7,"ey" = -6,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 167,"sturn" = 290,"wturn" = 120,"eturn" = 150,"nflip" = 1,"sflip" = 1,"wflip" = 8,"eflip" = 1)
+			if("onback")
+				return list("shrink" = 0.5,"sx" = -1,"sy" = 2,"nx" = 0,"ny" = 2,"wx" = 2,"wy" = 1,"ex" = 0,"ey" = 1,"nturn" = 0,"sturn" = 0,"wturn" = 70,"eturn" = 15,"nflip" = 1,"sflip" = 1,"wflip" = 1,"eflip" = 1,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
+			if("wielded")
+				return list("shrink" = 0.4,"sx" = 3,"sy" = 4,"nx" = -1,"ny" = 4,"wx" = -8,"wy" = 3,"ex" = 7,"ey" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 15,"nflip" = 8,"sflip" = 0,"wflip" = 8,"eflip" = 0)
+			if("onbelt")
+				return list("shrink" = 0.4,"sx" = -4,"sy" = -6,"nx" = 5,"ny" = -6,"wx" = 0,"wy" = -6,"ex" = -1,"ey" = -6,"nturn" = 100,"sturn" = 156,"wturn" = 90,"eturn" = 180,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
+
+/obj/item/weapon/sword/long/shotel/iron
+	name = "iron shotel"
+	icon_state = "shotel_iron"
+	icon = 'icons/roguetown/weapons/64.dmi'
+	desc = "a long curved blade of Lakkarian Design. Shotels are the weapon of choice for pegasus knights."
+	possible_item_intents = list(/datum/intent/sword/cut/long/, /datum/intent/sword/chop/long/)
+	gripped_intents = list(/datum/intent/sword/cut/long/, /datum/intent/sword/chop/long/shotel)
+	swingsound = BLADEWOOSH_LARGE
+	parrysound = "largeblade"
+	pickup_sound = "brandish_blade"
+	bigboy = TRUE
+	wlength = WLENGTH_LONG
+	gripsprite = FALSE // OAUGHHHH!!! OAUGUUGHh!!!!1 aaaaAAAAAHH!!!
+	pixel_y = -16
+	pixel_x = -16
+	inhand_x_dimension = 64
+	inhand_y_dimension = 64
+	slot_flags = ITEM_SLOT_BACK|ITEM_SLOT_HIP
+	dropshrink = 0.8
+	sellprice = 80
+	max_integrity = 100 //this thing is long as hell, it would be more likely to break over time
+	smeltresult = /obj/item/ingot/iron
+
+/obj/item/weapon/sword/long/shotel/iron/getonmobprop(tag)
+	. = ..()
+	if(tag)
+		switch(tag)
+			if("gen")
+				return list("shrink" = 0.5,"sx" = -14,"sy" = -8,"nx" = 15,"ny" = -7,"wx" = -10,"wy" = -5,"ex" = 7,"ey" = -6,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = -13,"sturn" = 110,"wturn" = -60,"eturn" = -30,"nflip" = 1,"sflip" = 1,"wflip" = 8,"eflip" = 1)
+			if("altgrip")
+				return list("shrink" = 0.5,"sx" = -14,"sy" = -8,"nx" = 15,"ny" = -7,"wx" = -10,"wy" = -5,"ex" = 7,"ey" = -6,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 167,"sturn" = 290,"wturn" = 120,"eturn" = 150,"nflip" = 1,"sflip" = 1,"wflip" = 8,"eflip" = 1)
+			if("onback")
+				return list("shrink" = 0.5,"sx" = -1,"sy" = 2,"nx" = 0,"ny" = 2,"wx" = 2,"wy" = 1,"ex" = 0,"ey" = 1,"nturn" = 0,"sturn" = 0,"wturn" = 70,"eturn" = 15,"nflip" = 1,"sflip" = 1,"wflip" = 1,"eflip" = 1,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
+			if("wielded")
+				return list("shrink" = 0.4,"sx" = 3,"sy" = 4,"nx" = -1,"ny" = 4,"wx" = -8,"wy" = 3,"ex" = 7,"ey" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 15,"nflip" = 8,"sflip" = 0,"wflip" = 8,"eflip" = 0)
+			if("onbelt")
+				return list("shrink" = 0.4,"sx" = -4,"sy" = -6,"nx" = 5,"ny" = -6,"wx" = 0,"wy" = -6,"ex" = -1,"ey" = -6,"nturn" = 100,"sturn" = 156,"wturn" = 90,"eturn" = 180,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
+
+/obj/item/weapon/sword/long/death
+	color = CLOTHING_SOOT_BLACK
+
+/obj/item/weapon/sword/long/getonmobprop(tag)
+	. = ..()
+	if(tag)
+		switch(tag)
+			if("gen")
+				return list("shrink" = 0.5,"sx" = -14,"sy" = -8,"nx" = 15,"ny" = -7,"wx" = -10,"wy" = -5,"ex" = 7,"ey" = -6,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = -13,"sturn" = 110,"wturn" = -60,"eturn" = -30,"nflip" = 1,"sflip" = 1,"wflip" = 8,"eflip" = 1)
+			if("altgrip")
+				return list("shrink" = 0.5,"sx" = -14,"sy" = -8,"nx" = 15,"ny" = -7,"wx" = -10,"wy" = -5,"ex" = 7,"ey" = -6,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 212,"sturn" = 335,"wturn" = 165,"eturn" = 195,"nflip" = 1,"sflip" = 1,"wflip" = 8,"eflip" = 1)
+			if("onback")
+				return list("shrink" = 0.5,"sx" = -1,"sy" = 2,"nx" = 0,"ny" = 2,"wx" = 2,"wy" = 1,"ex" = 0,"ey" = 1,"nturn" = 0,"sturn" = 0,"wturn" = 70,"eturn" = 15,"nflip" = 1,"sflip" = 1,"wflip" = 1,"eflip" = 1,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
+			if("wielded")
+				return list("shrink" = 0.6,"sx" = 6,"sy" = -2,"nx" = -4,"ny" = 2,"wx" = -8,"wy" = -1,"ex" = 8,"ey" = 3,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 15,"sturn" = -200,"wturn" = -160,"eturn" = -25,"nflip" = 8,"sflip" = 8,"wflip" = 0,"eflip" = 0)
+			if("onbelt")
+				return list("shrink" = 0.6,"sx" = -4,"sy" = -6,"nx" = 5,"ny" = -6,"wx" = 0,"wy" = -6,"ex" = -1,"ey" = -6,"nturn" = 100,"sturn" = 156,"wturn" = 90,"eturn" = 180,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 /obj/item/weapon/sword/long/death
 	color = CLOTHING_SOOT_BLACK

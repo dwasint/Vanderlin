@@ -278,6 +278,9 @@
 /proc/get_rand_frequency()
 	return rand(43100, 45100) //Frequency stuff only works with 45kbps oggs.
 
+/proc/get_rand_frequency_higher_range()
+	return rand(40000, 48100)
+
 /proc/get_sfx(soundin)
 	if(islist(soundin))
 		soundin = pick(soundin)
@@ -398,4 +401,18 @@
 							'sound/foley/footsteps/armor/powerarmor (2).ogg',\
 							'sound/foley/footsteps/armor/powerarmor (3).ogg',\
 							)
+			if(SFX_CAT_MEOW)
+				soundin = pickweight(list(
+					'sound/vo/cat/cat_meow1.ogg' = 33,
+					'sound/vo/cat/cat_meow2.ogg' = 33,
+					'sound/vo/cat/cat_meow3.ogg' = 33,
+					'sound/vo/cat/oranges_meow1.ogg' = 1,
+				))
+			if(SFX_CAT_PURR)
+				soundin = pick(
+					'sound/vo/cat/cat_purr1.ogg',
+					'sound/vo/cat/cat_purr2.ogg',
+					'sound/vo/cat/cat_purr3.ogg',
+					'sound/vo/cat/cat_purr4.ogg',
+				)
 	return soundin
