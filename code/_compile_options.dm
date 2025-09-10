@@ -79,6 +79,7 @@
 
 #ifdef UNIT_TESTS
 #define DEPLOY_TEST
+#define NO_DUNGEON
 #endif
 
 //#define FORCE_RANDOM_WORLD_GEN
