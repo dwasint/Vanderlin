@@ -16,9 +16,11 @@
 /// More detailed information about each item (mainly, how much of each should exist) is set on a per item basis
 /datum/unit_test/required_map_items/proc/setup_expected_types()
 	expected_types += typesof(/obj/structure/stockpile_storage)
+	expected_types += /obj/structure/fake_machine/titan
+	expected_types += /obj/structure/throne
 
 /datum/unit_test/required_map_items/Run()
-	if(SSmapping.config.map_name == "Kalypso")
+	if((SSmapping.config.map_name == "Kalypso") || SSmapping.config.map_name == "Roguetest")
 		return
 	setup_expected_types()
 

@@ -12,6 +12,10 @@
 	uses_lord_coloring = LORD_PRIMARY | LORD_SECONDARY
 	var/throat_mode = "None"
 
+/obj/structure/throne/Initialize()
+	. = ..()
+	REGISTER_REQUIRED_MAP_ITEM(1, INFINITY)
+
 /obj/structure/throne/post_buckle_mob(mob/living/M)
 	..()
 	density = TRUE
