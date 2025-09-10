@@ -12,7 +12,7 @@
 	uses_lord_coloring = LORD_PRIMARY | LORD_SECONDARY
 	var/throat_mode = "None"
 
-/obj/structure/throne/Initialize()
+/obj/structure/throne/Initialize(mapload)
 	. = ..()
 	REGISTER_REQUIRED_MAP_ITEM(1, INFINITY)
 
