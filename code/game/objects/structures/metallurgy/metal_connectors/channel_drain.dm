@@ -23,6 +23,7 @@
 
 /obj/structure/channel_connector/drain/Destroy()
 	STOP_PROCESSING(SSobj, src)
+	target_mould = null
 	return ..()
 
 /obj/structure/channel_connector/drain/examine(mob/user)

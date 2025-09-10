@@ -35,6 +35,10 @@
 
 /obj/structure/channel_connector/furnace/Destroy()
 	STOP_PROCESSING(SSobj, src)
+	qdel(internal_reagents)
+	for(var/obj/item/item in melting_pot)
+		item.forceMove(get_turf(src))
+		melting_pot -= item
 	return ..()
 
 /obj/structure/channel_connector/furnace/update_icon_state()

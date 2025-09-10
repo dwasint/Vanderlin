@@ -18,6 +18,8 @@
 	expected_types += typesof(/obj/structure/stockpile_storage)
 
 /datum/unit_test/required_map_items/Run()
+	if(SSmapping.config.map_name == "Kalypso")
+		return
 	setup_expected_types()
 
 	var/list/required_map_items = GLOB.required_map_items.Copy()

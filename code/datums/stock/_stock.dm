@@ -283,7 +283,7 @@ GLOBAL_LIST_EMPTY(cache_timestamps) // Timestamps for each cache entry
 
 	// Check for blocking structures on the turf
 	for(var/obj/structure/S in T)
-		if(istype(S, /obj/structure/door) || istype(S, /obj/structure/window))
+		if(istype(S, /obj/structure/door) || istype(S, /obj/structure/window) || istype(S, /obj/structure/bars))
 			return TRUE
 
 	return FALSE

@@ -5182,6 +5182,14 @@
 /obj/effect/spawner/map_spawner/loot/common,
 /turf/open/floor/blocks,
 /area/rogue/under/dungeon)
+"ddd" = (
+/obj/structure/door/viewport{
+	dir = 4;
+	name = "Metals"
+	},
+/obj/effect/mapping_helpers/access/keyset/manor/vault,
+/turf/open/floor/cobble,
+/area/rogue/under/town/basement)
 "ddf" = (
 /obj/structure/fluff/buysign{
 	name = "Vanderlin Train Station";
@@ -15272,6 +15280,14 @@
 	},
 /turf/open/floor/woodturned,
 /area/rogue/indoors/town/tavern)
+"iZc" = (
+/obj/structure/door/viewport{
+	dir = 8;
+	name = "Stockpiles"
+	},
+/obj/effect/mapping_helpers/access/keyset/manor/vault,
+/turf/open/floor/tile,
+/area/rogue/indoors/town/vault)
 "iZq" = (
 /obj/machinery/light/fueled/firebowl/standing/blue,
 /turf/open/floor/blocks/stonered/tiny,
@@ -24793,6 +24809,14 @@
 	redstone_id = "ClockPathPassage"
 	},
 /turf/closed/wall/mineral/stone/moss,
+/area/rogue/under/town/basement)
+"pdw" = (
+/obj/structure/door/viewport{
+	dir = 8;
+	name = "Food and Materials"
+	},
+/obj/effect/mapping_helpers/access/keyset/manor/vault,
+/turf/open/floor/cobble,
 /area/rogue/under/town/basement)
 "pdC" = (
 /turf/closed/wall/mineral/decorstone,
@@ -37764,6 +37788,10 @@
 /obj/item/candle/yellow/lit,
 /turf/open/floor/wood,
 /area/rogue/indoors/town/smithy)
+"xjX" = (
+/obj/structure/stockpile_storage/food,
+/turf/open/floor/cobble,
+/area/rogue/under/town/basement)
 "xkS" = (
 /obj/structure/fluff/railing/border,
 /obj/structure/rack/shelf/biggest,
@@ -37955,6 +37983,10 @@
 	},
 /turf/open/floor/ruinedwood/darker,
 /area/rogue/indoors/town/manor/hand)
+"xrS" = (
+/obj/structure/bars,
+/turf/open/floor/cobble,
+/area/rogue/under/town/basement)
 "xrW" = (
 /turf/closed/mineral,
 /area/rogue/under/cavewet)
@@ -38104,6 +38136,10 @@
 "xxi" = (
 /obj/structure/ladder,
 /turf/open/floor/ruinedwood/darker,
+/area/rogue/under/town/basement)
+"xxB" = (
+/obj/structure/stockpile_storage/metal,
+/turf/open/floor/cobble,
 /area/rogue/under/town/basement)
 "xxW" = (
 /obj/structure/fluff/railing/wood{
@@ -39330,6 +39366,10 @@
 /obj/item/lipstick/black,
 /turf/open/floor/tile/bfloorz,
 /area/rogue/indoors/town/manor/lord_appt)
+"yjE" = (
+/obj/structure/stockpile_storage,
+/turf/open/floor/cobble,
+/area/rogue/under/town/basement)
 "yjO" = (
 /obj/structure/door/violet{
 	name = "Kitchen"
@@ -42230,7 +42270,7 @@ vtv
 vtv
 vtv
 vtv
-vtv
+nyB
 vtv
 vtv
 vtv
@@ -59640,10 +59680,10 @@ fkZ
 vgJ
 vgJ
 vgJ
-vgJ
-vgJ
-vgJ
-vgJ
+tHe
+tHe
+tHe
+tHe
 aLp
 aLp
 aLp
@@ -59842,10 +59882,10 @@ fkZ
 vgJ
 vgJ
 vgJ
-vgJ
-vgJ
-vgJ
-vgJ
+tHe
+xjX
+iRT
+iRT
 aLp
 epm
 jvD
@@ -60044,10 +60084,10 @@ fkZ
 vgJ
 vgJ
 vgJ
-vgJ
-vgJ
-vgJ
-vgJ
+tHe
+iRT
+iRT
+iRT
 aLp
 rjZ
 jvD
@@ -60246,10 +60286,10 @@ fkZ
 vgJ
 vgJ
 vgJ
-vgJ
-vgJ
-vgJ
-vgJ
+tHe
+iRT
+iRT
+yjE
 aLp
 mwG
 cZh
@@ -60446,12 +60486,12 @@ jZh
 jUb
 fkZ
 vgJ
-vgJ
-vgJ
-vgJ
-vgJ
-vgJ
-vgJ
+tHe
+tHe
+tHe
+xrS
+pdw
+xrS
 aLp
 aLp
 aLp
@@ -60648,14 +60688,14 @@ jZh
 jUb
 fkZ
 vgJ
-vgJ
-vgJ
-vgJ
-vgJ
-vgJ
-vgJ
-vgJ
-vgJ
+tHe
+iRT
+iRT
+iRT
+iRT
+iRT
+iRT
+iRT
 tHe
 dFX
 bET
@@ -60850,14 +60890,14 @@ jZh
 jUb
 fkZ
 vgJ
-vgJ
-vgJ
-vgJ
-vgJ
-vgJ
-vgJ
-vgJ
-vgJ
+tHe
+iRT
+iRT
+iRT
+iRT
+iRT
+iRT
+iRT
 tHe
 dFX
 iRT
@@ -61052,13 +61092,13 @@ jZh
 jUb
 fkZ
 vgJ
-vgJ
-vgJ
-vgJ
-vgJ
+tHe
+xrS
+ddd
+xrS
 mcU
 mcU
-mcU
+iZc
 mcU
 mcU
 mcU
@@ -61254,10 +61294,10 @@ jZh
 jUb
 fkZ
 vgJ
-vgJ
-vgJ
-vgJ
-vgJ
+tHe
+iRT
+iRT
+iRT
 mcU
 jAE
 xaU
@@ -61456,10 +61496,10 @@ jZh
 jUb
 fkZ
 vgJ
-vgJ
-vgJ
-vgJ
-vgJ
+tHe
+iRT
+xxB
+iRT
 mcU
 xaU
 vqr
@@ -61658,10 +61698,10 @@ jZh
 jUb
 fkZ
 vgJ
-vgJ
-vgJ
-vgJ
-vgJ
+tHe
+tHe
+tHe
+tHe
 mcU
 mRh
 gye

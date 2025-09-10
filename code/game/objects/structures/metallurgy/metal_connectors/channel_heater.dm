@@ -29,6 +29,7 @@
 
 /obj/structure/channel_connector/heater/Destroy()
 	STOP_PROCESSING(SSobj, src)
+	qdel(internal_reagents)
 	return ..()
 
 /obj/structure/channel_connector/heater/examine(mob/user)
