@@ -76,6 +76,7 @@
 #include "reagent_id_typos.dm"
 #include "reagent_names.dm"
 #include "reagent_recipe_collisions.dm"
+#include "required_map_items.dm"
 #include "resist.dm"
 #include "rogue_inhands.dm"
 #include "roguetown_clothing.dm"

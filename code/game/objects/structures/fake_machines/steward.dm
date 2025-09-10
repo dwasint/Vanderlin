@@ -56,22 +56,43 @@
 		D.raise_demand()
 		addtimer(CALLBACK(src, PROC_REF(do_import), D.type), 10 SECONDS)
 	if(href_list["export"])
-		var/datum/stock/D = locate(href_list["export"]) in SStreasury.stockpile_datums
+		var/datum/stock/stockpile/D = locate(href_list["export"]) in SStreasury.stockpile_datums
 		if(!D)
 			return
-		if(D.held_items < D.importexport_amt)
+		if(D.get_held_count() < D.importexport_amt)
 			say("Insufficient stock.")
 			return
-		var/amt = D.get_export_price()
-		D.held_items -= D.importexport_amt
-		SStreasury.treasury_value += amt
-		SStreasury.log_to_steward("+[amt] exported [D.name]")
-		record_round_statistic(STATS_STOCKPILE_EXPORTS_VALUE, amt)
-		if(amt >= 100)
-			scom_announce("[SSmapping.config.map_name] exports [D.name] for [amt] mammon.")
+
+		// Export multiple items using the new system
+		var/items_exported = 0
+		var/total_value = 0
+
+		for(var/i = 1 to D.importexport_amt)
+			var/obj/item/exported_item = D.withdraw_item()
+			if(!exported_item)
+				break
+			items_exported++
+			// Delete the exported item since it's being "exported" (sent away)
+			qdel(exported_item)
+
+		if(items_exported == 0)
+			say("Could not retrieve items from stockpile for export.")
+			return
+
+		// Calculate total export value based on actual items exported
+		total_value = D.get_export_price() * (items_exported / D.importexport_amt)
+
+		SStreasury.treasury_value += total_value
+		SStreasury.log_to_steward("+[total_value] exported [items_exported] [D.name]")
+		record_round_statistic(STATS_STOCKPILE_EXPORTS_VALUE, total_value)
+
+		if(total_value >= 100)
+			scom_announce("[SSmapping.config.map_name] exports [items_exported] [D.name] for [total_value] mammon.")
 		else
-			say("[SSmapping.config.map_name] exports [D.name] for [amt] mammon.")
+			say("[SSmapping.config.map_name] exports [items_exported] [D.name] for [total_value] mammon.")
+
 		D.lower_demand()
+
 	if(href_list["togglewithdraw"])
 		var/datum/stock/D = locate(href_list["togglewithdraw"]) in SStreasury.stockpile_datums
 		if(!D)
@@ -302,7 +323,7 @@
 				for(var/datum/stock/stockpile/A in SStreasury.stockpile_datums)
 					contents += "<div style='margin-left:20px;'>"
 					contents += "<b>[A.name]:</b>"
-					contents += " AMT: [A.held_items]"
+					contents += " AMT: [A.get_held_count()]"
 					contents += " | PAYOUT: <a href='byond://?src=\ref[src];setbounty=\ref[A]'>[A.payout_price]m</a>"
 					contents += " /  WITHDRAW: <a href='byond://?src=\ref[src];setprice=\ref[A]'>[A.withdraw_price]m</a>"
 					if(A.importexport_amt)
@@ -313,7 +334,7 @@
 					contents += "<div style='margin-left:20px;'>"
 					contents += "[A.name]<BR>"
 					contents += "[A.desc]<BR>"
-					contents += "Stockpiled Amount: [A.held_items]<BR>"
+					contents += "Stockpiled Amount: [A.get_held_count()]<BR>"
 					contents += "Oversupply Amount: <a href='byond://?src=\ref[src];setosamount=\ref[A]'>[A.oversupply_amount]</a><BR>"
 					contents += "Bounty Price: <a href='byond://?src=\ref[src];setbounty=\ref[A]'>[A.payout_price]</a><BR>"
 					contents += "Oversupply Price: <a href='byond://?src=\ref[src];setosbounty=\ref[A]'>[A.oversupply_payout]</a><BR>"
@@ -356,7 +377,7 @@
 			for(var/datum/stock/bounty/A in SStreasury.stockpile_datums)
 				contents += "[A.name]<BR>"
 				contents += "[A.desc]<BR>"
-				contents += "Total Collected: [A.held_items]<BR>"
+				contents += "Total Collected: [A.get_held_count()]<BR>"
 				if(A.percent_bounty)
 					contents += "Bounty Price: <a href='byond://?src=\ref[src];setbounty=\ref[A]'>[A.payout_price]%</a><BR><BR>"
 				else

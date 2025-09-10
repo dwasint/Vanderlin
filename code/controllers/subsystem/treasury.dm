@@ -32,6 +32,7 @@
 SUBSYSTEM_DEF(treasury)
 	name = "treasury"
 	wait = 1
+	init_order = INIT_ORDER_TREASURY
 	priority = FIRE_PRIORITY_WATER_LEVEL
 	var/tax_value = 0.11
 	var/queens_tax = 0.15
