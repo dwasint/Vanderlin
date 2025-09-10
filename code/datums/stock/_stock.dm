@@ -256,7 +256,7 @@ GLOBAL_LIST_EMPTY(cache_timestamps) // Timestamps for each cache entry
 		return FALSE
 
 	// Create a temporary mob to test pathfinding
-	var/mob/temp_mob = new /mob(start)
+	var/obj/temp_mob = new /obj/item(start)
 
 	// Try to step towards the target
 	var/steps_taken = 0

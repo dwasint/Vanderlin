@@ -150,6 +150,8 @@ GLOBAL_LIST_EMPTY(required_map_items)
 		///this object exists purely to create a template spawning it in is nah
 		/obj/effect/landmark/house_spot,
 	)
+	///this does some wonky things that we don't want in a test area
+	ignore += typesof(/obj/structure/stockpile_storage,)
 	//these are VERY situational and need info passed
 	ignore += typesof(/obj/effect/abstract)
 	//needs a lich passed
