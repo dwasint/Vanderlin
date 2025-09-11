@@ -185,7 +185,7 @@
 /turf/proc/return_temperature()
 	var/ambient_temperature = SSParticleWeather.selected_forecast.current_ambient_temperature
 	if(ambient_temperature < 15 && (outdoor_effect?.weatherproof || !outdoor_effect))
-		ambient_temperature += 5
+		ambient_temperature += 10
 	if(!("[z]" in GLOB.cellar_z))
 		if(SSmapping.level_has_any_trait(z, list(ZTRAIT_CELLAR_LIKE)))
 			GLOB.cellar_z |= "[z]"

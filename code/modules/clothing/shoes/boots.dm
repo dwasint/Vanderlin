@@ -100,6 +100,7 @@
 	salvage_result = /obj/item/natural/fur
 	salvage_amount = 1
 	item_weight = 3
+	min_cold_protection_temperature = -20
 
 /obj/item/clothing/shoes/boots/furlinedanklets
 	name = "fur lined anklets"
@@ -112,6 +113,7 @@
 	is_barefoot = TRUE
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/fur
+	min_cold_protection_temperature = -20
 
 /obj/item/clothing/shoes/boots/clothlinedanklets
 	name = "cloth lined anklets"

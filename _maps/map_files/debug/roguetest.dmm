@@ -2209,6 +2209,10 @@
 /obj/machinery/light/fueled/forge,
 /turf/open/floor/cobble,
 /area/rogue/indoors)
+"xA" = (
+/obj/structure/fake_machine/steward,
+/turf/closed/wall/mineral/stone,
+/area/rogue/indoors/town/manor)
 "xB" = (
 /mob/living/simple_animal/hostile/retaliate/banker,
 /turf/open/floor/wood,
@@ -2219,6 +2223,10 @@
 	icon_state = "largetable"
 	},
 /turf/open/floor/tile/kitchen,
+/area/rogue/indoors/town/manor)
+"xF" = (
+/obj/item/key/lord,
+/turf/open/floor/churchbrick,
 /area/rogue/indoors/town/manor)
 "xK" = (
 /obj/machinery/light/fueled/wallfire/candle,
@@ -14198,8 +14206,8 @@ jN
 Xz
 jN
 jf
-jN
-MJ
+xA
+xF
 jN
 at
 qi

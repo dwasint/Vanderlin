@@ -75,7 +75,7 @@
 /mob/living/var/snow_shiver
 
 /datum/particle_weather/snow_storm/weather_act(mob/living/L)
-	L.adjust_bodytemperature(-rand(5,15))
+	L.adjust_bodytemperature(-rand(3,5))
 	L.snow_shiver = world.time + 10 SECONDS
 
 

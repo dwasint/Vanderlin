@@ -58,6 +58,8 @@ SUBSYSTEM_DEF(treasury)
 		stockpile_datums += D
 	for(var/path in subtypesof(/datum/stock/stockpile))
 		var/datum/D = new path
+		if(istype(D, /datum/stock/stockpile/custom))
+			continue
 		stockpile_datums += D
 	for(var/path in subtypesof(/datum/stock/import))
 		var/datum/D = new path
