@@ -11,8 +11,5 @@
 #define BODYTEMP_HEAT_DAMAGE_LIMIT          49
 #define BODYTEMP_COLD_DAMAGE_LIMIT          10
 
-// Cold damage levels
-#define COLD_SLOWDOWN_FACTOR               20
-
 #define AMBIENT_COMFORT_MIN             18      // Below this, you feel cool
 #define AMBIENT_COMFORT_MAX             26      // Above this, you feel warm
