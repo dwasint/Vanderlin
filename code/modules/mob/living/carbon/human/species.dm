@@ -1961,6 +1961,8 @@ GLOBAL_LIST_EMPTY(patreon_races)
 	return
 
 /datum/species/proc/handle_environment(mob/living/carbon/human/H)
+	if(!H.client) //I cannot be assed to balance random npcs freezing
+		return
 	var/turf/T = get_turf(H)
 	var/loc_temp = T ? T.return_temperature() : AMBIENT_COMFORT_MIN + 5 // Default to comfortable
 
@@ -1985,8 +1987,7 @@ GLOBAL_LIST_EMPTY(patreon_races)
 			H.adjust_bodytemperature(natural_adjustment)
 
 	// Apply temperature damage and effects
-	if(H.client) //I cannot be assed to balance random npcs freezing
-		handle_temperature_effects(H)
+	handle_temperature_effects(H)
 
 /datum/species/proc/calculate_thermal_protection(mob/living/carbon/human/H, loc_temp)
 	if(loc_temp < H.bodytemperature)
