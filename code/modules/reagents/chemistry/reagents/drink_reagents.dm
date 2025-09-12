@@ -39,8 +39,7 @@
 	M.dizziness = max(0,M.dizziness-5)
 	M.drowsyness = max(0,M.drowsyness-3)
 	M.AdjustSleeping(-40)
-	//310.15 is the normal bodytemp.
-	M.adjust_bodytemperature(25 * TEMPERATURE_DAMAGE_COEFFICIENT, 0, BODYTEMP_NORMAL)
+	M.adjust_bodytemperature(2, 0, BODYTEMP_NORMAL)
 	..()
 	. = 1
 

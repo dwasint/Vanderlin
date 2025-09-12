@@ -2221,7 +2221,7 @@ GLOBAL_LIST_EMPTY(patreon_races)
 		if(thermal_protection >= 30000 && !no_protection)
 			return
 		if(thermal_protection >= 30000 && !no_protection)
-			H.adjust_bodytemperature(11)
+			H.adjust_bodytemperature(5)
 		else
 			H.adjust_bodytemperature(BODYTEMP_HEATING_MAX + ((H.fire_stacks + H.divine_fire_stacks)* 12))
 			SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "on_fire", /datum/mood_event/on_fire)
