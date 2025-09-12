@@ -17,7 +17,7 @@
 
 	sellprice = 1
 
-	min_cold_protection_temperature = 15
+	min_cold_protection_temperature = 5 //this basically covers you to when it starts doing stuff ie snow or cold nights
 	max_heat_protection_temperature = 25
 
 	var/colorgrenz = FALSE
