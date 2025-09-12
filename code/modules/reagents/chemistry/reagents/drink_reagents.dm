@@ -54,7 +54,7 @@
 	glass_desc = ""
 
 /datum/reagent/consumable/ice/on_mob_life(mob/living/carbon/M)
-	M.adjust_bodytemperature(-5 * TEMPERATURE_DAMAGE_COEFFICIENT, BODYTEMP_NORMAL)
+	M.adjust_bodytemperature(-2 * TEMPERATURE_DAMAGE_COEFFICIENT, BODYTEMP_NORMAL)
 	..()
 
 /datum/reagent/consumable/golden_calendula_tea
