@@ -184,6 +184,8 @@
 
 /turf/proc/return_temperature()
 	var/ambient_temperature = SSParticleWeather.selected_forecast.current_ambient_temperature
+	if(SSParticleWeather.runningWeather)
+		ambient_temperature += SSParticleWeather.runningWeather?.temperature_modification
 	if(ambient_temperature < 15 && (outdoor_effect?.weatherproof || !outdoor_effect))
 		ambient_temperature += 10
 	if(!("[z]" in GLOB.cellar_z))

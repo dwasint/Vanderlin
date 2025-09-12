@@ -1928,7 +1928,7 @@ GLOBAL_LIST_EMPTY(patreon_races)
 				else if(damage_amount >= 20)
 					H.flash_fullscreen("redflash3")
 			if(BP)
-				if(BP.receive_damage(0, damage_amount))
+				if(BP.receive_damage(0, damage_amount, flashes = flashes))
 					H.update_damage_overlays()
 			else
 				H.adjustFireLoss(damage_amount)
@@ -2003,19 +2003,25 @@ GLOBAL_LIST_EMPTY(patreon_races)
 	if(loc_temp < H.bodytemperature) // Environment is colder
 		if(H.bodytemperature < BODYTEMP_NORMAL) // We're cold, insulation helps retain heat
 			environmental_effect = max(thermal_protection * temp_diff / BODYTEMP_COLD_DIVISOR, BODYTEMP_COOLING_MAX)
-			return round((thermal_protection + 1) * natural_adjustment + environmental_effect, 0.1)
+			// Reduce natural warming when exposed (thermal_protection = 1 means fully exposed)
+			var/adjusted_natural = natural_adjustment * (1 - thermal_protection * 0.8) // 80% reduction when fully exposed
+			return round(adjusted_natural + environmental_effect, 0.1)
 		else // We're warm, insulation hinders cooling
 			environmental_effect = max((thermal_protection * temp_diff + BODYTEMP_NORMAL - H.bodytemperature) / BODYTEMP_COLD_DIVISOR, BODYTEMP_COOLING_MAX)
-			return round(natural_adjustment * (1 / (thermal_protection + 1)) + environmental_effect, 0.1)
-
+			// Natural regulation is hindered by exposure
+			var/adjusted_natural = natural_adjustment * (1 - thermal_protection * 0.5) // 50% reduction when fully exposed
+			return round(adjusted_natural + environmental_effect, 0.1)
 	else if(loc_temp > H.bodytemperature) // Environment is hotter
 		if(H.bodytemperature < BODYTEMP_NORMAL) // We're cold, insulation helps but reduces environmental heating
 			environmental_effect = min(thermal_protection * temp_diff / BODYTEMP_HEAT_DIVISOR, BODYTEMP_HEATING_MAX)
-			return round((thermal_protection + 1) * natural_adjustment + environmental_effect, 0.1)
+			// Natural warming is hindered by heat exposure
+			var/adjusted_natural = natural_adjustment * (1 - thermal_protection * 0.3) // 30% reduction when fully exposed
+			return round(adjusted_natural + environmental_effect, 0.1)
 		else // We're warm, insulation hinders heat dissipation
 			environmental_effect = min(thermal_protection * temp_diff / BODYTEMP_HEAT_DIVISOR, BODYTEMP_HEATING_MAX)
-			return round(natural_adjustment * (1 / (thermal_protection + 1)) + environmental_effect, 0.1)
-
+			// Natural regulation is hindered by exposure
+			var/adjusted_natural = natural_adjustment * (1 - thermal_protection * 0.6) // 60% reduction when fully exposed
+			return round(adjusted_natural + environmental_effect, 0.1)
 	return natural_adjustment
 
 /datum/species/proc/handle_temperature_effects(mob/living/carbon/human/H)
