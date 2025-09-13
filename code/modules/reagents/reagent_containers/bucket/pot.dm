@@ -13,6 +13,7 @@
 
 /obj/item/reagent_containers/glass/bucket/pot/Initialize(mapload, vol)
 	. = ..()
+	if(!length(recipe_list))
 		for(var/datum/container_craft/recipe as anything in subtypesof(/datum/container_craft/cooking))
 			if(!is_abstract(recipe))
 				recipe_list += recipe
