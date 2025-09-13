@@ -22,6 +22,9 @@
 	if(r1.isolation_craft != r2.isolation_craft)
 		return FALSE
 
+	if(r1.craft_priority != r2.craft_priority)
+		return FALSE
+
 	// Find the recipe with shorter and longer requirements lists
 	var/datum/container_craft/long_req
 	var/datum/container_craft/short_req
