@@ -2083,54 +2083,101 @@ GLOBAL_LIST_EMPTY(patreon_races)
 
 /datum/species/proc/handle_temperature_effects(mob/living/carbon/human/H)
 	var/debuff_level = 0
-
 	// Heat damage and effects
 	if(H.bodytemperature > BODYTEMP_HEAT_DAMAGE_LIMIT && !HAS_TRAIT(H, TRAIT_RESISTHEAT))
-		SEND_SIGNAL(H, COMSIG_CLEAR_MOOD_EVENT, "cold")
-		SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "hot", /datum/mood_event/hot)
-		H.remove_movespeed_modifier(MOVESPEED_ID_COLD)
+		H.remove_stress(list(/datum/stressevent/cold_mild, /datum/stressevent/cold_moderate, /datum/stressevent/cold_severe))
 
 		var/heat_excess = H.bodytemperature - BODYTEMP_HEAT_DAMAGE_LIMIT
+		apply_heat_stress(H, heat_excess)
+
+		H.remove_movespeed_modifier(MOVESPEED_ID_COLD)
 		var/burn_damage = calculate_heat_damage(H, heat_excess)
 		debuff_level = calculate_heat_debuff_level(heat_excess)
-
 		// Apply damage
 		if(burn_damage > 0)
 			var/final_damage = CLAMP(burn_damage * H.physiology.heat_mod, 0, CONFIG_GET(number/per_tick/max_fire_damage))
 			H.apply_damage(final_damage, BURN, spread_damage = TRUE, flashes = FALSE)
-
 			if(!H.has_smoke_protection())
 				H.apply_damage(final_damage/4, OXY, flashes = FALSE) // Smoke inhalation
-
 			if(H.stat < UNCONSCIOUS && prob(burn_damage * 10 / 4))
 				H.emote("pain")
-
 		// Apply building heat debuffs
 		apply_heat_debuffs(H, debuff_level)
-
 	// Cold damage and effects
 	else if(H.bodytemperature < BODYTEMP_COLD_DAMAGE_LIMIT && !HAS_TRAIT(H, TRAIT_RESISTCOLD))
-		SEND_SIGNAL(H, COMSIG_CLEAR_MOOD_EVENT, "hot")
-		SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "cold", /datum/mood_event/cold)
+		H.remove_stress(list(/datum/stressevent/hot_mild, /datum/stressevent/hot_moderate, /datum/stressevent/hot_severe))
 
 		var/cold_deficit = BODYTEMP_COLD_DAMAGE_LIMIT - H.bodytemperature
+		apply_cold_stress(H, cold_deficit)
+
 		var/cold_damage = calculate_cold_damage(cold_deficit)
 		debuff_level = calculate_cold_debuff_level(cold_deficit)
-
 		// Apply damage
 		if(cold_damage > 0)
 			H.apply_damage(cold_damage * H.physiology.cold_mod, BURN, flashes = FALSE)
-
 		// Apply building cold debuffs
 		apply_cold_debuffs(H, debuff_level, cold_deficit)
-
 	// Clear effects when in safe range
 	else
 		H.clear_alert("temp")
 		H.remove_movespeed_modifier(MOVESPEED_ID_COLD)
-		SEND_SIGNAL(H, COMSIG_CLEAR_MOOD_EVENT, "cold")
-		SEND_SIGNAL(H, COMSIG_CLEAR_MOOD_EVENT, "hot")
+		H.remove_stress(list(/datum/stressevent/cold_mild, /datum/stressevent/cold_moderate, /datum/stressevent/cold_severe,
+							/datum/stressevent/hot_mild, /datum/stressevent/hot_moderate, /datum/stressevent/hot_severe))
 		clear_temperature_debuffs(H)
+
+/datum/species/proc/apply_heat_stress(mob/living/carbon/human/H, heat_excess)
+	if(heat_excess < 0)
+		return
+	switch(heat_excess)
+		if(0 to 5) // Mild heat
+			H.add_stress(/datum/stressevent/hot_mild)
+		if(5 to 15) // Moderate heat
+			H.add_stress(/datum/stressevent/hot_moderate)
+		else // Severe heat
+			H.add_stress(/datum/stressevent/hot_severe)
+
+/datum/species/proc/apply_cold_stress(mob/living/carbon/human/H, cold_deficit)
+	if(cold_deficit < 0)
+		return
+	switch(cold_deficit)
+		if(0 to 5) // Mild cold
+			H.add_stress(/datum/stressevent/cold_mild)
+		if(5 to 15) // Moderate cold
+			H.add_stress(/datum/stressevent/cold_moderate)
+		else // Severe cold
+			H.add_stress(/datum/stressevent/cold_severe)
+
+// Heat stress events
+/datum/stressevent/hot_mild
+	timer = 60 SECONDS
+	stressadd = 1
+	desc = "<span class='warning'>It's getting warm in here.</span>"
+
+/datum/stressevent/hot_moderate
+	timer = 60 SECONDS
+	stressadd = 3
+	desc = "<span class='red'>This heat is becoming unbearable.</span>"
+
+/datum/stressevent/hot_severe
+	timer = 60 SECONDS
+	stressadd = 6
+	desc = "<span class='boldred'>I'm burning up!</span>"
+
+// Cold stress events
+/datum/stressevent/cold_mild
+	timer = 60 SECONDS
+	stressadd = 1
+	desc = "<span class='notice'>It's getting chilly.</span>"
+
+/datum/stressevent/cold_moderate
+	timer = 60 SECONDS
+	stressadd = 3
+	desc = "<span class='blue'>This cold is really getting to me.</span>"
+
+/datum/stressevent/cold_severe
+	timer = 60 SECONDS
+	stressadd = 6
+	desc = "<span class='boldblue'>I'm freezing to death!</span>"
 
 /datum/species/proc/calculate_heat_damage(mob/living/carbon/human/H, heat_excess)
 	var/firemodifier = (H.fire_stacks + H.divine_fire_stacks) / 50

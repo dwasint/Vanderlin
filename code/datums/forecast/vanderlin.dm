@@ -8,6 +8,6 @@
 		"dawn" = list(10, 20),      // Cool morning
 		"day" = list(20, 30),       // Warm day
 		"dusk" = list(15, 25),      // Warm evening
-		"night" = list(5, 15),      // Cool night
+		"night" = list(8, 15),      // Cool night
 	)
 
