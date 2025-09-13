@@ -135,7 +135,7 @@
 
 // Mild Poison Recipes
 /datum/container_craft/cooking/herbal_tea/weak_atropa
-	name = "Dilute Atropa Extract"
+	name = "Diluted Atropa Extract"
 	created_reagent = /datum/reagent/poison/herbal/weak_atropa
 	requirements = list(
 		/obj/item/alch/herb/atropa = 1
