@@ -13,11 +13,13 @@
 
 /obj/item/reagent_containers/glass/bucket/pot/Initialize(mapload, vol)
 	. = ..()
-	if(!length(recipe_list))
-		recipe_list = subtypesof(/datum/container_craft/cooking)
+		for(var/datum/container_craft/recipe as anything in subtypesof(/datum/container_craft/cooking))
+			if(!is_abstract(recipe))
+				recipe_list += recipe
 
 	AddComponent(/datum/component/storage/concrete/grid/food/cooking/pot)
-	AddComponent(/datum/component/container_craft, recipe_list, TRUE)
+	if(length(recipe_list))
+		AddComponent(/datum/component/container_craft, recipe_list, TRUE)
 
 /obj/item/reagent_containers/glass/bucket/pot/copper
 	icon_state = "pote_copper"
