@@ -26,6 +26,8 @@
 		var/datum/container_craft/singleton = GLOB.container_craft_to_singleton[recipe]
 		if(!singleton)
 			continue
+		if(is_abstract(singleton))
+			continue
 
 		if(singleton.craft_priority)
 			viable_recipe_types += recipe
