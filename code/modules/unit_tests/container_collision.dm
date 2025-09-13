@@ -71,22 +71,22 @@
 	else if(short_req.reagent_requirements?.len && !long_req.reagent_requirements?.len)
 		return FALSE
 
-	// Check wildcard requirements - this is more complex
-	if(short_req.wildcard_requirements && long_req.wildcard_requirements)
+	// Check wildcard requirements - this needs to properly handle the wildcard matching
+	if(short_req.wildcard_requirements)
 		for(var/short_wildcard in short_req.wildcard_requirements)
 			var/short_amount = short_req.wildcard_requirements[short_wildcard]
 			var/satisfied_amount = 0
 
-			// Check if this wildcard requirement can be satisfied by long_req's requirements
+			// Check if long_req has exact requirements that could satisfy this wildcard
 			if(long_req.requirements)
 				for(var/long_req_type in long_req.requirements)
 					if(ispath(long_req_type, short_wildcard))
 						satisfied_amount += long_req.requirements[long_req_type]
 
-			// Check if this wildcard requirement can be satisfied by long_req's wildcards
+			// Check if long_req has wildcards that could compete with this wildcard
 			if(long_req.wildcard_requirements)
 				for(var/long_wildcard in long_req.wildcard_requirements)
-					if(ispath(short_wildcard, long_wildcard) || ispath(long_wildcard, short_wildcard))
+					if(wildcards_could_compete(short_wildcard, long_wildcard))
 						satisfied_amount += long_req.wildcard_requirements[long_wildcard]
 
 			if(satisfied_amount < short_amount)
@@ -103,3 +103,26 @@
 	// If we got this far, the shorter recipe's requirements are a subset of the longer recipe's requirements
 	// This means the shorter recipe could trigger when trying to make the longer recipe
 	return TRUE
+
+// Helper proc to determine if two wildcard paths could compete for the same items
+/proc/wildcards_could_compete(wildcard1, wildcard2)
+	// If they're identical, they definitely compete
+	if(wildcard1 == wildcard2)
+		return TRUE
+
+	// If one is a subtype of the other, they could compete
+	if(ispath(wildcard1, wildcard2) || ispath(wildcard2, wildcard1))
+		return TRUE
+
+	// Check if they have any common subtypes by examining the type hierarchy
+	// This is a simplified check - in practice, you might need more sophisticated logic
+	// depending on your specific type hierarchy
+	var/list/subtypes1 = subtypesof(wildcard1)
+	var/list/subtypes2 = subtypesof(wildcard2)
+
+	// Check if any subtypes overlap
+	for(var/type1 in subtypes1)
+		if(type1 in subtypes2)
+			return TRUE
+
+	return FALSE
