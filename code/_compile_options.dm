@@ -79,7 +79,6 @@
 
 #ifdef UNIT_TESTS
 #define DEPLOY_TEST
-#define NO_DUNGEON
 #endif
 
 //#define FORCE_RANDOM_WORLD_GEN
@@ -114,6 +113,8 @@
 #define DO_NOT_DEFER_ASSETS
 //Test at full capacity, the extra cost doesn't matter
 #define TIMER_DEBUG
+///this saves like alot of time
+#define NO_DUNGEON
 #endif
 
 //Update this whenever you need to take advantage of more recent byond features
