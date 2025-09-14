@@ -40,9 +40,11 @@
 	set hidden = 1
 
 	if(client)
+		#ifdef USES_PQ
 		if(get_playerquality(client.ckey) <= -20)
 			to_chat(usr, "<span class='warning'>I can't use custom emotes. (LOW PQ)</span>")
 			return
+		#endif
 	var/message = input(usr, "", "me") as text|null
 	// If they don't type anything just drop the message.
 	set_typing_indicator(FALSE)
@@ -62,9 +64,11 @@
 	set hidden = TRUE
 
 	if(client)
+		#ifdef USES_PQ
 		if(get_playerquality(client.ckey) <= -20)
 			to_chat(usr, "<span class='warning'>I can't use custom emotes. (LOW PQ)</span>")
 			return
+		#endif
 	var/message = input(usr, "", "me") as message|null
 	// If they don't type anything just drop the message.
 	set_typing_indicator(FALSE)

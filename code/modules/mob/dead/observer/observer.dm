@@ -318,8 +318,10 @@ Works together with spawning an observer, noted above.
 				mind.remove_antag_datum(/datum/antagonist/zombie)
 				return ..()
 			var/datum/antagonist/zombie/Z = mind.has_antag_datum(/datum/antagonist/zombie)
+			#ifdef USES_PQ
 			if(Z && get_playerquality(ckey) < 15)
 				can_reenter_corpse = FALSE
+			#endif
 			// if(!Z.revived)
 			// 	if(!(world.time % 5))
 			// 		to_chat(src, "<span class='warning'>I'm preparing to walk again.</span>")

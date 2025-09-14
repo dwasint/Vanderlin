@@ -87,6 +87,8 @@
 
 //#define NO_DUNGEON //comment this to load dungeons.
 
+#define USES_PQ
+
 #ifdef LOWMEMORYMODE
 #define FORCE_MAP "_maps/roguetest.json"
 #endif
