@@ -16,7 +16,7 @@
 
 	var/obj/effect/hotspot/active_hotspot
 
-	nomouseover = TRUE
+	no_over_text = TRUE
 
 	appearance_flags = LONG_GLIDE | TILE_BOUND
 	/// Pollution of this turf

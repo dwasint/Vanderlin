@@ -192,9 +192,10 @@
 #define FIRE_PRIORITY_ATMOS_ADJACENCY 130
 #define FIRE_PRIORITY_CHAT 140
 #define FIRE_PRIORITY_RUNECHAT 150
-#define FIRE_PRIORITY_TIMER	150
-#define FIRE_PRIORITY_DELAYED_VERBS 160
-#define FIRE_PRIORITY_INPUT	170 // This must always always be the max highest priority. Player input must never be lost.
+#define FIRE_PRIORITY_MOUSE_ENTERED 160
+#define FIRE_PRIORITY_TIMER	170
+#define FIRE_PRIORITY_DELAYED_VERBS 180
+#define FIRE_PRIORITY_INPUT	190 // This must always always be the max highest priority. Player input must never be lost.
 
 // SS runlevels
 

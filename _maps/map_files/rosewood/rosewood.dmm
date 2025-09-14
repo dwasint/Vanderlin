@@ -35190,7 +35190,7 @@
 /turf/open/floor/herringbone,
 /area/rogue/indoors/town/clocktower)
 "tmG" = (
-/obj/structure/fluff/railing/fence,
+/obj/structure/fluff/railing/tall/palisade,
 /obj/structure/spider/stickyweb{
 	dir = 8
 	},
