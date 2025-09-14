@@ -29,8 +29,8 @@
 	var/mute_time = 0
 	if(!length(key_emotes) || custom_param)
 		if(intentional)
+			#ifdef USES_PQ
 			if(client)
-				#ifdef USES_PQ
 				if(get_playerquality(client.ckey) <= -10)
 					to_chat(src, "<span class='warning'>Unrecognized emote.</span>")
 					return

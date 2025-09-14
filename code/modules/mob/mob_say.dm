@@ -39,8 +39,8 @@
 	set category = "IC"
 	set hidden = 1
 
+	#ifdef USES_PQ
 	if(client)
-		#ifdef USES_PQ
 		if(get_playerquality(client.ckey) <= -20)
 			to_chat(usr, "<span class='warning'>I can't use custom emotes. (LOW PQ)</span>")
 			return
@@ -63,8 +63,8 @@
 	set category = "IC"
 	set hidden = TRUE
 
+	#ifdef USES_PQ
 	if(client)
-		#ifdef USES_PQ
 		if(get_playerquality(client.ckey) <= -20)
 			to_chat(usr, "<span class='warning'>I can't use custom emotes. (LOW PQ)</span>")
 			return
