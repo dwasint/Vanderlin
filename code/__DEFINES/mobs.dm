@@ -105,6 +105,7 @@
 #define COLD_DAMAGE_LEVEL_2 0.1 //Amount of damage applied when your body temperature passes the 200K point
 #define COLD_DAMAGE_LEVEL_3 0.2 //Amount of damage applied when your body temperature passes the 120K point
 
+
 //Note that gas heat damage is only applied once every FOUR ticks.
 #define HEAT_GAS_DAMAGE_LEVEL_1 1 //Amount of damage applied when the current breath's temperature just passes the 360.15k safety point
 #define HEAT_GAS_DAMAGE_LEVEL_2 1 //Amount of damage applied when the current breath's temperature passes the 400K point
