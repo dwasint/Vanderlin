@@ -1,5 +1,5 @@
-
 /datum/essence_combo/spell
+	abstract_type = /datum/essence_combo/spell
 	var/list/granted_spells = list() // List of spell type paths
 
 /datum/essence_combo/spell/validate_combo()
