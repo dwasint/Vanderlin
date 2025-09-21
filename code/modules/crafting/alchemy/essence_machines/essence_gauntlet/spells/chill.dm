@@ -17,7 +17,7 @@
 	//playsound(get_turf(target), 'sound/magic/whiff.ogg', 50, TRUE)
 
 	var/obj/structure/ice_zone/zone = new(get_turf(target))
-	QDEL_IN(zone, 300 SECONDS)
+	QDEL_IN(zone, 45 MINUTES)
 
 /obj/structure/ice_zone
 	name = "frozen zone"
