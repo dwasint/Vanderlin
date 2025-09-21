@@ -2118,6 +2118,7 @@
 #include "code\modules\crafting\alchemy\essence_machines\essence_gauntlet\essence_gauntlet.dm"
 #include "code\modules\crafting\alchemy\essence_machines\essence_gauntlet\essence_use_component.dm"
 #include "code\modules\crafting\alchemy\essence_machines\essence_gauntlet\spells.dm"
+#include "code\modules\crafting\alchemy\essence_machines\essence_gauntlet\spells\_base.dm"
 #include "code\modules\crafting\alchemy\essence_machines\essence_gauntlet\spells\airwalk.dm"
 #include "code\modules\crafting\alchemy\essence_machines\essence_gauntlet\spells\arcane_mark.dm"
 #include "code\modules\crafting\alchemy\essence_machines\essence_gauntlet\spells\breeze.dm"
