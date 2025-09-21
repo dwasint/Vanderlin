@@ -365,4 +365,4 @@
 
 /datum/config_entry/flag/ruler_required
 	config_entry_value = TRUE
-	default = config_entry_value
+	default = TRUE
