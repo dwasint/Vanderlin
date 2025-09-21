@@ -141,6 +141,10 @@
 		return FALSE
 	if(outdoor_effect.state != SKY_BLOCKED)
 		return TRUE
+
+	for(var/obj/effect/temp_visual/daylight_orb/orb in range(4, src))
+		return TRUE
+
 	return FALSE
 
 /turf/proc/can_traverse_safely(atom/movable/traveler)

@@ -8,20 +8,10 @@
 	required_essences = list(/datum/thaumaturgical_essence/water, /datum/thaumaturgical_essence/earth)
 	granted_spells = list(/datum/action/cooldown/spell/essence/mud_shape, /datum/action/cooldown/spell/essence/fertile_soil)
 
-/datum/essence_combo/spell/forge_heat
-	name = "Forge Heat"
-	required_essences = list(/datum/thaumaturgical_essence/fire, /datum/thaumaturgical_essence/earth)
-	granted_spells = list(/datum/action/cooldown/spell/essence/forge_heat)
-
 /datum/essence_combo/spell/ice_mastery
 	name = "Ice Mastery"
 	required_essences = list(/datum/thaumaturgical_essence/frost, /datum/thaumaturgical_essence/water)
 	granted_spells = list(/datum/action/cooldown/spell/essence/ice_bridge, /datum/action/cooldown/spell/essence/frozen_storage)
-
-/datum/essence_combo/spell/brilliant_flame
-	name = "Brilliant Flame"
-	required_essences = list(/datum/thaumaturgical_essence/light, /datum/thaumaturgical_essence/fire)
-	granted_spells = list(/datum/action/cooldown/spell/essence/brilliant_flame, /datum/action/cooldown/spell/essence/solar_focus)
 
 /datum/essence_combo/spell/healing_spring
 	name = "Healing Spring"
@@ -31,7 +21,7 @@
 /datum/essence_combo/spell/crystal_mastery
 	name = "Crystal Mastery"
 	required_essences = list(/datum/thaumaturgical_essence/earth, /datum/thaumaturgical_essence/crystal)
-	granted_spells = list(/datum/action/cooldown/spell/essence/gem_growth, /datum/action/cooldown/spell/essence/mineral_sense)
+	granted_spells = list(/datum/action/cooldown/spell/essence/gem_growth)
 
 /datum/essence_combo/spell/wind_step
 	name = "Wind Step"
@@ -41,7 +31,7 @@
 /datum/essence_combo/spell/divine_order
 	name = "Divine Order"
 	required_essences = list(/datum/thaumaturgical_essence/order, /datum/thaumaturgical_essence/light)
-	granted_spells = list(/datum/action/cooldown/spell/essence/divine_order, /datum/action/cooldown/spell/essence/sacred_geometry)
+	granted_spells = list(/datum/action/cooldown/spell/essence/divine_order)
 
 /datum/essence_combo/spell/reality_shift
 	name = "Reality Shift"
