@@ -62,7 +62,7 @@ GLOBAL_DATUM_INIT(thaumic_research, /datum/thaumic_research_network, new())
 
 /datum/thaumic_research_network/proc/get_available_research()
 	var/list/available = list()
-	for(var/datum/thaumic_research_node/node_type in subtypesof(/datum/thaumic_research_node))
+	for(var/datum/thaumic_research_node/node_type as anything in subtypesof(/datum/thaumic_research_node))
 		if(is_abstract(node_type))
 			continue
 		if(node_type in unlocked_research)
