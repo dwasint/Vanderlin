@@ -679,8 +679,6 @@
 
 	var/quality_name = "Regular"
 	switch(crop_quality)
-		if(QUALITY_BRONZE)
-			quality_name = "Bronze"
 		if(QUALITY_SILVER)
 			quality_name = "Silver"
 		if(QUALITY_GOLD)
