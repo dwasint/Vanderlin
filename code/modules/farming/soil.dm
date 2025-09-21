@@ -659,14 +659,12 @@
 	quality_points = min(quality_points, max_quality_points)
 
 	// Quality tier thresholds
-	if(quality_points >= max_quality_points * 0.95)
+	if(quality_points >= max_quality_points * 0.9)
 		crop_quality = QUALITY_DIAMOND
-	else if(quality_points >= max_quality_points * 0.85)
-		crop_quality = QUALITY_GOLD
 	else if(quality_points >= max_quality_points * 0.7)
-		crop_quality = QUALITY_SILVER
+		crop_quality = QUALITY_GOLD
 	else if(quality_points >= max_quality_points * 0.5)
-		crop_quality = QUALITY_BRONZE
+		crop_quality = QUALITY_SILVER
 	else
 		crop_quality = QUALITY_REGULAR
 
