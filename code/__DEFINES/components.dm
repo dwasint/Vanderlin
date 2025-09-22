@@ -322,3 +322,6 @@
 #define COMSIG_GRENADE_ARMED "grenade_armed"
 
 #define COMSIG_MOB_HEALTHHUD_UPDATE "update_healthhud"
+
+#define COMSIG_ITEM_ATTACK_EFFECT "item_attack_effect"
+#define COMSIG_ITEM_ATTACK_EFFECT_SELF "item_attack_effect_self"

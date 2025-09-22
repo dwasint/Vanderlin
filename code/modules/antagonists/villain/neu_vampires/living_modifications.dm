@@ -7,6 +7,8 @@
 	var/walk_to_duration = 0
 	var/walk_to_steps_taken = 0
 
+	var/celerity_visual = FALSE
+
 	var/turf/walk_to_last_pos
 	var/list/walk_to_cached_path
 	var/list/frenzy_cached_path = null
