@@ -30,7 +30,7 @@
 		// Apply silence to all mobs currently in range
 		apply_initial_silence()
 		// Start validation timer to check positions periodically - this is really redundant but its useful incases of forceMove
-		validation_timer = addtimer(CALLBACK(src, PROC_REF(validate_silence_field)), 1 SECONDS, TIMER_LOOP)
+		validation_timer = addtimer(CALLBACK(src, PROC_REF(validate_silence_field)), 1 SECONDS, TIMER_LOOP | TIMER_STOPPABLE)
 
 /datum/coven_power/quietus/silence_of_death/deactivate()
 	. = ..()
