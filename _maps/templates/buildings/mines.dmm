@@ -24,7 +24,7 @@
 /area/template_noop)
 "K" = (
 /obj/structure/stairs/stone/d,
-/turf/closed/basic,
+/turf/open/floor/herringbone,
 /area/template_noop)
 "O" = (
 /obj/structure/minecart_rail{
