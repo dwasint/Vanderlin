@@ -129,6 +129,7 @@
 		/datum/building_datum/simple/saw,
 		/datum/building_datum/simple/bomb,
 		/datum/building_datum/simple/spike,
+		/datum/building_datum/simple/spawner,
 	)
 
 /atom/movable/screen/strategy_ui/controller_button/Click(location, control, params)

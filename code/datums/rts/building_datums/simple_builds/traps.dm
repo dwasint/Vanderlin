@@ -33,3 +33,12 @@
 /datum/building_datum/simple/flame
 	name = "Firejet Trap"
 	created_atom = /obj/structure/trap/fire
+
+/datum/building_datum/simple/spawner
+	name = "Rat Spawner"
+	created_atom = /obj/structure/spawner/wait
+
+/datum/building_datum/simple/spawner/after_construction(obj/structure/spawner/wait/spawner)
+	. = ..()
+	spawner.faction |= "overlord"
+	spawner.set_spawner()

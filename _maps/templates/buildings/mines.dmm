@@ -4,17 +4,22 @@
 /area/template_noop)
 "d" = (
 /obj/effect/building_node/mines,
-/turf/closed,
+/obj/effect/workspot,
+/turf/open/floor/cobblerock/alt,
 /area/template_noop)
 "p" = (
 /obj/machinery/light/fueled/wallfire/candle/skull/l,
+/obj/structure/lootable_structure/mining_cache{
+	pixel_y = 2;
+	pixel_x = -7
+	},
 /turf/open/floor/herringbone,
 /area/template_noop)
 "x" = (
 /turf/closed/wall/mineral/underbrick,
 /area/template_noop)
 "z" = (
-/turf/closed/basic,
+/turf/open/floor/dirt,
 /area/template_noop)
 "E" = (
 /obj/structure/minecart_rail{
@@ -25,6 +30,9 @@
 "K" = (
 /obj/structure/stairs/stone/d,
 /turf/open/floor/herringbone,
+/area/template_noop)
+"M" = (
+/turf/open/floor/cobblerock,
 /area/template_noop)
 "O" = (
 /obj/structure/minecart_rail{
@@ -45,6 +53,10 @@
 /area/template_noop)
 "Z" = (
 /obj/structure/lever,
+/obj/structure/lootable_structure/mining_cache{
+	pixel_y = 15;
+	pixel_x = -3
+	},
 /turf/open/floor/herringbone,
 /area/template_noop)
 
@@ -71,7 +83,7 @@ a
 "}
 (4,1,1) = {"
 a
-z
+M
 K
 S
 a

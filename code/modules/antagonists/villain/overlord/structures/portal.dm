@@ -8,7 +8,7 @@ GLOBAL_VAR_INIT(lair_portal, null)
 	pixel_x = -16
 	density = FALSE
 	anchored = TRUE
-	var/datum/antagonist/overlord/linked_overlord
+	var/list/overlords = list()
 	light_system = MOVABLE_LIGHT
 	light_outer_range = 3
 	light_color = "#003300"
@@ -22,14 +22,23 @@ GLOBAL_VAR_INIT(lair_portal, null)
 	GLOB.lair_portal = null
 
 /obj/structure/overlord_portal/attack_hand(mob/user)
-	if(!linked_overlord || !length(linked_overlord.enchanted_doors))
+	if(!length(overlords))
 		to_chat(user, span_warning("The portal flickers weakly - no destinations are available."))
 		return
 
 	var/obj/structure/door/exit_door
 
-	if(user.mind == linked_overlord.owner)
+	var/list/minds = list()
+	var/list/doors = list()
+	for(var/datum/antagonist/overlord/lord in overlords)
+		minds |= lord.owner
+		minds[lord.owner] = lord
+
+		doors |= lord.enchanted_doors
+
+	if(user.mind in minds)
 		var/list/door_options = list()
+		var/datum/antagonist/overlord/linked_overlord = minds[user.mind]
 		for(var/obj/structure/door/door in linked_overlord.enchanted_doors)
 			if(!QDELETED(door))
 				var/area_name = get_area_name(door)
@@ -46,7 +55,7 @@ GLOBAL_VAR_INIT(lair_portal, null)
 		exit_door = door_options[choice]
 	else
 		var/list/valid_doors = list()
-		for(var/obj/structure/door/door in linked_overlord.enchanted_doors)
+		for(var/obj/structure/door/door in doors)
 			if(!QDELETED(door))
 				valid_doors += door
 
@@ -59,14 +68,24 @@ GLOBAL_VAR_INIT(lair_portal, null)
 	to_chat(user, span_notice("You step through the portal and emerge from [exit_door]."))
 	user.forceMove(get_turf(exit_door))
 
-	if(user.mind == linked_overlord.owner)
+	if(user.mind in minds)
 		user.visible_message(span_danger("[user] emerges from the shadows."))
 	else
 		user.visible_message(span_warning("[user] steps out from [exit_door]."))
 
 /obj/structure/overlord_portal/examine(mob/user)
 	. = ..()
-	if(user.mind == linked_overlord?.owner)
+
+	var/list/minds = list()
+	var/list/doors = list()
+	for(var/datum/antagonist/overlord/lord in overlords)
+		minds |= lord.owner
+		minds[lord.owner] = lord
+
+		doors |= lord.enchanted_doors
+
+	if(user.mind in minds)
+		var/datum/antagonist/overlord/linked_overlord = minds[user.mind]
 		. += span_notice("You have [length(linked_overlord.enchanted_doors)] enchanted doors available as exits.")
 	else
 		. += span_notice("You could step through this to leave, though you're not sure where you'd end up.")

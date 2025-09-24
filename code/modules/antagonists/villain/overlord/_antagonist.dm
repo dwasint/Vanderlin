@@ -55,6 +55,8 @@
 /datum/antagonist/overlord/on_gain()
 	lair_area = get_areas(/area/overlord_lair)[1]
 	if(GLOB.lair_portal)
+		var/obj/structure/overlord_portal/portal = GLOB.lair_portal
+		portal.overlords |= src
 		overlord_controller = new(get_turf(GLOB.lair_portal))
 		overlord_controller.linked_overlord = src
 	SSmapping.retainer.overlords |= owner
@@ -174,7 +176,7 @@
 	owner.transfer_to(overlord_mob, TRUE)
 
 	overlord_mob.skeletonize(FALSE)
-	overlord_mob.faction = list(FACTION_UNDEAD)
+	overlord_mob.faction = list(FACTION_UNDEAD, "overlord")
 	if(overlord_mob.charflaw)
 		QDEL_NULL(overlord_mob.charflaw)
 	overlord_mob.mob_biotypes |= MOB_UNDEAD
