@@ -3095,12 +3095,6 @@
 /obj/item/rope/chain,
 /turf/open/floor/ruinedwood/turned/darker,
 /area/rogue/indoors/bandit_lair)
-"rm" = (
-/obj/structure/fluff/railing/border{
-	dir = 9
-	},
-/turf/closed/wall/mineral/underbrick,
-/area/overlord_lair)
 "ro" = (
 /obj/structure/fermentation_keg/random/water,
 /turf/open/floor/ruinedwood/turned/darker,
@@ -4093,12 +4087,6 @@
 /obj/structure/hotspring/border/thirteen,
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
-"xP" = (
-/obj/structure/fluff/railing/border{
-	dir = 5
-	},
-/turf/closed/wall/mineral/underbrick,
-/area/overlord_lair)
 "xU" = (
 /obj/machinery/light/fueled/wallfire/candle/skull/l,
 /obj/structure/fluff/walldeco/psybanner/red{
@@ -5431,7 +5419,7 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/indoors)
 "HK" = (
-/obj/machinery/light/fueled/firebowl/church,
+/obj/structure/fluff/statue/knight/interior,
 /turf/open/floor/herringbone,
 /area/overlord_lair)
 "HL" = (
@@ -5691,10 +5679,6 @@
 "IZ" = (
 /obj/structure/fluff/walldeco/maidendrape,
 /obj/structure/fluff/statue/gargoyle/candles,
-/turf/open/floor/herringbone,
-/area/overlord_lair)
-"Ja" = (
-/obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/herringbone,
 /area/overlord_lair)
 "Jb" = (
@@ -6441,10 +6425,6 @@
 "Ot" = (
 /turf/open/floor/hexstone,
 /area/rogue/indoors)
-"Ou" = (
-/obj/machinery/light/fueled/torchholder/l,
-/turf/open/floor/herringbone,
-/area/overlord_lair)
 "Ox" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/dirt/dust,
@@ -7421,8 +7401,7 @@
 /turf/open/floor/carpet/red,
 /area/rogue/indoors/lich)
 "UI" = (
-/obj/effect/decal/cleanable/dirt/cobweb/cobweb2,
-/obj/machinery/light/fueled/firebowl/church,
+/obj/structure/fluff/statue/knight/interior/r,
 /turf/open/floor/herringbone,
 /area/overlord_lair)
 "UJ" = (
@@ -21376,7 +21355,7 @@ HZ
 (102,1,1) = {"
 JN
 Tw
-xP
+Tw
 Tw
 yu
 IZ
@@ -21512,7 +21491,7 @@ Fs
 at
 at
 at
-Ou
+GV
 at
 at
 yu
@@ -22032,7 +22011,7 @@ Ak
 at
 at
 at
-Ja
+Rt
 at
 at
 yu
@@ -22156,7 +22135,7 @@ HZ
 (108,1,1) = {"
 JN
 Tw
-rm
+Tw
 Tw
 yu
 IZ
