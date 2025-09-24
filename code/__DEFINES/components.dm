@@ -325,3 +325,4 @@
 
 #define COMSIG_ITEM_ATTACK_EFFECT "item_attack_effect"
 #define COMSIG_ITEM_ATTACK_EFFECT_SELF "item_attack_effect_self"
+#define COMSIG_DOOR_OPENED "door_open"

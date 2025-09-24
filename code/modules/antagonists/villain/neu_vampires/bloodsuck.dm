@@ -135,7 +135,7 @@
 
 	visible_message(span_danger("Some dark energy begins to flow from [sire] into [src]..."))
 	visible_message(span_red("[src] rises as a new spawn!"))
-	var/datum/antagonist/vampire/new_antag = new /datum/antagonist/vampire(clan, TRUE)
+	var/datum/antagonist/vampire/new_antag = new /datum/antagonist/vampire(sire.clan, TRUE)
 	mind.add_antag_datum(new_antag)
 	adjust_bloodpool(500)
 	fully_heal()

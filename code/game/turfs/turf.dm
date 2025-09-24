@@ -75,7 +75,7 @@
 	if(smoothing_flags & USES_SMOOTHING)
 		QUEUE_SMOOTH(src)
 
-	for(var/atom/movable/AM in src)
+	for(var/atom/movable/AM as anything in src)
 		Entered(AM)
 
 	var/area/A = loc

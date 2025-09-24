@@ -43,6 +43,10 @@
 	var/preferred_tasks = list() // Tasks this worker gravitates toward
 	var/list/learned_behaviors = list() // Behaviors this worker has learned
 
+	var/list/turf/patrol_points = list()
+	var/patrol_setup_active = FALSE
+	var/list/image/patrol_visual_images = list()
+
 /datum/worker_mind/New(mob/living/new_worker, mob/camera/strategy_controller/new_master)
 	. = ..()
 	idle = new /datum/idle_tendancies/dynamic
