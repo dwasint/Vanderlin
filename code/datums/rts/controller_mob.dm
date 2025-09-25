@@ -15,10 +15,6 @@
 	next_move_modifier = 0
 	var/datum/antagonist/overlord/linked_overlord
 
-	var/list/learned_routes = list() // AI learns efficient paths
-	var/list/worker_relationships = list() // Track worker interactions
-	var/list/recent_events = list() // Event history affects behavior
-
 	var/list/worker_mobs = list()
 	var/list/dead_workers = list()
 
