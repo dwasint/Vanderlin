@@ -129,8 +129,9 @@
 	craftdiff = 1
 
 /datum/anvil_recipe/armor/iron/highcollier_renegade
-	name = "Iron Renegade Collar"
+	name = "Iron Renegade Collar (+Hide)"
 	recipe_name = "a renegade collar"
+	additional_items = list(/obj/item/natural/hide)
 	created_item = /obj/item/clothing/neck/highcollier/iron/renegadecollar
 	craftdiff = 1
 
@@ -227,6 +228,13 @@
 	recipe_name = "a heavy steel bastion helmet"
 	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/helmet/heavy/necked
+	craftdiff = 2
+
+/datum/anvil_recipe/armor/steel/pegasusknighthelm
+	name = "Lakkarian Pegasus Knight Helm (+Cloth)"
+	recipe_name = "a pegasus knight's helmet"
+	additional_items = list(/obj/item/natural/cloth)
+	created_item = /obj/item/clothing/head/helmet/pegasusknight
 	craftdiff = 2
 
 /datum/anvil_recipe/armor/steel/crusader_helm

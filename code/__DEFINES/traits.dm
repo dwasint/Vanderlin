@@ -146,6 +146,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_NOFIRE			"nonflammable"
 #define TRAIT_NOGUNS			"no_guns"
 #define TRAIT_NOHUNGER			"no_hunger"
+#define TRAIT_NOHYGIENE			"no_hygiene"
 #define TRAIT_NOMETABOLISM		"no_metabolism"
 #define TRAIT_TOXIMMUNE			"toxin_immune"
 #define TRAIT_EASYDISMEMBER		"easy_dismember"
@@ -325,7 +326,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define DEVOTION_TRAIT "devotion_trait"
 
 #define TRAIT_WEBWALK 					"Webwalker"
-#define TRAIT_NOSTINK 					"Dead Nose"
+#define TRAIT_DEADNOSE 					"Dead Nose"
+#define TRAIT_STINKY					"Natural Stench"
 #define TRAIT_ZJUMP 					"High Jumping"
 #define TRAIT_JESTERPHOBIA 				"Jesterphobic"
 #define TRAIT_XENOPHOBIC 				"Xenophobic"
@@ -387,6 +389,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_SECRET_OFFICIANT			"Secret Officiant"
 #define TRAIT_NOENERGY 					"Boundless Energy" //Specifically, You don't lose fatigue, but you do continue losing stamina.
 #define TRAIT_KEENEARS					"Keen Ears"
+#define TRAIT_POISON_RESILIENCE			"Poison Resilience"
 /// applied to orphans
 #define TRAIT_ORPHAN 					"Orphan"
 #define TRAIT_RECRUITED					"Recruit" //Trait used to give foreigners their new title
