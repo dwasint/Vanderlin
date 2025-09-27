@@ -1900,6 +1900,8 @@
 #include "code\modules\antagonists\villain\overlord\outfit.dm"
 #include "code\modules\antagonists\villain\overlord\rts_mind.dm"
 #include "code\modules\antagonists\villain\overlord\spells.dm"
+#include "code\modules\antagonists\villain\overlord\stockpile_loot_spawner.dm"
+#include "code\modules\antagonists\villain\overlord\structures\loot_structures.dm"
 #include "code\modules\antagonists\villain\overlord\structures\phylactery.dm"
 #include "code\modules\antagonists\villain\overlord\structures\portal.dm"
 #include "code\modules\antagonists\villain\vampire\_vampire.dm"

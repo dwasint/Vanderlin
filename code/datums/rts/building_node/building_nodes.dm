@@ -40,6 +40,12 @@
 	persistant_nodes = created_nodes
 
 /obj/effect/building_node/proc/after_construction(list/turfs, atom/master)
+	SHOULD_CALL_PARENT(TRUE)
+	for(var/turf/turf in turfs)
+		var/mob/camera/strategy_controller/overlord_controller/controller = master
+		for(var/obj/structure/lootable_structure/stockpile/structure in turf.contents)
+			structure.linked_stockpile = controller.resource_stockpile
+
 	return
 
 /obj/effect/building_node/proc/add_material_request(location, list/resource_amount, multiplier = 1)
