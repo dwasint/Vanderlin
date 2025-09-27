@@ -8,7 +8,7 @@
 	metabolization_rate = 2.5 * REAGENTS_METABOLISM  //0.5u/second
 
 /datum/reagent/eldritch/on_mob_life(mob/living/carbon/drinker)
-	drinker.adjustOrganLoss(ORGAN_SLOT_BRAIN, 3 * REM * seconds_per_tick, 150)
+	drinker.adjustOrganLoss(ORGAN_SLOT_BRAIN, 3 * REM, 150)
 	drinker.adjustToxLoss(2 * REM, FALSE)
 	drinker.adjustFireLoss(2 * REM, FALSE)
 	drinker.adjustOxyLoss(2 * REM, FALSE)
