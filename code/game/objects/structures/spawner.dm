@@ -19,6 +19,14 @@
 /obj/structure/spawner/wait
 	wait = TRUE
 
+/obj/structure/spawner/wait/goblin
+	mob_types = list(/mob/living/carbon/human/species/goblin/npc/cave, /mob/living/carbon/human/species/goblin/npc/sea, /mob/living/carbon/human/species/goblin/npc/moon, /mob/living/carbon/human/species/goblin/npc/hell)
+	max_mobs = 3
+
+/obj/structure/spawner/wait/skeleton
+	mob_types = list(/mob/living/carbon/human/species/skeleton/npc/peasant, /mob/living/carbon/human/species/skeleton/npc/warrior)
+	max_mobs = 3
+
 /obj/structure/spawner/Initialize()
 	. = ..()
 	if(!wait)
