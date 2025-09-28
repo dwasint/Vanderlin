@@ -16,7 +16,14 @@
 	var/datum/work_order/current_task
 	var/turf/movement_target
 
-	var/list/worker_gear
+	var/list/worker_gear = list(
+		WORKER_SLOT_HEAD,
+		WORKER_SLOT_PANTS,
+		WORKER_SLOT_SHIRT,
+		WORKER_SLOT_SHOES,
+		WORKER_SLOT_HANDS,
+	)
+	var/list/gear_overlays = list()
 	var/list/worker_moodlets
 
 	var/datum/idle_tendancies/idle
@@ -59,6 +66,139 @@
 	stats = new /atom/movable/screen/controller_ui/controller_ui(worker, src)
 	START_PROCESSING(SSstrategy_master, src)
 
+/datum/worker_mind/proc/get_slot_layer(slot)
+	switch(slot)
+		if(WORKER_SLOT_HEAD)
+			return HEAD_LAYER
+		if(WORKER_SLOT_PANTS)
+			return PANTS_LAYER
+		if(WORKER_SLOT_SHIRT)
+			return SHIRT_LAYER
+		if(WORKER_SLOT_SHOES)
+			return SHOES_LAYER
+		if(WORKER_SLOT_HANDS)
+			return HANDS_LAYER
+		else
+			return HANDS_LAYER // Default fallback
+
+/datum/worker_mind/proc/add_gear(obj/item/item, slot, datum/worker_gear/gear_type = /datum/worker_gear)
+	if(!slot || !worker_gear.Find(slot))
+		return FALSE
+
+	var/datum/worker_gear/old_gear = worker_gear[slot]
+
+	// Remove existing gear from slot if any
+	if(worker_gear[slot])
+		remove_gear_from_slot(slot)
+
+	// Create worker gear datum
+	var/datum/worker_gear/new_gear = new gear_type(item, slot, src)
+	worker_gear[slot] = new_gear
+	item.forceMove(worker)
+
+	// Signal gear change
+	SEND_SIGNAL(src, COMSIG_WORKER_GEAR_CHANGED, slot, old_gear, new_gear)
+
+	// Create and add overlay
+	update_gear_overlay(slot)
+	return TRUE
+
+/datum/worker_mind/proc/remove_gear_from_slot(slot)
+	if(!worker_gear[slot])
+		return FALSE
+
+	var/datum/worker_gear/old_gear = worker_gear[slot]
+	var/datum/worker_gear/gear = worker_gear[slot]
+	worker_gear[slot] = null
+	gear.item.forceMove(get_turf(worker))
+	qdel(gear)
+
+	// Signal gear removal
+	SEND_SIGNAL(src, COMSIG_WORKER_GEAR_CHANGED, slot, old_gear, null)
+
+	// Remove overlay
+	remove_gear_overlay(slot)
+	return TRUE
+
+/datum/worker_mind/proc/remove_gear(obj/item/item)
+	for(var/slot in worker_gear)
+		var/datum/worker_gear/gear = worker_gear[slot]
+		if(gear && gear.item == item)
+			remove_gear_from_slot(slot)
+			return TRUE
+	return FALSE
+
+/datum/worker_mind/proc/update_gear_overlay(slot)
+	var/datum/worker_gear/gear = worker_gear[slot]
+	if(!gear || !gear.item)
+		return
+
+	// Remove existing overlay for this slot
+	remove_gear_overlay(slot)
+
+	// Create new overlay
+	var/layer = get_slot_layer(slot)
+	var/mutable_appearance/gear_overlay = gear.item.build_worn_icon(
+		age = "Adult",
+		default_layer = layer,
+		default_icon_file = get_icon_file(slot),
+		isinhands = (slot == WORKER_SLOT_HANDS)
+	)
+
+	if(gear_overlay)
+		gear_overlays[slot] = gear_overlay
+		worker.add_overlay(gear_overlay)
+
+/datum/worker_mind/proc/get_icon_file(slot)
+	switch(slot)
+		if(WORKER_SLOT_HEAD)
+			return 'icons/roguetown/clothing/onmob/head.dmi'
+		if(WORKER_SLOT_PANTS)
+			return 'icons/roguetown/clothing/onmob/pants.dmi'
+		if(WORKER_SLOT_SHIRT)
+			return 'icons/roguetown/clothing/onmob/shirts.dmi'
+		if(WORKER_SLOT_SHOES)
+			return 'icons/roguetown/clothing/onmob/feet.dmi'
+		if(WORKER_SLOT_HANDS)
+			var/obj/item/item = get_item_in_slot(WORKER_SLOT_HANDS)
+			return item.righthand_file
+
+/datum/worker_mind/proc/remove_gear_overlay(slot)
+	if(gear_overlays[slot])
+		worker.cut_overlay(gear_overlays[slot])
+		gear_overlays -= slot
+
+/datum/worker_mind/proc/update_all_gear_overlays()
+	// Clear all existing overlays
+	for(var/slot in gear_overlays)
+		worker.cut_overlay(gear_overlays[slot])
+	gear_overlays.Cut()
+
+	// Recreate all overlays
+	for(var/slot in worker_gear)
+		if(worker_gear[slot])
+			update_gear_overlay(slot)
+
+/datum/worker_mind/proc/get_gear_in_slot(slot)
+	return worker_gear[slot]
+
+/datum/worker_mind/proc/get_item_in_slot(slot)
+	var/datum/worker_gear/gear = worker_gear[slot]
+	return gear?.item
+
+/datum/worker_mind/proc/has_gear_in_slot(slot)
+	return worker_gear[slot] != null
+
+/datum/worker_mind/proc/get_total_walkspeed_modifier()
+	var/total_modifier = 0
+	for(var/slot in worker_gear)
+		var/datum/worker_gear/gear = worker_gear[slot]
+		if(gear)
+			total_modifier += gear.get_walkspeed_modifier()
+	return total_modifier
+
+/datum/worker_mind/proc/get_effective_walkspeed()
+	return walkspeed + get_total_walkspeed_modifier()
 
 /datum/worker_mind/proc/head_to_target()
 	if(!movement_target)
@@ -70,14 +210,14 @@
 	if(!length(current_path) && !worker.CanReach(movement_target))
 		enhanced_pathfinding()
 		if(!length(current_path))
-			current_task.stop_work()
+			current_task.stop_work("no path")
 	if(length(current_path) >= 3)
-		walk_to(worker, current_path[3],0,5)
+		walk_to(worker, current_path[3],0, get_effective_walkspeed())
 		current_path -= current_path[3]
 		current_path -= current_path[2]
 		current_path -= current_path[1]
 	else
-		walk_to(worker, current_path[length(current_path)],0,5)
+		walk_to(worker, current_path[length(current_path)],0, get_effective_walkspeed())
 		current_path = list()
 
 /datum/worker_mind/proc/start_task()
@@ -90,6 +230,7 @@
 	update_stat_panel()
 
 /datum/worker_mind/proc/start_idle()
+	SEND_SIGNAL(src, COMSIG_WORKER_IDLE_START, idle)
 	idle.perform_idle(master, worker)
 
 /datum/worker_mind/proc/try_restore_stamina()
@@ -114,50 +255,61 @@
 
 /datum/worker_mind/proc/set_current_task(datum/work_order/order, ...)
 	var/list/arg_list = list(worker) + args
+	var/old_task = current_task
 	current_task = new order(arglist(arg_list))
+	SEND_SIGNAL(src, COMSIG_WORKER_TASK_STARTED, current_task, old_task)
 	update_stat_panel()
 
 /datum/worker_mind/proc/finish_work(success, stamina_cost)
+	var/old_stamina = current_stamina
+	var/finished_task = current_task
 	current_stamina = max(0, current_stamina - stamina_cost)
+
+	SEND_SIGNAL(src, COMSIG_WORKER_TASK_FINISHED, finished_task, success, stamina_cost)
+	SEND_SIGNAL(src, COMSIG_WORKER_STAMINA_CHANGED, old_stamina, current_stamina, "task completion")
+
 	current_task = null
 	movement_target = null
-	paused = FALSE
+	set_paused_state(FALSE, "work finished")
 	walk(worker, 0)
 
 /datum/worker_mind/proc/stop_working()
+	var/stopped_task = current_task
 	current_task = null
 	movement_target = null
-	paused = FALSE
+	set_paused_state(FALSE, "work stopped")
+
+	if(stopped_task)
+		SEND_SIGNAL(src, COMSIG_WORKER_TASK_FAILED, stopped_task, "work stopped")
+
 	walk(worker, 0)
 
 /datum/worker_mind/proc/set_movement_target(atom/target)
+	var/old_target = movement_target
 	walk(worker, 0)
 	movement_target = target
+	SEND_SIGNAL(src, COMSIG_WORKER_MOVEMENT_SET, old_target, target)
 
-/datum/worker_mind/proc/add_gear(obj/item/gear)
-	LAZYADD(worker_gear, gear)
-	gear.forceMove(worker)
-
-/datum/worker_mind/proc/remove_gear(obj/item/gear)
-	LAZYREMOVE(worker_gear, gear)
-	gear.forceMove(get_turf(worker))
+/datum/worker_mind/proc/set_paused_state(new_state, reason = "unknown")
+	if(paused != new_state)
+		var/old_state = paused
+		paused = new_state
+		SEND_SIGNAL(src, COMSIG_WORKER_PAUSED_CHANGED, old_state, new_state, reason)
 
 /datum/worker_mind/proc/add_test_instrument()
 	var/obj/item/instrument/guitar/guitar = new(get_turf(worker))
-	add_gear(guitar)
+	add_gear(guitar, WORKER_SLOT_HANDS, /datum/worker_gear/instrument)
 
 /datum/worker_mind/proc/play_testing_song()
 	if(current_task)
-		current_task.stop_work()
+		current_task.stop_work("debug stop")
 
-	for(var/obj/item/gear in worker_gear)
-		if(!istype(gear, /obj/item/instrument))
-			continue
-
+	var/datum/worker_gear/gear = get_gear_in_slot(WORKER_SLOT_HANDS)
+	if(gear && istype(gear.item, /obj/item/instrument))
 		var/list/turfs = view(6, worker)
 		shuffle_inplace(turfs)
 		for(var/turf/open/open in turfs)
-			set_current_task(/datum/work_order/play_music, open, gear)
+			set_current_task(/datum/work_order/play_music, open, gear.item)
 			break
 
 /datum/worker_mind/proc/update_stat_panel()
@@ -179,11 +331,11 @@
 	if(attack_mode)
 		if(attack_mode.current_target)
 			if(!attack_mode.can_attack_target())
-				walk_to(worker, attack_mode.current_target, 1, worker.controller_mind.walkspeed)
+				walk_to(worker, attack_mode.current_target, 1, get_effective_walkspeed())
 			return
 		else if(attack_mode.find_targets())
 			if(!attack_mode.can_attack_target())
-				walk_to(worker, attack_mode.current_target, 1, worker.controller_mind.walkspeed)
+				walk_to(worker, attack_mode.current_target, 1, get_effective_walkspeed())
 				return
 
 	if(check_paused_state())
@@ -211,17 +363,21 @@
 	paused_task = current_task
 	current_task = null
 	paused_until = world.time + duration
+	set_paused_state(TRUE, "task paused for [duration/10] seconds")
 
 /datum/worker_mind/proc/stop_chase()
 	walk(worker, 0)
 
 /datum/worker_mind/proc/suppress_attack()
+	var/old_target = attack_mode?.current_target
 	attack_mode?.lose_target()
 	stop_chase()
+	SEND_SIGNAL(src, COMSIG_WORKER_ATTACK_END, old_target, "suppressed")
 
 /datum/worker_mind/proc/apply_attack_strategy(datum/worker_attack_strategy/attack_path = /datum/worker_attack_strategy)
 	var/datum/worker_attack_strategy/new_attack = new attack_path(worker)
 	attack_mode = new_attack
+	SEND_SIGNAL(src, COMSIG_WORKER_ATTACK_START, attack_mode.current_target)
 
 /datum/worker_mind/proc/enhanced_pathfinding()
 	if(!movement_target)
