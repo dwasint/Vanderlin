@@ -8,11 +8,13 @@
 	invisibility = 100 /// on_hover still triggers on no alpha objects
 	anchored = TRUE
 	density = FALSE
+	UUID_saving = TRUE
+
 	var/datum/blueprint_recipe/recipe
-	var/mob/creator
+	var/tmp/mob/creator
 	var/construction_progress = 0
 	var/max_construction_progress = 100
-	var/list/viewing_images = list() // Track images by client
+	var/tmp/list/viewing_images = list() // Track images by client
 	var/blueprint_dir = SOUTH // Direction this blueprint will be built in
 
 	var/image/cached_image
@@ -31,6 +33,10 @@
 	SSblueprints.remove_blueprint(src)
 	clear_all_viewers()
 	return ..()
+
+/obj/structure/blueprint/after_load()
+	GLOB.active_blueprints |= src
+	SSblueprints.add_new_blueprint(src)
 
 /obj/structure/blueprint/attackby(obj/item/I, mob/user, params)
 	if(!istype(I, recipe.construct_tool))
