@@ -1172,6 +1172,7 @@
 #include "code\datums\rts\ui\building_menu.dm"
 #include "code\datums\rts\ui\controller_ui.dm"
 #include "code\datums\rts\ui\gear_menu.dm"
+#include "code\datums\rts\ui\inventory_menu.dm"
 #include "code\datums\rts\ui\non_mob_controller.dm"
 #include "code\datums\rts\ui\buttons\mob_buttons.dm"
 #include "code\datums\rts\ui\buttons\non_mob_buttons.dm"
