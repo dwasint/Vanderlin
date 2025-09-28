@@ -1,5 +1,6 @@
 /datum/component/worker_mind_renderer
 	var/datum/worker_mind/mind
+	var/list/turf_path = list()
 	var/obj/abstract/visual_ui_element/scrollable/console_output/output
 	var/last_task_type
 	var/last_stamina
@@ -29,6 +30,8 @@
 	RegisterSignal(mind, COMSIG_WORKER_ATTACK_START, PROC_REF(output_attack_start))
 	RegisterSignal(mind, COMSIG_WORKER_ATTACK_END, PROC_REF(output_attack_end))
 	RegisterSignal(mind.worker, COMSIG_PARENT_QDELETING, PROC_REF(clean))
+	RegisterSignal(mind, COMSIG_AI_PATH_GENERATED, PROC_REF(regenerate_path))
+	RegisterSignal(mind.worker, COMSIG_MOVABLE_MOVED, PROC_REF(check_turf_update))
 
 	// Start monitoring loop
 	START_PROCESSING(SSstrategy_master, src)
@@ -44,13 +47,21 @@
 		COMSIG_WORKER_GEAR_CHANGED,
 		COMSIG_WORKER_IDLE_START,
 		COMSIG_WORKER_ATTACK_START,
-		COMSIG_WORKER_ATTACK_END
+		COMSIG_WORKER_ATTACK_END,
+		COMSIG_AI_PATH_GENERATED,
 	))
-	UnregisterSignal(mind.worker, COMSIG_PARENT_QDELETING)
+	cut_path()
+
+	UnregisterSignal(mind.worker, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_MOVED))
 	STOP_PROCESSING(SSstrategy_master, src)
 	mind = null
 	output = null
 	. = ..()
+
+/datum/component/worker_mind_renderer/proc/cut_path()
+	var/mob/parent_atom = parent
+	parent_atom.client?.images -= turf_path
+	turf_path = list()
 
 /datum/component/worker_mind_renderer/process()
 	if(!mind || !output)
@@ -61,6 +72,33 @@
 	check_stamina_change()
 	check_movement_change()
 	check_pause_change()
+
+/datum/component/worker_mind_renderer/proc/regenerate_path(datum/source, list/draw_list)
+	var/mob/parent_atom = parent
+	cut_path()
+
+	var/list/image/turf_images = list()
+	// Render everything but the first and last
+	for(var/i in 1 to (length(draw_list) - 1))
+		var/turf/problem_child = draw_list[i]
+		var/turf/next = draw_list[i + 1]
+		turf_images += render_turf(problem_child, get_dir(problem_child, next))
+
+	turf_path = turf_images
+	parent_atom.client?.images += turf_path
+
+/datum/component/worker_mind_renderer/proc/render_turf(turf/draw, direction)
+	var/image/arrow = image('icons/turf/debug.dmi', draw, "arrow", 6, direction)
+	arrow.plane = ABOVE_LIGHTING_PLANE
+	return arrow
+
+/datum/component/worker_mind_renderer/proc/check_turf_update(atom/movable/mover, atom/oldloc, direction)
+	var/mob/parent_atom = parent
+	for(var/image/image as anything in turf_path)
+		if(image.loc != oldloc)
+			continue
+		parent_atom.client?.images -= image
+		turf_path -= image
 
 /datum/component/worker_mind_renderer/proc/check_task_change()
 	var/current_task_type = mind.current_task?.type

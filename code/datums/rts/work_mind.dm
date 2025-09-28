@@ -385,3 +385,4 @@
 
 	current_path = get_path_to(worker, get_turf(movement_target),
 		TYPE_PROC_REF(/turf, Heuristic_cardinal_3d), 32 + 1, 250, 1)
+	SEND_SIGNAL(src, COMSIG_AI_PATH_GENERATED, current_path)
