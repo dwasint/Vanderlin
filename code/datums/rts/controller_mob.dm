@@ -8,6 +8,7 @@
 	invisibility = INVISIBILITY_OBSERVER
 	layer = FLY_LAYER
 	plane = GAME_PLANE_UPPER
+	sight = (SEE_TURFS|SEE_MOBS|SEE_OBJS)
 	see_invisible = SEE_INVISIBLE_LIVING
 	uses_intents = FALSE
 	lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
