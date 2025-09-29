@@ -132,11 +132,77 @@
 	var/datum/worker_gear/gear = worker_gear[slot]
 	if(!gear || !gear.item)
 		return
-
 	// Remove existing overlay for this slot
 	remove_gear_overlay(slot)
 
-	// Create new overlay
+	if(slot == WORKER_SLOT_HANDS && gear.item.experimental_inhand)
+		var/used_prop
+		var/list/prop
+
+		if(gear.item.altgripped)
+			used_prop = "altgrip"
+			prop = gear.item.getonmobprop(used_prop)
+
+		if(!prop && HAS_TRAIT(gear.item, TRAIT_WIELDED))
+			used_prop = "wielded"
+			prop = gear.item.getonmobprop(used_prop)
+
+		if(!prop)
+			used_prop = "gen"
+			prop = gear.item.getonmobprop(used_prop)
+
+		if(gear.item.force_reupdate_inhand)
+			if(gear.item.onprop?[used_prop])
+				prop = gear.item.onprop[used_prop]
+			else
+				LAZYSET(gear.item.onprop, used_prop, prop)
+
+		if(!prop)
+			return
+
+		var/flipsprite = TRUE
+
+		var/mutable_appearance/inhand_overlay = mutable_appearance(
+			gear.item.getmoboverlay(used_prop, prop, mirrored=flipsprite),
+			layer=get_slot_layer(slot)
+		)
+		var/mutable_appearance/behindhand_overlay = mutable_appearance(
+			gear.item.getmoboverlay(used_prop, prop, behind=TRUE, mirrored=flipsprite),
+			layer=get_slot_layer(slot) - 1 // Behind layer
+		)
+
+		inhand_overlay = center_image(inhand_overlay, gear.item.inhand_x_dimension, gear.item.inhand_y_dimension)
+		behindhand_overlay = center_image(behindhand_overlay, gear.item.inhand_x_dimension, gear.item.inhand_y_dimension)
+
+		gear_overlays[slot] = list(inhand_overlay, behindhand_overlay)
+		worker.add_overlay(inhand_overlay)
+		worker.add_overlay(behindhand_overlay)
+
+		if(gear.item.blocks_emissive != EMISSIVE_BLOCK_NONE)
+			var/mutable_appearance/emissive_front = emissive_blocker(
+				gear.item.getmoboverlay(used_prop, prop, mirrored=flipsprite),
+				layer=get_slot_layer(slot),
+				appearance_flags = NONE
+			)
+			emissive_front.pixel_y = inhand_overlay.pixel_y
+			emissive_front.pixel_x = inhand_overlay.pixel_x
+
+			var/mutable_appearance/emissive_back = emissive_blocker(
+				gear.item.getmoboverlay(used_prop, prop, behind=TRUE, mirrored=flipsprite),
+				layer=get_slot_layer(slot) - 1,
+				appearance_flags = NONE
+			)
+			emissive_back.pixel_y = behindhand_overlay.pixel_y
+			emissive_back.pixel_x = behindhand_overlay.pixel_x
+
+			worker.add_overlay(emissive_front)
+			worker.add_overlay(emissive_back)
+
+
+			gear_overlays[slot] += list(emissive_front, emissive_back)
+
+		return
+
 	var/layer = get_slot_layer(slot)
 	var/mutable_appearance/gear_overlay = gear.item.build_worn_icon(
 		age = "Adult",
@@ -144,10 +210,10 @@
 		default_icon_file = get_icon_file(slot),
 		isinhands = (slot == WORKER_SLOT_HANDS)
 	)
-
 	if(gear_overlay)
 		gear_overlays[slot] = gear_overlay
 		worker.add_overlay(gear_overlay)
+
 
 /datum/worker_mind/proc/get_icon_file(slot)
 	switch(slot)
@@ -299,6 +365,22 @@
 /datum/worker_mind/proc/add_test_instrument()
 	var/obj/item/instrument/guitar/guitar = new(get_turf(worker))
 	add_gear(guitar, WORKER_SLOT_HANDS, /datum/worker_gear/instrument)
+
+/datum/worker_mind/proc/add_miner_gear()
+	var/obj/item/weapon/pick/pick = new(get_turf(worker))
+	add_gear(pick, WORKER_SLOT_HANDS, /datum/worker_gear/pickaxe)
+
+	var/obj/item/clothing/head/armingcap/head = new(get_turf(worker))
+	add_gear(head, WORKER_SLOT_HEAD, /datum/worker_gear/miner_cap)
+
+	var/obj/item/clothing/armor/gambeson/light/striped/armor = new(get_turf(worker))
+	add_gear(armor, WORKER_SLOT_SHIRT, /datum/worker_gear/miner_chest)
+
+	var/obj/item/clothing/pants/trou/pants = new(get_turf(worker))
+	add_gear(pants, WORKER_SLOT_PANTS, /datum/worker_gear/miner_pants)
+
+	var/obj/item/clothing/shoes/boots/leather/shoes = new(get_turf(worker))
+	add_gear(shoes, WORKER_SLOT_SHOES, /datum/worker_gear/miner_shoes)
 
 /datum/worker_mind/proc/play_testing_song()
 	if(current_task)

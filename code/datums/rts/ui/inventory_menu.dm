@@ -180,33 +180,33 @@
 	stats_text += "<b>Basic Effects:</b><br>"
 	if(gear.work_speed_modifier != 1.0)
 		var/percent = (gear.work_speed_modifier - 1.0) * 100
-		stats_text += "• Work Speed: [percent > 0 ? "+" : ""][percent]%<br>"
+		stats_text += "- Work Speed: [percent > 0 ? "+" : ""][percent]%<br>"
 
 	if(gear.walkspeed_modifier != 0)
-		stats_text += "• Movement Speed: [gear.walkspeed_modifier > 0 ? "+" : ""][gear.walkspeed_modifier]<br>"
+		stats_text += "- Movement Speed: [gear.walkspeed_modifier > 0 ? "+" : ""][gear.walkspeed_modifier]<br>"
 
 	if(gear.stamina_cost_modifier != 1.0)
 		var/percent = (1.0 - gear.stamina_cost_modifier) * 100
-		stats_text += "• Stamina Efficiency: [percent > 0 ? "+" : ""][percent]%<br>"
+		stats_text += "- Stamina Efficiency: [percent > 0 ? "+" : ""][percent]%<br>"
 
 	if(gear.stamina_regen_modifier != 1.0)
 		var/percent = (gear.stamina_regen_modifier - 1.0) * 100
-		stats_text += "• Stamina Regen: [percent > 0 ? "+" : ""][percent]%<br>"
+		stats_text += "- Stamina Regen: [percent > 0 ? "+" : ""][percent]%<br>"
 
 	if(gear.stamina_modifier != 0)
-		stats_text += "• Max Stamina: [gear.stamina_modifier > 0 ? "+" : ""][gear.stamina_modifier]<br>"
+		stats_text += "- Max Stamina: [gear.stamina_modifier > 0 ? "+" : ""][gear.stamina_modifier]<br>"
 
 	if(length(gear.task_bonuses))
 		stats_text += "<br><b>Task Bonuses:</b><br>"
 		for(var/task_type in gear.task_bonuses)
 			var/list/bonuses = gear.task_bonuses[task_type]
 			var/task_name = get_task_display_name(task_type)
-			stats_text += "• <b>[task_name]:</b><br>"
+			stats_text += "-<b>[task_name]:</b><br>"
 
 			for(var/bonus_key in bonuses)
 				var/bonus_value = bonuses[bonus_key]
 				var/bonus_description = get_bonus_description(bonus_key, bonus_value)
-				stats_text += "  └ [bonus_description]<br>"
+				stats_text += "  -[bonus_description]<br>"
 
 	if(gear.item.desc)
 		stats_text += "<br><b>Description:</b><br>"

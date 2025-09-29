@@ -43,9 +43,34 @@
 /datum/worker_gear/proc/get_stamina_modifier()
 	return stamina_modifier
 
+/datum/worker_gear/instrument
+
 /datum/worker_gear/pickaxe
 	task_bonuses = list(
-		/datum/work_order/mine = list(TASK_KEY_SPEED = 1.5, TASK_KEY_REDUCTION = 0.5)
+		/datum/work_order/mine = list(TASK_KEY_SPEED = 1.1, TASK_KEY_REDUCTION = 0.9, TASK_KEY_QUANTITY = 2),
+		/datum/work_order/break_turf = list(TASK_KEY_SPEED = 1.1, TASK_KEY_REDUCTION = 0.9)
 	)
 
-/datum/worker_gear/instrument
+/datum/worker_gear/miner_cap
+	task_bonuses = list(
+		/datum/work_order/mine = list(TASK_KEY_SPEED = 1.1, TASK_KEY_REDUCTION = 0.9),
+		/datum/work_order/break_turf = list(TASK_KEY_SPEED = 1.1, TASK_KEY_REDUCTION = 0.9)
+	)
+
+/datum/worker_gear/miner_shoes
+	task_bonuses = list(
+		/datum/work_order/mine = list(TASK_KEY_SPEED = 1.1, TASK_KEY_REDUCTION = 0.9),
+		/datum/work_order/break_turf = list(TASK_KEY_SPEED = 1.1, TASK_KEY_REDUCTION = 0.9)
+	)
+
+/datum/worker_gear/miner_chest
+	task_bonuses = list(
+		/datum/work_order/mine = list(TASK_KEY_SPEED = 1.1, TASK_KEY_REDUCTION = 0.9),
+		/datum/work_order/break_turf = list(TASK_KEY_SPEED = 1.1, TASK_KEY_REDUCTION = 0.9)
+	)
+
+/datum/worker_gear/miner_pants
+	task_bonuses = list(
+		/datum/work_order/mine = list(TASK_KEY_SPEED = 1.1, TASK_KEY_REDUCTION = 0.9),
+		/datum/work_order/break_turf = list(TASK_KEY_SPEED = 1.1, TASK_KEY_REDUCTION = 0.9)
+	)

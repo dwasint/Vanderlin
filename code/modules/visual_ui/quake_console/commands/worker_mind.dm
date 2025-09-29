@@ -131,7 +131,8 @@
 
 /datum/component/worker_mind_renderer/proc/output_task_finished(datum/source, datum/work_order/task, success, stamina_used)
 	var/result = success ? "SUCCESS" : "FAILED"
-	output.add_line("  -[mind.worker_name]: Finished task '[task.name]' - [result] (Stamina used: [stamina_used])")
+	var/task_time = task.work_time_left / task.get_work_speed_modifier(mind)
+	output.add_line("  -[mind.worker_name]: Finished task '[task.name]' - [result] (Work Time: [task_time * 0.1] Seconds)")
 
 /datum/component/worker_mind_renderer/proc/output_task_failed(datum/source, datum/work_order/task, reason)
 	output.add_line("  -[mind.worker_name]: Task '[task.name]' FAILED - [reason]")

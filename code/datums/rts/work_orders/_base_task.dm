@@ -14,7 +14,7 @@
 /datum/work_order/proc/start_working(mob/living/worker_mob)
 	worker.controller_mind.set_paused_state(TRUE, "starting work")
 	worker.controller_mind.update_stat_panel()
-	work_time_left *= get_work_speed_modifier(worker_mob.controller_mind)
+	work_time_left /= get_work_speed_modifier(worker_mob.controller_mind)
 	var/world_start_time = world.time
 
 	if(visible_message)
@@ -35,7 +35,7 @@
 		if(!mind.has_gear_in_slot(slot))
 			continue
 		var/datum/worker_gear/gear = mind.get_gear_in_slot(slot)
-		modifier *= gear.get_work_speed_modifier()
+		modifier /= gear.get_work_speed_modifier()
 		var/specifics = gear.get_task_bonus(src, TASK_KEY_SPEED)
 		if(specifics)
 			modifier *= specifics
@@ -43,7 +43,7 @@
 
 /datum/work_order/proc/finish_work()
 	SHOULD_CALL_PARENT(TRUE)
-	var/true_stamina_cost = stamina_cost * get_stamina_cost_modifier(worker.controller_mind)
+	var/true_stamina_cost = round(stamina_cost * get_stamina_cost_modifier(worker.controller_mind), 1)
 	worker.controller_mind.finish_work(TRUE, true_stamina_cost)
 	worker.controller_mind.update_stat_panel()
 
@@ -60,6 +60,8 @@
 	return modifier
 
 /datum/work_order/proc/set_movement_target(atom/target)
+	if(!target)
+		stop_work("no target")
 	if(!length(get_path_to(worker, get_turf(target), TYPE_PROC_REF(/turf, Heuristic_cardinal_3d), 32 + 1, 250,1)))
 		stop_work("unreachable target")
 		return
