@@ -16,7 +16,7 @@
 	if(!.)
 		return FALSE
 
-	if(length(GLOB.last_words) < 7)
+	if(length(GLOB.last_words) < 6)
 		return FALSE
 
 	for(var/mob/living/carbon/human/H in GLOB.player_list)
@@ -29,7 +29,7 @@
 	return FALSE
 
 /datum/round_event/dead_whispers/start()
-	if(length(GLOB.last_words) < 7)
+	if(length(GLOB.last_words) < 6)
 		return FALSE
 
 	var/list/valid_targets = list()
@@ -45,7 +45,7 @@
 
 	var/mob/living/carbon/human/chosen_one = pick(valid_targets)
 
-	var/datum/objective/listen_whispers/new_objective = new(owner = chosen_one.mind)
+	var/datum/objective/personal/listen_whispers/new_objective = new(owner = chosen_one.mind)
 	chosen_one.mind.add_personal_objective(new_objective)
 
 	to_chat(chosen_one, span_userdanger("YOU ARE NECRA'S CHOSEN!"))

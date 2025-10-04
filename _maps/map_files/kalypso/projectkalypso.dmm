@@ -389,7 +389,7 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors)
 "bX" = (
-/obj/structure/fluff/railing/woodfence{
+/obj/structure/fluff/railing/tall{
 	dir = 8
 	},
 /turf/open/water/river,
@@ -487,9 +487,7 @@
 "cq" = (
 /obj/effect/decal/cleanable/debris/wood,
 /obj/machinery/light/fueled/wallfire/candle/blue,
-/obj/effect/decal/cleanable/dirt/cobweb{
-	dir = 2
-	},
+/obj/effect/decal/cleanable/dirt/cobweb,
 /turf/open/floor/greenstone,
 /area/rogue/under/cave)
 "cr" = (
@@ -905,7 +903,6 @@
 /turf/open/floor/cobble/alt,
 /area/rogue/under/cave)
 "eI" = (
-/obj/structure/closet/crate/coffin,
 /obj/structure/closet/crate/coffin,
 /obj/structure/rack/shelf/notdense,
 /obj/structure/rack/shelf/notdense,
@@ -1353,8 +1350,7 @@
 /area/rogue/outdoors)
 "gM" = (
 /obj/structure/fluff/railing/stonehedge{
-	pixel_y = 28;
-	dir = 2
+	pixel_y = 28
 	},
 /turf/open/floor/blocks/platform,
 /area/rogue/outdoors)
@@ -1388,7 +1384,6 @@
 /area/rogue/under/cave)
 "gW" = (
 /obj/structure/fluff/railing/stonehedge{
-	pixel_y = 0;
 	dir = 4;
 	pixel_x = 9
 	},
@@ -1439,9 +1434,6 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors)
 "hk" = (
-/obj/structure/stairs/stone{
-	dir = 8
-	},
 /obj/structure/stairs{
 	dir = 8
 	},
@@ -1543,7 +1535,7 @@
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "hI" = (
-/obj/structure/fluff/railing/woodfence{
+/obj/structure/fluff/railing/tall{
 	dir = 8
 	},
 /turf/open/floor/grass,
@@ -1579,8 +1571,6 @@
 /area/rogue/outdoors)
 "hQ" = (
 /obj/structure/stationary_bell{
-	dir = 2;
-	pixel_y = 0;
 	pixel_x = 16
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -1792,7 +1782,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors)
 "iO" = (
-/obj/structure/fluff/railing/woodfence,
+/obj/structure/fluff/railing/tall,
 /turf/open/water/cleanshallow,
 /area/rogue/outdoors)
 "iQ" = (
@@ -1806,8 +1796,7 @@
 	pixel_y = 5
 	},
 /obj/item/kitchen/fork{
-	pixel_x = 11;
-	pixel_y = 0
+	pixel_x = 11
 	},
 /turf/open/floor/grass,
 /area/rogue/outdoors)
@@ -1964,18 +1953,12 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors)
 "jL" = (
-/obj/structure/fluff/railing/woodfence{
+/obj/structure/fluff/railing/tall{
 	dir = 4
 	},
 /obj/structure/wild_plant/nospread/cabbage,
 /turf/open/floor/grass,
 /area/rogue/outdoors)
-"jM" = (
-/obj/structure/chair/bench/church/mid,
-/obj/structure/chair/bench/church/mid,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/ruinedwood/turned/darker,
-/area/rogue/under/cave)
 "jN" = (
 /obj/effect/spawner/map_spawner/treeorbush,
 /turf/open/water/swamp,
@@ -2130,9 +2113,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/outdoors)
 "kv" = (
-/obj/structure/chair/wood{
-	dir = 2
-	},
+/obj/structure/chair/wood,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/blocks/platform,
 /area/rogue/outdoors)
@@ -2236,7 +2217,7 @@
 /turf/open/transparent/openspace,
 /area/rogue/outdoors)
 "lb" = (
-/obj/structure/fluff/railing/woodfence{
+/obj/structure/fluff/railing/tall{
 	dir = 5
 	},
 /turf/open/floor/grass,
@@ -2359,10 +2340,6 @@
 	},
 /turf/open/floor/grass,
 /area/rogue/outdoors)
-"lE" = (
-/turf/open/floor/dirt,
-/turf/open/floor/naturalstone,
-/area/rogue/outdoors)
 "lF" = (
 /obj/structure/flora/ausbushes/reedbush,
 /turf/open/water/marsh,
@@ -2466,7 +2443,7 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors)
 "lW" = (
-/obj/structure/fluff/railing/woodfence,
+/obj/structure/fluff/railing/tall,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "lZ" = (
@@ -2680,7 +2657,6 @@
 /area/rogue/outdoors)
 "nn" = (
 /obj/structure/fluff/railing/stonehedge{
-	pixel_y = 0;
 	dir = 4;
 	pixel_x = 9
 	},
@@ -2751,7 +2727,7 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors)
 "nE" = (
-/obj/item/alch/rosa,
+/obj/item/alch/herb/rosa,
 /turf/open/floor/grass,
 /area/rogue/outdoors)
 "nG" = (
@@ -2791,9 +2767,6 @@
 /turf/open/water/river,
 /area/rogue/outdoors)
 "nN" = (
-/obj/structure/table/church{
-	dir = 4
-	},
 /obj/structure/table/church/m,
 /turf/open/floor/church,
 /area/rogue/under/cave)
@@ -2994,7 +2967,6 @@
 /area/rogue/under/cave)
 "oG" = (
 /obj/structure/flora/grass/maneater/real{
-	icon_state = "maneater";
 	name = "MANEATER"
 	},
 /turf/open/floor/dirt,
@@ -3220,7 +3192,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/outdoors)
 "pM" = (
-/obj/structure/fluff/railing/woodfence{
+/obj/structure/fluff/railing/tall{
 	dir = 4
 	},
 /turf/open/floor/dirt,
@@ -3285,12 +3257,6 @@
 /obj/effect/decal/cleanable/debris/wood,
 /turf/open/floor/cobble,
 /area/rogue/under/cave)
-"qm" = (
-/obj/item/reagent_containers/food/snacks/truffles{
-	pixel_x = -4
-	},
-/turf/open/floor/grass,
-/area/rogue/outdoors)
 "qo" = (
 /obj/structure/flora/grass/thorn_bush,
 /turf/open/water/swamp,
@@ -3634,7 +3600,6 @@
 	pixel_y = 15
 	},
 /obj/item/reagent_containers/glass/cup{
-	pixel_x = 0;
 	pixel_y = 20
 	},
 /obj/item/reagent_containers/glass/cup{
@@ -4091,9 +4056,7 @@
 /turf/closed/wall/mineral/stone/window/moss,
 /area/rogue/outdoors)
 "uG" = (
-/obj/structure/chair/wood{
-	dir = 2
-	},
+/obj/structure/chair/wood,
 /turf/open/floor/blocks/platform,
 /area/rogue/outdoors)
 "uH" = (
@@ -4296,7 +4259,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors)
 "vC" = (
-/obj/structure/fluff/railing/woodfence{
+/obj/structure/fluff/railing/tall{
 	dir = 4
 	},
 /obj/structure/flora/newtree{
@@ -4533,12 +4496,6 @@
 "wM" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/open/floor/grass,
-/area/rogue/under/cave)
-"wN" = (
-/obj/structure/chair/bench/church/mid,
-/obj/structure/chair/bench/church/mid,
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/plank/h,
 /area/rogue/under/cave)
 "wO" = (
 /obj/structure/flora/grass/herb/artemisia,
@@ -4978,7 +4935,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/under/cave)
 "zg" = (
-/obj/structure/fluff/railing/woodfence{
+/obj/structure/fluff/railing/tall{
 	dir = 4
 	},
 /obj/structure/wild_plant/nospread/cabbage,
@@ -5506,7 +5463,7 @@
 /turf/open/water/blood,
 /area/rogue/under/cave)
 "BP" = (
-/obj/structure/fluff/railing/woodfence{
+/obj/structure/fluff/railing/tall{
 	dir = 6
 	},
 /turf/open/water/cleanshallow,
@@ -5631,14 +5588,6 @@
 "CE" = (
 /obj/structure/flora/grass/tundra,
 /turf/open/floor/dirt,
-/area/rogue/outdoors)
-"CG" = (
-/obj/structure/flora/grass/water,
-/obj/item/reagent_containers/food/snacks/truffles{
-	pixel_x = -4;
-	pixel_y = 3
-	},
-/turf/open/water/marsh,
 /area/rogue/outdoors)
 "CJ" = (
 /obj/structure/flora/newtree{
@@ -5824,15 +5773,8 @@
 	},
 /turf/open/floor/dirt,
 /area/rogue/outdoors)
-"DB" = (
-/obj/structure/closet/crate/coffin,
-/obj/structure/closet/crate/coffin,
-/obj/structure/rack/shelf/notdense,
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/twig,
-/area/rogue/under/cave)
 "DC" = (
-/obj/structure/fluff/railing/woodfence{
+/obj/structure/fluff/railing/tall{
 	dir = 1
 	},
 /turf/open/floor/grass,
@@ -5873,7 +5815,7 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors)
 "DM" = (
-/obj/item/alch/salvia{
+/obj/item/alch/herb/salvia{
 	pixel_x = 4;
 	pixel_y = -4
 	},
@@ -6189,11 +6131,6 @@
 /obj/structure/flora/grass/thorn_bush,
 /turf/open/floor/dirt,
 /area/rogue/under/cave)
-"Fz" = (
-/obj/structure/window/stained/silver/alt,
-/obj/structure/fluff/walldeco/vinez/blue,
-/turf/closed/wall/window/stained/alt,
-/area/rogue/outdoors)
 "FA" = (
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors)
@@ -6437,7 +6374,7 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors)
 "GV" = (
-/obj/structure/fluff/railing/woodfence{
+/obj/structure/fluff/railing/tall{
 	dir = 9
 	},
 /turf/open/floor/grass,
@@ -6492,7 +6429,6 @@
 /area/rogue/under/cave)
 "Hj" = (
 /obj/structure/fluff/railing/stonehedge{
-	pixel_y = 0;
 	dir = 4;
 	pixel_x = 9
 	},
@@ -6506,7 +6442,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors)
 "Hl" = (
-/obj/structure/fluff/railing/woodfence{
+/obj/structure/fluff/railing/tall{
 	dir = 8
 	},
 /turf/open/floor/dirt,
@@ -6885,11 +6821,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/dirt/road,
 /area/rogue/under/cave)
-"Jc" = (
-/obj/structure/chair/bench/church/mid,
-/obj/structure/chair/bench/church/mid,
-/turf/open/floor/ruinedwood/turned/darker,
-/area/rogue/under/cave)
 "Jd" = (
 /obj/structure/flora/newbranch/leafless{
 	dir = 1
@@ -7030,7 +6961,6 @@
 /area/rogue/outdoors)
 "JT" = (
 /obj/structure/chair/bench/church/mid,
-/obj/structure/chair/bench/church/mid,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plank/h,
 /area/rogue/under/cave)
@@ -7063,7 +6993,7 @@
 /turf/open/floor/naturalstone,
 /area/rogue/under/cave)
 "JZ" = (
-/obj/structure/fluff/railing/woodfence{
+/obj/structure/fluff/railing/tall{
 	dir = 8
 	},
 /obj/structure/flora/ausbushes/fullgrass,
@@ -7330,12 +7260,6 @@
 /obj/effect/decal/cleanable/debris/stone,
 /turf/open/floor/blocks,
 /area/rogue/under/cave)
-"Lu" = (
-/obj/item/reagent_containers/food/snacks/truffles{
-	pixel_y = -5
-	},
-/turf/open/floor/dirt,
-/area/rogue/outdoors)
 "Lv" = (
 /obj/structure/fluff/walldeco/vinez/red,
 /turf/open/floor/dirt,
@@ -7395,7 +7319,7 @@
 /turf/open/floor/twig,
 /area/rogue/under/cave)
 "LM" = (
-/obj/structure/fluff/railing/woodfence,
+/obj/structure/fluff/railing/tall,
 /obj/structure/flora/newtree{
 	dir = 1;
 	icon_state = "tree2"
@@ -7432,7 +7356,7 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors)
 "LZ" = (
-/obj/structure/fluff/railing/woodfence{
+/obj/structure/fluff/railing/tall{
 	dir = 4
 	},
 /obj/structure/flora/grass/bush_meagre,
@@ -7622,7 +7546,7 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors)
 "MR" = (
-/obj/structure/fluff/railing/woodfence{
+/obj/structure/fluff/railing/tall{
 	dir = 8
 	},
 /turf/open/floor/dirt,
@@ -7958,8 +7882,7 @@
 /area/rogue/outdoors)
 "OM" = (
 /obj/structure/fluff/railing/stonehedge{
-	pixel_y = 28;
-	dir = 2
+	pixel_y = 28
 	},
 /obj/structure/easel,
 /turf/open/floor/blocks/platform,
@@ -8388,7 +8311,7 @@
 /turf/open/floor/ruinedwood,
 /area/rogue/under/cave)
 "QX" = (
-/obj/structure/fluff/railing/woodfence{
+/obj/structure/fluff/railing/tall{
 	dir = 10
 	},
 /turf/open/floor/grass,
@@ -8438,7 +8361,7 @@
 	pixel_y = -18
 	},
 /obj/structure/flora/hotspring_rocks/small/three,
-/obj/item/alch/salvia{
+/obj/item/alch/herb/salvia{
 	pixel_x = 1;
 	pixel_y = -2
 	},
@@ -8480,7 +8403,7 @@
 /turf/open/floor/grass,
 /area/rogue/outdoors)
 "Rw" = (
-/obj/item/alch/salvia{
+/obj/item/alch/herb/salvia{
 	pixel_x = -2;
 	pixel_y = 1
 	},
@@ -8824,7 +8747,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors)
 "Ti" = (
-/obj/structure/fluff/railing/woodfence{
+/obj/structure/fluff/railing/tall{
 	dir = 4
 	},
 /turf/open/floor/grass,
@@ -8948,7 +8871,7 @@
 /turf/open/floor/dirt/road,
 /area/rogue/under/cave)
 "TR" = (
-/obj/structure/fluff/railing/woodfence,
+/obj/structure/fluff/railing/tall,
 /turf/open/floor/dirt,
 /area/rogue/under/cave)
 "TU" = (
@@ -9015,7 +8938,7 @@
 /turf/open/floor/dirt,
 /area/rogue/under/cave)
 "Us" = (
-/obj/structure/fluff/railing/woodfence{
+/obj/structure/fluff/railing/tall{
 	dir = 4
 	},
 /obj/structure/wild_plant/nospread/turnip{
@@ -9585,8 +9508,6 @@
 /area/rogue/outdoors)
 "Xx" = (
 /obj/structure/stairs/stone/d,
-/obj/structure/stairs/stone/church,
-/obj/structure/stairs/stone,
 /turf/open/floor/grass,
 /area/rogue/under/cave)
 "XA" = (
@@ -9647,7 +9568,7 @@
 /turf/open/floor/dirt,
 /area/rogue/outdoors)
 "XR" = (
-/obj/structure/fluff/railing/woodfence{
+/obj/structure/fluff/railing/tall{
 	dir = 4
 	},
 /turf/open/water/cleanshallow,
@@ -9739,7 +9660,7 @@
 /turf/open/water/blood,
 /area/rogue/under/cave)
 "Yr" = (
-/obj/structure/fluff/railing/woodfence{
+/obj/structure/fluff/railing/tall{
 	dir = 4
 	},
 /obj/item/grown/log/tree/stick{
@@ -9993,8 +9914,7 @@
 "ZN" = (
 /obj/structure/table/wood/plain,
 /obj/item/candle/yellow/lit{
-	pixel_x = -4;
-	pixel_y = 0
+	pixel_x = -4
 	},
 /obj/item/candle/yellow/lit{
 	pixel_x = -16;
@@ -90384,7 +90304,7 @@ DF
 DF
 RK
 Gx
-DB
+Jo
 RK
 Ej
 wG
@@ -284835,11 +284755,11 @@ Px
 xr
 pd
 ZS
-CG
+Ff
 lv
 PC
 MC
-qm
+iy
 rc
 iy
 iy
@@ -285090,9 +285010,9 @@ nu
 Gr
 Gr
 IG
-Fz
+IG
 Gr
-Fz
+IG
 nu
 Gr
 Gr
@@ -285498,7 +285418,7 @@ nu
 nu
 nu
 nu
-Fz
+IG
 nu
 nu
 xr
@@ -286302,7 +286222,7 @@ nu
 nu
 nu
 nu
-Fz
+IG
 nu
 nu
 xr
@@ -286690,7 +286610,7 @@ xr
 nu
 nu
 nu
-Fz
+IG
 rW
 nu
 nu
@@ -287092,7 +287012,7 @@ xr
 nu
 nu
 nu
-Fz
+IG
 rW
 rW
 nu
@@ -287647,7 +287567,7 @@ xr
 iy
 iy
 hg
-Lu
+xr
 IN
 PC
 PC
@@ -288298,7 +288218,7 @@ xr
 nu
 nu
 nu
-Fz
+IG
 Ne
 rW
 Gr
@@ -288312,7 +288232,7 @@ nu
 nu
 nu
 dH
-Fz
+IG
 nu
 nu
 xr
@@ -288700,15 +288620,15 @@ xr
 nu
 nu
 nu
-Fz
+IG
 kk
 OX
 Gr
 nu
 Gr
 Gr
-Fz
-Fz
+IG
+IG
 Gr
 bo
 bo
@@ -289103,8 +289023,8 @@ nu
 nu
 nu
 wH
-Fz
-Fz
+IG
+IG
 Gr
 nu
 nu
@@ -302580,7 +302500,7 @@ os
 os
 os
 tw
-lE
+xr
 xr
 xr
 xr
@@ -411590,7 +411510,7 @@ lH
 pv
 JT
 Km
-jM
+cu
 Vc
 RC
 Kc
@@ -411991,8 +411911,8 @@ Ep
 lH
 GL
 kl
-wN
-Jc
+OQ
+mf
 mf
 jP
 HZ
