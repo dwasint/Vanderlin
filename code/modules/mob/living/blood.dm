@@ -226,7 +226,7 @@
 
 /mob/living/proc/get_blood_type()
 	RETURN_TYPE(/datum/blood_type)
-	return GLOB.blood_types[/datum/blood_type/animal]
+	return GLOB.blood_types[animal_type] || GLOB.blood_types[/datum/blood_type/animal]
 
 /mob/living/proc/get_lux_status()
 	var/datum/blood_type/blood = get_blood_type()

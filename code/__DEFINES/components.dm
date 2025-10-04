@@ -128,6 +128,7 @@
 #define COMSIG_MOB_POINTED "mob_pointed"
 
 // /mob/living/carbon signals
+#define COMSIG_CARBON_REAGENT_ADD "carbon_reagent_add"
 #define COMSIG_CARBON_SOUNDBANG "carbon_soundbang"					//from base of mob/living/carbon/soundbang_act(): (list(intensity))
 #define COMSIG_CARBON_ON_HANDLE_BLOOD "human_on_handle_blood"
 	#define HANDLE_BLOOD_HANDLED (1<<0)

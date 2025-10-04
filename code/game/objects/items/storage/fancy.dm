@@ -28,7 +28,7 @@
 
 /obj/item/storage/fancy/PopulateContents()
 	if(!spawn_type)
-		return
+		return ..()
 	SEND_SIGNAL(src, COMSIG_TRY_STORAGE_FILL_TYPE, spawn_type)
 
 /obj/item/storage/fancy/update_icon_state()

@@ -100,3 +100,5 @@
 
 /// Updating a mob's movespeed when lacking limbs. (list/modifiers)
 #define COMSIG_LIVING_LIMBLESS_MOVESPEED_UPDATE "living_get_movespeed_modifiers"
+
+#define COMSIG_LIVING_ADJUSTED "living_damage_adjusted"

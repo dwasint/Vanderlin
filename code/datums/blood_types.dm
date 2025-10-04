@@ -20,6 +20,8 @@ GLOBAL_LIST_INIT_TYPED(blood_types, /datum/blood_type, init_subtypes_w_path_keys
 	var/datum/reagent/restoration_chem
 	///do we contain Lux?
 	var/contains_lux = FALSE
+	///the chimeric table we pull from when creating chimeric nodes based on this blood
+	var/datum/chimeric_table/used_table
 
 /datum/blood_type/New()
 	. = ..()
@@ -43,6 +45,7 @@ GLOBAL_LIST_INIT_TYPED(blood_types, /datum/blood_type, init_subtypes_w_path_keys
 /// A base type for all blood used by humans (NOT humanoids), for organization's sake
 /datum/blood_type/human
 	contains_lux = TRUE
+	used_table = /datum/chimeric_table/human
 
 /datum/blood_type/human/get_blood_data(mob/living/carbon/sampled_from)
 	if(!istype(sampled_from) || isnull(sampled_from.dna))
@@ -68,131 +71,58 @@ GLOBAL_LIST_INIT_TYPED(blood_types, /datum/blood_type, init_subtypes_w_path_keys
 	return blood_data
 
 
-/datum/blood_type/human/a_minus
-	name = "A-"
-	compatible_types = list(
-		/datum/blood_type/human/o_minus,
-	)
-
 /datum/blood_type/human/tiefling
 	name = "Tiefling"
-	compatible_types = list(
-		/datum/blood_type/human/o_minus,
-	)
 	reagent_type = /datum/reagent/blood/tiefling
 	contains_lux = TRUE
+	used_table = /datum/chimeric_table/tiefling
 
 /datum/blood_type/human/kobold
 	name = "Kobold"
-	compatible_types = list(
-		/datum/blood_type/human/o_minus,
-	)
 	reagent_type = /datum/reagent/blood
 	contains_lux = FALSE
+	used_table = /datum/chimeric_table/kobold
 
 /datum/blood_type/human/rakshari
 	name = "Rakshari"
-	compatible_types = list(
-		/datum/blood_type/human/o_minus,
-	)
 	reagent_type = /datum/reagent/blood
 	contains_lux = FALSE
+	used_table = /datum/chimeric_table/rakshari
 
 /datum/blood_type/human/demihuman
 	name = "Hollow-Kin"
-	compatible_types = list(
-		/datum/blood_type/human/o_minus,
-	)
 	reagent_type = /datum/reagent/blood
 	contains_lux = FALSE
+	used_table = /datum/chimeric_table/demihuman
 
 /datum/blood_type/human/horc
 	name = "Half-Orc"
-	compatible_types = list(
-		/datum/blood_type/human/o_minus,
-	)
 	reagent_type = /datum/reagent/blood
 	contains_lux = TRUE
+	used_table = /datum/chimeric_table/horc
 
 /datum/blood_type/human/delf
 	name = "Dark Elf"
-	compatible_types = list(
-		/datum/blood_type/human/o_minus,
-	)
 	reagent_type = /datum/reagent/blood
 	contains_lux = TRUE
+	used_table = /datum/chimeric_table/delf
 
 /datum/blood_type/human/cursed_elf
 	name = "Cursed Elf Blood"
-	compatible_types = list(
-		/datum/blood_type/human/o_minus,
-	)
 	reagent_type = /datum/reagent/blood
 	contains_lux = TRUE
+	used_table = /datum/chimeric_table/cursed_elf
 
 /datum/blood_type/human/triton
 	name = "Triton"
-	compatible_types = list(
-		/datum/blood_type/human/o_minus,
-	)
 	reagent_type = /datum/reagent/blood
 	contains_lux = TRUE
+	used_table = /datum/chimeric_table/triton
 
 /datum/blood_type/human/medicator
 	name = "Medicator"
-
-/datum/blood_type/human/a_plus
-	name = "A+"
-	compatible_types = list(
-		/datum/blood_type/human/a_minus,
-		/datum/blood_type/human/a_plus,
-		/datum/blood_type/human/o_minus,
-		/datum/blood_type/human/o_plus,
-	)
-
-/datum/blood_type/human/b_minus
-	name = "B-"
-	compatible_types = list(
-		/datum/blood_type/human/b_minus,
-		/datum/blood_type/human/o_minus,
-	)
-
-/datum/blood_type/human/b_plus
-	name = "B+"
-	compatible_types = list(
-		/datum/blood_type/human/b_minus,
-		/datum/blood_type/human/b_plus,
-		/datum/blood_type/human/o_minus,
-		/datum/blood_type/human/o_plus,
-	)
-
-/datum/blood_type/human/ab_minus
-	name = "AB-"
-	compatible_types = list(
-		/datum/blood_type/human/b_minus,
-		/datum/blood_type/human/ab_minus,
-		/datum/blood_type/human/a_minus,
-		/datum/blood_type/human/o_minus,
-	)
-
-/datum/blood_type/human/ab_plus
-	name = "AB+"
-	// Universal Recipient
-
-/datum/blood_type/human/ab_plus/New()
-	. = ..()
-	compatible_types |= subtypesof(/datum/blood_type/human)
-
-/datum/blood_type/human/o_minus
-	name = "O-"
-	// Universal Donor
-
-/datum/blood_type/human/o_plus
-	name = "O+"
-	compatible_types = list(
-		/datum/blood_type/human/o_minus,
-		/datum/blood_type/human/o_plus,
-	)
+	used_table = /datum/chimeric_table/medicator
 
 /datum/blood_type/animal
-	name = "Y-"
+	name = "Animal"
+	used_table = /datum/chimeric_table/animal

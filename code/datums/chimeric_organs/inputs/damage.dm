@@ -1,0 +1,35 @@
+/datum/chimeric_organs/input/damage
+	name = "responsive"
+
+	var/list/damage_types = list(BRUTE, BURN, TOX, OXY) // Which damage types trigger this
+	var/minimum_damage = 1 // Minimum damage to trigger
+
+/datum/chimeric_organs/input/damage/register_triggers(mob/living/carbon/target)
+	if(!target)
+		return
+
+	unregister_triggers()
+	registered_signals += COMSIG_LIVING_ADJUSTED
+	RegisterSignal(target, COMSIG_LIVING_ADJUSTED, PROC_REF(on_damage_taken))
+
+/datum/chimeric_organs/input/damage/proc/on_damage_taken(datum/source, damage_type, damage_amount)
+	SIGNAL_HANDLER
+
+	if(damage_amount < minimum_damage)
+		return
+
+	// Check if this damage type should trigger
+	if(!damage_types.len || (damage_type in damage_types))
+		var/potency = calculate_potency(damage_type, damage_amount)
+		trigger_output(potency)
+
+/datum/chimeric_organs/input/damage/proc/calculate_potency(damage_type, amount)
+	return (amount / minimum_damage) * (node_purity / 100)
+
+/datum/chimeric_organs/input/damage/brute
+	damage_types = list(BRUTE)
+	minimum_damage = 5
+
+/datum/chimeric_organs/input/damage/burn
+	damage_types = list(BURN)
+	minimum_damage = 5

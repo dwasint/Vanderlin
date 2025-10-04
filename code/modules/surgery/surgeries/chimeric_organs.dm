@@ -1,0 +1,397 @@
+/mob/living/carbon/proc/get_organs_in_zone(zone)
+	var/list/organs_in_zone = list()
+
+	for(var/obj/item/organ/O in internal_organs)
+		if(O.zone == zone)
+			organs_in_zone += O
+
+	return organs_in_zone
+
+/datum/surgery/chimeric_transformation
+	name = "Chimeric Transformation"
+	desc = "Transform a normal organ into a chimeric organ capable of accepting grafted nodes."
+	steps = list(
+		/datum/surgery_step/incise,
+		/datum/surgery_step/retract,
+		/datum/surgery_step/create_chimeric_organ,
+		/datum/surgery_step/cauterize
+	)
+	possible_locs = list(BODY_ZONE_CHEST, BODY_ZONE_HEAD)
+	target_mobtypes = list(/mob/living/carbon/human)
+	requires_bodypart_type = BODYPART_ORGANIC
+
+/datum/surgery/chimeric_grafting
+	name = "Chimeric Node Grafting"
+	desc = "Graft a harvested node into a chimeric organ."
+	steps = list(
+		/datum/surgery_step/incise,
+		/datum/surgery_step/retract,
+		/datum/surgery_step/graft_chimeric_node,
+		/datum/surgery_step/cauterize
+	)
+	possible_locs = list(BODY_ZONE_CHEST, BODY_ZONE_HEAD)
+	target_mobtypes = list(/mob/living/carbon/human)
+	requires_bodypart_type = BODYPART_ORGANIC
+
+/datum/surgery/chimeric_repair
+	name = "Chimeric Organ Repair"
+	desc = "Attempt to repair a failed chimeric organ."
+	steps = list(
+		/datum/surgery_step/incise,
+		/datum/surgery_step/retract,
+		/datum/surgery_step/repair_chimeric_organ,
+		/datum/surgery_step/cauterize
+	)
+	possible_locs = list(BODY_ZONE_CHEST, BODY_ZONE_HEAD)
+	target_mobtypes = list(/mob/living/carbon/human)
+	requires_bodypart_type = BODYPART_ORGANIC
+
+
+
+/datum/surgery_step/create_chimeric_organ
+	name = "perform chimeric ritual"
+	desc = "Transform a normal organ into a chimeric organ capable of accepting grafted nodes."
+	implements = list(
+		TOOL_SCALPEL = 80,
+		TOOL_SHARP = 60,
+	)
+	time = 10 SECONDS
+	skill_min = SKILL_LEVEL_JOURNEYMAN
+	skill_median = SKILL_LEVEL_EXPERT
+
+	var/obj/item/organ/selected_organ
+
+/datum/surgery_step/create_chimeric_organ/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/intent/intent)
+	var/list/available_organs = target.get_organs_in_zone(target_zone)
+
+	if(!available_organs.len)
+		to_chat(user, span_warning("There are no organs in [target]'s [target_zone] to transform!"))
+		return FALSE
+
+	var/list/valid_organs = list()
+	for(var/obj/item/organ/O in available_organs)
+		if(!O.GetComponent(/datum/component/chimeric_organ))
+			valid_organs += O
+
+	if(!valid_organs.len)
+		to_chat(user, span_warning("All organs in [target]'s [target_zone] have already been transformed!"))
+		return FALSE
+
+	if(valid_organs.len == 1)
+		selected_organ = valid_organs[1]
+	else
+		var/list/organ_names = list()
+		for(var/obj/item/organ/O in valid_organs)
+			organ_names[O.name] = O
+
+		var/choice = input(user, "Which organ do you want to transform?", "Select Organ") as null|anything in organ_names
+		if(!choice)
+			return FALSE
+		selected_organ = organ_names[choice]
+
+	if(!selected_organ)
+		return FALSE
+
+	display_results(
+		user,
+		target,
+		span_notice("I begin carving dark runes into [target]'s [selected_organ.name], preparing it for transformation..."),
+		span_notice("[user] begins carving strange patterns into [target]'s exposed organ."),
+		span_notice("[user] mutters dark incantations while working on [target].")
+	)
+	return TRUE
+
+/datum/surgery_step/create_chimeric_organ/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/intent/intent)
+	if(!selected_organ)
+		return FALSE
+	selected_organ.AddComponent(/datum/component/chimeric_organ)
+
+	if(!target.GetComponent(/datum/component/blood_stability))
+		target.AddComponent(/datum/component/blood_stability)
+		to_chat(user, span_boldnotice("As the ritual completes, [target]'s body adapts to accept infused blood essence."))
+
+	display_results(
+		user,
+		target,
+		span_notice("The ritual completes! [target]'s [selected_organ.name] pulses with unnatural life as it transforms."),
+		span_notice("[user] completes the dark ritual. The organ writhes and changes."),
+		span_notice("[user] steps back from [target], the ritual complete.")
+	)
+
+	to_chat(user, span_warning("[target]'s [selected_organ.name] can now accept grafted flesh nodes, but will require blood infusions to survive."))
+	to_chat(target, span_userdanger("You feel something inside you change fundamentally. Your body now craves strange blood..."))
+
+	selected_organ = null
+	return TRUE
+
+/datum/surgery_step/create_chimeric_organ/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/intent/intent, success_prob)
+	display_results(
+		user,
+		target,
+		span_warning("The ritual fails! The organ rejects the transformation!"),
+		span_warning("[user]'s ritual fails spectacularly!"),
+		""
+	)
+
+	target.adjustToxLoss(5)
+	return TRUE
+
+
+/datum/surgery_step/graft_chimeric_node
+	name = "graft chimeric node"
+	desc = "Graft a harvested node into a chimeric organ."
+	implements = list(
+		TOOL_SCALPEL = 80,
+		TOOL_SHARP = 60,
+	)
+	time = 8 SECONDS
+	skill_min = SKILL_LEVEL_JOURNEYMAN
+	skill_median = SKILL_LEVEL_EXPERT
+
+	var/obj/item/organ/selected_organ
+	var/obj/item/chimeric_node/node_to_graft
+
+/datum/surgery_step/graft_chimeric_node/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/intent/intent)
+	var/obj/item/held = user.get_inactive_held_item()
+	if(!istype(held, /obj/item/chimeric_node))
+		to_chat(user, span_warning("You need to hold a chimeric node in your other hand to graft it!"))
+		return FALSE
+
+	var/list/available_organs = target.get_organs_in_zone(target_zone)
+	var/list/chimeric_organs = list()
+
+	for(var/obj/item/organ/O in available_organs)
+		var/datum/component/chimeric_organ/chimeric = O.GetComponent(/datum/component/chimeric_organ)
+		if(chimeric && !chimeric.failed)
+			chimeric_organs += O
+
+	if(!chimeric_organs.len)
+		to_chat(user, span_warning("There are no functioning chimeric organs in [target]'s [target_zone]!"))
+		return FALSE
+
+	if(chimeric_organs.len == 1)
+		selected_organ = chimeric_organs[1]
+	else
+		var/list/organ_names = list()
+		for(var/obj/item/organ/O in chimeric_organs)
+			organ_names[O.name] = O
+
+		var/choice = input(user, "Which organ do you want to graft into?", "Select Organ") as null|anything in organ_names
+		if(!choice)
+			return FALSE
+		selected_organ = organ_names[choice]
+
+	node_to_graft = held
+	if(!selected_organ)
+		return FALSE
+
+	display_results(
+		user,
+		target,
+		span_notice("I begin the delicate process of grafting [node_to_graft] into [target]'s [selected_organ.name]..."),
+		span_notice("[user] begins grafting something grotesque into [target]'s organ."),
+		span_notice("[user] performs an unholy grafting ritual on [target].")
+	)
+	return TRUE
+
+/datum/surgery_step/graft_chimeric_node/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/intent/intent)
+	if(!selected_organ)
+		return FALSE
+
+	var/datum/component/chimeric_organ/chimeric = selected_organ.GetComponent(/datum/component/chimeric_organ)
+	if(!chimeric)
+		return FALSE
+
+	if(chimeric.failed)
+		display_results(
+			user,
+			target,
+			span_warning("[selected_organ.name] has failed and is too corrupted to accept more nodes!"),
+			span_warning("[user] recoils from the decayed organ."),
+			""
+		)
+		selected_organ = null
+		return FALSE
+
+	if(!node_to_graft)
+		selected_organ = null
+		return FALSE
+
+	var/datum/component/blood_stability/blood_stab = target.GetComponent(/datum/component/blood_stability)
+	if(blood_stab && blood_stab.get_total_stability() < chimeric.node_injection_cost)
+		display_results(
+			user,
+			target,
+			span_warning("[target] lacks sufficient blood essence! The grafting requires [chimeric.node_injection_cost] units."),
+			span_warning("The grafting ritual falters as [user] works."),
+			""
+		)
+		to_chat(user, span_notice("Current blood essence: [blood_stab.get_total_stability()] / [chimeric.node_injection_cost] required"))
+		selected_organ = null
+		return FALSE
+
+	var/datum/chimeric_organs/test_node = node_to_graft.stored_node
+	var/node_slot = INPUT_NODE
+	if(istype(test_node, /datum/chimeric_organs/output))
+		node_slot = OUTPUT_NODE
+
+	var/datum/chimeric_organs/new_node = new node_to_graft.stored_node()
+
+	chimeric.handle_node_injection(
+		tier = node_to_graft.node_tier,
+		purity = node_to_graft.node_purity,
+		slot = node_slot,
+		injected_node = new_node
+	)
+
+	qdel(node_to_graft)
+	node_to_graft = null
+
+	display_results(
+		user,
+		target,
+		span_notice("The grafting succeeds! The node melds seamlessly with [selected_organ.name], pulsing with unnatural life."),
+		span_notice("[user] completes the grafting ritual. The flesh writhes and accepts the graft."),
+		span_notice("[user] finishes working on [target].")
+	)
+
+	var/total_cost = 0
+	var/list/blood_types_needed = list()
+
+	for(var/datum/chimeric_organs/N as anything in (chimeric.inputs + chimeric.outputs))
+		total_cost += N.base_blood_cost
+		if(N.preferred_blood_types && N.preferred_blood_types.len)
+			for(var/blood_type in N.preferred_blood_types)
+				if(!(blood_type in blood_types_needed))
+					blood_types_needed += blood_type
+
+	to_chat(user, span_warning("[selected_organ.name] now requires approximately [round(total_cost, 0.1)] blood essence per second."))
+	if(blood_types_needed.len)
+		to_chat(user, span_notice("Preferred blood types: [english_list(blood_types_needed)]"))
+
+	to_chat(target, span_userdanger("You feel alien flesh merging with your [selected_organ.name]!"))
+
+	selected_organ = null
+	return TRUE
+
+/datum/surgery_step/graft_chimeric_node/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/intent/intent, success_prob)
+	display_results(
+		user,
+		target,
+		span_warning("The grafting fails! The node rejects the organ!"),
+		span_warning("[user]'s grafting fails!"),
+		""
+	)
+
+	target.adjustToxLoss(10)
+	return TRUE
+
+
+/datum/surgery_step/repair_chimeric_organ
+	name = "attempt organ repair"
+	desc = "Try to repair a failed chimeric organ. Requires significant blood essence."
+	implements = list(
+		TOOL_SCALPEL = 80,
+		TOOL_SHARP = 60,
+	)
+	time = 15 SECONDS
+	skill_min = SKILL_LEVEL_EXPERT
+	skill_median = SKILL_LEVEL_MASTER
+
+	var/obj/item/organ/selected_organ
+
+/datum/surgery_step/repair_chimeric_organ/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/intent/intent)
+	var/list/available_organs = target.get_organs_in_zone(target_zone)
+	var/list/failed_organs = list()
+
+	for(var/obj/item/organ/O in available_organs)
+		var/datum/component/chimeric_organ/chimeric = O.GetComponent(/datum/component/chimeric_organ)
+		if(chimeric && chimeric.failed)
+			failed_organs += O
+
+	if(!failed_organs.len)
+		to_chat(user, span_warning("There are no failed chimeric organs in [target]'s [target_zone]!"))
+		return FALSE
+
+	if(length(failed_organs) == 1)
+		selected_organ = failed_organs[1]
+	else
+		var/list/organ_names = list()
+		for(var/obj/item/organ/O in failed_organs)
+			organ_names[O.name] = O
+
+		var/choice = input(user, "Which organ do you want to repair?", "Select Organ") as null|anything in organ_names
+		if(!choice)
+			return FALSE
+		selected_organ = organ_names[choice]
+
+	if(!selected_organ)
+		return FALSE
+
+	display_results(
+		user,
+		target,
+		span_notice("I begin the complex ritual to repair [target]'s failed [selected_organ.name]..."),
+		span_notice("[user] begins an elaborate ritual over [target]'s corrupted organ."),
+		""
+	)
+	return TRUE
+
+/datum/surgery_step/repair_chimeric_organ/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/intent/intent)
+	if(!selected_organ)
+		return FALSE
+
+	var/datum/component/chimeric_organ/chimeric = selected_organ.GetComponent(/datum/component/chimeric_organ)
+	if(!chimeric)
+		return FALSE
+
+	var/repair_cost = 50
+	var/datum/component/blood_stability/blood_stab = target.GetComponent(/datum/component/blood_stability)
+
+	if(!blood_stab || blood_stab.get_total_stability() < repair_cost)
+		display_results(
+			user,
+			target,
+			span_warning("The repair fails! [target] needs [repair_cost] units of blood essence to repair this organ."),
+			span_warning("[user]'s ritual fails."),
+			""
+		)
+		to_chat(user, span_notice("Current blood essence: [blood_stab ? blood_stab.get_total_stability() : 0] / [repair_cost] required"))
+		selected_organ = null
+		return FALSE
+
+	chimeric.consume_any_blood(blood_stab, repair_cost)
+
+	chimeric.failed = FALSE
+	chimeric.start_processing()
+
+	for(var/datum/chimeric_organs/input/input_node as anything in chimeric.inputs)
+		input_node.register_triggers(target)
+
+	display_results(
+		user,
+		target,
+		span_boldnotice("The repair succeeds! [selected_organ.name] pulses back to life, its corruption cleansed!"),
+		span_boldnotice("[user] completes the repair ritual. The organ begins functioning again!"),
+		""
+	)
+
+	to_chat(target, span_notice("You feel your [selected_organ.name] stabilize and resume functioning!"))
+
+	selected_organ = null
+	return TRUE
+
+/datum/surgery_step/repair_chimeric_organ/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/intent/intent, success_prob)
+	display_results(
+		user,
+		target,
+		span_boldwarning("The repair fails catastrophically! The organ is beyond saving!"),
+		span_warning("[user]'s ritual backfires!"),
+		""
+	)
+
+	target.adjustToxLoss(15)
+	to_chat(user, span_boldwarning("The organ cannot be repaired. Consider replacement."))
+
+	selected_organ = null
+	return TRUE

@@ -13,14 +13,15 @@
 
 	var/draining_blood = FALSE
 
-/obj/structure/meathook/attacked_by(obj/item/I, mob/living/user)
-	. = ..()
+/obj/structure/meathook/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/reagent_containers))
 		var/obj/item/reagent_containers/container = I
 		if(!container.is_open_container())
 			return
 		container.forceMove(get_turf(src))
 		to_chat(user, span_notice("You place [I] under [src]"))
+		return TRUE
+	. = ..()
 
 /obj/structure/meathook/examine(mob/user)
 	. = ..()

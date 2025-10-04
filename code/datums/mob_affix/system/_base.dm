@@ -1,4 +1,6 @@
 /mob/living
+	var/datum/blood_type/animal_type
+
 	var/list/affixes = list()
 	var/delve_level = 0
 

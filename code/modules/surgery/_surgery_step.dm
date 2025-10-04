@@ -48,7 +48,7 @@
 	/// Does this step allow self surgery?
 	var/self_operable = TRUE
 	/// Acceptable mob types for this surgery
-	var/list/target_mobtypes = list(/mob/living/carbon)
+	var/list/target_mobtypes = list(/mob/living/carbon, /mob/living/simple_animal)
 
 	/// Skill used to perform this surgery step
 	var/skill_used = /datum/skill/misc/medicine
