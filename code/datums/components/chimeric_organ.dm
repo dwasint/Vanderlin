@@ -66,6 +66,7 @@
 
 	for(var/datum/chimeric_organs/output/listed_output as anything in outputs)
 		listed_output.hosted_carbon = organ_owner
+		listed_output.register_listeners(organ_owner)
 
 	for(var/datum/chimeric_organs/input/listed_input as anything in inputs)
 		listed_input.hosted_carbon = organ_owner
@@ -81,6 +82,8 @@
 
 	for(var/datum/chimeric_organs/input/listed_input as anything in inputs)
 		listed_input.unregister_triggers()
+	for(var/datum/chimeric_organs/output/listed_output as anything in outputs)
+		listed_output.unregister_listeners(organ_owner)
 
 	organ_owner = null
 

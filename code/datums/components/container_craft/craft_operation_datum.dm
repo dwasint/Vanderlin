@@ -48,8 +48,10 @@
 	else
 		target_time = recipe.crafting_time
 
-	// Store current inventory state
-	refresh_stored_items()
+	stored_items = list()
+	for(var/requirement_path in recipe.requirements)
+		stored_items[requirement_path] = recipe.requirements[requirement_path] * estimated_multiplier
+
 	last_progress_time = world.time
 
 	START_PROCESSING(SSprocessing, src)
@@ -65,15 +67,6 @@
 	if(cooking_sound)
 		QDEL_NULL(cooking_sound)
 	. = ..()
-
-/**
- * Refreshes the stored items list from the crafter's contents
- */
-/datum/container_craft_operation/proc/refresh_stored_items()
-	stored_items = list()
-	for(var/obj/item/item in crafter.contents)
-		stored_items |= item.type
-		stored_items[item.type]++
 
 /**
  * Process tick for crafting progress

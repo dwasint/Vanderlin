@@ -6,6 +6,8 @@
 
 	///the input we have latched onto, this is only ever done when its added to an organ
 	var/datum/chimeric_organs/input/attached_input
+	///list of all our registered signals
+	var/list/registered_signals = list()
 
 /datum/chimeric_organs/output/check_active()
 	if(attached_input)
@@ -19,3 +21,14 @@
 		if(attached_special.trigger_special(is_good, multiplier))
 			return
 
+/datum/chimeric_organs/output/proc/register_listeners(mob/living/carbon/target)
+	return
+
+/datum/chimeric_organs/output/proc/unregister_listeners()
+	if(!hosted_carbon || !length(registered_signals))
+		return
+
+	for(var/signal in registered_signals)
+		UnregisterSignal(hosted_carbon, signal)
+
+	registered_signals.Cut()

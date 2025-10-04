@@ -11,7 +11,7 @@
 	healing_type = pick(BRUTE, OXY, TOX, BURN, CLONE)
 	amount_healed *= (node_purity * 0.02) * (tier * 0.5)
 
-/datum/chimeric_organs/output/healing/trigger_effect(is_good = TRUE, multiplier)
+/datum/chimeric_organs/output/healing/trigger_effect(multiplier)
 	. = ..()
 	if(istype(attached_input, /datum/chimeric_organs/input/damage))
 		var/datum/chimeric_organs/input/damage/actual_type = attached_input
@@ -20,7 +20,4 @@
 			attached_organ.applyOrganDamage(30) // ouchies
 			return
 
-	if(is_good)
-		hosted_carbon.apply_damage(-amount_healed * multiplier, healing_type, forced = TRUE)
-	else
-		hosted_carbon.apply_damage(amount_healed * multiplier, healing_type, forced = TRUE)
+	hosted_carbon.apply_damage(-amount_healed * multiplier, healing_type, forced = TRUE)

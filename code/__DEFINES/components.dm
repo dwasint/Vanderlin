@@ -127,6 +127,8 @@
 ///from base of /mob/verb/pointed: (atom/A)
 #define COMSIG_MOB_POINTED "mob_pointed"
 
+#define COMSIG_MOB_ADD_STRESS "mob_add_stress"
+
 // /mob/living/carbon signals
 #define COMSIG_CARBON_REAGENT_ADD "carbon_reagent_add"
 #define COMSIG_CARBON_SOUNDBANG "carbon_soundbang"					//from base of mob/living/carbon/soundbang_act(): (list(intensity))

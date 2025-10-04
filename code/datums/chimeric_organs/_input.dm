@@ -3,6 +3,7 @@
 	abstract_type = /datum/chimeric_organs/input
 	var/datum/chimeric_organs/output/attached_output
 	var/list/registered_signals = list()
+	COOLDOWN_DECLARE(trigger_cooldown)
 
 /datum/chimeric_organs/input/Destroy()
 	unregister_triggers()
@@ -26,6 +27,13 @@
 /datum/chimeric_organs/input/proc/trigger_output(potency)
 	if(!attached_output)
 		return FALSE
+
+	if(node_purity < 100) //!think on this idk if I want a cooldown or just chain in a SS
+		if(!COOLDOWN_FINISHED(src, trigger_cooldown))
+			return FALSE
+		var/cooldown_value = round(10 - (node_purity * 0.1), 0.1) SECONDS
+		COOLDOWN_START(src, trigger_cooldown, cooldown_value)
+
 
 	attached_output.trigger_effect(TRUE, potency)
 	return TRUE

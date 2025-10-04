@@ -7,8 +7,15 @@
 /datum/chimeric_organs/output/alcoholic/set_values(node_purity, tier)
 	return
 
-/datum/chimeric_organs/output/alcoholic/trigger_effect(is_good = TRUE, multiplier)
+/datum/chimeric_organs/output/alcoholic/trigger_effect(multiplier)
 	. = ..()
+
+	var/is_good = TRUE
+	for(var/datum/reagent/reagent as anything in hosted_carbon.reagents.reagent_list)
+		if(!istype(reagent, /datum/reagent/consumable/ethanol))
+			is_good = FALSE
+			break
+
 	if(is_good)
 		to_chat(hosted_carbon, span_notice("You feel your body produce some anti-toxin to help with the alcohol!"))
 		hosted_carbon.reagents.add_reagent(/datum/reagent/distillery, multiplier)
