@@ -30,11 +30,6 @@
 
 	stored_node.set_values(node_purity, node_tier)
 
-	update_appearance()
-
-/obj/item/chimeric_node/update_appearance(updates)
-	. = ..()
-
 	switch(stored_node?.slot)
 		if(INPUT_NODE)
 			icon_state = "input_organoid-[rand(1,7)]"
@@ -42,6 +37,8 @@
 			icon_state = "output_organoid-[rand(1,7)]"
 		if(SPECIAL_NODE)
 			icon_state = "process_organoid-[rand(1,7)]"
+
+	update_appearance()
 
 /obj/item/chimeric_node/update_name(updates)
 	. = ..()
