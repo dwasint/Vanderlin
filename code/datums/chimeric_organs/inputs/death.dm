@@ -13,5 +13,5 @@
 /datum/chimeric_organs/input/death/proc/on_death(datum/source)
 	SIGNAL_HANDLER
 
-	var/potency = node_purity / 100
-	trigger_output(potency)
+	var/potency = node_purity / 10
+	trigger_output(node_purity)

@@ -6,6 +6,7 @@
 		/datum/blood_type/human,
 	)
 	incompatible_blood_types = list()
+
 	base_blood_cost = 0.3
 	node_tier = 1
 	node_purity_min = 60
@@ -45,6 +46,11 @@
 		/datum/blood_type/human/tiefling,
 	)
 	incompatible_blood_types = list()
+
+	input_nodes = list(
+		/datum/chimeric_organs/input/damage/burn = 10
+	)
+
 	base_blood_cost = 0.45
 	node_tier = 2
 	node_purity_min = 60
@@ -110,6 +116,11 @@
 		/datum/blood_type/human/delf,
 	)
 	incompatible_blood_types = list()
+
+	input_nodes = list(
+		/datum/chimeric_organs/input/racist = 5
+	)
+
 	base_blood_cost = 0.3
 	node_tier = 1
 	node_purity_min = 60
@@ -123,6 +134,47 @@
 		/datum/blood_type/human/cursed_elf,
 	)
 	incompatible_blood_types = list()
+
+	input_nodes = list(
+		/datum/chimeric_organs/input/racist = 5
+	)
+
+	base_blood_cost = 0.3
+	node_tier = 1
+	node_purity_min = 60
+	node_purity_max = 90
+
+/datum/chimeric_table/elf
+	compatible_blood_types = list(
+		/datum/blood_type/human/elf,
+	)
+	preferred_blood_types = list(
+		/datum/blood_type/human/elf,
+	)
+	incompatible_blood_types = list()
+
+	input_nodes = list(
+		/datum/chimeric_organs/input/racist = 5
+	)
+
+	base_blood_cost = 0.3
+	node_tier = 1
+	node_purity_min = 60
+	node_purity_max = 90
+
+/datum/chimeric_table/dwarf
+	compatible_blood_types = list(
+		/datum/blood_type/human/dwarf,
+	)
+	preferred_blood_types = list(
+		/datum/blood_type/human/dwarf,
+	)
+	incompatible_blood_types = list()
+
+	input_nodes = list(
+		/datum/chimeric_organs/input/racist/elf = 5
+	)
+
 	base_blood_cost = 0.3
 	node_tier = 1
 	node_purity_min = 60

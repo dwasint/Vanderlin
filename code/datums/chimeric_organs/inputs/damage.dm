@@ -1,6 +1,8 @@
 /datum/chimeric_organs/input/damage
 	name = "responsive"
-	desc = "Triggers when you take a certain type of damage."
+	desc = "Triggers when you take any damage."
+
+	weight = 5
 
 	var/list/damage_types = list(BRUTE, BURN, TOX, OXY) // Which damage types trigger this
 	var/minimum_damage = 1 // Minimum damage to trigger
@@ -12,6 +14,10 @@
 	unregister_triggers()
 	registered_signals += COMSIG_LIVING_ADJUSTED
 	RegisterSignal(target, COMSIG_LIVING_ADJUSTED, PROC_REF(on_damage_taken))
+
+/datum/chimeric_organs/input/damage/set_ranges()
+	. = ..()
+	minimum_damage = rand(max(1, minimum_damage - (3 + ((100 - node_purity) * 0.2))), minimum_damage + (3 + ((100 - node_purity) * 0.2)))
 
 /datum/chimeric_organs/input/damage/proc/on_damage_taken(datum/source, damage_type, damage_amount)
 	SIGNAL_HANDLER
@@ -28,9 +34,19 @@
 	return (amount / minimum_damage) * (node_purity / 100)
 
 /datum/chimeric_organs/input/damage/brute
+	name = "brute response"
+	desc = "Triggers when you take any brute damage."
+
+	weight = 10
+
 	damage_types = list(BRUTE)
 	minimum_damage = 5
 
 /datum/chimeric_organs/input/damage/burn
+	name = "burn response"
+	desc = "Triggers when you take any burn damage."
+
+	weight = 10
+
 	damage_types = list(BURN)
 	minimum_damage = 5

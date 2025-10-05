@@ -123,6 +123,15 @@ GLOBAL_LIST_INIT_TYPED(blood_types, /datum/blood_type, init_subtypes_w_path_keys
 	name = "Medicator"
 	used_table = /datum/chimeric_table/medicator
 
+/datum/blood_type/human/dwarf
+	name = "Dwarf"
+	used_table = /datum/chimeric_table/dwarf
+
+/datum/blood_type/human/elf
+	name = "Elf"
+	used_table = /datum/chimeric_table/elf
+
 /datum/blood_type/animal
 	name = "Animal"
 	used_table = /datum/chimeric_table/animal
+

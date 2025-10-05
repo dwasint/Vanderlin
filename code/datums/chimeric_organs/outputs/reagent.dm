@@ -6,7 +6,7 @@
 
 	var/generated_amount = 5
 
-/datum/chimeric_organs/output/reagent/set_values(node_purity, tier)
+/datum/chimeric_organs/output/reagent/set_ranges()
 	. = ..()
 	generated_amount *= (node_purity * 0.02) * (tier * 0.5)
 

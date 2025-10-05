@@ -5,7 +5,7 @@
 	var/generated_amount = 20
 	var/datum/reagent/good_reagent
 
-/datum/chimeric_organs/output/liquid/set_values(node_purity, tier)
+/datum/chimeric_organs/output/liquid/set_ranges()
 	. = ..()
 	generated_amount *= (node_purity * 0.02) * (tier * 0.5)
 	generated_amount = min(generated_amount, 50)

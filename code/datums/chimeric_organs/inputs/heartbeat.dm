@@ -1,8 +1,12 @@
 /datum/chimeric_organs/input/heartbeat
 	name = "heartbeat"
 	desc = "Triggered every few heartbeats."
-	var/beats_per_trigger = 1 // How many heartbeats before triggering
+	var/beats_per_trigger = 1
 	var/current_beats = 0
+
+/datum/chimeric_organs/input/heartbeat/set_ranges()
+	. = ..()
+	beats_per_trigger = round(1 + ((100 - node_purity) * 0.05), 1)
 
 /datum/chimeric_organs/input/heartbeat/register_triggers(mob/living/carbon/target)
 	if(!target)

@@ -5,6 +5,10 @@
 	var/mana_required = 100
 	var/current_mana = 0
 
+/datum/chimeric_organs/input/mana_spent/set_ranges()
+	. = ..()
+	mana_required = 60 + (100 - node_purity)
+
 /datum/chimeric_organs/input/mana_spent/register_triggers(mob/living/carbon/target)
 	if(!target)
 		return

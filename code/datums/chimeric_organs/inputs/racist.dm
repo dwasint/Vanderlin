@@ -1,6 +1,7 @@
 /datum/chimeric_organs/input/racist
-	name = "racist"
-	desc = "When in view of certain species will trigger."
+	name = "codger hater"
+	desc = "When in view of a dwarf will trigger."
+	weight = 5
 	var/beats_per_trigger = 1 // How many heartbeats before triggering
 	var/current_beats = 0
 	var/datum/species/disliked_species = /datum/species/dwarf
@@ -24,3 +25,8 @@
 			var/potency = node_purity / 100
 			trigger_output(potency)
 			return
+
+/datum/chimeric_organs/input/racist/elf
+	name = "knife ear hater"
+	desc = "When in view of an elf will trigger."
+	disliked_species = /datum/species/elf

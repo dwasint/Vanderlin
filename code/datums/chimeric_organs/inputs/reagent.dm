@@ -1,9 +1,14 @@
 /datum/chimeric_organs/input/reagent
+	abstract_type = /datum/chimeric_organs/input/reagent
 	name = "drowning"
 	desc = "Triggered when you consume a specific brew."
 
-	var/list/trigger_reagents = list() // List of reagent types that trigger this
-	var/minimum_amount = 1 // Minimum amount needed to trigger
+	var/list/trigger_reagents = list()
+	var/minimum_amount = 1
+
+/datum/chimeric_organs/input/reagent/set_ranges()
+	. = ..()
+	minimum_amount = rand(max(1, minimum_amount - (3 + ((100 - node_purity) * 0.2))), minimum_amount + (3 + ((100 - node_purity) * 0.2)))
 
 /datum/chimeric_organs/input/reagent/register_triggers(mob/living/carbon/target)
 	if(!target)

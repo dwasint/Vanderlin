@@ -4,7 +4,7 @@
 
 	var/range = 5
 
-/datum/chimeric_organs/output/hallucinate/set_values(node_purity, tier)
+/datum/chimeric_organs/output/hallucinate/set_ranges()
 	. = ..()
 	range *= (node_purity * 0.02) * (tier * 0.5)
 
