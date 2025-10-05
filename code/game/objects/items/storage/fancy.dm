@@ -39,6 +39,8 @@
 	. = ..()
 	if(!is_open)
 		return
+	if(!contents_tag)
+		return
 	if(length(contents) == 1)
 		. += "There is one [contents_tag] left."
 	else

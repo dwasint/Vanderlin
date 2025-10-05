@@ -6,6 +6,7 @@
 	w_class = WEIGHT_CLASS_TINY
 	throwforce = 1
 	slot_flags = null
+	contents_tag = null
 	component_type = /datum/component/storage/concrete/grid/pilltin
 
 /obj/item/storage/fancy/pilltin/update_icon()
