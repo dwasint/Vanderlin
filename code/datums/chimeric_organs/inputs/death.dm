@@ -14,4 +14,4 @@
 	SIGNAL_HANDLER
 
 	var/potency = node_purity / 10
-	trigger_output(node_purity)
+	trigger_output(potency)
