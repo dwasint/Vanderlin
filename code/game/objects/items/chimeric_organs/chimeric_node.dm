@@ -5,6 +5,8 @@
 	icon = 'icons/obj/chimeric_nodes.dmi'
 	icon_state = "capillary"
 	var/datum/chimeric_organs/stored_node
+	grid_height = 64
+	grid_width = 32
 	var/node_tier = 1
 	var/node_purity = 80
 
