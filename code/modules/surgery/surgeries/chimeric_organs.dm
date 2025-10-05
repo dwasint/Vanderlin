@@ -58,7 +58,6 @@
 	time = 10 SECONDS
 	skill_min = SKILL_LEVEL_JOURNEYMAN
 	surgery_flags = SURGERY_BLOODY | SURGERY_INCISED | SURGERY_RETRACTED
-	skill_median = SKILL_LEVEL_EXPERT
 
 	var/obj/item/organ/selected_organ
 
@@ -147,7 +146,6 @@
 	)
 	time = 8 SECONDS
 	skill_min = SKILL_LEVEL_JOURNEYMAN
-	skill_median = SKILL_LEVEL_EXPERT
 	surgery_flags = SURGERY_BLOODY | SURGERY_INCISED | SURGERY_RETRACTED
 
 	var/obj/item/organ/selected_organ
@@ -299,7 +297,6 @@
 	time = 15 SECONDS
 	skill_min = SKILL_LEVEL_EXPERT
 	surgery_flags = SURGERY_BLOODY | SURGERY_INCISED  | SURGERY_RETRACTED
-	skill_median = SKILL_LEVEL_MASTER
 
 	var/obj/item/organ/selected_organ
 
