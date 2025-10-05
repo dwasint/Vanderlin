@@ -1,5 +1,6 @@
 /datum/chimeric_organs/input/death
 	name = "mortis"
+	desc = "Triggered when you are killed."
 
 /datum/chimeric_organs/input/death/register_triggers(mob/living/carbon/target)
 	if(!target)

@@ -1,5 +1,6 @@
 /datum/chimeric_organs/input/mana_spent
 	name = "fey tuned"
+	desc = "Triggered when you spend a certain amount of mana."
 
 	var/mana_required = 100
 	var/current_mana = 0

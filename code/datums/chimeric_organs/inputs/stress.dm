@@ -1,5 +1,6 @@
 /datum/chimeric_organs/input/stress
 	name = "stressed"
+	desc = "Triggered when you are stressed."
 	var/stress_needed = 1
 
 /datum/chimeric_organs/input/stress/register_triggers(mob/living/carbon/target)
@@ -23,4 +24,5 @@
 
 /datum/chimeric_organs/input/stress/joy
 	name = "blissed"
+	desc = "Triggered when you are relieved."
 	stress_needed = -1

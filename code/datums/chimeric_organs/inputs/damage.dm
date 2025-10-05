@@ -1,5 +1,6 @@
 /datum/chimeric_organs/input/damage
 	name = "responsive"
+	desc = "Triggers when you take a certain type of damage."
 
 	var/list/damage_types = list(BRUTE, BURN, TOX, OXY) // Which damage types trigger this
 	var/minimum_damage = 1 // Minimum damage to trigger

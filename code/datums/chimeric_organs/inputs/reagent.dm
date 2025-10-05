@@ -1,5 +1,6 @@
 /datum/chimeric_organs/input/reagent
 	name = "drowning"
+	desc = "Triggered when you consume a specific brew."
 
 	var/list/trigger_reagents = list() // List of reagent types that trigger this
 	var/minimum_amount = 1 // Minimum amount needed to trigger

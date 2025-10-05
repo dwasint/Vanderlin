@@ -1,5 +1,6 @@
 /datum/chimeric_organs/input/revival
 	name = "phoenix"
+	desc = "Triggered when you are revived."
 
 /datum/chimeric_organs/input/revival/register_triggers(mob/living/carbon/target)
 	if(!target)

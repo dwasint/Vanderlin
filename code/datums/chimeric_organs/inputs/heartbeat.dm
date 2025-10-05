@@ -1,5 +1,6 @@
 /datum/chimeric_organs/input/heartbeat
 	name = "heartbeat"
+	desc = "Triggered every few heartbeats."
 	var/beats_per_trigger = 1 // How many heartbeats before triggering
 	var/current_beats = 0
 

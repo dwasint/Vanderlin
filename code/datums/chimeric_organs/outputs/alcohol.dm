@@ -1,6 +1,6 @@
 /datum/chimeric_organs/output/alcoholic
 	name = "Distillery"
-	desc = "Converts any non alcoholic drink to alcohol, and adds anti toxin in relation to the alcohol drank"
+	desc = "Adds anti toxin in relation to the alcohol inside you."
 	tier = 4
 	node_purity = 100
 
@@ -12,7 +12,7 @@
 
 	var/is_good = TRUE
 	for(var/datum/reagent/reagent as anything in hosted_carbon.reagents.reagent_list)
-		if(!istype(reagent, /datum/reagent/consumable/ethanol))
+		if(!istype(reagent, /datum/reagent/consumable/ethanol) && !istype(reagent, /datum/reagent/distillery))
 			is_good = FALSE
 			break
 
