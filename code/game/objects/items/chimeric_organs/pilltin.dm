@@ -30,10 +30,10 @@
 
 /obj/item/storage/fancy/pilltin/sate
 	name = "pill tin (SATE)"
-	desc = "a tin labelled 'SATE', staves off the loss of thaumiel blood."
+	desc = "A tin labelled 'SATE', staves off the loss of thaumiel blood."
 	spawn_type = /obj/item/reagent_containers/pill/sate
 
 /obj/item/storage/fancy/pilltin/devour
 	name = "pill tin (DEVOUR)"
-	desc = "a tin labelled 'DEVOUR', devours thaumiel blood to forcibly induce the triggering of chimeric organs."
+	desc = "A tin labelled 'DEVOUR', devours thaumiel blood to forcibly induce the triggering of chimeric organs."
 	spawn_type = /obj/item/reagent_containers/pill/devour
