@@ -45,9 +45,9 @@
 			node_pool = table.special_nodes.Copy()
 
 	if(!length(node_pool))
-		node_pool = get_weighted_nodes_by_tier(selected_slot)
+		node_pool = get_weighted_nodes_by_tier(selected_slot, table.node_tier)
 	else
-		var/list/tier_nodes = get_weighted_nodes_by_tier(selected_slot)
+		var/list/tier_nodes = get_weighted_nodes_by_tier(selected_slot, table.node_tier)
 		for(var/node_type in tier_nodes)
 			if(node_type in node_pool)
 				node_pool[node_type] += tier_nodes[node_type]

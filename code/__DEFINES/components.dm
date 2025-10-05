@@ -128,6 +128,7 @@
 #define COMSIG_MOB_POINTED "mob_pointed"
 
 #define COMSIG_MOB_ADD_STRESS "mob_add_stress"
+#define COMSIG_MOB_APPLIED_STATUS_EFFECT "mob_applied_status_effect"
 
 // /mob/living/carbon signals
 #define COMSIG_CARBON_REAGENT_ADD "carbon_reagent_add"

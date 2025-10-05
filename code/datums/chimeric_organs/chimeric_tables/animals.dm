@@ -6,7 +6,7 @@
 		/datum/blood_type/animal,
 	)
 	incompatible_blood_types = list()
-	base_blood_cost = 0.3
+	base_blood_cost = 0.4
 	node_tier = 1
-	node_purity_min = 60
-	node_purity_max = 90
+	node_purity_min = 30
+	node_purity_max = 60

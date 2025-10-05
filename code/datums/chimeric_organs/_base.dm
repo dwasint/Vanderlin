@@ -1,4 +1,4 @@
-/proc/get_weighted_nodes_by_tier(slot_type)
+/proc/get_weighted_nodes_by_tier(slot_type, max_tier)
 	var/list/weighted_nodes = list()
 	var/list/node_types
 
@@ -15,10 +15,10 @@
 	for(var/datum/chimeric_organs/node_type as anything in node_types)
 		if(is_abstract(node_type))
 			continue
-
 		var/tier = initial(node_type.tier)
-		var/weight = max(1, 100 / (2 ** (tier - 1)))
-		weighted_nodes[node_type] = weight
+		if(tier > max_tier)
+			continue
+		weighted_nodes[node_type] = initial(node_type.weight)
 
 	return weighted_nodes
 
@@ -31,6 +31,7 @@
 	var/is_special = FALSE
 	var/node_purity = 100
 	var/tier = 1
+	var/weight = 10
 	var/obj/item/organ/attached_organ
 	var/mob/living/carbon/hosted_carbon
 	///a special node that interacts with either the input or output
@@ -112,9 +113,17 @@
 /datum/chimeric_organs/proc/setup()
 	return
 
+/datum/chimeric_organs/proc/set_ranges()
+	return
+
+/datum/chimeric_organs/proc/return_description(skill_level)
+	return
+
 /datum/chimeric_organs/proc/check_active()
 	return
 
 /datum/chimeric_organs/proc/set_values(node_purity, tier)
 	src.node_purity = node_purity
 	src.tier = tier
+
+	set_ranges()
