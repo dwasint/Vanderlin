@@ -1,4 +1,5 @@
 /datum/chimeric_table/human
+	name = "Human"
 	compatible_blood_types = list(
 		/datum/blood_type/human,
 	)
@@ -9,10 +10,11 @@
 
 	base_blood_cost = 0.3
 	node_tier = 1
-	node_purity_min = 60
-	node_purity_max = 90
+	node_purity_min = 30
+	node_purity_max = 45
 
 /datum/chimeric_table/rakshari
+	name = "Rakshari"
 	compatible_blood_types = list(
 		/datum/blood_type/human/rakshari,
 	)
@@ -22,10 +24,11 @@
 	incompatible_blood_types = list()
 	base_blood_cost = 0.3
 	node_tier = 1
-	node_purity_min = 60
-	node_purity_max = 90
+	node_purity_min = 30
+	node_purity_max = 45
 
 /datum/chimeric_table/kobold
+	name = "Kobold"
 	compatible_blood_types = list(
 		/datum/blood_type/human/kobold,
 	)
@@ -33,12 +36,16 @@
 		/datum/blood_type/human/kobold,
 	)
 	incompatible_blood_types = list()
+	output_nodes = list(
+		/datum/chimeric_node/output/blasting = 10,
+	)
 	base_blood_cost = 0.3
 	node_tier = 1
-	node_purity_min = 60
-	node_purity_max = 90
+	node_purity_min = 30
+	node_purity_max = 45
 
 /datum/chimeric_table/tiefling
+	name = "Tiefling"
 	compatible_blood_types = list(
 		/datum/blood_type/human/tiefling,
 	)
@@ -53,10 +60,11 @@
 
 	base_blood_cost = 0.45
 	node_tier = 2
-	node_purity_min = 60
-	node_purity_max = 90
+	node_purity_min = 30
+	node_purity_max = 45
 
 /datum/chimeric_table/demihuman
+	name = "Demihuman"
 	compatible_blood_types = list(
 		/datum/blood_type/human/demihuman,
 	)
@@ -66,10 +74,11 @@
 	incompatible_blood_types = list()
 	base_blood_cost = 0.3
 	node_tier = 1
-	node_purity_min = 60
-	node_purity_max = 90
+	node_purity_min = 30
+	node_purity_max = 45
 
 /datum/chimeric_table/horc
+	name = "Half-Orc"
 	compatible_blood_types = list(
 		/datum/blood_type/human/horc,
 	)
@@ -79,10 +88,11 @@
 	incompatible_blood_types = list()
 	base_blood_cost = 0.3
 	node_tier = 1
-	node_purity_min = 60
-	node_purity_max = 90
+	node_purity_min = 30
+	node_purity_max = 45
 
 /datum/chimeric_table/triton
+	name = "Triton"
 	compatible_blood_types = list(
 		/datum/blood_type/human/triton,
 	)
@@ -92,10 +102,11 @@
 	incompatible_blood_types = list()
 	base_blood_cost = 0.3
 	node_tier = 1
-	node_purity_min = 60
-	node_purity_max = 90
+	node_purity_min = 30
+	node_purity_max = 45
 
 /datum/chimeric_table/medicator
+	name = "Medicator"
 	compatible_blood_types = list(
 		/datum/blood_type/human/medicator,
 	)
@@ -105,10 +116,11 @@
 	incompatible_blood_types = list()
 	base_blood_cost = 0.3
 	node_tier = 1
-	node_purity_min = 60
-	node_purity_max = 90
+	node_purity_min = 30
+	node_purity_max = 45
 
 /datum/chimeric_table/delf
+	name = "Dark Elf"
 	compatible_blood_types = list(
 		/datum/blood_type/human/delf,
 	)
@@ -123,10 +135,11 @@
 
 	base_blood_cost = 0.3
 	node_tier = 1
-	node_purity_min = 60
-	node_purity_max = 90
+	node_purity_min = 30
+	node_purity_max = 45
 
 /datum/chimeric_table/cursed_elf
+	name = "Cursed Elf"
 	compatible_blood_types = list(
 		/datum/blood_type/human/cursed_elf,
 	)
@@ -141,10 +154,11 @@
 
 	base_blood_cost = 0.3
 	node_tier = 1
-	node_purity_min = 60
-	node_purity_max = 90
+	node_purity_min = 30
+	node_purity_max = 45
 
 /datum/chimeric_table/elf
+	name = "Elf"
 	compatible_blood_types = list(
 		/datum/blood_type/human/elf,
 	)
@@ -159,10 +173,11 @@
 
 	base_blood_cost = 0.3
 	node_tier = 1
-	node_purity_min = 60
-	node_purity_max = 90
+	node_purity_min = 30
+	node_purity_max = 45
 
 /datum/chimeric_table/dwarf
+	name = "Dwarf"
 	compatible_blood_types = list(
 		/datum/blood_type/human/dwarf,
 	)
@@ -177,5 +192,5 @@
 
 	base_blood_cost = 0.3
 	node_tier = 1
-	node_purity_min = 60
-	node_purity_max = 90
+	node_purity_min = 30
+	node_purity_max = 45

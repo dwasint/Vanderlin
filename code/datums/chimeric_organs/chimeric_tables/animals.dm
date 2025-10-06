@@ -1,4 +1,5 @@
 /datum/chimeric_table/animal
+	name = "Animal"
 	compatible_blood_types = list(
 		/datum/blood_type/animal,
 	)
@@ -12,6 +13,7 @@
 	node_purity_max = 60
 
 /datum/chimeric_table/troll
+	name = "Troll"
 	compatible_blood_types = list(
 		/datum/blood_type/troll,
 	)
@@ -34,6 +36,7 @@
 	node_purity_max = 80
 
 /datum/chimeric_table/fey
+	name = "Fey"
 	compatible_blood_types = list(
 		/datum/blood_type/fey,
 	)
@@ -60,6 +63,7 @@
 	node_purity_max = 80
 
 /datum/chimeric_table/lycan
+	name = "Lycan"
 	compatible_blood_types = list(
 		/datum/blood_type/lycan,
 	)

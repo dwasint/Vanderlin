@@ -122,6 +122,10 @@
 			temp_recipe = new path()
 			var/datum/wound/r = temp_recipe
 			category = r.category
+		else if(ispath(path, /datum/chimeric_node))
+			category = "Chimeric Node"
+		else if(ispath(path, /datum/chimeric_table))
+			category = "Chimeric Dossier"
 
 		// Clean up our temporary instance
 		if(temp_recipe)
@@ -561,7 +565,16 @@
 		var/datum/wound/r = temp_recipe
 		recipe_name = initial(r.name)
 		recipe_html = get_recipe_specific_html(r, user)
-
+	else if(ispath(path, /datum/chimeric_node))
+		temp_recipe = new path()
+		var/datum/chimeric_node/r = temp_recipe
+		recipe_name = initial(r.name)
+		recipe_html = get_recipe_specific_html(r, user)
+	else if(ispath(path, /datum/chimeric_table))
+		temp_recipe = new path()
+		var/datum/chimeric_table/r = temp_recipe
+		recipe_name = initial(r.name)
+		recipe_html = get_recipe_specific_html(r, user)
 	if(temp_recipe)
 		qdel(temp_recipe)
 
