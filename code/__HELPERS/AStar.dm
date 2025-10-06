@@ -1,54 +1,58 @@
-/**
- * A Star pathfinding algorithm
- * Returns a list of tiles forming a path from A to B, taking dense objects as well as walls, and the orientation of
- * windows along the route into account.
- * Use:
- * your_list = AStar(start location, end location, moving atom, distance proc, max nodes, maximum node depth, minimum distance to target, adjacent proc, atom id, turfs to exclude, check only simulated)
- * Optional extras to add on (in order):
- * Distance proc : the distance used in every A* calculation (length of path and heuristic)
- * MaxNodes: The maximum number of nodes the returned path can be (0 = infinite)
- * Maxnodedepth: The maximum number of nodes to search (default: 30, 0 = infinite)
- * Mintargetdist: Minimum distance to the target before path returns, could be used to get
- * near a target, but not right to it - for an AI mob with a gun, for example.
- * Adjacent proc : returns the turfs to consider around the actually processed node
- * Simulated only : whether to consider unsimulated turfs or not (used by some Adjacent proc)
- * Also added 'exclude' turf to avoid travelling over; defaults to null
- * Actual Adjacent procs :
- *    /turf/proc/reachableAdjacentTurfs : returns reachable turfs in cardinal directions (uses simulated_only)
- */
+/*
+A Star pathfinding algorithm
+Returns a list of tiles forming a path from A to B, taking dense objects as well as walls, and the orientation of
+windows along the route into account.
+Use:
+your_list = AStar(start location, end location, moving atom, distance proc, max nodes, maximum node depth, minimum distance to target, adjacent proc, atom id, turfs to exclude, check only simulated)
+
+Optional extras to add on (in order):
+Distance proc : the distance used in every A* calculation (length of path and heuristic)
+MaxNodes: The maximum number of nodes the returned path can be (0 = infinite)
+Maxnodedepth: The maximum number of nodes to search (default: 30, 0 = infinite)
+Mintargetdist: Minimum distance to the target before path returns, could be used to get
+near a target, but not right to it - for an AI mob with a gun, for example.
+Adjacent proc : returns the turfs to consider around the actually processed node
+Simulated only : whether to consider unsimulated turfs or not (used by some Adjacent proc)
+
+Also added 'exclude' turf to avoid travelling over; defaults to null
+
+Actual Adjacent procs :
+
+	/turf/proc/reachableAdjacentTurfs : returns reachable turfs in cardinal directions (uses simulated_only)
+
+
+*/
+
+#define ATURF 1
+#define TOTAL_COST_F 2
+#define DIST_FROM_START_G 3
+#define HEURISTIC_H 4
+#define PREV_NODE 5
+#define NODE_TURN 6
+#define BLOCKED_FROM 7  // Available directions to explore FROM this node
+
+#define ASTAR_NODE(turf, dist_from_start, heuristic, prev_node, node_turn, blocked_from) \
+	list(turf, (dist_from_start + heuristic * (1 + PF_TIEBREAKER)), dist_from_start, heuristic, prev_node, node_turn, blocked_from)
+
+#define ASTAR_UPDATE_NODE(node, new_prev, new_g, new_h, new_nt) \
+	node[PREV_NODE] = new_prev; \
+	node[DIST_FROM_START_G] = new_g; \
+	node[HEURISTIC_H] = new_h; \
+	node[TOTAL_COST_F] = new_g + new_h * (1 + PF_TIEBREAKER); \
+	node[NODE_TURN] = new_nt
+
+#define ASTAR_CLOSE_ENOUGH_TO_END(end, checking_turf, mintargetdist) \
+	(checking_turf == end || (mintargetdist && (get_dist_3d(checking_turf, end) <= mintargetdist)))
+
 #define PF_TIEBREAKER 0.005
 #define MASK_ODD 85
 #define MASK_EVEN 170
 
-/datum/PathNode
-	var/turf/source
-	var/datum/PathNode/prevNode
-	var/f
-	var/g
-	var/h
-	var/nt
-	var/bf  // Available directions to explore FROM this node
+/proc/PathWeightCompare(list/a, list/b)
+	return a[TOTAL_COST_F] - b[TOTAL_COST_F]
 
-/datum/PathNode/New(s, p, pg, ph, pnt, _bf)
-	source = s
-	setp(p, pg, ph, pnt)
-	bf = _bf
-
-/datum/PathNode/proc/setp(p, pg, ph, pnt)
-	prevNode = p
-	g = pg
-	h = ph
-	calc_f()
-	nt = pnt
-
-/datum/PathNode/proc/calc_f()
-	f = g + h*(1 + PF_TIEBREAKER)
-
-/proc/PathWeightCompare(datum/PathNode/a, datum/PathNode/b)
-	return a.f - b.f
-
-/proc/HeapPathWeightCompare(datum/PathNode/a, datum/PathNode/b)
-	return b.f - a.f
+/proc/HeapPathWeightCompare(list/a, list/b)
+	return b[TOTAL_COST_F] - a[TOTAL_COST_F]
 
 /proc/get_path_to(requester, end, dist, maxnodes, maxnodedepth = 30, mintargetdist, adjacent = /turf/proc/reachableTurftest, id = null, turf/exclude = null, simulated_only = TRUE, check_z_levels = TRUE)
 	var/l = SSpathfinder.mobs.getfree(requester)
@@ -75,51 +79,54 @@
 		maxnodedepth = maxnodes
 
 	var/datum/Heap/open = new /datum/Heap(/proc/HeapPathWeightCompare)
-	var/list/openc = new()  // turf -> PathNode mapping for nodes in open list
+	var/list/openc = new()  // turf -> node mapping for nodes in open list
 	var/list/closed = new()  // turf -> bitmask of blocked directions
 	var/list/path = null
 	var/const/ALL_DIRS = NORTH|SOUTH|EAST|WEST
 
-	var/datum/PathNode/cur = new /datum/PathNode(start, null, 0, start.Distance3D(end), 0, ALL_DIRS)
+	// Create initial node using macro
+	var/list/cur = ASTAR_NODE(start, 0, start.Distance3D(end), null, 0, ALL_DIRS)
 	open.Insert(cur)
 	openc[start] = cur
 
 	while (requester && !open.IsEmpty() && !path)
 		cur = open.Pop()
-		openc -= cur.source
-		closed[cur.source] = ALL_DIRS
+		var/turf/cur_turf = cur[ATURF]
+		openc -= cur_turf
+		closed[cur_turf] = ALL_DIRS
 
 		// Destination check - must be exact match or valid closeenough on same Z-level
-		var/is_destination = (cur.source == end)
+		var/is_destination = (cur_turf == end)
 		// Only consider "close enough" if on the same Z-level
 		var/closeenough = FALSE
-		if (!check_z_levels || cur.source.z == end.z)
+		if (!check_z_levels || cur_turf.z == end.z)
 			if (mintargetdist)
-				closeenough = cur.source.Distance3D(end) <= mintargetdist
+				closeenough = cur_turf.Distance3D(end) <= mintargetdist
 			else
-				closeenough = cur.source.Distance3D(end) < 1
+				closeenough = cur_turf.Distance3D(end) < 1
 
 		if (is_destination || closeenough)
-			path = list(cur.source)
-			while (cur.prevNode)
-				cur = cur.prevNode
-				path.Add(cur.source)
+			path = list(cur_turf)
+			var/list/prev = cur[PREV_NODE]
+			while (prev)
+				path.Add(prev[ATURF])
+				prev = prev[PREV_NODE]
 			break
 
-		if(maxnodedepth && (cur.nt > maxnodedepth))  // if too many steps, don't process that path
+		if(maxnodedepth && (cur[NODE_TURN] > maxnodedepth))  // if too many steps, don't process that path
 			CHECK_TICK
 			continue
 
 		for(var/dir_to_check in GLOB.cardinals)
-			if(!(cur.bf & dir_to_check))  // we can't proceed in this direction
+			if(!(cur[BLOCKED_FROM] & dir_to_check))  // we can't proceed in this direction
 				continue
 
 			// get the turf we end up at if we move in dir_to_check; this may have special handling for multiz moves
-			var/turf/T = get_step(cur.source, dir_to_check)
+			var/turf/T = get_step(cur_turf, dir_to_check)
 
 			// when leaving a turf with stairs on it, we can change Z, so take that into account
 			// this handles both upwards and downwards moves depending on the dir
-			var/obj/structure/stairs/source_stairs = locate(/obj/structure/stairs) in cur.source
+			var/obj/structure/stairs/source_stairs = locate(/obj/structure/stairs) in cur_turf
 			if(source_stairs)
 				T = source_stairs.get_transit_destination(dir_to_check)
 
@@ -132,21 +139,21 @@
 				continue
 
 			// check if not valid
-			if(!call(cur.source, adjacent)(requester, T, id))
+			if(!call(cur_turf, adjacent)(requester, T, id))
 				closed[T] |= reverse
 				continue
 
-			var/datum/PathNode/CN = openc[T]  // current checking turf
-			var/newg = cur.g + call(cur.source, dist)(T, requester)  // add the travel distance between these two tiles to the distance so far
+			var/list/CN = openc[T]  // current checking node
+			var/newg = cur[DIST_FROM_START_G] + call(cur_turf, dist)(T, requester)  // add the travel distance between these two tiles to the distance so far
 
 			if(CN)
 				// is already in open list, check if it's a better way from the current turf
-				if(newg < CN.g)
-					CN.setp(cur, newg, CN.h, cur.nt + 1)
+				if(newg < CN[DIST_FROM_START_G])
+					ASTAR_UPDATE_NODE(CN, cur, newg, CN[HEURISTIC_H], cur[NODE_TURN] + 1)
 					open.ReSort(CN)  // reorder the changed element in the list
 			else
 				// is not already in open list, so add it
-				CN = new(T, cur, newg, call(T, dist)(end, requester), cur.nt + 1, ALL_DIRS^reverse)
+				CN = ASTAR_NODE(T, newg, call(T, dist)(end, requester), cur, cur[NODE_TURN] + 1, ALL_DIRS^reverse)
 				open.Insert(CN)
 				openc[T] = CN
 
@@ -212,3 +219,14 @@
 		if(!M.CanPass(requester, src))
 			return TRUE
 	return FALSE
+
+#undef ATURF
+#undef TOTAL_COST_F
+#undef DIST_FROM_START_G
+#undef HEURISTIC_H
+#undef PREV_NODE
+#undef NODE_TURN
+#undef BLOCKED_FROM
+#undef ASTAR_NODE
+#undef ASTAR_UPDATE_NODE
+#undef ASTAR_CLOSE_ENOUGH_TO_END
