@@ -150,3 +150,10 @@ GLOBAL_LIST_INIT_TYPED(blood_types, /datum/blood_type, init_subtypes_w_path_keys
 	name = "Troll"
 	used_table = /datum/chimeric_table/troll
 
+/datum/blood_type/fey
+	name = "fey"
+	used_table = /datum/chimeric_table/fey
+
+/datum/blood_type/lycan
+	name = "Lycan"
+	used_table = /datum/chimeric_table/lycan
