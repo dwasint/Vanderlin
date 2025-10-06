@@ -118,7 +118,7 @@
 	playsound(get_turf(src), 'sound/misc/bleed (3).ogg', 100, FALSE)
 	if(container && container.is_open_container() && container.reagents.total_volume < container.reagents.maximum_volume)
 		var/datum/blood_type/type = L.get_blood_type()
-		container.reagents.add_reagent(initial(type.reagent_type), 5)
+		container.reagents.add_reagent(initial(type.reagent_type), 5, data = type.get_blood_data(L))
 	else
 		var/obj/effect/decal/cleanable/blood/puddle/P = locate() in get_turf(src)
 		if(P)

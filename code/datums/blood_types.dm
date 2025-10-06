@@ -30,7 +30,18 @@ GLOBAL_LIST_INIT_TYPED(blood_types, /datum/blood_type, init_subtypes_w_path_keys
 
 /// Gets data to pass to a reagent
 /datum/blood_type/proc/get_blood_data(mob/living/sampled_from)
-	return null
+	if(!istype(sampled_from))
+		return null
+
+	var/list/blood_data = list()
+
+	blood_data["mind"] = sampled_from.mind
+	blood_data["ckey"] = sampled_from.ckey
+	blood_data["blood_type"] = sampled_from.get_blood_type().type
+	blood_data["gender"] = sampled_from.gender
+	blood_data["real_name"] = sampled_from.real_name
+	blood_data["factions"] = sampled_from.faction
+	return blood_data
 
 /**
  * Used to handle any unique facets of blood spawned of this blood type

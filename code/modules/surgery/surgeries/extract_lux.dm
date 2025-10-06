@@ -1,4 +1,5 @@
 /datum/surgery/extract_lux
+	name = "Lux Extraction"
 	steps = list(
 		/datum/surgery_step/incise,
 		/datum/surgery_step/clamp,

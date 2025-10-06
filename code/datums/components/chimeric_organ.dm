@@ -29,6 +29,9 @@
 	var/processing = FALSE
 	///is the organ currently failed
 	var/failed = FALSE
+	///this is our failed %
+	var/failed_precent = 0
+	COOLDOWN_DECLARE(last_fail_message)
 
 /datum/component/chimeric_organ/Initialize(maximum_tier_difference = 1)
 	. = ..()
@@ -105,38 +108,89 @@
 
 	var/datum/component/blood_stability/blood_stab = organ_owner.GetComponent(/datum/component/blood_stability)
 	if(!blood_stab)
-		trigger_organ_failure("no blood stability component")
+		trigger_organ_failure("no blood stability component", 100)
 		return
 
 	for(var/datum/chimeric_organs/input/input_node as anything in inputs)
 		if(!input_node.try_consume_blood(blood_stab, 1))
-			trigger_organ_failure("node [input_node] lacks blood")
+			trigger_organ_failure("lacks suitable thaumiel blood", 2)
 			return
 
 	for(var/datum/chimeric_organs/output/output_node as anything in outputs)
 		if(!output_node.try_consume_blood(blood_stab, 1))
-			trigger_organ_failure("node [output_node] lacks blood")
+			trigger_organ_failure("lacks suitable thaumiel blood", 2)
 			return
+	failed_precent = max(failed_precent - 1, 0)
 
 /datum/component/chimeric_organ/proc/force_trigger()
 	var/datum/component/blood_stability/blood_stab = organ_owner.GetComponent(/datum/component/blood_stability)
 	if(!blood_stab)
-		trigger_organ_failure("no blood stability component")
+		trigger_organ_failure("no blood stability component", 100)
 		return
 
 	for(var/datum/chimeric_organs/input/input_node as anything in inputs)
 		if(!input_node.try_consume_blood(blood_stab, 1))
-			trigger_organ_failure("node [input_node] lacks blood")
+			trigger_organ_failure("lacks suitable thaumiel blood", 2)
 			return
 		input_node.trigger_output(1)
 
 	for(var/datum/chimeric_organs/output/output_node as anything in outputs)
 		if(!output_node.try_consume_blood(blood_stab, 1))
-			trigger_organ_failure("node [output_node] lacks blood")
+			trigger_organ_failure("lacks suitable thaumiel blood", 2)
 			return
 
-/datum/component/chimeric_organ/proc/trigger_organ_failure(reason)
+/datum/component/chimeric_organ/proc/get_available_blood_for_node(datum/component/blood_stability/blood_stab, datum/chimeric_organs/node)
+	var/available_blood = 0
+
+	for(var/blood_type in node.preferred_blood_types)
+		if(blood_stab.blood_stability[blood_type])
+			available_blood += blood_stab.blood_stability[blood_type]
+
+	if(length(node.compatible_blood_types))
+		for(var/blood_type in node.compatible_blood_types)
+			if(blood_stab.blood_stability[blood_type])
+				available_blood += blood_stab.blood_stability[blood_type]
+	else
+		for(var/blood_type in blood_stab.blood_stability)
+			if(blood_type in node.incompatible_blood_types)
+				continue
+			available_blood += blood_stab.blood_stability[blood_type]
+
+	return available_blood
+
+/datum/component/chimeric_organ/proc/get_available_blood_for_organ(datum/component/blood_stability/blood_stab)
+	var/available_blood = 0
+	var/list/usable_blood_types = list()
+
+	for(var/datum/chimeric_organs/node as anything in (inputs + outputs))
+		for(var/blood_type in node.preferred_blood_types)
+			usable_blood_types[blood_type] = TRUE
+
+		if(length(node.compatible_blood_types))
+			for(var/blood_type in node.compatible_blood_types)
+				usable_blood_types[blood_type] = TRUE
+		else
+			for(var/blood_type in blood_stab.blood_stability)
+				if(blood_type in node.incompatible_blood_types)
+					continue
+				usable_blood_types[blood_type] = TRUE
+
+	for(var/blood_type in usable_blood_types)
+		if(blood_stab.blood_stability[blood_type])
+			available_blood += blood_stab.blood_stability[blood_type]
+
+	return available_blood
+
+/datum/component/chimeric_organ/proc/trigger_organ_failure(reason, amount)
 	if(failed)
+		return
+	failed_precent += amount
+	if(failed_precent < 100)
+		if(COOLDOWN_FINISHED(src, last_fail_message))
+			to_chat(organ_owner, span_danger("Your [parent] is starting to fail because it [reason]!"))
+			organ_owner.emote("painscream")
+			COOLDOWN_START(src, last_fail_message, 30 SECONDS)
+		organ_owner.adjustToxLoss(5)
 		return
 
 	failed = TRUE

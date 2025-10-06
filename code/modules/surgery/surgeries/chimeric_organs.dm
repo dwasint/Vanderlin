@@ -10,6 +10,7 @@
 /datum/surgery/chimeric_transformation
 	name = "Chimeric Transformation"
 	desc = "Transform a normal organ into a chimeric organ capable of accepting grafted nodes."
+	category = "Pestran"
 	steps = list(
 		/datum/surgery_step/incise,
 		/datum/surgery_step/retract,
@@ -23,6 +24,7 @@
 /datum/surgery/chimeric_grafting
 	name = "Chimeric Node Grafting"
 	desc = "Graft a harvested node into a chimeric organ."
+	category = "Pestran"
 	steps = list(
 		/datum/surgery_step/incise,
 		/datum/surgery_step/retract,
@@ -36,6 +38,7 @@
 /datum/surgery/chimeric_repair
 	name = "Chimeric Organ Repair"
 	desc = "Attempt to repair a failed chimeric organ."
+	category = "Pestran"
 	steps = list(
 		/datum/surgery_step/incise,
 		/datum/surgery_step/retract,
@@ -218,24 +221,28 @@
 		return FALSE
 
 	var/datum/component/blood_stability/blood_stab = target.GetComponent(/datum/component/blood_stability)
-	if(blood_stab && blood_stab.get_total_stability() < chimeric.node_injection_cost)
-		display_results(
-			user,
-			target,
-			span_warning("[target] lacks sufficient blood essence! The grafting requires [chimeric.node_injection_cost] units."),
-			span_warning("The grafting ritual falters as [user] works."),
-			""
-		)
-		to_chat(user, span_notice("Current blood essence: [blood_stab.get_total_stability()] / [chimeric.node_injection_cost] required"))
-		selected_organ = null
-		return FALSE
+	if(blood_stab)
+		var/datum/chimeric_organs/test_node = node_to_graft.stored_node
+		var/available_blood = chimeric.get_available_blood_for_node(blood_stab, test_node)
+
+		if(available_blood < chimeric.node_injection_cost)
+			display_results(
+				user,
+				target,
+				span_warning("[target] lacks sufficient compatible blood essence! The grafting requires [chimeric.node_injection_cost] units."),
+				span_warning("The grafting ritual falters as [user] works."),
+				""
+			)
+			to_chat(user, span_notice("Available compatible blood: [available_blood] / [chimeric.node_injection_cost] required"))
+			selected_organ = null
+			return FALSE
 
 	var/datum/chimeric_organs/test_node = node_to_graft.stored_node
 	var/node_slot = INPUT_NODE
 	if(istype(test_node, /datum/chimeric_organs/output))
 		node_slot = OUTPUT_NODE
 
-	var/datum/chimeric_organs/new_node = new node_to_graft.stored_node()
+	var/datum/chimeric_organs/new_node = node_to_graft.stored_node
 
 	chimeric.handle_node_injection(
 		tier = node_to_graft.node_tier,
@@ -244,6 +251,7 @@
 		injected_node = new_node
 	)
 
+	node_to_graft.stored_node = null
 	qdel(node_to_graft)
 	node_to_graft = null
 
@@ -256,18 +264,48 @@
 	)
 
 	var/total_cost = 0
-	var/list/blood_types_needed = list()
+	var/list/blood_costs_by_type = list()
 
 	for(var/datum/chimeric_organs/N as anything in (chimeric.inputs + chimeric.outputs))
 		total_cost += N.base_blood_cost
-		if(N.preferred_blood_types && N.preferred_blood_types.len)
-			for(var/blood_type in N.preferred_blood_types)
-				if(!(blood_type in blood_types_needed))
-					blood_types_needed += blood_type
+
+		for(var/blood_type in N.preferred_blood_types)
+			var/adjusted_cost = N.base_blood_cost * (1 - N.preferred_blood_bonus)
+			if(!blood_costs_by_type[blood_type])
+				blood_costs_by_type[blood_type] = 0
+			blood_costs_by_type[blood_type] += adjusted_cost
+
+		if(length(N.compatible_blood_types))
+			for(var/blood_type in N.compatible_blood_types)
+				if(blood_type in N.preferred_blood_types)
+					continue
+				if(!blood_costs_by_type[blood_type])
+					blood_costs_by_type[blood_type] = 0
+				blood_costs_by_type[blood_type] += N.base_blood_cost
+		else
+			if(blood_stab)
+				for(var/blood_type in blood_stab.blood_stability)
+					if(blood_type in N.incompatible_blood_types)
+						continue
+					if(blood_type in N.preferred_blood_types)
+						continue
+					if(!blood_costs_by_type[blood_type])
+						blood_costs_by_type[blood_type] = 0
+					blood_costs_by_type[blood_type] += N.base_blood_cost
+
+		// Note incompatible blood types
+		for(var/blood_type in N.incompatible_blood_types)
+			var/adjusted_cost = N.base_blood_cost * (1 + N.incompatible_blood_penalty)
+			if(!blood_costs_by_type["[blood_type] (HARMFUL)"])
+				blood_costs_by_type["[blood_type] (HARMFUL)"] = 0
+			blood_costs_by_type["[blood_type] (HARMFUL)"] += adjusted_cost
 
 	to_chat(user, span_warning("[selected_organ.name] now requires approximately [round(total_cost, 0.1)] blood essence per second."))
-	if(blood_types_needed.len)
-		to_chat(user, span_notice("Preferred blood types: [english_list(blood_types_needed)]"))
+
+	if(length(blood_costs_by_type))
+		to_chat(user, span_notice("Blood types that can sustain this organ:"))
+		for(var/blood_type in blood_costs_by_type)
+			to_chat(user, span_notice("  [blood_type]: [round(blood_costs_by_type[blood_type], 0.1)] units/sec"))
 
 	to_chat(target, span_userdanger("You feel alien flesh merging with your [selected_organ.name]!"))
 
@@ -348,15 +386,28 @@
 	var/repair_cost = 50
 	var/datum/component/blood_stability/blood_stab = target.GetComponent(/datum/component/blood_stability)
 
-	if(!blood_stab || blood_stab.get_total_stability() < repair_cost)
+	if(!blood_stab)
 		display_results(
 			user,
 			target,
-			span_warning("The repair fails! [target] needs [repair_cost] units of blood essence to repair this organ."),
+			span_warning("The repair fails! [target] lacks a blood stability system."),
 			span_warning("[user]'s ritual fails."),
 			""
 		)
-		to_chat(user, span_notice("Current blood essence: [blood_stab ? blood_stab.get_total_stability() : 0] / [repair_cost] required"))
+		selected_organ = null
+		return FALSE
+
+	var/available_blood = chimeric.get_available_blood_for_organ(blood_stab)
+
+	if(available_blood < repair_cost)
+		display_results(
+			user,
+			target,
+			span_warning("The repair fails! [target] lacks sufficient compatible blood essence for this organ."),
+			span_warning("[user]'s ritual fails."),
+			""
+		)
+		to_chat(user, span_notice("Available compatible blood: [available_blood] / [repair_cost] required"))
 		selected_organ = null
 		return FALSE
 
