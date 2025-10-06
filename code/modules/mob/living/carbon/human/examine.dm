@@ -163,9 +163,10 @@
 		if(real_name in GLOB.heretical_players)
 			. += span_userdanger("HERETIC! SHAME!")
 
-		if(is_zizocultist(user.mind) || is_zizolackey(user.mind))
-			if(virginity)
-				. += span_userdanger("VIRGIN!")
+		if(user.mind)
+			if(is_zizocultist(user.mind) || is_zizolackey(user.mind))
+				if(virginity)
+					. += span_userdanger("VIRGIN!")
 
 		var/is_bandit = FALSE
 		if(mind?.special_role == "Bandit")
@@ -173,7 +174,7 @@
 			if((real_name in GLOB.outlawed_players) && HAS_TRAIT(user, TRAIT_KNOWBANDITS))
 				. += span_userdanger("BANDIT!")
 
-		if(mind && mind.special_role == "Vampire Lord")
+		if(mind && mind?.special_role == "Vampire Lord")
 			var/datum/component/vampire_disguise/disguise_comp = GetComponent(/datum/component/vampire_disguise)
 			if(!disguise_comp.disguised)
 				. += span_userdanger("A MONSTER!")
