@@ -818,6 +818,7 @@
 #include "code\datums\chimeric_organs\outputs\liquid.dm"
 #include "code\datums\chimeric_organs\outputs\reagent.dm"
 #include "code\datums\chimeric_organs\outputs\rewind.dm"
+#include "code\datums\chimeric_organs\outputs\speed.dm"
 #include "code\datums\chimeric_organs\outputs\status_effect.dm"
 #include "code\datums\chimeric_organs\outputs\stressor.dm"
 #include "code\datums\chimeric_organs\outputs\vomit.dm"

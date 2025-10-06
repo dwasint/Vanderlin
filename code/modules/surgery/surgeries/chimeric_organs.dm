@@ -222,7 +222,7 @@
 
 	var/datum/component/blood_stability/blood_stab = target.GetComponent(/datum/component/blood_stability)
 	if(blood_stab)
-		var/datum/chimeric_organs/test_node = node_to_graft.stored_node
+		var/datum/chimeric_node/test_node = node_to_graft.stored_node
 		var/available_blood = chimeric.get_available_blood_for_node(blood_stab, test_node)
 
 		if(available_blood < chimeric.node_injection_cost)
@@ -237,12 +237,12 @@
 			selected_organ = null
 			return FALSE
 
-	var/datum/chimeric_organs/test_node = node_to_graft.stored_node
+	var/datum/chimeric_node/test_node = node_to_graft.stored_node
 	var/node_slot = INPUT_NODE
-	if(istype(test_node, /datum/chimeric_organs/output))
+	if(istype(test_node, /datum/chimeric_node/output))
 		node_slot = OUTPUT_NODE
 
-	var/datum/chimeric_organs/new_node = node_to_graft.stored_node
+	var/datum/chimeric_node/new_node = node_to_graft.stored_node
 
 	chimeric.handle_node_injection(
 		tier = node_to_graft.node_tier,
@@ -266,7 +266,7 @@
 	var/total_cost = 0
 	var/list/blood_costs_by_type = list()
 
-	for(var/datum/chimeric_organs/N as anything in (chimeric.inputs + chimeric.outputs))
+	for(var/datum/chimeric_node/N as anything in (chimeric.inputs + chimeric.outputs))
 		total_cost += N.base_blood_cost
 
 		for(var/blood_type in N.preferred_blood_types)
@@ -416,7 +416,7 @@
 	chimeric.failed = FALSE
 	chimeric.start_processing()
 
-	for(var/datum/chimeric_organs/input/input_node as anything in chimeric.inputs)
+	for(var/datum/chimeric_node/input/input_node as anything in chimeric.inputs)
 		input_node.register_triggers(target)
 
 	display_results(

@@ -1,11 +1,11 @@
-/datum/chimeric_organs/output/liquid
+/datum/chimeric_node/output/liquid
 	name = "pooling"
 	desc = "Generates pools of liquids around you when triggered."
 
 	var/generated_amount = 20
 	var/datum/reagent/good_reagent
 
-/datum/chimeric_organs/output/liquid/set_ranges()
+/datum/chimeric_node/output/liquid/set_ranges()
 	. = ..()
 	generated_amount *= (node_purity * 0.02) * (tier * 0.5)
 	generated_amount = min(generated_amount, 50)
@@ -27,7 +27,7 @@
 	if(!good_reagent)
 		good_reagent = picked_reagent
 
-/datum/chimeric_organs/output/liquid/trigger_effect(multiplier)
+/datum/chimeric_node/output/liquid/trigger_effect(multiplier)
 	. = ..()
 	var/turf/carbon_turf = get_turf(hosted_carbon)
 	hosted_carbon.visible_message("<span class='danger'>A rush of liquid comes from [hosted_carbon]!</span>", \

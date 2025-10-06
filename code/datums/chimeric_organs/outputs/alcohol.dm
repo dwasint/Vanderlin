@@ -1,13 +1,13 @@
-/datum/chimeric_organs/output/alcoholic
+/datum/chimeric_node/output/alcoholic
 	name = "Distillery"
 	desc = "Adds anti toxin in relation to the alcohol inside you."
 	tier = 4
 	node_purity = 100
 
-/datum/chimeric_organs/output/alcoholic/set_values(node_purity, tier)
+/datum/chimeric_node/output/alcoholic/set_values(node_purity, tier)
 	return
 
-/datum/chimeric_organs/output/alcoholic/trigger_effect(multiplier)
+/datum/chimeric_node/output/alcoholic/trigger_effect(multiplier)
 	. = ..()
 
 	var/is_good = TRUE

@@ -1,4 +1,4 @@
-/datum/chimeric_organs/output/reagent
+/datum/chimeric_node/output/reagent
 	name = "creator"
 	desc = "Generates chemicals when triggered"
 
@@ -6,7 +6,7 @@
 
 	var/generated_amount = 5
 
-/datum/chimeric_organs/output/reagent/set_ranges()
+/datum/chimeric_node/output/reagent/set_ranges()
 	. = ..()
 	generated_amount *= (node_purity * 0.02) * (tier * 0.5)
 
@@ -28,10 +28,10 @@
 	good_reagent = picked_reagent
 
 
-/datum/chimeric_organs/output/reagent/trigger_effect(multiplier)
+/datum/chimeric_node/output/reagent/trigger_effect(multiplier)
 	. = ..()
-	if(istype(attached_input, /datum/chimeric_organs/input/reagent))
-		var/datum/chimeric_organs/input/reagent/actual_type = attached_input
+	if(istype(attached_input, /datum/chimeric_node/input/reagent))
+		var/datum/chimeric_node/input/reagent/actual_type = attached_input
 
 		if((good_reagent in actual_type.trigger_reagents))
 			to_chat(hosted_carbon, span_warning("Your [attached_organ.name] is overloaded by the chemicals! You start to spew out chemicals causing lots of pain!"))

@@ -57,7 +57,7 @@
 	if(!length(node_pool))
 		qdel(table)
 		return null
-	var/datum/chimeric_organs/selected_node_type = pickweight(node_pool)
+	var/datum/chimeric_node/selected_node_type = pickweight(node_pool)
 	var/obj/item/chimeric_node/new_node = new()
 	new_node.node_tier = table.node_tier
 	new_node.node_purity = rand(table.node_purity_min, table.node_purity_max)

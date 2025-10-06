@@ -1,16 +1,16 @@
-/datum/chimeric_organs/input/reagent
-	abstract_type = /datum/chimeric_organs/input/reagent
+/datum/chimeric_node/input/reagent
+	abstract_type = /datum/chimeric_node/input/reagent
 	name = "drowning"
 	desc = "Triggered when you consume a specific brew."
 
 	var/list/trigger_reagents = list()
 	var/minimum_amount = 1
 
-/datum/chimeric_organs/input/reagent/set_ranges()
+/datum/chimeric_node/input/reagent/set_ranges()
 	. = ..()
 	minimum_amount = rand(max(1, minimum_amount - (3 + ((100 - node_purity) * 0.2))), minimum_amount + (3 + ((100 - node_purity) * 0.2)))
 
-/datum/chimeric_organs/input/reagent/register_triggers(mob/living/carbon/target)
+/datum/chimeric_node/input/reagent/register_triggers(mob/living/carbon/target)
 	if(!target)
 		return
 
@@ -18,7 +18,7 @@
 	registered_signals += COMSIG_CARBON_REAGENT_ADD
 	RegisterSignal(target, COMSIG_CARBON_REAGENT_ADD, PROC_REF(on_reagent_added))
 
-/datum/chimeric_organs/input/reagent/proc/on_reagent_added(datum/source, datum/reagent/consumed_reagent, consumed_amount)
+/datum/chimeric_node/input/reagent/proc/on_reagent_added(datum/source, datum/reagent/consumed_reagent, consumed_amount)
 	SIGNAL_HANDLER
 
 	if(consumed_amount < minimum_amount)
@@ -37,10 +37,10 @@
 		var/potency = calculate_potency(consumed_reagent, consumed_amount)
 		trigger_output(potency)
 
-/datum/chimeric_organs/input/reagent/proc/calculate_potency(datum/reagent/reagent, amount)
+/datum/chimeric_node/input/reagent/proc/calculate_potency(datum/reagent/reagent, amount)
 	// Base potency calculation - can be overridden
 	return (amount / minimum_amount) * (node_purity / 100)
 
-/datum/chimeric_organs/input/reagent/blood
+/datum/chimeric_node/input/reagent/blood
 	trigger_reagents = list(/datum/reagent/blood)
 	minimum_amount = 5

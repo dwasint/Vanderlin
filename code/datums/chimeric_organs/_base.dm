@@ -4,15 +4,15 @@
 
 	switch(slot_type)
 		if(INPUT_NODE)
-			node_types = subtypesof(/datum/chimeric_organs/input)
+			node_types = subtypesof(/datum/chimeric_node/input)
 		if(OUTPUT_NODE)
-			node_types = subtypesof(/datum/chimeric_organs/output)
+			node_types = subtypesof(/datum/chimeric_node/output)
 		if(SPECIAL_NODE)
-			node_types = subtypesof(/datum/chimeric_organs/special)
+			node_types = subtypesof(/datum/chimeric_node/special)
 		else
 			return weighted_nodes
 
-	for(var/datum/chimeric_organs/node_type as anything in node_types)
+	for(var/datum/chimeric_node/node_type as anything in node_types)
 		if(is_abstract(node_type))
 			continue
 		var/tier = initial(node_type.tier)
@@ -22,8 +22,8 @@
 
 	return weighted_nodes
 
-/datum/chimeric_organs
-	abstract_type = /datum/chimeric_organs
+/datum/chimeric_node
+	abstract_type = /datum/chimeric_node
 	var/name = ""
 	var/desc = ""
 
@@ -35,7 +35,7 @@
 	var/obj/item/organ/attached_organ
 	var/mob/living/carbon/hosted_carbon
 	///a special node that interacts with either the input or output
-	var/datum/chimeric_organs/special/attached_special
+	var/datum/chimeric_node/special/attached_special
 
 	/// Blood types this node can use (empty = can use any)
 	var/list/compatible_blood_types = list()
@@ -57,7 +57,7 @@
 	/// List of organ slots this node is explicitly forbidden from
 	var/list/forbidden_organ_slots = list()
 
-/datum/component/chimeric_organ/proc/check_node_compatibility(datum/chimeric_organs/node)
+/datum/component/chimeric_organ/proc/check_node_compatibility(datum/chimeric_node/node)
 	var/obj/item/organ/organ = parent
 	if(!istype(organ))
 		return FALSE
@@ -74,7 +74,7 @@
 
 	return TRUE
 
-/datum/chimeric_organs/proc/try_consume_blood(datum/component/blood_stability/blood_stab, delta_time)
+/datum/chimeric_node/proc/try_consume_blood(datum/component/blood_stability/blood_stab, delta_time)
 	var/blood_needed = base_blood_cost * delta_time
 
 	for(var/blood_type in preferred_blood_types)
@@ -101,7 +101,7 @@
 
 	return FALSE
 
-/datum/chimeric_organs/proc/damage_from_incompatible_blood()
+/datum/chimeric_node/proc/damage_from_incompatible_blood()
 	if(!hosted_carbon)
 		return
 
@@ -110,19 +110,19 @@
 		attached_organ.applyOrganDamage(1)
 
 
-/datum/chimeric_organs/proc/setup()
+/datum/chimeric_node/proc/setup()
 	return
 
-/datum/chimeric_organs/proc/set_ranges()
+/datum/chimeric_node/proc/set_ranges()
 	return
 
-/datum/chimeric_organs/proc/return_description(skill_level)
+/datum/chimeric_node/proc/return_description(skill_level)
 	return
 
-/datum/chimeric_organs/proc/check_active()
+/datum/chimeric_node/proc/check_active()
 	return
 
-/datum/chimeric_organs/proc/set_values(node_purity, tier)
+/datum/chimeric_node/proc/set_values(node_purity, tier)
 	src.node_purity = node_purity
 	src.tier = tier
 

@@ -4,7 +4,7 @@
 	desc = "A preserved piece of flesh containing a chimeric node. It pulses with unnatural life."
 	icon = 'icons/obj/chimeric_nodes.dmi'
 	icon_state = "capillary"
-	var/datum/chimeric_organs/stored_node
+	var/datum/chimeric_node/stored_node
 	grid_height = 64
 	grid_width = 32
 	var/node_tier = 1
@@ -20,7 +20,7 @@
         if(!length(stored_node.allowed_organ_slots) && !length(stored_node.forbidden_organ_slots))
             . += span_notice("This node is compatible with any organ.")
 
-/obj/item/chimeric_node/proc/setup_node(datum/chimeric_organs/incoming_node, list/compatible_blood_types = list(), list/incompatible_blood_types = list(), list/preferred_blood_types = list(), base_blood_cost = 0.3, preferred_blood_bonus = 0.5, incompatible_blood_penalty = 2.0)
+/obj/item/chimeric_node/proc/setup_node(datum/chimeric_node/incoming_node, list/compatible_blood_types = list(), list/incompatible_blood_types = list(), list/preferred_blood_types = list(), base_blood_cost = 0.3, preferred_blood_bonus = 0.5, incompatible_blood_penalty = 2.0)
 	stored_node = new incoming_node
 
 	stored_node.compatible_blood_types = compatible_blood_types

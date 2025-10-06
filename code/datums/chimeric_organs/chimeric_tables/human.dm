@@ -48,7 +48,7 @@
 	incompatible_blood_types = list()
 
 	input_nodes = list(
-		/datum/chimeric_organs/input/damage/burn = 10
+		/datum/chimeric_node/input/damage/burn = 10
 	)
 
 	base_blood_cost = 0.45
@@ -118,7 +118,7 @@
 	incompatible_blood_types = list()
 
 	input_nodes = list(
-		/datum/chimeric_organs/input/racist = 5
+		/datum/chimeric_node/input/racist = 5
 	)
 
 	base_blood_cost = 0.3
@@ -136,7 +136,7 @@
 	incompatible_blood_types = list()
 
 	input_nodes = list(
-		/datum/chimeric_organs/input/racist = 5
+		/datum/chimeric_node/input/racist = 5
 	)
 
 	base_blood_cost = 0.3
@@ -154,7 +154,7 @@
 	incompatible_blood_types = list()
 
 	input_nodes = list(
-		/datum/chimeric_organs/input/racist = 5
+		/datum/chimeric_node/input/racist = 5
 	)
 
 	base_blood_cost = 0.3
@@ -172,7 +172,7 @@
 	incompatible_blood_types = list()
 
 	input_nodes = list(
-		/datum/chimeric_organs/input/racist/elf = 5
+		/datum/chimeric_node/input/racist/elf = 5
 	)
 
 	base_blood_cost = 0.3

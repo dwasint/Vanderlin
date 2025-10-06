@@ -1,4 +1,4 @@
-/datum/chimeric_organs/input/racist
+/datum/chimeric_node/input/racist
 	name = "codger hater"
 	desc = "When in view of a dwarf will trigger."
 	weight = 5
@@ -6,7 +6,7 @@
 	var/current_beats = 0
 	var/datum/species/disliked_species = /datum/species/dwarf
 
-/datum/chimeric_organs/input/racist/register_triggers(mob/living/carbon/target)
+/datum/chimeric_node/input/racist/register_triggers(mob/living/carbon/target)
 	if(!target)
 		return
 
@@ -14,7 +14,7 @@
 	registered_signals += COMSIG_HUMAN_LIFE
 	RegisterSignal(target, COMSIG_HUMAN_LIFE, PROC_REF(on_heartbeat))
 
-/datum/chimeric_organs/input/racist/proc/on_heartbeat(datum/source)
+/datum/chimeric_node/input/racist/proc/on_heartbeat(datum/source)
 	SIGNAL_HANDLER
 	current_beats++
 	if(current_beats < beats_per_trigger)
@@ -26,7 +26,7 @@
 			trigger_output(potency)
 			return
 
-/datum/chimeric_organs/input/racist/elf
+/datum/chimeric_node/input/racist/elf
 	name = "knife ear hater"
 	desc = "When in view of an elf will trigger."
 	disliked_species = /datum/species/elf

@@ -1,10 +1,10 @@
-/datum/chimeric_organs/output/wild_magic
+/datum/chimeric_node/output/wild_magic
 	name = "wild magic"
 	desc = "When activated triggers a random spell on a random target"
 
 	var/static/list/spell_types = list()
 
-/datum/chimeric_organs/output/wild_magic/trigger_effect(multiplier)
+/datum/chimeric_node/output/wild_magic/trigger_effect(multiplier)
 	. = ..()
 	if(!length(spell_types))
 		for(var/datum/spell_node/node in subtypesof(/datum/spell_node))
