@@ -145,6 +145,7 @@
 		var/datum/looping_sound/looping_sound = currentSounds[M]
 		if(istype(looping_sound))
 			looping_sound.stop()
+			currentSounds -= looping_sound
 			qdel(looping_sound)
 	return ..()
 
