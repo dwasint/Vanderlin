@@ -275,8 +275,8 @@
 	if(water_overlay)
 		var/image/overlay = image(icon, water_overlay, add, ABOVE_MOB_LAYER + 0.01, pixel_x = offset ? x : 0, pixel_y = offset ? y : 0 )
 		overlay.color = water_reagent.color
-		if(water_overlay.neighborlay_list["[dir]"])
-			cut_overlay(water_overlay.neighborlay_list["[dir]"])
+		if("[dir]" in water_overlay.neighborlay_list)
+			water_overlay.cut_overlay(water_overlay.neighborlay_list["[dir]"])
 			qdel(water_overlay.neighborlay_list["[dir]"])
 			LAZYREMOVE(water_overlay.neighborlay_list, "[dir]")
 		LAZYADDASSOC(water_overlay.neighborlay_list, "[dir]", overlay)
