@@ -337,7 +337,7 @@
 						continue
 				if(ispath(sub_path, /datum/wound))
 					var/datum/wound/wound = sub_path
-					if(initial(wound.show_in_book))
+					if(!initial(wound.show_in_book))
 						continue
 
 				var/recipe_name = initial(sub_path.name)
