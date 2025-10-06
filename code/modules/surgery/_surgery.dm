@@ -19,6 +19,8 @@
 	var/requires_real_bodypart = FALSE
 	/// Acceptable limb statuses
 	var/requires_bodypart_type = BODYPART_ORGANIC
+	///will the church kill us
+	var/heretical = FALSE
 
 /datum/surgery/proc/generate_html(mob/user)
 	var/client/client = user
@@ -27,6 +29,8 @@
 	SSassets.transport.send_assets(client, list("try4_border.png", "try4.png", "slop_menustyle2.css"))
 	user << browse_rsc('html/book.png')
 
+	if(heretical)
+		desc = "<div style='color: red;'><b>HERETICAL RESEARCH</b></div>" + desc
 	var/html = {"
 		<!DOCTYPE html>
 		<html>

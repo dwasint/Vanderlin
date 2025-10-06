@@ -17,6 +17,7 @@
 		/datum/surgery_step/create_chimeric_organ,
 		/datum/surgery_step/cauterize
 	)
+	heretical = TRUE
 	possible_locs = list(BODY_ZONE_CHEST, BODY_ZONE_HEAD)
 	target_mobtypes = list(/mob/living/carbon/human)
 	requires_bodypart_type = BODYPART_ORGANIC
@@ -31,6 +32,7 @@
 		/datum/surgery_step/graft_chimeric_node,
 		/datum/surgery_step/cauterize
 	)
+	heretical = TRUE
 	possible_locs = list(BODY_ZONE_CHEST, BODY_ZONE_HEAD)
 	target_mobtypes = list(/mob/living/carbon/human)
 	requires_bodypart_type = BODYPART_ORGANIC
@@ -45,6 +47,7 @@
 		/datum/surgery_step/repair_chimeric_organ,
 		/datum/surgery_step/cauterize
 	)
+	heretical = TRUE
 	possible_locs = list(BODY_ZONE_CHEST, BODY_ZONE_HEAD)
 	target_mobtypes = list(/mob/living/carbon/human)
 	requires_bodypart_type = BODYPART_ORGANIC

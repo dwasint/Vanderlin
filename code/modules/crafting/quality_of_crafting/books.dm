@@ -335,6 +335,10 @@
 					var/datum/repeatable_crafting_recipe/craft = sub_path
 					if(initial(craft.hides_from_books))
 						continue
+				if(ispath(sub_path, /datum/wound))
+					var/datum/wound/wound = sub_path
+					if(initial(wound.show_in_book))
+						continue
 
 				var/recipe_name = initial(sub_path.name)
 				if(ispath(sub_path, /datum/alch_cauldron_recipe))

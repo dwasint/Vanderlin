@@ -9,6 +9,7 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 
 /datum/wound
 	abstract_type = /datum/wound
+	var/show_in_book = TRUE
 	var/category = "Wound"
 	/// Name of the wound, visible to players when inspecting a limb and such
 	var/name = "wound"
