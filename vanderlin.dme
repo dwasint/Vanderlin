@@ -816,6 +816,7 @@
 #include "code\datums\chimeric_organs\inputs\spell_cast.dm"
 #include "code\datums\chimeric_organs\inputs\stress.dm"
 #include "code\datums\chimeric_organs\inputs\sunlight.dm"
+#include "code\datums\chimeric_organs\inputs\wounded.dm"
 #include "code\datums\chimeric_organs\outputs\alcohol.dm"
 #include "code\datums\chimeric_organs\outputs\blasting.dm"
 #include "code\datums\chimeric_organs\outputs\burn.dm"

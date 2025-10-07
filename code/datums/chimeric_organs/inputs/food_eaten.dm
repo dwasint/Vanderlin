@@ -30,3 +30,8 @@
 	name = "graggerite"
 	weight = 5
 	triggered_food_types = list(/obj/item/reagent_containers/food/snacks/organ)
+
+/datum/chimeric_node/input/gluttony/cheese
+	name = "rous"
+	weight = 5
+	triggered_food_types = list(/obj/item/reagent_containers/food/snacks/cheese, /obj/item/reagent_containers/food/snacks/cheese_wedge)

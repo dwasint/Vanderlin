@@ -213,3 +213,64 @@
 	node_tier = 1
 	node_purity_min = 30
 	node_purity_max = 45
+
+/datum/chimeric_table/rousman
+	name = "Rousman"
+	compatible_blood_types = list(
+		/datum/blood_type/human/rousman,
+	)
+	preferred_blood_types = list(
+		/datum/blood_type/human/rousman,
+	)
+	incompatible_blood_types = list()
+
+	input_nodes = list(
+		/datum/chimeric_node/input/sunlight = 10,
+		/datum/chimeric_node/input/gluttony = 5,
+		/datum/chimeric_node/input/gluttony/cheese = 10,
+	)
+
+	base_blood_cost = 0.3
+	node_tier = 1
+	node_purity_min = 30
+	node_purity_max = 45
+
+/datum/chimeric_table/goblin
+	name = "Goblin"
+	compatible_blood_types = list(
+		/datum/blood_type/human/goblin,
+	)
+	preferred_blood_types = list(
+		/datum/blood_type/human/goblin,
+	)
+	incompatible_blood_types = list()
+
+	input_nodes = list(
+		/datum/chimeric_node/input/accumlated_damage = 10,
+	)
+
+	base_blood_cost = 0.3
+	node_tier = 1
+	node_purity_min = 30
+	node_purity_max = 45
+
+/datum/chimeric_table/orc
+	name = "Orc"
+	compatible_blood_types = list(
+		/datum/blood_type/human/orc,
+	)
+	preferred_blood_types = list(
+		/datum/blood_type/human/orc,
+	)
+	incompatible_blood_types = list()
+
+	input_nodes = list(
+		/datum/chimeric_node/input/accumlated_damage = 10,
+		/datum/chimeric_node/input/bleeding = 5,
+		/datum/chimeric_node/input/wounded = 10,
+	)
+
+	base_blood_cost = 0.3
+	node_tier = 1
+	node_purity_min = 30
+	node_purity_max = 45

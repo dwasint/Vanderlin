@@ -142,6 +142,18 @@ GLOBAL_LIST_INIT_TYPED(blood_types, /datum/blood_type, init_subtypes_w_path_keys
 	name = "Elf"
 	used_table = /datum/chimeric_table/elf
 
+/datum/blood_type/human/goblin
+	name = "Goblin"
+	used_table = /datum/chimeric_table/goblin
+
+/datum/blood_type/human/rousman
+	name = "Rousman"
+	used_table = /datum/chimeric_table/rousman
+
+/datum/blood_type/human/orc
+	name = "Orc"
+	used_table = /datum/chimeric_table/orc
+
 /datum/blood_type/animal
 	name = "Animal"
 	used_table = /datum/chimeric_table/animal

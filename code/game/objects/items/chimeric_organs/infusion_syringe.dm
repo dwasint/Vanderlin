@@ -89,7 +89,7 @@
 				if(L.transfer_blood_to(src, drawn_amount))
 					user.visible_message(span_notice("[user] takes a blood sample from [L]."))
 				else
-					to_chat(user, span_warning("I are unable to draw any blood from [L]!"))
+					to_chat(user, span_warning("I am unable to draw any blood from [L]!"))
 
 			else //if not mob
 				if(!target.reagents.total_volume)
