@@ -29,13 +29,13 @@
 	var/datum/chimeric_table/table = new table_type()
 	var/list/available_slots = list()
 	if(length(table.input_nodes))
-		available_slots[INPUT_NODE] = 1
+		available_slots[INPUT_NODE] = 10
 	if(length(table.output_nodes))
-		available_slots[OUTPUT_NODE] = 1
+		available_slots[OUTPUT_NODE] = 10
 	if(length(table.special_nodes))
 		available_slots[SPECIAL_NODE] = 1
 	if(!length(available_slots))
-		available_slots = list(INPUT_NODE = 1, OUTPUT_NODE = 1, SPECIAL_NODE = 1)
+		available_slots = list(INPUT_NODE = 10, OUTPUT_NODE = 10, SPECIAL_NODE = 1)
 	var/selected_slot = pickweight(available_slots)
 	var/list/node_pool
 	switch(selected_slot)
