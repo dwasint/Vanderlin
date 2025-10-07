@@ -44,6 +44,8 @@ Actual Adjacent procs :
 #define ASTAR_CLOSE_ENOUGH_TO_END(end, checking_turf, mintargetdist) \
 	(checking_turf == end || (mintargetdist && (get_dist_3d(checking_turf, end) <= mintargetdist)))
 
+#define SORT_TOTAL_COST_F(list) (list[TOTAL_COST_F])
+
 #define PF_TIEBREAKER 0.005
 #define MASK_ODD 85
 #define MASK_EVEN 170
@@ -78,19 +80,23 @@ Actual Adjacent procs :
 	if(maxnodes)
 		maxnodedepth = maxnodes
 
-	var/datum/Heap/open = new /datum/Heap(/proc/HeapPathWeightCompare)
+	var/list/open = list()  // Binary sorted list of nodes (lowest weight at end for easy Pop)
 	var/list/openc = new()  // turf -> node mapping for nodes in open list
 	var/list/closed = new()  // turf -> bitmask of blocked directions
 	var/list/path = null
 	var/const/ALL_DIRS = NORTH|SOUTH|EAST|WEST
 
-	// Create initial node using macro
+	// Create initial node
 	var/list/cur = ASTAR_NODE(start, 0, start.Distance3D(end), null, 0, ALL_DIRS)
-	open.Insert(cur)
+	var/list/insert_item = list(cur)
+	BINARY_INSERT_DEFINE_REVERSE(insert_item, open, SORT_VAR_NO_TYPE, cur, SORT_TOTAL_COST_F, COMPARE_KEY)
 	openc[start] = cur
 
-	while (requester && !open.IsEmpty() && !path)
-		cur = open.Pop()
+	while (requester && open.len && !path)
+		// Pop from end (highest priority in reverse sorted list)
+		cur = open[open.len]
+		open.len--
+
 		var/turf/cur_turf = cur[ATURF]
 		openc -= cur_turf
 		closed[cur_turf] = ALL_DIRS
@@ -113,19 +119,16 @@ Actual Adjacent procs :
 				prev = prev[PREV_NODE]
 			break
 
-		if(maxnodedepth && (cur[NODE_TURN] > maxnodedepth))  // if too many steps, don't process that path
+		if(maxnodedepth && (cur[NODE_TURN] > maxnodedepth))
 			CHECK_TICK
 			continue
 
 		for(var/dir_to_check in GLOB.cardinals)
-			if(!(cur[BLOCKED_FROM] & dir_to_check))  // we can't proceed in this direction
+			if(!(cur[BLOCKED_FROM] & dir_to_check))
 				continue
 
-			// get the turf we end up at if we move in dir_to_check; this may have special handling for multiz moves
 			var/turf/T = get_step(cur_turf, dir_to_check)
 
-			// when leaving a turf with stairs on it, we can change Z, so take that into account
-			// this handles both upwards and downwards moves depending on the dir
 			var/obj/structure/stairs/source_stairs = locate(/obj/structure/stairs) in cur_turf
 			if(source_stairs)
 				T = source_stairs.get_transit_destination(dir_to_check)
@@ -134,27 +137,34 @@ Actual Adjacent procs :
 				continue
 
 			var/reverse = REVERSE_DIR(dir_to_check)
-
 			if(closed[T] & reverse)
 				continue
 
-			// check if not valid
 			if(!call(cur_turf, adjacent)(requester, T, id))
 				closed[T] |= reverse
 				continue
 
-			var/list/CN = openc[T]  // current checking node
-			var/newg = cur[DIST_FROM_START_G] + call(cur_turf, dist)(T, requester)  // add the travel distance between these two tiles to the distance so far
+			var/list/CN = openc[T]
+			var/newg = cur[DIST_FROM_START_G] + call(cur_turf, dist)(T, requester)
 
 			if(CN)
-				// is already in open list, check if it's a better way from the current turf
+				// Already in open list, check if this is a better path
 				if(newg < CN[DIST_FROM_START_G])
+					// Remove old instance
+					var/list/old_item = list(CN)
+					open -= old_item
+
+					// Update node
 					ASTAR_UPDATE_NODE(CN, cur, newg, CN[HEURISTIC_H], cur[NODE_TURN] + 1)
-					open.ReSort(CN)  // reorder the changed element in the list
+
+					// Re-insert with new priority
+					var/list/new_item = list(CN)
+					BINARY_INSERT_DEFINE_REVERSE(new_item, open, SORT_VAR_NO_TYPE, CN, SORT_TOTAL_COST_F, COMPARE_KEY)
 			else
-				// is not already in open list, so add it
+				// Not in open list, create new node
 				CN = ASTAR_NODE(T, newg, call(T, dist)(end, requester), cur, cur[NODE_TURN] + 1, ALL_DIRS^reverse)
-				open.Insert(CN)
+				var/list/new_item = list(CN)
+				BINARY_INSERT_DEFINE_REVERSE(new_item, open, SORT_VAR_NO_TYPE, CN, SORT_TOTAL_COST_F, COMPARE_KEY)
 				openc[T] = CN
 
 		CHECK_TICK

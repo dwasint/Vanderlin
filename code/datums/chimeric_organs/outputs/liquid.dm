@@ -13,6 +13,7 @@
 	var/list/reagent_types = list(/datum/reagent/medicine,
 								  /datum/reagent/drug,
 								  /datum/reagent/toxin,
+								  /datum/reagent/poison,
 								  /datum/reagent/consumable,
 								  /datum/reagent/consumable/ethanol)
 	var/datum/reagent/reagent_type = pick(reagent_types)

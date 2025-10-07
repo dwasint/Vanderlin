@@ -21,6 +21,9 @@
 	preferred_blood_types = list(
 		/datum/blood_type/human/rakshari,
 	)
+	input_nodes = list(
+		/datum/chimeric_node/input/fall = 10
+	)
 	incompatible_blood_types = list()
 	base_blood_cost = 0.3
 	node_tier = 1
@@ -71,6 +74,10 @@
 	preferred_blood_types = list(
 		/datum/blood_type/human/demihuman,
 	)
+	input_nodes = list(
+		/datum/chimeric_node/input/damage/brute = 10
+	)
+
 	incompatible_blood_types = list()
 	base_blood_cost = 0.3
 	node_tier = 1
@@ -84,6 +91,9 @@
 	)
 	preferred_blood_types = list(
 		/datum/blood_type/human/horc,
+	)
+	input_nodes = list(
+		/datum/chimeric_node/input/gluttony/organ = 10
 	)
 	incompatible_blood_types = list()
 	base_blood_cost = 0.3
@@ -99,6 +109,12 @@
 	preferred_blood_types = list(
 		/datum/blood_type/human/triton,
 	)
+	input_nodes = list(
+		/datum/chimeric_node/input/reagent = 5
+	)
+	output_nodes = list(
+		/datum/chimeric_node/output/liquid = 5
+	)
 	incompatible_blood_types = list()
 	base_blood_cost = 0.3
 	node_tier = 1
@@ -112,6 +128,9 @@
 	)
 	preferred_blood_types = list(
 		/datum/blood_type/human/medicator,
+	)
+	input_nodes = list(
+		/datum/chimeric_node/input/reagent/blood = 5
 	)
 	incompatible_blood_types = list()
 	base_blood_cost = 0.3

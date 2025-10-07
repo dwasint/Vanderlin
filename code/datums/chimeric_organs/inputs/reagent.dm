@@ -3,7 +3,7 @@
 	name = "drowning"
 	desc = "Triggered when you consume a specific brew."
 
-	var/list/trigger_reagents = list()
+	var/list/trigger_reagents = list(/datum/reagent/water)
 	var/minimum_amount = 1
 
 /datum/chimeric_node/input/reagent/set_ranges()
@@ -42,5 +42,6 @@
 	return (amount / minimum_amount) * (node_purity / 100)
 
 /datum/chimeric_node/input/reagent/blood
+	name = "sanguine"
 	trigger_reagents = list(/datum/reagent/blood)
 	minimum_amount = 5

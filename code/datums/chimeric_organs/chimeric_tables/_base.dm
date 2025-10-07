@@ -61,7 +61,7 @@
 		return null
 	var/datum/chimeric_node/selected_node_type = pickweight(node_pool)
 	var/obj/item/chimeric_node/new_node = new()
-	new_node.node_tier = table.node_tier
+	new_node.node_tier = rand(1, table.node_tier)
 	new_node.node_purity = rand(table.node_purity_min, table.node_purity_max)
 	new_node.setup_node(
 		selected_node_type,

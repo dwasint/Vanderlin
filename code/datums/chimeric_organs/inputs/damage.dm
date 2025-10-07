@@ -2,7 +2,7 @@
 	name = "responsive"
 	desc = "Triggers when you take any damage."
 
-	weight = 5
+	weight = 1
 
 	var/list/damage_types = list(BRUTE, BURN, TOX, OXY) // Which damage types trigger this
 	var/minimum_damage = 1 // Minimum damage to trigger
