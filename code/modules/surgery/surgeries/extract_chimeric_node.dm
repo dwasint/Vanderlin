@@ -47,7 +47,9 @@
 		span_warning("[user] extracts something grotesque from [target]'s body."),
 		span_warning("[user] extracts something grotesque from [target]'s body."))
 
-	target.create_chimeric_node()
+	var/amount = rand(1, 3)
+	for(var/i = 1 to amount)
+		target.create_chimeric_node()
 
 	target.adjustBruteLoss(40)
 	target.adjustOxyLoss(30)
