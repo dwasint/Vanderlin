@@ -250,8 +250,8 @@
 			var/atom/new_structure = new recipe.result_type(get_turf(src))
 			if(recipe.supports_directions)
 				new_structure.dir = blueprint_dir
-			new_structure.pixel_x = stored_pixel_x
-			new_structure.pixel_y = stored_pixel_y
+			new_structure.pixel_x = stored_pixel_x + new_structure.base_pixel_x
+			new_structure.pixel_y = stored_pixel_y + new_structure.base_pixel_y
 			if(!initial(recipe.edge_density) && ((abs(pixel_x) >= 14) || (abs(pixel_y) >= 14)))
 				new_structure.density = FALSE
 			new_structure.OnCrafted(final_dir, user)
