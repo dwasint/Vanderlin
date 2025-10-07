@@ -1478,7 +1478,9 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 /obj/item/examine(mob/user)
 	. = ..()
-	var/alch_skill = user?.get_skill_level(/datum/skill/craft/alchemy)
+	if(!get_precursor_data(src))
+		return
+	var/alch_skill = user.get_skill_level(/datum/skill/craft/alchemy)
 	var/datum/natural_precursor/precursor = get_precursor_data(src)
 	if(precursor)
 		for(var/datum/thaumaturgical_essence/essence as anything in precursor.essence_yields)
