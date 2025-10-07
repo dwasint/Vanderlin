@@ -67,4 +67,4 @@
 	target.adjustBruteLoss(50)
 	target.adjustOxyLoss(40)
 
-	return FALSE
+	return TRUE
