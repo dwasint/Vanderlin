@@ -58,42 +58,29 @@ GLOBAL_LIST_INIT(container_craft_to_singleton, init_container_crafts())
 /**
  * Validates if recipe requirements are still met during crafting
  * @param obj/item/crafter The container being crafted in
- * @param list/pathed_items The existing items by type
+ * @param list/obj/item/reserved_items List of actual item references reserved for this craft
  * @return TRUE if requirements are still met, FALSE otherwise
  */
-/datum/container_craft/proc/requirements_still_met(obj/item/crafter, list/pathed_items)
-	if(length(reagent_requirements))
-		for(var/reagent_type in reagent_requirements)
-			if(!crafter.reagents.has_reagent(reagent_type, reagent_requirements[reagent_type], check_subtypes = subtype_reagents_allowed))
-				return FALSE
+/datum/container_craft/proc/requirements_still_met(obj/item/crafter, list/obj/item/reserved_items)
+    if(length(reagent_requirements))
+        for(var/reagent_type in reagent_requirements)
+            if(!crafter.reagents.has_reagent(reagent_type, reagent_requirements[reagent_type], check_subtypes = subtype_reagents_allowed))
+                return FALSE
 
-	// Clone the lists for validation
-	var/list/fake_requirements = requirements?.Copy()
-	var/list/fake_wildcards = wildcard_requirements?.Copy()
+    // Check that all reserved items still exist and are in the container
+    for(var/obj/item/item in reserved_items)
+        if(QDELETED(item) || item.loc != crafter)
+            return FALSE
 
-	if(fake_requirements)
-		for(var/obj/item/path as anything in fake_requirements)
-			if(!pathed_items[path] || pathed_items[path] < fake_requirements[path])
-				return FALSE
-
-	if(fake_wildcards)
-		for(var/wildcard in fake_wildcards)
-			var/found = 0
-			for(var/obj/item/path as anything in pathed_items)
-				if(ispath(path, wildcard))
-					found += min(pathed_items[path], fake_wildcards[wildcard])
-					if(found >= fake_wildcards[wildcard])
-						break
-			if(found < fake_wildcards[wildcard])
-				return FALSE
-
-	return TRUE
+    return TRUE
 
 /datum/container_craft/proc/try_craft(obj/item/crafter, list/pathed_items, mob/initiator, datum/callback/on_craft_start, datum/callback/on_craft_failed)
 	var/highest_multiplier = 0
+
+	// Check reagent requirements
 	if(length(reagent_requirements))
 		var/list/fake_reagents = reagent_requirements.Copy()
-		for(var/datum/reagent/listed_reagent as anything in crafter.reagents.reagent_list) // this isn't perfect since it excludes blood reagent types like tiefling blood from recipes
+		for(var/datum/reagent/listed_reagent as anything in crafter.reagents.reagent_list)
 			var/search_path = listed_reagent.type
 			if(!(listed_reagent.type in fake_reagents))
 				if(subtype_reagents_allowed)
@@ -117,42 +104,67 @@ GLOBAL_LIST_INIT(container_craft_to_singleton, init_container_crafts())
 		if(length(fake_reagents))
 			return FALSE
 
+	// Make copies to track what we're consuming
 	var/list/fake_requirements = requirements?.Copy()
 	var/list/fake_wildcards = wildcard_requirements?.Copy()
-	for(var/obj/item/path as anything in pathed_items)
-		for(var/wildcard in fake_wildcards)
-			if(!ispath(path, wildcard))
-				continue
-			var/potential_multiplier = FLOOR(pathed_items[path] / fake_wildcards[wildcard], 1)
-			if(!highest_multiplier)
-				highest_multiplier = potential_multiplier
-			else if(potential_multiplier < highest_multiplier)
-				highest_multiplier = potential_multiplier
-			if(potential_multiplier > 0)
-				fake_wildcards -= wildcard
-				pathed_items -= path
-				continue
-		if(path in fake_requirements)
-			var/potential_multiplier = FLOOR(pathed_items[path] / fake_requirements[path], 1)
-			if(!highest_multiplier)
-				highest_multiplier = potential_multiplier
-			else if(potential_multiplier < highest_multiplier)
-				highest_multiplier = potential_multiplier
-			if(potential_multiplier > 0)
-				fake_requirements -= path
-				pathed_items -= path
-				continue
+	var/list/available_items = pathed_items.Copy()
 
-	if(length(fake_wildcards))
-		return FALSE
-
+	// Process regular requirements first
 	if(length(fake_requirements))
+		for(var/requirement_path in fake_requirements)
+			if(!available_items[requirement_path] || available_items[requirement_path] < fake_requirements[requirement_path])
+				return FALSE
+
+			var/potential_multiplier = FLOOR(available_items[requirement_path] / fake_requirements[requirement_path], 1)
+			if(!highest_multiplier)
+				highest_multiplier = potential_multiplier
+			else if(potential_multiplier < highest_multiplier)
+				highest_multiplier = potential_multiplier
+
+			// Mark these items as consumed
+			available_items[requirement_path] -= fake_requirements[requirement_path]
+			if(available_items[requirement_path] <= 0)
+				available_items -= requirement_path
+
+	// Process wildcard requirements
+	if(length(fake_wildcards))
+		for(var/wildcard in fake_wildcards)
+			var/needed = fake_wildcards[wildcard]
+			var/found = 0
+
+			// Find items that match this wildcard
+			for(var/obj/item/path as anything in available_items)
+				if(!ispath(path, wildcard))
+					continue
+
+				var/can_use = min(available_items[path], needed - found)
+				found += can_use
+				available_items[path] -= can_use
+
+				if(available_items[path] <= 0)
+					available_items -= path
+
+				if(found >= needed)
+					break
+
+			// Check if we found enough items for this wildcard
+			if(found < needed)
+				return FALSE
+
+			// Calculate multiplier based on what we found
+			var/potential_multiplier = FLOOR(found / fake_wildcards[wildcard], 1)
+			if(!highest_multiplier)
+				highest_multiplier = potential_multiplier
+			else if(potential_multiplier < highest_multiplier)
+				highest_multiplier = potential_multiplier
+
+	if(isolation_craft && length(available_items))
 		return FALSE
 
-	if(isolation_craft && length(pathed_items))
+	//if we don't have atleast this nothing worked
+	if(highest_multiplier < 1)
 		return FALSE
 
-	// Create the crafting operation
 	if(!initiator)
 		initiator = get_mob_by_ckey(crafter.fingerprintslast)
 	var/datum/callback/on_craft_start_ref = on_craft_start
