@@ -980,6 +980,7 @@
 	icon = 'icons/delver/desert_objects.dmi'
 	layer = MID_TURF_LAYER
 	footstep = FOOTSTEP_SAND
+	smoothing_groups = SMOOTH_GROUP_FLOOR_DIRT_ROAD + SMOOTH_GROUP_OPEN_FLOOR
 	barefootstep = FOOTSTEP_SOFT_BAREFOOT
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	landsound = 'sound/foley/jumpland/grassland.ogg'
@@ -1055,3 +1056,11 @@
 
 /turf/open/floor/sandstone_tile/six
 	icon_state = "sandstonefloor-6"
+
+/turf/open/floor/cracked_earth
+	icon = 'icons/delver/desert_objects.dmi'
+	icon_state = "cracked_earth"
+
+/turf/open/floor/cracked_earth/Initialize(mapload)
+	. = ..()
+	dir = pick(GLOB.cardinals)
