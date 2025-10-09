@@ -94,6 +94,213 @@
 /datum/island_generator/proc/get_moisture_noise(x, y)
 	return moisture_noise.fbm2(x, y)
 
+
+/datum/island_generator/proc/generate_deferred(turf/bottom_left_corner, datum/controller/subsystem/terrain_generation/subsystem, datum/terrain_generation_job/job)
+	set waitfor = FALSE
+
+	if(!bottom_left_corner)
+		return FALSE
+
+	var/start_x = bottom_left_corner.x
+	var/start_y = bottom_left_corner.y
+	var/start_z = bottom_left_corner.z
+
+	var/list/island_map = list()
+	var/list/height_map = list()
+	var/list/temperature_map = list()
+	var/list/moisture_map = list()
+
+	// Phase 1: Generate noise maps
+	var/tiles_processed = 0
+	var/total_tiles = size_x * size_y
+
+	for(var/x = 0 to size_x - 1)
+		for(var/y = 0 to size_y - 1)
+			if(x < min_ocean_border || x >= (size_x - min_ocean_border) || y < min_ocean_border || y >= (size_y - min_ocean_border))
+				continue
+
+			var/noise_val = get_noise(x, y)
+			var/distance_factor = get_distance_factor(x, y)
+			var/normalized_noise = (noise_val + 1) / 2
+			var/value = normalized_noise - (distance_factor * (1 - noise_influence))
+
+			if(value > island_threshold)
+				island_map["[x],[y]"] = TRUE
+
+				var/height_noise_val = get_height_noise(x, y)
+				var/normalized_height = (height_noise_val + 1) / 2
+				var/height_value = max(0, min(biome.max_height, round(normalized_height * biome.max_height)))
+				height_map["[x],[y]"] = height_value
+
+				var/temp_noise = get_temperature_noise(x, y)
+				temperature_map["[x],[y]"] = (temp_noise + 1) / 2
+
+				var/moist_noise = get_moisture_noise(x, y)
+				moisture_map["[x],[y]"] = (moist_noise + 1) / 2
+
+			tiles_processed++
+			if(tiles_processed % 500 == 0)
+				if(job)
+					job.progress = 50 + (tiles_processed / total_tiles) * 10 // 50-60% for noise
+				CHECK_TICK
+
+	// Phase 2: Smooth island and heights
+	for(var/i = 1 to smoothing_passes)
+		island_map = smooth_island(island_map)
+		CHECK_TICK
+
+	height_map = smooth_heights(height_map, island_map)
+	CHECK_TICK
+
+	var/list/distance_map = calculate_distance_map_fast(island_map)
+	CHECK_TICK
+
+	biome.temperature_map = temperature_map
+	biome.moisture_map = moisture_map
+
+	// Phase 3: Generate water
+	var/list/water_distance_map = list()
+	var/list/water_queue = list()
+
+	for(var/x = 0 to size_x - 1)
+		for(var/y = 0 to size_y - 1)
+			if(!island_map["[x],[y]"])
+				var/turf/T = locate(start_x + x, start_y + y, start_z)
+				if(T)
+					T.ChangeTurf(deep_water_turf)
+			else
+				for(var/dx = -1 to 1)
+					for(var/dy = -1 to 1)
+						if(dx == 0 && dy == 0)
+							continue
+						var/wx = x + dx
+						var/wy = y + dy
+						if(!island_map["[wx],[wy]"] && wx >= 0 && wx < size_x && wy >= 0 && wy < size_y)
+							var/water_key = "[wx],[wy]"
+							if(!(water_key in water_distance_map))
+								water_distance_map[water_key] = 0
+								water_queue += water_key
+
+		if(x % 10 == 0)
+			if(job)
+				job.progress = 60 + (x / size_x) * 10 // 60-70% for water setup
+			CHECK_TICK
+
+	// Spread shallow water
+	var/water_tiles_processed = 0
+	while(water_queue.len)
+		var/current = water_queue[1]
+		water_queue.Cut(1, 2)
+
+		var/list/coords = splittext(current, ",")
+		var/x = text2num(coords[1])
+		var/y = text2num(coords[2])
+		var/current_dist = water_distance_map[current]
+
+		if(current_dist < ocean_depth)
+			var/turf/T = locate(start_x + x, start_y + y, start_z)
+			if(T)
+				T.ChangeTurf(water_turf)
+
+			var/spread_chance = 100 - (current_dist / ocean_depth * 40)
+
+			for(var/dx = -1 to 1)
+				for(var/dy = -1 to 1)
+					if(dx == 0 && dy == 0)
+						continue
+
+					if(!prob(spread_chance))
+						continue
+
+					var/nx = x + dx
+					var/ny = y + dy
+
+					if(nx < 0 || nx >= size_x || ny < 0 || ny >= size_y)
+						continue
+
+					if(island_map["[nx],[ny]"])
+						continue
+
+					var/neighbor_key = "[nx],[ny]"
+
+					if(neighbor_key in water_distance_map)
+						continue
+
+					water_distance_map[neighbor_key] = current_dist + 1
+					water_queue += neighbor_key
+
+		water_tiles_processed++
+		if(water_tiles_processed % 200 == 0)
+			CHECK_TICK
+
+	// Phase 4: Place terrain tiles
+	var/list/mainland_tiles = list()
+	var/list/beach_tiles = list()
+	tiles_processed = 0
+
+	for(var/x = 0 to size_x - 1)
+		for(var/y = 0 to size_y - 1)
+			if(!island_map["[x],[y]"])
+				continue
+
+			var/dist_to_water = distance_map["[x],[y]"] || 0
+			var/height = height_map["[x],[y]"] || 0
+			var/temperature = temperature_map["[x],[y]"] || 0.5
+			var/moisture = moisture_map["[x],[y]"] || 0.5
+
+			var/turf/T = locate(start_x + x, start_y + y, start_z)
+			if(!T)
+				continue
+
+			var/is_beach = FALSE
+			if(height == 0)
+				var/beach_noise_val = get_beach_noise(x, y)
+				var/normalized_beach_noise = (beach_noise_val + 1) / 2
+
+				var/beach_chance = 0
+				if(dist_to_water <= beach_width)
+					var/distance_factor = 1 - (dist_to_water / beach_width)
+					beach_chance = (distance_factor * 70) + (normalized_beach_noise * 30)
+
+					if(prob(beach_chance))
+						is_beach = TRUE
+
+			if(is_beach)
+				T.ChangeTurf(biome.beach_turf)
+				beach_tiles += list(list("turf" = T, "x" = x, "y" = y, "temperature" = temperature, "moisture" = moisture, "height" = height))
+			else
+				var/turf_type = biome.select_terrain(temperature, moisture, height)
+				T.ChangeTurf(turf_type)
+				mainland_tiles += list(list("turf" = T, "x" = x, "y" = y, "temperature" = temperature, "moisture" = moisture, "height" = height))
+
+			if(height > 0)
+				build_elevation(start_x + x, start_y + y, start_z, height, dist_to_water, temperature, moisture)
+
+			tiles_processed++
+			if(tiles_processed % 200 == 0)
+				if(job)
+					job.progress = 70 + (tiles_processed / total_tiles) * 15 // 70-85% for terrain
+				CHECK_TICK
+
+	// Phase 5: Place features
+	var/list/simple_mainland = list()
+	for(var/list/tile_data in mainland_tiles)
+		simple_mainland += tile_data["turf"]
+	place_features(simple_mainland, distance_map)
+	CHECK_TICK
+
+	// Phase 6: Spawn flora and fauna
+	spawn_flora_poisson(mainland_tiles, beach_tiles, start_x, start_y)
+	CHECK_TICK
+
+	spawn_fauna_poisson(mainland_tiles, beach_tiles)
+	CHECK_TICK
+
+	if(job)
+		job.progress = 100
+
+	return TRUE
+
 /datum/island_generator/proc/generate(turf/bottom_left_corner)
 	if(!bottom_left_corner)
 		return FALSE

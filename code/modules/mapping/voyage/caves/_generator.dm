@@ -81,6 +81,186 @@
 	moist_noise.frequency = moisture_frequency
 	return moist_noise.fbm2(x, y)
 
+
+/datum/cave_generator/proc/generate_deferred(turf/bottom_left_corner, datum/controller/subsystem/terrain_generation/subsystem, datum/terrain_generation_job/job)
+	set waitfor = FALSE
+
+	if(!bottom_left_corner)
+		return FALSE
+
+	var/start_x = bottom_left_corner.x
+	var/start_y = bottom_left_corner.y
+	var/start_z = bottom_left_corner.z
+
+	var/list/upper_cave_map = list()
+	var/list/lower_cave_map = list()
+	var/list/ravine_map = list()
+	var/list/temperature_map = list()
+	var/list/moisture_map = list()
+
+	// Phase 1: Generate noise maps
+	var/tiles_processed = 0
+	var/total_tiles = size_x * size_y
+
+	for(var/x = 0 to size_x - 1)
+		for(var/y = 0 to size_y - 1)
+			var/cave_val_upper = get_cave_noise(x, y)
+			var/normalized_upper = (cave_val_upper + 1) / 2
+			if(normalized_upper > cave_threshold)
+				upper_cave_map["[x],[y]"] = TRUE
+
+			var/cave_val_lower = get_cave_noise(x + 50, y + 50)
+			var/normalized_lower = (cave_val_lower + 1) / 2
+			if(normalized_lower > cave_threshold)
+				lower_cave_map["[x],[y]"] = TRUE
+
+			if(upper_cave_map["[x],[y]"])
+				var/ravine_val = get_ravine_noise(x, y)
+				var/normalized_ravine = (ravine_val + 1) / 2
+				if(normalized_ravine > ravine_threshold)
+					ravine_map["[x],[y]"] = TRUE
+
+			var/temp_noise = get_temperature_noise(x, y)
+			temperature_map["[x],[y]"] = (temp_noise + 1) / 2
+
+			var/moist_noise = get_moisture_noise(x, y)
+			moisture_map["[x],[y]"] = (moist_noise + 1) / 2
+
+			tiles_processed++
+			if(tiles_processed % 500 == 0)
+				if(job)
+					job.progress = (tiles_processed / total_tiles) * 20 // 0-20% for noise generation
+				CHECK_TICK
+
+	// Phase 2: Smooth caves
+	for(var/i = 1 to smoothing_passes)
+		upper_cave_map = smooth_caves(upper_cave_map)
+		lower_cave_map = smooth_caves(lower_cave_map)
+		CHECK_TICK
+
+	upper_cave_map = remove_small_pockets(upper_cave_map, connectivity_threshold)
+	CHECK_TICK
+	lower_cave_map = remove_small_pockets(lower_cave_map, connectivity_threshold)
+	CHECK_TICK
+
+	ravine_map = create_single_ravine(ravine_map, upper_cave_map)
+	CHECK_TICK
+
+	// Phase 3: Generate lava rivers
+	var/list/lava_map_upper = list()
+	var/list/lava_map_lower = list()
+
+	for(var/i = 1 to lava_river_count)
+		var/list/river_data = generate_lava_river_path(upper_cave_map, lower_cave_map, ravine_map)
+		if(river_data && river_data["upper"] && river_data["lower"])
+			for(var/coord in river_data["upper"])
+				lava_map_upper[coord] = TRUE
+			for(var/coord in river_data["lower"])
+				lava_map_lower[coord] = TRUE
+		CHECK_TICK
+
+	biome.temperature_map = temperature_map
+	biome.moisture_map = moisture_map
+
+	// Phase 4: Place lower level tiles
+	var/list/lower_valid_tiles = list()
+	tiles_processed = 0
+
+	for(var/x = 0 to size_x - 1)
+		for(var/y = 0 to size_y - 1)
+			var/turf/T = locate(start_x + x, start_y + y, start_z)
+			if(!T)
+				continue
+
+			if(lava_map_lower["[x],[y]"])
+				T.ChangeTurf(lava_turf)
+			else if(lower_cave_map["[x],[y]"])
+				var/temperature = temperature_map["[x],[y]"] || 0.5
+				var/moisture = moisture_map["[x],[y]"] || 0.5
+				var/turf_type = biome.select_terrain(temperature, moisture, 0)
+				T.ChangeTurf(turf_type)
+
+				lower_valid_tiles += list(list(
+					"turf" = T,
+					"x" = x,
+					"y" = y,
+					"temperature" = temperature,
+					"moisture" = moisture,
+					"level" = 0
+				))
+			else
+				T.ChangeTurf(wall_turf)
+
+			tiles_processed++
+			if(tiles_processed % 200 == 0)
+				if(job)
+					job.progress = 20 + (tiles_processed / total_tiles) * 15 // 20-35% for lower level
+				CHECK_TICK
+
+	// Phase 5: Place upper level tiles
+	var/list/upper_valid_tiles = list()
+	tiles_processed = 0
+
+	for(var/x = 0 to size_x - 1)
+		for(var/y = 0 to size_y - 1)
+			var/turf/T = locate(start_x + x, start_y + y, start_z + 1)
+			if(!T)
+				continue
+
+			if(ravine_map["[x],[y]"])
+				T.ChangeTurf(ravine_turf)
+			else if(lava_map_upper["[x],[y]"])
+				T.ChangeTurf(lava_turf)
+			else if(upper_cave_map["[x],[y]"])
+				var/temperature = temperature_map["[x],[y]"] || 0.5
+				var/moisture = moisture_map["[x],[y]"] || 0.5
+				var/turf_type = biome.select_terrain(temperature, moisture, 1)
+				T.ChangeTurf(turf_type)
+
+				upper_valid_tiles += list(list(
+					"turf" = T,
+					"x" = x,
+					"y" = y,
+					"temperature" = temperature,
+					"moisture" = moisture,
+					"level" = 1
+				))
+			else
+				T.ChangeTurf(wall_turf)
+
+			tiles_processed++
+			if(tiles_processed % 200 == 0)
+				if(job)
+					job.progress = 35 + (tiles_processed / total_tiles) * 15 // 35-50% for upper level
+				CHECK_TICK
+
+	// Phase 6: Spawn flora and fauna
+	spawn_flora_poisson(upper_valid_tiles)
+	CHECK_TICK
+	spawn_flora_poisson(lower_valid_tiles)
+	CHECK_TICK
+
+	spawn_fauna_poisson(upper_valid_tiles)
+	CHECK_TICK
+	spawn_fauna_poisson(lower_valid_tiles)
+	CHECK_TICK
+
+	// Phase 7: Place features
+	if(biome.feature_templates && biome.feature_templates.len)
+		var/list/upper_turfs = list()
+		var/list/lower_turfs = list()
+		for(var/list/tile_data in upper_valid_tiles)
+			upper_turfs += tile_data["turf"]
+		for(var/list/tile_data in lower_valid_tiles)
+			lower_turfs += tile_data["turf"]
+
+		place_cave_features(upper_turfs, start_z + 1)
+		CHECK_TICK
+		place_cave_features(lower_turfs, start_z)
+		CHECK_TICK
+
+	return TRUE
+
 /datum/cave_generator/proc/generate(turf/bottom_left_corner)
 	if(!bottom_left_corner)
 		return FALSE
