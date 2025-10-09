@@ -43,6 +43,7 @@
 		/turf/closed/wall/mineral/roofwall,
 		/turf/closed/wall/mineral/abyssal,
 		/turf/closed/wall/mineral/desert_soapstone,
+		/turf/open/floor/cracked_earth,
 	) \
 	+ typesof(/turf/open/floor/sandstone_tile) \
 	+ typesof(/turf/open/floor/abyss_sand) \
