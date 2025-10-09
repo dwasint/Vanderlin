@@ -980,7 +980,7 @@
 	icon = 'icons/delver/desert_objects.dmi'
 	layer = MID_TURF_LAYER
 	footstep = FOOTSTEP_SAND
-	smoothing_groups = SMOOTH_GROUP_FLOOR_DIRT_ROAD + SMOOTH_GROUP_OPEN_FLOOR
+	smoothing_groups = SMOOTH_GROUP_OPEN_FLOOR + SMOOTH_GROUP_FLOOR_DIRT_ROAD
 	barefootstep = FOOTSTEP_SOFT_BAREFOOT
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	landsound = 'sound/foley/jumpland/grassland.ogg'
