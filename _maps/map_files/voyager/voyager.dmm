@@ -601,9 +601,8 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/middeck)
 "eU" = (
-/turf/open/floor/rooftop{
-	dir = 4;
-	icon_state = "roofg"
+/turf/open/floor/rooftop/green{
+	dir = 4
 	},
 /area/rogue/outdoors/beach)
 "fd" = (
@@ -1107,9 +1106,8 @@
 /turf/open/floor/ruinedwood/two,
 /area/rogue/ship/middeck)
 "kh" = (
-/turf/open/floor/rooftop{
-	dir = 4;
-	icon_state = "roofg"
+/turf/open/floor/rooftop/green{
+	dir = 4
 	},
 /area/rogue/ship/middeck)
 "kl" = (
@@ -1127,10 +1125,7 @@
 "kn" = (
 /obj/structure/door/fancy,
 /obj/effect/mapping_helpers/access/keyset/manor/general,
-/turf/open/floor/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
-	},
+/turf/open/floor/ruinedwood/two,
 /area/rogue/ship/middeck)
 "ko" = (
 /obj/effect/decal/cobbleedge{
@@ -1354,10 +1349,7 @@
 	dir = 8
 	},
 /obj/structure/bars,
-/turf/open/floor/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
-	},
+/turf/open/floor/ruinedwood/two,
 /area/rogue/ship/middeck)
 "lZ" = (
 /obj/structure/fluff/walldeco/painting{
@@ -1855,9 +1847,7 @@
 /obj/item/clothing/armor/leather/jacket/silk_coat,
 /obj/item/clothing/cloak/half/colored/red,
 /obj/item/clothing/cloak/half,
-/turf/open/floor/ruinedwood{
-	icon_state = "weird1"
-	},
+/turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/nobledeck)
 "pW" = (
 /obj/structure/fluff/railing/border{
@@ -2000,10 +1990,7 @@
 	dir = 4;
 	icon_state = "woodwindowdir"
 	},
-/turf/open/floor/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
-	},
+/turf/open/floor/ruinedwood/two,
 /area/rogue/ship/nobledeck)
 "rR" = (
 /obj/structure/stairs{
@@ -2036,9 +2023,8 @@
 	pixel_x = -20;
 	pixel_y = -14
 	},
-/turf/open/floor/rooftop{
-	dir = 4;
-	icon_state = "roofg"
+/turf/open/floor/rooftop/green{
+	dir = 4
 	},
 /area/rogue/outdoors/beach)
 "sc" = (
@@ -3938,9 +3924,8 @@
 	},
 /obj/structure/fermentation_keg/beer,
 /obj/machinery/light/fueled/wallfire/candle/l,
-/turf/open/floor/rooftop{
-	dir = 4;
-	icon_state = "roofg"
+/turf/open/floor/rooftop/green{
+	dir = 4
 	},
 /area/rogue/outdoors/beach)
 "Jt" = (
@@ -3955,9 +3940,7 @@
 /obj/item/weapon/sword/long/judgement,
 /obj/item/clothing/gloves/angle,
 /obj/item/clothing/wrists/bracers/leather,
-/turf/open/floor/ruinedwood{
-	icon_state = "weird1"
-	},
+/turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/nobledeck)
 "Jx" = (
 /obj/effect/decal/cobbleedge{
@@ -4127,9 +4110,8 @@
 /area/rogue/ship/middeck)
 "Kr" = (
 /obj/structure/ladder,
-/turf/open/floor/rooftop{
-	dir = 4;
-	icon_state = "roofg"
+/turf/open/floor/rooftop/green{
+	dir = 4
 	},
 /area/rogue/outdoors/beach)
 "Ks" = (
