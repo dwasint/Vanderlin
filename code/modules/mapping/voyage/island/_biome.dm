@@ -3,6 +3,9 @@
 	var/list/terrain_weights = list()
 	var/list/flora_weights = list()
 	var/list/feature_templates = list()
+	var/list/cave_entry_templates = list(
+		/datum/island_feature_template/generic_cave,
+	)
 	var/list/beach_flora_weights = list(
 		/obj/structure/flora/driftwood = 20,
 		/obj/structure/flora/starfish = 10,

@@ -217,7 +217,7 @@
 			owner.balloon_alert(owner, "I cannot uphold the channeling!")
 			cancel_casting()
 			return PROCESS_KILL
-		owner.client.mouse_override_icon = 'icons/effects/mousemice/charge/spell_charged.dmi'
+		owner.client?.mouse_override_icon = 'icons/effects/mousemice/charge/spell_charged.dmi'
 		owner.update_mouse_pointer()
 		return PROCESS_KILL
 
@@ -1019,8 +1019,8 @@
 		RegisterSignal(owner, COMSIG_MOVABLE_MOVED, PROC_REF(signal_cancel), TRUE)
 
 	// Cancel the next click with no timeout
-	source.click_intercept_time = INFINITY
-	source.mouse_override_icon = 'icons/effects/mousemice/charge/spell_charging.dmi'
+	source?.click_intercept_time = INFINITY
+	source?.mouse_override_icon = 'icons/effects/mousemice/charge/spell_charging.dmi'
 	owner.update_mouse_pointer()
 
 	charge_started_at = world.time

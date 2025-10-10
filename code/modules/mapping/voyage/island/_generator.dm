@@ -296,7 +296,8 @@
 	spawn_fauna_poisson(mainland_tiles, beach_tiles)
 	CHECK_TICK
 
-	generate_settlements_on_island(bottom_left_corner, mainland_tiles)
+	if(!generate_settlements_on_island(bottom_left_corner, mainland_tiles))
+		generate_cave_entry(bottom_left_corner, mainland_tiles)
 	CHECK_TICK
 
 	if(job)
@@ -463,7 +464,107 @@
 	spawn_flora_poisson(mainland_tiles, beach_tiles, start_x, start_y)
 	spawn_fauna_poisson(mainland_tiles, beach_tiles)
 
-	generate_settlements_on_island(bottom_left_corner, mainland_tiles)
+	if(!generate_settlements_on_island(bottom_left_corner, mainland_tiles))
+		generate_cave_entry(bottom_left_corner, mainland_tiles)
+
+	return TRUE
+
+/datum/island_generator/proc/generate_cave_entry(turf/bottom_left_corner, list/mainland_tiles)
+	if(!biome.cave_entry_templates || !biome.cave_entry_templates.len)
+		return FALSE
+
+	if(!bottom_left_corner || !mainland_tiles || !mainland_tiles.len)
+		return FALSE
+
+	var/start_x = bottom_left_corner.x
+	var/start_y = bottom_left_corner.y
+	var/start_z = bottom_left_corner.z
+
+	var/list/island_map = list()
+	var/list/height_map = list()
+	var/list/coord_to_turf = list()
+
+	for(var/list/tile_data in mainland_tiles)
+		var/x = tile_data["x"]
+		var/y = tile_data["y"]
+		var/key = "[x],[y]"
+
+		island_map[key] = TRUE
+		height_map[key] = tile_data["height"]
+		coord_to_turf[key] = tile_data["turf"]
+
+	var/datum/island_feature_template/cave_template = pick(biome.cave_entry_templates)
+	if(!cave_template)
+		return FALSE
+
+	var/sample_radius = 8
+	var/list/samples = noise.poisson_disk_sampling(0, size_x - 1, 0, size_y - 1, sample_radius, sample_radius * 1.5)
+
+	samples = shuffle(samples)
+
+	for(var/list/sample in shuffle(samples))
+		var/sx = round(sample[1])
+		var/sy = round(sample[2])
+
+		if(!is_valid_cave_location(cave_template, sx, sy, island_map, height_map, coord_to_turf, start_x, start_y, start_z))
+			continue
+
+		var/turf/spawn_loc = locate(start_x + sx, start_y + sy, start_z + initial(cave_template.z_offset))
+		if(!spawn_loc)
+			continue
+
+		var/datum/map_template/template = new cave_template.template_path()
+		if(template && template.load(spawn_loc, centered = FALSE))
+			for(var/turf/turf in template.get_affected_turfs(spawn_loc, FALSE))
+				if(isclosedturf(turf) || isopenspace(turf))
+					for(var/obj/structure/flora/structure in turf.contents)
+						qdel(structure)
+					for(var/mob/living/mob in turf.contents)
+						var/turf/step_turf = turf
+						while(isclosedturf(step_turf) || isopenspace(step_turf))
+							step_turf = get_step(step_turf, NORTH)
+						mob.forceMove(step_turf)
+
+			return TRUE
+
+	return FALSE
+
+/datum/island_generator/proc/is_valid_cave_location(datum/island_feature_template/cave_template, rel_x, rel_y, list/island_map, list/height_map, list/coord_to_turf, base_x, base_y, z_level)
+	for(var/x = 0 to cave_template.width - 1)
+		for(var/y = 0 to cave_template.height - 1)
+			var/check_rel_x = rel_x + x
+			var/check_rel_y = rel_y + y
+			var/key = "[check_rel_x],[check_rel_y]"
+
+			if(!island_map[key])
+				return FALSE
+
+			var/turf/T = coord_to_turf[key]
+			if(!T)
+				return FALSE
+
+	var/origin_height = height_map["[rel_x],[rel_y]"] || 0
+	if(origin_height < cave_template.min_elevation || origin_height > cave_template.max_elevation)
+		return FALSE
+
+	var/min_height = origin_height
+	var/max_height = origin_height
+
+	for(var/x = 0 to cave_template.width - 1)
+		for(var/y = 0 to cave_template.height - 1)
+			var/check_rel_x = rel_x + x
+			var/check_rel_y = rel_y + y
+			var/tile_height = height_map["[check_rel_x],[check_rel_y]"] || 0
+
+			min_height = min(min_height, tile_height)
+			max_height = max(max_height, tile_height)
+
+	var/height_variance = max_height - min_height
+	if(cave_template.require_flat_terrain && height_variance > 0)
+		return FALSE
+	if(height_variance > cave_template.max_height_variance)
+		return FALSE
+
 	return TRUE
 
 /datum/island_generator/proc/spawn_flora_poisson(list/mainland_tiles, list/beach_tiles, start_x, start_y)
@@ -775,7 +876,7 @@
 
 		if(!spawn_loc)
 			continue
-
+		spawn_loc = locate(spawn_loc.x, spawn_loc.y, spawn_loc.z + initial(feature_template.z_offset))
 		var/datum/map_template/template = new feature_template.template_path()
 		if(template && template.load(spawn_loc, centered = FALSE))
 			placed_features += spawn_loc

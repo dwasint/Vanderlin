@@ -206,7 +206,7 @@
 	if(!building || !building.load(spawn_turf, centered = FALSE))
 		return null
 
-	for(var/turf/turf in building.get_affected_turfs())
+	for(var/turf/turf in building.get_affected_turfs(spawn_turf, FALSE))
 		if(isclosedturf(turf) || isopenspace(turf))
 			for(var/obj/structure/flora/structure in turf.contents)
 				qdel(structure)
