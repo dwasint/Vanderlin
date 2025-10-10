@@ -7734,6 +7734,9 @@
 /area/rogue/indoors/town/clocktower)
 "hkV" = (
 /obj/structure/closet/crate/chest/neu_fancy,
+/obj/effect/mapping_helpers/access/keyset/manor/vault,
+/obj/effect/mapping_helpers/access/locker,
+/obj/item/key/vault,
 /turf/open/floor/tile/masonic/spiral,
 /area/rogue/indoors/town/vault)
 "hkX" = (
@@ -18864,15 +18867,15 @@
 	pixel_x = -6;
 	pixel_y = 11
 	},
-/obj/item/clothing/neck/psycross/noc{
+/obj/item/clothing/neck/psycross/silver/noc{
 	pixel_x = -2;
 	pixel_y = -4
 	},
-/obj/item/clothing/neck/psycross/noc{
+/obj/item/clothing/neck/psycross/silver/noc{
 	pixel_x = 7;
 	pixel_y = 5
 	},
-/obj/item/clothing/neck/psycross/noc{
+/obj/item/clothing/neck/psycross/silver/noc{
 	pixel_x = -10;
 	pixel_y = 9
 	},
