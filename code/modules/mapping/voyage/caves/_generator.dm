@@ -402,25 +402,27 @@
 	var/min_radius = biome.flora_density
 	var/max_radius = min_radius * 1.5
 
+	// Build fast lookup
+	var/list/coord_to_tile = list()
+	for(var/list/tile_data in valid_tiles)
+		coord_to_tile["[tile_data["x"]],[tile_data["y"]]"] = tile_data
+
+	// Generate full Poisson sample
 	var/list/samples = cave_noise.poisson_disk_sampling(0, size_x - 1, 0, size_y - 1, min_radius, max_radius)
 
+	// Filter to valid tiles only
 	for(var/list/sample in samples)
 		var/sx = round(sample[1])
 		var/sy = round(sample[2])
 
-		var/list/matching_tile = null
-		for(var/list/tile_data in valid_tiles)
-			if(tile_data["x"] == sx && tile_data["y"] == sy)
-				matching_tile = tile_data
-				break
-
-		if(!matching_tile)
+		var/list/tile_data = coord_to_tile["[sx],[sy]"]
+		if(!tile_data)
 			continue
 
-		var/temperature = matching_tile["temperature"]
-		var/moisture = matching_tile["moisture"]
-		var/level = matching_tile["level"]
-		var/turf/T = matching_tile["turf"]
+		var/temperature = tile_data["temperature"]
+		var/moisture = tile_data["moisture"]
+		var/level = tile_data["level"]
+		var/turf/T = tile_data["turf"]
 
 		var/flora_type = biome.select_flora(temperature, moisture, level)
 		if(flora_type)
@@ -433,28 +435,29 @@
 	var/min_radius = biome.fauna_density
 	var/max_radius = min_radius * 2
 
+	// Build fast lookup
+	var/list/coord_to_tile = list()
+	for(var/list/tile_data in valid_tiles)
+		coord_to_tile["[tile_data["x"]],[tile_data["y"]]"] = tile_data
+
+	// Generate full Poisson sample
 	var/list/samples = cave_noise.poisson_disk_sampling(0, size_x - 1, 0, size_y - 1, min_radius, max_radius)
 
+	// Filter to valid tiles only
 	for(var/list/sample in samples)
 		var/sx = round(sample[1])
 		var/sy = round(sample[2])
 
-		var/list/matching_tile = null
-		for(var/list/tile_data in valid_tiles)
-			if(tile_data["x"] == sx && tile_data["y"] == sy)
-				matching_tile = tile_data
-				break
-
-		if(!matching_tile)
+		var/list/tile_data = coord_to_tile["[sx],[sy]"]
+		if(!tile_data)
 			continue
 
-		var/temperature = matching_tile["temperature"]
-		var/moisture = matching_tile["moisture"]
-		var/level = matching_tile["level"]
-		var/turf/T = matching_tile["turf"]
+		var/temperature = tile_data["temperature"]
+		var/moisture = tile_data["moisture"]
+		var/level = tile_data["level"]
+		var/turf/T = tile_data["turf"]
 
 		var/spawn_chance = 100
-
 		var/temp_factor = 1 - abs(temperature - 0.5) * 2
 		spawn_chance *= (0.5 + temp_factor * 0.5)
 
@@ -467,7 +470,7 @@
 
 			if(temperature < rule.min_temperature || temperature > rule.max_temperature)
 				continue
-			if(moisture < rule.min_moisture || moisture > rule.max_moisture)
+			if(moisture < rule.min_moisture || rule.max_moisture)
 				continue
 			if(level < rule.min_height || level > rule.max_height)
 				continue

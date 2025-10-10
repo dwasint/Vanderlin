@@ -767,6 +767,7 @@
 	desc = "The waves lap at the coast, hungry to swallow the land. Doesn't look too deep."
 	icon_state = "water"
 	icon = 'icons/turf/floors.dmi'
+	neighborlay_self = null
 	water_level = 2
 	slowdown = 4
 	swim_skill = TRUE

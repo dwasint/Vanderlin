@@ -463,9 +463,14 @@
 	return TRUE
 
 /datum/island_generator/proc/spawn_flora_poisson(list/mainland_tiles, list/beach_tiles, start_x, start_y)
+	// Mainland flora
 	if(mainland_tiles.len > 0 && biome.flora_density > 0)
 		var/min_radius = biome.flora_density
 		var/max_radius = min_radius * 1.5
+
+		var/list/coord_to_tile = list()
+		for(var/list/tile_data in mainland_tiles)
+			coord_to_tile["[tile_data["x"]],[tile_data["y"]]"] = tile_data
 
 		var/list/samples = noise.poisson_disk_sampling(0, size_x - 1, 0, size_y - 1, min_radius, max_radius)
 
@@ -473,19 +478,14 @@
 			var/sx = round(sample[1])
 			var/sy = round(sample[2])
 
-			var/list/matching_tile = null
-			for(var/list/tile_data in mainland_tiles)
-				if(tile_data["x"] == sx && tile_data["y"] == sy)
-					matching_tile = tile_data
-					break
-
-			if(!matching_tile)
+			var/list/tile_data = coord_to_tile["[sx],[sy]"]
+			if(!tile_data)
 				continue
 
-			var/temperature = matching_tile["temperature"]
-			var/moisture = matching_tile["moisture"]
-			var/height = matching_tile["height"]
-			var/turf/T = matching_tile["turf"]
+			var/temperature = tile_data["temperature"]
+			var/moisture = tile_data["moisture"]
+			var/height = tile_data["height"]
+			var/turf/T = tile_data["turf"]
 
 			var/flora_type = biome.select_flora(temperature, moisture, height)
 			if(flora_type)
@@ -494,9 +494,14 @@
 				else
 					new flora_type(T)
 
+	// Beach flora
 	if(beach_tiles.len > 0 && biome.beach_flora_density > 0)
 		var/min_radius = biome.beach_flora_density
 		var/max_radius = min_radius * 1.5
+
+		var/list/coord_to_tile = list()
+		for(var/list/tile_data in beach_tiles)
+			coord_to_tile["[tile_data["x"]],[tile_data["y"]]"] = tile_data
 
 		var/list/samples = noise.poisson_disk_sampling(0, size_x - 1, 0, size_y - 1, min_radius, max_radius)
 
@@ -504,19 +509,14 @@
 			var/sx = round(sample[1])
 			var/sy = round(sample[2])
 
-			var/list/matching_tile = null
-			for(var/list/tile_data in beach_tiles)
-				if(tile_data["x"] == sx && tile_data["y"] == sy)
-					matching_tile = tile_data
-					break
-
-			if(!matching_tile)
+			var/list/tile_data = coord_to_tile["[sx],[sy]"]
+			if(!tile_data)
 				continue
 
-			var/temperature = matching_tile["temperature"]
-			var/moisture = matching_tile["moisture"]
-			var/height = matching_tile["height"]
-			var/turf/T = matching_tile["turf"]
+			var/temperature = tile_data["temperature"]
+			var/moisture = tile_data["moisture"]
+			var/height = tile_data["height"]
+			var/turf/T = tile_data["turf"]
 
 			var/flora_type = biome.select_beach_flora(temperature, moisture, height)
 			if(flora_type)
@@ -529,34 +529,34 @@
 	var/min_radius = biome.fauna_density
 	var/max_radius = min_radius * 2
 
+	// Build combined lookup with beach flag
+	var/list/coord_to_tile = list()
+	var/list/beach_coords = list()
+
+	for(var/list/tile_data in mainland_tiles)
+		coord_to_tile["[tile_data["x"]],[tile_data["y"]]"] = tile_data
+
+	for(var/list/tile_data in beach_tiles)
+		var/key = "[tile_data["x"]],[tile_data["y"]]"
+		coord_to_tile[key] = tile_data
+		beach_coords[key] = TRUE
+
 	var/list/samples = noise.poisson_disk_sampling(0, size_x - 1, 0, size_y - 1, min_radius, max_radius)
 
 	for(var/list/sample in samples)
 		var/sx = round(sample[1])
-		var/sy = round(sample[1])
+		var/sy = round(sample[2])
+		var/key = "[sx],[sy]"
 
-		var/list/matching_tile = null
-		var/is_beach = FALSE
-
-		for(var/list/tile_data in mainland_tiles)
-			if(tile_data["x"] == sx && tile_data["y"] == sy)
-				matching_tile = tile_data
-				break
-
-		if(!matching_tile)
-			for(var/list/tile_data in beach_tiles)
-				if(tile_data["x"] == sx && tile_data["y"] == sy)
-					matching_tile = tile_data
-					is_beach = TRUE
-					break
-
-		if(!matching_tile)
+		var/list/tile_data = coord_to_tile[key]
+		if(!tile_data)
 			continue
 
-		var/temperature = matching_tile["temperature"]
-		var/moisture = matching_tile["moisture"]
-		var/height = matching_tile["height"]
-		var/turf/T = matching_tile["turf"]
+		var/temperature = tile_data["temperature"]
+		var/moisture = tile_data["moisture"]
+		var/height = tile_data["height"]
+		var/turf/T = tile_data["turf"]
+		var/is_beach = beach_coords[key]
 
 		var/spawn_chance = 100
 		if(height > 2)
