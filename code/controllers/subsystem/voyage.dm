@@ -23,13 +23,13 @@
 	var/island_id
 	var/island_name // Human-readable name
 
-/datum/island_data/New(turf/bl, size)
+/datum/island_data/New(turf/bl, size, _island_name)
 	bottom_left = bl
 	island_size = size
 	z_level = bl.z + 2 // Island is always at z+2
 	top_right = locate(bl.x + size - 1, bl.y + size - 1, z_level)
 	island_id = "island_[bl.x]_[bl.y]_[z_level]_[world.time]"
-	island_name = "Island #[length(SSterrain_generation.island_registry) + 1]"
+	island_name = "[_island_name] Island #[length(SSterrain_generation.island_registry) + 1]"
 
 /datum/ship_data
 	var/turf/bottom_left
@@ -120,7 +120,7 @@ SUBSYSTEM_DEF(terrain_generation)
 		log_world("ERROR: Island generation failed at ([island_corner.x], [island_corner.y], [island_corner.z])")
 		return FALSE
 
-	var/datum/island_data/island = new(bottom_left, size + (perimeter_width * 2))
+	var/datum/island_data/island = new(bottom_left, size + (perimeter_width * 2), island_biome.name)
 	island_registry += island
 
 	return TRUE
@@ -255,7 +255,7 @@ SUBSYSTEM_DEF(terrain_generation)
 	return FALSE
 
 /datum/controller/subsystem/terrain_generation/proc/register_island(datum/terrain_generation_job/job)
-	var/datum/island_data/island = new(job.bottom_left, island_size + (perimeter_width * 2))
+	var/datum/island_data/island = new(job.bottom_left, island_size + (perimeter_width * 2), job.island_biome.name)
 	island_registry += island
 	return island
 

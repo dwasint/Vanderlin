@@ -988,12 +988,14 @@
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	landsound = 'sound/foley/jumpland/grassland.ogg'
 	slowdown = 0
+	var/randomized = TRUE
 	var/blood_sand = FALSE
 
 /turf/open/floor/sand/Initialize()
 	. = ..()
-	var/random_num = rand(1, 12)
-	icon_state = "sand-[random_num]"
+	if(randomized)
+		var/random_num = rand(1, 12)
+		icon_state = "sand-[random_num]"
 
 /turf/open/floor/sand/proc/make_bloodied()
 	if(blood_sand)
@@ -1036,10 +1038,7 @@
 
 /turf/open/floor/sand/bloodied
 	icon_state = "bloody"
-
-/turf/open/floor/sand/bloodied/Initialize(mapload)
-	. = ..()
-	make_bloodied()
+	randomized = FALSE
 
 /turf/open/floor/sandstone_tile
 	icon = 'icons/delver/desert_objects.dmi'
@@ -1067,3 +1066,29 @@
 /turf/open/floor/cracked_earth/Initialize(mapload)
 	. = ..()
 	dir = pick(GLOB.cardinals)
+
+/turf/open/floor/flesh
+	name = "nerve threads"
+	icon = 'icons/turf/flesh_tile.dmi'
+	desc = "A pulsing mass of flesh. It shivers and writhes at any touch."
+	icon_state = MAP_SWITCH("flesh_tile", "flesh_tile-0")
+	transform = MAP_SWITCH(TRANSLATE_MATRIX(-16, -16), matrix())
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = SMOOTH_GROUP_OPEN_FLOOR + SMOOTH_GROUP_FLOOR_FLESH
+	smoothing_list = SMOOTH_GROUP_FLOOR_FLESH
+	layer = HIGH_TURF_LAYER
+	color = "#bf5252"
+
+/turf/open/floor/flesh/get_smooth_underlay_icon(mutable_appearance/underlay_appearance, turf/asking_turf, adjacency_dir)
+	. = ..()
+	if (!.)
+		return
+
+	if(!smoothing_flags)
+		return
+
+	var/matrix/translation = new
+	translation.Translate(-9, -9)
+	transform = translation
+
+	underlay_appearance.transform = transform
