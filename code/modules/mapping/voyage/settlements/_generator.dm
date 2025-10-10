@@ -2,6 +2,9 @@
 	var/datum/island_biome/biome
 	var/list/building_templates = list(
 		/datum/settlement_building_template/house_1,
+		/datum/settlement_building_template/house_2,
+		/datum/settlement_building_template/house_3,
+		/datum/settlement_building_template/house_4,
 	)
 	var/list/path_turfs = list(
 		/turf/open/floor/dirt,
@@ -12,7 +15,7 @@
 	)
 	var/list/mob_spawn_type
 
-	var/settlement_radius = 40
+	var/settlement_radius = 60
 	var/min_building_distance = 8
 	var/max_building_attempts = 150
 	var/path_width = 1
@@ -21,6 +24,14 @@
 	var/road_smoothness = 0.7
 	var/max_path_deviation = 3
 	var/road_avoidance_padding = 2
+
+	var/generate_plots = TRUE
+	var/num_plot_cells = 8
+	var/farm_plot_chance = 0.6
+	var/min_plot_area = 20
+
+	var/list/decoration_templates = list(
+	)
 
 /datum/settlement_generator/New(datum/island_biome/selected_biome)
 	..()
@@ -152,6 +163,18 @@
 	if(length(mob_spawn_type))
 		spawn_settlement_mobs(mob_spawn_points)
 
+	if(generate_plots)
+		generate_settlement_plots(
+			island_gen,
+			bottom_left_corner,
+			list(
+				"center_x" = center_x,
+				"center_y" = center_y
+			),
+			settlement_coords,
+			building_bounds
+		)
+
 	return list(
 		"center_x" = center_x,
 		"center_y" = center_y,
@@ -182,6 +205,16 @@
 	var/datum/map_template/building = new template.template_path()
 	if(!building || !building.load(spawn_turf, centered = FALSE))
 		return null
+
+	for(var/turf/turf in building.get_affected_turfs)
+		if(isclosed(turf) || isopenspace(turf))
+			for(var/obj/structure/flora/structure in turf.contents)
+				qdel(structure)
+			for(var/mob/living/mob in turf.contents)
+				var/turf/step_turf = turf
+				while(isclosedturf(step_turf) || isopenspace(step_turf))
+					step_turf = get_step(step_turf, NORTH)
+				mob.forceMove(step_turf)
 
 	var/turf/road_node = find_road_node(spawn_turf, template, start_z)
 	var/list/mob_spawns = find_mob_spawn_points(spawn_turf, template, actual_z)
@@ -371,3 +404,230 @@
 		if(length(mob_spawn_type))
 			var/path = pick(mob_spawn_type)
 			new path(spawn_point)
+
+
+
+/datum/settlement_generator/proc/generate_settlement_plots(datum/island_generator/island_gen, turf/bottom_left_corner, list/settlement_data, list/settlement_coords, list/building_bounds)
+	if(!generate_plots || !settlement_data)
+		return
+
+	var/center_x = settlement_data["center_x"]
+	var/center_y = settlement_data["center_y"]
+	var/start_x = bottom_left_corner.x
+	var/start_y = bottom_left_corner.y
+	var/start_z = bottom_left_corner.z
+
+	// Generate Voronoi cells
+	var/list/voronoi_cells = island_gen.noise.generate_voronoi_cells(
+		center_x - settlement_radius,
+		center_x + settlement_radius,
+		center_y - settlement_radius,
+		center_y + settlement_radius,
+		num_plot_cells
+	)
+
+	// Assign each settlement tile to a Voronoi cell
+	var/list/cell_tiles = list()
+	for(var/coord_key in settlement_coords)
+		var/list/coords = splittext(coord_key, ",")
+		var/rel_x = text2num(coords[1])
+		var/rel_y = text2num(coords[2])
+
+		var/list/cell = island_gen.noise.get_voronoi_cell(rel_x, rel_y, voronoi_cells)
+		if(!cell)
+			continue
+
+		var/cell_id = cell["id"]
+		if(!cell_tiles["[cell_id]"])
+			cell_tiles["[cell_id]"] = list()
+
+		cell_tiles["[cell_id]"] += list(list("x" = rel_x, "y" = rel_y))
+
+	var/list/plots = list()
+	var/is_farm = TRUE
+	for(var/cell_id in cell_tiles)
+		var/list/tiles = cell_tiles[cell_id]
+
+		if(tiles.len < min_plot_area)
+			continue
+
+
+		if(is_farm && prob(farm_plot_chance * 100))
+			var/list/farm_data = generate_farm_plot_in_cell(
+				tiles,
+				start_x, start_y, start_z,
+				building_bounds
+			)
+			if(farm_data)
+				plots += list(farm_data)
+			is_farm = FALSE
+		else if(decoration_templates.len)
+			var/list/decoration_data = generate_decoration_plot_in_cell(
+				tiles,
+				start_x, start_y, start_z,
+				building_bounds
+			)
+			if(decoration_data)
+				plots += list(decoration_data)
+
+	return plots
+
+/datum/settlement_generator/proc/generate_farm_plot_in_cell(list/cell_tiles, start_x, start_y, start_z, list/building_bounds)
+	// Find bounding box of cell
+	var/min_x = INFINITY
+	var/max_x = -INFINITY
+	var/min_y = INFINITY
+	var/max_y = -INFINITY
+
+	for(var/list/tile in cell_tiles)
+		var/tx = tile["x"]
+		var/ty = tile["y"]
+
+		min_x = min(min_x, tx)
+		max_x = max(max_x, tx)
+		min_y = min(min_y, ty)
+		max_y = max(max_y, ty)
+
+	// Determine orientation (vertical or horizontal lines)
+	var/width = max_x - min_x
+	var/height = max_y - min_y
+	var/vertical_lines = width > height
+
+	var/list/valid_tiles = list()
+
+	// Check each tile in cell
+	for(var/list/tile in cell_tiles)
+		var/tx = tile["x"]
+		var/ty = tile["y"]
+
+		// Skip if in building area
+		if(is_point_in_any_building(tx, ty, building_bounds))
+			continue
+
+		var/turf/T = locate(start_x + tx, start_y + ty, start_z)
+		if(!T)
+			continue
+
+		// Skip roads
+		if(is_road_turf(T))
+			continue
+
+		// Skip if tree present
+		if(locate(/obj/structure/flora/newtree) in T)
+			continue
+
+		valid_tiles += list(list("x" = tx, "y" = ty, "turf" = T))
+
+	if(valid_tiles.len < min_plot_area)
+		return null
+
+	// Clear structures and place farm rows
+	for(var/list/tile_data in valid_tiles)
+		var/tx = tile_data["x"]
+		var/ty = tile_data["y"]
+		var/turf/T = tile_data["turf"]
+
+		// Clear non-tree structures
+		for(var/obj/structure/S in T)
+			if(!istype(S, /obj/structure/flora/newtree))
+				qdel(S)
+
+		// Place irrigation channels in lines, soil elsewhere
+		var/is_irrigation_line = FALSE
+
+		if(vertical_lines)
+			// Vertical lines every 3 tiles
+			is_irrigation_line = (tx % 3 == 0)
+		else
+			// Horizontal lines every 3 tiles
+			is_irrigation_line = (ty % 3 == 0)
+
+		if(is_irrigation_line)
+			new /obj/structure/irrigation_channel(T)
+		else
+			new /obj/structure/soil/debug_soil/random(T)
+
+	return list(
+		"type" = "farm",
+		"tiles" = valid_tiles.len,
+		"orientation" = vertical_lines ? "vertical" : "horizontal"
+	)
+
+/datum/settlement_generator/proc/generate_decoration_plot_in_cell(list/cell_tiles, start_x, start_y, start_z, list/building_bounds)
+	if(!decoration_templates.len)
+		return null
+
+	// Find a good center point in the cell
+	var/sum_x = 0
+	var/sum_y = 0
+	var/count = 0
+
+	for(var/list/tile in cell_tiles)
+		sum_x += tile["x"]
+		sum_y += tile["y"]
+		count++
+
+	if(count == 0)
+		return null
+
+	var/center_x = round(sum_x / count)
+	var/center_y = round(sum_y / count)
+
+	// Try to place decoration template
+	var/datum/settlement_building_template/template = pick(decoration_templates)
+
+	// Check if placement is valid
+	var/list/check_tiles = list()
+	for(var/dx = 0 to template.width - 1)
+		for(var/dy = 0 to template.height - 1)
+			var/check_x = center_x + dx
+			var/check_y = center_y + dy
+
+			// Skip if in building area
+			if(is_point_in_any_building(check_x, check_y, building_bounds))
+				return null
+
+			var/turf/check_turf = locate(start_x + check_x, start_y + check_y, start_z)
+			if(!check_turf)
+				return null
+
+			// Skip if road
+			if(is_road_turf(check_turf))
+				return null
+
+			// Skip if tree present
+			if(locate(/obj/structure/flora/newtree) in check_turf)
+				return null
+
+			check_tiles += check_turf
+
+	// Clear non-tree structures
+	for(var/turf/T in check_tiles)
+		for(var/obj/structure/S in T)
+			if(!istype(S, /obj/structure/flora/newtree))
+				qdel(S)
+
+	// Place decoration
+	var/turf/spawn_turf = locate(start_x + center_x, start_y + center_y, start_z)
+	var/actual_z = start_z + template.z_offset
+	var/datum/map_template/decoration = new template.template_path()
+
+	spawn_turf = locate(spawn_turf.x, spawn_turf.y, actual_z)
+	if(!decoration || !decoration.load(spawn_turf, centered = FALSE))
+		return null
+
+	return list(
+		"type" = "decoration",
+		"x" = center_x,
+		"y" = center_y,
+		"template" = template
+	)
+
+/datum/settlement_generator/proc/is_road_turf(turf/T)
+	for(var/path_type in path_turfs)
+		if(istype(T, path_type))
+			return TRUE
+	for(var/bridge_type in bridge_turfs)
+		if(istype(T, bridge_type))
+			return TRUE
+	return FALSE
