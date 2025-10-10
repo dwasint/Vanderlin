@@ -342,8 +342,8 @@ SUBSYSTEM_DEF(terrain_generation)
 		if(!QDELETED(T))
 			T.ChangeTurf(/turf/open/water/ocean)
 
-	boat_data["objects"]?.Cut()
-	boat_data["turfs"]?.Cut()
+	boat_data["objects"] = list()
+	boat_data["turfs"] = list()
 
 	log_world("Cleaned up docking boat")
 
