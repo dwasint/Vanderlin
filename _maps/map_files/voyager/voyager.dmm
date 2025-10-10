@@ -268,6 +268,10 @@
 /obj/structure/table/wood{
 	icon_state = "tablewood1"
 	},
+/obj/item/candle/skull/lit{
+	pixel_y = 15;
+	pixel_x = -5
+	},
 /turf/open/floor/ruinedwood/two,
 /area/rogue/ship/middeck)
 "cF" = (
@@ -531,7 +535,7 @@
 /area/rogue/ship/middeck)
 "eh" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/glass/bucket,
+/obj/item/reagent_containers/glass/bucket/wooden,
 /turf/open/floor/herringbone,
 /area/rogue/ship/middeck)
 "ei" = (
@@ -1049,16 +1053,16 @@
 /turf/open/transparent/openspace,
 /area/rogue/ship/topdeck)
 "jQ" = (
-/obj/item/reagent_containers/glass/bucket,
 /obj/structure/rack/shelf/big{
 	icon_state = "shelf_biggest";
 	pixel_y = 0
 	},
-/obj/item/reagent_containers/glass/bucket{
-	pixel_y = 6
+/obj/item/reagent_containers/glass/bucket/wooden,
+/obj/item/reagent_containers/glass/bucket/wooden{
+	pixel_y = 11
 	},
-/obj/item/reagent_containers/glass/bucket{
-	pixel_y = 13
+/obj/item/reagent_containers/glass/bucket/wooden{
+	pixel_y = 20
 	},
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/middeck)
@@ -1232,7 +1236,7 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/topdeck)
 "lk" = (
-/obj/machinery/light/fueled/torchholder/r,
+/obj/machinery/light/fueled/wallfire/candle/r,
 /turf/open/floor/carpet/lord/left{
 	dir = 1
 	},
@@ -2655,7 +2659,6 @@
 /obj/structure/roguetent{
 	layer = 8
 	},
-/obj/structure/fluff/traveltile,
 /turf/open/floor/ruinedwood,
 /area/rogue/ship/middeck)
 "xm" = (
@@ -2943,6 +2946,7 @@
 "Af" = (
 /obj/structure/closet/crate/chest/gold,
 /obj/item/gem/blue,
+/obj/machinery/light/fueled/wallfire/candle/r,
 /turf/open/floor/tile/checker,
 /area/rogue/ship/middeck)
 "Ah" = (
@@ -4875,6 +4879,10 @@
 /obj/item/clothing/cloak/raincloak/colored/mortus,
 /obj/item/clothing/cloak/raincloak/colored/mortus,
 /obj/item/flashlight/flare/torch/lantern,
+/obj/item/candle/skull/lit{
+	pixel_x = 3;
+	pixel_y = 25
+	},
 /turf/open/floor/ruinedwood/two,
 /area/rogue/ship/middeck)
 "RX" = (
@@ -5147,6 +5155,7 @@
 /obj/item/ingot/silver,
 /obj/item/ingot/silver,
 /obj/item/ingot/silver,
+/obj/machinery/light/fueled/wallfire/candle/r,
 /turf/open/floor/tile/checker,
 /area/rogue/ship/middeck)
 "Uu" = (
@@ -5513,8 +5522,8 @@
 /turf/open/floor/hay,
 /area/rogue/ship/middeck)
 "Xj" = (
-/obj/machinery/light/fueled/torchholder/r,
 /obj/structure/fluff/walldeco/chains,
+/obj/machinery/light/fueled/wallfire/candle/r,
 /turf/open/floor/carpet/lord/right{
 	dir = 1
 	},
