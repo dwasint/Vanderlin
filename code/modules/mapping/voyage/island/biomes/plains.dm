@@ -18,24 +18,55 @@
 	max_height = 2
 	fauna_density = 6
 
-/datum/island_biome/plains/New()
+/datum/island_biome/plains/setup_spawn_rules()
 	..()
-	fauna_types = list(
-		/mob/living/simple_animal/hostile/retaliate/cow = new /datum/fauna_spawn_rule(
-			min_moist = 0.3,
-			max_moist = 0.8,
-			min_temp = 0.3,
-			max_temp = 0.7,
-			no_beach_spawn = TRUE,
-			weight = 80
-		),
-		/mob/living/simple_animal/hostile/retaliate/chicken = new /datum/fauna_spawn_rule(
-			min_moist = 0.2,
-			no_beach_spawn = TRUE,
-			max_h = 1,
-			weight = 120
+
+	fauna_density -= min(3, difficulty)
+	if(difficulty >= 1)
+		fauna_types += list(
+			/mob/living/simple_animal/hostile/retaliate/cow = new /datum/fauna_spawn_rule(
+				min_moist = 0.3,
+				max_moist = 0.8,
+				min_temp = 0.3,
+				max_temp = 0.7,
+				no_beach_spawn = TRUE,
+				weight = 80
+			),
+			/mob/living/simple_animal/hostile/retaliate/chicken = new /datum/fauna_spawn_rule(
+				min_moist = 0.2,
+				no_beach_spawn = TRUE,
+				max_h = 1,
+				weight = 120
+			)
 		)
-	)
+
+	if(difficulty >= 2)
+		fauna_types += list(
+			/mob/living/simple_animal/hostile/retaliate/goat = new /datum/fauna_spawn_rule(
+				min_moist = 0.3,
+				max_moist = 0.8,
+				min_temp = 0.3,
+				max_temp = 0.7,
+				no_beach_spawn = TRUE,
+				weight = 80
+			),
+			/mob/living/simple_animal/hostile/retaliate/goatmale = new /datum/fauna_spawn_rule(
+				min_moist = 0.3,
+				max_moist = 0.8,
+				min_temp = 0.3,
+				max_temp = 0.7,
+				no_beach_spawn = TRUE,
+				weight = 80
+			),
+			/mob/living/simple_animal/hostile/retaliate/wolf = new /datum/fauna_spawn_rule(
+				min_moist = 0.2,
+				no_beach_spawn = TRUE,
+				max_h = 1,
+				weight = 120
+			)
+		)
+	if(difficulty >= 3)
+		add_settlement_type()
 
 /datum/island_biome/plains/select_terrain(temperature, moisture, height)
 	if(temperature < 0.35)

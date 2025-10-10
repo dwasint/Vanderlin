@@ -9,6 +9,15 @@
 
 	var/list/fauna_types = list() //! Populated on New()
 	var/fauna_density = 3
+	var/difficulty = 0
+
+/datum/cave_biome/New(_difficulty)
+	. = ..()
+	difficulty = _difficulty
+	setup_spawn_rules()
+
+/datum/cave_biome/proc/setup_spawn_rules()
+	return
 
 /datum/cave_biome/proc/select_terrain(temperature, moisture, level)
 	return pickweight(terrain_weights)
@@ -33,7 +42,7 @@
 	)
 	flora_density = 2
 
-/datum/cave_biome/volcanic/New()
+/datum/cave_biome/volcanic/setup_spawn_rules()
 	. = ..()
 	fauna_types = list(
 		/mob/living/carbon/human/species/goblin/npc = new /datum/fauna_spawn_rule(

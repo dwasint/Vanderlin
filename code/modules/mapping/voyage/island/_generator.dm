@@ -296,6 +296,9 @@
 	spawn_fauna_poisson(mainland_tiles, beach_tiles)
 	CHECK_TICK
 
+	generate_settlements_on_island(bottom_left_corner, mainland_tiles)
+	CHECK_TICK
+
 	if(job)
 		job.progress = 100
 
@@ -460,6 +463,7 @@
 	spawn_flora_poisson(mainland_tiles, beach_tiles, start_x, start_y)
 	spawn_fauna_poisson(mainland_tiles, beach_tiles)
 
+	generate_settlements_on_island(bottom_left_corner, mainland_tiles)
 	return TRUE
 
 /datum/island_generator/proc/spawn_flora_poisson(list/mainland_tiles, list/beach_tiles, start_x, start_y)
@@ -621,6 +625,13 @@
 		if(level == height)
 			var/turf_type = biome.select_terrain(temperature, moisture, level)
 			current.ChangeTurf(turf_type)
+
+/datum/island_generator/proc/generate_settlements_on_island(turf/bottom_left_corner, list/mainland_tiles)
+	if(!biome.settlement_generator)
+		return
+
+	var/datum/settlement_generator/gen = biome.settlement_generator
+	return gen.generate_settlements(src, bottom_left_corner, mainland_tiles)
 
 
 /datum/island_generator/proc/smooth_heights(list/height_map, list/island_map)

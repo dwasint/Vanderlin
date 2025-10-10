@@ -22,14 +22,30 @@
 	var/list/dock_anchors = list()
 	var/island_id
 	var/island_name // Human-readable name
+	var/difficulty = 0
 
-/datum/island_data/New(turf/bl, size, _island_name)
+/datum/island_data/New(turf/bl, size, _island_name, _difficulty)
 	bottom_left = bl
 	island_size = size
+	difficulty = _difficulty
 	z_level = bl.z + 2 // Island is always at z+2
 	top_right = locate(bl.x + size - 1, bl.y + size - 1, z_level)
 	island_id = "island_[bl.x]_[bl.y]_[z_level]_[world.time]"
-	island_name = "[_island_name] Island #[length(SSterrain_generation.island_registry) + 1]"
+	island_name = "[get_difficulty_text()][_island_name] Island #[length(SSterrain_generation.island_registry) + 1]"
+
+/datum/island_data/proc/get_difficulty_text()
+	switch(difficulty)
+		if(0)
+			return "Uninhabited "
+		if(1)
+			return "Peaceful "
+		if(2)
+			return ""
+		if(3)
+			return "Colonized "
+		if(4)
+			return "Hellish "
+
 
 /datum/ship_data
 	var/turf/bottom_left
@@ -74,6 +90,22 @@ SUBSYSTEM_DEF(terrain_generation)
 	generate_init_terrain()
 	return ..()
 
+/datum/controller/subsystem/terrain_generation/proc/get_difficulty()
+	var/list/difficulty_weights = list(
+		"0" = 1,
+		"1" = 10,
+		"2" = 10,
+		"3" = 10,
+		"4" = 10,
+	)
+
+	for(var/datum/island_data/data as anything in island_registry)
+		difficulty_weights["[data.difficulty]"] -= 10
+		if(difficulty_weights["[data.difficulty]"] <= 0)
+			difficulty_weights -= "[data.difficulty]"
+
+	return text2num(pickweightAllowZero(difficulty_weights))
+
 /datum/controller/subsystem/terrain_generation/proc/setup_biome_pools()
 	cave_biomes = subtypesof(/datum/cave_biome)
 	island_biomes = subtypesof(/datum/island_biome)
@@ -84,10 +116,12 @@ SUBSYSTEM_DEF(terrain_generation)
 		if(marker.generate_on_init)
 			log_world("Generating terrain at ([marker.x], [marker.y], [marker.z])...")
 
+			var/island_difficulty = get_difficulty()
+
 			var/cave_biome = marker.cave_biome_override || pick(cave_biomes)
 			var/island_biome = marker.island_biome_override || pick(island_biomes)
 
-			generate_terrain_sync(marker.loc, new cave_biome, new island_biome)
+			generate_terrain_sync(marker.loc, new cave_biome(island_difficulty), new island_biome(island_difficulty))
 
 			qdel(marker)
 
@@ -120,7 +154,7 @@ SUBSYSTEM_DEF(terrain_generation)
 		log_world("ERROR: Island generation failed at ([island_corner.x], [island_corner.y], [island_corner.z])")
 		return FALSE
 
-	var/datum/island_data/island = new(bottom_left, size + (perimeter_width * 2), island_biome.name)
+	var/datum/island_data/island = new(bottom_left, size + (perimeter_width * 2), island_biome.name, island_biome.difficulty)
 	island_registry += island
 
 	return TRUE
