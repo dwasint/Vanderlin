@@ -5688,10 +5688,6 @@
 /turf/open/floor/ruinedwood,
 /area/rogue/ship/middeck)
 "YY" = (
-/obj/structure/closet/crate/chest{
-	locked = 1;
-	lockid = "steward"
-	},
 /obj/item/key/manor,
 /obj/item/key/walls,
 /obj/item/key/blacksmith,
@@ -5709,6 +5705,8 @@
 /obj/item/key/tailor,
 /obj/item/key/steward,
 /obj/item/key/vault,
+/obj/effect/mapping_helpers/access/keyset/manor/steward,
+/obj/structure/closet/crate/chest,
 /turf/open/floor/ruinedwood/two,
 /area/rogue/ship/middeck)
 "YZ" = (
