@@ -36,6 +36,7 @@
 	icon_state = "borderfall";
 	dir = 4
 	},
+/obj/effect/landmark/boat_transfer/ship_side,
 /turf/open/floor/rooftop/green{
 	dir = 8
 	},
@@ -862,9 +863,6 @@
 /area/rogue/ship/middeck)
 "hJ" = (
 /obj/structure/fluff/railing/border{
-	layer = 2.65
-	},
-/obj/structure/fluff/railing/border{
 	dir = 4
 	},
 /obj/structure/fluff/railing/wood{
@@ -876,6 +874,9 @@
 	color = "#ff9a55";
 	pixel_y = 4;
 	layer = 2.6
+	},
+/obj/structure/fluff/railing/border{
+	dir = 10
 	},
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/beach)
@@ -5379,9 +5380,6 @@
 /area/rogue/ship/middeck)
 "VL" = (
 /obj/structure/fluff/railing/border{
-	dir = 1
-	},
-/obj/structure/fluff/railing/border{
 	dir = 4
 	},
 /obj/structure/fluff/railing/border{
@@ -5392,6 +5390,11 @@
 	},
 /obj/structure/fluff/railing/wood{
 	dir = 4
+	},
+/obj/structure/fluff/railing/border{
+	dir = 9;
+	icon_state = "border";
+	layer = 2.7
 	},
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/beach)
@@ -5461,6 +5464,10 @@
 /obj/structure/chair/wood,
 /turf/open/floor/herringbone,
 /area/rogue/ship/middeck)
+"WG" = (
+/obj/structure/ship_wheel,
+/turf/open/floor/ruinedwood/spiral,
+/area/rogue/ship/topdeck)
 "WO" = (
 /obj/structure/stairs{
 	dir = 4
@@ -138856,7 +138863,7 @@ Wi
 rR
 Gm
 pa
-VU
+WG
 pa
 WO
 rR

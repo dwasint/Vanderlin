@@ -1,6 +1,51 @@
-// ==========================================
-// TERRAIN GENERATION SUBSYSTEM - COMPLETE
-// ==========================================
+/datum/terrain_generation_job
+	var/obj/effect/landmark/terrain_generation_marker/marker
+	var/turf/bottom_left
+	var/datum/cave_biome/cave_biome
+	var/datum/island_biome/island_biome
+	var/z_level
+
+	var/status = GENERATION_STATUS_PENDING
+	var/current_phase = ""
+	var/progress = 0
+	var/error = ""
+
+	var/queued_time = 0
+	var/start_time = 0
+	var/completion_time = 0
+
+/datum/island_data
+	var/turf/bottom_left
+	var/turf/top_right
+	var/z_level
+	var/island_size
+	var/list/dock_anchors = list()
+	var/island_id
+	var/island_name // Human-readable name
+
+/datum/island_data/New(turf/bl, size)
+	bottom_left = bl
+	island_size = size
+	z_level = bl.z + 2 // Island is always at z+2
+	top_right = locate(bl.x + size - 1, bl.y + size - 1, z_level)
+	island_id = "island_[bl.x]_[bl.y]_[z_level]_[world.time]"
+	island_name = "Island #[length(SSterrain_generation.island_registry) + 1]"
+
+/datum/ship_data
+	var/turf/bottom_left
+	var/turf/top_right
+	var/z_level
+	var/ship_size
+	var/list/ship_anchors = list() // Turf locations for anchors (keyed by direction)
+	var/datum/island_data/docked_island
+	var/list/active_mirage_borders = list() // list of borders easier cleanup this way
+	var/list/docked_boat_data
+
+/datum/ship_data/New(turf/bl, size, z)
+	bottom_left = bl
+	ship_size = size
+	z_level = z
+	top_right = locate(bl.x + size - 1, bl.y + size - 1, z_level)
 
 SUBSYSTEM_DEF(terrain_generation)
 	name = "Terrain Generation"
@@ -223,6 +268,112 @@ SUBSYSTEM_DEF(terrain_generation)
 
 	return ship
 
+/datum/controller/subsystem/terrain_generation/proc/spawn_docking_boat(datum/ship_data/ship, datum/island_data/island, direction)
+	var/turf/shore_turf = find_shore_location(island, direction)
+	if(!shore_turf)
+		log_world("ERROR: Could not find shore location for boat spawn")
+		return null
+
+	var/offset_distance = rand(3, 4)
+	var/turf/boat_spawn = shore_turf
+	for(var/i = 1 to offset_distance)
+		boat_spawn = get_step(boat_spawn, direction)
+		if(!boat_spawn)
+			log_world("ERROR: Could not offset boat spawn location")
+			return null
+
+	var/datum/map_template/island_boat/boat_template = new()
+
+	if(!boat_template || !boat_template.width || !boat_template.height)
+		log_world("ERROR: Failed to load boat template")
+		return null
+
+	var/turf/center_turf = locate(
+		boat_spawn.x - round(boat_template.width / 2),
+		boat_spawn.y - round(boat_template.height / 2),
+		boat_spawn.z
+	)
+
+	if(!center_turf)
+		log_world("ERROR: Could not calculate center for boat")
+		return null
+
+	var/list/loaded_bounds = boat_template.load(center_turf, FALSE)
+
+	if(!loaded_bounds || !loaded_bounds.len)
+		log_world("ERROR: Failed to load boat template at location")
+		return null
+
+	var/list/boat_data = collect_boat_objects(boat_template, center_turf)
+
+	return boat_data
+
+/datum/controller/subsystem/terrain_generation/proc/collect_boat_objects(datum/map_template/template, turf/center_turf)
+	var/list/boat_data = list(
+		"objects" = list(),
+		"turfs" = list()
+	)
+
+	for(var/turf/place_on as anything in template.get_affected_turfs(center_turf, centered = TRUE))
+		if(istype(place_on, /turf/open/water) || istype(place_on, /turf/open/floor/sand))
+			for(var/obj/structure/O in place_on.contents)
+				boat_data["objects"] += O
+			continue
+
+		boat_data["turfs"] += place_on
+
+		for(var/obj/effect/overlay/water/water in place_on.contents)
+			qdel(water)
+
+		for(var/obj/structure/O in place_on.contents)
+			boat_data["objects"] += O
+
+	return boat_data
+
+/datum/controller/subsystem/terrain_generation/proc/cleanup_docking_boat(list/boat_data)
+	if(!boat_data || !boat_data.len)
+		return
+
+	for(var/obj/O in boat_data["objects"])
+		if(!QDELETED(O))
+			qdel(O)
+
+	for(var/turf/T in boat_data["turfs"])
+		if(!QDELETED(T))
+			T.ChangeTurf(/turf/open/water/ocean)
+
+	boat_data["objects"]?.Cut()
+	boat_data["turfs"]?.Cut()
+
+	log_world("Cleaned up docking boat")
+
+/datum/controller/subsystem/terrain_generation/proc/find_shore_location(datum/island_data/island, direction)
+	// Get edge turfs based on direction
+	var/list/edge_turfs = get_edge_turfs(island.bottom_left, island.island_size, island.z_level, direction, FALSE)
+
+	if(!edge_turfs.len)
+		return null
+
+	// Cast lines from edge turfs to find sand/shore tiles
+	var/opposite_dir = turn(direction, 180) // Direction toward island interior
+
+	for(var/turf/edge_turf in edge_turfs)
+		var/turf/current = edge_turf
+		var/distance = 0
+
+		for(var/i = 1 to 30)
+			current = get_step(current, opposite_dir)
+			if(!current)
+				break
+
+			distance++
+			if(istype(current, /turf/open/floor/sand))
+				if(distance >= 10)
+					return current
+				break
+
+	return edge_turfs[round(edge_turfs.len / 2)]
+
 /datum/controller/subsystem/terrain_generation/proc/dock_ship_to_island(datum/ship_data/ship, datum/island_data/island, mirage_range = world.view)
 	if(!ship || !island)
 		return FALSE
@@ -266,9 +417,11 @@ SUBSYSTEM_DEF(terrain_generation)
 		ship.active_mirage_borders += island_to_ship
 		ship.active_mirage_borders += island_turf
 
+	// Spawn docking boat on island
+	ship.docked_boat_data = spawn_docking_boat(ship, island, island_direction)
 	ship.docked_island = island
 
-	log_world("Docked ship at z=[ship.z_level] (direction=[ship_direction]) to island at z=[island.z_level] (direction=[island_direction]) - [ship_edge_turfs.len] edge turfs")
+	log_world("Docked ship at z=[ship.z_level] to island at z=[island.z_level] with boat")
 	return TRUE
 
 /datum/controller/subsystem/terrain_generation/proc/get_edge_turfs(turf/bottom_left, size, z_level, direction, is_ship = FALSE)
@@ -319,6 +472,7 @@ SUBSYSTEM_DEF(terrain_generation)
 	if(!ship)
 		return FALSE
 
+	// Clean up mirage borders
 	for(var/i = 1; i <= ship.active_mirage_borders.len; i++)
 		var/entry = ship.active_mirage_borders[i]
 		if(istype(entry, /datum/component/mirage_border))
@@ -331,6 +485,12 @@ SUBSYSTEM_DEF(terrain_generation)
 				qdel(MB)
 
 	ship.active_mirage_borders.Cut()
+
+	// Clean up docking boat
+	if(ship.docked_boat_data)
+		cleanup_docking_boat(ship.docked_boat_data)
+		ship.docked_boat_data = null
+
 	ship.docked_island = null
 
 	log_world("Undocked ship at z=[ship.z_level]")
@@ -352,7 +512,7 @@ SUBSYSTEM_DEF(terrain_generation)
 	for(var/datum/ship_data/ship in ship_registry)
 		if(T.x >= ship.bottom_left.x && T.x <= ship.top_right.x)
 			if(T.y >= ship.bottom_left.y && T.y <= ship.top_right.y)
-				if(T.z == ship.z_level)
+				if(T.z >= ship.z_level && T.z <= ship.z_level + 3)
 					return ship
 
 	return null
@@ -368,140 +528,6 @@ SUBSYSTEM_DEF(terrain_generation)
 					return island
 
 	return null
-
-/datum/terrain_generation_job
-	var/obj/effect/landmark/terrain_generation_marker/marker
-	var/turf/bottom_left
-	var/datum/cave_biome/cave_biome
-	var/datum/island_biome/island_biome
-	var/z_level
-
-	var/status = GENERATION_STATUS_PENDING
-	var/current_phase = ""
-	var/progress = 0
-	var/error = ""
-
-	var/queued_time = 0
-	var/start_time = 0
-	var/completion_time = 0
-
-/datum/island_data
-	var/turf/bottom_left
-	var/turf/top_right
-	var/z_level
-	var/island_size
-	var/list/dock_anchors = list()
-	var/island_id
-	var/island_name // Human-readable name
-
-/datum/island_data/New(turf/bl, size)
-	bottom_left = bl
-	island_size = size
-	z_level = bl.z + 2 // Island is always at z+2
-	top_right = locate(bl.x + size - 1, bl.y + size - 1, z_level)
-	island_id = "island_[bl.x]_[bl.y]_[z_level]_[world.time]"
-	island_name = "Island #[length(SSterrain_generation.island_registry) + 1]"
-
-/datum/ship_data
-	var/turf/bottom_left
-	var/turf/top_right
-	var/z_level
-	var/ship_size
-	var/list/ship_anchors = list() // Turf locations for anchors (keyed by direction)
-	var/datum/island_data/docked_island
-	var/list/active_mirage_borders = list() // list of borders easier cleanup this way
-
-/datum/ship_data/New(turf/bl, size, z)
-	bottom_left = bl
-	ship_size = size
-	z_level = z
-	top_right = locate(bl.x + size - 1, bl.y + size - 1, z_level)
-
-/obj/effect/landmark/terrain_generation_marker
-	name = "terrain generation marker"
-	desc = "Marks where terrain should be generated. Bottom-left corner including perimeter."
-	icon = 'icons/effects/effects.dmi'
-	icon_state = "x2"
-	alpha = 128
-
-	var/generate_on_init = TRUE
-	var/datum/cave_biome/cave_biome_override = null
-	var/datum/island_biome/island_biome_override = null
-
-/obj/effect/landmark/terrain_generation_marker/Initialize(mapload)
-	. = ..()
-	if(!generate_on_init)
-		// Make visible for deferred generation
-		alpha = 255
-
-/obj/effect/landmark/terrain_generation_marker/attack_hand(mob/user)
-	. = ..()
-	if(!generate_on_init)
-		to_chat(user, span_notice("Triggering terrain generation..."))
-		if(SSterrain_generation.trigger_deferred_generation(src))
-			to_chat(user, span_notice("Generation queued!"))
-		else
-			to_chat(user, span_warning("Failed to queue generation."))
-
-/obj/effect/landmark/terrain_generation_marker/deferred
-	generate_on_init = FALSE
-
-/obj/effect/landmark/ship_marker
-	name = "ship area marker"
-	desc = "Marks the bottom-left corner of a ship area. Click to dock/undock."
-	icon = 'icons/effects/effects.dmi'
-	icon_state = "x2"
-	alpha = 128
-
-	var/ship_size = 100
-	var/datum/ship_data/registered_ship
-	var/target_island_id = "" // Unique ID of island to dock to
-
-/obj/effect/landmark/ship_marker/Initialize(mapload)
-	. = ..()
-	registered_ship = SSterrain_generation.register_ship(loc, ship_size)
-
-/obj/effect/landmark/ship_marker/proc/mirage_link()
-	var/mob/user = usr
-	if(!registered_ship)
-		return
-
-	if(registered_ship.docked_island)
-		SSterrain_generation.undock_ship(registered_ship)
-	else
-		var/datum/island_data/island
-
-		if(target_island_id)
-			island = SSterrain_generation.get_island_by_id(target_island_id)
-		else
-			var/list/available_islands = SSterrain_generation.get_all_islands()
-			if(!available_islands.len)
-				to_chat(user, span_warning("No islands available!"))
-				return
-
-			var/list/island_choices = list()
-			for(var/datum/island_data/isl in available_islands)
-				island_choices[isl.island_name] = isl
-
-			var/choice = input(user, "Select island to dock to:", "Dock Ship") as null|anything in island_choices
-			if(!choice)
-				return
-
-			island = island_choices[choice]
-
-		if(!island)
-			to_chat(user, span_warning("Island not found!"))
-			return
-
-		if(SSterrain_generation.dock_ship_to_island(registered_ship, island))
-			to_chat(user, span_notice("Ship docked to [island.island_name]! You can now see the island."))
-		else
-			to_chat(user, span_warning("Failed to dock ship."))
-
-/obj/effect/landmark/ship_marker/Destroy()
-	if(registered_ship)
-		SSterrain_generation.undock_ship(registered_ship)
-	. = ..()
 
 /client/proc/list_all_ships_and_islands()
 	set name = "List Ships and Islands"
