@@ -34,6 +34,7 @@
 		/turf/open/floor/sandstone,
 		/turf/closed/transparent,
 		/turf/closed/dungeon_void,
+		/turf/closed/sea_fog,
 		/turf/template_noop,
 		/turf/closed/wall/mineral/underbrick/fake_world,
 		/turf/closed/wall/mineral,
