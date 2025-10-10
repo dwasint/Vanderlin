@@ -1035,7 +1035,7 @@
 
 
 /turf/open/floor/sand/bloodied
-	 icon_state = "bloody"
+	icon_state = "bloody"
 
 /turf/open/floor/sand/bloodied/Initialize(mapload)
 	. = ..()

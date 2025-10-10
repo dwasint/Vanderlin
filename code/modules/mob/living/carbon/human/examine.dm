@@ -87,7 +87,7 @@
 
 		if(race_name) // race name
 			appendage_to_name += " [race_name]"
- // job name, don't show job of foreigners.
+// job name, don't show job of foreigners.
 
 		if(used_title && !HAS_TRAIT(src, TRAIT_FACELESS) && (!HAS_TRAIT(src, TRAIT_FOREIGNER) || HAS_TRAIT(src, TRAIT_RECRUITED) || HAS_TRAIT(src, TRAIT_RECOGNIZED)))
 			appendage_to_name += ", [used_title]"

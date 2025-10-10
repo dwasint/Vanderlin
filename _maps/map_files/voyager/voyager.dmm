@@ -29,10 +29,7 @@
 	name = "ROOM III"
 	},
 /obj/effect/mapping_helpers/access/locker,
-/turf/open/floor/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
-	},
+/turf/open/floor/ruinedwood/two,
 /area/rogue/ship/middeck)
 "aC" = (
 /obj/effect/decal/cobbleedge{
@@ -75,10 +72,7 @@
 	name = "ROOM II"
 	},
 /obj/effect/mapping_helpers/access/locker,
-/turf/open/floor/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
-	},
+/turf/open/floor/ruinedwood/two,
 /area/rogue/ship/middeck)
 "aM" = (
 /obj/structure/chair/bench/church/r{
@@ -496,10 +490,7 @@
 	lockid = "heir";
 	name = "Heir's Apartment"
 	},
-/turf/open/floor/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
-	},
+/turf/open/floor/ruinedwood/two,
 /area/rogue/ship/nobledeck)
 "dN" = (
 /obj/structure/table/wood{
@@ -836,10 +827,7 @@
 	name = "ROOM I"
 	},
 /obj/effect/mapping_helpers/access/locker,
-/turf/open/floor/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
-	},
+/turf/open/floor/ruinedwood/two,
 /area/rogue/ship/middeck)
 "hA" = (
 /obj/structure/door/violet{
@@ -2229,15 +2217,6 @@
 /obj/item/cooking/pan,
 /turf/open/floor/blocks,
 /area/rogue/ship/middeck)
-"tP" = (
-/obj/structure/door/violet,
-/obj/effect/mapping_helpers/access/keyset/town/tower,
-/obj/effect/mapping_helpers/access/locker,
-/turf/open/floor/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
-	},
-/area/rogue/ship/nobledeck)
 "tS" = (
 /obj/structure/closet/crate/chest/neu_fancy,
 /obj/item/ingot/blacksteel,
@@ -2533,15 +2512,6 @@
 	dir = 4
 	},
 /turf/open/floor/herringbone,
-/area/rogue/ship/middeck)
-"vR" = (
-/obj/structure/door/weak/bolt{
-	dir = 1
-	},
-/turf/open/floor/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
-	},
 /area/rogue/ship/middeck)
 "vU" = (
 /obj/effect/decal/cobbleedge{
@@ -3051,9 +3021,8 @@
 /obj/item/instrument/lute,
 /obj/item/instrument/accord,
 /obj/item/instrument/drum,
-/turf/open/floor/rooftop{
-	dir = 4;
-	icon_state = "roofg"
+/turf/open/floor/rooftop/green{
+	dir = 4
 	},
 /area/rogue/ship/middeck)
 "Bc" = (
@@ -3540,10 +3509,7 @@
 "Fx" = (
 /obj/structure/stairs/stone,
 /obj/machinery/light/fueled/wallfire/candle/blue/r,
-/turf/open/floor/rooftop{
-	dir = 2;
-	icon_state = "roofg"
-	},
+/turf/open/floor/church,
 /area/rogue/ship/middeck)
 "Fz" = (
 /obj/structure/fluff/railing/border{
@@ -3577,7 +3543,7 @@
 /obj/item/natural/bundle/cloth{
 	pixel_x = 5
 	},
-/turf/open/floor/ruinedwood,
+/turf/open/floor/ruinedwood/two,
 /area/rogue/ship/middeck)
 "FP" = (
 /obj/structure/fluff/railing/border{
@@ -4393,10 +4359,7 @@
 	dir = 8
 	},
 /obj/effect/mapping_helpers/access/locker,
-/turf/open/floor/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
-	},
+/turf/open/floor/ruinedwood/two,
 /area/rogue/ship/middeck)
 "Na" = (
 /obj/structure/window,
@@ -4478,10 +4441,7 @@
 	dir = 1
 	},
 /obj/effect/mapping_helpers/access/keyset/town/apothecary,
-/turf/open/floor/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
-	},
+/turf/open/floor/ruinedwood/two,
 /area/rogue/ship/middeck)
 "Ob" = (
 /obj/structure/chair/wood/alt/fancy,
@@ -4640,10 +4600,7 @@
 	name = "ROOM IV"
 	},
 /obj/effect/mapping_helpers/access/locker,
-/turf/open/floor/ruinedwood{
-	icon_state = "wooden_floor2";
-	dir = 1
-	},
+/turf/open/floor/ruinedwood/two,
 /area/rogue/ship/middeck)
 "OZ" = (
 /obj/structure/carpet/green,
@@ -4751,9 +4708,8 @@
 /area/rogue/ship/middeck)
 "QB" = (
 /obj/structure/roguetent,
-/turf/open/floor/rooftop{
-	dir = 4;
-	icon_state = "roofg"
+/turf/open/floor/rooftop/green{
+	dir = 4
 	},
 /area/rogue/ship/middeck)
 "QF" = (
@@ -54447,7 +54403,7 @@ TN
 TN
 Ze
 Lg
-vR
+KH
 Vb
 Ku
 xR
@@ -93436,7 +93392,7 @@ SX
 Il
 fU
 fU
-tP
+Il
 tT
 Fa
 hs

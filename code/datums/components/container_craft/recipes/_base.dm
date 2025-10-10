@@ -62,17 +62,17 @@ GLOBAL_LIST_INIT(container_craft_to_singleton, init_container_crafts())
  * @return TRUE if requirements are still met, FALSE otherwise
  */
 /datum/container_craft/proc/requirements_still_met(obj/item/crafter, list/obj/item/reserved_items)
-    if(length(reagent_requirements))
-        for(var/reagent_type in reagent_requirements)
-            if(!crafter.reagents.has_reagent(reagent_type, reagent_requirements[reagent_type], check_subtypes = subtype_reagents_allowed))
-                return FALSE
+	if(length(reagent_requirements))
+		for(var/reagent_type in reagent_requirements)
+			if(!crafter.reagents.has_reagent(reagent_type, reagent_requirements[reagent_type], check_subtypes = subtype_reagents_allowed))
+				return FALSE
 
-    // Check that all reserved items still exist and are in the container
-    for(var/obj/item/item in reserved_items)
-        if(QDELETED(item) || item.loc != crafter)
-            return FALSE
+	// Check that all reserved items still exist and are in the container
+	for(var/obj/item/item in reserved_items)
+		if(QDELETED(item) || item.loc != crafter)
+			return FALSE
 
-    return TRUE
+	return TRUE
 
 /datum/container_craft/proc/try_craft(obj/item/crafter, list/pathed_items, mob/initiator, datum/callback/on_craft_start, datum/callback/on_craft_failed)
 	var/highest_multiplier = 0
@@ -411,19 +411,19 @@ GLOBAL_LIST_INIT(container_craft_to_singleton, init_container_crafts())
  * @param freshness The average freshness of ingredients
  */
 /datum/container_craft/proc/apply_food_quality(obj/item/reagent_containers/food/snacks/food_item, cooking_skill, ingredient_quality, reagent_quality, freshness)
-    var/datum/quality_calculator/cooking/cook_calc = new(
-        base_qual = 0,
-        mat_qual = max(ingredient_quality, reagent_quality), // Use the higher of food or reagent quality
-        skill_qual = cooking_skill,
-        perf_qual = 0,
-        diff_mod = 0,
-        components = 1,
-        fresh = freshness,
-        recipe_mod = quality_modifier,
-        reagent_qual = reagent_quality // Pass reagent quality separately if needed
-    )
-    cook_calc.apply_quality_to_item(food_item)
-    qdel(cook_calc)
+	var/datum/quality_calculator/cooking/cook_calc = new(
+		base_qual = 0,
+		mat_qual = max(ingredient_quality, reagent_quality), // Use the higher of food or reagent quality
+		skill_qual = cooking_skill,
+		perf_qual = 0,
+		diff_mod = 0,
+		components = 1,
+		fresh = freshness,
+		recipe_mod = quality_modifier,
+		reagent_qual = reagent_quality // Pass reagent quality separately if needed
+	)
+	cook_calc.apply_quality_to_item(food_item)
+	qdel(cook_calc)
 
 
 /datum/container_craft/proc/after_craft(atom/created_output, obj/item/crafter, mob/initiator, list/found_optional_requirements, list/found_optional_wildcards, list/found_optional_reagents, list/removing_items)

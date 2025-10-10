@@ -1,17 +1,4 @@
 /*
-// Basic usage with delve level and item rarity
-var/datum/loot_table/my_table = new /datum/loot_table/basic_dungeon()
-my_table.spawn_loot(user, delve_level = 3, item_rarity = 1.5)
-
-// Just delve level (item rarity defaults to 1.0)
-my_table.spawn_loot(user, delve_level = 5)
-
-// Just item rarity (delve level defaults to 1)
-my_table.spawn_loot(user, item_rarity = 2.0)
-
-// Both parameters
-my_table.spawn_loot(user, delve_level = 4, item_rarity = 0.5)
-
 HOW THE SCALING WORKS:
 
 1. DELVE LEVEL SCALING:
