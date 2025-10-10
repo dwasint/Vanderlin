@@ -18,6 +18,9 @@
 	. = ..()
 	ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
 
+/turf/open/floor/ruinedwood/two
+	icon_state = "wooden_floor2"
+
 /turf/open/floor/ruinedwood/alt
 	icon_state = "horzw"
 
