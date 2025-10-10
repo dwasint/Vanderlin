@@ -39,7 +39,6 @@
 	icon_state = "borderfall";
 	dir = 4
 	},
-/obj/structure/fluff/traveltile,
 /turf/open/floor/rooftop{
 	dir = 4;
 	icon_state = "roofg"
@@ -2070,6 +2069,15 @@
 /obj/effect/landmark/start/farmer,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/topdeck)
+"rf" = (
+/obj/effect/decal/cobbleedge{
+	icon_state = "borderfall"
+	},
+/obj/structure/fluff/railing/wood,
+/obj/structure/fluff/nest,
+/obj/structure/ladder,
+/turf/open/floor/hay,
+/area/rogue/outdoors/beach)
 "rC" = (
 /obj/structure/fluff/railing/border{
 	dir = 10
@@ -56974,7 +56982,7 @@ TN
 kX
 Eo
 eU
-fZ
+rf
 Ze
 ZQ
 XI
@@ -97375,8 +97383,8 @@ TN
 TN
 TN
 TN
-kX
-kp
+Rw
+GF
 VU
 VU
 VU

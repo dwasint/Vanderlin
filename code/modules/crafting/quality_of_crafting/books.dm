@@ -947,6 +947,8 @@
 
 	types = list(
 		/datum/book_entry/grims_guide,
+		/datum/chimeric_table,
+		/datum/chimeric_node,
 		/datum/wound,
 		/datum/surgery,
 	)
