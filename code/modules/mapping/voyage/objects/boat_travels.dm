@@ -19,6 +19,12 @@ GLOBAL_LIST_EMPTY(boat_landmarks)
 		destination = get_turf(transfer)
 		transfer.destination = get_turf(src)
 
+/obj/effect/landmark/boat_transfer/Destroy()
+	. = ..()
+	if(!traveller)
+		LAZYREMOVE(GLOB.boat_landmarks, src)
+	destination = null
+
 /obj/effect/landmark/boat_transfer/Crossed(atom/movable/AM)
 	. = ..()
 	if(!isliving(AM))
