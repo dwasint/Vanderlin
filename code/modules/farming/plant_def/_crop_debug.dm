@@ -412,7 +412,7 @@
 	if(!check_rights(R_ADMIN))
 		return
 
-   	debug_system = new()
+	debug_system = new()
 	debug_system.show_debug_menu(mob)
 
 /client
