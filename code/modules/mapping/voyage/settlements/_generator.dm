@@ -30,6 +30,7 @@
 	var/farm_plot_chance = 0.6
 	var/min_plot_area = 20
 
+	var/settlement_tier = SETTLEMENT_TIER_BASIC
 	var/list/decoration_templates = list(
 	)
 
@@ -37,6 +38,39 @@
 	..()
 	biome = selected_biome
 	mob_spawn_type = selected_biome.settlement_mobs
+	setup_settlement_tier()
+
+/datum/settlement_generator/proc/setup_settlement_tier()
+	var/list/tiers = list(
+		SETTLEMENT_TIER_BASIC = 100,
+		SETTLEMENT_TIER_WOOD = 50,
+		SETTLEMENT_TIER_STONE = 1000,
+	)
+
+	settlement_tier = pickweight(tiers)
+	switch(settlement_tier)
+		if(SETTLEMENT_TIER_BASIC)
+			building_templates = list(
+				/datum/settlement_building_template/house_1,
+				/datum/settlement_building_template/house_2,
+				/datum/settlement_building_template/house_3,
+				/datum/settlement_building_template/house_4,
+			)
+		if(SETTLEMENT_TIER_WOOD)
+			building_templates = list(
+				/datum/settlement_building_template/wood_house_1,
+				/datum/settlement_building_template/wood_house_2,
+				/datum/settlement_building_template/wood_house_3,
+				/datum/settlement_building_template/wood_house_4,
+			)
+		if(SETTLEMENT_TIER_STONE)
+			building_templates = list(
+				/datum/settlement_building_template/stone_house_1,
+				/datum/settlement_building_template/stone_house_2,
+				/datum/settlement_building_template/stone_house_3,
+				/datum/settlement_building_template/wood_house_3,
+			)
+
 
 /datum/settlement_generator/proc/generate_settlements(datum/island_generator/island_gen, turf/bottom_left_corner, list/mainland_tiles)
 	if(!building_templates.len || !mainland_tiles.len)

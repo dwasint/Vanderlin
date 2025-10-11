@@ -11,8 +11,8 @@
 	z_offset = -2
 
 /datum/map_template/cave_entry
-	name = "House 1"
-	id = "house_1"
+	name = "Cave Entry"
+	id = "cave_entry"
 	mappath = "_maps/templates/voyager_features/cave_entry.dmm"
 
 	width = 11

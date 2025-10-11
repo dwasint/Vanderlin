@@ -11272,7 +11272,6 @@
 /area/rogue/under/cave)
 "kGU" = (
 /obj/structure/closet/crate/chest/neu,
-/obj/item/gem/black,
 /turf/open/floor/tile/masonic/spiral,
 /area/rogue/indoors/town/vault)
 "kHs" = (
