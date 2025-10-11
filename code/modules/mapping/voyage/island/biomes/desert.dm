@@ -18,13 +18,11 @@
 	fauna_density -= min(3, difficulty)
 	if(difficulty >= 1)
 		fauna_types += list(
-			/mob/living/simple_animal/pet/cat = new /datum/fauna_spawn_rule(
-				min_moist = 0.3,
-				max_moist = 0.8,
-				min_temp = 0.3,
-				max_temp = 0.7,
+			/mob/living/simple_animal/hostile/retaliate/trufflepig = new /datum/fauna_spawn_rule(
+				min_moist = 0.2,
 				no_beach_spawn = TRUE,
-				weight = 80
+				max_h = 1,
+				weight = 120
 			),
 			/mob/living/simple_animal/hostile/retaliate/trufflepig = new /datum/fauna_spawn_rule(
 				min_moist = 0.2,
