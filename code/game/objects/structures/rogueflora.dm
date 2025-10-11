@@ -883,3 +883,18 @@
 	SET_BASE_PIXEL(-16, -1)
 	num_random_icons = 0
 	silky = TRUE
+
+
+/obj/structure/flora/grass/mushroom
+	name = "leafy mushrooms"
+	desc = "A number of mushrooms, each of which surrounds a greenish sporangium with a number of leaf-like structures."
+	icon_state = "l_mushroom_red1"
+
+/obj/structure/flora/grass/mushroom/Initialize()
+	. = ..()
+	var/shroom_color = pick("red", "green", "blue")
+	var/turf/open/floor/mushroom/turf = get_turf(src)
+	if(istype(turf))
+		shroom_color = turf.mushroom_color
+
+	icon_state = "[pick(list("l", "r", "t"))]_mushroom_[shroom_color]1"

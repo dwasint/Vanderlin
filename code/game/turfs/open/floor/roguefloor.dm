@@ -1092,3 +1092,43 @@
 	transform = translation
 
 	underlay_appearance.transform = transform
+
+/turf/open/floor/mushroom
+	name = "mushroom floor"
+	desc = "A patch of mushrooms."
+	icon_state = "mushroom"
+	base_icon_state = "mushroom"
+	transform = MAP_SWITCH(TRANSLATE_MATRIX(-9, -9), matrix())
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = SMOOTH_GROUP_MUSHROOM
+	smoothing_list = SMOOTH_GROUP_CLOSED_WALL + SMOOTH_GROUP_MUSHROOM
+	icon = 'icons/turf/smooth/floors/mushroom.dmi'
+	layer = HIGH_TURF_LAYER
+	color = "#777777"
+	var/mushroom_color = "red"
+
+/turf/open/floor/mushroom/get_smooth_underlay_icon(mutable_appearance/underlay_appearance, turf/asking_turf, adjacency_dir)
+	. = ..()
+	if (!.)
+		return
+
+	if(!smoothing_flags)
+		return
+
+	var/matrix/translation = new
+	translation.Translate(-9, -9)
+	transform = translation
+
+	underlay_appearance.transform = transform
+
+/turf/open/floor/mushroom/blue
+	icon_state = "mushroom_blue"
+	base_icon_state = "mushroom_blue"
+	icon = 'icons/turf/smooth/floors/mushroom_blue.dmi'
+	mushroom_color = "blue"
+
+/turf/open/floor/mushroom/green
+	icon_state = "mushroom_green"
+	base_icon_state = "mushroom_green"
+	icon = 'icons/turf/smooth/floors/mushroom_green.dmi'
+	mushroom_color = "green"
