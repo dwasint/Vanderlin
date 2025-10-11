@@ -2783,6 +2783,7 @@
 #include "code\modules\mapping\voyage\island\_generator.dm"
 #include "code\modules\mapping\voyage\island\biomes\eoran_hell.dm"
 #include "code\modules\mapping\voyage\island\biomes\plains.dm"
+#include "code\modules\mapping\voyage\island\biomes\taiga.dm"
 #include "code\modules\mapping\voyage\island\features\cave\generic.dm"
 #include "code\modules\mapping\voyage\objects\boat_travels.dm"
 #include "code\modules\mapping\voyage\objects\settlement_path_node.dm"
