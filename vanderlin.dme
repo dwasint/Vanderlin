@@ -2781,6 +2781,7 @@
 #include "code\modules\mapping\voyage\island\_biome.dm"
 #include "code\modules\mapping\voyage\island\_feature.dm"
 #include "code\modules\mapping\voyage\island\_generator.dm"
+#include "code\modules\mapping\voyage\island\biomes\desert.dm"
 #include "code\modules\mapping\voyage\island\biomes\eoran_hell.dm"
 #include "code\modules\mapping\voyage\island\biomes\plains.dm"
 #include "code\modules\mapping\voyage\island\biomes\taiga.dm"

@@ -1062,6 +1062,7 @@
 /turf/open/floor/cracked_earth
 	icon = 'icons/delver/desert_objects.dmi'
 	icon_state = "cracked_earth"
+	smoothing_groups = SMOOTH_GROUP_OPEN_FLOOR + SMOOTH_GROUP_FLOOR_DIRT_ROAD
 
 /turf/open/floor/cracked_earth/Initialize(mapload)
 	. = ..()

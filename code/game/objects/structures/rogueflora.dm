@@ -898,3 +898,17 @@
 		shroom_color = turf.mushroom_color
 
 	icon_state = "[pick(list("l", "r", "t"))]_mushroom_[shroom_color]1"
+
+/obj/structure/flora/tree/dead_bush
+	name = "dead brush"
+	desc = "The blazing sun has killed this brush."
+	icon_state = "deadbush_1"
+	base_icon_state = "deadbush_"
+	num_random_icons = 3
+
+/obj/structure/flora/tree/dying_bush
+	name = "dying brush"
+	desc = "The blazing sun is killing this brush."
+	icon_state = "livebush_1"
+	base_icon_state = "livebush_"
+	num_random_icons = 3
