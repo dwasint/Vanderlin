@@ -5,7 +5,7 @@
 	var/turf/water_turf = /turf/open/water/ocean
 	var/turf/deep_water_turf = /turf/open/water/ocean/deep
 	var/turf/wall_turf = /turf/closed/mineral/random
-	var/island_threshold = 0.3
+	var/island_threshold = 0.25
 	var/beach_width = 2
 	var/beach_noise_scale = 0.15
 	var/min_ocean_border = 5

@@ -44,7 +44,7 @@
 	var/list/tiers = list(
 		SETTLEMENT_TIER_BASIC = 100,
 		SETTLEMENT_TIER_WOOD = 50,
-		SETTLEMENT_TIER_STONE = 1000,
+		SETTLEMENT_TIER_STONE = 10,
 	)
 
 	settlement_tier = pickweight(tiers)
