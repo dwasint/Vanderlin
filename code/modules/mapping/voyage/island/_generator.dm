@@ -28,6 +28,9 @@
 	var/gain = 0.5
 	var/lacunarity = 2.0
 
+	var/ocean_noise_amplification = 3.0  // How much to amplify the island noise for depth variation
+	var/shallow_water_noise_threshold = 0.25  // Higher = less shallow water extends out
+
 	// Persistent noise generators
 	var/datum/noise_generator/noise
 	var/datum/noise_generator/beach_noise
@@ -158,79 +161,26 @@
 	biome.temperature_map = temperature_map
 	biome.moisture_map = moisture_map
 
-	// Phase 3: Generate water
-	var/list/water_distance_map = list()
-	var/list/water_queue = list()
-
 	for(var/x = 0 to size_x - 1)
 		for(var/y = 0 to size_y - 1)
 			if(!island_map["[x],[y]"])
+				var/noise_val = get_noise(x, y)
+				var/distance_factor = get_distance_factor(x, y)
+				var/normalized_noise = (noise_val + 1) / 2
+
+				var/depth_value = normalized_noise - (distance_factor * (1 - noise_influence))
+				depth_value *= ocean_noise_amplification
+
 				var/turf/T = locate(start_x + x, start_y + y, start_z)
 				if(T)
-					T.ChangeTurf(deep_water_turf)
-			else
-				for(var/dx = -1 to 1)
-					for(var/dy = -1 to 1)
-						if(dx == 0 && dy == 0)
-							continue
-						var/wx = x + dx
-						var/wy = y + dy
-						if(!island_map["[wx],[wy]"] && wx >= 0 && wx < size_x && wy >= 0 && wy < size_y)
-							var/water_key = "[wx],[wy]"
-							if(!(water_key in water_distance_map))
-								water_distance_map[water_key] = 0
-								water_queue += water_key
+					if(depth_value > shallow_water_noise_threshold)
+						T.ChangeTurf(water_turf)
+					else
+						T.ChangeTurf(deep_water_turf)
 
 		if(x % 10 == 0)
 			if(job)
-				job.progress = 60 + (x / size_x) * 10 // 60-70% for water setup
-			CHECK_TICK
-
-	// Spread shallow water
-	var/water_tiles_processed = 0
-	while(water_queue.len)
-		var/current = water_queue[1]
-		water_queue.Cut(1, 2)
-
-		var/list/coords = splittext(current, ",")
-		var/x = text2num(coords[1])
-		var/y = text2num(coords[2])
-		var/current_dist = water_distance_map[current]
-
-		if(current_dist < ocean_depth)
-			var/turf/T = locate(start_x + x, start_y + y, start_z)
-			if(T)
-				T.ChangeTurf(water_turf)
-
-			var/spread_chance = 100 - (current_dist / ocean_depth * 40)
-
-			for(var/dx = -1 to 1)
-				for(var/dy = -1 to 1)
-					if(dx == 0 && dy == 0)
-						continue
-
-					if(!prob(spread_chance))
-						continue
-
-					var/nx = x + dx
-					var/ny = y + dy
-
-					if(nx < 0 || nx >= size_x || ny < 0 || ny >= size_y)
-						continue
-
-					if(island_map["[nx],[ny]"])
-						continue
-
-					var/neighbor_key = "[nx],[ny]"
-
-					if(neighbor_key in water_distance_map)
-						continue
-
-					water_distance_map[neighbor_key] = current_dist + 1
-					water_queue += neighbor_key
-
-		water_tiles_processed++
-		if(water_tiles_processed % 200 == 0)
+				job.progress = 60 + (x / size_x) * 10
 			CHECK_TICK
 
 	// Phase 4: Place terrain tiles
@@ -352,68 +302,22 @@
 	biome.temperature_map = temperature_map
 	biome.moisture_map = moisture_map
 
-	var/list/water_distance_map = list()
-	var/list/water_queue = list()
-
 	for(var/x = 0 to size_x - 1)
 		for(var/y = 0 to size_y - 1)
 			if(!island_map["[x],[y]"])
+				var/noise_val = get_noise(x, y)
+				var/distance_factor = get_distance_factor(x, y)
+				var/normalized_noise = (noise_val + 1) / 2
+
+				var/depth_value = normalized_noise - (distance_factor * (1 - noise_influence))
+				depth_value *= ocean_noise_amplification
+
 				var/turf/T = locate(start_x + x, start_y + y, start_z)
 				if(T)
-					T.ChangeTurf(deep_water_turf)
-			else
-				for(var/dx = -1 to 1)
-					for(var/dy = -1 to 1)
-						if(dx == 0 && dy == 0)
-							continue
-						var/wx = x + dx
-						var/wy = y + dy
-						if(!island_map["[wx],[wy]"] && wx >= 0 && wx < size_x && wy >= 0 && wy < size_y)
-							var/water_key = "[wx],[wy]"
-							if(!(water_key in water_distance_map))
-								water_distance_map[water_key] = 0
-								water_queue += water_key
-
-	while(water_queue.len)
-		var/current = water_queue[1]
-		water_queue.Cut(1, 2)
-
-		var/list/coords = splittext(current, ",")
-		var/x = text2num(coords[1])
-		var/y = text2num(coords[2])
-		var/current_dist = water_distance_map[current]
-
-		if(current_dist < ocean_depth)
-			var/turf/T = locate(start_x + x, start_y + y, start_z)
-			if(T)
-				T.ChangeTurf(water_turf)
-
-			var/spread_chance = 100 - (current_dist / ocean_depth * 40)
-
-			for(var/dx = -1 to 1)
-				for(var/dy = -1 to 1)
-					if(dx == 0 && dy == 0)
-						continue
-
-					if(!prob(spread_chance))
-						continue
-
-					var/nx = x + dx
-					var/ny = y + dy
-
-					if(nx < 0 || nx >= size_x || ny < 0 || ny >= size_y)
-						continue
-
-					if(island_map["[nx],[ny]"])
-						continue
-
-					var/neighbor_key = "[nx],[ny]"
-
-					if(neighbor_key in water_distance_map)
-						continue
-
-					water_distance_map[neighbor_key] = current_dist + 1
-					water_queue += neighbor_key
+					if(depth_value > shallow_water_noise_threshold)
+						T.ChangeTurf(water_turf)
+					else
+						T.ChangeTurf(deep_water_turf)
 
 	var/list/mainland_tiles = list()
 	var/list/beach_tiles = list()

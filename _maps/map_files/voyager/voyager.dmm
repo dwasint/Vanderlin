@@ -5589,6 +5589,14 @@
 	},
 /turf/open/floor/twig,
 /area/rogue/ship/middeck)
+"XY" = (
+/obj/structure/fluff/railing/border{
+	dir = 1
+	},
+/obj/structure/fluff/railing/border,
+/obj/effect/landmark/observer_start,
+/turf/open/floor/ruinedwood/spiral,
+/area/rogue/ship/topdeck)
 "Ya" = (
 /obj/effect/decal/cobbleedge{
 	icon_state = "borderfall"
@@ -96644,7 +96652,7 @@ Lp
 tB
 RX
 sk
-QR
+XY
 sk
 Ae
 VU

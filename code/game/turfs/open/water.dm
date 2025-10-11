@@ -769,7 +769,7 @@
 	icon = 'icons/turf/floors.dmi'
 	neighborlay_self = null
 	water_level = 2
-	slowdown = 4
+	slowdown = 2
 	swim_skill = TRUE
 	wash_in = TRUE
 	water_reagent = /datum/reagent/water/salty
@@ -780,7 +780,7 @@
 	icon_state = "ash"
 	icon = 'icons/turf/floors.dmi'
 	water_level = 3
-	slowdown = 8
+	slowdown = 4
 	swim_skill = TRUE
 	wash_in = TRUE
 
