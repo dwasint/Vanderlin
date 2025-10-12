@@ -394,11 +394,6 @@ SUBSYSTEM_DEF(terrain_generation)
 			boat_data["original_turfs"][turf_key] = original_type
 			boat_data["turfs"] += place_on
 
-		// Collect objects regardless of turf change
-		if(!istype(place_on, /turf/open/water))
-			for(var/obj/effect/overlay/water/water in place_on.contents)
-				qdel(water)
-
 		for(var/obj/structure/O in place_on.contents)
 			boat_data["objects"] += O
 
@@ -487,6 +482,12 @@ SUBSYSTEM_DEF(terrain_generation)
 		var/index = ship_edge_turfs.Find(ship_turf)
 		var/turf/island_turf = island_edge_turfs[min(index, island_edge_turfs.len)]
 
+		ship_turf.alpha = 0
+		if(istype(ship_turf, /turf/open/water))
+			var/turf/open/water/water = ship_turf
+			water.water_overlay.alpha = 0
+			water.water_top_overlay.alpha = 0
+
 		var/datum/component/mirage_border/ship_to_island = ship_turf.AddComponent(\
 			/datum/component/mirage_border,\
 			island_turf,\
@@ -564,7 +565,7 @@ SUBSYSTEM_DEF(terrain_generation)
 	if(!ship)
 		return FALSE
 
-	// Clean up mirage borders
+	// Clean up mirage borders and restore alpha
 	for(var/i = 1; i <= ship.active_mirage_borders.len; i++)
 		var/entry = ship.active_mirage_borders[i]
 		if(istype(entry, /datum/component/mirage_border))
@@ -572,6 +573,11 @@ SUBSYSTEM_DEF(terrain_generation)
 			qdel(MB)
 		else if(isturf(entry))
 			var/turf/T = entry
+			T.alpha = 255
+			if(istype(T, /turf/open/water))
+				var/turf/open/water/water = T
+				water.water_overlay.alpha = 255
+				water.water_top_overlay.alpha = 255
 			var/datum/component/mirage_border/MB = T.GetComponent(/datum/component/mirage_border)
 			if(MB)
 				qdel(MB)
