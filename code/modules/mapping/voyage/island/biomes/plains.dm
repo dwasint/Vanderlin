@@ -12,7 +12,11 @@
 	)
 	feature_templates = list(
 		/datum/island_feature_template/blackberry,
-		/datum/island_feature_template/strawberry
+		/datum/island_feature_template/strawberry,
+		/datum/island_feature_template/salvia,
+		/datum/island_feature_template/flowerfield,
+		/datum/island_feature_template/abandoned_campsite,
+		/datum/island_feature_template/abandoned_camp,
 	)
 	flora_density = 2
 	max_height = 2

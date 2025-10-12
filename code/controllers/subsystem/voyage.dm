@@ -108,7 +108,9 @@ SUBSYSTEM_DEF(terrain_generation)
 
 /datum/controller/subsystem/terrain_generation/proc/setup_biome_pools()
 	cave_biomes = subtypesof(/datum/cave_biome)
-	island_biomes = subtypesof(/datum/island_biome)
+
+	for(var/datum/island_biome/biome as anything in subtypesof(/datum/island_biome))
+		island_biomes[biome] = initial(biome.biome_weight)
 
 /datum/controller/subsystem/terrain_generation/proc/generate_init_terrain()
 	// Find all markers that should generate on init
@@ -263,7 +265,7 @@ SUBSYSTEM_DEF(terrain_generation)
 		return FALSE
 
 	var/cave_biome = marker.cave_biome_override || pick(cave_biomes)
-	var/island_biome = marker.island_biome_override || pick(island_biomes)
+	var/island_biome = marker.island_biome_override || pickweight(island_biomes)
 
 	var/datum/terrain_generation_job/job = queue_deferred_generation(marker.loc, cave_biome, island_biome)
 	job.marker = marker

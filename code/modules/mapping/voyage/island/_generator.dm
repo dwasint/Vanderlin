@@ -9,11 +9,9 @@
 	var/beach_width = 2
 	var/beach_noise_scale = 0.15
 	var/min_ocean_border = 5
-	var/ocean_depth = 5
 	var/smoothing_passes = 1
 	var/seed = 0
-	var/feature_attempts = 5
-	var/min_feature_distance = 15
+	var/min_feature_distance = 6
 
 	///commonly modified
 	var/height_frequency = 0.22
@@ -750,6 +748,7 @@
 	var/list/placed_features = list()
 	var/list/island_map = list()
 	var/list/height_map = list()
+	var/list/coord_to_turf = list()
 
 	var/base_x = valid_tiles[1]:x
 	var/base_y = valid_tiles[1]:y
@@ -757,70 +756,89 @@
 	for(var/turf/T in valid_tiles)
 		var/rel_x = T.x - base_x
 		var/rel_y = T.y - base_y
-		island_map["[rel_x],[rel_y]"] = TRUE
+		var/key = "[rel_x],[rel_y]"
+		island_map[key] = TRUE
+		coord_to_turf[key] = T
 
 		var/height = 0
 		var/turf/check = T
 		while(istype(GET_TURF_BELOW(check), /turf/closed/wall))
 			height++
 			check = GET_TURF_BELOW(check)
-		height_map["[rel_x],[rel_y]"] = height
+		height_map[key] = height
 
-	var/list/weighted_templates = list()
+	// Use Poisson disk sampling for feature placement
+	var/min_radius = min_feature_distance
+	var/max_radius = min_feature_distance * 1.5
+	var/list/samples = noise.poisson_disk_sampling(0, size_x - 1, 0, size_y - 1, min_radius, max_radius)
+
+	// Prepare weighted templates - shuffle for variety
+	var/list/available_templates = list()
 	for(var/template_type in biome.feature_templates)
 		var/datum/island_feature_template/template = new template_type()
-		weighted_templates[template] = template.spawn_weight
+		available_templates += template
+	available_templates = shuffle(available_templates)
 
-	for(var/attempt = 1 to feature_attempts)
-		if(!valid_tiles.len || !weighted_templates.len)
+	// Try to place features at each Poisson sample point
+	for(var/list/sample in samples)
+		if(!available_templates.len)
 			break
 
-		var/datum/island_feature_template/feature_template = weighted_pick(weighted_templates)
-		var/turf/spawn_loc = find_valid_template_location(feature_template, valid_tiles, placed_features, island_map, height_map, distance_map, base_x, base_y)
+		var/sx = round(sample[1])
+		var/sy = round(sample[2])
+		var/key = "[sx],[sy]"
 
+		// Check if this point is on the island
+		if(!island_map[key])
+			continue
+
+		var/turf/candidate = coord_to_turf[key]
+		if(!candidate)
+			continue
+
+		// Try each available template until one fits
+		var/datum/island_feature_template/feature_template
+		var/list/templates_to_try = available_templates.Copy()
+
+		while(templates_to_try.len && !feature_template)
+			var/datum/island_feature_template/try_template = pick(templates_to_try)
+			templates_to_try -= try_template
+
+			// Validate template requirements
+			if(validate_template_requirements(try_template, candidate, island_map, height_map, distance_map, base_x, base_y))
+				// Check if too close to already placed features
+				var/too_close = FALSE
+				for(var/turf/placed in placed_features)
+					var/dx = candidate.x - placed.x
+					var/dy = candidate.y - placed.y
+					var/dist_sq = dx * dx + dy * dy
+					var/required_dist = max(try_template.width, try_template.height) + min_feature_distance
+					if(dist_sq < required_dist * required_dist)
+						too_close = TRUE
+						break
+
+				if(!too_close)
+					feature_template = try_template
+
+		if(!feature_template)
+			continue
+
+		// Place the feature
+		var/turf/spawn_loc = locate(candidate.x, candidate.y, candidate.z + initial(feature_template.z_offset))
 		if(!spawn_loc)
 			continue
-		spawn_loc = locate(spawn_loc.x, spawn_loc.y, spawn_loc.z + initial(feature_template.z_offset))
+
 		var/datum/map_template/template = new feature_template.template_path()
 		if(template && template.load(spawn_loc, centered = FALSE))
 			placed_features += spawn_loc
-
-			var/blocked_radius = max(feature_template.width, feature_template.height) + min_feature_distance
-			for(var/turf/check in valid_tiles)
-				var/dx = spawn_loc.x - check.x
-				var/dy = spawn_loc.y - check.y
-				if(dx * dx + dy * dy < blocked_radius * blocked_radius)
-					valid_tiles -= check
-
-/datum/island_generator/proc/find_valid_template_location(datum/island_feature_template/feature_template, list/valid_tiles, list/placed_features, list/island_map, list/height_map, list/distance_map, base_x, base_y)
-	var/max_attempts = 20
-
-	for(var/i = 1 to max_attempts)
-		var/turf/candidate = pick(valid_tiles)
-
-		var/too_close = FALSE
-		for(var/turf/placed in placed_features)
-			var/dx = candidate.x - placed.x
-			var/dy = candidate.y - placed.y
-			if(dx * dx + dy * dy < min_feature_distance * min_feature_distance)
-				too_close = TRUE
-				break
-
-		if(too_close)
-			continue
-
-		if(!validate_template_requirements(feature_template, candidate, island_map, height_map, distance_map, base_x, base_y))
-			continue
-
-		return candidate
-
-	return null
+			available_templates -= feature_template  // Remove this template so it can't be placed again
 
 /datum/island_generator/proc/validate_template_requirements(datum/island_feature_template/feature_template, turf/origin, list/island_map, list/height_map, list/distance_map, base_x, base_y)
 	var/origin_rel_x = origin.x - base_x
 	var/origin_rel_y = origin.y - base_y
-	var/origin_height = height_map["[origin_rel_x],[origin_rel_y]"] || 0
-	var/origin_distance = distance_map["[origin_rel_x],[origin_rel_y]"] || 0
+	var/key = "[origin_rel_x],[origin_rel_y]"
+	var/origin_height = height_map[key] || 0
+	var/origin_distance = distance_map[key] || 0
 
 	if(origin_height < feature_template.min_elevation || origin_height > feature_template.max_elevation)
 		return FALSE
@@ -838,19 +856,18 @@
 
 	for(var/x = 0 to feature_template.width - 1)
 		for(var/y = 0 to feature_template.height - 1)
-			var/check_x = origin.x + x
-			var/check_y = origin.y + y
-			var/rel_x = check_x - base_x
-			var/rel_y = check_y - base_y
+			var/check_rel_x = origin_rel_x + x
+			var/check_rel_y = origin_rel_y + y
+			var/check_key = "[check_rel_x],[check_rel_y]"
 
-			if(!island_map["[rel_x],[rel_y]"])
+			if(!island_map[check_key])
 				return FALSE
 
-			var/turf/T = locate(check_x, check_y, origin.z)
+			var/turf/T = locate(origin.x + x, origin.y + y, origin.z)
 			if(!T || istype(T, /turf/open/water))
 				return FALSE
 
-			var/tile_height = height_map["[rel_x],[rel_y]"] || 0
+			var/tile_height = height_map[check_key] || 0
 			min_height = min(min_height, tile_height)
 			max_height = max(max_height, tile_height)
 

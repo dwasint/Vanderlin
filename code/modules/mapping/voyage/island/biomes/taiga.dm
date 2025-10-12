@@ -1,6 +1,7 @@
 
 /datum/island_biome/tundra
 	name = "Tundra"
+	biome_weight = 80
 	terrain_weights = list(
 		/turf/open/floor/grass = 70,
 		/turf/open/floor/snow = 20,
@@ -11,8 +12,9 @@
 		/obj/structure/flora/grass/tundra = 30,
 	)
 	feature_templates = list(
-		/datum/island_feature_template/blackberry,
-		/datum/island_feature_template/strawberry
+		/datum/island_feature_template/hotspring,
+		/datum/island_feature_template/abandoned_campsite,
+		/datum/island_feature_template/abandoned_camp,
 	)
 	flora_density = 2
 	max_height = 2

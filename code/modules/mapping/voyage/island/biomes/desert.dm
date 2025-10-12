@@ -1,5 +1,6 @@
 /datum/island_biome/desert
 	name = "Desert"
+	biome_weight = 20
 	terrain_weights = list(
 		/turf/open/floor/cracked_earth = 70,
 		/turf/open/floor/sand = 20,

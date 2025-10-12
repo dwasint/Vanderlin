@@ -1,5 +1,6 @@
 /datum/island_biome
 	var/name = "Generic Biome"
+	var/biome_weight = 100
 	var/list/terrain_weights = list()
 	var/list/flora_weights = list()
 	var/list/feature_templates = list()
