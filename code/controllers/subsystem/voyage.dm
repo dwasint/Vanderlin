@@ -29,7 +29,7 @@
 	island_size = size
 	difficulty = _difficulty
 	z_level = bl.z + 2 // Island is always at z+2
-	top_right = locate(bl.x + size - 1, bl.y + size - 1, z_level)
+	top_right = locate(bl.x + size - 3, bl.y + size - 3, z_level)
 	island_id = "island_[bl.x]_[bl.y]_[z_level]_[world.time]"
 	island_name = "[get_difficulty_text()][_island_name] Island #[length(SSterrain_generation.island_registry) + 1]"
 
@@ -310,6 +310,7 @@ SUBSYSTEM_DEF(terrain_generation)
 		log_world("ERROR: Could not find shore location for boat spawn")
 		return null
 
+	// Offset the boat spawn location toward the water on the ISLAND's z-level
 	var/offset_distance = rand(3, 4)
 	var/turf/boat_spawn = shore_turf
 	for(var/i = 1 to offset_distance)
@@ -324,42 +325,79 @@ SUBSYSTEM_DEF(terrain_generation)
 		log_world("ERROR: Failed to load boat template")
 		return null
 
-	var/turf/center_turf = locate(
+	// FIXED: Calculate proper bottom-left corner for template loading
+	// Templates load from bottom-left, not center
+	var/turf/load_corner = locate(
 		boat_spawn.x - round(boat_template.width / 2),
 		boat_spawn.y - round(boat_template.height / 2),
 		boat_spawn.z
 	)
 
-	if(!center_turf)
-		log_world("ERROR: Could not calculate center for boat")
+	if(!load_corner)
+		log_world("ERROR: Could not calculate load corner for boat")
 		return null
 
-	var/list/loaded_bounds = boat_template.load(center_turf, FALSE)
+	// Verify the boat will be within island bounds
+	var/end_x = load_corner.x + boat_template.width - 1
+	var/end_y = load_corner.y + boat_template.height - 1
+
+	if(end_x > island.top_right.x || end_y > island.top_right.y || load_corner.x < island.bottom_left.x || load_corner.y < island.bottom_left.y)
+		log_world("ERROR: Boat would spawn outside island bounds - Island: ([island.bottom_left.x],[island.bottom_left.y])-([island.top_right.x],[island.top_right.y]) Boat: ([load_corner.x],[load_corner.y])-([end_x],[end_y])")
+		return null
+
+	// Capture state BEFORE loading template
+	var/list/original_state = list()
+	for(var/turf/T as anything in boat_template.get_affected_turfs(load_corner, centered = FALSE))
+		if(T.z == island.z_level)
+			var/turf_key = "[T.x]_[T.y]_[T.z]"
+			original_state[turf_key] = T.type
+
+	// Load the template at the calculated corner (NOT centered)
+	var/list/loaded_bounds = boat_template.load(load_corner, centered = FALSE)
 
 	if(!loaded_bounds || !loaded_bounds.len)
 		log_world("ERROR: Failed to load boat template at location")
 		return null
 
-	var/list/boat_data = collect_boat_objects(boat_template, center_turf)
+	// Capture state AFTER loading template and compare
+	var/list/boat_data = collect_boat_objects(boat_template, load_corner, island, original_state)
+
+	log_world("Spawned docking boat at ([load_corner.x],[load_corner.y],[load_corner.z]) for island [island.island_name] - [length(boat_data["turfs"])] turfs changed")
 
 	return boat_data
 
-/datum/controller/subsystem/terrain_generation/proc/collect_boat_objects(datum/map_template/template, turf/center_turf)
+/datum/controller/subsystem/terrain_generation/proc/collect_boat_objects(datum/map_template/template, turf/load_corner, datum/island_data/island, list/original_state)
 	var/list/boat_data = list(
 		"objects" = list(),
-		"turfs" = list()
+		"turfs" = list(),
+		"original_turfs" = list(),  // Store original turf types for turfs that changed
+		"island_id" = island.island_id
 	)
 
-	for(var/turf/place_on as anything in template.get_affected_turfs(center_turf, centered = TRUE))
-		if(istype(place_on, /turf/open/water) || istype(place_on, /turf/open/floor/sand))
-			for(var/obj/structure/O in place_on.contents)
-				boat_data["objects"] += O
+	// Get affected turfs from the load corner (NOT centered since we already calculated the corner)
+	for(var/turf/place_on as anything in template.get_affected_turfs(load_corner, centered = FALSE))
+		// Verify turf is actually on the correct island
+		if(place_on.z != island.z_level)
+			log_world("WARNING: Boat turf at wrong z-level: [place_on.z] (expected [island.z_level])")
 			continue
 
-		boat_data["turfs"] += place_on
+		if(place_on.x < island.bottom_left.x || place_on.x > island.top_right.x || place_on.y < island.bottom_left.y || place_on.y > island.top_right.y)
+			log_world("WARNING: Boat turf outside island bounds: ([place_on.x],[place_on.y])")
+			continue
 
-		for(var/obj/effect/overlay/water/water in place_on.contents)
-			qdel(water)
+		var/turf_key = "[place_on.x]_[place_on.y]_[place_on.z]"
+		var/original_type = original_state[turf_key]
+
+		// Check if this turf actually changed from the template
+		if(original_type && place_on.type != original_type)
+			// This turf was changed by the template, save it
+			boat_data["original_turfs"][turf_key] = original_type
+			boat_data["turfs"] += place_on
+
+		// Collect objects regardless of turf change
+		if(!istype(place_on, /turf/open/water))
+			for(var/obj/effect/overlay/water/water in place_on.contents)
+				qdel(water)
 
 		for(var/obj/structure/O in place_on.contents)
 			boat_data["objects"] += O
@@ -370,18 +408,36 @@ SUBSYSTEM_DEF(terrain_generation)
 	if(!boat_data || !boat_data.len)
 		return
 
+	var/island_id = boat_data["island_id"]
+	var/obj_count = 0
+	var/turf_count = 0
+
+	// Delete all boat objects
 	for(var/obj/O in boat_data["objects"])
 		if(!QDELETED(O))
 			qdel(O)
+			obj_count++
 
+	// Restore original turfs to exactly what they were
 	for(var/turf/T in boat_data["turfs"])
 		if(!QDELETED(T))
-			T.ChangeTurf(/turf/open/water/ocean)
+			var/turf_key = "[T.x]_[T.y]_[T.z]"
+			var/original_type = boat_data["original_turfs"][turf_key]
+
+			if(original_type)
+				T.ChangeTurf(original_type)
+			else
+				// Fallback to water if we somehow lost the original type
+				log_world("WARNING: No original turf type found for ([T.x],[T.y],[T.z]), defaulting to water")
+				T.ChangeTurf(/turf/open/water/ocean)
+
+			turf_count++
 
 	boat_data["objects"] = list()
 	boat_data["turfs"] = list()
+	boat_data["original_turfs"] = list()
 
-	log_world("Cleaned up docking boat")
+	log_world("Cleaned up docking boat for island [island_id]: [obj_count] objects, [turf_count] turfs restored")
 
 /datum/controller/subsystem/terrain_generation/proc/find_shore_location(datum/island_data/island, direction)
 	// Get edge turfs based on direction

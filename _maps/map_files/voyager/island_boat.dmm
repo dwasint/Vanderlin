@@ -93,10 +93,6 @@
 /turf/open/floor/hay,
 /area/template_noop)
 "B" = (
-/obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 4
-	},
 /obj/effect/landmark/boat_transfer/island_side,
 /turf/open/floor/rooftop/green{
 	dir = 8
