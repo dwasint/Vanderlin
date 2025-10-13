@@ -622,7 +622,7 @@ SUBSYSTEM_DEF(terrain_generation)
 	for(var/datum/island_data/island in island_registry)
 		if(T.x >= island.bottom_left.x && T.x <= island.top_right.x)
 			if(T.y >= island.bottom_left.y && T.y <= island.top_right.y)
-				if(T.z == island.z_level)
+				if(T.z <= island.z_level + 1  && T.z >= island.z_level - 2)
 					return island
 
 	return null
