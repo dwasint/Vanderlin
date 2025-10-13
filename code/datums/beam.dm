@@ -102,8 +102,8 @@
 		visuals.invisibility = invisibility
 	visuals.update_appearance()
 	Draw()
-	RegisterSignal(origin, COMSIG_MOVABLE_MOVED, PROC_REF(redrawing))
-	RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(redrawing))
+	RegisterSignal(origin, COMSIG_MOVABLE_MOVED, PROC_REF(redrawing) , TRUE)
+	RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(redrawing) , TRUE)
 
 /**
  * Triggered by signals set up when the beam is set up. If it's still sane to create a beam, it removes the old beam, creates a new one. Otherwise it kills the beam.
@@ -137,6 +137,12 @@
 	var/origin_py = (isnull(override_origin_pixel_y) ? origin.pixel_y : override_origin_pixel_y) + origin.pixel_y
 	var/target_px = (isnull(override_target_pixel_x) ? target.pixel_x : override_target_pixel_x) + target.pixel_x
 	var/target_py = (isnull(override_target_pixel_y) ? target.pixel_y : override_target_pixel_y) + target.pixel_y
+
+	if(istype(origin, /mob/living/simple_animal/hostile/retaliate/troll))
+		origin_px += 32
+	if(istype(target, /mob/living/simple_animal/hostile/retaliate/troll))
+		target_px += 32
+
 	var/Angle = get_angle_raw(origin.x, origin.y, origin_px, origin_py, target.x , target.y, target_px, target_py)
 	///var/Angle = round(get_angle(origin,target))
 	var/matrix/rot_matrix = matrix()

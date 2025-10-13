@@ -83,5 +83,6 @@ SUBSYSTEM_DEF(mobs)
 
 /datum/controller/subsystem/mobs/proc/enhance_mob(mob/living/mob, delve_level = 1)
 	if(!affix_system)
-		return
+		affix_system = new()
+
 	affix_system.enhance_mob(mob, delve_level - 1)

@@ -70,6 +70,9 @@ SUBSYSTEM_DEF(mapping)
 		if(!adjust.map_file_name)
 			continue
 		var/map = config.map_file
+		if(islist(map))
+			var/list/maps = map
+			map = maps[1]
 		if(!map)
 			break
 		if(map_adjustment)

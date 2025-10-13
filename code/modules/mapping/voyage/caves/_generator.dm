@@ -294,7 +294,7 @@
 					"level" = 0
 				))
 			else
-				T.ChangeTurf(wall_turf)
+				T.ChangeTurf(wall_turf, list(/turf/open/transparent/openspace, /turf/open/floor/naturalstone))
 
 			tiles_processed++
 			if(tiles_processed % 200 == 0)
@@ -321,7 +321,7 @@
 		var/turf/T = locate(start_x + x, start_y + y, start_z)
 		if(T)
 			var/ore_turf = lower_ore_placements[coord]
-			T.ChangeTurf(ore_turf)
+			T.ChangeTurf(ore_turf, list(/turf/open/transparent/openspace, /turf/open/floor/naturalstone))
 
 		tiles_processed++
 		if(tiles_processed % 100 == 0)
@@ -356,7 +356,7 @@
 					"level" = 1
 				))
 			else
-				T.ChangeTurf(wall_turf)
+				T.ChangeTurf(wall_turf, list(/turf/open/transparent/openspace, /turf/open/floor/naturalstone))
 
 			tiles_processed++
 			if(tiles_processed % 200 == 0)
@@ -383,7 +383,7 @@
 		var/turf/T = locate(start_x + x, start_y + y, start_z + 1)
 		if(T)
 			var/ore_turf = upper_ore_placements[coord]
-			T.ChangeTurf(ore_turf)
+			T.ChangeTurf(ore_turf, list(/turf/open/transparent/openspace, /turf/open/floor/naturalstone))
 
 		tiles_processed++
 		if(tiles_processed % 100 == 0)
@@ -397,7 +397,7 @@
 
 	spawn_fauna_poisson(upper_valid_tiles)
 	CHECK_TICK
-	spawn_fauna_poisson(lower_valid_tiles)
+	spawn_fauna_poisson(lower_valid_tiles, TRUE)
 	CHECK_TICK
 
 	// Phase 7: Place features
@@ -501,7 +501,7 @@
 					"level" = 0
 				))
 			else
-				T.ChangeTurf(wall_turf)
+				T.ChangeTurf(wall_turf, list(/turf/open/transparent/openspace, /turf/open/floor/naturalstone))
 
 	// Generate ore veins for lower level
 	var/list/lower_wall_coords = list()
@@ -521,7 +521,7 @@
 		var/turf/T = locate(start_x + x, start_y + y, start_z)
 		if(T)
 			var/ore_turf = lower_ore_placements[coord]
-			T.ChangeTurf(ore_turf)
+			T.ChangeTurf(ore_turf, list(/turf/open/transparent/openspace, /turf/open/floor/naturalstone))
 
 	var/list/upper_valid_tiles = list()
 	for(var/x = 0 to size_x - 1)
@@ -549,7 +549,7 @@
 					"level" = 1
 				))
 			else
-				T.ChangeTurf(wall_turf)
+				T.ChangeTurf(wall_turf, list(/turf/open/transparent/openspace, /turf/open/floor/naturalstone))
 
 	// Generate ore veins for upper level
 	var/list/upper_wall_coords = list()
@@ -569,13 +569,13 @@
 		var/turf/T = locate(start_x + x, start_y + y, start_z + 1)
 		if(T)
 			var/ore_turf = upper_ore_placements[coord]
-			T.ChangeTurf(ore_turf)
+			T.ChangeTurf(ore_turf, list(/turf/open/transparent/openspace, /turf/open/floor/naturalstone))
 
 	spawn_flora_poisson(upper_valid_tiles)
 	spawn_flora_poisson(lower_valid_tiles)
 
 	spawn_fauna_poisson(upper_valid_tiles)
-	spawn_fauna_poisson(lower_valid_tiles)
+	spawn_fauna_poisson(lower_valid_tiles, TRUE)
 
 	if(biome.feature_templates && biome.feature_templates.len)
 		var/list/upper_turfs = list()
@@ -623,11 +623,30 @@
 		if(flora_type)
 			new flora_type(T)
 
-/datum/cave_generator/proc/spawn_fauna_poisson(list/valid_tiles)
-	if(!biome.fauna_types || !biome.fauna_types.len || biome.fauna_density <= 0)
+/datum/cave_generator/proc/spawn_fauna_poisson(list/valid_tiles, lower_world = FALSE)
+	if(!valid_tiles.len)
 		return
 
-	var/min_radius = biome.fauna_density
+	// Determine which level we're on from the first tile
+	var/level = -1
+	if(valid_tiles.len)
+		var/list/first_tile = valid_tiles[1]
+		level = first_tile["level"]
+
+	var/list/active_fauna_types
+	var/active_density
+
+	if(level == 0)
+		active_fauna_types = biome.fauna_types_lower
+		active_density = max(2, biome.fauna_density_lower - biome.difficulty)
+	else
+		active_fauna_types = biome.fauna_types
+		active_density = biome.fauna_density
+
+	if(!active_fauna_types || !active_fauna_types.len || active_density <= 0)
+		return
+
+	var/min_radius = active_density
 	var/max_radius = min_radius * 2
 
 	// Build fast lookup
@@ -649,7 +668,7 @@
 
 		var/temperature = tile_data["temperature"]
 		var/moisture = tile_data["moisture"]
-		var/level = tile_data["level"]
+		var/tile_level = tile_data["level"]
 		var/turf/T = tile_data["turf"]
 
 		var/spawn_chance = 100
@@ -660,14 +679,14 @@
 			continue
 
 		var/list/valid_fauna = list()
-		for(var/fauna_path in biome.fauna_types)
-			var/datum/fauna_spawn_rule/rule = biome.fauna_types[fauna_path]
+		for(var/fauna_path in active_fauna_types)
+			var/datum/fauna_spawn_rule/rule = active_fauna_types[fauna_path]
 
 			if(temperature < rule.min_temperature || temperature > rule.max_temperature)
 				continue
-			if(moisture < rule.min_moisture || rule.max_moisture)
+			if(moisture < rule.min_moisture || moisture > rule.max_moisture)
 				continue
-			if(level < rule.min_height || level > rule.max_height)
+			if(tile_level < rule.min_height || tile_level > rule.max_height)
 				continue
 
 			valid_fauna[fauna_path] = rule.spawn_weight
@@ -675,7 +694,9 @@
 		if(valid_fauna.len)
 			var/chosen = weighted_pick_fauna(valid_fauna)
 			if(chosen)
-				new chosen(T)
+				var/mob/living/mob = new chosen(T)
+				if(lower_world)
+					SSmobs.enhance_mob(mob, 1 + (biome.difficulty * 2))
 
 /datum/cave_generator/proc/weighted_pick_fauna(list/weights)
 	var/total = 0

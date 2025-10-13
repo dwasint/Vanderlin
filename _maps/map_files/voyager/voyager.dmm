@@ -186,9 +186,7 @@
 	},
 /area/rogue/ship/middeck)
 "bI" = (
-/obj/effect/landmark/start/cook{
-	dir = 8
-	},
+/obj/effect/landmark/start/cook,
 /turf/open/floor/herringbone,
 /area/rogue/ship/middeck)
 "bK" = (
@@ -841,6 +839,12 @@
 "gP" = (
 /obj/structure/fake_machine/mail,
 /turf/open/floor/ruinedwood,
+/area/rogue/ship/middeck)
+"gT" = (
+/obj/effect/landmark/start/cook{
+	dir = 8
+	},
+/turf/open/floor/herringbone,
 /area/rogue/ship/middeck)
 "hf" = (
 /obj/item/coin/copper/pile,
@@ -2141,6 +2145,12 @@
 	dir = 1
 	},
 /area/rogue/ship/nobledeck)
+"tY" = (
+/obj/effect/landmark/start/jester{
+	dir = 4
+	},
+/turf/closed/wall/mineral/wooddark,
+/area/rogue/ship/topdeck)
 "ud" = (
 /obj/effect/decal/cobbleedge{
 	dir = 9
@@ -2270,7 +2280,6 @@
 /obj/structure/throne{
 	pixel_x = -32
 	},
-/obj/effect/landmark/start/jester,
 /obj/structure/fake_machine/titan{
 	density = 0;
 	pixel_y = 32
@@ -2729,11 +2738,6 @@
 	},
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/topdeck)
-"yL" = (
-/obj/structure/table/wood/crafted,
-/obj/item/storage/crucible/random,
-/turf/open/floor/ruinedwood/spiral,
-/area/rogue/ship/topdeck)
 "yX" = (
 /turf/open/floor/ruinedwood/two,
 /area/rogue/ship/nobledeck)
@@ -2826,6 +2830,10 @@
 	pixel_y = 32
 	},
 /turf/open/floor/twig,
+/area/rogue/ship/middeck)
+"Ac" = (
+/obj/effect/landmark/start/innkeep,
+/turf/open/floor/herringbone,
 /area/rogue/ship/middeck)
 "Ad" = (
 /obj/structure/fluff/walldeco/chains,
@@ -3179,6 +3187,10 @@
 /obj/structure/fluff/railing/wood,
 /turf/open/floor/hay,
 /area/rogue/ship/topdeck)
+"Dv" = (
+/obj/machinery/light/fueled/wallfire/candle,
+/turf/open/floor/ruinedwood/spiral,
+/area/rogue/ship/nobledeck)
 "Dw" = (
 /obj/effect/decal/cobbleedge{
 	dir = 10
@@ -3341,6 +3353,11 @@
 /obj/item/clothing/armor/leather/jacket/sea,
 /turf/open/floor/ruinedwood/two,
 /area/rogue/ship/middeck)
+"ET" = (
+/obj/structure/table/wood/crafted,
+/obj/item/storage/crucible/random,
+/turf/open/floor/ruinedwood/spiral,
+/area/rogue/ship/topdeck)
 "EX" = (
 /obj/structure/fluff/railing/border{
 	dir = 9;
@@ -3487,6 +3504,7 @@
 	},
 /obj/item/book/bibble,
 /obj/item/key/lord,
+/obj/machinery/light/fueled/wallfire/candle/l,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/nobledeck)
 "Gh" = (
@@ -3498,10 +3516,6 @@
 	layer = 8
 	},
 /turf/open/floor/ruinedwood,
-/area/rogue/ship/middeck)
-"Gk" = (
-/obj/effect/landmark/start/cook,
-/turf/open/floor/herringbone,
 /area/rogue/ship/middeck)
 "Gm" = (
 /obj/structure/stairs{
@@ -5202,12 +5216,6 @@
 	},
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/topdeck)
-"Vw" = (
-/obj/effect/landmark/start/innkeep_son{
-	dir = 4
-	},
-/turf/open/floor/herringbone,
-/area/rogue/ship/middeck)
 "Vy" = (
 /obj/effect/landmark/start/churchling{
 	dir = 8
@@ -5381,7 +5389,9 @@
 	},
 /area/rogue/ship/middeck)
 "Xa" = (
-/obj/effect/landmark/start/innkeep,
+/obj/effect/landmark/start/innkeep_son{
+	dir = 4
+	},
 /turf/open/floor/herringbone,
 /area/rogue/ship/middeck)
 "Xb" = (
@@ -54731,7 +54741,7 @@ tM
 Wx
 Hu
 uN
-bI
+gT
 In
 Ze
 jF
@@ -55134,7 +55144,7 @@ Ze
 Sg
 Hu
 GU
-Gk
+bI
 aD
 vQ
 dc
@@ -55739,7 +55749,7 @@ Mp
 Ze
 Ze
 Ti
-Vw
+Xa
 GU
 GU
 nl
@@ -56953,7 +56963,7 @@ Na
 uB
 EJ
 WV
-Xa
+Ac
 ZM
 Ze
 TN
@@ -97556,7 +97566,7 @@ VU
 VU
 VU
 VU
-yL
+ET
 HQ
 Ji
 Rq
@@ -99574,7 +99584,7 @@ uo
 ej
 qD
 hs
-qD
+Dv
 bT
 NE
 II
@@ -136133,7 +136143,7 @@ ZU
 VI
 VI
 VI
-TY
+tY
 VI
 VI
 VI
