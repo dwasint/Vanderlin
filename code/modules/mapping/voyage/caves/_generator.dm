@@ -695,6 +695,7 @@
 			var/chosen = weighted_pick_fauna(valid_fauna)
 			if(chosen)
 				var/mob/living/mob = new chosen(T)
+				mob.faction |= "islander"
 				if(lower_world)
 					SSmobs.enhance_mob(mob, 1 + (biome.difficulty * 2))
 

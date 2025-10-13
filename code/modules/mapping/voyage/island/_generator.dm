@@ -595,7 +595,8 @@
 		if(valid_fauna.len)
 			var/chosen = weighted_pick_fauna(valid_fauna)
 			if(chosen)
-				new chosen(T)
+				var/mob/living/mob = new chosen(T)
+				mob.faction |= "islander"
 
 /datum/island_generator/proc/weighted_pick_fauna(list/weights)
 	var/total = 0

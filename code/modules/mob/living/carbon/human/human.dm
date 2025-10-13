@@ -840,6 +840,8 @@
 		if("[turf.z]" in GLOB.weatherproof_z_levels)
 			faction |= FACTION_MATTHIOS
 			SSmobs.matthios_mobs |= src
+		if(SSterrain_generation.get_island_at_location(turf))
+			faction |= "islander"
 
 /**
  * Called when this human should be washed
