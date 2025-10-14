@@ -44,12 +44,6 @@
 	},
 /turf/open/floor/wood,
 /area/rogue/indoors/shelter)
-"p" = (
-/obj/structure/stairs{
-	dir = 1
-	},
-/turf/closed/basic,
-/area/rogue/indoors/shelter)
 "t" = (
 /obj/effect/landmark/settlement_road_node,
 /turf/template_noop,
@@ -245,7 +239,7 @@ W
 "}
 (2,1,3) = {"
 l
-p
+k
 d
 U
 E

@@ -10,7 +10,7 @@
 /obj/structure/stairs{
 	dir = 2
 	},
-/turf/open/transparent/openspace,
+/turf/open/floor/ruinedwood,
 /area/template_noop)
 "d" = (
 /turf/open/floor/rooftop/green,
