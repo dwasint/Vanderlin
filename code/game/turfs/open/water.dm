@@ -726,7 +726,7 @@
 		for(var/obj/structure/S in src)
 			if(S.obj_flags & BLOCK_Z_OUT_DOWN)
 				return
-		if((A.loc == src) && A.has_gravity())
+		if((A.loc == src))
 			if(!istype(get_step(src, dir), /turf/open/water))
 				var/list/viable_cardinals = list()
 				var/inverse = REVERSE_DIR(dir)

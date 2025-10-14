@@ -55,8 +55,37 @@
 	if(istype(loc, /turf/open/water))
 		handle_inwater(loc)
 
+	if(!client && (world.time - last_island_check) > 20 SECONDS)
+		last_island_check = world.time
+		update_island_cache()
+
 	if(stat != DEAD)
 		return 1
+
+/mob/living/proc/update_island_cache()
+	if(!length(SSterrain_generation.island_registry))
+		last_island_check = world.time + 3 HOURS
+		return
+	var/turf/T = get_turf(src)
+	if(!T)
+		if(cached_island_id)
+			SSisland_mobs.remove_mob(src)
+			cached_island_id = null
+		return
+
+	var/datum/island_data/island = SSterrain_generation.get_island_at_location(T)
+	var/new_island_id = island?.island_id
+
+	if(new_island_id != cached_island_id)
+		if(new_island_id)
+			SSisland_mobs.register_mob(src, new_island_id)
+		else
+			SSisland_mobs.remove_mob(src)
+			cached_island_id = null
+
+/mob/living/proc/force_island_check()
+	last_island_check = 0
+	update_island_cache()
 
 /mob/living/proc/DeadLife()
 	set invisibility = 0
@@ -172,8 +201,3 @@
 	animate(get_filter("gravity"), y = 1, time = 10)
 	sleep(10)
 	animate(get_filter("gravity"), y = 0, time = 10)
-
-/mob/living/proc/handle_high_gravity(gravity)
-	if(gravity >= GRAVITY_DAMAGE_TRESHOLD) //Aka gravity values of 3 or more
-		var/grav_stregth = gravity - GRAVITY_DAMAGE_TRESHOLD
-		adjustBruteLoss(min(grav_stregth,3))

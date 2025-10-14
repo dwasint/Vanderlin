@@ -7,7 +7,7 @@
 				GLOB.weatherproof_z_levels |= "[turf.z]"
 		if("[turf.z]" in GLOB.weatherproof_z_levels)
 			faction |= FACTION_MATTHIOS
-			SSmobs.matthios_mobs |= src
+			SSmatthios_mobs.register_mob(src)
 
 /mob/living/Initialize()
 	. = ..()
@@ -27,7 +27,10 @@
 
 /mob/living/Destroy()
 	if(FACTION_MATTHIOS in faction)
-		SSmobs.matthios_mobs -= src
+		SSmatthios_mobs.unregister_mob(src)
+	if(cached_island_id)
+		SSisland_mobs.remove_mob(src)
+
 	surgeries = null
 	if(LAZYLEN(status_effects))
 		for(var/s in status_effects)
@@ -1066,8 +1069,6 @@
 			update_vision_cone()
 
 /mob/living/proc/makeTrail(turf/target_turf, turf/start, direction)
-	if(!has_gravity())
-		return
 	var/blood_exists = FALSE
 
 	for(var/obj/effect/decal/cleanable/trail_holder/C in start) //checks for blood splatter already on the floor
@@ -1723,10 +1724,6 @@
 
 	if((action_bitflags & NEED_LIGHT) && !has_light_nearby() && !has_nightvision())
 		to_chat(src, span_warning("You need more light to do this!"))
-		return FALSE
-
-	if((action_bitflags & NEED_GRAVITY) && !has_gravity())
-		to_chat(src, span_warning("You need gravity to do this!"))
 		return FALSE
 
 	return TRUE
@@ -2621,8 +2618,10 @@
 
 	SEND_SIGNAL(src, COMSIG_LIVING_BEFRIENDED, new_friend)
 
-	if(src in SSmobs.matthios_mobs)
-		SSmobs.matthios_mobs -= src
+	if(src in SSmatthios_mobs.matthios_mobs)
+		SSmatthios_mobs.unregister_mob(src)
+	if(cached_island_id)
+		SSisland_mobs.remove_mob(src)
 
 	return TRUE
 

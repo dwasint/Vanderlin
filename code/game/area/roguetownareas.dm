@@ -1,7 +1,6 @@
 /area/rogue
 	name = "roguetown"
 	icon_state = "rogue"
-	has_gravity = STANDARD_GRAVITY
 	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
 
 /area/rogue/indoors

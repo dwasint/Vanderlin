@@ -254,7 +254,6 @@
 		visible_message("<span class='danger'>[src] throws [thrown_thing].</span>", \
 						"<span class='danger'>I toss [thrown_thing].</span>")
 		log_message("has thrown [thrown_thing]", LOG_ATTACK)
-		newtonian_move(get_dir(end_T, src))
 		thrown_thing.safe_throw_at(end_T, thrown_range, thrown_speed, src, null, null, null, move_force)
 		if(!used_sound)
 			used_sound = pick(PUNCHWOOSH)

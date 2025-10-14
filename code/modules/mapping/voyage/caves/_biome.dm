@@ -100,7 +100,7 @@
 	flora_density = 2
 	flora_density_lower = 1.5
 	fauna_density = 3
-	fauna_density_lower = 5
+	fauna_density_lower = 7
 
 /datum/cave_biome/mushroom/setup_spawn_rules()
 	. = ..()
@@ -161,14 +161,14 @@
 			max_temp = 1.0,
 			min_moist = 0.0,
 			max_moist = 1.0,
-			weight = 50
+			weight = 20
 		),
 		/mob/living/simple_animal/hostile/retaliate/troll/bog = new /datum/fauna_spawn_rule(
 			min_temp = 0.3,
 			max_temp = 1.0,
 			min_moist = 0.0,
 			max_moist = 1.0,
-			weight = 50
+			weight = 20
 		),
 		/mob/living/simple_animal/hostile/retaliate/minotaur = new /datum/fauna_spawn_rule(
 			min_temp = 0.3,

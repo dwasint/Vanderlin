@@ -3,6 +3,9 @@
 	return !area.coven_protected
 
 /mob/living
+	var/cached_island_id = null
+	var/last_island_check = 0
+
 	var/mob/living/walk_to_target
 	var/walk_to_duration = 0
 	var/walk_to_steps_taken = 0

@@ -216,8 +216,6 @@
 	. = FALSE
 	if(user.get_active_held_item() != src)//half of this code is basically ripped out of do_after, don't hold it against me
 		return
-	if(!user.Process_Spacemove(0) && user.inertia_dir)
-		return
 	if(HAS_TRAIT(user, TRAIT_INCAPACITATED))
 		return
 	if(user.loc != startingturf)

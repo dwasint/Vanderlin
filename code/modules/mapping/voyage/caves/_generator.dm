@@ -696,6 +696,7 @@
 			if(chosen)
 				var/mob/living/mob = new chosen(T)
 				mob.faction |= "islander"
+				SSisland_mobs.register_mob(mob)
 				if(lower_world)
 					SSmobs.enhance_mob(mob, 1 + (biome.difficulty * 2))
 
