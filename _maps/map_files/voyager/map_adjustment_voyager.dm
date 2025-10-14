@@ -31,4 +31,9 @@
 		/datum/job/town_elder,
 		/datum/job/veteran,
 		/datum/job/lieutenant,
+		/datum/job/prince,
+		/datum/job/servant,
+		/datum/job/mageapprentice,
+		/datum/job/bapprentice,
+		/datum/job/bandit,
 	)
