@@ -301,6 +301,7 @@
 	pixel_y = 15;
 	pixel_x = -5
 	},
+/obj/item/needle,
 /turf/open/floor/ruinedwood/two,
 /area/rogue/ship/middeck)
 "cF" = (
@@ -549,7 +550,7 @@
 "dY" = (
 /obj/effect/mapping_helpers/access/locker,
 /obj/structure/door,
-/obj/effect/mapping_helpers/access/keyset/town/veteran,
+/obj/effect/mapping_helpers/access/keyset/town/tailor,
 /turf/open/floor/ruinedwood/two,
 /area/rogue/ship/middeck)
 "dZ" = (
@@ -978,6 +979,20 @@
 "ip" = (
 /turf/closed/wall/mineral/decostone,
 /area/rogue/ship/middeck)
+"iq" = (
+/obj/effect/decal/cobbleedge{
+	dir = 1;
+	icon_state = "borderfall"
+	},
+/obj/structure/fluff/railing/border{
+	dir = 1;
+	icon_state = "border"
+	},
+/obj/item/tent_kit,
+/turf/open/floor/rooftop/green{
+	dir = 4
+	},
+/area/rogue/ship/middeck)
 "iw" = (
 /obj/effect/landmark/start/hunter{
 	dir = 4
@@ -1143,11 +1158,13 @@
 /obj/item/burial_shroud,
 /obj/item/burial_shroud,
 /obj/item/burial_shroud,
-/obj/item/burial_shroud,
 /obj/item/candle/skull/lit{
 	pixel_x = -3;
 	pixel_y = 12
 	},
+/obj/item/needle,
+/obj/item/needle,
+/obj/item/needle,
 /turf/open/floor/ruinedwood/two,
 /area/rogue/ship/middeck)
 "kh" = (
@@ -1310,6 +1327,16 @@
 	dir = 1
 	},
 /area/rogue/ship/middeck)
+"lo" = (
+/obj/effect/decal/cobbleedge{
+	icon_state = "borderfall"
+	},
+/obj/structure/fluff/railing/border,
+/obj/item/tent_kit,
+/turf/open/floor/rooftop/green{
+	dir = 4
+	},
+/area/rogue/ship/middeck)
 "lq" = (
 /obj/effect/decal/cobbleedge{
 	icon_state = "borderfall"
@@ -1450,6 +1477,14 @@
 "ms" = (
 /turf/closed/sea_fog,
 /area/rogue/outdoors/beach)
+"mt" = (
+/obj/structure/fluff/railing/border{
+	dir = 1;
+	icon_state = "border"
+	},
+/obj/item/tent_kit,
+/turf/open/floor/hay,
+/area/rogue/ship/middeck)
 "mz" = (
 /obj/machinery/light/fueled/firebowl/standing,
 /obj/effect/decal/cobbleedge{
@@ -1628,6 +1663,9 @@
 /obj/structure/bed/inn,
 /obj/item/bedsheet/wool,
 /obj/structure/fluff/wallclock/r,
+/obj/effect/landmark/start/tailor{
+	dir = 8
+	},
 /turf/open/floor/ruinedwood/two,
 /area/rogue/ship/middeck)
 "oa" = (
@@ -2077,20 +2115,6 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/beach)
-"tl" = (
-/obj/effect/decal/cobbleedge{
-	dir = 1;
-	icon_state = "borderfall"
-	},
-/obj/structure/fluff/railing/border{
-	dir = 1;
-	icon_state = "border"
-	},
-/obj/item/tent_kit,
-/turf/open/floor/rooftop/green{
-	dir = 4
-	},
-/area/rogue/ship/middeck)
 "tq" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -2135,16 +2159,6 @@
 /obj/machinery/light/fueled/hearth,
 /obj/item/cooking/pan,
 /turf/open/floor/blocks,
-/area/rogue/ship/middeck)
-"tQ" = (
-/obj/effect/decal/cobbleedge{
-	icon_state = "borderfall"
-	},
-/obj/structure/fluff/railing/border,
-/obj/item/tent_kit,
-/turf/open/floor/rooftop/green{
-	dir = 4
-	},
 /area/rogue/ship/middeck)
 "tS" = (
 /obj/structure/closet/crate/chest/neu_fancy,
@@ -2266,6 +2280,7 @@
 /area/rogue/ship/middeck)
 "uM" = (
 /obj/structure/closet/crate/drawer/inn,
+/obj/item/needle,
 /turf/open/floor/ruinedwood/two,
 /area/rogue/ship/middeck)
 "uN" = (
@@ -2624,14 +2639,6 @@
 "xy" = (
 /turf/open/floor/hay,
 /area/rogue/ship/middeck)
-"xz" = (
-/obj/effect/decal/cobbleedge{
-	icon_state = "borderfall"
-	},
-/obj/structure/fluff/railing/border,
-/obj/item/tent_kit,
-/turf/open/floor/hay,
-/area/rogue/ship/middeck)
 "xA" = (
 /obj/structure/fluff/railing/border{
 	dir = 4;
@@ -2768,6 +2775,13 @@
 /obj/structure/chair/stool,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/topdeck)
+"zy" = (
+/obj/structure/fluff/railing/border,
+/obj/item/tent_kit,
+/turf/open/floor/rooftop/green{
+	dir = 4
+	},
+/area/rogue/ship/middeck)
 "zz" = (
 /obj/structure/closet/crate/chest,
 /turf/open/floor/ruinedwood,
@@ -3221,10 +3235,18 @@
 /turf/closed/wall/mineral/wooddark/slitted,
 /area/rogue/ship/middeck)
 "DP" = (
-/obj/structure/fluff/railing/border,
-/obj/item/tent_kit,
-/turf/open/floor/rooftop/green{
-	dir = 4
+/obj/item/key/clinic{
+	pixel_x = -9
+	},
+/obj/item/key/clinic{
+	pixel_y = 0;
+	pixel_x = 9
+	},
+/obj/item/key/clinic{
+	pixel_y = 0
+	},
+/turf/closed/wall/mineral/wooddark/end{
+	dir = 8
 	},
 /area/rogue/ship/middeck)
 "DQ" = (
@@ -3824,11 +3846,6 @@
 	layer = 5;
 	pixel_x = -8;
 	pixel_y = 10
-	},
-/obj/item/reagent_containers/glass/bottle{
-	layer = 5;
-	pixel_x = -8;
-	pixel_y = 20
 	},
 /turf/open/floor/ruinedwood/two,
 /area/rogue/ship/middeck)
@@ -4696,13 +4713,11 @@
 /area/rogue/ship/nobledeck)
 "Rw" = (
 /obj/effect/decal/cobbleedge{
-	dir = 1;
 	icon_state = "borderfall"
 	},
+/obj/structure/fluff/railing/border,
 /obj/item/tent_kit,
-/turf/open/floor/rooftop/green{
-	dir = 4
-	},
+/turf/open/floor/hay,
 /area/rogue/ship/middeck)
 "Rz" = (
 /obj/effect/decal/cobbleedge{
@@ -4934,12 +4949,14 @@
 /turf/open/floor/herringbone,
 /area/rogue/ship/middeck)
 "Ts" = (
-/obj/structure/fluff/railing/border{
+/obj/effect/decal/cobbleedge{
 	dir = 1;
-	icon_state = "border"
+	icon_state = "borderfall"
 	},
 /obj/item/tent_kit,
-/turf/open/floor/hay,
+/turf/open/floor/rooftop/green{
+	dir = 4
+	},
 /area/rogue/ship/middeck)
 "Tv" = (
 /obj/structure/fluff/railing/border,
@@ -5538,7 +5555,7 @@
 "Yy" = (
 /obj/structure/bed/inn/double,
 /obj/item/bedsheet/fabric_double,
-/obj/effect/landmark/start/veteran{
+/obj/effect/landmark/start/tailor{
 	dir = 8
 	},
 /turf/open/floor/ruinedwood/two,
@@ -5654,7 +5671,8 @@
 /area/rogue/ship/middeck)
 "ZB" = (
 /obj/structure/fake_machine/drugmachine{
-	pixel_x = 32
+	pixel_x = 32;
+	density = 0
 	},
 /turf/open/floor/ruinedwood/two,
 /area/rogue/ship/middeck)
@@ -13734,7 +13752,7 @@ Li
 Li
 Ze
 uY
-tQ
+lo
 Ze
 Ks
 Ks
@@ -13949,7 +13967,7 @@ Fq
 Ze
 Cg
 ko
-DP
+zy
 Ze
 Li
 Li
@@ -14958,7 +14976,7 @@ fN
 OZ
 Ze
 Cg
-tl
+iq
 gE
 Ze
 Li
@@ -15551,7 +15569,7 @@ Li
 Li
 Li
 Ze
-Ts
+mt
 yj
 ne
 Ze
@@ -16574,7 +16592,7 @@ Ze
 vY
 wx
 Fq
-Rw
+Ts
 vo
 Ze
 Li
@@ -16966,7 +16984,7 @@ Li
 Li
 Ze
 NB
-xz
+Rw
 Ze
 Ze
 Ze
@@ -52931,7 +52949,7 @@ Ma
 nu
 Tx
 Je
-KY
+DP
 bX
 uD
 jA

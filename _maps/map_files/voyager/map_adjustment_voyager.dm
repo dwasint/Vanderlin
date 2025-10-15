@@ -8,14 +8,13 @@
 	map_file_name = "voyager.dmm"
 	blacklist = list(
 		/datum/job/orphan,
-		/datum/job/apothecary,
 		/datum/job/artificer,
 		/datum/job/armorsmith,
 		/datum/job/carpenter,
 		/datum/job/feldsher,
 		/datum/job/gaffer,
 		/datum/job/matron,
-		/datum/job/tailor,
+		/datum/job/veteran,
 		/datum/job/butler,
 		/datum/job/grabber,
 		/datum/job/undertaker,
