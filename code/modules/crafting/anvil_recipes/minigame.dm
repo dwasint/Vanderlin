@@ -27,6 +27,7 @@
 	if(user_skill < end_product_recipe.craftdiff)
 		difficulty_modifier *= 2
 
+	difficulty = difficulty_modifier
 	notes_left = max(5, round(difficulty_modifier * 2))
 	total_notes = notes_left
 
