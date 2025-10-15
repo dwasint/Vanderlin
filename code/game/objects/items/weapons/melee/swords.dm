@@ -25,7 +25,8 @@
 	drop_sound = 'sound/foley/dropsound/blade_drop.ogg'
 	flags_1 = CONDUCT_1
 	thrown_bclass = BCLASS_CUT
-	smeltresult = /obj/item/ingot/steel
+	melt_amount = 75
+	melting_material = /datum/material/steel
 	minstr = 7
 	sellprice = 30
 	wdefense = GREAT_PARRY
@@ -52,7 +53,8 @@
 	name = "arming sword"
 	desc = "A trustworthy blade design, the first dedicated tool of war since before the age of history."
 	icon_state = "sword1"
-	smeltresult = /obj/item/ingot/steel
+	melt_amount = 75
+	melting_material = /datum/material/steel
 	sellprice = 30
 
 /obj/item/weapon/sword/arming/Initialize()
@@ -1356,7 +1358,8 @@
 	name = "foreign straight blade"
 	desc = "A foreign sword used by cut-throats & thugs. There's a red tassel on the hilt."
 	icon_state = "eastsword1"
-	smeltresult = /obj/item/ingot/steel
+	melt_amount = 75
+	melting_material = /datum/material/steel
 	wdefense = 3
 
 /obj/item/weapon/sword/sabre/mulyeog/rumahench

@@ -33,39 +33,58 @@
 	created_item = null
 	return ..()
 
-/datum/anvil_recipe/proc/advance(mob/user, breakthrough = FALSE)
+/datum/anvil_recipe/proc/advance(mob/user, breakthrough = FALSE, quality_score = 0)
 	var/moveup = 1
 	var/proab = 0 // Probability to not spoil the bar
-	var/skill_level	= user.get_skill_level(appro_skill)
+	var/skill_level = user.get_skill_level(appro_skill)
+
 	if(progress == 100)
 		to_chat(user, "<span class='info'>It's ready.</span>")
 		user.visible_message("<span class='warning'>[user] strikes the bar!</span>")
 		return FALSE
+
 	if(needed_item)
 		to_chat(user, "<span class='info'>Now it's time to add a [needed_item_text].</span>")
 		user.visible_message("<span class='warning'>[user] strikes the bar!</span>")
 		return FALSE
-	// Calculate probability of fucking up, based on smith's skill level
+
 	if(!skill_level)
-		proab = 25
+		proab = 40
 	else if(skill_level < 4)
-		proab = 33 * skill_level
-	else // No good smith start with skill levels lower than 3
+		proab = 40 + (skill_level * 15) // More gradual increase
+	else
 		proab = 100
-	proab -= craftdiff // Crafting difficulty substracts from your chance to advance
+
+	proab -= craftdiff // Crafting difficulty subtracts from your chance
+
+	if(quality_score > 0)
+		var/quality_bonus = 0
+		if(quality_score >= 80)
+			quality_bonus = 40 // Excellent performance almost guarantees success
+		else if(quality_score >= 60)
+			quality_bonus = 25
+		else if(quality_score >= 40)
+			quality_bonus = 15
+		else if(quality_score >= 20)
+			quality_bonus = 5
+		if(skill_level < craftdiff)
+			quality_bonus = FLOOR(quality_bonus * 0.25, 1)
+		proab = min(proab + quality_bonus, 100)
+
 	if(has_world_trait(/datum/world_trait/delver))
 		proab = 100
-	// Roll the dice to see if the hit actually causes to accumulate progress
+
+	// Roll the dice to see if the hit actually causes progress
 	if(prob(proab))
-		moveup += round((skill_level * 6) * (breakthrough == 1 ? 1.5 : 1))
+		moveup += round((skill_level * 6) * (breakthrough ? 1.5 : 1))
 		moveup -= craftdiff
 		progress = min(progress + moveup, 100)
 		numberofhits++
 	else
 		moveup = 0
-		numberofhits++ // Increase regardless of success
+		numberofhits++
 
-	// This step is finished, check if more items are needed and restart the process
+	// This step is finished, check if more items are needed
 	if(progress == 100 && additional_items.len)
 		needed_item = pick(additional_items)
 		var/obj/item/I = new needed_item()
@@ -75,23 +94,31 @@
 		progress = 0
 
 	if(!moveup)
-		if(!prob(proab)) // Roll again, this time negatively, for consequences.
+		if(!prob(proab)) // Roll again for consequences
 			user.visible_message("<span class='warning'>[user] strikes poorly!</span>")
 			skill_quality -= 0.5
-			bar_health -= craftdiff / 1.2
+
+			// Reduce damage on poor hits if quality score was decent
+			var/damage_multiplier = 1.0
+			if(quality_score >= 40)
+				damage_multiplier = 0.5 // Half damage if you tried
+
+			bar_health -= (craftdiff / 1.2) * damage_multiplier
+
 			if(parent)
 				var/obj/item/P = parent
 				switch(skill_level)
 					if(0)
-						bar_health -= 20 // 5 bad hits and ruined.
+						bar_health -= 20 * damage_multiplier
 					if(1 to 3)
-						bar_health -= floor(20 / skill_level)
+						bar_health -= floor(20 / skill_level) * damage_multiplier
 					if(4)
-						bar_health -= 5
+						bar_health -= 5 * damage_multiplier
 					if(5 to 6)
 						var/mob/living/L = user
-						if(L.stat_roll(STATKEY_LCK,4,10,TRUE)) // Unlucky, not unskilled.
-							bar_health -= craftdiff / 1.2
+						if(L.stat_roll(STATKEY_LCK, 4, 10, TRUE))
+							bar_health -= (craftdiff / 1.2) * damage_multiplier
+
 				if(bar_health <= 0)
 					user.visible_message("<span class='danger'>[user] destroys the bar!</span>")
 					qdel(P)
@@ -99,7 +126,6 @@
 		else
 			user.visible_message("<span class='warning'>[user] almost fumbles but recovers!</span>")
 			return FALSE
-
 	else
 		if(user.mind && isliving(user))
 			var/mob/living/L = user
@@ -196,9 +222,9 @@
 		</style>
 		<body>
 		  <div>
-		    <h1>[name]</h1>
-		    <div>
-		      <h1>Steps</h1>
+			<h1>[name]</h1>
+			<div>
+			  <h1>Steps</h1>
 		"}
 	html += "[icon2html(new req_bar, user)] Start with [initial(req_bar.name)] on an anvil.<br>"
 	html += "Hammer the material.<br>"

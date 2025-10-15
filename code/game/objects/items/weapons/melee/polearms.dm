@@ -13,7 +13,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	resistance_flags = FLAMMABLE // Weapon made mostly of wood
 	max_blade_int = 100
-	max_integrity = INTEGRITY_STANDARD
+	max_integrity = INTEGRITY_STRONG
 	minstr = 8
 	smeltresult = /obj/item/fertilizer/ash
 	melting_material = null

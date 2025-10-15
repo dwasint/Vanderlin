@@ -45,7 +45,8 @@
 	equip_delay_self = 4 SECONDS
 	unequip_delay_self = 4 SECONDS
 	anvilrepair = /datum/skill/craft/armorsmithing
-	smeltresult = /obj/item/ingot/steel
+	melt_amount = 75
+	melting_material = /datum/material/steel
 	sellprice = VALUE_BRIGANDINE
 	clothing_flags = CANT_SLEEP_IN
 
@@ -74,7 +75,8 @@
 	equip_delay_self = 4 SECONDS
 	unequip_delay_self = 4 SECONDS
 	anvilrepair = /datum/skill/craft/armorsmithing
-	smeltresult = /obj/item/ingot/steel
+	melt_amount = 75
+	melting_material = /datum/material/steel
 	sellprice = VALUE_BRIGANDINE
 	clothing_flags = CANT_SLEEP_IN
 	armor_class = AC_HEAVY

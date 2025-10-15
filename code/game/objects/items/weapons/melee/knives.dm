@@ -17,7 +17,7 @@
 	parrysound = list('sound/combat/parry/bladed/bladedsmall (1).ogg','sound/combat/parry/bladed/bladedsmall (2).ogg','sound/combat/parry/bladed/bladedsmall (3).ogg')
 	swingsound = list('sound/combat/wooshes/bladed/wooshmed (1).ogg','sound/combat/wooshes/bladed/wooshmed (2).ogg','sound/combat/wooshes/bladed/wooshmed (3).ogg')
 	max_blade_int = 140
-	max_integrity = INTEGRITY_STANDARD
+	max_integrity = INTEGRITY_STRONG
 	associated_skill = /datum/skill/combat/knives
 	pickup_sound = 'sound/foley/equip/swordsmall2.ogg'
 	equip_sound = 'sound/foley/dropsound/holster_sword.ogg'
@@ -352,7 +352,7 @@
 	name ="plaguebringer sickle"
 	desc = "A wicked edge brings feculent delights."
 	icon_state = "pestrasickle"
-	max_integrity = INTEGRITY_STANDARD
+	max_integrity = INTEGRITY_STRONG
 	wdefense = GOOD_PARRY //They use a dagger, but it should be fine for them to also parry with it.
 //................ Fanged dagger ............... //
 /obj/item/weapon/knife/dagger/steel/dirk

@@ -29,7 +29,7 @@
 	. = ..()
 	hott = world.time
 	update_appearance(UPDATE_ICON_STATE)
-	addtimer(CALLBACK(src, PROC_REF(make_unhot), world.time), 10 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(make_unhot), world.time), 30 SECONDS)
 
 /obj/item/weapon/tongs/update_icon_state()
 	. = ..()

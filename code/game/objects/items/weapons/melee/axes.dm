@@ -193,7 +193,7 @@
 	desc = "Tool, weapon, loyal iron companion."
 	icon_state = "axe"
 	max_blade_int = 200
-	max_integrity = INTEGRITY_STANDARD
+	max_integrity = INTEGRITY_STRONG
 	melting_material = /datum/material/iron
 	melt_amount = 100
 	gripped_intents = list(/datum/intent/axe/cut,/datum/intent/axe/chop)
@@ -226,7 +226,7 @@
 	icon = 'icons/roguetown/weapons/lakkari.dmi'
 	icon_state = "nsapo_iron"
 	max_blade_int = 200
-	max_integrity = INTEGRITY_STANDARD
+	max_integrity = INTEGRITY_STRONG
 	melting_material = /datum/material/iron
 	melt_amount = 75
 	parrysound = "sword"
@@ -268,7 +268,7 @@
 	icon_state = "psyaxe"
 	max_blade_int = 200
 	max_integrity = INTEGRITY_STANDARD
-	melting_material = /datum/material/iron
+	melting_material = /datum/material/silver
 	melt_amount = 75
 	gripped_intents = list(/datum/intent/axe/cut,/datum/intent/axe/chop)
 	parrysound = "sword"
@@ -364,8 +364,8 @@
 	icon = 'icons/roguetown/weapons/lakkari.dmi'
 	icon_state = "nsapo_steel"
 	max_blade_int = 300
-	max_integrity = INTEGRITY_STANDARD
-	melting_material = /datum/material/iron
+	max_integrity = INTEGRITY_STRONGEST
+	melting_material = /datum/material/steel
 	melt_amount = 75
 	parrysound = "sword"
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
@@ -497,9 +497,7 @@
 	icon = 'icons/roguetown/weapons/64.dmi'
 	minstr = 11
 	max_blade_int = 300
-	smeltresult = /obj/item/ingot/steel
 	max_integrity = INTEGRITY_STRONGEST
-	smeltresult = /obj/item/ingot/steel
 	melting_material = /datum/material/steel
 	melt_amount = 150
 	sellprice = 90

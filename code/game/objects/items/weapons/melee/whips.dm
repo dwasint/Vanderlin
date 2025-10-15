@@ -77,7 +77,8 @@
 	minstr = 7
 	icon_state = "gwhip"
 	resistance_flags = FIRE_PROOF
-	smeltresult = /obj/item/ingot/steel
+	melt_amount = 75
+	melting_material = /datum/material/steel
 	sellprice = 50
 
 

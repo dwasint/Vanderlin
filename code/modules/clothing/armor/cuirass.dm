@@ -5,7 +5,8 @@
 	icon_state = "cuirass"
 	item_state = "cuirass"
 	anvilrepair = /datum/skill/craft/armorsmithing
-	smeltresult = /obj/item/ingot/steel
+	melt_amount = 75
+	melting_material = /datum/material/steel
 	boobed = FALSE
 	sellprice = VALUE_STEEL_ARMOR
 
@@ -52,7 +53,7 @@
 
 	armor = ARMOR_PLATE_BAD
 	body_parts_covered = COVERAGE_VEST
-	max_integrity = INTEGRITY_STANDARD
+	max_integrity = INTEGRITY_STRONG
 	item_weight = 7 * IRON_MULTIPLIER
 
 //................ Rusted Breastplate ............... //
@@ -66,7 +67,7 @@
 	item_state = "rustcuriass"
 	sellprice = VALUE_IRON_ARMOR/2
 
-	max_integrity = INTEGRITY_POOR
+	max_integrity = INTEGRITY_STANDARD
 
 //................ Scourge Breastplate ............... //
 /obj/item/clothing/armor/cuirass/iron/shadowplate

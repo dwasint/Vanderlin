@@ -8,7 +8,8 @@
 	equip_delay_self = 3 SECONDS
 	unequip_delay_self = 3 SECONDS
 	emote_environment = 3		// Unknown if this actually works and what it does
-	smeltresult = /obj/item/ingot/steel
+	melt_amount = 75
+	melting_material = /datum/material/steel
 	sellprice = VALUE_STEEL_HELMET
 
 	armor = ARMOR_PLATE
@@ -269,7 +270,8 @@
 	icon_state = "sinistarhelm"
 	dropshrink = 0.9
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
-	smeltresult = /obj/item/ingot/steel
+	melt_amount = 75
+	melting_material = /datum/material/steel
 	item_weight = 7 * IRON_MULTIPLIER
 
 /obj/item/clothing/head/helmet/heavy/decorated	// template

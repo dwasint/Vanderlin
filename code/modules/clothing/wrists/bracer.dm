@@ -20,7 +20,7 @@
 	icon_state = "ibracers"
 	item_state = "ibracers"
 	armor = ARMOR_MAILLE
-	max_integrity = INTEGRITY_STANDARD
+	max_integrity = INTEGRITY_STRONG
 
 
 /obj/item/clothing/wrists/bracers/jackchain
@@ -29,7 +29,7 @@
 	icon_state = "jackchain"
 	item_state = "jackchain"
 	armor = ARMOR_MAILLE
-	max_integrity = INTEGRITY_STANDARD
+	max_integrity = INTEGRITY_STRONGEST
 	prevent_crits = CUT_AND_MINOR_CRITS
 	smeltresult = /obj/item/fertilizer/ash
 	melting_material = /datum/material/steel
@@ -41,7 +41,7 @@
 	icon_state = "ijackchain"
 	item_state = "ijackchain"
 	armor = ARMOR_MAILLE
-	max_integrity = INTEGRITY_STANDARD
+	max_integrity = INTEGRITY_STRONG
 	prevent_crits = CUT_AND_MINOR_CRITS
 	smeltresult = /obj/item/fertilizer/ash //we avoid melting one piece for one bar
 	melting_material = /datum/material/iron // we get one bar per two pieces of the item recovered and smelted

@@ -3,7 +3,8 @@
 	equip_delay_self = 4 SECONDS
 	unequip_delay_self = 3 SECONDS
 	anvilrepair = /datum/skill/craft/armorsmithing
-	smeltresult = /obj/item/ingot/steel
+	melt_amount = 75
+	melting_material = /datum/material/steel
 	armor_class = AC_MEDIUM
 	armor = ARMOR_SCALE
 	max_integrity = INTEGRITY_STANDARD
@@ -68,7 +69,8 @@
 	sleevetype = "shirt"
 	max_integrity = INTEGRITY_STRONG
 	anvilrepair = /datum/skill/craft/armorsmithing
-	smeltresult = /obj/item/ingot/steel
+	melt_amount = 75
+	melting_material = /datum/material/steel
 	equip_delay_self = 4 SECONDS
 	blocksound = SOFTHIT
 

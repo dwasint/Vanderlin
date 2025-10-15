@@ -267,3 +267,12 @@
 	sellprice = 90
 	melting_material = /datum/material/blacksteel
 	item_weight = 7.5 * BLACKSTEEL_MULTIPLIER
+
+/obj/item/ingot/steel_slag
+	name = "steel slag"
+	desc = "Slag containing steel, the result of blooming iron and coal."
+	icon_state = "steel_slag"
+	smeltresult = /obj/item/ingot/steel_slag
+	sellprice = 90
+	melting_material = /datum/material/steel
+	item_weight = 7.5 * STEEL_MULTIPLIER

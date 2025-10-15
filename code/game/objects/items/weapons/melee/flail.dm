@@ -150,7 +150,7 @@
 	wbalance = 0
 	wlength = WLENGTH_LONG
 	slot_flags = ITEM_SLOT_BACK
-	max_integrity = INTEGRITY_STANDARD + 50
+	max_integrity = INTEGRITY_STRONG + 50
 	sellprice = 20
 	minstr = 8
 
@@ -243,7 +243,8 @@
 	desc = "Weight of wealth in a deadly striking end."
 	icon_state = "matthiosflail"
 	sellprice = 250
-	smeltresult = /obj/item/ingot/steel
+	melt_amount = 150
+	melting_material = /datum/material/steel
 	possible_item_intents = list(/datum/intent/flail/strike/matthiosflail)
 	gripped_intents = list(/datum/intent/flail/strike/matthiosflail, /datum/intent/flail/strike/smash/matthiosflail)
 	associated_skill = /datum/skill/combat/whipsflails
