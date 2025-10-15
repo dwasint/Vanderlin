@@ -83,9 +83,6 @@
 /turf/open/floor/ruinedwood/two,
 /area/rogue/ship/middeck)
 "aM" = (
-/obj/structure/chair/bench/church/r{
-	dir = 4
-	},
 /obj/machinery/light/fueled/wallfire/candle/blue{
 	pixel_y = -32
 	},
@@ -606,11 +603,6 @@
 	},
 /turf/open/floor/hay,
 /area/rogue/ship/topdeck)
-"es" = (
-/obj/machinery/light/fueled/hearth,
-/obj/item/reagent_containers/glass/bucket/pot/copper,
-/turf/open/floor/ruinedwood/two,
-/area/rogue/ship/middeck)
 "eu" = (
 /obj/effect/decal/cobbleedge{
 	icon_state = "borderfall"
@@ -698,6 +690,10 @@
 	},
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/topdeck)
+"ft" = (
+/obj/structure/chair/stool,
+/turf/open/floor/churchmarble,
+/area/rogue/ship/middeck)
 "fv" = (
 /obj/structure/table/optable,
 /turf/open/floor/ruinedwood/two,
@@ -2034,6 +2030,14 @@
 /obj/structure/rack/shelf/big,
 /turf/open/floor/ruinedwood,
 /area/rogue/ship/middeck)
+"sC" = (
+/obj/structure/fluff/railing/border{
+	dir = 1;
+	icon_state = "border"
+	},
+/obj/item/tent_kit,
+/turf/open/floor/hay,
+/area/rogue/ship/middeck)
 "sL" = (
 /obj/structure/fluff/railing/border{
 	dir = 1;
@@ -2433,6 +2437,16 @@
 	dir = 1;
 	icon_state = "border"
 	},
+/turf/open/floor/rooftop/green{
+	dir = 4
+	},
+/area/rogue/ship/middeck)
+"vV" = (
+/obj/effect/decal/cobbleedge{
+	dir = 1;
+	icon_state = "borderfall"
+	},
+/obj/item/tent_kit,
 /turf/open/floor/rooftop/green{
 	dir = 4
 	},
@@ -3201,19 +3215,12 @@
 /turf/closed/wall/mineral/wooddark/slitted,
 /area/rogue/ship/middeck)
 "DP" = (
-/obj/item/key/clinic{
-	pixel_x = -9
+/obj/effect/decal/cobbleedge{
+	icon_state = "borderfall"
 	},
-/obj/item/key/clinic{
-	pixel_y = 0;
-	pixel_x = 9
-	},
-/obj/item/key/clinic{
-	pixel_y = 0
-	},
-/turf/closed/wall/mineral/wooddark/end{
-	dir = 8
-	},
+/obj/structure/fluff/railing/border,
+/obj/item/tent_kit,
+/turf/open/floor/hay,
 /area/rogue/ship/middeck)
 "DQ" = (
 /obj/effect/landmark/ship_marker,
@@ -3464,6 +3471,16 @@
 	dir = 8
 	},
 /turf/open/floor/ruinedwood/two,
+/area/rogue/ship/middeck)
+"FT" = (
+/obj/effect/decal/cobbleedge{
+	icon_state = "borderfall"
+	},
+/obj/structure/fluff/railing/border,
+/obj/item/tent_kit,
+/turf/open/floor/rooftop/green{
+	dir = 4
+	},
 /area/rogue/ship/middeck)
 "FX" = (
 /obj/structure/table/wood{
@@ -4284,14 +4301,6 @@
 /obj/item/reagent_containers/food/snacks/produce/grain/wheat,
 /turf/open/floor/hay,
 /area/rogue/ship/middeck)
-"NQ" = (
-/obj/effect/decal/cobbleedge{
-	icon_state = "borderfall"
-	},
-/obj/structure/fluff/railing/border,
-/obj/item/tent_kit,
-/turf/open/floor/hay,
-/area/rogue/ship/middeck)
 "NV" = (
 /obj/structure/door/viewport{
 	dir = 1
@@ -4328,6 +4337,21 @@
 	},
 /obj/structure/rack/shelf/notdense,
 /turf/open/floor/ruinedwood,
+/area/rogue/ship/middeck)
+"Oj" = (
+/obj/item/key/clinic{
+	pixel_x = -9
+	},
+/obj/item/key/clinic{
+	pixel_y = 0;
+	pixel_x = 9
+	},
+/obj/item/key/clinic{
+	pixel_y = 0
+	},
+/turf/closed/wall/mineral/wooddark/end{
+	dir = 8
+	},
 /area/rogue/ship/middeck)
 "Ol" = (
 /obj/structure/fluff/walldeco/psybanner,
@@ -4566,13 +4590,6 @@
 /obj/item/reagent_containers/glass/bucket/pot,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/middeck)
-"Qh" = (
-/obj/structure/fluff/railing/border,
-/obj/item/tent_kit,
-/turf/open/floor/rooftop/green{
-	dir = 4
-	},
-/area/rogue/ship/middeck)
 "Qi" = (
 /obj/item/reagent_containers/food/snacks/crow{
 	dir = 1;
@@ -4693,12 +4710,18 @@
 /turf/open/floor/carpet/lord/left,
 /area/rogue/ship/nobledeck)
 "Rw" = (
+/obj/effect/decal/cobbleedge{
+	dir = 1;
+	icon_state = "borderfall"
+	},
 /obj/structure/fluff/railing/border{
 	dir = 1;
 	icon_state = "border"
 	},
 /obj/item/tent_kit,
-/turf/open/floor/hay,
+/turf/open/floor/rooftop/green{
+	dir = 4
+	},
 /area/rogue/ship/middeck)
 "Rz" = (
 /obj/effect/decal/cobbleedge{
@@ -4766,6 +4789,13 @@
 	pixel_y = 25
 	},
 /turf/open/floor/ruinedwood/two,
+/area/rogue/ship/middeck)
+"RW" = (
+/obj/structure/fluff/railing/border,
+/obj/item/tent_kit,
+/turf/open/floor/rooftop/green{
+	dir = 4
+	},
 /area/rogue/ship/middeck)
 "RX" = (
 /obj/structure/fluff/railing/border,
@@ -4903,9 +4933,7 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/middeck)
 "Te" = (
-/obj/structure/chair/bench/church/r{
-	dir = 4
-	},
+/obj/structure/chair/stool,
 /turf/open/floor/church,
 /area/rogue/ship/middeck)
 "Tg" = (
@@ -4930,18 +4958,9 @@
 /turf/open/floor/herringbone,
 /area/rogue/ship/middeck)
 "Ts" = (
-/obj/effect/decal/cobbleedge{
-	dir = 1;
-	icon_state = "borderfall"
-	},
-/obj/structure/fluff/railing/border{
-	dir = 1;
-	icon_state = "border"
-	},
-/obj/item/tent_kit,
-/turf/open/floor/rooftop/green{
-	dir = 4
-	},
+/obj/machinery/light/fueled/hearth,
+/obj/item/reagent_containers/glass/bucket/pot/copper,
+/turf/open/floor/ruinedwood/two,
 /area/rogue/ship/middeck)
 "Tv" = (
 /obj/structure/fluff/railing/border,
@@ -5311,16 +5330,6 @@
 /obj/machinery/light/fueled/lanternpost/fixed,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/topdeck)
-"VT" = (
-/obj/effect/decal/cobbleedge{
-	icon_state = "borderfall"
-	},
-/obj/structure/fluff/railing/border,
-/obj/item/tent_kit,
-/turf/open/floor/rooftop/green{
-	dir = 4
-	},
-/area/rogue/ship/middeck)
 "VU" = (
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/topdeck)
@@ -5684,16 +5693,6 @@
 	},
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/topdeck)
-"ZL" = (
-/obj/effect/decal/cobbleedge{
-	dir = 1;
-	icon_state = "borderfall"
-	},
-/obj/item/tent_kit,
-/turf/open/floor/rooftop/green{
-	dir = 4
-	},
-/area/rogue/ship/middeck)
 "ZM" = (
 /obj/machinery/light/fueled/torchholder{
 	dir = 1
@@ -13757,7 +13756,7 @@ Li
 Li
 Ze
 uY
-VT
+FT
 Ze
 Ks
 Ks
@@ -13972,7 +13971,7 @@ Fq
 Ze
 Cg
 ko
-Qh
+RW
 Ze
 Li
 Li
@@ -14981,7 +14980,7 @@ fN
 OZ
 Ze
 Cg
-Ts
+Rw
 gE
 Ze
 Li
@@ -15574,7 +15573,7 @@ Li
 Li
 Li
 Ze
-Rw
+sC
 yj
 ne
 Ze
@@ -16597,7 +16596,7 @@ Ze
 vY
 wx
 Fq
-ZL
+vV
 vo
 Ze
 Li
@@ -16989,7 +16988,7 @@ Li
 Li
 Ze
 NB
-NQ
+DP
 Ze
 Ze
 Ze
@@ -18205,7 +18204,7 @@ Eq
 ee
 LU
 CS
-GC
+Te
 Te
 ui
 go
@@ -18408,7 +18407,7 @@ uK
 ui
 ui
 ui
-ui
+ft
 ui
 CS
 Ze
@@ -18610,8 +18609,8 @@ oa
 CS
 GC
 Te
-ui
-GC
+ft
+Te
 aM
 Bg
 bx
@@ -52954,7 +52953,7 @@ Ma
 nu
 Tx
 Je
-DP
+Oj
 bX
 uD
 jA
@@ -54967,7 +54966,7 @@ TN
 Ze
 JP
 XI
-es
+Ts
 Kd
 BA
 BA

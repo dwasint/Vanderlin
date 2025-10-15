@@ -25,6 +25,9 @@
 /obj/machinery/anvil/attackby(obj/item/W, mob/living/user, params)
 	if(istype(W, /obj/item/weapon/tongs))
 		var/obj/item/weapon/tongs/T = W
+		if(smithing)
+			to_chat(user, "<span class='warning'>[src] is currently being worked on!</span>")
+			return
 		if(hingot)
 			if(T.held_item && istype(T.held_item, /obj/item/ingot))
 				if(hingot.currecipe && hingot.currecipe.needed_item && istype(T.held_item, hingot.currecipe.needed_item))
@@ -236,6 +239,9 @@
 	return FALSE
 
 /obj/machinery/anvil/attack_hand(mob/user, params)
+	if(smithing)
+		to_chat(user, "<span class='warning'>[src] is currently being worked on!</span>")
+		return
 	if(hingot)
 		if(hott)
 			to_chat(user, "<span class='warning'>It's too hot to handle with your hands.</span>")
