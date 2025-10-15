@@ -30,7 +30,7 @@
 	difficulty = _difficulty
 	z_level = bl.z + 2 // Island is always at z+2
 	top_right = locate(bl.x + size - 3, bl.y + size - 3, z_level)
-	island_id = "island_[bl.x]_[bl.y]_[z_level]_[world.time]"
+	island_id = "island_[bl.x]_[bl.y]_[z_level]_[FLOOR(world.time, 1)]"
 	island_name = "[get_difficulty_text()][_island_name] Island #[length(SSterrain_generation.island_registry) + 1]"
 
 /datum/island_data/proc/get_difficulty_text()
