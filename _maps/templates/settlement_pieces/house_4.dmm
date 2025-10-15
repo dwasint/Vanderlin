@@ -16,7 +16,7 @@
 /turf/open/floor/cobblerock,
 /area/template_noop)
 "t" = (
-/obj/effect/landmark/underworld_spawnpoint,
+/obj/effect/landmark/settlement_road_node,
 /turf/open/floor/dirt,
 /area/template_noop)
 "E" = (

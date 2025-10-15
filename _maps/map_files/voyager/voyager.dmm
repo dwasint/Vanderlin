@@ -445,6 +445,10 @@
 	},
 /turf/open/floor/herringbone,
 /area/rogue/ship/middeck)
+"dr" = (
+/obj/structure/ladder,
+/turf/open/floor/woodturned,
+/area/rogue/ship/topdeck)
 "du" = (
 /obj/effect/landmark/start/templar,
 /turf/open/floor/church,
@@ -514,10 +518,7 @@
 /turf/open/floor/herringbone,
 /area/rogue/ship/middeck)
 "dL" = (
-/obj/structure/door/fancy{
-	lockid = "heir";
-	name = "Heir's Apartment"
-	},
+/obj/structure/door/fancy,
 /turf/open/floor/ruinedwood/two,
 /area/rogue/ship/nobledeck)
 "dN" = (
@@ -545,11 +546,9 @@
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/beach)
 "dY" = (
-/obj/structure/door{
-	lockid = "physician";
-	name = "physician's office"
-	},
 /obj/effect/mapping_helpers/access/locker,
+/obj/structure/door,
+/obj/effect/mapping_helpers/access/keyset/town/veteran,
 /turf/open/floor/ruinedwood/two,
 /area/rogue/ship/middeck)
 "dZ" = (
@@ -706,8 +705,8 @@
 /area/rogue/ship/middeck)
 "fF" = (
 /obj/structure/door/red,
-/obj/effect/mapping_helpers/access/keyset/garrison/captain,
 /obj/effect/mapping_helpers/access/locker,
+/obj/effect/mapping_helpers/access/keyset/manor/dungeon,
 /turf/open/floor/ruinedwood,
 /area/rogue/ship/middeck)
 "fN" = (
@@ -890,11 +889,9 @@
 /turf/open/floor/ruinedwood/two,
 /area/rogue/ship/middeck)
 "hA" = (
-/obj/structure/door/violet{
-	name = "Head Butler's Quarters"
-	},
-/obj/effect/mapping_helpers/access/keyset/manor/general,
 /obj/effect/mapping_helpers/access/locker,
+/obj/structure/door/violet,
+/obj/effect/mapping_helpers/access/keyset/town/tower,
 /turf/open/floor/ruinedwood/two,
 /area/rogue/ship/nobledeck)
 "hB" = (
@@ -1000,6 +997,7 @@
 	name = "apothacary bunks"
 	},
 /obj/effect/mapping_helpers/access/locker,
+/obj/effect/mapping_helpers/access/keyset/town/clinic,
 /turf/open/floor/ruinedwood/two,
 /area/rogue/ship/middeck)
 "iJ" = (
@@ -1638,7 +1636,6 @@
 "nS" = (
 /obj/structure/bed/inn,
 /obj/item/bedsheet/wool,
-/obj/effect/landmark/start/gravedigger,
 /obj/structure/fluff/wallclock/r,
 /turf/open/floor/ruinedwood/two,
 /area/rogue/ship/middeck)
@@ -2075,12 +2072,12 @@
 	},
 /area/rogue/ship/middeck)
 "tb" = (
-/obj/effect/landmark/start/butler{
-	dir = 8
-	},
 /obj/structure/bed/inn,
 /obj/item/bedsheet/fabric,
 /obj/structure/rack/shelf/notdense,
+/obj/effect/landmark/start/wapprentice{
+	dir = 8
+	},
 /turf/open/floor/ruinedwood/two,
 /area/rogue/ship/nobledeck)
 "th" = (
@@ -2260,12 +2257,6 @@
 /area/rogue/ship/middeck)
 "uM" = (
 /obj/structure/closet/crate/drawer/inn,
-/obj/item/key/courtphys{
-	pixel_y = 9
-	},
-/obj/item/key/courtphys{
-	pixel_y = 9
-	},
 /turf/open/floor/ruinedwood/two,
 /area/rogue/ship/middeck)
 "uN" = (
@@ -2341,6 +2332,7 @@
 	pixel_y = 36
 	},
 /obj/structure/rack/shelf/notdense,
+/obj/effect/landmark/start/clinicapprentice,
 /turf/open/floor/ruinedwood/two,
 /area/rogue/ship/middeck)
 "vn" = (
@@ -3135,9 +3127,7 @@
 /turf/open/floor/church,
 /area/rogue/ship/middeck)
 "CY" = (
-/obj/effect/landmark/start/gravedigger{
-	dir = 4
-	},
+/obj/effect/landmark/start/clinicapprentice,
 /turf/open/floor/ruinedwood/two,
 /area/rogue/ship/middeck)
 "Da" = (
@@ -3821,9 +3811,6 @@
 	pixel_x = -8;
 	pixel_y = 20
 	},
-/obj/item/key/courtphys,
-/obj/item/key/courtphys,
-/obj/item/key/courtphys,
 /turf/open/floor/ruinedwood/two,
 /area/rogue/ship/middeck)
 "JF" = (
@@ -4484,11 +4471,8 @@
 	},
 /area/rogue/ship/middeck)
 "Pg" = (
-/obj/structure/door/fancy{
-	name = "Hand's Chambers"
-	},
-/obj/effect/mapping_helpers/access/keyset/manor/hand,
 /obj/effect/mapping_helpers/access/locker,
+/obj/structure/door/fancy,
 /turf/open/floor/ruinedwood/two,
 /area/rogue/ship/nobledeck)
 "Pl" = (
@@ -5063,6 +5047,7 @@
 /obj/structure/fake_machine/mail{
 	mailtag = "Guard Captain"
 	},
+/obj/effect/landmark/start/dungeoneer,
 /turf/open/floor/wood,
 /area/rogue/ship/middeck)
 "UF" = (
@@ -5340,6 +5325,10 @@
 	},
 /turf/open/floor/ruinedwood,
 /area/rogue/ship/middeck)
+"Wv" = (
+/obj/effect/landmark/start/feldsher,
+/turf/open/floor/ruinedwood/two,
+/area/rogue/ship/middeck)
 "Wx" = (
 /obj/structure/fluff/railing/border{
 	dir = 1
@@ -5435,6 +5424,8 @@
 /obj/structure/door/window{
 	lockid = "physician"
 	},
+/obj/effect/mapping_helpers/access/keyset/town/clinic,
+/obj/effect/mapping_helpers/access/locker,
 /turf/open/floor/ruinedwood/two,
 /area/rogue/ship/middeck)
 "XB" = (
@@ -5529,7 +5520,9 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/middeck)
 "Yy" = (
-/obj/effect/landmark/start/gravedigger{
+/obj/structure/bed/inn/double,
+/obj/item/bedsheet/fabric_double,
+/obj/effect/landmark/start/veteran{
 	dir = 8
 	},
 /turf/open/floor/ruinedwood/two,
@@ -12320,7 +12313,7 @@ Rk
 KM
 Rk
 KY
-CY
+jA
 jA
 jA
 jA
@@ -12524,7 +12517,7 @@ ne
 pM
 RR
 nS
-Yy
+jA
 jA
 Ze
 Li
@@ -13131,7 +13124,7 @@ Ks
 ky
 Ze
 uM
-bR
+Yy
 Ze
 Li
 Li
@@ -52723,7 +52716,7 @@ Tx
 Xu
 jA
 jA
-jA
+CY
 fv
 Ze
 TN
@@ -53127,7 +53120,7 @@ Tx
 pM
 RJ
 pz
-jA
+Wv
 fv
 Ze
 TN
@@ -96948,7 +96941,7 @@ TN
 TN
 TN
 TN
-Rw
+dr
 GF
 VU
 VU
