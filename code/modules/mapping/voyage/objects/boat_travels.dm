@@ -4,6 +4,7 @@ GLOBAL_LIST_EMPTY(boat_landmarks)
 	desc = "Stand here to transfer between ship and island."
 	icon_state = "travel"
 	icon = 'icons/turf/floors.dmi'
+	invisibility = 0
 
 	var/turf/destination = null
 	var/transfer_delay = 0.5 SECONDS

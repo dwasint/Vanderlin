@@ -38,14 +38,6 @@
 	switch(rand(1, 3))
 		if(1)
 			fauna_types += list(
-				/mob/living/carbon/human/species/orc/slaved = new /datum/fauna_spawn_rule(
-					min_moist = 0.3,
-					max_moist = 0.8,
-					min_temp = 0.3,
-					max_temp = 0.7,
-					no_beach_spawn = TRUE,
-					weight = 80
-				),
 				/mob/living/carbon/human/species/orc/tribal = new /datum/fauna_spawn_rule(
 					min_moist = 0.3,
 					max_moist = 0.8,
