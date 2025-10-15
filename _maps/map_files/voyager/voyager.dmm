@@ -606,6 +606,11 @@
 	},
 /turf/open/floor/hay,
 /area/rogue/ship/topdeck)
+"es" = (
+/obj/machinery/light/fueled/hearth,
+/obj/item/reagent_containers/glass/bucket/pot/copper,
+/turf/open/floor/ruinedwood/two,
+/area/rogue/ship/middeck)
 "eu" = (
 /obj/effect/decal/cobbleedge{
 	icon_state = "borderfall"
@@ -979,20 +984,6 @@
 "ip" = (
 /turf/closed/wall/mineral/decostone,
 /area/rogue/ship/middeck)
-"iq" = (
-/obj/effect/decal/cobbleedge{
-	dir = 1;
-	icon_state = "borderfall"
-	},
-/obj/structure/fluff/railing/border{
-	dir = 1;
-	icon_state = "border"
-	},
-/obj/item/tent_kit,
-/turf/open/floor/rooftop/green{
-	dir = 4
-	},
-/area/rogue/ship/middeck)
 "iw" = (
 /obj/effect/landmark/start/hunter{
 	dir = 4
@@ -1327,16 +1318,6 @@
 	dir = 1
 	},
 /area/rogue/ship/middeck)
-"lo" = (
-/obj/effect/decal/cobbleedge{
-	icon_state = "borderfall"
-	},
-/obj/structure/fluff/railing/border,
-/obj/item/tent_kit,
-/turf/open/floor/rooftop/green{
-	dir = 4
-	},
-/area/rogue/ship/middeck)
 "lq" = (
 /obj/effect/decal/cobbleedge{
 	icon_state = "borderfall"
@@ -1477,14 +1458,6 @@
 "ms" = (
 /turf/closed/sea_fog,
 /area/rogue/outdoors/beach)
-"mt" = (
-/obj/structure/fluff/railing/border{
-	dir = 1;
-	icon_state = "border"
-	},
-/obj/item/tent_kit,
-/turf/open/floor/hay,
-/area/rogue/ship/middeck)
 "mz" = (
 /obj/machinery/light/fueled/firebowl/standing,
 /obj/effect/decal/cobbleedge{
@@ -2775,13 +2748,6 @@
 /obj/structure/chair/stool,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/topdeck)
-"zy" = (
-/obj/structure/fluff/railing/border,
-/obj/item/tent_kit,
-/turf/open/floor/rooftop/green{
-	dir = 4
-	},
-/area/rogue/ship/middeck)
 "zz" = (
 /obj/structure/closet/crate/chest,
 /turf/open/floor/ruinedwood,
@@ -4318,6 +4284,14 @@
 /obj/item/reagent_containers/food/snacks/produce/grain/wheat,
 /turf/open/floor/hay,
 /area/rogue/ship/middeck)
+"NQ" = (
+/obj/effect/decal/cobbleedge{
+	icon_state = "borderfall"
+	},
+/obj/structure/fluff/railing/border,
+/obj/item/tent_kit,
+/turf/open/floor/hay,
+/area/rogue/ship/middeck)
 "NV" = (
 /obj/structure/door/viewport{
 	dir = 1
@@ -4592,6 +4566,13 @@
 /obj/item/reagent_containers/glass/bucket/pot,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/middeck)
+"Qh" = (
+/obj/structure/fluff/railing/border,
+/obj/item/tent_kit,
+/turf/open/floor/rooftop/green{
+	dir = 4
+	},
+/area/rogue/ship/middeck)
 "Qi" = (
 /obj/item/reagent_containers/food/snacks/crow{
 	dir = 1;
@@ -4712,10 +4693,10 @@
 /turf/open/floor/carpet/lord/left,
 /area/rogue/ship/nobledeck)
 "Rw" = (
-/obj/effect/decal/cobbleedge{
-	icon_state = "borderfall"
+/obj/structure/fluff/railing/border{
+	dir = 1;
+	icon_state = "border"
 	},
-/obj/structure/fluff/railing/border,
 /obj/item/tent_kit,
 /turf/open/floor/hay,
 /area/rogue/ship/middeck)
@@ -4952,6 +4933,10 @@
 /obj/effect/decal/cobbleedge{
 	dir = 1;
 	icon_state = "borderfall"
+	},
+/obj/structure/fluff/railing/border{
+	dir = 1;
+	icon_state = "border"
 	},
 /obj/item/tent_kit,
 /turf/open/floor/rooftop/green{
@@ -5326,6 +5311,16 @@
 /obj/machinery/light/fueled/lanternpost/fixed,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/topdeck)
+"VT" = (
+/obj/effect/decal/cobbleedge{
+	icon_state = "borderfall"
+	},
+/obj/structure/fluff/railing/border,
+/obj/item/tent_kit,
+/turf/open/floor/rooftop/green{
+	dir = 4
+	},
+/area/rogue/ship/middeck)
 "VU" = (
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/topdeck)
@@ -5689,6 +5684,16 @@
 	},
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/topdeck)
+"ZL" = (
+/obj/effect/decal/cobbleedge{
+	dir = 1;
+	icon_state = "borderfall"
+	},
+/obj/item/tent_kit,
+/turf/open/floor/rooftop/green{
+	dir = 4
+	},
+/area/rogue/ship/middeck)
 "ZM" = (
 /obj/machinery/light/fueled/torchholder{
 	dir = 1
@@ -13752,7 +13757,7 @@ Li
 Li
 Ze
 uY
-lo
+VT
 Ze
 Ks
 Ks
@@ -13967,7 +13972,7 @@ Fq
 Ze
 Cg
 ko
-zy
+Qh
 Ze
 Li
 Li
@@ -14976,7 +14981,7 @@ fN
 OZ
 Ze
 Cg
-iq
+Ts
 gE
 Ze
 Li
@@ -15569,7 +15574,7 @@ Li
 Li
 Li
 Ze
-mt
+Rw
 yj
 ne
 Ze
@@ -16592,7 +16597,7 @@ Ze
 vY
 wx
 Fq
-Ts
+ZL
 vo
 Ze
 Li
@@ -16984,7 +16989,7 @@ Li
 Li
 Ze
 NB
-Rw
+NQ
 Ze
 Ze
 Ze
@@ -54962,7 +54967,7 @@ TN
 Ze
 JP
 XI
-jA
+es
 Kd
 BA
 BA
