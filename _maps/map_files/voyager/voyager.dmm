@@ -527,6 +527,7 @@
 	icon_state = "longtable"
 	},
 /obj/item/paper/scroll,
+/obj/item/natural/feather,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/nobledeck)
 "dS" = (

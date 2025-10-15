@@ -9,7 +9,7 @@
 	damage_deflection = 25
 	climbable = TRUE
 	var/previous_material_quality = 0
-	var/cool_time = 10 SECONDS
+	var/cool_time = 30 SECONDS
 	var/smithing = FALSE // Is a minigame currently active?
 	var/obj/item/working_material // Reference to the material being worked
 	var/always_perfect = FALSE // Debug/admin flag
