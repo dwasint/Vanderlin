@@ -11,7 +11,6 @@
 		/datum/job/artificer,
 		/datum/job/armorsmith,
 		/datum/job/carpenter,
-		/datum/job/feldsher,
 		/datum/job/gaffer,
 		/datum/job/matron,
 		/datum/job/veteran,
