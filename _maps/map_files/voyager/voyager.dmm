@@ -947,10 +947,6 @@
 /obj/item/reagent_containers/glass/bottle/healthpot,
 /obj/item/reagent_containers/glass/bottle/healthpot,
 /obj/item/clothing/neck/chaincoif,
-/obj/item/clothing/neck/chaincoif,
-/obj/item/clothing/neck/chaincoif,
-/obj/item/clothing/neck/chaincoif,
-/obj/item/clothing/neck/chaincoif,
 /turf/open/floor/twig,
 /area/rogue/ship/middeck)
 "if" = (
@@ -1425,13 +1421,7 @@
 "md" = (
 /obj/structure/rack,
 /obj/item/clothing/armor/plate/iron,
-/obj/item/clothing/armor/plate/iron,
-/obj/item/clothing/armor/plate,
-/obj/item/clothing/armor/plate,
-/obj/item/clothing/armor/plate,
 /obj/item/clothing/gloves/chain/iron,
-/obj/item/clothing/gloves/chain,
-/obj/item/clothing/gloves/plate,
 /turf/open/floor/twig,
 /area/rogue/ship/middeck)
 "me" = (
@@ -2211,11 +2201,6 @@
 /obj/item/clothing/armor/gambeson,
 /obj/item/clothing/armor/gambeson,
 /obj/item/clothing/armor/gambeson,
-/obj/item/clothing/armor/chainmail,
-/obj/item/clothing/armor/chainmail,
-/obj/item/clothing/armor/chainmail,
-/obj/item/clothing/armor/chainmail,
-/obj/item/clothing/armor/chainmail,
 /turf/open/floor/twig,
 /area/rogue/ship/middeck)
 "uv" = (
@@ -3590,8 +3575,6 @@
 /obj/item/weapon/sword/scimitar/messer,
 /obj/item/clothing/pants/chainlegs/iron,
 /obj/item/clothing/pants/chainlegs/iron,
-/obj/item/clothing/pants/chainlegs/kilt,
-/obj/item/clothing/pants/chainlegs/kilt,
 /turf/open/floor/ruinedwood,
 /area/rogue/ship/middeck)
 "GS" = (
