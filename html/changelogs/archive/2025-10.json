@@ -430,5 +430,202 @@
                 "admin": "New Admin option at Manage Job to disable or enable jobs."
             }
         ]
+    },
+    "2025-10-11": {
+        "wgtjunior743": [
+            {
+                "bugfix": "Dark Elves Zizo Descendant not having cursed elf blood."
+            },
+            {
+                "bugfix": "Forest Guard now knows who is bandit or not from the roundstart."
+            },
+            {
+                "bugfix": "Princess being called prince"
+            },
+            {
+                "bugfix": "Coronate now always gives the proper title."
+            }
+        ],
+        "Bloo4420": [
+            {
+                "rscadd": "Added a new tailor shop sign."
+            },
+            {
+                "map": "Reconfigured the main road of Rosewood to flow better."
+            },
+            {
+                "map": "Many Rosewood shops have been reconfigured to be more accessible from the main road."
+            },
+            {
+                "map": "Fixed placement of Scoms, Meisters, and Hermes on Rosewood."
+            },
+            {
+                "map": "Added Meisters to the generic shops on Rosewood."
+            },
+            {
+                "map": "Changed the Rosewood theatre to be more like an ampitheatre."
+            },
+            {
+                "map": "Increased the size of the Rosewood clinic to be more visible."
+            },
+            {
+                "spellcheck": "Fixed a few hermes directory entries."
+            }
+        ],
+        "snowyseshi": [
+            {
+                "rscadd": "Added new specials and tweak some special trait weight"
+            }
+        ],
+        "Dorodomki": [
+            {
+                "rscadd": "Added more skills to the acolytes of ravox, malum, they get new tabards on them including the xylixian acolyte"
+            }
+        ]
+    },
+    "2025-10-12": {
+        "wgtjunior743": [
+            {
+                "bugfix": "Bandits not appearing on the wanted poster."
+            },
+            {
+                "bugfix": "Lich don't spawns with stats/traits and armor of their previous job anymore"
+            },
+            {
+                "bugfix": "Vampire Lord don't gets the stats or traits from their old job anymore."
+            }
+        ],
+        "Wouju": [
+            {
+                "rscadd": "Added clinic apprentice"
+            },
+            {
+                "map": "modified clinic and apothecary workshop"
+            },
+            {
+                "balance": "Feldsher and Apothecary both have 1 slot, they can have two apprentices each"
+            }
+        ]
+    },
+    "2025-10-13": {
+        "wgtjunior743": [
+            {
+                "bugfix": "Wanted posters for real."
+            },
+            {
+                "bugfix": "You can ride moles by taming them with tame beast just like taming normally."
+            },
+            {
+                "bugfix": "Court Mage got natural mana regen roundstart."
+            },
+            {
+                "rscadd": "An option to choose between toss blade and leather belt for the Faceless class."
+            }
+        ]
+    },
+    "2025-10-14": {
+        "wgtjunior743": [
+            {
+                "bugfix": "Court Agent now appear as adventurer at the ready menu."
+            },
+            {
+                "rscadd": "A scaling system for adventurer roles based on the town roles pop"
+            },
+            {
+                "rscadd": "Satchel to Servant, Tapster, Orphanage Assistant and Ring Servant"
+            },
+            {
+                "rscadd": "Cook Recipe book to Servant, Tapster, Orphanage Assistant and Ring Servant."
+            },
+            {
+                "bugfix": "Actor list now works as intended"
+            }
+        ],
+        "AnDigitalGondola": [
+            {
+                "bugfix": "Changed the names of two instances of \\\"robes\\\" to be unique in the sewing menu."
+            }
+        ],
+        "7erracotta": [
+            {
+                "rscadd": "Added different lore for the lakkarian cleric"
+            },
+            {
+                "qol": "gave ex-pegasus knight riding skill and made one gem carving recipe require no skill"
+            },
+            {
+                "bugfix": "fixed a broken recipe\\n:cl:\\n<!-- Both :cl:'s are required for the changelog to work! You can put your name to the right of the first :cl: if you want to overwrite your GitHub username as author ingame. -->\\n<!-- You can use multiple of the same prefix (they're only used for the icon ingame) and delete the unneeded ones. Despite some of the tags, changelogs should generally represent how a player might be affected by the changes rather than a summary of the PR's contents. -->\\n## Pre-Merge Checklist\\n<!-- Don't bother filling these in while creating your Pull Request, just click the checkboxes after the Pull Request is opened and you are redirected to the page. -->\\n- [x] You tested this on a local server.\\n- [x] This code did not runtime during testing.\\n- [x] You documented all of your changes.\\n<!-- Neither the compiler nor workflow checks are perfect at detecting runtimes and errors. It is important to test your code/feature/fix locally. -->"
+            }
+        ],
+        "SarmentiCampbell": [
+            {
+                "balance": "changed the churchling's keyring to a key."
+            }
+        ],
+        "userfacethis": [
+            {
+                "sound": "added combat_noble.ogg to minor nobles for cmode music\\n:cl:\\n<!-- Both :cl:'s are required for the changelog to work! You can put your name to the right of the first :cl: if you want to overwrite your GitHub username as author ingame. -->\\n<!-- You can use multiple of the same prefix (they're only used for the icon ingame) and delete the unneeded ones. Despite some of the tags, changelogs should generally represent how a player might be affected by the changes rather than a summary of the PR's contents. -->\\n## Pre-Merge Checklist\\n<!-- Don't bother filling these in while creating your Pull Request, just click the checkboxes after the Pull Request is opened and you are redirected to the page. -->\\n- [ ] You tested this on a local server.\\n- [ ] This code did not runtime during testing.\\n- [X] You documented all of your changes.\\n<!-- Neither the compiler nor workflow checks are perfect at detecting runtimes and errors. It is important to test your code/feature/fix locally. -->"
+            }
+        ],
+        "Bloo4420": [
+            {
+                "bugfix": "Bog and field mapgens"
+            },
+            {
+                "bugfix": "Malum's Anvil mapgen"
+            }
+        ],
+        "Dorodomki": [
+            {
+                "bugfix": "fixed a few things in the smithy recipes"
+            }
+        ],
+        "PibeCantina": [
+            {
+                "rscadd": "Allows apothecary, feldsher and weaponsmith to bypass last class lock"
+            }
+        ],
+        "Wouju": [
+            {
+                "rscadd": "Added a new poison that's craftable only via alchemy"
+            },
+            {
+                "rscadd": "Added a new alchemy essence, death essence"
+            },
+            {
+                "balance": "tweaked cost of alchemy potions and essence combinations"
+            },
+            {
+                "balance": "stat buffs from potions last 10 minutes, weak ones last 5 minutes"
+            },
+            {
+                "balance": "certain reagents had their smells and tastes changed"
+            }
+        ]
+    },
+    "2025-10-15": {
+        "wgtjunior743": [
+            {
+                "balance": "Nerf Infestation Spell"
+            },
+            {
+                "bugfix": "Faceless assassin getting the assassin belt variant with another dagger and more poison"
+            }
+        ],
+        "AnDigitalGondola": [
+            {
+                "bugfix": "Fixed burnt trees being invisible"
+            }
+        ],
+        "Wouju": [
+            {
+                "balance": "Lock's difficulty now affects the % chance for a lockpick to break, how loud the lockpicking is, and how often the lockpick is tested if it will break. Levelling lockpicking should be easier now."
+            }
+        ],
+        "PineappleMan929": [
+            {
+                "balance": "Tritons are ugly now"
+            }
+        ]
     }
 }
