@@ -452,6 +452,9 @@
 	if(..())
 		return
 
+	if(!isliving(usr))
+		return
+
 	if(!controlled_ship)
 		return
 
