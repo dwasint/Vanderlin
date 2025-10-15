@@ -8,9 +8,10 @@
 		/datum/island_feature_template/generic_cave,
 	)
 	var/list/beach_flora_weights = list(
-		/obj/structure/flora/driftwood = 20,
-		/obj/structure/flora/starfish = 10,
-		/obj/structure/flora/shells = 30,
+		/obj/structure/flora/driftwood = 30,
+		/obj/structure/flora/starfish = 20,
+		/obj/structure/flora/shells = 40,
+		/obj/item/natural/stone = 10,
 	)
 	var/flora_density = 2
 	var/beach_flora_density = 2

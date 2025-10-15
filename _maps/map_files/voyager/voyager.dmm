@@ -1694,16 +1694,15 @@
 /area/rogue/outdoors/beach)
 "oB" = (
 /obj/structure/rack,
-/obj/item/weapon/sword/sabre{
-	pixel_x = -5;
-	pixel_y = 2
-	},
-/obj/item/weapon/sword/sabre,
-/obj/item/weapon/sword/sabre{
-	pixel_x = -5
-	},
-/obj/item/weapon/sword/sabre{
+/obj/item/weapon/sword/sabre/cutlass,
+/obj/item/weapon/sword/sabre/cutlass{
 	pixel_x = 7
+	},
+/obj/item/weapon/sword/sabre/cutlass{
+	pixel_x = 15
+	},
+/obj/item/weapon/sword/sabre/cutlass{
+	pixel_y = 8
 	},
 /turf/open/floor/ruinedwood,
 /area/rogue/ship/middeck)
@@ -2078,6 +2077,20 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/beach)
+"tl" = (
+/obj/effect/decal/cobbleedge{
+	dir = 1;
+	icon_state = "borderfall"
+	},
+/obj/structure/fluff/railing/border{
+	dir = 1;
+	icon_state = "border"
+	},
+/obj/item/tent_kit,
+/turf/open/floor/rooftop/green{
+	dir = 4
+	},
+/area/rogue/ship/middeck)
 "tq" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -2122,6 +2135,16 @@
 /obj/machinery/light/fueled/hearth,
 /obj/item/cooking/pan,
 /turf/open/floor/blocks,
+/area/rogue/ship/middeck)
+"tQ" = (
+/obj/effect/decal/cobbleedge{
+	icon_state = "borderfall"
+	},
+/obj/structure/fluff/railing/border,
+/obj/item/tent_kit,
+/turf/open/floor/rooftop/green{
+	dir = 4
+	},
 /area/rogue/ship/middeck)
 "tS" = (
 /obj/structure/closet/crate/chest/neu_fancy,
@@ -2599,6 +2622,14 @@
 	},
 /area/rogue/ship/middeck)
 "xy" = (
+/turf/open/floor/hay,
+/area/rogue/ship/middeck)
+"xz" = (
+/obj/effect/decal/cobbleedge{
+	icon_state = "borderfall"
+	},
+/obj/structure/fluff/railing/border,
+/obj/item/tent_kit,
 /turf/open/floor/hay,
 /area/rogue/ship/middeck)
 "xA" = (
@@ -3190,12 +3221,12 @@
 /turf/closed/wall/mineral/wooddark/slitted,
 /area/rogue/ship/middeck)
 "DP" = (
-/obj/structure/fluff/railing/border{
-	dir = 1
+/obj/structure/fluff/railing/border,
+/obj/item/tent_kit,
+/turf/open/floor/rooftop/green{
+	dir = 4
 	},
-/obj/structure/ladder,
-/turf/open/floor/woodturned,
-/area/rogue/ship/topdeck)
+/area/rogue/ship/middeck)
 "DQ" = (
 /obj/effect/landmark/ship_marker,
 /turf/closed/sea_fog,
@@ -3677,6 +3708,9 @@
 /obj/item/reagent_containers/glass/cup/silver,
 /obj/item/plate,
 /obj/item/plate,
+/obj/item/storage/messkit,
+/obj/item/storage/messkit,
+/obj/item/storage/messkit,
 /turf/open/floor/herringbone,
 /area/rogue/ship/middeck)
 "It" = (
@@ -3767,6 +3801,7 @@
 /obj/item/weapon/sword/long/judgement,
 /obj/item/clothing/gloves/angle,
 /obj/item/clothing/wrists/bracers/leather,
+/obj/item/storage/messkit,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/nobledeck)
 "Jx" = (
@@ -3973,6 +4008,7 @@
 /obj/machinery/light/fueled/wallfire/candle{
 	pixel_y = -32
 	},
+/obj/item/tent_kit,
 /turf/open/floor/rooftop/green{
 	dir = 4
 	},
@@ -4659,12 +4695,15 @@
 /turf/open/floor/carpet/lord/left,
 /area/rogue/ship/nobledeck)
 "Rw" = (
-/obj/structure/fluff/railing/border{
-	layer = 2.65
+/obj/effect/decal/cobbleedge{
+	dir = 1;
+	icon_state = "borderfall"
 	},
-/obj/structure/ladder,
-/turf/open/floor/woodturned,
-/area/rogue/ship/topdeck)
+/obj/item/tent_kit,
+/turf/open/floor/rooftop/green{
+	dir = 4
+	},
+/area/rogue/ship/middeck)
 "Rz" = (
 /obj/effect/decal/cobbleedge{
 	dir = 1;
@@ -4895,19 +4934,12 @@
 /turf/open/floor/herringbone,
 /area/rogue/ship/middeck)
 "Ts" = (
-/obj/effect/decal/cobbleedge{
-	icon_state = "borderfall";
-	dir = 4
-	},
 /obj/structure/fluff/railing/border{
-	dir = 4;
+	dir = 1;
 	icon_state = "border"
 	},
-/obj/structure/fluff/railing/border{
-	dir = 4;
-	icon_state = "border"
-	},
-/turf/open/floor/churchmarble,
+/obj/item/tent_kit,
+/turf/open/floor/hay,
 /area/rogue/ship/middeck)
 "Tv" = (
 /obj/structure/fluff/railing/border,
@@ -13702,7 +13734,7 @@ Li
 Li
 Ze
 uY
-yA
+tQ
 Ze
 Ks
 Ks
@@ -13917,7 +13949,7 @@ Fq
 Ze
 Cg
 ko
-gE
+DP
 Ze
 Li
 Li
@@ -14926,7 +14958,7 @@ fN
 OZ
 Ze
 Cg
-vU
+tl
 gE
 Ze
 Li
@@ -15519,7 +15551,7 @@ Li
 Li
 Li
 Ze
-sL
+Ts
 yj
 ne
 Ze
@@ -16542,7 +16574,7 @@ Ze
 vY
 wx
 Fq
-gn
+Rw
 vo
 Ze
 Li
@@ -16934,7 +16966,7 @@ Li
 Li
 Ze
 NB
-yj
+xz
 Ze
 Ze
 Ze
@@ -18759,7 +18791,7 @@ LV
 cF
 fd
 fd
-Ts
+fd
 jq
 ne
 GI
@@ -95107,7 +95139,7 @@ TN
 TN
 TN
 TN
-Rw
+dr
 GF
 Zr
 iw
@@ -95125,7 +95157,7 @@ VU
 mQ
 Tw
 Ow
-DP
+dr
 TN
 TN
 TN

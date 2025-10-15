@@ -98,6 +98,8 @@
 	return pickweight(terrain_weights)
 
 /datum/island_biome/eoran_hell/select_flora(temperature, moisture, height)
+	if(prob(10))
+		return /obj/item/natural/stone
 	if(moisture > 0.4 && temperature > 0.3 && temperature < 0.7)
 		if(prob(60))
 			return /obj/structure/flora/newtree/scorched

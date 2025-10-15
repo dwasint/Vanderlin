@@ -100,6 +100,8 @@
 		return prob(70) ? /turf/open/floor/cracked_earth : /turf/open/floor/sand
 
 /datum/island_biome/desert/select_flora(temperature, moisture, height)
+	if(prob(10))
+		return /obj/item/natural/stone
 	if(moisture > 0.4 && temperature > 0.4 && temperature < 0.8)
 		if(prob(40))
 			return /obj/structure/flora/newtree/palm
@@ -128,6 +130,7 @@
 			/obj/structure/flora/grass/herb/urtica,
 			/obj/structure/flora/grass/herb/benedictus,
 			/obj/structure/wild_plant/nospread/poppy,
+			/obj/structure/flora/grass/bush,
 		)
 		return pick(pick_list)
 
@@ -152,6 +155,7 @@
 				/obj/structure/flora/grass/herb/urtica,
 				/obj/structure/flora/grass/herb/benedictus,
 				/obj/structure/wild_plant/nospread/poppy,
+				/obj/structure/flora/grass,
 			)
 			return pick(pick_list)
 

@@ -23,6 +23,8 @@
 	var/island_id
 	var/island_name // Human-readable name
 	var/difficulty = 0
+	var/nav_x = 0 // Navigation X coordinate
+	var/nav_y = 0 // Navigation Y coordinate
 
 /datum/island_data/New(turf/bl, size, _island_name, _difficulty)
 	bottom_left = bl
@@ -56,6 +58,8 @@
 	var/datum/island_data/docked_island
 	var/list/active_mirage_borders = list() // list of borders easier cleanup this way
 	var/list/docked_boat_data
+	var/nav_x = 0 // Navigation X coordinate
+	var/nav_y = 0 // Navigation Y coordinate
 
 /datum/ship_data/New(turf/bl, size, z)
 	bottom_left = bl
@@ -85,6 +89,11 @@ SUBSYSTEM_DEF(terrain_generation)
 	var/list/island_registry = list() // List of all islands
 	var/list/ship_registry = list() // List of all ships
 
+	var/list/island_positions = list() // Cached island positions: island_id -> list(nav_x, nav_y)
+	var/const/min_island_spacing = 30 // Minimum distance between islands
+	var/const/island_spawn_range = 750 // How far from origin to spawn islands
+	var/const/max_placement_attempts = 100 // Max attempts to find valid position
+
 /datum/controller/subsystem/terrain_generation/Initialize()
 	setup_biome_pools()
 	generate_init_terrain()
@@ -111,6 +120,51 @@ SUBSYSTEM_DEF(terrain_generation)
 
 	for(var/datum/island_biome/biome as anything in subtypesof(/datum/island_biome))
 		island_biomes[biome] = initial(biome.biome_weight)
+
+
+/datum/controller/subsystem/terrain_generation/proc/generate_island_position(datum/island_data/island)
+	// Check if we already have a cached position for this island
+	if(island_positions["[island.island_id]"])
+		var/list/cached_pos = island_positions["[island.island_id]"]
+		island.nav_x = cached_pos[1]
+		island.nav_y = cached_pos[2]
+		return TRUE
+
+	// Try to find a valid position
+	var/attempts = 0
+	while(attempts < max_placement_attempts)
+		attempts++
+
+		var/candidate_x = rand(-island_spawn_range, island_spawn_range)
+		var/candidate_y = rand(-island_spawn_range, island_spawn_range)
+
+		// Check if this position is far enough from all other islands
+		if(is_position_valid(candidate_x, candidate_y))
+			island.nav_x = candidate_x
+			island.nav_y = candidate_y
+
+			// Cache this position
+			island_positions["[island.island_id]"] = list(candidate_x, candidate_y)
+
+			log_world("Island '[island.island_name]' placed at ([candidate_x], [candidate_y])")
+			return TRUE
+
+	log_world("WARNING: Failed to find valid position for island '[island.island_name]' after [max_placement_attempts] attempts!")
+	return FALSE
+
+/datum/controller/subsystem/terrain_generation/proc/is_position_valid(x, y)
+	// Check against all existing island positions
+	for(var/island_id in island_positions)
+		var/list/pos = island_positions[island_id]
+		var/other_x = pos[1]
+		var/other_y = pos[2]
+
+		var/distance = sqrt((x - other_x)**2 + (y - other_y)**2)
+
+		if(distance < min_island_spacing)
+			return FALSE
+
+	return TRUE
 
 /datum/controller/subsystem/terrain_generation/proc/generate_init_terrain()
 	// Find all markers that should generate on init
@@ -157,6 +211,7 @@ SUBSYSTEM_DEF(terrain_generation)
 		return FALSE
 
 	var/datum/island_data/island = new(bottom_left, size + (perimeter_width * 2), island_biome.name, island_biome.difficulty)
+	generate_island_position(island)
 	island_registry += island
 
 	return TRUE

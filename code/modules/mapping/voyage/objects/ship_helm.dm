@@ -11,15 +11,24 @@
 	// Navigation state
 	var/sailing_direction = 0 // Current direction (NORTH, SOUTH, etc.)
 	var/sailing_speed = 0 // Current speed (0-100)
-	var/max_sailing_speed = 5 // Maximum speed in tiles/tick
+	var/max_sailing_speed = 20 // Maximum speed in leagues/tick
 
-	// Position tracking
-	var/nav_x = 0 // Position on navigation map
+	//nav location and bounds
+	var/nav_x = 0
 	var/nav_y = 0
+	var/const/nav_min = -1500
+	var/const/nav_max = 1500
+
+	var/datum/island_data/target_island = null // Island we're auto-navigating to
+	var/const/course_correction_threshold = 20 // How far off course before recalculating
+
+	var/const/map_view_size = 1000 // Size of the visible map area
+	var/const/map_zoom = 1.0 // Zoom level for the map
 
 	// UI
 	var/const/ui_x = 1200
 	var/const/ui_y = 900
+
 
 /obj/structure/ship_wheel/Initialize(mapload)
 	. = ..()
@@ -32,9 +41,12 @@
 		log_world("WARNING: Ship wheel at ([x], [y], [z]) not in a registered ship area!")
 		return
 
-	//! TEMPORARY NEED TO RANDOMLY PLACE ISLANDS
-	nav_x = controlled_ship.bottom_left.x
-	nav_y = controlled_ship.bottom_left.y
+	if(!controlled_ship.nav_x && !controlled_ship.nav_y)
+		controlled_ship.nav_x = rand(nav_min, nav_max)
+		controlled_ship.nav_y = rand(nav_min, nav_max)
+
+	nav_x = controlled_ship.nav_x
+	nav_y = controlled_ship.nav_y
 
 /obj/structure/ship_wheel/attack_hand(mob/user)
 	if(!controlled_ship)
@@ -103,6 +115,12 @@
 					position: absolute;
 					background: #2f1c37;
 				}
+				.coordinate-label {
+					position: absolute;
+					color: #2f1c37;
+					font-size: 10px;
+					z-index: 1;
+				}
 				.ship-icon {
 					position: absolute;
 					width: 32px;
@@ -133,6 +151,14 @@
 				}
 				.docked-island {
 					filter: hue-rotate(90deg) brightness(1.5);
+				}
+				.target-island {
+					filter: hue-rotate(180deg) brightness(1.5);
+					animation: pulse 1.5s ease-in-out infinite;
+				}
+				@keyframes pulse {
+					0%, 100% { transform: translate(-50%, -50%) scale(1); }
+					50% { transform: translate(-50%, -50%) scale(1.2); }
 				}
 				.controls {
 					display: grid;
@@ -215,6 +241,10 @@
 				.island-item:hover {
 					background: #202020;
 				}
+				.island-item-target {
+					background: #202020;
+					border-color: #7b5353;
+				}
 				.difficulty-0 { color: #00ff00; }
 				.difficulty-1 { color: #00ff00; }
 				.difficulty-2 { color: #d09000; }
@@ -237,15 +267,22 @@
 					<div class='section'>
 						<div class='section-title'>SHIP STATUS</div>
 						<div class='info-row'>
+							<span class='info-label'>Position:</span>
+							<span class='info-value'>[round(nav_x)], [round(nav_y)]</span>
+						</div>
+						<div class='info-row'>
 							<span class='info-label'>Heading:</span>
 							<span class='info-value'>[dir2text(sailing_direction)]</span>
 						</div>
 						<div class='info-row'>
 							<span class='info-label'>Status:</span>
-							<span class='info-value'>[controlled_ship.docked_island ? "DOCKED" : "AT SEA"]</span>
+							<span class='info-value'>[controlled_ship.docked_island ? "DOCKED" : (target_island ? "AUTO-NAVIGATING" : "AT SEA")]</span>
 						</div>
 						[controlled_ship.docked_island ? "<div class='info-row'><span class='info-label'>Location:</span><span class='info-value'>[controlled_ship.docked_island.island_name]</span></div>" : ""]
+						[target_island && !controlled_ship.docked_island ? "<div class='info-row'><span class='info-label'>Destination:</span><span class='info-value'>[target_island.island_name]</span></div>" : ""]
+						[target_island && !controlled_ship.docked_island ? "<div class='info-row'><span class='info-label'>ETA:</span><span class='info-value'>[get_eta_text()]</span></div>" : ""]
 						[controlled_ship.docked_island ? "<div style='margin-top: 10px;'><a class='btn' href='?src=[REF(src)];undock=1' style='width: 100%'>UNDOCK</a></div>" : ""]
+						[target_island && !controlled_ship.docked_island ? "<div style='margin-top: 10px;'><a class='btn' href='?src=[REF(src)];cancel_navigation=1' style='width: 100%'>CANCEL AUTO-NAV</a></div>" : ""]
 					</div>
 
 					<div class='section'>
@@ -284,34 +321,55 @@
 			<script>
 				function drawMap() {
 					var map = document.getElementById('navMap');
+					var mapWidth = map.clientWidth;
+					var mapHeight = map.clientHeight;
 					var shipX = [nav_x];
 					var shipY = [nav_y];
+					var viewSize = [map_view_size];
 
-					//! IDK about this tbh
-					for(var i = 0; i < 10; i++) {
-						var vline = document.createElement('div');
-						vline.className = 'grid-line';
-						vline.style.left = (i * 10) + '%';
-						vline.style.width = '1px';
-						vline.style.height = '100%';
-						map.appendChild(vline);
+					var minX = shipX - viewSize / 2;
+					var maxX = shipX + viewSize / 2;
+					var minY = shipY - viewSize / 2;
+					var maxY = shipY + viewSize / 2;
 
-						var hline = document.createElement('div');
-						hline.className = 'grid-line';
-						hline.style.top = (i * 10) + '%';
-						hline.style.height = '1px';
-						hline.style.width = '100%';
-						map.appendChild(hline);
+					var gridSpacing = 100; // Grid line every 100 units
+					var gridLines = Math.floor(viewSize / gridSpacing);
+
+					for(var i = 0; i <= gridLines; i++) {
+						var coordX = Math.floor(minX / gridSpacing) * gridSpacing + (i * gridSpacing);
+						var coordY = Math.floor(minY / gridSpacing) * gridSpacing + (i * gridSpacing);
+
+						// Vertical lines
+						var vlinePos = ((coordX - minX) / viewSize) * 100;
+						if(vlinePos >= 0 && vlinePos <= 100) {
+							var vline = document.createElement('div');
+							vline.className = 'grid-line';
+							vline.style.left = vlinePos + '%';
+							vline.style.width = '1px';
+							vline.style.height = '100%';
+							map.appendChild(vline);
+						}
+
+						// Horizontal lines
+						var hlinePos = ((coordY - minY) / viewSize) * 100;
+						if(hlinePos >= 0 && hlinePos <= 100) {
+							var hline = document.createElement('div');
+							hline.className = 'grid-line';
+							hline.style.top = (100 - hlinePos) + '%';
+							hline.style.height = '1px';
+							hline.style.width = '100%';
+							map.appendChild(hline);
+						}
 					}
 
 					[get_island_markers_js()]
 
 					var ship = document.createElement('div');
 					ship.className = 'ship-icon';
-					ship.style.left = ((shipX / [world.maxx]) * 100) + '%';
-					ship.style.top = (100 - ((shipY / [world.maxy]) * 100)) + '%';
+					ship.style.left = '50%';
+					ship.style.top = '50%';
 					ship.innerHTML = "<img src='\ref['icons/obj/overmap.dmi']?state=ship&dir=2' />";
-					ship.title = 'Your Ship';
+					ship.title = 'Your Ship (' + Math.round(shipX) + ', ' + Math.round(shipY) + ')';
 					map.appendChild(ship);
 				}
 
@@ -323,14 +381,36 @@
 
 	return dat
 
+/obj/structure/ship_wheel/proc/get_eta_text()
+	if(!target_island || sailing_speed == 0)
+		return "N/A"
+
+	var/distance = sqrt((nav_x - target_island.nav_x)**2 + (nav_y - target_island.nav_y)**2)
+	var/move_speed = (sailing_speed / 100) * max_sailing_speed
+
+	if(move_speed <= 0)
+		return "N/A"
+
+	var/seconds = round(distance / move_speed)
+
+	if(seconds < 60)
+		return "[seconds]s"
+	else if(seconds < 3600)
+		return "[round(seconds / 60)]m"
+	else
+		return "[round(seconds / 3600)]h"
+
 /obj/structure/ship_wheel/proc/get_island_list_html()
 	var/dat = ""
 	for(var/datum/island_data/island in SSterrain_generation.island_registry)
-		var/distance = get_dist(controlled_ship.bottom_left, island.bottom_left)
-		dat += {"<div class='island-item [controlled_ship.docked_island == island ? "docked-island" : ""]'>
-			<div><strong class='difficulty-[island.difficulty]'>[island.island_name]</strong></div>
+		var/distance = sqrt((nav_x - island.nav_x)**2 + (nav_y - island.nav_y)**2)
+		var/is_docked = controlled_ship.docked_island == island
+		var/is_target = target_island == island
+		dat += {"<div class='island-item [is_docked ? "docked-island" : ""] [is_target ? "island-item-target" : ""]' [!is_docked ? "onclick=\"window.location.href='?src=[REF(src)];navigate_to=[island.island_id]'\"" : ""]>
+			<div><strong class='difficulty-[island.difficulty]'>[island.island_name]</strong> [is_target ? "(DESTINATION)" : ""]</div>
 			<div class='info-label'>Difficulty: [island.get_difficulty_text()]</div>
-			<div class='info-label'>Distance: ~[distance] leagues</div>
+			<div class='info-label'>Distance: ~[round(distance)] leagues</div>
+			[!is_docked ? "<div class='info-label' style='color: #7b5353; margin-top: 5px;'>Click to navigate</div>" : ""]
 		</div>"}
 
 	if(!length(SSterrain_generation.island_registry))
@@ -340,16 +420,29 @@
 
 /obj/structure/ship_wheel/proc/get_island_markers_js()
 	var/js = ""
+	var/view_size = map_view_size
+	var/min_x = nav_x - view_size / 2
+	var/max_x = nav_x + view_size / 2
+	var/min_y = nav_y - view_size / 2
+	var/max_y = nav_y + view_size / 2
+
 	for(var/datum/island_data/island in SSterrain_generation.island_registry)
-		var/x_percent = (island.bottom_left.x / world.maxx) * 100
-		var/y_percent = 100 - ((island.bottom_left.y / world.maxy) * 100) // Flip Y
+		if(island.nav_x < min_x || island.nav_x > max_x || island.nav_y < min_y || island.nav_y > max_y)
+			continue
+
+		var/x_percent = ((island.nav_x - min_x) / view_size) * 100
+		var/y_percent = 100 - (((island.nav_y - min_y) / view_size) * 100) //! important to flip Y
+
+		var/is_target = target_island == island
+		var/is_docked = controlled_ship.docked_island == island
+
 		js += {"
 			var island[island.island_id] = document.createElement('div');
-			island[island.island_id].className = 'island-icon [controlled_ship.docked_island == island ? "docked-island" : ""]';
+			island[island.island_id].className = 'island-icon [is_docked ? "docked-island" : ""] [is_target ? "target-island" : ""]';
 			island[island.island_id].style.left = '[x_percent]%';
 			island[island.island_id].style.top = '[y_percent]%';
 			island[island.island_id].innerHTML = "<img src='\ref['icons/obj/overmap.dmi']?state=event&dir=2' />";
-			island[island.island_id].title = '[island.island_name]';
+			island[island.island_id].title = '[island.island_name] ([round(island.nav_x)], [round(island.nav_y)])';
 			map.appendChild(island[island.island_id]);
 		"}
 
@@ -369,6 +462,7 @@
 
 		var/new_dir = text2num(href_list["set_direction"])
 		sailing_direction = new_dir
+		target_island = null
 
 		if(sailing_speed == 0)
 			sailing_speed = 50
@@ -379,6 +473,7 @@
 	if(href_list["stop"])
 		sailing_direction = 0
 		sailing_speed = 0
+		target_island = null
 		STOP_PROCESSING(SSobj, src)
 		notify_crew("Ship coming to a stop.")
 
@@ -400,7 +495,65 @@
 			if(SSterrain_generation.undock_ship(controlled_ship))
 				notify_crew("Ship has undocked and is now at sea!")
 
+	if(href_list["cancel_navigation"])
+		target_island = null
+		sailing_direction = 0
+		sailing_speed = 0
+		STOP_PROCESSING(SSobj, src)
+		notify_crew("Auto-navigation cancelled.")
+
+	if(href_list["navigate_to"])
+		if(controlled_ship.docked_island)
+			to_chat(usr, span_warning("The ship must be undocked before sailing!"))
+			return
+
+		var/target_island_id = href_list["navigate_to"]
+		var/datum/island_data/found_island = null
+
+		for(var/datum/island_data/island in SSterrain_generation.island_registry)
+			if(island.island_id == target_island_id)
+				found_island = island
+				break
+
+		if(found_island)
+			var/distance = sqrt((nav_x - found_island.nav_x)**2 + (nav_y - found_island.nav_y)**2)
+
+			if(distance <= 5)
+				to_chat(usr, span_notice("Already at [found_island.island_name]!"))
+				return
+
+			target_island = found_island
+
+			if(sailing_speed == 0)
+				sailing_speed = 50
+
+			calculate_course_to_target()
+			START_PROCESSING(SSobj, src)
+			notify_crew("Auto-navigation engaged! Setting course for [target_island.island_name]!")
+
 	ui_interact(usr)
+
+/obj/structure/ship_wheel/proc/calculate_course_to_target()
+	if(!target_island)
+		return
+
+	var/dx = target_island.nav_x - nav_x
+	var/dy = target_island.nav_y - nav_y
+
+	var/new_direction = 0
+
+	if(dy > 5)
+		new_direction |= NORTH
+	else if(dy < -5)
+		new_direction |= SOUTH
+
+	if(dx > 5)
+		new_direction |= EAST
+	else if(dx < -5)
+		new_direction |= WEST
+
+	if(new_direction)
+		sailing_direction = new_direction
 
 /obj/structure/ship_wheel/process()
 	if(!sailing_direction || sailing_speed == 0)
@@ -410,6 +563,25 @@
 	if(controlled_ship.docked_island)
 		STOP_PROCESSING(SSobj, src)
 		return
+
+	if(target_island)
+		var/dx = target_island.nav_x - nav_x
+		var/dy = target_island.nav_y - nav_y
+		var/distance = sqrt(dx**2 + dy**2)
+
+		var/ideal_dir = 0
+		if(dy > 5)
+			ideal_dir |= NORTH
+		else if(dy < -5)
+			ideal_dir |= SOUTH
+
+		if(dx > 5)
+			ideal_dir |= EAST
+		else if(dx < -5)
+			ideal_dir |= WEST
+
+		if(ideal_dir != sailing_direction || distance < course_correction_threshold)
+			calculate_course_to_target()
 
 	var/move_speed = (sailing_speed / 100) * max_sailing_speed
 
@@ -422,8 +594,11 @@
 	if(sailing_direction & WEST)
 		nav_x -= move_speed
 
-	nav_x = clamp(nav_x, 0, world.maxx)
-	nav_y = clamp(nav_y, 0, world.maxy)
+	nav_x = clamp(nav_x, nav_min, nav_max)
+	nav_y = clamp(nav_y, nav_min, nav_max)
+
+	controlled_ship.nav_x = nav_x
+	controlled_ship.nav_y = nav_y
 
 	check_island_proximity()
 
@@ -431,23 +606,23 @@
 	if(controlled_ship.docked_island)
 		return
 
-	var/dock_range = 50
+	var/dock_range = 30
 
 	for(var/datum/island_data/island in SSterrain_generation.island_registry)
-		if(abs(nav_x - island.bottom_left.x) < 10 && abs(nav_y - island.bottom_left.y) < 10)
-			continue
-
-		var/distance = sqrt((nav_x - island.bottom_left.x)**2 + (nav_y - island.bottom_left.y)**2)
+		var/distance = sqrt((nav_x - island.nav_x)**2 + (nav_y - island.nav_y)**2)
 
 		if(distance <= dock_range)
 			sailing_direction = 0
 			sailing_speed = 0
+			target_island = null
 			STOP_PROCESSING(SSobj, src)
 
 			if(SSterrain_generation.dock_ship_to_island(controlled_ship, island))
 				notify_crew("Approaching [island.island_name]... Ship is now docking!")
-				nav_x = island.bottom_left.x
-				nav_y = island.bottom_left.y
+				nav_x = island.nav_x
+				nav_y = island.nav_y
+				controlled_ship.nav_x = nav_x
+				controlled_ship.nav_y = nav_y
 
 			break
 
@@ -458,17 +633,21 @@
 
 /obj/structure/ship_wheel/Destroy()
 	STOP_PROCESSING(SSobj, src)
+	target_island = null
 	return ..()
 
 /obj/structure/ship_wheel/examine(mob/user)
 	. = ..()
 	if(controlled_ship)
+		. += span_info("Current position: <b>([round(nav_x)], [round(nav_y)])</b>")
 		if(controlled_ship.docked_island)
 			. += span_info("The ship is docked at <b>[controlled_ship.docked_island.island_name]</b>.")
 		else
 			. += span_info("The ship is sailing at <b>[sailing_speed]%</b> speed.")
 			if(sailing_direction)
 				. += span_info("Current heading: <b>[dir2text(sailing_direction)]</b>")
+			if(target_island)
+				. += span_info("Auto-navigating to: <b>[target_island.island_name]</b>")
 		. += span_info("Click to access the navigation console.")
 	else
 		. += span_warning("This wheel doesn't seem to be connected to a ship...")

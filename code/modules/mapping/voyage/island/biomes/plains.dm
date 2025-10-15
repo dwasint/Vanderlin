@@ -129,6 +129,8 @@
 	return pickweight(terrain_weights)
 
 /datum/island_biome/plains/select_flora(temperature, moisture, height)
+	if(prob(10))
+		return /obj/item/natural/stone
 	if(moisture > 0.4 && temperature > 0.3 && temperature < 0.7)
 		if(prob(60))
 			return /obj/structure/flora/newtree
@@ -153,6 +155,7 @@
 			/obj/structure/flora/grass/herb/hypericum,
 			/obj/structure/flora/grass/herb/symphitum,
 			/obj/structure/flora/grass,
+			/obj/structure/flora/grass/bush,
 			/obj/structure/flora/grass/herb/salvia,
 			/obj/structure/flora/grass/herb/mentha,
 			/obj/structure/wild_plant/nospread/poppy,
@@ -185,6 +188,8 @@
 
 		if(prob(70))
 			var/list/pick_list = list(
+				/obj/structure/flora/grass/bush,
+				/obj/structure/flora/grass,
 				/obj/structure/wild_plant/nospread/strawberry,
 				/obj/structure/wild_plant/nospread/blackberry,
 				/obj/structure/wild_plant/nospread/raspberry,

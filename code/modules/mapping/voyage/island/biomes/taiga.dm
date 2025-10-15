@@ -93,6 +93,8 @@
 
 
 /datum/island_biome/tundra/select_flora(temperature, moisture, height)
+	if(prob(10))
+		return /obj/item/natural/stone
 	if(moisture > 0.4 && temperature > 0.3 && temperature < 0.7)
 		if(prob(60))
 			return /obj/structure/flora/newtree/snow
@@ -105,6 +107,7 @@
 			/obj/structure/flora/grass/herb/hypericum,
 			/obj/structure/flora/grass/herb/taraxacum,
 			/obj/structure/flora/grass/tundra,
+			/obj/structure/flora/grass/bush,
 			/obj/structure/flora/grass/herb/salvia,
 			/obj/structure/flora/grass/herb/matricaria,
 			/obj/structure/flora/grass/herb/urtica,
@@ -127,6 +130,7 @@
 	else
 		if(prob(70))
 			var/list/pick_list = list(
+				/obj/structure/flora/grass/bush,
 				/obj/structure/wild_plant/nospread/blackberry,
 				/obj/structure/wild_plant/nospread/raspberry,
 				/obj/structure/flora/grass/herb/artemisia,
