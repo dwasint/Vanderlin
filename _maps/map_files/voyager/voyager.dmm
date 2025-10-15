@@ -1664,6 +1664,7 @@
 	dir = 1;
 	pixel_y = 14
 	},
+/obj/effect/landmark/start/adventurerlate,
 /turf/open/floor/twig,
 /area/rogue/outdoors/beach)
 "oo" = (
@@ -3305,6 +3306,7 @@
 	dir = 1;
 	pixel_y = 14
 	},
+/obj/effect/landmark/start/adventurerlate,
 /turf/open/floor/hay,
 /area/rogue/outdoors/beach)
 "Eq" = (
@@ -4705,6 +4707,7 @@
 	pixel_y = 14
 	},
 /obj/structure/fluff/nest,
+/obj/effect/landmark/start/adventurerlate,
 /turf/open/floor/hay,
 /area/rogue/outdoors/beach)
 "RF" = (
