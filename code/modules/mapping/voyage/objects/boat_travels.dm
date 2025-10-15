@@ -24,6 +24,20 @@ GLOBAL_LIST_EMPTY(boat_landmarks)
 		LAZYREMOVE(GLOB.boat_landmarks, src)
 	destination = null
 
+/obj/effect/landmark/boat_transfer/attack_ghost(mob/dead/observer/user)
+	if(!user.Adjacent(src))
+		return
+	var/turf/target_loc = destination
+	if(!target_loc)
+		to_chat(user, "<b>It is a dead end.</b>")
+		return
+	user.forceMove(target_loc)
+
+/obj/effect/landmark/boat_transfer/attack_hand(mob/user)
+	if(!isliving(user))
+		return ..()
+	user_try_travel(user)
+
 /obj/effect/landmark/boat_transfer/Crossed(atom/movable/AM)
 	. = ..()
 	if(!isliving(AM))
