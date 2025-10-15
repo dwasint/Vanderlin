@@ -1050,7 +1050,7 @@
 	dir = 1;
 	icon_state = "borderfall"
 	},
-/obj/machinery/light/fueled/lanternpost,
+/obj/machinery/light/fueled/lanternpost/fixed,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/topdeck)
 "jm" = (
@@ -2243,7 +2243,7 @@
 	dir = 8;
 	icon_state = "border"
 	},
-/obj/machinery/light/fueled/lanternpost,
+/obj/machinery/light/fueled/lanternpost/fixed,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/topdeck)
 "uG" = (
@@ -2528,7 +2528,7 @@
 	icon_state = "borderfall"
 	},
 /obj/structure/fluff/railing/wood,
-/obj/machinery/light/fueled/lanternpost,
+/obj/machinery/light/fueled/lanternpost/fixed,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/topdeck)
 "wU" = (
@@ -3864,9 +3864,6 @@
 /obj/effect/decal/cobbleedge{
 	icon_state = "borderfall"
 	},
-/obj/machinery/light/fueled/lanternpost{
-	dir = 1
-	},
 /obj/structure/fluff/railing/wood{
 	dir = 4
 	},
@@ -3875,6 +3872,9 @@
 	},
 /obj/structure/cannon{
 	pixel_y = -16
+	},
+/obj/machinery/light/fueled/lanternpost/fixed{
+	dir = 1
 	},
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/topdeck)
@@ -4853,7 +4853,7 @@
 /turf/open/floor/ruinedwood/two,
 /area/rogue/ship/nobledeck)
 "SO" = (
-/obj/machinery/light/fueled/lanternpost,
+/obj/machinery/light/fueled/lanternpost/fixed,
 /turf/open/floor/hay,
 /area/rogue/ship/topdeck)
 "SP" = (
@@ -5199,7 +5199,7 @@
 	dir = 1;
 	icon_state = "borderfall"
 	},
-/obj/machinery/light/fueled/lanternpost{
+/obj/machinery/light/fueled/lanternpost/fixed{
 	dir = 1
 	},
 /turf/open/floor/ruinedwood/spiral,
@@ -5290,7 +5290,7 @@
 /turf/open/floor/ruinedwood/two,
 /area/rogue/ship/middeck)
 "VS" = (
-/obj/machinery/light/fueled/lanternpost,
+/obj/machinery/light/fueled/lanternpost/fixed,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/topdeck)
 "VU" = (
@@ -5314,7 +5314,7 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/topdeck)
 "Wr" = (
-/obj/machinery/light/fueled/lanternpost{
+/obj/machinery/light/fueled/lanternpost/fixed{
 	dir = 1
 	},
 /turf/open/floor/ruinedwood/spiral,
