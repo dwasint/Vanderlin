@@ -22,6 +22,12 @@
 	var/datum/island_data/target_island = null // Island we're auto-navigating to
 	var/const/course_correction_threshold = 20 // How far off course before recalculating
 
+	// Docking prevention
+	var/datum/island_data/last_docked_island = null // Track last island we were docked at
+	var/undock_time = 0 // World.time when we last undocked
+	var/const/redock_cooldown = 300 // 30 seconds (in deciseconds) before can redock at same island
+	var/const/redock_min_distance = 100 // Must move at least this far away before can redock
+
 	var/const/map_view_size = 1000 // Size of the visible map area
 	var/const/map_zoom = 1.0 // Zoom level for the map
 
@@ -156,6 +162,10 @@
 					filter: hue-rotate(180deg) brightness(1.5);
 					animation: pulse 1.5s ease-in-out infinite;
 				}
+				.cooldown-island {
+					filter: grayscale(1) brightness(0.6);
+					cursor: not-allowed;
+				}
 				@keyframes pulse {
 					0%, 100% { transform: translate(-50%, -50%) scale(1); }
 					50% { transform: translate(-50%, -50%) scale(1.2); }
@@ -245,11 +255,23 @@
 					background: #202020;
 					border-color: #7b5353;
 				}
+				.island-item-cooldown {
+					opacity: 0.5;
+					cursor: not-allowed;
+				}
+				.island-item-cooldown:hover {
+					background: #000000;
+				}
 				.difficulty-0 { color: #00ff00; }
 				.difficulty-1 { color: #00ff00; }
 				.difficulty-2 { color: #d09000; }
 				.difficulty-3 { color: #d09000; }
 				.difficulty-4 { color: #ff0000; }
+				.warning-text {
+					color: #d09000;
+					font-size: 11px;
+					margin-top: 3px;
+				}
 			</style>
 		</head>
 		<body>
@@ -400,17 +422,52 @@
 	else
 		return "[round(seconds / 3600)]h"
 
+/obj/structure/ship_wheel/proc/can_dock_at_island(datum/island_data/island)
+	if(controlled_ship.docked_island)
+		return FALSE
+
+	if(last_docked_island == island)
+		var/time_since_undock = world.time - undock_time
+		if(time_since_undock < redock_cooldown)
+			return FALSE
+
+		var/distance = sqrt((nav_x - island.nav_x)**2 + (nav_y - island.nav_y)**2)
+		if(distance < redock_min_distance)
+			return FALSE
+
+	return TRUE
+
+/obj/structure/ship_wheel/proc/get_island_cooldown_text(datum/island_data/island)
+	if(last_docked_island != island)
+		return ""
+
+	var/time_since_undock = world.time - undock_time
+	var/time_remaining = redock_cooldown - time_since_undock
+
+	if(time_remaining > 0)
+		return "Cooldown: [round(time_remaining / 10)]s"
+
+	var/distance = sqrt((nav_x - island.nav_x)**2 + (nav_y - island.nav_y)**2)
+	if(distance < redock_min_distance)
+		return "Too close: [round(distance)]/[redock_min_distance]"
+
+	return ""
+
 /obj/structure/ship_wheel/proc/get_island_list_html()
 	var/dat = ""
 	for(var/datum/island_data/island in SSterrain_generation.island_registry)
 		var/distance = sqrt((nav_x - island.nav_x)**2 + (nav_y - island.nav_y)**2)
 		var/is_docked = controlled_ship.docked_island == island
 		var/is_target = target_island == island
-		dat += {"<div class='island-item [is_docked ? "docked-island" : ""] [is_target ? "island-item-target" : ""]' [!is_docked ? "onclick=\"window.location.href='?src=[REF(src)];navigate_to=[island.island_id]'\"" : ""]>
+		var/can_dock = can_dock_at_island(island)
+		var/cooldown_text = get_island_cooldown_text(island)
+
+		dat += {"<div class='island-item [is_docked ? "docked-island" : ""] [is_target ? "island-item-target" : ""] [!can_dock && !is_docked ? "island-item-cooldown" : ""]' [!is_docked && can_dock ? "onclick=\"window.location.href='?src=[REF(src)];navigate_to=[island.island_id]'\"" : ""]>
 			<div><strong class='difficulty-[island.difficulty]'>[island.island_name]</strong> [is_target ? "(DESTINATION)" : ""]</div>
 			<div class='info-label'>Difficulty: [island.get_difficulty_text()]</div>
 			<div class='info-label'>Distance: ~[round(distance)] leagues</div>
-			[!is_docked ? "<div class='info-label' style='color: #7b5353; margin-top: 5px;'>Click to navigate</div>" : ""]
+			[cooldown_text ? "<div class='warning-text'>[cooldown_text]</div>" : ""]
+			[!is_docked && can_dock ? "<div class='info-label' style='color: #7b5353; margin-top: 5px;'>Click to navigate</div>" : ""]
 		</div>"}
 
 	if(!length(SSterrain_generation.island_registry))
@@ -435,14 +492,15 @@
 
 		var/is_target = target_island == island
 		var/is_docked = controlled_ship.docked_island == island
+		var/can_dock = can_dock_at_island(island)
 
 		js += {"
 			var island[island.island_id] = document.createElement('div');
-			island[island.island_id].className = 'island-icon [is_docked ? "docked-island" : ""] [is_target ? "target-island" : ""]';
+			island[island.island_id].className = 'island-icon [is_docked ? "docked-island" : ""] [is_target ? "target-island" : ""] [!can_dock && !is_docked ? "cooldown-island" : ""]';
 			island[island.island_id].style.left = '[x_percent]%';
 			island[island.island_id].style.top = '[y_percent]%';
 			island[island.island_id].innerHTML = "<img src='\ref['icons/obj/overmap.dmi']?state=event&dir=2' />";
-			island[island.island_id].title = '[island.island_name] ([round(island.nav_x)], [round(island.nav_y)])';
+			island[island.island_id].title = '[island.island_name] ([round(island.nav_x)], [round(island.nav_y)])[!can_dock && !is_docked ? " - COOLDOWN ACTIVE" : ""]';
 			map.appendChild(island[island.island_id]);
 		"}
 
@@ -495,7 +553,10 @@
 
 	if(href_list["undock"])
 		if(controlled_ship.docked_island)
+			var/datum/island_data/island = controlled_ship.docked_island
 			if(SSterrain_generation.undock_ship(controlled_ship))
+				last_docked_island = island
+				undock_time = world.time
 				notify_crew("Ship has undocked and is now at sea!")
 
 	if(href_list["cancel_navigation"])
@@ -519,6 +580,11 @@
 				break
 
 		if(found_island)
+			if(!can_dock_at_island(found_island))
+				var/cooldown_text = get_island_cooldown_text(found_island)
+				to_chat(usr, span_warning("Cannot navigate to [found_island.island_name] yet! [cooldown_text]"))
+				return
+
 			var/distance = sqrt((nav_x - found_island.nav_x)**2 + (nav_y - found_island.nav_y)**2)
 
 			if(distance <= 5)
@@ -612,6 +678,10 @@
 	var/dock_range = 30
 
 	for(var/datum/island_data/island in SSterrain_generation.island_registry)
+		// Skip islands that are on cooldown
+		if(!can_dock_at_island(island))
+			continue
+
 		var/distance = sqrt((nav_x - island.nav_x)**2 + (nav_y - island.nav_y)**2)
 
 		if(distance <= dock_range)
@@ -637,6 +707,7 @@
 /obj/structure/ship_wheel/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	target_island = null
+	last_docked_island = null
 	return ..()
 
 /obj/structure/ship_wheel/examine(mob/user)
