@@ -725,7 +725,9 @@
 /turf/open/floor/ruinedwood,
 /area/rogue/ship/middeck)
 "fF" = (
-/obj/structure/door/red,
+/obj/structure/door/red{
+	name = "Dungeoneer's Room"
+	},
 /obj/effect/mapping_helpers/access/locker,
 /obj/effect/mapping_helpers/access/keyset/garrison/general,
 /turf/open/floor/ruinedwood,
@@ -923,7 +925,9 @@
 /area/rogue/ship/middeck)
 "hA" = (
 /obj/effect/mapping_helpers/access/locker,
-/obj/structure/door/violet,
+/obj/structure/door/violet{
+	name = "Apprentice's Quarters"
+	},
 /obj/effect/mapping_helpers/access/keyset/town/tower,
 /turf/open/floor/ruinedwood/two,
 /area/rogue/ship/nobledeck)
@@ -1096,7 +1100,9 @@
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/beach)
 "jq" = (
-/obj/structure/door/viewport,
+/obj/structure/door/viewport{
+	name = "Priest's Quarters"
+	},
 /obj/effect/mapping_helpers/access/keyset/church/general,
 /obj/effect/mapping_helpers/access/locker,
 /turf/open/floor/ruinedwood/spiral,
@@ -1632,7 +1638,9 @@
 /obj/effect/decal/cobbleedge{
 	dir = 8
 	},
-/obj/structure/door/viewport,
+/obj/structure/door/viewport{
+	name = "Merchant Dock"
+	},
 /obj/effect/mapping_helpers/access/keyset/manor/steward,
 /obj/effect/mapping_helpers/access/locker,
 /turf/open/floor/ruinedwood/two,
@@ -1971,6 +1979,13 @@
 /obj/effect/landmark/start/farmer,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/topdeck)
+"rg" = (
+/obj/structure/door/stone{
+	lockid = "church";
+	name = "Church"
+	},
+/turf/open/floor/churchmarble,
+/area/rogue/indoors/town/church/chapel)
 "rC" = (
 /obj/structure/fluff/railing/border{
 	dir = 10
@@ -3077,7 +3092,9 @@
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/beach)
 "Cj" = (
-/obj/structure/door,
+/obj/structure/door{
+	name = "Barracks"
+	},
 /obj/effect/mapping_helpers/access/keyset/garrison/general,
 /obj/effect/mapping_helpers/access/locker,
 /turf/open/floor/ruinedwood/two,
@@ -3367,6 +3384,14 @@
 	dir = 1
 	},
 /area/rogue/ship/nobledeck)
+"Ez" = (
+/obj/structure/door/violet{
+	name = "Mage's Quarters"
+	},
+/obj/effect/mapping_helpers/access/keyset/town/tower,
+/obj/effect/mapping_helpers/access/locker,
+/turf/open/floor/ruinedwood/two,
+/area/rogue/ship/nobledeck)
 "EE" = (
 /obj/machinery/light/fueled/torchholder/r,
 /obj/structure/roguetent,
@@ -3474,7 +3499,7 @@
 "FD" = (
 /obj/structure/door/fancy{
 	lockid = "royal";
-	name = "Lord's Apartment"
+	name = "Captain's Chamber"
 	},
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/nobledeck)
@@ -3824,7 +3849,8 @@
 /area/rogue/ship/middeck)
 "IV" = (
 /obj/structure/door/viewport{
-	dir = 1
+	dir = 1;
+	name = "Merchant Dock"
 	},
 /obj/effect/mapping_helpers/access/keyset/manor/steward,
 /obj/effect/mapping_helpers/access/locker,
@@ -4358,7 +4384,8 @@
 /area/rogue/ship/middeck)
 "NV" = (
 /obj/structure/door/viewport{
-	dir = 1
+	dir = 1;
+	name = "Apothecary"
 	},
 /obj/effect/mapping_helpers/access/keyset/town/apothecary,
 /turf/open/floor/ruinedwood/two,
@@ -4714,6 +4741,7 @@
 "QS" = (
 /obj/structure/door/window,
 /obj/effect/mapping_helpers/access/keyset/manor/general,
+/obj/effect/mapping_helpers/access/locker,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/nobledeck)
 "QU" = (
@@ -5508,7 +5536,8 @@
 /area/rogue/ship/topdeck)
 "Xu" = (
 /obj/structure/door/window{
-	lockid = "physician"
+	lockid = "physician";
+	name = "Treatment Center"
 	},
 /obj/effect/mapping_helpers/access/keyset/town/clinic,
 /obj/effect/mapping_helpers/access/locker,
@@ -17863,7 +17892,7 @@ ne
 ne
 wF
 DP
-Yl
+rg
 Bg
 bx
 ly
@@ -93409,7 +93438,7 @@ SX
 Il
 fU
 fU
-Il
+Ez
 tT
 Fa
 hs
