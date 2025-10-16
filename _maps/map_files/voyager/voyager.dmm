@@ -727,7 +727,7 @@
 "fF" = (
 /obj/structure/door/red,
 /obj/effect/mapping_helpers/access/locker,
-/obj/effect/mapping_helpers/access/keyset/manor/dungeon,
+/obj/effect/mapping_helpers/access/keyset/garrison/general,
 /turf/open/floor/ruinedwood,
 /area/rogue/ship/middeck)
 "fN" = (
