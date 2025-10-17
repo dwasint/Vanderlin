@@ -1,8 +1,8 @@
 
 /datum/fish_source/ocean
-	radial_state = "seaboat"
-	overlay_state = "portal_ocean"
+	catalog_description = "Shallow Ocean"
 	fish_table = list(
+		FISHING_DUD = 3,
 		/obj/item/reagent_containers/food/snacks/fish/angler = 1,
 		/obj/item/reagent_containers/food/snacks/fish/carp = 2,
 		/obj/item/reagent_containers/food/snacks/fish/shrimp = 1,
@@ -26,9 +26,9 @@
 
 
 /datum/fish_source/ocean/deep
-	radial_state = "seaboat"
-	overlay_state = "portal_ocean"
+	catalog_description = "Deep Ocean"
 	fish_table = list(
+		FISHING_DUD = 3,
 		/obj/item/reagent_containers/food/snacks/fish/angler = 6,
 		/obj/item/reagent_containers/food/snacks/fish/carp = 2,
 		/obj/item/reagent_containers/food/snacks/fish/shrimp = 1,

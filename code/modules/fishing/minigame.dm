@@ -688,7 +688,20 @@ GLOBAL_LIST_EMPTY(fishing_challenges_by_user)
 		else
 			bait_velocity = -bait_velocity * bait_bounce_mult
 
-	var/fish_on_bait = (fish_position + fish_height >= bait_position) && (bait_position + bait_height >= fish_position)
+	var/start_pos = bait_position - (bait_velocity * seconds_per_tick)
+	var/end_pos = bait_position
+
+	var/min_pos = min(start_pos, end_pos)
+	var/max_pos = max(start_pos, end_pos)
+
+	// sweep interval for bait: from min_pos .. max_pos + bait_height
+	var/bait_sweep_top = min_pos
+	var/bait_sweep_bottom = max_pos + bait_height
+
+	var/fish_top = fish_position
+	var/fish_bottom = fish_position + fish_height
+
+	var/fish_on_bait = (bait_sweep_bottom >= fish_top) && (fish_bottom >= bait_sweep_top)
 
 	var/bidirectional = special_effects & FISHING_MINIGAME_RULE_BIDIRECTIONAL
 
