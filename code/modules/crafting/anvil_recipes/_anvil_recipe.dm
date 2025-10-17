@@ -78,7 +78,7 @@
 	if(prob(proab))
 		moveup += round((skill_level * 6) * (breakthrough ? 1.5 : 1))
 		moveup -= craftdiff
-		progress = min(progress + moveup, 100)
+		progress = min(progress + max(0, moveup), 100)
 		numberofhits++
 	else
 		moveup = 0

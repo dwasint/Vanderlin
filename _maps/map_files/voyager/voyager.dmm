@@ -1822,14 +1822,6 @@
 	},
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/topdeck)
-"pd" = (
-/obj/structure/door/violet{
-	name = "Mage's Quarters"
-	},
-/obj/effect/mapping_helpers/access/keyset/town/tower,
-/obj/effect/mapping_helpers/access/locker,
-/turf/open/floor/ruinedwood/two,
-/area/rogue/ship/nobledeck)
 "pn" = (
 /obj/structure/fluff/railing/border{
 	dir = 10
@@ -2146,13 +2138,6 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/beach)
-"tk" = (
-/obj/structure/door/stone{
-	lockid = "church";
-	name = "Church"
-	},
-/turf/open/floor/churchmarble,
-/area/rogue/indoors/town/church/chapel)
 "tq" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -2555,6 +2540,7 @@
 	dir = 10
 	},
 /obj/structure/fake_machine/steward,
+/obj/item/key/steward,
 /turf/open/floor/ruinedwood/two,
 /area/rogue/ship/middeck)
 "wA" = (
@@ -4955,6 +4941,15 @@
 /obj/structure/table/wood{
 	layer = 2.8
 	},
+/obj/item/key/garrison,
+/obj/item/key/garrison{
+	pixel_x = 8;
+	pixel_y = 4
+	},
+/obj/item/key/garrison{
+	pixel_y = 4;
+	pixel_x = -9
+	},
 /turf/open/floor/ruinedwood/two,
 /area/rogue/ship/middeck)
 "SB" = (
@@ -5111,6 +5106,14 @@
 /obj/item/reagent_containers/glass/bottle/beer/hagwoodbitter,
 /turf/open/floor/church,
 /area/rogue/indoors/town/church/chapel)
+"Up" = (
+/obj/structure/door/violet{
+	name = "Mage's Quarters"
+	},
+/obj/effect/mapping_helpers/access/keyset/town/tower,
+/obj/effect/mapping_helpers/access/locker,
+/turf/open/floor/ruinedwood/two,
+/area/rogue/ship/nobledeck)
 "Uq" = (
 /obj/structure/fluff/railing/border,
 /obj/structure/fluff/railing/border{
@@ -5471,6 +5474,13 @@
 /obj/structure/ship_wheel,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/topdeck)
+"WN" = (
+/obj/structure/door/stone{
+	lockid = "church";
+	name = "Church"
+	},
+/turf/open/floor/churchmarble,
+/area/rogue/indoors/town/church/chapel)
 "WO" = (
 /obj/structure/stairs{
 	dir = 4
@@ -17912,7 +17922,7 @@ ne
 ne
 wF
 DP
-tk
+WN
 Bg
 bx
 ly
@@ -93458,7 +93468,7 @@ SX
 Il
 fU
 fU
-pd
+Up
 tT
 Fa
 hs

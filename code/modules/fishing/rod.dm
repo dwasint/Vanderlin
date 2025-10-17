@@ -129,12 +129,10 @@
 				playsound(src.loc, 'sound/foley/pierce.ogg', 50, FALSE)
 		else
 			if(!baited)
-				var/obj/item/reagent_containers/food/snacks/S = I
-				if(S.fishloot)
-					I.forceMove(src)
-					baited = I
-					user.visible_message("<span class='notice'>[user] hooks something to the line.</span>", "<span class='notice'>I hook [I] to my line.</span>")
-					playsound(src.loc, 'sound/foley/pierce.ogg', 50, FALSE)
+				I.forceMove(src)
+				baited = I
+				user.visible_message("<span class='notice'>[user] hooks something to the line.</span>", "<span class='notice'>I hook [I] to my line.</span>")
+				playsound(src.loc, 'sound/foley/pierce.ogg', 50, FALSE)
 
 	else if(istype(I, /obj/item/fishing)) //bait has a null attachtype and is accounted for in the previous check so i don't have to worry about it
 		var/obj/item/fishing/T = I

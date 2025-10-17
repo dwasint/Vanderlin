@@ -37,7 +37,7 @@ GLOBAL_LIST_INIT(fish_compatible_fluid_types, list(
 	fishloot = list(/obj/item/reagent_containers/food/snacks/fish/carp = 2)
 
 	/// Flags for fish variables that would otherwise be TRUE/FALSE
-	var/fish_flags = FISH_FLAG_SHOW_IN_CATALOG|FISH_DO_FLOP_ANIM|FISH_FLAG_EXPERIMENT_SCANNABLE
+	var/fish_flags = FISH_FLAG_SHOW_IN_CATALOG|FISH_DO_FLOP_ANIM
 
 	/// Required fluid type for this fish to live.
 	var/required_fluid_type = FISH_FLUID_FRESHWATER
@@ -60,9 +60,6 @@ GLOBAL_LIST_INIT(fish_compatible_fluid_types, list(
 
 	/// The message shown when the fish dies.
 	var/death_text = "%SRC dies."
-
-	/// How rare this fish is in the random cases
-	var/random_case_rarity = FISH_RARITY_BASIC
 
 	/// The time limit before new fish can be created
 	var/breeding_wait
@@ -1087,27 +1084,6 @@ GLOBAL_LIST_INIT(fish_compatible_fluid_types, list(
 /obj/item/reagent_containers/food/snacks/fish/proc/persistence_load(list/data)
 	return
 
-/// Returns random fish, using random_case_rarity probabilities.
-/proc/random_fish_type(required_fluid)
-	var/static/probability_table
-	var/argkey = "fish_[required_fluid]" //If this expands more extract bespoke element arg generation to some common helper.
-	if(!probability_table || !probability_table[argkey])
-		if(!probability_table)
-			probability_table = list()
-		var/chance_table = list()
-		for(var/_fish_type in subtypesof(/obj/item/reagent_containers/food/snacks/fish))
-			var/obj/item/reagent_containers/food/snacks/fish/fish = _fish_type
-			var/rarity = initial(fish.random_case_rarity)
-			if(!rarity)
-				continue
-			if(required_fluid)
-				var/init_fish_fluid_type = initial(fish.required_fluid_type)
-				if(!(required_fluid in GLOB.fish_compatible_fluid_types[init_fish_fluid_type]))
-					continue
-			chance_table[fish] = initial(fish.random_case_rarity)
-		probability_table[argkey] = chance_table
-	return pickweight(probability_table[argkey])
-
 #undef FISH_SAD
 #undef FISH_VERY_HAPPY
 #undef FISH_SUBMERGING_THRESHOLD
@@ -1115,19 +1091,49 @@ GLOBAL_LIST_INIT(fish_compatible_fluid_types, list(
 
 /obj/item/reagent_containers/food/snacks/fish/carp
 	name = "carp"
+	desc = "A common freshwater fish with large scales."
 	icon_state = "carp"
 	fish_id = "carp"
+	average_size = 60
+	average_weight = 2000
+	required_fluid_type = FISH_FLUID_FRESHWATER
+	fishing_difficulty_modifier = 5
+	fish_movement_type = /datum/fish_movement/choppy
+	sellprice = 10
 
 /obj/item/reagent_containers/food/snacks/fish/clownfish
 	name = "clownfish"
+	desc = "A small, brightly colored tropical fish."
 	icon_state = "clownfish"
 	fish_id = "clownfish"
+	average_size = 15
+	average_weight = 200
+	required_fluid_type = FISH_FLUID_SALTWATER
+	required_temperature_min = 24
+	required_temperature_max = 28
+	fishing_difficulty_modifier = 5
+	fish_movement_type = /datum/fish_movement/zippy
+	beauty = 5
 	sellprice = 40
+	favorite_bait = list(
+		list(
+			FISH_BAIT_TYPE = FISH_BAIT_FOODTYPE,
+			FISH_BAIT_VALUE = MEAT,
+		),
+	)
 
 /obj/item/reagent_containers/food/snacks/fish/angler
 	name = "anglerfish"
+	desc = "A deep-sea predator with a bioluminescent lure."
 	icon_state = "angler"
 	fish_id = "angler"
+	average_size = 50
+	average_weight = 1500
+	required_fluid_type = FISH_FLUID_SALTWATER
+	required_temperature_min = 2
+	required_temperature_max = 8
+	fishing_difficulty_modifier = 15
+	fish_movement_type = /datum/fish_movement/plunger
 	sellprice = 15
 	favorite_bait = list(
 		list(
@@ -1135,11 +1141,18 @@ GLOBAL_LIST_INIT(fish_compatible_fluid_types, list(
 			FISH_BAIT_VALUE = MEAT,
 		),
 	)
+	fish_traits = list(/datum/fish_trait/predator, /datum/fish_trait/heavy)
 
 /obj/item/reagent_containers/food/snacks/fish/eel
 	name = "eel"
+	desc = "A slippery, snake-like fish."
 	icon_state = "eel"
 	fish_id = "eel"
+	average_size = 80
+	average_weight = 800
+	required_fluid_type = FISH_FLUID_FRESHWATER
+	fishing_difficulty_modifier = 10
+	fish_movement_type = /datum/fish_movement/zippy
 	sellprice = 5
 	favorite_bait = list(
 		list(
@@ -1147,13 +1160,27 @@ GLOBAL_LIST_INIT(fish_compatible_fluid_types, list(
 			FISH_BAIT_VALUE = MEAT,
 		),
 	)
+	fish_traits = list(/datum/fish_trait/lubed)
 
 /obj/item/reagent_containers/food/snacks/fish/shrimp
 	name = "shrimp"
 	desc = "As shrimple as that."
 	icon_state = "shrimp"
 	fish_id = "shrimp"
+	average_size = 8
+	average_weight = 50
+	required_fluid_type = FISH_FLUID_SALTWATER
+	fishing_difficulty_modifier = -5
+	fish_movement_type = /datum/fish_movement/slow
+	beauty = 2
 	sellprice = 2
+	feeding_frequency = 10 MINUTES
+	favorite_bait = list(
+		list(
+			FISH_BAIT_TYPE = FISH_BAIT_FOODTYPE,
+			FISH_BAIT_VALUE = VEGETABLES,
+		),
+	)
 
 /obj/item/reagent_containers/food/snacks/fryfish
 	icon = 'icons/roguetown/misc/fish.dmi'

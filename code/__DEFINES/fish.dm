@@ -243,16 +243,14 @@
 #define FISH_DO_FLOP_ANIM (1<<1)
 ///This fish has been petted in the last 30 seconds
 #define FISH_FLAG_PETTED (1<<2)
-///This fish can be scanned to complete fish scanning experiments
-#define FISH_FLAG_EXPERIMENT_SCANNABLE (1<<3)
 ///It lets us know that fish/update_size_and_weight() is currently running.
-#define FISH_FLAG_UPDATING_SIZE_AND_WEIGHT (1<<4)
+#define FISH_FLAG_UPDATING_SIZE_AND_WEIGHT (1<<3)
 ///Flag added when the population of this fish type exceeeds the stable population inside the aquarium
-#define FISH_FLAG_OVERPOPULATED (1<<5)
+#define FISH_FLAG_OVERPOPULATED (1<<4)
 ///Flag added when in an aquarium which temperature is within its safe limits
-#define FISH_FLAG_SAFE_TEMPERATURE (1<<6)
+#define FISH_FLAG_SAFE_TEMPERATURE (1<<5)
 ///Flag added when in an aquarium with the right fluid type.
-#define FISH_FLAG_SAFE_FLUID (1<<7)
+#define FISH_FLAG_SAFE_FLUID (1<<6)
 
 #define MIN_AQUARIUM_TEMP 0
 #define MAX_AQUARIUM_TEMP 30
