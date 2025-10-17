@@ -45,3 +45,4 @@
 	force = DAMAGE_DAGGER
 	dropshrink = 0.8
 	possible_item_intents = list(/datum/intent/dagger/thrust, /datum/intent/food)
+	fish_id = "swordfish"

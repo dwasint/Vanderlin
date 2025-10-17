@@ -506,6 +506,7 @@
 /obj/structure/fluff/railing/wood{
 	dir = 4
 	},
+/obj/item/fuse/parchment,
 /turf/open/floor/hay,
 /area/rogue/ship/topdeck)
 "dE" = (
@@ -1821,6 +1822,14 @@
 	},
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/topdeck)
+"pd" = (
+/obj/structure/door/violet{
+	name = "Mage's Quarters"
+	},
+/obj/effect/mapping_helpers/access/keyset/town/tower,
+/obj/effect/mapping_helpers/access/locker,
+/turf/open/floor/ruinedwood/two,
+/area/rogue/ship/nobledeck)
 "pn" = (
 /obj/structure/fluff/railing/border{
 	dir = 10
@@ -1979,13 +1988,6 @@
 /obj/effect/landmark/start/farmer,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/topdeck)
-"rg" = (
-/obj/structure/door/stone{
-	lockid = "church";
-	name = "Church"
-	},
-/turf/open/floor/churchmarble,
-/area/rogue/indoors/town/church/chapel)
 "rC" = (
 /obj/structure/fluff/railing/border{
 	dir = 10
@@ -2021,6 +2023,7 @@
 /obj/structure/fluff/railing/wood{
 	dir = 8
 	},
+/obj/item/fuse/parchment,
 /turf/open/floor/herringbone,
 /area/rogue/ship/middeck)
 "rM" = (
@@ -2143,6 +2146,13 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/beach)
+"tk" = (
+/obj/structure/door/stone{
+	lockid = "church";
+	name = "Church"
+	},
+/turf/open/floor/churchmarble,
+/area/rogue/indoors/town/church/chapel)
 "tq" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -2477,6 +2487,7 @@
 /obj/structure/fluff/railing/wood{
 	dir = 4
 	},
+/obj/item/fuse/parchment,
 /turf/open/floor/herringbone,
 /area/rogue/ship/middeck)
 "vU" = (
@@ -3383,14 +3394,6 @@
 /turf/open/floor/carpet/lord/right{
 	dir = 1
 	},
-/area/rogue/ship/nobledeck)
-"Ez" = (
-/obj/structure/door/violet{
-	name = "Mage's Quarters"
-	},
-/obj/effect/mapping_helpers/access/keyset/town/tower,
-/obj/effect/mapping_helpers/access/locker,
-/turf/open/floor/ruinedwood/two,
 /area/rogue/ship/nobledeck)
 "EE" = (
 /obj/machinery/light/fueled/torchholder/r,
@@ -4659,6 +4662,7 @@
 /obj/structure/fluff/railing/wood{
 	dir = 4
 	},
+/obj/item/fuse/parchment,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/topdeck)
 "Qf" = (
@@ -5142,10 +5146,18 @@
 	icon_state = "borderfall"
 	},
 /obj/structure/closet/crate/chest/old_crate,
-/obj/projectile/bullet/reusable/cannonball,
-/obj/projectile/bullet/reusable/cannonball,
-/obj/projectile/bullet/reusable/cannonball,
-/obj/projectile/bullet/reusable/cannonball,
+/obj/item/ammo_casing/caseless/cball,
+/obj/item/ammo_casing/caseless/cball,
+/obj/item/ammo_casing/caseless/cball,
+/obj/item/fuse/parchment,
+/obj/item/fuse/parchment,
+/obj/item/fuse/parchment,
+/obj/item/fuse/parchment,
+/obj/item/fuse/parchment,
+/obj/item/fuse/parchment,
+/obj/item/reagent_containers/powder/blastpowder,
+/obj/item/reagent_containers/powder/blastpowder,
+/obj/item/reagent_containers/powder/blastpowder,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/topdeck)
 "Uv" = (
@@ -5298,6 +5310,7 @@
 /obj/structure/fluff/railing/wood{
 	dir = 8
 	},
+/obj/item/fuse/parchment,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/topdeck)
 "Vp" = (
@@ -5746,10 +5759,17 @@
 /area/rogue/indoors/town/church/chapel)
 "Zr" = (
 /obj/structure/closet/crate/chest/old_crate,
-/obj/projectile/bullet/reusable/cannonball,
-/obj/projectile/bullet/reusable/cannonball,
-/obj/projectile/bullet/reusable/cannonball,
-/obj/projectile/bullet/reusable/cannonball,
+/obj/item/ammo_casing/caseless/cball,
+/obj/item/ammo_casing/caseless/cball,
+/obj/item/ammo_casing/caseless/cball,
+/obj/item/fuse/parchment,
+/obj/item/fuse/parchment,
+/obj/item/fuse/parchment,
+/obj/item/fuse/parchment,
+/obj/item/fuse/parchment,
+/obj/item/reagent_containers/powder/blastpowder,
+/obj/item/reagent_containers/powder/blastpowder,
+/obj/item/reagent_containers/powder/blastpowder,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/topdeck)
 "Zu" = (
@@ -17892,7 +17912,7 @@ ne
 ne
 wF
 DP
-rg
+tk
 Bg
 bx
 ly
@@ -93438,7 +93458,7 @@ SX
 Il
 fU
 fU
-Ez
+pd
 tT
 Fa
 hs

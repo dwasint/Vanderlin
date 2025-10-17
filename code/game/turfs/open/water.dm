@@ -53,6 +53,9 @@
 
 	var/cleanliness_factor = 1 //related to hygiene for washing
 
+	/// Fishing element for this specific water tile
+	var/datum/fish_source/fishing_datum = /datum/fish_source/ocean
+
 /turf/open/water/proc/set_watervolume(volume)
 	water_volume = volume
 	if(src in children)
@@ -206,6 +209,10 @@
 
 /turf/open/water/Initialize()
 	. = ..()
+
+	if(!isnull(fishing_datum))
+		add_lazy_fishing(fishing_datum)
+
 	if(mapped)
 		if(prob(0.1))
 			new /obj/item/bottlemessage/ancient(src)
@@ -773,6 +780,7 @@
 	swim_skill = TRUE
 	wash_in = TRUE
 	water_reagent = /datum/reagent/water/salty
+	fishing_datum = /datum/fish_source/ocean
 
 /turf/open/water/ocean/deep
 	name = "salt water"
@@ -783,6 +791,7 @@
 	slowdown = 4
 	swim_skill = TRUE
 	wash_in = TRUE
+	fishing_datum = /datum/fish_source/ocean/deep
 
 /datum/reagent/water/salty
 	taste_description = "salt"
