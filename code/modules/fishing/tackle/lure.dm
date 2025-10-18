@@ -122,8 +122,8 @@
 	return FALSE
 
 /obj/item/fishing/lure/led
-	name = "\improper LED fishing lure"
-	desc = "A heavy, waterproof and fish-looking LED stick, specialized to catch only nocturnal and deep-dwelling fish."
+	name = "\improper glowing fishing lure"
+	desc = "A heavy, waterproof and fish-looking magical stick, specialized to catch only nocturnal and deep-dwelling fish."
 	icon_state = "led"
 	spin_frequency = list(3 SECONDS, 3.8 SECONDS)
 
@@ -168,7 +168,7 @@
 	return FALSE
 
 /obj/item/fishing/lure/algae
-	name = "plastic algae lure"
+	name = "algae lure"
 	desc = "A soft clump of fake algae. Herbivores love it. Nothing else does, not even omnivores."
 	icon_state = "algae"
 	spin_frequency = list(3 SECONDS, 5 SECONDS)

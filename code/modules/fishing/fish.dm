@@ -183,6 +183,11 @@ GLOBAL_LIST_INIT(fish_compatible_fluid_types, list(
 					margin: 3px 0;
 					border-left: 3px solid #e94560;
 				}
+				.lure-item {
+					padding: 5px;
+					margin: 3px 0;
+					border-left: 3px solid #4a90e2;
+				}
 			</style>
 		</head>
 		<body>
@@ -225,6 +230,10 @@ GLOBAL_LIST_INIT(fish_compatible_fluid_types, list(
 	html += "<div class='fish-stat'><span class='stat-label'>Favorite Bait:</span> [fishing_tips["favorite_bait"]]</div>"
 
 	html += "<div class='fish-stat'><span class='stat-label'>Disliked Bait:</span> [fishing_tips["disliked_bait"]]</div>"
+
+	html += "<div class='fish-stat'><span class='stat-label'>Compatible Lures & Bait:</span></div>"
+	for(var/lure_name in fishing_tips["lures"])
+		html += "<div class='lure-item'>• [lure_name]</div>"
 
 	html += "<div class='fish-stat'><span class='stat-label'>Behavior:</span></div>"
 	for(var/trait_desc in fishing_tips["traits"])
@@ -285,6 +294,15 @@ GLOBAL_LIST_INIT(fish_compatible_fluid_types, list(
 	for(var/bait_type_or_trait in disliked_bait)
 		bait_list += bait_description(bait_type_or_trait)
 	.["disliked_bait"] = english_list(bait_list, nothing_text = "None")
+
+	var/list/compatible_lures = list()
+	for(var/lure_type in SSfishing.lure_catchables)
+		if(type in SSfishing.lure_catchables[lure_type])
+			var/obj/item/fishing/lure/lure_path = lure_type
+			if(ispath(lure_path, /obj/item/fishing/lure/no_bait))
+				continue
+			compatible_lures += initial(lure_path.name)
+	.["lures"] = compatible_lures.len ? compatible_lures : list("None (use bait only)")
 
 	var/list/trait_descriptions = list()
 	var/list/fish_traits = fish_list_properties[type][FISH_PROPERTIES_TRAITS]

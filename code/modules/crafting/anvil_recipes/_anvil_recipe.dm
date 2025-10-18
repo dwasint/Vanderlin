@@ -68,7 +68,7 @@
 		else if(quality_score >= 20)
 			quality_bonus = 5
 		if(skill_level < craftdiff)
-			quality_bonus = FLOOR(quality_bonus * 0.25, 1)
+			quality_bonus = FLOOR(quality_bonus * 0.50, 1)
 		proab = min(proab + quality_bonus, 100)
 
 	if(has_world_trait(/datum/world_trait/delver))
@@ -76,7 +76,8 @@
 
 	// Roll the dice to see if the hit actually causes progress
 	if(prob(proab))
-		moveup += round((skill_level * 6) * (breakthrough ? 1.5 : 1))
+		moveup += round((min(50, skill_level * 12)) * (breakthrough ? 1.5 : 1))
+		moveup += quality_bonus
 		moveup -= craftdiff
 		progress = min(progress + max(0, moveup), 100)
 		numberofhits++
