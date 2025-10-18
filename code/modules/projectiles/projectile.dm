@@ -147,6 +147,9 @@
 	/// If true directly targeted turfs can be hit
 	var/can_hit_turfs = FALSE
 
+	///projectile crit reduce chance since more dmg increases the crit chance it can get absurdly high, 0 for nothing.
+	var/reduce_crit_chance = 0
+
 /obj/projectile/proc/handle_drop()
 	return
 
