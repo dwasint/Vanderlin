@@ -74,7 +74,7 @@
 		proab = 100
 
 	// Roll the dice to see if the hit actually causes progress
-	if(prob(proab))
+	if(prob(proab) && quality_score > 0)
 		moveup += round((min(50, skill_level * 12)) * (breakthrough ? 1.5 : 1))
 		moveup += quality_bonus
 		moveup -= craftdiff

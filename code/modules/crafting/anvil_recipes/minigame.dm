@@ -181,7 +181,7 @@
 	user.client?.screen -= anvil_hud
 	QDEL_NULL(anvil_hud)
 	host_anvil.smithing = FALSE
-	host_anvil.process_minigame_result(success, user)
+	host_anvil.process_minigame_result(success, user, (failed_notes == total_notes))
 	host_anvil = null
 
 /atom/movable/screen/anvil_hud

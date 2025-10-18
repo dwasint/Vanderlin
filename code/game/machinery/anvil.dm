@@ -120,12 +120,14 @@
 		return
 
 
-/obj/machinery/anvil/proc/process_minigame_result(quality_score, mob/user)
+/obj/machinery/anvil/proc/process_minigame_result(quality_score, mob/user, total_fail)
 	if(!hingot || !hingot.currecipe)
 		return
 
 	var/datum/anvil_recipe/recipe = hingot.currecipe
 	var/breakthrough = quality_score >= 80
+	if(total_fail)
+		quality_score = 0
 	var/success = recipe.advance(user, breakthrough, quality_score)
 
 	if(!success)
@@ -176,7 +178,7 @@
 		var/obj/item/extra = new recipe.created_item(loc)
 		recipe.handle_creation(extra)
 
-	usr.visible_message("<span class='info'>[usr] finishes crafting [I]!</span>")
+	usr?.visible_message("<span class='info'>[usr] finishes crafting [I]!</span>")
 
 	qdel(hingot)
 	hingot = null
