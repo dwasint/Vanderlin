@@ -82,8 +82,6 @@ GLOBAL_LIST_INIT(specific_fish_icons, generate_specific_fish_icons())
 		associated_safe_turfs = typecacheof(associated_safe_turfs)
 		if(safe_turfs_blacklist)
 			associated_safe_turfs -= typecacheof(safe_turfs_blacklist)
-	if(!PERFORM_ALL_TESTS(focus_only/fish_sources_tables))
-		return
 	for(var/path in fish_counts)
 		if(!(path in fish_table))
 			stack_trace("path [path] found in the 'fish_counts' list but not in the 'fish_table'")
