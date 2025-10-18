@@ -1,10 +1,11 @@
 /obj/structure/ship_wheel
 	name = "ship wheel"
 	desc = "A large wooden ship wheel. Use it to navigate between islands."
-	icon = 'icons/obj/structures.dmi'
-	icon_state = "fancy_table"
+	icon = 'icons/obj/helm.dmi'
+	icon_state = "wheel"
 	density = TRUE
 	anchored = TRUE
+	dir = EAST
 
 	var/datum/ship_data/controlled_ship
 
