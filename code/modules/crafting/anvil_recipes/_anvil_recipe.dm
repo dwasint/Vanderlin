@@ -56,9 +56,8 @@
 		proab = 100
 
 	proab -= craftdiff // Crafting difficulty subtracts from your chance
-
+	var/quality_bonus = 0
 	if(quality_score > 0)
-		var/quality_bonus = 0
 		if(quality_score >= 80)
 			quality_bonus = 40 // Excellent performance almost guarantees success
 		else if(quality_score >= 60)
