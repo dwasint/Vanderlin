@@ -11,7 +11,7 @@
 /// Reduce initial completion rate depending on difficulty
 #define MAX_FISH_COMPLETION_MALUS 15
 /// The window of time between biting phase and back to baiting phase
-#define BITING_TIME_WINDOW 4 SECONDS
+#define BITING_TIME_WINDOW 3 SECONDS
 
 /// The multiplier of how much the difficulty negatively impacts the bait height
 #define BAIT_HEIGHT_DIFFICULTY_MALUS 1.3

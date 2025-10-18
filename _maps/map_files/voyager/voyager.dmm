@@ -730,7 +730,7 @@
 	name = "Dungeoneer's Room"
 	},
 /obj/effect/mapping_helpers/access/locker,
-/obj/effect/mapping_helpers/access/keyset/garrison/general,
+/obj/effect/mapping_helpers/access/keyset/manor/dungeon,
 /turf/open/floor/ruinedwood,
 /area/rogue/ship/middeck)
 "fN" = (
@@ -742,6 +742,14 @@
 	},
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/middeck)
+"fP" = (
+/obj/structure/door/violet{
+	name = "Mage's Quarters"
+	},
+/obj/effect/mapping_helpers/access/keyset/town/tower,
+/obj/effect/mapping_helpers/access/locker,
+/turf/open/floor/ruinedwood/two,
+/area/rogue/ship/nobledeck)
 "fQ" = (
 /turf/closed/wall/mineral/wooddark/horizontal,
 /area/rogue/ship/nobledeck)
@@ -2414,6 +2422,13 @@
 /obj/structure/roguetent,
 /turf/open/floor/hay,
 /area/rogue/ship/middeck)
+"vv" = (
+/obj/structure/door/stone{
+	lockid = "church";
+	name = "Church"
+	},
+/turf/open/floor/churchmarble,
+/area/rogue/indoors/town/church/chapel)
 "vx" = (
 /obj/structure/fluff/walldeco/painting/queen{
 	pixel_x = 32
@@ -5106,14 +5121,6 @@
 /obj/item/reagent_containers/glass/bottle/beer/hagwoodbitter,
 /turf/open/floor/church,
 /area/rogue/indoors/town/church/chapel)
-"Up" = (
-/obj/structure/door/violet{
-	name = "Mage's Quarters"
-	},
-/obj/effect/mapping_helpers/access/keyset/town/tower,
-/obj/effect/mapping_helpers/access/locker,
-/turf/open/floor/ruinedwood/two,
-/area/rogue/ship/nobledeck)
 "Uq" = (
 /obj/structure/fluff/railing/border,
 /obj/structure/fluff/railing/border{
@@ -5474,13 +5481,6 @@
 /obj/structure/ship_wheel,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/topdeck)
-"WN" = (
-/obj/structure/door/stone{
-	lockid = "church";
-	name = "Church"
-	},
-/turf/open/floor/churchmarble,
-/area/rogue/indoors/town/church/chapel)
 "WO" = (
 /obj/structure/stairs{
 	dir = 4
@@ -17922,7 +17922,7 @@ ne
 ne
 wF
 DP
-WN
+vv
 Bg
 bx
 ly
@@ -93468,7 +93468,7 @@ SX
 Il
 fU
 fU
-Up
+fP
 tT
 Fa
 hs

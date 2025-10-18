@@ -329,7 +329,7 @@
 	override_origin_pixel_y = null,
 	override_target_pixel_x = null,
 	override_target_pixel_y = null,
-	render_on_z_levels = TRUE,
+	render_on_z_levels = FALSE,
 )
 	var/datum/beam/newbeam = new(src, BeamTarget, icon, icon_state, time, max_distance, beam_type, beam_color, emissive, beam_layer, beam_plane, invisibility, mana_pool, override_origin_pixel_x, override_origin_pixel_y, override_target_pixel_x, override_target_pixel_y, render_on_z_levels)
 	INVOKE_ASYNC(newbeam, TYPE_PROC_REF(/datum/beam, Start))
