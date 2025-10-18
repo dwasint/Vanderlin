@@ -299,6 +299,7 @@
 	icon_state = "jile_iron"
 	melting_material = null
 	sellprice = 12
+	dropshrink = 1.0
 
 /obj/item/weapon/knife/njora/iron
 
@@ -331,6 +332,7 @@
 	wdefense = AVERAGE_PARRY
 	wbalance = VERY_HARD_TO_DODGE
 	sellprice = 20
+	dropshrink = 1.0
 
 /obj/item/weapon/knife/njora/steel
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop, /datum/intent/dagger/thrust)
