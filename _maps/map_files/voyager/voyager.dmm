@@ -238,6 +238,17 @@
 /obj/item/natural/cloth,
 /obj/item/natural/cloth,
 /obj/structure/rack/shelf/notdense,
+/obj/item/key/clinic{
+	pixel_x = -9;
+	pixel_y = 32
+	},
+/obj/item/key/clinic{
+	pixel_y = 32
+	},
+/obj/item/key/clinic{
+	pixel_y = 32;
+	pixel_x = 9
+	},
 /turf/open/floor/ruinedwood/two,
 /area/rogue/ship/middeck)
 "bZ" = (
@@ -701,6 +712,14 @@
 	icon_state = "largetable"
 	},
 /obj/item/weapon/knife/cleaver,
+/obj/item/reagent_containers/peppermill{
+	pixel_y = 10;
+	pixel_x = -9
+	},
+/obj/item/kitchen/rollingpin{
+	pixel_x = 4;
+	pixel_y = -9
+	},
 /turf/open/floor/cobble,
 /area/rogue/ship/middeck)
 "fr" = (
@@ -1035,7 +1054,6 @@
 /area/rogue/ship/middeck)
 "iA" = (
 /obj/structure/door{
-	lockid = "physician";
 	name = "apothacary bunks"
 	},
 /obj/effect/mapping_helpers/access/locker,
@@ -4300,10 +4318,10 @@
 /area/rogue/indoors/town/church/chapel)
 "MQ" = (
 /obj/structure/door/viewport{
-	lockid = "nightman";
 	dir = 8
 	},
 /obj/effect/mapping_helpers/access/locker,
+/obj/effect/mapping_helpers/access/keyset/town/apothecary,
 /turf/open/floor/ruinedwood/two,
 /area/rogue/ship/middeck)
 "MU" = (
@@ -4392,22 +4410,8 @@
 	name = "Apothecary"
 	},
 /obj/effect/mapping_helpers/access/keyset/town/apothecary,
+/obj/effect/mapping_helpers/access/keyset/town/apothecary,
 /turf/open/floor/ruinedwood/two,
-/area/rogue/ship/middeck)
-"NX" = (
-/obj/item/key/clinic{
-	pixel_x = -9
-	},
-/obj/item/key/clinic{
-	pixel_y = 0;
-	pixel_x = 9
-	},
-/obj/item/key/clinic{
-	pixel_y = 0
-	},
-/turf/closed/wall/mineral/wooddark/end{
-	dir = 8
-	},
 /area/rogue/ship/middeck)
 "Ob" = (
 /obj/structure/chair/wood/alt/fancy,
@@ -5559,7 +5563,6 @@
 /area/rogue/ship/topdeck)
 "Xu" = (
 /obj/structure/door/window{
-	lockid = "physician";
 	name = "Treatment Center"
 	},
 /obj/effect/mapping_helpers/access/keyset/town/clinic,
@@ -53073,7 +53076,7 @@ Ma
 nu
 Tx
 Je
-NX
+KY
 bX
 uD
 jA
