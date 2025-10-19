@@ -170,6 +170,8 @@
 	if(numberofbreakthroughs)
 		quality_calc.performance_quality -= numberofbreakthroughs
 	quality_calc.apply_quality_to_item(I, TRUE) // TRUE enables masterwork tracking
+	I.add_quench_requirement()
+	addtimer(CALLBACK(I, TYPE_PROC_REF(/obj/item, remove_quench)), 60 SECONDS)
 	qdel(quality_calc)
 
 /datum/anvil_recipe/proc/show_menu(mob/user)

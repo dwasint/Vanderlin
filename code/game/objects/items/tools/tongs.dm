@@ -81,7 +81,7 @@
 	if(!istype(A))
 		return ..()
 
-	if(A.tool_flags & TOOL_USAGE_TONGS)
+	if(A.tool_flags & TOOL_USAGE_TONGS || HAS_TRAIT(A, TRAIT_NEEDS_QUENCH))
 		if(!held_item)
 			user.visible_message("<span class='info'>[user] picks up [A] with [src].</span>")
 			held_item = A

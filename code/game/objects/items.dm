@@ -650,6 +650,9 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 /obj/item/proc/attempt_pickup(mob/user)
 	. = TRUE
+	if(HAS_TRAIT(src, TRAIT_NEEDS_QUENCH))
+		to_chat(user, "<span class='warning'>[src] is too hot to touch.</span>")
+		return
 
 	if(resistance_flags & ON_FIRE)
 		var/mob/living/carbon/C = user

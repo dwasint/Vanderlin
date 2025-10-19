@@ -566,6 +566,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define ECHOLOCATION_TRAIT "echolocation"
 /// trait that makes you bounce when speaking
 #define TRAIT_SHAKY_SPEECH "Shaky Speech"
+#define TRAIT_NEEDS_QUENCH "Needs Quenching"
 
 /// Dendor Path Traits
 #define TRAIT_DENDOR_GROWING "trait_dendor_growing"

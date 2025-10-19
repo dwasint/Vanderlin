@@ -140,18 +140,19 @@
 			recipe.bar_health -= 10
 		// No extra penalty for 60+ quality on fail
 
-	var/skill_boost = 0
-	if(quality_score >= 80)
-		skill_boost = quality_score * 2
-		recipe.numberofbreakthroughs++
-	else if(quality_score >= 60)
-		skill_boost = quality_score * 1.5
-	else if(quality_score >= 40)
-		skill_boost = quality_score
-	else if(quality_score >= 20)
-		skill_boost = quality_score * 0.5
+	if(success)
+		var/skill_boost = 0
+		if(quality_score >= 80)
+			skill_boost = quality_score * 2
+			recipe.numberofbreakthroughs++
+		else if(quality_score >= 60)
+			skill_boost = quality_score * 1.5
+		else if(quality_score >= 40)
+			skill_boost = quality_score
+		else if(quality_score >= 20)
+			skill_boost = quality_score * 0.5
 
-	recipe.skill_quality += skill_boost
+		recipe.skill_quality += skill_boost
 
 	if(recipe.bar_health <= 0)
 		hingot = null
