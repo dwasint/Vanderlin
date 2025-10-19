@@ -1,28 +1,35 @@
 /datum/quality_calculator/blacksmithing
 	name = "Blacksmithing Quality"
+	var/minigame_success = 0
 
 /datum/quality_calculator/blacksmithing/calculate_final_quality()
-	var/avg_material = floor(material_quality / num_components) - 2
+	var/avg_material = floor(material_quality / num_components)
 
-	// Using skill per hit to normalize across recipe complexity
-	var/skill_per_hit = (performance_quality > 0 && skill_quality > 0) ? (skill_quality / performance_quality) : 0
+	// skill_quality = player's blacksmithing skill level (0-6)
+	// performance_quality = number of hits taken
+	// minigame_success = minigame score (0-100+)
 
-	// Scale the divisor based on expected performance
-	// At max skill (6) with good minigame (~70%), skill_per_hit is ~700-1000
-	// We want that to translate to ~2-3 quality, needing +3-4 from materials for masterwork
-	var/normalized_skill = floor(skill_per_hit / 400) + avg_material
+	// Skill factor for quality contribution (0 to 1)
+	var/skill_factor = skill_quality / 6
 
-	// Efficiency penalty: more hits = worse quality
-	// Each hit costs quality, rewarding skilled players who finish quickly
-	var/hit_penalty = floor(performance_quality * 0.3)
+	// Performance factor from minigame (0 to 1.2)
+	var/performance_factor = min(1.2, minigame_success / 100)
 
-	// Difficulty penalty: harder recipes cap quality lower
-	// Each point of difficulty reduces max achievable quality
-	var/difficulty_penalty = floor(difficulty_modifier * 0.4)
+	// Quality components
+	var/skill_component = skill_factor * 2.5 // Max +2.5 at skill 6
+	var/material_component = avg_material * 0.8
+	var/performance_component = performance_factor * 2.0 // Max +2.4 for perfect minigame
 
-	// Breakthrough bonus restoration (already subtracted from performance_quality before this)
-	// This was already handled in handle_creation() where breakthroughs reduce performance_quality
+	// Penalties
+	var/hit_penalty = floor(performance_quality * 0.4) // More hits = worse
+	var/difficulty_penalty = floor(difficulty_modifier * 0.6) // Harder recipes = harder to perfect
 
-	var/final_performance = normalized_skill - hit_penalty - difficulty_penalty
+	var/final_quality = skill_component + material_component + performance_component - hit_penalty - difficulty_penalty
 
-	return final_performance
+	// Soft cap: quality above skill level is penalized
+	// This allows masterworks with good materials, but makes them harder at low skill
+	if(final_quality > skill_quality)
+		var/excess = final_quality - skill_quality
+		final_quality = skill_quality + (excess * 0.5) // 50% of excess quality counts
+
+	return clamp(round(final_quality), -10, 8)

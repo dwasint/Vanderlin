@@ -28,10 +28,13 @@
 	 * This is passed down to the fishing rod, and then to the lure during the minigame.
 	 */
 	var/spin_frequency = list(2 SECONDS, 3 SECONDS)
+	var/consumable = FALSE
 
 /obj/item/fishing/lure/Initialize(mapload)
 	. = ..()
-	add_traits(list(TRAIT_FISHING_BAIT, TRAIT_BAIT_ALLOW_FISHING_DUD, TRAIT_OMNI_BAIT, TRAIT_BAIT_UNCONSUMABLE), INNATE_TRAIT)
+	add_traits(list(TRAIT_FISHING_BAIT, TRAIT_BAIT_ALLOW_FISHING_DUD, TRAIT_OMNI_BAIT), INNATE_TRAIT)
+	if(!consumable)
+		ADD_TRAIT(src, TRAIT_BAIT_UNCONSUMABLE, INNATE_TRAIT)
 	RegisterSignal(src, COMSIG_ITEM_FISHING_ROD_SLOTTED, PROC_REF(on_fishingrod_slotted))
 	RegisterSignal(src, COMSIG_ITEM_FISHING_ROD_UNSLOTTED, PROC_REF(on_fishingrod_unslotted))
 
@@ -238,6 +241,7 @@
 	icon_state = "meatbait"
 	icon = 'icons/roguetown/items/fishing.dmi'
 	spin_frequency = list(2 SECONDS, 3 SECONDS)
+	consumable = TRUE
 
 /obj/item/fishing/lure/meat/is_catchable_fish(obj/item/reagent_containers/food/snacks/fish/fish, list/fish_properties)
 	// Attracts eels primarily
@@ -250,8 +254,9 @@
 	desc = "A small amount of dough, rolled into a ball. Tends to attract carps."
 	icon = 'icons/roguetown/items/food.dmi'
 	icon_state = "doughslice"
-	icon = 'icons/roguetown/items/fishing.dmi'
+	icon = 'icons/roguetown/items/food.dmi'
 	spin_frequency = list(2 SECONDS, 3 SECONDS)
+	consumable = TRUE
 
 /obj/item/fishing/lure/dough/is_catchable_fish(obj/item/reagent_containers/food/snacks/fish/fish, list/fish_properties)
 	// Attracts carps primarily, shrimp occasionally
@@ -267,6 +272,7 @@
 	icon_state = "mixedbait"
 	icon = 'icons/roguetown/items/fishing.dmi'
 	spin_frequency = list(2 SECONDS, 3 SECONDS)
+	consumable = TRUE
 
 /obj/item/fishing/lure/gray/is_catchable_fish(obj/item/reagent_containers/food/snacks/fish/fish, list/fish_properties)
 	// Attracts carps, eels, and shrimp
@@ -284,6 +290,7 @@
 	icon = 'icons/roguetown/items/fishing.dmi'
 	icon_state = "speckledbait"
 	spin_frequency = list(2.5 SECONDS, 3.5 SECONDS)
+	consumable = TRUE
 
 /obj/item/fishing/lure/speckled/is_catchable_fish(obj/item/reagent_containers/food/snacks/fish/fish, list/fish_properties)
 	// Catches carps, eels, anglerfish, and clownfish
@@ -303,6 +310,7 @@
 	icon = 'icons/roguetown/items/fishing.dmi'
 	icon_state = "deluxebait"
 	spin_frequency = list(2 SECONDS, 3.5 SECONDS)
+	consumable = TRUE
 	/// Chance to catch a special variant fish
 	var/special_catch_chance = 20
 

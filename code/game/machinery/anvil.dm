@@ -90,8 +90,8 @@
 		hingot.currecipe.item_added(user)
 		if(istype(W, /obj/item/ingot))
 			var/obj/item/ingot/I = W
-			hingot.currecipe.material_quality += I.quality
-			previous_material_quality = I.quality
+			hingot.currecipe.material_quality += I.recipe_quality
+			previous_material_quality = I.recipe_quality
 		else
 			hingot.currecipe.material_quality += previous_material_quality
 		hingot.currecipe.num_of_materials += 1
@@ -161,23 +161,28 @@
 		return
 
 	if(recipe.progress >= 100 && !recipe.additional_items.len && !recipe.needed_item)
-		complete_recipe()
+		complete_recipe(quality_score)
 
 	working_material = null
 
-/obj/machinery/anvil/proc/complete_recipe()
+/obj/machinery/anvil/proc/complete_recipe(quality_score)
 	if(!hingot || !hingot.currecipe)
 		return
 
 	var/datum/anvil_recipe/recipe = hingot.currecipe
 	var/obj/item/I = new recipe.created_item(loc)
 
-	recipe.handle_creation(I)
+	var/mob/living/user = usr
+	var/skill_level = 0
+	if(user)
+		skill_level = user.get_skill_level(recipe.appro_skill)
+
+	recipe.handle_creation(I, quality_score, skill_level)
 
 
 	for(var/i in 1 to recipe.createditem_extra)
 		var/obj/item/extra = new recipe.created_item(loc)
-		recipe.handle_creation(extra)
+		recipe.handle_creation(extra, quality_score, skill_level)
 
 	usr?.visible_message("<span class='info'>[usr] finishes crafting [I]!</span>")
 
@@ -235,8 +240,8 @@
 			chosen_recipe = browser_input_list(user, "Choose what to start working on:", "Anvil", sortNames(appro_recipe.Copy()))
 		if(!hingot.currecipe && chosen_recipe)
 			hingot.currecipe = new chosen_recipe.type(hingot)
-			hingot.currecipe.material_quality += hingot.quality
-			previous_material_quality = hingot.quality
+			hingot.currecipe.material_quality += hingot.recipe_quality
+			previous_material_quality = hingot.recipe_quality
 			return TRUE
 
 	return FALSE

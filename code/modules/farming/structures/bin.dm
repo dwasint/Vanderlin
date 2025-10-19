@@ -173,7 +173,7 @@
 			reagents.remove_reagent(removereg, 5)
 			playsound(src,pick('sound/items/quench_barrel1.ogg','sound/items/quench_barrel2.ogg'), 100, FALSE)
 			user.visible_message("<span class='info'>[user] tempers \the [T.held_item.name] in \the [src], hot metal sizzling.</span>")
-			T.remove_quench()
+			T.held_item.remove_quench()
 			update_appearance(UPDATE_ICON)
 			return
 	. = ..()

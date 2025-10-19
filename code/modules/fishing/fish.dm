@@ -569,7 +569,7 @@ GLOBAL_LIST_INIT(fish_compatible_fluid_types, list(
 	update_fish_force()
 
 	slices_num = max(round(slices_num * size / FISH_FILLET_NUMBER_SIZE_DIVISOR, 1), 1)
-	sellprice = initial(sellprice) * (1 + max(FLOOR(weight/FISH_GRIND_RESULTS_WEIGHT_DIVISOR, 0.1), 0.1))
+	sellprice = initial(sellprice) * (1 + (max(FLOOR(weight/average_weight, 0.1), 0.1) - 1))
 	fish_flags &= ~FISH_FLAG_UPDATING_SIZE_AND_WEIGHT
 
 ///Reset weapon-related variables of this items and recalculates those values based on the fish weight and size.

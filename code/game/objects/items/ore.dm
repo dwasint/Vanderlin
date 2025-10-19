@@ -137,7 +137,6 @@
 	grid_height = 32
 	melt_amount = 100
 	var/datum/anvil_recipe/currecipe
-	var/quality = SMELTERY_LEVEL_NORMAL
 
 /obj/item/ingot/examine()
 	. += ..()
@@ -147,18 +146,11 @@
 /obj/item/ingot/Initialize(mapload, smelt_quality)
 	. = ..()
 	if(smelt_quality)
-		quality = smelt_quality
+		recipe_quality = smelt_quality
 		smelted = TRUE
-		switch(quality)
-			if(SMELTERY_LEVEL_SPOIL)
-				name = "spoilt [name]"
-				desc += " It is practically scrap."
-			if(SMELTERY_LEVEL_POOR)
-				name = "poor-quality [name]"
-				desc += " It is of dubious quality." // EA NASSIR, WHEN I GET YOU...
-			if(SMELTERY_LEVEL_GOOD)
-				name = "good-quality [name]"
-				desc += " It is of exquisite quality."
+	var/datum/quality_calculator/metallurgy/metal_calc = new()
+	metal_calc.apply_smelt_to_ingot(src, recipe_quality, TRUE)
+	qdel(metal_calc)
 
 /obj/item/ingot/attackby(obj/item/I, mob/user, params)
 	if(!istype(I, /obj/item/weapon/tongs))

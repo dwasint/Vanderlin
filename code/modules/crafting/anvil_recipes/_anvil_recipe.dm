@@ -158,18 +158,18 @@
 	needed_item_text = null
 
 
-/datum/anvil_recipe/proc/handle_creation(obj/item/I)
+/datum/anvil_recipe/proc/handle_creation(obj/item/I, minigame_success = 30,skill_level = 0)
 	var/datum/quality_calculator/blacksmithing/quality_calc = new(
 		base_qual = 0,
 		mat_qual = material_quality,
-		skill_qual = skill_quality,
+		skill_qual = skill_level, // Pass the success score here
 		perf_qual = numberofhits,
 		diff_mod = craftdiff,
 		components = num_of_materials
 	)
-	if(numberofbreakthroughs)
-		quality_calc.performance_quality -= numberofbreakthroughs
-	quality_calc.apply_quality_to_item(I, TRUE) // TRUE enables masterwork tracking
+	quality_calc.minigame_success = minigame_success
+
+	quality_calc.apply_quality_to_item(I, TRUE)
 	I.add_quench_requirement()
 	addtimer(CALLBACK(I, TYPE_PROC_REF(/obj/item, remove_quench)), 60 SECONDS)
 	qdel(quality_calc)
