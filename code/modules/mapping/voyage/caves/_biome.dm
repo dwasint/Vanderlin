@@ -26,40 +26,88 @@
 	setup_ores()
 
 /datum/cave_biome/proc/setup_ores()
-	ore_types_upper = list(
+	var/list/ores = list(
 		"iron" = list(
 			"turf" = /turf/closed/mineral/iron,
 			"spread_chance" = 60,
-			"spread_range" = 2
+			"spread_range" = 3,
+			"tier" = "common"
 		),
 		"copper" = list(
 			"turf" = /turf/closed/mineral/copper,
 			"spread_chance" = 60,
-			"spread_range" = 3
+			"spread_range" = 3,
+			"tier" = "common"
+		),
+		"tin" = list(
+			"turf" = /turf/closed/mineral/tin,
+			"spread_chance" = 60,
+			"spread_range" = 3,
+			"tier" = "common"
 		),
 		"coal" = list(
 			"turf" = /turf/closed/mineral/coal,
 			"spread_chance" = 60,
-			"spread_range" = 2
-		)
-	)
-	ore_types_lower = list(
+			"spread_range" = 2,
+			"tier" = "common"
+		),
+		"salt" = list(
+			"turf" = /turf/closed/mineral/salt,
+			"spread_chance" = 60,
+			"spread_range" = 2,
+			"tier" = "common"
+		),
 		"gold" = list(
 			"turf" = /turf/closed/mineral/gold,
 			"spread_chance" = 50,
-			"spread_range" = 2
+			"spread_range" = 2,
+			"tier" = "rare"
 		),
 		"silver" = list(
 			"turf" = /turf/closed/mineral/silver,
 			"spread_chance" = 50,
-			"spread_range" = 2
+			"spread_range" = 2,
+			"tier" = "rare"
 		),
 		"gemeralds" = list(
 			"turf" = /turf/closed/mineral/gemeralds,
 			"spread_chance" = 50,
-			"spread_range" = 2
+			"spread_range" = 2,
+			"tier" = "rare"
+		),
+		"cinnabar" = list(
+			"turf" = /turf/closed/mineral/cinnabar,
+			"spread_chance" = 50,
+			"spread_range" = 2,
+			"tier" = "rare"
+		),
+		"mana_crystal" = list(
+			"turf" = /turf/closed/mineral/mana_crystal,
+			"spread_chance" = 50,
+			"spread_range" = 2,
+			"tier" = "rare"
 		)
 	)
+
+	var/static/list/all_ore_types = list()
+	if(!length(all_ore_types))
+		all_ore_types = ores.Copy()
+
+	for(var/i = 1 to rand(3, 4))
+		var/picked = pick(all_ore_types)
+		var/list/list = all_ore_types[picked]
+		ore_types_upper += list("[picked]" = list)
+		all_ore_types -= picked
+		if(!length(all_ore_types))
+			all_ore_types = ores.Copy()
+
+	for(var/i = 1 to rand(3, 4))
+		var/picked = pick(all_ore_types)
+		var/list/list = all_ore_types[picked]
+		ore_types_lower += list("[picked]" = list)
+		all_ore_types -= picked
+		if(!length(all_ore_types))
+			all_ore_types = ores.Copy()
 
 /datum/cave_biome/proc/setup_spawn_rules()
 	return
