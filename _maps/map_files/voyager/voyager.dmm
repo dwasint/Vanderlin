@@ -1054,7 +1054,7 @@
 /area/rogue/ship/middeck)
 "iA" = (
 /obj/structure/door{
-	name = "apothacary bunks"
+	name = "clinic bunks"
 	},
 /obj/effect/mapping_helpers/access/locker,
 /obj/effect/mapping_helpers/access/keyset/town/clinic,
