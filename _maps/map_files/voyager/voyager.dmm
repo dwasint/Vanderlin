@@ -256,8 +256,6 @@
 /turf/open/floor/ruinedwood,
 /area/rogue/ship/middeck)
 "cd" = (
-/obj/item/ingot/steel,
-/obj/item/ingot/steel,
 /obj/structure/carpet/green,
 /turf/open/floor/tile/checker,
 /area/rogue/ship/middeck)
@@ -1268,8 +1266,6 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/topdeck)
 "ks" = (
-/obj/item/ingot/steel,
-/obj/item/ingot/steel,
 /obj/structure/stockpile_storage/food,
 /obj/structure/stockpile_storage,
 /obj/structure/stockpile_storage/metal,
@@ -2601,7 +2597,6 @@
 /area/rogue/indoors/town/church/chapel)
 "wH" = (
 /obj/structure/rack,
-/obj/item/weapon/axe/steel,
 /obj/item/weapon/axe/battle,
 /obj/machinery/light/fueled/torchholder/l,
 /obj/item/clothing/head/helmet/leather/tricorn,
@@ -5143,7 +5138,6 @@
 /area/rogue/outdoors/beach)
 "Ut" = (
 /obj/structure/closet/crate/chest/gold,
-/obj/item/ingot/silver,
 /obj/item/ingot/silver,
 /obj/item/ingot/silver,
 /obj/machinery/light/fueled/wallfire/candle/r,
