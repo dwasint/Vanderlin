@@ -2,6 +2,10 @@
 	name = "Metallurgy Quality"
 
 	quality_descriptors = list(
+		"-1" = list(
+			"name_prefix" = "awful",
+			"description" = "",
+		),
 		"0" = list(
 			"name_prefix" = "",
 			"description" = "",
@@ -38,7 +42,7 @@
 	var/reagent_factor = reagent_quality * 0.9 // Major factor
 
 	var/final_quality = material_factor + skill_factor + reagent_factor
-	return CEILING(min(4, final_quality), 1)
+	return max(-1, CEILING(min(4, final_quality), 1))
 
 /datum/quality_calculator/metallurgy/apply_quality_to_item(obj/item/target, track_masterworks = FALSE)
 	if(!target)
@@ -71,7 +75,7 @@
 /datum/quality_calculator/metallurgy/proc/apply_smelt_to_ingot(obj/item/target, final_quality = 0, track_masterworks = FALSE)
 	if(!target)
 		return FALSE
-	final_quality = CEILING(min(4, final_quality), 1)
+	final_quality = max(-1, CEILING(min(4, final_quality), 1))
 
 	var/list/quality_data = get_quality_data(final_quality)
 
