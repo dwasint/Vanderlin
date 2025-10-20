@@ -258,7 +258,7 @@
 "cd" = (
 /obj/structure/carpet/green,
 /turf/open/floor/tile/checker,
-/area/rogue/ship/middeck)
+/area/rogue/indoors/town/vault)
 "ce" = (
 /obj/structure/closet/crate/chest/neu,
 /obj/item/ingot/iron,
@@ -371,7 +371,7 @@
 "cW" = (
 /obj/item/coin/silver/pile,
 /turf/open/floor/tile/checker,
-/area/rogue/ship/middeck)
+/area/rogue/indoors/town/vault)
 "cY" = (
 /obj/effect/decal/cobbleedge{
 	dir = 1;
@@ -855,7 +855,7 @@
 /obj/structure/closet/crate/chest/gold,
 /obj/item/gem/amethyst,
 /turf/open/floor/tile/checker,
-/area/rogue/ship/middeck)
+/area/rogue/indoors/town/vault)
 "gv" = (
 /obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/ruinedwood/spiral,
@@ -910,7 +910,7 @@
 /obj/item/coin/copper/pile,
 /obj/structure/carpet/green,
 /turf/open/floor/tile/checker,
-/area/rogue/ship/middeck)
+/area/rogue/indoors/town/vault)
 "hi" = (
 /obj/structure/fluff/railing/border{
 	dir = 8;
@@ -1153,7 +1153,7 @@
 	},
 /obj/item/coin/gold/pile,
 /turf/open/floor/tile/checker,
-/area/rogue/ship/middeck)
+/area/rogue/indoors/town/vault)
 "jF" = (
 /obj/structure/ladder,
 /turf/open/floor/woodturned,
@@ -1271,7 +1271,7 @@
 /obj/structure/stockpile_storage/metal,
 /obj/structure/carpet/green,
 /turf/open/floor/tile/checker,
-/area/rogue/ship/middeck)
+/area/rogue/indoors/town/vault)
 "ky" = (
 /obj/structure/bed/shit,
 /turf/open/floor/ruinedwood/spiral,
@@ -2168,7 +2168,7 @@
 /obj/structure/closet/crate/chest/crate,
 /obj/item/gem,
 /turf/open/floor/tile/checker,
-/area/rogue/ship/middeck)
+/area/rogue/indoors/town/vault)
 "tB" = (
 /obj/structure/table/wood{
 	icon_state = "tablewood3"
@@ -2206,7 +2206,7 @@
 /obj/item/ingot/blacksteel,
 /obj/item/ingot/blacksteel,
 /turf/open/floor/tile/checker,
-/area/rogue/ship/middeck)
+/area/rogue/indoors/town/vault)
 "tT" = (
 /turf/open/floor/carpet/lord/right{
 	dir = 1
@@ -2352,7 +2352,7 @@
 "uX" = (
 /obj/structure/bookcase/random,
 /turf/open/floor/tile/checker,
-/area/rogue/ship/middeck)
+/area/rogue/indoors/town/vault)
 "uY" = (
 /obj/structure/fluff/railing/border{
 	dir = 1;
@@ -2456,7 +2456,7 @@
 	},
 /obj/item/coin/gold/pile,
 /turf/open/floor/tile/checker,
-/area/rogue/ship/middeck)
+/area/rogue/indoors/town/vault)
 "vC" = (
 /obj/structure/table/wood{
 	dir = 1;
@@ -2924,7 +2924,7 @@
 /obj/item/gem/blue,
 /obj/machinery/light/fueled/wallfire/candle/r,
 /turf/open/floor/tile/checker,
-/area/rogue/ship/middeck)
+/area/rogue/indoors/town/vault)
 "Ah" = (
 /obj/effect/landmark/start/tailor{
 	dir = 8
@@ -4286,7 +4286,7 @@
 	},
 /obj/structure/table/wood/fine,
 /turf/open/floor/tile/checker,
-/area/rogue/ship/middeck)
+/area/rogue/indoors/town/vault)
 "MF" = (
 /obj/structure/bed/inn,
 /obj/effect/decal/cobbleedge{
@@ -4403,6 +4403,9 @@
 /obj/effect/mapping_helpers/access/keyset/town/apothecary,
 /turf/open/floor/ruinedwood/two,
 /area/rogue/ship/middeck)
+"NX" = (
+/turf/open/floor/tile/checker,
+/area/rogue/indoors/town/vault)
 "Ob" = (
 /obj/structure/chair/wood/alt/fancy,
 /obj/structure/fluff/walldeco/customflag{
@@ -5142,7 +5145,7 @@
 /obj/item/ingot/silver,
 /obj/machinery/light/fueled/wallfire/candle/r,
 /turf/open/floor/tile/checker,
-/area/rogue/ship/middeck)
+/area/rogue/indoors/town/vault)
 "Uu" = (
 /obj/effect/decal/cobbleedge{
 	dir = 1;
@@ -58719,7 +58722,7 @@ tD
 xi
 KY
 gu
-Lg
+NX
 ME
 KY
 cx
