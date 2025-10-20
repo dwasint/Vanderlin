@@ -2029,6 +2029,7 @@
 #include "code\modules\buildmode\submodes\boom.dm"
 #include "code\modules\buildmode\submodes\copy.dm"
 #include "code\modules\buildmode\submodes\fill.dm"
+#include "code\modules\buildmode\submodes\items.dm"
 #include "code\modules\buildmode\submodes\mapgen.dm"
 #include "code\modules\buildmode\submodes\throwing.dm"
 #include "code\modules\buildmode\submodes\variable_edit.dm"

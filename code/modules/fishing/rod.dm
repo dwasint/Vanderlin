@@ -249,6 +249,7 @@
 				fish.set_status(FISH_DEAD, silent = TRUE)
 
 	qdel(baited)
+	baited = null
 	update_appearance()
 
 

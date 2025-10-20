@@ -11,7 +11,7 @@
 	for(var/thing in elements)
 		var/x = pos_idx % switch_width
 		var/y = FLOOR(pos_idx / switch_width, 1)
-		var/atom/movable/screen/buildmode/B = new buttontype(src, hud_used, thing)
+		var/atom/movable/screen/buildmode/B = new buttontype(null, hud_used, src, thing)
 		// Extra .5 for a nice offset look
 		B.screen_loc = "NORTH-[(1 + 0.5 + y*1.5)],WEST+[0.5 + x*1.5]"
 		buttonslist += B
@@ -28,8 +28,6 @@
 			close_dirswitch()
 		if(BM_SWITCHSTATE_CATEGORY)
 			close_categoryswitch()
-		if(BM_SWITCHSTATE_ITEMS)
-			close_item_browser()
 
 /**
  * Toggle the mode selection UI
@@ -40,6 +38,19 @@
 	else
 		close_switchstates()
 		open_modeswitch()
+
+/**
+ * Toggle the item browser
+ */
+/datum/buildmode/proc/toggle_item_browser()
+	if(switch_state == BM_SWITCHSTATE_ITEMS)
+		close_item_browser()
+	else
+		// Don't close other switchstates when opening item browser
+		// Just switch to it
+		if(switch_state != BM_SWITCHSTATE_NONE)
+			close_switchstates()
+		open_item_browser()
 
 /**
  * Open the mode selection UI
