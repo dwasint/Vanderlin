@@ -266,9 +266,6 @@
 /obj/item/ingot/iron,
 /obj/item/ingot/iron,
 /obj/item/ingot/steel,
-/obj/item/ingot/steel,
-/obj/item/ingot/steel,
-/obj/item/ingot/steel,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/topdeck)
 "ci" = (
