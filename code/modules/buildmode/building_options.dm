@@ -6,12 +6,12 @@
  * @param {list} buttonslist - List to store created buttons
  * @param {path} buttontype - Type of button to create
  */
-/datum/buildmode/proc/build_options_grid(list/elements, list/buttonslist, buttontype)
+/datum/buildmode/proc/build_options_grid(list/elements, list/buttonslist, buttontype, datum/hud/hud_used)
 	var/pos_idx = 0
 	for(var/thing in elements)
 		var/x = pos_idx % switch_width
 		var/y = FLOOR(pos_idx / switch_width, 1)
-		var/atom/movable/screen/buildmode/B = new buttontype(src, thing)
+		var/atom/movable/screen/buildmode/B = new buttontype(src, hud_used, thing)
 		// Extra .5 for a nice offset look
 		B.screen_loc = "NORTH-[(1 + 0.5 + y*1.5)],WEST+[0.5 + x*1.5]"
 		buttonslist += B
