@@ -1554,7 +1554,6 @@
 /area/rogue/indoors/town/church/chapel)
 "mJ" = (
 /obj/structure/chair/bench/coucha/r,
-/obj/item/clothing/head/helmet/leather/tricorn,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/nobledeck)
 "mM" = (
@@ -1918,9 +1917,6 @@
 /obj/item/clothing/shirt/undershirt/puritan,
 /obj/item/storage/backpack/satchel,
 /obj/item/storage/backpack/satchel,
-/obj/item/clothing/armor/leather/jacket/silk_coat,
-/obj/item/clothing/cloak/half/colored/red,
-/obj/item/clothing/cloak/half,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/nobledeck)
 "pW" = (
@@ -3904,12 +3900,11 @@
 /area/rogue/ship/topdeck)
 "Jv" = (
 /obj/structure/closet/crate/crafted_closet/lord,
-/obj/item/clothing/armor/brigandine/coatplates,
-/obj/item/clothing/head/helmet/heavy/zizo,
-/obj/item/weapon/sword/long/judgement,
-/obj/item/clothing/gloves/angle,
-/obj/item/clothing/wrists/bracers/leather,
 /obj/item/storage/messkit,
+/obj/item/clothing/head/helmet/leather/tricorn,
+/obj/item/clothing/cloak/half,
+/obj/item/clothing/cloak/half/colored/red,
+/obj/item/clothing/armor/leather/jacket/silk_coat,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/nobledeck)
 "Jx" = (
