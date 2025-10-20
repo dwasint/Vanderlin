@@ -685,5 +685,33 @@
                 "balance": "Gave the \\\"Brushwalker\\\" trait to briar's grn. blessings, bandit knave poachers, and forest ruffians."
             }
         ]
+    },
+    "2025-10-19": {
+        "wgtjunior743": [
+            {
+                "balance": "The boiler can take damage by hitting the chest of a steam knight.\\nbalances The steamknight helmet fov is at 70 unpowered and 180 powered while powered they also gain a partial night vision."
+            },
+            {
+                "balance": "The more damaged the boiler is the more steam it will drain."
+            },
+            {
+                "admin": "Add a way for Admins to Ban people from playing a species."
+            }
+        ],
+        "Wouju": [
+            {
+                "balance": "essence precursors were completely changed"
+            }
+        ]
+    },
+    "2025-10-20": {
+        "SpeebusDaGeebus": [
+            {
+                "rscadd": "Consort Crown to Queen's Retreat"
+            },
+            {
+                "rscdel": "Surplus Crown"
+            }
+        ]
     }
 }

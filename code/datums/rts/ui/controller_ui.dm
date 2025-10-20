@@ -71,18 +71,17 @@
 	client.screen -= mob_exit
 	client.screen -= patrol_button
 
-/atom/movable/screen/controller_ui/controller_ui/proc/create_and_position_buttons()
-	character = new
-	name_box = new
-	task = new
-	stat = new
-	button_one = new
+/atom/movable/screen/controller_ui/controller_ui/proc/create_and_position_buttons(datum/hud/owner_hud)
+	character = new(null, owner_hud)
+	name_box = new(null, owner_hud)
+	task = new(null, owner_hud)
+	stat = new(null, owner_hud)
+	button_one = new(null, owner_hud)
 
-	button_two = new
-	mob_exit = new
+	button_two = new(null, owner_hud)
+	mob_exit = new(null, owner_hud)
 
-	patrol_button = new
-	patrol_button.parent_ui = src
+	patrol_button = new(null, owner_hud, src)
 
 	update_screen_loc()
 	update_all()

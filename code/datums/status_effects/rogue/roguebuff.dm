@@ -838,6 +838,15 @@
 	effectedstats = list("intelligence" = 2, "endurance" = 4, "speed" = -3)
 	duration = 20 SECONDS
 
+/datum/status_effect/buff/powered_steam_armor/on_apply()
+	. = ..()
+	var/mob/living/carbon/human/H = owner
+	var/obj/item/organ/eyes/eyes = H.getorgan(/obj/item/organ/eyes)
+	if(!eyes)
+		return
+	ADD_TRAIT(owner, TRAIT_BESTIALSENSE, REF(src)) //It is not related to Dendor, it is just for the night vision.
+	owner.update_sight()
+
 /datum/status_effect/buff/powered_steam_armor
 	id = "powered_steam"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/powered_steam_armor
@@ -848,6 +857,11 @@
 	name = "Powered Steam Armor"
 	desc = "The armor is powered. I feel unstoppable."
 	icon_state = "buff"
+
+/datum/status_effect/buff/powered_steam_armor/on_remove()
+	. = ..()
+	REMOVE_TRAIT(owner, TRAIT_BESTIALSENSE, REF(src))
+	owner.update_sight()
 
 /datum/status_effect/buff/lux_drank
 	id = "lux_drank"
