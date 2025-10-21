@@ -593,26 +593,12 @@
 			valid_fauna[fauna_path] = rule.spawn_weight
 
 		if(valid_fauna.len)
-			var/chosen = weighted_pick_fauna(valid_fauna)
+			var/chosen = pickweight(valid_fauna)
 			if(chosen)
 				var/mob/living/mob = new chosen(T)
 				mob.faction |= "islander"
 				SSisland_mobs.register_mob(mob)
 
-/datum/island_generator/proc/weighted_pick_fauna(list/weights)
-	var/total = 0
-	for(var/item in weights)
-		total += weights[item]
-
-	var/pick = rand(1, total)
-	var/current = 0
-
-	for(var/item in weights)
-		current += weights[item]
-		if(pick <= current)
-			return item
-
-	return pick(weights)
 
 /datum/island_generator/proc/build_elevation(x, y, z, height, dist_to_water, temperature, moisture)
 	for(var/level = 1 to height)
@@ -915,18 +901,3 @@
 			if(island_map["[x+dx],[y+dy]"])
 				count++
 	return count
-
-/datum/island_generator/proc/weighted_pick(list/weights)
-	var/total = 0
-	for(var/item in weights)
-		total += weights[item]
-
-	var/pick = rand(1, total)
-	var/current = 0
-
-	for(var/item in weights)
-		current += weights[item]
-		if(pick <= current)
-			return item
-
-	return pick(weights)

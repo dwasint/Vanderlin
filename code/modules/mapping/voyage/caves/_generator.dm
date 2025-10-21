@@ -692,28 +692,13 @@
 			valid_fauna[fauna_path] = rule.spawn_weight
 
 		if(valid_fauna.len)
-			var/chosen = weighted_pick_fauna(valid_fauna)
+			var/chosen = pickweight(valid_fauna)
 			if(chosen)
 				var/mob/living/mob = new chosen(T)
 				mob.faction |= "islander"
 				SSisland_mobs.register_mob(mob)
 				if(lower_world)
 					SSmobs.enhance_mob(mob, 1 + (biome.difficulty * 2))
-
-/datum/cave_generator/proc/weighted_pick_fauna(list/weights)
-	var/total = 0
-	for(var/item in weights)
-		total += weights[item]
-
-	var/pick = rand(1, total)
-	var/current = 0
-
-	for(var/item in weights)
-		current += weights[item]
-		if(pick <= current)
-			return item
-
-	return pick(weights)
 
 /datum/cave_generator/proc/generate_lava_river_path(list/upper_cave_map, list/lower_cave_map, list/ravine_map)
 	var/list/valid_starts = list()
@@ -959,7 +944,7 @@
 		if(!valid_tiles.len || !weighted_templates.len)
 			break
 
-		var/datum/cave_feature_template/feature_template = weighted_pick(weighted_templates)
+		var/datum/cave_feature_template/feature_template = pickweight(weighted_templates)
 		var/turf/spawn_loc = find_valid_cave_feature_location(feature_template, valid_tiles, placed_features)
 
 		if(!spawn_loc)
@@ -1017,18 +1002,3 @@
 			if(map["[x+dx],[y+dy]"])
 				count++
 	return count
-
-/datum/cave_generator/proc/weighted_pick(list/weights)
-	var/total = 0
-	for(var/item in weights)
-		total += weights[item]
-
-	var/pick = rand(1, total)
-	var/current = 0
-
-	for(var/item in weights)
-		current += weights[item]
-		if(pick <= current)
-			return item
-
-	return pick(weights)
