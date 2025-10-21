@@ -261,6 +261,7 @@
 /obj/item/ingot/iron,
 /obj/item/ingot/iron,
 /obj/item/ingot/steel,
+/obj/item/ingot/copper,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/topdeck)
 "ci" = (
@@ -428,6 +429,9 @@
 /obj/effect/landmark/start/prince,
 /turf/open/floor/ruinedwood/two,
 /area/rogue/ship/nobledeck)
+"dh" = (
+/turf/open/floor/churchrough,
+/area/rogue/indoors/town/church/chapel)
 "dp" = (
 /obj/structure/table/wood,
 /obj/structure/bars{
@@ -1245,6 +1249,10 @@
 	icon_state = "tablewood3"
 	},
 /obj/item/rope,
+/obj/item/needle,
+/obj/item/needle,
+/obj/item/needle,
+/obj/item/needle,
 /turf/open/floor/hay,
 /area/rogue/ship/topdeck)
 "kF" = (
@@ -1872,7 +1880,11 @@
 /area/rogue/ship/middeck)
 "pQ" = (
 /obj/structure/closet/crate/chest/wicker,
-/obj/item/ingot/copper,
+/obj/item/natural/cloth,
+/obj/item/natural/cloth,
+/obj/item/natural/cloth,
+/obj/item/natural/cloth,
+/obj/item/natural/cloth,
 /turf/open/floor/hay,
 /area/rogue/ship/topdeck)
 "pT" = (
@@ -2566,6 +2578,16 @@
 	},
 /turf/open/floor/herringbone,
 /area/rogue/ship/middeck)
+"wF" = (
+/obj/structure/bed/inn,
+/obj/item/bedsheet/cloth,
+/obj/structure/rack/shelf/notdense,
+/obj/structure/roguetent{
+	layer = 8
+	},
+/obj/machinery/light/fueled/torchholder/l,
+/turf/open/floor/ruinedwood/spiral,
+/area/rogue/ship/middeck)
 "wH" = (
 /obj/structure/rack,
 /obj/item/weapon/axe/battle,
@@ -2629,10 +2651,9 @@
 /turf/open/transparent/openspace,
 /area/rogue/outdoors/beach)
 "xn" = (
-/obj/structure/chair/stool,
-/obj/machinery/light/fueled/wallfire/candle/blue/l,
-/turf/open/floor/cobble,
-/area/rogue/indoors/town/church/chapel)
+/obj/machinery/artificer_table,
+/turf/open/floor/hay,
+/area/rogue/ship/topdeck)
 "xu" = (
 /obj/item/candle/yellow,
 /obj/item/candle/yellow,
@@ -3171,6 +3192,15 @@
 	},
 /turf/open/floor/ruinedwood,
 /area/rogue/ship/middeck)
+"CS" = (
+/obj/structure/mannequin/male{
+	dir = 8;
+	pixel_y = 0;
+	pixel_x = 12;
+	density = 0
+	},
+/turf/open/floor/hay,
+/area/rogue/ship/topdeck)
 "CY" = (
 /obj/effect/landmark/start/clinicapprentice,
 /turf/open/floor/ruinedwood/two,
@@ -4386,15 +4416,10 @@
 /turf/closed/wall/mineral/wooddark,
 /area/rogue/indoors/town/church/chapel)
 "Om" = (
-/obj/structure/bed/inn,
-/obj/item/bedsheet/cloth,
-/obj/structure/rack/shelf/notdense,
-/obj/structure/roguetent{
-	layer = 8
-	},
-/obj/machinery/light/fueled/torchholder/l,
-/turf/open/floor/ruinedwood/spiral,
-/area/rogue/ship/middeck)
+/obj/structure/chair/stool,
+/obj/machinery/light/fueled/wallfire/candle/blue/l,
+/turf/open/floor/cobble,
+/area/rogue/indoors/town/church/chapel)
 "Op" = (
 /obj/structure/fluff/railing/border{
 	dir = 8;
@@ -4765,7 +4790,7 @@
 /turf/open/floor/hay,
 /area/rogue/outdoors/beach)
 "RF" = (
-/obj/structure/fermentation_keg/water,
+/obj/machinery/tanningrack,
 /turf/open/floor/hay,
 /area/rogue/ship/topdeck)
 "RH" = (
@@ -5708,8 +5733,9 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/topdeck)
 "Zl" = (
-/turf/open/floor/churchrough,
-/area/rogue/indoors/town/church/chapel)
+/obj/machinery/loom,
+/turf/open/floor/hay,
+/area/rogue/ship/topdeck)
 "Zr" = (
 /obj/structure/closet/crate/chest/old_crate,
 /obj/item/ammo_casing/caseless/cball,
@@ -14635,7 +14661,7 @@ ne
 Ze
 OF
 Ze
-Om
+wF
 ne
 Ze
 wU
@@ -18270,7 +18296,7 @@ Eq
 ee
 LU
 iE
-xn
+Om
 Te
 Ts
 go
@@ -19078,9 +19104,9 @@ Rw
 Rw
 Vy
 Fx
-Zl
-Zl
-Zl
+dh
+dh
+dh
 tK
 Rw
 Sr
@@ -19281,7 +19307,7 @@ Rw
 Rw
 Rw
 du
-Zl
+dh
 dF
 Uf
 Rw
@@ -96856,8 +96882,8 @@ rC
 gq
 eC
 VU
-mQ
-Lp
+CS
+Zl
 mQ
 VU
 Jx
@@ -97857,7 +97883,7 @@ gb
 GF
 VU
 mQ
-TW
+xn
 mQ
 VU
 VU
