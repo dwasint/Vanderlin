@@ -120,6 +120,10 @@
 	stat_attack = UNCONSCIOUS	//You falling unconcious won't save you, little one..
 	ai_controller = /datum/ai_controller/direbear
 
+/mob/living/simple_animal/hostile/retaliate/direbear/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/ai_aggro_system)
+
 /mob/living/simple_animal/hostile/retaliate/direbear/get_sound(input)
 	switch(input)
 		if("aggro")

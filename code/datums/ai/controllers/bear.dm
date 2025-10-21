@@ -17,7 +17,7 @@
 
 		/datum/ai_planning_subtree/aggro_find_target,
 		/datum/ai_planning_subtree/find_food,
-		/datum/ai_planning_subtree/basic_melee_attack_subtree/opportunistic,
+		/datum/ai_planning_subtree/basic_melee_attack_subtree,
 
 		/datum/ai_planning_subtree/targeted_mob_ability/continue_planning,
 
