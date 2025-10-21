@@ -133,12 +133,6 @@
 	if(!success)
 		shake_camera(user, 1, 1)
 		playsound(src, 'sound/items/bsmithfail.ogg', 100, FALSE)
-		// Reduced penalty if quality was good
-		if(quality_score < 40)
-			recipe.bar_health -= 20
-		else if(quality_score < 60)
-			recipe.bar_health -= 10
-		// No extra penalty for 60+ quality on fail
 
 	if(success)
 		var/skill_boost = 0
@@ -153,12 +147,6 @@
 			skill_boost = quality_score * 0.5
 
 		recipe.skill_quality += skill_boost
-
-	if(recipe.bar_health <= 0)
-		hingot = null
-		working_material = null
-		update_appearance(UPDATE_OVERLAYS)
-		return
 
 	if(recipe.progress >= 100 && !recipe.additional_items.len && !recipe.needed_item)
 		complete_recipe(quality_score)
