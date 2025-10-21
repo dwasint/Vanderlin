@@ -29,6 +29,8 @@
 	var/ocean_noise_amplification = 3.0  // How much to amplify the island noise for depth variation
 	var/shallow_water_noise_threshold = 0.25  // Higher = less shallow water extends out
 
+	var/matthios_fragment = FALSE
+
 	// Persistent noise generators
 	var/datum/noise_generator/noise
 	var/datum/noise_generator/beach_noise
@@ -36,13 +38,14 @@
 	var/datum/noise_generator/temperature_noise
 	var/datum/noise_generator/moisture_noise
 
-/datum/island_generator/New(datum/island_biome/selected_biome, sx = 100, sy = 100, _noise_influence = 0.5,  _temperature_frequency = 0.2, _moisture_frequency = 0.2, _height_frequency = 0.22, _height_threshold = 0.5)
+/datum/island_generator/New(datum/island_biome/selected_biome, sx = 100, sy = 100, _noise_influence = 0.5,  _temperature_frequency = 0.2, _moisture_frequency = 0.2, _height_frequency = 0.22, _height_threshold = 0.5, _matthios)
 	..()
 	temperature_frequency = _temperature_frequency
 	moisture_frequency = _moisture_frequency
 	noise_influence = _noise_influence
 	height_threshold = _height_threshold
 	height_frequency = _height_frequency
+	matthios_fragment = _matthios
 
 	size_x = sx
 	size_y = sy
@@ -246,6 +249,10 @@
 
 	if(!generate_settlements_on_island(bottom_left_corner, mainland_tiles))
 		generate_cave_entry(bottom_left_corner, mainland_tiles)
+
+	if(matthios_fragment)
+		try_place_portal(bottom_left_corner, mainland_tiles)
+
 	CHECK_TICK
 
 	if(job)
@@ -369,9 +376,53 @@
 	if(!generate_settlements_on_island(bottom_left_corner, mainland_tiles))
 		generate_cave_entry(bottom_left_corner, mainland_tiles)
 
+	if(matthios_fragment)
+		try_place_portal(bottom_left_corner, mainland_tiles)
+
 	return TRUE
 
+/datum/island_generator/proc/try_place_portal(turf/bottom_left_corner, list/mainland_tiles)
+	var/start_x = bottom_left_corner.x
+	var/start_y = bottom_left_corner.y
+	var/start_z = bottom_left_corner.z
+
+	var/list/island_map = list()
+	var/list/height_map = list()
+	var/list/coord_to_turf = list()
+
+	for(var/list/tile_data in mainland_tiles)
+		var/x = tile_data["x"]
+		var/y = tile_data["y"]
+		var/key = "[x],[y]"
+
+		island_map[key] = TRUE
+		height_map[key] = tile_data["height"]
+		coord_to_turf[key] = tile_data["turf"]
+
+	var/sample_radius = 8
+	var/list/samples = noise.poisson_disk_sampling(0, size_x - 1, 0, size_y - 1, sample_radius, sample_radius * 1.5)
+
+	samples = shuffle(samples)
+
+	for(var/list/sample in shuffle(samples))
+		var/sx = round(sample[1])
+		var/sy = round(sample[2])
+
+		var/list/tile_data = coord_to_turf["[sx],[sy]"]
+		if(!tile_data)
+			continue
+
+		var/turf/spawn_loc = locate(start_x + sx, start_y + sy, start_z)
+		if(!spawn_loc)
+			continue
+
+		new /obj/structure/island_descent(spawn_loc)
+		break
+
 /datum/island_generator/proc/generate_cave_entry(turf/bottom_left_corner, list/mainland_tiles)
+	if(matthios_fragment)
+		return FALSE
+
 	if(!biome.cave_entry_templates || !biome.cave_entry_templates.len)
 		return FALSE
 

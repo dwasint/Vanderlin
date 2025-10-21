@@ -2809,6 +2809,7 @@
 #include "code\modules\mapping\voyage\testers.dm"
 #include "code\modules\mapping\voyage\caves\_biome.dm"
 #include "code\modules\mapping\voyage\caves\_features.dm"
+#include "code\modules\mapping\voyage\caves\_fragment_generator.dm"
 #include "code\modules\mapping\voyage\caves\_generator.dm"
 #include "code\modules\mapping\voyage\island\_biome.dm"
 #include "code\modules\mapping\voyage\island\_feature.dm"

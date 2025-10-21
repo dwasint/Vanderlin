@@ -168,6 +168,7 @@ SUBSYSTEM_DEF(terrain_generation)
 
 /datum/controller/subsystem/terrain_generation/proc/generate_init_terrain()
 	// Find all markers that should generate on init
+	var/first = TRUE
 	for(var/obj/effect/landmark/terrain_generation_marker/marker in world)
 		if(marker.generate_on_init)
 			log_world("Generating terrain at ([marker.x], [marker.y], [marker.z])...")
@@ -177,13 +178,13 @@ SUBSYSTEM_DEF(terrain_generation)
 			var/cave_biome = marker.cave_biome_override || pick(cave_biomes)
 			var/island_biome = marker.island_biome_override || pick(island_biomes)
 
-			generate_terrain_sync(marker.loc, new cave_biome(island_difficulty), new island_biome(island_difficulty))
-
+			generate_terrain_sync(marker.loc, new cave_biome(island_difficulty), new island_biome(island_difficulty), first)
+			first = FALSE
 			qdel(marker)
 
 			log_world("Terrain generation complete.")
 
-/datum/controller/subsystem/terrain_generation/proc/generate_terrain_sync(turf/bottom_left, datum/cave_biome/cave_biome, datum/island_biome/island_biome)
+/datum/controller/subsystem/terrain_generation/proc/generate_terrain_sync(turf/bottom_left, datum/cave_biome/cave_biome, datum/island_biome/island_biome, first)
 	if(!bottom_left)
 		return FALSE
 
@@ -192,7 +193,15 @@ SUBSYSTEM_DEF(terrain_generation)
 	bottom_left = get_step(bottom_left, NORTH)
 
 	// Phase 1: Generate caves (z and z+1)
-	var/datum/cave_generator/cave_gen = new(cave_biome, size, size)
+	var/datum/cave_generator/cave_gen
+
+	var/matthios = FALSE
+	if(prob(30) || first)
+		first = FALSE
+		cave_gen = new /datum/cave_generator/matthios_fragment(cave_biome, size, size)
+		matthios = TRUE
+	else
+		cave_gen = new(cave_biome, size, size)
 
 	if(!cave_gen.generate(bottom_left))
 		log_world("ERROR: Cave generation failed at ([bottom_left.x], [bottom_left.y], [bottom_left.z])")
@@ -204,13 +213,13 @@ SUBSYSTEM_DEF(terrain_generation)
 		log_world("ERROR: Could not locate island z-level at z+2")
 		return FALSE
 
-	var/datum/island_generator/island_gen = new(island_biome, size, size)
+	var/datum/island_generator/island_gen = new(island_biome, size, size, _matthios = matthios)
 
 	if(!island_gen.generate(island_corner))
 		log_world("ERROR: Island generation failed at ([island_corner.x], [island_corner.y], [island_corner.z])")
 		return FALSE
 
-	var/datum/island_data/island = new(bottom_left, size + (perimeter_width * 2), island_biome.name, island_biome.difficulty)
+	var/datum/island_data/island = new(bottom_left, size + (perimeter_width * 2), island_biome.name, island_biome.difficulty, matthios)
 	generate_island_position(island)
 	island_registry += island
 
