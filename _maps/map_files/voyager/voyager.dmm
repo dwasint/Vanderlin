@@ -4961,7 +4961,7 @@
 /turf/open/floor/ruinedwood/two,
 /area/rogue/ship/middeck)
 "SB" = (
-/obj/machinery/light/fueled/smelter,
+/obj/machinery/light/fueled/smelter/great,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/topdeck)
 "SC" = (
