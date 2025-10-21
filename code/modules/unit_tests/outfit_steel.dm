@@ -16,7 +16,7 @@
 
 		// Check all contents
 		for(var/obj/item/equipped_item in dummy.contents)
-			if(equipped_item.melting_material == "steel")
+			if(equipped_item.melting_material == /datum/material/steel)
 				TEST_FAIL("[outfit_type] contains steel item [equipped_item.type] which is not in the allowed list")
 
 		// Strip for next iteration
