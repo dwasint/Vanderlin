@@ -16,7 +16,6 @@
 	var/progress = 0 // 0 to 100%, percentage of completion on this step of crafting (or overall if no extra items required)
 	var/i_type // Category of crafted item. Will determine how it shows on the crafting menu window.
 	var/recipe_name // This is what will be shown when you
-	var/bar_health = 100 // Current material bar health, reduced by failures. At 0 HP it is deleted.
 	var/numberofhits = 0 // Increased every time you hit the bar, the more you have to hit the bar the less quality of the product.
 	var/numberofbreakthroughs = 0 // How many good hits we got on the metal, advances recipes 50% faster, reduces number of hits total, and restores bar_health
 	var/datum/parent // The ingot we're currently working on.
@@ -97,31 +96,6 @@
 		if(!prob(proab)) // Roll again for consequences
 			user.visible_message("<span class='warning'>[user] strikes poorly!</span>")
 			skill_quality -= 0.5
-
-			// Reduce damage on poor hits if quality score was decent
-			var/damage_multiplier = 1.0
-			if(quality_score >= 40)
-				damage_multiplier = 0.5 // Half damage if you tried
-
-			bar_health -= (craftdiff / 1.2) * damage_multiplier
-
-			if(parent)
-				var/obj/item/P = parent
-				switch(skill_level)
-					if(0)
-						bar_health -= 20 * damage_multiplier
-					if(1 to 3)
-						bar_health -= floor(20 / skill_level) * damage_multiplier
-					if(4)
-						bar_health -= 5 * damage_multiplier
-					if(5 to 6)
-						var/mob/living/L = user
-						if(L.stat_roll(STATKEY_LCK, 4, 10, TRUE))
-							bar_health -= (craftdiff / 1.2) * damage_multiplier
-
-				if(bar_health <= 0)
-					user.visible_message("<span class='danger'>[user] destroys the bar!</span>")
-					qdel(P)
 			return FALSE
 		else
 			user.visible_message("<span class='warning'>[user] almost fumbles but recovers!</span>")
@@ -146,8 +120,6 @@
 
 		if(breakthrough)
 			user.visible_message("<span class='deadsay'>[user] deftly strikes the bar!</span>")
-			if(bar_health < 100)
-				bar_health += 20 // Correcting the mistakes, ironing the kinks. Low chance, so rewarding.
 		else
 			user.visible_message("<span class='info'>[user] strikes the bar!</span>")
 		return TRUE
