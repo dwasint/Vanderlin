@@ -691,7 +691,7 @@
 /area/rogue/outdoors/rtfield/safe)
 "ark" = (
 /obj/structure/closet/crate/chest/crate,
-/obj/item/fishing/bait/dough,
+/obj/item/fishing/lure/dough,
 /turf/open/floor/ruinedwood/darker,
 /area/rogue/outdoors/river)
 "arm" = (
@@ -1851,7 +1851,7 @@
 /area/rogue/outdoors/town)
 "aWM" = (
 /obj/structure/closet/crate/chest/crate,
-/obj/item/fishing/bait/speckled,
+/obj/item/fishing/lure/speckled,
 /turf/open/floor/naturalstone,
 /area/rogue/outdoors/river)
 "aWO" = (
@@ -25473,7 +25473,7 @@
 	pixel_y = 7
 	},
 /obj/structure/closet/crate/chest/neu,
-/obj/item/fishing/bait/meat,
+/obj/item/fishing/lure/meat,
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/outdoors/river)
 "paM" = (
