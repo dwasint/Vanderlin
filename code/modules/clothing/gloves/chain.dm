@@ -24,6 +24,11 @@
 	melting_material = /datum/material/steel
 	melt_amount = 50
 
+/obj/item/clothing/gloves/chain/psydon
+	name = "otavan chain gauntlets"
+	icon_state = "psydongloveschain"
+	item_state = "psydongloveschains"
+
 /obj/item/clothing/gloves/chain/iron
 	name = "iron chain gauntlets"
 	icon_state = "icgloves"

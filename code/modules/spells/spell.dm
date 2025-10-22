@@ -594,6 +594,12 @@
 				L.cursed_freak_out()
 			return sig_return | SPELL_CANCEL_CAST
 
+		if((spell_type == SPELL_MIRACLE) && HAS_TRAIT(cast_on, TRAIT_PSYDONITE) && !(spell_flags & SPELL_PSYDON))
+			cast_on.visible_message(span_info("[cast_on] stirs for a moment, the miracle dissipates."), span_notice("A dull warmth swells in your heart, only to fade as quickly as it arrived."))
+			playsound(cast_on, 'sound/magic/PSY.ogg', 100, FALSE, -1)
+			owner.playsound_local(owner, 'sound/magic/PSY.ogg', 100, FALSE, -1)
+			return sig_return | SPELL_CANCEL_CAST
+
 	if(charge_required && !click_to_activate)
 		// Otherwise we use a simple do_after
 		var/do_after_flags = IGNORE_HELD_ITEM | IGNORE_USER_LOC_CHANGE | IGNORE_USER_DIR_CHANGE

@@ -251,6 +251,28 @@
 	melting_material = /datum/material/steel
 	item_weight = 7.5 * STEEL_MULTIPLIER
 
+/obj/item/ingot/steelholy/
+	name = "holy steel bar"
+	desc = "This ingot of steel has been touched by Malum. It radiates heat, even when outside a forge."
+	icon_state = "ingotsteelholy"
+	melting_material = /datum/material/steel //Smelting it removes the blessing
+	sellprice = 20
+
+/obj/item/ingot/silverblessed/
+	name = "blessed silver bar"
+	desc = "This bar radiates a divine purity. Treasured by the realms and commonly found in Psydonic weaponry."
+	icon_state = "ingotsilvblessed"
+	melting_material = /datum/material/silver
+	sellprice = 100
+
+/obj/item/ingot/silverblessed/bullion
+	name = "blessed silver bullion"
+	desc = "This bar radiates a divine purity. The Psycross and the words casted into the surface denotes the Otavan Inquisition as the point of it's origin."
+	icon_state = "ingotsilvblessed_psy"
+	melting_material = /datum/material/silver
+	sellprice = 100
+
+
 /obj/item/ingot/blacksteel
 	name = "blacksteel bar"
 	desc = "Sacrificing the holy elements of silver for raw strength, this strange and powerful ingot's origin carries dark rumors.."

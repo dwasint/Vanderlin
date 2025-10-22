@@ -7619,7 +7619,7 @@
 /turf/open/floor/blocks,
 /area/rogue/indoors/town/cell)
 "hzY" = (
-/obj/effect/landmark/start/shepherd{
+/obj/effect/landmark/start/orthodoxist{
 	dir = 1
 	},
 /obj/structure/chair/bench/church/r{
@@ -9704,7 +9704,7 @@
 /turf/closed/wall/mineral/wooddark,
 /area/rogue/indoors/town/dwarfin)
 "jye" = (
-/obj/effect/landmark/start/shepherd{
+/obj/effect/landmark/start/orthodoxist{
 	dir = 1
 	},
 /obj/structure/chair/bench/church{
@@ -13379,7 +13379,7 @@
 /turf/open/floor/wood,
 /area/rogue/outdoors/town/roofs)
 "mZp" = (
-/obj/effect/landmark/start/shepherd{
+/obj/effect/landmark/start/orthodoxist{
 	dir = 1
 	},
 /obj/structure/chair/bench/church/mid{

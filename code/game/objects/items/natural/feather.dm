@@ -16,6 +16,7 @@
 	spitoutmouth = FALSE
 	w_class = WEIGHT_CLASS_TINY
 
+/*
 /obj/item/natural/feather/pre_attack_secondary(atom/A, mob/living/carbon/human/user, params)
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
@@ -34,3 +35,4 @@
 			confessional.confession_type = "patron"
 			confessional.name = "confession of faith"
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+*/

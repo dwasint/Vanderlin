@@ -47,6 +47,12 @@
 	. = ..()
 	AddComponent(/datum/component/item_equipped_movement_rustle)
 
+/obj/item/clothing/armor/chainmail/hauberk/fluted
+	name = "fluted hauberk"
+	desc = "A steel maille, of a pattern popularized by Otavan templars."
+	icon_state = "flutedhauberk"
+	item_state = "flutedhauberk"
+
 /obj/item/clothing/armor/chainmail/hauberk/iron
 	name = "iron hauberk"
 	desc = "A long shirt of iron maille, heavy on the shoulders. Can be worn as a shirt, but some men with hairy chests consider it torture."

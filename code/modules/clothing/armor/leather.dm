@@ -238,6 +238,17 @@
 	armor = ARMOR_LEATHER
 	body_parts_covered = COVERAGE_ALL_BUT_LEGS
 
+/obj/item/clothing/armor/leather/jacket/leathercoat/confessor
+	name = "confessional coat"
+	desc = "A sturdy raincoat draped atop of a tightly-fastened boiled leather cuirass. Saint Astratan youths often fashion little pieces of memorabilia and stitch it on the inner pockets of the coat to remind the confessors that their cause is virtuous, and that they mustn't lose sight of what matters."
+	icon_state = "confessorcoat"
+	item_state = "confessorcoat"
+	body_parts_covered = COVERAGE_FULL
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
+	armor = ARMOR_LEATHER
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_CHOP, BCLASS_SMASH)
+	max_integrity = 250
+
 /obj/item/clothing/armor/leather/jacket/leathercoat/black
 	name = "black leather coat"
 	desc = "A black and purple leather coat."

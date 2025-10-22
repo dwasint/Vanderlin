@@ -116,6 +116,10 @@ GLOBAL_LIST_INIT(ghost_verbs, list(
 	invisibility = INVISIBILITY_GHOST
 	see_invisible = SEE_INVISIBLE_GHOST
 
+/mob/dead/observer/screye/blackmirror
+	sight = SEE_TURFS | SEE_MOBS | SEE_OBJS
+	see_in_dark = 100
+
 /mob/dead/observer/screye/Move(n, direct)
 	return
 
@@ -210,8 +214,10 @@ GLOBAL_LIST_INIT(ghost_verbs, list(
 
 	. = ..()
 
-	if(!(istype(src, /mob/dead/observer/rogue/arcaneeye)))
-		verbs += GLOB.ghost_verbs
+	if(!istype(src, /mob/dead/observer/rogue/arcaneeye))
+		if(!istype(src, /mob/dead/observer/screye))
+			client?.verbs += GLOB.ghost_verbs
+			to_chat(src, span_danger("Click the <b>SKULL</b> on the left of your HUD to respawn."))
 
 	grant_all_languages()
 

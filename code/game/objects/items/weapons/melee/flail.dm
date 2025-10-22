@@ -133,6 +133,13 @@
 /obj/item/weapon/flail/psydon/Initialize(mapload)
 	. = ..()
 	enchant(/datum/enchantment/silver)
+	AddComponent(/datum/component/psyblessed, FALSE, 3, FALSE, 50, 1, TRUE)
+
+/obj/item/weapon/flail/psydon/relic
+	name = "Consecratia"
+	desc = "The weight of His anguish, His pain, His hope and His love for humenkind - all hanging on the ornamental silver-steel head chained to this arm. <br><br>A declaration of love for all that Psydon lives for, and a crushing reminder to the arch-nemesis that they will not triumph as long as He endures."
+	icon_state = "psymorningstar"
+
 
 //................ Peasant Flail ............... // A little confusing still
 /obj/item/weapon/flail/peasant

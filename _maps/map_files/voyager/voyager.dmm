@@ -728,7 +728,7 @@
 /turf/open/floor/ruinedwood,
 /area/rogue/ship/middeck)
 "fN" = (
-/obj/effect/landmark/start/shepherd,
+/obj/effect/landmark/start/orthodoxist,
 /obj/structure/bed/inn,
 /obj/item/bedsheet/wool,
 /obj/structure/fluff/walldeco/psybanner{
@@ -2606,7 +2606,7 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/rogue/ship/topdeck)
 "wU" = (
-/obj/effect/landmark/start/shepherd,
+/obj/effect/landmark/start/orthodoxist,
 /obj/structure/bed/inn,
 /obj/item/bedsheet/wool,
 /obj/machinery/light/fueled/torchholder/l,

@@ -1438,7 +1438,7 @@
 /turf/closed/mineral/random/high_nonval,
 /area/rogue/under/cave)
 "aKk" = (
-/obj/effect/landmark/start/shepherd{
+/obj/effect/landmark/start/orthodoxist{
 	dir = 1
 	},
 /obj/structure/chair/bench/church{
@@ -8203,7 +8203,7 @@
 /turf/open/floor/carpet/lord/left,
 /area/rogue/indoors/town/manor/halls)
 "eHG" = (
-/obj/effect/landmark/start/shepherd{
+/obj/effect/landmark/start/orthodoxist{
 	dir = 1
 	},
 /obj/structure/chair/bench/church/mid{
@@ -11039,7 +11039,7 @@
 /turf/open/floor/ruinedwood,
 /area/rogue/indoors/town/manor/guest/guest1)
 "gpy" = (
-/obj/effect/landmark/start/shepherd{
+/obj/effect/landmark/start/orthodoxist{
 	dir = 1
 	},
 /obj/structure/chair/bench/church/r{

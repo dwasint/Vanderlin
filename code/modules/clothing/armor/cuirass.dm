@@ -102,3 +102,33 @@
 	body_parts_covered = COVERAGE_TORSO
 	prevent_crits = ALL_CRITICAL_HITS_VAMP
 	item_weight = 5.5 * IRON_MULTIPLIER
+
+/obj/item/clothing/armor/cuirass/fencer
+	name = "fencer's cuirass"
+	desc = "An expertly smithed form-fitting steel cuirass that is much lighter and agile, but breaks with much more ease. It's thinner, but backed with silk and leather."	// Experimental.
+	armor_class = AC_LIGHT
+	max_integrity = 300
+	melt_amount = 75
+	icon_state = "fencercuirass"
+	item_state = "fencercuirass"
+
+/obj/item/clothing/armor/plate/cuirass/psydon
+	name = "psydonian chestplate"
+	desc = "An expertly smithed form-fitting steel cuirass that is much lighter and agile, but breaks with much more ease. It's thinner, but backed with silk and leather."
+	melt_amount = 75
+	icon_state = "ornatechestplate"
+	item_state = "ornatechestplate"
+
+/obj/item/clothing/armor/cuirass/fluted
+	name = "fluted cuirass"
+	icon_state = "flutedcuirass"
+	desc = "A sturdy steel cuirass with tassets. Supposedly protective, though maybe not against crossbow bolts."
+
+	body_parts_covered = CHEST | VITALS | LEGS
+	max_integrity = 300
+
+/obj/item/clothing/armor/plate/cuirass/ornate
+	name = "psydonian cuirass"
+	icon_state = "ornatecuirass"
+	desc = "An ornate steel cuirass with tassets, favored by both the Holy Otavan Inquisition and the Order of the Silver Psycross. \
+			Made to endure."

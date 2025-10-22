@@ -4862,7 +4862,7 @@
 "eHv" = (
 /obj/machinery/light/fueled/wallfire/candle/r,
 /obj/structure/bed/mediocre,
-/obj/effect/landmark/start/shepherd{
+/obj/effect/landmark/start/orthodoxist{
 	dir = 8
 	},
 /obj/item/bedsheet/cloth,
@@ -6374,7 +6374,7 @@
 /area/rogue/outdoors/town/roofs)
 "ghV" = (
 /obj/structure/bed/mediocre,
-/obj/effect/landmark/start/shepherd{
+/obj/effect/landmark/start/orthodoxist{
 	dir = 8
 	},
 /obj/item/bedsheet/cloth,
@@ -8108,7 +8108,7 @@
 /area/rogue/indoors/town/garrison)
 "hzT" = (
 /obj/structure/bed/mediocre,
-/obj/effect/landmark/start/shepherd{
+/obj/effect/landmark/start/orthodoxist{
 	dir = 8
 	},
 /obj/item/bedsheet/cloth,
@@ -8833,7 +8833,7 @@
 "ikM" = (
 /obj/structure/bed/mediocre,
 /obj/item/bedsheet/cloth,
-/obj/effect/landmark/start/shepherd{
+/obj/effect/landmark/start/orthodoxist{
 	dir = 4
 	},
 /turf/open/floor/cobble,
@@ -11468,7 +11468,7 @@
 "kOD" = (
 /obj/structure/bed/mediocre,
 /obj/item/bedsheet/cloth,
-/obj/effect/landmark/start/shepherd{
+/obj/effect/landmark/start/orthodoxist{
 	dir = 8
 	},
 /turf/open/floor/cobble,

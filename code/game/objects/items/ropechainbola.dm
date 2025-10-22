@@ -62,12 +62,15 @@
 	if(!istype(C))
 		return
 
+	var/surrender_mod = 1
+	if(C.surrendering || HAS_TRAIT(C, TRAIT_BAGGED))
+		surrender_mod = 0.5
 	if(user.aimheight >= 5)
 		if(!C.handcuffed)
 			if(C.num_hands)
 				C.visible_message(span_warning("[user] is trying to tie [C]'s arms with [src.name]!"), \
 									span_danger("[user] is trying to tie my arms with [src.name]!"))
-				if(do_after(user, 6 SECONDS * (C.surrendering ? 0.5 : 1), C) && C.num_hands)
+				if(do_after(user, 6 SECONDS * (surrender_mod), C) && C.num_hands)
 					apply_cuffs(C, user, leg = FALSE)
 					C.visible_message(span_warning("[user] ties [C]' arms with [src.name]."), \
 										span_danger("[user] ties my arms up with [src.name]."))

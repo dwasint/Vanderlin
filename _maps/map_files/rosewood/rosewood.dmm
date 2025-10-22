@@ -13655,7 +13655,7 @@
 /obj/structure/chair/wood/alt/chair3{
 	dir = 4
 	},
-/obj/effect/landmark/start/shepherd{
+/obj/effect/landmark/start/orthodoxist{
 	dir = 4
 	},
 /turf/open/floor/carpet/royalblack,

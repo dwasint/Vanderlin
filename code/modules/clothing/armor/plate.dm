@@ -162,3 +162,48 @@
 /obj/item/clothing/armor/plate/full/silver/Initialize(mapload)
 	. = ..()
 	enchant(/datum/enchantment/silver)
+
+
+/obj/item/clothing/armor/plate/fluted/ornate
+	name = "psydonian half-plate"
+	desc = "A sturdily made fluted half-plate armour-set, complete with pauldrons and shoulder-guards. \
+			Favored by both the Holy Otavan Inquisition and the Order of the Silver Psycross. It smells of the madness of an enduring God."
+	icon_state = "ornatehalfplate"
+
+	max_integrity = 400
+
+/obj/item/clothing/armor/plate/fluted/ornate/equipped(mob/living/user, slot)
+	. = ..()
+	if(slot == SLOT_ARMOR)
+		user.apply_status_effect(/datum/status_effect/buff/psydonic_endurance)
+
+/obj/item/clothing/armor/plate/fluted/ornate/dropped(mob/living/carbon/human/user)
+	. = ..()
+	if(istype(user) && user?.wear_armor == src)
+		user.remove_status_effect(/datum/status_effect/buff/psydonic_endurance)
+
+
+/obj/item/clothing/armor/plate/full/fluted/ornate/ordinator
+	name = "inquisitorial ordinator's plate"
+	desc = "A relic that is said to have survived the Grenzelhoft-Otavan war, refurbished and repurposed to slay the arch-enemy in the name of Psydon. <br> A fluted cuirass that has been reinforced with thick padding and an additional shoulder piece. You will endure."
+	icon_state = "ordinatorplate"
+
+
+/datum/status_effect/buff/psydonic_endurance
+	id = "psydonic_endurance"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/psydonic_endurance
+	effectedstats = list("constitution" = 1,"endurance" = 1)
+
+/datum/status_effect/buff/psydonic_endurance/on_apply()
+	. = ..()
+	if(HAS_TRAIT(owner, TRAIT_MEDIUMARMOR) && !HAS_TRAIT(owner, TRAIT_HEAVYARMOR))
+		ADD_TRAIT(owner, TRAIT_HEAVYARMOR, src)
+
+/datum/status_effect/buff/psydonic_endurance/on_remove()
+	. = ..()
+	REMOVE_TRAIT(owner, TRAIT_HEAVYARMOR, src)
+
+/atom/movable/screen/alert/status_effect/buff/psydonic_endurance
+	name = "Psydonic Endurance"
+	desc = "I am protected by blessed Psydonian plate armor."
+	icon_state = "buff"

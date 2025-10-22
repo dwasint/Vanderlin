@@ -81,6 +81,15 @@
 	melting_material = /datum/material/steel
 	sellprice = 50
 
+/obj/item/weapon/whip/antique/psywhip
+	name = "Daybreak"
+	desc = "Holding the blessed silver evokes a memory of the Grand Otavan Cathedral, a testament to humenity's faith. There, upon the ceiling, was painted a scene-most-beautiful: of a robed Psydon standing before the Archdevil, parting the nite's sky with a crack from His fiery whip. Just as He had done prior, so too must you bring daelight to the darkness."
+	icon_state = "psywhip"
+
+/obj/item/weapon/whip/antique/psywhip/Initialize(mapload)
+	. = ..()					// Pre-blessed, +5 force, +100 INT, +2 Def, Silver.
+	AddComponent(/datum/component/psyblessed, TRUE, 5, FALSE, 100, 2, TRUE)
+
 
 //................ Silver Whip ............... //
 /obj/item/weapon/whip/silver

@@ -56,6 +56,7 @@
 #define STATS_PSYCROSS_USERS "people_wearing_psycross"
 #define STATS_ALIVE_TIEFLINGS "alive_tieflings"
 #define STATS_LUX_HARVESTED "lux_harvested"
+#define STATS_MARQUES_MADE "marques_made"
 
 // Astrata
 #define STATS_LAWS_AND_DECREES_MADE "laws_and_decrees_made"

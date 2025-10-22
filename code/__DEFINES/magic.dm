@@ -158,6 +158,7 @@ DEFINE_BITFIELD(antimagic_flags, list(
 /// Is learnable via Rituos
 #define SPELL_RITUOS (1 << 1)
 
+#define SPELL_PSYDON (1 << 2)
 
 // Bitflags for spell requirements
 /// Whether the spell requires wizard clothes to cast.

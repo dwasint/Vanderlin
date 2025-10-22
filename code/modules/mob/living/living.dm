@@ -601,6 +601,12 @@
 		if(ismob(pulling))
 			var/mob/living/M = pulling
 			M.reset_offsets("pulledby")
+			if(HAS_TRAIT(M, TRAIT_GARROTED))
+				var/obj/item/inqarticles/garrote/gcord = src.get_active_held_item()
+				if(!gcord)
+					gcord = src.get_inactive_held_item()
+				gcord.wipeslate(src)
+
 			if(grab_state >= GRAB_AGGRESSIVE)
 				TIMER_COOLDOWN_START(pulling, "broke_free", max(0, 2 SECONDS - (0.2 SECONDS * get_skill_level(/datum/skill/combat/wrestling)))) // BUFF: Reduced cooldown
 

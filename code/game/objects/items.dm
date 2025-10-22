@@ -166,6 +166,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	var/list/alt_intents //these replace main intents
 	var/gripsprite = FALSE //use alternate grip sprite for inhand
 	var/gripspriteonmob = FALSE //use alternate sprite for onmob
+	var/wieldsound = FALSE
 
 	/// Item will be scaled by this factor when on the ground.
 	var/dropshrink = 0
@@ -1322,7 +1323,8 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 /obj/item/proc/on_wield(obj/item/source, mob/living/carbon/user)
 	wdefense += 1
-	playsound(loc, pick('sound/combat/weaponr1.ogg','sound/combat/weaponr2.ogg'), 50, TRUE)
+	if(!wieldsound)
+		playsound(loc, pick('sound/combat/weaponr1.ogg','sound/combat/weaponr2.ogg'), 50, TRUE)
 	user.update_a_intents()
 
 /obj/item/proc/on_unwield(obj/item/source, mob/living/carbon/user)

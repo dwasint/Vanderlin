@@ -86,3 +86,39 @@
 /obj/item/clothing/wrists/bracers/leather/masterwork/Initialize()
 	. = ..()
 	filters += filter(type="drop_shadow", x=0, y=0, size=0.5, offset=1, color=rgb(218, 165, 32))
+
+/obj/item/clothing/wrists/bracers/psythorns
+	name = "psydonian thorns"
+	desc = "Thorns fashioned from pliable yet durable blacksteel - woven and interlinked, fashioned to be wrapped around the wrists."
+	body_parts_covered = ARMS
+	icon_state = "psybarbs"
+	item_state = "psybarbs"
+	armor = list("blunt" = 80, "slash" = 100, "stab" = 90, "piercing" = 80, "fire" = 0, "acid" = 0)
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_SMASH, BCLASS_TWIST, BCLASS_PICK)
+	blocksound = PLATEHIT
+	resistance_flags = FIRE_PROOF
+	max_integrity = 400
+	anvilrepair = /datum/skill/craft/armorsmithing
+	sewrepair = FALSE
+	alternate_worn_layer = WRISTS_LAYER
+
+/obj/item/clothing/wrists/bracers/psythorns/equipped(mob/user, slot)
+	. = ..()
+	user.update_inv_wrists()
+	user.update_inv_gloves()
+	user.update_inv_armor()
+	user.update_inv_shirt()
+
+/obj/item/clothing/wrists/bracers/psythorns/attack_self(mob/living/user)
+	. = ..()
+	user.visible_message(span_warning("[user] starts to reshape the [src]."))
+	if(do_after(user, 4 SECONDS))
+		var/obj/item/clothing/head/helmet/blacksteel/psythorns/P = new /obj/item/clothing/head/helmet/blacksteel/psythorns(get_turf(src.loc))
+		if(user.is_holding(src))
+			user.dropItemToGround(src)
+			user.put_in_hands(P)
+		user.adjustBruteLoss(25)
+		qdel(src)
+	else
+		user.visible_message(span_warning("[user] stops reshaping [src]."))
+		return

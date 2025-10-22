@@ -77,3 +77,35 @@
 /obj/item/clothing/armor/medium/scale/inqcoat/Initialize()
 	. = ..()
 	AddComponent(/datum/component/item_equipped_movement_rustle, custom_sounds = SFX_INQUIS_BOOT_STEP)
+
+/obj/item/clothing/armor/medium/scale/inqcoat/attackby(obj/item/W, mob/living/user, params)
+	..()
+	if(istype(W, /obj/item/clothing/armor/plate/fluted/ornate))
+		user.visible_message(span_warning("[user] starts to fit [W] inside the [src]."))
+		if(do_after(user, 12 SECONDS))
+			var/obj/item/clothing/armor/medium/scale/inqcoat/armored/P = new /obj/item/clothing/armor/medium/scale/inqcoat/armored(get_turf(src.loc))
+			if(user.is_holding(src))
+				user.dropItemToGround(src)
+			user.put_in_hands(P)
+			P.update_integrity(atom_integrity)
+			qdel(src)
+			qdel(W)
+		else
+			user.visible_message(span_warning("[user] stops fitting [W] inside the [src]."))
+		return
+
+/obj/item/clothing/armor/medium/scale/inqcoat/armored
+	slot_flags = ITEM_SLOT_ARMOR
+	name = "armored inquisitorial duster"
+	desc = "Metal plates reinforce this heavy coat, worn over the top of the finest Psydonian plate."
+	smeltresult = /obj/item/ingot/steel
+	icon_state = "inqcoata"
+	item_state = "inqcoata"
+	equip_delay_self = 4 SECONDS
+	max_integrity = 300
+	armor_class = AC_MEDIUM
+	armor = list("blunt" = 40, "slash" = 100, "stab" = 80, "piercing" = 40, "fire" = 0, "acid" = 0)
+	melt_amount = 150
+	melting_material =  /datum/material/steel
+	blocksound = PLATEHIT
+

@@ -215,6 +215,9 @@
 		for(var/X in GLOB.youngfolk_positions)
 			peopleiknow += X
 			peopleknowme += X
+		for(var/X in GLOB.inquisition_positions)
+			peopleiknow += X
+			peopleknowme += X
 
 /datum/job/proc/special_job_check(mob/dead/new_player/player)
 	return TRUE
