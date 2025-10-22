@@ -167,9 +167,31 @@
 					filter: grayscale(1) brightness(0.6);
 					cursor: not-allowed;
 				}
+				.matthios-island {
+					animation: glow 2s ease-in-out infinite;
+				}
+				.island-player-badge {
+					position: absolute;
+					top: -5px;
+					right: -5px;
+					background: #ae3636;
+					color: #ffffff;
+					border-radius: 50%;
+					width: 16px;
+					height: 16px;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					font-size: 10px;
+					font-weight: bold;
+				}
 				@keyframes pulse {
 					0%, 100% { transform: translate(-50%, -50%) scale(1); }
 					50% { transform: translate(-50%, -50%) scale(1.2); }
+				}
+				@keyframes glow {
+					0%, 100% { filter: brightness(1); }
+					50% { filter: brightness(1.5) drop-shadow(0 0 5px #ffff00); }
 				}
 				.controls {
 					display: grid;
@@ -273,6 +295,47 @@
 					font-size: 11px;
 					margin-top: 3px;
 				}
+				.player-count {
+					color: #ae3636;
+					font-weight: bold;
+					margin-left: 5px;
+				}
+				.matthios-indicator {
+					color: #ffff00;
+					font-size: 16px;
+					margin-left: 5px;
+					text-shadow: 0 0 5px #ffff00;
+				}
+				.modal {
+					display: none;
+					position: fixed;
+					z-index: 1000;
+					left: 0;
+					top: 0;
+					width: 100%;
+					height: 100%;
+					background-color: rgba(0,0,0,0.7);
+				}
+				.modal-content {
+					background-color: #202020;
+					margin: 15% auto;
+					padding: 20px;
+					border: 2px solid #ae3636;
+					width: 400px;
+					color: #897472;
+				}
+				.modal-title {
+					color: #ae3636;
+					font-size: 18px;
+					font-weight: bold;
+					margin-bottom: 15px;
+				}
+				.modal-buttons {
+					display: flex;
+					gap: 10px;
+					margin-top: 20px;
+					justify-content: flex-end;
+				}
 			</style>
 		</head>
 		<body>
@@ -304,7 +367,7 @@
 						[controlled_ship.docked_island ? "<div class='info-row'><span class='info-label'>Location:</span><span class='info-value'>[controlled_ship.docked_island.island_name]</span></div>" : ""]
 						[target_island && !controlled_ship.docked_island ? "<div class='info-row'><span class='info-label'>Destination:</span><span class='info-value'>[target_island.island_name]</span></div>" : ""]
 						[target_island && !controlled_ship.docked_island ? "<div class='info-row'><span class='info-label'>ETA:</span><span class='info-value'>[get_eta_text()]</span></div>" : ""]
-						[controlled_ship.docked_island ? "<div style='margin-top: 10px;'><a class='btn' href='?src=[REF(src)];undock=1' style='width: 100%'>UNDOCK</a></div>" : ""]
+						[controlled_ship.docked_island ? "<div style='margin-top: 10px;'><a class='btn' href='javascript:void(0)' onclick='confirmUndock()' style='width: 100%'>UNDOCK</a></div>" : ""]
 						[target_island && !controlled_ship.docked_island ? "<div style='margin-top: 10px;'><a class='btn' href='?src=[REF(src)];cancel_navigation=1' style='width: 100%'>CANCEL AUTO-NAV</a></div>" : ""]
 					</div>
 
@@ -341,7 +404,36 @@
 				</div>
 			</div>
 
+			<div id='undockModal' class='modal'>
+				<div class='modal-content'>
+					<div class='modal-title'>CONFIRM UNDOCK</div>
+					<div id='undockMessage'></div>
+					<div class='modal-buttons'>
+						<a class='btn' href='javascript:void(0)' onclick='closeUndockModal()'>CANCEL</a>
+						<a class='btn' href='?src=[REF(src)];undock=1&confirm=1' style='color: #ae3636;'>UNDOCK ANYWAY</a>
+					</div>
+				</div>
+			</div>
+
 			<script>
+				var playersOnIsland = [length(controlled_ship.docked_island ? get_players_on_island(controlled_ship.docked_island) : list())];
+
+				function confirmUndock() {
+					if(playersOnIsland > 0) {
+						document.getElementById('undockMessage').innerHTML =
+							'<p>There ' + (playersOnIsland == 1 ? 'is <strong>1 player</strong>' : 'are <strong>' + playersOnIsland + ' players</strong>') +
+							' currently on the island!</p>' +
+							'<p style=\"color: #d09000;\">Undocking will leave them stranded. Are you sure?</p>';
+						document.getElementById('undockModal').style.display = 'block';
+					} else {
+						window.location.href = '?src=[REF(src)];undock=1&confirm=1';
+					}
+				}
+
+				function closeUndockModal() {
+					document.getElementById('undockModal').style.display = 'none';
+				}
+
 				function drawMap() {
 					var map = document.getElementById('navMap');
 					var mapWidth = map.clientWidth;
@@ -355,14 +447,13 @@
 					var minY = shipY - viewSize / 2;
 					var maxY = shipY + viewSize / 2;
 
-					var gridSpacing = 100; // Grid line every 100 units
+					var gridSpacing = 100;
 					var gridLines = Math.floor(viewSize / gridSpacing);
 
 					for(var i = 0; i <= gridLines; i++) {
 						var coordX = Math.floor(minX / gridSpacing) * gridSpacing + (i * gridSpacing);
 						var coordY = Math.floor(minY / gridSpacing) * gridSpacing + (i * gridSpacing);
 
-						// Vertical lines
 						var vlinePos = ((coordX - minX) / viewSize) * 100;
 						if(vlinePos >= 0 && vlinePos <= 100) {
 							var vline = document.createElement('div');
@@ -373,7 +464,6 @@
 							map.appendChild(vline);
 						}
 
-						// Horizontal lines
 						var hlinePos = ((coordY - minY) / viewSize) * 100;
 						if(hlinePos >= 0 && hlinePos <= 100) {
 							var hline = document.createElement('div');
@@ -454,6 +544,38 @@
 
 	return ""
 
+/obj/structure/ship_wheel/proc/get_players_on_island(datum/island_data/island)
+	var/list/players = list()
+	for(var/mob/living/M in GLOB.player_list)
+		if(M.z == island.z_level)
+			if(M.x >= island.bottom_left.x && M.x <= island.top_right.x)
+				if(M.y >= island.bottom_left.y && M.y <= island.top_right.y)
+					players += M
+	return players
+
+/obj/structure/ship_wheel/proc/get_island_ore_text(datum/island_data/island)
+	var/list/ore_names = list()
+
+	if(island.ore_types_upper && length(island.ore_types_upper))
+		for(var/ore_name in island.ore_types_upper)
+			if(!(ore_name in ore_names))
+				ore_names += ore_name
+
+	if(island.ore_types_lower && length(island.ore_types_lower))
+		for(var/ore_name in island.ore_types_lower)
+			if(!(ore_name in ore_names))
+				ore_names += ore_name
+
+	if(!length(ore_names))
+		return "Unknown"
+
+	var/list/formatted_ores = list()
+	for(var/ore_name in ore_names)
+		formatted_ores += capitalize(ore_name)
+
+	return jointext(formatted_ores, ", ")
+
+
 /obj/structure/ship_wheel/proc/get_island_list_html()
 	var/dat = ""
 	for(var/datum/island_data/island in SSterrain_generation.island_registry)
@@ -462,11 +584,36 @@
 		var/is_target = target_island == island
 		var/can_dock = can_dock_at_island(island)
 		var/cooldown_text = get_island_cooldown_text(island)
+		var/list/players_on_island = get_players_on_island(island)
+		var/player_count = length(players_on_island)
 
-		dat += {"<div class='island-item [is_docked ? "docked-island" : ""] [is_target ? "island-item-target" : ""] [!can_dock && !is_docked ? "island-item-cooldown" : ""]' [!is_docked && can_dock ? "onclick=\"window.location.href='?src=[REF(src)];navigate_to=[island.island_id]'\"" : ""]>
-			<div><strong class='difficulty-[island.difficulty]'>[island.island_name]</strong> [is_target ? "(DESTINATION)" : ""]</div>
+		var/ore_text = get_island_ore_text(island)
+
+		var/tooltip = ""
+		tooltip += "Distance: ~[round(distance)] leagues\\n"
+		tooltip += "Coordinates: ([round(island.nav_x)], [round(island.nav_y)])\\n"
+		tooltip += "Difficulty: [island.get_difficulty_text()]\\n"
+		if(island.matthios_fragment)
+			tooltip += "Contains: Matthios Fragment\\n"
+		tooltip += "Ores: [ore_text]\\n"
+		if(player_count > 0)
+			tooltip += "Players on island: [player_count]\\n"
+			for(var/mob/living/M in players_on_island)
+				tooltip += "  - [M.real_name]\\n"
+
+		dat += {"<div class='island-item [is_docked ? "docked-island" : ""] [is_target ? "island-item-target" : ""] [!can_dock && !is_docked ? "island-item-cooldown" : ""]'
+			[!is_docked && can_dock ? "onclick=\"window.location.href='?src=[REF(src)];navigate_to=[island.island_id]'\"" : ""]
+			title='[tooltip]'>
+			<div>
+				<strong class='difficulty-[island.difficulty]'>[island.island_name]</strong>
+				[is_target ? "(DESTINATION)" : ""]
+				[player_count > 0 ? "<span class='player-count'>([player_count])</span>" : ""]
+				[island.matthios_fragment ? "<span class='matthios-indicator'>Fragment of Matthios</span>" : ""]
+			</div>
 			<div class='info-label'>Difficulty: [island.get_difficulty_text()]</div>
 			<div class='info-label'>Distance: ~[round(distance)] leagues</div>
+			<div class='info-label'>Ores: [ore_text]</div>
+			[player_count > 0 ? "<div class='info-label' style='color: #7b5353;'>[player_count] player[player_count > 1 ? "s" : ""] present</div>" : ""]
 			[cooldown_text ? "<div class='warning-text'>[cooldown_text]</div>" : ""]
 			[!is_docked && can_dock ? "<div class='info-label' style='color: #7b5353; margin-top: 5px;'>Click to navigate</div>" : ""]
 		</div>"}
@@ -475,6 +622,7 @@
 		dat += "<div class='info-label'>No islands discovered</div>"
 
 	return dat
+
 
 /obj/structure/ship_wheel/proc/get_island_markers_js()
 	var/js = ""
@@ -489,19 +637,32 @@
 			continue
 
 		var/x_percent = ((island.nav_x - min_x) / view_size) * 100
-		var/y_percent = 100 - (((island.nav_y - min_y) / view_size) * 100) //! important to flip Y
+		var/y_percent = 100 - (((island.nav_y - min_y) / view_size) * 100)
 
 		var/is_target = target_island == island
 		var/is_docked = controlled_ship.docked_island == island
 		var/can_dock = can_dock_at_island(island)
+		var/list/players_on_island = get_players_on_island(island)
+		var/player_count = length(players_on_island)
+		var/ore_text = get_island_ore_text(island)
+
+		// Build tooltip for map marker
+		var/tooltip = "[island.island_name] ([round(island.nav_x)], [round(island.nav_y)])"
+		if(island.matthios_fragment)
+			tooltip += "\\nContains Matthios Fragment"
+		tooltip += "\\nOres: [ore_text]"
+		if(player_count > 0)
+			tooltip += "\\n[player_count] player[player_count > 1 ? "s" : ""] present"
+		if(!can_dock && !is_docked)
+			tooltip += "\\nCOOLDOWN ACTIVE"
 
 		js += {"
 			var island[island.island_id] = document.createElement('div');
-			island[island.island_id].className = 'island-icon [is_docked ? "docked-island" : ""] [is_target ? "target-island" : ""] [!can_dock && !is_docked ? "cooldown-island" : ""]';
+			island[island.island_id].className = 'island-icon [is_docked ? "docked-island" : ""] [is_target ? "target-island" : ""] [!can_dock && !is_docked ? "cooldown-island" : ""] [island.matthios_fragment ? "matthios-island" : ""]';
 			island[island.island_id].style.left = '[x_percent]%';
 			island[island.island_id].style.top = '[y_percent]%';
-			island[island.island_id].innerHTML = "<img src='\ref['icons/obj/overmap.dmi']?state=event&dir=2' />";
-			island[island.island_id].title = '[island.island_name] ([round(island.nav_x)], [round(island.nav_y)])[!can_dock && !is_docked ? " - COOLDOWN ACTIVE" : ""]';
+			island[island.island_id].innerHTML = "<img src='\ref['icons/obj/overmap.dmi']?state=event&dir=2' />[player_count > 0 ? "<span class='island-player-badge'>[player_count]</span>" : ""]";
+			island[island.island_id].title = '[tooltip]';
 			map.appendChild(island[island.island_id]);
 		"}
 
@@ -554,6 +715,10 @@
 
 	if(href_list["undock"])
 		if(controlled_ship.docked_island)
+			if(!href_list["confirm"])
+				to_chat(usr, span_warning("Undock request requires confirmation!"))
+				return
+
 			var/datum/island_data/island = controlled_ship.docked_island
 			if(SSterrain_generation.undock_ship(controlled_ship))
 				last_docked_island = island

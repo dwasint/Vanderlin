@@ -69,7 +69,7 @@
 			"spread_range" = 2,
 			"tier" = "rare"
 		),
-		"gemeralds" = list(
+		"gems" = list(
 			"turf" = /turf/closed/mineral/gemeralds,
 			"spread_chance" = 50,
 			"spread_range" = 2,
@@ -81,7 +81,7 @@
 			"spread_range" = 2,
 			"tier" = "rare"
 		),
-		"mana_crystal" = list(
+		"mana crystal" = list(
 			"turf" = /turf/closed/mineral/mana_crystal,
 			"spread_chance" = 50,
 			"spread_range" = 2,
