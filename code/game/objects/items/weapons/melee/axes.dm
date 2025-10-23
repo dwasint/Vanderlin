@@ -279,7 +279,7 @@
 
 /obj/item/weapon/axe/psydon/Initialize(mapload)
 	. = ..()
-	enchant(/datum/enchantment/silver)
+	AddComponent(/datum/component/psyblessed, FALSE, 3, FALSE, 50, 1, TRUE)
 
 /obj/item/weapon/axe/psydon/getonmobprop(tag)
 	. = ..()
@@ -502,7 +502,6 @@
 
 /obj/item/weapon/greataxe/psy/Initialize(mapload)
 	. = ..()
-	enchant(/datum/enchantment/silver)
 	AddComponent(/datum/component/psyblessed, FALSE, 3, FALSE, 50, 1, TRUE)
 
 /obj/item/weapon/greataxe/steel

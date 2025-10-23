@@ -132,7 +132,6 @@
 
 /obj/item/weapon/flail/psydon/Initialize(mapload)
 	. = ..()
-	enchant(/datum/enchantment/silver)
 	AddComponent(/datum/component/psyblessed, FALSE, 3, FALSE, 50, 1, TRUE)
 
 /obj/item/weapon/flail/psydon/relic

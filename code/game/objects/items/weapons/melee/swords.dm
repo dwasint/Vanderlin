@@ -883,7 +883,7 @@
 
 /obj/item/weapon/sword/long/psydon/Initialize(mapload)
 	. = ..()
-	enchant(/datum/enchantment/silver)
+	AddComponent(/datum/component/psyblessed, FALSE, 3, FALSE, 50, 1, TRUE)
 
 /obj/item/weapon/sword/long/decorated
 	force = DAMAGE_SWORD - 5
@@ -948,7 +948,6 @@
 
 /obj/item/weapon/sword/long/greatsword/psydon/Initialize(mapload)
 	. = ..()
-	enchant(/datum/enchantment/silver)
 	AddComponent(/datum/component/psyblessed, FALSE, 3, FALSE, 50, 1, TRUE)
 
 /obj/item/weapon/sword/long/greatsword/psydon/getonmobprop(tag)

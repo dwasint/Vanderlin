@@ -116,7 +116,7 @@
 
 /obj/item/weapon/whip/psydon/Initialize(mapload)
 	. = ..()
-	enchant(/datum/enchantment/silver)
+	AddComponent(/datum/component/psyblessed, FALSE, 3, FALSE, 50, 1, TRUE)
 
 //................ Caning Stick.................//
 /obj/item/weapon/whip/cane
