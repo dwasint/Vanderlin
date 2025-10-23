@@ -13797,10 +13797,6 @@
 /obj/machinery/light/fueled/firebowl/church,
 /turf/open/floor/wood,
 /area/rogue/indoors/town/church/chapel)
-"hSO" = (
-/obj/effect/landmark/start/adept,
-/turf/open/floor/woodturned,
-/area/rogue/indoors/town/church/inquisition)
 "hTk" = (
 /turf/open/floor/twig,
 /area/rogue/outdoors/rtfield/safe)
@@ -17274,6 +17270,10 @@
 "kaD" = (
 /turf/open/floor/dirt/road,
 /area/rogue/outdoors/river)
+"kaN" = (
+/obj/effect/landmark/start/adept,
+/turf/open/floor/woodturned,
+/area/rogue/indoors/town/church/inquisition)
 "kaS" = (
 /obj/structure/fluff/walldeco/med6{
 	pixel_y = 31
@@ -26066,6 +26066,13 @@
 	},
 /turf/open/floor/metal/barograte,
 /area/rogue/indoors/town/clocktower)
+"pvD" = (
+/obj/structure/fluff/walldeco/church/line{
+	dir = 1
+	},
+/obj/effect/landmark/start/adept,
+/turf/open/floor/church/purple,
+/area/rogue/indoors/town/church/inquisition)
 "pvK" = (
 /obj/structure/kneestingers,
 /turf/open/floor/cobblerock,
@@ -30044,6 +30051,9 @@
 /obj/structure/flora/newtree,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/town/roofs)
+"rWP" = (
+/turf/open/floor/carpet/royalblack,
+/area/rogue/indoors/inq/import)
 "rXa" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/churchbrick,
@@ -32701,6 +32711,10 @@
 	},
 /turf/closed/wall/mineral/craftstone,
 /area/rogue/indoors/town/manor/servant)
+"twd" = (
+/obj/effect/landmark/start/adept,
+/turf/open/floor/church,
+/area/rogue/indoors/town/church/inquisition)
 "twh" = (
 /obj/machinery/light/fueled/smelter,
 /obj/item/storage/crucible/random{
@@ -33688,9 +33702,6 @@
 /obj/item/bin/water,
 /turf/open/floor/cobble,
 /area/rogue/indoors/dungeon)
-"tZQ" = (
-/turf/open/floor/carpet/royalblack,
-/area/rogue/indoors/inq/import)
 "uaJ" = (
 /obj/structure/fluff/railing/border{
 	dir = 1
@@ -33808,10 +33819,6 @@
 /obj/machinery/light/fueled/firebowl,
 /turf/open/floor/blocks,
 /area/rogue/under/town/sewer)
-"ufs" = (
-/obj/effect/landmark/start/adept,
-/turf/open/floor/church,
-/area/rogue/indoors/town/church/inquisition)
 "ufv" = (
 /obj/effect/landmark/tram/queued_path/cargo_pre_enter{
 	next_path_id = "cargo_stop"
@@ -39261,13 +39268,6 @@
 /obj/structure/fluff/millstone,
 /turf/open/floor/woodturned,
 /area/rogue/indoors/soilsons)
-"xyQ" = (
-/obj/structure/fluff/walldeco/church/line{
-	dir = 1
-	},
-/obj/effect/landmark/start/adept,
-/turf/open/floor/church/purple,
-/area/rogue/indoors/town/church/inquisition)
 "xyY" = (
 /turf/closed/mineral,
 /area/rogue/outdoors/town)
@@ -113853,7 +113853,7 @@ fgn
 vSF
 vSF
 wPR
-xyQ
+pvD
 wZr
 eHo
 sex
@@ -114256,7 +114256,7 @@ wCC
 dhF
 iII
 iII
-hSO
+kaN
 xId
 wZr
 dBG
@@ -115066,7 +115066,7 @@ dhF
 dhF
 fgn
 xId
-ufs
+twd
 dMK
 fgn
 fgn
@@ -115466,9 +115466,9 @@ vnF
 jdk
 fvl
 fgn
-tZQ
+rWP
 gwe
-tZQ
+rWP
 aKk
 wZr
 dMK
@@ -115670,7 +115670,7 @@ vgh
 fgn
 nGh
 aat
-tZQ
+rWP
 eHG
 wZr
 eHo
@@ -115870,9 +115870,9 @@ jdk
 vgh
 qNi
 dhF
-tZQ
+rWP
 xkP
-tZQ
+rWP
 gpy
 wZr
 yeN
