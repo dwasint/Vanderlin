@@ -343,7 +343,7 @@ Inquisitorial armory down here
 			if(!CP.is_blessed)
 				playsound(user, 'sound/magic/censercharging.ogg', 100)
 				user.visible_message(span_info("[user] holds \the [src] over \the [A]..."))
-				if(do_after(user, 50, target = A))
+				if(do_after(user, 50, A))
 					CP.try_bless()
 					new /obj/effect/temp_visual/censer_dust(get_turf(A))
 			else
@@ -354,7 +354,7 @@ Inquisitorial armory down here
 			if(!H.has_status_effect(/datum/status_effect/buff/censerbuff))
 				playsound(user, 'sound/magic/censercharging.ogg', 100)
 				user.visible_message(span_info("[user] holds \the [src] over \the [A]..."))
-				if(do_after(user, 50, target = A))
+				if(do_after(user, 50, A))
 					H.apply_status_effect(/datum/status_effect/buff/censerbuff)
 					to_chat(H, span_notice("The comet dust invigorates you."))
 					playsound(H, 'sound/magic/holyshield.ogg', 100)
@@ -583,7 +583,7 @@ Inquisitorial armory down here
 	working = TRUE
 	playsound(src, 'sound/items/indexer_working.ogg', 75, FALSE, 3)
 	if(active && working && !full)
-		if(do_after(user, 20, FALSE, M))
+		if(do_after(user, 20, M))
 			M.flash_fullscreen("redflash3")
 			subject = M
 			if(!HAS_TRAIT(M, TRAIT_NOPAIN) || !HAS_TRAIT(M, TRAIT_NOPAINSTUN))
@@ -636,7 +636,7 @@ Inquisitorial armory down here
 			to_chat(user, span_warning("It's full."))
 			return
 		visible_message(span_warning("[user] goes to jab [M] with [src]!"))
-		if(do_after(user, 20, FALSE, M))
+		if(do_after(user, 20, M))
 			takeblood(M, user)
 		else
 			return
@@ -900,7 +900,7 @@ Inquisitorial armory down here
 	. = ..()
 	if(istype(I, /obj/item/rope/inqarticles/inquirycord))
 		user.visible_message(span_warning("[user] starts to rethread the [src] using the [I]."))
-		if(do_after(user, 12 SECONDS))
+		if(do_after(user, 12 SECONDS, user))
 			qdel(I)
 			obj_broken = FALSE
 			update_integrity(max_integrity)
@@ -1042,7 +1042,7 @@ Inquisitorial armory down here
 		else*/
 		bagging = TRUE
 		bagcheck(M)
-		if(do_after(user, timetobag, FALSE, M))
+		if(do_after(user, timetobag, M))
 			bagging = FALSE
 			M.transferItemToLoc(headgear, src)
 			M.equip_to_slot(src, ITEM_SLOT_HEAD) // Has to be unsafe otherwise it won't work on unconscious people. Ugh.
@@ -1051,7 +1051,7 @@ Inquisitorial armory down here
 	else
 		bagging = TRUE
 		bagcheck(M)
-		if(do_after(user, timetobag / 2, FALSE, M))
+		if(do_after(user, timetobag / 2, M))
 			bagging = FALSE
 			M.transferItemToLoc(headgear, src)
 			M.equip_to_slot(src, ITEM_SLOT_HEAD) // Has to be unsafe otherwise it won't work on unconscious people. Ugh.
@@ -1256,7 +1256,7 @@ Inquisitorial armory down here
 			return
 		if(M == user)
 			user.visible_message(span_notice("[user] presses upon [src]'s needle."))
-			if(do_after(user, 30))
+			if(do_after(user, 30, user))
 				playsound(src, 'sound/items/blackmirror_needle.ogg', 95, FALSE, 3)
 				user.flash_fullscreen("redflash3")
 				user.adjustBruteLoss(40)
@@ -1269,7 +1269,7 @@ Inquisitorial armory down here
 			return
 		else
 			user.visible_message(span_notice("[user] goes to press [M] with [src]'s needle."))
-			if(do_after(user, 60, target = M))
+			if(do_after(user, 60, M))
 				playsound(M, 'sound/items/blackmirror_needle.ogg', 95, FALSE, 3)
 				M.flash_fullscreen("redflash3")
 				M.blood_volume = max(user.blood_volume-240, 0)
@@ -1289,14 +1289,14 @@ Inquisitorial armory down here
 	. = ..()
 	if(istype(I, /obj/item/natural/cloth))
 		if(broken && bloody)
-			if(do_after(user, 30))
+			if(do_after(user, 30, user))
 				user.visible_message(span_info("[user] cleans [src] with [I]."))
 				openstate = "cleaned"
 				bloody = FALSE
 				update_icon()
 			return
 		if(bloody)
-			if(do_after(user, 30))
+			if(do_after(user, 30, user))
 				user.visible_message(span_info("[user] cleans the fog and blood from [src] with [I]."))
 				openstate = "open"
 				bloody = FALSE

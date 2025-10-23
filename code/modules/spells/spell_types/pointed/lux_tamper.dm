@@ -12,8 +12,9 @@
 	associated_skill = /datum/skill/magic/holy
 	cooldown_time = 1 MINUTES // 60 seconds cooldown
 
-/datum/action/cooldown/spell/psydonlux_tamper/cast(mob/living/carbon/human/H, mob/living/user)
+/datum/action/cooldown/spell/psydonlux_tamper/cast(mob/living/carbon/human/H)
 	. = ..()
+	var/mob/living/user = owner
 	if(!ishuman(H))
 		to_chat(user, span_warning("I cannot merge my Lux with Luxless beings."))
 		return FALSE

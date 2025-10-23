@@ -29,8 +29,9 @@
 	associated_skill = /datum/skill/magic/holy
 	cooldown_time = 30 SECONDS
 
-/datum/action/cooldown/spell/psydonendure/cast(mob/living/target, mob/living/user)
+/datum/action/cooldown/spell/psydonendure/cast(mob/living/target)
 	. = ..()
+	var/mob/living/user = owner
 	if(isliving(target))
 		var/brute = target.getBruteLoss()
 		var/burn = target.getFireLoss()
