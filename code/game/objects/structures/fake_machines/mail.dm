@@ -36,7 +36,7 @@ GLOBAL_LIST_EMPTY(letters_sent)
 	SSroguemachine.hermailers += src
 	ournum = SSroguemachine.hermailers.len
 	name = "[name] #[ournum]"
-	update_icon()
+	update_appearance()
 
 /obj/structure/fake_machine/mail/Destroy()
 	set_light(0)
@@ -78,7 +78,7 @@ GLOBAL_LIST_EMPTY(letters_sent)
 
 /obj/structure/fake_machine/mail/attack_hand_secondary(mob/user, params)
 	. = ..()
-	if(.)
+	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
 	user.changeNext_move(6)
 	if(!coin_loaded)
@@ -106,7 +106,7 @@ GLOBAL_LIST_EMPTY(letters_sent)
 	P.info += t
 	P.mailer = sentfrom
 	P.mailedto = send2place
-	P.update_appearance(UPDATE_ICON_STATE | UPDATE_NAME)
+	P.update_appearance()
 	if(findtext(send2place, "#"))
 		var/box2find = text2num(copytext(send2place, findtext(send2place, "#")+1))
 		var/found = FALSE
@@ -115,7 +115,7 @@ GLOBAL_LIST_EMPTY(letters_sent)
 				found = TRUE
 				P.mailer = sentfrom
 				P.mailedto = send2place
-				P.update_appearance(UPDATE_ICON_STATE | UPDATE_NAME)
+				P.update_appearance()
 				P.forceMove(X.loc)
 				X.say("New mail!")
 				playsound(X, 'sound/misc/mail.ogg', 100, FALSE, -1)
@@ -129,7 +129,7 @@ GLOBAL_LIST_EMPTY(letters_sent)
 			playsound(loc, 'sound/misc/disposalflush.ogg', 100, FALSE, -1)
 			SStreasury.give_money_treasury(coin_loaded, "Mail Income")
 			coin_loaded = FALSE
-			update_icon()
+			update_appearance()
 			return
 		else
 			to_chat(user, span_warning("Failed to send it. Bad number?"))
@@ -140,12 +140,12 @@ GLOBAL_LIST_EMPTY(letters_sent)
 			var/obj/item/fake_machine/mastermail/X = SSroguemachine.hermailermaster
 			P.mailer = sentfrom
 			P.mailedto = send2place
-			P.update_appearance(UPDATE_ICON_STATE | UPDATE_NAME)
+			P.update_appearance()
 			P.forceMove(X.loc)
 			var/datum/component/storage/STR = X.GetComponent(/datum/component/storage)
 			STR.handle_item_insertion(P, prevent_warning=TRUE)
 			X.new_mail=TRUE
-			X.update_icon()
+			X.update_appearance()
 			send_ooc_note("New letter from <b>[sentfrom].</b>", name = send2place)
 			for(var/mob/living/carbon/human/H in GLOB.human_list)
 				if(H.real_name == send2place)
@@ -520,7 +520,7 @@ GLOBAL_LIST_EMPTY(letters_sent)
 						found = TRUE
 						P.mailer = sentfrom
 						P.mailedto = send2place
-						P.update_appearance(UPDATE_ICON_STATE | UPDATE_NAME)
+						P.update_appearance()
 						P.forceMove(X.loc)
 						X.say("New mail!")
 						playsound(X, 'sound/misc/mail.ogg', 100, FALSE, -1)
@@ -543,12 +543,12 @@ GLOBAL_LIST_EMPTY(letters_sent)
 					findmaster = TRUE
 					P.mailer = sentfrom
 					P.mailedto = send2place
-					P.update_appearance(UPDATE_ICON_STATE | UPDATE_NAME)
+					P.update_appearance()
 					P.forceMove(X.loc)
 					var/datum/component/storage/STR = X.GetComponent(/datum/component/storage)
 					STR.handle_item_insertion(P, prevent_warning=TRUE)
 					X.new_mail=TRUE
-					X.update_icon()
+					X.update_appearance()
 					playsound(src.loc, 'sound/misc/mail.ogg', 100, FALSE, -1)
 				if(!findmaster)
 					to_chat(user, span_warning("The master of mails has perished?"))
@@ -572,7 +572,7 @@ GLOBAL_LIST_EMPTY(letters_sent)
 			var/obj/item/coin/M = P
 			coin_loaded = TRUE
 			inqcoins += M.quantity
-			update_icon()
+			update_appearance()
 			qdel(M)
 			playsound(src, 'sound/misc/coininsert.ogg', 100, FALSE, -1)
 			return display_marquette(usr)
@@ -588,30 +588,28 @@ GLOBAL_LIST_EMPTY(letters_sent)
 		coin_loaded = C.get_real_price()
 		qdel(C)
 		playsound(src, 'sound/misc/coininsert.ogg', 100, FALSE, -1)
-		update_icon()
+		update_appearance()
 		return
 	..()
 
 /obj/structure/fake_machine/mail/r
-	pixel_y = 0
-	pixel_x = 32
+	SET_BASE_PIXEL(32, 0)
 
 /obj/structure/fake_machine/mail/l
-	pixel_y = 0
-	pixel_x = -32
+	SET_BASE_PIXEL(-32, 0)
 
-/obj/structure/fake_machine/mail/update_icon()
+/obj/structure/fake_machine/mail/update_overlays()
 	. = ..()
 	cut_overlays()
 	if(coin_loaded)
 		if(inqcoins > 0)
-			add_overlay(mutable_appearance(icon, "mail-i"))
+			. += mutable_appearance(icon, "mail-i")
 			set_light(1, 1, 1, l_color = "#ffffff")
 		else
-			add_overlay(mutable_appearance(icon, "mail-f"))
+			. += mutable_appearance(icon, "mail-f")
 			set_light(1, 1, 1, l_color = "#1b7bf1")
 	else
-		add_overlay(mutable_appearance(icon, "mail-s"))
+		. += mutable_appearance(icon, "mail-s")
 		set_light(1, 1, 1, l_color = "#ff0d0d")
 
 /obj/structure/fake_machine/mail/examine(mob/user)
@@ -645,7 +643,7 @@ GLOBAL_LIST_EMPTY(letters_sent)
 	name = "MASTER OF MAILS"
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "mailspecial"
-	pixel_y = 32
+	SET_BASE_PIXEL(0, 32)
 	max_integrity = 0
 	density = FALSE
 	blade_dulling = DULLING_BASH
@@ -653,9 +651,8 @@ GLOBAL_LIST_EMPTY(letters_sent)
 	w_class = WEIGHT_CLASS_GIGANTIC
 	var/new_mail
 
-/obj/item/fake_machine/mastermail/update_icon()
+/obj/item/fake_machine/mastermail/update_icon_state()
 	. = ..()
-	cut_overlays()
 	if(new_mail)
 		icon_state = "mailspecial-get"
 	else
@@ -667,14 +664,14 @@ GLOBAL_LIST_EMPTY(letters_sent)
 	if(CP)
 		if(new_mail)
 			new_mail = FALSE
-			update_icon()
+			update_appearance()
 		return TRUE
 
 /obj/item/fake_machine/mastermail/Initialize()
 	. = ..()
 	AddComponent(/datum/component/storage/concrete/grid/mailmaster)
 	SSroguemachine.hermailermaster = src
-	update_icon()
+	update_appearance()
 
 /obj/item/fake_machine/mastermail/attackby(obj/item/P, mob/user, params)
 	if(istype(P, /obj/item/paper))
@@ -684,7 +681,7 @@ GLOBAL_LIST_EMPTY(letters_sent)
 			PA.mailedto = PA.cached_mailedto
 			PA.cached_mailer = null
 			PA.cached_mailedto = null
-			PA.update_icon()
+			PA.update_appearance()
 			to_chat(user, span_warning("I carefully re-seal the letter and place it back in the machine, no one will know."))
 		P.forceMove(loc)
 		var/datum/component/storage/STR = GetComponent(/datum/component/storage)
@@ -781,7 +778,7 @@ GLOBAL_LIST_EMPTY(letters_sent)
 		if(inqcoins <= 0)
 			return
 		coin_loaded = FALSE
-		update_icon()
+		update_appearance()
 		budget2change(inqcoins, usr, "MARQUE")
 		inqcoins = 0
 
@@ -803,7 +800,7 @@ GLOBAL_LIST_EMPTY(letters_sent)
 		visible_message(span_warning("[usr] sends something."))
 		if(!inqcoins)
 			coin_loaded = FALSE
-			update_icon()
+			update_appearance()
 		playsound(loc, 'sound/misc/disposalflush.ogg', 100, FALSE, -1)
 		var/list/turfs = list()
 		var/area/A = GLOB.areas_by_type[/area/rogue/indoors/inq/import]
