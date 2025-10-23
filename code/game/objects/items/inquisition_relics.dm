@@ -423,6 +423,8 @@ Inquisitorial armory down here
 		I.modify_max_integrity(I.max_integrity + added_int)
 		I.wdefense += added_def
 		I.name = "blessed [I.name]"
+		if(silver)
+			I.enchant(/datum/enchantment/silver)
 
 
 /obj/effect/temp_visual/censer_dust

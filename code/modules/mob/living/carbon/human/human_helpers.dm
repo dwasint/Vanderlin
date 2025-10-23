@@ -107,7 +107,12 @@
 	if(QDELETED(src) || !ishuman(src))
 		return
 
-	var/damage = 12
+	var/damage
+	if(STASTR > 12 || STASTR < 10)
+		damage = STASTR
+	else
+		damage = 12
+
 	var/used_str = STASTR
 
 	if(mind?.has_antag_datum(/datum/antagonist/werewolf))

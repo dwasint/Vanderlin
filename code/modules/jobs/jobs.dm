@@ -33,7 +33,6 @@ GLOBAL_LIST_INIT(church_positions, list(
 	/datum/job/monk::title,
 	/datum/job/undertaker::title,
 	/datum/job/templar::title,
-	/datum/job/adept::title,
 	))
 GLOBAL_PROTECT(church_positions)
 
@@ -41,6 +40,7 @@ GLOBAL_LIST_INIT(inquisition_positions, list(
 	/datum/job/inquisitor::title,
 	/datum/job/orthodoxist::title,
 	/datum/job/absolver::title,
+	/datum/job/adept::title,
 	))
 GLOBAL_PROTECT(inquisition_positions)
 
