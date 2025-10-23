@@ -854,7 +854,7 @@
 	name = "Psydonian Greatsword (+1 B. Silver)"
 	req_bar = /obj/item/ingot/silverblessed
 	craftdiff = 3
-	created_item = /obj/item/weapon/long/greatsword/psydon
+	created_item = /obj/item/weapon/sword/long/greatsword/psydon
 	additional_items = list(/obj/item/ingot/silverblessed)
 	i_type = "Weapons"
 
