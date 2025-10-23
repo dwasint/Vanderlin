@@ -163,6 +163,16 @@
 	. = ..()
 	enchant(/datum/enchantment/silver)
 
+/obj/item/clothing/suit/armor/plate/fluted
+	name = "fluted half-plate"
+	desc = "An ornate steel cuirass, fitted with tassets and pauldrons for additional coverage. This lightweight deviation of 'plate armor' is favored by cuirassiers all across Psydonia, alongside fledging barons who've - up until now - waged their fiercest battles upon a chamberpot."
+	icon_state = "ornatehalfplate"
+
+	equip_delay_self = 6 SECONDS
+	unequip_delay_self = 6 SECONDS
+
+	max_integrity = ARMOR_INT_CHEST_PLATE_STEEL
+	body_parts_covered = COVERAGE_FULL // Less durability than proper plate, more expensive to manufacture, and accurate to the sprite.
 
 /obj/item/clothing/armor/plate/fluted/ornate
 	name = "psydonian half-plate"
@@ -171,6 +181,9 @@
 	icon_state = "ornatehalfplate"
 
 	max_integrity = 400
+	melt_amount = 150
+	melting_material = /datum/material/silver
+	armor = ARMOR_BRIGANDINE // overall worse because of the endurance buff
 
 /obj/item/clothing/armor/plate/fluted/ornate/equipped(mob/living/user, slot)
 	. = ..()
