@@ -292,20 +292,29 @@
 		to_chat(src, span_warning("I need a large psycross structure nearby to extract this divination!"))
 		return
 	if(!H.stat)
-		var/static/list/torture_lines = list(
-			"CONFESS!",
-			"TELL ME YOUR SECRETS!",
-			"SPEAK!",
-			"YOU WILL SPEAK!",
-			"TELL ME!",
-		)
-		say(pick(torture_lines), spans = list("torture"))
-		H.emote("agony", forced = TRUE)
+		var/painpercent = (H.get_complex_pain() / (H.STAEND * 12)) * 100
+		if(painpercent < 100)
+			to_chat(src, span_warning("Not ready to speak yet."))
+			return
 
 		if(!(do_after(src, 10 SECONDS, H)))
 			return
-		src.visible_message(span_warning("[src]'s silver psycross abruptly catches flame, burning away in an instant!"))
-		H.confess_sins("antag")
-		qdel(S)
-		return
+
+		if(H.add_stress(/datum/stress_event/tortured))
+			SEND_SIGNAL(src, COMSIG_TORTURE_PERFORMED, H)
+
+			var/static/list/torture_lines = list(
+				"CONFESS!",
+				"TELL ME YOUR SECRETS!",
+				"SPEAK!",
+				"YOU WILL SPEAK!",
+				"TELL ME!",
+			)
+			say(pick(torture_lines), spans = list("torture"))
+			H.emote("agony", forced = TRUE)
+
+			src.visible_message(span_warning("[src]'s silver psycross abruptly catches flame, burning away in an instant!"))
+			H.confess_sins("antag")
+			qdel(S)
+			return
 	to_chat(src, span_warning("This one is not in a ready state to be questioned..."))
