@@ -1,9 +1,5 @@
 // Bardic Inspo time - Datum/definition setup
 
-#define BARD_T1 1
-#define BARD_T2 2
-#define BARD_T3 3
-
 GLOBAL_LIST_INIT(learnable_songst1, (list(/datum/action/cooldown/spell/undirected/song/dirge_fortune,
 		/datum/action/cooldown/spell/undirected/song/furtive_fortissimo,
 		/datum/action/cooldown/spell/undirected/song/intellectual_interval,
@@ -196,7 +192,3 @@ GLOBAL_LIST_INIT(learnable_songst3, (list(/datum/action/cooldown/spell/undirecte
 			inspiration.tier3acquired = TRUE
 	if(inspiration.songsbought >= inspiration.level)
 		verbs -= /mob/living/carbon/human/proc/picksongs
-
-#undef BARD_T1
-#undef BARD_T2
-#undef BARD_T3
