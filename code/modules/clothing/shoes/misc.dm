@@ -174,5 +174,3 @@
 	color = "#d5c2aa"
 	icon_state = "psydonboots"
 	item_state = "psydonboots"
-	sleeved = null
-	sleevetype = null
