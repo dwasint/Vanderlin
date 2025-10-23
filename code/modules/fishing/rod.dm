@@ -574,3 +574,6 @@
 
 	override_origin_pixel_x += origin.pixel_x
 	override_origin_pixel_y += origin.pixel_y
+
+#undef FISHRARITYWEIGHTS
+#undef FISHSIZEWEIGHTS

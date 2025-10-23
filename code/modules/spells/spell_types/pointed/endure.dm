@@ -173,3 +173,4 @@
 	owner.update_damage_hud()
 
 #undef PSYDON_HEALING_FILTER
+#undef PSYDON_REVIVED_FILTER

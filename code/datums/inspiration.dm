@@ -196,3 +196,7 @@ GLOBAL_LIST_INIT(learnable_songst3, (list(/datum/action/cooldown/spell/undirecte
 			inspiration.tier3acquired = TRUE
 	if(inspiration.songsbought >= inspiration.level)
 		verbs -= /mob/living/carbon/human/proc/picksongs
+
+#undef BARD_T1
+#undef BARD_T2
+#undef BARD_T3
