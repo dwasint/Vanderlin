@@ -167,7 +167,7 @@
 	var/weapon_choice = input(H,"CHOOSE YOUR RELIQUARY PIECE.", "WIELD THEM IN HIS NAME.") as anything in weapons
 	switch(weapon_choice)
 		if("Covenant And Creed (Broadsword + Shield)")
-			H.put_in_hands(new /obj/item/weapon/greatsword/broadsword/psy/relic(H), TRUE)
+			H.put_in_hands(new /obj/item/weapon/sword/long/greatsword/broadsword/psy/relic(H), TRUE)
 			H.put_in_hands(new /obj/item/paper/inqslip/arrival/inq(H), TRUE)
 			H.equip_to_slot_or_del(new /obj/item/weapon/shield/tower/metal/psy, ITEM_SLOT_BACK_R, TRUE)
 			var/annoyingbag = H.get_item_by_slot(ITEM_SLOT_BACK_L)
