@@ -507,8 +507,8 @@ GLOBAL_LIST_EMPTY(letters_sent)
 			to_chat(user, span_warning("The machine doesn't respond."))
 			return
 		if(alert(user, "Send Mail?",,"YES","NO") == "YES")
-			var/send2place = input(user, "Where to? (Person or #number)", "Vanderlin", null)
-			var/sentfrom = input(user, "Who is this from?", "Vanderlin", null)
+			var/send2place = browser_input_text(user, "Where to? (Person or #number)", "Vanderlin", null)
+			var/sentfrom = browser_input_text(user, "Who is this from?", "Vanderlin", null)
 			if(!sentfrom)
 				sentfrom = "Anonymous"
 			if(findtext(send2place, "#"))
