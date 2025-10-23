@@ -317,4 +317,5 @@
 			H.confess_sins("antag")
 			qdel(S)
 			return
+
 	to_chat(src, span_warning("This one is not in a ready state to be questioned..."))
