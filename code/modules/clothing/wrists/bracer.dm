@@ -14,6 +14,22 @@
 	smeltresult = /obj/item/ingot/iron //no 1 to 1 conversion
 	max_integrity = INTEGRITY_STRONG
 
+
+/obj/item/clothing/wrists/bracers/cloth/naledi
+	name = "sojourner's wrappings"
+	desc = "Sheared burlap and cloth, meticulously fashioned around the forearms. Naledian-trained monks rarely share the same fatalistic mindset as their Otavan cousins, and - consequency - tend to be averse with binding their wrists in jagged thorns. Unbloodied fingers tend to work far better with the arcyne, too. </br>'..And so, the great tears that they wept when it took it's last breath, the rain of the Weeper, is what marked this era of silence. Fools would tell you that Psydon has died, that they splintered into ‘ten smaller fragments', but that does not make sense. They are everything within and without, they are beyond size and shape. How can everything become something? No, they have merely turned their ear from us. They mourn, for their greatest child and their worst..'"
+	slot_flags = ITEM_SLOT_WRISTS
+	body_parts_covered = ARMS
+	icon_state = "nocwrappings"
+	item_state = "nocwrappings"
+	armor = ARMOR_PADDED_GOOD
+	blade_dulling = DULLING_BASHCHOP
+	color = "#48443B"
+	max_integrity = ARMOR_INT_SIDE_STEEL //Heavy leather-tier protection and critical resistances, steel-tier integrity. Integrity boost encourages hand-to-hand parrying. Weaker than the Psydonic Thorns.
+	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_STAB, BCLASS_BLUNT, BCLASS_TWIST)
+	blocksound = SOFTHIT
+	sewrepair = TRUE
+
 /obj/item/clothing/wrists/bracers/iron
 	name = "iron plate vambraces"
 	desc = "Plate forearm guards that offer good protection while allowing mobility."

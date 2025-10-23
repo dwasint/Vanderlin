@@ -17,7 +17,7 @@ Reel teleports the attached atom to the grabbed turf.
 	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
 	possible_item_intents = list(/datum/intent/grapple, /datum/intent/attach, /datum/intent/reel)
-	experimental_inhand = FALSE
+	experimental_inhand = TRUE
 	var/is_loaded = FALSE
 	var/isloading = FALSE
 	var/in_use = FALSE

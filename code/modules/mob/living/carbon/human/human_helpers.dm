@@ -116,6 +116,11 @@
 	if(domhand)
 		used_str = get_str_arms(used_hand)
 
+	var/obj/G = get_item_by_slot(ITEM_SLOT_GLOVES)
+	if(istype(G, /obj/item/clothing/gloves))
+		var/obj/item/clothing/gloves/GL = G
+		damage = (damage * GL.unarmed_bonus)
+
 	if(used_str >= 11)
 		damage = max(damage * (1 + ((used_str - 10) * 0.03)), 1)
 	if(used_str <= 9)

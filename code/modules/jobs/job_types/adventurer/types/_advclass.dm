@@ -24,7 +24,7 @@
 
 	if(length(subclass_skills))
 		for(var/skill in subclass_skills)
-			spawned.clamped_adjust_skillrank(skill, subclass_skills[skill], TRUE)
+			spawned.clamped_adjust_skillrank(skill, subclass_skills[skill], subclass_skills[skill])
 
 
 	if(length(subclass_stats))

@@ -116,3 +116,18 @@
 	item_state = "vrobe"
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
+
+
+/obj/item/clothing/armor/brigandine/light
+	slot_flags = ITEM_SLOT_ARMOR
+	name = "lightweight brigandine"
+	desc = "A light riveted coat with plates concealed inside an exterior fabric. Susceptible to daggers being shoved into your ribs."
+	icon_state = "light_brigandine"
+	blocksound = SOFTHIT
+	body_parts_covered = COVERAGE_TORSO
+	armor = ARMOR_LEATHER_STUDDED
+	max_integrity = ARMOR_INT_CHEST_PLATE_BRIGANDINE
+	smeltresult = /obj/item/ingot/iron
+	equip_delay_self = 40
+	armor_class = AC_LIGHT//steel version of the studded leather armor now
+	w_class = WEIGHT_CLASS_BULKY

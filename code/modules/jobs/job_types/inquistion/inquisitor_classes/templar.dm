@@ -52,21 +52,8 @@
 	devotion.grant_to(H)
 	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
 
-	var/weapons = list("Bastard Sword","Flail","Mace")
-	var/weapon_choice = input(H,"Choose your weapon.", "TAKE UP ARMS") as anything in weapons
-	switch(weapon_choice)
-		if("Bastard Sword")
-			H.put_in_hands(new /obj/item/weapon/sword/long(H), TRUE)
-			H.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
-		if("Flail")
-			H.put_in_hands(new /obj/item/weapon/flail(H), TRUE)
-			H.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
-		if("Mace")
-			H.put_in_hands(new /obj/item/weapon/mace(H), TRUE)
-			H.adjust_skillrank(/datum/skill/combat/axesmaces, 1, TRUE)
-
 	var/helmets = list("Barbute", "Sallet", "Armet", "Bucket Helm")
-	var/helmet_choice = input(H,"Choose your PSYDONIAN helmet.", "TAKE UP PSYDON'S HELMS") as anything in helmets
+	var/helmet_choice = input(H,"Choose your HELMET.", "TAKE UP PSYDON'S HELMS.") as anything in helmets
 	switch(helmet_choice)
 		if("Barbute")
 			H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/heavy/psydonbarbute, ITEM_SLOT_HEAD, TRUE)
@@ -76,3 +63,40 @@
 			H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/heavy/psydonhelm, ITEM_SLOT_HEAD, TRUE)
 		if("Bucket Helm")
 			H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/heavy/psybucket, ITEM_SLOT_HEAD, TRUE)
+
+	var/armors = list("Hauberk", "Cuirass")
+	var/armor_choice = input(H, "Choose your ARMOR.", "TAKE UP PSYDON'S MANTLE.") as anything in armors
+	switch(armor_choice)
+		if("Hauberk")
+			H.equip_to_slot_or_del(new /obj/item/clothing/armor/chainmail/hauberk/fluted, ITEM_SLOT_ARMOR, TRUE)
+		if("Cuirass")
+			H.equip_to_slot_or_del(new /obj/item/clothing/armor/cuirass/fluted, ITEM_SLOT_ARMOR, TRUE)
+			H.change_stat(STATKEY_SPD, 1) //Less durability and coverage, but still upgradable. Balances out the innate -1 SPD debuff.
+
+	var/weapons = list("Psydonic Longsword", "Psydonic War Axe", "Psydonic Whip", "Psydonic Flail", "Psydonic Mace", "Psydonic Spear + Handmace", "Psydonic Poleaxe + Shortsword")
+	var/weapon_choice = input(H,"Choose your WEAPON.", "TAKE UP PSYDON'S ARMS.") as anything in weapons
+	switch(weapon_choice)
+		if("Psydonic Longsword")
+			H.put_in_hands(new /obj/item/weapon/sword/long/psydon(H), TRUE)
+			H.put_in_hands(new /obj/item/weapon/scabbard/sword(H), TRUE)
+			H.clamped_adjust_skillrank(/datum/skill/combat/swords, 4, 4)
+		if("Psydonic War Axe")
+			H.put_in_hands(new /obj/item/weapon/axe/psydon(H), TRUE)
+			H.clamped_adjust_skillrank(/datum/skill/combat/axesmaces, 4, 4)
+		if("Psydonic Whip")
+			H.put_in_hands(new /obj/item/weapon/whip/psydon(H), TRUE)
+			H.clamped_adjust_skillrank(/datum/skill/combat/whipsflails, 4, 4)
+		if("Psydonic Flail")
+			H.put_in_hands(new /obj/item/weapon/flail/psydon(H), TRUE)
+			H.clamped_adjust_skillrank(/datum/skill/combat/whipsflails, 4, 4)
+		if("Psydonic Mace")
+			H.put_in_hands(new /obj/item/weapon/mace/goden/psydon(H), TRUE)
+			H.clamped_adjust_skillrank(/datum/skill/combat/axesmaces, 4, 4)
+		if("Psydonic Spear + Handmace")
+			H.put_in_hands(new /obj/item/weapon/polearm/spear/psydon(H), TRUE)
+			H.put_in_hands(new /obj/item/weapon/mace/cudgel/psy(H), TRUE)
+			H.clamped_adjust_skillrank(/datum/skill/combat/polearms, 4, 4)
+		if("Psydonic Poleaxe + Shortsword")
+			H.put_in_hands(new /obj/item/weapon/greataxe/psy(H), TRUE)
+			H.put_in_hands(new /obj/item/weapon/sword/short/psy(H), TRUE)
+			H.clamped_adjust_skillrank(/datum/skill/combat/axesmaces, 4, 4)

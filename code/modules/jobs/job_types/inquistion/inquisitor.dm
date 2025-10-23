@@ -18,6 +18,7 @@
 	advclass_cat_rolls = list(CTAG_PURITAN = 20)
 	give_bank_account = 30
 	min_pq = 10
+	bypass_lastclass = TRUE
 
 /datum/outfit/job/inquisitor
 	name = "Inquisitor"
@@ -104,13 +105,13 @@
 		if("Eucharist (Rapier)")
 			H.put_in_hands(new /obj/item/weapon/sword/rapier/psy/relic(H), TRUE)
 			H.equip_to_slot_or_del(new /obj/item/weapon/scabbard/sword, ITEM_SLOT_BELT_L, TRUE)
-			H.clamped_adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
+			H.clamped_adjust_skillrank(/datum/skill/combat/swords, 4, 4)
 		if("Daybreak (Whip)")
 			H.put_in_hands(new /obj/item/weapon/whip/antique/psywhip(H), TRUE)
-			H.clamped_adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
+			H.clamped_adjust_skillrank(/datum/skill/combat/whipsflails, 4, 4)
 		if("Stigmata (Halberd)")
 			H.put_in_hands(new /obj/item/weapon/halberd/psydon/relic(H), TRUE)
-			H.clamped_adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
+			H.clamped_adjust_skillrank(/datum/skill/combat/polearms, 4, 4)
 
 
 ///The dirty, violent side of the Inquisition. Meant for confrontational, conflict-driven situations as opposed to simply sneaking around and asking questions. Templar with none of the miracles, but with all the muscles and more.
@@ -173,19 +174,19 @@
 			var/annoyingbag = H.get_item_by_slot(ITEM_SLOT_BACK_L)
 			qdel(annoyingbag)
 			H.equip_to_slot_or_del(new /obj/item/storage/keyring/inquisitor, ITEM_SLOT_BACK_L, TRUE)
-			H.clamped_adjust_skillrank(/datum/skill/combat/swords, 5, TRUE)
-			H.clamped_adjust_skillrank(/datum/skill/combat/shields, 4, TRUE)
+			H.clamped_adjust_skillrank(/datum/skill/combat/swords, 5, 5)
+			H.clamped_adjust_skillrank(/datum/skill/combat/shields, 4, 4)
 		if("Covenant and Consecratia (Flail + Shield)")
 			H.put_in_hands(new /obj/item/weapon/flail/psydon/relic(H), TRUE)
 			H.equip_to_slot_or_del(new /obj/item/weapon/shield/tower/metal/psy, ITEM_SLOT_BACK_R, TRUE)
-			H.clamped_adjust_skillrank(/datum/skill/combat/whipsflails, 5, TRUE)
-			H.clamped_adjust_skillrank(/datum/skill/combat/shields, 4, TRUE)
+			H.clamped_adjust_skillrank(/datum/skill/combat/whipsflails, 5, 5)
+			H.clamped_adjust_skillrank(/datum/skill/combat/shields, 4, 4)
 		if("Apocrypha (Greatsword) and a Silver Dagger")
 			H.put_in_hands(new /obj/item/weapon/greatsword/psydon/relic(H), TRUE)
 			H.put_in_hands(new /obj/item/weapon/knife/dagger/silver/psydon(H), TRUE)
 			H.equip_to_slot_or_del(new /obj/item/weapon/scabbard/knife, ITEM_SLOT_BACK_L, TRUE)
-			H.clamped_adjust_skillrank(/datum/skill/combat/swords, 5, TRUE)
-			H.clamped_adjust_skillrank(/datum/skill/combat/knives, 4, TRUE)
+			H.clamped_adjust_skillrank(/datum/skill/combat/swords, 5, 5)
+			H.clamped_adjust_skillrank(/datum/skill/combat/knives, 4, 4)
 
 
 /obj/item/clothing/gloves/chain/blk

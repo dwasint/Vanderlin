@@ -54,7 +54,7 @@
 	bloody_icon = 'icons/effects/blood64x64.dmi'
 	worn_x_dimension = 32
 	worn_y_dimension = 48
-	experimental_inhand = FALSE
+	experimental_inhand = TRUE
 	experimental_onhip = FALSE
 
 /obj/item/clothing/shoes/leather/atgervi

@@ -174,7 +174,7 @@
 
 /obj/item/clothing/armor/plate/fluted/ornate/equipped(mob/living/user, slot)
 	. = ..()
-	if(slot == SLOT_ARMOR)
+	if(slot == ITEM_SLOT_ARMOR)
 		user.apply_status_effect(/datum/status_effect/buff/psydonic_endurance)
 
 /obj/item/clothing/armor/plate/fluted/ornate/dropped(mob/living/carbon/human/user)
