@@ -414,6 +414,8 @@
 	icon_state = "confession"
 	info = "THE GUILTY PARTY ADMITS THEIR SIN AND THE WEAKENING OF PSYDON'S HOLY FLOCK. THEY WILL REPENT AND SUBMIT TO ANY PUNISHMENT THE CLERGY DEEMS APPROPRIATE, OR BE RELEASED IMMEDIATELY. LET THIS RECORD OF THEIR SIN WEIGH ON THE ANGEL GABRIEL'S JUDGEMENT AT THE MANY-SPIKED GATES OF HEAVEN.<br/><br/>SIGNED,"
 	var/signed = FALSE
+	var/bad_type
+	var/antag
 	textper = 150
 
 /obj/item/paper/confession/update_icon_state()
@@ -437,6 +439,10 @@
 		to_chat(user, span_warning("No. The sinner must be bleeding."))
 		return
 	if(!M.stat)
+		if(!HAS_TRAIT(M, TRAIT_HAS_CONFESSED))
+			to_chat(user, span_warning("[M] has not been brought to confession yet!"))
+			to_chat(M, span_warning("I have nothing to confess!"))
+			return
 		to_chat(user, span_info("I courteously offer the confession to [M]."))
 		if(alert(M, "Sign the confession with your blood?", "CONFESSION OF SIN", "Yes", "No") != "Yes")
 			return
@@ -448,9 +454,13 @@
 			M.add_stress(/datum/stress_event/confessedgood)
 		else
 			M.add_stress(/datum/stress_event/confessed)
-		M.add_stress(/datum/stress_event/confessed)
 		signed = M.real_name
 		info = "THE GUILTY PARTY ADMITS THEIR SIN AND THE WEAKENING OF PSYDON'S HOLY FLOCK. THEY WILL REPENT AND SUBMIT TO ANY PUNISHMENT THE CLERGY DEEMS APPROPRIATE, OR BE RELEASED IMMEDIATELY. LET THIS RECORD OF THEIR SIN WEIGH ON THE ANGEL GABRIEL'S JUDGEMENT AT THE MANY-SPIKED GATES OF HEAVEN.<br/><br/>SIGNED,<br/><font color='red'>[signed]</font>"
+		REMOVE_TRAIT(M, TRAIT_HAS_CONFESSED, TRAIT_GENERIC)
+		update_appearance(UPDATE_ICON_STATE)
+		visible_message(span_notice("[M] signs the confession with their blood."))
+		return
+	return ..()
 
 /obj/item/merctoken
 	name = "mercenary token"

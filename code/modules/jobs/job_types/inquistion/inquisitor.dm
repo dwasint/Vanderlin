@@ -200,122 +200,263 @@
 /obj/item/clothing/shoes/boots/armor/blk
 		color = "#6c6c6c"
 
+/mob/living/carbon/human/proc/torture_victim()
+	set name = "Extract Confession"
+	set category = "Inquisition"
+
+	var/obj/item/grabbing/I = get_active_held_item()
+	var/mob/living/carbon/human/H
+	if(!istype(I) || !ishuman(I.grabbed))
+		return
+	H = I.grabbed
+	if(H == src)
+		to_chat(src, span_warning("I won't torture myself!"))
+		return
+	if(!HAS_TRAIT(H, TRAIT_RESTRAINED) && !H.buckled)
+		to_chat(src, span_warning("[H] needs to be restrained or buckled first!"))
+		return
+	if(H.stat == DEAD)
+		to_chat(src, span_warning("[H] is dead already..."))
+		return
+	var/painpercent = (H.get_complex_pain() / (H.STAEND * 12)) * 100
+	if(painpercent < 100)
+		to_chat(src, span_warning("Not ready to speak yet."))
+		return
+	if(!do_after(src, 4 SECONDS, H))
+		return
+	if(!HAS_TRAIT(H, TRAIT_RESTRAINED) && !H.buckled)
+		to_chat(src, span_warning("[H] needs to be restrained or buckled first!"))
+		return
+	if(H.stat == DEAD)
+		to_chat(src, span_warning("[H] is dead already..."))
+		return
+	if(H.add_stress(/datum/stress_event/tortured))
+		SEND_SIGNAL(src, COMSIG_TORTURE_PERFORMED, H)
+		var/static/list/torture_lines = list(
+			"CONFESS YOUR WRONGDOINGS!",
+			"TELL ME YOUR SECRETS!",
+			"SPEAK THE TRUTH!",
+			"YOU WILL SPEAK!",
+			"TELL ME!",
+			"THE PAIN HAS ONLY BEGUN, CONFESS!",
+		)
+		say(pick(torture_lines), spans = list("torture"))
+		H.emote("painscream")
+		H.confession_time("antag", src)
+
 /mob/living/carbon/human/proc/faith_test()
 	set name = "Test Faith"
 	set category = "Inquisition"
+
 	var/obj/item/grabbing/I = get_active_held_item()
 	var/mob/living/carbon/human/H
-	var/obj/item/S = get_inactive_held_item()
-	var/found = null
 	if(!istype(I) || !ishuman(I.grabbed))
-		to_chat(src, span_warning("I don't have a victim in my hands!"))
 		return
 	H = I.grabbed
 	if(H == src)
-		to_chat(src, span_warning("I already torture myself."))
+		to_chat(src, span_warning("I won't torture myself!"))
 		return
-	if (!HAS_TRAIT(H, TRAIT_RESTRAINED))
-		to_chat(src, span_warning ("My victim needs to be restrained in order to do this!"))
+	if(!HAS_TRAIT(H, TRAIT_RESTRAINED) && !H.buckled)
+		to_chat(src, span_warning("[H] needs to be restrained or buckled first!"))
 		return
-	if(!istype(S, /obj/item/clothing/neck/psycross/silver))
-		to_chat(src, span_warning("I need to be holding a silver psycross to extract this divination!"))
+	if(H.stat == DEAD)
+		to_chat(src, span_warning("[H] is dead already..."))
 		return
-	for(var/obj/structure/fluff/psycross/N in oview(5, src))
-		found = N
-	if(!found)
-		to_chat(src, span_warning("I need a large psycross structure nearby to extract this divination!"))
+	var/painpercent = (H.get_complex_pain() / (H.STAEND * 12)) * 100
+	if(painpercent < 100)
+		to_chat(src, span_warning("Not ready to speak yet."))
 		return
-	if(!H.stat)
+	if(!do_after(src, 4 SECONDS, H))
+		return
+	if(!HAS_TRAIT(H, TRAIT_RESTRAINED) && !H.buckled)
+		to_chat(src, span_warning("[H] needs to be restrained or buckled first!"))
+		return
+	if(H.stat == DEAD)
+		to_chat(src, span_warning("[H] is dead already..."))
+		return
+	if(H.add_stress(/datum/stress_event/tortured))
+		SEND_SIGNAL(src, COMSIG_TORTURE_PERFORMED, H)
 		var/static/list/faith_lines = list(
-			"DO YOU DENY THE ALLFATHER?",
+			"DO YOU DENY PSYDON AND THE TEN?",
 			"WHO IS YOUR GOD?",
 			"ARE YOU FAITHFUL?",
-			"WHO IS YOUR SHEPHERD?",
+			"TO WHICH SHEPHERD DO YOU FLOCK TO?",
 		)
-		src.visible_message(span_warning("[src] shoves the silver psycross in [H]'s face!"))
 		say(pick(faith_lines), spans = list("torture"))
-		H.emote("agony", forced = TRUE)
+		H.emote("painscream")
+		H.confession_time("patron", src)
 
-		if(!(do_after(src, 10 SECONDS, H)))
-			return
-		src.visible_message(span_warning("[src]'s silver psycross abruptly catches flame, burning away in an instant!"))
-		H.confess_sins("patron")
-		qdel(S)
+/mob/living/carbon/human/proc/confession_time(confession_type = "antag", mob/living/carbon/human/user)
+	var/timerid = addtimer(CALLBACK(src, PROC_REF(confess_sins), confession_type, FALSE, user), 10 SECONDS, TIMER_STOPPABLE)
+	var/static/list/options = list("RESIST!!", "CONFESS!!")
+	var/responsey = browser_input_list(src, "Resist torture?", "TEST OF PAIN", options)
+
+	if(SStimer.timer_id_dict[timerid])
+		deltimer(timerid)
+	else
+		to_chat(src, span_warning("Too late..."))
 		return
-	to_chat(src, span_warning("This one is not in a ready state to be questioned..."))
+	if(responsey == "RESIST!!")
+		confess_sins(confession_type, resist=TRUE, interrogator=user)
+	else
+		confess_sins(confession_type, resist=FALSE, interrogator=user)
 
-/mob/living/carbon/human/proc/confess_sins(confession_type = "antag")
+/mob/living/carbon/human/proc/confess_sins(confession_type = "antag", resist, mob/living/carbon/human/interrogator, torture=TRUE, obj/item/paper/confession/confession_paper, false_result)
+	if(stat == DEAD)
+		return
 	var/static/list/innocent_lines = list(
-		"I AM NO SINNER!",
+		"I DON'T KNOW!",
+		"STOP THIS MADNESS!!",
+		"I DON'T DESERVE THIS!",
+		"THE PAIN!",
+		"I HAVE NOTHING TO SAY...!",
+		"WHY ME?!",
 		"I'M INNOCENT!",
-		"I HAVE NOTHING TO CONFESS!",
-		"I AM FAITHFUL!",
+		"I AM NO SINNER!",
 	)
-	var/list/confessions = list()
-	switch(confession_type)
-		if("patron")
-			if(length(patron?.confess_lines))
-				confessions += patron.confess_lines
-		if("antag")
-			for(var/datum/antagonist/antag in mind?.antag_datums)
-				if(!length(antag.confess_lines))
-					continue
-				confessions += antag.confess_lines
-	if(length(confessions))
-		say(pick(confessions), spans = list("torture"))
-		return
-	say(pick(innocent_lines), spans = list("torture"))
+	var/resist_chance = 0
+	if(resist)
+		to_chat(src, span_boldwarning("I attempt to resist the torture!"))
+		resist_chance = (STAINT + STAEND) + 10
+		if(istype(buckled, /obj/structure/fluff/walldeco/chains)) // If the victim is on hanging chains, apply a resist penalty
+			resist_chance -= 15
+		if(confession_type == "antag")
+			resist_chance += 25
 
-/mob/living/carbon/human/proc/torture_victim()
-	set name = "Reveal Allegiance"
-	set category = "Inquisition"
-	var/obj/item/grabbing/I = get_active_held_item()
-	var/mob/living/carbon/human/H
-	var/obj/item/S = get_inactive_held_item()
-	var/found = null
-	if(!istype(I) || !ishuman(I.grabbed))
-		to_chat(src, span_warning("I don't have a victim in my hands!"))
-		return
-	H = I.grabbed
-	if(H == src)
-		to_chat(src, span_warning("I already torture myself."))
-		return
-	if (!HAS_TRAIT(H, TRAIT_RESTRAINED))
-		to_chat(src, span_warning ("My victim needs to be restrained in order to do this!"))
-		return
-	if(!istype(S, /obj/item/clothing/neck/psycross/silver))
-		to_chat(src, span_warning("I need to be holding a silver psycross to extract this divination!"))
-		return
-	for(var/obj/structure/fluff/psycross/N in oview(5, src))
-		found = N
-	if(!found)
-		to_chat(src, span_warning("I need a large psycross structure nearby to extract this divination!"))
-		return
-	if(!H.stat)
-		var/painpercent = (H.get_complex_pain() / (H.STAEND * 12)) * 100
-		if(painpercent < 100)
-			to_chat(src, span_warning("Not ready to speak yet."))
+	if(!prob(resist_chance))
+		var/list/confessions = list()
+		var/datum/antag_type = null
+		switch(confession_type)
+			if("antag")
+				if(!false_result)
+					for(var/datum/antagonist/antag in mind?.antag_datums)
+						if(!length(antag.confess_lines))
+							continue
+						confessions += antag.confess_lines
+						antag_type = antag.type
+						break // Only need one antag type
+			if("patron")
+				if(ispath(false_result, /datum/patron))
+					var/datum/patron/fake_patron = new false_result()
+					if(length(fake_patron.confess_lines))
+						confessions += fake_patron.confess_lines
+						antag_type = fake_patron.type
+				else
+					if(length(patron?.confess_lines))
+						confessions += patron.confess_lines
+						antag_type = patron.type
+
+		// Apply stress penalties for torturing innocents/faithful
+		if(torture && interrogator && confession_type == "patron")
+			var/datum/patron/interrogator_patron = interrogator.patron
+			var/datum/patron/victim_patron = patron
+			switch(interrogator_patron.associated_faith.type)
+				if(/datum/faith/psydon)
+					if(ispath(victim_patron.type, /datum/patron/divine) && victim_patron.type != /datum/patron/divine/necra) //lore
+						interrogator.add_stress(/datum/stress_event/torture_small_penalty)
+					else if(victim_patron.type == /datum/patron/psydon/progressive)
+						interrogator.add_stress(/datum/stress_event/torture_small_penalty)
+					else if(victim_patron.type == /datum/patron/godless/naivety)
+						interrogator.add_stress(/datum/stress_event/torture_small_penalty)
+					else if(victim_patron.type == /datum/patron/psydon)
+						interrogator.add_stress(/datum/stress_event/torture_large_penalty)
+
+		if(length(confessions))
+			if(torture) // Only scream your confession if it's due to torture.
+				say(pick(confessions), spans = list("torture"), forced = TRUE)
+			else
+				say(pick(confessions), forced = TRUE)
+
+			var/obj/item/paper/confession/held_confession
+			if(istype(confession_paper))
+				held_confession = confession_paper
+			else if(interrogator?.is_holding_item_of_type(/obj/item/paper/confession)) // This code is to process gettin a signed confession through torture.
+				held_confession = interrogator.is_holding_item_of_type(/obj/item/paper/confession)
+			if(held_confession && !held_confession.signed) // Check to see if the confession is already signed.
+				switch(antag_type)
+					if(/datum/antagonist/bandit)
+						held_confession.bad_type = "AN OUTLAW OF THE THIEF-LORD"
+						held_confession.antag = initial(antag_type:name)
+					if(/datum/patron/inhumen/matthios)
+						held_confession.bad_type = "A FOLLOWER OF THE THIEF-LORD"
+						held_confession.antag = "worshiper of " + initial(antag_type:name)
+					if(/datum/antagonist/maniac)
+						held_confession.bad_type = "A MANIAC DELUDED BY MADNESS"
+						held_confession.antag = initial(antag_type:name)
+					if(/datum/antagonist/assassin)
+						held_confession.bad_type = "A DEATH CULTIST"
+						held_confession.antag = initial(antag_type:name)
+					if(/datum/antagonist/zizocultist)
+						held_confession.bad_type = "A SERVANT OF THE FORBIDDEN ONE"
+						held_confession.antag = initial(antag_type:name)
+					if(/datum/antagonist/zizocultist/leader)
+						held_confession.bad_type = "A SERVANT OF THE FORBIDDEN ONE"
+						held_confession.antag = initial(antag_type:name)
+					if(/datum/patron/inhumen/zizo)
+						held_confession.bad_type = "A FOLLOWER OF THE FORBIDDEN ONE"
+						held_confession.antag = "worshiper of " + initial(antag_type:name)
+					if(/datum/antagonist/werewolf)
+						var/datum/antagonist/werewolf/werewolf_antag = mind.has_antag_datum(/datum/antagonist/werewolf, TRUE)
+						if(werewolf_antag.transformed) // haha real clever of ya
+							return
+						held_confession.bad_type = "A BEARER OF DENDOR'S CURSE"
+						held_confession.antag = initial(antag_type:name)
+					if(/datum/antagonist/werewolf/lesser)
+						var/datum/antagonist/werewolf/werewolf_antag = mind.has_antag_datum(/datum/antagonist/werewolf, TRUE)
+						if(werewolf_antag.transformed)
+							return
+						held_confession.bad_type = "A BEARER OF DENDOR'S CURSE"
+						held_confession.antag = initial(antag_type:name)
+					if(/datum/antagonist/vampire)
+						held_confession.bad_type = "A SCION OF KAINE"
+						held_confession.antag = initial(antag_type:name)
+					if(/datum/antagonist/vampire/lord)
+						held_confession.bad_type = "THE BLOOD-LORD OF VANDERLIN"
+						held_confession.antag = initial(antag_type:name)
+					if(/datum/antagonist/vampire/lesser)
+						held_confession.bad_type = "AN UNDERLING OF THE BLOOD-LORD"
+						held_confession.antag = initial(antag_type:name)
+					if(/datum/patron/inhumen/graggar)
+						held_confession.bad_type = "A FOLLOWER OF THE DARK SUN"
+						held_confession.antag = "worshiper of " + initial(antag_type:name)
+					if(/datum/patron/godless/godless)
+						held_confession.bad_type = "A DAMNED ANTI-THEIST"
+						held_confession.antag = "worshiper of nothing"
+					if(/datum/patron/godless/autotheist)
+						held_confession.bad_type = "A DELUSIONAL SELF-PROCLAIMED GOD"
+						held_confession.antag = "worshiper of nothing"
+					if(/datum/patron/godless/defiant)
+						held_confession.bad_type = "A DAMNED CHAINBREAKER"
+						held_confession.antag = "worshiper of nothing"
+					if(/datum/patron/godless/dystheist)
+						held_confession.bad_type = "A SPURNER OF THE DIVINE"
+						held_confession.antag = "worshiper of nothing"
+					if(/datum/patron/godless/naivety)
+						held_confession.bad_type = "A IGNORANT FOOL"
+						held_confession.antag = "worshiper of nothing"
+					if(/datum/patron/godless/rashan)
+						held_confession.bad_type = "A FOLLOWER OF A FALSE GOD"
+						held_confession.antag = "worshiper of the false god, Rashan-Kahl"
+					if(/datum/patron/inhumen/baotha)
+						held_confession.bad_type = "A FOLLOWER OF THE REMORSELESS RUINER"
+						held_confession.antag = "worshiper of " + initial(antag_type:name)
+					else
+						return // good job you tortured an innocent person
+				if(HAS_TRAIT_FROM(src, TRAIT_CONFESSED_FOR, held_confession.bad_type))
+					visible_message(span_warning("[name] has already signed a confession!"), "I have already signed a confession!")
+					return //cruel
+				ADD_TRAIT(src, TRAIT_HAS_CONFESSED, TRAIT_GENERIC)
+				ADD_TRAIT(src, TRAIT_CONFESSED_FOR, held_confession.bad_type)
+				held_confession.signed = real_name
+				held_confession.info = "THE GUILTY PARTY ADMITS THEIR SINFUL NATURE AS <font color='red'>[held_confession.bad_type]</font>. THEY WILL SERVE ANY PUNISHMENT OR SERVICE AS REQUIRED BY THE ORDER OF THE PSYCROSS UNDER PENALTY OF DEATH.<br/><br/>SIGNED,<br/><font color='red'><i>[held_confession.signed]</i></font>"
+				held_confession.update_appearance(UPDATE_ICON_STATE)
 			return
-
-		if(!(do_after(src, 10 SECONDS, H)))
+		else
+			if(torture) // Only scream your confession if it's due to torture.
+				say(pick(innocent_lines), spans = list("torture"), forced = TRUE)
+			else
+				say(pick(innocent_lines), forced = TRUE)
 			return
-
-		if(H.add_stress(/datum/stress_event/tortured))
-			SEND_SIGNAL(src, COMSIG_TORTURE_PERFORMED, H)
-
-			var/static/list/torture_lines = list(
-				"CONFESS!",
-				"TELL ME YOUR SECRETS!",
-				"SPEAK!",
-				"YOU WILL SPEAK!",
-				"TELL ME!",
-			)
-			say(pick(torture_lines), spans = list("torture"))
-			H.emote("agony", forced = TRUE)
-
-			src.visible_message(span_warning("[src]'s silver psycross abruptly catches flame, burning away in an instant!"))
-			H.confess_sins("antag")
-			qdel(S)
-			return
-
-	to_chat(src, span_warning("This one is not in a ready state to be questioned..."))
+	to_chat(src, span_good("I resist the torture!"))
+	say(pick(innocent_lines), spans = list("torture"), forced = TRUE)
+	return
