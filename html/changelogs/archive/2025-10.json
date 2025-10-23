@@ -713,5 +713,147 @@
                 "rscdel": "Surplus Crown"
             }
         ]
+    },
+    "2025-10-21": {
+        "snowyseshi": [
+            {
+                "map": "added various items to the vampire lord manor"
+            }
+        ]
+    },
+    "2025-10-22": {
+        "wgtjunior743": [
+            {
+                "bugfix": "Steward pay by class not working for some jobs"
+            },
+            {
+                "bugfix": "Monarch Change Position not giving female titles for those who are females."
+            },
+            {
+                "bugfix": "Hand(besides the Hand class) and Consort not getting their extra vote weight"
+            },
+            {
+                "bugfix": "a job related family tree bug"
+            },
+            {
+                "bugfix": "Garrision recruit and other \\\"fake\\\" jobs titles appearing as Unknown."
+            }
+        ],
+        "AnDigitalGondola": [
+            {
+                "balance": "Gave werewolves brushwalking."
+            },
+            {
+                "balance": "Getting pulled across a meagre bush will not immobilize mobs."
+            }
+        ],
+        "Arkatos": [
+            {
+                "rscadd": "Lux offerings to the Matthios idol now count towards overall bandit contributions and are triumph capped together with them."
+            },
+            {
+                "rscdel": "Deleted triumph loss from seeing your spouse die, resisting conversions and returning to lobby from assasins's dagger."
+            },
+            {
+                "bugfix": "Honor duels now reward victories properly."
+            },
+            {
+                "bugfix": "Dendor task \\\"Butcher animals\\\" now works properly."
+            },
+            {
+                "bugfix": "Fixed a case where notable people were not assigned properly."
+            }
+        ],
+        "7erracotta": [
+            {
+                "rscadd": "added ponchos"
+            },
+            {
+                "rscadd": "Added new jewelry and their crafting recipes"
+            }
+        ],
+        "SarmentiCampbell": [
+            {
+                "balance": "Some Minor Maniac Hallucination/graggazo changes"
+            }
+        ]
+    },
+    "2025-10-23": {
+        "Somniworld": [
+            {
+                "rscadd": "Gave the Feldsher a ring denoting their ability to manipulate and extract lux legally. Stop lynching them, kthx."
+            },
+            {
+                "balance": "Tolerated inhumen species may now become butlers and court physicians."
+            },
+            {
+                "balance": "Tritons and medicators can now become Templars."
+            }
+        ],
+        "7erracotta": [
+            {
+                "rscadd": "Added new skin tones"
+            }
+        ],
+        "Arkatos": [
+            {
+                "rscadd": "Graggar's Culling god intervention event now uses personal objectives."
+            },
+            {
+                "rscadd": "Eora's Matchmaking god intervention event now uses personal objectives."
+            },
+            {
+                "qol": "Some important chat messages should be harder to miss."
+            }
+        ],
+        "wgtjunior743": [
+            {
+                "bugfix": "Sword Dancer now has bardic inspiration"
+            },
+            {
+                "bugfix": "Silver Amulet not protecting from transfix"
+            },
+            {
+                "bugfix": "Psycross / SIlver amulet not protecting from transfix besides the message."
+            }
+        ],
+        "snowyseshi": [
+            {
+                "bugfix": "fixed crimson fangs vampires not having infinite energy"
+            },
+            {
+                "rscadd": "Admin Spell: Arcane Bullet"
+            }
+        ],
+        "AnDigitalGondola": [
+            {
+                "balance": "Made beespider attacks and hand feeding add spiderhoney production."
+            },
+            {
+                "balance": "Flattened spiderhoney production values."
+            },
+            {
+                "rscadd": "Gave beespiders the ability to make webs after being fed consistently."
+            },
+            {
+                "rscadd": "Four new sub-types of honey made by apiaries favoring specific plants."
+            },
+            {
+                "image": "Three new sprites for mad honey, rouge honey, and moon honey."
+            },
+            {
+                "bugfix": "Made inserting a new bee queen give constructed apiaries a single bee to start building a hive."
+            }
+        ],
+        "DrSirKnight": [
+            {
+                "rscadd": "New trait for servants to show royal family likes and dislikes"
+            }
+        ],
+        "grungussuss": [
+            {
+                "rscadd": "puffer shot can be heard on the entire map"
+            }
+        ]
     }
 }
