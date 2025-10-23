@@ -212,7 +212,7 @@
 	output = /obj/item/storage/fancy/cigarettes/zig/empty
 	requirements = list(/obj/item/paper = 1,
 				/obj/item/natural/fibers = 1)
-	blacklisted_paths = list(/obj/item/paper/scroll, /obj/item/paper/confession)
+	blacklisted_paths = list(/obj/item/paper/scroll, /obj/item/paper/inqslip)
 	category = "Storage"
 /*.............. recipes requiring skill 1 ..............*/
 

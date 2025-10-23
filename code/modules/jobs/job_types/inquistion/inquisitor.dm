@@ -301,7 +301,7 @@
 	else
 		confess_sins(confession_type, resist=FALSE, interrogator=user)
 
-/mob/living/carbon/human/proc/confess_sins(confession_type = "antag", resist, mob/living/carbon/human/interrogator, torture=TRUE, obj/item/paper/confession/confession_paper, false_result)
+/mob/living/carbon/human/proc/confess_sins(confession_type = "antag", resist, mob/living/carbon/human/interrogator, torture=TRUE, obj/item/paper/inqslip/confession/confession_paper, false_result)
 	if(stat == DEAD)
 		return
 	var/static/list/innocent_lines = list(
@@ -367,11 +367,11 @@
 			else
 				say(pick(confessions), forced = TRUE)
 
-			var/obj/item/paper/confession/held_confession
+			var/obj/item/paper/inqslip/confession/held_confession
 			if(istype(confession_paper))
 				held_confession = confession_paper
-			else if(interrogator?.is_holding_item_of_type(/obj/item/paper/confession)) // This code is to process gettin a signed confession through torture.
-				held_confession = interrogator.is_holding_item_of_type(/obj/item/paper/confession)
+			else if(interrogator?.is_holding_item_of_type(/obj/item/paper/inqslip/confession)) // This code is to process gettin a signed confession through torture.
+				held_confession = interrogator.is_holding_item_of_type(/obj/item/paper/inqslip/confession)
 			if(held_confession && !held_confession.signed) // Check to see if the confession is already signed.
 				switch(antag_type)
 					if(/datum/antagonist/bandit)
@@ -447,9 +447,6 @@
 					return //cruel
 				ADD_TRAIT(src, TRAIT_HAS_CONFESSED, TRAIT_GENERIC)
 				ADD_TRAIT(src, TRAIT_CONFESSED_FOR, held_confession.bad_type)
-				held_confession.signed = real_name
-				held_confession.info = "THE GUILTY PARTY ADMITS THEIR SINFUL NATURE AS <font color='red'>[held_confession.bad_type]</font>. THEY WILL SERVE ANY PUNISHMENT OR SERVICE AS REQUIRED BY THE ORDER OF THE PSYCROSS UNDER PENALTY OF DEATH.<br/><br/>SIGNED,<br/><font color='red'><i>[held_confession.signed]</i></font>"
-				held_confession.update_appearance(UPDATE_ICON_STATE)
 			return
 		else
 			if(torture) // Only scream your confession if it's due to torture.

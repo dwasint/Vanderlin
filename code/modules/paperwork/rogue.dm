@@ -205,6 +205,7 @@
 		info += "<font size=\"2\" face=\"[FOUNTAIN_PEN_FONT]\" color=#27293f>[signedname] the [signedjob] of [SSmapping.config.map_name]</font>"
 
 	info += "</div>"
+
 /obj/item/paper/inqslip
 	name = "inquisition slip"
 	base_icon_state = "slip"
@@ -248,6 +249,35 @@
 	marquevalue = 6
 	desc = "A writ of religious guilt, printed on Otavan parchment: one signed not in ink, but blood. Press the confession against a suspect's bleeding wound, in order to obtain their signature. Once done, it is ready to be mailed back to Otava. Fold and seal it, it's only proper."
 	sliptype = 2
+	var/bad_type // Type of crime confessed to
+	var/antag // Specific antagonist type
+
+/obj/item/paper/inqslip/confession/attemptsign(mob/user, mob/living/carbon/human/M)
+	// Check if they've confessed via torture
+	if(!HAS_TRAIT(user, TRAIT_HAS_CONFESSED))
+		to_chat(M, span_warning("[user] has not been brought to confession yet!"))
+		to_chat(user, span_warning("I have nothing to confess!"))
+		return
+
+	if(paired)
+		if(paired.subject != user)
+			to_chat(M, span_warning("Why am I trying to make them sign this with the wrong [paired] paired with it?"))
+			return
+		else if(alert(user, "SIGN THE CONFESSION?", "CONFIRM OR DENY", "YES", "NO") != "NO")
+			signed = TRUE
+			signee = user
+			marquevalue += 2
+			REMOVE_TRAIT(user, TRAIT_HAS_CONFESSED, TRAIT_GENERIC)
+			update_appearance()
+
+	else if(alert(user, "SIGN THE CONFESSION?", "CONFIRM OR DENY", "YES", "NO") != "NO")
+		signed = TRUE
+		signee = user
+		marquevalue += 2
+		REMOVE_TRAIT(user, TRAIT_HAS_CONFESSED, TRAIT_GENERIC)
+		update_appearance()
+	else
+		return
 
 /obj/item/paper/inqslip/arrival
 	name = "arrival slip"
@@ -263,27 +293,10 @@
 	marquevalue = 6
 
 /obj/item/paper/inqslip/proc/attemptsign(mob/user, mob/living/carbon/human/M)
-	if(sliptype == 2)
-		if(paired)
-			if(paired.subject != user)
-				to_chat(M, span_warning("Why am I trying to make them sign this with the wrong [paired] paired with it?"))
-				return
-			else if(alert(user, "SIGN THE CONFESSION?", "CONFIRM OR DENY", "YES", "NO") != "NO")
-				signed = TRUE
-				marquevalue += 2
-				signee = user
-				update_icon()
-		else if(alert(user, "SIGN THE CONFESSION?", "CONFIRM OR DENY", "YES", "NO") != "NO")
-			signed = TRUE
-			marquevalue += 2
-			signee = user
-			update_icon()
-		else
-			return
-	else if(alert(user, "SIGN THE SLIP?", "CONFIRM OR DENY", "YES", "NO") != "NO")
+	if(alert(user, "SIGN THE SLIP?", "CONFIRM OR DENY", "YES", "NO") != "NO")
 		signed = TRUE
 		signee = user
-		update_icon()
+		update_appearance()
 	else
 		return
 
@@ -322,10 +335,10 @@
 		return
 	else if(!sealed)
 		sealed = TRUE
-		update_icon()
+		update_appearance()
 	else
 		sealed = FALSE
-		update_icon()
+		update_appearance()
 
 /obj/item/paper/inqslip/attack_hand_secondary(mob/user, params)
 	. = ..()
@@ -333,7 +346,7 @@
 		if(!user.get_active_held_item())
 			user.put_in_active_hand(paired, user.active_hand_index)
 			paired = null
-			update_icon()
+			update_appearance()
 		return TRUE
 
 /obj/item/paper/inqslip/update_icon_state()
@@ -364,9 +377,9 @@
 		var/obj/item/clothing/ring/signet/S = I
 		if(S.tallowed && sealed)
 			waxed = TRUE
-			update_icon()
+			update_appearance()
 			S.tallowed = FALSE
-			S.update_icon()
+			S.update_appearance()
 			playsound(src, 'sound/items/inqslip_sealed.ogg', 75, TRUE, 4)
 			marquevalue += 2
 		else if(S.tallowed && !sealed)
@@ -386,13 +399,13 @@
 				else
 					paired = Q
 					user.transferItemToLoc(Q, src, TRUE)
-					update_icon()
+					update_appearance()
 			else if(Q.subject && Q.full)
 				if(sliptype == 2)
 					if(Q.subject == signee)
 						paired = Q
 						user.transferItemToLoc(Q, src, TRUE)
-						update_icon()
+						update_appearance()
 					else
 						if(signed)
 							to_chat(user, span_warning("[Q] doesn't contain the blood of the one who signed [src]."))
@@ -402,65 +415,12 @@
 				else
 					paired = Q
 					user.transferItemToLoc(Q, src, TRUE)
-					update_icon()
+					update_appearance()
 			else
 				to_chat(user,  span_warning("[Q] isn't completely full."))
 
 /obj/item/paper/inqslip/attack_hand_secondary(mob/user, params)
 	. = ..()
-
-/obj/item/paper/confession
-	name = "confession"
-	icon_state = "confession"
-	info = "THE GUILTY PARTY ADMITS THEIR SIN AND THE WEAKENING OF PSYDON'S HOLY FLOCK. THEY WILL REPENT AND SUBMIT TO ANY PUNISHMENT THE CLERGY DEEMS APPROPRIATE, OR BE RELEASED IMMEDIATELY. LET THIS RECORD OF THEIR SIN WEIGH ON THE ANGEL GABRIEL'S JUDGEMENT AT THE MANY-SPIKED GATES OF HEAVEN.<br/><br/>SIGNED,"
-	var/signed = FALSE
-	var/bad_type
-	var/antag
-	textper = 150
-
-/obj/item/paper/confession/update_icon_state()
-	. = ..()
-	if(mailer)
-		icon_state = "paper_prep"
-		name = "letter"
-		throw_range = 7
-		return
-	name = initial(name)
-	throw_range = initial(throw_range)
-	if(signed)
-		icon_state = "confessionsigned"
-		return
-	icon_state = "confession"
-
-/obj/item/paper/confession/attack(mob/living/carbon/human/M, mob/user)
-	if(signed)
-		return ..()
-	if(!M.get_bleed_rate())
-		to_chat(user, span_warning("No. The sinner must be bleeding."))
-		return
-	if(!M.stat)
-		if(!HAS_TRAIT(M, TRAIT_HAS_CONFESSED))
-			to_chat(user, span_warning("[M] has not been brought to confession yet!"))
-			to_chat(M, span_warning("I have nothing to confess!"))
-			return
-		to_chat(user, span_info("I courteously offer the confession to [M]."))
-		if(alert(M, "Sign the confession with your blood?", "CONFESSION OF SIN", "Yes", "No") != "Yes")
-			return
-		if(M.stat)
-			return
-		if(signed)
-			return
-		if(M.has_flaw(/datum/charflaw/addiction/godfearing))
-			M.add_stress(/datum/stress_event/confessedgood)
-		else
-			M.add_stress(/datum/stress_event/confessed)
-		signed = M.real_name
-		info = "THE GUILTY PARTY ADMITS THEIR SIN AND THE WEAKENING OF PSYDON'S HOLY FLOCK. THEY WILL REPENT AND SUBMIT TO ANY PUNISHMENT THE CLERGY DEEMS APPROPRIATE, OR BE RELEASED IMMEDIATELY. LET THIS RECORD OF THEIR SIN WEIGH ON THE ANGEL GABRIEL'S JUDGEMENT AT THE MANY-SPIKED GATES OF HEAVEN.<br/><br/>SIGNED,<br/><font color='red'>[signed]</font>"
-		REMOVE_TRAIT(M, TRAIT_HAS_CONFESSED, TRAIT_GENERIC)
-		update_appearance(UPDATE_ICON_STATE)
-		visible_message(span_notice("[M] signs the confession with their blood."))
-		return
-	return ..()
 
 /obj/item/merctoken
 	name = "mercenary token"
