@@ -13,7 +13,7 @@
 	cooldown_time = 30 SECONDS // 60 seconds cooldown
 
 /datum/action/cooldown/spell/psydonabsolve/cast(mob/living/carbon/human/H, mob/living/user)
-
+	. = ..()
 	if(!ishuman(H))
 		to_chat(user, span_warning("ABSOLUTION is for those who walk in HIS image!"))
 		return FALSE

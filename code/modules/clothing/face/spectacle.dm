@@ -132,3 +132,51 @@
 	if(worn)
 		playsound(user, 'sound/items/confessormaskoff.ogg', 80)
 		worn = FALSE
+
+
+/obj/item/clothing/face/facemask/steel/confessor/attackby(obj/item/I, mob/user, params)
+	. = ..()
+	if(istype(I, /obj/item/clothing/face/spectacles/inq))
+		user.visible_message(span_warning("[user] starts to insert [I]'s lenses into [src]."))
+		if(do_after(user, 4 SECONDS))
+			var/obj/item/clothing/face/facemask/steel/confessor/lensed/P = new /obj/item/clothing/face/facemask/steel/confessor/lensed(get_turf(src.loc))
+			if(user.is_holding(src))
+				user.dropItemToGround(src)
+				user.put_in_hands(P)
+			P.update_integrity(src.atom_integrity)
+			qdel(src)
+			qdel(I)
+		else
+			user.visible_message(span_warning("[user] stops inserting the lenses into [src]."))
+		return
+
+/obj/item/clothing/face/facemask/steel/confessor/lensed
+	name = "stranger mask"
+	desc = "It is said that the original version of this mask was used for obscure rituals prior to the fall of the Empire of the Holy Celestia, and now it has been repurposed as a veil for the cunning hand of the Otavan Orthodoxy.<br> <br>Others say it is a piece of heresy, a necessary evil, capable of keeping its user safe from left-handed magicks. You can taste copper whenever you draw breath."
+	icon_state = "confessormask_lens"
+	var/lensmoved = TRUE
+
+/obj/item/clothing/face/facemask/steel/confessor/lensed/equipped(mob/user, slot)
+	..()
+	if(slot == ITEM_SLOT_MASK || slot == ITEM_SLOT_HEAD)
+		if(!lensmoved)
+			ADD_TRAIT(user, TRAIT_NOCSHADES, "redlens")
+			return
+
+/obj/item/clothing/face/facemask/steel/confessor/lensed/attack_hand_secondary(mob/user, params)
+	. = ..()
+	if(!lensmoved)
+		to_chat(user, span_info("You discreetly slide the inner lenses out of the way."))
+		REMOVE_TRAIT(user, TRAIT_NOCSHADES, "redlens")
+		lensmoved = TRUE
+		return
+	to_chat(user, span_info("You discreetly slide the inner lenses back into place."))
+	ADD_TRAIT(user, TRAIT_NOCSHADES, "redlens")
+	lensmoved = FALSE
+
+/obj/item/clothing/face/facemask/steel/confessor/lensed/dropped(mob/user, slot)
+	..()
+	if(slot != ITEM_SLOT_MASK || slot == ITEM_SLOT_HEAD)
+		if(!lensmoved)
+			REMOVE_TRAIT(user, TRAIT_NOCSHADES, "redlens")
+			return

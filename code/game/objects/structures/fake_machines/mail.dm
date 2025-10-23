@@ -221,9 +221,9 @@ GLOBAL_LIST_EMPTY(letters_sent)
 				new /obj/item/clothing/neck/mercmedal/goldfeather(drop_location)
 
 	if(HAS_TRAIT(user, TRAIT_INQUISITION))
-		if(istype(P, /obj/item/roguekey))
-			var/obj/item/roguekey/K = P
-			if(K.lockid == keycontrol) // Inquisitor's Key
+		if(istype(P, /obj/item/key))
+			var/obj/item/key/K = P
+			if(keycontrol in K.lockids) // Inquisitor's Key
 				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 				for(var/obj/structure/fake_machine/mail/everyhermes in SSroguemachine.hermailers)
 					everyhermes.inqlock()
@@ -236,8 +236,8 @@ GLOBAL_LIST_EMPTY(letters_sent)
 			if(!K.contents.len)
 				return
 			var/list/keysy = K.contents.Copy()
-			for(var/obj/item/roguekey/KE in keysy)
-				if(KE.lockid == keycontrol)
+			for(var/obj/item/key/KE in keysy)
+				if(keycontrol in KE.lockids)
 					playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 					for(var/obj/structure/fake_machine/mail/everyhermes in SSroguemachine.hermailers)
 						everyhermes.inqlock()

@@ -12,9 +12,24 @@
 	var/roll_chance = 100
 	/// What categories we are going to sort it in, handles selection
 	var/list/category_tags = null
+	/// Subclass skills. Everything here is leveled UP TO using adjust_skillrank_up_to EX. list(/datum/skill = SKILL_LEVEL_JOURNEYMAN)
+	var/list/subclass_skills
+	/// Subclass stat bonuses.
+	var/list/subclass_stats
+
+
 
 /datum/job/advclass/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
+
+	if(length(subclass_skills))
+		for(var/skill in subclass_skills)
+			spawned.clamped_adjust_skillrank(skill, subclass_skills[skill], TRUE)
+
+
+	if(length(subclass_stats))
+		for(var/stat in subclass_stats)
+			spawned.change_stat(stat, subclass_stats[stat])
 
 	// Remove the stun first, then grant us the torch.
 	for(var/datum/status_effect/incapacitating/stun/S in spawned.status_effects)

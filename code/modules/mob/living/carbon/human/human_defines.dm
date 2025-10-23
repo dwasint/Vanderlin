@@ -103,6 +103,7 @@
 	var/funeral = FALSE // Whether the body has received rites or not.
 
 	var/datum/devotion/cleric = null // Used for cleric_holder for priests
+	var/datum/inspiration/inspiration = null
 
 	var/headshot_link = null
 	var/flavortext = null

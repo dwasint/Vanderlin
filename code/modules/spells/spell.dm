@@ -964,7 +964,6 @@
 			var/mob/living/caster = owner
 			caster.adjust_bloodpool(-used_cost)
 
-
 	return used_cost
 
 /datum/action/cooldown/spell/proc/handle_exp(cost_in)

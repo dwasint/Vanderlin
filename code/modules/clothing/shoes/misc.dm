@@ -154,6 +154,8 @@
 	blocksound = SOFTHIT
 	max_integrity = 200
 	armor = ARMOR_LEATHER_GOOD
+	sleeved = null
+	sleevetype = null
 
 /obj/item/clothing/shoes/otavan/inqboots
 	name = "inquisitorial boots"
@@ -172,3 +174,5 @@
 	color = "#d5c2aa"
 	icon_state = "psydonboots"
 	item_state = "psydonboots"
+	sleeved = null
+	sleevetype = null
