@@ -32,7 +32,7 @@
 	},
 /obj/item/reagent_containers/glass/cup/steel,
 /turf/open/floor/carpet/royalblack,
-/area/rogue/indoors/town/church/inquisition)
+/area/rogue/indoors/inq/import)
 "aaU" = (
 /turf/closed/wall/mineral/decowood,
 /area/rogue/indoors/town/clinic_large/apothecary)
@@ -202,6 +202,10 @@
 	},
 /turf/open/floor/churchbrick,
 /area/rogue/indoors/town/church)
+"afe" = (
+/obj/effect/landmark/start/absolver,
+/turf/open/floor/church,
+/area/rogue/indoors/town/church/inquisition)
 "afl" = (
 /obj/effect/landmark/start/villager{
 	dir = 8
@@ -1725,7 +1729,7 @@
 	dir = 8
 	},
 /turf/open/floor/churchbrick,
-/area/rogue/indoors/town/church/inquisition)
+/area/rogue/indoors/inq/import)
 "aTt" = (
 /obj/structure/stairs{
 	dir = 8
@@ -6133,6 +6137,10 @@
 	},
 /turf/open/floor/churchrough,
 /area/rogue/indoors/town/manor/phys)
+"dBG" = (
+/obj/effect/landmark/start/absolver,
+/turf/open/floor/church/purple,
+/area/rogue/indoors/town/church/inquisition)
 "dBN" = (
 /obj/machinery/light/fueled/wallfire/candle{
 	pixel_y = -32
@@ -11306,7 +11314,7 @@
 	pixel_y = 1
 	},
 /turf/open/floor/carpet/royalblack,
-/area/rogue/indoors/town/church/inquisition)
+/area/rogue/indoors/inq/import)
 "gwg" = (
 /obj/structure/fluff/walldeco/mageguild,
 /turf/closed/wall/mineral/stonebrick,
@@ -12517,7 +12525,7 @@
 	dir = 4
 	},
 /turf/open/floor/churchbrick,
-/area/rogue/indoors/town/church/inquisition)
+/area/rogue/indoors/inq/import)
 "hgA" = (
 /obj/structure/table/wood/plain_alt,
 /obj/item/paper/scroll{
@@ -13789,6 +13797,10 @@
 /obj/machinery/light/fueled/firebowl/church,
 /turf/open/floor/wood,
 /area/rogue/indoors/town/church/chapel)
+"hSO" = (
+/obj/effect/landmark/start/adept,
+/turf/open/floor/woodturned,
+/area/rogue/indoors/town/church/inquisition)
 "hTk" = (
 /turf/open/floor/twig,
 /area/rogue/outdoors/rtfield/safe)
@@ -23031,7 +23043,7 @@
 /obj/effect/landmark/start/puritan,
 /obj/structure/chair/bench/throne,
 /turf/open/floor/carpet/royalblack,
-/area/rogue/indoors/town/church/inquisition)
+/area/rogue/indoors/inq/import)
 "nGo" = (
 /obj/structure/door,
 /obj/effect/mapping_helpers/access/locker,
@@ -23450,7 +23462,7 @@
 	},
 /obj/machinery/light/fueled/wallfire/candle/blue,
 /turf/open/floor/churchbrick,
-/area/rogue/indoors/town/church/inquisition)
+/area/rogue/indoors/inq/import)
 "nOJ" = (
 /obj/effect/landmark/events/animal_migration_point,
 /turf/open/floor/cobble,
@@ -33676,6 +33688,9 @@
 /obj/item/bin/water,
 /turf/open/floor/cobble,
 /area/rogue/indoors/dungeon)
+"tZQ" = (
+/turf/open/floor/carpet/royalblack,
+/area/rogue/indoors/inq/import)
 "uaJ" = (
 /obj/structure/fluff/railing/border{
 	dir = 1
@@ -33793,6 +33808,10 @@
 /obj/machinery/light/fueled/firebowl,
 /turf/open/floor/blocks,
 /area/rogue/under/town/sewer)
+"ufs" = (
+/obj/effect/landmark/start/adept,
+/turf/open/floor/church,
+/area/rogue/indoors/town/church/inquisition)
 "ufv" = (
 /obj/effect/landmark/tram/queued_path/cargo_pre_enter{
 	next_path_id = "cargo_stop"
@@ -38847,7 +38866,7 @@
 	pixel_y = 17
 	},
 /turf/open/floor/carpet/royalblack,
-/area/rogue/indoors/town/church/inquisition)
+/area/rogue/indoors/inq/import)
 "xkS" = (
 /obj/structure/fluff/railing/border,
 /obj/structure/rack/shelf/biggest,
@@ -39173,15 +39192,9 @@
 /turf/open/floor/wood,
 /area/rogue/indoors/town)
 "xwq" = (
-/obj/structure/fluff/walldeco/church/line{
-	dir = 8
-	},
-/obj/structure/fluff/walldeco/church/line{
-	dir = 1
-	},
-/obj/machinery/light/fueled/wallfire/candle/blue,
+/obj/effect/landmark/start/absolver,
 /turf/open/floor/churchbrick,
-/area/rogue/indoors/town/church/inquisition)
+/area/rogue/indoors/inq/import)
 "xwA" = (
 /obj/machinery/light/fueledstreet{
 	dir = 1
@@ -39248,6 +39261,13 @@
 /obj/structure/fluff/millstone,
 /turf/open/floor/woodturned,
 /area/rogue/indoors/soilsons)
+"xyQ" = (
+/obj/structure/fluff/walldeco/church/line{
+	dir = 1
+	},
+/obj/effect/landmark/start/adept,
+/turf/open/floor/church/purple,
+/area/rogue/indoors/town/church/inquisition)
 "xyY" = (
 /turf/closed/mineral,
 /area/rogue/outdoors/town)
@@ -113833,7 +113853,7 @@ fgn
 vSF
 vSF
 wPR
-xId
+xyQ
 wZr
 eHo
 sex
@@ -114236,10 +114256,10 @@ wCC
 dhF
 iII
 iII
-wPR
+hSO
 xId
 wZr
-eHo
+dBG
 tyi
 gyI
 nhd
@@ -115046,7 +115066,7 @@ dhF
 dhF
 fgn
 xId
-wZr
+ufs
 dMK
 fgn
 fgn
@@ -115446,9 +115466,9 @@ vnF
 jdk
 fvl
 fgn
-awR
+tZQ
 gwe
-awR
+tZQ
 aKk
 wZr
 dMK
@@ -115650,7 +115670,7 @@ vgh
 fgn
 nGh
 aat
-awR
+tZQ
 eHG
 wZr
 eHo
@@ -115850,9 +115870,9 @@ jdk
 vgh
 qNi
 dhF
-awR
+tZQ
 xkP
-awR
+tZQ
 gpy
 wZr
 yeN
@@ -116258,7 +116278,7 @@ dhF
 uCU
 iuv
 hwc
-hwc
+afe
 rlt
 fgn
 jBa
