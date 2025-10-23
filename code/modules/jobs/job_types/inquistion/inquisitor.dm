@@ -181,7 +181,7 @@
 			H.clamped_adjust_skillrank(/datum/skill/combat/whipsflails, 5, 5)
 			H.clamped_adjust_skillrank(/datum/skill/combat/shields, 4, 4)
 		if("Apocrypha (Greatsword) and a Silver Dagger")
-			H.put_in_hands(new /obj/item/weapon/greatsword/psydon/relic(H), TRUE)
+			H.put_in_hands(new /obj/item/weapon/sword/long/greatsword/psydon/relic(H), TRUE)
 			H.put_in_hands(new /obj/item/weapon/knife/dagger/silver/psydon(H), TRUE)
 			H.equip_to_slot_or_del(new /obj/item/weapon/scabbard/knife, ITEM_SLOT_BACK_L, TRUE)
 			H.clamped_adjust_skillrank(/datum/skill/combat/swords, 5, 5)

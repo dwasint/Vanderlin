@@ -964,7 +964,7 @@
 			if("onback")
 				return list("shrink" = 0.6,"sx" = -1,"sy" = 3,"nx" = -1,"ny" = 2,"wx" = 3,"wy" = 4,"ex" = -1,"ey" = 5,"nturn" = 0,"sturn" = 0,"wturn" = 70,"eturn" = 20,"nflip" = 1,"sflip" = 1,"wflip" = 1,"eflip" = 1,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
 
-/obj/item/weapon/greatsword/psydon/relic
+/obj/item/weapon/sword/long/greatsword/psydon/relic
 	name = "Apocrypha"
 	desc = "In the Otavan mosaics, Saint Ravox - bare in all but a beaked helmet and loincloth - is often depicted wielding such an imposing greatweapon against the Dark Star, Graggar. Regardless of whether this relic was actually wielded by divinity-or-not, its unparallel strength will nevertheless command even the greatest foes to fall."
 	force = 25
