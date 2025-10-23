@@ -790,6 +790,7 @@ Inquisitorial armory down here
 	integrity_failure = 0.01
 	embedding = null
 	sellprice = 0
+	wield_block = FALSE
 
 /obj/item/inqarticles/garrote/atom_break(damage_flag, silent)
 	. = ..()

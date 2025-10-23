@@ -284,6 +284,9 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	/// This thing can be used to unlock locks
 	var/can_unlock = TRUE
 
+	///do we block the offhand while wielding
+	var/wield_block = TRUE
+
 /obj/item/proc/set_quality(quality)
 	recipe_quality = clamp(quality, 0, 4)
 	update_appearance(UPDATE_OVERLAYS)
@@ -325,7 +328,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 /obj/item/proc/apply_components()
 	if(force_wielded || gripped_intents)
 		var/wielded_force = force_wielded ? force_wielded : force
-		AddComponent(/datum/component/two_handed, force_unwielded = force, force_wielded = wielded_force, wield_callback = CALLBACK(src, PROC_REF(on_wield)), unwield_callback = CALLBACK(src, PROC_REF(on_unwield)))
+		AddComponent(/datum/component/two_handed, force_unwielded = force, force_wielded = wielded_force, wield_callback = CALLBACK(src, PROC_REF(on_wield)), unwield_callback = CALLBACK(src, PROC_REF(on_unwield)), wield_blocking = wield_block)
 
 /obj/item/proc/get_detail_tag() //this is for extra layers on clothes
 	return detail_tag
