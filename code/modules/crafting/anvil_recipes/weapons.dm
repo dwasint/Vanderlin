@@ -846,7 +846,7 @@
 	name = "Psydonian Halberd (+1 B. Silver, +1 Small Log)"
 	req_bar = /obj/item/ingot/silverblessed
 	craftdiff = 3
-	created_item = /obj/item/weapon/halberd/psydon
+	created_item = /obj/item/weapon/polearm/halberd/psydon
 	additional_items = list(/obj/item/ingot/silverblessed, /obj/item/grown/log/tree/small)
 	i_type = "Weapons"
 

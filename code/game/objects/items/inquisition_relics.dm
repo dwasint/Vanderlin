@@ -45,7 +45,7 @@
 				if("Daybreak - Silver Whip")
 					choice = /obj/item/weapon/whip/antique/psywhip
 				if("Stigmata - Silver Halberd")
-					choice = /obj/item/weapon/halberd/psydon
+					choice = /obj/item/weapon/polearm/halberd/psydon
 					user.clamped_adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)	//We make sure the weapon is usable by the Inquisitor.
 				if("Apocrypha - Silver Greatsword")
 					choice = /obj/item/weapon/sword/long/greatsword/psydon
@@ -201,7 +201,7 @@ Inquisitorial armory down here
 	.=..()
 	new /obj/item/weapon/huntingknife/idagger/silver/psydagger(src)
 	new /obj/item/weapon/greatsword/psygsword(src)
-	new /obj/item/weapon/halberd/psyhalberd(src)
+	new /obj/item/weapon/polearm/halberd/psyhalberd(src)
 	new /obj/item/weapon/whip/psywhip_lesser
 	new /obj/item/weapon/flail/sflail/psyflail
 	new /obj/item/weapon/spear/psyspear(src)

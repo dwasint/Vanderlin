@@ -109,7 +109,7 @@
 			H.put_in_hands(new /obj/item/weapon/whip/antique/psywhip(H), TRUE)
 			H.clamped_adjust_skillrank(/datum/skill/combat/whipsflails, 4, 4)
 		if("Stigmata (Halberd)")
-			H.put_in_hands(new /obj/item/weapon/halberd/psydon/relic(H), TRUE)
+			H.put_in_hands(new /obj/item/weapon/polearm/halberd/psydon/relic(H), TRUE)
 			H.clamped_adjust_skillrank(/datum/skill/combat/polearms, 4, 4)
 
 
