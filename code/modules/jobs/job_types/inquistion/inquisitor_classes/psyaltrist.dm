@@ -4,12 +4,12 @@
 	outfit = /datum/outfit/job/psyaltrist
 	traits = list(TRAIT_DODGEEXPERT, TRAIT_EMPATH)
 	category_tags = list(CTAG_INQUISITION)
-	subclass_stats = list(
+	jobstats = list(
 		STATKEY_STR = 1,
 		STATKEY_WIL = 1,
 		STATKEY_SPD = 3,
 	)
-	subclass_skills = list(
+	skills = list(
 		/datum/skill/misc/music = SKILL_LEVEL_MASTER,
 		/datum/skill/magic/holy = SKILL_LEVEL_EXPERT,
 		/datum/skill/combat/knives = SKILL_LEVEL_EXPERT,

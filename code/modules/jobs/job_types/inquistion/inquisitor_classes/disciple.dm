@@ -5,14 +5,14 @@
 	allowed_races = RACES_PLAYER_ALL
 	outfit = /datum/outfit/job/disciple
 	category_tags = list(CTAG_INQUISITION)
-	subclass_stats = list(
+	jobstats = list(
 		STATKEY_STR = 3,
 		STATKEY_WIL = 3,
 		STATKEY_CON = 3,
 		STATKEY_INT = -2,
 		STATKEY_SPD = -1
 	)
-	subclass_skills = list(
+	skills = list(
 		/datum/skill/misc/athletics = SKILL_LEVEL_EXPERT,
 		/datum/skill/combat/unarmed = SKILL_LEVEL_EXPERT,
 		/datum/skill/combat/wrestling = SKILL_LEVEL_EXPERT,

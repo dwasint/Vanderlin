@@ -7,13 +7,13 @@
 	category_tags = list(CTAG_INQUISITION)
 	cmode_music = 'sound/music/cmode/antag/combat_deadlyshadows.ogg'
 
-	subclass_stats = list(
+	jobstats = list(
 		STATKEY_SPD = 3,
 		STATKEY_END = 3,
 		STATKEY_PER = 2,
 		STATKEY_STR = -1
 	)
-	subclass_skills = list(
+	skills = list(
 		/datum/skill/combat/wrestling = SKILL_LEVEL_JOURNEYMAN, //Should rely on the seizing garrote to properly subdue foes.
 		/datum/skill/combat/unarmed = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/misc/reading = SKILL_LEVEL_NOVICE,

@@ -2666,6 +2666,8 @@
 #include "code\modules\jobs\job_types\inquistion\inquisitor_classes\disciple.dm"
 #include "code\modules\jobs\job_types\inquistion\inquisitor_classes\psyaltrist.dm"
 #include "code\modules\jobs\job_types\inquistion\inquisitor_classes\templar.dm"
+#include "code\modules\jobs\job_types\inquistion\puritian\inspector.dm"
+#include "code\modules\jobs\job_types\inquistion\puritian\ordinator.dm"
 #include "code\modules\jobs\job_types\nobility\archivist.dm"
 #include "code\modules\jobs\job_types\nobility\captain.dm"
 #include "code\modules\jobs\job_types\nobility\consort.dm"

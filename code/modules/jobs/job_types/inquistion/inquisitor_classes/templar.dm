@@ -7,12 +7,13 @@
 	category_tags = list(CTAG_INQUISITION)
 	cmode_music = 'sound/music/templarofpsydonia.ogg'
 
-	subclass_stats = list(
+	jobstats = list(
 		STATKEY_STR = 2,
 		STATKEY_CON = 2,
 		STATKEY_END = 3,
 	)
-	subclass_skills = list(
+
+	skills = list(
 		/datum/skill/combat/swords = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/combat/axesmaces = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/combat/whipsflails = SKILL_LEVEL_JOURNEYMAN,
@@ -26,6 +27,13 @@
 		/datum/skill/magic/holy = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/combat/shields = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/misc/medicine = SKILL_LEVEL_NOVICE
+	)
+
+	traits = list(
+		TRAIT_HEAVYARMOR,
+		TRAIT_STEELHEARTED,
+		TRAIT_INQUISITION,
+		TRAIT_SILVER_BLESSED,
 	)
 
 /datum/outfit/job/psydoniantemplar/pre_equip(mob/living/carbon/human/H)
@@ -45,11 +53,6 @@
 	beltl = /obj/item/storage/belt/pouch/coins/mid
 	ring = /obj/item/clothing/ring/signet/silver
 	backpack_contents = list(/obj/item/storage/keyring/inquisitor = 1)
-
-	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_INQUISITION, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_SILVER_BLESSED, TRAIT_GENERIC)
 
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 	var/datum/devotion/devotion = new /datum/devotion(H, H.patron)

@@ -15,6 +15,42 @@
 	min_pq = 3 // Low potential for grief. A pacifist by trade. Also needs to know wtf a PSYDON is.
 	give_bank_account = 15
 
+	traits = list(
+		TRAIT_NOPAINSTUN,
+		TRAIT_PACIFISM,
+		TRAIT_EMPATH,
+		TRAIT_CRITICAL_RESISTANCE,
+		TRAIT_STEELHEARTED,
+		TRAIT_INQUISITION,
+		TRAIT_SILVER_BLESSED,
+	)
+
+	jobstats = list(
+		STATKEY_END = 3,
+		STATKEY_SPD = -2,
+		STATKEY_CON = 7,
+	)
+
+	spells = list(
+		/datum/action/cooldown/spell/psydonlux_tamper,
+		/datum/action/cooldown/spell/psydonabsolve,
+		/datum/action/cooldown/spell/diagnose,
+	)
+
+	skills = list(
+		/datum/skill/misc/athletics = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/misc/climbing = SKILL_LEVEL_EXPERT,
+		/datum/skill/misc/sewing = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/misc/reading = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/combat/unarmed = SKILL_LEVEL_NOVICE,
+		/datum/skill/misc/medicine = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/craft/cooking = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/labor/fishing = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/misc/swimming = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/craft/crafting = SKILL_LEVEL_JOURNEYMAN,
+	)
+
+
 // REMEMBER FLAGELLANT? REMEMBER LASZLO? THIS IS HIM NOW. FEEL OLD YET?
 
 /datum/job/absolver/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
@@ -25,16 +61,6 @@
 
 /datum/outfit/job/absolver/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE) // Enduring.
-	H.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/sewing, 3, TRUE) // A hobbyist.
-	H.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE) // Parry things.
-	H.adjust_skillrank(/datum/skill/misc/medicine, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/craft/cooking, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/labor/fishing, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/craft/crafting, 3, TRUE)
 	wrists = /obj/item/clothing/wrists/bracers/psythorns
 	gloves = /obj/item/clothing/gloves/leather/otavan/inqgloves
 	beltr = /obj/item/flashlight/flare/torch/lantern/psycenser
@@ -59,21 +85,7 @@
 		/obj/item/natural/worms/leech = 1,
 		/obj/item/key/inquisition = 1,
 		)
-	H.change_stat(STATKEY_END, 3)
-	H.change_stat(STATKEY_CON, 7)
-	H.change_stat(STATKEY_SPD, -2)
-	H.add_spell(/datum/action/cooldown/spell/psydonlux_tamper)
-	H.add_spell(/datum/action/cooldown/spell/psydonabsolve)
-	H.add_spell(/datum/action/cooldown/spell/diagnose)
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.make_absolver()
 	C.grant_to(H)
-
-	ADD_TRAIT(H, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_PACIFISM, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_INQUISITION, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_SILVER_BLESSED, TRAIT_GENERIC)
 
