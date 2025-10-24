@@ -24,6 +24,11 @@
 		/datum/skill/magic/holy = SKILL_LEVEL_APPRENTICE,
 	)
 
+	traits = list(
+		TRAIT_INQUISITION,
+		TRAIT_SILVER_BLESSED,
+		TRAIT_STEELHEARTED,
+	)
 
 /obj/item/storage/belt/leather/rope/dark
 	color = "#505050"
@@ -84,9 +89,6 @@
 				H.change_stat(STATKEY_INT, 3)
 				H.change_stat(STATKEY_SPD, 2) //Turns the Sojourner's unmodified statblock to 3/0/0/1/1, compared to the Disciple's 3/3/3/-2/-1.
 
-	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_INQUISITION, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_SILVER_BLESSED, TRAIT_GENERIC)
 	H.grant_language(/datum/language/otavan)
 
 	shoes = /obj/item/clothing/shoes/psydonboots

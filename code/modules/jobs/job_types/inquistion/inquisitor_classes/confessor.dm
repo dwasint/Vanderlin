@@ -26,6 +26,15 @@
 		/datum/skill/combat/crossbows = SKILL_LEVEL_EXPERT,
 	)
 
+	traits = list(
+		TRAIT_DODGEEXPERT,
+		TRAIT_STEELHEARTED,
+		TRAIT_INQUISITION,
+		TRAIT_PSYDONITE,
+		TRAIT_BLACKBAGGER,
+		TRAIT_SILVER_BLESSED,
+	)
+
 /datum/outfit/job/confessor/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.mind)
@@ -69,12 +78,7 @@
 			if("Sunderbolts - Silver-Tipped, Halved Damage")
 				beltl = /obj/item/ammo_holder/quiver/bolt/holy
 
-	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_INQUISITION, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_PSYDONITE, TRAIT_GENERIC) // YOU'RE TRYING TO ENDURE, HERE.
-	ADD_TRAIT(H, TRAIT_BLACKBAGGER, TRAIT_GENERIC) // NECESSARY EVIL.
-	ADD_TRAIT(H, TRAIT_SILVER_BLESSED, TRAIT_GENERIC)
+
 	H.grant_language(/datum/language/otavan)
 	cloak = /obj/item/storage/backpack/satchel
 	wrists = /obj/item/clothing/neck/psycross/silver
