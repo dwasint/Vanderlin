@@ -443,7 +443,7 @@
 					else
 						return // good job you tortured an innocent person
 				if(HAS_TRAIT_FROM(src, TRAIT_CONFESSED_FOR, held_confession.bad_type))
-					visible_message(span_warning("[name] has already signed a confession!"), "I have already signed a confession!")
+					visible_message(span_warning("[name] has already confessed for this!"), "I have confessed this!")
 					return //cruel
 				ADD_TRAIT(src, TRAIT_HAS_CONFESSED, TRAIT_GENERIC)
 				ADD_TRAIT(src, TRAIT_CONFESSED_FOR, held_confession.bad_type)
