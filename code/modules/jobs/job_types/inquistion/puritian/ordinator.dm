@@ -17,10 +17,11 @@
 	)
 
 	jobstats = list(
-		STATKEY_STR = 2,
-		STATKEY_END = 3,
-		STATKEY_CON = 3,
+		STATKEY_STR = 1,
+		STATKEY_END = 1,
+		STATKEY_CON = 2,
 		STATKEY_PER = 2,
+		STATKEY_SPD = 2,
 		STATKEY_INT = 2,
 	)
 

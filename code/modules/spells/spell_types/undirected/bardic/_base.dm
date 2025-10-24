@@ -68,7 +68,7 @@
 	pulse += 1
 	if (pulse >= ticks_to_apply)
 		pulse = 0
-		O.adjust_energy(-25)
+		O.adjust_energy(-10)
 		for (var/mob/living/carbon/human/H in hearers(10, owner))
 			if(O.in_audience(H))
 				H.apply_status_effect(buff_to_apply)

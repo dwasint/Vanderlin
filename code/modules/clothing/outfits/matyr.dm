@@ -107,7 +107,7 @@
 /datum/status_effect/debuff/lost_naledi_mask
 	id = "naledimask"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/naledimask
-	effectedstats = list(STATKEY_WIL = -3, STATKEY_LCK = -3)
+	effectedstats = list(STATKEY_END = -3, STATKEY_LCK = -3)
 
 /atom/movable/screen/alert/status_effect/debuff/naledimask
 	name = "Lost Mask"

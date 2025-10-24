@@ -36,4 +36,4 @@
 	id = "pestilentpiper"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/song/pestilentpiper
 	duration = 15 SECONDS
-	effectedstats = list(STATKEY_WIL = -1, STATKEY_CON = -2)
+	effectedstats = list(STATKEY_END = -1, STATKEY_CON = -2)
