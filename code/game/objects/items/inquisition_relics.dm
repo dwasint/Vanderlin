@@ -704,7 +704,7 @@ Inquisitorial armory down here
 		else
 			to_chat(user, span_info("The [src] already has redtallow in it."))
 
-	if(istype(I, /obj/item/flashlight/flare/torch/))
+	if(istype(I, /obj/item/flashlight/flare/torch))
 		heatedup = 28
 		visible_message(span_info("[user] warms [src] with [I]."))
 		update_icon()

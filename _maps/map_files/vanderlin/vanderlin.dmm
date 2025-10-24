@@ -11313,6 +11313,10 @@
 	pixel_x = -7;
 	pixel_y = 1
 	},
+/obj/item/inqarticles/tallowpot{
+	pixel_y = 15;
+	pixel_x = 13
+	},
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/inq/import)
 "gwg" = (
@@ -34110,14 +34114,6 @@
 /area/rogue/indoors/town/warehouse)
 "ura" = (
 /obj/structure/rack/shelf/biggest,
-/obj/item/paper/confession,
-/obj/item/paper/confession,
-/obj/item/paper/confession,
-/obj/item/paper/confession,
-/obj/item/paper/confession,
-/obj/item/paper/confession,
-/obj/item/paper/confession,
-/obj/item/paper/confession,
 /obj/item/natural/feather,
 /obj/item/natural/feather,
 /turf/open/floor/church/purple,
@@ -38872,6 +38868,7 @@
 	pixel_x = 6;
 	pixel_y = 17
 	},
+/obj/item/inqarticles/tallowpot,
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/inq/import)
 "xkS" = (
