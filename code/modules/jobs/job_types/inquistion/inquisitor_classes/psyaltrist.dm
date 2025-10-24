@@ -1,6 +1,6 @@
 /datum/job/advclass/psyaltrist
 	title = "Psyaltrist"
-	tutorial = "You spent some time with cathedral choirs and psyaltrists. Now you spend your days applying the musical arts to the practical on behalf of His most Holy of Inquisitions."
+	tutorial = "Every inquisitor has their second. You aim to keep spirits and faith high, while handling the needs of the inquisitor. Not a glamorous role, but a vital one. “Maybe his lordship would prefer the lute, today, over the viola?”"
 	outfit = /datum/outfit/job/psyaltrist
 	traits = list(TRAIT_DODGEEXPERT, TRAIT_EMPATH)
 	category_tags = list(CTAG_INQUISITION)
@@ -24,7 +24,6 @@
 
 
 /datum/outfit/job/psyaltrist/pre_equip(mob/living/carbon/human/H)
-	H.grant_language(/datum/language/otavan)
 	armor = /obj/item/clothing/armor/leather/studded/psyaltrist
 	backl = /obj/item/storage/backpack/satchel/otavan
 	cloak = /obj/item/clothing/cloak/psyaltrist

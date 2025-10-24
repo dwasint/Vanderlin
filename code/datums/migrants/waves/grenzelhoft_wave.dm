@@ -180,9 +180,9 @@
 	. = ..()
 	var/prev_real_name = spawned.real_name
 	var/prev_name = spawned.name
-	var/honorary = "Ritter"
+	var/honorary = "Herr Präfekt"
 	if(spawned.gender == FEMALE)
-		honorary = "Ritterin"
+		honorary = "Herr Preceptor"
 	spawned.real_name = "[honorary] [prev_real_name]"
 	spawned.name = "[honorary] [prev_name]"
 
@@ -209,12 +209,12 @@
 
 /datum/migrant_role/grenzelhoft_man_at_arms
 	name = "Grenzelhoft Man-at-Arms"
-	greet_text = "You and your fellows are men at arms from Grenzelhoft, following your count with pride. Obey the Ritter and make sure the nobles you arrived with surive."
+	greet_text = "You and your fellows are men at arms from Grenzelhoft, following your count with pride. Obey the Herr Präfekt and make sure the nobles you arrived with surive."
 	migrant_job = /datum/job/migrant/grenzelhoft_man_at_arms
 
 /datum/job/migrant/grenzelhoft_man_at_arms
 	title = "Grenzelhoft Man-at-Arms"
-	tutorial = "You and your fellows are men at arms from Grenzelhoft, following your count with pride. Obey the Ritter and make sure the nobles you arrived with surive."
+	tutorial = "You and your fellows are men at arms from Grenzelhoft, following your count with pride. Obey the Herr Präfekt and make sure the nobles you arrived with surive."
 	outfit = /datum/outfit/grenzelhoft_man_at_arms
 	allowed_races = RACES_PLAYER_GRENZ
 

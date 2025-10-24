@@ -26,9 +26,9 @@
 		H.change_stat(STATKEY_SPD, -1)
 		var/prev_real_name = H.real_name
 		var/prev_name = H.name
-		var/honorary = "Ritter"
+		var/honorary = "Herr Präfekt"
 		if(H.gender == FEMALE)
-			honorary = "Ritterin"
+			honorary = "Herr Preceptor"
 		H.real_name = "[honorary] [prev_real_name]"
 		H.name = "[honorary] [prev_name]"
 

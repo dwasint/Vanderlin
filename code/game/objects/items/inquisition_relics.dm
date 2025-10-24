@@ -36,7 +36,7 @@
 			to_chat(user, span_info("The reliquary lock takes my key as it opens, I take a moment to ponder what power was delivered to us..."))
 			playsound(loc, 'sound/foley/doors/woodlock.ogg', 60)
 			to_chat(user,)
-			var/relics = list("Melancholic Crankbox - Antimagic", "Daybreak - Silver Whip", "Stigmata - Silver Halberd", "Apocrypha - Silver Greatsword", "Golgatha - SYON Shard Censer")
+			var/relics = list("Melancholic Crankbox - Antimagic", "Daybreak - Silver Whip", "Stigmata - Silver Halberd", "Apocrypha - Silver Greatsword", "Censer of Penitence")
 			var/relicchoice = input(user, "Choose your tool", "RELICS") as anything in relics
 			var/obj/choice
 			switch(relicchoice)
@@ -50,7 +50,7 @@
 				if("Apocrypha - Silver Greatsword")
 					choice = /obj/item/weapon/sword/long/greatsword/psydon
 					user.clamped_adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)		//Ditto.
-				if("Golgatha - SYON Shard Censer")
+				if("Censer of Penitence")
 					choice = /obj/item/flashlight/flare/torch/lantern/psycenser
 			to_chat(user, span_info("I have chosen the relic, may HE guide my hand."))
 			var/obj/structure/closet/crate/chest/inqreliquary/realchest = new /obj/structure/closet/crate/chest/inqreliquary(get_turf(src))
@@ -253,8 +253,8 @@ Inquisitorial armory down here
 	hitsound = list('sound/items/beartrap2.ogg')
 
 /obj/item/flashlight/flare/torch/lantern/psycenser
-	name = "Golgatha"
-	desc = "A masterfully-crafted thurible that, when opened, emits a ghastly perfume that reinvigorates the flesh-and-steel of Psydonites. It is said to contain a volatile fragment of the Comet Syon, which - if mishandled - can lead to unforeseen consequences."
+	name = "Censer of Penitence"
+	desc = "A device filled with bubbling silver. Its unstable state is dangerous to those who do not know its true nature, but to wield it is great honour for Psydon."
 	icon_state = "psycenser"
 	item_state = "psycenser"
 	icon = 'icons/roguetown/weapons/32.dmi'
@@ -327,7 +327,7 @@ Inquisitorial armory down here
 /obj/item/flashlight/flare/torch/lantern/psycenser/afterattack(atom/movable/A, mob/user, proximity)
 	. = ..()	//We smashed a guy with it turned on. Bad idea!
 	if(ismob(A) && on && (user.used_intent.type == /datum/intent/flail/strike/smash/golgotha) && user.cmode)
-		user.visible_message(span_warningbig("[user] smashes the exposed [src], shattering the shard of SYON!"))
+		user.visible_message(span_warningbig("You see an oddly bright spark before it detonates!"))
 		explosion(get_turf(A),devastation_range = 2, heavy_impact_range = 3, light_impact_range = 4, flame_range = 2, flash_range = 4, smoke = FALSE)
 		fuel = 0
 		turn_off()

@@ -1,7 +1,7 @@
 
 /datum/job/advclass/puritan/inspector
 	title = "Inquisitor"
-	tutorial = "Investigators from countless backgrounds, personally chosen by the High Bishop of the Otavan Sovereignty to root out heresy all across the world. Dressed in fashionable leathers and armed with a plethora of equipment, these beplumed officers are ready to tackle the inhumen: anywhere, anytime. Ideal for those who prefer sleuthy-and-clandestine affairs."
+	tutorial = "The head of the Ordo Venatari, your lessons are of a subtle touch and a light step. A silver dagger in the right place at the right time is all that is needed. Preparation is key, and this is something you impart on your students. Be always ready, be always waiting, and always be vigilant."
 	outfit = /datum/outfit/job/inquisitor/inspector
 
 	category_tags = list(CTAG_PURITAN)

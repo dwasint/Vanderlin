@@ -1,5 +1,5 @@
 /datum/job/orthodoxist
-	title = "Orthodoxist"
+	title = "Sacrestants"
 	department_flag = INQUISITION
 	faction = "Station"
 	total_positions = 2 // TWO GOONS!!
@@ -11,7 +11,7 @@
 		/datum/patron/psydon
 	)
 
-	tutorial = "A fervent believer in the cause of the Inquisition. Recruited by the Otavan Inquisitor to further the Psydonian goal in the locale."
+	tutorial = "A student of the Oratorium in training to become a full Inquisitor. You’ve come here under the stern gaze of the Herr Präfekt to prove your wits and skill. This is your week. You’re going to take your place among the blades of Psydon."
 	selection_color = JCOLOR_INQUISITION
 
 	outfit = null
@@ -29,6 +29,7 @@
 	..()
 	if(L)
 		var/mob/living/carbon/human/H = L
+		H.grant_language(/datum/language/oldpsydonic)
 		if(!H.mind)
 			return
 		H.advsetup = 1

@@ -1,6 +1,6 @@
 /datum/job/advclass/disciple
 	title = "Disciple"
-	tutorial = "Disciples are Otavan martial artists, recruited by the Inquisition for their iron physique."
+	tutorial = "Some train their steel, others train their wits. You have honed your body itself into a weapon, anointing it with faithful markings to fortify your soul. You serve and train under the Ordo Benetarus, and one day you will be among Psydon’s most dauntless warriors."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_PLAYER_ALL
 	outfit = /datum/outfit/job/disciple
@@ -88,8 +88,6 @@
 				H.change_stat(STATKEY_CON, -3)
 				H.change_stat(STATKEY_INT, 3)
 				H.change_stat(STATKEY_SPD, 2) //Turns the Sojourner's unmodified statblock to 3/0/0/1/1, compared to the Disciple's 3/3/3/-2/-1.
-
-	H.grant_language(/datum/language/otavan)
 
 	shoes = /obj/item/clothing/shoes/psydonboots
 	armor = /obj/item/clothing/armor/regenerating/skin/disciple

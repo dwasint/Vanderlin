@@ -7,7 +7,7 @@
 	spawn_positions = 1
 	allowed_races = RACES_PLAYER_ALL
 	allowed_patrons = list(/datum/patron/psydon) //You MUST have a Psydonite character to start. Just so people don't get japed into Oops Suddenly Psydon!
-	tutorial = "The Orthodoxy claims you are naught more than a 'cleric', but you know the truth; you are a sacrifical lamb. Your hands, unmarred through prayer and pacifism, have been gifted with the power to manipulate lux - to siphon away the wounds of others, so that you may endure in their stead. Let your censer's light shepherd the Inquisitor's retinue forth, lest they're led astray by wrath and temptation."
+	tutorial = "The Oratorium claims you are naught more than a 'cleric', but you know the truth; you are a sacrificial lamb. Your hands, unmarred through prayer and pacifism, have been gifted with the power to manipulate blood - to siphon away the wounds of others, so that you may endure in their stead. Let your censer's light shepherd the Inquisitor's retinue forth, lest they're led astray by wrath and temptation."
 	selection_color = JCOLOR_INQUISITION
 	outfit = /datum/outfit/job/absolver
 	bypass_lastclass = TRUE
@@ -57,7 +57,7 @@
 	. = ..()
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
-		H.grant_language(/datum/language/otavan)
+		H.grant_language(/datum/language/oldpsydonic)
 
 /datum/outfit/job/absolver/pre_equip(mob/living/carbon/human/H)
 	..()
