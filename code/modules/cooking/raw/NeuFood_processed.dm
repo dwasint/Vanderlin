@@ -55,7 +55,7 @@
 	name = "tallow"
 	desc = "Fatty tissue is harvested from slain creachurs and rendered of its membraneous sinew to produce a hard shelf-stable \
 	grease."
-	icon_state = "fat"
+	icon_state = "tallow"
 	tastes = list("grease" = 1, "oil" = 1, "regret" =1)
 	obj_flags = CAN_BE_HIT
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_POOR)
