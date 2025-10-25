@@ -154,8 +154,6 @@
 	blocksound = SOFTHIT
 	max_integrity = 200
 	armor = ARMOR_LEATHER_GOOD
-	sleeved = null
-	sleevetype = null
 
 /obj/item/clothing/shoes/otavan/inqboots
 	name = "inquisitorial boots"

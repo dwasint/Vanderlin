@@ -8456,6 +8456,13 @@
 	},
 /turf/open/floor/blocks,
 /area/rogue/indoors/dungeon)
+"eNT" = (
+/obj/structure/fluff/walldeco/church/line{
+	dir = 1
+	},
+/obj/structure/fake_machine/mail,
+/turf/open/floor/church/purple,
+/area/rogue/indoors/town/church/inquisition)
 "eOl" = (
 /mob/living/simple_animal/hostile/retaliate/wolf{
 	del_on_deaggro = 0;
@@ -13953,12 +13960,6 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/indoors/soilsons)
-"hYz" = (
-/obj/item/inqarticles/indexer{
-	pixel_x = 2
-	},
-/turf/open/floor/dirt,
-/area/rogue/outdoors/town)
 "hYX" = (
 /obj/structure/stairs{
 	dir = 4
@@ -14378,6 +14379,12 @@
 	},
 /turf/open/transparent/openspace,
 /area/rogue/indoors/butchershop)
+"inC" = (
+/obj/item/inqarticles/indexer{
+	pixel_x = 2
+	},
+/turf/open/floor/dirt,
+/area/rogue/outdoors/town)
 "inE" = (
 /turf/open/floor/cobblerock,
 /area/rogue/under/cavewet)
@@ -17037,10 +17044,6 @@
 /obj/structure/flora/ausbushes/ywflowers,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/town)
-"jSt" = (
-/obj/structure/carpet/cyan,
-/turf/open/floor/church/purple,
-/area/rogue/indoors/town/church/inquisition)
 "jSz" = (
 /obj/structure/bed/mediocre,
 /obj/item/bedsheet/wool,
@@ -34342,6 +34345,10 @@
 /obj/structure/table/wood/reinf_long,
 /turf/open/floor/tile/bfloorz,
 /area/rogue/indoors/town/bath)
+"uwA" = (
+/obj/structure/carpet/cyan,
+/turf/open/floor/church/purple,
+/area/rogue/indoors/town/church/inquisition)
 "uxx" = (
 /obj/machinery/light/fueled/hearth,
 /obj/machinery/light/fueled/oven/east,
@@ -115183,7 +115190,7 @@ dhF
 dhF
 dhF
 fgn
-xId
+eNT
 twd
 dMK
 fgn
@@ -115578,7 +115585,7 @@ vnF
 vnF
 vnF
 vnF
-hYz
+inC
 vnF
 vnF
 jdk
@@ -117200,7 +117207,7 @@ fgn
 oDF
 xjf
 rIO
-jSt
+uwA
 rIO
 iuv
 fTX
