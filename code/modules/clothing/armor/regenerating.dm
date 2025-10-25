@@ -73,6 +73,7 @@
 	blade_dulling = DULLING_BASHCHOP
 	armor = ARMOR_PADDED
 	surgery_cover = FALSE
+	clothing_flags = NONE
 
 	repairmsg_begin = "My skin begins to slowly mend its abuse.."
 	repairmsg_continue = "My skin mends some of its abuse.."

@@ -180,9 +180,9 @@
 	. = ..()
 	var/prev_real_name = spawned.real_name
 	var/prev_name = spawned.name
-	var/honorary = "Herr Präfekt"
+	var/honorary = "Ritter"
 	if(spawned.gender == FEMALE)
-		honorary = "Herr Preceptor"
+		honorary = "Ritter"
 	spawned.real_name = "[honorary] [prev_real_name]"
 	spawned.name = "[honorary] [prev_name]"
 

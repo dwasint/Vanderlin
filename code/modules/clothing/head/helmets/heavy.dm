@@ -493,6 +493,7 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/64x64/head.dmi'
 	bloody_icon = 'icons/effects/blood64x64.dmi'
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
+	clothing_flags = NONE
 
 /obj/item/clothing/head/helmet/heavy/psybucket
 	name = "psydonian bucket helmet"
