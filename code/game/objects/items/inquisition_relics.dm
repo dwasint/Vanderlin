@@ -432,6 +432,9 @@ Inquisitorial armory down here
 	icon_state = "extinguish"
 	duration = 8
 
+/obj/item/inqarticles
+	item_flags = ITEM_ONLY_BREAK
+
 /obj/item/inqarticles/indexer
 	name = "\improper INDEXER"
 	desc = "A blessed ampoule with a retractable bladetip, intended to further information gathering through hematology. Siphon blood from an individual until the INDEXER clicks shut, then mail it back to Otava for cataloguing."
