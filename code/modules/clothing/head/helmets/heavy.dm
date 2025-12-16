@@ -72,7 +72,7 @@
 //............... Great Helm ............... //
 /obj/item/clothing/head/helmet/heavy/bucket
 	name = "great helm"
-	desc = "An immovable bulkwark of protection for the head of the faithful. Antiquated and impractical, but offering incredible defense."
+	desc = "An immovable bulwark of protection for the head of the faithful. Antiquated and impractical, but offering incredible defense."
 	icon_state = "topfhelm"
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 
@@ -94,6 +94,13 @@
 	prevent_crits = ALL_CRITICAL_HITS_VAMP
 	max_integrity = INTEGRITY_STRONGEST // steel
 	body_parts_covered = HEAD_NECK
+	block2add = FOV_BEHIND
+
+/obj/item/clothing/head/helmet/heavy/ancient
+	name = "ancient savoyard"
+	desc = "A terrifying old savoyard."
+	icon_state = "ancientsavoyard"
+	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR
 	block2add = FOV_BEHIND
 
 //............... Frog Helmet ............... //
@@ -196,7 +203,7 @@
 //............... Spangenhelm ............... //
 /obj/item/clothing/head/helmet/heavy/viking
 	name = "spangenhelm"
-	desc = "A steel helmet with built in eye and nose protection, commonly used by warriors of the north."
+	desc = "A steel helmet with built-in eye and nose protection, commonly used by warriors of the north."
 	icon_state = "Spangenhelm_item"
 	item_state = "Spangenhelm_worn"
 	icon = 'icons/roguetown/clothing/special/spangenhelm_item.dmi'
@@ -275,7 +282,7 @@
 
 /obj/item/clothing/head/helmet/heavy/necked/ravox
 	name = "ravoxian helmet"
-	desc = "Headwear commonly worn by Templars in service to Ravox. It resembles an heavily adorned visored sallet."
+	desc = "Headwear commonly worn by Templars in service to Ravox. It resembles a heavily-adorned visored sallet."
 	icon_state = "ravoxhelm"
 	item_state = "ravoxhelm"
 	item_weight = 6 * IRON_MULTIPLIER

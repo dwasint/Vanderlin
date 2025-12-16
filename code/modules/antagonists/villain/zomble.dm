@@ -43,6 +43,7 @@
 		TRAIT_BLOODLOSS_IMMUNE,
 		TRAIT_ZOMBIE_IMMUNE,
 		TRAIT_ROTMAN,
+		TRAIT_CABAL,
 	)
 	/// Traits applied to the owner when we are cured and turn into just "rotmen"
 	var/static/list/traits_rotman = list(
@@ -140,7 +141,7 @@
 		zombie.set_stat_modifier(TRAIT_ROTMAN, STATKEY_INT, -3)
 		for(var/trait in traits_rotman)
 			ADD_TRAIT(zombie, trait, "[type]")
-		to_chat(zombie, span_green("I no longer crave for flesh... <i>But I still feel ill.</i>"))
+		to_chat(zombie, span_green("I no longer crave flesh... <i>But I still feel ill.</i>"))
 	else
 		if(!was_i_undead)
 			zombie.mob_biotypes &= ~MOB_UNDEAD
@@ -149,7 +150,7 @@
 		zombie.faction += FACTION_NEUTRAL
 		zombie.regenerate_organs()
 		if(has_turned)
-			to_chat(zombie, span_green("I no longer crave for flesh..."))
+			to_chat(zombie, span_green("I no longer crave flesh..."))
 	for(var/obj/item/bodypart/zombie_part as anything in zombie.bodyparts)
 		zombie_part.rotted = FALSE
 		if(zombie_part.can_be_disabled)

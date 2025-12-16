@@ -57,7 +57,7 @@
 				var/turf/T = get_step(src, dir)
 				if(istype(T, /turf/closed/mineral/random))
 					Spread(T)
-	var/turf/open/transparent/openspace/target = get_step_multiz(src, UP)
+	var/turf/open/transparent/openspace/target = GET_TURF_ABOVE(src)
 	if(istype(target))
 		target.ChangeTurf(/turf/open/floor/naturalstone)
 
@@ -493,7 +493,7 @@
 
 /turf/closed/mineral/bedrock
 	name = "rock"
-	desc = "Seems barren, and nigh indestructable."
+	desc = "Seems barren, and nigh-indestructible."
 	icon = MAP_SWITCH('icons/turf/smooth/walls/mineral.dmi', 'icons/turf/mining.dmi')
 	icon_state = MAP_SWITCH("mineral", "bedrock")
 	max_integrity = 10000000
