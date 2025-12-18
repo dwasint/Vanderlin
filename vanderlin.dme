@@ -1743,6 +1743,7 @@
 #include "code\game\objects\structures\irrigation_channel.dm"
 #include "code\game\objects\structures\ladders.dm"
 #include "code\game\objects\structures\life_candle.dm"
+#include "code\game\objects\structures\lottery.dm"
 #include "code\game\objects\structures\mage_structures.dm"
 #include "code\game\objects\structures\magic.dm"
 #include "code\game\objects\structures\mana_pylon.dm"
