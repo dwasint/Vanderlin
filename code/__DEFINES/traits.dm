@@ -367,6 +367,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_HEAVYARMOR				"Plate Training"
 #define TRAIT_DODGEEXPERT              "Fast Reflexes"
 #define TRAIT_UNDODGING					"Unyielding"
+#define TRAIT_UNPARRYING				"Graceless"
 #define TRAIT_DECEIVING_MEEKNESS 		"Deceiving Meekness"
 #define TRAIT_VILLAIN					"Villain"
 #define TRAIT_CRITICAL_RESISTANCE		"Critical Resistance"

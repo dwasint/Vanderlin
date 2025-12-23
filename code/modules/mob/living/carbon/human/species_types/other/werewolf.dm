@@ -50,6 +50,7 @@
 		TRAIT_IGNORESLOWDOWN,
 		TRAIT_HARDDISMEMBER,
 		TRAIT_UNDODGING,
+		TRAIT_UNPARRYING,
 		TRAIT_LONGSTRIDER
 	)
 
@@ -82,7 +83,7 @@
 	)
 
 	changesource_flags = WABBAJACK
-	bleed_mod = 0.3
+	bleed_mod = 0.6
 	pain_mod = 0.2
 
 /datum/species/werewolf/send_voice(mob/living/carbon/human/H)
