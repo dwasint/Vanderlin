@@ -121,8 +121,7 @@
 		storage.add_essence(essence_type, amount)
 
 	var/mob/user = current_user.resolve()
-	if(user)
-		check_research_completion(user)
+	check_research_completion(user)
 
 /obj/machinery/essence/research_matrix/proc/check_research_completion(mob/user)
 	if(!selected_research)
@@ -161,8 +160,9 @@
 
 	visible_message(span_notice("The engine hums and grumbles with alchemic energy as it's fueled!"))
 
-	var/boon = user.get_learning_boon(/datum/skill/craft/alchemy)
-	user.adjust_experience(/datum/skill/craft/alchemy, selected_research.experience_reward * boon, FALSE)
+	if(user)
+		var/boon = user.get_learning_boon(/datum/skill/craft/alchemy)
+		user.adjust_experience(/datum/skill/craft/alchemy, selected_research.experience_reward * boon, FALSE)
 
 	selected_research = null
 
