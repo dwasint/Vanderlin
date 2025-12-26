@@ -467,7 +467,7 @@
 /obj/item/weapon/knife/dagger/steel/profane/pre_attack(mob/living/carbon/human/target, mob/living/user = usr, params)
 	if(!istype(target))
 		return FALSE
-	if(target.has_flaw(/datum/charflaw/hunted) || HAS_TRAIT(target, TRAIT_ZIZOID_HUNTED)) // Check to see if the dagger will do 20 damage or 14
+	if(target.has_quirk(/datum/quirk/vice/hunted) || HAS_TRAIT(target, TRAIT_ZIZOID_HUNTED)) // Check to see if the dagger will do 20 damage or 14
 		force = DAMAGE_KNIFE * 2
 	else
 		force = DAMAGE_DAGGER + 2
@@ -524,7 +524,7 @@
 
 			return
 
-		if(target.has_flaw(/datum/charflaw/hunted) || HAS_TRAIT(target, TRAIT_ZIZOID_HUNTED)) // The profane dagger only thirsts for those who are hunted, by flaw or by zizoid curse.
+		if(target.has_quirk(/datum/quirk/vice/hunted) || HAS_TRAIT(target, TRAIT_ZIZOID_HUNTED)) // The profane dagger only thirsts for those who are hunted, by flaw or by zizoid curse.
 			if(target.client == null) //See if the target's soul has left their body
 				to_chat(user, "<span class='danger'>Your target's soul has already escaped its corpse...you try to call it back!</span>")
 				get_profane_ghost(target,user) //Proc to capture a soul that has left the body.

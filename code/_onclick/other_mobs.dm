@@ -457,7 +457,7 @@
 						record_featured_stat(FEATURED_STATS_THIEVES, U)
 						record_featured_stat(FEATURED_STATS_CRIMINALS, U)
 						record_round_statistic(STATS_ITEMS_PICKPOCKETED)
-					if(has_flaw(/datum/charflaw/addiction/kleptomaniac))
+					if(has_quirk(/datum/quirk/vice/kleptomaniac))
 						sate_addiction()
 				else
 					exp_to_gain /= 2

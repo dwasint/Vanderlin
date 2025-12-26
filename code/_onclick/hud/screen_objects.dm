@@ -97,9 +97,9 @@
 		to_chat(L, "*----*")
 		if(ishuman(usr))
 			var/mob/living/carbon/human/M = usr
-			if(M.charflaw)
-				to_chat(M, "<span class='info'>[M.charflaw.desc]</span>")
-				to_chat(M, "*----*")
+			for(var/datum/quirk/vice/vices in M.quirks)
+				to_chat(M, "<span class='info'>[vices.desc]</span>")
+			to_chat(M, "*----*")
 			if(M.mind)
 				if(M.mind.language_holder)
 					var/finn
@@ -1534,9 +1534,9 @@
 	if(ishuman(usr))
 		var/mob/living/carbon/human/M = usr
 		if(LAZYACCESS(modifiers, LEFT_CLICK))
-			if(M.charflaw)
-				to_chat(M, "*----*")
-				to_chat(M, span_info("[M.charflaw.desc]"))
+			to_chat(M, "*----*")
+			for(var/datum/quirk/vice/vices in M.quirks)
+				to_chat(M, span_info("[vices.desc]"))
 			to_chat(M, "*--------*")
 			if(!length(M.stressors))
 				to_chat(M, span_info("I'm not feeling much of anything right now."))

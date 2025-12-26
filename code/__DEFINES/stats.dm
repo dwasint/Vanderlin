@@ -7,7 +7,7 @@
 // Combined basic mods
 #define STATMOD_JOB "job"
 #define STATMOD_PACK "pack"
-#define STATMOD_FLAW "flaw"
+#define STATMOD_QUIRK "quirk"
 
 // Patrons
 #define STATMOD_ASTRATA_BLESSING "astrata_blessing"

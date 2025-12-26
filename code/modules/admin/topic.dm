@@ -1235,30 +1235,6 @@
 
 		being_changed.set_patron(patron_to_change_to)
 
-	else if(href_list["changeflaw"])
-		if(!check_rights(R_ADMIN))
-			return
-
-		var/mob/M = (locate(href_list["mob"]) in GLOB.mob_list)
-
-		if(!ishuman(M))
-			return
-
-		var/list/flawslist = GLOB.character_flaws.Copy()
-		var/flaw_to_change_to = browser_input_list(usr, "Change to what flaw?", "EVERYONE HAS A VICE", flawslist)
-
-		if(!flaw_to_change_to)
-			return
-
-		flaw_to_change_to = flawslist[flaw_to_change_to]
-
-		var/mob/living/carbon/human/being_changed = M
-
-		message_admins("[key_name_admin(usr)] changed [key_name_admin(M)]'s flaw from [being_changed.charflaw ? being_changed.charflaw : "NA"] to [flaw_to_change_to]")
-		log_admin("[key_name_admin(usr)] changed [key_name_admin(M)]'s flaw from [being_changed.charflaw ? being_changed.charflaw : "NA"] to [flaw_to_change_to]")
-
-		being_changed.set_flaw(flaw_to_change_to)
-
 	else if(href_list["modifycurses"])
 
 		// admin rights checked in admin_curse

@@ -50,7 +50,7 @@
 		return
 
 	if(patron.hear_prayer(follower, prayer))
-		if(follower.has_flaw(/datum/charflaw/addiction/godfearing)) //make this a fucking signal!!!!
+		if(follower.has_quirk(/datum/quirk/vice/godfearing)) //make this a fucking signal!!!!
 			follower.sate_addiction() //why is this being handled by the mob!!!! and why does this cover every addiction??
 
 	for(var/mob/living/crit_guy in hearers(2, follower)) //as of writing succumb_timer does literally nothing btw

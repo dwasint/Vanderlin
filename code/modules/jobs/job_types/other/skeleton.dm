@@ -48,8 +48,8 @@
 	H.grant_undead_eyes()
 	H.ambushable = FALSE
 	H.underwear = "Nude"
-	if(H.charflaw)
-		QDEL_NULL(H.charflaw)
+	if(length(H.quirks))
+		H.clear_quirks()
 	H.update_body()
 	H.mob_biotypes = MOB_UNDEAD
 	H.faction = list(FACTION_UNDEAD)

@@ -197,7 +197,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 	var/domhand = 2
 	var/alignment = ALIGNMENT_TN
-	var/datum/charflaw/charflaw
+	var/list/quirks = list()
 
 	/// Family system
 	var/family = FAMILY_NONE
@@ -275,10 +275,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 			return
 	//we couldn't load character data so just randomize the character appearance + name
 	randomise_appearance_prefs(include_donator = donator)		//let's create a random character then - rather than a fat, bald and naked man.
-	if(!charflaw)
-		charflaw = pick(GLOB.character_flaws)
-		charflaw = GLOB.character_flaws[charflaw]
-		charflaw = new charflaw()
 	if(!selected_patron)
 		selected_patron = GLOB.patronlist[default_patron]
 	key_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
@@ -406,7 +402,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	else
 		dat += "<b>Age:</b> <a href='?_src_=prefs;preference=age;task=input'>[age]</a><BR>"
 
-	dat += "<b>Flaw:</b> <a href='?_src_=prefs;preference=charflaw;task=input'>[charflaw]</a><BR>"
+	dat += "<b>Quirks:</b> <a href='?_src_=prefs;preference=select_quirks'>Select</a><BR>"
 	var/datum/faith/selected_faith = GLOB.faithlist[selected_patron.associated_faith]
 	dat += "<b>Faith:</b> <a href='?_src_=prefs;preference=faith;task=input'>[selected_faith?.name || "FUCK!"]</a><BR>"
 	dat += "<b>Patron:</b> <a href='?_src_=prefs;preference=patron;task=input'>[selected_patron.name || "FUCK!"]</a><BR>"
@@ -862,6 +858,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 			C.clear_character_previews()
 
 /datum/preferences/proc/process_link(mob/user, list/href_list)
+
 	if(href_list["bancheck"])
 		var/list/ban_details = is_banned_from_with_details(user.ckey, user.client.address, user.client.computer_id, href_list["bancheck"])
 		var/admin = FALSE
@@ -1289,16 +1286,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 						randomize_all_customizer_accessories()
 						accessory = "Nothing"
 
-				if("charflaw")
-					var/list/flawslist = GLOB.character_flaws.Copy()
-					var/result = browser_input_list(user, "SELECT YOUR HERO'S FLAW", "PERFECTION IS IMPOSSIBLE", flawslist, FALSE)
-					if(result)
-						result = flawslist[result]
-						var/datum/charflaw/C = new result()
-						charflaw = C
-						if(charflaw.desc)
-							to_chat(user, "<span class='info'>[charflaw.desc]</span>")
-
 				if("flavortext")
 					to_chat(user, span_notice("["<span class='bold'>Flavortext should not include nonphysical nonsensory attributes such as backstory or the character's internal thoughts. NSFW descriptions are prohibited.</span>"]"))
 					var/new_flavortext = input(user, "Input your character description", "DESCRIBE YOURSELF", flavortext) as message|null // browser_input_text sanitizes in the box itself, which makes it look kind of ugly when editing A LOT of FTs
@@ -1526,6 +1513,9 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 					else
 						setspouse = null
 				//Gender_choice is part of the family subsytem. It will check existing families members with the same preference of this character and attempt to place you in this family.
+				if("select_quirks")
+					open_quirk_menu(user)
+
 				if("gender_choice")
 					// If pronouns are neutral, lock to ANY_GENDER
 					if(pronouns == THEY_THEM || pronouns == IT_ITS)
@@ -1825,7 +1815,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	character.gender_choice_pref = gender_choice
 	character.setspouse = setspouse
 
-	if(charflaw)
+	if(length(quirks))
 		// ???
 		var/obj/item/bodypart/O = character.get_bodypart(BODY_ZONE_R_ARM)
 		if(O)
@@ -1837,7 +1827,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 			qdel(O)
 		character.regenerate_limb(BODY_ZONE_R_ARM)
 		character.regenerate_limb(BODY_ZONE_L_ARM)
-		character.set_flaw(charflaw.type, FALSE)
+		apply_quirks_to_character(character)
 
 	if(culinary_preferences)
 		apply_culinary_preferences(character)

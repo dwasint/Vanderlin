@@ -17,7 +17,7 @@
 			M.emote(pick("twitch_s","giggle"))
 		else
 			M.emote(pick("twitch_s","chuckle"))
-	if(M.has_flaw(/datum/charflaw/addiction/smoker))
+	if(M.has_quirk(/datum/quirk/vice/smoker))
 		M.sate_addiction()
 	..()
 
@@ -76,7 +76,7 @@
 	..()
 
 /datum/reagent/drug/nicotine/on_mob_life(mob/living/carbon/M)
-	if(M.has_flaw(/datum/charflaw/addiction/smoker))
+	if(M.has_quirk(/datum/quirk/vice/smoker))
 		M.sate_addiction()
 	..()
 	. = 1

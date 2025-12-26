@@ -19,8 +19,8 @@
 	if(spawned.mind)
 		spawned.mind.special_role = "goblin"
 		spawned.mind.current.job = null
-	if(H.charflaw)
-		QDEL_NULL(H.charflaw)
+	if(length(H.quirks))
+		H.clear_quirks()
 	H.faction = list(FACTION_ORCS)
 	H.name = "goblin"
 	H.real_name = "goblin"

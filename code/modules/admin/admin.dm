@@ -118,17 +118,14 @@
 		if(isliving(M))
 			var/mob/living/living = M
 			patron = initial(living.patron.name)
-		var/flaw = ""
 		var/curse_string = ""
 		var/job = ""
 		if(ishuman(M))
 			var/mob/living/carbon/human/human_mob = M
-			flaw = human_mob.charflaw
 			curse_string = human_mob.curses.Join(", ")
 			job = human_mob?.mind.assigned_role.title
 
 		body += "<br><br>Current Patron: <a href='?_src_=holder;[HrefToken()];changepatron=add;mob=[REF(M)]'>\[[patron ? patron : "NA"]\]</a>"
-		body += "<br>Current Flaw: <a href='?_src_=holder;[HrefToken()];changeflaw=add;mob=[REF(M)]'>\[[flaw ? flaw : "NA"]\]</a>"
 		body += "<br>Current Curses: <a href='?_src_=holder;[HrefToken()];modifycurses=add;mob=[REF(M)]'>\[[curse_string ? curse_string : "NA"]\]</a>"
 		body += "<br>Current Job: <a href='?_src_=holder;[HrefToken()];setjob=add;mob=[REF(M)]'>\[[job ? job : "NA"]\]</a>"
 

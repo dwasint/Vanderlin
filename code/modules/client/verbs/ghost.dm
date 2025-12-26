@@ -26,9 +26,11 @@
 	if(answer == CHOICE_NO)
 		to_chat(src, span_warning("You have second thoughts."))
 		return
-	if((mob.has_flaw(/datum/charflaw/hunted) || HAS_TRAIT(mob, TRAIT_ZIZOID_HUNTED)) && !MOBTIMER_FINISHED(mob, MT_LASTDIED, 60 SECONDS))
-		to_chat(src, span_warning("Graggar's influence is currently preventing me from fleeing to the Underworld!"))
-		return
+	if(isliving(mob))
+		var/mob/living/liver = mob
+		if((liver.has_quirk(/datum/quirk/vice/hunted) || HAS_TRAIT(mob, TRAIT_ZIZOID_HUNTED)) && !MOBTIMER_FINISHED(mob, MT_LASTDIED, 60 SECONDS))
+			to_chat(src, span_warning("Graggar's influence is currently preventing me from fleeing to the Underworld!"))
+			return
 	var/datum/mind/mind = mob.mind
 	// Check if the player's job is hiv+
 	var/datum/job/target_job = mind?.assigned_role

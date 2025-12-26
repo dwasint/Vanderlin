@@ -637,7 +637,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	if(drunkenness)
 		drunkenness = max(drunkenness - (drunkenness * 0.04) - 0.01, 0)
 		if(drunkenness >= 1)
-			if(has_flaw(/datum/charflaw/addiction/alcoholic))
+			if(has_quirk(/datum/quirk/vice/alcoholic))
 				sate_addiction()
 		if(drunkenness >= 3)
 			if(prob(3))

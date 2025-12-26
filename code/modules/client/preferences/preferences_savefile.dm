@@ -262,16 +262,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		if(newtype)
 			pref_species = new newtype
 
-/datum/preferences/proc/_load_flaw(S)
-	var/charflaw_type
-	S["charflaw"]			>> charflaw_type
-	if(charflaw_type)
-		charflaw = new charflaw_type()
-	else
-		charflaw = pick(GLOB.character_flaws)
-		charflaw = GLOB.character_flaws[charflaw]
-		charflaw = new charflaw()
-
 /datum/preferences/proc/_load_loadouts(S)
 	for(var/i in 1 to 3)
 		S["loadout[i]"]	>> vars["loadout[i]"]
@@ -345,14 +335,14 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//Species
 	_load_species(S)
 
-	_load_flaw(S)
-
 	_load_loadouts(S)
 
 	_load_culinary_preferences(S)
 
 	//Character
 	_load_appearence(S)
+
+	load_quirks(S)
 
 	var/patron_typepath
 	S["selected_patron"] >> patron_typepath
@@ -472,7 +462,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["pronouns"]		, pronouns)
 	WRITE_FILE(S["voice_type"]		, voice_type)
 	WRITE_FILE(S["species"]			, pref_species.name)
-	WRITE_FILE(S["charflaw"]			, charflaw.type)
 	WRITE_FILE(S["loadout1"]		, loadout1)
 	WRITE_FILE(S["loadout2"]		, loadout2)
 	WRITE_FILE(S["loadout3"]		, loadout3)
@@ -513,6 +502,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["descriptor_entries"] , descriptor_entries)
 	WRITE_FILE(S["custom_descriptors"] , custom_descriptors)
 
+	save_quirks(S)
 	return TRUE
 
 
