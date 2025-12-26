@@ -4,7 +4,7 @@
 #define QUIRK_PECULIARITY "Peculiarity" // Neutral quirks (0 points)
 
 // Quirk value constants
-#define MAX_BOONS 6
+#define MAX_BOONS 3
 #define STARTING_QUIRK_POINTS 0
 
 #define MASO_THRESHOLD_ONE 1

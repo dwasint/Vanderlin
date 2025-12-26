@@ -217,3 +217,27 @@
 /datum/quirk/boon/light_sleeper/on_remove()
 	REMOVE_TRAIT(owner, TRAIT_LIGHT_SLEEPER, "[type]")
 */
+
+/datum/quirk/second_language
+	name = "Second Language"
+	desc = "You know an additional language."
+	quirk_category = QUIRK_BOON
+	point_value = -1
+	customization_label = "Choose Language"
+	customization_options = list(
+		/datum/language/elvish,
+		/datum/language/dwarvish,
+		/datum/language/deepspeak,
+		/datum/language/zalad,
+		/datum/language/oldpsydonic,
+		/datum/language/hellspeak,
+		/datum/language/orcish,
+	)
+
+/datum/quirk/second_language/on_spawn()
+	if(!customization_value || !ispath(customization_value, /datum/language))
+		return
+
+	if(ishuman(owner))
+		var/mob/living/carbon/human/H = owner
+		H.grant_language(customization_value)

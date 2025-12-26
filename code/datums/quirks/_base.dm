@@ -1,5 +1,6 @@
 
 GLOBAL_LIST_INIT(quirk_registry, list())
+GLOBAL_LIST_EMPTY(quirk_singletons)
 GLOBAL_LIST_EMPTY(quirk_points_by_type)
 
 /proc/init_quirk_registry()
@@ -23,6 +24,7 @@ GLOBAL_LIST_EMPTY(quirk_points_by_type)
 			"desc" = initial(Q.desc),
 			"value" = initial(Q.point_value)
 		))
+		LAZYADDASSOC(GLOB.quirk_singletons, quirk_type, new quirk_type)
 
 /datum/quirk
 	abstract_type = /datum/quirk
@@ -42,16 +44,32 @@ GLOBAL_LIST_EMPTY(quirk_points_by_type)
 	/// Can this be randomly selected?
 	var/random_exempt = FALSE
 
-/datum/quirk/New(mob/living/new_owner)
+	/// List of options the player can select from (can be paths or strings)
+	var/list/customization_options = list()
+	/// The selected customization value
+	var/customization_value = null
+	/// Label for the customization dropdown
+	var/customization_label = "Select Option"
+
+/datum/quirk/New(mob/living/new_owner, custom_value = null)
 	. = ..()
 	if(new_owner)
 		owner = new_owner
+		if(custom_value)
+			customization_value = custom_value
 		on_spawn()
 
 /datum/quirk/Destroy()
 	on_remove()
 	owner = null
 	return ..()
+
+/datum/quirk/proc/get_option_name(option)
+	if(ispath(option))
+		// Try to get the name from the type
+		var/atom/A = option
+		return initial(A.name)
+	return "[option]"
 
 /// Called when the quirk is applied to a character
 /datum/quirk/proc/on_spawn()
@@ -77,16 +95,15 @@ GLOBAL_LIST_EMPTY(quirk_points_by_type)
 /mob/living/proc/add_quirk(quirk_type)
 	return
 
-/mob/living/carbon/human/add_quirk(quirk_type)
+/mob/living/carbon/human/add_quirk(quirk_type, custom_value = null)
 	if(!ispath(quirk_type, /datum/quirk))
 		return FALSE
 
-	// Check if already have this quirk
 	for(var/datum/quirk/Q in quirks)
 		if(Q.type == quirk_type)
 			return FALSE
 
-	var/datum/quirk/new_quirk = new quirk_type(src)
+	var/datum/quirk/new_quirk = new quirk_type(src, custom_value)
 	quirks += new_quirk
 	return TRUE
 

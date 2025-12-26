@@ -2,17 +2,50 @@
 	if(!S)
 		return
 
-	WRITE_FILE(S["quirks"], quirks)
+	// Save as list of lists: list(list("type" = type, "value" = value), ...)
+	var/list/quirk_data = list()
+	for(var/quirk_type in quirks)
+		var/custom_val = quirk_customizations[quirk_type]
+		quirk_data += list(list("type" = quirk_type, "value" = custom_val))
+
+	WRITE_FILE(S["quirks"], quirk_data)
 
 /datum/preferences/proc/load_quirks(savefile/S)
 	if(!S)
 		return
 
 	quirks = list()
-	S["quirks"] >> quirks
+	quirk_customizations = list()
 
-	// Validate loaded quirks
+	var/list/quirk_data
+	S["quirks"] >> quirk_data
+
+	if(!quirk_data || !islist(quirk_data))
+		return
+
+	for(var/entry in quirk_data)
+		if(!islist(entry))
+			continue
+		var/quirk_type = entry["type"]
+		var/custom_val = entry["value"]
+
+		if(ispath(quirk_type, /datum/quirk))
+			quirks += quirk_type
+			if(custom_val)
+				quirk_customizations[quirk_type] = custom_val
+
 	validate_quirks()
+
+
+/datum/preferences/proc/set_quirk_customization(quirk_type, value)
+	if(quirk_type in quirks)
+		quirk_customizations[quirk_type] = value
+		save_character()
+		return TRUE
+	return FALSE
+
+/datum/preferences/proc/get_quirk_customization(quirk_type)
+	return quirk_customizations[quirk_type]
 
 /datum/preferences/proc/validate_quirks()
 	if(!quirks || !islist(quirks))
@@ -31,7 +64,7 @@
 	var/balance = calculate_quirk_balance()
 	if(balance < 0)
 		// Can't afford all boons, remove some
-		while(balance < 0 && quirks.len)
+		while(balance < 0 && length(quirks))
 			var/datum/quirk/most_expensive = find_most_expensive_boon()
 			if(most_expensive)
 				quirks -= most_expensive
@@ -115,11 +148,13 @@
 
 	return TRUE
 
-/datum/preferences/proc/add_quirk(quirk_type)
+/datum/preferences/proc/add_quirk(quirk_type, custom_value = null)
 	if(!can_add_quirk(quirk_type))
 		return FALSE
 	quirks += quirk_type
-	save_quirks()
+	if(custom_value)
+		quirk_customizations[quirk_type] = custom_value
+	save_character()
 	return TRUE
 
 /datum/preferences/proc/remove_quirk(quirk_type)
@@ -130,7 +165,7 @@
 		var/balance = calculate_quirk_balance()
 
 		// If balance is now negative, we need to remove some boons
-		while(balance < 0 && quirks.len)
+		while(balance < 0 && length(quirks))
 			var/datum/quirk/most_expensive = find_most_expensive_boon()
 			if(most_expensive)
 				quirks -= most_expensive
@@ -138,24 +173,23 @@
 			else
 				break
 
-		save_quirks()
+		save_character()
 		return TRUE
 	return FALSE
 
 /datum/preferences/proc/clear_quirks()
 	quirks = list()
-	save_quirks()
+	save_character()
 
 /datum/preferences/proc/apply_quirks_to_character(mob/living/carbon/human/H)
 	if(!H)
 		return
 
-	// Clear any existing quirks
 	H.clear_quirks()
 
-	// Apply selected quirks
 	for(var/quirk_type in quirks)
-		H.add_quirk(quirk_type)
+		var/custom_val = quirk_customizations[quirk_type]
+		H.add_quirk(quirk_type, custom_val)
 
 /datum/preferences/proc/open_quirk_menu(mob/user)
 	var/datum/browser/popup = new(user, "quirk_menu", "Quirk Selection", 1000, 650, src)
@@ -221,7 +255,7 @@
 
 	// Right column - Selected quirks
 	dat += "<div class='quirk-right'>"
-	dat += "<div class='panel-header'>Selected Quirks ([quirks.len])</div>"
+	dat += "<div class='panel-header'>Selected Quirks ([length(quirks)])</div>"
 	dat += "<div class='selected-panel' id='selected-panel'>"
 	dat += get_selected_quirks_content()
 	dat += "</div>"
@@ -253,6 +287,7 @@
 		dat += "<span class='quirk-points'>[quirk_data["value"]] pts</span>"
 		dat += "</div>"
 		dat += "<div class='quirk-desc'>[quirk_data["desc"]]</div>"
+
 		if(is_selected)
 			dat += "<div class='quirk-status'>Selected</div>"
 		else if(!can_add)
@@ -263,7 +298,7 @@
 	return dat
 
 /datum/preferences/proc/get_selected_quirks_content()
-	if(!quirks || !quirks.len)
+	if(!length(quirks))
 		return "<div class='empty-state'>No quirks selected.<br><br>Click on quirks from the left panel to add them.</div>"
 
 	var/dat = "<div class='quirk-list'>"
@@ -287,7 +322,36 @@
 		dat += "<span class='quirk-points'>[initial(Q.point_value)] pts</span>"
 		dat += "</div>"
 		dat += "<div class='quirk-desc'>[initial(Q.desc)]</div>"
-		dat += "<div class='quirk-status'>✓ Click to remove</div>"
+
+		// Show customization value if set
+		var/datum/quirk/singleton = GLOB.quirk_singletons[quirk_type]
+		var/list/options = singleton.customization_options.Copy()
+		if(length(options))
+			var/label = initial(Q.customization_label)
+			var/current_value = quirk_customizations[quirk_type]
+
+			dat += "<div class='quirk-customization'>"
+			dat += "<label>[label]:</label>"
+			dat += "<select class='quirk-select' data-quirk='\ref[quirk_type]' onchange='updateQuirkCustomization(this)'>"
+
+			if(!current_value)
+				dat += "<option value='' selected>-- Select --</option>"
+
+			for(var/option in options)
+				var/option_name = ""
+				if(ispath(option))
+					var/atom/A = option
+					option_name = initial(A.name)
+				else
+					option_name = "[option]"
+
+				var/selected = (current_value == option) ? "selected" : ""
+				dat += "<option value='\ref[option]' [selected]>[option_name]</option>"
+
+			dat += "</select>"
+			dat += "</div>"
+
+		dat += "<div class='quirk-status'>Click to remove</div>"
 		dat += "</div>"
 
 	dat += "</div>"
@@ -309,6 +373,14 @@
 		var/quirk_ref = locate(href_list["quirk_remove"])
 		if(quirk_ref)
 			prefs.remove_quirk(quirk_ref)
+			prefs.open_quirk_menu(usr)
+		return TRUE
+
+	if(href_list["quirk_customize"])
+		var/quirk_ref = locate(href_list["quirk_customize"])
+		var/value_ref = locate(href_list["value"])
+		if(quirk_ref && value_ref)
+			prefs.set_quirk_customization(quirk_ref, value_ref)
 			prefs.open_quirk_menu(usr)
 		return TRUE
 

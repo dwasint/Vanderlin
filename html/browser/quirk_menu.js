@@ -19,6 +19,24 @@ function getCookie(name) {
 	return null;
 }
 
+// Handle quirk customization dropdown changes
+function updateQuirkCustomization(selectElement) {
+	var quirkRef = selectElement.getAttribute('data-quirk');
+	var selectedValue = selectElement.value;
+
+	if (!quirkRef || !selectedValue) {
+		return;
+	}
+
+	console.log('Updating quirk customization:', quirkRef, selectedValue);
+
+	// Save state before navigation
+	saveState();
+
+	// Navigate to update customization
+	window.location.href = '?quirk_customize=' + quirkRef + '&value=' + selectedValue;
+}
+
 // Restore state from cookies
 function restoreStateImmediate() {
 	console.log('Restoring state...');
@@ -155,6 +173,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	// Quirk card clicking
 	document.addEventListener('click', function(e) {
+		// Check if clicked on a select element or within customization area
+		if (e.target.closest('.quirk-customization') || e.target.classList.contains('quirk-select')) {
+			// Let the select handle its own events
+			return;
+		}
+
 		var card = e.target.closest('.quirk-card');
 		if (!card) return;
 
@@ -177,6 +201,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		// Navigate to update
 		window.location.href = '?' + action + '=' + quirkRef;
+	});
+
+	// Handle select changes (prevent event bubbling)
+	document.addEventListener('change', function(e) {
+		if (e.target.classList.contains('quirk-select')) {
+			e.stopPropagation();
+			updateQuirkCustomization(e.target);
+		}
 	});
 
 	// Save scroll positions as user scrolls

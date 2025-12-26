@@ -321,3 +321,81 @@ body {
 .selected-panel::-webkit-scrollbar-thumb:hover {
 	background: #444;
 }
+
+.quirk-customization {
+    margin-top: 8px;
+    padding: 8px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.quirk-customization label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #ccc;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.quirk-select {
+    padding: 6px 8px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.quirk-select:hover {
+    background: rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.quirk-select:focus {
+    outline: none;
+    border-color: #4a9eff;
+    box-shadow: 0 0 0 2px rgba(74, 158, 255, 0.2);
+}
+
+.quirk-select option {
+    background: #2a2a2a;
+    color: #fff;
+}
+
+/* Style for selected quirks showing their customization */
+.quirk-customization-display {
+    margin-top: 8px;
+    padding: 6px 8px;
+    background: rgba(74, 158, 255, 0.1);
+    border-left: 3px solid #4a9eff;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #ccc;
+}
+
+.quirk-customization-display strong {
+    color: #4a9eff;
+    font-weight: 600;
+}
+
+/* Prevent text selection on card clicks but allow on select */
+.quirk-card {
+    user-select: none;
+}
+
+.quirk-select,
+.quirk-customization label {
+    user-select: auto;
+}
+
+/* Make sure disabled cards can't have their select interacted with */
+.quirk-card.disabled .quirk-select {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: not-allowed;
+}
