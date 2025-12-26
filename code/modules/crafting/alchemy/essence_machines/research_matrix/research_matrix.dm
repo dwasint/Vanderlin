@@ -13,7 +13,7 @@
 /obj/machinery/essence/research_matrix/Initialize()
 	. = ..()
 	storage = new /datum/essence_storage(src)
-	storage.max_total_capacity = 800
+	storage.max_total_capacity = INFINITY
 	storage.max_essence_types = 10
 
 /obj/machinery/essence/research_matrix/Destroy()
@@ -38,7 +38,7 @@
 	if(!selected_research)
 		return FALSE
 	if(!(essence_type in selected_research.required_essences))
-		return
+		return FALSE
 
 	var/needed = selected_research.required_essences[essence_type]
 	var/current = storage.get_essence_amount(essence_type)
@@ -65,6 +65,7 @@
 
 		var/essence_type = vial.contained_essence.type
 		if(!is_essence_allowed(essence_type))
+			to_chat(user, span_warning("This essence is not needed for the current research."))
 			return
 
 		var/needed = selected_research.required_essences[essence_type]
@@ -89,10 +90,39 @@
 	interface.show()
 
 /obj/machinery/essence/research_matrix/on_transfer_in(essence_type, amount, datum/essence_storage/source)
-	var/mob/user = current_user.resolve()
-	if(!user)
+	if(!selected_research)
 		return
-	check_research_completion(user)
+
+	// Check if this essence is needed
+	if(!(essence_type in selected_research.required_essences))
+		return
+
+	// Calculate how much we actually need
+	var/needed = selected_research.required_essences[essence_type]
+	var/current = storage.get_essence_amount(essence_type)
+	var/remaining_needed = needed - current
+
+	// Only accept what we need, refuse the rest
+	if(remaining_needed <= 0)
+		return
+
+	var/to_accept = min(amount, remaining_needed)
+
+	// Only add the exact amount needed
+	if(to_accept < amount)
+		// We're rejecting some essence - only add what we need
+		storage.add_essence(essence_type, to_accept)
+		// Return the excess to source
+		var/excess = amount - to_accept
+		if(source)
+			source.add_essence(essence_type, excess)
+	else
+		// Accept all of it
+		storage.add_essence(essence_type, amount)
+
+	var/mob/user = current_user.resolve()
+	if(user)
+		check_research_completion(user)
 
 /obj/machinery/essence/research_matrix/proc/check_research_completion(mob/user)
 	if(!selected_research)
@@ -140,7 +170,7 @@
 
 /obj/machinery/essence/research_matrix/examine(mob/user)
 	. = ..()
-	. += span_notice("Storage: [storage.get_total_stored()]/[storage.max_total_capacity] units")
+	. += span_notice("Storage: [storage.get_total_stored()] units")
 	. += span_notice("Unlocked research nodes: [GLOB.thaumic_research.unlocked_research.len]")
 
 	if(selected_research)
