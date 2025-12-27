@@ -218,7 +218,7 @@
 	REMOVE_TRAIT(owner, TRAIT_LIGHT_SLEEPER, "[type]")
 */
 
-/datum/quirk/second_language
+/datum/quirk/boon/second_language
 	name = "Second Language"
 	desc = "You know an additional language."
 	quirk_category = QUIRK_BOON
@@ -234,10 +234,76 @@
 		/datum/language/orcish,
 	)
 
-/datum/quirk/second_language/on_spawn()
+/datum/quirk/boon/second_language/on_spawn()
 	if(!customization_value || !ispath(customization_value, /datum/language))
 		return
 
 	if(ishuman(owner))
 		var/mob/living/carbon/human/H = owner
 		H.grant_language(customization_value)
+
+/datum/quirk/boon/pet
+	name = "Loyal Companion"
+	desc = "You have a loyal animal companion that will follow and protect you."
+	point_value = -5
+	customization_label = "Choose Pet Type"
+	customization_options = list(
+		/mob/living/simple_animal/pet/cat/cabbit,
+		/mob/living/simple_animal/pet/cat/black,
+		/mob/living/simple_animal/hostile/retaliate/frog,
+		/mob/living/simple_animal/hostile/retaliate/chicken,
+		/mob/living/simple_animal/hostile/retaliate/fox,
+		/mob/living/simple_animal/hostile/retaliate/raccoon,
+	)
+
+	/// Reference to the spawned pet
+	var/mob/living/simple_animal/pet_mob
+
+/datum/quirk/boon/pet/on_spawn()
+	if(!get_turf(owner))
+		addtimer(CALLBACK(src, PROC_REF(on_spawn)), 0.5 SECONDS)
+		return
+
+	if(!ishuman(owner))
+		return
+
+	var/mob/living/carbon/human/H = owner
+
+	// Check if a pet type was selected
+	if(!customization_value || !ispath(customization_value, /mob/living/simple_animal))
+		customization_value = /mob/living/simple_animal/pet/cat/black
+
+	// Spawn the pet at the owner's location
+	pet_mob = new customization_value(get_turf(H))
+
+	if(!pet_mob)
+		return
+
+	// Tame the pet to the owner
+	pet_mob.tamed(H)
+
+	// Set a name if the pet doesn't have a unique one
+	if(pet_mob.name == initial(pet_mob.name))
+		var/new_name = stripped_input(H, "What is your pet's name?", "Pet Name", initial(pet_mob.name), MAX_NAME_LEN)
+		if(new_name)
+			pet_mob.fully_replace_character_name(null, new_name)
+
+	var/datum/component/obeys_commands/command_component = pet_mob.GetComponent(/datum/component/obeys_commands)
+	if(command_component)
+		var/datum/pet_command/follow/follow_command = command_component.available_commands["Follow"]
+		if(follow_command)
+			pet_mob.ai_controller?.set_blackboard_key(BB_CURRENT_PET_TARGET, H)
+			follow_command.execute_action(pet_mob.ai_controller)
+
+/datum/quirk/boon/pet/on_remove()
+	// Don't delete the pet when quirk is removed, just release it
+	if(pet_mob && !QDELETED(pet_mob))
+		pet_mob.owner = null
+		pet_mob.tame = FALSE
+		pet_mob = null
+
+/datum/quirk/boon/pet/get_option_name(option)
+	if(ispath(option, /mob/living/simple_animal))
+		var/mob/living/simple_animal/A = option
+		return initial(A.name)
+	return ..()
