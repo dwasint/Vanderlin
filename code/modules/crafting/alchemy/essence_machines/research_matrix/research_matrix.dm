@@ -90,6 +90,10 @@
 	interface.show()
 
 /obj/machinery/essence/research_matrix/on_transfer_in(essence_type, amount, datum/essence_storage/source)
+	var/mob/user = current_user.resolve()
+	if(user)
+		check_research_completion(user)
+
 	if(!selected_research)
 		return
 
@@ -119,9 +123,6 @@
 	else
 		// Accept all of it
 		storage.add_essence(essence_type, amount)
-
-	var/mob/user = current_user.resolve()
-	check_research_completion(user)
 
 /obj/machinery/essence/research_matrix/proc/check_research_completion(mob/user)
 	if(!selected_research)
