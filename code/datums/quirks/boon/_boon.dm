@@ -36,7 +36,7 @@
 	if(!ishuman(owner))
 		return
 	var/mob/living/carbon/human/H = owner
-	H.lighting_alpha = LIGHTING_PLANE_ALPHA_NV_TRAIT
+	H.lighting_alpha = LIGHTING_PLANE_ALPHA_LESSER_NV_TRAIT
 	H.update_sight()
 
 /datum/quirk/boon/night_vision/on_remove()
