@@ -414,7 +414,7 @@
 /datum/quirk/vice/old_war_wound
 	name = "Old War Wound"
 	desc = "An old injury from your past still haunts you, causing chronic pain and occasional flare-ups."
-	point_value = 3
+	point_value = 5
 
 /datum/quirk/vice/old_war_wound/on_spawn()
 	if(!ishuman(owner))

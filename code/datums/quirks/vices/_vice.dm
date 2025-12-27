@@ -79,7 +79,7 @@
 /datum/quirk/vice/junkie
 	name = "Junkie"
 	desc = "I need a real high to take the pain of this rotten world away."
-	point_value = 5
+	point_value = 3
 	time = 50 MINUTES
 	needsate_text = "Time to reach a new high."
 
@@ -100,7 +100,7 @@
 /datum/quirk/vice/godfearing
 	name = "Devout Follower"
 	desc = "I need to pray to my Patron, their blessings are stronger."
-	point_value = 3
+	point_value = 1
 	time = 40 MINUTES
 	needsate_text = "Time to pray."
 

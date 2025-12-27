@@ -2,7 +2,7 @@
 /datum/quirk/vice/hunted
 	name = "Hunted"
 	desc = "Something in your past has made you a target. You're always looking over your shoulder. THIS IS A DIFFICULT QUIRK - You will be hunted and have assassination attempts made against you without any escalation. EXPECT A MORE DIFFICULT EXPERIENCE. PLAY AT YOUR OWN RISK."
-	point_value = 8
+	point_value = 5
 	var/logged = FALSE
 
 /datum/quirk/vice/hunted/on_life(mob/living/user)
@@ -16,7 +16,7 @@
 /datum/quirk/vice/luxless
 	name = "Lux-less"
 	desc = "Through some grand misfortune, or heroic sacrifice - you have given up your link to Psydon, and with it - your soul. A putrid, horrid thing, you consign yourself to an eternity of nil after death. EXPECT A DIFFICULT, MECHANICALLY UNFAIR EXPERIENCE. (Rakshari, Hollowkin and Kobolds cannot take this - they already have no lux.)"
-	point_value = 10
+	point_value = 5
 	random_exempt = TRUE
 
 /datum/quirk/vice/luxless/on_spawn()
@@ -33,7 +33,7 @@
 /datum/quirk/vice/pacifist
 	name = "Pacifist"
 	desc = "I don't want to harm other living beings!"
-	point_value = 6
+	point_value = 8
 
 /datum/quirk/vice/pacifist/on_spawn()
 	if(!ishuman(owner))

@@ -117,3 +117,33 @@
 		qdel(O)
 	var/obj/item/bodypart/l_arm/prosthetic/wood/L = new()
 	L.attach_limb(H)
+
+/datum/quirk/vice/leprosy
+	name = "Leprosy"
+	desc = "Become a leper. You will be hated, you will be shunned, you will bleed and you will be weak."
+	point_value = 5
+
+/datum/quirk/vice/leprosy/on_spawn()
+	if(!ishuman(owner))
+		return
+
+	var/mob/living/carbon/human/H = owner
+
+	ADD_TRAIT(H, TRAIT_LEPROSY, TRAIT_GENERIC)
+
+	// Equip iron mask - remove existing mask if present
+	if(H.wear_mask)
+		var/type = H.wear_mask.type
+		QDEL_NULL(H.wear_mask)
+		H.put_in_hands(new type(get_turf(H)))
+
+	H.equip_to_slot_or_del(new /obj/item/clothing/face/facemask(H), ITEM_SLOT_MASK)
+
+/datum/quirk/vice/leprosy/on_remove()
+	if(!ishuman(owner))
+		return
+
+	var/mob/living/carbon/human/H = owner
+
+	// Remove traits when quirk is removed
+	REMOVE_TRAIT(H, TRAIT_LEPROSY, TRAIT_GENERIC)
