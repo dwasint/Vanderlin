@@ -129,6 +129,10 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// "Magic" trait that blocks the mob from moving or interacting with anything. Used for transient stuff like mob transformations or incorporality in special cases.
 /// Will block movement, `Life()` (!!!), and other stuff based on the mob.
 #define TRAIT_NO_TRANSFORM "block_transformations"
+#define TRAIT_TORTURED			"tortured"
+#define TRAIT_WEAK_HEART		"weak_heart"
+#define TRAIT_TAINTED_LUX		"tainted_lux"
+#define TRAIT_QUICK_HANDS		"quick_hands"
 #define TRAIT_STUNIMMUNE		"stun_immunity"
 #define TRAIT_STUNRESISTANCE    "stun_resistance"
 #define TRAIT_SLEEPIMMUNE		"sleep_immunity"

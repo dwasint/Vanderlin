@@ -307,3 +307,52 @@
 		var/mob/living/simple_animal/A = option
 		return initial(A.name)
 	return ..()
+
+/datum/quirk/boon/folk_hero
+	name = "Folk Hero"
+	desc = "You're a local legend who saved your community from great danger. People recognize you, even as a foreigner."
+	point_value = -3
+
+/datum/quirk/boon/folk_hero/on_spawn()
+	if(!ishuman(owner))
+		return
+	RegisterSignal(owner, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
+
+/datum/quirk/boon/folk_hero/on_remove()
+	if(!ishuman(owner))
+		return
+	UnregisterSignal(owner, COMSIG_PARENT_EXAMINE)
+
+/datum/quirk/boon/folk_hero/proc/on_examine(mob/living/source, mob/user, list/examine_list)
+	if(!ishuman(user) || !ishuman(source))
+		return
+
+	var/mob/living/carbon/human/H = source
+	var/mob/living/carbon/human/examiner = user
+
+	if(!examiner.mind || !H.mind)
+		return
+
+	// Folk heroes are recognized by others
+	if(prob(80)) // 80% chance people recognize them
+		examine_list += span_notice("You recognize [H.real_name], the folk hero!")
+
+		// Add them to known people if not already known
+		if(!examiner.mind.do_i_know(H.mind))
+			examiner.mind.i_know_person(H.mind)
+			H.mind.i_know_person(examiner.mind)
+
+/datum/quirk/boon/quick_hands
+	name = "Quick Hands"
+	desc = "You have great hand-eye coordination and know how to move your fingers fast. All crafts are 10% faster."
+	point_value = -4
+
+/datum/quirk/boon/quick_hands/on_spawn()
+	if(!ishuman(owner))
+		return
+	ADD_TRAIT(owner, TRAIT_QUICK_HANDS, "[type]")
+
+/datum/quirk/boon/quick_hands/on_remove()
+	if(!ishuman(owner))
+		return
+	REMOVE_TRAIT(owner, TRAIT_QUICK_HANDS, "[type]")

@@ -252,6 +252,8 @@
 	return blood.contains_lux
 
 /mob/living/proc/get_lux_tainted_status()
+	if(HAS_TRAIT(src, TRAIT_TAINTED_LUX))
+		return TRUE
 	var/datum/blood_type/blood = get_blood_type()
 	return blood.tainted_lux
 

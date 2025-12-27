@@ -147,3 +147,98 @@
 
 	// Remove traits when quirk is removed
 	REMOVE_TRAIT(H, TRAIT_LEPROSY, TRAIT_GENERIC)
+
+/datum/quirk/vice/crippled_arm
+	name = "Missing Arm"
+	desc = "You're missing an arm. It was lost in an accident or battle, and the stump is too damaged for anything but prosthetics."
+	point_value = 5
+	customization_label = "Choose Missing Arm"
+	incompatible_quirks = list(
+		/datum/quirk/vice/wooden_arm_right,
+		/datum/quirk/vice/wooden_arm_left,
+	)
+	customization_options = list(
+		BODY_ZONE_L_ARM,
+		BODY_ZONE_R_ARM,
+		BODY_ZONE_L_LEG,
+		BODY_ZONE_R_LEG
+	)
+
+/datum/quirk/vice/crippled_arm/on_spawn()
+	if(!ishuman(owner))
+		return
+	if(!customization_value)
+		customization_value = BODY_ZONE_L_ARM
+
+	addtimer(CALLBACK(src, PROC_REF(remove_limb)), 0.5 SECONDS)
+
+/datum/quirk/vice/crippled_arm/proc/remove_limb()
+	if(!ishuman(owner))
+		return
+
+	var/mob/living/carbon/human/H = owner
+	var/obj/item/bodypart/limb_to_remove = H.get_bodypart(customization_value)
+
+	if(limb_to_remove)
+		limb_to_remove.drop_limb()
+		qdel(limb_to_remove)
+
+/datum/quirk/vice/crippled_arm/get_option_name(option)
+	switch(option)
+		if(BODY_ZONE_L_ARM)
+			return "Left Arm"
+		if(BODY_ZONE_R_ARM)
+			return "Right Arm"
+	return "[option]"
+
+/datum/quirk/vice/crippled_leg
+	name = "Missing Leg"
+	desc = "You're missing a leg. It was lost in an accident or battle, and the stump is too damaged for anything but prosthetics."
+	point_value = 5
+	customization_label = "Choose Missing Leg"
+	customization_options = list(
+		BODY_ZONE_L_LEG,
+		BODY_ZONE_R_LEG
+	)
+
+/datum/quirk/vice/crippled_leg/on_spawn()
+	if(!ishuman(owner))
+		return
+	if(!customization_value)
+		customization_value = BODY_ZONE_L_ARM
+
+	addtimer(CALLBACK(src, PROC_REF(remove_limb)), 0.5 SECONDS)
+
+/datum/quirk/vice/crippled_leg/proc/remove_limb()
+	if(!ishuman(owner))
+		return
+
+	var/mob/living/carbon/human/H = owner
+	var/obj/item/bodypart/limb_to_remove = H.get_bodypart(customization_value)
+
+	if(limb_to_remove)
+		limb_to_remove.drop_limb()
+		qdel(limb_to_remove)
+
+/datum/quirk/vice/crippled_leg/get_option_name(option)
+	switch(option)
+		if(BODY_ZONE_L_LEG)
+			return "Left Leg"
+		if(BODY_ZONE_R_LEG)
+			return "Right Leg"
+	return "[option]"
+
+/datum/quirk/vice/tainted_soul
+	name = "Tainted Soul"
+	desc = "You had an unfortunate run-in with a monster. A goblin saved you, but you've never felt the same since."
+	point_value = 2
+
+/datum/quirk/vice/tainted_soul/on_spawn()
+	if(!ishuman(owner))
+		return
+	ADD_TRAIT(owner, TRAIT_TAINTED_LUX, "[type]")
+
+/datum/quirk/vice/tainted_soul/on_remove()
+	if(!ishuman(owner))
+		return
+	REMOVE_TRAIT(owner, TRAIT_TAINTED_LUX, "[type]")

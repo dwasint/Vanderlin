@@ -77,7 +77,10 @@
 
 	if(iscarbon(src))
 		var/mob/living/carbon/C = src
-		if(C.stress >= 30 && (prob(50)))
+		var/heart_value = 30
+		if(HAS_TRAIT(C, TRAIT_WEAK_HEART))
+			heart_value *= 0.5
+		if(C.stress >= heart_value && (prob(50)))
 			C.heart_attack()
 			if(mustype == 1)
 				playsound(get_turf(src), pick('sound/misc/jumpscare (1).ogg','sound/misc/jumpscare (2).ogg','sound/misc/jumpscare (3).ogg','sound/misc/jumpscare (4).ogg'), 100)
