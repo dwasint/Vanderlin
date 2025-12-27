@@ -152,7 +152,7 @@
 
 	for(var/mob/living/carbon/human/H in view(2, src))
 		if(H.has_quirk(/datum/quirk/vice/pyromaniac))
-			H.sate_addiction()
+			H.sate_addiction(/datum/quirk/vice/pyromaniac)
 
 	perform_exposure()
 	return

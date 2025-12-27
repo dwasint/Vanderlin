@@ -84,7 +84,7 @@
 			var/mob/living/liver = user
 			if(liver.has_quirk(/datum/quirk.vice/pyromaniac))
 				msg += span_boldred(" IT'S BEAUTIFUL!")
-				liver.sate_addiction()
+				liver.sate_addiction(/datum/quirk.vice/pyromaniac)
 		msg += "\n"
 	else if(fire_stacks + divine_fire_stacks > 0)
 		msg += "[t_He] [t_is] covered in something flammable.\n"

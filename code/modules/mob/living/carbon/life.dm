@@ -638,7 +638,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 		drunkenness = max(drunkenness - (drunkenness * 0.04) - 0.01, 0)
 		if(drunkenness >= 1)
 			if(has_quirk(/datum/quirk/vice/alcoholic))
-				sate_addiction()
+				sate_addiction(/datum/quirk/vice/alcoholic)
 		if(drunkenness >= 3)
 			if(prob(3))
 				slurring += 2

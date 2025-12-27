@@ -105,7 +105,7 @@
 								var/mob/living/carbon/D = HU
 								if(D.has_quirk(/datum/quirk/vice/maniac))
 									D.add_stress(/datum/stress_event/viewdeathmaniac)
-									D.sate_addiction()
+									D.sate_addiction(/datum/quirk/vice/maniac)
 								else
 									D.add_stress(/datum/stress_event/viewdeath)
 
@@ -145,7 +145,7 @@
 			var/mob/living/carbon/V = CA
 			if(V.has_quirk(/datum/quirk/vice/maniac))
 				V.add_stress(/datum/stress_event/viewgibmaniac)
-				V.sate_addiction()
+				V.sate_addiction(/datum/quirk/vice/maniac)
 				continue
 			V.add_stress(/datum/stress_event/viewgib)
 	. = ..()

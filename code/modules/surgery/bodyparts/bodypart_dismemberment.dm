@@ -76,7 +76,7 @@
 						continue
 					if(CA.has_quirk(/datum/quirk/vice/maniac))
 						CA.add_stress(/datum/stress_event/viewdismembermaniac)
-						CA.sate_addiction()
+						CA.sate_addiction(/datum/quirk/vice/maniac)
 						continue
 					if(CA.gender == FEMALE)
 						CA.add_stress(/datum/stress_event/fviewdismember)

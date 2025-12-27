@@ -104,7 +104,7 @@
 		else
 			M.emote(pick("twitch_s","chuckle"))
 	if(M.has_quirk(/datum/quirk/vice/junkie))
-		M.sate_addiction()
+		M.sate_addiction(/datum/quirk/vice/junkie)
 	..()
 
 /datum/reagent/druqks/on_mob_metabolize(mob/living/M)
@@ -148,7 +148,7 @@
 
 /datum/reagent/ozium/on_mob_life(mob/living/carbon/M)
 	if(M.has_quirk(/datum/quirk/vice/junkie))
-		M.sate_addiction()
+		M.sate_addiction(/datum/quirk/vice/junkie)
 	if(prob(5))
 		M.flash_fullscreen("whiteflash")
 	M.apply_status_effect(/datum/status_effect/buff/ozium)
@@ -190,7 +190,7 @@
 	if(M.reagents.has_reagent(/datum/reagent/moondust_purest))
 		M.Sleeping(40, 0)
 	if(M.has_quirk(/datum/quirk/vice/junkie))
-		M.sate_addiction()
+		M.sate_addiction(/datum/quirk/vice/junkie)
 	M.apply_status_effect(/datum/status_effect/buff/moondust)
 	if(prob(2))
 		M.flash_fullscreen("whiteflash")
@@ -235,7 +235,7 @@
 	if(M.reagents.has_reagent(/datum/reagent/moondust))
 		M.Sleeping(40, 0)
 	if(M.has_quirk(/datum/quirk/vice/junkie))
-		M.sate_addiction()
+		M.sate_addiction(/datum/quirk/vice/junkie)
 	M.apply_status_effect(/datum/status_effect/buff/moondust_purest)
 	if(prob(20))
 		M.flash_fullscreen("whiteflash")

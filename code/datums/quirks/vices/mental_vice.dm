@@ -14,6 +14,16 @@
 	effectedstats = list(STATKEY_END = -1, STATKEY_LCK = -1)
 	duration = 100
 
+//these legit just exist sow we get unique instances
+/datum/status_effect/debuff/addiction/alcoholic
+/datum/status_effect/debuff/addiction/smoker
+/datum/status_effect/debuff/addiction/junkie
+/datum/status_effect/debuff/addiction/pyromaniac
+/datum/status_effect/debuff/addiction/kleptomaniac
+/datum/status_effect/debuff/addiction/godfearing
+/datum/status_effect/debuff/addiction/maniac
+/datum/status_effect/debuff/addiction/greedy
+
 /atom/movable/screen/alert/status_effect/debuff/addiction
 	name = "Addiction"
 	desc = ""
@@ -69,12 +79,12 @@
 		if(H.has_stress_type(/datum/stress_event/vice))
 			to_chat(H, span_blue("[new_mammon_amount] mammons... That's more like it.."))
 		H.remove_stress(/datum/stress_event/vice)
-		H.remove_status_effect(/datum/status_effect/debuff/addiction)
+		H.remove_status_effect(/datum/status_effect/debuff/addiction/greedy)
 		last_passed_check = world.time
 		do_update_msg = FALSE
 	else
 		H.add_stress(/datum/stress_event/vice)
-		H.apply_status_effect(/datum/status_effect/debuff/addiction)
+		H.apply_status_effect(/datum/status_effect/debuff/addiction/greedy)
 
 	if(new_mammon_amount == last_checked_mammons)
 		do_update_msg = FALSE

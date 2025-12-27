@@ -458,7 +458,7 @@
 						record_featured_stat(FEATURED_STATS_CRIMINALS, U)
 						record_round_statistic(STATS_ITEMS_PICKPOCKETED)
 					if(has_quirk(/datum/quirk/vice/kleptomaniac))
-						sate_addiction()
+						sate_addiction(/datum/quirk/vice/kleptomaniac)
 				else
 					exp_to_gain /= 2
 					to_chat(U, span_warning("I didn't find anything there. Perhaps I should look elsewhere."))

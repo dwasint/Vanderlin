@@ -144,7 +144,7 @@ GLOBAL_DATUM_INIT(acid_overlay, /mutable_appearance, mutable_appearance('icons/e
 		SSfire_burning.processing -= src
 	for(var/mob/living/carbon/human/H in view(2, src))
 		if(H.has_quirk(/datum/quirk/vice/pyromaniac))
-			H.sate_addiction()
+			H.sate_addiction(/datum/quirk/vice/pyromaniac)
 	deconstruct(FALSE)
 
 ///Called when the obj is no longer on fire.
