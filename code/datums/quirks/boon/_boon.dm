@@ -357,3 +357,16 @@
 	if(!ishuman(owner))
 		return
 	REMOVE_TRAIT(owner, TRAIT_QUICK_HANDS, "[type]")
+
+/datum/quirk/boon/naturalist
+    name = "Naturalist"
+    desc = "Your body is attuned to the natural world. You extract more nourishment from unprocessed, natural foods - fruits, vegetables, and simple preparations sustain you better than they do others."
+    point_value = -8
+
+/datum/quirk/boon/naturalist/on_spawn()
+	ADD_TRAIT(owner, TRAIT_FORAGER, "[type]")
+
+/datum/quirk/boon/naturalist/on_remove()
+	if(!ishuman(owner))
+		return
+	REMOVE_TRAIT(owner, TRAIT_FORAGER, "[type]")
