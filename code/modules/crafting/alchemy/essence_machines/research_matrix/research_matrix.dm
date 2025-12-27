@@ -94,36 +94,6 @@
 	if(user)
 		check_research_completion(user)
 
-	if(!selected_research)
-		return
-
-	// Check if this essence is needed
-	if(!(essence_type in selected_research.required_essences))
-		return
-
-	// Calculate how much we actually need
-	var/needed = selected_research.required_essences[essence_type]
-	var/current = storage.get_essence_amount(essence_type)
-	var/remaining_needed = needed - current
-
-	// Only accept what we need, refuse the rest
-	if(remaining_needed <= 0)
-		return
-
-	var/to_accept = min(amount, remaining_needed)
-
-	// Only add the exact amount needed
-	if(to_accept < amount)
-		// We're rejecting some essence - only add what we need
-		storage.add_essence(essence_type, to_accept)
-		// Return the excess to source
-		var/excess = amount - to_accept
-		if(source)
-			source.add_essence(essence_type, excess)
-	else
-		// Accept all of it
-		storage.add_essence(essence_type, amount)
-
 /obj/machinery/essence/research_matrix/proc/check_research_completion(mob/user)
 	if(!selected_research)
 		return
