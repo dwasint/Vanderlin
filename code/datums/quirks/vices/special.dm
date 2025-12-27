@@ -23,11 +23,6 @@
 	if(!ishuman(owner))
 		return
 	var/mob/living/carbon/human/H = owner
-
-	if(H.dna?.species?.id in RACES_PLAYER_LUXLESS)
-		to_chat(H, span_warning("Your species already lacks lux. This quirk has no effect."))
-		return
-
 	H.apply_status_effect(/datum/status_effect/debuff/flaw_lux_taken)
 
 /datum/quirk/vice/pacifist
