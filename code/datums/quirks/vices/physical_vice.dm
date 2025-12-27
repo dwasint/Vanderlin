@@ -121,7 +121,7 @@
 /datum/quirk/vice/leprosy
 	name = "Leprosy"
 	desc = "Become a leper. You will be hated, you will be shunned, you will bleed and you will be weak."
-	point_value = 5
+	point_value = 8
 
 /datum/quirk/vice/leprosy/on_spawn()
 	if(!ishuman(owner))
