@@ -49,19 +49,19 @@
 /datum/quirk/boon/light_footed
 	name = "Light Footed"
 	desc = "You move with grace and agility. Your steps are quicker and more sure than most."
-	point_value = -4
+	point_value = -5
 
 /datum/quirk/boon/light_footed/on_spawn()
 	if(!ishuman(owner))
 		return
 	var/mob/living/carbon/human/H = owner
-	H.adjust_stat_modifier(STATMOD_QUIRK, STATKEY_SPD, 2)
+	H.adjust_stat_modifier(STATMOD_QUIRK, STATKEY_SPD, 1)
 
 /datum/quirk/boon/light_footed/on_remove()
 	if(!ishuman(owner))
 		return
 	var/mob/living/carbon/human/H = owner
-	H.adjust_stat_modifier(STATMOD_QUIRK, STATKEY_SPD, -2)
+	H.adjust_stat_modifier(STATMOD_QUIRK, STATKEY_SPD, -1)
 
 /* Surgery stuff
 /datum/quirk/boon/steady_hands
@@ -96,7 +96,7 @@
 /datum/quirk/boon/strong_back
 	name = "Strong Back"
 	desc = "You're used to carrying heavy loads. Whether from years of soldiering or hard labor, you can bear more weight."
-	point_value = -3
+	point_value = -5
 
 /datum/quirk/boon/strong_back/on_spawn()
 	if(!ishuman(owner))
