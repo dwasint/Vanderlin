@@ -38,9 +38,8 @@
 	var/datum/backstory/B = customization_value
 	var/mob/living/carbon/human/H = owner
 
-	// Grant skill level clamped to APPRENTICE (2)
 	if(initial(B.granted_skill))
-		H.clamped_adjust_skillrank(initial(B.granted_skill), 10, B.clamp, TRUE)
+		H.clamped_adjust_skillrank(initial(B.granted_skill), 1, inital(B.clamp), TRUE)
 
 	// Apply stat penalty
 	if(initial(B.stat_penalty) && initial(B.stat_reduction) > 0)
