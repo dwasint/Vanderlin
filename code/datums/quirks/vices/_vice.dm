@@ -65,7 +65,7 @@
 /datum/quirk/vice/alcoholic
 	name = "Drunkard"
 	desc = "Drinking alcohol is my favorite thing."
-	point_value = 4
+	point_value = 3
 	time = 40 MINUTES
 	needsate_text = "Time for a drink."
 
