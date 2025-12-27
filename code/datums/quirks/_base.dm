@@ -1,4 +1,3 @@
-
 GLOBAL_LIST_INIT(quirk_registry, list())
 GLOBAL_LIST_EMPTY(quirk_singletons)
 GLOBAL_LIST_EMPTY(quirk_points_by_type)
@@ -51,6 +50,15 @@ GLOBAL_LIST_EMPTY(quirk_points_by_type)
 	/// Label for the customization dropdown
 	var/customization_label = "Select Option"
 
+	/// List of allowed ages (empty = all allowed)
+	var/list/allowed_ages = list()
+	/// List of blocked ages
+	var/list/blocked_ages = list()
+	/// List of allowed species (empty = all allowed)
+	var/list/allowed_species = list()
+	/// List of blocked species
+	var/list/blocked_species = list()
+
 /datum/quirk/New(mob/living/new_owner, custom_value = null)
 	. = ..()
 	if(new_owner)
@@ -90,6 +98,28 @@ GLOBAL_LIST_EMPTY(quirk_points_by_type)
 			return FALSE
 		if(type in Q.incompatible_quirks)
 			return FALSE
+	return TRUE
+
+/datum/quirk/proc/return_customization(datum/preferences/prefs)
+	return customization_options.Copy()
+
+/// Check if this quirk is available for the given preferences
+/datum/quirk/proc/is_available(datum/preferences/prefs)
+	if(!prefs)
+		return TRUE
+
+	// Check age restrictions
+	if(length(allowed_ages) && !(prefs.age in allowed_ages))
+		return FALSE
+	if(prefs.age in blocked_ages)
+		return FALSE
+
+	// Check species restrictions
+	if(length(allowed_species) && !(prefs.pref_species in allowed_species))
+		return FALSE
+	if(prefs.pref_species in blocked_species)
+		return FALSE
+
 	return TRUE
 
 /mob/living/proc/add_quirk(quirk_type)

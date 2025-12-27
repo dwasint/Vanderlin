@@ -247,7 +247,8 @@
 			do_sleep = TRUE
 
 /datum/quirk/vice/narcoleptic/on_remove()
-	REMOVE_TRAIT(owner, TRAIT_FASTSLEEP, "[type]")
+	if(owner)
+		REMOVE_TRAIT(owner, TRAIT_FASTSLEEP, "[type]")
 
 /proc/narcolepsy_drug_up(mob/living/living)
 	var/datum/quirk/vice/narcoleptic/narco = living.get_quirk(/datum/quirk/vice/narcoleptic)

@@ -47,7 +47,7 @@
 		stress = STRESS_VGOOD
 
 	if(HAS_TRAIT(src, TRAIT_WEAK_HEART) && stress > 25)
-		heart_attack()
+		INVOKE_ASYNC(src, PROC_REF(heart_attack))
 
 /mob/living/carbon/update_stress()
 	if(HAS_TRAIT(src, TRAIT_NOMOOD))

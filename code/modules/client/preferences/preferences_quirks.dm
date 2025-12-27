@@ -60,6 +60,16 @@
 
 	quirks = valid_quirks
 
+	// Remove quirks that are no longer available due to character changes
+	var/list/available_quirks = list()
+	for(var/quirk_type in quirks)
+		var/datum/quirk/Q = new quirk_type()
+		if(Q.is_available(src))
+			available_quirks += quirk_type
+		qdel(Q)
+
+	quirks = available_quirks
+
 	// Check point balance
 	var/balance = calculate_quirk_balance()
 	if(balance < 0)
@@ -125,6 +135,13 @@
 
 	var/datum/quirk/new_quirk = quirk_type
 
+	// Check if quirk is available for this character
+	var/datum/quirk/temp_quirk = new quirk_type()
+	if(!temp_quirk.is_available(src))
+		qdel(temp_quirk)
+		return FALSE
+	qdel(temp_quirk)
+
 	// Check boon limit
 	if(initial(new_quirk.quirk_category) == QUIRK_BOON)
 		if(count_boons_in_list() >= MAX_BOONS)
@@ -160,6 +177,7 @@
 /datum/preferences/proc/remove_quirk(quirk_type)
 	if(quirk_type in quirks)
 		quirks -= quirk_type
+		quirk_customizations -= quirk_type
 
 		// After removing a quirk, validate that the remaining quirks are still affordable
 		var/balance = calculate_quirk_balance()
@@ -169,6 +187,7 @@
 			var/datum/quirk/most_expensive = find_most_expensive_boon()
 			if(most_expensive)
 				quirks -= most_expensive
+				quirk_customizations -= most_expensive
 				balance = calculate_quirk_balance()
 			else
 				break
@@ -179,6 +198,7 @@
 
 /datum/preferences/proc/clear_quirks()
 	quirks = list()
+	quirk_customizations = list()
 	save_character()
 
 /datum/preferences/proc/apply_quirks_to_character(mob/living/carbon/human/H)
@@ -187,9 +207,49 @@
 
 	H.clear_quirks()
 
+	// Revalidate and apply quirks
+	var/list/valid_quirks = list()
+	var/list/valid_customizations = list()
+
+	for(var/quirk_type in quirks)
+		var/datum/quirk/Q = new quirk_type()
+
+		// Check if quirk is still available
+		if(!Q.is_available(src))
+			to_chat(H, span_warning("The '[initial(Q.name)]' quirk is no longer available for your character."))
+			qdel(Q)
+			continue
+
+		// Special handling for backstory quirk
+		if(istype(Q, /datum/quirk/boon/backstory))
+			var/custom_val = quirk_customizations[quirk_type]
+			if(custom_val && ispath(custom_val, /datum/backstory))
+				var/datum/backstory/B = new custom_val()
+				if(!B.is_available(src))
+					to_chat(H, span_warning("The '[initial(B.name)]' background is no longer available for your character."))
+					qdel(B)
+					qdel(Q)
+					continue
+				qdel(B)
+
+		valid_quirks += quirk_type
+		if(quirk_customizations[quirk_type])
+			valid_customizations[quirk_type] = quirk_customizations[quirk_type]
+
+		qdel(Q)
+
+	// Update the quirk lists to only valid quirks
+	quirks = valid_quirks
+	quirk_customizations = valid_customizations
+
+	// Apply valid quirks to character
 	for(var/quirk_type in quirks)
 		var/custom_val = quirk_customizations[quirk_type]
 		H.add_quirk(quirk_type, custom_val)
+
+	// Save if anything changed
+	if(length(quirks) != length(valid_quirks))
+		save_character()
 
 /datum/preferences/proc/open_quirk_menu(mob/user)
 	var/datum/browser/popup = new(user, "quirk_menu", "Quirk Selection", 1000, 650, src)
@@ -323,9 +383,9 @@
 		dat += "</div>"
 		dat += "<div class='quirk-desc'>[initial(Q.desc)]</div>"
 
-		// Show customization value if set
+		// Show customization options if available
 		var/datum/quirk/singleton = GLOB.quirk_singletons[quirk_type]
-		var/list/options = singleton.customization_options.Copy()
+		var/list/options = singleton?.return_customization(src)
 		if(length(options))
 			var/label = initial(Q.customization_label)
 			var/current_value = quirk_customizations[quirk_type]
@@ -338,12 +398,7 @@
 				dat += "<option value='' selected>-- Select --</option>"
 
 			for(var/option in options)
-				var/option_name = ""
-				if(ispath(option))
-					var/atom/A = option
-					option_name = initial(A.name)
-				else
-					option_name = "[option]"
+				var/option_name = singleton.get_option_name(option)
 
 				var/selected = (current_value == option) ? "selected" : ""
 				dat += "<option value='\ref[option]' [selected]>[option_name]</option>"
@@ -360,6 +415,7 @@
 /mob/living/carbon/human/proc/apply_character_quirks()
 	if(client?.prefs)
 		client.prefs.apply_quirks_to_character(src)
+
 /client/Topic(href, href_list)
 	. = ..()
 	if(href_list["quirk_add"])

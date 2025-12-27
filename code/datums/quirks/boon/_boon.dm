@@ -174,7 +174,8 @@
 	ADD_TRAIT(owner, TRAIT_STEELHEARTED, "[type]")
 
 /datum/quirk/boon/iron_will/on_remove()
-	REMOVE_TRAIT(owner, TRAIT_STEELHEARTED, "[type]")
+	if(owner)
+		REMOVE_TRAIT(owner, TRAIT_STEELHEARTED, "[type]")
 
 /datum/quirk/boon/composed
 	name = "Composed"

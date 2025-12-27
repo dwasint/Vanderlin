@@ -43,7 +43,8 @@
 	ADD_TRAIT(owner, TRAIT_PACIFISM, "[type]")
 
 /datum/quirk/vice/pacifist/on_remove()
-	REMOVE_TRAIT(owner, TRAIT_PACIFISM, "[type]")
+	if(owner)
+		REMOVE_TRAIT(owner, TRAIT_PACIFISM, "[type]")
 
 /datum/quirk/vice/chronic_migraine
 	name = "Chronic Migraines"
