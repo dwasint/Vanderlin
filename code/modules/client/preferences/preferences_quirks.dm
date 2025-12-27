@@ -154,12 +154,13 @@
 			return FALSE
 
 	// Check incompatibilities
-	var/list/incompatible = initial(new_quirk.incompatible_quirks)
+	var/datum/quirk/singleton = GLOB.quirk_singletons[new_quirk]
+	var/list/incompatible = singleton.incompatible_quirks
 	for(var/quirk_type_existing in quirks)
 		if(quirk_type_existing in incompatible)
 			return FALSE
-		var/datum/quirk/existing = quirk_type_existing
-		var/list/existing_incompatible = initial(existing.incompatible_quirks)
+		var/datum/quirk/existing_singleton = GLOB.quirk_singletons[quirk_type_existing]
+		var/list/existing_incompatible = existing_singleton.incompatible_quirks
 		if(quirk_type in existing_incompatible)
 			return FALSE
 
