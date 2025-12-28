@@ -230,6 +230,14 @@
 	name = "Tainted Soul"
 	desc = "You had an unfortunate run-in with a monster. A goblin saved you, but you've never felt the same since."
 	point_value = 2
+	blocked_species = list(
+		/datum/species/kobold,
+		/datum/species/demihuman,
+		/datum/species/rakshari,
+		/datum/species/rousman,
+		/datum/species/goblin,
+		/datum/species/orc,
+	)
 
 /datum/quirk/vice/tainted_soul/on_spawn()
 	if(!ishuman(owner))

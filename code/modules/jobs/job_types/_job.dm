@@ -373,9 +373,6 @@
 	if(job_flags & JOB_SHOW_IN_CREDITS)
 		START_PROCESSING(SScrediticons, player_client)
 
-	for(var/datum/quirk/quirk in spawned.quirks)
-		quirk.after_job_spawn()
-
 /datum/job/proc/adjust_patron(mob/living/carbon/human/spawned)
 	if(!length(allowed_patrons))
 		return

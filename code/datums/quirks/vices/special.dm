@@ -28,6 +28,14 @@
 	desc = "Through some grand misfortune, or heroic sacrifice - you have given up your link to Psydon, and with it - your soul. A putrid, horrid thing, you consign yourself to an eternity of nil after death. EXPECT A DIFFICULT, MECHANICALLY UNFAIR EXPERIENCE. (Rakshari, Hollowkin and Kobolds cannot take this - they already have no lux.)"
 	point_value = 5
 	random_exempt = TRUE
+	blocked_species = list(
+		/datum/species/kobold,
+		/datum/species/demihuman,
+		/datum/species/rakshari,
+		/datum/species/rousman,
+		/datum/species/goblin,
+		/datum/species/orc,
+	)
 
 /datum/quirk/vice/luxless/on_spawn()
 	if(!ishuman(owner))

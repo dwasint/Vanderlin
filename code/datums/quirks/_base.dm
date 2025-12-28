@@ -80,7 +80,7 @@ GLOBAL_LIST_EMPTY(quirk_points_by_type)
 /datum/quirk/proc/get_desc(datum/preferences/prefs)
 	return desc
 
-/datum/quirk/proc/after_job_spawn()
+/datum/quirk/proc/after_job_spawn(datum/job/job)
 	return
 
 /datum/quirk/proc/get_option_name(option)
@@ -126,9 +126,9 @@ GLOBAL_LIST_EMPTY(quirk_points_by_type)
 		return FALSE
 
 	// Check species restrictions
-	if(length(allowed_species) && !(prefs.pref_species in allowed_species))
+	if(length(allowed_species) && !(prefs.pref_species.type in allowed_species))
 		return FALSE
-	if(prefs.pref_species in blocked_species)
+	if(prefs.pref_species.type in blocked_species)
 		return FALSE
 
 	return TRUE
