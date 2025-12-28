@@ -67,7 +67,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 
 	//Message - handle deaf trait
 	var/messagepart = raw_message
-	if(isliving(src) && HAS_TRAIT(src, TRAIT_PARTIAL_DEAF) && speaker != src && !radio_freq)
+	if(isliving(src) && HAS_TRAIT(src, TRAIT_PARTIAL_DEAF) && speaker != src)
 		var/mob/living/listener = src
 		var/distance = get_dist(listener, speaker)
 		var/is_yelling = ((SPAN_YELL in spans) || message_mods[MODE_SING])
