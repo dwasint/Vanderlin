@@ -182,25 +182,33 @@
 	desc = "ONE CHANCE. When you die, you have no place in the underworld. You will be reincarnated as a rat, unable to do anything."
 	point_value = 3
 	random_exempt = TRUE
+	var/turning = FALSE
 
 /datum/quirk/vice/hardcore/on_spawn()
 	if(!ishuman(owner))
 		return
 	RegisterSignal(owner, COMSIG_LIVING_DEATH, PROC_REF(on_death))
+	RegisterSignal(owner, COMSIG_LIVING_TRY_ENTER_AFTERLIFE, PROC_REF(on_death))
 	to_chat(owner, span_boldwarning("You have chosen HARDCORE mode. If you die, you will become a rat. There are no second chances."))
 
 /datum/quirk/vice/hardcore/on_remove()
 	if(!ishuman(owner))
 		return
 	UnregisterSignal(owner, COMSIG_LIVING_DEATH)
+	UnregisterSignal(owner, COMSIG_LIVING_TRY_ENTER_AFTERLIFE)
 
 /datum/quirk/vice/hardcore/proc/on_death(mob/living/source)
+	if(turning)
+		return TRUE
 	if(!ishuman(source))
 		return
 
 	addtimer(CALLBACK(src, PROC_REF(transform_to_rat), source), 3 SECONDS)
+	turning = TRUE
+	return TRUE
 
 /datum/quirk/vice/hardcore/proc/transform_to_rat(mob/living/carbon/human/H)
+	turning = FALSE
 	if(!H || QDELETED(H))
 		return
 
