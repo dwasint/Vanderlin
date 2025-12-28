@@ -160,8 +160,6 @@
 	customization_options = list(
 		BODY_ZONE_L_ARM,
 		BODY_ZONE_R_ARM,
-		BODY_ZONE_L_LEG,
-		BODY_ZONE_R_LEG
 	)
 
 /datum/quirk/vice/crippled_arm/on_spawn()
