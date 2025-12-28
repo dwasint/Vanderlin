@@ -72,7 +72,7 @@ GLOBAL_LIST_EMPTY(quirk_points_by_type)
 	owner = null
 	return ..()
 
-/datum/quirk/proc/get_desc()
+/datum/quirk/proc/get_desc(datum/preferences/prefs)
 	return desc
 
 /datum/quirk/proc/after_job_spawn()

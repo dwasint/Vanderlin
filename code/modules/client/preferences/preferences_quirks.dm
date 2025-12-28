@@ -366,6 +366,7 @@
 
 	for(var/quirk_type in quirks)
 		var/datum/quirk/Q = quirk_type
+		var/datum/quirk/singleton = GLOB.quirk_singletons[quirk_type]
 		var/category = initial(Q.quirk_category)
 		var/category_class = ""
 
@@ -382,10 +383,9 @@
 		dat += "<span class='quirk-name'>[initial(Q.name)]</span>"
 		dat += "<span class='quirk-points'>[initial(Q.point_value)] pts</span>"
 		dat += "</div>"
-		dat += "<div class='quirk-desc'>[initial(Q.desc)]</div>"
+		dat += "<div class='quirk-desc'>[singleton.get_desc(src)]</div>"
 
 		// Show customization options if available
-		var/datum/quirk/singleton = GLOB.quirk_singletons[quirk_type]
 		var/list/options = singleton?.return_customization(src)
 		if(length(options))
 			var/label = initial(Q.customization_label)

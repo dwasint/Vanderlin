@@ -20,6 +20,48 @@
 			LAZYADD(backstories, new backstory_type)
 	return ..()
 
+/datum/quirk/boon/backstory/get_desc(datum/preferences/prefs)
+	var/base_desc = desc
+
+	// If a backstory is selected, add its stats to the description
+	var/datum/backstory/B = customization_value
+	if(!B || !ispath(B))
+		B = prefs.quirk_customizations[type]
+	if(!B)
+		return base_desc
+	var/datum/skill/granted_skill = initial(B.granted_skill)
+	var/stat_penalty = initial(B.stat_penalty)
+	var/stat_reduction = initial(B.stat_reduction)
+
+	base_desc += "<br><br><b>Selected: [initial(B.name)]</b>"
+	base_desc += "<br>[initial(B.desc)]"
+
+	// Add skill grant information
+	if(granted_skill)
+		base_desc += "<br><b>Grants:</b> +1 [initial(granted_skill.name)]"
+
+	// Add stat penalty information
+	if(stat_penalty && stat_reduction > 0)
+		var/stat_name = ""
+		switch(stat_penalty)
+			if(STATKEY_STR)
+				stat_name = "Strength"
+			if(STATKEY_PER)
+				stat_name = "Perception"
+			if(STATKEY_INT)
+				stat_name = "Intelligence"
+			if(STATKEY_CON)
+				stat_name = "Constitution"
+			if(STATKEY_END)
+				stat_name = "Endurance"
+			if(STATKEY_SPD)
+				stat_name = "Speed"
+
+		if(stat_name)
+			base_desc += "<br><b>Penalty:</b> -[stat_reduction] [stat_name]"
+
+	return base_desc
+
 /datum/quirk/boon/backstory/return_customization(datum/preferences/prefs)
 	var/list/custom = list()
 
@@ -28,7 +70,7 @@
 			custom |= story.type
 	return custom
 
-/datum/quirk/boon/backstory/on_spawn()
+/datum/quirk/boon/backstory/after_job_spawn()
 	if(!ishuman(owner))
 		return
 
