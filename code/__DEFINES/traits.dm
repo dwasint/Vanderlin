@@ -112,6 +112,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_GARGLE_SPEECH		"gargle_speech"
 #define TRAIT_EMOTEMUTE			"emotemute"
 #define TRAIT_DEAF				"deaf"
+#define TRAIT_PARTIAL_DEAF		"partial_deaf"
 #define TRAIT_NEARSIGHT			"nearsighted"
 #define TRAIT_HUSK				"husk"
 #define TRAIT_CHUNKYFINGERS		"chunkyfingers" //means that you can't use weapons with normal trigger guards.

@@ -112,12 +112,12 @@
 /datum/quirk/vice/deaf/on_spawn()
 	if(!ishuman(owner))
 		return
-	ADD_TRAIT(owner, TRAIT_DEAF, "[type]")
+	ADD_TRAIT(owner, TRAIT_PARTIAL_DEAF, "[type]")
 
 /datum/quirk/vice/deaf/on_remove()
 	if(!ishuman(owner))
 		return
-	REMOVE_TRAIT(owner, TRAIT_DEAF, "[type]")
+	REMOVE_TRAIT(owner, TRAIT_PARTIAL_DEAF, "[type]")
 
 /datum/quirk/vice/traumatized
 	name = "Traumatized"
