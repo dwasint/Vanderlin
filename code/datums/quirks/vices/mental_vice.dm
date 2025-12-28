@@ -380,10 +380,6 @@
 	name = "Chronic Back Pain"
 	desc = "Years of wear and tear have left you with persistent lower back pain that affects your mobility."
 	point_value = 3
-	incompatible_quirks = list(
-		/datum/quirk/boon/strong_back,
-		/datum/quirk/boon/tough_skin
-	)
 
 /datum/quirk/vice/chronic_back_pain/on_spawn()
 	if(!ishuman(owner))

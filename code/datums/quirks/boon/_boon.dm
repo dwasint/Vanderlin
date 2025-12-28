@@ -68,7 +68,6 @@
 	desc = "You pick up new skills faster than most. Your mind is sharp and eager to learn."
 	point_value = -5
 
-
 /datum/quirk/boon/iron_will
 	name = "Iron Will"
 	desc = "Your resolve is unshakeable. You resist stress and fear better than most."

@@ -239,7 +239,6 @@
 	desc = "You were born with a weak heart. You can't handle stressful situations for fear of your heart giving out (Half threshold for heart attacks and heart attack from being overly stressed)."
 	point_value = 6
 	incompatible_quirks = list(
-		/datum/quirk/boon/hardy,
 		/datum/quirk/boon/iron_will
 	)
 
