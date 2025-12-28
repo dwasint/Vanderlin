@@ -121,13 +121,20 @@
 
 /datum/quirk/vice/traumatized
 	name = "Traumatized"
-	desc = "You were an adventurer once, till you took something to the knee. Choose a creature type to be terrified of."
+	desc = "You were an adventurer once, till you took something to the knee. Choose something to be afraid of."
 	point_value = 3
 	customization_label = "Choose Fear"
 	customization_options = list(
 		/datum/species/goblin,
 		/datum/species/werewolf,
 		/datum/species/orc,
+		/datum/species/halforc,
+		/datum/species/halfling,
+		/datum/species/demihuman,
+		/datum/species/dwarf,
+		/datum/species/elf,
+		/datum/species/triton,
+		/datum/oratorium,
 	)
 
 	var/fear_type
@@ -143,14 +150,27 @@
 /datum/quirk/vice/traumatized/on_life(mob/living/user)
 	if(world.time < next_scream_time)
 		return
-	for(var/mob/living/carbon/human/human in view(5, user))
-		if(is_species(human, fear_type))
-			var/mob/living/carbon/human/H = user
-			H.emote("scream")
-			H.Immobilize(1.5 SECONDS)
-			H.add_stress(/datum/stress_event/traumatized)
-			to_chat(H, span_userdanger("You see [human] and freeze in terror!"))
-			next_scream_time = world.time + 25 SECONDS
+	if(ispath(fear_type, /datum/species))
+		for(var/mob/living/carbon/human/human in view(5, user))
+			if(is_species(human, fear_type))
+				var/mob/living/carbon/human/H = user
+				H.emote("scream")
+				H.Immobilize(1.5 SECONDS)
+				H.add_stress(/datum/stress_event/traumatized)
+				to_chat(H, span_userdanger("You see [human] and freeze in terror!"))
+				next_scream_time = world.time + 25 SECONDS
+				return
+	else
+		for(var/mob/living/carbon/human/human in view(5, user))
+			if(HAS_TRAIT(human, TRAIT_INQUISITION))
+				var/mob/living/carbon/human/H = user
+				H.emote("scream")
+				H.Immobilize(1.5 SECONDS)
+				H.add_stress(/datum/stress_event/traumatized)
+				to_chat(H, span_userdanger("You see [human] and freeze in terror!"))
+				next_scream_time = world.time + 25 SECONDS
+				return
+
 
 /datum/stress_event/traumatized
 	desc = "<span class='danger'>I saw one of THOSE things again!</span>\n"
@@ -251,3 +271,108 @@
 	if(!ishuman(owner))
 		return
 	REMOVE_TRAIT(owner, TRAIT_WEAK_HEART, "[type]")
+
+/datum/quirk/vice/tremors
+	name = "Tremors"
+	desc = "Your body tremors periodically, causing you to drop what's in your hands and lose your grip for a short time. High stress makes the tremors worse."
+	point_value = 4
+	var/next_tremor_time = 0
+	var/base_tremor_interval = 5 MINUTES
+	var/stress_tremor_interval = 2 MINUTES
+
+/datum/quirk/vice/tremors/on_spawn()
+	var/mob/living/carbon/human/H = owner
+	ADD_TRAIT(H, TRAIT_TREMORS, "[type]")
+	schedule_next_tremor()
+
+/datum/quirk/vice/tremors/on_remove()
+	if(!owner)
+		return
+	var/mob/living/carbon/human/H = owner
+	REMOVE_TRAIT(H, TRAIT_TREMORS, "[type]")
+
+/datum/quirk/vice/tremors/on_life()
+	if(!owner)
+		return
+
+	if(world.time >= next_tremor_time)
+		trigger_tremor()
+		schedule_next_tremor()
+
+/datum/quirk/vice/tremors/proc/schedule_next_tremor()
+	if(!owner)
+		return
+
+	var/mob/living/carbon/human/H = owner
+	var/tremor_interval = base_tremor_interval
+
+	if(H.stress >= 6)
+		tremor_interval = stress_tremor_interval
+	else if(H.stress >= 4) // Medium stress
+		tremor_interval = (base_tremor_interval + stress_tremor_interval) / 2
+
+	// Add some randomness so it's not perfectly predictable
+	tremor_interval = tremor_interval + rand(-30 SECONDS, 30 SECONDS)
+	next_tremor_time = world.time + tremor_interval
+
+/datum/quirk/vice/tremors/proc/trigger_tremor()
+	if(!owner)
+		return
+
+	var/mob/living/carbon/human/H = owner
+
+	// Visual and audio feedback
+	to_chat(H, span_warning("Your hands begin to shake uncontrollably!"))
+	H.visible_message(span_warning("[H]'s hands begin trembling!"))
+
+	// Drop everything in hands
+	for(var/obj/item/I in H.held_items)
+		if(I)
+			H.dropItemToGround(I)
+			to_chat(H, span_warning("You drop [I] as your hands shake!"))
+
+	// Apply temporary inability to grip
+	H.apply_status_effect(/datum/status_effect/tremor_grip_loss)
+
+	// Shake the screen slightly for immersion
+	animate(H.client, pixel_x = rand(-2, 2), pixel_y = rand(-2, 2), time = 2)
+	addtimer(CALLBACK(src, PROC_REF(reset_screen_shake), H), 2)
+
+/datum/quirk/vice/tremors/proc/reset_screen_shake(mob/living/carbon/human/H)
+	if(H?.client)
+		animate(H.client, pixel_x = 0, pixel_y = 0, time = 2)
+
+/datum/status_effect/tremor_grip_loss
+	id = "tremor_grip_loss"
+	duration = 6 SECONDS
+	alert_type = /atom/movable/screen/alert/status_effect/tremor_grip_loss
+
+/datum/status_effect/tremor_grip_loss/on_apply()
+	. = ..()
+	if(!.)
+		return
+
+	var/mob/living/carbon/human/H = owner
+	to_chat(H, span_warning("Your hands are shaking too much to grip anything!"))
+
+	// Periodic shaking during the effect
+	addtimer(CALLBACK(src, PROC_REF(shake_hands)), 2 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(shake_hands)), 4 SECONDS)
+
+	return TRUE
+
+/datum/status_effect/tremor_grip_loss/on_remove()
+	. = ..()
+	var/mob/living/carbon/human/H = owner
+	to_chat(H, span_notice("Your hands steady themselves."))
+
+/datum/status_effect/tremor_grip_loss/proc/shake_hands()
+	if(!owner)
+		return
+	var/mob/living/carbon/human/H = owner
+	H.visible_message(span_warning("[H]'s hands continue to tremble."), \
+					  span_warning("Your hands continue to shake..."))
+
+/atom/movable/screen/alert/status_effect/tremor_grip_loss
+	name = "Trembling Hands"
+	desc = "My hands are shaking uncontrollably! I can't grip anything!"

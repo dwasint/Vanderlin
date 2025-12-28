@@ -666,12 +666,15 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 /obj/item/proc/attempt_pickup(mob/user)
 	. = TRUE
+	var/mob/living/carbon/C = user
+	if(C.has_status_effect(/datum/status_effect/tremor_grip_loss))
+		return
+
 	if(HAS_TRAIT(src, TRAIT_NEEDS_QUENCH))
 		to_chat(user, "<span class='warning'>[src] is too hot to touch.</span>")
 		return
 
 	if(resistance_flags & ON_FIRE)
-		var/mob/living/carbon/C = user
 		var/can_handle_hot = FALSE
 		if(!istype(C))
 			can_handle_hot = TRUE
@@ -692,7 +695,6 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 			return
 
 	if(acid_level > 20 && !ismob(loc))// so we can still remove the clothes on us that have acid.
-		var/mob/living/carbon/C = user
 		if(istype(C))
 			if(!C.gloves || (!(C.gloves.resistance_flags & (UNACIDABLE|ACID_PROOF))))
 				to_chat(user, "<span class='warning'>The acid on [src] burns my hand!</span>")

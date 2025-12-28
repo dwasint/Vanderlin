@@ -67,7 +67,7 @@
 /datum/quirk/vice/alcoholic
 	name = "Drunkard"
 	desc = "Drinking alcohol is my favorite thing."
-	point_value = 3
+	point_value = 2
 	time = 40 MINUTES
 	debuff = /datum/status_effect/debuff/addiction/alcoholic
 	needsate_text = "Time for a drink."
