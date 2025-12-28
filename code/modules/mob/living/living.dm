@@ -2431,6 +2431,8 @@
 	if(m_intent != MOVE_INTENT_SNEAK)
 		visible_message(span_info("[src] looks around."), span_info("I look around."))
 	var/looktime = 5 SECONDS - (STAPER * 2)
+	if(has_quirk(/datum/quirk/boon/keen_eye))
+		looktime *= 0.25
 	if(do_after(src, looktime))
 		// var/huhsneak
 		SEND_GLOBAL_SIGNAL(COMSIG_MOB_ACTIVE_PERCEPTION, src)

@@ -2,6 +2,14 @@
 	abstract_type = /datum/quirk/boon
 	quirk_category = QUIRK_BOON
 
+/datum/quirk/boon/keen_eye
+	name = "Keen Eye"
+	desc = "Years of hunting and tracking have honed your sight. You're better at noticing details and spotting hidden things."
+	point_value = -5
+	incompatible_quirks = list(
+		/datum/quirk/vice/bad_sight
+	)
+
 /datum/quirk/boon/night_vision
 	name = "Night Vision"
 	desc = "You can see better in darkness than most. Perhaps you have elf blood, or maybe you just spent too many nights as a watchman."
@@ -39,7 +47,7 @@
 /datum/quirk/boon/light_footed/on_remove()
 	if(!ishuman(owner))
 		return
-	ADD_TRAIT(owner, TRAIT_LIGHT_STEP, "[type]")
+	REMOVE_TRAIT(owner, TRAIT_LIGHT_STEP, "[type]")
 
 /datum/quirk/boon/quick_learner
 	name = "Quick Learner"
