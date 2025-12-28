@@ -274,7 +274,7 @@
 		amt *= 1.2
 
 	var/datum/skill/skill_ref = GetSkillRef(skill)
-	skill_experience[skill_ref] = max(0, skill_experience[skill_ref] + amt) //Prevent going below 0
+	skill_experience[skill_ref] = max(0, skill_experience[skill_ref] + amt)
 	var/old_level = get_skill_level(skill)
 	switch(skill_experience[skill_ref])
 		if(SKILL_EXP_LEGENDARY to INFINITY)
@@ -438,13 +438,10 @@
  ** max - maximum amount up to which the skill will be changed
 */
 /datum/skill_holder/proc/clamped_adjust_skillrank(skill, amt, max, silent)
-	var/skill_difference =  max - get_skill_level(skill)
-
+	var/skill_difference = max - get_skill_level(skill)
 	if(skill_difference <= 0)
 		return
-
-	var/amount_to_adjust_by = min(skill_difference, max)
-
+	var/amount_to_adjust_by = min(skill_difference, amt)  // Changed max to amt
 	adjust_skillrank(skill, amount_to_adjust_by, silent)
 
 /**
