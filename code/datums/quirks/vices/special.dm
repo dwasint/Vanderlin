@@ -209,10 +209,12 @@
 
 /datum/quirk/vice/hardcore/proc/transform_to_rat(mob/living/carbon/human/H)
 	turning = FALSE
-	if(!H || QDELETED(H))
-		return
 
-	var/turf/T = get_turf(H)
+	var/turf/T
+	if(!H || QDELETED(H))
+		T = get_turf(pick(SSjob.latejoin_trackers))
+	else
+		T = get_turf(H)
 	if(!T)
 		return
 
