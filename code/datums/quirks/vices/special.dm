@@ -105,7 +105,7 @@
 			H.adjust_skillrank(skill, -1, TRUE)
 
 /datum/quirk/vice/deaf
-	name = "Deaf"
+	name = "Hard of Hearing"
 	desc = "You can barely hear. Words said outside of a 2 tile radius become jumbled or unreadable unless screamed."
 	point_value = 3
 
