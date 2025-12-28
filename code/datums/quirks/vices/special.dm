@@ -134,6 +134,8 @@
 		/datum/species/dwarf,
 		/datum/species/elf,
 		/datum/species/triton,
+		/datum/species/rakshari,
+		/datum/species/kobold,
 		/datum/oratorium,
 		"Nobles",
 	)
