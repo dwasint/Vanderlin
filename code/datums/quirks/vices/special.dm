@@ -11,6 +11,8 @@
 
 /datum/quirk/vice/hunted/get_desc(datum/preferences/prefs)
 	var/reason = prefs?.quirk_customizations[type]
+	if(!reason)
+		reason = customization_value
 	if(reason && reason != "")
 		return "[desc]<br><br><b>Reason:</b> [reason]"
 	return "[desc]<br><br><b>Reason:</b> Unknown - a mystery from your past."
