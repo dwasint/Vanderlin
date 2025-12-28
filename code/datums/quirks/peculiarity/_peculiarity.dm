@@ -67,3 +67,19 @@
 	// Remove stat penalty (inverse of what was applied)
 	// This is approximate since we randomized on spawn
 	H.adjust_stat_modifier(STATMOD_QUIRK, STATKEY_INT, 3)
+
+/datum/quirk/peculiarity/virgin
+	name = "Virgin"
+	desc = "YOU... ARE MAIDENLESS!! you never were good with women... or men, whether cause you are a awkward freak, or religous reasons, or simply plain unlucky, your blood remains untainted and pure."
+
+/datum/quirk/peculiarity/virgin/on_spawn()
+	if(!ishuman(owner))
+		return
+	var/mob/living/carbon/human/H = owner
+	H.virginity = FALSE
+
+/datum/quirk/peculiarity/virgin/after_job_spawn()
+	if(!ishuman(owner))
+		return
+	var/mob/living/carbon/human/H = owner
+	H.virginity = FALSE

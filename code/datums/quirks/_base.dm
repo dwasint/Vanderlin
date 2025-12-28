@@ -75,6 +75,9 @@ GLOBAL_LIST_EMPTY(quirk_points_by_type)
 /datum/quirk/proc/get_desc()
 	return desc
 
+/datum/quirk/proc/after_job_spawn()
+	return
+
 /datum/quirk/proc/get_option_name(option)
 	if(ispath(option))
 		// Try to get the name from the type
