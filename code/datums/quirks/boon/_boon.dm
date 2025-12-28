@@ -2,26 +2,6 @@
 	abstract_type = /datum/quirk/boon
 	quirk_category = QUIRK_BOON
 
-/datum/quirk/boon/keen_eye
-	name = "Keen Eye"
-	desc = "Years of hunting and tracking have honed your sight. You're better at noticing details and spotting hidden things."
-	point_value = -4
-	incompatible_quirks = list(
-		/datum/quirk/vice/bad_sight
-	)
-
-/datum/quirk/boon/keen_eye/on_spawn()
-	if(!ishuman(owner))
-		return
-	var/mob/living/carbon/human/H = owner
-	H.adjust_stat_modifier(STATMOD_QUIRK, STATKEY_PER, 2)
-
-/datum/quirk/boon/keen_eye/on_remove()
-	if(!ishuman(owner))
-		return
-	var/mob/living/carbon/human/H = owner
-	H.adjust_stat_modifier(STATMOD_QUIRK, STATKEY_PER, -2)
-
 /datum/quirk/boon/night_vision
 	name = "Night Vision"
 	desc = "You can see better in darkness than most. Perhaps you have elf blood, or maybe you just spent too many nights as a watchman."
@@ -48,20 +28,18 @@
 
 /datum/quirk/boon/light_footed
 	name = "Light Footed"
-	desc = "You move with grace and agility. Your steps are quicker and more sure than most."
-	point_value = -5
+	desc = "You move with grace and agility. Your steps are quieter then most."
+	point_value = -6
 
 /datum/quirk/boon/light_footed/on_spawn()
 	if(!ishuman(owner))
 		return
-	var/mob/living/carbon/human/H = owner
-	H.adjust_stat_modifier(STATMOD_QUIRK, STATKEY_SPD, 1)
+	ADD_TRAIT(owner, TRAIT_LIGHT_STEP, "[type]")
 
 /datum/quirk/boon/light_footed/on_remove()
 	if(!ishuman(owner))
 		return
-	var/mob/living/carbon/human/H = owner
-	H.adjust_stat_modifier(STATMOD_QUIRK, STATKEY_SPD, -1)
+	ADD_TRAIT(owner, TRAIT_LIGHT_STEP, "[type]")
 
 /datum/quirk/boon/quick_learner
 	name = "Quick Learner"
