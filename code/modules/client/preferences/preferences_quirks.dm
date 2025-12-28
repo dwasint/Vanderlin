@@ -385,9 +385,24 @@
 		dat += "</div>"
 		dat += "<div class='quirk-desc'>[singleton.get_desc(src)]</div>"
 
-		// Show customization options if available
+		var/custom_type = initial(Q.customization_type)
 		var/list/options = singleton?.return_customization(src)
-		if(length(options))
+
+		if(custom_type == QUIRK_TEXT)
+			// Text input customization
+			var/label = initial(Q.customization_label)
+			var/placeholder = initial(Q.customization_placeholder)
+			var/current_value = quirk_customizations[quirk_type]
+
+			dat += "<div class='quirk-customization'>"
+			dat += "<label>[label]:</label>"
+			dat += "<input type='text' class='quirk-text-input' data-quirk='\ref[quirk_type]' "
+			dat += "placeholder='[placeholder]' value='[current_value ? current_value : ""]' "
+			dat += "onchange='updateQuirkText(this)' onclick='event.stopPropagation()' />"
+			dat += "</div>"
+
+		else if(length(options))
+			// Dropdown customization
 			var/label = initial(Q.customization_label)
 			var/current_value = quirk_customizations[quirk_type]
 
@@ -400,7 +415,6 @@
 
 			for(var/option in options)
 				var/option_name = singleton.get_option_name(option)
-
 				var/selected = (current_value == option) ? "selected" : ""
 				dat += "<option value='\ref[option]' [selected]>[option_name]</option>"
 
@@ -435,10 +449,25 @@
 
 	if(href_list["quirk_customize"])
 		var/quirk_ref = locate(href_list["quirk_customize"])
-		var/value_ref = locate(href_list["value"])
-		if(quirk_ref && value_ref)
-			prefs.set_quirk_customization(quirk_ref, value_ref)
+		var/value_ref = href_list["value"] // Can be a reference or plain text now
+
+		if(quirk_ref)
+			// Try to locate the value (for dropdown options)
+			var/actual_value = locate(value_ref)
+			if(!actual_value)
+				// If locate fails, it's plain text (for text inputs)
+				actual_value = value_ref
+
+			prefs.set_quirk_customization(quirk_ref, actual_value)
 			prefs.open_quirk_menu(usr)
+		return TRUE
+
+	if(href_list["quirk_text_update"])
+		var/quirk_ref = locate(href_list["quirk_text_update"])
+		var/text_value = href_list["text"]
+
+		if(quirk_ref)
+			prefs.set_quirk_customization(quirk_ref, text_value)
 		return TRUE
 
 	if(href_list["quirk_clear"])

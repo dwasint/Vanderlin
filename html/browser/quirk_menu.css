@@ -399,3 +399,56 @@ body {
     pointer-events: none;
     cursor: not-allowed;
 }
+
+.quirk-text-input {
+    width: 100%;
+    padding: 8px 10px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    color: #fff;
+    font-size: 14px;
+    font-family: Verdana, sans-serif;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
+.quirk-text-input:hover {
+    background: rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.quirk-text-input:focus {
+    outline: none;
+    border-color: #4a9eff;
+    box-shadow: 0 0 0 2px rgba(74, 158, 255, 0.2);
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.quirk-text-input::placeholder {
+    color: #666;
+    font-style: italic;
+}
+
+/* Prevent text input interaction in disabled cards */
+.quirk-card.disabled .quirk-text-input {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+/* Make sure text inputs don't trigger card selection */
+.quirk-text-input {
+    cursor: text;
+}
+
+/* Style for when text input has content */
+.quirk-text-input:not(:placeholder-shown) {
+    border-color: rgba(76, 175, 80, 0.4);
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.quirk-text-input:not(:placeholder-shown):focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}

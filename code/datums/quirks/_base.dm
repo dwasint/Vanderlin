@@ -50,6 +50,11 @@ GLOBAL_LIST_EMPTY(quirk_points_by_type)
 	/// Label for the customization dropdown
 	var/customization_label = "Select Option"
 
+	/// Type of customization: "select" for dropdown, "text" for text input
+	var/customization_type = QUIRK_SELECT
+	/// Placeholder text for text inputs
+	var/customization_placeholder = "Enter text..."
+
 	/// List of allowed ages (empty = all allowed)
 	var/list/allowed_ages = list()
 	/// List of blocked ages

@@ -34,7 +34,44 @@ function updateQuirkCustomization(selectElement) {
 	saveState();
 
 	// Navigate to update customization
-	window.location.href = '?quirk_customize=' + quirkRef + '&value=' + selectedValue;
+	window.location.href = '?quirk_customize=' + quirkRef + '&value=' + encodeURIComponent(selectedValue);
+}
+
+// Handle text input changes
+function updateQuirkText(inputElement) {
+	var quirkRef = inputElement.getAttribute('data-quirk');
+	var textValue = inputElement.value;
+
+	if (!quirkRef) {
+		return;
+	}
+
+	console.log('Updating quirk text:', quirkRef, textValue);
+
+	// Save state before navigation
+	saveState();
+
+	// Navigate to update customization
+	window.location.href = '?quirk_customize=' + quirkRef + '&value=' + encodeURIComponent(textValue);
+}
+
+// Debounced text update (optional - for auto-saving as user types)
+var textUpdateTimeout;
+function updateQuirkTextDebounced(inputElement) {
+	clearTimeout(textUpdateTimeout);
+	textUpdateTimeout = setTimeout(function() {
+		var quirkRef = inputElement.getAttribute('data-quirk');
+		var textValue = inputElement.value;
+
+		if (!quirkRef) {
+			return;
+		}
+
+		console.log('Auto-saving quirk text:', quirkRef, textValue);
+
+		// Use the non-reloading endpoint for smoother experience
+		window.location.href = '?quirk_text_update=' + quirkRef + '&text=' + encodeURIComponent(textValue);
+	}, 1000); // Wait 1 second after user stops typing
 }
 
 // Restore state from cookies
@@ -173,9 +210,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	// Quirk card clicking
 	document.addEventListener('click', function(e) {
-		// Check if clicked on a select element or within customization area
-		if (e.target.closest('.quirk-customization') || e.target.classList.contains('quirk-select')) {
-			// Let the select handle its own events
+		// Check if clicked on a select element, text input, or within customization area
+		if (e.target.closest('.quirk-customization') ||
+		    e.target.classList.contains('quirk-select') ||
+		    e.target.classList.contains('quirk-text-input')) {
+			// Let the input/select handle its own events
 			return;
 		}
 
@@ -208,8 +247,21 @@ document.addEventListener('DOMContentLoaded', function() {
 		if (e.target.classList.contains('quirk-select')) {
 			e.stopPropagation();
 			updateQuirkCustomization(e.target);
+		} else if (e.target.classList.contains('quirk-text-input')) {
+			e.stopPropagation();
+			updateQuirkText(e.target);
 		}
 	});
+
+	// Optional: Auto-save text inputs as user types (with debounce)
+	// Uncomment the following to enable auto-save:
+	/*
+	document.addEventListener('input', function(e) {
+		if (e.target.classList.contains('quirk-text-input')) {
+			updateQuirkTextDebounced(e.target);
+		}
+	});
+	*/
 
 	// Save scroll positions as user scrolls
 	var saveScrollTimeout;

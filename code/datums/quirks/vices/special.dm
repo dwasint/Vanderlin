@@ -3,7 +3,17 @@
 	name = "Hunted"
 	desc = "Something in your past has made you a target. You're always looking over your shoulder. THIS IS A DIFFICULT QUIRK - You will be hunted and have assassination attempts made against you without any escalation. EXPECT A MORE DIFFICULT EXPERIENCE. PLAY AT YOUR OWN RISK."
 	point_value = 5
+	customization_type = QUIRK_TEXT
+	customization_label = "Why are you being hunted?"
+	customization_placeholder = "Fleeing prison."
 	var/logged = FALSE
+
+
+/datum/quirk/vice/hunted/get_desc(datum/preferences/prefs)
+	var/reason = prefs?.quirk_customizations[type]
+	if(reason && reason != "")
+		return "[desc]<br><br><b>Reason:</b> [reason]"
+	return "[desc]<br><br><b>Reason:</b> Unknown - a mystery from your past."
 
 /datum/quirk/vice/hunted/on_life(mob/living/user)
 	if(!ishuman(user))
@@ -300,6 +310,8 @@
 	var/stress_tremor_interval = 2 MINUTES
 
 /datum/quirk/vice/tremors/on_spawn()
+	if(!owner)
+		return
 	var/mob/living/carbon/human/H = owner
 	ADD_TRAIT(H, TRAIT_TREMORS, "[type]")
 	schedule_next_tremor()

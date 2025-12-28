@@ -11,3 +11,6 @@
 #define MASO_THRESHOLD_TWO 2
 #define MASO_THRESHOLD_THREE 3
 #define MASO_THRESHOLD_FOUR 4
+
+#define QUIRK_SELECT "select"
+#define QUIRK_TEXT "text"
