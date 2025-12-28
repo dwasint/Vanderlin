@@ -82,6 +82,7 @@
 
 	if(initial(B.granted_skill))
 		H.clamped_adjust_skillrank(initial(B.granted_skill), 1, initial(B.clamp), TRUE)
+		H.adjust_skill_exp_multiplier(initial(B.granted_skill), initial(B.xp_multiplier))
 
 	// Apply stat penalty
 	if(initial(B.stat_penalty) && initial(B.stat_reduction) > 0)
@@ -102,6 +103,8 @@
 	if(initial(B.stat_penalty) && initial(B.stat_reduction) > 0)
 		H.adjust_stat_modifier(STATMOD_QUIRK, initial(B.stat_penalty), initial(B.stat_reduction))
 
+	H.adjust_skill_exp_multiplier(initial(B.granted_skill), -initial(B.xp_multiplier))
+
 /datum/backstory
 	/// The name of the backstory shown to players
 	var/name = "Backstory"
@@ -115,6 +118,8 @@
 	var/stat_reduction = 1
 	///what we clamp to
 	var/clamp = SKILL_LEVEL_LEGENDARY
+	///how much of an xp multiplier we add
+	var/xp_multiplier = 0.2
 
 	/// List of allowed ages (empty = all allowed)
 	var/list/allowed_ages = list()
@@ -148,6 +153,7 @@
 	abstract_type = /datum/backstory/combat
 	desc = "A combat-focused background."
 	clamp = SKILL_LEVEL_APPRENTICE
+	xp_multiplier = 0.1
 
 /datum/backstory/combat/soldier
 	name = "Former Soldier"
