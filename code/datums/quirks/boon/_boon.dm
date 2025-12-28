@@ -63,106 +63,10 @@
 	var/mob/living/carbon/human/H = owner
 	H.adjust_stat_modifier(STATMOD_QUIRK, STATKEY_SPD, -1)
 
-/* Surgery stuff
-/datum/quirk/boon/steady_hands
-	name = "Steady Hands"
-	desc = "Your hands are steady and precise, perfect for delicate work or keeping your blade true in combat."
-	point_value = -3
-
-/datum/quirk/boon/steady_hands/on_spawn()
-	ADD_TRAIT(owner, TRAIT_STEADY_HANDS, "[type]")
-
-/datum/quirk/boon/steady_hands/on_remove()
-	REMOVE_TRAIT(owner, TRAIT_STEADY_HANDS, "[type]")
-*/
-
-/datum/quirk/boon/tough_skin
-	name = "Tough Skin"
-	desc = "Years of hard labor or battle have toughened your hide. You can take more punishment than most."
-	point_value = -5
-
-/datum/quirk/boon/tough_skin/on_spawn()
-	if(!ishuman(owner))
-		return
-	var/mob/living/carbon/human/H = owner
-	H.adjust_stat_modifier(STATMOD_QUIRK, STATKEY_END, 2)
-
-/datum/quirk/boon/tough_skin/on_remove()
-	if(!ishuman(owner))
-		return
-	var/mob/living/carbon/human/H = owner
-	H.adjust_stat_modifier(STATMOD_QUIRK, STATKEY_END, -2)
-
-/datum/quirk/boon/strong_back
-	name = "Strong Back"
-	desc = "You're used to carrying heavy loads. Whether from years of soldiering or hard labor, you can bear more weight."
-	point_value = -5
-
-/datum/quirk/boon/strong_back/on_spawn()
-	if(!ishuman(owner))
-		return
-	var/mob/living/carbon/human/H = owner
-	H.adjust_stat_modifier(STATMOD_QUIRK, STATKEY_STR, 1)
-
-/datum/quirk/boon/strong_back/on_remove()
-	if(!ishuman(owner))
-		return
-	var/mob/living/carbon/human/H = owner
-	H.adjust_stat_modifier(STATMOD_QUIRK, STATKEY_STR, -1)
-
-/datum/quirk/boon/quick_reflexes
-	name = "Quick Reflexes"
-	desc = "Your reactions are faster than most. You can dodge, parry, and respond to danger with impressive speed."
-	point_value = -4
-
-/datum/quirk/boon/quick_reflexes/on_spawn()
-	if(!ishuman(owner))
-		return
-	var/mob/living/carbon/human/H = owner
-	H.adjust_stat_modifier(STATMOD_QUIRK, STATKEY_SPD, 1)
-	H.adjust_stat_modifier(STATMOD_QUIRK, STATKEY_LCK, 1)
-
-/datum/quirk/boon/quick_reflexes/on_remove()
-	if(!ishuman(owner))
-		return
-	var/mob/living/carbon/human/H = owner
-	H.adjust_stat_modifier(STATMOD_QUIRK, STATKEY_SPD, -1)
-	H.adjust_stat_modifier(STATMOD_QUIRK, STATKEY_LCK, -1)
-
 /datum/quirk/boon/quick_learner
 	name = "Quick Learner"
 	desc = "You pick up new skills faster than most. Your mind is sharp and eager to learn."
 	point_value = -5
-
-/datum/quirk/boon/quick_learner/on_spawn()
-	if(!ishuman(owner))
-		return
-	var/mob/living/carbon/human/H = owner
-	H.adjust_stat_modifier(STATMOD_QUIRK, STATKEY_INT, 2)
-
-/datum/quirk/boon/quick_learner/on_remove()
-	if(!ishuman(owner))
-		return
-	var/mob/living/carbon/human/H = owner
-	H.adjust_stat_modifier(STATMOD_QUIRK, STATKEY_INT, -2)
-
-/datum/quirk/boon/silver_tongue
-	name = "Silver Tongue"
-	desc = "You have a way with words. People tend to believe what you say and respond well to your persuasion."
-	point_value = -4
-
-/datum/quirk/boon/silver_tongue/on_spawn()
-	if(!ishuman(owner))
-		return
-	var/mob/living/carbon/human/H = owner
-	H.adjust_stat_modifier(STATMOD_QUIRK, STATKEY_INT, 1)
-	//idk what else to do here
-
-/datum/quirk/boon/silver_tongue/on_remove()
-	if(!ishuman(owner))
-		return
-	var/mob/living/carbon/human/H = owner
-	H.adjust_stat_modifier(STATMOD_QUIRK, STATKEY_INT, -1)
 
 
 /datum/quirk/boon/iron_will
@@ -188,23 +92,6 @@
 	var/mob/living/carbon/human/H = user
 	if(prob(1) && H.get_stress_amount() > 5)
 		H.adjust_stress(-1)
-
-/datum/quirk/boon/hardy
-	name = "Hardy"
-	desc = "You recover from injuries and illness faster than most. Your constitution is exceptional."
-	point_value = -4
-
-/datum/quirk/boon/hardy/on_spawn()
-	if(!ishuman(owner))
-		return
-	var/mob/living/carbon/human/H = owner
-	H.adjust_stat_modifier(STATMOD_QUIRK, STATKEY_CON, 2)
-
-/datum/quirk/boon/hardy/on_remove()
-	if(!ishuman(owner))
-		return
-	var/mob/living/carbon/human/H = owner
-	H.adjust_stat_modifier(STATMOD_QUIRK, STATKEY_CON, -2)
 
 /* This is a future idea
 /datum/quirk/boon/light_sleeper
