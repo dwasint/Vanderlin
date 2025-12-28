@@ -75,6 +75,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/Lore_Primer.txt"))
 			"job_preferences" = client.prefs.job_preferences?.Copy(),
 			"features" = client.prefs.features?.Copy(),
 			"quirks" = client.prefs.quirks?.Copy(),
+			"quirk_customizations" = client.prefs.quirk_customizations?.Copy(),
 			"skin_tone" = client.prefs.skin_tone,
 			"eye_color" = client.prefs.eye_color,
 			"underwear" = client.prefs.underwear,
@@ -109,6 +110,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/Lore_Primer.txt"))
 	P.job_preferences = char_data["job_preferences"]
 	P.features = char_data["features"]
 	P.quirks = char_data["quirks"]
+	P.quirk_customizations = char_data["quirk_customizations"]
 	P.skin_tone = char_data["skin_tone"]
 	P.eye_color = char_data["eye_color"]
 	P.underwear = char_data["underwear"]

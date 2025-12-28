@@ -135,6 +135,7 @@
 		/datum/species/elf,
 		/datum/species/triton,
 		/datum/oratorium,
+		"Nobles",
 	)
 
 	var/fear_type
@@ -152,7 +153,21 @@
 		return
 	if(ispath(fear_type, /datum/species))
 		for(var/mob/living/carbon/human/human in view(5, user))
+			if(human == user)
+				continue
 			if(is_species(human, fear_type))
+				var/mob/living/carbon/human/H = user
+				H.emote("scream")
+				H.Immobilize(1.5 SECONDS)
+				H.add_stress(/datum/stress_event/traumatized)
+				to_chat(H, span_userdanger("You see [human] and freeze in terror!"))
+				next_scream_time = world.time + 25 SECONDS
+				return
+	else if(fear_type == "Nobles")
+		for(var/mob/living/carbon/human/human in view(5, user))
+			if(human == user)
+				continue
+			if(human.is_noble())
 				var/mob/living/carbon/human/H = user
 				H.emote("scream")
 				H.Immobilize(1.5 SECONDS)
@@ -162,6 +177,8 @@
 				return
 	else
 		for(var/mob/living/carbon/human/human in view(5, user))
+			if(human == user)
+				continue
 			if(HAS_TRAIT(human, TRAIT_INQUISITION))
 				var/mob/living/carbon/human/H = user
 				H.emote("scream")
