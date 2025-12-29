@@ -248,3 +248,163 @@
 	if(!ishuman(owner))
 		return
 	REMOVE_TRAIT(owner, TRAIT_TAINTED_LUX, "[type]")
+
+/datum/quirk/vice/rough_start
+	name = "Rough Start"
+	desc = "You begin your journey drunk, drugged, beaten, with broken legs, and spawn somewhere random in the forest."
+	point_value = 4
+
+/datum/quirk/vice/rough_start/on_spawn()
+	if(!owner || !ishuman(owner))
+		return
+
+	var/mob/living/carbon/human/H = owner
+	if(H.reagents)
+		H.reagents.add_reagent(/datum/reagent/consumable/ethanol, 15)
+
+	if(H.reagents)
+		H.reagents.add_reagent(/datum/reagent/drug/space_drugs, 15)
+
+	H.adjustBruteLoss(40)
+	var/obj/item/bodypart/l_leg/left = H.get_bodypart(BODY_ZONE_L_LEG)
+	var/obj/item/bodypart/r_leg/right = H.get_bodypart(BODY_ZONE_R_LEG)
+
+	if(left)
+		var/datum/wound/fracture/F = left.add_wound(/datum/wound/fracture)
+		if(F)
+			F.whp = 10
+	if(right)
+		var/datum/wound/fracture/F = right.add_wound(/datum/wound/fracture)
+		if(F)
+			F.whp = 10
+
+	var/list/spawn_points = list()
+	for(var/obj/effect/landmark/start/adventurerlate/L in GLOB.start_landmarks_list)
+		spawn_points += get_turf(L)
+
+	if(length(spawn_points))
+		var/turf/spawn_turf = pick(spawn_points)
+		H.forceMove(spawn_turf)
+	else
+		for(var/obj/effect/landmark/start/L in GLOB.start_landmarks_list)
+			spawn_points += get_turf(L)
+		if(length(spawn_points))
+			H.forceMove(pick(spawn_points))
+
+	to_chat(H, span_danger("You awaken battered and broken in an unfamiliar place..."))
+
+/datum/quirk/vice/lost_keys
+	name = "Lost Keys"
+	desc = "You've lost your keys! They're somewhere nearby, and you spawn at a vagrant location."
+	point_value = 1
+
+/datum/quirk/vice/lost_keys/on_spawn()
+	if(!owner || !ishuman(owner))
+		return
+
+	var/mob/living/carbon/human/H = owner
+
+	// Move owner to vagrant spawn first
+	var/list/vagrant_spawns = list()
+	for(var/obj/effect/landmark/start/vagrant/V in GLOB.start_landmarks_list)
+		vagrant_spawns += get_turf(V)
+
+	if(length(vagrant_spawns))
+		H.forceMove(pick(vagrant_spawns))
+
+	to_chat(H, span_warning("Where did I leave my keys?"))
+
+/datum/quirk/vice/lost_keys/after_job_spawn(datum/job/job)
+	if(!owner || !ishuman(owner))
+		return
+
+	var/mob/living/carbon/human/H = owner
+
+	// Find all keys on the player
+	var/list/found_keys = list()
+	for(var/obj/item/key/K in H.get_all_contents())
+		found_keys += K
+
+	if(!length(found_keys))
+		return
+
+	// Move keys to random nearby location
+	var/list/nearby_turfs = list()
+	for(var/turf/T in range(20, H))
+		if(T.density)
+			continue
+		nearby_turfs += T
+
+	if(length(nearby_turfs))
+		for(var/obj/item/key/K in found_keys)
+			var/turf/key_location = pick(nearby_turfs)
+			K.forceMove(key_location)
+
+/datum/quirk/vice/nightmares
+	name = "Nightmares"
+	desc = "You suffer from terrible nightmares. You scream in your sleep and take longer to rest."
+	point_value = 1
+	var/next_scream = 0
+
+/datum/quirk/vice/nightmares/on_spawn()
+	if(!owner)
+		return
+	START_PROCESSING(SSobj, src)
+
+/datum/quirk/vice/nightmares/process()
+	if(!owner)
+		return
+
+	if(owner.stat == UNCONSCIOUS && owner.IsSleeping())
+		if(world.time >= next_scream)
+			next_scream = world.time + rand(30 SECONDS, 60 SECONDS)
+			owner.emote("scream")
+
+/datum/quirk/vice/nightmares/on_remove()
+	STOP_PROCESSING(SSobj, src)
+
+/datum/stress_event/darkness
+	stress_change = 2
+	desc = span_red("I can't see! The darkness is terrifying!")
+	timer = 1 MINUTES
+
+/datum/quirk/vice/fear_darkness
+	name = "Fear of Darkness"
+	desc = "The dark terrifies you. Without light, you panic and lose control."
+	point_value = 3
+	var/in_darkness = FALSE
+	var/next_panic = 0
+
+/datum/quirk/vice/fear_darkness/on_life(mob/living/user)
+	if(!owner)
+		return
+
+	var/turf/T = get_turf(owner)
+	var/light_amount = T?.get_lumcount() || 0
+
+	var/outside = T.can_see_sky()
+
+	var/dark = FALSE
+	if(outside)
+		if(light_amount < 0.15 && GLOB.tod == "night")
+			dark = TRUE
+	else if(light_amount < 0.15)
+		dark = TRUE
+
+	if(dark)
+		if(!in_darkness)
+			in_darkness = TRUE
+			to_chat(owner, span_userdanger("THE DARKNESS! I CAN'T SEE!"))
+			owner.add_stress(/datum/stress_event/darkness)
+
+		if(world.time >= next_panic)
+			next_panic = world.time + 8 SECONDS
+			owner.emote("scream")
+			var/move_dir = pick(GLOB.cardinals)
+			step(owner, move_dir)
+
+			owner.add_stress(/datum/stress_event/darkness)
+	else
+		if(in_darkness)
+			in_darkness = FALSE
+			to_chat(owner, span_notice("Finally, light! I can breathe again..."))

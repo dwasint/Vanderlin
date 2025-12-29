@@ -417,3 +417,27 @@
 /atom/movable/screen/alert/status_effect/tremor_grip_loss
 	name = "Trembling Hands"
 	desc = "My hands are shaking uncontrollably! I can't grip anything!"
+
+/datum/quirk/vice/heretic_outlaw
+	name = "Heretic or Outlaw"
+	desc = "You begin your journey marked as either a heretic or an outlaw, despised by society."
+	point_value = 2
+	customization_type = QUIRK_SELECT
+	customization_label = "Choose your mark"
+	customization_options = list("Heretic", "Outlaw")
+
+/datum/quirk/vice/heretic_outlaw/on_spawn()
+	if(!owner || !ishuman(owner))
+		return
+
+	var/mob/living/carbon/human/H = owner
+
+	if(!customization_value)
+		customization_value = pick(customization_options)
+
+	if(customization_value == "Heretic")
+		GLOB.excommunicated_players += H.real_name
+		to_chat(H, span_boldwarning("I've been denounced by the church for either reasons legitimate or not!"))
+	else // Outlaw
+		GLOB.outlawed_players |= H.real_name
+		to_chat(H, span_boldwarning("Whether for crimes I did or was accused of, I have been declared an outlaw!"))

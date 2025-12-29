@@ -242,3 +242,70 @@
 	if(!ishuman(owner))
 		return
 	REMOVE_TRAIT(owner, TRAIT_FORAGER, "[type]")
+
+/datum/quirk/boon/always_prepared
+	name = "Always Prepared"
+	desc = "You start with a cart, lantern, and tent. You're ready for anything."
+	point_value = -4
+
+/datum/quirk/boon/always_prepared/on_spawn()
+	if(!owner)
+		return
+
+	var/turf/T = get_turf(owner)
+
+	var/obj/structure/handcart/cart = new(T)
+
+	var/obj/item/flashlight/flare/torch/lantern/L = new()
+	var/obj/item/tent_kit/tent = new()
+
+	cart.put_in(null, L)
+	cart.put_in(null, tent)
+
+	to_chat(owner, span_notice("Your equipment is ready. You're well prepared for the journey ahead."))
+
+
+/datum/quirk/boon/rider
+	name = "Experienced Rider"
+	desc = "You begin with expert riding skills and your own mount."
+	point_value = -6
+
+/datum/quirk/boon/rider/on_spawn()
+	if(!owner || !ishuman(owner))
+		return
+
+	var/mob/living/carbon/human/H = owner
+
+	var/turf/T = get_turf(owner)
+	if(!T)
+		return
+	var/mob/living/simple_animal/hostile/retaliate/saiga/S = new(T)
+	S.tamed(H)
+
+	to_chat(owner, span_notice("Your trusted mount awaits you."))
+
+/datum/quirk/boon/rider/after_job_spawn(datum/job/job)
+	. = ..()
+	if(!owner || !ishuman(owner))
+		return
+
+	var/mob/living/carbon/human/H = owner
+	H.clamped_adjust_skillrank(/datum/skill/misc/riding, 2, 2, TRUE)
+
+/datum/quirk/boon/beautiful
+	name = "Strikingly Beautiful"
+	desc = "You are remarkably attractive, improving social interactions."
+	point_value = -4
+
+/datum/quirk/boon/beautiful/on_spawn()
+	if(!owner)
+		return
+
+	ADD_TRAIT(owner, TRAIT_BEAUTIFUL, "[type]")
+
+	to_chat(owner, span_notice("You catch your reflection and can't help but admire yourself."))
+
+/datum/quirk/boon/beautiful/on_remove()
+	if(!owner)
+		return
+	REMOVE_TRAIT(owner, TRAIT_BEAUTIFUL, "[type]")
