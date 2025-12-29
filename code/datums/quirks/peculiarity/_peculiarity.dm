@@ -111,6 +111,10 @@
 	mystery_box.linked_quirk = src
 
 	H.put_in_hands(mystery_box)
+	find_keeper()
+
+/datum/quirk/peculiarity/mystery_box/proc/find_keeper()
+	var/mob/living/carbon/human/H = owner
 
 	// Find a random player to be the keeper
 	var/list/possible_keepers = list()
@@ -205,6 +209,8 @@
 
 /obj/item/mystery/examine(mob/user)
 	. = ..()
+	if(!linked_quirk.keeper)
+		linked_quirk.find_keeper()
 	if(user == linked_quirk?.keeper)
 		. += span_green("You know the words to open this box: \"[linked_quirk.passcode]\"")
 	else
