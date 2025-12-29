@@ -25,8 +25,33 @@ GLOBAL_LIST_EMPTY(quirk_points_by_type)
 		))
 		LAZYADDASSOC(GLOB.quirk_singletons, quirk_type, new quirk_type)
 
+/proc/sort_quirks(list/quirk_types)
+	// Sort by apply_order (descending), then alphabetically by name
+	var/list/sorted = quirk_types.Copy()
+
+	for(var/i = 1 to length(sorted))
+		for(var/j = 1 to length(sorted) - 1)
+			var/datum/quirk/current = sorted[j]
+			var/datum/quirk/next = sorted[j + 1]
+
+			var/current_order = initial(current.apply_order)
+			var/next_order = initial(next.apply_order)
+			var/current_name = initial(current.name)
+			var/next_name = initial(next.name)
+
+			if(current_order < next_order)
+				sorted[j] = next
+				sorted[j + 1] = current
+			else if(current_order == next_order && sorttext(current_name, next_name) > 0)
+				sorted[j] = next
+				sorted[j + 1] = current
+
+	return sorted
+
 /datum/quirk
 	abstract_type = /datum/quirk
+	///this is basically our apply order, if 0 we don't care, higher is better
+	var/apply_order = 0
 
 	/// The quirk's name shown to players
 	var/name = "Quirk"
@@ -89,6 +114,10 @@ GLOBAL_LIST_EMPTY(quirk_points_by_type)
 		var/atom/A = option
 		return initial(A.name)
 	return "[option]"
+
+/// Called when the quirk is applied to a character runs before everything (you probably want a real good rason to use this)
+/datum/quirk/proc/on_pre_spawn()
+	return
 
 /// Called when the quirk is applied to a character
 /datum/quirk/proc/on_spawn()

@@ -253,6 +253,11 @@
 	name = "Rough Start"
 	desc = "You begin your journey drunk, drugged, beaten, with broken legs, and spawn somewhere random in the forest."
 	point_value = 4
+	apply_order = 10000 ///this should always be first tbh
+	incompatible_quirks = list(
+		/datum/quirk/vice/lost_keys,
+		/datum/quirk/boon/always_prepared,
+	)
 
 /datum/quirk/vice/rough_start/on_spawn()
 	if(!owner || !ishuman(owner))
@@ -297,6 +302,9 @@
 	name = "Lost Keys"
 	desc = "You've lost your keys! They're somewhere nearby, and you spawn at a vagrant location."
 	point_value = 1
+	incompatible_quirks = list(
+		/datum/quirk/vice/rough_start,
+	)
 
 /datum/quirk/vice/lost_keys/on_spawn()
 	if(!owner || !ishuman(owner))

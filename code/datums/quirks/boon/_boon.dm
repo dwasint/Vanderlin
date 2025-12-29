@@ -247,6 +247,9 @@
 	name = "Always Prepared"
 	desc = "You start with a cart, lantern, and tent. You're ready for anything."
 	point_value = -4
+	incompatible_quirks = list(
+		/datum/quirk/vice/rough_start,
+	)
 
 /datum/quirk/boon/always_prepared/on_spawn()
 	if(!owner)

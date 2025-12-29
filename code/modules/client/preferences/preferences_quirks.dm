@@ -243,6 +243,8 @@
 	quirks = valid_quirks
 	quirk_customizations = valid_customizations
 
+	quirks = sort_quirks(quirks)
+
 	// Apply valid quirks to character
 	for(var/quirk_type in quirks)
 		var/custom_val = quirk_customizations[quirk_type]
