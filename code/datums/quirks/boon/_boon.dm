@@ -118,7 +118,7 @@
 /datum/quirk/boon/pet
 	name = "Loyal Companion"
 	desc = "You have a loyal animal companion that will follow and protect you."
-	point_value = -5
+	point_value = -3
 	customization_label = "Choose Pet Type"
 	customization_options = list(
 		/mob/living/simple_animal/pet/cat/cabbit,
@@ -184,7 +184,10 @@
 /datum/quirk/boon/folk_hero
 	name = "Folk Hero"
 	desc = "You're a local legend who saved your community from great danger. People recognize you, even as a foreigner."
-	point_value = -3
+	point_value = -5
+	blocked_ages = list(
+		AGE_CHILD,
+	)
 
 /datum/quirk/boon/folk_hero/on_spawn()
 	if(!ishuman(owner))
