@@ -56,7 +56,7 @@
 
 /datum/quirk/boon/iron_will
 	name = "Iron Will"
-	desc = "Your resolve is unshakeable. You resist stress and fear better than most."
+	desc = "Your resolve is unshakeable. You handle the horrors of war better then most."
 	point_value = -4
 
 /datum/quirk/boon/iron_will/on_spawn()
@@ -154,6 +154,7 @@
 
 	// Tame the pet to the owner
 	pet_mob.tamed(H)
+	ADD_TRAIT(pet_mob, TRAIT_TINY, "[type]")
 
 	// Set a name if the pet doesn't have a unique one
 	if(pet_mob.name == initial(pet_mob.name))
