@@ -120,6 +120,7 @@
 	desc = "You have a loyal animal companion that will follow and protect you."
 	point_value = -3
 	customization_label = "Choose Pet Type"
+	preview_render = FALSE
 	customization_options = list(
 		/mob/living/simple_animal/pet/cat/cabbit,
 		/mob/living/simple_animal/pet/cat/black,
@@ -189,6 +190,7 @@
 	blocked_ages = list(
 		AGE_CHILD,
 	)
+	preview_render = FALSE
 
 /datum/quirk/boon/folk_hero/on_spawn()
 	if(!ishuman(owner))
@@ -250,24 +252,42 @@
 /datum/quirk/boon/always_prepared
 	name = "Always Prepared"
 	desc = "You start with a cart, lantern, and tent. You're ready for anything."
-	point_value = -4
+	point_value = -6
+	preview_render = FALSE
 	incompatible_quirks = list(
 		/datum/quirk/vice/rough_start,
+	)
+	customization_label = "With or Without Cart"
+	customization_options = list(
+		"With Cart",
+		"Without Cart"
 	)
 
 /datum/quirk/boon/always_prepared/on_spawn()
 	if(!owner)
 		return
+	if(!customization_value)
+		customization_value = "Without Cart"
+
 
 	var/turf/T = get_turf(owner)
 
-	var/obj/structure/handcart/cart = new(T)
+	var/obj/item/flashlight/flare/torch/lantern/L = new(T)
+	var/obj/item/tent_kit/tent = new(T)
 
-	var/obj/item/flashlight/flare/torch/lantern/L = new()
-	var/obj/item/tent_kit/tent = new()
-
-	cart.put_in(null, L)
-	cart.put_in(null, tent)
+	if(customization_value == "With Cart")
+		var/obj/structure/handcart/cart = new(T)
+		cart.put_in(null, L)
+		cart.put_in(null, tent)
+	else
+		if(!owner.equip_to_appropriate_slot(L))
+			var/obj/item/storage/storage = locate(/obj/item/storage) in owner.contents
+			if(storage)
+				SEND_SIGNAL(storage, COMSIG_TRY_STORAGE_INSERT, L, null)
+		if(!owner.equip_to_appropriate_slot(tent))
+			var/obj/item/storage/storage = locate(/obj/item/storage) in owner.contents
+			if(storage)
+				SEND_SIGNAL(storage, COMSIG_TRY_STORAGE_INSERT, L, null)
 
 	to_chat(owner, span_notice("Your equipment is ready. You're well prepared for the journey ahead."))
 
@@ -276,6 +296,7 @@
 	name = "Experienced Rider"
 	desc = "You begin with expert riding skills and your own mount."
 	point_value = -6
+	preview_render = FALSE
 
 /datum/quirk/boon/rider/on_spawn()
 	if(!owner || !ishuman(owner))

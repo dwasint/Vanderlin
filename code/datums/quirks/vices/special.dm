@@ -426,6 +426,7 @@
 	customization_type = QUIRK_SELECT
 	customization_label = "Choose your mark"
 	customization_options = list("Heretic", "Outlaw")
+	preview_render = FALSE
 
 /datum/quirk/vice/heretic_outlaw/on_spawn()
 	if(!owner || !ishuman(owner))

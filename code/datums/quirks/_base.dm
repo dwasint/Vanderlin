@@ -67,6 +67,8 @@ GLOBAL_LIST_EMPTY(quirk_points_by_type)
 	var/mob/living/owner
 	/// Can this be randomly selected?
 	var/random_exempt = FALSE
+	/// Does this render in the preview?
+	var/preview_render = TRUE
 
 	/// List of options the player can select from (can be paths or strings)
 	var/list/customization_options = list()
@@ -95,6 +97,8 @@ GLOBAL_LIST_EMPTY(quirk_points_by_type)
 		owner = new_owner
 		if(custom_value)
 			customization_value = custom_value
+		if(!preview_render && istype(owner, /mob/living/carbon/human/dummy))
+			return
 		on_spawn()
 
 /datum/quirk/Destroy()

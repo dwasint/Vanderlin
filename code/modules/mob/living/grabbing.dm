@@ -95,7 +95,7 @@
 	var/mob/living/carbon/grabbee
 	var/obj/item/bodypart/limb_grabbed		//ref to actual bodypart being grabbed if we're grabbing a carbo
 	var/sublimb_grabbed		//ref to what precise (sublimb) we are grabbing (if any) (text)
-	var/bleed_suppressing = 0.25 //multiplier for how much we suppress bleeding, can accumulate so two grabs means 25% bleeding
+	var/bleed_suppressing = 0.75 //multiplier for how much we suppress bleeding, can accumulate so two grabs means 25% bleeding
 	var/chokehold = FALSE
 
 /atom/movable //reference to all obj/item/grabbing

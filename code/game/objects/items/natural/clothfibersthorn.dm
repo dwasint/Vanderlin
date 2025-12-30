@@ -71,8 +71,12 @@
 	var/clean_speed = 0.4 SECONDS
 	var/volume = 9
 
-	/// Effectiveness when used as a bandage, how much bloodloss we can tampon
-	var/bandage_effectiveness = 0.9
+	// Effectiveness when used as a bandage, how much it'll lower the bloodloss, bloodloss will get multiplied by this.
+	var/bandage_effectiveness = 0.5
+	///how long it will take to bandage something with this
+	var/bandage_speed = 7 SECONDS
+	///How much you can bleed into the bandage until it needs to be changed (Blood loss is measured in 50% of the health)
+	var/bandage_health = 150
 	obj_flags = CAN_BE_HIT //enables splashing on by containers
 
 /obj/item/natural/cloth/Initialize(mapload, vol)
@@ -126,6 +130,8 @@
 			var/turf/T = target
 			T.add_liquid_from_reagents(reagents, amount = 1)
 		reagents.remove_all(1)
+		bandage_health = initial(bandage_health)
+		bandage_effectiveness = initial(bandage_effectiveness)
 
 /obj/item/natural/cloth/mob_can_equip(mob/living/M, mob/living/equipper, slot, disable_warning, bypass_equip_delay_self)
 	. = ..()
@@ -250,9 +256,7 @@
 	if(affecting.bandage)
 		to_chat(user, "<span class='warning'>There is already a bandage.</span>")
 		return
-	var/used_time = 70
-	if(H.mind)
-		used_time -= (H.get_skill_level(/datum/skill/misc/medicine) * 10)
+	var/used_time = bandage_speed * (1 - (H.get_skill_level(/datum/skill/misc/medicine) * 0.15))
 	playsound(loc, 'sound/foley/bandage.ogg', 100, FALSE)
 	if(!do_after(user, used_time, M))
 		return
