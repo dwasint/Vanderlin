@@ -295,208 +295,427 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	if(!user || !user.client)
 		return
 	if(slot_randomized)
-		load_character(default_slot) // Reloads the character slot. Prevents random features from overwriting the slot if saved.
+		load_character(default_slot)
 		slot_randomized = FALSE
-	var/list/dat = list("<center>")
-	dat += "</center>"
 
-	// Top-level menu table
-	dat += "<table style='width: 100%; line-height: 20px;'>"
-	// FIRST ROW
-	dat += "<tr>"
-	dat += "<td style='width:33%;text-align:left'>"
-	dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=changeslot;'>Change Character</a> <br>"
-	dat += "<a href='?_src_=prefs;preference=multi;task=menu'>Character Ready Order</a>"
-	dat += "<br><b>Chat Scale:</b> <a href='?_src_=prefs;preference=chat_scale;task=input'>[chat_scale]</a>"
-	dat += "</td>"
+	// Send all resources to client
+	send_character_ui_resources(user)
 
-	dat += "<td style='width:33%;text-align:center'>"
-	if(SStriumphs.triumph_buys_enabled)
-		dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=triumph_buy_menu'>Triumph Shop</a>"
-	dat += "</td>"
-
-	dat += "<td style='width:33%;text-align:right'>"
-	dat += "<a href='?_src_=prefs;preference=keybinds;task=menu'>Keybinds</a>"
-	dat += "</td>"
-	dat += "</tr>"
-
-
-	// NEXT ROW
-	dat += "<tr>"
-	dat += "<td style='width:33%;text-align:left'>"
-	dat += "</td>"
-
-	dat += "<td style='width:33%;text-align:center'>"
-	dat += "<a href='?_src_=prefs;preference=job;task=menu'>Class Selection</a>"
-	dat += "</td>"
-
-	dat += "<td style='width:33%;text-align:right'>"
-	dat += "<a href='?_src_=prefs;preference=toggles'>Toggles</a>"
-	dat += "</td>"
-	dat += "</tr>"
-
-	// ANOTHA ROW
-	dat += "<tr style='padding-top: 0px;padding-bottom:0px'>"
-	dat += "<td style='width:33%;text-align:left'>"
-	dat += "</td>"
-
-	dat += "<td style='width:33%;text-align:center'>"
-	dat += "<a href='?_src_=prefs;preference=antag;task=menu'>Special Roles</a>"
-	dat += "</td>"
-
-	dat += "<td style='width:33%;text-align:right'>"
-	dat += "</td>"
-	dat += "</tr>"
-
-	// ANOTHER ROW HOLY SHIT WE FINALLY A GOD DAMN GRID NOW! WHOA!
-	dat += "<tr style='padding-top: 0px;padding-bottom:0px'>"
-	dat += "<td style='width:33%; text-align:left'>"
-	dat += "<a href='?_src_=prefs;preference=playerquality;task=menu'><b>PQ:</b></a> [get_playerquality(user.ckey, text = TRUE)]"
-	dat += "</td>"
-
-	dat += "<td style='width:33%;text-align:center'>"
-	dat += "<a href='?_src_=prefs;preference=triumphs;task=menu'><b>TRIUMPHS:</b></a> [user.get_triumphs() ? "\Roman [user.get_triumphs()]" : "None"]"
-	dat += "</td>"
-
-	dat += "<td style='width:33%;text-align:right'>"
-	dat += "</td>"
-
-	dat += "</table>"
-
-	// Encapsulating table
-	dat += "<table width = '100%'>"
-	// Only one Row
-	dat += "<tr>"
-	// Leftmost Column, 40% width
-	dat += "<td width=40% valign='top'>"
-
-	//-----------START OF IDENT TABLE-----------//
-	dat += "<h2 style='padding-left: 4px'>Identity</h2>"
-	dat += "<table width='100%'><tr><td width='75%' valign='top'>"
-	dat += "<a style='white-space:nowrap; padding: 0px' href='?_src_=prefs;preference=randomiseappearanceprefs;'>Randomize Character</a>"
-	dat += "<br>"
-	dat += "<b>Name:</b> "
-	if(check_nameban(user.ckey))
-		dat += "<a href='?_src_=prefs;preference=name;task=input'>NAMEBANNED</a><BR>"
-	else
-		dat += "<a href='?_src_=prefs;preference=name;task=input'>[real_name]</a> <a href='?_src_=prefs;preference=name;task=random'>\[R\]</a>"
-
-	dat += "<BR>"
-	dat += "<b>Species:</b> <a href='?_src_=prefs;preference=species;task=input'>[pref_species.name]</a>[spec_check() ? "" : " (!)"]<BR>"
-	dat += "<b>Pronouns:</b> <a href='?_src_=prefs;preference=pronouns;task=input'>[pronouns]</a><BR>"
-
-	if(!(AGENDER in pref_species.species_traits))
-		var/dispGender
-		if(gender == MALE)
-			dispGender = "Masculine" // repurpose gender as bodytype, display accordingly
-		else if(gender == FEMALE)
-			dispGender = "Feminine" // repurpose gender as bodytype, display accordingly
-		else
-			dispGender = "Other"
-		dat += "<b>Body Type:</b> <a href='?_src_=prefs;preference=gender'>[dispGender]</a><BR>"
-		if(randomise[RANDOM_BODY] || randomise[RANDOM_BODY_ANTAG]) //doesn't work unless random body
-			dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_GENDER]'>Always Random Bodytype: [(randomise[RANDOM_GENDER]) ? "Yes" : "No"]</A>"
-			dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_GENDER_ANTAG]'>When Antagonist: [(randomise[RANDOM_GENDER_ANTAG]) ? "Yes" : "No"]</A>"
-
-	if(AGE_IMMORTAL in pref_species.possible_ages)
-		dat += "<b>Age:</b> <a href='?_src_=prefs;preference=age;task=input'>[AGE_IMMORTAL]</a><BR>"
-	else
-		dat += "<b>Age:</b> <a href='?_src_=prefs;preference=age;task=input'>[age]</a><BR>"
-
-	dat += "<b>Quirks:</b> <a href='?_src_=prefs;preference=select_quirks'>Select</a><BR>"
+	// Build the HTML UI
+	var/list/dat = list()
 	var/datum/faith/selected_faith = GLOB.faithlist[selected_patron.associated_faith]
-	dat += "<b>Faith:</b> <a href='?_src_=prefs;preference=faith;task=input'>[selected_faith?.name || "FUCK!"]</a><BR>"
-	dat += "<b>Patron:</b> <a href='?_src_=prefs;preference=patron;task=input'>[selected_patron.name || "FUCK!"]</a><BR>"
-	dat += "<b>Family:</b> <a href='?_src_=prefs;preference=family'>[family ? family : "None"]</a><BR>"
-	if(family == FAMILY_FULL || family == FAMILY_NEWLYWED)
-		dat += "<b>Preferred Spouse:</b> <a href='?_src_=prefs;preference=setspouse'>[setspouse ? setspouse : "None"]</a><BR>"
-		dat += "<b>Preferred Gender:</b> <a href='?_src_=prefs;preference=gender_choice'>[gender_choice ? gender_choice : "Any Gender"]</a><BR>"
-	dat += "<b>Dominance:</b> <a href='?_src_=prefs;preference=domhand'>[domhand == 1 ? "Left-handed" : "Right-handed"]</a><BR>"
-	dat += "<b>Food Preferences:</b> <a href='?_src_=prefs;preference=culinary;task=menu'>Change</a><BR>"
-	dat += "</tr></table>"
-	//-----------END OF IDENT TABLE-----------//
-
-
-	// Middle dummy Column, 20% width
-	dat += "</td>"
-	dat += "<td width=20% valign='top'>"
-	// Rightmost column, 40% width
-	dat += "<td width=40% valign='top'>"
-	dat += "<h2 style='padding-left: 4px'>Body</h2>"
-
-	//-----------START OF BODY TABLE-----------
-	dat += "<table width='100%'><tr><td width='1%' valign='top'>"
-
-	var/use_skintones = pref_species.use_skintones
-	if(use_skintones)
-
-		//dat += APPEARANCE_CATEGORY_COLUMN
-		var/skin_tone_wording = pref_species.skin_tone_wording // Both the skintone names and the word swap here is useless fluff
-
-		dat += "<b>[skin_tone_wording]: </b><a href='?_src_=prefs;preference=s_tone;task=input'>Change </a>"
-		//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_SKIN_TONE]'>[(randomise[RANDOM_SKIN_TONE]) ? "Lock" : "Unlock"]</A>"
-
-	dat += "<br>"
-	dat += "<b>Voice Type:</b> <a href='?_src_=prefs;preference=voicetype;task=input'>[voice_type]</a>"
-	dat += "<br><b>Voice Color:</b> <a href='?_src_=prefs;preference=voice;task=input'>Change</a>"
-	dat += "<br><b>Accent:</b> <a href='?_src_=prefs;preference=selected_accent;task=input'>[selected_accent]</a>"
-	dat += "<br><b>Features:</b> <a href='?_src_=prefs;preference=customizers;task=menu'>Change</a>"
-	if(length(pref_species.descriptor_choices))
-		dat += "<br><b>Descriptors:</b> <a href='?_src_=prefs;preference=descriptors;task=menu'>Change</a>"
-
-	dat += "<br><b>Headshot:</b> <a href='?_src_=prefs;preference=headshot;task=input'>Change</a>"
-	if(headshot_link != null)
-		dat += "<br><img src='[headshot_link]' width='100px' height='100px'>"
-	dat += "<br><b>[(length(flavortext) < MINIMUM_FLAVOR_TEXT) ? "<font color = '#802929'>" : ""]Flavortext:[(length(flavortext) < MINIMUM_FLAVOR_TEXT) ? "</font>" : ""]</b><a href='?_src_=prefs;preference=formathelp;task=input'>(?)</a><a href='?_src_=prefs;preference=flavortext;task=input'>Change</a>"
-
-	dat += "<br><b>[(length(ooc_notes) < MINIMUM_OOC_NOTES) ? "<font color = '#802929'>" : ""]OOC Notes:[(length(ooc_notes) < MINIMUM_OOC_NOTES) ? "</font>" : ""]</b><a href='?_src_=prefs;preference=formathelp;task=input'>(?)</a><a href='?_src_=prefs;preference=ooc_notes;task=input'>Change</a>"
-	dat += "<br><b>OOC Extra:</b> <a href='?_src_=prefs;preference=ooc_extra;task=input'>Change</a>"
-	dat += "<br><a href='?_src_=prefs;preference=ooc_preview;task=input' style='margin: 0; padding: 0;'><b>Preview Examine</b></a>"
-
-	dat += "<br><b>Loadout Item I:</b> <a href='?_src_=prefs;preference=loadout_item;loadout_number=1;task=input'>[loadout1 ? loadout1.name : "None"]</a>"
-	dat += "<br><b>Loadout Item II:</b> <a href='?_src_=prefs;preference=loadout_item;loadout_number=2;task=input'>[loadout2 ? loadout2.name : "None"]</a>"
-	dat += "<br><b>Loadout Item III:</b> <a href='?_src_=prefs;preference=loadout_item;loadout_number=3;task=input'>[loadout3 ? loadout3.name : "None"]</a>"
-
-	dat += "<br></td>"
-
-	dat += "</tr></table>"
-	//-----------END OF BODY TABLE-----------//
-	dat += "</td>"
-	dat += "</tr>"
-	dat += "</table>"
-
-	if(!IsGuestKey(user.key))
-		dat += "<a href='?_src_=prefs;preference=save'>Save</a><br>"
-		dat += "<a href='?_src_=prefs;preference=load'>Undo</a><br>"
-
-	// well.... one empty slot here for something I suppose lol
-	dat += "<table width='100%'>"
-	dat += "<tr>"
-	dat += "<td width='33%' align='left'></td>"
-	dat += "<td width='33%' align='center'>"
-	var/mob/dead/new_player/N = user
-	if(istype(N))
-		dat += "<a href='?_src_=prefs;preference=bespecial'><b>[next_special_trait ? "<font color='red'>SPECIAL</font>" : "BE SPECIAL"]</b></a><BR>"
-
-	dat += "<a href='?_src_=prefs;preference=finished'>DONE</a>"
-	dat += "</center>"
-	dat += "</td>"
-	dat += "<td width='33%' align='right'></td>"
-	dat += "</tr>"
-	dat += "</table>"
-
-	if(user.client.is_new_player())
-		dat = list("<center>REGISTER!</center>")
+	var/datum/job/high_job
+	for(var/job_type in job_preferences)
+		if(job_preferences[job_type] != JP_HIGH)
+			continue
+		high_job = job_type
+		break
 
 	user?.client.acquire_dpi()
+	dat += {"
+<html lang="en">
+<head>
+	<style>
+		body {
+			background-color: #1a1a1a;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			margin: 0;
+			image-rendering: pixelated;
+			zoom: [100 / user.client?.window_scaling]%;
+		}
+		.ui-container {
+			position: relative;
+			width: 272px;
+			height: 293px;
+			background-image: url('Charsheet_BG.1.png');
+			background-size: cover;
+			transform: scale(3);
+		}
+		.sprite { position: absolute; background-repeat: no-repeat; cursor: pointer; }
+
+		.header-bg   { top: 5px;   left: 6px;   width: 260px; height: 52px; background-image: url('0_header_bg.png'); }
+		.preview-bg  { top: 50px;  left: 8px;   width: 99px;  height: 83px; background-image: url('charpreview_bg.png'); }
+		.body-bg     { top: 58px;  left: 110px; width: 118px; height: 75px; background-image: url('0_body_bg.png'); }
+		.voice-bg    { top: 137px; left: 2px;   width: 107px; height: 41px; background-image: url('0_voice_bg.png'); }
+		.family-bg   { top: 137px; left: 114px; width: 86px;  height: 74px; background-image: url('0_family_bg.png'); }
+		.flavour-bg  { top: 137px; left: 201px; width: 65px;  height: 73px; background-image: url('0_flavour_bg.png'); }
+		.loadout-bg  { top: 181px; left: 3px;   width: 64px;  height: 74px; background-image: url('0_loadout_bg.png'); }
+		.triumphs-bg { top: 182px; left: 74px;  width: 37px;  height: 34px; background-image: url('0_triumphs_bg.png'); }
+		.headshot-bg { top: 213px; left: 119px; width: 76px;  height: 76px; background-image: url('headshot_bg.png'); }
+		.ooc-bg      { top: 214px; left: 201px; width: 54px;  height: 48px; background-image: url('0_ooc_bg.png'); }
+
+		.features-bg { top: 60px; left: 231px; width: 36px; height: 48px; background-image: url('0_features_bg.png'); }
+		#silhouette  { top: 3px;  left: 10px;  width: 15px; height: 28px; background-image: url('features_bodytype_f.png'); }
+		.f-btn       { top: 95px; left: 232px; width: 34px; height: 10px; background-image: url('features_button.png'); z-index: 3; }
+		.f-btn:hover { background-image: url('features_button_hover.png'); }
+		.f-random    { top: 110px; left: 232px; width: 34px; height: 25px; background-image: url('features_random.png'); }
+		.f-random:hover { background-image: url('features_random_hover.png'); }
+
+		.flav-desc { top: 154px; left: 207px; width: 49px; height: 10px; background-image: url('flavour_descriptors.png'); }
+		.flav-desc:hover { background-image: url('flavour_descriptors_hover.png'); }
+		.flav-text { top: 171px; left: 207px; width: 53px; height: 10px; background-image: url('flavour_text.png'); }
+		.flav-text:hover { background-image: url('flavour_text_hover.png'); }
+		.flav-food { top: 188px; left: 207px; width: 45px; height: 10px; background-image: url('flavour_foodprefs.png'); }
+		.flav-food:hover { background-image: url('flavour_foodprefs_hover.png'); }
+		.flav-prev { top: 204px; left: 215px; width: 34px; height: 10px; background-image: url('flavour_preview.png'); }
+		.flav-prev:hover { background-image: url('flavour_preview_hover.png'); }
+
+		.ooc-notes { top: 230px; left: 207px; width: 41px; height: 10px; background-image: url('ooc_notes.png'); }
+		.ooc-notes:hover { background-image: url('ooc_notes_hover.png'); }
+		.ooc-extra { top: 248px; left: 207px; width: 40px; height: 10px; background-image: url('ooc_extra.png'); }
+		.ooc-extra:hover { background-image: url('ooc_extra_hover.png'); }
+		.btn-roles { top: 262px; left: 200px; width: 55px; height: 30px; background-image: url('ooc_specialroles.png'); }
+		.btn-roles:hover { background-image: url('ooc_specialroles_hover.png'); }
+
+		.tri-shop { top: 202px; left: 75px; width: 34px; height: 26px; background-image: url('triumphs_shop.png'); }
+		.tri-shop:hover { background-image: url('triumphs_shop_hover.png'); }
+
+		.clickable-text {
+			position: absolute;
+			background: transparent;
+			border: none;
+			outline: none;
+			font-family: "Segoe Script";
+			font-size: 8px;
+			color: #2b1d14;
+			text-align: left;
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			padding: 0 2px;
+		}
+
+		.clickable-text:hover {
+			text-decoration: underline;
+		}
+
+		/* Auto-shrinking text */
+		.auto-shrink {
+			font-size: 8px;
+		}
+
+		@media (max-width: 100px) {
+			.auto-shrink { font-size: 7px; }
+		}
+
+		#bespecial   { top: 230px; left: 76px; width: 34px; height: 23px; background-image: url('bespecial_no.png'); }
+		#bespecial.yes { background-image: url('bespecial_yes.png'); }
+
+		.menu-ready  { top: 258px; left: 4px;   width: 88px; height: 10px; background-image: url('ready_order.png'); }
+		.menu-ready:hover { background-image: url('ready_order_hover.png'); }
+		.menu-change { top: 269px; left: 4px;   width: 69px; height: 10px; background-image: url('change_character.png'); }
+		.menu-change:hover { background-image: url('change_character_hover.png'); }
+		.menu-save   { top: 280px; left: 4px;   width: 21px; height: 10px; background-image: url('save.png'); }
+		.menu-save:hover { background-image: url('save_hover.png'); }
+		.menu-undo   { top: 280px; left: 26px;  width: 21px; height: 10px; background-image: url('undo.png'); }
+		.menu-undo:hover { background-image: url('undo_hover.png'); }
+		.menu-done   { top: 280px; left: 48px;  width: 20px; height: 10px; background-image: url('done.png'); }
+		.menu-done:hover { background-image: url('done_hover.png'); }
+
+		.v-color-box { top: 136px; left: 34px; width: 48px; height: 15px; background-image: url('voice_colour.png'); }
+		.v-blob      { top: 4px;   left: 35px; width: 8px;  height: 7px;
+		               background-image: url('voice_colour_blob.png');
+		               background-blend-mode: multiply; }
+
+		.menu-keybinds {
+			top: 280px;
+			left: 78px;
+			width: 39px;
+			height: 10px;
+			background-image: url('keybinds.png');
+		}
+		.menu-keybinds:hover {
+			background-image: url('keybinds_hover.png');
+		}
+
+		.menu-toggles {
+			top: 269px;
+			left: 83px;
+			width: 34px;
+			height: 10px;
+			background-image: url('toggles.png');
+		}
+		.menu-toggles:hover {
+			background-image: url('toggles_hover.png');
+		}
+	</style>
+	<script>
+		function shrinkText(element) {
+			const maxWidth = element.offsetWidth - 4;
+			let fontSize = 8;
+			element.style.fontSize = fontSize + 'px';
+
+			while (element.scrollWidth > maxWidth && fontSize > 4) {
+				fontSize -= 0.5;
+				element.style.fontSize = fontSize + 'px';
+			}
+		}
+
+		window.addEventListener('load', function() {
+			document.querySelectorAll('.auto-shrink').forEach(shrinkText);
+		});
+	</script>
+</head>
+<body>
+<div class="ui-container">
+	<div class="sprite header-bg"></div>
+	<div class="sprite preview-bg"></div>
+	<div class="sprite body-bg"></div>
+	<div class="sprite voice-bg"></div>
+	<div class="sprite family-bg"></div>
+	<div class="sprite flavour-bg"></div>
+	<div class="sprite loadout-bg"></div>
+	<div class="sprite triumphs-bg"></div>
+	<div class="sprite headshot-bg">
+		<a href='?_src_=prefs;preference=headshot;task=input' style="display: block; width: 100%; height: 100%;">
+			<img id="headshot-img" src="[headshot_link || ""]"
+				 style="width: 100%; height: 100%; object-fit: cover; cursor: pointer; image-rendering: auto;"
+				 onerror="this.style.display='none';">
+		</a>
+	</div>
+	<div class="sprite ooc-bg"></div>
+
+	<div class="sprite" style="top:26px; left:23px; width:92px; height:9px; background-image: url('header_charname.png');">
+		<a href='?_src_=prefs;preference=name;task=input' style="text-decoration: none; display: block; width: 100%; height: 100%;">
+			<div class="clickable-text auto-shrink" style="width:92px; height:9px;">[real_name]</div>
+		</a>
+	</div>
+	<div class="sprite" style="top:11px; left:122px; width:46px; height:9px; background-image: url('header_class.png');">
+		<a href='?_src_=prefs;preference=job;task=menu' style="text-decoration: none; display: block; width: 100%; height: 100%;">
+			<div class="clickable-text auto-shrink" style="width:46px; height:9px;">[high_job || "None"]</div>
+		</a>
+	</div>
+	<div class="sprite" style="top:11px; left:172px; width:42px; height:9px; background-image: url('header_faith.png');">
+		<a href='?_src_=prefs;preference=faith;task=input' style="text-decoration: none; display: block; width: 100%; height: 100%;">
+			<div class="clickable-text auto-shrink" style="width:42px; height:9px;">[selected_faith?.name || ""]</div>
+		</a>
+	</div>
+	<div class="sprite" style="top:11px; left:220px; width:31px; height:9px; background-image: url('header_playerckey.png');">
+		<div class="clickable-text" style="width:31px; height:9px; cursor: default;">[user.ckey]</div>
+	</div>
+	<div class="sprite" style="top:30px; left:122px; width:46px; height:9px; background-image: url('header_species.png');">
+		<a href='?_src_=prefs;preference=species;task=input' style="text-decoration: none; display: block; width: 100%; height: 100%;">
+			<div class="clickable-text auto-shrink" style="width:46px; height:9px;">[pref_species.name]</div>
+		</a>
+	</div>
+	<div class="sprite" style="top:30px; left:172px; width:42px; height:9px; background-image: url('header_patron.png');">
+		<a href='?_src_=prefs;preference=patron;task=input' style="text-decoration: none; display: block; width: 100%; height: 100%;">
+			<div class="clickable-text auto-shrink" style="width:42px; height:9px;">[selected_patron.name]</div>
+		</a>
+	</div>
+	<div class="sprite" style="top:30px; left:220px; width:31px; height:9px; background-image: url('header_pq.png');">
+		<a href='?_src_=prefs;preference=playerquality;task=menu' style="text-decoration: none; display: block; width: 100%; height: 100%;">
+			<div class="clickable-text auto-shrink" style="width:31px; height:9px;">[get_playerquality(user.ckey, text = TRUE)]</div>
+		</a>
+	</div>
+
+	<div class="sprite" style="top:70px; left:118px; width:46px; height:9px; background-image: url('body_age.png');">
+		<a href='?_src_=prefs;preference=age;task=input' style="text-decoration: none; display: block; width: 100%; height: 100%;">
+			<div class="clickable-text auto-shrink" style="width:46px; height:9px;">[age]</div>
+		</a>
+	</div>
+	<div class="sprite" style="top:70px; left:168px; width:53px; height:9px; background-image: url('body_flaw.png');">
+		<a href='?_src_=prefs;preference=select_quirks' style="text-decoration: none; display: block; width: 100%; height: 100%;">
+			<div class="clickable-text auto-shrink" style="width:53px; height:9px;">Select Quirks</div>
+		</a>
+	</div>
+	<div class="sprite" style="top:89px; left:119px; width:46px; height:9px; background-image: url('body_dominanthand.png');">
+		<a href='?_src_=prefs;preference=domhand' style="text-decoration: none; display: block; width: 100%; height: 100%;">
+			<div class="clickable-text auto-shrink" style="width:46px; height:9px;">[domhand == 1 ? "Left" : "Right"]</div>
+		</a>
+	</div>
+	<div class="sprite" style="top:89px; left:168px; width:53px; height:9px; background-image: url('body_ancestry.png');">
+		<a href='?_src_=prefs;preference=s_tone;task=input' style="text-decoration: none; display: block; width: 100%; height: 100%;">
+			<div class="clickable-text auto-shrink" style="width:53px; height:9px;">Change</div>
+		</a>
+	</div>
+	<div class="sprite" style="top:108px; left:119px; width:46px; height:9px; background-image: url('body_pronouns.png');">
+		<a href='?_src_=prefs;preference=pronouns;task=input' style="text-decoration: none; display: block; width: 100%; height: 100%;">
+			<div class="clickable-text auto-shrink" style="width:46px; height:9px;">[pronouns]</div>
+		</a>
+	</div>
+	<a href='?_src_=prefs;preference=gender'><div class="sprite" style="top:108px; left:169px; width:53px; height:9px; background-image: url('body_bodytype.png');">
+		<div class="clickable-text auto-shrink" style="width:53px; height:9px;">[gender == MALE ? "M" : "F"]</div>
+	</div></a>
+
+	<a href='?_src_=prefs;preference=family'><div class="sprite" style="top:150px; left:120px; width:73px; height:9px; background-image: url('family_type.png');">
+		<div class="clickable-text auto-shrink" style="width:73px; height:9px;">[family ? family : "None"]</div>
+	</div></a>
+	<a href='?_src_=prefs;preference=gender_choice'><div class="sprite" style="top:169px; left:120px; width:73px; height:9px; background-image: url('gender_pref.png');">
+		<div class="clickable-text auto-shrink" style="width:73px; height:9px;">[gender_choice ? gender_choice : "Any"]</div>
+	</div></a>
+	<a href='?_src_=prefs;preference=setspouse'><div class="sprite" style="top:188px; left:120px; width:73px; height:9px; background-image: url('spouse_pref.png');">
+		<div class="clickable-text auto-shrink" style="width:73px; height:9px;">[setspouse ? setspouse : "None"]</div>
+	</div></a>
+
+	<a href='?_src_=prefs;preference=voicetype;task=input'><div class="sprite" style="top:154px; left:10px; width:46px; height:9px; background-image: url('voice_type.png');">
+		<div class="clickable-text auto-shrink" style="width:46px; height:9px;">[voice_type]</div>
+	</div></a>
+	<a href='?_src_=prefs;preference=selected_accent;task=input'><div class="sprite" style="top:154px; left:60px; width:42px; height:9px; background-image: url('voice_accent.png');">
+		<div class="clickable-text auto-shrink" style="width:42px; height:9px;">[selected_accent]</div>
+	</div></a>
+
+	<a href='?_src_=prefs;preference=loadout_item;loadout_number=1;task=input'><div class="sprite" style="top:194px; left:10px; width:51px; height:9px; background-image: url('loadout_item1.png');">
+		<div class="clickable-text auto-shrink" style="width:51px; height:9px;">[loadout1 ? loadout1.name : "None"]</div>
+	</div></a>
+	<a href='?_src_=prefs;preference=loadout_item;loadout_number=2;task=input'><div class="sprite" style="top:213px; left:10px; width:51px; height:9px; background-image: url('loadout_item2.png');">
+		<div class="clickable-text auto-shrink" style="width:51px; height:9px;">[loadout2 ? loadout2.name : "None"]</div>
+	</div></a>
+	<a href='?_src_=prefs;preference=loadout_item;loadout_number=3;task=input'><div class="sprite" style="top:232px; left:10px; width:51px; height:9px; background-image: url('loadout_item3.png');">
+		<div class="clickable-text auto-shrink" style="width:51px; height:9px;">[loadout3 ? loadout3.name : "None"]</div>
+	</div></a>
+
+	<div class="sprite" style="top:195px; left:82px; width:22px; height:7px; background-image: url('triumphs_display.png');">
+		<a href='?_src_=prefs;preference=triumphs;task=menu' style="text-decoration: none; display: block; width: 100%; height: 100%;">
+			<div class="clickable-text" style="width:22px; height:7px; font-size: 5px;">[user.get_triumphs() ? "\Roman [user.get_triumphs()]" : "0"]</div>
+		</a>
+	</div>
+
+	<a href='?_src_=prefs;preference=triumph_buy_menu'><div class="sprite tri-shop"></div></a>
+	<a href='?_src_=prefs;preference=descriptors;task=menu'><div class="sprite flav-desc"></div></a>
+	<a href='?_src_=prefs;preference=flavortext;task=input'><div class="sprite flav-text"></div></a>
+	<a href='?_src_=prefs;preference=culinary;task=menu'><div class="sprite flav-food"></div></a>
+	<a href='?_src_=prefs;preference=ooc_preview;task=input'><div class="sprite flav-prev"></div></a>
+	<a href='?_src_=prefs;preference=ooc_notes;task=input'><div class="sprite ooc-notes"></div></a>
+	<a href='?_src_=prefs;preference=ooc_extra;task=input'><div class="sprite ooc-extra"></div></a>
+	<a href='?_src_=prefs;preference=antag;task=menu'><div class="sprite btn-roles"></div></a>
+	<a href='?_src_=prefs;preference=customizers;task=menu'><div class="sprite f-btn"></div></a>
+	<a href='?_src_=prefs;preference=randomiseappearanceprefs;'><div class="sprite f-random"></div></a>
+
+	<div class="sprite features-bg"><div id="silhouette" class="sprite"></div></div>
+
+	<div class="sprite v-color-box">
+		<a href='?_src_=prefs;preference=ooccolor;task=input' style="display: block; width: 100%; height: 100%;">
+			<div class="sprite v-blob" style="background-color: [ooccolor];"></div>
+		</a>
+	</div>
+	<a href='?_src_=prefs;preference=bespecial'><div id="bespecial" class="sprite [next_special_trait ? "yes" : ""]"></div></a>
+	<a href='?_src_=prefs;preference=multi;task=menu'><div class="sprite menu-ready"></div></a>
+	<a href='?_src_=prefs;preference=changeslot;'><div class="sprite menu-change"></div></a>
+	<a href='?_src_=prefs;preference=keybinds;task=menu'><div class="sprite menu-keybinds"></div></a>
+	<a href='?_src_=prefs;preference=toggles'><div class="sprite menu-toggles"></div></a>
+	<a href='?_src_=prefs;preference=save'><div class="sprite menu-save"></div></a>
+	<a href='?_src_=prefs;preference=load'><div class="sprite menu-undo"></div></a>
+	<a href='?_src_=prefs;preference=finished'><div class="sprite menu-done"></div></a>
+</div>
+</body>
+</html>
+"}
 	winshow(user, "stonekeep_prefwin", TRUE)
 	winshow(user, "stonekeep_prefwin.character_preview_map", TRUE)
-	var/datum/browser/popup = new(user, "preferences_browser", "<div align='center'>Character Sheet</div>", 700, 650)
-	popup.set_window_options(can_close = TRUE)
-	popup.set_content(dat.Join())
-	popup.open(FALSE)
+	user << browse(dat.Join(), "window=preferences_browser;size=816x879")
 	update_preview_icon()
 	onclose(user, "stonekeep_prefwin", src)
+
+/datum/preferences/proc/send_character_ui_resources(mob/user)
+	// Background
+	user << browse_rsc('html/character_ui/background&reference/Charsheet_BG.1.png', "Charsheet_BG.1.png")
+
+	// Header
+	user << browse_rsc('html/character_ui/header/0_header_bg.png', "0_header_bg.png")
+	user << browse_rsc('html/character_ui/header/header_charname.png', "header_charname.png")
+	user << browse_rsc('html/character_ui/header/header_class.png', "header_class.png")
+	user << browse_rsc('html/character_ui/header/header_faith.png', "header_faith.png")
+	user << browse_rsc('html/character_ui/header/header_playerckey.png', "header_playerckey.png")
+	user << browse_rsc('html/character_ui/header/header_species.png', "header_species.png")
+	user << browse_rsc('html/character_ui/header/header_patron.png', "header_patron.png")
+	user << browse_rsc('html/character_ui/header/header_pq.png', "header_pq.png")
+
+	// Character Preview
+	user << browse_rsc('html/character_ui/character_preview/charpreview_bg.png', "charpreview_bg.png")
+
+	// Body
+	user << browse_rsc('html/character_ui/body/0_body_bg.png', "0_body_bg.png")
+	user << browse_rsc('html/character_ui/body/body_age.png', "body_age.png")
+	user << browse_rsc('html/character_ui/body/body_flaw.png', "body_flaw.png")
+	user << browse_rsc('html/character_ui/body/body_dominanthand.png', "body_dominanthand.png")
+	user << browse_rsc('html/character_ui/body/body_ancestry.png', "body_ancestry.png")
+	user << browse_rsc('html/character_ui/body/body_pronouns.png', "body_pronouns.png")
+	user << browse_rsc('html/character_ui/body/body_bodytype.png', "body_bodytype.png")
+
+	// Voice
+	user << browse_rsc('html/character_ui/voice/0_voice_bg.png', "0_voice_bg.png")
+	user << browse_rsc('html/character_ui/voice/voice_type.png', "voice_type.png")
+	user << browse_rsc('html/character_ui/voice/voice_accent.png', "voice_accent.png")
+	user << browse_rsc('html/character_ui/voice/voice_colour.png', "voice_colour.png")
+	user << browse_rsc('html/character_ui/voice/voice_colour_blob.png', "voice_colour_blob.png")
+
+	// Family
+	user << browse_rsc('html/character_ui/family/0_family_bg.png', "0_family_bg.png")
+	user << browse_rsc('html/character_ui/family/family_type.png', "family_type.png")
+	user << browse_rsc('html/character_ui/family/gender_pref.png', "gender_pref.png")
+	user << browse_rsc('html/character_ui/family/spouse_pref.png', "spouse_pref.png")
+
+	// Flavour
+	user << browse_rsc('html/character_ui/flavour/0_flavour_bg.png', "0_flavour_bg.png")
+	user << browse_rsc('html/character_ui/flavour/flavour_descriptors.png', "flavour_descriptors.png")
+	user << browse_rsc('html/character_ui/flavour/flavour_descriptors_hover.png', "flavour_descriptors_hover.png")
+	user << browse_rsc('html/character_ui/flavour/flavour_text.png', "flavour_text.png")
+	user << browse_rsc('html/character_ui/flavour/flavour_text_hover.png', "flavour_text_hover.png")
+	user << browse_rsc('html/character_ui/flavour/flavour_foodprefs.png', "flavour_foodprefs.png")
+	user << browse_rsc('html/character_ui/flavour/flavour_foodprefs_hover.png', "flavour_foodprefs_hover.png")
+	user << browse_rsc('html/character_ui/flavour/flavour_preview.png', "flavour_preview.png")
+	user << browse_rsc('html/character_ui/flavour/flavour_preview_hover.png', "flavour_preview_hover.png")
+
+	// Loadout
+	user << browse_rsc('html/character_ui/loadout/0_loadout_bg.png', "0_loadout_bg.png")
+	user << browse_rsc('html/character_ui/loadout/loadout_item1.png', "loadout_item1.png")
+	user << browse_rsc('html/character_ui/loadout/loadout_item2.png', "loadout_item2.png")
+	user << browse_rsc('html/character_ui/loadout/loadout_item3.png', "loadout_item3.png")
+
+	// Triumphs
+	user << browse_rsc('html/character_ui/triumphs/0_triumphs_bg.png', "0_triumphs_bg.png")
+	user << browse_rsc('html/character_ui/triumphs/triumphs_display.png', "triumphs_display.png")
+	user << browse_rsc('html/character_ui/triumphs/triumphs_shop.png', "triumphs_shop.png")
+	user << browse_rsc('html/character_ui/triumphs/triumphs_shop_hover.png', "triumphs_shop_hover.png")
+
+	// Headshot
+	user << browse_rsc('html/character_ui/character_headshot/headshot_bg.png', "headshot_bg.png")
+
+	// OOC
+	user << browse_rsc('html/character_ui/ooc/0_ooc_bg.png', "0_ooc_bg.png")
+	user << browse_rsc('html/character_ui/ooc/ooc_notes.png', "ooc_notes.png")
+	user << browse_rsc('html/character_ui/ooc/ooc_notes_hover.png', "ooc_notes_hover.png")
+	user << browse_rsc('html/character_ui/ooc/ooc_extra.png', "ooc_extra.png")
+	user << browse_rsc('html/character_ui/ooc/ooc_extra_hover.png', "ooc_extra_hover.png")
+	user << browse_rsc('html/character_ui/ooc/ooc_specialroles.png', "ooc_specialroles.png")
+	user << browse_rsc('html/character_ui/ooc/ooc_specialroles_hover.png', "ooc_specialroles_hover.png")
+
+	// Features
+	user << browse_rsc('html/character_ui/features/0_features_bg.png', "0_features_bg.png")
+	user << browse_rsc('html/character_ui/features/features_bodytype_f.png', "features_bodytype_f.png")
+	user << browse_rsc('html/character_ui/features/features_bodytype_m.png', "features_bodytype_m.png")
+	user << browse_rsc('html/character_ui/features/features_button.png', "features_button.png")
+	user << browse_rsc('html/character_ui/features/features_button_hover.png', "features_button_hover.png")
+	user << browse_rsc('html/character_ui/features/features_random.png', "features_random.png")
+	user << browse_rsc('html/character_ui/features/features_random_hover.png', "features_random_hover.png")
+
+	// Be Special
+	user << browse_rsc('html/character_ui/bespecial/bespecial_no.png', "bespecial_no.png")
+	user << browse_rsc('html/character_ui/bespecial/bespecial_yes.png', "bespecial_yes.png")
+
+	// Misc Buttons
+	user << browse_rsc('html/character_ui/misc_buttons/ready_order.png', "ready_order.png")
+	user << browse_rsc('html/character_ui/misc_buttons/ready_order_hover.png', "ready_order_hover.png")
+	user << browse_rsc('html/character_ui/misc_buttons/change_character.png', "change_character.png")
+	user << browse_rsc('html/character_ui/misc_buttons/change_character_hover.png', "change_character_hover.png")
+	user << browse_rsc('html/character_ui/misc_buttons/save.png', "save.png")
+	user << browse_rsc('html/character_ui/misc_buttons/save_hover.png', "save_hover.png")
+	user << browse_rsc('html/character_ui/misc_buttons/undo.png', "undo.png")
+	user << browse_rsc('html/character_ui/misc_buttons/undo_hover.png', "undo_hover.png")
+	user << browse_rsc('html/character_ui/misc_buttons/done.png', "done.png")
+	user << browse_rsc('html/character_ui/misc_buttons/done_hover.png', "done_hover.png")
+	user << browse_rsc('html/character_ui/misc_buttons/keybinds.png', "keybinds.png")
+	user << browse_rsc('html/character_ui/misc_buttons/keybinds_hover.png', "keybinds_hover.png")
+	user << browse_rsc('html/character_ui/misc_buttons/toggles.png', "toggles.png")
+	user << browse_rsc('html/character_ui/misc_buttons/toggles_hover.png', "toggles_hover.png")
 
 #undef APPEARANCE_CATEGORY_COLUMN
 #undef MAX_MUTANT_ROWS
