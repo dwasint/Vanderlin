@@ -298,10 +298,10 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 		load_character(default_slot)
 		slot_randomized = FALSE
 
-	// Send all resources to client
 	send_character_ui_resources(user)
+	build_and_show_menu(user)
 
-	// Build the HTML UI
+/datum/preferences/proc/build_and_show_menu(mob/user)
 	var/list/dat = list()
 	var/datum/faith/selected_faith = GLOB.faithlist[selected_patron.associated_faith]
 	var/datum/job/high_job
@@ -312,6 +312,8 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 		break
 
 	user?.client.acquire_dpi()
+
+	// Build full HTML (keeping your existing HTML structure)
 	dat += {"
 <html lang="en">
 <head>
@@ -396,7 +398,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 			text-decoration: underline;
 		}
 
-		/* Auto-shrinking text */
 		.auto-shrink {
 			font-size: 8px;
 		}
@@ -458,6 +459,84 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 			}
 		}
 
+		function updateField(fieldId, value) {
+			var elem = document.getElementById(fieldId);
+			if(elem) {
+				elem.textContent = value;
+				if(elem.classList.contains('auto-shrink')) {
+					shrinkText(elem);
+				}
+			}
+		}
+
+		function updateHeadshot(url) {
+			var img = document.getElementById('headshot-img');
+			if(img) {
+				img.src = url || '';
+				img.style.display = url ? 'block' : 'none';
+			}
+		}
+
+		function updateBeSpecial(isActive) {
+			var elem = document.getElementById('bespecial');
+			if(elem) {
+				if(isActive) {
+					elem.classList.add('yes');
+				} else {
+					elem.classList.remove('yes');
+				}
+			}
+		}
+
+		function updateCharacterData() {
+			// BYOND's list2params() with output() sends arguments in pairs
+			// Arguments come as: arg0, arg1, arg2, arg3... where each pair is key=value
+			var data = {};
+
+			// Process all arguments - they come as strings like "key=value"
+			for(var i = 0; i < arguments.length; i++) {
+				var arg = arguments\[i\];
+				if(typeof arg === 'string' && arg.indexOf('=') !== -1) {
+					var parts = arg.split('=');
+					var key = parts\[0\];
+					var value = parts.slice(1).join('='); // In case value contains '='
+					data\[key\] = value;
+				}
+			}
+
+			// Update fields only if they exist in data
+			if('name' in data) updateField('char-name', data.name || '');
+			if('job' in data) updateField('char-job', data.job || 'None');
+			if('faith' in data) updateField('char-faith', data.faith || '');
+			if('species' in data) updateField('char-species', data.species || '');
+			if('patron' in data) updateField('char-patron', data.patron || '');
+			if('pq' in data) updateField('char-pq', data.pq || '');
+			if('age' in data) updateField('char-age', data.age || '');
+			if('domhand' in data) updateField('char-domhand', data.domhand || '');
+			if('pronouns' in data) updateField('char-pronouns', data.pronouns || '');
+			if('gender' in data) updateField('char-gender', data.gender || '');
+			if('family' in data) updateField('char-family', data.family || 'None');
+			if('genderpref' in data) updateField('char-genderpref', data.genderpref || 'Any');
+			if('spouse' in data) updateField('char-spouse', data.spouse || 'None');
+			if('voicetype' in data) updateField('char-voicetype', data.voicetype || '');
+			if('accent' in data) updateField('char-accent', data.accent || '');
+			if('loadout1' in data) updateField('char-loadout1', data.loadout1 || 'None');
+			if('loadout2' in data) updateField('char-loadout2', data.loadout2 || 'None');
+			if('loadout3' in data) updateField('char-loadout3', data.loadout3 || 'None');
+			if('triumphs' in data) updateField('char-triumphs', data.triumphs || '0');
+
+			if('headshot' in data) updateHeadshot(data.headshot);
+			if('bespecial' in data) updateBeSpecial(data.bespecial === '1');
+
+			// Update voice color blob
+			if('ooccolor' in data) {
+				var blob = document.getElementById('voice-blob');
+				if(blob && data.ooccolor) {
+					blob.style.backgroundColor = data.ooccolor;
+				}
+			}
+		}
+
 		window.addEventListener('load', function() {
 			document.querySelectorAll('.auto-shrink').forEach(shrinkText);
 		});
@@ -484,41 +563,41 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 	<div class="sprite" style="top:26px; left:23px; width:92px; height:9px; background-image: url('header_charname.png');">
 		<a href='?_src_=prefs;preference=name;task=input' style="text-decoration: none; display: block; width: 100%; height: 100%;">
-			<div class="clickable-text auto-shrink" style="width:92px; height:9px;">[real_name]</div>
+			<div id="char-name" class="clickable-text auto-shrink" style="width:92px; height:9px;">[real_name]</div>
 		</a>
 	</div>
 	<div class="sprite" style="top:11px; left:122px; width:46px; height:9px; background-image: url('header_class.png');">
 		<a href='?_src_=prefs;preference=job;task=menu' style="text-decoration: none; display: block; width: 100%; height: 100%;">
-			<div class="clickable-text auto-shrink" style="width:46px; height:9px;">[high_job || "None"]</div>
+			<div id="char-job" class="clickable-text auto-shrink" style="width:46px; height:9px;">[high_job || "None"]</div>
 		</a>
 	</div>
 	<div class="sprite" style="top:11px; left:172px; width:42px; height:9px; background-image: url('header_faith.png');">
 		<a href='?_src_=prefs;preference=faith;task=input' style="text-decoration: none; display: block; width: 100%; height: 100%;">
-			<div class="clickable-text auto-shrink" style="width:42px; height:9px;">[selected_faith?.name || ""]</div>
+			<div id="char-faith" class="clickable-text auto-shrink" style="width:42px; height:9px;">[selected_faith?.name || ""]</div>
 		</a>
 	</div>
 	<div class="sprite" style="top:11px; left:220px; width:31px; height:9px; background-image: url('header_playerckey.png');">
-		<div class="clickable-text" style="width:31px; height:9px; cursor: default;">[user.ckey]</div>
+		<div id="char-ckey" class="clickable-text" style="width:31px; height:9px; cursor: default;">[user.ckey]</div>
 	</div>
 	<div class="sprite" style="top:30px; left:122px; width:46px; height:9px; background-image: url('header_species.png');">
 		<a href='?_src_=prefs;preference=species;task=input' style="text-decoration: none; display: block; width: 100%; height: 100%;">
-			<div class="clickable-text auto-shrink" style="width:46px; height:9px;">[pref_species.name]</div>
+			<div id="char-species" class="clickable-text auto-shrink" style="width:46px; height:9px;">[pref_species.name]</div>
 		</a>
 	</div>
 	<div class="sprite" style="top:30px; left:172px; width:42px; height:9px; background-image: url('header_patron.png');">
 		<a href='?_src_=prefs;preference=patron;task=input' style="text-decoration: none; display: block; width: 100%; height: 100%;">
-			<div class="clickable-text auto-shrink" style="width:42px; height:9px;">[selected_patron.name]</div>
+			<div id="char-patron" class="clickable-text auto-shrink" style="width:42px; height:9px;">[selected_patron.name]</div>
 		</a>
 	</div>
 	<div class="sprite" style="top:30px; left:220px; width:31px; height:9px; background-image: url('header_pq.png');">
 		<a href='?_src_=prefs;preference=playerquality;task=menu' style="text-decoration: none; display: block; width: 100%; height: 100%;">
-			<div class="clickable-text auto-shrink" style="width:31px; height:9px;">[get_playerquality(user.ckey, text = TRUE)]</div>
+			<div id="char-pq" class="clickable-text auto-shrink" style="width:31px; height:9px;">[get_playerquality(user.ckey, text = TRUE)]</div>
 		</a>
 	</div>
 
 	<div class="sprite" style="top:70px; left:118px; width:46px; height:9px; background-image: url('body_age.png');">
 		<a href='?_src_=prefs;preference=age;task=input' style="text-decoration: none; display: block; width: 100%; height: 100%;">
-			<div class="clickable-text auto-shrink" style="width:46px; height:9px;">[age]</div>
+			<div id="char-age" class="clickable-text auto-shrink" style="width:46px; height:9px;">[age]</div>
 		</a>
 	</div>
 	<div class="sprite" style="top:70px; left:168px; width:53px; height:9px; background-image: url('body_flaw.png');">
@@ -528,7 +607,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	</div>
 	<div class="sprite" style="top:89px; left:119px; width:46px; height:9px; background-image: url('body_dominanthand.png');">
 		<a href='?_src_=prefs;preference=domhand' style="text-decoration: none; display: block; width: 100%; height: 100%;">
-			<div class="clickable-text auto-shrink" style="width:46px; height:9px;">[domhand == 1 ? "Left" : "Right"]</div>
+			<div id="char-domhand" class="clickable-text auto-shrink" style="width:46px; height:9px;">[domhand == 1 ? "Left" : "Right"]</div>
 		</a>
 	</div>
 	<div class="sprite" style="top:89px; left:168px; width:53px; height:9px; background-image: url('body_ancestry.png');">
@@ -538,43 +617,43 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	</div>
 	<div class="sprite" style="top:108px; left:119px; width:46px; height:9px; background-image: url('body_pronouns.png');">
 		<a href='?_src_=prefs;preference=pronouns;task=input' style="text-decoration: none; display: block; width: 100%; height: 100%;">
-			<div class="clickable-text auto-shrink" style="width:46px; height:9px;">[pronouns]</div>
+			<div id="char-pronouns" class="clickable-text auto-shrink" style="width:46px; height:9px;">[pronouns]</div>
 		</a>
 	</div>
 	<a href='?_src_=prefs;preference=gender'><div class="sprite" style="top:108px; left:169px; width:53px; height:9px; background-image: url('body_bodytype.png');">
-		<div class="clickable-text auto-shrink" style="width:53px; height:9px;">[gender == MALE ? "M" : "F"]</div>
+		<div id="char-gender" class="clickable-text auto-shrink" style="width:53px; height:9px;">[gender == MALE ? "M" : "F"]</div>
 	</div></a>
 
 	<a href='?_src_=prefs;preference=family'><div class="sprite" style="top:150px; left:120px; width:73px; height:9px; background-image: url('family_type.png');">
-		<div class="clickable-text auto-shrink" style="width:73px; height:9px;">[family ? family : "None"]</div>
+		<div id="char-family" class="clickable-text auto-shrink" style="width:73px; height:9px;">[family ? family : "None"]</div>
 	</div></a>
 	<a href='?_src_=prefs;preference=gender_choice'><div class="sprite" style="top:169px; left:120px; width:73px; height:9px; background-image: url('gender_pref.png');">
-		<div class="clickable-text auto-shrink" style="width:73px; height:9px;">[gender_choice ? gender_choice : "Any"]</div>
+		<div id="char-genderpref" class="clickable-text auto-shrink" style="width:73px; height:9px;">[gender_choice ? gender_choice : "Any"]</div>
 	</div></a>
 	<a href='?_src_=prefs;preference=setspouse'><div class="sprite" style="top:188px; left:120px; width:73px; height:9px; background-image: url('spouse_pref.png');">
-		<div class="clickable-text auto-shrink" style="width:73px; height:9px;">[setspouse ? setspouse : "None"]</div>
+		<div id="char-spouse" class="clickable-text auto-shrink" style="width:73px; height:9px;">[setspouse ? setspouse : "None"]</div>
 	</div></a>
 
 	<a href='?_src_=prefs;preference=voicetype;task=input'><div class="sprite" style="top:154px; left:10px; width:46px; height:9px; background-image: url('voice_type.png');">
-		<div class="clickable-text auto-shrink" style="width:46px; height:9px;">[voice_type]</div>
+		<div id="char-voicetype" class="clickable-text auto-shrink" style="width:46px; height:9px;">[voice_type]</div>
 	</div></a>
 	<a href='?_src_=prefs;preference=selected_accent;task=input'><div class="sprite" style="top:154px; left:60px; width:42px; height:9px; background-image: url('voice_accent.png');">
-		<div class="clickable-text auto-shrink" style="width:42px; height:9px;">[selected_accent]</div>
+		<div id="char-accent" class="clickable-text auto-shrink" style="width:42px; height:9px;">[selected_accent]</div>
 	</div></a>
 
 	<a href='?_src_=prefs;preference=loadout_item;loadout_number=1;task=input'><div class="sprite" style="top:194px; left:10px; width:51px; height:9px; background-image: url('loadout_item1.png');">
-		<div class="clickable-text auto-shrink" style="width:51px; height:9px;">[loadout1 ? loadout1.name : "None"]</div>
+		<div id="char-loadout1" class="clickable-text auto-shrink" style="width:51px; height:9px;">[loadout1 ? loadout1.name : "None"]</div>
 	</div></a>
 	<a href='?_src_=prefs;preference=loadout_item;loadout_number=2;task=input'><div class="sprite" style="top:213px; left:10px; width:51px; height:9px; background-image: url('loadout_item2.png');">
-		<div class="clickable-text auto-shrink" style="width:51px; height:9px;">[loadout2 ? loadout2.name : "None"]</div>
+		<div id="char-loadout2" class="clickable-text auto-shrink" style="width:51px; height:9px;">[loadout2 ? loadout2.name : "None"]</div>
 	</div></a>
 	<a href='?_src_=prefs;preference=loadout_item;loadout_number=3;task=input'><div class="sprite" style="top:232px; left:10px; width:51px; height:9px; background-image: url('loadout_item3.png');">
-		<div class="clickable-text auto-shrink" style="width:51px; height:9px;">[loadout3 ? loadout3.name : "None"]</div>
+		<div id="char-loadout3" class="clickable-text auto-shrink" style="width:51px; height:9px;">[loadout3 ? loadout3.name : "None"]</div>
 	</div></a>
 
 	<div class="sprite" style="top:195px; left:82px; width:22px; height:7px; background-image: url('triumphs_display.png');">
 		<a href='?_src_=prefs;preference=triumphs;task=menu' style="text-decoration: none; display: block; width: 100%; height: 100%;">
-			<div class="clickable-text" style="width:22px; height:7px; font-size: 5px;">[user.get_triumphs() ? "\Roman [user.get_triumphs()]" : "0"]</div>
+			<div id="char-triumphs" class="clickable-text" style="width:22px; height:7px; font-size: 5px;">[user.get_triumphs() ? "\Roman [user.get_triumphs()]" : "0"]</div>
 		</a>
 	</div>
 
@@ -593,7 +672,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 	<div class="sprite v-color-box">
 		<a href='?_src_=prefs;preference=ooccolor;task=input' style="display: block; width: 100%; height: 100%;">
-			<div class="sprite v-blob" style="background-color: [ooccolor];"></div>
+			<div id="voice-blob" class="sprite v-blob" style="background-color: [ooccolor];"></div>
 		</a>
 	</div>
 	<a href='?_src_=prefs;preference=bespecial'><div id="bespecial" class="sprite [next_special_trait ? "yes" : ""]"></div></a>
@@ -608,11 +687,78 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 </body>
 </html>
 "}
+
 	winshow(user, "stonekeep_prefwin", TRUE)
 	winshow(user, "stonekeep_prefwin.character_preview_map", TRUE)
 	user << browse(dat.Join(), "window=preferences_browser;size=816x879")
 	update_preview_icon()
 	onclose(user, "stonekeep_prefwin", src)
+
+/datum/preferences/proc/update_menu_data(mob/user, list/fields_to_update)
+	if(!winexists(user, "preferences_browser"))
+		return
+
+	var/datum/faith/selected_faith = GLOB.faithlist[selected_patron.associated_faith]
+	var/datum/job/high_job
+	for(var/job_type in job_preferences)
+		if(job_preferences[job_type] != JP_HIGH)
+			continue
+		high_job = job_type
+		break
+
+	var/list/params = list()
+
+	// If no specific fields specified, update all
+	var/update_all = !fields_to_update || !length(fields_to_update)
+
+	if(update_all || ("name" in fields_to_update))
+		params["name"] = real_name
+	if(update_all || ("job" in fields_to_update))
+		params["job"] = high_job || "None"
+	if(update_all || ("faith" in fields_to_update))
+		params["faith"] = selected_faith?.name || ""
+	if(update_all || ("species" in fields_to_update))
+		params["species"] = pref_species.name
+	if(update_all || ("patron" in fields_to_update))
+		params["patron"] = selected_patron.name
+	if(update_all || ("pq" in fields_to_update))
+		params["pq"] = get_playerquality(user.ckey, text = TRUE)
+	if(update_all || ("age" in fields_to_update))
+		params["age"] = age
+	if(update_all || ("domhand" in fields_to_update))
+		params["domhand"] = domhand == 1 ? "Left" : "Right"
+	if(update_all || ("pronouns" in fields_to_update))
+		params["pronouns"] = pronouns
+	if(update_all || ("gender" in fields_to_update))
+		params["gender"] = gender == MALE ? "M" : "F"
+	if(update_all || ("family" in fields_to_update))
+		params["family"] = family ? family : "None"
+	if(update_all || ("genderpref" in fields_to_update))
+		params["genderpref"] = gender_choice ? gender_choice : "Any"
+	if(update_all || ("spouse" in fields_to_update))
+		params["spouse"] = setspouse ? setspouse : "None"
+	if(update_all || ("voicetype" in fields_to_update))
+		params["voicetype"] = voice_type
+	if(update_all || ("accent" in fields_to_update))
+		params["accent"] = selected_accent
+	if(update_all || ("loadout1" in fields_to_update))
+		params["loadout1"] = loadout1 ? loadout1.name : "None"
+	if(update_all || ("loadout2" in fields_to_update))
+		params["loadout2"] = loadout2 ? loadout2.name : "None"
+	if(update_all || ("loadout3" in fields_to_update))
+		params["loadout3"] = loadout3 ? loadout3.name : "None"
+	if(update_all || ("triumphs" in fields_to_update))
+		params["triumphs"] = user.get_triumphs() ? "\Roman [user.get_triumphs()]" : "0"
+	if(update_all || ("headshot" in fields_to_update))
+		params["headshot"] = headshot_link || ""
+	if(update_all || ("ooccolor" in fields_to_update))
+		params["ooccolor"] = ooccolor
+	if(update_all || ("bespecial" in fields_to_update))
+		params["bespecial"] = next_special_trait ? "1" : "0"
+
+	// Use list2params as BYOND expects for browser output
+	user << output(list2params(params), "preferences_browser:updateCharacterData")
+	update_preview_icon()
 
 /datum/preferences/proc/send_character_ui_resources(mob/user)
 	// Background
@@ -937,7 +1083,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 	if(!job || !(job.job_flags & JOB_NEW_PLAYER_JOINABLE))
 		user << browse(null, "window=mob_occupation")
-		ShowChoices(user,4)
+		update_menu_data(user,4)
 		return
 
 	if (!isnum(desiredLvl))
@@ -1138,7 +1284,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 		switch(href_list["task"])
 			if("close")
 				user << browse(null, "window=antag_setup")
-				ShowChoices(user)
+				update_menu_data(user)
 			if("be_special")
 				var/be_special_type = href_list["be_special_type"]
 				if(be_special_type in be_special)
@@ -1178,7 +1324,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 		switch(href_list["task"])
 			if("close")
 				user << browse(null, "window=keybind_setup")
-				ShowChoices(user)
+				update_menu_data(user)
 			if("update")
 				SetKeybinds(user)
 			if("keybindings_capture")
@@ -1289,12 +1435,12 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	switch(href_list["task"])
 		if("change_customizer")
 			handle_customizer_topic(user, href_list)
-			ShowChoices(user)
+			update_menu_data(user)
 			ShowCustomizers(user)
 			return
 		if("change_marking")
 			handle_body_markings_topic(user, href_list)
-			ShowChoices(user)
+			update_menu_data(user)
 			ShowMarkings(user)
 			return
 		if("change_descriptor")
@@ -1514,7 +1660,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 					if(new_flavortext == "")
 						flavortext = null
 						flavortext_display = null
-						ShowChoices(user)
+						update_menu_data(user)
 						return
 					flavortext = new_flavortext
 					var/ft = flavortext
@@ -1531,7 +1677,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 					if(new_ooc_notes == "")
 						ooc_notes = null
 						ooc_notes_display = null
-						ShowChoices(user)
+						update_menu_data(user)
 						return
 					ooc_notes = new_ooc_notes
 
@@ -1570,7 +1716,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 						return
 					if(new_extra_link == "")
 						new_extra_link = null
-						ShowChoices(user)
+						update_menu_data(user)
 						return
 					if(new_extra_link == " ")	//Single space to delete
 						ooc_extra_link = null
@@ -1579,7 +1725,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 					var/static/list/valid_extensions = list("jpg", "png", "jpeg", "gif", "mp4", "mp3")
 					if(!is_valid_headshot_link(user, new_extra_link, FALSE, valid_extensions))
 						new_extra_link = null
-						ShowChoices(user)
+						update_menu_data(user)
 						return
 
 					var/list/value_split = splittext(new_extra_link, ".")
@@ -1962,7 +2108,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 					if (href_list["tab"])
 						current_tab = text2num(href_list["tab"])
 
-	ShowChoices(user)
+	update_menu_data(user)
 	return 1
 
 
