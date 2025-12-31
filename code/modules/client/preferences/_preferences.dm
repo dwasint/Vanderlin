@@ -406,6 +406,8 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 		}
 
 		#bespecial   { top: 230px; left: 76px; width: 34px; height: 23px; background-image: url('bespecial_no.png'); }
+		#bespecial:hover {background-image: url('bespecial_no_hover.png');}
+		#bespecial.yes:hover {background-image: url('bespecial_yes_hover.png');}
 		#bespecial.yes { background-image: url('bespecial_yes.png'); }
 
 		.menu-ready  { top: 258px; left: 4px;   width: 88px; height: 10px; background-image: url('ready_order.png'); }
@@ -521,7 +523,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 			if('age' in data) updateField('char-age', data.age || '');
 			if('domhand' in data) updateField('char-domhand', data.domhand || '');
 			if('pronouns' in data) updateField('char-pronouns', data.pronouns || '');
-			if('gender' in data) updateField('char-gender', data.gender || '');
 			if('family' in data) updateField('char-family', data.family || 'None');
 			if('genderpref' in data) updateField('char-genderpref', data.genderpref || 'Any');
 			if('spouse' in data) updateField('char-spouse', data.spouse || 'None');
@@ -534,6 +535,15 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 			if('headshot' in data) updateHeadshot(data.headshot);
 			if('bespecial' in data) updateBeSpecial(data.bespecial === '1');
+
+
+			if('gender' in data) {
+				updateField('char-gender', data.gender || '');
+				var silhouette = document.getElementById('silhouette');
+				silhouette.style.backgroundImage = "url('features_bodytype_" + data.gender + ".png')";
+				if (data.gender === "F") silhouette.style.width = "15px";
+    			if (data.gender === "M") silhouette.style.width = "18px";
+			}
 
 			// Update voice color blob
 			if('ooccolor' in data) {
@@ -675,7 +685,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	<a href='?_src_=prefs;preference=customizers;task=menu'><div class="sprite f-btn"></div></a>
 	<a href='?_src_=prefs;preference=randomiseappearanceprefs;'><div class="sprite f-random"></div></a>
 
-	<div class="sprite features-bg"><div id="silhouette" class="sprite"></div></div>
+	<div class="sprite features-bg"><div id="silhouette" class="sprite" style="background-image: url('features_bodytype_[gender == MALE ? "m" : "f"].png');"></div></div>
 
 	<div class="sprite v-color-box">
 		<a href='?_src_=prefs;preference=ooccolor;task=input' style="display: block; width: 100%; height: 100%;">
@@ -852,7 +862,9 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 	// Be Special
 	user << browse_rsc('html/character_ui/bespecial/bespecial_no.png', "bespecial_no.png")
+	user << browse_rsc('html/character_ui/bespecial/bespecial_no_hover.png', "bespecial_no_hover.png")
 	user << browse_rsc('html/character_ui/bespecial/bespecial_yes.png', "bespecial_yes.png")
+	user << browse_rsc('html/character_ui/bespecial/bespecial_yes_hover.png', "bespecial_yes_hover.png")
 
 	// Misc Buttons
 	user << browse_rsc('html/character_ui/misc_buttons/ready_order.png', "ready_order.png")
