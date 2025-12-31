@@ -292,6 +292,7 @@
 	new_rat.melee_damage_upper = 0
 	new_rat.obj_damage = 0
 	new_rat.status_flags |= GODMODE
+	ADD_TRAIT(new_rat, TRAIT_NOFIRE, TRAIT_GENERIC)
 
 
 /datum/quirk/vice/weak_heart
