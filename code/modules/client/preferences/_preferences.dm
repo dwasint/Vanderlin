@@ -707,7 +707,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 	winshow(user, "stonekeep_prefwin", TRUE)
 	winshow(user, "stonekeep_prefwin.character_preview_map", TRUE)
-	user << browse(dat.Join(), "window=preferences_browser;size=816x879")
+	user << browse(dat.Join(), "window=preferences_browser;size=[816 * user?.client.window_scaling]x[879 * user?.client.window_scaling]")
 	update_preview_icon()
 	onclose(user, "stonekeep_prefwin", src)
 
