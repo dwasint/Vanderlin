@@ -132,6 +132,7 @@
 	overlay_to_index["[x][y]"] = MA
 	current_overlays++
 	if(current_overlays > 150)
+		cut_overlay(overlays[1]) //fucking emissives
 		icon = usr.client.RenderIcon(src)
 		current_overlays = 0
 		cut_overlays()
