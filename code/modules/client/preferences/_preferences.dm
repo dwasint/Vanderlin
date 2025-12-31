@@ -380,7 +380,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 			background: transparent;
 			border: none;
 			outline: none;
-			font-family: "Segoe Script";
 			font-size: 8px;
 			color: #2b1d14;
 			text-align: left;
@@ -490,7 +489,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 		function updateCharacterData() {
 			// BYOND's list2params() with output() sends arguments in pairs
-			// Arguments come as: arg0, arg1, arg2, arg3... where each pair is key=value
+			// Arguments come as: arg0, arg1, arg2, arg3... where each pair is key=value so we can't just do update(data)
 			var data = {};
 
 			// Process all arguments - they come as strings like "key=value"
