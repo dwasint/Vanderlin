@@ -326,7 +326,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 			height: 100vh;
 			margin: 0;
 			image-rendering: pixelated;
-			zoom: [100 / user.client?.window_scaling]%;
 		}
 		.ui-container {
 			position: relative;
@@ -376,6 +375,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 		.tri-shop:hover { background-image: url('triumphs_shop_hover.png'); }
 
 		.clickable-text {
+			font-weight: bold;
 			position: absolute;
 			background: transparent;
 			border: none;
@@ -448,13 +448,21 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	</style>
 	<script>
 		function shrinkText(element) {
+			// Reset to default size first
+			element.style.fontSize = '8px';
+
+			// Force a reflow to ensure scrollWidth is accurate
+			element.offsetHeight;
+
 			const maxWidth = element.offsetWidth - 4;
 			let fontSize = 8;
-			element.style.fontSize = fontSize + 'px';
 
-			while (element.scrollWidth > maxWidth && fontSize > 4) {
+			// Only shrink if text is actually overflowing
+			while (element.scrollWidth > maxWidth && fontSize > 5) {
 				fontSize -= 0.5;
 				element.style.fontSize = fontSize + 'px';
+				// Force reflow after each change
+				element.offsetHeight;
 			}
 		}
 
