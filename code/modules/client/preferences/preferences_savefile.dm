@@ -149,6 +149,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	// Custom hotkeys
 	S["key_bindings"]		>> key_bindings
 
+	if(!char_theme)
+		char_theme = "grimshart"
 	if(!chat_scale)
 		chat_scale = 1
 	//try to fix any outdated data if necessary
