@@ -327,6 +327,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 <head>
 	<style>
 		body {
+			zoom: [100 / user.client?.window_scaling]%;
 			background-color: #1a1a1a;
 			display: flex;
 			justify-content: center;
@@ -715,7 +716,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 	winshow(user, "stonekeep_prefwin", TRUE)
 	winshow(user, "stonekeep_prefwin.character_preview_map", TRUE)
-	user << browse(dat.Join(), "window=preferences_browser;size=[816 * user?.client.window_scaling]x[879 * user?.client.window_scaling]")
+	user << browse(dat.Join(), "window=preferences_browser;size=[816*1]x[879*1]")
 	update_preview_icon()
 	onclose(user, "stonekeep_prefwin", src)
 
