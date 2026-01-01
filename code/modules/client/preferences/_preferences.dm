@@ -321,13 +321,11 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 	user?.client.acquire_dpi()
 
-	// Build full HTML (keeping your existing HTML structure)
 	dat += {"
 <html lang="en">
 <head>
 	<style>
 		body {
-			zoom: [100 / user.client?.window_scaling]%;
 			background-color: #1a1a1a;
 			display: flex;
 			justify-content: center;
@@ -343,6 +341,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 			background-image: url('Charsheet_BG.1.png');
 			background-size: cover;
 			transform: scale(3);
+			zoom: [100 / user.client?.window_scaling]%;
 		}
 		.sprite { position: absolute; background-repeat: no-repeat; cursor: pointer; }
 
