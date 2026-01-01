@@ -2200,6 +2200,7 @@
 #include "code\modules\client\preferences\_preferences.dm"
 #include "code\modules\client\preferences\preference_multi_ready.dm"
 #include "code\modules\client\preferences\preferences_body_markings.dm"
+#include "code\modules\client\preferences\preferences_character_theme.dm"
 #include "code\modules\client\preferences\preferences_culinary.dm"
 #include "code\modules\client\preferences\preferences_customizers.dm"
 #include "code\modules\client\preferences\preferences_descriptors.dm"

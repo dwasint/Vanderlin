@@ -243,6 +243,14 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 	var/datum/multi_ready_ui/multi_ready_panel
 
+	var/char_theme = "grimshart"
+	var/static/list/char_themes = list(
+		"dusty",
+		"grimshart",
+		"paper",
+		"parchment",
+	)
+
 /datum/preferences/New(client/C)
 	parent = C
 
@@ -777,110 +785,12 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	user << output(list2params(params), "preferences_browser:updateCharacterData")
 	update_preview_icon()
 
-/datum/preferences/proc/send_character_ui_resources(mob/user)
-	// Background
-	user << browse_rsc('html/character_ui/background&reference/Charsheet_BG.1.png', "Charsheet_BG.1.png")
 
-	// Header
-	user << browse_rsc('html/character_ui/header/0_header_bg.png', "0_header_bg.png")
-	user << browse_rsc('html/character_ui/header/header_charname.png', "header_charname.png")
-	user << browse_rsc('html/character_ui/header/header_class.png', "header_class.png")
-	user << browse_rsc('html/character_ui/header/header_faith.png', "header_faith.png")
-	user << browse_rsc('html/character_ui/header/header_playerckey.png', "header_playerckey.png")
-	user << browse_rsc('html/character_ui/header/header_species.png', "header_species.png")
-	user << browse_rsc('html/character_ui/header/header_patron.png', "header_patron.png")
-	user << browse_rsc('html/character_ui/header/header_pq.png', "header_pq.png")
-
-	// Character Preview
-	user << browse_rsc('html/character_ui/character_preview/charpreview_bg.png', "charpreview_bg.png")
-
-	// Body
-	user << browse_rsc('html/character_ui/body/0_body_bg.png', "0_body_bg.png")
-	user << browse_rsc('html/character_ui/body/body_age.png', "body_age.png")
-	user << browse_rsc('html/character_ui/body/body_flaw.png', "body_flaw.png")
-	user << browse_rsc('html/character_ui/body/body_dominanthand.png', "body_dominanthand.png")
-	user << browse_rsc('html/character_ui/body/body_ancestry.png', "body_ancestry.png")
-	user << browse_rsc('html/character_ui/body/body_pronouns.png', "body_pronouns.png")
-	user << browse_rsc('html/character_ui/body/body_bodytype.png', "body_bodytype.png")
-
-	// Voice
-	user << browse_rsc('html/character_ui/voice/0_voice_bg.png', "0_voice_bg.png")
-	user << browse_rsc('html/character_ui/voice/voice_type.png', "voice_type.png")
-	user << browse_rsc('html/character_ui/voice/voice_accent.png', "voice_accent.png")
-	user << browse_rsc('html/character_ui/voice/voice_colour.png', "voice_colour.png")
-	user << browse_rsc('html/character_ui/voice/voice_colour_blob.png', "voice_colour_blob.png")
-
-	// Family
-	user << browse_rsc('html/character_ui/family/0_family_bg.png', "0_family_bg.png")
-	user << browse_rsc('html/character_ui/family/family_type.png', "family_type.png")
-	user << browse_rsc('html/character_ui/family/gender_pref.png', "gender_pref.png")
-	user << browse_rsc('html/character_ui/family/spouse_pref.png', "spouse_pref.png")
-
-	// Flavour
-	user << browse_rsc('html/character_ui/flavour/0_flavour_bg.png', "0_flavour_bg.png")
-	user << browse_rsc('html/character_ui/flavour/flavour_descriptors.png', "flavour_descriptors.png")
-	user << browse_rsc('html/character_ui/flavour/flavour_descriptors_hover.png', "flavour_descriptors_hover.png")
-	user << browse_rsc('html/character_ui/flavour/flavour_text.png', "flavour_text.png")
-	user << browse_rsc('html/character_ui/flavour/flavour_text_hover.png', "flavour_text_hover.png")
-	user << browse_rsc('html/character_ui/flavour/flavour_foodprefs.png', "flavour_foodprefs.png")
-	user << browse_rsc('html/character_ui/flavour/flavour_foodprefs_hover.png', "flavour_foodprefs_hover.png")
-	user << browse_rsc('html/character_ui/flavour/flavour_preview.png', "flavour_preview.png")
-	user << browse_rsc('html/character_ui/flavour/flavour_preview_hover.png', "flavour_preview_hover.png")
-
-	// Loadout
-	user << browse_rsc('html/character_ui/loadout/0_loadout_bg.png', "0_loadout_bg.png")
-	user << browse_rsc('html/character_ui/loadout/loadout_item1.png', "loadout_item1.png")
-	user << browse_rsc('html/character_ui/loadout/loadout_item2.png', "loadout_item2.png")
-	user << browse_rsc('html/character_ui/loadout/loadout_item3.png', "loadout_item3.png")
-
-	// Triumphs
-	user << browse_rsc('html/character_ui/triumphs/0_triumphs_bg.png', "0_triumphs_bg.png")
-	user << browse_rsc('html/character_ui/triumphs/triumphs_display.png', "triumphs_display.png")
-	user << browse_rsc('html/character_ui/triumphs/triumphs_shop.png', "triumphs_shop.png")
-	user << browse_rsc('html/character_ui/triumphs/triumphs_shop_hover.png', "triumphs_shop_hover.png")
-
-	// Headshot
-	user << browse_rsc('html/character_ui/character_headshot/headshot_bg.png', "headshot_bg.png")
-
-	// OOC
-	user << browse_rsc('html/character_ui/ooc/0_ooc_bg.png', "0_ooc_bg.png")
-	user << browse_rsc('html/character_ui/ooc/ooc_notes.png', "ooc_notes.png")
-	user << browse_rsc('html/character_ui/ooc/ooc_notes_hover.png', "ooc_notes_hover.png")
-	user << browse_rsc('html/character_ui/ooc/ooc_extra.png', "ooc_extra.png")
-	user << browse_rsc('html/character_ui/ooc/ooc_extra_hover.png', "ooc_extra_hover.png")
-	user << browse_rsc('html/character_ui/ooc/ooc_specialroles.png', "ooc_specialroles.png")
-	user << browse_rsc('html/character_ui/ooc/ooc_specialroles_hover.png', "ooc_specialroles_hover.png")
-
-	// Features
-	user << browse_rsc('html/character_ui/features/0_features_bg.png', "0_features_bg.png")
-	user << browse_rsc('html/character_ui/features/features_bodytype_f.png', "features_bodytype_f.png")
-	user << browse_rsc('html/character_ui/features/features_bodytype_m.png', "features_bodytype_m.png")
-	user << browse_rsc('html/character_ui/features/features_button.png', "features_button.png")
-	user << browse_rsc('html/character_ui/features/features_button_hover.png', "features_button_hover.png")
-	user << browse_rsc('html/character_ui/features/features_random.png', "features_random.png")
-	user << browse_rsc('html/character_ui/features/features_random_hover.png', "features_random_hover.png")
-
-	// Be Special
-	user << browse_rsc('html/character_ui/bespecial/bespecial_no.png', "bespecial_no.png")
-	user << browse_rsc('html/character_ui/bespecial/bespecial_no_hover.png', "bespecial_no_hover.png")
-	user << browse_rsc('html/character_ui/bespecial/bespecial_yes.png', "bespecial_yes.png")
-	user << browse_rsc('html/character_ui/bespecial/bespecial_yes_hover.png', "bespecial_yes_hover.png")
-
-	// Misc Buttons
-	user << browse_rsc('html/character_ui/misc_buttons/ready_order.png', "ready_order.png")
-	user << browse_rsc('html/character_ui/misc_buttons/ready_order_hover.png', "ready_order_hover.png")
-	user << browse_rsc('html/character_ui/misc_buttons/change_character.png', "change_character.png")
-	user << browse_rsc('html/character_ui/misc_buttons/change_character_hover.png', "change_character_hover.png")
-	user << browse_rsc('html/character_ui/misc_buttons/save.png', "save.png")
-	user << browse_rsc('html/character_ui/misc_buttons/save_hover.png', "save_hover.png")
-	user << browse_rsc('html/character_ui/misc_buttons/undo.png', "undo.png")
-	user << browse_rsc('html/character_ui/misc_buttons/undo_hover.png', "undo_hover.png")
-	user << browse_rsc('html/character_ui/misc_buttons/done.png', "done.png")
-	user << browse_rsc('html/character_ui/misc_buttons/done_hover.png', "done_hover.png")
-	user << browse_rsc('html/character_ui/misc_buttons/keybinds.png', "keybinds.png")
-	user << browse_rsc('html/character_ui/misc_buttons/keybinds_hover.png', "keybinds_hover.png")
-	user << browse_rsc('html/character_ui/misc_buttons/toggles.png', "toggles.png")
-	user << browse_rsc('html/character_ui/misc_buttons/toggles_hover.png', "toggles_hover.png")
+/datum/preferences/proc/set_ui_theme(new_theme)
+	if(new_theme in list("dusty", "grimshart", "paper", "parchment"))
+		char_theme = new_theme
+		return TRUE
+	return FALSE
 
 #undef APPEARANCE_CATEGORY_COLUMN
 #undef MAX_MUTANT_ROWS
