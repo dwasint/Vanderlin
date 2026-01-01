@@ -578,7 +578,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	<div class="sprite flavour-bg"></div>
 	<div class="sprite loadout-bg"></div>
 	<div class="sprite triumphs-bg"></div>
-	<div class="sprite headshot-bg">
+	<div class="sprite headshot-bg" style="padding: 3px; box-sizing: border-box;">
 		<a href='?_src_=prefs;preference=headshot;task=input' style="display: block; width: 100%; height: 100%;">
 			<img id="headshot-img" src="[headshot_link || ""]"
 				 style="width: 100%; height: 100%; object-fit: cover; cursor: pointer; image-rendering: auto;"
