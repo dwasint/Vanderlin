@@ -185,9 +185,6 @@ SUBSYSTEM_DEF(merchant)
 	for(var/datum/world_faction/active_faction in world_factions)
 		active_faction.draw_selling_changes()
 
-/datum/controller/subsystem/merchant/proc/return_sell_modifier(atom/sell_type)
-	return active_faction.return_sell_modifier(sell_type)
-
 /datum/controller/subsystem/merchant/proc/set_faction_sell_values(atom/sell_type)
 	staticly_setup_types |= sell_type
 	for(var/datum/world_faction/active_faction in world_factions)

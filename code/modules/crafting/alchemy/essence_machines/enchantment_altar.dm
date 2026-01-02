@@ -72,7 +72,7 @@
 
 /obj/machinery/essence/enchantment_altar/is_essence_allowed(essence_type)
 	if(!selected_recipe)
-		return TRUE // No recipe selected, accept anything
+		return FALSE // No recipe selected, accept anything
 
 	if(!(essence_type in selected_recipe.essence_recipe))
 		return FALSE // Not needed for recipe

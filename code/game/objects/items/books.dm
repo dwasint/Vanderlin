@@ -918,13 +918,14 @@
 			var/obj/temp = new bounty_type()
 			var/bounty_name = temp.name
 			var/multiplier = faction.bounty_items[bounty_type]
+			var/base_value = faction.get_item_base_value(bounty_type)
+			var/total_value = round(base_value * multiplier)
 			var/expiration_time = faction.bounty_refresh_times[bounty_type]
 			var/time_remaining = expiration_time - world.time
 			qdel(temp)
-			html += "<li class='bounty-item'>[bounty_name] ([multiplier]x price) - <small>[time_to_text(time_remaining)]</small></li>"
+			html += "<li class='bounty-item'>[bounty_name] ([multiplier]x - [total_value] mammon) - <small>[time_to_text(time_remaining)]</small></li>"
 	else
 		html += "<li>No active bounties</li>"
-
 	html += {"
 						</ul>
 						<p style="font-size: 0.8em; color: [faction.faction_color]; margin-top: 10px;">
@@ -938,7 +939,6 @@
 						<p>Next rotation: <strong>[time_to_text(faction.next_supply_rotation - world.time)]</strong></p>
 						<h3 style="color: [faction.faction_color]; margin: 15px 0 10px 0;">Next Boat Traders:</h3>
 	"}
-
 	// Display trader information
 	if(faction.next_boat_trader_count > 0)
 		html += "<p><strong>[faction.next_boat_trader_count]</strong> traders scheduled</p>"
@@ -949,7 +949,6 @@
 		html += "</ul>"
 	else
 		html += "<p><em>No traders scheduled</em></p>"
-
 	html += {"
 					</div>
 				</div>

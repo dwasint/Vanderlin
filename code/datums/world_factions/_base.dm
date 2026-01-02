@@ -69,10 +69,198 @@
 	var/next_boat_trader_count = 0 // How many traders will come on next boat
 	var/trader_schedule_generated = FALSE // Whether we've prepared for next boat
 
+	/// Cached list of all valid bounty items (items that can be obtained through gameplay)
+	var/static/list/valid_bounty_items = list()
+	///this is a static of possible bounty items
+	var/static/list/obtainable_items = list()
+	///cached list of exclusions for the craft requirements
+	var/static/list/exclusions = list()
+	///same as above but adds all the subtypes
+	var/static/list/exclusion_subtypes = list(
+		/obj/item/ingot,
+		/obj/item/ore,
+		/obj/item/natural,
+	)
+
+	///faction specific weightings for bounties
+	// Format: list(path = weight)
+	// Example: list(/obj/item/clothing = 300, /obj/item/weapon = 200)
+	// Higher weight = more likely to appear as bounty
+	///we use base 100 so we have fine control over it
+	var/list/bounty_path_weights = list()
+	var/default_bounty_weight = 100 // Weight for items not in bounty_path_weights
+
+	/// Cache of recipe component costs to avoid recalculation
+	var/static/list/recipe_base_values = list()
+
 /datum/world_faction/New()
 	..()
+	initialize_bounty_cache()
 	initialize_faction_stock()
 	generate_initial_bounties()
+	initialize_recipe_values()
+
+/**
+ * Initializes recipe base values for ALL recipes
+ * This runs once and calculates component costs for every craftable item
+ */
+/datum/world_faction/proc/initialize_recipe_values()
+	if(length(recipe_base_values))
+		return // Already initialized
+
+	log_game("Calculating recipe component costs for all craftable items...")
+
+	// Process ALL repeatable crafting recipes
+	for(var/datum/repeatable_crafting_recipe/recipe_type as anything in subtypesof(/datum/repeatable_crafting_recipe))
+		var/datum/repeatable_crafting_recipe/recipe = new recipe_type()
+		var/output = recipe.output
+
+		if(output)
+			var/cost = calculate_component_cost(recipe.requirements, recipe.reagent_requirements)
+			recipe_base_values[output] = cost + (recipe.craftdiff * 10)
+
+		qdel(recipe)
+
+	// Process ALL orderless slapcraft recipes
+	for(var/datum/orderless_slapcraft/recipe_type as anything in subtypesof(/datum/orderless_slapcraft))
+		var/datum/orderless_slapcraft/recipe = new recipe_type()
+		var/output = recipe.output_item
+
+		if(output)
+			var/cost = calculate_component_cost(recipe.requirements)
+			recipe_base_values[output] = cost + 10
+
+		qdel(recipe)
+
+	// Process ALL anvil recipes
+	for(var/datum/anvil_recipe/recipe_type as anything in subtypesof(/datum/anvil_recipe))
+		var/datum/anvil_recipe/recipe = new recipe_type()
+		var/output = recipe.created_item
+
+		if(output)
+			var/list/all_requirements = list()
+			if(recipe.req_bar)
+				all_requirements[recipe.req_bar] = recipe.num_of_materials
+
+			if(length(recipe.additional_items))
+				for(var/item in recipe.additional_items)
+					all_requirements[item] = 1
+
+			var/cost = calculate_component_cost(all_requirements)
+			recipe_base_values[output] = cost + (recipe.craftdiff * 10)
+
+		qdel(recipe)
+
+	// Process ALL artificer recipes
+	for(var/datum/artificer_recipe/recipe_type as anything in subtypesof(/datum/artificer_recipe))
+		var/datum/artificer_recipe/recipe = new recipe_type()
+		var/output = recipe.created_item
+
+		if(output)
+			var/list/all_requirements = list()
+			if(recipe.required_item)
+				all_requirements[recipe.required_item] = 1
+
+			if(length(recipe.additional_items))
+				for(var/item in recipe.additional_items)
+					all_requirements[item] = 1
+
+			var/cost = calculate_component_cost(all_requirements)
+			recipe_base_values[output] = cost + (recipe.craftdiff * 10)
+
+		qdel(recipe)
+
+	// Process ALL container craft recipes
+	for(var/datum/container_craft/recipe_type as anything in subtypesof(/datum/container_craft))
+		var/datum/container_craft/recipe = new recipe_type()
+		var/output = recipe.output
+
+		if(output)
+			var/cost = calculate_component_cost(recipe.requirements, recipe.reagent_requirements)
+			recipe_base_values[output] = cost + 10
+
+		qdel(recipe)
+
+	log_game("Calculated recipe values for [length(recipe_base_values)] craftable items")
+
+/**
+ * Initializes the cache of valid bounty items
+ * This includes items that BOTH have sell values AND can be obtained through gameplay
+ */
+/datum/world_faction/proc/initialize_bounty_cache()
+	if(length(valid_bounty_items))
+		return
+
+	// Initialize recipe values FIRST
+	initialize_recipe_values()
+
+	// Build obtainable items list
+	for(var/datum/supply_pack/pack_type as anything in subtypesof(/datum/supply_pack))
+		var/datum/supply_pack/pack = new pack_type()
+
+		if(islist(pack.contains))
+			for(var/item_type in pack.contains)
+				obtainable_items |= item_type
+		else if(pack.contains)
+			obtainable_items |= pack.contains
+
+		qdel(pack)
+
+	for(var/path in exclusion_subtypes)
+		obtainable_items |= subtypesof(path)
+
+	for(var/path in exclusions)
+		obtainable_items |= path
+
+	for(var/datum/repeatable_crafting_recipe/recipe as anything in subtypesof(/datum/repeatable_crafting_recipe))
+		var/output = initial(recipe.output)
+		if(output)
+			obtainable_items |= output
+
+	for(var/datum/container_craft/recipe as anything in subtypesof(/datum/container_craft))
+		var/output = initial(recipe.output)
+		if(output)
+			obtainable_items |= output
+
+	for(var/datum/orderless_slapcraft/recipe as anything in subtypesof(/datum/orderless_slapcraft))
+		var/output = initial(recipe.output_item)
+		if(output)
+			obtainable_items |= output
+
+	for(var/datum/anvil_recipe/recipe as anything in subtypesof(/datum/anvil_recipe))
+		var/output = initial(recipe.created_item)
+		if(output)
+			obtainable_items |= output
+
+	for(var/datum/artificer_recipe/recipe as anything in subtypesof(/datum/artificer_recipe))
+		var/output = initial(recipe.created_item)
+		if(output)
+			obtainable_items |= output
+
+	// Only include items that are both obtainable AND have a base value
+	for(var/obj_type in obtainable_items)
+		var/base_value = get_item_base_value(obj_type)
+		if(base_value > 0)
+			valid_bounty_items |= obj_type
+
+	log_game("[faction_name] initialized with [length(valid_bounty_items)] valid bounty items (out of [length(obtainable_items)] obtainable items)")
+
+/**
+ * Gets the weight for a specific item type based on bounty_path_weights
+ * Checks the item and all its parent types for matching weights
+ */
+/datum/world_faction/proc/get_bounty_weight(obj/item_type)
+	var/highest_weight = default_bounty_weight
+
+	// Check each weighted path to see if item_type is a subtype
+	for(var/weighted_path in bounty_path_weights)
+		if(ispath(item_type, weighted_path))
+			var/weight = bounty_path_weights[weighted_path]
+			// Use the most specific (highest) weight found
+			if(weight > highest_weight)
+				highest_weight = weight
+
+	return highest_weight
 
 // Get current reputation tier (0-6)
 /datum/world_faction/proc/get_reputation_tier()
@@ -121,6 +309,68 @@
 	trader_schedule_generated = FALSE
 	next_boat_traders.Cut()
 	next_boat_trader_count = 0
+
+
+/**
+ * Calculates the total cost of components in a recipe
+ * Arguments:
+ *   requirements - List of required items (path = amount)
+ *   reagent_requirements - Optional list of required reagents
+ * Returns:
+ *   Total component cost, or 0 if cannot be calculated
+ */
+/datum/world_faction/proc/calculate_component_cost(list/requirements, list/reagent_requirements)
+	var/total_cost = 0
+
+	// Calculate item component costs
+	if(length(requirements))
+		for(var/component_type in requirements)
+			var/amount = 1
+
+			// Handle different requirement formats
+			if(isnum(requirements[component_type]))
+				amount = requirements[component_type]
+			else if(islist(requirements[component_type]))
+				amount = length(requirements[component_type])
+
+			var/component_value = get_item_base_value(component_type)
+
+			if(component_value <= 0)
+				// If we can't determine a component's value, we can't calculate total cost
+				return 0
+
+			total_cost += component_value * amount
+
+	// Calculate reagent costs (simplified - you may want to add actual reagent values)
+	if(length(reagent_requirements))
+		for(var/reagent in reagent_requirements)
+			var/amount = reagent_requirements[reagent]
+			// Use a base cost per unit of reagent (adjust as needed)
+			total_cost += amount * 0.5
+
+	return total_cost
+
+/**
+ * Gets the base value of an item
+ * Checks recipe values first, then falls back to sellprice
+ * Arguments:
+ *   item_type - The path of the item
+ * Returns:
+ *   The base value, or 0 if not found
+ */
+/datum/world_faction/proc/get_item_base_value(item_type)
+	// Check if it's a craftable item with recipe cost
+	if(item_type in recipe_base_values)
+		return recipe_base_values[item_type]
+
+	// Otherwise use sellprice directly
+	var/obj/item/temp = item_type
+	var/sellprice = initial(temp.sellprice)
+
+	if(sellprice && sellprice > 0)
+		return sellprice
+
+	return 0
 
 // Create multiple traders from scheduled list
 /datum/world_faction/proc/create_scheduled_traders(turf/spawn_location)
@@ -208,30 +458,78 @@
 		if(pack.contains)
 			faction_supply_packs[selected_pack] = pack
 
+/**
+ * Generates initial bounties using the weighted system
+ */
 /datum/world_faction/proc/generate_initial_bounties()
-	// Generate initial bounties from items with sell values
-	var/list/potential_bounties = list()
-	for(var/obj_type in SSmerchant.staticly_setup_types)
-		potential_bounties += obj_type
+	if(!length(valid_bounty_items))
+		log_game("WARNING: [faction_name] has no valid bounty items!")
+		return
 
 	var/max_bounties = get_max_bounties()
+
+	// Build weighted list of all valid bounty items
+	var/list/weighted_bounties = list()
+	for(var/bounty_type in valid_bounty_items)
+		weighted_bounties[bounty_type] = get_bounty_weight(bounty_type)
+
+	// Pick bounties using weights
 	for(var/i = 1 to max_bounties)
-		if(!length(potential_bounties))
+		if(!length(weighted_bounties))
 			break
-		var/bounty_type = pick(potential_bounties)
-		potential_bounties -= bounty_type
+
+		var/bounty_type = pickweight(weighted_bounties)
+		weighted_bounties -= bounty_type
 		add_bounty(bounty_type)
 
+
+/**
+ * Generates a bounty multiplier based on item value and reputation
+ * Higher value items get lower multipliers to balance rewards
+ */
+/datum/world_faction/proc/generate_bounty_multiplier(atom/bounty_type)
+	var/base_value = get_item_base_value(bounty_type)
+	var/tier = get_reputation_tier()
+
+	// Scale multiplier inversely with item value
+	var/value_modifier = 1.0
+	if(base_value > 0)
+		// Expensive items (100+) get lower multipliers
+		// Cheap items (1-20) get higher multipliers
+		if(base_value >= 100)
+			value_modifier = 0.6
+		else if(base_value >= 50)
+			value_modifier = 0.8
+		else if(base_value >= 20)
+			value_modifier = 1.0
+		else
+			value_modifier = 1.2
+
+	// Reputation provides bonus to multipliers
+	var/base_min = (12 + (tier * 2)) / 10.0
+	var/base_max = (25 + (tier * 3)) / 10.0
+
+	var/multiplier = rand(base_min * 10, base_max * 10) / 10.0
+	multiplier *= value_modifier
+
+	return max(1.1, multiplier) // Minimum 1.1x multiplier
+
+/**
+ * adds a bounty taking into account calculated multipliers for items
+ */
 /datum/world_faction/proc/add_bounty(atom/bounty_type, multiplier)
+	// Validate that this is an obtainable item
+	if(!(bounty_type in valid_bounty_items))
+		log_game("WARNING: Attempted to add invalid bounty [bounty_type] to [faction_name]")
+		return FALSE
+
 	if(!multiplier)
-		// Generate random multiplier based on faction needs and reputation
-		var/tier = get_reputation_tier()
-		var/base_min = 12 + (tier * 2) // Higher rep = better base multipliers
-		var/base_max = 25 + (tier * 3)
-		multiplier = rand(base_min, base_max) / 10
+		multiplier = generate_bounty_multiplier(bounty_type)
 
 	bounty_items[bounty_type] = multiplier
 	bounty_refresh_times[bounty_type] = world.time + bounty_rotation_interval
+
+	return TRUE
 
 /datum/world_faction/proc/remove_bounty(atom/bounty_type)
 	bounty_items -= bounty_type
@@ -276,6 +574,9 @@
 
 	next_supply_rotation = world.time + supply_rotation_interval
 
+/**
+ * Rotates bounties using weighted selection
+ */
 /datum/world_faction/proc/rotate_bounties()
 	var/list/expired_bounties = list()
 
@@ -288,18 +589,18 @@
 	for(var/expired_bounty in expired_bounties)
 		remove_bounty(expired_bounty)
 
-		// Higher reputation = higher chance for replacement bounties
 		var/tier = get_reputation_tier()
-		var/replacement_chance = 70 + (tier * 5) // 5% more chance per tier
+		var/replacement_chance = 70 + (tier * 5)
 
 		if(prob(replacement_chance))
-			var/list/potential_bounties = list()
-			for(var/obj_type in SSmerchant.staticly_setup_types)
+			// Build weighted list of available bounties
+			var/list/weighted_available = list()
+			for(var/obj_type in valid_bounty_items)
 				if(!(obj_type in bounty_items))
-					potential_bounties += obj_type
+					weighted_available[obj_type] = get_bounty_weight(obj_type)
 
-			if(length(potential_bounties))
-				var/new_bounty = pick(potential_bounties)
+			if(length(weighted_available))
+				var/new_bounty = pickweight(weighted_available)
 				add_bounty(new_bounty)
 
 	// If we have fewer bounties than our max, try to add more
@@ -307,17 +608,17 @@
 	var/current_bounties = length(bounty_items)
 
 	if(current_bounties < max_bounties)
-		var/list/potential_bounties = list()
-		for(var/obj_type in SSmerchant.staticly_setup_types)
+		var/list/weighted_available = list()
+		for(var/obj_type in valid_bounty_items)
 			if(!(obj_type in bounty_items))
-				potential_bounties += obj_type
+				weighted_available[obj_type] = get_bounty_weight(obj_type)
 
 		var/bounties_to_add = max_bounties - current_bounties
 		for(var/i = 1 to bounties_to_add)
-			if(!length(potential_bounties))
+			if(!length(weighted_available))
 				break
-			var/new_bounty = pick(potential_bounties)
-			potential_bounties -= new_bounty
+			var/new_bounty = pickweight(weighted_available)
+			weighted_available -= new_bounty
 			add_bounty(new_bounty)
 
 // Award reputation for completing bounties
@@ -365,6 +666,32 @@
 	if(!trader_schedule_generated)
 		schedule_next_boat_traders()
 
+/datum/world_faction/proc/get_actual_sell_price(atom/sell_type, sell_modifier = 1)
+	var/base_price = 0
+
+	// If this item has an active bounty, use the bounty's base value
+	if(sell_type in bounty_items)
+		base_price = get_item_base_value(sell_type)
+		var/bounty_multiplier = bounty_items[sell_type]
+		return FLOOR(base_price * bounty_multiplier * sell_modifier, 1)
+
+	// Otherwise use normal sellprice with modifiers
+	var/obj/item/temp = sell_type
+	base_price = initial(temp.sellprice)
+
+	if(!base_price || base_price <= 0)
+		return 0
+
+	var/static_modifier = 1
+	if(sell_type in hard_value_multipliers)
+		static_modifier = hard_value_multipliers[sell_type]
+
+	var/dynamic_modifier = 1
+	if(sell_type in sell_value_modifiers)
+		dynamic_modifier = sell_value_modifiers[sell_type]
+
+	return FLOOR(base_price * static_modifier * dynamic_modifier * sell_modifier, 1)
+
 /datum/world_faction/proc/return_sell_modifier(atom/sell_type)
 	var/static_modifer = 1
 	if(sell_type in hard_value_multipliers)
@@ -387,26 +714,29 @@
 /datum/world_faction/proc/has_supply_pack(datum/supply_pack/pack_type)
 	return (pack_type in faction_supply_packs)
 
+/**
+ * Handles selling an item, including bounty completion with weighted replacement
+ */
 /datum/world_faction/proc/handle_selling(obj/selling_type)
 	sold_count |= selling_type
 	sold_count[selling_type]++
 
 	if(selling_type in bounty_items)
-		award_bounty_reputation(selling_type) // Award reputation for completing bounty
+		award_bounty_reputation(selling_type)
 		remove_bounty(selling_type)
 
-		// Higher reputation = better chance for new bounties
 		var/tier = get_reputation_tier()
 		var/new_bounty_chance = 60 + (tier * 5)
 
 		if(prob(new_bounty_chance))
-			var/list/potential_bounties = list()
-			for(var/obj_type in SSmerchant.staticly_setup_types)
+			// Build weighted list of available bounties
+			var/list/weighted_available = list()
+			for(var/obj_type in valid_bounty_items)
 				if(!(obj_type in bounty_items))
-					potential_bounties += obj_type
+					weighted_available[obj_type] = get_bounty_weight(obj_type)
 
-			if(length(potential_bounties))
-				var/new_bounty = pick(potential_bounties)
+			if(length(weighted_available))
+				var/new_bounty = pickweight(weighted_available)
 				add_bounty(new_bounty)
 
 	if(!prob(sold_count[selling_type] * 10))
@@ -453,6 +783,10 @@
 /datum/world_faction/proc/setup_sell_data(atom/sell_type)
 	sell_value_modifiers |= sell_type
 	sell_value_modifiers[sell_type] = 1
+
+	if(sell_type in obtainable_items)
+		obtainable_items -= sell_type
+		valid_bounty_items |= sell_type
 
 /datum/world_faction/proc/should_send_trader()
 	if(!length(trader_type_weights))
@@ -648,6 +982,110 @@
 
 	return "[tier_name] ([faction_reputation]/[next_threshold])"
 
+/**
+ * Gets a categorized list of bounty items by how they can be obtained
+ * Useful for UI display
+ */
+/datum/world_faction/proc/get_bounty_categories()
+	var/list/categories = list(
+		"craftable" = list(),
+		"purchasable" = list(),
+		"both" = list()
+	)
+
+	for(var/bounty_type in bounty_items)
+		var/is_craftable = FALSE
+		var/is_purchasable = FALSE
+
+		// Check if craftable
+		for(var/datum/repeatable_crafting_recipe/recipe as anything in subtypesof(/datum/repeatable_crafting_recipe))
+			if(initial(recipe.output) == bounty_type)
+				is_craftable = TRUE
+				break
+
+		if(!is_craftable)
+			for(var/datum/orderless_slapcraft/recipe as anything in subtypesof(/datum/orderless_slapcraft))
+				if(initial(recipe.output_item) == bounty_type)
+					is_craftable = TRUE
+					break
+
+		if(!is_craftable)
+			for(var/datum/anvil_recipe/recipe as anything in subtypesof(/datum/anvil_recipe))
+				if(initial(recipe.created_item) == bounty_type)
+					is_craftable = TRUE
+					break
+
+		if(!is_craftable)
+			for(var/datum/artificer_recipe/recipe as anything in subtypesof(/datum/artificer_recipe))
+				if(initial(recipe.created_item) == bounty_type)
+					is_craftable = TRUE
+					break
+
+		// Check if purchasable
+		for(var/datum/supply_pack/pack_type as anything in subtypesof(/datum/supply_pack))
+			var/datum/supply_pack/pack = new pack_type()
+			if(islist(pack.contains))
+				if(bounty_type in pack.contains)
+					is_purchasable = TRUE
+			else if(pack.contains == bounty_type)
+				is_purchasable = TRUE
+			qdel(pack)
+			if(is_purchasable)
+				break
+
+		// Categorize
+		if(is_craftable && is_purchasable)
+			categories["both"] += bounty_type
+		else if(is_craftable)
+			categories["craftable"] += bounty_type
+		else if(is_purchasable)
+			categories["purchasable"] += bounty_type
+
+	return categories
+
+/**
+ * Debug proc to show bounty weight distribution
+ */
+/datum/world_faction/proc/debug_bounty_weights(mob/user)
+	if(!user)
+		return
+
+	to_chat(user, "<span class='boldnotice'>=== [faction_name] Bounty Weights ===</span>")
+
+	if(!length(bounty_path_weights))
+		to_chat(user, "<span class='notice'>No custom bounty weights configured (all items use default weight: [default_bounty_weight])</span>")
+		return
+
+	to_chat(user, "<span class='notice'>Default weight: [default_bounty_weight]</span>")
+	to_chat(user, "<span class='notice'>Custom weights:</span>")
+
+	for(var/path in bounty_path_weights)
+		var/weight = bounty_path_weights[path]
+		var/count = 0
+
+		// Count how many valid bounty items match this path
+		for(var/item_type in valid_bounty_items)
+			if(ispath(item_type, path))
+				count++
+
+		to_chat(user, "<span class='notice'>  [path]: weight [weight] ([count] items)</span>")
+
+/**
+ * Debug proc to show bounty statistics
+ */
+/datum/world_faction/proc/debug_bounty_info(mob/user)
+	if(!user)
+		return
+
+	to_chat(user, "<span class='boldnotice'>=== [faction_name] Bounty Info ===</span>")
+	to_chat(user, "<span class='notice'>Total valid bounty items: [length(valid_bounty_items)]</span>")
+	to_chat(user, "<span class='notice'>Active bounties: [length(bounty_items)]/[get_max_bounties()]</span>")
+
+	var/list/categories = get_bounty_categories()
+	to_chat(user, "<span class='notice'>Craftable only: [length(categories["craftable"])]</span>")
+	to_chat(user, "<span class='notice'>Purchasable only: [length(categories["purchasable"])]</span>")
+	to_chat(user, "<span class='notice'>Both: [length(categories["both"])]</span>")
+
 /datum/world_faction/proc/debug_spawn_trader(mob/spawner)
 	if(!spawner)
 		return null
@@ -692,3 +1130,22 @@
 		return
 
 	debug_spawn_random_faction_trader(mob)
+
+/client/proc/debug_faction_bounties()
+	set name = "Debug Faction Bounties"
+	set category = "Debug"
+
+	if(!check_rights(R_ADMIN))
+		return
+
+	var/list/faction_names = list()
+	for(var/datum/world_faction/faction in SSmerchant.world_factions)
+		faction_names[faction.faction_name] = faction
+
+	var/choice = input(usr, "Select faction to debug:", "Faction Bounties") as null|anything in faction_names
+	if(!choice)
+		return
+
+	var/datum/world_faction/faction = faction_names[choice]
+	faction.debug_bounty_info(mob)
+	faction.debug_bounty_weights(mob)
