@@ -56,6 +56,7 @@
 	)
 	viable_tasks = list(
 		/datum/devotion_task/necra_bury,
+		/datum/devotion_task/astrata_purge,
 	)
 	traits = list(TRAIT_DEATHSIGHT)
 
