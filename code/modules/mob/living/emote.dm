@@ -19,6 +19,7 @@
 	set category = "Emotes"
 
 	emote("pray", intentional = TRUE)
+	SEND_SIGNAL(src, COMSIG_PRAYER_COMPLETED)
 
 /datum/emote/living/pray/run_emote(mob/user, params, type_override, intentional)
 	if(HAS_TRAIT(user, TRAIT_ATHEISM_CURSE))

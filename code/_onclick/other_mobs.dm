@@ -457,6 +457,7 @@
 						record_featured_stat(FEATURED_STATS_THIEVES, U)
 						record_featured_stat(FEATURED_STATS_CRIMINALS, U)
 						record_round_statistic(STATS_ITEMS_PICKPOCKETED)
+						SEND_SIGNAL(src, COMSIG_PICKPOCKET_SUCCESS)
 					if(has_quirk(/datum/quirk/vice/kleptomaniac))
 						sate_addiction(/datum/quirk/vice/kleptomaniac)
 				else

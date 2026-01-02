@@ -179,6 +179,12 @@
 /datum/reagents/proc/trans_to(obj/target, amount = 1, multiplier = 1, preserve_data = TRUE, no_react = FALSE, mob/transfered_by, remove_blacklisted = FALSE, method = null, show_message = TRUE, round_robin = FALSE)
 	//if preserve_data=0, the reagents data will be lost. Usefull if you use data for some strange stuff and don't want it to be transferred.
 	//if round_robin=TRUE, so transfer 5 from 15 water, 15 sugar and 15 plasma becomes 10, 15, 15 instead of 13.3333, 13.3333 13.3333. Good if you hate floating point errors
+	if(isliving(target) && transfered_by != target)
+		for(var/datum/reagent/reagent_type as anything in reagent_list)
+			if(istype(reagent_type, /datum/reagent/medicine))
+				SEND_SIGNAL(transfered_by, COMSIG_LIVING_MEDICINE_APPLIED)
+				break
+
 	var/list/cached_reagents = reagent_list
 	if(!target || !total_volume)
 		return

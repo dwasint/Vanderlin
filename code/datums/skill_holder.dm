@@ -519,6 +519,7 @@
 			var/apprentice_amt = amt * 0.1 + multiplier
 			if(apprentice.mind.add_sleep_experience(skill, apprentice_amt, FALSE, FALSE))
 				current.add_stress(/datum/stress_event/apprentice_making_me_proud)
+				SEND_SIGNAL(current, COMSIG_TAUGHT_APPRENTICE)
 
 /**
  * Get the experience multiplier for a specific skill

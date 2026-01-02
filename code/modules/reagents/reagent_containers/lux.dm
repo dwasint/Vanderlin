@@ -24,6 +24,7 @@
 	. = 1
 
 /datum/reagent/lux/on_mob_life(mob/living/carbon/M)
+	SEND_SIGNAL(src, COMSIG_DRUG_INDULGE)
 	if(M.has_quirk(/datum/quirk/vice/junkie))
 		M.sate_addiction(/datum/quirk/vice/junkie)
 	if(M.has_status_effect(/datum/status_effect/debuff/lux_drained))
@@ -154,6 +155,7 @@
 	. = 1
 
 /datum/reagent/lux_tainted/on_mob_life(mob/living/carbon/M)
+
 	if(M.has_quirk(/datum/quirk/vice/junkie))
 		M.sate_addiction(/datum/quirk/vice/junkie)
 	if(M.has_status_effect(/datum/status_effect/debuff/lux_drained))

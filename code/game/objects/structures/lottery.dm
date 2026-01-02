@@ -115,6 +115,7 @@
 	// Determine result
 	if(gamblingprob > diceroll)
 		handle_win()
+		SEND_SIGNAL(user, COMSIG_GAMBLING_WON)
 	else
 		handle_loss()
 

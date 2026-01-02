@@ -35,6 +35,7 @@
 						var/amt2raise = L.STAINT*2 // Smelting is already a timesink, this is justified to accelerate levelling
 						if(amt2raise > 0)
 							user.adjust_experience(/datum/skill/craft/smelting, amt2raise * boon, FALSE)
+							SEND_SIGNAL(user, COMSIG_ITEM_SMELTED)
 				user.visible_message("<span class='info'>[user] retrieves [I] from [src].</span>")
 				if(on)
 					var/tyme = world.time

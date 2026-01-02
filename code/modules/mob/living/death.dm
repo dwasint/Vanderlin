@@ -108,6 +108,10 @@ GLOBAL_LIST_EMPTY(last_words)
 		if(last_words)
 			GLOB.last_words |= last_words
 
+	if(lastattacker_weakref)
+		var/mob/attacker = lastattacker_weakref.resolve()
+		SEND_SIGNAL(attacker, COMSIG_LIVING_COMBAT_KILL)
+
 	for(var/datum/soullink/S as anything in ownedSoullinks)
 		S.ownerDies(gibbed)
 	for(var/datum/soullink/S as anything in sharedSoullinks)
