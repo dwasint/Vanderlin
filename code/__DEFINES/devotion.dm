@@ -43,3 +43,4 @@
 #define COMSIG_DRUG_INDULGE	"indulge_drug"
 
 #define COMSIG_LIVING_COMBAT_KILL	"kill_other"
+#define COMSIG_SOIL_BLESSED			"soil_blessed"

@@ -1090,6 +1090,7 @@
 #include "code\datums\faith\penance\generic.dm"
 #include "code\datums\faith\tasks\_devotion_task.dm"
 #include "code\datums\faith\tasks\abyssor.dm"
+#include "code\datums\faith\tasks\astrata.dm"
 #include "code\datums\faith\tasks\baotha.dm"
 #include "code\datums\faith\tasks\dendor.dm"
 #include "code\datums\faith\tasks\eora.dm"

@@ -26,3 +26,11 @@
 	if(prob(80))
 		return TRUE
 	return FALSE
+
+/datum/devotion_task/dendor_bless
+	name = "Provide Dendor's Blessing"
+	desc = "Spread dendors word to plants"
+	devotion_reward = 25
+	progression_reward = 12
+	cooldown_time = 25 SECONDS
+	signal_type = COMSIG_SOIL_BLESSED

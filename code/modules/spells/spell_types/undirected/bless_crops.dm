@@ -34,3 +34,4 @@
 		new /obj/effect/temp_visual/bless_swirl(get_turf(soil))
 		if(amount_blessed >= 5)
 			break
+		SEND_SIGNAL(owner, COMSIG_SOIL_BLESSED)

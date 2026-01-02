@@ -5,6 +5,9 @@
 		CLERIC_T2 = /datum/action/cooldown/spell/healing/greater,
 		CLERIC_T3 = /datum/action/cooldown/spell/revive,
 	)
+	viable_tasks = list(
+		/datum/devotion_task/astrata_purge,
+	)
 
 /datum/devotion/divine/noc
 	miracles = list(
@@ -29,6 +32,7 @@
 	viable_tasks = list(
 		/datum/devotion_task/dendor_tend,
 		/datum/devotion_task/dendor_harvest,
+		/datum/devotion_task/dendor_bless,
 	)
 
 /datum/devotion/divine/abyssor
@@ -113,6 +117,7 @@
 	)
 	viable_tasks = list(
 		/datum/devotion_task/eora_create,
+		/datum/devotion_task/eora_hug,
 	)
 
 // Inhumen

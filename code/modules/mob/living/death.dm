@@ -110,7 +110,7 @@ GLOBAL_LIST_EMPTY(last_words)
 
 	if(lastattacker_weakref)
 		var/mob/attacker = lastattacker_weakref.resolve()
-		SEND_SIGNAL(attacker, COMSIG_LIVING_COMBAT_KILL)
+		SEND_SIGNAL(attacker, COMSIG_LIVING_COMBAT_KILL, src)
 
 	for(var/datum/soullink/S as anything in ownedSoullinks)
 		S.ownerDies(gibbed)
