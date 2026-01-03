@@ -795,6 +795,366 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 #undef APPEARANCE_CATEGORY_COLUMN
 #undef MAX_MUTANT_ROWS
 
+/datum/preferences/proc/SetChoices(mob/user, limit = 15, list/splitJobs = list("Captain", "Priest", "Merchant", "Butler", "Village Elder"), widthPerColumn = 400, height = 620)
+	if(!SSjob)
+		return
+
+	var/HTML = "<center>"
+	if(!length(SSjob.joinable_occupations))
+		HTML += "<center><a href='?_src_=prefs;preference=job;task=close'>Done</a></center><br>"
+	else
+		HTML += "<center><a href='?_src_=prefs;preference=job;task=close'>Done</a></center><br>"
+		if(joblessrole != RETURNTOLOBBY && joblessrole != BERANDOMJOB)
+			joblessrole = RETURNTOLOBBY
+		HTML += "<b>If Role Unavailable:</b><font color='purple'><a href='?_src_=prefs;preference=job;task=nojob'>[joblessrole]</a></font><BR>"
+		HTML += "<script type='text/javascript'>function setJobPrefRedirect(level, rank) { window.location.href='?_src_=prefs;preference=job;task=setJobLevel;level=' + level + ';text=' + encodeURIComponent(rank); return false; }</script>"
+		HTML += {"
+			<script type='text/javascript'>
+				function updateJobPreference() {
+					var data = {};
+					for(var i = 0; i < arguments.length; i++) {
+						var arg = arguments\[i\];
+						if(typeof arg === 'string' && arg.indexOf('=') !== -1) {
+							var parts = arg.split('=');
+							var key = parts\[0\];
+							var value = decodeURIComponent(parts.slice(1).join('='));
+							data\[key\] = value;
+						}
+					}
+
+					if(!data.jobTitle || data.prefLevel === undefined) return;
+
+					var jobId = data.jobTitle.replace(/ /g, '_');
+					var prefLink = document.getElementById('job-pref-' + jobId);
+
+					if(prefLink) {
+						var level = parseInt(data.prefLevel);
+						// level values: 1=High, 2=Medium, 3=Low, 4=NEVER
+						var config = {
+							1: { label: 'High', color: 'slateblue', upper: 4, lower: 2 },
+							2: { label: 'Medium', color: 'green', upper: 1, lower: 3 },
+							3: { label: 'Low', color: 'orange', upper: 2, lower: 4 },
+							4: { label: 'NEVER', color: 'red', upper: 3, lower: 1 }
+						};
+
+						if(config\[level\]) {
+							var cfg = config\[level\];
+							var jobTitle = data.jobTitle;
+
+							prefLink.innerHTML = '<font color=' + cfg.color + '>' + cfg.label + '</font>';
+							prefLink.href = '?_src_=prefs;preference=job;task=setJobLevel;level=' + cfg.upper + ';text=' + jobTitle;
+							prefLink.setAttribute('oncontextmenu', 'javascript:return setJobPrefRedirect(' + cfg.lower + ', "' + jobTitle + '");');
+						}
+					}
+				}
+
+
+				function toggleCategory(categoryName) {
+					var fieldset = document.getElementById('fieldset-' + categoryName);
+					var content = document.getElementById('content-' + categoryName);
+					if(content.style.display === 'none') {
+						content.style.display = 'block';
+						fieldset.setAttribute('data-collapsed', 'false');
+					} else {
+						content.style.display = 'none';
+						fieldset.setAttribute('data-collapsed', 'true');
+					}
+				}
+			</script>
+			<style>
+				.two-column-container {
+					display: flex;
+					justify-content: center;
+					gap: 20px;
+					max-width: 1000px;
+					margin: 0 auto;
+				}
+
+				.column {
+					display: flex;
+					flex-direction: column;
+					gap: 10px;
+					width: 450px;
+				}
+
+				.job-category-box {
+					width: 100%;
+					border: 2px solid;
+					margin: 0;
+					box-sizing: border-box;
+				}
+
+				.job-category-box table {
+					width: 100%;
+				}
+
+				fieldset\[data-collapsed="true"\] legend::after {
+					content: " (Expand)";
+				}
+				fieldset\[data-collapsed="false"\] legend::after {
+					content: " (Collapse)";
+				}
+
+				.tutorialhover {
+					position: relative;
+					display: inline-block;
+				}
+				.tutorialhover .tutorial {
+					visibility: hidden;
+					width: 280px;
+					background-color: black;
+					color: #e3c06f;
+					text-align: center;
+					border-radius: 6px;
+					padding: 5px;
+					position: absolute;
+					z-index: 1000;
+					left: 50%;
+					transform: translateX(-50%);
+					bottom: 100%;
+					margin-bottom: 5px;
+				}
+				.tutorialhover:hover .tutorial {
+					visibility: visible;
+				}
+			</style>
+		"}
+
+		var/race_ban = FALSE
+		if(is_race_banned(user.ckey, user.client.prefs.pref_species.id))
+			HTML += "<div style='color: red; text-align: center; padding: 10px;'>YOU ARE BANNED FROM PLAYING THE SPECIES: [user.client.prefs.pref_species.id]</div>"
+			race_ban = TRUE
+
+		if(!race_ban)
+			var/left_column_html = ""
+			var/right_column_html = ""
+
+			var/list/omegalist = list(
+				GLOB.noble_positions,
+				GLOB.garrison_positions,
+				GLOB.church_positions,
+				GLOB.peasant_positions,
+				GLOB.apprentices_positions,
+				GLOB.serf_positions,
+				GLOB.company_positions,
+				GLOB.youngfolk_positions,
+				GLOB.allmig_positions,
+				GLOB.inquisition_positions,
+			)
+
+			var/category_index = 0
+			for(var/list/category in omegalist)
+				if(!SSjob.name_occupations[category[1]])
+					continue
+
+				var/list/available_jobs = list()
+				for(var/job in category)
+					var/datum/job/job_datum = SSjob.name_occupations[job]
+					if(!job_datum)
+						continue
+					if(!job_datum.total_positions && !job_datum.spawn_positions)
+						continue
+					if(!job_datum.enabled)
+						continue
+					if(job_datum.spawn_positions <= 0)
+						continue
+					available_jobs += job_datum
+
+				if(!length(available_jobs))
+					continue
+
+				var/datum/job/first_job = SSjob.name_occupations[category[1]]
+				var/cat_color = first_job.selection_color
+				var/cat_name = ""
+				switch(first_job.department_flag)
+					if(NOBLEMEN)
+						cat_name = "Nobles"
+					if(GARRISON)
+						cat_name = "Garrison"
+					if(SERFS)
+						cat_name = "Yeomanry"
+					if(CHURCHMEN)
+						cat_name = "Churchmen"
+					if(COMPANY)
+						cat_name = "Company"
+					if(PEASANTS)
+						cat_name = "Peasantry"
+					if(APPRENTICES)
+						cat_name = "Apprentices"
+					if(YOUNGFOLK)
+						cat_name = "Young Folk"
+					if(OUTSIDERS)
+						cat_name = "Outsiders"
+					if(INQUISITION)
+						cat_name = "Inquisition"
+
+				var/category_html = ""
+				category_html += "<fieldset class='job-category-box' style='border-color: [cat_color];' id='fieldset-[cat_name]' data-collapsed='true'>"
+				category_html += "<legend align='center' style='font-weight: bold; color: [cat_color]; cursor: pointer;' onclick='toggleCategory(\"[cat_name]\")'>[cat_name]</legend>"
+				category_html += "<div id='content-[cat_name]' style='display: none;'>"
+				category_html += "<table cellpadding='1' cellspacing='0'>"
+
+				for(var/datum/job/job in available_jobs)
+					var/rank = job.title
+					var/used_name = (pronouns == SHE_HER && job.f_title) ? job.f_title : job.title
+					var/job_id = replacetext(rank, " ", "_")
+
+					category_html += "<tr bgcolor='#000000'><td width='60%' align='right'>"
+
+					if(is_role_banned(user.ckey, job.title))
+						category_html += "[used_name]</td><td><a href='?_src_=prefs;bancheck=[rank]'> BANNED</a></td></tr>"
+						continue
+					if(!job.player_old_enough(user.client))
+						var/available_in_days = job.available_in_days(user.client)
+						category_html += "[used_name]</td><td><font color=red> \[IN [(available_in_days)] DAYS\]</font></td></tr>"
+						continue
+					if(CONFIG_GET(flag/usewhitelist))
+						if(job.whitelist_req && (!user.client.whitelisted()))
+							category_html += "<font color=#6183a5>[used_name]</font></td><td> </td></tr>"
+							continue
+					var/lock_html = get_job_lock_html(job, user, used_name)
+					if(lock_html)
+						category_html += lock_html
+						continue
+
+					category_html += "<div class='tutorialhover'>[used_name]"
+					category_html += "<span class='tutorial'>[job.tutorial]<br>Slots: [job.get_total_positions()]</span>"
+					category_html += "</div>"
+
+					category_html += "</td><td width='40%'>"
+
+					var/prefLevelLabel = "ERROR"
+					var/prefLevelColor = "pink"
+					var/prefUpperLevel = -1 // level to assign on left click
+					var/prefLowerLevel = -1 // level to assign on right click
+
+					switch(job_preferences[job.title])
+						if(JP_HIGH)
+							prefLevelLabel = "High"
+							prefLevelColor = "slateblue"
+							prefUpperLevel = 4
+							prefLowerLevel = 2
+						if(JP_MEDIUM)
+							prefLevelLabel = "Medium"
+							prefLevelColor = "green"
+							prefUpperLevel = 1
+							prefLowerLevel = 3
+						if(JP_LOW)
+							prefLevelLabel = "Low"
+							prefLevelColor = "orange"
+							prefUpperLevel = 2
+							prefLowerLevel = 4
+						else
+							prefLevelLabel = "NEVER"
+							prefLevelColor = "red"
+							prefUpperLevel = 3
+							prefLowerLevel = 1
+
+					category_html += "<a class='white' id='job-pref-[job_id]' href='?_src_=prefs;preference=job;task=setJobLevel;level=[prefUpperLevel];text=[rank]' oncontextmenu='javascript:return setJobPrefRedirect([prefLowerLevel], \"[rank]\");'>"
+					category_html += "<font color=[prefLevelColor]>[prefLevelLabel]</font>"
+					category_html += "</a></td></tr>"
+
+				category_html += "</table></div></fieldset>"
+
+				if(category_index % 2 == 0)
+					left_column_html += category_html
+				else
+					right_column_html += category_html
+				category_index++
+
+			HTML += "<div class='two-column-container'>"
+			HTML += "<div class='column'>[left_column_html]</div>"
+			HTML += "<div class='column'>[right_column_html]</div>"
+			HTML += "</div>"
+
+		if(user.client.prefs.lastclass)
+			HTML += "<center><br><a href='?_src_=prefs;preference=job;task=triumphthing'>PLAY AS [user.client.prefs.lastclass] AGAIN</a></center>"
+		else
+			HTML += "<br>"
+		HTML += "<center><a href='?_src_=prefs;preference=job;task=reset'>Reset</a></center>"
+
+	HTML += "</center>"
+
+	var/datum/browser/noclose/popup = new(user, "mob_occupation", "<div align='center'>Class Selection</div>", 1000, 700)
+	popup.set_window_options(can_close = FALSE)
+	popup.set_content(HTML)
+	popup.open(FALSE)
+
+/datum/preferences/proc/SetJobPreferenceLevel(datum/job/job, level)
+	if(!job)
+		return FALSE
+	if(level == JP_HIGH)
+		for(var/j in job_preferences)
+			if(job_preferences[j] == JP_HIGH)
+				job_preferences[j] = JP_MEDIUM
+	job_preferences[job.title] = level
+	return TRUE
+
+
+/datum/preferences/proc/UpdateJobPreference(mob/user, role, desiredLvl)
+    if(!SSjob || !length(SSjob.joinable_occupations))
+        return
+    var/datum/job/job = SSjob.GetJob(role)
+    if(!job || !(job.job_flags & JOB_NEW_PLAYER_JOINABLE))
+        user << browse(null, "window=mob_occupation")
+        update_menu_data(user, list("job"))
+        return
+    if(!isnum(desiredLvl))
+        to_chat(user, "<span class='danger'>UpdateJobPreference - desired level was not a number. Please notify coders!</span>")
+        CRASH("UpdateJobPreference called with desiredLvl value of [isnull(desiredLvl) ? "null" : desiredLvl]")
+
+    var/jpval = null
+    // desiredLvl comes from the links: 1=High, 2=Medium, 3=Low, 4=NEVER
+    // JP constants: JP_LOW=1, JP_MEDIUM=2, JP_HIGH=3
+    switch(desiredLvl)
+        if(1)
+            jpval = JP_HIGH  // 3
+        if(2)
+            jpval = JP_MEDIUM  // 2
+        if(3)
+            jpval = JP_LOW  // 1
+        if(4)
+            jpval = null  // NEVER
+
+    var/was_high = (jpval == JP_HIGH)
+    var/previous_high_job = null
+
+    if(was_high)
+        for(var/job_title in job_preferences)
+            if(job_preferences[job_title] == JP_HIGH)
+                previous_high_job = job_title
+                break
+
+    SetJobPreferenceLevel(job, jpval)
+
+    // Send back the desiredLvl value directly since that's what JavaScript expects
+    update_job_display(user, role, desiredLvl)
+
+    if(was_high && previous_high_job && previous_high_job != role)
+        update_job_display(user, previous_high_job, 2)  // Medium
+
+    update_menu_data(user, list("job"))
+    return 1
+
+
+
+/datum/preferences/proc/ResetJobs(mob/user, silent = FALSE)
+	job_preferences = list()
+	if(!silent)
+		to_chat(user, "<font color='red'>Classes reset.</font>")
+	SetChoices(user)
+
+
+/datum/preferences/proc/update_job_display(mob/user, job_title, pref_level)
+	if(!winexists(user, "mob_occupation"))
+		return
+
+	var/list/params = list()
+	params["jobTitle"] = job_title
+	params["prefLevel"] = pref_level
+
+	user << output(list2params(params), "mob_occupation.browser:updateJobPreference")
+
 /datum/preferences/proc/CaptureKeybinding(mob/user, datum/keybinding/kb, old_key)
 	var/HTML = {"
 	<div id='focus' style="outline: 0;" tabindex=0>Keybinding: [kb.full_name]<br>[kb.description]<br><br><b>Press any key to change<br>Press ESC to clear</b></div>
@@ -819,226 +1179,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	popup.set_content(HTML)
 	popup.open(FALSE)
 	onclose(user, "capturekeypress", src)
-
-/datum/preferences/proc/SetChoices(mob/user, limit = 15, list/splitJobs = list("Captain", "Priest", "Merchant", "Butler", "Village Elder"), widthPerColumn = 400, height = 620) //400 620
-	if(!SSjob)
-		return
-
-	//limit - The amount of jobs allowed per column. Defaults to 17 to make it look nice.
-	//splitJobs - Allows you split the table by job. You can make different tables for each department by including their heads. Defaults to CE to make it look nice.
-	//widthPerColumn - Screen's width for every column.
-	//height - Screen's height.
-
-	var/width = widthPerColumn
-
-	var/HTML = "<center>"
-	if(!length(SSjob.joinable_occupations))
-		HTML += "<center><a href='?_src_=prefs;preference=job;task=close'>Done</a></center><br>" // Easier to press up here.
-	else
-		//HTML += "<b>Choose class preferences</b><br>"
-		//HTML += "<div align='center'>Left-click to raise a class preference, right-click to lower it.<br></div>"
-		HTML += "<center><a href='?_src_=prefs;preference=job;task=close'>Done</a></center><br>" // Easier to press up here.
-		if(joblessrole != RETURNTOLOBBY && joblessrole != BERANDOMJOB) // this is to catch those that used the previous definition and reset.
-			joblessrole = RETURNTOLOBBY
-		HTML += "<b>If Role Unavailable:</b><font color='purple'><a href='?_src_=prefs;preference=job;task=nojob'>[joblessrole]</a></font><BR>"
-		HTML += "<script type='text/javascript'>function setJobPrefRedirect(level, rank) { window.location.href='?_src_=prefs;preference=job;task=setJobLevel;level=' + level + ';text=' + encodeURIComponent(rank); return false; }</script>"
-		HTML += "<table width='100%' cellpadding='1' cellspacing='0'><tr><td width='20%'>" // Table within a table for alignment, also allows you to easily add more colomns.
-		HTML += "<table width='100%' cellpadding='1' cellspacing='0'>"
-		var/index = -1
-
-		var/race_ban = FALSE
-		if(is_race_banned(user.ckey, user.client.prefs.pref_species.id))
-			HTML += "</td> <td><a> YOU ARE BANNED FROM PLAYING THE SPECIES: [user.client.prefs.pref_species.id]</a></td></tr>"
-			race_ban = TRUE
-
-		//The job before the current job. I only use this to get the previous jobs color when I'm filling in blank rows.
-		var/datum/job/lastJob
-		for(var/datum/job/job as anything in sortList(SSjob.joinable_occupations, GLOBAL_PROC_REF(cmp_job_display_asc)))
-			if(!job.total_positions && !job.spawn_positions)
-				continue
-
-			if(!job.enabled)
-				continue
-
-			if(job.spawn_positions <= 0)
-				continue
-
-			if(race_ban)
-				continue
-
-			index += 1
-			if(index >= limit) //|| (job.title in splitJobs))
-				width += widthPerColumn
-				if((index < limit) && (lastJob != null))
-					//If the cells were broken up by a job in the splitJob list then it will fill in the rest of the cells with
-					//the last job's selection color. Creating a rather nice effect.
-					for(var/i = 0, i < (limit - index), i += 1)
-						HTML += "<tr bgcolor='#000000'><td width='60%' align='right'>&nbsp</td><td>&nbsp</td></tr>"
-				HTML += "</table></td><td width='20%'><table width='100%' cellpadding='1' cellspacing='0'>"
-				index = 0
-
-			if(job.title in splitJobs)
-				HTML += "<tr bgcolor='#000000'><td width='60%' align='right'><hr></td></tr>"
-
-			HTML += "<tr bgcolor='#000000'><td width='60%' align='right'>"
-			var/rank = job.title
-			var/used_name = (pronouns == SHE_HER && job.f_title) ? job.f_title : job.title
-			lastJob = job
-			if(is_role_banned(user.ckey, job.title))
-				HTML += "[used_name]</td> <td><a href='?_src_=prefs;bancheck=[rank]'> BANNED</a></td></tr>"
-				continue
-			if(!job.player_old_enough(user.client))
-				var/available_in_days = job.available_in_days(user.client)
-				HTML += "[used_name]</td> <td><font color=red> \[IN [(available_in_days)] DAYS\]</font></td></tr>"
-				continue
-			if(CONFIG_GET(flag/usewhitelist))
-				if(job.whitelist_req && (!user.client.whitelisted()))
-					HTML += "<font color=#6183a5>[used_name]</font></td> <td> </td></tr>"
-					continue
-			var/lock_html = get_job_lock_html(job, user, used_name)
-			if(lock_html)
-				HTML += lock_html
-				continue
-			HTML += {"
-				<style>
-					.tutorialhover {
-						position: relative;
-						display: inline-block;
-						border-bottom: 1px dotted black;
-					}
-
-					.tutorialhover .tutorial {
-
-						visibility: hidden;
-						width: 280px;
-						background-color: black;
-						color: #e3c06f;
-						text-align: center;
-						border-radius: 6px;
-						padding: 5px 0;
-
-						position: absolute;
-						z-index: 1;
-						top: 100%;
-						left: 50%;
-						margin-left: -140px;
-					}
-
-					.tutorialhover:hover .tutorial{
-						visibility: visible;
-					}
-
-				</style>
-
-				<div class="tutorialhover">[used_name]</font>
-				<span class="tutorial">[job.tutorial]<br>
-				Slots: [job.get_total_positions()]</span>
-				</div>
-
-			"}
-
-			HTML += "</td><td width='40%'>"
-
-			var/prefLevelLabel = "ERROR"
-			var/prefLevelColor = "pink"
-			var/prefUpperLevel = -1 // level to assign on left click
-			var/prefLowerLevel = -1 // level to assign on right click
-
-			switch(job_preferences[job.title])
-				if(JP_HIGH)
-					prefLevelLabel = "High"
-					prefLevelColor = "slateblue"
-					prefUpperLevel = 4
-					prefLowerLevel = 2
-				if(JP_MEDIUM)
-					prefLevelLabel = "Medium"
-					prefLevelColor = "green"
-					prefUpperLevel = 1
-					prefLowerLevel = 3
-				if(JP_LOW)
-					prefLevelLabel = "Low"
-					prefLevelColor = "orange"
-					prefUpperLevel = 2
-					prefLowerLevel = 4
-				else
-					prefLevelLabel = "NEVER"
-					prefLevelColor = "red"
-					prefUpperLevel = 3
-					prefLowerLevel = 1
-
-			HTML += "<a class='white' href='?_src_=prefs;preference=job;task=setJobLevel;level=[prefUpperLevel];text=[rank]' oncontextmenu='javascript:return setJobPrefRedirect([prefLowerLevel], \"[rank]\");'>"
-			HTML += "<font color=[prefLevelColor]>[prefLevelLabel]</font>"
-			HTML += "</a></td></tr>"
-
-		for(var/i = 1, i < (limit - index), i += 1) // Finish the column so it is even
-			HTML += "<tr bgcolor='000000'><td width='60%' align='right'>&nbsp</td><td>&nbsp</td></tr>"
-
-		HTML += "</td'></tr></table>"
-		HTML += "</center></table><br>"
-
-		//var/message = "Get random job if preferences unavailable"
-		//if(joblessrole == RETURNTOLOBBY)
-		//	message = "Return to lobby if preferences unavailable"
-		//HTML += "<center><br><a href='?_src_=prefs;preference=job;task=random'>[message]</a></center>"
-		if(user.client.prefs.lastclass)
-			HTML += "<center><a href='?_src_=prefs;preference=job;task=triumphthing'>PLAY AS [user.client.prefs.lastclass] AGAIN</a></center>"
-		else
-			HTML += "<br>"
-		HTML += "<center><a href='?_src_=prefs;preference=job;task=reset'>Reset</a></center>"
-
-	var/datum/browser/noclose/popup = new(user, "mob_occupation", "<div align='center'>Class Selection</div>", width, height)
-	popup.set_window_options(can_close = FALSE)
-	popup.set_content(HTML)
-	popup.open(FALSE)
-
-/datum/preferences/proc/SetJobPreferenceLevel(datum/job/job, level)
-	if (!job)
-		return FALSE
-
-	if (level == JP_HIGH) // to high
-		//Set all other high to medium
-		for(var/j in job_preferences)
-			if(job_preferences[j] == JP_HIGH)
-				job_preferences[j] = JP_MEDIUM
-				//technically break here
-
-	job_preferences[job.title] = level
-	return TRUE
-
-/datum/preferences/proc/UpdateJobPreference(mob/user, role, desiredLvl)
-	if(!SSjob || !length(SSjob.joinable_occupations))
-		return
-	var/datum/job/job = SSjob.GetJob(role)
-
-	if(!job || !(job.job_flags & JOB_NEW_PLAYER_JOINABLE))
-		user << browse(null, "window=mob_occupation")
-		update_menu_data(user,4)
-		return
-
-	if (!isnum(desiredLvl))
-		to_chat(user, "<span class='danger'>UpdateJobPreference - desired level was not a number. Please notify coders!</span>")
-		ShowChoices(user,4)
-		CRASH("UpdateJobPreference called with desiredLvl value of [isnull(desiredLvl) ? "null" : desiredLvl]")
-
-	var/jpval = null
-	switch(desiredLvl)
-		if(3)
-			jpval = JP_LOW
-		if(2)
-			jpval = JP_MEDIUM
-		if(1)
-			jpval = JP_HIGH
-
-	SetJobPreferenceLevel(job, jpval)
-	SetChoices(user)
-
-	return 1
-
-
-/datum/preferences/proc/ResetJobs(mob/user, silent = FALSE)
-	job_preferences = list()
-	if(!silent)
-		to_chat(user, "<font color='red'>Classes reset.</font>")
 
 /datum/preferences/proc/ResetPatron(mob/user, silent = FALSE)
 	selected_patron = default_patron
@@ -1177,7 +1317,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 				ShowChoices(user,4)
 			if("reset")
 				ResetJobs(user, TRUE)
-				SetChoices(user,4)
+
 			if("triumphthing")
 				ResetLastClass(user)
 			if("nojob")
