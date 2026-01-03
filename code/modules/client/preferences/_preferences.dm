@@ -930,7 +930,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 			var/right_column_html = ""
 
 			var/list/omegalist = list(
-				GLOB.noble_positions,
+				GLOB.noble_courthand_positions,
 				GLOB.garrison_positions,
 				GLOB.church_positions,
 				GLOB.peasant_positions,
