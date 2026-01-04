@@ -7,6 +7,7 @@
 	bandage_effectiveness = 0.25
 	bandage_health = 300
 	bandage_speed = 4 SECONDS
+	volume = 18
 
 /obj/item/natural/bundle/cloth/bandage
 	name = "roll of bandages"
