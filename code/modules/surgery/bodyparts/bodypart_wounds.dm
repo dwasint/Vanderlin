@@ -576,11 +576,26 @@
 		return FALSE
 	if(!bleed_rate)
 		return FALSE
+
 	var/bandage_health = 1
 	if(istype(bandage, /obj/item/natural/cloth))
 		var/obj/item/natural/cloth/cloth = bandage
+
+		if(cloth.reagents && cloth.reagents.total_volume > 0)
+			if(owner && owner.reagents)
+				for(var/datum/reagent/R in cloth.reagents.reagent_list)
+					var/amount_to_transfer = min(R.volume, R.metabolization_rate)
+					if(amount_to_transfer > 0)
+
+						R.on_bodypart_absorb(src, owner, amount_to_transfer)
+						cloth.reagents.remove_reagent(R.type, amount_to_transfer)
+
+		if(owner)
+			owner.transfer_blood_to(cloth, bleed_rate * 0.25)
+
 		cloth.bandage_health -= bleed_rate
 		bandage_health = cloth.bandage_health
+
 	if(bandage_health <= 0)
 		return bandage_expire()
 	return FALSE

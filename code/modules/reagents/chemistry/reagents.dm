@@ -95,6 +95,10 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 /datum/reagent/proc/reaction_turf(turf/T, volume)
 	return
 
+/datum/reagent/proc/on_bodypart_absorb(obj/item/bodypart, mob/living/carbon/M, amount_to_transfer)
+	SHOULD_CALL_PARENT(FALSE)
+	on_mob_life(M)
+
 /datum/reagent/proc/on_mob_life(mob/living/carbon/M)
 	current_cycle++
 	if(holder)
