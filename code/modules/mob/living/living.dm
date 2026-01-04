@@ -102,6 +102,9 @@
 	add_overlay(reflective_icon)
 
 /mob/living/onZImpact(turf/T, levels)
+	if(SEND_SIGNAL(src, COMSIG_MOB_FALL_IMPACT, levels))
+		return
+
 	if(HAS_TRAIT(src, TRAIT_NOFALLDAMAGE2))
 		return
 	if(HAS_TRAIT(src, TRAIT_NOFALLDAMAGE1))
