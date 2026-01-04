@@ -1142,7 +1142,8 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	job_preferences = list()
 	if(!silent)
 		to_chat(user, "<font color='red'>Classes reset.</font>")
-	SetChoices(user)
+	if(winget(user, "mob_occupation", "is-visible"))
+		SetChoices(user)
 
 
 /datum/preferences/proc/update_job_display(mob/user, job_title, pref_level)
