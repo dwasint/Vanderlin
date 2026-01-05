@@ -791,7 +791,7 @@ GLOBAL_LIST_EMPTY(donator_races)
 		C.setToxLoss(0, TRUE, TRUE)
 
 	if(TRAIT_NOMETABOLISM in inherent_traits)
-		C.reagents.end_metabolization(C, keep_liverless = TRUE)
+		C.reagents.end_metabolization(src, keep_liverless = TRUE)
 
 	if(inherent_factions)
 		for(var/i in inherent_factions)

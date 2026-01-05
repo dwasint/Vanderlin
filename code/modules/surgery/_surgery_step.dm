@@ -216,12 +216,12 @@
 
 	if(require_all_chems)
 		for(var/reagent_needed in chems_needed)
-			if(!target.reagents.has_reagent(reagent_needed))
+			if(!target.has_reagent(reagent_needed))
 				return FALSE
 		return TRUE
 
 	for(var/reagent_needed in chems_needed)
-		if(target.reagents.has_reagent(reagent_needed))
+		if(target.has_reagent(reagent_needed))
 			return TRUE
 
 	return FALSE

@@ -190,7 +190,7 @@
 
 /datum/reagent/moondust/on_mob_life(mob/living/carbon/M)
 	SEND_SIGNAL(src, COMSIG_DRUG_INDULGE)
-	if(M.reagents.has_reagent(/datum/reagent/moondust_purest))
+	if(M.has_reagent(/datum/reagent/moondust_purest))
 		M.Sleeping(40, 0)
 	if(M.has_quirk(/datum/quirk/vice/junkie))
 		M.sate_addiction(/datum/quirk/vice/junkie)
@@ -236,7 +236,7 @@
 
 /datum/reagent/moondust_purest/on_mob_life(mob/living/carbon/M)
 	SEND_SIGNAL(src, COMSIG_DRUG_INDULGE)
-	if(M.reagents.has_reagent(/datum/reagent/moondust))
+	if(M.has_reagent(/datum/reagent/moondust))
 		M.Sleeping(40, 0)
 	if(M.has_quirk(/datum/quirk/vice/junkie))
 		M.sate_addiction(/datum/quirk/vice/junkie)
