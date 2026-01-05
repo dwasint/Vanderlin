@@ -554,10 +554,10 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 			}
 
 			// Update voice color blob
-			if('ooccolor' in data) {
+			if('voice_color' in data) {
 				var blob = document.getElementById('voice-blob');
-				if(blob && data.ooccolor) {
-					blob.style.backgroundColor = data.ooccolor;
+				if(blob && data.voice_color) {
+					blob.style.backgroundColor = data.voice_color;
 				}
 			}
 		}
@@ -696,8 +696,8 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	<div class="sprite features-bg"><div id="silhouette" class="sprite" style="background-image: url('features_bodytype_[gender == MALE ? "m" : "f"].png');"></div></div>
 
 	<div class="sprite v-color-box">
-		<a href='?_src_=prefs;preference=ooccolor;task=input' style="display: block; width: 100%; height: 100%;">
-			<div id="voice-blob" class="sprite v-blob" style="background-color: [ooccolor];"></div>
+		<a href='?_src_=prefs;preference=voice;task=input' style="display: block; width: 100%; height: 100%;">
+			<div id="voice-blob" class="sprite v-blob" style="background-color: [voice_color];"></div>
 		</a>
 	</div>
 	<a href='?_src_=prefs;preference=bespecial'><div id="bespecial" class="sprite [next_special_trait ? "yes" : ""]"></div></a>
@@ -776,8 +776,8 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 		params["triumphs"] = user.get_triumphs() ? "\Roman [user.get_triumphs()]" : "0"
 	if(update_all || ("headshot" in fields_to_update))
 		params["headshot"] = headshot_link || ""
-	if(update_all || ("ooccolor" in fields_to_update))
-		params["ooccolor"] = ooccolor
+	if(update_all || ("voice_color" in fields_to_update))
+		params["voice_color"] = voice_color
 	if(update_all || ("bespecial" in fields_to_update))
 		params["bespecial"] = next_special_trait ? "1" : "0"
 
