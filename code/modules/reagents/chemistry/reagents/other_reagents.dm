@@ -28,7 +28,6 @@
 	if(method == INJECT || (HAS_TRAIT(L, TRAIT_SANGUINE) && (method == INGEST)))
 		SEND_SIGNAL(L, COMSIG_HANDLE_INFUSION, data["blood_type"], reac_volume)
 
-
 /datum/reagent/blood/on_merge(list/mix_data)
 	. = ..()
 	if(data && mix_data)
