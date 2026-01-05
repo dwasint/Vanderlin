@@ -26,7 +26,7 @@
 	return ..()
 
 /datum/reagent/consumable/reaction_mob(mob/living/M, method=TOUCH, reac_volume)
-	if (method == INGEST && ishuman(M))
+	if ((method & INGEST) && ishuman(M))
 		var/mob/living/carbon/human/HM = M
 
 		if(HM.culinary_preferences)

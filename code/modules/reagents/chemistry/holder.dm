@@ -575,7 +575,7 @@
 	var/react_type
 	if(isliving(A))
 		react_type = "LIVING"
-		if(method == INGEST)
+		if(method & INGEST)
 			var/mob/living/L = A
 			L.taste(src)
 	else if(isturf(A))
@@ -589,7 +589,7 @@
 		switch(react_type)
 			if("LIVING")
 				var/touch_protection = 0
-				if(method == VAPOR)
+				if(method & VAPOR)
 					var/mob/living/L = A
 					touch_protection = L.get_permeability_protection()
 				R.reaction_mob(A, method, R.volume * volume_modifier, show_message, touch_protection)
@@ -602,7 +602,7 @@
 	var/react_type
 	if(isliving(A))
 		react_type = "LIVING"
-		if(method == INGEST)
+		if(method & INGEST)
 			var/mob/living/L = A
 			L.taste(src)
 	else if(isturf(A))
@@ -614,7 +614,7 @@
 	switch(react_type)
 		if("LIVING")
 			var/touch_protection = 0
-			if(method == VAPOR)
+			if(method & VAPOR)
 				var/mob/living/L = A
 				touch_protection = L.get_permeability_protection()
 			R.reaction_mob(A, method, R.volume * volume_modifier, show_message, touch_protection)
