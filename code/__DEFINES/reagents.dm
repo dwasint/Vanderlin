@@ -30,6 +30,7 @@
 #define VAPOR			3	// foam, spray, blob attack
 #define PATCH			4	// patches
 #define INJECT			5	// injection
+#define SNORT			6 	// snorting
 
 
 //defines passed through to the on_reagent_change proc

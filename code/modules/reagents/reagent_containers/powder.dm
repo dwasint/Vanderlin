@@ -64,7 +64,7 @@
 	playsound(get_turf(M), 'sound/items/sniff.ogg', 100, FALSE)
 
 	if(reagents.total_volume)
-		reagents.trans_to(M, reagents.total_volume, transfered_by = user, method = "swallow")
+		reagents.trans_to(M, reagents.total_volume, transfered_by = user, method = SNORT)
 		SEND_SIGNAL(M, COMSIG_DRUG_SNIFFED, user)
 		record_featured_stat(FEATURED_STATS_CRIMINALS, user)
 		record_round_statistic(STATS_DRUGS_SNORTED)
