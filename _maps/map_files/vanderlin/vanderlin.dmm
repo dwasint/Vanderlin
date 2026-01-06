@@ -4639,17 +4639,6 @@
 	},
 /turf/open/floor/ruinedwood/turned/darker,
 /area/outdoors/town)
-"cmz" = (
-/obj/effect/landmark/house_spot{
-	template_z = 2;
-	template_y = 15;
-	template_x = 7;
-	save_id = "house_two";
-	default_template = /datum/map_template/vanderlin_house_two;
-	property_id = "house_two"
-	},
-/turf/open/transparent/openspace,
-/area/indoors/town)
 "cmG" = (
 /obj/structure/well,
 /obj/machinery/light/fueled/wallfire/candle/blue/l,
@@ -5317,16 +5306,6 @@
 /obj/item/natural/stone,
 /turf/open/floor/dirt,
 /area/rogue/outdoors/farm)
-"cBI" = (
-/obj/effect/landmark/house_spot{
-	template_x = 6;
-	template_y = 12;
-	property_id = "apartment_eight";
-	save_id = "apartment_eight";
-	default_template = /datum/map_template/vanderlin_apartment_eight
-	},
-/turf/open/transparent/openspace,
-/area/indoors/town)
 "cCi" = (
 /obj/effect/mapping_helpers/access/keyset/town/tower,
 /obj/effect/mapping_helpers/access/locker,
@@ -9025,6 +9004,16 @@
 /obj/structure/bars,
 /turf/open/floor/blocks,
 /area/indoors/town/church)
+"enm" = (
+/obj/effect/landmark/house_spot{
+	template_y = 10;
+	template_x = 6;
+	save_id = "apartment_two";
+	property_id = "apartment_two";
+	default_template = /datum/map_template/vanderlin_apartment_two
+	},
+/turf/open/transparent/openspace,
+/area/indoors/town)
 "ent" = (
 /obj/structure/table/wood/plain_alt,
 /obj/item/reagent_containers/peppermill,
@@ -15004,6 +14993,16 @@
 	},
 /turf/open/floor/hexstone,
 /area/indoors/villagegarrison)
+"hhA" = (
+/obj/effect/landmark/house_spot{
+	template_x = 6;
+	template_y = 12;
+	property_id = "apartment_eight";
+	save_id = "apartment_eight";
+	default_template = /datum/map_template/vanderlin_apartment_eight
+	},
+/turf/open/transparent/openspace,
+/area/indoors/town)
 "hhB" = (
 /obj/item/ore/copper,
 /turf/open/floor/naturalstone,
@@ -15210,6 +15209,16 @@
 /obj/structure/roguerock,
 /turf/open/floor/dirt,
 /area/outdoors/town)
+"hne" = (
+/obj/effect/landmark/house_spot{
+	save_id = "apartment_seven";
+	property_id = "apartment_seven";
+	template_x = 6;
+	template_y = 12;
+	default_template = /datum/map_template/vanderlin_apartment_seven
+	},
+/turf/open/transparent/openspace,
+/area/indoors/town)
 "hnh" = (
 /obj/structure/chair/stool,
 /turf/open/floor/cobble,
@@ -15662,17 +15671,6 @@
 "hzU" = (
 /obj/structure/stairs,
 /turf/open/floor/ruinedwood/spiralfade,
-/area/indoors/town)
-"hAe" = (
-/obj/effect/landmark/house_spot{
-	default_template = /datum/map_template/vanderlin_house;
-	property_id = "house_one";
-	save_id = "house_one";
-	template_y = 6;
-	template_x = 7;
-	template_z = 2
-	},
-/turf/open/transparent/openspace,
 /area/indoors/town)
 "hAi" = (
 /obj/effect/mapping_helpers/access/keyset/manor/Noble3,
@@ -17728,16 +17726,6 @@
 /obj/machinery/light/fueled/firebowl/stumpb,
 /turf/open/floor/blocks,
 /area/indoors/town/magician)
-"iAO" = (
-/obj/effect/landmark/house_spot{
-	template_y = 9;
-	template_x = 9;
-	save_id = "apartment_six";
-	property_id = "apartment_six";
-	default_template = /datum/map_template/vanderlin_apartment_six
-	},
-/turf/open/transparent/openspace,
-/area/indoors/town)
 "iBe" = (
 /obj/structure/table/vtable,
 /obj/item/reagent_containers/food/snacks/meat/poultry{
@@ -23088,16 +23076,6 @@
 	},
 /turf/open/floor/ruinedwood/turned/darker,
 /area/indoors/soilsons)
-"lcJ" = (
-/obj/effect/landmark/house_spot{
-	property_id = "apartment_five";
-	save_id = "apartment_five";
-	default_template = /datum/map_template/vanderlin_apartment_five;
-	template_x = 9;
-	template_y = 6
-	},
-/turf/open/transparent/openspace,
-/area/indoors/town)
 "ldh" = (
 /obj/effect/waterfall{
 	pixel_y = 0
@@ -24002,6 +23980,16 @@
 /obj/structure/flora/starfish,
 /turf/open/floor/grass,
 /area/outdoors/beach)
+"lyc" = (
+/obj/effect/landmark/house_spot{
+	property_id = "apartment_four";
+	save_id = "apartment_four";
+	template_x = 9;
+	template_y = 12;
+	default_template = /datum/map_template/vanderlin_apartment_four
+	},
+/turf/open/transparent/openspace,
+/area/indoors/town)
 "lyH" = (
 /obj/item/reagent_containers/food/snacks/smallrat,
 /turf/open/floor/cobble,
@@ -26059,6 +26047,17 @@
 /obj/structure/closet/dirthole/grave,
 /turf/open/floor/dirt/road,
 /area/indoors/town/church)
+"myC" = (
+/obj/effect/landmark/house_spot{
+	default_template = /datum/map_template/vanderlin_house;
+	property_id = "house_one";
+	save_id = "house_one";
+	template_y = 6;
+	template_x = 7;
+	template_z = 2
+	},
+/turf/open/transparent/openspace,
+/area/indoors/town)
 "myO" = (
 /obj/structure/flora/grass/water,
 /obj/structure/flora/grass/water/reeds,
@@ -29654,6 +29653,16 @@
 /obj/machinery/light/fueled/wallfire/candle/l,
 /turf/open/floor/blocks/newstone/alt,
 /area/indoors/town/manor/guest/guest1)
+"onb" = (
+/obj/effect/landmark/house_spot{
+	template_y = 9;
+	template_x = 9;
+	save_id = "apartment_six";
+	property_id = "apartment_six";
+	default_template = /datum/map_template/vanderlin_apartment_six
+	},
+/turf/open/transparent/openspace,
+/area/indoors/town)
 "oof" = (
 /obj/structure/bars/passage/shutter{
 	redstone_id = "LordShutters"
@@ -31723,6 +31732,17 @@
 	},
 /turf/open/floor/blocks/stonered/tiny,
 /area/indoors/town/dwarfin)
+"piD" = (
+/obj/effect/landmark/house_spot{
+	template_z = 2;
+	template_y = 15;
+	template_x = 7;
+	save_id = "house_two";
+	default_template = /datum/map_template/vanderlin_house_two;
+	property_id = "house_two"
+	},
+/turf/open/transparent/openspace,
+/area/indoors/town)
 "piS" = (
 /turf/open/water/river{
 	dir = 8
@@ -31765,16 +31785,6 @@
 /obj/structure/kneestingers,
 /turf/open/floor/blocks/paving,
 /area/under/town/sewer)
-"pkK" = (
-/obj/effect/landmark/house_spot{
-	template_y = 10;
-	template_x = 6;
-	save_id = "apartment_two";
-	property_id = "apartment_two";
-	default_template = /datum/map_template/vanderlin_apartment_two
-	},
-/turf/open/transparent/openspace,
-/area/indoors/town)
 "pkM" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1;
@@ -32209,16 +32219,6 @@
 	},
 /turf/open/floor/ruinedwood/turned/darker,
 /area/outdoors/town)
-"pwN" = (
-/obj/effect/landmark/house_spot{
-	property_id = "apartment_four";
-	save_id = "apartment_four";
-	template_x = 9;
-	template_y = 12;
-	default_template = /datum/map_template/vanderlin_apartment_four
-	},
-/turf/open/transparent/openspace,
-/area/indoors/town)
 "pwP" = (
 /turf/open/floor/twig,
 /area/indoors/town)
@@ -36853,6 +36853,15 @@
 	},
 /turf/open/floor/churchrough,
 /area/indoors/town/church/chapel)
+"rLW" = (
+/obj/effect/landmark/house_spot{
+	template_x = 10;
+	template_y = 5;
+	property_id = "apartment_three";
+	default_template = /datum/map_template/vanderlin_apartment_three
+	},
+/turf/open/transparent/openspace,
+/area/indoors/town)
 "rLZ" = (
 /obj/machinery/light/fueled/wallfire/candle{
 	pixel_y = -32
@@ -36991,11 +37000,11 @@
 /area/indoors/town/clinic_large)
 "rPM" = (
 /obj/effect/landmark/house_spot{
-	save_id = "apartment_seven";
-	property_id = "apartment_seven";
-	template_x = 6;
-	template_y = 12;
-	default_template = /datum/map_template/vanderlin_apartment_seven
+	property_id = "apartment_five";
+	save_id = "apartment_five";
+	default_template = /datum/map_template/vanderlin_apartment_five;
+	template_x = 9;
+	template_y = 6
 	},
 /turf/open/transparent/openspace,
 /area/indoors/town)
@@ -44011,15 +44020,6 @@
 "vix" = (
 /turf/open/floor/carpet/royalblack,
 /area/indoors/villagegarrison)
-"vjg" = (
-/obj/effect/landmark/house_spot{
-	template_x = 10;
-	template_y = 5;
-	property_id = "apartment_three";
-	default_template = /datum/map_template/vanderlin_apartment_three
-	},
-/turf/open/transparent/openspace,
-/area/indoors/town)
 "vjj" = (
 /obj/item/alch/coaldust{
 	pixel_x = 4;
@@ -110041,7 +110041,7 @@ uIJ
 uIJ
 uIJ
 uIJ
-hAe
+myC
 hZn
 hZn
 hZn
@@ -111858,7 +111858,7 @@ hZn
 uIJ
 uIJ
 uIJ
-rPM
+hne
 mFi
 czz
 rOZ
@@ -113272,7 +113272,7 @@ uIJ
 uIJ
 uIJ
 uIJ
-cBI
+hhA
 mFi
 czz
 hZn
@@ -145957,7 +145957,7 @@ uIJ
 uIJ
 uIJ
 uIJ
-pkK
+enm
 qFx
 qFx
 qFx
@@ -150233,7 +150233,7 @@ uIJ
 uIJ
 uIJ
 uIJ
-pwN
+lyc
 izG
 tZe
 tZe
@@ -151849,7 +151849,7 @@ uIJ
 uIJ
 uIJ
 uIJ
-lcJ
+rPM
 izG
 xct
 xct
@@ -152443,7 +152443,7 @@ uIJ
 uIJ
 uIJ
 uIJ
-vjg
+rLW
 mWr
 ykB
 wSI
@@ -152660,7 +152660,7 @@ uIJ
 uIJ
 uIJ
 uIJ
-iAO
+onb
 vrf
 izG
 izG
@@ -153460,10 +153460,10 @@ pwZ
 wSI
 pwZ
 tLu
-uIJ
-uIJ
-uIJ
-uIJ
+pwZ
+nxU
+nxU
+nxU
 uIJ
 uIJ
 uIJ
@@ -156701,7 +156701,7 @@ gAL
 uIJ
 uIJ
 uIJ
-cmz
+piD
 izG
 nlt
 nlt

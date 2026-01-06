@@ -50,11 +50,14 @@
 		base_icon_state = initial(icon_state)
 	update_appearance(UPDATE_ICON_STATE)
 
+/*
 /obj/structure/closet/get_save_vars()
 	. = ..()
+	spawn_contents = list()
 	for(var/obj/item/item in contents)
 		LAZYADD(spawn_contents, item.type)
 	. += NAMEOF(src, spawn_contents)
+*/
 
 /obj/structure/closet/Initialize(mapload)
 	if(length(spawn_contents))
