@@ -111,6 +111,8 @@ SUBSYSTEM_DEF(housing)
 				new_key.lockids = lock_list
 		if(claim)
 			for(var/obj/structure/door/door in T.contents)
+				if(door.lock)
+					QDEL_NULL(door.lock)
 				door.lock = new /datum/lock/key(door, lock_list)
 
 	return TRUE
@@ -132,6 +134,8 @@ SUBSYSTEM_DEF(housing)
 					var/obj/item/key/new_key = new /obj/item/key(get_turf(sign))
 					new_key.lockids = lock_list
 				for(var/obj/structure/door/door in T.contents)
+					if(door.lock)
+						QDEL_NULL(door.lock)
 					door.lock = new /datum/lock/key(door, lock_list)
 
 			return TRUE
