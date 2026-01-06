@@ -226,6 +226,7 @@ GLOBAL_LIST_INIT(save_file_chars, list(
 	save_flag = ALL,
 	shuttle_area_flag = SAVE_SHUTTLEAREA_DONTCARE,
 	list/obj_blacklist = typesof(/obj/effect),
+	property_noop = null,
 )
 	var/width = maxx - minx
 	var/height = maxy - miny
@@ -260,30 +261,55 @@ GLOBAL_LIST_INIT(save_file_chars, list(
 				var/turf/place
 				var/area/location
 				var/turf/pull_from = locate((minx + x), (miny + y), (minz + z))
+
 				//If there is nothing there, save as a noop (For odd shapes)
 				if(isnull(pull_from))
 					place = /turf/template_noop
 					location = /area/template_noop
-				//Stuff to add
 				else
-					var/area/place_area = get_area(pull_from)
-					location = place_area.type
-					place = pull_from.type
+					//====CHECK FOR PROPERTY NOOP====
+					var/has_property_noop = FALSE
+					if(property_noop)
+						for(var/obj/effect/abstract/property_noop/noop in pull_from)
+							if(noop.property_id == property_noop)
+								has_property_noop = TRUE
+								break
+
+					//If this turf has a property_noop marker, save as noop
+					if(has_property_noop)
+						place = /turf/template_noop
+						location = /area/template_noop
+					else
+						//Stuff to add
+						var/area/place_area = get_area(pull_from)
+						location = place_area.type
+						place = pull_from.type
 
 				//====For toggling not saving areas and turfs====
 				if(!(save_flag & SAVE_AREAS))
 					location = /area/template_noop
 				if(!(save_flag & SAVE_TURFS))
 					place = /turf/template_noop
+
 				//====Generate Header Character====
 				// Info that describes this turf and all its contents
 				// Unique, will be checked for existing later
 				var/list/current_header = list()
 				current_header += "(\n"
+
 				//Add objects to the header file
 				var/empty = TRUE
+
+				//====SKIP OBJECTS IF NOOP====
+				var/skip_objects = FALSE
+				if(property_noop && pull_from)
+					for(var/obj/effect/abstract/property_noop/noop in pull_from)
+						if(noop.property_id == property_noop)
+							skip_objects = TRUE
+							break
+
 				//====SAVING OBJECTS====
-				if(save_flag & SAVE_OBJECTS)
+				if((save_flag & SAVE_OBJECTS) && !skip_objects)
 					for(var/obj/thing in pull_from)
 						CHECK_TICK
 						if(isitem(thing) && !(save_flag & SAVE_ITEMS))
@@ -312,8 +338,9 @@ GLOBAL_LIST_INIT(save_file_chars, list(
 						if(save_flag & SAVE_OBJECT_PROPERTIES)
 							var/custom_data = thing.on_object_saved()
 							current_header += "[custom_data ? ",\n[custom_data]" : ""]"
+
 				//====SAVING MOBS====
-				if(save_flag & SAVE_MOBS)
+				if((save_flag & SAVE_MOBS) && !skip_objects)
 					for(var/mob/living/thing in pull_from)
 						CHECK_TICK
 						if(istype(thing, /mob/living/carbon)) //Ignore people, but not animals
@@ -321,7 +348,9 @@ GLOBAL_LIST_INIT(save_file_chars, list(
 						var/metadata = generate_tgm_metadata(thing)
 						current_header += "[empty ? "" : ",\n"][thing.type][metadata]"
 						empty = FALSE
+
 				current_header += "[empty ? "" : ",\n"][place],\n[location])\n"
+
 				//====Fill the contents file====
 				var/textiftied_header = current_header.Join()
 				// If we already know this header just use its key, otherwise we gotta make a new one

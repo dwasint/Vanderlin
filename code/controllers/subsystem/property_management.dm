@@ -1,8 +1,6 @@
-/datum/map_template/basic_nine
-	name = "Basic 9x9 House"
-	mappath = "_maps/templates/delver/9x9.dmm"
-	width = 9
-	height = 9
+/obj/effect/abstract/property_noop
+	invisibility = INVISIBILITY_ABSTRACT
+	var/property_id
 
 /obj/effect/landmark/house_spot
 	var/rent_cost = 0
@@ -129,7 +127,7 @@ SUBSYSTEM_DEF(housing)
 	var/maxz = minz + property.template_z - 1
 
 	var/save_flags = SAVE_OBJECTS | SAVE_TURFS | SAVE_AREAS | SAVE_OBJECT_PROPERTIES | SAVE_UUID_STASIS
-	var/map_data = write_map(minx, miny, minz, maxx, maxy, maxz, save_flags, SAVE_SHUTTLEAREA_DONTCARE)
+	var/map_data = write_map(minx, miny, minz, maxx, maxy, maxz, save_flags, SAVE_SHUTTLEAREA_DONTCARE, property_noop = property.save_id)
 
 	if(!map_data)
 		log_admin("Housing: Failed to generate map data for [ckey]'s property [property.property_id]")
@@ -277,13 +275,24 @@ SUBSYSTEM_DEF(housing)
 	var/maxz = minz + property.template_z - 1
 
 	for(var/turf/T in block(locate(minx, miny, minz), locate(maxx, maxy, maxz)))
+		var/has_noop = FALSE
 		for(var/obj/O in T.contents)
-			if(istype(O, /obj/effect/landmark))
-				continue
-			qdel(O)
-		T.ScrapeAway()
+			if(istype(O, /obj/effect/abstract/property_noop))
+				var/obj/effect/abstract/property_noop/effect = O
+				if(effect.property_id == property.save_id)
+					has_noop = TRUE
+					break
+		if(!has_noop)
+			for(var/obj/O in T.contents)
+				if(istype(O, /obj/effect/landmark))
+					continue
+				qdel(O)
+
+			T.ScrapeAway()
 
 /datum/controller/subsystem/housing/proc/check_access(mob/user)
+	if(!has_world_trait(/datum/world_trait/delver))
+		return TRUE
 	if(!user || !user.client)
 		return FALSE
 
@@ -396,7 +405,7 @@ SUBSYSTEM_DEF(housing)
 		return
 
 	// If already claimed by this user, allow saving
-	if(claimed && linked_property.owner_ckey == user.ckey)
+	if(linked_property?.owner_ckey == user.ckey)
 		save_property_design(user)
 		return
 
