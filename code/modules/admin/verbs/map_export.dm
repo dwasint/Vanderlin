@@ -332,7 +332,7 @@ GLOBAL_LIST_EMPTY(save_whitelist)
 						CHECK_TICK
 
 						if(isitem(thing))
-							if((save_flags & SAVE_WHITELIST) && !(item.type in GLOB.save_whitelist)) //we do hard types because its faster then ischecking
+							if((save_flag & SAVE_WHITELIST) && !(thing.type in GLOB.save_whitelist)) //we do hard types because its faster then ischecking
 								continue
 							else if(!(save_flag & SAVE_ITEMS))
 								continue
