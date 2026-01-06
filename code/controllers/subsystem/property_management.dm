@@ -92,7 +92,7 @@ SUBSYSTEM_DEF(housing)
 	SM.set_data("banking", "persistent_balance", current_balance - property.rent_cost)
 	return TRUE
 
-/datum/controller/subsystem/housing/proc/load_default_template(obj/effect/landmark/house_spot/property)
+/datum/controller/subsystem/housing/proc/load_default_template(obj/effect/landmark/house_spot/property, claim = FALSE)
 	if(!property.default_template)
 		return FALSE
 
@@ -100,10 +100,18 @@ SUBSYSTEM_DEF(housing)
 	var/turf/spawn_location = get_turf(property)
 	template.load(spawn_location)
 
+	var/lock_id = "[rand(10000, 99999)]"
+	var/list/lock_list = list(lock_id)
 	var/list/turfs = template.get_affected_turfs(spawn_location)
 	for(var/turf/T as anything in turfs)
 		for(var/obj/structure/sign/property_sign/sign in T.contents)
 			sign.setup_property_link(property)
+			if(claim)
+				var/obj/item/key/new_key = new /obj/item/key(get_turf(sign))
+				new_key.lockids = lock_list
+		if(claim)
+			for(var/obj/structure/door/door in T.contents)
+				door.lock = new /datum/lock/key(door, lock_list)
 
 	return TRUE
 
@@ -112,10 +120,22 @@ SUBSYSTEM_DEF(housing)
 
 	if(fexists(property_file))
 		var/datum/map_template/saved_template = new /datum/map_template(property_file, "[ckey]_[property.save_id]_[slot]", TRUE)
+		var/turf/spawn_location = get_turf(property)
 		if(saved_template.cached_map)
 			saved_template.load(get_turf(property))
+			var/lock_id = "[slot]_[ckey]"
+			var/list/lock_list = list(lock_id)
+			var/list/turfs = saved_template.get_affected_turfs(spawn_location)
+			for(var/turf/T as anything in turfs)
+				for(var/obj/structure/sign/property_sign/sign in T.contents)
+					sign.setup_property_link(property)
+					var/obj/item/key/new_key = new /obj/item/key(get_turf(sign))
+					new_key.lockids = lock_list
+				for(var/obj/structure/door/door in T.contents)
+					door.lock = new /datum/lock/key(door, lock_list)
+
 			return TRUE
-	return load_default_template(property)
+	return load_default_template(property, TRUE)
 
 /datum/controller/subsystem/housing/proc/save_property(obj/effect/landmark/house_spot/property, ckey, slot)
 	if(!property || !ckey || !slot)
