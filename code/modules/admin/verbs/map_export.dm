@@ -213,6 +213,12 @@ GLOBAL_LIST_INIT(save_file_chars, list(
 	// fallback: string
 	return tgm_encode("[value]")
 
+GLOBAL_LIST_INIT(save_whitelist, build_whitelist())
+
+/proc/build_whitelist()
+	var/list/list = list()
+	return list
+
 /**
  *Procedure for converting a coordinate-selected part of the map into text for the .dmi format
  */
@@ -242,6 +248,8 @@ GLOBAL_LIST_INIT(save_file_chars, list(
 	obj_blacklist += /obj/effect/landmark/house_spot
 	obj_blacklist += /obj/effect/fog_parter
 	obj_blacklist += /obj/structure/sign/property_sign
+	if(save_flag & SAVE_WHITELIST)
+		obj_blacklist += typesof(/obj/effect/landmark/start)
 
 	//Step 0: Calculate the amount of letters we need (26 ^ n > turf count)
 	var/turfs_needed = width * height
