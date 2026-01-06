@@ -161,6 +161,11 @@
 		. += NAMEOF(src, object_uuid)
 	return .
 
+/obj/structure/get_save_vars()
+	. = ..()
+	. += NAMEOF(src, redstone_id)
+	return .
+
 
 GLOBAL_LIST_INIT(save_file_chars, list(
 	"a","b","c","d","e",
@@ -213,10 +218,12 @@ GLOBAL_LIST_INIT(save_file_chars, list(
 	// fallback: string
 	return tgm_encode("[value]")
 
-GLOBAL_LIST_INIT(save_whitelist, build_whitelist())
+GLOBAL_LIST_EMPTY(save_whitelist)
 
 /proc/build_whitelist()
 	var/list/list = list()
+	list += typesof(/obj/item/bedsheet)
+	list += typesof(/obj/item/kitchen)
 	return list
 
 /**
@@ -237,6 +244,9 @@ GLOBAL_LIST_INIT(save_whitelist, build_whitelist())
 	var/width = maxx - minx
 	var/height = maxy - miny
 	var/depth = maxz - minz
+
+	if(!length(GLOB.save_whitelist))
+		GLOB.save_whitelist = build_whitelist()
 
 	if(!islist(obj_blacklist))
 		CRASH("Non-list being used as object blacklist for map writing")
@@ -320,8 +330,12 @@ GLOBAL_LIST_INIT(save_whitelist, build_whitelist())
 				if((save_flag & SAVE_OBJECTS) && !skip_objects)
 					for(var/obj/thing in pull_from)
 						CHECK_TICK
-						if(isitem(thing) && !(save_flag & SAVE_ITEMS))
-							continue
+
+						if(isitem(thing))
+							if((save_flags & SAVE_WHITELIST) && !(item.type in GLOB.save_whitelist)) //we do hard types because its faster then ischecking
+								continue
+							else if(!(save_flag & SAVE_ITEMS))
+								continue
 						if(thing.type in obj_blacklist)
 							continue
 
