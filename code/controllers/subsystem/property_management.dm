@@ -238,6 +238,13 @@ SUBSYSTEM_DEF(housing)
 
 	return FALSE
 
+/datum/controller/subsystem/housing/proc/player_owns_property(client_key)
+	for(var/property_id in temporary_claims)
+		if(temporary_claims[property_id] == client_key)
+			return TRUE
+
+	return FALSE
+
 /datum/controller/subsystem/housing/proc/auto_claim_compatible_property(mob/user)
 	if(!user || !user.client)
 		return null
@@ -469,6 +476,11 @@ SUBSYSTEM_DEF(housing)
 	// Check if user already owns a property with this save_id
 	if(SShousing.player_owns_save_id(user.ckey, linked_property.save_id))
 		to_chat(user, span_warning("You already own a property of this type!"))
+		return
+
+	// Check if user already owns a property with this save_id
+	if(SShousing.player_owns_property(user.ckey))
+		to_chat(user, span_warning("You already own a property!"))
 		return
 
 	var/datum/save_manager/SM = get_save_manager(user.ckey)
