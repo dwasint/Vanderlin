@@ -7,7 +7,6 @@
 	var/property_id = "" // Unique identifier for this specific property location
 	var/save_id = "" // Template type identifier (multiple properties can share same save_id)
 	var/owner_ckey = null
-	var/owner_property_slot = null // Which slot/ID the owner is using for this property
 
 	var/template_x = 0
 	var/template_y = 0
@@ -26,9 +25,9 @@ SUBSYSTEM_DEF(housing)
 	init_order = INIT_ORDER_HOUSING
 
 	var/list/properties = list() // All property landmarks
-	var/list/property_owners = list() // property_id -> list(ckey, slot) mapping
+	var/list/property_owners = list() // property_id -> ckey mapping
 	var/list/property_controllers = list() // All active property controllers
-	var/list/temporary_claims = list() // property_id -> list(ckey, slot) for round-only claims
+	var/list/temporary_claims = list() // property_id -> ckey for round-only claims
 	var/rent_collection_enabled = TRUE
 
 /datum/controller/subsystem/housing/Initialize()
@@ -46,25 +45,20 @@ SUBSYSTEM_DEF(housing)
 	for(var/property_id in properties)
 		var/obj/effect/landmark/house_spot/property = properties[property_id]
 
-		var/list/owner_data = property_owners[property_id]
-		if(owner_data)
-			var/owner_ckey = owner_data["ckey"]
-			var/owner_slot = owner_data["slot"]
-
+		var/owner_ckey = property_owners[property_id]
+		if(owner_ckey)
 			if(!validate_rent_payment(owner_ckey, property))
 				property_owners -= property_id
-				owner_data = null
+				owner_ckey = null
 				save_persistent_owners()
 
-			if(owner_data)
-				property.owner_ckey = owner_ckey
-				property.owner_property_slot = owner_slot
-				property.temporary_claim = FALSE
-				load_property(property, owner_ckey, owner_slot)
-				create_property_controller(property)
-				continue
-
-		load_default_template(property)
+		if(owner_ckey)
+			property.owner_ckey = owner_ckey
+			property.temporary_claim = FALSE
+			load_property(property, owner_ckey)
+			create_property_controller(property)
+		else
+			load_default_template(property)
 
 /datum/controller/subsystem/housing/proc/load_persistent_owners()
 	if(!fexists("data/property_owners.json"))
@@ -107,18 +101,18 @@ SUBSYSTEM_DEF(housing)
 
 	return TRUE
 
-/datum/controller/subsystem/housing/proc/load_property(obj/effect/landmark/house_spot/property, ckey, slot)
-	var/property_file = "data/properties/[ckey]_[property.save_id]_[slot].dmm"
+/datum/controller/subsystem/housing/proc/load_property(obj/effect/landmark/house_spot/property, ckey)
+	var/property_file = "data/properties/[ckey]_[property.save_id].dmm"
 
 	if(fexists(property_file))
-		var/datum/map_template/saved_template = new /datum/map_template(property_file, "[ckey]_[property.save_id]_[slot]", TRUE)
+		var/datum/map_template/saved_template = new /datum/map_template(property_file, "[ckey]_[property.save_id]", TRUE)
 		if(saved_template.cached_map)
 			saved_template.load(get_turf(property))
 			return TRUE
 	return load_default_template(property)
 
-/datum/controller/subsystem/housing/proc/save_property(obj/effect/landmark/house_spot/property, ckey, slot)
-	if(!property || !ckey || !slot)
+/datum/controller/subsystem/housing/proc/save_property(obj/effect/landmark/house_spot/property, ckey)
+	if(!property || !ckey)
 		return FALSE
 
 	var/turf/start_turf = get_turf(property)
@@ -136,17 +130,17 @@ SUBSYSTEM_DEF(housing)
 	var/map_data = write_map(minx, miny, minz, maxx, maxy, maxz, save_flags, SAVE_SHUTTLEAREA_DONTCARE, property_noop = property.save_id)
 
 	if(!map_data)
-		log_admin("Housing: Failed to generate map data for [ckey]'s property [property.property_id] slot [slot]")
+		log_admin("Housing: Failed to generate map data for [ckey]'s property [property.property_id]")
 		return FALSE
 
-	var/property_file = "data/properties/[ckey]_[property.save_id]_[slot].dmm"
+	var/property_file = "data/properties/[ckey]_[property.save_id].dmm"
 	if(fexists(property_file))
 		fdel(property_file)
 
 	var/file_handle = file(property_file)
 	file_handle << map_data
 
-	log_admin("Housing: Saved property [property.property_id] for [ckey] in slot [slot]")
+	log_admin("Housing: Saved property [property.property_id] for [ckey]")
 	return TRUE
 
 /datum/controller/subsystem/housing/proc/create_property_controller(obj/effect/landmark/house_spot/property)
@@ -154,8 +148,8 @@ SUBSYSTEM_DEF(housing)
 	property_controllers += controller
 	return controller
 
-/datum/controller/subsystem/housing/proc/purchase_property(obj/effect/landmark/house_spot/property, mob/user, slot)
-	if(!user || !user.client || !property || !slot)
+/datum/controller/subsystem/housing/proc/purchase_property(obj/effect/landmark/house_spot/property, mob/user)
+	if(!user || !user.client || !property)
 		return FALSE
 
 	var/ckey = user.ckey
@@ -163,8 +157,8 @@ SUBSYSTEM_DEF(housing)
 	if(property_owners[property.property_id])
 		return FALSE
 
-	// Check if user already owns a property (single property limit)
-	if(player_owns_property(ckey))
+	//if user already owns a property with this save_id fail here to prevent weird shit
+	if(player_owns_save_id(ckey, property.save_id))
 		return FALSE
 
 	var/datum/save_manager/SM = get_save_manager(ckey)
@@ -173,25 +167,24 @@ SUBSYSTEM_DEF(housing)
 	if(current_balance < property.rent_cost)
 		return FALSE
 
-	// Deduct cost
+	// Deduct cost - if delver pretty much
 	SM.set_data("banking", "persistent_balance", current_balance - property.rent_cost)
 
 	// Set ownership
-	property_owners[property.property_id] = list("ckey" = ckey, "slot" = slot)
+	property_owners[property.property_id] = ckey
 	property.owner_ckey = ckey
-	property.owner_property_slot = slot
 	property.temporary_claim = FALSE
 	save_persistent_owners()
 
 	// Reload property with owner's saved data if available
 	clear_property_area(property)
-	load_property(property, ckey, slot)
+	load_property(property, ckey)
 	create_property_controller(property)
 
 	return TRUE
 
-/datum/controller/subsystem/housing/proc/claim_temporary(obj/effect/landmark/house_spot/property, mob/user, slot)
-	if(!user || !user.client || !property || !slot)
+/datum/controller/subsystem/housing/proc/claim_temporary(obj/effect/landmark/house_spot/property, mob/user)
+	if(!user || !user.client || !property)
 		return FALSE
 
 	var/ckey = user.ckey
@@ -205,37 +198,22 @@ SUBSYSTEM_DEF(housing)
 		return FALSE
 
 	// Set temporary claim
-	temporary_claims[property.property_id] = list("ckey" = ckey, "slot" = slot)
+	temporary_claims[property.property_id] = ckey
 	property.owner_ckey = ckey
-	property.owner_property_slot = slot
 	property.temporary_claim = TRUE
 
 	// Load property if user has a saved design
 	clear_property_area(property)
-	load_property(property, ckey, slot)
+	load_property(property, ckey)
 	create_property_controller(property)
 
 	return TRUE
 
-/datum/controller/subsystem/housing/proc/get_player_property_slots(ckey, save_id)
+/datum/controller/subsystem/housing/proc/has_saved_property(ckey, save_id)
 	if(!ckey || !save_id)
-		return list()
-
-	var/list/slots = list()
-
-	// Scan for existing property files
-	for(var/i = 1 to 10) // Check up to 10 slots
-		var/property_file = "data/properties/[ckey]_[save_id]_[i].dmm"
-		if(fexists(property_file))
-			slots += i
-
-	return slots
-
-/datum/controller/subsystem/housing/proc/has_saved_property(ckey, save_id, slot)
-	if(!ckey || !save_id || !slot)
 		return FALSE
 
-	var/property_file = "data/properties/[ckey]_[save_id]_[slot].dmm"
+	var/property_file = "data/properties/[ckey]_[save_id].dmm"
 	return fexists(property_file)
 
 /datum/controller/subsystem/housing/proc/player_owns_save_id(ckey, save_id)
@@ -244,8 +222,7 @@ SUBSYSTEM_DEF(housing)
 
 	// Check permanent ownership
 	for(var/property_id in property_owners)
-		var/list/owner_data = property_owners[property_id]
-		if(owner_data["ckey"] != ckey)
+		if(property_owners[property_id] != ckey)
 			continue
 		var/obj/effect/landmark/house_spot/property = properties[property_id]
 		if(property && property.save_id == save_id)
@@ -253,8 +230,7 @@ SUBSYSTEM_DEF(housing)
 
 	// Check temporary claims
 	for(var/property_id in temporary_claims)
-		var/list/claim_data = temporary_claims[property_id]
-		if(claim_data["ckey"] != ckey)
+		if(temporary_claims[property_id] != ckey)
 			continue
 		var/obj/effect/landmark/house_spot/property = properties[property_id]
 		if(property && property.save_id == save_id)
@@ -264,13 +240,7 @@ SUBSYSTEM_DEF(housing)
 
 /datum/controller/subsystem/housing/proc/player_owns_property(client_key)
 	for(var/property_id in temporary_claims)
-		var/list/claim_data = temporary_claims[property_id]
-		if(claim_data["ckey"] == client_key)
-			return TRUE
-
-	for(var/property_id in property_owners)
-		var/list/owner_data = property_owners[property_id]
-		if(owner_data["ckey"] == client_key)
+		if(temporary_claims[property_id] == client_key)
 			return TRUE
 
 	return FALSE
@@ -289,11 +259,9 @@ SUBSYSTEM_DEF(housing)
 		if(property_owners[property_id] || temporary_claims[property_id])
 			continue
 
-		// Check if user has any saved designs for this template type
-		var/list/available_slots = get_player_property_slots(ckey, property.save_id)
-		if(available_slots.len > 0)
-			// Auto-claim with first available slot
-			if(claim_temporary(property, user, available_slots[1]))
+		// Check if user has a saved design for this template type
+		if(has_saved_property(ckey, property.save_id))
+			if(claim_temporary(property, user))
 				return property
 
 	return null
@@ -462,43 +430,19 @@ SUBSYSTEM_DEF(housing)
 		to_chat(user, span_warning("Cannot claim while others are present!"))
 		return
 
-	// Show slot selection interface
-	show_slot_selection(user)
-
-/obj/structure/sign/property_sign/claim/proc/show_slot_selection(mob/user)
-	if(!user || !user.client || !linked_property)
+	var/confirm = alert(user, "Claim this property for the round?", "Property Claim", "Yes", "No")
+	if(confirm != "Yes")
 		return
-
-	var/list/available_slots = SShousing.get_player_property_slots(user.ckey, linked_property.save_id)
-	var/list/options = list()
-
-	// Add existing slots
-	for(var/slot in available_slots)
-		options["Load Design [slot]"] = slot
-
-	// Add option to create new slot
-	var/next_slot = 1
-	if(available_slots.len > 0)
-		next_slot = available_slots[available_slots.len] + 1
-	options["Create New Design ([next_slot])"] = next_slot
-
-	options["Cancel"] = null
-
-	var/choice = input(user, "Select a property design slot:", "Property Claim") as null|anything in options
-	if(!choice || options[choice] == null)
-		return
-
-	var/selected_slot = options[choice]
 
 	if(check_other_players(user))
 		to_chat(user, span_warning("Someone entered the area!"))
 		return
 
-	if(SShousing.claim_temporary(linked_property, user, selected_slot))
+	if(SShousing.claim_temporary(linked_property, user))
 		claimed = TRUE
-		name = "Claimed Property (Slot [selected_slot])"
-		desc = "Click to save your current design to slot [selected_slot]."
-		to_chat(user, span_notice("Property claimed with design slot [selected_slot]! Click again to save changes."))
+		name = "Claimed Property"
+		desc = "Click to save your current design."
+		to_chat(user, span_notice("Property claimed! Click again to save your design."))
 	else
 		to_chat(user, span_warning("Failed to claim property!"))
 
@@ -506,19 +450,16 @@ SUBSYSTEM_DEF(housing)
 	if(!linked_property || linked_property.owner_ckey != user.ckey)
 		return
 
-	var/slot = linked_property.owner_property_slot
-	if(!slot)
-		to_chat(user, span_warning("No slot assigned to this property!"))
-		return
-
-	var/confirm = alert(user, "Save the current state to design slot [slot]?", "Save Property", "Yes", "No")
+	var/confirm = alert(user, "Save the current state of your property?", "Save Property", "Yes", "No")
 	if(confirm != "Yes")
 		return
 
-	if(SShousing.save_property(linked_property, user.ckey, slot))
-		to_chat(user, span_notice("Property saved successfully to slot [slot]!"))
+	if(SShousing.save_property(linked_property, user.ckey))
+		to_chat(user, span_notice("Property saved successfully!"))
 	else
 		to_chat(user, span_warning("Failed to save property!"))
+
+///delver
 
 /obj/structure/sign/property_sign/for_sale
 
@@ -537,7 +478,7 @@ SUBSYSTEM_DEF(housing)
 		to_chat(user, span_warning("You already own a property of this type!"))
 		return
 
-	// Check if user already owns any property
+	// Check if user already owns a property with this save_id
 	if(SShousing.player_owns_property(user.ckey))
 		to_chat(user, span_warning("You already own a property!"))
 		return
@@ -549,40 +490,12 @@ SUBSYSTEM_DEF(housing)
 		to_chat(user, span_warning("You need [linked_property.rent_cost] credits. You have [current_balance]."))
 		return
 
-	// Show slot selection for purchase
-	show_purchase_slot_selection(user)
-
-/obj/structure/sign/property_sign/for_sale/proc/show_purchase_slot_selection(mob/user)
-	if(!user || !user.client || !linked_property)
-		return
-
-	var/list/available_slots = SShousing.get_player_property_slots(user.ckey, linked_property.save_id)
-	var/list/options = list()
-
-	// Add existing slots
-	for(var/slot in available_slots)
-		options["Use Design [slot]"] = slot
-
-	// Add option to create new slot
-	var/next_slot = 1
-	if(available_slots.len > 0)
-		next_slot = available_slots[available_slots.len] + 1
-	options["Start Fresh ([next_slot])"] = next_slot
-
-	options["Cancel"] = null
-
-	var/choice = input(user, "Select a property design slot:", "Property Purchase") as null|anything in options
-	if(!choice || options[choice] == null)
-		return
-
-	var/selected_slot = options[choice]
-
-	var/confirm = alert(user, "Purchase this property for [linked_property.rent_cost] credits using slot [selected_slot]?\n\nRent will be deducted each round.", "Property Purchase", "Yes", "No")
+	var/confirm = alert(user, "Purchase this property for [linked_property.rent_cost] credits?\n\nRent will be deducted each round.", "Property Purchase", "Yes", "No")
 	if(confirm != "Yes")
 		return
 
-	if(SShousing.purchase_property(linked_property, user, selected_slot))
-		to_chat(user, span_notice("Property purchased successfully with design slot [selected_slot]!"))
+	if(SShousing.purchase_property(linked_property, user))
+		to_chat(user, span_notice("Property purchased successfully!"))
 		qdel(src)
 	else
 		to_chat(user, span_warning("Purchase failed!"))
