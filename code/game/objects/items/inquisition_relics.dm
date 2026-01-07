@@ -788,7 +788,7 @@
 		if(lastcarrier.pulling)
 			lastcarrier.stop_pulling()
 	if(break_sound)
-		playsound(src, break_sound, 80, TRUE)
+		playsound(get_turf(src), break_sound, 80, TRUE)
 	update_icon()
 	to_chat(M, "The [src] SNAPS...!")
 	name = "\proper snapped seizing garrote"
