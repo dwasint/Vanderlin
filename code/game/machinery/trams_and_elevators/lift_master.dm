@@ -913,7 +913,7 @@ GLOBAL_LIST_EMPTY(active_lifts_by_type)
 				continue
 			if(istype(listed_atom, /obj/item/coin))
 				continue
-			if(!listed_atom.sellprice && !SSmerchant.active_faction.get_item_base_value(listed_atom.type))
+			if(!listed_atom.sellprice && !SSmerchant.get_item_base_value(listed_atom.type))
 				continue
 
 			var/old_price = SSmerchant.active_faction.get_actual_sell_price(listed_atom.type, sell_modifer)
@@ -938,7 +938,7 @@ GLOBAL_LIST_EMPTY(active_lifts_by_type)
 					continue
 				if(istype(inside, /obj/item/coin))
 					continue
-				if(!inside.sellprice && !SSmerchant.active_faction.get_item_base_value(inside.type))
+				if(!inside.sellprice && !SSmerchant.get_item_base_value(inside.type))
 					continue
 
 				var/old_inside_price = SSmerchant.active_faction.get_actual_sell_price(inside.type, sell_modifer)

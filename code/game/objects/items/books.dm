@@ -919,7 +919,7 @@
 			var/obj/temp = new bounty_type()
 			var/bounty_name = temp.name
 			var/multiplier = faction.bounty_items[bounty_type]
-			var/base_value = faction.get_item_base_value(bounty_type)
+			var/base_value = SSmerchant.get_item_base_value(bounty_type)
 			var/total_value = round(base_value * multiplier)
 			var/expiration_time = faction.bounty_refresh_times[bounty_type]
 			var/time_remaining = expiration_time - world.time
