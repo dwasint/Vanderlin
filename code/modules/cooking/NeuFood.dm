@@ -586,7 +586,7 @@
 			to_chat(user, span_notice("Needs more water to work it."))
 			return TRUE
 		to_chat(user, span_notice("Adding water, now it's time to knead it..."))
-		playsound(user, 'sound/foley/splishy.ogg', 100, TRUE, -1)
+		playsound(get_turf(user), 'sound/foley/splishy.ogg', 100, TRUE, -1)
 		if(do_after(user, 1.5 SECONDS, src))
 			name = "wet flour"
 			desc = "Destined for greatness, at your hands."
@@ -599,7 +599,7 @@
 /obj/item/reagent_containers/powder/flour/attack_hand(mob/living/user)
 	if(water_added)
 		short_cooktime = (40 - ((user.get_skill_level(/datum/skill/craft/cooking))*5))
-		playsound(user, 'sound/foley/kneading_alt.ogg', 90, TRUE, -1)
+		playsound(get_turf(user), 'sound/foley/kneading_alt.ogg', 90, TRUE, -1)
 		if(do_after(user, short_cooktime, src))
 			var/obj/item/reagent_containers/food/snacks/dough_base/base = new /obj/item/reagent_containers/food/snacks/dough_base(get_turf(src))
 			base.set_quality(recipe_quality)
