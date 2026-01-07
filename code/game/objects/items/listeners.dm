@@ -27,7 +27,7 @@
 	if(tcolor)
 		voicecolor_override = tcolor
 	if(speaking && message)
-		playsound(src, 'sound/vo/mobs/rat/rat_life.ogg', 20, TRUE, -1)
+		playsound(loc, 'sound/vo/mobs/rat/rat_life.ogg', 20, TRUE, -1)
 		say(message, language = message_language)
 	voicecolor_override = null
 
@@ -75,7 +75,7 @@
 	if(.)
 		return
 	user.changeNext_move(6)
-	playsound(src, 'sound/misc/beep.ogg', 100, FALSE, -1)
+	playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 	speaking = !speaking
 	to_chat(user, span_info("I [speaking ? "unsilence" : "silence"] the whisperer."))
 	if(speaking)
@@ -167,7 +167,7 @@
 	if(.)
 		return
 	user.changeNext_move(CLICK_CD_MELEE)
-	playsound(src, 'sound/misc/bug.ogg', 50, FALSE, -1)
+	playsound(loc, 'sound/misc/bug.ogg', 50, FALSE, -1)
 	active = !active
 	if(active)
 		icon_state = "[initial(icon_state)]_active"

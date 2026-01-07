@@ -273,7 +273,7 @@
 			possible_item_intents = list(/datum/intent/flail/strike/smash/golgotha)
 			user.update_a_intents()
 		else
-			playsound(src, 'sound/items/censer_on.ogg', 100)
+			playsound(src.loc, 'sound/items/censer_on.ogg', 100)
 			possible_item_intents = list(/datum/intent/flail/strike/smash/golgotha, /datum/intent/bless)
 			user.update_a_intents()
 			on = TRUE
@@ -293,7 +293,7 @@
 		next_smoke = world.time + smoke_interval
 
 /obj/item/flashlight/flare/torch/lantern/psycenser/turn_off()
-	playsound(src, 'sound/items/censer_off.ogg', 100)
+	playsound(src.loc, 'sound/items/censer_off.ogg', 100)
 	STOP_PROCESSING(SSobj, src)
 	..()
 	if(ismob(loc))
