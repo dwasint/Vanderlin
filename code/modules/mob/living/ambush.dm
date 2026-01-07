@@ -83,9 +83,9 @@
 		if(C.stress >= heart_value && (prob(50)))
 			C.heart_attack()
 			if(mustype == 1)
-				playsound(get_turf(src), pick('sound/misc/jumpscare (1).ogg','sound/misc/jumpscare (2).ogg','sound/misc/jumpscare (3).ogg','sound/misc/jumpscare (4).ogg'), 100)
+				playsound(src, pick('sound/misc/jumpscare (1).ogg','sound/misc/jumpscare (2).ogg','sound/misc/jumpscare (3).ogg','sound/misc/jumpscare (4).ogg'), 100)
 			else
-				playsound(get_turf(src), pick('sound/misc/jumphumans (1).ogg','sound/misc/jumphumans (2).ogg','sound/misc/jumphumans (3).ogg'), 100)
+				playsound(src, pick('sound/misc/jumphumans (1).ogg','sound/misc/jumphumans (2).ogg','sound/misc/jumphumans (3).ogg'), 100)
 			shake_camera(src, 2, 2)
 
 #undef AMBUSH_CHANCE

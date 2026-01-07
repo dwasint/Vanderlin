@@ -164,7 +164,7 @@
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/shoot_with_empty_chamber()
 	if(cocked)
-		playsound(src.loc, 'sound/combat/Ranged/crossbow-small-shot-02.ogg', 100, FALSE)
+		playsound(src, 'sound/combat/Ranged/crossbow-small-shot-02.ogg', 100, FALSE)
 		cocked = FALSE
 		update_appearance(UPDATE_ICON_STATE)
 

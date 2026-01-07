@@ -301,7 +301,7 @@
 				break
 	else
 		sound_file_use = preop_sound
-	playsound(get_turf(target), sound_file_use, 75, TRUE, -2)
+	playsound(target, sound_file_use, 75, TRUE, -2)
 
 /datum/surgery_step/proc/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
 	display_results(user, target, "<span class='notice'>I succeed.</span>",
@@ -312,7 +312,7 @@
 /datum/surgery_step/proc/play_success_sound(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	if(!success_sound)
 		return
-	playsound(get_turf(target), success_sound, 75, TRUE, -2)
+	playsound(target, success_sound, 75, TRUE, -2)
 
 /datum/surgery_step/proc/failure(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent, success_prob)
 	display_results(user, target, "<span class='warning'>I screw up!</span>",
@@ -323,7 +323,7 @@
 /datum/surgery_step/proc/play_failure_sound(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	if(!failure_sound)
 		return
-	playsound(get_turf(target), failure_sound, 75, TRUE, -2)
+	playsound(target, failure_sound, 75, TRUE, -2)
 
 /// Replaces visible_message during operations so only people looking over the surgeon can tell what they're doing, allowing for shenanigans.
 /datum/surgery_step/proc/display_results(mob/user, mob/living/carbon/target, self_message, detailed_message, vague_message, target_detailed = FALSE)

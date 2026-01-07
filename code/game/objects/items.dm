@@ -963,7 +963,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 	src.add_fingerprint(user)
 
-	playsound(loc, src.hitsound, 30, TRUE, -1)
+	playsound(src, src.hitsound, 30, TRUE, -1)
 
 	user.do_attack_animation(M, used_intent = user.used_intent, used_item = src)
 
@@ -1344,7 +1344,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 /obj/item/proc/on_wield(obj/item/source, mob/living/carbon/user)
 	wdefense += 1
 	if(!wieldsound)
-		playsound(loc, pick('sound/combat/weaponr1.ogg','sound/combat/weaponr2.ogg'), 50, TRUE)
+		playsound(src, pick('sound/combat/weaponr1.ogg','sound/combat/weaponr2.ogg'), 50, TRUE)
 	user.update_a_intents()
 
 /obj/item/proc/on_unwield(obj/item/source, mob/living/carbon/user)
@@ -1376,7 +1376,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	if(impactee.lying)
 		target_zone = BODY_ZONE_CHEST
 	*/
-	playsound(impactee.loc, pick('sound/combat/gib (1).ogg','sound/combat/gib (2).ogg'), 200, FALSE, 3)
+	playsound(impactee, pick('sound/combat/gib (1).ogg','sound/combat/gib (2).ogg'), 200, FALSE, 3)
 	add_blood_DNA(GET_ATOM_BLOOD_DNA(impactee))
 	impactee.visible_message(span_danger("[src] crashes into [impactee]'s [target_zone]!"), span_danger("A [src] hits you in your [target_zone]!"))
 	impactee.apply_damage(item_weight * fall_speed, BRUTE, target_zone, impactee.run_armor_check(target_zone, "blunt", damage = item_weight * fall_speed))

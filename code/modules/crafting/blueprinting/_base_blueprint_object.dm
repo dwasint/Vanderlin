@@ -268,7 +268,7 @@
 							span_notice("I [recipe.verbage] \the [recipe.name]!"))
 
 		if(recipe.craftsound)
-			playsound(get_turf(src), recipe.craftsound, 100, TRUE)
+			playsound(src, recipe.craftsound, 100, TRUE)
 
 		if(user.mind && recipe.skillcraft)
 			if(isliving(user))

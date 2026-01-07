@@ -193,7 +193,7 @@
 			curpage += 2
 		else
 			curpage = 1
-		playsound(loc, 'sound/items/book_page.ogg', 100, TRUE, -1)
+		playsound(src, 'sound/items/book_page.ogg', 100, TRUE, -1)
 		read(usr)
 
 /obj/item/book/attack_hand_secondary(mob/user, params)
@@ -203,11 +203,11 @@
 	if(!open)
 		slot_flags &= ~ITEM_SLOT_HIP
 		open = TRUE
-		playsound(loc, 'sound/items/book_open.ogg', 100, FALSE, -1)
+		playsound(src, 'sound/items/book_open.ogg', 100, FALSE, -1)
 	else
 		slot_flags |= ITEM_SLOT_HIP
 		open = FALSE
-		playsound(loc, 'sound/items/book_close.ogg', 100, FALSE, -1)
+		playsound(src, 'sound/items/book_close.ogg', 100, FALSE, -1)
 	curpage = 1
 	update_appearance(UPDATE_ICON_STATE)
 	user.update_inv_hands()

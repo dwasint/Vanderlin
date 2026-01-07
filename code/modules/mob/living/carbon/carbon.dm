@@ -257,7 +257,7 @@
 		thrown_thing.safe_throw_at(end_T, thrown_range, thrown_speed, src, null, null, null, move_force)
 		if(!used_sound)
 			used_sound = pick(PUNCHWOOSH)
-		playsound(get_turf(src), used_sound, 60, FALSE)
+		playsound(src, used_sound, 60, FALSE)
 
 // /mob/living/carbon/restrained(IGNORE_GRAB)
 // //	. = (handcuffed || (!ignore_grab && pulledby && pulledby.grab_state >= GRAB_AGGRESSIVE))
@@ -602,7 +602,7 @@
 		Immobilize(59)
 
 	if(!blood)
-		playsound(get_turf(src), pick('sound/vo/vomit.ogg','sound/vo/vomit_2.ogg'), 100, TRUE)
+		playsound(src, pick('sound/vo/vomit.ogg','sound/vo/vomit_2.ogg'), 100, TRUE)
 	else
 		if(stat != DEAD)
 			playsound(src, pick('sound/vo/throat.ogg','sound/vo/throat2.ogg','sound/vo/throat3.ogg'), 100, FALSE)

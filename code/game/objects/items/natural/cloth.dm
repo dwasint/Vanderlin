@@ -209,10 +209,10 @@
 		to_chat(user, "<span class='warning'>There is already a bandage.</span>")
 		return
 	var/used_time = bandage_speed * (1 - (H.get_skill_level(/datum/skill/misc/medicine) * 0.15))
-	playsound(loc, 'sound/foley/bandage.ogg', 100, FALSE)
+	playsound(src, 'sound/foley/bandage.ogg', 100, FALSE)
 	if(!do_after(user, used_time, M))
 		return
-	playsound(loc, 'sound/foley/bandage.ogg', 100, FALSE)
+	playsound(src, 'sound/foley/bandage.ogg', 100, FALSE)
 
 	user.dropItemToGround(src)
 	affecting.try_bandage(src)

@@ -151,7 +151,7 @@
 
 /obj/item/weapon/knife/dagger/navaja/attack_self(mob/user)
 	extended = !extended
-	playsound(src.loc, 'sound/blank.ogg', 50, TRUE)
+	playsound(src, 'sound/blank.ogg', 50, TRUE)
 	if(extended)
 		force = 20
 		wdefense = MEDIOCRE_PARRY

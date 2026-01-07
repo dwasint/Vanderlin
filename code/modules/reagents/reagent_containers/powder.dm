@@ -36,7 +36,7 @@
 		var/mob/living/carbon/C = hit_atom
 		if(canconsume(C, silent = TRUE))
 			if(reagents.total_volume)
-				playsound(get_turf(C), 'sound/items/sniff.ogg', 100, FALSE)
+				playsound(C, 'sound/items/sniff.ogg', 100, FALSE)
 				reagents.trans_to(C, 1, transfered_by = thrownthing.thrower, method = "swallow")
 				qdel(src)
 
@@ -61,7 +61,7 @@
 			if(!do_after(user, 1 SECONDS, M))
 				return FALSE
 
-	playsound(get_turf(M), 'sound/items/sniff.ogg', 100, FALSE)
+	playsound(M, 'sound/items/sniff.ogg', 100, FALSE)
 
 	if(reagents.total_volume)
 		reagents.trans_to(M, reagents.total_volume, transfered_by = user, method = SNORT)

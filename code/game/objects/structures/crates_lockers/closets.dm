@@ -131,7 +131,7 @@
 	if(user)
 		if(!can_open(user))
 			return
-	playsound(loc, open_sound, open_sound_volume, FALSE, -3)
+	playsound(src, open_sound, open_sound_volume, FALSE, -3)
 	opened = TRUE
 	if(!dense_when_open)
 		density = FALSE
@@ -188,7 +188,7 @@
 		if(!can_close(user))
 			return FALSE
 	take_contents()
-	playsound(loc, close_sound, close_sound_volume, FALSE, -3)
+	playsound(src, close_sound, close_sound_volume, FALSE, -3)
 	opened = FALSE
 	density = TRUE
 	update_appearance(UPDATE_ICON_STATE)

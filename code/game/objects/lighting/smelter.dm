@@ -135,7 +135,7 @@
 		if(ore.len)
 			if(cooking < 20)
 				cooking++
-				playsound(src.loc,'sound/misc/smelter_sound.ogg', 50, FALSE)
+				playsound(src,'sound/misc/smelter_sound.ogg', 50, FALSE)
 				actively_smelting = TRUE
 			else
 				if(cooking == 20)
@@ -174,7 +174,7 @@
 		if(ore.len)
 			if(cooking < 30)
 				cooking++
-				playsound(src.loc,'sound/misc/smelter_sound.ogg', 50, FALSE)
+				playsound(src,'sound/misc/smelter_sound.ogg', 50, FALSE)
 				actively_smelting = TRUE
 			else
 				if(cooking == 30)
