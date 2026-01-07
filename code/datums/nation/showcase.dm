@@ -233,7 +233,7 @@
 				dat += "<div class='supply-item'>... and [T.supply_packs.len - 5] more</div>"
 				break
 			var/datum/supply_pack/P = new pack_path()
-			dat += "<div class='supply-item'>• [P.name] ([P.cost])</div>"
+			dat += "<div class='supply-item'>. [P.name] ([P.cost])</div>"
 			count++
 		dat += "</div>"
 
