@@ -44,6 +44,10 @@ SUBSYSTEM_DEF(merchant)
 
 
 /datum/controller/subsystem/merchant/Initialize(timeofday)
+	// Initialize recipe values and bounty cache BEFORE factions cause they use it
+	initialize_recipe_values()
+	initialize_bounty_cache()
+
 	// Initialize supply packs
 	for(var/pack in subtypesof(/datum/supply_pack))
 		var/datum/supply_pack/P = new pack()
@@ -52,10 +56,6 @@ SUBSYSTEM_DEF(merchant)
 		supply_packs[P.type] = P
 		if(!(P.group in supply_cats))
 			supply_cats += P.group
-
-	// Initialize recipe values and bounty cache BEFORE factions cause they use it
-	initialize_recipe_values()
-	initialize_bounty_cache()
 
 	// Initialize factions
 	initialize_factions()

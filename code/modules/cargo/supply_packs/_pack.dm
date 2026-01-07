@@ -59,3 +59,9 @@
 	else
 		for(var/item in contains)
 			new item(C)
+
+/datum/supply_pack/proc/get_realized_price()
+	var/actual_price = 0
+	for(var/atom in contains)
+		actual_price += SSmerchant.get_item_base_value(atom)
+	return actual_price
