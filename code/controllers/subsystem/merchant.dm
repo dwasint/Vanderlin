@@ -492,6 +492,12 @@ SUBSYSTEM_DEF(merchant)
 	// Reset for next boat
 	selected_faction.reset_trader_schedule()
 
+/datum/controller/subsystem/merchant/proc/unlock_supply_packs(list/incoming_packs)
+	for(var/datum/supply_pack/pack in supply_packs)
+		if(!(pack.type in incoming_packs))
+			continue
+		pack.unlocked = TRUE
+
 /obj/Initialize()
 	. = ..()
 	if(sellprice)
@@ -501,3 +507,4 @@ SUBSYSTEM_DEF(merchant)
 
 /obj/item/proc/get_sell_price(datum/world_faction/faction, sell_modifier = 1)
 	return SSmerchant.get_sell_price(type, faction, sell_modifier)
+
