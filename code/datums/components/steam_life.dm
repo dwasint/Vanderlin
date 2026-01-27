@@ -52,6 +52,7 @@
 	else
 		if(needs_particles)
 			host.add_shared_particles(/particles/smoke/cig/big/steam, "steam")
+			needs_particles = FALSE
 		host?.hud_used?.bloodpool?.set_value((100 / (max_steam_charge / steam_charge)) / 100, 1 SECONDS)
 
 /datum/component/steam_life/proc/recharge_steam(datum/source, steam_amount)
