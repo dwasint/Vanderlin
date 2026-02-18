@@ -111,6 +111,7 @@
 	. = ..()
 	C.AddComponent(/datum/component/abberant_eater, list(/obj/item/ore/coal, /obj/item/grown/log/tree))
 	C.AddComponent(/datum/component/steam_life)
+	C.AddComponent(/datum/component/command_follower)
 	C.AddComponent(/datum/component/augmentable)
 
 	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))
