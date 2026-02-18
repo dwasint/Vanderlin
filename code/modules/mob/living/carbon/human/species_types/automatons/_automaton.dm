@@ -2,6 +2,10 @@
 	race = /datum/species/automaton
 	footstep_type = FOOTSTEP_MOB_METAL
 
+/mob/living/carbon/human/species/automaton/vessel/LateInitialize()
+	. = ..()
+	AddComponent(/datum/component/ghost_vessel, /obj/item/reagent_containers/lux)
+
 /datum/species/automaton
 	name = "Automaton"
 	id = SPEC_ID_AUTOMATON
@@ -174,12 +178,10 @@
 /obj/item/organ/heart/automaton
 	name = "steam engine"
 	desc = "A miniature steam engine that powers the automaton's movements."
-	icon_state = "steam_heart"
 
 /obj/item/organ/eyes/automaton
 	name = "optical sensors"
 	desc = "Glowing lenses that allow the automaton to perceive the world."
-	icon_state = "automaton_eyes"
 
 /datum/blood_type/oil
 	name = "Lubricating Oil"
