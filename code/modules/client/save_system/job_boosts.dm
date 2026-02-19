@@ -17,6 +17,12 @@
 	..()
 	expiry_time = world.time + (duration_hours * 36000) // SS13 time conversion
 
+/datum/job_priority_boost/automaton_15
+	name = "Automaton Vessel Boost"
+	desc = "Increases your odds of rolling Automaton for a brief period"
+	boost_amount = 10
+	uses_remaining = 15
+
 /datum/job_priority_boost/minor
 	name = "Minor Job Boost"
 	desc = "Slightly increases job priority"
