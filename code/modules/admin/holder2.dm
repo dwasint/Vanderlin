@@ -25,6 +25,7 @@ GLOBAL_PROTECT(href_token)
 
 	var/deadmined
 	var/datum/role_ban_panel/role_ban_panel
+	var/datum/whitelist_panel/WP
 	var/datum/pathfind_debug/path_debug
 	var/datum/create_wave/create_wave
 
@@ -49,6 +50,7 @@ GLOBAL_PROTECT(href_token)
 	admin_signature = "Nanotrasen Officer #[rand(0,9)][rand(0,9)][rand(0,9)]"
 	href_token = GenerateToken()
 	role_ban_panel = new /datum/role_ban_panel(src)
+	WP = new /datum/whitelist_panel(src)
 	if(R.rights & R_DEBUG) //grant profile access
 		world.SetConfig("APP/admin", ckey, "role=admin")
 	//only admins with +ADMIN start admined

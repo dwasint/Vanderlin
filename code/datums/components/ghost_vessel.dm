@@ -4,9 +4,9 @@ GLOBAL_LIST_EMPTY(active_ghost_vessels)
 	var/obj/item/vessel_item_type
 	var/mob/living/carbon/human/owner
 	var/being_offered = FALSE
-	var/vessel_id = "Automaton"
+	var/vessel_id = WHITELIST_AUTOMATON
 
-/datum/component/ghost_vessel/Initialize(obj/item/item_type, id = "Automaton")
+/datum/component/ghost_vessel/Initialize(obj/item/item_type, id = WHITELIST_AUTOMATON)
 	if(!isliving(parent))
 		return COMPONENT_INCOMPATIBLE
 	owner = parent
@@ -49,7 +49,7 @@ GLOBAL_LIST_EMPTY(active_ghost_vessels)
 /datum/component/ghost_vessel/proc/begin_ghost_offer()
 	being_offered = TRUE
 
-	var/list/candidates = pollCandidatesForMob(
+	var/list/candidates = pollCandidatesForMobWhitelisted(
 		"A vessel at [owner.loc] awaits a soul. Do you wish to inhabit it?",
 		null,
 		null,
@@ -57,7 +57,8 @@ GLOBAL_LIST_EMPTY(active_ghost_vessels)
 		100,
 		parent,
 		POLL_IGNORE_GOLEM,
-		new_players = TRUE
+		new_players = TRUE,
+		whitelist_type = vessel_id,
 	)
 
 	if(length(candidates))
