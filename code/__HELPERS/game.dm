@@ -303,7 +303,7 @@
 	return L
 
 /proc/pollCandidatesForMobWhitelisted(Question, jobbanType, gametypeCheck, be_special_flag = 0, poll_time = 300, mob/M, ignore_category = null, new_players = FALSE, whitelist_type)
-	var/list/L = pollGhostCandidatesWhitelisted(Question, jobbanType, gametypeCheck, be_special_flag, poll_time, ignore_category, new_players = new_players, wnitelist_type = whitelist_type)
+	var/list/L = pollGhostCandidatesWhitelisted(Question, jobbanType, gametypeCheck, be_special_flag, poll_time, ignore_category, new_players = new_players, whitelist_type = whitelist_type)
 	if(!M || QDELETED(M) || !M.loc)
 		return list()
 	return L
