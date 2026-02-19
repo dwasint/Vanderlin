@@ -228,7 +228,7 @@
 
 		dat += "<b>Active Boosts for [selected_ckey]:</b>"
 		if(!target_client)
-			dat += " <font color='orange'>(offline — boosts cannot be managed)</font>"
+			dat += " <font color='orange'>(offline -- boosts cannot be managed)</font>"
 		dat += "<BR>"
 
 		if(target_client && islist(target_client.job_priority_boosts) && length(target_client.job_priority_boosts))
@@ -269,7 +269,7 @@
 		dat += "<a href='byond://?src=[REF(src)];task=set_uses_custom'>Custom</a> "
 		dat += "<a href='byond://?src=[REF(src)];task=set_uses_unlimited'>Unlimited</a><BR>"
 
-		// Expiry — only shown for timed
+		// Expiry -- only shown for timed
 		if(selected_boost_type == "timed")
 			var/expiry_display = selected_expiry_hours > 0 ? "[selected_expiry_hours]h" : "Not set"
 			dat += "&nbsp;&nbsp;<b>Expiry:</b> [expiry_display] "
