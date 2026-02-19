@@ -22,6 +22,7 @@
 	desc = "Increases your odds of rolling Automaton for a brief period"
 	boost_amount = 10
 	uses_remaining = 15
+	applicable_jobs = list(WHITELIST_AUTOMATON)
 
 /datum/job_priority_boost/minor
 	name = "Minor Job Boost"
