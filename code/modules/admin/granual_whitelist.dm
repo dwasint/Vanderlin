@@ -1,3 +1,5 @@
+GLOBAL_LIST_INIT(vessel_ids, list(WHITELIST_AUTOMATON))
+
 /datum/whitelist_panel
 	var/datum/admins/holder
 	var/selected_ckey = null
@@ -16,7 +18,7 @@
 
 	if(selected_ckey)
 		dat += "<b>Current Whitelists for [selected_ckey]:</b><BR>"
-		var/list/all_whitelists = get_all_whitelist_ids()
+		var/list/all_whitelists = GLOB.vessel_ids
 		for(var/wl_id in all_whitelists)
 			var/datum/save_manager/SM = get_save_manager(selected_ckey)
 			var/data = SM ? SM.get_data("whitelists", wl_id, null) : null
