@@ -15,6 +15,10 @@ GLOBAL_LIST_EMPTY(active_ghost_vessels)
 	ADD_TRAIT(owner, TRAIT_STASIS, REF(src))
 	ADD_TRAIT(owner, TRAIT_IMMOBILIZED, SOULSTONE_TRAIT)
 	ADD_TRAIT(owner, TRAIT_HANDS_BLOCKED, SOULSTONE_TRAIT)
+	if(!vessel_item_type)
+		INVOKE_ASYNC(src, PROC_REF(begin_ghost_offer))
+		return
+
 	RegisterSignal(parent, COMSIG_ATOM_ATTACKBY, PROC_REF(on_attackby))
 	RegisterSignal(parent, COMSIG_PARENT_QDELETING, PROC_REF(on_parent_deleted))
 
