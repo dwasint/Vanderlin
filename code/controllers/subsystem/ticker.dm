@@ -447,6 +447,7 @@ SUBSYSTEM_DEF(ticker)
 					boost.use_boost()
 					break
 
+			player.stop_sound_channel(CHANNEL_LOBBYMUSIC)
 			gc.possess_vessel(player)
 			vessel_mobs -= vessel_mob
 			GLOB.new_player_list -= player
