@@ -16,7 +16,11 @@ GLOBAL_LIST_EMPTY(active_ghost_vessels)
 	ADD_TRAIT(owner, TRAIT_IMMOBILIZED, SOULSTONE_TRAIT)
 	ADD_TRAIT(owner, TRAIT_HANDS_BLOCKED, SOULSTONE_TRAIT)
 	if(!vessel_item_type)
-		INVOKE_ASYNC(src, PROC_REF(begin_ghost_offer))
+		being_offered = TRUE
+		owner.balloon_alert_to_viewers("This vessel awaits a soul...")
+		if(!GLOB.active_ghost_vessels[vessel_id])
+			GLOB.active_ghost_vessels[vessel_id] = list()
+		GLOB.active_ghost_vessels[vessel_id] += owner  // store the mob, not the component
 		return
 
 	RegisterSignal(parent, COMSIG_ATOM_ATTACKBY, PROC_REF(on_attackby))
