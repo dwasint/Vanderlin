@@ -448,7 +448,7 @@ SUBSYSTEM_DEF(ticker)
 					break
 
 			player.stop_sound_channel(CHANNEL_LOBBYMUSIC)
-			gc.possess_vessel(player)
+			INVOKE_ASYNC(gc, TYPE_PROC_REF(/datum/component/ghost_vessel, possess_vessel), player)
 			vessel_mobs -= vessel_mob
 			GLOB.new_player_list -= player
 			log_game("Assigned [player.ckey] to vessel '[id]' ([vessel_mob.name])")

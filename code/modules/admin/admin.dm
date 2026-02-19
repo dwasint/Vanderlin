@@ -115,6 +115,7 @@
 		body += "<br>"
 		body += "<a href='?_src_=holder;[HrefToken()];roleban=add;mob=[REF(M)]'>\[Role Ban Panel\]</a> "
 		body += "<a href='?_src_=holder;[HrefToken()];open_whitelist_panel=[REF(M)]'>Whitelists</a> - "
+		body += "<a href='?_src_=holder;[HrefToken()];open_boost_panel=[REF(M)]'>JOB BOOST</a> - "
 
 		var/patron = ""
 		if(isliving(M))

@@ -1335,6 +1335,12 @@
 			return
 		WP.show_ui(usr, ckey(M.ckey))
 
+	if(href_list["open_boost_panel"])
+		var/mob/M = locate(href_list["open_boost_panel"])
+		if(!M?.ckey)
+			return
+		BP.show_ui(usr, ckey(M.ckey))
+
 	else if(href_list["roleban"])
 		if(!check_rights(R_ADMIN))
 			return
