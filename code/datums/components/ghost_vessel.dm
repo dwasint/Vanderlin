@@ -84,4 +84,7 @@ GLOBAL_LIST_EMPTY(active_ghost_vessels)
 	REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, SOULSTONE_TRAIT)
 	REMOVE_TRAIT(owner, TRAIT_HANDS_BLOCKED, SOULSTONE_TRAIT)
 	owner.key = ghost.client.key
+	var/new_name = browser_input_text(owner, "Choose a new Name", "New Name", owner.name)
+	if(new_name)
+		owner.real_name = new_name
 	qdel(src)
