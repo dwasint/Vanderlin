@@ -79,7 +79,7 @@
 	var/has_limbs = 0 //does the mob have distinct limbs?(arms,legs, chest,head)
 
 	///How many legs does this mob have by default. This shouldn't change at runtime.
-	var/default_num_legs = 2
+	var/default_num_legs = 4
 	///How many legs does this mob currently have. Should only be changed through set_num_legs()
 	var/num_legs = 2
 	///How many usable legs this mob currently has. Should only be changed through set_usable_legs()

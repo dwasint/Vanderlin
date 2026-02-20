@@ -121,6 +121,8 @@
 	C.AddComponent(/datum/component/steam_life)
 	C.AddComponent(/datum/component/command_follower)
 	C.AddComponent(/datum/component/augmentable)
+	C.AddComponent(/datum/component/easy_repair)
+	C.AddComponent(/datum/component/damage_shutdown)
 
 	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 	C.grant_language(/datum/language/common)
@@ -129,6 +131,9 @@
 		C.add_spell(action)
 
 	C.add_movespeed_modifier("automaton", multiplicative_slowdown = 0.9)
+
+	for(var/obj/item/bodypart/part as anything in C.bodyparts)
+		part.status = BODYPART_ROBOTIC
 
 /datum/species/automaton/on_species_loss(mob/living/carbon/C)
 	. = ..()
