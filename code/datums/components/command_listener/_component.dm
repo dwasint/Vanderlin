@@ -165,7 +165,7 @@
 	SEND_SIGNAL(owner, COMSIG_PARENT_COMMAND_RECEIVED, new_cmd, clicker)
 
 /datum/component/command_follower/proc/on_examine(datum/source, mob/user, list/examine_list)
-	examine_list += span_blue("Alt-Click on this mob to give it a direct command.")
+	examine_list += span_blue("Ctrl-Click on this mob to give it a direct command.")
 
 /atom/movable/screen/command_display
 	name = "Command Display"
