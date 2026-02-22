@@ -245,6 +245,9 @@
 	if(!target || !isturf(pawn.loc) || !isturf(target.loc))
 		return FALSE
 
+	if(world.time < pawn.ai_controller.blackboard[BB_HUMAN_NPC_JUKE_COOLDOWN])
+		return FALSE
+
 	var/juke_chance = HUMAN_NPC_BASE_JUKE_CHANCE
 	if(pawn.STASPD > HUMAN_NPC_JUKE_MIN_SPD)
 		juke_chance += (pawn.STASPD - HUMAN_NPC_JUKE_MIN_SPD) * HUMAN_NPC_JUKE_PER_OVERSPD

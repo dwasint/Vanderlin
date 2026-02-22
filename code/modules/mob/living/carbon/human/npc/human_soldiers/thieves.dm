@@ -68,9 +68,9 @@
 		organ_eyes.accessory_colors = "#336699#336699"
 
 	if(gender == FEMALE)
-		real_name = pick(world.file2list("strings/names/first_female.txt"))
+		real_name = pick(file2list("strings/names/first_female.txt"))
 	else
-		real_name = pick(world.file2list("strings/names/first_male.txt"))
+		real_name = pick(file2list("strings/names/first_male.txt"))
 	update_body()
 	head.sellprice = 30
 

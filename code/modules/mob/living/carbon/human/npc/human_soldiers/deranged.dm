@@ -4,10 +4,10 @@
  * Uses fuckoff gear that should not be looted - hence snowflake dismemberment code.
  */
 
-GLOBAL_LIST_INIT(matthios_aggro, world.file2list("strings/rt/matthiosaggrolines.txt"))
-GLOBAL_LIST_INIT(zizo_aggro, world.file2list("strings/rt/zizoaggrolines.txt"))
-GLOBAL_LIST_INIT(graggar_aggro, world.file2list("strings/rt/graggaraggrolines.txt"))
-GLOBAL_LIST_INIT(hedgeknight_aggro, world.file2list("strings/rt/hedgeknightaggrolines.txt"))
+GLOBAL_LIST_INIT(matthios_aggro, file2list("strings/rt/matthiosaggrolines.txt"))
+GLOBAL_LIST_INIT(zizo_aggro, file2list("strings/rt/zizoaggrolines.txt"))
+GLOBAL_LIST_INIT(graggar_aggro, file2list("strings/rt/graggaraggrolines.txt"))
+GLOBAL_LIST_INIT(hedgeknight_aggro, file2list("strings/rt/hedgeknightaggrolines.txt"))
 
 /mob/living/carbon/human/species/human/northern/deranged_knight
 	ai_controller = /datum/ai_controller/human_npc

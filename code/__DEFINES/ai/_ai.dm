@@ -232,6 +232,7 @@
 #define BB_HUMAN_NPC_HARASS_MODE         "human_npc_harass_mode"
 #define BB_HUMAN_NPC_HARASS_RETREATING   "human_npc_harass_retreating"
 #define BB_HUMAN_NPC_HARASS_COOLDOWN     "human_npc_harass_cooldown"
+#define BB_HUMAN_NPC_JUKE_COOLDOWN       "human_npc_juke_cooldown"
 #define BB_BEGGING_FOOD_ITEM "item_beg_target"
 #define BB_ARCHER_NPC_TARGET_ARROW      "archer_target_arrow"
 #define BB_ARCHER_NPC_STASHED_WEAPON    "archer_stashed_weapon"

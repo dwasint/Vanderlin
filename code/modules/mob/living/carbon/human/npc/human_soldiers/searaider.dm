@@ -1,4 +1,4 @@
-GLOBAL_LIST_INIT(searaider_aggro, world.file2list("strings/rt/searaideraggrolines.txt"))
+GLOBAL_LIST_INIT(searaider_aggro, file2list("strings/rt/searaideraggrolines.txt"))
 
 /mob/living/carbon/human/species/human/northern/searaider
 	ai_controller = /datum/ai_controller/human_npc
@@ -75,9 +75,9 @@ GLOBAL_LIST_INIT(searaider_aggro, world.file2list("strings/rt/searaideraggroline
 		organ_eyes.accessory_colors = "#336699#336699"
 
 	if(gender == FEMALE)
-		real_name = pick(world.file2list("strings/rt/names/human/vikingf.txt"))
+		real_name = pick(file2list("strings/rt/names/human/vikingf.txt"))
 	else
-		real_name = pick(world.file2list("strings/rt/names/human/vikingm.txt"))
+		real_name = pick(file2list("strings/rt/names/human/vikingm.txt"))
 	update_body()
 
 

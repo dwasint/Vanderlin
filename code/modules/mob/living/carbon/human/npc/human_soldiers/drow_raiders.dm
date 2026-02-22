@@ -1,4 +1,4 @@
-GLOBAL_LIST_INIT(drowraider_aggro, world.file2list("strings/rt/drowaggrolines.txt"))
+GLOBAL_LIST_INIT(drowraider_aggro, file2list("strings/rt/drowaggrolines.txt"))
 
 /mob/living/carbon/human/species/elf/dark/drowraider
 	ai_controller = /datum/ai_controller/human_npc
@@ -76,9 +76,9 @@ GLOBAL_LIST_INIT(drowraider_aggro, world.file2list("strings/rt/drowaggrolines.tx
 	skin_tone = "5f5f70"
 
 	if(gender == FEMALE)
-		real_name = pick(world.file2list("strings/rt/names/elf/elfdf.txt"))
+		real_name = pick(file2list("strings/rt/names/elf/elfdf.txt"))
 	else
-		real_name = pick(world.file2list("strings/rt/names/elf/elfdm.txt"))
+		real_name = pick(file2list("strings/rt/names/elf/elfdm.txt"))
 
 	faction += "spider_lowers"
 

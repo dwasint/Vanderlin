@@ -17,6 +17,7 @@
 		BB_HUMAN_NPC_HARASS_MODE = FALSE,      // TRUE when in hit-and-run mode
 		BB_HUMAN_NPC_HARASS_RETREATING = FALSE,// TRUE when in the back-off phase of harass
 		BB_HUMAN_NPC_HARASS_COOLDOWN = 0,      // world.time before we can dart in again
+		BB_HUMAN_NPC_JUKE_COOLDOWN = 0,        // world.time before we can juke again
 	)
 	planning_subtrees = list(
 		/datum/ai_planning_subtree/pet_planning,
