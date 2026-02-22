@@ -1,17 +1,3 @@
-// Danger levels. Each danger level is defined as an ambush that can happen. Every time this fire, this number iterates.
-#define DANGER_LEVEL_SAFE "Safe"
-#define DANGER_LEVEL_LOW "Low"
-#define DANGER_LEVEL_MODERATE "Moderate"
-#define DANGER_LEVEL_DANGEROUS "Dangerous"
-#define DANGER_LEVEL_BLEAK "Bleak"
-
-#define THREAT_REGION_BASIN "Basin"
-#define THREAT_REGION_NORTHERN_GROVE "Northern Grove"
-#define THREAT_REGION_OUTER_GROVE "Outer Grove" // Grove west of the road
-#define THREAT_REGION_MOUNT_DECAP "Mount Decapitation"
-#define THREAT_REGION_TERRORBOG "Terrorbog"
-#define THREAT_REGION_COAST "Coast"
-
 SUBSYSTEM_DEF(regionthreat)
 	name = "Regional Threat"
 	wait = 15 MINUTES

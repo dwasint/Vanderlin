@@ -322,3 +322,10 @@
 		if(BCLASS_BURN)
 			return "fire"
 	return "blunt" // safest fallback - everything has some blunt resistance defined
+
+#undef HUMAN_NPC_BASE_JUKE_CHANCE
+#undef HUMAN_NPC_JUKE_MIN_SPD
+#undef HUMAN_NPC_JUKE_PER_OVERSPD
+#undef HUMAN_NPC_MAX_ATTACK_STAMINA
+#undef HUMAN_NPC_WEAKPOINT_SCAN_CHANCE
+#undef HUMAN_NPC_WEAKPOINT_CACHE_DURATION

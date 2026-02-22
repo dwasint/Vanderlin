@@ -9,3 +9,16 @@
 #define DANGER_DANGEROUS_LIMIT 40
 #define DANGER_DIRE_FLOOR 41
 #define DANGER_DIRE_LIMIT 60
+
+#define DANGER_LEVEL_SAFE "Safe"
+#define DANGER_LEVEL_LOW "Low"
+#define DANGER_LEVEL_MODERATE "Moderate"
+#define DANGER_LEVEL_DANGEROUS "Dangerous"
+#define DANGER_LEVEL_BLEAK "Bleak"
+
+#define THREAT_REGION_BASIN "Basin"
+#define THREAT_REGION_NORTHERN_GROVE "Northern Grove"
+#define THREAT_REGION_OUTER_GROVE "Outer Grove" // Grove west of the road
+#define THREAT_REGION_MOUNT_DECAP "Mount Decapitation"
+#define THREAT_REGION_TERRORBOG "Terrorbog"
+#define THREAT_REGION_COAST "Coast"

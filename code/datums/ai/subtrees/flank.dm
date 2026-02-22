@@ -127,3 +127,9 @@
 		return
 
 	finish_action(controller, FALSE)
+
+#undef FLANK_RADIUS
+#undef FLANK_MIN_SEPARATION
+#undef FLANK_ENGAGE_DIST
+#undef FLANK_ATTACK_CHANCE
+#undef FLANK_RECHECK_INTERVAL

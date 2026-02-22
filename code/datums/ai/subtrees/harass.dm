@@ -156,3 +156,9 @@
 	if(!move_target || get_dist(pawn, move_target) <= 1)
 		finish_action(controller, TRUE)
 		return.
+
+#undef HARASS_HEALTH_THRESHOLD
+#undef HARASS_STAMINA_THRESHOLD
+#undef HARASS_RETREAT_DIST
+#undef HARASS_BASE_COOLDOWN
+#undef HARASS_STAMINA_COOLDOWN_SCALE
