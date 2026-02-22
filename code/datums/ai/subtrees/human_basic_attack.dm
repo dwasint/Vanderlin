@@ -75,7 +75,7 @@
 		controller.ai_interact(target, TRUE, TRUE)
 
 	if(pawn.next_click < world.time)
-		pawn.next_click = world.time + (pawn.used_intent?.clickcd * 1.2)
+		pawn.next_click = world.time + (pawn.used_intent?.clickcd * ( 1 + rand(0.2, 0.4)))
 		SEND_SIGNAL(pawn, COMSIG_MOB_BREAK_SNEAK)
 
 	if(prob(HUMAN_NPC_WEAKPOINT_SCAN_CHANCE) && isliving(target))
@@ -242,6 +242,8 @@
 		return FALSE
 	if(pawn.body_position == LYING_DOWN)
 		return FALSE
+	if(pawn.ai_controller.blackboard[BB_HUMAN_NPC_HARASS_MODE])
+		return FALSE
 	if(!target || !isturf(pawn.loc) || !isturf(target.loc))
 		return FALSE
 
@@ -270,6 +272,7 @@
 	var/turf/juke_turf = pick(candidates)
 	pawn.Move(juke_turf, get_dir(pawn, juke_turf), pawn.cached_multiplicative_slowdown)
 
+	pawn.ai_controller.set_blackboard_key(BB_HUMAN_NPC_JUKE_COOLDOWN, world.time + 1.5 SECONDS)
 	pawn.tempfixeye = FALSE
 	if(!was_fixedeye)
 		pawn.fixedeye = FALSE

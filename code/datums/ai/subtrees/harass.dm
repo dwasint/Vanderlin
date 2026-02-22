@@ -114,7 +114,7 @@
 
 	controller.ai_interact(target, TRUE, TRUE)
 	if(pawn.next_click < world.time)
-		pawn.next_click = world.time + pawn.attack_speed
+		pawn.next_click = world.time + (pawn.used_intent?.clickcd * ( 1 + rand(0.2, 0.4)))
 		SEND_SIGNAL(pawn, COMSIG_MOB_BREAK_SNEAK)
 
 	// Cooldown scales up with stamina damage and scales down with health - the more gassed/hurt, the longer we hide
@@ -126,9 +126,6 @@
 	controller.set_blackboard_key(BB_HUMAN_NPC_HARASS_RETREATING, TRUE)
 	controller.set_blackboard_key(BB_HUMAN_NPC_HARASS_COOLDOWN, world.time + cooldown)
 	finish_action(controller, TRUE)
-
-/datum/ai_behavior/human_npc_harass_strike/finish_action(datum/ai_controller/controller, succeeded, target_key, targetting_datum_key)
-	. = ..()
 
 /datum/ai_behavior/human_npc_harass_retreat
 	action_cooldown = 0.2 SECONDS
