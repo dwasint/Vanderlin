@@ -79,7 +79,7 @@
 		spread = 0
 	for(var/obj/item/ammo_casing/CB in get_ammo_list(FALSE, TRUE))
 		var/obj/projectile/BB = CB.BB
-		if(!user.client || user.client?.chargedprog < 100)
+		if(user.client?.chargedprog < 100)
 			var/charge_prob = 1
 			if(user.client)
 				charge_prob = (user.client.chargedprog / 100)
