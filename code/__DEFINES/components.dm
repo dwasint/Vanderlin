@@ -125,6 +125,9 @@
 
 	#define SPEECH_IGNORE_SPAM 6
 	#define SPEECH_FORCED 7 */
+/// Called from the base of '/obj/item/bodypart/proc/drop_limb(special)' ()
+#define COMSIG_MOB_DISMEMBER "mob_drop_limb"
+	#define COMPONENT_CANCEL_DISMEMBER (1<<0) //cancel the drop limb
 #define COMSIG_MOB_DEADSAY "mob_deadsay" // from /mob/say_dead(): (mob/speaker, message)
 	#define MOB_DEADSAY_SIGNAL_INTERCEPT 1
 ///from base of /mob/verb/pointed: (atom/A)

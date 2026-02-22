@@ -124,6 +124,8 @@
 		finish_action(controller, succeeded = FALSE)
 
 /datum/ai_behavior/find_aggro_targets/proc/failed_to_find_anyone(datum/ai_controller/controller, target_key, targeting_strategy_key, hiding_location_key)
+	if(HAS_TRAIT(controller.pawn, TRAIT_FRESHSPAWN))
+		return
 	var/aggro_range = controller.blackboard[BB_AGGRO_RANGE] || 9
 	// takes the larger between our range() input and our implicit hearers() input (world.view)
 	aggro_range = max(aggro_range, ROUND_UP(max(getviewsize(world.view)) / 2))
