@@ -929,6 +929,7 @@
 #include "code\datums\components\chimeric_organ.dm"
 #include "code\datums\components\cleaner.dm"
 #include "code\datums\components\combat_noises.dm"
+#include "code\datums\components\combat_vocalizer.dm"
 #include "code\datums\components\conjured_item.dm"
 #include "code\datums\components\connect_mob_behalf.dm"
 #include "code\datums\components\construction.dm"

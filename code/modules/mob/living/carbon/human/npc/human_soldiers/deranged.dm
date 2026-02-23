@@ -34,6 +34,7 @@ GLOBAL_LIST_INIT(hedgeknight_aggro, file2list("strings/rt/hedgeknightaggrolines.
 	var/head = get_bodypart(BODY_ZONE_HEAD)
 	RegisterSignal(head, COMSIG_MOB_DISMEMBER, PROC_REF(handle_drop_limb))
 
+
 /mob/living/carbon/human/species/human/northern/deranged_knight/Destroy()
 	var/head = get_bodypart(BODY_ZONE_HEAD)
 	if(head)
@@ -63,12 +64,19 @@ GLOBAL_LIST_INIT(hedgeknight_aggro, file2list("strings/rt/hedgeknightaggrolines.
 		switch(rand(1, 4))
 			if(1)
 				preset = "graggar"
+				SEND_SIGNAL(src, COMSIG_MOB_MODIFY_AGGRO_LINES, GLOB.graggar_aggro, TRUE)
+				SEND_SIGNAL(src, COMSIG_MOB_MODIFY_DEATH_LINES, list("No more... Blood!"), TRUE)
 			if(2)
 				preset = "matthios"
+				SEND_SIGNAL(src, COMSIG_MOB_MODIFY_AGGRO_LINES, GLOB.matthios_aggro, TRUE)
+				SEND_SIGNAL(src, COMSIG_MOB_MODIFY_DEATH_LINES, list("Matthios, I have failed you...", "Matthios, is this true?!"), TRUE)
 			if(3)
 				preset = "zizo"
+				SEND_SIGNAL(src, COMSIG_MOB_MODIFY_AGGRO_LINES, GLOB.zizo_aggro, TRUE)
+				SEND_SIGNAL(src, COMSIG_MOB_MODIFY_DEATH_LINES, list("Zizo, forgive me!"), TRUE)
 			if(4)
 				preset = "hedgeknight"
+				SEND_SIGNAL(src, COMSIG_MOB_MODIFY_AGGRO_LINES, GLOB.hedgeknight_aggro, TRUE)
 	switch(preset)
 		if("graggar")
 			equipOutfit(new /datum/outfit/job/quest_miniboss/graggar)
@@ -130,16 +138,6 @@ GLOBAL_LIST_INIT(hedgeknight_aggro, file2list("strings/rt/hedgeknightaggrolines.
 	def_intent_change(INTENT_PARRY)
 
 /mob/living/carbon/human/species/human/northern/deranged_knight/death(gibbed, nocutscene)
-	if(preset == "matthios")
-		if(prob(95))
-			say("Matthios, I have failed you...", forced = TRUE)
-		else
-			say("Matthios, is this true?!", forced = TRUE)
-	else if(preset == "zizo")
-		say("Zizo, forgive me!", forced = TRUE)
-	else if(preset == "graggar")
-		say("No more... Blood!")
-	emote("painscream")
 	. = ..()
 	if(!gibbed)
 		dust(FALSE, FALSE, TRUE)
