@@ -179,6 +179,7 @@
 /obj/item/storage/belt/pouch/medicine
 	populate_contents = list(
 		/obj/item/needle,
+		/obj/item/reagent_containers/powder/ozium,
 		/obj/item/natural/bundle/cloth/bandage/full,
 		/obj/item/reagent_containers/glass/bottle/healthpot
 	)
