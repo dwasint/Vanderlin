@@ -3,6 +3,13 @@
 /datum/ai_planning_subtree/use_bandage/SelectBehaviors(datum/ai_controller/controller, delta_time)
 	if(controller.blackboard[BB_HELD_CONSUMABLE] || controller.blackboard[BB_BASIC_MOB_CURRENT_TARGET])
 		return
+
+	var/datum/component/ai_inventory_manager/inv = controller.get_inventory()
+	if(!inv)
+		return
+	var/obj/item/bandage = inv.get_item(AI_ITEM_BANDAGE)
+	if(!bandage)
+		return
 	var/real = FALSE
 	var/mob/living/carbon/human/human_pawn = controller.pawn
 	for(var/obj/item/bodypart/bodypart as anything in human_pawn.bodyparts)
@@ -12,12 +19,6 @@
 			break
 
 	if(!real)
-		return
-	var/datum/component/ai_inventory_manager/inv = controller.get_inventory()
-	if(!inv)
-		return
-	var/obj/item/bandage = inv.get_item(AI_ITEM_BANDAGE)
-	if(!bandage)
 		return
 	controller.set_blackboard_key(BB_HELD_CONSUMABLE, bandage)
 	controller.queue_behavior(/datum/ai_behavior/apply_bandage, BB_HELD_CONSUMABLE)
