@@ -17,20 +17,10 @@
 		return COMPONENT_INCOMPATIBLE
 
 	_build_slot_flag_list()
+	inventory_map = alist()
+	for(var/ai_item_type as anything in GLOB.ai_item_flags)
+		inventory_map[ai_item_type] = list()
 
-	inventory_map = alist(
-		AI_ITEM_BANDAGE        = list(),
-		AI_ITEM_HEALING_DRINK  = list(),
-		AI_ITEM_FOOD           = list(),
-		AI_ITEM_DRINK          = list(),
-		AI_ITEM_POWDER         = list(),
-		AI_ITEM_KEY            = list(),
-		AI_ITEM_TOOL           = list(),
-		AI_ITEM_AMMO           = list(),
-		AI_ITEM_GRENADE        = list(),
-		AI_ITEM_MELEE          = list(),
-		AI_ITEM_GUN            = list(),
-	)
 	container_refs = alist()
 
 	RegisterSignal(parent, COMSIG_MOB_EQUIPPED_ITEM,   PROC_REF(on_equip))
@@ -98,28 +88,10 @@
 /// Classify a single item into all matching categories
 /datum/component/ai_inventory_manager/proc/_classify_item(obj/item/it, slot_flag)
 	RegisterSignal(it, COMSIG_PARENT_QDELETING, PROC_REF(on_item_delete), override = TRUE)
-	if(it.flags_ai_inventory & AI_ITEM_BANDAGE)
-		inventory_map[AI_ITEM_BANDAGE][it] = slot_flag
-	if(it.flags_ai_inventory & AI_ITEM_HEALING_DRINK)
-		inventory_map[AI_ITEM_HEALING_DRINK][it] = slot_flag
-	if(it.flags_ai_inventory & AI_ITEM_FOOD)
-		inventory_map[AI_ITEM_FOOD][it] = slot_flag
-	if(it.flags_ai_inventory & AI_ITEM_DRINK)
-		inventory_map[AI_ITEM_DRINK][it] = slot_flag
-	if(it.flags_ai_inventory & AI_ITEM_POWDER)
-		inventory_map[AI_ITEM_POWDER][it] = slot_flag
-	if(it.flags_ai_inventory & AI_ITEM_KEY)
-		inventory_map[AI_ITEM_KEY][it] = slot_flag
-	if(it.flags_ai_inventory & AI_ITEM_TOOL)
-		inventory_map[AI_ITEM_TOOL][it] = slot_flag
-	if(it.flags_ai_inventory & AI_ITEM_AMMO)
-		inventory_map[AI_ITEM_AMMO][it] = slot_flag
-	if(it.flags_ai_inventory & AI_ITEM_GRENADE)
-		inventory_map[AI_ITEM_GRENADE][it] = slot_flag
-	if(it.flags_ai_inventory & AI_ITEM_MELEE)
-		inventory_map[AI_ITEM_MELEE][it] = slot_flag
-	if(isgun(it))
-		inventory_map[AI_ITEM_GUN][it] = slot_flag
+
+	for(var/ai_flag in GLOB.ai_item_flags)
+		if(ai_flag & it.flags_ai_inventory)
+			inventory_map[ai_flag][it] = slot_flag
 
 /datum/component/ai_inventory_manager/proc/on_equip(datum/source, obj/item/equipment, slot)
 	SIGNAL_HANDLER

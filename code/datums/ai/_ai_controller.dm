@@ -47,6 +47,8 @@ have ways of interacting with a specific atom and control it. They posses a blac
 	// Movement related things here
 	///Reference to the movement datum we use. Is a type on initialize but becomes a ref afterwards.
 	var/datum/ai_movement/ai_movement = /datum/ai_movement/dumb
+	/// this shouldn't be a component tbh but uh reusing code go brrr
+	var/datum/component/ai_inventory_manager/inventory_component
 	///Cooldown until next movement
 	COOLDOWN_DECLARE(movement_cooldown)
 	///Delay between movements. This is on the controller so we can keep the movement datum singleton
@@ -82,6 +84,7 @@ have ways of interacting with a specific atom and control it. They posses a blac
 /datum/ai_controller/Destroy(force, ...)
 	UnpossessPawn(FALSE)
 	our_cells = null
+	inventory_component = null
 	set_movement_target(type, null)
 	if(ai_movement.moving_controllers[src])
 		ai_movement.stop_moving_towards(src)
@@ -515,8 +518,10 @@ have ways of interacting with a specific atom and control it. They posses a blac
 	SEND_SIGNAL(src, AI_CONTROLLER_BEHAVIOR_QUEUED(behavior_type), arguments)
 
 /datum/ai_controller/proc/get_inventory()
-    RETURN_TYPE(/datum/component/ai_inventory_manager)
-    return pawn?.GetComponent(/datum/component/ai_inventory_manager)
+	RETURN_TYPE(/datum/component/ai_inventory_manager)
+	if(!inventory_component)
+		return pawn?.GetComponent(/datum/component/ai_inventory_manager)
+	return inventory_component
 
 /datum/ai_controller/proc/ProcessBehavior(delta_time, datum/ai_behavior/behavior)
 	var/mob/living/liver = pawn

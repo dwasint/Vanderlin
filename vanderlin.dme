@@ -826,6 +826,7 @@
 #include "code\datums\ai\subtrees\tip_reaction.dm"
 #include "code\datums\ai\subtrees\travel_to_point.dm"
 #include "code\datums\ai\subtrees\use_bandage.dm"
+#include "code\datums\ai\subtrees\use_explosive.dm"
 #include "code\datums\ai\subtrees\use_healing_drink.dm"
 #include "code\datums\ai\subtrees\use_powders.dm"
 #include "code\datums\ai\targetting_datum\not_friends.dm"
