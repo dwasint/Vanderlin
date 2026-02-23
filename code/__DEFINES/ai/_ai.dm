@@ -240,6 +240,11 @@
 #define BB_ARCHER_NPC_EQUIPMENT_CACHE_EXPIRY "archer_npc_equipment_cache_expiry"
 #define BB_ARCHER_NPC_BOW               "archer_npc_bow"
 #define BB_ARCHER_NPC_QUIVER            "archer_npc_quiver"
+#define BB_INVENTORY_MAP        "inventory_map"        // list(category = list(item_ref = slot_name))
+#define BB_CONTAINER_REFS       "container_refs"       // list(slot_name = item_ref)
+#define BB_INVENTORY_DIRTY      "inventory_dirty"      // bool, triggers reappraisal
+#define BB_HELD_CONSUMABLE      "held_consumable"      // item we pulled out to use
+#define BB_TARGET_ZONE_OVERRIDE	"bb_target_override"
 
 #define ARCHER_NPC_EQUIPMENT_CACHE_TIME (40 SECONDS)
 #define ARCHER_NPC_MIN_RANGE            3   // tiles - closer than this, prefer melee
@@ -320,3 +325,19 @@
 #define ACTION_STATE_CONTINUE 1
 #define ACTION_STATE_COMPLETE 2
 #define ACTION_STATE_FAILED 3
+
+#define AI_ITEM_BANDAGE         (1<<0)   // stops bleeding, applied to self/others
+#define AI_ITEM_HEALING_DRINK   (1<<1)   // drinkable healing reagent container
+#define AI_ITEM_FOOD            (1<<2)   // edible
+#define AI_ITEM_POWDER          (1<<3)   // snortable /obj/item/reagent_containers/powder
+#define AI_ITEM_KEY             (1<<4)
+#define AI_ITEM_TOOL            (1<<5)
+#define AI_ITEM_AMMO            (1<<6)
+#define AI_ITEM_GRENADE         (1<<7)
+#define AI_ITEM_MELEE           (1<<8)
+#define AI_ITEM_GUN             (1<<9)
+#define AI_ITEM_DRINK           (1<<10)  // generic drinkable (not necessarily healing)
+
+#define AI_INVENTORY_WATCHED_SLOTS (ITEM_SLOT_BELT | ITEM_SLOT_BACK_L | ITEM_SLOT_BACK_R | \
+    ITEM_SLOT_BELT_L | ITEM_SLOT_BELT_R | ITEM_SLOT_ARMOR | ITEM_SLOT_PANTS | \
+    ITEM_SLOT_SHIRT | ITEM_SLOT_CLOAK | ITEM_SLOT_BACK)

@@ -21,6 +21,8 @@
 	)
 	planning_subtrees = list(
 		/datum/ai_planning_subtree/pet_planning,
+		/datum/ai_planning_subtree/use_bandage,
+		/datum/ai_planning_subtree/use_healing_drink,
 		/datum/ai_planning_subtree/generic_wield,
 		/datum/ai_planning_subtree/generic_resist,
 		/datum/ai_planning_subtree/generic_stand,
@@ -43,6 +45,8 @@
 	var/mob/living/living_pawn = new_pawn
 	RegisterSignal(new_pawn, COMSIG_MOB_MOVESPEED_UPDATED, PROC_REF(update_movespeed))
 	movement_delay = living_pawn.cached_multiplicative_slowdown
+	new_pawn.AddComponent(/datum/component/ai_inventory_manager)
+	new_pawn.AddElement(/datum/element/interrupt_on_damage)
 
 /datum/ai_controller/human_npc/UnpossessPawn(destroy)
 	UnregisterSignal(pawn, list(

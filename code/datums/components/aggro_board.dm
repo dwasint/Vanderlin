@@ -58,7 +58,7 @@
 	var/list/aggro_table = living_mob.ai_controller.blackboard[BB_MOB_AGGRO_TABLE]
 	if(!length(aggro_table))
 		add_threat(living_mob, target, amount)
-	var/aggro = aggro_table[living_mob]
+	var/aggro = aggro_table[target]
 	if(aggro >= cap)
 		return
 	amount -= aggro
@@ -121,7 +121,7 @@
 
 /// Periodically decays threat levels
 /datum/component/ai_aggro_system/process()
-	var/decay_amount = default_decay_rate * 10
+	var/decay_amount = default_decay_rate
 	var/mob/living/living_mob = parent
 	if(!living_mob?.ai_controller)
 		return

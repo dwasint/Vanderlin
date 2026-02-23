@@ -168,7 +168,7 @@ have ways of interacting with a specific atom and control it. They posses a blac
 	return !QDELETED(pawn)
 
 ///Interact with objects
-/datum/ai_controller/proc/ai_interact(target, combat_mode, nextmove = FALSE, list/modifiers)
+/datum/ai_controller/proc/ai_interact(target, combat_mode, nextmove = FALSE, list/modifiers, maintain_position = FALSE)
 	if(!ai_can_interact())
 		return FALSE
 
@@ -181,10 +181,11 @@ have ways of interacting with a specific atom and control it. They posses a blac
 	if(nextmove && living_pawn.next_move > world.time)
 		return FALSE
 
-	if(living_pawn.body_position == LYING_DOWN)
-		living_pawn.aimheight_change(rand(1,9))
-	else
-		living_pawn.aimheight_change(rand(10,19))
+	if(!maintain_position)
+		if(living_pawn.body_position == LYING_DOWN)
+			living_pawn.aimheight_change(rand(1,9))
+		else
+			living_pawn.aimheight_change(rand(10,19))
 
 	var/params = list2params(modifiers)
 
@@ -513,7 +514,14 @@ have ways of interacting with a specific atom and control it. They posses a blac
 		behavior_args -= behavior_type
 	SEND_SIGNAL(src, AI_CONTROLLER_BEHAVIOR_QUEUED(behavior_type), arguments)
 
+/datum/ai_controller/proc/get_inventory()
+    RETURN_TYPE(/datum/component/ai_inventory_manager)
+    return pawn?.GetComponent(/datum/component/ai_inventory_manager)
+
 /datum/ai_controller/proc/ProcessBehavior(delta_time, datum/ai_behavior/behavior)
+	var/mob/living/liver = pawn
+	if(liver.doing())
+		return
 	var/list/arguments = list(delta_time, src)
 	var/list/stored_arguments = behavior_args[behavior.type]
 	if(stored_arguments)
@@ -788,25 +796,30 @@ have ways of interacting with a specific atom and control it. They posses a blac
 	while(index <= length(remove_queue))
 		var/list/next_to_clear = remove_queue[index]
 		for(var/inner_value in next_to_clear)
-			var/associated_value = next_to_clear[inner_value]
-			// We are a lists of lists, add the next value to the queue so we can handle references in there
-			// (But we only need to bother checking the list if it's not empty.)
-			if(islist(inner_value) && length(inner_value))
-				UNTYPED_LIST_ADD(remove_queue, inner_value)
+			if(isnum(inner_value))
+				if(inner_value == source)
+					next_to_clear -= inner_value
+					SEND_SIGNAL(pawn, COMSIG_AI_BLACKBOARD_KEY_CLEARED(inner_value))
+			else
+				var/associated_value = next_to_clear[inner_value]
+				// We are a lists of lists, add the next value to the queue so we can handle references in there
+				// (But we only need to bother checking the list if it's not empty.)
+				if(islist(inner_value) && length(inner_value))
+					UNTYPED_LIST_ADD(remove_queue, inner_value)
 
-			// We found the value that's been deleted. Clear it out from this list
-			else if(inner_value == source)
-				next_to_clear -= inner_value
+				// We found the value that's been deleted. Clear it out from this list
+				else if(inner_value == source)
+					next_to_clear -= inner_value
 
-			// We are an assoc lists of lists, the list at the next value so we can handle references in there
-			// (But again, we only need to bother checking the list if it's not empty.)
-			if(islist(associated_value) && length(associated_value))
-				UNTYPED_LIST_ADD(remove_queue, associated_value)
+				// We are an assoc lists of lists, the list at the next value so we can handle references in there
+				// (But again, we only need to bother checking the list if it's not empty.)
+				if(islist(associated_value) && length(associated_value))
+					UNTYPED_LIST_ADD(remove_queue, associated_value)
 
-			// We found the value that's been deleted, it was an assoc value. Clear it out entirely
-			else if(associated_value == source)
-				next_to_clear -= inner_value
-				SEND_SIGNAL(pawn, COMSIG_AI_BLACKBOARD_KEY_CLEARED(inner_value))
+				// We found the value that's been deleted, it was an assoc value. Clear it out entirely
+				else if(associated_value == source)
+					next_to_clear -= inner_value
+					SEND_SIGNAL(pawn, COMSIG_AI_BLACKBOARD_KEY_CLEARED(inner_value))
 
 		index += 1
 

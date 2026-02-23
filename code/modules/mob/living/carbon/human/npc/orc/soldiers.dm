@@ -172,6 +172,7 @@
 	shirt = /obj/item/clothing/armor/gambeson/light
 	pants = /obj/item/clothing/pants/trou/leather
 	belt = /obj/item/storage/belt/leather
+	beltl = /obj/item/storage/belt/pouch/medicine
 	H.base_strength = 14 // GAGGER GAGGER GAGGER
 	H.base_speed = 10 // Fast, for an orc
 	H.base_constitution = 12

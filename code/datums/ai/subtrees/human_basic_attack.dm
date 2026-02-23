@@ -148,7 +148,7 @@
 		if(!part)
 			continue
 
-		// Wound exploitation — requires trained eye AND good perception
+		//requires trained eye AND good perception
 		if(skill_level >= SKILL_LEVEL_JOURNEYMAN && pawn.STAPER >= 10)
 			if(part.brute_dam > 20 || part.burn_dam > 20)
 				wounded += part.body_zone
@@ -195,7 +195,7 @@
 		return
 
 	// Skill scales how long the targeting solution stays valid
-	// Reach also matters — longer weapons can maintain solutions longer
+	//longer weapons can maintain solutions longer
 	// since the fighter isn't scrambling to stay close
 	var/cache_duration = HUMAN_NPC_WEAKPOINT_CACHE_DURATION
 	switch(skill_level)

@@ -18,7 +18,6 @@
 	return SUBTREE_RETURN_FINISH_PLANNING
 
 /datum/ai_behavior/ranged_attack_bow
-	// No REQUIRE_REACH — we want to stay at range
 	behavior_flags = AI_BEHAVIOR_CAN_PLAN_DURING_EXECUTION
 	action_cooldown = 0.2 SECONDS
 
@@ -101,7 +100,7 @@
 		finish_action(controller, FALSE, target_key)
 		return
 
-	// Break off if target closed to melee range — let melee tree handle it
+	// Break off if target closed to melee range
 	if(get_dist(pawn, target) < ARCHER_NPC_MIN_RANGE)
 		finish_action(controller, FALSE, target_key)
 		return
