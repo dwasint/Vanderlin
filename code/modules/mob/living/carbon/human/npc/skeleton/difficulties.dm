@@ -217,7 +217,7 @@
 			skel_outfit = /datum/outfit/job/skeleton/npc/medium
 		if(4)
 			skel_outfit = /datum/outfit/job/skeleton/npc/hard
-	..()
+	. = ..()
 
 /mob/living/carbon/human/species/skeleton/npc/hardspread/Initialize()
 	var/outfit = rand(1,4)
@@ -230,4 +230,4 @@
 			skel_outfit = /datum/outfit/job/skeleton/npc/pirate
 		if(4)
 			skel_outfit = /datum/outfit/job/skeleton/npc/hard
-	..()
+	. = ..()
