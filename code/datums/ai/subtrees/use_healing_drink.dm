@@ -1,7 +1,4 @@
 /datum/ai_planning_subtree/use_healing_drink/SelectBehaviors(datum/ai_controller/controller, delta_time)
-	var/mob/living/carbon/human/H = controller.pawn
-	if(H.getBruteLoss() < 20 && H.getFireLoss() < 20)
-		return
 	var/datum/component/ai_inventory_manager/inv = controller.get_inventory()
 	if(!inv)
 		return
@@ -16,6 +13,10 @@
 		break
 
 	if(!drink)
+		return
+
+	var/mob/living/carbon/human/H = controller.pawn
+	if(H.getBruteLoss() < 20 && H.getFireLoss() < 20)
 		return
 
 	controller.set_blackboard_key(BB_HELD_CONSUMABLE, drink)
