@@ -157,3 +157,6 @@
 	icon_state = "signal_horn_indicator"
 	screen_loc = "CENTER:-16,CENTER:-16"
 	alpha = 100
+
+#undef WARDEN_AMBUSH_MIN
+#undef WARDEN_AMBUSH_MAX
