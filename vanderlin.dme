@@ -829,6 +829,7 @@
 #include "code\datums\ai\subtrees\use_explosive.dm"
 #include "code\datums\ai\subtrees\use_healing_drink.dm"
 #include "code\datums\ai\subtrees\use_powders.dm"
+#include "code\datums\ai\subtrees\use_throwing_weapon.dm"
 #include "code\datums\ai\targetting_datum\not_friends.dm"
 #include "code\datums\ai\targetting_datum\not_holding_item.dm"
 #include "code\datums\ai\targetting_datum\simpe_targetting_datum.dm"

@@ -14,6 +14,7 @@ GLOBAL_LIST_INIT(target_interested_atoms, typecacheof(list(/mob)))
 	return ..()
 
 /datum/ai_behavior/find_potential_targets/perform(seconds_per_tick, datum/ai_controller/controller, target_key, targetting_datum_key, hiding_location_key)
+	. = ..()
 	var/mob/living/living_mob = controller.pawn
 	if(living_mob.pet_passive)
 		finish_action(controller, succeeded = FALSE)

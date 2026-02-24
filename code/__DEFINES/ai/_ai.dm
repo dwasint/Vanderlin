@@ -337,6 +337,7 @@
 #define AI_ITEM_MELEE           (1<<8)
 #define AI_ITEM_GUN             (1<<9)
 #define AI_ITEM_DRINK           (1<<10)  // generic drinkable (not necessarily healing)
+#define AI_ITEM_THROWING        (1<<11)
 
 GLOBAL_LIST_INIT(ai_item_flags, list(
 	AI_ITEM_BANDAGE,
@@ -350,6 +351,7 @@ GLOBAL_LIST_INIT(ai_item_flags, list(
 	AI_ITEM_MELEE,
 	AI_ITEM_GUN,
 	AI_ITEM_DRINK,
+	AI_ITEM_THROWING,
 ))
 
 #define AI_INVENTORY_WATCHED_SLOTS (ITEM_SLOT_BELT | ITEM_SLOT_BACK_L | ITEM_SLOT_BACK_R | \

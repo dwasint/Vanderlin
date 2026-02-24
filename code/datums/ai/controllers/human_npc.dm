@@ -23,6 +23,7 @@
 		/datum/ai_planning_subtree/pet_planning,
 		/datum/ai_planning_subtree/use_powder,
 		/datum/ai_planning_subtree/use_bandage,
+		/datum/ai_planning_subtree/use_throwable,
 		/datum/ai_planning_subtree/use_healing_drink,
 		/datum/ai_planning_subtree/throw_grenade,
 		/datum/ai_planning_subtree/generic_wield,
