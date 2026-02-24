@@ -74,20 +74,20 @@
 	salvage_amount = 0
 	fiber_salvage = FALSE
 
-/obj/item/clothing/barding/fogbeast
+/obj/item/clothing/barding/honse
 	name = "padded barding"
-	desc = "A set of padded body armor for a Fogbeast, designed to protect your mount's vital organs."
+	desc = "A set of padded body armor for a Honse, designed to protect your mount's vital organs."
 	icon_state = "sewingkit"
 	barding_icon = 'icons/mob/monster/fogbeast.dmi'
 	barding_state = "barding"
 	female_barding_state = "barding"
 	valid_animal_types = list(
-		/mob/living/simple_animal/hostile/retaliate/fogbeast
+		/mob/living/simple_animal/hostile/retaliate/honse
 	)
 
-/obj/item/clothing/barding/fogbeast/chain
+/obj/item/clothing/barding/honse/chain
 	name = "chainmail barding"
-	desc = "A set of chainmail body armor for a Fogbeast, designed to protect your mount's vital organs."
+	desc = "A set of chainmail body armor for a Honse, designed to protect your mount's vital organs."
 	icon_state = "armorkit"
 	barding_state = "barding_chain"
 	female_barding_state = "barding_chain"

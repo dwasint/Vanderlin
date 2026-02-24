@@ -119,14 +119,14 @@
 	female_caparison_state = "heartfelt_caparison-f"
 
 /////////////////////////
-// SUBTYPES - FOGBEAST //
+// SUBTYPES - HONSE //
 /////////////////////////
 
-/obj/item/caparison/fogbeast
+/obj/item/caparison/honse
 	name = "caparison"
-	desc = "A decorative piece of cloth meant to be used as a saddle decoration. This one fits on a Fogbeast."
+	desc = "A decorative piece of cloth meant to be used as a saddle decoration. This one fits on a Honse."
 	caparison_icon = 'icons/mob/monster/fogbeast.dmi'
-	valid_animal_types = list(/mob/living/simple_animal/hostile/retaliate/fogbeast)
+	valid_animal_types = list(/mob/living/simple_animal/hostile/retaliate/honse)
 	color = COLOR_WHITE
 	detail_types = list("Quad" = "quad")
 	symbol_types = list("Psycross" = "psycross", "Astrata" = "astrata")

@@ -1740,9 +1740,9 @@
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 
-/datum/repeatable_crafting_recipe/sewing/barding/fogbeast
-	name = "padded barding (fogbeast)"
-	output = /obj/item/clothing/barding/fogbeast
+/datum/repeatable_crafting_recipe/sewing/barding/honse
+	name = "padded barding (honse)"
+	output = /obj/item/clothing/barding/honse
 
 /datum/repeatable_crafting_recipe/sewing/caparison
 	name = "caparison"
@@ -1764,6 +1764,6 @@
 	name = "eoran caparison"
 	output =/obj/item/caparison/eora
 
-/datum/repeatable_crafting_recipe/sewing/caparison/fogbeast
-	name = "fogbeast caparison"
-	output =/obj/item/caparison/fogbeast
+/datum/repeatable_crafting_recipe/sewing/caparison/honse
+	name = "honse caparison"
+	output =/obj/item/caparison/honse

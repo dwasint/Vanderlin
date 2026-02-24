@@ -762,11 +762,11 @@
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/barding/chain
 
-/datum/anvil_recipe/armor/steel/barding/fogbeast
-	name = "Fogbeast Barding, Chainmail (+1 Steel)"
+/datum/anvil_recipe/armor/steel/barding/honse
+	name = "Honse Barding, Chainmail (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/ingot/steel)
-	created_item = /obj/item/clothing/barding/fogbeast/chain
+	created_item = /obj/item/clothing/barding/honse/chain
 
 /*
 /datum/anvil_recipe/armor/steel/warden_helm
