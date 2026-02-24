@@ -21,6 +21,7 @@
 	)
 	planning_subtrees = list(
 		/datum/ai_planning_subtree/pet_planning,
+		/datum/ai_planning_subtree/generic_break_restraints,
 		/datum/ai_planning_subtree/use_powder,
 		/datum/ai_planning_subtree/use_bandage,
 		/datum/ai_planning_subtree/use_throwable,

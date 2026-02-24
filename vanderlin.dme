@@ -785,6 +785,7 @@
 #include "code\datums\ai\subtrees\flesh_hungers.dm"
 #include "code\datums\ai\subtrees\flesh_melee.dm"
 #include "code\datums\ai\subtrees\generic_resist.dm"
+#include "code\datums\ai\subtrees\generic_restraint.dm"
 #include "code\datums\ai\subtrees\generic_stand.dm"
 #include "code\datums\ai\subtrees\generic_wield.dm"
 #include "code\datums\ai\subtrees\glimmerwing.dm"
