@@ -38,8 +38,9 @@
 	return SUBTREE_RETURN_FINISH_PLANNING
 
 /datum/ai_behavior/ranged_attack_bow
-	behavior_flags = AI_BEHAVIOR_CAN_PLAN_DURING_EXECUTION
+	behavior_flags = AI_BEHAVIOR_CAN_PLAN_DURING_EXECUTION | AI_BEHAVIOR_REQUIRE_MOVEMENT | AI_BEHAVIOR_MOVE_AND_PERFORM
 	action_cooldown = 0.2 SECONDS
+	required_distance = ARCHER_NPC_MIN_RANGE + 4
 
 /datum/ai_behavior/ranged_attack_bow/setup(datum/ai_controller/controller, target_key)
 	. = ..()
@@ -105,6 +106,8 @@
 			xbow.cocked = TRUE
 			xbow.update_appearance(UPDATE_ICON_STATE)
 
+	set_movement_target(controller, target)
+	SEND_SIGNAL(controller.pawn, COMSIG_COMBAT_TARGET_SET, TRUE)
 	return TRUE
 
 /datum/ai_behavior/ranged_attack_bow/perform(delta_time, datum/ai_controller/controller, target_key)
@@ -122,6 +125,7 @@
 		return
 
 	if(!can_see(pawn, target, 11))
+		finish_action(controller, FALSE, target_key)
 		return
 
 	var/obj/item/gun/ballistic/revolver/grenadelauncher/bow/bow = null
@@ -152,6 +156,7 @@
 	var/obj/item/ammo_holder/quiver/Q = controller.blackboard[BB_ARCHER_NPC_QUIVER]
 
 	if(!succeeded || !length(Q.ammo_list))
+		controller.clear_blackboard_key(target_key)
 		// Re-equip stashed melee weapon
 		var/obj/item/stashed = controller.blackboard[BB_ARCHER_NPC_STASHED_WEAPON]
 		if(stashed && !QDELETED(stashed))

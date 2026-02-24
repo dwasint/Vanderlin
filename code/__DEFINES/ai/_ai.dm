@@ -244,6 +244,9 @@
 #define BB_INVENTORY_DIRTY      "inventory_dirty"      // bool, triggers reappraisal
 #define BB_HELD_CONSUMABLE      "held_consumable"      // item we pulled out to use
 #define BB_TARGET_ZONE_OVERRIDE	"bb_target_override"
+#define BB_LOOT_TARGET "loot_target"
+#define BB_LOOT_TARGET_ITEM "loot_target_item"
+#define BB_LOOT_BLACKLIST "loot_blacklist"
 
 #define ARCHER_NPC_EQUIPMENT_CACHE_TIME (40 SECONDS)
 #define ARCHER_NPC_MIN_RANGE            3   // tiles - closer than this, prefer melee

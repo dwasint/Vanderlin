@@ -797,6 +797,7 @@
 #include "code\datums\ai\subtrees\leyline_energy.dm"
 #include "code\datums\ai\subtrees\leyline_teleport.dm"
 #include "code\datums\ai\subtrees\look_for_adult.dm"
+#include "code\datums\ai\subtrees\loot.dm"
 #include "code\datums\ai\subtrees\make_babies.dm"
 #include "code\datums\ai\subtrees\minotaur_fury.dm"
 #include "code\datums\ai\subtrees\minotaur_melee.dm"
