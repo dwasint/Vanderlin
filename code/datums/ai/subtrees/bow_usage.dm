@@ -137,7 +137,7 @@
 	if(pawn.used_intent && pawn.used_intent.chargetime)
 		chargetime = pawn.used_intent.get_chargetime()
 
-	if(!do_after(pawn, min(chargetime, 0.4 SECONDS), pawn))
+	if(!do_after(pawn, min(chargetime, 1 SECONDS), pawn))
 		finish_action(controller, FALSE, target_key)
 		return
 
