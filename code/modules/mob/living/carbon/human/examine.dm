@@ -283,6 +283,14 @@
 				. += span_userdanger("OUTLAW!")
 
 
+			if(isautomaton(user))
+				if(HAS_TRAIT(src, TRAIT_NOBLE_BLOOD))
+					. += span_blue("They are a Blue-blooded Noble.")
+				else if(HAS_TRAIT(src, TRAIT_NOBLE_POWER))
+					. += span_blue("They are a crown-recognised Noble.")
+				if(job in GLOB.automaton_order_jobs)
+					. += span_blue("They are an authenticated Artificer.")
+
 			var/inquisition_text =get_inquisition_text(user)
 			if(inquisition_text)
 				. +=span_notice(inquisition_text)
