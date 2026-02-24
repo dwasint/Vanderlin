@@ -170,6 +170,10 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		"best_friend" = 100
 	)
 
+	var/obj/item/caparison/ccaparison
+	var/obj/item/clothing/barding/bbarding
+	var/caparison_over_barding = FALSE
+
 /mob/living/simple_animal/Initialize()
 	. = ..()
 	if(gender == PLURAL)
@@ -200,7 +204,72 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	if(ssaddle)
 		QDEL_NULL(ssaddle)
 
+	if(ccaparison)
+		QDEL_NULL(ccaparison)
+		ccaparison = null
+
 	return ..()
+
+
+/mob/living/simple_animal/attack_hand_secondary(mob/user, list/modifiers)
+	. = ..()
+	if(ccaparison)
+		user.visible_message(span_notice("[user] is removing the caparison from [src]..."), span_notice("I start removing the caparison from [src]..."))
+		if(!do_after(user, 10 SECONDS, src))
+			return
+		playsound(loc, 'sound/foley/saddledismount.ogg', 100, FALSE)
+		user.visible_message(span_notice("[user] removes the caparison from [src]."), span_notice("I remove the caparison from [src]."))
+		var/obj/item/caparison/C = ccaparison
+		ccaparison = null
+		C.forceMove(get_turf(src))
+		user.put_in_hands(C)
+		update_appearance()
+		return
+	else if(bbarding)
+		user.visible_message(span_notice("[user] is removing the bard from [src]..."), span_notice("I start removing the bard from [src]..."))
+		if(!do_after(user, 10 SECONDS, src))
+			return
+		playsound(loc, 'sound/foley/saddledismount.ogg', 100, FALSE)
+		user.visible_message(span_notice("[user] removes the bard from [src]."), span_notice("I remove the bard from [src]."))
+		var/obj/item/clothing/barding/B = bbarding
+		bbarding = null
+		B.forceMove(get_turf(src))
+		user.put_in_hands(B)
+		update_appearance()
+		return
+	else if(ssaddle)
+		user.visible_message(span_notice("[user] is removing the saddle from [src]..."), span_notice("I start removing the saddle from [src]..."))
+		if(!do_after(user, 5 SECONDS, src))
+			return
+		playsound(loc, 'sound/foley/saddledismount.ogg', 100, FALSE)
+		user.visible_message(span_notice("[user] removes the saddle from [src]."), span_notice("I remove the saddle from [src]."))
+		var/obj/item/natural/saddle/S = ssaddle
+		ssaddle = null
+		S.forceMove(get_turf(src))
+		user.put_in_hands(S)
+		update_appearance()
+		return
+	return ..()
+
+/mob/living/simple_animal/update_overlays()
+	. = ..()
+	var/barding_layer = 6
+	var/caparison_layer = 5
+	if(caparison_over_barding)
+		caparison_layer = 6
+		barding_layer = 5
+	if(ccaparison && stat == CONSCIOUS && !resting)
+		var/caparison_overlay = ccaparison.female_caparison_state && gender == FEMALE ? ccaparison.female_caparison_state : ccaparison.caparison_state
+		var/mutable_appearance/caparison_base_overlay = mutable_appearance(ccaparison.caparison_icon, caparison_overlay, caparison_layer)
+		var/mutable_appearance/caparison_above_overlay = mutable_appearance(ccaparison.caparison_icon, caparison_overlay + "-above", caparison_layer - 0.69)
+		. += caparison_base_overlay
+		. += caparison_above_overlay
+	if(bbarding && stat == CONSCIOUS && !resting)
+		var/barding_overlay = bbarding.female_barding_state && gender == FEMALE ? bbarding.female_barding_state : bbarding.barding_state
+		var/mutable_appearance/barding_base_overlay = mutable_appearance(bbarding.barding_icon, barding_overlay, barding_layer)
+		var/mutable_appearance/barding_above_overlay = mutable_appearance(bbarding.barding_icon, barding_overlay + "-above", barding_layer - 0.69)
+		. += barding_base_overlay
+		. += barding_above_overlay
 
 /mob/living/simple_animal/attackby(obj/item/O, mob/user, list/modifiers)
 	if(!is_type_in_list(O, food_type))
@@ -265,6 +334,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 
 	if(user)
 		owner = user
+	update_appearance()
 
 //mob/living/simple_animal/examine(mob/user)
 //	. = ..()
@@ -390,6 +460,25 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 				playsound(src, 'sound/foley/gross.ogg', 100, FALSE)
 				if(do_after(user, 3 SECONDS, src))
 					butcher(user)
+	else if (stat != DEAD && istype(ssaddle, /obj/item/natural/saddle) && bbarding && ccaparison)
+		var/pick = browser_alert(user, "What would you like to do?", "[src.name]", list("Adjust caparison", "Look through the saddle bags"))
+		if(!pick)
+			pick = "Look through the saddle bags"
+		switch(pick)
+			if("Adjust caparison")
+				caparison_over_barding = !caparison_over_barding
+				to_chat(user, span_info("I [caparison_over_barding ? "adjust [ccaparison] to cover [bbarding]" : "adjust [ccaparison] to be under [bbarding]"]."))
+				update_appearance()
+			if("Look through the saddle bags")
+				var/datum/component/storage/saddle_storage = ssaddle.GetComponent(/datum/component/storage)
+				var/access_time = (user in buckled_mobs) ? 10 : 30
+				if (do_after(user, access_time, target = src))
+					saddle_storage.show_to(user)
+	else if(bbarding && ccaparison)
+		caparison_over_barding = !caparison_over_barding
+		to_chat(user, span_info("I [caparison_over_barding ? "adjust [ccaparison] to cover [bbarding]" : "adjust [ccaparison] to be under [bbarding]"]."))
+		update_appearance()
+
 	..()
 
 /mob/living/simple_animal/proc/butcher(mob/living/user)
@@ -885,6 +974,15 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 							L.Stun(50)
 							playsound(L, 'sound/foley/zfall.ogg', 100, FALSE)
 							L.visible_message(span_danger("[L] falls off [src]!"))
+
+/mob/living/simple_animal/proc/violent_dismount(mob/living/user)
+	if(isliving(user))
+		var/mob/living/L = user
+		unbuckle_mob(L)
+		L.Paralyze(5 SECONDS)
+		L.Stun(5 SECONDS)
+		playsound(L.loc, 'sound/foley/zfall.ogg', 100, FALSE)
+		L.visible_message(span_danger("[L] falls off [src]!"))
 
 /mob/living/simple_animal/buckle_mob(mob/living/buckled_mob, force = 0, check_loc = 1)
 	. = ..()
