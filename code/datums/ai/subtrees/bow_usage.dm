@@ -7,11 +7,31 @@
 	var/mob/living/carbon/human/pawn = controller.pawn
 	var/atom/target = controller.blackboard[BB_BASIC_MOB_CURRENT_TARGET]
 	if(!target || !isliving(target))
+		var/obj/item/stashed = controller.blackboard[BB_ARCHER_NPC_STASHED_WEAPON]
+		if(stashed && !QDELETED(stashed))
+			if(!pawn.get_active_held_item())
+				pawn.dropItemToGround(stashed, TRUE, TRUE)
+				pawn.put_in_active_hand(stashed)
+			else if(!pawn.get_inactive_held_item())
+				pawn.dropItemToGround(stashed, TRUE, TRUE)
+				pawn.put_in_inactive_hand(stashed)
+			controller.clear_blackboard_key(BB_ARCHER_NPC_STASHED_WEAPON)
 		return
-	if(get_dist(pawn, target) < ARCHER_NPC_MIN_RANGE)
-		return
+
 	var/obj/item/ammo_holder/quiver/Q = controller.blackboard[BB_ARCHER_NPC_QUIVER]
 	if(!Q.ammo_list.len)
+		return
+
+	if(get_dist(pawn, target) < ARCHER_NPC_MIN_RANGE)
+		var/obj/item/stashed = controller.blackboard[BB_ARCHER_NPC_STASHED_WEAPON]
+		if(stashed && !QDELETED(stashed))
+			if(!pawn.get_active_held_item())
+				pawn.dropItemToGround(stashed, TRUE, TRUE)
+				pawn.put_in_active_hand(stashed)
+			else if(!pawn.get_inactive_held_item())
+				pawn.dropItemToGround(stashed, TRUE, TRUE)
+				pawn.put_in_inactive_hand(stashed)
+			controller.clear_blackboard_key(BB_ARCHER_NPC_STASHED_WEAPON)
 		return
 
 	controller.queue_behavior(/datum/ai_behavior/ranged_attack_bow, BB_BASIC_MOB_CURRENT_TARGET)
@@ -85,16 +105,12 @@
 			xbow.cocked = TRUE
 			xbow.update_appearance(UPDATE_ICON_STATE)
 
-	var/chargetime = ARCHER_NPC_SIMULATED_CHARGETIME
-	if(pawn.used_intent && pawn.used_intent.chargetime)
-		chargetime = pawn.used_intent.get_chargetime()
-	controller.set_blackboard_key(BB_ARCHER_NPC_CHARGE_TIMER, world.time + (chargetime))
-
 	return TRUE
 
 /datum/ai_behavior/ranged_attack_bow/perform(delta_time, datum/ai_controller/controller, target_key)
 	var/mob/living/carbon/human/pawn = controller.pawn
 	var/atom/target = controller.blackboard[target_key]
+
 
 	if(!target || (ismob(target) && target:stat == DEAD))
 		finish_action(controller, FALSE, target_key)
@@ -103,6 +119,9 @@
 	// Break off if target closed to melee range
 	if(get_dist(pawn, target) < ARCHER_NPC_MIN_RANGE)
 		finish_action(controller, FALSE, target_key)
+		return
+
+	if(!can_see(pawn, target, 11))
 		return
 
 	var/obj/item/gun/ballistic/revolver/grenadelauncher/bow/bow = null
@@ -114,9 +133,12 @@
 		finish_action(controller, FALSE, target_key)
 		return
 
-	// Wait for simulated charge since we have no client
-	if(world.time < controller.blackboard[BB_ARCHER_NPC_CHARGE_TIMER])
-		pawn.face_atom(target)
+	var/chargetime = ARCHER_NPC_SIMULATED_CHARGETIME
+	if(pawn.used_intent && pawn.used_intent.chargetime)
+		chargetime = pawn.used_intent.get_chargetime()
+
+	if(!do_after(pawn, min(chargetime, 0.4 SECONDS), pawn))
+		finish_action(controller, FALSE, target_key)
 		return
 
 	pawn.face_atom(target)
@@ -127,16 +149,16 @@
 /datum/ai_behavior/ranged_attack_bow/finish_action(datum/ai_controller/controller, succeeded, target_key)
 	. = ..()
 	var/mob/living/carbon/human/pawn = controller.pawn
+	var/obj/item/ammo_holder/quiver/Q = controller.blackboard[BB_ARCHER_NPC_QUIVER]
 
-	controller.clear_blackboard_key(BB_ARCHER_NPC_CHARGE_TIMER)
-
-	// Re-equip stashed melee weapon
-	var/obj/item/stashed = controller.blackboard[BB_ARCHER_NPC_STASHED_WEAPON]
-	if(stashed && !QDELETED(stashed))
-		if(!pawn.get_active_held_item())
-			pawn.dropItemToGround(stashed, TRUE, TRUE)
-			pawn.put_in_active_hand(stashed)
-		else if(!pawn.get_inactive_held_item())
-			pawn.dropItemToGround(stashed, TRUE, TRUE)
-			pawn.put_in_inactive_hand(stashed)
-	controller.clear_blackboard_key(BB_ARCHER_NPC_STASHED_WEAPON)
+	if(!succeeded || !length(Q.ammo_list))
+		// Re-equip stashed melee weapon
+		var/obj/item/stashed = controller.blackboard[BB_ARCHER_NPC_STASHED_WEAPON]
+		if(stashed && !QDELETED(stashed))
+			if(!pawn.get_active_held_item())
+				pawn.dropItemToGround(stashed, TRUE, TRUE)
+				pawn.put_in_active_hand(stashed)
+			else if(!pawn.get_inactive_held_item())
+				pawn.dropItemToGround(stashed, TRUE, TRUE)
+				pawn.put_in_inactive_hand(stashed)
+		controller.clear_blackboard_key(BB_ARCHER_NPC_STASHED_WEAPON)

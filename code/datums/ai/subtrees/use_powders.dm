@@ -11,15 +11,13 @@
 	var/obj/item/powder = inv.get_item(AI_ITEM_POWDER)
 	if(!powder)
 		return
-	controller.set_blackboard_key(BB_HELD_CONSUMABLE, powder)
-	controller.queue_behavior(/datum/ai_behavior/use_powder, BB_HELD_CONSUMABLE)
-	return SUBTREE_RETURN_FINISH_PLANNING
+	controller.queue_behavior(/datum/ai_behavior/use_powder, BB_HELD_CONSUMABLE, powder)
 
 /datum/ai_behavior/use_powder
 	action_cooldown = 3 MINUTES // Very long cooldown, this is a rare treat
 
-/datum/ai_behavior/use_powder/perform(delta_time, datum/ai_controller/controller, consumable_key)
-	var/obj/item/powder = controller.blackboard[consumable_key]
+/datum/ai_behavior/use_powder/perform(delta_time, datum/ai_controller/controller, consumable_key, obj/item/powder)
+	controller.set_blackboard_key(BB_HELD_CONSUMABLE, powder)
 	if(!powder)
 		finish_action(controller, FALSE, consumable_key)
 		return

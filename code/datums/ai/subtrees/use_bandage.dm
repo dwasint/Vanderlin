@@ -20,15 +20,14 @@
 
 	if(!real)
 		return
-	controller.set_blackboard_key(BB_HELD_CONSUMABLE, bandage)
-	controller.queue_behavior(/datum/ai_behavior/apply_bandage, BB_HELD_CONSUMABLE)
+	controller.queue_behavior(/datum/ai_behavior/apply_bandage, BB_HELD_CONSUMABLE, bandage)
 	return SUBTREE_RETURN_FINISH_PLANNING
 
 /datum/ai_behavior/apply_bandage
 	action_cooldown = 30 SECONDS
 
-/datum/ai_behavior/apply_bandage/perform(delta_time, datum/ai_controller/controller, consumable_key)
-	var/obj/item/bandage = controller.blackboard[consumable_key]
+/datum/ai_behavior/apply_bandage/perform(delta_time, datum/ai_controller/controller, consumable_key, obj/item/bandage)
+	controller.set_blackboard_key(BB_HELD_CONSUMABLE, bandage)
 	if(!bandage)
 		finish_action(controller, FALSE, consumable_key)
 		return

@@ -19,15 +19,14 @@
 	if(H.getBruteLoss() < 20 && H.getFireLoss() < 20)
 		return
 
-	controller.set_blackboard_key(BB_HELD_CONSUMABLE, drink)
-	controller.queue_behavior(/datum/ai_behavior/consume_healing_drink, BB_HELD_CONSUMABLE)
+	controller.queue_behavior(/datum/ai_behavior/consume_healing_drink, BB_HELD_CONSUMABLE, drink)
 
 /datum/ai_behavior/consume_healing_drink
 	action_cooldown = 70 SECONDS
 	behavior_flags = AI_BEHAVIOR_MOVE_AND_PERFORM | AI_BEHAVIOR_CAN_PLAN_DURING_EXECUTION
 
-/datum/ai_behavior/consume_healing_drink/perform(delta_time, datum/ai_controller/controller, consumable_key)
-	var/obj/item/reagent_containers/glass/bottle/drink = controller.blackboard[consumable_key]
+/datum/ai_behavior/consume_healing_drink/perform(delta_time, datum/ai_controller/controller, consumable_key, obj/item/reagent_containers/glass/bottle/drink)
+	controller.set_blackboard_key(BB_HELD_CONSUMABLE, drink)
 	var/datum/component/ai_inventory_manager/inv = controller.get_inventory()
 	var/mob/living/carbon/human/H = controller.pawn
 

@@ -28,18 +28,15 @@
 	if(!can_see(pawn, target, max_throw_dist))
 		return
 
-
-	controller.set_blackboard_key(BB_HELD_CONSUMABLE, throwingknife)
-	controller.queue_behavior(/datum/ai_behavior/use_throwable, BB_HELD_CONSUMABLE, BB_BASIC_MOB_CURRENT_TARGET)
-	return SUBTREE_RETURN_FINISH_PLANNING
+	controller.queue_behavior(/datum/ai_behavior/use_throwable, BB_HELD_CONSUMABLE, BB_BASIC_MOB_CURRENT_TARGET, throwingknife)
 
 /datum/ai_behavior/use_throwable
-	action_cooldown = 3 SECONDS
+	action_cooldown = 4 SECONDS
 	behavior_flags = AI_BEHAVIOR_CAN_PLAN_DURING_EXECUTION
 
-/datum/ai_behavior/use_throwable/perform(delta_time, datum/ai_controller/controller, consumable_key, target_key)
+/datum/ai_behavior/use_throwable/perform(delta_time, datum/ai_controller/controller, consumable_key, target_key, obj/item/weapon/knife/throwingknife)
 	. = ..()
-	var/obj/item/weapon/knife/throwingknife = controller.blackboard[consumable_key]
+	controller.set_blackboard_key(BB_HELD_CONSUMABLE, throwingknife)
 	if(!throwingknife)
 		finish_action(controller, FALSE, consumable_key, target_key)
 		return

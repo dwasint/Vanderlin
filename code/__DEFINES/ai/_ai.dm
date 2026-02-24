@@ -236,7 +236,6 @@
 #define BB_BEGGING_FOOD_ITEM "item_beg_target"
 #define BB_ARCHER_NPC_TARGET_ARROW      "archer_target_arrow"
 #define BB_ARCHER_NPC_STASHED_WEAPON    "archer_stashed_weapon"
-#define BB_ARCHER_NPC_CHARGE_TIMER      "archer_charge_timer"
 #define BB_ARCHER_NPC_EQUIPMENT_CACHE_EXPIRY "archer_npc_equipment_cache_expiry"
 #define BB_ARCHER_NPC_BOW               "archer_npc_bow"
 #define BB_ARCHER_NPC_QUIVER            "archer_npc_quiver"
@@ -338,6 +337,7 @@
 #define AI_ITEM_GUN             (1<<9)
 #define AI_ITEM_DRINK           (1<<10)  // generic drinkable (not necessarily healing)
 #define AI_ITEM_THROWING        (1<<11)
+#define AI_ITEM_QUIVER          (1<<12)
 
 GLOBAL_LIST_INIT(ai_item_flags, list(
 	AI_ITEM_BANDAGE,
@@ -352,6 +352,7 @@ GLOBAL_LIST_INIT(ai_item_flags, list(
 	AI_ITEM_GUN,
 	AI_ITEM_DRINK,
 	AI_ITEM_THROWING,
+	AI_ITEM_QUIVER,
 ))
 
 #define AI_INVENTORY_WATCHED_SLOTS (ITEM_SLOT_BELT | ITEM_SLOT_BACK_L | ITEM_SLOT_BACK_R | \

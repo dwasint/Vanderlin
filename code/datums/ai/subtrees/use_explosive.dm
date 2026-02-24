@@ -13,15 +13,14 @@
 	if(!grenade)
 		return
 	controller.set_blackboard_key(BB_HELD_CONSUMABLE, grenade)
-	controller.queue_behavior(/datum/ai_behavior/throw_grenade, BB_HELD_CONSUMABLE, BB_BASIC_MOB_CURRENT_TARGET)
-	return SUBTREE_RETURN_FINISH_PLANNING
+	controller.queue_behavior(/datum/ai_behavior/throw_grenade, BB_HELD_CONSUMABLE, BB_BASIC_MOB_CURRENT_TARGET, grenade)
 
 /datum/ai_behavior/throw_grenade
 	action_cooldown = 2 MINUTES // Long cooldown - grenades are precious and dangerous also cause fuck having smoke bomb spamming horcs
 	behavior_flags = AI_BEHAVIOR_MOVE_AND_PERFORM | AI_BEHAVIOR_CAN_PLAN_DURING_EXECUTION
 
-/datum/ai_behavior/throw_grenade/perform(delta_time, datum/ai_controller/controller, consumable_key, target_key)
-	var/obj/item/explosive/grenade = controller.blackboard[consumable_key]
+/datum/ai_behavior/throw_grenade/perform(delta_time, datum/ai_controller/controller, consumable_key, target_key, obj/item/explosive/grenade)
+	controller.set_blackboard_key(BB_HELD_CONSUMABLE, grenade)
 	if(!grenade)
 		finish_action(controller, FALSE, consumable_key, target_key)
 		return

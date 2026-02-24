@@ -166,12 +166,13 @@
 // Heavily armored orc with complete iron protection, heavy armor, and a two hander.
 /datum/outfit/job/orc/npc/archer_test/pre_equip(mob/living/carbon/human/H)
 	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
-	beltr = /obj/item/ammo_holder/quiver/arrows
+	backl = /obj/item/ammo_holder/quiver/arrows
 	l_hand = /obj/item/weapon/sword/short/iron
 	armor = /obj/item/clothing/armor/leather/hide
 	shirt = /obj/item/clothing/armor/gambeson/light
 	pants = /obj/item/clothing/pants/trou/leather
 	belt = /obj/item/storage/belt/leather/knifebelt/black/steel
+	beltr = /obj/item/storage/belt/pouch/medicine
 	H.base_strength = 14 // GAGGER GAGGER GAGGER
 	H.base_speed = 10 // Fast, for an orc
 	H.base_constitution = 12
