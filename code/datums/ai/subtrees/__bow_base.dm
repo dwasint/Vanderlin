@@ -15,10 +15,11 @@
 
 	var/mob/living/living_pawn = controller.pawn
 	var/obj/item/gun/ballistic/revolver/grenadelauncher/bow = inv.get_item(AI_ITEM_GUN)
-	if(istype(living_pawn.get_active_held_item(), /obj/item/gun/ballistic/revolver/grenadelauncher))
-		bow = living_pawn.get_active_held_item()
-	else if(istype(living_pawn.get_inactive_held_item(), /obj/item/gun/ballistic/revolver/grenadelauncher))
-		bow = living_pawn.get_inactive_held_item()
+	if(!bow)
+		if(istype(living_pawn.get_active_held_item(), /obj/item/gun/ballistic/revolver/grenadelauncher))
+			bow = living_pawn.get_active_held_item()
+		else if(istype(living_pawn.get_inactive_held_item(), /obj/item/gun/ballistic/revolver/grenadelauncher))
+			bow = living_pawn.get_inactive_held_item()
 	if(!bow)
 		return FALSE
 
