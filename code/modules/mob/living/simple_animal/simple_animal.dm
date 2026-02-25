@@ -218,7 +218,8 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		QDEL_NULL(ccaparison)
 		ccaparison = null
 
-	QDEL_NULL(genetics)
+	if(!ispath(genetics))
+		QDEL_NULL(genetics)
 	return ..()
 
 
