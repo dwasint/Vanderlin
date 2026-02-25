@@ -220,7 +220,7 @@ GLOBAL_LIST_INIT(all_animal_genes_weighted, generate_animaL_genes())
 	return father_match
 
 /datum/animal_genetics/proc/inherit_to(mob/living/simple_animal/baby, mob/living/simple_animal/father)
-	if(!baby.genetics)
+	if(!istype(baby.genetics))
 		baby.genetics = new /datum/animal_genetics(baby)
 	var/list/mother_pool = _build_allele_pool()
 	var/list/father_pool = istype(father?.genetics) ? father.genetics._build_allele_pool() : list()
