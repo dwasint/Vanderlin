@@ -193,8 +193,7 @@ SUBSYSTEM_DEF(vote)
 			if("norulervote")
 				switch(.)
 					if("Start Anyway")
-						// Set a flag or call whatever starts the round ignoring ruler check
-						SSticker.vote_started = FALSE
+						SSticker.vote_started = TRUE
 					if("Wait for Ruler")
 						SSticker.vote_started = FALSE
 						SSticker.pre_vote = 0
