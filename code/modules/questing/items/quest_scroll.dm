@@ -177,16 +177,32 @@ GLOBAL_LIST_EMPTY(quest_scrolls)
 	if(!user_turf)
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
+	var/turf/compass_target = target_turf
+	var/portal_hint
+
 	if(target_turf.z != user_turf.z)
-		to_chat(user, span_info("The scroll pulses faintly - the target is on a different level."))
-		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+		if(!is_in_zweb(target_turf.z, user_turf.z))
+			var/area/target_area = get_area(target_turf)
+			var/obj/structure/fluff/traveltile/portal = find_portal_to_area(target_area, user_turf)
+			if(portal)
+				compass_target = get_turf(portal)
+				portal_hint = "traverse to [target_area.name]"
+			else
+				to_chat(user, span_info("The scroll pulses faintly - the target is in [target_area.name], but you sense no path from here."))
+				return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+		else
+			to_chat(user, span_info("The scroll pulses faintly - the target is on a different level."))
+			return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
-	var/dir = get_dir(user_turf, target_turf)
+	var/dir = get_dir(user_turf, compass_target)
 	if(!dir)
-		to_chat(user, span_info("The scroll pulses warmly - you are nearby."))
+		if(portal_hint)
+			to_chat(user, span_info("The scroll pulses warmly - the [portal_hint] is nearby."))
+		else
+			to_chat(user, span_info("The scroll pulses warmly - you are nearby."))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
-	var/distance = get_dist(user_turf, target_turf)
+	var/distance = get_dist(user_turf, compass_target)
 	var/arrow_color
 	switch(distance)
 		if(1 to 15)
@@ -209,6 +225,9 @@ GLOBAL_LIST_EMPTY(quest_scrolls)
 
 	user_hud.infodisplay += arrow
 	user_hud.show_hud(user_hud.hud_version)
+
+	if(portal_hint)
+		to_chat(user, span_info("The scroll points toward the [portal_hint]."))
 
 	QDEL_IN(arrow, 1.5 SECONDS)
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
@@ -285,29 +304,32 @@ GLOBAL_LIST_EMPTY(quest_scrolls)
 	last_compass_direction = "Searching for target..."
 	last_z_level_hint = ""
 
-	// Get target location from quest datum
 	var/turf/target_turf = assigned_quest.get_target_location()
 	if(!target_turf)
 		last_compass_direction = "location unknown"
 		last_z_level_hint = ""
 		return
 
-	// We want the target to know z level differences but verticality exists
-	// We don't want to frustrate player by forcing them to track on the same z level
-	// Especially cuz of how many transitions exist
+	var/turf/compass_target = target_turf // may be overridden to a portal
+
 	if(target_turf.z != user_turf.z)
-		var/z_diff = abs(target_turf.z - user_turf.z)
 		if(!is_in_zweb(target_turf.z, user_turf.z))
-			var/area/area = get_area(target_turf)
-			last_z_level_hint = "in [area.name]"
+			var/area/target_area = get_area(target_turf)
+			var/obj/structure/fluff/traveltile/portal = find_portal_to_area(target_area, user_turf)
+			if(portal)
+				compass_target = get_turf(portal)
+				last_z_level_hint = "traverse to [target_area.name]"
+			else
+				last_z_level_hint = "in [target_area.name]"
 		else
+			var/z_diff = abs(target_turf.z - user_turf.z)
 			last_z_level_hint = target_turf.z > user_turf.z ? \
 				"[z_diff] level\s above you" : \
 				"[z_diff] level\s below you"
 
-	// Calculate direction from user to target
-	var/dx = target_turf.x - user_turf.x  // EAST direction
-	var/dy = target_turf.y - user_turf.y  // NORTH direction
+	// Use compass_target (portal or actual target) for all direction math below
+	var/dx = compass_target.x - user_turf.x
+	var/dy = compass_target.y - user_turf.y
 	var/distance = sqrt(dx*dx + dy*dy)
 
 	// If very close, don't show direction
@@ -317,7 +339,7 @@ GLOBAL_LIST_EMPTY(quest_scrolls)
 		return
 
 	// Get precise direction text
-	var/direction_text = get_precise_direction_between(user_turf, target_turf)
+	var/direction_text = get_precise_direction_between(user_turf, compass_target)
 	if(!direction_text)
 		direction_text = "unknown direction"
 
@@ -338,3 +360,19 @@ GLOBAL_LIST_EMPTY(quest_scrolls)
 		last_z_level_hint = "on this level"
 
 #undef WHISPER_COOLDOWN
+
+/obj/item/paper/scroll/quest/proc/find_portal_to_area(area/target_area, turf/from_turf)
+	var/obj/structure/fluff/traveltile/best
+	var/best_dist = INFINITY
+
+	for(var/obj/structure/fluff/traveltile/tile in GLOB.traveltiles)
+		var/turf/get_turf = get_turf(tile)
+		if(!is_in_zweb(get_turf.z, from_turf.z))
+			continue
+		if(tile.cached_destination_area == target_area)
+			var/d = get_dist(from_turf, get_turf(tile))
+			if(d < best_dist)
+				best_dist = d
+				best = tile
+
+	return best
