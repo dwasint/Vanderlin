@@ -175,7 +175,7 @@ GLOBAL_VAR_INIT(ambush_mobconsider_cooldown, 2 MINUTES) // Cooldown for each ind
 
 /proc/get_adjacent_ambush_turfs(turf/T)
 	var/list/adjacent = list()
-	for(var/turf/AT in get_adjacent_ambush_turfs(T))
+	for(var/turf/AT in get_adjacent_open_turfs(T))
 		if(AT.density || T.LinkBlockedWithAccess(AT, null))
 			continue
 		adjacent += AT
