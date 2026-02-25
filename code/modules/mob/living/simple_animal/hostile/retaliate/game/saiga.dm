@@ -93,7 +93,7 @@
 /mob/living/simple_animal/hostile/retaliate/saiga/update_overlays()
 	. = ..()
 
-	if(genetics)
+	if(istype(genetics))
 		var/datum/animal_gene/undercoat/UC = genetics.get_gene_by_exclusion_group(GENE_GROUP_UNDERCOAT)
 		var/datum/animal_gene/coat_color/CC = genetics.get_gene_by_exclusion_group(GENE_GROUP_COAT_COLOR)
 		var/datum/animal_gene/emissive = genetics.get_gene_by_exclusion_group(GENE_GROUP_EMISSIVE)
@@ -251,7 +251,7 @@
 /mob/living/simple_animal/hostile/retaliate/saigabuck/update_overlays()
 	. = ..()
 
-	if(genetics)
+	if(istype(genetics))
 		var/datum/animal_gene/undercoat/UC = genetics.get_gene_by_exclusion_group(GENE_GROUP_UNDERCOAT)
 		var/datum/animal_gene/coat_color/CC = genetics.get_gene_by_exclusion_group(GENE_GROUP_COAT_COLOR)
 		var/datum/animal_gene/emissive = genetics.get_gene_by_exclusion_group(GENE_GROUP_EMISSIVE)
