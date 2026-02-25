@@ -175,6 +175,11 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	var/obj/item/clothing/barding/bbarding
 	var/caparison_over_barding = FALSE
 
+	var/datum/animal_genetics/genetics = /datum/animal_genetics
+	var/generate_genetics = FALSE
+	var/genetic_butcher_scale = 1.0
+	var/genetic_speed_delta = 0
+
 /mob/living/simple_animal/Initialize()
 	. = ..()
 	if(gender == PLURAL)
@@ -196,6 +201,10 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	if(happy_funtime_mob)
 		AddComponent(/datum/component/friendship_container, mob_friends, "friend")
 		AddComponent(/datum/component/happiness_container, 30, list(), list(), food_type)
+	if(generate_genetics)
+		genetics = new genetics(src)
+		genetics.roll_guaranteed_genes()
+		roll_initial_genetics()
 
 /mob/living/simple_animal/Destroy()
 	if(nest)
@@ -209,6 +218,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		QDEL_NULL(ccaparison)
 		ccaparison = null
 
+	QDEL_NULL(genetics)
 	return ..()
 
 
@@ -399,6 +409,11 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	if(stuttering)
 		stuttering = 0
 
+/mob/living/simple_animal/proc/after_birth(mob/living/simple_animal/baby, mob/living/partner)
+	if(genetics && !ispath(genetics))
+		genetics.inherit_to(baby, partner)
+	return
+
 /mob/living/simple_animal/proc/handle_automated_speech(override)
 	set waitfor = FALSE
 	if(speak_chance)
@@ -523,7 +538,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	var/bonus_count = 0 // Track bonus items from happiness
 
 	for(var/path in butcher_results)
-		var/amount = butcher_results[path]
+		var/amount = round(butcher_results[path] * genetic_butcher_scale)
 		if(!do_after(user, time_per_cut, target = src))
 			if(botch_count || normal_count || perfect_count || bonus_count)
 				to_chat(user, span_notice("I stop butchering: [butcher_summary(botch_count, normal_count, perfect_count, bonus_count, botch_chance, perfect_chance, happiness_bonus)]."))
@@ -534,12 +549,12 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		if(prob(botch_chance))
 			botch_count++
 			if(length(botched_butcher_results) && (path in botched_butcher_results))
-				amount = botched_butcher_results[path]
+				amount = round(botched_butcher_results[path] * genetic_butcher_scale, 1)
 			else
 				amount = 0
 		// Otherwise check for perfect
 		else if(length(perfect_butcher_results) && (path in perfect_butcher_results) && prob(perfect_chance))
-			amount = perfect_butcher_results[path]
+			amount = round(perfect_butcher_results[path] * genetic_butcher_scale, 1)
 			perfect_count++
 		else
 			normal_count++
@@ -1022,3 +1037,9 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 
 /mob/living/simple_animal/proc/eat_food_after(obj/item/reagent_containers/food/snacks/eaten)
 	qdel(eaten)
+
+/mob/living/simple_animal/proc/apply_gene(datum/animal_gene/G)
+	G.apply_to(src)
+
+/mob/living/simple_animal/proc/remove_gene(datum/animal_gene/G)
+	G.remove_from(src)

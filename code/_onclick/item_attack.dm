@@ -714,6 +714,11 @@
 	if(!type)
 		return 0
 	var/armorval = 0
+	if(HAS_TRAIT(src, TRAIT_ANIMAL_NATURAL_ARMOR) && genetics)
+		var/natural = genetics.get_natural_armor_for_type(type)
+		if(natural)
+			armorval += max(0, natural - armor_penetration)
+
 	if(bbarding && !bbarding.obj_broken)
 		armorval = bbarding.armor.getRating(type)
 		var/intdamage = damage

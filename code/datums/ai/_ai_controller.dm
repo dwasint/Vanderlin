@@ -105,6 +105,45 @@ have ways of interacting with a specific atom and control it. They posses a blac
 	if(new_movement)
 		change_ai_movement_type(new_movement)
 
+
+/**
+ * Removes a subtree from planning_subtrees by typepath.
+ * Safe to call whether planning_subtrees holds instances or typepaths.
+ */
+/datum/ai_controller/proc/remove_subtree(datum/ai_planning_subtree/subtree_type)
+	for(var/datum/ai_planning_subtree/subtree as anything in planning_subtrees)
+		if(subtree.type == subtree_type)
+			planning_subtrees -= subtree
+			return
+
+/**
+ * Adds a subtree at a given position (1-indexed) by typepath, resolving the singleton instance.
+ * If the subtree is already present it will not be added again.
+ * Position is clamped so 1 = top, length+1 (or any value beyond the list) = bottom.
+ */
+/datum/ai_controller/proc/add_subtree_at(datum/ai_planning_subtree/subtree_type, index = 1)
+	for(var/datum/ai_planning_subtree/subtree as anything in planning_subtrees)
+		if(subtree.type == subtree_type)
+			return // already present, do nothing
+
+	var/datum/ai_planning_subtree/subtree_instance = GLOB.ai_subtrees[subtree_type]
+	if(!subtree_instance)
+		CRASH("add_subtree_at: subtree type [subtree_type] not found in GLOB.ai_subtrees")
+
+	LAZYINITLIST(planning_subtrees)
+	index = clamp(index, 1, length(planning_subtrees) + 1)
+	planning_subtrees.Insert(index, subtree_instance)
+
+/**
+ * Returns the index of a subtree in planning_subtrees by typepath, or 0 if not found.
+ */
+/datum/ai_controller/proc/get_subtree_index(datum/ai_planning_subtree/subtree_type)
+	for(var/i in 1 to length(planning_subtrees))
+		var/datum/ai_planning_subtree/subtree = planning_subtrees[i]
+		if(subtree.type == subtree_type)
+			return i
+	return 0
+
 ///Overrides the current ai_movement of this controller with a new one
 /datum/ai_controller/proc/change_ai_movement_type(datum/ai_movement/new_movement)
 	ai_movement = SSai_movement.movement_types[new_movement]

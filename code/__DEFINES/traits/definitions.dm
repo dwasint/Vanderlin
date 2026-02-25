@@ -528,3 +528,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// This object has sound debugging tools attached to it
 #define TRAIT_SOUND_DEBUGGED "sound_debugged"
 
+
+// genetic traits
+#define TRAIT_ANIMAL_NATURAL_ARMOR "natural_armor"
+#define TRAIT_ANIMAL_PRODUCTIVE "trait_productive"

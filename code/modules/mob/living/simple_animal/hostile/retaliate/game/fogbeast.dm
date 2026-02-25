@@ -51,15 +51,13 @@ GLOBAL_LIST_INIT(valid_honse_colors, list("White" = COLOR_WHITE, "Gray" = COLOR_
 	aggressive = TRUE
 	remains_type = /obj/effect/decal/remains/saiga
 	ai_controller = /datum/ai_controller/saiga
+	generate_genetics = TRUE
+	genetics = /datum/animal_genetics/honse
 	var/honse_color
 	var/can_breed = TRUE
 
-/mob/living/simple_animal/hostile/retaliate/honse/Initialize(mapload, set_honse_color)
+/mob/living/simple_animal/hostile/retaliate/honse/Initialize(mapload)
 	. = ..()
-	honse_color = set_honse_color
-	if(!honse_color)
-		honse_color = pick(GLOB.valid_honse_colors)
-	color = GLOB.valid_honse_colors[honse_color]
 
 	if(can_breed)
 		AddComponent(\
@@ -69,9 +67,6 @@ GLOBAL_LIST_INIT(valid_honse_colors, list("White" = COLOR_WHITE, "Gray" = COLOR_
 			list(/mob/living/simple_animal/hostile/retaliate/honse/kid = 70, /mob/living/simple_animal/hostile/retaliate/honse/kid/male = 30),\
 			CALLBACK(src, PROC_REF(after_birth)),\
 		)
-
-/mob/living/simple_animal/hostile/retaliate/honse/proc/after_birth(mob/living/simple_animal/hostile/retaliate/cow/cowlet/baby, mob/living/partner)
-	return
 
 /mob/living/simple_animal/hostile/retaliate/honse/tame
 	tame = TRUE
@@ -232,6 +227,7 @@ GLOBAL_LIST_INIT(valid_honse_colors, list("White" = COLOR_WHITE, "Gray" = COLOR_
 	aggressive = TRUE
 	ai_controller = /datum/ai_controller/saiga_kid
 	can_breed = FALSE
+	generate_genetics = FALSE
 
 /mob/living/simple_animal/hostile/retaliate/honse/kid/male
 	name = "honse colt"

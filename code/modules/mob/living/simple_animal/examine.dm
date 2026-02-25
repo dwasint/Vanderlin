@@ -115,5 +115,8 @@
 	if(bbarding)
 		. += span_notice("This animal is wearing a bard: ([bbarding.name]).")
 
+	if(genetics && length(genetics.genes))
+		. += span_notice("Genetic traits: [english_list(genetics.get_gene_names())].")
+
 	. += "ᛉ ------------ ᛉ</span>"
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)

@@ -190,9 +190,6 @@
 			CALLBACK(src, PROC_REF(after_birth)),\
 		)
 
-/mob/living/simple_animal/hostile/retaliate/trufflepig/proc/after_birth(mob/living/simple_animal/hostile/retaliate/cow/cowlet/baby, mob/living/partner)
-	return
-
 
 /mob/living/simple_animal/hostile/retaliate/trufflepig/get_sound(input)
 	switch(input)
