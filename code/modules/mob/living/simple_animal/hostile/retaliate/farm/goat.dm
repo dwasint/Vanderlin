@@ -192,6 +192,7 @@
 
 	ai_controller = /datum/ai_controller/gote
 	happy_funtime_mob = TRUE
+	generate_genetics = TRUE
 
 /mob/living/simple_animal/hostile/retaliate/goatmale/Initialize()
 	. = ..()
@@ -298,6 +299,7 @@
 	adult_growth = /mob/living/simple_animal/hostile/retaliate/goat
 	can_buckle = FALSE
 	can_breed = FALSE
+	generate_genetics = FALSE
 
 /mob/living/simple_animal/hostile/retaliate/goat/goatlet/udder_component()
 	return

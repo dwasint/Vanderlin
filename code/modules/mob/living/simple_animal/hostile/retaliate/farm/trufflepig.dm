@@ -303,6 +303,7 @@
 	name = "truffle piglet"
 	adult_growth = /mob/living/simple_animal/hostile/retaliate/trufflepig/female
 	can_breed = FALSE
+	generate_genetics = FALSE
 
 /mob/living/simple_animal/hostile/retaliate/trufflepig/piglet/Initialize()
 	. = ..()

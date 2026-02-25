@@ -190,6 +190,7 @@
 
 	ai_controller = /datum/ai_controller/basic_controller/chicken/baby
 	chicken_init = FALSE
+	generate_genetics = FALSE
 
 /obj/structure/fluff/nest
 	name = "nest"

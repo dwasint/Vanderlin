@@ -173,6 +173,7 @@
 	base_speed = 2
 	remains_type = /obj/effect/decal/remains/cow
 	happy_funtime_mob = TRUE
+	generate_genetics = TRUE
 	ai_controller = /datum/ai_controller/basic_controller/cow
 
 /mob/living/simple_animal/hostile/retaliate/bull/Initialize()
@@ -237,6 +238,7 @@
 	ai_controller = /datum/ai_controller/basic_controller/cow/baby
 	can_breed = FALSE
 	can_tip = FALSE
+	generate_genetics = FALSE
 
 /mob/living/simple_animal/hostile/retaliate/cow/cowlet/udder_component()
 	return
