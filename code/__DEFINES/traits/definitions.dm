@@ -227,6 +227,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_BLUEPRINT_VISION "blueprint_vision"
 /// Used to limit healing to putrid flesh mobs
 #define TRAIT_PUTRID "Putrid"
+#define TRAIT_STUCKITEMS "stuck_items" // Prevents removing items except for hand slots
 /// Confessed under torture, to force sign
 #define TRAIT_HAS_CONFESSED "has_confessed"
 /// Confessed for specific type of antag
@@ -431,7 +432,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_SATE "SATE"
 #define TRAIT_NODE_EXTRACTED "Humors Extracted"
 #define TRAIT_NO_EXPERIENCE	"unlearning"
-#define TRAIT_STUCKITEMS "stuck_items" // Prevents removing items except for hand slots
 /// This mob should never close UI even if it doesn't have a client
 #define TRAIT_PRESERVE_UI_WITHOUT_CLIENT "preserve_ui_without_client"
 
