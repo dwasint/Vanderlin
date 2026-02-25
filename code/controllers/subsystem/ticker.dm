@@ -308,7 +308,7 @@ SUBSYSTEM_DEF(ticker)
 					readied_jobs.Add(V)
 
 	if(CONFIG_GET(flag/ruler_required) && !vote_started)
-		if(pre_vote > 10 && !voting)
+		if(pre_vote > 4 && !voting)
 			voting = TRUE
 			SSvote.initiate_vote("norulervote", "The Gods")
 		if(!(("Monarch" in readied_jobs) || (start_immediately == TRUE))) //start_immediately triggers when the world is doing a test run or an admin hits start now, we don't need to check for king
