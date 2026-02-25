@@ -12,7 +12,7 @@
 	var/penalty = round(intensity)
 	target.genetic_speed_delta += penalty
 	if(target.ai_controller)
-		target.ai_controller.movement_cooldown += penalty
+		target.ai_controller.movement_delay += penalty
 	target.move_to_delay += penalty
 
 /datum/animal_gene/sluggish/remove_from(mob/living/simple_animal/hostile/target)
@@ -21,5 +21,5 @@
 	var/penalty = round(intensity)
 	target.genetic_speed_delta -= penalty
 	if(target.ai_controller)
-		target.ai_controller.movement_cooldown -= penalty
+		target.ai_controller.movement_delay -= penalty
 	target.move_to_delay -= penalty

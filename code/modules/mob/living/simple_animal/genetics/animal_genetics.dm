@@ -359,7 +359,7 @@ GLOBAL_LIST_INIT(all_animal_genes_weighted, generate_animaL_genes())
 	genetics.refresh()
 
 /mob/living/simple_animal/proc/debug_apply_max_genetics()
-	if(!genetics)
+	if(!genetics || ispath(genetics))
 		genetics = new /datum/animal_genetics(src)
 
 	var/datum/animal_gene/swift/swift = new()

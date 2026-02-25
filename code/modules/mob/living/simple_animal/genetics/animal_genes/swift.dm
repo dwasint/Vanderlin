@@ -12,7 +12,7 @@
 	var/reduction = round(intensity)
 	target.genetic_speed_delta -= reduction
 	if(target.ai_controller)
-		target.ai_controller.movement_cooldown = max(1, target.ai_controller.movement_cooldown - reduction)
+		target.ai_controller.movement_delay = max(1, target.ai_controller.movement_delay - reduction)
 
 	target.move_to_delay = max(1, target.move_to_delay - reduction)
 
@@ -22,5 +22,5 @@
 	var/reduction = round(intensity)
 	target.genetic_speed_delta += reduction
 	if(target.ai_controller)
-		target.ai_controller.movement_cooldown += reduction
+		target.ai_controller.movement_delay += reduction
 	target.move_to_delay += reduction
