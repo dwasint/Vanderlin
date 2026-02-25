@@ -48,6 +48,8 @@
 	pooptype = /obj/item/natural/poo/horse
 	happy_funtime_mob = TRUE
 
+	generate_genetics = TRUE
+
 	var/eggsFertile = TRUE
 	var/body_color
 	var/icon_prefix = "chicken"

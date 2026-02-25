@@ -56,6 +56,7 @@
 	buckle_lying = FALSE
 	can_buckle = TRUE
 	remains_type = /obj/effect/decal/remains/cow
+	generate_genetics = TRUE
 
 	ai_controller = /datum/ai_controller/gote
 	happy_funtime_mob = TRUE

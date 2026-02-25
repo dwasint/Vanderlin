@@ -48,8 +48,7 @@
 	base_strength = 4
 	remains_type = /obj/effect/decal/remains/cow
 	happy_funtime_mob = TRUE
-
-
+	generate_genetics = TRUE
 
 	ai_controller = /datum/ai_controller/basic_controller/cow
 	var/can_breed = TRUE

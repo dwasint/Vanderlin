@@ -334,7 +334,7 @@ GLOBAL_LIST_INIT(all_animal_genes_weighted, generate_animaL_genes())
 	return !length(remaining)
 
 /mob/living/simple_animal/proc/roll_initial_genetics(max_genes = 2, intensity_bound_cap = 0.4, recessive_bias = 30)
-	if(!genetics)
+	if(!genetics || ispath(genetics))
 		genetics = new /datum/animal_genetics(src)
 
 	var/attempts = 0

@@ -172,6 +172,7 @@
 		)
 
 	happy_funtime_mob = TRUE
+	generate_genetics = TRUE
 	var/hangry_meter = 0
 	var/random_gender = TRUE
 	var/can_breed = TRUE
