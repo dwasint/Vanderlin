@@ -228,6 +228,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Used to limit healing to putrid flesh mobs
 #define TRAIT_PUTRID "Putrid"
 #define TRAIT_STUCKITEMS "stuck_items" // Prevents removing items except for hand slots
+#define TRAIT_HIGHVALUE_STUCK "highvalue_stuck" //Prevents removing items except for hand slots if it is consdiered to strong
 /// Confessed under torture, to force sign
 #define TRAIT_HAS_CONFESSED "has_confessed"
 /// Confessed for specific type of antag
