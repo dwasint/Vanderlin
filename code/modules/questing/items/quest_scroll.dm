@@ -297,9 +297,13 @@ GLOBAL_LIST_EMPTY(quest_scrolls)
 	// Especially cuz of how many transitions exist
 	if(target_turf.z != user_turf.z)
 		var/z_diff = abs(target_turf.z - user_turf.z)
-		last_z_level_hint = target_turf.z > user_turf.z ? \
-			"[z_diff] level\s above you" : \
-			"[z_diff] level\s below you"
+		if(!is_in_zweb(target_turf.z, user_turf.z))
+			var/area/area = get_area(target_turf)
+			last_z_level_hint = "in [area.name]"
+		else
+			last_z_level_hint = target_turf.z > user_turf.z ? \
+				"[z_diff] level\s above you" : \
+				"[z_diff] level\s below you"
 
 	// Calculate direction from user to target
 	var/dx = target_turf.x - user_turf.x  // EAST direction
