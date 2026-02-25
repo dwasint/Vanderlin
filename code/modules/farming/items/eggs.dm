@@ -37,4 +37,4 @@
 	SEND_SIGNAL(parent, COMSIG_FRIENDSHIP_PASS_FRIENDSHIP, new_chick)
 	SEND_SIGNAL(parent, COMSIG_HAPPINESS_PASS_HAPPINESS, new_chick)
 	if(parent.genetics && !ispath(parent.genetics))
-		parent.genetics.inherit_to(src, father)
+		parent.genetics.inherit_to(new_chick, father)
