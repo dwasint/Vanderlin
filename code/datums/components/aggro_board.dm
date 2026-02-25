@@ -116,6 +116,9 @@
 	// Update the aggro table
 	victim.ai_controller.blackboard[BB_MOB_AGGRO_TABLE] = aggro_table
 
+	if(!victim.ai_controller.blackboard[BB_BASIC_MOB_CURRENT_TARGET])
+		victim.ai_controller.set_blackboard_key(BB_BASIC_MOB_CURRENT_TARGET, attacker)
+
 	// Update highest threat mob
 	update_highest_threat(victim)
 
