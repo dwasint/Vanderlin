@@ -1,7 +1,6 @@
 #define HUMAN_NPC_BASE_JUKE_CHANCE              15
 #define HUMAN_NPC_JUKE_MIN_SPD                  10
 #define HUMAN_NPC_JUKE_PER_OVERSPD              5
-#define HUMAN_NPC_MAX_ATTACK_STAMINA            0.85
 #define HUMAN_NPC_WEAKPOINT_SCAN_CHANCE         20
 #define HUMAN_NPC_WEAKPOINT_CACHE_DURATION      (6 SECONDS)
 #define HUMAN_NPC_WEAPON_SPECIAL_CHANCE         35
