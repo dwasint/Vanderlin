@@ -1,9 +1,13 @@
 #define HUMAN_NPC_BASE_JUKE_CHANCE              15
 #define HUMAN_NPC_JUKE_MIN_SPD                  10
 #define HUMAN_NPC_JUKE_PER_OVERSPD              5
-#define HUMAN_NPC_MAX_ATTACK_STAMINA            85
+#define HUMAN_NPC_MAX_ATTACK_STAMINA            0.85
 #define HUMAN_NPC_WEAKPOINT_SCAN_CHANCE         20
 #define HUMAN_NPC_WEAKPOINT_CACHE_DURATION      (6 SECONDS)
+#define HUMAN_NPC_WEAPON_SPECIAL_CHANCE         35
+#define HUMAN_NPC_INTENT_SWITCH_CHANCE          25  // chance per attack to start a new intent sequence
+#define HUMAN_NPC_RMB_ATTEMPT_CHANCE			25
+
 
 //Note alot of this is just adapted from old code so its probably not the best
 
@@ -48,15 +52,18 @@
 	var/atom/target = controller.blackboard[target_key]
 	var/datum/targetting_datum/td = controller.blackboard[targetting_datum_key]
 
+	var/obj/item/weapon/held_weapon = pawn.get_active_held_item()
+	if(!held_weapon)
+		for(var/obj/item/weapon/candidate in range(1, pawn))
+			if(!isturf(candidate.loc))
+				continue
+			pawn.put_in_active_hand(candidate)
+			break
+
 	if(!td.can_attack(pawn, target))
 		finish_action(controller, FALSE, target_key)
 		return
 	if(ismob(target) && target:stat == DEAD)
-		finish_action(controller, FALSE, target_key)
-		return
-
-	// Stamina gate
-	if(pawn.stamina > HUMAN_NPC_MAX_ATTACK_STAMINA)
 		finish_action(controller, FALSE, target_key)
 		return
 
@@ -70,11 +77,23 @@
 		finish_action(controller, FALSE, target_key)
 		return
 
-	if(hiding_target)
-		controller.ai_interact(hiding_target, TRUE, TRUE)
-	else
-		controller.ai_interact(target, TRUE, TRUE)
+	if(_try_weapon_special(controller))
+		return
 
+	_update_combat_intent(controller, pawn, target)
+	var/list/modifiers = list()
+	var/old_cmode = pawn.cmode
+	if(prob(HUMAN_NPC_RMB_ATTEMPT_CHANCE))
+		pawn.cmode = TRUE
+		if(pawn.stamina < pawn.maximum_stamina * 0.7 && istype(pawn.rmb_intent, /datum/rmb_intent/feint))
+			modifiers = list(RIGHT_CLICK = TRUE)
+
+	if(hiding_target)
+		controller.ai_interact(hiding_target, TRUE, TRUE, modifiers)
+	else
+		controller.ai_interact(target, TRUE, TRUE, modifiers)
+
+	pawn.cmode = old_cmode
 	if(pawn.next_click < world.time)
 		pawn.next_click = world.time + (pawn.used_intent?.clickcd * ( 1 + rand(0.2, 0.4)))
 		SEND_SIGNAL(pawn, COMSIG_MOB_BREAK_SNEAK)
@@ -89,6 +108,51 @@
 	var/mob/living/carbon/human/pawn = controller.pawn
 	pawn.cmode = FALSE
 	SEND_SIGNAL(pawn, COMSIG_COMBAT_TARGET_SET, FALSE)
+
+/datum/ai_behavior/basic_melee_attack/human_npc/proc/_update_combat_intent(datum/ai_controller/controller, mob/living/carbon/human/pawn, mob/living/target)
+	var/attacks_left = controller.blackboard[BB_HUMAN_NPC_CURRENT_INTENT_ATTACKS_LEFT]
+
+	if(attacks_left > 0)
+		controller.set_blackboard_key(BB_HUMAN_NPC_CURRENT_INTENT_ATTACKS_LEFT, attacks_left - 1)
+		return
+
+	if(!prob(HUMAN_NPC_INTENT_SWITCH_CHANCE))
+		return
+
+	var/skill_level = SKILL_LEVEL_NONE
+	var/obj/item/held = pawn.get_active_held_item()
+	if(held?.associated_skill)
+		skill_level = pawn.get_skill_level(held.associated_skill)
+
+	var/list/weighted = list(
+		/datum/rmb_intent/strong = 45,
+		/datum/rmb_intent/swift  = 40,
+		/datum/rmb_intent/feint  = 15,
+	)
+
+	if(pawn.stamina > pawn.maximum_stamina * 0.6)
+		weighted[/datum/rmb_intent/strong] = 0  // force swift when tired
+	else if(pawn.stamina > pawn.maximum_stamina * 0.4)
+		weighted[/datum/rmb_intent/strong] -= 20
+		weighted[/datum/rmb_intent/swift] += 20
+
+	// Skilled fighters use strong more
+	if(skill_level >= SKILL_LEVEL_JOURNEYMAN)
+		weighted[/datum/rmb_intent/strong] += 15
+
+	// Feint more against defenders
+	if(isliving(target))
+		var/mob/living/carbon/human/htarget = target
+		if(istype(htarget?.rmb_intent, /datum/rmb_intent/riposte) || istype(htarget?.rmb_intent, /datum/rmb_intent/guard))
+			weighted[/datum/rmb_intent/feint] += 25
+
+	var/chosen_type = pickweight(weighted)
+	var/datum/rmb_intent/chosen = locate(chosen_type) in pawn.possible_rmb_intents
+	if(chosen)
+		pawn.rmb_intent = chosen
+
+	controller.set_blackboard_key(BB_HUMAN_NPC_CURRENT_INTENT_ATTACKS_LEFT, rand(3, 6))
+
 
 /datum/ai_behavior/basic_melee_attack/human_npc/proc/_choose_attack_zone(datum/ai_controller/controller, mob/living/carbon/human/pawn, mob/living/target)
 	var/list/wp = controller.blackboard[BB_HUMAN_NPC_WEAKPOINT]
@@ -117,6 +181,37 @@
 		pawn.aimheight_change(rand(12, 19))
 		return
 	pawn.aimheight_change(pick(rand(5, 8), rand(9, 11), rand(12, 19)))
+
+/datum/ai_behavior/basic_melee_attack/human_npc/proc/_try_weapon_special(datum/ai_controller/controller)
+	var/mob/living/carbon/human/pawn = controller.pawn
+
+	if(pawn.has_status_effect(/datum/status_effect/debuff/specialcd))
+		return FALSE
+
+	var/obj/item/weapon/held_weapon = pawn.get_active_held_item()
+	if(!istype(held_weapon) || !held_weapon.weapon_special)
+		return FALSE
+
+	if(!prob(HUMAN_NPC_WEAPON_SPECIAL_CHANCE))
+		return FALSE
+
+	// Check we can actually afford the stamina cost before attempting
+	var/datum/special_intent/special = held_weapon.weapon_special
+	if(special.stamina_cost)
+		var/cost = (special.stamina_cost < 1) ? (pawn.maximum_stamina * special.stamina_cost) : special.stamina_cost
+		if(!pawn.check_stamina(cost))
+			return FALSE
+
+	var/datum/rmb_intent/strong/strong_intent = locate(/datum/rmb_intent/strong) in pawn.possible_rmb_intents
+	if(!strong_intent)
+		return FALSE
+
+	var/prev_intent = pawn.rmb_intent
+	pawn.rmb_intent = strong_intent
+	var/atom/target = controller.blackboard[BB_BASIC_MOB_CURRENT_TARGET]
+	var/success = strong_intent.special_attack(pawn, target)
+	pawn.rmb_intent = prev_intent
+	return success
 
 /// Scan target bodyparts for wounded (brute/burn > 20) or unarmored zones.
 /// Caches as list(zone, expiry_time, target_ref).
@@ -327,6 +422,8 @@
 #undef HUMAN_NPC_BASE_JUKE_CHANCE
 #undef HUMAN_NPC_JUKE_MIN_SPD
 #undef HUMAN_NPC_JUKE_PER_OVERSPD
-#undef HUMAN_NPC_MAX_ATTACK_STAMINA
 #undef HUMAN_NPC_WEAKPOINT_SCAN_CHANCE
 #undef HUMAN_NPC_WEAKPOINT_CACHE_DURATION
+#undef HUMAN_NPC_WEAPON_SPECIAL_CHANCE
+#undef HUMAN_NPC_INTENT_SWITCH_CHANCE
+#undef HUMAN_NPC_RMB_ATTEMPT_CHANCE

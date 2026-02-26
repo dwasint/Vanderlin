@@ -414,6 +414,16 @@ have ways of interacting with a specific atom and control it. They posses a blac
 			return
 
 	SEND_SIGNAL(src, COMSIG_AI_CONTROLLER_PICKED_BEHAVIORS, current_behaviors, planned_behaviors)
+
+	for(var/datum/ai_behavior/current_behavior as anything in current_behaviors)
+		var/action_delta_time = max(current_behavior.get_cooldown(src) * 0.1, delta_time)
+
+		if(!(current_behavior.behavior_flags & AI_BEHAVIOR_EXECUTE_ALONGSIDE))
+			continue
+		if(behavior_cooldowns[current_behavior] > world.time)
+			continue
+		ProcessBehavior(action_delta_time, current_behavior)
+
 	for(var/datum/ai_behavior/current_behavior as anything in current_behaviors)
 		// Convert the current behaviour action cooldown to realtime seconds from deciseconds.current_behavior
 		// Then pick the max of this and the delta_time passed to ai_controller.process()

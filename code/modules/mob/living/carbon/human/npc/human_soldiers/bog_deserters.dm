@@ -93,13 +93,7 @@
 	a_intent = INTENT_HELP
 	d_intent = INTENT_PARRY
 	possible_mmb_intents = list(INTENT_BITE, INTENT_JUMP, INTENT_KICK)
-	possible_rmb_intents = list(
-		/datum/rmb_intent/feint,\
-		/datum/rmb_intent/aimed,\
-		/datum/rmb_intent/strong,\
-		/datum/rmb_intent/riposte,\
-		/datum/rmb_intent/weak
-	)
+
 	var/is_silent = FALSE /// Determines whether or not we will scream our funny lines at people.
 
 
@@ -188,13 +182,6 @@
 	a_intent = INTENT_HELP
 	d_intent = INTENT_PARRY
 	possible_mmb_intents = list(INTENT_BITE, INTENT_JUMP, INTENT_KICK)
-	possible_rmb_intents = list(
-		/datum/rmb_intent/feint,\
-		/datum/rmb_intent/aimed,\
-		/datum/rmb_intent/strong,\
-		/datum/rmb_intent/riposte,\
-		/datum/rmb_intent/weak
-	)
 
 /mob/living/carbon/human/species/human/northern/bog_deserters/better_gear/ambush
 	wander = TRUE

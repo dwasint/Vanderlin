@@ -4,7 +4,6 @@
 	ambushable = FALSE
 	wander = TRUE
 	dodgetime = 30
-	possible_rmb_intents = list()
 	var/is_silent = TRUE /// Determines whether or not we will scream our funny lines at people.
 
 /mob/living/carbon/human/species/human/northern/militia/Initialize()

@@ -32,7 +32,7 @@
 
 /datum/ai_behavior/use_throwable
 	action_cooldown = 4 SECONDS
-	behavior_flags = AI_BEHAVIOR_CAN_PLAN_DURING_EXECUTION
+	behavior_flags = AI_BEHAVIOR_MOVE_AND_PERFORM | AI_BEHAVIOR_CAN_PLAN_DURING_EXECUTION | AI_BEHAVIOR_EXECUTE_ALONGSIDE
 
 /datum/ai_behavior/use_throwable/perform(delta_time, datum/ai_controller/controller, consumable_key, target_key, obj/item/weapon/knife/throwingknife)
 	. = ..()

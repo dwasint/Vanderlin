@@ -15,6 +15,7 @@
 
 /datum/ai_behavior/use_powder
 	action_cooldown = 3 MINUTES // Very long cooldown, this is a rare treat
+	behavior_flags = AI_BEHAVIOR_MOVE_AND_PERFORM | AI_BEHAVIOR_CAN_PLAN_DURING_EXECUTION | AI_BEHAVIOR_EXECUTE_ALONGSIDE
 
 /datum/ai_behavior/use_powder/perform(delta_time, datum/ai_controller/controller, consumable_key, obj/item/powder)
 	controller.set_blackboard_key(BB_HELD_CONSUMABLE, powder)

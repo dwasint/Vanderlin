@@ -30,6 +30,8 @@
 #define AI_BEHAVIOR_KEEP_MOVING_TOWARDS_TARGET_ON_FINISH (1<<4)
 ///Does this behavior NOT block planning?
 #define AI_BEHAVIOR_CAN_PLAN_DURING_EXECUTION (1<<5)
+///This behavior executes before all others and does not consume the process tick, allowing normal behaviors to run after it
+#define AI_BEHAVIOR_EXECUTE_ALONGSIDE (1<<6)
 
 ///Cooldown on planning if planning failed last time
 #define AI_FAILED_PLANNING_COOLDOWN 1.5 SECONDS
@@ -233,6 +235,7 @@
 #define BB_HUMAN_NPC_HARASS_RETREATING   "human_npc_harass_retreating"
 #define BB_HUMAN_NPC_HARASS_COOLDOWN     "human_npc_harass_cooldown"
 #define BB_HUMAN_NPC_JUKE_COOLDOWN       "human_npc_juke_cooldown"
+#define BB_HUMAN_NPC_CURRENT_INTENT_ATTACKS_LEFT "human_npc_intent_attacks"
 #define BB_BEGGING_FOOD_ITEM "item_beg_target"
 #define BB_ARCHER_NPC_TARGET_ARROW      "archer_target_arrow"
 #define BB_ARCHER_NPC_STASHED_WEAPON    "archer_stashed_weapon"

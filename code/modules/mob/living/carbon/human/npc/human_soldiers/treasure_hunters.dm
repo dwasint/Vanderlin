@@ -9,7 +9,6 @@
 	ambushable = FALSE
 	dodgetime = 15
 	flee_in_pain = FALSE
-	possible_rmb_intents = list()
 
 /mob/living/carbon/human/species/human/northern/mad_touched_treasure_hunter/ambush
 	wander = TRUE

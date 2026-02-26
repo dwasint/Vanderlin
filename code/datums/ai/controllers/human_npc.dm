@@ -1,6 +1,7 @@
 
 /datum/ai_controller/human_npc
 	movement_delay = 0.5 SECONDS
+	max_target_distance = 13
 	ai_movement = /datum/ai_movement/hybrid_pathing
 	blackboard = list(
 		BB_WEAPON_TYPE = /obj/item/weapon,
@@ -21,6 +22,7 @@
 	)
 	planning_subtrees = list(
 		/datum/ai_planning_subtree/pet_planning,
+		/datum/ai_planning_subtree/call_for_help,
 		/datum/ai_planning_subtree/generic_break_restraints,
 		/datum/ai_planning_subtree/use_powder,
 		/datum/ai_planning_subtree/use_bandage,

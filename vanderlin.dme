@@ -751,6 +751,7 @@
 #include "code\datums\ai\subtrees\beg_for_food.dm"
 #include "code\datums\ai\subtrees\behemoth_abilities.dm"
 #include "code\datums\ai\subtrees\bow_usage.dm"
+#include "code\datums\ai\subtrees\call_for_help.dm"
 #include "code\datums\ai\subtrees\cat_attack.dm"
 #include "code\datums\ai\subtrees\cat_food_for_babies.dm"
 #include "code\datums\ai\subtrees\cat_racism.dm"

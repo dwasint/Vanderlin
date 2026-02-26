@@ -6,7 +6,6 @@ GLOBAL_LIST_INIT(searaider_aggro, file2list("strings/rt/searaideraggrolines.txt"
 	ambushable = FALSE
 	dodgetime = 30
 	flee_in_pain = TRUE
-	possible_rmb_intents = list()
 	var/is_silent = FALSE /// Determines whether or not we will scream our funny lines at people.
 
 
