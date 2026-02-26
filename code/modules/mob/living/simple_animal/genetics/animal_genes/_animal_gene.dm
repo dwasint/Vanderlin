@@ -21,7 +21,7 @@
 	if(intensity_min != intensity_max)
 		intensity = rand(intensity_min, intensity_max) * 0.1
 	else
-		intensity = intensity_min
+		intensity = intensity_min * 0.1
 
 /datum/animal_gene/proc/allowed_for(mob/living/simple_animal/hostile/target)
 	if(!type_whitelist)
@@ -53,7 +53,7 @@
 	if(!other)
 		// Unpaired: pass with minor noise, floored at GENETICS_INTENSITY_FLOOR of intensity_min
 		var/noise = (rand(-GENETICS_INTENSITY_NOISE, GENETICS_INTENSITY_NOISE) * 0.1) * intensity
-		offspring.intensity = clamp(intensity + noise, intensity_min * GENETICS_INTENSITY_FLOOR, intensity_max)
+		offspring.intensity = clamp(intensity + noise, (intensity_min * 0.1) * GENETICS_INTENSITY_FLOOR, (intensity_max * 0.1))
 		return offspring
 	// Paired: average biased toward the higher value (stronger gene wins more often),
 	// plus noise. This means two fat parents consistently produce fatter offspring.
