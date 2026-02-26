@@ -452,8 +452,7 @@
 		var/bounty_multiplier = bounty_items[sell_type]
 		return FLOOR(base_price * bounty_multiplier * sell_modifier, 1)
 
-	// Otherwise use normal sellprice with modifiers
-	var/obj/item/temp = sell_type
+	// Otherwise use baseprice + sell modifers
 	base_price = SSmerchant.get_item_base_value(sell_type)
 
 	if(!base_price || base_price <= 0)
