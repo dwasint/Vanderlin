@@ -34,21 +34,21 @@
 	playsound(user, 'sound/combat/feint.ogg', 100, TRUE)
 	user.visible_message(span_danger("[user] feints an attack at [target]!"))
 	var/perc = 50
-
-	var/obj/item/I = user.get_active_held_item()
-	var/ourskill = 0
-	var/theirskill = 0
-	if(I)
-		if(I.associated_skill)
-			ourskill = user.get_skill_level(I.associated_skill, TRUE)
-		if(L.mind)
-			I = L.get_active_held_item()
-			if(I?.associated_skill)
-				theirskill = L.get_skill_level(I.associated_skill, TRUE)
-	perc += (ourskill - theirskill) * 15 	//skill is of the essence
-	perc += (user.STAINT - L.STAINT) * 10	//but it's also mostly a mindgame
-	perc += (user.STASPD - L.STASPD) * 5 	//yet a speedy feint is hard to counter
-	perc += (user.STAPER - L.STAPER) * 5 	//a good eye helps
+	if(user.mind)
+		var/obj/item/I = user.get_active_held_item()
+		var/ourskill = 0
+		var/theirskill = 0
+		if(I)
+			if(I.associated_skill)
+				ourskill = user.get_skill_level(I.associated_skill, TRUE)
+			if(L.mind)
+				I = L.get_active_held_item()
+				if(I?.associated_skill)
+					theirskill = L.get_skill_level(I.associated_skill, TRUE)
+		perc += (ourskill - theirskill) * 15 	//skill is of the essence
+		perc += (user.STAINT - L.STAINT) * 10	//but it's also mostly a mindgame
+		perc += (user.STASPD - L.STASPD) * 5 	//yet a speedy feint is hard to counter
+		perc += (user.STAPER - L.STAPER) * 5 	//a good eye helps
 
 	if(!user.cmode)
 		perc = 0
