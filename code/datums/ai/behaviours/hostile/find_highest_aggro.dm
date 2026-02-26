@@ -191,14 +191,12 @@
 	if(!accepted_targets.len)
 		return
 
-	// Add threat to all accepted targets, then see if any become our new highest threat
 	var/datum/component/ai_aggro_system/aggro_comp = pawn.GetComponent(/datum/component/ai_aggro_system)
 	if(aggro_comp)
 		for(var/mob/living/target in accepted_targets)
 			aggro_comp.add_threat_to_mob_capped(target, 15, 15)
 			aggro_comp.add_threat_to_mob(target, 3)
 
-	// Check if we now have a highest threat target
 	var/mob/highest_threat = controller.blackboard[BB_HIGHEST_THREAT_MOB]
 	if(highest_threat)
 		controller.set_blackboard_key(target_key, highest_threat)
@@ -208,6 +206,8 @@
 			controller.set_blackboard_key(hiding_location_key, potential_hiding_location)
 
 		finish_action(controller, succeeded = TRUE)
+	else
+		controller.modify_cooldown(src, world.time)
 
 /// Helper proc to find if a mob is hiding in something
 /datum/ai_behavior/find_aggro_targets/proc/find_hiding_location(mob/living/source, mob/living/target)
@@ -222,7 +222,7 @@
 		var/datum/proximity_monitor/field = controller.blackboard[BB_FIND_TARGETS_FIELD(type)]
 		qdel(field) // autoclears so it's fine
 		controller.CancelActions() // Cancel any further queued actions so they setup again with new target
-		controller.modify_cooldown(controller, get_cooldown(controller))
+		controller.modify_cooldown(controller, world.time + get_cooldown(controller))
 
 /datum/ai_behavior/find_aggro_targets/bum/finish_action(datum/ai_controller/controller, succeeded, ...)
 	. = ..()
