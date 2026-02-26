@@ -138,7 +138,6 @@ GLOBAL_VAR_INIT(ambush_mobconsider_cooldown, 2 MINUTES) // Cooldown for each ind
 					H.last_aggro_loss = world.time
 					H.faction += "ambush"
 					addtimer(CALLBACK(H, PROC_REF(setup_equip_block)), 3 SECONDS)
-					ADD_TRAIT(H, TRAIT_HIGHVALUE_STUCK, TRAIT_GENERIC)
 					mustype = 2
 		if(mustype == 1)
 			playsound_local(src, pick('sound/misc/jumpscare (1).ogg','sound/misc/jumpscare (2).ogg','sound/misc/jumpscare (3).ogg','sound/misc/jumpscare (4).ogg'), 100)

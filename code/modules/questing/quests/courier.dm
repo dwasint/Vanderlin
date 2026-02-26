@@ -76,9 +76,6 @@
 			/obj/item/gem/yellow,
 			/obj/item/reagent_containers/glass/bottle/manapot,
 		),
-		/area/indoors/town = list(
-			/obj/item/ration,
-		)
 	)
 
 	var/list/possible_items = area_delivery_items[delivery_area] || list(
