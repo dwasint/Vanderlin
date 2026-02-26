@@ -47,9 +47,8 @@
 /datum/ai_planning_subtree/loot/proc/_is_blacklisted(list/blacklist, obj/item/candidate)
 	if(!blacklist)
 		return FALSE
-	for(var/datum/weakref/ref in blacklist)
-		if(ref.resolve() == candidate)
-			return TRUE
+	if(candidate in blacklist)
+		return TRUE
 	return FALSE
 
 /datum/ai_planning_subtree/loot/proc/_item_is_wanted(datum/component/ai_inventory_manager/inv, mob/living/pawn, obj/item/candidate)
@@ -79,9 +78,9 @@
 	return null
 
 /proc/ai_loot_blacklist_item(datum/ai_controller/controller, obj/item/it)
-	controller.add_blackboard_key_lazylist(BB_LOOT_BLACKLIST, WEAKREF(it))
+	controller.add_blackboard_key_lazylist(BB_LOOT_BLACKLIST, it)
 	// Prune it after 5 minutes so the list doesn't grow forever
-	addtimer(CALLBACK(controller, TYPE_PROC_REF(/datum/ai_controller, remove_thing_from_blackboard_key), BB_LOOT_BLACKLIST, WEAKREF(it)), 5 MINUTES)
+	addtimer(CALLBACK(controller, TYPE_PROC_REF(/datum/ai_controller, remove_thing_from_blackboard_key), BB_LOOT_BLACKLIST, it), 5 MINUTES)
 
 
 /datum/ai_behavior/loot_pick_up
