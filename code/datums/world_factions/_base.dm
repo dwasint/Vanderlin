@@ -454,7 +454,7 @@
 
 	// Otherwise use normal sellprice with modifiers
 	var/obj/item/temp = sell_type
-	base_price = initial(temp.sellprice)
+	base_price = SSmerchant.get_item_base_value(sell_type)
 
 	if(!base_price || base_price <= 0)
 		return 0
