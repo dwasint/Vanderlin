@@ -84,6 +84,14 @@
 		return
 	container_refs[slot_flag] = candidate
 	RegisterSignal(candidate, COMSIG_PARENT_QDELETING, PROC_REF(on_container_delete), override = TRUE)
+	RegisterSignal(candidate, COMSIG_STORAGE_ADDED, PROC_REF(on_storage_added), override = TRUE)
+
+/datum/component/ai_inventory_manager/proc/on_storage_added(datum/source, obj/item/inserted)
+	SIGNAL_HANDLER
+	for(var/slot_flag in container_refs)
+		if(container_refs[slot_flag] == source)
+			_classify_item(inserted, slot_flag)
+			return
 
 /// Classify a single item into all matching categories
 /datum/component/ai_inventory_manager/proc/_classify_item(obj/item/it, slot_flag)

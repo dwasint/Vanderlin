@@ -1,17 +1,12 @@
 
 /datum/ai_planning_subtree/loot
 	var/scan_range = 7
-	var/scan_cooldown = 15 SECONDS
-	var/next_scan = 0
 
 /datum/ai_planning_subtree/loot/SelectBehaviors(datum/ai_controller/controller, delta_time)
 	if(controller.blackboard[BB_BASIC_MOB_CURRENT_TARGET])
 		return
 	if(controller.blackboard[BB_BASIC_MOB_FLEEING])
 		return
-	if(next_scan > world.time)
-		return
-	next_scan = world.time + scan_cooldown
 
 	var/mob/living/pawn = controller.pawn
 	var/datum/component/ai_inventory_manager/inv = controller.get_inventory()
@@ -65,8 +60,19 @@
 	return TRUE
 
 /datum/ai_planning_subtree/loot/proc/_find_lootable_item_on_body(datum/component/ai_inventory_manager/inv, mob/living/pawn, mob/living/corpse, list/blacklist)
-	for(var/obj/item/held in corpse.held_items)
+	for(var/obj/item/held in corpse.contents)
 		if(!held)
+			continue
+		var/datum/component/storage/STR = held.GetComponent(/datum/component/storage)
+		if(STR)
+			for(var/obj/item/held_inside in held.contents)
+				if(_is_blacklisted(blacklist, held_inside))
+					continue
+				if(!_item_is_wanted(inv, pawn, held_inside))
+					continue
+				if(!held_inside.canStrip(corpse))
+					continue
+				return held_inside
 			continue
 		if(_is_blacklisted(blacklist, held))
 			continue

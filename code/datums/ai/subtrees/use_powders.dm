@@ -1,6 +1,12 @@
+/datum/ai_planning_subtree/use_powder
+	var/combat_locked = TRUE
+
+/datum/ai_planning_subtree/use_powder/bum
+	combat_locked = FALSE
+
 /datum/ai_planning_subtree/use_powder/SelectBehaviors(datum/ai_controller/controller, delta_time)
 	// ONLY use powder if we're actively fighting someone
-	if(!controller.blackboard[BB_BASIC_MOB_CURRENT_TARGET])
+	if(!controller.blackboard[BB_BASIC_MOB_CURRENT_TARGET] && combat_locked)
 		return
 	// Don't interrupt if already holding something to use
 	if(controller.blackboard[BB_HELD_CONSUMABLE])
