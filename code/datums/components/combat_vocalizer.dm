@@ -55,12 +55,13 @@
 	source.pointed(target)
 	COOLDOWN_START(src, last_bark, bark_cooldown)
 
-/datum/component/combat_vocalizer/proc/try_combat_bark(mob/living/source)
+/datum/component/combat_vocalizer/proc/try_combat_bark(mob/living/source, prob_override)
 	if(!COOLDOWN_FINISHED(src, last_bark))
 		return
 	if(!length(aggro_lines))
 		return
-	if(!prob(bark_chance))
+	var/chance = prob_override ? prob_override : bark_chance
+	if(!prob(chance))
 		return
 	if(aggro_lines)
 		source.say(pick(aggro_lines))

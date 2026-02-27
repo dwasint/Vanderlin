@@ -66,6 +66,7 @@
 		finish_action(controller, FALSE, target_key)
 		return
 
+	SEND_SIGNAL(pawn, COMSIG_MOB_TRY_BARK)
 	var/hiding_target = td.find_hidden_mobs(pawn, target)
 	controller.set_blackboard_key(hiding_location_key, hiding_target)
 

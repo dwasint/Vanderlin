@@ -31,6 +31,7 @@ GLOBAL_LIST_INIT(drowraider_aggro, file2list("strings/rt/drowaggrolines.txt"))
 	ADD_TRAIT(src, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_DUALWIELDER, TRAIT_GENERIC)
 	equipOutfit(new /datum/outfit/job/human/species/elf/dark/drowraider)
+	SEND_SIGNAL(src, COMSIG_MOB_MODIFY_AGGRO_LINES, GLOB.drowraider_aggro, TRUE)
 	if(prob(40))
 		gender = MALE
 	else

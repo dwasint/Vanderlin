@@ -31,6 +31,7 @@ GLOBAL_LIST_INIT(highwayman_aggro, file2list("strings/rt/highwaymanaggrolines.tx
 	ADD_TRAIT(src, TRAIT_BREADY, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	equipOutfit(new /datum/outfit/job/human/species/human/northern/highwayman)
+	SEND_SIGNAL(src, COMSIG_MOB_MODIFY_AGGRO_LINES, GLOB.highwayman_aggro, TRUE)
 	var/obj/item/organ/eyes/organ_eyes = getorgan(/obj/item/organ/eyes)
 	if(organ_eyes)
 		organ_eyes.eye_color = pick("27becc", "35cc27", "000000")

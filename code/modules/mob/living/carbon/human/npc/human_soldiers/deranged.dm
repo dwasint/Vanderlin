@@ -57,33 +57,34 @@ GLOBAL_LIST_INIT(hedgeknight_aggro, file2list("strings/rt/hedgeknightaggrolines.
 		switch(rand(1, 4))
 			if(1)
 				preset = "graggar"
-				SEND_SIGNAL(src, COMSIG_MOB_MODIFY_AGGRO_LINES, GLOB.graggar_aggro, TRUE)
-				SEND_SIGNAL(src, COMSIG_MOB_MODIFY_DEATH_LINES, list("No more... Blood!"), TRUE)
 			if(2)
 				preset = "matthios"
-				SEND_SIGNAL(src, COMSIG_MOB_MODIFY_AGGRO_LINES, GLOB.matthios_aggro, TRUE)
-				SEND_SIGNAL(src, COMSIG_MOB_MODIFY_DEATH_LINES, list("Matthios, I have failed you...", "Matthios, is this true?!"), TRUE)
 			if(3)
 				preset = "zizo"
-				SEND_SIGNAL(src, COMSIG_MOB_MODIFY_AGGRO_LINES, GLOB.zizo_aggro, TRUE)
-				SEND_SIGNAL(src, COMSIG_MOB_MODIFY_DEATH_LINES, list("Zizo, forgive me!"), TRUE)
 			if(4)
 				preset = "hedgeknight"
-				SEND_SIGNAL(src, COMSIG_MOB_MODIFY_AGGRO_LINES, GLOB.hedgeknight_aggro, TRUE)
+
 	switch(preset)
 		if("graggar")
 			equipOutfit(new /datum/outfit/job/quest_miniboss/graggar)
+			SEND_SIGNAL(src, COMSIG_MOB_MODIFY_AGGRO_LINES, GLOB.graggar_aggro, TRUE)
+			SEND_SIGNAL(src, COMSIG_MOB_MODIFY_DEATH_LINES, list("No more... Blood!"), TRUE)
 		if ("matthios")
 			equipOutfit(new /datum/outfit/job/quest_miniboss/matthios)
+			SEND_SIGNAL(src, COMSIG_MOB_MODIFY_AGGRO_LINES, GLOB.matthios_aggro, TRUE)
+			SEND_SIGNAL(src, COMSIG_MOB_MODIFY_DEATH_LINES, list("Matthios, I have failed you...", "Matthios, is this true?!"), TRUE)
 		if ("zizo")
 			ADD_TRAIT(src, TRAIT_CABAL, TRAIT_GENERIC)
 			equipOutfit(new /datum/outfit/job/quest_miniboss/zizo)
+			SEND_SIGNAL(src, COMSIG_MOB_MODIFY_AGGRO_LINES, GLOB.zizo_aggro, TRUE)
+			SEND_SIGNAL(src, COMSIG_MOB_MODIFY_DEATH_LINES, list("Zizo, forgive me!"), TRUE)
 		if ("hedgeknight")
 			if(prob(50))
 				equipOutfit(new /datum/outfit/job/quest_miniboss/hedge_knight)
 			else
 				equipOutfit(new /datum/outfit/job/quest_miniboss/blacksteel)
 			// No special trait for hedgeknight, he's just a generic tough guy.
+			SEND_SIGNAL(src, COMSIG_MOB_MODIFY_AGGRO_LINES, GLOB.hedgeknight_aggro, TRUE)
 
 	gender = pick(MALE,FEMALE)
 	regenerate_icons()
