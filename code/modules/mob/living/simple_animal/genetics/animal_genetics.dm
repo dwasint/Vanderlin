@@ -104,7 +104,7 @@ GLOBAL_LIST_INIT(all_animal_genes_weighted, generate_animaL_genes())
 /datum/animal_genetics/proc/get_gene_names()
 	var/list/names = list()
 	for(var/datum/animal_gene/G in genes)
-		names += should_express(G) ? G.name : "[G.name] (recessive)"
+		names += should_express(G) ? "[G.name] [round(((G.intensity * 10) / G.intensity_max) * 100)]%" : "[G.name] [round(((G.intensity * 10) / G.intensity_max) * 100)]% (recessive)"
 	return names
 
 /datum/animal_genetics/proc/get_gene_by_exclusion_group(group)
