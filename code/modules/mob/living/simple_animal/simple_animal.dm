@@ -539,7 +539,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	var/bonus_count = 0 // Track bonus items from happiness
 
 	for(var/path in butcher_results)
-		var/amount = round(butcher_results[path] * genetic_butcher_scale)
+		var/amount = max(1, round(butcher_results[path] * genetic_butcher_scale, 1))
 		if(!do_after(user, time_per_cut, target = src))
 			if(botch_count || normal_count || perfect_count || bonus_count)
 				to_chat(user, span_notice("I stop butchering: [butcher_summary(botch_count, normal_count, perfect_count, bonus_count, botch_chance, perfect_chance, happiness_bonus)]."))
@@ -550,12 +550,12 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		if(prob(botch_chance))
 			botch_count++
 			if(length(botched_butcher_results) && (path in botched_butcher_results))
-				amount = round(botched_butcher_results[path] * genetic_butcher_scale, 1)
+				amount = max(1, round(botched_butcher_results[path] * genetic_butcher_scale, 1))
 			else
 				amount = 0
 		// Otherwise check for perfect
 		else if(length(perfect_butcher_results) && (path in perfect_butcher_results) && prob(perfect_chance))
-			amount = round(perfect_butcher_results[path] * genetic_butcher_scale, 1)
+			amount = max(1, round(perfect_butcher_results[path] * genetic_butcher_scale, 1))
 			perfect_count++
 		else
 			normal_count++
