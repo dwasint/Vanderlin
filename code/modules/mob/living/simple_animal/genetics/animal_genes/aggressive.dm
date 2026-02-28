@@ -3,7 +3,7 @@
 	desc = "Territorial. Will attack nearby creatures unprovoked."
 	rarity = 3
 	dominant = TRUE
-	exclusion_group = GENE_GROUP_TEMPERAMENT
+	exclusion_group = GENE_GROUP_HAPPINESS
 
 
 /datum/animal_gene/aggressive/apply_to(mob/living/simple_animal/hostile/target)

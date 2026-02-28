@@ -2,7 +2,7 @@
 	name = "Docile"
 	desc = "Exceptionally calm. Much easier to tame; won't flee when struck."
 	rarity = 4
-	exclusion_group = GENE_GROUP_TEMPERAMENT
+	exclusion_group = GENE_GROUP_HAPPINESS
 
 /datum/animal_gene/docile/apply_to(mob/living/simple_animal/hostile/target)
 	if(..())

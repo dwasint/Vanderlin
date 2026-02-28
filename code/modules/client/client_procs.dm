@@ -770,9 +770,6 @@ GLOBAL_LIST_EMPTY(respawncounts)
 
 	QDEL_NULL(loot_panel)
 
-	if(player_details)
-		player_details.achievements.save()
-
 	if(movingmob != null)
 		movingmob.client_mobs_in_contents -= mob
 		UNSETEMPTY(movingmob.client_mobs_in_contents)

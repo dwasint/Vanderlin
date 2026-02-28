@@ -66,7 +66,7 @@
 /obj/structure/fluff/traveltile/proc/resolve_destination_area()
 	if(!aportalgoesto)
 		return
-	for(var/obj/structure/fluff/traveltile/other in GLOB.traveltiles) // or however you iterate portals
+	for(var/obj/structure/fluff/traveltile/other as anything in GLOB.traveltiles)
 		if(other.aportalid == aportalgoesto)
 			cached_destination_area = get_area(other)
 			return

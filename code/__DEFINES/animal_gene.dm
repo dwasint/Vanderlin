@@ -10,7 +10,7 @@
 #define GENE_GROUP_PROGENY "progeny"
 #define GENE_GROUP_EMISSIVE "emissive"
 #define GENE_GROUP_METABOLISM "metabolism"
-#define GENE_GROUP_TEMPERAMENT "temperament"
+#define GENE_GROUP_HAPPINESS "happiness"
 
 #define GENETICS_TRAIT "genetics"
 #define GENETICS_MUTATION_CHANCE 15

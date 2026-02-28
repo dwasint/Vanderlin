@@ -163,3 +163,8 @@
 #define conditional_tooltip(normal_text, tooltip_text, condition) ((condition) ? (span_tooltip(tooltip_text, normal_text)) : (normal_text))
 /// No italics
 #define conditional_tooltip_alt(normal_text, tooltip_text, condition) ((condition) ? (span_tooltip_alt(tooltip_text, normal_text)) : (normal_text))
+
+#define span_achievementrare(str) ("<span class='achievementrare'>" + str + "</span>")
+#define span_achievementgood(str) ("<span class='achievementgood'>" + str + "</span>")
+#define span_achievementneutral(str) ("<span class='achievementneutral'>" + str + "</span>")
+#define span_achievementbad(str) ("<span class='achievementbad'>" + str + "</span>")
