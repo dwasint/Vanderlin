@@ -612,6 +612,7 @@
 #include "code\datums\achievements\boss_achievements.dm"
 #include "code\datums\achievements\boss_scores.dm"
 #include "code\datums\achievements\misc_achievements.dm"
+#include "code\datums\achievements\toast.dm"
 #include "code\datums\actions\action.dm"
 #include "code\datums\actions\action_cooldown.dm"
 #include "code\datums\actions\action_innate.dm"

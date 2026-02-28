@@ -14,6 +14,10 @@
 	dropshrink = 0.6
 	var/obj/item/reagent_containers/food/snacks/food = null // The food item wrapped in the ration
 
+/obj/item/ration/Destroy()
+	. = ..()
+	food = null
+
 /obj/item/ration/attackby(obj/item/I, mob/user)
 	. = ..()
 	if(istype(I, /obj/item/reagent_containers/food/snacks))

@@ -83,11 +83,6 @@
 		return held
 	return null
 
-/proc/ai_loot_blacklist_item(datum/ai_controller/controller, obj/item/it)
-	controller.add_blackboard_key_lazylist(BB_LOOT_BLACKLIST, it)
-	// Prune it after 5 minutes so the list doesn't grow forever
-	addtimer(CALLBACK(controller, TYPE_PROC_REF(/datum/ai_controller, remove_thing_from_blackboard_key), BB_LOOT_BLACKLIST, it), 5 MINUTES)
-
 
 /datum/ai_behavior/loot_pick_up
 	action_cooldown = 0.5 SECONDS
@@ -125,7 +120,9 @@
 	var/slot_flag = inv.find_space_for(target)
 	if(!slot_flag)
 		pawn.visible_message(span_notice("[pawn] looks at [target] but has no room for it."))
-		ai_loot_blacklist_item(controller, target)
+		controller.add_blackboard_key_lazylist(BB_LOOT_BLACKLIST, target)
+		// Prune it after 5 minutes so the list doesn't grow forever
+		addtimer(CALLBACK(controller, TYPE_PROC_REF(/datum/ai_controller, remove_thing_from_blackboard_key), BB_LOOT_BLACKLIST, target), 5 MINUTES)
 		finish_action(controller, FALSE, target_key)
 		return
 
@@ -197,7 +194,9 @@
 
 	var/slot_flag = inv.find_space_for(target_item)
 	if(!slot_flag)
-		ai_loot_blacklist_item(controller, target_item)
+		controller.add_blackboard_key_lazylist(BB_LOOT_BLACKLIST, target_item)
+		// Prune it after 5 minutes so the list doesn't grow forever
+		addtimer(CALLBACK(controller, TYPE_PROC_REF(/datum/ai_controller, remove_thing_from_blackboard_key), BB_LOOT_BLACKLIST, target_item), 5 MINUTES)
 		finish_action(controller, FALSE, body_key, item_key)
 		return
 
@@ -211,7 +210,9 @@
 		STR.handle_item_insertion(target_item, prevent_warning = TRUE, user = pawn)
 		finish_action(controller, TRUE, body_key, item_key)
 	else
-		ai_loot_blacklist_item(controller, target_item)
+		controller.add_blackboard_key_lazylist(BB_LOOT_BLACKLIST, target_item)
+		// Prune it after 5 minutes so the list doesn't grow forever
+		addtimer(CALLBACK(controller, TYPE_PROC_REF(/datum/ai_controller, remove_thing_from_blackboard_key), BB_LOOT_BLACKLIST, target_item), 5 MINUTES)
 		finish_action(controller, FALSE, body_key, item_key)
 
 /datum/ai_behavior/loot_strip_body/finish_action(datum/ai_controller/controller, succeeded, body_key, item_key)
