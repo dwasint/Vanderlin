@@ -209,7 +209,7 @@
 	var/prev_intent = pawn.rmb_intent.type
 	pawn.swap_rmb_intent(strong_intent)
 	var/atom/target = controller.blackboard[BB_BASIC_MOB_CURRENT_TARGET]
-	var/success = strong_intent.special_attack(pawn, target)
+	var/success = pawn.rmb_intent.special_attack(pawn, target)
 	pawn.swap_rmb_intent(prev_intent)
 	return success
 
