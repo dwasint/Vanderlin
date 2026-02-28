@@ -13,18 +13,16 @@ SUBSYSTEM_DEF(regionthreat)
 	return ..()
 
 /datum/controller/subsystem/regionthreat/fire(resumed)
-	var/player_count = GLOB.player_list.len
+	var/player_count = length(GLOB.player_list)
 	var/ishighpop = player_count >= LOWPOP_THRESHOLD
-	for(var/T in threat_regions)
-		var/datum/threat_region/TR = T
+	for(var/datum/threat_region/TR as anything in threat_regions)
 		if(ishighpop)
 			TR.increase_latent_ambush(TR.highpop_tick)
 		else
 			TR.increase_latent_ambush(TR.lowpop_tick)
 
 /datum/controller/subsystem/regionthreat/proc/get_region(region_name)
-	for(var/T in threat_regions)
-		var/datum/threat_region/TR = T
+	for(var/datum/threat_region/TR as anything in threat_regions)
 		if(TR.region_name == region_name)
 			return TR
 	return null
@@ -36,8 +34,7 @@ SUBSYSTEM_DEF(regionthreat)
 
 /datum/controller/subsystem/regionthreat/proc/get_threat_regions_for_display()
 	var/list/threat_region_displays = list()
-	for(var/T in threat_regions)
-		var/datum/threat_region/TR = T
+	for(var/datum/threat_region/TR as anything in threat_regions)
 		var/datum/threat_region_display/TRS = new /datum/threat_region_display
 		TRS.region_name = TR.region_name
 		TRS.danger_level = TR.get_danger_level()
