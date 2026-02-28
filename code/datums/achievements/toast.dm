@@ -57,7 +57,6 @@
 	)
 	holder.plane = ABOVE_HUD_PLANE
 	holder.appearance_flags = KEEP_APART | RESET_ALPHA | RESET_COLOR | RESET_TRANSFORM
-	holder.screen_loc = "CENTER,SOUTH"
 	holder.vis_contents += toast
 
 	toast.pixel_y = -ACHIEVEMENT_TOAST_SLIDE_OFFSET
