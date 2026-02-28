@@ -250,6 +250,9 @@
 #define BB_LOOT_TARGET "loot_target"
 #define BB_LOOT_TARGET_ITEM "loot_target_item"
 #define BB_LOOT_BLACKLIST "loot_blacklist"
+#define BB_MUG_DEMAND_ELAPSED "mug_elapsed_time"
+#define BB_MUG_TARGET "mug_target"
+#define BB_MUG_TARGET_ITEM "mug_rootbeer"
 
 #define ARCHER_NPC_EQUIPMENT_CACHE_TIME (40 SECONDS)
 #define ARCHER_NPC_MIN_RANGE            3   // tiles - closer than this, prefer melee

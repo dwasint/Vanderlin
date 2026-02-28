@@ -34,6 +34,7 @@
 		/datum/ai_planning_subtree/find_weapon,
 		/datum/ai_planning_subtree/equip_item,
 		/datum/ai_planning_subtree/retrieve_arrows,
+		/datum/ai_planning_subtree/mug,
 		/datum/ai_planning_subtree/loot,
 
 	)
@@ -64,6 +65,7 @@
 		/datum/ai_planning_subtree/find_weapon,
 		/datum/ai_planning_subtree/equip_item,
 		/datum/ai_planning_subtree/retrieve_arrows,
+		/datum/ai_planning_subtree/mug,
 		/datum/ai_planning_subtree/loot,
 
 	)

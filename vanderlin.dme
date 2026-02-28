@@ -806,6 +806,7 @@
 #include "code\datums\ai\subtrees\minotaur_special.dm"
 #include "code\datums\ai\subtrees\minotaur_target.dm"
 #include "code\datums\ai\subtrees\move_to_cardinal.dm"
+#include "code\datums\ai\subtrees\mug_mob.dm"
 #include "code\datums\ai\subtrees\no_target_hide.dm"
 #include "code\datums\ai\subtrees\obey_command.dm"
 #include "code\datums\ai\subtrees\opportunistic_attack.dm"
