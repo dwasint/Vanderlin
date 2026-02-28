@@ -206,11 +206,11 @@
 	if(!strong_intent)
 		return FALSE
 
-	var/prev_intent = pawn.rmb_intent
-	pawn.rmb_intent = strong_intent
+	var/prev_intent = pawn.rmb_intent.type
+	pawn.swap_rmb_intent(strong_intent)
 	var/atom/target = controller.blackboard[BB_BASIC_MOB_CURRENT_TARGET]
 	var/success = strong_intent.special_attack(pawn, target)
-	pawn.rmb_intent = prev_intent
+	pawn.swap_rmb_intent(prev_intent)
 	return success
 
 /// Scan target bodyparts for wounded (brute/burn > 20) or unarmored zones.
