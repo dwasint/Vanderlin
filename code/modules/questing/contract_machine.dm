@@ -268,22 +268,10 @@
 			record_featured_stat(FEATURED_STATS_TAX_PAYERS, user, tax_amt)
 			record_round_statistic(STATS_TAXES_COLLECTED, tax_amt)
 
-	cash_in(round(reward), original_reward, tax_amt)
+	cash_in(user, round(reward), original_reward, tax_amt)
 
-/obj/structure/fake_machine/contractledger/proc/cash_in(reward, original_reward, tax_amt)
-	var/list/coin_types = list(
-		/obj/item/coin/gold = FLOOR(reward / 10, 1),
-		/obj/item/coin/silver = FLOOR(reward % 10 / 5, 1),
-		/obj/item/coin/copper = reward % 5
-	)
-
-	for(var/coin_type in coin_types)
-		var/amount = coin_types[coin_type]
-		if(amount > 0)
-			var/obj/item/coin/coin_stack = new coin_type(get_turf(src))
-			coin_stack.quantity = amount
-			coin_stack.update_icon()
-			coin_stack.update_transform()
+/obj/structure/fake_machine/contractledger/proc/cash_in(mob/user, reward, original_reward, tax_amt)
+	add_mammons_to_atom(user, reward)
 
 	if(reward > 0)
 		say(reward > original_reward ? \
@@ -323,7 +311,7 @@
 			SStreasury.log_entries += "-[refund] from treasury (contract refund to volunteer)"
 			to_chat(user, span_notice("You receive a [refund] mammon refund for abandoning the contract."))
 		else
-			cash_in(refund)
+			cash_in(user, refund)
 			SStreasury.treasury_value -= refund
 			SStreasury.log_entries += "-[refund] from treasury (contract refund)"
 			to_chat(user, span_notice("Your refund of [refund] mammon has been dispensed."))
