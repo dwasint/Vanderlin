@@ -93,8 +93,8 @@
 	set category = "Debug"
 
 	var/datum/award/achievement/test_award = new()
-	test_award.name = "Test Achievement"
-	test_award.icon = "default"
+	test_award.name = "Slayer of The Deep"
+	test_award.icon = "slayer"
 
 	show_achievement_toast(usr, test_award)
 	qdel(test_award)
