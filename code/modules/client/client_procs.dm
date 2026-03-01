@@ -58,24 +58,25 @@ GLOBAL_LIST_EMPTY(respawncounts)
 			return
 
 	var/atom/ref = locate(href_list["src"])
-	var/mtl = CONFIG_GET(number/minute_topic_limit)
-	if(!holder && mtl && !istype(ref, /datum/native_say))
-		var/minute = round(world.time, 1 MINUTES)
-		if (!topiclimiter)
-			topiclimiter = new(LIMITER_SIZE)
-		if (minute != topiclimiter[CURRENT_MINUTE])
-			topiclimiter[CURRENT_MINUTE] = minute
-			topiclimiter[MINUTE_COUNT] = 0
-		topiclimiter[MINUTE_COUNT] += 1
-		if (topiclimiter[MINUTE_COUNT] > mtl)
-			var/msg = "Your previous action was ignored because you've done too many in a minute."
-			if (minute != topiclimiter[ADMINSWARNED_AT]) //only one admin message per-minute. (if they spam the admins can just boot/ban them)
-				topiclimiter[ADMINSWARNED_AT] = minute
-				msg += " Administrators have been informed."
-				log_game("[key_name(src)] Has hit the per-minute topic limit of [mtl] topic calls in a given game minute")
-				message_admins("[ADMIN_LOOKUPFLW(usr)] [ADMIN_KICK(usr)] Has hit the per-minute topic limit of [mtl] topic calls in a given game minute")
-			to_chat(src, span_danger("[msg]"))
-			return
+	if(!holder && (href_list["window_id"] != "statbrowser") && !istype(ref, /datum/native_say))
+		var/mtl = CONFIG_GET(number/minute_topic_limit)
+		if (mtl)
+			var/minute = round(world.time, 1 MINUTES)
+			if (!topiclimiter)
+				topiclimiter = new(LIMITER_SIZE)
+			if (minute != topiclimiter[CURRENT_MINUTE])
+				topiclimiter[CURRENT_MINUTE] = minute
+				topiclimiter[MINUTE_COUNT] = 0
+			topiclimiter[MINUTE_COUNT] += 1
+			if (topiclimiter[MINUTE_COUNT] > mtl)
+				var/msg = "Your previous action was ignored because you've done too many in a minute."
+				if (minute != topiclimiter[ADMINSWARNED_AT]) //only one admin message per-minute. (if they spam the admins can just boot/ban them)
+					topiclimiter[ADMINSWARNED_AT] = minute
+					msg += " Administrators have been informed."
+					message_admins("[ADMIN_LOOKUPFLW(usr)] [ADMIN_KICK(usr)] Has hit the per-minute topic limit of [mtl] topic calls in a given game minute")
+				log_game("[key_name(src)] Has hit the per-minute topic limit of [mtl] topic calls in a given game minute with [hsrc ? "[hsrc] " : ""][href].")
+				to_chat(src, span_danger("[msg]"))
+				return
 
 		var/stl = CONFIG_GET(number/second_topic_limit)
 		if (stl)
@@ -87,6 +88,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 				topiclimiter[SECOND_COUNT] = 0
 			topiclimiter[SECOND_COUNT] += 1
 			if (topiclimiter[SECOND_COUNT] > stl)
+				log_game("[key_name(src)] Has hit the per-second topic limit of [stl] topic calls in a given game second with [hsrc ? "[hsrc] " : ""][href].")
 				to_chat(src, span_danger("Your previous action was ignored because you've done too many in a second"))
 				return
 
