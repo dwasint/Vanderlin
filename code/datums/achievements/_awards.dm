@@ -75,6 +75,12 @@
 /datum/award/proc/on_unlock(mob/user)
 	return
 
+/datum/award/proc/return_reward_string()
+	SHOULD_CALL_PARENT(TRUE)
+	var/reward_str = "Reward: "
+	if(triumph_reward)
+		reward_str += "[triumph_reward] Triumph\s"
+	return reward_str
 
 /datum/award/proc/inform_user(mob/user)
 	var/unlock_text = ""

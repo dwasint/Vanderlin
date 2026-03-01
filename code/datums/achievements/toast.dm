@@ -53,9 +53,7 @@
 	toast.maptext = MAPTEXT("<font color='#d4af37'><small>Achievement Unlocked!</small></font><br><b><font color='#f1f5f9'>[award.name]</font></b>")
 
 	if(award.award_flags & AWARD_FLAG_REWARD)
-		var/reward_str = ""
-		if(award.triumph_reward)
-			reward_str = "Reward: [award.triumph_reward] Triumph\s"
+		var/reward_str = award.return_reward_string()
 		if(reward_str)
 			var/mutable_appearance/reward_text = new()
 			reward_text.maptext_width = 118
