@@ -48,3 +48,6 @@
 #define LEGION_SCORE 	     "Legion Killed"
 #define SWARMER_BEACON_SCORE "Swarmer Beacs Killed"
 #define TENDRIL_CLEAR_SCORE	 "Tendrils Killed"
+
+#define AWARD_FLAG_REWARD (1<<0)
+#define AWARD_FLAG_SEASONAL (1<<1)

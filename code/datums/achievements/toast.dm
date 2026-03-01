@@ -14,7 +14,6 @@
 	if(!user?.client)
 		return
 	var/client/C = user.client
-
 	var/atom/movable/screen/achievement_toast/toast = new()
 
 	var/mutable_appearance/bg = new()
@@ -53,6 +52,20 @@
 	toast.maptext_y = 32
 	toast.maptext = MAPTEXT("<font color='#d4af37'><small>Achievement Unlocked!</small></font><br><b><font color='#f1f5f9'>[award.name]</font></b>")
 
+	if(award.award_flags & AWARD_FLAG_REWARD)
+		var/reward_str = ""
+		if(award.triumph_reward)
+			reward_str = "Reward: [award.triumph_reward] Triumph\s"
+		if(reward_str)
+			var/mutable_appearance/reward_text = new()
+			reward_text.maptext_width = 118
+			reward_text.maptext_height = 16
+			reward_text.maptext_x = 128
+			reward_text.maptext_y = 10
+			reward_text.maptext = MAPTEXT("<font color='#a78bfa'>[reward_str]</font>")
+			reward_text.plane = ABOVE_HUD_PLANE
+			reward_text.layer = BACKHUD_LAYER + 0.4
+			toast.add_overlay(reward_text)
 	var/image/holder = image(
 		icon = 'icons/effects/effects.dmi',
 		icon_state = "nothing",
@@ -62,15 +75,11 @@
 	holder.plane = ABOVE_HUD_PLANE
 	holder.appearance_flags = KEEP_APART | RESET_ALPHA | RESET_COLOR | RESET_TRANSFORM
 	holder.vis_contents += toast
-
 	toast.pixel_y = -ACHIEVEMENT_TOAST_SLIDE_OFFSET
 	toast.pixel_x = -162
 	toast.alpha = 0
-
 	C.images += holder
-
 	animate(toast, pixel_y = -180, alpha = 255, time = ACHIEVEMENT_TOAST_SLIDE_TIME, easing = EASE_OUT)
-
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(_achievement_toast_begin_fadeout), toast, holder, C), ACHIEVEMENT_TOAST_HOLD_TIME)
 
 /proc/_achievement_toast_begin_fadeout(atom/movable/screen/achievement_toast/toast, image/holder, client/C)
@@ -92,9 +101,7 @@
 	set name = "Test Achievement Toast"
 	set category = "Debug"
 
-	var/datum/award/achievement/test_award = new()
-	test_award.name = "Slayer of The Deep"
-	test_award.icon = "slayer"
+	var/datum/award/achievement/boss/deep/test_award = new()
 
 	show_achievement_toast(usr, test_award)
 	qdel(test_award)

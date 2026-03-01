@@ -19,6 +19,10 @@
 	var/unlock_message = FALSE
 	/// Whether or not we should play the unlocking sound
 	var/unlock_sound = FALSE
+	 /// If set, this many triumphs are granted when the achievement is first unlocked
+	var/triumph_reward = 0
+	///these are the flags we have
+	var/award_flags = NONE
 
 ///This proc loads the achievement data from the hub.
 /datum/award/proc/load(key)
@@ -109,6 +113,11 @@
 	desc = "Achievement for epic people"
 	unlock_message = TRUE
 	unlock_sound = TRUE
+
+/datum/award/achievement/on_unlock(mob/user)
+	. = ..()
+	if(triumph_reward && user)
+		user.adjust_triumphs(triumph_reward, counted = TRUE, reason = "Achievement unlocked: [name]", silent = TRUE)
 
 /datum/award/achievement/get_metadata_row()
 	. = ..()
