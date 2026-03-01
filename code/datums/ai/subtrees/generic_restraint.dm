@@ -12,9 +12,10 @@
 
 /datum/ai_behavior/break_restraints
 	behavior_flags = AI_BEHAVIOR_CAN_PLAN_DURING_EXECUTION
-	action_cooldown = 30 SECONDS
+	action_cooldown = 45 SECONDS
 
 /datum/ai_behavior/break_restraints/perform(seconds_per_tick, datum/ai_controller/controller)
+	. = ..()
 	var/mob/living/carbon/living_pawn = controller.pawn
 	if(!living_pawn.handcuffed && !living_pawn.legcuffed)
 		finish_action(controller, FALSE)
