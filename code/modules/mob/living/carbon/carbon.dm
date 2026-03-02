@@ -7,6 +7,7 @@
 /mob/living/carbon/Destroy()
 	//This must be done first, so the mob ghosts correctly before DNA etc is nulled
 	. =  ..()
+	QDEL_LIST_ASSOC_VAL(chem_effects)
 
 	QDEL_LIST(hand_bodyparts)
 	QDEL_LIST(internal_organs)
