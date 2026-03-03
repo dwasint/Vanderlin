@@ -14,19 +14,19 @@
 	allowed_patrons = list(/datum/patron/godless/defiant) // This one has seen too much. Matthiosans are not compatible with Heartfelt.
 
 	skills = list(
-		/datum/skill/combat/axesmaces = SKILL_LEVEL_JOURNEYMAN, // Needed just for NPC's.
-		/datum/skill/misc/swimming = SKILL_LEVEL_MASTER,
-		/datum/skill/combat/wrestling = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/unarmed = SKILL_LEVEL_EXPERT, // They're not meant to kill.
-		/datum/skill/misc/climbing = SKILL_LEVEL_MASTER,
-		/datum/skill/craft/crafting = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/athletics = SKILL_LEVEL_EXPERT,
-		/datum/skill/misc/reading = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/sneaking = SKILL_LEVEL_LEGENDARY,
-		/datum/skill/misc/stealing = SKILL_LEVEL_LEGENDARY,
-		/datum/skill/misc/lockpicking = SKILL_LEVEL_MASTER,
-		/datum/skill/craft/sewing = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/craft/bombs = SKILL_LEVEL_JOURNEYMAN // To craft Smoke Bombs.
+		/datum/attribute/skill/combat/axesmaces = SKILL_LEVEL_JOURNEYMAN, // Needed just for NPC's.
+		/datum/attribute/skill/misc/swimming = SKILL_LEVEL_MASTER,
+		/datum/attribute/skill/combat/wrestling = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/combat/unarmed = SKILL_LEVEL_EXPERT, // They're not meant to kill.
+		/datum/attribute/skill/misc/climbing = SKILL_LEVEL_MASTER,
+		/datum/attribute/skill/craft/crafting = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/misc/athletics = SKILL_LEVEL_EXPERT,
+		/datum/attribute/skill/misc/reading = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/misc/sneaking = SKILL_LEVEL_LEGENDARY,
+		/datum/attribute/skill/misc/stealing = SKILL_LEVEL_LEGENDARY,
+		/datum/attribute/skill/misc/lockpicking = SKILL_LEVEL_MASTER,
+		/datum/attribute/skill/misc/sewing = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/craft/bombs = SKILL_LEVEL_JOURNEYMAN // To craft Smoke Bombs.
 	)
 
 	traits = list(
@@ -38,9 +38,9 @@
 	)
 
 	jobstats = list(
-		STATKEY_CON = -1,
-		STATKEY_END = -1,
-		STATKEY_STR = -2 // These are all relatively low, the class requires cantrips to work around these.
+		STAT_CONSTITUTION = -1,
+		STAT_ENDURANCE = -1,
+		STAT_STRENGTH = -2 // These are all relatively low, the class requires cantrips to work around these.
 	)
 
 	spells = list(

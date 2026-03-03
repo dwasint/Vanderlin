@@ -9,23 +9,23 @@
 	cmode_music = 'sound/music/cmode/adventurer/CombatOutlander2.ogg'
 
 	jobstats = list(
-		STATKEY_STR = 2,
-		STATKEY_SPD = 3
+		STAT_STRENGTH = 2,
+		STAT_SPEED = 3
 	)
 
 	skills = list(
-		/datum/skill/combat/bows = 2,
-		/datum/skill/combat/swords = 3,
-		/datum/skill/combat/knives = 2,
-		/datum/skill/misc/medicine = 2,
-		/datum/skill/craft/sewing = 2,
-		/datum/skill/combat/unarmed = 2,
-		/datum/skill/craft/tanning = 2,
-		/datum/skill/combat/wrestling = 2,
-		/datum/skill/craft/crafting = 1,
-		/datum/skill/misc/climbing = 1,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/misc/athletics = 3
+		/datum/attribute/skill/combat/bows = 2,
+		/datum/attribute/skill/combat/swords = 3,
+		/datum/attribute/skill/combat/knives = 2,
+		/datum/attribute/skill/misc/medicine = 2,
+		/datum/attribute/skill/misc/sewing = 2,
+		/datum/attribute/skill/combat/unarmed = 2,
+		/datum/attribute/skill/craft/tanning = 2,
+		/datum/attribute/skill/combat/wrestling = 2,
+		/datum/attribute/skill/craft/crafting = 1,
+		/datum/attribute/skill/misc/climbing = 1,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/misc/athletics = 3
 	)
 
 	traits = list(
@@ -36,7 +36,7 @@
 /datum/job/advclass/mercenary/valkyrie/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	spawned.merctype = 9
-	spawned.adjust_skillrank(/datum/skill/craft/alchemy, pick(2,3))
+	spawned.adjust_skillrank(/datum/attribute/skill/craft/alchemy, pick(2,3))
 
 /datum/outfit/mercenary/valkyrie
 	name = "Valkyrie (Mercenary)"

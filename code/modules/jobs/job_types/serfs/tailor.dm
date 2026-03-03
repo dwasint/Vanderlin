@@ -22,24 +22,24 @@
 
 
 	jobstats = list(
-		STATKEY_INT = 2,
-		STATKEY_SPD = 1,
-		STATKEY_PER = 1,
-		STATKEY_STR = -1
+		STAT_INTELLIGENCE = 2,
+		STAT_SPEED = 1,
+		STAT_PERCEPTION = 1,
+		STAT_STRENGTH = -1
 	)
 
 	skills = list(
-		/datum/skill/craft/sewing = 3,
-		/datum/skill/craft/tanning = 2,
-		/datum/skill/craft/crafting = 3,
-		/datum/skill/combat/knives = 2,
-		/datum/skill/misc/sneaking = 2,
-		/datum/skill/labor/taming = 3,
-		/datum/skill/misc/medicine = 2,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/craft/carpentry = 1,
-		/datum/skill/misc/stealing = 1,
-		/datum/skill/labor/mathematics = 2
+		/datum/attribute/skill/misc/sewing = 3,
+		/datum/attribute/skill/craft/tanning = 2,
+		/datum/attribute/skill/craft/crafting = 3,
+		/datum/attribute/skill/combat/knives = 2,
+		/datum/attribute/skill/misc/sneaking = 2,
+		/datum/attribute/skill/labor/taming = 3,
+		/datum/attribute/skill/misc/medicine = 2,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/craft/carpentry = 1,
+		/datum/attribute/skill/misc/stealing = 1,
+		/datum/attribute/skill/labor/mathematics = 2
 	)
 
 	traits = list(
@@ -48,8 +48,8 @@
 
 /datum/job/tailor/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
-	spawned.adjust_skillrank(/datum/skill/craft/sewing, pick(1, 2), TRUE)
-	spawned.adjust_skillrank(/datum/skill/craft/tanning, pick(1, 2), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/misc/sewing, pick(1, 2), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/craft/tanning, pick(1, 2), TRUE)
 
 /datum/outfit/tailor
 	name = "Tailor"

@@ -24,20 +24,20 @@
 	give_bank_account = TRUE
 
 	skills = list(
-		/datum/skill/combat/knives = 1,
-		/datum/skill/combat/unarmed = 1,
-		/datum/skill/misc/riding = 1,
-		/datum/skill/labor/fishing = 1,
-		/datum/skill/combat/wrestling = 1,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/misc/sneaking = 1,
-		/datum/skill/misc/stealing = 1,
-		/datum/skill/misc/lockpicking = 1,
-		/datum/skill/misc/climbing = 4,
-		/datum/skill/misc/athletics = 4,
-		/datum/skill/misc/music = 1,
-		/datum/skill/craft/cooking = 1,
-		/datum/skill/combat/firearms = 1
+		/datum/attribute/skill/combat/knives = 1,
+		/datum/attribute/skill/combat/unarmed = 1,
+		/datum/attribute/skill/misc/riding = 1,
+		/datum/attribute/skill/labor/fishing = 1,
+		/datum/attribute/skill/combat/wrestling = 1,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/misc/sneaking = 1,
+		/datum/attribute/skill/misc/stealing = 1,
+		/datum/attribute/skill/misc/lockpicking = 1,
+		/datum/attribute/skill/misc/climbing = 4,
+		/datum/attribute/skill/misc/athletics = 4,
+		/datum/attribute/skill/misc/music = 1,
+		/datum/attribute/skill/craft/cooking = 1,
+		/datum/attribute/skill/combat/firearms = 1
 	)
 
 	traits = list(
@@ -60,21 +60,21 @@
 	spawned.recalculate_stats(FALSE)
 
 	// Random bonus skill adjustments
-	spawned.adjust_skillrank(/datum/skill/combat/knives, pick(1,2,3,4,5), TRUE)
-	spawned.adjust_skillrank(/datum/skill/combat/unarmed, pick(1,2,3,4,5), TRUE)
-	spawned.adjust_skillrank(/datum/skill/misc/riding, pick(1,2,3,4,5), TRUE)
-	spawned.adjust_skillrank(/datum/skill/craft/bombs, pick(1,2,3,4,5), TRUE)
-	spawned.adjust_skillrank(/datum/skill/labor/fishing, pick(1,2,3,4,5), TRUE)
-	spawned.adjust_skillrank(/datum/skill/combat/wrestling, pick(1,2), TRUE)
-	spawned.adjust_skillrank(/datum/skill/misc/reading, pick(1,2,3,4,5), TRUE)
-	spawned.adjust_skillrank(/datum/skill/misc/sneaking, pick(1,2,3,4,5), TRUE)
-	spawned.adjust_skillrank(/datum/skill/misc/stealing, pick(1,2,3,4,5), TRUE)
-	spawned.adjust_skillrank(/datum/skill/misc/lockpicking, pick(1,2,3,4,5), TRUE)
-	spawned.adjust_skillrank(/datum/skill/misc/climbing, pick(0,1), TRUE)
-	spawned.adjust_skillrank(/datum/skill/misc/athletics, pick(0,0,0,0,1), TRUE)
-	spawned.adjust_skillrank(/datum/skill/misc/music, pick(1,2,3,4,5), TRUE)
-	spawned.adjust_skillrank(/datum/skill/craft/cooking, pick(1,2,3,4,5), TRUE)
-	spawned.adjust_skillrank(/datum/skill/combat/firearms, pick(1,2,3,4,5), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/combat/knives, pick(1,2,3,4,5), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/combat/unarmed, pick(1,2,3,4,5), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/misc/riding, pick(1,2,3,4,5), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/craft/bombs, pick(1,2,3,4,5), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/labor/fishing, pick(1,2,3,4,5), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/combat/wrestling, pick(1,2), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/misc/reading, pick(1,2,3,4,5), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/misc/sneaking, pick(1,2,3,4,5), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/misc/stealing, pick(1,2,3,4,5), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/misc/lockpicking, pick(1,2,3,4,5), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/misc/climbing, pick(0,1), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/misc/athletics, pick(0,0,0,0,1), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/misc/music, pick(1,2,3,4,5), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/craft/cooking, pick(1,2,3,4,5), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/combat/firearms, pick(1,2,3,4,5), TRUE)
 
 	if(spawned.base_strength > 16)
 		spawned.cmode_music = 'sound/music/cmode/nobility/CombatJesterSTR.ogg'

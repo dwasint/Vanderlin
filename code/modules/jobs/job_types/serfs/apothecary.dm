@@ -13,28 +13,28 @@
 	spawn_positions = 1
 	bypass_lastclass = TRUE
 
-	trainable_skills = list(/datum/skill/craft/alchemy = 0.1)
+	trainable_skills = list(/datum/attribute/skill/craft/alchemy = 0.1)
 	max_apprentices = 2
 	apprentice_name = "Apothecary-in-training"
 	can_have_apprentices = TRUE
 
 	jobstats = list(
-		STATKEY_INT = 3,
-		STATKEY_SPD = 1,
-		STATKEY_PER = -1
+		STAT_INTELLIGENCE = 3,
+		STAT_SPEED = 1,
+		STAT_PERCEPTION = -1
 	)
 
 	skills = list(
-		/datum/skill/combat/wrestling = 1,
-		/datum/skill/combat/unarmed = 1,
-		/datum/skill/craft/crafting = 2,//they need this to craft bottles
-		/datum/skill/misc/athletics = 2,
-		/datum/skill/misc/reading = 4,
-		/datum/skill/misc/sneaking = 3,
-		/datum/skill/misc/climbing = 2,
-		/datum/skill/craft/alchemy = 5,
-		/datum/skill/misc/medicine = 3,
-		/datum/skill/labor/farming = 3,
+		/datum/attribute/skill/combat/wrestling = 1,
+		/datum/attribute/skill/combat/unarmed = 1,
+		/datum/attribute/skill/craft/crafting = 2,//they need this to craft bottles
+		/datum/attribute/skill/misc/athletics = 2,
+		/datum/attribute/skill/misc/reading = 4,
+		/datum/attribute/skill/misc/sneaking = 3,
+		/datum/attribute/skill/misc/climbing = 2,
+		/datum/attribute/skill/craft/alchemy = 5,
+		/datum/attribute/skill/misc/medicine = 3,
+		/datum/attribute/skill/labor/farming = 3,
 	)
 
 	traits = list(
@@ -58,9 +58,9 @@
 
 /datum/job/apothecary/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
-	spawned.adjust_skillrank(/datum/skill/combat/wrestling, pick(0,0,1), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/combat/wrestling, pick(0,0,1), TRUE)
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_skillrank(/datum/skill/craft/alchemy, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/craft/alchemy, 1, TRUE)
 		ADD_TRAIT(spawned, TRAIT_POISON_RESILIENCE, TRAIT_GENERIC)
 
 /datum/outfit/apothecary

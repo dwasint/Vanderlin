@@ -13,7 +13,7 @@
 	spawn_positions = 1
 	bypass_lastclass = TRUE
 
-	trainable_skills = list(/datum/skill/misc/medicine = 0.1)
+	trainable_skills = list(/datum/attribute/skill/misc/medicine = 0.1)
 	max_apprentices = 2
 	apprentice_name = "Feldsher-in-training"
 	can_have_apprentices = TRUE
@@ -21,23 +21,23 @@
 	allowed_races = RACES_PLAYER_NONHERETICAL
 
 	jobstats = list(
-		STATKEY_STR = -1,
-		STATKEY_INT = 4,
-		STATKEY_PER = 1,
-		STATKEY_CON = -1
+		STAT_STRENGTH = -1,
+		STAT_INTELLIGENCE = 4,
+		STAT_PERCEPTION = 1,
+		STAT_CONSTITUTION = -1
 	)
 
 	skills = list(
-		/datum/skill/combat/wrestling = 1,
-		/datum/skill/craft/crafting = 2,
-		/datum/skill/combat/knives = 2,
-		/datum/skill/misc/reading = 5,
-		/datum/skill/labor/mathematics = 3,
-		/datum/skill/craft/sewing = 3,
-		/datum/skill/misc/climbing = 2,
-		/datum/skill/misc/medicine = 5,
-		/datum/skill/craft/alchemy = 3,
-		/datum/skill/labor/farming = 3,
+		/datum/attribute/skill/combat/wrestling = 1,
+		/datum/attribute/skill/craft/crafting = 2,
+		/datum/attribute/skill/combat/knives = 2,
+		/datum/attribute/skill/misc/reading = 5,
+		/datum/attribute/skill/labor/mathematics = 3,
+		/datum/attribute/skill/misc/sewing = 3,
+		/datum/attribute/skill/misc/climbing = 2,
+		/datum/attribute/skill/misc/medicine = 5,
+		/datum/attribute/skill/craft/alchemy = 3,
+		/datum/attribute/skill/labor/farming = 3,
 	)
 
 	traits = list(
@@ -67,9 +67,9 @@
 
 /datum/job/feldsher/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
-	spawned.adjust_skillrank(/datum/skill/combat/wrestling, pick(0,0,1), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/combat/wrestling, pick(0,0,1), TRUE)
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/misc/medicine, 1, TRUE)
 
 /datum/outfit/feldsher
 	shoes = /obj/item/clothing/shoes/shortboots

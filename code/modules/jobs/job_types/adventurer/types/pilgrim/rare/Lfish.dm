@@ -12,28 +12,28 @@
 	is_recognized = TRUE
 
 	jobstats = list(
-		STATKEY_CON = 2,
-		STATKEY_PER = 2
+		STAT_CONSTITUTION = 2,
+		STAT_PERCEPTION = 2
 	)
 
 	skills = list(
-		/datum/skill/combat/wrestling = 1,
-		/datum/skill/combat/unarmed = 1,
-		/datum/skill/combat/knives = 2,
-		/datum/skill/misc/swimming = 5,
-		/datum/skill/craft/cooking = 3,
-		/datum/skill/craft/crafting = 2,
-		/datum/skill/labor/fishing = 5,
-		/datum/skill/misc/medicine = 1,
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/misc/reading = 1
+		/datum/attribute/skill/combat/wrestling = 1,
+		/datum/attribute/skill/combat/unarmed = 1,
+		/datum/attribute/skill/combat/knives = 2,
+		/datum/attribute/skill/misc/swimming = 5,
+		/datum/attribute/skill/craft/cooking = 3,
+		/datum/attribute/skill/craft/crafting = 2,
+		/datum/attribute/skill/labor/fishing = 5,
+		/datum/attribute/skill/misc/medicine = 1,
+		/datum/attribute/skill/misc/athletics = 3,
+		/datum/attribute/skill/misc/reading = 1
 	)
 
 /datum/job/advclass/pilgrim/rare/fishermaster/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_skillrank(/datum/skill/labor/fishing, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/labor/fishing, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/polearms, 1, TRUE)
 
 /datum/outfit/pilgrim/fishermaster
 	name = "Master Fisher (Pilgrim)"

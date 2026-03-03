@@ -25,24 +25,24 @@
 	exp_types_granted = list(EXP_TYPE_CHURCH, EXP_TYPE_CLERIC)
 
 	jobstats = list(
-		STATKEY_STR = 1,
-		STATKEY_INT = 2,
-		STATKEY_END = 2,
-		STATKEY_PER = -1,
-		STATKEY_LCK = -1
+		STAT_STRENGTH = 1,
+		STAT_INTELLIGENCE = 2,
+		STAT_ENDURANCE = 2,
+		STAT_PERCEPTION = -1,
+		STAT_FORTUNE = -1
 	)
 
 	skills = list(
-		/datum/skill/craft/sewing = 2,
-		/datum/skill/misc/medicine = 2,
-		/datum/skill/combat/polearms = 2,
-		/datum/skill/combat/unarmed = 1,
-		/datum/skill/combat/wrestling = 2, //Wrestling the deadites
-		/datum/skill/craft/crafting = 1,
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/misc/reading = 3,
-		/datum/skill/magic/holy = 3,
-		/datum/skill/labor/mathematics = 2
+		/datum/attribute/skill/misc/sewing = 2,
+		/datum/attribute/skill/misc/medicine = 2,
+		/datum/attribute/skill/combat/polearms = 2,
+		/datum/attribute/skill/combat/unarmed = 1,
+		/datum/attribute/skill/combat/wrestling = 2, //Wrestling the deadites
+		/datum/attribute/skill/craft/crafting = 1,
+		/datum/attribute/skill/misc/athletics = 3,
+		/datum/attribute/skill/misc/reading = 3,
+		/datum/attribute/skill/magic/holy = 3,
+		/datum/attribute/skill/labor/mathematics = 2
 	)
 
 	traits = list(

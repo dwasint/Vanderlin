@@ -811,7 +811,7 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 	amt *= current.get_skill_exp_multiplier(skill)
 
 	if(check_apprentice)
-		current.adjust_apprentice_exp(skill, amt, silent)
+		current.attributes.adjust_apprentice_exp(skill, amt, silent)
 	if(sleep_adv.add_sleep_experience(skill, amt, silent))
 		return TRUE
 

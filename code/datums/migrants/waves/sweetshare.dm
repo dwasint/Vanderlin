@@ -14,22 +14,22 @@
 	allowed_patrons = list(/datum/patron/inhumen/baotha)
 
 	jobstats = list(
-		STATKEY_SPD = 2,
-		STATKEY_END = 2,
-		STATKEY_STR = -2,
-		STATKEY_CON = -1,
+		STAT_SPEED = 2,
+		STAT_ENDURANCE = 2,
+		STAT_STRENGTH = -2,
+		STAT_CONSTITUTION = -1,
 	)
 
 	skills = list(
-		/datum/skill/combat/knives = 1,
-		/datum/skill/combat/wrestling = 2,
-		/datum/skill/combat/unarmed = 2,
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/misc/swimming = 3,
-		/datum/skill/misc/reading = 3,
-		/datum/skill/craft/alchemy = 3,
-		/datum/skill/misc/medicine = 2,
-		/datum/skill/misc/climbing = 4,
+		/datum/attribute/skill/combat/knives = 1,
+		/datum/attribute/skill/combat/wrestling = 2,
+		/datum/attribute/skill/combat/unarmed = 2,
+		/datum/attribute/skill/misc/athletics = 3,
+		/datum/attribute/skill/misc/swimming = 3,
+		/datum/attribute/skill/misc/reading = 3,
+		/datum/attribute/skill/craft/alchemy = 3,
+		/datum/attribute/skill/misc/medicine = 2,
+		/datum/attribute/skill/misc/climbing = 4,
 	)
 
 	traits = list(TRAIT_STEELHEARTED)

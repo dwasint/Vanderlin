@@ -6,27 +6,27 @@
 	cmode_music = 'sound/music/cmode/towner/CombatBeggar.ogg'
 
 	jobstats = list(
-		STATKEY_STR = 1,
-		STATKEY_END = 1
+		STAT_STRENGTH = 1,
+		STAT_ENDURANCE = 1
 	)
 
 	skills = list(
-		/datum/skill/combat/axesmaces = 2,
-		/datum/skill/combat/wrestling = 1,
-		/datum/skill/combat/unarmed = 2,
-		/datum/skill/craft/crafting = 3,
-		/datum/skill/craft/cooking = 1,
-		/datum/skill/craft/carpentry = 1,
-		/datum/skill/misc/climbing = 1,
-		/datum/skill/craft/sewing = 1,
-		/datum/skill/misc/medicine = 1,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/labor/lumberjacking = 3
+		/datum/attribute/skill/combat/axesmaces = 2,
+		/datum/attribute/skill/combat/wrestling = 1,
+		/datum/attribute/skill/combat/unarmed = 2,
+		/datum/attribute/skill/craft/crafting = 3,
+		/datum/attribute/skill/craft/cooking = 1,
+		/datum/attribute/skill/craft/carpentry = 1,
+		/datum/attribute/skill/misc/climbing = 1,
+		/datum/attribute/skill/misc/sewing = 1,
+		/datum/attribute/skill/misc/medicine = 1,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/labor/lumberjacking = 3
 	)
 
 /datum/job/advclass/pilgrim/woodcutter/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
-	spawned.adjust_skillrank(/datum/skill/misc/athletics, pick(3, 3, 4), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/misc/athletics, pick(3, 3, 4), TRUE)
 
 /datum/outfit/pilgrim/woodcutter
 	name = "Woodcutter (Pilgrim)"

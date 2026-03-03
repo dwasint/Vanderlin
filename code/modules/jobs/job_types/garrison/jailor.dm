@@ -29,34 +29,34 @@
 	)
 
 	jobstats = list(
-		STATKEY_STR = 5,
-		STATKEY_CON = -2,
-		STATKEY_SPD = -4,
+		STAT_STRENGTH = 5,
+		STAT_CONSTITUTION = -2,
+		STAT_SPEED = -4,
 	)
 
 	skills = list(
-		/datum/skill/combat/axesmaces = 3,
-		/datum/skill/combat/whipsflails = 2,
-		/datum/skill/combat/knives = 2,
-		/datum/skill/combat/wrestling = 4,
-		/datum/skill/combat/unarmed = 4,
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/craft/cooking = 3,
-		/datum/skill/craft/traps = 3,
-		/datum/skill/craft/sewing = 2,
-		/datum/skill/misc/medicine = 2
+		/datum/attribute/skill/combat/axesmaces = 3,
+		/datum/attribute/skill/combat/whipsflails = 2,
+		/datum/attribute/skill/combat/knives = 2,
+		/datum/attribute/skill/combat/wrestling = 4,
+		/datum/attribute/skill/combat/unarmed = 4,
+		/datum/attribute/skill/misc/athletics = 3,
+		/datum/attribute/skill/craft/cooking = 3,
+		/datum/attribute/skill/craft/traps = 3,
+		/datum/attribute/skill/misc/sewing = 2,
+		/datum/attribute/skill/misc/medicine = 2
 	)
 
 /datum/job/jailor/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	add_verb(spawned, /mob/living/carbon/human/proc/torture_victim)
 
-	spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_END, pick(4,5,6))
-	spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_INT, pick(-4,-5,-6))
-	spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_PER, pick(-3,-3,-4))
+	spawned.adjust_stat_modifier(STATMOD_JOB, STAT_ENDURANCE, pick(4,5,6))
+	spawned.adjust_stat_modifier(STATMOD_JOB, STAT_INTELLIGENCE, pick(-4,-5,-6))
+	spawned.adjust_stat_modifier(STATMOD_JOB, STAT_PERCEPTION, pick(-3,-3,-4))
 
-	spawned.adjust_skillrank(/datum/skill/combat/wrestling, pick(0,1), TRUE)
-	spawned.adjust_skillrank(/datum/skill/combat/unarmed, pick(0,1), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/combat/wrestling, pick(0,1), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/combat/unarmed, pick(0,1), TRUE)
 
 /datum/outfit/jailor
 	name = "Jailor"

@@ -120,8 +120,8 @@
 	if(!ishuman(owner))
 		return
 	var/mob/living/carbon/human/H = owner
-	for(var/datum/skill/skill in SSskills.all_skills)
-		if(H.get_skill_level(skill) > SKILL_LEVEL_NONE)
+	for(var/datum/attribute/skill/skill in SSskills.all_skills)
+		if(GET_MOB_SKILL_VALUE_OLD(H, skill) > SKILL_LEVEL_NONE)
 			H.adjust_skillrank(skill, -1, TRUE)
 
 /datum/quirk/vice/deaf

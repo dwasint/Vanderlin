@@ -27,28 +27,28 @@
 	)
 
 	skills = list(
-		/datum/skill/combat/knives = 4,
-		/datum/skill/combat/swords = 2,
-		/datum/skill/combat/bows = 2,
-		/datum/skill/combat/crossbows = 4,
-		/datum/skill/combat/unarmed = 3,
-		/datum/skill/combat/wrestling = 2,
-		/datum/skill/misc/swimming = 2,
-		/datum/skill/misc/climbing = 5,
-		/datum/skill/misc/sneaking = 5,
-		/datum/skill/misc/stealing = 3,
-		/datum/skill/misc/lockpicking = 4,
-		/datum/skill/craft/sewing = 1,
-		/datum/skill/misc/riding = 3,
-		/datum/skill/misc/athletics = 4,
-		/datum/skill/misc/medicine = 2,
-		/datum/skill/craft/traps = 3,
-		/datum/skill/misc/reading = 1,
+		/datum/attribute/skill/combat/knives = 4,
+		/datum/attribute/skill/combat/swords = 2,
+		/datum/attribute/skill/combat/bows = 2,
+		/datum/attribute/skill/combat/crossbows = 4,
+		/datum/attribute/skill/combat/unarmed = 3,
+		/datum/attribute/skill/combat/wrestling = 2,
+		/datum/attribute/skill/misc/swimming = 2,
+		/datum/attribute/skill/misc/climbing = 5,
+		/datum/attribute/skill/misc/sneaking = 5,
+		/datum/attribute/skill/misc/stealing = 3,
+		/datum/attribute/skill/misc/lockpicking = 4,
+		/datum/attribute/skill/misc/sewing = 1,
+		/datum/attribute/skill/misc/riding = 3,
+		/datum/attribute/skill/misc/athletics = 4,
+		/datum/attribute/skill/misc/medicine = 2,
+		/datum/attribute/skill/craft/traps = 3,
+		/datum/attribute/skill/misc/reading = 1,
 	)
 
 	jobstats = list(
-		STATKEY_PER = 2,
-		STATKEY_SPD = 2,
+		STAT_PERCEPTION = 2,
+		STAT_SPEED = 2,
 	)
 
 	traits = list(
@@ -76,7 +76,7 @@
 	name = "Bard"
 
 	pack_skills = list(
-		/datum/skill/misc/music = 1,
+		/datum/attribute/skill/misc/music = 1,
 	)
 
 	pack_contents = list(
@@ -138,7 +138,7 @@
 	name = "Fisher"
 
 	pack_skills = list(
-		/datum/skill/labor/fishing = 1,
+		/datum/attribute/skill/labor/fishing = 1,
 	)
 
 	pack_contents = list(
@@ -184,8 +184,8 @@
 	name = "Hunter"
 
 	pack_skills = list(
-		/datum/skill/combat/bows = 2,
-		/datum/skill/combat/crossbows = -2, // Trade-off
+		/datum/attribute/skill/combat/bows = 2,
+		/datum/attribute/skill/combat/crossbows = -2, // Trade-off
 	)
 
 	pack_contents = list(
@@ -212,9 +212,9 @@
 	name = "Miner"
 
 	pack_skills = list(
-		/datum/skill/labor/mining = 1,
-		/datum/skill/combat/axesmaces = 2,
-		/datum/skill/combat/swords = -2, // Trade-off
+		/datum/attribute/skill/labor/mining = 1,
+		/datum/attribute/skill/combat/axesmaces = 2,
+		/datum/attribute/skill/combat/swords = -2, // Trade-off
 	)
 
 	pack_contents = list(
@@ -268,7 +268,7 @@
 	picker.name = "[honorary] [prev_name]"
 
 	if(picker.gender == MALE)
-		picker.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+		picker.adjust_skillrank(/datum/attribute/skill/combat/swords, 1, TRUE)
 
 		var/obj/item/clothing/pants/tights/colored/black/pants = new()
 		picker.equip_to_slot_or_del(pants, ITEM_SLOT_PANTS, TRUE)
@@ -285,8 +285,8 @@
 		var/obj/item/ammo_holder/quiver/arrows/beltl = new()
 		picker.equip_to_slot_or_del(beltl, ITEM_SLOT_BELT_L, TRUE)
 	else
-		picker.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
-		picker.adjust_skillrank(/datum/skill/combat/crossbows, -1, TRUE)
+		picker.adjust_skillrank(/datum/attribute/skill/combat/bows, 1, TRUE)
+		picker.adjust_skillrank(/datum/attribute/skill/combat/crossbows, -1, TRUE)
 
 		var/obj/item/clothing/shirt/dress/silkdress/colored/random/shirt = new()
 		picker.equip_to_slot_or_del(shirt, ITEM_SLOT_SHIRT, TRUE)
@@ -305,7 +305,7 @@
 	name = "Peasant"
 
 	pack_skills = list(
-		/datum/skill/labor/farming = 1,
+		/datum/attribute/skill/labor/farming = 1,
 	)
 
 	pack_contents = list(
@@ -348,8 +348,8 @@
 	name = "Carpenter"
 
 	pack_skills = list(
-		/datum/skill/combat/axesmaces = 2,
-		/datum/skill/combat/swords = -2, // Trade-off
+		/datum/attribute/skill/combat/axesmaces = 2,
+		/datum/attribute/skill/combat/swords = -2, // Trade-off
 	)
 
 	pack_contents = list(
@@ -396,8 +396,8 @@
 	name = "Ranger"
 
 	pack_skills = list(
-		/datum/skill/combat/bows = 2,
-		/datum/skill/combat/crossbows = -2, // Trade-off
+		/datum/attribute/skill/combat/bows = 2,
+		/datum/attribute/skill/combat/crossbows = -2, // Trade-off
 	)
 
 	pack_contents = list(
@@ -451,9 +451,9 @@
 	name = "Servant"
 
 	pack_skills = list(
-		/datum/skill/craft/sewing = 2,
-		/datum/skill/craft/crafting = 1,
-		/datum/skill/craft/cooking = 3,
+		/datum/attribute/skill/misc/sewing = 2,
+		/datum/attribute/skill/craft/crafting = 1,
+		/datum/attribute/skill/craft/cooking = 3,
 	)
 
 	pack_contents = list(

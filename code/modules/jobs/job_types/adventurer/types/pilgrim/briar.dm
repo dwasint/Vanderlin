@@ -11,27 +11,27 @@
 	exp_types_granted = list(EXP_TYPE_CLERIC)
 
 	jobstats = list(
-		STATKEY_STR = 1,
-		STATKEY_END = 1,
-		STATKEY_INT = -1
+		STAT_STRENGTH = 1,
+		STAT_ENDURANCE = 1,
+		STAT_INTELLIGENCE = -1
 	)
 
 	skills = list(
-		/datum/skill/combat/axesmaces = 2,
-		/datum/skill/combat/knives = 1,
-		/datum/skill/combat/unarmed = 2,
-		/datum/skill/combat/wrestling = 1,
-		/datum/skill/misc/athletics = 2,
-		/datum/skill/magic/holy = 3,
-		/datum/skill/labor/taming = 4,
-		/datum/skill/craft/tanning = 2,
-		/datum/skill/misc/riding = 1,
-		/datum/skill/labor/butchering = 2,
-		/datum/skill/labor/farming = 3,
-		/datum/skill/craft/crafting = 1,
-		/datum/skill/craft/cooking = 1,
-		/datum/skill/craft/sewing = 1,
-		/datum/skill/misc/swimming = 2
+		/datum/attribute/skill/combat/axesmaces = 2,
+		/datum/attribute/skill/combat/knives = 1,
+		/datum/attribute/skill/combat/unarmed = 2,
+		/datum/attribute/skill/combat/wrestling = 1,
+		/datum/attribute/skill/misc/athletics = 2,
+		/datum/attribute/skill/magic/holy = 3,
+		/datum/attribute/skill/labor/taming = 4,
+		/datum/attribute/skill/craft/tanning = 2,
+		/datum/attribute/skill/misc/riding = 1,
+		/datum/attribute/skill/labor/butchering = 2,
+		/datum/attribute/skill/labor/farming = 3,
+		/datum/attribute/skill/craft/crafting = 1,
+		/datum/attribute/skill/craft/cooking = 1,
+		/datum/attribute/skill/misc/sewing = 1,
+		/datum/attribute/skill/misc/swimming = 2
 	)
 
 	traits = list(
@@ -41,7 +41,7 @@
 /datum/job/advclass/pilgrim/briar/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_skillrank(/datum/skill/magic/holy, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/magic/holy, 1, TRUE)
 
 	spawned.mind?.teach_crafting_recipe(/datum/repeatable_crafting_recipe/dendor/shillelagh)
 	spawned.mind?.teach_crafting_recipe(/datum/repeatable_crafting_recipe/dendor/forestdelight)

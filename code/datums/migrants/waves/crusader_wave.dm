@@ -14,29 +14,29 @@
 	exp_types_granted  = list(EXP_TYPE_COMBAT)
 
 	jobstats = list(
-		STATKEY_INT = 2,
-		STATKEY_STR = 1,
-		STATKEY_PER = 2,
-		STATKEY_SPD = 2,
-		STATKEY_END = 1,
+		STAT_INTELLIGENCE = 2,
+		STAT_STRENGTH = 1,
+		STAT_PERCEPTION = 2,
+		STAT_SPEED = 2,
+		STAT_ENDURANCE = 1,
 	)
 
 	skills = list(
-		/datum/skill/craft/sewing = 2,
-		/datum/skill/misc/medicine = 2,
-		/datum/skill/combat/unarmed = 2,
-		/datum/skill/combat/wrestling = 2,
-		/datum/skill/misc/reading = 3,
-		/datum/skill/combat/swords = 4,
-		/datum/skill/combat/crossbows = 3,
-		/datum/skill/misc/climbing = 4,
-		/datum/skill/misc/riding = 1,
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/misc/swimming = 2,
-		/datum/skill/misc/lockpicking = 2,
-		/datum/skill/combat/firearms = 3,
-		/datum/skill/combat/knives = 3,
-		/datum/skill/labor/mathematics = 3,
+		/datum/attribute/skill/misc/sewing = 2,
+		/datum/attribute/skill/misc/medicine = 2,
+		/datum/attribute/skill/combat/unarmed = 2,
+		/datum/attribute/skill/combat/wrestling = 2,
+		/datum/attribute/skill/misc/reading = 3,
+		/datum/attribute/skill/combat/swords = 4,
+		/datum/attribute/skill/combat/crossbows = 3,
+		/datum/attribute/skill/misc/climbing = 4,
+		/datum/attribute/skill/misc/riding = 1,
+		/datum/attribute/skill/misc/athletics = 3,
+		/datum/attribute/skill/misc/swimming = 2,
+		/datum/attribute/skill/misc/lockpicking = 2,
+		/datum/attribute/skill/combat/firearms = 3,
+		/datum/attribute/skill/combat/knives = 3,
+		/datum/attribute/skill/labor/mathematics = 3,
 	)
 
 	traits = list(
@@ -101,25 +101,25 @@
 	outfit = /datum/outfit/inquisition_crusader
 	exp_types_granted  = list(EXP_TYPE_COMBAT)
 	jobstats = list(
-		STATKEY_END = 2,
-		STATKEY_CON = 2,
-		STATKEY_STR = 1,
+		STAT_ENDURANCE = 2,
+		STAT_CONSTITUTION = 2,
+		STAT_STRENGTH = 1,
 	)
 
 	skills = list(
-		/datum/skill/combat/crossbows = 2,
-		/datum/skill/combat/wrestling = 2,
-		/datum/skill/combat/unarmed = 3,
-		/datum/skill/combat/swords = 2,
-		/datum/skill/combat/knives = 2,
-		/datum/skill/combat/shields = 2,
-		/datum/skill/misc/swimming = 1,
-		/datum/skill/misc/climbing = 2,
-		/datum/skill/misc/riding = 4,
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/misc/reading = 2,
-		/datum/skill/craft/sewing = 1,
-		/datum/skill/craft/cooking = 1,
+		/datum/attribute/skill/combat/crossbows = 2,
+		/datum/attribute/skill/combat/wrestling = 2,
+		/datum/attribute/skill/combat/unarmed = 3,
+		/datum/attribute/skill/combat/swords = 2,
+		/datum/attribute/skill/combat/knives = 2,
+		/datum/attribute/skill/combat/shields = 2,
+		/datum/attribute/skill/misc/swimming = 1,
+		/datum/attribute/skill/misc/climbing = 2,
+		/datum/attribute/skill/misc/riding = 4,
+		/datum/attribute/skill/misc/athletics = 3,
+		/datum/attribute/skill/misc/reading = 2,
+		/datum/attribute/skill/misc/sewing = 1,
+		/datum/attribute/skill/craft/cooking = 1,
 	)
 
 	traits = list(
@@ -138,11 +138,11 @@
 /datum/job/migrant/inquisition_crusader/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	if(spawned.gender == FEMALE)
-		spawned.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/crossbows, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/knives, 1, TRUE)
 	else
-		spawned.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/combat/shields, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/swords, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/shields, 1, TRUE)
 
 	if(!istype(spawned.patron, /datum/patron/psydon)) // don't overwrite extremist psydon
 		spawned.set_patron(/datum/patron/psydon)

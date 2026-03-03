@@ -28,24 +28,24 @@
 	)
 
 	jobstats = list(
-		STATKEY_STR = 2,
-		STATKEY_CON = 4,
-		STATKEY_END = 2,
-		STATKEY_SPD = -1
+		STAT_STRENGTH = 2,
+		STAT_CONSTITUTION = 4,
+		STAT_ENDURANCE = 2,
+		STAT_SPEED = -1
 	)
 
 	skills = list(
-		/datum/skill/combat/swords = 4, // Its easier just to give them all three, it'd be a pain to try and manage this in the ult component
-		/datum/skill/combat/polearms = 4,
-		/datum/skill/combat/axesmaces = 4,
-		/datum/skill/combat/wrestling = 4,
-		/datum/skill/combat/unarmed = 3,
-		/datum/skill/misc/climbing = 1,
-		/datum/skill/misc/athletics = 4,
-		/datum/skill/misc/reading = 2,
-		/datum/skill/magic/holy = 2,
-		/datum/skill/misc/medicine = 1,
-		/datum/skill/craft/sewing = 2
+		/datum/attribute/skill/combat/swords = 4, // Its easier just to give them all three, it'd be a pain to try and manage this in the ult component
+		/datum/attribute/skill/combat/polearms = 4,
+		/datum/attribute/skill/combat/axesmaces = 4,
+		/datum/attribute/skill/combat/wrestling = 4,
+		/datum/attribute/skill/combat/unarmed = 3,
+		/datum/attribute/skill/misc/climbing = 1,
+		/datum/attribute/skill/misc/athletics = 4,
+		/datum/attribute/skill/misc/reading = 2,
+		/datum/attribute/skill/magic/holy = 2,
+		/datum/attribute/skill/misc/medicine = 1,
+		/datum/attribute/skill/misc/sewing = 2
 	)
 
 	traits = list(

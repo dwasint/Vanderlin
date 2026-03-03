@@ -33,11 +33,11 @@
 	species_traits = list(NO_UNDERWEAR, HAIR, OLDGREY)
 	inherent_traits = list(TRAIT_NOMOBSWAP, TRAIT_DEADNOSE, TRAIT_NASTY_EATER)
 	inherent_skills = list(
-		/datum/skill/misc/medicine = 1,
+		/datum/attribute/skill/misc/medicine = 1,
 	)
 
-	specstats_m = list(STATKEY_PER = 1, STATKEY_INT = 2, STATKEY_SPD = -1, STATKEY_CON = -1)
-	specstats_f = list(STATKEY_PER = 1, STATKEY_INT = 2, STATKEY_SPD = -1, STATKEY_CON = -1)
+	specstats_m = list(STAT_PERCEPTION = 1, STAT_INTELLIGENCE = 2, STAT_SPEED = -1, STAT_CONSTITUTION = -1)
+	specstats_f = list(STAT_PERCEPTION = 1, STAT_INTELLIGENCE = 2, STAT_SPEED = -1, STAT_CONSTITUTION = -1)
 
 	limbs_icon_m = 'icons/roguetown/mob/bodies/f/medicator.dmi'
 	limbs_icon_f = 'icons/roguetown/mob/bodies/f/medicator.dmi'

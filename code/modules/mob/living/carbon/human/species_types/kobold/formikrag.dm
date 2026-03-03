@@ -20,8 +20,8 @@
 	\n\n\
 	WARNING: THIS IS A HEAVILY DISCRIMINATED AGAINST CHALLENGE SPECIES WITH ACTIVE SPECIES DETRIMENTS. YOU CAN AND WILL DIE A LOT; PLAY AT YOUR OWN RISK!"
 
-	specstats_m = list(STATKEY_STR = -2, STATKEY_PER = -1, STATKEY_INT = -2, STATKEY_END = 1, STATKEY_SPD = -2)
-	specstats_f = list(STATKEY_STR = -2, STATKEY_PER = -1, STATKEY_INT = -2, STATKEY_END = 1, STATKEY_SPD = -2)
+	specstats_m = list(STAT_STRENGTH = -2, STAT_PERCEPTION = -1, STAT_INTELLIGENCE = -2, STAT_ENDURANCE = 1, STAT_SPEED = -2)
+	specstats_f = list(STAT_STRENGTH = -2, STAT_PERCEPTION = -1, STAT_INTELLIGENCE = -2, STAT_ENDURANCE = 1, STAT_SPEED = -2)
 
 	limbs_icon_m = 'icons/roguetown/mob/bodies/f/kobold_alt.dmi'
 	limbs_icon_f = 'icons/roguetown/mob/bodies/f/kobold_alt.dmi'

@@ -117,11 +117,11 @@ GLOBAL_LIST_INIT(searaider_aggro, file2list("strings/rt/searaideraggrolines.txt"
 	H.base_perception = 10
 	H.base_intelligence = 1
 	H.base_strength = 14
-	H.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/polearms, 3, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 3, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/swords, 3, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/shields, 3, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/unarmed, 3, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/wrestling, 3, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/misc/swimming, 2, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/misc/climbing, 2, TRUE)

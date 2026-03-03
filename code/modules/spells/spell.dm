@@ -101,9 +101,9 @@
 	var/list/required_items
 
 	/// Skill associated with spell enhancements.
-	var/associated_skill = /datum/skill/magic/arcane
+	var/associated_skill = /datum/attribute/skill/magic/arcane
 	/// Stat associated with spell enchancements.
-	var/associated_stat = STATKEY_INT
+	var/associated_stat = STAT_INTELLIGENCE
 
 	/// Assoc list of [datum/attunement] to value.
 	var/list/attunements
@@ -383,7 +383,7 @@
 	var/mob/living/living_owner = owner
 	var/new_time = charge_time
 
-	new_time -= charge_time * living_owner.get_skill_level(associated_skill, TRUE) * 0.05
+	new_time -= charge_time * GET_MOB_SKILL_VALUE_OLD(living_owner, associated_skill) * 0.05
 
 	var/owner_stat = living_owner.get_stat(associated_stat)
 	if(owner_stat > 10)
@@ -403,7 +403,7 @@
 	if(cost_override)
 		new_cost = cost_override
 
-	new_cost -= spell_cost * living_owner.get_skill_level(associated_skill) * 0.03
+	new_cost -= spell_cost * GET_MOB_SKILL_VALUE_OLD(living_owner, associated_skill) * 0.03
 
 	var/owner_stat = living_owner.get_stat(associated_stat)
 	if(owner_stat > 10)
@@ -1022,7 +1022,7 @@
 	if(!experience_max_skill)
 		experience_max_skill = SKILL_LEVEL_LEGENDARY
 
-	var/skill_level = owner.get_skill_level(associated_skill)
+	var/skill_level = GET_MOB_SKILL_VALUE_OLD(owner, associated_skill)
 	if(skill_level >= experience_max_skill)
 		return
 

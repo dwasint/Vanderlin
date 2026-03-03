@@ -40,8 +40,8 @@
 	inherent_traits = list(TRAIT_NOMOBSWAP, TRAIT_WATER_BREATHING, TRAIT_GOOD_SWIM, TRAIT_FISHFACE)
 	inherent_traits_f = list(TRAIT_STRONGBITE)
 	inherent_skills = list(
-		/datum/skill/labor/fishing = 3,
-		/datum/skill/misc/swimming = 4,
+		/datum/attribute/skill/labor/fishing = 3,
+		/datum/attribute/skill/misc/swimming = 4,
 	)
 
 	allowed_voicetypes_f = list(
@@ -52,8 +52,8 @@
 		VOICE_TYPE_ANDRO
 	)
 
-	specstats_m = list(STATKEY_STR = -1, STATKEY_PER = -2, STATKEY_CON = -2, STATKEY_SPD = 1, STATKEY_INT = 2)
-	specstats_f = list(STATKEY_STR = 2, STATKEY_PER = -4, STATKEY_CON = 3, STATKEY_SPD = -3)
+	specstats_m = list(STAT_STRENGTH = -1, STAT_PERCEPTION = -2, STAT_CONSTITUTION = -2, STAT_SPEED = 1, STAT_INTELLIGENCE = 2)
+	specstats_f = list(STAT_STRENGTH = 2, STAT_PERCEPTION = -4, STAT_CONSTITUTION = 3, STAT_SPEED = -3)
 
 	limbs_icon_m = 'icons/roguetown/mob/bodies/m/triton.dmi'
 	limbs_icon_f = 'icons/roguetown/mob/bodies/f/triton.dmi'

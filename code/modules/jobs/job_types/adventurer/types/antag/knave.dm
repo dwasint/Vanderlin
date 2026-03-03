@@ -7,32 +7,32 @@
 	exp_types_granted = list(EXP_TYPE_COMBAT, EXP_TYPE_THIEF)
 
 	jobstats = list(
-		STATKEY_END = 1,
-		STATKEY_PER = 2,
-		STATKEY_SPD = 3,
+		STAT_ENDURANCE = 1,
+		STAT_PERCEPTION = 2,
+		STAT_SPEED = 3,
 	)
 
 	skills = list(
-		/datum/skill/combat/polearms = 2,
-		/datum/skill/combat/axesmaces = 2,
-		/datum/skill/combat/wrestling = 2,
-		/datum/skill/combat/unarmed = 2,
-		/datum/skill/combat/swords = 2,
-		/datum/skill/combat/whipsflails = 2,
-		/datum/skill/combat/knives = 2,
-		/datum/skill/combat/bows = 2,
-		/datum/skill/combat/crossbows = 2,
-		/datum/skill/craft/crafting = 2,
-		/datum/skill/craft/carpentry = 1,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/misc/climbing = 5,
-		/datum/skill/craft/sewing = 1,
-		/datum/skill/misc/athletics = 2,
-		/datum/skill/misc/medicine = 1,
-		/datum/skill/misc/sneaking = 4,
-		/datum/skill/misc/stealing = 4,
-		/datum/skill/misc/lockpicking = 4,
-		/datum/skill/craft/traps = 3,
+		/datum/attribute/skill/combat/polearms = 2,
+		/datum/attribute/skill/combat/axesmaces = 2,
+		/datum/attribute/skill/combat/wrestling = 2,
+		/datum/attribute/skill/combat/unarmed = 2,
+		/datum/attribute/skill/combat/swords = 2,
+		/datum/attribute/skill/combat/whipsflails = 2,
+		/datum/attribute/skill/combat/knives = 2,
+		/datum/attribute/skill/combat/bows = 2,
+		/datum/attribute/skill/combat/crossbows = 2,
+		/datum/attribute/skill/craft/crafting = 2,
+		/datum/attribute/skill/craft/carpentry = 1,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/misc/climbing = 5,
+		/datum/attribute/skill/misc/sewing = 1,
+		/datum/attribute/skill/misc/athletics = 2,
+		/datum/attribute/skill/misc/medicine = 1,
+		/datum/attribute/skill/misc/sneaking = 4,
+		/datum/attribute/skill/misc/stealing = 4,
+		/datum/attribute/skill/misc/lockpicking = 4,
+		/datum/attribute/skill/craft/traps = 3,
 	)
 
 	traits = list(
@@ -50,14 +50,14 @@
 
 	switch(weapon_choice)
 		if("Crossbow & Dagger")
-			spawned.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)
-			spawned.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/combat/crossbows, 1, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/combat/knives, 1, TRUE)
 			spawned.equip_to_slot_or_del(new /obj/item/clothing/cloak/raincloak/colored/mortus, ITEM_SLOT_CLOAK, TRUE)
 			spawned.equip_to_slot_or_del(new /obj/item/lockpickring/mundane, ITEM_SLOT_BACKPACK, TRUE)
 			spawned.equip_to_slot_or_del(new /obj/item/ammo_holder/quiver/bolts, ITEM_SLOT_BELT_R, TRUE)
 		if("Bow & Sword")
-			spawned.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
-			spawned.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/combat/bows, 1, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/combat/swords, 1, TRUE)
 			ADD_TRAIT(spawned, TRAIT_FORAGER, TRAIT_GENERIC)
 			ADD_TRAIT(spawned, TRAIT_BRUSHWALK, TRAIT_GENERIC)
 			spawned.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/leather/volfhelm, ITEM_SLOT_HEAD, TRUE)

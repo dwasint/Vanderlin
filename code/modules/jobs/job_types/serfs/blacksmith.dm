@@ -19,26 +19,26 @@
 	job_bitflag = BITFLAG_CONSTRUCTOR
 
 	jobstats = list(
-		STATKEY_STR = 1,
-		STATKEY_END = 2,
-		STATKEY_CON = 1,
-		STATKEY_SPD = -1,
+		STAT_STRENGTH = 1,
+		STAT_ENDURANCE = 2,
+		STAT_CONSTITUTION = 1,
+		STAT_SPEED = -1,
 	)
 
 	skills = list(
-		/datum/skill/combat/axesmaces = 2,
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/combat/wrestling = 1,
-		/datum/skill/combat/unarmed = 2,
-		/datum/skill/craft/crafting = 3,
-		/datum/skill/craft/blacksmithing = 4,
-		/datum/skill/craft/armorsmithing = 3,
-		/datum/skill/craft/weaponsmithing = 3,
-		/datum/skill/craft/smelting = 3,
-		/datum/skill/craft/engineering = 3,
-		/datum/skill/craft/traps = 2,
-		/datum/skill/misc/reading = 2,
-		/datum/skill/labor/mathematics = 2,
+		/datum/attribute/skill/combat/axesmaces = 2,
+		/datum/attribute/skill/misc/athletics = 3,
+		/datum/attribute/skill/combat/wrestling = 1,
+		/datum/attribute/skill/combat/unarmed = 2,
+		/datum/attribute/skill/craft/crafting = 3,
+		/datum/attribute/skill/craft/blacksmithing = 4,
+		/datum/attribute/skill/craft/armorsmithing = 3,
+		/datum/attribute/skill/craft/weaponsmithing = 3,
+		/datum/attribute/skill/craft/smelting = 3,
+		/datum/attribute/skill/craft/engineering = 3,
+		/datum/attribute/skill/craft/traps = 2,
+		/datum/attribute/skill/misc/reading = 2,
+		/datum/attribute/skill/labor/mathematics = 2,
 	)
 
 	traits = list(
@@ -53,14 +53,14 @@
 /datum/job/blacksmith/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_skillrank(/datum/skill/craft/blacksmithing, pick(1,2), TRUE)
-		spawned.adjust_skillrank(/datum/skill/craft/armorsmithing, pick(1,2), TRUE)
-		spawned.adjust_skillrank(/datum/skill/craft/weaponsmithing, pick(1,2), TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/craft/blacksmithing, pick(1,2), TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/craft/armorsmithing, pick(1,2), TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/craft/weaponsmithing, pick(1,2), TRUE)
 
 	if(prob(5))
-		spawned.adjust_skillrank(/datum/skill/craft/blacksmithing, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/craft/armorsmithing, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/craft/smelting, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/craft/blacksmithing, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/craft/armorsmithing, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/craft/smelting, 1, TRUE)
 
 /datum/outfit/blacksmith
 	name = "Blacksmith"

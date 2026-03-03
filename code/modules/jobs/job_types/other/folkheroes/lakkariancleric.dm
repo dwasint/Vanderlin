@@ -10,24 +10,24 @@
 	exp_types_granted = list(EXP_TYPE_ADVENTURER, EXP_TYPE_COMBAT, EXP_TYPE_CLERIC)
 
 	skills = list(
-		/datum/skill/combat/wrestling = 2,
-		/datum/skill/combat/unarmed = 2,
-		/datum/skill/misc/climbing = 1,
-		/datum/skill/misc/swimming = 1,
-		/datum/skill/misc/athletics = 4, // years of martial training would make you quite athletic
-		/datum/skill/misc/reading = 3,
-		/datum/skill/magic/holy = 2,
-		/datum/skill/craft/cooking = 1,
-		/datum/skill/craft/sewing = 1,
-		/datum/skill/misc/medicine = 1,
-		/datum/skill/labor/mathematics = 1,
+		/datum/attribute/skill/combat/wrestling = 2,
+		/datum/attribute/skill/combat/unarmed = 2,
+		/datum/attribute/skill/misc/climbing = 1,
+		/datum/attribute/skill/misc/swimming = 1,
+		/datum/attribute/skill/misc/athletics = 4, // years of martial training would make you quite athletic
+		/datum/attribute/skill/misc/reading = 3,
+		/datum/attribute/skill/magic/holy = 2,
+		/datum/attribute/skill/craft/cooking = 1,
+		/datum/attribute/skill/misc/sewing = 1,
+		/datum/attribute/skill/misc/medicine = 1,
+		/datum/attribute/skill/labor/mathematics = 1,
 	)
 
 	jobstats = list(
-		STATKEY_CON = 1,
-		STATKEY_END = 2,
-		STATKEY_INT = 1,
-		STATKEY_SPD = 2, // haha elves go nyoom
+		STAT_CONSTITUTION = 1,
+		STAT_ENDURANCE = 2,
+		STAT_INTELLIGENCE = 1,
+		STAT_SPEED = 2, // haha elves go nyoom
 	)
 
 	traits = list(
@@ -52,9 +52,9 @@
 
 	switch(choice)
 		if("Silver Rungu")
-			spawned.adjust_skillrank(/datum/skill/combat/axesmaces, 4, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 4, TRUE)
 		if("Silver Sengese")
-			spawned.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/combat/swords, 4, TRUE)
 
 	var/holder = spawned.patron?.devotion_holder
 	if(holder)

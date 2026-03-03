@@ -12,20 +12,20 @@
 	allowed_patrons = ALL_TEMPLE_PATRONS  // randomize patron if not in ten
 
 	skills = list(
-		/datum/skill/misc/reading = 3,
-		/datum/skill/combat/unarmed = 4,
-		/datum/skill/combat/wrestling = 3,
-		/datum/skill/craft/sewing = 2,
-		/datum/skill/misc/medicine = 1,
-		/datum/skill/misc/climbing = 4,
+		/datum/attribute/skill/misc/reading = 3,
+		/datum/attribute/skill/combat/unarmed = 4,
+		/datum/attribute/skill/combat/wrestling = 3,
+		/datum/attribute/skill/misc/sewing = 2,
+		/datum/attribute/skill/misc/medicine = 1,
+		/datum/attribute/skill/misc/climbing = 4,
 	)
 
 	jobstats = list(
-		STATKEY_STR = 2,
-		STATKEY_CON = 2,
-		STATKEY_END = 2,
-		STATKEY_PER = -1,
-		STATKEY_SPD = 2,
+		STAT_STRENGTH = 2,
+		STAT_CONSTITUTION = 2,
+		STAT_ENDURANCE = 2,
+		STAT_PERCEPTION = -1,
+		STAT_SPEED = 2,
 	)
 
 	traits = list(
@@ -35,12 +35,12 @@
 /datum/job/advclass/combat/monk/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 
-	spawned.adjust_skillrank(/datum/skill/combat/polearms, pick(1,1,2), TRUE) // Wood staff
-	spawned.adjust_skillrank(/datum/skill/misc/athletics, pick(2,2,3), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/combat/polearms, pick(1,1,2), TRUE) // Wood staff
+	spawned.adjust_skillrank(/datum/attribute/skill/misc/athletics, pick(2,2,3), TRUE)
 
 	if(spawned.dna?.species.id == "kobold")
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_STR, 2) // Go, my child. Destroy their ankles.
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_SPD, -1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_STRENGTH, 2) // Go, my child. Destroy their ankles.
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_SPEED, -1)
 
 /datum/outfit/adventurer/monk
 	name = "Monk (Adventurer)"

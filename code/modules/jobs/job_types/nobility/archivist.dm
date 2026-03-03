@@ -66,25 +66,25 @@
 	)
 
 	jobstats = list(
-		STATKEY_STR = -1,
-		STATKEY_INT = 8,
-		STATKEY_CON = -1,
-		STATKEY_END = -1,
-		STATKEY_SPD = -1
+		STAT_STRENGTH = -1,
+		STAT_INTELLIGENCE = 8,
+		STAT_CONSTITUTION = -1,
+		STAT_ENDURANCE = -1,
+		STAT_SPEED = -1
 	)
 
 	skills = list(
-		/datum/skill/misc/reading = 6,
-		/datum/skill/misc/riding = 2,
-		/datum/skill/craft/alchemy = 3,
-		/datum/skill/magic/arcane = 3,
-		/datum/skill/labor/mathematics = 6
+		/datum/attribute/skill/misc/reading = 6,
+		/datum/attribute/skill/misc/riding = 2,
+		/datum/attribute/skill/craft/alchemy = 3,
+		/datum/attribute/skill/magic/arcane = 3,
+		/datum/attribute/skill/labor/mathematics = 6
 	)
 
 /datum/job/advclass/archivist/chronicler/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/magic/arcane, 2, TRUE)
 
 /datum/outfit/archivist/chronicler
 	name = "Chronicler (Archivist)"
@@ -120,19 +120,19 @@
 	category_tags = list(CTAG_ARCHIVIST)
 
 	jobstats = list(
-		STATKEY_INT = 4, //Nocblessed status bonus already grants +3 int and +2 perception
-		STATKEY_PER = 1,
-		STATKEY_STR = -1,
-		STATKEY_CON = -1
+		STAT_INTELLIGENCE = 4, //Nocblessed status bonus already grants +3 int and +2 perception
+		STAT_PERCEPTION = 1,
+		STAT_STRENGTH = -1,
+		STAT_CONSTITUTION = -1
 	)
 
 	skills = list(
-		/datum/skill/misc/reading = 6,
-		/datum/skill/craft/crafting = 2,
-		/datum/skill/craft/cooking = 1,
-		/datum/skill/craft/sewing = 2,
-		/datum/skill/misc/medicine = 2,
-		/datum/skill/labor/mathematics = 4
+		/datum/attribute/skill/misc/reading = 6,
+		/datum/attribute/skill/craft/crafting = 2,
+		/datum/attribute/skill/craft/cooking = 1,
+		/datum/attribute/skill/misc/sewing = 2,
+		/datum/attribute/skill/misc/medicine = 2,
+		/datum/attribute/skill/labor/mathematics = 4
 	)
 
 	traits = list(
@@ -146,9 +146,9 @@
 	spawned.apply_status_effect(/datum/status_effect/buff/nocblessed)
 
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_INT, 1)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_END, 1)
+		spawned.adjust_skillrank(/datum/attribute/skill/craft/crafting, 1, TRUE)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_INTELLIGENCE, 1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_ENDURANCE, 1)
 
 /datum/outfit/archivist/dreamwatcher
 	name = "Dreamwatcher (Archivist)"

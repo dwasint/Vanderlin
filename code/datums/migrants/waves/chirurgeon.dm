@@ -18,22 +18,22 @@
 	blacklisted_species = list(SPEC_ID_HALFLING)
 
 	jobstats = list(
-		STATKEY_INT = 3,
-		STATKEY_SPD = 1,
-		STATKEY_STR = -2,
+		STAT_INTELLIGENCE = 3,
+		STAT_SPEED = 1,
+		STAT_STRENGTH = -2,
 	)
 
 	skills = list(
-		/datum/skill/combat/knives = 3,
-		/datum/skill/combat/wrestling = 2,
-		/datum/skill/combat/unarmed = 2,
-		/datum/skill/misc/medicine = 3,
-		/datum/skill/misc/athletics = 2,
-		/datum/skill/misc/climbing = 2,
-		/datum/skill/misc/reading = 3,
-		/datum/skill/craft/sewing = 2,
-		/datum/skill/craft/crafting = 2,
-		/datum/skill/craft/alchemy = 1,
+		/datum/attribute/skill/combat/knives = 3,
+		/datum/attribute/skill/combat/wrestling = 2,
+		/datum/attribute/skill/combat/unarmed = 2,
+		/datum/attribute/skill/misc/medicine = 3,
+		/datum/attribute/skill/misc/athletics = 2,
+		/datum/attribute/skill/misc/climbing = 2,
+		/datum/attribute/skill/misc/reading = 3,
+		/datum/attribute/skill/misc/sewing = 2,
+		/datum/attribute/skill/craft/crafting = 2,
+		/datum/attribute/skill/craft/alchemy = 1,
 	)
 
 	traits = list(

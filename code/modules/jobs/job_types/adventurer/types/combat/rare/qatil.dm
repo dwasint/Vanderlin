@@ -17,26 +17,26 @@
 	cmode_music = 'sound/music/cmode/adventurer/CombatOutlander3.ogg'
 
 	skills = list(
-		/datum/skill/combat/knives = 4,
-		/datum/skill/combat/swords = 2,
-		/datum/skill/combat/crossbows = 2,
-		/datum/skill/combat/bows = 2,
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/combat/wrestling = 3,
-		/datum/skill/combat/unarmed = 2,
-		/datum/skill/misc/climbing = 4,
-		/datum/skill/misc/swimming = 2,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/misc/sneaking = 4,
-		/datum/skill/misc/stealing = 2,
-		/datum/skill/misc/lockpicking = 3,
-		/datum/skill/craft/traps = 1,
+		/datum/attribute/skill/combat/knives = 4,
+		/datum/attribute/skill/combat/swords = 2,
+		/datum/attribute/skill/combat/crossbows = 2,
+		/datum/attribute/skill/combat/bows = 2,
+		/datum/attribute/skill/misc/athletics = 3,
+		/datum/attribute/skill/combat/wrestling = 3,
+		/datum/attribute/skill/combat/unarmed = 2,
+		/datum/attribute/skill/misc/climbing = 4,
+		/datum/attribute/skill/misc/swimming = 2,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/misc/sneaking = 4,
+		/datum/attribute/skill/misc/stealing = 2,
+		/datum/attribute/skill/misc/lockpicking = 3,
+		/datum/attribute/skill/craft/traps = 1,
 	)
 
 	jobstats = list(
-		STATKEY_STR = 1,
-		STATKEY_SPD = 2,
-		STATKEY_END = 1,
+		STAT_STRENGTH = 1,
+		STAT_SPEED = 2,
+		STAT_ENDURANCE = 1,
 	)
 
 	traits = list(

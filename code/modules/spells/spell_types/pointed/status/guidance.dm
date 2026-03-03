@@ -31,7 +31,7 @@
 	id = "guidance"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/guidance
 	duration = 1 MINUTES
-	effectedstats = list(STATKEY_INT = 2)
+	effectedstats = list(STAT_INTELLIGENCE = 2)
 	var/static/mutable_appearance/guided = mutable_appearance('icons/effects/effects.dmi', "blessed")
 
 /datum/status_effect/buff/guidance/on_apply()

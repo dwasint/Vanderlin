@@ -7,28 +7,28 @@
 	total_positions = 1
 
 	jobstats = list(
-		STATKEY_STR = 2,
-		STATKEY_PER = 2,
-		STATKEY_END = 2,
-		STATKEY_CON = 2,
-		STATKEY_INT = 1,
-		STATKEY_SPD = -1
+		STAT_STRENGTH = 2,
+		STAT_PERCEPTION = 2,
+		STAT_ENDURANCE = 2,
+		STAT_CONSTITUTION = 2,
+		STAT_INTELLIGENCE = 1,
+		STAT_SPEED = -1
 	)
 
 	skills = list(
-		/datum/skill/combat/polearms = 3,
-		/datum/skill/combat/axesmaces = 3,
-		/datum/skill/combat/swords = 3,
-		/datum/skill/combat/knives = 3,
-		/datum/skill/combat/shields = 4,
-		/datum/skill/combat/whipsflails = 3,
-		/datum/skill/combat/wrestling = 3,
-		/datum/skill/misc/swimming = 4,
-		/datum/skill/combat/unarmed = 3,
-		/datum/skill/misc/athletics = 4,
-		/datum/skill/misc/climbing = 4,
-		/datum/skill/misc/riding = 4,
-		/datum/skill/misc/reading = 3
+		/datum/attribute/skill/combat/polearms = 3,
+		/datum/attribute/skill/combat/axesmaces = 3,
+		/datum/attribute/skill/combat/swords = 3,
+		/datum/attribute/skill/combat/knives = 3,
+		/datum/attribute/skill/combat/shields = 4,
+		/datum/attribute/skill/combat/whipsflails = 3,
+		/datum/attribute/skill/combat/wrestling = 3,
+		/datum/attribute/skill/misc/swimming = 4,
+		/datum/attribute/skill/combat/unarmed = 3,
+		/datum/attribute/skill/misc/athletics = 4,
+		/datum/attribute/skill/misc/climbing = 4,
+		/datum/attribute/skill/misc/riding = 4,
+		/datum/attribute/skill/misc/reading = 3
 	)
 
 	traits = list(
@@ -79,23 +79,23 @@
 	switch(weaponchoice)
 		if("Halberd")
 			grant_shield = FALSE
-			spawned.adjust_skillrank(/datum/skill/combat/polearms, 1)
+			spawned.adjust_skillrank(/datum/attribute/skill/combat/polearms, 1)
 		if("Longsword")
 			grant_shield = FALSE
-			spawned.adjust_skillrank(/datum/skill/combat/swords, 1)
+			spawned.adjust_skillrank(/datum/attribute/skill/combat/swords, 1)
 		if("Unarmed")
 			grant_shield = FALSE
-			spawned.adjust_skillrank(/datum/skill/combat/unarmed, 1)
+			spawned.adjust_skillrank(/datum/attribute/skill/combat/unarmed, 1)
 		if("Great Axe")
 			grant_shield = FALSE
-			spawned.adjust_skillrank(/datum/skill/combat/axesmaces, 1)
+			spawned.adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 1)
 		if("Mace")
 			grant_shield = FALSE
-			spawned.adjust_skillrank(/datum/skill/combat/axesmaces, 1)
+			spawned.adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 1)
 		if("Sabre")
-			spawned.adjust_skillrank(/datum/skill/combat/swords, 1)
+			spawned.adjust_skillrank(/datum/attribute/skill/combat/swords, 1)
 		if("Flail")
-			spawned.adjust_skillrank(/datum/skill/combat/whipsflails, 1)
+			spawned.adjust_skillrank(/datum/attribute/skill/combat/whipsflails, 1)
 
 	if(grant_shield)
 		var/obj/item/weapon/shield/tower/metal/shield = new /obj/item/weapon/shield/tower/metal()
@@ -120,7 +120,7 @@
 	switch(helmetchoice)
 		if("None")
 			ADD_TRAIT(spawned, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
-			spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_CON, 1)
+			spawned.adjust_stat_modifier(STATMOD_JOB, STAT_CONSTITUTION, 1)
 
 	wretch_select_bounty(spawned)
 

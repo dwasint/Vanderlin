@@ -5,21 +5,21 @@
 	outfit = /datum/outfit/psyaltrist
 
 	jobstats = list(
-		STATKEY_END = 1,
-		STATKEY_SPD = 3,
+		STAT_ENDURANCE = 1,
+		STAT_SPEED = 3,
 	) //4 Statline
 
 	skills = list(
-		/datum/skill/misc/music = SKILL_LEVEL_MASTER,
-		/datum/skill/magic/holy = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/knives = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/wrestling = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/combat/unarmed = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/swimming = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/climbing = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/athletics = SKILL_LEVEL_EXPERT,
-		/datum/skill/misc/reading = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/medicine = SKILL_LEVEL_APPRENTICE
+		/datum/attribute/skill/misc/music = SKILL_LEVEL_MASTER,
+		/datum/attribute/skill/magic/holy = SKILL_LEVEL_EXPERT,
+		/datum/attribute/skill/combat/knives = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/combat/wrestling = SKILL_LEVEL_APPRENTICE,
+		/datum/attribute/skill/combat/unarmed = SKILL_LEVEL_APPRENTICE,
+		/datum/attribute/skill/misc/swimming = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/misc/climbing = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/misc/athletics = SKILL_LEVEL_EXPERT,
+		/datum/attribute/skill/misc/reading = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/misc/medicine = SKILL_LEVEL_APPRENTICE
 	)
 
 	languages = list(

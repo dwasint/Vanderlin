@@ -15,26 +15,26 @@
 	allowed_patrons = list(/datum/patron/divine/ravox, /datum/patron/divine/abyssor, /datum/patron/divine/necra, /datum/patron/divine/dendor,/datum/patron/inhumen/graggar, /datum/patron/godless/godless, /datum/patron/godless/autotheist, /datum/patron/godless/defiant, /datum/patron/godless/dystheist, /datum/patron/godless/naivety, /datum/patron/godless/rashan, /datum/patron/godless/galadros)
 
 	jobstats = list(
-		STATKEY_STR = 3,
-		STATKEY_END = 2,
-		STATKEY_CON = 2,
-		STATKEY_INT = -2,
+		STAT_STRENGTH = 3,
+		STAT_ENDURANCE = 2,
+		STAT_CONSTITUTION = 2,
+		STAT_INTELLIGENCE = -2,
 	)
 
 	skills = list(
-		/datum/skill/combat/axesmaces = 1,
-		/datum/skill/combat/wrestling = 2,
-		/datum/skill/combat/unarmed = 3,
-		/datum/skill/combat/swords = 1,
-		/datum/skill/combat/bows = 2,
-		/datum/skill/craft/crafting = 1,
-		/datum/skill/craft/tanning = 1,
-		/datum/skill/misc/swimming = 3,
-		/datum/skill/misc/climbing = 3,
-		/datum/skill/misc/riding = 2,
-		/datum/skill/craft/sewing = 2,
-		/datum/skill/craft/cooking = 1,
-		/datum/skill/misc/athletics = 3,
+		/datum/attribute/skill/combat/axesmaces = 1,
+		/datum/attribute/skill/combat/wrestling = 2,
+		/datum/attribute/skill/combat/unarmed = 3,
+		/datum/attribute/skill/combat/swords = 1,
+		/datum/attribute/skill/combat/bows = 2,
+		/datum/attribute/skill/craft/crafting = 1,
+		/datum/attribute/skill/craft/tanning = 1,
+		/datum/attribute/skill/misc/swimming = 3,
+		/datum/attribute/skill/misc/climbing = 3,
+		/datum/attribute/skill/misc/riding = 2,
+		/datum/attribute/skill/misc/sewing = 2,
+		/datum/attribute/skill/craft/cooking = 1,
+		/datum/attribute/skill/misc/athletics = 3,
 	)
 
 	traits = list(
@@ -65,13 +65,13 @@
 
 	switch(choice)
 		if("Axe")
-			spawned.clamped_adjust_skillrank(/datum/skill/combat/axesmaces, 2, 3, TRUE)
+			spawned.clamped_adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 2, 3, TRUE)
 		if("Mace")
-			spawned.clamped_adjust_skillrank(/datum/skill/combat/axesmaces, 2, 3, TRUE)
+			spawned.clamped_adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 2, 3, TRUE)
 		if("Sword")
-			spawned.clamped_adjust_skillrank(/datum/skill/combat/swords, 2, 3, TRUE)
+			spawned.clamped_adjust_skillrank(/datum/attribute/skill/combat/swords, 2, 3, TRUE)
 		if("Club")
-			spawned.clamped_adjust_skillrank(/datum/skill/combat/axesmaces, 2, 3, TRUE)
+			spawned.clamped_adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 2, 3, TRUE)
 
 /datum/outfit/adventurer/barbarian
 	name = "Barbarian (Adventurer)"

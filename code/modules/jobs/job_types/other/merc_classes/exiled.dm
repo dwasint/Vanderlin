@@ -8,28 +8,28 @@
 	cmode_music = 'sound/music/cmode/adventurer/CombatOutlander2.ogg'
 
 	jobstats = list(
-		STATKEY_STR = 1,
-		STATKEY_END = 2,
-		STATKEY_CON = 2,
-		STATKEY_SPD = -1,
-		STATKEY_INT = 3
+		STAT_STRENGTH = 1,
+		STAT_ENDURANCE = 2,
+		STAT_CONSTITUTION = 2,
+		STAT_SPEED = -1,
+		STAT_INTELLIGENCE = 3
 	)
 
 	skills = list(
-		/datum/skill/misc/swimming = 3,
-		/datum/skill/misc/climbing = 3,
-		/datum/skill/misc/sneaking = 4,
-		/datum/skill/combat/wrestling = 2,
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/combat/unarmed = 3,
-		/datum/skill/craft/crafting = 1,
-		/datum/skill/craft/tanning = 1,
-		/datum/skill/combat/axesmaces = 3,
-		/datum/skill/craft/cooking = 1,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/craft/sewing = 2,
-		/datum/skill/misc/medicine = 2,
-		/datum/skill/craft/traps = 3
+		/datum/attribute/skill/misc/swimming = 3,
+		/datum/attribute/skill/misc/climbing = 3,
+		/datum/attribute/skill/misc/sneaking = 4,
+		/datum/attribute/skill/combat/wrestling = 2,
+		/datum/attribute/skill/misc/athletics = 3,
+		/datum/attribute/skill/combat/unarmed = 3,
+		/datum/attribute/skill/craft/crafting = 1,
+		/datum/attribute/skill/craft/tanning = 1,
+		/datum/attribute/skill/combat/axesmaces = 3,
+		/datum/attribute/skill/craft/cooking = 1,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/misc/sewing = 2,
+		/datum/attribute/skill/misc/medicine = 2,
+		/datum/attribute/skill/craft/traps = 3
 	)
 
 	traits = list(

@@ -13,27 +13,27 @@
 	is_recognized = TRUE
 
 	jobstats = list(
-		STATKEY_INT = 3,
-		STATKEY_CON = 2
+		STAT_INTELLIGENCE = 3,
+		STAT_CONSTITUTION = 2
 	)
 
 	skills = list(
-		/datum/skill/combat/wrestling = 1,
-		/datum/skill/combat/unarmed = 1,
-		/datum/skill/combat/knives = 2,
-		/datum/skill/craft/sewing = 1,
-		/datum/skill/labor/farming = 3,
-		/datum/skill/misc/reading = 4,
-		/datum/skill/craft/crafting = 4,
-		/datum/skill/labor/butchering = 4,
-		/datum/skill/labor/taming = 2,
-		/datum/skill/craft/cooking = 6
+		/datum/attribute/skill/combat/wrestling = 1,
+		/datum/attribute/skill/combat/unarmed = 1,
+		/datum/attribute/skill/combat/knives = 2,
+		/datum/attribute/skill/misc/sewing = 1,
+		/datum/attribute/skill/labor/farming = 3,
+		/datum/attribute/skill/misc/reading = 4,
+		/datum/attribute/skill/craft/crafting = 4,
+		/datum/attribute/skill/labor/butchering = 4,
+		/datum/attribute/skill/labor/taming = 2,
+		/datum/attribute/skill/craft/cooking = 6
 	)
 
 /datum/job/advclass/pilgrim/rare/masterchef/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_skillrank(/datum/skill/labor/butchering, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/labor/butchering, 1, TRUE)
 
 /datum/outfit/pilgrim/masterchef
 	name = "Master Chef (Pilgrim)"

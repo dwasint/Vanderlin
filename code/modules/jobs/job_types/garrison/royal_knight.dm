@@ -30,30 +30,30 @@
 	)
 
 	jobstats = list(
-		STATKEY_STR = 3,
-		STATKEY_PER = 2,
-		STATKEY_END = 2,
-		STATKEY_CON = 2,
-		STATKEY_INT = 1
+		STAT_STRENGTH = 3,
+		STAT_PERCEPTION = 2,
+		STAT_ENDURANCE = 2,
+		STAT_CONSTITUTION = 2,
+		STAT_INTELLIGENCE = 1
 	)
 
 	skills = list(
-		/datum/skill/combat/swords = 4,
-		/datum/skill/combat/wrestling = 4,
-		/datum/skill/combat/unarmed = 3,
-		/datum/skill/combat/shields = 3,
-		/datum/skill/combat/polearms = 3,
-		/datum/skill/combat/whipsflails = 3,
-		/datum/skill/combat/axesmaces = 3,
-		/datum/skill/combat/knives = 2,
-		/datum/skill/combat/bows = 3,
-		/datum/skill/combat/crossbows = 4,
-		/datum/skill/misc/athletics = 4,
-		/datum/skill/misc/riding = 3,
-		/datum/skill/misc/swimming = 2,
-		/datum/skill/misc/climbing = 2,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/labor/mathematics = 3
+		/datum/attribute/skill/combat/swords = 4,
+		/datum/attribute/skill/combat/wrestling = 4,
+		/datum/attribute/skill/combat/unarmed = 3,
+		/datum/attribute/skill/combat/shields = 3,
+		/datum/attribute/skill/combat/polearms = 3,
+		/datum/attribute/skill/combat/whipsflails = 3,
+		/datum/attribute/skill/combat/axesmaces = 3,
+		/datum/attribute/skill/combat/knives = 2,
+		/datum/attribute/skill/combat/bows = 3,
+		/datum/attribute/skill/combat/crossbows = 4,
+		/datum/attribute/skill/misc/athletics = 4,
+		/datum/attribute/skill/misc/riding = 3,
+		/datum/attribute/skill/misc/swimming = 2,
+		/datum/attribute/skill/misc/climbing = 2,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/labor/mathematics = 3
 	)
 
 	traits = list(
@@ -99,18 +99,18 @@
 
 	switch(choice)
 		if("Flail")
-			spawned.clamped_adjust_skillrank(/datum/skill/combat/whipsflails, 2, 4, TRUE)
+			spawned.clamped_adjust_skillrank(/datum/attribute/skill/combat/whipsflails, 2, 4, TRUE)
 		if("Halberd")
-			spawned.clamped_adjust_skillrank(/datum/skill/combat/polearms, 2, 4, TRUE)
+			spawned.clamped_adjust_skillrank(/datum/attribute/skill/combat/polearms, 2, 4, TRUE)
 			grant_shield = FALSE
 		if("Longsword")
-			spawned.clamped_adjust_skillrank(/datum/skill/combat/swords, 2, 4, TRUE)
+			spawned.clamped_adjust_skillrank(/datum/attribute/skill/combat/swords, 2, 4, TRUE)
 			grant_shield = FALSE
 		if("Sabre")
-			spawned.clamped_adjust_skillrank(/datum/skill/combat/swords, 2, 4, TRUE)
+			spawned.clamped_adjust_skillrank(/datum/attribute/skill/combat/swords, 2, 4, TRUE)
 
 	if(grant_shield)
-		spawned.adjust_skillrank(/datum/skill/combat/shields, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/shields, 1, TRUE)
 		var/obj/item/weapon/shield/tower/metal/shield = new /obj/item/weapon/shield/tower/metal()
 		if(!spawned.equip_to_appropriate_slot(shield))
 			qdel(shield)
@@ -172,16 +172,16 @@
 
 /datum/job/advclass/royalknight/steam/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
-	spawned.adjust_skillrank(/datum/skill/combat/swords, -1, TRUE)
-	spawned.adjust_skillrank(/datum/skill/combat/unarmed, -1, TRUE)
-	spawned.adjust_skillrank(/datum/skill/combat/shields, -1, TRUE)
-	spawned.adjust_skillrank(/datum/skill/combat/wrestling, -1, TRUE)
-	spawned.adjust_skillrank(/datum/skill/combat/polearms, -1, TRUE)
-	spawned.adjust_skillrank(/datum/skill/combat/whipsflails, -1, TRUE)
-	spawned.adjust_skillrank(/datum/skill/combat/axesmaces, -1, TRUE)
-	spawned.adjust_skillrank(/datum/skill/combat/bows, -1, TRUE)
-	spawned.adjust_skillrank(/datum/skill/combat/crossbows, -1, TRUE)
-	spawned.adjust_skillrank(/datum/skill/craft/engineering, 3, TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/combat/swords, -1, TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/combat/unarmed, -1, TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/combat/shields, -1, TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/combat/wrestling, -1, TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/combat/polearms, -1, TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/combat/whipsflails, -1, TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/combat/axesmaces, -1, TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/combat/bows, -1, TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/combat/crossbows, -1, TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/craft/engineering, 3, TRUE)
 
 /datum/outfit/royalknight/steam
 	name = "Steam Knight"

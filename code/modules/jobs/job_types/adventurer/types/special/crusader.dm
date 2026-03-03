@@ -13,25 +13,25 @@
 	is_recognized = TRUE
 
 	jobstats = list(
-		STATKEY_END = 2,
-		STATKEY_CON = 2,
-		STATKEY_STR = 1
+		STAT_ENDURANCE = 2,
+		STAT_CONSTITUTION = 2,
+		STAT_STRENGTH = 1
 	)
 
 	skills = list(
-		/datum/skill/combat/crossbows = 2,
-		/datum/skill/combat/wrestling = 2,
-		/datum/skill/combat/unarmed = 3,
-		/datum/skill/combat/swords = 2,
-		/datum/skill/combat/knives = 2,
-		/datum/skill/combat/shields = 2,
-		/datum/skill/misc/swimming = 1,
-		/datum/skill/misc/climbing = 2,
-		/datum/skill/misc/riding = 4,
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/misc/reading = 2,
-		/datum/skill/craft/sewing = 1,
-		/datum/skill/craft/cooking = 1
+		/datum/attribute/skill/combat/crossbows = 2,
+		/datum/attribute/skill/combat/wrestling = 2,
+		/datum/attribute/skill/combat/unarmed = 3,
+		/datum/attribute/skill/combat/swords = 2,
+		/datum/attribute/skill/combat/knives = 2,
+		/datum/attribute/skill/combat/shields = 2,
+		/datum/attribute/skill/misc/swimming = 1,
+		/datum/attribute/skill/misc/climbing = 2,
+		/datum/attribute/skill/misc/riding = 4,
+		/datum/attribute/skill/misc/athletics = 3,
+		/datum/attribute/skill/misc/reading = 2,
+		/datum/attribute/skill/misc/sewing = 1,
+		/datum/attribute/skill/craft/cooking = 1
 	)
 
 	traits = list(
@@ -52,11 +52,11 @@
 			spawned.cmode_music = 'sound/music/cmode/adventurer/CombatIntense.ogg'
 
 	if(spawned.gender == FEMALE)
-		spawned.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/crossbows, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/knives, 1, TRUE)
 	else
-		spawned.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/combat/shields, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/swords, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/shields, 1, TRUE)
 
 	if(spawned.dna?.species?.id == SPEC_ID_HUMEN && spawned.gender == MALE)
 		spawned.dna.species.soundpack_m = new /datum/voicepack/male/knight()

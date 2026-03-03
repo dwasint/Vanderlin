@@ -11,10 +11,10 @@
 	allowed_patrons = list(/datum/patron/psydon, /datum/patron/psydon/extremist)
 
 	skills = list(
-		/datum/skill/misc/reading = 4,
-		/datum/skill/misc/music = 1,
-		/datum/skill/combat/wrestling = 2,
-		/datum/skill/combat/unarmed = 2
+		/datum/attribute/skill/misc/reading = 4,
+		/datum/attribute/skill/misc/music = 1,
+		/datum/attribute/skill/combat/wrestling = 2,
+		/datum/attribute/skill/combat/unarmed = 2
 	)
 
 	traits = list(

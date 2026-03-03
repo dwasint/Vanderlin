@@ -91,8 +91,8 @@
 
 	// Calculate additional drain for heavy weapons
 	var/obj/item/master = intenty.get_master_item()
-	if(master?.wbalance < 0 && user.STASTR > src.STASTR)
-		drained = drained + (master.wbalance * ((user.STASTR - src.STASTR) * -5))
+	if(master?.wbalance < 0 && GET_MOB_ATTRIBUTE_VALUE(user, STAT_STRENGTH) > GET_MOB_ATTRIBUTE_VALUE(src, STAT_STRENGTH))
+		drained = drained + (master.wbalance * ((GET_MOB_ATTRIBUTE_VALUE(user, STAT_STRENGTH) - GET_MOB_ATTRIBUTE_VALUE(src, STAT_STRENGTH)) * -5))
 
 	drained = max(drained, 5)
 
@@ -108,7 +108,7 @@
 		if(do_unarmed_parry(drained, user))
 			// Handle unarmed experience gain
 			if((body_position != LYING_DOWN) && attacker_skill && (defender_skill < attacker_skill - SKILL_LEVEL_NOVICE))
-				adjust_experience(/datum/skill/combat/unarmed, max(round(STAINT/2), 0), FALSE)
+				adjust_experience(/datum/attribute/skill/combat/unarmed, max(round(GET_MOB_ATTRIBUTE_VALUE(src, STAT_INTELLIGENCE)/2), 0), FALSE)
 
 			flash_fullscreen("blackflash2")
 			return TRUE
@@ -122,7 +122,7 @@
 	if(!istype(shield))
 		return 0
 
-	var/shield_skill = max(1, get_skill_level(/datum/skill/combat/shields, TRUE))
+	var/shield_skill = max(1, get_skill_level(/datum/attribute/skill/combat/shields, TRUE))
 
 	return shield.wdefense * shield_skill * 2
 /**
@@ -160,7 +160,7 @@
 		used_weapon = offhand
 		highest_defense += offhand_defense
 
-	var/unarmed_defense = mind ? (get_skill_level(/datum/skill/combat/unarmed, TRUE) * 20) : 20
+	var/unarmed_defense = mind ? (get_skill_level(/datum/attribute/skill/combat/unarmed, TRUE) * 20) : 20
 	if(highest_defense <= unarmed_defense)
 		weapon_parry = FALSE
 	else
@@ -169,7 +169,7 @@
 	return list(
 		"used_weapon" = used_weapon,
 		"weapon_parry" = weapon_parry,
-		"defense_bonus" = weapon_parry ? highest_defense : (get_skill_level(/datum/skill/combat/unarmed, TRUE) * 20)
+		"defense_bonus" = weapon_parry ? highest_defense : (get_skill_level(/datum/attribute/skill/combat/unarmed, TRUE) * 20)
 	)
 
 /**
@@ -188,18 +188,18 @@
 	if(weapon_parry)
 		defender_skill = get_skill_level(used_weapon.associated_skill, TRUE)
 	else
-		defender_skill = get_skill_level(/datum/skill/combat/unarmed, TRUE)
+		defender_skill = get_skill_level(/datum/attribute/skill/combat/unarmed, TRUE)
 
 	if(user.mind)
 		var/obj/item/master = intenty.get_master_item()
 		if(master)
-			attacker_skill = user.get_skill_level(master.associated_skill, TRUE)
+			attacker_skill = GET_MOB_SKILL_VALUE_OLD(user, master.associated_skill)
 			skill_modifier -= (attacker_skill * 20)
 
-			if(master.wbalance > 0 && user.STASPD > src.STASPD)
-				skill_modifier -= ((user.STASPD - src.STASPD) * 10)
+			if(master.wbalance > 0 && GET_MOB_ATTRIBUTE_VALUE(user, STAT_SPEED) > GET_MOB_ATTRIBUTE_VALUE(src, STAT_SPEED))
+				skill_modifier -= ((GET_MOB_ATTRIBUTE_VALUE(user, STAT_SPEED) - GET_MOB_ATTRIBUTE_VALUE(src, STAT_SPEED)) * 10)
 		else
-			attacker_skill = user.get_skill_level(/datum/skill/combat/unarmed, TRUE)
+			attacker_skill = GET_MOB_SKILL_VALUE_OLD(user, /datum/attribute/skill/combat/unarmed)
 			skill_modifier -= (attacker_skill * 20)
 
 
@@ -230,17 +230,17 @@
 	if((body_position != LYING_DOWN) && attacker_skill && (defender_skill < attacker_skill - SKILL_LEVEL_NOVICE))
 		if(used_weapon == get_inactive_held_item() && istype(used_weapon, /obj/item/weapon/shield))
 			var/boon = H.get_learning_boon(/obj/item/weapon/shield)
-			H.adjust_experience(/datum/skill/combat/shields, max(round(H.STAINT * boon), 0), FALSE)
+			H.adjust_experience(/datum/attribute/skill/combat/shields, max(round(GET_MOB_ATTRIBUTE_VALUE(H, STAT_INTELLIGENCE) * boon), 0), FALSE)
 		else
-			H.adjust_experience(used_weapon.associated_skill, max(round(H.STAINT/2), 0), FALSE)
+			H.adjust_experience(used_weapon.associated_skill, max(round(GET_MOB_ATTRIBUTE_VALUE(H, STAT_INTELLIGENCE)/2), 0), FALSE)
 
 	// Attacker skill gain
 	var/obj/item/AB = intenty.get_master_item()
 	if((U.body_position != LYING_DOWN) && defender_skill && (attacker_skill < defender_skill - SKILL_LEVEL_NOVICE))
 		if(AB)
-			U.adjust_experience(AB.associated_skill, max(round(U.STAINT/2), 0), FALSE)
+			U.adjust_experience(AB.associated_skill, max(round(GET_MOB_ATTRIBUTE_VALUE(U, STAT_INTELLIGENCE)/2), 0), FALSE)
 		else
-			U.adjust_experience(/datum/skill/combat/unarmed, max(round(U.STAINT/2), 0), FALSE)
+			U.adjust_experience(/datum/attribute/skill/combat/unarmed, max(round(GET_MOB_ATTRIBUTE_VALUE(U, STAT_INTELLIGENCE)/2), 0), FALSE)
 
 	var/obj/effect/temp_visual/dir_setting/block/blk = new(get_turf(src), get_dir(H, U))
 	blk.icon_state = "p[U.used_intent.animname]"

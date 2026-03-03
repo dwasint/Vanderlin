@@ -32,30 +32,30 @@
 	job_bitflag = BITFLAG_ROYALTY | BITFLAG_GARRISON
 
 	jobstats = list(
-		STATKEY_STR = 2,
-		STATKEY_PER = 2,
-		STATKEY_INT = 1,
-		STATKEY_CON = 1,
-		STATKEY_END = 2
+		STAT_STRENGTH = 2,
+		STAT_PERCEPTION = 2,
+		STAT_INTELLIGENCE = 1,
+		STAT_CONSTITUTION = 1,
+		STAT_ENDURANCE = 2
 	)
 
 	skills = list(
-		/datum/skill/combat/swords = 3,
-		/datum/skill/combat/wrestling = 4,
-		/datum/skill/combat/axesmaces = 4,
-		/datum/skill/combat/shields = 2,
-		/datum/skill/combat/unarmed = 3,
-		/datum/skill/combat/knives = 3,
-		/datum/skill/combat/polearms = 3,
-		/datum/skill/combat/whipsflails = 2,
-		/datum/skill/combat/crossbows = 3,
-		/datum/skill/combat/bows = 2,
-		/datum/skill/misc/athletics = 4,
-		/datum/skill/misc/swimming = 3,
-		/datum/skill/misc/climbing = 3,
-		/datum/skill/misc/riding = 3,
-		/datum/skill/misc/reading = 2,
-		/datum/skill/labor/mathematics = 3
+		/datum/attribute/skill/combat/swords = 3,
+		/datum/attribute/skill/combat/wrestling = 4,
+		/datum/attribute/skill/combat/axesmaces = 4,
+		/datum/attribute/skill/combat/shields = 2,
+		/datum/attribute/skill/combat/unarmed = 3,
+		/datum/attribute/skill/combat/knives = 3,
+		/datum/attribute/skill/combat/polearms = 3,
+		/datum/attribute/skill/combat/whipsflails = 2,
+		/datum/attribute/skill/combat/crossbows = 3,
+		/datum/attribute/skill/combat/bows = 2,
+		/datum/attribute/skill/misc/athletics = 4,
+		/datum/attribute/skill/misc/swimming = 3,
+		/datum/attribute/skill/misc/climbing = 3,
+		/datum/attribute/skill/misc/riding = 3,
+		/datum/attribute/skill/misc/reading = 2,
+		/datum/attribute/skill/labor/mathematics = 3
 	)
 
 	traits = list(
@@ -90,10 +90,10 @@
 		return
 	switch(choice)
 		if("Law and Order")
-			spawned.clamped_adjust_skillrank(/datum/skill/combat/swords, 2, 5, TRUE)
-			spawned.clamped_adjust_skillrank(/datum/skill/combat/shields, 2, 4, TRUE)
+			spawned.clamped_adjust_skillrank(/datum/attribute/skill/combat/swords, 2, 5, TRUE)
+			spawned.clamped_adjust_skillrank(/datum/attribute/skill/combat/shields, 2, 4, TRUE)
 		if("Deliverer of Justice")
-			spawned.clamped_adjust_skillrank(/datum/skill/combat/polearms, 2, 5, TRUE)
+			spawned.clamped_adjust_skillrank(/datum/attribute/skill/combat/polearms, 2, 5, TRUE)
 
 /datum/outfit/captain
 	name = "Captain"

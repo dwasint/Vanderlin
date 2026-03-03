@@ -45,7 +45,7 @@
 			user.add_stress(/datum/stress_event/ugly)
 
 	if(!self_inspect)
-		if(user.has_quirk(/datum/quirk/vice/paranoid) && (STASTR - user.STASTR) > 1)
+		if(user.has_quirk(/datum/quirk/vice/paranoid) && (GET_MOB_ATTRIBUTE_VALUE(src, STAT_STRENGTH) - GET_MOB_ATTRIBUTE_VALUE(user, STAT_STRENGTH)) > 1)
 			user.add_stress(/datum/stress_event/parastr)
 
 		if(HAS_TRAIT(src, TRAIT_OLDPARTY) && HAS_TRAIT(user, TRAIT_OLDPARTY))
@@ -623,14 +623,14 @@
 
 	if(!self_inspect && isliving(user))
 		var/mob/living/L = user
-		var/final_str = STASTR
-		var/con_check = STACON
-		var/spd_check = STASPD
+		var/final_str = GET_MOB_ATTRIBUTE_VALUE(src, STAT_STRENGTH)
+		var/con_check = GET_MOB_ATTRIBUTE_VALUE(src, STAT_CONSTITUTION)
+		var/spd_check = GET_MOB_ATTRIBUTE_VALUE(src, STAT_SPEED)
 		if(HAS_TRAIT(src, TRAIT_DECEIVING_MEEKNESS))
 			final_str = 10
 			con_check = 10
 			spd_check = 10
-		var/strength_diff = final_str - L.STASTR
+		var/strength_diff = final_str - GET_MOB_ATTRIBUTE_VALUE(L, STAT_STRENGTH)
 		switch(strength_diff)
 			if(5 to INFINITY)
 				. += span_warning("<B>[t_He] look[p_s()] much stronger than I.</B>")
@@ -642,7 +642,7 @@
 				. += span_warning("[t_He] look[p_s()] weaker than I.")
 			if(-INFINITY to -5)
 				. += span_warning("<B>[t_He] look[p_s()] much weaker than I.</B>")
-		if(L.STAPER >= 12)
+		if(GET_MOB_ATTRIBUTE_VALUE(L, STAT_PERCEPTION) >= 12)
 			switch(con_check)
 				if(15 to INFINITY)
 					. += span_warning("<B>[t_He] look[p_s()] very vigorous.</B>")

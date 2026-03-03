@@ -94,23 +94,23 @@
 	)
 
 	jobstats = list(
-		STATKEY_STR = -1,
-		STATKEY_END = 1,
-		STATKEY_PER = 2,
-		STATKEY_INT = 2
+		STAT_STRENGTH = -1,
+		STAT_ENDURANCE = 1,
+		STAT_PERCEPTION = 2,
+		STAT_INTELLIGENCE = 2
 	)
 
 	skills = list(
-		/datum/skill/craft/crafting = 2,
-		/datum/skill/misc/reading = 4,
-		/datum/skill/misc/climbing = 2,
-		/datum/skill/combat/unarmed = 1,
-		/datum/skill/combat/wrestling = 1,
-		/datum/skill/misc/athletics = 2,
-		/datum/skill/misc/riding = 3,
-		/datum/skill/labor/mathematics = 4,
-		/datum/skill/combat/polearms = 2,
-		/datum/skill/misc/music = 5
+		/datum/attribute/skill/craft/crafting = 2,
+		/datum/attribute/skill/misc/reading = 4,
+		/datum/attribute/skill/misc/climbing = 2,
+		/datum/attribute/skill/combat/unarmed = 1,
+		/datum/attribute/skill/combat/wrestling = 1,
+		/datum/attribute/skill/misc/athletics = 2,
+		/datum/attribute/skill/misc/riding = 3,
+		/datum/attribute/skill/labor/mathematics = 4,
+		/datum/attribute/skill/combat/polearms = 2,
+		/datum/attribute/skill/misc/music = 5
 	)
 
 	traits = list(
@@ -123,14 +123,14 @@
 	. = ..()
 	spawned.inspiration = new /datum/inspiration(spawned)
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/labor/mathematics, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_STR, -1)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_PER, 1)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_INT, 1)
+		spawned.adjust_skillrank(/datum/attribute/skill/misc/reading, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/labor/mathematics, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/misc/riding, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/craft/crafting, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/polearms, 1, TRUE)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_STRENGTH, -1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_PERCEPTION, 1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_INTELLIGENCE, 1)
 
 /datum/outfit/town_elder/mayor
 	name = "Mayor (Town Elder)"
@@ -155,21 +155,21 @@
 	outfit = /datum/outfit/town_elder/master_of_crafts_and_labor
 	category_tags = list(CTAG_TOWN_ELDER)
 	jobstats = list(
-		STATKEY_STR = 1,
-		STATKEY_END = 2,
-		STATKEY_INT = 2
+		STAT_STRENGTH = 1,
+		STAT_ENDURANCE = 2,
+		STAT_INTELLIGENCE = 2
 	)
 
 	skills = list(
-		/datum/skill/misc/reading = 1,
-		/datum/skill/labor/mathematics = 1,
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/combat/axesmaces = 2,
-		/datum/skill/combat/wrestling = 1,
-		/datum/skill/combat/unarmed = 1,
-		/datum/skill/misc/swimming = 3,
-		/datum/skill/misc/climbing = 3,
-		/datum/skill/misc/music = 3
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/labor/mathematics = 1,
+		/datum/attribute/skill/misc/athletics = 3,
+		/datum/attribute/skill/combat/axesmaces = 2,
+		/datum/attribute/skill/combat/wrestling = 1,
+		/datum/attribute/skill/combat/unarmed = 1,
+		/datum/attribute/skill/misc/swimming = 3,
+		/datum/attribute/skill/misc/climbing = 3,
+		/datum/attribute/skill/misc/music = 3
 	)
 
 	traits = list(
@@ -181,24 +181,24 @@
 /datum/job/advclass/town_elder/master_of_crafts_and_labor/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	var/list/craft_skills = list(
-		/datum/skill/labor/mining,
-		/datum/skill/labor/lumberjacking,
-		/datum/skill/craft/masonry,
-		/datum/skill/craft/crafting,
-		/datum/skill/craft/carpentry,
-		/datum/skill/craft/engineering,
-		/datum/skill/craft/smelting,
-		/datum/skill/craft/sewing,
-		/datum/skill/labor/farming,
-		/datum/skill/misc/medicine,
-		/datum/skill/craft/tanning,
-		/datum/skill/labor/butchering,
-		/datum/skill/labor/taming,
-		/datum/skill/craft/alchemy,
-		/datum/skill/craft/blacksmithing,
-		/datum/skill/craft/armorsmithing,
-		/datum/skill/craft/weaponsmithing,
-		/datum/skill/craft/cooking
+		/datum/attribute/skill/labor/mining,
+		/datum/attribute/skill/labor/lumberjacking,
+		/datum/attribute/skill/craft/masonry,
+		/datum/attribute/skill/craft/crafting,
+		/datum/attribute/skill/craft/carpentry,
+		/datum/attribute/skill/craft/engineering,
+		/datum/attribute/skill/craft/smelting,
+		/datum/attribute/skill/misc/sewing,
+		/datum/attribute/skill/labor/farming,
+		/datum/attribute/skill/misc/medicine,
+		/datum/attribute/skill/craft/tanning,
+		/datum/attribute/skill/labor/butchering,
+		/datum/attribute/skill/labor/taming,
+		/datum/attribute/skill/craft/alchemy,
+		/datum/attribute/skill/craft/blacksmithing,
+		/datum/attribute/skill/craft/armorsmithing,
+		/datum/attribute/skill/craft/weaponsmithing,
+		/datum/attribute/skill/craft/cooking
 	)
 
 	for(var/skill_type in craft_skills)
@@ -208,8 +208,8 @@
 		for(var/skill_type in craft_skills)
 			spawned.adjust_skillrank(skill_type, pick(0,0,1), TRUE)
 
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_END, 1)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_INT, 1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_ENDURANCE, 1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_INTELLIGENCE, 1)
 
 /datum/outfit/town_elder/master_of_crafts_and_labor
 	name = "Master of Crafts and Labor (Town Elder)"
@@ -237,20 +237,20 @@
 	allowed_patrons = ALL_TEMPLE_PATRONS
 
 	jobstats = list(
-		STATKEY_STR = 2,
-		STATKEY_INT = 1,
-		STATKEY_END = 2
+		STAT_STRENGTH = 2,
+		STAT_INTELLIGENCE = 1,
+		STAT_ENDURANCE = 2
 	)
 
 	skills = list(
-		/datum/skill/craft/sewing = 2,
-		/datum/skill/misc/medicine = 3,
-		/datum/skill/combat/unarmed = 2,
-		/datum/skill/combat/wrestling = 2,
-		/datum/skill/misc/athletics = 2,
-		/datum/skill/misc/reading = 3,
-		/datum/skill/magic/holy = 3,
-		/datum/skill/misc/music = 4
+		/datum/attribute/skill/misc/sewing = 2,
+		/datum/attribute/skill/misc/medicine = 3,
+		/datum/attribute/skill/combat/unarmed = 2,
+		/datum/attribute/skill/combat/wrestling = 2,
+		/datum/attribute/skill/misc/athletics = 2,
+		/datum/attribute/skill/misc/reading = 3,
+		/datum/attribute/skill/magic/holy = 3,
+		/datum/attribute/skill/misc/music = 4
 	)
 
 	traits = list(
@@ -273,10 +273,10 @@
 			ADD_TRAIT(spawned, TRAIT_BEAUTIFUL, TRAIT_GENERIC)
 			ADD_TRAIT(spawned, TRAIT_EMPATH, TRAIT_GENERIC)
 			spawned.virginity = FALSE
-			spawned.adjust_skillrank(/datum/skill/misc/music, 2, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/misc/music, 2, TRUE)
 			spawned.cmode_music = 'sound/music/cmode/church/CombatEora.ogg'
 		if(/datum/patron/divine/noc)
-			spawned.adjust_skillrank(/datum/skill/labor/mathematics, 2, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/labor/mathematics, 2, TRUE)
 			var/language = pickweight(list("Dwarvish" = 1, "Elvish" = 1, "Hellspeak" = 1, "Zaladin" = 1, "Orcish" = 1,))
 			switch(language)
 				if("Dwarvish")
@@ -306,46 +306,46 @@
 					)
 			spawned.cmode_music = 'sound/music/cmode/church/CombatNoc.ogg'
 		if(/datum/patron/divine/pestra)
-			spawned.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
-			spawned.adjust_skillrank(/datum/skill/craft/alchemy, 1, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/misc/medicine, 1, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/craft/alchemy, 1, TRUE)
 			spawned.cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'
 		if(/datum/patron/divine/dendor)
-			spawned.adjust_skillrank(/datum/skill/labor/farming, 2, TRUE)
-			spawned.adjust_skillrank(/datum/skill/labor/taming, 1, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/labor/farming, 2, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/labor/taming, 1, TRUE)
 			ADD_TRAIT(spawned, TRAIT_SEEDKNOW, TRAIT_GENERIC)
 			spawned.cmode_music = 'sound/music/cmode/church/CombatDendor.ogg'
 		if(/datum/patron/divine/abyssor)
-			spawned.adjust_skillrank(/datum/skill/labor/fishing, 2, TRUE)
-			spawned.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/labor/fishing, 2, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/misc/swimming, 2, TRUE)
 			spawned.cmode_music = 'sound/music/cmode/church/CombatAbyssor.ogg'
 		if(/datum/patron/divine/ravox)
-			spawned.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/combat/polearms, 1, TRUE)
 			var/sword_skill = rand(1,2)
 			var/whip_skill = rand(1,2)
 			var/axe_skill = rand(0,1)
-			spawned.adjust_skillrank(/datum/skill/combat/swords, sword_skill, TRUE)
-			spawned.adjust_skillrank(/datum/skill/combat/whipsflails, whip_skill, TRUE)
-			spawned.adjust_skillrank(/datum/skill/combat/axesmaces, axe_skill, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/combat/swords, sword_skill, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/combat/whipsflails, whip_skill, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/combat/axesmaces, axe_skill, TRUE)
 			spawned.cmode_music = 'sound/music/cmode/church/CombatRavox.ogg'
 		if(/datum/patron/divine/xylix)
-			spawned.adjust_skillrank(/datum/skill/misc/stealing, 2, TRUE)
-			spawned.adjust_skillrank(/datum/skill/misc/music, 3, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/misc/stealing, 2, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/misc/music, 3, TRUE)
 			spawned.cmode_music = 'sound/music/cmode/church/CombatXylix.ogg'
 		if(/datum/patron/divine/malum)
-			spawned.adjust_skillrank(/datum/skill/craft/blacksmithing, 2, TRUE)
-			spawned.adjust_skillrank(/datum/skill/craft/smelting, 2, TRUE)
-			spawned.adjust_skillrank(/datum/skill/craft/armorsmithing, 1, TRUE)
-			spawned.adjust_skillrank(/datum/skill/craft/weaponsmithing, 1, TRUE)
-			spawned.adjust_skillrank(/datum/skill/craft/engineering, 1, TRUE)
-			spawned.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
-			spawned.adjust_skillrank(/datum/skill/craft/masonry, 1, TRUE)
-			spawned.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/craft/blacksmithing, 2, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/craft/smelting, 2, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/craft/armorsmithing, 1, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/craft/weaponsmithing, 1, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/craft/engineering, 1, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/craft/carpentry, 1, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/craft/masonry, 1, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/craft/crafting, 1, TRUE)
 			ADD_TRAIT(spawned, TRAIT_MALUMFIRE, TRAIT_GENERIC)
 			spawned.cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'
 
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_skillrank(/datum/skill/magic/holy, 2, TRUE)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_END, 1)
+		spawned.adjust_skillrank(/datum/attribute/skill/magic/holy, 2, TRUE)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_ENDURANCE, 1)
 
 	var/holder = spawned.patron?.devotion_holder
 	if(holder)
@@ -402,24 +402,24 @@
 	category_tags = list(CTAG_TOWN_ELDER)
 
 	jobstats = list(
-		STATKEY_INT = 2,
-		STATKEY_SPD = 1,
-		STATKEY_STR = 1
+		STAT_INTELLIGENCE = 2,
+		STAT_SPEED = 1,
+		STAT_STRENGTH = 1
 	)
 
 	skills = list(
-		/datum/skill/combat/unarmed = 1,
-		/datum/skill/combat/wrestling = 1,
-		/datum/skill/combat/swords = 2,
-		/datum/skill/craft/crafting = 2,
-		/datum/skill/misc/swimming = 3,
-		/datum/skill/misc/climbing = 2,
-		/datum/skill/misc/riding = 4,
-		/datum/skill/craft/sewing = 1,
-		/datum/skill/misc/reading = 4,
-		/datum/skill/craft/cooking = 1,
-		/datum/skill/misc/music = 6,
-		/datum/skill/misc/athletics = 2
+		/datum/attribute/skill/combat/unarmed = 1,
+		/datum/attribute/skill/combat/wrestling = 1,
+		/datum/attribute/skill/combat/swords = 2,
+		/datum/attribute/skill/craft/crafting = 2,
+		/datum/attribute/skill/misc/swimming = 3,
+		/datum/attribute/skill/misc/climbing = 2,
+		/datum/attribute/skill/misc/riding = 4,
+		/datum/attribute/skill/misc/sewing = 1,
+		/datum/attribute/skill/misc/reading = 4,
+		/datum/attribute/skill/craft/cooking = 1,
+		/datum/attribute/skill/misc/music = 6,
+		/datum/attribute/skill/misc/athletics = 2
 	)
 
 	traits = list(
@@ -437,10 +437,10 @@
 	spawned.inspiration = new /datum/inspiration(spawned)
 
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_END, 1)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_INT, 1)
+		spawned.adjust_skillrank(/datum/attribute/skill/craft/crafting, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/misc/reading, 1, TRUE)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_ENDURANCE, 1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_INTELLIGENCE, 1)
 
 /datum/outfit/town_elder/lorekeeper
 	name = "Lorekeeper (Town Elder)"

@@ -22,19 +22,19 @@
 	exp_requirements = list(EXP_TYPE_MEDICAL = 900)
 
 	jobstats = list(
-		STATKEY_STR = -1,
-		STATKEY_INT = 4,
-		STATKEY_CON = -1
+		STAT_STRENGTH = -1,
+		STAT_INTELLIGENCE = 4,
+		STAT_CONSTITUTION = -1
 	)
 
 	skills = list(
-		/datum/skill/misc/reading = 5,
-		/datum/skill/craft/crafting = 2,
-		/datum/skill/combat/knives = 2,
-		/datum/skill/craft/sewing = 3,
-		/datum/skill/misc/medicine = 5,
-		/datum/skill/craft/alchemy = 3,
-		/datum/skill/labor/mathematics = 3
+		/datum/attribute/skill/misc/reading = 5,
+		/datum/attribute/skill/craft/crafting = 2,
+		/datum/attribute/skill/combat/knives = 2,
+		/datum/attribute/skill/misc/sewing = 3,
+		/datum/attribute/skill/misc/medicine = 5,
+		/datum/attribute/skill/craft/alchemy = 3,
+		/datum/attribute/skill/labor/mathematics = 3
 	)
 
 	traits = list(
@@ -49,7 +49,7 @@
 	spawned.virginity = TRUE
 
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/misc/medicine, 1, TRUE)
 
 	if(spawned.dna?.species?.id != SPEC_ID_MEDICATOR)
 		ADD_TRAIT(spawned, TRAIT_NOBLE_BLOOD, JOB_TRAIT)

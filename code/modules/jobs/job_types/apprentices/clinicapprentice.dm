@@ -28,18 +28,18 @@
 	exp_types_granted = list(EXP_TYPE_MEDICAL)
 
 	jobstats = list(
-		STATKEY_INT = 1
+		STAT_INTELLIGENCE = 1
 	)
 
 	skills = list(
-		/datum/skill/combat/wrestling = 1,
-		/datum/skill/combat/unarmed = 1,
-		/datum/skill/misc/athletics = 1,
-		/datum/skill/craft/crafting = 2,
-		/datum/skill/labor/farming = 2,
-		/datum/skill/misc/reading = 3,
-		/datum/skill/craft/alchemy = 2,
-		/datum/skill/misc/medicine = 2
+		/datum/attribute/skill/combat/wrestling = 1,
+		/datum/attribute/skill/combat/unarmed = 1,
+		/datum/attribute/skill/misc/athletics = 1,
+		/datum/attribute/skill/craft/crafting = 2,
+		/datum/attribute/skill/labor/farming = 2,
+		/datum/attribute/skill/misc/reading = 3,
+		/datum/attribute/skill/craft/alchemy = 2,
+		/datum/attribute/skill/misc/medicine = 2
 	)
 
 	traits = list(
@@ -53,14 +53,14 @@
 
 	exp_types_granted  = list(EXP_TYPE_MEDICAL)
 
-	skill_multipliers = list(/datum/skill/misc/medicine = 1.25, /datum/skill/craft/alchemy = 1.25)
+	skill_multipliers = list(/datum/attribute/skill/misc/medicine = 1.25, /datum/attribute/skill/craft/alchemy = 1.25)
 
 /datum/job/clinicapprentice/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	if(spawned.age != AGE_CHILD)
-		spawned.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/unarmed, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/misc/athletics, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/wrestling, 1, TRUE)
 
 /datum/outfit/clinicapprentice
 	name = "Clinic Apprentice"

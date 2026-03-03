@@ -8,17 +8,17 @@
 	cmode_music = 'sound/music/cmode/towner/CombatTowner.ogg'
 
 	skills = list(
-		/datum/skill/combat/knives = 1,
-		/datum/skill/combat/unarmed = 1,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/craft/crafting = 1,
-		/datum/skill/misc/climbing = 1,
-		/datum/skill/misc/swimming = 1,
-		/datum/skill/misc/athletics = 1,
-		/datum/skill/misc/climbing = 2,
-		/datum/skill/combat/axesmaces = 2,
-		/datum/skill/craft/masonry = 4,
-		/datum/skill/labor/mining = 2
+		/datum/attribute/skill/combat/knives = 1,
+		/datum/attribute/skill/combat/unarmed = 1,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/craft/crafting = 1,
+		/datum/attribute/skill/misc/climbing = 1,
+		/datum/attribute/skill/misc/swimming = 1,
+		/datum/attribute/skill/misc/athletics = 1,
+		/datum/attribute/skill/misc/climbing = 2,
+		/datum/attribute/skill/combat/axesmaces = 2,
+		/datum/attribute/skill/craft/masonry = 4,
+		/datum/attribute/skill/labor/mining = 2
 	)
 
 
@@ -27,9 +27,9 @@
 	if(prob(50))
 		spawned.cmode_music = 'sound/music/cmode/towner/CombatTowner2.ogg'
 
-	spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_STR, pick(0,1))
-	spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_CON, pick(0,1))
-	spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_END, pick(0,1))
+	spawned.adjust_stat_modifier(STATMOD_JOB, STAT_STRENGTH, pick(0,1))
+	spawned.adjust_stat_modifier(STATMOD_JOB, STAT_CONSTITUTION, pick(0,1))
+	spawned.adjust_stat_modifier(STATMOD_JOB, STAT_ENDURANCE, pick(0,1))
 
 
 

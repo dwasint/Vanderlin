@@ -8,23 +8,23 @@
 	total_positions = 5
 
 	jobstats = list(
-		STATKEY_END = 2,
-		STATKEY_SPD = 2
+		STAT_ENDURANCE = 2,
+		STAT_SPEED = 2
 
 	)
 
 	skills = list(
-		/datum/skill/combat/swords = 3,
-		/datum/skill/combat/unarmed = 3,
-		/datum/skill/combat/wrestling = 2,
-		/datum/skill/labor/fishing = 3,
-		/datum/skill/misc/swimming = 4,
-		/datum/skill/misc/climbing = 5,
-		/datum/skill/misc/sneaking = 2,
-		/datum/skill/misc/lockpicking = 3,
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/craft/cooking = 3
+		/datum/attribute/skill/combat/swords = 3,
+		/datum/attribute/skill/combat/unarmed = 3,
+		/datum/attribute/skill/combat/wrestling = 2,
+		/datum/attribute/skill/labor/fishing = 3,
+		/datum/attribute/skill/misc/swimming = 4,
+		/datum/attribute/skill/misc/climbing = 5,
+		/datum/attribute/skill/misc/sneaking = 2,
+		/datum/attribute/skill/misc/lockpicking = 3,
+		/datum/attribute/skill/misc/athletics = 3,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/craft/cooking = 3
 	)
 
 	traits = list(

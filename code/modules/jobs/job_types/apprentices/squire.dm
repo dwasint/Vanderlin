@@ -47,23 +47,23 @@
 	category_tags = list(CTAG_SQUIRE)
 
 	jobstats = list(
-		STATKEY_SPD = -1
+		STAT_SPEED = -1
 	)
 
 	skills = list(
-		/datum/skill/combat/axesmaces = 1,
-		/datum/skill/combat/crossbows = 1,
-		/datum/skill/combat/wrestling = 2,
-		/datum/skill/combat/unarmed = 2,
-		/datum/skill/combat/polearms = 2,
-		/datum/skill/combat/knives = 1,
-		/datum/skill/misc/swimming = 2,
-		/datum/skill/misc/climbing = 2,
-		/datum/skill/misc/athletics = 2,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/misc/riding = 2,
-		/datum/skill/craft/weaponsmithing = 1,
-		/datum/skill/craft/armorsmithing = 1
+		/datum/attribute/skill/combat/axesmaces = 1,
+		/datum/attribute/skill/combat/crossbows = 1,
+		/datum/attribute/skill/combat/wrestling = 2,
+		/datum/attribute/skill/combat/unarmed = 2,
+		/datum/attribute/skill/combat/polearms = 2,
+		/datum/attribute/skill/combat/knives = 1,
+		/datum/attribute/skill/misc/swimming = 2,
+		/datum/attribute/skill/misc/climbing = 2,
+		/datum/attribute/skill/misc/athletics = 2,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/misc/riding = 2,
+		/datum/attribute/skill/craft/weaponsmithing = 1,
+		/datum/attribute/skill/craft/armorsmithing = 1
 	)
 
 	traits = list(
@@ -73,8 +73,8 @@
 /datum/job/advclass/squire/lancer/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	if(spawned.age == AGE_ADULT)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_STR, -1)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_CON, -1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_STRENGTH, -1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_CONSTITUTION, -1)
 
 	if(spawned.gender == MALE && spawned.dna?.species)
 		spawned.dna.species.soundpack_m = new /datum/voicepack/male/squire()
@@ -100,22 +100,22 @@
 	category_tags = list(CTAG_SQUIRE)
 
 	jobstats = list(
-		STATKEY_SPD = -1
+		STAT_SPEED = -1
 	)
 
 	skills = list(
-		/datum/skill/combat/axesmaces = 2,
-		/datum/skill/combat/crossbows = 2,
-		/datum/skill/combat/wrestling = 2,
-		/datum/skill/combat/unarmed = 2,
-		/datum/skill/combat/swords = 2,
-		/datum/skill/combat/knives = 1,
-		/datum/skill/misc/swimming = 2,
-		/datum/skill/misc/climbing = 2,
-		/datum/skill/misc/athletics = 2,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/craft/weaponsmithing = 1,
-		/datum/skill/craft/armorsmithing = 1
+		/datum/attribute/skill/combat/axesmaces = 2,
+		/datum/attribute/skill/combat/crossbows = 2,
+		/datum/attribute/skill/combat/wrestling = 2,
+		/datum/attribute/skill/combat/unarmed = 2,
+		/datum/attribute/skill/combat/swords = 2,
+		/datum/attribute/skill/combat/knives = 1,
+		/datum/attribute/skill/misc/swimming = 2,
+		/datum/attribute/skill/misc/climbing = 2,
+		/datum/attribute/skill/misc/athletics = 2,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/craft/weaponsmithing = 1,
+		/datum/attribute/skill/craft/armorsmithing = 1
 	)
 
 	traits = list(
@@ -125,8 +125,8 @@
 /datum/job/advclass/squire/footman/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	if(spawned.age == AGE_ADULT)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_STR, -1)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_CON, -1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_STRENGTH, -1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_CONSTITUTION, -1)
 
 	if(spawned.gender == MALE && spawned.dna?.species)
 		spawned.dna.species.soundpack_m = new /datum/voicepack/male/squire()
@@ -152,24 +152,24 @@
 	category_tags = list(CTAG_SQUIRE)
 
 	jobstats = list(
-		STATKEY_STR = -1,
-		STATKEY_CON = -1
+		STAT_STRENGTH = -1,
+		STAT_CONSTITUTION = -1
 	)
 
 	skills = list(
-		/datum/skill/combat/bows = 2,
-		/datum/skill/combat/crossbows = 1,
-		/datum/skill/combat/wrestling = 1,
-		/datum/skill/combat/unarmed = 1,
-		/datum/skill/combat/swords = 2,
-		/datum/skill/combat/knives = 2,
-		/datum/skill/misc/swimming = 2,
-		/datum/skill/misc/climbing = 3,
-		/datum/skill/misc/athletics = 2,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/misc/riding = 1,
-		/datum/skill/craft/weaponsmithing = 1,
-		/datum/skill/craft/armorsmithing = 1
+		/datum/attribute/skill/combat/bows = 2,
+		/datum/attribute/skill/combat/crossbows = 1,
+		/datum/attribute/skill/combat/wrestling = 1,
+		/datum/attribute/skill/combat/unarmed = 1,
+		/datum/attribute/skill/combat/swords = 2,
+		/datum/attribute/skill/combat/knives = 2,
+		/datum/attribute/skill/misc/swimming = 2,
+		/datum/attribute/skill/misc/climbing = 3,
+		/datum/attribute/skill/misc/athletics = 2,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/misc/riding = 1,
+		/datum/attribute/skill/craft/weaponsmithing = 1,
+		/datum/attribute/skill/craft/armorsmithing = 1
 	)
 
 	traits = list(
@@ -179,7 +179,7 @@
 /datum/job/advclass/squire/skirmisher/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	if(spawned.age == AGE_ADULT)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_SPD, -1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_SPEED, -1)
 
 	if(spawned.gender == MALE && spawned.dna?.species)
 		spawned.dna.species.soundpack_m = new /datum/voicepack/male/squire()

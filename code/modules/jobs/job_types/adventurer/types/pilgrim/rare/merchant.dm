@@ -11,19 +11,19 @@
 	var/merchant_type
 
 	jobstats = list(
-		STATKEY_INT = 2,
-		STATKEY_SPD = 1
+		STAT_INTELLIGENCE = 2,
+		STAT_SPEED = 1
 	)
 
 	skills = list(
-		/datum/skill/misc/reading = 3,
-		/datum/skill/combat/knives = 2,
-		/datum/skill/misc/riding = 2,
-		/datum/skill/craft/crafting = 2,
-		/datum/skill/craft/cooking = 1,
-		/datum/skill/craft/sewing = 2,
-		/datum/skill/craft/alchemy = 1,
-		/datum/skill/labor/mathematics = 5
+		/datum/attribute/skill/misc/reading = 3,
+		/datum/attribute/skill/combat/knives = 2,
+		/datum/attribute/skill/misc/riding = 2,
+		/datum/attribute/skill/craft/crafting = 2,
+		/datum/attribute/skill/craft/cooking = 1,
+		/datum/attribute/skill/misc/sewing = 2,
+		/datum/attribute/skill/craft/alchemy = 1,
+		/datum/attribute/skill/labor/mathematics = 5
 	)
 
 	traits = list(
@@ -42,13 +42,13 @@
 	if(merchant_type)
 		switch(merchant_type)
 			if("FOOD")
-				spawned.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
+				spawned.adjust_skillrank(/datum/attribute/skill/craft/cooking, 2, TRUE)
 			if("HEAL")
-				spawned.adjust_skillrank(/datum/skill/craft/alchemy, 2, TRUE)
+				spawned.adjust_skillrank(/datum/attribute/skill/craft/alchemy, 2, TRUE)
 			if("SILK")
-				spawned.adjust_skillrank(/datum/skill/craft/sewing, 2, TRUE)
+				spawned.adjust_skillrank(/datum/attribute/skill/misc/sewing, 2, TRUE)
 			if("GEMS")
-				spawned.adjust_skillrank(/datum/skill/craft/blacksmithing, 1, TRUE)
+				spawned.adjust_skillrank(/datum/attribute/skill/craft/blacksmithing, 1, TRUE)
 	// Randomize it again for the next possible merchant
 	merchant_type = pickweight(list("FOOD" = 4, "HEAL" = 2, "SILK" = 1, "GEMS" = 1))
 

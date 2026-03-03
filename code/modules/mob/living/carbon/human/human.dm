@@ -448,7 +448,7 @@
 
 			var/toxloss = getToxLoss()
 			var/oxyloss = getOxyLoss()
-			var/painpercent = (get_complex_pain() / (STAEND * 12)) * 100
+			var/painpercent = (get_complex_pain() / (GET_MOB_ATTRIBUTE_VALUE(src, STAT_ENDURANCE) * 12)) * 100
 
 
 			var/usedloss = 0
@@ -577,7 +577,7 @@
 
 /mob/living/carbon/human/is_literate()
 	if(mind)
-		if(get_skill_level(/datum/skill/misc/reading) > 0)
+		if(get_skill_level(/datum/attribute/skill/misc/reading) > 0)
 			return TRUE
 		else
 			return FALSE

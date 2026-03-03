@@ -17,20 +17,20 @@
 	exp_types_granted  = list(EXP_TYPE_COMBAT)
 
 	jobstats = list(
-		STATKEY_STR = 1,
-		STATKEY_CON = 3,
-		STATKEY_SPD = -1,
+		STAT_STRENGTH = 1,
+		STAT_CONSTITUTION = 3,
+		STAT_SPEED = -1,
 	)
 
 	skills = list(
-		/datum/skill/combat/knives = 3,
-		/datum/skill/combat/wrestling = 3,
-		/datum/skill/combat/unarmed = 3,
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/misc/climbing = 3,
-		/datum/skill/misc/reading = 3,
-		/datum/skill/craft/sewing = 2,
-		/datum/skill/misc/medicine = 2,
+		/datum/attribute/skill/combat/knives = 3,
+		/datum/attribute/skill/combat/wrestling = 3,
+		/datum/attribute/skill/combat/unarmed = 3,
+		/datum/attribute/skill/misc/athletics = 3,
+		/datum/attribute/skill/misc/climbing = 3,
+		/datum/attribute/skill/misc/reading = 3,
+		/datum/attribute/skill/misc/sewing = 2,
+		/datum/attribute/skill/misc/medicine = 2,
 	)
 
 	traits = list(TRAIT_CRITICAL_RESISTANCE, TRAIT_NOPAINSTUN)

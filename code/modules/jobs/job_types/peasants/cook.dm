@@ -20,26 +20,26 @@
 	job_bitflag = BITFLAG_CONSTRUCTOR
 
 	jobstats = list(
-		STATKEY_END = 1,
-		STATKEY_INT = 1,
-		STATKEY_CON = 1,
+		STAT_ENDURANCE = 1,
+		STAT_INTELLIGENCE = 1,
+		STAT_CONSTITUTION = 1,
 	)
 
 	skills = list(
-		/datum/skill/combat/knives = 2,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/craft/cooking = 4,
-		/datum/skill/craft/crafting = 1,
-		/datum/skill/craft/sewing = 1,
-		/datum/skill/labor/butchering = 3,
-		/datum/skill/labor/taming = 1,
-		/datum/skill/labor/farming = 1
+		/datum/attribute/skill/combat/knives = 2,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/craft/cooking = 4,
+		/datum/attribute/skill/craft/crafting = 1,
+		/datum/attribute/skill/misc/sewing = 1,
+		/datum/attribute/skill/labor/butchering = 3,
+		/datum/attribute/skill/labor/taming = 1,
+		/datum/attribute/skill/labor/farming = 1
 	)
 
 /datum/job/cook/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/craft/cooking, 1, TRUE)
 
 /datum/outfit/cook
 	name = "Cook"

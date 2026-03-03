@@ -9,38 +9,38 @@
 	cmode_music = 'sound/music/cmode/Combat_Weird.ogg'
 
 	jobstats = list(
-		STATKEY_CON = 1,
-		STATKEY_END = 3,
-		STATKEY_INT = 4, //Unique specimen, They learned many things, it basically nullify and give a bonus of +2 to their INT.
-		STATKEY_SPD = 2, //Gee, Why do this kobold get more stats than everyone else? the answer is because they have to at the very least escape from being killed and looted.
-		STATKEY_PER = -2, //-4 PER with a chance of it being a -5 hit hard
+		STAT_CONSTITUTION = 1,
+		STAT_ENDURANCE = 3,
+		STAT_INTELLIGENCE = 4, //Unique specimen, They learned many things, it basically nullify and give a bonus of +2 to their INT.
+		STAT_SPEED = 2, //Gee, Why do this kobold get more stats than everyone else? the answer is because they have to at the very least escape from being killed and looted.
+		STAT_PERCEPTION = -2, //-4 PER with a chance of it being a -5 hit hard
 	)
 
 	skills = list(
-		/datum/skill/combat/wrestling = 3, //To get out of grasps slippery bastard
-		/datum/skill/combat/unarmed = 1,
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/misc/climbing = 3,
-		/datum/skill/misc/swimming = 2,
-		/datum/skill/misc/reading = 2,
-		/datum/skill/labor/mathematics = 2,
+		/datum/attribute/skill/combat/wrestling = 3, //To get out of grasps slippery bastard
+		/datum/attribute/skill/combat/unarmed = 1,
+		/datum/attribute/skill/misc/athletics = 3,
+		/datum/attribute/skill/misc/climbing = 3,
+		/datum/attribute/skill/misc/swimming = 2,
+		/datum/attribute/skill/misc/reading = 2,
+		/datum/attribute/skill/labor/mathematics = 2,
 		//Can't expect those kobolds to not be thieves or assist with such things.
-		/datum/skill/misc/stealing = 2,
-		/datum/skill/misc/lockpicking = 2,
+		/datum/attribute/skill/misc/stealing = 2,
+		/datum/attribute/skill/misc/lockpicking = 2,
 		//Jack of All Trade, Master of None.
-		/datum/skill/craft/sewing = 3,
-		/datum/skill/misc/medicine = 3,
-		/datum/skill/labor/fishing = 3,
-		/datum/skill/labor/butchering = 3,
-		/datum/skill/craft/cooking = 3,
-		/datum/skill/craft/tanning = 3,
-		/datum/skill/craft/crafting = 3,
-		/datum/skill/craft/engineering = 3,
-		/datum/skill/craft/carpentry = 3,
-		/datum/skill/craft/masonry = 3,
-		/datum/skill/craft/traps = 3,
-		/datum/skill/craft/weaponsmithing = 1,
-		/datum/skill/craft/armorsmithing = 1,
+		/datum/attribute/skill/misc/sewing = 3,
+		/datum/attribute/skill/misc/medicine = 3,
+		/datum/attribute/skill/labor/fishing = 3,
+		/datum/attribute/skill/labor/butchering = 3,
+		/datum/attribute/skill/craft/cooking = 3,
+		/datum/attribute/skill/craft/tanning = 3,
+		/datum/attribute/skill/craft/crafting = 3,
+		/datum/attribute/skill/craft/engineering = 3,
+		/datum/attribute/skill/craft/carpentry = 3,
+		/datum/attribute/skill/craft/masonry = 3,
+		/datum/attribute/skill/craft/traps = 3,
+		/datum/attribute/skill/craft/weaponsmithing = 1,
+		/datum/attribute/skill/craft/armorsmithing = 1,
 	)
 
 	traits = list(

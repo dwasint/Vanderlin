@@ -12,36 +12,36 @@
 	is_recognized = TRUE
 
 	jobstats = list(
-		STATKEY_STR = 2,
-		STATKEY_INT = 1,
-		STATKEY_END = 1,
-		STATKEY_CON = 1,
-		STATKEY_PER = 1
+		STAT_STRENGTH = 2,
+		STAT_INTELLIGENCE = 1,
+		STAT_ENDURANCE = 1,
+		STAT_CONSTITUTION = 1,
+		STAT_PERCEPTION = 1
 	)
 
 	skills = list(
-		/datum/skill/combat/axesmaces = 2,
-		/datum/skill/combat/wrestling = 2,
-		/datum/skill/combat/unarmed = 2,
-		/datum/skill/craft/crafting = 4,
-		/datum/skill/labor/mining = 6,
-		/datum/skill/misc/swimming = 3,
-		/datum/skill/misc/climbing = 3,
-		/datum/skill/craft/masonry = 4,
-		/datum/skill/craft/traps = 1,
-		/datum/skill/craft/engineering = 4,
-		/datum/skill/craft/smelting = 6,
-		/datum/skill/misc/reading = 1
+		/datum/attribute/skill/combat/axesmaces = 2,
+		/datum/attribute/skill/combat/wrestling = 2,
+		/datum/attribute/skill/combat/unarmed = 2,
+		/datum/attribute/skill/craft/crafting = 4,
+		/datum/attribute/skill/labor/mining = 6,
+		/datum/attribute/skill/misc/swimming = 3,
+		/datum/attribute/skill/misc/climbing = 3,
+		/datum/attribute/skill/craft/masonry = 4,
+		/datum/attribute/skill/craft/traps = 1,
+		/datum/attribute/skill/craft/engineering = 4,
+		/datum/attribute/skill/craft/smelting = 6,
+		/datum/attribute/skill/misc/reading = 1
 	)
 
 /datum/job/advclass/pilgrim/rare/minermaster/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
-	spawned.adjust_skillrank(/datum/skill/misc/athletics, pick(3, 3, 4), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/misc/athletics, pick(3, 3, 4), TRUE)
 
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_END, -1)
-		spawned.adjust_skillrank(/datum/skill/craft/traps, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/craft/engineering, 1, TRUE)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_ENDURANCE, -1)
+		spawned.adjust_skillrank(/datum/attribute/skill/craft/traps, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/craft/engineering, 1, TRUE)
 
 /datum/outfit/pilgrim/minermaster
 	name = "Master Miner (Pilgrim)"

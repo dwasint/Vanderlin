@@ -491,9 +491,9 @@ GLOBAL_LIST_EMPTY(rousman_ambush_objects)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_ZJUMP, TRAIT_GENERIC)
 
-	H.adjust_skillrank(/datum/skill/misc/climbing, 5, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/athletics, 5, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/sneaking, 5, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/misc/climbing, 5, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/misc/athletics, 5, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/misc/sneaking, 5, TRUE)
 
 /mob/living/carbon/human/species/rousman/seer/with_ai
 	ai_controller = /datum/ai_controller/human_npc
@@ -549,9 +549,9 @@ GLOBAL_LIST_EMPTY(rousman_ambush_objects)
 		/datum/action/cooldown/spell/sundering_lightning,
 	)
 
-	seer.adjust_skillrank(/datum/skill/magic/arcane, 5, TRUE)
-	seer.adjust_skillrank(/datum/skill/magic/blood, 2, TRUE)
-	seer.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
+	seer.adjust_skillrank(/datum/attribute/skill/magic/arcane, 5, TRUE)
+	seer.adjust_skillrank(/datum/attribute/skill/magic/blood, 2, TRUE)
+	seer.adjust_skillrank(/datum/attribute/skill/misc/reading, 2, TRUE)
 	seer.adjust_spell_points(17)
 	seer.generate_random_attunements(rand(4,6))
 	seer.mana_pool.set_intrinsic_recharge(MANA_ALL_LEYLINES)
@@ -589,9 +589,9 @@ GLOBAL_LIST_EMPTY(rousman_ambush_objects)
 		/datum/action/cooldown/spell/sundering_lightning,
 	)
 
-	seer.adjust_skillrank(/datum/skill/magic/arcane, 5, TRUE)
-	seer.adjust_skillrank(/datum/skill/magic/blood, 2, TRUE)
-	seer.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
+	seer.adjust_skillrank(/datum/attribute/skill/magic/arcane, 5, TRUE)
+	seer.adjust_skillrank(/datum/attribute/skill/magic/blood, 2, TRUE)
+	seer.adjust_skillrank(/datum/attribute/skill/misc/reading, 2, TRUE)
 	seer.adjust_spell_points(17)
 	seer.generate_random_attunements(rand(4,6))
 	seer.mana_pool.set_intrinsic_recharge(MANA_ALL_LEYLINES)

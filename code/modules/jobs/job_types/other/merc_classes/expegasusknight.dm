@@ -7,24 +7,24 @@
 	total_positions = 0 //Disabled because Lakkari isn't lore-approved
 
 	jobstats = list(
-		STATKEY_END = 2,
-		STATKEY_STR = 1,
-		STATKEY_SPD = 2
+		STAT_ENDURANCE = 2,
+		STAT_STRENGTH = 1,
+		STAT_SPEED = 2
 	)
 
 	skills = list(
-		/datum/skill/combat/knives = 3,
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/combat/unarmed = 2,
-		/datum/skill/combat/wrestling = 2,
-		/datum/skill/misc/sneaking = 1,
-		/datum/skill/misc/swimming = 2,
-		/datum/skill/misc/climbing = 3,
-		/datum/skill/misc/medicine = 1,
-		/datum/skill/combat/swords = 3,
-		/datum/skill/combat/shields = 3,
-		/datum/skill/misc/reading = 2,
-		/datum/skill/misc/riding = 3
+		/datum/attribute/skill/combat/knives = 3,
+		/datum/attribute/skill/misc/athletics = 3,
+		/datum/attribute/skill/combat/unarmed = 2,
+		/datum/attribute/skill/combat/wrestling = 2,
+		/datum/attribute/skill/misc/sneaking = 1,
+		/datum/attribute/skill/misc/swimming = 2,
+		/datum/attribute/skill/misc/climbing = 3,
+		/datum/attribute/skill/misc/medicine = 1,
+		/datum/attribute/skill/combat/swords = 3,
+		/datum/attribute/skill/combat/shields = 3,
+		/datum/attribute/skill/misc/reading = 2,
+		/datum/attribute/skill/misc/riding = 3
 	)
 
 	traits = list(

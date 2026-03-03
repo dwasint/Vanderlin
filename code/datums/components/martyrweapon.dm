@@ -266,20 +266,20 @@
 					I.force_wielded = active_safe_damage_wielded
 				return
 			if(STATE_MARTYR)
-				bound_user.STASTR += stat_bonus_martyr
-				//bound_user.STASPD += stat_bonus_martyr
-				bound_user.STACON += stat_bonus_martyr
-				bound_user.STAEND += stat_bonus_martyr
-				bound_user.STAINT += stat_bonus_martyr
-				bound_user.STAPER += stat_bonus_martyr
-				bound_user.STALUC += stat_bonus_martyr
+				GET_MOB_ATTRIBUTE_VALUE(bound_user, STAT_STRENGTH) += stat_bonus_martyr
+				//GET_MOB_ATTRIBUTE_VALUE(bound_user, STAT_SPEED) += stat_bonus_martyr
+				GET_MOB_ATTRIBUTE_VALUE(bound_user, STAT_CONSTITUTION) += stat_bonus_martyr
+				GET_MOB_ATTRIBUTE_VALUE(bound_user, STAT_ENDURANCE) += stat_bonus_martyr
+				GET_MOB_ATTRIBUTE_VALUE(bound_user, STAT_INTELLIGENCE) += stat_bonus_martyr
+				GET_MOB_ATTRIBUTE_VALUE(bound_user, STAT_PERCEPTION) += stat_bonus_martyr
+				GET_MOB_ATTRIBUTE_VALUE(bound_user, STAT_FORTUNE) += stat_bonus_martyr
 				H.adjust_energy(9999)
 			if(STATE_MARTYRULT) // This ONLY triggers a minute and a half into the ult. They'll have this for thirty seconds and then DIE. Go off King.
 				ADD_TRAIT(bound_user, TRAIT_NOSTAMINA, TRAIT_GENERIC)
-				bound_user.STASTR = 20
-				bound_user.STAPER = 20
-				bound_user.STACON = 20
-				bound_user.STAEND = 20
+				GET_MOB_ATTRIBUTE_VALUE(bound_user, STAT_STRENGTH) = 20
+				GET_MOB_ATTRIBUTE_VALUE(bound_user, STAT_PERCEPTION) = 20
+				GET_MOB_ATTRIBUTE_VALUE(bound_user, STAT_CONSTITUTION) = 20
+				GET_MOB_ATTRIBUTE_VALUE(bound_user, STAT_ENDURANCE) = 20
 
 //This is called regardless of the activated state (safe or not)
 /datum/component/martyrweapon/proc/deactivate()
@@ -366,16 +366,16 @@
 				I.max_blade_int = 9999
 				I.blade_int = I.max_blade_int
 
-				bound_user.adjust_skillrank(/datum/skill/misc/athletics, 6, FALSE)
+				bound_user.adjust_skillrank(/datum/attribute/skill/misc/athletics, 6, FALSE)
 
 				adjust_stats(STATE_MARTYR)
 
 				bound_user.energy = bound_user.max_energy
 				bound_user.stamina = 0
 
-				bound_user.adjust_skillrank(/datum/skill/combat/swords, 1, FALSE)
-				bound_user.adjust_skillrank(/datum/skill/combat/axesmaces, 1, FALSE)
-				bound_user.adjust_skillrank(/datum/skill/combat/polearms, 1, FALSE)
+				bound_user.adjust_skillrank(/datum/attribute/skill/combat/swords, 1, FALSE)
+				bound_user.adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 1, FALSE)
+				bound_user.adjust_skillrank(/datum/attribute/skill/combat/polearms, 1, FALSE)
 
 			else
 				end_activation = world.time + safe_duration

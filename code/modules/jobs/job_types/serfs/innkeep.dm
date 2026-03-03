@@ -20,19 +20,19 @@
 	job_bitflag = BITFLAG_CONSTRUCTOR
 
 	jobstats = list(
-		STATKEY_STR = 1,
-		STATKEY_END = 1,
-		STATKEY_CON = 1
+		STAT_STRENGTH = 1,
+		STAT_ENDURANCE = 1,
+		STAT_CONSTITUTION = 1
 	)
 
 	skills = list(
-		/datum/skill/combat/wrestling = 2,
-		/datum/skill/combat/unarmed = 3,
-		/datum/skill/misc/reading = 2,
-		/datum/skill/craft/cooking = 3,
-		/datum/skill/misc/medicine = 1,
-		/datum/skill/combat/swords = 2,
-		/datum/skill/labor/mathematics = 2
+		/datum/attribute/skill/combat/wrestling = 2,
+		/datum/attribute/skill/combat/unarmed = 3,
+		/datum/attribute/skill/misc/reading = 2,
+		/datum/attribute/skill/craft/cooking = 3,
+		/datum/attribute/skill/misc/medicine = 1,
+		/datum/attribute/skill/combat/swords = 2,
+		/datum/attribute/skill/labor/mathematics = 2
 	)
 
 	traits = list(
@@ -74,5 +74,5 @@
 /datum/job/innkeep/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	if(spawned.gender == FEMALE)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_STR, -1)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_CON, 1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_STRENGTH, -1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_CONSTITUTION, 1)

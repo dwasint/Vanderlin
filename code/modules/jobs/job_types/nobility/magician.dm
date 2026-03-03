@@ -40,22 +40,22 @@
 	)
 
 	jobstats = list(
-		STATKEY_STR = -2,
-		STATKEY_INT = 5,
-		STATKEY_CON = -2,
-		STATKEY_SPD = -2
+		STAT_STRENGTH = -2,
+		STAT_INTELLIGENCE = 5,
+		STAT_CONSTITUTION = -2,
+		STAT_SPEED = -2
 	)
 
 	skills = list(
-		/datum/skill/misc/reading = 6,
-		/datum/skill/misc/riding = 2,
-		/datum/skill/magic/arcane = 5,
-		/datum/skill/combat/wrestling = 1,
-		/datum/skill/combat/unarmed = 1,
-		/datum/skill/misc/athletics = 2,
-		/datum/skill/combat/polearms = 3,
-		/datum/skill/craft/alchemy = 3,
-		/datum/skill/labor/mathematics = 4
+		/datum/attribute/skill/misc/reading = 6,
+		/datum/attribute/skill/misc/riding = 2,
+		/datum/attribute/skill/magic/arcane = 5,
+		/datum/attribute/skill/combat/wrestling = 1,
+		/datum/attribute/skill/combat/unarmed = 1,
+		/datum/attribute/skill/misc/athletics = 2,
+		/datum/attribute/skill/combat/polearms = 3,
+		/datum/attribute/skill/craft/alchemy = 3,
+		/datum/attribute/skill/labor/mathematics = 4
 	)
 
 	traits = list(
@@ -74,11 +74,11 @@
 	if(istype(spawned.patron, /datum/patron/inhumen/zizo))
 		spawned.grant_language(/datum/language/undead)
 
-	spawned.adjust_skillrank(/datum/skill/magic/arcane, pick(0,1))
+	spawned.adjust_skillrank(/datum/attribute/skill/magic/arcane, pick(0,1))
 
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_SPD, -1)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_INT, 1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_SPEED, -1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_INTELLIGENCE, 1)
 
 	spawned.virginity = TRUE
 

@@ -23,20 +23,20 @@
 	)
 
 	jobstats = list(
-		STATKEY_INT = 2,
-		STATKEY_PER = 1,
-		STATKEY_STR = -1
+		STAT_INTELLIGENCE = 2,
+		STAT_PERCEPTION = 1,
+		STAT_STRENGTH = -1
 	)
 
 	skills = list(
-		/datum/skill/combat/swords = 2,
-		/datum/skill/combat/knives = 1,
-		/datum/skill/misc/reading = 5,
-		/datum/skill/misc/sneaking = 2,
-		/datum/skill/misc/stealing = 6,
-		/datum/skill/misc/lockpicking = 2,
-		/datum/skill/misc/riding = 1,
-		/datum/skill/labor/mathematics = 5
+		/datum/attribute/skill/combat/swords = 2,
+		/datum/attribute/skill/combat/knives = 1,
+		/datum/attribute/skill/misc/reading = 5,
+		/datum/attribute/skill/misc/sneaking = 2,
+		/datum/attribute/skill/misc/stealing = 6,
+		/datum/attribute/skill/misc/lockpicking = 2,
+		/datum/attribute/skill/misc/riding = 1,
+		/datum/attribute/skill/labor/mathematics = 5
 	)
 
 	traits = list(

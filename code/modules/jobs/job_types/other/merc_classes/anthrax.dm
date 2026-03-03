@@ -8,15 +8,15 @@
 	cmode_music = 'sound/music/cmode/adventurer/CombatOutlander3.ogg'
 
 	skills = list(
-		/datum/skill/misc/swimming = 2,
-		/datum/skill/misc/climbing = 2,
-		/datum/skill/misc/athletics = 2,
-		/datum/skill/misc/sneaking = 1,
-		/datum/skill/combat/wrestling = 2,
-		/datum/skill/combat/unarmed = 1,
-		/datum/skill/combat/knives = 2,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/misc/riding = 1,
+		/datum/attribute/skill/misc/swimming = 2,
+		/datum/attribute/skill/misc/climbing = 2,
+		/datum/attribute/skill/misc/athletics = 2,
+		/datum/attribute/skill/misc/sneaking = 1,
+		/datum/attribute/skill/combat/wrestling = 2,
+		/datum/attribute/skill/combat/unarmed = 1,
+		/datum/attribute/skill/combat/knives = 2,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/misc/riding = 1,
 	)
 
 	traits = list(
@@ -30,35 +30,35 @@
 
 	if(spawned.gender == FEMALE)
 		// Female: melee defense-oriented brute
-		spawned.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)
-		spawned.adjust_skillrank(/datum/skill/combat/whipsflails, 3, TRUE)
-		spawned.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 2, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/whipsflails, 3, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/shields, 3, TRUE)
 
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_STR, 2)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_CON, 1)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_END, 1)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_INT, -1)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_SPD, -1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_STRENGTH, 2)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_CONSTITUTION, 1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_ENDURANCE, 1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_INTELLIGENCE, -1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_SPEED, -1)
 
 		ADD_TRAIT(spawned, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
 	if(spawned.gender == MALE)
 		// Male: squishy hit-and-runner
-		spawned.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
-		spawned.adjust_skillrank(/datum/skill/misc/lockpicking, 3, TRUE)
-		spawned.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
-		spawned.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
-		spawned.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
-		spawned.adjust_skillrank(/datum/skill/craft/sewing, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
-		spawned.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/craft/traps, 3, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/misc/climbing, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/misc/sneaking, 2, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/misc/lockpicking, 3, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/bows, 3, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/crossbows, 2, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/swords, 3, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/misc/sewing, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/misc/medicine, 2, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/craft/crafting, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/craft/cooking, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/craft/traps, 3, TRUE)
 
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_END, 1)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_PER, 2)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_SPD, 2)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_ENDURANCE, 1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_PERCEPTION, 2)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_SPEED, 2)
 
 		ADD_TRAIT(spawned, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 

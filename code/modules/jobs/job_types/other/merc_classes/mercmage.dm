@@ -25,26 +25,26 @@
 	spell_points = 8 //less than courtmagician, more than an adventurer wizard
 
 	jobstats = list(
-		STATKEY_END = 1,
-		STATKEY_INT = 3,
-		STATKEY_CON = -1,
-		STATKEY_PER = -1,
-		STATKEY_STR = -2,
-		STATKEY_SPD = -1
+		STAT_ENDURANCE = 1,
+		STAT_INTELLIGENCE = 3,
+		STAT_CONSTITUTION = -1,
+		STAT_PERCEPTION = -1,
+		STAT_STRENGTH = -2,
+		STAT_SPEED = -1
 	)
 
 	skills = list(
-		/datum/skill/combat/knives = 1,
-		/datum/skill/combat/unarmed = 1,
-		/datum/skill/combat/wrestling = 1,
-		/datum/skill/magic/arcane = 3,
-		/datum/skill/combat/polearms = 2,
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/misc/swimming = 1,
-		/datum/skill/misc/climbing = 1,
-		/datum/skill/craft/crafting = 1,
-		/datum/skill/misc/medicine = 1,
-		/datum/skill/misc/reading = 4
+		/datum/attribute/skill/combat/knives = 1,
+		/datum/attribute/skill/combat/unarmed = 1,
+		/datum/attribute/skill/combat/wrestling = 1,
+		/datum/attribute/skill/magic/arcane = 3,
+		/datum/attribute/skill/combat/polearms = 2,
+		/datum/attribute/skill/misc/athletics = 3,
+		/datum/attribute/skill/misc/swimming = 1,
+		/datum/attribute/skill/misc/climbing = 1,
+		/datum/attribute/skill/craft/crafting = 1,
+		/datum/attribute/skill/misc/medicine = 1,
+		/datum/attribute/skill/misc/reading = 4
 	)
 
 	traits = list(
@@ -60,8 +60,8 @@
 
 	// Age-based stat adjustments
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_END, 1) //to counteract the innate endurance loss
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_PER, -1)  //instead they lose some perception
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_ENDURANCE, 1) //to counteract the innate endurance loss
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_PERCEPTION, -1)  //instead they lose some perception
 
 /datum/outfit/mercenary/sellmage
 	name = "Sellmage (Mercenary)"

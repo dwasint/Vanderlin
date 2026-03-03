@@ -10,37 +10,37 @@
 	cmode_music = 'sound/music/cmode/towner/CombatBeggar.ogg'
 
 	jobstats = list(
-		STATKEY_INT = 1,
-		STATKEY_PER = 3
+		STAT_INTELLIGENCE = 1,
+		STAT_PERCEPTION = 3
 	)
 
 	skills = list(
-		/datum/skill/craft/crafting = 2,
-		/datum/skill/craft/tanning = 3,
-		/datum/skill/combat/bows = 3,
-		/datum/skill/combat/crossbows = 2,
-		/datum/skill/combat/knives = 2,
-		/datum/skill/craft/cooking = 1,
-		/datum/skill/labor/butchering = 2,
-		/datum/skill/labor/taming = 3,
-		/datum/skill/misc/medicine = 1,
-		/datum/skill/craft/sewing = 2,
-		/datum/skill/misc/sneaking = 2,
-		/datum/skill/craft/traps = 3,
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/misc/climbing = 2,
-		/datum/skill/misc/swimming = 1,
-		/datum/skill/misc/reading = 1
+		/datum/attribute/skill/craft/crafting = 2,
+		/datum/attribute/skill/craft/tanning = 3,
+		/datum/attribute/skill/combat/bows = 3,
+		/datum/attribute/skill/combat/crossbows = 2,
+		/datum/attribute/skill/combat/knives = 2,
+		/datum/attribute/skill/craft/cooking = 1,
+		/datum/attribute/skill/labor/butchering = 2,
+		/datum/attribute/skill/labor/taming = 3,
+		/datum/attribute/skill/misc/medicine = 1,
+		/datum/attribute/skill/misc/sewing = 2,
+		/datum/attribute/skill/misc/sneaking = 2,
+		/datum/attribute/skill/craft/traps = 3,
+		/datum/attribute/skill/misc/athletics = 3,
+		/datum/attribute/skill/misc/climbing = 2,
+		/datum/attribute/skill/misc/swimming = 1,
+		/datum/attribute/skill/misc/reading = 1
 	)
 
 /datum/job/advclass/pilgrim/hunter/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/craft/traps, 1, TRUE)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_PER, -2)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_INT, -1)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_END, -1)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/bows, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/craft/traps, 1, TRUE)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_PERCEPTION, -2)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_INTELLIGENCE, -1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_ENDURANCE, -1)
 
 /datum/outfit/pilgrim/hunter
 	name = "Hunter (Pilgrim)"

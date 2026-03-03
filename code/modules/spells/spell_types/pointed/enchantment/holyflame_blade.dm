@@ -13,7 +13,7 @@
 	spell_flags = SPELL_RITUOS
 	enchantment = DIVINE_FIRE_ENCHANT
 	spell_type = SPELL_MIRACLE
-	associated_skill = /datum/skill/magic/holy
+	associated_skill = /datum/attribute/skill/magic/holy
 	required_items = list(/obj/item/clothing/neck/psycross/silver/divine)
 
 /datum/action/cooldown/spell/enchantment/holy_flame/is_valid_target(atom/cast_on)

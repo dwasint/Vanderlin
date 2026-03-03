@@ -59,41 +59,41 @@
 
 	. = ..()
 
-	blade.adjust_stat_modifier_list("[type]", list(
-		STATKEY_STR = 6,
-		STATKEY_PER = 6,
-		STATKEY_INT = 6,
-		STATKEY_CON = 6,
-		STATKEY_END = 6,
-		STATKEY_SPD = 6,
-		STATKEY_LCK = 6,
+	blade.adjust_stat_modifier("[type]", list(
+		STAT_STRENGTH = 6,
+		STAT_PERCEPTION = 6,
+		STAT_INTELLIGENCE = 6,
+		STAT_CONSTITUTION = 6,
+		STAT_ENDURANCE = 6,
+		STAT_SPEED = 6,
+		STAT_FORTUNE = 6,
 	))
-	blade.adjust_skillrank(/datum/skill/combat/swords, 6, TRUE)
-	blade.adjust_skillrank(/datum/skill/combat/firearms, 6, TRUE)
-	blade.adjust_skillrank(/datum/skill/combat/knives, 5, TRUE)
-	blade.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE)
-	blade.adjust_skillrank(/datum/skill/combat/bows, 4, TRUE)
-	blade.adjust_skillrank(/datum/skill/combat/crossbows, 4, TRUE)
-	blade.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
-	blade.adjust_skillrank(/datum/skill/combat/unarmed, 5, TRUE)
-	blade.adjust_skillrank(/datum/skill/combat/wrestling, 5, TRUE)
-	blade.adjust_skillrank(/datum/skill/combat/whipsflails, 2, TRUE)
+	blade.adjust_skillrank(/datum/attribute/skill/combat/swords, 6, TRUE)
+	blade.adjust_skillrank(/datum/attribute/skill/combat/firearms, 6, TRUE)
+	blade.adjust_skillrank(/datum/attribute/skill/combat/knives, 5, TRUE)
+	blade.adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 3, TRUE)
+	blade.adjust_skillrank(/datum/attribute/skill/combat/bows, 4, TRUE)
+	blade.adjust_skillrank(/datum/attribute/skill/combat/crossbows, 4, TRUE)
+	blade.adjust_skillrank(/datum/attribute/skill/combat/polearms, 4, TRUE)
+	blade.adjust_skillrank(/datum/attribute/skill/combat/unarmed, 5, TRUE)
+	blade.adjust_skillrank(/datum/attribute/skill/combat/wrestling, 5, TRUE)
+	blade.adjust_skillrank(/datum/attribute/skill/combat/whipsflails, 2, TRUE)
 
-	blade.adjust_skillrank(/datum/skill/craft/armorsmithing, 1, TRUE)
-	blade.adjust_skillrank(/datum/skill/craft/weaponsmithing, 2, TRUE)
-	blade.adjust_skillrank(/datum/skill/craft/bombs, 2, TRUE)
-	blade.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
-	blade.adjust_skillrank(/datum/skill/craft/traps, 4, TRUE)
-	blade.adjust_skillrank(/datum/skill/labor/mathematics, 3, TRUE)
+	blade.adjust_skillrank(/datum/attribute/skill/craft/armorsmithing, 1, TRUE)
+	blade.adjust_skillrank(/datum/attribute/skill/craft/weaponsmithing, 2, TRUE)
+	blade.adjust_skillrank(/datum/attribute/skill/craft/bombs, 2, TRUE)
+	blade.adjust_skillrank(/datum/attribute/skill/craft/crafting, 2, TRUE)
+	blade.adjust_skillrank(/datum/attribute/skill/craft/traps, 4, TRUE)
+	blade.adjust_skillrank(/datum/attribute/skill/labor/mathematics, 3, TRUE)
 
-	blade.adjust_skillrank(/datum/skill/misc/athletics, 6, TRUE)
-	blade.adjust_skillrank(/datum/skill/misc/lockpicking, 3, TRUE)
-	blade.adjust_skillrank(/datum/skill/misc/climbing, 5, TRUE)
-	blade.adjust_skillrank(/datum/skill/misc/medicine, 3, TRUE)
-	blade.adjust_skillrank(/datum/skill/misc/riding, 4, TRUE)
-	blade.adjust_skillrank(/datum/skill/misc/swimming, 5, TRUE)
-	blade.adjust_skillrank(/datum/skill/misc/sneaking, 5, TRUE)
-	blade.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
+	blade.adjust_skillrank(/datum/attribute/skill/misc/athletics, 6, TRUE)
+	blade.adjust_skillrank(/datum/attribute/skill/misc/lockpicking, 3, TRUE)
+	blade.adjust_skillrank(/datum/attribute/skill/misc/climbing, 5, TRUE)
+	blade.adjust_skillrank(/datum/attribute/skill/misc/medicine, 3, TRUE)
+	blade.adjust_skillrank(/datum/attribute/skill/misc/riding, 4, TRUE)
+	blade.adjust_skillrank(/datum/attribute/skill/misc/swimming, 5, TRUE)
+	blade.adjust_skillrank(/datum/attribute/skill/misc/sneaking, 5, TRUE)
+	blade.adjust_skillrank(/datum/attribute/skill/misc/reading, 3, TRUE)
 
 	blade.maxbloodpool = 5000
 	blade.set_bloodpool(5000)

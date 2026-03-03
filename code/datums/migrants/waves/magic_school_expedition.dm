@@ -17,18 +17,18 @@
 	allowed_patrons = list(/datum/patron/divine/noc)
 	exp_types_granted  = list(EXP_TYPE_MAGICK)
 	jobstats = list(
-		STATKEY_STR = -1,
-		STATKEY_INT = 4,
-		STATKEY_CON = -1,
-		STATKEY_SPD = -1,
+		STAT_STRENGTH = -1,
+		STAT_INTELLIGENCE = 4,
+		STAT_CONSTITUTION = -1,
+		STAT_SPEED = -1,
 	)
 
 	skills = list(
-		/datum/skill/misc/reading = 5,
-		/datum/skill/magic/arcane = 4,
-		/datum/skill/combat/polearms = 2,
-		/datum/skill/craft/alchemy = 4,
-		/datum/skill/labor/mathematics = 3,
+		/datum/attribute/skill/misc/reading = 5,
+		/datum/attribute/skill/magic/arcane = 4,
+		/datum/attribute/skill/combat/polearms = 2,
+		/datum/attribute/skill/craft/alchemy = 4,
+		/datum/attribute/skill/labor/mathematics = 3,
 	)
 
 	spells = list(/datum/action/cooldown/spell/undirected/touch/prestidigitation)
@@ -74,19 +74,19 @@
 	allowed_patrons = list(/datum/patron/divine/noc)
 	exp_types_granted  = list(EXP_TYPE_MAGICK)
 	jobstats = list(
-		STATKEY_STR = -1,
-		STATKEY_INT = 3,
-		STATKEY_SPD = -2,
+		STAT_STRENGTH = -1,
+		STAT_INTELLIGENCE = 3,
+		STAT_SPEED = -2,
 	)
 
 	skills = list(
-		/datum/skill/misc/reading = 4,
-		/datum/skill/misc/swimming = 1,
-		/datum/skill/misc/climbing = 1,
-		/datum/skill/misc/athletics = 1,
-		/datum/skill/combat/polearms = 1,
-		/datum/skill/craft/alchemy = 3,
-		/datum/skill/labor/mathematics = 2,
+		/datum/attribute/skill/misc/reading = 4,
+		/datum/attribute/skill/misc/swimming = 1,
+		/datum/attribute/skill/misc/climbing = 1,
+		/datum/attribute/skill/misc/athletics = 1,
+		/datum/attribute/skill/combat/polearms = 1,
+		/datum/attribute/skill/craft/alchemy = 3,
+		/datum/attribute/skill/labor/mathematics = 2,
 	)
 
 	spells = list(/datum/action/cooldown/spell/undirected/touch/prestidigitation)
@@ -98,7 +98,7 @@
 
 /datum/job/migrant/magic_student/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
-	spawned.adjust_skillrank(/datum/skill/magic/arcane, pick(2,2,2,3), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/magic/arcane, pick(2,2,2,3), TRUE)
 	if(prob(5))
 		spawned.cmode_music = 'sound/music/cmode/antag/combat_evilwizard.ogg'
 

@@ -6,21 +6,21 @@
 	outfit = /datum/outfit/disciple
 	category_tags = list(CTAG_INQUISITION)
 	jobstats = list(
-		STATKEY_STR = 2,
-		STATKEY_END = 2,
-		STATKEY_CON = 3,
-		STATKEY_INT = -2,
-		STATKEY_SPD = -1
+		STAT_STRENGTH = 2,
+		STAT_ENDURANCE = 2,
+		STAT_CONSTITUTION = 3,
+		STAT_INTELLIGENCE = -2,
+		STAT_SPEED = -1
 	)
 	skills = list(
-		/datum/skill/misc/athletics = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/unarmed = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/wrestling = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/climbing = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/swimming = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/medicine = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/reading = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/craft/cooking = SKILL_LEVEL_NOVICE,
+		/datum/attribute/skill/misc/athletics = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/combat/unarmed = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/combat/wrestling = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/misc/climbing = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/misc/swimming = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/misc/medicine = SKILL_LEVEL_APPRENTICE,
+		/datum/attribute/skill/misc/reading = SKILL_LEVEL_APPRENTICE,
+		/datum/attribute/skill/craft/cooking = SKILL_LEVEL_NOVICE,
 	)
 
 	traits = list(
@@ -58,7 +58,7 @@
 	switch(weapon_choice)
 		if("Discipline - Unarmed")
 			gloves_to_wear = /obj/item/clothing/gloves/bandages/pugilist
-			spawned.clamped_adjust_skillrank(/datum/skill/combat/unarmed, 1, 4)
+			spawned.clamped_adjust_skillrank(/datum/attribute/skill/combat/unarmed, 1, 4)
 			ADD_TRAIT(spawned, TRAIT_CRITICAL_RESISTANCE, JOB_TRAIT)
 			ADD_TRAIT(spawned, TRAIT_IGNOREDAMAGESLOWDOWN, JOB_TRAIT)
 		if("Katar")
@@ -66,9 +66,9 @@
 		if("Knuckledusters")
 			ADD_TRAIT(spawned, TRAIT_CRITICAL_RESISTANCE, JOB_TRAIT)
 		if("Quarterstaff")
-			spawned.clamped_adjust_skillrank(/datum/skill/combat/polearms, 3, 3)
-			spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_PER, 1)
-			spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_INT, 1)
+			spawned.clamped_adjust_skillrank(/datum/attribute/skill/combat/polearms, 3, 3)
+			spawned.adjust_stat_modifier(STATMOD_JOB, STAT_PERCEPTION, 1)
+			spawned.adjust_stat_modifier(STATMOD_JOB, STAT_INTELLIGENCE, 1)
 	spawned.equip_to_slot_or_del(new gloves_to_wear, ITEM_SLOT_GLOVES, TRUE)
 
 /datum/outfit/disciple

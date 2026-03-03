@@ -15,25 +15,25 @@
 	outfit = /datum/outfit/tester
 
 	jobstats = list(
-		STATKEY_STR = 1
+		STAT_STRENGTH = 1
 	)
 
 
 /datum/job/tester/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
-	spawned.adjust_skillrank(/datum/skill/misc/swimming, rand(1,5), TRUE)
-	spawned.adjust_skillrank(/datum/skill/misc/climbing, rand(1,5), TRUE)
-	spawned.adjust_skillrank(/datum/skill/misc/sneaking, rand(1,5), TRUE)
-	spawned.adjust_skillrank(/datum/skill/combat/axesmaces, rand(1,5), TRUE)
-	spawned.adjust_skillrank(/datum/skill/combat/bows, rand(1,5), TRUE)
-	spawned.adjust_skillrank(/datum/skill/combat/crossbows, rand(1,5), TRUE)
-	spawned.adjust_skillrank(/datum/skill/combat/wrestling, rand(1,5), TRUE)
-	spawned.adjust_skillrank(/datum/skill/combat/unarmed, rand(1,5), TRUE)
-	spawned.adjust_skillrank(/datum/skill/combat/swords, rand(1,5), TRUE)
-	spawned.adjust_skillrank(/datum/skill/combat/polearms, rand(1,5), TRUE)
-	spawned.adjust_skillrank(/datum/skill/combat/whipsflails, rand(1,5), TRUE)
-	spawned.adjust_skillrank(/datum/skill/combat/knives, rand(1,5), TRUE)
-	spawned.adjust_skillrank(/datum/skill/misc/reading, rand(1,5), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/misc/swimming, rand(1,5), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/misc/climbing, rand(1,5), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/misc/sneaking, rand(1,5), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/combat/axesmaces, rand(1,5), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/combat/bows, rand(1,5), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/combat/crossbows, rand(1,5), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/combat/wrestling, rand(1,5), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/combat/unarmed, rand(1,5), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/combat/swords, rand(1,5), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/combat/polearms, rand(1,5), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/combat/whipsflails, rand(1,5), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/combat/knives, rand(1,5), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/misc/reading, rand(1,5), TRUE)
 
 /datum/outfit/tester
 	name = "Tester"

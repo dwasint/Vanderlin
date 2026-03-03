@@ -27,22 +27,22 @@
 	)
 
 	jobstats = list(
-		STATKEY_STR = 2,
-		STATKEY_CON = 2,
-		STATKEY_END = 2,
-		STATKEY_SPD = -1
+		STAT_STRENGTH = 2,
+		STAT_CONSTITUTION = 2,
+		STAT_ENDURANCE = 2,
+		STAT_SPEED = -1
 	)
 
 	skills = list(
-		/datum/skill/combat/wrestling = 3,
-		/datum/skill/combat/unarmed = 2,
-		/datum/skill/combat/shields = 3,
-		/datum/skill/misc/climbing = 1,
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/misc/reading = 2,
-		/datum/skill/magic/holy = 2,
-		/datum/skill/misc/medicine = 1,
-		/datum/skill/craft/sewing = 2
+		/datum/attribute/skill/combat/wrestling = 3,
+		/datum/attribute/skill/combat/unarmed = 2,
+		/datum/attribute/skill/combat/shields = 3,
+		/datum/attribute/skill/misc/climbing = 1,
+		/datum/attribute/skill/misc/athletics = 3,
+		/datum/attribute/skill/misc/reading = 2,
+		/datum/attribute/skill/magic/holy = 2,
+		/datum/attribute/skill/misc/medicine = 1,
+		/datum/attribute/skill/misc/sewing = 2
 	)
 
 	traits = list(
@@ -57,24 +57,24 @@
 	. = ..()
 	switch(spawned.patron?.type)
 		if(/datum/patron/divine/astrata)
-			spawned.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/combat/swords, 4, TRUE)
 			spawned.cmode_music = 'sound/music/cmode/church/CombatAstrata.ogg'
 		if(/datum/patron/divine/noc)
-			spawned.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
-			spawned.adjust_skillrank(/datum/skill/labor/mathematics, 2, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/combat/swords, 4, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/labor/mathematics, 2, TRUE)
 			ADD_TRAIT(spawned, TRAIT_DUALWIELDER, TRAIT_GENERIC)
 			spawned.cmode_music = 'sound/music/cmode/church/CombatNoc.ogg'
 		if(/datum/patron/divine/dendor)
-			spawned.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/combat/polearms, 4, TRUE)
 			spawned.cmode_music = 'sound/music/cmode/church/CombatDendor.ogg'
 		if(/datum/patron/divine/necra)
-			spawned.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/combat/whipsflails, 4, TRUE)
 			ADD_TRAIT(spawned, TRAIT_DEADNOSE, TRAIT_GENERIC)
 			ADD_TRAIT(spawned, TRAIT_GRAVEROBBER, TRAIT_GENERIC)
 			spawned.cmode_music = 'sound/music/cmode/church/CombatGravekeeper.ogg'
 		if(/datum/patron/divine/pestra)
-			spawned.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE)
-			spawned.adjust_skillrank(/datum/skill/craft/alchemy, 2, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/combat/knives, 4, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/craft/alchemy, 2, TRUE)
 			ADD_TRAIT(spawned, TRAIT_DUALWIELDER, TRAIT_GENERIC)
 			spawned.cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'
 		if(/datum/patron/divine/eora)
@@ -90,17 +90,17 @@
 				return
 			switch(choice)
 				if("Heartstring (Rapier)")
-					spawned.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
+					spawned.adjust_skillrank(/datum/attribute/skill/combat/swords, 4, TRUE)
 				if("Close Caress (Knuckles)")
-					spawned.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
+					spawned.adjust_skillrank(/datum/attribute/skill/combat/unarmed, 2, TRUE)
 		if(/datum/patron/divine/ravox)
-			spawned.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/combat/swords, 4, TRUE)
 			spawned.cmode_music = 'sound/music/cmode/church/CombatRavox.ogg'
 		if(/datum/patron/divine/malum)
-			spawned.adjust_skillrank(/datum/skill/combat/axesmaces, 4, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 4, TRUE)
 			spawned.cmode_music = 'sound/music/cmode/adventurer/CombatOutlander2.ogg'
 		if(/datum/patron/divine/abyssor)
-			spawned.adjust_skillrank(/datum/skill/labor/fishing, 2, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/labor/fishing, 2, TRUE)
 			spawned.cmode_music = 'sound/music/cmode/church/CombatAbyssor.ogg'
 			var/static/list/selectable = list(
 				"DepthSeeker (Spear)" = /obj/item/weapon/polearm/spear/abyssor,
@@ -111,11 +111,11 @@
 				return
 			switch(choice)
 				if("DepthSeeker (Spear)")
-					spawned.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
+					spawned.adjust_skillrank(/datum/attribute/skill/combat/polearms, 4, TRUE)
 				if("Barotrauma (Katars)")
-					spawned.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
+					spawned.adjust_skillrank(/datum/attribute/skill/combat/unarmed, 2, TRUE)
 		if(/datum/patron/divine/xylix)
-			spawned.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/combat/whipsflails, 4, TRUE)
 			spawned.cmode_music = 'sound/music/cmode/church/CombatXylix.ogg'
 
 	var/holder = spawned.patron?.devotion_holder

@@ -12,27 +12,27 @@
 	is_recognized = TRUE
 
 	jobstats = list(
-		STATKEY_STR = 1,
-		STATKEY_INT = 2,
-		STATKEY_END = 2,
-		STATKEY_CON = 2
+		STAT_STRENGTH = 1,
+		STAT_INTELLIGENCE = 2,
+		STAT_ENDURANCE = 2,
+		STAT_CONSTITUTION = 2
 	)
 
 	skills = list(
-		/datum/skill/combat/axesmaces = 2,
-		/datum/skill/labor/mining = 3,
-		/datum/skill/combat/wrestling = 2,
-		/datum/skill/combat/unarmed = 2,
-		/datum/skill/craft/crafting = 5,
-		/datum/skill/craft/carpentry = 4,
-		/datum/skill/craft/masonry = 6,
-		/datum/skill/craft/engineering = 5,
-		/datum/skill/misc/lockpicking = 3,
-		/datum/skill/craft/smelting = 6,
-		/datum/skill/misc/swimming = 3,
-		/datum/skill/misc/climbing = 4,
-		/datum/skill/misc/athletics = 4,
-		/datum/skill/misc/reading = 1
+		/datum/attribute/skill/combat/axesmaces = 2,
+		/datum/attribute/skill/labor/mining = 3,
+		/datum/attribute/skill/combat/wrestling = 2,
+		/datum/attribute/skill/combat/unarmed = 2,
+		/datum/attribute/skill/craft/crafting = 5,
+		/datum/attribute/skill/craft/carpentry = 4,
+		/datum/attribute/skill/craft/masonry = 6,
+		/datum/attribute/skill/craft/engineering = 5,
+		/datum/attribute/skill/misc/lockpicking = 3,
+		/datum/attribute/skill/craft/smelting = 6,
+		/datum/attribute/skill/misc/swimming = 3,
+		/datum/attribute/skill/misc/climbing = 4,
+		/datum/attribute/skill/misc/athletics = 4,
+		/datum/attribute/skill/misc/reading = 1
 	)
 
 /datum/outfit/pilgrim/grandmastermason

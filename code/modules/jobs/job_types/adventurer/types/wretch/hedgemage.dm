@@ -15,19 +15,19 @@
 	exp_types_granted = list(EXP_TYPE_COMBAT, EXP_TYPE_MAGICK)
 
 	jobstats = list(
-		STATKEY_INT = 4, // Base for non-old characters
-		STATKEY_END = 1
+		STAT_INTELLIGENCE = 4, // Base for non-old characters
+		STAT_ENDURANCE = 1
 	)
 
 	skills = list(
-		/datum/skill/combat/polearms = 3,
-		/datum/skill/misc/climbing = 3,
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/combat/wrestling = 3,
-		/datum/skill/combat/unarmed = 3,
-		/datum/skill/misc/reading = 5,
-		/datum/skill/craft/alchemy = 4,
-		/datum/skill/magic/arcane = 4 // Base value, adjusted for age in after_spawn
+		/datum/attribute/skill/combat/polearms = 3,
+		/datum/attribute/skill/misc/climbing = 3,
+		/datum/attribute/skill/misc/athletics = 3,
+		/datum/attribute/skill/combat/wrestling = 3,
+		/datum/attribute/skill/combat/unarmed = 3,
+		/datum/attribute/skill/misc/reading = 5,
+		/datum/attribute/skill/craft/alchemy = 4,
+		/datum/attribute/skill/magic/arcane = 4 // Base value, adjusted for age in after_spawn
 	)
 
 	traits = list(
@@ -45,8 +45,8 @@
 		spawned.cmode_music = 'sound/music/cmode/antag/combat_evilwizard.ogg'
 
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_INT, 1)
-		spawned.adjust_skillrank(/datum/skill/magic/arcane, 1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_INTELLIGENCE, 1)
+		spawned.adjust_skillrank(/datum/attribute/skill/magic/arcane, 1)
 
 	wretch_select_bounty(spawned)
 

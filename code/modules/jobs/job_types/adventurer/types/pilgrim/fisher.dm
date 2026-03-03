@@ -9,29 +9,29 @@
 	cmode_music = 'sound/music/cmode/towner/CombatBeggar.ogg'
 
 	jobstats = list(
-		STATKEY_CON = 2
+		STAT_CONSTITUTION = 2
 	)
 
 	skills = list(
-		/datum/skill/combat/knives = 2,
-		/datum/skill/misc/swimming = 3,
-		/datum/skill/craft/cooking = 2,
-		/datum/skill/craft/crafting = 2,
-		/datum/skill/labor/fishing = 4,
-		/datum/skill/misc/medicine = 1,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/misc/climbing = 1
+		/datum/attribute/skill/combat/knives = 2,
+		/datum/attribute/skill/misc/swimming = 3,
+		/datum/attribute/skill/craft/cooking = 2,
+		/datum/attribute/skill/craft/crafting = 2,
+		/datum/attribute/skill/labor/fishing = 4,
+		/datum/attribute/skill/misc/medicine = 1,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/misc/climbing = 1
 	)
 
 /datum/job/advclass/pilgrim/fisher/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
-	spawned.adjust_skillrank(/datum/skill/craft/sewing, pick(1, 2), TRUE)
-	spawned.adjust_skillrank(/datum/skill/misc/athletics, pick(2, 2, 3), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/misc/sewing, pick(1, 2), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/misc/athletics, pick(2, 2, 3), TRUE)
 
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_skillrank(/datum/skill/labor/fishing, 1, TRUE)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_CON, -1)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_PER, 1)
+		spawned.adjust_skillrank(/datum/attribute/skill/labor/fishing, 1, TRUE)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_CONSTITUTION, -1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_PERCEPTION, 1)
 
 /datum/outfit/pilgrim/fisher
 	name = "Fisher (Pilgrim)"

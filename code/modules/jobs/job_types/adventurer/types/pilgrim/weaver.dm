@@ -6,21 +6,21 @@
 	cmode_music = 'sound/music/cmode/towner/CombatTowner.ogg'
 
 	jobstats = list(
-		STATKEY_INT = 2,
-		STATKEY_SPD = 1,
-		STATKEY_PER = 1
+		STAT_INTELLIGENCE = 2,
+		STAT_SPEED = 1,
+		STAT_PERCEPTION = 1
 	)
 
 	skills = list(
-		/datum/skill/craft/sewing = 4,
-		/datum/skill/craft/crafting = 3,
-		/datum/skill/combat/knives = 2,
-		/datum/skill/misc/medicine = 2,
-		/datum/skill/misc/sneaking = 2,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/labor/farming = 1,
-		/datum/skill/craft/tanning = 3,
-		/datum/skill/craft/carpentry = 1
+		/datum/attribute/skill/misc/sewing = 4,
+		/datum/attribute/skill/craft/crafting = 3,
+		/datum/attribute/skill/combat/knives = 2,
+		/datum/attribute/skill/misc/medicine = 2,
+		/datum/attribute/skill/misc/sneaking = 2,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/labor/farming = 1,
+		/datum/attribute/skill/craft/tanning = 3,
+		/datum/attribute/skill/craft/carpentry = 1
 	)
 
 /datum/outfit/pilgrim/seamstress

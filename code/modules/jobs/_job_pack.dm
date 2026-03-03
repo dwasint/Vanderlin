@@ -30,9 +30,9 @@ GLOBAL_LIST_INIT(job_pack_singletons, init_jobpacks())
 
 /datum/job_pack/proc/pick_pack(mob/living/carbon/human/picker)
 	picker.remove_stat_modifier(STATMOD_PACK) // Reset so no inf stat
-	picker.adjust_stat_modifier_list(STATMOD_PACK, pack_stats)
+	picker.adjust_stat_modifier(STATMOD_PACK, pack_stats)
 
-	for(var/datum/skill/skill as anything in pack_skills)
+	for(var/datum/attribute/skill/skill as anything in pack_skills)
 		var/amount_or_list = pack_skills[skill]
 		if(islist(amount_or_list))
 			picker.clamped_adjust_skillrank(skill, amount_or_list[1], amount_or_list[2], TRUE)

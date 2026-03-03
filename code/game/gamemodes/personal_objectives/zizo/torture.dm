@@ -35,8 +35,8 @@
 
 /datum/objective/personal/torture/reward_owner()
 	. = ..()
-	owner.current.adjust_stat_modifier(STATMOD_ZIZO_BLESSING, STATKEY_STR, 1)
-	owner.current.adjust_stat_modifier(STATMOD_ZIZO_BLESSING, STATKEY_END, 1)
+	owner.current.adjust_stat_modifier(STATMOD_ZIZO_BLESSING, STAT_STRENGTH, 1)
+	owner.current.adjust_stat_modifier(STATMOD_ZIZO_BLESSING, STAT_ENDURANCE, 1)
 
 /datum/objective/personal/torture/update_explanation_text()
 	explanation_text = "Torture someone until they beg for mercy to please Zizo!"

@@ -20,25 +20,25 @@
 	job_bitflag = BITFLAG_CONSTRUCTOR
 
 	jobstats = list(
-			STATKEY_STR = 1,
-			STATKEY_INT = 1,
-			STATKEY_END = 1,
-			STATKEY_CON = 1,
-			STATKEY_SPD = -1,
+			STAT_STRENGTH = 1,
+			STAT_INTELLIGENCE = 1,
+			STAT_ENDURANCE = 1,
+			STAT_CONSTITUTION = 1,
+			STAT_SPEED = -1,
 	)
 
 	skills = list(
-	/datum/skill/combat/axesmaces = 2,
-	/datum/skill/labor/mining = 3,
-	/datum/skill/combat/wrestling = 1,
-	/datum/skill/combat/unarmed = 1,
-	/datum/skill/craft/crafting = 3,
-	/datum/skill/craft/masonry = 4,
-	/datum/skill/craft/engineering = 1,
-	/datum/skill/misc/swimming = 2,
-	/datum/skill/misc/climbing = 3,
-	/datum/skill/misc/athletics = 3,
-	/datum/skill/misc/reading = 1,
+	/datum/attribute/skill/combat/axesmaces = 2,
+	/datum/attribute/skill/labor/mining = 3,
+	/datum/attribute/skill/combat/wrestling = 1,
+	/datum/attribute/skill/combat/unarmed = 1,
+	/datum/attribute/skill/craft/crafting = 3,
+	/datum/attribute/skill/craft/masonry = 4,
+	/datum/attribute/skill/craft/engineering = 1,
+	/datum/attribute/skill/misc/swimming = 2,
+	/datum/attribute/skill/misc/climbing = 3,
+	/datum/attribute/skill/misc/athletics = 3,
+	/datum/attribute/skill/misc/reading = 1,
 	)
 
 /datum/job/mason/after_spawn(mob/living/carbon/human/spawned, client/player_client)
@@ -46,10 +46,10 @@
 	if(spawned.dna.species.id == SPEC_ID_DWARF)
 		spawned.cmode_music = 'sound/music/cmode/combat_dwarf.ogg'
 	if(prob(5))
-		spawned.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/craft/sewing, 2, TRUE)
-		spawned.adjust_skillrank(/datum/skill/labor/mining, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/craft/masonry, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/craft/cooking, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/misc/sewing, 2, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/labor/mining, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/craft/masonry, 1, TRUE)
 
 /datum/outfit/mason
 	name = "Mason"

@@ -85,11 +85,11 @@ GLOBAL_LIST_INIT(highwayman_aggro, file2list("strings/rt/highwaymanaggrolines.tx
 	else
 		H.set_hair_style(/datum/sprite_accessory/hair/head/messy)
 		H.set_facial_hair_style(/datum/sprite_accessory/hair/facial/manly)
-	H.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/shields, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE) // Trash mobs, untrained.
-	H.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/polearms, 2, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 2, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/swords, 2, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/shields, 2, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/unarmed, 2, TRUE) // Trash mobs, untrained.
+	H.adjust_skillrank(/datum/attribute/skill/combat/wrestling, 2, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/misc/swimming, 2, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/misc/climbing, 2, TRUE)

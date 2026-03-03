@@ -9,23 +9,23 @@
 	faction = FACTION_RATS
 
 	jobstats = list(
-		STATKEY_STR = 3,
-		STATKEY_END = 2,
-		STATKEY_CON = 2,
-		STATKEY_INT = -3
+		STAT_STRENGTH = 3,
+		STAT_ENDURANCE = 2,
+		STAT_CONSTITUTION = 2,
+		STAT_INTELLIGENCE = -3
 	)
 
 	skills = list(
-		/datum/skill/combat/wrestling = 4,
-		/datum/skill/combat/knives = 4,
-		/datum/skill/combat/unarmed = 5,
-		/datum/skill/craft/crafting = 2,
-		/datum/skill/labor/farming = 2,
-		/datum/skill/labor/fishing = 2,
-		/datum/skill/labor/mathematics = 1,
-		/datum/skill/misc/swimming = 3,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/labor/taming = 4
+		/datum/attribute/skill/combat/wrestling = 4,
+		/datum/attribute/skill/combat/knives = 4,
+		/datum/attribute/skill/combat/unarmed = 5,
+		/datum/attribute/skill/craft/crafting = 2,
+		/datum/attribute/skill/labor/farming = 2,
+		/datum/attribute/skill/labor/fishing = 2,
+		/datum/attribute/skill/labor/mathematics = 1,
+		/datum/attribute/skill/misc/swimming = 3,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/labor/taming = 4
 	)
 
 	traits = list(

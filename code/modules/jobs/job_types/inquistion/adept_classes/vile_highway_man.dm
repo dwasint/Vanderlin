@@ -7,22 +7,22 @@
 	cmode_music = 'sound/music/cmode/towner/CombatGaffer.ogg'
 
 	skills = list(
-		/datum/skill/combat/swords = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/whipsflails = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/combat/knives = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/combat/wrestling = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/combat/unarmed = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/athletics = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/swimming = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/climbing = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/riding = SKILL_LEVEL_NOVICE,
-		/datum/skill/craft/crafting = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/craft/cooking = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/craft/sewing = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/medicine = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/labor/mathematics = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/reading = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/combat/firearms = SKILL_LEVEL_NOVICE
+		/datum/attribute/skill/combat/swords = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/combat/whipsflails = SKILL_LEVEL_APPRENTICE,
+		/datum/attribute/skill/combat/knives = SKILL_LEVEL_APPRENTICE,
+		/datum/attribute/skill/combat/wrestling = SKILL_LEVEL_APPRENTICE,
+		/datum/attribute/skill/combat/unarmed = SKILL_LEVEL_APPRENTICE,
+		/datum/attribute/skill/misc/athletics = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/misc/swimming = SKILL_LEVEL_APPRENTICE,
+		/datum/attribute/skill/misc/climbing = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/misc/riding = SKILL_LEVEL_NOVICE,
+		/datum/attribute/skill/craft/crafting = SKILL_LEVEL_APPRENTICE,
+		/datum/attribute/skill/craft/cooking = SKILL_LEVEL_APPRENTICE,
+		/datum/attribute/skill/misc/sewing = SKILL_LEVEL_APPRENTICE,
+		/datum/attribute/skill/misc/medicine = SKILL_LEVEL_APPRENTICE,
+		/datum/attribute/skill/labor/mathematics = SKILL_LEVEL_APPRENTICE,
+		/datum/attribute/skill/misc/reading = SKILL_LEVEL_APPRENTICE,
+		/datum/attribute/skill/combat/firearms = SKILL_LEVEL_NOVICE
 	)
 
 	traits = list(
@@ -36,10 +36,10 @@
 	)
 
 	jobstats = list(
-		STATKEY_PER = 1,
-		STATKEY_INT = 2,
-		STATKEY_SPD = 1,
-		STATKEY_CON = -1
+		STAT_PERCEPTION = 1,
+		STAT_INTELLIGENCE = 2,
+		STAT_SPEED = 1,
+		STAT_CONSTITUTION = -1
 	)
 
 	voicepack_m = /datum/voicepack/male/knight

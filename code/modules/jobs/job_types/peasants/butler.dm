@@ -27,27 +27,27 @@
 	)
 
 	jobstats = list(
-		STATKEY_STR = -1,
-		STATKEY_INT = 2,
-		STATKEY_PER = 1,
-		STATKEY_END = 1
+		STAT_STRENGTH = -1,
+		STAT_INTELLIGENCE = 2,
+		STAT_PERCEPTION = 1,
+		STAT_ENDURANCE = 1
 	)
 
 	skills = list(
-		/datum/skill/combat/knives = 2,
-		/datum/skill/craft/cooking = 4,
-		/datum/skill/craft/crafting = 2,
-		/datum/skill/labor/butchering = 2,
-		/datum/skill/labor/farming = 2,
-		/datum/skill/labor/mathematics = 3,
-		/datum/skill/misc/athletics = 2,
-		/datum/skill/misc/medicine = 2,
-		/datum/skill/misc/music = 1,
-		/datum/skill/misc/reading = 3,
-		/datum/skill/misc/riding = 1,
-		/datum/skill/craft/sewing = 3,
-		/datum/skill/misc/sneaking = 3,
-		/datum/skill/misc/stealing = 3
+		/datum/attribute/skill/combat/knives = 2,
+		/datum/attribute/skill/craft/cooking = 4,
+		/datum/attribute/skill/craft/crafting = 2,
+		/datum/attribute/skill/labor/butchering = 2,
+		/datum/attribute/skill/labor/farming = 2,
+		/datum/attribute/skill/labor/mathematics = 3,
+		/datum/attribute/skill/misc/athletics = 2,
+		/datum/attribute/skill/misc/medicine = 2,
+		/datum/attribute/skill/misc/music = 1,
+		/datum/attribute/skill/misc/reading = 3,
+		/datum/attribute/skill/misc/riding = 1,
+		/datum/attribute/skill/misc/sewing = 3,
+		/datum/attribute/skill/misc/sneaking = 3,
+		/datum/attribute/skill/misc/stealing = 3
 	)
 
 	mind_traits = list(
@@ -59,7 +59,7 @@
 
 /datum/job/butler/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
-	spawned.adjust_skillrank(/datum/skill/misc/music, pick(0,0,2,3), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/misc/music, pick(0,0,2,3), TRUE)
 
 /datum/outfit/butler
 	name = "Butler"

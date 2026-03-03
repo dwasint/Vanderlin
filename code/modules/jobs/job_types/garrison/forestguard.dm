@@ -67,31 +67,31 @@
 	blacklisted_species = list(SPEC_ID_HALFLING, SPEC_ID_KOBOLD, SPEC_ID_KOBOLD_FORMIKRAG)
 
 	jobstats = list(
-		STATKEY_STR = 2,
-		STATKEY_END = 3,
-		STATKEY_CON = 3,
-		STATKEY_SPD = -1
+		STAT_STRENGTH = 2,
+		STAT_ENDURANCE = 3,
+		STAT_CONSTITUTION = 3,
+		STAT_SPEED = -1
 	)
 
 	skills = list(
-		/datum/skill/misc/swimming = 3,
-		/datum/skill/misc/climbing = 4,
-		/datum/skill/misc/athletics = 2,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/misc/riding = 2,
-		/datum/skill/craft/crafting = 2,
-		/datum/skill/labor/lumberjacking = 1,
-		/datum/skill/craft/carpentry = 1,
-		/datum/skill/craft/sewing = 2,
-		/datum/skill/craft/tanning = 1,
-		/datum/skill/combat/axesmaces = 3,
-		/datum/skill/combat/whipsflails = 3,
-		/datum/skill/combat/swords = 3,
-		/datum/skill/combat/knives = 2,
-		/datum/skill/combat/shields = 3,
-		/datum/skill/combat/bows = 1,
-		/datum/skill/combat/wrestling = 3,
-		/datum/skill/combat/unarmed = 3
+		/datum/attribute/skill/misc/swimming = 3,
+		/datum/attribute/skill/misc/climbing = 4,
+		/datum/attribute/skill/misc/athletics = 2,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/misc/riding = 2,
+		/datum/attribute/skill/craft/crafting = 2,
+		/datum/attribute/skill/labor/lumberjacking = 1,
+		/datum/attribute/skill/craft/carpentry = 1,
+		/datum/attribute/skill/misc/sewing = 2,
+		/datum/attribute/skill/craft/tanning = 1,
+		/datum/attribute/skill/combat/axesmaces = 3,
+		/datum/attribute/skill/combat/whipsflails = 3,
+		/datum/attribute/skill/combat/swords = 3,
+		/datum/attribute/skill/combat/knives = 2,
+		/datum/attribute/skill/combat/shields = 3,
+		/datum/attribute/skill/combat/bows = 1,
+		/datum/attribute/skill/combat/wrestling = 3,
+		/datum/attribute/skill/combat/unarmed = 3
 	)
 
 	traits = list(
@@ -124,28 +124,28 @@
 	blacklisted_species = list(SPEC_ID_HALFLING, SPEC_ID_KOBOLD, SPEC_ID_KOBOLD_FORMIKRAG)
 
 	jobstats = list(
-		STATKEY_STR = -3,
-		STATKEY_END = 1,
-		STATKEY_PER = 3,
-		STATKEY_SPD = 3
+		STAT_STRENGTH = -3,
+		STAT_ENDURANCE = 1,
+		STAT_PERCEPTION = 3,
+		STAT_SPEED = 3
 	)
 
 	skills = list(
-		/datum/skill/misc/swimming = 3,
-		/datum/skill/misc/climbing = 4,
-		/datum/skill/misc/athletics = 2,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/misc/riding = 2,
-		/datum/skill/craft/crafting = 2,
-		/datum/skill/labor/lumberjacking = 1,
-		/datum/skill/craft/carpentry = 1,
-		/datum/skill/craft/sewing = 2,
-		/datum/skill/craft/tanning = 1,
-		/datum/skill/combat/bows = 3,
-		/datum/skill/combat/crossbows = 3,
-		/datum/skill/combat/knives = 3,
-		/datum/skill/combat/axesmaces = 1,
-		/datum/skill/combat/wrestling = 1
+		/datum/attribute/skill/misc/swimming = 3,
+		/datum/attribute/skill/misc/climbing = 4,
+		/datum/attribute/skill/misc/athletics = 2,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/misc/riding = 2,
+		/datum/attribute/skill/craft/crafting = 2,
+		/datum/attribute/skill/labor/lumberjacking = 1,
+		/datum/attribute/skill/craft/carpentry = 1,
+		/datum/attribute/skill/misc/sewing = 2,
+		/datum/attribute/skill/craft/tanning = 1,
+		/datum/attribute/skill/combat/bows = 3,
+		/datum/attribute/skill/combat/crossbows = 3,
+		/datum/attribute/skill/combat/knives = 3,
+		/datum/attribute/skill/combat/axesmaces = 1,
+		/datum/attribute/skill/combat/wrestling = 1
 	)
 
 	traits = list(
@@ -178,27 +178,27 @@
 	blacklisted_species = list(SPEC_ID_HALFLING, SPEC_ID_KOBOLD, SPEC_ID_KOBOLD_FORMIKRAG)
 
 	jobstats = list(
-		STATKEY_STR = 2,
-		STATKEY_CON = 2,
-		STATKEY_END = 2,
-		STATKEY_SPD = 1
+		STAT_STRENGTH = 2,
+		STAT_CONSTITUTION = 2,
+		STAT_ENDURANCE = 2,
+		STAT_SPEED = 1
 	)
 
 	skills = list(
-		/datum/skill/misc/swimming = 3,
-		/datum/skill/misc/climbing = 4,
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/misc/riding = 2,
-		/datum/skill/craft/crafting = 2,
-		/datum/skill/labor/lumberjacking = 1,
-		/datum/skill/craft/carpentry = 1,
-		/datum/skill/craft/sewing = 2,
-		/datum/skill/craft/tanning = 1,
-		/datum/skill/combat/wrestling = 3,
-		/datum/skill/combat/unarmed = 3,
-		/datum/skill/combat/knives = 2,
-		/datum/skill/combat/axesmaces = 3
+		/datum/attribute/skill/misc/swimming = 3,
+		/datum/attribute/skill/misc/climbing = 4,
+		/datum/attribute/skill/misc/athletics = 3,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/misc/riding = 2,
+		/datum/attribute/skill/craft/crafting = 2,
+		/datum/attribute/skill/labor/lumberjacking = 1,
+		/datum/attribute/skill/craft/carpentry = 1,
+		/datum/attribute/skill/misc/sewing = 2,
+		/datum/attribute/skill/craft/tanning = 1,
+		/datum/attribute/skill/combat/wrestling = 3,
+		/datum/attribute/skill/combat/unarmed = 3,
+		/datum/attribute/skill/combat/knives = 2,
+		/datum/attribute/skill/combat/axesmaces = 3
 	)
 
 	traits = list(
@@ -233,26 +233,26 @@
 	blacklisted_species = list(SPEC_ID_HALFLING, SPEC_ID_KOBOLD, SPEC_ID_KOBOLD_FORMIKRAG)
 
 	jobstats = list(
-		STATKEY_PER = 1
+		STAT_PERCEPTION = 1
 	)
 
 	skills = list(
-		/datum/skill/misc/swimming = 3,
-		/datum/skill/misc/climbing = 4,
-		/datum/skill/misc/athletics = 2,
-		/datum/skill/craft/crafting = 2,
-		/datum/skill/craft/carpentry = 1,
-		/datum/skill/craft/sewing = 2,
-		/datum/skill/labor/butchering = 2,
-		/datum/skill/combat/bows = 1,
-		/datum/skill/combat/crossbows = 1,
-		/datum/skill/combat/knives = 2,
-		/datum/skill/combat/axesmaces = 1,
-		/datum/skill/combat/wrestling = 1,
-		/datum/skill/craft/cooking = 2,
-		/datum/skill/misc/sneaking = 2,
-		/datum/skill/misc/stealing = 3,
-		/datum/skill/craft/tanning = 2
+		/datum/attribute/skill/misc/swimming = 3,
+		/datum/attribute/skill/misc/climbing = 4,
+		/datum/attribute/skill/misc/athletics = 2,
+		/datum/attribute/skill/craft/crafting = 2,
+		/datum/attribute/skill/craft/carpentry = 1,
+		/datum/attribute/skill/misc/sewing = 2,
+		/datum/attribute/skill/labor/butchering = 2,
+		/datum/attribute/skill/combat/bows = 1,
+		/datum/attribute/skill/combat/crossbows = 1,
+		/datum/attribute/skill/combat/knives = 2,
+		/datum/attribute/skill/combat/axesmaces = 1,
+		/datum/attribute/skill/combat/wrestling = 1,
+		/datum/attribute/skill/craft/cooking = 2,
+		/datum/attribute/skill/misc/sneaking = 2,
+		/datum/attribute/skill/misc/stealing = 3,
+		/datum/attribute/skill/craft/tanning = 2
 	)
 
 	traits = list(
@@ -264,11 +264,11 @@
 
 /datum/job/advclass/forestguard/ruffian/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
-	spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_STR, rand(-1, 1))
-	spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_INT, rand(-2, 2))
-	spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_CON, rand(-1, 1))
-	spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_END, rand(-1, 1))
-	spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_LCK, rand(-4, 4))
+	spawned.adjust_stat_modifier(STATMOD_JOB, STAT_STRENGTH, rand(-1, 1))
+	spawned.adjust_stat_modifier(STATMOD_JOB, STAT_INTELLIGENCE, rand(-2, 2))
+	spawned.adjust_stat_modifier(STATMOD_JOB, STAT_CONSTITUTION, rand(-1, 1))
+	spawned.adjust_stat_modifier(STATMOD_JOB, STAT_ENDURANCE, rand(-1, 1))
+	spawned.adjust_stat_modifier(STATMOD_JOB, STAT_FORTUNE, rand(-4, 4))
 
 	add_verb(spawned, /mob/proc/haltyellorphan)
 
@@ -280,26 +280,26 @@
 	allowed_races = list(SPEC_ID_KOBOLD, SPEC_ID_KOBOLD_FORMIKRAG)
 
 	jobstats = list(
-		STATKEY_PER = 1
+		STAT_PERCEPTION = 1
 	)
 
 	skills = list(
-		/datum/skill/misc/swimming = 3,
-		/datum/skill/misc/climbing = 4,
-		/datum/skill/misc/athletics = 2,
-		/datum/skill/craft/crafting = 2,
-		/datum/skill/craft/carpentry = 1,
-		/datum/skill/craft/sewing = 2,
-		/datum/skill/labor/butchering = 2,
-		/datum/skill/combat/bows = 1,
-		/datum/skill/combat/crossbows = 1,
-		/datum/skill/combat/knives = 2,
-		/datum/skill/combat/axesmaces = 1,
-		/datum/skill/combat/wrestling = 1,
-		/datum/skill/craft/cooking = 2,
-		/datum/skill/misc/sneaking = 2,
-		/datum/skill/misc/stealing = 3,
-		/datum/skill/craft/tanning = 2
+		/datum/attribute/skill/misc/swimming = 3,
+		/datum/attribute/skill/misc/climbing = 4,
+		/datum/attribute/skill/misc/athletics = 2,
+		/datum/attribute/skill/craft/crafting = 2,
+		/datum/attribute/skill/craft/carpentry = 1,
+		/datum/attribute/skill/misc/sewing = 2,
+		/datum/attribute/skill/labor/butchering = 2,
+		/datum/attribute/skill/combat/bows = 1,
+		/datum/attribute/skill/combat/crossbows = 1,
+		/datum/attribute/skill/combat/knives = 2,
+		/datum/attribute/skill/combat/axesmaces = 1,
+		/datum/attribute/skill/combat/wrestling = 1,
+		/datum/attribute/skill/craft/cooking = 2,
+		/datum/attribute/skill/misc/sneaking = 2,
+		/datum/attribute/skill/misc/stealing = 3,
+		/datum/attribute/skill/craft/tanning = 2
 	)
 
 	traits = list(
@@ -311,11 +311,11 @@
 
 /datum/job/advclass/forestguard/rat/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
-	spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_STR, rand(-1, 1))
-	spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_INT, rand(-2, 2))
-	spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_CON, rand(-1, 1))
-	spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_END, rand(-1, 1))
-	spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_LCK, rand(-4, 4))
+	spawned.adjust_stat_modifier(STATMOD_JOB, STAT_STRENGTH, rand(-1, 1))
+	spawned.adjust_stat_modifier(STATMOD_JOB, STAT_INTELLIGENCE, rand(-2, 2))
+	spawned.adjust_stat_modifier(STATMOD_JOB, STAT_CONSTITUTION, rand(-1, 1))
+	spawned.adjust_stat_modifier(STATMOD_JOB, STAT_ENDURANCE, rand(-1, 1))
+	spawned.adjust_stat_modifier(STATMOD_JOB, STAT_FORTUNE, rand(-4, 4))
 
 	add_verb(spawned, /mob/proc/haltyellorphan)
 

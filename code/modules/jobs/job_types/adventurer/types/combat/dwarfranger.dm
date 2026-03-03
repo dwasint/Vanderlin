@@ -10,24 +10,24 @@
 	exp_types_granted = list(EXP_TYPE_ADVENTURER, EXP_TYPE_COMBAT, EXP_TYPE_RANGER)
 
 	skills = list(
-		/datum/skill/combat/swords = 3, // In line with basic combat classes
-		/datum/skill/combat/wrestling = 1,
-		/datum/skill/combat/unarmed = 2,
-		/datum/skill/craft/crafting = 2,
-		/datum/skill/misc/swimming = 1,
-		/datum/skill/misc/climbing = 3,
-		/datum/skill/combat/crossbows = 3,
-		/datum/skill/craft/tanning = 2,
-		/datum/skill/craft/sewing = 3,
-		/datum/skill/misc/medicine = 2,
-		/datum/skill/craft/cooking = 1,
-		/datum/skill/misc/athletics = 2,
-		/datum/skill/misc/reading = 2,
+		/datum/attribute/skill/combat/swords = 3, // In line with basic combat classes
+		/datum/attribute/skill/combat/wrestling = 1,
+		/datum/attribute/skill/combat/unarmed = 2,
+		/datum/attribute/skill/craft/crafting = 2,
+		/datum/attribute/skill/misc/swimming = 1,
+		/datum/attribute/skill/misc/climbing = 3,
+		/datum/attribute/skill/combat/crossbows = 3,
+		/datum/attribute/skill/craft/tanning = 2,
+		/datum/attribute/skill/misc/sewing = 3,
+		/datum/attribute/skill/misc/medicine = 2,
+		/datum/attribute/skill/craft/cooking = 1,
+		/datum/attribute/skill/misc/athletics = 2,
+		/datum/attribute/skill/misc/reading = 2,
 	)
 
 	jobstats = list(
-		STATKEY_PER = 3,
-		STATKEY_SPD = 1, // Fast... for a dwarf
+		STAT_PERCEPTION = 3,
+		STAT_SPEED = 1, // Fast... for a dwarf
 	)
 
 	traits = list(

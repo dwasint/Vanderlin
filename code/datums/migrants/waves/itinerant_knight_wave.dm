@@ -11,28 +11,28 @@
 	blacklisted_species = list(SPEC_ID_HALFLING)
 	exp_types_granted  = list(EXP_TYPE_COMBAT)
 	jobstats = list(
-		STATKEY_STR = 3,
-		STATKEY_PER = 2,
-		STATKEY_INT = 1,
-		STATKEY_CON = 2,
-		STATKEY_END = 3,
-		STATKEY_SPD = -2,
+		STAT_STRENGTH = 3,
+		STAT_PERCEPTION = 2,
+		STAT_INTELLIGENCE = 1,
+		STAT_CONSTITUTION = 2,
+		STAT_ENDURANCE = 3,
+		STAT_SPEED = -2,
 	)
 
 	skills = list(
-		/datum/skill/combat/polearms = 4,
-		/datum/skill/combat/swords = 4,
-		/datum/skill/combat/whipsflails = 4,
-		/datum/skill/combat/axesmaces = 4,
-		/datum/skill/combat/wrestling = 3,
-		/datum/skill/combat/unarmed = 4,
-		/datum/skill/combat/crossbows = 3,
-		/datum/skill/combat/bows = 3,
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/misc/climbing = 1,
-		/datum/skill/misc/reading = 3,
-		/datum/skill/misc/riding = 4,
-		/datum/skill/labor/mathematics = 3,
+		/datum/attribute/skill/combat/polearms = 4,
+		/datum/attribute/skill/combat/swords = 4,
+		/datum/attribute/skill/combat/whipsflails = 4,
+		/datum/attribute/skill/combat/axesmaces = 4,
+		/datum/attribute/skill/combat/wrestling = 3,
+		/datum/attribute/skill/combat/unarmed = 4,
+		/datum/attribute/skill/combat/crossbows = 3,
+		/datum/attribute/skill/combat/bows = 3,
+		/datum/attribute/skill/misc/athletics = 3,
+		/datum/attribute/skill/misc/climbing = 1,
+		/datum/attribute/skill/misc/reading = 3,
+		/datum/attribute/skill/misc/riding = 4,
+		/datum/attribute/skill/labor/mathematics = 3,
 	)
 
 	traits = list(
@@ -86,26 +86,26 @@
 	allowed_ages = list(AGE_CHILD, AGE_ADULT)
 	exp_types_granted  = list(EXP_TYPE_COMBAT)
 	jobstats = list(
-		STATKEY_PER = 1,
-		STATKEY_CON = 1,
-		STATKEY_INT = 1,
-		STATKEY_SPD = 2,
+		STAT_PERCEPTION = 1,
+		STAT_CONSTITUTION = 1,
+		STAT_INTELLIGENCE = 1,
+		STAT_SPEED = 2,
 	)
 
 	skills = list(
-		/datum/skill/combat/bows = 2,
-		/datum/skill/combat/crossbows = 2,
-		/datum/skill/combat/wrestling = 1,
-		/datum/skill/combat/unarmed = 1,
-		/datum/skill/combat/swords = 2,
-		/datum/skill/combat/knives = 2,
-		/datum/skill/misc/swimming = 2,
-		/datum/skill/misc/climbing = 3,
-		/datum/skill/misc/athletics = 2,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/misc/riding = 1,
-		/datum/skill/craft/weaponsmithing = 2,
-		/datum/skill/craft/armorsmithing = 2,
+		/datum/attribute/skill/combat/bows = 2,
+		/datum/attribute/skill/combat/crossbows = 2,
+		/datum/attribute/skill/combat/wrestling = 1,
+		/datum/attribute/skill/combat/unarmed = 1,
+		/datum/attribute/skill/combat/swords = 2,
+		/datum/attribute/skill/combat/knives = 2,
+		/datum/attribute/skill/misc/swimming = 2,
+		/datum/attribute/skill/misc/climbing = 3,
+		/datum/attribute/skill/misc/athletics = 2,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/misc/riding = 1,
+		/datum/attribute/skill/craft/weaponsmithing = 2,
+		/datum/attribute/skill/craft/armorsmithing = 2,
 	)
 
 	traits = list(TRAIT_DODGEEXPERT)

@@ -74,25 +74,25 @@
 	)
 
 	jobstats = list(
-		STATKEY_INT = 3,
-		STATKEY_END = 1,
-		STATKEY_PER = 3,
-		STATKEY_SPD = 1,
-		STATKEY_LCK = 5
+		STAT_INTELLIGENCE = 3,
+		STAT_ENDURANCE = 1,
+		STAT_PERCEPTION = 3,
+		STAT_SPEED = 1,
+		STAT_FORTUNE = 5
 	)
 
 	skills = list(
-		/datum/skill/combat/swords = 3,
-		/datum/skill/combat/knives = 2,
-		/datum/skill/misc/swimming = 1,
-		/datum/skill/misc/climbing = 1,
-		/datum/skill/misc/athletics = 2,
-		/datum/skill/misc/reading = 3,
-		/datum/skill/misc/sneaking = 1,
-		/datum/skill/misc/riding = 1,
-		/datum/skill/craft/sewing = 2,
-		/datum/skill/combat/unarmed = 1,
-		/datum/skill/labor/mathematics = 3
+		/datum/attribute/skill/combat/swords = 3,
+		/datum/attribute/skill/combat/knives = 2,
+		/datum/attribute/skill/misc/swimming = 1,
+		/datum/attribute/skill/misc/climbing = 1,
+		/datum/attribute/skill/misc/athletics = 2,
+		/datum/attribute/skill/misc/reading = 3,
+		/datum/attribute/skill/misc/sneaking = 1,
+		/datum/attribute/skill/misc/riding = 1,
+		/datum/attribute/skill/misc/sewing = 2,
+		/datum/attribute/skill/combat/unarmed = 1,
+		/datum/attribute/skill/labor/mathematics = 3
 	)
 
 	traits = list(
@@ -103,7 +103,7 @@
 /datum/job/advclass/consort/highborn/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/swords, 1, TRUE)
 
 /datum/outfit/consort/highborn
 	name = "Highborn Consort"
@@ -126,32 +126,32 @@
 	exp_types_granted  = list(EXP_TYPE_NOBLE)
 
 	jobstats = list(
-		STATKEY_STR = 1,
-		STATKEY_INT = -1,
-		STATKEY_END = 2,
-		STATKEY_SPD = 1,
-		STATKEY_LCK = 3
+		STAT_STRENGTH = 1,
+		STAT_INTELLIGENCE = -1,
+		STAT_ENDURANCE = 2,
+		STAT_SPEED = 1,
+		STAT_FORTUNE = 3
 	)
 
 	skills = list(
-		/datum/skill/combat/wrestling = 2,
-		/datum/skill/combat/unarmed = 1,
-		/datum/skill/combat/knives = 3,
-		/datum/skill/misc/swimming = 3,
-		/datum/skill/misc/climbing = 2,
-		/datum/skill/misc/athletics = 2,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/misc/sneaking = 3,
-		/datum/skill/misc/stealing = 3,
-		/datum/skill/misc/riding = 2,
-		/datum/skill/misc/lockpicking = 2,
-		/datum/skill/labor/mathematics = 2
+		/datum/attribute/skill/combat/wrestling = 2,
+		/datum/attribute/skill/combat/unarmed = 1,
+		/datum/attribute/skill/combat/knives = 3,
+		/datum/attribute/skill/misc/swimming = 3,
+		/datum/attribute/skill/misc/climbing = 2,
+		/datum/attribute/skill/misc/athletics = 2,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/misc/sneaking = 3,
+		/datum/attribute/skill/misc/stealing = 3,
+		/datum/attribute/skill/misc/riding = 2,
+		/datum/attribute/skill/misc/lockpicking = 2,
+		/datum/attribute/skill/labor/mathematics = 2
 	)
 
 /datum/job/advclass/consort/courtesan/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/knives, 1, TRUE)
 
 /datum/outfit/consort/courtesan
 	name = "Courtesan Consort"
@@ -177,26 +177,26 @@
 	exp_types_granted  = list(EXP_TYPE_NOBLE)
 
 	jobstats = list(
-		STATKEY_STR = 1,
-		STATKEY_CON = 2,
-		STATKEY_INT = -2,
-		STATKEY_END = 3,
-		STATKEY_SPD = -1,
-		STATKEY_LCK = 1
+		STAT_STRENGTH = 1,
+		STAT_CONSTITUTION = 2,
+		STAT_INTELLIGENCE = -2,
+		STAT_ENDURANCE = 3,
+		STAT_SPEED = -1,
+		STAT_FORTUNE = 1
 	)
 
 	skills = list(
-		/datum/skill/combat/wrestling = 2,
-		/datum/skill/combat/unarmed = 3,
-		/datum/skill/combat/polearms = 2,
-		/datum/skill/craft/sewing = 3,
-		/datum/skill/misc/climbing = 1,
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/labor/farming = 3,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/craft/cooking = 3,
-		/datum/skill/craft/crafting = 3,
-		/datum/skill/misc/riding = 1
+		/datum/attribute/skill/combat/wrestling = 2,
+		/datum/attribute/skill/combat/unarmed = 3,
+		/datum/attribute/skill/combat/polearms = 2,
+		/datum/attribute/skill/misc/sewing = 3,
+		/datum/attribute/skill/misc/climbing = 1,
+		/datum/attribute/skill/misc/athletics = 3,
+		/datum/attribute/skill/labor/farming = 3,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/craft/cooking = 3,
+		/datum/attribute/skill/craft/crafting = 3,
+		/datum/attribute/skill/misc/riding = 1
 	)
 
 	traits = list(
@@ -206,7 +206,7 @@
 /datum/job/advclass/consort/lowborn/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/unarmed, 1, TRUE)
 
 /datum/outfit/consort/lowborn
 	name = "Lowborn Consort"
@@ -230,26 +230,26 @@
 	languages = list(/datum/language/thievescant)
 
 	jobstats = list(
-		STATKEY_STR = 1,
-		STATKEY_INT = -1,
-		STATKEY_END = 2,
-		STATKEY_SPD = 1,
-		STATKEY_LCK = 3
+		STAT_STRENGTH = 1,
+		STAT_INTELLIGENCE = -1,
+		STAT_ENDURANCE = 2,
+		STAT_SPEED = 1,
+		STAT_FORTUNE = 3
 	)
 
 	skills = list(
-		/datum/skill/combat/wrestling = 2,
-		/datum/skill/combat/unarmed = 1,
-		/datum/skill/combat/knives = 3,
-		/datum/skill/misc/swimming = 3,
-		/datum/skill/misc/climbing = 2,
-		/datum/skill/misc/athletics = 2,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/misc/sneaking = 3,
-		/datum/skill/misc/stealing = 3,
-		/datum/skill/misc/riding = 2,
-		/datum/skill/misc/lockpicking = 2,
-		/datum/skill/labor/mathematics = 2
+		/datum/attribute/skill/combat/wrestling = 2,
+		/datum/attribute/skill/combat/unarmed = 1,
+		/datum/attribute/skill/combat/knives = 3,
+		/datum/attribute/skill/misc/swimming = 3,
+		/datum/attribute/skill/misc/climbing = 2,
+		/datum/attribute/skill/misc/athletics = 2,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/misc/sneaking = 3,
+		/datum/attribute/skill/misc/stealing = 3,
+		/datum/attribute/skill/misc/riding = 2,
+		/datum/attribute/skill/misc/lockpicking = 2,
+		/datum/attribute/skill/labor/mathematics = 2
 	)
 
 	traits = list(
@@ -259,7 +259,7 @@
 /datum/job/advclass/consort/courtesan/night_spy/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_skillrank(/datum/skill/combat/knives, 1)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/knives, 1)
 
 /datum/outfit/consort/courtesan/spy
 	name = "Night-Mother's Spy Consort"

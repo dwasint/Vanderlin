@@ -8,15 +8,15 @@
 	cmode_music = 'sound/music/cmode/adventurer/CombatOutlander3.ogg'
 
 	skills = list(
-		/datum/skill/misc/swimming = 3,
-		/datum/skill/misc/climbing = 2,
-		/datum/skill/misc/athletics = 2,
-		/datum/skill/misc/sneaking = 1,
-		/datum/skill/combat/wrestling = 2,
-		/datum/skill/combat/unarmed = 2,
-		/datum/skill/combat/knives = 2,
-		/datum/skill/combat/polearms = 3,
-		/datum/skill/combat/swords = 2,
+		/datum/attribute/skill/misc/swimming = 3,
+		/datum/attribute/skill/misc/climbing = 2,
+		/datum/attribute/skill/misc/athletics = 2,
+		/datum/attribute/skill/misc/sneaking = 1,
+		/datum/attribute/skill/combat/wrestling = 2,
+		/datum/attribute/skill/combat/unarmed = 2,
+		/datum/attribute/skill/combat/knives = 2,
+		/datum/attribute/skill/combat/polearms = 3,
+		/datum/attribute/skill/combat/swords = 2,
 	)
 
 	traits = list(
@@ -32,25 +32,25 @@
 		var/obj/item/weapon/shield/tower/buckleriron/shield = new(get_turf(src))
 		spawned.equip_to_appropriate_slot(aby_spear)
 		spawned.equip_to_appropriate_slot(shield)
-		spawned.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)
-		spawned.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_STR, 1)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_CON, 1)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_PER, 2)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_INT, -1)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/shields, 3, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/misc/athletics, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/unarmed, 1, TRUE)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_STRENGTH, 1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_CONSTITUTION, 1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_PERCEPTION, 2)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_INTELLIGENCE, -1)
 	if(spawned.gender == MALE)
 		// Male: arcyne trident wielder
 		spawned.add_spell(/datum/action/cooldown/spell/undirected/conjure_item/summon_trident)
 		spawned.add_spell(/datum/action/cooldown/spell/pressure)
 		spawned.mana_pool?.set_intrinsic_recharge(MANA_ALL_LEYLINES)
-		spawned.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
-		spawned.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
-		spawned.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_INT, 2)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_PER, 2)
+		spawned.adjust_skillrank(/datum/attribute/skill/misc/sneaking, 2, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/misc/medicine, 2, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/craft/crafting, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/craft/cooking, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/magic/arcane, 1, TRUE)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_INTELLIGENCE, 2)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_PERCEPTION, 2)
 		if(!istype(spawned.patron, /datum/patron/inhumen/zizo))
 			spawned.set_patron(/datum/patron/divine/noc)
 	spawned.merctype = 10

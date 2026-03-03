@@ -6,22 +6,22 @@
 	outfit = /datum/outfit/job/preceptor
 	category_tags = list(CTAG_PURITAN)
 	jobstats = list(
-		STATKEY_STR = 2,
-		STATKEY_PER = 2,
-		STATKEY_END = 2,
-		STATKEY_CON = 2,
-		STATKEY_SPD = 2,
+		STAT_STRENGTH = 2,
+		STAT_PERCEPTION = 2,
+		STAT_ENDURANCE = 2,
+		STAT_CONSTITUTION = 2,
+		STAT_SPEED = 2,
 	)
 	skills = list(
-		/datum/skill/misc/athletics = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/unarmed = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/wrestling = SKILL_LEVEL_EXPERT,
-		/datum/skill/misc/climbing = SKILL_LEVEL_EXPERT,
-		/datum/skill/misc/swimming = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/medicine = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/reading = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/craft/cooking = SKILL_LEVEL_NOVICE,
-		/datum/skill/combat/firearms = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/misc/athletics = SKILL_LEVEL_EXPERT,
+		/datum/attribute/skill/combat/unarmed = SKILL_LEVEL_EXPERT,
+		/datum/attribute/skill/combat/wrestling = SKILL_LEVEL_EXPERT,
+		/datum/attribute/skill/misc/climbing = SKILL_LEVEL_EXPERT,
+		/datum/attribute/skill/misc/swimming = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/misc/medicine = SKILL_LEVEL_APPRENTICE,
+		/datum/attribute/skill/misc/reading = SKILL_LEVEL_APPRENTICE,
+		/datum/attribute/skill/craft/cooking = SKILL_LEVEL_NOVICE,
+		/datum/attribute/skill/combat/firearms = SKILL_LEVEL_JOURNEYMAN,
 	)
 
 	traits = list(
@@ -39,7 +39,7 @@
 	. = ..()
 	GLOB.inquisition.add_member_to_position(spawned, GLOB.inquisition.benetarus, 100)
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/unarmed, 1, TRUE)
 
 	var/static/list/gear = list(
 		"Knuckleduster and Knuckleduster",

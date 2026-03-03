@@ -21,22 +21,22 @@
 	outfit = /datum/outfit/servant
 
 	jobstats = list(
-		STATKEY_SPD = 1,
-		STATKEY_END = 1
+		STAT_SPEED = 1,
+		STAT_ENDURANCE = 1
 	)
 
 	skills = list(
-		/datum/skill/combat/knives = 2,
-		/datum/skill/craft/cooking = 3,
-		/datum/skill/craft/crafting = 1,
-		/datum/skill/labor/butchering = 1,
-		/datum/skill/labor/farming = 1,
-		/datum/skill/misc/athletics = 2,
-		/datum/skill/misc/medicine = 1,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/craft/sewing = 3,
-		/datum/skill/misc/sneaking = 2,
-		/datum/skill/misc/stealing = 3
+		/datum/attribute/skill/combat/knives = 2,
+		/datum/attribute/skill/craft/cooking = 3,
+		/datum/attribute/skill/craft/crafting = 1,
+		/datum/attribute/skill/labor/butchering = 1,
+		/datum/attribute/skill/labor/farming = 1,
+		/datum/attribute/skill/misc/athletics = 2,
+		/datum/attribute/skill/misc/medicine = 1,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/misc/sewing = 3,
+		/datum/attribute/skill/misc/sneaking = 2,
+		/datum/attribute/skill/misc/stealing = 3
 	)
 
 	traits = list(
@@ -45,11 +45,11 @@
 
 /datum/job/servant/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
-	spawned.adjust_skillrank(/datum/skill/craft/crafting, pick(0,0,1), TRUE)
-	spawned.adjust_skillrank(/datum/skill/misc/music, pick(0,1,1), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/craft/crafting, pick(0,0,1), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/misc/music, pick(0,1,1), TRUE)
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/craft/cooking, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/craft/carpentry, 1, TRUE)
 
 /datum/outfit/servant
 	name = "Servant"
@@ -103,21 +103,21 @@
 	outfit = /datum/outfit/tapster
 
 	jobstats = list(
-		STATKEY_SPD = 1,
-		STATKEY_END = 1
+		STAT_SPEED = 1,
+		STAT_ENDURANCE = 1
 	)
 
 	skills = list(
-		/datum/skill/combat/knives = 2,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/craft/cooking = 3,
-		/datum/skill/labor/butchering = 1,
-		/datum/skill/misc/medicine = 1,
-		/datum/skill/labor/farming = 1,
-		/datum/skill/craft/sewing = 2,
-		/datum/skill/craft/crafting = 1,
-		/datum/skill/misc/sneaking = 2,
-		/datum/skill/misc/stealing = 3
+		/datum/attribute/skill/combat/knives = 2,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/craft/cooking = 3,
+		/datum/attribute/skill/labor/butchering = 1,
+		/datum/attribute/skill/misc/medicine = 1,
+		/datum/attribute/skill/labor/farming = 1,
+		/datum/attribute/skill/misc/sewing = 2,
+		/datum/attribute/skill/craft/crafting = 1,
+		/datum/attribute/skill/misc/sneaking = 2,
+		/datum/attribute/skill/misc/stealing = 3
 	)
 
 	traits = list(
@@ -126,7 +126,7 @@
 
 /datum/job/tapster/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
-	spawned.adjust_skillrank(/datum/skill/misc/music, pick(0,1,1), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/misc/music, pick(0,1,1), TRUE)
 
 /datum/outfit/tapster
 	name = "Tapster Base"
@@ -165,26 +165,26 @@
 	outfit = /datum/outfit/matron_assistant
 
 	jobstats = list(
-		STATKEY_SPD = 1,
-		STATKEY_END = 1
+		STAT_SPEED = 1,
+		STAT_ENDURANCE = 1
 	)
 
 	skills = list(
-		/datum/skill/combat/knives = 2,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/craft/cooking = 3,
-		/datum/skill/labor/butchering = 1,
-		/datum/skill/misc/medicine = 1,
-		/datum/skill/labor/farming = 1,
-		/datum/skill/craft/sewing = 2,
-		/datum/skill/craft/crafting = 1,
-		/datum/skill/misc/sneaking = 2,
-		/datum/skill/misc/stealing = 3,
+		/datum/attribute/skill/combat/knives = 2,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/craft/cooking = 3,
+		/datum/attribute/skill/labor/butchering = 1,
+		/datum/attribute/skill/misc/medicine = 1,
+		/datum/attribute/skill/labor/farming = 1,
+		/datum/attribute/skill/misc/sewing = 2,
+		/datum/attribute/skill/craft/crafting = 1,
+		/datum/attribute/skill/misc/sneaking = 2,
+		/datum/attribute/skill/misc/stealing = 3,
 	)
 
 /datum/job/matron_assistant/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
-	spawned.adjust_skillrank(/datum/skill/misc/music, pick(0,1,1), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/misc/music, pick(0,1,1), TRUE)
 
 /datum/outfit/matron_assistant
 	name = "Orphanage Assistant Base"
@@ -224,27 +224,27 @@
 	exp_types_granted = list(EXP_TYPE_MERCENARY)
 
 	jobstats = list(
-		STATKEY_SPD = 1,
-		STATKEY_END = 1
+		STAT_SPEED = 1,
+		STAT_ENDURANCE = 1
 	)
 
 	skills = list(
-		/datum/skill/combat/knives = 2,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/craft/cooking = 3,
-		/datum/skill/labor/butchering = 1,
-		/datum/skill/misc/medicine = 1,
-		/datum/skill/labor/farming = 1,
-		/datum/skill/craft/sewing = 2,
-		/datum/skill/craft/crafting = 1,
-		/datum/skill/misc/sneaking = 2,
-		/datum/skill/misc/stealing = 3,
-		/datum/skill/labor/mathematics = 1,
+		/datum/attribute/skill/combat/knives = 2,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/craft/cooking = 3,
+		/datum/attribute/skill/labor/butchering = 1,
+		/datum/attribute/skill/misc/medicine = 1,
+		/datum/attribute/skill/labor/farming = 1,
+		/datum/attribute/skill/misc/sewing = 2,
+		/datum/attribute/skill/craft/crafting = 1,
+		/datum/attribute/skill/misc/sneaking = 2,
+		/datum/attribute/skill/misc/stealing = 3,
+		/datum/attribute/skill/labor/mathematics = 1,
 	)
 
 /datum/job/gaffer_assistant/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
-	spawned.adjust_skillrank(/datum/skill/misc/music, pick(0,1,1), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/misc/music, pick(0,1,1), TRUE)
 
 /datum/outfit/gaffer_assistant
 	name = "Ring Servant"

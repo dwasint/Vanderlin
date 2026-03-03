@@ -3,6 +3,8 @@
 // Innate
 #define STATMOD_SEX "innate_sex"
 #define STATMOD_AGE "innate_age"
+#define STATMOD_ROLL "statroll"
+#define STATMOD_CURSE "curse"
 
 // Combined basic mods
 #define STATMOD_JOB "job"

@@ -36,28 +36,28 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	)
 
 	jobstats = list(
-		STATKEY_STR = 1,
-		STATKEY_INT = 3,
-		STATKEY_END = 3,
-		STATKEY_SPD = 1,
-		STATKEY_PER = 2,
-		STATKEY_LCK = 5
+		STAT_STRENGTH = 1,
+		STAT_INTELLIGENCE = 3,
+		STAT_ENDURANCE = 3,
+		STAT_SPEED = 1,
+		STAT_PERCEPTION = 2,
+		STAT_FORTUNE = 5
 	)
 
 	skills = list(
-		/datum/skill/combat/polearms = 2,
-		/datum/skill/combat/axesmaces = 2,
-		/datum/skill/combat/crossbows = 3,
-		/datum/skill/combat/wrestling = 3,
-		/datum/skill/combat/unarmed = 1,
-		/datum/skill/combat/swords = 4,
-		/datum/skill/combat/knives = 3,
-		/datum/skill/misc/swimming = 1,
-		/datum/skill/misc/climbing = 1,
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/misc/reading = 4,
-		/datum/skill/misc/riding = 3,
-		/datum/skill/labor/mathematics = 3
+		/datum/attribute/skill/combat/polearms = 2,
+		/datum/attribute/skill/combat/axesmaces = 2,
+		/datum/attribute/skill/combat/crossbows = 3,
+		/datum/attribute/skill/combat/wrestling = 3,
+		/datum/attribute/skill/combat/unarmed = 1,
+		/datum/attribute/skill/combat/swords = 4,
+		/datum/attribute/skill/combat/knives = 3,
+		/datum/attribute/skill/misc/swimming = 1,
+		/datum/attribute/skill/misc/climbing = 1,
+		/datum/attribute/skill/misc/athletics = 3,
+		/datum/attribute/skill/misc/reading = 4,
+		/datum/attribute/skill/misc/riding = 3,
+		/datum/attribute/skill/labor/mathematics = 3
 	)
 
 	mind_traits = list(
@@ -100,7 +100,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	to_chat(world, "<br>")
 
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/swords, 1, TRUE)
 
 	if(spawned.dna?.species?.id == SPEC_ID_HUMEN && spawned.gender == MALE)
 		spawned.dna.species.soundpack_m = new /datum/voicepack/male/evil()

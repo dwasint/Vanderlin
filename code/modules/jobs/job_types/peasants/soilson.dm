@@ -24,30 +24,30 @@
 	job_bitflag = BITFLAG_CONSTRUCTOR
 
 	jobstats = list(
-		STATKEY_STR = 1,
-		STATKEY_CON = 2,
-		STATKEY_END = 1,
-		STATKEY_INT = -1
+		STAT_STRENGTH = 1,
+		STAT_CONSTITUTION = 2,
+		STAT_ENDURANCE = 1,
+		STAT_INTELLIGENCE = -1
 	)
 
 	skills = list(
-		/datum/skill/combat/wrestling = 1,
-		/datum/skill/combat/unarmed = 2,
-		/datum/skill/combat/knives = 2,
-		/datum/skill/combat/polearms = 2,
-		/datum/skill/combat/whipsflails = 1,
-		/datum/skill/craft/crafting = 2,
-		/datum/skill/craft/sewing = 1,
-		/datum/skill/labor/farming = 4,
-		/datum/skill/labor/taming = 5,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/craft/cooking = 1,
-		/datum/skill/craft/carpentry = 1,
-		/datum/skill/misc/medicine = 1,
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/craft/tanning = 2,
-		/datum/skill/misc/riding = 1,
-		/datum/skill/labor/butchering = 4
+		/datum/attribute/skill/combat/wrestling = 1,
+		/datum/attribute/skill/combat/unarmed = 2,
+		/datum/attribute/skill/combat/knives = 2,
+		/datum/attribute/skill/combat/polearms = 2,
+		/datum/attribute/skill/combat/whipsflails = 1,
+		/datum/attribute/skill/craft/crafting = 2,
+		/datum/attribute/skill/misc/sewing = 1,
+		/datum/attribute/skill/labor/farming = 4,
+		/datum/attribute/skill/labor/taming = 5,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/craft/cooking = 1,
+		/datum/attribute/skill/craft/carpentry = 1,
+		/datum/attribute/skill/misc/medicine = 1,
+		/datum/attribute/skill/misc/athletics = 3,
+		/datum/attribute/skill/craft/tanning = 2,
+		/datum/attribute/skill/misc/riding = 1,
+		/datum/attribute/skill/labor/butchering = 4
 	)
 
 	traits = list(
@@ -59,22 +59,22 @@
 	. = ..()
 	if(prob(5))
 		// Bonus stats
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_STR, 1)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_END, 1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_STRENGTH, 1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_ENDURANCE, 1)
 
 		// Bonus skills
-		spawned.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
-		spawned.adjust_skillrank(/datum/skill/craft/sewing, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/misc/swimming, pick(0,1,1), TRUE)
-		spawned.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
-		spawned.adjust_skillrank(/datum/skill/labor/farming, 2, TRUE)
-		spawned.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/labor/butchering, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/labor/taming, 2, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/wrestling, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/unarmed, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/knives, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/polearms, 2, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/misc/sewing, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/misc/swimming, pick(0,1,1), TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/misc/climbing, 2, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/labor/farming, 2, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/craft/cooking, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/labor/butchering, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/misc/athletics, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/labor/taming, 2, TRUE)
 
 /datum/outfit/farmer/map_override(mob/living/carbon/human/H)
 	if(SSmapping.config.map_name != "Voyage")
@@ -137,24 +137,24 @@
 	job_bitflag = BITFLAG_CONSTRUCTOR
 
 	jobstats = list(
-		STATKEY_STR = -1,
-		STATKEY_CON = 1,
-		STATKEY_END = -1,
-		STATKEY_INT = 1
+		STAT_STRENGTH = -1,
+		STAT_CONSTITUTION = 1,
+		STAT_ENDURANCE = -1,
+		STAT_INTELLIGENCE = 1
 	)
 
 	skills = list(
-		/datum/skill/combat/wrestling = 1,
-		/datum/skill/combat/unarmed = 1,
-		/datum/skill/combat/polearms = 1,
-		/datum/skill/craft/crafting = 1,
-		/datum/skill/labor/farming = 2,
-		/datum/skill/labor/taming = 1,
-		/datum/skill/misc/athletics = 2,
-		/datum/skill/misc/climbing = 2,
-		/datum/skill/misc/swimming = 1,
-		/datum/skill/craft/tanning = 1,
-		/datum/skill/labor/butchering = 1
+		/datum/attribute/skill/combat/wrestling = 1,
+		/datum/attribute/skill/combat/unarmed = 1,
+		/datum/attribute/skill/combat/polearms = 1,
+		/datum/attribute/skill/craft/crafting = 1,
+		/datum/attribute/skill/labor/farming = 2,
+		/datum/attribute/skill/labor/taming = 1,
+		/datum/attribute/skill/misc/athletics = 2,
+		/datum/attribute/skill/misc/climbing = 2,
+		/datum/attribute/skill/misc/swimming = 1,
+		/datum/attribute/skill/craft/tanning = 1,
+		/datum/attribute/skill/labor/butchering = 1
 	)
 
 	traits = list(
@@ -165,12 +165,12 @@
 /datum/job/soilchild/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	if(prob(5))
-		spawned.adjust_skillrank(/datum/skill/labor/farming, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/labor/taming, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/craft/tanning, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/labor/butchering, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/labor/farming, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/craft/cooking, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/misc/athletics, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/labor/taming, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/craft/tanning, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/labor/butchering, 1, TRUE)
 
 /datum/outfit/soilchild
 	name = "Soilchild"

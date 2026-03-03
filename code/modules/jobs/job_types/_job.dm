@@ -117,8 +117,8 @@
 
 	/// Skill levels granted at roundstart.
 	/// Possibly modified by species.
-	/// Basic format is list(/datum/skill/foo = value).
-	/// Supports (/datum/skill/bar = list(value, clamp)).
+	/// Basic format is list(/datum/attribute/skill/foo = value).
+	/// Supports (/datum/attribute/skill/bar = list(value, clamp)).
 	var/list/skills
 
 	/// Associative list of skill - base multiplier to set for skill_holder
@@ -291,9 +291,9 @@
 	if(clear_job_stats) // Reset for most non-advclasses
 		spawned.remove_stat_modifier(STATMOD_JOB)
 
-	spawned.adjust_stat_modifier_list(STATMOD_JOB, jobstats)
+	spawned.adjust_stat_modifier(STATMOD_JOB, jobstats)
 
-	for(var/datum/skill/skill as anything in skills)
+	for(var/datum/attribute/skill/skill as anything in skills)
 		var/amount_or_list = skills[skill]
 		if(islist(amount_or_list))
 			spawned.clamped_adjust_skillrank(skill, amount_or_list[1], amount_or_list[2], TRUE)

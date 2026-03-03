@@ -7,27 +7,27 @@
 	cmode_music = 'sound/music/cmode/adventurer/CombatWarrior.ogg'
 
 	skills = list(
-		/datum/skill/combat/wrestling = 2,
-		/datum/skill/combat/unarmed = 3,
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/combat/swords = 2,
-		/datum/skill/combat/axesmaces = 2,
-		/datum/skill/combat/whipsflails = 2,
-		/datum/skill/combat/polearms = 2,
-		/datum/skill/combat/bows = 1,
-		/datum/skill/combat/crossbows = 1,
-		/datum/skill/combat/shields = 3,
-		/datum/skill/combat/knives = 2,
-		/datum/skill/misc/swimming = 2,
-		/datum/skill/misc/climbing = 2,
-		/datum/skill/misc/reading = 1,
+		/datum/attribute/skill/combat/wrestling = 2,
+		/datum/attribute/skill/combat/unarmed = 3,
+		/datum/attribute/skill/misc/athletics = 3,
+		/datum/attribute/skill/combat/swords = 2,
+		/datum/attribute/skill/combat/axesmaces = 2,
+		/datum/attribute/skill/combat/whipsflails = 2,
+		/datum/attribute/skill/combat/polearms = 2,
+		/datum/attribute/skill/combat/bows = 1,
+		/datum/attribute/skill/combat/crossbows = 1,
+		/datum/attribute/skill/combat/shields = 3,
+		/datum/attribute/skill/combat/knives = 2,
+		/datum/attribute/skill/misc/swimming = 2,
+		/datum/attribute/skill/misc/climbing = 2,
+		/datum/attribute/skill/misc/reading = 1,
 	)
 
 	jobstats = list(
-		STATKEY_STR = 2,
-		STATKEY_END = 1,
-		STATKEY_CON = 1,
-		STATKEY_INT = -1, // Muscle brains
+		STAT_STRENGTH = 2,
+		STAT_ENDURANCE = 1,
+		STAT_CONSTITUTION = 1,
+		STAT_INTELLIGENCE = -1, // Muscle brains
 	)
 
 	traits = list(
@@ -45,7 +45,7 @@
 	if(spawned.age == AGE_OLD) // old warriors get immunity to see gibs
 		ADD_TRAIT(spawned, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 
-	spawned.adjust_skillrank(/datum/skill/misc/riding, pick(1,1,2), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/misc/riding, pick(1,1,2), TRUE)
 
 
 /datum/outfit/adventurer/sfighter
@@ -93,18 +93,18 @@
 
 	switch(weaponchoice)
 		if("Sword")
-			H.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+			H.adjust_skillrank(/datum/attribute/skill/combat/swords, 1, TRUE)
 		if("Axe", "Mace")
-			H.adjust_skillrank(/datum/skill/combat/axesmaces, 1, TRUE)
+			H.adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 1, TRUE)
 		if("Spear")
-			H.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
+			H.adjust_skillrank(/datum/attribute/skill/combat/polearms, 1, TRUE)
 			grant_shield = new /obj/item/weapon/shield/tower/buckleriron
 		if("Flail", "Great flail")
-			H.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
+			H.adjust_skillrank(/datum/attribute/skill/combat/whipsflails, 1, TRUE)
 			if(weaponchoice == "Great flail")
 				grant_shield = FALSE
 		if("Goedendag", "Great axe")
-			H.adjust_skillrank(/datum/skill/combat/axesmaces, 1, TRUE)
+			H.adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 1, TRUE)
 			grant_shield = FALSE
 
 	if(grant_shield == TRUE) // TRUE boolean, not a path

@@ -50,8 +50,8 @@
 	soundpack_m = /datum/voicepack/werewolf
 	soundpack_f = /datum/voicepack/werewolf
 
-	specstats_m = list(STATKEY_STR = 5, STATKEY_PER = 5, STATKEY_INT = -3, STATKEY_CON = 5, STATKEY_END = 5, STATKEY_SPD = 3, STATKEY_LCK = 0)
-	specstats_f = list(STATKEY_STR = 5, STATKEY_PER = 5, STATKEY_INT = -3, STATKEY_CON = 5, STATKEY_END = 5, STATKEY_SPD = 3, STATKEY_LCK = 0)
+	specstats_m = list(STAT_STRENGTH = 5, STAT_PERCEPTION = 5, STAT_INTELLIGENCE = -3, STAT_CONSTITUTION = 5, STAT_ENDURANCE = 5, STAT_SPEED = 3, STAT_FORTUNE = 0)
+	specstats_f = list(STAT_STRENGTH = 5, STAT_PERCEPTION = 5, STAT_INTELLIGENCE = -3, STAT_CONSTITUTION = 5, STAT_ENDURANCE = 5, STAT_SPEED = 3, STAT_FORTUNE = 0)
 
 	enflamed_icon = "widefire"
 

@@ -58,30 +58,30 @@
 	category_tags = list(CTAG_VETERAN)
 
 	jobstats = list(
-		STATKEY_PER = 1,
-		STATKEY_INT = 2,
-		STATKEY_END = 1,
-		STATKEY_CON = 1,
-		STATKEY_SPD = 1,
-		STATKEY_STR = 1
+		STAT_PERCEPTION = 1,
+		STAT_INTELLIGENCE = 2,
+		STAT_ENDURANCE = 1,
+		STAT_CONSTITUTION = 1,
+		STAT_SPEED = 1,
+		STAT_STRENGTH = 1
 	)
 
 	skills = list(
-		/datum/skill/combat/swords = 5,
-		/datum/skill/combat/axesmaces = 5,
-		/datum/skill/combat/shields = 4,
-		/datum/skill/combat/wrestling = 4,
-		/datum/skill/combat/unarmed = 4,
-		/datum/skill/combat/polearms = 4,
-		/datum/skill/combat/bows = 4,
-		/datum/skill/combat/crossbows = 3,
-		/datum/skill/combat/whipsflails = 3,
-		/datum/skill/combat/knives = 2,
-		/datum/skill/misc/swimming = 2,
-		/datum/skill/misc/climbing = 2,
-		/datum/skill/misc/athletics = 2,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/misc/medicine = 3
+		/datum/attribute/skill/combat/swords = 5,
+		/datum/attribute/skill/combat/axesmaces = 5,
+		/datum/attribute/skill/combat/shields = 4,
+		/datum/attribute/skill/combat/wrestling = 4,
+		/datum/attribute/skill/combat/unarmed = 4,
+		/datum/attribute/skill/combat/polearms = 4,
+		/datum/attribute/skill/combat/bows = 4,
+		/datum/attribute/skill/combat/crossbows = 3,
+		/datum/attribute/skill/combat/whipsflails = 3,
+		/datum/attribute/skill/combat/knives = 2,
+		/datum/attribute/skill/misc/swimming = 2,
+		/datum/attribute/skill/misc/climbing = 2,
+		/datum/attribute/skill/misc/athletics = 2,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/misc/medicine = 3
 	)
 
 	traits = list(
@@ -95,10 +95,10 @@
 /datum/job/advclass/veteran/battlemaster/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/combat/axesmaces, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_END, 1)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/swords, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/wrestling, 1, TRUE)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_ENDURANCE, 1)
 
 /datum/outfit/vet/battlemaster
 	name = "Veteran Battlemaster"
@@ -122,29 +122,29 @@
 	category_tags = list(CTAG_VETERAN)
 
 	jobstats = list(
-		STATKEY_PER = 1,
-		STATKEY_INT = 2,
-		STATKEY_END = 1,
-		STATKEY_CON = 2,
-		STATKEY_STR = 1
+		STAT_PERCEPTION = 1,
+		STAT_INTELLIGENCE = 2,
+		STAT_ENDURANCE = 1,
+		STAT_CONSTITUTION = 2,
+		STAT_STRENGTH = 1
 	)
 
 	skills = list(
-		/datum/skill/combat/swords = 4,
-		/datum/skill/combat/axesmaces = 4,
-		/datum/skill/combat/shields = 4,
-		/datum/skill/combat/wrestling = 4,
-		/datum/skill/combat/unarmed = 4,
-		/datum/skill/combat/polearms = 5,
-		/datum/skill/combat/bows = 4,
-		/datum/skill/combat/crossbows = 4,
-		/datum/skill/combat/whipsflails = 2,
-		/datum/skill/combat/knives = 2,
-		/datum/skill/misc/swimming = 2,
-		/datum/skill/misc/climbing = 2,
-		/datum/skill/misc/athletics = 2,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/misc/medicine = 2
+		/datum/attribute/skill/combat/swords = 4,
+		/datum/attribute/skill/combat/axesmaces = 4,
+		/datum/attribute/skill/combat/shields = 4,
+		/datum/attribute/skill/combat/wrestling = 4,
+		/datum/attribute/skill/combat/unarmed = 4,
+		/datum/attribute/skill/combat/polearms = 5,
+		/datum/attribute/skill/combat/bows = 4,
+		/datum/attribute/skill/combat/crossbows = 4,
+		/datum/attribute/skill/combat/whipsflails = 2,
+		/datum/attribute/skill/combat/knives = 2,
+		/datum/attribute/skill/misc/swimming = 2,
+		/datum/attribute/skill/misc/climbing = 2,
+		/datum/attribute/skill/misc/athletics = 2,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/misc/medicine = 2
 	)
 
 	traits = list(
@@ -156,11 +156,11 @@
 /datum/job/advclass/veteran/footman/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_skillrank(/datum/skill/combat/shields, 2, TRUE)
-		spawned.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/combat/axesmaces, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/shields, 2, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/swords, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/wrestling, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/polearms, 1, TRUE)
 
 /datum/outfit/vet/footman
 	name = "Retired Footman (Veteran)"
@@ -191,32 +191,32 @@
 	category_tags = list(CTAG_VETERAN)
 
 	jobstats = list(
-		STATKEY_PER = 1,
-		STATKEY_INT = 1,
-		STATKEY_END = 2,
-		STATKEY_CON = 2,
-		STATKEY_SPD = -1,
-		STATKEY_STR = 1
+		STAT_PERCEPTION = 1,
+		STAT_INTELLIGENCE = 1,
+		STAT_ENDURANCE = 2,
+		STAT_CONSTITUTION = 2,
+		STAT_SPEED = -1,
+		STAT_STRENGTH = 1
 	)
 
 	skills = list(
-		/datum/skill/combat/swords = 4,
-		/datum/skill/combat/axesmaces = 3,
-		/datum/skill/combat/shields = 4,
-		/datum/skill/combat/wrestling = 3,
-		/datum/skill/combat/unarmed = 3,
-		/datum/skill/combat/polearms = 4,
-		/datum/skill/combat/bows = 3,
-		/datum/skill/combat/crossbows = 4,
-		/datum/skill/combat/whipsflails = 4,
-		/datum/skill/combat/knives = 2,
-		/datum/skill/misc/swimming = 2,
-		/datum/skill/misc/climbing = 2,
-		/datum/skill/misc/athletics = 2,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/misc/medicine = 3,
-		/datum/skill/misc/riding = 4,
-		/datum/skill/labor/mathematics = 3
+		/datum/attribute/skill/combat/swords = 4,
+		/datum/attribute/skill/combat/axesmaces = 3,
+		/datum/attribute/skill/combat/shields = 4,
+		/datum/attribute/skill/combat/wrestling = 3,
+		/datum/attribute/skill/combat/unarmed = 3,
+		/datum/attribute/skill/combat/polearms = 4,
+		/datum/attribute/skill/combat/bows = 3,
+		/datum/attribute/skill/combat/crossbows = 4,
+		/datum/attribute/skill/combat/whipsflails = 4,
+		/datum/attribute/skill/combat/knives = 2,
+		/datum/attribute/skill/misc/swimming = 2,
+		/datum/attribute/skill/misc/climbing = 2,
+		/datum/attribute/skill/misc/athletics = 2,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/misc/medicine = 3,
+		/datum/attribute/skill/misc/riding = 4,
+		/datum/attribute/skill/labor/mathematics = 3
 	)
 
 	traits = list(
@@ -231,12 +231,12 @@
 /datum/job/advclass/veteran/calvaryman/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/combat/axesmaces, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/bows, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/swords, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/crossbows, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/polearms, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/whipsflails, 1, TRUE)
 
 	var/weapons = list("Sword + Short Bow", "Axe + Crossbow", "Spear + Shield")
 	var/weapon_choice = browser_input_list(spawned, "CHOOSE YOUR WEAPON.", "TAKE UP ARMS", weapons)
@@ -278,29 +278,29 @@
 	category_tags = list(CTAG_VETERAN)
 
 	jobstats = list(
-		STATKEY_INT = 1,
-		STATKEY_END = 3,
-		STATKEY_CON = 1,
-		STATKEY_SPD = -1,
-		STATKEY_STR = 2
+		STAT_INTELLIGENCE = 1,
+		STAT_ENDURANCE = 3,
+		STAT_CONSTITUTION = 1,
+		STAT_SPEED = -1,
+		STAT_STRENGTH = 2
 	)
 
 	skills = list(
-		/datum/skill/combat/swords = 4,
-		/datum/skill/combat/axesmaces = 4,
-		/datum/skill/combat/shields = 4,
-		/datum/skill/combat/wrestling = 4,
-		/datum/skill/combat/unarmed = 4,
-		/datum/skill/combat/polearms = 4,
-		/datum/skill/combat/bows = 3,
-		/datum/skill/combat/crossbows = 3,
-		/datum/skill/combat/whipsflails = 3,
-		/datum/skill/combat/knives = 3,
-		/datum/skill/misc/swimming = 2,
-		/datum/skill/misc/climbing = 2,
-		/datum/skill/misc/athletics = 2,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/misc/medicine = 3
+		/datum/attribute/skill/combat/swords = 4,
+		/datum/attribute/skill/combat/axesmaces = 4,
+		/datum/attribute/skill/combat/shields = 4,
+		/datum/attribute/skill/combat/wrestling = 4,
+		/datum/attribute/skill/combat/unarmed = 4,
+		/datum/attribute/skill/combat/polearms = 4,
+		/datum/attribute/skill/combat/bows = 3,
+		/datum/attribute/skill/combat/crossbows = 3,
+		/datum/attribute/skill/combat/whipsflails = 3,
+		/datum/attribute/skill/combat/knives = 3,
+		/datum/attribute/skill/misc/swimming = 2,
+		/datum/attribute/skill/misc/climbing = 2,
+		/datum/attribute/skill/misc/athletics = 2,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/misc/medicine = 3
 	)
 
 	traits = list(
@@ -315,10 +315,10 @@
 /datum/job/advclass/veteran/merc/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/combat/axesmaces, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/swords, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/polearms, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/misc/athletics, 1, TRUE)
 
 	var/static/list/weapons = list( \
 		"Zweihander" = /obj/item/weapon/sword/long/greatsword/zwei, \
@@ -327,13 +327,13 @@
 	var/weapon_choice = spawned.select_equippable(player_client, weapons, message = "CHOOSE YOUR WEAPON.", title  = "TAKE UP ARMS")
 	switch(weapon_choice)
 		if("Zweihander")
-			spawned.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
-			spawned.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
-			spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_STR, 1)
+			spawned.adjust_skillrank(/datum/attribute/skill/combat/swords, 1, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/combat/polearms, 1, TRUE)
+			spawned.adjust_stat_modifier(STATMOD_JOB, STAT_STRENGTH, 1)
 		if("Halberd")
 			spawned.put_in_hands(new /obj/item/weapon/polearm/halberd(get_turf(spawned)), TRUE)
-			spawned.adjust_skillrank(/datum/skill/combat/axesmaces, 1, TRUE)
-			spawned.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 1, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/combat/polearms, 1, TRUE)
 	if(spawned.dna?.species.id == SPEC_ID_HUMEN)
 		spawned.dna.species.native_language = "Psydonic"
 		spawned.dna.species.accent_language = spawned.dna.species.get_accent(spawned.dna.species.native_language)
@@ -362,20 +362,20 @@
 	But time, the cruelest opponent, has weathered your body. The hands that once broke boulders now tremble to lift themselves. Still, deep within those aching bones, the old fire stirs... waiting for one last fight."
 	category_tags = list(CTAG_VETERAN)
 	jobstats = list(
-		STATKEY_END = 2,
-		STATKEY_CON = 2,
-		STATKEY_SPD = -1,
-		STATKEY_STR = 2,
+		STAT_ENDURANCE = 2,
+		STAT_CONSTITUTION = 2,
+		STAT_SPEED = -1,
+		STAT_STRENGTH = 2,
 	)
 
 	skills = list(
-		/datum/skill/combat/wrestling = 5,
-		/datum/skill/combat/unarmed = 5,
-		/datum/skill/misc/athletics = 2,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/misc/climbing = 3,
-		/datum/skill/misc/medicine = 3,
-		/datum/skill/misc/swimming = 3,
+		/datum/attribute/skill/combat/wrestling = 5,
+		/datum/attribute/skill/combat/unarmed = 5,
+		/datum/attribute/skill/misc/athletics = 2,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/misc/climbing = 3,
+		/datum/attribute/skill/misc/medicine = 3,
+		/datum/attribute/skill/misc/swimming = 3,
 	)
 
 	traits = list(
@@ -404,8 +404,8 @@
 /datum/job/advclass/veteran/fist/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/wrestling, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/unarmed, 1, TRUE)
 
 	spawned.select_equippable(player_client, list( \
 		"Knuckles" = /obj/item/weapon/knuckles, \

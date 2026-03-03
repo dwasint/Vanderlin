@@ -373,7 +373,7 @@ If you want to expand on poisons theres tons of fun effects TG chemistry has tha
 	if(HAS_TRAIT(M, TRAIT_NOHUNGER))
 		return ..()
 	if(!HAS_TRAIT(M, TRAIT_NASTY_EATER) && !HAS_TRAIT(M, TRAIT_ORGAN_EATER))
-		M.add_nausea(10 * (1 - M.STACON / 20))
+		M.add_nausea(10 * (1 - GET_MOB_ATTRIBUTE_VALUE(M, STAT_CONSTITUTION) / 20))
 		M.adjustToxLoss(0.5)
 	if(ishuman(M) && !ishalforc(M))
 		var/mob/living/carbon/human/graggar_lover = M

@@ -21,28 +21,28 @@
 	outfit = /datum/outfit/bapprentice
 
 	jobstats = list(
-		STATKEY_END = 2,
-		STATKEY_SPD = 1
+		STAT_ENDURANCE = 2,
+		STAT_SPEED = 1
 	)
 
 	skills = list(
-		/datum/skill/combat/axesmaces = 2,
-		/datum/skill/misc/athletics = 2,
-		/datum/skill/combat/wrestling = 1,
-		/datum/skill/combat/unarmed = 1,
-		/datum/skill/craft/blacksmithing = 2,
-		/datum/skill/craft/armorsmithing = 2,
-		/datum/skill/craft/weaponsmithing = 2,
-		/datum/skill/craft/smelting = 2,
-		/datum/skill/craft/crafting = 2,
-		/datum/skill/misc/reading = 2
+		/datum/attribute/skill/combat/axesmaces = 2,
+		/datum/attribute/skill/misc/athletics = 2,
+		/datum/attribute/skill/combat/wrestling = 1,
+		/datum/attribute/skill/combat/unarmed = 1,
+		/datum/attribute/skill/craft/blacksmithing = 2,
+		/datum/attribute/skill/craft/armorsmithing = 2,
+		/datum/attribute/skill/craft/weaponsmithing = 2,
+		/datum/attribute/skill/craft/smelting = 2,
+		/datum/attribute/skill/craft/crafting = 2,
+		/datum/attribute/skill/misc/reading = 2
 	)
 
 	traits = list(
 		TRAIT_MALUMFIRE
 	)
 
-	skill_multipliers = list(/datum/skill/craft/blacksmithing = 1.25, /datum/skill/craft/armorsmithing = 1.25, /datum/skill/craft/weaponsmithing = 1.25)
+	skill_multipliers = list(/datum/attribute/skill/craft/blacksmithing = 1.25, /datum/attribute/skill/craft/armorsmithing = 1.25, /datum/attribute/skill/craft/weaponsmithing = 1.25)
 
 /datum/outfit/bapprentice
 	name = "Smithy Apprentice"

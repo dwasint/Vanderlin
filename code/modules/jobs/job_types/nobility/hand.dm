@@ -74,24 +74,24 @@
 	exp_types_granted  = list(EXP_TYPE_NOBLE)
 
 	jobstats = list(
-		STATKEY_STR = 2,
-		STATKEY_PER = 3,
-		STATKEY_INT = 3
+		STAT_STRENGTH = 2,
+		STAT_PERCEPTION = 3,
+		STAT_INTELLIGENCE = 3
 	)
 
 	skills = list(
-		/datum/skill/combat/axesmaces = 2,
-		/datum/skill/combat/crossbows = 4,
-		/datum/skill/combat/wrestling = 3,
-		/datum/skill/combat/unarmed = 3,
-		/datum/skill/combat/swords = 4,
-		/datum/skill/misc/swimming = 3,
-		/datum/skill/misc/lockpicking = 2,
-		/datum/skill/misc/climbing = 3,
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/misc/reading = 4,
-		/datum/skill/misc/riding = 2,
-		/datum/skill/labor/mathematics = 3
+		/datum/attribute/skill/combat/axesmaces = 2,
+		/datum/attribute/skill/combat/crossbows = 4,
+		/datum/attribute/skill/combat/wrestling = 3,
+		/datum/attribute/skill/combat/unarmed = 3,
+		/datum/attribute/skill/combat/swords = 4,
+		/datum/attribute/skill/misc/swimming = 3,
+		/datum/attribute/skill/misc/lockpicking = 2,
+		/datum/attribute/skill/misc/climbing = 3,
+		/datum/attribute/skill/misc/athletics = 3,
+		/datum/attribute/skill/misc/reading = 4,
+		/datum/attribute/skill/misc/riding = 2,
+		/datum/attribute/skill/labor/mathematics = 3
 	)
 
 	traits = list(
@@ -123,29 +123,29 @@
 	exp_types_granted  = list(EXP_TYPE_NOBLE)
 
 	jobstats = list(
-		STATKEY_STR = -1,
-		STATKEY_PER = 2,
-		STATKEY_SPD = 4,
-		STATKEY_INT = 2
+		STAT_STRENGTH = -1,
+		STAT_PERCEPTION = 2,
+		STAT_SPEED = 4,
+		STAT_INTELLIGENCE = 2
 	)
 
 	skills = list(
-		/datum/skill/combat/axesmaces = 2,
-		/datum/skill/combat/crossbows = 4,
-		/datum/skill/combat/bows = 3,
-		/datum/skill/combat/wrestling = 3,
-		/datum/skill/combat/unarmed = 3,
-		/datum/skill/combat/swords = 2,
-		/datum/skill/combat/knives = 4,
-		/datum/skill/misc/swimming = 3,
-		/datum/skill/misc/climbing = 6,
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/misc/reading = 3,
-		/datum/skill/misc/riding = 2,
-		/datum/skill/misc/sneaking = 5,
-		/datum/skill/misc/stealing = 5,
-		/datum/skill/misc/lockpicking = 5,
-		/datum/skill/labor/mathematics = 3
+		/datum/attribute/skill/combat/axesmaces = 2,
+		/datum/attribute/skill/combat/crossbows = 4,
+		/datum/attribute/skill/combat/bows = 3,
+		/datum/attribute/skill/combat/wrestling = 3,
+		/datum/attribute/skill/combat/unarmed = 3,
+		/datum/attribute/skill/combat/swords = 2,
+		/datum/attribute/skill/combat/knives = 4,
+		/datum/attribute/skill/misc/swimming = 3,
+		/datum/attribute/skill/misc/climbing = 6,
+		/datum/attribute/skill/misc/athletics = 3,
+		/datum/attribute/skill/misc/reading = 3,
+		/datum/attribute/skill/misc/riding = 2,
+		/datum/attribute/skill/misc/sneaking = 5,
+		/datum/attribute/skill/misc/stealing = 5,
+		/datum/attribute/skill/misc/lockpicking = 5,
+		/datum/attribute/skill/labor/mathematics = 3
 	)
 
 	traits = list(
@@ -191,35 +191,35 @@
 	exp_types_granted  = list(EXP_TYPE_NOBLE)
 
 	jobstats = list(
-		STATKEY_INT = 4,
-		STATKEY_PER = 3
+		STAT_INTELLIGENCE = 4,
+		STAT_PERCEPTION = 3
 	)
 
 	skills = list(
-		/datum/skill/combat/crossbows = 3,
-		/datum/skill/combat/swords = 2,
-		/datum/skill/misc/swimming = 3,
-		/datum/skill/misc/climbing = 3,
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/combat/wrestling = 2,
-		/datum/skill/misc/reading = 5,
-		/datum/skill/misc/riding = 2,
-		/datum/skill/craft/alchemy = 4,
-		/datum/skill/misc/medicine = 4,
-		/datum/skill/misc/lockpicking = 4,
-		/datum/skill/labor/mathematics = 3
+		/datum/attribute/skill/combat/crossbows = 3,
+		/datum/attribute/skill/combat/swords = 2,
+		/datum/attribute/skill/misc/swimming = 3,
+		/datum/attribute/skill/misc/climbing = 3,
+		/datum/attribute/skill/misc/athletics = 3,
+		/datum/attribute/skill/combat/wrestling = 2,
+		/datum/attribute/skill/misc/reading = 5,
+		/datum/attribute/skill/misc/riding = 2,
+		/datum/attribute/skill/craft/alchemy = 4,
+		/datum/attribute/skill/misc/medicine = 4,
+		/datum/attribute/skill/misc/lockpicking = 4,
+		/datum/attribute/skill/labor/mathematics = 3
 	)
 
 /datum/job/advclass/hand/advisor/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 
-	spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_INT, pick(0,1)) // Adjust from base of 4
+	spawned.adjust_stat_modifier(STATMOD_JOB, STAT_INTELLIGENCE, pick(0,1)) // Adjust from base of 4
 
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_SPD, -1)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_STR, -1)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_INT, 1)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_PER, 1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_SPEED, -1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_STRENGTH, -1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_INTELLIGENCE, 1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_PERCEPTION, 1)
 
 /datum/outfit/hand/advisor
 	name = "Advisor (Hand)"

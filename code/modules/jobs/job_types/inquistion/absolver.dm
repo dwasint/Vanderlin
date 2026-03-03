@@ -34,9 +34,9 @@
 	)
 
 	jobstats = list(
-		STATKEY_END = 3,
-		STATKEY_SPD = -2,
-		STATKEY_CON = 7,
+		STAT_ENDURANCE = 3,
+		STAT_SPEED = -2,
+		STAT_CONSTITUTION = 7,
 	)
 
 	spells = list(
@@ -46,17 +46,17 @@
 	)
 
 	skills = list(
-		/datum/skill/misc/athletics = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/climbing = SKILL_LEVEL_EXPERT,
-		/datum/skill/craft/sewing = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/reading = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/unarmed = SKILL_LEVEL_NOVICE,
-		/datum/skill/misc/medicine = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/craft/cooking = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/labor/fishing = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/swimming = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/craft/crafting = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/magic/holy = SKILL_LEVEL_APPRENTICE, // they need this so Psydon's Grace works
+		/datum/attribute/skill/misc/athletics = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/misc/climbing = SKILL_LEVEL_EXPERT,
+		/datum/attribute/skill/misc/sewing = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/misc/reading = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/combat/unarmed = SKILL_LEVEL_NOVICE,
+		/datum/attribute/skill/misc/medicine = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/craft/cooking = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/labor/fishing = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/misc/swimming = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/craft/crafting = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/magic/holy = SKILL_LEVEL_APPRENTICE, // they need this so Psydon's Grace works
 	)
 
 	languages = list(/datum/language/oldpsydonic, /datum/language/newpsydonic)

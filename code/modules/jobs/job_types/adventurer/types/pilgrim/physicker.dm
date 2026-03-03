@@ -13,17 +13,17 @@
 	exp_types_granted = list(EXP_TYPE_MEDICAL)
 
 	jobstats = list(
-		STATKEY_INT = -1,
-		STATKEY_SPD = 1
+		STAT_INTELLIGENCE = -1,
+		STAT_SPEED = 1
 	)
 
 	skills = list(
-		/datum/skill/misc/reading = 3,
-		/datum/skill/craft/crafting = 2,
-		/datum/skill/combat/knives = 2,
-		/datum/skill/craft/sewing = 2,
-		/datum/skill/misc/medicine = 3,
-		/datum/skill/craft/alchemy = 1
+		/datum/attribute/skill/misc/reading = 3,
+		/datum/attribute/skill/craft/crafting = 2,
+		/datum/attribute/skill/combat/knives = 2,
+		/datum/attribute/skill/misc/sewing = 2,
+		/datum/attribute/skill/misc/medicine = 3,
+		/datum/attribute/skill/craft/alchemy = 1
 	)
 
 	traits = list(

@@ -19,14 +19,14 @@
 	cmode_music = 'sound/music/cmode/towner/CombatTowner.ogg'
 
 	jobstats = list(
-		STATKEY_CON = -1,
-		STATKEY_END = -1
+		STAT_CONSTITUTION = -1,
+		STAT_ENDURANCE = -1
 	)
 
 	skills = list(
-		/datum/skill/misc/sneaking = 2,
-		/datum/skill/misc/stealing = 4,
-		/datum/skill/misc/climbing = 4
+		/datum/attribute/skill/misc/sneaking = 2,
+		/datum/attribute/skill/misc/stealing = 4,
+		/datum/attribute/skill/misc/climbing = 4
 	)
 
 	traits = list(
@@ -45,19 +45,19 @@
 		orphanage_renovated = TRUE
 
 	if(!orphanage_renovated)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_INT, rand(-4, 4))
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_INTELLIGENCE, rand(-4, 4))
 		spawned.base_fortune = rand(1,20)
 	else
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_INT, 4)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_CON, 2)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_END, 2)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_INTELLIGENCE, 4)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_CONSTITUTION, 2)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_ENDURANCE, 2)
 		spawned.base_fortune = rand(7,20)
 
 	var/hand_1 = spawned.get_active_held_item()
 	var/hand_2 = spawned.get_inactive_held_item()
 
 	if(istype(hand_1, /obj/item/instrument) || istype(hand_2, /obj/item/instrument))
-		spawned.adjust_skillrank(/datum/skill/misc/music, pick(2,3,4), TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/misc/music, pick(2,3,4), TRUE)
 
 /datum/outfit/orphan
 	name = "Orphan"

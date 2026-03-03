@@ -11,23 +11,23 @@
 	exp_types_granted = list(EXP_TYPE_ADVENTURER, EXP_TYPE_COMBAT, EXP_TYPE_CLERIC)
 
 	jobstats = list(
-		STATKEY_STR = 1,
-		STATKEY_INT = 1,
-		STATKEY_CON = 1,
-		STATKEY_END = 2,
-		STATKEY_SPD = -1,
+		STAT_STRENGTH = 1,
+		STAT_INTELLIGENCE = 1,
+		STAT_CONSTITUTION = 1,
+		STAT_ENDURANCE = 2,
+		STAT_SPEED = -1,
 	)
 
 	skills = list(
-		/datum/skill/combat/wrestling = 2,
-		/datum/skill/combat/unarmed = 2,
-		/datum/skill/combat/shields = 2,
-		/datum/skill/misc/climbing = 1,
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/misc/reading = 3,
-		/datum/skill/magic/holy = 1,
-		/datum/skill/craft/cooking = 1,
-		/datum/skill/labor/mathematics = 2,
+		/datum/attribute/skill/combat/wrestling = 2,
+		/datum/attribute/skill/combat/unarmed = 2,
+		/datum/attribute/skill/combat/shields = 2,
+		/datum/attribute/skill/misc/climbing = 1,
+		/datum/attribute/skill/misc/athletics = 3,
+		/datum/attribute/skill/misc/reading = 3,
+		/datum/attribute/skill/magic/holy = 1,
+		/datum/attribute/skill/craft/cooking = 1,
+		/datum/attribute/skill/labor/mathematics = 2,
 	)
 
 	traits = list(
@@ -37,34 +37,34 @@
 /datum/job/advclass/combat/inhumencleric/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_skillrank(/datum/skill/magic/holy, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/magic/holy, 1, TRUE)
 
 	if(spawned.patron)
 		switch(spawned.patron.type)
 			if(/datum/patron/inhumen/graggar)
-				spawned.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE)
+				spawned.adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 3, TRUE)
 				ADD_TRAIT(spawned, TRAIT_DUALWIELDER, TRAIT_GENERIC)
 				spawned.cmode_music = 'sound/music/cmode/antag/combat_werewolf.ogg'
 			if(/datum/patron/inhumen/graggar_zizo)
-				spawned.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-				spawned.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
+				spawned.adjust_skillrank(/datum/attribute/skill/combat/unarmed, 2, TRUE)
+				spawned.adjust_skillrank(/datum/attribute/skill/combat/wrestling, 2, TRUE)
 				spawned.cmode_music = 'sound/music/cmode/antag/combat_werewolf.ogg'
 			if(/datum/patron/inhumen/zizo)
-				spawned.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
-				spawned.adjust_skillrank(/datum/skill/combat/shields, 1, TRUE)
+				spawned.adjust_skillrank(/datum/attribute/skill/combat/swords, 3, TRUE)
+				spawned.adjust_skillrank(/datum/attribute/skill/combat/shields, 1, TRUE)
 				spawned.grant_language(/datum/language/undead)
 				spawned.cmode_music = 'sound/music/cmode/antag/combat_cult.ogg'
 			if(/datum/patron/inhumen/matthios)
-				spawned.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
-				spawned.adjust_skillrank(/datum/skill/misc/stealing, 2, TRUE)
-				spawned.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
-				spawned.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE)
+				spawned.adjust_skillrank(/datum/attribute/skill/combat/polearms, 3, TRUE)
+				spawned.adjust_skillrank(/datum/attribute/skill/misc/stealing, 2, TRUE)
+				spawned.adjust_skillrank(/datum/attribute/skill/misc/sneaking, 2, TRUE)
+				spawned.adjust_skillrank(/datum/attribute/skill/misc/lockpicking, 1, TRUE)
 				spawned.cmode_music = 'sound/music/cmode/antag/CombatBandit1.ogg'
 			if(/datum/patron/inhumen/baotha)
-				spawned.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
-				spawned.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-				spawned.adjust_skillrank(/datum/skill/craft/alchemy, 2, TRUE)
-				spawned.adjust_skillrank(/datum/skill/craft/crafting, 1, TRUE)
+				spawned.adjust_skillrank(/datum/attribute/skill/combat/crossbows, 3, TRUE)
+				spawned.adjust_skillrank(/datum/attribute/skill/combat/knives, 2, TRUE)
+				spawned.adjust_skillrank(/datum/attribute/skill/craft/alchemy, 2, TRUE)
+				spawned.adjust_skillrank(/datum/attribute/skill/craft/crafting, 1, TRUE)
 				spawned.cmode_music = 'sound/music/cmode/antag/CombatBaotha.ogg'
 			else
 				spawned.cmode_music = 'sound/music/cmode/church/CombatInquisitor.ogg'

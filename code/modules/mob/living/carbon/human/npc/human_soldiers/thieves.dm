@@ -100,9 +100,9 @@
 	H.base_endurance = 11
 	H.base_perception = 11
 	H.base_intelligence = 1
-	H.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/knives, 3, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 2, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/unarmed, 2, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/wrestling, 2, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/misc/swimming, 2, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/misc/climbing, 2, TRUE)

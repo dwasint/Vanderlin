@@ -29,19 +29,19 @@
 	exp_types_granted = list(EXP_TYPE_MERCHANT_COMPANY)
 
 	jobstats = list(
-		STATKEY_SPD = 1,
-		STATKEY_INT = 1,
-		STATKEY_LCK = 1
+		STAT_SPEED = 1,
+		STAT_INTELLIGENCE = 1,
+		STAT_FORTUNE = 1
 	)
 
 	skills = list(
-		/datum/skill/misc/stealing = 4,
-		/datum/skill/misc/sneaking = 2,
-		/datum/skill/misc/reading = 3,
-		/datum/skill/combat/knives = 2,
-		/datum/skill/misc/athletics = 1,
-		/datum/skill/misc/lockpicking = 2,
-		/datum/skill/labor/mathematics = 3
+		/datum/attribute/skill/misc/stealing = 4,
+		/datum/attribute/skill/misc/sneaking = 2,
+		/datum/attribute/skill/misc/reading = 3,
+		/datum/attribute/skill/combat/knives = 2,
+		/datum/attribute/skill/misc/athletics = 1,
+		/datum/attribute/skill/misc/lockpicking = 2,
+		/datum/attribute/skill/labor/mathematics = 3
 	)
 
 	traits = list(
@@ -53,13 +53,13 @@
 	var/random_roll = rand(1, 3)
 	switch(random_roll)
 		if(1)
-			spawned.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/combat/crossbows, 1, TRUE)
 		if(2)
-			spawned.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/combat/bows, 1, TRUE)
 		if(3)
-			spawned.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
-			spawned.adjust_skillrank(/datum/skill/combat/axesmaces, 1, TRUE)
-			spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_STR, 1)
+			spawned.adjust_skillrank(/datum/attribute/skill/combat/swords, 1, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 1, TRUE)
+			spawned.adjust_stat_modifier(STATMOD_JOB, STAT_STRENGTH, 1)
 
 /datum/outfit/shophand
 	name = "Shophand Base"

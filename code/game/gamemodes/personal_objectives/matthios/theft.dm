@@ -36,8 +36,8 @@
 
 /datum/objective/personal/steal_items/reward_owner()
 	. = ..()
-	owner.current.adjust_skillrank(/datum/skill/misc/stealing, 1)
-	owner.current.adjust_stat_modifier(STATMOD_MATTHIOS_BLESSING, STATKEY_SPD, 1)
+	owner.current.adjust_skillrank(/datum/attribute/skill/misc/stealing, 1)
+	owner.current.adjust_stat_modifier(STATMOD_MATTHIOS_BLESSING, STAT_SPEED, 1)
 
 /datum/objective/personal/steal_items/update_explanation_text()
 	explanation_text = "Steal [required_count] item\s from others to prove your cunning to Matthios!"

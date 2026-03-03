@@ -12,26 +12,26 @@
 	exp_types_granted = list(EXP_TYPE_ADVENTURER, EXP_TYPE_COMBAT, EXP_TYPE_CLERIC)
 
 	jobstats = list(
-		STATKEY_STR = 1,
-		STATKEY_INT = 1,
-		STATKEY_CON = 1,
-		STATKEY_END = 2,
-		STATKEY_SPD = -1,
+		STAT_STRENGTH = 1,
+		STAT_INTELLIGENCE = 1,
+		STAT_CONSTITUTION = 1,
+		STAT_ENDURANCE = 2,
+		STAT_SPEED = -1,
 	)
 
 	skills = list(
-		/datum/skill/combat/wrestling = 2,
-		/datum/skill/combat/unarmed = 2,
-		/datum/skill/misc/climbing = 2,
-		/datum/skill/misc/swimming = 1,
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/misc/reading = 3,
-		/datum/skill/combat/shields = 2,
-		/datum/skill/magic/holy = 1,
-		/datum/skill/craft/cooking = 1,
-		/datum/skill/craft/sewing = 1,
-		/datum/skill/misc/medicine = 1,
-		/datum/skill/labor/mathematics = 2,
+		/datum/attribute/skill/combat/wrestling = 2,
+		/datum/attribute/skill/combat/unarmed = 2,
+		/datum/attribute/skill/misc/climbing = 2,
+		/datum/attribute/skill/misc/swimming = 1,
+		/datum/attribute/skill/misc/athletics = 3,
+		/datum/attribute/skill/misc/reading = 3,
+		/datum/attribute/skill/combat/shields = 2,
+		/datum/attribute/skill/magic/holy = 1,
+		/datum/attribute/skill/craft/cooking = 1,
+		/datum/attribute/skill/misc/sewing = 1,
+		/datum/attribute/skill/misc/medicine = 1,
+		/datum/attribute/skill/labor/mathematics = 2,
 	)
 
 	traits = list(
@@ -45,7 +45,7 @@
 /datum/job/advclass/combat/cleric/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_skillrank(/datum/skill/magic/holy, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/magic/holy, 1, TRUE)
 		ADD_TRAIT(spawned, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 
 	spawned.virginity = TRUE
@@ -66,14 +66,14 @@
 				ADD_TRAIT(spawned, TRAIT_BEAUTIFUL, TRAIT_GENERIC)
 			if(/datum/patron/divine/ravox)
 				spawned.cmode_music = 'sound/music/cmode/church/CombatRavox.ogg'
-				spawned.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
+				spawned.adjust_skillrank(/datum/attribute/skill/combat/unarmed, 1, TRUE)
 			if(/datum/patron/divine/noc)
 				spawned.cmode_music = 'sound/music/cmode/church/CombatNoc.ogg'
 			if(/datum/patron/divine/pestra)
 				spawned.cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'
 			if(/datum/patron/divine/abyssor)
 				spawned.cmode_music = 'sound/music/cmode/church/CombatAbyssor.ogg'
-				spawned.adjust_skillrank(/datum/skill/labor/fishing, 2, TRUE)
+				spawned.adjust_skillrank(/datum/attribute/skill/labor/fishing, 2, TRUE)
 			if(/datum/patron/divine/malum)
 				spawned.cmode_music = 'sound/music/cmode/adventurer/CombatOutlander2.ogg'
 			if(/datum/patron/divine/xylix)
@@ -107,13 +107,13 @@
 
 	switch(weaponchoice)
 		if("Sword")
-			weapon_skill_path = /datum/skill/combat/swords
+			weapon_skill_path = /datum/attribute/skill/combat/swords
 		if("Axe", "Mace", "Goedendag", "Great axe")
-			weapon_skill_path = /datum/skill/combat/axesmaces
+			weapon_skill_path = /datum/attribute/skill/combat/axesmaces
 		if("Spear")
-			weapon_skill_path = /datum/skill/combat/polearms
+			weapon_skill_path = /datum/attribute/skill/combat/polearms
 		if("Flail", "Great flail")
-			weapon_skill_path = /datum/skill/combat/whipsflails
+			weapon_skill_path = /datum/attribute/skill/combat/whipsflails
 
 	if(weapon_skill_path)
 		spawned.adjust_skillrank(weapon_skill_path, 3, TRUE)

@@ -19,25 +19,25 @@
 	languages = list(/datum/language/zalad)
 
 	jobstats = list(
-		STATKEY_STR = 1,
-		STATKEY_END = 2,
-		STATKEY_PER = 1
+		STAT_STRENGTH = 1,
+		STAT_ENDURANCE = 2,
+		STAT_PERCEPTION = 1
 	)
 
 	skills = list(
-		/datum/skill/misc/swimming = 2,
-		/datum/skill/misc/climbing = 3,
-		/datum/skill/misc/sneaking = 3,
-		/datum/skill/misc/lockpicking = 1,
-		/datum/skill/combat/axesmaces = 2,
-		/datum/skill/combat/bows = 2,
-		/datum/skill/combat/wrestling = 2,
-		/datum/skill/combat/unarmed = 2,
-		/datum/skill/combat/swords = 3,
-		/datum/skill/combat/polearms = 1,
-		/datum/skill/combat/whipsflails = 1,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/misc/athletics = 3
+		/datum/attribute/skill/misc/swimming = 2,
+		/datum/attribute/skill/misc/climbing = 3,
+		/datum/attribute/skill/misc/sneaking = 3,
+		/datum/attribute/skill/misc/lockpicking = 1,
+		/datum/attribute/skill/combat/axesmaces = 2,
+		/datum/attribute/skill/combat/bows = 2,
+		/datum/attribute/skill/combat/wrestling = 2,
+		/datum/attribute/skill/combat/unarmed = 2,
+		/datum/attribute/skill/combat/swords = 3,
+		/datum/attribute/skill/combat/polearms = 1,
+		/datum/attribute/skill/combat/whipsflails = 1,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/misc/athletics = 3
 	)
 
 	traits = list(
@@ -49,7 +49,7 @@
 /datum/job/advclass/mercenary/zalad/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	spawned.merctype = 1
-	spawned.adjust_skillrank(/datum/skill/combat/shields, pick(0,1,1))
+	spawned.adjust_skillrank(/datum/attribute/skill/combat/shields, pick(0,1,1))
 
 	// Set native language for specific species
 	if(spawned.dna?.species)

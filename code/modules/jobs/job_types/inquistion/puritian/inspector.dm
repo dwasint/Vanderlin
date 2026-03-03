@@ -21,24 +21,24 @@
 	)
 
 	jobstats = list(
-		STATKEY_PER = 4,
-		STATKEY_SPD = 4,
-		STATKEY_INT = 2,
+		STAT_PERCEPTION = 4,
+		STAT_SPEED = 4,
+		STAT_INTELLIGENCE = 2,
 	) //10 Statline
 
 	skills = list(
-		/datum/skill/misc/lockpicking = SKILL_LEVEL_MASTER,
-		/datum/skill/misc/sneaking = SKILL_LEVEL_MASTER,
-		/datum/skill/combat/knives = SKILL_LEVEL_EXPERT,
-		/datum/skill/misc/climbing = SKILL_LEVEL_EXPERT,
-		/datum/skill/misc/athletics = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/crossbows = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/wrestling = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/unarmed = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/reading = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/medicine = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/craft/sewing = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/combat/firearms = SKILL_LEVEL_EXPERT,
+		/datum/attribute/skill/misc/lockpicking = SKILL_LEVEL_MASTER,
+		/datum/attribute/skill/misc/sneaking = SKILL_LEVEL_MASTER,
+		/datum/attribute/skill/combat/knives = SKILL_LEVEL_EXPERT,
+		/datum/attribute/skill/misc/climbing = SKILL_LEVEL_EXPERT,
+		/datum/attribute/skill/misc/athletics = SKILL_LEVEL_EXPERT,
+		/datum/attribute/skill/combat/crossbows = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/combat/wrestling = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/combat/unarmed = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/misc/reading = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/misc/medicine = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/misc/sewing = SKILL_LEVEL_APPRENTICE,
+		/datum/attribute/skill/combat/firearms = SKILL_LEVEL_EXPERT,
 	)
 
 /datum/job/advclass/puritan/inspector/after_spawn(mob/living/carbon/human/spawned, client/player_client)
@@ -56,25 +56,25 @@
 		if("Retribution (Rapier)")
 			spawned.put_in_hands(new /obj/item/weapon/sword/rapier/psy/relic(spawned), TRUE)
 			spawned.equip_to_slot_or_del(new /obj/item/weapon/scabbard/sword, ITEM_SLOT_BELT_L, TRUE)
-			spawned.clamped_adjust_skillrank(/datum/skill/combat/swords, 4, 4, TRUE)
+			spawned.clamped_adjust_skillrank(/datum/attribute/skill/combat/swords, 4, 4, TRUE)
 			if(spawned.age == AGE_OLD)
-				spawned.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+				spawned.adjust_skillrank(/datum/attribute/skill/combat/swords, 1, TRUE)
 		if("Daybreak (Whip)")
 			spawned.put_in_hands(new /obj/item/weapon/whip/psydon/relic(spawned), TRUE)
-			spawned.clamped_adjust_skillrank(/datum/skill/combat/whipsflails, 4, 4)
+			spawned.clamped_adjust_skillrank(/datum/attribute/skill/combat/whipsflails, 4, 4)
 			if(spawned.age == AGE_OLD)
-				spawned.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
+				spawned.adjust_skillrank(/datum/attribute/skill/combat/whipsflails, 1, TRUE)
 		if("Sanctum (Halberd)")
 			spawned.put_in_hands(new /obj/item/weapon/polearm/halberd/psydon/relic(spawned), TRUE)
-			spawned.clamped_adjust_skillrank(/datum/skill/combat/polearms, 4, 4, TRUE)
+			spawned.clamped_adjust_skillrank(/datum/attribute/skill/combat/polearms, 4, 4, TRUE)
 			if(spawned.age == AGE_OLD)
-				spawned.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
-				spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_STR, 1) //So they don't have a 33% chance if being unable to wield their weapon.
+				spawned.adjust_skillrank(/datum/attribute/skill/combat/polearms, 1, TRUE)
+				spawned.adjust_stat_modifier(STATMOD_JOB, STAT_STRENGTH, 1) //So they don't have a 33% chance if being unable to wield their weapon.
 		if("Remembrance (Long Sword)")
 			spawned.put_in_hands(new /obj/item/weapon/sword/long/psydon/relic(spawned), TRUE)
-			spawned.clamped_adjust_skillrank(/datum/skill/combat/swords, 4, 4, TRUE)
+			spawned.clamped_adjust_skillrank(/datum/attribute/skill/combat/swords, 4, 4, TRUE)
 			if(spawned.age == AGE_OLD)
-				spawned.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+				spawned.adjust_skillrank(/datum/attribute/skill/combat/swords, 1, TRUE)
 
 
 /datum/outfit/inquisitor/inspector

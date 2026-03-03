@@ -29,26 +29,26 @@
 	)
 
 	jobstats = list(
-		STATKEY_STR = 2,
-		STATKEY_INT = -2,
-		STATKEY_END = 2,
-		STATKEY_CON = 1,
-		STATKEY_SPD = -1,
-		STATKEY_PER = -1
+		STAT_STRENGTH = 2,
+		STAT_INTELLIGENCE = -2,
+		STAT_ENDURANCE = 2,
+		STAT_CONSTITUTION = 1,
+		STAT_SPEED = -1,
+		STAT_PERCEPTION = -1
 	)
 
 	skills = list(
-		/datum/skill/combat/whipsflails = 3,
-		/datum/skill/combat/wrestling = 3,
-		/datum/skill/combat/unarmed = 3,
-		/datum/skill/combat/swords = 1,
-		/datum/skill/misc/swimming = 1,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/misc/climbing = 1,
-		/datum/skill/misc/athletics = 2,
-		/datum/skill/craft/cooking = 1,
-		/datum/skill/craft/sewing = 1,
-		/datum/skill/craft/traps = 3
+		/datum/attribute/skill/combat/whipsflails = 3,
+		/datum/attribute/skill/combat/wrestling = 3,
+		/datum/attribute/skill/combat/unarmed = 3,
+		/datum/attribute/skill/combat/swords = 1,
+		/datum/attribute/skill/misc/swimming = 1,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/misc/climbing = 1,
+		/datum/attribute/skill/misc/athletics = 2,
+		/datum/attribute/skill/craft/cooking = 1,
+		/datum/attribute/skill/misc/sewing = 1,
+		/datum/attribute/skill/craft/traps = 3
 	)
 
 	traits = list(

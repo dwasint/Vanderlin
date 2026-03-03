@@ -13,24 +13,24 @@
 	spell_points = 5
 
 	jobstats = list(
-		STATKEY_STR = 1,
-		STATKEY_INT = 1,
-		STATKEY_SPD = -1
+		STAT_STRENGTH = 1,
+		STAT_INTELLIGENCE = 1,
+		STAT_SPEED = -1
 	)
 
 	skills = list(
-		/datum/skill/combat/swords = 3,
-		/datum/skill/combat/wrestling = 1,
-		/datum/skill/combat/unarmed = 2,
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/combat/knives = 1,
-		/datum/skill/misc/swimming = 1,
-		/datum/skill/misc/climbing = 2,
-		/datum/skill/misc/reading = 3,
-		/datum/skill/misc/medicine = 1,
-		/datum/skill/craft/sewing = 1,
-		/datum/skill/magic/arcane = 1,
-		/datum/skill/craft/alchemy = 1
+		/datum/attribute/skill/combat/swords = 3,
+		/datum/attribute/skill/combat/wrestling = 1,
+		/datum/attribute/skill/combat/unarmed = 2,
+		/datum/attribute/skill/misc/athletics = 3,
+		/datum/attribute/skill/combat/knives = 1,
+		/datum/attribute/skill/misc/swimming = 1,
+		/datum/attribute/skill/misc/climbing = 2,
+		/datum/attribute/skill/misc/reading = 3,
+		/datum/attribute/skill/misc/medicine = 1,
+		/datum/attribute/skill/misc/sewing = 1,
+		/datum/attribute/skill/magic/arcane = 1,
+		/datum/attribute/skill/craft/alchemy = 1
 	)
 
 	spells = list(

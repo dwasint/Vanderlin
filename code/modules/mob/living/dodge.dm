@@ -63,7 +63,7 @@
 		return FALSE
 
 	var/drained = 7
-	var/dodge_speed = floor(STASPD / 2)
+	var/dodge_speed = floor(GET_MOB_ATTRIBUTE_VALUE(src, STAT_SPEED) / 2)
 	var/dodge_score = calculate_dodge_score(user)
 
 	//------------Duel Wielding------------
@@ -179,18 +179,18 @@
 		attacking_human = user
 		attacking_item = attacking_human.used_intent.get_master_item()
 
-	dodge_score += (STASPD * 15)
+	dodge_score += (GET_MOB_ATTRIBUTE_VALUE(src, STAT_SPEED) * 15)
 	dodge_score *= encumbrance_to_dodge()
 
 	if(user)
-		dodge_score -= user.STASPD * 9
+		dodge_score -= GET_MOB_ATTRIBUTE_VALUE(user, STAT_SPEED) * 9
 
 	if(attacking_item)
 		if(attacking_human?.mind)
-			dodge_score -= (attacking_human.get_skill_level(attacking_item.associated_skill, TRUE) * 10)
+			dodge_score -= (GET_MOB_SKILL_VALUE_OLD(attacking_human, attacking_item.associated_skill) * 10)
 
 		if(attacking_item.wbalance > 0)
-			dodge_score -= ((user.STASPD - STASPD) * 5)
+			dodge_score -= ((GET_MOB_ATTRIBUTE_VALUE(user, STAT_SPEED) - GET_MOB_ATTRIBUTE_VALUE(src, STAT_SPEED)) * 5)
 
 	if(istype(defending_item, /obj/item/weapon))
 		switch(defending_item.wlength)
@@ -215,11 +215,11 @@
 		if(!attacking_item.associated_skill)
 			dodge_score += 10  // Improvised weapon penalty
 		else
-			dodge_score += (defending_human.get_skill_level(attacking_item.associated_skill, TRUE) * 10)
+			dodge_score += (GET_MOB_SKILL_VALUE_OLD(defending_human, attacking_item.associated_skill) * 10)
 
 	if(defending_human?.mind && attacking_human?.mind && attacking_human.used_intent.unarmed)
-		dodge_score -= (attacking_human.get_skill_level(/datum/skill/combat/unarmed, TRUE) * 10)
-		dodge_score += (defending_human.get_skill_level(/datum/skill/combat/unarmed, TRUE) * 10)
+		dodge_score -= (GET_MOB_SKILL_VALUE_OLD(attacking_human, /datum/attribute/skill/combat/unarmed) * 10)
+		dodge_score += (GET_MOB_SKILL_VALUE_OLD(defending_human, /datum/attribute/skill/combat/unarmed) * 10)
 
 	return dodge_score
 
@@ -236,7 +236,7 @@
 	playsound(src, 'sound/combat/dodge.ogg', 100, FALSE)
 	throw_at(target_turf, 1, dodge_speed, src, FALSE)
 
-	var/drained = STASPD > 15 ? 0 : 5  // Just a proxy to determine if it was an "easy" dodge
+	var/drained = GET_MOB_ATTRIBUTE_VALUE(src, STAT_SPEED) > 15 ? 0 : 5  // Just a proxy to determine if it was an "easy" dodge
 	if(drained > 0)
 		src.visible_message("<span class='warning'><b>[src]</b> dodges [user]'s attack!</span>")
 	else

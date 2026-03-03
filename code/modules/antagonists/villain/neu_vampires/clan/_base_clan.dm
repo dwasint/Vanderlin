@@ -356,11 +356,11 @@ And it also helps for the character set panel
 
 	H.cmode_music = 'sound/music/cmode/antag/CombatThrall.ogg'
 
-	H.adjust_skillrank(/datum/skill/magic/blood, 2, TRUE)
-	H.clamped_adjust_skillrank(/datum/skill/misc/athletics, 5, 5, TRUE)
-	H.clamped_adjust_skillrank(/datum/skill/combat/unarmed, 4, 4, TRUE)
-	H.change_stat(STATKEY_STR, pick(1,2))
-	H.change_stat(STATKEY_SPD, 1)
+	H.adjust_skillrank(/datum/attribute/skill/magic/blood, 2, TRUE)
+	H.clamped_adjust_skillrank(/datum/attribute/skill/misc/athletics, 5, 5, TRUE)
+	H.clamped_adjust_skillrank(/datum/attribute/skill/combat/unarmed, 4, 4, TRUE)
+	H.change_stat(STAT_STRENGTH, pick(1,2))
+	H.change_stat(STAT_SPEED, 1)
 	H.remove_stat_modifier(STATMOD_AGE)
 	var/datum/action/cooldown/spell/undirected/transfix/transfix = new(H.mind)
 	transfix.Grant(H)

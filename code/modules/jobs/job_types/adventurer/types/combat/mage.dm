@@ -16,20 +16,20 @@
 	)
 
 	skills = list(
-		/datum/skill/misc/reading = 4,
-		/datum/skill/magic/arcane = 3,
-		/datum/skill/combat/polearms = 2,
-		/datum/skill/craft/cooking = 1,
-		/datum/skill/misc/medicine = 1,
-		/datum/skill/craft/alchemy = 2,
+		/datum/attribute/skill/misc/reading = 4,
+		/datum/attribute/skill/magic/arcane = 3,
+		/datum/attribute/skill/combat/polearms = 2,
+		/datum/attribute/skill/craft/cooking = 1,
+		/datum/attribute/skill/misc/medicine = 1,
+		/datum/attribute/skill/craft/alchemy = 2,
 	)
 
 	jobstats = list(
-		STATKEY_STR = -2,
-		STATKEY_INT = 3,
-		STATKEY_CON = -1,
-		STATKEY_END = -1,
-		STATKEY_SPD = -2,
+		STAT_STRENGTH = -2,
+		STAT_INTELLIGENCE = 3,
+		STAT_CONSTITUTION = -1,
+		STAT_ENDURANCE = -1,
+		STAT_SPEED = -2,
 	)
 
 
@@ -40,8 +40,8 @@
 			spawned.grant_language(/datum/language/undead)
 
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_INT, 1)
+		spawned.adjust_skillrank(/datum/attribute/skill/magic/arcane, 1, TRUE)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_INTELLIGENCE, 1)
 
 
 /datum/outfit/adventurer/mage

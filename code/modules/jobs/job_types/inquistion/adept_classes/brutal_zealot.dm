@@ -7,11 +7,11 @@
 	cmode_music = 'sound/music/cmode/church/CombatInquisitor.ogg'
 
 	jobstats = list(
-		STATKEY_STR = 3,
-		STATKEY_INT = -2,
-		STATKEY_PER = -2,
-		STATKEY_END = 1,
-		STATKEY_CON = 1,
+		STAT_STRENGTH = 3,
+		STAT_INTELLIGENCE = -2,
+		STAT_PERCEPTION = -2,
+		STAT_ENDURANCE = 1,
+		STAT_CONSTITUTION = 1,
 	)
 
 	traits = list(
@@ -24,17 +24,17 @@
 	)
 
 	skills = list(
-		/datum/skill/combat/wrestling = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/combat/unarmed = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/knives = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/combat/axesmaces = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/shields = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/swimming = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/climbing = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/athletics = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/reading = SKILL_LEVEL_NOVICE,
-		/datum/skill/combat/firearms = SKILL_LEVEL_NOVICE,
-		/datum/skill/misc/medicine = SKILL_LEVEL_NOVICE
+		/datum/attribute/skill/combat/wrestling = SKILL_LEVEL_APPRENTICE,
+		/datum/attribute/skill/combat/unarmed = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/combat/knives = SKILL_LEVEL_APPRENTICE,
+		/datum/attribute/skill/combat/axesmaces = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/combat/shields = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/misc/swimming = SKILL_LEVEL_APPRENTICE,
+		/datum/attribute/skill/misc/climbing = SKILL_LEVEL_APPRENTICE,
+		/datum/attribute/skill/misc/athletics = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/misc/reading = SKILL_LEVEL_NOVICE,
+		/datum/attribute/skill/combat/firearms = SKILL_LEVEL_NOVICE,
+		/datum/attribute/skill/misc/medicine = SKILL_LEVEL_NOVICE
 	)
 
 /datum/job/advclass/adept/bzealot/after_spawn(mob/living/carbon/human/spawned, client/player_client)

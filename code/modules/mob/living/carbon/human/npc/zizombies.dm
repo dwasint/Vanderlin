@@ -102,12 +102,12 @@
 	if(!mind)
 		mind = new /datum/mind(src)
 
-	adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
-	adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
-	adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
-	adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-	adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-	adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)
+	adjust_skillrank(/datum/attribute/skill/combat/polearms, 2, TRUE)
+	adjust_skillrank(/datum/attribute/skill/combat/swords, 2, TRUE)
+	adjust_skillrank(/datum/attribute/skill/combat/wrestling, 2, TRUE)
+	adjust_skillrank(/datum/attribute/skill/combat/unarmed, 2, TRUE)
+	adjust_skillrank(/datum/attribute/skill/combat/knives, 2, TRUE)
+	adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 2, TRUE)
 
 /mob/living/carbon/human/species/zizombie/after_creation()
 	..()

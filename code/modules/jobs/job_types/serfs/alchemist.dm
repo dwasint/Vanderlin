@@ -15,22 +15,22 @@
 	give_bank_account = 12
 
 	jobstats = list(
-		STATKEY_INT = 3,
-		STATKEY_SPD = -1
+		STAT_INTELLIGENCE = 3,
+		STAT_SPEED = -1
 	)
 
 	skills = list(
-		/datum/skill/craft/crafting = 3,
-		/datum/skill/craft/alchemy = 2,
-		/datum/skill/misc/reading = 2
+		/datum/attribute/skill/craft/crafting = 3,
+		/datum/attribute/skill/craft/alchemy = 2,
+		/datum/attribute/skill/misc/reading = 2
 	)
 
 
 /datum/job/alchemist/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
-	spawned.adjust_skillrank(/datum/skill/craft/alchemy, rand(0,3), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/craft/alchemy, rand(0,3), TRUE)
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_skillrank(/datum/skill/craft/alchemy, rand(4,6), TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/craft/alchemy, rand(4,6), TRUE)
 
 /datum/outfit/alchemist
 	name = "Alchemist"

@@ -33,24 +33,24 @@
 	)
 
 	jobstats = list(
-		STATKEY_STR = 1,
-		STATKEY_INT = 2,
-		STATKEY_END = 2,
-		STATKEY_SPD = 1
+		STAT_STRENGTH = 1,
+		STAT_INTELLIGENCE = 2,
+		STAT_ENDURANCE = 2,
+		STAT_SPEED = 1
 	)
 
 	skills = list(
-		/datum/skill/misc/reading = 5,
-		/datum/skill/magic/holy = 4,
-		/datum/skill/combat/unarmed = 3, //Ook's muscle priest
-		/datum/skill/combat/wrestling = 1,
-		/datum/skill/combat/polearms = 3,
-		/datum/skill/combat/axesmaces = 2,
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/craft/sewing = 3,
-		/datum/skill/misc/medicine = 3,
-		/datum/skill/craft/cooking = 1,
-		/datum/skill/labor/mathematics = 3
+		/datum/attribute/skill/misc/reading = 5,
+		/datum/attribute/skill/magic/holy = 4,
+		/datum/attribute/skill/combat/unarmed = 3, //Ook's muscle priest
+		/datum/attribute/skill/combat/wrestling = 1,
+		/datum/attribute/skill/combat/polearms = 3,
+		/datum/attribute/skill/combat/axesmaces = 2,
+		/datum/attribute/skill/misc/athletics = 3,
+		/datum/attribute/skill/misc/sewing = 3,
+		/datum/attribute/skill/misc/medicine = 3,
+		/datum/attribute/skill/craft/cooking = 1,
+		/datum/attribute/skill/labor/mathematics = 3
 	)
 
 	languages = list(/datum/language/celestial)
@@ -59,8 +59,8 @@
 /datum/job/priest/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/magic/holy, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/polearms, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/magic/holy, 1, TRUE)
 
 	spawned.give_priest_verbs()
 

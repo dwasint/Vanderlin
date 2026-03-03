@@ -19,33 +19,33 @@
 	job_bitflag = BITFLAG_CONSTRUCTOR
 
 	jobstats = list(
-		STATKEY_STR = 1,
-		STATKEY_INT = -2,
-		STATKEY_END = 2,
-		STATKEY_CON = 1,
-		STATKEY_LCK = 1
+		STAT_STRENGTH = 1,
+		STAT_INTELLIGENCE = -2,
+		STAT_ENDURANCE = 2,
+		STAT_CONSTITUTION = 1,
+		STAT_FORTUNE = 1
 	)
 
 	skills = list(
-		/datum/skill/combat/axesmaces = 2,
-		/datum/skill/labor/mining = 4,
-		/datum/skill/combat/wrestling = 1,
-		/datum/skill/combat/unarmed = 2,
-		/datum/skill/craft/crafting = 2,
-		/datum/skill/misc/swimming = 1,
-		/datum/skill/misc/climbing = 2,
-		/datum/skill/misc/medicine = 1,
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/craft/traps = 1,
-		/datum/skill/craft/engineering = 2,
-		/datum/skill/craft/blacksmithing = 1,
-		/datum/skill/craft/smelting = 2,
-		/datum/skill/misc/reading = 1
+		/datum/attribute/skill/combat/axesmaces = 2,
+		/datum/attribute/skill/labor/mining = 4,
+		/datum/attribute/skill/combat/wrestling = 1,
+		/datum/attribute/skill/combat/unarmed = 2,
+		/datum/attribute/skill/craft/crafting = 2,
+		/datum/attribute/skill/misc/swimming = 1,
+		/datum/attribute/skill/misc/climbing = 2,
+		/datum/attribute/skill/misc/medicine = 1,
+		/datum/attribute/skill/misc/athletics = 3,
+		/datum/attribute/skill/craft/traps = 1,
+		/datum/attribute/skill/craft/engineering = 2,
+		/datum/attribute/skill/craft/blacksmithing = 1,
+		/datum/attribute/skill/craft/smelting = 2,
+		/datum/attribute/skill/misc/reading = 1
 	)
 
 /datum/job/miner/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
-	spawned.adjust_skillrank(/datum/skill/craft/smelting, pick(0,1,1,2), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/craft/smelting, pick(0,1,1,2), TRUE)
 
 /datum/outfit/miner
 	name = "Miner"

@@ -37,27 +37,27 @@
 	)
 
 	jobstats = list(
-		STATKEY_SPD = 2,
-		STATKEY_PER = 1,
-		STATKEY_STR = 1,
+		STAT_SPEED = 2,
+		STAT_PERCEPTION = 1,
+		STAT_STRENGTH = 1,
 	)
 
 	skills = list(
-		/datum/skill/combat/swords = 1,
-		/datum/skill/combat/knives = 3,
-		/datum/skill/combat/wrestling = 2,
-		/datum/skill/combat/unarmed = 2,
-		/datum/skill/combat/crossbows = 4,
-		/datum/skill/combat/bows = 5,
-		/datum/skill/misc/swimming = 3,
-		/datum/skill/misc/climbing = 3,
-		/datum/skill/misc/athletics = 2,
-		/datum/skill/misc/sneaking = 2,
-		/datum/skill/misc/reading = 5,
-		/datum/skill/craft/cooking = 3,
-		/datum/skill/craft/traps = 1,
-		/datum/skill/labor/butchering = 5,
-		/datum/skill/labor/mathematics = 5,
+		/datum/attribute/skill/combat/swords = 1,
+		/datum/attribute/skill/combat/knives = 3,
+		/datum/attribute/skill/combat/wrestling = 2,
+		/datum/attribute/skill/combat/unarmed = 2,
+		/datum/attribute/skill/combat/crossbows = 4,
+		/datum/attribute/skill/combat/bows = 5,
+		/datum/attribute/skill/misc/swimming = 3,
+		/datum/attribute/skill/misc/climbing = 3,
+		/datum/attribute/skill/misc/athletics = 2,
+		/datum/attribute/skill/misc/sneaking = 2,
+		/datum/attribute/skill/misc/reading = 5,
+		/datum/attribute/skill/craft/cooking = 3,
+		/datum/attribute/skill/craft/traps = 1,
+		/datum/attribute/skill/labor/butchering = 5,
+		/datum/attribute/skill/labor/mathematics = 5,
 	)
 
 	traits = list(
@@ -70,18 +70,18 @@
 /datum/job/gaffer/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	spawned.add_quirk(/datum/quirk/boon/folk_hero)
-	spawned.adjust_skillrank(/datum/skill/combat/swords, pick(0,1), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/combat/swords, pick(0,1), TRUE)
 
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
-		spawned.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_PER, 1)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/crossbows, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/bows, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/unarmed, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/knives, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/misc/sneaking, 2, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/misc/swimming, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/misc/climbing, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/misc/athletics, 2, TRUE)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_PERCEPTION, 1)
 
 
 /datum/outfit/gaffer

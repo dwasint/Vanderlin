@@ -2,7 +2,7 @@
 	abstract_type = /datum/artificer_recipe
 	var/name
 	var/list/additional_items = list()
-	var/appro_skill = /datum/skill/craft/engineering
+	var/appro_skill = /datum/attribute/skill/craft/engineering
 	var/atom/required_item
 	var/atom/created_item
 	/// Craft Difficulty here only matters for exp calculation and locking recipes based on skill level
@@ -40,7 +40,7 @@
 		progress = 100
 		return
 	if(!hammered && hammers_per_item)
-		switch(user.get_skill_level(appro_skill))
+		switch(GET_MOB_SKILL_VALUE_OLD(user, appro_skill))
 			if(SKILL_LEVEL_NONE to SKILL_LEVEL_NOVICE)
 				hammers_per_item = max(0, hammers_per_item -= 0.5)
 			if(SKILL_LEVEL_APPRENTICE to SKILL_LEVEL_JOURNEYMAN)

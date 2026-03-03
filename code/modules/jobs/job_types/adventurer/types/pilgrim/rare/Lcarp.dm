@@ -12,28 +12,28 @@
 	is_recognized = TRUE
 
 	jobstats = list(
-		STATKEY_STR = 2,
-		STATKEY_END = 2,
-		STATKEY_INT = 1,
-		STATKEY_CON = 1
+		STAT_STRENGTH = 2,
+		STAT_ENDURANCE = 2,
+		STAT_INTELLIGENCE = 1,
+		STAT_CONSTITUTION = 1
 	)
 
 	skills = list(
-		/datum/skill/misc/medicine = 1,
-		/datum/skill/combat/axesmaces = 2,
-		/datum/skill/misc/athletics = 4,
-		/datum/skill/combat/wrestling = 2,
-		/datum/skill/combat/unarmed = 3,
-		/datum/skill/combat/knives = 1,
-		/datum/skill/misc/swimming = 3,
-		/datum/skill/misc/climbing = 3,
-		/datum/skill/craft/crafting = 4,
-		/datum/skill/craft/carpentry = 6,
-		/datum/skill/craft/engineering = 1,
-		/datum/skill/misc/reading = 2,
-		/datum/skill/craft/cooking = 1,
-		/datum/skill/craft/sewing = 2,
-		/datum/skill/labor/lumberjacking = 4
+		/datum/attribute/skill/misc/medicine = 1,
+		/datum/attribute/skill/combat/axesmaces = 2,
+		/datum/attribute/skill/misc/athletics = 4,
+		/datum/attribute/skill/combat/wrestling = 2,
+		/datum/attribute/skill/combat/unarmed = 3,
+		/datum/attribute/skill/combat/knives = 1,
+		/datum/attribute/skill/misc/swimming = 3,
+		/datum/attribute/skill/misc/climbing = 3,
+		/datum/attribute/skill/craft/crafting = 4,
+		/datum/attribute/skill/craft/carpentry = 6,
+		/datum/attribute/skill/craft/engineering = 1,
+		/datum/attribute/skill/misc/reading = 2,
+		/datum/attribute/skill/craft/cooking = 1,
+		/datum/attribute/skill/misc/sewing = 2,
+		/datum/attribute/skill/labor/lumberjacking = 4
 	)
 
 /datum/outfit/pilgrim/mastercarpenter

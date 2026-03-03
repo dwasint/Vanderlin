@@ -7,21 +7,21 @@
 	cmode_music = 'sound/music/cmode/adventurer/CombatRogue.ogg'
 
 	skills = list(
-		/datum/skill/combat/axesmaces = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/knives = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/combat/crossbows = SKILL_LEVEL_NOVICE,
-		/datum/skill/combat/bows = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/athletics = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/wrestling = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/combat/unarmed = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/swimming = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/climbing = SKILL_LEVEL_MASTER,
-		/datum/skill/misc/reading = SKILL_LEVEL_NOVICE,
-		/datum/skill/misc/sneaking = SKILL_LEVEL_EXPERT,
-		/datum/skill/misc/stealing = SKILL_LEVEL_EXPERT,
-		/datum/skill/misc/lockpicking = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/firearms = SKILL_LEVEL_NOVICE,
-		/datum/skill/craft/traps = SKILL_LEVEL_APPRENTICE
+		/datum/attribute/skill/combat/axesmaces = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/combat/knives = SKILL_LEVEL_APPRENTICE,
+		/datum/attribute/skill/combat/crossbows = SKILL_LEVEL_NOVICE,
+		/datum/attribute/skill/combat/bows = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/misc/athletics = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/combat/wrestling = SKILL_LEVEL_APPRENTICE,
+		/datum/attribute/skill/combat/unarmed = SKILL_LEVEL_APPRENTICE,
+		/datum/attribute/skill/misc/swimming = SKILL_LEVEL_APPRENTICE,
+		/datum/attribute/skill/misc/climbing = SKILL_LEVEL_MASTER,
+		/datum/attribute/skill/misc/reading = SKILL_LEVEL_NOVICE,
+		/datum/attribute/skill/misc/sneaking = SKILL_LEVEL_EXPERT,
+		/datum/attribute/skill/misc/stealing = SKILL_LEVEL_EXPERT,
+		/datum/attribute/skill/misc/lockpicking = SKILL_LEVEL_EXPERT,
+		/datum/attribute/skill/combat/firearms = SKILL_LEVEL_NOVICE,
+		/datum/attribute/skill/craft/traps = SKILL_LEVEL_APPRENTICE
 	)
 
 	traits = list(
@@ -35,10 +35,10 @@
 	)
 
 	jobstats = list(
-		STATKEY_STR = -1,
-		STATKEY_END = 1,
-		STATKEY_PER = 1,
-		STATKEY_SPD = 2,
+		STAT_STRENGTH = -1,
+		STAT_ENDURANCE = 1,
+		STAT_PERCEPTION = 1,
+		STAT_SPEED = 2,
 	)
 
 	languages = list(/datum/language/thievescant)

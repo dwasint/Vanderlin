@@ -146,15 +146,15 @@ GLOBAL_LIST_INIT(hedgeknight_aggro, file2list("strings/rt/hedgeknightaggrolines.
 	H.base_intelligence = 12
 	H.base_fortune = 10
 
-	H.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/axesmaces, 4, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/shields, 4, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/whipsflails, 4, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/polearms, 4, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 4, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/swords, 4, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/shields, 4, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/unarmed, 4, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/wrestling, 4, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/misc/swimming, 2, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/misc/climbing, 2, TRUE)
 
 /datum/outfit/job/quest_miniboss/matthios/pre_equip(mob/living/carbon/human/H)
 	. = ..()

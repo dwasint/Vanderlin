@@ -17,27 +17,27 @@
 	category_tags = list(CTAG_FOLKHEROES)
 
 	skills = list(
-		/datum/skill/combat/swords = 4,
-		/datum/skill/combat/knives = 2,
-		/datum/skill/combat/unarmed = 3,
-		/datum/skill/combat/wrestling = 2,
-		/datum/skill/labor/fishing = 3,
-		/datum/skill/misc/swimming = 4,
-		/datum/skill/misc/climbing = 3,
-		/datum/skill/misc/sneaking = 3,
-		/datum/skill/misc/stealing = 3,
-		/datum/skill/craft/sewing = 1,
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/craft/traps = 2,
+		/datum/attribute/skill/combat/swords = 4,
+		/datum/attribute/skill/combat/knives = 2,
+		/datum/attribute/skill/combat/unarmed = 3,
+		/datum/attribute/skill/combat/wrestling = 2,
+		/datum/attribute/skill/labor/fishing = 3,
+		/datum/attribute/skill/misc/swimming = 4,
+		/datum/attribute/skill/misc/climbing = 3,
+		/datum/attribute/skill/misc/sneaking = 3,
+		/datum/attribute/skill/misc/stealing = 3,
+		/datum/attribute/skill/misc/sewing = 1,
+		/datum/attribute/skill/misc/athletics = 3,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/craft/traps = 2,
 	)
 
 	jobstats = list(
-		STATKEY_STR = 1,
-		STATKEY_PER = 1,
-		STATKEY_CON = 1,
-		STATKEY_END = 3,
-		STATKEY_SPD = 2,
+		STAT_STRENGTH = 1,
+		STAT_PERCEPTION = 1,
+		STAT_CONSTITUTION = 1,
+		STAT_ENDURANCE = 3,
+		STAT_SPEED = 2,
 	)
 
 	traits = list(

@@ -64,15 +64,15 @@
 
 /datum/outfit/vamplord/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.adjust_skillrank(/datum/skill/magic/blood, 1, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/wrestling, 5, TRUE)
-	H.clamped_adjust_skillrank(/datum/skill/combat/unarmed, 4, 4, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/axesmaces, 4, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/climbing, 5, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/magic/blood, 1, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/wrestling, 5, TRUE)
+	H.clamped_adjust_skillrank(/datum/attribute/skill/combat/unarmed, 4, 4, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/swords, 4, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 4, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/polearms, 4, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/whipsflails, 4, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/misc/reading, 5, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/misc/climbing, 5, TRUE)
 	pants = /obj/item/clothing/pants/tights/colored/black
 	shirt = /obj/item/clothing/shirt/vampire
 	belt = /obj/item/storage/belt/leather/plaquegold

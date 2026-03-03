@@ -16,8 +16,8 @@
 	species_traits = list(EYECOLOR, HAIR, FACEHAIR, LIPS, STUBBLE, OLDGREY)
 	inherent_traits = list(TRAIT_NOMOBSWAP, TRAIT_LIGHT_STEP, TRAIT_COIN_ILLITERATE, TRAIT_LUCKY_COOK)
 	inherent_skills = list(
-		/datum/skill/craft/cooking = 1,
-		/datum/skill/misc/sneaking = 1,
+		/datum/attribute/skill/craft/cooking = 1,
+		/datum/attribute/skill/misc/sneaking = 1,
 	)
 	meat = list(/obj/item/reagent_containers/food/snacks/meat/steak/human = 1, /obj/item/reagent_containers/food/snacks/pieslice/good/apple = 0.05)
 
@@ -74,8 +74,8 @@
 
 	// Gets 2 SPD if they aren't wearing shoes
 	// Gets 0 / 1 END if they eat enough
-	specstats_m = list(STATKEY_STR = -1, STATKEY_PER = 2, STATKEY_CON = -1, STATKEY_END = 0, STATKEY_SPD = 1, STATKEY_LCK = 1)
-	specstats_f = list(STATKEY_STR = -1, STATKEY_PER = 2, STATKEY_CON = -1, STATKEY_END = 0, STATKEY_SPD = 1, STATKEY_LCK = 1)
+	specstats_m = list(STAT_STRENGTH = -1, STAT_PERCEPTION = 2, STAT_CONSTITUTION = -1, STAT_ENDURANCE = 0, STAT_SPEED = 1, STAT_FORTUNE = 1)
+	specstats_f = list(STAT_STRENGTH = -1, STAT_PERCEPTION = 2, STAT_CONSTITUTION = -1, STAT_ENDURANCE = 0, STAT_SPEED = 1, STAT_FORTUNE = 1)
 
 	enflamed_icon = "widefire"
 

@@ -13,28 +13,28 @@
 	is_recognized = TRUE
 
 	jobstats = list(
-		STATKEY_STR = 1,
-		STATKEY_INT = 3,
-		STATKEY_END = 2,
-		STATKEY_PER = 2,
-		STATKEY_LCK = 2,
+		STAT_STRENGTH = 1,
+		STAT_INTELLIGENCE = 3,
+		STAT_ENDURANCE = 2,
+		STAT_PERCEPTION = 2,
+		STAT_FORTUNE = 2,
 	)
 
 	skills = list(
-		/datum/skill/craft/engineering = 2,
-		/datum/skill/combat/axesmaces = 2,
-		/datum/skill/combat/crossbows = 3,
-		/datum/skill/combat/wrestling = 2,
-		/datum/skill/combat/unarmed = 1,
-		/datum/skill/combat/swords = 4,
-		/datum/skill/combat/knives = 3,
-		/datum/skill/misc/swimming = 1,
-		/datum/skill/misc/climbing = 1,
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/misc/reading = 4,
-		/datum/skill/misc/riding = 3,
-		/datum/skill/craft/cooking = 1,
-		/datum/skill/labor/mathematics = 3,
+		/datum/attribute/skill/craft/engineering = 2,
+		/datum/attribute/skill/combat/axesmaces = 2,
+		/datum/attribute/skill/combat/crossbows = 3,
+		/datum/attribute/skill/combat/wrestling = 2,
+		/datum/attribute/skill/combat/unarmed = 1,
+		/datum/attribute/skill/combat/swords = 4,
+		/datum/attribute/skill/combat/knives = 3,
+		/datum/attribute/skill/misc/swimming = 1,
+		/datum/attribute/skill/misc/climbing = 1,
+		/datum/attribute/skill/misc/athletics = 3,
+		/datum/attribute/skill/misc/reading = 4,
+		/datum/attribute/skill/misc/riding = 3,
+		/datum/attribute/skill/craft/cooking = 1,
+		/datum/attribute/skill/labor/mathematics = 3,
 	)
 
 	traits = list(
@@ -79,25 +79,25 @@
 	is_recognized = TRUE
 
 	jobstats = list(
-		STATKEY_INT = 3,
-		STATKEY_END = 1,
-		STATKEY_SPD = 1,
-		STATKEY_PER = 2,
-		STATKEY_LCK = 2,
+		STAT_INTELLIGENCE = 3,
+		STAT_ENDURANCE = 1,
+		STAT_SPEED = 1,
+		STAT_PERCEPTION = 2,
+		STAT_FORTUNE = 2,
 	)
 
 	skills = list(
-		/datum/skill/craft/engineering = 1,
-		/datum/skill/misc/stealing = 4,
-		/datum/skill/misc/sneaking = 3,
-		/datum/skill/combat/knives = 3,
-		/datum/skill/combat/bows = 2,
-		/datum/skill/misc/swimming = 1,
-		/datum/skill/misc/climbing = 1,
-		/datum/skill/misc/athletics = 2,
-		/datum/skill/misc/reading = 4,
-		/datum/skill/misc/medicine = 2,
-		/datum/skill/labor/mathematics = 3,
+		/datum/attribute/skill/craft/engineering = 1,
+		/datum/attribute/skill/misc/stealing = 4,
+		/datum/attribute/skill/misc/sneaking = 3,
+		/datum/attribute/skill/combat/knives = 3,
+		/datum/attribute/skill/combat/bows = 2,
+		/datum/attribute/skill/misc/swimming = 1,
+		/datum/attribute/skill/misc/climbing = 1,
+		/datum/attribute/skill/misc/athletics = 2,
+		/datum/attribute/skill/misc/reading = 4,
+		/datum/attribute/skill/misc/medicine = 2,
+		/datum/attribute/skill/labor/mathematics = 3,
 	)
 
 	traits = list(
@@ -147,23 +147,23 @@
 	is_recognized = TRUE
 
 	jobstats = list(
-		STATKEY_STR = 2,
-		STATKEY_PER = 2,
-		STATKEY_INT = 3,
+		STAT_STRENGTH = 2,
+		STAT_PERCEPTION = 2,
+		STAT_INTELLIGENCE = 3,
 	)
 
 	skills = list(
-		/datum/skill/craft/engineering = 1,
-		/datum/skill/combat/axesmaces = 1,
-		/datum/skill/combat/wrestling = 2,
-		/datum/skill/combat/knives = 3,
-		/datum/skill/combat/swords = 3,
-		/datum/skill/combat/unarmed = 3,
-		/datum/skill/craft/crafting = 1,
-		/datum/skill/misc/reading = 3,
-		/datum/skill/misc/swimming = 2,
-		/datum/skill/misc/climbing = 2,
-		/datum/skill/craft/cooking = 1,
+		/datum/attribute/skill/craft/engineering = 1,
+		/datum/attribute/skill/combat/axesmaces = 1,
+		/datum/attribute/skill/combat/wrestling = 2,
+		/datum/attribute/skill/combat/knives = 3,
+		/datum/attribute/skill/combat/swords = 3,
+		/datum/attribute/skill/combat/unarmed = 3,
+		/datum/attribute/skill/craft/crafting = 1,
+		/datum/attribute/skill/misc/reading = 3,
+		/datum/attribute/skill/misc/swimming = 2,
+		/datum/attribute/skill/misc/climbing = 2,
+		/datum/attribute/skill/craft/cooking = 1,
 	)
 
 	traits = list(
@@ -202,29 +202,29 @@
 	is_recognized = TRUE
 	exp_types_granted  = list(EXP_TYPE_COMBAT)
 	jobstats = list(
-		STATKEY_STR = 2,
-		STATKEY_PER = 1,
-		STATKEY_CON = 1,
-		STATKEY_END = 1,
-		STATKEY_SPD = -1,
-		STATKEY_INT = 2,
+		STAT_STRENGTH = 2,
+		STAT_PERCEPTION = 1,
+		STAT_CONSTITUTION = 1,
+		STAT_ENDURANCE = 1,
+		STAT_SPEED = -1,
+		STAT_INTELLIGENCE = 2,
 	)
 
 	skills = list(
-		/datum/skill/craft/engineering = 3,
-		/datum/skill/combat/polearms = 4,
-		/datum/skill/combat/swords = 4,
-		/datum/skill/combat/whipsflails = 4,
-		/datum/skill/combat/axesmaces = 4,
-		/datum/skill/combat/wrestling = 3,
-		/datum/skill/combat/unarmed = 3,
-		/datum/skill/combat/crossbows = 3,
-		/datum/skill/combat/bows = 3,
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/misc/climbing = 1,
-		/datum/skill/misc/reading = 3,
-		/datum/skill/misc/riding = 4,
-		/datum/skill/labor/mathematics = 3,
+		/datum/attribute/skill/craft/engineering = 3,
+		/datum/attribute/skill/combat/polearms = 4,
+		/datum/attribute/skill/combat/swords = 4,
+		/datum/attribute/skill/combat/whipsflails = 4,
+		/datum/attribute/skill/combat/axesmaces = 4,
+		/datum/attribute/skill/combat/wrestling = 3,
+		/datum/attribute/skill/combat/unarmed = 3,
+		/datum/attribute/skill/combat/crossbows = 3,
+		/datum/attribute/skill/combat/bows = 3,
+		/datum/attribute/skill/misc/athletics = 3,
+		/datum/attribute/skill/misc/climbing = 1,
+		/datum/attribute/skill/misc/reading = 3,
+		/datum/attribute/skill/misc/riding = 4,
+		/datum/attribute/skill/labor/mathematics = 3,
 	)
 
 	traits = list(
@@ -299,29 +299,29 @@
 	is_recognized = TRUE
 
 	jobstats = list(
-		STATKEY_STR = 1,
-		STATKEY_INT = 2,
-		STATKEY_END = 1,
-		STATKEY_CON = 1,
-		STATKEY_SPD = -1,
+		STAT_STRENGTH = 1,
+		STAT_INTELLIGENCE = 2,
+		STAT_ENDURANCE = 1,
+		STAT_CONSTITUTION = 1,
+		STAT_SPEED = -1,
 	)
 
 	skills = list(
-		/datum/skill/combat/axesmaces = 2,
-		/datum/skill/combat/wrestling = 1,
-		/datum/skill/combat/unarmed = 1,
-		/datum/skill/labor/lumberjacking = 2,
-		/datum/skill/craft/masonry = 3,
-		/datum/skill/craft/crafting = 4,
-		/datum/skill/craft/engineering = 6,
-		/datum/skill/misc/lockpicking = 3,
-		/datum/skill/misc/swimming = 1,
-		/datum/skill/misc/climbing = 3,
-		/datum/skill/misc/athletics = 2,
-		/datum/skill/labor/mining = 2,
-		/datum/skill/craft/smelting = 4,
-		/datum/skill/misc/reading = 2,
-		/datum/skill/craft/bombs= 4,
+		/datum/attribute/skill/combat/axesmaces = 2,
+		/datum/attribute/skill/combat/wrestling = 1,
+		/datum/attribute/skill/combat/unarmed = 1,
+		/datum/attribute/skill/labor/lumberjacking = 2,
+		/datum/attribute/skill/craft/masonry = 3,
+		/datum/attribute/skill/craft/crafting = 4,
+		/datum/attribute/skill/craft/engineering = 6,
+		/datum/attribute/skill/misc/lockpicking = 3,
+		/datum/attribute/skill/misc/swimming = 1,
+		/datum/attribute/skill/misc/climbing = 3,
+		/datum/attribute/skill/misc/athletics = 2,
+		/datum/attribute/skill/labor/mining = 2,
+		/datum/attribute/skill/craft/smelting = 4,
+		/datum/attribute/skill/misc/reading = 2,
+		/datum/attribute/skill/craft/bombs= 4,
 	)
 
 	traits = list(TRAIT_SEEPRICES)

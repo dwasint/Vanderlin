@@ -1,8 +1,8 @@
 /datum/job_pack/creed
 	name = "Covenant And Creed (Broadsword + Shield)"
 	pack_skills = list(
-		/datum/skill/combat/swords = SKILL_LEVEL_MASTER,
-		/datum/skill/combat/shields = SKILL_LEVEL_EXPERT,
+		/datum/attribute/skill/combat/swords = SKILL_LEVEL_MASTER,
+		/datum/attribute/skill/combat/shields = SKILL_LEVEL_EXPERT,
 	)
 
 	pack_contents = list(
@@ -20,8 +20,8 @@
 /datum/job_pack/consecratia
 	name = "Covenant and Consecratia (Flail + Shield)"
 	pack_skills = list(
-		/datum/skill/combat/whipsflails = SKILL_LEVEL_MASTER,
-		/datum/skill/combat/shields = SKILL_LEVEL_EXPERT,
+		/datum/attribute/skill/combat/whipsflails = SKILL_LEVEL_MASTER,
+		/datum/attribute/skill/combat/shields = SKILL_LEVEL_EXPERT,
 	)
 
 	pack_contents = list(
@@ -32,8 +32,8 @@
 /datum/job_pack/crusade
 	name = "Crusade (Greatsword) and a Silver Dagger"
 	pack_skills = list(
-		/datum/skill/combat/swords = SKILL_LEVEL_MASTER,
-		/datum/skill/combat/knives = SKILL_LEVEL_EXPERT,
+		/datum/attribute/skill/combat/swords = SKILL_LEVEL_MASTER,
+		/datum/attribute/skill/combat/knives = SKILL_LEVEL_EXPERT,
 	)
 
 	pack_contents = list(

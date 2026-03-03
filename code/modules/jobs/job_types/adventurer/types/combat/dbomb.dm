@@ -6,23 +6,23 @@
 	category_tags = list(CTAG_ADVENTURER)
 
 	jobstats = list(
-		STATKEY_STR = 1,
-		STATKEY_END = 1,
+		STAT_STRENGTH = 1,
+		STAT_ENDURANCE = 1,
 	)
 
 	skills = list(
-		/datum/skill/combat/axesmaces = 2,
-		/datum/skill/labor/mining = 1,
-		/datum/skill/craft/engineering = 5,
-		/datum/skill/craft/bombs = 4,
-		/datum/skill/craft/smelting = 1,
-		/datum/skill/combat/unarmed = 2,
-		/datum/skill/combat/wrestling = 2,
-		/datum/skill/craft/crafting = 3,
-		/datum/skill/misc/swimming = 1,
-		/datum/skill/misc/climbing = 1,
-		/datum/skill/misc/athletics = 1,
-		/datum/skill/misc/reading = 2,
+		/datum/attribute/skill/combat/axesmaces = 2,
+		/datum/attribute/skill/labor/mining = 1,
+		/datum/attribute/skill/craft/engineering = 5,
+		/datum/attribute/skill/craft/bombs = 4,
+		/datum/attribute/skill/craft/smelting = 1,
+		/datum/attribute/skill/combat/unarmed = 2,
+		/datum/attribute/skill/combat/wrestling = 2,
+		/datum/attribute/skill/craft/crafting = 3,
+		/datum/attribute/skill/misc/swimming = 1,
+		/datum/attribute/skill/misc/climbing = 1,
+		/datum/attribute/skill/misc/athletics = 1,
+		/datum/attribute/skill/misc/reading = 2,
 	)
 
 	traits = list(

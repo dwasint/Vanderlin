@@ -19,26 +19,26 @@
 	exp_types_granted = list(EXP_TYPE_MERCHANT_COMPANY)
 
 	jobstats = list(
-		STATKEY_STR = 1,
-		STATKEY_END = 1,
-		STATKEY_CON = 2,
-		STATKEY_SPD = -1,
+		STAT_STRENGTH = 1,
+		STAT_ENDURANCE = 1,
+		STAT_CONSTITUTION = 2,
+		STAT_SPEED = -1,
 	)
 
 	skills = list(
-		/datum/skill/combat/swords = 3,
-		/datum/skill/combat/shields = 1,
-		/datum/skill/combat/axesmaces = 2,
-		/datum/skill/combat/wrestling = 3,
-		/datum/skill/combat/unarmed = 3,
-		/datum/skill/combat/knives = 1,
-		/datum/skill/combat/firearms = 1,
-		/datum/skill/combat/crossbows = 1,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/misc/swimming = 4,
-		/datum/skill/misc/climbing = 3,
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/labor/mathematics = 1
+		/datum/attribute/skill/combat/swords = 3,
+		/datum/attribute/skill/combat/shields = 1,
+		/datum/attribute/skill/combat/axesmaces = 2,
+		/datum/attribute/skill/combat/wrestling = 3,
+		/datum/attribute/skill/combat/unarmed = 3,
+		/datum/attribute/skill/combat/knives = 1,
+		/datum/attribute/skill/combat/firearms = 1,
+		/datum/attribute/skill/combat/crossbows = 1,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/misc/swimming = 4,
+		/datum/attribute/skill/misc/climbing = 3,
+		/datum/attribute/skill/misc/athletics = 3,
+		/datum/attribute/skill/labor/mathematics = 1
 	)
 
 	traits = list(
@@ -48,11 +48,11 @@
 /datum/job/grabber/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	if(spawned.gender == MALE)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_STR, 1)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_CON, 1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_STRENGTH, 1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_CONSTITUTION, 1)
 	else
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_INT, 1)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_SPD, 1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_INTELLIGENCE, 1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_SPEED, 1)
 
 /datum/outfit/grabber
 	name = "Stevedore"

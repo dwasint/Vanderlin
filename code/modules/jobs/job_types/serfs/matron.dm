@@ -35,26 +35,26 @@
 	)
 
 	skills = list(
-		/datum/skill/craft/sewing = 3,
-		/datum/skill/misc/sneaking = 4,
-		/datum/skill/misc/stealing = 4,
-		/datum/skill/misc/lockpicking = 4,
-		/datum/skill/craft/traps = 2,
-		/datum/skill/misc/climbing = 4,
-		/datum/skill/misc/athletics = 2,
-		/datum/skill/craft/cooking = 4,
-		/datum/skill/misc/medicine = 1,
-		/datum/skill/misc/reading = 3,
-		/datum/skill/combat/knives = 5,
-		/datum/skill/combat/unarmed = 2,
-		/datum/skill/combat/wrestling = 2,
+		/datum/attribute/skill/misc/sewing = 3,
+		/datum/attribute/skill/misc/sneaking = 4,
+		/datum/attribute/skill/misc/stealing = 4,
+		/datum/attribute/skill/misc/lockpicking = 4,
+		/datum/attribute/skill/craft/traps = 2,
+		/datum/attribute/skill/misc/climbing = 4,
+		/datum/attribute/skill/misc/athletics = 2,
+		/datum/attribute/skill/craft/cooking = 4,
+		/datum/attribute/skill/misc/medicine = 1,
+		/datum/attribute/skill/misc/reading = 3,
+		/datum/attribute/skill/combat/knives = 5,
+		/datum/attribute/skill/combat/unarmed = 2,
+		/datum/attribute/skill/combat/wrestling = 2,
 	)
 
 	jobstats = list(
-		STATKEY_STR = -1,
-		STATKEY_INT =  2,
-		STATKEY_PER =  1,
-		STATKEY_SPD =  2
+		STAT_STRENGTH = -1,
+		STAT_INTELLIGENCE =  2,
+		STAT_PERCEPTION =  1,
+		STAT_SPEED =  2
 	)
 
 	mind_traits = list(
@@ -73,15 +73,15 @@
 	. = ..()
 	spawned.add_quirk(/datum/quirk/boon/folk_hero)
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/misc/stealing, 2, TRUE)
-		spawned.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
-		spawned.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/unarmed, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/combat/knives, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/misc/lockpicking, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/misc/stealing, 2, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/misc/sneaking, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/misc/climbing, 1, TRUE)
 
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_SPD, 1)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_END, 1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_SPEED, 1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_ENDURANCE, 1)
 
 /datum/outfit/matron
 	name = "Matron"

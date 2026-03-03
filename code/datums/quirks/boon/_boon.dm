@@ -316,7 +316,7 @@
 		return
 
 	var/mob/living/carbon/human/H = owner
-	H.clamped_adjust_skillrank(/datum/skill/misc/riding, 2, 2, TRUE)
+	H.clamped_adjust_skillrank(/datum/attribute/skill/misc/riding, 2, 2, TRUE)
 
 /datum/quirk/boon/beautiful
 	name = "Strikingly Beautiful"

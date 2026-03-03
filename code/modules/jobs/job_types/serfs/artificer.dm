@@ -24,33 +24,33 @@
 	)
 
 	jobstats = list(
-		STATKEY_STR = 1,
-		STATKEY_INT = 2,
-		STATKEY_END = 1,
-		STATKEY_SPD = -1
+		STAT_STRENGTH = 1,
+		STAT_INTELLIGENCE = 2,
+		STAT_ENDURANCE = 1,
+		STAT_SPEED = -1
 	)
 
 	skills = list(
-		/datum/skill/combat/axesmaces = 2,
-		/datum/skill/craft/masonry = 3,
-		/datum/skill/craft/crafting = 4,
-		/datum/skill/craft/engineering = 4,
-		/datum/skill/misc/lockpicking = 3,
-		/datum/skill/misc/swimming = 1,
-		/datum/skill/misc/climbing = 2,
-		/datum/skill/misc/athletics = 2,
-		/datum/skill/labor/mining = 2,
-		/datum/skill/craft/smelting = 4,
-		/datum/skill/misc/reading = 2,
-		/datum/skill/labor/mathematics = 2,
-		/datum/skill/craft/bombs = 3,
+		/datum/attribute/skill/combat/axesmaces = 2,
+		/datum/attribute/skill/craft/masonry = 3,
+		/datum/attribute/skill/craft/crafting = 4,
+		/datum/attribute/skill/craft/engineering = 4,
+		/datum/attribute/skill/misc/lockpicking = 3,
+		/datum/attribute/skill/misc/swimming = 1,
+		/datum/attribute/skill/misc/climbing = 2,
+		/datum/attribute/skill/misc/athletics = 2,
+		/datum/attribute/skill/labor/mining = 2,
+		/datum/attribute/skill/craft/smelting = 4,
+		/datum/attribute/skill/misc/reading = 2,
+		/datum/attribute/skill/labor/mathematics = 2,
+		/datum/attribute/skill/craft/bombs = 3,
 	)
 
 /datum/job/artificer/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
-	spawned.adjust_skillrank(/datum/skill/labor/lumberjacking, pick(1,2), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/labor/lumberjacking, pick(1,2), TRUE)
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_skillrank(/datum/skill/craft/engineering, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/craft/engineering, 1, TRUE)
 
 /datum/outfit/artificer
 	name = "Artificer"

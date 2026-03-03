@@ -22,19 +22,19 @@
 	cmode_music = 'sound/music/cmode/towner/CombatBeggar.ogg'
 
 	jobstats = list(
-		STATKEY_INT = -3,
-		STATKEY_CON = -2,
-		STATKEY_END = -2
+		STAT_INTELLIGENCE = -3,
+		STAT_CONSTITUTION = -2,
+		STAT_ENDURANCE = -2
 	)
 
 	skills = list(
-		/datum/skill/misc/sneaking = 1,
-		/datum/skill/misc/stealing = 1,
-		/datum/skill/misc/lockpicking = 1,
-		/datum/skill/misc/climbing = 2,
-		/datum/skill/combat/wrestling = 1,
-		/datum/skill/combat/unarmed = 1,
-		/datum/skill/craft/alchemy = 1
+		/datum/attribute/skill/misc/sneaking = 1,
+		/datum/attribute/skill/misc/stealing = 1,
+		/datum/attribute/skill/misc/lockpicking = 1,
+		/datum/attribute/skill/misc/climbing = 2,
+		/datum/attribute/skill/combat/wrestling = 1,
+		/datum/attribute/skill/combat/unarmed = 1,
+		/datum/attribute/skill/craft/alchemy = 1
 	)
 
 /datum/job/vagrant/New()
@@ -53,13 +53,13 @@
 	spawned.base_fortune = rand(1, 20)
 	spawned.recalculate_stats(FALSE)
 
-	spawned.adjust_skillrank(/datum/skill/misc/sneaking, pick(1,2,3,4), TRUE)
-	spawned.adjust_skillrank(/datum/skill/misc/stealing, pick(1,2,3,4), TRUE)
-	spawned.adjust_skillrank(/datum/skill/misc/lockpicking, pick(1,2,3,4), TRUE)
-	spawned.adjust_skillrank(/datum/skill/misc/climbing, pick(1,2,3), TRUE)
-	spawned.adjust_skillrank(/datum/skill/combat/wrestling, pick(0,0,1), TRUE)
-	spawned.adjust_skillrank(/datum/skill/combat/unarmed, pick(1,2), TRUE)
-	spawned.adjust_skillrank(/datum/skill/craft/alchemy, pick(1,2), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/misc/sneaking, pick(1,2,3,4), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/misc/stealing, pick(1,2,3,4), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/misc/lockpicking, pick(1,2,3,4), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/misc/climbing, pick(1,2,3), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/combat/wrestling, pick(0,0,1), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/combat/unarmed, pick(1,2), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/craft/alchemy, pick(1,2), TRUE)
 
 
 /datum/outfit/vagrant

@@ -333,20 +333,20 @@
 	H.recalculate_stats(FALSE)
 
 	if(is_species(H, /datum/species/goblin/hell))
-		H.STASTR += 6
-		H.STACON += 6
-		H.STASPD -= 4
+		GET_MOB_ATTRIBUTE_VALUE(H, STAT_STRENGTH) += 6
+		GET_MOB_ATTRIBUTE_VALUE(H, STAT_CONSTITUTION) += 6
+		GET_MOB_ATTRIBUTE_VALUE(H, STAT_SPEED) -= 4
 		H.simpmob_attack += 10
 		H.simpmob_defend += 15
 	if(is_species(H, /datum/species/goblin/cave))
-		H.STAPER += 6
-		H.STAEND += 2
+		GET_MOB_ATTRIBUTE_VALUE(H, STAT_PERCEPTION) += 6
+		GET_MOB_ATTRIBUTE_VALUE(H, STAT_ENDURANCE) += 2
 	if(is_species(H, /datum/species/goblin/sea))
-		H.STAINT += 6
-		H.STAEND += 2
+		GET_MOB_ATTRIBUTE_VALUE(H, STAT_INTELLIGENCE) += 6
+		GET_MOB_ATTRIBUTE_VALUE(H, STAT_ENDURANCE) += 2
 	if(is_species(H, /datum/species/goblin/moon))
-		H.STAINT += 4
-		H.STASPD += 4
+		GET_MOB_ATTRIBUTE_VALUE(H, STAT_INTELLIGENCE) += 4
+		GET_MOB_ATTRIBUTE_VALUE(H, STAT_SPEED) += 4
 		H.simpmob_attack += 10
 		H.simpmob_defend += 25
 	var/loadout = rand(1,5)

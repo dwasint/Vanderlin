@@ -11,27 +11,27 @@
 	total_positions = 5
 
 	jobstats = list(
-		STATKEY_CON = 1,
-		STATKEY_END = 1,
-		STATKEY_STR = 2
+		STAT_CONSTITUTION = 1,
+		STAT_ENDURANCE = 1,
+		STAT_STRENGTH = 2
 	)
 
 	skills = list(
-		/datum/skill/combat/knives = 2,
-		/datum/skill/combat/axesmaces = 2,
-		/datum/skill/combat/polearms = 3,
-		/datum/skill/combat/bows = 2,
-		/datum/skill/craft/tanning = 2,
-		/datum/skill/combat/wrestling = 2,
-		/datum/skill/combat/unarmed = 2,
-		/datum/skill/craft/crafting = 1,
-		/datum/skill/misc/swimming = 1,
-		/datum/skill/misc/climbing = 3,
-		/datum/skill/misc/riding = 2,
-		/datum/skill/craft/sewing = 2,
-		/datum/skill/misc/medicine = 1,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/misc/athletics = 3
+		/datum/attribute/skill/combat/knives = 2,
+		/datum/attribute/skill/combat/axesmaces = 2,
+		/datum/attribute/skill/combat/polearms = 3,
+		/datum/attribute/skill/combat/bows = 2,
+		/datum/attribute/skill/craft/tanning = 2,
+		/datum/attribute/skill/combat/wrestling = 2,
+		/datum/attribute/skill/combat/unarmed = 2,
+		/datum/attribute/skill/craft/crafting = 1,
+		/datum/attribute/skill/misc/swimming = 1,
+		/datum/attribute/skill/misc/climbing = 3,
+		/datum/attribute/skill/misc/riding = 2,
+		/datum/attribute/skill/misc/sewing = 2,
+		/datum/attribute/skill/misc/medicine = 1,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/misc/athletics = 3
 	)
 
 	traits = list(
@@ -43,7 +43,7 @@
 	. = ..()
 	spawned.merctype = 9
 
-	spawned.adjust_skillrank(/datum/skill/combat/shields, pick(0,0,1))
+	spawned.adjust_skillrank(/datum/attribute/skill/combat/shields, pick(0,0,1))
 
 /datum/outfit/mercenary/verderer
 	name = "Hollow Verderer (Mercenary)"

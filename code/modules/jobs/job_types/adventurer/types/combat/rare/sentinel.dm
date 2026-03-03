@@ -9,22 +9,22 @@
 	cmode_music = 'sound/music/cmode/adventurer/CombatOutlander.ogg'
 
 	skills = list(
-		/datum/skill/combat/wrestling = 2,
-		/datum/skill/combat/unarmed = 2,
-		/datum/skill/combat/polearms = 3,
-		/datum/skill/misc/swimming = 2,
-		/datum/skill/misc/climbing = 3,
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/misc/riding = 5,
-		/datum/skill/combat/bows = 4,
-		/datum/skill/misc/medicine = 2,
-		/datum/skill/misc/reading = 2,
+		/datum/attribute/skill/combat/wrestling = 2,
+		/datum/attribute/skill/combat/unarmed = 2,
+		/datum/attribute/skill/combat/polearms = 3,
+		/datum/attribute/skill/misc/swimming = 2,
+		/datum/attribute/skill/misc/climbing = 3,
+		/datum/attribute/skill/misc/athletics = 3,
+		/datum/attribute/skill/misc/riding = 5,
+		/datum/attribute/skill/combat/bows = 4,
+		/datum/attribute/skill/misc/medicine = 2,
+		/datum/attribute/skill/misc/reading = 2,
 	)
 
 	jobstats = list(
-		STATKEY_STR = 1,
-		STATKEY_PER = 2,
-		STATKEY_SPD = 1,
+		STAT_STRENGTH = 1,
+		STAT_PERCEPTION = 2,
+		STAT_SPEED = 1,
 	)
 
 	traits = list(

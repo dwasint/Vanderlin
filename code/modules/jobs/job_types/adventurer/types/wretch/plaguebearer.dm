@@ -7,27 +7,27 @@
 	total_positions = 2
 
 	jobstats = list(
-		STATKEY_INT = 3,
-		STATKEY_PER = 3,
-		STATKEY_CON = 3
+		STAT_INTELLIGENCE = 3,
+		STAT_PERCEPTION = 3,
+		STAT_CONSTITUTION = 3
 	)
 
 	skills = list(
-		/datum/skill/combat/bows = 3,
-		/datum/skill/combat/knives = 4,
-		/datum/skill/misc/swimming = 2,
-		/datum/skill/combat/wrestling = 3,
-		/datum/skill/combat/unarmed = 3,
-		/datum/skill/misc/climbing = 4,
-		/datum/skill/craft/crafting = 3,
-		/datum/skill/craft/carpentry = 3,
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/misc/reading = 3,
-		/datum/skill/misc/medicine = 4,
-		/datum/skill/craft/sewing = 3,
-		/datum/skill/craft/alchemy = 5,
-		/datum/skill/labor/farming = 3,
-		/datum/skill/craft/bombs = 3
+		/datum/attribute/skill/combat/bows = 3,
+		/datum/attribute/skill/combat/knives = 4,
+		/datum/attribute/skill/misc/swimming = 2,
+		/datum/attribute/skill/combat/wrestling = 3,
+		/datum/attribute/skill/combat/unarmed = 3,
+		/datum/attribute/skill/misc/climbing = 4,
+		/datum/attribute/skill/craft/crafting = 3,
+		/datum/attribute/skill/craft/carpentry = 3,
+		/datum/attribute/skill/misc/athletics = 3,
+		/datum/attribute/skill/misc/reading = 3,
+		/datum/attribute/skill/misc/medicine = 4,
+		/datum/attribute/skill/misc/sewing = 3,
+		/datum/attribute/skill/craft/alchemy = 5,
+		/datum/attribute/skill/labor/farming = 3,
+		/datum/attribute/skill/craft/bombs = 3
 	)
 
 	traits = list(

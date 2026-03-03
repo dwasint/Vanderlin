@@ -30,15 +30,15 @@
 		if(4)
 			r_hand = /obj/item/weapon/mace
 
-	H.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/axesmaces, 1, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/shields, 1, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/polearms, 1, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 1, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/swords, 1, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/knives, 1, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/shields, 1, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/unarmed, 1, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/wrestling, 1, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/misc/swimming, 2, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/misc/climbing, 2, TRUE)
 
 // Easy tier skeleton, with only incomplete chainmail and kilt
 // Ambushes people in "safe" route. A replacement for old skeletons that were effectively naked.
@@ -68,15 +68,15 @@
 		if(4)
 			r_hand = /obj/item/weapon/mace
 
-	H.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/shields, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/polearms, 2, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 2, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/swords, 2, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/knives, 2, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/shields, 2, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/unarmed, 2, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/wrestling, 2, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/misc/swimming, 2, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/misc/climbing, 2, TRUE)
 
 // Also an "easy" tier skeleton, pirate themed, with a free hand to grab you
 /mob/living/carbon/human/species/skeleton/npc/pirate
@@ -100,15 +100,15 @@
 	else
 		r_hand = /obj/item/weapon/knuckles
 
-	H.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/axesmaces, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/shields, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/polearms, 2, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 2, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/swords, 2, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/knives, 2, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/shields, 2, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/unarmed, 2, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/wrestling, 2, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/misc/swimming, 2, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/misc/climbing, 2, TRUE)
 
 // Medium tier skeleton, 3 skills.
 /mob/living/carbon/human/species/skeleton/npc/medium
@@ -142,15 +142,15 @@
 	else
 		r_hand = /obj/item/weapon/flail
 
-	H.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/polearms, 3, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 3, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/swords, 3, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/knives, 3, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/shields, 3, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/unarmed, 3, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/wrestling, 3, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/misc/swimming, 3, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/misc/climbing, 3, TRUE)
 
 // High tier skeleton, 4 skills. Heavy Armor.
 /mob/living/carbon/human/species/skeleton/npc/hard
@@ -195,15 +195,15 @@
 		else
 			r_hand = /obj/item/weapon/mace/goden
 
-	H.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/axesmaces, 4, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/shields, 4, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/swimming, 4, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/polearms, 4, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 4, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/swords, 4, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/knives, 4, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/shields, 4, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/unarmed, 4, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/combat/wrestling, 4, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/misc/swimming, 4, TRUE)
+	H.adjust_skillrank(/datum/attribute/skill/misc/climbing, 4, TRUE)
 
 // For Duke Manor & Zizo Manor - Ground based spread, so no pirate in pool!
 /mob/living/carbon/human/species/skeleton/npc/mediumspread/Initialize()

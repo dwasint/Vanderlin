@@ -17,20 +17,20 @@
 	job_bitflag = BITFLAG_CONSTRUCTOR
 
 	jobstats = list(
-		STATKEY_INT = 1,
-		STATKEY_CON = 2
+		STAT_INTELLIGENCE = 1,
+		STAT_CONSTITUTION = 2
 	)
 
 	skills = list(
-		/datum/skill/combat/knives = 2,
-		/datum/skill/misc/athletics = 2,
-		/datum/skill/combat/wrestling = 1,
-		/datum/skill/combat/unarmed = 1,
-		/datum/skill/craft/crafting = 2,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/labor/taming = 1,
-		/datum/skill/craft/cooking = 4,
-		/datum/skill/labor/farming = 2
+		/datum/attribute/skill/combat/knives = 2,
+		/datum/attribute/skill/misc/athletics = 2,
+		/datum/attribute/skill/combat/wrestling = 1,
+		/datum/attribute/skill/combat/unarmed = 1,
+		/datum/attribute/skill/craft/crafting = 2,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/labor/taming = 1,
+		/datum/attribute/skill/craft/cooking = 4,
+		/datum/attribute/skill/labor/farming = 2
 	)
 
 	traits = list()

@@ -9,27 +9,27 @@
 	cmode_music = 'sound/music/cmode/towner/CombatBeggar.ogg'
 
 	jobstats = list(
-		STATKEY_STR = 1,
-		STATKEY_END = 1,
-		STATKEY_CON = 1,
-		STATKEY_SPD = -1
+		STAT_STRENGTH = 1,
+		STAT_ENDURANCE = 1,
+		STAT_CONSTITUTION = 1,
+		STAT_SPEED = -1
 	)
 
 	skills = list(
-		/datum/skill/combat/swords = 1,
-		/datum/skill/combat/axesmaces = 2,
-		/datum/skill/misc/athletics = 2,
-		/datum/skill/combat/wrestling = 1,
-		/datum/skill/combat/unarmed = 2,
-		/datum/skill/misc/climbing = 1,
-		/datum/skill/craft/engineering = 3,
-		/datum/skill/craft/traps = 2,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/craft/sewing = 1,
-		/datum/skill/craft/blacksmithing = 3,
-		/datum/skill/craft/armorsmithing = 3,
-		/datum/skill/craft/weaponsmithing = 3,
-		/datum/skill/craft/smelting = 3
+		/datum/attribute/skill/combat/swords = 1,
+		/datum/attribute/skill/combat/axesmaces = 2,
+		/datum/attribute/skill/misc/athletics = 2,
+		/datum/attribute/skill/combat/wrestling = 1,
+		/datum/attribute/skill/combat/unarmed = 2,
+		/datum/attribute/skill/misc/climbing = 1,
+		/datum/attribute/skill/craft/engineering = 3,
+		/datum/attribute/skill/craft/traps = 2,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/misc/sewing = 1,
+		/datum/attribute/skill/craft/blacksmithing = 3,
+		/datum/attribute/skill/craft/armorsmithing = 3,
+		/datum/attribute/skill/craft/weaponsmithing = 3,
+		/datum/attribute/skill/craft/smelting = 3
 	)
 
 	traits = list(
@@ -38,20 +38,20 @@
 
 /datum/job/advclass/pilgrim/blacksmith/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
-	spawned.adjust_skillrank(/datum/skill/misc/swimming, pick(0,0,1), TRUE)
-	spawned.adjust_skillrank(/datum/skill/craft/crafting, pick(1,2,2), TRUE)
-	spawned.adjust_skillrank(/datum/skill/craft/masonry, pick(1,1,2), TRUE)
-	spawned.adjust_skillrank(/datum/skill/craft/carpentry, pick(1,1,2), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/misc/swimming, pick(0,0,1), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/craft/crafting, pick(1,2,2), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/craft/masonry, pick(1,1,2), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/craft/carpentry, pick(1,1,2), TRUE)
 
 	if(prob(50))
-		spawned.adjust_skillrank(/datum/skill/craft/carpentry, 1, TRUE)
+		spawned.adjust_skillrank(/datum/attribute/skill/craft/carpentry, 1, TRUE)
 
 	if(spawned.age == AGE_OLD)
 		for(var/i in 1 to rand(1, 3))
-			var/datum/skill/craft/skillpicked = pick(
-				/datum/skill/craft/weaponsmithing,
-				/datum/skill/craft/armorsmithing,
-				/datum/skill/craft/blacksmithing,
+			var/datum/attribute/skill/craft/skillpicked = pick(
+				/datum/attribute/skill/craft/weaponsmithing,
+				/datum/attribute/skill/craft/armorsmithing,
+				/datum/attribute/skill/craft/blacksmithing,
 			)
 			spawned.adjust_skillrank(skillpicked, 1, TRUE)
 

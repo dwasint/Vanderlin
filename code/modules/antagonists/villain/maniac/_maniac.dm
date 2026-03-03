@@ -93,18 +93,18 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 			dreamer.set_patron(/datum/patron/inhumen/graggar_zizo)
 			old_cm = dreamer.cmode_music
 			dreamer.cmode_music = 'sound/music/cmode/antag/combat_maniac.ogg'
-			dreamer.adjust_skillrank(/datum/skill/combat/knives, 6, TRUE)
-			dreamer.adjust_skillrank(/datum/skill/combat/wrestling, 5, TRUE)
-			dreamer.adjust_skillrank(/datum/skill/combat/unarmed, 5, TRUE)
-			dreamer.adjust_skillrank(/datum/skill/misc/climbing, 5, TRUE)
-			dreamer.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
-			dreamer.adjust_skillrank(/datum/skill/misc/medicine, 4, TRUE)
+			dreamer.adjust_skillrank(/datum/attribute/skill/combat/knives, 6, TRUE)
+			dreamer.adjust_skillrank(/datum/attribute/skill/combat/wrestling, 5, TRUE)
+			dreamer.adjust_skillrank(/datum/attribute/skill/combat/unarmed, 5, TRUE)
+			dreamer.adjust_skillrank(/datum/attribute/skill/misc/climbing, 5, TRUE)
+			dreamer.adjust_skillrank(/datum/attribute/skill/misc/athletics, 4, TRUE)
+			dreamer.adjust_skillrank(/datum/attribute/skill/misc/medicine, 4, TRUE)
 			phy.bleed_mod *= 0.5
 			for(var/datum/status_effect/effect in dreamer.status_effects) //necessary to prevent exploits
 				dreamer.remove_status_effect(effect)
-			dreamer.modifier_set_stat_to("[type]", STATKEY_STR, 16)
-			dreamer.modifier_set_stat_to("[type]", STATKEY_CON, 16)
-			dreamer.modifier_set_stat_to("[type]", STATKEY_END, 16)
+			dreamer.modifier_set_stat_to("[type]", STAT_STRENGTH, 16)
+			dreamer.modifier_set_stat_to("[type]", STAT_CONSTITUTION, 16)
+			dreamer.modifier_set_stat_to("[type]", STAT_ENDURANCE, 16)
 			var/obj/item/organ/heart/heart = dreamer.getorganslot(ORGAN_SLOT_HEART)
 			dreamer.remove_stat_modifier(STATMOD_AGE)
 			if(heart) // clear any inscryptions, in case of being made maniac midround

@@ -8,26 +8,26 @@
 	total_positions = 1
 
 	skills = list(
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/combat/swords = 4,
-		/datum/skill/combat/whipsflails = 2, // Makes sense enough for an animal tamer
-		/datum/skill/combat/wrestling = 2,
-		/datum/skill/combat/unarmed = 2,
-		/datum/skill/misc/swimming = 2,
-		/datum/skill/misc/climbing = 3,
-		/datum/skill/misc/riding = 5,
-		/datum/skill/labor/taming = 4, // How did they not have this skill before?!
-		/datum/skill/craft/cooking = 1,
-		/datum/skill/misc/sneaking = 3,
-		/datum/skill/misc/stealing = 4,
-		/datum/skill/misc/lockpicking = 1,
-		/datum/skill/misc/reading = 2,
+		/datum/attribute/skill/misc/athletics = 3,
+		/datum/attribute/skill/combat/swords = 4,
+		/datum/attribute/skill/combat/whipsflails = 2, // Makes sense enough for an animal tamer
+		/datum/attribute/skill/combat/wrestling = 2,
+		/datum/attribute/skill/combat/unarmed = 2,
+		/datum/attribute/skill/misc/swimming = 2,
+		/datum/attribute/skill/misc/climbing = 3,
+		/datum/attribute/skill/misc/riding = 5,
+		/datum/attribute/skill/labor/taming = 4, // How did they not have this skill before?!
+		/datum/attribute/skill/craft/cooking = 1,
+		/datum/attribute/skill/misc/sneaking = 3,
+		/datum/attribute/skill/misc/stealing = 4,
+		/datum/attribute/skill/misc/lockpicking = 1,
+		/datum/attribute/skill/misc/reading = 2,
 	)
 
 	jobstats = list(
-		STATKEY_STR = 1,
-		STATKEY_SPD = 2,
-		STATKEY_END = 2,
+		STAT_STRENGTH = 1,
+		STAT_SPEED = 2,
+		STAT_ENDURANCE = 2,
 	)
 
 	traits = list(
@@ -37,7 +37,7 @@
 /datum/job/advclass/combat/vaquero/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	new /mob/living/simple_animal/hostile/retaliate/saiga/tame/saddled(get_turf(spawned))
-	spawned.adjust_skillrank(/datum/skill/misc/music, rand(1, 2), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/misc/music, rand(1, 2), TRUE)
 
 /datum/outfit/folkhero/vaquero
 	name = "Vaquero (Folkhero)"

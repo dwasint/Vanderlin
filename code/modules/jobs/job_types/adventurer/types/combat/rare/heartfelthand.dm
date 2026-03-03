@@ -9,23 +9,23 @@
 	roll_chance = 50
 
 	skills = list(
-		/datum/skill/combat/axesmaces = 1,
-		/datum/skill/combat/wrestling = 2,
-		/datum/skill/combat/knives = 3,
-		/datum/skill/combat/swords = 3,
-		/datum/skill/combat/unarmed = 3,
-		/datum/skill/craft/crafting = 1,
-		/datum/skill/misc/reading = 3,
-		/datum/skill/misc/swimming = 2,
-		/datum/skill/misc/climbing = 2,
-		/datum/skill/craft/cooking = 1,
-		/datum/skill/labor/mathematics = 3,
+		/datum/attribute/skill/combat/axesmaces = 1,
+		/datum/attribute/skill/combat/wrestling = 2,
+		/datum/attribute/skill/combat/knives = 3,
+		/datum/attribute/skill/combat/swords = 3,
+		/datum/attribute/skill/combat/unarmed = 3,
+		/datum/attribute/skill/craft/crafting = 1,
+		/datum/attribute/skill/misc/reading = 3,
+		/datum/attribute/skill/misc/swimming = 2,
+		/datum/attribute/skill/misc/climbing = 2,
+		/datum/attribute/skill/craft/cooking = 1,
+		/datum/attribute/skill/labor/mathematics = 3,
 	)
 
 	jobstats = list(
-		STATKEY_STR = 3,
-		STATKEY_PER = 2,
-		STATKEY_INT = 3,
+		STAT_STRENGTH = 3,
+		STAT_PERCEPTION = 2,
+		STAT_INTELLIGENCE = 3,
 	)
 
 	traits = list(

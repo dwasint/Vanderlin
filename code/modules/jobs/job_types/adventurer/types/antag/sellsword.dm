@@ -8,29 +8,29 @@
 	cmode_music = 'sound/music/cmode/antag/combat_bandit2.ogg'
 
 	jobstats = list(
-		STATKEY_STR = 2,
-		STATKEY_END = 2,
-		STATKEY_CON = 1,
-		STATKEY_SPD = 1,
+		STAT_STRENGTH = 2,
+		STAT_ENDURANCE = 2,
+		STAT_CONSTITUTION = 1,
+		STAT_SPEED = 1,
 	)
 
 	skills = list(
-		/datum/skill/combat/polearms = 3,
-		/datum/skill/combat/axesmaces = 2,
-		/datum/skill/combat/wrestling = 3,
-		/datum/skill/combat/unarmed = 3,
-		/datum/skill/combat/swords = 3,
-		/datum/skill/combat/whipsflails = 3,
-		/datum/skill/combat/knives = 2,
-		/datum/skill/combat/bows = 2,
-		/datum/skill/combat/crossbows = 3,
-		/datum/skill/craft/crafting = 2,
-		/datum/skill/craft/carpentry = 1,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/misc/climbing = 3,
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/craft/sewing = 1,
-		/datum/skill/misc/medicine = 1,
+		/datum/attribute/skill/combat/polearms = 3,
+		/datum/attribute/skill/combat/axesmaces = 2,
+		/datum/attribute/skill/combat/wrestling = 3,
+		/datum/attribute/skill/combat/unarmed = 3,
+		/datum/attribute/skill/combat/swords = 3,
+		/datum/attribute/skill/combat/whipsflails = 3,
+		/datum/attribute/skill/combat/knives = 2,
+		/datum/attribute/skill/combat/bows = 2,
+		/datum/attribute/skill/combat/crossbows = 3,
+		/datum/attribute/skill/craft/crafting = 2,
+		/datum/attribute/skill/craft/carpentry = 1,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/misc/climbing = 3,
+		/datum/attribute/skill/misc/athletics = 3,
+		/datum/attribute/skill/misc/sewing = 1,
+		/datum/attribute/skill/misc/medicine = 1,
 	)
 
 	traits = list(

@@ -112,8 +112,8 @@
 
 	if(isliving(user))
 		var/mob/living/L = user
-		if(STASTR > L.STASTR)
-			if(STASTR > 15)
+		if(GET_MOB_ATTRIBUTE_VALUE(src, STAT_STRENGTH) > GET_MOB_ATTRIBUTE_VALUE(L, STAT_STRENGTH))
+			if(GET_MOB_ATTRIBUTE_VALUE(src, STAT_STRENGTH) > 15)
 				. += "<span class='warning'>[t_He] look[p_s()] stronger than I.</span>"
 			else
 				. += "<span class='warning'><B>[t_He] look[p_s()] stronger than I.</B></span>"

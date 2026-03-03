@@ -110,7 +110,7 @@
 	id = "pestilentpiper"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/song/pestilentpiper
 	duration = 30 SECONDS
-	effectedstats = list(STATKEY_END = -1, STATKEY_CON = -2)
+	effectedstats = list(STAT_ENDURANCE = -1, STAT_CONSTITUTION = -2)
 
 /atom/movable/screen/alert/status_effect/debuff/song/pestilentpiper
 	name = "Musical Droning!"

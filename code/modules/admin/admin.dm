@@ -196,20 +196,6 @@
 	body += "<button onclick=\"toggleSection('quirks')\">Quirks</button>"
 	body += "</div>"
 
-
-	body += "<div id='skills-section'>"
-	body += "<h3>Skills</h3><ul>"
-	if(M.mind)
-		for(var/skill_type in SSskills.all_skills)
-			var/datum/skill/skill = GetSkillRef(skill_type)
-			if(skill_type in M.skills?.known_skills)
-				body += "<li>[initial(skill.name)]: [M.skills?.known_skills[skill_type]] "
-			else
-				body += "<li>[initial(skill.name)]: 0"
-			body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];increase_skill=[REF(M)];skill=[skill.type]'>+</a> "
-			body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];decrease_skill=[REF(M)];skill=[skill.type]'>-</a></li>"
-	body += "</ul></div>"
-
 	body += "<div id='languages-section'>"
 	body += "<h3>Languages</h3><ul>"
 	for(var/datum/language/ld as anything in GLOB.all_languages)
@@ -224,40 +210,40 @@
 	body += "<h3>Stats</h3><ul>"
 	if(isliving(M))
 		var/mob/living/living = M
-		body += "<li>Strength: [living.STASTR] "
-		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=[STATKEY_STR]'>+</a> "
-		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=[STATKEY_STR]'>-</a>"
-		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];bulk_change=[REF(M)];stat=[STATKEY_STR]'> Bulk Change</a></li>"
+		body += "<li>Strength: [GET_MOB_ATTRIBUTE_VALUE(living, STAT_STRENGTH)] "
+		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=[STAT_STRENGTH]'>+</a> "
+		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=[STAT_STRENGTH]'>-</a>"
+		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];bulk_change=[REF(M)];stat=[STAT_STRENGTH]'> Bulk Change</a></li>"
 
-		body += "<li>Perception: [living.STAPER] "
-		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=[STATKEY_PER]'>+</a> "
-		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=[STATKEY_PER]'>-</a>"
-		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];bulk_change=[REF(M)];stat=[STATKEY_PER]'> Bulk Change</a></li>"
+		body += "<li>Perception: [GET_MOB_ATTRIBUTE_VALUE(living, STAT_PERCEPTION)] "
+		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=[STAT_PERCEPTION]'>+</a> "
+		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=[STAT_PERCEPTION]'>-</a>"
+		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];bulk_change=[REF(M)];stat=[STAT_PERCEPTION]'> Bulk Change</a></li>"
 
-		body += "<li>Endurance: [living.STAEND] "
-		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=[STATKEY_END]'>+</a> "
-		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=[STATKEY_END]'>-</a>"
-		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];bulk_change=[REF(M)];stat=[STATKEY_END]'> Bulk Change</a></li>"
+		body += "<li>Endurance: [GET_MOB_ATTRIBUTE_VALUE(living, STAT_ENDURANCE)] "
+		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=[STAT_ENDURANCE]'>+</a> "
+		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=[STAT_ENDURANCE]'>-</a>"
+		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];bulk_change=[REF(M)];stat=[STAT_ENDURANCE]'> Bulk Change</a></li>"
 
-		body += "<li>Constitution: [living.STACON] "
-		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=[STATKEY_CON]'>+</a> "
-		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=[STATKEY_CON]'>-</a>"
-		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];bulk_change=[REF(M)];stat=[STATKEY_CON]'> Bulk Change</a></li>"
+		body += "<li>Constitution: [GET_MOB_ATTRIBUTE_VALUE(living, STAT_CONSTITUTION)] "
+		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=[STAT_CONSTITUTION]'>+</a> "
+		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=[STAT_CONSTITUTION]'>-</a>"
+		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];bulk_change=[REF(M)];stat=[STAT_CONSTITUTION]'> Bulk Change</a></li>"
 
-		body += "<li>Intelligence: [living.STAINT] "
-		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=[STATKEY_INT]'>+</a> "
-		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=[STATKEY_INT]'>-</a>"
-		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];bulk_change=[REF(M)];stat=[STATKEY_INT]'> Bulk Change</a></li>"
+		body += "<li>Intelligence: [GET_MOB_ATTRIBUTE_VALUE(living, STAT_INTELLIGENCE)] "
+		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=[STAT_INTELLIGENCE]'>+</a> "
+		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=[STAT_INTELLIGENCE]'>-</a>"
+		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];bulk_change=[REF(M)];stat=[STAT_INTELLIGENCE]'> Bulk Change</a></li>"
 
-		body += "<li>Speed: [living.STASPD] "
-		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=[STATKEY_SPD]'>+</a> "
-		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=[STATKEY_SPD]'>-</a>"
-		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];bulk_change=[REF(M)];stat=[STATKEY_SPD]'> Bulk Change</a></li>"
+		body += "<li>Speed: [GET_MOB_ATTRIBUTE_VALUE(living, STAT_SPEED)] "
+		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=[STAT_SPEED]'>+</a> "
+		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=[STAT_SPEED]'>-</a>"
+		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];bulk_change=[REF(M)];stat=[STAT_SPEED]'> Bulk Change</a></li>"
 
-		body += "<li>Luck: [living.STALUC] "
-		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=[STATKEY_LCK]'>+</a> "
-		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=[STATKEY_LCK]'>-</a>"
-		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];bulk_change=[REF(M)];stat=[STATKEY_LCK]'> Bulk Change</a></li>"
+		body += "<li>Luck: [GET_MOB_ATTRIBUTE_VALUE(living, STAT_FORTUNE)] "
+		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=[STAT_FORTUNE]'>+</a> "
+		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=[STAT_FORTUNE]'>-</a>"
+		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];bulk_change=[REF(M)];stat=[STAT_FORTUNE]'> Bulk Change</a></li>"
 
 	body += "</ul></div>"
 
@@ -1182,17 +1168,17 @@
 
 	var/list/options = list("Adjust Experience Modifier", "Sleep Experience Modifier", "Both")
 
-	var/type = browser_input_list(usr, "Change which modifier? \n The current value of adjust_experience_modifier is [GLOB.adjust_experience_modifier] \n The current value of sleep_experience_modifier is [GLOB.sleep_experience_modifier].", "Change Skill Experience Gain", options, "Both")
+	var/type = browser_input_list(usr, "Change which modifier? \n The current value of adjust_experience_modifier is [GLOB.skill_xp_modifier] \n The current value of sleep_experience_modifier is [GLOB.sleep_experience_modifier].", "Change Skill Experience Gain", options, "Both")
 	var/modifier = input(usr, "Enter what the modifier should be, default is 1", "Change Skill Experience Gain", 1) as num
 	switch(type)
 		if("Adjust Experience Modifier")
-			GLOB.adjust_experience_modifier = modifier
+			GLOB.skill_xp_modifier = modifier
 			message_admins("[key_name_admin(usr)] set the value of adjust_experience_modifier to [modifier].")
 		if("Sleep Experience Modifier")
 			GLOB.sleep_experience_modifier = modifier
 			message_admins("[key_name_admin(usr)] set the value of sleep_experience_modifier to [modifier].")
 		if("Both")
-			GLOB.adjust_experience_modifier = modifier
+			GLOB.skill_xp_modifier = modifier
 			GLOB.sleep_experience_modifier = modifier
 			message_admins("[key_name_admin(usr)] set the value of both adjust_experience_modifier and sleep_experience_modifier to [modifier].")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Change Skill Experience Gain")

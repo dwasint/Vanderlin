@@ -14,19 +14,19 @@
 	)
 
 	jobstats = list(
-		STATKEY_INT = 1,
-		STATKEY_SPD = 1,
-		STATKEY_CON = 1,
+		STAT_INTELLIGENCE = 1,
+		STAT_SPEED = 1,
+		STAT_CONSTITUTION = 1,
 	)
 
 	skills = list(
-		/datum/skill/misc/reading = 2,
-		/datum/skill/misc/riding = 2,
-		/datum/skill/misc/sneaking = 2,
-		/datum/skill/misc/athletics = 2,
-		/datum/skill/combat/unarmed = 1,
-		/datum/skill/combat/wrestling = 1,
-		/datum/skill/combat/bows = 2
+		/datum/attribute/skill/misc/reading = 2,
+		/datum/attribute/skill/misc/riding = 2,
+		/datum/attribute/skill/misc/sneaking = 2,
+		/datum/attribute/skill/misc/athletics = 2,
+		/datum/attribute/skill/combat/unarmed = 1,
+		/datum/attribute/skill/combat/wrestling = 1,
+		/datum/attribute/skill/combat/bows = 2
 	)
 
 	traits = list(
@@ -36,7 +36,7 @@
 
 /datum/job/advclass/pilgrim/noble/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
-	spawned.adjust_skillrank(/datum/skill/misc/music, pick(1, 2), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/misc/music, pick(1, 2), TRUE)
 	var/prev_real_name = spawned.real_name
 	var/prev_name = spawned.name
 	var/honorary = "Lord"
@@ -55,17 +55,17 @@
 		return
 	switch(choice)
 		if("Dagger")
-			spawned.clamped_adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
+			spawned.clamped_adjust_skillrank(/datum/attribute/skill/combat/knives, 2, TRUE)
 			var/scabbard = new /obj/item/weapon/scabbard/knife/noble()
 			if(!spawned.equip_to_appropriate_slot(scabbard))
 				qdel(scabbard)
 		if("Rapier")
-			spawned.clamped_adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
+			spawned.clamped_adjust_skillrank(/datum/attribute/skill/combat/swords, 2, TRUE)
 			var/scabbard = new /obj/item/weapon/scabbard/sword/noble()
 			if(!spawned.equip_to_appropriate_slot(scabbard))
 				qdel(scabbard)
 		if("Cane Blade")
-			spawned.clamped_adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
+			spawned.clamped_adjust_skillrank(/datum/attribute/skill/combat/swords, 2, TRUE)
 			var/scabbard = new /obj/item/weapon/scabbard/cane()
 			if(!spawned.equip_to_appropriate_slot(scabbard))
 				qdel(scabbard)

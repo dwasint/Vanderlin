@@ -14,28 +14,28 @@
 	is_recognized = TRUE
 
 	jobstats = list(
-		STATKEY_STR = 1,
-		STATKEY_END = 1,
-		STATKEY_CON = 1,
-		STATKEY_SPD = -1
+		STAT_STRENGTH = 1,
+		STAT_ENDURANCE = 1,
+		STAT_CONSTITUTION = 1,
+		STAT_SPEED = -1
 	)
 
 	skills = list(
-		/datum/skill/combat/axesmaces = 2,
-		/datum/skill/combat/swords = 1,
-		/datum/skill/misc/athletics = 2,
-		/datum/skill/combat/unarmed = 2,
-		/datum/skill/combat/wrestling = 2,
-		/datum/skill/craft/masonry = 2,
-		/datum/skill/craft/engineering = 4,
-		/datum/skill/craft/sewing = 1,
-		/datum/skill/craft/traps = 3,
-		/datum/skill/misc/lockpicking = 1,
-		/datum/skill/craft/blacksmithing = 6,
-		/datum/skill/craft/armorsmithing = 6,
-		/datum/skill/craft/weaponsmithing = 6,
-		/datum/skill/craft/smelting = 6,
-		/datum/skill/labor/mathematics = 2
+		/datum/attribute/skill/combat/axesmaces = 2,
+		/datum/attribute/skill/combat/swords = 1,
+		/datum/attribute/skill/misc/athletics = 2,
+		/datum/attribute/skill/combat/unarmed = 2,
+		/datum/attribute/skill/combat/wrestling = 2,
+		/datum/attribute/skill/craft/masonry = 2,
+		/datum/attribute/skill/craft/engineering = 4,
+		/datum/attribute/skill/misc/sewing = 1,
+		/datum/attribute/skill/craft/traps = 3,
+		/datum/attribute/skill/misc/lockpicking = 1,
+		/datum/attribute/skill/craft/blacksmithing = 6,
+		/datum/attribute/skill/craft/armorsmithing = 6,
+		/datum/attribute/skill/craft/weaponsmithing = 6,
+		/datum/attribute/skill/craft/smelting = 6,
+		/datum/attribute/skill/labor/mathematics = 2
 	)
 
 	traits = list(
@@ -44,18 +44,18 @@
 
 /datum/job/advclass/pilgrim/rare/masterblacksmith/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
-	spawned.adjust_skillrank(/datum/skill/misc/swimming, pick(0,1,1), TRUE)
-	spawned.adjust_skillrank(/datum/skill/misc/climbing, pick(1,1,2,2,3,4), TRUE)
-	spawned.adjust_skillrank(/datum/skill/craft/crafting, pick(2,2,3,3,4), TRUE)
-	spawned.adjust_skillrank(/datum/skill/craft/carpentry, pick(1,2,2), TRUE)
-	spawned.adjust_skillrank(/datum/skill/craft/cooking, pick(0, 1, 1), TRUE)
-	spawned.adjust_skillrank(/datum/skill/misc/reading, pick(1, 2, 2), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/misc/swimming, pick(0,1,1), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/misc/climbing, pick(1,1,2,2,3,4), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/craft/crafting, pick(2,2,3,3,4), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/craft/carpentry, pick(1,2,2), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/craft/cooking, pick(0, 1, 1), TRUE)
+	spawned.adjust_skillrank(/datum/attribute/skill/misc/reading, pick(1, 2, 2), TRUE)
 
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_STR, -1)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_END, -2)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STATKEY_CON, -2)
-		spawned.adjust_skillrank(/datum/skill/craft/engineering, 1, TRUE)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_STRENGTH, -1)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_ENDURANCE, -2)
+		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_CONSTITUTION, -2)
+		spawned.adjust_skillrank(/datum/attribute/skill/craft/engineering, 1, TRUE)
 
 /datum/outfit/pilgrim/masterblacksmith
 	name = "Master Blacksmith (Pilgrim)"

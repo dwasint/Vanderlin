@@ -7,27 +7,27 @@
 	total_positions = 2
 
 	jobstats = list(
-		STATKEY_STR = 3,
-		STATKEY_PER = -1,
-		STATKEY_END = 1,
-		STATKEY_CON = 2,
-		STATKEY_INT = -1,
-		STATKEY_SPD = 1
+		STAT_STRENGTH = 3,
+		STAT_PERCEPTION = -1,
+		STAT_ENDURANCE = 1,
+		STAT_CONSTITUTION = 2,
+		STAT_INTELLIGENCE = -1,
+		STAT_SPEED = 1
 	)
 
 	skills = list(
-		/datum/skill/combat/axesmaces = 3,
-		/datum/skill/combat/wrestling = 3,
-		/datum/skill/combat/unarmed = 3,
-		/datum/skill/combat/swords = 3,
-		/datum/skill/craft/tanning = 2,
-		/datum/skill/misc/swimming = 4,
-		/datum/skill/misc/climbing = 4,
-		/datum/skill/misc/athletics = 4,
-		/datum/skill/craft/cooking = 1,
-		/datum/skill/labor/butchering = 1,
-		/datum/skill/misc/medicine = 1,
-		/datum/skill/misc/sneaking = 3
+		/datum/attribute/skill/combat/axesmaces = 3,
+		/datum/attribute/skill/combat/wrestling = 3,
+		/datum/attribute/skill/combat/unarmed = 3,
+		/datum/attribute/skill/combat/swords = 3,
+		/datum/attribute/skill/craft/tanning = 2,
+		/datum/attribute/skill/misc/swimming = 4,
+		/datum/attribute/skill/misc/climbing = 4,
+		/datum/attribute/skill/misc/athletics = 4,
+		/datum/attribute/skill/craft/cooking = 1,
+		/datum/attribute/skill/labor/butchering = 1,
+		/datum/attribute/skill/misc/medicine = 1,
+		/datum/attribute/skill/misc/sneaking = 3
 	)
 
 	traits = list(
@@ -58,14 +58,14 @@
 
 	switch(choice)
 		if("MY BARE HANDS!!!")
-			spawned.adjust_skillrank(/datum/skill/combat/unarmed, 2)
-			spawned.adjust_skillrank(/datum/skill/combat/knives, 4)
+			spawned.adjust_skillrank(/datum/attribute/skill/combat/unarmed, 2)
+			spawned.adjust_skillrank(/datum/attribute/skill/combat/knives, 4)
 		if("Great Axe")
-			spawned.clamped_adjust_skillrank(/datum/skill/combat/axesmaces, 4, 4, TRUE)
+			spawned.clamped_adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 4, 4, TRUE)
 		if("Mace")
-			spawned.clamped_adjust_skillrank(/datum/skill/combat/axesmaces, 4, 4, TRUE)
+			spawned.clamped_adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 4, 4, TRUE)
 		if("Sword")
-			spawned.clamped_adjust_skillrank(/datum/skill/combat/swords, 4, 4, TRUE)
+			spawned.clamped_adjust_skillrank(/datum/attribute/skill/combat/swords, 4, 4, TRUE)
 
 	wretch_select_bounty(spawned)
 

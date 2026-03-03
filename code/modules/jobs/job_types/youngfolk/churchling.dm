@@ -24,19 +24,19 @@
 	exp_types_granted = list(EXP_TYPE_CHURCH, EXP_TYPE_CLERIC)
 
 	jobstats = list(
-		STATKEY_PER = 1,
-		STATKEY_SPD = 2
+		STAT_PERCEPTION = 1,
+		STAT_SPEED = 2
 	)
 
 	skills = list(
-		/datum/skill/misc/climbing = 4,
-		/datum/skill/misc/sneaking = 4,
-		/datum/skill/misc/medicine = 1,
-		/datum/skill/magic/holy = 2,
-		/datum/skill/craft/sewing = 2,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/craft/crafting = 1,
-		/datum/skill/craft/cooking = 1
+		/datum/attribute/skill/misc/climbing = 4,
+		/datum/attribute/skill/misc/sneaking = 4,
+		/datum/attribute/skill/misc/medicine = 1,
+		/datum/attribute/skill/magic/holy = 2,
+		/datum/attribute/skill/misc/sewing = 2,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/craft/crafting = 1,
+		/datum/attribute/skill/craft/cooking = 1
 	)
 
 	languages = list(/datum/language/celestial)

@@ -7,25 +7,25 @@
 	category_tags = list(CTAG_INQUISITION)
 
 	jobstats = list(
-		STATKEY_STR = 2,
-		STATKEY_CON = 2,
-		STATKEY_END = 2,
-		STATKEY_SPD = -2,
+		STAT_STRENGTH = 2,
+		STAT_CONSTITUTION = 2,
+		STAT_ENDURANCE = 2,
+		STAT_SPEED = -2,
 	) //4 Statline
 
 	skills = list(
-		/datum/skill/combat/swords = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/axesmaces = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/whipsflails = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/crossbows = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/combat/bows = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/combat/wrestling = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/combat/unarmed = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/climbing = SKILL_LEVEL_NOVICE,
-		/datum/skill/misc/athletics = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/reading = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/shields = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/medicine = SKILL_LEVEL_NOVICE
+		/datum/attribute/skill/combat/swords = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/combat/axesmaces = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/combat/whipsflails = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/combat/crossbows = SKILL_LEVEL_APPRENTICE,
+		/datum/attribute/skill/combat/bows = SKILL_LEVEL_APPRENTICE,
+		/datum/attribute/skill/combat/wrestling = SKILL_LEVEL_APPRENTICE,
+		/datum/attribute/skill/combat/unarmed = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/misc/climbing = SKILL_LEVEL_NOVICE,
+		/datum/attribute/skill/misc/athletics = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/misc/reading = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/combat/shields = SKILL_LEVEL_JOURNEYMAN,
+		/datum/attribute/skill/misc/medicine = SKILL_LEVEL_NOVICE
 	)
 
 	traits = list(
@@ -58,7 +58,7 @@
 	)
 	var/armor_choice = spawned.select_equippable(player_client, armors, message = "Choose your ARMOR.", title = "TAKE UP PSYDON'S MANTLE.")
 	if(armor_choice == "Cuirass")
-		spawned.change_stat(STATKEY_SPD, 1) //Less durability and coverage, but still upgradable. Balances out the innate -1 SPD debuff.
+		spawned.change_stat(STAT_SPEED, 1) //Less durability and coverage, but still upgradable. Balances out the innate -1 SPD debuff.
 
 	var/static/list/weapons = list(
 		"Psydonic Longsword" = list(/obj/item/weapon/scabbard/sword, /obj/item/weapon/sword/long/psydon),
@@ -72,13 +72,13 @@
 	var/weapon_choice = spawned.select_equippable(player_client, weapons, message = "Choose your WEAPON.", title = "TAKE UP PSYDON'S ARMS.")
 	switch(weapon_choice)
 		if("Psydonic Longsword")
-			spawned.clamped_adjust_skillrank(/datum/skill/combat/swords, 3, 3, TRUE)
+			spawned.clamped_adjust_skillrank(/datum/attribute/skill/combat/swords, 3, 3, TRUE)
 		if("Psydonic War Axe", "Psydonic Mace", "Psydonic Poleaxe + Shortsword")
-			spawned.clamped_adjust_skillrank(/datum/skill/combat/axesmaces, 3, 3, TRUE)
+			spawned.clamped_adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 3, 3, TRUE)
 		if("Psydonic Whip", "Psydonic Flail")
-			spawned.clamped_adjust_skillrank(/datum/skill/combat/whipsflails, 3, 3, TRUE)
+			spawned.clamped_adjust_skillrank(/datum/attribute/skill/combat/whipsflails, 3, 3, TRUE)
 		if("Psydonic Spear + Handmace")
-			spawned.clamped_adjust_skillrank(/datum/skill/combat/polearms, 3, 3, TRUE)
+			spawned.clamped_adjust_skillrank(/datum/attribute/skill/combat/polearms, 3, 3, TRUE)
 
 /datum/outfit/psydoniantemplar
 	name = "Psydonian Templar (Sacrestants)"

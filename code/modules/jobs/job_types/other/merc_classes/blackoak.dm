@@ -8,22 +8,22 @@
 
 	// Base stats
 	jobstats = list(
-		STATKEY_STR = 1,
-		STATKEY_END = 2,
-		STATKEY_SPD = 1
+		STAT_STRENGTH = 1,
+		STAT_ENDURANCE = 2,
+		STAT_SPEED = 1
 	)
 
 	// Base skills
 	skills = list(
-		/datum/skill/combat/knives = 3,
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/combat/unarmed = 2,
-		/datum/skill/combat/wrestling = 2,
-		/datum/skill/misc/sneaking = 2,
-		/datum/skill/misc/swimming = 2,
-		/datum/skill/misc/climbing = 2,
-		/datum/skill/misc/medicine = 1,
-		/datum/skill/craft/crafting = 1,
+		/datum/attribute/skill/combat/knives = 3,
+		/datum/attribute/skill/misc/athletics = 3,
+		/datum/attribute/skill/combat/unarmed = 2,
+		/datum/attribute/skill/combat/wrestling = 2,
+		/datum/attribute/skill/misc/sneaking = 2,
+		/datum/attribute/skill/misc/swimming = 2,
+		/datum/attribute/skill/misc/climbing = 2,
+		/datum/attribute/skill/misc/medicine = 1,
+		/datum/attribute/skill/craft/crafting = 1,
 	)
 
 	traits = list(
@@ -46,9 +46,9 @@
 		return
 	switch(choice)
 		if("Spear")
-			spawned.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/combat/polearms, 3, TRUE)
 		if("Regal Elven Club")
-			spawned.adjust_skillrank(/datum/skill/combat/axesmaces, 3, TRUE)
+			spawned.adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 3, TRUE)
 	spawned.merctype = 4
 
 
