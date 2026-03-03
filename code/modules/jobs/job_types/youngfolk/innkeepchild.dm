@@ -1,3 +1,18 @@
+/datum/attribute_holder/sheet/job/innkeep_son
+	raw_attribute_list = list(
+		STAT_ENDURANCE = 1,
+		STAT_STRENGTH = -1,
+		STAT_CONSTITUTION = -1,
+		/datum/attribute/skill/combat/wrestling = 10,
+		/datum/attribute/skill/combat/unarmed = 20,
+		/datum/attribute/skill/craft/cooking = 20,
+		/datum/attribute/skill/misc/reading = 10,
+		/datum/attribute/skill/misc/medicine = 10,
+		/datum/attribute/skill/misc/stealing = 10,
+		/datum/attribute/skill/misc/climbing = 10,
+		/datum/attribute/skill/misc/athletics = 10
+	)
+
 /datum/job/innkeep_son
 	title = "Innkeepers Son"
 	f_title = "Innkeepers Daughter"
@@ -20,22 +35,7 @@
 
 	job_bitflag = BITFLAG_CONSTRUCTOR
 
-	jobstats = list(
-		STAT_ENDURANCE = 1,
-		STAT_STRENGTH = -1,
-		STAT_CONSTITUTION = -1
-	)
-
-	skills = list(
-		/datum/attribute/skill/combat/wrestling = 1,
-		/datum/attribute/skill/combat/unarmed = 2,
-		/datum/attribute/skill/craft/cooking = 2,
-		/datum/attribute/skill/misc/reading = 1,
-		/datum/attribute/skill/misc/medicine = 1,
-		/datum/attribute/skill/misc/stealing = 1,
-		/datum/attribute/skill/misc/climbing = 1,
-		/datum/attribute/skill/misc/athletics = 1
-	)
+	attribute_sheet = /datum/attribute_holder/sheet/job/innkeep_son
 
 /datum/outfit/innkeep_son
 	name = "Inkeeper Son"

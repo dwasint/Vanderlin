@@ -1,3 +1,12 @@
+/datum/attribute_holder/sheet/job/orphan
+	raw_attribute_list = list(
+		STAT_CONSTITUTION = -1,
+		STAT_ENDURANCE = -1,
+		/datum/attribute/skill/misc/sneaking = 20,
+		/datum/attribute/skill/misc/stealing = 40,
+		/datum/attribute/skill/misc/climbing = 40
+	)
+
 /datum/job/orphan
 	title = "Orphan"
 	tutorial = "Before you could even form words, you were abandoned, or perhaps lost. \
@@ -18,16 +27,7 @@
 	can_have_apprentices = FALSE
 	cmode_music = 'sound/music/cmode/towner/CombatTowner.ogg'
 
-	jobstats = list(
-		STAT_CONSTITUTION = -1,
-		STAT_ENDURANCE = -1
-	)
-
-	skills = list(
-		/datum/attribute/skill/misc/sneaking = 2,
-		/datum/attribute/skill/misc/stealing = 4,
-		/datum/attribute/skill/misc/climbing = 4
-	)
+	attribute_sheet = /datum/attribute_holder/sheet/job/orphan
 
 	traits = list(
 		TRAIT_ORPHAN
@@ -45,13 +45,17 @@
 		orphanage_renovated = TRUE
 
 	if(!orphanage_renovated)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_INTELLIGENCE, rand(-4, 4))
-		spawned.base_fortune = rand(1,20)
+		spawned.adjust_stat_modifier(STATMOD_ORPHANAGE, list(
+			STAT_INTELLIGENCE = rand(-4, 4),
+			STAT_FORTUNE = rand(-9, 9)
+		))
 	else
-		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_INTELLIGENCE, 4)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_CONSTITUTION, 2)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_ENDURANCE, 2)
-		spawned.base_fortune = rand(7,20)
+		spawned.adjust_stat_modifier(STATMOD_ORPHANAGE, list(
+			STAT_INTELLIGENCE = 4,
+			STAT_CONSTITUTION = 2,
+			STAT_ENDURANCE = 2,
+			STAT_FORTUNE = rand(-2, 9)
+		))
 
 	var/hand_1 = spawned.get_active_held_item()
 	var/hand_2 = spawned.get_inactive_held_item()

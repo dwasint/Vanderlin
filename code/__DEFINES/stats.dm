@@ -10,6 +10,7 @@
 #define STATMOD_JOB "job"
 #define STATMOD_PACK "pack"
 #define STATMOD_QUIRK "quirk"
+#define STATMOD_ORPHANAGE "orphanage"
 
 // For misc things.
 #define STATMOD_ABOM "zizo_cult_abomination"

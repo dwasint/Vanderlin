@@ -1,3 +1,42 @@
+/datum/attribute_holder/sheet/job/feldsher
+	attribute_variance = list(
+		/datum/attribute/skill/combat/wrestling = list(-10, 10)
+	)
+	raw_attribute_list = list(
+		STAT_STRENGTH = -1,
+		STAT_INTELLIGENCE = 4,
+		STAT_PERCEPTION = 1,
+		STAT_CONSTITUTION = -1,
+		/datum/attribute/skill/combat/wrestling = 10,
+		/datum/attribute/skill/craft/crafting = 20,
+		/datum/attribute/skill/combat/knives = 20,
+		/datum/attribute/skill/misc/reading = 50,
+		/datum/attribute/skill/labor/mathematics = 30,
+		/datum/attribute/skill/misc/sewing = 30,
+		/datum/attribute/skill/misc/climbing = 20,
+		/datum/attribute/skill/misc/medicine = 50,
+		/datum/attribute/skill/craft/alchemy = 30,
+		/datum/attribute/skill/labor/farming = 30,
+	)
+
+/datum/attribute_holder/sheet/job/feldsher/old
+	raw_attribute_list = list(
+		STAT_STRENGTH = -1,
+		STAT_INTELLIGENCE = 4,
+		STAT_PERCEPTION = 1,
+		STAT_CONSTITUTION = -1,
+		/datum/attribute/skill/combat/wrestling = 10,
+		/datum/attribute/skill/craft/crafting = 20,
+		/datum/attribute/skill/combat/knives = 20,
+		/datum/attribute/skill/misc/reading = 50,
+		/datum/attribute/skill/labor/mathematics = 30,
+		/datum/attribute/skill/misc/sewing = 30,
+		/datum/attribute/skill/misc/climbing = 20,
+		/datum/attribute/skill/misc/medicine = 60,
+		/datum/attribute/skill/craft/alchemy = 30,
+		/datum/attribute/skill/labor/farming = 30,
+	)
+
 /datum/job/feldsher
 	title = "Feldsher"
 	tutorial = "You have seen countless wounds over your time. \
@@ -20,25 +59,8 @@
 
 	allowed_races = RACES_PLAYER_NONHERETICAL
 
-	jobstats = list(
-		STAT_STRENGTH = -1,
-		STAT_INTELLIGENCE = 4,
-		STAT_PERCEPTION = 1,
-		STAT_CONSTITUTION = -1
-	)
-
-	skills = list(
-		/datum/attribute/skill/combat/wrestling = 1,
-		/datum/attribute/skill/craft/crafting = 2,
-		/datum/attribute/skill/combat/knives = 2,
-		/datum/attribute/skill/misc/reading = 5,
-		/datum/attribute/skill/labor/mathematics = 3,
-		/datum/attribute/skill/misc/sewing = 3,
-		/datum/attribute/skill/misc/climbing = 2,
-		/datum/attribute/skill/misc/medicine = 5,
-		/datum/attribute/skill/craft/alchemy = 3,
-		/datum/attribute/skill/labor/farming = 3,
-	)
+	attribute_sheet = /datum/attribute_holder/sheet/job/feldsher
+	attribute_sheet_old = /datum/attribute_holder/sheet/job/feldsher/old
 
 	traits = list(
 		TRAIT_EMPATH,
@@ -63,13 +85,6 @@
 		EXP_TYPE_MEDICAL = 300
 
 	)
-
-
-/datum/job/feldsher/after_spawn(mob/living/carbon/human/spawned, client/player_client)
-	. = ..()
-	spawned.adjust_skillrank(/datum/attribute/skill/combat/wrestling, pick(0,0,1), TRUE)
-	if(spawned.age == AGE_OLD)
-		spawned.adjust_skillrank(/datum/attribute/skill/misc/medicine, 1, TRUE)
 
 /datum/outfit/feldsher
 	shoes = /obj/item/clothing/shoes/shortboots

@@ -1,3 +1,27 @@
+/datum/attribute_holder/sheet/job/carpenter
+	attribute_variance = list(
+		/datum/attribute/skill/craft/athletics = list(0, 10)
+	)
+	raw_attribute_list = list(
+		STAT_STRENGTH = 1,
+		STAT_ENDURANCE = 1,
+		STAT_INTELLIGENCE = 1,
+		STAT_CONSTITUTION = 1,
+		STAT_SPEED = -1,
+		/datum/attribute/skill/misc/medicine = 10,
+		/datum/attribute/skill/combat/axesmaces = 20,
+		/datum/attribute/skill/combat/wrestling = 10,
+		/datum/attribute/skill/combat/unarmed = 10,
+		/datum/attribute/skill/craft/crafting = 30,
+		/datum/attribute/skill/craft/cooking = 10,
+		/datum/attribute/skill/craft/carpentry = 50,
+		/datum/attribute/skill/misc/swimming = 10,
+		/datum/attribute/skill/misc/climbing = 20,
+		/datum/attribute/skill/misc/sewing = 10,
+		/datum/attribute/skill/misc/reading = 10,
+		/datum/attribute/skill/misc/athletics = 30,
+		/datum/attribute/skill/labor/lumberjacking = 30,
+	)
 /datum/job/carpenter
 	title = "Carpenter"
 	tutorial = "Others may regard your work as crude and demeaning, but you understand deep in your soul the beauty of woodchopping. \
@@ -17,41 +41,10 @@
 
 	job_bitflag = BITFLAG_CONSTRUCTOR
 
-	jobstats = list(
-		STAT_STRENGTH = 1,
-		STAT_ENDURANCE = 1,
-		STAT_INTELLIGENCE = 1,
-		STAT_CONSTITUTION = 1,
-		STAT_SPEED = -1,
-	)
-
-	skills = list(
-		/datum/attribute/skill/misc/medicine = 1,
-		/datum/attribute/skill/combat/axesmaces = 2,
-		/datum/attribute/skill/combat/wrestling = 1,
-		/datum/attribute/skill/combat/unarmed = 1,
-		/datum/attribute/skill/craft/crafting = 3,
-		/datum/attribute/skill/craft/cooking = 1,
-		/datum/attribute/skill/craft/carpentry = 5,
-		/datum/attribute/skill/misc/swimming = 1,
-		/datum/attribute/skill/misc/climbing = 2,
-		/datum/attribute/skill/misc/sewing = 1,
-		/datum/attribute/skill/misc/reading = 1,
-		/datum/attribute/skill/misc/athletics = 3,
-		/datum/attribute/skill/labor/lumberjacking = 3,
-	)
+	attribute_sheet = /datum/attribute_holder/sheet/job/carpenter
 
 	traits = list()
 
-/datum/job/carpenter/after_spawn(mob/living/carbon/human/spawned, client/player_client)
-	. = ..()
-	spawned.adjust_skillrank(/datum/attribute/skill/misc/athletics, pick(0,1), TRUE)
-
-	if(prob(5))
-		spawned.adjust_skillrank(/datum/attribute/skill/craft/cooking, 1, TRUE)
-		spawned.adjust_skillrank(/datum/attribute/skill/misc/sewing, 2, TRUE)
-		spawned.adjust_skillrank(/datum/attribute/skill/labor/lumberjacking, 1, TRUE)
-		spawned.adjust_skillrank(/datum/attribute/skill/craft/carpentry, 1, TRUE)
 
 /datum/outfit/carpenter
 	name = "Carpenter"

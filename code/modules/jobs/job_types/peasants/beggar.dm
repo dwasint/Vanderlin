@@ -1,3 +1,20 @@
+/datum/attribute_holder/sheet/job/vagrant
+	attribute_variance = list(
+		STAT_FORTUNE = list(-9, 9),
+		/datum/attribute/skill/misc/sneaking = list(10, 40),
+		/datum/attribute/skill/misc/stealing = list(10, 40),
+		/datum/attribute/skill/misc/lockpicking = list(10, 40),
+		/datum/attribute/skill/misc/climbing = list(10, 30),
+		/datum/attribute/skill/combat/wrestling = list(-10, 10),
+		/datum/attribute/skill/combat/unarmed = list(10, 20),
+		/datum/attribute/skill/craft/alchemy = list(10, 20),
+	)
+	raw_attribute_list = list(
+		STAT_INTELLIGENCE = -3,
+		STAT_CONSTITUTION = -2,
+		STAT_ENDURANCE = -2
+	)
+
 /datum/job/vagrant
 	title = "Beggar"
 	tutorial = "The stench of your piss-laden clothes dont bug you anymore, \
@@ -20,6 +37,8 @@
 	can_have_apprentices = FALSE
 
 	cmode_music = 'sound/music/cmode/towner/CombatBeggar.ogg'
+
+	attribute_sheet = /datum/attribute_holder/sheet/job/vagrant
 
 	jobstats = list(
 		STAT_INTELLIGENCE = -3,
@@ -48,18 +67,6 @@
 		spawned.set_hygiene(HYGIENE_LEVEL_DISGUSTING)
 	else
 		spawned.set_hygiene(HYGIENE_LEVEL_DIRTY)
-
-	// Luck roll
-	spawned.base_fortune = rand(1, 20)
-	spawned.recalculate_stats(FALSE)
-
-	spawned.adjust_skillrank(/datum/attribute/skill/misc/sneaking, pick(1,2,3,4), TRUE)
-	spawned.adjust_skillrank(/datum/attribute/skill/misc/stealing, pick(1,2,3,4), TRUE)
-	spawned.adjust_skillrank(/datum/attribute/skill/misc/lockpicking, pick(1,2,3,4), TRUE)
-	spawned.adjust_skillrank(/datum/attribute/skill/misc/climbing, pick(1,2,3), TRUE)
-	spawned.adjust_skillrank(/datum/attribute/skill/combat/wrestling, pick(0,0,1), TRUE)
-	spawned.adjust_skillrank(/datum/attribute/skill/combat/unarmed, pick(1,2), TRUE)
-	spawned.adjust_skillrank(/datum/attribute/skill/craft/alchemy, pick(1,2), TRUE)
 
 
 /datum/outfit/vagrant

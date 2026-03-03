@@ -1,3 +1,39 @@
+/datum/attribute_holder/sheet/job/apothecary
+	attribute_variance = list(
+		/datum/attribute/skill/combat/wrestling = list(-10, 10)
+	)
+	raw_attribute_list = list(
+		STAT_INTELLIGENCE = 3,
+		STAT_SPEED = 1,
+		STAT_PERCEPTION = -1,
+		/datum/attribute/skill/combat/unarmed = 10,
+		/datum/attribute/skill/craft/crafting = 20,//they need this to craft bottles
+		/datum/attribute/skill/misc/athletics = 20,
+		/datum/attribute/skill/misc/reading = 40,
+		/datum/attribute/skill/misc/sneaking = 30,
+		/datum/attribute/skill/misc/climbing = 20,
+		/datum/attribute/skill/craft/alchemy = 50,
+		/datum/attribute/skill/misc/medicine = 30,
+		/datum/attribute/skill/labor/farming = 30,
+
+	)
+
+/datum/attribute_holder/sheet/job/apothecary/old
+	raw_attribute_list = list(
+		STAT_INTELLIGENCE = 3,
+		STAT_SPEED = 1,
+		STAT_PERCEPTION = -1,
+		/datum/attribute/skill/combat/unarmed = 10,
+		/datum/attribute/skill/craft/crafting = 20,//they need this to craft bottles
+		/datum/attribute/skill/misc/athletics = 20,
+		/datum/attribute/skill/misc/reading = 40,
+		/datum/attribute/skill/misc/sneaking = 30,
+		/datum/attribute/skill/misc/climbing = 20,
+		/datum/attribute/skill/craft/alchemy = 60,
+		/datum/attribute/skill/misc/medicine = 30,
+		/datum/attribute/skill/labor/farming = 30,
+
+	)
 /datum/job/apothecary
 	title = "Apothecary"
 	tutorial = "You know every plant growing on these grounds and in the woods like the back of your hand. \
@@ -18,31 +54,15 @@
 	apprentice_name = "Apothecary-in-training"
 	can_have_apprentices = TRUE
 
-	jobstats = list(
-		STAT_INTELLIGENCE = 3,
-		STAT_SPEED = 1,
-		STAT_PERCEPTION = -1
-	)
-
-	skills = list(
-		/datum/attribute/skill/combat/wrestling = 1,
-		/datum/attribute/skill/combat/unarmed = 1,
-		/datum/attribute/skill/craft/crafting = 2,//they need this to craft bottles
-		/datum/attribute/skill/misc/athletics = 2,
-		/datum/attribute/skill/misc/reading = 4,
-		/datum/attribute/skill/misc/sneaking = 3,
-		/datum/attribute/skill/misc/climbing = 2,
-		/datum/attribute/skill/craft/alchemy = 5,
-		/datum/attribute/skill/misc/medicine = 3,
-		/datum/attribute/skill/labor/farming = 3,
-	)
-
 	traits = list(
 		TRAIT_FORAGER,
 		TRAIT_LEGENDARY_ALCHEMIST,
 	)
 
 	allowed_races = RACES_PLAYER_ALL
+
+	attribute_sheet_old = /datum/attribute_holder/sheet/job/apothecary/old
+	attribute_sheet = /datum/attribute_holder/sheet/job/apothecary
 
 	outfit = /datum/outfit/apothecary
 	give_bank_account = 100
@@ -58,9 +78,7 @@
 
 /datum/job/apothecary/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
-	spawned.adjust_skillrank(/datum/attribute/skill/combat/wrestling, pick(0,0,1), TRUE)
 	if(spawned.age == AGE_OLD)
-		spawned.adjust_skillrank(/datum/attribute/skill/craft/alchemy, 1, TRUE)
 		ADD_TRAIT(spawned, TRAIT_POISON_RESILIENCE, TRAIT_GENERIC)
 
 /datum/outfit/apothecary

@@ -5,14 +5,32 @@
 		STAT_CONSTITUTION = 1,
 		STAT_ENDURANCE    = 1,
 		STAT_INTELLIGENCE = -6, // Very dumb
+		/datum/attribute/skill/combat/polearms = 20,
+		/datum/attribute/skill/combat/axesmaces = 20,
+		/datum/attribute/skill/combat/wrestling = 20,
+		/datum/attribute/skill/combat/unarmed = 20,
+		/datum/attribute/skill/misc/athletics = 40,
+		/datum/attribute/skill/combat/shields = 20,
+		/datum/attribute/skill/misc/climbing = 20,
+		/datum/attribute/skill/misc/swimming = 20,
 	)
 
 /datum/attribute_holder/sheet/orc_npc/marauder
 	raw_attribute_list = list(
-		STAT_STRENGTH     = 2,
-		STAT_SPEED        = -2,
+		STAT_STRENGTH = 2,
+		STAT_SPEED = -2,
 		STAT_CONSTITUTION = 2,
 		STAT_INTELLIGENCE = -6,
+		/datum/attribute/skill/combat/polearms = 30,
+		/datum/attribute/skill/combat/swords = 30,
+		/datum/attribute/skill/combat/axesmaces = 30,
+		/datum/attribute/skill/combat/wrestling = 30,
+		/datum/attribute/skill/labor/mining = 30,
+		/datum/attribute/skill/combat/unarmed = 30,
+		/datum/attribute/skill/misc/athletics = 40,
+		/datum/attribute/skill/combat/shields = 20,
+		/datum/attribute/skill/misc/climbing = 20,
+		/datum/attribute/skill/misc/swimming = 20,
 	)
 
 /datum/attribute_holder/sheet/orc_npc/berserker
@@ -21,18 +39,32 @@
 		STAT_CONSTITUTION = 2,
 		STAT_ENDURANCE    = 2,
 		STAT_INTELLIGENCE = -9, // Minmax department
+		/datum/attribute/skill/combat/knives = 30,
+		/datum/attribute/skill/combat/wrestling = 30,
+		/datum/attribute/skill/labor/mining = 30,
+		/datum/attribute/skill/combat/unarmed = 30,
+		/datum/attribute/skill/misc/athletics = 40,
+		/datum/attribute/skill/combat/shields = 20,
+		/datum/attribute/skill/misc/climbing = 20,
+		/datum/attribute/skill/misc/swimming = 20,
 	)
 
-// Warlord and archer_test share the same stat profile
 /datum/attribute_holder/sheet/orc_npc/elite
 	raw_attribute_list = list(
 		STAT_STRENGTH     = 4,
 		STAT_CONSTITUTION = 2,
 		STAT_ENDURANCE    = 2,
 		STAT_INTELLIGENCE = -9,
+		/datum/attribute/skill/combat/polearms = 40,
+		/datum/attribute/skill/combat/swords = 40,
+		/datum/attribute/skill/combat/axesmaces = 40,
+		/datum/attribute/skill/combat/wrestling = 40,
+		/datum/attribute/skill/combat/unarmed = 40,
+		/datum/attribute/skill/misc/athletics = 40,
+		/datum/attribute/skill/combat/shields = 30,
+		/datum/attribute/skill/misc/climbing = 20,
+		/datum/attribute/skill/misc/swimming = 20,
 	)
-
-// ── Orc NPC mob subtypes ─────────────────────────────────────────────────────
 
 /mob/living/carbon/human/species/orc/npc/footsoldier
 	orc_outfit = /datum/outfit/job/orc/npc/footsoldier
@@ -71,14 +103,6 @@
 		if(3)
 			l_hand = /obj/item/weapon/mace/cudgel
 	H.attributes.add_sheet(/datum/attribute_holder/sheet/orc_npc/footsoldier)
-	H.adjust_skillrank(/datum/attribute/skill/combat/polearms, 2, TRUE)
-	H.adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 2, TRUE)
-	H.adjust_skillrank(/datum/attribute/skill/combat/wrestling, 2, TRUE)
-	H.adjust_skillrank(/datum/attribute/skill/combat/unarmed, 2, TRUE)
-	H.adjust_skillrank(/datum/attribute/skill/misc/athletics, 4, TRUE)
-	H.adjust_skillrank(/datum/attribute/skill/combat/shields, 2, TRUE)
-	H.adjust_skillrank(/datum/attribute/skill/misc/climbing, 2, TRUE)
-	H.adjust_skillrank(/datum/attribute/skill/misc/swimming, 2, TRUE)
 
 // Slightly armored orc with slight facial protection, incomplete chainmail and spear / sword
 /datum/outfit/job/orc/npc/marauder/pre_equip(mob/living/carbon/human/H)
@@ -105,16 +129,6 @@
 		if(5)
 			l_hand = /obj/item/weapon/pick
 	H.attributes.add_sheet(/datum/attribute_holder/sheet/orc_npc/marauder)
-	H.adjust_skillrank(/datum/attribute/skill/combat/polearms, 3, TRUE)
-	H.adjust_skillrank(/datum/attribute/skill/combat/swords, 3, TRUE)
-	H.adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 3, TRUE)
-	H.adjust_skillrank(/datum/attribute/skill/combat/wrestling, 3, TRUE)
-	H.adjust_skillrank(/datum/attribute/skill/labor/mining, 3, TRUE)
-	H.adjust_skillrank(/datum/attribute/skill/combat/unarmed, 3, TRUE)
-	H.adjust_skillrank(/datum/attribute/skill/misc/athletics, 4, TRUE)
-	H.adjust_skillrank(/datum/attribute/skill/combat/shields, 2, TRUE)
-	H.adjust_skillrank(/datum/attribute/skill/misc/climbing, 2, TRUE)
-	H.adjust_skillrank(/datum/attribute/skill/misc/swimming, 2, TRUE)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
 // Lightly armored orc in light armor with no pain stun, and grappling oriented weapons
@@ -134,14 +148,6 @@
 		if(2)
 			l_hand = /obj/item/weapon/pick
 	H.attributes.add_sheet(/datum/attribute_holder/sheet/orc_npc/berserker)
-	H.adjust_skillrank(/datum/attribute/skill/combat/knives, 3, TRUE)
-	H.adjust_skillrank(/datum/attribute/skill/combat/wrestling, 3, TRUE)
-	H.adjust_skillrank(/datum/attribute/skill/labor/mining, 3, TRUE)
-	H.adjust_skillrank(/datum/attribute/skill/combat/unarmed, 3, TRUE)
-	H.adjust_skillrank(/datum/attribute/skill/misc/athletics, 4, TRUE)
-	H.adjust_skillrank(/datum/attribute/skill/combat/shields, 2, TRUE)
-	H.adjust_skillrank(/datum/attribute/skill/misc/climbing, 2, TRUE)
-	H.adjust_skillrank(/datum/attribute/skill/misc/swimming, 2, TRUE)
 	ADD_TRAIT(H, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, INNATE_TRAIT)
 
@@ -171,15 +177,6 @@
 			l_hand = /obj/item/weapon/sword/scimitar/falchion
 			r_hand = /obj/item/weapon/sword/scimitar/falchion // intrusive thoughts
 	H.attributes.add_sheet(/datum/attribute_holder/sheet/orc_npc/elite)
-	H.adjust_skillrank(/datum/attribute/skill/combat/polearms, 4, TRUE)
-	H.adjust_skillrank(/datum/attribute/skill/combat/swords, 4, TRUE)
-	H.adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 4, TRUE)
-	H.adjust_skillrank(/datum/attribute/skill/combat/wrestling, 4, TRUE)
-	H.adjust_skillrank(/datum/attribute/skill/combat/unarmed, 4, TRUE)
-	H.adjust_skillrank(/datum/attribute/skill/misc/athletics, 4, TRUE)
-	H.adjust_skillrank(/datum/attribute/skill/combat/shields, 3, TRUE)
-	H.adjust_skillrank(/datum/attribute/skill/misc/climbing, 2, TRUE)
-	H.adjust_skillrank(/datum/attribute/skill/misc/swimming, 2, TRUE)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 
 // Orc archer

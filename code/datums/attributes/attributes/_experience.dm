@@ -141,7 +141,7 @@ GLOBAL_VAR_INIT(sleep_experience_modifier, 1.0)
 
 /**
  * Adjust a skill level by a delta, optionally capped at a maximum.
- * Equivalent to old adjust_skillrank() / clamped_adjust_skillrank().
+ * Equivalent to old adjust_skillrank() / clamped_adjust_skillrank(). this is just legacy stuff to avoid the billion issues
  *
  * Arguments:
  *   skill_type - typepath of the skill

@@ -1,6 +1,29 @@
 GLOBAL_VAR(lordsurname)
 GLOBAL_LIST_EMPTY(lord_titles)
 
+/datum/attribute_holder/sheet/job/lord
+	raw_attribute_list = list(
+		STAT_STRENGTH = 1,
+		STAT_INTELLIGENCE = 3,
+		STAT_ENDURANCE = 3,
+		STAT_SPEED = 1,
+		STAT_PERCEPTION = 2,
+		STAT_FORTUNE = 5,
+		/datum/attribute/skill/combat/polearms = 20,
+		/datum/attribute/skill/combat/axesmaces = 20,
+		/datum/attribute/skill/combat/crossbows = 30,
+		/datum/attribute/skill/combat/wrestling = 30,
+		/datum/attribute/skill/combat/unarmed = 10,
+		/datum/attribute/skill/combat/swords = 40,
+		/datum/attribute/skill/combat/knives = 30,
+		/datum/attribute/skill/misc/swimming = 10,
+		/datum/attribute/skill/misc/climbing = 10,
+		/datum/attribute/skill/misc/athletics = 30,
+		/datum/attribute/skill/misc/reading = 40,
+		/datum/attribute/skill/misc/riding = 30,
+		/datum/attribute/skill/labor/mathematics = 30
+	)
+
 /datum/job/lord
 	title = "Monarch"
 	var/ruler_title = "Monarch"
@@ -35,30 +58,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 		EXP_TYPE_LEADERSHIP = 300
 	)
 
-	jobstats = list(
-		STAT_STRENGTH = 1,
-		STAT_INTELLIGENCE = 3,
-		STAT_ENDURANCE = 3,
-		STAT_SPEED = 1,
-		STAT_PERCEPTION = 2,
-		STAT_FORTUNE = 5
-	)
-
-	skills = list(
-		/datum/attribute/skill/combat/polearms = 2,
-		/datum/attribute/skill/combat/axesmaces = 2,
-		/datum/attribute/skill/combat/crossbows = 3,
-		/datum/attribute/skill/combat/wrestling = 3,
-		/datum/attribute/skill/combat/unarmed = 1,
-		/datum/attribute/skill/combat/swords = 4,
-		/datum/attribute/skill/combat/knives = 3,
-		/datum/attribute/skill/misc/swimming = 1,
-		/datum/attribute/skill/misc/climbing = 1,
-		/datum/attribute/skill/misc/athletics = 3,
-		/datum/attribute/skill/misc/reading = 4,
-		/datum/attribute/skill/misc/riding = 3,
-		/datum/attribute/skill/labor/mathematics = 3
-	)
+	attribute_sheet = /datum/attribute_holder/sheet/job/lord
 
 	mind_traits = list(
 		TRAIT_KNOW_KEEP_DOORS

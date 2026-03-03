@@ -208,6 +208,9 @@
 	var/pack_title = "JOB PACKS"
 	var/pack_message = "Choose a job pack"
 
+	var/attribute_sheet
+	var/attribute_sheet_old
+
 /datum/job/New()
 	. = ..()
 	if(give_bank_account)
@@ -256,6 +259,8 @@
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_JOB_AFTER_SPAWN, src, spawned, player_client)
 
+	if(spawned.attributes)
+		assign_attributes(spawned, player_client)
 	if(!ishuman(spawned))
 		return
 
@@ -410,6 +415,15 @@
 //Used for a special check of whether to allow a client to latejoin as this job.
 /datum/job/proc/special_check_latejoin(client/C)
 	return TRUE
+
+/datum/job/proc/assign_attributes(mob/living/spawned, client/player_client)
+	if(!ishuman(spawned))
+		return
+	var/mob/living/carbon/human/spawned_human = spawned
+	if(attribute_sheet_old && spawned_human.age == AGE_OLD)
+		spawned_human.attributes?.add_sheet(attribute_sheet_old)
+	else if(attribute_sheet)
+		spawned_human.attributes?.add_sheet(attribute_sheet)
 
 /datum/job/proc/GetAntagRep()
 	. = CONFIG_GET(keyed_list/antag_rep)[lowertext(title)]

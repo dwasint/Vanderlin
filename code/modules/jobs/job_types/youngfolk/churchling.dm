@@ -1,3 +1,17 @@
+/datum/attribute_holder/sheet/job/churchling
+	raw_attribute_list = list(
+		STATKEY_PER = 1,
+		STAT_SPEED = 2,
+		/datum/attribute/skill/misc/climbing = 40,
+		/datum/attribute/skill/misc/sneaking = 40,
+		/datum/attribute/skill/misc/medicine = 10,
+		/datum/attribute/skill/magic/holy = 20,
+		/datum/attribute/skill/misc/sewing = 20,
+		/datum/attribute/skill/misc/reading = 10,
+		/datum/attribute/skill/craft/crafting = 10,
+		/datum/attribute/skill/craft/cooking = 10
+	)
+
 /datum/job/churchling
 	title = "Churchling"
 	tutorial = "Your family were zealots. \
@@ -23,21 +37,7 @@
 	job_bitflag = BITFLAG_CHURCH
 	exp_types_granted = list(EXP_TYPE_CHURCH, EXP_TYPE_CLERIC)
 
-	jobstats = list(
-		STAT_PERCEPTION = 1,
-		STAT_SPEED = 2
-	)
-
-	skills = list(
-		/datum/attribute/skill/misc/climbing = 4,
-		/datum/attribute/skill/misc/sneaking = 4,
-		/datum/attribute/skill/misc/medicine = 1,
-		/datum/attribute/skill/magic/holy = 2,
-		/datum/attribute/skill/misc/sewing = 2,
-		/datum/attribute/skill/misc/reading = 1,
-		/datum/attribute/skill/craft/crafting = 1,
-		/datum/attribute/skill/craft/cooking = 1
-	)
+	attribute_sheet = /datum/attribute_holder/sheet/job/churchling
 
 	languages = list(/datum/language/celestial)
 
