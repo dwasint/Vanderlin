@@ -158,3 +158,11 @@
 		if(ispath(mod_type))
 			mod_type = "[mod_type]" //Path2String
 		LAZYREMOVEASSOC(diceroll_mod_immunities, mod_type, source)
+
+/datum/diceroll_modifier/attribute_editor
+	modification = 0
+	variable = TRUE
+
+// this special snowflake ALWAYS applies, we care not for context
+/datum/diceroll_modifier/attribute_editor/applies_to(datum/attribute_holder/holder, context)
+	return TRUE

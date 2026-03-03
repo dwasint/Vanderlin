@@ -14,7 +14,7 @@
 	var/already_restored = FALSE
 	/// Do we keep the caster's skill levels and experience for the mob?
 	var/keep_skills = TRUE
-	var/datum/attribute/skill_holder/stored_skill_holder
+	var/datum/attribute_holder/stored_holder
 
 /datum/status_effect/shapechange_mob/on_creation(mob/living/new_owner, mob/living/caster, keep_skills = TRUE)
 	// If any type or subtype of shapeshift mob is on the new_owner already throw an error and self-delete
@@ -36,12 +36,19 @@
 /datum/status_effect/shapechange_mob/on_apply()
 	. = ..()
 	owner.gender = caster_mob.gender
-	#warn I be testing and shit fix me type shit
-	/*
+
 	if(!keep_skills)
-		stored_skill_holder = caster_mob.ensure_skills()
-		stored_skill_holder.set_current(null)
-	*/
+		stored_holder = caster_mob.attributes
+		owner.attributes = new /datum/attribute_holder(owner)
+		var/list/stat_values = list()
+		for(var/attr in stored_holder.attribute_list)
+			if(!ispath(attr, STAT))
+				continue
+			stat_values[attr] = stored_holder.attribute_list[attr] - ATTRIBUTE_DEFAULT
+		owner.set_stat_modifier("stored_stats", stat_values)
+	else
+		owner.attributes.copy_holder(caster_mob.attributes)
+
 
 	owner.regenerate_icons()
 	caster_mob.mind?.transfer_to(owner)
@@ -108,13 +115,10 @@
 	caster_mob.remove_status_effect(/datum/status_effect/grouped/stasis, STASIS_SHAPECHANGE_EFFECT)
 	owner.mind?.transfer_to(caster_mob)
 
-	#warn I be testing and shit fix me type shit
-	/*
 	if(!keep_skills)
-		caster_mob.skills?.set_current(null)
-		stored_skill_holder.set_current(caster_mob)
-		stored_skill_holder = null
-	*/
+		qdel(owner.attributes)
+		owner.attributes = stored_holder
+		stored_holder = null
 
 	if(kill_caster_after)
 		caster_mob.death()

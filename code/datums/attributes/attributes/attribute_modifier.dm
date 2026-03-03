@@ -133,7 +133,7 @@
 				continue
 		for(var/attribute_path in .)
 			// never turn nulls into zeroes, zero and null does not mean the same for skills
-			if(isnull(M.attribute_list[attribute_path]))
+			if(!(attribute_path in M.attribute_list) || isnull(M.attribute_list[attribute_path]))
 				continue
 			if(ispath(attribute_path, SKILL))
 				.[attribute_path] = clamp(.[attribute_path] + M.attribute_list[attribute_path], nulltozero(skill_min), nulltozero(skill_max))
@@ -178,3 +178,6 @@
 		LAZYREMOVEASSOC(attribute_mod_immunities, mod_type, source)
 	if(update)
 		update_attributes()
+
+/datum/attribute_modifier/attribute_editor
+	variable = TRUE

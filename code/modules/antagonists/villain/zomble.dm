@@ -22,7 +22,7 @@
 	var/list/base_intents
 	var/datum/language_holder/prev_language
 	var/datum/patron/patron
-	var/stored_skills
+	var/datum/attribute_holder/stored_holder
 	var/stored_experience
 	/// Whether or not we have been turned
 	var/has_turned = FALSE
@@ -91,13 +91,16 @@
 	base_intents = zombie.base_intents
 	old_cmode_music = zombie.cmode_music
 	patron = zombie.patron
-	#warn I be testing and shit fix me type shit
-	/*
-	stored_skills = owner.current.ensure_skills().known_skills.Copy()
-	stored_experience = owner.current.skills?.skill_experience.Copy()
-	owner.current.skills?.known_skills = list()
-	owner.current.skills?.skill_experience = list()
-	*/
+	stored_holder = owner.current.attributes
+	owner.current.attributes = new /datum/attribute_holder(owner.current)
+
+	var/list/stat_values = list()
+	for(var/attr in stored_holder.attribute_list)
+		if(!ispath(attr, STAT))
+			continue
+		stat_values[attr] = stored_holder.attribute_list[attr] - ATTRIBUTE_DEFAULT
+	owner.current.set_stat_modifier("stored_stats", stat_values)
+
 	zombie.cmode_music ='sound/music/cmode/combat_weird.ogg'
 	zombie.bloodpool = 0 // Deadites have no vitae to drain from
 	zombie.candodge = FALSE
@@ -134,11 +137,10 @@
 	zombie.set_patron(patron)
 	zombie.candodge = TRUE
 	zombie.canparry = TRUE
-	#warn I be testing and shit fix me type shit
-	/*
-	owner.current.skills?.known_skills = stored_skills
-	owner.current.skills?.skill_experience = stored_experience
-	*/
+
+	qdel(owner.current.attributes)
+	owner.current.attributes = stored_holder
+
 	for(var/trait in traits_zombie)
 		REMOVE_TRAIT(zombie, trait, "[type]")
 	zombie.remove_client_colour(/datum/client_colour/monochrome)

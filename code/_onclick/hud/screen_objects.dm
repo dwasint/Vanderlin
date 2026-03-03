@@ -91,6 +91,10 @@
 /atom/movable/screen/skills/Click(location, control, params)
 	var/list/modifiers = params2list(params)
 
+	if(!LAZYACCESS(modifiers, CTRL_CLICKED))
+		usr.attributes?.ui_interact(usr)
+		return
+
 	if(LAZYACCESS(modifiers, SHIFT_CLICKED))
 		if(ishuman(usr))
 			var/mob/living/L = usr

@@ -70,7 +70,7 @@
 	if(istype(skill))
 		// we add the value of the primary attribute but only when we have at least attribute+0 skill
 		if(skill.governing_attribute && !isnull(skill_value) && (skill_value >= 0))
-			var/governing_attribute_value = return_raw_calculated_skill(skill.governing_attribute)
+			var/governing_attribute_value = return_raw_calculated_skill(skill.governing_attribute) * SKILL_GOVERNING_MULTIPLIER
 			skill_value += governing_attribute_value
 		if(LAZYLEN(skill.default_attributes))
 			for(var/attribute_type in skill.default_attributes)
@@ -91,7 +91,7 @@
 	if(istype(skill))
 		// we add the value of the primary attribute but only when we have the skill (skill is not null)
 		if(skill.governing_attribute && !isnull(skill_value) && (skill_value > 0))
-			skill_value += return_calculated_skill(skill.governing_attribute)
+			skill_value += return_calculated_skill(skill.governing_attribute) * SKILL_GOVERNING_MULTIPLIER
 		if(LAZYLEN(skill.default_attributes))
 			for(var/attribute_type in skill.default_attributes)
 				var/default_value = return_calculated_skill(attribute_type)
@@ -110,7 +110,7 @@
 	var/datum/attribute/skill/skill = GET_ATTRIBUTE_DATUM(skill_type)
 	if(istype(skill) && !isnull(skill_value) && skill.governing_attribute)
 		// we add the value of the primary attribute but only when we have the skill (skill is not null)
-		skill_value += return_raw_calculated_skill(skill.governing_attribute)
+		skill_value += return_raw_calculated_skill(skill.governing_attribute) * SKILL_GOVERNING_MULTIPLIER
 	return skill_value
 
 /**
@@ -123,10 +123,10 @@
 		// equal or worse than default associated with governing attribute = we don't know this at all
 		skill_value = max(skill.default_attributes[skill.governing_attribute], skill_value)
 		if(skill.default_attributes[skill.governing_attribute] \
-			&& (skill_value <= skill.default_attributes[skill.governing_attribute]))
+			&& (skill_value <= skill.default_attributes[skill.governing_attribute] * SKILL_GOVERNING_MULTIPLIER))
 			return
 		// we add the value of the primary attribute but only when we have the skill (skill is not null)
-		skill_value += return_calculated_skill(skill.governing_attribute)
+		skill_value += return_calculated_skill(skill.governing_attribute) * SKILL_GOVERNING_MULTIPLIER
 	return skill_value
 
 /**

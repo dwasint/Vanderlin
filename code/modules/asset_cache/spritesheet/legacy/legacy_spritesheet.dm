@@ -419,8 +419,7 @@
 /datum/asset/spritesheet/attributes_big
 	name = "attributes_big"
 
-/datum/asset/spritesheet/attributes_big/register()
-	. = ..()
+/datum/asset/spritesheet/attributes_big/create_spritesheets()
 	var/list/to_insert = list()
 
 	for(var/attribute_type in GLOB.all_attributes)
@@ -441,8 +440,7 @@
 /datum/asset/spritesheet/attributes_small
 	name = "attributes_small"
 
-/datum/asset/spritesheet/attributes_small/register()
-	. = ..()
+/datum/asset/spritesheet/attributes_small/create_spritesheets()
 	var/list/to_insert = list()
 
 	for(var/attribute_type in GLOB.all_attributes)
