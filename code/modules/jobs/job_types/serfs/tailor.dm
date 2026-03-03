@@ -1,7 +1,7 @@
 /datum/attribute_holder/sheet/job/tailor
 	attribute_variance = list(
-		/datum/attribute/skill/misc/sewing = list(10, 20)
-		/datum/attribute/skill/craft/tanning = list(10, 20)
+		/datum/attribute/skill/misc/sewing = list(10, 20),
+		/datum/attribute/skill/craft/tanning = list(10, 20),
 	)
 	raw_attribute_list = list(
 		STAT_INTELLIGENCE = 2,

@@ -1,6 +1,6 @@
 /datum/attribute_holder/sheet/job/carpenter
 	attribute_variance = list(
-		/datum/attribute/skill/craft/athletics = list(0, 10)
+		/datum/attribute/skill/misc/athletics = list(0, 10)
 	)
 	raw_attribute_list = list(
 		STAT_STRENGTH = 1,
