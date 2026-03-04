@@ -54,10 +54,12 @@
 			var/list/adj = clamped_adjustment[path]
 			if(!adj || LAZYLEN(adj) < 1)
 				continue
+			var/current = plagiarist.raw_attribute_list[path]
 			var/num = adj[1]
-			// Cap is adj[2]; if null, fall back to the mob's natural max for that path type
 			var/cap = isnull(adj[2]) ? (ispath(path, SKILL) ? plagiarist.skill_max : plagiarist.attribute_max) : adj[2]
-			plagiarist.raw_attribute_list[path] = clamp(plagiarist.raw_attribute_list[path] + num, plagiarist.skill_min, cap)
+			if(current >= cap)
+				continue
+			plagiarist.raw_attribute_list[path] = clamp(current + num, 0, cap)
 
 	//Perception is a dumb little snowflake
 	if(!isnull(plagiarist.raw_attribute_list[STAT_PERCEPTION]))

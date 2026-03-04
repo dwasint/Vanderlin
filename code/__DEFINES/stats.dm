@@ -6,6 +6,16 @@
 #define STATMOD_ROLL "statroll"
 #define STATMOD_CURSE "curse"
 
+// specials
+#define STATMOD_ATROPHY "atrophy"
+#define STATMOD_LAZY "lazy"
+#define STATMOD_LITTLE "little"
+#define STATMOD_GIANT "giant"
+#define STATMOD_BLESSEDONE "blessed_one"
+#define STATMOD_LUCKY "lucky"
+#define STATMOD_CORNFED "cornfed"
+#define STATMOD_THICKSKIN "thickskin"
+
 // Combined basic mods
 #define STATMOD_JOB "job"
 #define STATMOD_PACK "pack"
