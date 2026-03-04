@@ -140,6 +140,7 @@
 		parent.attributes = null
 		parent = null
 	update_attributes()
+	RegisterSignal(parent, COMSIG_SHARE_APPRENTICE_XP, PROC_REF(on_share_apprentice_xp))
 
 /**
  * Adds up attributes from a sheet

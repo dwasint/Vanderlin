@@ -102,27 +102,15 @@
 	if(taught_anyone)
 		parent.add_stress(/datum/stress_event/apprentice_making_me_proud)
 
-// ── Signal handler wired in experience.dm ────────────────────────────────────
-// _share_apprentice_xp() fires COMSIG_SHARE_APPRENTICE_XP on parent.
-// Register this handler on the mob when the attribute_holder is set up:
-
-/datum/attribute_holder/proc/_register_apprentice_signal()
-	RegisterSignal(parent, COMSIG_SHARE_APPRENTICE_XP, PROC_REF(_on_share_apprentice_xp))
-
-/datum/attribute_holder/proc/_on_share_apprentice_xp(mob/source, skill_type, base_amount, silent)
+/datum/attribute_holder/proc/on_share_apprentice_xp(mob/source, skill_type, base_amount, silent)
 	SIGNAL_HANDLER
 	adjust_apprentice_exp(skill_type, base_amount, silent)
-
-// Call _register_apprentice_signal() from set_parent() - add this line there:
-//   src._register_apprentice_signal()
-
-// ── mob helpers ───────────────────────────────────────────────────────────────
 
 /**
  * Offers apprenticeship to youngling on behalf of this mob.
  */
 /mob/proc/make_apprentice(mob/living/youngling)
-	ensure_attributes().make_apprentice(youngling)
+	attributes?.make_apprentice(youngling)
 
 /**
  * Returns TRUE if this mob is currently an apprentice.
@@ -146,7 +134,7 @@
  * Sets the max number of apprentices this mob can have.
  */
 /mob/proc/set_max_apprentices(new_max)
-	ensure_attributes().max_apprentices = new_max
+	attributes.max_apprentices = new_max
 
 /**
  * Returns the display title for apprentices of this mob.
@@ -158,7 +146,7 @@
  * Sets the display title for apprentices of this mob (e.g. for advanced classes).
  */
 /mob/proc/set_apprentice_name(new_name)
-	ensure_attributes().apprentice_name = new_name
+	attributes?.apprentice_name = new_name
 
 /**
  * Returns the title this mob holds as someone's apprentice.
@@ -172,9 +160,7 @@
  * list format: skill typepath = additive float multiplier
  */
 /mob/proc/set_apprentice_training_skills(list/trainable_skills)
-	ensure_attributes().apprentice_training_skills = trainable_skills
-
-// ── Inspiration system ────────────────────────────────────────────────────────
+	attributes?.apprentice_training_skills = trainable_skills
 
 /**
  * Returns an additive bonus to XP gains from active stress events.
