@@ -210,6 +210,8 @@
 
 	var/attribute_sheet
 	var/attribute_sheet_old
+	var/attribute_sheet_child
+	var/attribute_sheet_adult
 
 /datum/job/New()
 	. = ..()
@@ -422,6 +424,10 @@
 	var/mob/living/carbon/human/spawned_human = spawned
 	if(attribute_sheet_old && spawned_human.age == AGE_OLD)
 		spawned_human.attributes?.add_sheet(attribute_sheet_old)
+	else if(attribute_sheet_child && spawned_human.age == AGE_CHILD)
+		spawned_human.attributes?.add_sheet(attribute_sheet_child)
+	else if(attribute_sheet_adult && spawned_human.age == AGE_ADULT)
+		spawned_human.attributes?.add_sheet(attribute_sheet_adult)
 	else if(attribute_sheet)
 		spawned_human.attributes?.add_sheet(attribute_sheet)
 

@@ -1,3 +1,19 @@
+/datum/attribute_holder/sheet/job/bapprentice
+	raw_attribute_list = list(
+		STAT_ENDURANCE = 2,
+		STAT_SPEED = 1,
+		/datum/attribute/skill/combat/axesmaces = 20,
+		/datum/attribute/skill/misc/athletics = 20,
+		/datum/attribute/skill/combat/wrestling = 10,
+		/datum/attribute/skill/combat/unarmed = 10,
+		/datum/attribute/skill/craft/blacksmithing = 20,
+		/datum/attribute/skill/craft/armorsmithing = 20,
+		/datum/attribute/skill/craft/weaponsmithing = 20,
+		/datum/attribute/skill/craft/smelting = 20,
+		/datum/attribute/skill/craft/crafting = 20,
+		/datum/attribute/skill/misc/reading = 20
+	)
+
 /datum/job/bapprentice
 	title = "Smithy Apprentice"
 	tutorial = "Long hours and back-breaking work wouldnt even describe a quarter of what you do in a day for your Master. \
@@ -20,23 +36,7 @@
 
 	outfit = /datum/outfit/bapprentice
 
-	jobstats = list(
-		STAT_ENDURANCE = 2,
-		STAT_SPEED = 1
-	)
-
-	skills = list(
-		/datum/attribute/skill/combat/axesmaces = 2,
-		/datum/attribute/skill/misc/athletics = 2,
-		/datum/attribute/skill/combat/wrestling = 1,
-		/datum/attribute/skill/combat/unarmed = 1,
-		/datum/attribute/skill/craft/blacksmithing = 2,
-		/datum/attribute/skill/craft/armorsmithing = 2,
-		/datum/attribute/skill/craft/weaponsmithing = 2,
-		/datum/attribute/skill/craft/smelting = 2,
-		/datum/attribute/skill/craft/crafting = 2,
-		/datum/attribute/skill/misc/reading = 2
-	)
+	attribute_sheet = /datum/attribute_holder/sheet/job/bapprentice
 
 	traits = list(
 		TRAIT_MALUMFIRE
