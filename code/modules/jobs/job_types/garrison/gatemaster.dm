@@ -56,6 +56,25 @@
 	exp_type = list(EXP_TYPE_GARRISON, EXP_TYPE_COMBAT)
 	exp_types_granted = list(EXP_TYPE_GARRISON, EXP_TYPE_COMBAT)
 
+/datum/attribute_holder/sheet/job/gatemaster/whip
+	raw_attribute_list = list(
+		STAT_STRENGTH = 1,
+		STAT_CONSTITUTION = 2,
+		STAT_ENDURANCE = 2,
+		STAT_PERCEPTION = -1,
+		/datum/attribute/skill/combat/axesmaces = 20,
+		/datum/attribute/skill/combat/whipsflails = 30,
+		/datum/attribute/skill/combat/shields = 30,
+		/datum/attribute/skill/combat/wrestling = 20,
+		/datum/attribute/skill/combat/unarmed = 30,
+		/datum/attribute/skill/combat/knives = 20,
+		/datum/attribute/skill/misc/swimming = 20,
+		/datum/attribute/skill/misc/climbing = 20,
+		/datum/attribute/skill/misc/athletics = 30,
+		/datum/attribute/skill/misc/reading = 20,
+		/datum/attribute/skill/misc/sneaking = 10
+	)
+
 /datum/job/advclass/gatemaster/gatemaster_whip
 	title = "Chainguard Gatemaster"
 	tutorial = "Metal chimes in your hands, their skin rough from those heavy chains you pull. \
@@ -65,26 +84,7 @@
 	outfit = /datum/outfit/gatemaster/whip
 	category_tags = list(CTAG_GATEMASTER)
 
-	jobstats = list(
-		STAT_STRENGTH = 1,
-		STAT_CONSTITUTION = 2,
-		STAT_ENDURANCE = 2,
-		STAT_PERCEPTION = -1
-	)
-
-	skills = list(
-		/datum/attribute/skill/combat/axesmaces = 2,
-		/datum/attribute/skill/combat/whipsflails = 3,
-		/datum/attribute/skill/combat/shields = 3,
-		/datum/attribute/skill/combat/wrestling = 2,
-		/datum/attribute/skill/combat/unarmed = 3,
-		/datum/attribute/skill/combat/knives = 2,
-		/datum/attribute/skill/misc/swimming = 2,
-		/datum/attribute/skill/misc/climbing = 2,
-		/datum/attribute/skill/misc/athletics = 3,
-		/datum/attribute/skill/misc/reading = 2,
-		/datum/attribute/skill/misc/sneaking = 1
-	)
+	attribute_sheet = /datum/attribute_holder/sheet/job/gatemaster/whip
 
 	traits = list(
 		TRAIT_MEDIUMARMOR,
@@ -106,6 +106,24 @@
 		/obj/item/rope/chain = 1
 	)
 
+/datum/attribute_holder/sheet/job/gatemaster/mace
+	raw_attribute_list = list(
+		STAT_STRENGTH = 2,
+		STAT_ENDURANCE = 1,
+		STAT_CONSTITUTION = 2,
+		STAT_SPEED = -1,
+		/datum/attribute/skill/combat/knives = 20,
+		/datum/attribute/skill/combat/axesmaces = 30,
+		/datum/attribute/skill/combat/shields = 30,
+		/datum/attribute/skill/combat/wrestling = 20,
+		/datum/attribute/skill/combat/unarmed = 30,
+		/datum/attribute/skill/misc/swimming = 20,
+		/datum/attribute/skill/misc/climbing = 10,
+		/datum/attribute/skill/misc/athletics = 30,
+		/datum/attribute/skill/misc/reading = 20,
+		/datum/attribute/skill/craft/crafting = 10
+	)
+
 /datum/job/advclass/gatemaster/gatemaster_mace
 	title = "Bruiser Gatemaster"
 	tutorial = "Years of work let your body grow acustome to the job. Growing large, fitting to your chair. \
@@ -115,25 +133,7 @@
 	outfit = /datum/outfit/gatemaster/mace
 	category_tags = list(CTAG_GATEMASTER)
 
-	jobstats = list(
-		STAT_STRENGTH = 2,
-		STAT_ENDURANCE = 1,
-		STAT_CONSTITUTION = 2,
-		STAT_SPEED = -1
-	)
-
-	skills = list(
-		/datum/attribute/skill/combat/knives = 2,
-		/datum/attribute/skill/combat/axesmaces = 3,
-		/datum/attribute/skill/combat/shields = 3,
-		/datum/attribute/skill/combat/wrestling = 2,
-		/datum/attribute/skill/combat/unarmed = 3,
-		/datum/attribute/skill/misc/swimming = 2,
-		/datum/attribute/skill/misc/climbing = 1,
-		/datum/attribute/skill/misc/athletics = 3,
-		/datum/attribute/skill/misc/reading = 2,
-		/datum/attribute/skill/craft/crafting = 1
-	)
+	attribute_sheet = /datum/attribute_holder/sheet/job/gatemaster/mace
 
 	traits = list(
 		TRAIT_MEDIUMARMOR
@@ -153,6 +153,24 @@
 		/obj/item/rope/chain = 1
 	)
 
+/datum/attribute_holder/sheet/job/gatemaster/bow
+	raw_attribute_list = list(
+		STAT_STRENGTH = 1,
+		STAT_PERCEPTION = 2,
+		STAT_ENDURANCE = 1,
+		/datum/attribute/skill/combat/axesmaces = 20,
+		/datum/attribute/skill/combat/knives = 20,
+		/datum/attribute/skill/combat/bows = 30,
+		/datum/attribute/skill/combat/crossbows = 30,
+		/datum/attribute/skill/combat/wrestling = 20,
+		/datum/attribute/skill/combat/unarmed = 30,
+		/datum/attribute/skill/misc/swimming = 20,
+		/datum/attribute/skill/misc/climbing = 30,
+		/datum/attribute/skill/misc/athletics = 20,
+		/datum/attribute/skill/misc/reading = 20,
+		/datum/attribute/skill/craft/crafting = 10
+	)
+
 /datum/job/advclass/gatemaster/gatemaster_bow
 	title = "Archer Gatemaster"
 	tutorial = "Many may try to sneak past your post, thinking you wont see them. \
@@ -161,25 +179,7 @@
 	outfit = /datum/outfit/gatemaster/bow
 	category_tags = list(CTAG_GATEMASTER)
 
-	jobstats = list(
-		STAT_STRENGTH = 1,
-		STAT_PERCEPTION = 2,
-		STAT_ENDURANCE = 1
-	)
-
-	skills = list(
-		/datum/attribute/skill/combat/axesmaces = 2,
-		/datum/attribute/skill/combat/knives = 2,
-		/datum/attribute/skill/combat/bows = 3,
-		/datum/attribute/skill/combat/crossbows = 3,
-		/datum/attribute/skill/combat/wrestling = 2,
-		/datum/attribute/skill/combat/unarmed = 3,
-		/datum/attribute/skill/misc/swimming = 2,
-		/datum/attribute/skill/misc/climbing = 3,
-		/datum/attribute/skill/misc/athletics = 2,
-		/datum/attribute/skill/misc/reading = 2,
-		/datum/attribute/skill/craft/crafting = 1
-	)
+	attribute_sheet = /datum/attribute_holder/sheet/job/gatemaster/bow
 
 	traits = list(
 		TRAIT_DODGEEXPERT
