@@ -5,6 +5,7 @@
 #define STATMOD_AGE "innate_age"
 #define STATMOD_ROLL "statroll"
 #define STATMOD_CURSE "curse"
+#define STATMOD_GOBLIN_RACE "goblin_race"
 
 // specials
 #define STATMOD_ATROPHY "atrophy"

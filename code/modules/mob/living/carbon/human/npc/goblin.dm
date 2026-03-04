@@ -322,31 +322,42 @@
 ////
 ///
 
+/datum/attribute_holder/sheet/job/goblin
+	attribute_variance = list(
+		STAT_STRENGTH = list(-4, 0),
+		STAT_PERCEPTION = list(-5, 0),
+		STAT_INTELLIGENCE = list(-9, -6),
+		STAT_CONSTITUTION = list(-6, -2),
+		STAT_ENDURANCE = list(-2, 2),
+		STAT_SPEED = list(-2, 4),
+	)
 /datum/outfit/npc/goblin/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.base_strength = rand(6, 10)
-	H.base_perception = rand(5, 10)
-	H.base_intelligence = rand(1, 4)
-	H.base_constitution = rand(4, 8)
-	H.base_endurance = rand(8, 12)
-	H.base_speed = rand(8, 14)
-	H.recalculate_stats(FALSE)
+	H.attributes?.add_sheet(/datum/attribute_holder/sheet/job/goblin)
 
 	if(is_species(H, /datum/species/goblin/hell))
-		GET_MOB_ATTRIBUTE_VALUE(H, STAT_STRENGTH) += 6
-		GET_MOB_ATTRIBUTE_VALUE(H, STAT_CONSTITUTION) += 6
-		GET_MOB_ATTRIBUTE_VALUE(H, STAT_SPEED) -= 4
+		H.set_stat_modifier(STATMOD_GOBLIN_RACE, list(
+			STAT_STRENGTH = 6,
+			STAT_CONSTITUTION = 6,
+			STAT_SPEED = -4
+		))
 		H.simpmob_attack += 10
 		H.simpmob_defend += 15
 	if(is_species(H, /datum/species/goblin/cave))
-		GET_MOB_ATTRIBUTE_VALUE(H, STAT_PERCEPTION) += 6
-		GET_MOB_ATTRIBUTE_VALUE(H, STAT_ENDURANCE) += 2
+		H.set_stat_modifier(STATMOD_GOBLIN_RACE, list(
+			STAT_PERCEPTION = 6,
+			STAT_ENDURANCE = 2,
+		))
 	if(is_species(H, /datum/species/goblin/sea))
-		GET_MOB_ATTRIBUTE_VALUE(H, STAT_INTELLIGENCE) += 6
-		GET_MOB_ATTRIBUTE_VALUE(H, STAT_ENDURANCE) += 2
+		H.set_stat_modifier(STATMOD_GOBLIN_RACE, list(
+			STAT_INTELLIGENCE = 6,
+			STAT_ENDURANCE = 2,
+		))
 	if(is_species(H, /datum/species/goblin/moon))
-		GET_MOB_ATTRIBUTE_VALUE(H, STAT_INTELLIGENCE) += 4
-		GET_MOB_ATTRIBUTE_VALUE(H, STAT_SPEED) += 4
+		H.set_stat_modifier(STATMOD_GOBLIN_RACE, list(
+			STAT_INTELLIGENCE = 4,
+			STAT_SPEED = 4,
+		))
 		H.simpmob_attack += 10
 		H.simpmob_defend += 25
 	var/loadout = rand(1,5)
