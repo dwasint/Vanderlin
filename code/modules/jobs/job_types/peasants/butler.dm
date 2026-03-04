@@ -1,3 +1,28 @@
+/datum/attribute_holder/sheet/job/butler
+	attribute_variance = list(
+		/datum/attribute/skill/misc/music = list(0, 30)
+	)
+	raw_attribute_list = list(
+		STAT_STRENGTH = -1,
+		STAT_INTELLIGENCE = 2,
+		STAT_PERCEPTION = 1,
+		STAT_ENDURANCE = 1,
+		/datum/attribute/skill/combat/knives = 20,
+		/datum/attribute/skill/craft/cooking = 40,
+		/datum/attribute/skill/craft/crafting = 20,
+		/datum/attribute/skill/labor/butchering = 20,
+		/datum/attribute/skill/labor/farming = 20,
+		/datum/attribute/skill/labor/mathematics = 30,
+		/datum/attribute/skill/misc/athletics = 20,
+		/datum/attribute/skill/misc/medicine = 20,
+		/datum/attribute/skill/misc/music = 10,
+		/datum/attribute/skill/misc/reading = 30,
+		/datum/attribute/skill/misc/riding = 10,
+		/datum/attribute/skill/misc/sewing = 30,
+		/datum/attribute/skill/misc/sneaking = 30,
+		/datum/attribute/skill/misc/stealing = 30
+	)
+
 /datum/job/butler
 	title = "Butler"
 	f_title = "Head Housekeeper"
@@ -26,29 +51,7 @@
 		EXP_TYPE_LIVING = 600
 	)
 
-	jobstats = list(
-		STAT_STRENGTH = -1,
-		STAT_INTELLIGENCE = 2,
-		STAT_PERCEPTION = 1,
-		STAT_ENDURANCE = 1
-	)
-
-	skills = list(
-		/datum/attribute/skill/combat/knives = 2,
-		/datum/attribute/skill/craft/cooking = 4,
-		/datum/attribute/skill/craft/crafting = 2,
-		/datum/attribute/skill/labor/butchering = 2,
-		/datum/attribute/skill/labor/farming = 2,
-		/datum/attribute/skill/labor/mathematics = 3,
-		/datum/attribute/skill/misc/athletics = 2,
-		/datum/attribute/skill/misc/medicine = 2,
-		/datum/attribute/skill/misc/music = 1,
-		/datum/attribute/skill/misc/reading = 3,
-		/datum/attribute/skill/misc/riding = 1,
-		/datum/attribute/skill/misc/sewing = 3,
-		/datum/attribute/skill/misc/sneaking = 3,
-		/datum/attribute/skill/misc/stealing = 3
-	)
+	attribute_sheet = /datum/attribute_holder/sheet/job/butler
 
 	mind_traits = list(
 		TRAIT_KNOW_KEEP_DOORS
@@ -56,10 +59,6 @@
 	traits = list(
 		TRAIT_ROYALSERVANT
 	)
-
-/datum/job/butler/after_spawn(mob/living/carbon/human/spawned, client/player_client)
-	. = ..()
-	spawned.adjust_skillrank(/datum/attribute/skill/misc/music, pick(0,0,2,3), TRUE)
 
 /datum/outfit/butler
 	name = "Butler"

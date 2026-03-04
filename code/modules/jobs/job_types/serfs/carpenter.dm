@@ -22,6 +22,7 @@
 		/datum/attribute/skill/misc/athletics = 30,
 		/datum/attribute/skill/labor/lumberjacking = 30,
 	)
+
 /datum/job/carpenter
 	title = "Carpenter"
 	tutorial = "Others may regard your work as crude and demeaning, but you understand deep in your soul the beauty of woodchopping. \

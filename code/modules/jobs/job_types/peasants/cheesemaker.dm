@@ -1,3 +1,18 @@
+/datum/attribute_holder/sheet/job/cheesemaker
+	raw_attribute_list = list(
+		STAT_INTELLIGENCE = 1,
+		STAT_CONSTITUTION = 2,
+		/datum/attribute/skill/combat/knives = 20,
+		/datum/attribute/skill/misc/athletics = 20,
+		/datum/attribute/skill/combat/wrestling = 10,
+		/datum/attribute/skill/combat/unarmed = 10,
+		/datum/attribute/skill/craft/crafting = 20,
+		/datum/attribute/skill/misc/reading = 10,
+		/datum/attribute/skill/labor/taming = 10,
+		/datum/attribute/skill/craft/cooking = 40,
+		/datum/attribute/skill/labor/farming = 20
+	)
+
 /datum/job/cheesemaker
 	title = "Cheesemaker"
 	tutorial = "Some say Dendor brings bountiful harvests - this much is true, but rot brings forth life. \
@@ -16,22 +31,7 @@
 
 	job_bitflag = BITFLAG_CONSTRUCTOR
 
-	jobstats = list(
-		STAT_INTELLIGENCE = 1,
-		STAT_CONSTITUTION = 2
-	)
-
-	skills = list(
-		/datum/attribute/skill/combat/knives = 2,
-		/datum/attribute/skill/misc/athletics = 2,
-		/datum/attribute/skill/combat/wrestling = 1,
-		/datum/attribute/skill/combat/unarmed = 1,
-		/datum/attribute/skill/craft/crafting = 2,
-		/datum/attribute/skill/misc/reading = 1,
-		/datum/attribute/skill/labor/taming = 1,
-		/datum/attribute/skill/craft/cooking = 4,
-		/datum/attribute/skill/labor/farming = 2
-	)
+	attribute_sheet = /datum/attribute_holder/sheet/job/cheesemaker
 
 	traits = list()
 

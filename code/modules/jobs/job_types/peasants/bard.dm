@@ -1,3 +1,24 @@
+/datum/attribute_holder/sheet/job/bard
+	raw_attribute_list = list(
+		STAT_PERCEPTION = 1,
+		STAT_SPEED = 2,
+		STAT_STRENGTH = -1,
+		/datum/attribute/skill/combat/knives = 10,
+		/datum/attribute/skill/combat/unarmed = 20,
+		/datum/attribute/skill/craft/crafting = 10,
+		/datum/attribute/skill/misc/swimming = 20,
+		/datum/attribute/skill/misc/climbing = 20,
+		/datum/attribute/skill/misc/riding = 30,
+		/datum/attribute/skill/misc/sewing = 10,
+		/datum/attribute/skill/misc/reading = 30,
+		/datum/attribute/skill/craft/cooking = 10,
+		/datum/attribute/skill/misc/sneaking = 30,
+		/datum/attribute/skill/misc/stealing = 10,
+		/datum/attribute/skill/misc/lockpicking = 10,
+		/datum/attribute/skill/misc/music = 41,
+		/datum/attribute/skill/misc/athletics = 20
+	)
+
 /datum/job/bard
 	title = "Bard"
 	tutorial = "Bards make up one of the largest populations of registered adventurers in Vanderlin, \
@@ -21,28 +42,7 @@
 		// /datum/action/cooldown/spell/bardic_inspiration
 	)
 
-	jobstats = list(
-		STAT_PERCEPTION = 1,
-		STAT_SPEED = 2,
-		STAT_STRENGTH = -1
-	)
-
-	skills = list(
-		/datum/attribute/skill/combat/knives = 1,
-		/datum/attribute/skill/combat/unarmed = 2,
-		/datum/attribute/skill/craft/crafting = 1,
-		/datum/attribute/skill/misc/swimming = 2,
-		/datum/attribute/skill/misc/climbing = 2,
-		/datum/attribute/skill/misc/riding = 3,
-		/datum/attribute/skill/misc/sewing = 1,
-		/datum/attribute/skill/misc/reading = 3,
-		/datum/attribute/skill/craft/cooking = 1,
-		/datum/attribute/skill/misc/sneaking = 3,
-		/datum/attribute/skill/misc/stealing = 1,
-		/datum/attribute/skill/misc/lockpicking = 1,
-		/datum/attribute/skill/misc/music = 4.1,
-		/datum/attribute/skill/misc/athletics = 2
-	)
+	attribute_sheet = /datum/attribute_holder/sheet/job/bard
 
 	traits = list(
 		TRAIT_DODGEEXPERT,
@@ -65,7 +65,6 @@
 		title = "XYLIX"
 	)
 	spawned.inspiration = new /datum/inspiration(spawned)
-	spawned.clamped_adjust_skillrank(/datum/attribute/skill/misc/music, 4, 4, TRUE) //Due to Harpy's innate music skill giving them legendary
 
 	if(spawned.dna?.species?.id == SPEC_ID_DWARF)
 		spawned.cmode_music = 'sound/music/cmode/combat_dwarf.ogg'
