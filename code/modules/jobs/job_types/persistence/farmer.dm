@@ -37,10 +37,11 @@
 	if(prob(50))
 		spawned.cmode_music = 'sound/music/cmode/towner/CombatTowner2.ogg'
 
-	spawned.adjust_stat_modifier(STATMOD_JOB, STAT_STRENGTH, pick(0,1))
-	spawned.adjust_stat_modifier(STATMOD_JOB, STAT_CONSTITUTION, pick(0,1))
-	spawned.adjust_stat_modifier(STATMOD_JOB, STAT_ENDURANCE, pick(0,1))
-
+	spawned.adjust_stat_modifier(STATMOD_JOB, list(
+		STAT_STRENGTH = rand(0, 1),
+		STAT_CONSTITUTION = rand(0, 1),
+		STAT_ENDURANCE = rand(0, 1),
+	))
 
 
 /datum/outfit/farmer_p

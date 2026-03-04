@@ -87,7 +87,7 @@
 
 	// Apply stat penalty
 	if(initial(B.stat_penalty) && initial(B.stat_reduction) > 0)
-		H.adjust_stat_modifier(STATMOD_QUIRK, initial(B.stat_penalty), -initial(B.stat_reduction))
+		H.adjust_stat_modifier(STATMOD_QUIRK, list(initial(B.stat_penalty) = -initial(B.stat_reduction)))
 
 	to_chat(H, span_notice("Your experience as [lowertext(initial(B.name))] has shaped who you are today."))
 
@@ -102,7 +102,7 @@
 	var/mob/living/carbon/human/H = owner
 
 	if(initial(B.stat_penalty) && initial(B.stat_reduction) > 0)
-		H.adjust_stat_modifier(STATMOD_QUIRK, initial(B.stat_penalty), initial(B.stat_reduction))
+		H.adjust_stat_modifier(STATMOD_QUIRK, list(initial(B.stat_penalty) = initial(B.stat_reduction)))
 
 	H.adjust_skill_exp_multiplier(initial(B.granted_skill), -initial(B.xp_multiplier))
 

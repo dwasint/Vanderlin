@@ -596,9 +596,11 @@ GLOBAL_LIST_INIT(ritualslist, build_zizo_rituals())
 	ADD_TRAIT(user, TRAIT_NOHARDCRIT, TRAIT_GENERIC)
 	ADD_TRAIT(user, TRAIT_NOSOFTCRIT, TRAIT_GENERIC)
 	to_chat(target, span_notice("ZIZO EMPOWERS ME!! SOMETHING HAS GONE WRONG, THE RITUAL FAILED BUT WHAT IT LEFT ME WITH IS STILL POWER!!"))
-	target.adjust_stat_modifier(STATMOD_ABOM, STAT_STRENGTH, -3)
-	target.adjust_stat_modifier(STATMOD_ABOM, STAT_SPEED, -4)
-	target.adjust_stat_modifier(STATMOD_ABOM, STAT_ENDURANCE, -4)
+	target.adjust_stat_modifier(STATMOD_ABOM, list(
+		STAT_STRENGTH = -3,
+		STAT_SPEED = -4,
+		STAT_ENDURANCE = -4,
+	))
 	target.Knockdown(5 SECONDS)
 	target.emote("agony", forced = TRUE)
 	target.add_spell(/datum/action/cooldown/spell/undirected/regenerate)

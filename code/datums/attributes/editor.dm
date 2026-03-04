@@ -69,7 +69,7 @@
 			var/attribute_var_name = params["var_name"]
 			var/attribute_var_value = params["var_value"]
 			if(attributes.vv_edit_var(attribute_var_name, attribute_var_value) == FALSE)
-				to_chat(usr, "Your edit was rejected by the object. This is a bug with the attribute editor, not your fault, so report it on github.", confidential = TRUE)
+				to_chat(usr, "Your edit was rejected by the object. This is a bug with the attribute editor, not your fault, so report it on github.")
 				return
 			attributes.update_attributes()
 		if("change_attribute")
@@ -96,7 +96,7 @@
 		if("null_var")
 			var/attribute_var_name = params["var_name"]
 			if(attributes.vv_edit_var(attribute_var_name, null) == FALSE)
-				to_chat(usr, "Your edit was rejected by the object. This is a bug with the attribute editor, not your fault, so report it on github.", confidential = TRUE)
+				to_chat(usr, "Your edit was rejected by the object. This is a bug with the attribute editor, not your fault, so report it on github.")
 				return
 			attributes.update_attributes()
 		if("null_attribute")

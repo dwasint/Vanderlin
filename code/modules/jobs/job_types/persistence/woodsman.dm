@@ -27,9 +27,11 @@
 	if(prob(50))
 		spawned.cmode_music = 'sound/music/cmode/towner/CombatTowner2.ogg'
 
-	spawned.adjust_stat_modifier(STATMOD_JOB, STAT_STRENGTH, pick(0,1))
-	spawned.adjust_stat_modifier(STATMOD_JOB, STAT_CONSTITUTION, pick(1,2))
-	spawned.adjust_stat_modifier(STATMOD_JOB, STAT_ENDURANCE, pick(1,2))
+	spawned.adjust_stat_modifier(STATMOD_JOB, list(
+		STAT_STRENGTH = rand(1, 2),
+		STAT_CONSTITUTION = rand(1, 2),
+		STAT_ENDURANCE = rand(1, 2)
+	))
 
 
 /datum/outfit/woodsman_p

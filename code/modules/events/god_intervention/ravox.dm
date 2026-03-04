@@ -43,14 +43,18 @@
 	if(!weakest)
 		return
 
-	weakest.adjust_stat_modifier(STATMOD_RAVOX_RESOLVE, STAT_STRENGTH, 2)
-	weakest.adjust_stat_modifier(STATMOD_RAVOX_RESOLVE, STAT_ENDURANCE, 2)
-	weakest.adjust_stat_modifier(STATMOD_RAVOX_RESOLVE, STAT_CONSTITUTION, 2)
+	weakest.adjust_stat_modifier(STATMOD_RAVOX_RESOLVE, list(
+		STAT_STRENGTH = 2,
+		STAT_ENDURANCE = 2,
+		STAT_CONSTITUTION =2,
+	))
 	if(is_ascendant(RAVOX))
-		weakest.adjust_stat_modifier(STATMOD_RAVOX_RESOLVE, STAT_PERCEPTION, 2)
-		weakest.adjust_stat_modifier(STATMOD_RAVOX_RESOLVE, STAT_INTELLIGENCE, 2)
-		weakest.adjust_stat_modifier(STATMOD_RAVOX_RESOLVE, STAT_SPEED, 2)
-		weakest.adjust_stat_modifier(STATMOD_RAVOX_RESOLVE, STAT_FORTUNE, 2)
+		weakest.adjust_stat_modifier(STATMOD_RAVOX_RESOLVE, list(
+			STAT_PERCEPTION = 2,
+			STAT_INTELLIGENCE = 2,
+			STAT_SPEED = 2,
+			STAT_FORTUNE = 2,
+		))
 
 	bordered_message(weakest, list(
 		span_green("You may be weak compared to your fellow warriors of justice, but still you persevere. Ravox honors those who fight even when victory seems impossible. May his gift of strength help you overcome the odds.")

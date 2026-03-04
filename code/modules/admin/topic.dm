@@ -52,7 +52,7 @@
 		else if(istype(target, /datum/attribute_holder))
 			attribute_holder = target
 		else
-			to_chat(usr, "This can only be used on instances of type /mob and /datum/attribute_holder", confidential = TRUE)
+			to_chat(usr, "This can only be used on instances of type /mob and /datum/attribute_holder")
 			return
 		usr.client?.open_attribute_editor(attribute_holder)
 
