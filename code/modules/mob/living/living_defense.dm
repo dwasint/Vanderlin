@@ -188,7 +188,7 @@
 	if(user.mind)
 		skill_diff += (GET_MOB_SKILL_VALUE_OLD(user, /datum/attribute/skill/combat/wrestling)) //NPCs don't use this
 	if(mind)
-		skill_diff -= (get_skill_level(/datum/attribute/skill/combat/wrestling, TRUE))
+		skill_diff -= (GET_MOB_SKILL_VALUE_OLD(src, /datum/attribute/skill/combat/wrestling))
 
 	if(user == src)
 		instant = TRUE

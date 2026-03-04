@@ -2497,7 +2497,7 @@ GLOBAL_LIST_EMPTY(roundstart_species)
 	var/skill_modifier = 10
 	if(istype(starting_turf) && !QDELETED(starting_turf))
 		distance = get_dist(starting_turf, src)
-	skill_modifier *= get_skill_level(/datum/attribute/skill/misc/athletics, TRUE)
+	skill_modifier *= GET_MOB_SKILL_VALUE_OLD(src, /datum/attribute/skill/misc/athletics)
 	var/modifier = -distance
 	if(!prob(GET_MOB_ATTRIBUTE_VALUE(src, STAT_ENDURANCE)+skill_modifier+modifier))
 		Knockdown(8)

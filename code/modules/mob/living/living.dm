@@ -248,7 +248,7 @@
 
 			var/mob/living/L = M
 
-			var/self_points = FLOOR((GET_MOB_ATTRIBUTE_VALUE(src, STAT_CONSTITUTION) + GET_MOB_ATTRIBUTE_VALUE(src, STAT_STRENGTH) + get_skill_level(/datum/attribute/skill/misc/athletics))/2, 1)
+			var/self_points = FLOOR((GET_MOB_ATTRIBUTE_VALUE(src, STAT_CONSTITUTION) + GET_MOB_ATTRIBUTE_VALUE(src, STAT_STRENGTH) + GET_MOB_SKILL_VALUE_OLD(src, /datum/attribute/skill/misc/athletics))/2, 1)
 			var/target_points = FLOOR((GET_MOB_ATTRIBUTE_VALUE(L, STAT_ENDURANCE) + GET_MOB_ATTRIBUTE_VALUE(L, STAT_STRENGTH) + GET_MOB_SKILL_VALUE_OLD(L, /datum/attribute/skill/misc/athletics))/2, 1)
 
 			switch(sprint_distance)
@@ -1322,7 +1322,7 @@
 	var/my_wrestling = 0
 	var/their_wrestling = 0
 	if(mind)
-		my_wrestling = get_skill_level(/datum/attribute/skill/combat/wrestling, TRUE)
+		my_wrestling = GET_MOB_SKILL_VALUE_OLD(src, /datum/attribute/skill/combat/wrestling)
 	if(pulledby.mind)
 		their_wrestling = GET_MOB_SKILL_VALUE_OLD(pulledby, /datum/attribute/skill/combat/wrestling)
 
@@ -1375,8 +1375,8 @@
 
 	var/counter_chance = 20 // Base chance
 
-	counter_chance += get_skill_level(/datum/attribute/skill/combat/wrestling, TRUE) * 4
-	counter_chance += get_skill_level(/datum/attribute/skill/combat/unarmed, TRUE) * 4
+	counter_chance += GET_MOB_SKILL_VALUE_OLD(src, /datum/attribute/skill/combat/wrestling) * 4
+	counter_chance += GET_MOB_SKILL_VALUE_OLD(src, /datum/attribute/skill/combat/unarmed) * 4
 
 	// Stat differences
 	counter_chance += (GET_MOB_ATTRIBUTE_VALUE(src, STAT_STRENGTH) - GET_MOB_ATTRIBUTE_VALUE(attacker, STAT_STRENGTH)) * 2
@@ -1411,7 +1411,7 @@
 		apply_status_effect(/datum/status_effect/grab_counter_cd)
 
 		var/counter_type
-		if(get_skill_level(/datum/attribute/skill/combat/unarmed) >= 4)
+		if(GET_MOB_SKILL_VALUE_OLD(src, /datum/attribute/skill/combat/unarmed) >= 4)
 			counter_type = pickweight(list("knee" = 30, "elbow" = 70))
 		else
 			counter_type = pickweight(list("knee" = 60, "elbow" = 40))
@@ -1540,7 +1540,7 @@
 	// Modifier of pulledby against the resisting src
 	var/positioning_modifier = L.get_positioning_modifier(src)
 
-	wrestling_diff += (get_skill_level(/datum/attribute/skill/combat/wrestling, TRUE))
+	wrestling_diff += (GET_MOB_SKILL_VALUE_OLD(src, /datum/attribute/skill/combat/wrestling))
 	wrestling_diff -= (GET_MOB_SKILL_VALUE_OLD(L, /datum/attribute/skill/combat/wrestling))
 
 	if(has_status_effect(/datum/status_effect/buff/oiled))

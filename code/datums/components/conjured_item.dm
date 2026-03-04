@@ -64,7 +64,7 @@
 	if(refresh_count != -1 && refresh_count <= 0)
 		clean_up(TRUE)
 		return
-	if(refresh_skill && !holder.has_skill(refresh_skill))
+	if(refresh_skill && !GET_MOB_SKILL_VALUE_OLD(holder, refresh_skill))
 		clean_up(TRUE)
 		return
 	if(skill_threshold && GET_MOB_SKILL_VALUE_OLD(holder, refresh_skill) < skill_threshold)

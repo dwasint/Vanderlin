@@ -25,7 +25,7 @@
 		to_chat(src, span_notice("I need a wedge in order to lockpick \the [P]."))
 		return FALSE
 
-	client.spawn_lockpicking_UI(P, src, L, the_wedge, difficulty, KL.get_string_difficulty(), get_skill_level(/datum/attribute/skill/misc/lockpicking))
+	client.spawn_lockpicking_UI(P, src, L, the_wedge, difficulty, KL.get_string_difficulty(), GET_MOB_SKILL_VALUE_OLD(src, /datum/attribute/skill/misc/lockpicking))
 	visible_message(span_warning("[src] starts to pick the lock of \the [P]!"), span_notice("I start to pick the lock of \the [P]..."))
 	return TRUE
 

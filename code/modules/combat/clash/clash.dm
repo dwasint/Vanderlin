@@ -57,7 +57,7 @@
 	//Skill check, very simple. If you're more skilled with your weapon than the opponent is with theirs -> +10% to disarm or vice-versa.
 	var/skilldiff
 	if(our_item.associated_skill)
-		skilldiff = get_skill_level(our_item.associated_skill)
+		skilldiff = GET_MOB_SKILL_VALUE_OLD(src, our_item.associated_skill)
 	else
 		instantloss = TRUE	//We are Guarding with a book or something -- no chance for us.
 

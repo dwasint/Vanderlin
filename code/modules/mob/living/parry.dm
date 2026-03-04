@@ -122,7 +122,7 @@
 	if(!istype(shield))
 		return 0
 
-	var/shield_skill = max(1, get_skill_level(/datum/attribute/skill/combat/shields, TRUE))
+	var/shield_skill = max(1, GET_MOB_SKILL_VALUE_OLD(src, /datum/attribute/skill/combat/shields))
 
 	return shield.wdefense * shield_skill * 2
 /**
@@ -140,11 +140,11 @@
 	var/weapon_parry = FALSE
 
 	if(mainhand && mainhand.can_parry)
-		mainhand_defense += (mind ? (get_skill_level(mainhand.associated_skill, TRUE) * 20) : 20)
+		mainhand_defense += (mind ? (GET_MOB_SKILL_VALUE_OLD(src, mainhand.associated_skill) * 20) : 20)
 		mainhand_defense += (mainhand.wdefense * 10)
 
 	if(offhand && offhand.can_parry)
-		offhand_defense += (mind ? (get_skill_level(offhand.associated_skill, TRUE) * 20) : 20)
+		offhand_defense += (mind ? (GET_MOB_SKILL_VALUE_OLD(src, offhand.associated_skill) * 20) : 20)
 		offhand_defense += (offhand.wdefense * 10)
 		if(istype(offhand, /obj/item/weapon/shield))
 			force_shield = TRUE
@@ -160,7 +160,7 @@
 		used_weapon = offhand
 		highest_defense += offhand_defense
 
-	var/unarmed_defense = mind ? (get_skill_level(/datum/attribute/skill/combat/unarmed, TRUE) * 20) : 20
+	var/unarmed_defense = mind ? (GET_MOB_SKILL_VALUE_OLD(src, /datum/attribute/skill/combat/unarmed)) : 20
 	if(highest_defense <= unarmed_defense)
 		weapon_parry = FALSE
 	else
@@ -169,7 +169,7 @@
 	return list(
 		"used_weapon" = used_weapon,
 		"weapon_parry" = weapon_parry,
-		"defense_bonus" = weapon_parry ? highest_defense : (get_skill_level(/datum/attribute/skill/combat/unarmed, TRUE) * 20)
+		"defense_bonus" = weapon_parry ? highest_defense : (GET_MOB_SKILL_VALUE_OLD(src, /datum/attribute/skill/combat/unarmed) * 20)
 	)
 
 /**
@@ -186,9 +186,9 @@
 	var/skill_modifier = 0
 
 	if(weapon_parry)
-		defender_skill = get_skill_level(used_weapon.associated_skill, TRUE)
+		defender_skill = GET_MOB_SKILL_VALUE_OLD(src, used_weapon.associated_skill)
 	else
-		defender_skill = get_skill_level(/datum/attribute/skill/combat/unarmed, TRUE)
+		defender_skill = GET_MOB_SKILL_VALUE_OLD(src, /datum/attribute/skill/combat/unarmed)
 
 	if(user.mind)
 		var/obj/item/master = intenty.get_master_item()

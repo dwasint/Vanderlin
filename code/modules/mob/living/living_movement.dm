@@ -141,7 +141,7 @@
 	var/light_amount = T?.get_lumcount()
 	var/used_time = DEFAULT_MOB_SNEAK_TIME
 	var/light_threshold = rogue_sneaking_light_threshold
-	var/sneak_skill_level = get_skill_level(/datum/attribute/skill/misc/sneaking, TRUE)
+	var/sneak_skill_level = GET_MOB_SKILL_VALUE_OLD(src, /datum/attribute/skill/misc/sneaking)
 	light_threshold += (sneak_skill_level / 200)
 
 	if(rogue_sneaking) //If sneaking, check if they should be revealed
