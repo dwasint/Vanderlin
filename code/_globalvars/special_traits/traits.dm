@@ -980,6 +980,11 @@
 
 	emote("burploud", intentional = TRUE)
 
+/datum/attribute_holder/sheet/job/muscial
+	clamped_adjustment = list(
+		/datum/attribute/skill/misc/music = list(40, 60),
+	)
+
 /datum/special_trait/musical
 	name = "Musical Legend"
 	greet_text = span_notice("I am very good with instruments! though my previous one got stolen..")
@@ -988,7 +993,7 @@
 /datum/special_trait/musical/on_apply(mob/living/carbon/human/character, silent)
 	ADD_TRAIT(character, TRAIT_BARDIC_TRAINING, BE_SPECIAL_TRAIT)
 	character.inspiration = new /datum/inspiration(character)
-	character.adjust_skillrank(/datum/attribute/skill/misc/music, 4, TRUE)
+	character.attributes?.add_sheet(/datum/attribute_holder/sheet/job/muscial)
 
 /datum/special_trait/baothan
 	name = "Adored by Baotha"

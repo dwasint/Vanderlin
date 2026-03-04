@@ -1,16 +1,34 @@
+/datum/attribute_modifier/augment
+	variable = TRUE
+
 /datum/augment/skill
 	var/list/skill_changes = list() // List of skill changes: list(/datum/attribute/skill/combat/swords = 1)
 	stability_cost = 0 // Skills are zero-cost by default
 
 /datum/augment/skill/on_install(mob/living/carbon/human/H)
-	for(var/skill_type in skill_changes)
-		var/change = skill_changes[skill_type]
-		H.adjust_skillrank(skill_type, change, TRUE)
+	var/datum/attribute_modifier/existing_modifier = H.attributes.has_attribute_modifier(/datum/attribute_modifier/augment)
+	var/list/new_values
+	if(existing_modifier)
+		new_values = existing_modifier.attribute_list.Copy()
+	else
+		new_values = list()
+	new_values += skill_changes
+	H.attributes.add_or_update_variable_attribute_modifier(/datum/attribute_modifier/augment, TRUE, new_values)
 
 /datum/augment/skill/on_remove(mob/living/carbon/human/H)
-	for(var/skill_type in skill_changes)
-		var/change = skill_changes[skill_type]
-		H.adjust_skillrank(skill_type, -change, TRUE)
+	var/datum/attribute_modifier/existing_modifier = H.attributes.has_attribute_modifier(/datum/attribute_modifier/augment)
+	var/list/new_values
+	if(existing_modifier)
+		new_values = existing_modifier.attribute_list.Copy()
+	else
+		new_values = list()
+	for(var/value in skill_changes)
+		if(value in new_values)
+			new_values[value] -= skill_changes[value]
+		else
+			new_values |= value
+			new_values[value] = -skill_changes[value]
+	H.attributes.add_or_update_variable_attribute_modifier(/datum/attribute_modifier/augment, TRUE, new_values)
 
 /datum/augment/skill/get_examine_info()
 	var/list/info = list()
