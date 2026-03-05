@@ -28,6 +28,12 @@
 	var/dream_legendary_extra_cost = 0
 	/// Override costs by tier index (1=novice .. 6=legendary). Optional.
 	var/list/specific_dream_costs
+	/// How many levels below the default-derived floor the catchup XP multiplier applies.
+	/// e.g. 10 means full boost starts 10 levels below the default and tapers to 1.0 at the default.
+	var/catchup_level_range = SKILL_XP_CATCHUP_LEVEL_FLOOR
+	/// Peak XP multiplier applied when the skill is at the bottom of the catchup range.
+	/// Scales linearly down to 1.0 as the skill approaches the default floor.
+	var/catchup_multiplier = SKILL_XP_CATCHUP_MULTIPLIER_MAX
 
 /datum/attribute/skill/description_from_level(level)
 	if(isnull(level))

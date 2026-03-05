@@ -251,6 +251,25 @@ GLOBAL_VAR_INIT(sleep_experience_modifier, 1.0)
 		multiplier += 0.05
 	if(parent?.has_quirk(/datum/quirk/boon/quick_learner))
 		multiplier += 0.2
+
+	// Catchup multiplier: boost XP when skill is below its default-attribute floor
+	var/datum/attribute/skill/skill = GET_ATTRIBUTE_DATUM(skill_type)
+	if(istype(skill) && LAZYLEN(skill.default_attributes))
+		var/current_level = nulltozero(raw_attribute_list[skill_type])
+		// Compute the default-derived floor level using the holder's raw attributes
+		var/default_floor = 0
+		for(var/attr_type in skill.default_attributes)
+			var/attr_val = nulltozero(raw_attribute_list[attr_type])
+			var/adjusted = attr_val + skill.default_attributes[attr_type]
+			default_floor = max(default_floor, adjusted)
+		// Only apply catchup if we're below the floor
+		if(current_level < default_floor)
+			var/gap = default_floor - current_level
+			var/range = max(1, skill.catchup_level_range)
+			// Linear scale: full boost at gap >= range, tapers to 0 bonus at gap = 0
+			var/catchup_bonus = (skill.catchup_multiplier - 1.0) * min(gap / range, 1.0)
+			multiplier += catchup_bonus
+
 	return multiplier
 
 /**
