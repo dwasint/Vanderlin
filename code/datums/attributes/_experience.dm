@@ -1,5 +1,3 @@
-
-// ── XP tier thresholds ───────────────────────────────────────────────────────
 #define SKILL_XP_NONE        0
 #define SKILL_XP_NOVICE      100
 #define SKILL_XP_APPRENTICE  300
@@ -113,7 +111,7 @@ GLOBAL_VAR_INIT(sleep_experience_modifier, 1.0)
 	if(new_level == old_level)
 		return TRUE // XP recorded, no level change
 
-	_apply_skill_level(skill_type, new_level, old_level, silent)
+	apply_skill_level(skill_type, new_level, old_level, silent)
 
 	if(check_apprentice)
 		_share_apprentice_xp(skill_type, amount, silent)
@@ -137,7 +135,7 @@ GLOBAL_VAR_INIT(sleep_experience_modifier, 1.0)
 	// Sync the XP pool to the floor of this level so further XP gain is clean
 	LAZYSET(skill_xp, skill_type, xp_for_level(level))
 	if(level != old_level)
-		_apply_skill_level(skill_type, level, old_level, silent)
+		apply_skill_level(skill_type, level, old_level, silent)
 
 /**
  * Adjust a skill level by a delta, optionally capped at a maximum.
@@ -172,7 +170,7 @@ GLOBAL_VAR_INIT(sleep_experience_modifier, 1.0)
 		if(!old_level)
 			continue
 		LAZYSET(skill_xp, skill_type, 0)
-		_apply_skill_level(skill_type, SKILL_LEVEL_NONE, old_level, silent)
+		apply_skill_level(skill_type, SKILL_LEVEL_NONE, old_level, silent)
 	if(!silent)
 		to_chat(parent, span_boldwarning("I forget all my skills!"))
 
@@ -181,7 +179,7 @@ GLOBAL_VAR_INIT(sleep_experience_modifier, 1.0)
  * per-skill side-effects (arcane spell points, alchemy trait), and
  * optionally messages the player.
  */
-/datum/attribute_holder/proc/_apply_skill_level(skill_type, new_level, old_level, silent)
+/datum/attribute_holder/proc/apply_skill_level(skill_type, new_level, old_level, silent)
 	raw_attribute_list[skill_type] = new_level
 	update_attributes()
 
@@ -189,7 +187,7 @@ GLOBAL_VAR_INIT(sleep_experience_modifier, 1.0)
 	SEND_SIGNAL(parent, COMSIG_SKILL_LEVEL_CHANGE, skill_type, new_level, old_level)
 
 	// Per-skill side-effects
-	_on_skill_level_changed(skill_type, new_level, old_level)
+	on_skill_level_changed(skill_type, new_level, old_level)
 
 	if(silent)
 		return
@@ -210,7 +208,7 @@ GLOBAL_VAR_INIT(sleep_experience_modifier, 1.0)
  * Handles special-case side effects on level change.
  * Add new cases here as skills require them.
  */
-/datum/attribute_holder/proc/_on_skill_level_changed(skill_type, new_level, old_level)
+/datum/attribute_holder/proc/on_skill_level_changed(skill_type, new_level, old_level)
 	// Arcane magic: grant 1 spell point per tier boundary crossed
 	if(skill_type == /datum/attribute/skill/magic/arcane)
 		var/old_tier = old_level / 10
