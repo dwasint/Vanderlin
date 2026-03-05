@@ -1740,7 +1740,7 @@
 		/obj/item/natural/fibers = 2
 	)
 	craftdiff = 2.5
-	skillcraft = /datum/skill/misc/medicine
+	skillcraft = /datum/attribute/skill/misc/medicine
 	subtypes_allowed = FALSE
 
 /datum/repeatable_crafting_recipe/sewing/barding
