@@ -40,22 +40,6 @@
 
 	attribute_sheet = /datum/attribute_holder/sheet/job/vagrant
 
-	jobstats = list(
-		STAT_INTELLIGENCE = -3,
-		STAT_CONSTITUTION = -2,
-		STAT_ENDURANCE = -2
-	)
-
-	skills = list(
-		/datum/attribute/skill/misc/sneaking = 1,
-		/datum/attribute/skill/misc/stealing = 1,
-		/datum/attribute/skill/misc/lockpicking = 1,
-		/datum/attribute/skill/misc/climbing = 2,
-		/datum/attribute/skill/combat/wrestling = 1,
-		/datum/attribute/skill/combat/unarmed = 1,
-		/datum/attribute/skill/craft/alchemy = 1
-	)
-
 /datum/job/vagrant/New()
 	. = ..()
 	peopleknowme = list()
