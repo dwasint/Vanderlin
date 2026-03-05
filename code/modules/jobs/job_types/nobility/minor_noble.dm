@@ -1,3 +1,32 @@
+/datum/attribute_holder/sheet/job/minor_noble
+	attribute_variance = list(
+		/datum/attribute/skill/misc/music = list(10, 20)
+	)
+	raw_attribute_list = list(
+		STAT_INTELLIGENCE = 1,
+		STAT_SPEED = 1,
+		STAT_CONSTITUTION = 1,
+		/datum/attribute/skill/misc/reading = 20,
+		/datum/attribute/skill/misc/riding = 20,
+		/datum/attribute/skill/misc/sneaking = 20,
+		/datum/attribute/skill/misc/athletics = 20,
+		/datum/attribute/skill/combat/unarmed = 10,
+		/datum/attribute/skill/combat/wrestling = 10,
+		/datum/attribute/skill/labor/mathematics = 30,
+		/datum/attribute/skill/combat/bows = 20
+	)
+
+/datum/attribute_holder/sheet/job/minor_dagger
+	clamped_adjustment = list(
+		/datum/attribute/skill/combat/knives = list(20, 40)
+	)
+
+/datum/attribute_holder/sheet/job/minor_swords
+	clamped_adjustment = list(
+		/datum/attribute/skill/combat/swords = list(20, 40)
+	)
+
+
 /datum/job/minor_noble
 	title = "Noble"
 	tutorial = "The blood of a noble family runs through your veins. You are the living proof that the minor houses \
@@ -21,22 +50,7 @@
 
 	exp_types_granted = list(EXP_TYPE_NOBLE)
 
-	jobstats = list(
-		STAT_INTELLIGENCE = 1,
-		STAT_SPEED = 1,
-		STAT_CONSTITUTION = 1
-	)
-
-	skills = list(
-		/datum/attribute/skill/misc/reading = 2,
-		/datum/attribute/skill/misc/riding = 2,
-		/datum/attribute/skill/misc/sneaking = 2,
-		/datum/attribute/skill/misc/athletics = 2,
-		/datum/attribute/skill/combat/unarmed = 1,
-		/datum/attribute/skill/combat/wrestling = 1,
-		/datum/attribute/skill/labor/mathematics = 3,
-		/datum/attribute/skill/combat/bows = 2
-	)
+	attribute_sheet = /datum/attribute_holder/sheet/job/minor_noble
 
 	traits = list(
 		TRAIT_NOBLE_BLOOD,
@@ -53,8 +67,6 @@
 	spawned.real_name = "[honorary] [prev_real_name]"
 	spawned.name = "[honorary] [prev_name]"
 
-	spawned.adjust_skillrank(/datum/attribute/skill/misc/music, pick(1,2))
-
 	if(istype(spawned.patron, /datum/patron/inhumen/baotha))
 		spawned.cmode_music = 'sound/music/cmode/antag/CombatBaotha.ogg'
 
@@ -68,17 +80,17 @@
 		return
 	switch(choice)
 		if("Dagger")
-			spawned.clamped_adjust_skillrank(/datum/attribute/skill/combat/knives, 2, TRUE)
+			spawned.attributes?.add_sheet(/datum/attribute_holder/sheet/job/minor_dagger)
 			var/scabbard = new /obj/item/weapon/scabbard/knife/noble()
 			if(!spawned.equip_to_appropriate_slot(scabbard))
 				qdel(scabbard)
 		if("Rapier")
-			spawned.clamped_adjust_skillrank(/datum/attribute/skill/combat/swords, 2, TRUE)
+			spawned.attributes?.add_sheet(/datum/attribute_holder/sheet/job/minor_swords)
 			var/scabbard = new /obj/item/weapon/scabbard/sword/noble()
 			if(!spawned.equip_to_appropriate_slot(scabbard))
 				qdel(scabbard)
 		if("Cane Blade")
-			spawned.clamped_adjust_skillrank(/datum/attribute/skill/combat/swords, 2, TRUE)
+			spawned.attributes?.add_sheet(/datum/attribute_holder/sheet/job/minor_swords)
 			var/scabbard = new /obj/item/weapon/scabbard/cane()
 			if(!spawned.equip_to_appropriate_slot(scabbard))
 				qdel(scabbard)

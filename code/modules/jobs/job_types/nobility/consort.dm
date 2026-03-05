@@ -62,6 +62,46 @@
 	inherit_parent_title = TRUE
 	exp_types_granted = list(EXP_TYPE_NOBLE)
 
+/datum/attribute_holder/sheet/job/highborn
+	raw_attribute_list = list(
+		STAT_INTELLIGENCE = 3,
+		STAT_ENDURANCE = 1,
+		STAT_PERCEPTION = 3,
+		STAT_SPEED = 1,
+		STAT_FORTUNE = 5,
+		/datum/attribute/skill/combat/swords = 30,
+		/datum/attribute/skill/combat/knives = 20,
+		/datum/attribute/skill/misc/swimming = 10,
+		/datum/attribute/skill/misc/climbing = 10,
+		/datum/attribute/skill/misc/athletics = 20,
+		/datum/attribute/skill/misc/reading = 30,
+		/datum/attribute/skill/misc/sneaking = 10,
+		/datum/attribute/skill/misc/riding = 10,
+		/datum/attribute/skill/misc/sewing = 20,
+		/datum/attribute/skill/combat/unarmed = 10,
+		/datum/attribute/skill/labor/mathematics = 30
+	)
+
+/datum/attribute_holder/sheet/job/highborn/old
+	raw_attribute_list = list(
+		STAT_INTELLIGENCE = 3,
+		STAT_ENDURANCE = 1,
+		STAT_PERCEPTION = 3,
+		STAT_SPEED = 1,
+		STAT_FORTUNE = 5,
+		/datum/attribute/skill/combat/swords = 40,
+		/datum/attribute/skill/combat/knives = 20,
+		/datum/attribute/skill/misc/swimming = 10,
+		/datum/attribute/skill/misc/climbing = 10,
+		/datum/attribute/skill/misc/athletics = 20,
+		/datum/attribute/skill/misc/reading = 30,
+		/datum/attribute/skill/misc/sneaking = 10,
+		/datum/attribute/skill/misc/riding = 10,
+		/datum/attribute/skill/misc/sewing = 20,
+		/datum/attribute/skill/combat/unarmed = 10,
+		/datum/attribute/skill/labor/mathematics = 30
+	)
+
 /datum/job/advclass/consort/highborn
 	title = "Highborn Consort"
 	tutorial = "Of a minor noble house, yours is a rather typical tale; you were trained in manners, literature, and intrigue, all to be married off to the next ruler of this damned peninsula."
@@ -73,37 +113,13 @@
 		/datum/action/cooldown/spell/undirected/call_bird,
 	)
 
-	jobstats = list(
-		STAT_INTELLIGENCE = 3,
-		STAT_ENDURANCE = 1,
-		STAT_PERCEPTION = 3,
-		STAT_SPEED = 1,
-		STAT_FORTUNE = 5
-	)
-
-	skills = list(
-		/datum/attribute/skill/combat/swords = 3,
-		/datum/attribute/skill/combat/knives = 2,
-		/datum/attribute/skill/misc/swimming = 1,
-		/datum/attribute/skill/misc/climbing = 1,
-		/datum/attribute/skill/misc/athletics = 2,
-		/datum/attribute/skill/misc/reading = 3,
-		/datum/attribute/skill/misc/sneaking = 1,
-		/datum/attribute/skill/misc/riding = 1,
-		/datum/attribute/skill/misc/sewing = 2,
-		/datum/attribute/skill/combat/unarmed = 1,
-		/datum/attribute/skill/labor/mathematics = 3
-	)
+	attribute_sheet = /datum/attribute_holder/sheet/job/highborn
+	attribute_sheet_old = /datum/attribute_holder/sheet/job/highborn/old
 
 	traits = list(
 		TRAIT_NOBLE_BLOOD,
 		TRAIT_SEEPRICES
 	)
-
-/datum/job/advclass/consort/highborn/after_spawn(mob/living/carbon/human/spawned, client/player_client)
-	. = ..()
-	if(spawned.age == AGE_OLD)
-		spawned.adjust_skillrank(/datum/attribute/skill/combat/swords, 1, TRUE)
 
 /datum/outfit/consort/highborn
 	name = "Highborn Consort"
@@ -118,6 +134,48 @@
 		shirt = /obj/item/clothing/shirt/undershirt/colored/black
 		armor = /obj/item/clothing/armor/leather/vest/winterjacket
 
+/datum/attribute_holder/sheet/job/courtesan
+	raw_attribute_list = list(
+		STAT_STRENGTH = 1,
+		STAT_INTELLIGENCE = -1,
+		STAT_ENDURANCE = 2,
+		STAT_SPEED = 1,
+		STAT_FORTUNE = 3,
+		/datum/attribute/skill/combat/wrestling = 20,
+		/datum/attribute/skill/combat/unarmed = 10,
+		/datum/attribute/skill/combat/knives = 30,
+		/datum/attribute/skill/misc/swimming = 30,
+		/datum/attribute/skill/misc/climbing = 20,
+		/datum/attribute/skill/misc/athletics = 20,
+		/datum/attribute/skill/misc/reading = 10,
+		/datum/attribute/skill/misc/sneaking = 30,
+		/datum/attribute/skill/misc/stealing = 30,
+		/datum/attribute/skill/misc/riding = 20,
+		/datum/attribute/skill/misc/lockpicking = 20,
+		/datum/attribute/skill/labor/mathematics = 20
+	)
+
+/datum/attribute_holder/sheet/job/courtesan/old
+	raw_attribute_list = list(
+		STAT_STRENGTH = 1,
+		STAT_INTELLIGENCE = -1,
+		STAT_ENDURANCE = 2,
+		STAT_SPEED = 1,
+		STAT_FORTUNE = 3,
+		/datum/attribute/skill/combat/wrestling = 20,
+		/datum/attribute/skill/combat/unarmed = 10,
+		/datum/attribute/skill/combat/knives = 40,
+		/datum/attribute/skill/misc/swimming = 30,
+		/datum/attribute/skill/misc/climbing = 20,
+		/datum/attribute/skill/misc/athletics = 20,
+		/datum/attribute/skill/misc/reading = 10,
+		/datum/attribute/skill/misc/sneaking = 30,
+		/datum/attribute/skill/misc/stealing = 30,
+		/datum/attribute/skill/misc/riding = 20,
+		/datum/attribute/skill/misc/lockpicking = 20,
+		/datum/attribute/skill/labor/mathematics = 20
+	)
+
 /datum/job/advclass/consort/courtesan
 	title = "Courtesan Consort"
 	tutorial = "Though initially none envied your lot in life, it's certain that your midnight talents haven't gone to waste. Your honeyed words and charm have brought you right to being a ruler's beloved consort."
@@ -125,33 +183,8 @@
 	category_tags = list(CTAG_CONSORT)
 	exp_types_granted  = list(EXP_TYPE_NOBLE)
 
-	jobstats = list(
-		STAT_STRENGTH = 1,
-		STAT_INTELLIGENCE = -1,
-		STAT_ENDURANCE = 2,
-		STAT_SPEED = 1,
-		STAT_FORTUNE = 3
-	)
-
-	skills = list(
-		/datum/attribute/skill/combat/wrestling = 2,
-		/datum/attribute/skill/combat/unarmed = 1,
-		/datum/attribute/skill/combat/knives = 3,
-		/datum/attribute/skill/misc/swimming = 3,
-		/datum/attribute/skill/misc/climbing = 2,
-		/datum/attribute/skill/misc/athletics = 2,
-		/datum/attribute/skill/misc/reading = 1,
-		/datum/attribute/skill/misc/sneaking = 3,
-		/datum/attribute/skill/misc/stealing = 3,
-		/datum/attribute/skill/misc/riding = 2,
-		/datum/attribute/skill/misc/lockpicking = 2,
-		/datum/attribute/skill/labor/mathematics = 2
-	)
-
-/datum/job/advclass/consort/courtesan/after_spawn(mob/living/carbon/human/spawned, client/player_client)
-	. = ..()
-	if(spawned.age == AGE_OLD)
-		spawned.adjust_skillrank(/datum/attribute/skill/combat/knives, 1, TRUE)
+	attribute_sheet = /datum/attribute_holder/sheet/job/courtesan
+	attribute_sheet_old = /datum/attribute_holder/sheet/job/courtesan/old
 
 /datum/outfit/consort/courtesan
 	name = "Courtesan Consort"
@@ -168,6 +201,47 @@
 		armor = /obj/item/clothing/armor/leather/vest/winterjacket // this is kind of stupid but i love it anyway
 		cloak = null
 
+/datum/attribute_holder/sheet/job/lowborn
+	raw_attribute_list = list(
+		STAT_STRENGTH = 1,
+		STAT_CONSTITUTION = 2,
+		STAT_INTELLIGENCE = -2,
+		STAT_ENDURANCE = 3,
+		STAT_SPEED = -1,
+		STAT_FORTUNE = 1,
+		/datum/attribute/skill/combat/wrestling = 20,
+		/datum/attribute/skill/combat/unarmed = 30,
+		/datum/attribute/skill/combat/polearms = 20,
+		/datum/attribute/skill/misc/sewing = 30,
+		/datum/attribute/skill/misc/climbing = 10,
+		/datum/attribute/skill/misc/athletics = 30,
+		/datum/attribute/skill/labor/farming = 30,
+		/datum/attribute/skill/misc/reading = 10,
+		/datum/attribute/skill/craft/cooking = 30,
+		/datum/attribute/skill/craft/crafting = 30,
+		/datum/attribute/skill/misc/riding = 10
+	)
+
+/datum/attribute_holder/sheet/job/lowborn/old
+	raw_attribute_list = list(
+		STAT_STRENGTH = 1,
+		STAT_CONSTITUTION = 2,
+		STAT_INTELLIGENCE = -2,
+		STAT_ENDURANCE = 3,
+		STAT_SPEED = -1,
+		STAT_FORTUNE = 1,
+		/datum/attribute/skill/combat/wrestling = 20,
+		/datum/attribute/skill/combat/unarmed = 40,
+		/datum/attribute/skill/combat/polearms = 20,
+		/datum/attribute/skill/misc/sewing = 30,
+		/datum/attribute/skill/misc/climbing = 10,
+		/datum/attribute/skill/misc/athletics = 30,
+		/datum/attribute/skill/labor/farming = 30,
+		/datum/attribute/skill/misc/reading = 10,
+		/datum/attribute/skill/craft/cooking = 30,
+		/datum/attribute/skill/craft/crafting = 30,
+		/datum/attribute/skill/misc/riding = 10
+	)
 
 /datum/job/advclass/consort/lowborn
 	title = "Lowborn Consort"
@@ -176,37 +250,13 @@
 	category_tags = list(CTAG_CONSORT)
 	exp_types_granted  = list(EXP_TYPE_NOBLE)
 
-	jobstats = list(
-		STAT_STRENGTH = 1,
-		STAT_CONSTITUTION = 2,
-		STAT_INTELLIGENCE = -2,
-		STAT_ENDURANCE = 3,
-		STAT_SPEED = -1,
-		STAT_FORTUNE = 1
-	)
-
-	skills = list(
-		/datum/attribute/skill/combat/wrestling = 2,
-		/datum/attribute/skill/combat/unarmed = 3,
-		/datum/attribute/skill/combat/polearms = 2,
-		/datum/attribute/skill/misc/sewing = 3,
-		/datum/attribute/skill/misc/climbing = 1,
-		/datum/attribute/skill/misc/athletics = 3,
-		/datum/attribute/skill/labor/farming = 3,
-		/datum/attribute/skill/misc/reading = 1,
-		/datum/attribute/skill/craft/cooking = 3,
-		/datum/attribute/skill/craft/crafting = 3,
-		/datum/attribute/skill/misc/riding = 1
-	)
+	attribute_sheet = /datum/attribute_holder/sheet/job/lowborn
+	attribute_sheet_old = /datum/attribute_holder/sheet/job/lowborn/old
 
 	traits = list(
 		TRAIT_SEEDKNOW
 	)
 
-/datum/job/advclass/consort/lowborn/after_spawn(mob/living/carbon/human/spawned, client/player_client)
-	. = ..()
-	if(spawned.age == AGE_OLD)
-		spawned.adjust_skillrank(/datum/attribute/skill/combat/unarmed, 1, TRUE)
 
 /datum/outfit/consort/lowborn
 	name = "Lowborn Consort"
@@ -220,6 +270,47 @@
 		shirt = /obj/item/clothing/shirt/undershirt/colored/black
 		armor = /obj/item/clothing/shirt/tunic/colored/green
 
+/datum/attribute_holder/sheet/job/night_spy
+	raw_attribute_list = list(
+		STAT_STRENGTH = 1,
+		STAT_INTELLIGENCE = -1,
+		STAT_ENDURANCE = 2,
+		STAT_SPEED = 1,
+		STAT_FORTUNE = 3,
+		/datum/attribute/skill/combat/wrestling = 20,
+		/datum/attribute/skill/combat/unarmed = 10,
+		/datum/attribute/skill/combat/knives = 30,
+		/datum/attribute/skill/misc/swimming = 30,
+		/datum/attribute/skill/misc/climbing = 20,
+		/datum/attribute/skill/misc/athletics = 20,
+		/datum/attribute/skill/misc/reading = 10,
+		/datum/attribute/skill/misc/sneaking = 30,
+		/datum/attribute/skill/misc/stealing = 30,
+		/datum/attribute/skill/misc/riding = 20,
+		/datum/attribute/skill/misc/lockpicking = 20,
+		/datum/attribute/skill/labor/mathematics = 20
+	)
+
+/datum/attribute_holder/sheet/job/night_spy/old
+	raw_attribute_list = list(
+		STAT_STRENGTH = 1,
+		STAT_INTELLIGENCE = -1,
+		STAT_ENDURANCE = 2,
+		STAT_SPEED = 1,
+		STAT_FORTUNE = 3,
+		/datum/attribute/skill/combat/wrestling = 20,
+		/datum/attribute/skill/combat/unarmed = 10,
+		/datum/attribute/skill/combat/knives = 40,
+		/datum/attribute/skill/misc/swimming = 30,
+		/datum/attribute/skill/misc/climbing = 20,
+		/datum/attribute/skill/misc/athletics = 20,
+		/datum/attribute/skill/misc/reading = 10,
+		/datum/attribute/skill/misc/sneaking = 30,
+		/datum/attribute/skill/misc/stealing = 30,
+		/datum/attribute/skill/misc/riding = 20,
+		/datum/attribute/skill/misc/lockpicking = 20,
+		/datum/attribute/skill/labor/mathematics = 20
+	)
 
 /datum/job/advclass/consort/courtesan/night_spy
 	title = "Night-Mother's Spy Consort"
@@ -229,37 +320,12 @@
 	exp_types_granted  = list(EXP_TYPE_NOBLE)
 	languages = list(/datum/language/thievescant)
 
-	jobstats = list(
-		STAT_STRENGTH = 1,
-		STAT_INTELLIGENCE = -1,
-		STAT_ENDURANCE = 2,
-		STAT_SPEED = 1,
-		STAT_FORTUNE = 3
-	)
-
-	skills = list(
-		/datum/attribute/skill/combat/wrestling = 2,
-		/datum/attribute/skill/combat/unarmed = 1,
-		/datum/attribute/skill/combat/knives = 3,
-		/datum/attribute/skill/misc/swimming = 3,
-		/datum/attribute/skill/misc/climbing = 2,
-		/datum/attribute/skill/misc/athletics = 2,
-		/datum/attribute/skill/misc/reading = 1,
-		/datum/attribute/skill/misc/sneaking = 3,
-		/datum/attribute/skill/misc/stealing = 3,
-		/datum/attribute/skill/misc/riding = 2,
-		/datum/attribute/skill/misc/lockpicking = 2,
-		/datum/attribute/skill/labor/mathematics = 2
-	)
+	attribute_sheet = /datum/attribute_holder/sheet/job/night_spy
+	attribute_sheet_old = /datum/attribute_holder/sheet/job/night_spy/old
 
 	traits = list(
 		TRAIT_THIEVESGUILD
 	)
-
-/datum/job/advclass/consort/courtesan/night_spy/after_spawn(mob/living/carbon/human/spawned, client/player_client)
-	. = ..()
-	if(spawned.age == AGE_OLD)
-		spawned.adjust_skillrank(/datum/attribute/skill/combat/knives, 1)
 
 /datum/outfit/consort/courtesan/spy
 	name = "Night-Mother's Spy Consort"

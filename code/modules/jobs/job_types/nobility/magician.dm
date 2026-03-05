@@ -1,3 +1,43 @@
+/datum/attribute_holder/sheet/job/magician
+	attribute_variance = list(
+		/datum/attribute/skill/magic/arcane = list(0, 10)
+	)
+	raw_attribute_list = list(
+		STAT_STRENGTH = -2,
+		STAT_INTELLIGENCE = 5,
+		STAT_CONSTITUTION = -2,
+		STAT_SPEED = -2,
+		/datum/attribute/skill/misc/reading = 60,
+		/datum/attribute/skill/misc/riding = 20,
+		/datum/attribute/skill/magic/arcane = 50,
+		/datum/attribute/skill/combat/wrestling = 10,
+		/datum/attribute/skill/combat/unarmed = 10,
+		/datum/attribute/skill/misc/athletics = 20,
+		/datum/attribute/skill/combat/polearms = 30,
+		/datum/attribute/skill/craft/alchemy = 30,
+		/datum/attribute/skill/labor/mathematics = 40
+	)
+
+/datum/attribute_holder/sheet/job/magician/old
+	attribute_variance = list(
+		/datum/attribute/skill/magic/arcane = list(0, 10)
+	)
+	raw_attribute_list = list(
+		STAT_STRENGTH = -2,
+		STAT_INTELLIGENCE = 6,
+		STAT_CONSTITUTION = -2,
+		STAT_SPEED = -3,
+		/datum/attribute/skill/misc/reading = 60,
+		/datum/attribute/skill/misc/riding = 20,
+		/datum/attribute/skill/magic/arcane = 50,
+		/datum/attribute/skill/combat/wrestling = 10,
+		/datum/attribute/skill/combat/unarmed = 10,
+		/datum/attribute/skill/misc/athletics = 20,
+		/datum/attribute/skill/combat/polearms = 30,
+		/datum/attribute/skill/craft/alchemy = 30,
+		/datum/attribute/skill/labor/mathematics = 40
+	)
+
 /datum/job/magician
 	title = "Court Magician"
 	tutorial = "A seer of dreams, a reader of stars, and a master of the arcyne. Along a band of unlikely heroes, you shaped the fate of these lands.\
@@ -39,24 +79,8 @@
 		EXP_TYPE_MAGICK = 300
 	)
 
-	jobstats = list(
-		STAT_STRENGTH = -2,
-		STAT_INTELLIGENCE = 5,
-		STAT_CONSTITUTION = -2,
-		STAT_SPEED = -2
-	)
-
-	skills = list(
-		/datum/attribute/skill/misc/reading = 6,
-		/datum/attribute/skill/misc/riding = 2,
-		/datum/attribute/skill/magic/arcane = 5,
-		/datum/attribute/skill/combat/wrestling = 1,
-		/datum/attribute/skill/combat/unarmed = 1,
-		/datum/attribute/skill/misc/athletics = 2,
-		/datum/attribute/skill/combat/polearms = 3,
-		/datum/attribute/skill/craft/alchemy = 3,
-		/datum/attribute/skill/labor/mathematics = 4
-	)
+	attribute_sheet = /datum/attribute_holder/sheet/job/magician
+	attribute_sheet_old = /datum/attribute_holder/sheet/job/magician/old
 
 	traits = list(
 		TRAIT_SEEPRICES,
@@ -73,12 +97,6 @@
 
 	if(istype(spawned.patron, /datum/patron/inhumen/zizo))
 		spawned.grant_language(/datum/language/undead)
-
-	spawned.adjust_skillrank(/datum/attribute/skill/magic/arcane, pick(0,1))
-
-	if(spawned.age == AGE_OLD)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_SPEED, -1)
-		spawned.adjust_stat_modifier(STATMOD_JOB, STAT_INTELLIGENCE, 1)
 
 	spawned.virginity = TRUE
 

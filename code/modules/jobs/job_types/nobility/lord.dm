@@ -24,6 +24,29 @@ GLOBAL_LIST_EMPTY(lord_titles)
 		/datum/attribute/skill/labor/mathematics = 30
 	)
 
+/datum/attribute_holder/sheet/job/lord/old
+	raw_attribute_list = list(
+		STAT_STRENGTH = 1,
+		STAT_INTELLIGENCE = 3,
+		STAT_ENDURANCE = 3,
+		STAT_SPEED = 1,
+		STAT_PERCEPTION = 2,
+		STAT_FORTUNE = 5,
+		/datum/attribute/skill/combat/polearms = 20,
+		/datum/attribute/skill/combat/axesmaces = 20,
+		/datum/attribute/skill/combat/crossbows = 30,
+		/datum/attribute/skill/combat/wrestling = 30,
+		/datum/attribute/skill/combat/unarmed = 10,
+		/datum/attribute/skill/combat/swords = 50,
+		/datum/attribute/skill/combat/knives = 30,
+		/datum/attribute/skill/misc/swimming = 10,
+		/datum/attribute/skill/misc/climbing = 10,
+		/datum/attribute/skill/misc/athletics = 30,
+		/datum/attribute/skill/misc/reading = 40,
+		/datum/attribute/skill/misc/riding = 30,
+		/datum/attribute/skill/labor/mathematics = 30
+	)
+
 /datum/job/lord
 	title = "Monarch"
 	var/ruler_title = "Monarch"
@@ -59,6 +82,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	)
 
 	attribute_sheet = /datum/attribute_holder/sheet/job/lord
+	attribute_sheet_old = /datum/attribute_holder/sheet/job/lord/old
 
 	mind_traits = list(
 		TRAIT_KNOW_KEEP_DOORS
@@ -98,9 +122,6 @@ GLOBAL_LIST_EMPTY(lord_titles)
 
 	to_chat(world, "<b>[span_notice(span_big("[spawned.real_name] is [ruler_title] of [SSmapping.config.map_name]."))]</b>")
 	to_chat(world, "<br>")
-
-	if(spawned.age == AGE_OLD)
-		spawned.adjust_skillrank(/datum/attribute/skill/combat/swords, 1, TRUE)
 
 	if(spawned.dna?.species?.id == SPEC_ID_HUMEN && spawned.gender == MALE)
 		spawned.dna.species.soundpack_m = new /datum/voicepack/male/evil()

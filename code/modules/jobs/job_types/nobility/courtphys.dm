@@ -1,3 +1,30 @@
+/datum/attribute_holder/sheet/job/courtphys
+	raw_attribute_list = list(
+		STAT_STRENGTH = -1,
+		STAT_INTELLIGENCE = 4,
+		STAT_CONSTITUTION = -1,
+		/datum/attribute/skill/misc/reading = 50,
+		/datum/attribute/skill/craft/crafting = 20,
+		/datum/attribute/skill/combat/knives = 20,
+		/datum/attribute/skill/misc/sewing = 30,
+		/datum/attribute/skill/misc/medicine = 50,
+		/datum/attribute/skill/craft/alchemy = 30,
+		/datum/attribute/skill/labor/mathematics = 30
+	)
+
+/datum/attribute_holder/sheet/job/courtphys/old
+	raw_attribute_list = list(
+		STAT_STRENGTH = -1,
+		STAT_INTELLIGENCE = 4,
+		STAT_CONSTITUTION = -1,
+		/datum/attribute/skill/misc/reading = 50,
+		/datum/attribute/skill/craft/crafting = 20,
+		/datum/attribute/skill/combat/knives = 20,
+		/datum/attribute/skill/misc/sewing = 30,
+		/datum/attribute/skill/misc/medicine = 60,
+		/datum/attribute/skill/craft/alchemy = 30,
+		/datum/attribute/skill/labor/mathematics = 30
+	)
 /datum/job/courtphys
 	title = "Court Physician"
 	tutorial = "One fateful evening at a royal banquet, your steady hand and sharp eye saved the royal bloodline. \
@@ -21,21 +48,8 @@
 	exp_types_granted = list(EXP_TYPE_NOBLE, EXP_TYPE_MEDICAL)
 	exp_requirements = list(EXP_TYPE_MEDICAL = 900)
 
-	jobstats = list(
-		STAT_STRENGTH = -1,
-		STAT_INTELLIGENCE = 4,
-		STAT_CONSTITUTION = -1
-	)
-
-	skills = list(
-		/datum/attribute/skill/misc/reading = 5,
-		/datum/attribute/skill/craft/crafting = 2,
-		/datum/attribute/skill/combat/knives = 2,
-		/datum/attribute/skill/misc/sewing = 3,
-		/datum/attribute/skill/misc/medicine = 5,
-		/datum/attribute/skill/craft/alchemy = 3,
-		/datum/attribute/skill/labor/mathematics = 3
-	)
+	attribute_sheet = /datum/attribute_holder/sheet/job/courtphys
+	attribute_sheet_old = /datum/attribute_holder/sheet/job/courtphys/old
 
 	traits = list(
 		TRAIT_EMPATH,
@@ -47,9 +61,6 @@
 /datum/job/courtphys/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	spawned.virginity = TRUE
-
-	if(spawned.age == AGE_OLD)
-		spawned.adjust_skillrank(/datum/attribute/skill/misc/medicine, 1, TRUE)
 
 	if(spawned.dna?.species?.id != SPEC_ID_MEDICATOR)
 		ADD_TRAIT(spawned, TRAIT_NOBLE_BLOOD, JOB_TRAIT)
