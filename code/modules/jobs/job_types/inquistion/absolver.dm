@@ -1,3 +1,21 @@
+/datum/attribute_holder/sheet/job/absolver
+	raw_attribute_list = list(
+		STAT_ENDURANCE = 3,
+		STAT_SPEED = -2,
+		STAT_CONSTITUTION = 7,
+		/datum/attribute/skill/misc/athletics = 30,
+		/datum/attribute/skill/misc/climbing = 40,
+		/datum/attribute/skill/misc/sewing = 30,
+		/datum/attribute/skill/misc/reading = 30,
+		/datum/attribute/skill/combat/unarmed = 10,
+		/datum/attribute/skill/misc/medicine = 30,
+		/datum/attribute/skill/craft/cooking = 30,
+		/datum/attribute/skill/labor/fishing = 30,
+		/datum/attribute/skill/misc/swimming = 30,
+		/datum/attribute/skill/craft/crafting = 30,
+		/datum/attribute/skill/magic/holy = 20
+	)
+
 /datum/job/absolver
 	title = "Absolver"
 	department_flag = INQUISITION
@@ -33,31 +51,13 @@
 		TRAIT_FOREIGNER,
 	)
 
-	jobstats = list(
-		STAT_ENDURANCE = 3,
-		STAT_SPEED = -2,
-		STAT_CONSTITUTION = 7,
-	)
-
 	spells = list(
 		/datum/action/cooldown/spell/psydonlux_tamper,
 		/datum/action/cooldown/spell/psydonabsolve,
 		/datum/action/cooldown/spell/diagnose,
 	)
 
-	skills = list(
-		/datum/attribute/skill/misc/athletics = SKILL_LEVEL_JOURNEYMAN,
-		/datum/attribute/skill/misc/climbing = SKILL_LEVEL_EXPERT,
-		/datum/attribute/skill/misc/sewing = SKILL_LEVEL_JOURNEYMAN,
-		/datum/attribute/skill/misc/reading = SKILL_LEVEL_JOURNEYMAN,
-		/datum/attribute/skill/combat/unarmed = SKILL_LEVEL_NOVICE,
-		/datum/attribute/skill/misc/medicine = SKILL_LEVEL_JOURNEYMAN,
-		/datum/attribute/skill/craft/cooking = SKILL_LEVEL_JOURNEYMAN,
-		/datum/attribute/skill/labor/fishing = SKILL_LEVEL_JOURNEYMAN,
-		/datum/attribute/skill/misc/swimming = SKILL_LEVEL_JOURNEYMAN,
-		/datum/attribute/skill/craft/crafting = SKILL_LEVEL_JOURNEYMAN,
-		/datum/attribute/skill/magic/holy = SKILL_LEVEL_APPRENTICE, // they need this so Psydon's Grace works
-	)
+	attribute_sheet = /datum/attribute_holder/sheet/job/absolver
 
 	languages = list(/datum/language/oldpsydonic, /datum/language/newpsydonic)
 
