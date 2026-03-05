@@ -2747,9 +2747,6 @@
 /mob/living/proc/get_total_weight()
 	return 0
 
-/mob/living/proc/encumbrance_to_dodge()
-	return 1
-
 /mob/living/proc/encumbrance_to_speed()
 
 /// checks if this mob can do a dualwielding attack or defense
