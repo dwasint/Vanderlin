@@ -72,7 +72,7 @@
 		if(skill.governing_attribute && !isnull(skill_value) && (skill_value >= 0))
 			var/governing_value = return_raw_calculated_skill(skill.governing_attribute)
 			var/governing_multiplier = (governing_value >= 0) ? SKILL_GOVERNING_MULTIPLIER_POSITIVE : SKILL_GOVERNING_MULTIPLIER_NEGATIVE
-			var/governing_attribute_value = governing_value * governing_multiplier
+			var/governing_attribute_value = floor(governing_value * governing_multiplier, 1)
 			skill_value += governing_attribute_value
 		if(LAZYLEN(skill.default_attributes))
 			for(var/attribute_type in skill.default_attributes)
@@ -98,9 +98,9 @@
 			var/governing_delta = governing_effective - governing_raw
 			if(governing_delta < 0)
 				// debuffs on the governing attribute hurt more than buffs help
-				skill_value += (governing_raw * SKILL_GOVERNING_MULTIPLIER_POSITIVE) + (governing_delta * SKILL_GOVERNING_MULTIPLIER_NEGATIVE)
+				skill_value += floor((governing_raw * SKILL_GOVERNING_MULTIPLIER_POSITIVE) + (governing_delta * SKILL_GOVERNING_MULTIPLIER_NEGATIVE),1)
 			else
-				skill_value += governing_effective * SKILL_GOVERNING_MULTIPLIER_POSITIVE
+				skill_value += floor(governing_effective * SKILL_GOVERNING_MULTIPLIER_POSITIVE, 1)
 		if(LAZYLEN(skill.default_attributes))
 			for(var/attribute_type in skill.default_attributes)
 				var/default_value = return_calculated_skill(attribute_type)
@@ -121,7 +121,7 @@
 		// we add the value of the primary attribute but only when we have the skill (skill is not null)
 		var/governing_value = return_raw_calculated_skill(skill.governing_attribute)
 		var/governing_multiplier = (governing_value >= 0) ? SKILL_GOVERNING_MULTIPLIER_POSITIVE : SKILL_GOVERNING_MULTIPLIER_NEGATIVE
-		skill_value += governing_value * governing_multiplier
+		skill_value += floor(governing_value * governing_multiplier, 1)
 	return skill_value
 
 /**
@@ -142,9 +142,9 @@
 		var/governing_delta = governing_effective - governing_raw
 		if(governing_delta < 0)
 			// debuffs on the governing attribute hurt more than buffs help
-			skill_value += (governing_raw * SKILL_GOVERNING_MULTIPLIER_POSITIVE) + (governing_delta * SKILL_GOVERNING_MULTIPLIER_NEGATIVE)
+			skill_value += floor((governing_raw * SKILL_GOVERNING_MULTIPLIER_POSITIVE) + (governing_delta * SKILL_GOVERNING_MULTIPLIER_NEGATIVE), 1)
 		else
-			skill_value += governing_effective * SKILL_GOVERNING_MULTIPLIER_POSITIVE
+			skill_value += floor(governing_effective * SKILL_GOVERNING_MULTIPLIER_POSITIVE,1)
 	return skill_value
 
 /**
