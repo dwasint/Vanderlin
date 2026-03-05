@@ -10,7 +10,7 @@
 #define STAT /datum/attribute/stat
 
 // ~attribute/stat values
-#define ATTRIBUTE_MIN 0
+#define ATTRIBUTE_MIN -100 ///lmao get fucked
 #define ATTRIBUTE_MAX 100
 
 #define ATTRIBUTE_MIDDLING 10
