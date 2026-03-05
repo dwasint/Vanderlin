@@ -65,11 +65,11 @@
 	// 60 max skill delta / 6 = 10 max modifier.
 	var/parry_modifier = floor(weapon_modifier / 6)
 
-	// Trait modifiers
-	if(HAS_TRAIT(src, TRAIT_GUIDANCE))
-		parry_modifier += 2
-	if(HAS_TRAIT(user, TRAIT_GUIDANCE))
+	if(user.attributes?.has_diceroll_modifier(/datum/diceroll_modifier/guidance))
 		parry_modifier -= 2
+
+	if(user.attributes?.has_diceroll_modifier(/datum/diceroll_modifier/fervor))
+		parry_modifier -= 1
 
 	// Situational penalties
 	if(body_position == LYING_DOWN)

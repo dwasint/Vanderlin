@@ -29,12 +29,12 @@
 	. = ..()
 	owner.add_filter(FERVOR_FILTER, 2, list("type" = "outline", "color" = outline_colour, "alpha" = 50, "size" = 1))
 	to_chat(owner, span_warning("The rhythm of the tune aides me in battle!"))
-	ADD_TRAIT(owner, TRAIT_GUIDANCE, TRAIT_STATUS_EFFECT(id))
+	owner.attributes?.add_diceroll_modifier(/datum/diceroll_modifier/fervor)
 
 /datum/status_effect/inspiration/fervor/on_remove()
 	. = ..()
 	owner.remove_filter(FERVOR_FILTER)
-	REMOVE_TRAIT(owner, TRAIT_GUIDANCE, TRAIT_STATUS_EFFECT(id))
+	owner.attributes?.remove_diceroll_modifier(/datum/diceroll_modifier/fervor)
 
 /atom/movable/screen/alert/status_effect/buff/song/fervor // spicy guidance
 	name = "Musical Fervor"

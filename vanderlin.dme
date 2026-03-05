@@ -866,6 +866,7 @@
 #include "code\datums\attributes\attributes\stats\_stat.dm"
 #include "code\datums\attributes\attributes\stats\base_stats.dm"
 #include "code\datums\attributes\dicerolls\diceroll_modifier.dm"
+#include "code\datums\attributes\dicerolls\guidance.dm"
 #include "code\datums\attributes\dicerolls\stress.dm"
 #include "code\datums\brain_damage\brain_trauma.dm"
 #include "code\datums\brain_damage\hypnosis.dm"

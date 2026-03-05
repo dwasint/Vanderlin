@@ -36,14 +36,14 @@
 
 /datum/status_effect/buff/guidance/on_apply()
 	. = ..()
-	ADD_TRAIT(owner, TRAIT_GUIDANCE, TRAIT_STATUS_EFFECT(id))
 	var/mob/living/target = owner
+	target.attributes?.add_diceroll_modifier(/datum/diceroll_modifier/guidance)
 	target.add_overlay(guided)
 
 /datum/status_effect/buff/guidance/on_remove()
 	. = ..()
-	REMOVE_TRAIT(owner, TRAIT_GUIDANCE, TRAIT_STATUS_EFFECT(id))
 	var/mob/living/target = owner
+	target.attributes?.remove_diceroll_modifier(/datum/diceroll_modifier/guidance)
 	target.cut_overlay(guided)
 
 /atom/movable/screen/alert/status_effect/buff/guidance

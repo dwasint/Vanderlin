@@ -240,11 +240,10 @@
 	dodge_modifier += floor(used_intent?.idodgebonus / 10)
 	dodge_modifier += floor(rmb_intent?.def_bonus / 10)
 
-	// Trait modifiers
-	if(HAS_TRAIT(src, TRAIT_GUIDANCE))
-		dodge_modifier += 2
-	if(HAS_TRAIT(user, TRAIT_GUIDANCE))
+	if(user.attributes?.has_diceroll_modifier(/datum/diceroll_modifier/guidance))
 		dodge_modifier -= 2
+	if(user.attributes?.has_diceroll_modifier(/datum/diceroll_modifier/fervor))
+		dodge_modifier -= 1
 
 	//knowing how an attack works helps dodge it
 	if(attacking_item)
