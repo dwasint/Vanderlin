@@ -465,3 +465,5 @@ GLOBAL_LIST_INIT(shove_disarming_types, typecacheof(list(
 #define PARRYING_PENALTY 4
 /// Default penalty for dodging dicerolls, normally lasts DODGING_PENALTY_COOLDOWN_DURATION
 #define DODGING_PENALTY 2
+/// A define so the cooldown on the baited status and the duration of the baitcd status are the same
+#define BAIT_COOLDOWN_TIME 15 SECONDS
