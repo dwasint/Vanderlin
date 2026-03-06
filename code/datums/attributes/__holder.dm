@@ -158,7 +158,7 @@
 		parent.attributes = null
 		parent = null
 	update_attributes()
-	RegisterSignal(parent, COMSIG_SHARE_APPRENTICE_XP, PROC_REF(on_share_apprentice_xp))
+	RegisterSignal(parent, COMSIG_SHARE_APPRENTICE_XP, PROC_REF(onshare_apprentice_xp))
 
 /**
  * Adds up attributes from a sheet
@@ -398,3 +398,89 @@
 			</span>"
 	output += "</div></span>" //div infobox
 	to_chat(user, jointext(output, ""))
+
+/**
+ * Directly set a skill to a specific level, adjusting the XP pool to match.
+ * Equivalent to the old set_skillrank().
+ *
+ * Arguments:
+ *   skill_type - typepath of the skill
+ *   level      - target level (0-60)
+ *   silent     - suppress messages
+ */
+/datum/attribute_holder/proc/set_skill_level(skill_type, level, silent = TRUE)
+	if(!ispath(skill_type, SKILL))
+		return
+	level = clamp(level, SKILL_LEVEL_NONE, SKILL_LEVEL_LEGENDARY * 10)
+	var/old_level = nulltozero(raw_attribute_list[skill_type])
+	// Sync the XP pool to the floor of this level so further XP gain is clean
+	LAZYSET(skill_xp, skill_type, xp_for_level(level))
+	if(level != old_level)
+		apply_skill_level(skill_type, level, old_level, silent)
+
+/**
+ * Adjust a skill level by a delta, optionally capped at a maximum.
+ * Equivalent to old adjust_skillrank() / clamped_adjust_skill_level(). this is just legacy stuff to avoid the billion issues
+ *
+ * Arguments:
+ *   skill_type - typepath of the skill
+ *   delta      - levels to add (can be negative)
+ *   max_level  - optional ceiling; pass null for no cap
+ *   silent     - suppress messages
+ */
+/datum/attribute_holder/proc/adjust_skill_level(skill_type, delta, max_level = null, silent = FALSE)
+	if(!ispath(skill_type, SKILL))
+		return
+	var/current = nulltozero(raw_attribute_list[skill_type])
+	var/target = clamp(current + delta, SKILL_LEVEL_NONE, SKILL_LEVEL_LEGENDARY * 10)
+	if(!isnull(max_level))
+		target = min(target, max_level)
+	if(target == current)
+		return
+	set_skill_level(skill_type, target, silent)
+
+/**
+ * Wipes all skill levels and XP back to zero.
+ * Equivalent to old purge_all_skills().
+ */
+/datum/attribute_holder/proc/purge_all_skills(silent = TRUE)
+	for(var/skill_type in raw_attribute_list)
+		if(!ispath(skill_type, SKILL))
+			continue
+		var/old_level = nulltozero(raw_attribute_list[skill_type])
+		if(!old_level)
+			continue
+		LAZYSET(skill_xp, skill_type, 0)
+		apply_skill_level(skill_type, SKILL_LEVEL_NONE, old_level, silent)
+	if(!silent)
+		to_chat(parent, span_boldwarning("I forget all my skills!"))
+
+/**
+ * Writes the new level into raw_attribute_list, fires signals, handles
+ * per-skill side-effects (arcane spell points, alchemy trait), and
+ * optionally messages the player.
+ */
+/datum/attribute_holder/proc/apply_skill_level(skill_type, new_level, old_level, silent)
+	raw_attribute_list[skill_type] = new_level
+	update_attributes()
+
+	SEND_SIGNAL(parent, COMSIG_SKILL_RANK_CHANGE, skill_type, new_level * 0.1, old_level * 0.1)
+	SEND_SIGNAL(parent, COMSIG_SKILL_LEVEL_CHANGE, skill_type, new_level, old_level)
+
+	// Per-skill side-effects
+	on_skill_level_changed(skill_type, new_level, old_level)
+
+	if(silent)
+		return
+
+	var/datum/attribute/skill/skill = GET_ATTRIBUTE_DATUM(skill_type)
+	var/skill_name = istype(skill) ? skill.name : "[skill_type]"
+	if(new_level > old_level)
+		var/tier_name = skill.description_from_level(new_level)
+		to_chat(parent, span_nicegreen("My proficiency in [skill_name] grows to [tier_name]!"))
+		record_round_statistic(STATS_SKILLS_LEARNED)
+		if(ispath(skill_type, /datum/attribute/skill/combat))
+			record_round_statistic(STATS_COMBAT_SKILLS)
+	else
+		var/tier_name = new_level > 0 ? skill.description_from_level(new_level) : "nothing"
+		to_chat(parent, span_warning("My [skill_name] has weakened to [tier_name]!"))

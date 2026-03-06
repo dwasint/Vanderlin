@@ -14,9 +14,12 @@ GLOBAL_VAR_INIT(sleep_experience_modifier, 1.0)
 	/// Associative list: skill typepath -> float XP accumulated
 	/// Lazy - only populated once a skill receives XP
 	var/list/skill_xp
+	/// Associative list: skill typepath -> float multiplier override
+	var/list/skill_xp_multipliers
 
 /datum/attribute_holder/Destroy()
 	skill_xp?.Cut()
+	skill_xp_multipliers?.Cut()
 	. = ..()
 
 /**
@@ -114,95 +117,9 @@ GLOBAL_VAR_INIT(sleep_experience_modifier, 1.0)
 	apply_skill_level(skill_type, new_level, old_level, silent)
 
 	if(check_apprentice)
-		_share_apprentice_xp(skill_type, amount, silent)
+		share_apprentice_xp(skill_type, amount, silent)
 
 	return TRUE
-
-/**
- * Directly set a skill to a specific level, adjusting the XP pool to match.
- * Equivalent to the old set_skillrank().
- *
- * Arguments:
- *   skill_type - typepath of the skill
- *   level      - target level (0-60)
- *   silent     - suppress messages
- */
-/datum/attribute_holder/proc/set_skill_level(skill_type, level, silent = TRUE)
-	if(!ispath(skill_type, SKILL))
-		return
-	level = clamp(level, SKILL_LEVEL_NONE, SKILL_LEVEL_LEGENDARY * 10)
-	var/old_level = nulltozero(raw_attribute_list[skill_type])
-	// Sync the XP pool to the floor of this level so further XP gain is clean
-	LAZYSET(skill_xp, skill_type, xp_for_level(level))
-	if(level != old_level)
-		apply_skill_level(skill_type, level, old_level, silent)
-
-/**
- * Adjust a skill level by a delta, optionally capped at a maximum.
- * Equivalent to old adjust_skillrank() / clamped_adjust_skill_level(). this is just legacy stuff to avoid the billion issues
- *
- * Arguments:
- *   skill_type - typepath of the skill
- *   delta      - levels to add (can be negative)
- *   max_level  - optional ceiling; pass null for no cap
- *   silent     - suppress messages
- */
-/datum/attribute_holder/proc/adjust_skill_level(skill_type, delta, max_level = null, silent = FALSE)
-	if(!ispath(skill_type, SKILL))
-		return
-	var/current = nulltozero(raw_attribute_list[skill_type])
-	var/target = clamp(current + delta, SKILL_LEVEL_NONE, SKILL_LEVEL_LEGENDARY * 10)
-	if(!isnull(max_level))
-		target = min(target, max_level)
-	if(target == current)
-		return
-	set_skill_level(skill_type, target, silent)
-
-/**
- * Wipes all skill levels and XP back to zero.
- * Equivalent to old purge_all_skills().
- */
-/datum/attribute_holder/proc/purge_all_skills(silent = TRUE)
-	for(var/skill_type in raw_attribute_list)
-		if(!ispath(skill_type, SKILL))
-			continue
-		var/old_level = nulltozero(raw_attribute_list[skill_type])
-		if(!old_level)
-			continue
-		LAZYSET(skill_xp, skill_type, 0)
-		apply_skill_level(skill_type, SKILL_LEVEL_NONE, old_level, silent)
-	if(!silent)
-		to_chat(parent, span_boldwarning("I forget all my skills!"))
-
-/**
- * Writes the new level into raw_attribute_list, fires signals, handles
- * per-skill side-effects (arcane spell points, alchemy trait), and
- * optionally messages the player.
- */
-/datum/attribute_holder/proc/apply_skill_level(skill_type, new_level, old_level, silent)
-	raw_attribute_list[skill_type] = new_level
-	update_attributes()
-
-	SEND_SIGNAL(parent, COMSIG_SKILL_RANK_CHANGE, skill_type, new_level * 0.1, old_level * 0.1)
-	SEND_SIGNAL(parent, COMSIG_SKILL_LEVEL_CHANGE, skill_type, new_level, old_level)
-
-	// Per-skill side-effects
-	on_skill_level_changed(skill_type, new_level, old_level)
-
-	if(silent)
-		return
-
-	var/datum/attribute/skill/skill = GET_ATTRIBUTE_DATUM(skill_type)
-	var/skill_name = istype(skill) ? skill.name : "[skill_type]"
-	if(new_level > old_level)
-		var/tier_name = skill.description_from_level(new_level)
-		to_chat(parent, span_nicegreen("My proficiency in [skill_name] grows to [tier_name]!"))
-		record_round_statistic(STATS_SKILLS_LEARNED)
-		if(ispath(skill_type, /datum/attribute/skill/combat))
-			record_round_statistic(STATS_COMBAT_SKILLS)
-	else
-		var/tier_name = new_level > 0 ? skill.description_from_level(new_level) : "nothing"
-		to_chat(parent, span_warning("My [skill_name] has weakened to [tier_name]!"))
 
 /**
  * Handles special-case side effects on level change.
@@ -227,19 +144,11 @@ GLOBAL_VAR_INIT(sleep_experience_modifier, 1.0)
  * Shares a fraction of XP with nearby apprentices.
  * Mirrors the old adjust_apprentice_exp() logic.
  */
-/datum/attribute_holder/proc/_share_apprentice_xp(skill_type, base_amount, silent)
+/datum/attribute_holder/proc/share_apprentice_xp(skill_type, base_amount, silent)
 	// The apprentice relationship is tracked elsewhere (see apprentice system).
 	// We fire a signal and let the apprentice system handle the actual grant,
 	// so this file stays decoupled from however apprentices are stored.
 	SEND_SIGNAL(parent, COMSIG_SHARE_APPRENTICE_XP, skill_type, base_amount, silent)
-
-/datum/attribute_holder
-	/// Associative list: skill typepath -> float multiplier override
-	var/list/skill_xp_multipliers
-
-/datum/attribute_holder/Destroy()
-	skill_xp_multipliers?.Cut()
-	. = ..()
 
 /**
  * Returns the effective XP multiplier for a skill.
@@ -313,3 +222,21 @@ GLOBAL_VAR_INIT(sleep_experience_modifier, 1.0)
 	else if(H.age == AGE_CHILD)
 		boon += 0.2
 	return boon
+
+/**
+ * Returns an additive bonus to XP gains from active stress events.
+ * Base mob returns 0 - only carbon mobs accumulate stress events.
+ */
+/mob/proc/get_inspirational_bonus()
+	return 0
+
+/**
+ * Sums quality_modifier from all active stress events on this carbon mob.
+ * Positive stress events (pride, accomplishment) give bonus XP.
+ * Negative ones (fear, exhaustion) can reduce it.
+ */
+/mob/living/carbon/get_inspirational_bonus()
+	var/bonus = 0
+	for(var/datum/stress_event/event in stressors)
+		bonus += event.quality_modifier
+	return bonus

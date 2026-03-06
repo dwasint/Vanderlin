@@ -102,7 +102,7 @@
 	if(taught_anyone)
 		parent.add_stress(/datum/stress_event/apprentice_making_me_proud)
 
-/datum/attribute_holder/proc/on_share_apprentice_xp(mob/source, skill_type, base_amount, silent)
+/datum/attribute_holder/proc/onshare_apprentice_xp(mob/source, skill_type, base_amount, silent)
 	SIGNAL_HANDLER
 	adjust_apprentice_exp(skill_type, base_amount, silent)
 
@@ -161,21 +161,3 @@
  */
 /mob/proc/set_apprentice_training_skills(list/trainable_skills)
 	attributes?.apprentice_training_skills = trainable_skills
-
-/**
- * Returns an additive bonus to XP gains from active stress events.
- * Base mob returns 0 - only carbon mobs accumulate stress events.
- */
-/mob/proc/get_inspirational_bonus()
-	return 0
-
-/**
- * Sums quality_modifier from all active stress events on this carbon mob.
- * Positive stress events (pride, accomplishment) give bonus XP.
- * Negative ones (fear, exhaustion) can reduce it.
- */
-/mob/living/carbon/get_inspirational_bonus()
-	var/bonus = 0
-	for(var/datum/stress_event/event in stressors)
-		bonus += event.quality_modifier
-	return bonus
