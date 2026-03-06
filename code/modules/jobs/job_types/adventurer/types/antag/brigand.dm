@@ -1,3 +1,8 @@
+/datum/attribute_holder/sheet/job/
+	raw_attribute_list = list(
+
+	)
+
 /datum/attribute_holder/sheet/job/brigand
 	raw_attribute_list = list(
 		STAT_STRENGTH = 2,

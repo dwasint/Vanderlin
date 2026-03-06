@@ -1,3 +1,26 @@
+/datum/attribute_holder/sheet/job/ranger
+	raw_attribute_list = list(
+		STAT_PERCEPTION = 2,
+		STAT_ENDURANCE = 1,
+		STAT_SPEED = 1,
+		/datum/attribute/skill/combat/knives = 30,
+		/datum/attribute/skill/combat/bows = 30,
+		/datum/attribute/skill/craft/tanning = 20,
+		/datum/attribute/skill/combat/unarmed = 20,
+		/datum/attribute/skill/combat/wrestling = 10,
+		/datum/attribute/skill/craft/crafting = 20,
+		/datum/attribute/skill/misc/swimming = 30,
+		/datum/attribute/skill/misc/climbing = 40,
+		/datum/attribute/skill/labor/taming = 20,
+		/datum/attribute/skill/misc/sewing = 30,
+		/datum/attribute/skill/misc/sneaking = 20,
+		/datum/attribute/skill/craft/traps = 10,
+		/datum/attribute/skill/misc/athletics = 20,
+		/datum/attribute/skill/misc/medicine = 20,
+		/datum/attribute/skill/craft/cooking = 10,
+		/datum/attribute/skill/misc/reading = 10,
+	)
+
 /datum/job/advclass/combat/ranger
 	title = "Ranger"
 	tutorial = "Humen and elf rangers often live among each other, as these bow-wielding \
@@ -18,30 +41,7 @@
 	exp_type = list(EXP_TYPE_ADVENTURER, EXP_TYPE_LIVING, EXP_TYPE_COMBAT, EXP_TYPE_RANGER)
 	exp_types_granted = list(EXP_TYPE_ADVENTURER, EXP_TYPE_COMBAT, EXP_TYPE_RANGER)
 
-	skills = list(
-		/datum/attribute/skill/combat/knives = 3,
-		/datum/attribute/skill/combat/bows = 3,
-		/datum/attribute/skill/craft/tanning = 2,
-		/datum/attribute/skill/combat/unarmed = 2,
-		/datum/attribute/skill/combat/wrestling = 1,
-		/datum/attribute/skill/craft/crafting = 2,
-		/datum/attribute/skill/misc/swimming = 3,
-		/datum/attribute/skill/misc/climbing = 4,
-		/datum/attribute/skill/labor/taming = 2,
-		/datum/attribute/skill/misc/sewing = 3,
-		/datum/attribute/skill/misc/sneaking = 2,
-		/datum/attribute/skill/craft/traps = 1,
-		/datum/attribute/skill/misc/athletics = 2,
-		/datum/attribute/skill/misc/medicine = 2,
-		/datum/attribute/skill/craft/cooking = 1,
-		/datum/attribute/skill/misc/reading = 1,
-	)
-
-	jobstats = list(
-		STAT_PERCEPTION = 2,
-		STAT_ENDURANCE = 1,
-		STAT_SPEED = 1,
-	)
+	attribute_sheet = /datum/attribute_holder/sheet/job/ranger
 
 	traits = list(
 		TRAIT_DODGEEXPERT

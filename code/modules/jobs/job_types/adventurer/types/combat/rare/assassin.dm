@@ -1,3 +1,26 @@
+/datum/attribute_holder/sheet/job/assassin
+	raw_attribute_list = list(
+		STAT_PERCEPTION = 2,
+		STAT_SPEED = 2,
+		/datum/attribute/skill/combat/knives = 40,
+		/datum/attribute/skill/combat/swords = 20,
+		/datum/attribute/skill/combat/bows = 20,
+		/datum/attribute/skill/combat/crossbows = 40,
+		/datum/attribute/skill/combat/unarmed = 30,
+		/datum/attribute/skill/combat/wrestling = 20,
+		/datum/attribute/skill/misc/swimming = 20,
+		/datum/attribute/skill/misc/climbing = 50,
+		/datum/attribute/skill/misc/sneaking = 50,
+		/datum/attribute/skill/misc/stealing = 30,
+		/datum/attribute/skill/misc/lockpicking = 40,
+		/datum/attribute/skill/misc/sewing = 10,
+		/datum/attribute/skill/misc/riding = 30,
+		/datum/attribute/skill/misc/athletics = 40,
+		/datum/attribute/skill/misc/medicine = 20,
+		/datum/attribute/skill/craft/traps = 30,
+		/datum/attribute/skill/misc/reading = 10,
+	)
+
 /datum/job/advclass/combat/assassin
 	title = "Assassin"
 	tutorial = "From a young age you have been drawn to blood, to hurting others. Eventually you found others like you, and a god who would bless your actions. Your cursed dagger has never led you astray, and with every stab you feel a little less empty."
@@ -26,30 +49,7 @@
 		/datum/job_pack/assassin/assassin_faceless,
 	)
 
-	skills = list(
-		/datum/attribute/skill/combat/knives = 4,
-		/datum/attribute/skill/combat/swords = 2,
-		/datum/attribute/skill/combat/bows = 2,
-		/datum/attribute/skill/combat/crossbows = 4,
-		/datum/attribute/skill/combat/unarmed = 3,
-		/datum/attribute/skill/combat/wrestling = 2,
-		/datum/attribute/skill/misc/swimming = 2,
-		/datum/attribute/skill/misc/climbing = 5,
-		/datum/attribute/skill/misc/sneaking = 5,
-		/datum/attribute/skill/misc/stealing = 3,
-		/datum/attribute/skill/misc/lockpicking = 4,
-		/datum/attribute/skill/misc/sewing = 1,
-		/datum/attribute/skill/misc/riding = 3,
-		/datum/attribute/skill/misc/athletics = 4,
-		/datum/attribute/skill/misc/medicine = 2,
-		/datum/attribute/skill/craft/traps = 3,
-		/datum/attribute/skill/misc/reading = 1,
-	)
-
-	jobstats = list(
-		STAT_PERCEPTION = 2,
-		STAT_SPEED = 2,
-	)
+	attribute_sheet = /datum/attribute_holder/sheet/job/assassin
 
 	traits = list(
 		TRAIT_DODGEEXPERT,

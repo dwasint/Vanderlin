@@ -1,3 +1,21 @@
+/datum/attribute_holder/sheet/job/heartfelthand
+	raw_attribute_list = list(
+		STAT_STRENGTH = 3,
+		STAT_PERCEPTION = 2,
+		STAT_INTELLIGENCE = 3,
+		/datum/attribute/skill/combat/axesmaces = 10,
+		/datum/attribute/skill/combat/wrestling = 20,
+		/datum/attribute/skill/combat/knives = 30,
+		/datum/attribute/skill/combat/swords = 30,
+		/datum/attribute/skill/combat/unarmed = 30,
+		/datum/attribute/skill/craft/crafting = 10,
+		/datum/attribute/skill/misc/reading = 30,
+		/datum/attribute/skill/misc/swimming = 20,
+		/datum/attribute/skill/misc/climbing = 20,
+		/datum/attribute/skill/craft/cooking = 10,
+		/datum/attribute/skill/labor/mathematics = 30,
+	)
+
 /datum/job/advclass/combat/heartfelthand
 	title = "Hand of Heartfelt"
 	tutorial = "You serve your lord as hand, taking care of diplomatic actions within your realm, \
@@ -8,25 +26,7 @@
 	total_positions = 1
 	roll_chance = 50
 
-	skills = list(
-		/datum/attribute/skill/combat/axesmaces = 1,
-		/datum/attribute/skill/combat/wrestling = 2,
-		/datum/attribute/skill/combat/knives = 3,
-		/datum/attribute/skill/combat/swords = 3,
-		/datum/attribute/skill/combat/unarmed = 3,
-		/datum/attribute/skill/craft/crafting = 1,
-		/datum/attribute/skill/misc/reading = 3,
-		/datum/attribute/skill/misc/swimming = 2,
-		/datum/attribute/skill/misc/climbing = 2,
-		/datum/attribute/skill/craft/cooking = 1,
-		/datum/attribute/skill/labor/mathematics = 3,
-	)
-
-	jobstats = list(
-		STAT_STRENGTH = 3,
-		STAT_PERCEPTION = 2,
-		STAT_INTELLIGENCE = 3,
-	)
+	attribute_sheet = /datum/attribute_holder/sheet/job/heartfelthand
 
 	traits = list(
 		TRAIT_SEEPRICES,

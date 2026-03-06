@@ -1,3 +1,24 @@
+/datum/attribute_holder/sheet/job/barbarian
+	raw_attribute_list = list(
+		STAT_STRENGTH = 3,
+		STAT_ENDURANCE = 2,
+		STAT_CONSTITUTION = 2,
+		STAT_INTELLIGENCE = -2,
+		/datum/attribute/skill/combat/axesmaces = 10,
+		/datum/attribute/skill/combat/wrestling = 20,
+		/datum/attribute/skill/combat/unarmed = 30,
+		/datum/attribute/skill/combat/swords = 10,
+		/datum/attribute/skill/combat/bows = 20,
+		/datum/attribute/skill/craft/crafting = 10,
+		/datum/attribute/skill/craft/tanning = 10,
+		/datum/attribute/skill/misc/swimming = 30,
+		/datum/attribute/skill/misc/climbing = 30,
+		/datum/attribute/skill/misc/riding = 20,
+		/datum/attribute/skill/misc/sewing = 20,
+		/datum/attribute/skill/craft/cooking = 10,
+		/datum/attribute/skill/misc/athletics = 30,
+	)
+
 /datum/job/advclass/combat/barbarian
 	title = "Barbarian"
 	tutorial = "Wildmen and warriors all, Barbarians forego the intricacies of modern warfare in favour of raw strength and brutal cunning. Few of them can truly adjust to the civilized, docile lands of lords and ladies."
@@ -14,28 +35,7 @@
 
 	allowed_patrons = list(/datum/patron/divine/ravox, /datum/patron/divine/abyssor, /datum/patron/divine/necra, /datum/patron/divine/dendor,/datum/patron/inhumen/graggar, /datum/patron/godless/godless, /datum/patron/godless/autotheist, /datum/patron/godless/defiant, /datum/patron/godless/dystheist, /datum/patron/godless/naivety, /datum/patron/godless/rashan, /datum/patron/godless/galadros)
 
-	jobstats = list(
-		STAT_STRENGTH = 3,
-		STAT_ENDURANCE = 2,
-		STAT_CONSTITUTION = 2,
-		STAT_INTELLIGENCE = -2,
-	)
-
-	skills = list(
-		/datum/attribute/skill/combat/axesmaces = 1,
-		/datum/attribute/skill/combat/wrestling = 2,
-		/datum/attribute/skill/combat/unarmed = 3,
-		/datum/attribute/skill/combat/swords = 1,
-		/datum/attribute/skill/combat/bows = 2,
-		/datum/attribute/skill/craft/crafting = 1,
-		/datum/attribute/skill/craft/tanning = 1,
-		/datum/attribute/skill/misc/swimming = 3,
-		/datum/attribute/skill/misc/climbing = 3,
-		/datum/attribute/skill/misc/riding = 2,
-		/datum/attribute/skill/misc/sewing = 2,
-		/datum/attribute/skill/craft/cooking = 1,
-		/datum/attribute/skill/misc/athletics = 3,
-	)
+	attribute_sheet = /datum/attribute_holder/sheet/job/barbarian
 
 	traits = list(
 		TRAIT_STEELHEARTED,

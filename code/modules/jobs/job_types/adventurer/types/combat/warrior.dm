@@ -1,3 +1,28 @@
+/datum/attribute_holder/sheet/job/sfighter
+	attribute_variance = list(
+		/datum/attribute/skill/misc/riding = list(20, 30)
+	)
+	raw_attribute_list = list(
+		STAT_STRENGTH = 2,
+		STAT_ENDURANCE = 1,
+		STAT_CONSTITUTION = 1,
+		STAT_INTELLIGENCE = -1, // Muscle brains
+		/datum/attribute/skill/combat/wrestling = 20,
+		/datum/attribute/skill/combat/unarmed = 30,
+		/datum/attribute/skill/misc/athletics = 30,
+		/datum/attribute/skill/combat/swords = 20,
+		/datum/attribute/skill/combat/axesmaces = 20,
+		/datum/attribute/skill/combat/whipsflails = 20,
+		/datum/attribute/skill/combat/polearms = 20,
+		/datum/attribute/skill/combat/bows = 10,
+		/datum/attribute/skill/combat/crossbows = 10,
+		/datum/attribute/skill/combat/shields = 30,
+		/datum/attribute/skill/combat/knives = 20,
+		/datum/attribute/skill/misc/swimming = 20,
+		/datum/attribute/skill/misc/climbing = 20,
+		/datum/attribute/skill/misc/reading = 10,
+	)
+
 /datum/job/advclass/combat/sfighter
 	title = "Fighter"
 	tutorial = "Wandering sellswords, foolhardy gloryhounds, deserters, armed peasants... many and varied folk turn to the path of the fighter. Very few meet anything greater than the bottom of a tankard or the wrong end of a noose. ¿why do you fight? Gold? Fame? Justice? or because all you got left are your hands and the will to use them?"
@@ -6,29 +31,7 @@
 	category_tags = list(CTAG_ADVENTURER)
 	cmode_music = 'sound/music/cmode/adventurer/CombatWarrior.ogg'
 
-	skills = list(
-		/datum/attribute/skill/combat/wrestling = 2,
-		/datum/attribute/skill/combat/unarmed = 3,
-		/datum/attribute/skill/misc/athletics = 3,
-		/datum/attribute/skill/combat/swords = 2,
-		/datum/attribute/skill/combat/axesmaces = 2,
-		/datum/attribute/skill/combat/whipsflails = 2,
-		/datum/attribute/skill/combat/polearms = 2,
-		/datum/attribute/skill/combat/bows = 1,
-		/datum/attribute/skill/combat/crossbows = 1,
-		/datum/attribute/skill/combat/shields = 3,
-		/datum/attribute/skill/combat/knives = 2,
-		/datum/attribute/skill/misc/swimming = 2,
-		/datum/attribute/skill/misc/climbing = 2,
-		/datum/attribute/skill/misc/reading = 1,
-	)
-
-	jobstats = list(
-		STAT_STRENGTH = 2,
-		STAT_ENDURANCE = 1,
-		STAT_CONSTITUTION = 1,
-		STAT_INTELLIGENCE = -1, // Muscle brains
-	)
+	attribute_sheet = /datum/attribute_holder/sheet/job/sfighter
 
 	traits = list(
 		TRAIT_MEDIUMARMOR,
@@ -44,9 +47,6 @@
 
 	if(spawned.age == AGE_OLD) // old warriors get immunity to see gibs
 		ADD_TRAIT(spawned, TRAIT_STEELHEARTED, TRAIT_GENERIC)
-
-	spawned.adjust_skillrank(/datum/attribute/skill/misc/riding, pick(1,1,2), TRUE)
-
 
 /datum/outfit/adventurer/sfighter
 	name = "Fighter (Adventurer)"
