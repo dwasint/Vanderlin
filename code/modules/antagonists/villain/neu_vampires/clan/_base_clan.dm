@@ -1,5 +1,18 @@
 GLOBAL_LIST_EMPTY_TYPED(vampire_clans, /datum/clan)	//>:3
 
+/datum/attribute_holder/sheet/job/clan
+	attribute_variance = list(
+		STAT_STRENGTH = list(1, 2)
+	)
+	clamped_adjustment = list(
+		/datum/attribute/skill/misc/athletics = list(50, 50),
+		/datum/attribute/skill/combat/unarmed = list(40, 40)
+	)
+	raw_attribute_list = list(
+		STAT_SPEED = 1,
+		/datum/attribute/skill/magic/blood = 20
+	)
+
 /*
 This datum stores a declarative description of clans, in order to make an instance of the clan component from this implementation in runtime
 And it also helps for the character set panel
@@ -356,11 +369,7 @@ And it also helps for the character set panel
 
 	H.cmode_music = 'sound/music/cmode/antag/CombatThrall.ogg'
 
-	H.adjust_skillrank(/datum/attribute/skill/magic/blood, 2, TRUE)
-	H.clamped_adjust_skillrank(/datum/attribute/skill/misc/athletics, 5, 5, TRUE)
-	H.clamped_adjust_skillrank(/datum/attribute/skill/combat/unarmed, 4, 4, TRUE)
-	H.change_stat(STAT_STRENGTH, pick(1,2))
-	H.change_stat(STAT_SPEED, 1)
+	H.attributes?.add_sheet(/datum/attribute_holder/sheet/job/clan)
 	H.remove_stat_modifier(STATMOD_AGE)
 	var/datum/action/cooldown/spell/undirected/transfix/transfix = new(H.mind)
 	transfix.Grant(H)

@@ -82,7 +82,7 @@
 	var/mob/living/carbon/human/H = owner
 
 	if(initial(B.granted_skill))
-		H.clamped_adjust_skillrank(initial(B.granted_skill), 1, initial(B.clamp), TRUE)
+		H.clamped_adjust_skillrank(initial(B.granted_skill), 10, initial(B.clamp), TRUE)
 		H.adjust_skill_exp_multiplier(initial(B.granted_skill), initial(B.xp_multiplier))
 
 	// Apply stat penalty
@@ -118,7 +118,7 @@
 	/// How much to reduce the stat
 	var/stat_reduction = 1
 	///what we clamp to
-	var/clamp = SKILL_LEVEL_LEGENDARY
+	var/clamp = 60
 	///how much of an xp multiplier we add
 	var/xp_multiplier = 0.2
 
@@ -153,7 +153,7 @@
 /datum/backstory/combat
 	abstract_type = /datum/backstory/combat
 	desc = "A combat-focused background."
-	clamp = SKILL_LEVEL_APPRENTICE
+	clamp = 20
 	xp_multiplier = 0.1
 
 /datum/backstory/combat/soldier
@@ -424,7 +424,7 @@
 	abstract_type = /datum/backstory/magic
 	desc = "A magical background."
 	stat_reduction = 0
-	clamp = SKILL_LEVEL_APPRENTICE
+	clamp = 20
 
 /datum/backstory/magic/acolyte
 	name = "Former Acolyte"

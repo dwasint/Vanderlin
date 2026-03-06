@@ -46,10 +46,10 @@
 					choice = /obj/item/weapon/whip/psydon/relic
 				if("Sanctum - Silver Halberd")
 					choice = /obj/item/weapon/polearm/halberd/psydon/relic
-					user.clamped_adjust_skillrank(/datum/attribute/skill/combat/polearms, 4, 4, TRUE)	//We make sure the weapon is usable by the Inquisitor.
+					user.clamped_adjust_skillrank(/datum/attribute/skill/combat/polearms, 40, 40, TRUE)	//We make sure the weapon is usable by the Inquisitor.
 				if("Crusade - Silver Greatsword")
 					choice = /obj/item/weapon/sword/long/greatsword/psydon
-					user.clamped_adjust_skillrank(/datum/attribute/skill/combat/swords, 4, 4, TRUE)		//Ditto.
+					user.clamped_adjust_skillrank(/datum/attribute/skill/combat/swords, 40, 40, TRUE)		//Ditto.
 				if("Censer of Penitence")
 					choice = /obj/item/flashlight/flare/torch/lantern/psycenser
 			to_chat(user, span_info("I have chosen the relic, may HE guide my hand."))

@@ -1,3 +1,26 @@
+/datum/attribute_holder/sheet/job/rthief
+	raw_attribute_list = list(
+		STAT_STRENGTH = -1,
+		STAT_ENDURANCE = 1,
+		STAT_PERCEPTION = 1,
+		STAT_SPEED = 2,
+		/datum/attribute/skill/combat/axesmaces = 30,
+		/datum/attribute/skill/combat/knives = 20,
+		/datum/attribute/skill/combat/crossbows = 10,
+		/datum/attribute/skill/combat/bows = 30,
+		/datum/attribute/skill/misc/athletics = 30,
+		/datum/attribute/skill/combat/wrestling = 20,
+		/datum/attribute/skill/combat/unarmed = 20,
+		/datum/attribute/skill/misc/swimming = 20,
+		/datum/attribute/skill/misc/climbing = 50,
+		/datum/attribute/skill/misc/reading = 10,
+		/datum/attribute/skill/misc/sneaking = 40,
+		/datum/attribute/skill/misc/stealing = 40,
+		/datum/attribute/skill/misc/lockpicking = 40,
+		/datum/attribute/skill/combat/firearms = 10,
+		/datum/attribute/skill/craft/traps = 20
+	)
+
 // Reformed Thief, a class balanced to rogue. Axe and crossbow focus.
 /datum/job/advclass/adept/rthief
 	title = "Reformed Thief"
@@ -6,23 +29,7 @@
 	category_tags = list(CTAG_ADEPT)
 	cmode_music = 'sound/music/cmode/adventurer/CombatRogue.ogg'
 
-	skills = list(
-		/datum/attribute/skill/combat/axesmaces = SKILL_LEVEL_JOURNEYMAN,
-		/datum/attribute/skill/combat/knives = SKILL_LEVEL_APPRENTICE,
-		/datum/attribute/skill/combat/crossbows = SKILL_LEVEL_NOVICE,
-		/datum/attribute/skill/combat/bows = SKILL_LEVEL_JOURNEYMAN,
-		/datum/attribute/skill/misc/athletics = SKILL_LEVEL_JOURNEYMAN,
-		/datum/attribute/skill/combat/wrestling = SKILL_LEVEL_APPRENTICE,
-		/datum/attribute/skill/combat/unarmed = SKILL_LEVEL_APPRENTICE,
-		/datum/attribute/skill/misc/swimming = SKILL_LEVEL_APPRENTICE,
-		/datum/attribute/skill/misc/climbing = SKILL_LEVEL_MASTER,
-		/datum/attribute/skill/misc/reading = SKILL_LEVEL_NOVICE,
-		/datum/attribute/skill/misc/sneaking = SKILL_LEVEL_EXPERT,
-		/datum/attribute/skill/misc/stealing = SKILL_LEVEL_EXPERT,
-		/datum/attribute/skill/misc/lockpicking = SKILL_LEVEL_EXPERT,
-		/datum/attribute/skill/combat/firearms = SKILL_LEVEL_NOVICE,
-		/datum/attribute/skill/craft/traps = SKILL_LEVEL_APPRENTICE
-	)
+	attribute_sheet = /datum/attribute_holder/sheet/job/rthief
 
 	traits = list(
 		TRAIT_INQUISITION,
@@ -32,13 +39,6 @@
 		TRAIT_BLACKBAGGER,
 		TRAIT_PSYDONIAN_GRIT,
 		TRAIT_PSYDONITE,
-	)
-
-	jobstats = list(
-		STAT_STRENGTH = -1,
-		STAT_ENDURANCE = 1,
-		STAT_PERCEPTION = 1,
-		STAT_SPEED = 2,
 	)
 
 	languages = list(/datum/language/thievescant)

@@ -72,11 +72,16 @@
 		else
 			spawned.dna.species.soundpack_f = new /datum/voicepack/female/assassin()
 
+/datum/attribute_holder/sheet/job/pack/assassin_bard
+	raw_attribute_list = list(
+		/datum/attribute/skill/misc/music = 10,
+	)
+
 /datum/job_pack/assassin/assassin_bard
 	name = "Bard"
 
-	pack_skills = list(
-		/datum/attribute/skill/misc/music = 1,
+	pack_sheets = list(
+		/datum/attribute_holder/sheet/job/pack/assassin_bard
 	)
 
 	pack_contents = list(
@@ -134,11 +139,16 @@
 		var/obj/item/clothing/shirt/undershirt/colored/vagrant/shirt = new()
 		picker.equip_to_slot_or_del(shirt, ITEM_SLOT_SHIRT, TRUE)
 
+/datum/attribute_holder/sheet/job/pack/assassin_fisher
+	raw_attribute_list = list(
+		/datum/attribute/skill/labor/fishing = 10,
+	)
+
 /datum/job_pack/assassin/assassin_fisher
 	name = "Fisher"
 
-	pack_skills = list(
-		/datum/attribute/skill/labor/fishing = 1,
+	pack_sheets = list(
+		/datum/attribute_holder/sheet/job/pack/assassin_fisher
 	)
 
 	pack_contents = list(
@@ -180,12 +190,17 @@
 		var/obj/item/clothing/head/fisherhat/head = new()
 		picker.equip_to_slot_or_del(head, ITEM_SLOT_HEAD, TRUE)
 
+/datum/attribute_holder/sheet/job/pack/assassin_hunter
+	raw_attribute_list = list(
+		/datum/attribute/skill/combat/bows = 20,
+		/datum/attribute/skill/combat/crossbows = -20
+	)
+
 /datum/job_pack/assassin/assassin_hunter
 	name = "Hunter"
 
-	pack_skills = list(
-		/datum/attribute/skill/combat/bows = 2,
-		/datum/attribute/skill/combat/crossbows = -2, // Trade-off
+	pack_sheets = list(
+		/datum/attribute_holder/sheet/job/pack/assassin_hunter
 	)
 
 	pack_contents = list(
@@ -208,13 +223,18 @@
 		/obj/item/weapon/knife/hunting = 1,
 	)
 
+/datum/attribute_holder/sheet/job/pack/assassin_miner
+	raw_attribute_list = list(
+		/datum/attribute/skill/labor/mining = 10,
+		/datum/attribute/skill/combat/axesmaces = 20,
+		/datum/attribute/skill/combat/swords = -20, // Trade-off
+	)
+
 /datum/job_pack/assassin/assassin_miner
 	name = "Miner"
 
-	pack_skills = list(
-		/datum/attribute/skill/labor/mining = 1,
-		/datum/attribute/skill/combat/axesmaces = 2,
-		/datum/attribute/skill/combat/swords = -2, // Trade-off
+	pack_sheets = list(
+		/datum/attribute_holder/sheet/job/pack/assassin_miner
 	)
 
 	pack_contents = list(
@@ -301,11 +321,16 @@
 		var/obj/item/ammo_holder/quiver/arrows/beltl = new()
 		picker.equip_to_slot_or_del(beltl, ITEM_SLOT_BELT_L, TRUE)
 
+/datum/attribute_holder/sheet/job/pack/assassin_peasant
+	raw_attribute_list = list(
+		/datum/attribute/skill/labor/farming = 10,
+	)
+
 /datum/job_pack/assassin/assassin_peasant
 	name = "Peasant"
 
-	pack_skills = list(
-		/datum/attribute/skill/labor/farming = 1,
+	pack_sheets = list(
+		/datum/attribute_holder/sheet/job/pack/assassin_peasant
 	)
 
 	pack_contents = list(
@@ -344,12 +369,17 @@
 		picker.equip_to_slot_or_del(shirt, ITEM_SLOT_SHIRT, TRUE)
 		picker.equip_to_slot_or_del(null, ITEM_SLOT_PANTS, TRUE)
 
+/datum/attribute_holder/sheet/job/pack/assassin_carpenter
+	raw_attribute_list = list(
+		/datum/attribute/skill/combat/axesmaces = 20,
+		/datum/attribute/skill/combat/swords = -20, // Trade-off
+	)
+
 /datum/job_pack/assassin/assassin_carpenter
 	name = "Carpenter"
 
-	pack_skills = list(
-		/datum/attribute/skill/combat/axesmaces = 2,
-		/datum/attribute/skill/combat/swords = -2, // Trade-off
+	pack_sheets = list(
+		/datum/attribute_holder/sheet/job/pack/assassin_carpenter
 	)
 
 	pack_contents = list(
@@ -392,12 +422,17 @@
 		/obj/item/clothing/cloak/raincloak/colored/mortus = ITEM_SLOT_CLOAK,
 	)
 
+/datum/attribute_holder/sheet/job/pack/assassin_ranger
+	raw_attribute_list = list(
+		/datum/attribute/skill/combat/bows = 20,
+		/datum/attribute/skill/combat/crossbows = -20, // Trade-off
+	)
+
 /datum/job_pack/assassin/assassin_ranger
 	name = "Ranger"
 
-	pack_skills = list(
-		/datum/attribute/skill/combat/bows = 2,
-		/datum/attribute/skill/combat/crossbows = -2, // Trade-off
+	pack_sheets = list(
+		/datum/attribute_holder/sheet/job/pack/assassin_ranger
 	)
 
 	pack_contents = list(
@@ -447,13 +482,18 @@
 		var/obj/item/clothing/cloak/raincloak/colored/brown/cloak = new()
 		picker.equip_to_slot_or_del(cloak, ITEM_SLOT_CLOAK, TRUE)
 
+/datum/attribute_holder/sheet/job/pack/assassin_servant
+	raw_attribute_list = list(
+		/datum/attribute/skill/misc/sewing = 20,
+		/datum/attribute/skill/craft/crafting = 10,
+		/datum/attribute/skill/craft/cooking = 30,
+	)
+
 /datum/job_pack/assassin/assassin_servant
 	name = "Servant"
 
-	pack_skills = list(
-		/datum/attribute/skill/misc/sewing = 2,
-		/datum/attribute/skill/craft/crafting = 1,
-		/datum/attribute/skill/craft/cooking = 3,
+	pack_sheets = list(
+		/datum/attribute_holder/sheet/job/pack/assassin_servant
 	)
 
 	pack_contents = list(

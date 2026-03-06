@@ -72,15 +72,13 @@
 	attributes?.set_skill_level(skill_type, level * 10, silent)
 
 /**
- * LEGACY: Raises a skill by amt (old 0-6 scale) up to a maximum (old 0-6 scale).
- * Both amt and max are multiplied by 10 before applying.
  *
  * Example (unchanged call site):
- *   blade.clamped_adjust_skillrank(/datum/attribute/skill/combat/swords, 2, 4)
+ *   blade.clamped_adjust_skillrank(/datum/attribute/skill/combat/swords, 20, 40)
  *   -> raises skill by up to 20, capped at level 40 (expert)
  */
 /mob/proc/clamped_adjust_skillrank(skill_type, amt, max, silent = FALSE)
-	attributes?.adjust_skill_level(skill_type, amt * 10, max * 10, silent)
+	attributes?.adjust_skill_level(skill_type, amt, max, silent)
 
 /mob/proc/get_skill_exp_multiplier(skill_type)
 	return attributes?.get_skill_xp_multiplier(skill_type)

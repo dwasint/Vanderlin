@@ -58,7 +58,7 @@
 	switch(weapon_choice)
 		if("Discipline - Unarmed")
 			gloves_to_wear = /obj/item/clothing/gloves/bandages/pugilist
-			spawned.clamped_adjust_skillrank(/datum/attribute/skill/combat/unarmed, 1, 4)
+			spawned.clamped_adjust_skillrank(/datum/attribute/skill/combat/unarmed, 10, 40)
 			ADD_TRAIT(spawned, TRAIT_CRITICAL_RESISTANCE, JOB_TRAIT)
 			ADD_TRAIT(spawned, TRAIT_IGNOREDAMAGESLOWDOWN, JOB_TRAIT)
 		if("Katar")
@@ -66,7 +66,7 @@
 		if("Knuckledusters")
 			ADD_TRAIT(spawned, TRAIT_CRITICAL_RESISTANCE, JOB_TRAIT)
 		if("Quarterstaff")
-			spawned.clamped_adjust_skillrank(/datum/attribute/skill/combat/polearms, 3, 3)
+			spawned.clamped_adjust_skillrank(/datum/attribute/skill/combat/polearms, 30, 30)
 			spawned.adjust_stat_modifier(STATMOD_JOB, STAT_PERCEPTION, 1)
 			spawned.adjust_stat_modifier(STATMOD_JOB, STAT_INTELLIGENCE, 1)
 	spawned.equip_to_slot_or_del(new gloves_to_wear, ITEM_SLOT_GLOVES, TRUE)
