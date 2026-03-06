@@ -14,17 +14,6 @@
 	return attributes?.adjust_experience(skill_type, amount, silent, check_apprentice)
 
 /**
- * Sets a skill directly to a level (0-60), syncing the XP pool to match.
- *
- * Arguments:
- *   skill_type - typepath of the skill
- *   level      - target level in the new 0-60 range
- *   silent     - suppress messages
- */
-/mob/proc/set_skill_level(skill_type, level, silent = TRUE)
-	attributes?.set_skill_level(skill_type, level, silent)
-
-/**
  * Adjusts a skill by a delta in the new 0-60 range, with an optional cap.
  *
  * Arguments:
@@ -59,54 +48,3 @@
  */
 /mob/proc/adjust_skillrank(skill_type, amt, silent = FALSE)
 	attributes?.adjust_skill_level(skill_type, amt * 10, null, silent)
-
-/**
- * LEGACY: Sets a skill to a level in the old 0-6 scale.
- * Multiplies level by 10 before applying.
- *
- * Example (unchanged call site):
- *   blade.set_skillrank(/datum/attribute/skill/combat/swords, 5)
- *   -> sets skill to level 50 (master)
- */
-/mob/proc/set_skillrank(skill_type, level, silent = TRUE)
-	attributes?.set_skill_level(skill_type, level * 10, silent)
-
-/**
- *
- * Example (unchanged call site):
- *   blade.clamped_adjust_skillrank(/datum/attribute/skill/combat/swords, 20, 40)
- *   -> raises skill by up to 20, capped at level 40 (expert)
- */
-/mob/proc/clamped_adjust_skillrank(skill_type, amt, max, silent = FALSE)
-	attributes?.adjust_skill_level(skill_type, amt, max, silent)
-
-/mob/proc/get_skill_exp_multiplier(skill_type)
-	return attributes?.get_skill_xp_multiplier(skill_type)
-
-/mob/proc/set_skill_exp_multiplier(skill_type, multiplier)
-	attributes?.set_skill_xp_multiplier(skill_type, multiplier)
-
-/mob/proc/adjust_skill_exp_multiplier(skill_type, amount)
-	attributes?.adjust_skill_xp_multiplier(skill_type, amount)
-
-/mob/proc/remove_skill_exp_multiplier(skill_type)
-	attributes?.remove_skill_xp_multiplier(skill_type)
-
-/**
- * Returns the raw XP accumulated toward a skill (useful for UI/debug).
- */
-/mob/proc/get_skill_xp(skill_type)
-	return attributes?.get_skill_xp(skill_type)
-
-/**
- * Returns the learning boon multiplier for a skill (age/trait modifier).
- * Multiply your XP grant by this if you want age to affect training speed.
- */
-/mob/proc/get_learning_boon(skill_type)
-	return attributes?.get_learning_boon(skill_type)
-
-/**
- * Prints all current skill levels to the mob's chat.
- */
-/mob/proc/print_skill_levels()
-	attributes?.print_skills(src)

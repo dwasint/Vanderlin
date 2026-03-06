@@ -65,13 +65,13 @@
 
 	switch(choice)
 		if("Axe")
-			spawned.clamped_adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 20, 30, TRUE)
+			spawned.clamped_adjust_skill_level(/datum/attribute/skill/combat/axesmaces, 20, 30, TRUE)
 		if("Mace")
-			spawned.clamped_adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 20, 30, TRUE)
+			spawned.clamped_adjust_skill_level(/datum/attribute/skill/combat/axesmaces, 20, 30, TRUE)
 		if("Sword")
-			spawned.clamped_adjust_skillrank(/datum/attribute/skill/combat/swords, 20, 30, TRUE)
+			spawned.clamped_adjust_skill_level(/datum/attribute/skill/combat/swords, 20, 30, TRUE)
 		if("Club")
-			spawned.clamped_adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 20, 30, TRUE)
+			spawned.clamped_adjust_skill_level(/datum/attribute/skill/combat/axesmaces, 20, 30, TRUE)
 
 /datum/outfit/adventurer/barbarian
 	name = "Barbarian (Adventurer)"

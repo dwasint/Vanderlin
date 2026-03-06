@@ -82,7 +82,7 @@
 	var/mob/living/carbon/human/H = owner
 
 	if(initial(B.granted_skill))
-		H.clamped_adjust_skillrank(initial(B.granted_skill), 10, initial(B.clamp), TRUE)
+		H.clamped_adjust_skill_level(initial(B.granted_skill), 10, initial(B.clamp), TRUE)
 		H.adjust_skill_exp_multiplier(initial(B.granted_skill), initial(B.xp_multiplier))
 
 	// Apply stat penalty

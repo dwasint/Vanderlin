@@ -74,11 +74,11 @@
 		AddComponent(/datum/component/ai_aggro_system)
 		wander = TRUE
 
-	clamped_adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 20, 30, TRUE)
-	clamped_adjust_skillrank(/datum/attribute/skill/combat/crossbows, 20, 30, TRUE)
-	clamped_adjust_skillrank(/datum/attribute/skill/combat/wrestling, 10, 30, TRUE)
-	clamped_adjust_skillrank(/datum/attribute/skill/combat/unarmed, 10, 30, TRUE)
-	clamped_adjust_skillrank(/datum/attribute/skill/combat/swords, 20, 30, TRUE)
+	clamped_adjust_skill_level(/datum/attribute/skill/combat/axesmaces, 20, 30, TRUE)
+	clamped_adjust_skill_level(/datum/attribute/skill/combat/crossbows, 20, 30, TRUE)
+	clamped_adjust_skill_level(/datum/attribute/skill/combat/wrestling, 10, 30, TRUE)
+	clamped_adjust_skill_level(/datum/attribute/skill/combat/unarmed, 10, 30, TRUE)
+	clamped_adjust_skill_level(/datum/attribute/skill/combat/swords, 20, 30, TRUE)
 
 	mind.current.job = null
 	mind.add_antag_datum(/datum/antagonist/skeleton)

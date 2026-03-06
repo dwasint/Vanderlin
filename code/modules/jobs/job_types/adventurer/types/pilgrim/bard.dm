@@ -60,7 +60,7 @@
 		title = "XYLIX"
 	)
 	spawned.inspiration = new /datum/inspiration(spawned)
-	spawned.clamped_adjust_skillrank(/datum/attribute/skill/misc/music, 4, 4, TRUE)
+	spawned.clamped_adjust_skill_level(/datum/attribute/skill/misc/music, 4, 4, TRUE)
 
 	if(spawned.dna?.species?.id == SPEC_ID_DWARF)
 		spawned.cmode_music = 'sound/music/cmode/combat_dwarf.ogg'

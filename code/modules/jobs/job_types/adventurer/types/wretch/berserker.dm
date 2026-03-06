@@ -61,11 +61,11 @@
 			spawned.adjust_skillrank(/datum/attribute/skill/combat/unarmed, 2)
 			spawned.adjust_skillrank(/datum/attribute/skill/combat/knives, 4)
 		if("Great Axe")
-			spawned.clamped_adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 40, 40, TRUE)
+			spawned.clamped_adjust_skill_level(/datum/attribute/skill/combat/axesmaces, 40, 40, TRUE)
 		if("Mace")
-			spawned.clamped_adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 40, 40, TRUE)
+			spawned.clamped_adjust_skill_level(/datum/attribute/skill/combat/axesmaces, 40, 40, TRUE)
 		if("Sword")
-			spawned.clamped_adjust_skillrank(/datum/attribute/skill/combat/swords, 40, 40, TRUE)
+			spawned.clamped_adjust_skill_level(/datum/attribute/skill/combat/swords, 40, 40, TRUE)
 
 	wretch_select_bounty(spawned)
 
