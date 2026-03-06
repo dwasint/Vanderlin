@@ -1,3 +1,24 @@
+/datum/attribute_holder/sheet/job/persistant/miner
+	attribute_variance = list(
+		STAT_STRENGTH = list(0, 1),
+		STAT_CONSTITUTION = list(0, 1),
+		STAT_ENDURANCE = list(0, 1),
+	)
+	raw_attribute_list = list(
+		STAT_CONSTITUTION = 1,
+		STAT_ENDURANCE = 1,
+		/datum/attribute/skill/combat/knives = 10,
+		/datum/attribute/skill/combat/unarmed = 10,
+		/datum/attribute/skill/misc/reading = 10,
+		/datum/attribute/skill/craft/crafting = 10,
+		/datum/attribute/skill/misc/climbing = 10,
+		/datum/attribute/skill/misc/swimming = 10,
+		/datum/attribute/skill/misc/athletics = 10,
+		/datum/attribute/skill/combat/axesmaces = 20,
+		/datum/attribute/skill/labor/mining = 40,
+		/datum/attribute/skill/craft/masonry = 20
+	)
+
 /datum/job/persistence/miner
 	title = "Mineworker"
 	tutorial = "You're a mineworker, ensure the settlement has stone and ores."
@@ -7,34 +28,12 @@
 	outfit = /datum/outfit/miner_p
 	cmode_music = 'sound/music/cmode/towner/CombatTowner.ogg'
 
-	jobstats = list(
-		STAT_CONSTITUTION = 1,
-		STAT_ENDURANCE = 1
-	)
-
-	skills = list(
-		/datum/attribute/skill/combat/knives = 1,
-		/datum/attribute/skill/combat/unarmed = 1,
-		/datum/attribute/skill/misc/reading = 1,
-		/datum/attribute/skill/craft/crafting = 1,
-		/datum/attribute/skill/misc/climbing = 1,
-		/datum/attribute/skill/misc/swimming = 1,
-		/datum/attribute/skill/misc/athletics = 1,
-		/datum/attribute/skill/combat/axesmaces = 2,
-		/datum/attribute/skill/labor/mining = 4,
-		/datum/attribute/skill/craft/masonry = 2
-	)
+	attribute_sheet = /datum/attribute_holder/sheet/job/persistant/miner
 
 /datum/job/persistence/miner/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	if(prob(50))
 		spawned.cmode_music = 'sound/music/cmode/towner/CombatTowner2.ogg'
-
-	spawned.adjust_stat_modifier(STATMOD_JOB, list(
-		STAT_STRENGTH = rand(0, 1),
-		STAT_CONSTITUTION = rand(0, 1),
-		STAT_ENDURANCE = rand(0, 1),
-	))
 
 
 

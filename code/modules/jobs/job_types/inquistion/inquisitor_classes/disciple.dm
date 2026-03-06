@@ -1,3 +1,29 @@
+/datum/attribute_holder/sheet/job/disciple
+	raw_attribute_list = list(
+		STAT_STRENGTH = 2,
+		STAT_ENDURANCE = 2,
+		STAT_CONSTITUTION = 3,
+		STAT_INTELLIGENCE = -2,
+		STAT_SPEED = -1,
+		/datum/attribute/skill/misc/athletics = 30,
+		/datum/attribute/skill/combat/unarmed = 30,
+		/datum/attribute/skill/combat/wrestling = 30,
+		/datum/attribute/skill/misc/climbing = 30,
+		/datum/attribute/skill/misc/swimming = 30,
+		/datum/attribute/skill/misc/medicine = 20,
+		/datum/attribute/skill/misc/reading = 20,
+		/datum/attribute/skill/craft/cooking = 10,
+	)
+
+/datum/attribute_holder/sheet/job/disciple/quarterstaff
+	raw_attribute_list = list(
+		STAT_PERCEPTION = 1,
+		STAT_INTELLIGENCE = 1,
+	)
+	clamped_adjustment = list(
+		/datum/attribute/skill/combat/polearms = list(30, 30)
+	)
+
 /datum/job/advclass/sacrestant/disciple
 	title = "Disciple"
 	tutorial = "Some train their steel, others train their wits. You have honed your body itself into a weapon, anointing it with faithful markings to fortify your soul. You serve and train under the Ordo Benetarus, and one day you will be among Psydon’s most dauntless warriors."
@@ -5,23 +31,8 @@
 	allowed_races = RACES_PLAYER_ALL
 	outfit = /datum/outfit/disciple
 	category_tags = list(CTAG_INQUISITION)
-	jobstats = list(
-		STAT_STRENGTH = 2,
-		STAT_ENDURANCE = 2,
-		STAT_CONSTITUTION = 3,
-		STAT_INTELLIGENCE = -2,
-		STAT_SPEED = -1
-	)
-	skills = list(
-		/datum/attribute/skill/misc/athletics = SKILL_LEVEL_JOURNEYMAN,
-		/datum/attribute/skill/combat/unarmed = SKILL_LEVEL_JOURNEYMAN,
-		/datum/attribute/skill/combat/wrestling = SKILL_LEVEL_JOURNEYMAN,
-		/datum/attribute/skill/misc/climbing = SKILL_LEVEL_JOURNEYMAN,
-		/datum/attribute/skill/misc/swimming = SKILL_LEVEL_JOURNEYMAN,
-		/datum/attribute/skill/misc/medicine = SKILL_LEVEL_APPRENTICE,
-		/datum/attribute/skill/misc/reading = SKILL_LEVEL_APPRENTICE,
-		/datum/attribute/skill/craft/cooking = SKILL_LEVEL_NOVICE,
-	)
+
+	attribute_sheet = /datum/attribute_holder/sheet/job/disciple
 
 	traits = list(
 		TRAIT_INQUISITION,
@@ -66,9 +77,7 @@
 		if("Knuckledusters")
 			ADD_TRAIT(spawned, TRAIT_CRITICAL_RESISTANCE, JOB_TRAIT)
 		if("Quarterstaff")
-			spawned.clamped_adjust_skill_level(/datum/attribute/skill/combat/polearms, 30, 30)
-			spawned.adjust_stat_modifier(STATMOD_JOB, STAT_PERCEPTION, 1)
-			spawned.adjust_stat_modifier(STATMOD_JOB, STAT_INTELLIGENCE, 1)
+			spawned.attributes?.add_sheet(/datum/attribute_holder/sheet/job/disciple/quarterstaff)
 	spawned.equip_to_slot_or_del(new gloves_to_wear, ITEM_SLOT_GLOVES, TRUE)
 
 /datum/outfit/disciple

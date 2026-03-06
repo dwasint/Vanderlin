@@ -1,3 +1,25 @@
+/datum/attribute_holder/sheet/job/persistant/carpenter
+	attribute_variance = list(
+		STAT_STRENGTH = list(0, 1),
+		STAT_CONSTITUTION = list(0, 1),
+		STAT_ENDURANCE = list(0, 1),
+	)
+	raw_attribute_list = list(
+		STAT_STRENGTH = 1,
+		STAT_CONSTITUTION = 1,
+		STAT_ENDURANCE = 1,
+		/datum/attribute/skill/combat/knives = 10,
+		/datum/attribute/skill/combat/unarmed = 10,
+		/datum/attribute/skill/misc/reading = 10,
+		/datum/attribute/skill/craft/crafting = 10,
+		/datum/attribute/skill/misc/climbing = 20,
+		/datum/attribute/skill/misc/swimming = 10,
+		/datum/attribute/skill/misc/athletics = 10,
+		/datum/attribute/skill/combat/axesmaces = 20,
+		/datum/attribute/skill/craft/carpentry = 40,
+		/datum/attribute/skill/labor/lumberjacking = 20
+	)
+
 /datum/job/persistence/carpenter
 	title = "Woodworker"
 	tutorial = "You're a woodworker, ensure the settlement isn't a bunch of tents."
@@ -7,18 +29,7 @@
 	outfit = /datum/outfit/carpenter_p
 	cmode_music = 'sound/music/cmode/towner/CombatTowner.ogg'
 
-	skills = list(
-		/datum/attribute/skill/combat/knives = 1,
-		/datum/attribute/skill/combat/unarmed = 1,
-		/datum/attribute/skill/misc/reading = 1,
-		/datum/attribute/skill/craft/crafting = 1,
-		/datum/attribute/skill/misc/climbing = 2,
-		/datum/attribute/skill/misc/swimming = 1,
-		/datum/attribute/skill/misc/athletics = 1,
-		/datum/attribute/skill/combat/axesmaces = 2,
-		/datum/attribute/skill/craft/carpentry = 4,
-		/datum/attribute/skill/labor/lumberjacking = 2
-	)
+	attribute_sheet = /datum/attribute_holder/sheet/job/persistant/carpenter
 
 	traits = list()
 
@@ -26,13 +37,6 @@
 	. = ..()
 	if(prob(50))
 		spawned.cmode_music = 'sound/music/cmode/towner/CombatTowner2.ogg'
-
-	spawned.adjust_stat_modifier(STATMOD_JOB, list(
-		STAT_STRENGTH = rand(0, 1),
-		STAT_CONSTITUTION = rand(0, 1),
-		STAT_ENDURANCE = rand(0, 1),
-	))
-
 
 /datum/outfit/carpenter_p
 	name = "Woodworker"
