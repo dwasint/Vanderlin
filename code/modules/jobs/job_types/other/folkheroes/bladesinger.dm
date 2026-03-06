@@ -1,3 +1,20 @@
+/datum/attribute_holder/sheet/job/bladesinger
+	raw_attribute_list = list(
+		STAT_STRENGTH = 2,
+		STAT_CONSTITUTION = 1,
+		STAT_ENDURANCE = 1,
+		STAT_SPEED = 1,
+		/datum/attribute/skill/combat/knives = 20,
+		/datum/attribute/skill/combat/swords = 40,
+		/datum/attribute/skill/combat/bows = 20,
+		/datum/attribute/skill/combat/wrestling = 20,
+		/datum/attribute/skill/combat/unarmed = 20,
+		/datum/attribute/skill/misc/swimming = 20,
+		/datum/attribute/skill/misc/climbing = 20,
+		/datum/attribute/skill/misc/athletics = 30,
+		/datum/attribute/skill/misc/reading = 20,
+	)
+
 /datum/job/advclass/combat/bladesinger
 	title = "Bladesinger"
 	tutorial = "Your vigil over the elven cities has long since ended. Though dutiful, the inevitable happened and now you hope these lands have use for your talents."
@@ -7,24 +24,7 @@
 	category_tags = list(CTAG_FOLKHEROES)
 	cmode_music = 'sound/music/cmode/adventurer/CombatWarrior.ogg'
 
-	skills = list(
-		/datum/attribute/skill/combat/knives = 2,
-		/datum/attribute/skill/combat/swords = 4,
-		/datum/attribute/skill/combat/bows = 2,
-		/datum/attribute/skill/combat/wrestling = 2,
-		/datum/attribute/skill/combat/unarmed = 2,
-		/datum/attribute/skill/misc/swimming = 2,
-		/datum/attribute/skill/misc/climbing = 2,
-		/datum/attribute/skill/misc/athletics = 3,
-		/datum/attribute/skill/misc/reading = 2,
-	)
-
-	jobstats = list(
-		STAT_STRENGTH = 2,
-		STAT_CONSTITUTION = 1,
-		STAT_ENDURANCE = 1,
-		STAT_SPEED = 1,
-	)
+	attribute_sheet = /datum/attribute_holder/sheet/job/bladesinger
 
 	traits = list(
 		TRAIT_HEAVYARMOR,

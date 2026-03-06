@@ -1,3 +1,32 @@
+/datum/attribute_holder/sheet/job/lakkariancleric
+	raw_attribute_list = list(
+		STAT_CONSTITUTION = 1,
+		STAT_ENDURANCE = 2,
+		STAT_INTELLIGENCE = 1,
+		STAT_SPEED = 2, // haha elves go nyoom
+		/datum/attribute/skill/combat/wrestling = 20,
+		/datum/attribute/skill/combat/unarmed = 20,
+		/datum/attribute/skill/misc/climbing = 10,
+		/datum/attribute/skill/misc/swimming = 10,
+		/datum/attribute/skill/misc/athletics = 40, // years of martial training would make you quite athletic
+		/datum/attribute/skill/misc/reading = 30,
+		/datum/attribute/skill/magic/holy = 20,
+		/datum/attribute/skill/craft/cooking = 10,
+		/datum/attribute/skill/misc/sewing = 10,
+		/datum/attribute/skill/misc/medicine = 10,
+		/datum/attribute/skill/labor/mathematics = 10,
+	)
+
+/datum/attribute_holder/sheet/job/lakkariancleric/rungu
+	raw_attribute_list = list(
+		/datum/attribute/skill/combat/axesmaces = 40,
+	)
+
+/datum/attribute_holder/sheet/job/lakkariancleric/sengese
+	raw_attribute_list = list(
+		/datum/attribute/skill/combat/swords = 40,
+	)
+
 /datum/job/advclass/combat/lakkariancleric // terra was here! <3
 	title = "Lakkarian Cleric"
 	tutorial = "A cleric belonging to the Order of the Southern Sun. After years of martial training and rigorous theological study, your abbess has deemed you worthy of a grand task. You will root out the corruption spread by The Four across Faience, and deliver the gospel of the glorious Sun Queen."
@@ -9,26 +38,7 @@
 
 	exp_types_granted = list(EXP_TYPE_ADVENTURER, EXP_TYPE_COMBAT, EXP_TYPE_CLERIC)
 
-	skills = list(
-		/datum/attribute/skill/combat/wrestling = 2,
-		/datum/attribute/skill/combat/unarmed = 2,
-		/datum/attribute/skill/misc/climbing = 1,
-		/datum/attribute/skill/misc/swimming = 1,
-		/datum/attribute/skill/misc/athletics = 4, // years of martial training would make you quite athletic
-		/datum/attribute/skill/misc/reading = 3,
-		/datum/attribute/skill/magic/holy = 2,
-		/datum/attribute/skill/craft/cooking = 1,
-		/datum/attribute/skill/misc/sewing = 1,
-		/datum/attribute/skill/misc/medicine = 1,
-		/datum/attribute/skill/labor/mathematics = 1,
-	)
-
-	jobstats = list(
-		STAT_CONSTITUTION = 1,
-		STAT_ENDURANCE = 2,
-		STAT_INTELLIGENCE = 1,
-		STAT_SPEED = 2, // haha elves go nyoom
-	)
+	attribute_sheet = /datum/attribute_holder/sheet/job/lakkariancleric
 
 	traits = list(
 		TRAIT_MEDIUMARMOR,
@@ -52,9 +62,9 @@
 
 	switch(choice)
 		if("Silver Rungu")
-			spawned.adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 4, TRUE)
+			spawned.attributes?.add_sheet(/datum/attribute_holder/sheet/job/lakkariancleric/rungu)
 		if("Silver Sengese")
-			spawned.adjust_skillrank(/datum/attribute/skill/combat/swords, 4, TRUE)
+			spawned.attributes?.add_sheet(/datum/attribute_holder/sheet/job/lakkariancleric/sengese)
 
 	var/holder = spawned.patron?.devotion_holder
 	if(holder)

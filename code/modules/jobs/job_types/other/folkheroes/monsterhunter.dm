@@ -1,3 +1,24 @@
+/datum/attribute_holder/sheet/job/puritan
+	raw_attribute_list = list(
+		STAT_INTELLIGENCE = 1,
+		STAT_STRENGTH = 1,
+		STAT_PERCEPTION = 2,
+		STAT_CONSTITUTION = 2,
+		/datum/attribute/skill/misc/sewing = 20,
+		/datum/attribute/skill/misc/medicine = 20,
+		/datum/attribute/skill/combat/unarmed = 20,
+		/datum/attribute/skill/combat/wrestling = 30,
+		/datum/attribute/skill/misc/reading = 30,
+		/datum/attribute/skill/combat/swords = 40,
+		/datum/attribute/skill/combat/axesmaces = 20,
+		/datum/attribute/skill/combat/crossbows = 30,
+		/datum/attribute/skill/combat/whipsflails = 40,
+		/datum/attribute/skill/combat/knives = 20,
+		/datum/attribute/skill/misc/climbing = 20,
+		/datum/attribute/skill/misc/athletics = 30,
+		/datum/attribute/skill/craft/cooking = 10,
+	)
+
 /datum/job/advclass/combat/puritan
 	title = "Monster Hunter"
 	tutorial = "Monster Hunters dedicate their lives to the eradication of the varied evils infesting Psydonia. They know the vile sorcery of the necromancer, the insidious nature of the cultist and monstrousness of vampires and werevolfs. They also know how best to end them."
@@ -8,28 +29,7 @@
 	cmode_music = 'sound/music/cmode/church/CombatInquisitor.ogg'
 	is_recognized = TRUE
 
-	skills = list(
-		/datum/attribute/skill/misc/sewing = 2,
-		/datum/attribute/skill/misc/medicine = 2,
-		/datum/attribute/skill/combat/unarmed = 2,
-		/datum/attribute/skill/combat/wrestling = 3,
-		/datum/attribute/skill/misc/reading = 3,
-		/datum/attribute/skill/combat/swords = 4,
-		/datum/attribute/skill/combat/axesmaces = 2,
-		/datum/attribute/skill/combat/crossbows = 3,
-		/datum/attribute/skill/combat/whipsflails = 4,
-		/datum/attribute/skill/combat/knives = 2,
-		/datum/attribute/skill/misc/climbing = 2,
-		/datum/attribute/skill/misc/athletics = 3,
-		/datum/attribute/skill/craft/cooking = 1,
-	)
-
-	jobstats = list(
-		STAT_INTELLIGENCE = 1,
-		STAT_STRENGTH = 1,
-		STAT_PERCEPTION = 2,
-		STAT_CONSTITUTION = 2,
-	)
+	attribute_sheet = /datum/attribute_holder/sheet/job/puritan
 
 	traits = list(
 		TRAIT_DODGEEXPERT,
