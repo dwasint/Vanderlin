@@ -56,7 +56,7 @@
 		"Hauberk" = /obj/item/clothing/armor/chainmail/hauberk/fluted,
 		"Cuirass" = /obj/item/clothing/armor/cuirass/fluted,
 	)
-	var/armor_choice = spawned.select_equippable(player_client, armors, message = "Choose your ARMOR.", title = "TAKE UP PSYDON'S MANTLE.")
+	spawned.select_equippable(player_client, armors, message = "Choose your ARMOR.", title = "TAKE UP PSYDON'S MANTLE.")
 
 	var/static/list/weapons = list(
 		"Psydonic Longsword" = list(/obj/item/weapon/scabbard/sword, /obj/item/weapon/sword/long/psydon),
