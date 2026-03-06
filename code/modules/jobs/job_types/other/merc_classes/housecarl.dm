@@ -1,3 +1,22 @@
+/datum/attribute_holder/sheet/job/housecarl
+	raw_attribute_list = list(
+		STAT_STRENGTH = 2,
+		STAT_CONSTITUTION = 2,
+		STAT_ENDURANCE = 2,
+		STAT_PERCEPTION = 1,
+		STAT_INTELLIGENCE = -1,
+		STAT_SPEED = -2,
+		/datum/attribute/skill/combat/axesmaces = 30,
+		/datum/attribute/skill/misc/swimming = 20,
+		/datum/attribute/skill/misc/climbing = 30,
+		/datum/attribute/skill/combat/wrestling = 20,
+		/datum/attribute/skill/combat/unarmed = 30,
+		/datum/attribute/skill/combat/swords = 20,
+		/datum/attribute/skill/misc/reading = 10,
+		/datum/attribute/skill/misc/athletics = 30,
+		/datum/attribute/skill/misc/medicine = 20,
+	)
+
 /datum/job/advclass/mercenary/housecarl
 	title = "Elvish Housecarl"
 	tutorial = "Once a mighty guard for your clan leader now freelancer looking to put bread on the table, you have ventured to distance lands for work. Either it be guarding the gold horde of the merchant or the life of the king, you and others like you have been sought out by many to protect their lives and property."
@@ -7,26 +26,7 @@
 	total_positions = 4
 	cmode_music = 'sound/music/cmode/adventurer/CombatWarrior.ogg'
 
-	jobstats = list(
-		STAT_STRENGTH = 2,
-		STAT_CONSTITUTION = 2,
-		STAT_ENDURANCE = 2,
-		STAT_PERCEPTION = 1,
-		STAT_INTELLIGENCE = -1,
-		STAT_SPEED = -2,
-	)
-
-	skills = list(
-		/datum/attribute/skill/combat/axesmaces = 3,
-		/datum/attribute/skill/misc/swimming = 2,
-		/datum/attribute/skill/misc/climbing = 3,
-		/datum/attribute/skill/combat/wrestling = 2,
-		/datum/attribute/skill/combat/unarmed = 3,
-		/datum/attribute/skill/combat/swords = 2,
-		/datum/attribute/skill/misc/reading = 1,
-		/datum/attribute/skill/misc/athletics = 3,
-		/datum/attribute/skill/misc/medicine = 2,
-	)
+	attribute_sheet = /datum/attribute_holder/sheet/job/housecarl
 
 	traits = list(
 		TRAIT_MEDIUMARMOR,

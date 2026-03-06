@@ -1,3 +1,22 @@
+/datum/attribute_holder/sheet/job/spellsword
+	raw_attribute_list = list(
+		STAT_STRENGTH = 1,
+		STAT_INTELLIGENCE = 1,
+		STAT_SPEED = -1,
+		/datum/attribute/skill/combat/swords = 30,
+		/datum/attribute/skill/combat/wrestling = 10,
+		/datum/attribute/skill/combat/unarmed = 20,
+		/datum/attribute/skill/misc/athletics = 30,
+		/datum/attribute/skill/combat/knives = 10,
+		/datum/attribute/skill/misc/swimming = 10,
+		/datum/attribute/skill/misc/climbing = 20,
+		/datum/attribute/skill/misc/reading = 30,
+		/datum/attribute/skill/misc/medicine = 10,
+		/datum/attribute/skill/misc/sewing = 10,
+		/datum/attribute/skill/magic/arcane = 10,
+		/datum/attribute/skill/craft/alchemy = 10
+	)
+
 /datum/job/advclass/mercenary/spellsword
 	title = "Spellsword"
 	tutorial = "A warrior who has dabbled in the arts of magic, you blend swordplay and spellcraft to earn your keep."
@@ -12,26 +31,7 @@
 	magic_user = TRUE
 	spell_points = 5
 
-	jobstats = list(
-		STAT_STRENGTH = 1,
-		STAT_INTELLIGENCE = 1,
-		STAT_SPEED = -1
-	)
-
-	skills = list(
-		/datum/attribute/skill/combat/swords = 3,
-		/datum/attribute/skill/combat/wrestling = 1,
-		/datum/attribute/skill/combat/unarmed = 2,
-		/datum/attribute/skill/misc/athletics = 3,
-		/datum/attribute/skill/combat/knives = 1,
-		/datum/attribute/skill/misc/swimming = 1,
-		/datum/attribute/skill/misc/climbing = 2,
-		/datum/attribute/skill/misc/reading = 3,
-		/datum/attribute/skill/misc/medicine = 1,
-		/datum/attribute/skill/misc/sewing = 1,
-		/datum/attribute/skill/magic/arcane = 1,
-		/datum/attribute/skill/craft/alchemy = 1
-	)
+	attribute_sheet = /datum/attribute_holder/sheet/job/spellsword
 
 	spells = list(
 		/datum/action/cooldown/spell/undirected/touch/prestidigitation

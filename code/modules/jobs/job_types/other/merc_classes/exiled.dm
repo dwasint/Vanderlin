@@ -1,3 +1,26 @@
+/datum/attribute_holder/sheet/job/exiled
+	raw_attribute_list = list(
+		STAT_STRENGTH = 1,
+		STAT_ENDURANCE = 2,
+		STAT_CONSTITUTION = 2,
+		STAT_SPEED = -1,
+		STAT_INTELLIGENCE = 3,
+		/datum/attribute/skill/misc/swimming = 30,
+		/datum/attribute/skill/misc/climbing = 30,
+		/datum/attribute/skill/misc/sneaking = 40,
+		/datum/attribute/skill/combat/wrestling = 20,
+		/datum/attribute/skill/misc/athletics = 30,
+		/datum/attribute/skill/combat/unarmed = 30,
+		/datum/attribute/skill/craft/crafting = 10,
+		/datum/attribute/skill/craft/tanning = 10,
+		/datum/attribute/skill/combat/axesmaces = 30,
+		/datum/attribute/skill/craft/cooking = 10,
+		/datum/attribute/skill/misc/reading = 10,
+		/datum/attribute/skill/misc/sewing = 20,
+		/datum/attribute/skill/misc/medicine = 20,
+		/datum/attribute/skill/craft/traps = 30
+	)
+
 /datum/job/advclass/mercenary/exiled
 	title = "Exiled Warrior"
 	tutorial = "A barbarian - you're a brute, and you're a long way from home. You took more of a liking to the blade than your elders wanted - in truth, they did not have to even deliberate to banish you. You will drown in ale, and your enemies in blood."
@@ -7,30 +30,7 @@
 	total_positions = 5
 	cmode_music = 'sound/music/cmode/adventurer/CombatOutlander2.ogg'
 
-	jobstats = list(
-		STAT_STRENGTH = 1,
-		STAT_ENDURANCE = 2,
-		STAT_CONSTITUTION = 2,
-		STAT_SPEED = -1,
-		STAT_INTELLIGENCE = 3
-	)
-
-	skills = list(
-		/datum/attribute/skill/misc/swimming = 3,
-		/datum/attribute/skill/misc/climbing = 3,
-		/datum/attribute/skill/misc/sneaking = 4,
-		/datum/attribute/skill/combat/wrestling = 2,
-		/datum/attribute/skill/misc/athletics = 3,
-		/datum/attribute/skill/combat/unarmed = 3,
-		/datum/attribute/skill/craft/crafting = 1,
-		/datum/attribute/skill/craft/tanning = 1,
-		/datum/attribute/skill/combat/axesmaces = 3,
-		/datum/attribute/skill/craft/cooking = 1,
-		/datum/attribute/skill/misc/reading = 1,
-		/datum/attribute/skill/misc/sewing = 2,
-		/datum/attribute/skill/misc/medicine = 2,
-		/datum/attribute/skill/craft/traps = 3
-	)
+	attribute_sheet = /datum/attribute_holder/sheet/job/exiled
 
 	traits = list(
 		TRAIT_STEELHEARTED,
