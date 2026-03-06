@@ -185,6 +185,9 @@
 			raw_attribute_list[thing] = clamp(raw_attribute_list[thing] + to_add.raw_attribute_list[thing], skill_min, skill_max)
 		else
 			raw_attribute_list[thing] = clamp(raw_attribute_list[thing] + to_add.raw_attribute_list[thing], attribute_min, attribute_max)
+	if(LAZYLEN(to_add.skill_xp_multipliers))
+		for(var/skill_type in to_add.skill_xp_multipliers)
+			adjust_skill_xp_multiplier(skill_type, to_add.skill_xp_multipliers[skill_type] - 1.0)
 	to_add.on_add(src)
 	update_attributes()
 
@@ -219,6 +222,9 @@
 			raw_attribute_list[thing] = clamp(raw_attribute_list[thing] - to_remove.raw_attribute_list[thing], skill_min, skill_max)
 		else
 			raw_attribute_list[thing] = clamp(raw_attribute_list[thing] - to_remove.raw_attribute_list[thing], attribute_min, attribute_max)
+	if(LAZYLEN(to_remove.skill_xp_multipliers))
+		for(var/skill_type in to_remove.skill_xp_multipliers)
+			adjust_skill_xp_multiplier(skill_type, -(to_remove.skill_xp_multipliers[skill_type] - 1.0))
 	to_remove.on_remove(src)
 	update_attributes()
 
@@ -242,10 +248,11 @@
 	copy_holder(to_copy)
 
 /**
- * Copies another holder's raw attributes
+ * Copies another holder's raw attributes & xp multipliers
  */
 /datum/attribute_holder/proc/copy_holder(datum/attribute_holder/to_copy)
 	raw_attribute_list = to_copy.raw_attribute_list.Copy()
+	skill_xp_multipliers = LAZYLEN(to_copy.skill_xp_multipliers) ? to_copy.skill_xp_multipliers.Copy() : null
 	to_copy.on_copy(src)
 	update_attributes()
 
