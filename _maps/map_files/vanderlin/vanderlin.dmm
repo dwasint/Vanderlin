@@ -637,10 +637,6 @@
 /turf/open/floor/carpet/stellar,
 /area/indoors/town/keep/magician)
 "apc" = (
-/obj/structure/fake_machine/scomm{
-	pixel_x = 32;
-	pixel_y = 0
-	},
 /obj/structure/dye_bin/luxury,
 /turf/open/floor/tile/diamond/purple,
 /area/indoors/town/shop)
@@ -21358,6 +21354,11 @@
 "ktv" = (
 /turf/open/floor/churchbrick,
 /area/indoors/town/clinic_large/feldsher)
+"ktD" = (
+/obj/structure/closet/crate/drawer,
+/obj/effect/spawner/map_spawner/loot/coin/low,
+/turf/open/floor/ruinedwood/spiral,
+/area/indoors/town/shop)
 "ktG" = (
 /turf/open/water/cleanshallow,
 /area/indoors/town/church/inquisition)
@@ -33202,8 +33203,7 @@
 /turf/open/floor/tile/checkeralt,
 /area/indoors/town/keep/archivist)
 "qek" = (
-/obj/structure/closet/crate/drawer,
-/obj/effect/spawner/map_spawner/loot/coin/low,
+/obj/structure/fake_machine/scomm,
 /turf/open/floor/tile/diamond/purple,
 /area/indoors/town/shop)
 "qem" = (
@@ -156573,7 +156573,7 @@ kup
 oZU
 uYO
 nNl
-vhR
+ktD
 vhR
 fUV
 rYt
