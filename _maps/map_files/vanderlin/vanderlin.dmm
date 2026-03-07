@@ -636,10 +636,6 @@
 /obj/machinery/light/fueled/wallfire/candle/blue/l,
 /turf/open/floor/carpet/stellar,
 /area/indoors/town/keep/magician)
-"apc" = (
-/obj/structure/dye_bin/luxury,
-/turf/open/floor/tile/diamond/purple,
-/area/indoors/town/shop)
 "apd" = (
 /obj/machinery/light/fueled/firebowl/church,
 /turf/open/floor/hexstone,
@@ -1907,12 +1903,6 @@
 /obj/structure/fermentation_keg,
 /turf/open/floor/carpet,
 /area/under/town/sewer)
-"aSD" = (
-/obj/structure/flora/grass{
-	icon_state = "grass4"
-	},
-/turf/open/floor/dirt/road,
-/area/outdoors/farm)
 "aSI" = (
 /obj/structure/table/wood/reinf_long{
 	dir = 1
@@ -6639,6 +6629,10 @@
 /obj/structure/closet/dirthole/closed/loot,
 /turf/open/floor/dirt/road,
 /area/under/town/sewer)
+"deS" = (
+/obj/structure/fake_machine/scomm,
+/turf/open/floor/tile/diamond/purple,
+/area/indoors/town/shop)
 "deX" = (
 /obj/structure/water_pipe,
 /turf/closed/mineral,
@@ -7762,12 +7756,6 @@
 	},
 /turf/open/floor/ruinedwood/spiral,
 /area/under/town/basement)
-"dIo" = (
-/obj/structure/flora/grass{
-	icon_state = "grass4"
-	},
-/turf/open/floor/grass,
-/area/outdoors/farm)
 "dIz" = (
 /turf/open/floor/blocks/stonered/tiny,
 /area/under/town/basement)
@@ -8136,12 +8124,6 @@
 /mob/living/carbon/human/species/goblin/npc/ambush/cave,
 /turf/open/floor/greenstone,
 /area/under/town/sewer)
-"dSH" = (
-/obj/structure/flora/grass{
-	icon_state = "grass3"
-	},
-/turf/open/floor/dirt/road,
-/area/outdoors/farm)
 "dTk" = (
 /obj/effect/decal/cobblerockedge/alt,
 /turf/open/floor/grass/eora,
@@ -10219,6 +10201,12 @@
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/greenstone,
 /area/under/town/basement)
+"eVP" = (
+/obj/structure/flora/grass{
+	icon_state = "grass3"
+	},
+/turf/open/floor/grass,
+/area/outdoors/farm)
 "eVT" = (
 /obj/structure/bookcase/random,
 /turf/open/floor/metal,
@@ -18585,6 +18573,11 @@
 /obj/item/clothing/cloak/stole/purple,
 /turf/open/floor/blocks/newstone,
 /area/indoors/town/church)
+"jbi" = (
+/obj/structure/closet/crate/drawer,
+/obj/effect/spawner/map_spawner/loot/coin/low,
+/turf/open/floor/ruinedwood/spiral,
+/area/indoors/town/shop)
 "jbm" = (
 /obj/structure/fake_machine/atm{
 	pixel_y = 0;
@@ -21354,11 +21347,6 @@
 "ktv" = (
 /turf/open/floor/churchbrick,
 /area/indoors/town/clinic_large/feldsher)
-"ktD" = (
-/obj/structure/closet/crate/drawer,
-/obj/effect/spawner/map_spawner/loot/coin/low,
-/turf/open/floor/ruinedwood/spiral,
-/area/indoors/town/shop)
 "ktG" = (
 /turf/open/water/cleanshallow,
 /area/indoors/town/church/inquisition)
@@ -33202,10 +33190,6 @@
 	},
 /turf/open/floor/tile/checkeralt,
 /area/indoors/town/keep/archivist)
-"qek" = (
-/obj/structure/fake_machine/scomm,
-/turf/open/floor/tile/diamond/purple,
-/area/indoors/town/shop)
 "qem" = (
 /obj/item/clothing/head/peaceflower{
 	pixel_x = -7;
@@ -37536,10 +37520,6 @@
 "sdx" = (
 /turf/open/floor/grass/eora,
 /area/under/cavewet)
-"sdQ" = (
-/obj/structure/plough,
-/turf/open/floor/grass,
-/area/outdoors/farm)
 "sdZ" = (
 /turf/open/floor/woodturned/nosmooth,
 /area/indoors/town/keep/dungeoneer)
@@ -38585,6 +38565,10 @@
 /obj/structure/flora/ausbushes/ppflowers,
 /turf/open/floor/grass,
 /area/outdoors/town)
+"sFA" = (
+/obj/structure/dye_bin/luxury,
+/turf/open/floor/tile/diamond/purple,
+/area/indoors/town/shop)
 "sFH" = (
 /obj/structure/table/wood/large/corner_new{
 	dir = 8
@@ -40880,12 +40864,6 @@
 	},
 /turf/open/openspace,
 /area/indoors/town/clocktower)
-"tKO" = (
-/obj/structure/flora/grass{
-	icon_state = "grass3"
-	},
-/turf/open/floor/dirt,
-/area/outdoors/farm)
 "tKU" = (
 /obj/structure/bed/inn,
 /obj/item/bedsheet/wool,
@@ -50000,6 +49978,10 @@
 /obj/structure/well,
 /turf/open/floor/blocks,
 /area/indoors/town/keep/magician)
+"xML" = (
+/obj/structure/plough,
+/turf/open/floor/dirt/road,
+/area/outdoors/farm)
 "xMU" = (
 /obj/structure/door/stone,
 /obj/effect/mapping_helpers/access/locker,
@@ -113206,7 +113188,7 @@ gdc
 gdc
 gdc
 gdc
-gdc
+eVP
 gdc
 gdc
 gdc
@@ -113415,7 +113397,7 @@ blx
 blx
 blx
 gdc
-gdc
+eVP
 gdc
 vqO
 vDN
@@ -113611,11 +113593,11 @@ wvm
 wvm
 bwl
 gdc
-sdQ
+xML
+blx
 blx
 voQ
-voQ
-voQ
+blx
 blx
 gdc
 gdc
@@ -113812,15 +113794,15 @@ fDP
 fDP
 gdc
 bkF
-gdc
+blx
 blx
 voQ
 voQ
 voQ
 voQ
-voQ
 blx
-gdc
+blx
+eVP
 gdc
 vDN
 bcK
@@ -114012,17 +113994,17 @@ obk
 pDN
 hHH
 xDd
-gdc
+vqO
+blx
+blx
+voQ
+voQ
+voQ
+voQ
+voQ
 blx
 blx
 blx
-voQ
-voQ
-voQ
-voQ
-voQ
-voQ
-dSH
 eLZ
 vDN
 rvF
@@ -114216,10 +114198,10 @@ uJz
 sjo
 blx
 blx
-blx
-aSD
-blx
-blx
+voQ
+voQ
+voQ
+voQ
 voQ
 voQ
 tJq
@@ -114419,14 +114401,14 @@ sjo
 blx
 voQ
 voQ
-gdc
+voQ
+voQ
+voQ
+voQ
+voQ
+voQ
 blx
 blx
-blx
-blx
-blx
-blx
-gdc
 eLZ
 wvm
 vDN
@@ -114618,18 +114600,18 @@ obk
 pDN
 sjo
 xDd
+blx
 voQ
 voQ
-gdc
-gdc
-gdc
-gdc
+voQ
+voQ
+voQ
+voQ
+voQ
+voQ
+xML
 blx
-obm
-blx
-sdQ
-gdc
-sPu
+voQ
 wvm
 vDN
 rvF
@@ -114820,17 +114802,17 @@ obk
 pDN
 fDP
 fDP
-wvm
-hmV
-gdc
-gdc
-gdc
-uxF
-wvm
+voQ
+voQ
+voQ
+voQ
+voQ
+voQ
+voQ
+voQ
+voQ
 blx
 blx
-blx
-gdc
 sPu
 soz
 vDN
@@ -115021,18 +115003,18 @@ obk
 obk
 pDN
 fUr
-gdc
-gdc
-gdc
-gdc
-wvm
-uxF
-uxF
-uxF
-gdc
+hmV
+voQ
+voQ
+voQ
+voQ
+voQ
+voQ
+voQ
+voQ
+voQ
+voQ
 blx
-blx
-gdc
 gdc
 bAN
 vDN
@@ -115224,16 +115206,16 @@ obk
 pDN
 eHx
 gdc
-gdc
-gdc
-gdc
 voQ
-hZM
-wvh
-uxF
-uxF
-gdc
-blx
+voQ
+voQ
+voQ
+voQ
+voQ
+voQ
+voQ
+voQ
+voQ
 blx
 gdc
 bAN
@@ -115426,16 +115408,16 @@ obk
 pDN
 fUr
 gdc
-wvm
-gdc
-bAN
 voQ
 voQ
-hZM
 voQ
-wvm
-gdc
-blx
+voQ
+voQ
+voQ
+voQ
+voQ
+voQ
+voQ
 blx
 voQ
 gdc
@@ -115629,15 +115611,15 @@ pDN
 bwl
 gdc
 gdc
-gdc
-sPu
-tKO
 voQ
-bZE
-gdc
-gdc
-gdc
-epd
+voQ
+voQ
+voQ
+voQ
+voQ
+voQ
+voQ
+vqO
 blx
 bAN
 voQ
@@ -115830,17 +115812,17 @@ obk
 pDN
 oQQ
 gdc
-wvm
-gdc
-gdc
 voQ
 voQ
-dIo
-gdc
-gdc
-gdc
-gdc
 voQ
+voQ
+voQ
+voQ
+voQ
+voQ
+bwl
+gdc
+blx
 blx
 sPu
 gdc
@@ -116034,15 +116016,15 @@ oQQ
 oQQ
 gdc
 gdc
-gdc
-gdc
-gdc
-gdc
-wvm
-gdc
-wvm
 voQ
 voQ
+voQ
+voQ
+voQ
+voQ
+gdc
+blx
+blx
 blx
 blx
 sPu
@@ -116240,10 +116222,10 @@ oQQ
 vqO
 voQ
 voQ
-gdc
-gdc
-gdc
 voQ
+gdc
+gdc
+blx
 blx
 blx
 blx
@@ -116980,7 +116962,7 @@ qbb
 qbb
 slv
 kup
-qek
+deS
 iNG
 aZa
 iNG
@@ -117044,7 +117026,7 @@ jCi
 oQQ
 gdc
 gdc
-gdc
+vqO
 oQQ
 oQQ
 oQQ
@@ -117248,7 +117230,7 @@ wvm
 diU
 gdc
 gdc
-gdc
+uxF
 gdc
 oQQ
 oQQ
@@ -117449,10 +117431,10 @@ fDP
 gdc
 wvm
 gdc
-voQ
-sPu
-voQ
-gdc
+uxF
+uxF
+uxF
+eVP
 gdc
 blx
 oQQ
@@ -117589,7 +117571,7 @@ qbb
 vKM
 nsg
 pAB
-apc
+sFA
 aKO
 qbb
 hkB
@@ -117648,14 +117630,14 @@ obk
 ybL
 nfW
 gdc
-gdc
+eVP
 gdc
 voQ
-sNi
-voQ
-wvm
-gdc
-gdc
+hZM
+wvh
+uxF
+uxF
+vqO
 blx
 blx
 blx
@@ -117854,7 +117836,7 @@ wvm
 gdc
 hLR
 gdc
-gdc
+hZM
 blx
 bwl
 wvm
@@ -118051,7 +118033,7 @@ obk
 pDN
 oar
 aLw
-gdc
+eVP
 gdc
 gdc
 blx
@@ -156573,7 +156555,7 @@ kup
 oZU
 uYO
 nNl
-ktD
+jbi
 vhR
 fUV
 rYt
