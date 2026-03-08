@@ -1,4 +1,7 @@
 /datum/attribute_holder/sheet/job/orphan
+	attribute_variance = list(
+		/datum/attribute/skill/misc/music = list(20, 40)
+	)
 	raw_attribute_list = list(
 		STAT_CONSTITUTION = -1,
 		STAT_ENDURANCE = -1,
@@ -56,12 +59,6 @@
 			STAT_ENDURANCE = 2,
 			STAT_FORTUNE = rand(-2, 9)
 		))
-
-	var/hand_1 = spawned.get_active_held_item()
-	var/hand_2 = spawned.get_inactive_held_item()
-
-	if(istype(hand_1, /obj/item/instrument) || istype(hand_2, /obj/item/instrument))
-		spawned.adjust_skillrank(/datum/attribute/skill/misc/music, pick(2,3,4), TRUE)
 
 /datum/outfit/orphan
 	name = "Orphan"

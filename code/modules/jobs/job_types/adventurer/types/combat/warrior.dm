@@ -93,18 +93,18 @@
 
 	switch(weaponchoice)
 		if("Sword")
-			H.adjust_skillrank(/datum/attribute/skill/combat/swords, 1, TRUE)
+			H.adjust_skill_level(/datum/attribute/skill/combat/swords, 10)
 		if("Axe", "Mace")
-			H.adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 1, TRUE)
+			H.adjust_skill_level(/datum/attribute/skill/combat/axesmaces, 10)
 		if("Spear")
-			H.adjust_skillrank(/datum/attribute/skill/combat/polearms, 1, TRUE)
+			H.adjust_skill_level(/datum/attribute/skill/combat/polearms, 10)
 			grant_shield = new /obj/item/weapon/shield/tower/buckleriron
 		if("Flail", "Great flail")
-			H.adjust_skillrank(/datum/attribute/skill/combat/whipsflails, 1, TRUE)
+			H.adjust_skill_level(/datum/attribute/skill/combat/whipsflails, 10)
 			if(weaponchoice == "Great flail")
 				grant_shield = FALSE
 		if("Goedendag", "Great axe")
-			H.adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 1, TRUE)
+			H.adjust_skill_level(/datum/attribute/skill/combat/axesmaces, 10)
 			grant_shield = FALSE
 
 	if(grant_shield == TRUE) // TRUE boolean, not a path

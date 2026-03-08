@@ -39,7 +39,6 @@
 /datum/job/advclass/mercenary/valkyrie/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	spawned.merctype = 9
-	spawned.adjust_skillrank(/datum/attribute/skill/craft/alchemy, pick(2,3))
 
 /datum/outfit/mercenary/valkyrie
 	name = "Valkyrie (Mercenary)"

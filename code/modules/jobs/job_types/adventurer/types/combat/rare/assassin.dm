@@ -282,7 +282,7 @@
 	picker.honorary = picker.pronouns == SHE_HER ? "Lady" : "Lord"
 
 	if(picker.gender == MALE)
-		picker.adjust_skillrank(/datum/attribute/skill/combat/swords, 1, TRUE)
+		picker.adjust_skill_level(/datum/attribute/skill/combat/swords, 10)
 
 		var/obj/item/clothing/pants/tights/colored/black/pants = new()
 		picker.equip_to_slot_or_del(pants, ITEM_SLOT_PANTS, TRUE)
@@ -299,8 +299,8 @@
 		var/obj/item/ammo_holder/quiver/arrows/beltl = new()
 		picker.equip_to_slot_or_del(beltl, ITEM_SLOT_BELT_L, TRUE)
 	else
-		picker.adjust_skillrank(/datum/attribute/skill/combat/bows, 1, TRUE)
-		picker.adjust_skillrank(/datum/attribute/skill/combat/crossbows, -1, TRUE)
+		picker.adjust_skill_level(/datum/attribute/skill/combat/bows, 10)
+		picker.adjust_skill_level(/datum/attribute/skill/combat/crossbows, -10)
 
 		var/obj/item/clothing/shirt/dress/silkdress/colored/random/shirt = new()
 		picker.equip_to_slot_or_del(shirt, ITEM_SLOT_SHIRT, TRUE)
