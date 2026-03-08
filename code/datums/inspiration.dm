@@ -66,7 +66,7 @@ GLOBAL_LIST_INIT(inspiration_songs, list(\
 	if(tier_override)
 		target_tier = tier_override
 	else
-		switch(GET_MOB_SKILL_VALUE_OLD(holder, /datum/attribute/skill/misc/music))
+		switch(floor(GET_MOB_SKILL_VALUE_OLD(holder, /datum/attribute/skill/misc/music)))
 			if(SKILL_LEVEL_EXPERT)
 				target_tier = 1
 			if(SKILL_LEVEL_MASTER)
