@@ -493,7 +493,8 @@ GLOBAL_LIST_INIT(ritualslist, build_zizo_rituals())
 	if(!(mage.mana_pool?.intrinsic_recharge_sources & MANA_ALL_LEYLINES))
 		return
 	mage.gib()
-	cultist.adjust_skillrank(/datum/attribute/skill/magic/arcane, 4, TRUE)
+
+	cultist.adjust_stat_modifier(STATMOD_RITUAL, list(/datum/attribute/skill/magic/arcane = 40))
 	cultist.adjust_spell_points(18)
 	cultist.mana_pool.set_intrinsic_recharge(MANA_ALL_LEYLINES)
 	cultist.generate_random_attunements(rand(6, 8))
