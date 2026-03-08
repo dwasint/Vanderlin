@@ -40,7 +40,7 @@
 /datum/sleep_adv/proc/adjust_sleep_xp(skill_type, adjust)
 	var/current_xp = get_sleep_xp(skill_type)
 	var/target_xp = current_xp + adjust
-	var/cap_xp = get_required_sleep_xp_for_skill(skill_type, 2)
+	var/cap_xp = get_required_sleep_xp_for_skill(skill_type, 20)
 	target_xp = clamp(target_xp, 0, cap_xp)
 	sleep_exp[skill_type] = target_xp
 
@@ -49,18 +49,18 @@
  * Level is in 0-60 range. Each step within a tier costs the same amount.
  */
 /datum/sleep_adv/proc/xp_per_step_at_level(level)
-	if(level >= SKILL_LEVEL_LEGENDARY)
+	if(level >= SKILL_LEVEL_LEGENDARY * 10)
 		return SLEEP_EXP_PER_STEP_LEGENDARY
-	if(level >= SKILL_LEVEL_MASTER)
-		return SLEEP_EXP_PER_STEP_LEGENDARY   // Cost to advance within master tier
-	if(level >= SKILL_LEVEL_EXPERT)
+	if(level >= SKILL_LEVEL_MASTER * 10)
 		return SLEEP_EXP_PER_STEP_MASTER
-	if(level >= SKILL_LEVEL_JOURNEYMAN)
+	if(level >= SKILL_LEVEL_EXPERT * 10)
 		return SLEEP_EXP_PER_STEP_EXPERT
-	if(level >= SKILL_LEVEL_APPRENTICE)
+	if(level >= SKILL_LEVEL_JOURNEYMAN * 10)
 		return SLEEP_EXP_PER_STEP_JOURNEYMAN
-	if(level >= SKILL_LEVEL_NOVICE)
+	if(level >= SKILL_LEVEL_APPRENTICE * 10)
 		return SLEEP_EXP_PER_STEP_APPRENTICE
+	if(level >= SKILL_LEVEL_NOVICE * 10)
+		return SLEEP_EXP_PER_STEP_NOVICE
 	return SLEEP_EXP_PER_STEP_NOVICE
 
 /**
@@ -299,7 +299,7 @@
 		to_chat(mind.current, span_notice(dream_text))
 	sleep_adv_points -= get_skill_cost(skill_type)
 	// Deduct one step's worth of sleep XP
-	adjust_sleep_xp(skill_type, -get_required_sleep_xp_for_skill(skill_type, 1))
+	adjust_sleep_xp(skill_type, -get_required_sleep_xp_for_skill(skill_type, 10))
 	// Legacy helper multiplies by 10 internally - advances exactly 1 level (e.g. 20 -> 21)
 	mind.current.adjust_skill_level(skill_type, 1)
 	record_round_statistic(STATS_SKILLS_DREAMED)
@@ -332,7 +332,7 @@
 		if(!length(viable_skills))
 			break
 		var/skill_type = pick_n_take(viable_skills)
-		var/req_exp = get_required_sleep_xp_for_skill(skill_type, 1)
+		var/req_exp = get_required_sleep_xp_for_skill(skill_type, 10)
 		var/datum/attribute/skill/skill = GET_ATTRIBUTE_DATUM(skill_type)
 		add_sleep_experience(skill_type, req_exp, TRUE)
 		inspired_skill_names += skill.name
