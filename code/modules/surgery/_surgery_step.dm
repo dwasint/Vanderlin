@@ -361,7 +361,7 @@
 	if(!skill_used)
 		return 1
 	var/modifier = 1
-	var/skill_level = GET_MOB_SKILL_VALUE_OLD(user, skill_used) || 0
+	var/skill_level = floor(GET_MOB_SKILL_VALUE_OLD(user, skill_used),1) || 0
 	var/skill_difference = skill_level - skill_median
 	if((skill_difference > 0) && length(skill_bonuses))
 		skill_difference = clamp(abs(skill_difference), 0, skill_bonuses.len)
