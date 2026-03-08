@@ -41,7 +41,7 @@
 		return
 	if(!hammered && hammers_per_item)
 		switch(GET_MOB_SKILL_VALUE_OLD(user, appro_skill))
-			if(SKILL_LEVEL_NONE to SKILL_LEVEL_NOVICE)
+			if(-INFINITY to SKILL_LEVEL_NOVICE)
 				hammers_per_item = max(0, hammers_per_item -= 0.5)
 			if(SKILL_LEVEL_APPRENTICE to SKILL_LEVEL_JOURNEYMAN)
 				hammers_per_item = max(0, hammers_per_item -= 1)
