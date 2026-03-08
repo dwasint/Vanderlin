@@ -19,7 +19,7 @@
 	if(completed)
 		return
 
-	if(istype(skill_ref, /datum/attribute/skill/misc/reading) && old_level == SKILL_LEVEL_NONE && new_level > SKILL_LEVEL_NONE)
+	if(ispath(skill_ref, /datum/attribute/skill/misc/reading) && old_level == SKILL_LEVEL_NONE && new_level > SKILL_LEVEL_NONE)
 		complete_objective()
 
 /datum/objective/personal/literacy/complete_objective()

@@ -457,7 +457,7 @@
 /datum/attribute_holder/proc/set_skill_level(skill_type, level, silent = TRUE)
 	if(!ispath(skill_type, SKILL))
 		return
-	level = clamp(level, SKILL_LEVEL_NONE, SKILL_LEVEL_LEGENDARY * 10)
+	level = clamp(level, skill_min, skill_max)
 	var/old_level = nulltozero(raw_attribute_list[skill_type])
 	// Sync the XP pool to the floor of this level so further XP gain is clean
 	LAZYSET(skill_xp, skill_type, xp_for_level(level))
@@ -519,14 +519,20 @@
 	if(silent)
 		return
 
+	var/old_tier = old_level / 10
+	var/new_tier = return_raw_effective_skill(skill_type) / 10
+	if(old_tier == new_tier)
+		return
+
 	var/datum/attribute/skill/skill = GET_ATTRIBUTE_DATUM(skill_type)
 	var/skill_name = istype(skill) ? skill.name : "[skill_type]"
 	if(new_level > old_level)
-		var/tier_name = skill.description_from_level(new_level)
+		var/tier_name = skill.description_from_level(return_raw_effective_skill(skill_type))
 		to_chat(parent, span_nicegreen("My proficiency in [skill_name] grows to [tier_name]!"))
 		record_round_statistic(STATS_SKILLS_LEARNED)
 		if(ispath(skill_type, /datum/attribute/skill/combat))
 			record_round_statistic(STATS_COMBAT_SKILLS)
 	else
-		var/tier_name = new_level > 0 ? skill.description_from_level(new_level) : "nothing"
+		var/display_level = return_raw_effective_skill(skill_type)
+		var/tier_name = display_level > 0 ? skill.description_from_level(display_level) : "nothing"
 		to_chat(parent, span_warning("My [skill_name] has weakened to [tier_name]!"))

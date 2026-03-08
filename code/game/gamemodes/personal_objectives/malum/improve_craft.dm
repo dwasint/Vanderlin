@@ -22,7 +22,7 @@
 	if(completed)
 		return
 
-	if(!istype(skill_ref, /datum/attribute/skill/craft))
+	if(!ispath(skill_ref, /datum/attribute/skill/craft))
 		return
 
 	var/real_old = (old_level == SKILL_LEVEL_NONE && !GET_MOB_SKILL_VALUE(owner.current, skill_ref)) ? SKILL_LEVEL_NONE : old_level
