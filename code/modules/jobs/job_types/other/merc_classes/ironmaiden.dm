@@ -1,8 +1,3 @@
-/datum/attribute_holder/sheet/job/species/
-	raw_attribute_list = list(
-
-	)
-
 /datum/attribute_holder/sheet/job/ironmaiden
 	raw_attribute_list = list(
 		STAT_STRENGTH = 1,
