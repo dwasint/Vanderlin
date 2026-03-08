@@ -133,8 +133,7 @@
 		return
 	var/mob/living/carbon/human/H = owner
 	for(var/datum/attribute/skill/skill in SSskills.all_skills)
-		if(GET_MOB_SKILL_VALUE_OLD(H, skill) > SKILL_LEVEL_NONE)
-			H.adjust_skillrank(skill, -1, TRUE)
+		H.adjust_skill_level(skill, -10)
 
 /datum/quirk/vice/deaf
 	name = "Hard of Hearing"

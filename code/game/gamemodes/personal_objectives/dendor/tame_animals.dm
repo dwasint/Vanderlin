@@ -34,7 +34,7 @@
 
 /datum/objective/personal/tame_animal/reward_owner()
 	. = ..()
-	owner.current.adjust_skillrank(/datum/attribute/skill/labor/taming, 1)
+	owner.current.adjust_skill_level(/datum/attribute/skill/labor/taming, 1)
 
 /datum/objective/personal/tame_animal/update_explanation_text()
 	explanation_text = "Tame an animal, either by feeding it or any other means until it acknowledges you as a friend. Dendor wills it!"

@@ -327,7 +327,7 @@
 			to_chat(user,span_notice("[src] heats up to an almost burning temperature, flooding you with overwhelming arcyne knowledge!"))
 			ready = FALSE
 			addtimer(CALLBACK(src, PROC_REF(revert), user), cdtime,TIMER_STOPPABLE) // Minus two so we play the sound and decap faster
-			user.adjust_skillrank(/datum/attribute/skill/magic/arcane, 1, TRUE)
+			user.adjust_stat_modifier(STATMOD_SIGIL, list(/datum/attribute/skill/magic/arcane = 10))
 	else
 		to_chat(user,span_notice("[src] remains inert. It must be gathering arcana!"))
 

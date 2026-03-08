@@ -853,20 +853,6 @@
 		var/mob/M = locate(href_list["getmob"])
 		usr.client.Getmob(M)
 
-	else if(href_list["increase_skill"])
-		var/mob/M = locate(href_list["increase_skill"])
-		var/datum/attribute/skill/skill = href_list["skill"]
-		M.adjust_skillrank(text2path(skill), 1)
-		log_admin("[key_name_admin(usr)] increased [key_name_admin(M)]'s [initial(skill.name)] skill.")
-		show_player_panel_next(M, "skills")
-
-	else if(href_list["decrease_skill"])
-		var/mob/M = locate(href_list["decrease_skill"])
-		var/datum/attribute/skill/skill = href_list["skill"]
-		M.adjust_skillrank(text2path(skill), -1)
-		log_admin("[key_name_admin(usr)] decreased [key_name_admin(M)]'s [initial(skill.name)] skill.")
-		show_player_panel_next(M, "skills")
-
 	else if(href_list["add_language"])
 		var/mob/M = locate(href_list["add_language"])
 		var/datum/language/lang = text2path(href_list["language"])

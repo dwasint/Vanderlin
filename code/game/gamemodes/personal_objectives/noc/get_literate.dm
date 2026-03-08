@@ -30,7 +30,7 @@
 
 /datum/objective/personal/literacy/reward_owner()
 	. = ..()
-	owner.current.adjust_skillrank(/datum/attribute/skill/labor/mathematics, 1)
+	owner.current.adjust_skill_level(/datum/attribute/skill/labor/mathematics, 1)
 
 /datum/objective/personal/literacy/update_explanation_text()
 	explanation_text = "Get rid of your ignorance! Learn to read to please Noc!"

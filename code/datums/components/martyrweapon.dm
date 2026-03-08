@@ -277,10 +277,10 @@
 		return
 
 	// We dying
-	user.adjust_skill_level(/datum/attribute/skill/misc/athletics, 60, FALSE)
-	user.adjust_skillrank(/datum/attribute/skill/combat/swords, 10, FALSE)
-	user.adjust_skillrank(/datum/attribute/skill/combat/axesmaces, 10, FALSE)
-	user.adjust_skillrank(/datum/attribute/skill/combat/polearms, 10, FALSE)
+	user.adjust_skill_level(/datum/attribute/skill/misc/athletics, 60)
+	user.adjust_skill_level(/datum/attribute/skill/combat/swords, 10)
+	user.adjust_skill_level(/datum/attribute/skill/combat/axesmaces, 10)
+	user.adjust_skill_level(/datum/attribute/skill/combat/polearms, 10)
 
 /datum/component/martyr_weapon/proc/duration_ended(mob/living/user)
 	if(QDELETED(parent))
