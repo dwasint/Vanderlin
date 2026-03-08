@@ -52,11 +52,11 @@
 			spawned.cmode_music = 'sound/music/cmode/adventurer/CombatIntense.ogg'
 
 	if(spawned.gender == FEMALE)
-		spawned.adjust_skill_level(/datum/attribute/skill/combat/crossbows, 10, TRUE)
-		spawned.adjust_skill_level(/datum/attribute/skill/combat/knives, 10, TRUE)
+		spawned.adjust_skill_level(/datum/attribute/skill/combat/crossbows, 10)
+		spawned.adjust_skill_level(/datum/attribute/skill/combat/knives, 10)
 	else
-		spawned.adjust_skill_level(/datum/attribute/skill/combat/swords, 10, TRUE)
-		spawned.adjust_skill_level(/datum/attribute/skill/combat/shields, 10, TRUE)
+		spawned.adjust_skill_level(/datum/attribute/skill/combat/swords, 10)
+		spawned.adjust_skill_level(/datum/attribute/skill/combat/shields, 10)
 
 	if(spawned.dna?.species?.id == SPEC_ID_HUMEN && spawned.gender == MALE)
 		spawned.dna.species.soundpack_m = new /datum/voicepack/male/knight()

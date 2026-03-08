@@ -87,14 +87,14 @@
 				ADD_TRAIT(spawned, TRAIT_BEAUTIFUL, TRAIT_GENERIC)
 			if(/datum/patron/divine/ravox)
 				spawned.cmode_music = 'sound/music/cmode/church/CombatRavox.ogg'
-				spawned.adjust_skill_level(/datum/attribute/skill/combat/unarmed, 10, TRUE)
+				spawned.adjust_skill_level(/datum/attribute/skill/combat/unarmed, 10)
 			if(/datum/patron/divine/noc)
 				spawned.cmode_music = 'sound/music/cmode/church/CombatNoc.ogg'
 			if(/datum/patron/divine/pestra)
 				spawned.cmode_music = 'sound/music/cmode/adventurer/CombatMonk.ogg'
 			if(/datum/patron/divine/abyssor)
 				spawned.cmode_music = 'sound/music/cmode/church/CombatAbyssor.ogg'
-				spawned.adjust_skill_level(/datum/attribute/skill/labor/fishing, 20, TRUE)
+				spawned.adjust_skill_level(/datum/attribute/skill/labor/fishing, 20)
 			if(/datum/patron/divine/malum)
 				spawned.cmode_music = 'sound/music/cmode/adventurer/CombatOutlander2.ogg'
 			if(/datum/patron/divine/xylix)
