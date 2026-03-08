@@ -467,7 +467,7 @@
 					put_in_active_hand(picked)
 					to_chat(thief, span_green("I stole [picked]!"))
 					log_combat(thief, victim, "stole [picked] from ")
-					exp_to_gain += thief.get_learning_boon(thiefskill) * 5
+					exp_to_gain += thief.get_learning_boon(/datum/attribute/skill/misc/stealing) * 5
 					if(victim.client && victim.stat != DEAD)
 						SEND_SIGNAL(thief, COMSIG_ITEM_STOLEN, victim)
 						record_featured_stat(FEATURED_STATS_THIEVES, thief)
