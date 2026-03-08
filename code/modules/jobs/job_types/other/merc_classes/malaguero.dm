@@ -9,18 +9,18 @@
 		STATKEY_END = 1
 		)
 	skills = list(
-		/datum/skill/misc/swimming = 2,
-		/datum/skill/misc/climbing = 3,
-		/datum/skill/misc/sneaking = 3,
-		/datum/skill/combat/wrestling = 2,
-		/datum/skill/misc/athletics = 3,
-		/datum/skill/combat/unarmed = 2,
-		/datum/skill/combat/swords = 2,
-		/datum/skill/combat/whipsflails = 1,
-		/datum/skill/combat/shields = 3,
-		/datum/skill/misc/reading = 1,
-		/datum/skill/craft/cooking = 1,
-		/datum/skill/combat/axesmaces = 3,
+		/datum/attribute/skill/misc/swimming = 2,
+		/datum/attribute/skill/misc/climbing = 3,
+		/datum/attribute/skill/misc/sneaking = 3,
+		/datum/attribute/skill/combat/wrestling = 2,
+		/datum/attribute/skill/misc/athletics = 3,
+		/datum/attribute/skill/combat/unarmed = 2,
+		/datum/attribute/skill/combat/swords = 2,
+		/datum/attribute/skill/combat/whipsflails = 1,
+		/datum/attribute/skill/combat/shields = 3,
+		/datum/attribute/skill/misc/reading = 1,
+		/datum/attribute/skill/craft/cooking = 1,
+		/datum/attribute/skill/combat/axesmaces = 3,
 	)
 	traits = list(TRAIT_MEDIUMARMOR)
 	languages = list(/datum/language/newpsydonic)

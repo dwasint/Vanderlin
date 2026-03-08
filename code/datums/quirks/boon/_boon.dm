@@ -179,7 +179,7 @@
 		return
 	if(!examiner.mind || !source_mob.mind)
 		return
-	if(examiner.STAINT < 8)
+	if(GET_MOB_ATTRIBUTE_VALUE(examiner, STAT_INTELLIGENCE) < 8)
 		return
 	var/mob_name = source_mob.get_visible_name("")
 	if(!mob_name)
