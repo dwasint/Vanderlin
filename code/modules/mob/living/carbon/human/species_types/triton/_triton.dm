@@ -1,6 +1,12 @@
 /mob/living/carbon/human/species/triton
 	race = /datum/species/triton
 
+/datum/attribute_holder/sheet/job/species/triton
+	raw_attribute_list = list(
+		/datum/attribute/skill/labor/fishing = 30,
+		/datum/attribute/skill/misc/swimming = 40,
+	)
+
 /datum/species/triton
 	name = "Triton"
 	id = SPEC_ID_TRITON
@@ -39,10 +45,7 @@
 	species_traits = list(NO_UNDERWEAR, HAIR, FACEHAIR, OLDGREY)
 	inherent_traits = list(TRAIT_NOMOBSWAP, TRAIT_WATER_BREATHING, TRAIT_GOOD_SWIM, TRAIT_FISHFACE)
 	inherent_traits_f = list(TRAIT_STRONGBITE)
-	inherent_skills = list(
-		/datum/attribute/skill/labor/fishing = 3,
-		/datum/attribute/skill/misc/swimming = 4,
-	)
+	inherent_sheet = /datum/attribute_holder/sheet/job/species/triton
 
 	allowed_voicetypes_f = list(
 		VOICE_TYPE_MASC,

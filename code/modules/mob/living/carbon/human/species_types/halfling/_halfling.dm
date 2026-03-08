@@ -1,6 +1,12 @@
 /mob/living/carbon/human/species/halfling
 	race = /datum/species/halfling
 
+/datum/attribute_holder/sheet/job/species/halfling
+	raw_attribute_list = list(
+		/datum/attribute/skill/craft/cooking = 10,
+		/datum/attribute/skill/misc/sneaking = 10,
+	)
+
 /datum/species/halfling
 	name = "Halfling"
 	id = SPEC_ID_HALFLING
@@ -15,10 +21,8 @@
 	native_language = "Halfling"
 	species_traits = list(EYECOLOR, HAIR, FACEHAIR, LIPS, STUBBLE, OLDGREY)
 	inherent_traits = list(TRAIT_NOMOBSWAP, TRAIT_LIGHT_STEP, TRAIT_COIN_ILLITERATE, TRAIT_LUCKY_COOK)
-	inherent_skills = list(
-		/datum/attribute/skill/craft/cooking = 1,
-		/datum/attribute/skill/misc/sneaking = 1,
-	)
+	inherent_sheet = /datum/attribute_holder/sheet/job/species/halfling
+
 	meat = list(/obj/item/reagent_containers/food/snacks/meat/steak/human = 1, /obj/item/reagent_containers/food/snacks/pieslice/good/apple = 0.05)
 
 	use_skintones = TRUE

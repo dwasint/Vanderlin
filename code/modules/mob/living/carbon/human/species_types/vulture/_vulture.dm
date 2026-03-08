@@ -1,6 +1,11 @@
 /mob/living/carbon/human/species/medicator
 	race = /datum/species/medicator
 
+/datum/attribute_holder/sheet/job/species/medicator
+	raw_attribute_list = list(
+		/datum/attribute/skill/misc/medicine = 10
+	)
+
 /datum/species/medicator
 	name = "Medicator"
 	id = "medicator"
@@ -32,9 +37,7 @@
 
 	species_traits = list(NO_UNDERWEAR, HAIR, OLDGREY)
 	inherent_traits = list(TRAIT_NOMOBSWAP, TRAIT_DEADNOSE, TRAIT_NASTY_EATER)
-	inherent_skills = list(
-		/datum/attribute/skill/misc/medicine = 1,
-	)
+	inherent_sheet = /datum/attribute_holder/sheet/job/species/medicator
 
 	specstats_m = list(STAT_PERCEPTION = 1, STAT_INTELLIGENCE = 2, STAT_SPEED = -1, STAT_CONSTITUTION = -1)
 	specstats_f = list(STAT_PERCEPTION = 1, STAT_INTELLIGENCE = 2, STAT_SPEED = -1, STAT_CONSTITUTION = -1)

@@ -163,7 +163,7 @@ GLOBAL_LIST_EMPTY(roundstart_species)
 	/// Generic traits tied to having the species and being female
 	var/list/inherent_traits_f
 	/// Associative list of skills to adjustments
-	var/list/inherent_skills = list()
+	var/datum/attribute_holder/sheet/job/inherent_sheet
 	/// Species-only traits used for drawing, can be found in DNA.dm
 	var/list/species_traits = list()
 	/// Components to add when spawning
@@ -777,8 +777,8 @@ GLOBAL_LIST_EMPTY(roundstart_species)
 		for(var/trait as anything in inherent_traits_m)
 			ADD_TRAIT(C, trait, SPECIES_TRAIT)
 
-	for(var/skill as anything in inherent_skills)
-		C.adjust_skillrank(skill, inherent_skills[skill], TRUE)
+	if(inherent_sheet)
+		C.attributes?.add_sheet(inherent_sheet)
 
 	for(var/component in components_to_add)
 		C.AddComponent(component)
@@ -818,8 +818,8 @@ GLOBAL_LIST_EMPTY(roundstart_species)
 	for(var/X in inherent_traits)
 		REMOVE_TRAIT(C, X, SPECIES_TRAIT)
 
-	for(var/skill as anything in inherent_skills)
-		C.adjust_skillrank(skill, -inherent_skills[skill], TRUE)
+	if(inherent_sheet)
+		C.attributes?.subtract_sheet(inherent_sheet)
 
 	if(inherent_factions)
 		for(var/i in inherent_factions)

@@ -9,6 +9,11 @@
 /mob/living/carbon/human/species/dwarf/mountain
 	race = /datum/species/dwarf/mountain
 
+/datum/attribute_holder/sheet/job/species/mountain_dwarf
+	raw_attribute_list = list(
+		/datum/attribute/skill/labor/mining = 10,
+	)
+
 /datum/species/dwarf/mountain
 	name = "Dwarf"
 	id = SPEC_ID_DWARF
@@ -31,9 +36,7 @@
 	default_color = "FFFFFF"
 	species_traits = list(EYECOLOR, HAIR, FACEHAIR, LIPS, YOUNGBEARD, STUBBLE, OLDGREY)
 	inherent_traits = list(TRAIT_NOMOBSWAP, TRAIT_POISON_RESILIENCE)
-	inherent_skills = list(
-		/datum/attribute/skill/labor/mining = 1,
-	)
+	inherent_sheet = /datum/attribute_holder/sheet/job/species/mountain_dwarf
 
 	possible_ages = NORMAL_AGES_LIST
 	use_skintones = TRUE
