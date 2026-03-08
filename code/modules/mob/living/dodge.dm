@@ -218,12 +218,10 @@
 
 	var/dodge_modifier = 0
 
-	var/mob/living/carbon/human/defending_human
+	var/mob/living/defending_mob = src
 	var/mob/living/carbon/human/attacking_human
 	var/obj/item/attacking_item
 
-	if(ishuman(src))
-		defending_human = src
 	if(ishuman(user))
 		attacking_human = user
 		attacking_item = attacking_human?.used_intent?.get_master_item()
@@ -255,12 +253,12 @@
 			dodge_modifier += 1  //slightly easier to read
 		else
 			// 0-60 skill / 10 = 0-6 modifier range
-			dodge_modifier += floor(GET_MOB_SKILL_VALUE_RAW(defending_human, attacking_item.associated_skill) / 10)
+			dodge_modifier += floor(GET_MOB_SKILL_VALUE_RAW(defending_mob, attacking_item.associated_skill) / 10)
 
 	// Unarmed vs unarmed, skill matchup
-	if(defending_human?.mind && attacking_human?.mind && attacking_human.used_intent.unarmed)
-		dodge_modifier += floor(GET_MOB_SKILL_VALUE_RAW(defending_human, /datum/attribute/skill/combat/unarmed) / 10)
-		dodge_modifier -= floor(GET_MOB_SKILL_VALUE_RAW(attacking_human, /datum/attribute/skill/combat/unarmed) / 10)
+	if(user.used_intent.unarmed)
+		dodge_modifier += floor(GET_MOB_SKILL_VALUE_RAW(defending_mob, /datum/attribute/skill/combat/unarmed) / 10)
+		dodge_modifier -= floor(GET_MOB_SKILL_VALUE_RAW(user, /datum/attribute/skill/combat/unarmed) / 10)
 
 	return dodge_modifier
 
