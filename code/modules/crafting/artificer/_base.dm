@@ -40,14 +40,14 @@
 		progress = 100
 		return
 	if(!hammered && hammers_per_item)
-		switch(GET_MOB_SKILL_VALUE_OLD(user, appro_skill))
-			if(-INFINITY to SKILL_LEVEL_NOVICE)
+		switch(GET_MOB_SKILL_VALUE(user, appro_skill))
+			if(-INFINITY to SKILL_LEVEL_NOVICE * 10 - 1)
 				hammers_per_item = max(0, hammers_per_item -= 0.5)
-			if(SKILL_LEVEL_APPRENTICE to SKILL_LEVEL_JOURNEYMAN)
+			if(SKILL_LEVEL_APPRENTICE * 10 to SKILL_LEVEL_EXPERT * 10 - 1)
 				hammers_per_item = max(0, hammers_per_item -= 1)
-			if(SKILL_LEVEL_EXPERT to SKILL_LEVEL_MASTER)
+			if(SKILL_LEVEL_EXPERT * 10 to SKILL_LEVEL_LEGENDARY * 10 - 1)
 				hammers_per_item = max(0, hammers_per_item -= 2)
-			if(SKILL_LEVEL_LEGENDARY to INFINITY)
+			if(SKILL_LEVEL_LEGENDARY * 10 to INFINITY)
 				hammers_per_item = max(0, hammers_per_item -= 3)
 		user.visible_message(span_warning("[user] hammers the contraption."))
 		return
