@@ -23,11 +23,16 @@ GLOBAL_VAR_INIT(sleep_experience_modifier, 1.0)
 	. = ..()
 
 /**
- * Returns the XP required to reach a given raw level (0-60).
+ * Returns the XP required to reach a given raw level (skill_min-skill_max).
  * Used to convert between XP pool and level.
  */
 /datum/attribute_holder/proc/xp_for_level(level)
-	level = clamp(level, SKILL_LEVEL_NONE, SKILL_LEVEL_LEGENDARY * 10)
+	level = clamp(level, skill_min, skill_max)
+	if(level < SKILL_LEVEL_NONE)
+		// Negative levels: linear reduction below 0
+		// Each negative level costs the same as the first positive tier
+		var/progress = level / 10.0 // e.g. -5 gives -0.5
+		return SKILL_XP_NONE + progress * SKILL_XP_NOVICE /// this prevents someone at massively negative levels from being fucked forever
 	// Which tier does this level sit in, and how far into it are we?
 	if(level >= SKILL_LEVEL_LEGENDARY * 10)
 		return SKILL_XP_LEGENDARY
@@ -51,10 +56,14 @@ GLOBAL_VAR_INIT(sleep_experience_modifier, 1.0)
 	return SKILL_XP_NONE + progress * (SKILL_XP_NOVICE - SKILL_XP_NONE)
 
 /**
- * Converts a raw XP value into the corresponding level (0-60).
+ * Converts a raw XP value into the corresponding level (skill_min-skill_max).
  * Inverse of xp_for_level().
  */
 /datum/attribute_holder/proc/level_for_xp(xp)
+	if(xp < SKILL_XP_NONE)
+		// Inverse of the negative extension above
+		var/progress = xp / SKILL_XP_NOVICE
+		return floor(progress * 10)
 	if(xp >= SKILL_XP_LEGENDARY)
 		return SKILL_LEVEL_LEGENDARY * 10
 	if(xp >= SKILL_XP_MASTER)
@@ -109,7 +118,7 @@ GLOBAL_VAR_INIT(sleep_experience_modifier, 1.0)
 	// Derive the new level from the accumulated XP
 	var/old_level = nulltozero(raw_attribute_list[skill_type])
 	var/new_level = level_for_xp(new_xp)
-	new_level = clamp(new_level, SKILL_LEVEL_NONE, SKILL_LEVEL_LEGENDARY * 10)
+	new_level = clamp(new_level, skill_min, skill_max)
 
 	if(new_level == old_level)
 		return TRUE // XP recorded, no level change
