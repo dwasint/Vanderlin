@@ -51,22 +51,9 @@
 	base_endurance = 12
 	base_fortune = 9
 
-/datum/attribute_holder/sheet/job/drow_npc/unskilled/naked
-	raw_attribute_list = list(
-		/datum/attribute/skill/combat/polearms = 10,
-		/datum/attribute/skill/combat/swords = 10,
-		/datum/attribute/skill/combat/wrestling = 10,
-		/datum/attribute/skill/combat/unarmed = 10,
-		/datum/attribute/skill/combat/knives = 10,
-		/datum/attribute/skill/misc/athletics = 10,
-		/datum/attribute/skill/combat/axesmaces = 10,
-		/datum/attribute/skill/combat/whipsflails = 10,
-		/datum/attribute/skill/combat/shields = 10,
-	)
-
 /mob/living/carbon/human/species/elf/dark/base/unskilled/naked/after_creation()
 	..()
-	attributes.add_sheet(/datum/attribute_holder/sheet/job/drow_npc/unskilled/naked)
+	attributes.add_sheet(/datum/attribute_holder/sheet/job/generic_npc/unskilled/naked)
 	ADD_TRAIT(src, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 
@@ -77,22 +64,10 @@
 	base_endurance = 12
 	base_fortune = 9
 
-/datum/attribute_holder/sheet/job/drow_npc/skilled/naked
-	raw_attribute_list = list(
-		/datum/attribute/skill/combat/polearms = 30,
-		/datum/attribute/skill/combat/swords = 30,
-		/datum/attribute/skill/combat/wrestling = 30,
-		/datum/attribute/skill/combat/unarmed = 30,
-		/datum/attribute/skill/combat/knives = 30,
-		/datum/attribute/skill/misc/athletics = 30,
-		/datum/attribute/skill/combat/axesmaces = 30,
-		/datum/attribute/skill/combat/whipsflails = 30,
-		/datum/attribute/skill/combat/shields = 30,
-	)
 
 /mob/living/carbon/human/species/elf/dark/base/skilled/naked/after_creation()
 	..()
-	attributes.add_sheet(/datum/attribute_holder/sheet/job/drow_npc/skilled/naked)
+	attributes.add_sheet(/datum/attribute_holder/sheet/job/generic_npc/skilled/naked)
 	ADD_TRAIT(src, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 
@@ -104,22 +79,10 @@
 	base_endurance = 10
 	base_fortune = 10
 
-/datum/attribute_holder/sheet/job/drow_npc/very_skilled/naked
-	raw_attribute_list = list(
-		/datum/attribute/skill/combat/polearms = 50,
-		/datum/attribute/skill/combat/swords = 50,
-		/datum/attribute/skill/combat/wrestling = 50,
-		/datum/attribute/skill/combat/unarmed = 50,
-		/datum/attribute/skill/combat/knives = 50,
-		/datum/attribute/skill/misc/athletics = 50,
-		/datum/attribute/skill/combat/axesmaces = 50,
-		/datum/attribute/skill/combat/whipsflails = 50,
-		/datum/attribute/skill/combat/shields = 50,
-	)
 
 /mob/living/carbon/human/species/elf/dark/base/very_skilled/naked/after_creation()
 	..()
-	attributes.add_sheet(/datum/attribute_holder/sheet/job/drow_npc/very_skilled/naked)
+	attributes.add_sheet(/datum/attribute_holder/sheet/job/generic_npc/very_skilled/naked)
 	ADD_TRAIT(src, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 
@@ -134,20 +97,9 @@
 	base_fortune = 9
 	dodgetime = 40
 
-/datum/attribute_holder/sheet/job/drow_npc/unskilled/light_gear
-	raw_attribute_list = list(
-		/datum/attribute/skill/combat/unarmed = 10,
-		/datum/attribute/skill/misc/athletics = 10,
-		/datum/attribute/skill/combat/wrestling = 10,
-	)
-	attribute_variance = list(
-		/datum/attribute/skill/combat/swords = list(10, 20),
-		/datum/attribute/skill/combat/knives = list(10, 20),
-	)
-
 /mob/living/carbon/human/species/elf/dark/base/unskilled/light_gear/after_creation()
 	..()
-	attributes.add_sheet(/datum/attribute_holder/sheet/job/drow_npc/unskilled/light_gear)
+	attributes.add_sheet(/datum/attribute_holder/sheet/job/generic_npc/unskilled/light_gear)
 	ADD_TRAIT(src, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	ai_controller?.blackboard[BB_ARMOR_CLASS] = 1
 	equipOutfit(new /datum/outfit/npc/light_gear)
@@ -161,18 +113,9 @@
 	base_fortune = 9
 	dodgetime = 20
 
-/datum/attribute_holder/sheet/job/drow_npc/skilled/light_gear
-	raw_attribute_list = list(
-		/datum/attribute/skill/combat/swords = 30,
-		/datum/attribute/skill/combat/unarmed = 20,
-		/datum/attribute/skill/combat/knives = 30,
-		/datum/attribute/skill/misc/athletics = 20,
-		/datum/attribute/skill/combat/wrestling = 20,
-	)
-
 /mob/living/carbon/human/species/elf/dark/base/skilled/light_gear/after_creation()
 	..()
-	attributes.add_sheet(/datum/attribute_holder/sheet/job/drow_npc/skilled/light_gear)
+	attributes.add_sheet(/datum/attribute_holder/sheet/job/generic_npc/skilled/light_gear)
 	ADD_TRAIT(src, TRAIT_DUALWIELDER, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_LIGHT_STEP, TRAIT_GENERIC)
@@ -188,18 +131,9 @@
 	base_fortune = 10
 	dodgetime = 10
 
-/datum/attribute_holder/sheet/job/drow_npc/very_skilled/light_gear
-	raw_attribute_list = list(
-		/datum/attribute/skill/combat/swords = 50,
-		/datum/attribute/skill/combat/unarmed = 40,
-		/datum/attribute/skill/combat/knives = 50,
-		/datum/attribute/skill/misc/athletics = 40,
-		/datum/attribute/skill/combat/wrestling = 40,
-	)
-
 /mob/living/carbon/human/species/elf/dark/base/very_skilled/light_gear/after_creation()
 	..()
-	attributes.add_sheet(/datum/attribute_holder/sheet/job/drow_npc/very_skilled/light_gear)
+	attributes.add_sheet(/datum/attribute_holder/sheet/job/generic_npc/very_skilled/light_gear)
 	ADD_TRAIT(src, TRAIT_DUALWIELDER, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_LIGHT_STEP, TRAIT_GENERIC)
@@ -216,23 +150,9 @@
 	base_endurance = 12
 	base_fortune = 9
 
-/datum/attribute_holder/sheet/job/drow_npc/unskilled/medium_gear
-	raw_attribute_list = list(
-		/datum/attribute/skill/combat/shields = 10,
-		/datum/attribute/skill/combat/unarmed = 10,
-		/datum/attribute/skill/misc/athletics = 10,
-		/datum/attribute/skill/combat/wrestling = 10,
-	)
-	attribute_variance = list(
-		/datum/attribute/skill/combat/swords = list(10, 20),
-		/datum/attribute/skill/combat/axesmaces = list(10, 20),
-		/datum/attribute/skill/combat/whipsflails = list(10, 20),
-		/datum/attribute/skill/combat/polearms = list(10, 20),
-	)
-
 /mob/living/carbon/human/species/elf/dark/base/unskilled/medium_gear/after_creation()
 	..()
-	attributes.add_sheet(/datum/attribute_holder/sheet/job/drow_npc/unskilled/medium_gear)
+	attributes.add_sheet(/datum/attribute_holder/sheet/job/generic_npc/unskilled/medium_gear)
 	ADD_TRAIT(src, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ai_controller?.blackboard[BB_ARMOR_CLASS] = 2
 	equipOutfit(new /datum/outfit/npc/medium_gear)
@@ -245,21 +165,9 @@
 	base_endurance = 13
 	base_fortune = 9
 
-/datum/attribute_holder/sheet/job/drow_npc/skilled/medium_gear
-	raw_attribute_list = list(
-		/datum/attribute/skill/combat/swords = 30,
-		/datum/attribute/skill/combat/axesmaces = 30,
-		/datum/attribute/skill/combat/whipsflails = 30,
-		/datum/attribute/skill/combat/polearms = 30,
-		/datum/attribute/skill/combat/shields = 20,
-		/datum/attribute/skill/combat/unarmed = 20,
-		/datum/attribute/skill/misc/athletics = 20,
-		/datum/attribute/skill/combat/wrestling = 20,
-	)
-
 /mob/living/carbon/human/species/elf/dark/base/skilled/medium_gear/after_creation()
 	..()
-	attributes.add_sheet(/datum/attribute_holder/sheet/job/drow_npc/skilled/medium_gear)
+	attributes.add_sheet(/datum/attribute_holder/sheet/job/generic_npc/skilled/medium_gear)
 	ADD_TRAIT(src, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ai_controller?.blackboard[BB_ARMOR_CLASS] = 2
 	equipOutfit(new /datum/outfit/npc/medium_gear)
@@ -272,21 +180,9 @@
 	base_endurance = 14
 	base_fortune = 10
 
-/datum/attribute_holder/sheet/job/drow_npc/very_skilled/medium_gear
-	raw_attribute_list = list(
-		/datum/attribute/skill/combat/swords = 50,
-		/datum/attribute/skill/combat/axesmaces = 50,
-		/datum/attribute/skill/combat/whipsflails = 50,
-		/datum/attribute/skill/combat/polearms = 50,
-		/datum/attribute/skill/combat/shields = 40,
-		/datum/attribute/skill/combat/unarmed = 40,
-		/datum/attribute/skill/misc/athletics = 40,
-		/datum/attribute/skill/combat/wrestling = 40,
-	)
-
 /mob/living/carbon/human/species/elf/dark/base/very_skilled/medium_gear/after_creation()
 	..()
-	attributes.add_sheet(/datum/attribute_holder/sheet/job/drow_npc/very_skilled/medium_gear)
+	attributes.add_sheet(/datum/attribute_holder/sheet/job/generic_npc/very_skilled/medium_gear)
 	ADD_TRAIT(src, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ai_controller?.blackboard[BB_ARMOR_CLASS] = 2
@@ -302,23 +198,9 @@
 	base_endurance = 12
 	base_fortune = 9
 
-/datum/attribute_holder/sheet/job/drow_npc/unskilled/heavy_gear
-	raw_attribute_list = list(
-		/datum/attribute/skill/combat/unarmed = 10,
-		/datum/attribute/skill/misc/athletics = 10,
-		/datum/attribute/skill/combat/wrestling = 10,
-	)
-	attribute_variance = list(
-		/datum/attribute/skill/combat/swords = list(10, 20),
-		/datum/attribute/skill/combat/axesmaces = list(10, 20),
-		/datum/attribute/skill/combat/whipsflails = list(10, 20),
-		/datum/attribute/skill/combat/polearms = list(10, 20),
-		/datum/attribute/skill/combat/shields = list(10, 20),
-	)
-
 /mob/living/carbon/human/species/elf/dark/base/unskilled/heavy_gear/after_creation()
 	..()
-	attributes.add_sheet(/datum/attribute_holder/sheet/job/drow_npc/unskilled/heavy_gear)
+	attributes.add_sheet(/datum/attribute_holder/sheet/job/generic_npc/unskilled/heavy_gear)
 	ADD_TRAIT(src, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ai_controller?.blackboard[BB_ARMOR_CLASS] = 3
 	equipOutfit(new /datum/outfit/npc/heavy_gear)
@@ -331,21 +213,9 @@
 	base_endurance = 14
 	base_fortune = 9
 
-/datum/attribute_holder/sheet/job/drow_npc/skilled/heavy_gear
-	raw_attribute_list = list(
-		/datum/attribute/skill/combat/swords = 30,
-		/datum/attribute/skill/combat/axesmaces = 30,
-		/datum/attribute/skill/combat/whipsflails = 30,
-		/datum/attribute/skill/combat/polearms = 30,
-		/datum/attribute/skill/combat/shields = 30,
-		/datum/attribute/skill/combat/unarmed = 20,
-		/datum/attribute/skill/misc/athletics = 20,
-		/datum/attribute/skill/combat/wrestling = 20,
-	)
-
 /mob/living/carbon/human/species/elf/dark/base/skilled/heavy_gear/after_creation()
 	..()
-	attributes.add_sheet(/datum/attribute_holder/sheet/job/drow_npc/skilled/heavy_gear)
+	attributes.add_sheet(/datum/attribute_holder/sheet/job/generic_npc/skilled/heavy_gear)
 	ADD_TRAIT(src, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ai_controller?.blackboard[BB_ARMOR_CLASS] = 3
 	equipOutfit(new /datum/outfit/npc/heavy_gear)
@@ -358,21 +228,9 @@
 	base_endurance = 16
 	base_fortune = 10
 
-/datum/attribute_holder/sheet/job/drow_npc/very_skilled/heavy_gear
-	raw_attribute_list = list(
-		/datum/attribute/skill/combat/swords = 50,
-		/datum/attribute/skill/combat/axesmaces = 50,
-		/datum/attribute/skill/combat/whipsflails = 50,
-		/datum/attribute/skill/combat/polearms = 50,
-		/datum/attribute/skill/combat/shields = 50,
-		/datum/attribute/skill/combat/unarmed = 40,
-		/datum/attribute/skill/misc/athletics = 40,
-		/datum/attribute/skill/combat/wrestling = 40,
-	)
-
 /mob/living/carbon/human/species/elf/dark/base/very_skilled/heavy_gear/after_creation()
 	..()
-	attributes.add_sheet(/datum/attribute_holder/sheet/job/drow_npc/very_skilled/heavy_gear)
+	attributes.add_sheet(/datum/attribute_holder/sheet/job/generic_npc/very_skilled/heavy_gear)
 	ADD_TRAIT(src, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ai_controller?.blackboard[BB_ARMOR_CLASS] = 3
