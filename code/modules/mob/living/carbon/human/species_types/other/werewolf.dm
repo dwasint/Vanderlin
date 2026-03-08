@@ -10,6 +10,16 @@
 	ambushable = FALSE
 	base_intents = list(INTENT_HELP, INTENT_DISARM, INTENT_GRAB)
 
+/datum/attribute_holder/sheet/job/species/werewolf
+	raw_attribute_list = list(
+		STAT_STRENGTH = 5,
+		STAT_PERCEPTION = 5,
+		STAT_INTELLIGENCE = -3,
+		STAT_CONSTITUTION = 5,
+		STAT_ENDURANCE = 5,
+		STAT_SPEED = 3,
+	)
+
 /datum/species/werewolf
 	name = "werewolf"
 	id = "werewolf"
@@ -50,8 +60,7 @@
 	soundpack_m = /datum/voicepack/werewolf
 	soundpack_f = /datum/voicepack/werewolf
 
-	specstats_m = list(STAT_STRENGTH = 5, STAT_PERCEPTION = 5, STAT_INTELLIGENCE = -3, STAT_CONSTITUTION = 5, STAT_ENDURANCE = 5, STAT_SPEED = 3, STAT_FORTUNE = 0)
-	specstats_f = list(STAT_STRENGTH = 5, STAT_PERCEPTION = 5, STAT_INTELLIGENCE = -3, STAT_CONSTITUTION = 5, STAT_ENDURANCE = 5, STAT_SPEED = 3, STAT_FORTUNE = 0)
+	statsheet_male = /datum/attribute_holder/sheet/job/species/werewolf
 
 	enflamed_icon = "widefire"
 

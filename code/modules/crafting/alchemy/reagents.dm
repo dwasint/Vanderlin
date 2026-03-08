@@ -85,6 +85,7 @@
 	alpha = 173
 
 /datum/reagent/medicine/gender_potion/on_mob_life(mob/living/carbon/M)
+	var/old_gender
 	if(!istype(M) || M.stat == DEAD)
 		to_chat(M, span_warning("The potion can only be used on living things!"))
 		return
@@ -92,11 +93,14 @@
 		to_chat(M, span_warning("The potion can only be used on gendered things!"))
 		return
 	if(M.gender == MALE)
+		old_gender = MALE
 		M.gender = FEMALE
 		M.visible_message(span_boldnotice("[M] suddenly looks more feminine!"), span_boldwarning("You suddenly feel more feminine!"))
 	else
+		old_gender = FEMALE
 		M.gender = MALE
 		M.visible_message(span_boldnotice("[M] suddenly looks more masculine!"), span_boldwarning("You suddenly feel more masculine!"))
+	M.dna?.species?.on_gender_update(M, old_gender)
 	M.regenerate_icons()
 	..()
 

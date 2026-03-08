@@ -240,11 +240,8 @@ GLOBAL_LIST_EMPTY(roundstart_species)
 	/// List all of body markings that the player can choose from in customization. Body markings from sets get added to here
 	var/list/body_markings
 
-	///Statkey = bonus stat, - for malice.
-	var/list/specstats_m = list(STAT_STRENGTH = 0, STAT_PERCEPTION = 0, STAT_ENDURANCE = 0,STAT_CONSTITUTION = 0, STAT_INTELLIGENCE = 0, STAT_SPEED = 0, STAT_FORTUNE = 0)
-
-	///Statkey = bonus stat, - for malice.
-	var/list/specstats_f = list(STAT_STRENGTH = 0, STAT_PERCEPTION = 0, STAT_ENDURANCE = 0,STAT_CONSTITUTION = 0, STAT_INTELLIGENCE = 0, STAT_SPEED = 0, STAT_FORTUNE = 0)
+	var/datum/attribute_holder/sheet/statsheet_male
+	var/datum/attribute_holder/sheet/statsheet_female
 
 	/// Can we be a youngling?
 	var/can_be_youngling = TRUE
@@ -809,8 +806,22 @@ GLOBAL_LIST_EMPTY(roundstart_species)
 	else
 		apply_customizers_to_character(C)
 
+	on_gender_update(C)
 	SEND_SIGNAL(C, COMSIG_SPECIES_GAIN, src, old_species)
 
+/datum/species/proc/on_gender_update(mob/living/carbon/human/C, old_gender)
+	if(old_gender)
+		if(statsheet_male || statsheet_female)
+			if(old_gender == MALE || !statsheet_female)
+				C.attributes?.subtract_sheet(statsheet_male)
+			else if(old_gender == FEMALE)
+				C.attributes?.subtract_sheet(statsheet_female)
+
+	if(statsheet_male || statsheet_female)
+		if(C.gender == MALE || !statsheet_female)
+			C.attributes?.add_sheet(statsheet_male)
+		else if(C.gender == FEMALE)
+			C.attributes?.add_sheet(statsheet_female)
 
 /datum/species/proc/on_species_loss(mob/living/carbon/human/C, datum/species/new_species, pref_load)
 	if(C.dna.species.exotic_bloodtype)
@@ -820,6 +831,12 @@ GLOBAL_LIST_EMPTY(roundstart_species)
 
 	if(inherent_sheet)
 		C.attributes?.subtract_sheet(inherent_sheet)
+
+	if(statsheet_male || statsheet_female)
+		if(C.gender == MALE || !statsheet_female)
+			C.attributes?.subtract_sheet(statsheet_male)
+		else if(C.gender == FEMALE)
+			C.attributes?.subtract_sheet(statsheet_female)
 
 	if(inherent_factions)
 		for(var/i in inherent_factions)

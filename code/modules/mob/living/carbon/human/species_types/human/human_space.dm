@@ -9,6 +9,17 @@
 /mob/living/carbon/human/species/human/space
 	race = /datum/species/human/space
 
+/datum/attribute_holder/sheet/job/species/space
+	raw_attribute_list = list(
+		STAT_STRENGTH = 1,
+		STAT_PERCEPTION = 1,
+		STAT_INTELLIGENCE = 4,
+		STAT_CONSTITUTION = 1,
+		STAT_ENDURANCE = 2,
+		STAT_SPEED = 2,
+		STAT_FORTUNE = -1
+	)
+
 /datum/species/human/space
 	name = "Human"
 	id = SPEC_ID_HUMAN_SPACE
@@ -82,8 +93,7 @@
 		OFFSET_UNDIES = list(0,0),\
 	)
 
-	specstats_m = list(STAT_STRENGTH = 1, STAT_PERCEPTION = 1, STAT_INTELLIGENCE = 4, STAT_CONSTITUTION = 1, STAT_ENDURANCE = 2, STAT_SPEED = 2, STAT_FORTUNE = -1)
-	specstats_f = list(STAT_STRENGTH = 1, STAT_PERCEPTION = 1, STAT_INTELLIGENCE = 4, STAT_CONSTITUTION = 1, STAT_ENDURANCE = 2, STAT_SPEED = 2, STAT_FORTUNE = -1)
+	statsheet_male = /datum/attribute_holder/sheet/job/species/space
 
 	enflamed_icon = "widefire"
 

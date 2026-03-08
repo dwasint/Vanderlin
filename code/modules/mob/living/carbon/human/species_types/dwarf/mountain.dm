@@ -14,6 +14,17 @@
 		/datum/attribute/skill/labor/mining = 10,
 	)
 
+/datum/attribute_holder/sheet/job/species/mountain_dwarf/stats
+	raw_attribute_list = list(
+		STAT_STRENGTH = 1,
+		STAT_PERCEPTION = -2,
+		STAT_INTELLIGENCE = 0,
+		STAT_CONSTITUTION = 2,
+		STAT_ENDURANCE = 2,
+		STAT_SPEED = -1,
+		STAT_FORTUNE = 0
+	)
+
 /datum/species/dwarf/mountain
 	name = "Dwarf"
 	id = SPEC_ID_DWARF
@@ -91,8 +102,7 @@
 		OFFSET_UNDIES = list(0,0)\
 	)
 
-	specstats_m = list(STAT_STRENGTH = 1, STAT_PERCEPTION = -2, STAT_INTELLIGENCE = 0, STAT_CONSTITUTION = 2, STAT_ENDURANCE = 2, STAT_SPEED = -1, STAT_FORTUNE = 0)
-	specstats_f = list(STAT_STRENGTH = 1, STAT_PERCEPTION = -2, STAT_INTELLIGENCE = 0, STAT_CONSTITUTION = 2, STAT_ENDURANCE = 2, STAT_SPEED = -1, STAT_FORTUNE = 0)
+	statsheet_male = /datum/attribute_holder/sheet/job/species/mountain_dwarf/stats
 
 	enflamed_icon = "widefire"
 

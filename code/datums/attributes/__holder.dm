@@ -161,6 +161,42 @@
 	RegisterSignal(parent, COMSIG_SHARE_APPRENTICE_XP, PROC_REF(onshare_apprentice_xp))
 
 /**
+ * Seeds the XP pool to match the current raw skill level.
+ * Call this any time raw_attribute_list is written to directly
+ * without going through adjust_experience/set_skill_level.
+ *
+ * Arguments:
+ *   skill_type - typepath of the skill to seed, or null to seed all skills
+ */
+/datum/attribute_holder/proc/seed_skill_xp(skill_type = null)
+	if(skill_type)
+		if(!ispath(skill_type, SKILL))
+			return
+		_seed_single_skill_xp(skill_type)
+	else
+		for(var/stype in raw_attribute_list)
+			if(!ispath(stype, SKILL))
+				continue
+			_seed_single_skill_xp(stype)
+
+/datum/attribute_holder/proc/_seed_single_skill_xp(skill_type)
+	var/current_level = nulltozero(raw_attribute_list[skill_type])
+	var/current_xp = get_skill_xp(skill_type)
+	var/xp_implied_level = level_for_xp(current_xp)
+
+	if(xp_implied_level == current_level)
+		return // already in sync, nothing to do
+
+	// Calculate XP progress within the old level and carry it into the new level
+	var/old_level_floor_xp = xp_for_level(xp_implied_level)
+	var/old_level_ceiling_xp = xp_for_level(xp_implied_level + 1)
+	var/progress = (current_xp - old_level_floor_xp) / max(1, old_level_ceiling_xp - old_level_floor_xp)
+
+	var/new_floor_xp = xp_for_level(current_level)
+	var/new_ceiling_xp = xp_for_level(current_level + 1)
+	LAZYSET(skill_xp, skill_type, new_floor_xp + progress * (new_ceiling_xp - new_floor_xp))
+
+/**
  * Adds up attributes from a sheet
  */
 /datum/attribute_holder/proc/add_sheet(datum/attribute_holder/sheet/to_add)
@@ -190,6 +226,7 @@
 			adjust_skill_xp_multiplier(skill_type, to_add.skill_xp_multipliers[skill_type] - 1.0)
 	to_add.on_add(src)
 	update_attributes()
+	seed_skill_xp()
 
 /**
  * Stuff we do when another holder adds us
@@ -227,6 +264,7 @@
 			adjust_skill_xp_multiplier(skill_type, -(to_remove.skill_xp_multipliers[skill_type] - 1.0))
 	to_remove.on_remove(src)
 	update_attributes()
+	seed_skill_xp()
 
 /**
  * Stuff we do when another holder removes us
@@ -255,6 +293,7 @@
 	skill_xp_multipliers = LAZYLEN(to_copy.skill_xp_multipliers) ? to_copy.skill_xp_multipliers.Copy() : null
 	to_copy.on_copy(src)
 	update_attributes()
+	seed_skill_xp()
 
 /**
  * Stuff we do when another holder copies us

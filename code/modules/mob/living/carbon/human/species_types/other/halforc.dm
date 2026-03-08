@@ -1,6 +1,15 @@
 /mob/living/carbon/human/species/halforc
 	race = /datum/species/halforc
 
+/datum/attribute_holder/sheet/job/species/halforc
+	raw_attribute_list = list(
+		STAT_STRENGTH = 2,
+		STAT_PERCEPTION = -2,
+		STAT_INTELLIGENCE = -2,
+		STAT_CONSTITUTION = 2,
+		STAT_ENDURANCE = 1,
+	)
+
 /datum/species/halforc
 	name = "Half-Orc"
 	id = SPEC_ID_HALF_ORC
@@ -65,8 +74,7 @@
 
 	offset_features_f = list()
 
-	specstats_m = list(STAT_STRENGTH = 2, STAT_PERCEPTION = -2, STAT_INTELLIGENCE = -2, STAT_CONSTITUTION = 2, STAT_ENDURANCE = 1, STAT_SPEED = 0, STAT_FORTUNE = 0)
-	specstats_f = list(STAT_STRENGTH = 2, STAT_PERCEPTION = -2, STAT_INTELLIGENCE = -1, STAT_CONSTITUTION = 1, STAT_ENDURANCE = 1, STAT_SPEED = 0, STAT_FORTUNE = 0)
+	statsheet_male = /datum/attribute_holder/sheet/job/species/halforc
 
 	enflamed_icon = "widefire"
 

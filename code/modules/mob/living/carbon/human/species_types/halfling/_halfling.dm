@@ -7,6 +7,15 @@
 		/datum/attribute/skill/misc/sneaking = 10,
 	)
 
+/datum/attribute_holder/sheet/job/species/halfling/stats
+	raw_attribute_list = list(
+		STAT_STRENGTH = -1,
+		STAT_PERCEPTION = 2,
+		STAT_CONSTITUTION = -1,
+		STAT_SPEED = 1,
+		STAT_FORTUNE = 1
+	)
+
 /datum/species/halfling
 	name = "Halfling"
 	id = SPEC_ID_HALFLING
@@ -78,8 +87,7 @@
 
 	// Gets 2 SPD if they aren't wearing shoes
 	// Gets 0 / 1 END if they eat enough
-	specstats_m = list(STAT_STRENGTH = -1, STAT_PERCEPTION = 2, STAT_CONSTITUTION = -1, STAT_ENDURANCE = 0, STAT_SPEED = 1, STAT_FORTUNE = 1)
-	specstats_f = list(STAT_STRENGTH = -1, STAT_PERCEPTION = 2, STAT_CONSTITUTION = -1, STAT_ENDURANCE = 0, STAT_SPEED = 1, STAT_FORTUNE = 1)
+	statsheet_male = /datum/attribute_holder/sheet/job/species/halfling/stats
 
 	enflamed_icon = "widefire"
 

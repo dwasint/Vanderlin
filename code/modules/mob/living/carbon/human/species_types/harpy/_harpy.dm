@@ -8,6 +8,15 @@
 		/datum/attribute/skill/misc/music = 10
 	)
 
+/datum/attribute_holder/sheet/job/species/harpy/stats
+	raw_attribute_list = list(
+		STAT_STRENGTH = -4,
+		STAT_PERCEPTION = 2,
+		STAT_INTELLIGENCE = 1,
+		STAT_CONSTITUTION = -4,
+		STAT_SPEED = 3,
+	)
+
 /datum/species/harpy
 	name = "Harpy"
 	id = SPEC_ID_HARPY
@@ -83,8 +92,7 @@
 
 	inherent_traits = list(TRAIT_HOLLOWBONES, TRAIT_AMAZING_BACK, TRAIT_DODGEEXPERT)
 
-	specstats_m = list(STAT_STRENGTH = -4, STAT_PERCEPTION = 2, STAT_INTELLIGENCE = 1, STAT_CONSTITUTION = -4, STAT_ENDURANCE = 0, STAT_SPEED = 3, STAT_FORTUNE = 0)
-	specstats_f = list(STAT_STRENGTH = -4, STAT_PERCEPTION = 2, STAT_INTELLIGENCE = 1, STAT_CONSTITUTION = -4, STAT_ENDURANCE = 0, STAT_SPEED = 3, STAT_FORTUNE = 0)
+	statsheet_male = /datum/attribute_holder/sheet/job/species/harpy/stats
 
 	enflamed_icon = "widefire"
 

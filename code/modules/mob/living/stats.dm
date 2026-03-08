@@ -106,12 +106,6 @@
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
 
-		// Species modifiers
-		if(H.dna?.species)
-			var/datum/species/species = H.dna.species
-			var/list/specstat_list = (gender == FEMALE) ? species.specstats_f : species.specstats_m
-			set_stat_modifier(STATMOD_SEX, specstat_list)
-
 		// Age modifiers
 		switch(H.age)
 			if(AGE_CHILD)

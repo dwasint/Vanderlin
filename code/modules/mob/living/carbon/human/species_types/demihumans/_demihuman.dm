@@ -9,6 +9,16 @@
 /mob/living/carbon/human/species/demihuman
 	race = /datum/species/demihuman
 
+/datum/attribute_holder/sheet/job/species/demihuman
+	raw_attribute_list = list(
+		STAT_STRENGTH = -1,
+		STAT_PERCEPTION = 2,
+		STAT_INTELLIGENCE = 1,
+		STAT_CONSTITUTION = -1,
+		STAT_SPEED = 1,
+		STAT_FORTUNE = -1
+	)
+
 /datum/species/demihuman
 	name = "Hollow-Kin"
 	id = SPEC_ID_HOLLOWKIN
@@ -97,8 +107,7 @@
 		OFFSET_UNDIES = list(0,0),\
 	)
 
-	specstats_m = list(STAT_STRENGTH = -1, STAT_PERCEPTION = 2, STAT_INTELLIGENCE = 1, STAT_CONSTITUTION = -1, STAT_SPEED = 1, STAT_FORTUNE = -1)
-	specstats_f = list(STAT_STRENGTH = -1, STAT_PERCEPTION = 2, STAT_INTELLIGENCE = 1, STAT_CONSTITUTION = -1, STAT_SPEED = 1, STAT_FORTUNE = -1)
+	statsheet_male = /datum/attribute_holder/sheet/job/species/demihuman
 
 	enflamed_icon = "widefire"
 

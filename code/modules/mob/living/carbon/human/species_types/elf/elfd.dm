@@ -9,6 +9,25 @@
 /mob/living/carbon/human/species/elf/dark
 	race = /datum/species/elf/dark
 
+/datum/attribute_holder/sheet/job/species/dark
+	raw_attribute_list = list(
+		STAT_STRENGTH = -1,
+		STAT_PERCEPTION = -1,
+		STAT_INTELLIGENCE = 1,
+		STAT_ENDURANCE = 2,
+		STAT_SPEED = 2,
+	)
+
+/datum/attribute_holder/sheet/job/species/dark/female
+	raw_attribute_list = list(
+		STAT_STRENGTH = 1,
+		STAT_PERCEPTION = -1,
+		STAT_INTELLIGENCE = 1,
+		STAT_CONSTITUTION = 1,
+		STAT_ENDURANCE = 1,
+		STAT_SPEED = 1
+	)
+
 /datum/species/elf/dark
 	name = "Dark Elf"
 	id = SPEC_ID_DROW
@@ -107,8 +126,8 @@
 		OFFSET_UNDIES = list(0,1),\
 	)
 
-	specstats_m = list(STAT_STRENGTH = -1, STAT_PERCEPTION = -1, STAT_INTELLIGENCE = 1, STAT_CONSTITUTION = 0, STAT_ENDURANCE = 2, STAT_SPEED = 2, STAT_FORTUNE = 0)
-	specstats_f = list(STAT_STRENGTH = 1, STAT_PERCEPTION = -1, STAT_INTELLIGENCE = 1, STAT_CONSTITUTION = 1, STAT_ENDURANCE = 1, STAT_SPEED = 1, STAT_FORTUNE = 0)
+	statsheet_male = /datum/attribute_holder/sheet/job/species/dark
+	statsheet_female = /datum/attribute_holder/sheet/job/species/dark/female
 	enflamed_icon = "widefire"
 
 	body_markings = list(

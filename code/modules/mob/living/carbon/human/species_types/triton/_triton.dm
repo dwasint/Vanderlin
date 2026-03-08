@@ -7,6 +7,23 @@
 		/datum/attribute/skill/misc/swimming = 40,
 	)
 
+/datum/attribute_holder/sheet/job/species/triton/male
+	raw_attribute_list = list(
+		STAT_STRENGTH = -1,
+		STAT_PERCEPTION = -2,
+		STAT_CONSTITUTION = -2,
+		STAT_SPEED = 1,
+		STAT_INTELLIGENCE = 2
+	)
+
+/datum/attribute_holder/sheet/job/species/triton/female
+	raw_attribute_list = list(
+		STAT_STRENGTH = 2,
+		STAT_PERCEPTION = -4,
+		STAT_CONSTITUTION = 3,
+		STAT_SPEED = -3
+	)
+
 /datum/species/triton
 	name = "Triton"
 	id = SPEC_ID_TRITON
@@ -55,8 +72,8 @@
 		VOICE_TYPE_ANDRO
 	)
 
-	specstats_m = list(STAT_STRENGTH = -1, STAT_PERCEPTION = -2, STAT_CONSTITUTION = -2, STAT_SPEED = 1, STAT_INTELLIGENCE = 2)
-	specstats_f = list(STAT_STRENGTH = 2, STAT_PERCEPTION = -4, STAT_CONSTITUTION = 3, STAT_SPEED = -3)
+	statsheet_male = /datum/attribute_holder/sheet/job/species/triton/male
+	statsheet_female = /datum/attribute_holder/sheet/job/species/triton/female
 
 	limbs_icon_m = 'icons/roguetown/mob/bodies/m/triton.dmi'
 	limbs_icon_f = 'icons/roguetown/mob/bodies/f/triton.dmi'

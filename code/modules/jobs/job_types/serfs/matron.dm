@@ -31,7 +31,7 @@
 		/datum/attribute/skill/misc/stealing = 60,
 		/datum/attribute/skill/misc/lockpicking = 50,
 		/datum/attribute/skill/craft/traps = 20,
-		/datum/attribute/skill/misc/climbing = 50,
+		/datum/attribute/skill/misc/climbing = 53,
 		/datum/attribute/skill/misc/athletics = 20,
 		/datum/attribute/skill/craft/cooking = 40,
 		/datum/attribute/skill/misc/medicine = 10,

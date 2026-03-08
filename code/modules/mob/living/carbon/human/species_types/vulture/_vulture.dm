@@ -6,6 +6,13 @@
 		/datum/attribute/skill/misc/medicine = 10
 	)
 
+/datum/attribute_holder/sheet/job/species/medicator/stats
+	raw_attribute_list = list(
+		STAT_PERCEPTION = 1,
+		STAT_INTELLIGENCE = 2,
+		STAT_SPEED = -1,
+		STAT_CONSTITUTION = -1
+	)
 /datum/species/medicator
 	name = "Medicator"
 	id = "medicator"
@@ -39,8 +46,7 @@
 	inherent_traits = list(TRAIT_NOMOBSWAP, TRAIT_DEADNOSE, TRAIT_NASTY_EATER)
 	inherent_sheet = /datum/attribute_holder/sheet/job/species/medicator
 
-	specstats_m = list(STAT_PERCEPTION = 1, STAT_INTELLIGENCE = 2, STAT_SPEED = -1, STAT_CONSTITUTION = -1)
-	specstats_f = list(STAT_PERCEPTION = 1, STAT_INTELLIGENCE = 2, STAT_SPEED = -1, STAT_CONSTITUTION = -1)
+	statsheet_male = /datum/attribute_holder/sheet/job/species/medicator/stats
 
 	limbs_icon_m = 'icons/roguetown/mob/bodies/f/medicator.dmi'
 	limbs_icon_f = 'icons/roguetown/mob/bodies/f/medicator.dmi'
