@@ -410,7 +410,7 @@
 			thiefskill = 1
 		if(thief.rogue_sneaking)
 			thiefskill += 1
-		var/stealroll = roll("[thiefskill]d6")
+		var/stealroll = roll("[floor(thiefskill)]d6")
 		var/target_perception = GET_MOB_ATTRIBUTE_VALUE(victim, STAT_PERCEPTION)
 		var/target_skill = GET_MOB_SKILL_VALUE_OLD(victim, /datum/attribute/skill/misc/stealing)
 		var/exp_to_gain = GET_MOB_ATTRIBUTE_VALUE(thief, STAT_INTELLIGENCE) * 1.5
