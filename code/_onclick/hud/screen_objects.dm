@@ -91,9 +91,6 @@
 /atom/movable/screen/skills/Click(location, control, params)
 	var/list/modifiers = params2list(params)
 
-	if(!LAZYACCESS(modifiers, CTRL_CLICKED))
-		usr.attributes?.ui_interact(usr)
-		return
 
 	if(LAZYACCESS(modifiers, SHIFT_CLICKED))
 		if(ishuman(usr))
@@ -101,7 +98,6 @@
 			var/datum/language_holder/H = L.get_language_holder()
 			H.open_language_menu(usr)
 			return
-
 	if(LAZYACCESS(modifiers, RIGHT_CLICK))
 		var/ht
 		var/mob/living/L = usr
@@ -127,6 +123,10 @@
 		if(!ht)
 			to_chat(L, "<span class='warning'>I have no special traits.</span>")
 		to_chat(L, "*----*")
+		return
+
+	if(!LAZYACCESS(modifiers, CTRL_CLICKED))
+		usr.attributes?.ui_interact(usr)
 		return
 
 	if(ishuman(usr))
