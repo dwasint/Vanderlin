@@ -511,3 +511,10 @@
 	for(var/antag_type in all_possible)
 		lies += new antag_type()
 	return lies
+
+#undef SLEEP_EXP_PER_STEP_NOVICE
+#undef SLEEP_EXP_PER_STEP_APPRENTICE
+#undef SLEEP_EXP_PER_STEP_JOURNEYMAN
+#undef SLEEP_EXP_PER_STEP_EXPERT
+#undef SLEEP_EXP_PER_STEP_MASTER
+#undef SLEEP_EXP_PER_STEP_LEGENDARY

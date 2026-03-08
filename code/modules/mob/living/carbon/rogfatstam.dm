@@ -25,7 +25,7 @@
 	var/athletics_skill = 0
 	if(mind)
 		athletics_skill = GET_MOB_SKILL_VALUE_OLD(src, /datum/attribute/skill/misc/athletics)
-	max_energy = (GET_MOB_ATTRIBUTE_VALUE(src, STAT_ENDURANCE) + athletics_skill) * 100 // ENERGY / BLUE (Average of 1000)
+	max_energy = max((GET_MOB_ATTRIBUTE_VALUE(src, STAT_ENDURANCE) + athletics_skill) * 100, 100) // ENERGY / BLUE (Average of 1000)
 	if(cmode)
 		if(!HAS_TRAIT(src, TRAIT_BREADY))
 			adjust_energy(-2)
