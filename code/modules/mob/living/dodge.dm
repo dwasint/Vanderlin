@@ -1,6 +1,6 @@
 
 /mob/living/proc/get_dodging_score(modifier = 0)
-	var/basic_speed = GET_MOB_ATTRIBUTE_VALUE(src, STAT_SPEED)/4
+	var/basic_speed = GET_MOB_ATTRIBUTE_VALUE(src, STAT_SPEED) / 2
 	var/encumberance = get_encumbrance()
 	if(!HAS_TRAIT(src, TRAIT_DODGEEXPERT))
 		encumbrance *= 1.5
@@ -170,14 +170,12 @@
 
 	var/roll_result = diceroll(effective_score, context = DICE_CONTEXT_PHYSICAL)
 
-	if(!(roll_result == DICE_FAILURE || roll_result == DICE_CRIT_FAILURE))
-		update_dodging_penalty(DODGING_PENALTY, DODGING_PENALTY_COOLDOWN_DURATION)
-
 	if(roll_result == DICE_FAILURE || roll_result == DICE_CRIT_FAILURE)
 		if(roll_result == DICE_CRIT_FAILURE)
 			to_chat(src, span_warning("I completely fumbled my dodge!"))
 		return FALSE
 
+	update_dodging_penalty(DODGING_PENALTY, DODGING_PENALTY_COOLDOWN_DURATION)
 	try_dodge_to(user, target_turf, dodge_speed)
 
 	//message flavor only, movement already handled
