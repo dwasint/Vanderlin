@@ -1,4 +1,4 @@
-/datum/attribute_holder/sheet/skeleton_npc/supereasy
+/datum/attribute_holder/sheet/job/skeleton_npc/supereasy
 	raw_attribute_list = list(
 		STAT_STRENGTH = 0,
 		STAT_SPEED = -2,
@@ -16,7 +16,7 @@
 		/datum/attribute/skill/misc/climbing = 20,
 	)
 
-/datum/attribute_holder/sheet/skeleton_npc/easy
+/datum/attribute_holder/sheet/job/skeleton_npc/easy
 	raw_attribute_list = list(
 		STAT_STRENGTH = -1,
 		STAT_SPEED = -2,
@@ -34,7 +34,7 @@
 		/datum/attribute/skill/misc/climbing = 20,
 	)
 
-/datum/attribute_holder/sheet/skeleton_npc/pirate
+/datum/attribute_holder/sheet/job/skeleton_npc/pirate
 	raw_attribute_list = list(
 		STAT_STRENGTH = -1,
 		STAT_SPEED = -2,
@@ -52,7 +52,7 @@
 		/datum/attribute/skill/misc/climbing = 20,
 	)
 
-/datum/attribute_holder/sheet/skeleton_npc/medium
+/datum/attribute_holder/sheet/job/skeleton_npc/medium
 	raw_attribute_list = list(
 		STAT_STRENGTH = 1,
 		STAT_SPEED = -2,
@@ -70,7 +70,7 @@
 		/datum/attribute/skill/misc/climbing = 30,
 	)
 
-/datum/attribute_holder/sheet/skeleton_npc/hard/khopesh
+/datum/attribute_holder/sheet/job/skeleton_npc/hard/khopesh
 	raw_attribute_list = list(
 		STAT_STRENGTH = 2,
 		STAT_SPEED = 2,
@@ -88,7 +88,7 @@
 		/datum/attribute/skill/misc/climbing = 40,
 	)
 
-/datum/attribute_holder/sheet/skeleton_npc/hard/dreadknight
+/datum/attribute_holder/sheet/job/skeleton_npc/hard/dreadknight
 	raw_attribute_list = list(
 		STAT_STRENGTH = 2,
 		STAT_SPEED = -2,
@@ -130,7 +130,7 @@
 			r_hand = /obj/item/weapon/polearm/spear/bonespear
 		if(4)
 			r_hand = /obj/item/weapon/mace
-	H.attributes.add_sheet(/datum/attribute_holder/sheet/skeleton_npc/supereasy)
+	H.attributes.add_sheet(/datum/attribute_holder/sheet/job/skeleton_npc/supereasy)
 
 /mob/living/carbon/human/species/skeleton/npc/easy
 	skel_outfit = /datum/outfit/job/skeleton/npc/easy
@@ -151,7 +151,7 @@
 			r_hand = /obj/item/weapon/polearm/spear/bonespear
 		if(4)
 			r_hand = /obj/item/weapon/mace
-	H.attributes.add_sheet(/datum/attribute_holder/sheet/skeleton_npc/easy)
+	H.attributes.add_sheet(/datum/attribute_holder/sheet/job/skeleton_npc/easy)
 
 /mob/living/carbon/human/species/skeleton/npc/pirate
 	skel_outfit = /datum/outfit/job/skeleton/npc/pirate
@@ -168,7 +168,7 @@
 		r_hand = /obj/item/weapon/knife/dagger
 	else
 		r_hand = /obj/item/weapon/knuckles
-	H.attributes.add_sheet(/datum/attribute_holder/sheet/skeleton_npc/pirate)
+	H.attributes.add_sheet(/datum/attribute_holder/sheet/job/skeleton_npc/pirate)
 
 /mob/living/carbon/human/species/skeleton/npc/medium
 	skel_outfit = /datum/outfit/job/skeleton/npc/medium
@@ -194,7 +194,7 @@
 		r_hand = /obj/item/weapon/sword/gladius
 	else
 		r_hand = /obj/item/weapon/flail
-	H.attributes.add_sheet(/datum/attribute_holder/sheet/skeleton_npc/medium)
+	H.attributes.add_sheet(/datum/attribute_holder/sheet/job/skeleton_npc/medium)
 
 /mob/living/carbon/human/species/skeleton/npc/hard
 	skel_outfit = /datum/outfit/job/skeleton/npc/hard
@@ -215,7 +215,7 @@
 		gloves = /obj/item/clothing/gloves/chain/iron
 		r_hand = /obj/item/weapon/sword/sabre/cutlass
 		l_hand = /obj/item/weapon/sword/sabre/cutlass
-		H.attributes.add_sheet(/datum/attribute_holder/sheet/skeleton_npc/hard/khopesh)
+		H.attributes.add_sheet(/datum/attribute_holder/sheet/job/skeleton_npc/hard/khopesh)
 	else
 		cloak = /obj/item/clothing/cloak/tabard/blkknight
 		head = /obj/item/clothing/head/helmet/heavy/ironplate
@@ -231,7 +231,7 @@
 			r_hand = /obj/item/weapon/sword/long/greatsword
 		else
 			r_hand = /obj/item/weapon/mace/goden
-		H.attributes.add_sheet(/datum/attribute_holder/sheet/skeleton_npc/hard/dreadknight)
+		H.attributes.add_sheet(/datum/attribute_holder/sheet/job/skeleton_npc/hard/dreadknight)
 
 /mob/living/carbon/human/species/skeleton/npc/mediumspread/Initialize()
 	var/outfit = rand(1, 4)

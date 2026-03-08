@@ -77,7 +77,7 @@
 		if(OU)
 			equipOutfit(OU)
 
-/datum/attribute_holder/sheet/skeleton_npc/random
+/datum/attribute_holder/sheet/job/skeleton_npc/random
 	raw_attribute_list = list(
 		STAT_STRENGTH = -4,
 		STAT_SPEED = 0,
@@ -88,9 +88,9 @@
 
 /datum/outfit/npc/skeleton/random/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.attributes.add_sheet(/datum/attribute_holder/sheet/skeleton_npc/random)
+	H.attributes.add_sheet(/datum/attribute_holder/sheet/job/skeleton_npc/random)
 
-/datum/attribute_holder/sheet/skeleton_npc/greater
+/datum/attribute_holder/sheet/job/skeleton_npc/greater
 	raw_attribute_list = list(
 		STAT_STRENGTH = 5,
 		STAT_SPEED = -2,
@@ -120,7 +120,7 @@
 	pants = /obj/item/clothing/pants/chainlegs/iron
 	head = /obj/item/clothing/head/helmet/leather
 	shoes = /obj/item/clothing/shoes/boots
-	H.attributes.add_sheet(/datum/attribute_holder/sheet/skeleton_npc/greater)
+	H.attributes.add_sheet(/datum/attribute_holder/sheet/job/skeleton_npc/greater)
 	H.set_patron(/datum/patron/inhumen/zizo)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	H.possible_rmb_intents = list(/datum/rmb_intent/feint,\
@@ -147,7 +147,7 @@
 	flee_in_pain = FALSE
 	wander = TRUE
 
-/datum/attribute_holder/sheet/skeleton_npc/peasant
+/datum/attribute_holder/sheet/job/skeleton_npc/peasant
 	raw_attribute_list = list(
 		STAT_STRENGTH = -4,
 		STAT_SPEED = -2,
@@ -158,7 +158,7 @@
 
 /datum/outfit/species/skeleton/npc/peasant/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.attributes.add_sheet(/datum/attribute_holder/sheet/skeleton_npc/peasant)
+	H.attributes.add_sheet(/datum/attribute_holder/sheet/job/skeleton_npc/peasant)
 	var/loadout = rand(1,7)
 	head = /obj/item/clothing/head/roguehood/colored/random
 	pants = /obj/item/clothing/pants/tights/colored/vagrant
@@ -199,7 +199,7 @@
 	flee_in_pain = FALSE
 	wander = TRUE
 
-/datum/attribute_holder/sheet/skeleton_npc/ambush
+/datum/attribute_holder/sheet/job/skeleton_npc/ambush
 	raw_attribute_list = list(
 		STAT_STRENGTH = -4,
 		STAT_SPEED = -2,
@@ -210,7 +210,7 @@
 
 /datum/outfit/species/skeleton/npc/random/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.attributes.add_sheet(/datum/attribute_holder/sheet/skeleton_npc/ambush)
+	H.attributes.add_sheet(/datum/attribute_holder/sheet/job/skeleton_npc/ambush)
 	if(prob(50))
 		wrists = /obj/item/clothing/wrists/bracers/leather
 	if(prob(50))
@@ -241,7 +241,7 @@
 	flee_in_pain = FALSE
 	wander = TRUE
 
-/datum/attribute_holder/sheet/skeleton_npc/warrior
+/datum/attribute_holder/sheet/job/skeleton_npc/warrior
 	raw_attribute_list = list(
 		STAT_STRENGTH = 0,
 		STAT_SPEED = -3,
@@ -252,7 +252,7 @@
 
 /datum/outfit/species/skeleton/npc/warrior/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.attributes.add_sheet(/datum/attribute_holder/sheet/skeleton_npc/warrior)
+	H.attributes.add_sheet(/datum/attribute_holder/sheet/job/skeleton_npc/warrior)
 	shirt = /obj/item/clothing/shirt/undershirt/colored/vagrant
 	pants = /obj/item/clothing/pants/tights/colored/vagrant
 	neck = /obj/item/clothing/neck/chaincoif
@@ -299,7 +299,7 @@
 	wander = TRUE
 	configure_mind()
 
-/datum/attribute_holder/sheet/skeleton_npc/warrior/skilled
+/datum/attribute_holder/sheet/job/skeleton_npc/warrior/skilled
 	raw_attribute_list = list(
 		/datum/attribute/skill/combat/polearms = 20,
 		/datum/attribute/skill/combat/swords = 20,
@@ -313,9 +313,9 @@
 /mob/living/carbon/human/species/skeleton/npc/warrior/skilled/proc/configure_mind()
 	if(!mind)
 		mind = new /datum/mind(src)
-	attributes.add_sheet(/datum/attribute_holder/sheet/skeleton_npc/warrior/skilled)
+	attributes.add_sheet(/datum/attribute_holder/sheet/job/skeleton_npc/warrior/skilled)
 
-/datum/attribute_holder/sheet/skeleton_npc/arena
+/datum/attribute_holder/sheet/job/skeleton_npc/arena
 	raw_attribute_list = list(
 		STAT_STRENGTH = 10,
 		STAT_SPEED = 0,
@@ -332,7 +332,7 @@
 	equipOutfit(new /datum/outfit/arena_skeleton)
 	ADD_TRAIT(src, TRAIT_CRITICAL_WEAKNESS, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOLIMBDISABLE, TRAIT_GENERIC)
-	attributes.add_sheet(/datum/attribute_holder/sheet/skeleton_npc/arena)
+	attributes.add_sheet(/datum/attribute_holder/sheet/job/skeleton_npc/arena)
 
 /mob/living/carbon/human/species/skeleton/death_arena/roll_mob_stats()
 	return

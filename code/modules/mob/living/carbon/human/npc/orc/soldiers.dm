@@ -1,4 +1,4 @@
-/datum/attribute_holder/sheet/orc_npc/footsoldier
+/datum/attribute_holder/sheet/job/orc_npc/footsoldier
 	raw_attribute_list = list(
 		STAT_STRENGTH     = 1,
 		STAT_SPEED        = -2,
@@ -15,7 +15,7 @@
 		/datum/attribute/skill/misc/swimming = 20,
 	)
 
-/datum/attribute_holder/sheet/orc_npc/marauder
+/datum/attribute_holder/sheet/job/orc_npc/marauder
 	raw_attribute_list = list(
 		STAT_STRENGTH = 2,
 		STAT_SPEED = -2,
@@ -33,7 +33,7 @@
 		/datum/attribute/skill/misc/swimming = 20,
 	)
 
-/datum/attribute_holder/sheet/orc_npc/berserker
+/datum/attribute_holder/sheet/job/orc_npc/berserker
 	raw_attribute_list = list(
 		STAT_STRENGTH     = 3,
 		STAT_CONSTITUTION = 2,
@@ -49,7 +49,7 @@
 		/datum/attribute/skill/misc/swimming = 20,
 	)
 
-/datum/attribute_holder/sheet/orc_npc/elite
+/datum/attribute_holder/sheet/job/orc_npc/elite
 	raw_attribute_list = list(
 		STAT_STRENGTH     = 4,
 		STAT_CONSTITUTION = 2,
@@ -102,7 +102,7 @@
 			r_hand = /obj/item/weapon/shield/wood
 		if(3)
 			l_hand = /obj/item/weapon/mace/cudgel
-	H.attributes.add_sheet(/datum/attribute_holder/sheet/orc_npc/footsoldier)
+	H.attributes.add_sheet(/datum/attribute_holder/sheet/job/orc_npc/footsoldier)
 
 // Slightly armored orc with slight facial protection, incomplete chainmail and spear / sword
 /datum/outfit/job/orc/npc/marauder/pre_equip(mob/living/carbon/human/H)
@@ -128,7 +128,7 @@
 			l_hand = /obj/item/weapon/greataxe
 		if(5)
 			l_hand = /obj/item/weapon/pick
-	H.attributes.add_sheet(/datum/attribute_holder/sheet/orc_npc/marauder)
+	H.attributes.add_sheet(/datum/attribute_holder/sheet/job/orc_npc/marauder)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
 // Lightly armored orc in light armor with no pain stun, and grappling oriented weapons
@@ -147,7 +147,7 @@
 			l_hand = /obj/item/weapon/knife/dagger
 		if(2)
 			l_hand = /obj/item/weapon/pick
-	H.attributes.add_sheet(/datum/attribute_holder/sheet/orc_npc/berserker)
+	H.attributes.add_sheet(/datum/attribute_holder/sheet/job/orc_npc/berserker)
 	ADD_TRAIT(H, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, INNATE_TRAIT)
 
@@ -176,7 +176,7 @@
 		if(6)
 			l_hand = /obj/item/weapon/sword/scimitar/falchion
 			r_hand = /obj/item/weapon/sword/scimitar/falchion // intrusive thoughts
-	H.attributes.add_sheet(/datum/attribute_holder/sheet/orc_npc/elite)
+	H.attributes.add_sheet(/datum/attribute_holder/sheet/job/orc_npc/elite)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 
 // Orc archer
@@ -189,4 +189,4 @@
 	pants = /obj/item/clothing/pants/trou/leather
 	belt = /obj/item/storage/belt/leather/knifebelt/black/steel
 	beltr = /obj/item/storage/belt/pouch/medicine
-	H.attributes.add_sheet(/datum/attribute_holder/sheet/orc_npc/elite)
+	H.attributes.add_sheet(/datum/attribute_holder/sheet/job/orc_npc/elite)
