@@ -148,13 +148,15 @@
 ///Called when TRAIT_LEPROSY is added to the mob.
 /mob/living/proc/on_leprosy_trait_gain(datum/source)
 	SIGNAL_HANDLER
-	set_stat_modifier(TRAIT_LEPROSY, STAT_STRENGTH, -3)
-	set_stat_modifier(TRAIT_LEPROSY, STAT_ENDURANCE, -3)
-	set_stat_modifier(TRAIT_LEPROSY, STAT_CONSTITUTION, -3)
-	set_stat_modifier(TRAIT_LEPROSY, STAT_PERCEPTION, -3)
-	set_stat_modifier(TRAIT_LEPROSY, STAT_SPEED, -3)
-	set_stat_modifier(TRAIT_LEPROSY, STAT_INTELLIGENCE, -3)
-	set_stat_modifier(TRAIT_LEPROSY, STAT_FORTUNE, -3)
+	adjust_stat_modifier(TRAIT_LEPROSY, list(
+		STAT_STRENGTH = -3,
+		STAT_ENDURANCE = -3,
+		STAT_CONSTITUTION = -3,
+		STAT_PERCEPTION = -3,
+		STAT_SPEED = -3,
+		STAT_INTELLIGENCE = -3,
+		STAT_FORTUNE = -3
+	))
 
 ///Called when TRAIT_LEPROSY is removed from the mob.
 /mob/living/proc/on_leprosy_trait_loss(datum/source)
