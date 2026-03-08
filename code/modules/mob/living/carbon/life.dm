@@ -165,7 +165,7 @@
 		raw_pain *= (1.0 - shock_reduction)
 
 	// Max pain scales on endurance
-	var/painpercent = (raw_pain / (GET_MOB_ATTRIBUTE_VALUE(src, STAT_ENDURANCE) * 13)) * 100
+	var/painpercent = (raw_pain / max(GET_MOB_ATTRIBUTE_VALUE(src, STAT_ENDURANCE) * 13, 1)) * 100
 
 	// Apply pain tolerance to reduce effective pain
 	painpercent *= (1 - (pain_tolerance * 0.01))
