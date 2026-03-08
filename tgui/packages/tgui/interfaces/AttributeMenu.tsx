@@ -1,5 +1,5 @@
-import { useBackend } from '../backend';
-import { Box, Button, Stack, Tooltip } from 'tgui-core/components';
+import { useBackend, useLocalState } from '../backend';
+import { Box, Button, Input, Stack, Tooltip } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 // --- Interfaces ---
@@ -70,7 +70,7 @@ const CloserInspection = (props: { data: AttributeData; act: any }) => {
               : 'PreferencesMenu__papersplease__left'
           }
           style={{ paddingTop: '8px', paddingBottom: '8px' }}>
-          <Stack vertical={false}>
+          <Stack >
             <Stack.Item>
               <Box
                 height="128px"
@@ -147,7 +147,7 @@ const CloserInspection = (props: { data: AttributeData; act: any }) => {
                       </Box>
                     }>
                     <Stack>
-                      <Stack.Item vertical={false}>
+                      <Stack.Item >
                         <Box>
                           <Box
                             mr={1}
@@ -177,11 +177,34 @@ const CloserInspection = (props: { data: AttributeData; act: any }) => {
 const AttributeStack = (props: { data: AttributeData; act: any }) => {
   const { data, act } = props;
   const { show_bad_skills, skills_by_category = [], stats = [] } = data;
+  const [search, setSearch] = useLocalState('skill_search', '');
+
+  const isSearching = search.trim().length > 0;
+
+  const handleSearch = (val: string) => {
+    const wasSearching = search.trim().length > 0;
+    const nowSearching = val.trim().length > 0;
+    setSearch(val);
+    if (nowSearching && !wasSearching && !show_bad_skills) {
+      act('enable_bad_skills');
+    } else if (!nowSearching && wasSearching && !show_bad_skills) {
+      act('disable_bad_skills');
+    }
+  };
+
+  const visibleCategories = skills_by_category
+    .map((category) => ({
+      ...category,
+      skills: category.skills.filter((skill) =>
+        !isSearching || skill.name.toLowerCase().includes(search.toLowerCase())
+      ),
+    }))
+    .filter((category) => category.skills.length > 0);
 
   return (
-    <Stack width="100%" height="100%" vertical={false}>
+    <Stack width="100%" height="100%" >
       {/* Stats Column */}
-      <Stack.Item width="40%" height="90%">
+      <Stack.Item width="40%" height="100%">
         <Box width="100%" className="PreferencesMenu__papersplease__header__left">
           <Box
             textAlign="center"
@@ -192,12 +215,13 @@ const AttributeStack = (props: { data: AttributeData; act: any }) => {
         </Box>
         <Box
           width="100%"
-          height="52.5%"
+          overflowY="scroll"
           className="PreferencesMenu__papersplease__left"
           style={{
             paddingLeft: '4px',
             paddingRight: '4px',
             paddingTop: '8px',
+            paddingBottom: '8px',
             fontSize: '150%',
           }}>
           <Stack vertical>
@@ -210,7 +234,7 @@ const AttributeStack = (props: { data: AttributeData; act: any }) => {
                 onClick={() => act('inspect_closely', { attribute_name: stat.name })}>
                 <Tooltip position="bottom" content={<Box>{stat.desc}</Box>}>
                   <Stack>
-                    <Stack.Item width="85%" vertical={false}>
+                    <Stack.Item width="85%" >
                       <Box width="100%">
                         <Box mr={1} className={`attributes_small16x16 ${stat.icon}`} />
                         {stat.name}
@@ -221,8 +245,7 @@ const AttributeStack = (props: { data: AttributeData; act: any }) => {
                     </Stack.Item>
                     <Stack.Item>
                       <Box textAlign="right">
-                        ({' '}
-                        <span
+                        (<span
                           style={{
                             color:
                               (stat.value ?? 0) < (stat.raw_value ?? 0)
@@ -232,8 +255,7 @@ const AttributeStack = (props: { data: AttributeData; act: any }) => {
                                 : '',
                           }}>
                           {stat.value}
-                        </span>
-                        /{stat.raw_value})
+                        </span>/{stat.raw_value})
                       </Box>
                     </Stack.Item>
                   </Stack>
@@ -242,101 +264,45 @@ const AttributeStack = (props: { data: AttributeData; act: any }) => {
             ))}
           </Stack>
         </Box>
-
-        {/* Worthless Skills Toggle */}
-        <Box
-          mt={1}
-          width="100%"
-          className="PreferencesMenu__papersplease__header__left">
-          <Box
-            width="100%"
-            textAlign="center"
-            className="PreferencesMenu__papersplease__header__title"
-            style={{ fontSize: '200%' }}>
-            Show worthless skills?
-          </Box>
-        </Box>
-        <Box
-          height="20%"
-          width="100%"
-          className="PreferencesMenu__papersplease__left"
-          style={{
-            paddingLeft: '25%',
-            paddingRight: '4px',
-            paddingTop: '8px',
-            fontSize: '175%',
-          }}>
-          <Stack mt={1} width="100%" vertical={false}>
-            <Stack.Item>
-              <Stack>
-                <Stack.Item mr={0.5} ml={0}>
-                  <Box mt={0.75} style={{ fontWeight: 'bold' }}>
-                    No
-                  </Box>
-                </Stack.Item>
-                <Stack.Item ml={0}>
-                  <Tooltip
-                    content="Skills you have absolutely no training on will not be shown."
-                    position="right">
-                    <Button
-                      className="PreferencesMenu__Jobs__departments__attributebutton"
-                      icon="times"
-                      width="32px"
-                      height="32px"
-                      color={!show_bad_skills ? 'paperplease' : 'null'}
-                      onClick={() => act('disable_bad_skills')}
-                      circular
-                    />
-                  </Tooltip>
-                </Stack.Item>
-              </Stack>
-            </Stack.Item>
-            <Stack.Item>
-              <Stack>
-                <Stack.Item mr={0.5}>
-                  <Box mt={0.75} style={{ fontWeight: 'bold' }}>
-                    Yes
-                  </Box>
-                </Stack.Item>
-                <Stack.Item ml={0}>
-                  <Tooltip
-                    content="Skills you have absolutely no training on will be shown."
-                    position="right">
-                    <Button
-                      className="PreferencesMenu__Jobs__departments__attributebutton"
-                      icon="check"
-                      width="32px"
-                      height="32px"
-                      color={show_bad_skills ? 'paperplease' : 'null'}
-                      onClick={() => act('enable_bad_skills')}
-                      circular
-                    />
-                  </Tooltip>
-                </Stack.Item>
-              </Stack>
-            </Stack.Item>
-          </Stack>
-        </Box>
       </Stack.Item>
 
       {/* Skills Column */}
-      <Stack.Item width="60%" height="85.5%">
+      <Stack.Item width="60%" height="100%">
         <Box width="100%" className="PreferencesMenu__papersplease__header__left">
-          <Box
-            textAlign="center"
-            className="PreferencesMenu__papersplease__header__title"
-            style={{ fontSize: '275%' }}>
-            Skills
+          <Stack align="center" width="100%" className="PreferencesMenu__papersplease__header__title">
+            <Stack.Item grow textAlign="center" style={{ fontSize: '275%' }}>
+              Skills
+            </Stack.Item>
+            <Stack.Item mr={1}>
+              <Tooltip
+                content={show_bad_skills ? 'Hide untrained skills' : 'Show untrained skills'}
+                position="bottom">
+                <Button.Checkbox
+                  checked={show_bad_skills || isSearching}
+                  onClick={() => act(show_bad_skills ? 'disable_bad_skills' : 'enable_bad_skills')}
+                  style={{ fontSize: '120%' }}>
+                  All skills
+                </Button.Checkbox>
+              </Tooltip>
+            </Stack.Item>
+          </Stack>
+          <Box px={1} pb={1}>
+            <Input
+              fluid
+              placeholder="Search skills..."
+              value={search}
+              onInput={(e) => handleSearch(e.target.value)}
+            />
           </Box>
         </Box>
         <Box
           width="100%"
-          height="100%"
+          height="85.5%"
           className="PreferencesMenu__papersplease__left"
-          style={{ paddingLeft: '4px', paddingRight: '0px', fontSize: '150%' }}>
+          style={{ paddingLeft: '4px', paddingRight: '4px', paddingBottom: '4px', fontSize: '150%' }}>
           <Stack width="100%" height="100%" overflowX="hidden" overflowY="scroll" vertical>
-            {!skills_by_category.length && <Box>No skills!</Box>}
-            {skills_by_category.map((category) => (
+            {!visibleCategories.length && <Box>No skills!</Box>}
+            {visibleCategories.map((category) => (
               <Stack vertical key={category.name}>
                 <Stack.Item>
                   <Box
@@ -366,7 +332,7 @@ const AttributeStack = (props: { data: AttributeData; act: any }) => {
                         </Box>
                       }>
                       <Stack>
-                        <Stack.Item width="85%" vertical={false}>
+                        <Stack.Item width="85%" >
                           <Box width="100%">
                             <Box mr={1} className={`attributes_small16x16 ${skill.icon}`} />
                             {skill.name}
@@ -374,9 +340,8 @@ const AttributeStack = (props: { data: AttributeData; act: any }) => {
                         </Stack.Item>
                         <Stack.Item>
                           <Box textAlign="right" mr={2}>
-                            ({' '}
                             {skill.value !== null && skill.raw_value !== null ? (
-                              <span
+                              <>(<span
                                 style={{
                                   color:
                                     skill.value < skill.raw_value
@@ -386,18 +351,17 @@ const AttributeStack = (props: { data: AttributeData; act: any }) => {
                                       : '',
                                 }}>
                                 {skill.value}
-                              </span>
+                              </span>/{skill.raw_value})</>
                             ) : (
-                              <span>
+                              <>
                                 {typeof skill.value === 'number' && (
-                                  <span style={{ color: '#008000' }}>{skill.value}</span>
+                                  <>(<span style={{ color: '#008000' }}>{skill.value}</span>/{skill.raw_value})</>
                                 )}
-                                {typeof skill.raw_value === 'number' && (
-                                  <span style={{ color: '#800000' }}>{skill.value}</span>
+                                {typeof skill.raw_value === 'number' && !skill.value && (
+                                  <>(<span style={{ color: '#800000' }}>{skill.value}</span>/{skill.raw_value})</>
                                 )}
-                              </span>
+                              </>
                             )}
-                            /{skill.raw_value})
                           </Box>
                         </Stack.Item>
                       </Stack>
@@ -421,7 +385,7 @@ export const AttributeMenu = (props, context) => {
     <Window
       title={parent ? `${parent} Attributes` : 'Attributes'}
       width={800}
-      height={400}>
+      height={450}>
       <Window.Content>
         {closely_inspected_attribute?.name ? (
           <CloserInspection data={data} act={act} />
