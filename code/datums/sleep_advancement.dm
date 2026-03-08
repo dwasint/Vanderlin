@@ -301,7 +301,7 @@
 	// Deduct one step's worth of sleep XP
 	adjust_sleep_xp(skill_type, -get_required_sleep_xp_for_skill(skill_type, 1))
 	// Legacy helper multiplies by 10 internally - advances exactly 1 level (e.g. 20 -> 21)
-	mind.current.adjust_skillrank(skill_type, 1, FALSE)
+	mind.current.adjust_skill_level(skill_type, 1)
 	record_round_statistic(STATS_SKILLS_DREAMED)
 
 /**

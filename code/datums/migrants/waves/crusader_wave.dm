@@ -139,11 +139,11 @@
 /datum/job/migrant/inquisition_crusader/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	if(spawned.gender == FEMALE)
-		spawned.adjust_skill_level(/datum/attribute/skill/combat/crossbows, 10, TRUE)
-		spawned.adjust_skill_level(/datum/attribute/skill/combat/knives, 10, TRUE)
+		spawned.adjust_skill_level(/datum/attribute/skill/combat/crossbows, 10)
+		spawned.adjust_skill_level(/datum/attribute/skill/combat/knives, 10)
 	else
-		spawned.adjust_skill_level(/datum/attribute/skill/combat/swords, 10, TRUE)
-		spawned.adjust_skill_level(/datum/attribute/skill/combat/shields, 10, TRUE)
+		spawned.adjust_skill_level(/datum/attribute/skill/combat/swords, 10)
+		spawned.adjust_skill_level(/datum/attribute/skill/combat/shields, 10)
 
 	if(!istype(spawned.patron, /datum/patron/psydon)) // don't overwrite extremist psydon
 		spawned.set_patron(/datum/patron/psydon)

@@ -58,29 +58,29 @@
 	if(spawned.patron)
 		switch(spawned.patron.type)
 			if(/datum/patron/inhumen/graggar)
-				spawned.adjust_skill_level(/datum/attribute/skill/combat/axesmaces, 30, TRUE)
+				spawned.adjust_skill_level(/datum/attribute/skill/combat/axesmaces, 30)
 				ADD_TRAIT(spawned, TRAIT_DUALWIELDER, TRAIT_GENERIC)
 				spawned.cmode_music = 'sound/music/cmode/antag/combat_werewolf.ogg'
 			if(/datum/patron/inhumen/graggar_zizo)
-				spawned.adjust_skill_level(/datum/attribute/skill/combat/unarmed, 20, TRUE)
-				spawned.adjust_skill_level(/datum/attribute/skill/combat/wrestling, 20, TRUE)
+				spawned.adjust_skill_level(/datum/attribute/skill/combat/unarmed, 20)
+				spawned.adjust_skill_level(/datum/attribute/skill/combat/wrestling, 20)
 				spawned.cmode_music = 'sound/music/cmode/antag/combat_werewolf.ogg'
 			if(/datum/patron/inhumen/zizo)
-				spawned.adjust_skill_level(/datum/attribute/skill/combat/swords, 30, TRUE)
-				spawned.adjust_skill_level(/datum/attribute/skill/combat/shields, 10, TRUE)
+				spawned.adjust_skill_level(/datum/attribute/skill/combat/swords, 30)
+				spawned.adjust_skill_level(/datum/attribute/skill/combat/shields, 10)
 				spawned.grant_language(/datum/language/undead)
 				spawned.cmode_music = 'sound/music/cmode/antag/combat_cult.ogg'
 			if(/datum/patron/inhumen/matthios)
-				spawned.adjust_skill_level(/datum/attribute/skill/combat/polearms, 30, TRUE)
-				spawned.adjust_skill_level(/datum/attribute/skill/misc/stealing, 20, TRUE)
-				spawned.adjust_skill_level(/datum/attribute/skill/misc/sneaking, 20, TRUE)
-				spawned.adjust_skill_level(/datum/attribute/skill/misc/lockpicking, 10, TRUE)
+				spawned.adjust_skill_level(/datum/attribute/skill/combat/polearms, 30)
+				spawned.adjust_skill_level(/datum/attribute/skill/misc/stealing, 20)
+				spawned.adjust_skill_level(/datum/attribute/skill/misc/sneaking, 20)
+				spawned.adjust_skill_level(/datum/attribute/skill/misc/lockpicking, 10)
 				spawned.cmode_music = 'sound/music/cmode/antag/CombatBandit1.ogg'
 			if(/datum/patron/inhumen/baotha)
-				spawned.adjust_skill_level(/datum/attribute/skill/combat/crossbows, 30, TRUE)
-				spawned.adjust_skill_level(/datum/attribute/skill/combat/knives, 20, TRUE)
-				spawned.adjust_skill_level(/datum/attribute/skill/craft/alchemy, 20, TRUE)
-				spawned.adjust_skill_level(/datum/attribute/skill/craft/crafting, 10, TRUE)
+				spawned.adjust_skill_level(/datum/attribute/skill/combat/crossbows, 30)
+				spawned.adjust_skill_level(/datum/attribute/skill/combat/knives, 20)
+				spawned.adjust_skill_level(/datum/attribute/skill/craft/alchemy, 20)
+				spawned.adjust_skill_level(/datum/attribute/skill/craft/crafting, 10)
 				spawned.cmode_music = 'sound/music/cmode/antag/CombatBaotha.ogg'
 			else
 				spawned.cmode_music = 'sound/music/cmode/church/CombatInquisitor.ogg'

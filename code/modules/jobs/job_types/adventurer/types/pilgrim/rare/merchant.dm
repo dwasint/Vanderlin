@@ -42,13 +42,13 @@
 	if(merchant_type)
 		switch(merchant_type)
 			if("FOOD")
-				spawned.adjust_skill_level(/datum/attribute/skill/craft/cooking, 20, TRUE)
+				spawned.adjust_skill_level(/datum/attribute/skill/craft/cooking, 20)
 			if("HEAL")
-				spawned.adjust_skill_level(/datum/attribute/skill/craft/alchemy, 20, TRUE)
+				spawned.adjust_skill_level(/datum/attribute/skill/craft/alchemy, 20)
 			if("SILK")
-				spawned.adjust_skill_level(/datum/attribute/skill/misc/sewing, 20, TRUE)
+				spawned.adjust_skill_level(/datum/attribute/skill/misc/sewing, 20)
 			if("GEMS")
-				spawned.adjust_skill_level(/datum/attribute/skill/craft/blacksmithing, 10, TRUE)
+				spawned.adjust_skill_level(/datum/attribute/skill/craft/blacksmithing, 10)
 	// Randomize it again for the next possible merchant
 	merchant_type = pickweight(list("FOOD" = 4, "HEAL" = 2, "SILK" = 1, "GEMS" = 1))
 
