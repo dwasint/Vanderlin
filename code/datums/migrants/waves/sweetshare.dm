@@ -5,6 +5,23 @@
 	own supply. You are Baotha's strongest spice-addict."
 	migrant_job = /datum/job/migrant/sweetshare
 
+/datum/attribute_holder/sheet/job/migrant/sweetshare
+	raw_attribute_list = list(
+		STAT_SPEED = 2,
+		STAT_ENDURANCE = 2,
+		STAT_STRENGTH = -2,
+		STAT_CONSTITUTION = -1,
+		/datum/attribute/skill/combat/knives = 10,
+		/datum/attribute/skill/combat/wrestling = 20,
+		/datum/attribute/skill/combat/unarmed = 20,
+		/datum/attribute/skill/misc/athletics = 30,
+		/datum/attribute/skill/misc/swimming = 30,
+		/datum/attribute/skill/misc/reading = 30,
+		/datum/attribute/skill/craft/alchemy = 30,
+		/datum/attribute/skill/misc/medicine = 20,
+		/datum/attribute/skill/misc/climbing = 40,
+	)
+
 /datum/job/migrant/sweetshare
 	title = "Candyman"
 	tutorial = "Who can take a rainbow, wrap it in a sigh. Soak it in the sun, and make a groovy pie? The Candy Man can. \
@@ -13,32 +30,13 @@
 	outfit = /datum/outfit/sweetshare
 	allowed_patrons = list(/datum/patron/inhumen/baotha)
 
-	jobstats = list(
-		STAT_SPEED = 2,
-		STAT_ENDURANCE = 2,
-		STAT_STRENGTH = -2,
-		STAT_CONSTITUTION = -1,
-	)
 	honorary_suffix = "the Candyman"
 	honorary_suffix_f = "the Candywoman"
 
-	skills = list(
-		/datum/attribute/skill/combat/knives = 1,
-		/datum/attribute/skill/combat/wrestling = 2,
-		/datum/attribute/skill/combat/unarmed = 2,
-		/datum/attribute/skill/misc/athletics = 3,
-		/datum/attribute/skill/misc/swimming = 3,
-		/datum/attribute/skill/misc/reading = 3,
-		/datum/attribute/skill/craft/alchemy = 3,
-		/datum/attribute/skill/misc/medicine = 2,
-		/datum/attribute/skill/misc/climbing = 4,
-	)
+	attribute_sheet = /datum/attribute_holder/sheet/job/migrant/sweetshare
 
 	traits = list(TRAIT_STEELHEARTED)
 	cmode_music = 'sound/music/cmode/antag/CombatBandit1.ogg'
-
-/datum/job/migrant/sweetshare/after_spawn(mob/living/carbon/human/spawned, client/player_client)
-	. = ..()
 
 /datum/outfit/sweetshare
 	name = "Candyman (Migrant Wave)"
