@@ -10,6 +10,7 @@
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_PLAYER_NONDISCRIMINATED
 	is_recognized = TRUE
+	honorary = "Mayor"
 
 	jobstats = list(
 		STAT_STRENGTH = 1,
@@ -97,6 +98,9 @@
 		STAT_ENDURANCE = 2,
 		STAT_SPEED = -1,
 	)
+	honorary = "Sir"
+	honorary_f = "Dame"
+
 
 	skills = list(
 		/datum/attribute/skill/combat/polearms = 4,
@@ -137,14 +141,6 @@
 			index = spawned.real_name
 		S.name = "knight tabard ([index])"
 
-	var/prev_real_name = spawned.real_name
-	var/prev_name = spawned.name
-	var/honorary = "Sir"
-	if(spawned.pronouns == SHE_HER)
-		honorary = "Dame"
-	spawned.real_name = "[honorary] [prev_real_name]"
-	spawned.name = "[honorary] [prev_name]"
-
 /datum/outfit/rockhill/knight
 	name = "Knight of Rockhill (Migrant Wave)"
 	head = /obj/item/clothing/head/helmet
@@ -184,6 +180,7 @@
 		STAT_INTELLIGENCE = 2,
 		STAT_ENDURANCE = 2,
 	)
+	honorary = "Serjeant"
 
 	skills = list(
 		/datum/attribute/skill/combat/axesmaces = 3,

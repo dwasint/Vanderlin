@@ -11,6 +11,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	bypass_lastclass = TRUE
+	honorary = "Elder"
 
 	allowed_ages = list(AGE_MIDDLEAGED, AGE_OLD, AGE_IMMORTAL)
 	allowed_races = RACES_PLAYER_NONHERETICAL
@@ -128,6 +129,7 @@
 		/datum/action/cooldown/spell/vicious_mockery,
 		// /datum/action/cooldown/spell/bardic_inspiration
 	)
+	honorary = "Mayor"
 
 	attribute_sheet = /datum/attribute_holder/sheet/job/town_elder/mayor
 	attribute_sheet_old = /datum/attribute_holder/sheet/job/town_elder/mayor/old
@@ -236,6 +238,8 @@
 	tutorial = "You were one of the hardest-working individuals in the city, there isn't a single job you haven't done. From farming and butchery to alchemy, blacksmithing, cooking, and even medicine, your vast knowledge made you a guiding light for the people. Yet amid your labors, it was your songs that bound the workers together: rhythmic chants in the forge, lullabies in the sick wards, ballads hummed in the fields. Your voice became a beacon of focus and unity. Recognizing both your wisdom and your spirit, the townsfolk turned to you for guidance. Now, as the Master of Crafts and Labor, you oversee and uplift all who contribute to the city's survival. Lead them well."
 	outfit = /datum/outfit/town_elder/master_of_crafts_and_labor
 	category_tags = list(CTAG_TOWN_ELDER)
+
+	honorary = "Foreman"
 
 	attribute_sheet = /datum/attribute_holder/sheet/job/town_elder/master_of_crafts_and_labor
 	attribute_sheet_old = /datum/attribute_holder/sheet/job/town_elder/master_of_crafts_and_labor/old
@@ -356,6 +360,7 @@
 	outfit = /datum/outfit/town_elder/hearth_acolyte
 	category_tags = list(CTAG_TOWN_ELDER)
 	allowed_patrons = ALL_TEMPLE_PATRONS
+	//honorary = "STUPID DUMB CLASS WHICH I HATE"
 
 	attribute_sheet = /datum/attribute_holder/sheet/job/town_elder/hearth_acolyte
 	attribute_sheet_old = /datum/attribute_holder/sheet/job/town_elder/hearth_acolyte/old

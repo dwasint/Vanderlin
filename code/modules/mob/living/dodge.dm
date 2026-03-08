@@ -56,6 +56,10 @@
 		return FALSE
 	if(incapacitated())
 		return FALSE
+
+	if(pulling)
+		return FALSE
+
 	if(has_status_effect(/datum/status_effect/debuff/exposed))
 		return FALSE
 	if(has_status_effect(/datum/status_effect/debuff/vulnerable))

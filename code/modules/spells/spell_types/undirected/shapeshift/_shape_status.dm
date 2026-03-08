@@ -51,7 +51,7 @@
 
 
 	owner.regenerate_icons()
-	caster_mob.mind?.transfer_to(owner)
+
 	caster_mob.forceMove(owner)
 	ADD_TRAIT(caster_mob, TRAIT_NO_TRANSFORM, id)
 	ADD_TRAIT(caster_mob, TRAIT_BOMBIMMUNE, id)
@@ -113,8 +113,8 @@
 	REMOVE_TRAIT(caster_mob, TRAIT_NO_TRANSFORM, id)
 	REMOVE_TRAIT(caster_mob, TRAIT_BOMBIMMUNE, id)
 	caster_mob.remove_status_effect(/datum/status_effect/grouped/stasis, STASIS_SHAPECHANGE_EFFECT)
-	owner.mind?.transfer_to(caster_mob)
 
+	// We aren't keeping skills, so trash the owner's skills. Don't qdel in case we're caching the owner's skill holder for some reason.
 	if(!keep_skills)
 		qdel(owner.attributes)
 		owner.attributes = stored_holder
@@ -228,8 +228,7 @@
 	if(caster_mob.stat != DEAD)
 		caster_mob.revive(HEAL_DAMAGE|HEAL_BLOOD)
 
-		// var/damage_to_apply = caster_mob.maxHealth * ((owner.maxHealth - owner.health) / owner.maxHealth)
-		var/damage_to_apply = owner.getBruteLoss()
+		var/damage_to_apply = caster_mob.maxHealth * ((owner.maxHealth - owner.health) / owner.maxHealth)
 		caster_mob.apply_damage(damage_to_apply, source_spell.convert_damage_type, forced = TRUE, spread_damage = TRUE)
 
 	if(iscarbon(owner))

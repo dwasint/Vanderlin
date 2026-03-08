@@ -31,11 +31,11 @@
 	traits = list(
 		TRAIT_MEDIUMARMOR,
 		TRAIT_STEELHEARTED,
-		TRAIT_KNOWBANDITS,
 		TRAIT_INQUISITION,
 		TRAIT_PSYDONIAN_GRIT,
 		TRAIT_PSYDONITE,
 	)
+	mind_traits = list(TRAIT_KNOWBANDITS)
 
 
 /datum/job/advclass/adept/bzealot/after_spawn(mob/living/carbon/human/spawned, client/player_client)

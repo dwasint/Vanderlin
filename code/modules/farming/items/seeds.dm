@@ -41,6 +41,13 @@
 		visible_message(span_warning("[L] crushes [src] underfoot."))
 		qdel(src)
 
+/obj/item/neuFarm/seed/get_over_text_content(mob/user)
+	if(HAS_TRAIT(user, TRAIT_SEEDKNOW) || GET_MOB_SKILL_VALUE_OLD(user, /datum/attribute/skill/labor/farming) >= 2)
+		var/datum/plant_def/plant_def_instance = GLOB.plant_defs[plant_def_type]
+		if(plant_def_instance)
+			return plant_def_instance.seed_identity
+	return ..()
+
 /obj/item/neuFarm/seed/examine(mob/user)
 	. = ..()
 	var/datum/plant_def/plant_def_instance = GLOB.plant_defs[plant_def_type]

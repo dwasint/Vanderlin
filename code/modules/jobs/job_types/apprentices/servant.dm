@@ -64,7 +64,7 @@
 	attribute_sheet = /datum/attribute_holder/sheet/job/servant
 	attribute_sheet_old = /datum/attribute_holder/sheet/job/servant/old
 
-	traits = list(
+	mind_traits = list(
 		TRAIT_ROYALSERVANT
 	)
 

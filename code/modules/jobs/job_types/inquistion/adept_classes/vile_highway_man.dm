@@ -34,12 +34,12 @@
 	traits = list(
 		TRAIT_FORAGER,
 		TRAIT_STEELHEARTED,
-		TRAIT_KNOWBANDITS,
 		TRAIT_INQUISITION,
 		TRAIT_BLACKBAGGER,
 		TRAIT_PSYDONIAN_GRIT,
 		TRAIT_PSYDONITE,
 	)
+	mind_traits = list(TRAIT_KNOWBANDITS)
 
 	voicepack_m = /datum/voicepack/male/knight
 

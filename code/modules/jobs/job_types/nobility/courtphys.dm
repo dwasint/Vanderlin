@@ -51,6 +51,9 @@
 	attribute_sheet = /datum/attribute_holder/sheet/job/courtphys
 	attribute_sheet_old = /datum/attribute_holder/sheet/job/courtphys/old
 
+	honorary = "Lord"
+	honorary_f = "Lady"
+
 	traits = list(
 		TRAIT_EMPATH,
 		TRAIT_STEELHEARTED,
@@ -65,6 +68,8 @@
 	if(spawned.dna?.species?.id != SPEC_ID_MEDICATOR)
 		ADD_TRAIT(spawned, TRAIT_NOBLE_BLOOD, JOB_TRAIT)
 		ADD_TRAIT(spawned, TRAIT_NOBLE_POWER, JOB_TRAIT)
+	else
+		spawned.honorary = null
 
 /datum/outfit/courtphys
 	name = "Court Physician Base"

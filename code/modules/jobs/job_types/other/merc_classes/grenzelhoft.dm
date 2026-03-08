@@ -41,7 +41,7 @@
 /datum/job/advclass/mercenary/grenzelhoft
 	title = "Grenzelhoft Mercenary"
 	tutorial = "A mercenary from the Grenzelhoft Empire's Mercenary Guild. Their only care is coin, and the procurement of coin."
-	allowed_races = list(SPEC_ID_HUMEN, SPEC_ID_DWARF, SPEC_ID_AASIMAR, SPEC_ID_TIEFLING)
+	allowed_races = list(SPEC_ID_HUMEN, SPEC_ID_DWARF, SPEC_ID_AASIMAR)
 	outfit = /datum/outfit/mercenary/grenzelhoft
 
 	attribute_sheet = /datum/attribute_holder/sheet/job/grenzelhoft
