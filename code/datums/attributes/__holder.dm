@@ -478,7 +478,7 @@
 	if(!ispath(skill_type, SKILL))
 		return
 	var/current = nulltozero(raw_attribute_list[skill_type])
-	var/target = clamp(current + delta, SKILL_LEVEL_NONE, SKILL_LEVEL_LEGENDARY * 10)
+	var/target = clamp(current + delta, skill_min, skill_max)
 	if(!isnull(max_level))
 		target = min(target, max_level)
 	if(target == current)

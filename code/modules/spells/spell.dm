@@ -1020,7 +1020,7 @@
 		return
 
 	if(!experience_max_skill)
-		experience_max_skill = SKILL_LEVEL_LEGENDARY
+		experience_max_skill = SKILL_LEVEL_LEGENDARY * 10
 
 	var/skill_level = GET_MOB_SKILL_VALUE_OLD(owner, associated_skill)
 	if(skill_level >= experience_max_skill)
