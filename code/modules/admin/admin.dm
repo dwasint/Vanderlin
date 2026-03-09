@@ -192,7 +192,6 @@
 
 	body += "<div id='right'>"
 	body += "<div id='right-header'>"
-	body += "<button onclick=\"toggleSection('skills')\">Skills</button>"
 	body += "<button onclick=\"toggleSection('languages')\">Languages</button>"
 	body += "<button onclick=\"toggleSection('stats')\">Stats</button>"
 	body += "<button onclick=\"toggleSection('quirks')\">Quirks</button>"
