@@ -890,7 +890,7 @@
 	else
 		clear_fullscreen("oxy")
 
-	var/hurtdamage = ((get_complex_pain() / (GET_MOB_ATTRIBUTE_VALUE(src, STAT_ENDURANCE) * 10)) * 100) //what percent out of 100 to max pain
+	var/hurtdamage = ((get_complex_pain() / max(1, (GET_MOB_ATTRIBUTE_VALUE(src, STAT_ENDURANCE) * 10))) * 100) //what percent out of 100 to max pain
 	if(hurtdamage)
 		var/severity = 0
 		switch(hurtdamage)
