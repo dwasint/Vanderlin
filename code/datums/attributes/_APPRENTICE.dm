@@ -90,6 +90,8 @@
 			multiplier += 0.15
 		if(LAZYACCESS(apprentice_training_skills, skill_type))
 			multiplier += apprentice_training_skills[skill_type]
+		if(nulltozero(apprentice.attributes?.raw_attribute_list[skill_type]) >= APPRENTICE_SKILL_CAP)
+			continue
 		if(nulltozero(apprentice.attributes?.raw_attribute_list[skill_type]) < tutor_level)
 			multiplier += 0.25
 
