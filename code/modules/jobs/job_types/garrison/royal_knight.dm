@@ -88,11 +88,13 @@
 	)
 
 /datum/attribute_holder/sheet/job/royalknight/polearms
+	raw_attribute_list = list()
 	clamped_adjustment = list(
 		/datum/attribute/skill/combat/polearms = list(20, 40)
 	)
 
 /datum/attribute_holder/sheet/job/royalknight/longsword
+	raw_attribute_list = list()
 	clamped_adjustment = list(
 		/datum/attribute/skill/combat/swords = list(20, 40)
 	)
