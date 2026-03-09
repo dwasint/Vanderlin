@@ -1031,9 +1031,7 @@
 
 	var/datum/mind/owner_mind = owner.mind
 	if(owner_mind && experience_sleep || (experience_sleep_threshold && (skill_level >= experience_sleep_threshold)))
-		// Check to make sure that experience max is adhered to even when using sleep exp
-		if(!owner_mind.sleep_adv.enough_sleep_xp_to_advance(associated_skill, experience_max_skill - skill_level))
-			owner_mind.add_sleep_experience(associated_skill, exp_to_gain)
+		owner_mind.add_sleep_experience(associated_skill, exp_to_gain)
 		return
 	owner.adjust_experience(associated_skill, exp_to_gain)
 

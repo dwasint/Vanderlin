@@ -812,7 +812,7 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 
 	if(check_apprentice)
 		current.attributes.adjust_apprentice_exp(skill, amt, silent)
-	if(sleep_adv.add_sleep_experience(skill, amt, silent))
+	if(sleep_adv.adjust_sleep_xp(skill, amt, silent))
 		return TRUE
 
 /datum/mind/proc/add_personal_objective(datum/objective/O)

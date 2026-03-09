@@ -1,9 +1,7 @@
-#define SLEEP_EXP_PER_STEP_NOVICE      4      // 40  / 10
-#define SLEEP_EXP_PER_STEP_APPRENTICE  7      // 65  / 10  (rounded up)
-#define SLEEP_EXP_PER_STEP_JOURNEYMAN  13     // 125 / 10  (rounded up)
-#define SLEEP_EXP_PER_STEP_EXPERT      16     // 160 / 10
-#define SLEEP_EXP_PER_STEP_MASTER      22     // 220 / 10
-#define SLEEP_EXP_PER_STEP_LEGENDARY   35     // 350 / 10
+#define RESTED_XP_MULTIPLIER   1.0   // full XP when rested
+#define RESTED_XP_TIRED_RATE   0.2   // XP rate when pool is empty / no multiplier
+#define RESTED_XP_BASE_GRANT   2000   // starting pool and per-sleep grant
+#define RESTED_XP_INITIAL      500   // granted on datum creation so new chars aren't penalized
 
 /datum/sleep_adv
 	var/sleep_adv_cycle = 0
@@ -12,8 +10,12 @@
 	var/stress_cycles = 0
 	var/rolled_specials = 0
 	var/retained_dust = 0
-	var/list/sleep_exp = list()
 	var/datum/mind/mind = null
+
+	/// Flat pool of rested XP, shared across all skills, drains 1:1 as bonus XP
+	var/rested_xp_pool = 0
+	/// Assoc list: skill typepath -> TRUE if 1.5x rested multiplier is active until next sleep
+	var/list/rested_skill_multipliers = list()
 
 	var/list/available_modes = list("one_truth", "one_lie", "two_truths", "two_lies", "truth_lie")
 	var/list/remaining_modes = list()
@@ -21,6 +23,7 @@
 /datum/sleep_adv/New(datum/mind/passed_mind)
 	. = ..()
 	mind = passed_mind
+	rested_xp_pool = RESTED_XP_INITIAL
 
 /datum/sleep_adv/Destroy(force)
 	mind = null
@@ -32,89 +35,32 @@
 	stress_cycles++
 	process_sleep()
 
-/datum/sleep_adv/proc/get_sleep_xp(skill_type)
-	if(!sleep_exp[skill_type])
-		sleep_exp[skill_type] = 0
-	return sleep_exp[skill_type]
-
-/datum/sleep_adv/proc/adjust_sleep_xp(skill_type, adjust)
-	var/current_xp = get_sleep_xp(skill_type)
-	var/target_xp = current_xp + adjust
-	var/cap_xp = get_required_sleep_xp_for_skill(skill_type, 20)
-	target_xp = clamp(target_xp, 0, cap_xp)
-	sleep_exp[skill_type] = target_xp
-
 /**
- * Returns the sleep XP cost to advance one level step from a given level.
- * Level is in 0-60 range. Each step within a tier costs the same amount.
+ * Primary XP entry point for sleep-sourced gains.
+ * Without rested pool + active multiplier: only 20% XP is granted.
+ * With rested pool + active multiplier: full 100% XP is granted,
+ * draining the pool by the 80% difference.
  */
-/datum/sleep_adv/proc/xp_per_step_at_level(level)
-	if(level >= SKILL_LEVEL_LEGENDARY * 10)
-		return SLEEP_EXP_PER_STEP_LEGENDARY
-	if(level >= SKILL_LEVEL_MASTER * 10)
-		return SLEEP_EXP_PER_STEP_MASTER
-	if(level >= SKILL_LEVEL_EXPERT * 10)
-		return SLEEP_EXP_PER_STEP_EXPERT
-	if(level >= SKILL_LEVEL_JOURNEYMAN * 10)
-		return SLEEP_EXP_PER_STEP_JOURNEYMAN
-	if(level >= SKILL_LEVEL_APPRENTICE * 10)
-		return SLEEP_EXP_PER_STEP_APPRENTICE
-	if(level >= SKILL_LEVEL_NOVICE * 10)
-		return SLEEP_EXP_PER_STEP_NOVICE
-	return SLEEP_EXP_PER_STEP_NOVICE
-
-/**
- * Returns the total sleep XP required to advance level_amount steps
- * from the mob's current skill level.
- */
-/datum/sleep_adv/proc/get_required_sleep_xp_for_skill(skill_type, level_amount)
-	if(level_amount <= 0)
-		return 0
-	var/current_level = nulltozero(GET_MOB_SKILL_VALUE(mind.current, skill_type))
-	var/needed_xp = 0
-	for(var/i in 1 to level_amount)
-		needed_xp += xp_per_step_at_level(current_level + i - 1)
-	return needed_xp
-
-/**
- * Returns TRUE if the mob has enough sleep XP to advance level_amount steps.
- */
-/datum/sleep_adv/proc/enough_sleep_xp_to_advance(skill_type, level_amount)
-	if(level_amount <= 0)
-		return FALSE
-	var/current_level = nulltozero(GET_MOB_SKILL_VALUE(mind.current, skill_type))
-	if(current_level >= SKILL_LEVEL_LEGENDARY)
-		return FALSE
-	var/needed_xp = get_required_sleep_xp_for_skill(skill_type, level_amount)
-	return (get_sleep_xp(skill_type) >= needed_xp)
-
-/datum/sleep_adv/proc/add_sleep_experience(skill_type, amt, silent = FALSE)
-	var/can_advance_pre  = enough_sleep_xp_to_advance(skill_type, 1)
-	var/capped_pre       = enough_sleep_xp_to_advance(skill_type, 2)
-	adjust_sleep_xp(skill_type, amt)
-	var/can_advance_post = enough_sleep_xp_to_advance(skill_type, 1)
-	var/capped_post      = enough_sleep_xp_to_advance(skill_type, 2)
-	var/datum/attribute/skill/skillref = GET_ATTRIBUTE_DATUM(skill_type)
-	var/return_val = FALSE
-	if(!can_advance_pre && can_advance_post && !silent)
-		to_chat(mind.current, span_nicegreen(pick(list(
-			"I'm getting a better grasp at [lowertext(skillref.name)]...",
-			"With some rest, I feel like I can get better at [lowertext(skillref.name)]...",
-			"[skillref.name] starts making more sense to me...",
-		))))
-		return_val = TRUE
-	if(!capped_pre && capped_post && !silent)
-		to_chat(mind.current, span_nicegreen(pick(list(
-			"My [lowertext(skillref.name)] is not gonna get any better without some rest...",
-		))))
-	return return_val
+/datum/sleep_adv/proc/adjust_sleep_xp(skill_type, amount, silent = FALSE)
+	if(!mind?.current)
+		return
+	var/final_amount
+	if(rested_skill_multipliers[skill_type] && rested_xp_pool > 0)
+		var/deficit = FLOOR(amount * (RESTED_XP_MULTIPLIER - RESTED_XP_TIRED_RATE), 1)
+		var/covered = min(deficit, rested_xp_pool)
+		rested_xp_pool -= covered
+		// Scale actual XP between tired rate and full based on how much pool covered
+		final_amount = FLOOR(amount * RESTED_XP_TIRED_RATE + covered, 1)
+	else
+		final_amount = FLOOR(amount * RESTED_XP_TIRED_RATE, 1)
+	mind.current.adjust_experience(skill_type, final_amount, silent)
 
 /datum/sleep_adv/proc/advance_cycle()
 	if(!mind.current)
 		return
 	if(prob(0)) // TODO SLEEP ADV SPECIALS
 		rolled_specials++
-	var/inspirations = 1
+
 	to_chat(mind.current, span_notice("My consciousness slips and I start dreaming..."))
 	var/dreamwatcher = HAS_TRAIT(mind.current, TRAIT_DREAM_WATCHER)
 
@@ -146,17 +92,25 @@
 
 	var/stress_median = stress_cycles ? (stress_amount / stress_cycles) : 0
 
+	// Determine rested pool grant for this cycle
+	var/rested_grant = RESTED_XP_BASE_GRANT
 	if(dreamwatcher)
 		to_chat(mind.current, span_notice("Noc opens the dreamworld before me, a realm of impossible beauty and boundless thought."))
 		dream_dust += 100
-		inspirations++
+		rested_grant += RESTED_XP_BASE_GRANT
 	else if(stress_median <= STRESS_THRESHOLD_NICE)
 		to_chat(mind.current, span_notice("With no stresses throughout the day I dream vividly..."))
 		dream_dust += 100
-		inspirations++
+		rested_grant += RESTED_XP_BASE_GRANT / 2
 	else if(stress_median >= STRESS_THRESHOLD_FREAKING_OUT)
 		to_chat(mind.current, span_boldwarning("Bothered by the stresses of the day my dreams are short..."))
 		dream_dust -= 100
+		rested_grant = FLOOR(rested_grant / 2, 1)
+
+	rested_xp_pool += rested_grant
+
+	// Clear multipliers from last sleep cycle
+	rested_skill_multipliers = list()
 
 	if(dreamwatcher)
 		var/list/intro_lines = list(
@@ -176,8 +130,6 @@
 			dreams = SSgamemode.god_dreams["Unknown"]
 		to_chat(mind.current, span_notice(pick(dreams)))
 		to_chat(mind.current, span_notice(generate_symbolic_dream()))
-
-	grant_inspiration_xp(inspirations)
 
 	stress_amount = 0
 	stress_cycles = 0
@@ -220,22 +172,24 @@
 	dat += "<div id='top_handwriting'><center>Cycle \Roman[sleep_adv_cycle]</center></div>"
 	dat += "<div id='class_select_box_div'>"
 	dat += "<br><center>Dream, for those who dream may reach higher heights</center><br>"
-	dat += "<center>\Roman[sleep_adv_points]</center>"
-	dat += "<br>"
+	dat += "<center>\Roman[sleep_adv_points] dream points</center>"
+	dat += "<br><center><small>Rested pool: [rested_xp_pool] XP</small></center><br>"
 	for(var/skill_type in GLOB.all_skills)
 		var/datum/attribute/skill/skill = GET_ATTRIBUTE_DATUM(skill_type)
-		if(!enough_sleep_xp_to_advance(skill_type, 1))
+		var/already_active = rested_skill_multipliers[skill_type]
+		var/can_buy = !already_active && can_buy_skill(skill_type)
+		if(!already_active && !can_buy)
 			continue
-		var/can_buy = can_buy_skill(skill_type)
-		var/next_level = get_next_level_for_skill(skill_type)
-		// description_from_level replaces SSskills.level_names[]
-		var/level_name = skill.description_from_level(next_level)
-		dat += "<div class='class_bar_div'><a class='vagrant' [can_buy ? "" : "class='linkOff'"] href='byond://?src=[REF(src)];task=buy_skill;skill_type=[skill_type]'>[skill.name] ([level_name])><img class='ninetysskull' src='[SSassets.transport.get_asset_url("gragstar.gif")]' width=32 height=32>\Roman[get_skill_cost(skill_type)]</span><img class='ninetysskull' src='[SSassets.transport.get_asset_url("gragstar.gif")]' width=32 height=32></a></div>"
+		var/current_level = nulltozero(GET_MOB_SKILL_VALUE(mind.current, skill_type))
+		var/level_name = skill.description_from_level(current_level)
+		if(already_active)
+			dat += "<div class='class_bar_div'><span class='vagrant'>[skill.name] ([level_name]) - <b>1.5x active</b></span></div>"
+		else
+			dat += "<div class='class_bar_div'><a class='vagrant' href='byond://?src=[REF(src)];task=buy_skill;skill_type=[skill_type]'>[skill.name] ([level_name]) - set 1.5x multiplier <img class='ninetysskull' src='[SSassets.transport.get_asset_url("gragstar.gif")]' width=32 height=32> \Roman[get_skill_cost(skill_type)] <img class='ninetysskull' src='[SSassets.transport.get_asset_url("gragstar.gif")]' width=32 height=32></a></div>"
 	dat += "<br>"
 	if(rolled_specials > 0)
-		var/can_buy = can_buy_special()
-		dat += "<div class='class_bar_div'><a class='vagrant' [can_buy ? "" : "class='linkOff'"] href='byond://?src=[REF(src)];task=buy_special'>>Dream something <b>special</b></a>><img class='ninetysskull' src='[SSassets.transport.get_asset_url("gragstar.gif")]' width=32 height=32>\Roman[get_special_cost()]</span><img class='ninetysskull' src='[SSassets.transport.get_asset_url("gragstar.gif")]' width=32 height=32></a></div>"
-		dat += "<br><a [can_buy ? "" : "class='linkOff'"] href='byond://?src=[REF(src)];task=buy_special'>Dream something <b>special</b></a> - \Roman[get_special_cost()]"
+		var/can_buy_spec = can_buy_special()
+		dat += "<div class='class_bar_div'><a class='vagrant' [can_buy_spec ? "" : "class='linkOff'"] href='byond://?src=[REF(src)];task=buy_special'>Dream something <b>special</b> <img class='ninetysskull' src='[SSassets.transport.get_asset_url("gragstar.gif")]' width=32 height=32> \Roman[get_special_cost()] <img class='ninetysskull' src='[SSassets.transport.get_asset_url("gragstar.gif")]' width=32 height=32></a></div>"
 		dat += "<br>Specials can have negative or positive effects"
 	dat += "<div class='footer'>"
 	dat += "<br><br><center>Your points will be retained<br><a href='byond://?src=[REF(src)];task=continue'>Continue</a></center>"
@@ -271,10 +225,6 @@
 /datum/sleep_adv/proc/can_buy_special()
 	return (sleep_adv_points >= get_special_cost())
 
-/**
- * Returns the next level this mob would reach for this skill (current + 1).
- * Level is in 0-60 range.
- */
 /datum/sleep_adv/proc/get_next_level_for_skill(skill_type)
 	if(!mind.current)
 		return 0
@@ -288,65 +238,23 @@
 /datum/sleep_adv/proc/get_special_cost()
 	return 3
 
+/**
+ * Buying a skill sets a 1.5x rested XP multiplier on it until next sleep.
+ * The bonus XP is drawn from the rested pool in adjust_sleep_xp().
+ */
 /datum/sleep_adv/proc/buy_skill(skill_type)
 	if(!can_buy_skill(skill_type))
 		return
-	if(!enough_sleep_xp_to_advance(skill_type, 1))
-		return
+	if(rested_skill_multipliers[skill_type])
+		return // already active
 	var/datum/attribute/skill/skill = GET_ATTRIBUTE_DATUM(skill_type)
 	var/dream_text = skill.get_random_dream()
 	if(dream_text)
 		to_chat(mind.current, span_notice(dream_text))
 	sleep_adv_points -= get_skill_cost(skill_type)
-	// Deduct one step's worth of sleep XP
-	adjust_sleep_xp(skill_type, -get_required_sleep_xp_for_skill(skill_type, 10))
-	// Legacy helper multiplies by 10 internally - advances exactly 1 level (e.g. 20 -> 21)
-	mind.current.adjust_skill_level(skill_type, 1)
+	rested_skill_multipliers[skill_type] = TRUE
+	to_chat(mind.current, span_nicegreen("You feel driven to practice [lowertext(skill.name)]... your efforts will be rewarded while you remain rested."))
 	record_round_statistic(STATS_SKILLS_DREAMED)
-
-/**
- * Grants sleep XP toward randomly chosen skills the mob can still improve.
- * Only considers skills that: have randomable_dream_xp = TRUE, are below the
- * inspiration cap (level 20), and don't already have enough XP to advance twice.
- */
-/datum/sleep_adv/proc/grant_inspiration_xp(skill_amt)
-	var/list/viable_skills = list()
-	var/list/inspired_skill_names = list()
-	for(var/skill_type in GLOB.all_skills)
-		var/datum/attribute/skill/skill = GET_ATTRIBUTE_DATUM(skill_type)
-		if(!skill.randomable_dream_xp)
-			continue
-		if(enough_sleep_xp_to_advance(skill_type, 1))
-			continue
-		var/current_level = nulltozero(GET_MOB_SKILL_VALUE(mind.current, skill_type))
-		// INSPIRATION_MAX_SKILL_LEVEL is now 20 (apprentice tier)
-		if(current_level >= INSPIRATION_MAX_SKILL_LEVEL)
-			continue
-		var/levels_to_cap = INSPIRATION_MAX_SKILL_LEVEL - current_level
-		var/req_exp = get_required_sleep_xp_for_skill(skill_type, levels_to_cap)
-		if(get_sleep_xp(skill_type) >= req_exp)
-			continue
-		viable_skills += skill_type
-	viable_skills = shuffle(viable_skills)
-	for(var/i in 1 to skill_amt)
-		if(!length(viable_skills))
-			break
-		var/skill_type = pick_n_take(viable_skills)
-		var/req_exp = get_required_sleep_xp_for_skill(skill_type, 10)
-		var/datum/attribute/skill/skill = GET_ATTRIBUTE_DATUM(skill_type)
-		add_sleep_experience(skill_type, req_exp, TRUE)
-		inspired_skill_names += skill.name
-	if(!length(inspired_skill_names))
-		return
-	var/skill_string = ""
-	for(var/i in 1 to inspired_skill_names.len)
-		var/skill_name = inspired_skill_names[i]
-		if(i > 1 && i == inspired_skill_names.len)
-			skill_string += " and "
-		else if(i != 1)
-			skill_string += ", "
-		skill_string += lowertext(skill_name)
-	to_chat(mind.current, span_notice("I feel inspired about [skill_string]..."))
 
 /datum/sleep_adv/proc/buy_special()
 	if(!can_buy_special())
@@ -388,11 +296,6 @@
 			return
 	show_ui(mind.current)
 
-/**
- * Returns TRUE if the user can train a combat skill further via sleep advancement.
- * skill_type:         the /datum/attribute/skill typepath
- * target_skill_level: target level in 0-60 range
- */
 /proc/can_train_combat_skill(mob/living/user, skill_type, target_skill_level)
 	if(!user.mind)
 		return FALSE
@@ -400,11 +303,9 @@
 	var/level_diff = target_skill_level - user_skill_level
 	if(level_diff <= 0)
 		return FALSE
-	if(user.mind.sleep_adv.enough_sleep_xp_to_advance(skill_type, level_diff))
-		return FALSE
 	return TRUE
 
-// ── Dream watcher procs (unchanged) ──────────────────────────────────────────
+// ── Dream watcher procs ───────────────────────────────────────────────────────
 
 /datum/sleep_adv/proc/generate_symbolic_dream()
 	var/list/truths = get_current_real_antags()
@@ -512,9 +413,5 @@
 		lies += new antag_type()
 	return lies
 
-#undef SLEEP_EXP_PER_STEP_NOVICE
-#undef SLEEP_EXP_PER_STEP_APPRENTICE
-#undef SLEEP_EXP_PER_STEP_JOURNEYMAN
-#undef SLEEP_EXP_PER_STEP_EXPERT
-#undef SLEEP_EXP_PER_STEP_MASTER
-#undef SLEEP_EXP_PER_STEP_LEGENDARY
+#undef RESTED_XP_MULTIPLIER
+#undef RESTED_XP_BASE_GRANT
