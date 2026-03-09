@@ -4,6 +4,11 @@ import { Window } from '../layouts';
 
 // --- Interfaces ---
 
+interface AttributeModifier {
+  id: string;
+  value: number;
+}
+
 interface Attribute {
   name: string;
   shorthand?: string;
@@ -15,6 +20,7 @@ interface Attribute {
   governing_attribute?: string;
   default_value?: number;
   defaults?: Attribute[];
+  modifiers?: AttributeModifier[];
 }
 
 interface SkillCategory {
@@ -37,10 +43,17 @@ const CloserInspection = (props: { data: AttributeData; act: any }) => {
   if (!attribute) return null;
 
   const hasDefaults = !!attribute.defaults?.length;
+  const hasModifiers = !!attribute.modifiers?.length;
+
+  let mainHeight = '85%';
+  if (hasDefaults && hasModifiers) mainHeight = '42%';
+  else if (hasDefaults || hasModifiers) mainHeight = '52.5%';
+
+  const secondaryHeight = hasDefaults && hasModifiers ? '24%' : '32.5%';
 
   return (
     <Stack width="100%" height="100%" vertical>
-      <Stack.Item mb={0} height={hasDefaults ? '52.5%' : '85%'}>
+      <Stack.Item mb={0} height={mainHeight}>
         <Box width="100%" className="PreferencesMenu__papersplease__header__left">
           <Box
             textAlign="center"
@@ -65,12 +78,12 @@ const CloserInspection = (props: { data: AttributeData; act: any }) => {
           width="100%"
           height="100%"
           className={
-            hasDefaults
+            hasDefaults || hasModifiers
               ? 'PreferencesMenu__papersplease__leftbottomless'
               : 'PreferencesMenu__papersplease__left'
           }
           style={{ paddingTop: '8px', paddingBottom: '8px' }}>
-          <Stack >
+          <Stack>
             <Stack.Item>
               <Box
                 height="128px"
@@ -109,7 +122,7 @@ const CloserInspection = (props: { data: AttributeData; act: any }) => {
           <Stack.Item mt={0} mb={0}>
             <Box height={1} className="PreferencesMenu__papersplease__gutterhorizontal" />
           </Stack.Item>
-          <Stack.Item mt={0} height="32.5%">
+          <Stack.Item mt={0} height={secondaryHeight}>
             <Box
               width="100%"
               className="PreferencesMenu__papersplease__header__leftnoradius">
@@ -124,7 +137,7 @@ const CloserInspection = (props: { data: AttributeData; act: any }) => {
               overflowX="hidden"
               overflowY="scroll"
               height="100%"
-              className="PreferencesMenu__papersplease__left"
+              className={hasModifiers ? 'PreferencesMenu__papersplease__leftbottomless' : 'PreferencesMenu__papersplease__left'}
               style={{
                 paddingLeft: '4px',
                 paddingRight: '4px',
@@ -147,7 +160,7 @@ const CloserInspection = (props: { data: AttributeData; act: any }) => {
                       </Box>
                     }>
                     <Stack>
-                      <Stack.Item >
+                      <Stack.Item>
                         <Box>
                           <Box
                             mr={1}
@@ -164,6 +177,52 @@ const CloserInspection = (props: { data: AttributeData; act: any }) => {
                       </Stack.Item>
                     </Stack>
                   </Tooltip>
+                </Stack.Item>
+              ))}
+            </Box>
+          </Stack.Item>
+        </>
+      )}
+
+      {hasModifiers && (
+        <>
+          <Stack.Item mt={0} mb={0}>
+            <Box height={1} className="PreferencesMenu__papersplease__gutterhorizontal" />
+          </Stack.Item>
+          <Stack.Item mt={0} height={secondaryHeight}>
+            <Box
+              width="100%"
+              className="PreferencesMenu__papersplease__header__leftnoradius">
+              <Box
+                textAlign="center"
+                className="PreferencesMenu__papersplease__header__title"
+                style={{ fontSize: '175%' }}>
+                Active Modifiers
+              </Box>
+            </Box>
+            <Box
+              overflowX="hidden"
+              overflowY="scroll"
+              height="100%"
+              className="PreferencesMenu__papersplease__left"
+              style={{
+                paddingLeft: '4px',
+                paddingRight: '4px',
+                paddingTop: '10px',
+                paddingBottom: '8px',
+              }}>
+              {attribute.modifiers?.map((mod) => (
+                <Stack.Item ml={1} mb={2} key={mod.id} style={{ fontSize: '165%' }}>
+                  <Stack>
+                    <Stack.Item grow>{mod.id}</Stack.Item>
+                    <Stack.Item mr={2}>
+                      <Box
+                        textAlign="right"
+                        style={{ color: mod.value >= 0 ? '#008000' : '#800000' }}>
+                        {mod.value >= 0 ? `+${mod.value}` : mod.value}
+                      </Box>
+                    </Stack.Item>
+                  </Stack>
                 </Stack.Item>
               ))}
             </Box>
@@ -202,8 +261,7 @@ const AttributeStack = (props: { data: AttributeData; act: any }) => {
     .filter((category) => category.skills.length > 0);
 
   return (
-    <Stack width="100%" height="100%" >
-      {/* Stats Column */}
+    <Stack width="100%" height="100%">
       <Stack.Item width="40%" height="100%">
         <Box width="100%" className="PreferencesMenu__papersplease__header__left">
           <Box
@@ -234,7 +292,7 @@ const AttributeStack = (props: { data: AttributeData; act: any }) => {
                 onClick={() => act('inspect_closely', { attribute_name: stat.name })}>
                 <Tooltip position="bottom" content={<Box>{stat.desc}</Box>}>
                   <Stack>
-                    <Stack.Item width="85%" >
+                    <Stack.Item width="85%">
                       <Box width="100%">
                         <Box mr={1} className={`attributes_small16x16 ${stat.icon}`} />
                         {stat.name}
@@ -332,7 +390,7 @@ const AttributeStack = (props: { data: AttributeData; act: any }) => {
                         </Box>
                       }>
                       <Stack>
-                        <Stack.Item width="85%" >
+                        <Stack.Item width="85%">
                           <Box width="100%">
                             <Box mr={1} className={`attributes_small16x16 ${skill.icon}`} />
                             {skill.name}

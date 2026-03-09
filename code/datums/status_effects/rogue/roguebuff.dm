@@ -25,7 +25,7 @@
 		C.remove_stress(/datum/stress_event/drunk)
 
 /datum/status_effect/buff/foodbuff
-	id = "foodbuff"
+	id = "Food Buff"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/foodbuff
 	effectedstats = list(STAT_CONSTITUTION = 1, STAT_ENDURANCE = 1)
 	duration = 15 MINUTES

@@ -25,6 +25,19 @@
 	data["parent"] = parent?.name
 	if(istype(closely_inspected_attribute))
 		var/list/closely_inspected = list()
+		var/list/modifiers = list()
+		for(var/key in get_attribute_modification())
+			var/datum/attribute_modifier/mod = attribute_modification[key]
+			if(!(closely_inspected_attribute.type in mod.attribute_list))
+				continue
+			var/mod_val = mod.attribute_list[closely_inspected_attribute.type]
+			if(isnull(mod_val) || mod_val == 0)
+				continue
+			var/list/this_mod = list()
+			this_mod["id"] = mod.id
+			this_mod["value"] = mod_val
+			modifiers += list(this_mod)
+		closely_inspected["modifiers"] = modifiers
 		closely_inspected["name"] = closely_inspected_attribute.name
 		closely_inspected["desc"] = closely_inspected_attribute.desc
 		closely_inspected["desc_from_level"] = capitalize_like_old_man(closely_inspected_attribute.description_from_level(attribute_list[closely_inspected_attribute.type]))

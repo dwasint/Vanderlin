@@ -174,18 +174,17 @@
 	dat += "<br><center>Dream, for those who dream may reach higher heights</center><br>"
 	dat += "<center>\Roman[sleep_adv_points] dream points</center>"
 	dat += "<br><center><small>Rested pool: [rested_xp_pool] XP</small></center><br>"
-	for(var/skill_type in GLOB.all_skills)
+	var/list/dream_skills = get_dream_skill_candidates()
+	for(var/skill_type in dream_skills)
 		var/datum/attribute/skill/skill = GET_ATTRIBUTE_DATUM(skill_type)
 		var/already_active = rested_skill_multipliers[skill_type]
-		var/can_buy = !already_active && can_buy_skill(skill_type)
-		if(!already_active && !can_buy)
-			continue
 		var/current_level = nulltozero(GET_MOB_SKILL_VALUE(mind.current, skill_type))
 		var/level_name = skill.description_from_level(current_level)
 		if(already_active)
 			dat += "<div class='class_bar_div'><span class='vagrant'>[skill.name] ([level_name]) - <b>1.5x active</b></span></div>"
 		else
-			dat += "<div class='class_bar_div'><a class='vagrant' href='byond://?src=[REF(src)];task=buy_skill;skill_type=[skill_type]'>[skill.name] ([level_name]) - set 1.5x multiplier <img class='ninetysskull' src='[SSassets.transport.get_asset_url("gragstar.gif")]' width=32 height=32> \Roman[get_skill_cost(skill_type)] <img class='ninetysskull' src='[SSassets.transport.get_asset_url("gragstar.gif")]' width=32 height=32></a></div>"
+			dat += "<div class='class_bar_div'><a class='vagrant' href='byond://?src=[REF(src)];task=buy_skill;skill_type=[skill_type]'>[skill.name] ([level_name]) <img class='ninetysskull' src='[SSassets.transport.get_asset_url("gragstar.gif")]' width=32 height=32> \Roman[get_skill_cost(skill_type)] <img class='ninetysskull' src='[SSassets.transport.get_asset_url("gragstar.gif")]' width=32 height=32></a></div>"
+
 	dat += "<br>"
 	if(rolled_specials > 0)
 		var/can_buy_spec = can_buy_special()
@@ -255,6 +254,44 @@
 	rested_skill_multipliers[skill_type] = TRUE
 	to_chat(mind.current, span_nicegreen("You feel driven to practice [lowertext(skill.name)]... your efforts will be rewarded while you remain rested."))
 	record_round_statistic(STATS_SKILLS_DREAMED)
+
+/datum/sleep_adv/proc/get_dream_skill_candidates(max_count = 6)
+	var/list/weighted = list()
+
+	for(var/skill_type in GLOB.all_skills)
+		var/already_active = rested_skill_multipliers[skill_type]
+		var/can_buy = !already_active && can_buy_skill(skill_type)
+		if(!already_active && !can_buy)
+			continue
+		// Already active skills always show
+		if(already_active)
+			weighted[skill_type] = -1 // sentinel: always include
+			continue
+		var/current_level = nulltozero(GET_MOB_SKILL_VALUE(mind.current, skill_type))
+		// Weight: untrained = 1, each level adds 2 more weight
+		weighted[skill_type] = max(1, 1 + current_level * 2)
+
+	var/list/result = list()
+
+	// Always include already-active skills first
+	for(var/skill_type in weighted)
+		if(weighted[skill_type] == -1)
+			result += skill_type
+
+	// Weighted random pick from the rest to fill up to max_count
+	var/list/candidates = list()
+	for(var/skill_type in weighted)
+		if(weighted[skill_type] != -1)
+			candidates[skill_type] = weighted[skill_type]
+
+	var/slots = max(0, max_count - result.len)
+	while(slots > 0 && candidates.len > 0)
+		var/skill_type = pickweight(candidates)
+		result += skill_type
+		candidates -= skill_type
+		slots--
+
+	return result
 
 /datum/sleep_adv/proc/buy_special()
 	if(!can_buy_special())
