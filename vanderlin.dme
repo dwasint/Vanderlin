@@ -850,7 +850,7 @@
 #include "code\datums\attributes\__holder.dm"
 #include "code\datums\attributes\__holder_ui.dm"
 #include "code\datums\attributes\__legacy.dm"
-#include "code\datums\attributes\_APPRENTICE.dm"
+#include "code\datums\attributes\_apprentice.dm"
 #include "code\datums\attributes\_attribute.dm"
 #include "code\datums\attributes\_experience.dm"
 #include "code\datums\attributes\editor.dm"
