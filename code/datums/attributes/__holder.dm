@@ -519,8 +519,8 @@
 	if(silent)
 		return
 
-	var/old_tier = old_level / 10
-	var/new_tier = return_raw_effective_skill(skill_type) / 10
+	var/old_tier = floor(old_level / 10)
+	var/new_tier = floor(new_level / 10)
 	if(old_tier == new_tier)
 		return
 
