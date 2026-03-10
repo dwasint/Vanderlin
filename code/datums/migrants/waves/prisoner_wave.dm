@@ -1,6 +1,6 @@
 /datum/migrant_role/gaoler
 	name = "Gaoler"
-	greet_text = "The lords of Vanderlin sent you to Heartfelt to repatriate some prisoners that were in their prison, you are now on your way back."
+	greet_text = "The lords of Vanderlin sent you to repatriate some prisoners that were in a distant prison, you are now on your way back."
 	migrant_job = /datum/job/migrant/gaoler
 
 /datum/attribute_holder/sheet/job/migrant/gaoler
@@ -27,7 +27,7 @@
 
 /datum/job/migrant/gaoler
 	title = "Gaoler"
-	tutorial = "The lords of Vanderlin sent you to Heartfelt to repatriate some prisoners that were in their prison, you are now on your way back."
+	tutorial = "The lords of Vanderlin sent you to repatriate some prisoners that were in a distant prison, you are now on your way back."
 	outfit = /datum/outfit/gaoler
 	is_foreigner = FALSE
 	allowed_races = list(
@@ -71,7 +71,7 @@
 
 /datum/migrant_role/mig_prisoner
 	name = "Prisoner"
-	greet_text = "You had fled Vanderlin, took refuge in Heartfelt yet the lords over there caught you and thus handed you over to those who sought you before."
+	greet_text = "You fled Vanderlin and took refuge another kingdom, yet the lords over there caught you and thus handed you over to those who sought you before."
 	migrant_job = /datum/job/migrant/mig_prisoner
 
 /datum/attribute_holder/sheet/job/migrant/mig_prisoner
@@ -97,7 +97,7 @@
 
 /datum/job/migrant/mig_prisoner
 	title = "Prisoner (Migrant Wave)"
-	tutorial = "You had fled Vanderlin, took refuge in Heartfelt yet the lords over there caught you and thus handed you over to those who sought you before."
+	tutorial = "You fled Vanderlin and took refuge another kingdom, yet the lords over there caught you and thus handed you over to those who sought you before."
 	outfit = /datum/outfit/mig_prisoner
 	is_foreigner = FALSE
 
@@ -191,7 +191,7 @@
 		/datum/migrant_role/prisoner_guard = 2,
 		/datum/migrant_role/mig_prisoner = 4,
 	)
-	greet_text = "Nobody escape the rule of Vanderlin's monarchs. Some have fled to the neighbouring kingdom, Heartfelt and got caught, they are now on their way back."
+	greet_text = "Nobody escapes the rule of Vanderlin's monarchs. Some fled to another kingdom and got caught, they are now on their way back."
 
 /datum/migrant_wave/prisoner_convoy_down
 	name = "The Prisoners' Convoy"
@@ -203,7 +203,7 @@
 		/datum/migrant_role/prisoner_guard = 1,
 		/datum/migrant_role/mig_prisoner = 3,
 	)
-	greet_text = "Nobody escape the rule of Vanderlin's monarchs. Some have fled to the neighbouring kingdom, Heartfelt and got caught, they are now on their way back."
+	greet_text = "Nobody escapes the rule of Vanderlin's monarchs. Some fled to another kingdom and got caught, they are now on their way back."
 
 /datum/migrant_wave/prisoner_convoy_down_two
 	name = "The Prisoner Convoy"
@@ -213,4 +213,4 @@
 		/datum/migrant_role/gaoler = 1,
 		/datum/migrant_role/mig_prisoner = 1,
 	)
-	greet_text = "Nobody escape the rule of Vanderlin's monarchs. Some have fled to the neighbouring kingdom, Heartfelt and got caught, they are now on their way back."
+	greet_text = "Nobody escapes the rule of Vanderlin's monarchs. Some fled to another kingdom and got caught, they are now on their way back."

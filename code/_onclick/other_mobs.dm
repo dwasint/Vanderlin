@@ -567,7 +567,7 @@
 	var/flip_direction = FLIP_DIRECTION_CLOCKWISE
 	var/prev_pixel_z = pixel_z
 	var/prev_transform = transform
-	if(GET_MOB_SKILL_VALUE_OLD(src, /datum/attribute/skill/misc/athletics) > 4)
+	if(GET_MOB_SKILL_VALUE_OLD(src, /datum/attribute/skill/misc/athletics) > 4 || HAS_TRAIT(src, TRAIT_FLIP_JUMP))
 		do_a_flip = TRUE
 		if((dir & SOUTH) || (dir & WEST))
 			flip_direction = FLIP_DIRECTION_ANTICLOCKWISE
