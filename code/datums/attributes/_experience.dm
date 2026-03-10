@@ -1,10 +1,10 @@
 #define SKILL_XP_NONE        0
-#define SKILL_XP_NOVICE      200
-#define SKILL_XP_APPRENTICE  600
-#define SKILL_XP_JOURNEYMAN  1400
-#define SKILL_XP_EXPERT      3000
-#define SKILL_XP_MASTER      6200
-#define SKILL_XP_LEGENDARY   12600
+#define SKILL_XP_NOVICE      100
+#define SKILL_XP_APPRENTICE  300
+#define SKILL_XP_JOURNEYMAN  700
+#define SKILL_XP_EXPERT      1500
+#define SKILL_XP_MASTER      3100
+#define SKILL_XP_LEGENDARY   6300
 
 
 GLOBAL_VAR_INIT(skill_xp_modifier, 1.0)
