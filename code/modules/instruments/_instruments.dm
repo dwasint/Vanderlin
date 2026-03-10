@@ -166,7 +166,7 @@
 	if(playing)
 		terminate_playing(user)
 		return
-	var/music_level = GET_MOB_SKILL_VALUE_OLD(user, /datum/attribute/skill/misc/music)
+	var/music_level = floor(GET_MOB_SKILL_VALUE_OLD(user, /datum/attribute/skill/misc/music))
 	if(!not_held && user.get_inactive_held_item() && music_level < 4) //DUAL WIELDING BARDS
 		return
 	for(var/obj/item/instrument/I in user.held_items) //sorry it's too annoying
@@ -203,7 +203,7 @@
 		if(5)
 			note_color = "#a335ee"
 			stress_event = /datum/stress_event/music/five
-		if(6)
+		if(6 to INFINITY)
 			note_color = "#ff8000"
 			stress_event = /datum/stress_event/music/six
 

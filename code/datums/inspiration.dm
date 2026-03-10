@@ -45,7 +45,7 @@ GLOBAL_LIST_INIT(inspiration_songs, list(\
 /datum/inspiration/proc/on_skill_change(datum/source, datum/attribute/skill/skill_ref, new_level, old_level)
 	SIGNAL_HANDLER
 
-	if(!istype(skill_ref, /datum/attribute/skill/misc/music))
+	if(!ispath(skill_ref, /datum/attribute/skill/misc/music))
 		return
 	if(new_level <= old_level)
 		return
