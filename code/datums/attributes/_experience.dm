@@ -177,6 +177,8 @@ GLOBAL_VAR_INIT(sleep_experience_modifier, 1.0)
 		// Compute the default-derived floor level using the holder's raw attributes
 		var/default_floor = 0
 		for(var/attr_type in skill.default_attributes)
+			if(!ispath(attr_type, SKILL))
+				continue
 			var/attr_val = nulltozero(raw_attribute_list[attr_type])
 			var/adjusted = attr_val + skill.default_attributes[attr_type]
 			default_floor = max(default_floor, adjusted)
@@ -233,7 +235,7 @@ GLOBAL_VAR_INIT(sleep_experience_modifier, 1.0)
 	return boon
 
 /**
- * Returns an additive bonus to XP gains from active stress events.
+ * Returns an additive bonus to XP gains from actiive stress events.
  * Base mob returns 0 - only carbon mobs accumulate stress events.
  */
 /mob/proc/get_inspirational_bonus()
