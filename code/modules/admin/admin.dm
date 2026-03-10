@@ -44,7 +44,7 @@
 	body += "html, body { height: 100%; margin: 0; padding: 0; overflow-x: hidden;}"
 	body += "#container { display: flex; flex-direction: row; align-items: flex-start; width: 100%; overflow-x: hidden; flex-wrap: nowrap;background: [dark_ui ? "#121212" : "white"]; [dark_ui ? "color: #f0f0f0" : ""] }"
 	body += "#left { flex: 2; padding-right: 10px; min-width: 0; background: [dark_ui ? "#121212" : "white"]; [dark_ui ? "color: #f0f0f0" : ""]}"
-	body += "#skills-section, #quirks-section, #languages-section, #stats-section { display: none; background: [dark_ui ? "#121212" : "white"]; [dark_ui ? "color: #f0f0f0" : ""]; border: 1px solid black; padding: 10px; width: 100%; box-sizing: border-box; max-width: 100%; overflow-x: hidden; word-wrap: break-word; }"
+	body += "#quirks-section, #languages-section { display: none; background: [dark_ui ? "#121212" : "white"]; [dark_ui ? "color: #f0f0f0" : ""]; border: 1px solid black; padding: 10px; width: 100%; box-sizing: border-box; max-width: 100%; overflow-x: hidden; word-wrap: break-word; }"
 	body += "#right { flex: 1; border-left: 2px solid black; padding-left: 10px; max-height: 500px; overflow-y: auto; width: 250px; min-width: 250px; box-sizing: border-box; position: relative;background: [dark_ui ? "#121212" : "white"]; [dark_ui ? "color: #f0f0f0" : ""] }"
 	body += "#right-header { display: flex; justify-content: space-around; padding: 5px; background: background: [dark_ui ? "#121212" : "white"]; [dark_ui ? "color: #f0f0f0" : ""]; border-bottom: 2px solid black; position: sticky; top: 0; z-index: 10; }"
 	body += "#right-header button { flex: 1; margin: 2px; padding: 5px; cursor: pointer; font-weight: bold; border: none; background-color: background: [dark_ui ? "#121212" : "white"]; [dark_ui ? "color: #f0f0f0" : ""]; border-radius: 5px; }"
@@ -55,9 +55,7 @@
 	body += "<script>"
 	body += "function toggleSection(section) {"
 	body += "    localStorage.setItem('activeSection', section);"
-	body += "    document.getElementById('skills-section').style.display = (section === 'skills') ? 'block' : 'none';"
 	body += "    document.getElementById('languages-section').style.display = (section === 'languages') ? 'block' : 'none';"
-	body += "	 document.getElementById('stats-section').style.display = (section === 'stats') ? 'block' : 'none';"
 	body += "	 document.getElementById('quirks-section').style.display = (section === 'quirks') ? 'block' : 'none';"
 	body += "}"
 
@@ -193,7 +191,6 @@
 	body += "<div id='right'>"
 	body += "<div id='right-header'>"
 	body += "<button onclick=\"toggleSection('languages')\">Languages</button>"
-	body += "<button onclick=\"toggleSection('stats')\">Stats</button>"
 	body += "<button onclick=\"toggleSection('quirks')\">Quirks</button>"
 	body += "</div>"
 
@@ -205,47 +202,6 @@
 			body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];remove_language=[REF(M)];language=[ld]'>Remove</a></li>"
 		else
 			body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_language=[REF(M)];language=[ld]'>Grant</a></li>"
-	body += "</ul></div>"
-
-	body += "<div id='stats-section'>"
-	body += "<h3>Stats</h3><ul>"
-	if(isliving(M))
-		var/mob/living/living = M
-		body += "<li>Strength: [GET_MOB_ATTRIBUTE_VALUE(living, STAT_STRENGTH)] "
-		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=[STAT_STRENGTH]'>+</a> "
-		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=[STAT_STRENGTH]'>-</a>"
-		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];bulk_change=[REF(M)];stat=[STAT_STRENGTH]'> Bulk Change</a></li>"
-
-		body += "<li>Perception: [GET_MOB_ATTRIBUTE_VALUE(living, STAT_PERCEPTION)] "
-		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=[STAT_PERCEPTION]'>+</a> "
-		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=[STAT_PERCEPTION]'>-</a>"
-		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];bulk_change=[REF(M)];stat=[STAT_PERCEPTION]'> Bulk Change</a></li>"
-
-		body += "<li>Endurance: [GET_MOB_ATTRIBUTE_VALUE(living, STAT_ENDURANCE)] "
-		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=[STAT_ENDURANCE]'>+</a> "
-		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=[STAT_ENDURANCE]'>-</a>"
-		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];bulk_change=[REF(M)];stat=[STAT_ENDURANCE]'> Bulk Change</a></li>"
-
-		body += "<li>Constitution: [GET_MOB_ATTRIBUTE_VALUE(living, STAT_CONSTITUTION)] "
-		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=[STAT_CONSTITUTION]'>+</a> "
-		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=[STAT_CONSTITUTION]'>-</a>"
-		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];bulk_change=[REF(M)];stat=[STAT_CONSTITUTION]'> Bulk Change</a></li>"
-
-		body += "<li>Intelligence: [GET_MOB_ATTRIBUTE_VALUE(living, STAT_INTELLIGENCE)] "
-		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=[STAT_INTELLIGENCE]'>+</a> "
-		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=[STAT_INTELLIGENCE]'>-</a>"
-		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];bulk_change=[REF(M)];stat=[STAT_INTELLIGENCE]'> Bulk Change</a></li>"
-
-		body += "<li>Speed: [GET_MOB_ATTRIBUTE_VALUE(living, STAT_SPEED)] "
-		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=[STAT_SPEED]'>+</a> "
-		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=[STAT_SPEED]'>-</a>"
-		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];bulk_change=[REF(M)];stat=[STAT_SPEED]'> Bulk Change</a></li>"
-
-		body += "<li>Luck: [GET_MOB_ATTRIBUTE_VALUE(living, STAT_FORTUNE)] "
-		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=[STAT_FORTUNE]'>+</a> "
-		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=[STAT_FORTUNE]'>-</a>"
-		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];bulk_change=[REF(M)];stat=[STAT_FORTUNE]'> Bulk Change</a></li>"
-
 	body += "</ul></div>"
 
 	body += "<div id='quirks-section'>"
