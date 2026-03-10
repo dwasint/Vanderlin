@@ -89,7 +89,7 @@
 	move_to_spawnpoint()
 	remove_job()
 	lich.delete_equipment()
-	owner.current?.remove_stat_modifier(STATMOD_AGE)
+	lich.update_age_stats(lich.age, TRUE)
 	skele_look()
 	equip_lich()
 

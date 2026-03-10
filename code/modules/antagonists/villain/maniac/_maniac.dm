@@ -126,7 +126,7 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 				dreamer.remove_status_effect(effect)
 			dreamer.attributes?.add_sheet(/datum/attribute_holder/sheet/job/maniac)
 			var/obj/item/organ/heart/heart = dreamer.getorganslot(ORGAN_SLOT_HEART)
-			dreamer.remove_stat_modifier(STATMOD_AGE)
+			dreamer.update_age_stats(dreamer.age, TRUE)
 			if(heart) // clear any inscryptions, in case of being made maniac midround
 				heart.inscryptions = list()
 				heart.inscryption_keys = list()

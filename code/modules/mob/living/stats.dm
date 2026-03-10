@@ -86,53 +86,52 @@
  * Stats are written directly into raw_attribute_list via attributes.
  * Modifiers (species, age, traits) go through set_stat_modifier() as named sources.
  */
+
+/datum/attribute_holder/sheet/age/old
+	raw_attribute_list = list(
+		STAT_STRENGTH     = -2,
+		STAT_PERCEPTION   = 2,
+		STAT_ENDURANCE    = -1,
+		STAT_CONSTITUTION = -1,
+		STAT_INTELLIGENCE = 2,
+		STAT_SPEED        = -1,
+		STAT_FORTUNE      = 1,
+	)
+
+/datum/attribute_holder/sheet/age/middleaged
+	raw_attribute_list = list(
+		STAT_ENDURANCE = 1,
+		STAT_SPEED     = -1,
+	)
+
+/datum/attribute_holder/sheet/age/child
+	raw_attribute_list = list(
+		STAT_STRENGTH     = -2,
+		STAT_CONSTITUTION = -2,
+		STAT_PERCEPTION   = 1,
+		STAT_ENDURANCE    = 1,
+		STAT_SPEED        = 1
+	)
+
+/datum/attribute_holder/sheet/job/random_stats
+	attribute_variance = list(
+		STAT_STRENGTH = list(-1, 1),
+		STAT_PERCEPTION = list(-1, 1),
+		STAT_ENDURANCE = list(-1, 1),
+		STAT_CONSTITUTION = list(-1, 1),
+		STAT_INTELLIGENCE = list(-1, 1),
+		STAT_SPEED = list(-1, 1),
+		STAT_FORTUNE = list(-1, 1),
+	)
 /mob/living/proc/roll_mob_stats()
 	if(has_rolled_for_stats)
 		return FALSE
 
-	// Roll base variance: each stat has a 33% chance of +-1
-	// Uses STATMOD_ROLL so the variance is a named, removable modifier
-	// like species and age - not baked permanently into the raw value.
-	set_stat_modifier(STATMOD_ROLL, list(
-		STAT_STRENGTH     = (prob(33) ? pick(-1, 1) : 0),
-		STAT_PERCEPTION   = (prob(33) ? pick(-1, 1) : 0),
-		STAT_ENDURANCE    = (prob(33) ? pick(-1, 1) : 0),
-		STAT_CONSTITUTION = (prob(33) ? pick(-1, 1) : 0),
-		STAT_INTELLIGENCE = (prob(33) ? pick(-1, 1) : 0),
-		STAT_SPEED        = (prob(33) ? pick(-1, 1) : 0),
-		STAT_FORTUNE      = (prob(33) ? pick(-1, 1) : 0),
-	))
+	attributes?.add_sheet(/datum/attribute_holder/sheet/job/random_stats)
 
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
-
-		// Age modifiers
-		switch(H.age)
-			if(AGE_CHILD)
-				set_stat_modifier(STATMOD_AGE, list(
-					STAT_STRENGTH     = -2,
-					STAT_CONSTITUTION = -2,
-					STAT_PERCEPTION   = 1,
-					STAT_ENDURANCE    = 1,
-					STAT_SPEED        = round(rand(1, 2)),
-				))
-				H.virginity = TRUE
-			if(AGE_MIDDLEAGED)
-				set_stat_modifier(STATMOD_AGE, list(
-					STAT_ENDURANCE = 1,
-					STAT_SPEED     = -1,
-				))
-			if(AGE_OLD)
-				set_stat_modifier(STATMOD_AGE, list(
-					STAT_STRENGTH     = -2,
-					STAT_PERCEPTION   = 2,
-					STAT_ENDURANCE    = -1,
-					STAT_CONSTITUTION = -1,
-					STAT_INTELLIGENCE = 2,
-					STAT_SPEED        = -1,
-					STAT_FORTUNE      = 1,
-				))
-
+		H.update_age_stats()
 		// Curse trait
 		if(HAS_TRAIT(src, TRAIT_PUNISHMENT_CURSE))
 			set_stat_modifier(STATMOD_CURSE, list(
@@ -148,6 +147,26 @@
 
 	has_rolled_for_stats = TRUE
 	return TRUE
+
+/mob/living/carbon/human/proc/update_age_stats(old_age, only_remove = FALSE)
+	if(has_rolled_for_stats && old_age)
+		switch(old_age)
+			if(AGE_MIDDLEAGED)
+				attributes?.subtract_sheet(/datum/attribute_holder/sheet/age/middleaged)
+			if(AGE_OLD)
+				attributes?.subtract_sheet(/datum/attribute_holder/sheet/age/old)
+			if(AGE_CHILD)
+				attributes?.subtract_sheet(/datum/attribute_holder/sheet/age/child)
+	if(only_remove)
+		return
+	switch(age)
+		if(AGE_MIDDLEAGED)
+			attributes?.add_sheet(/datum/attribute_holder/sheet/age/middleaged)
+		if(AGE_OLD)
+			attributes?.add_sheet(/datum/attribute_holder/sheet/age/old)
+		if(AGE_CHILD)
+			attributes?.add_sheet(/datum/attribute_holder/sheet/age/child)
+
 
 /**
  * Applies or replaces a named stat modifier block.

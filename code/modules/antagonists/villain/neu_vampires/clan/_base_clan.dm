@@ -380,7 +380,7 @@ And it also helps for the character set panel
 	H.cmode_music = 'sound/music/cmode/antag/CombatThrall.ogg'
 
 	H.attributes?.add_sheet(/datum/attribute_holder/sheet/job/clan)
-	H.remove_stat_modifier(STATMOD_AGE)
+	H.update_age_stats(H.age, TRUE)
 	var/datum/action/cooldown/spell/undirected/transfix/transfix = new(H.mind)
 	transfix.Grant(H)
 

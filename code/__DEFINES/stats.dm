@@ -1,9 +1,6 @@
 // Stat modifier keys
 
 // Innate
-#define STATMOD_SEX "Gender"
-#define STATMOD_AGE "Age"
-#define STATMOD_ROLL "Random Roll"
 #define STATMOD_CURSE "Curse"
 #define STATMOD_GOBLIN_RACE "Goblin"
 
