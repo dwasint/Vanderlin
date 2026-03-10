@@ -1,5 +1,5 @@
 #define RESTED_XP_MULTIPLIER   1.0   // full XP when rested
-#define RESTED_XP_TIRED_RATE   0.2   // XP rate when pool is empty / no multiplier
+#define RESTED_XP_TIRED_RATE   0.5   // XP rate when pool is empty / no multiplier
 #define RESTED_XP_BASE_GRANT   2000   // starting pool and per-sleep grant
 #define RESTED_XP_INITIAL      500   // granted on datum creation so new chars aren't penalized
 
@@ -37,19 +37,19 @@
 
 /**
  * Primary XP entry point for sleep-sourced gains.
- * Without rested pool + active multiplier: only 20% XP is granted.
- * With rested pool + active multiplier: full 100% XP is granted,
- * draining the pool by the 80% difference.
+ * No pool:                    20% XP (tired rate)
+ * Pool available:            100% XP, pool drained by the 80% difference
+ * Pool + dreamed multiplier: 150% XP, pool drained by the 130% difference
  */
 /datum/sleep_adv/proc/adjust_sleep_xp(skill_type, amount, silent = FALSE)
 	if(!mind?.current)
 		return
 	var/final_amount
-	if(rested_skill_multipliers[skill_type] && rested_xp_pool > 0)
-		var/deficit = FLOOR(amount * (RESTED_XP_MULTIPLIER - RESTED_XP_TIRED_RATE), 1)
+	if(rested_xp_pool > 0)
+		var/target_multiplier = rested_skill_multipliers[skill_type] ? 1.5 : RESTED_XP_MULTIPLIER
+		var/deficit = FLOOR(amount * (target_multiplier - RESTED_XP_TIRED_RATE), 1)
 		var/covered = min(deficit, rested_xp_pool)
 		rested_xp_pool -= covered
-		// Scale actual XP between tired rate and full based on how much pool covered
 		final_amount = FLOOR(amount * RESTED_XP_TIRED_RATE + covered, 1)
 	else
 		final_amount = FLOOR(amount * RESTED_XP_TIRED_RATE, 1)
