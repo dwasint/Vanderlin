@@ -60,10 +60,3 @@
 			if(current >= cap)
 				continue
 			plagiarist.raw_attribute_list[path] = clamp(current + num, 0, cap)
-
-	//Perception is a dumb little snowflake
-	if(!isnull(plagiarist.raw_attribute_list[STAT_PERCEPTION]))
-		plagiarist.raw_attribute_list[STAT_PERCEPTION] = plagiarist.raw_attribute_list[STAT_INTELLIGENCE]
-	//Will is a dumb little snowflake
-	if(!isnull(plagiarist.raw_attribute_list[STAT_ENDURANCE]))
-		plagiarist.raw_attribute_list[STAT_ENDURANCE] = plagiarist.raw_attribute_list[STAT_INTELLIGENCE]

@@ -1,8 +1,3 @@
-/datum/attribute_holder/sheet/job/species/
-	raw_attribute_list = list(
-
-	)
-
 /datum/attribute_holder/sheet/job/generic_npc/very_skilled/heavy_gear
 	raw_attribute_list = list(
 		/datum/attribute/skill/combat/swords = 50,
