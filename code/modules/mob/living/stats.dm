@@ -87,6 +87,10 @@
  * Modifiers (species, age, traits) go through set_stat_modifier() as named sources.
  */
 
+/datum/attribute_holder/sheet/age
+	attribute_default = 0
+	skill_default = null
+
 /datum/attribute_holder/sheet/age/old
 	raw_attribute_list = list(
 		STAT_STRENGTH     = -2,
