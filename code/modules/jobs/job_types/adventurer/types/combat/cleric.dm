@@ -137,7 +137,7 @@
 			weapon_skill_path = /datum/attribute/skill/combat/whipsflails
 
 	if(weapon_skill_path)
-		spawned.adjust_skill_level(weapon_skill_path, 30, TRUE)
+		spawned.adjust_skill_level(weapon_skill_path, 30)
 
 	switch(weaponchoice)
 		if("Great flail", "Goedendag", "Great axe")
