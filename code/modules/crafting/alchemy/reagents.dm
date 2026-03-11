@@ -210,7 +210,7 @@
 	taste_description = "raw meat"
 	scent_description = "sour vomit"
 
-/datum/reagent/buff/strength/on_mob_add(mob/living/carbon/M)
+/datum/reagent/buff/strength/on_mob_life(mob/living/carbon/M)
 	if(M.has_status_effect(/datum/status_effect/buff/alch/strengthpot))
 		return ..()
 	if(M.has_reagent(/datum/reagent/buff/strength, 4))

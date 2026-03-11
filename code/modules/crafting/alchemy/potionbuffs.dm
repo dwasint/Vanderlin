@@ -10,7 +10,7 @@
 	duration = 5 MINUTES
 
 /datum/status_effect/buff/alch/strengthpot
-	id = "strpot"
+	id = "Strength Potion"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/alch/strengthpot
 	effectedstats = list(STAT_STRENGTH = 3)
 
@@ -22,7 +22,7 @@
 	duration = 5 MINUTES
 
 /datum/status_effect/buff/alch/perceptionpot
-	id = "perpot"
+	id = "Perception Potion"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/alch/perceptionpot
 	effectedstats = list(STAT_PERCEPTION = 3)
 
@@ -30,7 +30,7 @@
 	name = "Perception"
 
 /datum/status_effect/buff/alch/intelligencepot
-	id = "intpot"
+	id = "Intelligence Potion"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/alch/intelligencepot
 	effectedstats = list(STAT_INTELLIGENCE = 3)
 
@@ -42,7 +42,7 @@
 	duration = 5 MINUTES
 
 /datum/status_effect/buff/alch/constitutionpot
-	id = "conpot"
+	id = "Constitution Potion"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/alch/constitutionpot
 	effectedstats = list(STAT_CONSTITUTION = 3)
 
@@ -54,7 +54,7 @@
 	duration = 5 MINUTES
 
 /datum/status_effect/buff/alch/endurancepot
-	id = "endpot"
+	id = "Endurance Potion"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/alch/endurancepot
 	effectedstats = list(STAT_ENDURANCE = 3)
 
@@ -71,7 +71,7 @@
 	duration = 5 MINUTES
 
 /datum/status_effect/buff/alch/speedpot
-	id = "spdpot"
+	id = "Speed Potion"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/alch/speedpot
 	effectedstats = list(STAT_SPEED = 3)
 
@@ -79,7 +79,7 @@
 	name = "Speed"
 
 /datum/status_effect/buff/alch/fortunepot
-	id = "forpot"
+	id = "Fortune Potion"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/alch/fortunepot
 	effectedstats = list(STAT_FORTUNE = 3)
 
