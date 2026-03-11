@@ -78,6 +78,11 @@ const TUTORIAL_STEPS: TutorialStep[] = [
     popupAnchor: 'right',
   },
   {
+    title: 'Skill Tiers',
+    body: 'Unlike the old system where you only saw a tier name, you now see the raw numbers behind them. For reference: Novice was 10–19, Apprentice 20–29, Journeyman 30–39, Expert 40–49, Master 50–59, and Legendary was 60 and above.',
+    popupAnchor: 'center',
+  },
+  {
     title: "That's everything!",
     body: "You're all set. Use the stats panel to understand your core attributes, and the skills panel to track your expertise. Click any entry at any time to inspect it in detail.",
     popupAnchor: 'center',
