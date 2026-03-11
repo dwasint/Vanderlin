@@ -268,8 +268,8 @@
 			weighted[skill_type] = -1 // sentinel: always include
 			continue
 		var/current_level = nulltozero(GET_MOB_SKILL_VALUE(mind.current, skill_type))
-		// Weight: untrained = 1, each level adds 2 more weight
-		weighted[skill_type] = max(1, 1 + current_level * 2)
+		// Weight: untrained = 1, each level adds 3 more weight
+		weighted[skill_type] = max(1, 1 + current_level * 3)
 
 	var/list/result = list()
 
