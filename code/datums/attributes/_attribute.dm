@@ -10,3 +10,6 @@
 
 /datum/attribute/proc/description_from_level(level)
 	return "FUCK"
+
+/datum/attribute/proc/on_level_change(mob/owner, new_level, old_level)
+	return

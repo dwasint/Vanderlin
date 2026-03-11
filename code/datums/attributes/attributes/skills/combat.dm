@@ -1,25 +1,6 @@
 /datum/attribute/skill/combat
 	category = SKILL_CATEGORY_MELEE
 
-/**
- * Returns the parry stamina modifier for this combat skill at the given level.
- * Level is a raw skill value (0-60). Scales linearly through tiers.
- */
-/datum/attribute/skill/combat/proc/get_skill_parry_modifier(level)
-	if(isnull(level) || level < 10)
-		return 0      // untrained
-	if(level < 20)
-		return 5      // novice
-	if(level < 30)
-		return 10     // apprentice
-	if(level < 40)
-		return 15     // journeyman
-	if(level < 50)
-		return 20     // expert
-	if(level < 60)
-		return 25     // master
-	return 35         // legendary
-
 /datum/attribute/skill/combat/knives
 	name = "Knife-fighting"
 	desc = "Represents your character's ability to fight with knives and short blades. The higher your skill in Knife-fighting, the more accurate you'll be with knives and the better you'll be at parrying with them."
@@ -29,6 +10,9 @@
 		STAT_PERCEPTION = -6,
 	)
 	difficulty = SKILL_DIFFICULTY_EASY
+	dreams = list(
+		"...you're thrown to the dirt by volves - panicking and flailing, one lunges to rip your neck out, only for blood to flow from its maw as steel is plunged into its nape...."
+	)
 
 /datum/attribute/skill/combat/swords
 	name = "Sword-fighting"
@@ -39,6 +23,9 @@
 		STAT_SPEED = -6,
 	)
 	difficulty = SKILL_DIFFICULTY_AVERAGE
+	dreams = list(
+		"...your heart beats wildly as your swords strike eachothers, you parry your opponent and finish him off with a decisive slash..."
+	)
 
 /datum/attribute/skill/combat/polearms
 	name = "Polearms"
@@ -49,6 +36,9 @@
 		STAT_ENDURANCE = -7,
 	)
 	difficulty = SKILL_DIFFICULTY_AVERAGE
+	dreams = list(
+		"...his mouth meets his head, his teeth meets teeth, blood gushes from his mouth after a firm strike - you have no blade, yet you're armed..."
+	)
 
 /datum/attribute/skill/combat/axesmaces
 	name = "Axes & Maces"
@@ -59,6 +49,9 @@
 		STAT_ENDURANCE = -7,
 	)
 	difficulty = SKILL_DIFFICULTY_AVERAGE
+	dreams = list(
+		"...you drag your finger across the edge. picking it up from the table, you round the corner, and stare at your ailing father..."
+	)
 
 /datum/attribute/skill/combat/whipsflails
 	name = "Whips & Flails"
@@ -69,6 +62,9 @@
 		STAT_PERCEPTION = -8,
 	)
 	difficulty = SKILL_DIFFICULTY_HARD
+	dreams = list(
+		"...you have a nightmare - accused of heresy, you reel and strike, skin sloughs off their back... you blink, you're the one in chains..."
+	)
 
 /datum/attribute/skill/combat/bows
 	name = "Archery"
@@ -80,6 +76,9 @@
 		STAT_STRENGTH = -7,
 	)
 	difficulty = SKILL_DIFFICULTY_AVERAGE
+	dreams = list(
+		"...you nock the arrow, and let it loose... as you have a hundred times before... tonight, he dies... the arrow flies through the carriage, you hear shrieking and... sobbing...?"
+	)
 
 /datum/attribute/skill/combat/crossbows
 	name = "Crossbows"
@@ -91,6 +90,9 @@
 		STAT_INTELLIGENCE = -6,
 	)
 	difficulty = SKILL_DIFFICULTY_EASY
+	dreams = list(
+		"...in your hands, it feels like it's the perfect weight. you rest the stock against your gut and pull the string back... and you raise your sights on the crowd below..."
+	)
 
 /datum/attribute/skill/combat/firearms
 	name = "Firearms"
@@ -102,6 +104,9 @@
 		STAT_INTELLIGENCE = -6,
 	)
 	difficulty = SKILL_DIFFICULTY_EASY
+	dreams = list(
+		"...one shot... you smell the sulfur... you spit the dirt out of your mouth, and blink the blood away... now... you know... you love to reload during a battle..."
+	)
 
 /datum/attribute/skill/combat/wrestling
 	name = "Wrestling"
@@ -112,6 +117,9 @@
 		STAT_ENDURANCE = -6,
 	)
 	difficulty = SKILL_DIFFICULTY_AVERAGE
+	dreams = list(
+		"...he won't listen, your companion dies on the operating table. you feel nothing. you grab the medicine-man's head, and begin to twist... the screams, oh, what joyous whimsy..."
+	)
 
 /datum/attribute/skill/combat/unarmed
 	name = "Fist-fighting"
@@ -122,6 +130,9 @@
 		STAT_ENDURANCE = -5,
 	)
 	difficulty = SKILL_DIFFICULTY_EASY
+	dreams = list(
+		"...ailing and old, the same guard comes back for a daily beating... you grit your teeth... you smile... the old shall teach the young a lesson in violence..."
+	)
 
 /datum/attribute/skill/combat/shields
 	name = "Shields"
@@ -133,3 +144,6 @@
 		STAT_STRENGTH = -6,
 	)
 	difficulty = SKILL_DIFFICULTY_EASY
+	dreams = list(
+		"...the deadite claws on the door, another crashes through a window... in a panic, you grab a chair, and utter a prayer to Necra..."
+	)

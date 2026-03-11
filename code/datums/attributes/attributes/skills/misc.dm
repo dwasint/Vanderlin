@@ -9,6 +9,9 @@
 		STAT_ENDURANCE = -4,
 	)
 	difficulty = SKILL_DIFFICULTY_EASY
+	dreams = list(
+		"...you look behind you, and you can see their faces lessen, their silhouettes shrink - until they're only a spec on the horizon..."
+	)
 
 /datum/attribute/skill/misc/climbing
 	name = "Climbing"
@@ -19,6 +22,9 @@
 		STAT_ENDURANCE = -6,
 	)
 	difficulty = SKILL_DIFFICULTY_AVERAGE
+	dreams = list(
+		"...you can feel the blood rush through your body in the freezing rain, scaling the tree rapidly - the figures behind you bicker to one-another... you lost them..."
+	)
 
 /datum/attribute/skill/misc/reading
 	name = "Reading"
@@ -28,6 +34,9 @@
 		STAT_INTELLIGENCE = -8,
 	)
 	difficulty = SKILL_DIFFICULTY_EASY
+	dreams = list(
+		"...you lick your fingers, gently flipping through the old, decaying pages... re-reading the page, your eyes widen in shock... the truth is terrible... you feel a presence behind you... and the cold blade in your throat..."
+	)
 
 /datum/attribute/skill/misc/swimming
 	name = "Swimming"
@@ -38,6 +47,9 @@
 		STAT_STRENGTH = -6,
 	)
 	difficulty = SKILL_DIFFICULTY_AVERAGE
+	dreams = list(
+		"...you fight the current, struggling - the lungs in your body crawling for breath... you go limp, and you let the current guide you..."
+	)
 
 /datum/attribute/skill/misc/stealing
 	name = "Pickpocketing"
@@ -48,6 +60,9 @@
 		STAT_PERCEPTION = -6,
 	)
 	difficulty = SKILL_DIFFICULTY_HARD
+	dreams = list(
+		"...you sneak past a well-dressed man, stealing an elaborate dagger from his waist... when you get home and unsheathe it, you stare at his reflection on the blade..."
+	)
 
 /datum/attribute/skill/misc/sneaking
 	name = "Sneaking"
@@ -58,6 +73,9 @@
 		STAT_SPEED = -5,
 	)
 	difficulty = SKILL_DIFFICULTY_AVERAGE
+	dreams = list(
+		"...you're running as fast as you can, hearing the clatter of armor rapidly approaching... you round the corner, hug the wall, and close your eyes..."
+	)
 
 /datum/attribute/skill/misc/lockpicking
 	name = "Lockpicking"
@@ -69,6 +87,9 @@
 		STAT_INTELLIGENCE = -7,
 	)
 	difficulty = SKILL_DIFFICULTY_HARD
+	dreams = list(
+		"...clatter, click-... click... clack! the door opens, the glint of the iron lock is replaced with a green eye staring down a crossbow... clatter, click... click... clack...!"
+	)
 
 /datum/attribute/skill/misc/riding
 	name = "Riding"
@@ -78,6 +99,9 @@
 		STAT_ENDURANCE = -6,
 	)
 	difficulty = SKILL_DIFFICULTY_AVERAGE
+	dreams = list(
+		"...you feel the wind in your face and mane... you hold onto your stead for dear life... the hooves strike against the ground... your lungs breathe for the first time... freedom..."
+	)
 
 /datum/attribute/skill/misc/music
 	name = "Music"
@@ -88,6 +112,9 @@
 		STAT_PERCEPTION = -8,
 	)
 	difficulty = SKILL_DIFFICULTY_HARD
+	dreams = list(
+		"...you bang your open palm against the top of the drum, the sound of warfare clattering all about you... you march forward, screaming to your brethren to continue... you feel a bolt bite your chest, and yet your heart still beats..."
+	)
 
 /datum/attribute/skill/misc/medicine
 	name = "Medicine"
@@ -98,6 +125,9 @@
 		STAT_INTELLIGENCE = -6,
 	)
 	difficulty = SKILL_DIFFICULTY_EASY
+	dreams = list(
+		"...your hands move with practiced precision, needle and thread dancing through torn flesh like a tailor at their loom... the scent of blood and old herbs clings to you as you whisper a prayer to stave off infection... the battle rages on, but your patient will not fall today..."
+	)
 
 /datum/attribute/skill/misc/sewing
 	name = "Sewing"
@@ -109,3 +139,6 @@
 		STAT_INTELLIGENCE = -6,
 	)
 	difficulty = SKILL_DIFFICULTY_EASY
+	dreams = list(
+		"...the needle goes through the cloth, in-and-out... then it's hide... then it's a man's flesh... you blink, the dress is done... the queen will love it..."
+	)

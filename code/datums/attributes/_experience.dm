@@ -135,19 +135,8 @@ GLOBAL_VAR_INIT(sleep_experience_modifier, 1.0)
  * Add new cases here as skills require them.
  */
 /datum/attribute_holder/proc/on_skill_level_changed(skill_type, new_level, old_level)
-	// Arcane magic: grant 1 spell point per tier boundary crossed
-	if(skill_type == /datum/attribute/skill/magic/arcane)
-		var/old_tier = old_level / 10
-		var/new_tier = new_level / 10
-		if(new_tier > old_tier)
-			parent?.adjust_spell_points(new_tier - old_tier)
-		else if(new_tier < old_tier)
-			parent?.adjust_spell_points(new_tier - old_tier) // negative delta = remove points
-
-	// Alchemy: grant/remove legendary trait at master tier
-	if(skill_type == /datum/attribute/skill/craft/alchemy)
-		var/datum/attribute/skill/craft/alchemy/alchemy_skill = GET_ATTRIBUTE_DATUM(skill_type)
-		alchemy_skill?.on_level_change(parent, new_level)
+	var/datum/attribute/skill = GET_ATTRIBUTE_DATUM(skill_type)
+	skill?.on_level_change(parent, new_level, old_level)
 
 /**
  * Shares a fraction of XP with nearby apprentices.

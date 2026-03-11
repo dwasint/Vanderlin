@@ -9,6 +9,9 @@
 	default_attributes = list(
 		STAT_FORTUNE = -8,
 	)
+	dreams = list(
+		"...since the death of God, there has been a vacancy in the realm of miracleworkers... you can change this..."
+	)
 
 /datum/attribute/skill/magic/blood
 	name = "Blood Sorcery"
@@ -16,6 +19,9 @@
 	governing_attribute = STAT_CONSTITUTION
 	default_attributes = list(
 		STAT_CONSTITUTION = -8,
+	)
+	dreams = list(
+		"...you burst into the tavern, unsheathing an exotic blade. all the folk in the establishment are pale. you raise your left arm, clenching a fist and slicing into your bicep like a viola... light cascades acrost the entire room..."
 	)
 
 /datum/attribute/skill/magic/arcane
@@ -25,7 +31,17 @@
 	default_attributes = list(
 		STAT_INTELLIGENCE = -8,
 	)
-	// NOTE: Grant 1 spell point per tier crossed (every 10 levels).
+	dreams = list(
+		"...you look up to your captors, smiling through broken teeth. the cackling brings a kick to your ribs... you spit a broken tooth out of your mouth, and mutter under your breath... you hear gurgling as a baptism of blue fire spews from his open mouth..."
+	)
+
+/datum/attribute/skill/magic/arcane/on_level_change(mob/owner, new_level, old_level)
+	var/old_tier = floor(old_level / 10)
+	var/new_tier = floor(new_level / 10)
+	if(new_tier > old_tier)
+		owner?.adjust_spell_points(new_tier - old_tier)
+	else if(new_tier < old_tier)
+		owner?.adjust_spell_points(new_tier - old_tier) // negative delta = remove points
 
 /datum/attribute/skill/magic/druidic
 	name = "Druidic Trickery"
@@ -34,4 +50,7 @@
 	default_attributes = list(
 		STAT_PERCEPTION = -8,
 		STAT_FORTUNE = -9,
+	)
+	dreams = list(
+		"...you stare down at the party from the treetops... blinking, you stare at them from the sky... blinking, you stare at them from below... their attention drawn and quartered, you fire an arrow straight through the warrior's eye... he falls over, dead..."
 	)
