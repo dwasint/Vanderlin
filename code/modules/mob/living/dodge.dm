@@ -1,6 +1,6 @@
 
 /mob/living/proc/get_dodging_score(modifier = 0)
-	var/basic_speed = GET_MOB_ATTRIBUTE_VALUE(src, STAT_SPEED) / 2
+	var/basic_speed = GET_MOB_ATTRIBUTE_VALUE(src, STAT_SPEED)
 	var/encumberance = get_encumbrance()
 	if(!HAS_TRAIT(src, TRAIT_DODGEEXPERT))
 		encumbrance *= 1.5
@@ -105,7 +105,6 @@
 	// STAT_SPEED on 0-~30 range; divide by 5 for ~0-6 opposition impact
 	var/attacker_opposition = floor(GET_MOB_ATTRIBUTE_VALUE(user, STAT_SPEED) / 5)
 
-	// Armor class affects dodge_speed and drain only — encumbrance in get_dodging_score handles roll penalty
 	if(istype(src, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = src
 		switch(H.worn_armor_class)
@@ -115,9 +114,11 @@
 			if(AC_MEDIUM)
 				dodge_speed = floor(dodge_speed * 0.5)
 				drained += 7
+				attacker_opposition += 2  // armor makes you easier to hit
 			if(AC_HEAVY)
 				dodge_speed = floor(dodge_speed * 0.25)
 				drained += 12
+				attacker_opposition += 4  // heavy armor tanks dodge chance
 
 		var/time_since_last = world.time - last_dodge
 		if(time_since_last < 2 SECONDS)
@@ -136,10 +137,8 @@
 			to_chat(src, span_warning("I'm too tired to dodge!"))
 			return FALSE
 
-	//calculate_dodge_score returns a modifier for get_dodging_score
 	var/dodge_modifier = calculate_dodge_score(user)
 
-	// Blind penalty fed in as modifier
 	if(!can_dodge_see)
 		dodge_modifier -= 3
 
@@ -178,7 +177,6 @@
 	update_dodging_penalty(DODGING_PENALTY, DODGING_PENALTY_COOLDOWN_DURATION)
 	try_dodge_to(user, target_turf, dodge_speed)
 
-	//message flavor only, movement already handled
 	if(roll_result == DICE_CRIT_SUCCESS)
 		to_chat(src, span_notice("A perfectly timed dodge!"))
 
@@ -251,12 +249,12 @@
 			dodge_modifier += 1  //slightly easier to read
 		else
 			// 0-60 skill / 10 = 0-6 modifier range
-			dodge_modifier += floor(GET_MOB_SKILL_VALUE_RAW(defending_mob, attacking_item.associated_skill) / 10)
+			dodge_modifier += floor(GET_MOB_SKILL_VALUE_RAW(defending_mob, attacking_item.associated_skill) / 7)
 
 	// Unarmed vs unarmed, skill matchup
 	if(user.used_intent.unarmed)
-		dodge_modifier += floor(GET_MOB_SKILL_VALUE_RAW(defending_mob, /datum/attribute/skill/combat/unarmed) / 10)
-		dodge_modifier -= floor(GET_MOB_SKILL_VALUE_RAW(user, /datum/attribute/skill/combat/unarmed) / 10)
+		dodge_modifier += floor(GET_MOB_SKILL_VALUE_RAW(defending_mob, /datum/attribute/skill/combat/unarmed) / 7)
+		dodge_modifier -= floor(GET_MOB_SKILL_VALUE_RAW(user, /datum/attribute/skill/combat/unarmed) / 7)
 
 	return dodge_modifier
 
