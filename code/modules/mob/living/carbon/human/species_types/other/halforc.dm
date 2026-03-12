@@ -10,6 +10,15 @@
 		STAT_ENDURANCE = 1,
 	)
 
+/datum/attribute_holder/sheet/job/species/halforc/female
+	raw_attribute_list = list(
+		STAT_STRENGTH = 2,
+		STAT_PERCEPTION = -1,
+		STAT_INTELLIGENCE = -2,
+		STAT_CONSTITUTION = 1,
+		STAT_ENDURANCE = 1,
+	)
+
 /datum/species/halforc
 	name = "Half-Orc"
 	id = SPEC_ID_HALF_ORC
@@ -75,6 +84,7 @@
 	offset_features_f = list()
 
 	statsheet_male = /datum/attribute_holder/sheet/job/species/halforc
+	statsheet_female = /datum/attribute_holder/sheet/job/species/halforc/female
 
 	enflamed_icon = "widefire"
 
