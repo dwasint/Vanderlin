@@ -198,7 +198,7 @@
 	return list(
 		"used_weapon" = used_weapon,
 		"weapon_parry" = weapon_parry,
-		"defense_bonus" = weapon_parry ? (highest_defense - unarmed_defense) : 0,
+		"defense_bonus" = weapon_parry ? highest_defense : 0,
 		"weapon_defense_flat" = weapon_parry ? used_weapon.wdefense : 0
 	)
 
