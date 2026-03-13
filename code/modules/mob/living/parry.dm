@@ -114,15 +114,14 @@
 			attacker_feedback += " Cancelled out!"
 		to_chat(user, span_info("[attacker_feedback]"))
 
-	// Apply penalty regardless of outcome, attempting costs stamina
-	update_parrying_penalty()
-
 	if(roll_result == DICE_FAILURE || roll_result == DICE_CRIT_FAILURE)
 		if(roll_result == DICE_CRIT_FAILURE)
 			to_chat(src, span_warning("I completely fumbled my parry!"))
 		else
 			to_chat(src, span_warning("The enemy defeated my parry!"))
 		return FALSE
+
+	update_parrying_penalty()
 
 	//heavy weapon strength differential still applies
 	var/obj/item/master = intenty.get_master_item()

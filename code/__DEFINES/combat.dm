@@ -462,7 +462,7 @@ GLOBAL_LIST_INIT(shove_disarming_types, typecacheof(list(
 #define CARBON_MAX_IMPACT_SPEED_BONUS 5
 
 /// Default penalty for parrying dicerolls, normally lasts PARRYING_PENALTY_COOLDOWN_DURATION
-#define PARRYING_PENALTY 4
+#define PARRYING_PENALTY 2
 /// Default penalty for dodging dicerolls, normally lasts DODGING_PENALTY_COOLDOWN_DURATION
 #define DODGING_PENALTY 1
 /// A define so the cooldown on the baited status and the duration of the baitcd status are the same
