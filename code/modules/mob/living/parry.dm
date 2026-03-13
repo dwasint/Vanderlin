@@ -75,7 +75,7 @@
 	if(body_position == LYING_DOWN)
 		parry_modifier -= 2
 
-	var/attacker_opposition = floor(attacker_skill / 10)
+	var/attacker_opposition = floor(attacker_skill / 4)
 
 	// Speed penalty for fast weapons still applies
 	if(user.mind)
