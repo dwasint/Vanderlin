@@ -64,6 +64,7 @@
 	// weapon_modifier is already a raw skill-scale delta, divide by 6 to fit diceroll modifier range
 	// 60 max skill delta / 6 = 10 max modifier.
 	var/parry_modifier = floor(weapon_modifier / 6)
+	parry_modifier += floor(parry_data["weapon_defense_flat"] / 2) // this lets us scale stuff cleaner
 
 	if(user.attributes?.has_diceroll_modifier(/datum/diceroll_modifier/guidance))
 		parry_modifier -= 2
@@ -172,9 +173,7 @@
 	var/weapon_parry = FALSE
 
 	if(mainhand && mainhand.can_parry)
-		// Raw skill value (0-60) + weapon defense rating, no multipliers
 		mainhand_defense += nulltozero(GET_MOB_SKILL_VALUE(src, mainhand.associated_skill))
-		mainhand_defense += mainhand.wdefense
 
 	if(offhand && offhand.can_parry)
 		offhand_defense += nulltozero(GET_MOB_SKILL_VALUE(src, offhand.associated_skill))
@@ -200,7 +199,8 @@
 	return list(
 		"used_weapon" = used_weapon,
 		"weapon_parry" = weapon_parry,
-		"defense_bonus" = weapon_parry ? (highest_defense - unarmed_defense) : 0
+		"defense_bonus" = weapon_parry ? (highest_defense - unarmed_defense) : 0,
+		"weapon_defense_flat" = weapon_parry ? used_weapon.wdefense : 0
 	)
 
 /**
