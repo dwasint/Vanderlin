@@ -103,19 +103,6 @@
 		"...you hear a quick snap in the distance... you rush over, and notice a small cabbit with a snare wrapped around its leg... you gently unsheath your knife, and loom over the poor, frightened thing..."
 	)
 
-/datum/attribute/skill/craft/cooking
-	name = "Cooking"
-	desc = "Represents your character's ability to cook food. The higher your skill in Cooking, the better the food you can cook and the more you can make with your ingredients."
-	category = SKILL_CATEGORY_DOMESTIC
-	governing_attribute = STAT_INTELLIGENCE
-	default_attributes = list(
-		STAT_INTELLIGENCE = -4,
-	)
-	difficulty = SKILL_DIFFICULTY_EASY
-	dreams = list(
-		"...you sit by the table in your dreary hovel, staring at the wooden bowl of soup given to you by your mother... you blink and look around the tavern, before your vision returns to the bowl... you feel comforted..."
-	)
-
 /datum/attribute/skill/craft/alchemy
 	name = "Alchemy"
 	desc = "Represents your character's ability to craft potions. The higher your skill in Alchemy, the better you can identify potions and ingredients."

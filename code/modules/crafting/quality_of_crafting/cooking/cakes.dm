@@ -16,6 +16,7 @@
 	crafting_sound = 'sound/foley/dropsound/food_drop.ogg'
 	crafting_message = "add some juicy fruit filling"
 	extra_chance = 100
+	skillcraft = /datum/attribute/skill/craft/cooking/baking
 
 /datum/repeatable_crafting_recipe/cooking/chescake_raisan
 	category = "Cakes"
@@ -33,6 +34,7 @@
 	crafting_sound = 'sound/foley/dropsound/food_drop.ogg'
 	crafting_message = "add some juicy fruit filling"
 	extra_chance = 100
+	skillcraft = /datum/attribute/skill/craft/cooking/baking
 
 /datum/repeatable_crafting_recipe/cooking/cake_base
 	category = "Cakes"
@@ -51,6 +53,7 @@
 	crafting_message = "work egg into the dough, shaping it into a cake"
 	minimum_skill_level = 2
 	extra_chance = 100
+	skillcraft = /datum/attribute/skill/craft/cooking/baking
 
 
 /datum/repeatable_crafting_recipe/cooking/cake_pear
@@ -69,6 +72,7 @@
 	crafting_sound = 'sound/foley/dropsound/gen_drop.ogg'
 	crafting_message = "add mouth-watering pear filling"
 	extra_chance = 100
+	skillcraft = /datum/attribute/skill/craft/cooking/baking
 
 /datum/repeatable_crafting_recipe/cooking/cake_plum
 	category = "Cakes"
@@ -86,6 +90,7 @@
 	crafting_sound = 'sound/foley/dropsound/gen_drop.ogg'
 	crafting_message = "add some fine plum filling"
 	extra_chance = 100
+	skillcraft = /datum/attribute/skill/craft/cooking/baking
 
 /datum/repeatable_crafting_recipe/cooking/cake_tangerine
 	category = "Cakes"
@@ -103,6 +108,7 @@
 	crafting_sound = 'sound/foley/dropsound/gen_drop.ogg'
 	crafting_message = "add some tangy tangerine filling"
 	extra_chance = 100
+	skillcraft = /datum/attribute/skill/craft/cooking/baking
 
 /datum/repeatable_crafting_recipe/cooking/cake_strawberry
 	category = "Cakes"
@@ -120,6 +126,7 @@
 	crafting_sound = 'sound/foley/dropsound/gen_drop.ogg'
 	crafting_message = "add some tangy tangerine filling"
 	extra_chance = 100
+	skillcraft = /datum/attribute/skill/craft/cooking/baking
 
 /datum/repeatable_crafting_recipe/cooking/unbaked_cheesecake
 	category = "Cakes"
@@ -137,6 +144,7 @@
 	crafting_sound = 'sound/foley/dropsound/gen_drop.ogg'
 	crafting_message = "spread fresh cheese on the cake"
 	extra_chance = 100
+	skillcraft = /datum/attribute/skill/craft/cooking/baking
 
 /datum/repeatable_crafting_recipe/cooking/unbaked_zybcake
 	category = "Cakes"
@@ -154,6 +162,7 @@
 	crafting_sound = 'sound/foley/dropsound/gen_drop.ogg'
 	crafting_message = "spread spider-honey on the cake"
 	extra_chance = 100
+	skillcraft = /datum/attribute/skill/craft/cooking/baking
 
 /datum/repeatable_crafting_recipe/cooking/unbaked_strawberrycake
 	category = "Cakes"
@@ -171,6 +180,7 @@
 	crafting_sound = 'sound/foley/dropsound/gen_drop.ogg'
 	crafting_message = "spread sugar frosting on the cake"
 	extra_chance = 100
+	skillcraft = /datum/attribute/skill/craft/cooking/baking
 
 /datum/repeatable_crafting_recipe/cooking/unbaked_crimsoncake
 	category = "Cakes"
@@ -188,6 +198,7 @@
 	crafting_sound = 'sound/foley/dropsound/gen_drop.ogg'
 	crafting_message = "add chocolate to the dough"
 	extra_chance = 100
+	skillcraft = /datum/attribute/skill/craft/cooking/baking
 
 /datum/repeatable_crafting_recipe/cooking/unbaked_tangerinecake
 	category = "Cakes"
@@ -205,3 +216,4 @@
 	crafting_sound = 'sound/foley/dropsound/gen_drop.ogg'
 	crafting_message = "spread sugar frosting on the cake"
 	extra_chance = 100
+	skillcraft = /datum/attribute/skill/craft/cooking/baking

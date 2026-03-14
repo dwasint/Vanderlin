@@ -36,6 +36,8 @@
 	var/start_verb = "brewing"
 	///Quality modifier for this specific recipe (affects final quality)
 	var/quality_modifier = 1.0
+	///this is the skill type used for recipes
+	var/brewing_skill = /datum/attribute/skill/craft/cooking
 
 /datum/brewing_recipe/proc/after_finish_attackby(mob/living/user, obj/item/attacked_item, atom/source)
 	if(!istype(attacked_item, /obj/item/bottle_kit))
@@ -82,7 +84,7 @@
 	// Get brewing skill for the quality calculator
 	var/brewing_skill = 0
 	if(user.mind)
-		brewing_skill = GET_MOB_SKILL_VALUE_OLD(user, /datum/attribute/skill/craft/cooking) + user.get_inspirational_bonus() || 0
+		brewing_skill = GET_MOB_SKILL_VALUE_OLD(user, brewing_skill) + user.get_inspirational_bonus() || 0
 
 	// Create quality calculator with the calculated quality
 	var/datum/quality_calculator/brewing/brew_calc = new(
@@ -150,7 +152,7 @@
 	// Get the user's brewing skill (with cooking as fallback)
 	var/brewing_skill = 0
 	if(user.mind)
-		brewing_skill = GET_MOB_SKILL_VALUE_OLD(user, /datum/attribute/skill/craft/cooking) + user.get_inspirational_bonus() || 0
+		brewing_skill = GET_MOB_SKILL_VALUE_OLD(user, brewing_skill) + user.get_inspirational_bonus() || 0
 
 	// Use the quality calculator to determine final quality (matching cooking system)
 	var/datum/quality_calculator/brewing/brew_calc = new(

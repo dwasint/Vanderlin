@@ -3,6 +3,7 @@
 	required_container = /obj/machinery/light/fueled/oven
 	crafting_time = 25 SECONDS
 	category = "Oven"
+	used_skill = /datum/attribute/skill/craft/cooking/baking
 
 	var/datum/pollutant/cooked_smell
 
@@ -42,6 +43,7 @@
 	requirements = list(/obj/item/reagent_containers/food/snacks/foodbase/fritter_raw = 1)
 	output = /obj/item/reagent_containers/food/snacks/fritter
 	cooked_smell = /datum/pollutant/food/fritter
+	used_skill = /datum/attribute/skill/craft/cooking/baking
 
 /datum/container_craft/oven/apple_frittergood
 	hides_from_books = TRUE
@@ -49,13 +51,14 @@
 	requirements = list(/obj/item/reagent_containers/food/snacks/foodbase/fritter_raw/good = 1)
 	output = /obj/item/reagent_containers/food/snacks/fritter/good
 	cooked_smell = /datum/pollutant/food/fritter
-
+	used_skill = /datum/attribute/skill/craft/cooking/baking
 
 /datum/container_craft/oven/handpie
 	name = "Baked Handpie"
 	wildcard_requirements = list(/obj/item/reagent_containers/food/snacks/foodbase/handpieraw = 1)
 	output = /obj/item/reagent_containers/food/snacks/handpie
 	cooked_smell = /datum/pollutant/food/pie_base
+	used_skill = /datum/attribute/skill/craft/cooking/baking
 
 /datum/container_craft/oven/handpie/create_item(obj/item/crafter, mob/initiator, list/found_optional_requirements, list/found_optional_wildcards, list/found_optional_reagents, list/removing_items)
 	var/create_type = output
@@ -73,16 +76,19 @@
 	wildcard_requirements = list(/obj/item/reagent_containers/food/snacks/meat/poultry = 1)
 	output = /obj/item/reagent_containers/food/snacks/cooked/roastchicken
 	cooked_smell = /datum/pollutant/food/fried_chicken
+	used_skill = /datum/attribute/skill/craft/cooking/grilling
 
 /datum/container_craft/oven/pastry
 	name = "Pastry"
 	requirements = list(/obj/item/reagent_containers/food/snacks/butterdough_slice = 1)
 	output = /obj/item/reagent_containers/food/snacks/pastry
 	cooked_smell = /datum/pollutant/food/pastry
+	used_skill = /datum/attribute/skill/craft/cooking/baking
 
 /datum/container_craft/oven/pie
 	abstract_type = /datum/container_craft/oven/pie
 	category = "Pies"
+	used_skill = /datum/attribute/skill/craft/cooking/baking
 	var/atom/good_path
 
 /datum/container_craft/oven/pie/create_item(obj/item/crafter, mob/initiator, list/found_optional_requirements, list/found_optional_wildcards, list/found_optional_reagents, list/removing_items)
@@ -156,17 +162,20 @@
 	requirements = list(/obj/item/reagent_containers/food/snacks/dough_slice = 1)
 	output = /obj/item/reagent_containers/food/snacks/bun
 	cooked_smell = /datum/pollutant/food/bun
+	used_skill = /datum/attribute/skill/craft/cooking/baking
 
 /datum/container_craft/oven/hardtack
 	name = "Hardtack"
 	requirements = list(/obj/item/reagent_containers/food/snacks/foodbase/hardtack_raw = 1)
 	output = /obj/item/reagent_containers/food/snacks/hardtack
+	used_skill = /datum/attribute/skill/craft/cooking/baking
 
 /datum/container_craft/oven/pie_base
 	name = "Baked Pie Base"
 	requirements = list(/obj/item/reagent_containers/food/snacks/piedough = 1)
 	output = /obj/item/reagent_containers/food/snacks/foodbase/piebottom
 	cooked_smell = /datum/pollutant/food/pie_base
+	used_skill = /datum/attribute/skill/craft/cooking/baking
 
 /datum/container_craft/oven/baked_potato
 	name = "Baked Potato"
@@ -179,18 +188,21 @@
 	requirements = list(/obj/item/reagent_containers/food/snacks/foodbase/scone_raw_plum = 1)
 	output = /obj/item/reagent_containers/food/snacks/scone_plum
 	cooked_smell = /datum/pollutant/food/scone
+	used_skill = /datum/attribute/skill/craft/cooking/baking
 
 /datum/container_craft/oven/tangerine_scone
 	name = "Baked Tangerine Scone"
 	requirements = list(/obj/item/reagent_containers/food/snacks/foodbase/scone_raw_tangerine = 1)
 	output = /obj/item/reagent_containers/food/snacks/scone_tangerine
 	cooked_smell = /datum/pollutant/food/scone
+	used_skill = /datum/attribute/skill/craft/cooking/baking
 
 /datum/container_craft/oven/scone
 	name = "Baked Scone"
 	requirements = list(/obj/item/reagent_containers/food/snacks/foodbase/scone_raw= 1)
 	output = /obj/item/reagent_containers/food/snacks/scone
 	cooked_smell = /datum/pollutant/food/scone
+	used_skill = /datum/attribute/skill/craft/cooking/baking
 
 /datum/container_craft/oven/tangerinecake
 	category = "Cakes"
@@ -198,6 +210,7 @@
 	requirements = list(/obj/item/reagent_containers/food/snacks/tangerinecake_ready= 1)
 	output = /obj/item/reagent_containers/food/snacks/tangerinecake_cooked
 	cooked_smell = /datum/pollutant/food/strawberry_cake
+	used_skill = /datum/attribute/skill/craft/cooking/baking
 
 /datum/container_craft/oven/crimsoncake
 	category = "Cakes"
@@ -205,6 +218,7 @@
 	requirements = list(/obj/item/reagent_containers/food/snacks/crimsoncake_ready= 1)
 	output = /obj/item/reagent_containers/food/snacks/crimsoncake_cooked
 	cooked_smell = /datum/pollutant/food/crimson_cake
+	used_skill = /datum/attribute/skill/craft/cooking/baking
 
 /datum/container_craft/oven/strawberrycake
 	category = "Cakes"
@@ -212,6 +226,7 @@
 	requirements = list(/obj/item/reagent_containers/food/snacks/strawbycake_ready= 1)
 	output = /obj/item/reagent_containers/food/snacks/strawbycake_cooked
 	cooked_smell = /datum/pollutant/food/strawberry_cake
+	used_skill = /datum/attribute/skill/craft/cooking/baking
 
 /datum/container_craft/oven/cheesecake
 	category = "Cakes"
@@ -219,6 +234,7 @@
 	requirements = list(/obj/item/reagent_containers/food/snacks/chescake_ready= 1)
 	output = /obj/item/reagent_containers/food/snacks/cheesecake_cooked
 	cooked_smell = /datum/pollutant/food/cheese_cake
+	used_skill = /datum/attribute/skill/craft/cooking/baking
 
 /datum/container_craft/oven/honey_cake
 	category = "Cakes"
@@ -226,12 +242,14 @@
 	requirements = list(/obj/item/reagent_containers/food/snacks/zybcake_ready= 1)
 	output = /obj/item/reagent_containers/food/snacks/zybcake_cooked
 	cooked_smell = /datum/pollutant/food/honey_cake
+	used_skill = /datum/attribute/skill/craft/cooking/baking
 
 /datum/container_craft/oven/prezzel
 	name = "Baked Prezzel"
 	requirements = list(/obj/item/reagent_containers/food/snacks/foodbase/prezzel_raw= 1)
 	output = /obj/item/reagent_containers/food/snacks/prezzel
 	cooked_smell = /datum/pollutant/food/prezzel
+	used_skill = /datum/attribute/skill/craft/cooking/baking
 
 /datum/container_craft/oven/prezzelgood
 	hides_from_books = TRUE
@@ -239,12 +257,14 @@
 	requirements = list(/obj/item/reagent_containers/food/snacks/foodbase/prezzel_raw/good= 1)
 	output = /obj/item/reagent_containers/food/snacks/prezzel/good
 	cooked_smell = /datum/pollutant/food/prezzel
+	used_skill = /datum/attribute/skill/craft/cooking/baking
 
 /datum/container_craft/oven/biscuit
 	name = "Baked Biscuit"
 	requirements = list(/obj/item/reagent_containers/food/snacks/foodbase/biscuit_raw= 1)
 	output = /obj/item/reagent_containers/food/snacks/biscuit
 	cooked_smell = /datum/pollutant/food/biscuit
+	used_skill = /datum/attribute/skill/craft/cooking/baking
 
 /datum/container_craft/oven/biscuitgood
 	hides_from_books = TRUE
@@ -252,24 +272,28 @@
 	requirements = list(/obj/item/reagent_containers/food/snacks/foodbase/biscuit_raw/good= 1)
 	output = /obj/item/reagent_containers/food/snacks/biscuit/good
 	cooked_smell = /datum/pollutant/food/biscuit
+	used_skill = /datum/attribute/skill/craft/cooking/baking
 
 /datum/container_craft/oven/cheesebun
 	name = "Baked Cheese Bun"
 	requirements = list(/obj/item/reagent_containers/food/snacks/foodbase/cheesebun_raw= 1)
 	output = /obj/item/reagent_containers/food/snacks/cheesebun
 	cooked_smell = /datum/pollutant/food/cheese_bun
+	used_skill = /datum/attribute/skill/craft/cooking/baking
 
 /datum/container_craft/oven/raisin_bread
 	name = "Raisin Bread"
 	requirements = list(/obj/item/reagent_containers/food/snacks/raisindough= 1)
 	output = /obj/item/reagent_containers/food/snacks/bread/raisin
 	cooked_smell = /datum/pollutant/food/raisin_bread
+	used_skill = /datum/attribute/skill/craft/cooking/baking
 
 /datum/container_craft/oven/toast
 	name = "Toast"
 	requirements = list(/obj/item/reagent_containers/food/snacks/breadslice= 1)
 	output = /obj/item/reagent_containers/food/snacks/breadslice/toast
 	cooked_smell = /datum/pollutant/food/toast
+	used_skill = /datum/attribute/skill/craft/cooking/baking
 
 /datum/container_craft/oven/clay_brick
 	name = "Brick"
@@ -282,39 +306,46 @@
 	requirements = list(/obj/item/reagent_containers/food/snacks/produce/coffeebeans= 1)
 	output = /obj/item/reagent_containers/food/snacks/produce/coffeebeansroasted
 	cooked_smell = null
+	used_skill = /datum/attribute/skill/craft/cooking/fine_cuisine
 
 /datum/container_craft/oven/tart_base
 	name = "Baked Tart Crust"
 	requirements = list(/obj/item/reagent_containers/food/snacks/foodbase/piebottom = 1)
 	output = /obj/item/reagent_containers/food/snacks/foodbase/tartcrust
 	cooked_smell = /datum/pollutant/food/pastry
+	used_skill = /datum/attribute/skill/craft/cooking/baking
 
 /datum/container_craft/oven/pie/avocado
 	name = "Avocado Tart"
 	requirements = list(/obj/item/reagent_containers/food/snacks/raw_tart/avocado = 1)
 	output = /obj/item/reagent_containers/food/snacks/tart/cooked/avocado
 	cooked_smell = /datum/pollutant/food/pastry
+	used_skill = /datum/attribute/skill/craft/cooking/baking
 
 /datum/container_craft/oven/pie/mango
 	name = "Mangga Tart"
 	requirements = list(/obj/item/reagent_containers/food/snacks/raw_tart/mango = 1)
 	output = /obj/item/reagent_containers/food/snacks/tart/cooked/mango
 	cooked_smell = /datum/pollutant/food/pastry
+	used_skill = /datum/attribute/skill/craft/cooking/baking
 
 /datum/container_craft/oven/pie/mangosteen
 	name = "Mangosteen Tart"
 	requirements = list(/obj/item/reagent_containers/food/snacks/raw_tart/mangosteen = 1)
 	output = /obj/item/reagent_containers/food/snacks/tart/cooked/mangosteen
 	cooked_smell = /datum/pollutant/food/pastry
+	used_skill = /datum/attribute/skill/craft/cooking/baking
 
 /datum/container_craft/oven/pie/pineapple
 	name = "Ananas Tart"
 	requirements = list(/obj/item/reagent_containers/food/snacks/raw_tart/pineapple = 1)
 	output = /obj/item/reagent_containers/food/snacks/tart/cooked/pineapple
 	cooked_smell = /datum/pollutant/food/pastry
+	used_skill = /datum/attribute/skill/craft/cooking/baking
 
 /datum/container_craft/oven/pie/dragonfruit
 	name = "Piyata Tart"
 	requirements = list(/obj/item/reagent_containers/food/snacks/raw_tart/dragonfruit = 1)
 	output = /obj/item/reagent_containers/food/snacks/tart/cooked/dragonfruit
 	cooked_smell = /datum/pollutant/food/pastry
+	used_skill = /datum/attribute/skill/craft/cooking/baking
