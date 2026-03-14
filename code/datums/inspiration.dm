@@ -71,7 +71,7 @@ GLOBAL_LIST_INIT(inspiration_songs, list(\
 				target_tier = 1
 			if(SKILL_LEVEL_MASTER)
 				target_tier = 2
-			if(SKILL_LEVEL_LEGENDARY)
+			if(SKILL_LEVEL_LEGENDARY to INFINITY)
 				target_tier = 3
 
 	LAZYINITLIST(available_song_tiers)
