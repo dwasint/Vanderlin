@@ -34,6 +34,8 @@
 	/// Peak XP multiplier applied when the skill is at the bottom of the catchup range.
 	/// Scales linearly down to 1.0 as the skill approaches the default floor.
 	var/catchup_multiplier = SKILL_XP_CATCHUP_MULTIPLIER_MAX
+	///if this is set it will apply this multiplier to the PRE catchup xp and pass it up to the default_attribute skills
+	var/shared_xp_percent = 0
 
 /datum/attribute/skill/description_from_level(level)
 	if(isnull(level))
