@@ -13,7 +13,7 @@
 		/datum/attribute/skill/combat/unarmed = 30,
 		/datum/attribute/skill/craft/crafting = 10,
 		/datum/attribute/skill/craft/tanning = 10,
-		/datum/attribute/skill/combat/axesmaces = 30,
+		/datum/attribute/skill/combat/axesmaces = 20,
 		/datum/attribute/skill/craft/cooking = 10,
 		/datum/attribute/skill/misc/reading = 10,
 		/datum/attribute/skill/misc/sewing = 20,
@@ -46,15 +46,24 @@
 	. = ..()
 	if(spawned.gender == MALE && spawned.dna?.species)
 		spawned.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
+	var/weapons = list("Sword", "Axes")
+	var/weapon_choice = tgui_input_list(player_client, "CHOOSE YOUR WEAPON.", "SPILL SOME BLOOD.", weapons)
+	switch(weapon_choice)
+		if("Sword")
+			spawned.equip_to_slot_or_del(new /obj/item/weapon/sword/arming, ITEM_SLOT_BELT_R, TRUE)
+			spawned.equip_to_slot_or_del(new /obj/item/weapon/mace/cudgel, ITEM_SLOT_BELT_L, TRUE)
+			spawned.adjust_skill_level(/datum/skill/combat/swords, 30)
+		if("Axes")
+			spawned.equip_to_slot_or_del(new /obj/item/weapon/axe/iron, ITEM_SLOT_BELT_R, TRUE)
+			spawned.equip_to_slot_or_del(new /obj/item/weapon/axe/iron, ITEM_SLOT_BELT_L, TRUE)
+			spawned.adjust_skill_level(/datum/skill/combat/axesmaces, 10)
 
 /datum/outfit/mercenary/exiled
 	name = "Exiled Warrior (Mercenary)"
-	beltr = /obj/item/weapon/axe/iron
 	neck = /obj/item/clothing/neck/coif
 	pants = /obj/item/clothing/pants/trou/leather/advanced
 	gloves = /obj/item/clothing/gloves/leather
 	belt = /obj/item/storage/belt/leather/mercenary
-	beltl = /obj/item/weapon/axe/iron
 	head = /obj/item/clothing/head/helmet/leather
 	armor = /obj/item/clothing/shirt/undershirt/easttats/tribal
 	shoes = /obj/item/clothing/shoes/boots/leather
