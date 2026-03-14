@@ -112,14 +112,14 @@
 	/// Voicepack to grant to females
 	var/datum/voicepack/voicepack_f
 
-	/// Stats given to the job in the form of list(STA_X = value)
-	var/list/jobstats
+	/// Stats given to the job in the form of list(STA_X = value) DEPRECIATED DO NOT USE
+	VAR_FINAL/list/jobstats
 
 	/// Skill levels granted at roundstart.
 	/// Possibly modified by species.
 	/// Basic format is list(/datum/attribute/skill/foo = value).
-	/// Supports (/datum/attribute/skill/bar = list(value, clamp)).
-	var/list/skills
+	/// Supports (/datum/attribute/skill/bar = list(value, clamp)). DEPRECIATED DO NOT USE
+	VAR_FINAL/list/skills
 
 	/// Associative list of skill - base multiplier to set for skill_holder
 	var/list/skill_multipliers = list()
