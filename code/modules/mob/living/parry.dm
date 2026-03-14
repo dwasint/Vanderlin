@@ -173,6 +173,9 @@
 
 	if(mainhand && mainhand.can_parry)
 		mainhand_defense += nulltozero(GET_MOB_SKILL_VALUE(src, mainhand.associated_skill))
+		if(istype(mainhand, /obj/item/weapon/shield))
+			force_shield = TRUE
+			used_weapon = mainhand
 
 	if(offhand && offhand.can_parry)
 		offhand_defense += nulltozero(GET_MOB_SKILL_VALUE(src, offhand.associated_skill))
@@ -189,8 +192,7 @@
 		used_weapon = offhand
 		highest_defense += offhand_defense
 
-	var/unarmed_defense = mind ? GET_MOB_SKILL_VALUE(src, /datum/attribute/skill/combat/unarmed) : 1
-	if(highest_defense <= unarmed_defense)
+	if(!used_weapon)
 		weapon_parry = FALSE
 	else
 		weapon_parry = TRUE
