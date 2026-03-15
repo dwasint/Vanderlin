@@ -166,8 +166,6 @@
 	max_integrity = INTEGRITY_STRONG
 	melting_material = /datum/material/iron
 	melt_amount = 75
-	grid_width = 64
-	grid_height = 96
 
 /obj/item/weapon/shield/tower/spidershield
 	name = "spider shield"

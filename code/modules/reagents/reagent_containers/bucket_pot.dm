@@ -73,8 +73,6 @@
 	drop_sound = 'sound/foley/dropsound/shovel_drop.ogg'
 	melting_material = /datum/material/iron
 	melt_amount = 80
-	grid_width = 96
-	grid_height = 96
 	var/processing_amount = 0 ///we use this to "reserve" reagents
 	var/static/list/recipe_list = list()
 

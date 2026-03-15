@@ -199,8 +199,6 @@
 	melting_material = /datum/material/iron
 	melt_amount = 75
 	associated_skill = /datum/attribute/skill/combat/polearms
-	grid_width = 96
-	grid_height = 64
 
 	wlength = 66
 	var/time_multiplier = 1
@@ -311,7 +309,6 @@
 	anvilrepair = null
 	max_integrity = INTEGRITY_WORST
 	time_multiplier = 2
-	melting_material = null
 
 /*------------\
 |  Pitchfork  |

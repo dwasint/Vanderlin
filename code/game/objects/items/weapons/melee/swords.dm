@@ -221,8 +221,6 @@
 	gripped_intents = null
 	alt_intents = null
 	minstr = 5
-	grid_width = 64
-	grid_height = 96
 
 	parrysound = list('sound/combat/parry/bladed/bladedthin (1).ogg', 'sound/combat/parry/bladed/bladedthin (2).ogg', 'sound/combat/parry/bladed/bladedthin (3).ogg')
 	swingsound = BLADEWOOSH_SMALL
@@ -349,8 +347,6 @@
 	wdefense = GOOD_PARRY
 	possible_item_intents = list(SWORD_CUT, SWORD_CHOP)
 	swingsound = BLADEWOOSH_LARGE
-	grid_width = 64
-	grid_height = 96
 
 /obj/item/weapon/sword/scimitar/falchion
 	name = "falchion"
@@ -481,8 +477,6 @@
 	swingsound = BLADEWOOSH_SMALL
 	SET_BASE_PIXEL(-16, -16)
 	dropshrink = 0.8
-	grid_width = 32
-	grid_height = 96
 
 	weapon_special = /datum/special_intent/piercing_lunge
 
@@ -1517,8 +1511,6 @@
 	slot_flags = ITEM_SLOT_BACK|ITEM_SLOT_HIP
 	melt_amount = 75
 	melting_material = /datum/material/steel
-	grid_width = 32
-	grid_height = 96
 
 /obj/item/weapon/sword/katana/mulyeog
 	name = "foreign straight blade"
