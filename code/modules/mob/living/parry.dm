@@ -85,6 +85,9 @@
 			var/speed_delta = GET_MOB_ATTRIBUTE_VALUE(user, STAT_SPEED) - GET_MOB_ATTRIBUTE_VALUE(src, STAT_SPEED)
 			parry_modifier -= floor(speed_delta / 2)
 
+	if(!weapon_parry)
+		parry_modifier -= 8
+
 	var/parry_score = get_parrying_score(skill_type, parry_modifier - attacker_opposition)
 
 	var/attacker_dualwielding = user.dual_wielding_check()
