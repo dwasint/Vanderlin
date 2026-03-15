@@ -12,12 +12,19 @@
 		var/obj/item/test_item = allocate(item_type)
 
 		var/inserted = SEND_SIGNAL(test_crucible, COMSIG_TRY_STORAGE_INSERT, test_item, null, TRUE, FALSE)
-		TEST_ASSERT(inserted, "[item_type] with melting_material [initial(item_type.melting_material)] failed to insert into crucible")
+		if(!inserted)
+			TEST_FAIL("[item_type] with melting_material [initial(item_type.melting_material)] failed to insert into crucible")
+			qdel(test_item)
+			continue
 
-		// Verify it actually landed in contents
-		TEST_ASSERT(test_item in test_crucible.contents, "[item_type] was not found in crucible contents after insertion")
+		if(!(test_item in test_crucible.contents))
+			TEST_FAIL("[item_type] was not found in crucible contents after insertion")
+			qdel(test_item)
+			continue
 
-		// Clean up for the next iteration
 		var/turf/drop_loc = get_turf(test_crucible)
 		SEND_SIGNAL(test_crucible, COMSIG_TRY_STORAGE_TAKE, test_item, drop_loc, TRUE)
-		TEST_ASSERT(!(test_item in test_crucible.contents), "[item_type] was still in crucible contents after removal")
+
+		if(test_item in test_crucible.contents)
+			TEST_FAIL("[item_type] was still in crucible contents after removal")
+			qdel(test_item)
