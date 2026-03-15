@@ -25,7 +25,7 @@
 	max_integrity = INTEGRITY_STRONGEST
 	armor_class = AC_HEAVY
 	clothing_flags = CANT_SLEEP_IN
-	anvilrepair = /datum/attribute/skill/craft/armorsmithing
+	anvilrepair = /datum/attribute/skill/craft/armor_repair
 	resistance_flags = FIRE_PROOF
 	pickup_sound = "rustle"
 	equip_sound = 'sound/foley/equip/equip_armor_plate.ogg'

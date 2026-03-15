@@ -29,6 +29,7 @@
 		return hingot.attack_hand_secondary(user, modifiers)
 	. = ..()
 
+
 /obj/machinery/anvil/attackby(obj/item/W, mob/living/user, list/modifiers)
 	if(istype(W, /obj/item/weapon/tongs))
 		var/obj/item/weapon/tongs/T = W
@@ -64,6 +65,67 @@
 				return
 
 	if(istype(W, /obj/item/ingot))
+		var/obj/item/ingot/used_ingot = W
+		if(!hingot && used_ingot.hott)
+			var/obj/item/repair_target
+			for(var/obj/item/I in src.loc)
+				if(I.anvilrepair && I.max_integrity)
+					repair_target = I
+					break
+
+			if(!repair_target)
+				to_chat(user, span_warning("There is nothing on the anvil to restore."))
+				return
+
+			var/skill_value = GET_MOB_SKILL_VALUE(user, repair_target.anvilrepair)
+			if(skill_value <= 0)
+				to_chat(user, span_warning("You don't know enough about this craft to restore [repair_target]."))
+				return
+
+			// Determine correct ingot type, check melting_material first, fall back to smeltresult since we haven't moved everything lol
+			var/expected_ingot_type
+			if(repair_target.melting_material)
+				var/datum/material/mat = GET_ATTRIBUTE_DATUM(repair_target.melting_material)
+				expected_ingot_type = mat?.ingot_type
+			else if(repair_target.smeltresult)
+				if(istype(repair_target.smeltresult, /obj/item/ingot))
+					expected_ingot_type = repair_target.smeltresult
+
+			if(!expected_ingot_type || !istype(W, expected_ingot_type))
+				to_chat(user, span_warning("This isn't the right material to restore [repair_target]."))
+				return
+
+			var/restores_done = repair_target.integrity_restores
+
+			// Base restore scales with skill, diminishes with each restoration
+			// skill 60 = 20% base, skill 30 = 10% base, skill 1 = ~3% base
+			var/base_restore = (skill_value / SKILL_MASTER) * 0.20
+			// Each prior restoration reduces effectiveness by 30%
+			var/diminish_factor = max(0.1, 1.0 - (restores_done * 0.30))
+			var/restore_amount = round(repair_target.max_integrity * base_restore * diminish_factor)
+
+			if(restore_amount <= 0)
+				to_chat(user, span_warning("[repair_target] has been restored too many times. The metal no longer accepts new material."))
+				return
+
+			var/restore_cap = repair_target.max_integrity * (0.15 * diminish_factor)
+			restore_amount = min(restore_amount, restore_cap)
+
+			repair_target.max_integrity += restore_amount
+			repair_target.integrity_restores++
+
+			var/datum/mind/smith_mind = user.mind
+			var/amt2raise = floor(GET_MOB_ATTRIBUTE_VALUE(user, STAT_INTELLIGENCE) * 0.25)
+			smith_mind.add_sleep_experience(repair_target.anvilrepair, amt2raise)
+
+			qdel(W)
+			playsound(src, 'sound/items/bsmith3.ogg', 100, FALSE)
+			user.visible_message(span_info("[user] works new material into [repair_target], restoring some of its integrity."))
+
+			if(restores_done >= 2)
+				to_chat(user, span_warning("The metal is taking the new material less readily now. Further restorations will be less effective."))
+			return
+
 		if(!hingot)
 			W.forceMove(src)
 			hingot = W
@@ -88,8 +150,6 @@
 		if(has_world_trait(/datum/world_trait/delver))
 			if(!has_recipe_unlocked(user.key, hingot.currecipe.type))
 				return
-
-		// Start the minigame instead of direct hammering
 		start_minigame(user, hammer)
 		return
 
