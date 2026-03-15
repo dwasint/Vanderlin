@@ -86,7 +86,7 @@
 			parry_modifier -= floor(speed_delta / 2)
 
 	if(!weapon_parry)
-		parry_modifier -= 8
+		parry_modifier -= 20
 
 	var/parry_score = get_parrying_score(skill_type, parry_modifier - attacker_opposition)
 
