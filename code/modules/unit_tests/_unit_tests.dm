@@ -69,7 +69,6 @@
 #include "craftable_clothes.dm"
 #include "craftable_turfs.dm"
 #include "create_and_destroy.dm"
-#include "crucible_fit_check.dm"
 #include "faction_supply_packs.dm"
 #include "focus_only_tests.dm"
 #include "load_map_security.dm"
