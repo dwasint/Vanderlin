@@ -12,6 +12,18 @@
 	)
 	shared_xp_percent = 0.2
 
+/datum/attribute/skill/craft/cooking/preparation
+	name = "Preparation"
+	desc = "Represents your character's ability to prepare raw ingredients for cooking — trimming, peeling, chopping, portioning, and readying components so that the actual craft of cooking can begin. A skilled preparer works quickly and wastes little, and their knife never slips."
+	governing_attribute = STAT_SPEED
+	default_attributes = list(
+		/datum/attribute/skill/craft/cooking = -3,
+	)
+	difficulty = SKILL_DIFFICULTY_EASY
+	dreams = list(
+		"...your hands move without you, breaking down something on the board in front of you... you do not look at what it is... the knife is very sharp and the sound is very wet... you wake before you are finished..."
+	)
+
 /datum/attribute/skill/craft/cooking/baking
 	name = "Baking"
 	desc = "Represents your character's ability to bake breads, pastries, and other oven-cooked goods. A skilled baker can produce everything from simple loaves to elaborate confections."

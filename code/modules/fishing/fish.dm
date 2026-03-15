@@ -1324,7 +1324,7 @@ GLOBAL_LIST_INIT(fish_compatible_fluid_types, list(
 				new /obj/item/reagent_containers/food/snacks/chocolate_carp(loc)
 				qdel(I)
 				qdel(src)
-				user.mind.add_sleep_experience(/datum/attribute/skill/craft/cooking, (GET_MOB_ATTRIBUTE_VALUE(user, STAT_INTELLIGENCE)*0.5))
+				user.mind.add_sleep_experience(/datum/attribute/skill/craft/cooking/confectionery, (GET_MOB_ATTRIBUTE_VALUE(user, STAT_INTELLIGENCE)*0.5))
 
 /obj/item/reagent_containers/food/snacks/chocolate_carp
 	name = "le carp au chocolat"

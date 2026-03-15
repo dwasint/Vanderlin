@@ -48,6 +48,7 @@ All foods are distributed among various categories. Use common sense.
 	var/bitecount = 0
 	var/trash = null
 	var/slice_path    // for sliceable food. path of the item resulting from the slicing
+	var/slice_skill
 	var/slice_bclass = BCLASS_CUT
 	var/slices_num
 	var/slice_batch = TRUE
@@ -513,9 +514,14 @@ All foods are distributed among various categories. Use common sense.
 	if(chopping_sound)
 		playsound(user, 'sound/foley/chopping_block.ogg', 60, TRUE, -1) // added some choppy sound
 	if(slice_batch)
+		var/batch_time = 3 SECONDS
+		if(slice_skill)
+			batch_time *= GET_MOB_SKILL_SPEED_MOD(user, slice_skill)
 		if(!do_after(user, 3 SECONDS, src))
 			return FALSE
 		var/reagents_per_slice = reagents.total_volume/slices_num
+		if(slice_skill)
+			user.adjust_experience(slice_skill, (GET_MOB_ATTRIBUTE_VALUE(user, STAT_INTELLIGENCE)*0.5))
 		for(var/i in 1 to slices_num)
 			var/obj/item/reagent_containers/food/snacks/slice = new slice_path(loc)
 			slice.filling_color = filling_color
@@ -528,6 +534,8 @@ All foods are distributed among various categories. Use common sense.
 		initialize_slice(slice, reagents_per_slice)
 		slices_num--
 		if(slices_num == 1)
+			if(slice_skill)
+				user.adjust_experience(slice_skill, (GET_MOB_ATTRIBUTE_VALUE(user, STAT_INTELLIGENCE)*0.5))
 			slice = new slice_path(loc)
 			slice.filling_color = filling_color
 			initialize_slice(slice, reagents_per_slice)
