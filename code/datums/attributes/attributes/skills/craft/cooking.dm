@@ -14,7 +14,7 @@
 
 /datum/attribute/skill/craft/cooking/preparation
 	name = "Preparation"
-	desc = "Represents your character's ability to prepare raw ingredients for cooking — trimming, peeling, chopping, portioning, and readying components so that the actual craft of cooking can begin. A skilled preparer works quickly and wastes little, and their knife never slips."
+	desc = "Represents your character's ability to prepare raw ingredients for cooking, trimming, peeling, chopping, portioning, and readying components so that the actual craft of cooking can begin. A skilled preparer works quickly and wastes little, and their knife never slips."
 	governing_attribute = STAT_SPEED
 	default_attributes = list(
 		/datum/attribute/skill/craft/cooking = -3,
@@ -65,7 +65,7 @@
 
 /datum/attribute/skill/craft/cooking/fine_cuisine
 	name = "Fine Cuisine"
-	desc = "Represents your character's mastery of elevated cookery — precise technique, rare ingredients, and dishes fit for noble tables. Few ever reach true mastery, but those who do are worth their weight in gold."
+	desc = "Represents your character's mastery of elevated cookery, precise technique, rare ingredients, and dishes fit for noble tables. Few ever reach true mastery, but those who do are worth their weight in gold."
 	governing_attribute = STAT_INTELLIGENCE
 	default_attributes = list(
 		/datum/attribute/skill/craft/cooking = -6,
@@ -117,7 +117,7 @@
 
 /datum/attribute/skill/craft/cooking/distilling
 	name = "Distilling"
-	desc = "Represents your character's ability to distill fermented liquids into spirits and liquors. Distilling demands precision — too little heat and nothing comes, too much and the whole affair becomes dangerous. Those who master it produce spirits of remarkable potency and value."
+	desc = "Represents your character's ability to distill fermented liquids into spirits and liquors. Distilling demands precision, too little heat and nothing comes, too much and the whole affair becomes dangerous. Those who master it produce spirits of remarkable potency and value."
 	governing_attribute = STAT_INTELLIGENCE
 	default_attributes = list(
 		/datum/attribute/skill/craft/cooking/brewing = -5,
