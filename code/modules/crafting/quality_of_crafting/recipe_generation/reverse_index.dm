@@ -31,10 +31,10 @@ GLOBAL_VAR_INIT(obtained_from_built, FALSE)
 			if(!list[key])
 				list[key] = list()
 			list[key] += list(list(
-				"name"         = initial(item_type.name),
-				"icon"         = "[initial(item_type.icon)]",
-				"icon_state"   = "[initial(item_type.icon_state)]",
-				"_path"        = "[item_type]",
+				"name" = initial(item_type.name),
+				"icon" = "[initial(item_type.icon)]",
+				"icon_state" = "[initial(item_type.icon_state)]",
+				"_path" = "[item_type]",
 				"source_label" = label,
 			))
 		qdel(new_item)
@@ -46,12 +46,12 @@ GLOBAL_VAR_INIT(obtained_from_built, FALSE)
 		return null
 
 	var/list/data = list()
-	data["type"]         = "obtained_from"
-	data["name"]         = name
-	data["category"]     = "Sources"
+	data["type"] = "obtained_from"
+	data["name"] = name
+	data["category"] = "Sources"
 	data["_output_path"] = "[type]"
-	data["output_name"]  = name
-	data["output_icon"]  = "[icon]"
+	data["output_name"] = name
+	data["output_icon"] = "[icon]"
 	data["output_state"] = "[icon_state]"
 
 	var/list/sources = list()
@@ -63,8 +63,8 @@ GLOBAL_VAR_INIT(obtained_from_built, FALSE)
 		sources += list(list(
 			"label" = label,
 			"_path" = "[src_path]",
-			"name"  = initial(src_path.name),
-			"icon"  = "[initial(src_path.icon)]",
+			"name" = initial(src_path.name),
+			"icon" = "[initial(src_path.icon)]",
 			"icon_state" = "[initial(src_path.icon_state)]",
 		))
 	data["sources"] = sources
