@@ -200,7 +200,7 @@ GLOBAL_LIST_INIT(fish_compatible_fluid_types, list(
 	.["spots"] = english_list(spot_descriptions, nothing_text = "Unknown")
 
 	var/list/fish_list_properties = SSfishing.fish_properties
-	if(!type in fish_list_properties)
+	if(!(type in fish_list_properties))
 		return
 	var/list/fav_bait = fish_list_properties[type][FISH_PROPERTIES_FAV_BAIT]
 	var/list/disliked_bait = fish_list_properties[type][FISH_PROPERTIES_BAD_BAIT]

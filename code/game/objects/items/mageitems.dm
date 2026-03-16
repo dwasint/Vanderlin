@@ -642,7 +642,6 @@
 	item_flags = OBTAINED_DATA
 	obtained_from = list(list("Killing a Sylph", /mob/living/simple_animal/hostile/retaliate/fae/sylph))
 
-
 /obj/item/natural/melded/t3
 	name = "sorcerous weave"
 	icon = 'icons/obj/objects.dmi'

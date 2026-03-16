@@ -4,8 +4,9 @@
 
 /// Global reverse map: "[source_path]" -> list of obtained_from_entry dicts
 /// Each entry: list("name", "icon", "icon_state", "_path", "source_label")
-GLOBAL_LIST_INIT(obtained_from_reverse, build_obtained_from_reverse())
+GLOBAL_LIST_EMPTY(obtained_from_reverse)
 GLOBAL_VAR_INIT(obtained_from_built, FALSE)
+GLOBAL_LIST_EMPTY(mob_source_paths) // list of "[mob_typepath]" keys that have butcher drops
 
 /proc/build_obtained_from_reverse()
 	var/list/list = list()
@@ -38,6 +39,55 @@ GLOBAL_VAR_INIT(obtained_from_built, FALSE)
 				"source_label" = label,
 			))
 		qdel(new_item)
+	// Mobs
+	for(var/mob/living/mob_type as anything in subtypesof(/mob/living))
+		if(IS_ABSTRACT(mob_type))
+			continue
+		if(!initial(mob_type.indexed))
+			continue
+
+		var/is_simple  = ispath(mob_type, /mob/living/simple_animal)
+		var/mob/living/new_mob = new mob_type(locate(1,1,1))
+		var/list/butcher_tiers
+		if(is_simple)
+			var/mob/living/simple_animal/simple = new_mob
+			butcher_tiers = list(
+				list("Butchery",         simple.butcher_results),
+				list("Perfect Butchery", simple.perfect_butcher_results),
+				list("Botched Butchery", simple.botched_butcher_results),
+			)
+		else
+			butcher_tiers = list(
+				list("Butchery", new_mob.butcher_results),
+			)
+
+		var/had_drops = FALSE
+		for(var/list/tier as anything in butcher_tiers)
+			var/tier_label = tier[1]
+			var/list/drops = tier[2]
+			if(!islist(drops) || !length(drops))
+				continue
+			for(var/drop_type as anything in drops)
+				if(!ispath(drop_type))
+					continue
+				var/key = "[drop_type]"
+				if(!list[key])
+					list[key] = list()
+				list[key] += list(list(
+					"name"         = initial(mob_type.name),
+					"icon"         = "[initial(mob_type.icon)]",
+					"icon_state"   = "[initial(mob_type.icon_state)]",
+					"_path"        = "[mob_type]",
+					"source_label" = tier_label,
+					"amount"       = drops[drop_type],
+				))
+				had_drops = TRUE
+
+		if(had_drops)
+			GLOB.mob_source_paths["[mob_type]"] = TRUE
+
+		qdel(new_mob)
+
 	GLOB.obtained_from_built = TRUE
 	return list
 

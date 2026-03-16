@@ -135,12 +135,59 @@ GLOBAL_LIST_EMPTY(linked_recipe_cache)
 		linked += list(entry)
 		queue_item_paths_from_entry(entry, scan_queue, visited)
 
+	for(var/key in GLOB.mob_source_paths)
+		var/atom/mob_path = text2path(key)
+		if(!mob_path || visited["[mob_path]"]) continue
+		visited["[mob_path]"] = TRUE
+		var/list/entry = get_mob_source_page_data(mob_path)
+		if(!entry) continue
+		linked += list(entry)
+		queue_item_paths_from_entry(entry, scan_queue, visited)
+
 	for(var/key in GLOB.obtained_from_reverse)
 		var/atom/src_path = text2path(key)
-		if(!src_path || visited["[src_path]"]) continue
+		if(!src_path) continue
 		visited["[src_path]"] = TRUE
 		var/list/entry = get_source_page_data(src_path)
-		if(entry) linked += list(entry)
+		if(entry)
+			linked += list(entry)
+			continue
+		var/list/entries = GLOB.obtained_from_reverse[key]
+		var/has_mob_source = FALSE
+		for(var/list/checker as anything in entries)
+			if(GLOB.mob_source_paths[checker["_path"]])
+				has_mob_source = TRUE
+				break
+		if(!has_mob_source)
+			continue
+		var/list/existing = get_cached_recipe_data(src_path)
+		if(existing)
+			continue
+		var/list/sources = list()
+		for(var/list/mob_entry as anything in entries)
+			if(!GLOB.mob_source_paths[mob_entry["_path"]])
+				continue
+			sources += list(list(
+				"label"      = mob_entry["source_label"],
+				"_path"      = mob_entry["_path"],
+				"name"       = mob_entry["name"],
+				"icon"       = mob_entry["icon"],
+				"icon_state" = mob_entry["icon_state"],
+			))
+		if(!length(sources))
+			continue
+		var/list/page = list(
+			"type"         = "obtained_from",
+			"name"         = initial(src_path.name),
+			"category"     = "Sources",
+			"_output_path" = "[src_path]",
+			"output_name"  = initial(src_path.name),
+			"output_icon"  = "[initial(src_path.icon)]",
+			"output_state" = "[initial(src_path.icon_state)]",
+			"sources"      = sources,
+		)
+		GLOB.recipe_data_cache["[src_path]"] = page
+		linked += list(page)
 
 	GLOB.linked_recipe_cache["[book_type]"] = linked
 	return linked
@@ -159,6 +206,38 @@ GLOBAL_LIST_EMPTY(linked_recipe_cache)
 		"drops"        = drops,
 	)
 
+/obj/item/recipe_book/proc/get_mob_source_page_data(atom/mob_path)
+	var/list/drops = list()
+	for(var/key in GLOB.obtained_from_reverse)
+		var/list/entries = GLOB.obtained_from_reverse[key]
+		for(var/list/entry as anything in entries)
+			if(entry["_path"] != "[mob_path]")
+				continue
+			var/atom/drop_path = text2path(key)
+			if(!drop_path)
+				continue
+			drops += list(list(
+				"name"         = initial(drop_path.name),
+				"icon"         = "[initial(drop_path.icon)]",
+				"icon_state"   = "[initial(drop_path.icon_state)]",
+				"_path"        = "[drop_path]",
+				"source_label" = entry["source_label"],
+				"amount"       = entry["amount"],
+			))
+
+	if(!length(drops))
+		return null
+
+	return list(
+		"type"         = "source_page",
+		"name"         = initial(mob_path.name),
+		"category"     = "Sources",
+		"_output_path" = "[mob_path]",
+		"output_name"  = initial(mob_path.name),
+		"output_icon"  = "[initial(mob_path.icon)]",
+		"output_state" = "[initial(mob_path.icon_state)]",
+		"drops"        = drops,
+	)
 
 /// Returns cached recipe data for a typepath, computing and caching it if needed.
 /// Respects recipe_info_path — if the atom declares a redirect, that path is
