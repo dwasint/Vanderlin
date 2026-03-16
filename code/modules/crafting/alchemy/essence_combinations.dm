@@ -6,7 +6,7 @@
 	var/list/inputs = list() // essence_type = amount_needed
 	var/datum/thaumaturgical_essence/output_type = null
 	var/output_amount = 1
-	var/skill_required = SKILL_LEVEL_NOVICE
+	var/skill_required = SKILL_RANK_NOVICE
 
 
 /datum/essence_combination/proc/generate_html(mob/user)
@@ -201,7 +201,7 @@
 	)
 	output_type = /datum/thaumaturgical_essence/magic
 	output_amount = 2
-	skill_required = SKILL_LEVEL_JOURNEYMAN
+	skill_required = SKILL_RANK_JOURNEYMAN
 
 /datum/essence_combination/death
 	name = "Death Essence"
@@ -212,4 +212,4 @@
 	)
 	output_type = /datum/thaumaturgical_essence/death
 	output_amount = 2
-	skill_required = SKILL_LEVEL_JOURNEYMAN
+	skill_required = SKILL_RANK_JOURNEYMAN
