@@ -5,8 +5,27 @@ GLOBAL_LIST_EMPTY(recipe_data_cache)
 
 /// Reverse mill index: mill_result path -> list of source snack paths.
 /// Built once on first recipe book open, before any cache lookups.
-GLOBAL_LIST_EMPTY(snack_mill_reverse)
+GLOBAL_LIST_INIT(snack_mill_reverse, ensure_snack_mill_reverse())
 GLOBAL_VAR_INIT(snack_mill_reverse_built, FALSE)
+
+/proc/ensure_snack_mill_reverse()
+	var/list/list = list()
+	if(GLOB.snack_mill_reverse_built)
+		return
+	for(var/obj/item/reagent_containers/food/snacks/snack_type as anything in subtypesof(/obj/item/reagent_containers/food/snacks))
+		if(IS_ABSTRACT(snack_type)) continue
+		var/atom/mill = initial(snack_type.mill_result)
+		if(!mill) continue
+		if(!list[mill])
+			list[mill] = list()
+		list[mill] += snack_type
+	GLOB.snack_mill_reverse_built = TRUE
+	return list
+
+// Per-book recipe list cache (sidebar entries)
+GLOBAL_LIST_EMPTY(book_recipe_cache)
+// Per-book linked recipe cache (passes 2-4)
+GLOBAL_LIST_EMPTY(linked_recipe_cache)
 
 // recipe_info_path — set this on any /atom to redirect hyperlink
 // lookups to a different typepath's return_recipe_data().
@@ -43,65 +62,69 @@ GLOBAL_VAR_INIT(snack_mill_reverse_built, FALSE)
 	var/list/data = list()
 	data["book_name"] = name
 	data["book_desc"] = desc
-
-	// Build reverse mill index before any cache lookups
 	ensure_snack_mill_reverse()
+	build_obtained_from_reverse()
+	data["recipes"] = get_cached_book_recipes(type, FALSE)
+	data["linked_recipes"] = get_cached_linked_recipes(type)
+	return data
 
-	// --- Pass 1: collect this book's explicit recipes (sidebar list) ---
+/obj/item/recipe_book/proc/get_cached_book_recipes(book_type, creation = TRUE)
+	if(GLOB.book_recipe_cache["[book_type]"])
+		return GLOB.book_recipe_cache["[book_type]"]
+
+	var/obj/item/recipe_book/new_book = src
+	if(creation)
+		new_book = new book_type()
 	var/list/recipes = list()
-	var/list/visited = list()
-
-	for(var/atom/path as anything in types)
+	for(var/atom/path as anything in new_book.types)
 		if(IS_ABSTRACT(path))
 			for(var/atom/sub as anything in subtypesof(path))
 				if(IS_ABSTRACT(sub)) continue
 				if(ispath(sub, /datum/container_craft))
 					var/datum/container_craft/sub2 = sub
-					if(initial(sub2:hides_from_books)) continue
+					if(initial(sub2:hides_from_books))
+						continue
 				if(ispath(sub, /datum/repeatable_crafting_recipe))
 					var/datum/repeatable_crafting_recipe/sub2 = sub
-					if(initial(sub2:hides_from_books)) continue
+					if(initial(sub2:hides_from_books))
+						continue
 				if(ispath(sub, /datum/wound))
 					var/datum/wound/sub2 = sub
-					if(!initial(sub2:show_in_book)) continue
-				if(visited[sub]) continue
-				visited[sub] = TRUE
+					if(!initial(sub2:show_in_book))
+						continue
 				var/list/entry = get_cached_recipe_data(sub)
 				if(entry) recipes += list(entry)
 		else
-			if(visited[path]) continue
-			visited[path] = TRUE
 			var/list/entry = get_cached_recipe_data(path)
 			if(entry) recipes += list(entry)
 
-	// --- Pass 2: collect ALL other books' recipes for cross-linking ---
-	// These are never shown in the sidebar but are available for hyperlinks.
-	var/list/linked_recipes = list()
+	GLOB.book_recipe_cache["[book_type]"] = recipes
+	if(creation)
+		qdel(new_book)
+	return recipes
+
+/obj/item/recipe_book/proc/get_cached_linked_recipes(book_type)
+	if(GLOB.linked_recipe_cache["[book_type]"])
+		return GLOB.linked_recipe_cache["[book_type]"]
+
+	var/list/visited = list()
+	for(var/list/entry as anything in get_cached_book_recipes(book_type))
+		var/p = entry["_output_path"]
+		if(p) visited[p] = TRUE
+
+	var/list/linked = list()
 	var/list/scan_queue = list()
 
-	// Pull every other spawnable book's recipes into linked_recipes
-	for(var/obj/item/recipe_book/book_type as anything in subtypesof(/obj/item/recipe_book))
-		if(book_type == type) continue
-		if(!initial(book_type.can_spawn)) continue
-		var/obj/item/recipe_book/other = new book_type()
-		for(var/atom/path as anything in other.types)
-			if(IS_ABSTRACT(path))
-				for(var/atom/sub as anything in subtypesof(path))
-					if(IS_ABSTRACT(sub)) continue
-					if(visited[sub]) continue
-					visited[sub] = TRUE
-					var/list/entry = get_cached_recipe_data(sub)
-					if(entry) linked_recipes += list(entry)
-			else
-				if(visited[path]) continue
-				visited[path] = TRUE
-				var/list/entry = get_cached_recipe_data(path)
-				if(entry) linked_recipes += list(entry)
-		qdel(other)
+	for(var/obj/item/recipe_book/other_type as anything in subtypesof(/obj/item/recipe_book))
+		if(other_type == book_type) continue
+		if(!initial(other_type.can_spawn)) continue
+		for(var/list/entry as anything in get_cached_book_recipes(other_type))
+			var/p = entry["_output_path"]
+			if(p && visited[p]) continue
+			if(p) visited[p] = TRUE
+			linked += list(entry)
 
-	// --- Pass 3: scan item typepaths referenced in all recipes for further links ---
-	var/list/all_so_far = recipes + linked_recipes
-	for(var/list/entry as anything in all_so_far)
+	for(var/list/entry as anything in get_cached_book_recipes(book_type) + linked)
 		queue_item_paths_from_entry(entry, scan_queue, visited)
 
 	while(length(scan_queue))
@@ -109,24 +132,33 @@ GLOBAL_VAR_INIT(snack_mill_reverse_built, FALSE)
 		scan_queue.Cut(1, 2)
 		var/list/entry = get_cached_recipe_data(item_path)
 		if(!entry) continue
-		linked_recipes += list(entry)
+		linked += list(entry)
 		queue_item_paths_from_entry(entry, scan_queue, visited)
 
-	data["recipes"]        = recipes
-	data["linked_recipes"] = linked_recipes
-	return data
+	for(var/key in GLOB.obtained_from_reverse)
+		var/atom/src_path = text2path(key)
+		if(!src_path || visited["[src_path]"]) continue
+		visited["[src_path]"] = TRUE
+		var/list/entry = get_source_page_data(src_path)
+		if(entry) linked += list(entry)
 
-/obj/item/recipe_book/proc/ensure_snack_mill_reverse()
-	if(GLOB.snack_mill_reverse_built)
-		return
-	for(var/obj/item/reagent_containers/food/snacks/snack_type as anything in subtypesof(/obj/item/reagent_containers/food/snacks))
-		if(IS_ABSTRACT(snack_type)) continue
-		var/atom/mill = initial(snack_type.mill_result)
-		if(!mill) continue
-		if(!GLOB.snack_mill_reverse[mill])
-			GLOB.snack_mill_reverse[mill] = list()
-		GLOB.snack_mill_reverse[mill] += snack_type
-	GLOB.snack_mill_reverse_built = TRUE
+	GLOB.linked_recipe_cache["[book_type]"] = linked
+	return linked
+
+/obj/item/recipe_book/proc/get_source_page_data(atom/src_path)
+	var/list/drops = GLOB.obtained_from_reverse["[src_path]"]
+	if(!length(drops)) return null
+	return list(
+		"type"         = "source_page",
+		"name"         = initial(src_path.name),
+		"category"     = "Sources",
+		"_output_path" = "[src_path]",
+		"output_name"  = initial(src_path.name),
+		"output_icon"  = "[initial(src_path.icon)]",
+		"output_state" = "[initial(src_path.icon_state)]",
+		"drops"        = drops,
+	)
+
 
 /// Returns cached recipe data for a typepath, computing and caching it if needed.
 /// Respects recipe_info_path — if the atom declares a redirect, that path is
@@ -139,7 +171,6 @@ GLOBAL_VAR_INIT(snack_mill_reverse_built, FALSE)
 	var/key = "[resolved]"
 	if(key in GLOB.recipe_data_cache)
 		return GLOB.recipe_data_cache[key]
-
 	var/datum/R = new resolved()
 	var/list/entry = R.return_recipe_data()
 	qdel(R)

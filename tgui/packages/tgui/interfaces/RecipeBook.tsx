@@ -255,6 +255,10 @@ interface Recipe {
   dislike_bait?: string;
   lures?: string[];
   traits?: string[];
+  // obtained_from
+  sources?: { label: string; _path: string; name: string; icon: string; icon_state: string }[];
+  // source_page
+  drops?: { name: string; icon: string; icon_state: string; _path: string; source_label: string }[];
 }
 
 interface RecipeBookData {
@@ -263,7 +267,6 @@ interface RecipeBookData {
   recipes: Recipe[];
   linked_recipes: Recipe[];
 }
-
 
 const Sprite = (props: { icon?: string; icon_state?: string; size?: number }) => {
   const { icon, icon_state, size = 2 } = props;
@@ -346,6 +349,8 @@ const recipeTypeLabel = (type: string): string => {
     chimeric_node: 'Chimeric', chimeric_table: 'Humor',
     fish: 'Fish', slapcraft: 'Crafting', orderless_slapcraft: 'Crafting',
     snack_processing: 'Processing',
+    obtained_from: 'Source',
+    source_page: 'Source',
   };
   return labels[type] || type;
 };
@@ -1143,6 +1148,82 @@ const DetailSnackProcessing = ({ r, lookup, pickerMap, allRecipes, essenceIndex,
 
 
 
+const DetailObtainedFrom = ({ r, lookup, pickerMap, allRecipes, essenceIndex, nav }: { r: Recipe; lookup: Map<string, Recipe>; pickerMap: Map<string, Recipe[]>; allRecipes: Recipe[]; essenceIndex: Map<string, Recipe[]>; nav: (r: Recipe) => void }) => (
+  <>
+    {!!r.sources?.length && (
+      <>
+        <SectionHead>Obtained From</SectionHead>
+        <Box className="RecipeBook__step-block">
+          {r.sources!.map((s, i) => (
+            <Box key={i} className="RecipeBook__step-row">
+              <Sprite icon={s.icon} icon_state={s.icon_state} />
+              <RecipeLink name={s.name} path={s._path} allRecipes={allRecipes} essenceIndex={essenceIndex} lookup={lookup} pickerMap={pickerMap} onNavigate={nav} />
+              <span className="RecipeBook__step-note"> — {s.label}</span>
+            </Box>
+          ))}
+        </Box>
+      </>
+    )}
+  </>
+);
+
+const DetailSourcePage = ({ r, lookup, pickerMap, allRecipes, essenceIndex, nav }: { r: Recipe; lookup: Map<string, Recipe>; pickerMap: Map<string, Recipe[]>; allRecipes: Recipe[]; essenceIndex: Map<string, Recipe[]>; nav: (r: Recipe) => void }) => (
+  <>
+    {!!r.drops?.length && (
+      <>
+        <SectionHead>Drops</SectionHead>
+        <Box className="RecipeBook__step-block">
+          {r.drops!.map((d, i) => (
+            <Box key={i} className="RecipeBook__step-row">
+              <Sprite icon={d.icon} icon_state={d.icon_state} />
+              <RecipeLink name={d.name} path={d._path} allRecipes={allRecipes} essenceIndex={essenceIndex} lookup={lookup} pickerMap={pickerMap} onNavigate={nav} />
+              {d.source_label && <span className="RecipeBook__step-note"> — {d.source_label}</span>}
+            </Box>
+          ))}
+        </Box>
+      </>
+    )}
+  </>
+);
+
+const DetailObtainedFrom = ({ r, lookup, pickerMap, allRecipes, essenceIndex, nav }: { r: Recipe; lookup: Map<string, Recipe>; pickerMap: Map<string, Recipe[]>; allRecipes: Recipe[]; essenceIndex: Map<string, Recipe[]>; nav: (r: Recipe) => void }) => (
+  <>
+    {!!r.sources?.length && (
+      <>
+        <SectionHead>Obtained From</SectionHead>
+        <Box className="RecipeBook__step-block">
+          {r.sources!.map((s, i) => (
+            <Box key={i} className="RecipeBook__step-row">
+              <Sprite icon={s.icon} icon_state={s.icon_state} />
+              <RecipeLink name={s.name} path={s._path} allRecipes={allRecipes} essenceIndex={essenceIndex} lookup={lookup} pickerMap={pickerMap} onNavigate={nav} />
+              <span className="RecipeBook__step-note"> — {s.label}</span>
+            </Box>
+          ))}
+        </Box>
+      </>
+    )}
+  </>
+);
+
+const DetailSourcePage = ({ r, lookup, pickerMap, allRecipes, essenceIndex, nav }: { r: Recipe; lookup: Map<string, Recipe>; pickerMap: Map<string, Recipe[]>; allRecipes: Recipe[]; essenceIndex: Map<string, Recipe[]>; nav: (r: Recipe) => void }) => (
+  <>
+    {!!r.drops?.length && (
+      <>
+        <SectionHead>Drops</SectionHead>
+        <Box className="RecipeBook__step-block">
+          {r.drops!.map((d, i) => (
+            <Box key={i} className="RecipeBook__step-row">
+              <Sprite icon={d.icon} icon_state={d.icon_state} />
+              <RecipeLink name={d.name} path={d._path} allRecipes={allRecipes} essenceIndex={essenceIndex} lookup={lookup} pickerMap={pickerMap} onNavigate={nav} />
+              {d.source_label && <span className="RecipeBook__step-note"> — {d.source_label}</span>}
+            </Box>
+          ))}
+        </Box>
+      </>
+    )}
+  </>
+);
+
 const DetailFish = ({ r }: { r: Recipe }) => {
   const diffColor = r.difficulty === 'Hard' ? '#d9534f' : r.difficulty === 'Medium' ? '#f0ad4e' : '#5cb85c';
   return (
@@ -1280,7 +1361,6 @@ const DetailOrderlessSlapcraft = ({ r, lookup, pickerMap, allRecipes, essenceInd
   </>
 );
 
-
 const RecipeDetail = (props: {
   recipe: Recipe;
   lookup: Map<string, Recipe>;
@@ -1317,6 +1397,10 @@ const RecipeDetail = (props: {
       case 'chimeric_table':      return <DetailChimericTable r={r} />;
       case 'fish':                return <DetailFish r={r} />;
       case 'snack_processing':    return <DetailSnackProcessing r={r} allRecipes={allRecipes} essenceIndex={essenceIndex} lookup={lookup} pickerMap={pickerMap} nav={onNavigate} />;
+      case 'obtained_from':      return <DetailObtainedFrom r={r} allRecipes={allRecipes} essenceIndex={essenceIndex} lookup={lookup} pickerMap={pickerMap} nav={onNavigate} />;
+      case 'source_page':        return <DetailSourcePage r={r} allRecipes={allRecipes} essenceIndex={essenceIndex} lookup={lookup} pickerMap={pickerMap} nav={onNavigate} />;
+      case 'obtained_from':      return <DetailObtainedFrom r={r} allRecipes={allRecipes} essenceIndex={essenceIndex} lookup={lookup} pickerMap={pickerMap} nav={onNavigate} />;
+      case 'source_page':        return <DetailSourcePage r={r} allRecipes={allRecipes} essenceIndex={essenceIndex} lookup={lookup} pickerMap={pickerMap} nav={onNavigate} />;
       case 'slapcraft':           return <DetailSlapcraft r={r} allRecipes={allRecipes} essenceIndex={essenceIndex} lookup={lookup} pickerMap={pickerMap} nav={onNavigate} />;
       case 'orderless_slapcraft': return <DetailOrderlessSlapcraft r={r} allRecipes={allRecipes} essenceIndex={essenceIndex} lookup={lookup} pickerMap={pickerMap} nav={onNavigate} />;
       default:
@@ -1439,7 +1523,7 @@ export const RecipeBook = (props: any, context: any) => {
   }
 
   const recipeLookup = new Map<string, Recipe>();
-  const recipePickerMap = new Map<string, Recipe[]>();
+  const recipePickerMap = new Map<string, Recipe[]>(); // keys with >1 result
   for (const [key, entries] of recipeMultiMap) {
     if (entries.length === 1) {
       recipeLookup.set(key, entries[0]);
