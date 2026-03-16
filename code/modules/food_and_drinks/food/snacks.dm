@@ -79,7 +79,7 @@ All foods are distributed among various categories. Use common sense.
 	var/rotprocess = FALSE
 	var/become_rot_type = null
 
-	var/mill_result = null
+	var/atom/mill_result = null
 
 	var/fertamount = 50
 
@@ -110,6 +110,55 @@ All foods are distributed among various categories. Use common sense.
 		QDEL_NULL(reagents)
 	deltimer(rot_away_timer)
 	return ..()
+
+/obj/item/reagent_containers/food/snacks/return_recipe_data()
+	var/has_mill  = !isnull(mill_result)
+	var/has_grind = length(grind_results)
+	var/has_juice = length(juice_results)
+	var/list/milled_from_paths = GLOB.snack_mill_reverse[type]
+
+	if(!has_mill && !has_grind && !has_juice && !length(milled_from_paths))
+		return null
+
+	var/list/data = list()
+	data["type"]         = "snack_processing"
+	data["name"]         = name
+	data["category"]     = "Processing"
+	data["_output_path"] = "[type]"
+	data["output_name"]  = name
+	data["output_icon"]  = "[icon]"
+	data["output_state"] = "[icon_state]"
+
+	if(has_mill)
+		data["mill_name"]  = initial(mill_result.name)
+		data["mill_icon"]  = "[initial(mill_result.icon)]"
+		data["mill_state"] = "[initial(mill_result.icon_state)]"
+		data["mill_path"]  = "[mill_result]"
+
+	if(has_grind)
+		var/list/grind = list()
+		for(var/datum/reagent/path as anything in grind_results)
+			grind += list(list("name" = initial(path.name), "amount" = grind_results[path]))
+		data["grind_results"] = grind
+
+	if(has_juice)
+		var/list/juice = list()
+		for(var/datum/reagent/path as anything in juice_results)
+			juice += list(list("name" = initial(path.name), "amount" = juice_results[path]))
+		data["juice_results"] = juice
+
+	if(length(milled_from_paths))
+		var/list/milled_from = list()
+		for(var/atom/src_path as anything in milled_from_paths)
+			milled_from += list(list(
+				"name"       = initial(src_path.name),
+				"icon"       = "[initial(src_path.icon)]",
+				"icon_state" = "[initial(src_path.icon_state)]",
+				"_path"      = "[src_path]",
+			))
+		data["milled_from"] = milled_from
+
+	return data
 
 /datum/intent/food
 	name = "feed"
