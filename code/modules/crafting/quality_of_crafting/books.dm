@@ -58,7 +58,8 @@ GLOBAL_LIST_EMPTY(linked_recipe_cache)
 	. = ..()
 	ui_interact(user)
 
-/obj/item/recipe_book/ui_data(mob/user)
+/obj/item/recipe_book/ui_static_data(mob/user)
+	. = ..()
 	var/list/data = list()
 	data["book_name"] = name
 	data["book_desc"] = desc
