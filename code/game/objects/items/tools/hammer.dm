@@ -105,7 +105,7 @@
 					attacked_item.take_damage(attacked_item.max_integrity * 0.1, BRUTE, "blunt")
 					user.visible_message(span_warning("[user] damages [attacked_item] further!"))
 		else
-			repair_percent *= GET_MOB_SKILL_VALUE_OLD(user, attacked_prosthetic.anvilrepair)
+			repair_percent *= GET_MOB_SKILL_VALUE_OLD(user, attacked_item.anvilrepair)
 
 		if(locate(/obj/machinery/anvil) in O.loc)
 			repair_percent *= 2
