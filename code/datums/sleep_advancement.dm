@@ -19,6 +19,7 @@
 
 	var/list/available_modes = list("one_truth", "one_lie", "two_truths", "two_lies", "truth_lie")
 	var/list/remaining_modes = list()
+	var/list/daily_skill_xp = list()  // skill typepath -> raw XP earned today
 
 /datum/sleep_adv/New(datum/mind/passed_mind)
 	. = ..()
@@ -44,6 +45,9 @@
 /datum/sleep_adv/proc/adjust_sleep_xp(skill_type, amount, silent = FALSE)
 	if(!mind?.current)
 		return
+	//this is pre multi so catchup doesn't screw you
+	daily_skill_xp[skill_type] = nulltozero(daily_skill_xp[skill_type]) + amount
+
 	var/final_amount
 	if(rested_xp_pool > 0)
 		var/target_multiplier = rested_skill_multipliers[skill_type] ? 1.5 : RESTED_XP_MULTIPLIER
@@ -53,7 +57,7 @@
 		final_amount = FLOOR(amount * RESTED_XP_TIRED_RATE + covered, 1)
 	else
 		final_amount = FLOOR(amount * RESTED_XP_TIRED_RATE, 1)
-	mind.current.adjust_experience(skill_type, final_amount, silent)
+	mind.current.adjust_experience(skill_type, final_amount, silent, daily_skill_xp = FALSE)
 
 /datum/sleep_adv/proc/advance_cycle()
 	if(!mind.current)
@@ -140,6 +144,7 @@
 	sleep_adv_cycle++
 
 	show_ui(mind.current)
+	daily_skill_xp = list()
 
 /datum/sleep_adv/proc/show_ui(mob/living/user)
 	var/list/dat = list()
@@ -263,22 +268,19 @@
 		var/can_buy = !already_active && can_buy_skill(skill_type)
 		if(!already_active && !can_buy)
 			continue
-		// Already active skills always show
 		if(already_active)
-			weighted[skill_type] = -1 // sentinel: always include
+			weighted[skill_type] = -1
 			continue
 		var/current_level = nulltozero(GET_MOB_SKILL_VALUE(mind.current, skill_type))
-		// Weight: untrained = 1, each level adds 3 more weight
-		weighted[skill_type] = max(1, 1 + current_level * 3)
+		var/daily_xp = nulltozero(daily_skill_xp[skill_type])
+		var/activity_bonus = FLOOR(daily_xp / 100, 1)
+		weighted[skill_type] = max(1, 1 + current_level * 3 + activity_bonus)
 
 	var/list/result = list()
-
-	// Always include already-active skills first
 	for(var/skill_type in weighted)
 		if(weighted[skill_type] == -1)
 			result += skill_type
 
-	// Weighted random pick from the rest to fill up to max_count
 	var/list/candidates = list()
 	for(var/skill_type in weighted)
 		if(weighted[skill_type] != -1)

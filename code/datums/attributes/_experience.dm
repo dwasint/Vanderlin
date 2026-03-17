@@ -100,7 +100,7 @@ GLOBAL_VAR_INIT(sleep_experience_modifier, 1.0)
  *   silent           - if TRUE, suppresses level-up chat messages
  *   check_apprentice - if TRUE, shares a portion of XP with any nearby apprentice
  */
-/datum/attribute_holder/proc/adjust_experience(skill_type, amount, silent = FALSE, check_apprentice = TRUE, shared = TRUE)
+/datum/attribute_holder/proc/adjust_experience(skill_type, amount, silent = FALSE, check_apprentice = TRUE, shared = TRUE, daily_skill_xp = TRUE)
 	if(!ispath(skill_type, SKILL))
 		return FALSE
 	if(HAS_TRAIT(parent, TRAIT_NO_EXPERIENCE))
@@ -108,6 +108,9 @@ GLOBAL_VAR_INIT(sleep_experience_modifier, 1.0)
 
 	if(shared)
 		share_parent_skill_xp(skill_type, amount, silent)
+
+	if(daily_skill_xp && parent.mind)
+		parent.mind?.sleep_adv?.daily_skill_xp[skill_type] = nulltozero(daily_skill_xp[skill_type]) + amount
 
 	// Apply global scalar and any per-mob multiplier
 	amount *= GLOB.skill_xp_modifier
