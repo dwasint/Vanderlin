@@ -96,14 +96,16 @@
 			return
 
 		if(skill_value <= 0)
-			if(prob(30) && !was_broken)
-				attacked_item.take_damage(attacked_item.max_integrity * 0.1, BRUTE, "blunt")
-				user.visible_message(span_warning("[user] damages [attacked_item] further!"))
+			if(prob(30))
+				repair_percent = 0.01
+				to_chat(user, span_warning("You are just barely able to repair this..."))
 			else
-				to_chat(user, span_warning("You don't know how to repair this..."))
-			return
-
-		repair_percent *= GET_MOB_SKILL_VALUE_OLD(user, attacked_item.anvilrepair)
+				repair_percent = 0
+				if(!was_broken)
+					attacked_item.take_damage(attacked_item.max_integrity * 0.1, BRUTE, "blunt")
+					user.visible_message(span_warning("[user] damages [attacked_item] further!"))
+		else
+			repair_percent *= GET_MOB_SKILL_VALUE_OLD(user, attacked_prosthetic.anvilrepair)
 
 		if(locate(/obj/machinery/anvil) in O.loc)
 			repair_percent *= 2
@@ -133,6 +135,8 @@
 			user.visible_message(span_info("[user] repairs [attacked_item]!"))
 
 		var/amt2raise = floor(GET_MOB_ATTRIBUTE_VALUE(user, STAT_INTELLIGENCE) * 0.25)
+		if(repair_percent <= 0)
+			amt2raise *= 0.25
 		blacksmith_mind.add_sleep_experience(attacked_item.anvilrepair, amt2raise)
 		playsound(src, 'sound/items/bsmithfail.ogg', 40, FALSE)
 		return
