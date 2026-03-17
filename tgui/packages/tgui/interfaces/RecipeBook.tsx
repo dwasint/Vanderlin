@@ -243,6 +243,13 @@ interface Recipe {
   grind_results?: { name: string; amount: number }[];
   juice_results?: { name: string; amount: number }[];
   milled_from?: ItemRef[];
+  sliced_from?: ItemRef[]
+  slice_name?: string;
+  slice_icon?: string;
+  slice_state?: string;
+  slice_path?: string;
+  slice_num?: number;
+  slice_skill?: string;
   // fish
   avg_size?: number;
   avg_weight?: number;
@@ -1127,6 +1134,14 @@ const DetailSnackProcessing = ({ r, lookup, pickerMap, allRecipes, essenceIndex,
         ))}
       </>
     )}
+    {!!r.sliced_from?.length && (
+      <>
+        <SectionHead>Sliced From</SectionHead>
+        {r.sliced_from!.map((item, i) => (
+          <ItemRow key={i} item={item} allRecipes={allRecipes} essenceIndex={essenceIndex} lookup={lookup} pickerMap={pickerMap} onNavigate={nav} />
+        ))}
+      </>
+    )}
     {!!r.grind_results?.length && (
       <>
         <SectionHead>Grinding</SectionHead>
@@ -1145,6 +1160,20 @@ const DetailSnackProcessing = ({ r, lookup, pickerMap, allRecipes, essenceIndex,
             {rg.amount}u of <RecipeLink name={rg.name} allRecipes={allRecipes} essenceIndex={essenceIndex} lookup={lookup} pickerMap={pickerMap} onNavigate={nav} />
           </Box>
         ))}
+      </>
+    )}
+    {r.slice_name && (
+      <>
+        <SectionHead>Slicing</SectionHead>
+        <Box className="RecipeBook__output-banner">
+          <span className="RecipeBook__output-label">Slices into</span>
+          <Box className="RecipeBook__output-body">
+            <Sprite icon={r.slice_icon} icon_state={r.slice_state} />
+            {r.slice_num !== undefined && r.slice_num > 1 ? `${r.slice_num}× ` : ''}
+            <RecipeLink name={r.slice_name} path={r.slice_path} allRecipes={allRecipes} essenceIndex={essenceIndex} lookup={lookup} pickerMap={pickerMap} onNavigate={nav} />
+            {r.slice_skill && <span className="RecipeBook__step-note"> — requires {r.slice_skill}</span>}
+          </Box>
+        </Box>
       </>
     )}
   </>

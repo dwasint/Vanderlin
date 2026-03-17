@@ -115,9 +115,11 @@ All foods are distributed among various categories. Use common sense.
 	var/has_mill  = !isnull(mill_result)
 	var/has_grind = length(grind_results)
 	var/has_juice = length(juice_results)
+	var/has_slice = !isnull(slice_path)
 	var/list/milled_from_paths = GLOB.snack_mill_reverse[type]
+	var/list/sliced_from_paths = GLOB.snack_slice_reverse[type]
 
-	if(!has_mill && !has_grind && !has_juice && !length(milled_from_paths))
+	if(!has_mill && !has_grind && !has_juice && !has_slice && !length(milled_from_paths) && !length(sliced_from_paths))
 		return null
 
 	var/list/data = list()
@@ -146,6 +148,27 @@ All foods are distributed among various categories. Use common sense.
 		for(var/datum/reagent/path as anything in juice_results)
 			juice += list(list("name" = initial(path.name), "amount" = juice_results[path]))
 		data["juice_results"] = juice
+
+	if(has_slice)
+		var/atom/slicer = slice_path
+		data["slice_name"]  = initial(slicer.name)
+		data["slice_icon"]  = "[initial(slicer.icon)]"
+		data["slice_state"] = "[initial(slicer.icon_state)]"
+		data["slice_path"]  = "[slice_path]"
+		data["slice_num"]   = slices_num
+		if(slice_skill)
+			data["slice_skill"] = initial(slicer.name)
+
+	if(length(sliced_from_paths))
+		var/list/sliced_from = list()
+		for(var/atom/src_path as anything in sliced_from_paths)
+			sliced_from += list(list(
+				"name"       = initial(src_path.name),
+				"icon"       = "[initial(src_path.icon)]",
+				"icon_state" = "[initial(src_path.icon_state)]",
+				"_path"      = "[src_path]",
+			))
+		data["sliced_from"] = sliced_from
 
 	if(length(milled_from_paths))
 		var/list/milled_from = list()

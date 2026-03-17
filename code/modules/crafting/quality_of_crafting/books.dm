@@ -6,12 +6,21 @@ GLOBAL_LIST_EMPTY(recipe_data_cache)
 /// Reverse mill index: mill_result path -> list of source snack paths.
 /// Built once on first recipe book open, before any cache lookups.
 GLOBAL_LIST_INIT(snack_mill_reverse, ensure_snack_mill_reverse())
-GLOBAL_VAR_INIT(snack_mill_reverse_built, FALSE)
+GLOBAL_LIST_INIT(snack_slice_reverse, ensure_snack_slice_reverse())
+
+/proc/ensure_snack_slice_reverse()
+	var/list/list = list()
+	for(var/obj/item/reagent_containers/food/snacks/snack_type as anything in subtypesof(/obj/item/reagent_containers/food/snacks))
+		if(IS_ABSTRACT(snack_type)) continue
+		var/atom/slice = initial(snack_type.slice_path)
+		if(!slice) continue
+		if(!list[slice])
+			list[slice] = list()
+		list[slice] += snack_type
+	return list
 
 /proc/ensure_snack_mill_reverse()
 	var/list/list = list()
-	if(GLOB.snack_mill_reverse_built)
-		return
 	for(var/obj/item/reagent_containers/food/snacks/snack_type as anything in subtypesof(/obj/item/reagent_containers/food/snacks))
 		if(IS_ABSTRACT(snack_type)) continue
 		var/atom/mill = initial(snack_type.mill_result)
@@ -19,7 +28,6 @@ GLOBAL_VAR_INIT(snack_mill_reverse_built, FALSE)
 		if(!list[mill])
 			list[mill] = list()
 		list[mill] += snack_type
-	GLOB.snack_mill_reverse_built = TRUE
 	return list
 
 // Per-book recipe list cache (sidebar entries)
