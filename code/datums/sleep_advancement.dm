@@ -272,26 +272,41 @@
 			weighted[skill_type] = -1
 			continue
 		var/current_level = nulltozero(GET_MOB_SKILL_VALUE(mind.current, skill_type))
-		var/daily_xp = nulltozero(daily_skill_xp[skill_type])
-		var/activity_bonus = FLOOR(daily_xp / 100, 1)
-		weighted[skill_type] = max(1, 1 + current_level * 3 + activity_bonus)
+		weighted[skill_type] = max(1, 1 + current_level * 3)
 
 	var/list/result = list()
 	for(var/skill_type in weighted)
 		if(weighted[skill_type] == -1)
 			result += skill_type
 
-	var/list/candidates = list()
+	var/remaining_slots = max(0, max_count - result.len)
+	var/reinforcement_slots = FLOOR(remaining_slots / 2, 1)
+	var/discovery_slots = remaining_slots - reinforcement_slots
+
+	var/list/discovery_candidates = list()
 	for(var/skill_type in weighted)
 		if(weighted[skill_type] != -1)
-			candidates[skill_type] = weighted[skill_type]
+			discovery_candidates[skill_type] = weighted[skill_type]
 
-	var/slots = max(0, max_count - result.len)
-	while(slots > 0 && candidates.len > 0)
-		var/skill_type = pickweight(candidates)
+	while(discovery_slots > 0 && discovery_candidates.len > 0)
+		var/skill_type = pickweight(discovery_candidates)
 		result += skill_type
-		candidates -= skill_type
-		slots--
+		discovery_candidates -= skill_type
+		reinforcement_slots-- // if daily_xp picked this already we don't double-dip
+		discovery_slots--
+
+	var/list/reinforcement_candidates = list()
+	for(var/skill_type in weighted)
+		if(weighted[skill_type] != -1 && !(skill_type in result))
+			var/daily_xp = nulltozero(daily_skill_xp[skill_type])
+			if(daily_xp > 0)
+				reinforcement_candidates[skill_type] = daily_xp
+
+	while(reinforcement_slots > 0 && reinforcement_candidates.len > 0)
+		var/skill_type = pickweight(reinforcement_candidates)
+		result += skill_type
+		reinforcement_candidates -= skill_type
+		reinforcement_slots--
 
 	return result
 
