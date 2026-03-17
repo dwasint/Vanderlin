@@ -1422,7 +1422,7 @@ const Sidebar = (props: {
           fluid
           placeholder="Search…"
           value={search}
-          onInput={(e: any) => setSearch(e.target.value)}
+          onChange={(value: string) => setSearch(value)}
           className="RecipeBook__search"
         />
       </Box>
@@ -1456,7 +1456,7 @@ const Sidebar = (props: {
 };
 
 export const RecipeBook = (props: any, context: any) => {
-  const { data } = useBackend<RecipeBookData>(context);
+  const { data } = useBackend<RecipeBookData>();
   const { book_name, recipes = [], linked_recipes = [] } = data;
   const allRecipes = [...recipes, ...linked_recipes];
   const recipeMultiMap = new Map<string, Recipe[]>();
