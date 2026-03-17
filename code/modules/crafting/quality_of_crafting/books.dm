@@ -35,7 +35,7 @@ GLOBAL_LIST_EMPTY(book_recipe_cache)
 // Per-book linked recipe cache (passes 2-4)
 GLOBAL_LIST_EMPTY(linked_recipe_cache)
 
-// recipe_info_path — set this on any /atom to redirect hyperlink
+// recipe_info_path, set this on any /atom to redirect hyperlink
 // lookups to a different typepath's return_recipe_data().
 // Example: /obj/item/ore/iron { recipe_info_path = /datum/ore_source/iron }
 // Example: /obj/item/hammer   { recipe_info_path = /obj/item/recipe_book/blacksmithing }
@@ -249,8 +249,8 @@ GLOBAL_LIST_EMPTY(linked_recipe_cache)
 	)
 
 /// Returns cached recipe data for a typepath, computing and caching it if needed.
-/// Respects recipe_info_path — if the atom declares a redirect, that path is
-/// used instead so e.g. a hammer can point to the blacksmithing book entry.
+/// Respects recipe_info_path, if the atom declares a redirect, that path is
+/// used instead so e.g. a hammer can point to the blacksmithing book entry. This is useful for abstract types we direct to
 /obj/item/recipe_book/proc/get_cached_recipe_data(atom/path)
 	// Resolve any recipe_info_path redirect first
 	var/atom/redirect = initial(path.recipe_info_path)
@@ -259,7 +259,7 @@ GLOBAL_LIST_EMPTY(linked_recipe_cache)
 	var/key = "[resolved]"
 	if(key in GLOB.recipe_data_cache)
 		return GLOB.recipe_data_cache[key]
-	var/datum/R = new resolved()
+	var/datum/R = new resolved(locate(1,1,1))//this is incase we create a mob
 	var/list/entry = R.return_recipe_data()
 	qdel(R)
 	GLOB.recipe_data_cache[key] = entry
@@ -268,8 +268,8 @@ GLOBAL_LIST_EMPTY(linked_recipe_cache)
 /// Scans a serialized recipe entry for all embedded "_path" keys and queues
 /// any typepath that hasn't been visited yet.
 /obj/item/recipe_book/proc/queue_item_paths_from_entry(list/entry, list/queue, list/visited)
-	// List fields — each element may be a dict with a "_path" key
-	var/list/list_fields = list("requirements","tools","extras","materials","items","crops","opt_items","steps","output_items")
+	// List fields, each element may be a dict with a "_path" key
+	var/list/list_fields = list("requirements","tools","extras","materials","items","crops","opt_items","steps","output_items","sources")
 	for(var/field in list_fields)
 		var/list/items = entry[field]
 		if(!islist(items)) continue
@@ -278,7 +278,7 @@ GLOBAL_LIST_EMPTY(linked_recipe_cache)
 			_try_queue_path(item["_path"], queue, visited)
 
 	// Singular path fields
-	var/list/path_fields = list("_output_path","_starting_path","_attacked_path","_bar_path","_base_path","_target_path","_result_path","_container_path")
+	var/list/path_fields = list("_output_path","_starting_path","_attacked_path","_bar_path","_base_path","_target_path","_result_path","_container_path","mill_path","slice_path")
 	for(var/field in path_fields)
 		_try_queue_path(entry[field], queue, visited)
 

@@ -181,6 +181,21 @@ All foods are distributed among various categories. Use common sense.
 			))
 		data["milled_from"] = milled_from
 
+	if(length(obtained_from))
+		var/list/sources = list()
+		for(var/list/entry as anything in obtained_from)
+			if(!islist(entry) || length(entry) < 2) continue
+			var/label = entry[1]
+			var/atom/src_path = entry[2]
+			sources += list(list(
+				"label"      = label,
+				"_path"      = "[src_path]",
+				"name"       = initial(src_path.name),
+				"icon"       = "[initial(src_path.icon)]",
+				"icon_state" = "[initial(src_path.icon_state)]",
+			))
+		data["sources"] = sources
+
 	return data
 
 /datum/intent/food
