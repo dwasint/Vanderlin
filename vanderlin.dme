@@ -2656,7 +2656,6 @@
 #include "code\modules\crafting\slapcrafting\_slapcraft_assembly.dm"
 #include "code\modules\crafting\slapcrafting\_slapcraft_living.dm"
 #include "code\modules\crafting\slapcrafting\_slapcrafting_recipe.dm"
-#include "code\modules\crafting\slapcrafting\_slapcrafting_recipe_book.dm"
 #include "code\modules\crafting\slapcrafting\_slapcrafting_step.dm"
 #include "code\modules\crafting\slapcrafting\orderless\_base.dm"
 #include "code\modules\crafting\slapcrafting\orderless\bouquetcraft.dm"
