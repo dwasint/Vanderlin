@@ -259,6 +259,8 @@ interface Recipe {
   sources?: { label: string; _path: string; name: string; icon: string; icon_state: string }[];
   // source_page
   drops?: { name: string; icon: string; icon_state: string; _path: string; source_label: string }[];
+  // pottery
+  speed_sweetspot?: string | number;
 }
 
 interface RecipeBookData {
@@ -355,8 +357,6 @@ const recipeTypeLabel = (type: string): string => {
   return labels[type] || type;
 };
 
-
-
 const RecipePicker = (props: {
   name: string;
   options: Recipe[];
@@ -417,7 +417,6 @@ const ItemRow = (props: {
     </Box>
   );
 };
-
 
 const SectionHead = (props: { children: any }) => (
   <Box className="RecipeBook__section-head">{props.children}</Box>
@@ -950,11 +949,11 @@ const DetailSurgery = ({ r, lookup, pickerMap, allRecipes, essenceIndex, nav }: 
           )}
           {(!!s.accept_hand || !!s.accept_any || !s.self_operable || !!s.lying_required || !!s.repeating) && (
             <Box className="RecipeBook__step-block">
-              {!!!!s.accept_hand && <Box className="RecipeBook__step-row RecipeBook__step-note">Can use bare hands</Box>}
-              {!!!!s.accept_any && <Box className="RecipeBook__step-row RecipeBook__step-note">Accepts any item</Box>}
+              {!!s.accept_hand && <Box className="RecipeBook__step-row RecipeBook__step-note">Can use bare hands</Box>}
+              {!!s.accept_any && <Box className="RecipeBook__step-row RecipeBook__step-note">Accepts any item</Box>}
               {!s.self_operable && <Box className="RecipeBook__step-row RecipeBook__step-note">Cannot self-operate</Box>}
-              {!!!!s.lying_required && <Box className="RecipeBook__step-row RecipeBook__step-note">Patient must be lying down</Box>}
-              {!!!!s.repeating && <Box className="RecipeBook__step-row RecipeBook__step-note">Repeatable until failure</Box>}
+              {!!s.lying_required && <Box className="RecipeBook__step-row RecipeBook__step-note">Patient must be lying down</Box>}
+              {!!s.repeating && <Box className="RecipeBook__step-row RecipeBook__step-note">Repeatable until failure</Box>}
             </Box>
           )}
           <HR />
@@ -1141,46 +1140,6 @@ const DetailSnackProcessing = ({ r, lookup, pickerMap, allRecipes, essenceIndex,
             {rg.amount}u of <RecipeLink name={rg.name} allRecipes={allRecipes} essenceIndex={essenceIndex} lookup={lookup} pickerMap={pickerMap} onNavigate={nav} />
           </Box>
         ))}
-      </>
-    )}
-  </>
-);
-
-
-
-const DetailObtainedFrom = ({ r, lookup, pickerMap, allRecipes, essenceIndex, nav }: { r: Recipe; lookup: Map<string, Recipe>; pickerMap: Map<string, Recipe[]>; allRecipes: Recipe[]; essenceIndex: Map<string, Recipe[]>; nav: (r: Recipe) => void }) => (
-  <>
-    {!!r.sources?.length && (
-      <>
-        <SectionHead>Obtained From</SectionHead>
-        <Box className="RecipeBook__step-block">
-          {r.sources!.map((s, i) => (
-            <Box key={i} className="RecipeBook__step-row">
-              <Sprite icon={s.icon} icon_state={s.icon_state} />
-              <RecipeLink name={s.name} path={s._path} allRecipes={allRecipes} essenceIndex={essenceIndex} lookup={lookup} pickerMap={pickerMap} onNavigate={nav} />
-              <span className="RecipeBook__step-note"> — {s.label}</span>
-            </Box>
-          ))}
-        </Box>
-      </>
-    )}
-  </>
-);
-
-const DetailSourcePage = ({ r, lookup, pickerMap, allRecipes, essenceIndex, nav }: { r: Recipe; lookup: Map<string, Recipe>; pickerMap: Map<string, Recipe[]>; allRecipes: Recipe[]; essenceIndex: Map<string, Recipe[]>; nav: (r: Recipe) => void }) => (
-  <>
-    {!!r.drops?.length && (
-      <>
-        <SectionHead>Drops</SectionHead>
-        <Box className="RecipeBook__step-block">
-          {r.drops!.map((d, i) => (
-            <Box key={i} className="RecipeBook__step-row">
-              <Sprite icon={d.icon} icon_state={d.icon_state} />
-              <RecipeLink name={d.name} path={d._path} allRecipes={allRecipes} essenceIndex={essenceIndex} lookup={lookup} pickerMap={pickerMap} onNavigate={nav} />
-              {d.source_label && <span className="RecipeBook__step-note"> — {d.source_label}</span>}
-            </Box>
-          ))}
-        </Box>
       </>
     )}
   </>
@@ -1397,10 +1356,8 @@ const RecipeDetail = (props: {
       case 'chimeric_table':      return <DetailChimericTable r={r} />;
       case 'fish':                return <DetailFish r={r} />;
       case 'snack_processing':    return <DetailSnackProcessing r={r} allRecipes={allRecipes} essenceIndex={essenceIndex} lookup={lookup} pickerMap={pickerMap} nav={onNavigate} />;
-      case 'obtained_from':      return <DetailObtainedFrom r={r} allRecipes={allRecipes} essenceIndex={essenceIndex} lookup={lookup} pickerMap={pickerMap} nav={onNavigate} />;
-      case 'source_page':        return <DetailSourcePage r={r} allRecipes={allRecipes} essenceIndex={essenceIndex} lookup={lookup} pickerMap={pickerMap} nav={onNavigate} />;
-      case 'obtained_from':      return <DetailObtainedFrom r={r} allRecipes={allRecipes} essenceIndex={essenceIndex} lookup={lookup} pickerMap={pickerMap} nav={onNavigate} />;
-      case 'source_page':        return <DetailSourcePage r={r} allRecipes={allRecipes} essenceIndex={essenceIndex} lookup={lookup} pickerMap={pickerMap} nav={onNavigate} />;
+      case 'obtained_from':       return <DetailObtainedFrom r={r} allRecipes={allRecipes} essenceIndex={essenceIndex} lookup={lookup} pickerMap={pickerMap} nav={onNavigate} />;
+      case 'source_page':         return <DetailSourcePage r={r} allRecipes={allRecipes} essenceIndex={essenceIndex} lookup={lookup} pickerMap={pickerMap} nav={onNavigate} />;
       case 'slapcraft':           return <DetailSlapcraft r={r} allRecipes={allRecipes} essenceIndex={essenceIndex} lookup={lookup} pickerMap={pickerMap} nav={onNavigate} />;
       case 'orderless_slapcraft': return <DetailOrderlessSlapcraft r={r} allRecipes={allRecipes} essenceIndex={essenceIndex} lookup={lookup} pickerMap={pickerMap} nav={onNavigate} />;
       default:
