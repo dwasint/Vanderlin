@@ -299,9 +299,14 @@ const RecipeLink = (props: {
 
   const pickerByPath = (path && pickerMap.get(path)) || [];
   const pickerByName = pickerMap.get(name.toLowerCase()) || [];
-  const multiMatches = pickerByPath.length ? pickerByPath : pickerByName;
-  if (multiMatches.length > 1) {
-    return <RecipePicker name={name} options={multiMatches} onNavigate={onNavigate} />;
+  const essenceByName = (!path && essenceIndex?.get(name.toLowerCase())) || [];
+  const merged = [...new Set([...(pickerByPath.length ? pickerByPath : pickerByName), ...essenceByName])];
+  if (merged.length > 1) {
+    return <RecipePicker name={name} options={merged} onNavigate={onNavigate} />;
+  }
+  if (merged.length === 1 && !path && !lookup.get(name.toLowerCase())) {
+    const sole = merged[0];
+    return <span className="RecipeBook__hyperlink" onClick={() => onNavigate(sole)} title={`Go to: ${sole.name}`}>{name}</span>;
   }
 
   let target: Recipe | undefined = lookup.get(name.toLowerCase());
@@ -1473,6 +1478,11 @@ export const RecipeBook = (props: any, context: any) => {
         }
       }
       continue;
+    }
+    if (r.type === 'essence_combination' && r.output_name) {
+      const key = r.output_name.toLowerCase();
+      if (!essencePrecursorIndex.has(key)) essencePrecursorIndex.set(key, []);
+      essencePrecursorIndex.get(key)!.push(r);
     }
     if (r.name) addToMultiMap(r.name.toLowerCase(), r);
     if (r.output_name) addToMultiMap(r.output_name.toLowerCase(), r);
