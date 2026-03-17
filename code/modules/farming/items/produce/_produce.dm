@@ -123,7 +123,7 @@
 	tastes = list("chipping a tooth" = 1)
 	grind_results = list(/datum/reagent/flour = 10)
 	dropshrink = 0.9
-	mill_result = /obj/item/reagent_containers/powder/flour
+	mill_result = /obj/item/reagent_containers/powder/sunreed_flour
 
 // ^ PSA: next time you want to do this, make and run an updatepaths migration in tools/UpdatePaths
 /obj/item/reagent_containers/food/snacks/produce/fruit/apple

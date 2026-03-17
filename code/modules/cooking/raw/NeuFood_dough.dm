@@ -818,7 +818,7 @@
 	if(.)
 		return
 	if(user.mind)
-		short_cooktime = (50 - ((GET_MOB_SKILL_VALUE_OLD(user, /datum/attribute/skill/craft/cooking))*8))
+		short_cooktime = (50 - ((GET_MOB_SKILL_VALUE_OLD(user, /datum/attribute/skill/craft/cooking/baking))*8))
 	var/found_table = locate(/obj/structure/table) in (loc)
 	if(istype(I, /obj/item/kitchen/rollingpin))
 		if(isturf(loc)&& (found_table))
@@ -826,7 +826,7 @@
 			to_chat(user, span_notice("Flattening [src]..."))
 			if(do_after(user,long_cooktime, src))
 				new /obj/item/reagent_containers/food/snacks/masa_flat(loc)
-				user.mind.add_sleep_experience(/datum/attribute/skill/craft/cooking, (GET_MOB_ATTRIBUTE_VALUE(user, STAT_INTELLIGENCE)*0.5))
+				user.mind.add_sleep_experience(/datum/attribute/skill/craft/cooking/baking, (GET_MOB_ATTRIBUTE_VALUE(user, STAT_INTELLIGENCE)*0.5))
 				user.nobles_seen_servant_work()
 				qdel(src)
 		else
