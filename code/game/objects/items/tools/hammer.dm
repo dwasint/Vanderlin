@@ -125,7 +125,7 @@
 			var/integrity_loss = round(attacked_item.max_integrity * integrity_penalty)
 			attacked_item.max_integrity = max(1, attacked_item.max_integrity - integrity_loss)
 			attacked_item.obj_broken = FALSE
-			attacked_item.repair_damage(attacked_item.max_integrity * repair_percent)
+			attacked_item.repair_damage(max(attacked_item.max_integrity * repair_percent, 10))
 
 			to_chat(user, span_warning("You manage to repair [attacked_item], but the damage has left its mark — it will never be quite as strong as it once was."))
 			if(skill_value < SKILL_MIDDLING) // 30

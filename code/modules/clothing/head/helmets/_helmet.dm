@@ -6,7 +6,7 @@
 	blocksound = PLATEHIT
 	resistance_flags = FIRE_PROOF
 	anvilrepair = /datum/attribute/skill/craft/armor_repair
-	sewrepair = FALSE
+	sewrepair = null
 	smeltresult = /obj/item/ingot/iron
 	sellprice = VALUE_IRON_ITEM
 	clothing_flags = CANT_SLEEP_IN

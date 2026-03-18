@@ -365,6 +365,7 @@ GLOBAL_LIST_EMPTY(linked_recipe_cache)
 	base_icon_state = "book7"
 
 	types = list(
+		/datum/book_entry/sewing_repair,
 		/datum/repeatable_crafting_recipe/sewing,
 		/datum/orderless_slapcraft/bouquet,
 		)
@@ -376,6 +377,7 @@ GLOBAL_LIST_EMPTY(linked_recipe_cache)
 	icon_state ="book7_0"
 	base_icon_state = "book7"
 	types = list(
+		/datum/book_entry/sewing_repair,
 		/datum/repeatable_crafting_recipe/sewing,
 		/datum/orderless_slapcraft/bouquet,
 		/datum/repeatable_crafting_recipe/leather,
@@ -502,6 +504,7 @@ GLOBAL_LIST_EMPTY(linked_recipe_cache)
 	base_icon_state = "book3"
 
 	types = list(
+		/datum/book_entry/smithing_repair,
 		/datum/molten_recipe,
 		/datum/anvil_recipe,
 	)

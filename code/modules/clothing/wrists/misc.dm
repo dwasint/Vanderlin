@@ -119,7 +119,7 @@
 	blocksound = PLATEHIT
 	resistance_flags = FIRE_PROOF
 	anvilrepair = /datum/attribute/skill/craft/armor_repair
-	sewrepair = FALSE
+	sewrepair = null
 
 //Queensleeves
 /obj/item/clothing/wrists/royalsleeves

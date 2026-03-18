@@ -22,7 +22,7 @@
 	grid_height = 32
 	item_weight = 0.5
 
-	sewrepair = FALSE
+	sewrepair = null
 	anvilrepair = /datum/attribute/skill/craft/armor_repair
 	smeltresult = /obj/item/ingot/iron
 	abstract_type = /obj/item/clothing/neck

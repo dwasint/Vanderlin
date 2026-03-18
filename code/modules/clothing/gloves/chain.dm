@@ -12,13 +12,12 @@
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
 	anvilrepair = /datum/attribute/skill/craft/armor_repair
 	smeltresult = null
-	sewrepair = FALSE
 
 	armor_class = AC_MEDIUM
 	armor = ARMOR_MAILLE
 	prevent_crits = ALL_EXCEPT_BLUNT
 	max_integrity = INTEGRITY_STRONGEST
-	sewrepair = FALSE
+	sewrepair = null
 	item_weight = 7 * IRON_MULTIPLIER
 	smeltresult = null
 	melting_material = /datum/material/steel

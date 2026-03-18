@@ -99,16 +99,3 @@
 	dreams = list(
 		"...you pour the powder down the barrel of the cannon, and without a projectile to follow the dust, you cut off a finger, and toss it in there... you turn to light the fuse..."
 	)
-
-/datum/attribute/skill/craft/tanning
-	name = "Skincrafting"
-	desc = "Represents your character's ability to process and use animal hide. The higher your skill in Skincrafting, the more leather you can create and the more you can make with it."
-	governing_attribute = STAT_PERCEPTION
-	default_attributes = list(
-		STAT_PERCEPTION = -5,
-		STAT_STRENGTH = -6,
-	)
-	difficulty = SKILL_DIFFICULTY_AVERAGE
-	dreams = list(
-		"...you stare down at the rabbit, its eyes wide and unblinking... you feel the knife in your hand, and the blood on your hands... and the warmth of the pelt..."
-	)

@@ -46,6 +46,8 @@
 	if(!mind?.current)
 		return
 	//this is pre multi so catchup doesn't screw you
+	if(!(skill_type  in daily_skill_xp))
+		daily_skill_xp[skill_type] = 0
 	daily_skill_xp[skill_type] = nulltozero(daily_skill_xp[skill_type]) + amount
 
 	var/final_amount

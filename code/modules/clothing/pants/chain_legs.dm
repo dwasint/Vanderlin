@@ -5,7 +5,7 @@
 	gender = PLURAL
 	icon_state = "chain_legs"
 	item_state = "chain_legs"
-	sewrepair = FALSE
+	sewrepair = null
 	resistance_flags = FIRE_PROOF
 	blocksound = CHAINHIT
 	equip_delay_self = 25

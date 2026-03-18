@@ -36,7 +36,7 @@
 			else if(integrity_restores == 2)
 				. += "<span class='notice'>New material has been worked into it more than once. It accepts further restoration poorly.</span>"
 			else
-				. += "<span class='notice'>New material has been worked into it. A skilled eye can see where the metals meet.</span>"
+				. += "<span class='notice'>New material has been worked into it. A skilled eye can see where the materials meet.</span>"
 
 
 //	if(has_inspect_verb || (obj_integrity < max_integrity))
