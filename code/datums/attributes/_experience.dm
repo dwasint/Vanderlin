@@ -111,6 +111,7 @@ GLOBAL_VAR_INIT(sleep_experience_modifier, 1.0)
 
 	if(daily_skill_xp && parent.mind)
 		if(!(skill_type  in parent.mind?.sleep_adv?.daily_skill_xp))
+			parent.mind?.sleep_adv?.daily_skill_xp |= skill_type
 			parent.mind?.sleep_adv?.daily_skill_xp[skill_type] = 0
 		parent.mind?.sleep_adv?.daily_skill_xp[skill_type] = nulltozero(daily_skill_xp[skill_type]) + amount
 

@@ -47,6 +47,7 @@
 		return
 	//this is pre multi so catchup doesn't screw you
 	if(!(skill_type  in daily_skill_xp))
+		daily_skill_xp |= skill_type //?? why this shouldn't need to be here but it runtimes otherwise
 		daily_skill_xp[skill_type] = 0
 	daily_skill_xp[skill_type] = nulltozero(daily_skill_xp[skill_type]) + amount
 
