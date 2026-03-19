@@ -92,7 +92,7 @@
 		for(var/key in I.armor.getList())
 			armor_value += I.armor.getRating(key)
 
-		if(!I.obj_broken && I.get_integrity() >= I.max_integrity && I.max_integrity != initial(I.max_integrity))
+		if(!I.obj_broken && I.get_integrity() >= I.max_integrity && (I.max_integrity != initial(I.max_integrity)))
 			if(!I.salvage_result)
 				to_chat(user, span_warning("[I] can't be melded with a needle."))
 				return TRUE

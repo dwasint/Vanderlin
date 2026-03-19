@@ -19,6 +19,18 @@
 		))
 	return out
 
+/datum/proc/tools_list(list/L, subtypes_ok = FALSE)
+    var/list/out = list()
+    for(var/atom/path as anything in L)
+        out += list(list(
+            "name" = initial(path.name),
+            "icon" = "[initial(path.icon)]",
+            "icon_state" = "[initial(path.icon_state)]",
+            "any" = subtypes_ok,
+            "_path" = "[path]",
+        ))
+    return out
+
 /// Converts a reagent typepath=amount assoc list
 /datum/proc/reagents_list(list/L)
 	var/list/out = list()
@@ -38,7 +50,7 @@
 	data["category"] = category
 
 	data["requirements"] = items_list(requirements, subtypes_allowed)
-	data["tools"] = items_list(tool_usage, subtypes_allowed)
+	data["tools"] = tools_list(tool_usage, subtypes_allowed)
 	data["reagents"] = reagents_list(reagent_requirements)
 
 	if(craftdiff && skillcraft)
