@@ -92,14 +92,14 @@
 		for(var/key in I.armor.getList())
 			armor_value += I.armor.getRating(key)
 
-		if(!I.obj_broken && I.get_integrity() >= I.max_integrity)
+		if(!I.obj_broken && I.get_integrity() >= I.max_integrity && I.max_integrity != initial(I.max_integrity))
 			if(!I.salvage_result)
 				to_chat(user, span_warning("[I] can't be melded with a needle."))
 				return TRUE
 			if(I.integrity_restores >= 3)
 				to_chat(user, span_warning("[I] has been melded too many times. The fabric won't take any more material."))
 				return TRUE
-			var/obj/item/patch = locate(I.salvage_result) in I.loc
+			var/obj/item/patch = locate(I.salvage_result) in range(1, I.loc)
 			if(!patch)
 				to_chat(user, span_warning("You need [initial(I.salvage_result:name)] nearby to meld [I]."))
 				return TRUE
