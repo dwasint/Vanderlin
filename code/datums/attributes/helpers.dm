@@ -58,7 +58,7 @@
 /mob/proc/adjust_experience(skill_type, amount, silent = FALSE, check_apprentice = TRUE, daily_xp = TRUE)
 	if(HAS_TRAIT(src, TRAIT_NO_EXPERIENCE))
 		return FALSE
-	return attributes?.adjust_experience(skill_type, amount, silent, check_apprentice, daily_xp = daily_skill_xp)
+	return attributes?.adjust_experience(skill_type, amount, silent, check_apprentice, daily_xp = daily_xp)
 
 /**
  * Adjusts a skill by a delta in the new 0-60 range, with an optional cap.
