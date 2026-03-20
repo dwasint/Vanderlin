@@ -113,7 +113,7 @@ GLOBAL_VAR_INIT(sleep_experience_modifier, 1.0)
 		if(!(skill_type  in parent.mind?.sleep_adv?.daily_skill_xp))
 			parent.mind?.sleep_adv?.daily_skill_xp |= skill_type
 			parent.mind?.sleep_adv?.daily_skill_xp[skill_type] = 0
-		parent.mind?.sleep_adv?.daily_skill_xp[skill_type] = nulltozero(daily_skill_xp[skill_type]) + amount
+		parent.mind?.sleep_adv?.daily_skill_xp[skill_type] = nulltozero(parent.mind?.sleep_adv?.daily_skill_xp[skill_type]) + amount
 
 	// Apply global scalar and any per-mob multiplier
 	amount *= GLOB.skill_xp_modifier
