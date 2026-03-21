@@ -60,7 +60,7 @@
 		final_amount = FLOOR(amount * RESTED_XP_TIRED_RATE + covered, 1)
 	else
 		final_amount = FLOOR(amount * RESTED_XP_TIRED_RATE, 1)
-	mind.current.adjust_experience(skill_type, final_amount, silent, daily_skill_xp = FALSE)
+	mind.current.adjust_experience(skill_type, final_amount, silent, daily_xp = FALSE)
 
 /datum/sleep_adv/proc/advance_cycle()
 	if(!mind.current)
