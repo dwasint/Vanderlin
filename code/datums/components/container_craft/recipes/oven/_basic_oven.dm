@@ -277,6 +277,24 @@
 	cooked_smell = /datum/pollutant/food/bun
 	used_skill = /datum/attribute/skill/craft/cooking/baking
 
+/datum/container_craft/oven/choco_pastry
+	name = "Chocolate Pastry"
+	requirements = list(/obj/item/reagent_containers/food/snacks/choco_butterdough_slice = 1)
+	output = /obj/item/reagent_containers/food/snacks/choco_pastry
+	cooked_smell = /datum/pollutant/food/pastry
+
+/datum/container_craft/oven/choco_bun
+	name = "Chocolate Bun"
+	requirements = list(/obj/item/reagent_containers/food/snacks/choco_bun_raw = 1)
+	output = /obj/item/reagent_containers/food/snacks/choco_bun
+	cooked_smell = /datum/pollutant/food/bun
+
+/datum/container_craft/oven/choccy_cookie
+	name = "Chocolate Chip Cookie"
+	requirements = list(/obj/item/reagent_containers/food/snacks/choccy_cookie_raw = 1)
+	output = /obj/item/reagent_containers/food/snacks/choccy_cookie
+	cooked_smell = /datum/pollutant/food/pastry
+
 /datum/container_craft/oven/xylixbun
 	name = "Xylix Bun"
 	hides_from_books = TRUE //Secret bun ooooooo
@@ -322,6 +340,12 @@
 	output = /obj/item/reagent_containers/food/snacks/scone_tangerine
 	cooked_smell = /datum/pollutant/food/scone
 	used_skill = /datum/attribute/skill/craft/cooking/baking
+
+/datum/container_craft/oven/choco_scone
+	name = "Chocolate Scone"
+	requirements = list(/obj/item/reagent_containers/food/snacks/foodbase/scone_raw_choco = 1)
+	output = /obj/item/reagent_containers/food/snacks/scone_choco
+	cooked_smell = /datum/pollutant/food/scone
 
 /datum/container_craft/oven/scone
 	name = "Baked Scone"
@@ -503,6 +527,12 @@
 	output = /obj/item/reagent_containers/food/snacks/tart/cooked/dragonfruit
 	cooked_smell = /datum/pollutant/food/pastry
 	used_skill = /datum/attribute/skill/craft/cooking/baking
+
+/datum/container_craft/oven/pie/chocolate
+	name = "Chocolate Tart"
+	requirements = list(/obj/item/reagent_containers/food/snacks/raw_tart/chocolate = 1)
+	output = /obj/item/reagent_containers/food/snacks/tart/cooked/chocolate
+	cooked_smell = /datum/pollutant/food/pastry
 
 /datum/container_craft/oven/sunreed_bread
 	category = "Tiefling Cuisine"
