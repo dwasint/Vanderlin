@@ -150,15 +150,15 @@
 	var/average_freshness = (ingredient_count > 0) ? (total_freshness / ingredient_count) : 0
 
 	// Get the user's brewing skill (with cooking as fallback)
-	var/brewing_skill = 0
+	var/brewing_skill_level = 0
 	if(user.mind)
-		brewing_skill = GET_MOB_SKILL_VALUE_OLD(user, brewing_skill) + user.get_inspirational_bonus() || 0
+		brewing_skill_level = GET_MOB_SKILL_VALUE_OLD(user, brewing_skill) + user.get_inspirational_bonus() || 0
 
 	// Use the quality calculator to determine final quality (matching cooking system)
 	var/datum/quality_calculator/brewing/brew_calc = new(
 		base_qual = 0,
 		mat_qual = max(highest_food_quality, highest_input_reagent_quality), // Use the higher of food or reagent quality
-		skill_qual = brewing_skill,
+		skill_qual = brewing_skill_level,
 		perf_qual = 0,
 		diff_mod = 0,
 		components = 1,
