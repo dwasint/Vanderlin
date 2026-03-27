@@ -168,7 +168,7 @@
 
 	///the base success rate is calculated considering the item inventory size and the heaviness of the fish.
 	var/success_prob = 100/(mounted_fish.w_class + GET_FISH_WEIGHT_RANK(mounted_fish.weight))
-	var/fishing_prowess = user?.attributes : GET_MOB_SKILL_VALUE(user, /datum/attribute/skill/labor/fishing) ? 60
+	var/fishing_prowess = user?.attributes ? GET_MOB_SKILL_VALUE(user, /datum/attribute/skill/labor/fishing) : 60
 	success_prob += fishing_prowess * 0.4 // up to 24% bonus chance to safely retrieve the trophy depending on skill.
 	if(!prob(success_prob))
 		qdel(mounted_fish)
