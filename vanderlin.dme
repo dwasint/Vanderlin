@@ -584,6 +584,7 @@
 #include "code\datums\hud.dm"
 #include "code\datums\inspiration.dm"
 #include "code\datums\ip_info.dm"
+#include "code\datums\json_database.dm"
 #include "code\datums\loadouts.dm"
 #include "code\datums\map_adjustment.dm"
 #include "code\datums\map_adjustment_include.dm"

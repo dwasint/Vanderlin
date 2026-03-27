@@ -480,10 +480,8 @@ GLOBAL_LIST_INIT(fish_compatible_fluid_types, list(
 			w_class = WEIGHT_CLASS_NORMAL
 		if(FISH_SIZE_NORMAL_MAX to FISH_SIZE_BULKY_MAX)
 			w_class = WEIGHT_CLASS_BULKY
-		if(FISH_SIZE_BULKY_MAX to FISH_SIZE_HUGE_MAX)
+		if(FISH_SIZE_BULKY_MAX to INFINITY)
 			w_class = WEIGHT_CLASS_HUGE
-		if(FISH_SIZE_HUGE_MAX to INFINITY)
-			w_class = WEIGHT_CLASS_GIGANTIC
 
 	if(size > FISH_SIZE_TWO_HANDS_REQUIRED || (HAS_TRAIT(src, TRAIT_FISH_SHOULD_TWOHANDED) && w_class >= WEIGHT_CLASS_BULKY))
 		AddComponent(/datum/component/two_handed, require_twohands = TRUE)
