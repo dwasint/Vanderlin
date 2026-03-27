@@ -301,6 +301,7 @@ SUBSYSTEM_DEF(job)
 
 			while(length(pool) && ((job.current_positions < job.spawn_positions) || job.spawn_positions == -1))
 				var/mob/dead/new_player/picked = pickweight(pool)
+				var/weight_value = pool[picked]
 				pool -= picked
 
 				if(!picked || QDELETED(picked) || !(picked in unassigned))
@@ -309,12 +310,12 @@ SUBSYSTEM_DEF(job)
 				var/assigned = FALSE
 
 				if(!length(picked.multi_ready_characters))
-					JobDebug("Single-char DO: Player [picked], Job [job.title]")
+					JobDebug("Single-char DO: Player [picked], Job [job.title], Weight: [weight_value]")
 					if(AssignRole(picked, job))
 						for(var/datum/job_priority_boost/boost in get_player_boosts(picked))
 							if(boost.can_boost_job(job))
 								boost.use_boost()
-								JobDebug("DO boost used, Player: [picked], Job: [job.title]")
+								JobDebug("DO boost used, Player: [picked], Job: [job.title], Weight: [weight_value]")
 						assigned = TRUE
 				else
 					for(var/char_idx in 1 to length(picked.multi_ready_characters))
@@ -325,12 +326,12 @@ SUBSYSTEM_DEF(job)
 						picked.apply_multi_ready_character(char_idx)
 						if(!check_job_eligibility(picked, job))
 							continue
-						JobDebug("Multi-char DO: Player [picked], Char [char_idx] (Slot [char_data["slot"]]), Job [job.title]")
+						JobDebug("Multi-char DO: Player [picked], Char [char_idx] (Slot [char_data["slot"]]), Job [job.title], Weight: [weight_value]")
 						if(AssignRole(picked, job))
 							for(var/datum/job_priority_boost/boost in get_player_boosts(picked))
 								if(boost.can_boost_job(job))
 									boost.use_boost()
-									JobDebug("DO boost used, Player: [picked], Job: [job.title]")
+									JobDebug("DO boost responsible for pick, Player: [picked], Job: [job.title]")
 							assigned = TRUE
 						break
 
