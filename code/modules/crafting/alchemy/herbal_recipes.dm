@@ -222,6 +222,10 @@
 		if(!HAS_TRAIT(M,TRAIT_NOSTAMINA))
 			M.adjust_stamina(-0.1, internal_regen = FALSE)
 
+	if(M.has_status_effect(/datum/status_effect/buff/alch/perceptionpot/weak))
+		return ..()
+	if(volume > 2)
+		M.apply_status_effect(/datum/status_effect/buff/alch/perceptionpot/weak)
 	..()
 
 // Advanced Herbal Reagents
