@@ -233,7 +233,7 @@ GLOBAL_LIST_INIT(spontaneous_fish_traits, populate_spontaneous_fish_traits())
 
 /datum/fish_trait/predator/proc/eat_fishes(obj/item/reagent_containers/food/snacks/fish/source, seconds_per_tick)
 	SIGNAL_HANDLER
-	if(source.get_hunger() > 0.75 || !source.loc)
+	if(source.get_hunger() > 0.1 || !source.loc)
 		return
 	for(var/obj/item/reagent_containers/food/snacks/fish/victim as anything in source.get_aquarium_fishes(TRUE, source))
 		if(victim.size >= source.size * 0.7) // Skip fish that are too large to eat
