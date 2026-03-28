@@ -755,5 +755,17 @@
                 "rscdel": "Removed Unknightly Journey for now, as it causes issues with antagonistic balance."
             }
         ]
+    },
+    "2026-03-28": {
+        "Archeonan": [
+            {
+                "rscadd": "Trapper Adventurer Class"
+            }
+        ],
+        "tired-wired": [
+            {
+                "bugfix": "Tarts now want SLICED fruit."
+            }
+        ]
     }
 }
