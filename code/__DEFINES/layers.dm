@@ -193,6 +193,11 @@
 #define ECHO_LAYER 7
 #define BACKHUD_LAYER 8
 
+//-------------------- Rendering ---------------------
+#define RENDER_PLANE_GAME 990
+#define RENDER_PLANE_NON_GAME 995
+#define RENDER_PLANE_MASTER 999
+
 //-------------------- HUD ---------------------
 //HUD layer defines
 #define HUD_PLANE 1000
@@ -217,7 +222,6 @@
 
 ///Plane of the "splash" icon used that shows on the lobby screen. Nothing should ever be above this.
 #define SPLASHSCREEN_PLANE 9999
-#define SPLASHSCREEN_RENDER_TARGET "SPLASHSCREEN_RENDER_TARGET"
 
 ///Plane master controller keys
 #define PLANE_MASTERS_GAME "plane_masters_game"
