@@ -207,6 +207,7 @@
 //-------------------- HUD ---------------------
 //HUD layer defines
 #define HUD_PLANE 1000
+#define VISUAL_HUD_PLANE 1001
 #define HUD_RENDER_TARGET "HUD_RENDER_TARGET"
 
 #define ABOVE_HUD_PLANE 1100

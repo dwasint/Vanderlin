@@ -13,6 +13,8 @@
 	var/generate_render_target = TRUE
 	///integer: blend mode to apply to the render relay in case you dont want to use the plane_masters blend_mode
 	var/blend_mode_override
+	///reference: current relay this plane is utilizing to render
+	var/atom/movable/render_plane_relay/relay
 
 /atom/movable/screen/plane_master/proc/Show(override)
 	alpha = override || show_alpha
@@ -328,3 +330,8 @@
 	name = "above HUD plane"
 	plane = ABOVE_HUD_PLANE
 	render_relay_plane = null
+
+/atom/movable/screen/plane_master/visual_hud
+	name = "Visual HUD plane"
+	plane = VISUAL_HUD_PLANE
+	render_relay_plane = RENDER_PLANE_NON_GAME
