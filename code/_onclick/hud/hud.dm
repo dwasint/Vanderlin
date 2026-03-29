@@ -38,8 +38,7 @@ GLOBAL_LIST_INIT(available_ui_styles, sortList(list(
 	var/atom/movable/screen/quad_intents/quad_intents
 	var/atom/movable/screen/give_intent/give_intent
 	var/atom/movable/screen/def_intent/def_intent
-	var/atom/movable/screen/fov
-	var/atom/movable/screen/fov_blocker
+	var/atom/movable/screen/fov_holder/fov_holder
 	var/atom/movable/screen/clock
 	var/atom/movable/screen/stress/stressies
 	var/atom/movable/screen/cmode_button
@@ -135,6 +134,8 @@ GLOBAL_LIST_INIT(available_ui_styles, sortList(list(
 
 	QDEL_NULL(module_store_icon)
 	QDEL_LIST(static_inventory)
+
+	QDEL_NULL(fov_holder)
 
 	QDEL_NULL(reads)
 	QDEL_NULL(textl)
@@ -276,6 +277,9 @@ GLOBAL_LIST_INIT(available_ui_styles, sortList(list(
 	else if (viewmob.hud_used)
 		viewmob.hud_used.plane_masters_update()
 		viewmob.show_other_mob_action_buttons(mymob)
+
+	if(fov_holder)
+		screenmob.client?.screen |= fov_holder
 
 	return TRUE
 

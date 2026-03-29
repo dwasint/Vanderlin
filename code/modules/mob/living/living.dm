@@ -26,6 +26,9 @@
 	init_faith()
 	if(has_reflection)
 		create_reflection()
+	if(fovangle)
+		LoadComponent(/datum/component/field_of_vision, FOV_90_DEGREES, get_fov_angle(FOV_90_DEGREES))
+		update_fov_angles()
 	recalculate_stats()
 
 /mob/living/Destroy()

@@ -93,18 +93,19 @@
 #define WEATHER_OVERLAY_PLANE -80
 #define WEATHER_RENDER_TARGET "*WEATHER_RENDER_TARGET"
 
-#define OPENSPACE_PLANE -13 //! Openspace plane below all turfs
-#define OPENSPACE_BACKDROP_PLANE -12 //! Black square just over openspace plane to guaranteed cover all in openspace turf
+#define OPENSPACE_PLANE -14 //! Openspace plane below all turfs
+#define OPENSPACE_BACKDROP_PLANE -13 //! Black square just over openspace plane to guaranteed cover all in openspace turf
 
-#define TRANSPARENT_FLOOR_PLANE -11
+#define TRANSPARENT_FLOOR_PLANE -12
 
-#define FLOOR_PLANE -10
+#define FLOOR_PLANE -11
 #define FLOOR_PLANE_RENDER_TARGET "FLOOR_PLANE_RENDER_TARGET"
-#define REFLECTION_PLANE -9
+#define REFLECTION_PLANE -10
 
-#define GAME_PLANE -8
+#define GAME_PLANE -9
 #define GAME_PLANE_RENDER_TARGET "GAME_PLANE_RENDER_TARGET"
-#define GAME_PLANE_FOV_HIDDEN -7
+#define GAME_PLANE_FOV_HIDDEN -8
+#define GAME_PLANE_OBJECT_PERMANENCE -7
 #define GAME_PLANE_UPPER -6
 
 #define SEETHROUGH_PLANE -5
@@ -113,6 +114,11 @@
 #define STRATEGY_PLANE -3
 #define LEYLINE_PLANE -2
 //#define FLOAT_PLANE -1 // byond record keeping
+
+/// Yeah, FoV does require quite a few planes to work with 513 filters to a decent degree.
+#define FIELD_OF_VISION_MASK_PLANE -1
+#define FIELD_OF_VISION_MASK_RENDER_TARGET "FIELD_OF_VISION_MASK_PLANE"
+#define FIELD_OF_VISION_MASK_LAYER 20
 
 #define BLACKNESS_PLANE 0 //To keep from conflicts with SEE_BLACKNESS internals
 #define BLACKNESS_PLANE_RENDER_TARGET "BLACKNESS_RENDER_TARGET"

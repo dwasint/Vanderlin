@@ -168,13 +168,13 @@
 /atom/movable/screen/plane_master/game_world_fov_hidden
 	name = "game world fov hidden plane master"
 	plane = GAME_PLANE_FOV_HIDDEN
-	appearance_flags = PLANE_MASTER
+	appearance_flags = PLANE_MASTER //should use client color
 	blend_mode = BLEND_OVERLAY
-	render_relay_plane = RENDER_PLANE_GAME
+	render_relay_plane = GAME_PLANE
 
 /atom/movable/screen/plane_master/game_world_fov_hidden/Initialize()
 	. = ..()
-	add_filter("FOV_hidden", 1, alpha_mask_filter(render_source = FIELD_OF_VISION_BLOCKER_RENDER_TARGET, flags = MASK_INVERSE))
+	add_filter("vision_cone", 1, alpha_mask_filter(render_source = FIELD_OF_VISION_MASK_RENDER_TARGET, flags = MASK_INVERSE))
 
 /atom/movable/screen/plane_master/game_world_above
 	name = "above game world plane master"
@@ -182,14 +182,6 @@
 	appearance_flags = PLANE_MASTER
 	blend_mode = BLEND_OVERLAY
 	render_relay_plane = RENDER_PLANE_GAME
-
-/atom/movable/screen/plane_master/field_of_vision_blocker
-	name = "field of vision blocker plane master"
-	plane = FIELD_OF_VISION_BLOCKER_PLANE
-	render_target = FIELD_OF_VISION_BLOCKER_RENDER_TARGET
-	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	appearance_flags = PLANE_MASTER
-	render_relay_plane = null
 
 /atom/movable/screen/plane_master/o_light_visual
 	name = "overlight light visual plane master"
@@ -200,6 +192,18 @@
 	blend_mode_override = BLEND_MULTIPLY
 	render_relay_plane = RENDER_PLANE_GAME
 
+/// Contains object permanence images for FoV
+/atom/movable/screen/plane_master/game_world_object_permanence
+	name = "object permanence plane master"
+	plane = GAME_PLANE_OBJECT_PERMANENCE
+	appearance_flags = PLANE_MASTER //should use client color
+	blend_mode = BLEND_OVERLAY
+	render_relay_plane = GAME_PLANE
+
+/atom/movable/screen/plane_master/game_world_object_permanence/Initialize(mapload)
+	. = ..()
+	// only render images inside the FOV mask
+	add_filter("vision_cone", 1, alpha_mask_filter(render_source = FIELD_OF_VISION_MASK_RENDER_TARGET))
 
 /atom/movable/screen/plane_master/fog_cutter
 	name = "fog cutting plane master"
@@ -314,3 +318,13 @@
 	name = "fullscreen alert plane"
 	plane = FULLSCREEN_PLANE
 	render_relay_plane = RENDER_PLANE_NON_GAME
+
+/atom/movable/screen/plane_master/hud
+	name = "HUD plane"
+	plane = HUD_PLANE
+	render_relay_plane = null
+
+/atom/movable/screen/plane_master/above_hud
+	name = "above HUD plane"
+	plane = ABOVE_HUD_PLANE
+	render_relay_plane = null
