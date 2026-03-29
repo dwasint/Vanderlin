@@ -234,7 +234,7 @@
 #define LOBBY_BOTTOM_BUTTON_LAYER 6
 
 ///Plane of the "splash" icon used that shows on the lobby screen. Nothing should ever be above this.
-#define SPLASHSCREEN_PLANE 9999
+#define SPLASHSCREEN_PLANE 9900
 
 ///Plane master controller keys
 #define PLANE_MASTERS_GAME "plane_masters_game"

@@ -52,17 +52,8 @@
 			list -= A
 	return list
 
-/mob/proc/update_vision_cone()
-	return
-
 /mob/proc/update_cone()
 	return
-
-/mob/living/update_vision_cone()
-	var/datum/component/field_of_vision/fov = GetComponent(/datum/component/field_of_vision)
-	if(!fov || !client)
-		return
-	fov.generate_fov_holder(src, fov.shadow_angle, fov.angle, register = FALSE, delete_holder = FALSE)
 
 /client/proc/update_cone()
 	if(mob)
