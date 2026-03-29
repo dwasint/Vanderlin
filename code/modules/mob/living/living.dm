@@ -2621,24 +2621,24 @@
 	if(!istype(T))
 		return
 	changeNext_move(CLICK_CD_MELEE)
-
 	var/_x = T.x-loc.x
 	var/_y = T.y-loc.y
 	if(_x > 7 || _x < -7)
 		return
 	if(_y > 7 || _y < -7)
 		return
-	hide_cone()
-	var/ttime = 10
+	var/transition_time = 1 SECONDS
 	if(GET_MOB_ATTRIBUTE_VALUE(src, STAT_PERCEPTION) > 5)
-		ttime = 10 - (GET_MOB_ATTRIBUTE_VALUE(src, STAT_PERCEPTION) - 5)
-		if(ttime < 0)
-			ttime = 0
+		transition_time = 10 - (GET_MOB_ATTRIBUTE_VALUE(src, STAT_PERCEPTION) - 5)
+		if(transition_time < 0)
+			transition_time = 0
 	if(m_intent != MOVE_INTENT_SNEAK)
-		visible_message("<span class='info'>[src] looks into the distance.</span>")
-	animate(client, pixel_x = world.icon_size*_x, pixel_y = world.icon_size*_y, ttime)
-//	RegisterSignal(src, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(stop_looking))
-	update_cone_show()
+		visible_message(span_info("[src] looks into the distance."))
+	var/x_offset = world.icon_size*_x
+	var/y_offset = world.icon_size*_y
+	animate(client, pixel_x = x_offset, pixel_y = y_offset, transition_time)
+	hud_used?.fov_holder?.screen_loc = "1:[-x_offset],1:[-y_offset]"
+	//update_cone_show()
 
 /mob/proc/look_down(turf/T)
 	return
@@ -2677,13 +2677,12 @@
 //	RegisterSignal(src, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(stop_looking))
 
 /mob/living/proc/stop_looking()
-//	animate(client, pixel_x = 0, pixel_y = 0, 2, easing = SINE_EASING)
 	if(client)
-		client.pixel_x = 0
-		client.pixel_y = 0
+		animate(client, pixel_x = 0, pixel_y = 0, 2, easing = SINE_EASING)
+	hud_used?.fov_holder?.screen_loc = "1,1"
 	reset_perspective()
 	update_cone_show()
-//	UnregisterSignal(src, COMSIG_MOVABLE_PRE_MOVE)
+
 
 /mob/living/set_stat(new_stat)
 	. = ..()
