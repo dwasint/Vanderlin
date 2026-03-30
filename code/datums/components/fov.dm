@@ -512,8 +512,10 @@
 	if(!parent_mob.client || parent_mob.is_blind())
 		return
 	var/has_alpha = fov_holder?.alpha
-	for(var/mob/visible_mob in view(world.view, parent_mob))
+	for(var/mob/living/visible_mob in view(world.view, parent_mob))
 		if((visible_mob.plane != GAME_PLANE_FOV_HIDDEN) || (visible_mob == parent_mob))
+			continue
+		if(visible_mob.rogue_sneaking)
 			continue
 		var/turf/mob_turf = get_turf(visible_mob)
 		if(!istype(mob_turf))
