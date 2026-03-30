@@ -40,6 +40,62 @@
 	plane = FIELD_OF_VISION_MASK_PLANE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
+/image/fov_image
+	icon = 'icons/effects/fov/fov_effects.dmi'
+	appearance_flags = RESET_COLOR | RESET_TRANSFORM
+	plane = GAME_PLANE_OBJECT_PERMANENCE
+
+/obj/effect/abstract/fov_object
+	icon = 'icons/effects/fov/fov_effects.dmi'
+	appearance_flags = RESET_COLOR | RESET_TRANSFORM
+	plane = GAME_PLANE_OBJECT_PERMANENCE
+
+/// Plays a visual effect representing a sound cue for people with vision obstructed by FOV or blindness
+/// Simplified just creates an effect on the plane needed for a time then deletes it does no advanced checks like ignore_self or deafness
+/proc/play_fov_effect(atom/center, range, icon_state, dir = SOUTH, ignore_self = FALSE, angle = 0, time = 1.5 SECONDS, list/override_list, simplified = FALSE)
+	var/turf/anchor_point = get_turf(center)
+	if(simplified)
+		var/obj/effect/abstract/fov_object/fov_object = new(anchor_point)
+		fov_object.icon_state = icon_state
+		fov_object.dir = dir
+		if(angle)
+			var/matrix/matrix = new
+			matrix.Turn(angle)
+			fov_object.transform = matrix
+		fov_object.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+		QDEL_IN(fov_object, time)
+
+	else
+		var/image/fov_image/fov_image
+		var/list/clients_shown
+
+		for(var/mob/living/living_mob in override_list || fov_viewers(range, center))
+			if(ignore_self && living_mob == center)
+				continue
+			var/client/mob_client = living_mob.client
+			if(!mob_client)
+				continue
+			if(HAS_TRAIT(living_mob, TRAIT_DEAF)) //Deaf people can't hear sounds so no sound indicators
+				continue
+			if(!fov_image) //Make the image once we found one recipient to receive it
+				fov_image = new()
+				fov_image.loc = anchor_point
+				fov_image.icon_state = icon_state
+				fov_image.dir = dir
+				fov_image.plane = GAME_PLANE_OBJECT_PERMANENCE
+				if(angle)
+					var/matrix/matrix = new
+					matrix.Turn(angle)
+					fov_image.transform = matrix
+				fov_image.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+			LAZYADD(clients_shown, mob_client)
+
+			mob_client.images += fov_image
+			//when added as an image mutable_appearances act identically. we just make it an MA becuase theyre faster to change appearance
+
+		if(clients_shown)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(remove_image_from_clients), fov_image, clients_shown), time)
+
 /**
   * Field of Vision component. Does totally what you probably think it does,
   * ergo preventing players from seeing what's behind them.

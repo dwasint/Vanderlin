@@ -1119,7 +1119,7 @@
  * @param {datum} used_intent - Intent used to determine animation_type of swing animation
  * @param {bool} atom_bounce - Whether the src bounces when doing an attack animation
  */
-/atom/movable/proc/do_attack_animation(atom/attacked_atom, visual_effect_icon, obj/item/used_item, no_effect, item_animation_override = null, datum/intent/used_intent, atom_bounce)
+/atom/movable/proc/do_attack_animation(atom/attacked_atom, visual_effect_icon, obj/item/used_item, no_effect, item_animation_override = null, datum/intent/used_intent, atom_bounce, fov_effect = TRUE)
 	if(!no_effect && (visual_effect_icon || used_item))
 		var/animation_type = item_animation_override || used_intent?.get_attack_animation_type()
 		do_item_attack_animation(attacked_atom, visual_effect_icon, used_item, animation_type = animation_type)
@@ -1144,6 +1144,9 @@
 	else if(direction & WEST)
 		pixel_x_diff = -ATTACK_ANIMATION_PIXEL_DIFF
 		turn_dir = -1
+
+	if(fov_effect)
+		play_fov_effect(attacked_atom, 5, "attack")
 
 	var/matrix/initial_transform = matrix(transform)
 	var/matrix/rotated_transform = transform.Turn(15 * turn_dir)
