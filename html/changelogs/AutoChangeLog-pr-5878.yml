@@ -1,0 +1,4 @@
+author: "WlarusFromDaSpace"
+delete-after: True
+changes:
+  - bugfix: "Fixed the inquisition's black mirror"
