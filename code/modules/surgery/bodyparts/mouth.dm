@@ -59,6 +59,35 @@
 	color = COLOR_ASSEMBLY_GOLD
 	bundletype = /obj/item/natural/bundle/teeth/gold
 
+/obj/item/natural/bundle/teeth/fang
+	name = "pile of fangs"
+	desc = "A digusting pile of bleeding fangs."
+	icon = 'icons/obj/surgery.dmi'
+	stackname = "fangs"
+	bundle_verb = "pile"
+	icon_state = "fang1"
+	icon1 = "fang1"
+	icon1step = 5
+	icon2 = "fang2"
+	icon2step = 10
+	w_class = WEIGHT_CLASS_TINY
+	maxamount = 32
+	stacktype = /obj/item/natural/teeth/fang
+
+/obj/item/natural/teeth/fang
+	name = "fang"
+	desc = "A bloody fang."
+	icon = 'icons/obj/surgery.dmi'
+	icon_state = "fang_1"
+	base_icon_state = "fang"
+	icon_state_variation = 1
+	throwforce = DAMAGE_DAGGER + 13
+	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 30, "embedded_fall_chance" = 20)
+	force = 10
+	bundletype = /obj/item/natural/bundle/teeth/fang
+	fang_bonus = 0.25
+
+
 /obj/item/natural/teeth/proc/do_knock_out_animation(shrink_time = 5)
 	var/old_transform = matrix(transform)
 	transform = transform.Scale(2, 2)
@@ -74,12 +103,22 @@
 	body_zone = BODY_ZONE_PRECISE_MOUTH
 	body_part = MOUTH
 	max_damage = 50
-	max_teeth = 32
-
+	max_teeth = 3
 
 /obj/item/bodypart/mouth/Initialize(mapload)
 	. = ..()
 	fill_teeth()
+
+/obj/item/bodypart/mouth/proc/replace_teeth(teeth_type)
+    if(teeth)
+        for(var/obj/item/natural/bundle/teeth/bundle in teeth)
+            qdel(bundle)
+        teeth = null
+
+    var/obj/item/natural/bundle/teeth/new_bundle = new teeth_type(null)
+    new_bundle.amount = max_teeth
+    teeth = list(new_bundle)
+    update_teeth()
 
 /obj/item/bodypart/mouth/get_limb_icon(dropped, hideaux = FALSE)
 	if(dropped && !isbodypart(loc))
