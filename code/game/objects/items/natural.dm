@@ -62,13 +62,16 @@
 	var/icon2 = "fibersroll2"
 	var/icon2step = 6
 	var/icon3 = null
-	var/stacktype = /obj/item/natural/fibers
+	var/obj/item/stacktype = /obj/item/natural/fibers
 	var/stackname = "fibers"
 	var/bundle_verb = "bundle"
 	var/items_per_increase = 5
 
 	var/base_width = 32
 	var/base_height = 32
+
+/obj/item/natural/bundle/get_carry_weight(atom/carrier)
+	. = initial(stacktype.item_weight) * amount
 
 /obj/item/natural/bundle/attackby(obj/item/W, mob/living/user, list/modifiers)
 	if(amount <= 0) //how did you manage to do this
