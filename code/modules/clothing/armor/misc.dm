@@ -16,6 +16,7 @@
 	icon_state = "corset"
 	armor = ARMOR_PADDED_BAD
 	body_parts_covered = COVERAGE_VEST
+	item_weight = 230 GRAMS
 
 //................ Amazon chainkini ............... //
 /obj/item/clothing/armor/amazon_chainkini
@@ -123,18 +124,6 @@
 
 	max_integrity = INTEGRITY_STRONG
 
-/obj/item/clothing/shirt/vampire
-	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
-	name = "regal silks"
-	desc = ""
-	body_parts_covered = CHEST|GROIN|LEGS|VITALS
-	prevent_crits = list(BCLASS_BITE, BCLASS_TWIST)
-	icon_state = "vrobe"
-	item_state = "vrobe"
-	r_sleeve_status = SLEEVE_NORMAL
-	l_sleeve_status = SLEEVE_NORMAL
-
-
 /obj/item/clothing/armor/brigandine/light
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "lightweight brigandine"
@@ -149,3 +138,4 @@
 	armor_class = AC_LIGHT//steel version of the studded leather armor now
 	w_class = WEIGHT_CLASS_BULKY
 	prevent_crits = ALL_EXCEPT_STAB
+	item_weight = 3.95 KILOGRAMS

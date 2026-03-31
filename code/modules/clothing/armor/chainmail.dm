@@ -17,7 +17,7 @@
 	body_parts_covered = COVERAGE_ALL_BUT_LEGS
 	prevent_crits = ALL_EXCEPT_BLUNT
 	max_integrity = INTEGRITY_STRONG
-	item_weight = 13 KILOGRAMS
+	item_weight = 15 KILOGRAMS
 
 	material_category = ARMOR_MAT_CHAINMAIL
 
@@ -32,7 +32,7 @@
 	armor = ARMOR_MAILLE_IRON
 	body_parts_covered = COVERAGE_ALL_BUT_LEGS
 	max_integrity = INTEGRITY_STRONG
-	item_weight = 13 KILOGRAMS
+	item_weight = 15 KILOGRAMS
 
 //................ Hauberk ............... //
 /obj/item/clothing/armor/chainmail/hauberk
