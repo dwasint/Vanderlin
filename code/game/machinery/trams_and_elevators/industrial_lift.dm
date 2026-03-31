@@ -19,7 +19,7 @@ GLOBAL_LIST_INIT(all_radial_directions, list(
 	anchored = TRUE
 	max_integrity = 50
 	layer = LYING_MOB_LAYER //under pipes
-	plane = GAME_PLANE
+	plane = FLOOR_PLANE
 	obj_flags = CAN_BE_HIT | BLOCK_Z_OUT_DOWN
 	appearance_flags = PIXEL_SCALE|KEEP_TOGETHER //no TILE_BOUND since we're potentially multitile
 
