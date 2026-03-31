@@ -106,6 +106,7 @@
 	body_part = MOUTH
 	max_damage = 50
 	max_teeth = 3
+	should_render = TRUE
 
 /obj/item/bodypart/mouth/Initialize(mapload)
 	. = ..()

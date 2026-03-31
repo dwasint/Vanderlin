@@ -51,6 +51,7 @@
 	var/mutation_color = ""
 	var/no_update = 0
 	var/species_icon = ""
+	var/should_render = TRUE
 
 	var/animal_origin = 0 //for nonhuman bodypart (e.g. monkey)
 	var/dismemberable = 1 //whether it can be dismembered with a weapon.
@@ -633,6 +634,8 @@
 //we inform the bodypart of the changes that happened to the owner, or give it the informations from a source mob.
 /obj/item/bodypart/proc/update_limb(dropping_limb, mob/living/carbon/source)
 	var/mob/living/carbon/C
+	if(!should_render)
+		return
 	if(source)
 		C = source
 		if(!original_owner)
@@ -707,6 +710,8 @@
 
 //Gives you a proper icon appearance for the dismembered limb
 /obj/item/bodypart/proc/get_limb_icon(dropped, hideaux = FALSE)
+	if(!should_render)
+		return
 	icon_state = "" //to erase the default sprite, we're building the visual aspects of the bodypart through overlays alone.
 
 	. = list()
