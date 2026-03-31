@@ -1360,8 +1360,6 @@
 	var/modifier = 1
 	if(HAS_TRAIT(src, TRAIT_HOLLOWBONES))
 		modifier = 4
-	if(age == AGE_CHILD)
-		modifier = 5
 
 	carry_weight = . * modifier
 	update_encumbrance()
