@@ -1303,11 +1303,11 @@
 
 /mob/living/carbon/proc/get_basic_lift()
 	if(!istype(attributes))
-		//10 st = 10 kg basic lift
 		return 10
-	if(GET_MOB_ATTRIBUTE_VALUE(src, STAT_STRENGTH) <= 0)
+	var/str = GET_MOB_ATTRIBUTE_VALUE(src, STAT_STRENGTH)
+	if(str <= 0)
 		return 3
-	return max(CEILING((GET_MOB_ATTRIBUTE_VALUE(src, STAT_STRENGTH)**2)/10, 1), 3)
+	return max(CEILING(sqrt(str) * 3, 1), 3)
 
 /mob/living/carbon/proc/update_maximum_carry_weight()
 	maximum_carry_weight = get_basic_lift() * 10
@@ -1382,17 +1382,17 @@
 	update_encumbrance_movespeed_modifier()
 
 /mob/living/carbon/proc/update_encumbrance_movespeed_modifier()
-    switch(encumbrance)
-        if(ENCUMBRANCE_EXTREME)
-            add_movespeed_modifier(MOVESPEED_ID_ENCUMBRANCE, override = TRUE, multiplicative_slowdown = 3.85)
-        if(ENCUMBRANCE_HEAVY)
-            add_movespeed_modifier(MOVESPEED_ID_ENCUMBRANCE, override = TRUE, multiplicative_slowdown = 2.4)
-        if(ENCUMBRANCE_MEDIUM)
-            add_movespeed_modifier(MOVESPEED_ID_ENCUMBRANCE, override = TRUE, multiplicative_slowdown = 1.45)
-        if(ENCUMBRANCE_LIGHT)
-            add_movespeed_modifier(MOVESPEED_ID_ENCUMBRANCE, override = TRUE, multiplicative_slowdown = 0.34)
-        if(ENCUMBRANCE_NONE)
-            add_movespeed_modifier(MOVESPEED_ID_ENCUMBRANCE, override = TRUE, multiplicative_slowdown = 0)
+	switch(encumbrance)
+		if(ENCUMBRANCE_EXTREME)
+			add_movespeed_modifier(MOVESPEED_ID_ENCUMBRANCE, override = TRUE, multiplicative_slowdown = 3.85)
+		if(ENCUMBRANCE_HEAVY)
+			add_movespeed_modifier(MOVESPEED_ID_ENCUMBRANCE, override = TRUE, multiplicative_slowdown = 2.4)
+		if(ENCUMBRANCE_MEDIUM)
+			add_movespeed_modifier(MOVESPEED_ID_ENCUMBRANCE, override = TRUE, multiplicative_slowdown = 1.45)
+		if(ENCUMBRANCE_LIGHT)
+			add_movespeed_modifier(MOVESPEED_ID_ENCUMBRANCE, override = TRUE, multiplicative_slowdown = 0.34)
+		if(ENCUMBRANCE_NONE)
+			add_movespeed_modifier(MOVESPEED_ID_ENCUMBRANCE, override = TRUE, multiplicative_slowdown = 0)
 
 
 /// skeletonize all limbs of a carbon mob, pass TRUE as an argument if it's lethal, FALSE if it's not.
