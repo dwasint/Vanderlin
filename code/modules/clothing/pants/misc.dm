@@ -7,6 +7,7 @@
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
 	salvage_result = /obj/item/natural/silk
+	item_weight = 90 GRAMS
 
 /obj/item/clothing/pants/grenzelpants
 	name = "grenzelhoftian paumpers"
