@@ -19,7 +19,7 @@
 	armor = ARMOR_PADDED
 	prevent_crits = MINOR_CRITICALS
 	max_integrity = INTEGRITY_STANDARD
-	item_weight = 4
+	item_weight = 400 GRAMS
 
 /obj/item/clothing/pants/grenzelpants/update_overlays()
 	. = ..()
