@@ -326,6 +326,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	max_integrity = 50
 	destroy_sound = 'sound/foley/smash_rock.ogg'
 	attacked_sound = 'sound/foley/hit_rock.ogg'
+	item_weight = 700 GRAMS
 
 /obj/item/natural/rock/apply_components()
 	AddComponent(/datum/component/two_handed, require_twohands=TRUE)
@@ -480,6 +481,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	w_class = WEIGHT_CLASS_SMALL
 	bundletype = /obj/item/natural/bundle/stoneblock
 	sellprice = 2
+	item_weight = 1.2 KILOGRAMS
 
 //................ Stone block stack	............... //
 /obj/item/natural/bundle/stoneblock
