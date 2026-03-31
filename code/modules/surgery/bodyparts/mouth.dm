@@ -81,7 +81,7 @@
 	. = ..()
 	fill_teeth()
 
-/obj/item/bodypart/mouth/get_limb_icon(dropped)
+/obj/item/bodypart/mouth/get_limb_icon(dropped, hideaux = FALSE)
 	if(dropped && !isbodypart(loc))
 		. = list()
 		var/image/jaw_image = image('icons/mob/human_parts.dmi', src, base_icon_state, BELOW_MOB_LAYER)

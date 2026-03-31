@@ -21,6 +21,11 @@
 	/// Speech modifiers
 	var/list/datum/speech_modifier/speech_modifiers
 
+	/// List of carry_weight modifiers applying to this mob
+	var/list/carry_weight_modification //Lazy list, see carry_weight_modifier.dm
+	/// List of carry_weight modifiers ignored by this mob. List -> List (id) -> List (sources)
+	var/list/carry_weight_mod_immunities //Lazy list, see carry_weight_modifier.dm
+
 //inventory slots
 	var/obj/item/backr = null
 	var/obj/item/backl = null
