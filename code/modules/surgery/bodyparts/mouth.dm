@@ -26,6 +26,7 @@
 	force = 0
 	item_flags = SURGICAL_TOOL
 	bundletype = /obj/item/natural/bundle/teeth
+	item_weight = 3 GRAMS
 	var/icon_state_variation = 4
 	var/fang_bonus = 0
 
