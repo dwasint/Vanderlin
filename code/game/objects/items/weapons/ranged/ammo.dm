@@ -30,6 +30,7 @@
 	force = DAMAGE_KNIFE - 2
 	embedding = list("embedded_pain_multiplier" = 3, "embedded_fall_chance" = 0)
 	firing_effect_type = null
+	item_weight = 26 GRAMS
 
 /obj/item/ammo_casing/caseless/bolt/Initialize(mapload, ...)
 	. = ..()
@@ -276,6 +277,7 @@
 	max_integrity = 20
 	embedding = list("embedded_pain_multiplier" = 3, "embedded_fall_chance" = 0)
 	firing_effect_type = null
+	item_weight = 35 GRAMS
 
 /obj/item/ammo_casing/caseless/arrow/Initialize(mapload, ...)
 	. = ..()
@@ -561,6 +563,7 @@
 	dropshrink = 0.5
 	possible_item_intents = list(INTENT_USE)
 	force = DAMAGE_KNIFE - 7
+	item_weight = 70 GRAMS
 
 //................ Cannon Ball ............... //
 /obj/projectile/bullet/reusable/cannonball
@@ -638,6 +641,7 @@
 	max_integrity = 10
 	force = DAMAGE_KNIFE / 2
 	firing_effect_type = null
+	item_weight = 15 GRAMS
 
 /obj/item/ammo_casing/caseless/dart/Initialize(mapload, ...)
 	. = ..()
