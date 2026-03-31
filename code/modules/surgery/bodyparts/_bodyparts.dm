@@ -33,6 +33,9 @@
 	var/burn_dam = 0
 	var/max_damage = 0
 
+	/// How efficient this limb is at performing... whatever it performs
+	var/limb_efficiency = 100
+
 	var/cremation_progress = 0 //Gradually increases while burning when at full damage, destroys the limb when at 100
 
 	var/brute_reduction = 0 //Subtracted to brute damage taken
@@ -105,6 +108,15 @@
 	var/chronic_pain = 0
 	var/chronic_pain_type = null
 	var/last_severe_injury_time = 0
+
+	/// Maximum amount of teeth this limb can hae
+	var/max_teeth = 0
+	/// Lisp modifier for when this limb is missing teeth
+	var/datum/speech_modifier/lisp/teeth_mod
+	/// List of tooth bundles in this jaw
+	var/list/obj/item/natural/bundle/teeth/teeth = null
+	///our default tooth
+	var/default_tooth = /obj/item/natural/bundle/teeth
 
 /obj/item/bodypart/Initialize()
 	. = ..()
@@ -278,6 +290,31 @@
 		qdel(I)
 	skeletonized = TRUE
 
+/// Proc for knocking teeth off from suitable bodyparts
+/obj/item/bodypart/proc/knock_out_teeth(amount = 1, throw_dir = NONE, throw_range = -1)
+	return
+
+/// Returns how many teeth we currently have
+/obj/item/bodypart/proc/get_teeth_amount()
+	return 0
+
+/// Updates our lisp and other teeth related stuff
+/obj/item/bodypart/proc/update_teeth()
+	return FALSE
+
+/// Fills the bodypart with it's maximum amount of teeth of default teeth
+/obj/item/bodypart/proc/fill_teeth()
+    if(!max_teeth)
+        return FALSE
+    if(!teeth)
+        teeth = list()
+    var/obj/item/natural/bundle/teeth/default_bundle = locate(/obj/item/natural/bundle/teeth) in teeth
+    if(!default_bundle)
+        default_bundle = new default_tooth(src)
+        teeth += default_bundle
+    default_bundle.amount = max_teeth
+    return TRUE
+
 /obj/item/bodypart/chest/skeletonize(lethal = TRUE)
 	. = ..()
 	if(lethal && owner && !(NOBLOOD in owner.dna?.species?.species_traits))
@@ -356,6 +393,23 @@
 			last_severe_injury_time = world.time
 
 	return update_bodypart_damage_state() || .
+
+/obj/item/bodypart/proc/add_pain(amount)
+	if(!amount || !owner)
+		return
+	if(owner.status_flags & GODMODE)
+		return
+	lingering_pain += amount
+	var/current_damage_percent = ((brute_dam + burn_dam) / max_damage) * 100
+	if(current_damage_percent > 60)
+		last_severe_injury_time = world.time
+	if(owner.stat < DEAD)
+		if(amount < 10)
+			owner.flash_fullscreen("redflash1")
+		else if(amount < 20)
+			owner.flash_fullscreen("redflash2")
+		else
+			owner.flash_fullscreen("redflash3")
 
 //Heals brute and burn damage for the organ. Returns 1 if the damage-icon states changed at all.
 //Damage cannot go below zero.
@@ -502,6 +556,25 @@
 				SIGNAL_REMOVETRAIT(TRAIT_PARALYSIS),
 				))
 		set_disabled(FALSE)
+
+//Updates limb efficiency based on tendons, nerves and arteries
+/obj/item/bodypart/proc/update_limb_efficiency()
+	var/divisor = 0
+	limb_efficiency = 0
+	if(divisor)
+		limb_efficiency /= divisor
+	// no tendon, nerve nor artery!
+	else
+		limb_efficiency = 100
+	// wounds decrease limb efficiency
+	for(var/datum/wound/hurty as anything in wounds)
+		limb_efficiency -= hurty.limb_efficiency_reduction
+	// if we have teeth, amount of teeth impacts efficiency
+	if(max_teeth)
+		limb_efficiency -= (100 * (1 - get_teeth_amount()/max_teeth))
+
+	limb_efficiency = max(0, CEILING(limb_efficiency, 1))
+
 
 ///Called when TRAIT_PARALYSIS is added to the limb.
 /obj/item/bodypart/proc/on_paralysis_trait_gain(obj/item/bodypart/source)

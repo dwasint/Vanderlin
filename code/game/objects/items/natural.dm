@@ -64,6 +64,7 @@
 	var/icon3 = null
 	var/stacktype = /obj/item/natural/fibers
 	var/stackname = "fibers"
+	var/bundle_verb = "bundle"
 	var/items_per_increase = 5
 
 	var/base_width = 32
@@ -145,7 +146,7 @@
 
 /obj/item/natural/bundle/examine(mob/user)
 	. = ..()
-	. += span_notice("There are [amount] [stackname] in this bundle.")
+	. += span_notice("There are [amount] [stackname] in this [bundle_verb].")
 
 /obj/item/natural/bundle/pre_attack_secondary(atom/A, mob/living/user, list/modifiers)
 	. = ..()

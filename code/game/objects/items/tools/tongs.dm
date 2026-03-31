@@ -90,6 +90,38 @@
 			return TRUE
 	return ..()
 
+/obj/item/weapon/tongs/attack(mob/living/carbon/attacked, mob/living/user, list/modifiers)
+	if(!istype(attacked))
+		return ..()
+	switch(user.zone_selected)
+		if(BODY_ZONE_PRECISE_MOUTH)
+			var/obj/item/bodypart/mouth/jaw = attacked.get_bodypart(BODY_ZONE_PRECISE_MOUTH)
+			if(!jaw)
+				to_chat(user, span_danger("[attacked.p_they(TRUE)] have no mouth and they must scream!"))
+				return
+			if(!jaw.get_teeth_amount())
+				to_chat(user, span_danger("[attacked.p_they(TRUE)] don't have any teeth left!"))
+				return
+			attacked.visible_message(span_warning("<b>[user]</b> shoves [src] into <b>[attacked]</b>'s mouth!"), \
+							span_userdanger("<b>[user]</b> is trying to rip my teeth off!!"), \
+							vision_distance = COMBAT_MESSAGE_RANGE, \
+							ignored_mobs = user)
+			to_chat(user, span_danger("I start ripping <b>[attacked]</b>'s tooth out!"))
+			if(do_after(user, 3 SECONDS, attacked))
+				attacked.visible_message(span_danger("<b>[user]</b> rips a tooth out of <b>[attacked]</b>'s mouth!"), \
+								span_userdanger("FUCK!!!"), \
+								vision_distance = COMBAT_MESSAGE_RANGE, \
+								ignored_mobs = user)
+				to_chat(user, span_danger("I rip <b>[attacked]</b>'s tooth out!"))
+				jaw.knock_out_teeth(1, pick(GLOB.alldirs))
+				attacked.emote("scream", intentional = TRUE)
+				jaw.add_pain(25)
+				if(hott)
+					to_chat(attacked, span_userdanger("The hot metal sears the socket!"))
+					jaw.receive_damage(0, 10)
+			return
+	return ..()
+
 /obj/item/weapon/tongs/getonmobprop(tag)
 	. = ..()
 	if(tag)
