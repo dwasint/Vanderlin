@@ -553,7 +553,7 @@
 				used -= 10
 			if(prob(used))
 				LAZYADD(attempted_wounds, /datum/wound/artery)
-				if(bclass in GLOB.stab_bclasses && !resistance)
+				if((bclass in GLOB.stab_bclasses) && !resistance)
 					var/obj/item/organ/tongue/tongue = owner.getorganslot(ORGAN_SLOT_TONGUE)
 					if(!tongue || has_wound(/datum/wound/facial/tongue))
 						LAZYADD(attempted_wounds, /datum/wound/fracture/mouth)
