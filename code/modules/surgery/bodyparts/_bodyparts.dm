@@ -136,6 +136,8 @@
 		qdel(wound)
 	if(bandage)
 		QDEL_NULL(bandage)
+	QDEL_LIST(teeth)
+
 	embedded_objects = null
 	original_owner = null
 	return ..()
