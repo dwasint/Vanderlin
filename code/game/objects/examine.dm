@@ -65,4 +65,5 @@
 		return
 	if(weight < 1)
 		. += "It weighs around [round(weight * 1000, 1)]g."
+		return
 	. += "It weighs around [round(weight, 0.01)]kg."
