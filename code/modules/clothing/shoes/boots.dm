@@ -100,7 +100,7 @@
 	sellprice = 10
 	salvage_result = /obj/item/natural/hide/cured
 	salvage_amount = 1
-	item_weight = 3
+	item_weight = 1.9 KILOGRAMS
 	max_integrity = INTEGRITY_STANDARD
 	wetable = FALSE
 
@@ -147,7 +147,7 @@
 	armor = list("blunt" = 30, "slash" = 10, "stab" = 20,  "piercing" = 0, "fire" = 0, "acid" = 0)
 	salvage_result = /obj/item/natural/fur
 	salvage_amount = 1
-	item_weight = 3
+	item_weight = 0.9 KILOGRAMS
 	min_cold_protection_temperature = -20
 	wetable = FALSE
 
@@ -177,7 +177,7 @@
 	armor = list("blunt" = 5, "slash" = 5, "stab" = 5,  "piercing" = 0, "fire" = 0, "acid" = 0) //Thinks its fair for a piece of cloth and fiber.
 	salvage_result = /obj/item/natural/cloth
 	salvage_amount = 1
-	item_weight = 2
+	item_weight = 125 GRAMS
 
 /obj/item/clothing/shoes/boots/armor/silver
 	name = "silver boots"
