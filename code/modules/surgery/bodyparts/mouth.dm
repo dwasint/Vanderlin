@@ -116,15 +116,15 @@
 	fill_teeth()
 
 /obj/item/bodypart/mouth/proc/replace_teeth(teeth_type)
-    if(teeth)
-        for(var/obj/item/natural/bundle/teeth/bundle in teeth)
-            qdel(bundle)
-        teeth = null
+	if(teeth)
+		for(var/obj/item/natural/bundle/teeth/bundle in teeth)
+			qdel(bundle)
+		teeth = null
 
-    var/obj/item/natural/bundle/teeth/new_bundle = new teeth_type(null)
-    new_bundle.amount = max_teeth
-    teeth = list(new_bundle)
-    update_teeth()
+	var/obj/item/natural/bundle/teeth/new_bundle = new teeth_type(null)
+	new_bundle.amount = max_teeth
+	teeth = list(new_bundle)
+	update_teeth()
 
 /obj/item/bodypart/mouth/get_limb_icon(dropped, hideaux = FALSE)
 	if(dropped && !isbodypart(loc))
@@ -154,6 +154,26 @@
 	update_limb_efficiency()
 	return TRUE
 
+/obj/item/bodypart/mouth/proc/remove_teeth(amount)
+	if(!amount || !get_teeth_amount())
+		return 0
+	amount = clamp(amount, 0, get_teeth_amount())
+	var/removed = 0
+	for(var/i in 1 to amount)
+		if(!get_teeth_amount())
+			break
+		var/list/weighted = list()
+		for(var/obj/item/natural/bundle/teeth/bundle in teeth)
+			if(bundle.amount > 0)
+				weighted[bundle] = bundle.amount
+		var/obj/item/natural/bundle/teeth/chosen = pickweight(weighted)
+		chosen.amount--
+		if(!chosen.amount)
+			teeth -= chosen
+			qdel(chosen)
+		removed++
+	update_teeth()
+	return removed
 
 /obj/item/bodypart/mouth/knock_out_teeth(amount = 1, throw_dir = NONE, throw_range = -1)
 	if(SSticker.current_state < GAME_STATE_PLAYING)
