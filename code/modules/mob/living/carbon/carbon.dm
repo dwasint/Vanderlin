@@ -1305,7 +1305,9 @@
 	if(!istype(attributes))
 		//10 st = 10 kg basic lift
 		return 10
-	return CEILING((GET_MOB_ATTRIBUTE_VALUE(src, STAT_STRENGTH)**2)/10, 1)
+	if(GET_MOB_ATTRIBUTE_VALUE(src, STAT_STRENGTH) <= 0)
+		return 3
+	return max(CEILING((GET_MOB_ATTRIBUTE_VALUE(src, STAT_STRENGTH)**2)/10, 1), 3)
 
 /mob/living/carbon/proc/update_maximum_carry_weight()
 	maximum_carry_weight = get_basic_lift() * 10
@@ -1381,11 +1383,11 @@
 /mob/living/carbon/proc/update_encumbrance_movespeed_modifier()
     switch(encumbrance)
         if(ENCUMBRANCE_EXTREME)
-            add_movespeed_modifier(MOVESPEED_ID_ENCUMBRANCE, override = TRUE, multiplicative_slowdown = 4.62)
-        if(ENCUMBRANCE_HEAVY)
             add_movespeed_modifier(MOVESPEED_ID_ENCUMBRANCE, override = TRUE, multiplicative_slowdown = 3.85)
+        if(ENCUMBRANCE_HEAVY)
+            add_movespeed_modifier(MOVESPEED_ID_ENCUMBRANCE, override = TRUE, multiplicative_slowdown = 2.4)
         if(ENCUMBRANCE_MEDIUM)
-            add_movespeed_modifier(MOVESPEED_ID_ENCUMBRANCE, override = TRUE, multiplicative_slowdown = 2.50)
+            add_movespeed_modifier(MOVESPEED_ID_ENCUMBRANCE, override = TRUE, multiplicative_slowdown = 1.45)
         if(ENCUMBRANCE_LIGHT)
             add_movespeed_modifier(MOVESPEED_ID_ENCUMBRANCE, override = TRUE, multiplicative_slowdown = 0.34)
         if(ENCUMBRANCE_NONE)

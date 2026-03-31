@@ -11,7 +11,7 @@
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide/cured
 	dyeable = TRUE
-	item_weight = 4
+	item_weight = 750 GRAMS
 	/// Max amount of ammo to hold
 	var/max_storage
 	/// Instances of ammo this contains

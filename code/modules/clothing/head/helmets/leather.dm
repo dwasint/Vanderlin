@@ -58,7 +58,7 @@
 	prevent_crits =  MINOR_CRITICALS
 	max_integrity = INTEGRITY_POOR
 	clothing_flags = NONE
-	item_weight = 0.5
+	item_weight = 125 GRAMS
 
 /obj/item/clothing/head/helmet/leather/headscarf/colored
 	misc_flags = CRAFTING_TEST_EXCLUDE

@@ -12,5 +12,5 @@
 	gender = PLURAL
 	grid_width = 32
 	grid_height = 64
-	item_weight = 4
+	item_weight = 3 KILOGRAMS
 	abstract_type = /obj/item/clothing/wrists
