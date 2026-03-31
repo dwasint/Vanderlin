@@ -1325,6 +1325,7 @@
 				continue
 
 		maximum_carry_weight += carry_weight_mod.carry_weight_add
+	update_encumbrance()
 
 /mob/living/carbon/proc/update_carry_weight()
 	. = 0
