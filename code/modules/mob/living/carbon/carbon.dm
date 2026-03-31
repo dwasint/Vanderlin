@@ -1374,13 +1374,13 @@
 	var/basic_lift = maximum_carry_weight/10
 	if(carry_weight >= (basic_lift*10))
 		encumbrance = ENCUMBRANCE_EXTREME
-		add_or_update_variable_fatigue_modifier(/datum/fatigue_modifier/weight, TRUE, -50)
+		add_or_update_variable_fatigue_modifier(/datum/fatigue_modifier/weight, TRUE, -400)
 	else if(carry_weight >= (basic_lift*6))
 		encumbrance = ENCUMBRANCE_HEAVY
-		add_or_update_variable_fatigue_modifier(/datum/fatigue_modifier/weight, TRUE, -25)
+		add_or_update_variable_fatigue_modifier(/datum/fatigue_modifier/weight, TRUE, -250)
 	else if(carry_weight >= (basic_lift*3))
 		encumbrance = ENCUMBRANCE_MEDIUM
-		add_or_update_variable_fatigue_modifier(/datum/fatigue_modifier/weight, TRUE, 0)
+		add_or_update_variable_fatigue_modifier(/datum/fatigue_modifier/weight, TRUE, -100)
 	else if(carry_weight >= (basic_lift*2))
 		encumbrance = ENCUMBRANCE_LIGHT
 		add_or_update_variable_fatigue_modifier(/datum/fatigue_modifier/weight, TRUE, 0)
