@@ -42,7 +42,7 @@
 	if(mind)
 		athletics = GET_MOB_SKILL_VALUE(src, /datum/attribute/skill/misc/athletics) / 10
 
-	var/base = endurance * 10
+	var/base = endurance * 15
 	var/bonus = athletics * 5
 
 	bonus = min(bonus, 50)
