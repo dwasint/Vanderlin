@@ -3901,6 +3901,7 @@
 #include "code\modules\surgery\surgeries\external_organs.dm"
 #include "code\modules\surgery\surgeries\extract_chimeric_node.dm"
 #include "code\modules\surgery\surgeries\extract_lux.dm"
+#include "code\modules\surgery\surgeries\extract_tooth.dm"
 #include "code\modules\surgery\surgeries\fix_teeth.dm"
 #include "code\modules\surgery\surgeries\fracture.dm"
 #include "code\modules\surgery\surgeries\healing.dm"

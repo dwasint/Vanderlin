@@ -14,6 +14,7 @@
 	maxamount = 32
 	stacktype = /obj/item/natural/teeth
 	items_per_increase = 16
+	item_flags = SURGICAL_TOOL
 
 /obj/item/natural/teeth
 	name = "tooth"
@@ -23,6 +24,7 @@
 	base_icon_state = "tooth"
 	throwforce = 0
 	force = 0
+	item_flags = SURGICAL_TOOL
 	bundletype = /obj/item/natural/bundle/teeth
 	var/icon_state_variation = 4
 	var/fang_bonus = 0
@@ -105,7 +107,7 @@
 	body_zone = BODY_ZONE_PRECISE_MOUTH
 	body_part = MOUTH
 	max_damage = 50
-	max_teeth = 3
+	max_teeth = 32
 	should_render = TRUE
 
 /obj/item/bodypart/mouth/Initialize(mapload)
