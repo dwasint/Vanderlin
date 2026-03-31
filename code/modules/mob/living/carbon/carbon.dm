@@ -1331,11 +1331,7 @@
 		if(isnull(worn_item))
 			continue
 		. += worn_item.get_carry_weight(src)
-	var/modifier = 1
-	if(HAS_TRAIT(src, TRAIT_HOLLOWBONES))
-		modifier = 4
-
-	carry_weight = . * modifier
+	carry_weight = .
 	update_encumbrance()
 
 /mob/living/proc/get_mob_weight()
@@ -1357,11 +1353,7 @@
 		//For now, let's assume our friend weighs 60kg
 		. += friend.get_mob_weight()
 
-	var/modifier = 1
-	if(HAS_TRAIT(src, TRAIT_HOLLOWBONES))
-		modifier = 4
-
-	carry_weight = . * modifier
+	carry_weight = .
 	update_encumbrance()
 	if(buckled && ishuman(buckled))
 		var/mob/living/carbon/human/buckle_human = buckled
