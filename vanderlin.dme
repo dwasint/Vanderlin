@@ -203,7 +203,6 @@
 #include "code\__DEFINES\wall_dents.dm"
 #include "code\__DEFINES\weapons.dm"
 #include "code\__DEFINES\weaponsounds.dm"
-#include "code\__DEFINES\weights.dm"
 #include "code\__DEFINES\werewolf.dm"
 #include "code\__DEFINES\whitelists.dm"
 #include "code\__DEFINES\wires.dm"

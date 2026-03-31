@@ -36,7 +36,7 @@
 	armor = ARMOR_LEATHER_GOOD
 	body_parts_covered = COVERAGE_TORSO
 	prevent_crits = ALL_EXCEPT_BLUNT
-	item_weight = 7 * IRON_MULTIPLIER
+	item_weight = 3.2 KILOGRAMS
 	min_cold_protection_temperature = 5 //this is like fur but also its a fucking bikini like???
 
 	material_category = ARMOR_MAT_CHAINMAIL
@@ -60,7 +60,7 @@
 	body_parts_covered = COVERAGE_ALL_BUT_LEGS
 	max_integrity = INTEGRITY_STRONGEST
 	prevent_crits = ALL_EXCEPT_BLUNT
-	item_weight = 3.2 * IRON_MULTIPLIER
+	item_weight = 6.24 KILOGRAMS
 	stand_speed_reduction = 1.15
 
 /obj/item/clothing/armor/brigandine/Initialize()
@@ -102,7 +102,6 @@
 	body_parts_covered = COVERAGE_ALL_BUT_LEGS
 	max_integrity = INTEGRITY_STRONGEST
 	prevent_crits = ALL_EXCEPT_BLUNT
-	item_weight = 7 * STEEL_MULTIPLIER
 	uses_lord_coloring = LORD_PRIMARY
 	stand_speed_reduction = 1.15
 
