@@ -1,0 +1,4 @@
+author: "ChristianDenDanske"
+delete-after: True
+changes:
+  - bugfix: "Wild drowsbane not having a sprite, and renegade gun breaking when striking and firing decocked."
