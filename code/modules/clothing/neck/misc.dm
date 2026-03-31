@@ -135,6 +135,7 @@
 	body_parts_covered = NECK|HAIR|EARS|HEAD
 	max_integrity = INTEGRITY_POOR
 	prevent_crits = CUT_AND_MINOR_CRITS
+	item_weight = 850 GRAMS
 
 
 /obj/item/clothing/neck/coif/AdjustClothes(mob/user)
@@ -177,6 +178,7 @@
 	armor = ARMOR_PADDED
 	body_parts_covered = NECK|HAIR|EARS|HEAD
 	prevent_crits = MINOR_CRITICALS
+	item_weight = 250 GRAMS
 
 /obj/item/clothing/neck/coif/cloth/colored
 	misc_flags = CRAFTING_TEST_EXCLUDE
@@ -204,6 +206,7 @@
 	armor = ARMOR_LEATHER
 	max_integrity = INTEGRITY_WORST
 	prevent_crits = CUT_AND_MINOR_CRITS
+	item_weight = 275 GRAMS
 
 /obj/item/clothing/neck/bellcollar
 	name = "bell collar"
@@ -346,6 +349,7 @@
 	prevent_crits = ALL_EXCEPT_STAB
 
 	material_category = ARMOR_MAT_PLATE
+	item_weight = 1.13 KILOGRAMS
 
 /obj/item/clothing/neck/bevor/Initialize()
 	. = ..()
@@ -384,6 +388,7 @@
 	prevent_crits = ALL_EXCEPT_STAB
 
 	material_category = ARMOR_MAT_PLATE
+	item_weight = 900 GRAMS
 
 /obj/item/clothing/neck/gorget/Initialize()
 	. = ..()
@@ -542,6 +547,7 @@
 	prevent_crits = ALL_EXCEPT_BLUNT
 
 	material_category = ARMOR_MAT_CHAINMAIL
+	item_weight = 1.12 KILOGRAMS
 
 /obj/item/clothing/neck/highcollier/AdjustClothes(mob/user)
 	if(loc == user)
