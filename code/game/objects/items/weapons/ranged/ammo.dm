@@ -609,7 +609,7 @@
 	randomspread = 0
 	variance = 0
 	force = DAMAGE_KNIFE
-	item_weight = 70
+	item_weight = 70 KILOGRAMS
 	grid_width = 96
 	grid_height = 96
 	w_class = WEIGHT_CLASS_HUGE
