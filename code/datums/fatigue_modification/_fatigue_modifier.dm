@@ -51,7 +51,7 @@
 		BINARY_INSERT(type_or_datum.id, fatigue_modification, /datum/fatigue_modifier, type_or_datum, priority, COMPARE_VALUE)
 	LAZYSET(fatigue_modification, type_or_datum.id, type_or_datum)
 	if(update)
-		update_stamina()
+		update_energy_modifiers()
 	return TRUE
 
 /// Remove a move speed modifier from a mob, whether static or variable.
@@ -67,7 +67,7 @@
 		return FALSE
 	LAZYREMOVE(fatigue_modification, key)
 	if(update)
-		update_stamina()
+		update_energy_modifiers()
 	return TRUE
 
 /*! Used for variable slowdowns like hunger/health loss/etc, works somewhat like the old list-based modification adds. Returns the modifier datum if successful
@@ -110,7 +110,7 @@
 	if(inject)
 		add_fatigue_modifier(final, FALSE)
 	if(update && modified)
-		update_stamina()
+		update_energy_modifiers()
 	return final
 
 ///Is there a movespeed modifier for this mob

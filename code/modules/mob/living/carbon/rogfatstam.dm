@@ -1,4 +1,21 @@
 /mob/living/proc/update_stamina() //update hud and regen after last_fatigued delay on taking
+	var/delay = (HAS_TRAIT(src, TRAIT_APRICITY) && (GLOB.tod == DAWN || GLOB.tod == DAY)) ? 11 : 20
+	if(world.time > last_fatigued + delay) //regen fatigue
+		var/added = energy / max_energy
+		added = round(-10+ (added*-40))
+		if(HAS_TRAIT(src, TRAIT_MISSING_NOSE))
+			added = round(added * 0.5, 1)
+		//Assuming full energy bar give you 50 regen, this make it with the trait that even if you have higher endurance/athletics skill, which mean a higher fatigue bar, you won't have your regen halved
+		if(HAS_TRAIT(src, TRAIT_NOENERGY))
+			added = -50
+		if(stamina >= 1)
+			adjust_stamina(added)
+		else
+			stamina = 0
+
+	update_health_hud(TRUE)
+
+/mob/living/proc/update_stamina_modifiers()
 	. = base_max_stamina
 
 	var/list/conflict_tracker = list()
@@ -17,22 +34,6 @@
 
 	maximum_stamina = .
 	stamina = clamp(stamina, 0, maximum_stamina)
-
-	var/delay = (HAS_TRAIT(src, TRAIT_APRICITY) && (GLOB.tod == DAWN || GLOB.tod == DAY)) ? 11 : 20
-	if(world.time > last_fatigued + delay) //regen fatigue
-		var/added = energy / max_energy
-		added = round(-10+ (added*-40))
-		if(HAS_TRAIT(src, TRAIT_MISSING_NOSE))
-			added = round(added * 0.5, 1)
-		//Assuming full energy bar give you 50 regen, this make it with the trait that even if you have higher endurance/athletics skill, which mean a higher fatigue bar, you won't have your regen halved
-		if(HAS_TRAIT(src, TRAIT_NOENERGY))
-			added = -50
-		if(stamina >= 1)
-			adjust_stamina(added)
-		else
-			stamina = 0
-
-	update_health_hud(TRUE)
 
 /mob/living/carbon/proc/update_endurance_stamina_modifier()
 	var/endurance = GET_MOB_ATTRIBUTE_VALUE(src, STAT_ENDURANCE)
@@ -64,6 +65,10 @@
 	)
 
 /mob/living/proc/update_energy()
+	if(cmode && !HAS_TRAIT(src, TRAIT_BREADY))
+		adjust_energy(-2)
+
+/mob/living/proc/update_energy_modifiers()
 	. = base_max_energy
 
 	var/list/conflict_tracker = list()
@@ -82,9 +87,6 @@
 
 	max_energy = .
 	energy = clamp(energy, 0, max_energy)
-
-	if(cmode && !HAS_TRAIT(src, TRAIT_BREADY))
-		adjust_energy(-2)
 
 /mob/living/carbon/proc/update_endurance_fatigue_modifier()
 	var/endurance = GET_MOB_ATTRIBUTE_VALUE(src, STAT_ENDURANCE)
