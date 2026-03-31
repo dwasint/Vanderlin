@@ -103,7 +103,7 @@
 				to_chat(user, span_danger("[attacked.p_they(TRUE)] don't have any teeth left!"))
 				return
 			attacked.visible_message(span_warning("<b>[user]</b> shoves [src] into <b>[attacked]</b>'s mouth!"), \
-							span_userdanger("<b>[user]</b> is trying to rip my teeth off!!"), \
+							span_userdanger("<b>[user]</b> is trying to rip my tooth out!!"), \
 							vision_distance = COMBAT_MESSAGE_RANGE, \
 							ignored_mobs = user)
 			to_chat(user, span_danger("I start ripping <b>[attacked]</b>'s tooth out!"))
