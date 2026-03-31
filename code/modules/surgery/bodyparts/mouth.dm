@@ -58,6 +58,8 @@
 	force = 0
 	color = COLOR_ASSEMBLY_GOLD
 	bundletype = /obj/item/natural/bundle/teeth/gold
+	melting_material = /datum/material/gold
+	melt_amount = 10
 
 /obj/item/natural/bundle/teeth/fang
 	name = "pile of fangs"
