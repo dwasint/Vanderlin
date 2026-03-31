@@ -157,6 +157,7 @@
 	slot_flags = ITEM_SLOT_MOUTH|ITEM_SLOT_HIP
 	lumber_amount = 0
 	lumber = null
+	item_weight = 121 GRAMS
 
 /obj/item/grown/log/tree/stick/apply_components()
 	return
