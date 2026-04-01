@@ -91,7 +91,9 @@
 			if(ispath(attribute_type, /datum/attribute/skill))
 				min_value = attributes.skill_min
 				max_value = attributes.skill_max
+			var/old_value = attributes.raw_attribute_list[attribute_type]
 			attributes.raw_attribute_list[attribute_type] = clamp(new_value, min_value, max_value)
+			attributes.on_skill_level_changed(attribute_type, attributes.raw_attribute_list[attribute_type], old_value)
 			attributes.update_attributes()
 			attributes.seed_skill_xp(attribute_type)
 		if("null_var")

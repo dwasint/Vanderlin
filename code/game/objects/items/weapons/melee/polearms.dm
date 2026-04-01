@@ -154,35 +154,6 @@
 	melting_material = /datum/material/steel
 	item_weight = 2.7 KILOGRAMS
 
-/obj/item/weapon/polearm/spear/assegai
-	name = "iron assegai"
-	desc = "A long throwing spear originating from the east."
-	icon = 'icons/roguetown/weapons/64/polearms.dmi'
-	icon_state = "assegai_iron"
-	force = DAMAGE_SPEAR
-	force_wielded = DAMAGE_SPEARPLUS + 2
-	throwforce = DAMAGE_SPEAR_WIELD
-	wbalance = GOOD_PARRY
-	wlength = WLENGTH_LONG
-	minstr = 6
-
-	gripsprite = FALSE
-	throw_speed = 2
-	embedding = list("embedded_pain_multiplier" = 3, "embed_chance" = 50, "embedded_fall_chance" = 0, "embedded_ignore_throwspeed_threshold" = 1)
-	item_weight = 1.5 KILOGRAMS
-
-/obj/item/weapon/polearm/spear/assegai/steel
-	name = "steel assegai"
-	icon = 'icons/roguetown/weapons/64/polearms.dmi'
-	icon_state = "assegai_steel"
-	force = DAMAGE_SPEARPLUS
-	force_wielded = DAMAGE_SPEAR_WIELD - 3
-	wbalance = GREAT_PARRY
-	max_blade_int = 200
-
-	gripsprite = FALSE
-	melting_material = /datum/material/steel
-	item_weight = 1.8 KILOGRAMS
 
 //................ Psydonian Spear ............... //
 /obj/item/weapon/polearm/spear/psydon
@@ -277,6 +248,36 @@
 	item_weight = 1.5 KILOGRAMS
 
 //................ Javelin ............... //
+/obj/item/weapon/polearm/spear/assegai
+	name = "iron assegai"
+	desc = "A long throwing spear originating from the east."
+	icon = 'icons/roguetown/weapons/64/polearms.dmi'
+	icon_state = "assegai_iron"
+	force = DAMAGE_SPEAR
+	force_wielded = DAMAGE_SPEARPLUS + 2
+	throwforce = DAMAGE_SPEAR_WIELD
+	wbalance = GOOD_PARRY
+	wlength = WLENGTH_LONG
+	minstr = 6
+
+	gripsprite = FALSE
+	throw_speed = 2
+	embedding = list("embedded_pain_multiplier" = 3, "embed_chance" = 50, "embedded_fall_chance" = 0, "embedded_ignore_throwspeed_threshold" = 1)
+	item_weight = 1.5 KILOGRAMS
+
+/obj/item/weapon/polearm/spear/assegai/steel
+	name = "steel assegai"
+	icon = 'icons/roguetown/weapons/64/polearms.dmi'
+	icon_state = "assegai_steel"
+	force = DAMAGE_SPEARPLUS
+	force_wielded = DAMAGE_SPEAR_WIELD - 3
+	wbalance = GREAT_PARRY
+	max_blade_int = 200
+
+	gripsprite = FALSE
+	melting_material = /datum/material/steel
+	item_weight = 1.8 KILOGRAMS
+
 /obj/item/weapon/polearm/spear/stone/copper
 	name = "javelin"
 	desc = "Made for throwing, long out of favor and using inferior metals, it still can kill when the aim is true."
@@ -294,6 +295,52 @@
 	item_weight = 900 GRAMS
 
 /obj/item/weapon/polearm/spear/stone/copper/getonmobprop(tag)
+	. = ..()
+	if(tag)
+		switch(tag)
+			if("gen")
+				return list("shrink" = 0.7,"sx" = -7,"sy" = 2,"nx" = 7,"ny" = 3,"wx" = -2,"wy" = 1,"ex" = 1,"ey" = 1,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = -38,"sturn" = 37,"wturn" = 30,"eturn" = -30,"nflip" = 0,"sflip" = 8,"wflip" = 8,"eflip" = 0)
+			if("wielded")
+				return list("shrink" = 0.7,"sx" = 5,"sy" = -3,"nx" = -5,"ny" = -2,"wx" = -5,"wy" = -1,"ex" = 3,"ey" = -2,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 7,"sturn" = -7,"wturn" = 16,"eturn" = -22,"nflip" = 8,"sflip" = 0,"wflip" = 8,"eflip" = 0)
+
+/obj/item/weapon/polearm/spear/bone
+	name = "bone javelin"
+	desc = "Made by the tribes of the wilds for hunting, this spear has will eventually kill your prey, if aim remains true."
+	icon_state = "bspear"
+	throwforce = DAMAGE_SPEAR_WIELD
+	max_blade_int = 60
+	max_integrity = INTEGRITY_POOR
+	minstr = 6
+	anvilrepair = /datum/attribute/skill/craft/crafting
+	dropshrink = 0.9
+	sellprice = 5
+	throw_speed = 4
+	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 50, "embedded_fall_chance" = 0, "embedded_ignore_throwspeed_threshold" = 1)
+
+/obj/item/weapon/polearm/spear/bone/getonmobprop(tag)
+	. = ..()
+	if(tag)
+		switch(tag)
+			if("gen")
+				return list("shrink" = 0.7,"sx" = -7,"sy" = 2,"nx" = 7,"ny" = 3,"wx" = -2,"wy" = 1,"ex" = 1,"ey" = 1,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = -38,"sturn" = 37,"wturn" = 30,"eturn" = -30,"nflip" = 0,"sflip" = 8,"wflip" = 8,"eflip" = 0)
+			if("wielded")
+				return list("shrink" = 0.7,"sx" = 5,"sy" = -3,"nx" = -5,"ny" = -2,"wx" = -5,"wy" = -1,"ex" = 3,"ey" = -2,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 7,"sturn" = -7,"wturn" = 16,"eturn" = -22,"nflip" = 8,"sflip" = 0,"wflip" = 8,"eflip" = 0)
+
+/obj/item/weapon/polearm/spear/trollbone
+	name = "troll-horn bone javelin"
+	desc = "Made by the tribes of the wilds for hunting, and strengthed with a troll's horn, this spear has will outlast your prey, if aim remains true."
+	icon_state = "bspear"
+	throwforce = DAMAGE_SPEAR_WIELD
+	max_blade_int = 60
+	max_integrity = INTEGRITY_POOR
+	minstr = 6
+	anvilrepair = /datum/attribute/skill/craft/crafting
+	dropshrink = 0.9
+	sellprice = 5
+	throw_speed = 4
+	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 50, "embedded_fall_chance" = 0, "embedded_ignore_throwspeed_threshold" = 1)
+
+/obj/item/weapon/polearm/spear/trollbone/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)
@@ -358,6 +405,8 @@
 	melt_amount = 75
 	sellprice = 20
 	item_weight = 3 KILOGRAMS
+
+	weapon_special = /datum/special_intent/axe_swing
 
 /obj/item/weapon/woodchopper/getonmobprop(tag)
 	. = ..()
@@ -513,6 +562,8 @@
 	sellprice = 60
 	item_weight = 4 KILOGRAMS
 
+	weapon_special = /datum/special_intent/ground_smash
+
 /obj/item/weapon/polearm/eaglebeak/getonmobprop(tag)
 	. = ..()
 	if(tag)
@@ -617,6 +668,7 @@
 	force = DAMAGE_SPEARPLUS
 	force_wielded = DAMAGE_SPEAR_WIELD - 3
 	throwforce = DAMAGE_SPEARPLUS + 2
+	anvilrepair = /datum/attribute/skill/craft/crafting
 	max_blade_int = 75
 	max_integrity = INTEGRITY_WORST * 0.8
 	minstr = 6
@@ -628,6 +680,26 @@
 	w_class = WEIGHT_CLASS_BULKY
 	melting_material = null
 	item_weight = 1.5 KILOGRAMS
+
+/obj/item/weapon/polearm/spear/trollbonespear
+	name = "troll-horn bone spear"
+	desc = "A spear made of bones, strengthed with an troll's horn."
+	// icon_state = "bonespear"
+	icon_state = "stonespear_sk"
+	force = DAMAGE_SPEARPLUS
+	force_wielded = DAMAGE_SPEAR_WIELD - 3
+	throwforce = DAMAGE_SPEARPLUS + 2
+	anvilrepair = /datum/attribute/skill/craft/crafting
+	max_blade_int = 125
+	max_integrity = INTEGRITY_WORST * 0.8 + 50
+	minstr = 6
+
+	inhand_x_dimension = 64
+	inhand_y_dimension = 64
+	bigboy = TRUE
+	gripsprite = TRUE
+	w_class = WEIGHT_CLASS_BULKY
+	melting_material = null
 
 /obj/item/weapon/polearm/spear/naginata
 	name = "naginata"
