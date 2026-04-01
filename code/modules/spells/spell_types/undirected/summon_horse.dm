@@ -6,6 +6,7 @@ GLOBAL_VAR_INIT(nya_catmodder_go, FALSE)
 	set desc = ":3."
 
 	GLOB.nya_catmodder_go = !GLOB.nya_catmodder_go
+	message_admins("///＞︿＜/// Nya~ Catmodder mode is [GLOB.nya_catmodder_go ? "on" : "off"] ≽^-⩊-^≼")
 
 
 /datum/job/after_spawn(mob/living/carbon/human/spawned, client/player_client, clear_job_stats)
