@@ -116,6 +116,18 @@
 	. = ..()
 	fill_teeth()
 
+/obj/item/bodypart/mouth/inspect_limb(mob/user)
+	. = ..()
+	var/current_teeth = get_teeth_amount()
+	if(current_teeth >= max_teeth)
+		return
+	if(!current_teeth)
+		. += "[src] has no teeth remaining."
+		return
+	var/missing = max_teeth - current_teeth
+	. += "[src] is missing [missing] tooth\s."
+
+
 /obj/item/bodypart/mouth/proc/replace_teeth(teeth_type)
 	if(teeth)
 		for(var/obj/item/natural/bundle/teeth/bundle in teeth)
