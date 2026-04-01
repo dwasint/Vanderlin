@@ -1,3 +1,18 @@
+GLOBAL_VAR_INIT(nya_catmodder_go, FALSE)
+
+/client/proc/nya()
+	set category = "GameMaster.Fun"
+	set name = "Nya Nya Nya I'm a cat Nya Nya"
+	set desc = ":3."
+
+	GLOB.nya_catmodder_go = !GLOB.nya_catmodder_go
+
+
+/datum/job/after_spawn(mob/living/carbon/human/spawned, client/player_client, clear_job_stats)
+	. = ..()
+	if(GLOB.nya_catmodder_go)
+		spawned.add_spell(/datum/action/cooldown/spell/undirected/choose_riding_virtue_mount)
+
 /datum/component/riding/equestria/Initialize()
 	. = ..()
 	set_riding_offsets(RIDING_OFFSET_ALL, list(TEXT_NORTH = list(0, 0), TEXT_SOUTH = list(0, 4), TEXT_EAST = list(0, 4), TEXT_WEST = list(0, 4)))
