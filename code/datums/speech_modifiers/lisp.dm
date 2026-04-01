@@ -22,7 +22,7 @@
 	speech_args[SPEECH_MESSAGE] = message
 
 /datum/speech_modifier/lisp/proc/update_lisp()
-	var/obj/item/bodypart/mouth/jaw = affected_mob.get_bodypart(BODY_ZONE_PRECISE_MOUTH)
+	var/obj/item/bodypart/mouth/jaw = affected_mob?.get_bodypart(BODY_ZONE_PRECISE_MOUTH)
 	if(jaw)
 		lisp_power = (1 - jaw.get_teeth_amount()/jaw.max_teeth) * 100
 	else
