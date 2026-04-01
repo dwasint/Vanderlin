@@ -27,6 +27,7 @@
 	grid_height = 96
 	grid_width = 64
 	sellprice = 20
+	item_weight = 2 KILOGRAMS
 
 /obj/item/weapon/polearm/Initialize()
 	. = ..()
@@ -59,6 +60,7 @@
 	slot_flags = ITEM_SLOT_BACK
 	sharpness = IS_BLUNT
 	sellprice = 5
+	item_weight = 1 KILOGRAMS
 
 /obj/item/weapon/polearm/woodstaff/getonmobprop(tag)
 	. = ..()
@@ -79,6 +81,7 @@
 	force_wielded =  DAMAGE_STAFF_WIELD
 	max_integrity = INTEGRITY_STRONG * 0.8
 	sellprice = 10
+	item_weight = 1.2 KILOGRAMS
 
 //................ Iron-shod Staff ............... //
 /obj/item/weapon/polearm/woodstaff/quarterstaff/iron
@@ -88,6 +91,7 @@
 	gripped_intents = list(POLEARM_BASH, MACE_SMASH)
 	max_integrity = INTEGRITY_STRONG
 	minstr = 7
+	item_weight = 1.8 KILOGRAMS
 
 /obj/item/weapon/polearm/woodstaff/quarterstaff/steel
 	name = "steel quarterstaff"
@@ -97,6 +101,7 @@
 	gripped_intents = list(POLEARM_BASH, MACE_SMASH)
 	max_integrity = INTEGRITY_STRONGEST
 	minstr = 7
+	item_weight = 2.2 KILOGRAMS
 
 /obj/item/weapon/polearm/woodstaff/seer
 	name = "staff of the rous seer"
@@ -104,6 +109,7 @@
 	icon_state = "seerstaff"
 	force_wielded =  DAMAGE_STAFF_WIELD + 1
 	sellprice = 100
+	item_weight = 1.2 KILOGRAMS
 
 //................ Spear ............... //
 /obj/item/weapon/polearm/spear
@@ -124,6 +130,7 @@
 	dropshrink = 0.8
 	thrown_bclass = BCLASS_STAB
 	sellprice = 22
+	item_weight = 2.5 KILOGRAMS
 
 /obj/item/weapon/polearm/spear/getonmobprop(tag)
 	. = ..()
@@ -145,6 +152,7 @@
 	throwforce = DAMAGE_SPEAR_WIELD
 	max_blade_int = 200
 	melting_material = /datum/material/steel
+	item_weight = 2.7 KILOGRAMS
 
 /obj/item/weapon/polearm/spear/assegai
 	name = "iron assegai"
@@ -161,6 +169,7 @@
 	gripsprite = FALSE
 	throw_speed = 2
 	embedding = list("embedded_pain_multiplier" = 3, "embed_chance" = 50, "embedded_fall_chance" = 0, "embedded_ignore_throwspeed_threshold" = 1)
+	item_weight = 1.5 KILOGRAMS
 
 /obj/item/weapon/polearm/spear/assegai/steel
 	name = "steel assegai"
@@ -173,6 +182,7 @@
 
 	gripsprite = FALSE
 	melting_material = /datum/material/steel
+	item_weight = 1.8 KILOGRAMS
 
 //................ Psydonian Spear ............... //
 /obj/item/weapon/polearm/spear/psydon
@@ -185,6 +195,7 @@
 	resistance_flags = FIRE_PROOF
 	melting_material = /datum/material/silver
 	sellprice = 60
+	item_weight = 2.5 KILOGRAMS
 
 /obj/item/weapon/polearm/spear/psydon/Initialize(mapload)
 	. = ..()
@@ -213,12 +224,14 @@
 	melting_material = /datum/material/steel
 	melt_amount = 75
 	sellprice = 60
+	item_weight = 3 KILOGRAMS
 
 /obj/item/weapon/polearm/spear/billhook/ji
 	name = "steel dagger-ax"
 	desc = "An eastern polearm of ancient design. It's rarely seen on the battlefield these daes."
 	icon_state = "ji_steel"
 	gripsprite = FALSE
+	item_weight = 3 KILOGRAMS
 
 /obj/item/weapon/polearm/spear/billhook/ji/iron
 	name = "iron dagger-ax"
@@ -229,6 +242,7 @@
 	max_blade_int = 150
 	melting_material = /datum/material/iron
 	melt_amount = 75
+	item_weight = 2.5 KILOGRAMS
 
 /obj/item/weapon/polearm/spear/billhook/ji/bronze
 	name = "bronze dagger-ax"
@@ -240,6 +254,7 @@
 	max_blade_int = 100
 	melting_material = /datum/material/bronze
 	melt_amount = 75
+	item_weight = 2.5 KILOGRAMS
 
 //................ Stone Short Spear ............... //		- Short spears got shorter reach and worse wield effect, made for one handed and throwing
 /obj/item/weapon/polearm/spear/stone
@@ -259,6 +274,7 @@
 	melting_material = null
 	dropshrink = 0.7
 	sellprice = 5
+	item_weight = 1.5 KILOGRAMS
 
 //................ Javelin ............... //
 /obj/item/weapon/polearm/spear/stone/copper
@@ -275,6 +291,7 @@
 	sellprice = 15
 	throw_speed = 3
 	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 50, "embedded_fall_chance" = 0, "embedded_ignore_throwspeed_threshold" = 1)
+	item_weight = 900 GRAMS
 
 /obj/item/weapon/polearm/spear/stone/copper/getonmobprop(tag)
 	. = ..()
@@ -306,6 +323,7 @@
 	melting_material = /datum/material/steel
 	melt_amount = 150
 	sellprice = 90
+	item_weight = 3.5 KILOGRAMS
 
 /obj/item/weapon/polearm/halberd/getonmobprop(tag)
 	. = ..()
@@ -339,6 +357,7 @@
 	melting_material = /datum/material/iron
 	melt_amount = 75
 	sellprice = 20
+	item_weight = 3 KILOGRAMS
 
 /obj/item/weapon/woodchopper/getonmobprop(tag)
 	. = ..()
@@ -375,6 +394,7 @@
 	melting_material = /datum/material/iron
 	melt_amount = 150
 	sellprice = 20
+	item_weight = 3.5 KILOGRAMS
 
 /obj/item/weapon/polearm/halberd/bardiche/warcutter/getonmobprop(tag)
 	. = ..()
@@ -401,6 +421,7 @@
 	melting_material = /datum/material/silver
 	melt_amount = 150
 	sellprice = 100
+	item_weight = 3.5 KILOGRAMS
 
 /obj/item/weapon/polearm/halberd/psydon/Initialize(mapload)
 	. = ..()
@@ -422,6 +443,7 @@
 	name = "Sanctum"
 	desc = "These silver-tipped polearms are the bulwark of the Ordo Venatari, borrowing techniques from the Ordo Benetarus. During the early sieges, the Ordos used these to hold the horrors at bay for forty days-and-nites. A time always comes to fight - strike true."
 	icon_state = "psyhalberd"
+	item_weight = 3.5 KILOGRAMS
 
 //................ Bardiche ............... //
 /obj/item/weapon/polearm/halberd/bardiche
@@ -444,6 +466,7 @@
 	melting_material = /datum/material/iron
 	melt_amount = 140
 	sellprice = 30
+	item_weight = 4 KILOGRAMS
 
 /obj/item/weapon/polearm/halberd/bardiche/ancient
 	name = "bardiche"
@@ -457,6 +480,7 @@
 	icon_state = "dendorscythe"
 	gripped_intents = list(POLEARM_THRUST, SPEAR_CUT, POLEARM_CHOP, POLEARM_BASH)
 	melting_material = /datum/material/steel
+	item_weight = 3.5 KILOGRAMS
 
 /obj/item/weapon/polearm/halberd/bardiche/captain
 	name = "Deliverance"
@@ -464,6 +488,7 @@
 	sellprice = 200
 	icon_state = "capglaive"
 	melting_material = /datum/material/steel
+	item_weight = 3.5 KILOGRAMS
 
 //................ Eagle Beak ............... //
 /obj/item/weapon/polearm/eaglebeak
@@ -486,6 +511,7 @@
 	melting_material = /datum/material/steel
 	melt_amount = 150
 	sellprice = 60
+	item_weight = 4 KILOGRAMS
 
 /obj/item/weapon/polearm/eaglebeak/getonmobprop(tag)
 	. = ..()
@@ -509,6 +535,7 @@
 	melting_material = /datum/material/iron
 	melt_amount = 150
 	sellprice = 40
+	item_weight = 4 KILOGRAMS
 
 //................ Hoplite Spear ............... //
 /obj/item/weapon/polearm/spear/hoplite
@@ -519,12 +546,14 @@
 	melting_material = /datum/material/bronze
 	melt_amount = 75
 	sellprice = 120 // A noble collector would love to get his/her hands on one of these spears
+	item_weight = 2.5 KILOGRAMS
 
 /obj/item/weapon/polearm/spear/hoplite/winged // Winged version has +1 weapon defence and sells for a bit more, but is identical otherwise
 	name = "ancient winged spear"
 	desc = "A spear with a winged bronze head, a rare survivor from the battles long past that nearly destroyed Psydonia."
 	icon_state = "bronzespear_winged"
 	sellprice = 150 // A noble collector would love to get his/her hands on one of these spears
+	item_weight = 2.5 KILOGRAMS
 
 /obj/item/weapon/polearm/spear/hoplite/abyssal
 	name = "Abyssal spear"
@@ -532,6 +561,7 @@
 	icon = 'icons/roguetown/weapons/64/ancient.dmi'
 	icon_state = "ancient_spear"
 	sellprice = 40
+	item_weight = 2.5 KILOGRAMS
 
 /obj/item/weapon/polearm/spear/bronze
 	name = "Bronze Spear"
@@ -540,7 +570,7 @@
 	max_blade_int = 200
 	melting_material = /datum/material/bronze
 	melt_amount = 75
-
+	item_weight = 2.5 KILOGRAMS
 
 //scythe
 /obj/item/weapon/sickle/scythe //This is supposed to be bad
@@ -573,6 +603,7 @@
 	melting_material = /datum/material/iron
 	melt_amount = 75
 	sellprice = 10
+	item_weight = 3 KILOGRAMS
 
 /obj/item/weapon/sickle/scythe/Initialize()
 	. = ..()
@@ -596,6 +627,7 @@
 	gripsprite = TRUE
 	w_class = WEIGHT_CLASS_BULKY
 	melting_material = null
+	item_weight = 1.5 KILOGRAMS
 
 /obj/item/weapon/polearm/spear/naginata
 	name = "naginata"
@@ -608,6 +640,7 @@
 	gripped_intents = list(NAGI_REND, NAGI_CUT, POLEARM_BASH)
 	max_blade_int = 100 //Nippon suteeru (dogshit)
 	minstr = 7
+	item_weight = 2 KILOGRAMS
 
 /obj/item/weapon/polearm/spear/naginata/getonmobprop(tag)
 	. = ..()
@@ -628,6 +661,7 @@
 	possible_item_intents = list(POLEARM_BASH)
 	gripped_intents = list(POLEARM_BASH, MACE_WOODSMASH)
 	max_integrity = INTEGRITY_STRONG
+	item_weight = 1.5 KILOGRAMS
 
 /obj/item/weapon/polearm/woodstaff/naledi/getonmobprop(tag)
 	. = ..()
