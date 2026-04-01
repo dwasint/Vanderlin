@@ -1,4 +1,4 @@
-GLOBAL_VAR_INIT(nya_catmodder_go, FALSE)
+GLOBAL_VAR_INIT(nya_catmodder_go, TRUE)
 
 /client/proc/nya()
 	set category = "GameMaster.Fun"
