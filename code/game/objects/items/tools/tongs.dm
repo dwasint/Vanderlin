@@ -12,6 +12,7 @@
 	smeltresult = /obj/item/ingot/iron
 	grid_width = 32
 	grid_height = 96
+	item_weight = 143 GRAMS
 	var/obj/item/held_item = null
 	var/hott = 0
 
