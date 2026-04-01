@@ -390,6 +390,7 @@
 
 	smeltresult = /obj/item/fertilizer/ash
 	pickup_sound = 'sound/foley/equip/rummaging-03.ogg'
+	item_weight = 900 GRAMS
 
 /obj/item/weapon/axe/trollboneaxe/getonmobprop(tag)
 	if(tag)

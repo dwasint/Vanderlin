@@ -316,6 +316,7 @@
 	sellprice = 5
 	throw_speed = 4
 	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 50, "embedded_fall_chance" = 0, "embedded_ignore_throwspeed_threshold" = 1)
+	item_weight = 900 GRAMS
 
 /obj/item/weapon/polearm/spear/bone/getonmobprop(tag)
 	. = ..()
@@ -339,6 +340,7 @@
 	sellprice = 5
 	throw_speed = 4
 	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 50, "embedded_fall_chance" = 0, "embedded_ignore_throwspeed_threshold" = 1)
+	item_weight = 900 GRAMS
 
 /obj/item/weapon/polearm/spear/trollbone/getonmobprop(tag)
 	. = ..()
