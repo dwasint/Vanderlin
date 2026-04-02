@@ -5,6 +5,8 @@
 	var/list/obj/item/embedded_objects = list()
 	/// Bandage, if this ever hard dels thats fucking dumb lol
 	var/obj/item/natural/cloth/bandage
+	///are we able to bleed?
+	var/bleeds = TRUE
 
 /// Checks if we have any embedded objects whatsoever
 /obj/item/bodypart/proc/has_embedded_objects()
@@ -113,6 +115,8 @@
 /// Returns the total bleed rate on this bodypart
 /obj/item/bodypart/proc/get_bleed_rate()
 	if(NOBLOOD in owner?.dna?.species?.species_traits)
+		return 0
+	if(!bleeds)
 		return 0
 	var/bleed_rate = 0
 	if(bandage && !GET_ATOM_BLOOD_DNA_LENGTH(bandage))

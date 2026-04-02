@@ -111,6 +111,7 @@
 	max_teeth = 32
 	should_render = TRUE
 	dismemberable = FALSE
+	bleeds = FALSE
 
 /obj/item/bodypart/mouth/Initialize(mapload)
 	. = ..()
