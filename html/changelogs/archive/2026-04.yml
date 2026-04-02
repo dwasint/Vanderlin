@@ -28,3 +28,6 @@
   ta3754859-max:
   - bugfix: The call ritual now works properly
   - bugfix: Dark sun mark ritual also works properly
+2026-04-02:
+  KevinfromHP:
+  - bugfix: Fixes a bug where water would not push you down z levels
