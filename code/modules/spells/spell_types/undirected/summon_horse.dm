@@ -1,8 +1,8 @@
-GLOBAL_VAR_INIT(nya_catmodder_go, TRUE)
+GLOBAL_VAR_INIT(nya_catmodder_go, FALSE)
 
 /client/proc/nya()
 	set category = "GameMaster.Fun"
-	set name = "Nya Nya Nya I'm a cat Nya Nya"
+	set name = "Equestria Crossover"
 	set desc = ":3."
 
 	GLOB.nya_catmodder_go = !GLOB.nya_catmodder_go
