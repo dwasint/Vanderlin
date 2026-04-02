@@ -24,7 +24,7 @@
 /obj/item/ore/dust/silver
 	name = "silver dust"
 	desc = "Fine particles of silver ore."
-	melting_material = /datum/material/silver\
+	melting_material = /datum/material/silver
 	item_weight = 400 GRAMS
 
 /obj/item/ore/dust/silver/Initialize(mapload)
