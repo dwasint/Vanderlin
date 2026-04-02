@@ -136,7 +136,10 @@
 		qdel(wound)
 	if(bandage)
 		QDEL_NULL(bandage)
-	QDEL_LIST(teeth)
+	if(teeth)
+		for(var/obj/item/natural/bundle/teeth/tooth as anything in teeth)
+			qdel(tooth)
+		teeth = null
 
 	embedded_objects = null
 	original_owner = null
