@@ -279,6 +279,7 @@
 
 	prevent_crits = MINOR_CRITICALS
 	item_weight = 121 GRAMS
+	misc_flags = CRAFTING_TEST_EXCLUDE
 
 /obj/item/clothing/head/headdress // egyptian
 	name = "foreign headdress"
