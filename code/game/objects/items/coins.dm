@@ -18,7 +18,7 @@
 	sellprice = 0
 	static_price = TRUE
 	simpleton_price = TRUE
-	item_weight = 7 GRAMS
+	item_weight = 9 GRAMS
 
 	COOLDOWN_DECLARE(flip_cd)
 	var/heads_tails = TRUE
