@@ -10,6 +10,7 @@
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_MOUTH|ITEM_SLOT_NECK|ITEM_SLOT_RING
 	grid_height = 64
 	grid_width = 32
+	item_weight = 20 GRAMS
 
 /obj/item/lockpick
 	name = "lockpick"
@@ -25,6 +26,7 @@
 	destroy_sound = 'sound/items/pickbreak.ogg'
 	grid_width = 32
 	grid_height = 64
+	item_weight = 10 GRAMS
 
 //custom key
 /obj/item/key/custom
