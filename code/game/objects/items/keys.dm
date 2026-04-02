@@ -4,13 +4,13 @@
 	icon_state = "brownkey"
 	icon = 'icons/roguetown/items/keys.dmi'
 	w_class = WEIGHT_CLASS_TINY
+	item_weight = 20 GRAMS
 	dropshrink = 0.75
 	throwforce = 0
 	drop_sound = 'sound/items/gems (1).ogg'
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_MOUTH|ITEM_SLOT_NECK|ITEM_SLOT_RING
 	grid_height = 64
 	grid_width = 32
-	item_weight = 20 GRAMS
 
 /obj/item/lockpick
 	name = "lockpick"
