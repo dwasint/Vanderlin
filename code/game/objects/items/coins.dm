@@ -18,7 +18,7 @@
 	sellprice = 0
 	static_price = TRUE
 	simpleton_price = TRUE
-	item_weight = 9 GRAMS
+	item_weight = 23 GRAMS
 
 	COOLDOWN_DECLARE(flip_cd)
 	var/heads_tails = TRUE
@@ -411,6 +411,7 @@
 	sellprice = 10
 	base_type = CTYPE_GOLD
 	plural_name = "zenarii"
+	item_weight = 9 GRAMS
 
 
 // SILVER
@@ -421,6 +422,8 @@
 	sellprice = 5
 	base_type = CTYPE_SILV
 	plural_name = "ziliquae"
+	item_weight = 11 GRAMS
+
 
 // COPPER
 /obj/item/coin/copper
