@@ -18,6 +18,7 @@
 	sellprice = 0
 	static_price = TRUE
 	simpleton_price = TRUE
+	item_weight = 7 GRAMS
 
 	COOLDOWN_DECLARE(flip_cd)
 	var/heads_tails = TRUE
@@ -26,6 +27,9 @@
 	var/quantity = 1
 	var/plural_name
 	var/rigged_outcome = 0 //1 for heads, 2 for tails
+
+/obj/item/coin/get_carry_weight(atom/carrier)
+	. = item_weight * quantity
 
 /obj/item/coin/on_consume(mob/living/eater)
 	. = ..()
@@ -483,6 +487,7 @@
 	sellprice = 0
 	base_type = CTYPE_WOOD
 	plural_name = "chips"
+	item_weight = 3 GRAMS
 
 /obj/item/coin/wood/pile/Initialize(mapload, coin_amount)
 	. = ..()

@@ -6,6 +6,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	grid_width = 32
 	grid_height = 32
+	item_weight = 372 GRAMS
 	var/datum/augment/contained_augment
 
 /obj/item/augment_kit/Initialize()
