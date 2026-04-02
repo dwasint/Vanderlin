@@ -323,6 +323,8 @@
 				spawned_type = /obj/item/coin/silver
 			if(CTYPE_INQU)
 				spawned_type = /obj/item/coin/inqcoin
+			if(CTYPE_WOOD)
+				spawned_type = /obj/item/coin/wood
 			else
 				spawned_type = /obj/item/coin/copper
 	if(spawned_type)
