@@ -48,6 +48,7 @@
 
 /obj/item/gem/on_consume(mob/living/eater)
 	. = ..()
+	eater.extra_mob_weight += get_carry_weight(eater)
 	if(attuned)
 		//eater.adjust_spell_points(0.5)
 		eater.mana_pool.adjust_attunement(attuned, 0.1)
