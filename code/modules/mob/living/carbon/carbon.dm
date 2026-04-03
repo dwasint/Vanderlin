@@ -1340,7 +1340,7 @@
 /mob/living/proc/get_mob_weight()
 	return 15
 
-/mob/living/carbon/human/get_mob_weight ()
+/mob/living/carbon/human/get_mob_weight()
 	var/age_modifier = 1
 	if(age == AGE_CHILD)
 		age_modifier = 0.5
