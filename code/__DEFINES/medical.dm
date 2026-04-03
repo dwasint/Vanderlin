@@ -96,6 +96,9 @@
 /// This wound has werewolf infection
 #define WOUND_SEVERITY_BIOHAZARD 6
 
+#define LIMB_EFFICIENCY_OPTIMAL 100
+#define LIMB_EFFICIENCY_DISABLING 50
+
 /// This is used as a reference point for dynamic wounds, so it's better off as a define.
 #define ARTERY_LIMB_BLEEDRATE 25
 
@@ -111,6 +114,3 @@
 #define BBC_STAGE_MID	0.3
 #define BBC_STAGE_DETECTABLE	0.15
 #define BBC_SPREAD_RATE BBC_STAGE_DETECTABLE * 0.5
-
-#define LIMB_EFFICIENCY_OPTIMAL 100
-#define LIMB_EFFICIENCY_DISABLING 50
