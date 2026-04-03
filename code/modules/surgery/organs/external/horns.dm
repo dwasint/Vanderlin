@@ -5,6 +5,7 @@
 	visible_organ = TRUE
 	zone = BODY_ZONE_HEAD
 	slot = ORGAN_SLOT_HORNS
+	organ_efficiency = list(ORGAN_SLOT_HORNS = 100)
 	gender = PLURAL
 
 /obj/item/organ/horns/humanoid

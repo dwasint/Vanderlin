@@ -3,12 +3,20 @@
 	icon_state = "appendix"
 	zone = BODY_ZONE_PRECISE_GROIN
 	slot = ORGAN_SLOT_APPENDIX
+	organ_efficiency = list(ORGAN_SLOT_APPENDIX = 100)
 
 	healing_factor = STANDARD_ORGAN_HEALING
-	decay_factor = STANDARD_ORGAN_DECAY
 
 	now_failing = "<span class='warning'>An explosion of pain erupts in your lower right abdomen!</span>"
 	now_fixed = "<span class='info'>The pain in your abdomen has subsided.</span>"
+
+	organ_volume = 0.5
+	max_blood_storage = 2.5
+	current_blood = 2.5
+	blood_req = 0.5
+	oxygen_req = 0.25
+	nutriment_req = 0.5
+	hydration_req = 0.5
 
 	var/inflamed
 

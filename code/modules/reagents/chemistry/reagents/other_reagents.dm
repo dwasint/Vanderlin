@@ -47,7 +47,7 @@
 		return
 	//if it's non-toxic, drink up, otherwise, you need the blooddrinker trait and it has to be a blood you're compatible with or you need to be a nasty eater
 	if(method & INJECT)
-		L.blood_volume = min(L.blood_volume + round(reac_volume, 0.1), BLOOD_VOLUME_MAXIMUM)
+		L.blood_volume = min(L.blood_volume + round(reac_volume, 0.1), BLOOD_VOLUME_MAX_LETHAL)
 		return
 	if(method & INGEST)
 		if(!drinking_self && (toxicity <= 0 || (HAS_TRAIT(L, TRAIT_BLOODDRINKER) || HAS_TRAIT(L, TRAIT_NASTY_EATER))))
@@ -81,6 +81,11 @@
 	if(data["blood_DNA"])
 		B.add_blood_DNA(list(data["blood_DNA"] = data["blood_type"]))
 
+/datum/reagent/blood/reaction_obj(obj/O, volume)
+	. = ..()
+	if(!.)
+		O.adjust_germ_level(GERM_PER_UNIT_BLOOD * volume)
+
 
 /datum/reagent/water
 	name = "Water"
@@ -102,15 +107,25 @@
 	results = list(/datum/reagent/water/gross = 2)
 	required_reagents = list(/datum/reagent/water/gross = 1, /datum/reagent/water = 1)
 
+/datum/reagent/water/on_mob_metabolize(mob/living/L)
+	. = ..()
+	L.add_chem_effect(CE_BLOODRESTORE, 0.1, "[type]")
+
+/datum/reagent/water/on_mob_end_metabolize(mob/living/L)
+	. = ..()
+	L.remove_chem_effect("[type]")
 
 /datum/reagent/water/on_mob_life(mob/living/carbon/M)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(!HAS_TRAIT(H, TRAIT_NOHUNGER))
 			H.adjust_hydration(hydration)
-		if(M.blood_volume < BLOOD_VOLUME_NORMAL)
-			M.blood_volume = min(M.blood_volume+10, BLOOD_VOLUME_NORMAL)
 	..()
+
+/datum/reagent/water/reaction_obj(obj/O, reac_volume)
+	. = ..()
+	if(!.)
+		O.adjust_germ_level(-reac_volume * SANITIZATION_PER_UNIT_WATER)
 
 /datum/reagent/water/gross
 	taste_description = "lead"

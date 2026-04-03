@@ -32,14 +32,17 @@
 	scent_description = "metal"
 	metabolization_rate = REAGENTS_METABOLISM * 3
 
+/datum/reagent/consumable/stronghealth/on_mob_metabolize(mob/living/L)
+	. = ..()
+	L.add_chem_effect(CE_BLOODRESTORE, 15, "[type]")
+
+/datum/reagent/consumable/stronghealth/on_mob_end_metabolize(mob/living/L)
+	. = ..()
+	L.remove_chem_effect(CE_BLOODRESTORE, "[type]")
+
 /datum/reagent/medicine/stronghealth/on_mob_life(mob/living/carbon/M)
 	if(volume >= 60)
 		M.remove_reagent(/datum/reagent/medicine/stronghealth, 2) //No overhealing.
-	if(M.blood_volume < BLOOD_VOLUME_NORMAL)
-		M.blood_volume = min(M.blood_volume+80, BLOOD_VOLUME_NORMAL)
-	else
-		//can overfill you with blood, but at a slower rate
-		M.blood_volume = min(M.blood_volume+10, BLOOD_VOLUME_MAXIMUM)
 	M.heal_wounds(6) //at a motabalism of .5 U a tick this translates to 240WHP healing with 20 U Most wounds are unsewn 15-100.
 	if(volume > 0.99)
 		M.adjustBruteLoss(-7*REM, 0)
@@ -582,3 +585,26 @@ If you want to expand on poisons theres tons of fun effects TG chemistry has tha
 		M.IgniteMob()
 	return ..()
 
+// "Second wind" reagent generated when someone suffers a wound. Epinephrine, adrenaline, and stimulants are all already taken so here we are
+/datum/reagent/adrenaline
+	name = "Adrenaline"
+	description = "Adrenaline is a hormone used as a drug to treat cardiac arrest and other cardiac dysrhythmias resulting in diminished or absent cardiac output."
+	taste_description = "rush"
+	reagent_state = LIQUID
+	metabolization_rate = 0.5 * REAGENTS_METABOLISM
+	color = "#c8a5dc"
+	self_consuming = TRUE
+
+/datum/reagent/adrenaline/on_mob_metabolize(mob/living/L)
+	. = ..()
+	L.add_chem_effect(CE_BLOODRESTORE, 1, "[type]")
+	L.add_chem_effect(CE_STIMULANT, 1, "[type]")
+	L.add_chem_effect(CE_PULSE, 1, "[type]")
+	L.add_chem_effect(CE_PAINKILLER, min(3*holder.get_reagent_amount(/datum/reagent/adrenaline), 25), "[type]")
+
+/datum/reagent/adrenaline/on_mob_end_metabolize(mob/living/carbon/M)
+	. = ..()
+	M.remove_chem_effect(CE_BLOODRESTORE, "[type]")
+	M.remove_chem_effect(CE_STIMULANT, "[type]")
+	M.remove_chem_effect(CE_PULSE, "[type]")
+	M.remove_chem_effect(CE_PAINKILLER, "[type]")

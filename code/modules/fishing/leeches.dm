@@ -101,10 +101,10 @@
 	if(!user)
 		return
 	if(giving)
-		var/blood_given = min(BLOOD_VOLUME_MAXIMUM - user.blood_volume, blood_storage, blood_sucking)
+		var/blood_given = min(BLOOD_VOLUME_MAX_LETHAL - user.blood_volume, blood_storage, blood_sucking)
 		user.blood_volume += blood_given
 		blood_storage = max(blood_storage - blood_given, 0)
-		if((blood_storage <= 0) || (user.blood_volume >= BLOOD_VOLUME_MAXIMUM))
+		if((blood_storage <= 0) || (user.blood_volume >= BLOOD_VOLUME_MAX_LETHAL))
 			if(bodypart)
 				bodypart.remove_embedded_object(src)
 			else

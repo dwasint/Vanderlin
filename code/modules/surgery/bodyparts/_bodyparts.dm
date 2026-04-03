@@ -1201,3 +1201,94 @@
 	dismemberable = 0
 	max_damage = 5000
 	animal_origin = DEVIL_BODYPART
+
+
+/**
+ * Get a random organ object from the bodypart matching the passed in typepath
+ *
+ * Arguments:
+ * * typepath The typepath of the organ to get
+ */
+/obj/item/bodypart/proc/getorgan(typepath)
+	if(owner)
+		for(var/thing in shuffle(owner.getorganszone(body_zone)))
+			if(istype(thing, typepath))
+				return thing
+	else
+		var/list/organs = list()
+		for(var/thing in src)
+			if(istype(thing, typepath))
+				organs |= thing
+		if(length(organs))
+			return pick(organs)
+
+/**
+ * Get a list of organ objects from the bodypart matching the passed in typepath
+ *
+ * Arguments:
+ * * typepath The typepath of the organ to get
+ */
+/obj/item/bodypart/proc/getorganlist(typepath)
+	var/list/organs = list()
+	if(owner)
+		for(var/thing in owner.getorganszone(body_zone))
+			if(istype(thing, typepath))
+				organs |= thing
+	else
+		for(var/thing in src)
+			if(istype(thing, typepath))
+				organs |= thing
+	return organs
+
+/**
+ * Returns a random organ out of all organs in specified slot inside of the bodypart
+ *
+ * Arguments:
+ * * slot Slot to get the organ from
+ */
+/obj/item/bodypart/proc/getorganslot(slot)
+	if(owner)
+		for(var/thing in shuffle(owner.getorganslotlist(slot)))
+			var/obj/item/organ/organ = thing
+			if(organ.current_zone == body_zone)
+				return organ
+	else
+		var/list/organs = list()
+		for(var/obj/item/organ/organ in src)
+			if(slot in organ.organ_efficiency)
+				organs |= organ
+		if(length(organs))
+			return pick(shuffle(organs))
+
+/**
+ * Returns a list of all organs in the specified slot inside this limb, if there are any
+ *
+ * Arguments:
+ * * slot Slot to get the list
+ */
+/obj/item/bodypart/proc/getorganslotlist(slot)
+	var/list/organs = list()
+	if(owner)
+		var/obj/item/organ/organ
+		for(var/thing in owner.getorganslotlist(slot))
+			organ = thing
+			if(check_zone(organ.current_zone) == body_zone)
+				organs |= organ
+	else
+		for(var/obj/item/organ/organ in src)
+			if(slot in organ.organ_efficiency)
+				organs |= organ
+	return organs
+
+/**
+ * Returns the organ efficiency in a specific limb
+ * Arguments:
+ * * slot Slot to get the efficiency from
+ */
+/obj/item/bodypart/proc/getorganslotefficiency(slot)
+	if(owner)
+		return owner.getorganslotefficiencyzone(slot, body_zone)
+	else
+		. = null
+		for(var/obj/item/organ/organ in src)
+			. += organ.get_slot_efficiency(slot)

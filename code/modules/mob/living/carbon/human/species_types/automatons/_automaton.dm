@@ -113,6 +113,7 @@
 
 	organs = list(
 		ORGAN_SLOT_BRAIN = /obj/item/organ/brain/automaton,
+		ORGAN_SLOT_SPLEEN = /obj/item/organ/spleen,
 		ORGAN_SLOT_HEART = /obj/item/organ/heart/automaton,
 		ORGAN_SLOT_EYES = /obj/item/organ/eyes/automaton,
 		ORGAN_SLOT_LUNGS = /obj/item/organ/lungs,

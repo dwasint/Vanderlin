@@ -6,6 +6,7 @@
 	visible_organ = TRUE
 	zone = BODY_ZONE_PRECISE_GROIN
 	slot = ORGAN_SLOT_TAIL
+	organ_efficiency = list(ORGAN_SLOT_TAIL = 100)
 	var/can_wag = TRUE
 	var/wagging = FALSE
 

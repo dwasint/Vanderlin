@@ -246,8 +246,8 @@
 	eyes = new /obj/item/organ/eyes/night_vision/nightmare
 	eyes.Insert(src)
 	for(var/slot in internal_organs_slot)
-		var/obj/item/organ/organ = internal_organs_slot[slot]
-		organ.sellprice = 5
+		for(var/obj/item/organ/organ as anything in internal_organs_slot[slot])
+			organ.sellprice = 5
 	src.underwear = "Nude"
 	if(length(quirks))
 		clear_quirks()

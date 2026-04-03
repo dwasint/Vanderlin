@@ -5,11 +5,21 @@
 	icon_state = "lungs"
 	zone = BODY_ZONE_CHEST
 	slot = ORGAN_SLOT_LUNGS
+	organ_efficiency = list(ORGAN_SLOT_LUNGS = 100)
 	gender = PLURAL
 	w_class = WEIGHT_CLASS_SMALL
 
-	healing_factor = STANDARD_ORGAN_HEALING
-	decay_factor = STANDARD_ORGAN_DECAY
+	maxHealth = STANDARD_ORGAN_THRESHOLD * 0.8
+	high_threshold = STANDARD_ORGAN_THRESHOLD * 0.4
+	low_threshold = STANDARD_ORGAN_THRESHOLD * 0.2
+
+	organ_volume = 1
+	max_blood_storage = 25
+	current_blood = 25
+	blood_req = 4
+	oxygen_req = 4
+	nutriment_req = 4
+	hydration_req = 4
 
 	high_threshold_passed = "<span class='warning'>I feel some sort of constriction around my chest as my breathing becomes shallow and rapid.</span>"
 	now_fixed = "<span class='warning'>My lungs seem to once again be able to hold air.</span>"

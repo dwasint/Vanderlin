@@ -106,7 +106,7 @@
 			to_chat(sire, span_warning("[src] has refused your blessing."))
 		return
 	grab_ghost(TRUE, TRUE)
-	revive((HEAL_DAMAGE|HEAL_AFFLICTIONS|HEAL_LIMBS|HEAL_WOUNDS), 500, TRUE)
+	revive((HEAL_DAMAGE|HEAL_AFFLICTIONS|HEAL_LIMBS|HEAL_WOUNDS|HEAL_ORGANS), 500, TRUE)
 	mind.add_antag_datum(new /datum/antagonist/vampire(C, TRUE))
 	set_bloodpool(500)
 	visible_message(span_danger("Some dark energy begins to flow into [src]..."))

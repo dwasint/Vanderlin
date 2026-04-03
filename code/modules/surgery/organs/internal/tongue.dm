@@ -4,7 +4,17 @@
 	icon_state = "tongue"
 	zone = BODY_ZONE_PRECISE_MOUTH
 	slot = ORGAN_SLOT_TONGUE
+	organ_efficiency = list(ORGAN_SLOT_TONGUE = 100)
 	attack_verb = list("licked", "slobbered", "slapped", "frenched", "tongued")
+
+	organ_volume = 0.5
+	max_blood_storage = 5
+	current_blood = 5
+	blood_req = 1
+	oxygen_req = 0.5
+	nutriment_req = 0.5
+	hydration_req = 2
+
 	var/list/languages_possible
 	var/say_mod = null
 	var/taste_sensitivity = 15 // lower is more sensitive.

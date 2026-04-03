@@ -88,6 +88,9 @@
 	if(!wound.apply_to_bodypart(src, silent, crit_message))
 		qdel(wound)
 		return
+	if(owner && COOLDOWN_FINISHED(owner, adrenaline_burst))
+		COOLDOWN_START(owner, adrenaline_burst, 45 SECONDS)
+		owner.reagents?.add_reagent(/datum/reagent/adrenaline, 4)
 	return wound
 
 /// Removes a wound from this bodypart, removing any associated effects

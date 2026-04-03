@@ -10,9 +10,10 @@
 
 	organ_dna_type = /datum/organ_dna/eyes
 	accessory_type = /datum/sprite_accessory/eyes/humanoid
+	organ_efficiency = list(ORGAN_SLOT_EYES = 100)
 
 	healing_factor = STANDARD_ORGAN_HEALING
-	decay_factor = STANDARD_ORGAN_DECAY
+
 	maxHealth = 0.5 * STANDARD_ORGAN_THRESHOLD		//half the normal health max since we go blind at 30, a permanent blindness at 50 therefore makes sense unless medicine is administered
 	high_threshold = 0.3 * STANDARD_ORGAN_THRESHOLD	//threshold at 30
 	low_threshold = 0.2 * STANDARD_ORGAN_THRESHOLD	//threshold at 20
@@ -23,6 +24,14 @@
 	now_fixed = "<span class='info'>Color and shapes are once again perceivable.</span>"
 	high_threshold_cleared = "<span class='info'>My vision functions passably once more.</span>"
 	low_threshold_cleared = "<span class='info'>My vision is cleared of any ailment.</span>"
+
+	organ_volume = 0.5
+	max_blood_storage = 10
+	current_blood = 10
+	blood_req = 2
+	oxygen_req = 1
+	nutriment_req = 0.5
+	hydration_req = 0.5
 
 	var/sight_flags = 0
 	var/see_in_dark = 8

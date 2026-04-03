@@ -3,6 +3,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 */
 
 // ************* atom traits
+#define EAR_DAMAGE "ear_damage"
 
 /// Prevents the affected atom from opening a loot window via alt click. See atom/AltClick()
 #define TRAIT_ALT_CLICK_BLOCKER "no_alt_click"
@@ -194,6 +195,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_ALWAYS_CLEAN "always-clean"
 /// Can throw reagent containers without spilling them
 #define TRAIT_BOOZE_SLIDER "booze-slider"
+/// Can bleed, but not affected by blood loss
+#define TRAIT_BLOODLOSSIMMUNE "blood_immune"
 /// Unused
 #define TRAIT_QUICK_CARRY "quick-carry"
 /// Unused
@@ -206,6 +209,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_LANGUAGE_BARRIER "language-barrier"
 /// Immunity to flash effects
 #define TRAIT_NOFLASH "noflash"
+/// Suffering heart attack, can succumb
+#define TRAIT_DEATHS_DOOR "deaths_door"
 /// Immunity to pain
 #define TRAIT_NOPAIN "no_pain"
 /// Stumbling, can smash into things

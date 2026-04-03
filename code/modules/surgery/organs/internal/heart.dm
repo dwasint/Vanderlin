@@ -1,25 +1,29 @@
 /obj/item/organ/heart
 	name = "heart"
-	desc = ""
-	icon_state = "heart-on"
+	desc = "Following your HEART shall be the whole of LAW."
+	icon_state = "heart"
 	zone = BODY_ZONE_CHEST
-	slot = ORGAN_SLOT_HEART
-
-	healing_factor = STANDARD_ORGAN_HEALING
-	decay_factor = 5 * STANDARD_ORGAN_DECAY		//designed to fail about 5 minutes after death
-
-	low_threshold_passed = "<span class='info'>Prickles of pain appear then die out from within my chest...</span>"
-	high_threshold_passed = "<span class='warning'>Something inside my chest hurts, and the pain isn't subsiding. You notice myself breathing far faster than before.</span>"
-	now_fixed = "<span class='info'>My heart begins to beat again.</span>"
-	high_threshold_cleared = "<span class='info'>The pain in my chest has died down, and my breathing becomes more relaxed.</span>"
-
-	// Heart attack code is in code/modules/mob/living/carbon/human/life.dm
-	var/beating = 1
-	var/icon_base = "heart"
-	attack_verb = list("beat", "thumped")
-	var/beat = BEAT_NONE//is this mob having a heatbeat sound played? if so, which?
-	var/failed = FALSE		//to prevent constantly running failing code
-	var/operated = FALSE	//whether the heart's been operated on to fix some of its damages
+	organ_efficiency = list(ORGAN_SLOT_HEART = 100)
+	w_class = WEIGHT_CLASS_SMALL
+	low_threshold_passed = span_info("Prickles of pain appear then die out from within my chest...")
+	high_threshold_passed = span_warning("Something inside my chest hurts, and the pain isn't subsiding. I am breathing far faster than before.")
+	now_fixed = span_info("My heart begins to beat again.")
+	high_threshold_cleared = span_info("The pain in my chest has died down, and my breathing becomes more relaxed.")
+	organ_volume = 0.5
+	max_blood_storage = 100
+	current_blood = 100
+	blood_req = 10
+	oxygen_req = 5
+	nutriment_req = 5
+	hydration_req = 5
+	/// Have we been bypassed to avoid nasty blockages?
+	var/open = FALSE
+	/// If we're not beating that is not a good sign
+	var/beating = TRUE
+	/// Whether we've already triggered the failing message this cycle, to avoid spam
+	var/failed = FALSE
+	///convulsion sounds
+	var/convulsion_sound = list('sound/emotes/convulse1.wav', 'sound/emotes/convulse2.wav')
 
 	/// Markings on this heart for the maniac antagonist.
 	/// Assoc list using Maniac antag datums as keys. One for each maniac, but not for each wonder.
@@ -34,6 +38,10 @@
 	var/graggometer = 0
 
 	food_type = /obj/item/reagent_containers/food/snacks/meat/organ/heart
+
+/obj/item/organ/heart/Initialize()
+	. = ..()
+	addtimer(CALLBACK(src, PROC_REF(stop_if_unowned)), 8 SECONDS)
 
 /obj/item/organ/heart/examine(mob/user)
 	. = ..()
@@ -64,115 +72,101 @@
 				if(wonder_code == 4)
 					message_admins("Maniac [ADMIN_LOOKUPFLW(user)] has obtained the fourth and final heart code.")
 
-/obj/item/organ/heart/update_icon_state()
-	. = ..()
-	icon_state = "[icon_base][beating ? "-on" : "-off"]"
+/obj/item/organ/heart/is_working()
+	if(owner)
+		return (..() && beating)
+	return ..()
 
-/obj/item/organ/heart/Remove(mob/living/carbon/M, special = 0)
-	..()
+/obj/item/organ/heart/is_failing()
+	if(owner)
+		return (..() || !beating)
+	return ..()
+
+/obj/item/organ/heart/Remove(mob/living/carbon/old_owner, special = FALSE)
+	. = ..()
 	if(!special)
-		addtimer(CALLBACK(src, PROC_REF(stop_if_unowned)), 120)
+		addtimer(CALLBACK(src, PROC_REF(stop_if_unowned)), 12 SECONDS)
+
+/obj/item/organ/heart/attack_self(mob/user)
+	. = ..()
+	if(!beating)
+		user.visible_message(span_notice("[user] squeezes [src] to make it beat again!"), \
+					span_notice("You squeeze [src] to make it beat again!"))
+		Restart()
+		addtimer(CALLBACK(src, PROC_REF(stop_if_unowned)), 8 SECONDS)
+
+/obj/item/organ/heart/proc/can_stop()
+	if(beating)
+		return TRUE
+	return FALSE
 
 /obj/item/organ/heart/proc/stop_if_unowned()
 	if(!owner)
 		Stop()
 
-/obj/item/organ/heart/attack_self(mob/user, list/modifiers)
-	..()
-	if(!beating)
-		user.visible_message("<span class='notice'>[user] squeezes [src] to \
-			make it beat again!</span>","<span class='notice'>I squeeze [src] to make it beat again!</span>")
-		Restart()
-		addtimer(CALLBACK(src, PROC_REF(stop_if_unowned)), 80)
-
 /obj/item/organ/heart/proc/Stop()
-	beating = 0
-	update_appearance(UPDATE_ICON_STATE)
-	return 1
+	var/old_beating = beating
+	beating = FALSE
+	update_appearance()
+	if(owner && old_beating)
+		var/deathsdoor = TRUE
+		for(var/thing in (owner.getorganslotlist(ORGAN_SLOT_HEART) - src))
+			var/obj/item/organ/heart/heart = thing
+			if(heart.beating)
+				deathsdoor = FALSE
+		if(deathsdoor)
+			to_chat(owner, span_danger("I'm knocking on death's door!"))
+	return TRUE
 
 /obj/item/organ/heart/proc/Restart()
-	beating = 1
-	update_appearance(UPDATE_ICON_STATE)
-	return 1
+	var/old_beating = beating
+	beating = TRUE
+	update_appearance()
+	if(owner && !old_beating)
+		to_chat(owner, span_userdanger("My [name] beats again!"))
+	return TRUE
 
-/obj/item/organ/heart/prepare_eat(mob/living/carbon/human/user)
-	var/obj/item/reagent_containers/food/snacks/meat/organ/S = ..()
-	S.icon_state = "heart-off"
-	var/nothing = FALSE
-	if(!nothing)
-		S.eat_effect = /datum/status_effect/debuff/uncookedfood
-	return S
+/obj/item/organ/heart/get_availability(datum/species/S)
+	return (!(NOBLOOD in S.species_traits) && !(TRAIT_STABLEHEART in S.inherent_traits))
 
-/obj/item/organ/heart/on_life()
-	..()
-	if(owner.client && beating)
-		failed = FALSE
-		var/sound/slowbeat = sound('sound/blank.ogg', repeat = TRUE)
-		var/sound/fastbeat = sound('sound/blank.ogg', repeat = TRUE)
-		var/mob/living/carbon/H = owner
-
-
-		if(H.health <= H.crit_threshold && beat != BEAT_SLOW)
-			beat = BEAT_SLOW
-			H.playsound_local(get_turf(H), slowbeat,40,0, channel = CHANNEL_HEARTBEAT)
-//			to_chat(owner, "<span class='notice'>I feel my heart slow down...</span>")
-		if(beat == BEAT_SLOW && H.health > H.crit_threshold)
-			H.stop_sound_channel(CHANNEL_HEARTBEAT)
-			beat = BEAT_NONE
-
-		if(H.has_status_effect(/datum/status_effect/jitter))
-			if(H.health > HEALTH_THRESHOLD_FULLCRIT && (!beat || beat == BEAT_SLOW))
-				H.playsound_local(get_turf(H),fastbeat,40,0, channel = CHANNEL_HEARTBEAT)
-				beat = BEAT_FAST
-		else if(beat == BEAT_FAST)
-			H.stop_sound_channel(CHANNEL_HEARTBEAT)
-			beat = BEAT_NONE
-
-	if(organ_flags & ORGAN_FAILING)	//heart broke, stopped beating, death imminent
-		if(owner.stat == CONSCIOUS)
-			owner.visible_message("<span class='danger'>[owner] clutches at [owner.p_their()] chest as if [owner.p_their()] heart is stopping!</span>", \
-				"<span class='danger'>I feel a terrible pain in my chest, as if my heart has stopped!</span>")
-		owner.set_heartattack(TRUE)
-		failed = TRUE
+////////////////////////////////////CURSED HEART////////////////////////////////////////
 
 /obj/item/organ/heart/cursed
 	name = "cursed heart"
 	desc = ""
 	icon_state = "cursedheart-off"
-	icon_base = "cursedheart"
-	decay_factor = 0
 	actions_types = list(/datum/action/item_action/organ_action/cursed_heart)
 	var/last_pump = 0
-	var/add_colour = TRUE //So we're not constantly recreating colour datums
-	var/pump_delay = 30 //you can pump 1 second early, for lag, but no more (otherwise you could spam heal)
-	var/blood_loss = 100 //600 blood is human default, so 5 failures (below 122 blood is where humans die because reasons?)
+	var/add_colour = TRUE
+	var/pump_delay = 30
+	var/blood_loss = 100
 
-	//How much to heal per pump, negative numbers would HURT the player
 	var/heal_brute = 0
 	var/heal_burn = 0
 	var/heal_oxy = 0
 
-
 /obj/item/organ/heart/cursed/attack(mob/living/carbon/human/H, mob/living/carbon/human/user, list/modifiers)
 	if(H == user && istype(H))
-		playsound(user,'sound/blank.ogg',40,TRUE)
+		playsound(user, 'sound/blank.ogg', 40, TRUE)
 		user.temporarilyRemoveItemFromInventory(src, TRUE)
 		Insert(user)
 	else
 		return ..()
 
-/obj/item/organ/heart/cursed/on_life()
+// Cursed heart still uses on_life() since it is a special case not covered by the organ_process system.
+/obj/item/organ/heart/cursed/on_life(delta_time, times_fired)
+	. = ..()
 	if(world.time > (last_pump + pump_delay))
-		if(ishuman(owner) && owner.client) //While this entire item exists to make people suffer, they can't control disconnects.
+		if(ishuman(owner) && owner.client)
 			var/mob/living/carbon/human/H = owner
 			if(H.dna && !(NOBLOOD in H.dna.species.species_traits))
 				H.blood_volume = max(H.blood_volume - blood_loss, 0)
 				to_chat(H, "<span class='danger'>I have to keep pumping my blood!</span>")
 				if(add_colour)
-					H.add_client_colour(/datum/client_colour/cursed_heart_blood) //bloody screen so real
+					H.add_client_colour(/datum/client_colour/cursed_heart_blood)
 					add_colour = FALSE
 		else
-			last_pump = world.time //lets be extra fair *sigh*
+			last_pump = world.time
 
 /obj/item/organ/heart/cursed/Insert(mob/living/carbon/M, special = 0)
 	..()
@@ -186,31 +180,29 @@
 /datum/action/item_action/organ_action/cursed_heart
 	name = "Pump my blood"
 
-//You are now brea- pumping blood manually
 /datum/action/item_action/organ_action/cursed_heart/Trigger(trigger_flags)
 	. = ..()
 	if(. && istype(target, /obj/item/organ/heart/cursed))
 		var/obj/item/organ/heart/cursed/cursed_heart = target
 
-		if(world.time < (cursed_heart.last_pump + (cursed_heart.pump_delay-10))) //no spam
+		if(world.time < (cursed_heart.last_pump + (cursed_heart.pump_delay - 10)))
 			to_chat(owner, "<span class='danger'>Too soon!</span>")
 			return
 
 		cursed_heart.last_pump = world.time
-		playsound(owner,'sound/blank.ogg',40,TRUE)
+		playsound(owner, 'sound/blank.ogg', 40, TRUE)
 		to_chat(owner, "<span class='notice'>My heart beats.</span>")
 
 		var/mob/living/carbon/human/H = owner
 		if(istype(H))
 			if(H.dna && !(NOBLOOD in H.dna.species.species_traits))
-				H.blood_volume = min(H.blood_volume + cursed_heart.blood_loss*0.5, BLOOD_VOLUME_MAXIMUM)
+				H.blood_volume = min(H.blood_volume + cursed_heart.blood_loss * 0.5, BLOOD_VOLUME_MAXIMUM)
 				H.remove_client_colour(/datum/client_colour/cursed_heart_blood)
 				cursed_heart.add_colour = TRUE
 				H.adjustBruteLoss(-cursed_heart.heal_brute)
 				H.adjustFireLoss(-cursed_heart.heal_burn)
 				H.adjustOxyLoss(-cursed_heart.heal_oxy)
 
-
 /datum/client_colour/cursed_heart_blood
-	priority = 100 //it's an indicator you're dying, so it's very high priority
+	priority = 100
 	colour = "red"
