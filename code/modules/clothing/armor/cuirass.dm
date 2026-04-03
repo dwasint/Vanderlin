@@ -27,6 +27,7 @@
 	boobed = TRUE
 
 	armor = ARMOR_PLATE_GOOD
+	item_weight = 13.45 KILOGRAMS
 
 /obj/item/clothing/armor/cuirass/rare
 	abstract_type = /obj/item/clothing/armor/cuirass/rare
