@@ -12,5 +12,7 @@
 /// Weight required for someone to fall in water
 #define DROWNING_WEIGHT HUMAN_WEIGHT * 2
 
+#define FALL_DAMAGE_SCALE 0.1
+
 // you could say i'm sonewhat of a sigmoid myself
 #define ENCUMBRANCE_TO_SIGMOID(tier) (1 / (1 + (2.71 ** -(((tier / 4.0) - 0.6)) * 10)))
