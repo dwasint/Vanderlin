@@ -138,6 +138,7 @@
 		QDEL_NULL(bandage)
 	if(teeth)
 		for(var/obj/item/natural/bundle/teeth/tooth as anything in teeth)
+			teeth -= tooth
 			qdel(tooth)
 		teeth = null
 
