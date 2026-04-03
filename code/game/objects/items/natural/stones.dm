@@ -160,6 +160,9 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	//eater.mana_pool?.adjust_mana(magic_power * 25)
 	//to_chat(eater, span_warning("I feel magic flowing from my stomach."))
 
+/obj/item/natural/stone/on_anti_consume(mob/living/eater)
+	eater.extra_mob_weight -= get_carry_weight(eater)
+
 /*
 	This right here is stone lore,
 	Yakub from BBC lore has inspired me

@@ -36,6 +36,10 @@
 	eater.extra_mob_weight += get_carry_weight(eater)
 	eater.sellprice += quantity * sellprice
 
+/obj/item/coin/on_anti_consume(mob/living/eater)
+	eater.extra_mob_weight -= get_carry_weight(eater)
+	eater.sellprice -= quantity * sellprice
+
 /obj/item/coin/Initialize(mapload, coin_amount)
 	. = ..()
 	if(coin_amount >= 1)

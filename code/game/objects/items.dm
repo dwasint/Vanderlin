@@ -1434,6 +1434,9 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 /obj/item/proc/on_consume(mob/living/eater)
 	return
 
+/obj/item/proc/on_anti_consume(mob/living/eater)
+	return
+
 /obj/item/proc/get_displayed_price(mob/user)
 	if(QDELETED(user))
 		return

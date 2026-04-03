@@ -134,7 +134,7 @@
 	. = ..()
 	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 	if(hungry_hungry_kobold)
-		C.AddComponent(/datum/component/abberant_eater, DIET_KOBOLD, FALSE, DIET_TURF_KOBOLD)
+		C.AddComponent(/datum/component/abberant_eater, DIET_KOBOLD, FALSE, DIET_TURF_KOBOLD, _keeps_items = TRUE)
 	C.grant_language(/datum/language/common)
 
 /datum/species/kobold/on_species_loss(mob/living/carbon/C)
