@@ -375,6 +375,7 @@
 	rotprocess = SHELFLIFE_LONG
 	slices_num = 2
 	slice_path = /obj/item/reagent_containers/food/snacks/veg/cabbage_sliced
+	slice_skill = /datum/attribute/skill/craft/cooking/preparation
 	chopping_sound = TRUE
 	item_weight = 900 GRAMS
 
@@ -387,6 +388,7 @@
 	dropshrink = 0.9
 	slices_num = 1
 	slice_path = /obj/item/reagent_containers/food/snacks/veg/onion_sliced
+	slice_skill = /datum/attribute/skill/craft/cooking/preparation
 	tastes = list("onion" = 1)
 	filling_color = "#fdfaca"
 	bitesize = 2
@@ -442,6 +444,7 @@
 	filling_color = "#d8d8b6"
 	slices_num = 1
 	slice_path = /obj/item/reagent_containers/food/snacks/veg/potato_sliced
+	slice_skill = /datum/attribute/skill/craft/cooking/preparation
 	eat_effect = null
 	chopping_sound = TRUE
 	bitesize = 2
@@ -613,6 +616,7 @@
 	bitesize = 1
 	slices_num = 1
 	slice_path = /obj/item/reagent_containers/food/snacks/veg/turnip_sliced
+	slice_skill = /datum/attribute/skill/craft/cooking/preparation
 	foodtype = VEGETABLES
 	chopping_sound = TRUE
 	dropshrink = 0.9
