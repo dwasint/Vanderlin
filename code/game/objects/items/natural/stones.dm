@@ -141,6 +141,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	throwforce = 15
 	slot_flags = ITEM_SLOT_MOUTH
 	w_class = WEIGHT_CLASS_SMALL
+	item_weight = 124 GRAMS
 	/// If our stone is magical, this lets us know -how- magical. Maximum is 15.
 	var/magic_power = 0
 	var/magicstone = FALSE

@@ -1432,6 +1432,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	impactee.apply_damage(item_weight * fall_speed, BRUTE, target_zone, impactee.run_armor_check(target_zone, "blunt", damage = item_weight * fall_speed))
 
 /obj/item/proc/on_consume(mob/living/eater)
+	eater.extra_mob_weight += get_carry_weight(eater)
 	return
 
 /obj/item/proc/get_displayed_price(mob/user)

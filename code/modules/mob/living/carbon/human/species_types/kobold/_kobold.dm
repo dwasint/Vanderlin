@@ -59,6 +59,8 @@
 	possible_ages = NORMAL_AGES_LIST
 	use_skintones = TRUE
 
+	default_mob_weight = HUMAN_WEIGHT * 0.6
+
 	changesource_flags = WABBAJACK
 
 	native_language = "Gutter"

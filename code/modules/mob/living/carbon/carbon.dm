@@ -1344,7 +1344,7 @@
 	var/age_modifier = 1
 	if(age == AGE_CHILD)
 		age_modifier = 0.5
-	return HUMAN_WEIGHT * age_modifier
+	return (dna?.species?.default_mob_weight + extra_mob_weight) * age_modifier
 
 /mob/living/carbon/human/update_carry_weight()
 	. = 0
