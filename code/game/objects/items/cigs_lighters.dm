@@ -25,6 +25,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	var/smoketime = 15 // 10 seconds
 	w_class = WEIGHT_CLASS_TINY
 	heat = 1000
+	item_weight = 2 GRAMS
 
 /obj/item/match/process()
 	smoketime--
@@ -135,6 +136,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 	grid_width = 32
 	grid_height = 32
+	item_weight = 3 GRAMS
 
 	var/dragtime = 100
 	var/nextdragtime = 0
