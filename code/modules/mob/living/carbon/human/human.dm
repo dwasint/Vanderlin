@@ -720,6 +720,7 @@
 			//Second check to make sure they're still valid to be carried
 			if(can_be_firemanned(target) && !incapacitated(IGNORE_GRAB))
 				buckle_mob(target, TRUE, TRUE, 90, 0, 0)
+				update_carry_weight()
 				return
 	to_chat(src, "<span class='warning'>I fail to carry [target].</span>")
 
@@ -807,6 +808,9 @@
 	dna.species.go_bald()
 	update_body_parts(redraw = TRUE)
 	underwear = "Nude"
+
+/mob/living/carbon/human/post_unbuckle_mob()
+	update_carry_weight()
 
 /mob/living/carbon/human/adjust_nutrition(change) //Honestly FUCK the oldcoders for putting nutrition on /mob someone else can move it up because holy hell I'd have to fix SO many typechecks
 	if(HAS_TRAIT(src, TRAIT_NOHUNGER))
