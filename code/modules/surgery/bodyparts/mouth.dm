@@ -108,14 +108,72 @@
 	body_zone = BODY_ZONE_PRECISE_MOUTH
 	body_part = MOUTH
 	max_damage = 50
-	max_teeth = 32
 	should_render = TRUE
 	dismemberable = FALSE
 	bleeds = FALSE
 
+	/// Maximum amount of teeth this limb can hae
+	var/max_teeth = 32
+	/// Lisp modifier for when this limb is missing teeth
+	var/datum/speech_modifier/lisp/teeth_mod
+	/// List of tooth bundles in this jaw
+	var/list/obj/item/natural/bundle/teeth/teeth = null
+	///our default tooth
+	var/default_tooth = /obj/item/natural/bundle/teeth
+
 /obj/item/bodypart/mouth/Initialize(mapload)
 	. = ..()
 	fill_teeth()
+
+/obj/item/bodypart/mouth/Destroy()
+	if(teeth)
+		for(var/obj/item/natural/bundle/teeth/tooth as anything in teeth)
+			teeth -= tooth
+			qdel(tooth)
+		teeth = null
+	return ..()
+
+/// Proc for knocking teeth off from suitable bodyparts
+/obj/item/bodypart/mouth/proc/knock_out_teeth(amount = 1, throw_dir = NONE, throw_range = -1)
+	return
+
+/// Returns how many teeth we currently have
+/obj/item/bodypart/mouth/proc/get_teeth_amount()
+	var/count = 0
+	if(teeth)
+		for(var/obj/item/natural/bundle/teeth/bundle in teeth)
+			count += bundle.amount
+	return count
+
+/// Updates our lisp and other teeth related stuff
+/obj/item/bodypart/mouth/proc/update_teeth()
+	if(teeth_mod)
+		teeth_mod.update_lisp()
+	else
+		if(get_teeth_amount() < max_teeth)
+			teeth_mod = new()
+			if(owner)
+				teeth_mod.add_speech_modifier(owner)
+	update_limb_efficiency()
+	return TRUE
+
+/// Fills the bodypart with it's maximum amount of teeth of default teeth
+/obj/item/bodypart/mouth/proc/fill_teeth()
+	if(!max_teeth)
+		return FALSE
+	if(!teeth)
+		teeth = list()
+	var/obj/item/natural/bundle/teeth/default_bundle = locate(/obj/item/natural/bundle/teeth) in teeth
+	if(!default_bundle)
+		default_bundle = new default_tooth(src)
+		teeth += default_bundle
+		RegisterSignal(default_bundle, COMSIG_PARENT_QDELETING, PROC_REF(remove_this))
+	default_bundle.amount = max_teeth
+	return TRUE
+
+/obj/item/bodypart/mouth/proc/remove_this(datum/source)
+	teeth -= source
+	UnregisterSignal(source, COMSIG_PARENT_QDELETING)
 
 /obj/item/bodypart/mouth/inspect_limb(mob/user)
 	. = ..()
@@ -149,24 +207,22 @@
 		return
 	return ..()
 
-/obj/item/bodypart/mouth/get_teeth_amount()
-	var/count = 0
-	if(teeth)
-		for(var/obj/item/natural/bundle/teeth/bundle in teeth)
-			count += bundle.amount
-	return count
-
-
-/obj/item/bodypart/mouth/update_teeth()
-	if(teeth_mod)
-		teeth_mod.update_lisp()
+/obj/item/bodypart/mouth/update_limb_efficiency()
+	var/divisor = 0
+	limb_efficiency = 0
+	if(divisor)
+		limb_efficiency /= divisor
+	// no tendon, nerve nor artery!
 	else
-		if(get_teeth_amount() < max_teeth)
-			teeth_mod = new()
-			if(owner)
-				teeth_mod.add_speech_modifier(owner)
-	update_limb_efficiency()
-	return TRUE
+		limb_efficiency = 100
+	// wounds decrease limb efficiency
+	for(var/datum/wound/hurty as anything in wounds)
+		limb_efficiency -= hurty.limb_efficiency_reduction
+	// if we have teeth, amount of teeth impacts efficiency
+	if(max_teeth)
+		limb_efficiency -= (100 * (1 - get_teeth_amount()/max_teeth))
+
+	limb_efficiency = max(0, CEILING(limb_efficiency, 1))
 
 /obj/item/bodypart/mouth/proc/remove_teeth(amount)
 	if(!amount || !get_teeth_amount())

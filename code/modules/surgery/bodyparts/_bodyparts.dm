@@ -110,15 +110,6 @@
 	var/chronic_pain_type = null
 	var/last_severe_injury_time = 0
 
-	/// Maximum amount of teeth this limb can hae
-	var/max_teeth = 0
-	/// Lisp modifier for when this limb is missing teeth
-	var/datum/speech_modifier/lisp/teeth_mod
-	/// List of tooth bundles in this jaw
-	var/list/obj/item/natural/bundle/teeth/teeth = null
-	///our default tooth
-	var/default_tooth = /obj/item/natural/bundle/teeth
-
 /obj/item/bodypart/Initialize()
 	. = ..()
 	if(can_be_disabled)
@@ -136,11 +127,6 @@
 		qdel(wound)
 	if(bandage)
 		QDEL_NULL(bandage)
-	if(teeth)
-		for(var/obj/item/natural/bundle/teeth/tooth as anything in teeth)
-			teeth -= tooth
-			qdel(tooth)
-		teeth = null
 
 	embedded_objects = null
 	original_owner = null
@@ -296,31 +282,6 @@
 	for(var/obj/item/I in src) //dust organs
 		qdel(I)
 	skeletonized = TRUE
-
-/// Proc for knocking teeth off from suitable bodyparts
-/obj/item/bodypart/proc/knock_out_teeth(amount = 1, throw_dir = NONE, throw_range = -1)
-	return
-
-/// Returns how many teeth we currently have
-/obj/item/bodypart/proc/get_teeth_amount()
-	return 0
-
-/// Updates our lisp and other teeth related stuff
-/obj/item/bodypart/proc/update_teeth()
-	return FALSE
-
-/// Fills the bodypart with it's maximum amount of teeth of default teeth
-/obj/item/bodypart/proc/fill_teeth()
-    if(!max_teeth)
-        return FALSE
-    if(!teeth)
-        teeth = list()
-    var/obj/item/natural/bundle/teeth/default_bundle = locate(/obj/item/natural/bundle/teeth) in teeth
-    if(!default_bundle)
-        default_bundle = new default_tooth(src)
-        teeth += default_bundle
-    default_bundle.amount = max_teeth
-    return TRUE
 
 /obj/item/bodypart/chest/skeletonize(lethal = TRUE)
 	. = ..()
@@ -576,10 +537,6 @@
 	// wounds decrease limb efficiency
 	for(var/datum/wound/hurty as anything in wounds)
 		limb_efficiency -= hurty.limb_efficiency_reduction
-	// if we have teeth, amount of teeth impacts efficiency
-	if(max_teeth)
-		limb_efficiency -= (100 * (1 - get_teeth_amount()/max_teeth))
-
 	limb_efficiency = max(0, CEILING(limb_efficiency, 1))
 
 

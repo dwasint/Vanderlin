@@ -8,9 +8,11 @@
 	possible_locs = list(BODY_ZONE_PRECISE_MOUTH)
 	requires_bodypart_type = BODYPART_ORGANIC
 
-/datum/surgery_step/extract_tooth/validate_bodypart(mob/user, mob/living/carbon/target, obj/item/bodypart/bodypart, target_zone)
+/datum/surgery_step/extract_tooth/validate_bodypart(mob/user, mob/living/carbon/target, obj/item/bodypart/mouth/bodypart, target_zone)
 	. = ..()
 	if(!.)
+		return FALSE
+	if(!istype(bodypart))
 		return FALSE
 	return bodypart.get_teeth_amount() > 0
 
@@ -23,7 +25,7 @@
 	return TRUE
 
 /datum/surgery_step/extract_tooth/success(mob/user, mob/living/target, target_zone, obj/item/weapon/tongs/tool, datum/intent/intent)
-	var/obj/item/bodypart/jaw = target.get_bodypart(BODY_ZONE_PRECISE_MOUTH)
+	var/obj/item/bodypart/mouth/jaw = target.get_bodypart(BODY_ZONE_PRECISE_MOUTH)
 	if(!jaw)
 		return FALSE
 	jaw.knock_out_teeth(1, pick(GLOB.alldirs))

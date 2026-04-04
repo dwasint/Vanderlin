@@ -9,9 +9,11 @@
 	possible_locs = list(BODY_ZONE_PRECISE_MOUTH)
 	requires_bodypart_type = BODYPART_ORGANIC
 
-/datum/surgery_step/insert_teeth/validate_bodypart(mob/user, mob/living/carbon/target, obj/item/bodypart/bodypart, target_zone)
+/datum/surgery_step/insert_teeth/validate_bodypart(mob/user, mob/living/carbon/target, obj/item/bodypart/mouth/bodypart, target_zone)
 	. = ..()
 	if(!.)
+		return FALSE
+	if(!istype(bodypart))
 		return FALSE
 	return bodypart.get_teeth_amount() < bodypart.max_teeth
 
@@ -23,7 +25,7 @@
 	return TRUE
 
 /datum/surgery_step/insert_teeth/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	var/obj/item/bodypart/jaw = target.get_bodypart(BODY_ZONE_PRECISE_MOUTH)
+	var/obj/item/bodypart/mouth/jaw = target.get_bodypart(BODY_ZONE_PRECISE_MOUTH)
 	if(!jaw)
 		return FALSE
 	var/space = jaw.max_teeth - jaw.get_teeth_amount()
@@ -65,7 +67,7 @@
 	return TRUE
 
 /datum/surgery_step/insert_teeth/failure(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent, success_prob)
-	var/obj/item/bodypart/jaw = target.get_bodypart(BODY_ZONE_PRECISE_MOUTH)
+	var/obj/item/bodypart/mouth/jaw = target.get_bodypart(BODY_ZONE_PRECISE_MOUTH)
 	if(jaw && jaw.get_teeth_amount())
 		jaw.knock_out_teeth(rand(1, 3))
 		display_results(user, target,

@@ -4,19 +4,23 @@
 	severity = WOUND_SEVERITY_LIGHT
 	sound_effect = list('sound/combat/wound_tear.ogg')
 
-/datum/wound/teeth/can_apply_to_bodypart(obj/item/bodypart/affected)
+/datum/wound/teeth/can_apply_to_bodypart(obj/item/bodypart/mouth/affected)
 	. = ..()
 	if(!.)
+		return FALSE
+	if(!istype(affected))
 		return FALSE
 
 	if(!affected.get_teeth_amount())
 		return FALSE
 	return TRUE
 
-/datum/wound/teeth/apply_to_bodypart(obj/item/bodypart/affected, silent = FALSE, crit_message = FALSE)
+/datum/wound/teeth/apply_to_bodypart(obj/item/bodypart/mouth/affected, silent = FALSE, crit_message = FALSE)
 	. = ..()
 	if(!.)
 		return
+	if(!istype(affected))
+		return FALSE
 	if(!affected.max_teeth)
 		qdel(src)
 		return
