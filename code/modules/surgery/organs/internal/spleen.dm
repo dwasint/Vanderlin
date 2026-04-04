@@ -21,7 +21,7 @@
 	nutriment_req = 2
 	hydration_req = 3
 
-	var/blood_regen_factor = 0.005 // how much blood the spleen regenerates per efficiency point, per 2 seconds
+	var/blood_regen_factor = 0.01 // how much blood the spleen regenerates per efficiency point, per 2 seconds
 
 /obj/item/organ/spleen/get_availability(datum/species/S)
 	return (!(NOBLOOD in S.species_traits))
