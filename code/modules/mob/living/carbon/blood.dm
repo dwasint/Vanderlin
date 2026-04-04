@@ -5,7 +5,7 @@
 
 /// Blood volume, affected by the heart
 /mob/living/carbon/proc/get_blood_circulation()
-	if(HAS_TRAIT(src, TRAIT_BLOODLOSSIMMUNE))
+	if(HAS_TRAIT(src, TRAIT_BLOODLOSS_IMMUNE))
 		return BLOOD_VOLUME_NORMAL
 	if(!needs_heart())
 		return blood_volume
@@ -55,7 +55,7 @@
 
 /// Blood volume, affected by the condition of circulation organs, affected by the oxygen loss - What ultimately matters for brain.
 /mob/living/carbon/proc/get_blood_oxygenation()
-	if(HAS_TRAIT(src, TRAIT_BLOODLOSSIMMUNE))
+	if(HAS_TRAIT(src, TRAIT_BLOODLOSS_IMMUNE))
 		return BLOOD_VOLUME_NORMAL
 
 	var/apparent_blood_volume = get_blood_circulation()

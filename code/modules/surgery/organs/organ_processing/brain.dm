@@ -21,7 +21,6 @@
 		if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
 			owner.adjust_eye_blur_up_to(4, 4)
 			if(DT_PROB(5, delta_time))
-				owner.Unconscious(rand(1,3) SECONDS)
 				to_chat(owner, span_userdanger("<i>I feel very [pick("dizzy","woozy","faint")]...</i>"))
 			owner.adjustOxyLoss(FLOOR(0.01 * (BLOOD_VOLUME_NORMAL - effective_blood_oxygenation) * delta_time * 0.3, 1))
 			damprob = is_stable ? 15 : 50
@@ -29,7 +28,7 @@
 				brain.applyOrganDamage(BRAIN_DAMAGE_LOW_OXYGENATION)
 		if(BLOOD_VOLUME_SURVIVE to BLOOD_VOLUME_BAD)
 			owner.adjust_eye_blur_up_to(6, 6)
-			if(DT_PROB(10, delta_time))
+			if(DT_PROB(5, delta_time))
 				owner.Unconscious(rand(3,5) SECONDS)
 				to_chat(owner, span_userdanger("<i>I feel extremely [pick("dizzy","woozy","faint")]...</i>"))
 			owner.adjustOxyLoss(2.5 * delta_time)
