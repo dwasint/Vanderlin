@@ -359,5 +359,4 @@
 
 /// Signal handler for when we get attacked with secondary click by an item.
 /datum/component/storage/concrete/organ/attackby_secondary(datum/source, atom/weapon, mob/user, list/modifiers)
-	SIGNAL_HANDLER
 	return
