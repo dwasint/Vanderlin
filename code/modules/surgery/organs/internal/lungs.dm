@@ -27,16 +27,25 @@
 
 	food_type = /obj/item/reagent_containers/food/snacks/meat/organ/lungs
 
-/obj/item/organ/lungs/on_life()
-	..()
-	if((!failed) && ((organ_flags & ORGAN_FAILING)))
+/obj/item/organ/lungs/on_life(delta_time, times_fired)
+	. = ..()
+	if(failed)
+		if(!is_failing())
+			failed = FALSE
+			return
+	else if(is_failing())
 		if(owner.stat == CONSCIOUS)
 			owner.visible_message("<span class='danger'>[owner] grabs [owner.p_their()] throat, struggling for breath!</span>", \
 								"<span class='danger'>I suddenly feel like you can't breathe!</span>")
+		to_chat(owner, span_userdanger("I CAN'T BREATHE!"))
 		failed = TRUE
-	else if(!(organ_flags & ORGAN_FAILING))
-		failed = FALSE
-	return
+	if(damage >= low_threshold)
+		var/do_i_cough = DT_PROB((damage < high_threshold) ? 2.5 : 5, delta_time) // between : past high
+		if(do_i_cough)
+			owner.emote("cough")
+
+/obj/item/organ/lungs/get_availability(datum/species/S)
+	return !(TRAIT_NOBREATH in S.inherent_traits)
 
 /obj/item/organ/lungs/prepare_eat()
 	var/obj/S = ..()

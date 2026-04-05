@@ -195,8 +195,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_ALWAYS_CLEAN "always-clean"
 /// Can throw reagent containers without spilling them
 #define TRAIT_BOOZE_SLIDER "booze-slider"
-/// Can bleed, but not affected by blood loss
-#define TRAIT_BLOODLOSSIMMUNE "blood_immune"
 /// Unused
 #define TRAIT_QUICK_CARRY "quick-carry"
 /// Unused

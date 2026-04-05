@@ -21,7 +21,8 @@
 		var/mob/living/carbon/human/H = M
 		if(!HAS_TRAIT(H, TRAIT_NOHUNGER))
 			var/actual_metabolized = min(volume, metabolization_rate)
-			H.adjust_nutrition(nutriment_factor * actual_metabolized)
+			var/stomach_efficiency = H.getorganslotefficiency(ORGAN_SLOT_STOMACH)
+			H.adjust_nutrition(nutriment_factor * actual_metabolized * stomach_efficiency)
 			H.adjust_hydration(hydration_factor * actual_metabolized)
 	return ..()
 
