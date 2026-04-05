@@ -122,7 +122,7 @@
 		ORGAN_SLOT_LIVER = /obj/item/organ/liver,
 		ORGAN_SLOT_STOMACH = /obj/item/organ/stomach,
 		ORGAN_SLOT_APPENDIX = /obj/item/organ/appendix,
-		ORGAN_SLOT_TAIL = /obj/item/organ/tail,
+		ORGAN_SLOT_TAIL = /obj/item/organ/tail/demihuman,
 	)
 	bodypart_features = list(
 		/datum/bodypart_feature/hair/head,
