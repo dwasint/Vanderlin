@@ -15,6 +15,8 @@
 	var/zone = BODY_ZONE_CHEST
 	/// Body zone we are currently occupying
 	var/current_zone = null
+	/// Body zones we can be inserted on
+	var/list/possible_zones = ALL_BODYPARTS
 	var/slot
 	// DO NOT add slots with matching names to different zones - it will break internal_organs_slot list!
 	var/organ_flags = 0
@@ -93,6 +95,13 @@
 	/// How much blood is currently in the organ
 	var/current_blood = 0
 
+	/// Types of items that can stitch this organ when severed
+	var/list/attaching_items = list(/obj/item/needle)
+	/// If this is set, this organ can be healed with item types in this list
+	var/list/healing_items
+	/// The above, but for tool behaviors
+	var/list/healing_tools = list(TOOL_SUTURE)
+
 /obj/item/organ/Initialize()
 	. = ..()
 	START_PROCESSING(SSobj, src)
@@ -151,6 +160,17 @@
 /obj/item/organ/proc/is_dead()
 	return (CHECK_BITFIELD(organ_flags, ORGAN_DESTROYED|ORGAN_DEAD) || (damage >= maxHealth))
 
+/obj/item/organ/proc/is_bruised()
+	return (damage >= low_threshold)
+
+/obj/item/organ/proc/is_broken()
+	return (CHECK_BITFIELD(organ_flags, ORGAN_FAILING) || (damage >= high_threshold))
+
+/obj/item/organ/proc/is_destroyed()
+	return (CHECK_BITFIELD(organ_flags, ORGAN_DESTROYED))
+
+/obj/item/organ/proc/is_necrotic()
+	return (CHECK_BITFIELD(organ_flags, ORGAN_DEAD) || (germ_level >= INFECTION_LEVEL_THREE))
 
 /obj/item/organ/proc/handle_blood(delta_time, times_fired)
 	var/arterial_efficiency = get_slot_efficiency(slot) //cute placeholder value
@@ -213,9 +233,14 @@
 	for(var/mutable_appearance/node_overlay in organ.overlay_states)
 		. += node_overlay
 
-/obj/item/organ/proc/Insert(mob/living/carbon/M, special = 0, drop_if_replaced = TRUE)
+/obj/item/organ/proc/Insert(mob/living/carbon/M, special = 0, drop_if_replaced = TRUE, new_zone = null)
 	if(!iscarbon(M) || owner == M)
 		return
+
+	if(!isnull(new_zone))
+		current_zone = new_zone
+	else
+		current_zone = zone
 
 	var/obj/item/organ/replaced = M.getorganslot(slot)
 	if(replaced)

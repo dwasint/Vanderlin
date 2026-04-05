@@ -122,8 +122,17 @@
 #define BBC_STAGE_DETECTABLE	0.15
 #define BBC_SPREAD_RATE BBC_STAGE_DETECTABLE * 0.5
 
-#define LIMB_EFFICIENCY_OPTIMAL 100
-#define LIMB_EFFICIENCY_DISABLING 50
+#define ALL_BODYPARTS list(\
+	BODY_ZONE_PRECISE_L_EYE, BODY_ZONE_PRECISE_R_EYE, \
+	BODY_ZONE_PRECISE_MOUTH, \
+	BODY_ZONE_HEAD, BODY_ZONE_PRECISE_NECK, \
+	BODY_ZONE_CHEST, \
+	BODY_ZONE_PRECISE_GROIN, \
+	BODY_ZONE_R_ARM, BODY_ZONE_L_ARM, \
+	BODY_ZONE_R_LEG, BODY_ZONE_L_LEG, \
+	BODY_ZONE_PRECISE_R_HAND, BODY_ZONE_PRECISE_L_HAND, \
+	BODY_ZONE_PRECISE_R_FOOT, BODY_ZONE_PRECISE_L_FOOT, \
+)
 
 // ~should take around 20 minutes for a body to fully rot
 #define MIN_ORGAN_DECAY_INFECTION 1
@@ -154,6 +163,9 @@
 							ORGAN_SLOT_EARS)
 
 #define GET_EFFECTIVE_BLOOD_VOL(num, total_blood_req) (max(num - DEFAULT_TOTAL_BLOOD_REQ + total_blood_req, 0))
+
+//The contant in the rate of reagent transfer on life ticks
+#define STOMACH_METABOLISM_CONSTANT 0.25
 
 // ~infection levels
 /// infections grow from ambient to one in ~5 minutes

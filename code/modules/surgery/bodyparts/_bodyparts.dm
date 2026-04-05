@@ -22,6 +22,12 @@
 	var/body_part = 0 //bitflag used to check which clothes cover this bodypart
 	var/held_index = 0 //are we a hand? if so, which one!
 
+	// Cavity item + organ stuff
+	/// Maximum item size to be inserted in the cavity
+	var/max_cavity_item_size = WEIGHT_CLASS_SMALL
+	/// Maximum combined volume of organs and cavity items (item volume is w_class)
+	var/max_cavity_volume = 2.5
+
 	/// If disabled, limb is as good as missing
 	var/bodypart_disabled = BODYPART_NOT_DISABLED
 	/// Controls whether bodypart_disabled makes sense or not for this limb.
@@ -95,6 +101,9 @@
 	var/list/aux_markings
 	/// Visual features of the bodypart, such as hair and accessories
 	var/list/bodypart_features
+
+	/// Non-organ and non-limb items currently inserted inside this limb
+	var/list/obj/item/cavity_items
 
 	grid_width = 32
 	grid_height = 64
@@ -273,6 +282,9 @@
 		playsound(T, 'sound/blank.ogg', 50, TRUE, -1)
 	for(var/obj/item/I in src)
 		I.forceMove(T)
+	for(var/atom/movable/item as anything in cavity_items)
+		item.forceMove(drop_location())
+		cavity_items -= item
 
 /obj/item/bodypart/proc/skeletonize(lethal = TRUE)
 	if(bandage)
@@ -842,13 +854,15 @@
 	body_part = CHEST
 	px_x = 0
 	px_y = 0
-	var/obj/item/cavity_item
 	aux_zone = "boob"
 	aux_layer = BODYPARTS_LAYER
 	subtargets = list(BODY_ZONE_CHEST, BODY_ZONE_PRECISE_STOMACH, BODY_ZONE_PRECISE_GROIN)
 	grabtargets = list(BODY_ZONE_CHEST, BODY_ZONE_PRECISE_STOMACH, BODY_ZONE_PRECISE_GROIN)
 	offset = OFFSET_ARMOR
 	dismemberable = FALSE
+
+	max_cavity_item_size = WEIGHT_CLASS_NORMAL
+	max_cavity_volume = 6
 
 	grid_width = 64
 	grid_height = 96
@@ -862,14 +876,7 @@
 			to_chat(owner, "<span class='warning'>I feel a sharp pain in my back!</span>")
 
 /obj/item/bodypart/chest/Destroy()
-	QDEL_NULL(cavity_item)
 	return ..()
-
-/obj/item/bodypart/chest/drop_organs(mob/user, violent_removal)
-	if(cavity_item)
-		cavity_item.forceMove(drop_location())
-		cavity_item = null
-	..()
 
 /obj/item/bodypart/chest/monkey
 	icon = 'icons/mob/animal_parts.dmi'
@@ -1320,3 +1327,11 @@
 		. = null
 		for(var/obj/item/organ/organ in src)
 			. += organ.get_slot_efficiency(slot)
+
+/// Returns the volume of organs and cavity items for the organ storage component to use
+/obj/item/bodypart/proc/get_cavity_volume()
+	. = 0
+	for(var/obj/item/organ/organ as anything in get_organs())
+		. += organ.organ_volume
+	for(var/obj/item/item as anything in cavity_items)
+		. += item.w_class

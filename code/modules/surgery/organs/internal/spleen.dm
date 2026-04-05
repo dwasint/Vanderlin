@@ -4,7 +4,7 @@
 	name = "spleen"
 	desc = "The most underrated organ of the human body."
 	icon = 'icons/obj/surgery.dmi'
-	icon_state = "spleen"
+	icon_state = "kidney-l" //placeholder
 	zone = BODY_ZONE_CHEST
 	organ_efficiency = list(ORGAN_SLOT_SPLEEN = 100)
 

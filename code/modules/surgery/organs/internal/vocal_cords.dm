@@ -36,7 +36,7 @@
 	. = ..()
 	vocals = new(src)  //okay, i think it'll be tied to the organ
 
-/obj/item/organ/vocal_cords/harpy/Insert(mob/living/carbon/M, special = FALSE, drop_if_replaced = TRUE)
+/obj/item/organ/vocal_cords/harpy/Insert(mob/living/carbon/M, special = FALSE, drop_if_replaced = TRUE, new_zone = null)
 	. = ..()
 	M.adjust_skill_level(/datum/attribute/skill/misc/music, 10)
 

@@ -36,7 +36,7 @@
 	// Multiplier for both long term and short term ear damage
 	var/ear_damage_multiplier = 1
 
-/obj/item/organ/ears/Insert(mob/living/carbon/M, special, drop_if_replaced)
+/obj/item/organ/ears/Insert(mob/living/carbon/M, special, drop_if_replaced, new_zone = null)
 	. = ..()
 	for(var/datum/wound/facial/ears/ear_wound in M.get_wounds())
 		qdel(ear_wound)
@@ -134,7 +134,7 @@
 /obj/item/organ/ears/rakshari
 	name = "rakshari ears"
 
-/obj/item/organ/ears/rakshari/Insert(mob/living/carbon/M, special, drop_if_replaced)
+/obj/item/organ/ears/rakshari/Insert(mob/living/carbon/M, special, drop_if_replaced, new_zone = null)
 	. = ..()
 	ADD_TRAIT(M, TRAIT_KEENEARS, "[type]")
 

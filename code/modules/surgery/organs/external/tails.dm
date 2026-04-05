@@ -36,7 +36,7 @@
 		QDEL_NULL(stillness)
 	return ..()
 
-/obj/item/organ/tail/medicator/Insert(mob/living/carbon/M, special, drop_if_replaced)
+/obj/item/organ/tail/medicator/Insert(mob/living/carbon/M, special, drop_if_replaced, new_zone = null)
 	. = ..()
 	if(!istype(owner, /mob/living/carbon/human/dummy))
 		stillness = owner.AddComponent(/datum/component/stillness_timer, 25 SECONDS, null, CALLBACK(src, PROC_REF(do_goop)))
