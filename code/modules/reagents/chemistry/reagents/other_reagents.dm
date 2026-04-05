@@ -138,11 +138,11 @@
 	. = ..()
 	L.remove_chem_effect("[type]")
 
-/datum/reagent/water/on_mob_life(mob/living/carbon/M)
+/datum/reagent/water/on_mob_life(mob/living/carbon/M, efficiency)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(!HAS_TRAIT(H, TRAIT_NOHUNGER))
-			H.adjust_hydration(hydration)
+			H.adjust_hydration(hydration * efficiency)
 	..()
 
 /datum/reagent/water/reaction_obj(obj/O, reac_volume)
@@ -158,12 +158,12 @@
 /datum/reagent/water/gross/on_aeration(volume, turf/turf)
 	turf.pollute_turf(/datum/pollutant/rot/sewage, volume * 3)
 
-/datum/reagent/water/gross/on_mob_life(mob/living/carbon/M)
+/datum/reagent/water/gross/on_mob_life(mob/living/carbon/M, efficiency)
 	..()
 	if(HAS_TRAIT(M, TRAIT_NASTY_EATER )) // lets orcs and goblins drink bogwater
 		return
-	M.adjustToxLoss(1)
-	M.add_nausea(12) //Over 8 units will cause puking
+	M.adjustToxLoss(1 * efficiency)
+	M.add_nausea(12 * efficiency) //Over 8 units will cause puking
 
 
 /*
@@ -262,12 +262,12 @@
 	color = "#484848" // rgb: 72, 72, 72A
 	taste_mult = 0 // apparently tasteless.
 
-/datum/reagent/mercury/on_mob_life(mob/living/carbon/M)
+/datum/reagent/mercury/on_mob_life(mob/living/carbon/M, efficiency)
 	if(!HAS_TRAIT(M, TRAIT_IMMOBILIZED))
 		step(M, pick(GLOB.cardinals))
 	if(prob(5))
 		M.emote(pick("twitch","drool","moan"))
-	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 1)
+	M.adjustOrganLoss(ORGAN_SLOT_BRAIN * efficiency, 1)
 	..()
 
 /datum/reagent/yuck
@@ -281,10 +281,10 @@
 	can_synth = FALSE
 	metabolization_rate = REAGENTS_METABOLISM * 0.3
 
-/datum/reagent/yuck/on_mob_life(mob/living/carbon/C)
+/datum/reagent/yuck/on_mob_life(mob/living/carbon/C, efficiency)
 	if(HAS_TRAIT(C, TRAIT_NOHUNGER) || HAS_TRAIT(C, TRAIT_NASTY_EATER) || HAS_TRAIT(C, TRAIT_ROT_EATER)) //they can't puke
 		return ..()
-	C.add_nausea(HAS_TRAIT(C, TRAIT_DEADNOSE) ? 2.5 : 5)
+	C.add_nausea(HAS_TRAIT(C, TRAIT_DEADNOSE) ? 2.5 * efficiency : 5 * efficiency)
 	return ..()
 
 /datum/reagent/ash
@@ -308,7 +308,7 @@
 	alpha = 100
 	taste_mult = 2 // yuck!
 
-/datum/reagent/soap/on_mob_life(mob/living/carbon/M)
+/datum/reagent/soap/on_mob_life(mob/living/carbon/M, efficiency)
 	..()
 	if(ishuman(M))
 		M.add_stress(/datum/stress_event/mouthsoap)
@@ -342,7 +342,7 @@
 	glows = TRUE
 	overdose_threshold = 11
 
-/datum/reagent/devour/on_mob_life(mob/living/carbon/M)
+/datum/reagent/devour/on_mob_life(mob/living/carbon/M, efficiency)
 	. = ..()
 	SEND_SIGNAL(M, COMSIG_DEVOUR_OVERDRIVE)
 
