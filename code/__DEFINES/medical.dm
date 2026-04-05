@@ -86,6 +86,10 @@
 #define ORGAN_DEAD (1<<6)
 /// Organ has been cut away from the owner and can be safely removed during surgery
 #define ORGAN_CUT_AWAY (1<<7)
+/// Organ should update limb efficiency when damaged or healed
+#define ORGAN_LIMB_SUPPORTER (1<<8)
+/// Organ shouldn't be counted in /obj/item/bodypart/proc/damage_internal_organs()
+#define ORGAN_NO_VIOLENT_DAMAGE (1<<9)
 
 //wound severities for /datum/wound
 /// Wounds that are either surgically induced or too minor to matter

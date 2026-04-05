@@ -116,6 +116,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_RESISTLOWPRESSURE	"resist_low_pressure"
 /// This human is immune to the effects of being exploded. (ex_act)
 #define TRAIT_BOMBIMMUNE "bomb_immunity"
+/// Immunity against germs and viruses crippled
+#define TRAIT_IMMUNITY_CRIPPLED "immunity_crippled"
 /// Immune to radiation
 #define TRAIT_RADIMMUNE "rad_immunity"
 /// Skin is not possible to pierce (needles, embeds)

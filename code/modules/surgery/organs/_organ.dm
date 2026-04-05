@@ -257,19 +257,25 @@
 	owner = M
 	last_owner = M
 	M.internal_organs |= src
+	moveToNullspace()
 	for(var/slot in organ_efficiency)
 		LAZYADD(M.internal_organs_slot[slot], src)
 		update_organ_efficiency(slot)
-	moveToNullspace()
 	for(var/datum/action/A as anything in actions)
 		A.Grant(M)
 	update_accessory_colors()
+	M.update_organ_requirements()
+	if(organ_flags & ORGAN_LIMB_SUPPORTER)
+		var/obj/item/bodypart/affected = owner.get_bodypart(current_zone)
+		affected?.update_limb_efficiency()
 	STOP_PROCESSING(SSobj, src)
 
 //Special is for instant replacement like autosurgeons
 /obj/item/organ/proc/Remove(mob/living/carbon/M, special = FALSE, drop_if_replaced = TRUE)
 	SEND_SIGNAL(src, COMSIG_ORGAN_REMOVED, M)
+	var/initial_zone = current_zone
 	owner = null
+	current_zone = zone
 	if(M)
 		M.internal_organs -= src
 		for(var/slot in organ_efficiency)
@@ -281,6 +287,12 @@
 	if(visible_organ)
 		M.update_body_parts(TRUE)
 	update_appearance(UPDATE_ICON_STATE)
+
+	START_PROCESSING(SSobj, src)
+	M.update_organ_requirements()
+	if(organ_flags & ORGAN_LIMB_SUPPORTER)
+		var/obj/item/bodypart/affected = M.get_bodypart(initial_zone)
+		affected?.update_limb_efficiency()
 
 /obj/item/organ/proc/on_find(mob/living/finder)
 	return
@@ -348,10 +360,74 @@
 	organ_flags &= ~ORGAN_FROZEN
 	return (organ_flags & ORGAN_FROZEN)
 
+
+/// Malus caused by germs
+/obj/item/organ/proc/handle_germ_effects(delta_time, times_fired)
+	var/virus_immunity = owner?.virus_immunity()
+	var/antibiotics = owner?.get_antibiotics()
+
+	if(germ_level > 0 && germ_level < INFECTION_LEVEL_ONE/2 && DT_PROB(virus_immunity*0.15, delta_time))
+		adjust_germ_level(-1 * (0.5 * delta_time))
+		return
+
+	if(germ_level >= INFECTION_LEVEL_ONE/2)
+		//Aiming for germ level to go from ambient to INFECTION_LEVEL_TWO in an average of 15 minutes, when immunity is full.
+		if(antibiotics < 5 && DT_PROB(round(germ_level/6 * owner.immunity_weakness() * 0.005), delta_time))
+			if(virus_immunity > 0)
+				adjust_germ_level(clamp(round(1/virus_immunity), 1, 10) * (0.5 * delta_time)) // Immunity starts at 100. This doubles infection rate at 50% immunity. Rounded to nearest whole.
+			else // Will only trigger if immunity has hit zero. Once it does, 10x infection rate.
+				adjust_germ_level(10 * (0.5 * delta_time))
+
+	if(germ_level >= INFECTION_LEVEL_ONE && antibiotics < 20)
+		var/fever_temperature = (BODYTEMP_HEAT_DAMAGE_LIMIT - BODYTEMP_NORMAL - 5)* min(germ_level/INFECTION_LEVEL_TWO, 1) + BODYTEMP_NORMAL
+		owner.adjust_bodytemperature(clamp((fever_temperature - T20C)/BODYTEMP_COLD_DIVISOR + 1, 0, fever_temperature - owner.bodytemperature))
+
+	if(germ_level >= INFECTION_LEVEL_TWO && antibiotics < 25)
+		var/obj/item/bodypart/bodypart = owner.get_bodypart(current_zone)
+		if(bodypart)
+			//Spread germs
+			if(antibiotics < 5 && bodypart.germ_level < germ_level && (bodypart.germ_level < INFECTION_LEVEL_ONE*2 || DT_PROB(owner.immunity_weakness() * 0.15, delta_time)))
+				bodypart.adjust_germ_level(1 * (0.5 * delta_time))
+		//Cause organ damage about once every ~30 seconds
+		//The bodypart deals with dealing raw toxin damage, let's not stack onto the problem now
+		if(DT_PROB(2, delta_time))
+			applyOrganDamage(2)
+
+	// Organ is just completely dead by this point
+	if(germ_level >= INFECTION_LEVEL_THREE && antibiotics < 40)
+		var/obj/item/bodypart/bodypart = owner.get_bodypart(current_zone)
+		if(bodypart)
+			// Spread germs really badly
+			if(antibiotics < 10 && bodypart.germ_level < germ_level && (bodypart.germ_level < INFECTION_LEVEL_THREE))
+				bodypart.adjust_germ_level(1 * (0.5 * delta_time))
+
+/// Antibiotics combating germs and stuff
+/obj/item/organ/proc/handle_antibiotics(delta_time, times_fired)
+	if(!owner || (germ_level <= 0))
+		return
+
+	var/antibiotics = owner.get_antibiotics()
+	if(antibiotics <= 0)
+		return
+
+	if((germ_level < INFECTION_LEVEL_ONE) && (antibiotics >= 20))
+		set_germ_level(GERM_LEVEL_STERILE)
+	else
+		adjust_germ_level(-antibiotics * SANITIZATION_ANTIBIOTIC * (0.5 * delta_time))	//at germ_level == 500 and 50 antibiotic, this should cure the infection in 5 minutes
+		if(owner?.body_position == LYING_DOWN)
+			adjust_germ_level(-SANITIZATION_LYING * (0.5 * delta_time))
+
 /obj/item/organ/proc/on_life(delta_time, times_fired)	//repair organ damage if the organ is not failing
 	SHOULD_CALL_PARENT(TRUE)
 	if(!owner)
 		return
+
+	/// Handle germs before anything else!
+	if(can_decay())
+		handle_germ_effects(delta_time, times_fired)
+		handle_antibiotics(delta_time, times_fired)
+	else
+		germ_level = 0
 
 	/// Handle blood
 	handle_blood(delta_time, times_fired)

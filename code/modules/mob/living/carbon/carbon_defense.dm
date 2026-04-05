@@ -18,6 +18,19 @@
 	else
 		. += E.bang_protect
 
+/mob/living/carbon/proc/virus_immunity()
+	var/antibiotic_boost = max(0, get_antibiotics()/100)
+	. = max(immunity/100 * (1+antibiotic_boost), antibiotic_boost)
+	if(HAS_TRAIT(src, TRAIT_IMMUNITY_CRIPPLED))
+		. = max(. - 50, antibiotic_boost)
+
+/mob/living/carbon/proc/immunity_weakness()
+	return max(2-virus_immunity(), 0)
+
+/mob/living/carbon/proc/get_antibiotics()
+	. = 0
+	. += get_chem_effect(CE_ANTIBIOTIC)
+
 /mob/living/carbon/proc/check_equipment_cover_flags(flags = NONE)
 	for(var/obj/item/thing in get_equipped_items())
 		if(thing.flags_cover & flags)

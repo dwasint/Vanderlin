@@ -26,6 +26,11 @@
 	/// Used by CPR and blood circulation - Time of the pumping associated with "effectiveness", from 0 to 1
 	var/list/recent_heart_pump
 
+	/// Current immune system strength
+	var/immunity = 100
+	/// It will regenerate to this value
+	var/default_immunity = 100
+
 	var/disgust = 0
 
 	/// Speech modifiers

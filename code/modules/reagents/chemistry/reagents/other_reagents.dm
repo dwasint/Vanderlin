@@ -120,6 +120,7 @@
 	glass_desc = ""
 	shot_glass_icon_state = "shotglassclear"
 	var/hydration = 12
+	var/sanitization = SANITIZATION_PER_UNIT_WATER
 	alpha = 100
 	taste_mult = 0.1
 
@@ -147,11 +148,12 @@
 /datum/reagent/water/reaction_obj(obj/O, reac_volume)
 	. = ..()
 	if(!.)
-		O.adjust_germ_level(-reac_volume * SANITIZATION_PER_UNIT_WATER)
+		O.adjust_germ_level(-reac_volume * sanitization)
 
 /datum/reagent/water/gross
 	taste_description = "lead"
 	color = "#98934bc6"
+	sanitization = -SANITIZATION_PER_UNIT_WATER
 
 /datum/reagent/water/gross/on_aeration(volume, turf/turf)
 	turf.pollute_turf(/datum/pollutant/rot/sewage, volume * 3)
