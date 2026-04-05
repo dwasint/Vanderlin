@@ -2,7 +2,7 @@
 /obj/item/organ/tail
 	name = "tail"
 	desc = "A severed tail. What did you cut this off of?"
-	icon_state = "severedtail"
+	icon_state = "tail-lizard"
 	visible_organ = TRUE
 	zone = BODY_ZONE_PRECISE_GROIN
 	slot = ORGAN_SLOT_TAIL
@@ -20,6 +20,7 @@
 
 /obj/item/organ/tail/demihuman
 	name = "hollowkin tail"
+	icon_state = "tail-furry"
 
 /obj/item/organ/tail/harpy
 	name = "harpy plumage"

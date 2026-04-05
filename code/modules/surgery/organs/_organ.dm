@@ -14,6 +14,7 @@
 	/// Time we have spent failing
 	var/failure_time = 0
 	var/zone = BODY_ZONE_CHEST
+	var/unique_slot
 	/// Body zone we are currently occupying
 	var/current_zone = null
 	/// Body zones we can be inserted on
@@ -243,13 +244,14 @@
 	else
 		current_zone = zone
 
-	var/obj/item/organ/replaced = M.getorganslot(slot)
-	if(replaced)
-		replaced.Remove(M, special = 1)
-		if(drop_if_replaced)
-			replaced.forceMove(get_turf(M))
-		else
-			qdel(replaced)
+	if(unique_slot)
+		var/obj/item/organ/replaced = M.getorganslot(slot)
+		if(replaced)
+			replaced.Remove(M, special = 1)
+			if(drop_if_replaced)
+				replaced.forceMove(get_turf(M))
+			else
+				qdel(replaced)
 
 	SEND_SIGNAL(src, COMSIG_ORGAN_INSERTED, M)
 	owner = M

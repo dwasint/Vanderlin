@@ -18,7 +18,7 @@
 	/// Type of organ DNA that this organ will create.
 	var/organ_dna_type = /datum/organ_dna
 	/// Draw icon as overlays from the acessory or bodypart icons
-	var/use_mob_sprite_as_obj_sprite = TRUE
+	var/use_mob_sprite_as_obj_sprite = FALSE
 
 /// Gets organ description for when its attached to a bodypart.
 /obj/item/organ/proc/get_bodypart_desc()

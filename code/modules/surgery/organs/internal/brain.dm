@@ -15,6 +15,7 @@
 	layer = ABOVE_MOB_LAYER
 	zone = BODY_ZONE_PRECISE_SKULL
 	slot = ORGAN_SLOT_BRAIN
+	unique_slot = ORGAN_SLOT_BRAIN
 	organ_efficiency = list(ORGAN_SLOT_BRAIN = 100)
 	organ_flags = ORGAN_VITAL
 	attack_verb = list("attacked", "slapped", "whacked")
