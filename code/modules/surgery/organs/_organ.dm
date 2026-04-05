@@ -1,4 +1,5 @@
 /obj/item/organ
+	abstract_type = /obj/item/organ
 	name = "organ"
 	icon = 'icons/obj/surgery.dmi'
 	var/mob/living/carbon/owner = null
@@ -101,6 +102,74 @@
 	var/list/healing_items
 	/// The above, but for tool behaviors
 	var/list/healing_tools = list(TOOL_SUTURE)
+
+/obj/item/organ/return_recipe_data()
+	var/list/data = list()
+	data["type"] = "organ"
+	data["name"] = name
+	data["category"] = "Organs"
+	data["_output_path"] = "[type]"
+	data["output_icon"] = "[icon]"
+	data["output_state"] = "[icon_state]"
+	data["zone"] = parse_zone(zone)
+
+	// Thresholds
+	data["threshold_low"] = low_threshold
+	data["threshold_high"] = high_threshold
+	data["threshold_max"] = maxHealth
+
+	// Threshold messages, strip span tags for display
+	if(low_threshold_passed)
+		data["msg_bruised"] = low_threshold_passed
+	if(high_threshold_passed)
+		data["msg_broken"] = high_threshold_passed
+	if(low_threshold_cleared)
+		data["msg_bruised_healed"] = low_threshold_cleared
+	if(high_threshold_cleared)
+		data["msg_broken_healed"] = high_threshold_cleared
+	if(now_failing)
+		data["msg_failing"] = now_failing
+	if(now_fixed)
+		data["msg_fixed"] = now_fixed
+
+	// Healing
+	data["healing_factor"] = healing_factor
+	if(length(healing_items))
+		var/list/hitems = list()
+		for(var/atom/path as anything in healing_items)
+			hitems += list(list(
+				"name" = initial(path.name),
+				"icon" = "[initial(path.icon)]",
+				"icon_state" = "[initial(path.icon_state)]",
+				"_path" = "[path]",
+			))
+		data["healing_items"] = hitems
+	if(length(healing_tools))
+		data["healing_tools"] = healing_tools.Copy()
+
+	// Reattachment
+	if(length(attaching_items))
+		var/list/aitems = list()
+		for(var/atom/path as anything in attaching_items)
+			aitems += list(list(
+				"name" = initial(path.name),
+				"icon" = "[initial(path.icon)]",
+				"icon_state" = "[initial(path.icon_state)]",
+				"_path" = "[path]",
+			))
+		data["attaching_items"] = aitems
+
+	// Body requirements
+	if(blood_req)
+		data["blood_req"] = blood_req
+	if(oxygen_req)
+		data["oxygen_req"] = oxygen_req
+	if(nutriment_req)
+		data["nutriment_req"] = nutriment_req
+	if(hydration_req)
+		data["hydration_req"] = hydration_req
+
+	return data
 
 /obj/item/organ/Initialize()
 	. = ..()
