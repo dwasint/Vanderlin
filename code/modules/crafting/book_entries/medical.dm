@@ -6,6 +6,7 @@
 		<div>
 		<h2>Accessing Body Cavities</h2>
 		To access the organs within a body cavity, the area must first be surgically opened.
+		After which you need to be on USE Intent and drag them onto you.
 		Remove any clothing covering the target area before beginning.
 		</div>
 		<br>

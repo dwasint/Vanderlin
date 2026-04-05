@@ -350,3 +350,8 @@
 		update_insides()
 		user_show_to_mob(M)
 		return COMPONENT_NO_MOUSEDROP
+
+/// Signal handler for when we get attacked with secondary click by an item.
+/datum/component/storage/concrete/organ/attackby_secondary(datum/source, atom/weapon, mob/user, list/modifiers)
+	SIGNAL_HANDLER
+	return
