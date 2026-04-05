@@ -101,6 +101,9 @@
 	var/datum/party/current_party
 	var/list/party_hud_elements = list()
 
+	/// To reduce processing, this list is used to associate body zone with all organs inside that zone
+	var/list/organs_by_zone = list()
+
 	/// Total sum of organ and bodypart blood requirement
 	var/total_blood_req = DEFAULT_TOTAL_BLOOD_REQ
 	/// Total sum of organ and bodypart oxygen requirement

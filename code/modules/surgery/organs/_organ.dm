@@ -261,6 +261,8 @@
 	for(var/slot in organ_efficiency)
 		LAZYADD(M.internal_organs_slot[slot], src)
 		update_organ_efficiency(slot)
+	var/checked_zone = check_zone(current_zone)
+	LAZYADD(M.organs_by_zone[checked_zone], src)
 	for(var/datum/action/A as anything in actions)
 		A.Grant(M)
 	update_accessory_colors()
@@ -272,16 +274,19 @@
 
 //Special is for instant replacement like autosurgeons
 /obj/item/organ/proc/Remove(mob/living/carbon/M, special = FALSE, drop_if_replaced = TRUE)
+	if(!M)
+		return
 	SEND_SIGNAL(src, COMSIG_ORGAN_REMOVED, M)
 	var/initial_zone = current_zone
 	owner = null
 	current_zone = zone
-	if(M)
-		M.internal_organs -= src
-		for(var/slot in organ_efficiency)
-			LAZYREMOVE(M.internal_organs_slot[slot], src)
-		if((organ_flags & ORGAN_VITAL) && !special && !(M.status_flags & GODMODE))
-			M.death()
+	M.internal_organs -= src
+	for(var/slot in organ_efficiency)
+		LAZYREMOVE(M.internal_organs_slot[slot], src)
+	var/checked_initial_zone = check_zone(initial_zone)
+	LAZYREMOVE(M.organs_by_zone[checked_initial_zone], src)
+	if((organ_flags & ORGAN_VITAL) && !special && !(M.status_flags & GODMODE))
+		M.death()
 	for(var/datum/action/A as anything in actions)
 		A.Remove(M)
 	if(visible_organ)
