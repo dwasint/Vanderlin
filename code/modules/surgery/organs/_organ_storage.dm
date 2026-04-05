@@ -64,6 +64,12 @@
 	else
 		return TRUE
 
+/datum/component/storage/concrete/organ/on_move()
+	var/atom/A = parent
+	for(var/mob/living/L in can_see_contents())
+		if(!L.CanReach(A))
+			hide_from(L)
+
 // Only visible when accessible
 /datum/component/storage/concrete/organ/user_show_to_mob(mob/M, force = FALSE)
 	if(!is_accessible() && !force)
