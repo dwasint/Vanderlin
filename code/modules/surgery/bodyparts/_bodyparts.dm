@@ -26,7 +26,7 @@
 	/// Maximum item size to be inserted in the cavity
 	var/max_cavity_item_size = WEIGHT_CLASS_NORMAL
 	/// Maximum combined volume of organs and cavity items (item volume is w_class)
-	var/max_cavity_volume = 4
+	var/max_cavity_volume = 2.5
 
 	/// If disabled, limb is as good as missing
 	var/bodypart_disabled = BODYPART_NOT_DISABLED
