@@ -58,6 +58,11 @@
 #define MOB_REPTILE		(1<<8)
 #define MOB_SPIRIT		(1<<9)
 
+// ~organ sides
+#define NO_SIDE 0
+#define RIGHT_SIDE (1<<0)
+#define LEFT_SIDE (1<<1)
+
 //Organ defines for carbon mobs
 #define CHRONIC_ARTHRITIS 1
 #define CHRONIC_NERVE_DAMAGE 2

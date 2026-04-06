@@ -81,6 +81,9 @@
 	///this is just an easy to access list of modification sources going slot = list(type = val)
 	var/list/organ_efficiency_modification
 
+	/// Some organs have a side of the body they occupy - this should only be used for icon updates
+	var/side = NO_SIDE
+
 	/// How much blood (percent of BLOOD_VOLUME_NORMAL) an organ takes to funcion
 	var/blood_req = 0
 	/// If oxygen reqs are not satisfied, get debuffs and brain starts taking damage
@@ -132,6 +135,9 @@
 /obj/item/organ/item_action_slot_check(slot,mob/user)
 	return //so we don't grant the organ's action to mobs who pick up the organ.
 
+/obj/item/organ/proc/switch_side(new_side = RIGHT_SIDE)
+	side = new_side
+	update_appearance()
 
 /obj/item/organ/proc/apply_efficiency_modification(value, slot, source)
 	organ_efficiency[slot] += value
