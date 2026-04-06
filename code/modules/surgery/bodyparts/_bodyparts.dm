@@ -857,7 +857,7 @@
 	dismemberable = FALSE
 
 	max_cavity_item_size = WEIGHT_CLASS_NORMAL
-	max_cavity_volume = 6
+	max_cavity_volume = 10
 
 	grid_width = 64
 	grid_height = 96
