@@ -219,7 +219,7 @@
 			var/swimdrain = max(10 - GET_MOB_SKILL_VALUE_OLD(src, /datum/attribute/skill/misc/swimming), 1)
 			if(swimdrain < maximum_stamina - stamina)
 				adjust_stamina(swimdrain, "drown")
-				adjustOxyLoss(2)
+				adjustOxyLoss(7)
 			else
 				adjustOxyLoss(drown_damage)
 				emote("drown")
