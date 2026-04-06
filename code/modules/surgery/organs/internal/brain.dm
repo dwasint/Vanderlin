@@ -46,7 +46,7 @@
 
 	var/list/datum/brain_trauma/traumas = list()
 
-/obj/item/organ/brain/Insert(mob/living/carbon/C, special = FALSE, drop_if_replaced = FALSE, no_id_transfer = FALSE, new_zone = null)
+/obj/item/organ/brain/Insert(mob/living/carbon/C, special = FALSE, drop_if_replaced = FALSE, new_zone = null, no_id_transfer = FALSE)
 	. = ..()
 
 	name = "brain"

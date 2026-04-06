@@ -104,6 +104,9 @@
 	/// To reduce processing, this list is used to associate body zone with all organs inside that zone
 	var/list/organs_by_zone = list()
 
+	/// A collection of organs (eyes) used to see
+	var/list/eye_organs = list()
+
 	/// Total sum of organ and bodypart blood requirement
 	var/total_blood_req = DEFAULT_TOTAL_BLOOD_REQ
 	/// Total sum of organ and bodypart oxygen requirement

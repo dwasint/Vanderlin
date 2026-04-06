@@ -560,10 +560,8 @@ GLOBAL_LIST_EMPTY(roundstart_species)
 		var/list/organ_dna_list = pref_load.get_organ_dna_list()
 		for(var/organ_slot in organ_dna_list)
 			C.dna.organ_dna[organ_slot] = organ_dna_list[organ_slot]
-
 	//what should be put in if there is no mutantorgan (brains handled seperately)
 	var/list/slot_mutantorgans = organs
-
 	var/list/slots_to_iterate = list()
 	for(var/slot in C.dna.organ_dna)
 		slots_to_iterate |= slot
@@ -571,7 +569,6 @@ GLOBAL_LIST_EMPTY(roundstart_species)
 		if(!is_organ_slot_allowed(C, slot))
 			continue
 		slots_to_iterate |= slot
-
 	// Remove the organs from the slots they should have nothing in
 	for(var/obj/item/organ/organ in C.internal_organs)
 		if(organ.slot in slots_to_iterate)
@@ -582,9 +579,9 @@ GLOBAL_LIST_EMPTY(roundstart_species)
 	for(var/slot in slots_to_iterate)
 		var/obj/item/organ/oldorgan = C.getorganslot(slot) //used in removing
 		var/obj/item/organ/neworgan
-
+		var/datum/organ_dna/organ_dna
 		if(C.dna.organ_dna[slot])
-			var/datum/organ_dna/organ_dna = C.dna.organ_dna[slot]
+			organ_dna = C.dna.organ_dna[slot]
 			if(organ_dna.can_create_organ())
 				neworgan = organ_dna.create_organ(species = src)
 				if(slot_mutantorgans[slot])
@@ -599,14 +596,12 @@ GLOBAL_LIST_EMPTY(roundstart_species)
 			if(new_type)
 				neworgan = new new_type()
 				neworgan.build_colors_for_accessory(source_key_list)
-
 		var/used_neworgan = FALSE
 		var/should_have
 		if(neworgan)
 			should_have = neworgan.get_availability(src)
 		else
 			should_have = TRUE
-
 		if(oldorgan && (!should_have || replace_current) && !(oldorgan.zone in excluded_zones))
 			if(slot == ORGAN_SLOT_BRAIN)
 				var/obj/item/organ/brain/brain = oldorgan
@@ -615,21 +610,33 @@ GLOBAL_LIST_EMPTY(roundstart_species)
 					QDEL_NULL(brain)
 					oldorgan = null //now deleted
 			else
-				oldorgan.Remove(C,TRUE)
-				QDEL_NULL(oldorgan) //we cannot just tab this out because we need to skip the deleting if it is a decoy brain.
-
-
+				for(var/obj/item/organ/old_paired in C.getorganslotlist(slot))
+					old_paired.Remove(C, TRUE)
+					QDEL_NULL(old_paired)
+				oldorgan = null
 		if(oldorgan)
 			oldorgan.setOrganDamage(0)
 		else if(should_have && !(initial(neworgan.zone) in excluded_zones))
 			used_neworgan = TRUE
 			if(neworgan)
 				neworgan.Insert(C, TRUE, FALSE)
-
+				if(slot in PAIRED_ORGAN_SLOTS)
+					var/obj/item/organ/paired_organ = new neworgan.type()
+					paired_organ.switch_side(neworgan.side == RIGHT_SIDE ? LEFT_SIDE : RIGHT_SIDE)
+					if(organ_dna)
+						organ_dna.imprint_organ(paired_organ, species = src)
+					else
+						paired_organ.build_colors_for_accessory(source_key_list)
+					if(pref_load)
+						pref_load.customize_organ(paired_organ)
+					if(!(initial(paired_organ.zone) in excluded_zones))
+						paired_organ.Insert(C, TRUE, FALSE)
+					else
+						qdel(paired_organ)
 		if(!used_neworgan)
 			if(neworgan)
 				qdel(neworgan)
-		else if (!C.dna.organ_dna[slot] && neworgan)
+		else if(!C.dna.organ_dna[slot] && neworgan)
 			var/datum/organ_dna/new_dna = neworgan.create_organ_dna()
 			C.dna.organ_dna[slot] = new_dna
 

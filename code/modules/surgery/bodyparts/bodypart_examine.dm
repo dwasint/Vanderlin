@@ -25,8 +25,10 @@
 		. += "<span class='info'>It seems completely devoid of life.</span>"
 	*/
 
-	if(!eyes)
-		head_status += "<span class='warning'>The eyes appear are missing.</span>"
+	if(!eyes_left)
+		head_status += "<span class='warning'>The left eye is missing.</span>"
+	if(!eyes_right)
+		head_status += "<span class='warning'>The right eye is missing.</span>"
 
 	if(!ears)
 		head_status += "<span class='warning'>The ears are missing.</span>"

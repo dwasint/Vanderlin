@@ -222,7 +222,10 @@
 
 /obj/item/organ/eyes/transfer_to_limb(obj/item/bodypart/head/LB, mob/living/carbon/human/C)
 	if(istype(LB))
-		LB.eyes = src
+		if(side == RIGHT_SIDE)
+			LB.eyes_right = src
+		if(side == LEFT_SIDE)
+			LB.eyes_left = src
 	return ..()
 
 /obj/item/organ/ears/transfer_to_limb(obj/item/bodypart/head/LB, mob/living/carbon/human/C)
@@ -396,8 +399,10 @@
 		tongue = null
 	if(ears)
 		ears = null
-	if(eyes)
-		eyes = null
+	if(eyes_left)
+		eyes_left = null
+	if(eyes_right)
+		eyes_right = null
 
 	if(ishuman(C))
 		var/mob/living/carbon/human/H = C
