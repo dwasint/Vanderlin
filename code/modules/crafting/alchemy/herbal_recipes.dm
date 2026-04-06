@@ -45,9 +45,15 @@
 	taste_description = "stinging greens"
 	scent_description = "nettles"
 
+/datum/reagent/medicine/herbal/urtica_brew/on_mob_metabolize(mob/living/L)
+	. = ..()
+	L.add_chem_effect(CE_BLOODRESTORE, 2, "[type]")
+
+/datum/reagent/medicine/herbal/urtica_brew/on_mob_end_metabolize(mob/living/L)
+	. = ..()
+	L.remove_chem_effect(CE_BLOODRESTORE, "[type]")
+
 /datum/reagent/medicine/herbal/urtica_brew/on_mob_life(mob/living/carbon/M, efficiency)
-	if(M.blood_volume < BLOOD_VOLUME_NORMAL)
-		M.blood_volume = min(M.blood_volume+15, BLOOD_VOLUME_NORMAL)
 	if(!HAS_TRAIT(M,TRAIT_NOSTAMINA))
 		M.adjust_stamina(-0.75, internal_regen = FALSE)
 	..()

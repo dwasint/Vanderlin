@@ -161,7 +161,7 @@
 	if(blood_volume < amount)
 		amount = blood_volume
 
-	blood_volume -= amount
+	adjust_bloodvolume(-amount)
 
 	AM.reagents.add_reagent(blood.reagent_type, amount, blood.get_blood_data(src), bodytemperature)
 	return 1

@@ -63,7 +63,7 @@
 		clan?.handle_bloodsuck(src, blood_data?["preferences"])
 		adjust_bloodpool(used_vitae)
 		victim.adjust_bloodpool(-used_vitae)
-	victim.blood_volume = max(victim.blood_volume - drink_amt, 0)
+	victim.adjust_bloodvolume(-drink_amt)
 
 	playsound(src, 'sound/misc/drink_blood.ogg', 100, FALSE, -4)
 

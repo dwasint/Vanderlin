@@ -329,7 +329,10 @@
 		heal_wounds(25)
 		if(prob(3))
 			regenerate_limb(silent=FALSE)
-		blood_volume = max(blood_volume, min(BLOOD_VOLUME_SAFE, blood_volume + 10))
+		if(blood_volume <= BLOOD_VOLUME_NORMAL)
+			if(blood_volume < BLOOD_VOLUME_SAFE)
+				blood_volume = BLOOD_VOLUME_SAFE
+			adjust_bloodvolume(10)
 		set_bloodpool(max(bloodpool, min(maxbloodpool * 0.25, bloodpool + 5)))
 	else if(HAS_TRAIT(src, TRAIT_DEATHCOMA) && (!InCritical() || (!istype(coffin) || !(src in coffin.contents))))
 		REMOVE_TRAIT(src, TRAIT_DEATHCOMA, VAMPIRE_TRAIT)

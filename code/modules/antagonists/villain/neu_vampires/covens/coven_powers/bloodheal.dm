@@ -52,7 +52,8 @@
 	// Heal different damage types
 	owner.heal_overall_damage(bashing_lethal_heal, aggravated_heal)
 	owner.adjustToxLoss(-aggravated_heal * 0.5)
-	owner.blood_volume = max(owner.blood_volume, min(BLOOD_VOLUME_NORMAL, owner.blood_volume + vitae_cost))
+	if(owner.blood_volume <= BLOOD_VOLUME_NORMAL)
+		owner.adjust_bloodvolume(vitae_cost)
 
 	//this is quadratic so expect it to scale like crazy
 	owner.heal_wounds((bashing_lethal_heal + aggravated_heal) * level * 0.6, source=src)

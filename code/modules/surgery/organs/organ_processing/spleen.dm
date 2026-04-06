@@ -38,6 +38,6 @@
 	return TRUE
 
 /// Blood volume adjust proc
-/mob/living/proc/adjust_bloodvolume(amount, cap = BLOOD_VOLUME_MAX_LETHAL)
-	blood_volume = min(BLOOD_VOLUME_MAX_LETHAL,max(blood_volume + amount, 0))
+/mob/living/proc/adjust_bloodvolume(amount)
+	blood_volume = max(blood_volume + amount, 0)
 	return TRUE
