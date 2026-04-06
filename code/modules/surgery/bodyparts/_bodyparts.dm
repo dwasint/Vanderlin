@@ -856,7 +856,7 @@
 	offset = OFFSET_ARMOR
 	dismemberable = FALSE
 
-	max_cavity_item_size = WEIGHT_CLASS_NORMAL
+	max_cavity_item_size = WEIGHT_CLASS_BULKY
 	max_cavity_volume = 10
 
 	grid_width = 64
