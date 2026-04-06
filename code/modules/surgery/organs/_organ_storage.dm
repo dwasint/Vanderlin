@@ -7,6 +7,7 @@
 	max_w_class = WEIGHT_CLASS_GIGANTIC //this doesn't actually matter
 	allow_big_nesting = TRUE //this doesn't actually matter
 	var/obj/item/bodypart/bodypart_affected
+	var/generated_chimeric = FALSE
 
 // Unregister signals we don't want
 /datum/component/storage/concrete/organ/Initialize()
@@ -350,6 +351,15 @@
 	var/mob/living/carbon/carbon_mob = parent
 	if(istype(L) && L.used_intent.type == INTENT_HELP)
 		assign_bodypart(carbon_mob.get_bodypart(check_zone(L.zone_selected)))
+		if(!generated_chimeric)
+			if(istype(bodypart_affected, /obj/item/bodypart/chest))
+				var/mob/living/carbon/carbon = parent
+				var/amount = rand(1, 3)
+				for(var/i = 1 to amount)
+					var/atom/movable/new_atom = carbon.create_chimeric_node(FALSE)
+					new_atom.forceMove(bodypart_affected)
+					LAZYADD(bodypart_affected.cavity_items, new_atom)
+				generated_chimeric = TRUE
 	if(!istype(L) || !L.used_intent.type == INTENT_HELP || !is_accessible(L))
 		return FALSE
 	if(isliving(over_object) && (check_zone(L.zone_selected) == check_zone(bodypart_affected.body_zone)))

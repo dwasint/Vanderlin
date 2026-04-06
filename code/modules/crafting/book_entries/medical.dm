@@ -97,3 +97,57 @@
 		<b>Warning:</b> This is a destructive procedure. Consider carefully before performing it on an unwilling or unconscious patient.
 		</div>
 	"}
+/datum/book_entry/pestran_chimeric
+	name = "Chimeric Organ Techniques"
+/datum/book_entry/pestran_chimeric/inner_book_html(mob/user)
+	return {"
+		<div>
+		<h2>Chimeric Organ Techniques</h2>
+		The Pestran tradition holds that the body is not a closed vessel but a living instrument,
+		one that may be opened, reshaped, and made to accommodate that which does not naturally belong within it.
+		Chimeric surgery is the practical expression of this belief: the alteration of a living organ so that
+		foreign humors may be grafted directly into its structure and made to function as part of the whole.
+		<br><br>
+		All chimeric procedures are performed directly on the heart while it remains inside the patient.
+		The chest cavity must be open before any of the following steps can be taken.
+		</div>
+		<br>
+		<div>
+		<h3>Chimeric Transformation</h3>
+		Before any humor can be accepted, the heart must first be transformed to receive foreign tissue.
+		Apply a <b>hemostat</b> to the heart of a patient whose organ has not yet been transformed.
+		<br><br>
+		The procedure takes approximately <b>10 seconds</b> and must not be interrupted.
+		Upon completion the organ will be capable of receiving humors, and the patient's body
+		will begin storing blood essence as a substrate for their function.
+		</div>
+		<br>
+		<div>
+		<h3>Placing Humors</h3>
+		Once the heart has been transformed, humors may be placed against it by attacking the heart
+		directly with the <b>humor item</b>. The humor will adhere to the organ surface and wait to be stitched.
+		Any number of humors may be placed before stitching.
+		<br><br>
+		Humors cannot be placed on a failed chimeric organ. Repair it first.
+		</div>
+		<br>
+		<div>
+		<h3>Stitching</h3>
+		Once all desired humors have been placed, sew it in place using a <b>needle</b> to the heart to stitch them all in at once.
+		The time taken scales with the number of humors being stitched.
+		Each successfully stitched humor increases the blood essence requirement of the organ.
+		The operator will be shown the current requirements and stored amounts after stitching completes.
+		<br><br>
+		Humors that are rejected during stitching are not attached.
+		</div>
+		<br>
+		<div>
+		<h3>Chimeric Organ Repair</h3>
+		A chimeric organ that has failed can be restored by applying any <b>healing item or tool</b>
+		to the heart, the same as treating ordinary organ damage.
+		If the organ is also physically damaged, both conditions will be treated in the same pass.
+		<br><br>
+		Repair does not reduce blood requirements. If the underlying deficiency is not addressed
+		the organ will fail again. All prior grafts remain in place after restoration.
+		</div>
+	"}

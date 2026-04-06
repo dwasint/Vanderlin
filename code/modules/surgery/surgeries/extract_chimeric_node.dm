@@ -10,7 +10,7 @@
 		/datum/surgery_step/extract_chimeric_node,
 		/datum/surgery_step/cauterize
 	)
-	target_mobtypes = list(/mob/living/carbon/human, /mob/living/simple_animal)
+	target_mobtypes = list(/mob/living/simple_animal)
 	possible_locs = list(BODY_ZONE_CHEST)
 
 /datum/surgery_step/extract_chimeric_node

@@ -3917,7 +3917,6 @@
 #include "code\modules\surgery\organs\organ_processing\stomach.dm"
 #include "code\modules\surgery\surgeries\amputation.dm"
 #include "code\modules\surgery\surgeries\bestow_lux.dm"
-#include "code\modules\surgery\surgeries\chimeric_organs.dm"
 #include "code\modules\surgery\surgeries\cure_rot.dm"
 #include "code\modules\surgery\surgeries\dislocation.dm"
 #include "code\modules\surgery\surgeries\external_organs.dm"
