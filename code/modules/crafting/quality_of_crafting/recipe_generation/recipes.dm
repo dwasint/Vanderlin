@@ -704,6 +704,9 @@
 	data["output_nodes"] = return_node_pool(output_nodes + generic_outputs)
 	data["special_nodes"] = return_node_pool(special_nodes + generic_specials)
 
+	var/list/mob_sources = GLOB.chimeric_mob_sources["[type]"]
+	data["source_mobs"] = mob_sources?.Copy() || list()
+
 	return data
 
 /datum/chimeric_table/proc/return_node_pool(list/pool)

@@ -235,6 +235,7 @@ interface Recipe {
   input_nodes?: NodeEntry[];
   output_nodes?: NodeEntry[];
   special_nodes?: NodeEntry[];
+  source_mobs?: { name: string; icon: string; icon_state: string; _path: string }[];
   // snack_processing
   mill_name?: string;
   mill_icon?: string;
@@ -1163,7 +1164,7 @@ const DetailChimericNode = ({ r }: { r: Recipe }) => (
   </>
 );
 
-const DetailChimericTable = ({ r }: { r: Recipe }) => {
+const DetailChimericTable = ({ r, lookup, pickerMap, allRecipes, essenceIndex, nav }: { r: Recipe; lookup: Map<string, Recipe>; pickerMap: Map<string, Recipe[]>; allRecipes: Recipe[]; essenceIndex: Map<string, Recipe[]>; nav: (r: Recipe) => void }) => {
   const NodeList = ({ nodes, color }: { nodes?: NodeEntry[]; color: string }) => {
     if (!nodes?.length) return null;
     return (
@@ -1205,6 +1206,27 @@ const DetailChimericTable = ({ r }: { r: Recipe }) => {
       <SectionHead>Input Nodes</SectionHead><NodeList nodes={r.input_nodes} color="cyan" />
       <SectionHead>Output Nodes</SectionHead><NodeList nodes={r.output_nodes} color="orange" />
       <SectionHead>Special Nodes</SectionHead><NodeList nodes={r.special_nodes} color="purple" />
+      {!!r.source_mobs?.length && (
+        <>
+          <SectionHead>Blood Source Mobs</SectionHead>
+          <Box className="RecipeBook__step-block">
+            {r.source_mobs.map((mob, i) => (
+              <Box key={i} className="RecipeBook__step-row">
+                <Sprite icon={mob.icon} icon_state={mob.icon_state} />
+                <RecipeLink
+                  name={mob.name}
+                  path={mob._path}
+                  allRecipes={allRecipes}
+                  essenceIndex={essenceIndex}
+                  lookup={lookup}
+                  pickerMap={pickerMap}
+                  onNavigate={nav}
+                />
+              </Box>
+            ))}
+          </Box>
+        </>
+      )}
     </>
   );
 };
@@ -1498,7 +1520,7 @@ const RecipeDetail = (props: {
       case 'surgery':             return <DetailSurgery r={r} allRecipes={allRecipes} essenceIndex={essenceIndex} lookup={lookup} pickerMap={pickerMap} nav={onNavigate} />;
       case 'wound':               return <DetailWound r={r} />;
       case 'chimeric_node':       return <DetailChimericNode r={r} />;
-      case 'chimeric_table':      return <DetailChimericTable r={r} />;
+      case 'chimeric_table': return <DetailChimericTable r={r} allRecipes={allRecipes} essenceIndex={essenceIndex} lookup={lookup} pickerMap={pickerMap} nav={onNavigate} />;
       case 'fish':                return <DetailFish r={r} />;
       case 'snack_processing':    return <DetailSnackProcessing r={r} allRecipes={allRecipes} essenceIndex={essenceIndex} lookup={lookup} pickerMap={pickerMap} nav={onNavigate} />;
       case 'obtained_from':       return <DetailObtainedFrom r={r} allRecipes={allRecipes} essenceIndex={essenceIndex} lookup={lookup} pickerMap={pickerMap} nav={onNavigate} />;
