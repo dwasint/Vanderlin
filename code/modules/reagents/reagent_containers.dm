@@ -197,7 +197,7 @@
 /obj/item/reagent_containers/attackby(obj/item/I, mob/living/user, list/modifiers)
 	. = ..()
 	if(is_open_container() && reagents && reagents.total_volume > 0)
-		if(!istype(I, /obj/item/reagent_containers) || !istype(I, /obj/item/paper))
+		if(!istype(I, /obj/item/reagent_containers) && !istype(I, /obj/item/paper))
 			var/splash_amount = reagents.total_volume * 0.05
 			if(splash_amount < 1)
 				splash_amount = 1
