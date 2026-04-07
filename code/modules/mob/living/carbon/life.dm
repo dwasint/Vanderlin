@@ -744,14 +744,6 @@ All effects don't start immediately, but rather get worse over time; the rate is
 //LIVER//
 /////////
 
-///Decides if the liver is failing or not.
-/mob/living/carbon/proc/handle_liver()
-	if(!dna)
-		return
-	var/obj/item/organ/liver/liver = getorganslot(ORGAN_SLOT_LIVER)
-	if(!liver)
-		liver_failure()
-
 /mob/living/carbon/proc/undergoing_liver_failure()
 	var/obj/item/organ/liver/liver = getorganslot(ORGAN_SLOT_LIVER)
 	if(liver && (liver.organ_flags & ORGAN_FAILING))
