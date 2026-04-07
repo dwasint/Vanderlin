@@ -7,6 +7,7 @@
 	slot = ORGAN_SLOT_EARS
 	organ_efficiency = list(ORGAN_SLOT_EARS = 100)
 	gender = PLURAL
+	side = RIGHT_SIDE
 
 	healing_factor = STANDARD_ORGAN_HEALING
 

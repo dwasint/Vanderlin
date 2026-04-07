@@ -15,6 +15,7 @@
 	var/failure_time = 0
 	var/zone = BODY_ZONE_CHEST
 	var/unique_slot
+	var/unique_side_sprite = FALSE
 	/// Body zone we are currently occupying
 	var/current_zone = null
 	/// Body zones we can be inserted on
@@ -231,6 +232,11 @@
 	update_appearance(UPDATE_OVERLAYS)
 	return TRUE
 
+/obj/item/organ/update_transform()
+	. = ..()
+	if(!unique_side_sprite)
+		transform = (side == RIGHT_SIDE) ? null : matrix(-1, 0, 0, 0, 1, 0)
+
 /obj/item/organ/update_overlays()
 	. = ..()
 	var/datum/component/chimeric_organ/organ = GetComponent(/datum/component/chimeric_organ)
@@ -272,6 +278,9 @@
 	for(var/datum/action/A as anything in actions)
 		A.Grant(M)
 	update_accessory_colors()
+	update_appearance()
+	if(visible_organ)
+		M.update_body_parts(TRUE)
 	M.update_organ_requirements()
 	if(organ_flags & ORGAN_LIMB_SUPPORTER)
 		var/obj/item/bodypart/affected = owner.get_bodypart(current_zone)
@@ -297,7 +306,7 @@
 		A.Remove(M)
 	if(visible_organ)
 		M.update_body_parts(TRUE)
-	update_appearance(UPDATE_ICON_STATE)
+	update_appearance()
 
 	START_PROCESSING(SSobj, src)
 	M.update_organ_requirements()

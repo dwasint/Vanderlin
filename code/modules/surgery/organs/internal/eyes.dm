@@ -62,7 +62,7 @@
 	. = ..()
 	if(!owner && !eye_color)
 		eye_color = random_eye_color(TRUE)
-	update_appearance(UPDATE_OVERLAYS)
+	update_appearance()
 
 /obj/item/organ/eyes/update_overlays()
 	. = ..()
@@ -74,10 +74,6 @@
 			var/image/emissive_iris = emissive_appearance(icon, iris_icon_state)
 			emissive_iris.color = eye_color || "#FFFFFF"
 			. += emissive_iris
-
-/obj/item/organ/eyes/update_icon(updates)
-	. = ..()
-	transform = (side == RIGHT_SIDE) ? null : matrix(-1, 0, 0, 0, 1, 0)
 
 /obj/item/organ/eyes/switch_side(new_side = RIGHT_SIDE)
 	side = new_side

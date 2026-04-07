@@ -332,7 +332,8 @@
 				carbon_parent.custom_pain("MY [capitalize(O.name)] HURTS!", rand(30, 40))
 			*/
 		if(!CHECK_BITFIELD(O.organ_flags, ORGAN_CUT_AWAY))
-			O.applyOrganDamage(rand(10, 20))
+			//O.applyOrganDamage(rand(10, 20))
+			return
 		O.stored_in = null
 		O.Remove(O.owner, FALSE)
 		O.organ_flags |= ORGAN_CUT_AWAY

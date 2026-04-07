@@ -161,7 +161,7 @@
 #define DEFAULT_TOTAL_HYDRATION_REQ THIRST_FACTOR
 
 // ~simple list of organs that come in pairs
-#define PAIRED_ORGAN_SLOTS list(ORGAN_SLOT_EYES)
+#define PAIRED_ORGAN_SLOTS list(ORGAN_SLOT_EYES, ORGAN_SLOT_EARS)
 
 #define GET_EFFECTIVE_BLOOD_VOL(num, total_blood_req) (max(num - DEFAULT_TOTAL_BLOOD_REQ + total_blood_req, 0))
 

@@ -12,7 +12,7 @@
 	return is_human_part_visible(owner, HIDEEYES)
 
 /datum/sprite_accessory/eyes/get_icon_state(obj/item/organ/eyes/eyes, ...)
-    return (eyes.side == RIGHT_SIDE) ? "[icon_state]_1" : "[icon_state]_2"
+	return (eyes.side == RIGHT_SIDE) ? "[icon_state]_1" : "[icon_state]_2"
 
 /datum/sprite_accessory/eyes/adjust_appearance_list(list/appearance_list, obj/item/organ/eyes/eyes, obj/item/bodypart/bodypart, mob/living/carbon/owner)
 	generic_gender_feature_adjust(appearance_list, eyes, bodypart, owner, OFFSET_FACE)
