@@ -3929,7 +3929,6 @@
 #include "code\modules\surgery\surgeries\fracture.dm"
 #include "code\modules\surgery\surgeries\healing.dm"
 #include "code\modules\surgery\surgeries\limb_replacement.dm"
-#include "code\modules\surgery\surgeries\mouth_to_mouth.dm"
 #include "code\modules\surgery\surgeries\organic_steps.dm"
 #include "code\modules\surgery\surgeries\plastic_surgery.dm"
 #include "code\modules\surgery\surgeries\prosthetic_replacement.dm"
