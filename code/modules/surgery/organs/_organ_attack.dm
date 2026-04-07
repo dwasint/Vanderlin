@@ -51,7 +51,7 @@
 		return
 	*/
 
-	if(!damage)
+	if(!damage && !(organ_flags & ORGAN_DESTROYED))
 		to_chat(user, span_notice("\The [src] is in pristine quality already."))
 		return
 	user.visible_message(span_notice("<b>[user]</b> starts healing \the [src]..."), \
