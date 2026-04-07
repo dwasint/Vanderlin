@@ -266,6 +266,9 @@
 	if(affecting)
 		affecting.heal_damage(amount_healed, amount_healed)
 		affecting.heal_wounds(amount_healed * wound_modifier, src)
+		for(var/obj/item/organ/possible_artery in shuffle(affecting.getorganslotlist(ORGAN_SLOT_ARTERY)))
+			possible_artery.applyOrganDamage(-amount_healed * wound_modifier)
+
 		C.update_damage_overlays()
 
 /datum/action/cooldown/spell/healing/profane
