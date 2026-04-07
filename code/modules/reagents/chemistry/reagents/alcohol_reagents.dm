@@ -137,6 +137,10 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	color = "#6e6e6e"
 	quality = DRINK_NICE
 
+/datum/reagent/consumable/ethanol/aqua_vitae/reaction_obj(obj/O, reac_volume)
+	. = ..()
+	O.adjust_germ_level(-40 * reac_volume)
+
 /datum/reagent/consumable/ethanol/brandy
 	name = "Apple Brandy"
 	boozepwr = 60

@@ -10,6 +10,7 @@
 
 	grid_width = 32
 	grid_height = 32
+	germ_level = GERM_LEVEL_STERILE
 
 	/// Time we have spent failing
 	var/failure_time = 0
@@ -521,6 +522,28 @@
 		return
 	if(damage > high_threshold)
 		. += span_warning("[src] is starting to look discolored.")
+
+/obj/item/organ/examine(mob/user)
+	. = ..()
+	. += span_notice("It should be inserted in the [parse_zone(zone)].")
+	if(organ_flags & ORGAN_FAILING)
+		if(status == ORGAN_ROBOTIC)
+			. += span_warning("[src] seems to be broken.")
+			return
+		. += span_warning("[src] has decayed for too long, and has turned a sickly color. Only Pestra herself could restore it its functionality.")
+		return
+	if(damage > high_threshold)
+		. += span_warning("[src] is starting to look discolored.")
+
+	if(germ_level)
+		if(germ_level >= INFECTION_LEVEL_THREE)
+			. += span_danger("[src] is visibly festering, blackened patches and foul discharge mark it as severely infected.")
+		else if(germ_level >= INFECTION_LEVEL_TWO)
+			. += span_warning("[src] looks inflamed and angry, with an unhealthy sheen across its surface.")
+		else if(germ_level >= INFECTION_LEVEL_ONE)
+			. += span_warning("[src] has a slight discoloration and feels unusually warm to the touch.")
+		else
+			. += span_notice("[src] looks a little off, but nothing immediately concerning.")
 
 /obj/item/organ/proc/prepare_eat(mob/living/carbon/human/user)
 	var/obj/item/reagent_containers/food/snacks/meat/organ/S = new food_type()

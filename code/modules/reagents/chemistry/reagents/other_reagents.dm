@@ -145,11 +145,6 @@
 			H.adjust_hydration(hydration * efficiency)
 	..()
 
-/datum/reagent/water/reaction_obj(obj/O, reac_volume)
-	. = ..()
-	if(!.)
-		O.adjust_germ_level(-reac_volume * sanitization)
-
 /datum/reagent/water/gross
 	taste_description = "lead"
 	color = "#98934bc6"
@@ -223,6 +218,7 @@
 	O.extinguish()
 	O.acid_level = 0
 
+	O.adjust_germ_level(-reac_volume * sanitization)
 	if(istype(O, /obj/item/bin))
 		var/obj/item/bin/RB = O
 		if(!RB.kover)
