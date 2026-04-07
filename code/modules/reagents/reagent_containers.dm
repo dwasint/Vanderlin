@@ -204,7 +204,7 @@
 				splash_amount = 1
 			var/datum/reagents/splash_holder = new /datum/reagents(splash_amount)
 			splash_holder.my_atom = I
-			reagents.trans_to(splash_holder, splash_amount, 2, 1, 1)
+			reagents.trans_to(splash_holder, splash_amount, 4, 1, 1)
 			splash_holder.chem_temp = reagents.chem_temp
 			splash_holder.handle_reactions()
 			splash_holder.reaction(I, TOUCH, 1)

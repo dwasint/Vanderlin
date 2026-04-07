@@ -360,6 +360,8 @@
 /// Runs decay both inside and outside a person
 /obj/item/organ/proc/on_death(delta_time, times_fired)
 	if(!owner && !isbodypart(loc))
+		if(isnull(loc))
+			STOP_PROCESSING(SSobj, src)
 		organ_flags |= ORGAN_CUT_AWAY
 	if(can_decay())
 		decay(delta_time)

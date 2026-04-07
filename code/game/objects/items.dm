@@ -1482,6 +1482,8 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	. = ..()
 	if(ismob(loc))
 		update_slot_icon()
+	if(clean_types & CLEAN_WASH)
+		set_germ_level(GERM_LEVEL_STERILE)
 
 /obj/item/proc/do_pickup_animation(atom/target, turf/source)
 	set waitfor = FALSE
