@@ -46,6 +46,7 @@
 		TRAIT_CABAL,
 		TRAIT_BLOODDRINKER,
 		TRAIT_NASTY_EATER,
+		TRAIT_NOMETABOLISM,
 	)
 	/// Traits applied to the owner when we are cured and turn into just "rotmen"
 	var/static/list/traits_rotman = list(

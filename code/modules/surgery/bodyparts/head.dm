@@ -20,6 +20,8 @@
 	max_cavity_item_size = WEIGHT_CLASS_BULKY
 	max_cavity_volume = 8
 
+	artery_type = list(ARTERY_HEAD, ARTERY_NECK)
+
 	var/mob/living/brain/brainmob = null //The current occupant.
 	var/obj/item/organ/brain/brain = null //The brain organ
 	var/obj/item/organ/eyes/eyes_right

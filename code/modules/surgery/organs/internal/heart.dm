@@ -15,7 +15,7 @@
 	blood_req = 10
 	oxygen_req = 5
 	nutriment_req = 5
-	hydration_req = 5
+	hydration_req = 2.5
 	/// Have we been bypassed to avoid nasty blockages?
 	var/open = FALSE
 	/// If we're not beating that is not a good sign

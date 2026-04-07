@@ -32,7 +32,7 @@
 	blood_req = 10
 	oxygen_req = 5
 	nutriment_req = 5
-	hydration_req = 5
+	hydration_req = 2.5
 
 	/// This is stuff
 	var/damage_threshold_value = BRAIN_DAMAGE_DEATH/10
@@ -76,6 +76,38 @@
 		transfer_identity(C)
 	C.update_body()
 
+
+/obj/item/organ/brain/handle_blood(delta_time, times_fired)
+	var/effective_blood_oxygenation = GET_EFFECTIVE_BLOOD_VOL(owner.get_blood_oxygenation(), owner.total_blood_req)
+	var/arterial_efficiency = get_slot_efficiency(ORGAN_SLOT_ARTERY)
+	var/in_bleedout = owner.in_bleedout()
+	if(arterial_efficiency && !is_failing())
+		// Arteries get an extra flat 5 blood regen
+		current_blood = min(current_blood + 5 * (0.5 * delta_time) * (arterial_efficiency/ORGAN_OPTIMAL_EFFICIENCY), max_blood_storage)
+		return
+	if(!blood_req)
+		return
+	if(!in_bleedout && (effective_blood_oxygenation >= BLOOD_VOLUME_SAFE))
+		current_blood = min(current_blood + (blood_req * (0.5 * delta_time)), max_blood_storage)
+		return
+	if(in_bleedout)
+		current_blood = max(current_blood - (blood_req * (0.5 * delta_time)), 0)
+	else
+		current_blood = max(current_blood - (blood_req * ((BLOOD_VOLUME_NORMAL-effective_blood_oxygenation)/BLOOD_VOLUME_NORMAL) * (0.5 * delta_time)), 0)
+	// When all blood is lost, take blood from blood vessels
+	if(!current_blood)
+		var/obj/item/organ/artery
+		var/obj/item/bodypart/parent = owner.get_bodypart(current_zone)
+		for(var/thing in shuffle(parent?.getorganslotlist(ORGAN_SLOT_ARTERY)))
+			var/obj/item/organ/candidate = thing
+			if(candidate.current_blood && (candidate.get_slot_efficiency(ORGAN_SLOT_ARTERY) >= ORGAN_FAILING_EFFICIENCY))
+				artery = candidate
+				break
+		if(artery?.current_blood)
+			var/prev_blood = artery.current_blood
+			artery.current_blood = max(artery.current_blood - (blood_req * 0.5 * delta_time), 0)
+			current_blood = max(prev_blood - artery.current_blood, 0)
+		//Don't apply damage, this is handled by the organ process datum, if necessary
 
 /obj/item/organ/brain/handle_organ_attack(obj/item/tool, mob/living/user, params)
 	if(owner && DOING_INTERACTION_WITH_TARGET(user, owner))

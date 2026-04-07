@@ -13,7 +13,7 @@
 	blood_req = 1
 	oxygen_req = 0.5
 	nutriment_req = 0.5
-	hydration_req = 2
+	hydration_req = 1
 
 	var/list/languages_possible
 	var/say_mod = null

@@ -38,6 +38,8 @@
 	return TRUE
 
 /// Blood volume adjust proc
-/mob/living/proc/adjust_bloodvolume(amount)
+/mob/living/proc/adjust_bloodvolume(amount, cap)
+	if(cap && (blood_volume >= cap))
+		return TRUE
 	blood_volume = max(blood_volume + amount, 0)
 	return TRUE

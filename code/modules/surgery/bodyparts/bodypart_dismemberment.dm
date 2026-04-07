@@ -368,7 +368,7 @@
 				continue
 			C.surgeries -= body_zone
 
-	for(var/obj/item/organ/stored_organ as anything in src)
+	for(var/obj/item/organ/stored_organ in src)
 		stored_organ.Insert(C)
 
 	for(var/datum/wound/wound as anything in wounds)

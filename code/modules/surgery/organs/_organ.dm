@@ -182,8 +182,21 @@
 /obj/item/organ/proc/is_necrotic()
 	return (CHECK_BITFIELD(organ_flags, ORGAN_DEAD) || (germ_level >= INFECTION_LEVEL_THREE))
 
+/obj/item/organ/proc/necrose_organ()
+	. = FALSE
+	if(!CHECK_BITFIELD(organ_flags, ORGAN_DEAD))
+		set_germ_level(INFECTION_LEVEL_THREE)
+		return TRUE
+
+/obj/item/organ/proc/unnecrose_organ()
+	. = FALSE
+	if(CHECK_BITFIELD(organ_flags, ORGAN_DEAD))
+		set_germ_level(GERM_LEVEL_STERILE)
+		organ_flags &= ~ORGAN_DEAD
+		return TRUE
+
 /obj/item/organ/proc/handle_blood(delta_time, times_fired)
-	var/arterial_efficiency = get_slot_efficiency(slot) //cute placeholder value
+	var/arterial_efficiency = get_slot_efficiency(ORGAN_SLOT_ARTERY) //cute placeholder value
 	var/in_bleedout = owner.in_bleedout()
 	if(arterial_efficiency && !is_failing() && !in_bleedout)
 		// Arteries get an extra flat 5 blood regen
@@ -195,14 +208,20 @@
 		current_blood = min(current_blood + (blood_req * (0.5 * delta_time)), max_blood_storage)
 		return
 	current_blood = max(current_blood - (blood_req * (0.5 * delta_time)), 0)
-	// When all blood is lost, take blood from blood vessels placeholdered since not yet
+	// When all blood is lost, take blood from blood vessels
 	if(!current_blood)
-		var/blood_drawn = min(blood_req * 0.5 * delta_time, owner.blood_volume)
-		if(owner.blood_volume >= BLOOD_VOLUME_OKAY)
-			owner.adjust_bloodpool(-blood_drawn)
-			current_blood = min(current_blood + blood_drawn, max_blood_storage)
-			current_blood = max(current_blood - (blood_req * delta_time), 0)
-		if((current_blood <= 0))
+		var/obj/item/organ/artery
+		var/obj/item/bodypart/parent = owner.get_bodypart(current_zone)
+		for(var/thing in shuffle(parent?.getorganslotlist(ORGAN_SLOT_ARTERY)))
+			var/obj/item/organ/candidate = thing
+			if(candidate.current_blood && (candidate.get_slot_efficiency(ORGAN_SLOT_ARTERY) >= ORGAN_FAILING_EFFICIENCY))
+				artery = candidate
+				break
+		if(artery?.current_blood)
+			var/prev_blood = artery.current_blood
+			artery.current_blood = max(artery.current_blood - (blood_req * 0.5 * delta_time), 0)
+			current_blood = max(prev_blood - artery.current_blood, 0)
+		if((current_blood <= 0) && !(organ_flags & ORGAN_LIMB_SUPPORTER))
 			applyOrganDamage(2 * delta_time)
 
 /obj/item/organ/proc/generate_chimeric_organ(mob/living/source_mob)
@@ -340,7 +359,6 @@
 
 /// Runs decay both inside and outside a person
 /obj/item/organ/proc/on_death(delta_time, times_fired)
-	check_cold()
 	if(!owner && !isbodypart(loc))
 		organ_flags |= ORGAN_CUT_AWAY
 	if(can_decay())
@@ -511,20 +529,6 @@
 
 /obj/item/organ/examine(mob/user)
 	. = ..()
-
-	. += span_notice("It should be inserted in the [parse_zone(zone)].")
-
-	if(organ_flags & ORGAN_FAILING)
-		if(status == ORGAN_ROBOTIC)
-			. += span_warning("[src] seems to be broken.")
-			return
-		. += span_warning("[src] has decayed for too long, and has turned a sickly color. Only Pestra herself could restore it its functionality.")
-		return
-	if(damage > high_threshold)
-		. += span_warning("[src] is starting to look discolored.")
-
-/obj/item/organ/examine(mob/user)
-	. = ..()
 	. += span_notice("It should be inserted in the [parse_zone(zone)].")
 	if(organ_flags & ORGAN_FAILING)
 		if(status == ORGAN_ROBOTIC)
@@ -570,10 +574,13 @@
 	var/effective_efficiency = LAZYACCESS(organ_efficiency, slot)
 	if(isnull(effective_efficiency))
 		return effective_efficiency
-	/*
-	if(is_failing())
-		return 0
-	*/
+	var/static/list/no_bleedout_organs = list(ORGAN_SLOT_ARTERY)
+	if(slot in no_bleedout_organs)
+		if(is_failing_without_bleedout())
+			return 0
+	else
+		if(is_failing())
+			return 0
 	effective_efficiency = max(0, CEILING(effective_efficiency - (effective_efficiency * (damage/maxHealth)), 1))
 	return effective_efficiency
 
@@ -593,6 +600,15 @@
 /obj/item/organ/proc/setOrganDamage(d)	//use mostly for admin heals
 	applyOrganDamage(d - damage)
 
+/// This should only be used by arteries, tendons and nerves
+/obj/item/organ/proc/tear()
+
+/// This should only be used by arteries, tendons and nerves
+/obj/item/organ/proc/dissect()
+
+/// This should only be used by arteries, tendons and nerves
+/obj/item/organ/proc/mend()
+
 /** check_damage_thresholds
  * input: holder (a mob, the owner of the organ we call the proc on)
  * output: returns a message should get displayed.
@@ -606,7 +622,8 @@
 	if(delta > 0)
 		if(damage >= maxHealth && prev_damage < maxHealth)
 			organ_flags |= ORGAN_FAILING
-			organ_flags |= ORGAN_DESTROYED
+			if(!(organ_flags & ORGAN_INDESTRUCTIBLE))
+				organ_flags |= ORGAN_DESTROYED
 			return now_failing
 		if(damage >= high_threshold && prev_damage < high_threshold)
 			organ_flags |= ORGAN_FAILING

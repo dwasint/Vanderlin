@@ -2,7 +2,7 @@
 	slot = ORGAN_SLOT_HEART
 	mob_types = list(/mob/living/carbon/human)
 	var/static/sound/slowbeat = sound('sound/heart/slowbeat.ogg', volume = 40, channel = CHANNEL_HEARTBEAT, repeat = TRUE)
-	var/static/sound/fastbeat = sound('sound/heart/fastbeat.ogg', volume = 40, channel = CHANNEL_HEARTBEAT, repeat = TRUE)
+	var/static/sound/fastbeat = sound('sound/heart/fastbeat.ogg', volume = 20, channel = CHANNEL_HEARTBEAT, repeat = TRUE)
 
 /datum/organ_process/heart/handle_process(mob/living/carbon/owner, delta_time, times_fired)
 	if(owner.needs_heart())
@@ -135,8 +135,11 @@
 	switch(effective_blood_circulation)
 		if(BLOOD_VOLUME_MAXIMUM to BLOOD_VOLUME_EXCESS)
 			owner.status_flags &= ~BLEEDOUT
-			if(DT_PROB(5, delta_time))
-				to_chat(owner, span_warning("My arteries feel terribly bloated."))
+			if(DT_PROB(2.5, delta_time))
+				to_chat(owner, span_userdanger("Blood starts to tear my arteries apart!"))
+				var/obj/item/bodypart/artery_popper = pick(owner.bodyparts)
+				if(!artery_popper.is_artery_torn())
+					artery_popper.add_wound(/datum/wound/artery)
 		if(-INFINITY to BLOOD_VOLUME_BLEEDOUT)
 			if(!(owner.status_flags & BLEEDOUT))
 				owner.status_flags |= BLEEDOUT

@@ -92,7 +92,7 @@
 		return
 	if(owner && COOLDOWN_FINISHED(owner, adrenaline_burst))
 		COOLDOWN_START(owner, adrenaline_burst, 45 SECONDS)
-		owner.reagents?.add_reagent(/datum/reagent/adrenaline, 4)
+		owner.reagents?.add_reagent(/datum/reagent/adrenaline, 12)
 	return wound
 
 /// Removes a wound from this bodypart, removing any associated effects

@@ -119,8 +119,15 @@
 	var/chronic_pain_type = null
 	var/last_severe_injury_time = 0
 
+	/// artery organ base type
+	var/artery_type = /obj/item/organ/artery
+
+	/// General bodypart flags, such as - is it necrotic, does it leave stumps behind, etc
+	var/limb_flags = BODYPART_HAS_ARTERY
+
 /obj/item/bodypart/Initialize()
 	. = ..()
+	create_base_organs()
 	if(can_be_disabled)
 		RegisterSignal(src, SIGNAL_ADDTRAIT(TRAIT_PARALYSIS), PROC_REF(on_paralysis_trait_gain))
 		RegisterSignal(src, SIGNAL_REMOVETRAIT(TRAIT_PARALYSIS), PROC_REF(on_paralysis_trait_loss))
@@ -140,6 +147,21 @@
 	embedded_objects = null
 	original_owner = null
 	return ..()
+
+/obj/item/bodypart/proc/create_artery()
+	if(ispath(artery_type))
+		var/obj/item/organ/artery = new artery_type(src)
+		if(owner)
+			artery.Insert(owner)
+	if(islist(artery_type))
+		for(var/artery_path in artery_type)
+			var/obj/item/organ/artery = new artery_path(src)
+			if(owner)
+				artery.Insert(owner)
+
+/obj/item/bodypart/proc/create_base_organs()
+	if(CHECK_BITFIELD(limb_flags, BODYPART_HAS_ARTERY))
+		create_artery()
 
 /obj/item/bodypart/grabbedintents(mob/living/user, atom/grabbed, precise)
 	return list(/datum/intent/grab/move, /datum/intent/grab/twist, /datum/intent/grab/smash)
@@ -862,6 +884,8 @@
 	grid_width = 64
 	grid_height = 96
 
+	artery_type = ARTERY_CHEST
+
 /obj/item/bodypart/chest/set_disabled(new_disabled)
 	. = ..()
 	if(!.)
@@ -902,6 +926,8 @@
 	offset = OFFSET_GLOVES
 	dismember_wound = /datum/wound/dismemberment/l_arm
 	can_be_disabled = TRUE
+
+	artery_type = ARTERY_L_ARM
 
 /obj/item/bodypart/l_arm/set_owner(new_owner)
 	. = ..()
@@ -996,6 +1022,8 @@
 	dismember_wound = /datum/wound/dismemberment/r_arm
 	can_be_disabled = TRUE
 
+	artery_type = ARTERY_R_ARM
+
 /obj/item/bodypart/r_arm/set_owner(new_owner)
 	. = ..()
 	if(. == FALSE)
@@ -1086,6 +1114,8 @@
 	dismember_wound = /datum/wound/dismemberment/l_leg
 	can_be_disabled = TRUE
 
+	artery_type = ARTERY_L_LEG
+
 /obj/item/bodypart/l_leg/set_owner(new_owner)
 	. = ..()
 	if(. == FALSE)
@@ -1167,6 +1197,8 @@
 	grabtargets = list(BODY_ZONE_PRECISE_R_FOOT, BODY_ZONE_R_LEG)
 	dismember_wound = /datum/wound/dismemberment/r_leg
 	can_be_disabled = TRUE
+
+	artery_type = ARTERY_R_LEG
 
 /obj/item/bodypart/r_leg/set_owner(new_owner)
 	. = ..()
@@ -1330,3 +1362,44 @@
 		. += organ.organ_volume
 	for(var/obj/item/item as anything in cavity_items)
 		. += item.w_class
+
+
+/obj/item/bodypart/proc/artery_needed()
+	return CHECK_BITFIELD(limb_flags, BODYPART_HAS_ARTERY)
+
+/obj/item/bodypart/proc/no_artery()
+	return (!getorganslot(ORGAN_SLOT_ARTERY))
+
+/obj/item/bodypart/proc/artery_missing()
+	return (artery_needed() && no_artery())
+
+/obj/item/bodypart/proc/is_artery_torn()
+	. = FALSE
+	for(var/obj/item/organ/artery/artery as anything in getorganslotlist(ORGAN_SLOT_ARTERY))
+		if(artery.is_bruised())
+			return TRUE
+
+/obj/item/bodypart/proc/is_artery_dissected()
+	. = FALSE
+	for(var/obj/item/organ/artery/artery as anything in getorganslotlist(ORGAN_SLOT_ARTERY))
+		if(artery.is_broken())
+			return TRUE
+
+/obj/item/bodypart/proc/get_incision(strict = FALSE, ignore_gauze = FALSE)
+	if(ignore_gauze && (bandage))
+		return
+	var/datum/wound/incision
+	for(var/datum/wound/slash/slash in wounds)
+		if(slash.is_sewn())
+			continue
+		incision = slash
+		break
+
+	if(!incision)
+		for(var/datum/wound/dynamic/slash/slash in wounds)
+			if(slash.is_sewn())
+				continue
+			incision = slash
+			break
+
+	return incision

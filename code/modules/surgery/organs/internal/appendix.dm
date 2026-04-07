@@ -16,7 +16,7 @@
 	blood_req = 0.5
 	oxygen_req = 0.25
 	nutriment_req = 0.5
-	hydration_req = 0.5
+	hydration_req = 0.25
 
 	var/inflamed
 

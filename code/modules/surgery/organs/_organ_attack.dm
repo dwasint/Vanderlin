@@ -42,9 +42,12 @@
 
 /obj/item/organ/proc/handle_healing_item(obj/item/tool, mob/living/user, params)
 	var/obj/item/natural/stack = tool
+	/*
 	if(organ_flags & (ORGAN_DESTROYED|ORGAN_DEAD))
 		to_chat(user, span_warning("\The [src] is damaged beyond the point of no return."))
 		return
+	*/
+
 	if(!damage)
 		to_chat(user, span_notice("\The [src] is in pristine quality already."))
 		return
@@ -67,6 +70,10 @@
 	user.visible_message(span_notice("<b>[user]</b> healing \the [src]."), \
 						span_notice("I heal \the [src]."))
 	applyOrganDamage(-min(maxHealth/2, 50))
+	if(organ_flags & ORGAN_DESTROYED)
+		organ_flags &= ~ORGAN_DESTROYED //I am having pity on people here at this point I won't force you to get new organs unless they fully necrose.
+		for(var/slot in organ_efficiency)
+			organ_efficiency[slot] = max(60, organ_efficiency[slot] - 10)
 
 /obj/item/organ/proc/handle_cutting_away(obj/item/tool, mob/living/user, params)
 	user.visible_message(span_notice("<b>[user]</b> starts severing \the [src] from \the [owner]..."), \

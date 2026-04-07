@@ -13,6 +13,7 @@ GLOBAL_LIST_INIT(organ_process_order, list(
 	ORGAN_SLOT_VOICE,
 	ORGAN_SLOT_TAIL,
 	ORGAN_SLOT_WINGS,
+	ORGAN_SLOT_ARTERY,
 	))
 
 GLOBAL_LIST_INIT(organ_process_datum_order, list(

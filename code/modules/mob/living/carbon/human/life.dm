@@ -124,7 +124,7 @@
 			playsound(src, mask_sound, 90, FALSE, 4, 0)
 			return
 
-/mob/living/carbon/human/DeadLife()
+/mob/living/carbon/human/DeadLife(delta_time, times_fired)
 	set invisibility = 0
 
 	if(HAS_TRAIT(src, TRAIT_NO_TRANSFORM))
@@ -136,6 +136,7 @@
 
 	. = ..()
 	name = get_visible_name()
+	handle_organs(delta_time, times_fired)
 
 /mob/living/carbon/human/proc/on_daypass()
 	if(stat < 3) //not dead

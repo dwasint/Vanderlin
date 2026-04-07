@@ -30,6 +30,7 @@
 #define BODY_ZONE_FACING_R_LEG      "r_leg_face"
 
 //organ slots
+#define ORGAN_SLOT_ARTERY "artery"
 #define ORGAN_SLOT_BRAIN "brain"
 #define ORGAN_SLOT_SPLEEN "spleen"
 #define ORGAN_SLOT_APPENDIX "appendix"
@@ -69,6 +70,10 @@
 #define SURGERY_BROKEN (1<<5)
 #define SURGERY_DRILLED (1<<6)
 
+// ~flags for the limb_flags var on /obj/item/bodypart
+/// Can suffer artery wounds
+#define	BODYPART_HAS_ARTERY	(1<<0)
+
 //flags for the organ_flags var on /obj/item/organ
 /// Synthetic organs, or cybernetic organs. Reacts to EMPs and don't deteriorate or heal
 #define ORGAN_SYNTHETIC			(1<<0)
@@ -90,6 +95,8 @@
 #define ORGAN_LIMB_SUPPORTER (1<<8)
 /// Organ shouldn't be counted in /obj/item/bodypart/proc/damage_internal_organs()
 #define ORGAN_NO_VIOLENT_DAMAGE (1<<9)
+/// Organ cannot ever become destroyed beyond repair
+#define ORGAN_INDESTRUCTIBLE (1<<10)
 
 //wound severities for /datum/wound
 /// Wounds that are either surgically induced or too minor to matter
@@ -225,3 +232,17 @@
 #define GETBRAINLOSS(mob) mob.getOrganLoss(ORGAN_SLOT_BRAIN)
 #define ADJUSTBRAINLOSS(mob, amount) mob.adjustOrganLoss(ORGAN_SLOT_BRAIN, amount)
 #define SETBRAINLOSS(mob, amount) mob.setOrganLoss(ORGAN_SLOT_BRAIN, amount)
+
+
+// ~arteries
+#define ARTERY_MAX_HEALTH 100
+#define ARTERIAL_BLOOD_FLOW 3
+
+#define ARTERY_HEAD /obj/item/organ/artery/head
+#define ARTERY_MOUTH /obj/item/organ/artery/mouth
+#define ARTERY_CHEST /obj/item/organ/artery/chest
+#define ARTERY_NECK /obj/item/organ/artery/neck
+#define ARTERY_L_ARM /obj/item/organ/artery/l_arm
+#define ARTERY_R_ARM /obj/item/organ/artery/r_arm
+#define ARTERY_L_LEG /obj/item/organ/artery/l_leg
+#define ARTERY_R_LEG /obj/item/organ/artery/r_leg

@@ -573,6 +573,8 @@ GLOBAL_LIST_EMPTY(roundstart_species)
 	for(var/obj/item/organ/organ in C.internal_organs)
 		if(organ.slot in slots_to_iterate)
 			continue
+		if(istype(organ, /obj/item/organ/artery)) ///these are children of the limbs not to be messed with
+			continue
 		organ.Remove(C, TRUE)
 		QDEL_NULL(organ)
 	var/list/source_key_list = color_key_source_list_from_carbon(C)

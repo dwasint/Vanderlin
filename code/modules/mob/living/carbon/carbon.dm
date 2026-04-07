@@ -1090,6 +1090,8 @@
 				r_arm_index_next += 2
 				bodypart_instance.held_index = r_arm_index_next //2, 4, 6, 8...
 				hand_bodyparts += bodypart_instance
+		for(var/obj/item/organ/stored_organ in bodypart_instance)
+			stored_organ.Insert(src)
 
 ///Proc to hook behavior on bodypart additions.
 /mob/living/carbon/proc/add_bodypart(obj/item/bodypart/new_bodypart)

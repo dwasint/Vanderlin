@@ -19,7 +19,7 @@
 	blood_req = 2
 	oxygen_req = 2
 	nutriment_req = 2
-	hydration_req = 3
+	hydration_req = 1.5
 
 	var/blood_regen_factor = 0.01 // how much blood the spleen regenerates per efficiency point, per 2 seconds
 

@@ -3906,6 +3906,8 @@
 #include "code\modules\surgery\organs\internal\stomach.dm"
 #include "code\modules\surgery\organs\internal\tongue.dm"
 #include "code\modules\surgery\organs\internal\vocal_cords.dm"
+#include "code\modules\surgery\organs\internal\artery\_artery.dm"
+#include "code\modules\surgery\organs\internal\artery\base_types.dm"
 #include "code\modules\surgery\organs\organ_processing\__init.dm"
 #include "code\modules\surgery\organs\organ_processing\_base.dm"
 #include "code\modules\surgery\organs\organ_processing\brain.dm"
