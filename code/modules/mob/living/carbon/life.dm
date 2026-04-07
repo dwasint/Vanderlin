@@ -211,7 +211,7 @@
 	var/react_volume = 2
 	var/react_type = TOUCH
 	var/is_laying = (body_position == LYING_DOWN)
-	var/drown_damage = has_world_trait(/datum/world_trait/abyssor_rage) ? (is_ascendant(ABYSSOR) ? 15 : 10) : 5
+	var/drown_damage = has_world_trait(/datum/world_trait/abyssor_rage) ? (is_ascendant(ABYSSOR) ? 20 : 15) : 10
 	if(!is_laying)
 		if(W.water_height < WATER_HEIGHT_SHALLOW)
 			return
@@ -219,7 +219,7 @@
 			var/swimdrain = max(10 - GET_MOB_SKILL_VALUE_OLD(src, /datum/attribute/skill/misc/swimming), 1)
 			if(swimdrain < maximum_stamina - stamina)
 				adjust_stamina(swimdrain, "drown")
-				adjustOxyLoss(7)
+				adjustOxyLoss(7 + drown_damage)
 			else
 				adjustOxyLoss(drown_damage)
 				emote("drown")
