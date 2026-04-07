@@ -360,9 +360,9 @@
 					new_atom.forceMove(bodypart_affected)
 					LAZYADD(bodypart_affected.cavity_items, new_atom)
 				generated_chimeric = TRUE
-	if(!istype(L) || !L.used_intent.type == INTENT_HELP || !is_accessible(L))
+	if(!istype(L) || !L.used_intent.type == INTENT_HELP || !is_accessible(L) || !bodypart_affected)
 		return FALSE
-	if(isliving(over_object) && (check_zone(L.zone_selected) == check_zone(bodypart_affected.body_zone)))
+	if(isliving(over_object) && (check_zone(L.zone_selected) == check_zone(bodypart_affected?.body_zone)))
 		update_insides()
 		user_show_to_mob(M)
 		return COMPONENT_NO_MOUSEDROP
