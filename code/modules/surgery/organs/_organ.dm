@@ -370,6 +370,8 @@
 
 /// Infection/rot checks
 /obj/item/organ/proc/can_decay()
+	if(isreagentcontainer(loc))
+		return FALSE /// preserving ah.
 	check_cold()
 	if(CHECK_BITFIELD(organ_flags, ORGAN_FROZEN|ORGAN_DEAD|ORGAN_SYNTHETIC|ORGAN_INDESTRUCTIBLE))//I'll let arteries not rot to make life easier
 		return FALSE

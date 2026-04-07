@@ -183,7 +183,6 @@
 	to_chat(user, span_notice("You retrieve \the [returning] from \the [src]."))
 
 /obj/item/reagent_containers/process()
-	. = ..()
 	if(!soaking_item || !reagents || !reagents.total_volume)
 		return
 	var/splash_amount = max(0.2, reagents.total_volume * 0.01) //we lose 1% volume per process or 0.2 unit and multiply this by 10 on application so a preserving basin lasts atleast 500 seconds

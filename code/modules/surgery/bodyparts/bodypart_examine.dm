@@ -174,6 +174,11 @@
 	wound_strings -= null
 	status += wound_strings
 
+	if(get_incision())
+		for(var/obj/item/organ/possible_artery in shuffle(getorganslotlist(ORGAN_SLOT_ARTERY)))
+			if(possible_artery.is_bruised())
+				status += "<span class='bloody'>[possible_artery.name]'s been cut.</span>"
+
 	if(skeletonized)
 		status += "<span class='dead'>SKELETON</span>"
 	else if(rotted)
