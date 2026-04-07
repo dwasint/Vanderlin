@@ -148,7 +148,10 @@
 				to_chat(owner, span_userdanger("Not... Enough... Blood..."))
 		else
 			owner.status_flags &= ~BLEEDOUT
-	if((owner.status_flags & BLEEDOUT) && DT_PROB(50, delta_time))
+	if((owner.status_flags & BLEEDOUT) && DT_PROB(5, delta_time))
+		owner.adjust_eye_blur_up_to(4, 4)
+
+	if((effective_blood_circulation <= BLOOD_VOLUME_BLEEDOUT_PASSOUT) && DT_PROB(10, delta_time))
 		owner.Unconscious(4 SECONDS)
 
 	var/temp_bleed = 0
