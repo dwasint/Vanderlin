@@ -32,8 +32,12 @@
 	user.visible_message(span_notice("<b>[user]</b> starts attaching \the [src] on \the <b>[owner]</b>..."), \
 					span_notice("I start attaching \the [src] on \the <b>[owner]</b>..."), \
 					vision_distance = COMBAT_MESSAGE_RANGE)
+
+	var/time = 3 SECONDS
+	time *= (SKILL_MIDDLING/max(GET_MOB_SKILL_VALUE(user, /datum/attribute/skill/misc/medicine), 1))
+
 	//owner.custom_pain("OH GOD! There is something ripping me from inside!", 30, FALSE, owner.get_bodypart(current_zone))
-	if(!do_after(user, 3 SECONDS, owner))
+	if(!do_after(user, time, owner))
 		to_chat(user, span_warning("I must stand still!"))
 		return
 	if(istype(stack) && !stack.use(2))
@@ -57,13 +61,18 @@
 	user.visible_message(span_notice("<b>[user]</b> starts healing \the [src]..."), \
 					span_notice("I start healing \the [src]..."), \
 					vision_distance = COMBAT_MESSAGE_RANGE)
+
+
+	var/time = 5 SECONDS
+	time *= (SKILL_MIDDLING/max(GET_MOB_SKILL_VALUE(user, /datum/attribute/skill/misc/medicine), 1))
+
 	if(owner)
 		//owner.custom_pain("OH GOD! There are needles inside my [src]!", 30, FALSE, owner.get_bodypart(current_zone))
-		if(!do_after(user, 5 SECONDS, owner))
+		if(!do_after(user, time, owner))
 			to_chat(user, span_warning("I must stand still!"))
 			return
 	else
-		if(!do_after(user, 5 SECONDS, src))
+		if(!do_after(user, time, src))
 			to_chat(user, span_warning("I must stand still!"))
 			return
 	if(istype(stack))
@@ -83,7 +92,11 @@
 					span_notice("I start severing \the [src] from \the [owner]..."), \
 					vision_distance = COMBAT_MESSAGE_RANGE)
 	//owner.custom_pain("OH GOD! My [src] is being STABBED!", 30, FALSE, owner.get_bodypart(current_zone))
-	if(!do_after(user, 6 SECONDS, owner))
+
+	var/time = 6 SECONDS
+	time *= (SKILL_MIDDLING/max(GET_MOB_SKILL_VALUE(user, /datum/attribute/skill/misc/medicine), 1))
+
+	if(!do_after(user, time, owner))
 		to_chat(user, span_warning("I must stand still!"))
 		return TRUE
 	user.visible_message(span_notice("<b>[user]</b> severs \the [src] away."), \
@@ -100,7 +113,11 @@
 		to_chat(user, span_notice("\The [src] is free of miasma."))
 		return
 	//owner.custom_pain("OH GOD! My [src] is being STABBED!", 30, FALSE, owner.get_bodypart(current_zone))
-	if(!do_after(user, 6 SECONDS, owner))
+
+	var/time = 6 SECONDS
+	time *= (SKILL_MIDDLING/max(GET_MOB_SKILL_VALUE(user, /datum/attribute/skill/misc/medicine), 1))
+
+	if(!do_after(user, time, owner))
 		to_chat(user, span_warning("I must stand still!"))
 		return TRUE
 	user.visible_message(span_notice("<b>[user]</b> burn the rot away from \the [src]."), \
