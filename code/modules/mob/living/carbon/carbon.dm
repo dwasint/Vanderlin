@@ -704,47 +704,42 @@
 /mob/living/carbon/update_sight()
 	if(!client)
 		return
-
 	sight = initial(sight)
 	lighting_alpha = initial(lighting_alpha)
-	var/obj/item/organ/eyes/E = getorganslot(ORGAN_SLOT_EYES)
-	if(!E)
-		update_tint()
+	var/obj/item/organ/eyes/LE = LAZYACCESS(eye_organs, 1)
+	var/obj/item/organ/eyes/RE = LAZYACCESS(eye_organs, 2)
+	if(LE || RE)
+		see_in_dark = max(RE?.see_in_dark, LE?.see_in_dark)
+		see_invisible = max(RE?.see_invisible, LE?.see_invisible)
+		sight |= RE?.sight_flags
+		sight |= LE?.sight_flags
+		if(!isnull(RE?.lighting_alpha) && !isnull(LE?.lighting_alpha))
+			lighting_alpha = min(RE?.lighting_alpha, LE?.lighting_alpha)
+		else if(!isnull(RE?.lighting_alpha))
+			lighting_alpha = RE?.lighting_alpha
+		else if(!isnull(LE?.lighting_alpha))
+			lighting_alpha = LE?.lighting_alpha
 	else
-		if(HAS_TRAIT(src, TRAIT_SEE_LEYLINES))
-			see_invisible = SEE_INVISIBLE_LEYLINES
-		else
-			see_invisible = E.see_invisible
-		see_in_dark = E.see_in_dark
-		sight |= E.sight_flags
-		if(!isnull(E.lighting_alpha))
-			lighting_alpha = E.lighting_alpha
-
+		update_tint()
 	if(lightning_flashing)
 		lighting_alpha = min(lighting_alpha, LIGHTING_PLANE_ALPHA_INVISIBLE)
-
 	if(client.eye != src)
 		var/atom/A = client.eye
 		if(A)
-			if(A.update_remote_sight(src)) //returns 1 if we override all other sight updates.
+			if(A.update_remote_sight(src))
 				return
-
 	if(HAS_TRAIT(src, TRAIT_BESTIALSENSE))
 		lighting_alpha = min(lighting_alpha, LIGHTING_PLANE_ALPHA_DARKVISION)
 		see_in_dark = max(see_in_dark, 4)
-
 	if(HAS_TRAIT(src, TRAIT_DARKVISION))
 		lighting_alpha = min(lighting_alpha, LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE)
 		see_in_dark = max(see_in_dark, 6)
-
 	if(HAS_TRAIT(src, TRAIT_THERMAL_VISION))
 		sight |= (SEE_MOBS)
 		lighting_alpha = min(lighting_alpha, LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE)
-
 	if(HAS_TRAIT(src, TRAIT_XRAY_VISION))
 		sight |= (SEE_TURFS|SEE_MOBS|SEE_OBJS)
 		see_in_dark = max(see_in_dark, 8)
-
 	if(HAS_TRAIT(src, TRAIT_NOCSHADES))
 		lighting_alpha = min(lighting_alpha, LIGHTING_PLANE_ALPHA_NOCSHADES)
 		see_in_dark = max(see_in_dark, 12)
@@ -753,7 +748,8 @@
 	else
 		remove_client_colour(/datum/client_colour/nocshaded)
 		clear_fullscreen("inqvision")
-
+	if(HAS_TRAIT(src, TRAIT_SEE_LEYLINES))
+		see_invisible = SEE_INVISIBLE_LEYLINES
 	if(see_override)
 		see_invisible = see_override
 	. = ..()
@@ -780,12 +776,11 @@
 	if(isclothing(wear_mask))
 		. += wear_mask.tint
 
-	var/obj/item/organ/eyes/E = getorganslot(ORGAN_SLOT_EYES)
-	if(E)
-		. += E.tint
-
-	else
-		. += INFINITY
+	var/obj/item/organ/eyes/LE = LAZYACCESS(eye_organs, 1)
+	var/obj/item/organ/eyes/RE = LAZYACCESS(eye_organs, 2)
+	if(!RE && !LE)
+		return INFINITY //we blind
+	. += LE?.tint + RE?.tint
 
 /mob/living/carbon/get_permeability_protection(list/target_zones = list(HANDS,CHEST,GROIN,LEGS,FEET,ARMS,HEAD))
 	var/list/tally = list()

@@ -75,8 +75,8 @@
 
 	// Eye damage healing (only at higher levels)
 	if(level >= 5)
-		var/obj/item/organ/eyes/eyes = owner.getorganslot(ORGAN_SLOT_EYES)
-		if(eyes)
+		var/list/eye_list = owner.getorganslotlist(ORGAN_SLOT_EYES)
+		for(var/obj/item/organ/eyes/eyes as anything in eye_list)
 			eyes.applyOrganDamage(-HEAL_BASHING_LETHAL * (level * 0.5))
 			owner.adjust_temp_blindness(-HEAL_AGGRAVATED * (level) SECONDS)
 			owner.adjust_eye_blur(-HEAL_AGGRAVATED * (level) SECONDS)

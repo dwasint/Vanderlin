@@ -84,9 +84,7 @@
 	H.set_hair_color(cache_hair, FALSE)
 	H.set_facial_hair_color(cache_hair, FALSE)
 
-	var/obj/item/organ/eyes/eyes = H.getorganslot(ORGAN_SLOT_EYES)
-	if(eyes)
-		H.set_eye_color(cache_eye_secondary, cache_eye_secondary, FALSE)
+	H.set_eye_color(cache_eye_secondary, cache_eye_secondary, FALSE)
 
 
 	H.update_organ_colors()

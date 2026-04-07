@@ -239,12 +239,18 @@
 		if(headdy)
 			headdy.icon = 'icons/roguetown/mob/monster/goblins.dmi'
 			headdy.icon_state = "[src.dna.species.id]_head"
-	var/obj/item/organ/eyes/eyes = src.getorganslot(ORGAN_SLOT_EYES)
-	if(eyes)
+	var/list/eye_list = getorganslotlist(ORGAN_SLOT_EYES)
+	for(var/obj/item/organ/eyes/eyes as anything in eye_list)
 		eyes.Remove(src,1)
 		QDEL_NULL(eyes)
-	eyes = new /obj/item/organ/eyes/night_vision/nightmare
-	eyes.Insert(src)
+
+	var/obj/item/organ/eyes/LE = new /obj/item/organ/eyes/night_vision/nightmare
+	var/obj/item/organ/eyes/RE = new /obj/item/organ/eyes/night_vision/nightmare
+	LE.switch_side(LEFT_SIDE)
+
+	LE.Insert(src)
+	RE.Insert(src)
+
 	for(var/slot in internal_organs_slot)
 		for(var/obj/item/organ/organ as anything in internal_organs_slot[slot])
 			organ.sellprice = 5
