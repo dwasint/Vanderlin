@@ -189,6 +189,9 @@
 	if(owner && (tool.sharpness == IS_SHARP || tool.tool_behaviour == TOOL_SCALPEL) && !CHECK_BITFIELD(organ_flags, ORGAN_CUT_AWAY))
 		handle_cutting_away(tool, user, params)
 		return TRUE
+	if(tool_behaviour == TOOL_CAUTERY)
+		handle_burning_rot(tool, user, params)
+		return TRUE
 
 /obj/item/organ/heart/proc/handle_humor_placement(obj/item/chimeric_node/node, mob/living/user)
 	var/datum/component/chimeric_organ/chimeric = GetComponent(/datum/component/chimeric_organ)
