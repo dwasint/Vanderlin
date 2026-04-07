@@ -228,6 +228,17 @@
 #define GETPULSE_ADVANCED 1   // More accurate. (med scanner, sleeper, etc.)
 #define GETPULSE_PERFECT 2   // Perfectly accurate. (currently no non-adminbus means, you get the exact value 0-5)
 
+
+// ~CPR types
+/// Mouth to mouth - Heals oxygen deprivation
+#define CPR_MOUTH "m2m"
+#define CPR_CHEST "cardio"
+
+/// Mouth to mouth cooldown duration
+#define M2M_COOLDOWN 0.3 SECONDS
+///Cpr cooldown duration
+#define CPR_COOLDOWN 0.3 SECONDS
+
 // ~simple brainloss defines
 #define GETBRAINLOSS(mob) mob.getOrganLoss(ORGAN_SLOT_BRAIN)
 #define ADJUSTBRAINLOSS(mob, amount) mob.adjustOrganLoss(ORGAN_SLOT_BRAIN, amount)

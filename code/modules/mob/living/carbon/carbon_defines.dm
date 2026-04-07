@@ -17,6 +17,11 @@
 	var/obj/item/legcuffed = null  //Same as handcuffs but for legs. Bear traps use this.
 
 	COOLDOWN_DECLARE(adrenaline_burst)
+	/// Last time we got mouth to mouthed
+	COOLDOWN_DECLARE(last_mtom)
+	/// Last time we got CPR'd
+	COOLDOWN_DECLARE(last_cpr)
+
 	/// Pulse can't be handled on an organ-by-organ basis, since we can have multiple hearts
 	var/pulse = PULSE_NORM
 	/// Used to handle the heartbeat sounds
