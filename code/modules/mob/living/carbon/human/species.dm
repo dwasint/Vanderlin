@@ -1314,12 +1314,12 @@ GLOBAL_LIST_EMPTY(roundstart_species)
 
 /datum/species/proc/help(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
 //	if(!((target.health < 0 || HAS_TRAIT(target, TRAIT_FAKEDEATH)) && !(target.mobility_flags & MOBILITY_STAND)))
-	if((user.combat_stance != CS_WEAK) && target.body_position == LYING_DOWN)
+	if(!(istype(user.rmb_intent, /datum/rmb_intent/weak)) && target.body_position == LYING_DOWN)
 		target.help_shake_act(user)
 		if(target != user)
 			log_combat(user, target, "shaken")
 		return TRUE
-	else if((user.combat_stance == CS_WEAK) && target.body_position == LYING_DOWN && user.zone_selected in list(BODY_ZONE_CHEST, BODY_ZONE_PRECISE_MOUTH))
+	else if(istype(user.rmb_intent, /datum/rmb_intent/weak) && target.body_position == LYING_DOWN && user.zone_selected in list(BODY_ZONE_CHEST, BODY_ZONE_PRECISE_MOUTH))
 		user.do_cpr(target, user.zone_selected == BODY_ZONE_CHEST ? CPR_CHEST : CPR_MOUTH)
 		return TRUE
 
