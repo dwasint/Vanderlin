@@ -3,7 +3,7 @@
 	sound_effect = list('sound/gore/artery1.ogg', \
 						'sound/gore/artery2.ogg', \
 						'sound/gore/artery3.ogg')
-	severity = WOUND_SEVERITY_CRITICAL
+	severity = WOUND_SEVERITY_SEVERE
 	critical = TRUE
 	mortal = FALSE
 	can_sew = TRUE
@@ -51,3 +51,9 @@
 
 /datum/wound/artery/chest
 	artery_type_override = /obj/item/organ/artery/chest
+
+/datum/wound/artery/dissect
+	severity = WOUND_SEVERITY_CRITICAL
+
+/datum/wound/artery/dissect/neck
+	artery_type_override = /obj/item/organ/artery/neck
