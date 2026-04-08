@@ -55,7 +55,12 @@
 				has_rot = TRUE
 				break
 		for(var/obj/item/organ/organs as anything in cast_on.internal_organs)
-			organs.adjust_germ_level(-SANITIZATION_CUREROT)
+			if(organs.germ_level >= INFECTION_LEVEL_TWO)
+				has_rot = TRUE
+				break
+				organs.adjust_germ_level(-SANITIZATION_CUREROT)
+
+
 	if(!has_rot && !was_zombie)
 		to_chat(owner, span_warning("Nothing happens."))
 		return FALSE
@@ -73,6 +78,10 @@
 		rotty.update_limb()
 		if(rotty.can_be_disabled)
 			rotty.update_disabled()
+
+	for(var/obj/item/organ/organs as anything in cast_on.internal_organs)
+		if(organs.germ_level >= INFECTION_LEVEL_TWO)
+			organs.set_germ_level(INFECTION_LEVEL_ONE)
 
 	cast_on.update_body()
 	cast_on.visible_message("<span class='notice'>The rot leaves [cast_on]'s body!</span>", "<span class='green'>I feel the rot leave my body!</span>")
