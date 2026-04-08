@@ -85,6 +85,7 @@
 	species_traits = list(
 		NO_UNDERWEAR,
 		NOTRANSSTING,
+		NOBLOOD,
 	)
 	inherent_traits = list(
 		TRAIT_NOMOOD,
