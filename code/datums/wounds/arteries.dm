@@ -18,6 +18,8 @@
 	. = ..()
 	if(affected.status == BODYPART_ROBOTIC)
 		return FALSE
+	if(!affected.get_incision())
+		return FALSE
 
 /datum/wound/artery/can_stack_with(datum/wound/other)
 	if(istype(other, /datum/wound/artery) && (type == other.type))
