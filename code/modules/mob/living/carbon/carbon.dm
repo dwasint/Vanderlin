@@ -1028,6 +1028,7 @@
 		update_handcuffed()
 
 	drunkenness = 0
+	update_eyes()
 
 	return ..()
 
