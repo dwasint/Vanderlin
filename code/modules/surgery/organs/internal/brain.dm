@@ -312,17 +312,6 @@
 	else
 		owner.remove_stress(/datum/stress_event/brain_damage)
 
-/obj/item/organ/brain/before_organ_replacement(obj/item/organ/replacement)
-	. = ..()
-	var/obj/item/organ/brain/replacement_brain = replacement
-	if(!istype(replacement_brain))
-		return
-
-	// Transfer over traumas as well
-	for(var/datum/brain_trauma/trauma as anything in traumas)
-		cure_trauma_type(trauma)
-		replacement_brain.gain_trauma_type(trauma)
-
 ////////////////////////////////////TRAUMAS////////////////////////////////////////
 
 /obj/item/organ/brain/proc/has_trauma_type(brain_trauma_type = /datum/brain_trauma, resilience = TRAUMA_RESILIENCE_ABSOLUTE)

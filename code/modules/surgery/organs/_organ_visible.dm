@@ -96,14 +96,6 @@
 /obj/item/organ/proc/get_availability(datum/species/owner_species)
 	return slot in owner_species.organs
 
-/// Called before organs are replaced in regenerate_organs with new ones
-/obj/item/organ/proc/before_organ_replacement(obj/item/organ/replacement)
-	SHOULD_CALL_PARENT(TRUE)
-
-	// If we're being replace with an identical type we should take organ damage
-	if(replacement.type == type)
-		replacement.setOrganDamage(damage)
-
 /// Sets an accessory type and optionally colors too.
 /obj/item/organ/proc/set_accessory_type(new_accessory_type, colors)
 	accessory_type = new_accessory_type
