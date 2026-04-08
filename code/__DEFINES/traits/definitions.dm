@@ -289,6 +289,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_REJECTED_BY_TECHNOLOGY "rejected_by_technology"
 /// Doesn't cast a reflection
 #define TRAIT_NO_REFLECTION "no_reflection"
+///doesn't process organs
+#define TRAIT_NO_ORGAN_PROCESS "no_organs"
 /// Vampire cannot drink from anyone who doesn't consent to it
 #define TRAIT_CONSENSUAL_FEEDING_ONLY "consensual_feeding_only"
 #define TRAIT_COVEN_BANE "coven_bane"

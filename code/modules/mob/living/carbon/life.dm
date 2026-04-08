@@ -573,6 +573,8 @@
 	return FALSE
 
 /mob/living/carbon/proc/handle_organs(delta_time, times_fired)
+	if(HAS_TRAIT(src, TRAIT_NO_ORGAN_PROCESS)) //internal stasis basically
+		return
 	if(stat < DEAD)
 		var/list/already_processed_life = list()
 		var/list/organlist
