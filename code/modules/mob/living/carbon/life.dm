@@ -30,7 +30,6 @@
 		handle_lingering_pain()
 		handle_wounds()
 		handle_embedded_objects()
-		handle_blood()
 		handle_roguebreath()
 		update_stress()
 		handle_nausea()
@@ -61,7 +60,6 @@
 		return
 	handle_wounds()
 	handle_embedded_objects()
-	handle_blood()
 
 	check_cremation()
 
