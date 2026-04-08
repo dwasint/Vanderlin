@@ -456,7 +456,7 @@
 						target.set_heartattack(FALSE)
 						if(GETBRAINLOSS(target) >= 100)
 							SETBRAINLOSS(target, 99)
-						if(HAS_TRAIT(cast_on, TRAIT_NECRA_CURSE))
+						if(HAS_TRAIT(target, TRAIT_NECRA_CURSE))
 							to_chat(owner, span_warning("Necra holds tight to this one."))
 							return FALSE
 						if(target.revive())
