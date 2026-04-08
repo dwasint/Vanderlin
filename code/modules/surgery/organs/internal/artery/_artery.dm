@@ -88,10 +88,10 @@
 	var/cd_time = rand(squirt_delay_min_seconds, squirt_delay_max_seconds) SECONDS
 	COOLDOWN_START(src, next_squirt, cd_time)
 
-/obj/item/organ/artery/mend()
-	if(!owner)
-		return
-	setOrganDamage(0)
+/obj/item/organ/artery/applyOrganDamage(amount, maximum = maxHealth, silent = FALSE)
+	. = ..()
+	if(damage <= 0)
+		mend()
 
 /obj/item/organ/artery/proc/squirt(amount = 1, force = FALSE)
 	var/obj/item/bodypart/limb = owner.get_bodypart(current_zone)
