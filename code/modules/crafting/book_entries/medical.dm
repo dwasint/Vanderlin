@@ -64,6 +64,10 @@
 		This consumes <b>2 units</b> of material where applicable and takes approximately <b>5 seconds</b>.
 		Each application restores a significant portion of the organ's health.
 		<br><br>
+		<h3>Burning Rot</h3>
+		Rotten organs can be treated directly using a <b>cautery</b>.
+		Each application will burn away all the rot on the organ.
+		<br><br>
 		Organs that are fully destroyed or necrotic cannot be healed by this method.
 		Consult the organ's page to see what items and tools it accepts.
 		</div>
