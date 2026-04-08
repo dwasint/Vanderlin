@@ -54,6 +54,8 @@
 			if(bodypart.rotted)
 				has_rot = TRUE
 				break
+		for(var/obj/item/organ/organs as anything in cast_on.internal_organs)
+			organs.adjust_germ_level(-SANITIZATION_CUREROT)
 	if(!has_rot && !was_zombie)
 		to_chat(owner, span_warning("Nothing happens."))
 		return FALSE

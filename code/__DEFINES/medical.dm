@@ -195,6 +195,7 @@
 #define GERM_PER_UNIT_BLOOD 2
 
 // ~sanitization defines, related to lowering germ level
+#define SANITIZATION_CUREROT 500
 /// Sterilizine sanitization per unit
 #define SANITIZATION_PER_UNIT_STERILIZINE 50
 /// Space cleaner sanitization per unit
