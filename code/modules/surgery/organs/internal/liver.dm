@@ -26,5 +26,21 @@
 	var/filterToxins = FALSE                    //whether to filter toxins
 	food_type = /obj/item/reagent_containers/food/snacks/meat/organ/liver
 
+/obj/item/organ/liver/on_owner_examine(datum/source, mob/user, list/examine_list)
+	if(!ishuman(owner) || !is_failing())
+		return
+
+	var/mob/living/carbon/human/humie_owner = owner
+	if(!humie_owner.getorganslot(ORGAN_SLOT_EYES) || humie_owner.is_eyes_covered())
+		return
+	var/eyes_amount = LAZYLEN(humie_owner.getorganslotlist(ORGAN_SLOT_EYES))
+	switch(failure_time)
+		if(0 to 3 * LIVER_FAILURE_STAGE_SECONDS - 1)
+			examine_list += span_notice("<b>[owner]</b>'s eye[eyes_amount > 1 ? "s" : ""] [eyes_amount > 1 ? "are" : "is"] slightly yellow.")
+		if(3 * LIVER_FAILURE_STAGE_SECONDS to 4 * LIVER_FAILURE_STAGE_SECONDS - 1)
+			examine_list += span_notice("<b>[owner]</b>'s eye[eyes_amount > 1 ? "s" : ""] [eyes_amount > 1 ? "are" : "is"] completely yellow.")
+		if(4 * LIVER_FAILURE_STAGE_SECONDS to INFINITY)
+			examine_list += span_danger("<b>[owner]</b>'s eye[eyes_amount > 1 ? "s" : ""] [eyes_amount > 1 ? "are" : "is"] completely yellow and swelling with pus.")
+
 #undef LIVER_DEFAULT_TOX_TOLERANCE
 #undef LIVER_DEFAULT_TOX_LETHALITY

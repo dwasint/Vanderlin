@@ -295,6 +295,7 @@
 		update_organ_efficiency(slot)
 	var/checked_zone = check_zone(current_zone)
 	LAZYADD(M.organs_by_zone[checked_zone], src)
+	RegisterSignal(owner, COMSIG_PARENT_EXAMINE, PROC_REF(on_owner_examine))
 	for(var/datum/action/A as anything in actions)
 		A.Grant(M)
 	update_accessory_colors()
@@ -312,6 +313,7 @@
 	if(!M)
 		return
 	SEND_SIGNAL(src, COMSIG_ORGAN_REMOVED, M)
+	UnregisterSignal(owner, COMSIG_PARENT_EXAMINE)
 	var/initial_zone = current_zone
 	owner = null
 	current_zone = zone
@@ -333,6 +335,9 @@
 	if(organ_flags & ORGAN_LIMB_SUPPORTER)
 		var/obj/item/bodypart/affected = M.get_bodypart(initial_zone)
 		affected?.update_limb_efficiency()
+
+/obj/item/organ/proc/on_owner_examine(datum/source, mob/user, list/examine_list)
+	return
 
 /obj/item/organ/proc/on_find(mob/living/finder)
 	return
