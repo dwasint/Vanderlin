@@ -146,8 +146,8 @@
 )
 
 // ~should take around 20 minutes for a body to fully rot
-#define MIN_ORGAN_DECAY_INFECTION 0.1
-#define MAX_ORGAN_DECAY_INFECTION 0.25
+#define MIN_ORGAN_DECAY_INFECTION 0.25
+#define MAX_ORGAN_DECAY_INFECTION 0.5
 
 
 // ~efficiency defines
