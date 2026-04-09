@@ -123,7 +123,14 @@
 		ORGAN_SLOT_STOMACH = /obj/item/organ/stomach,
 		ORGAN_SLOT_APPENDIX = /obj/item/organ/appendix,
 		ORGAN_SLOT_TAIL = /obj/item/organ/tail/demihuman,
+		ORGAN_SLOT_HORNS = /obj/item/organ/horns,
 	)
+
+	optional_organ_slots = list(
+		ORGAN_SLOT_HORNS,
+		ORGAN_SLOT_TAIL,
+	)
+
 	bodypart_features = list(
 		/datum/bodypart_feature/hair/head,
 		/datum/bodypart_feature/hair/facial,

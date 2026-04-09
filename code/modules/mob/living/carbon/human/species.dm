@@ -218,6 +218,8 @@ GLOBAL_LIST_EMPTY(roundstart_species)
 		ORGAN_SLOT_APPENDIX = /obj/item/organ/appendix,
 		ORGAN_SLOT_GUTS = /obj/item/organ/guts,
 	)
+	///this is basically a list of organs we might not have IE hollowkin horns or tails
+	var/list/optional_organ_slots = list()
 
 	/// List of descriptor choices this species gets in preferences customization
 	var/list/descriptor_choices = list(
@@ -604,6 +606,10 @@ GLOBAL_LIST_EMPTY(roundstart_species)
 			should_have = neworgan.get_availability(src)
 		else
 			should_have = TRUE
+
+		if((slot in optional_organ_slots) && !C.dna.organ_dna[slot])
+			should_have = FALSE
+
 		if(oldorgan && (!should_have || replace_current) && !(oldorgan.zone in excluded_zones))
 			if(slot == ORGAN_SLOT_BRAIN)
 				var/obj/item/organ/brain/brain = oldorgan
