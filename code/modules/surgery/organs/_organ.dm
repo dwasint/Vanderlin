@@ -566,7 +566,7 @@
 	else if(damage >= low_threshold)
 		. += span_notice("[src] has some light bruising and minor scarring.")
 
-	if(scarred_below(ORGAN_OPTIMAL_EFFICIENCY))
+	if(scarred_below(ORGAN_OPTIMAL_EFFICIENCY - 1))
 		if(scarred_below(ORGAN_OPTIMAL_EFFICIENCY * 0.5))
 			. += span_danger("[src] is heavily scarred; its internal structure looks permanently compromised.")
 		else
