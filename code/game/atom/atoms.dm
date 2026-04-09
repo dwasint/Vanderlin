@@ -530,6 +530,9 @@
 						. += span_notice("I can identity this smell as [full_reagents.Join(", ")].")
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
 
+/atom/proc/get_mechanics_examine(mob/user)
+	return list()
+
 /**
  * Updates the appearence of the icon
  *

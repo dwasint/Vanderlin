@@ -151,6 +151,20 @@
 /obj/item/organ/heart/get_availability(datum/species/S)
 	return (!(NOBLOOD in S.species_traits) && !(TRAIT_STABLEHEART in S.inherent_traits))
 
+/obj/item/organ/heart/get_mechanics_examine(mob/user)
+	. = ..()
+
+	if(owner && !damage)
+		var/datum/component/chimeric_organ/chimeric = GetComponent(/datum/component/chimeric_organ)
+		if(length(loose_humors))
+			. += "Use a suture to stitch the loose humors into this heart."
+		if(!chimeric)
+			. += "Use a hemostat to begin a chimeric transformation on this heart."
+		else if(chimeric.failed)
+			. += "Use a healing item or tool to attempt to repair the failed chimeric organ."
+
+	if(owner)
+		. += "Place a chimeric node on this heart to add a humor to it."
 
 /obj/item/organ/heart/handle_organ_attack(obj/item/tool, mob/living/user, params)
 	if(owner && DOING_INTERACTION_WITH_TARGET(user, owner))

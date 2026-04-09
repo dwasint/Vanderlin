@@ -109,6 +109,12 @@
 			current_blood = max(prev_blood - artery.current_blood, 0)
 		//Don't apply damage, this is handled by the organ process datum, if necessary
 
+/obj/item/organ/brain/get_mechanics_examine(mob/user)
+	. = ..()
+
+	if(owner)
+		. += "Use a hemostat to perform a lobotomy on this brain."
+
 /obj/item/organ/brain/handle_organ_attack(obj/item/tool, mob/living/user, params)
 	if(owner && DOING_INTERACTION_WITH_TARGET(user, owner))
 		return TRUE

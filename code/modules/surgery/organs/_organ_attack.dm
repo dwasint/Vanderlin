@@ -2,6 +2,24 @@
 	. = ..()
 	return handle_organ_attack(I, user, params)
 
+/obj/item/organ/get_mechanics_examine(mob/user)
+	. = ..()
+
+	if(owner && CHECK_BITFIELD(organ_flags, ORGAN_CUT_AWAY))
+		for(var/atom/thing as anything in attaching_items)
+			. += "Use [initial(thing.name)] to reattach this organ to [owner]."
+
+	for(var/atom/thing as anything in healing_items)
+		. += "Use [initial(thing.name)] to heal this organ."
+	for(var/thing in healing_tools)
+		. += "Use a [thing] to heal this organ."
+
+	if(owner && !CHECK_BITFIELD(organ_flags, ORGAN_CUT_AWAY))
+		. += "Use a sharp item or scalpel to sever this organ from [owner]."
+
+	if(germ_level)
+		. += "Use a cautery to burn the miasma from this organ."
+
 /obj/item/organ/proc/handle_organ_attack(obj/item/tool, mob/living/user, params)
 	if(owner && DOING_INTERACTION_WITH_TARGET(user, owner))
 		return TRUE
