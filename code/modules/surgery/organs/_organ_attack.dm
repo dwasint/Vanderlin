@@ -41,7 +41,7 @@
 	if(owner && (tool.sharpness == IS_SHARP || tool.tool_behaviour == TOOL_SCALPEL) && !CHECK_BITFIELD(organ_flags, ORGAN_CUT_AWAY))
 		handle_cutting_away(tool, user, params)
 		return TRUE
-	if(tool_behaviour == TOOL_CAUTERY)
+	if(tool.tool_behaviour == TOOL_CAUTERY)
 		handle_burning_rot(tool, user, params)
 		return TRUE
 
@@ -102,8 +102,7 @@
 	applyOrganDamage(-min(maxHealth/2, 50))
 	if(organ_flags & ORGAN_DESTROYED)
 		organ_flags &= ~ORGAN_DESTROYED //I am having pity on people here at this point I won't force you to get new organs unless they fully necrose.
-		for(var/slot in organ_efficiency)
-			organ_efficiency[slot] = max(60, organ_efficiency[slot] - 10)
+		scar_organ(10, 60)
 
 /obj/item/organ/proc/handle_cutting_away(obj/item/tool, mob/living/user, params)
 	user.visible_message(span_notice("<b>[user]</b> starts severing \the [src] from \the [owner]..."), \

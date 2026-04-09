@@ -182,6 +182,18 @@
 /obj/item/organ/proc/is_necrotic()
 	return (CHECK_BITFIELD(organ_flags, ORGAN_DEAD) || (germ_level >= INFECTION_LEVEL_THREE))
 
+/obj/item/organ/proc/scar_organ(amount, cap)
+	for(var/slot in organ_efficiency)
+		if(organ_efficiency[slot] <= cap)
+			continue
+		organ_efficiency[slot] = max(cap, organ_efficiency - amount)
+
+/obj/item/organ/proc/scarred_below(value)
+	for(var/slot in organ_efficiency)
+		if(organ_efficiency[slot] <= value)
+			return TRUE
+	return FALSE
+
 /obj/item/organ/proc/necrose_organ()
 	. = FALSE
 	if(!CHECK_BITFIELD(organ_flags, ORGAN_DEAD))
@@ -539,14 +551,26 @@
 /obj/item/organ/examine(mob/user)
 	. = ..()
 	. += span_notice("It should be inserted in the [parse_zone(zone)].")
+
 	if(organ_flags & ORGAN_FAILING)
 		if(status == ORGAN_ROBOTIC)
 			. += span_warning("[src] seems to be broken.")
 			return
-		. += span_warning("[src] has decayed for too long, and has turned a sickly color. Only Pestra herself could restore it its functionality.")
+		. += span_warning("[src] has decayed for too long, and has turned a sickly color. Only Pestra herself could restore its functionality.")
 		return
-	if(damage > high_threshold)
-		. += span_warning("[src] is starting to look discolored.")
+
+	if(damage >= high_threshold)
+		. += span_danger("[src] is severely damaged, discolored and visibly struggling.")
+	else if(damage >= medium_threshold)
+		. += span_warning("[src] shows significant trauma, deep bruising and structural damage are visible.")
+	else if(damage >= low_threshold)
+		. += span_notice("[src] has some light bruising and minor scarring.")
+
+	if(scarred_below(ORGAN_OPTIMAL_EFFICIENCY))
+		if(scarred_below(ORGAN_OPTIMAL_EFFICIENCY * 0.5))
+			. += span_danger("[src] is heavily scarred; its internal structure looks permanently compromised.")
+		else
+			. += span_warning("[src] bears noticeable scarring that may be affecting its function.")
 
 	if(germ_level)
 		if(germ_level >= INFECTION_LEVEL_THREE)

@@ -266,10 +266,17 @@
 	if(affecting)
 		affecting.heal_damage(amount_healed, amount_healed)
 		affecting.heal_wounds(amount_healed * wound_modifier, src)
-		for(var/obj/item/organ/possible_artery in shuffle(affecting.getorganslotlist(ORGAN_SLOT_ARTERY)))
-			possible_artery.applyOrganDamage(-amount_healed * wound_modifier)
-
 		C.update_damage_overlays()
+
+	for(var/obj/item/organ/possible_organ in affecting.getorganlist(/obj/item/organ))
+		if(possible_organ.scarred_below(40))
+			to_chat(owner, span_danger("[cast_on]'s \the [possible_organ] is too scarred for my powers."))
+			continue
+		if(possible_organ.organ_flags & ORGAN_DESTROYED)
+			possible_organ.organ_flags &= ~ORGAN_DESTROYED //I am having pity on people here at this point I won't force you to get new organs unless they fully necrose.
+			possible_organ.scar_organ(20, 40)
+		if(possible_organ.damage > possible_organ.high_threshold)
+			possible_organ.applyOrganDamage(-amount_healed * wound_modifier)
 
 /datum/action/cooldown/spell/healing/profane
 	name = "Corrupt Lesser Miracle"

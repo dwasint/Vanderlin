@@ -140,7 +140,7 @@
 	if(owner && (tool.sharpness == IS_SHARP || tool.tool_behaviour == TOOL_SCALPEL) && !CHECK_BITFIELD(organ_flags, ORGAN_CUT_AWAY))
 		handle_cutting_away(tool, user, params)
 		return TRUE
-	if(tool_behaviour == TOOL_CAUTERY)
+	if(tool.tool_behaviour == TOOL_CAUTERY)
 		handle_burning_rot(tool, user, params)
 		return TRUE
 
