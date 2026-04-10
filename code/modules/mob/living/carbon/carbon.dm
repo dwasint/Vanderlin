@@ -995,6 +995,11 @@
 		for(var/obj/item/organ/organ as anything in internal_organs)
 			organ.applyOrganDamage(excess_healing * -1)
 
+	for(var/obj/item/bodypart/parent in bodyparts)//we treat this like the initial heart beat filling all the arteries with blood again
+		for(var/thing in shuffle(parent?.getorganslotlist(ORGAN_SLOT_ARTERY)))
+			var/obj/item/organ/candidate = thing
+			candidate.current_blood = candidate.max_blood_storage
+
 	return ..()
 
 /mob/living/carbon/fully_heal(heal_flags = HEAL_ALL)
