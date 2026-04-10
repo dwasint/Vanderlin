@@ -141,6 +141,7 @@
 	if(length(quirks))
 		clear_quirks()
 	update_body()
+	update_eyes()
 	faction = list(FACTION_UNDEAD)
 	var/turf/turf = get_turf(src)
 	if(SSterrain_generation.get_island_at_location(turf))
