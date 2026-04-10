@@ -1,8 +1,8 @@
 /datum/organ_process/heart
 	slot = ORGAN_SLOT_HEART
 	mob_types = list(/mob/living/carbon/human)
-	var/static/sound/slowbeat = sound('sound/heart/slowbeat.ogg', volume = 40, channel = CHANNEL_HEARTBEAT, repeat = TRUE)
-	var/static/sound/fastbeat = sound('sound/heart/fastbeat.ogg', volume = 20, channel = CHANNEL_HEARTBEAT, repeat = TRUE)
+	var/static/sound/slowbeat = sound('sound/heart/slowbeat.ogg', volume = 20, channel = CHANNEL_HEARTBEAT, repeat = TRUE)
+	var/static/sound/fastbeat = sound('sound/heart/fastbeat.ogg', volume = 10, channel = CHANNEL_HEARTBEAT, repeat = TRUE)
 
 /datum/organ_process/heart/handle_process(mob/living/carbon/owner, delta_time, times_fired)
 	if(owner.needs_heart())
