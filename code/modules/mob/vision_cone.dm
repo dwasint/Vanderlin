@@ -93,15 +93,11 @@
 	if(!client)
 		return
 	SEND_SIGNAL(src, COMSIG_FOV_SHOW)
-	var/atom/movable/screen/plane_master/game_world_fov_hidden/PM = locate(/atom/movable/screen/plane_master/game_world_fov_hidden) in client.screen
-	PM?.backdrop(src)
 
 /mob/proc/hide_cone()
 	if(!client)
 		return
 	SEND_SIGNAL(src, COMSIG_FOV_HIDE)
-	var/atom/movable/screen/plane_master/game_world_fov_hidden/PM = locate(/atom/movable/screen/plane_master/game_world_fov_hidden) in client.screen
-	PM?.backdrop(src)
 
 /mob/proc/update_fov_angles()
 	fovangle = initial(fovangle)

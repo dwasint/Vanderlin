@@ -125,6 +125,10 @@
 		var/atom/movable/screen/eye_intent/eyet = locate() in M.hud_used.static_inventory
 		eyet?.update_appearance(UPDATE_OVERLAYS)
 
+/obj/item/organ/eyes/handle_attaching_item(obj/item/tool, mob/living/user, params)
+	. = ..()
+	owner.update_eyes()
+
 /obj/item/organ/eyes/Remove(mob/living/carbon/M, special = 0)
 	var/sight_index = (side == RIGHT_SIDE) ? 2 : 1
 
