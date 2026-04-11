@@ -276,7 +276,12 @@
 			update_insides()
 	else
 		if(!(I in contents()))
-			I.forceMove(bodypart_affected)
+			if(istype(I, /obj/item/mob_holder))
+				var/obj/item/mob_holder/holder = I
+				holder.organ_stored = bodypart_affected
+				I.forceMove(bodypart_affected.owner)
+			else
+				I.forceMove(bodypart_affected)
 			LAZYADD(bodypart_affected.cavity_items, I)
 			update_insides()
 
