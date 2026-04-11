@@ -470,7 +470,6 @@
 									span_hear("I hear a loud crack!"),
 									ignored_mobs = target)
 						to_chat(target, span_userdanger("<b>[src]</b> botches the chest compressions and cracks my ribs!"))
-						target.add_wound(/datum/wound/fracture/chest)
 
 /mob/living/carbon/human/cuff_resist(obj/item/I, breakouttime = 1 MINUTES, cuff_break = 0, instant = FALSE)
 	if(..())
