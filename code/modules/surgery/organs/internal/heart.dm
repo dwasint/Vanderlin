@@ -193,9 +193,7 @@
 				handle_chimeric_repair(tool, user)
 			return TRUE
 	if(owner && tool.tool_behaviour == TOOL_HEMOSTAT)
-		var/datum/component/chimeric_organ/chimeric = GetComponent(/datum/component/chimeric_organ)
-		if(!chimeric)
-			handle_chimeric_transformation(tool, user)
+		handle_organ_attack_hemostat_chimeric(tool, user)
 		return TRUE
 	if(istype(tool, /obj/item/chimeric_node))
 		handle_humor_placement(tool, user)
@@ -206,6 +204,103 @@
 	if(tool.tool_behaviour == TOOL_CAUTERY)
 		handle_burning_rot(tool, user, params)
 		return TRUE
+
+/obj/item/organ/heart/proc/handle_organ_attack_hemostat_chimeric(obj/item/tool, mob/living/user)
+	// Called from handle_organ_attack when tool_behaviour == TOOL_HEMOSTAT
+	var/datum/component/chimeric_organ/chimeric = GetComponent(/datum/component/chimeric_organ)
+	if(!chimeric)
+		handle_chimeric_transformation(tool, user)
+		return TRUE
+
+	ui_interact(user)
+	return TRUE
+
+/obj/item/organ/heart/ui_state(mob/user)
+	return GLOB.always_state
+
+/obj/item/organ/heart/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new /datum/tgui(user, src, "ChimericHeart", "Chimeric Organ")
+		ui.open()
+		ui.set_autoupdate(TRUE)
+
+/obj/item/organ/heart/ui_data(mob/user)
+	var/datum/component/chimeric_organ/chimeric = GetComponent(/datum/component/chimeric_organ)
+	if(!chimeric)
+		return list()
+
+	var/list/inp_list = list()
+	for(var/datum/chimeric_node/input/N as anything in chimeric.inputs)
+		inp_list += list(N.to_tgui())
+
+	var/list/out_list = list()
+	for(var/datum/chimeric_node/output/N as anything in chimeric.outputs)
+		out_list += list(N.to_tgui())
+
+	var/list/p_inp_list = list()
+	for(var/datum/chimeric_node/input/N as anything in chimeric.partnerless_inputs)
+		p_inp_list += list(N.to_tgui())
+
+	var/list/p_out_list = list()
+	for(var/datum/chimeric_node/output/N as anything in chimeric.partnerless_outputs)
+		p_out_list += list(N.to_tgui())
+
+	var/list/sp_list = list()
+	for(var/datum/chimeric_node/special/N as anything in chimeric.special_nodes)
+		sp_list += list(N.to_tgui())
+
+	var/list/blood_list = list()
+	var/datum/component/blood_stability/blood_stab = owner?.GetComponent(/datum/component/blood_stability)
+	for(var/datum/blood_type/blood_type as anything in chimeric.blood_requirements)
+		var/required = chimeric.blood_requirements[blood_type]
+		var/stored = blood_stab ? blood_stab.get_blood_amount(blood_type) : 0
+		blood_list += list(list(
+			"blood_type" = initial(blood_type.name),
+			"required" = required,
+			"stored" = stored,
+		))
+
+	return list(
+		"organ_name" = name,
+		"failed" = chimeric.failed,
+		"failed_percent"  = chimeric.failed_precent,
+		"processing" = chimeric.processing,
+		"maximum_tier_difference" = chimeric.maximum_tier_difference,
+		"inputs"  = inp_list,
+		"outputs"  = out_list,
+		"partnerless_inputs" = p_inp_list,
+		"partnerless_outputs"= p_out_list,
+		"special_nodes" = sp_list,
+		"blood_requirements" = blood_list,
+	)
+
+/obj/item/organ/heart/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+
+	var/datum/component/chimeric_organ/chimeric = GetComponent(/datum/component/chimeric_organ)
+	if(!chimeric || chimeric.failed)
+		return FALSE
+
+	switch(action)
+		if("connect_nodes")
+			var/input_id = params["input_id"]
+			var/output_id = params["output_id"]
+			if(!input_id || !output_id)
+				return FALSE
+			return chimeric.ui_connect_nodes(input_id, output_id, usr)
+
+		if("disconnect_node")
+			var/node_id = params["node_id"]
+			var/node_type = params["node_type"]
+			if(!node_id || !node_type)
+				return FALSE
+			return chimeric.ui_disconnect_node(node_id, node_type, usr)
+
+	return FALSE
+
 
 /obj/item/organ/heart/proc/handle_humor_placement(obj/item/chimeric_node/node, mob/living/user)
 	var/datum/component/chimeric_organ/chimeric = GetComponent(/datum/component/chimeric_organ)
@@ -219,7 +314,7 @@
 		to_chat(user, span_warning("That humor is already placed."))
 		return TRUE
 	loose_humors += node
-	node.forceMove(owner)
+	node.forceMove(src)
 	user.visible_message(
 		span_notice("[user] presses [node] against [owner]'s [src]. It clings wetly to the surface."),
 		span_notice("I press [node] against [owner]'s [src]. It adheres, waiting to be stitched."),
