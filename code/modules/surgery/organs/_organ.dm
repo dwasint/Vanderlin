@@ -234,7 +234,7 @@
 			artery.current_blood = max(artery.current_blood - (blood_req * 0.5 * delta_time), 0)
 			current_blood = max(prev_blood - artery.current_blood, 0)
 		if((current_blood <= 0) && !(organ_flags & ORGAN_LIMB_SUPPORTER))
-			applyOrganDamage(2 * delta_time)
+			applyOrganDamage(0.2 * delta_time)
 
 /obj/item/organ/proc/generate_chimeric_organ(mob/living/source_mob)
 	if(!source_mob)

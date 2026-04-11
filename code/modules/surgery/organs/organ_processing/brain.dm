@@ -58,35 +58,4 @@
 		owner.death()
 		brain.brain_death = TRUE
 		return TRUE // owner is dead, no point continuing
-
-	// Only run if damage increased this tick
-	if(brain.damage > brain.prev_damage)
-		brain.damage_delta = brain.damage - brain.prev_damage
-
-		if(brain.damage > BRAIN_DAMAGE_MILD)
-			if(prob(brain.damage_delta * (1 + max(0, (brain.damage - BRAIN_DAMAGE_MILD) / 100))))
-				brain.gain_trauma_type(BRAIN_TRAUMA_MILD)
-
-		if(brain.damage > BRAIN_DAMAGE_SEVERE)
-			if(prob(brain.damage_delta * (1 + max(0, (brain.damage - BRAIN_DAMAGE_SEVERE) / 100))))
-				if(prob(20))
-					brain.gain_trauma_type(BRAIN_TRAUMA_SPECIAL)
-				else
-					brain.gain_trauma_type(BRAIN_TRAUMA_SEVERE)
-
-		// Threshold warning messages to the owner
-		if(owner.stat < UNCONSCIOUS)
-			var/brain_message
-			if(brain.prev_damage < BRAIN_DAMAGE_MILD && brain.damage >= BRAIN_DAMAGE_MILD)
-				brain_message = "<span class='warning'>I feel lightheaded.</span>"
-			else if(brain.prev_damage < BRAIN_DAMAGE_SEVERE && brain.damage >= BRAIN_DAMAGE_SEVERE)
-				brain_message = "<span class='warning'>I feel less in control of your thoughts.</span>"
-			else if(brain.prev_damage < (BRAIN_DAMAGE_DEATH - 20) && brain.damage >= (BRAIN_DAMAGE_DEATH - 20))
-				brain_message = "<span class='warning'>I can feel your mind flickering on and off...</span>"
-			if(brain_message)
-				to_chat(owner, brain_message)
-
-	// Always update prev_damage at end of tick so next tick's delta is accurate
-	brain.prev_damage = brain.damage
-
 	return TRUE
