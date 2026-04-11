@@ -433,8 +433,8 @@
 								vision_distance = COMBAT_MESSAGE_RANGE, \
 								ignored_mobs = target)
 				else
-					visible_message(span_notice("<b>[src]</b> performs CPR on <b>[target]</b>!"), \
-								span_notice("I perform CPR on <b>[target]</b>."), \
+					visible_message(span_notice("<b>[src]</b> performs chest compressions on <b>[target]</b>!"), \
+								span_notice("I perform chest compressions on <b>[target]</b>."), \
 								vision_distance = COMBAT_MESSAGE_RANGE, \
 								ignored_mobs = target)
 				target.last_cpr = world.time
@@ -465,11 +465,12 @@
 											span_userdanger("My muscles spasm as i am brought back to life!"))
 				else
 					if(diceroll <= DICE_CRIT_FAILURE)
-						visible_message(span_danger("<b>[src]</b> botches the CPR, cracking <b>[target]</b>'s  ribs!"), \
-									span_danger("I botch the CPR, cracking <b>[target]</b>'s ribs!"),
+						visible_message(span_danger("<b>[src]</b> botches the chest compressions, cracking <b>[target]</b>'s  ribs!"), \
+									span_danger("I botch the chest compressions, cracking <b>[target]</b>'s ribs!"),
 									span_hear("I hear a loud crack!"),
 									ignored_mobs = target)
-						to_chat(target, span_userdanger("<b>[src]</b> botches the CPR and cracks my ribs!"))
+						to_chat(target, span_userdanger("<b>[src]</b> botches the chest compressions and cracks my ribs!"))
+						target.add_wound(/datum/wound/fracture/chest)
 
 /mob/living/carbon/human/cuff_resist(obj/item/I, breakouttime = 1 MINUTES, cuff_break = 0, instant = FALSE)
 	if(..())
