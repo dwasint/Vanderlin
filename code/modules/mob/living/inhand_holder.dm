@@ -87,7 +87,7 @@
 		if(!organ_stored)
 			to_chat(L, "<span class='warning'>[held_mob] wriggles free!</span>")
 		else
-			to_chat(L, span_danger["[held_mob] bursts from your [organ_stored]!"])
+			to_chat(L, span_danger("[held_mob] bursts from your [organ_stored]!"))
 		L.dropItemToGround(src)
 
 	var/atom/old_loc = loc
