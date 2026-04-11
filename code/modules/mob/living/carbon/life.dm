@@ -42,7 +42,6 @@
 					heart_attacking = FALSE
 
 		handle_sleep()
-		handle_brain_damage()
 
 	check_cremation()
 
