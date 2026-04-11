@@ -463,6 +463,10 @@
 							target.grab_ghost(TRUE)
 							target.visible_message(span_warning("<b>[target]</b> limply spasms their muscles."), \
 											span_userdanger("My muscles spasm as i am brought back to life!"))
+							target.emote("breathgasp")
+							target.adjust_jitter(100 SECONDS)
+							target.apply_status_effect(/datum/status_effect/debuff/revive)
+							target.remove_client_colour(/datum/client_colour/monochrome/death)
 				else
 					if(diceroll <= DICE_CRIT_FAILURE)
 						visible_message(span_danger("<b>[src]</b> botches the chest compressions, cracking <b>[target]</b>'s  ribs!"), \
