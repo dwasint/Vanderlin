@@ -206,7 +206,6 @@
 		return TRUE
 
 /obj/item/organ/heart/proc/handle_organ_attack_hemostat_chimeric(obj/item/tool, mob/living/user)
-	// Called from handle_organ_attack when tool_behaviour == TOOL_HEMOSTAT
 	var/datum/component/chimeric_organ/chimeric = GetComponent(/datum/component/chimeric_organ)
 	if(!chimeric)
 		handle_chimeric_transformation(tool, user)
