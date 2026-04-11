@@ -1,4 +1,0 @@
-author: "CheffieGithub"
-delete-after: True
-changes:
-  - bugfix: "Fixed formikrag wings not allowing you to float over gaps"

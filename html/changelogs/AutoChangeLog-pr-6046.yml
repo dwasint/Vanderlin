@@ -1,8 +1,0 @@
-author: "KevinfromHP"
-delete-after: True
-changes:
-  - rscadd: "Folk Heroes were moved back to rare adventurers."
-  - balance: "Rebalanced the Paladin's to lower qualities"
-  - balance: "Vaquero has received some buffs"
-  - balance: "Swashbuckler has received some buffs"
-  - bugfix: "various issues related to Wretches and other antag roles keeping some job things upon transfer to an antag."
