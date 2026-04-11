@@ -11,12 +11,6 @@
 
 /datum/organ_process/liver/handle_process(mob/living/carbon/owner, delta_time, times_fired)
 	var/liver_efficiency = owner.getorganslotefficiency(ORGAN_SLOT_LIVER)
-
-	if(liver_efficiency < failing_threshold)
-		if(owner.stat < DEAD)
-			owner.liver_failure()
-		return TRUE
-
 	if(owner.stat == DEAD)
 		for(var/reagent in owner.reagents.reagent_list)
 			var/datum/reagent/R = reagent
