@@ -449,7 +449,7 @@
 				if(target.reagents?.get_reagent_amount(/datum/reagent/adrenaline) >= 1)
 					epinephrine_mod +=  3
 
-				var/diceroll = diceroll(medical_skill+heart_exposed_mod+epinephrine_mod, dice_num = 5, context = DICE_CONTEXT_PHYSICAL)
+				var/diceroll = diceroll(medical_skill+heart_exposed_mod+epinephrine_mod, dice_num = 8, context = DICE_CONTEXT_PHYSICAL)
 				if((diceroll >= DICE_SUCCESS) || !attributes)
 					if(prob(35) || (diceroll >= DICE_CRIT_SUCCESS))
 						target?.pump_heart(src)
