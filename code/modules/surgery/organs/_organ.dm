@@ -210,7 +210,12 @@
 /obj/item/organ/proc/handle_blood(delta_time, times_fired)
 	var/arterial_efficiency = get_slot_efficiency(ORGAN_SLOT_ARTERY) //cute placeholder value
 	var/in_bleedout = owner.in_bleedout()
-	if(arterial_efficiency && !is_failing() && !in_bleedout)
+	var/failer
+	if(arterial_efficiency)
+		failer = is_failing_without_bleedout()
+	else
+		failer = is_failing()
+	if(arterial_efficiency && !failer && !in_bleedout)
 		// Arteries get an extra flat 5 blood regen
 		current_blood = min(current_blood + 5 * (0.5 * delta_time) * (arterial_efficiency/ORGAN_OPTIMAL_EFFICIENCY), max_blood_storage)
 		return
