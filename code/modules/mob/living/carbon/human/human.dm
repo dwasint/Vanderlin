@@ -467,6 +467,7 @@
 							target.adjust_jitter(100 SECONDS)
 							target.apply_status_effect(/datum/status_effect/debuff/revive)
 							target.remove_client_colour(/datum/client_colour/monochrome/death)
+							record_round_statistic(STATS_CPR_REVIVALS, 1)
 				else
 					if(diceroll <= DICE_CRIT_FAILURE)
 						visible_message(span_danger("<b>[src]</b> botches the chest compressions, cracking <b>[target]</b>'s  ribs!"), \

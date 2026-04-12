@@ -256,10 +256,6 @@
 			STATS_WOUNDS_SEWED = list("name" = "Wounds sewed up:", "points" = 0.75, "capacity" = 90),
 		),
 		"Set 3" = list(
-			STATS_LUX_HARVESTED = list("name" = "Lux extracted:", "points" = 8, "capacity" = 70),
-			STATS_LUX_REVIVALS = list("name" = "Lux revivals:", "points" = 16, "capacity" = 70),
-		),
-		"Set 4" = list(
 			STATS_ALIVE_MEDICATORS = list("name" = "Number of medicators:", "points" = 8, "capacity" = 70),
 		),
 		"Set 5" = list(

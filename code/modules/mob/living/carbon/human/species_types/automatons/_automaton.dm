@@ -19,7 +19,7 @@
 
 /mob/living/carbon/human/species/automaton/vessel/LateInitialize()
 	. = ..()
-	AddComponent(/datum/component/ghost_vessel, /obj/item/reagent_containers/lux)
+	AddComponent(/datum/component/ghost_vessel, /obj/item/riddleofsteel)
 
 /mob/living/carbon/human/species/automaton/prefilled_vessel/LateInitialize()
 	. = ..()

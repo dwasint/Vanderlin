@@ -53,7 +53,6 @@
 			H.emote("breathgasp")
 			H.adjust_jitter(100 SECONDS)
 			H.update_body()
-			GLOB.vanderlin_round_stats[STATS_LUX_REVIVALS]++
 			ADD_TRAIT(H, TRAIT_IWASREVIVED, "[type]")
 			H.apply_status_effect(/datum/status_effect/buff/psyvived)
 			user.apply_status_effect(/datum/status_effect/buff/psyvived)
