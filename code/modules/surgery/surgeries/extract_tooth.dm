@@ -31,8 +31,8 @@
 	if(!jaw)
 		return FALSE
 	jaw.knock_out_teeth(1, pick(GLOB.alldirs))
-	target.emote("scream", intentional = TRUE)
-	jaw.add_pain(25)
+	//target.emote("scream", intentional = TRUE)
+	//jaw.add_pain(25)
 	if(tool.hott)
 		target.balloon_alert(target, "The hot metal sears the socket!")
 		jaw.receive_damage(0, 10)
