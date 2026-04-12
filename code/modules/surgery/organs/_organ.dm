@@ -214,8 +214,8 @@
 	if(arterial_efficiency)
 		failer = is_failing_without_bleedout()
 	else
-		failer = is_failing()
-	if(arterial_efficiency && !failer && !in_bleedout)
+		failer = is_failing() || in_bleedout
+	if(arterial_efficiency && !failer)
 		// Arteries get an extra flat 10 blood regen
 		current_blood = min(current_blood + 10 * (0.5 * delta_time) * (arterial_efficiency/ORGAN_OPTIMAL_EFFICIENCY), max_blood_storage)
 		return
