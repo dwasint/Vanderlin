@@ -1,0 +1,8 @@
+author: "MissyNym"
+delete-after: True
+changes:
+  - map: "Fixed the fences in Malum's Anvil and added some additional ones to account for adventurer/pilgrim spawns."
+  - map: "Widened the \"main path\" in Malum's Anvil for travel into town."
+  - map: "Added grass and bushes to Malum's Anvil so people can at least scrounge up basic materials."
+  - map: "Added a sleeping area for adepts to the Anvil Inquisition base, since they did not previously have one."
+  - map: "Further blocked off the Vanderlin Old Church."
