@@ -155,6 +155,7 @@
 	. = ..()
 	if(!.)
 		return
+	pump_heart(forced_pump = 1.3)
 	var/datum/job/human_job = SSjob.GetJob(job)
 	if(human_job)
 		switch(human_job.type)

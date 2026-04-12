@@ -316,10 +316,13 @@
 /datum/component/storage/concrete/organ/remove_from_storage(atom/movable/AM, atom/new_location)
 	if(!is_accessible(parent))
 		return FALSE
+	var/obj/item/organ/O = AM
+	if(istype(O))
+		if(!CHECK_BITFIELD(O.organ_flags, ORGAN_CUT_AWAY))
+			return FALSE
 	. = ..()
 	if(.)
 		AM.mouse_opacity = initial(AM.mouse_opacity)
-		var/obj/item/organ/O = AM
 		if(!istype(O))
 			var/obj/item/cavity_item = AM
 			if(length(bodypart_affected?.cavity_items) && (cavity_item in bodypart_affected.cavity_items))
