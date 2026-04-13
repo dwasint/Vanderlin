@@ -145,5 +145,5 @@
 		var/obj/item/organ/organ = thing
 		total_blood_req += (organ.blood_req/100 * BLOOD_VOLUME_NORMAL)
 		total_oxygen_req += organ.oxygen_req
-		total_nutriment_req += (organ.nutriment_req/1000)
-		total_hydration_req += (organ.hydration_req/1000)
+		total_nutriment_req += (organ.nutriment_req/100)
+		total_hydration_req += (organ.hydration_req/100)
