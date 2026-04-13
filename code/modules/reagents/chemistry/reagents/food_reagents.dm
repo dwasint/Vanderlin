@@ -21,9 +21,8 @@
 		var/mob/living/carbon/human/H = M
 		if(!HAS_TRAIT(H, TRAIT_NOHUNGER))
 			var/actual_metabolized = min(volume, metabolization_rate)
-			var/stomach_efficiency = H.getorganslotefficiency(ORGAN_SLOT_STOMACH)
-			H.adjust_nutrition(nutriment_factor * actual_metabolized * stomach_efficiency * efficiency)
-			H.adjust_hydration(hydration_factor * actual_metabolized * stomach_efficiency  * efficiency)
+			H.adjust_nutrition(nutriment_factor * actual_metabolized * efficiency)
+			H.adjust_hydration(hydration_factor * actual_metabolized  * efficiency)
 	return ..()
 
 /datum/reagent/consumable/reaction_mob(mob/living/M, method=TOUCH, reac_volume)
