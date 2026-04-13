@@ -294,7 +294,7 @@
 		if(owner)
 			bloodcolor = owner.get_blood_type().color
 		else if(original_owner)
-			bloodcolor = original_owner.get_blood_type().color
+			bloodcolor = original_owner.get_blood_type()?.color || COLOR_BLOOD
 		new /obj/effect/decal/cleanable/blood/splatter(get_turf(src), bloodcolor)
 
 //empties the bodypart from its organs and other things inside it
