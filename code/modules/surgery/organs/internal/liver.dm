@@ -17,7 +17,7 @@
 	current_blood = 25
 	blood_req = 4
 	oxygen_req = 4
-	nutriment_req = 6
+	nutriment_req = 4
 	hydration_req = 2
 
 	var/alcohol_tolerance = ALCOHOL_RATE        //affects how much damage the liver takes from alcohol
