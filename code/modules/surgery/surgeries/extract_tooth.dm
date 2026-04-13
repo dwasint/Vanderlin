@@ -3,12 +3,13 @@
 	implements = list(
 		/obj/item/weapon/tongs = 90,
 	)
-	time = 3 SECONDS
+	minimum_time = 2.2 SECONDS
+	maximum_time = 3.5 SECONDS
 	surgery_flags = SURGERY_INCISED | SURGERY_RETRACTED
 	possible_locs = list(BODY_ZONE_PRECISE_MOUTH)
 	requires_bodypart_type = BODYPART_ORGANIC
-	skill_min = SKILL_RANK_EXPERT
-	skill_median = SKILL_RANK_MASTER
+	skill_min = SKILL_LEVEL_EXPERT
+	skill_median = SKILL_LEVEL_MASTER
 
 /datum/surgery_step/extract_tooth/validate_bodypart(mob/user, mob/living/carbon/target, obj/item/bodypart/mouth/bodypart, target_zone)
 	. = ..()

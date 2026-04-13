@@ -4,7 +4,8 @@
 		/obj/item/natural/bundle/teeth = 80,
 		/obj/item/natural/teeth = 70,
 	)
-	time = 3 SECONDS
+	minimum_time = 2.2 SECONDS
+	maximum_time = 3.5 SECONDS
 	surgery_flags = SURGERY_INCISED
 	possible_locs = list(BODY_ZONE_PRECISE_MOUTH)
 	requires_bodypart_type = BODYPART_ORGANIC

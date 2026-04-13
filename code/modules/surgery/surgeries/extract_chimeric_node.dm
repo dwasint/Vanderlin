@@ -21,7 +21,8 @@
 		/obj/item/kitchen/spoon = 40
 	)
 	target_mobtypes = list(/mob/living/carbon/human, /mob/living/simple_animal)
-	time = 10 SECONDS
+	minimum_time = 8.2 SECONDS
+	maximum_time = 11.5 SECONDS
 	surgery_flags = SURGERY_BLOODY | SURGERY_INCISED | SURGERY_CLAMPED | SURGERY_RETRACTED | SURGERY_BROKEN
 	preop_sound = 'sound/surgery/organ2.ogg'
 	success_sound = 'sound/surgery/organ1.ogg'
