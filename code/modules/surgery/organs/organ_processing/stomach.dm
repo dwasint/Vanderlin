@@ -44,8 +44,11 @@
 			hunger_rate *= 2
 		hunger_rate *= owner.physiology.hunger_mod
 		owner.adjust_nutrition(-hunger_rate * (0.5 * delta_time))
-	if(owner.hydration > 0 && owner.stat != DEAD)
-		owner.adjust_hydration(-HUNGER_FACTOR * delta_time)
+	if(owner.hydration > 0)
+		var/thirst_rate = owner.total_hydration_req
+		thirst_rate *= optimal_threshold/max(stomach_efficiency, 25)
+		thirst_rate *= owner.physiology.thirst_mod
+		owner.adjust_hydration(-thirst_rate * (0.5 * delta_time))
 
 	if(owner.nutrition > NUTRITION_LEVEL_FULL)
 		if(owner.overeatduration < 20 MINUTES)
