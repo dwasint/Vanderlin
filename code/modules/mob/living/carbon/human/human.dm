@@ -390,6 +390,8 @@
 				return FALSE
 
 			if(world.time >= target.last_mtom + M2M_COOLDOWN)
+				if(!do_after(src, M2M_TIME, target))
+					return
 				var/they_breathe = !HAS_TRAIT(target, TRAIT_NOBREATH)
 				var/obj/item/organ/lungs/they_lung = target.getorganslot(ORGAN_SLOT_LUNGS)
 				visible_message(span_notice("<b>[src]</b> performs mouth to mouth on <b>[target]</b>!"), \
@@ -423,6 +425,10 @@
 					return
 
 			if(world.time >= target.last_cpr + CPR_COOLDOWN)
+				var/compression_time = CPR_TIME
+				compression_time *= GENERAL_SKILL_TIME_MULITPLIER(user, /datum/attribute/skill/misc/medicine)
+				if(!do_after(src, min(compression_time, 4 SECONDS), target))
+					return
 				var/they_beat = !HAS_TRAIT(target, TRAIT_STABLEHEART)
 				var/obj/item/organ/heart/they_heart = target.getorganslot(ORGAN_SLOT_HEART)
 				var/heart_exposed_mod = 0
@@ -451,7 +457,7 @@
 
 				var/diceroll = diceroll(medical_skill+heart_exposed_mod+epinephrine_mod, dice_num = 8, context = DICE_CONTEXT_PHYSICAL)
 				if((diceroll >= DICE_SUCCESS) || !attributes)
-					if(prob(35) || (diceroll >= DICE_CRIT_SUCCESS))
+					if(prob(35) || (diceroll >= DICE_SUCCESS))
 						target?.pump_heart(src)
 						target.set_heartattack(FALSE)
 						if(GETBRAINLOSS(target) >= 100)
@@ -459,15 +465,16 @@
 						if(HAS_TRAIT(target, TRAIT_NECRA_CURSE))
 							to_chat(target, span_warning("Necra holds tight to this one."))
 							return FALSE
-						if(target.revive())
-							target.grab_ghost(TRUE)
-							target.visible_message(span_warning("<b>[target]</b> limply spasms their muscles."), \
-											span_userdanger("My muscles spasm as i am brought back to life!"))
-							target.emote("breathgasp")
-							target.adjust_jitter(100 SECONDS)
-							target.apply_status_effect(/datum/status_effect/debuff/revive)
-							target.remove_client_colour(/datum/client_colour/monochrome/death)
-							record_round_statistic(STATS_CPR_REVIVALS, 1)
+						if(diceroll >= DICE_CRIT_SUCCESS)
+							if(target.revive())
+								target.grab_ghost(TRUE)
+								target.visible_message(span_warning("<b>[target]</b> limply spasms their muscles."), \
+												span_userdanger("My muscles spasm as i am brought back to life!"))
+								target.emote("breathgasp")
+								target.adjust_jitter(100 SECONDS)
+								target.apply_status_effect(/datum/status_effect/debuff/revive)
+								target.remove_client_colour(/datum/client_colour/monochrome/death)
+								record_round_statistic(STATS_CPR_REVIVALS, 1)
 				else
 					if(diceroll <= DICE_CRIT_FAILURE)
 						visible_message(span_danger("<b>[src]</b> botches the chest compressions, cracking <b>[target]</b>'s  ribs!"), \

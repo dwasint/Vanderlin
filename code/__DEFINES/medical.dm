@@ -240,6 +240,9 @@
 ///Cpr cooldown duration
 #define CPR_COOLDOWN 0.3 SECONDS
 
+#define CPR_TIME 4 SECONDS
+#define M2M_TIME 0.5 SECONDS
+
 // ~simple brainloss defines
 #define GETBRAINLOSS(mob) mob.getOrganLoss(ORGAN_SLOT_BRAIN)
 #define ADJUSTBRAINLOSS(mob, amount) mob.adjustOrganLoss(ORGAN_SLOT_BRAIN, amount)
