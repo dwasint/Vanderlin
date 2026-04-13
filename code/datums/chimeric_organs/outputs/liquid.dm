@@ -15,6 +15,8 @@
 								  /datum/reagent/toxin,
 								  /datum/reagent/poison,
 								  /datum/reagent/consumable,
+								  /datum/reagent/poison,
+								  /datum/reagent/poison/herbal,
 								  /datum/reagent/consumable/ethanol)
 	var/datum/reagent/reagent_type = pick(reagent_types)
 
