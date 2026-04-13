@@ -14,6 +14,7 @@
 	return TRUE
 
 /datum/organ_process/stomach/proc/handle_nutrition(mob/living/carbon/human/owner, delta_time, times_fired)
+	var/stomach_efficiency = owner.getorganslotefficiency(ORGAN_SLOT_STOMACH)
 	//fat fuck friday
 	if(HAS_TRAIT_FROM(owner, TRAIT_FAT, OBESITY))
 		if(owner.overeatduration < 200 SECONDS)
@@ -26,9 +27,23 @@
 			ADD_TRAIT(owner, TRAIT_FAT, OBESITY)
 			owner.add_movespeed_modifier("obesity", multiplicative_slowdown = 1.5)
 
-	if(owner.nutrition > 0 && owner.stat != DEAD)
-		var/hunger_rate = HUNGER_FACTOR * owner.dna.species.nutrition_mod
-		owner.adjust_nutrition(-hunger_rate * delta_time)
+	// nutrition decrease and satiety
+	if(owner.nutrition > 0)
+		// THEY HUNGER
+		var/hunger_rate = owner.total_nutriment_req
+		hunger_rate *= optimal_threshold/max(stomach_efficiency, 25)
+		// Whether we cap off our satiety or move it towards 0
+		if(owner.satiety > MAX_SATIETY)
+			owner.satiety = MAX_SATIETY
+		else if(owner.satiety > 0)
+			owner.satiety -= (0.5 * delta_time)
+		else if(owner.satiety < -MAX_SATIETY)
+			owner.satiety = -MAX_SATIETY
+		else if(owner.satiety < 0)
+			owner.satiety += (0.5 * delta_time)
+			hunger_rate *= 2
+		hunger_rate *= owner.physiology.hunger_mod
+		owner.adjust_nutrition(-hunger_rate * (0.5 * delta_time))
 	if(owner.hydration > 0 && owner.stat != DEAD)
 		owner.adjust_hydration(-HUNGER_FACTOR * delta_time)
 
