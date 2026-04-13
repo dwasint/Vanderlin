@@ -426,7 +426,7 @@
 
 			if(world.time >= target.last_cpr + CPR_COOLDOWN)
 				var/compression_time = CPR_TIME
-				compression_time *= GENERAL_SKILL_TIME_MULITPLIER(user, /datum/attribute/skill/misc/medicine)
+				compression_time *= GENERAL_SKILL_TIME_MULITPLIER(src, /datum/attribute/skill/misc/medicine)
 				if(!do_after(src, min(compression_time, 4 SECONDS), target))
 					return
 				var/they_beat = !HAS_TRAIT(target, TRAIT_STABLEHEART)
