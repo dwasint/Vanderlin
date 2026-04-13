@@ -31,7 +31,7 @@
 	current_blood = 100
 	blood_req = 5
 	oxygen_req = 5
-	nutriment_req = 5
+	nutriment_req = 8
 	hydration_req = 2.5
 
 	/// This is stuff
