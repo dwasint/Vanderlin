@@ -208,7 +208,7 @@
 		return TRUE
 
 /obj/item/organ/proc/handle_blood(delta_time, times_fired)
-	var/arterial_efficiency = get_slot_efficiency(ORGAN_SLOT_ARTERY) //cute placeholder value
+	var/arterial_efficiency = get_slot_efficiency(ORGAN_SLOT_ARTERY)
 	var/in_bleedout = owner.in_bleedout()
 	var/failer
 	if(arterial_efficiency)

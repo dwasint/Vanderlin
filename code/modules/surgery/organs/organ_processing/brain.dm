@@ -47,15 +47,4 @@
 				brain.applyOrganDamage(BRAIN_DAMAGE_LOWEST_OXYGENATION)
 
 	owner.handle_brain_damage()
-
-	if(!(brain.organ_flags & ORGAN_FAILING))
-		var/healing_amount = -(brain.maxHealth * brain.healing_factor)
-		healing_amount -= owner.satiety > 0 ? 4 * brain.healing_factor * owner.satiety / MAX_SATIETY : 0
-		brain.applyOrganDamage(healing_amount)
-
-	if(brain.damage >= BRAIN_DAMAGE_DEATH)
-		to_chat(owner, "<span class='danger'>The last spark of life in your brain fizzles out...</span>")
-		owner.death()
-		brain.brain_death = TRUE
-		return TRUE // owner is dead, no point continuing
 	return TRUE
