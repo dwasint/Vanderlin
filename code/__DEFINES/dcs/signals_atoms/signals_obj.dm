@@ -40,5 +40,3 @@
 #define COMSIG_MOB_FIRED_GUN "mob_fired_gun"
 ///called in /obj/item/gun/process_fire (user, target, list/modifiers, zone_override)
 #define COMSIG_GUN_FIRED "gun_fired"
-
-#define COMSIG_BODYPART_WOUND_REMOVED "bodypart_wound_removed"
