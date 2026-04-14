@@ -214,15 +214,15 @@
 	if(arterial_efficiency)
 		failer = is_failing_without_bleedout()
 	else
-		failer = is_failing() || in_bleedout
-	if(arterial_efficiency && !failer)
+		failer = is_failing()
+	if(arterial_efficiency && !failer && !in_bleedout)
 		// Arteries get an extra flat 10 blood regen
-		current_blood = min(current_blood + 10 * (0.5 * delta_time) * (arterial_efficiency/ORGAN_OPTIMAL_EFFICIENCY), max_blood_storage)
+		current_blood = min(current_blood + 5 * (0.5 * delta_time) * (arterial_efficiency/ORGAN_OPTIMAL_EFFICIENCY), max_blood_storage)
 		return
 	if(!blood_req)
 		return
 	if(!in_bleedout)
-		current_blood = min(current_blood + (blood_req * (0.5 * delta_time)), max_blood_storage)
+		current_blood = min(current_blood + (blood_req * (0.6 * delta_time)), max_blood_storage) //very slow refill
 		return
 	current_blood = max(current_blood - (blood_req * (0.5 * delta_time)), 0)
 	// When all blood is lost, take blood from blood vessels

@@ -344,10 +344,38 @@
 		else
 			return brain_message
 
-/obj/item/organ/brain/applyOrganDamage(d, maximum = maxHealth)
-	. = ..()
-	if(!owner)
+/obj/item/organ/brain/applyOrganDamage(amount, maximum = maxHealth, silent = FALSE)
+	if(!amount) //Micro-optimization.
 		return
+	if(maximum < damage)
+		damage = maximum
+	if(damage < 0 && owner?.get_chem_effect(CE_BRAIN_REGEN))
+		damage *= 2
+	prev_damage = damage
+	damage = clamp(damage + amount, 0, maximum)
+	var/mess = check_damage_thresholds(owner)
+	if(owner)
+		if(mess && !silent)
+			to_chat(owner, mess)
+		if(organ_flags & ORGAN_LIMB_SUPPORTER)
+			var/obj/item/bodypart/affected = owner.get_bodypart(current_zone)
+			affected?.update_limb_efficiency()
+		if(amount >= 10)
+			var/damage_side_effect = CEILING(amount/2, 1)
+			if(damage_side_effect >= 1)
+				//owner.flash_pain(damage_side_effect*4)
+				owner.adjust_eye_blur(damage_side_effect)
+				owner.adjust_confusion(damage_side_effect)
+				switch(rand(1,3))
+					if(1)
+						owner.stuttering += damage_side_effect
+					if(2)
+						owner.slurring += damage_side_effect
+					if(3)
+						owner.cultslurring += damage_side_effect
+				owner.CombatKnockdown(damage_side_effect*2, damage_side_effect, (damage_side_effect >= 5 ? damage_side_effect : null), damage_side_effect >= 5)
+		if(!is_failing())
+			REMOVE_TRAIT(owner, TRAIT_KNOCKEDOUT, CRIT_HEALTH_TRAIT)
 	if(damage >= 60)
 		owner.add_stress(/datum/stress_event/brain_damage)
 	else
