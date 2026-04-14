@@ -39,7 +39,17 @@
 
 // Assign a bodypart to be affected
 /datum/component/storage/concrete/organ/proc/assign_bodypart(obj/item/bodypart/new_bodypart)
+	if(bodypart_affected)
+		UnregisterSignal(bodypart_affected, COMSIG_BODYPART_WOUND_REMOVED)
 	bodypart_affected = new_bodypart
+	RegisterSignal(bodypart_affected, COMSIG_BODYPART_WOUND_REMOVED, PROC_REF(update_viewers))
+
+/datum/component/storage/concrete/organ/proc/update_viewers()
+	if(is_accessible(parent))
+		return FALSE
+
+	for(var/mob/mob in is_using)
+		hide_from(mob)
 
 // Gives all organs parent as stored_in
 /datum/component/storage/concrete/organ/proc/update_insides()
