@@ -405,7 +405,7 @@
 					var/epinephrine_mod = 0
 					if(target.reagents?.get_reagent_amount(/datum/reagent/adrenaline) >= 1)
 						epinephrine_mod += 5
-					target.adjustOxyLoss(-(medical_skill + epinephrine_mod))
+					target.adjustOxyLoss(-((medical_skill * 0.2) + epinephrine_mod))
 					target.updatehealth()
 					to_chat(target, span_unconscious("I feel a breath of fresh air enter my lungs... It feels good..."))
 				else if(they_breathe && !they_lung)

@@ -113,9 +113,6 @@
 		var/mob/living/carbon/human/HMN = owner
 		HMN.regenerate_icons()
 
-	for(var/datum/wound/facial/eyes/eye_wound as anything in M.get_wounds())
-		qdel(eye_wound)
-
 	M.update_eyes()
 	M.update_tint()
 	owner.update_sight()
