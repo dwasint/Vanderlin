@@ -18,7 +18,7 @@
 	current_blood = 25
 	blood_req = 4
 	oxygen_req = 4
-	nutriment_req = 4
+	nutriment_req = 2
 	hydration_req = 2
 
 	high_threshold_passed = "<span class='warning'>I feel some sort of constriction around my chest as my breathing becomes shallow and rapid.</span>"
