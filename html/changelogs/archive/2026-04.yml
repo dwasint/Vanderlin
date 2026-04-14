@@ -215,3 +215,8 @@
   - rscdel: removed agecheck and bypassage related code, as nothing uses it.
   - rscadd: Plexora OOM shutdown type
   - server: bumped rustg to 6.1.0
+2026-04-14:
+  Ben10083:
+  - refactor: Prayers now use TGUI
+  Wrench-1:
+  - rscdel: Halflings can no longer be Grandmaster Templars
