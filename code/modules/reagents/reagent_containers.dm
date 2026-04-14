@@ -154,6 +154,8 @@
 
 /obj/item/reagent_containers/attackby_secondary(obj/item/I, mob/living/user, list/modifiers)
 	. = ..()
+	if(GetComponent(/datum/component/storage))
+		return
 	if(!is_open_container() || !reagents || !reagents.total_volume)
 		to_chat(user, span_warning("\The [src] needs to be open and have reagents to soak something in."))
 		return
