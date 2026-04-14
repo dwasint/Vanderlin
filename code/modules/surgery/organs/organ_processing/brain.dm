@@ -29,7 +29,6 @@
 		if(BLOOD_VOLUME_SURVIVE to BLOOD_VOLUME_BAD)
 			owner.adjust_eye_blur_up_to(6, 6)
 			if(DT_PROB(5, delta_time))
-				owner.Unconscious(rand(3,5) SECONDS)
 				to_chat(owner, span_userdanger("<i>I feel extremely [pick("dizzy","woozy","faint")]...</i>"))
 			owner.adjustOxyLoss(2.5 * delta_time)
 			damprob = is_stable ? 40 : 75

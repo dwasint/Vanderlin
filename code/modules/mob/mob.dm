@@ -759,7 +759,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 	if(client)
 		if(world.time < client.last_turn)
 			return FALSE
-	if(stat == DEAD || stat == UNCONSCIOUS)
+	if(stat == DEAD || stat == UNCONSCIOUS || stat == HARD_CRIT)
 		return FALSE
 	if(anchored)
 		return FALSE

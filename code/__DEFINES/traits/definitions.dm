@@ -146,6 +146,10 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_NOLIMBDISABLE	"no_limb_disable"
 /// Limbs have lower damage thresholds
 #define TRAIT_EASYLIMBDISABLE "easy_limb_disable"
+/// In some kind of critical condition. Is able to succumb.
+#define TRAIT_CRITICAL_CONDITION "critical-condition"
+/// In softcrit
+#define TRAIT_SOFT_CRITICAL_CONDITION "soft_critical_condition"
 /// Toxin damage heals, toxin healing does damage
 #define TRAIT_TOXINLOVER "toxinlover"
 /// Doesn't need to breathe
