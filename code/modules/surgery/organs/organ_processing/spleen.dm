@@ -31,6 +31,7 @@
 		blood_regen += (spleen.get_slot_efficiency(ORGAN_SLOT_SPLEEN) * spleen.blood_regen_factor)
 		combined_nutrition_requirement += (spleen.nutriment_req/100)
 	blood_regen *= (1 + owner.get_chem_effect(CE_BLOODRESTORE))
+	combined_nutrition_requirement *= (1 + (owner.get_chem_effect(CE_BLOODRESTORE) * 0.5))
 	if(!blood_regen)
 		return
 	owner.adjust_nutrition(-combined_nutrition_requirement * nutrition_ratio * 0.5 * delta_time)

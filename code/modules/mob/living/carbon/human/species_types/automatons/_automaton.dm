@@ -143,6 +143,7 @@
 		ORGAN_SLOT_HEART = /obj/item/organ/heart/automaton,
 		ORGAN_SLOT_EYES = /obj/item/organ/eyes/automaton,
 		ORGAN_SLOT_EARS = /obj/item/organ/ears/automaton,
+		ORGAN_SLOT_LUNGS = /obj/item/organ/lungs,
 	)
 
 	var/list/actions = list(
