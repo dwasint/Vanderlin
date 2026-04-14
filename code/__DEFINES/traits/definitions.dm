@@ -226,6 +226,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_BURIED_COIN_GIVEN "buried_coin_given"
 /// can bleed, but will never die from blood loss
 #define TRAIT_BLOODLOSS_IMMUNE "bloodloss_immune"
+/// regardless of organs the blood requirements will be default
+#define TRAIT_NORMALIZED_BLOOD "blood_normalized"
 /// you are a rotman and need occasional maintenance
 #define TRAIT_ROTMAN "rotman"
 /// immune to zombie infection
