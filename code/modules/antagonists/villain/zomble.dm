@@ -164,7 +164,7 @@
 		if(has_turned)
 			to_chat(zombie, span_green("I no longer crave flesh..."))
 	for(var/obj/item/bodypart/zombie_part as anything in zombie.bodyparts)
-		zombie_part.rotted = FALSE
+		zombie_part.revive_limb()
 		if(zombie_part.can_be_disabled)
 			zombie_part.update_disabled()
 		zombie_part.update_limb()
@@ -219,8 +219,8 @@
 	zombie.faction -= FACTION_NEUTRAL
 	add_verb(zombie, /mob/living/carbon/human/proc/zombie_seek)
 	for(var/obj/item/bodypart/zombie_part as anything in zombie.bodyparts)
-		if(!zombie_part.rotted && !zombie_part.skeletonized)
-			zombie_part.rotted = TRUE
+		if(!HAS_TRAIT(zombie_part, TRAIT_ROTTEN) && !zombie_part.skeletonized)
+			zombie_part.kill_limb()
 		if(zombie_part.can_be_disabled)
 			zombie_part.update_disabled()
 	zombie.update_body()

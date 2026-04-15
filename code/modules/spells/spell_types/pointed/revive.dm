@@ -44,7 +44,7 @@
 		return . | SPELL_CANCEL_CAST
 
 	for(var/obj/item/bodypart/bodypart as anything in cast_on.bodyparts)
-		if(bodypart.skeletonized || bodypart.rotted)
+		if(bodypart.skeletonized || HAS_TRAIT(bodypart, TRAIT_ROTTEN))
 			to_chat(owner, span_warning("The rotten are unsuitable."))
 			reset_spell_cooldown()
 			return . | SPELL_CANCEL_CAST

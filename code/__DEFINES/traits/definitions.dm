@@ -71,6 +71,11 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_IGNOREDAMAGESLOWDOWN "ignoredamageslowdown"
 /// Causes death-like unconsciousness
 #define TRAIT_DEATHCOMA	"deathcoma"
+// ~BODYPART TRAITS
+/// Rotten beyond salvation
+#define TRAIT_ROTTEN "rotten"
+/// Genetically deformed beyond salvation
+#define TRAIT_DEFORMED "deformed"
 /// ??? should be a signal?
 #define TRAIT_SANGUINE "sanguine"
 #define TRAIT_FRESHSPAWN "freshspawn"

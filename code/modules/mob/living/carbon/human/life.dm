@@ -135,6 +135,7 @@
 	. = ..()
 	name = get_visible_name()
 	handle_organs(delta_time, times_fired)
+	handle_bodyparts(delta_time, times_fired)
 
 /mob/living/carbon/human/proc/on_daypass()
 	if(stat < 3) //not dead

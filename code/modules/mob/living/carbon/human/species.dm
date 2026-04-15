@@ -1459,7 +1459,7 @@ GLOBAL_LIST_EMPTY(roundstart_species)
 
 		if(!nodmg)
 			if(user.limb_destroyer)
-				var/easy_dismember = HAS_TRAIT(target, TRAIT_EASYDISMEMBER) || affecting.rotted
+				var/easy_dismember = HAS_TRAIT(target, TRAIT_EASYDISMEMBER) || HAS_TRAIT(affecting, TRAIT_ROTTEN)
 				if(prob(damage/2) || (easy_dismember && prob(damage/2))) //try twice
 					if(affecting.brute_dam > 0)
 						affecting.dismember()

@@ -21,6 +21,7 @@
 	else
 		//Reagent processing needs to come before breathing, to prevent edge cases.
 		handle_organs(delta_time, times_fired)
+		handle_bodyparts(delta_time, times_fired)
 
 		. = ..()
 
@@ -229,6 +230,13 @@
 	if(HAS_TRAIT(src, TRAIT_NOBREATH))
 		return TRUE
 	return FALSE
+
+/mob/living/carbon/proc/handle_bodyparts(delta_time, times_fired)
+	for(var/I in bodyparts)
+		var/obj/item/bodypart/BP = I
+		if(BP.needs_processing)
+			. |= BP.on_life(delta_time, times_fired)
+
 
 /mob/living/carbon/proc/handle_organs(delta_time, times_fired)
 	if(HAS_TRAIT(src, TRAIT_NO_ORGAN_PROCESS)) //internal stasis basically

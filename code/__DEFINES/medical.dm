@@ -77,6 +77,18 @@
 #define BODYPART_CHRONIC_FRACTURE (1<<2)
 #define BODYPART_CHRONIC_SCAR (1<<3)
 #define BODYPART_CHRONIC_NERVE_DAMAGE (1<<4)
+/// Removal or destruction of this limb kills the owner
+#define	BODYPART_VITAL (1<<5)
+/// Bodypart will never spoil nor get infected
+#define BODYPART_NO_INFECTION (1<<6)
+/// Completely septic and unusable limb
+#define BODYPART_DEAD (1<<7)
+/// Bodypart is genetically damaged and not functioning good
+#define BODYPART_DEFORMED (1<<8)
+/// Frozen limb, doesn't rot
+#define BODYPART_FROZEN	(1<<9)
+/// Autoheals severe injuries that normally require medical treatment
+#define	BODYPART_GOOD_HEALER (1<<10)
 
 //flags for the organ_flags var on /obj/item/organ
 /// Synthetic organs, or cybernetic organs. Reacts to EMPs and don't deteriorate or heal
@@ -279,3 +291,58 @@ DEFINE_BITFIELD(organ_flags, list(
 #define ARTERY_R_ARM /obj/item/organ/artery/r_arm
 #define ARTERY_L_LEG /obj/item/organ/artery/l_leg
 #define ARTERY_R_LEG /obj/item/organ/artery/r_leg
+
+// ~wound categories
+/// doesn't actually wound
+#define WOUND_NONE 0
+/// any brute weapon/attack that doesn't have sharpness. rolls for blunt bone wounds
+#define WOUND_BLUNT 1
+/// any sharp weapon, edged or pointy, can cause arteries to be torn
+#define WOUND_ARTERY 2
+/// any sharp weapon, edged or pointy, can cause tendons to be torn
+#define WOUND_TENDON 3
+/// any sharp weapon, edged or pointy, can cause nerves to be torn
+#define WOUND_NERVE 4
+/// britification lol
+#define WOUND_TEETH 5
+/// any kind of organ spilling
+#define WOUND_SPILL 6
+/// any brute weapon/attack with sharpness = SHARP_EDGED. rolls for slash wounds
+#define WOUND_SLASH 7
+/// any brute weapon/attack with sharpness = SHARP_POINTY. rolls for piercing wounds
+#define WOUND_PIERCE 8
+/// any concentrated burn attack (lasers really). rolls for burning wounds
+#define WOUND_BURN 9
+
+// ~injury flags
+/// This injury creates sounds hints when applied
+#define INJURY_SOUND_HINTS (1<<0)
+/// This injury is bandaged and won't bleed
+#define INJURY_BANDAGED (1<<1)
+/// This injury is sutured and won't bleed
+#define INJURY_SUTURED (1<<2)
+/// This injury is clamped and won't bleed
+#define INJURY_CLAMPED (1<<3)
+/// This injury is salved, and the infection won't progress
+#define INJURY_SALVED (1<<4)
+/// This injury is disinfected, and the infection has been wiped AND won't progress
+#define INJURY_DISINFECTED (1<<5)
+/// This is a surgical injury and will not autoheal
+#define INJURY_SURGICAL (1<<6)
+/// This injury is retracted and gives access to people's yummy guts and bones
+#define INJURY_RETRACTED (1<<7)
+/// This injury has been drilled and will let you put stuff in a cavity (dental implants and cavity implants)
+#define INJURY_DRILLED (1<<8)
+/// The bones have been set in this injury and are waiting to be gelled
+#define INJURY_SET_BONES (1<<9)
+
+// ~blood_flow rates of change, these are used by [/datum/wound/proc/get_bleed_rate_of_change] from [/mob/living/carbon/proc/bleed_warn] to let the player know if their bleeding is getting better/worse/the same
+/// Our wound is clotting and will eventually stop bleeding if this continues
+#define BLOOD_FLOW_DECREASING -1
+/// Our wound is bleeding but is holding steady at the same rate.
+#define BLOOD_FLOW_STEADY 0
+/// Our wound is bleeding and actively getting worse, like if we're a critical slash or if we're afflicted with heparin
+#define BLOOD_FLOW_INCREASING 1
+
+/// How often can we annoy the player about their bleeding? This duration is extended if it's not serious bleeding
+#define BLEEDING_MESSAGE_BASE_CD 15 SECONDS

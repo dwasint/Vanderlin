@@ -1016,7 +1016,7 @@
 		regenerate_limbs()
 		if(heal_flags & HEAL_ADMIN) //reset rot on admin revives
 			for(var/obj/item/bodypart/bodypart as anything in bodyparts)
-				bodypart.rotted = FALSE
+				bodypart.revive_limb()
 				bodypart.skeletonized = FALSE
 
 	if(heal_flags & (HEAL_REFRESH_ORGANS|HEAL_ORGANS))

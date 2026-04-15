@@ -151,7 +151,11 @@
 			return
 		playsound(user, 'sound/surgery/scalpel2.ogg', 70)
 		if(do_after(user, 0.5 SECONDS, target))
-			C.add_wound(/datum/wound/slash/incision)
+			var/datum/injury/ouchie = C.create_injury(WOUND_SLASH, C.max_damage * 0.3, TRUE)
+			if(!ouchie)
+				return
+			ouchie.injury_flags |= INJURY_SURGICAL
+			SEND_SIGNAL(target, COMSIG_CARBON_CLEAR_WOUND_MESSAGE)
 
 		playsound(user, 'sound/surgery/organ2.ogg', 70)
 		if(do_after(user, 0.5 SECONDS, target))

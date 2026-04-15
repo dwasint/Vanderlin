@@ -127,5 +127,10 @@
 	/// How much our injury penalty currently affects our DX and IQ
 	var/shock_penalty = 0
 
+	/// All injuries we have accumulated on our body
+	var/list/datum/injury/all_injuries
+	/// Descriptive string used in combat messages
+	var/wound_message = ""
+
 	/// if they get a mana pool
 	has_initial_mana_pool = TRUE

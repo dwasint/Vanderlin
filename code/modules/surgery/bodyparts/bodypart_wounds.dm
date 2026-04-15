@@ -126,6 +126,11 @@
 		return 0
 	for(var/datum/wound/wound as anything in wounds)
 		bleed_rate += (wound.bleed_rate * owner.dna.species.bleed_mod)
+
+	for(var/datum/injury/injury as anything in injuries)
+		if(injury.is_bleeding())
+			bleed_rate += injury.get_bleed_rate()
+
 	for(var/obj/item/embedded as anything in embedded_objects)
 		if(!embedded.embedding.embedded_bloodloss)
 			continue
@@ -592,6 +597,16 @@
 	embedder.is_embedded = TRUE
 	embedder.forceMove(src)
 	embedder.embedded(owner, src)
+
+	var/static/list/clamping_behaviors = list(
+		TOOL_HEMOSTAT,
+		TOOL_WIRECUTTER,
+		TOOL_IMPROVISED_HEMOSTAT,
+	)
+
+	if((embedder.tool_behaviour in clamping_behaviors))
+		clamp_limb()
+
 	if(owner)
 		embedder.add_mob_blood(owner)
 		if(!silent)
@@ -614,6 +629,16 @@
 	LAZYREMOVE(embedded_objects, embedder)
 	embedder.is_embedded = FALSE
 	embedder.unembedded(owner)
+
+	var/static/list/clamping_behaviors = list(
+		TOOL_HEMOSTAT,
+		TOOL_WIRECUTTER,
+		TOOL_IMPROVISED_HEMOSTAT,
+	)
+
+	if((embedder.tool_behaviour in clamping_behaviors))
+		unclamp_limb()
+
 	if(!QDELETED(embedder))
 		var/drop_location = owner?.drop_location() || drop_location()
 		if(drop_location)
@@ -632,6 +657,7 @@
 	if(!new_bandage)
 		return FALSE
 	bandage = new_bandage
+	bandage_limb()
 	new_bandage.forceMove(src)
 	return TRUE
 
@@ -684,6 +710,7 @@
 	else
 		qdel(bandage)
 	bandage = null
+	unbandage_limb()
 	owner?.update_damage_overlays()
 	return TRUE
 
@@ -714,6 +741,13 @@
 	var/returned_flags = NONE
 	if(can_bloody_wound())
 		returned_flags |= SURGERY_BLOODY
+
+	for(var/datum/injury/slash/slash in injuries)
+		if(slash.is_bandaged() || slash.current_stage > slash.max_bleeding_stage) // Shit's unusable
+			continue
+		returned_flags |= SURGERY_INCISED
+		break
+
 	for(var/datum/wound/slash/incision/incision in wounds)
 		if(incision.is_sewn())
 			continue
