@@ -418,8 +418,21 @@ If you want to expand on poisons theres tons of fun effects TG chemistry has tha
 					graggar_lover.spawn_gibs(TRUE)
 					graggar_lover.emote("agony")
 					graggar_lover.visible_message(span_danger("[graggar_lover]'s skin bursts!"), span_userdanger("MY SKIN BURSTS!!"))
+					INVOKE_ASYNC(graggar_lover, TYPE_PROC_REF(/mob/living/carbon/human, graggar_baptize))
 					H.graggometer = 0
 	return ..()
+
+/mob/living/carbon/human/proc/graggar_baptize()
+	var/answer = tgui_alert(src, "Kneel before Graggar?", "BAPTIZE", DEFAULT_INPUT_CHOICES, 10 SECONDS)
+	if(!answer || QDELETED(src))
+		return
+
+	if(answer != CHOICE_YES)
+		to_chat(src, span_bloody("You reject Graggar's offer of power. The Beast recedes, your stomach growls..."))
+		return
+
+	set_patron(/datum/patron/inhumen/graggar)
+	to_chat(src, SPAN_GOD_GRAGGAR("The Beast's teeth close around your heart! Devour! Conquer! Graggar!"))
 
 /datum/reagent/organpoison/human
 	name = "Humen Organ Poison"
