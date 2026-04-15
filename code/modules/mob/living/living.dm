@@ -394,6 +394,7 @@
 /mob/living/carbon/proc/lying_attack_check(mob/living/L, obj/item/I)
 	if(L == src)
 		return TRUE
+
 	var/CZ = FALSE
 	var/list/acceptable = list(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG, BODY_ZONE_HEAD, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_R_ARM, BODY_ZONE_CHEST, BODY_ZONE_L_ARM)
 	if((L.body_position != LYING_DOWN) && (body_position != LYING_DOWN)) //we are both standing
