@@ -827,6 +827,7 @@ GLOBAL_LIST_EMPTY(roundstart_species)
 		apply_customizers_to_character(C)
 
 	on_gender_update(C)
+	C.update_organ_requirements() //post species trait gains
 	SEND_SIGNAL(C, COMSIG_SPECIES_GAIN, src, old_species)
 
 /datum/species/proc/on_gender_update(mob/living/carbon/human/C, old_gender)
