@@ -327,6 +327,8 @@
 		heal_overall_damage(5, 5)
 		adjustToxLoss(-5)
 		heal_wounds(25)
+		for(var/obj/item/organ/artery/artery in getorganslotlist(ORGAN_SLOT_ARTERY))
+			artery.applyOrganDamage(-5)
 		if(prob(3))
 			regenerate_limb(silent=FALSE)
 		if(blood_volume <= BLOOD_VOLUME_NORMAL)
