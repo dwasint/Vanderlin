@@ -114,10 +114,6 @@
 
 	var/punch_modifier = 1 // for modifying arm punching damage
 	var/acid_damage_intensity = 0
-	var/lingering_pain = 0
-	var/chronic_pain = 0
-	var/chronic_pain_type = null
-	var/last_severe_injury_time = 0
 
 	/// artery organ base type
 	var/artery_type = /obj/item/organ/artery
@@ -125,9 +121,29 @@
 	/// General bodypart flags, such as - is it necrotic, does it leave stumps behind, etc
 	var/limb_flags = BODYPART_HAS_ARTERY
 
+	/// Multiplier of the limb's pain damage that gets applied to the mob
+	var/pain_damage_coeff = 1
+	/// How much pain this limb is feeling
+	var/pain_dam = 0
+	/// Subtracted to pain the limb feels
+	var/pain_reduction = 0
+	/// Multiplier for incoming pain damage
+	var/incoming_pain_mult = 1
+	/// Amount of pain damage we heal per on_life() tick
+	var/pain_heal_tick = 1
+	/// How much we multiply pain_heal_tick by if the owner is lying down
+	var/pain_heal_rest_multiplier = 3
+	/// Point at which the limb is disabled due to pain
+	var/pain_disability_threshold
+	/// Maximum amount of pain this limb can feel at once
+	var/max_pain_damage
+
 /obj/item/bodypart/Initialize()
 	. = ..()
 	create_base_organs()
+	if(isnull(max_pain_damage))
+		max_pain_damage = max_damage * 1.5
+
 	if(can_be_disabled)
 		RegisterSignal(src, SIGNAL_ADDTRAIT(TRAIT_PARALYSIS), PROC_REF(on_paralysis_trait_gain))
 		RegisterSignal(src, SIGNAL_REMOVETRAIT(TRAIT_PARALYSIS), PROC_REF(on_paralysis_trait_loss))
@@ -337,6 +353,90 @@
 	if(new_max_damage != old_max_damage)
 		max_damage = new_max_damage
 
+
+/// Returns whether or not the bodypart can feel pain
+/obj/item/bodypart/proc/can_feel_pain()
+	. = FALSE
+	/*
+	if(CHECK_BITFIELD(limb_flags, BODYPART_CUT_AWAY|BODYPART_DEAD))
+		return
+	*/
+	if(rotted)
+		return
+	if(HAS_TRAIT(src, TRAIT_NOPAIN))
+		return
+	return owner?.can_feel_pain()
+
+/// Add pain_dam to a bodypart
+/obj/item/bodypart/proc/add_pain(amount = 0, updating_health = TRUE, required_status = null)
+	if(required_status && (status != required_status))
+		return
+	if(!can_feel_pain())
+		return
+	var/can_inflict = max_pain_damage - pain_dam
+	amount *= CONFIG_GET(number/damage_multiplier)
+	amount -= owner.get_chem_effect(CE_PAINKILLER)/PAINKILLER_DIVISOR
+	amount = min(can_inflict, amount)
+	pain_dam = round(pain_dam + max(amount, 0), DAMAGE_PRECISION)
+	if(updating_health)
+		owner.update_shock()
+	if(can_be_disabled)
+		update_disabled()
+	return TRUE
+
+/// Remove pain_dam from a bodypart
+/obj/item/bodypart/proc/remove_pain(amount = 0, updating_health = TRUE, required_status = null)
+	if(required_status && (status != required_status))
+		return
+	if(amount > pain_dam)
+		amount = pain_dam
+	pain_dam = FLOOR(pain_dam - max(abs(amount), 0), DAMAGE_PRECISION)
+	if(updating_health)
+		owner?.update_shock()
+	if(can_be_disabled)
+		update_disabled()
+	return TRUE
+
+/// Make total pain equal amount
+/obj/item/bodypart/proc/set_pain(amount = 0, updating_health = TRUE, required_status = null)
+	if(required_status && (status != required_status))
+		return
+	var/diff = amount - pain_dam
+	if(diff >= 0)
+		return add_pain(abs(diff), updating_health, required_status)
+	else
+		return remove_pain(abs(diff), updating_health, required_status)
+
+/// Returns how much pain we are dealing with right now, taking other damage types into account
+/obj/item/bodypart/proc/get_shock(painkiller_included = FALSE, nerve_included = TRUE)
+	if(!can_feel_pain())
+		return 0
+	//Multiply our total pain damage by this
+	var/multiplier = 1
+	if(LAZYLEN(grabbedby))
+		//Being grasped lowers the pain just a bit
+		multiplier *= 0.75
+	if(multiplier <= 0)
+		return 0
+	var/constant_pain = 0
+	constant_pain += SHOCK_MOD_BRUTE * brute_dam
+	constant_pain += SHOCK_MOD_BURN * burn_dam
+	var/datum/wound/wound
+	for(var/thing in wounds)
+		wound = thing
+		constant_pain += wound.woundpain
+	var/obj/item/organ/organ
+	for(var/thing in get_organs())
+		organ = thing
+		constant_pain += organ.get_shock(FALSE)
+	var/obj/item/item
+	for(var/thing in embedded_objects)
+		item = thing
+		constant_pain += 3 * item.w_class
+	if(painkiller_included)
+		constant_pain -= owner.get_chem_effect(CE_PAINKILLER)/PAINKILLER_DIVISOR
+	return clamp(FLOOR((pain_dam + constant_pain) * multiplier, DAMAGE_PRECISION), 0, max_pain_damage)
+
 //Applies brute and burn damage to the organ. Returns 1 if the damage-icon states changed at all.
 //Damage will not exceed max_damage using this proc
 //Cannot apply negative damage
@@ -360,6 +460,14 @@
 	if(!brute && !burn)
 		return FALSE
 
+	var/owner_endurance = GET_MOB_ATTRIBUTE_VALUE(owner, STAT_ENDURANCE)
+
+	// We get the pain values before we scale damage down
+	// Pain does not care about your feelings, nor if your limb was already damaged
+	// to it's maximum
+	var/painkiller_mod = owner?.get_chem_effect(CE_PAINKILLER)/PAINKILLER_DIVISOR
+	var/pain = min((SHOCK_MOD_BRUTE * brute) + (SHOCK_MOD_BURN * burn) - painkiller_mod, max_pain_damage-pain_dam)
+
 	//cap at maxdamage
 	if(brute_dam + brute > max_damage)
 		set_brute_dam(max_damage)
@@ -378,40 +486,28 @@
 		else if((brute + burn) >= 20)
 			owner.flash_fullscreen("redflash3")
 
+	// Now we add pain proper
+	if(owner && pain && add_pain(pain, FALSE))
+		if(prob(pain*0.5))
+			INVOKE_ASYNC(owner, TYPE_PROC_REF(/mob/living, emote), "scream")
+		//owner.flash_pain(pain)
+		var/shock_penalty = min(SHOCK_PENALTY_CAP, FLOOR(pain/owner_endurance, 1))
+		if(shock_penalty)
+			owner.update_shock_penalty(shock_penalty)
+
 	if(owner)
 		if(can_be_disabled)
 			update_disabled()
+		update_limb_efficiency()
 		if(updating_health)
 			owner.updatehealth()
 
-	// Add new lingering pain when taking significant damage
-	var/current_damage_percent = ((brute_dam + burn_dam) / max_damage) * 100
-	if(current_damage_percent > 40) // Only significant injuries cause lingering pain
-		var/new_lingering = (current_damage_percent - 40) * 0.5 // Scale factor
-		lingering_pain += max(0, (new_lingering - lingering_pain) / 4)
+			if(get_shock(FALSE, TRUE) >= DAMAGE_PRECISION)
+				owner.update_shock()
+				. = TRUE
 
-		// Track severe injuries for chronic pain development
-		if(current_damage_percent > 60)
-			last_severe_injury_time = world.time
 
 	return update_bodypart_damage_state() || .
-
-/obj/item/bodypart/proc/add_pain(amount)
-	if(!amount || !owner)
-		return
-	if(owner.status_flags & GODMODE)
-		return
-	lingering_pain += amount
-	var/current_damage_percent = ((brute_dam + burn_dam) / max_damage) * 100
-	if(current_damage_percent > 60)
-		last_severe_injury_time = world.time
-	if(owner.stat < DEAD)
-		if(amount < 10)
-			owner.flash_fullscreen("redflash1")
-		else if(amount < 20)
-			owner.flash_fullscreen("redflash2")
-		else
-			owner.flash_fullscreen("redflash3")
 
 //Heals brute and burn damage for the organ. Returns 1 if the damage-icon states changed at all.
 //Damage cannot go below zero.

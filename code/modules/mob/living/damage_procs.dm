@@ -48,6 +48,10 @@
 			adjustOxyLoss(damage_amount, forced = forced)
 		if(CLONE)
 			adjustCloneLoss(damage_amount, forced = forced)
+		if(PAIN, SHOCK_PAIN)
+			adjustPainLoss(damage_amount, forced = forced)
+		if(SHOCK_STAGE)
+			adjustShockStage(damage_amount, forced = forced)
 	update_damage_overlays()
 	return 1
 
@@ -63,6 +67,10 @@
 			return adjustOxyLoss(damage)
 		if(CLONE)
 			return adjustCloneLoss(damage)
+		if(PAIN, SHOCK_PAIN)
+			return adjustPainLoss(damage)
+		if(SHOCK_STAGE)
+			return adjustShockStage(damage)
 
 /mob/living/proc/get_damage_amount(damagetype = BRUTE)
 	switch(damagetype)
@@ -77,7 +85,8 @@
 		if(CLONE)
 			return getCloneLoss()
 
-
+/mob/living/proc/custom_pain(message, power, forced, obj/item/bodypart/affecting, nopainloss)
+	return
 
 /mob/living/proc/apply_effect(effect = 0,effecttype = EFFECT_STUN, blocked = FALSE)
 	var/hit_percent = (100-blocked)/100
@@ -237,6 +246,48 @@
 
 /mob/living/proc/getOrganLoss(slot)
 	return
+
+
+/mob/living/proc/getPainLoss()
+	return painloss
+
+/mob/living/proc/adjustPainLoss(amount, updating_health = TRUE, forced = FALSE)
+	if(!forced && (status_flags & GODMODE))
+		return
+	. = painloss
+	painloss = clamp((painloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 2)
+	if(updating_health)
+		updatehealth()
+
+/mob/living/proc/setPainLoss(amount, updating_health = TRUE, forced = FALSE)
+	if(!forced && status_flags & GODMODE)
+		return
+	. = painloss
+	painloss = amount
+	if(updating_health)
+		updatehealth()
+
+/mob/living/proc/getShock(painkiller_included = TRUE)
+	return traumatic_shock
+
+/mob/living/proc/getShockStage()
+	return shock_stage
+
+/mob/living/proc/adjustShockStage(amount, updating_health = TRUE, forced = FALSE)
+	if(!forced && (status_flags & GODMODE))
+		return
+	. = shock_stage
+	shock_stage = clamp((shock_stage + (amount * CONFIG_GET(number/damage_multiplier))), 0, SHOCK_STAGE_MAX)
+	if(updating_health)
+		updatehealth()
+
+/mob/living/proc/setShockStage(amount, updating_health = TRUE, forced = FALSE)
+	if(!forced && status_flags & GODMODE)
+		return
+	. = painloss
+	shock_stage = amount
+	if(updating_health)
+		updatehealth()
 
 // heal ONE external organ, organ gets randomly selected from damaged ones.
 /mob/living/proc/heal_bodypart_damage(brute = 0, burn = 0, updating_health = TRUE, required_status)

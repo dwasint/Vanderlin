@@ -160,7 +160,7 @@
 	time *= (SKILL_MIDDLING/max(GET_MOB_SKILL_VALUE(user, /datum/attribute/skill/misc/medicine), 1))
 
 	if(owner)
-		//owner.custom_pain("OH GOD! There are needles inside my [src]!", 30, FALSE, owner.get_bodypart(current_zone))
+		owner.custom_pain("OH GOD! There are needles inside my [src]!", 30, FALSE, owner.get_bodypart(current_zone))
 		if(!do_after(user, time, owner))
 			to_chat(user, span_warning("I must stand still!"))
 			return
@@ -182,7 +182,7 @@
 	user.visible_message(span_notice("<b>[user]</b> starts lobotomizing \the [src]..."), \
 					span_notice("I start lobotomizing \the [src]..."), \
 					vision_distance = COMBAT_MESSAGE_RANGE)
-	//owner.custom_pain("OH GOD! My [src] is being SLASHED IN TWAIN!", 30, FALSE, owner.get_bodypart(current_zone))
+	owner.custom_pain("OH GOD! My [src] is being SLASHED IN TWAIN!", 30, FALSE, owner.get_bodypart(current_zone))
 
 	var/time = 10 SECONDS
 	time *= (SKILL_MIDDLING/max(GET_MOB_SKILL_VALUE(user, /datum/attribute/skill/misc/medicine), 1))

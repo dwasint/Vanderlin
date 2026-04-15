@@ -121,5 +121,11 @@
 	/// Total sum of organ and bodypart hydration requirement
 	var/total_hydration_req  = DEFAULT_TOTAL_HYDRATION_REQ
 
+	// ~INJURY PENALTIES
+	/// Timer for injury penalty, should reset if we take more damage
+	var/shock_penalty_timer = null
+	/// How much our injury penalty currently affects our DX and IQ
+	var/shock_penalty = 0
+
 	/// if they get a mana pool
 	has_initial_mana_pool = TRUE

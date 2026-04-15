@@ -752,6 +752,33 @@
 	// when healing.
 	restoreEars()
 
+/**
+ * Robotic organs do not feel pain, simply for balancing reasons
+ * Thus lowering the shock of IPCs and other synths is easier, as
+ * they don't have many painkillers
+ */
+/obj/item/organ/proc/can_feel_pain()
+	. = FALSE
+	if(pain_multiplier <= 0)
+		return FALSE
+	if(CHECK_BITFIELD(organ_flags, ORGAN_CUT_AWAY | ORGAN_DEAD))
+		return FALSE
+	if(HAS_TRAIT(src, TRAIT_NOPAIN))
+		return FALSE
+	if(owner?.can_feel_pain())
+		return TRUE
+
+/obj/item/organ/proc/get_shock(painkiller_included = FALSE)
+	if(!can_feel_pain())
+		return 0
+	// Failing organs always cause maxHealth pain if possible
+	if(is_failing())
+		return round(maxHealth * pain_multiplier, DAMAGE_PRECISION)
+	var/constant_pain = damage
+	if(painkiller_included)
+		constant_pain -= (owner.get_chem_effect(CE_PAINKILLER)/PAINKILLER_DIVISOR)
+	return max(FLOOR(constant_pain * pain_multiplier, DAMAGE_PRECISION), 0)
+
 GLOBAL_LIST_INIT(all_organ_slots, get_all_slots())
 
 /// Get all possible organ slots by checking every organ, and then store it and give it whenever needed

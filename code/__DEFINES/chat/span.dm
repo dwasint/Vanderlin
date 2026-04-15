@@ -104,7 +104,7 @@
 #define span_silver(str) ("<span class='silver'>" + str + "</span>")
 #define span_artery(str) ("<span class='artery'>" + str + "</span>")
 #define span_love(str) ("<span class='love'>" + str + "</span>")
-
+#define span_animatedpain(str) ("<span class='animatedpain'>" + str + "</span>")
 
 //Sizes
 // arbitary names. ordered by smallest to biggest

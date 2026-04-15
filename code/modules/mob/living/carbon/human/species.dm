@@ -275,6 +275,20 @@ GLOBAL_LIST_EMPTY(roundstart_species)
 		OFFSET_UNDIES = list(0,0),\
 	)
 
+	/// List of emotes caused by pain, indexed by pain amount
+	var/list/pain_emote_by_power = list(
+		"100" = "agonyscream",
+		"90" = "whimper",
+		"80" = "moan",
+		"70" = "cry",
+		"60" = "gargle",
+		"50" = "moan",
+		"40" = "moan",
+		"30" = "groan",
+		"20" = "groan",
+		"10" = "grunt",
+	) //Below 10 pain, we shouldn't emote
+
 	/// Amount of times we got autocorrected?? why is this a thing?
 	var/amtfail = 0
 
@@ -326,6 +340,14 @@ GLOBAL_LIST_EMPTY(roundstart_species)
 		if("Zizo Chant")
 			return
 	return
+
+/datum/species/proc/get_pain_emote(power)
+	if(power < PAIN_EMOTE_MINIMUM)
+		return
+	power = FLOOR(min(100, power), 10)
+	var/emote_string
+	emote_string = LAZYACCESS(pain_emote_by_power, "[power]")
+	return emote_string
 
 /datum/species/proc/handle_speech(datum/source, list/speech_args)
 	var/message = speech_args[SPEECH_MESSAGE]

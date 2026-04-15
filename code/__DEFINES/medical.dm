@@ -73,6 +73,10 @@
 // ~flags for the limb_flags var on /obj/item/bodypart
 /// Can suffer artery wounds
 #define	BODYPART_HAS_ARTERY	(1<<0)
+#define BODYPART_CHRONIC_ARTHRITIS (1<<1)
+#define BODYPART_CHRONIC_FRACTURE (1<<2)
+#define BODYPART_CHRONIC_SCAR (1<<3)
+#define BODYPART_CHRONIC_NERVE_DAMAGE (1<<4)
 
 //flags for the organ_flags var on /obj/item/organ
 /// Synthetic organs, or cybernetic organs. Reacts to EMPs and don't deteriorate or heal
@@ -97,6 +101,20 @@
 #define ORGAN_NO_VIOLENT_DAMAGE (1<<9)
 /// Organ cannot ever become destroyed beyond repair
 #define ORGAN_INDESTRUCTIBLE (1<<10)
+
+DEFINE_BITFIELD(organ_flags, list(
+	"ORGAN_DESTROYED" = ORGAN_DESTROYED,
+	"ORGAN_DEAD" = ORGAN_DEAD,
+	"ORGAN_CUT_AWAY" = ORGAN_CUT_AWAY,
+	"ORGAN_FROZEN" = ORGAN_FROZEN,
+	"ORGAN_INDESTRUCTIBLE" = ORGAN_INDESTRUCTIBLE,
+	"ORGAN_NO_VIOLENT_DAMAGE" = ORGAN_NO_VIOLENT_DAMAGE,
+	"ORGAN_LIMB_SUPPORTER" = ORGAN_LIMB_SUPPORTER,
+	"ORGAN_DESTROYED" = ORGAN_DESTROYED,
+	"ORGAN_VITAL" = ORGAN_VITAL,
+	"ORGAN_EXTERNAL" = ORGAN_EXTERNAL,
+	"ORGAN_FAILING" = ORGAN_FAILING,
+))
 
 //wound severities for /datum/wound
 /// Wounds that are either surgically induced or too minor to matter

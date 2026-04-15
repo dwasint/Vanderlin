@@ -89,8 +89,8 @@
 	var/mob/living/carbon/human/H = owner
 	for(var/obj/item/bodypart/BP in H.bodyparts)
 		if(BP.body_zone == BODY_ZONE_HEAD)
-			BP.chronic_pain = rand(17.5, 27.5)
-			BP.chronic_pain_type = CHRONIC_NERVE_DAMAGE
+			BP.add_pain(rand(17.5, 27.5))
+			BP.limb_flags |= BODYPART_CHRONIC_NERVE_DAMAGE
 			break
 	to_chat(H, span_warning("You feel the familiar pressure building behind your eyes."))
 
@@ -102,7 +102,7 @@
 	if(prob(2))
 		for(var/obj/item/bodypart/BP in H.bodyparts)
 			if(BP.body_zone == BODY_ZONE_HEAD)
-				BP.lingering_pain += rand(25, 40)
+				BP.add_pain(rand(25, 40))
 				break
 
 		if(prob(30))
@@ -118,8 +118,8 @@
 				head = BP
 				break
 
-		if(head && head.lingering_pain > 20 && H.loc && H.loc.luminosity > 2)
-			head.lingering_pain += rand(5, 10)
+		if(head && head.pain_dam > 20 && H.loc && H.loc.luminosity > 2)
+			head.add_pain(rand(5, 10))
 			to_chat(H, span_warning("The flickering flames make your migraine worse!"))
 
 

@@ -68,6 +68,11 @@
 			adjustOxyLoss(damage_amount, forced = forced)
 		if(CLONE)
 			adjustCloneLoss(damage_amount, forced = forced)
+		if(PAIN, SHOCK_PAIN)
+			if(BP)
+				BP.add_pain(damage_amount)
+			else
+				adjustPainLoss(damage_amount, forced = forced)
 	if(damage_amount)
 		return damage_amount
 	else
@@ -161,6 +166,163 @@
 	var/obj/item/organ/O = getorganslot(slot)
 	if(O)
 		return O.damage
+
+/mob/living/carbon/getPainLoss()
+	var/amount = 0
+	for(var/X in bodyparts)
+		var/obj/item/bodypart/bodypart = X
+		amount += bodypart.pain_dam * bodypart.pain_damage_coeff
+	return amount
+
+/mob/living/carbon/adjustPainLoss(amount, updating_health = TRUE, forced = FALSE, required_status = null)
+	if(!forced && (status_flags & GODMODE))
+		return FALSE
+	var/old_amount = amount
+	var/list/obj/item/bodypart/parts
+	if(amount > 0)
+		parts = get_painable_bodyparts()
+	else
+		parts = get_pained_bodyparts()
+	var/update = FALSE
+	while(parts.len && amount)
+		var/obj/item/bodypart/picked = pick(parts)
+		var/pain_per_part
+		if(amount < 0)
+			pain_per_part = FLOOR(amount/parts.len, DAMAGE_PRECISION)
+		else
+			pain_per_part = CEILING(amount/parts.len, DAMAGE_PRECISION)
+
+		var/pain_was = picked.pain_dam
+		if(amount < 0)
+			update |= picked.remove_pain(abs(pain_per_part))
+		else
+			update |= picked.add_pain(abs(pain_per_part))
+
+		if(pain_per_part < 0)
+			pain_per_part = FLOOR(amount - (picked.pain_dam - pain_was), DAMAGE_PRECISION)
+		else
+			pain_per_part = CEILING(amount - (picked.pain_dam - pain_was), DAMAGE_PRECISION)
+
+		parts -= picked
+	if(updating_health)
+		updatehealth()
+	if(update)
+		update_damage_overlays()
+	return old_amount
+
+/mob/living/carbon/setPainLoss(amount, updating_health = TRUE, forced = FALSE)
+	var/current = getPainLoss()
+	var/diff = amount - current
+	if(!diff)
+		return
+	adjustPainLoss(diff, updating_health, forced)
+
+/mob/living/carbon/proc/InShock()
+	return (shock_stage >= SHOCK_STAGE_4)
+
+/mob/living/carbon/proc/InFullShock()
+	return (shock_stage >= SHOCK_STAGE_6)
+
+/mob/living/carbon/proc/get_painable_bodyparts(status)
+	var/list/obj/item/bodypart/parts = list()
+	for(var/X in bodyparts)
+		var/obj/item/bodypart/BP = X
+		if(status && (BP.status != status))
+			continue
+		if(BP.pain_dam < BP.max_pain_damage)
+			parts += BP
+	return parts
+
+/mob/living/carbon/proc/get_pained_bodyparts(status)
+	var/list/obj/item/bodypart/parts = list()
+	for(var/X in bodyparts)
+		var/obj/item/bodypart/BP = X
+		if(status && (BP.status != status))
+			continue
+		if(BP.pain_dam)
+			parts += BP
+	return parts
+
+/mob/living/carbon/proc/endorphinate(forced = FALSE, silent = FALSE, local_sound = TRUE, flash = TRUE, special_sound)
+	var/endurance = GET_MOB_ATTRIBUTE_VALUE(src, STAT_ENDURANCE)
+	if(!forced && (TIMER_COOLDOWN_CHECK(src, COOLDOWN_CARBON_ENDORPHINATION) || (diceroll(endurance, context = DICE_CONTEXT_MENTAL) <= DICE_FAILURE)))
+		return
+
+	var/endorphin_amount = clamp(endurance, 5, 29)
+	reagents?.add_reagent(/datum/reagent/medicine/endorphin, endorphin_amount)
+	TIMER_COOLDOWN_START(src, COOLDOWN_CARBON_ENDORPHINATION, ENDORPHINATION_COOLDOWN_DURATION)
+	if(!silent)
+		var/final_sound = special_sound || 'sound/heart/combatcocktail.ogg'
+		if(local_sound)
+			playsound_local(src, final_sound, 80, FALSE)
+		else
+			playsound(src, final_sound, 80, FALSE)
+
+
+/**
+ * Adds pain onto a limb while giving the player a message styled depending on the powerf of the pain added.
+ *
+ * Arguments:
+ * * Message is the custom message to be displayed
+ * * Power decides how much painkillers will stop the message, as well as how much pain it causes
+ * * Forced means it ignores anti-spam timer
+ */
+/mob/living/carbon/custom_pain(message, power, forced, obj/item/bodypart/affecting, nopainloss = FALSE)
+	if((stat >= UNCONSCIOUS) || !can_feel_pain() || (world.time < next_pain_time))
+		return FALSE
+
+	if(affecting && !affecting.can_feel_pain())
+		return FALSE
+
+	// Take the edge off
+	power -= get_chem_effect(CE_PAINKILLER)
+	if(power <= 0)
+		return FALSE
+
+	// Share the pain
+	if(!nopainloss && power)
+		if(affecting)
+			affecting.add_pain(CEILING(power, 1))
+		else
+			adjustPainLoss(CEILING(power, 1))
+
+	// Anti message spam checks
+	if(forced || (message != last_pain_message) || (world.time >= next_pain_message_time))
+		last_pain_message = message
+		if(world.time >= next_pain_message_time)
+			to_chat(src, span_animatedpain("[message]"))
+
+		var/force_emote
+		if(ishuman(src))
+			var/mob/living/carbon/human/human_src = src
+			if(human_src.dna?.species)
+				force_emote = human_src.dna.species.get_pain_emote(power)
+		if(force_emote && prob(power))
+			INVOKE_ASYNC(src, PROC_REF(emote), force_emote)
+
+	// Briefly flash the pain overlay
+	//flash_pain(power)
+	next_pain_time = world.time + (rand(100, 150) + power)
+	next_pain_message_time = world.time + (200 + power)
+	return TRUE
+
+/mob/living/carbon/can_feel_pain()
+	return !HAS_TRAIT(src, TRAIT_NOPAIN)
+
+/mob/living/carbon/getShock(painkiller_included = TRUE)
+	if(!can_feel_pain())
+		return 0
+
+	var/shock = 0
+	shock += SHOCK_MOD_CLONE * getCloneLoss()
+	for(var/X in bodyparts)
+		var/obj/item/bodypart/bodypart = X
+		shock += bodypart.get_shock(FALSE, TRUE)
+
+	if(painkiller_included)
+		shock = max(0, shock - get_chem_effect(CE_PAINKILLER))
+
+	return max(0, shock)
 
 ////////////////////////////////////////////
 

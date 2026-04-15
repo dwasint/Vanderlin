@@ -306,11 +306,7 @@
 	M.adjustBruteLoss(-1*REM)
 	M.adjustFireLoss(-0.5*REM)
 
-	for(var/obj/item/bodypart/BP in M.bodyparts)
-		if(BP.status == BODYPART_ROBOTIC)
-			continue
-		if(BP.lingering_pain > 0)
-			BP.lingering_pain = max(0, BP.lingering_pain - (volume * 0.3))
+	M.adjustPainLoss(-(volume * 0.3) * efficiency)
 
 	. = ..()
 
@@ -413,11 +409,7 @@
 	M.adjust_stamina(1.5 * efficiency)
 	M.adjust_bodytemperature(-0.3 * efficiency, BODYTEMP_NORMAL - 2)
 
-	for(var/obj/item/bodypart/BP in M.bodyparts)
-		if(BP.status == BODYPART_ROBOTIC)
-			continue
-		if(BP.lingering_pain > 0)
-			BP.lingering_pain = max(0, BP.lingering_pain - (volume * 0.3 * efficiency))
+	M.adjustPainLoss(-(volume * 0.3) * efficiency)
 	. = ..()
 
 // Dangerous Poisons
