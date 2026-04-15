@@ -236,6 +236,7 @@
 	zombie.modifier_set_stat_to("[type]", STAT_CONSTITUTION, 15)
 
 	zombie.bloodpool = 0 // Again, just in case.
+	zombie.adjustOrganLoss(ORGAN_SLOT_BRAIN, -200)
 
 	zombie.ghostize()
 
