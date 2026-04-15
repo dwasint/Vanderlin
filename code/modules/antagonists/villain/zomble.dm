@@ -117,6 +117,7 @@
 	zombie.ai_controller = new /datum/ai_controller/zombie(zombie)
 	zombie.AddComponent(/datum/component/ai_aggro_system)
 	zombie.status_flags &= ~BLEEDOUT
+	zombie.adjustOrganLoss(ORGAN_SLOT_BRAIN, -200)
 	return ..()
 
 /datum/antagonist/zombie/on_removal()
