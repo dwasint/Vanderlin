@@ -25,15 +25,15 @@
 #define SHOCK_PENALTY_CAP 4
 
 /// Above or equal this pain, affect DX and stuff intermittently
-#define PAIN_SHOCK_PENALTY 25
+#define PAIN_SHOCK_PENALTY 50
 /// Above or equal this pain, we cannot sleep intentionally
-#define PAIN_NO_SLEEP 50
+#define PAIN_NO_SLEEP 70
 /// Above or equal this pain, we halve move and dodge
-#define PAIN_HALVE_MOVE 65
+#define PAIN_HALVE_MOVE 130
 /// Above or equal this pain, we give in
-#define PAIN_GIVES_IN 100
+#define PAIN_GIVES_IN 200
 /// Above or equal to this amount of pain, we can only speak in whispers
-#define PAIN_NO_SPEAK 125
+#define PAIN_NO_SPEAK 250
 
 /// Divisor used in several pain calculations
 #define PAINKILLER_DIVISOR 4

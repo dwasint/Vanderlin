@@ -8,11 +8,11 @@
 		if(-INFINITY to SHOCK_STAGE_2)
 			hud_used.update_chromatic_aberration(intensity = 0)
 		if(SHOCK_STAGE_2 to SHOCK_STAGE_4)
-			hud_used.update_chromatic_aberration(intensity = 1, red_x = 1, red_y = 1, blue_x = 0, blue_y = 0)
+			hud_used.update_chromatic_aberration(intensity = 1, red_x = 0, red_y = 0, blue_x = 0, blue_y = 0)
 		if(SHOCK_STAGE_4 to SHOCK_STAGE_6)
-			hud_used.update_chromatic_aberration(intensity = 2, red_x = 2, red_y = 2, blue_x = -1, blue_y = -1)
+			hud_used.update_chromatic_aberration(intensity = 1, red_x = 1, red_y = 0, blue_x = 0, blue_y = 0)
 		if(SHOCK_STAGE_6 to INFINITY)
-			hud_used.update_chromatic_aberration(intensity = 3, red_x = 3, red_y = 3, blue_x = -2, blue_y = -2)
+			hud_used.update_chromatic_aberration(intensity = 1	, red_x = 1, red_y = 1, blue_x = 0, blue_y = 0)
 
 /mob/living/carbon/proc/update_shock_penalty(incoming = 0, duration = SHOCK_PENALTY_COOLDOWN_DURATION)
 	//use remove_shock_penalty() you idiot
