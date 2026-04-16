@@ -127,6 +127,13 @@ DEFINE_BITFIELD(organ_flags, list(
 	"ORGAN_FAILING" = ORGAN_FAILING,
 ))
 
+/// set wound_bonus on an item or attack to this to disable organ damage for the attack
+#define CANT_ORGAN -100
+/// Max damage we consider for damage_organs()
+#define MAX_CONSIDERED_ORGAN_DAMAGE_ROLL 75
+/// ditto but for internal organ damage
+#define ORGAN_MINIMUM_DAMAGE 12.5
+
 //wound severities for /datum/wound
 /// Wounds that are either surgically induced or too minor to matter
 #define WOUND_SEVERITY_SUPERFICIAL 0

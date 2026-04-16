@@ -33,6 +33,8 @@
 #define ACID "acid"
 /// protection against magical attacks (make this adjustable via rune enchantments or something)
 #define MAGIC "magic"
+///protection from internal damage to the organs
+#define WOUND "wound"
 
 /// Armor values that are used for damage
 #define ARMOR_LIST_DAMAGE(...) list(BLUNT, SLASH, STAB, PIERCE)

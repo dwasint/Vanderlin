@@ -124,6 +124,11 @@
 	var/punch_modifier = 1 // for modifying arm punching damage
 	var/acid_damage_intensity = 0
 
+	/// How damaged the limb needs to be to start taking internal organ damage
+	var/organ_damage_requirement
+	/// How much damage an attack needs to do, at the very least, to damage internal organs
+	var/organ_damage_hit_minimum
+
 	/// artery organ base type
 	var/artery_type = /obj/item/organ/artery
 
@@ -164,6 +169,10 @@
 	create_base_organs()
 	if(isnull(max_pain_damage))
 		max_pain_damage = max_damage * 1.5
+	if(isnull(organ_damage_requirement))
+		organ_damage_requirement = max_damage * 0.2
+	if(isnull(organ_damage_hit_minimum))
+		organ_damage_hit_minimum = ORGAN_MINIMUM_DAMAGE
 
 	if(can_be_disabled)
 		RegisterSignal(src, SIGNAL_ADDTRAIT(TRAIT_PARALYSIS), PROC_REF(on_paralysis_trait_gain))
@@ -320,6 +329,92 @@
 	else if(getorganslotefficiency(ORGAN_SLOT_ARTERY) < ORGAN_FAILING_EFFICIENCY)
 		. = TRUE
 	needs_processing = .
+
+
+/// Proc for damaging organs inside a limb based on damage values
+/obj/item/bodypart/proc/damage_internal_organs(wounding_type = WOUND_BLUNT, amount = 0, organ_bonus = 0, bare_organ_bonus = 0, forced = FALSE, wound_messages = TRUE)
+	. = FALSE
+	if(organ_bonus == CANT_ORGAN)
+		return
+	var/list/internal_organs = list()
+	internal_organs |= get_organs()
+	//damaging face organs = also damaging head organs
+	var/list/extra_parts = list()
+	if(body_zone == BODY_ZONE_HEAD)
+		extra_parts |= owner.get_bodypart(BODY_ZONE_PRECISE_L_EYE)
+		extra_parts |= owner.get_bodypart(BODY_ZONE_PRECISE_R_EYE)
+	for(var/obj/item/bodypart/extra_part in extra_parts)
+		internal_organs |= extra_part.get_organs()
+	for(var/obj/item/organ/organ as anything in internal_organs)
+		internal_organs -= organ
+		if(!istype(organ))
+			continue
+		if(organ.damage < organ.maxHealth && \
+			(organ.organ_volume * 10 >= 1) && \
+			!CHECK_BITFIELD(organ.organ_flags, ORGAN_NO_VIOLENT_DAMAGE))
+			// Multiply by 10 because pickweight doesn't play nice with decimals
+			internal_organs[organ] = CEILING(organ.organ_volume * 10, 1)
+	if(!LAZYLEN(internal_organs))
+		return
+
+	if(ishuman(owner) && bare_organ_bonus)
+		var/mob/living/carbon/human/human_owner = owner
+		for(var/obj/item/clothing/clothes_check as anything in human_owner.clothingonpart(src))
+			if(clothes_check.armor.getRating(WOUND))
+				bare_organ_bonus = 0
+				break
+
+	var/cur_damage = brute_dam+burn_dam
+	var/damage_amt = amount+organ_bonus+bare_organ_bonus
+	var/organ_damage_minimum = organ_damage_hit_minimum
+	var/organ_damaged_required = organ_damage_requirement
+	switch(wounding_type)
+		// Piercing damage is more likely to damage internal organs
+		if(WOUND_PIERCE)
+			organ_damage_minimum *= 0.5
+		// Slashing damage is *slightly* more likely to damage internal organs
+		if(WOUND_SLASH)
+			organ_damage_minimum *= 0.75
+		// Burn damage is unlikely to damage organs
+		if(WOUND_BURN)
+			organ_damage_minimum *= 1.5
+		// Organ damage minimum is assumed to be the case for blunt anyway
+		else
+			organ_damage_hit_minimum *= 1
+
+	// Wounds can alter our odds of harming organs
+	for(var/datum/wound/oof as anything in wounds)
+		damage_amt += oof.organ_damage_increase
+		organ_damage_minimum = max(1, organ_damage_minimum - oof.organ_minimum_reduction)
+		organ_damaged_required = max(1, organ_damaged_required - oof.organ_required_reduction)
+
+	// Set this to the maximum considered amount if we exceed it
+	damage_amt = min(MAX_CONSIDERED_ORGAN_DAMAGE_ROLL, CEILING(damage_amt, 1))
+	organ_damaged_required = CEILING(organ_damaged_required, 1)
+	organ_damage_minimum = CEILING(organ_damage_minimum, 1)
+	// We haven't hit one or more of the tresholds
+	if(!forced && (!(cur_damage >= organ_damaged_required) || !(damage_amt >= organ_damage_minimum)))
+		return FALSE
+
+	var/organ_hit_chance = 30 * (damage_amt/organ_damage_minimum)
+	// Bones getting in the way aaaaah
+	var/modifier = 1
+
+	organ_hit_chance *= modifier
+	organ_hit_chance = clamp(CEILING(organ_hit_chance, 1), 0, 100)
+	if(!prob(organ_hit_chance) && !forced)
+		return FALSE
+
+	var/obj/item/organ/victim = pickweight(internal_organs)
+	damage_amt = max(0, CEILING((damage_amt * victim.internal_damage_modifier) - victim.internal_damage_reduction, 1))
+	if(damage_amt >= 1)
+		victim.applyOrganDamage(damage_amt)
+	if(owner)
+		if(damage_amt >= 15)
+			owner.custom_pain("<b>MY [uppertext(victim.name)] HURTS!</b>", rand(25, 35), affecting = src, nopainloss = TRUE)
+		if(wound_messages)
+			SEND_SIGNAL(owner, COMSIG_CARBON_ADD_TO_WOUND_MESSAGE, span_danger(" <b>An organ is damaged!</b>"))
+	return TRUE
 
 /// Creates an injury on the bodypart
 /obj/item/bodypart/proc/create_injury(injury_type = WOUND_BLUNT, damage = 0, surgical = FALSE, wound_messages = TRUE)

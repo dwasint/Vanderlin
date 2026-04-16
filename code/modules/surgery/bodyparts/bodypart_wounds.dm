@@ -149,7 +149,7 @@
 	return bleed_rate
 
 /// Called after a bodypart is attacked so that wounds and critical effects can be applied
-/obj/item/bodypart/proc/bodypart_attacked_by(bclass, dam, mob/living/user, zone_precise, silent = FALSE, crit_message = FALSE, list/modifiers = list(), incoming_germ)
+/obj/item/bodypart/proc/bodypart_attacked_by(bclass, dam, mob/living/user, zone_precise, silent = FALSE, crit_message = FALSE, list/modifiers = list(), incoming_germ, organ_bonus)
 	if(!bclass || !dam || !owner || (owner.status_flags & GODMODE))
 		return
 	dam *= damage_multiplier
@@ -189,6 +189,9 @@
 
 	if(wounding_type == WOUND_NONE)
 		return
+
+	if(organ_bonus != CANT_ORGAN)
+		damage_internal_organs(wounding_type, dam, organ_bonus, 0, wound_messages = TRUE)
 
 	for(var/datum/injury/iter_injury as anything in injuries)
 		iter_injury.receive_damage(dam, 0, wounding_type)

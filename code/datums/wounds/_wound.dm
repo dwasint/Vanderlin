@@ -53,6 +53,13 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	/// How much pain this wound causes while on a mob
 	var/woundpain = 0
 
+	/// How much this wound increases the damage on organ damage rolls
+	var/organ_damage_increase = 0
+	/// How much this wound reduces organ_damage_minimum in /obj/item/bodypart/damage_internal_organs()
+	var/organ_minimum_reduction = 0
+	/// How much this wound reduces organ_damaged_required in /obj/item/bodypart/damage_internal_organs()
+	var/organ_required_reduction = 0
+
 	/// Will apply this amount of damage to attached organs if set
 	var/apply_organ_damage = 0
 	/// How much this reduces an attached organ's efficiency, if it does it at all
@@ -63,7 +70,7 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	/// Using this limb in a do_after interaction will multiply the length by this duration (arms and hands)
 	var/interaction_efficiency_penalty = 1
 	/// Incoming damage on this limb will be multiplied by this, to simulate tenderness and vulnerability
-	var/damage_multiplier_penalty = 1
+	var/damage_multiplier_penalty = 1.25
 	/// If set and this wound is applied to a leg/foot, we take this many deciseconds extra per step on this leg/foot
 	var/limp_slowdown = 0
 
