@@ -381,8 +381,8 @@
 
 	//Add injuries to the owner's injury list
 	for(var/datum/injury/injury as anything in injuries)
-		injury.parent_mob = new_owner
-		LAZYADD(new_owner.all_injuries, injury)
+		injury.parent_mob = C
+		LAZYADD(C.all_injuries, injury)
 
 	var/obj/item/bodypart/affecting = C.get_bodypart(BODY_ZONE_CHEST)
 	if(affecting && dismember_wound)
