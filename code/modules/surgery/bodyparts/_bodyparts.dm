@@ -727,6 +727,7 @@
 		if(shock_penalty)
 			owner.update_shock_penalty(shock_penalty)
 
+
 	if(owner)
 		if(can_be_disabled)
 			update_disabled()
@@ -1321,13 +1322,6 @@
 			continue
 		incision = slash
 		break
-
-	if(!incision)
-		for(var/datum/wound/dynamic/slash/slash in wounds)
-			if(slash.is_sewn())
-				continue
-			incision = slash
-			break
 
 	if(!incision)
 		var/datum/injury/internal_incision

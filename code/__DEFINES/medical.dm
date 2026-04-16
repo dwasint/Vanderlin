@@ -68,7 +68,6 @@
 #define SURGERY_CLAMPED	(1<<3)
 #define SURGERY_DISLOCATED (1<<4)
 #define SURGERY_BROKEN (1<<5)
-#define SURGERY_DRILLED (1<<6)
 
 // ~flags for the limb_flags var on /obj/item/bodypart
 /// Can suffer artery wounds
@@ -313,6 +312,8 @@ DEFINE_BITFIELD(organ_flags, list(
 #define WOUND_PIERCE 8
 /// any concentrated burn attack (lasers really). rolls for burning wounds
 #define WOUND_BURN 9
+///any wounds from bites
+#define WOUND_BITE 10
 
 // ~injury flags
 /// This injury creates sounds hints when applied

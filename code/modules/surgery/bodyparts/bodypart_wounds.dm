@@ -152,12 +152,10 @@
 /obj/item/bodypart/proc/bodypart_attacked_by(bclass, dam, mob/living/user, zone_precise, silent = FALSE, crit_message = FALSE, list/modifiers = list())
 	if(!bclass || !dam || !owner || (owner.status_flags & GODMODE))
 		return
-
 	if(dam < 5)
 		return
 
 	var/do_crit = (modifiers[CRIT_MOD_CHANCE] <= -100) ? FALSE : TRUE
-
 	if(do_crit && ishuman(owner))
 		var/mob/living/carbon/human/human_owner = owner
 		if(human_owner.check_crit_armor(zone_precise, bclass))
@@ -169,44 +167,44 @@
 		if(ispath(user.rmb_intent?.type, /datum/rmb_intent/weak))
 			do_crit = FALSE
 
+	var/wounding_type = WOUND_NONE
+	switch(bclass)
+		if(BCLASS_BLUNT, BCLASS_SMASH, BCLASS_PUNCH)
+			wounding_type = WOUND_BLUNT
+		if(BCLASS_DRILL, BCLASS_PICK, BCLASS_PIERCE, BCLASS_SHOT)
+			wounding_type = WOUND_PIERCE
+		if(BCLASS_CUT, BCLASS_CHOP)
+			wounding_type = WOUND_SLASH
+		if(BCLASS_STAB)
+			wounding_type = WOUND_PIERCE
+		if(BCLASS_TWIST)
+			wounding_type = WOUND_BLUNT
+		if(BCLASS_BITE)
+			wounding_type = WOUND_BITE
+		if(BCLASS_BURN)
+			wounding_type = WOUND_BURN
+		if(BCLASS_LASHING)
+			wounding_type = WOUND_SLASH
+
+	if(wounding_type == WOUND_NONE)
+		return
+
+	for(var/datum/injury/iter_injury as anything in injuries)
+		iter_injury.receive_damage(dam, 0, wounding_type)
+
+	var/datum/injury/injury = create_injury(wounding_type, dam)
+	if(!istype(injury))
+		stack_trace("spec_attacked_by failed to create injury with [dam] damage and [wounding_type] wounding type!")
+
+	/*
+	for(var/datum/wound/iter_wound as anything in wounds)
+		iter_wound.receive_damage(wounding_type, dam, 0)
+	*/
+
 	if(do_crit)
 		var/crit_attempt = try_crit(bclass, dam, user, zone_precise, silent, crit_message, modifiers)
 		if(crit_attempt)
 			return crit_attempt
-
-	return manage_dynamic_wound(bclass, dam)
-
-/// Add or upgrade a dynamic wound, returns the wound if added or upgraded
-/obj/item/bodypart/proc/manage_dynamic_wound(bclass, damage)
-	var/datum/wound/wound_type
-
-	for(var/type in GLOB.primordial_wounds)
-		// :(
-		if(!ispath(type, /datum/wound/dynamic))
-			continue
-		var/datum/wound/dynamic/dynwound = GLOB.primordial_wounds[type]
-		if(!length(dynwound.associated_bclasses))
-			continue
-		if(bclass in dynwound.associated_bclasses)
-			wound_type = dynwound.type
-			break
-
-	if(!wound_type)
-		return
-
-	var/datum/wound/dynamic/changed_wound
-	// We do this to get the first unsewn dynamic wound
-	for(var/datum/wound/wound as anything in get_all_wounds_type(wound_type))
-		if(wound.is_sewn()) // Sewn dynamic wounds are DONE because im LAZY no wound re-opening
-			continue
-		changed_wound = wound
-
-	if(!changed_wound)
-		changed_wound = add_wound(wound_type)
-
-	changed_wound?.upgrade(bclass, damage)
-
-	return changed_wound
 
 /// Behemoth of a proc used to apply a wound after a bodypart is damaged in an attack
 /obj/item/bodypart/proc/try_crit(bclass, dam, mob/living/user, zone_precise, silent = FALSE, crit_message = FALSE, list/modifiers = list())
@@ -772,10 +770,6 @@
 		returned_flags |= SURGERY_DISLOCATED
 	if(has_wound(/datum/wound/fracture))
 		returned_flags |= SURGERY_BROKEN
-	for(var/datum/wound/puncture/drilling/drilling in wounds)
-		if(drilling.is_sewn())
-			continue
-		returned_flags |= SURGERY_DRILLED
 	if(skeletonized)
-		returned_flags |= SURGERY_INCISED | SURGERY_DRILLED //ehh... we have access to whatever organ is there
+		returned_flags |= SURGERY_INCISED //ehh... we have access to whatever organ is there
 	return returned_flags

@@ -67,7 +67,7 @@
 					MOBTIMER_SET(src, MT_LEPERBLEED)
 					var/obj/item/bodypart/part = pick(bodyparts)
 					if(part)
-						part.add_wound(/datum/wound/slash/small)
+						part.create_injury(WOUND_SLASH, 5, TRUE)
 					adjustToxLoss(10)
 		update_stamina()
 		update_energy()

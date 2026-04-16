@@ -9,21 +9,6 @@
 	var/list/head_status = list()
 	if(!brain)
 		head_status += "<span class='dead'>The brain is missing.</span>"
-	/*
-	else if(brain.suicided || brainmob?.suiciding)
-		. += "<span class='info'>There's a pretty dumb expression on [real_name]'s face; they must have really hated life. There is no hope of recovery.</span>"
-	else if(brain.brain_death || brainmob?.health <= HEALTH_THRESHOLD_DEAD)
-		. += "<span class='info'></span>"
-	else if(brainmob)
-		if(brainmob.get_ghost(FALSE, TRUE))
-			. += "<span class='info'>Its muscles are still twitching slightly... It still seems to have a bit of life left to it.</span>"
-		else
-			. += "<span class='info'>It seems particularly lifeless. Perhaps there'll be a chance for them later.</span>"
-	else if(brain?.decoy_override)
-		. += "<span class='info'>It seems particularly lifeless. Perhaps there'll be a chance for them later.</span>"
-	else
-		. += "<span class='info'>It seems completely devoid of life.</span>"
-	*/
 
 	if(!eyes_left)
 		head_status += "<span class='warning'>The left eye is missing.</span>"
@@ -251,21 +236,42 @@
 		else
 			injury_descriptors[this_injury_desc] = injury.amount
 
+	var/first = TRUE
 	for(var/injury in injury_descriptors)
-		var/final_text = injury
+		var/final_text = ""
+		var/clean_final = ""
+		if(!first)
+			final_text = " | "
+		final_text += injury
+		clean_final = injury
 		if(injury_descriptors[injury] > 1)
 			if(findtext(final_text, "[COLOR_PALE_RED_GRAY];"))
 				final_text += "<span style='color: [COLOR_PALE_RED_GRAY];'>s</span>"
+				clean_final += "<span style='color: [COLOR_PALE_RED_GRAY];'>s</span>"
 			else
 				final_text += "s"
+				clean_final += "s"
 		switch(injury_descriptors[injury])
 			if(-INFINITY to 1)
-				final_text = "a [final_text]"
+				final_text = ""
+				if(!first)
+					final_text = " | "
+				final_text += "a [clean_final]"
 			if(2)
-				final_text = "a pair of [final_text]"
+				final_text = ""
+				if(!first)
+					final_text = " | "
+				final_text += "a pair of [clean_final]"
 			if(3 to 5)
-				final_text = "several [final_text]"
+				final_text = ""
+				if(!first)
+					final_text = " | "
+				final_text += "several [clean_final]"
 			if(6 to INFINITY)
-				final_text = "a ton of [final_text]"
+				final_text = ""
+				if(!first)
+					final_text = " | "
+				final_text += "a ton of [clean_final]"
 		flavor_text += final_text
+		first = FALSE
 	return flavor_text
