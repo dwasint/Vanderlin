@@ -196,6 +196,8 @@
 	if(!istype(injury))
 		stack_trace("spec_attacked_by failed to create injury with [dam] damage and [wounding_type] wounding type!")
 
+	update_damages()
+
 	/*
 	for(var/datum/wound/iter_wound as anything in wounds)
 		iter_wound.receive_damage(wounding_type, dam, 0)

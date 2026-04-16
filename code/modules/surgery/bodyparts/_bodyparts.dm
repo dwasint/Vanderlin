@@ -10,6 +10,8 @@
 	icon_state = ""
 	layer = BELOW_MOB_LAYER //so it isn't hidden behind objects when on the floor
 
+	germ_level = GERM_LEVEL_STERILE
+
 	var/disinfects_in
 	var/mob/living/carbon/owner
 	var/mob/living/carbon/original_owner
@@ -278,6 +280,7 @@
 		var/multiplier = 1
 		if(owner.body_position == LYING_DOWN)
 			multiplier *= pain_heal_rest_multiplier
+		remove_pain(amount = (pain_heal_tick * multiplier * (0.5 * delta_time)), updating_health = FALSE)
 	if(can_decay())
 		if(germ_level || (getorganslotefficiency(ORGAN_SLOT_ARTERY) < ORGAN_FAILING_EFFICIENCY))
 			update_germs(delta_time, times_fired)
@@ -739,7 +742,8 @@
 				owner.update_shock()
 				. = TRUE
 
-
+	update_damages()
+	consider_processing()
 	return update_bodypart_damage_state() || .
 
 //Heals brute and burn damage for the organ. Returns 1 if the damage-icon states changed at all.
@@ -761,6 +765,8 @@
 		if(updating_health)
 			owner.updatehealth()
 	//cremation_progress = min(0, cremation_progress - ((brute_dam + burn_dam)*(100/max_damage)))
+	update_damages()
+	consider_processing()
 	return update_bodypart_damage_state()
 
 ///Proc to hook behavior associated to the change of the brute_dam variable's value.
