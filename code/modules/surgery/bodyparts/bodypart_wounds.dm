@@ -149,9 +149,10 @@
 	return bleed_rate
 
 /// Called after a bodypart is attacked so that wounds and critical effects can be applied
-/obj/item/bodypart/proc/bodypart_attacked_by(bclass, dam, mob/living/user, zone_precise, silent = FALSE, crit_message = FALSE, list/modifiers = list())
+/obj/item/bodypart/proc/bodypart_attacked_by(bclass, dam, mob/living/user, zone_precise, silent = FALSE, crit_message = FALSE, list/modifiers = list(), incoming_germ)
 	if(!bclass || !dam || !owner || (owner.status_flags & GODMODE))
 		return
+	dam *= damage_multiplier
 	if(dam < 5)
 		return
 
@@ -196,6 +197,8 @@
 	if(!istype(injury))
 		stack_trace("spec_attacked_by failed to create injury with [dam] damage and [wounding_type] wounding type!")
 
+	if(incoming_germ)
+		injury.adjust_germ_level(incoming_germ * 0.1)
 	update_damages()
 
 	/*
@@ -361,6 +364,7 @@
 				used -= 10
 			if(prob(used))
 				if((zone_precise == BODY_ZONE_PRECISE_STOMACH) && !resistance)
+					LAZYADD(attempted_wounds, /datum/wound/spill/gut)
 					LAZYADD(attempted_wounds, /datum/wound/slash/disembowel)
 				if(owner.has_wound(/datum/wound/fracture/chest) || (bclass in GLOB.artery_heart_bclasses))
 					LAZYADD(attempted_wounds, /datum/wound/artery/chest)
@@ -744,12 +748,6 @@
 
 	for(var/datum/injury/slash/slash in injuries)
 		if(slash.is_bandaged() || slash.current_stage > slash.max_bleeding_stage) // Shit's unusable
-			continue
-		returned_flags |= SURGERY_INCISED
-		break
-
-	for(var/datum/wound/slash/incision/incision in wounds)
-		if(incision.is_sewn())
 			continue
 		returned_flags |= SURGERY_INCISED
 		break

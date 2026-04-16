@@ -46,6 +46,9 @@
 	var/burn_dam = 0
 	var/max_damage = 0
 
+	/// Our current stored wound damage multiplier
+	var/damage_multiplier = 1
+
 	/// How efficient this limb is at performing... whatever it performs
 	var/limb_efficiency = 100
 
@@ -241,6 +244,23 @@
 
 	limb_flags &= ~BODYPART_FROZEN
 	return (limb_flags & BODYPART_FROZEN)
+
+/**
+ * update_wounds() is called whenever a wound is gained or lost on this bodypart, as well as if there's a change of some kind on a bone wound possibly changing disabled status
+ *
+ * Covers tabulating the damage multipliers we have from wounds (burn specifically), as well as deleting our gauze wrapping if we don't have any wounds that can use bandaging
+ *
+ * Arguments:
+ * * replaced- If true, this is being called from the remove_wound() of a wound that's being replaced, so the bandage that already existed is still relevant, but the new wound hasn't been added yet
+ */
+/obj/item/bodypart/proc/update_wounds(replaced = FALSE)
+	var/dam_mul = initial(damage_multiplier)
+
+	// we can (normally) only have one wound per type, but remember there's multiple types (smites like :B:loodless can generate multiple cuts on a limb)
+	for(var/datum/wound/iter_wound as anything in wounds)
+		dam_mul *= iter_wound.damage_multiplier_penalty
+
+	damage_multiplier = dam_mul
 
 
 /obj/item/bodypart/proc/kill_limb()
@@ -687,8 +707,8 @@
 		return FALSE
 
 	var/dmg_mlt = CONFIG_GET(number/damage_multiplier) * hit_percent
-	brute = round(max(brute * dmg_mlt, 0),DAMAGE_PRECISION)
-	burn = round(max(burn * dmg_mlt, 0),DAMAGE_PRECISION)
+	brute = round(max(brute * dmg_mlt * damage_multiplier, 0),DAMAGE_PRECISION)
+	burn = round(max(burn * dmg_mlt * damage_multiplier, 0),DAMAGE_PRECISION)
 	brute = max(0, brute - brute_reduction)
 	burn = max(0, burn - burn_reduction)
 

@@ -212,6 +212,10 @@ DEFINE_BITFIELD(organ_flags, list(
 /// infections grow from two to three in ~15 minutes
 #define INFECTION_LEVEL_THREE 1000
 
+/// Maximum amount of germs surgery can cause
+#define SURGERY_GERM_MAXIMUM 800
+
+
 // ~germ defines
 /// Medical equipment should start out as this
 #define GERM_LEVEL_STERILE 0
@@ -219,6 +223,14 @@ DEFINE_BITFIELD(organ_flags, list(
 #define GERM_LEVEL_AMBIENT 250
 /// Maximum germ level any atom can normally achieve
 #define GERM_LEVEL_MAXIMUM 1000
+
+
+/// Germ levels for carbon mob hygiene
+#define GERM_LEVEL_START_MIN 0
+#define GERM_LEVEL_START_MAX 100
+#define GERM_LEVEL_DIRTY 250
+#define GERM_LEVEL_FILTHY 500
+#define GERM_LEVEL_SMASHPLAYER 750
 
 /// Exposure to blood germ level per unit
 #define GERM_PER_UNIT_BLOOD 2

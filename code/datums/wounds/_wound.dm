@@ -53,8 +53,19 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	/// How much pain this wound causes while on a mob
 	var/woundpain = 0
 
+	/// Will apply this amount of damage to attached organs if set
+	var/apply_organ_damage = 0
+	/// How much this reduces an attached organ's efficiency, if it does it at all
+	var/list/organ_efficiency_reduction
+
 	/// How much this reduces the limb's efficiency
 	var/limb_efficiency_reduction = 0
+	/// Using this limb in a do_after interaction will multiply the length by this duration (arms and hands)
+	var/interaction_efficiency_penalty = 1
+	/// Incoming damage on this limb will be multiplied by this, to simulate tenderness and vulnerability
+	var/damage_multiplier_penalty = 1
+	/// If set and this wound is applied to a leg/foot, we take this many deciseconds extra per step on this leg/foot
+	var/limp_slowdown = 0
 
 	/// If TRUE, this wound can be sewn
 	var/can_sew = FALSE
@@ -106,6 +117,9 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	/// Primary use is for wound application
 	var/list/associated_bclasses = list()
 
+	///list of viable zones for this
+	var/list/viable_zones = ALL_BODYPARTS
+
 /datum/wound/Destroy(force)
 	. = ..()
 	if(bodypart_owner)
@@ -132,6 +146,22 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 /// Description of this wound returned to the player when the bodypart is checked with check_for_injuries()
 /datum/wound/proc/get_check_name(mob/user, advanced)
 	return check_name
+
+/datum/wound/proc/apply_organ_modifications()
+	if(!bodypart_owner || !length(organ_efficiency_reduction))
+		return
+
+	for(var/organ_slot as anything in organ_efficiency_reduction)
+		var/obj/item/organ/organ = bodypart_owner.getorganslot(organ_slot)
+		organ?.apply_efficiency_modification(organ_efficiency_reduction[organ_slot], organ_slot, src)
+
+/datum/wound/proc/remove_organ_modifications()
+	if(!bodypart_owner || !length(organ_efficiency_reduction))
+		return
+
+	for(var/organ_slot as anything in organ_efficiency_reduction)
+		var/obj/item/organ/organ = bodypart_owner.getorganslot(organ_slot)
+		organ?.remove_efficiency_modification(organ_slot, src)
 
 /// Crit message that should be appended when this wound is applied in combat
 /datum/wound/proc/get_crit_message(mob/living/affected, obj/item/bodypart/affected_bodypart)
@@ -181,8 +211,11 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 		remove_from_bodypart()
 	else if(owner)
 		remove_from_mob()
+	apply_organ_modifications()
 	LAZYADD(affected.wounds, src)
 	sortTim(affected.wounds, GLOBAL_PROC_REF(cmp_wound_severity_dsc))
+	affected.update_wounds(FALSE)
+	affected.update_limb_efficiency()
 	bodypart_owner = affected
 	owner = bodypart_owner.owner
 	on_bodypart_gain(affected)
@@ -208,6 +241,7 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 /datum/wound/proc/remove_from_bodypart()
 	if(!bodypart_owner)
 		return FALSE
+	remove_organ_modifications()
 	var/obj/item/bodypart/was_bodypart = bodypart_owner
 	var/mob/living/was_owner = owner
 	LAZYREMOVE(bodypart_owner.wounds, src)
@@ -216,6 +250,8 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	owner = null
 	on_bodypart_loss(was_bodypart, was_owner)
 	on_mob_loss(was_owner)
+	was_bodypart.update_wounds(FALSE)
+	was_bodypart.update_limb_efficiency()
 	return TRUE
 
 /// Effects when a wound is lost on a bodypart
@@ -240,6 +276,7 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 		remove_from_bodypart()
 	else if(owner)
 		remove_from_mob()
+
 	LAZYADD(affected.simple_wounds, src)
 	sortTim(affected.simple_wounds, GLOBAL_PROC_REF(cmp_wound_severity_dsc))
 	owner = affected

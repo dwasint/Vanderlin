@@ -14,7 +14,7 @@
 		var/armor_block = user.run_armor_check(BODY_ZONE_PRECISE_L_HAND, used_intent.item_damage_type, armor_penetration = used_intent.penfactor, damage = force)
 		if(user.apply_damage(force, our_item.damtype, affecting, armor_block))
 			visible_message(span_suicide("[src] gores [user]'s hands with \the [our_item]!"))
-			affecting?.bodypart_attacked_by(used_intent.blade_class, force, crit_message = TRUE)
+			affecting?.bodypart_attacked_by(used_intent.blade_class, force, crit_message = TRUE, incoming_germ = our_item.germ_level)
 		else
 			visible_message(span_suicide("[src] clashes into [user]'s hands with \the [our_item]!"))
 

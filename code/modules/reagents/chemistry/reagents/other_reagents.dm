@@ -31,6 +31,9 @@
 
 /datum/reagent/blood/reaction_mob(mob/living/L, method=TOUCH, reac_volume)
 	. = ..()
+	if(method & TOUCH)
+		L.adjust_germ_level(GERM_PER_UNIT_BLOOD * reac_volume * 0.1)
+
 	if(!(. && method & (INJECT|INGEST)))
 		return
 	SEND_SIGNAL(L, COMSIG_HANDLE_INFUSION, data["blood_type"], reac_volume)
@@ -258,6 +261,7 @@
 		if(!istype(turf_check, /turf/open/water))
 			M.adjust_fire_stacks(-(reac_volume / 10))
 			M.SoakMob(FULL_BODY)
+		M.adjust_germ_level(-reac_volume * sanitization * 0.1)
 	return ..()
 
 

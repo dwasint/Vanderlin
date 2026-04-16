@@ -71,7 +71,6 @@
 	var/static/list/affected_organs = list(
 		ORGAN_SLOT_STOMACH = 100,
 		ORGAN_SLOT_LIVER = 50,
-		ORGAN_SLOT_GUTS = 100 // It's called GUTTED for a reason.
 	)
 
 /datum/wound/slash/disembowel/can_stack_with(datum/wound/other)
@@ -104,35 +103,12 @@
 	for(var/obj/item/organ/spilled as anything in spilled_organs)
 		spilled.Remove(owner)
 		spilled.forceMove(drop_location)
+		spilled.scar_organ(30, 60)
 	if(istype(affected, /obj/item/bodypart/chest))
 		var/obj/item/bodypart/chest/cavity = affected
 		for(var/atom/movable/item as anything in cavity.cavity_items)
 			item.forceMove(drop_location)
 			cavity.cavity_items -= item
-
-/datum/wound/slash/incision
-	name = "incision"
-	check_name = "<span class='bloody'><B>INCISION</B></span>"
-	severity = WOUND_SEVERITY_SUPERFICIAL
-	whp = 40
-	sewn_whp = 12
-	bleed_rate = 2
-	sewn_bleed_rate = 0.05
-	clotting_rate = null
-	clotting_threshold = null
-	woundpain = 4
-	sewn_woundpain = 2
-	sew_threshold = 75
-	passive_healing = 0
-	sleep_healing = 0
-
-/datum/wound/slash/incision/sew_wound()
-	qdel(src)
-	return TRUE
-
-/datum/wound/slash/incision/cauterize_wound()
-	qdel(src)
-	return TRUE
 
 /datum/wound/lashing
 	name = "lashing"
