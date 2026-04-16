@@ -171,6 +171,10 @@
 		was_owner.surgeries -= body_zone
 	for(var/obj/item/embedded in embedded_objects)
 		remove_embedded_object(embedded)
+
+	for(var/datum/injury/injury as anything in injuries)
+		injury.remove_from_mob()
+
 	if(bandage)
 		if(drop_location)
 			bandage.forceMove(drop_location)
@@ -374,6 +378,11 @@
 	for(var/datum/wound/wound as anything in wounds)
 		wounds -= wound
 		wound.apply_to_bodypart(src, silent = TRUE, crit_message = FALSE)
+
+	//Add injuries to the owner's injury list
+	for(var/datum/injury/injury as anything in injuries)
+		injury.parent_mob = new_owner
+		LAZYADD(new_owner.all_injuries, injury)
 
 	var/obj/item/bodypart/affecting = C.get_bodypart(BODY_ZONE_CHEST)
 	if(affecting && dismember_wound)
