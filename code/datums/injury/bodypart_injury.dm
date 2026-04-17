@@ -52,6 +52,32 @@
 						return /datum/injury/burn/large
 					if(0 to 15)
 						return /datum/injury/burn/moderate
+			if(WOUND_LASH)
+				switch(damage)
+					if(50 to INFINITY)
+						return /datum/injury/lash/flayed
+					if(40 to 50)
+						return /datum/injury/lash/deep
+					if(30 to 40)
+						return /datum/injury/lash/severe
+					if(15 to 30)
+						return /datum/injury/lash/lash
+					if(0 to 15)
+						return /datum/injury/lash/welt
+			if(WOUND_BITE)
+				switch(damage)
+					if(70 to INFINITY)
+						return /datum/injury/bite/massive
+					if(60 to 70)
+						return /datum/injury/bite/gaping_big
+					if(50 to 60)
+						return /datum/injury/bite/gaping
+					if(25 to 50)
+						return /datum/injury/bite/flesh
+					if(15 to 25)
+						return /datum/injury/bite/deep
+					if(0 to 15)
+						return /datum/injury/bite/small
 	else
 		switch(type)
 			if(WOUND_SLASH)
@@ -104,4 +130,30 @@
 						return /datum/injury/burn/large/mechanical
 					if(0 to 15)
 						return /datum/injury/burn/moderate/mechanical
+			if(WOUND_LASH)
+				switch(damage)
+					if(50 to INFINITY)
+						return /datum/injury/lash/flayed/mechanical
+					if(40 to 50)
+						return /datum/injury/lash/deep/mechanical
+					if(30 to 40)
+						return /datum/injury/lash/severe/mechanical
+					if(15 to 30)
+						return /datum/injury/lash/lash/mechanical
+					if(0 to 15)
+						return /datum/injury/lash/welt/mechanical
+			if(WOUND_BITE)
+				switch(damage)
+					if(70 to INFINITY)
+						return /datum/injury/bite/massive/mechanical
+					if(60 to 70)
+						return /datum/injury/bite/gaping_big/mechanical
+					if(50 to 60)
+						return /datum/injury/bite/gaping/mechanical
+					if(25 to 50)
+						return /datum/injury/bite/flesh/mechanical
+					if(15 to 25)
+						return /datum/injury/bite/deep/mechanical
+					if(0 to 15)
+						return /datum/injury/bite/small/mechanical
 	return //no injury

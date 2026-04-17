@@ -333,6 +333,8 @@ DEFINE_BITFIELD(organ_flags, list(
 #define WOUND_BURN 9
 ///any wounds from bites
 #define WOUND_BITE 10
+///any wounds from lashes
+#define WOUND_LASH 11
 
 // ~injury flags
 /// This injury creates sounds hints when applied

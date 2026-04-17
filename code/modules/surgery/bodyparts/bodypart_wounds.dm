@@ -185,7 +185,7 @@
 		if(BCLASS_BURN)
 			wounding_type = WOUND_BURN
 		if(BCLASS_LASHING)
-			wounding_type = WOUND_SLASH
+			wounding_type = WOUND_LASH
 
 	if(wounding_type == WOUND_NONE)
 		return

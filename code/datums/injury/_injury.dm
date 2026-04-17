@@ -219,7 +219,8 @@
 			return DT_PROB(damage, delta_time)
 		if(WOUND_PIERCE)
 			return DT_PROB(damage*1.25, delta_time)
-
+		if(WOUND_LASH)
+			return DT_PROB(damage * 1.15, delta_time)
 	return FALSE
 
 //bleeding from being dragged against the ground
