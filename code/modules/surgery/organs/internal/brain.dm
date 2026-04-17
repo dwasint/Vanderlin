@@ -344,6 +344,28 @@
 		else
 			return brain_message
 
+/obj/item/organ/brain/can_heal(delta_time, times_fired)
+	. = TRUE
+	if(!owner)
+		return FALSE
+	if(healing_factor <= 0)
+		return FALSE
+	if(is_dead())
+		return FALSE
+	if(current_blood <= 0)
+		return FALSE
+	if(owner.undergoing_cardiac_arrest())
+		return FALSE
+	var/effective_blood_oxygenation = GET_EFFECTIVE_BLOOD_VOL(owner.get_blood_oxygenation(), owner.total_blood_req)
+	if(effective_blood_oxygenation < BLOOD_VOLUME_SAFE)
+		return FALSE
+	// if stable and not too damaged we can heal
+	if(!past_damage_threshold(3) && owner.get_chem_effect(CE_STABLE))
+		return TRUE
+	// else, we only naturally regen to basically get rounded
+	if(!(damage % damage_threshold_value) || owner.get_chem_effect(CE_BRAIN_REGEN))
+		return FALSE
+
 /obj/item/organ/brain/applyOrganDamage(amount, maximum = maxHealth, silent = FALSE)
 	if(!amount) //Micro-optimization.
 		return
