@@ -48,8 +48,11 @@
 /obj/item/needle/use(used)
 	if(infinite)
 		return TRUE
+	if(used > stringamt)
+		return FALSE
 	stringamt = stringamt - used
 	update_appearance(UPDATE_OVERLAYS)
+	return TRUE
 //	if(stringamt <= 0)
 //		qdel(src)
 
@@ -228,6 +231,36 @@
 					artery.applyOrganDamage(-min(artery.maxHealth/2, 50))
 					return TRUE
 			return TRUE
+
+	for(var/thing in affecting.injuries)
+		var/datum/injury/injury = thing
+		if(!(injury.damage_type in list(WOUND_SLASH, WOUND_PIERCE)) || (injury.damage_per_injury() <= injury.autoheal_cutoff))
+			continue
+		var/time = (user == target ? 2 SECONDS : 4 SECONDS ) * injury.damage
+		time *= (ATTRIBUTE_MIDDLING/max(GET_MOB_ATTRIBUTE_VALUE(user, STAT_PERCEPTION), 1))
+		playsound(target, 'sound/foley/sewflesh.ogg', 65, FALSE)
+		if(!do_after(user, time, target))
+			to_chat(user, span_warning("I must stand still!"))
+			return
+		if(!use(1))
+			to_chat(user, span_warning("All used up..."))
+			return
+		//pretty easy
+		if(user.diceroll(GET_MOB_SKILL_VALUE(user, /datum/attribute/skill/misc/medicine)+3, context = DICE_CONTEXT_PHYSICAL) <= DICE_FAILURE)
+			//to_chat(user, span_warning(fail_msg()))
+			return
+		injury.heal_damage(10)
+		affecting.update_damages()
+		if(affecting.update_bodypart_damage_state())
+			target.update_damage_overlays()
+		if(injury.damage_per_injury() > injury.autoheal_cutoff)
+			user.visible_message(span_green("<b>[user]</b> partially stitches \a [injury.get_desc()] on <b>[target]</b>'s [affecting.name] with \the [src]."), \
+								span_green("I partially stitch \a [injury.get_desc()] on \the [affecting.name] with \the [src]."))
+		else
+			user.visible_message(span_green("<b>[user]</b> stitches \a [injury.get_desc()] shut on <b>[target]</b>'s [affecting.name] with \the [src]."), \
+								span_green("I stitch \a [injury.get_desc()] shut on \the [affecting.name] with \the [src]."))
+		injury.suture_injury()
+
 	var/list/sewable = affecting.get_sewable_wounds()
 	if(!length(sewable))
 		to_chat(doctor, span_warning("There aren't any wounds to be sewn."))
