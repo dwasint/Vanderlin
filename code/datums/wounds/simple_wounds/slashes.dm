@@ -78,6 +78,26 @@
 		return FALSE
 	return TRUE
 
+/datum/wound/slash/disembowel/can_apply_to_bodypart(obj/item/bodypart/new_limb)
+	. = ..()
+	if(!.)
+		return FALSE
+	var/gaping_wound = FALSE
+	for(var/datum/wound/other_wound as anything in new_limb.wounds)
+		if(other_wound.bleed_rate && (other_wound.whp >= 30))
+			gaping_wound = TRUE
+			break
+	var/gaping_injury = FALSE
+	for(var/datum/injury/injury as anything in new_limb.injuries)
+		if(injury.damage_type != WOUND_SLASH)
+			continue
+		if(injury.damage && (injury.damage >= 50))
+			gaping_wound = TRUE
+			break
+	if(!gaping_wound && !gaping_injury)
+		return FALSE
+	return TRUE
+
 /datum/wound/slash/disembowel/on_mob_gain(mob/living/affected)
 	. = ..()
 	affected.emote("paincrit", TRUE)
