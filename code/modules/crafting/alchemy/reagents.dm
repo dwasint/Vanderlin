@@ -42,7 +42,7 @@
 
 /datum/reagent/consumable/stronghealth/on_mob_metabolize(mob/living/L)
 	. = ..()
-	L.add_chem_effect(CE_BLOODRESTORE, 15, "[type]")
+	L.add_chem_effect(CE_BLOODRESTORE, 30, "[type]")
 	L.add_chem_effect(CE_STABLE, 1, "[type]")
 	L.add_chem_effect(CE_BRAIN_REGEN, 1, "[type]")
 
