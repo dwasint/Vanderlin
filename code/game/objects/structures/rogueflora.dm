@@ -155,7 +155,7 @@
 	var/atom/throw_target = get_edge_target_turf(attacked_tree, get_dir(attacked_tree, target))
 	target.throw_at(throw_target, 4, 2)
 	target.Knockdown(2 SECONDS)
-	target.adjustBruteLoss(8)
+	target.adjustBruteLoss(8, damage_type = BCLASS_LASHING)
 
 /obj/structure/flora/tree/wise/attackby(obj/item/I, mob/user, list/modifiers)
 	. = ..()

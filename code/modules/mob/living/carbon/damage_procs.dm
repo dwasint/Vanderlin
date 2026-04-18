@@ -29,7 +29,7 @@
 	return total_modifier
 
 
-/mob/living/carbon/apply_damage(damage, damagetype = BRUTE, def_zone = null, blocked = FALSE, forced = FALSE, spread_damage = FALSE)
+/mob/living/carbon/apply_damage(damage, damagetype = BRUTE, def_zone = null, blocked = FALSE, forced = FALSE, spread_damage = FALSE, damage_type, skip_dtype)
 	SEND_SIGNAL(src, COMSIG_MOB_APPLY_DAMGE, damage, damagetype, def_zone)
 	var/hit_percent = 1
 	damage = max(damage-blocked,0)
@@ -92,18 +92,18 @@
 		amount += BP.burn_dam
 	return amount
 
-/mob/living/carbon/setBruteLoss(amount, updating_health = TRUE, forced = FALSE, required_bodytype)
+/mob/living/carbon/setBruteLoss(amount, updating_health = TRUE, forced = FALSE, required_bodytype, damage_type)
 	var/current = getBruteLoss()
 	var/diff = amount - current
 	if(!diff)
 		return
-	adjustBruteLoss(diff, updating_health, forced, required_bodytype)
+	adjustBruteLoss(diff, updating_health, forced, required_bodytype, damage_type)
 
-/mob/living/carbon/adjustBruteLoss(amount, updating_health = TRUE, forced = FALSE, required_status)
+/mob/living/carbon/adjustBruteLoss(amount, updating_health = TRUE, forced = FALSE, required_status, damage_type)
 	if(!forced && (status_flags & GODMODE))
 		return FALSE
 	if(amount > 0)
-		take_overall_damage(amount, 0, updating_health, required_status)
+		take_overall_damage(amount, 0, updating_health, required_status, damage_type = damage_type)
 	else
 		heal_overall_damage(abs(amount), 0, required_status ? required_status : BODYPART_ORGANIC, updating_health)
 	return amount
@@ -401,7 +401,7 @@
 		update_damage_overlays()
 
 // damage MANY bodyparts, in random order
-/mob/living/carbon/take_overall_damage(brute = 0, burn = 0, updating_health = TRUE, required_status = BODYPART_ORGANIC)
+/mob/living/carbon/take_overall_damage(brute = 0, burn = 0, updating_health = TRUE, required_status = BODYPART_ORGANIC, damage_type)
 	. = FALSE
 	if(status_flags & GODMODE)
 		return	//godmode
@@ -421,7 +421,13 @@
 		var/burn_was = picked.burn_dam
 		. += picked.get_damage()
 
-		update |= picked.receive_damage(brute_per_part, burn_per_part, blocked = FALSE, updating_health = FALSE, required_status = BODYPART_ORGANIC)
+		if(damage_type || burn)
+			if(burn)
+				damage_type = BCLASS_BURN
+			update = TRUE
+			picked.bodypart_attacked_by(damage_type, brute + burn, null)
+		else
+			update |= picked.receive_damage(brute_per_part, burn_per_part, blocked = FALSE, updating_health = FALSE, required_status = BODYPART_ORGANIC)
 
 		. -= picked.get_damage() // return the net amount of damage healed
 

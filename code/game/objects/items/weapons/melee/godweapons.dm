@@ -86,7 +86,8 @@
 			heart.forceMove(H.drop_location())
 
 			H.add_splatter_floor()
-			H.adjustBruteLoss(20)
+			var/obj/item/bodypart/chest = H.get_bodypart(BODY_ZONE_CHEST)
+			chest.bodypart_attacked_by(BCLASS_PIERCE, 50, incoming_germ = germ_level)
 			to_chat(user, span_notice("I finish pulling the heart from [H]!"))
 	. = ..()
 
@@ -169,7 +170,8 @@
 		record_round_statistic(STATS_LUX_HARVESTED)
 
 		H.add_splatter_floor()
-		H.adjustBruteLoss(20)
+		var/obj/item/bodypart/chest = H.get_bodypart(BODY_ZONE_CHEST)
+		chest.bodypart_attacked_by(BCLASS_PIERCE, 50, incoming_germ = germ_level)
 		visible_message(user, span_notice("Neant's blade draws the lux from [target]!"))
 
 /obj/item/weapon/polearm/neant/proc/handle_magick(mob/living/user, atom/target)

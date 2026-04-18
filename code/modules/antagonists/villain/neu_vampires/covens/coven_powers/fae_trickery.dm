@@ -110,7 +110,8 @@
 /obj/item/clothing/face/goblin_mask/attack_hand(mob/user)
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
-		C.adjustBruteLoss(5)
+		var/obj/item/bodypart/head = C.get_bodypart(BODY_ZONE_HEAD)
+		head.bodypart_attacked_by(BCLASS_BITE, 5, incoming_germ = 500)
 		to_chat(user, span_warning("[src] bites!"))
 		return
 	if((stat == CONSCIOUS))

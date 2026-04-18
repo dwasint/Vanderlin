@@ -877,18 +877,29 @@
 	if(required_status && (status != required_status)) //So we can only heal certain kinds of limbs, ie robotic vs organic.
 		return
 
+
+	for(var/thing in injuries)
+		if((brute <= 0) && (burn <= 0))
+			break
+		var/datum/injury/injury = thing
+		if(injury.damage_type in list(WOUND_SLASH, WOUND_PIERCE, WOUND_BLUNT))
+			brute = injury.heal_damage(brute)
+		else
+			burn = injury.heal_damage(burn)
+
 	if(brute)
 		set_brute_dam(round(max(brute_dam - brute, 0), DAMAGE_PRECISION))
 	if(burn)
 		set_burn_dam(round(max(burn_dam - burn, 0), DAMAGE_PRECISION))
 
+	update_damages()
+
 	if(owner)
+		update_limb_efficiency()
 		if(can_be_disabled)
 			update_disabled()
 		if(updating_health)
 			owner.updatehealth()
-	//cremation_progress = min(0, cremation_progress - ((brute_dam + burn_dam)*(100/max_damage)))
-	update_damages()
 	consider_processing()
 	return update_bodypart_damage_state()
 

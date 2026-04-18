@@ -145,7 +145,7 @@
 		return
 	// Sigmoid maps tiers to ~0.001-0.971, so range is ~0.5 to ~0.986 (was 0.5 to 1.0)
 	var/encumberance_multiplier = 0.5 + (ENCUMBRANCE_TO_SIGMOID(encumbrance) * 0.5)
-	adjustBruteLoss(((levels * 10) * encumberance_multiplier) ** 1.5)
+	adjustBruteLoss(((levels * 10) * encumberance_multiplier) ** 1.5, damage_type = BCLASS_BLUNT)
 	AdjustStun(levels * 2 SECONDS * encumberance_multiplier)
 	AdjustKnockdown(levels * 2 SECONDS * encumberance_multiplier)
 

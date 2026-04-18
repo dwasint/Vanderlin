@@ -1446,7 +1446,7 @@ GLOBAL_LIST_EMPTY(roundstart_species)
 		target.next_attack_msg.Cut()
 
 		var/nodmg = FALSE
-		var/actual_damage = target.apply_damage(damage, user.dna.species.attack_type, affecting, armor_block)
+		var/actual_damage = target.apply_damage(damage, user.dna.species.attack_type, affecting, armor_block, skip_dtype = TRUE)
 		if(!actual_damage)
 			nodmg = TRUE
 			target.next_attack_msg += " <span class='warning'>Armor stops the damage.</span>"
@@ -1871,7 +1871,7 @@ GLOBAL_LIST_EMPTY(roundstart_species)
 
 	var/armor_block = H.run_armor_check(selzone, I.damage_type, "", "", pen, damage = item_force, blade_dulling = user.used_intent.blade_class)
 	var/weakness = H.check_weakness(I, user)
-	var/actual_damage = apply_damage(item_force * weakness, I.damtype, def_zone, armor_block, H)
+	var/actual_damage = apply_damage(item_force * weakness, I.damtype, def_zone, armor_block, H, skip_dtype = TRUE)
 	SEND_SIGNAL(I, COMSIG_ITEM_SPEC_ATTACKEDBY, H, user, affecting, actual_damage)
 
 	if(!actual_damage)
@@ -1961,7 +1961,7 @@ GLOBAL_LIST_EMPTY(roundstart_species)
 
 	return TRUE
 
-/datum/species/proc/apply_damage(damage, damagetype = BRUTE, def_zone = null, blocked, mob/living/carbon/human/H, forced = FALSE, spread_damage = FALSE, flashes = TRUE)
+/datum/species/proc/apply_damage(damage, damagetype = BRUTE, def_zone = null, blocked, mob/living/carbon/human/H, forced = FALSE, spread_damage = FALSE, flashes = TRUE, damage_type, skip_dtype)
 	SEND_SIGNAL(H, COMSIG_MOB_APPLY_DAMGE, damage, damagetype, def_zone)
 	var/hit_percent = 1
 	damage = max(damage - (blocked),0)
@@ -2008,8 +2008,12 @@ GLOBAL_LIST_EMPTY(roundstart_species)
 					else if(damage_amount >= 20)
 						H.flash_fullscreen("redflash3")
 			if(BP)
-				if(BP.receive_damage(damage_amount, 0))
+				if(damage_type)
+					BP.bodypart_attacked_by(damage_type, damage_amount)
 					H.update_damage_overlays()
+				else
+					if(BP.receive_damage(damage_amount, 0))
+						H.update_damage_overlays()
 			else//no bodypart, we deal damage with a more general method.
 				H.adjustBruteLoss(damage_amount)
 
@@ -2026,7 +2030,11 @@ GLOBAL_LIST_EMPTY(roundstart_species)
 				else if(damage_amount >= 20)
 					H.flash_fullscreen("redflash3")
 			if(BP)
-				if(BP.receive_damage(0, damage_amount, flashes = flashes))
+				if(skip_dtype)
+					if(BP.receive_damage(0, damage_amount, flashes = flashes))
+						H.update_damage_overlays()
+				else
+					BP.bodypart_attacked_by(BCLASS_BURN, damage_amount)
 					H.update_damage_overlays()
 			else
 				H.adjustFireLoss(damage_amount)
