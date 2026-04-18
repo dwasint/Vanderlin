@@ -132,8 +132,8 @@
 	var/mob/living/living_target = target
 	living_target.visible_message(span_danger("[source] charges into [living_target]!"), span_userdanger("[source] charges into you!"))
 	living_target.Knockdown(0.6 SECONDS)
-	living_target.apply_damage(damage_dealt, BRUTE)
-	playsound(living_target, 'sound/misc/meteorimpact.ogg', 100, TRUE, damage_type = BCLASS_BLUNT)
+	living_target.apply_damage(damage_dealt, BRUTE, damage_type = BCLASS_BLUNT)
+	playsound(living_target, 'sound/misc/meteorimpact.ogg', 100, TRUE)
 	shake_camera(living_target, 4, 3)
 
 /datum/action/cooldown/meatvine/personal/triple_charge/evaluate_ai_score(datum/ai_controller/controller)
