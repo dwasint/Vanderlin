@@ -358,7 +358,7 @@
 	for(var/obj/item/item in embedded_objects)
 		if((item.w_class < WEIGHT_CLASS_SMALL))
 			bad_embeddies += 1
-	return max(0.1, (bleed_rate * damage)/40 + bad_embeddies)
+	return max(0.1, (bleed_rate * damage)/20 + bad_embeddies)
 
 /datum/injury/proc/is_surgical()
 	if(CHECK_BITFIELD(injury_flags, INJURY_SURGICAL))

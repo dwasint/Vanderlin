@@ -2,7 +2,6 @@
 	damage_type = WOUND_LASH
 	autoheal_cutoff = 10
 	infection_rate = 1.15
-	bleed_rate = 1
 	bleed_threshold = 20
 
 /datum/injury/lash/welt
