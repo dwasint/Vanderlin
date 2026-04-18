@@ -12,10 +12,12 @@
 /datum/reagent/consumable/healthpot/on_mob_metabolize(mob/living/L)
 	. = ..()
 	L.add_chem_effect(CE_BLOODRESTORE, 5, "[type]")
+	L.add_chem_effect(CE_STABLE, 1, "[type]")
 
 /datum/reagent/consumable/healthpot/on_mob_end_metabolize(mob/living/L)
 	. = ..()
 	L.remove_chem_effect(CE_BLOODRESTORE, "[type]")
+	L.remove_chem_effect(CE_STABLE, "[type]")
 
 /datum/reagent/medicine/healthpot/on_mob_life(mob/living/carbon/M, efficiency)
 	if(volume >= 60)
@@ -41,10 +43,14 @@
 /datum/reagent/consumable/stronghealth/on_mob_metabolize(mob/living/L)
 	. = ..()
 	L.add_chem_effect(CE_BLOODRESTORE, 15, "[type]")
+	L.add_chem_effect(CE_STABLE, 1, "[type]")
+	L.add_chem_effect(CE_BRAIN_REGEN, 1, "[type]")
 
 /datum/reagent/consumable/stronghealth/on_mob_end_metabolize(mob/living/L)
 	. = ..()
 	L.remove_chem_effect(CE_BLOODRESTORE, "[type]")
+	L.remove_chem_effect(CE_STABLE, "[type]")
+	L.remove_chem_effect(CE_BRAIN_REGEN, "[type]")
 
 /datum/reagent/medicine/stronghealth/on_mob_life(mob/living/carbon/M, efficiency)
 	if(volume >= 60)
