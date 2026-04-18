@@ -202,7 +202,7 @@
 	if(!istype(injury))
 		stack_trace("spec_attacked_by failed to create injury with [dam] damage and [wounding_type] wounding type!")
 
-	if(incoming_germ)
+	if(incoming_germ && injury)
 		injury.adjust_germ_level(incoming_germ * 0.1)
 	update_damages()
 
