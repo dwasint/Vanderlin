@@ -46,6 +46,10 @@
 	var/burn_dam = 0
 	var/max_damage = 0
 
+	///storage for our last injury damages
+	var/injury_burn = 0
+	var/injury_brute = 0
+
 	/// Our current stored wound damage multiplier
 	var/damage_multiplier = 1
 
@@ -502,16 +506,20 @@
 /// Updates brute_damn and burn_damn from injuries
 /obj/item/bodypart/proc/update_damages()
 	number_injuries = 0
-	brute_dam = 0
-	burn_dam = 0
+	brute_dam -= injury_brute
+	burn_dam -= injury_burn
+	injury_brute = 0
+	injury_burn = 0
 	for(var/datum/injury/injury as anything in injuries)
 		if(injury.damage <= 0)
 			continue
 
 		if(injury.damage_type == WOUND_BURN)
 			burn_dam += injury.damage
+			injury_burn += injury.damage
 		else
 			brute_dam += injury.damage
+			injury_brute += injury.damage
 
 		number_injuries += injury.amount
 
