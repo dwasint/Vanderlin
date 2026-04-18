@@ -561,7 +561,7 @@
 		if(status == ORGAN_ROBOTIC)
 			. += span_warning("[src] seems to be broken.")
 			return
-		. += span_warning("[src] has decayed for too long, and has turned a sickly color. Only Pestra herself could restore its functionality.")
+		. += span_warning("[src] has decayed for too long, and has turned a sickly color. Only a skilled physican could restore this.")
 		return
 
 	if(damage >= high_threshold)
