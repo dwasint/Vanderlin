@@ -155,6 +155,8 @@
 		return FALSE
 	if(CHECK_BITFIELD(injury_flags, INJURY_RETRACTED))
 		return FALSE
+	if(germ_level > INFECTION_LEVEL_ONE)
+		return FALSE
 	return ((damage_per_injury() <= autoheal_cutoff) ? TRUE : (is_treated() || parent_bodypart?.limb_flags & BODYPART_GOOD_HEALER))
 
 // checks whether the injury has been appropriately treated
@@ -198,7 +200,7 @@
 // checks if injury is considered open for external infections
 // untreated cuts (and bleeding bruises) and burns are possibly infectable, chance higher if injury is bigger
 /datum/injury/proc/infection_check(delta_time = 2, times_fired)
-	if(damage < 10)	//small cuts, tiny bruises, and moderate burns shouldn't be infectable.
+	if((damage < 10) && germ_level < INFECTION_LEVEL_ONE)	//small cuts, tiny bruises, and moderate burns shouldn't be infectable.
 		return FALSE
 	if(is_treated() && damage < 25)	//anything less than a flesh injury (or equivalent) isn't infectable if treated properly
 		return FALSE
