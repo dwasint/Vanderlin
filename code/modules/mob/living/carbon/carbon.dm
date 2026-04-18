@@ -27,31 +27,31 @@
 	if(prob(66))
 		affecting = get_bodypart("[pick("r","l")]_leg")
 		to_chat(src, "<span class='warning'>I land on my leg!</span>")
-		if(affecting && apply_damage((levels * 10), BRUTE, affecting))		// 100 brute damage
+		if(affecting && apply_damage((levels * 10), BRUTE, affecting, damage_type = BCLASS_BLUNT))		// 100 brute damage
 			update_damage_overlays()
 	else
 		switch(rand(1,3))
 			if(1)
 				affecting = get_bodypart("[pick("r","l")]_arm")
 				to_chat(src, "<span class='warning'>I land on my arm!</span>")
-				if(affecting && apply_damage((levels * 10), BRUTE, affecting))		// 100 brute damage
+				if(affecting && apply_damage((levels * 10), BRUTE, affecting, damage_type = BCLASS_BLUNT))		// 100 brute damage
 					update_damage_overlays()
 			if(2)
 				affecting = get_bodypart("chest")
 				to_chat(src, "<span class='warning'>I land on my chest!</span>")
 				adjustOxyLoss(50)
 				emote("breathgasp")
-				if(affecting && apply_damage((levels * 10), BRUTE, affecting))		// 100 brute damage
+				if(affecting && apply_damage((levels * 10), BRUTE, affecting, damage_type = BCLASS_BLUNT))		// 100 brute damage
 					update_damage_overlays()
 			if(3)
 				affecting = get_bodypart("head")
 				to_chat(src, "<span class='warning'>I land on my head!</span>")
 				if(levels > 2)
 					AdjustUnconscious(levels * 100)
-					if(affecting && apply_damage((levels * 10), BRUTE, affecting))		// 100 brute damage
+					if(affecting && apply_damage((levels * 10), BRUTE, affecting, damage_type = BCLASS_BLUNT))		// 100 brute damage
 						update_damage_overlays()
 				else
-					if(affecting && apply_damage((levels * 10), BRUTE, affecting))		// 100 brute damage
+					if(affecting && apply_damage((levels * 10), BRUTE, affecting, damage_type = BCLASS_BLUNT))		// 100 brute damage
 						update_damage_overlays()
 
 	AdjustStun(levels * 20)

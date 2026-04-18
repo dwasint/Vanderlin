@@ -238,7 +238,7 @@
 	if(iscarbon(loc))
 		var/mob/living/carbon/C = loc
 		to_chat(C, span_warning("[src] is eating your face!"))
-		C.apply_damage(5, BRUTE)
+		C.apply_damage(5, BRUTE, BODY_ZONE_HEAD, damage_type = BCLASS_BITE)
 
 /datum/action/fae_trickery
 	name = "Mytherceria Traps"
@@ -286,7 +286,7 @@
 			if(!unique)
 				var/mob/living/L = AM
 				var/atom/throw_target = get_edge_target_turf(AM, get_dir(src, AM))
-				L.apply_damage(30, BRUTE)
+				L.apply_damage(30, BRUTE, damage_type = BCLASS_BLUNT)
 				AM.throw_at(throw_target, rand(8,10), 14, owner)
 				qdel(src)
 

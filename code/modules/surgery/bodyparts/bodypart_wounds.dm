@@ -150,7 +150,7 @@
 			bleed_rate += 5
 	return bleed_rate
 
-/// Called after a bodypart is attacked so that wounds and critical effects can be applied
+/// Called in two cases, as an override to an attack after IE apply_damage on a zone. Or After an attack to return a wound.
 /obj/item/bodypart/proc/bodypart_attacked_by(bclass, dam, mob/living/user, zone_precise, silent = FALSE, crit_message = FALSE, list/modifiers = list(), incoming_germ, organ_bonus)
 	if(!bclass || !dam || !owner || (owner.status_flags & GODMODE))
 		return

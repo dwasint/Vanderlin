@@ -47,7 +47,7 @@
 			return
 
 		var/damage = rand(min_damage, max_damage)
-		H.apply_damage(damage, BRUTE, picked_def_zone)
+		H.apply_damage(damage, BRUTE, picked_def_zone, damage_type = BCLASS_PIERCE)
 
 		if(cooldown < world.time - 10) //cooldown to avoid message spam.
 			if(!H.incapacitated(IGNORE_RESTRAINTS|IGNORE_GRAB))
