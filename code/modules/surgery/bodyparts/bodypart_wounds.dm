@@ -204,6 +204,13 @@
 
 	if(incoming_germ && injury)
 		injury.adjust_germ_level(incoming_germ * 0.1)
+
+	if(injury) //this is kinda scuffed but it lets us keep non injury damages
+		if(injury.damage_type == WOUND_BURN)
+			burn_dam -= injury.damage
+		else
+			brute_dam -= injury.damage
+
 	update_damages()
 
 	/*
