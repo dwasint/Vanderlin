@@ -755,9 +755,10 @@
 		damage = damage*2
 	user.do_attack_animation(C, ATTACK_EFFECT_BITE, used_item = FALSE)
 	C.next_attack_msg.Cut()
-	if(C.apply_damage(damage, BRUTE, limb_grabbed, armor_block))
+	var/real_damage = C.apply_damage(damage, BRUTE, limb_grabbed, armor_block)
+	if(real_damage)
 		playsound(C, "smallslash", 100, FALSE, -1)
-		var/datum/wound/caused_wound = limb_grabbed.bodypart_attacked_by(BCLASS_BITE, damage, user, sublimb_grabbed, crit_message = TRUE, pre_applied = TRUE)
+		var/datum/wound/caused_wound = limb_grabbed.bodypart_attacked_by(BCLASS_BITE, real_damage, user, sublimb_grabbed, crit_message = TRUE, pre_applied = TRUE, organ_bonus = CANT_ORGAN)
 		if(user.mind)
 			//TODO: Werewolf Signal
 			var/datum/antagonist/werewolf/werewolf_antag = user.mind.has_antag_datum(/datum/antagonist/werewolf)
