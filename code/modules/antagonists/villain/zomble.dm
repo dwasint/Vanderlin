@@ -165,6 +165,7 @@
 			to_chat(zombie, span_green("I no longer crave flesh..."))
 	for(var/obj/item/bodypart/zombie_part as anything in zombie.bodyparts)
 		zombie_part.revive_limb()
+		zombie_part.germ_level = 0
 		if(zombie_part.can_be_disabled)
 			zombie_part.update_disabled()
 		zombie_part.update_limb()

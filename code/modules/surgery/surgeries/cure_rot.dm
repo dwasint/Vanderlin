@@ -55,6 +55,7 @@
 		var/mob/living/carbon/stinky = target
 		for(var/obj/item/bodypart/rotty in stinky.bodyparts)
 			rotty.revive_limb()
+			rotty.germ_level = 0
 			rotty.update_limb()
 			if(rotty.can_be_disabled)
 				rotty.update_disabled()

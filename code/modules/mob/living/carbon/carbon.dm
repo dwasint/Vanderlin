@@ -1048,6 +1048,7 @@
 		if(heal_flags & HEAL_ADMIN) //reset rot on admin revives
 			for(var/obj/item/bodypart/bodypart as anything in bodyparts)
 				bodypart.revive_limb()
+				bodypart.germ_level = 0
 				bodypart.skeletonized = FALSE
 
 	if(heal_flags & (HEAL_REFRESH_ORGANS|HEAL_ORGANS))

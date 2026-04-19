@@ -10,8 +10,6 @@
 	var/p_are = p_are()
 
 	switch(germ_level)
-		if(0 to GERM_LEVEL_DIRTY)
-			. += "[p_They] [p_are] is clean."
 		if(GERM_LEVEL_DIRTY to GERM_LEVEL_FILTHY)
 			. += "[p_They] [p_are] a bit dirty."
 		if(GERM_LEVEL_FILTHY to GERM_LEVEL_SMASHPLAYER)
