@@ -180,7 +180,7 @@
 		endorphinate()
 
 	if((shock_stage >= SHOCK_STAGE_2) && (previous_shock_stage >= SHOCK_STAGE_2))
-		if(DT_PROB(18, delta_time))
+		if(DT_PROB(3, delta_time))
 			//adjust_eye_blur(rand(1, 2))
 			stuttering = max(stuttering, 5)
 
