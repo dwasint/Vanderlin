@@ -189,38 +189,38 @@
 
 	if((shock_stage >= SHOCK_STAGE_4) && (previous_shock_stage < SHOCK_STAGE_4))
 		emote("becomes limp.")
-		Immobilize(rand(2, 5) SECONDS)
+		Immobilize(rand(2, 3) SECONDS)
 		//Attempt to inject combat cocktail a second time
 		endorphinate()
 
 	if((shock_stage >= SHOCK_STAGE_4) && (previous_shock_stage >= SHOCK_STAGE_4))
 		if(DT_PROB(1, delta_time))
 			custom_pain("[pick("The pain is excruciating", "Please, just end the pain", "My whole body is going numb")]!", shock_stage, nopainloss = TRUE)
-			Knockdown(10 SECONDS)
+			Knockdown(2 SECONDS)
 		if(DT_PROB(2, delta_time))
 			emote("gasp")
 
 	if((shock_stage >= SHOCK_STAGE_5) && (previous_shock_stage >= SHOCK_STAGE_5))
 		if(DT_PROB(2.5, delta_time))
 			custom_pain("[pick("The pain is excruciating", "Please, just end the pain", "My whole body is going numb")]!", shock_stage, nopainloss = TRUE)
-			Paralyze(20 SECONDS)
+			Paralyze(5 SECONDS)
 
 	if((shock_stage >= SHOCK_STAGE_6) && (previous_shock_stage >= SHOCK_STAGE_6))
 		if(DT_PROB(1, delta_time))
 			if(!IsUnconscious())
 				custom_pain("[pick("I black out", "I feel like i could die at any moment now", "I'm about to lose consciousness")]!", shock_stage, nopainloss = TRUE)
-			Unconscious(5 SECONDS)
+			Unconscious(1 SECONDS)
 
 	if((shock_stage >= SHOCK_STAGE_7) && (previous_shock_stage < SHOCK_STAGE_7))
 		if(body_position != LYING_DOWN)
 			emote("can no longer stand, collapsing!")
 		emote("gargle")
-		Paralyze(20 SECONDS)
+		Paralyze(5 SECONDS)
 		//Attempt to inject combat cocktail, even though at this point it won't help much
 		endorphinate()
 
 	if((shock_stage >= SHOCK_STAGE_7) && (previous_shock_stage >= SHOCK_STAGE_7))
-		Paralyze(20 SECONDS)
+		Paralyze(5 SECONDS)
 		if(DT_PROB(1, delta_time))
 			Unconscious(5)
 		if(DT_PROB(4, delta_time))
@@ -239,4 +239,4 @@
 			visible_message(PAIN_KNOCKOUT_MESSAGE)
 			custom_pain(PAIN_KNOCKOUT_MESSAGE_SELF, 100, nopainloss = TRUE)
 			//death_rattle()
-		Unconscious(10 SECONDS)
+		Unconscious(15 SECONDS)
