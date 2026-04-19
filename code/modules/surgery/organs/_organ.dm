@@ -631,8 +631,8 @@
 	damage = CLAMP(damage + d, 0, maximum)
 	var/mess = check_damage_thresholds(owner)
 	prev_damage = damage
-//	if(mess && owner)
-//		to_chat(owner, mess)
+	if(mess && owner)
+		to_chat(owner, mess)
 
 ///SETS an organ's damage to the amount "d", and in doing so clears or sets the failing flag, good for when you have an effect that should fix an organ if broken
 /obj/item/organ/proc/setOrganDamage(d)	//use mostly for admin heals
