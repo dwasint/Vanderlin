@@ -214,6 +214,14 @@
 	scent_description = "saiga droppings"
 	metabolization_rate = REAGENTS_METABOLISM * 3
 
+/datum/reagent/medicine/diseasecure/on_mob_metabolize(mob/living/L)
+	. = ..()
+	L.add_chem_effect(CE_ANTIBIOTIC, 40, "[type]")
+
+/datum/reagent/medicine/diseasecure/on_mob_end_metabolize(mob/living/L)
+	. = ..()
+	L.remove_chem_effect(CE_ANTIBIOTIC, "[type]")
+
 /datum/reagent/medicine/diseasecure/on_mob_life(mob/living/carbon/M, efficiency)
 	if(volume > 0.99)
 		M.adjustToxLoss(-16 * efficiency, 0)
