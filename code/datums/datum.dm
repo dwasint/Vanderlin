@@ -396,24 +396,20 @@
 			atom_cast.filters = filter_cache
 		return
 
-/** Update a filter's parameter and animate this change. If the filter doesn't exist we won't do anything.
- * Basically a [datum/proc/modify_filter] call but with animations. Unmodified filter parameters are kept.
- *
- * Arguments:
- * * name - Filter name
- * * new_params - New parameters of the filter
- * * time - time arg of the BYOND animate() proc.
- * * easing - easing arg of the BYOND animate() proc.
- * * loop - loop arg of the BYOND animate() proc.
- */
-/datum/proc/transition_filter(name, list/new_params, time, easing, loop)
+/atom/proc/transition_filter(name, time, list/new_params, easing, loop)
 	var/filter = get_filter(name)
-	if (!filter)
+	if(!filter)
 		return
-	// This can get injected by the filter procs, we want to support them so bye byeeeee
-	new_params -= "type"
+
+	var/list/old_filter_data = filter_data[name]
+
+	var/list/params = old_filter_data.Copy()
+	for(var/thing in new_params)
+		params[thing] = new_params[thing]
+
 	animate(filter, new_params, time = time, easing = easing, loop = loop)
-	modify_filter(name, new_params)
+	for(var/param in params)
+		filter_data[name][param] = params[param]
 
 /** Keeps the steps in the correct order.
 * Arguments:
