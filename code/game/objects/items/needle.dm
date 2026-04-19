@@ -234,7 +234,7 @@
 
 	for(var/thing in affecting.injuries)
 		var/datum/injury/injury = thing
-		if((injury.damage_per_injury() <= injury.autoheal_cutoff))
+		if(!(injury.damage_type in list(WOUND_SLASH, WOUND_PIERCE)) || (injury.damage_per_injury() <= injury.autoheal_cutoff))
 			continue
 		var/time = (user == target ? 2 SECONDS : 4 SECONDS ) + injury.damage
 		time *= min(time * 2.5, (ATTRIBUTE_MIDDLING/max(GET_MOB_ATTRIBUTE_VALUE(user, STAT_PERCEPTION), 1)))
