@@ -32,7 +32,6 @@
 		if(!ouchie)
 			return
 		ouchie.injury_flags |= INJURY_SURGICAL
-		SEND_SIGNAL(target, COMSIG_CARBON_CLEAR_WOUND_MESSAGE)
 	return TRUE
 
 /// Clamping

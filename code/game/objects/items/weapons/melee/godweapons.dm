@@ -156,7 +156,6 @@
 			if(!ouchie)
 				return
 			ouchie.injury_flags |= INJURY_SURGICAL
-			SEND_SIGNAL(target, COMSIG_CARBON_CLEAR_WOUND_MESSAGE)
 
 		playsound(user, 'sound/surgery/organ2.ogg', 70)
 		if(do_after(user, 0.5 SECONDS, target))

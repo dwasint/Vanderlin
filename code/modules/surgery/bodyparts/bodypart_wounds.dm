@@ -753,35 +753,4 @@
 	return TRUE
 
 /// Returns surgery flags applicable to this bodypart
-/obj/item/bodypart/proc/get_surgery_flags()
-	var/returned_flags = NONE
-	if(can_bloody_wound())
-		returned_flags |= SURGERY_BLOODY
 
-	for(var/datum/injury/slash/slash in injuries)
-		if(slash.is_bandaged() || slash.current_stage > slash.max_bleeding_stage) // Shit's unusable
-			continue
-		returned_flags |= SURGERY_INCISED
-		break
-	var/static/list/retracting_behaviors = list(
-		TOOL_RETRACTOR,
-		TOOL_CROWBAR,
-		TOOL_IMPROVISED_RETRACTOR,
-	)
-	var/static/list/clamping_behaviors = list(
-		TOOL_HEMOSTAT,
-		TOOL_WIRECUTTER,
-		TOOL_IMPROVISED_HEMOSTAT,
-	)
-	for(var/obj/item/embedded as anything in embedded_objects)
-		if((embedded.tool_behaviour in retracting_behaviors) || embedded.embedding?.retract_limbs)
-			returned_flags |= SURGERY_RETRACTED
-		if((embedded.tool_behaviour in clamping_behaviors) || embedded.embedding?.clamp_limbs)
-			returned_flags |= SURGERY_CLAMPED
-	if(has_wound(/datum/wound/dislocation))
-		returned_flags |= SURGERY_DISLOCATED
-	if(has_wound(/datum/wound/fracture))
-		returned_flags |= SURGERY_BROKEN
-	if(skeletonized)
-		returned_flags |= SURGERY_INCISED //ehh... we have access to whatever organ is there
-	return returned_flags

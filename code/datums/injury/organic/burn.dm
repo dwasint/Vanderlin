@@ -41,20 +41,11 @@
 	if((wounding_type == WOUND_BURN) && (damage + damage_received >= 50) && parent_bodypart)
 		if(!parent_bodypart.is_dead())
 			if(parent_bodypart.is_organic_limb())
-				if(parent_mob)
-					SEND_SIGNAL(parent_mob, COMSIG_CARBON_ADD_TO_WOUND_MESSAGE, span_danger(" [span_big("The [parent_bodypart.name] partially melts away!")]"))
 				parent_bodypart.kill_limb()
 			else
 				if(parent_bodypart.dismemberable)
-					if(parent_mob)
-						SEND_SIGNAL(parent_mob, COMSIG_CARBON_ADD_TO_WOUND_MESSAGE, span_danger(" [span_big("The [parent_bodypart.name] fully melts away!")]"))
 					parent_bodypart.dismember(BURN)
 		else if(parent_bodypart.dismemberable)
-			if(parent_mob)
-				if(parent_bodypart.is_organic_limb())
-					SEND_SIGNAL(parent_mob, COMSIG_CARBON_ADD_TO_WOUND_MESSAGE, span_danger(" [span_big("The [parent_bodypart.name] fully melts away!")]"))
-				else
-					SEND_SIGNAL(parent_mob, COMSIG_CARBON_ADD_TO_WOUND_MESSAGE, span_danger(" [span_big("The [parent_bodypart.name] fully melts away!")]"))
 			parent_bodypart.dismember(BURN)
 
 /datum/injury/burn/moderate
