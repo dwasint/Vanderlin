@@ -9,7 +9,7 @@
 	metabolization_rate = REAGENTS_METABOLISM
 	alpha = 173
 
-/datum/reagent/medicine/healthpot/on_bodypart_absorb(obj/item/bodypart, mob/living/carbon/M, amount_to_transfer)
+/datum/reagent/medicine/healthpot/on_bodypart_absorb(obj/item/bodypart/bodypart, mob/living/carbon/M, amount_to_transfer)
 	for(var/datum/injury/injury in bodypart.injuries)
 		injury.heal_damage(1)
 
@@ -44,7 +44,7 @@
 	scent_description = "metal"
 	metabolization_rate = REAGENTS_METABOLISM * 3
 
-/datum/reagent/medicine/healthpot/on_bodypart_absorb(obj/item/bodypart, mob/living/carbon/M, amount_to_transfer)
+/datum/reagent/medicine/healthpot/on_bodypart_absorb(obj/item/bodypart/bodypart, mob/living/carbon/M, amount_to_transfer)
 	for(var/datum/injury/injury in bodypart.injuries)
 		injury.heal_damage(2)
 
