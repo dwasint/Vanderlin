@@ -151,7 +151,7 @@
 	return bleed_rate
 
 /// Called in two cases, as an override to an attack after IE apply_damage on a zone. Or After an attack to return a wound.
-/obj/item/bodypart/proc/bodypart_attacked_by(bclass, dam, mob/living/user, zone_precise, silent = FALSE, crit_message = FALSE, list/modifiers = list(), incoming_germ, organ_bonus)
+/obj/item/bodypart/proc/bodypart_attacked_by(bclass, dam, mob/living/user, zone_precise, silent = FALSE, crit_message = FALSE, list/modifiers = list(), incoming_germ, organ_bonus, pre_applied = FALSE)
 	if(!bclass || !dam || !owner || (owner.status_flags & GODMODE))
 		return
 	var/initial_damage = dam
@@ -206,7 +206,7 @@
 	if(incoming_germ && injury)
 		injury.adjust_germ_level(incoming_germ * 0.1)
 
-	if(injury) //this is kinda scuffed but it lets us keep non injury damages
+	if(injury && pre_applied) //this is kinda scuffed but it lets us keep non injury damages
 		if(injury.damage_type == WOUND_BURN)
 			burn_dam -= initial_damage
 		else

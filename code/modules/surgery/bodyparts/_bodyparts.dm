@@ -883,6 +883,8 @@
 		else
 			burn = injury.heal_damage(burn)
 
+	update_damages()
+
 	if(brute)
 		set_brute_dam(round(max(brute_dam - brute, 0), DAMAGE_PRECISION))
 	if(burn)

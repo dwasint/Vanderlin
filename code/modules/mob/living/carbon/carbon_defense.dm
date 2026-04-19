@@ -268,9 +268,11 @@
 	if(!statforce)
 		return TRUE
 
-	affecting.bodypart_attacked_by(user.used_intent.blade_class, statforce, crit_message = TRUE)
+	var/real_damage = apply_damage(statforce, I.damtype, affecting)
 
-	apply_damage(statforce, I.damtype, affecting)
+	if(real_damage)
+		affecting.bodypart_attacked_by(user.used_intent.blade_class, real_damage, crit_message = TRUE, pre_applied = TRUE)
+
 
 	if(I.damtype == BRUTE && affecting.status == BODYPART_ORGANIC)
 		if(prob(statforce))
