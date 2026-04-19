@@ -164,9 +164,9 @@
 // checks whether the injury has been appropriately treated
 /datum/injury/proc/is_treated()
 	switch(damage_type)
-		if(WOUND_SLASH, WOUND_PIERCE)
+		if(WOUND_SLASH, WOUND_PIERCE, WOUND_BITE)
 			return (is_bandaged() || is_sutured() || parent_bodypart.bandage)
-		if(WOUND_BLUNT)
+		if(WOUND_BLUNT, WOUND_LASH)
 			return (is_bandaged() || parent_bodypart.bandage)
 		if(WOUND_BURN)
 			return (is_salved() || (is_disinfected() && (is_bandaged() || parent_bodypart.bandage) ) )
