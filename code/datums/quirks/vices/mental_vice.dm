@@ -482,7 +482,7 @@
 	// Random phantom pain
 	if(prob(1.5))
 		for(var/obj/item/bodypart/BP in H.bodyparts)
-			if(BP.pain_dam > 0)
+			if(BP.pain_dam > 20)
 				BP.add_pain(rand(5, 10))
 				var/pain_type = pick("sharp", "throbbing", "burning", "aching")
 				to_chat(H, span_warning("A [pain_type] pain shoots through your old wound."))

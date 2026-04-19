@@ -200,8 +200,8 @@
 		iter_injury.receive_damage(dam, 0, wounding_type)
 
 	var/datum/injury/injury = create_injury(wounding_type, dam)
-	if(!istype(injury))
-		stack_trace("spec_attacked_by failed to create injury with [dam] damage and [wounding_type] wounding type!")
+	//if(!istype(injury))
+		//stack_trace("spec_attacked_by failed to create injury with [dam] damage and [wounding_type] wounding type!")
 
 	if(incoming_germ && injury)
 		injury.adjust_germ_level(incoming_germ * 0.1)
