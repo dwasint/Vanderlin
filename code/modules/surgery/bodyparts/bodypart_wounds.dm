@@ -157,7 +157,9 @@
 	var/initial_damage = dam
 	dam *= damage_multiplier
 	if(dam < 5)
-		return
+		if(CEILING(dam, 1) < 5)
+			return
+		dam = CEILING(dam, 1)
 
 	var/do_crit = (modifiers[CRIT_MOD_CHANCE] <= -100) ? FALSE : TRUE
 	if(do_crit && ishuman(owner))

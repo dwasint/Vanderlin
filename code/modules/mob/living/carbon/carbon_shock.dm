@@ -64,11 +64,6 @@
 			maxbpshock = bpshock
 
 	if(damaged_bodypart && (get_chem_effect(CE_PAINKILLER) < maxbpshock))
-		if(damaged_bodypart.held_index)
-			if((maxbpshock >= 15) && prob(maxbpshock))
-				var/obj/item/droppy = get_item_for_held_index(damaged_bodypart.held_index)
-				if(droppy)
-					dropItemToGround(droppy)
 		var/burning = (damaged_bodypart.burn_dam >= damaged_bodypart.brute_dam)
 		var/message
 		switch(CEILING(maxbpshock, 1))
