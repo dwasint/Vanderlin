@@ -42,11 +42,11 @@
 
 /datum/reagent/consumable/ethanol/on_mob_metabolize(mob/living/L)
 	. = ..()
-	L.increase_chem_effect(CE_PAINKILLER, boozepwr/5, "[type]")
+	L.increase_chem_effect(CE_PAINKILLER, boozepwr/2, "[type]")
 
 /datum/reagent/consumable/ethanol/on_mob_end_metabolize(mob/living/L)
 	. = ..()
-	L.decrease_chem_effect(CE_PAINKILLER, boozepwr/5, "[type]")
+	L.decrease_chem_effect(CE_PAINKILLER, boozepwr/2, "[type]")
 
 /datum/reagent/consumable/ethanol/reaction_obj(obj/O, reac_volume)
 	. = ..()
