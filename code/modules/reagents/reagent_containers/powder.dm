@@ -173,6 +173,14 @@
 	overdose_threshold = 16
 	metabolization_rate = 0.2
 
+/datum/reagent/ozium/on_mob_metabolize(mob/living/L)
+	. = ..()
+	L.add_chem_effect(CE_PAINKILLER, 100, "[type]")
+
+/datum/reagent/ozium/on_mob_end_metabolize(mob/living/L)
+	. = ..()
+	L.remove_chem_effect(CE_PAINKILLER, "[type]")
+
 /datum/reagent/ozium/on_mob_life(mob/living/carbon/M, efficiency)
 	SEND_SIGNAL(src, COMSIG_DRUG_INDULGE)
 	if(M.has_quirk(/datum/quirk/vice/junkie))
