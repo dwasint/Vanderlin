@@ -65,6 +65,13 @@
 	taste_description = "bitter flowers"
 	scent_description = "marigold"
 
+/datum/reagent/medicine/herbal/calendula_salve/on_bodypart_absorb(obj/item/bodypart/bodypart, mob/living/carbon/M, amount_to_transfer)
+	for(var/datum/injury/injury in bodypart.injuries)
+		injury.heal_damage(1)
+		injury.salve_injury()
+		if(injury.damage_type == WOUND_BURN)
+			injury.heal_damage(3)
+
 /datum/reagent/medicine/herbal/calendula_salve/on_mob_life(mob/living/carbon/M, efficiency)
 	if(volume > 0.99)
 		M.adjustBruteLoss(-0.75*REM, 0)
