@@ -250,7 +250,7 @@
 			//to_chat(user, span_warning(fail_msg()))
 			continue
 		injury.heal_damage(10)
-		var/amt2raise = GET_MOB_ATTRIBUTE_VALUE(doctor, STAT_INTELLIGENCE) * modifier
+		var/amt2raise = GET_MOB_ATTRIBUTE_VALUE(doctor, STAT_INTELLIGENCE)
 		user.adjust_experience(/datum/attribute/skill/misc/medicine, amt2raise * doctor.get_learning_boon(/datum/attribute/skill/misc/medicine))
 		affecting.update_damages()
 		if(affecting.update_bodypart_damage_state())
