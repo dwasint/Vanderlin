@@ -21,8 +21,8 @@
 	if(istype(floor))
 		our_germ_level += floor.germ_level
 
-	//Divide it by 3 to be reasonable
-	our_germ_level = CEILING(our_germ_level/3, 1)
+	//Divide it by 10 to be reasonable
+	our_germ_level = CEILING(our_germ_level/10, 1)
 
 	//If the patient has antibiotics, kill germs by an amount equal to 10x the antibiotic force
 	//e.g. nalixidic acid has 35 force, thus would decrease germs here by 350
