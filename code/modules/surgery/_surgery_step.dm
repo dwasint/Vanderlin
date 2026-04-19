@@ -270,7 +270,7 @@
 
 	var/chem_ok = chem_check(target)
 
-	spread_germs_to_bodypart(affecting, user, tool)
+	//spread_germs_to_bodypart(affecting, user, tool)
 
 	switch(roll_result)
 		if(DICE_CRIT_SUCCESS)
