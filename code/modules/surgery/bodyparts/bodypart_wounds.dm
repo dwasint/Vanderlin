@@ -786,3 +786,15 @@
 	if(skeletonized)
 		returned_flags |= SURGERY_INCISED //ehh... we have access to whatever organ is there
 	return returned_flags
+
+/obj/item/bodypart/proc/is_retracted()
+	var/static/list/retracting_behaviors = list(
+		TOOL_RETRACTOR,
+		TOOL_CROWBAR,
+		TOOL_IMPROVISED_RETRACTOR,
+	)
+
+	for(var/obj/item/embedded as anything in embedded_objects)
+		if((embedded.tool_behaviour in retracting_behaviors) || embedded.embedding?.retract_limbs)
+			return TRUE
+	return FALSE

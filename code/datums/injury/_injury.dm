@@ -155,7 +155,7 @@
 		return FALSE
 	if(required_status != BODYPART_ORGANIC)
 		return FALSE
-	if(CHECK_BITFIELD(injury_flags, INJURY_RETRACTED))
+	if(parent_bodypart.is_retracted())
 		return FALSE
 	if(germ_level > INFECTION_LEVEL_ONE)
 		return FALSE
