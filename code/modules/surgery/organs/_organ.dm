@@ -629,7 +629,7 @@
 	if(maximum < damage)
 		return
 	damage = CLAMP(damage + d, 0, maximum)
-//	var/mess = check_damage_thresholds(owner)
+	var/mess = check_damage_thresholds(owner)
 	prev_damage = damage
 //	if(mess && owner)
 //		to_chat(owner, mess)
