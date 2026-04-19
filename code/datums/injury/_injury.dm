@@ -151,6 +151,8 @@
 	return (damage/amount)
 
 /datum/injury/proc/can_autoheal()
+	if(parent_mob.stat == DEAD)
+		return FALSE
 	if(required_status != BODYPART_ORGANIC)
 		return FALSE
 	if(CHECK_BITFIELD(injury_flags, INJURY_RETRACTED))
