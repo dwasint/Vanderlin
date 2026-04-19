@@ -237,7 +237,7 @@
 		if(!(injury.damage_type in list(WOUND_SLASH, WOUND_PIERCE, WOUND_BITE)) || (injury.damage_per_injury() <= injury.autoheal_cutoff))
 			continue
 		var/time = (user == target ? 2 SECONDS : 4 SECONDS ) + injury.damage
-		time *= min(time * 2.5, (ATTRIBUTE_MIDDLING/max(GET_MOB_ATTRIBUTE_VALUE(user, STAT_PERCEPTION), 1)))
+		time *= min(time * 1.5, (ATTRIBUTE_MIDDLING/max(GET_MOB_ATTRIBUTE_VALUE(user, STAT_PERCEPTION), 1)))
 		playsound(target, 'sound/foley/sewflesh.ogg', 65, FALSE)
 		if(!do_after(user, time, target))
 			to_chat(user, span_warning("I must stand still!"))
