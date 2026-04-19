@@ -99,11 +99,11 @@
 		return
 	adjustBruteLoss(diff, updating_health, forced, required_bodytype, damage_type)
 
-/mob/living/carbon/adjustBruteLoss(amount, updating_health = TRUE, forced = FALSE, required_status, damage_type)
+/mob/living/carbon/adjustBruteLoss(amount, updating_health = TRUE, forced = FALSE, required_status, damage_type, can_crit = FALSE)
 	if(!forced && (status_flags & GODMODE))
 		return FALSE
 	if(amount > 0)
-		take_overall_damage(amount, 0, updating_health, required_status, damage_type = damage_type)
+		take_overall_damage(amount, 0, updating_health, required_status, damage_type = damage_type, no_crit = can_crit)
 	else
 		heal_overall_damage(abs(amount), 0, required_status ? required_status : BODYPART_ORGANIC, updating_health)
 	return amount
@@ -401,7 +401,7 @@
 		update_damage_overlays()
 
 // damage MANY bodyparts, in random order
-/mob/living/carbon/take_overall_damage(brute = 0, burn = 0, updating_health = TRUE, required_status = BODYPART_ORGANIC, damage_type)
+/mob/living/carbon/take_overall_damage(brute = 0, burn = 0, updating_health = TRUE, required_status = BODYPART_ORGANIC, damage_type, no_crit = FALSE)
 	. = FALSE
 	if(status_flags & GODMODE)
 		return	//godmode
@@ -425,7 +425,10 @@
 			if(burn)
 				damage_type = BCLASS_BURN
 			update = TRUE
-			picked.bodypart_attacked_by(damage_type, brute + burn, null)
+			var/list/mods = list()
+			if(no_crit)
+				mods = list(CRIT_MOD_CHANCE = -100)
+			picked.bodypart_attacked_by(damage_type, brute + burn, null, modifiers = mods)
 		else
 			update |= picked.receive_damage(brute_per_part, burn_per_part, blocked = FALSE, updating_health = FALSE, required_status = BODYPART_ORGANIC)
 
