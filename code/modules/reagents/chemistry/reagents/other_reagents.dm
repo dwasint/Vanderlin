@@ -143,7 +143,7 @@
 
 /datum/reagent/water/on_mob_end_metabolize(mob/living/L)
 	. = ..()
-	L.remove_chem_effect("[type]")
+	L.remove_chem_effect(CE_BLOODRESTORE, "[type]")
 
 /datum/reagent/water/on_mob_life(mob/living/carbon/M, efficiency)
 	if(ishuman(M))

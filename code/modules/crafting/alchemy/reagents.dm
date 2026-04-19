@@ -669,7 +669,7 @@ If you want to expand on poisons theres tons of fun effects TG chemistry has tha
 
 /datum/reagent/medicine/endorphin/on_mob_end_metabolize(mob/living/carbon/M)
 	. = ..()
-	M.remove_chem_effect(CE_PAINKILLER, 20, "[type]")
+	M.remove_chem_effect(CE_PAINKILLER, "[type]")
 
 /datum/reagent/medicine/endorphin/overdose_start(mob/living/M)
 	to_chat(M, span_userdanger("I feel EUPHORIC!"))
