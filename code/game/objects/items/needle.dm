@@ -207,7 +207,7 @@
 		to_chat(doctor, span_warning("There is a bandage in the way."))
 		return FALSE
 
-	if(affecting.get_incision(FALSE))
+	if(affecting.get_incision())
 		if(affecting.is_artery_torn())
 			var/time = 5 SECONDS
 			time *= (ATTRIBUTE_MIDDLING/max(GET_MOB_ATTRIBUTE_VALUE(doctor, STAT_PERCEPTION), 1))

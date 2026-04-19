@@ -1440,7 +1440,7 @@
 /obj/item/bodypart/proc/is_artery_torn()
 	. = FALSE
 	for(var/obj/item/organ/artery/artery as anything in getorganslotlist(ORGAN_SLOT_ARTERY))
-		if(artery.is_bruised())
+		if(artery.damage)
 			return TRUE
 
 /obj/item/bodypart/proc/is_artery_dissected()
