@@ -673,12 +673,21 @@
 	if(delta < 0)
 		if(prev_damage >= low_threshold && damage < low_threshold)
 			organ_flags &= ~ORGAN_FAILING
+			if(organ_flags & ORGAN_DESTROYED)
+				organ_flags &= ~ORGAN_DESTROYED //I am having pity on people here at this point I won't force you to get new organs unless they fully necrose.
+				scar_organ(10, 60)
 			return low_threshold_cleared
 		if(prev_damage >= medium_threshold && damage < medium_threshold)
 			organ_flags &= ~ORGAN_FAILING
+			if(organ_flags & ORGAN_DESTROYED)
+				organ_flags &= ~ORGAN_DESTROYED //I am having pity on people here at this point I won't force you to get new organs unless they fully necrose.
+				scar_organ(10, 60)
 			return medium_threshold_cleared
 		if(prev_damage >= high_threshold && damage < high_threshold)
 			organ_flags &= ~ORGAN_FAILING
+			if(organ_flags & ORGAN_DESTROYED)
+				organ_flags &= ~ORGAN_DESTROYED //I am having pity on people here at this point I won't force you to get new organs unless they fully necrose.
+				scar_organ(10, 60)
 			return high_threshold_cleared
 		if(prev_damage >= maxHealth && damage < maxHealth)
 			return now_fixed
