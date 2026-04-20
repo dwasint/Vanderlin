@@ -717,7 +717,7 @@
 				return
 			else
 				to_chat(L, span_warning("I'm scratched by the thorns."))
-				L.apply_damage(5, BRUTE, damage_type = BCLASS_CUT)
+				L.apply_damage(5, BRUTE, damage_type = BCLASS_CUT, can_crit = FALSE)
 				L.Immobilize(10)
 
 		if(L.m_intent == MOVE_INTENT_RUN || HAS_TRAIT(L, TRAIT_STUMBLE))

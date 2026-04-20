@@ -1961,7 +1961,7 @@ GLOBAL_LIST_EMPTY(roundstart_species)
 
 	return TRUE
 
-/datum/species/proc/apply_damage(damage, damagetype = BRUTE, def_zone = null, blocked, mob/living/carbon/human/H, forced = FALSE, spread_damage = FALSE, flashes = TRUE, damage_type, skip_dtype)
+/datum/species/proc/apply_damage(damage, damagetype = BRUTE, def_zone = null, blocked, mob/living/carbon/human/H, forced = FALSE, spread_damage = FALSE, flashes = TRUE, damage_type, skip_dtype, can_crit = TRUE)
 	SEND_SIGNAL(H, COMSIG_MOB_APPLY_DAMAGE, damage, damagetype, def_zone)
 	var/hit_percent = 1
 	damage = max(damage - (blocked),0)
@@ -1981,6 +1981,9 @@ GLOBAL_LIST_EMPTY(roundstart_species)
 				BP = H.bodyparts[1]
 
 	var/damage_amount = damage
+	var/list/mods = list()
+	if(!can_crit)
+		mods = list(CRIT_MOD_CHANCE = -100)
 	switch(damagetype)
 		if(BRUTE)
 			H.damageoverlaytemp = 20
@@ -2009,7 +2012,7 @@ GLOBAL_LIST_EMPTY(roundstart_species)
 						H.flash_fullscreen("redflash3")
 			if(BP)
 				if(damage_type)
-					BP.bodypart_attacked_by(damage_type, damage_amount)
+					BP.bodypart_attacked_by(damage_type, damage_amount, modifiers = mods)
 					H.update_damage_overlays()
 				else
 					if(BP.receive_damage(damage_amount, 0))
@@ -2034,7 +2037,7 @@ GLOBAL_LIST_EMPTY(roundstart_species)
 					if(BP.receive_damage(0, damage_amount, flashes = flashes))
 						H.update_damage_overlays()
 				else
-					BP.bodypart_attacked_by(BCLASS_BURN, damage_amount)
+					BP.bodypart_attacked_by(BCLASS_BURN, damage_amount, modifiers = list(CRIT_MOD_CHANCE = -100)) // burns can't crit
 					H.update_damage_overlays()
 			else
 				H.adjustFireLoss(damage_amount)
