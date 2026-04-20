@@ -2,6 +2,37 @@
 	. = ..()
 	. += inspect_limb(user)
 
+/obj/item/bodypart/proc/get_injury_types()
+	var/list/untreated_types = list()
+	for(var/datum/injury/injury in injuries)
+		if(injury.germ_level >= INFECTION_LEVEL_ONE)
+			untreated_types |= "germs"
+		var/auto_heal = injury.can_autoheal()
+		if(auto_heal)
+			untreated_types |= "self_heal"
+			continue
+		if(injury.is_treated())
+			continue
+		untreated_types |= injury.damage_type
+	return untreated_types
+
+/obj/item/bodypart/get_mechanics_examine(mob/user)
+	. = ..()
+	var/list/untreated_types = get_injury_types()
+
+	for(var/wound_type in untreated_types)
+		switch(wound_type)
+			if(WOUND_SLASH, WOUND_PIERCE, WOUND_BITE)
+				. += "Suture or bandage cuts, bites, or punctures to allow them to heal."
+			if(WOUND_BLUNT, WOUND_LASH)
+				. += "Bandage bruises and lashes to allow them to heal."
+			if(WOUND_BURN)
+				. += "Disinfect and salve burns to allow them to heal."
+			if("germs")
+				. += "Infected injuries can be disinfected by covering them in beer or other disinfectent soaked bandages."
+			if("self_heal")
+				. += "Small injuries will heal on their own."
+
 /obj/item/bodypart/head/examine(mob/user)
 	. = ..()
 	if(owner)
@@ -97,7 +128,7 @@
 
 	return bodypart_status
 
-/obj/item/bodypart/proc/check_for_injuries(mob/user, advanced = FALSE)
+/obj/item/bodypart/proc/check_for_injuries(mob/user, advanced = FALSE, should_mechanical = FALSE)
 	var/examination = "<span class='info'>"
 	examination += "☼ [capitalize(src.name)]: "
 
@@ -106,6 +137,20 @@
 		examination += "<span class='green'>OK</span>"
 	else
 		examination += status.Join(" | ")
+
+	if(should_mechanical)
+		var/list/result = list()
+		var/list/mechanics_result = get_mechanics_examine(src)
+		if(length(mechanics_result))
+			var/mechanics_result_str = "<details><summary>Mechanics</summary>"
+			for(var/line in mechanics_result)
+				mechanics_result_str += " - " + span_blue(line) + "\n"
+			mechanics_result_str += "</details>"
+			result += mechanics_result_str
+		for(var/i in 1 to (length(result) - 1))
+			result[i] += "\n"
+
+		examination += result.Join()
 
 	examination += "</span>"
 	return examination
@@ -182,7 +227,7 @@
 			if(INFECTION_LEVEL_ONE + (2 * (INFECTION_LEVEL_TWO - INFECTION_LEVEL_ONE) / 3) to INFECTION_LEVEL_TWO)
 				status += span_infection("Serious Infection")
 			if(INFECTION_LEVEL_TWO to INFECTION_LEVEL_TWO + ((INFECTION_LEVEL_THREE - INFECTION_LEVEL_THREE) / 3))
-				status += span_infection("<b>Acute Infection</b>") : "Acute Infection"
+				status += span_infection("<b>Acute Infection</b>")
 			if(INFECTION_LEVEL_TWO + ((INFECTION_LEVEL_THREE - INFECTION_LEVEL_THREE) / 3) to INFECTION_LEVEL_TWO + (2 * (INFECTION_LEVEL_THREE - INFECTION_LEVEL_TWO) / 3))
 				status += span_infection("<b>Acute Infection+</b>")
 			if(INFECTION_LEVEL_TWO + (2 * (INFECTION_LEVEL_THREE - INFECTION_LEVEL_TWO) / 3) to INFECTION_LEVEL_THREE)

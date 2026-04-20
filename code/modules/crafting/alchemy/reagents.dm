@@ -214,6 +214,12 @@
 	scent_description = "saiga droppings"
 	metabolization_rate = REAGENTS_METABOLISM * 3
 
+/datum/reagent/medicine/diseasecure/on_bodypart_absorb(obj/item/bodypart/BP, mob/living/carbon/M, amount_to_transfer)
+	BP.disinfect_limb(20 MINUTES)
+	for(var/datum/injury/injury in BP.injuries)
+		injury.adjust_germ_level(-30)
+	BP.adjust_germ_level(-30)
+
 /datum/reagent/medicine/diseasecure/on_mob_metabolize(mob/living/L)
 	. = ..()
 	L.add_chem_effect(CE_ANTIBIOTIC, 40, "[type]")

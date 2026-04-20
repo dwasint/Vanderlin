@@ -636,12 +636,42 @@
 		BODY_ZONE_L_LEG,
 		BODY_ZONE_R_LEG,
 	)
+	var/list/all_untreated = list()
 	for(var/body_zone in body_zones)
 		var/obj/item/bodypart/bodypart = get_bodypart(body_zone)
 		if(!bodypart)
 			examination += "<span class='info'>☼ [capitalize(parse_zone(body_zone))]: <span class='deadsay'><b>MISSING</b></span></span>"
 			continue
 		examination += bodypart.check_for_injuries(user, deep_examination)
+		all_untreated |= bodypart.get_injury_types()
+
+	if(length(all_untreated))
+		var/list/mechanics_result = list()
+		for(var/wound_type in all_untreated)
+			switch(wound_type)
+				if(WOUND_SLASH, WOUND_PIERCE, WOUND_BITE)
+					mechanics_result += "Suture or bandage cuts, bites, or punctures to allow them to heal."
+				if(WOUND_BLUNT, WOUND_LASH)
+					mechanics_result += "Bandage bruises and lashes to allow them to heal."
+				if(WOUND_BURN)
+					mechanics_result += "Disinfect and salve burns to allow them to heal."
+				if("germs")
+					mechanics_result += "Infected injuries can be disinfected by covering them in beer or other disinfectent soaked bandages."
+				if("self_heal")
+					mechanics_result += "Small injuries will heal on their own."
+
+		var/list/result = list()
+		if(length(mechanics_result))
+			var/mechanics_result_str = "<details><summary>Mechanics</summary>"
+			for(var/line in mechanics_result)
+				mechanics_result_str += " - " + span_blue(line) + "\n"
+			mechanics_result_str += "</details>"
+			result += mechanics_result_str
+		for(var/i in 1 to (length(result) - 1))
+			result[i] += "\n"
+
+		examination += result.Join()
+
 	if(additional)
 		examination += span_info(span_green("[getToxLoss()] TOXIN"))
 		examination += span_info(span_blue("[getOxyLoss()] OXYGEN"))
@@ -665,7 +695,7 @@
 
 	var/obj/item/bodypart/examined_part = get_bodypart(choice)
 	if(examined_part)
-		examination += examined_part.check_for_injuries(user, deep_examination)
+		examination += examined_part.check_for_injuries(user, deep_examination, TRUE)
 	else
 		examination += "<span class='info'>☼ [capitalize(parse_zone(choice))]: <span class='deadsay'><B>MISSING</B></span></span>"
 	examination += "ø ------------ ø</span>"
