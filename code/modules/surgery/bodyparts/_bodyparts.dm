@@ -537,7 +537,7 @@
 	var/turf/open/floor/open_turf = get_turf(owner)
 	var/owner_germ_level = 2*owner.germ_level
 	for(var/obj/item/embeddies in embedded_objects)
-		owner_germ_level += (embeddies.germ_level/5)
+		owner_germ_level += (embeddies.germ_level/20)
 
 	// Open injuries can become infected, regardless of antibiotics
 	if(istype(open_turf))

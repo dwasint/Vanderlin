@@ -173,6 +173,22 @@
 		status += "<span class='dead'>SKELETON</span>"
 	else if(HAS_TRAIT(src, TRAIT_ROTTEN))
 		status += "<span class='necrosis'>NECROSIS</span>"
+	else
+		switch(germ_level)
+			if(INFECTION_LEVEL_ONE to INFECTION_LEVEL_ONE + ((INFECTION_LEVEL_TWO - INFECTION_LEVEL_ONE) / 3))
+				status += span_infection("Light Infection")
+			if(INFECTION_LEVEL_ONE + ((INFECTION_LEVEL_TWO - INFECTION_LEVEL_ONE) / 3) to INFECTION_LEVEL_ONE + (2 * (INFECTION_LEVEL_TWO - INFECTION_LEVEL_ONE) / 3))
+				status += span_infection("Medium Infection+")
+			if(INFECTION_LEVEL_ONE + (2 * (INFECTION_LEVEL_TWO - INFECTION_LEVEL_ONE) / 3) to INFECTION_LEVEL_TWO)
+				status += span_infection("Serious Infection")
+			if(INFECTION_LEVEL_TWO to INFECTION_LEVEL_TWO + ((INFECTION_LEVEL_THREE - INFECTION_LEVEL_THREE) / 3))
+				status += span_infection("<b>Acute Infection</b>") : "Acute Infection"
+			if(INFECTION_LEVEL_TWO + ((INFECTION_LEVEL_THREE - INFECTION_LEVEL_THREE) / 3) to INFECTION_LEVEL_TWO + (2 * (INFECTION_LEVEL_THREE - INFECTION_LEVEL_TWO) / 3))
+				status += span_infection("<b>Acute Infection+</b>")
+			if(INFECTION_LEVEL_TWO + (2 * (INFECTION_LEVEL_THREE - INFECTION_LEVEL_TWO) / 3) to INFECTION_LEVEL_THREE)
+				status += span_infection("<b>Acute Infection++</b>")
+			if(INFECTION_LEVEL_THREE to INFINITY)
+				status += span_necrosis("<b>Septic</b>")
 
 	var/owner_ref = owner ? REF(owner) : REF(src)
 	for(var/obj/item/embedded as anything in embedded_objects)

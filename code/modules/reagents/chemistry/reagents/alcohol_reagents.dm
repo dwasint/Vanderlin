@@ -22,6 +22,7 @@
 	BP.disinfect_limb(boozepwr)
 	for(var/datum/injury/injury in BP.injuries)
 		injury.adjust_germ_level(-boozepwr * 0.1)
+	BP.adjust_germ_level(-boozepwr * 0.1)
 
 /datum/reagent/consumable/ethanol/New()
 	. = ..()
