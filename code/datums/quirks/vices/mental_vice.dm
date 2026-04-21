@@ -312,7 +312,7 @@
 	H.add_stress(/datum/stress_event/vice)
 	H.apply_status_effect(/datum/status_effect/debuff/addiction)
 
-	var/current_pain = H.getPainLoss()
+	var/current_pain = H.getShock()
 	var/bloodloss_factor = clamp(1.0 - (H.blood_volume / BLOOD_VOLUME_NORMAL), 0.0, 0.5)
 	var/new_pain_threshold = get_pain_threshold(current_pain * (1.0 + (bloodloss_factor * 1.4)) * clamp(2 - (GET_MOB_ATTRIBUTE_VALUE(H, STAT_ENDURANCE) / 10), 0.5, 1.5))
 
