@@ -37,14 +37,14 @@
 /datum/component/rope/RegisterWithParent()
 	. = ..()
 	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, PROC_REF(parent_moved))
-	RegisterSignal(parent, COMSIG_QDELETED, PROC_REF(parent_qdeleted))
+	RegisterSignal(parent, COMSIG_QDELETING, PROC_REF(parent_qdeleted))
 	RegisterSignal(roped, COMSIG_MOVABLE_MOVED, PROC_REF(roped_moved))
-	RegisterSignal(roped, COMSIG_QDELETED, PROC_REF(roped_qdeleted))
+	RegisterSignal(roped, COMSIG_QDELETING, PROC_REF(roped_qdeleted))
 
 /datum/component/rope/UnregisterFromParent()
 	. = ..()
 	if(!QDELETED(rope_beam))
-		UnregisterSignal(rope_beam, COMSIG_QDELETED)
+		UnregisterSignal(rope_beam, COMSIG_QDELETING)
 // This ensures that when parent cannot reach roped, the beam is broken
 /datum/component/rope/process(delta_time)
 	var/atom/beam_origin = rope_beam.origin
@@ -68,12 +68,12 @@
 			qdel(rope_beam)
 			return
 		var/beam_target = rope_beam.target
-		UnregisterSignal(rope_beam, COMSIG_QDELETED)
+		UnregisterSignal(rope_beam, COMSIG_QDELETING)
 		QDEL_NULL(rope_beam)
 		create_beam(sourceloc, beam_target)
 	else if(rope_beam.origin != source)
 		var/beam_target = rope_beam.target
-		UnregisterSignal(rope_beam, COMSIG_QDELETED)
+		UnregisterSignal(rope_beam, COMSIG_QDELETING)
 		QDEL_NULL(rope_beam)
 		create_beam(source, beam_target)
 
@@ -92,12 +92,12 @@
 			qdel(rope_beam)
 			return
 		var/beam_origin = rope_beam.origin
-		UnregisterSignal(rope_beam, COMSIG_QDELETED)
+		UnregisterSignal(rope_beam, COMSIG_QDELETING)
 		QDEL_NULL(rope_beam)
 		create_beam(beam_origin, sourceloc)
 	else if(rope_beam.target != source)
 		var/beam_origin = rope_beam.origin
-		UnregisterSignal(rope_beam, COMSIG_QDELETED)
+		UnregisterSignal(rope_beam, COMSIG_QDELETING)
 		QDEL_NULL(rope_beam)
 		create_beam(beam_origin, source)
 
@@ -113,14 +113,14 @@
 
 /datum/component/rope/proc/create_beam(atom/beam_owner, atom/beam_target)
 	rope_beam = beam_owner.Beam(beam_target, icon_state, icon, INFINITY, maximum_rope_distance, beam_type, connect_loc)
-	RegisterSignal(rope_beam, COMSIG_QDELETED, PROC_REF(rope_beam_broken))
+	RegisterSignal(rope_beam, COMSIG_QDELETING, PROC_REF(rope_beam_broken))
 	return TRUE
 
 /datum/component/rope/proc/rope_beam_broken(datum/beam/source)
 	SIGNAL_HANDLER
 
 	var/datum/callback/broken_callback = rope_broken_callback
-	UnregisterSignal(source, COMSIG_QDELETED)
+	UnregisterSignal(source, COMSIG_QDELETING)
 	if(!QDELING(src))
 		qdel(src)
 	if(broken_callback)
