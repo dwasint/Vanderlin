@@ -176,10 +176,12 @@
 /datum/reagent/ozium/on_mob_metabolize(mob/living/L)
 	. = ..()
 	L.add_chem_effect(CE_PAINKILLER, 100, "[type]")
+	L.add_chem_effect(CE_STIMULANT, 2, "[type]")
 
 /datum/reagent/ozium/on_mob_end_metabolize(mob/living/L)
 	. = ..()
 	L.remove_chem_effect(CE_PAINKILLER, "[type]")
+	L.remove_chem_effect(CE_STIMULANT, "[type]")
 
 /datum/reagent/ozium/on_mob_life(mob/living/carbon/M, efficiency)
 	SEND_SIGNAL(src, COMSIG_DRUG_INDULGE)

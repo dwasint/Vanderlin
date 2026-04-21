@@ -39,6 +39,7 @@
 
 	var/our_endurance = GET_MOB_ATTRIBUTE_VALUE(src, STAT_ENDURANCE)
 
+	/*
 	if(traumatic_shock >= (PAIN_GIVES_IN * (our_endurance/ATTRIBUTE_MIDDLING)))
 		if(buckled || (body_position == LYING_DOWN))
 			Knockdown(4 SECONDS)
@@ -52,6 +53,7 @@
 			Immobilize(1 SECONDS)
 			//After immobilize runs out, fall down
 			addtimer(CALLBACK(src, PROC_REF(Knockdown), 4 SECONDS), 1 SECONDS)
+	*/
 
 	var/maxbpshock = 0
 	var/obj/item/bodypart/damaged_bodypart
