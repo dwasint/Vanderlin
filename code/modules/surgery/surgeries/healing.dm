@@ -138,7 +138,7 @@
 
 /********************COMBO STEPS********************/
 /datum/surgery_step/heal/combo
-	name = "Tend damage"
+	name = "Tend burns & bruises"
 	brutehealing = 6
 	burnhealing = 6
 	missinghpbonus = 5
