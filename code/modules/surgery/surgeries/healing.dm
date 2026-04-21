@@ -96,7 +96,8 @@
 				urhealedamt_burn = injury.heal_damage(urhealedamt_burn)
 			if(urhealedamt_brute && injury.damage_type == WOUND_BLUNT && injury.required_status == BODYPART_ORGANIC)
 				urhealedamt_brute = injury.heal_damage(urhealedamt_brute)
-	target.heal_bodypart_damage(urhealedamt_brute, urhealedamt_burn, required_status = BODYPART_ORGANIC)
+	else
+		target.heal_bodypart_damage(urhealedamt_brute, urhealedamt_burn, required_status = BODYPART_ORGANIC)
 	SEND_SIGNAL(user, COMSIG_LIVING_HEALED_OTHER, urhealedamt_brute + urhealedamt_burn)
 	display_results(user, target, "<span class='notice'>[umsg].</span>",
 		"[tmsg].",
