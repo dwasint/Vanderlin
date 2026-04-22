@@ -118,6 +118,16 @@
 				for(var/datum/wound/wound as anything in wounds)
 					bodypart_status += wound.get_visible_name(user)
 
+		if(bandage || length(injuries))
+			bodypart_status += "<B>Injuries:</B>"
+			if(bandage)
+				var/usedclass = "notice"
+				if(GET_ATOM_BLOOD_DNA(bandage))
+					usedclass = "bloody"
+				bodypart_status += "<a href='byond://?src=[owner_ref];bandage=[REF(bandage)];bandaged_limb=[REF(src)]' class='[usedclass]'>Bandaged</a>"
+			if(!bandage || observer_privilege)
+				bodypart_status += get_injuries_desc()
+
 	if(length(bodypart_status) <= 1)
 		bodypart_status += "[src] is healthy."
 
