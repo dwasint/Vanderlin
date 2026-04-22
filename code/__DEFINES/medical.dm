@@ -76,18 +76,19 @@
 #define BODYPART_CHRONIC_FRACTURE (1<<2)
 #define BODYPART_CHRONIC_SCAR (1<<3)
 #define BODYPART_CHRONIC_NERVE_DAMAGE (1<<4)
+#define BODYPART_CHRONIC_MIGRAINE (1<<5)
 /// Removal or destruction of this limb kills the owner
-#define	BODYPART_VITAL (1<<5)
+#define	BODYPART_VITAL (1<<6)
 /// Bodypart will never spoil nor get infected
-#define BODYPART_NO_INFECTION (1<<6)
+#define BODYPART_NO_INFECTION (1<<7)
 /// Completely septic and unusable limb
-#define BODYPART_DEAD (1<<7)
+#define BODYPART_DEAD (1<<8)
 /// Bodypart is genetically damaged and not functioning good
-#define BODYPART_DEFORMED (1<<8)
+#define BODYPART_DEFORMED (1<<9)
 /// Frozen limb, doesn't rot
-#define BODYPART_FROZEN	(1<<9)
+#define BODYPART_FROZEN	(1<<10)
 /// Autoheals severe injuries that normally require medical treatment
-#define	BODYPART_GOOD_HEALER (1<<10)
+#define	BODYPART_GOOD_HEALER (1<<11)
 
 //flags for the organ_flags var on /obj/item/organ
 /// Synthetic organs, or cybernetic organs. Reacts to EMPs and don't deteriorate or heal

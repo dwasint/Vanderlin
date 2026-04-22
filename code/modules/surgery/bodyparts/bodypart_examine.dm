@@ -128,6 +128,20 @@
 
 	return bodypart_status
 
+/obj/item/bodypart/proc/get_chronic_status(mob/user, advanced = FALSE)
+	var/list/chronic_types = list()
+	if(CHECK_BITFIELD(limb_flags, BODYPART_CHRONIC_FRACTURE))
+		chronic_types += "poorly healed fracture"
+	if(CHECK_BITFIELD(limb_flags, BODYPART_CHRONIC_ARTHRITIS))
+		chronic_types += "chronic arthritis"
+	if(CHECK_BITFIELD(limb_flags, BODYPART_CHRONIC_MIGRAINE))
+		chronic_types += "chronic migraines"
+	if(CHECK_BITFIELD(limb_flags, BODYPART_CHRONIC_SCAR))
+		chronic_types += "permanent scarring"
+	if(CHECK_BITFIELD(limb_flags, BODYPART_CHRONIC_NERVE_DAMAGE))
+		chronic_types += "nerve damage"
+	return chronic_types
+
 /obj/item/bodypart/proc/check_for_injuries(mob/user, advanced = FALSE, should_mechanical = FALSE)
 	var/examination = "<span class='info'>"
 	examination += "☼ [capitalize(src.name)]: "
@@ -202,6 +216,7 @@
 			continue
 		wound_strings |= wound.get_check_name(user, advanced)
 
+	status += get_chronic_status(user, advanced)
 
 	status += get_injuries_desc()
 	wound_strings -= null
@@ -255,7 +270,7 @@
 
 
 /obj/item/bodypart/proc/get_injuries_desc()
-	var/flavor_text = ""
+	var/list/flavor_text = list()
 	var/list/injury_descriptors = list()
 	for(var/thing in injuries)
 		var/datum/injury/injury = thing
@@ -297,12 +312,9 @@
 		else
 			injury_descriptors[this_injury_desc] = injury.amount
 
-	var/first = TRUE
 	for(var/injury in injury_descriptors)
 		var/final_text = ""
 		var/clean_final = ""
-		if(!first)
-			final_text = " | "
 		final_text += injury
 		clean_final = injury
 		if(injury_descriptors[injury] > 1)
@@ -315,24 +327,15 @@
 		switch(injury_descriptors[injury])
 			if(-INFINITY to 1)
 				final_text = ""
-				if(!first)
-					final_text = " | "
-				final_text += "a [clean_final]"
+				final_text += "[clean_final]"
 			if(2)
 				final_text = ""
-				if(!first)
-					final_text = " | "
-				final_text += "a pair of [clean_final]"
+				final_text += "pair of [clean_final]"
 			if(3 to 5)
 				final_text = ""
-				if(!first)
-					final_text = " | "
 				final_text += "several [clean_final]"
 			if(6 to INFINITY)
 				final_text = ""
-				if(!first)
-					final_text = " | "
-				final_text += "a ton of [clean_final]"
+				final_text += "ton of [clean_final]"
 		flavor_text += final_text
-		first = FALSE
 	return flavor_text

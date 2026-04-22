@@ -223,6 +223,71 @@
 /obj/item/bodypart/proc/is_deformed()
 	return (limb_flags & BODYPART_DEFORMED)
 
+/obj/item/bodypart/proc/remove_chronic()
+	if(owner)
+		UnregisterSignal(owner, list(COMSIG_LIVING_LIFE))
+
+///you might wonder why this isn't in life? this saves a metric ton of time since its situational as hell
+/obj/item/bodypart/proc/update_chronic()
+	if(owner)
+		if(CHECK_BITFIELD(limb_flags, BODYPART_CHRONIC_FRACTURE|BODYPART_CHRONIC_ARTHRITIS|BODYPART_CHRONIC_MIGRAINE))
+			RegisterSignal(owner, COMSIG_LIVING_LIFE, PROC_REF(on_owner_life), override = TRUE)
+	update_wounds()
+	update_pain_coeff()
+
+/obj/item/bodypart/proc/on_owner_life()
+	if(CHECK_BITFIELD(limb_flags, BODYPART_CHRONIC_FRACTURE))
+		on_chronic_fracture_life()
+	if(CHECK_BITFIELD(limb_flags, BODYPART_CHRONIC_ARTHRITIS))
+		on_arthritis_life()
+	if(CHECK_BITFIELD(limb_flags, BODYPART_CHRONIC_MIGRAINE))
+		on_migraine_life()
+
+/obj/item/bodypart/proc/on_chronic_fracture_life()
+	if(!prob(2))
+		return
+	if(owner.encumbrance >= ENCUMBRANCE_MEDIUM)
+		var/pain_amount = rand(8, 15)
+		if(owner.encumbrance >= ENCUMBRANCE_HEAVY)
+			pain_amount = rand(15, 25)
+			to_chat(owner, span_warning("Your heavy gear puts severe strain on your [name]!"))
+		else
+			to_chat(owner, span_warning("The weight of your equipment aggravates your chronic [name] pain!"))
+		add_pain(pain_amount)
+
+/obj/item/bodypart/proc/on_arthritis_life()
+	if(prob(2))
+		add_pain(rand(7, 14))
+		var/pain_msg = pick("Your [name] throbs with arthritic pain!",
+							"A sharp ache shoots through your [name]!",
+							"Your [name] feels stiff and painful!")
+		to_chat(owner, span_warning(pain_msg))
+
+	if(prob(1) && owner.loc)
+		if(SSParticleWeather.runningWeather && SSParticleWeather.runningWeather.can_weather(owner))
+			add_pain(rand(5, 10))
+			to_chat(owner, span_warning("The weather makes your arthritis act up."))
+
+/obj/item/bodypart/proc/on_migraine_life()
+	if(prob(2))
+		add_pain(rand(25, 40))
+
+		if(prob(30))
+			owner.set_eye_blur_if_lower(rand(6 SECONDS, 12 SECONDS))
+			to_chat(owner, span_boldwarning("A severe migraine strikes! Your vision blurs and your head pounds!"))
+		else
+			to_chat(owner, span_warning("A migraine headache begins to build."))
+
+	if(prob(1))
+		if(pain_dam > 20 && owner.loc?.luminosity > 2)
+			add_pain(rand(5, 10))
+			to_chat(owner, span_warning("The flickering flames make your migraine worse!"))
+
+/obj/item/bodypart/proc/update_pain_coeff()
+	var/pain_power = initial(pain_damage_coeff)
+	if(BODYPART_CHRONIC_NERVE_DAMAGE in limb_flags)
+		pain_power += 0.25
+	pain_damage_coeff = pain_power
 
 /// Can this bodypart rot or get infected?
 /obj/item/bodypart/proc/can_decay()
@@ -269,6 +334,8 @@
 /obj/item/bodypart/proc/update_wounds(replaced = FALSE)
 	var/dam_mul = initial(damage_multiplier)
 
+	if(BODYPART_CHRONIC_SCAR in limb_flags)
+		dam_mul += 0.20
 	// we can (normally) only have one wound per type, but remember there's multiple types (smites like :B:loodless can generate multiple cuts on a limb)
 	for(var/datum/wound/iter_wound as anything in wounds)
 		dam_mul *= iter_wound.damage_multiplier_penalty

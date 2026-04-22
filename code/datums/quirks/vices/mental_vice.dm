@@ -370,35 +370,9 @@
 			var/obj/item/bodypart/BP = pick_n_take(joint_parts)
 			BP.add_pain(rand(10, 20))
 			BP.limb_flags |= BODYPART_CHRONIC_ARTHRITIS
+			BP.update_chronic()
 
 	to_chat(H, span_warning("Your joints feel stiff and painful - a reminder of your chronic arthritis."))
-
-/datum/quirk/vice/chronic_arthritis/on_life(mob/living/user)
-	if(!ishuman(user))
-		return
-	var/mob/living/carbon/human/H = user
-
-	if(prob(2))
-		var/list/arthritic_parts = list()
-		for(var/obj/item/bodypart/BP in H.bodyparts)
-			if(BP.limb_flags & BODYPART_CHRONIC_ARTHRITIS)
-				arthritic_parts += BP
-
-		if(arthritic_parts.len)
-			var/obj/item/bodypart/affected = pick(arthritic_parts)
-			affected.add_pain(rand(7, 14))
-			var/pain_msg = pick("Your [affected.name] throbs with arthritic pain!",
-							   "A sharp ache shoots through your [affected.name]!",
-							   "Your [affected.name] feels stiff and painful!")
-			to_chat(H, span_warning(pain_msg))
-
-	if(prob(1) && H.loc)
-		if(SSParticleWeather.runningWeather && SSParticleWeather.runningWeather.can_weather(H))
-			for(var/obj/item/bodypart/BP in H.bodyparts)
-				if((BP.limb_flags & BODYPART_CHRONIC_ARTHRITIS) && prob(30))
-					BP.add_pain(rand(5, 10))
-					to_chat(H, span_warning("The weather makes your arthritis act up."))
-					break
 
 /datum/quirk/vice/chronic_back_pain
 	name = "Chronic Back Pain"
@@ -409,37 +383,11 @@
 	if(!ishuman(owner))
 		return
 	var/mob/living/carbon/human/H = owner
-	for(var/obj/item/bodypart/BP in H.bodyparts)
-		if(BP.body_zone == BODY_ZONE_CHEST)
-			BP.add_pain(rand(20, 32.5))
-			BP.limb_flags |= pick(BODYPART_CHRONIC_FRACTURE, BODYPART_CHRONIC_SCAR)
-			break
+	var/obj/item/bodypart/BP = H.get_bodypart(BODY_ZONE_CHEST)
+	BP?.add_pain(rand(20, 32.5))
+	BP?.limb_flags |= pick(BODYPART_CHRONIC_FRACTURE, BODYPART_CHRONIC_SCAR)
+	BP?.update_chronic()
 	to_chat(H, span_warning("Your lower back aches with familiar, persistent pain."))
-
-/datum/quirk/vice/chronic_back_pain/on_life(mob/living/user)
-	if(!ishuman(user))
-		return
-	var/mob/living/carbon/human/H = user
-
-	if(H.m_intent == MOVE_INTENT_RUN && prob(5))
-		for(var/obj/item/bodypart/BP in H.bodyparts)
-			if(BP.body_zone == BODY_ZONE_CHEST)
-				BP.add_pain(rand(3, 5))
-				to_chat(H, span_warning("Running aggravates your chronic back pain!"))
-				break
-
-	if(prob(2))
-		if(H.encumbrance >= ENCUMBRANCE_MEDIUM)
-			for(var/obj/item/bodypart/BP in H.bodyparts)
-				if(BP.body_zone == BODY_ZONE_CHEST)
-					var/pain_amount = rand(8, 15)
-					if(H.encumbrance >= ENCUMBRANCE_HEAVY)
-						pain_amount = rand(15, 25)
-						to_chat(H, span_warning("Your heavy gear puts severe strain on your already painful back!"))
-					else
-						to_chat(H, span_warning("The weight of your equipment aggravates your chronic back pain!"))
-					BP.add_pain(pain_amount)
-					break
 
 /datum/quirk/vice/old_war_wound
 	name = "Old War Wound"
@@ -455,35 +403,17 @@
 		if(BP.body_zone in list(BODY_ZONE_CHEST, BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG))
 			major_parts += BP
 
-	if(major_parts.len)
-		var/obj/item/bodypart/wounded = pick(major_parts)
-		wounded.add_pain(rand(10, 17.5))
-		wounded.limb_flags |= pick(BODYPART_CHRONIC_FRACTURE, BODYPART_CHRONIC_SCAR, BODYPART_CHRONIC_NERVE_DAMAGE)
-		wounded.brute_dam += rand(3, 8)
-		var/wound_location = wounded.name
-		var/wound_desc = pick("shrapnel wound", "arrow wound", "deep scar", "poorly healed fracture")
-		to_chat(H, span_warning("You feel the familiar ache of your old [wound_desc] in your [wound_location]."))
-
-/datum/quirk/vice/old_war_wound/on_life(mob/living/user)
-	if(!ishuman(user))
-		return
-
-	var/mob/living/carbon/human/H = user
-
-	// Stress-triggered pain flares
-	if(H.health < (H.maxHealth * 0.7) || H.get_stress_amount() > 10)
-		if(prob(3))
-			for(var/obj/item/bodypart/BP in H.bodyparts)
-				if(BP.pain_dam > 30)
-					BP.add_pain(rand(5, 6))
-					to_chat(H, span_warning("Your old war wound flares up from the stress!"))
-					break
-
-	// Random phantom pain
-	if(prob(1.5))
-		for(var/obj/item/bodypart/BP in H.bodyparts)
-			if(BP.pain_dam > 20)
-				BP.add_pain(rand(5, 10))
-				var/pain_type = pick("sharp", "throbbing", "burning", "aching")
-				to_chat(H, span_warning("A [pain_type] pain shoots through your old wound."))
-				break
+	if(length(major_parts))
+		for(var/rand in 1 to rand(1, 2))
+			var/obj/item/bodypart/wounded = pick(major_parts)
+			wounded.add_pain(rand(10, 17.5))
+			var/list/remove_one = list(BODYPART_CHRONIC_FRACTURE, BODYPART_CHRONIC_SCAR, BODYPART_CHRONIC_NERVE_DAMAGE)
+			pick_n_take(remove_one)
+			for(var/i in remove_one)
+				wounded.limb_flags |= i
+			wounded.update_chronic()
+			var/damage = rand(5, 9)
+			wounded.bodypart_attacked_by(pick(BCLASS_BLUNT, BCLASS_BITE, BCLASS_CUT, BCLASS_LASHING, BCLASS_BURN), damage, modifiers = list(CRIT_MOD_CHANCE = -100))
+			var/wound_location = wounded.name
+			var/wound_desc = pick("shrapnel wound", "arrow wound", "deep scar", "poorly healed fracture")
+			to_chat(H, span_warning("You feel the familiar ache of your old [wound_desc] in your [wound_location]."))
