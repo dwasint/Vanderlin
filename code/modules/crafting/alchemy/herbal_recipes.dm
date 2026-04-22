@@ -32,6 +32,14 @@
 	taste_description = "bitter dandelion"
 	scent_description = "weeds"
 
+/datum/reagent/medicine/herbal/taraxacum_extract/on_mob_metabolize(mob/living/L)
+	. = ..()
+	L.add_chem_effect(CE_ANTIBIOTIC, 5, "[type]")
+
+/datum/reagent/medicine/herbal/taraxacum_extract/on_mob_end_metabolize(mob/living/L)
+	. = ..()
+	L.remove_chem_effect(CE_ANTIBIOTIC, "[type]")
+
 /datum/reagent/medicine/herbal/taraxacum_extract/on_mob_life(mob/living/carbon/M, efficiency)
 	if(volume > 0.99)
 		M.adjustToxLoss(-0.75, 0)
@@ -48,10 +56,12 @@
 /datum/reagent/medicine/herbal/urtica_brew/on_mob_metabolize(mob/living/L)
 	. = ..()
 	L.add_chem_effect(CE_BLOODRESTORE, 2, "[type]")
+	L.add_chem_effect(CE_STIMULANT, 2, "[type]")
 
 /datum/reagent/medicine/herbal/urtica_brew/on_mob_end_metabolize(mob/living/L)
 	. = ..()
 	L.remove_chem_effect(CE_BLOODRESTORE, "[type]")
+	L.remove_chem_effect(CE_STIMULANT, "[type]")
 
 /datum/reagent/medicine/herbal/urtica_brew/on_mob_life(mob/living/carbon/M, efficiency)
 	if(!HAS_TRAIT(M,TRAIT_NOSTAMINA))
@@ -60,7 +70,7 @@
 
 /datum/reagent/medicine/herbal/calendula_salve
 	name = "Calendula Salve"
-	description = "A soothing salve that promotes healing."
+	description = "A soothing salve that promotes healing when applied to areas."
 	color = "#ff8c00"
 	taste_description = "bitter flowers"
 	scent_description = "marigold"
@@ -71,15 +81,8 @@
 		injury.salve_injury()
 		if(injury.damage_type == WOUND_BURN)
 			injury.heal_damage(3)
-
-/datum/reagent/medicine/herbal/calendula_salve/on_mob_life(mob/living/carbon/M, efficiency)
-	if(volume > 0.99)
-		M.adjustBruteLoss(-0.75*REM, 0)
-		M.adjustFireLoss(-0.75*REM, 0)
-		var/list/wCount = M.get_wounds()
-		if(wCount.len > 0 && prob(20))
-			M.heal_wounds(1)
-	..()
+		injury.adjust_germ_level(-5)
+	bodypart.disinfect_limb(20 SECONDS)
 
 // Weak Mana/Stamina Potions (based on hypericum/benedictus/mentha)
 /datum/reagent/medicine/herbal/hypericum_tonic
@@ -88,6 +91,16 @@
 	color = "#ffff99"
 	taste_description = "bitter herbs"
 	scent_description = "St. John's wort"
+
+/datum/reagent/medicine/herbal/hypericum_tonic/on_mob_metabolize(mob/living/L)
+	. = ..()
+	L.add_chem_effect(CE_BRAIN_REGEN, 1, "[type]")
+	L.add_chem_effect(CE_OXYGENATED, 1, "[type]")
+
+/datum/reagent/medicine/herbal/hypericum_tonic/on_mob_end_metabolize(mob/living/L)
+	. = ..()
+	L.remove_chem_effect(CE_BRAIN_REGEN, "[type]")
+	L.remove_chem_effect(CE_OXYGENATED, "[type]")
 
 /datum/reagent/medicine/herbal/hypericum_tonic/on_mob_life(mob/living/carbon/M, efficiency)
 	if(volume > 0.99)
@@ -103,6 +116,16 @@
 	color = "#90ee90"
 	taste_description = "cooling mint"
 	scent_description = "mint"
+
+/datum/reagent/medicine/herbal/mentha_tea/on_mob_metabolize(mob/living/L)
+	. = ..()
+	L.add_chem_effect(CE_ENERGETIC, 2, "[type]")
+	L.add_chem_effect(CE_STABLE, 1, "[type]")
+
+/datum/reagent/medicine/herbal/mentha_tea/on_mob_end_metabolize(mob/living/L)
+	. = ..()
+	L.remove_chem_effect(CE_ENERGETIC, "[type]")
+	L.remove_chem_effect(CE_STABLE, "[type]")
 
 /datum/reagent/medicine/herbal/mentha_tea/on_mob_life(mob/living/carbon/M, efficiency)
 	if(volume > 0.99)
@@ -125,6 +148,16 @@
 	taste_description = "sage"
 	scent_description = "wise herbs"
 
+/datum/reagent/buff/herbal/salvia_wisdom/on_mob_metabolize(mob/living/L)
+	. = ..()
+	L.add_chem_effect(CE_BRAIN_REGEN, 1, "[type]")
+	L.add_chem_effect(CE_PULSE, 1, "[type]")
+
+/datum/reagent/buff/herbal/salvia_wisdom/on_mob_end_metabolize(mob/living/L)
+	. = ..()
+	L.remove_chem_effect(CE_BRAIN_REGEN, "[type]")
+	L.remove_chem_effect(CE_PULSE, "[type]")
+
 /datum/reagent/buff/herbal/salvia_wisdom/on_mob_life(mob/living/carbon/M, efficiency)
 	if(volume > 0.99)
 		M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -0.25*REM)
@@ -141,6 +174,16 @@
 	color = "#c0c0c0"
 	taste_description = "wormwood"
 	scent_description = "artemisia"
+
+/datum/reagent/buff/herbal/artemisia_luck/on_mob_metabolize(mob/living/L)
+	. = ..()
+	L.add_chem_effect(CE_STIMULANT, 2, "[type]")
+	L.add_chem_effect(CE_OXYGENATED, 1, "[type]")
+
+/datum/reagent/buff/herbal/artemisia_luck/on_mob_end_metabolize(mob/living/L)
+	. = ..()
+	L.remove_chem_effect(CE_STIMULANT, "[type]")
+	L.remove_chem_effect(CE_OXYGENATED, "[type]")
 
 /datum/reagent/buff/herbal/artemisia_luck/on_mob_life(mob/living/carbon/M, efficiency)
 	if(volume > 0.99)
@@ -159,6 +202,16 @@
 	color = "#6ca22a"
 	taste_description = "latex"
 	scent_description = "sharp herbs"
+
+/datum/reagent/buff/herbal/euphorbia_strength/on_mob_metabolize(mob/living/L)
+	. = ..()
+	L.add_chem_effect(CE_STIMULANT, 2, "[type]")
+	L.add_chem_effect(CE_PULSE, 2, "[type]")
+
+/datum/reagent/buff/herbal/euphorbia_strength/on_mob_end_metabolize(mob/living/L)
+	. = ..()
+	L.remove_chem_effect(CE_STIMULANT, "[type]")
+	L.remove_chem_effect(CE_PULSE, "[type]")
 
 /datum/reagent/buff/herbal/euphorbia_strength/on_mob_life(mob/living/carbon/M, efficiency)
 	if(volume > 0.99)
@@ -196,6 +249,16 @@
 	taste_description = "bitter chamomile"
 	scent_description = "sour flowers"
 
+/datum/reagent/poison/herbal/matricaria_irritant/on_mob_metabolize(mob/living/L)
+	. = ..()
+	L.add_chem_effect(CE_PULSE, -1, "[type]")
+	L.add_chem_effect(CE_PAINKILLER, -9, "[type]")
+
+/datum/reagent/poison/herbal/matricaria_irritant/on_mob_end_metabolize(mob/living/L)
+	. = ..()
+	L.remove_chem_effect(CE_PULSE, "[type]")
+	L.remove_chem_effect(CE_PAINKILLER, "[type]")
+
 /datum/reagent/poison/herbal/matricaria_irritant/on_mob_life(mob/living/carbon/M, efficiency)
 	if(volume > 0.99)
 		M.add_nausea(1)
@@ -229,6 +292,14 @@
 	taste_description = "eyebright"
 	scent_description = "clean herbs"
 
+/datum/reagent/medicine/herbal/euphrasia_eye_wash/on_mob_metabolize(mob/living/L)
+	. = ..()
+	L.add_chem_effect(CE_OXYGENATED, 1, "[type]")
+
+/datum/reagent/medicine/herbal/euphrasia_eye_wash/on_mob_end_metabolize(mob/living/L)
+	. = ..()
+	L.remove_chem_effect(CE_OXYGENATED, "[type]")
+
 /datum/reagent/medicine/herbal/euphrasia_eye_wash/on_mob_life(mob/living/carbon/M, efficiency)
 	if(volume > 0.99)
 		M.adjustOrganLoss(ORGAN_SLOT_EYES, -0.1*REM)
@@ -258,6 +329,11 @@
 /datum/reagent/medicine/herbal/valeriana_draught/on_mob_metabolize(mob/living/M)
 	. = ..()
 	M.add_stress(/datum/stress_event/herbal_calm)
+	M.add_chem_effect(CE_STABLE, 1, "[type]")
+
+/datum/reagent/medicine/herbal/valeriana_draught/on_mob_end_metabolize(mob/living/M)
+	. = ..()
+	M.remove_chem_effect(CE_STABLE, "[type]")
 
 /datum/reagent/medicine/herbal/valeriana_draught/on_mob_life(mob/living/carbon/M, efficiency)
 	var/datum/status_effect/drowsiness = M.has_status_effect(/datum/status_effect/drowsiness)
@@ -285,6 +361,15 @@
 /datum/reagent/buff/herbal/benedictus_vigor/on_mob_metabolize(mob/living/M)
 	. = ..()
 	M.add_stress(/datum/stress_event/herbal_vigor)
+	M.add_chem_effect(CE_ENERGETIC, 2, "[type]")
+	M.add_chem_effect(CE_OXYGENATED, 1, "[type]")
+	M.add_chem_effect(CE_BLOODRESTORE, 1, "[type]")
+
+/datum/reagent/buff/herbal/benedictus_vigor/on_mob_end_metabolize(mob/living/M)
+	. = ..()
+	M.remove_chem_effect(CE_ENERGETIC, "[type]")
+	M.remove_chem_effect(CE_OXYGENATED, "[type]")
+	M.remove_chem_effect(CE_BLOODRESTORE, "[type]")
 
 /datum/reagent/buff/herbal/benedictus_vigor/on_mob_life(mob/living/carbon/M, efficiency)
 	M.adjust_stamina(3)
@@ -309,13 +394,13 @@
 	overdose_threshold = 30
 	taste_description = "bitter numbness"
 
-/datum/reagent/medicine/herbal/paris_poultice/on_mob_life(mob/living/carbon/M, efficiency)
-	M.adjustBruteLoss(-1*REM)
-	M.adjustFireLoss(-0.5*REM)
-
-	M.adjustPainLoss(-(volume * 0.3) * efficiency)
-
-	. = ..()
+/datum/reagent/medicine/herbal/paris_poultice/on_bodypart_absorb(obj/item/bodypart/bodypart, mob/living/carbon/M, amount_to_transfer)
+	for(var/datum/injury/injury in bodypart.injuries)
+		if(injury.damage_type == WOUND_BURN)
+			injury.heal_damage(-0.5)
+		if(injury.damage_type != WOUND_BURN)
+			injury.heal_damage(-0.75)
+	bodypart.add_pain(-amount_to_transfer * 0.3)
 
 /datum/reagent/medicine/herbal/paris_poultice/overdose_process(mob/living/M)
 	M.adjustToxLoss(0.5)
@@ -337,13 +422,30 @@
 /datum/reagent/medicine/herbal/herbalist_panacea/on_mob_metabolize(mob/living/M)
 	. = ..()
 	M.add_stress(/datum/stress_event/herbal_wellness)
+	M.add_chem_effect(CE_BLOODRESTORE, 4, "[type]")
+	M.add_chem_effect(CE_ORGAN_REGEN, 1, "[type]")
+	M.add_chem_effect(CE_ANTIBIOTIC, 4, "[type]")
+	M.add_chem_effect(CE_OXYGENATED, 2, "[type]")
+
+/datum/reagent/medicine/herbal/herbalist_panacea/on_mob_end_metabolize(mob/living/M)
+	. = ..()
+	M.remove_chem_effect(CE_BLOODRESTORE, "[type]")
+	M.remove_chem_effect(CE_ORGAN_REGEN, "[type]")
+	M.remove_chem_effect(CE_ANTIBIOTIC, "[type]")
+	M.remove_chem_effect(CE_OXYGENATED, "[type]")
 
 /datum/reagent/medicine/herbal/herbalist_panacea/on_mob_life(mob/living/carbon/M, efficiency)
-	M.adjustBruteLoss(-1.5*REM)
-	M.adjustFireLoss(-1.5*REM)
-	M.adjustToxLoss(-1*REM)
-	M.adjustOxyLoss(-1)
-	M.adjust_stamina(2*REM)
+	M.adjustBruteLoss(-1.5*REM*efficiency)
+	M.adjustFireLoss(-1.5*REM*efficiency)
+	M.adjustToxLoss(-1*REM*efficiency)
+	M.adjustOxyLoss(-1*efficiency)
+	M.adjust_stamina(2*REM*efficiency)
+	var/total_healing = 1.5 * efficiency * REM
+	for(var/datum/injury/injury in M.all_injuries)
+		if(!total_healing)
+			break
+		total_healing = injury.heal_damage(total_healing)
+
 	if(prob(15))
 		M.heal_bodypart_damage(1, 1, 0)
 	. = ..()
@@ -363,7 +465,7 @@
 	M.adjustToxLoss(-2)
 	// Purge small amounts of other poisons
 	for(var/datum/reagent/R in M.reagents.reagent_list)
-		if(istype(R, /datum/reagent/poison))
+		if(istype(R, /datum/reagent/poison) || istype(R, /datum/reagent/toxin))
 			M.reagents.remove_reagent(R.type, 0.5)
 	. = ..()
 
@@ -381,6 +483,15 @@
 /datum/reagent/buff/herbal/scholar_focus/on_mob_metabolize(mob/living/M)
 	. = ..()
 	M.add_stress(/datum/stress_event/herbal_focus)
+	M.add_chem_effect(CE_BRAIN_REGEN, 2, "[type]")
+	M.add_chem_effect(CE_OXYGENATED, 1, "[type]")
+	M.add_chem_effect(CE_STABLE, 1, "[type]")
+
+/datum/reagent/buff/herbal/scholar_focus/on_mob_end_metabolize(mob/living/M)
+	. = ..()
+	M.remove_chem_effect(CE_BRAIN_REGEN, "[type]")
+	M.remove_chem_effect(CE_OXYGENATED, "[type]")
+	M.remove_chem_effect(CE_STABLE, "[type]")
 
 /datum/reagent/buff/herbal/scholar_focus/on_mob_life(mob/living/carbon/M, efficiency)
 	if(M.has_status_effect(/datum/status_effect/drowsiness))
@@ -412,11 +523,13 @@
 	metabolization_rate = 0.3
 	taste_description = "cooling mint"
 
+/datum/reagent/medicine/herbal/mentha_oil/on_bodypart_absorb(obj/item/bodypart/bodypart, mob/living/carbon/M, amount_to_transfer)
+	bodypart.add_pain(-(amount_to_transfer * 0.3))
+
 /datum/reagent/medicine/herbal/mentha_oil/on_mob_life(mob/living/carbon/M, efficiency)
 	M.adjust_stamina(1.5 * efficiency)
 	M.adjust_bodytemperature(-0.3 * efficiency, BODYTEMP_NORMAL - 2)
 
-	M.adjustPainLoss(-(volume * 0.3) * efficiency)
 	. = ..()
 
 // Dangerous Poisons
@@ -452,6 +565,16 @@
 	metabolization_rate = 0.6
 	taste_description = "swamp rot"
 
+/datum/reagent/poison/herbal/swamp_miasma/on_mob_metabolize(mob/living/M)
+	. = ..()
+	M.add_chem_effect(CE_BLOCKAGE, 2, "[type]")
+	M.add_chem_effect(CE_BREATHLOSS, 2, "[type]")
+
+/datum/reagent/poison/herbal/swamp_miasma/on_mob_end_metabolize(mob/living/M)
+	. = ..()
+	M.remove_chem_effect(CE_BLOCKAGE, "[type]")
+	M.remove_chem_effect(CE_BREATHLOSS, "[type]")
+
 /datum/reagent/poison/herbal/swamp_miasma/on_mob_life(mob/living/carbon/M, efficiency)
 	M.adjustToxLoss(1.5 * efficiency)
 	if(prob(15))
@@ -484,6 +607,13 @@
 /datum/reagent/buff/herbal/moonwater_elixir/on_mob_metabolize(mob/living/M)
 	. = ..()
 	M.add_stress(/datum/stress_event/mystical_boost)
+	M.add_chem_effect(CE_BRAIN_REGEN, 2, "[type]")
+	M.add_chem_effect(CE_OXYGENATED, 1, "[type]")
+
+/datum/reagent/buff/herbal/moonwater_elixir/on_mob_end_metabolize(mob/living/M)
+	. = ..()
+	M.remove_chem_effect(CE_BRAIN_REGEN, "[type]")
+	M.remove_chem_effect(CE_OXYGENATED, "[type]")
 
 
 // Combat Enhancement
@@ -500,6 +630,17 @@
 /datum/reagent/buff/herbal/battle_stim/on_mob_metabolize(mob/living/M)
 	. = ..()
 	M.add_stress(/datum/stress_event/battle_stim)
+	M.add_chem_effect(CE_STIMULANT, 4, "[type]")
+	M.add_chem_effect(CE_OXYGENATED, 2, "[type]")
+	M.add_chem_effect(CE_PULSE, 1, "[type]")
+	M.add_chem_effect(CE_ENERGETIC, 3, "[type]")
+
+/datum/reagent/buff/herbal/battle_stim/on_mob_end_metabolize(mob/living/M)
+	. = ..()
+	M.remove_chem_effect(CE_STIMULANT, "[type]")
+	M.remove_chem_effect(CE_OXYGENATED, "[type]")
+	M.remove_chem_effect(CE_PULSE, "[type]")
+	M.remove_chem_effect(CE_ENERGETIC, "[type]")
 
 /datum/reagent/buff/herbal/battle_stim/on_mob_life(mob/living/carbon/M, efficiency)
 	M.adjust_stamina(-2 * efficiency)
@@ -538,6 +679,18 @@
 	metabolization_rate = 0.7
 	overdose_threshold = 30
 	taste_description = "pure cleansing"
+
+/datum/reagent/medicine/herbal/purification_draught/on_mob_metabolize(mob/living/M)
+	. = ..()
+	M.add_chem_effect(CE_ANTIBIOTIC, 15, "[type]")
+	M.add_chem_effect(CE_OXYGENATED, 1, "[type]")
+	M.add_chem_effect(CE_STABLE, 1, "[type]")
+
+/datum/reagent/medicine/herbal/purification_draught/on_mob_end_metabolize(mob/living/M)
+	. = ..()
+	M.remove_chem_effect(CE_ANTIBIOTIC, "[type]")
+	M.remove_chem_effect(CE_OXYGENATED, "[type]")
+	M.remove_chem_effect(CE_STABLE, "[type]")
 
 /datum/reagent/medicine/herbal/purification_draught/on_mob_life(mob/living/carbon/M, efficiency)
 	M.adjustToxLoss(-2)
