@@ -43,7 +43,8 @@
 	var/mob/living/carbon/human/patient = allocate(/mob/living/carbon/human)
 	// We have to damage just one bodypart to avoid random variability when picking a limb to heal.
 	var/obj/item/bodypart/chest = patient.get_bodypart(BODY_ZONE_CHEST)
-	chest.receive_damage(100, 100)
+	chest.create_injury(WOUND_BURN, 100)
+	chest.create_injury(WOUND_BLUNT, 100)
 
 	var/mob/living/carbon/human/user = allocate(/mob/living/carbon/human)
 
