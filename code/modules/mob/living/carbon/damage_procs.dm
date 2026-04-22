@@ -269,7 +269,7 @@
  * * Power decides how much painkillers will stop the message, as well as how much pain it causes
  * * Forced means it ignores anti-spam timer
  */
-/mob/living/carbon/custom_pain(message, power, forced, obj/item/bodypart/affecting, nopainloss = FALSE)
+/mob/living/carbon/custom_pain(message, power, forced, obj/item/bodypart/affecting, nopainloss = FALSE, pain_emote = TRUE)
 	if((stat >= UNCONSCIOUS) || !can_feel_pain() || (world.time < next_pain_time))
 		return FALSE
 
@@ -294,13 +294,14 @@
 		if(world.time >= next_pain_message_time)
 			to_chat(src, span_animatedpain("[message]"))
 
-		var/force_emote
-		if(ishuman(src))
-			var/mob/living/carbon/human/human_src = src
-			if(human_src.dna?.species)
-				force_emote = human_src.dna.species.get_pain_emote(power)
-		if(force_emote && prob(power))
-			INVOKE_ASYNC(src, PROC_REF(emote), force_emote)
+		if(pain_emote)
+			var/force_emote
+			if(ishuman(src))
+				var/mob/living/carbon/human/human_src = src
+				if(human_src.dna?.species)
+					force_emote = human_src.dna.species.get_pain_emote(power)
+			if(force_emote && prob(power))
+				INVOKE_ASYNC(src, PROC_REF(emote), force_emote)
 
 	// Briefly flash the pain overlay
 	//flash_pain(power)

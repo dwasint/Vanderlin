@@ -93,7 +93,7 @@
 				else
 					pain = 10
 					message = "I feel a dull pain in my [parent.name]."
-				custom_pain(message, pain, FALSE, parent)
+				custom_pain(message, pain, FALSE, parent, pain_emote = FALSE)
 
 	if(traumatic_shock >= PAIN_SHOCK_PENALTY)
 		var/penalty = min(SHOCK_PENALTY_CAP, FLOOR(traumatic_shock/(our_endurance*3), 1))
