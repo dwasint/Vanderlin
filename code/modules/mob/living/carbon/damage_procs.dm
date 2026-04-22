@@ -305,7 +305,7 @@
 	// Briefly flash the pain overlay
 	//flash_pain(power)
 	next_pain_time = world.time + (rand(100, 150) + power)
-	next_pain_message_time = world.time + (200 + power)
+	next_pain_message_time = world.time + (60 SECONDS + power)
 	return TRUE
 
 /mob/living/carbon/can_feel_pain()
