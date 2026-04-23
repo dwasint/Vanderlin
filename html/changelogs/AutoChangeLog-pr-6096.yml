@@ -1,0 +1,5 @@
+author: "Ben10083"
+delete-after: True
+changes:
+  - spellcheck: "Announcement for new decrees no longer uses 'the' twice"
+  - refactor: "Refactor of SScommunication"
