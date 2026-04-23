@@ -1,0 +1,8 @@
+author: "Spitegremlin"
+delete-after: True
+changes:
+  - rscadd: "Added new hardened and masterwork items"
+  - rscadd: "Added new pair of boots, can be used to sheath knifes"
+  - balance: "rebalanced leather item armor values"
+  - image: "added new boots, called the hunter boots. Has item and onmob sprites"
+  - spellcheck: "fixed typos to do with the tanning rack"
