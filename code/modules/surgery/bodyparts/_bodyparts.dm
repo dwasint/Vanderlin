@@ -246,9 +246,9 @@
 /obj/item/bodypart/proc/on_chronic_fracture_life()
 	if(!prob(2))
 		return
-	if(owner.encumbrance >= ENCUMBRANCE_MEDIUM)
+	if(owner.encumbrance >= ENCUMBRANCE_HEAVY)
 		var/pain_amount = rand(8, 15)
-		if(owner.encumbrance >= ENCUMBRANCE_HEAVY)
+		if(owner.encumbrance >= ENCUMBRANCE_EXTREME)
 			pain_amount = rand(15, 25)
 			to_chat(owner, span_warning("Your heavy gear puts severe strain on your [name]!"))
 		else
