@@ -1,5 +1,0 @@
-author: "Ben10083"
-delete-after: True
-changes:
-  - balance: "Malum's Anvil miracle now only takes 2 seconds to cast."
-  - bugfix: "Ensured that Malum's Anvil miracle can only be self-cast."

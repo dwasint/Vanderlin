@@ -1,5 +1,0 @@
-author: "Ben10083"
-delete-after: True
-changes:
-  - qol: "Encode Thought spell now uses TGUI"
-  - image: "Sprite added for Encode Thought spell"
