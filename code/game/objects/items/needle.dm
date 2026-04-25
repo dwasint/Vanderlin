@@ -232,6 +232,7 @@
 					return TRUE
 			return TRUE
 
+	var/injury_healed = FALSE
 	for(var/thing in affecting.injuries)
 		var/datum/injury/injury = thing
 		if(!(injury.damage_type in list(WOUND_SLASH, WOUND_PIERCE, WOUND_BITE)) || (injury.damage_per_injury() <= injury.autoheal_cutoff))
@@ -262,10 +263,12 @@
 			user.visible_message(span_green("<b>[user]</b> stitches \a [injury.get_desc()] shut on <b>[target]</b>'s [affecting.name] with \the [src]."), \
 								span_green("I stitch \a [injury.get_desc()] shut on \the [affecting.name] with \the [src]."))
 		injury.suture_injury()
+		injury_healed = TRUE
 
 	var/list/sewable = affecting.get_sewable_wounds()
 	if(!length(sewable))
-		to_chat(doctor, span_warning("There aren't any wounds to be sewn."))
+		if(!injury_healed)
+			to_chat(doctor, span_warning("There aren't any wounds to be sewn."))
 		return FALSE
 	var/datum/wound/target_wound
 	if(length(sewable) > 1)
