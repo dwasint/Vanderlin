@@ -195,6 +195,9 @@
 	if(wounding_type == WOUND_NONE)
 		return
 
+	if((zone_precise in list(BODY_ZONE_PRECISE_L_EYE, BODY_ZONE_PRECISE_L_EYE)) && wounding_type == WOUND_PIERCE)
+		organ_bonus = CANT_ORGAN
+
 	if(organ_bonus != CANT_ORGAN)
 		damage_internal_organs(wounding_type, dam, organ_bonus, 0, wound_messages = TRUE)
 

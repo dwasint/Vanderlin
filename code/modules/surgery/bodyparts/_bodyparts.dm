@@ -609,7 +609,7 @@
 	// Open injuries can become infected, regardless of antibiotics
 	if(istype(open_turf))
 		for(var/datum/injury/injury as anything in injuries)
-			if(injury.infection_check(delta_time, times_fired) && (max(open_turf.germ_level, owner_germ_level) > injury.germ_level))
+			if(injury.infection_check(delta_time, times_fired) && (max(open_turf.germ_level, owner_germ_level) < injury.germ_level))
 				injury.adjust_germ_level(injury.infection_rate * (0.5 * delta_time))
 
 	// If we have sufficient antibiotics, then skip over this stuff, the infection is going away
