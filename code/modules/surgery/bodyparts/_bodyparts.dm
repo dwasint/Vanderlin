@@ -567,7 +567,7 @@
 	owner.update_damage_overlays()
 
 /// Updates brute_damn and burn_damn from injuries
-/obj/item/bodypart/proc/update_damages()
+/obj/item/bodypart/proc/update_damages(looped = FALSE)
 	number_injuries = 0
 	brute_dam -= injury_brute
 	burn_dam -= injury_burn
@@ -585,6 +585,13 @@
 			injury_brute += injury.damage
 
 		number_injuries += injury.amount
+	if(!looped)
+		if(brute_dam < 0 || (brute_dam < injury_brute))
+			injury_brute = 0
+			update_damages(TRUE)
+		if(burn_dam < 0 || (burn_dam < injury_burn))
+			injury_burn = 0
+			update_damages(TRUE)
 
 /// General handling of infections
 /obj/item/bodypart/proc/update_germs(delta_time, times_fired)

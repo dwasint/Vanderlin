@@ -95,6 +95,18 @@
 	parent_bodypart = new_owner
 	LAZYADD(parent_bodypart.injuries, src)
 
+/datum/injury/proc/transfer_injury(mob/living/carbon/new_owner, sound_hint = TRUE)
+	var/obj/item/bodypart/old_bodypart = parent_bodypart
+
+	var/obj/item/bodypart/new_bodypart = new_owner.get_bodypart(old_bodypart.body_zone)
+	if(!new_bodypart)
+		return
+
+	remove_from_bodypart()
+	remove_from_mob()
+	set_mob(new_owner, sound_hint)
+	set_bodypart(new_bodypart, sound_hint)
+
 /datum/injury/proc/remove_from_mob()
 	if(!parent_mob)
 		return
