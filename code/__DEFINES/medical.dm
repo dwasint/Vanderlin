@@ -336,6 +336,10 @@ DEFINE_BITFIELD(organ_flags, list(
 #define WOUND_BITE 10
 ///any wounds from lashes
 #define WOUND_LASH 11
+///any wounds from internal bruising (only really a thing for weird chems that should cause brutes)
+#define WOUND_INTERNAL_BRUISE 12
+///wounds coming from divine sources
+#define WOUND_DIVINE 13
 
 // ~injury flags
 /// This injury creates sounds hints when applied

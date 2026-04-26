@@ -174,23 +174,26 @@
 			do_crit = FALSE
 
 	var/wounding_type = WOUND_NONE
-	switch(bclass)
-		if(BCLASS_BLUNT, BCLASS_SMASH, BCLASS_PUNCH)
-			wounding_type = WOUND_BLUNT
-		if(BCLASS_DRILL, BCLASS_PICK, BCLASS_PIERCE, BCLASS_SHOT)
-			wounding_type = WOUND_PIERCE
-		if(BCLASS_CUT, BCLASS_CHOP)
-			wounding_type = WOUND_SLASH
-		if(BCLASS_STAB)
-			wounding_type = WOUND_PIERCE
-		if(BCLASS_TWIST)
-			wounding_type = WOUND_BLUNT
-		if(BCLASS_BITE)
-			wounding_type = WOUND_BITE
-		if(BCLASS_BURN)
-			wounding_type = WOUND_BURN
-		if(BCLASS_LASHING)
-			wounding_type = WOUND_LASH
+	if(isnum(bclass))
+		wounding_type = bclass
+	else
+		switch(bclass)
+			if(BCLASS_BLUNT, BCLASS_SMASH, BCLASS_PUNCH)
+				wounding_type = WOUND_BLUNT
+			if(BCLASS_DRILL, BCLASS_PICK, BCLASS_PIERCE, BCLASS_SHOT)
+				wounding_type = WOUND_PIERCE
+			if(BCLASS_CUT, BCLASS_CHOP)
+				wounding_type = WOUND_SLASH
+			if(BCLASS_STAB)
+				wounding_type = WOUND_PIERCE
+			if(BCLASS_TWIST)
+				wounding_type = WOUND_BLUNT
+			if(BCLASS_BITE)
+				wounding_type = WOUND_BITE
+			if(BCLASS_BURN)
+				wounding_type = WOUND_BURN
+			if(BCLASS_LASHING)
+				wounding_type = WOUND_LASH
 
 	if(wounding_type == WOUND_NONE)
 		return
@@ -231,7 +234,7 @@
 
 /// Behemoth of a proc used to apply a wound after a bodypart is damaged in an attack
 /obj/item/bodypart/proc/try_crit(bclass, dam, mob/living/user, zone_precise, silent = FALSE, crit_message = FALSE, list/modifiers = list())
-	if(!bclass || !dam || (owner.status_flags & GODMODE))
+	if(!bclass || isnum(bclass) || !dam || (owner.status_flags & GODMODE))
 		return FALSE
 
 	if(dam < 5)

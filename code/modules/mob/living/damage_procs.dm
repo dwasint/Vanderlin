@@ -141,7 +141,7 @@
 /mob/living/proc/getBruteLoss()
 	return bruteloss
 
-/mob/living/proc/adjustBruteLoss(amount, updating_health = TRUE, forced = FALSE, required_status, damage_type, can_crit = FALSE)
+/mob/living/proc/adjustBruteLoss(amount, updating_health = TRUE, forced = FALSE, required_status, damage_type, can_crit = FALSE, true_heal = FALSE)
 	if(!forced && (status_flags & GODMODE))
 		return FALSE
 	bruteloss = CLAMP((bruteloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 2)

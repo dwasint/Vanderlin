@@ -178,7 +178,7 @@
 	switch(damage_type)
 		if(WOUND_SLASH, WOUND_PIERCE, WOUND_BITE)
 			return (is_bandaged() || is_sutured() || parent_bodypart.bandage)
-		if(WOUND_BLUNT, WOUND_LASH)
+		if(WOUND_BLUNT, WOUND_LASH, WOUND_DIVINE)
 			return (is_bandaged() || parent_bodypart.bandage)
 		if(WOUND_BURN)
 			return (is_salved() || (is_disinfected() && (is_bandaged() || parent_bodypart.bandage) ) )
@@ -225,6 +225,7 @@
 
 	if(damage_type == WOUND_BLUNT && !is_bleeding()) //bruises only infectable if bleeding
 		return FALSE
+
 
 	switch(damage_type)
 		if(WOUND_BLUNT)

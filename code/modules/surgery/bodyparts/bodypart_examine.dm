@@ -285,6 +285,8 @@
 	for(var/thing in injuries)
 		var/datum/injury/injury = thing
 		var/this_injury_desc = injury.get_desc(TRUE)
+		if(!this_injury_desc)
+			continue
 		if(injury.can_autoheal() && (injury.current_stage >= length(injury.stages)) && (injury.damage < 5))
 			this_injury_desc = "<span style='color: [COLOR_PALE_RED_GRAY];'>[this_injury_desc]</span>"
 		if(injury.is_bleeding())

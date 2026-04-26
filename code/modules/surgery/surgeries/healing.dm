@@ -50,7 +50,7 @@
 		for(var/datum/injury/injury as anything in target.all_injuries)
 			if(brute && burn)
 				break
-			if(injury.damage_type == WOUND_BLUNT)
+			if(injury.damage_type in list(WOUND_BLUNT, WOUND_INTERNAL_BRUISE, WOUND_LASH))
 				brute = TRUE
 				continue
 			if(injury.damage_type == WOUND_BURN)
@@ -94,7 +94,7 @@
 		for(var/datum/injury/injury as anything in target.all_injuries)
 			if(urhealedamt_burn && injury.damage_type == WOUND_BURN && injury.required_status == BODYPART_ORGANIC)
 				urhealedamt_burn = injury.heal_damage(urhealedamt_burn)
-			if(urhealedamt_brute && injury.damage_type == WOUND_BLUNT && injury.required_status == BODYPART_ORGANIC)
+			if(urhealedamt_brute && (injury.damage_type in list(WOUND_BLUNT, WOUND_LASH, WOUND_INTERNAL_BRUISE)) && injury.required_status == BODYPART_ORGANIC)
 				urhealedamt_brute = injury.heal_damage(urhealedamt_brute)
 	else
 		target.heal_bodypart_damage(urhealedamt_brute, urhealedamt_burn, required_status = BODYPART_ORGANIC)

@@ -33,6 +33,6 @@
 		eyer.take_damage(15)
 		eyel.take_damage(15)
 	else
-		cast_on.adjustBruteLoss(30)
+		cast_on.adjustBruteLoss(30, damage_type = BCLASS_BITE)
 	cast_on.adjust_temp_blindness(4 SECONDS)
 	cast_on.set_eye_blur_if_lower(20 SECONDS)

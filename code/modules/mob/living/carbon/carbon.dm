@@ -641,7 +641,8 @@
 			adjust_nutrition(-lost_nutrition)
 			adjust_hydration(-lost_nutrition)
 	if(harm)
-		adjustBruteLoss(3)
+		var/obj/item/bodypart/stomach = getorganslot(ORGAN_SLOT_STOMACH)
+		stomach?.take_damage(3)
 
 	for(var/i=0 to distance)
 		if(blood)

@@ -46,10 +46,6 @@
 	var/burn_dam = 0
 	var/max_damage = 0
 
-	///storage for our last injury damages
-	var/injury_burn = 0
-	var/injury_brute = 0
-
 	/// Our current stored wound damage multiplier
 	var/damage_multiplier = 1
 
@@ -567,31 +563,20 @@
 	owner.update_damage_overlays()
 
 /// Updates brute_damn and burn_damn from injuries
-/obj/item/bodypart/proc/update_damages(looped = FALSE)
+/obj/item/bodypart/proc/update_damages()
 	number_injuries = 0
-	brute_dam -= injury_brute
-	burn_dam -= injury_burn
-	injury_brute = 0
-	injury_burn = 0
+	brute_dam = 0
+	burn_dam = 0
 	for(var/datum/injury/injury as anything in injuries)
 		if(injury.damage <= 0)
 			continue
 
 		if(injury.damage_type == WOUND_BURN)
 			burn_dam += injury.damage
-			injury_burn += injury.damage
 		else
 			brute_dam += injury.damage
-			injury_brute += injury.damage
 
 		number_injuries += injury.amount
-	if(!looped)
-		if(brute_dam < 0 || (brute_dam < injury_brute))
-			injury_brute = 0
-			update_damages(TRUE)
-		if(burn_dam < 0 || (burn_dam < injury_burn))
-			injury_burn = 0
-			update_damages(TRUE)
 
 /// General handling of infections
 /obj/item/bodypart/proc/update_germs(delta_time, times_fired)
@@ -616,7 +601,7 @@
 	// Open injuries can become infected, regardless of antibiotics
 	if(istype(open_turf))
 		for(var/datum/injury/injury as anything in injuries)
-			if(injury.infection_check(delta_time, times_fired) && (max(open_turf.germ_level, owner_germ_level) < injury.germ_level))
+			if(injury.infection_check(delta_time, times_fired) && (max(open_turf.germ_level, owner_germ_level) > injury.germ_level))
 				injury.adjust_germ_level(injury.infection_rate * (0.5 * delta_time))
 
 	// If we have sufficient antibiotics, then skip over this stuff, the infection is going away
@@ -942,7 +927,7 @@
 //Heals brute and burn damage for the organ. Returns 1 if the damage-icon states changed at all.
 //Damage cannot go below zero.
 //Cannot remove negative damage (i.e. apply damage)
-/obj/item/bodypart/proc/heal_damage(brute, burn, required_status, updating_health = TRUE)
+/obj/item/bodypart/proc/heal_damage(brute, burn, required_status, updating_health = TRUE, true_heal = FALSE)
 	update_HP()
 	if(required_status && (status != required_status)) //So we can only heal certain kinds of limbs, ie robotic vs organic.
 		return
@@ -952,9 +937,12 @@
 		if((brute <= 0) && (burn <= 0))
 			break
 		var/datum/injury/injury = thing
-		if(injury.damage_type in list(WOUND_SLASH, WOUND_PIERCE, WOUND_BLUNT))
+		var/list/heal_list = list(WOUND_SLASH, WOUND_PIERCE, WOUND_BLUNT, WOUND_INTERNAL_BRUISE)
+		if(true_heal)
+			heal_list |= list(WOUND_BITE, WOUND_BLUNT, WOUND_DIVINE, WOUND_LASH)
+		if(injury.damage_type in heal_list)
 			brute = injury.heal_damage(brute)
-		else
+		else if(injury.damage_type == WOUND_BURN)
 			burn = injury.heal_damage(burn)
 
 	update_damages()

@@ -78,6 +78,31 @@
 						return /datum/injury/bite/deep
 					if(0 to 15)
 						return /datum/injury/bite/small
+			if(WOUND_INTERNAL_BRUISE)
+				switch(damage)
+					if(50 to INFINITY)
+						return /datum/injury/internal_bruise/catastrophic
+					if(40 to 50)
+						return /datum/injury/internal_bruise/critical
+					if(30 to 40)
+						return /datum/injury/internal_bruise/severe
+					if(15 to 30)
+						return /datum/injury/internal_bruise/moderate
+					if(0 to 15)
+						return /datum/injury/internal_bruise/minor
+			if(WOUND_DIVINE)
+				switch(damage)
+					if(50 to INFINITY)
+						return /datum/injury/divine/condemned
+					if(40 to 50)
+						return /datum/injury/divine/wrath
+					if(30 to 40)
+						return /datum/injury/divine/severe
+					if(15 to 30)
+						return /datum/injury/divine/brand
+					if(0 to 15)
+						return /datum/injury/divine/smite
+
 	else
 		switch(type)
 			if(WOUND_SLASH)
@@ -156,4 +181,29 @@
 						return /datum/injury/bite/deep/mechanical
 					if(0 to 15)
 						return /datum/injury/bite/small/mechanical
+			if(WOUND_INTERNAL_BRUISE)
+				switch(damage)
+					if(50 to INFINITY)
+						return /datum/injury/internal_bruise/catastrophic/mechanical
+					if(40 to 50)
+						return /datum/injury/internal_bruise/critical/mechanical
+					if(30 to 40)
+						return /datum/injury/internal_bruise/severe/mechanical
+					if(15 to 30)
+						return /datum/injury/internal_bruise/moderate/mechanical
+					if(0 to 15)
+						return /datum/injury/internal_bruise/minor/mechanical
+			if(WOUND_DIVINE)
+				switch(damage)
+					if(50 to INFINITY)
+						return /datum/injury/divine/condemned/mechanical
+					if(40 to 50)
+						return /datum/injury/divine/wrath/mechanical
+					if(30 to 40)
+						return /datum/injury/divine/severe/mechanical
+					if(15 to 30)
+						return /datum/injury/divine/brand/mechanical
+					if(0 to 15)
+						return /datum/injury/divine/smite/mechanical
+
 	return //no injury

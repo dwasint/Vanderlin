@@ -99,13 +99,13 @@
 		return
 	adjustBruteLoss(diff, updating_health, forced, required_bodytype, damage_type)
 
-/mob/living/carbon/adjustBruteLoss(amount, updating_health = TRUE, forced = FALSE, required_status, damage_type, can_crit = FALSE)
+/mob/living/carbon/adjustBruteLoss(amount, updating_health = TRUE, forced = FALSE, required_status, damage_type = WOUND_INTERNAL_BRUISE, can_crit = FALSE, true_heal = FALSE)
 	if(!forced && (status_flags & GODMODE))
 		return FALSE
 	if(amount > 0)
 		take_overall_damage(amount, 0, updating_health, required_status, damage_type = damage_type, no_crit = can_crit)
 	else
-		heal_overall_damage(abs(amount), 0, required_status ? required_status : BODYPART_ORGANIC, updating_health)
+		heal_overall_damage(abs(amount), 0, required_status ? required_status : BODYPART_ORGANIC, updating_health, true_heal)
 	return amount
 
 /mob/living/carbon/setFireLoss(amount, updating_health = TRUE, forced = FALSE, required_bodytype)
@@ -373,7 +373,7 @@
 		update_damage_overlays()
 
 //Heal MANY bodyparts, in random order
-/mob/living/carbon/heal_overall_damage(brute = 0, burn = 0, required_status, updating_health = TRUE)
+/mob/living/carbon/heal_overall_damage(brute = 0, burn = 0, required_status, updating_health = TRUE, true_heal = FALSE)
 	. = FALSE
 
 	var/list/obj/item/bodypart/parts = get_damaged_bodyparts(brute, burn, required_status)
@@ -385,7 +385,7 @@
 		var/burn_was = picked.burn_dam
 		. += picked.get_damage()
 
-		update |= picked.heal_damage(brute, burn, required_status, FALSE)
+		update |= picked.heal_damage(brute, burn, required_status, FALSE, true_heal)
 
 		. -= picked.get_damage() // return the net amount of damage healed
 
@@ -423,6 +423,10 @@
 		var/brute_was = picked.brute_dam
 		var/burn_was = picked.burn_dam
 		. += picked.get_damage()
+
+		if(!burn && !damage_type)
+			stack_trace("Carbon has taken damage without a tied damage class! Defaulting to Internal Bruising.")
+			damage_type = WOUND_INTERNAL_BRUISE
 
 		if(damage_type || burn)
 			if(burn)

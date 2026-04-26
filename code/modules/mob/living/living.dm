@@ -130,7 +130,7 @@
 		visible_message("[src] falls on top of [crumpled_mob]!")
 		crumpled_mob.Stun(1)
 		crumpled_mob.AdjustKnockdown(levels * 20)
-		crumpled_mob.take_overall_damage(impact_damage)
+		crumpled_mob.take_overall_damage(impact_damage, damage_type = BCLASS_BLUNT)
 
 	return ..()
 
