@@ -89,6 +89,8 @@
 #define BODYPART_FROZEN	(1<<10)
 /// Autoheals severe injuries that normally require medical treatment
 #define	BODYPART_GOOD_HEALER (1<<11)
+///this is for bodyparts that are bone covered
+#define BODYPART_BONE_ENCASED (1<<12)
 
 //flags for the organ_flags var on /obj/item/organ
 /// Synthetic organs, or cybernetic organs. Reacts to EMPs and don't deteriorate or heal

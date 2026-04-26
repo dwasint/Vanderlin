@@ -200,12 +200,16 @@
 	was_owner.update_health_hud() //update the healthdoll
 	was_owner.update_body()
 
+	if(CHECK_BITFIELD(limb_flags, BODYPART_VITAL))
+		was_owner.death()
+
 	// drop_location = null happens when a "dummy human" used for rendering icons on prefs screen gets its limbs replaced.
 	if(!drop_location)
 		qdel(src)
 		return TRUE
 
 	forceMove(drop_location)
+	START_PROCESSING(SSobj, src)
 	return TRUE
 
 //when a limb is dropped, the internal organs are removed from the mob and put into the limb
@@ -355,6 +359,10 @@
 	moveToNullspace()
 	set_owner(C)
 	update_chronic()
+
+	/// Infection will be handled on on_life() from now on
+	STOP_PROCESSING(SSobj, src)
+
 	C.add_bodypart(src)
 	if(held_index)
 		if(held_index > C.hand_bodyparts.len)

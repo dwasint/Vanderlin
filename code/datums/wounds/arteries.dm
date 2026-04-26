@@ -20,6 +20,12 @@
 		return FALSE
 	if(!affected.get_incision())
 		return FALSE
+	if(affected.limb_flags & BODYPART_BONE_ENCASED)
+		for(var/datum/wound/wound in affected.wounds)
+			if(!istype(wound, /datum/wound/fracture))
+				continue
+			return TRUE
+		return FALSE
 
 /datum/wound/artery/can_stack_with(datum/wound/other)
 	if(istype(other, /datum/wound/artery) && (type == other.type))

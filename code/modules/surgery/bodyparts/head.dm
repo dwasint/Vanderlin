@@ -21,6 +21,7 @@
 	max_cavity_volume = 8
 
 	artery_type = list(ARTERY_HEAD, ARTERY_NECK)
+	limb_flags = BODYPART_HAS_ARTERY | BODYPART_BONE_ENCASED
 
 	var/mob/living/brain/brainmob = null //The current occupant.
 	var/obj/item/organ/brain/brain = null //The brain organ

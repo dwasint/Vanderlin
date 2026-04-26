@@ -210,6 +210,22 @@
 			if(owner)
 				artery.Insert(owner)
 
+/// Processing outside the body
+/obj/item/bodypart/process(delta_time)
+	return on_death(delta_time)
+
+/// Things that process when the limb is well, rotting
+/obj/item/bodypart/proc/on_death(delta_time, times_fired)
+	if(can_decay())
+		decay(delta_time, times_fired)
+	else if(!owner)
+		return PROCESS_KILL
+
+/// Rotting away over time
+/obj/item/bodypart/proc/decay(delta_time, times_fired)
+	adjust_germ_level(rand(min_decay_factor,max_decay_factor) * delta_time)
+	update_limb(FALSE)
+
 /obj/item/bodypart/proc/is_robotic_limb()
 	return (status == BODYPART_ROBOTIC)
 

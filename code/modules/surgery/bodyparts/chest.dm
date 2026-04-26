@@ -22,6 +22,7 @@
 	grid_height = 96
 
 	artery_type = ARTERY_CHEST
+	limb_flags = BODYPART_HAS_ARTERY | BODYPART_BONE_ENCASED
 
 /obj/item/bodypart/chest/set_disabled(new_disabled)
 	. = ..()
