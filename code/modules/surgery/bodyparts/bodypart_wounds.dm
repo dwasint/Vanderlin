@@ -154,7 +154,6 @@
 /obj/item/bodypart/proc/bodypart_attacked_by(bclass, dam, mob/living/user, zone_precise, silent = FALSE, crit_message = FALSE, list/modifiers = list(), incoming_germ, organ_bonus, pre_applied = FALSE)
 	if(!bclass || !dam || !owner || (owner.status_flags & GODMODE))
 		return
-	var/initial_damage = dam
 	dam *= damage_multiplier
 	if(dam < 5)
 		if(CEILING(dam, 1) < 5)
@@ -213,12 +212,6 @@
 
 	if(incoming_germ && injury)
 		injury.adjust_germ_level(incoming_germ * 0.1)
-
-	if(injury && pre_applied) //this is kinda scuffed but it lets us keep non injury damages
-		if(injury.damage_type == WOUND_BURN)
-			burn_dam -= initial_damage
-		else
-			brute_dam -= initial_damage
 
 	update_damages()
 
