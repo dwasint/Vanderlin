@@ -170,8 +170,8 @@
 			if (!HAS_TRAIT(L, TRAIT_NOPAIN))
 				L.emote("agony")
 			L.Stun(2 SECONDS)
-	if (!HAS_TRAIT(L, TRAIT_PIERCEIMMUNE))
-		L.adjustBruteLoss(10, damage_type = BCLASS_CUT)
+	if (!HAS_TRAIT(L, TRAIT_PIERCEIMMUNE) && prob(20))
+		L.adjustBruteLoss(5, damage_type = BCLASS_CUT)
 		to_chat(L, span_danger("Thorns rip into you as you push through!"))
 	apply_flower_effect(L, /datum/status_effect/debuff/euphorbia_thorns)
 
@@ -347,7 +347,7 @@
 	var/mob/living/L = owner
 	if (!L) return
 	check_field_presence()
-	L.adjustBruteLoss(10, damage_type = BCLASS_CUT)
+	L.adjustBruteLoss(5, damage_type = BCLASS_CUT)
 
 	if (locate(/obj/structure/flora/field/euphorbia) in get_turf(L))
 		to_chat(L, span_warning("The spines hurt your feet"))
