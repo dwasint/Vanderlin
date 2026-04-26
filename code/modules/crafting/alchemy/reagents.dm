@@ -11,6 +11,8 @@
 
 /datum/reagent/medicine/healthpot/on_bodypart_absorb(obj/item/bodypart/bodypart, mob/living/carbon/M, amount_to_transfer)
 	for(var/datum/injury/injury in bodypart.injuries)
+		if(injury.damage_type == WOUND_DIVINE)
+			continue
 		injury.heal_damage(1)
 
 /datum/reagent/consumable/healthpot/on_mob_metabolize(mob/living/L)
@@ -46,7 +48,11 @@
 
 /datum/reagent/medicine/healthpot/on_bodypart_absorb(obj/item/bodypart/bodypart, mob/living/carbon/M, amount_to_transfer)
 	for(var/datum/injury/injury in bodypart.injuries)
+		if(injury.damage_type == WOUND_DIVINE)
+			continue
 		injury.heal_damage(2)
+	for(var/datum/wound/wound in bodypart.wounds)
+		wound.heal_wound(2)
 
 /datum/reagent/consumable/stronghealth/on_mob_metabolize(mob/living/L)
 	. = ..()

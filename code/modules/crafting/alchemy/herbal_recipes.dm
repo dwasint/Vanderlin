@@ -77,6 +77,8 @@
 
 /datum/reagent/medicine/herbal/calendula_salve/on_bodypart_absorb(obj/item/bodypart/bodypart, mob/living/carbon/M, amount_to_transfer)
 	for(var/datum/injury/injury in bodypart.injuries)
+		if(injury.damage_type == WOUND_DIVINE)
+			continue
 		injury.heal_damage(1)
 		injury.salve_injury()
 		if(injury.damage_type == WOUND_BURN)
@@ -396,10 +398,12 @@
 
 /datum/reagent/medicine/herbal/paris_poultice/on_bodypart_absorb(obj/item/bodypart/bodypart, mob/living/carbon/M, amount_to_transfer)
 	for(var/datum/injury/injury in bodypart.injuries)
+		if(injury.damage_type == WOUND_DIVINE)
+			continue
 		if(injury.damage_type == WOUND_BURN)
-			injury.heal_damage(-0.5)
+			injury.heal_damage(0.5)
 		if(injury.damage_type != WOUND_BURN)
-			injury.heal_damage(-0.75)
+			injury.heal_damage(0.75)
 	bodypart.add_pain(-amount_to_transfer * 0.3)
 
 /datum/reagent/medicine/herbal/paris_poultice/overdose_process(mob/living/M)
