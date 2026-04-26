@@ -25,6 +25,8 @@
 	bleed_rate = 8
 	can_cauterize = TRUE
 	critical = TRUE
+	associated_bclasses = STAB_BCLASSES
+	viable_zones = list(BODY_ZONE_PRECISE_EARS)
 
 /datum/wound/facial/ears/can_apply_to_mob(mob/living/affected)
 	. = ..()
@@ -52,6 +54,7 @@
 	bleed_rate = 8
 	can_cauterize = FALSE
 	critical = TRUE
+	viable_zones = list(BODY_ZONE_PRECISE_R_EYE, BODY_ZONE_PRECISE_L_EYE)
 
 /datum/wound/facial/eyes/on_mob_gain(mob/living/affected)
 	. = ..()
@@ -66,6 +69,7 @@
 		"The right eye is gouged!",
 		"The right eye is destroyed!",
 	)
+	viable_zones = list(BODY_ZONE_PRECISE_R_EYE)
 
 /datum/wound/facial/eyes/right/can_apply_to_mob(mob/living/carbon/affected)
 	. = ..()
@@ -103,6 +107,7 @@
 	woundpain = 0
 	bleed_rate = 0
 	can_sew = FALSE
+	can_roll = FALSE
 
 /datum/wound/facial/eyes/left
 	name = "left eye evisceration"
@@ -112,6 +117,7 @@
 		"The left eye is gouged!",
 		"The left eye is destroyed!",
 	)
+	viable_zones = list(BODY_ZONE_PRECISE_L_EYE)
 
 /datum/wound/facial/eyes/left/can_apply_to_mob(mob/living/carbon/affected)
 	. = ..()
@@ -149,6 +155,7 @@
 	woundpain = 0
 	bleed_rate = 0
 	can_sew = FALSE
+	can_roll = FALSE
 
 /datum/wound/facial/tongue
 	name = "glossectomy"
@@ -162,6 +169,7 @@
 	bleed_rate = 10
 	can_cauterize = FALSE
 	critical = TRUE
+	associated_bclasses = ARTERY_BCLASSES
 	var/permanent = FALSE
 
 /datum/wound/facial/tongue/can_apply_to_mob(mob/living/affected)
@@ -188,6 +196,7 @@
 	bleed_rate = 0
 	can_sew = FALSE
 	permanent = TRUE
+	can_roll = FALSE
 
 /datum/wound/facial/disfigurement
 	name = "disfigurement"
@@ -200,6 +209,7 @@
 	can_sew = FALSE
 	can_cauterize = FALSE
 	critical = TRUE
+	associated_bclasses = STAB_BCLASSES
 
 /datum/wound/facial/disfigurement/on_mob_gain(mob/living/affected)
 	. = ..()
@@ -217,6 +227,7 @@
 		"The nose is destroyed!",
 	)
 	mortal = TRUE
+	viable_zones = list(BODY_ZONE_PRECISE_NOSE)
 
 /datum/wound/facial/disfigurement/nose/on_mob_gain(mob/living/affected)
 	. = ..()
@@ -241,6 +252,7 @@
 	disabling = TRUE
 	critical = TRUE
 	mortal = TRUE
+	associated_bclasses = CBT_BCLASSES
 
 /datum/wound/cbt/can_apply_to_mob(mob/living/affected)
 	. = ..()
@@ -290,6 +302,7 @@
 		"The testicles are eviscerated!",
 	)
 	whp = null
+	can_roll = FALSE
 
 /datum/wound/cbt/permanent/on_mob_gain(mob/living/affected)
 	. = ..()
@@ -325,6 +338,7 @@
 	disabling = TRUE
 	critical = TRUE
 	sleep_healing = 0
+	associated_bclasses = WHIPPING_BCLASSES
 	var/gain_emote = "paincrit"
 
 /datum/wound/scarring/on_mob_gain(mob/living/affected)

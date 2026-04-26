@@ -11,7 +11,7 @@
 	embed_chance = 0
 	werewolf_infection_probability = 50
 	sleep_healing = 0
-
+	associated_bclasses = ARTERY_BCLASSES
 	var/artery_type_override
 
 /datum/wound/artery/can_apply_to_bodypart(obj/item/bodypart/affected)
@@ -56,12 +56,16 @@
 
 /datum/wound/artery/neck
 	artery_type_override = /obj/item/organ/artery/neck
+	can_roll = FALSE //snowflake used for neck slit
 
 /datum/wound/artery/chest
 	artery_type_override = /obj/item/organ/artery/chest
+	associated_bclasses = ARTERY_HEART_BCLASSES
+	viable_zones = list(BODY_ZONE_CHEST)
 
 /datum/wound/artery/dissect
 	severity = WOUND_SEVERITY_CRITICAL
 
 /datum/wound/artery/dissect/neck
 	artery_type_override = /obj/item/organ/artery/neck
+	can_roll = FALSE //snowflake used for neck slit

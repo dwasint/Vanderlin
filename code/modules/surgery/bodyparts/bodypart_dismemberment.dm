@@ -209,7 +209,6 @@
 		return TRUE
 
 	forceMove(drop_location)
-	START_PROCESSING(SSobj, src)
 	return TRUE
 
 //when a limb is dropped, the internal organs are removed from the mob and put into the limb
@@ -359,9 +358,6 @@
 	moveToNullspace()
 	set_owner(C)
 	update_chronic()
-
-	/// Infection will be handled on on_life() from now on
-	STOP_PROCESSING(SSobj, src)
 
 	C.add_bodypart(src)
 	if(held_index)

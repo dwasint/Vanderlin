@@ -1,4 +1,3 @@
-
 /datum/wound/slash/disembowel
 	name = "disembowelment"
 	check_name = "<span class='userdanger'><B>GUTS</B></span>"
@@ -17,6 +16,8 @@
 	sewn_woundpain = 10
 	sew_threshold = 150 //absolutely awful to sew up
 	critical = TRUE
+	associated_bclasses = ARTERY_BCLASSES
+	viable_zones = list(BODY_ZONE_PRECISE_STOMACH)
 	/// Organs we can disembowel associated with chance to disembowel
 	var/static/list/affected_organs = list(
 		ORGAN_SLOT_STOMACH = 100,

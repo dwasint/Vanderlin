@@ -31,6 +31,7 @@
 	ignore_bloody = TRUE
 
 	werewolf_infection_probability = 0
+	associated_bclasses = FRACTURE_BCLASSES
 	/// Whether or not we can be surgically set
 	var/can_set = TRUE
 	/// Emote we use when applied
@@ -187,6 +188,7 @@
 	bleed_rate = 1.6
 	clotting_threshold = 0.4
 	clotting_rate = 0.04
+	viable_zones = list(BODY_ZONE_PRECISE_MOUTH)
 
 /datum/wound/fracture/mouth/on_mob_gain(mob/living/affected)
 	. = ..()
@@ -209,6 +211,7 @@
 	)
 	whp = 150
 	mortal = TRUE
+	viable_zones = list(BODY_ZONE_HEAD)
 
 /datum/wound/fracture/neck/can_apply_to_mob(mob/living/affected)
 	if(QDELETED(affected) || istype(affected, /mob/living/carbon/human/species/skeleton/death_arena))
@@ -243,6 +246,7 @@
 	bleed_rate = 23.1
 	clotting_threshold = 0.8
 	clotting_rate = 1.25
+	viable_zones = list(BODY_ZONE_CHEST)
 
 /datum/wound/fracture/chest/on_mob_gain(mob/living/affected)
 	. = ..()
@@ -262,6 +266,7 @@
 	bleed_rate = 3.1
 	clotting_threshold = 1.2
 	clotting_rate = 0.04
+	viable_zones = list(BODY_ZONE_PRECISE_GROIN)
 
 /datum/wound/fracture/groin/on_mob_gain(mob/living/affected)
 	. = ..()

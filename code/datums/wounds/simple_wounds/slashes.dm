@@ -65,6 +65,7 @@
 	can_sew = TRUE
 	can_cauterize = TRUE
 	associated_bclasses = list(BCLASS_LASHING)
+	can_roll = FALSE
 
 /datum/wound/lashing/small
 	name = "superficial lashing"

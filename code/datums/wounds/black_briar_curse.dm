@@ -14,6 +14,7 @@
 	mob_overlay = null
 	overlay_on_skeleton = TRUE
 	use_blood_color = FALSE
+	can_roll = FALSE
 
 	// the body zones this curse type targets
 	var/list/body_zones

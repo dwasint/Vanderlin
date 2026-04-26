@@ -12,6 +12,7 @@
 	name = "Spill"
 	severity = WOUND_SEVERITY_CRITICAL
 	abstract_type = /datum/wound/spill
+	associated_bclasses = ARTERY_BCLASSES
 
 /datum/wound/spill/gut
 	name = "Gut Spill"

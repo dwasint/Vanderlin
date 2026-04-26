@@ -16,6 +16,7 @@
 		BCLASS_PUNCH,
 		BCLASS_TWIST,
 	)
+	can_roll = FALSE
 
 /datum/wound/bruise/can_apply_to_bodypart(obj/item/bodypart/affected)
 	. = ..()

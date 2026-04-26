@@ -15,6 +15,7 @@
 	can_sew = TRUE
 	can_cauterize = TRUE
 	associated_bclasses = list(BCLASS_STAB)
+	can_roll = FALSE
 
 /datum/wound/puncture/can_apply_to_bodypart(obj/item/bodypart/affected)
 	. = ..()

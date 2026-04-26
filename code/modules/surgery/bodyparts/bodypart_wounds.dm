@@ -234,13 +234,13 @@
 		return FALSE
 
 	var/list/crit_classes
-	if(bclass in GLOB.dislocation_bclasses)
+	if(bclass in DISLOCATION_BCLASSES)
 		LAZYADD(crit_classes, "dislocation")
-	if(bclass in GLOB.fracture_bclasses)
+	if(bclass in FRACTURE_BCLASSES)
 		LAZYADD(crit_classes, "fracture")
-	if(bclass in GLOB.artery_bclasses)
+	if(bclass in ARTERY_BCLASSES)
 		LAZYADD(crit_classes, "artery")
-	if(bclass in GLOB.whipping_bclasses)
+	if(bclass in WHIPPING_BCLASSES)
 		LAZYADD(crit_classes, "scarring")
 
 	if(!crit_classes)
@@ -283,7 +283,7 @@
 					LAZYADD(attempted_wounds, /datum/wound/dislocation)
 		if("artery")
 			if(user)
-				if((bclass in GLOB.artery_strong_bclasses) && istype(user.rmb_intent, /datum/rmb_intent/strong))
+				if((bclass in ARTERY_STRONG_BCLASSES) && istype(user.rmb_intent, /datum/rmb_intent/strong))
 					dam += 10
 				else if(istype(user.rmb_intent, /datum/rmb_intent/aimed))
 					dam += 10
@@ -321,13 +321,13 @@
 		return FALSE
 
 	var/list/crit_classes
-	if(bclass in GLOB.cbt_classes)
+	if(bclass in CBT_BCLASSES)
 		LAZYADD(crit_classes, "cbt")
-	if(bclass in GLOB.fracture_bclasses)
+	if(bclass in FRACTURE_BCLASSES)
 		LAZYADD(crit_classes, "fracture")
-	if(bclass in GLOB.artery_bclasses)
+	if(bclass in ARTERY_BCLASSES)
 		LAZYADD(crit_classes, "artery")
-	if(bclass in GLOB.whipping_bclasses)
+	if(bclass in WHIPPING_BCLASSES)
 		LAZYADD(crit_classes, "scarring")
 
 	if(!crit_classes)
@@ -369,7 +369,7 @@
 				if(prob(used))
 					LAZYADD(attempted_wounds, fracture_type)
 		if("artery")
-			if(user && (bclass in GLOB.artery_strong_bclasses) && istype(user.rmb_intent, /datum/rmb_intent/strong))
+			if(user && (bclass in ARTERY_STRONG_BCLASSES) && istype(user.rmb_intent, /datum/rmb_intent/strong))
 				dam += 10
 			else if(user && istype(user.rmb_intent, /datum/rmb_intent/aimed))
 				dam += 10
@@ -380,7 +380,7 @@
 				if((zone_precise == BODY_ZONE_PRECISE_STOMACH) && !resistance)
 					LAZYADD(attempted_wounds, /datum/wound/spill/gut)
 					LAZYADD(attempted_wounds, /datum/wound/slash/disembowel)
-				if(owner.has_wound(/datum/wound/fracture/chest) || (bclass in GLOB.artery_heart_bclasses))
+				if(owner.has_wound(/datum/wound/fracture/chest) || (bclass in ARTERY_HEART_BCLASSES))
 					LAZYADD(attempted_wounds, /datum/wound/artery/chest)
 				else
 					LAZYADD(attempted_wounds, /datum/wound/artery)
@@ -415,11 +415,11 @@
 		return FALSE
 
 	var/list/crit_classes
-	if(bclass in GLOB.dislocation_bclasses)
+	if(bclass in DISLOCATION_BCLASSES)
 		LAZYADD(crit_classes, "dislocation")
-	if(bclass in GLOB.fracture_bclasses)
+	if(bclass in FRACTURE_BCLASSES)
 		LAZYADD(crit_classes, "fracture")
-	if(bclass in GLOB.artery_bclasses)
+	if(bclass in ARTERY_BCLASSES)
 		LAZYADD(crit_classes, "artery")
 
 	if(!crit_classes)
@@ -456,7 +456,7 @@
 			used += round(damage_dividend * 20 + (dam / 6), 1)
 			if(HAS_TRAIT(src, TRAIT_CRITICAL_RESISTANCE))
 				used -= 10
-			if(!owner.stat && (zone_precise in knockout_zones) && !(bclass in GLOB.no_knockout_bclasses))
+			if(!owner.stat && (zone_precise in knockout_zones) && !(bclass in NO_KNOCKOUT_BCLASSES))
 				var/knockout_chance = used + modifiers[CRIT_MOD_KNOCKOUT_CHANCE]
 				if(prob(knockout_chance))
 					owner.next_attack_msg += " [span_crit("<b>Critical hit!</b> [owner] is knocked out[from_behind ? " FROM BEHIND" : ""]!")]"
@@ -503,7 +503,7 @@
 				if(zone_precise == BODY_ZONE_PRECISE_NECK)
 					artery_type = /datum/wound/artery/neck
 				LAZYADD(attempted_wounds, artery_type)
-				if((bclass in GLOB.stab_bclasses) && !resistance)
+				if((bclass in STAB_BCLASSES) && !resistance)
 					if(zone_precise in earstab_zones)
 						var/obj/item/organ/ears/my_ears = owner.getorganslot(ORGAN_SLOT_EARS)
 						if(!my_ears || has_wound(/datum/wound/facial/ears))
@@ -544,9 +544,9 @@
 		return FALSE
 
 	var/list/crit_classes
-	if(bclass in GLOB.fracture_bclasses)
+	if(bclass in FRACTURE_BCLASSES)
 		LAZYADD(crit_classes, "fracture")
-	if(bclass in GLOB.artery_bclasses)
+	if(bclass in ARTERY_BCLASSES)
 		LAZYADD(crit_classes, "artery")
 
 	if(!crit_classes)
@@ -583,7 +583,7 @@
 				used -= 10
 			if(prob(used))
 				LAZYADD(attempted_wounds, /datum/wound/artery)
-				if((bclass in GLOB.stab_bclasses) && !resistance)
+				if((bclass in STAB_BCLASSES) && !resistance)
 					var/obj/item/organ/tongue/tongue = owner.getorganslot(ORGAN_SLOT_TONGUE)
 					if(!tongue || has_wound(/datum/wound/facial/tongue))
 						LAZYADD(attempted_wounds, /datum/wound/fracture/mouth)

@@ -127,6 +127,25 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	///list of viable zones for this
 	var/list/viable_zones = ALL_BODYPARTS
 
+	/// These are effectively try_crit moved onto the wound
+
+	/// Minimum damage required to attempt this wound
+	var/min_damage = 5
+	/// Minimum damage_dividend (current/max) required
+	var/min_damage_dividend = 0
+	/// Which bclasses can trigger this wound
+	var/list/trigger_bclasses = list()
+	/// Base probability modifier added to the rolled chance
+	var/base_prob_weight = 0
+	/// If TRUE, strong RMB intent adds +10 dam before prob calc
+	var/strong_intent_bonus = FALSE
+	/// If TRUE, aimed RMB intent adds +10 dam before prob calc
+	var/aimed_intent_bonus = FALSE
+	/// If TRUE, TRAIT_BRITTLE adds +10 dam
+	var/brittle_bonus = FALSE
+	///if we are able to roll natively
+	var/can_roll = TRUE
+
 /datum/wound/Destroy(force)
 	. = ..()
 	if(bodypart_owner)

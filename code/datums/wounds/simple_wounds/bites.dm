@@ -13,6 +13,7 @@
 	passive_healing = 0.5
 	werewolf_infection_probability = 15
 	associated_bclasses = list(BCLASS_BITE)
+	can_roll = FALSE
 
 /datum/wound/bite/can_apply_to_bodypart(obj/item/bodypart/affected)
 	. = ..()
