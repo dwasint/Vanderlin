@@ -38,6 +38,7 @@
 		limb.owner.adjust_bloodvolume(-CEILING(BLOOD_VOLUME_SURVIVE * damage/100, 1))
 */
 
+/*
 /datum/injury/burn/receive_damage(damage_received = 0, pain_received = 0, wounding_type = WOUND_BLUNT)
 	. = ..()
 	if((wounding_type == WOUND_BURN) && (damage + damage_received >= 50) && parent_bodypart)
@@ -49,6 +50,7 @@
 					parent_bodypart.dismember(BURN)
 		else if(parent_bodypart.dismemberable)
 			parent_bodypart.dismember(BURN)
+*/
 
 /datum/injury/burn/moderate
 	stages = list(
