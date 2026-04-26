@@ -12,7 +12,16 @@
 	werewolf_infection_probability = 50
 	sleep_healing = 0
 	associated_bclasses = ARTERY_BCLASSES
+	min_damage = 5
+	min_damage_dividend = 0
+	strong_intent_bonus = TRUE
+	aimed_intent_bonus = TRUE
 	var/artery_type_override
+
+/datum/wound/artery/get_crit_prob(bclass, dam, damage_dividend, mob/living/user, obj/item/bodypart/affected, zone_precise, list/modifiers)
+	if(affected.limb_flags & BODYPART_BONE_ENCASED && !affected.has_wound(/datum/wound/fracture))
+		return 0
+	return ..()
 
 /datum/wound/artery/can_apply_to_bodypart(obj/item/bodypart/affected)
 	. = ..()
@@ -20,11 +29,7 @@
 		return FALSE
 	if(!affected.get_incision())
 		return FALSE
-	if(affected.limb_flags & BODYPART_BONE_ENCASED)
-		for(var/datum/wound/wound in affected.wounds)
-			if(!istype(wound, /datum/wound/fracture))
-				continue
-			return TRUE
+	if(affected.limb_flags & BODYPART_BONE_ENCASED && !affected.has_wound(/datum/wound/fracture))
 		return FALSE
 
 /datum/wound/artery/can_stack_with(datum/wound/other)

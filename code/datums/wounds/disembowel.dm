@@ -18,6 +18,9 @@
 	critical = TRUE
 	associated_bclasses = ARTERY_BCLASSES
 	viable_zones = list(BODY_ZONE_PRECISE_STOMACH)
+	min_damage_dividend = 0
+	strong_intent_bonus = TRUE
+	aimed_intent_bonus = TRUE
 	/// Organs we can disembowel associated with chance to disembowel
 	var/static/list/affected_organs = list(
 		ORGAN_SLOT_STOMACH = 100,
@@ -32,6 +35,8 @@
 /datum/wound/slash/disembowel/can_apply_to_bodypart(obj/item/bodypart/new_limb)
 	. = ..()
 	if(!.)
+		return FALSE
+	if(HAS_TRAIT(new_limb.owner, TRAIT_CRITICAL_RESISTANCE))
 		return FALSE
 	var/gaping_wound = FALSE
 	for(var/datum/wound/other_wound as anything in new_limb.wounds)

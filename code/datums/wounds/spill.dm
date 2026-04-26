@@ -16,7 +16,10 @@
 
 /datum/wound/spill/gut
 	name = "Gut Spill"
-	viable_zones = list(BODY_ZONE_CHEST)
+	viable_zones = list(BODY_ZONE_PRECISE_STOMACH)
+	min_damage_dividend = 0
+	strong_intent_bonus = TRUE
+	aimed_intent_bonus = TRUE
 	severity = WOUND_SEVERITY_CRITICAL
 	disabling = TRUE
 
@@ -46,6 +49,9 @@
 	if(!gaping_wound && !gaping_injury)
 		return FALSE
 	return TRUE
+
+/datum/wound/spill/gut/on_crit_applied(obj/item/bodypart/affected, mob/living/user, zone_precise, list/modifiers)
+	affected.add_wound(/datum/wound/slash/disembowel)
 
 /datum/wound/spill/gut/on_bodypart_gain(obj/item/bodypart/new_limb)
 	. = ..()

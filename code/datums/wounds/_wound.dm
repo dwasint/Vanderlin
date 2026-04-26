@@ -133,8 +133,6 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	var/min_damage = 5
 	/// Minimum damage_dividend (current/max) required
 	var/min_damage_dividend = 0
-	/// Which bclasses can trigger this wound
-	var/list/trigger_bclasses = list()
 	/// Base probability modifier added to the rolled chance
 	var/base_prob_weight = 0
 	/// If TRUE, strong RMB intent adds +10 dam before prob calc
@@ -145,6 +143,10 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	var/brittle_bonus = FALSE
 	///if we are able to roll natively
 	var/can_roll = TRUE
+	///how much we multiply our dividend by for odds
+	var/dividend_multi = 20
+	///how much we divide our calculated damage by for odds
+	var/damage_divisor = 6
 
 /datum/wound/Destroy(force)
 	. = ..()
@@ -207,6 +209,38 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	if(critical)
 		final_message = "<span class='crit'><b>Critical hit!</b> [final_message]</span>"
 	return final_message
+
+/datum/wound/proc/get_crit_prob(bclass, dam, damage_dividend, mob/living/user, obj/item/bodypart/affected, zone_precise, list/modifiers)
+	if(!can_roll)
+		return 0
+	if(!(bclass in associated_bclasses))
+		return 0
+	if(dam < min_damage)
+		return 0
+	if(damage_dividend < min_damage_dividend)
+		if(!(brittle_bonus && HAS_TRAIT(affected, TRAIT_BRITTLE))) // brittle skips the dividend gate
+			return 0
+	if(length(viable_zones) && !(zone_precise in viable_zones) && viable_zones != ALL_BODYPARTS)
+		return 0
+
+	var/used = base_prob_weight + (modifiers?[CRIT_MOD_CHANCE] || 0)
+	var/calc_dam = dam
+
+	if(strong_intent_bonus && user && istype(user.rmb_intent, /datum/rmb_intent/strong))
+		calc_dam += 10
+	if(aimed_intent_bonus && user && istype(user.rmb_intent, /datum/rmb_intent/aimed))
+		calc_dam += 10
+	if(brittle_bonus && HAS_TRAIT(affected, TRAIT_BRITTLE))
+		calc_dam += 10
+	if(HAS_TRAIT(affected, TRAIT_CRITICAL_RESISTANCE))
+		used -= 10
+
+	used += round(damage_dividend * dividend_multi + (calc_dam / damage_divisor), 1)
+	return used
+
+/// Override per wound to add post-application effects
+/datum/wound/proc/on_crit_applied(obj/item/bodypart/affected, mob/living/user, zone_precise, list/modifiers)
+	return
 
 /// Sound that plays when this wound is applied to a mob
 /datum/wound/proc/get_sound_effect(mob/living/affected, obj/item/bodypart/affected_bodypart)
