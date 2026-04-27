@@ -4,6 +4,25 @@
 	description = "Tending to crops"
 	var/current_task = "scanning"
 	var/current_target = null
+	priority_eval_interval = 3 SECONDS
+
+/datum/action_state/farming/evaluate_priority(datum/ai_controller/controller)
+	if(!controller.blackboard[BB_GNOME_CROP_MODE])
+		return GNOME_PRIORITY_NONE
+
+	var/mob/living/pawn = controller.pawn
+	var/found_any_soil = FALSE
+
+	for(var/obj/structure/soil/soil in oview(7, pawn))
+		found_any_soil = TRUE
+		// Bump to HIGH immediately if harvest is ready
+		if(soil.produce_ready)
+			return GNOME_PRIORITY_HIGH
+
+	if(!found_any_soil)
+		return GNOME_PRIORITY_NONE
+
+	return GNOME_PRIORITY_NORMAL
 
 /datum/action_state/farming/enter_state(datum/ai_controller/controller)
 	current_task = "scanning"
@@ -135,7 +154,6 @@
 				pawn.visible_message(span_notice("[pawn] waters [soil]."))
 				var/list/wash = list('sound/foley/waterwash (1).ogg','sound/foley/waterwash (2).ogg')
 				playsound(pawn, pick(wash), 100, FALSE)
-
 				pawn.dropItemToGround(carried)
 				controller.clear_blackboard_key(BB_SIMPLE_CARRY_ITEM)
 
@@ -207,6 +225,6 @@
 /datum/action_state/farming/proc/find_seed_source_nearby(datum/ai_controller/controller)
 	var/mob/living/pawn = controller.pawn
 	for(var/obj/structure/closet/container in oview(7, pawn))
-		for(var/obj/item/neuFarm/seed/seed in container.contents)
+		for(var/obj/item/neuFarm/seed in container.contents)
 			return container
 	return null

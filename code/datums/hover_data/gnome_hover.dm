@@ -86,7 +86,7 @@
 				add_client_image(soil_image, viewer)
 				range_overlays += soil_image
 
-	if(controller.blackboard[BB_GNOME_SPLITTER_MODE])
+	if(controller.blackboard[BB_GNOME_SPLITTER_MODE] || controller.blackboard[BB_GNOME_EXTRACTOR_MODE])
 		var/turf/source = controller.blackboard[BB_GNOME_WAYPOINT_A]
 		if(source)
 			create_range_box(source, range, "#FF00FF", "splitter_source", viewer) // Magenta
@@ -104,11 +104,20 @@
 	var/obj/machinery/essence/splitter/splitter = controller.blackboard[BB_GNOME_TARGET_SPLITTER]
 	if(splitter)
 		var/image/splitter_image = image('icons/effects/overlays.dmi', splitter, "target_marker")
-		splitter_image.color = "#FF00FF" // Magenta
+		splitter_image.color = "#FF00FF"
 		splitter_image.plane = SEETHROUGH_PLANE
 		splitter_image.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 		add_client_image(splitter_image, viewer)
 		target_overlays += splitter_image
+
+	var/obj/machinery/essence/extractor/extractor = controller.blackboard[BB_GNOME_TARGET_EXTRACTOR]
+	if(extractor)
+		var/image/extractor_image = image('icons/effects/overlays.dmi', extractor, "target_marker")
+		extractor_image.color = "#FF00FF" // Same magenta as splitter
+		extractor_image.plane = SEETHROUGH_PLANE
+		extractor_image.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+		add_client_image(extractor_image, viewer)
+		target_overlays += extractor_image
 
 	var/obj/machinery/light/fueled/cauldron/cauldron = controller.blackboard[BB_GNOME_TARGET_CAULDRON]
 	if(cauldron)

@@ -96,7 +96,7 @@
 	scan_alch_cauldron_recipes()
 	scan_natural_precursor_recipes()
 	scan_essence_combination_recipes()
-	scan_essence_infusion_recipes()
+	scan_infusion_recipes()
 	scan_blueprint_recipes()
 
 
@@ -600,38 +600,7 @@
 
 		qdel(recipe)
 
-/datum/recipe_tree_interface/proc/scan_essence_infusion_recipes()
-	for(var/recipe_path in subtypesof(/datum/essence_infusion_recipe))
-		var/datum/essence_infusion_recipe/recipe = new recipe_path()
-
-		if(!recipe.result_type)
-			qdel(recipe)
-			continue
-
-		var/list/ingredients = list()
-
-		if(recipe.target_type)
-			ingredients += recipe.target_type
-
-		if(recipe.required_essences)
-			for(var/essence in recipe.required_essences)
-				ingredients += essence
-
-		add_recipe_to_cache(
-			recipe.result_type,
-			recipe_path,
-			"essence_infusion",
-			recipe.name,
-			ingredients,
-			list(
-				"category" = recipe.category,
-				"target_type" = recipe.target_type,
-				"infusion_time" = recipe.infusion_time,
-				"required_essences" = recipe.required_essences
-			)
-		)
-
-		qdel(recipe)
+/datum/recipe_tree_interface/proc/scan_infusion_recipes()
 
 /datum/recipe_tree_interface/proc/create_recipe_node(recipe_data, x, y, depth)
 	var/datum/recipe_tree_node/node = new()

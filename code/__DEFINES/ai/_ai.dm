@@ -294,13 +294,23 @@
 #define BB_GNOME_TRANSPORT_SOURCE "bb_gnome_source"
 #define BB_GNOME_TRANSPORT_DEST "bb_gnome_dest"
 #define BB_GNOME_SPLITTER_MODE "gnome_splitter_mode"
+#define BB_GNOME_EXTRACTOR_MODE "gnome_extractor_mode"
 #define BB_GNOME_TARGET_SPLITTER "gnome_target_splitter"
+#define BB_GNOME_TARGET_EXTRACTOR "gnome_target_extractor"
 #define BB_GNOME_CROP_MODE "bb_gnome_crop_mode"
 #define BB_GNOME_WATER_SOURCE "gnome_water_source"
 #define BB_GNOME_COMPOST_SOURCE "gnome_compost_source"
 #define BB_GNOME_SEED_SOURCE "gnome_seed_source"
 #define BB_GNOME_SEARCH_RANGE "gnome_search_range"
+#define BB_GNOME_PRIORITY_OVERRIDES "priority_mappings"
 #define BB_ACTION_STATE_MANAGER "action_state_manager"
+
+#define GNOME_PRIORITY_NONE 0
+#define GNOME_PRIORITY_LOW 10
+#define GNOME_PRIORITY_NORMAL 50
+#define GNOME_PRIORITY_HIGH 80
+#define GNOME_PRIORITY_CRITICAL 100
+#define GNOME_PRIORITY_USER_STEP 4
 
 #define BB_GNOME_ALCHEMY_MODE "alch_mode"
 #define BB_GNOME_TARGET_CAULDRON "target_cauldron"

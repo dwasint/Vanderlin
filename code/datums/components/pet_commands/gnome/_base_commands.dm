@@ -43,12 +43,6 @@
 	pawn.visible_message(span_notice("[pawn] stops moving items and returns to normal behavior."))
 	controller.clear_blackboard_key(BB_ACTIVE_PET_COMMAND)
 
-/datum/pet_command/gnome/set_waypoint/b
-	command_name = "Set Waypoint B"
-	command_desc = "Set a waypoint at pointed location"
-	radial_icon_state = "point-b"
-	key = BB_GNOME_WAYPOINT_B
-
 /datum/pet_command/gnome/set_waypoint
 	command_name = "Set Waypoint A"
 	command_desc = "Set a waypoint at pointed location"
@@ -67,15 +61,21 @@
 	if(!istype(gnome))
 		return
 
-	var/turf/turf =  controller.blackboard[key]
-	if(turf)
-		gnome.waypoints -= turf
+	var/turf/old = controller.blackboard[key]
+	if(old)
+		gnome.waypoints -= old
 
 	gnome.waypoints |= target
 	gnome.visible_message(span_notice("[gnome] looks and nods, marking this location."))
 	controller.set_blackboard_key(key, target)
-
 	controller.clear_blackboard_key(BB_ACTIVE_PET_COMMAND)
+
+/datum/pet_command/gnome/set_waypoint/b
+	command_name = "Set Waypoint B"
+	command_desc = "Set a second waypoint at pointed location"
+	radial_icon_state = "point-b"
+	key = BB_GNOME_WAYPOINT_B
+
 
 /datum/pet_command/gnome/set_filter
 	command_name = "Set Filter"
@@ -88,7 +88,6 @@
 /datum/pet_command/gnome/set_filter/execute_action(datum/ai_controller/controller)
 	var/atom/target = controller.blackboard[BB_CURRENT_PET_TARGET]
 	var/mob/living/simple_animal/hostile/gnome_homunculus/gnome = controller.pawn
-
 	if(!target || !istype(gnome))
 		return
 
@@ -240,4 +239,93 @@
 
 	controller.set_blackboard_key(BB_GNOME_SEARCH_RANGE, choice)
 	gnome.visible_message(span_notice("[gnome] nods."))
+	controller.clear_blackboard_key(BB_ACTIVE_PET_COMMAND)
+
+/datum/pet_command/gnome/set_priority
+	command_name = "Set Task Priority"
+	command_desc = "Choose which tasks the gnome should prefer when multiple are active"
+	radial_icon_state = "priority"
+	speech_commands = list("priority", "prefer", "order tasks", "task order")
+
+/datum/pet_command/gnome/set_priority/try_activate_command(mob/living/commander, radial_command)
+	var/mob/living/simple_animal/hostile/gnome_homunculus/gnome = weak_parent.resolve()
+	if(!gnome || !commander)
+		return
+
+	var/datum/ai_controller/controller = gnome.ai_controller
+	var/datum/action_state_manager/manager = controller.blackboard[BB_ACTION_STATE_MANAGER]
+	if(!manager)
+		controller.clear_blackboard_key(BB_ACTIVE_PET_COMMAND)
+		return
+
+	// Force a fresh priority evaluation so get_active_state_names() is accurate.
+	manager.notify_priority_change()
+
+	var/list/active = manager.get_active_state_names(controller)
+	if(!active.len)
+		to_chat(commander, span_warning("[gnome] has no active tasks to prioritize!"))
+		controller.clear_blackboard_key(BB_ACTIVE_PET_COMMAND)
+		return
+
+	if(active.len == 1)
+		to_chat(commander, span_notice("[gnome] is only doing one thing right now, nothing to reorder."))
+		controller.clear_blackboard_key(BB_ACTIVE_PET_COMMAND)
+		return
+
+	// Build human-readable display names.
+	var/list/display_names = list()
+	var/list/display_to_state = list() // display_name → state_name
+
+	// Mapping from internal state name to friendly label shown to the player.
+	var/list/labels = list(
+		"transport" = "Move Items (transport)",
+		"farming" = "Tend Crops (farming)",
+		"alchemy" = "Brew Potions (alchemy)",
+		"splitter" = "Feed Splitter (splitter)",
+	)
+
+	for(var/state_name in active)
+		var/label = labels[state_name] || state_name
+		display_names += label
+		display_to_state[label] = state_name
+
+	// Iterative pick loop — player picks most-important first.
+	var/list/ranked = list()
+	var/list/remaining = display_names.Copy()
+
+	to_chat(commander, span_notice("[gnome] awaits your instructions. Pick tasks in order of importance (most important first)."))
+
+	while(remaining.len > 1)
+		var/pick_number = ranked.len + 1
+		var/suffix = pick_number == 1 ? "st" : (pick_number == 2 ? "nd" : (pick_number == 3 ? "rd" : "th"))
+		var/chosen = input(
+			commander,
+			"Pick the [pick_number][suffix] most important task ([remaining.len] remaining):",
+			"Task Priority: Step [pick_number] of [display_names.len]"
+		) as null|anything in remaining
+
+		if(!chosen)
+			// no chosen, apply whatever ranking we have so far,
+			// treating unranked tasks as equal lowest priority.
+			break
+
+		ranked += display_to_state[chosen]
+		remaining -= chosen
+
+	// Append any unranked tasks at equal lowest priority (offset 0).
+	for(var/label in remaining)
+		ranked += display_to_state[label]
+
+	manager.apply_priority_ranking(controller, ranked)
+
+	// Confirm to the player with the final order.
+	var/list/confirm_lines = list()
+	for(var/i in 1 to ranked.len)
+		var/state_name = ranked[i]
+		var/label = labels[state_name] || state_name
+		confirm_lines += "[i]. [label]"
+
+	gnome.visible_message(span_notice("[gnome] nods firmly, having been given a task order."))
+	to_chat(commander, span_notice("Task priority set:\n[confirm_lines.Join("\n")]"))
+
 	controller.clear_blackboard_key(BB_ACTIVE_PET_COMMAND)
