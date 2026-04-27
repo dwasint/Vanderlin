@@ -177,6 +177,7 @@
 	can_cauterize = FALSE
 	critical = TRUE
 	associated_bclasses = ARTERY_BCLASSES
+	viable_zones = list(BODY_ZONE_HEAD)
 	var/permanent = FALSE
 
 /datum/wound/facial/tongue/can_apply_to_mob(mob/living/affected)
