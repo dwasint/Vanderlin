@@ -1,4 +1,0 @@
-author: "ModDownloading"
-delete-after: True
-changes:
-  - rscadd: "Kobolds can now speak in Utterances, their own unique language-substitute, with the key 'k'."

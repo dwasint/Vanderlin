@@ -1,5 +1,0 @@
-author: "ta3754859-max"
-delete-after: True
-changes:
-  - bugfix: "Fixes cyclops and short sighted removing masks from advanced classes"
-  - bugfix: "Fixes wrong vision cone getting blocked with the eyepatch/cyclops trait"
