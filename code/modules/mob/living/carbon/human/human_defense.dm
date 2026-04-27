@@ -19,6 +19,8 @@
 	if(isbodypart(def_zone))
 		var/obj/item/bodypart/CBP = def_zone
 		def_zone = CBP.body_zone
+		if(def_zone == BODY_ZONE_PRECISE_MOUTH)
+			def_zone = BODY_ZONE_HEAD
 	var/protection = 0
 	var/obj/item/clothing/used
 	var/list/body_parts = list(skin_armor, head, wear_mask, wear_wrists, gloves, wear_neck, cloak, wear_armor, wear_shirt, shoes, wear_pants, backr, backl, belt, wear_ring)
