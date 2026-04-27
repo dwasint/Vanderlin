@@ -9,11 +9,14 @@
 
 	var/gnome_progress = FALSE
 
-/obj/machinery/essence/test_tube/Initialize()
+/obj/machinery/essence/test_tube/Initialize(mapload)
 	. = ..()
 	storage.max_total = 1000
 	storage.max_types = 1
 	START_PROCESSING(SSobj, src)
+	if(mapload)
+		gnome_progress = 2  // Starter gnome waiting inside
+		update_appearance(UPDATE_OVERLAYS)
 
 /obj/machinery/essence/test_tube/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -31,6 +34,17 @@
 	pull_from_linked(storage)
 
 /obj/machinery/essence/test_tube/attack_hand(mob/living/user)
+	if(gnome_progress == 2) // no research required :3
+		gnome_progress = FALSE
+		update_appearance(UPDATE_OVERLAYS)
+		visible_message(span_notice("[src] opens and a gnome tumbles out!"))
+		var/mob/living/simple_animal/hostile/gnome_homunculus/gnome = new(get_turf(src))
+		gnome.tamed(user)
+		gnome.color = COLOR_PINK
+		gnome.hat()
+		animate(gnome, color = COLOR_WHITE, time = 45 SECONDS)
+		to_chat(user, span_boldnotice("The gnome homunculus has been released and tamed to you!"))
+		return
 	if(!GLOB.thaumic_research?.has_research(/datum/thaumic_research_node/machines/gnomes))
 		to_chat(user, span_warning("You have no idea how this works."))
 		return
