@@ -218,6 +218,7 @@
 	can_cauterize = FALSE
 	critical = TRUE
 	associated_bclasses = STAB_BCLASSES
+	viable_zones = list(BODY_ZONE_HEAD)
 
 /datum/wound/facial/disfigurement/on_mob_gain(mob/living/affected)
 	. = ..()
