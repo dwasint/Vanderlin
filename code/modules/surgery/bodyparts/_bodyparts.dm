@@ -177,6 +177,9 @@
 	if(can_be_disabled)
 		RegisterSignal(src, SIGNAL_ADDTRAIT(TRAIT_PARALYSIS), PROC_REF(on_paralysis_trait_gain))
 		RegisterSignal(src, SIGNAL_REMOVETRAIT(TRAIT_PARALYSIS), PROC_REF(on_paralysis_trait_loss))
+
+	RegisterSignal(src, SIGNAL_ADDTRAIT(TRAIT_ROTTEN), PROC_REF(on_rotten_trait_gain))
+	RegisterSignal(src, SIGNAL_REMOVETRAIT(TRAIT_ROTTEN), PROC_REF(on_rotten_trait_loss))
 	update_HP()
 
 /obj/item/bodypart/Destroy()
@@ -369,6 +372,23 @@
 		if(owner && owner.stat < DEAD)
 			to_chat(owner, span_userdanger("I can't feel my [name] anymore..."))
 	consider_processing()
+
+///Called when TRAIT_ROTTEN is added to the limb.
+/obj/item/bodypart/proc/on_rotten_trait_gain(obj/item/bodypart/source)
+	SIGNAL_HANDLER
+
+	germ_level = INFECTION_LEVEL_THREE
+	limb_flags |= BODYPART_DEAD
+	update_limb(!owner, owner)
+	update_limb_efficiency()
+
+///Called when TRAIT_ROTTEN is removed from the limb.
+/obj/item/bodypart/proc/on_rotten_trait_loss(obj/item/bodypart/source)
+	SIGNAL_HANDLER
+
+	limb_flags &= ~BODYPART_DEAD
+	update_limb(!owner, owner)
+	update_limb_efficiency()
 
 /// Return TRUE to get whatever mob this is in to update health.
 /obj/item/bodypart/proc/on_life(delta_time, times_fired)
