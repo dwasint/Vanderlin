@@ -34,7 +34,7 @@
 	if(!GLOB.thaumic_research?.has_research(/datum/thaumic_research_node/machines/gnomes))
 		to_chat(user, span_warning("You have no idea how this works."))
 		return
-	var/required = 200 * GLOB.thaumic_research.get_research_bonus(/datum/thaumic_research_node/gnome_efficency)
+	var/required = 100 * GLOB.thaumic_research.get_research_bonus(/datum/thaumic_research_node/gnome_efficency)
 	if(!storage.has(/datum/thaumaturgical_essence/life, required))
 		to_chat(user, span_warning("Requires at least [required] units of life essence."))
 		return
@@ -58,7 +58,7 @@
 		visible_message(span_notice("[src] bubbles and churns as the homunculus develops."))
 
 /obj/machinery/essence/test_tube/proc/create_gnome(mob/living/user)
-	var/required = 200 * GLOB.thaumic_research.get_research_bonus(/datum/thaumic_research_node/gnome_efficency)
+	var/required = 100 * GLOB.thaumic_research.get_research_bonus(/datum/thaumic_research_node/gnome_efficency)
 	gnome_progress = FALSE
 	update_appearance(UPDATE_OVERLAYS)
 	if(!storage.has(/datum/thaumaturgical_essence/life, required))
@@ -76,7 +76,7 @@
 
 /obj/machinery/essence/test_tube/get_mechanics_examine(mob/user)
 	. = ..()
-	var/required = 200 * GLOB.thaumic_research.get_research_bonus(/datum/thaumic_research_node/gnome_efficency)
+	var/required = 100 * GLOB.thaumic_research.get_research_bonus(/datum/thaumic_research_node/gnome_efficency)
 	. += span_notice("Breeding requirement: [required] life essence")
 	if(gnome_progress)
 		. += span_boldnotice("A gnome homunculus is currently developing!")
