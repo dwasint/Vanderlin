@@ -21,7 +21,7 @@
 /datum/reagent/consumable/ethanol/on_bodypart_absorb(obj/item/bodypart/BP, mob/living/carbon/M, amount_to_transfer)
 	BP.disinfect_limb(boozepwr)
 	for(var/datum/injury/injury in BP.injuries)
-		injury.adjust_germ_level(-boozepwr * 0.1)
+		injury.adjust_germ_level(-boozepwr * 0.5)
 	BP.adjust_germ_level(-boozepwr * 0.1)
 
 /datum/reagent/consumable/ethanol/New()
