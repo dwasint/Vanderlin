@@ -1,9 +1,10 @@
-
 /datum/action_state/farming
 	name = "farming"
 	description = "Tending to crops"
 	var/current_task = "scanning"
 	var/current_target = null
+	var/stuck_ticks = 0
+	var/max_stuck_ticks = 10
 	priority_eval_interval = 3 SECONDS
 
 /datum/action_state/farming/evaluate_priority(datum/ai_controller/controller)
@@ -27,6 +28,7 @@
 /datum/action_state/farming/enter_state(datum/ai_controller/controller)
 	current_task = "scanning"
 	current_target = null
+	stuck_ticks = 0
 
 /datum/action_state/farming/process_state(datum/ai_controller/controller, delta_time)
 	if(!controller.blackboard[BB_GNOME_CROP_MODE])
@@ -36,6 +38,8 @@
 
 	switch(current_task)
 		if("scanning")
+			stuck_ticks = 0
+
 			// Priority 1: Harvest ready crops
 			if(!istype(pawn, /mob/living/simple_animal/hostile/retaliate/fae/agriopylon))
 				for(var/obj/structure/soil/soil in oview(7, pawn))
@@ -96,11 +100,17 @@
 			var/obj/structure/soil/soil = current_target
 			if(!soil || !soil.produce_ready)
 				current_task = "scanning"
+				stuck_ticks = 0
 				return ACTION_STATE_CONTINUE
 
 			if(get_dist(pawn, soil) > 1)
+				stuck_ticks++
+				if(stuck_ticks >= max_stuck_ticks)
+					current_task = "scanning"
+					stuck_ticks = 0
 				return ACTION_STATE_CONTINUE
 
+			stuck_ticks = 0
 			soil.user_harvests(pawn)
 			pawn.visible_message(span_notice("[pawn] harvests [soil]."))
 			playsound(soil, 'sound/items/seed.ogg', 100, FALSE)
@@ -111,11 +121,17 @@
 			var/obj/structure/soil/soil = current_target
 			if(!soil || soil.weeds <= 0)
 				current_task = "scanning"
+				stuck_ticks = 0
 				return ACTION_STATE_CONTINUE
 
 			if(get_dist(pawn, soil) > 1)
+				stuck_ticks++
+				if(stuck_ticks >= max_stuck_ticks)
+					current_task = "scanning"
+					stuck_ticks = 0
 				return ACTION_STATE_CONTINUE
 
+			stuck_ticks = 0
 			soil.weeds = max(0, soil.weeds - 25)
 			pawn.visible_message(span_notice("[pawn] carefully removes weeds from [soil]."))
 			playsound(soil, pick('sound/foley/touch1.ogg','sound/foley/touch2.ogg','sound/foley/touch3.ogg'), 100, TRUE)
@@ -126,11 +142,17 @@
 			var/obj/item/water_source = current_target
 			if(!water_source)
 				current_task = "scanning"
+				stuck_ticks = 0
 				return ACTION_STATE_CONTINUE
 
 			if(get_dist(pawn, water_source) > 1)
+				stuck_ticks++
+				if(stuck_ticks >= max_stuck_ticks)
+					current_task = "scanning"
+					stuck_ticks = 0
 				return ACTION_STATE_CONTINUE
 
+			stuck_ticks = 0
 			if(water_source.forceMove(pawn))
 				controller.set_blackboard_key(BB_SIMPLE_CARRY_ITEM, water_source)
 				pawn.visible_message(span_notice("[pawn] picks up [water_source] for watering."))
@@ -144,11 +166,17 @@
 
 			if(!soil || !carried || !is_water_container(carried))
 				current_task = "scanning"
+				stuck_ticks = 0
 				return ACTION_STATE_CONTINUE
 
 			if(get_dist(pawn, soil) > 1)
+				stuck_ticks++
+				if(stuck_ticks >= max_stuck_ticks)
+					current_task = "scanning"
+					stuck_ticks = 0
 				return ACTION_STATE_CONTINUE
 
+			stuck_ticks = 0
 			if(carried.reagents && carried.reagents.has_reagent(/datum/reagent/water, 15))
 				soil.adjust_water(150)
 				pawn.visible_message(span_notice("[pawn] waters [soil]."))
@@ -164,11 +192,17 @@
 			var/obj/structure/closet/seed_source = current_target
 			if(!seed_source)
 				current_task = "scanning"
+				stuck_ticks = 0
 				return ACTION_STATE_CONTINUE
 
 			if(get_dist(pawn, seed_source) > 1)
+				stuck_ticks++
+				if(stuck_ticks >= max_stuck_ticks)
+					current_task = "scanning"
+					stuck_ticks = 0
 				return ACTION_STATE_CONTINUE
 
+			stuck_ticks = 0
 			var/obj/item/neuFarm/seed/found_seed = null
 			for(var/obj/item/neuFarm/seed/seed in seed_source.contents)
 				found_seed = seed
@@ -189,11 +223,17 @@
 
 			if(!soil || soil.plant || !seed || !istype(seed, /obj/item/neuFarm/seed))
 				current_task = "scanning"
+				stuck_ticks = 0
 				return ACTION_STATE_CONTINUE
 
 			if(get_dist(pawn, soil) > 1)
+				stuck_ticks++
+				if(stuck_ticks >= max_stuck_ticks)
+					current_task = "scanning"
+					stuck_ticks = 0
 				return ACTION_STATE_CONTINUE
 
+			stuck_ticks = 0
 			var/obj/item/neuFarm/seed/farm_seed = seed
 			farm_seed.try_plant_seed(pawn, soil)
 			controller.clear_blackboard_key(BB_SIMPLE_CARRY_ITEM)
