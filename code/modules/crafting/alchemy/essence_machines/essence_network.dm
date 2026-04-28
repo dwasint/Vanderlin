@@ -32,7 +32,6 @@
 
 	if(source.network != sink.network)
 		source.network.merge(sink.network)
-		qdel(sink.network) // emptied by merge
 
 	source.network.add_link(link)
 	source.network.invalidate_cache()
@@ -146,6 +145,21 @@
 	other.machines = list()
 	other.links = list()
 	cache_dirty = TRUE
+
+/datum/essence_network/proc/get_demand(list/excluded_types = list())
+	var/list/demand = list()
+	for(var/obj/machinery/essence/machine in machines)
+		var/skip = FALSE
+		for(var/excluded in excluded_types)
+			if(istype(machine, excluded))
+				skip = TRUE
+				break
+		if(skip)
+			continue
+		var/list/wanted = machine.build_allowed_types()
+		for(var/etype in wanted)
+			demand[etype] = (demand[etype] || 0) + wanted[etype]
+	return demand
 
 /**
  * Called after a link is removed. Re-floods the graph from every machine

@@ -13,7 +13,7 @@
 
 /obj/machinery/essence/splitter/Initialize()
 	. = ..()
-	storage.max_total = 500
+	storage.max_total = 5000
 	storage.max_types = 15
 
 	if(GLOB.thaumic_research.has_research(/datum/thaumic_research_node/splitter_efficiency/five))
