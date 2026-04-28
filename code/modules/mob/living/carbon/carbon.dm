@@ -1051,6 +1051,7 @@
 				bodypart.revive_limb()
 				bodypart.germ_level = 0
 				bodypart.skeletonized = FALSE
+				bodypart.remove_pain(bodypart.pain_dam)
 
 	if(heal_flags & (HEAL_REFRESH_ORGANS|HEAL_ORGANS))
 		// regenerate_organs(regenerate_existing = (heal_flags & HEAL_REFRESH_ORGANS))
