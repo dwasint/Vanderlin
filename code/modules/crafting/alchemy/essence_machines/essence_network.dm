@@ -300,7 +300,14 @@
 		return 0
 	var/actually_added = target.add(essence_type, to_move)
 	remove(essence_type, actually_added)
+	if(actually_added > 0)
+		// Re-evaluate both ends of the transfer immediately (doesn't do much unless we add split network)
+		if(owner?.network)
+			owner.network.invalidate_cache()
+		if(target.owner?.network && target.owner.network != owner?.network)
+			target.owner.network.invalidate_cache()
 	create_essence_transfer_effect(target.owner, essence_type, amount)
+	owner.network.rebuild_cache() // this unfortunately needs to be done on transfer solely because of the fact that some things are smart adapaters
 	return actually_added
 
 /datum/essence_storage/proc/create_essence_transfer_effect(obj/machinery/target, essence_type, amount)

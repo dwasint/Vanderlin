@@ -118,10 +118,14 @@
 		for(var/etype in from_storage.snapshot())
 			if(!sink.accepts_essence(etype))
 				continue
-			var/moved = from_storage.transfer_to(sink_store, etype, link.bandwidth)
+			var/list/allowed = sink.build_allowed_types()
+			var/deficit = allowed[etype] || 0
+			if(deficit <= 0)
+				continue
+			var/moved = from_storage.transfer_to(sink_store, etype, min(link.bandwidth, deficit))
 			if(moved > 0)
 				create_essence_flow_effect(sink, etype, moved)
-				break // one type per link per tick
+				break
 
 /**
  * Pull essence from every inbound link into [into_storage].
@@ -140,7 +144,11 @@
 		for(var/etype in src_store.snapshot())
 			if(!accepts_essence(etype))
 				continue
-			var/moved = src_store.transfer_to(into_storage, etype, link.bandwidth)
+			var/list/allowed = build_allowed_types()
+			var/deficit = allowed[etype] || 0
+			if(deficit <= 0)
+				continue
+			var/moved = src_store.transfer_to(into_storage, etype, min(link.bandwidth, deficit))
 			if(moved > 0)
 				create_essence_flow_effect(source, etype, moved)
 				break
