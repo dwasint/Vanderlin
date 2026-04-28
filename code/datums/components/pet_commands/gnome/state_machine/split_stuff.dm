@@ -265,7 +265,7 @@
  */
 /datum/action_state/splitter/proc/find_all_splitter_items(datum/ai_controller/controller)
 	var/mob/living/simple_animal/hostile/gnome_homunculus/gnome = controller.pawn
-	var/turf/start = controller.blackboard[BB_GNOME_WAYPOINT_A]
+	var/turf/start = controller.blackboard[BB_GNOME_SPLITTER_SOURCE]
 	var/range = controller.blackboard[BB_GNOME_SEARCH_RANGE] || 1
 	var/list/results = list()
 

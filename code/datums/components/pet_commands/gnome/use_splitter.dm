@@ -28,6 +28,7 @@
 	else
 		controller.set_blackboard_key(BB_GNOME_SPLITTER_MODE, TRUE)
 		controller.set_blackboard_key(BB_GNOME_TARGET_SPLITTER, target)
+	controller.set_blackboard_key(BB_GNOME_SPLITTER_SOURCE, waypoint_a)
 	controller.clear_blackboard_key(BB_ACTIVE_PET_COMMAND)
 
 /datum/pet_command/gnome/stop_splitter/execute_action(datum/ai_controller/controller)

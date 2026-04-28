@@ -282,6 +282,7 @@
 #define BB_FLESH_CONSUMED_BODIES "flesh_consumed_bodies"
 
 #define BB_GNOME_WAYPOINT_A "bb_gnome_waypoint_a"
+#define BB_GNOME_SPLITTER_SOURCE "bb_gnome_split_source"
 #define BB_GNOME_WAYPOINT_B "bb_gnome_waypoint_b"
 #define BB_GNOME_TARGET_ITEM "bb_gnome_target_item"
 #define BB_GNOME_HOME_TURF "bb_gnome_home_turf"

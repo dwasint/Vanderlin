@@ -12,18 +12,36 @@
 		return GNOME_PRIORITY_NONE
 
 	var/mob/living/pawn = controller.pawn
-	var/found_any_soil = FALSE
+	var/obj/item/carried = controller.blackboard[BB_SIMPLE_CARRY_ITEM]
+	var/found_actionable = FALSE
 
 	for(var/obj/structure/soil/soil in oview(7, pawn))
-		found_any_soil = TRUE
-		// Bump to HIGH immediately if harvest is ready
+		// Harvest ready → always HIGH
 		if(soil.produce_ready)
 			return GNOME_PRIORITY_HIGH
 
-	if(!found_any_soil)
-		return GNOME_PRIORITY_NONE
+		// Weeds to pull, always actionable, no item needed
+		if(soil.plant && soil.weeds > 25)
+			found_actionable = TRUE
+			continue
 
-	return GNOME_PRIORITY_NORMAL
+		// Thirsty plant, only actionable if we have water OR can find some nearby
+		if(soil.plant && !soil.plant_dead && soil.water < 150 * 0.3)
+			if(carried && is_water_container(carried))
+				found_actionable = TRUE
+			else if(find_water_source_nearby(controller))
+				found_actionable = TRUE
+			continue
+
+		// Empty soil, only actionable if we have seeds OR can find some nearby
+		if(!soil.plant)
+			if(carried && istype(carried, /obj/item/neuFarm/seed))
+				found_actionable = TRUE
+			else if(find_seed_source_nearby(controller))
+				found_actionable = TRUE
+			continue
+
+	return found_actionable ? GNOME_PRIORITY_NORMAL : GNOME_PRIORITY_NONE
 
 /datum/action_state/farming/enter_state(datum/ai_controller/controller)
 	current_task = "scanning"

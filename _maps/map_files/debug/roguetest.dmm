@@ -1453,7 +1453,7 @@
 /turf/open/floor/grass/yel,
 /area/outdoors)
 "ke" = (
-/mob/living/carbon/human/species/automaton/prefilled_vessel,
+/obj/machinery/essence/test_tube,
 /turf/open/floor/wood,
 /area/indoors/town/keep)
 "ki" = (
