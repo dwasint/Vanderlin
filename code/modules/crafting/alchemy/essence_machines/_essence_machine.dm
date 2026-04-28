@@ -202,7 +202,7 @@
 		to_chat(user, span_info("[src] has no ethereal links."))
 		return
 	var/choice = input(user, "Link management", "Essence Links") as null|anything in opts
-	if(!choice || !Adjacent(user))
+	if(!choice || (!Adjacent(user) && !istype(src, /obj/machinery/essence/cauldron_node)))
 		return
 	switch(opts[choice])
 		if("out")   show_link_list(user, "outbound", TRUE)

@@ -139,12 +139,21 @@
 	else
 		to_chat(user, span_info("Auto-repeat disabled."))
 
+/obj/machinery/light/fueled/cauldron/attackby_secondary(obj/item/I, mob/user, list/modifiers)
+	. = ..()
+	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
+		return
+	if(!istype(I, /obj/item/essence_connector))
+		return
+	if(!essence_node || QDELETED(essence_node))
+		to_chat(user, span_warning("The cauldron has no essence conduit."))
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+	essence_node.show_link_menu(user)
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
 /obj/machinery/light/fueled/cauldron/attackby(obj/item/I, mob/user, list/modifiers)
-	if(istype(I, /obj/item/essence_connector))
-		if(!essence_node || QDELETED(essence_node))
-			to_chat(user, span_warning("The cauldron has no essence conduit."))
-			return
-		return I.afterattack(essence_node, user, TRUE, modifiers)
+	if(istype(I, /obj/item/essence_connector)) // just return
+		return
 
 	if(istype(I, /obj/item/essence_vial))
 		var/obj/item/essence_vial/vial = I
