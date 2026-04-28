@@ -8,6 +8,7 @@
 	sewn_bleed_rate = 0
 	can_cauterize = FALSE
 	critical = FALSE
+	viable_zones = list(BODY_ZONE_HEAD)
 
 /datum/wound/facial/can_stack_with(datum/wound/other)
 	if(istype(other, /datum/wound/facial) && (type == other.type))
