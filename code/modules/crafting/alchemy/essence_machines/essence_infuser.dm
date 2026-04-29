@@ -182,10 +182,21 @@
 	if(istype(I, /obj/item/essence_vial))
 		return ..()
 	if(!infusion_target && !infusing)
+		// Check item matches a known recipe
+		var/valid = FALSE
+		for(var/rpath in subtypesof(/datum/infusion_recipe))
+			var/datum/infusion_recipe/r = new rpath
+			if(istype(I, r.target_type))
+				valid = TRUE
+				qdel(r)
+				break
+			qdel(r)
+		if(!valid)
+			to_chat(user, span_warning("[I] cannot be infused."))
+			return
 		if(user.transferItemToLoc(I, src))
 			infusion_target = I
 			to_chat(user, span_info("You place [I] on [src]."))
-			// Start pulling if we have a recipe but no essences yet
 			if(current_recipe && !recipe_ready())
 				START_PROCESSING(SSobj, src)
 			update_appearance(UPDATE_OVERLAYS)
