@@ -1129,7 +1129,7 @@
 #include "code\datums\components\pet_commands\gnome\tend_crops.dm"
 #include "code\datums\components\pet_commands\gnome\use_splitter.dm"
 #include "code\datums\components\pet_commands\gnome\gnome_panel\evil_gnome_panel.dm"
-#include "code\datums\components\pet_commands\gnome\gnome_panel\paneL_screen_objects.dm"
+#include "code\datums\components\pet_commands\gnome\gnome_panel\panel_screen_objects.dm"
 #include "code\datums\components\pet_commands\gnome\state_machine\__state_manager.dm"
 #include "code\datums\components\pet_commands\gnome\state_machine\_base.dm"
 #include "code\datums\components\pet_commands\gnome\state_machine\farming.dm"
