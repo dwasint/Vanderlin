@@ -599,7 +599,7 @@
 /// General handling of infections
 /obj/item/bodypart/proc/update_germs(delta_time, times_fired)
 	//Cryo stops germs from moving and doing their bad stuffs
-	if(owner.bodytemperature <= 15)
+	if(owner.bodytemperature <= -15)
 		return
 	handle_germ_sync(delta_time, times_fired)
 	handle_germ_effects(delta_time, times_fired)
