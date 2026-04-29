@@ -5,7 +5,7 @@
 	icon = 'icons/roguetown/misc/altar.dmi'
 	icon_state = "altar"
 	network_priority = 4
-	accepts_output = FALSE  // terminal sink — nothing links out from an altar
+	accepts_output = FALSE
 
 	var/obj/item/placed_item = null
 	var/datum/enchantment/selected_recipe = null
@@ -79,26 +79,51 @@
 	var/choice = input(user, "Altar Menu", "[src.name]") in opts
 	if(!choice || choice == "cancel") return
 	switch(opts[choice])
-		if("enchant")   begin_enchantment(user)
-		if("progress")  show_recipe_progress(user)
-		if("recipe")    show_recipe_selection(user, FALSE)
-		if("remove")    remove_placed_item(user)
-		if("clear")     clear_recipe(user)
-		if("details")   show_recipe_details(user, selected_recipe)
-		if("browse")    show_recipe_selection(user, TRUE)
-		if("info")      to_chat(user, span_notice("Place an item to begin."))
+		if("enchant") begin_enchantment(user)
+		if("progress") show_recipe_progress(user)
+		if("recipe") show_recipe_selection(user, FALSE)
+		if("remove") remove_placed_item(user)
+		if("clear") clear_recipe(user)
+		if("details") show_recipe_details(user, selected_recipe)
+		if("browse") show_recipe_selection(user, TRUE)
+		if("info") to_chat(user, span_notice("Place an item to begin."))
+
+// required_type may be null (any item), a single type, or a list of types, this sorts it for us basically
+/obj/machinery/essence/enchantment_altar/proc/item_matches_recipe(datum/enchantment/recipe, obj/item/item)
+	if(!recipe || !item)
+		return FALSE
+	if(!recipe.required_type)
+		return TRUE
+	if(islist(recipe.required_type))
+		for(var/req in recipe.required_type)
+			if(istype(item, req))
+				return TRUE
+		return FALSE
+	return istype(item, recipe.required_type)
 
 /obj/machinery/essence/enchantment_altar/proc/show_recipe_selection(mob/user, browse_only)
 	var/list/opts = list()
 	var/list/mapping = list()
+
 	for(var/epath in subtypesof(/datum/enchantment))
 		var/datum/enchantment/e = new epath
-		var/key = "[e.enchantment_name] — [get_recipe_summary(e)]"
+
+		// When actively selecting, skip recipes that don't match the placed item.
+		if(!browse_only && placed_item && !item_matches_recipe(e, placed_item))
+			qdel(e)
+			continue
+
+		var/compatible_tag = ""
+		if(browse_only && placed_item && e.required_type)
+			compatible_tag = item_matches_recipe(e, placed_item) ? " ✓" : " ✗"
+
+		var/key = "[e.enchantment_name][compatible_tag] - [get_recipe_summary(e)]"
 		opts[key] = epath
 		mapping[key] = e
 
 	if(!opts.len)
-		to_chat(user, span_warning("No enchantment recipes available."))
+		to_chat(user, span_warning("No enchantment recipes available\
+			[(!browse_only && placed_item) ? " for [placed_item]" : ""]."))
 		for(var/key in mapping) qdel(mapping[key])
 		return
 
@@ -115,15 +140,33 @@
 		show_recipe_details(user, mapping[choice])
 	else
 		select_recipe(epath, user)
+
 	for(var/key in mapping)
 		if(mapping[key] != selected_recipe)
 			qdel(mapping[key])
 
 /obj/machinery/essence/enchantment_altar/proc/select_recipe(epath, mob/user)
+	var/datum/enchantment/candidate = new epath
+
+	if(placed_item && !item_matches_recipe(candidate, placed_item))
+		// Build a readable type hint for the player.
+		var/hint = ""
+		if(islist(candidate.required_type))
+			var/list/names = list()
+			for(var/req in candidate.required_type)
+				names += "[req]"
+			hint = jointext(names, " or ")
+		else
+			hint = "[candidate.required_type]"
+		to_chat(user, span_warning("'[candidate.enchantment_name]' requires [hint]; \
+			[placed_item] is not compatible."))
+		qdel(candidate)
+		return
+
 	if(selected_recipe) qdel(selected_recipe)
-	selected_recipe = new epath
+	selected_recipe = candidate
 	if(network) network.invalidate_cache()
-	push_surplus_to_linked(storage) // eject anything the new recipe doesn't need
+	push_surplus_to_linked(storage)
 	to_chat(user, span_info("Recipe '[selected_recipe.enchantment_name]' selected."))
 	show_recipe_details(user, selected_recipe)
 	update_appearance(UPDATE_OVERLAYS)
@@ -145,7 +188,7 @@
 		var/have = storage.get(etype)
 		var/datum/thaumaturgical_essence/e = new etype
 		var/color = (have >= needed) ? "green" : "red"
-		to_chat(user, span_info("  <font color='[color]'>[e.name]: [have]/[needed]</font>"))
+		to_chat(user, span_info(" <font color='[color]'>[e.name]: [have]/[needed]</font>"))
 		qdel(e)
 	if(recipe_complete())
 		to_chat(user, span_info("<font color='green'>Ready to enchant!</font>"))
@@ -155,14 +198,30 @@
 	to_chat(user, span_info("=== [recipe.enchantment_name] ==="))
 	if(recipe.examine_text)
 		to_chat(user, span_info("[recipe.examine_text]"))
-	to_chat(user, span_info("Required:"))
+
+	if(recipe.required_type)
+		if(islist(recipe.required_type))
+			var/list/names = list()
+			for(var/req in recipe.required_type)
+				names += "[req]"
+			to_chat(user, span_notice("Requires: [jointext(names, " or ")]"))
+		else
+			to_chat(user, span_notice("Requires: [recipe.required_type]"))
+
+	to_chat(user, span_info("Required essences:"))
 	for(var/etype in recipe.essence_recipe)
 		var/datum/thaumaturgical_essence/e = new etype
-		to_chat(user, span_info("  [e.name]: [recipe.essence_recipe[etype]] units"))
+		to_chat(user, span_info(" [e.name]: [recipe.essence_recipe[etype]] units"))
 		qdel(e)
 
 /obj/machinery/essence/enchantment_altar/proc/begin_enchantment(mob/living/user)
 	if(!placed_item || !selected_recipe || !recipe_complete()) return
+
+	if(!item_matches_recipe(selected_recipe, placed_item))
+		to_chat(user, span_warning("[placed_item] is not compatible with \
+			'[selected_recipe.enchantment_name]'. Remove it and place the correct item type."))
+		return
+
 	for(var/etype in selected_recipe.essence_recipe)
 		storage.remove(etype, selected_recipe.essence_recipe[etype])
 	enchanting = TRUE
@@ -240,7 +299,7 @@
 			var/have = storage.get(etype)
 			var/datum/thaumaturgical_essence/e = new etype
 			var/color = (have >= needed) ? "green" : "red"
-			. += span_notice("  <font color='[color]'>[e.name]: [have]/[needed]</font>")
+			. += span_notice(" <font color='[color]'>[e.name]: [have]/[needed]</font>")
 			qdel(e)
 		if(recipe_complete())
 			. += span_info("<font color='green'>Ready to enchant!</font>")

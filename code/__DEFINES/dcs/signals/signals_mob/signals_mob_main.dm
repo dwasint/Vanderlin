@@ -23,6 +23,10 @@
 #define COMSIG_MOB_SWAPPING_HANDS "mob_swapping_hands"
 	#define COMPONENT_BLOCK_SWAP (1<<0)
 
+///from base of mob/swap_hand(): (obj/item/currently_held_item)
+#define COMSIG_ITEM_NOW_ACTIVE "item_now_active"
+#define COMSIG_ITEM_NOLONGER_ACTIVE "item_nolonger_active"
+
 ///Mob is trying to emote, from /datum/emote/proc/run_emote(): (key, params, type_override, intentional, emote)
 #define COMSIG_MOB_PRE_EMOTED "mob_pre_emoted"
 	#define COMPONENT_CANT_EMOTE (1<<0)
