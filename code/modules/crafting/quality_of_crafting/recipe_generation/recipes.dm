@@ -564,8 +564,6 @@
 			flags += "Requires dislocation"
 		if(S.surgery_flags & SURGERY_BROKEN)
 			flags += "Requires broken bodypart"
-		if(S.surgery_flags & SURGERY_DRILLED)
-			flags += "Requires drilling"
 		step_e["flags"] = flags
 
 		steps_out += list(step_e)
