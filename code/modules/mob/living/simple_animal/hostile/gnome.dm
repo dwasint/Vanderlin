@@ -46,6 +46,7 @@
 		/datum/pet_command/follow,
 		/datum/pet_command/idle,
 		/datum/pet_command/fetch,
+		/datum/pet_command/free,
 	)
 
 	var/list/gnome_friendship_levels = list(
