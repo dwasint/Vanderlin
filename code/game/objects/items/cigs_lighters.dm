@@ -447,7 +447,9 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		reagent_list = to_smoke.pipe_reagents
 	else
 		var/obj/item/reagent_containers/powder/to_smoke = attacking_item
-		reagent_list = to_smoke.reagents?.reagent_list
+		for(var/datum/reagent/reagent as anything in to_smoke.reagents?.reagent_list)
+			reagent_list |= reagent.type
+			reagent_list[reagent.type] = reagent.volume
 	to_chat(user, span_notice("I stuff [attacking_item] into [src]."))
 	packeditem = TRUE
 	if(length(reagent_list))
