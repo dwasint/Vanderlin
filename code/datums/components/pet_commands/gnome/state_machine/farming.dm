@@ -11,12 +11,15 @@
 	if(!controller.blackboard[BB_GNOME_CROP_MODE])
 		return GNOME_PRIORITY_NONE
 
+	if(controller.blackboard[BB_FARMING_TARGET_WELL])
+		return GNOME_PRIORITY_HIGH
+
 	var/mob/living/pawn = controller.pawn
 	var/obj/item/carried = controller.blackboard[BB_SIMPLE_CARRY_ITEM]
 	var/found_actionable = FALSE
 
 	for(var/obj/structure/soil/soil in oview(7, pawn))
-		// Harvest ready → always HIGH
+		// Harvest ready, always HIGH
 		if(soil.produce_ready)
 			return GNOME_PRIORITY_HIGH
 
@@ -25,11 +28,13 @@
 			found_actionable = TRUE
 			continue
 
-		// Thirsty plant, only actionable if we have water OR can find some nearby
+		// Thirsty plant, actionable if we have water, a pre-filled source, or a well + empty container
 		if(soil.plant && !soil.plant_dead && soil.water < 150 * 0.3)
 			if(carried && is_water_container(carried))
 				found_actionable = TRUE
 			else if(find_water_source_nearby(controller))
+				found_actionable = TRUE
+			else if(find_well_nearby(controller) && find_empty_container_nearby(controller))
 				found_actionable = TRUE
 			continue
 
@@ -87,11 +92,21 @@
 			else
 				for(var/obj/structure/soil/soil in oview(7, pawn))
 					if(soil.plant && !soil.plant_dead && soil.water < 150 * 0.3)
+						// Try a pre-filled source first
 						var/obj/item/water_source = find_water_source_nearby(controller)
 						if(water_source)
 							current_target = water_source
 							manager.set_movement_target(controller, water_source)
 							current_task = "getting_water"
+							return ACTION_STATE_CONTINUE
+						// Fall back to fetching an empty container and filling at a well
+						var/obj/structure/well/well = find_well_nearby(controller)
+						var/obj/item/empty = find_empty_container_nearby(controller)
+						if(well && empty)
+							controller.set_blackboard_key(BB_FARMING_TARGET_WELL, well)
+							current_target = empty
+							manager.set_movement_target(controller, empty)
+							current_task = "getting_empty_container"
 							return ACTION_STATE_CONTINUE
 
 			// Priority 4: Plant seeds in empty soil
@@ -132,6 +147,8 @@
 			soil.user_harvests(pawn)
 			pawn.visible_message(span_notice("[pawn] harvests [soil]."))
 			playsound(soil, 'sound/items/seed.ogg', 100, FALSE)
+			current_target = null
+			manager.clear_movement_target(controller)
 			current_task = "scanning"
 			return ACTION_STATE_CONTINUE
 
@@ -175,6 +192,56 @@
 				controller.set_blackboard_key(BB_SIMPLE_CARRY_ITEM, water_source)
 				pawn.visible_message(span_notice("[pawn] picks up [water_source] for watering."))
 
+			current_task = "scanning"
+			return ACTION_STATE_CONTINUE
+
+		if("getting_empty_container")
+			var/obj/item/container = current_target
+			if(!container)
+				current_task = "scanning"
+				stuck_ticks = 0
+				return ACTION_STATE_CONTINUE
+
+			if(get_dist(pawn, container) > 1)
+				stuck_ticks++
+				if(stuck_ticks >= max_stuck_ticks)
+					current_task = "scanning"
+					stuck_ticks = 0
+				return ACTION_STATE_CONTINUE
+
+			stuck_ticks = 0
+			if(container.forceMove(pawn))
+				controller.set_blackboard_key(BB_SIMPLE_CARRY_ITEM, container)
+				pawn.visible_message(span_notice("[pawn] picks up [container] to fetch water."))
+				var/obj/structure/well/well = controller.blackboard[BB_FARMING_TARGET_WELL]
+				current_target = well
+				manager.set_movement_target(controller, well)
+				current_task = "filling_at_well"
+			else
+				current_task = "scanning"
+			return ACTION_STATE_CONTINUE
+
+		if("filling_at_well")
+			var/obj/item/carried = controller.blackboard[BB_SIMPLE_CARRY_ITEM]
+			var/obj/structure/well/well = controller.blackboard[BB_FARMING_TARGET_WELL]
+
+			if(!carried || !well)
+				current_task = "scanning"
+				stuck_ticks = 0
+				return ACTION_STATE_CONTINUE
+
+			if(get_dist(pawn, well) > 1)
+				stuck_ticks++
+				if(stuck_ticks >= max_stuck_ticks)
+					current_task = "scanning"
+					stuck_ticks = 0
+				return ACTION_STATE_CONTINUE
+
+			stuck_ticks = 0
+			carried.reagents?.add_reagent(/datum/reagent/water, 150)
+			pawn.visible_message(span_notice("[pawn] fills [carried] with water from [well]."))
+			controller.clear_blackboard_key(BB_FARMING_TARGET_WELL)
+			// Return to scanning, it will immediately find the carried water and water a plant
 			current_task = "scanning"
 			return ACTION_STATE_CONTINUE
 
@@ -263,6 +330,10 @@
 
 	return ACTION_STATE_CONTINUE
 
+// ---------------------------------------------------------------------------
+// Helpers
+// ---------------------------------------------------------------------------
+
 /datum/action_state/farming/proc/is_water_container(obj/item/item)
 	if(!istype(item, /obj/item/reagent_containers))
 		return FALSE
@@ -278,6 +349,19 @@
 		else if(istype(container, /obj/item/reagent_containers/glass))
 			if(container.reagents?.has_reagent(/datum/reagent/water, 15))
 				return container
+	return null
+
+/datum/action_state/farming/proc/find_well_nearby(datum/ai_controller/controller)
+	var/mob/living/pawn = controller.pawn
+	for(var/obj/structure/well/well in oview(15, pawn))
+		return well
+	return null
+
+/datum/action_state/farming/proc/find_empty_container_nearby(datum/ai_controller/controller)
+	var/mob/living/pawn = controller.pawn
+	for(var/obj/item/reagent_containers/container in oview(7, pawn))
+		if(container.reagents && container.reagents.total_volume == 0)
+			return container
 	return null
 
 /datum/action_state/farming/proc/find_seed_source_nearby(datum/ai_controller/controller)

@@ -13,6 +13,15 @@
 /datum/action_state_manager/New()
 	init_states()
 
+/datum/action_state_manager/proc/register_signals(datum/ai_controller/controller)
+	RegisterSignal(controller, COMSIG_AI_PATHING_FAILED, PROC_REF(on_pathing_failed))
+
+/datum/action_state_manager/proc/on_pathing_failed(datum/ai_controller/controller)
+	SIGNAL_HANDLER
+	clear_movement_target(controller)
+	current_state.invalidate_priority()
+	change_state(controller, available_states["idle"])
+
 /datum/action_state_manager/proc/init_states()
 	var/list/created = list()
 	for(var/datum/action_state/T as anything in available_states)

@@ -60,6 +60,7 @@
 		return
 
 	state_manager = new /datum/action_state_manager()
+	state_manager.register_signals(src)
 	blackboard[BB_ACTION_STATE_MANAGER] = state_manager
 
 	RegisterSignal(new_pawn, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine))

@@ -50,6 +50,8 @@
 #define COMSIG_AI_BLACKBOARD_KEY_SET(blackboard_key) "ai_blackboard_key_set_[blackboard_key]"
 #define COMSIG_AI_BLACKBOARD_KEY_CLEARED(blackboard_key) "ai_blackboard_key_clear_[blackboard_key]"
 
+#define COMSIG_AI_PATHING_FAILED "ai_pathing_failed"
+
 ///sent from ai controllers when they pick behaviors: (list/datum/ai_behavior/old_behaviors, list/datum/ai_behavior/new_behaviors)
 #define COMSIG_AI_CONTROLLER_PICKED_BEHAVIORS "ai_controller_picked_behaviors"
 ///sent from ai controllers when a behavior is inserted into the queue: (list/new_arguments)
@@ -316,6 +318,7 @@
 #define BB_GNOME_ALCHEMY_MODE "alch_mode"
 #define BB_GNOME_TARGET_CAULDRON "target_cauldron"
 #define BB_GNOME_TARGET_WELL "well_target"
+#define BB_FARMING_TARGET_WELL "farm_well_target" //why the distinction? because gnomes can support literally everything
 #define BB_GNOME_CURRENT_RECIPE "current_potion"
 #define BB_GNOME_ALCHEMY_STATE "alch_state"
 #define BB_GNOME_ESSENCE_STORAGE "essence_storage"

@@ -244,6 +244,7 @@
 				controller.pathing_attempts++
 				if(controller.pathing_attempts >= max_pathing_attempts)
 					controller.CancelActions()
+					SEND_SIGNAL(controller, COMSIG_AI_PATHING_FAILED)
 					continue
 				// Target doesnt exist anymore or we picked it up already
 				if(QDELETED(controller.current_movement_target) || controller.current_movement_target.loc == movable_pawn)
