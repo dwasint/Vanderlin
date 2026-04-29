@@ -354,8 +354,6 @@
 		update_icon_dropped()
 
 /obj/item/bodypart/proc/revive_limb()
-	if(!can_decay())
-		return
 	var/already_rot = HAS_TRAIT_FROM(src, TRAIT_ROTTEN, GERM_LEVEL_TRAIT)
 	if(already_rot)
 		REMOVE_TRAIT(src, TRAIT_ROTTEN, GERM_LEVEL_TRAIT)
