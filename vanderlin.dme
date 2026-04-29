@@ -1209,6 +1209,7 @@
 #include "code\datums\enchantments\cleanliness.dm"
 #include "code\datums\enchantments\dimensional_shrink.dm"
 #include "code\datums\enchantments\earth_respite.dm"
+#include "code\datums\enchantments\eternal_flames.dm"
 #include "code\datums\enchantments\frostbite.dm"
 #include "code\datums\enchantments\frostveil.dm"
 #include "code\datums\enchantments\hydrophobic.dm"

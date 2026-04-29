@@ -202,11 +202,12 @@
 	if(recipe.required_type)
 		if(islist(recipe.required_type))
 			var/list/names = list()
-			for(var/req in recipe.required_type)
-				names += "[req]"
+			for(var/atom/req as anything in recipe.required_type)
+				names += "[initial(req.name)]"
 			to_chat(user, span_notice("Requires: [jointext(names, " or ")]"))
 		else
-			to_chat(user, span_notice("Requires: [recipe.required_type]"))
+			var/atom/atom_path = recipe.required_type
+			to_chat(user, span_notice("Requires: [initial(atom_path.name)]"))
 
 	to_chat(user, span_info("Required essences:"))
 	for(var/etype in recipe.essence_recipe)
@@ -237,6 +238,8 @@
 		return
 	placed_item.enchant(epath)
 	var/datum/enchantment/tmp = new epath
+	if(tmp.should_process)
+		STOP_PROCESSING(SSenchantment, tmp)
 	to_chat(user, span_info("[placed_item] has been enchanted with [tmp.enchantment_name]!"))
 	qdel(tmp)
 	spawn_sparkles(8)
