@@ -83,7 +83,7 @@
 
 /atom/movable/screen/gnome_panel/close_panel
 	name = "Close Panel"
-	icon_state = "split-stop"
+	icon_state = "close"
 	color = "#FF5555"
 
 /atom/movable/screen/gnome_panel/close_panel/Click()
@@ -91,7 +91,7 @@
 
 /atom/movable/screen/gnome_panel/transport_source
 	name = "Transport Source"
-	icon_state = "point"
+	icon_state = "transport-source"
 
 /atom/movable/screen/gnome_panel/transport_source/Click()
 	if(!panel) return
@@ -110,7 +110,7 @@
 
 /atom/movable/screen/gnome_panel/transport_dest
 	name = "Transport Destination"
-	icon_state = "point-b"
+	icon_state = "transport-drop"
 
 /atom/movable/screen/gnome_panel/transport_dest/Click()
 	if(!panel) return
@@ -129,7 +129,7 @@
 
 /atom/movable/screen/gnome_panel/range_dec
 	name = "Decrease Range"
-	icon_state = "filter-stop"
+	icon_state = "range-down"
 
 /atom/movable/screen/gnome_panel/range_dec/Click()
 	if(panel) panel.cmd_range_change(-1)
@@ -142,7 +142,7 @@
 
 /atom/movable/screen/gnome_panel/range_inc
 	name = "Increase Range"
-	icon_state = "range"
+	icon_state = "range-up"
 
 /atom/movable/screen/gnome_panel/range_inc/Click()
 	if(panel) panel.cmd_range_change(1)
@@ -186,7 +186,7 @@
 
 /atom/movable/screen/gnome_panel/set_cauldron
 	name = "Set Cauldron"
-	icon_state = "alch"
+	icon_state = "cauldron"
 
 /atom/movable/screen/gnome_panel/set_cauldron/Click()
 	if(!panel) return
@@ -224,7 +224,7 @@
 
 /atom/movable/screen/gnome_panel/set_bottle
 	name = "Set Bottle Storage"
-	icon_state = "point-b"
+	icon_state = "bottle-source"
 
 /atom/movable/screen/gnome_panel/set_bottle/Click()
 	if(!panel) return
@@ -262,7 +262,7 @@
 
 /atom/movable/screen/gnome_panel/set_splitter_source
 	name = "Set Splitting Item Source"
-	icon_state = "point"
+	icon_state = "transport-source"
 
 /atom/movable/screen/gnome_panel/set_splitter_source/Click()
 	if(!panel) return
