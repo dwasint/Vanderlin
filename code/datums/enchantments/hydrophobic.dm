@@ -8,6 +8,7 @@
 		/datum/thaumaturgical_essence/chaos = 10
 	)
 	required_type = list(/obj/item/clothing)
+	var/active_item
 
 /datum/enchantment/hydrophobic/register_triggers(atom/item)
 	. = ..()

@@ -13,7 +13,7 @@
 	registered_signals += COMSIG_ITEM_DROPPED
 	RegisterSignal(item, COMSIG_ITEM_DROPPED, PROC_REF(on_drop))
 	registered_signals += COMSIG_ITEM_PICKUP
-	RegisterSignal(item, COMSIG_ITEM_PICKUP, PROC_REF(on_pickup))
+	RegisterSignal(item, COMSIG_ITEM_PICKUP, PROC_REF(on_equipped))
 	registered_signals += COMSIG_ITEM_NOW_ACTIVE
 	RegisterSignal(item, COMSIG_ITEM_NOW_ACTIVE, PROC_REF(on_active))
 	registered_signals += COMSIG_ITEM_NOLONGER_ACTIVE
