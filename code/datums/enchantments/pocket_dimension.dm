@@ -14,6 +14,10 @@ GLOBAL_VAR_INIT(pocket_portal, null)
 	. = ..()
 	GLOB.pocket_portal = src
 
+/obj/structure/pocket_portal/Destroy()
+	. = ..()
+	GLOB.pocket_portal = null
+
 /obj/structure/pocket_portal/attack_hand(mob/living/user)
 	. = ..()
 	var/atom/output = pick(mob_exit_point)
