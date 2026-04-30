@@ -106,7 +106,6 @@
 /mob/living/carbon/proc/get_max_mana_capacity_mult()
 	SHOULD_BE_PURE(TRUE)
 
-	var/mult = 1
 	var/skill_level = max(1, GET_MOB_SKILL_VALUE_OLD(src, /datum/attribute/skill/magic/arcane))
 	return 1 + (skill_level * 0.1)
 

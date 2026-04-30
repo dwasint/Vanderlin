@@ -278,6 +278,8 @@
 	var/next_pain_time = 0
 	/// Next time we are able to send a custom_pain() chat message
 	var/next_pain_message_time = 0
+	/// Next time we are able to emote from pain
+	var/next_pain_emote_time = 0
 
 	/// cooldown for the next time this person can offer
 	COOLDOWN_DECLARE(offer_cooldown)
