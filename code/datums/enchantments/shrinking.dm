@@ -23,11 +23,11 @@
 		return
 	else
 		active_item = TRUE
-		ADD_TRAIT(user, TRAIT_TINY, TRAIT_GENERIC)
+		ADD_TRAIT(user, TRAIT_TINY, "[i]")
 		to_chat(user, span_notice("So this is how Kobolds feel."))
 
 /datum/enchantment/shrinking/proc/on_drop(obj/item/i, mob/living/user)
 	if(active_item)
 		active_item = FALSE
-		REMOVE_TRAIT(user, TRAIT_TINY, TRAIT_GENERIC)
+		REMOVE_TRAIT(user, TRAIT_TINY, "[i]")
 		to_chat(user, span_notice("I feel mundane once more."))
