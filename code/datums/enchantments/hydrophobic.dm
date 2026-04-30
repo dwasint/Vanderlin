@@ -24,11 +24,11 @@
 		return
 	else
 		active_item = TRUE
-		ADD_TRAIT(user, TRAIT_SWIMMER, "[i]")
+		ADD_TRAIT(user, TRAIT_SWIMMER, "[REF(i)]")
 		to_chat(user, span_notice("I feel like I can fly through water."))
 
 /datum/enchantment/hydrophobic/proc/on_drop(obj/item/i, mob/living/user)
 	if(active_item)
 		active_item = FALSE
-		REMOVE_TRAIT(user, TRAIT_SWIMMER, "[i]")
+		REMOVE_TRAIT(user, TRAIT_SWIMMER, "[REF(i)]")
 		to_chat(user, span_notice("I feel mundane once more."))
