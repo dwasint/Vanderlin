@@ -143,7 +143,7 @@
 
 /datum/job/advclass/town_elder/mayor/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
-	spawned.inspiration = new /datum/inspiration(spawned)
+	spawned.grant_inspiration()
 
 /datum/outfit/town_elder/mayor
 	name = "Mayor (Town Elder)"
@@ -552,6 +552,7 @@
 /datum/job/advclass/town_elder/lorekeeper/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	spawned.inspiration = new /datum/inspiration(spawned)
+	spawned.grant_inspiration()
 
 /datum/outfit/town_elder/lorekeeper
 	name = "Lorekeeper (Town Elder)"

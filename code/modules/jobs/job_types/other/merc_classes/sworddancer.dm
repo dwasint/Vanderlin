@@ -44,6 +44,7 @@
 	. = ..()
 
 	spawned.inspiration = new /datum/inspiration(spawned)
+	spawned.grant_inspiration()
 	spawned.merctype = 9
 
 /datum/job/advclass/mercenary/sworddancer/on_roundstart(mob/living/carbon/human/spawned, client/player_client)
