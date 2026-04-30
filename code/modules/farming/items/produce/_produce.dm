@@ -313,6 +313,7 @@
 	rotprocess = SHELFLIFE_LONG
 	sellprice = 0 // only dried has value
 	item_weight = 15 GRAMS
+	should_dry = TRUE
 
 /obj/item/reagent_containers/food/snacks/produce/swampweed_dried
 	seed = null
@@ -347,6 +348,7 @@
 	rotprocess = SHELFLIFE_LONG
 	sellprice = 0 // only dried has value
 	item_weight  = 10 GRAMS
+	should_dry = TRUE
 
 /obj/item/reagent_containers/food/snacks/produce/dry_westleach
 	seed = null

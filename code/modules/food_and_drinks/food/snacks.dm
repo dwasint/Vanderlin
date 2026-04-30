@@ -56,6 +56,7 @@ All foods are distributed among various categories. Use common sense.
 	var/eatverb
 	var/dried_type = null
 	var/dry = 0
+	var/should_dry = FALSE
 	var/dunkable = FALSE // for dunkable food, make true
 	var/dunk_amount = 10 // how much reagent is transferred per dunk
 	var/filling_color = "#FFFFFF" //color to use when added to custom food.
