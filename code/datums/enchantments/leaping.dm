@@ -25,6 +25,8 @@
 		to_chat(user, span_notice("My legs feel much stronger."))
 
 /datum/enchantment/leaping/proc/on_drop(obj/item/i, mob/living/user)
+	if(enchanted_item.loc == user)
+		return
 	if(active_item)
 		active_item = FALSE
 		REMOVE_TRAIT(user, TRAIT_ZJUMP, TRAIT_GENERIC)

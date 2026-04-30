@@ -475,6 +475,17 @@
 
 	maximum_mana_capacity = new_max
 
+	if(parent && ismob(parent))
+		var/mob/holder = parent
+		var/datum/hud/human/hud_used = holder.hud_used
+		if(hud_used?.mana)
+			var/filled = round((src.amount / get_softcap()) * 100, 10)
+			if(filled < 10)
+				return
+			filled = clamp(filled, 0, 120)
+			hud_used.mana.icon_state = "mana[filled]"
+
+
 /datum/mana_pool/proc/get_percent_to_max()
 	SHOULD_BE_PURE(TRUE)
 

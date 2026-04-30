@@ -24,7 +24,7 @@
 
 	if(isliving(target))
 		var/mob/living/L = target
-		L.apply_damage(5, BURN)
+		L.adjustFireLoss(5)
 		to_chat(L, span_warning("You feel a bone-chilling cold!"))
 		L.add_movespeed_modifier(MOVESPEED_ID_FROSTBITE, multiplicative_slowdown = 0.5)
 		addtimer(CALLBACK(L, TYPE_PROC_REF(/mob/living, remove_movespeed_modifier), MOVESPEED_ID_FROSTBITE), 10 SECONDS)
