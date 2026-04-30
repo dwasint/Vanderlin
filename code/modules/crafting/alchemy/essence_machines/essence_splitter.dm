@@ -13,7 +13,7 @@
 
 /obj/machinery/essence/splitter/Initialize()
 	. = ..()
-	storage.max_total = 5000
+	storage.max_total = 5000 //okay
 	storage.max_types = 15
 
 	if(GLOB.thaumic_research.has_research(/datum/thaumic_research_node/splitter_efficiency/five))
@@ -42,10 +42,10 @@
 	// Research bonuses are re-evaluated on each interaction
 	if(GLOB.thaumic_research.has_research(/datum/thaumic_research_node/splitter_efficiency/five))
 		max_items = 8
-		storage.max_total = 800
+		storage.max_total = 8000
 	else if(GLOB.thaumic_research.has_research(/datum/thaumic_research_node/splitter_efficiency/six))
 		max_items = 12
-		storage.max_total = 1200
+		storage.max_total = 12000
 
 	if(processing)
 		to_chat(user, span_warning("The splitter is currently processing."))
