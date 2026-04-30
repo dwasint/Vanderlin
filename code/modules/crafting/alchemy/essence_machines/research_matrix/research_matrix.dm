@@ -85,6 +85,7 @@
 			selected_research.experience_reward * boon, FALSE)
 	qdel(selected_research)
 	selected_research = null
+	network.invalidate_cache()
 	addtimer(CALLBACK(src, PROC_REF(open_research_interface), user), 1)
 
 /obj/machinery/essence/research_matrix/proc/open_research_interface(mob/user)
