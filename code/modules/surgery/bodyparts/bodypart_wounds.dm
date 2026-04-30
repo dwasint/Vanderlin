@@ -153,7 +153,7 @@
 /obj/item/bodypart/proc/skeletonized_mod(bclass)
 	if(!skeletonized)
 		return 1
-	switch(blcass)
+	switch(bclass)
 		if(WOUND_BLUNT)
 			return 1.25
 		if(WOUND_SLASH)
