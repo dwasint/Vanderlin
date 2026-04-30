@@ -107,6 +107,7 @@
 		return
 	if(selected_research) qdel(selected_research)
 	selected_research = node
+	network.invalidate_cache()
 	// No network to invalidate since accepts_input = FALSE,
 	// but push out anything the old research needed that the new one doesn't
 	push_surplus_to_linked(storage)
