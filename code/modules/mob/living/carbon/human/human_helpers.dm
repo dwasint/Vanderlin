@@ -290,4 +290,4 @@
 	return highest_ac
 
 /mob/living/carbon/human/proc/grant_inspiration(tier)
-	inspiration = new /datum/inspiration(character, tier)
+	inspiration = new /datum/inspiration(src, tier)

@@ -14,6 +14,28 @@
 	pixel_x = base_pixel_x + rand(-12, 12)
 	pixel_y = base_pixel_y + rand(-9, 0)
 
+/obj/effect/temp_visual/song_telltale
+	name = "music"
+	icon = 'icons/effects/music-note.dmi'
+	icon_state = "music_note"
+	duration = 20
+	plane = GAME_PLANE_UPPER
+	layer = ABOVE_ALL_MOB_LAYER
+	var/note_color = "#7f7f7f"
+
+/obj/effect/temp_visual/song_telltale/Initialize(mapload)
+	. = ..()
+	add_atom_colour(note_color, FIXED_COLOUR_PRIORITY)
+	alpha = 200
+	pixel_x = rand(-10, 10)
+	pixel_y = rand(14, 22) // Above the head
+
+/obj/effect/temp_visual/song_telltale/buff
+	note_color = "#5CB8E6"
+
+/obj/effect/temp_visual/song_telltale/debuff
+	note_color = "#CC3333"
+
 /atom/movable/screen/alert/status_effect/buff/playing_music
 	name = "Playing Music"
 	desc = "Let the world hear my craft."
