@@ -414,7 +414,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		smoketime = 0
 		extinguish()
 		return
-	smoketime--
+	if(!has_enchantment(/datum/enchantment/eternal_blunt))
+		smoketime--
 	if(smoketime >= 1)
 		if(reagents?.total_volume)
 			handle_reagents()
