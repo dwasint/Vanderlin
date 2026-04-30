@@ -366,6 +366,8 @@
 			return FALSE
 	if(is_bandaged() || is_clamped() || is_sutured())
 		return FALSE
+	if(required_status & BODYPART_ROBOTIC)
+		return FALSE
 	return ((bleed_timer > 0 || damage_per_injury() > bleed_threshold) && current_stage <= max_bleeding_stage)
 
 /datum/injury/proc/get_bleed_rate()
