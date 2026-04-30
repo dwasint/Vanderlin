@@ -125,3 +125,4 @@
 
 /datum/pet_command/fetch/gnome
 	trigger_on_throw = FALSE
+	speech_commands = list()
