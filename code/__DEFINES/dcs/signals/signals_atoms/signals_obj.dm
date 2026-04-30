@@ -30,6 +30,8 @@
 
 #define COMSIG_ITEM_EQUIPPED "item_equip"						//from base of obj/item/equipped(): (/mob/equipper, slot)
 
+#define COMSIG_ITEM_EATEN "item_eaten"
+
 #define COMSIG_QUALITY_ADD_MATERIAL "quality_add_material"
 #define COMSIG_QUALITY_MODIFY "quality_modify"
 #define COMSIG_QUALITY_GET "quality_get"

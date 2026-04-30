@@ -337,6 +337,7 @@ All foods are distributed among various categories. Use common sense.
 	..()
 
 /obj/item/reagent_containers/food/snacks/on_consume(mob/living/eater)
+	. = ..()
 	if(!eater)
 		return
 
