@@ -252,7 +252,7 @@
 
 	var/endorphin_amount = clamp(endurance, 5, 29)
 	reagents?.add_reagent(/datum/reagent/medicine/endorphin, endorphin_amount)
-	TIMER_COOLDOWN_START(src, COOLDOWN_CARBON_ENDORPHINATION, ENDORPHINATION_COOLDOWN_DURATION)
+	TIMER_COOLDOWN_START(src, COOLDOWN_CARBON_ENDORPHINATION, HAS_TRAIT(src, TRAIT_PSYDONIAN_GRIT) ? ENDORPHINATION_COOLDOWN_DURATION * 0.75 : ENDORPHINATION_COOLDOWN_DURATION)
 	if(!silent)
 		var/final_sound = special_sound || 'sound/heart/combatcocktail.ogg'
 		if(local_sound)

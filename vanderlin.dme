@@ -1229,6 +1229,7 @@
 #include "code\datums\enchantments\leaping.dm"
 #include "code\datums\enchantments\life_eternal.dm"
 #include "code\datums\enchantments\lightning.dm"
+#include "code\datums\enchantments\malum_sight.dm"
 #include "code\datums\enchantments\mana_capacity.dm"
 #include "code\datums\enchantments\mana_regeneration.dm"
 #include "code\datums\enchantments\pestra_gift.dm"
