@@ -11,6 +11,10 @@
 	var/datum/ai_controller/basic_controller/gnome_homunculus/controller = gnome.ai_controller
 	if(!controller)
 		return
+	if(isliving(enterer))
+		var/friendship_check = SEND_SIGNAL(gnome, COMSIG_FRIENDSHIP_CHECK_LEVEL, enterer, "friend")
+		if(!friendship_check)
+			return
 
 	clear_data(source, enterer) // Clear any existing overlays first
 	create_waypoint_overlays(controller, enterer.client)
