@@ -82,7 +82,7 @@
 	if(controller.blackboard[BB_GNOME_CROP_MODE])
 		var/mob/living/pawn = controller.pawn
 		if(pawn)
-			create_range_box(get_turf(pawn), 7, "#00FF00", "farming_range", viewer) // Green
+			create_range_box(get_turf(pawn), 7, "#00FF00", "farming_range", viewer, alpha = 60) // Green
 
 			for(var/obj/structure/soil/soil in oview(7, pawn))
 				var/soil_color = "#90EE90"
@@ -151,7 +151,7 @@
 		add_client_image(well_image, viewer)
 		target_overlays += well_image
 
-/datum/hover_data/gnome_status/proc/create_range_box(turf/center, range, color, icon_state, client/viewer)
+/datum/hover_data/gnome_status/proc/create_range_box(turf/center, range, color, icon_state, client/viewer, alpha = 255)
 	if(!center || range <= 0)
 		return
 
@@ -170,5 +170,6 @@
 			fill_image.color = color
 			fill_image.plane = SEETHROUGH_PLANE
 			fill_image.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+			fill_image.alpha = alpha
 			add_client_image(fill_image, viewer)
 			range_overlays += fill_image
