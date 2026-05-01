@@ -232,6 +232,13 @@
 
 /mob/living/MiddleClickOn(atom/A, list/modifiers)
 	. = ..()
+
+	var/obj/item/held_item = get_active_held_item()
+	if(istype(held_item, /obj/item/instrument))
+		var/mob/living/carbon/human/human = src
+		if(istype(human) && isliving(A))
+			human.toggleaudience(A)
+
 	if(!mmb_intent)
 		if(!A.Adjacent(src))
 			return

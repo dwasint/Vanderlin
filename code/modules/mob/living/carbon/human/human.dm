@@ -3,10 +3,6 @@
 	if(!user)
 		return
 	var/obj/item/held_item = user.get_active_held_item()
-	if(istype(held_item, /obj/item/instrument))
-		var/mob/living/carbon/human/human = user
-		if(istype(human))
-			human.toggleaudience(src)
 	if(user.cmode)
 		if(held_item && (user.zone_selected == BODY_ZONE_PRECISE_NECK))
 			if(held_item.get_sharpness() && held_item.wlength == WLENGTH_SHORT)

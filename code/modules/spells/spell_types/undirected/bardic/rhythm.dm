@@ -1,17 +1,5 @@
 #define RHYTHM_FILTER "rhythm_glow"
 
-/proc/rhythm_name(rhythm_type)
-	switch(rhythm_type)
-		if(RHYTHM_RESONATING)
-			return "Resonating"
-		if(RHYTHM_CONCUSSIVE)
-			return "Concussive"
-		if(RHYTHM_FRIGID)
-			return "Frigid"
-		if(RHYTHM_REGENERATING)
-			return "Regenerating"
-	return "Unknown"
-
 /datum/rhythm_tracker
 	var/greater_stacks = 0
 	var/last_rhythm_type = RHYTHM_NONE
