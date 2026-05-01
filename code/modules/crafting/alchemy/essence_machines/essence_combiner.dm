@@ -279,6 +279,8 @@
 		var/boon = user.get_learning_boon(/datum/attribute/skill/craft/alchemy)
 		var/xp = GET_MOB_ATTRIBUTE_VALUE(user, STAT_INTELLIGENCE) * recipes.len
 		user.adjust_experience(/datum/attribute/skill/craft/alchemy, xp * boon, FALSE)
+	if(mode == COMBINER_MODE_MANUAL || mode == COMBINER_MODE_AUTO)
+		attempt_combination_auto()
 
 /**
  * Finds the best matching recipe given [available] essence snapshot.
