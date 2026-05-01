@@ -99,6 +99,46 @@
 	// Push combined output through outbound links
 	push_to_linked(output_storage)
 
+/obj/machinery/essence/combiner/on_storage_changed(essence_type, amount, added)
+	. = ..()
+	if(!added || combining)
+		return
+	if(mode == COMBINER_MODE_MANUAL || mode == COMBINER_MODE_AUTO)
+		attempt_combination_auto()
+
+/obj/machinery/essence/combiner/proc/attempt_combination_auto()
+	if(!storage.contents.len)
+		return
+
+	var/list/queued = list()
+	var/list/available = storage.snapshot()
+	var/efficiency = GLOB.thaumic_research.get_research_bonus(/datum/thaumic_research_node/combiner_output)
+
+	while(queued.len < max_concurrent_recipes)
+		var/datum/essence_combination/recipe = find_matching_combination(available)
+		if(!recipe)
+			break
+		// No skill check, machine operates autonomously
+		for(var/etype in recipe.inputs)
+			available[etype] -= recipe.inputs[etype]
+			if(available[etype] <= 0)
+				available -= etype
+		queued += recipe
+
+	if(!queued.len)
+		return
+
+	var/total_out = 0
+	for(var/datum/essence_combination/r in queued)
+		total_out += round(r.output_amount * efficiency, 1)
+
+	if(output_storage.space() < total_out)
+		for(var/datum/essence_combination/r in queued)
+			qdel(r)
+		return
+
+	begin_bulk_combination(null, queued)
+
 /obj/machinery/essence/combiner/attack_hand(mob/living/user)
 	if(combining)
 		to_chat(user, span_warning("A combination is already in progress."))
@@ -204,7 +244,10 @@
 
 /obj/machinery/essence/combiner/proc/begin_bulk_combination(mob/living/user, list/recipes)
 	combining = TRUE
-	user.visible_message(span_info("[user] activates [src] for bulk processing ([recipes.len] recipe(s))."))
+	if(user)
+		user.visible_message(span_info("[user] activates [src] for bulk processing ([recipes.len] recipe(s))."))
+	else
+		visible_message(span_info("[src] begins automated combination ([recipes.len] recipe(s))."))
 	update_appearance(UPDATE_OVERLAYS)
 	var/speed = GLOB.thaumic_research.get_research_bonus(/datum/thaumic_research_node/combiner_speed)
 	var/time = (5 SECONDS + (recipes.len * 2 SECONDS)) / speed
@@ -232,12 +275,10 @@
 	for(var/label in report)
 		parts += "[label] ([report[label]] units)"
 	visible_message(span_info("[src] finishes: [jointext(parts, ", ")]."))
-	var/boon = user.get_learning_boon(/datum/attribute/skill/craft/alchemy)
-	var/xp = GET_MOB_ATTRIBUTE_VALUE(user, STAT_INTELLIGENCE) * recipes.len
-	user.adjust_experience(/datum/attribute/skill/craft/alchemy, xp * boon, FALSE)
-
-	if(mode == COMBINER_MODE_AUTO && user && !QDELETED(user))
-		attempt_combination(user)
+	if(user)
+		var/boon = user.get_learning_boon(/datum/attribute/skill/craft/alchemy)
+		var/xp = GET_MOB_ATTRIBUTE_VALUE(user, STAT_INTELLIGENCE) * recipes.len
+		user.adjust_experience(/datum/attribute/skill/craft/alchemy, xp * boon, FALSE)
 
 /**
  * Finds the best matching recipe given [available] essence snapshot.
