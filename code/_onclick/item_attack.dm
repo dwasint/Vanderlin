@@ -372,7 +372,6 @@
 	log_combat(user, M, "attacked", src.name, "(INTENT: [uppertext(user.used_intent.name)]) (DAMTYPE: [uppertext(damtype)])")
 	add_fingerprint(user)
 
-
 /// The equivalent of [/obj/item/proc/attack] but for alternate attacks, AKA right clicking
 /obj/item/proc/attack_secondary(mob/living/victim, mob/living/user, list/modifiers)
 	var/signal_result = SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SECONDARY, victim, user, modifiers)
@@ -689,6 +688,8 @@
 		nodmg = TRUE
 		next_attack_msg += span_warning("Armor stops the damage.")
 	apply_damage(newforce, I.damtype, hitlim, armor)
+	if(newforce)
+		SEND_SIGNAL(I, COMSIG_ITEM_POST_ATTACK_SIMPLE, src, user, newforce)
 	I.remove_bintegrity(1)
 	if(I.damtype == BRUTE && !nodmg)
 		if(HAS_TRAIT(src, TRAIT_SIMPLE_WOUNDS))

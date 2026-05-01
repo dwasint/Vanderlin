@@ -27,6 +27,7 @@
 #define COMSIG_ITEM_ATTACK_QDELETED "item_attack_qdeleted"
 /// From base of datum/species/proc/spec_attacked_by: (atom/target, mob/user, list/modifiers)
 #define COMSIG_ITEM_SPEC_ATTACKEDBY "item_spec_attackedby"
+#define COMSIG_ITEM_POST_ATTACK_SIMPLE "item_post_attack_simple"
 
 #define COMSIG_ITEM_EQUIPPED "item_equip"						//from base of obj/item/equipped(): (/mob/equipper, slot)
 
