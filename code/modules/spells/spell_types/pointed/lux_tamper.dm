@@ -60,6 +60,9 @@
 				continue
 			injury.transfer_injury(C_caster)
 
+	for(var/obj/item/organ/artery/artery in H.getorganslotlist(ORGAN_SLOT_ARTERY))
+		artery.applyOrganDamage(-artery.damage)
+
 	// Visual effects
 	user.visible_message(span_danger("[user] shoulders [H]'s wounds!"))
 	playsound(user, 'sound/magic/psydonbleeds.ogg', 50, TRUE)
