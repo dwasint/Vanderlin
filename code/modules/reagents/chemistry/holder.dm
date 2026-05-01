@@ -305,12 +305,16 @@
 	var/list/cached_reagents = reagent_list
 	if (!target)
 		return
-	if (!target.reagents || src.total_volume<=0 || !src.get_reagent_amount(reagent))
-		return
+	var/datum/reagents/R
+	if(!istype(target, /datum/reagents))
+		if (!target.reagents || src.total_volume<=0 || !src.get_reagent_amount(reagent))
+			return
+		R = target.reagents
+	else
+		R = target
 	if(amount < 0)
 		return
 
-	var/datum/reagents/R = target.reagents
 	if(src.get_reagent_amount(reagent)<amount)
 		amount = src.get_reagent_amount(reagent)
 	amount = min(amount, R.maximum_volume-R.total_volume)
@@ -950,6 +954,21 @@
 		R.on_temp_change(increased)
 	handle_reactions()
 	SEND_SIGNAL(my_atom, COMSIG_REAGENTS_EXPOSE_TEMPERATURE, null, chem_temp)
+
+/** Sets the temperature of this reagent container to a new value.
+ *
+ * Handles setter signals.
+ *
+ * Arguments:
+ * - _temperature: The new temperature value.
+ */
+/datum/reagents/proc/set_temperature(_temperature)
+	if(_temperature == chem_temp)
+		return
+
+	. = chem_temp
+	chem_temp = clamp(_temperature, 0, 99999)
+
 
 /**
  * Multiplies reagents inside this holder by a specific amount
