@@ -56,6 +56,8 @@
 			t_BP.remove_wound(targetwound.type)
 
 		for(var/datum/injury/injury in C_target.all_injuries)
+			if(injury.damage_type == WOUND_DIVINE)
+				continue
 			injury.transfer_injury(C_caster)
 
 	// Visual effects

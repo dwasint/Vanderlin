@@ -74,7 +74,6 @@
 /datum/component/ore_sight/proc/mine_pulse()
 	last_pulse = world.time
 	var/turf/origin = get_turf(parent)
-	var/stuff_found = FALSE
 	for(var/turf/closed/mineral/T in RANGE_TURFS(range, origin))
 		if(T)
 			var/obj/effect/temp_visual/fxtype
@@ -88,7 +87,6 @@
 				if(/turf/closed/mineral/bedrock)
 					fxtype = /obj/effect/temp_visual/bedrockore
 			if(fxtype)
-				stuff_found = TRUE
 				new fxtype(get_turf(T))
 	for(var/obj/item/natural/rock/boulder in get_hear(range, origin))	// We detect boulders and their contents, too.
 		if(boulder)
@@ -101,7 +99,6 @@
 				if(/obj/item/natural/rock/gold, /obj/item/natural/rock/silver, /obj/item/natural/rock/gemerald)
 					fxtype = /obj/effect/temp_visual/gemqualityore
 			if(fxtype)
-				stuff_found = TRUE
 				new fxtype(get_turf(boulder))
 
 /datum/component/ore_sight/proc/toggle(state)

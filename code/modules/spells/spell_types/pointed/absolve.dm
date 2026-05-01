@@ -83,6 +83,8 @@
 	user.adjustCloneLoss(clone_transfer)
 
 	for(var/datum/injury/injury in H.all_injuries)
+		if(injury.damage_type == WOUND_DIVINE)
+			continue
 		injury.transfer_injury(user)
 
 	// Transfer blood

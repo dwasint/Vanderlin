@@ -27,6 +27,12 @@
 	if(owner.blood_volume < BLOOD_VOLUME_NORMAL)
 		owner.adjust_bloodvolume(healing_on_tick + 1)
 	if(length(wCount) > 0)
+		if(iscarbon(owner))
+			var/mob/living/carbon/carbon = owner
+			for(var/datum/injury/injury in carbon.all_injuries)
+				if(!(injury.damage_type in list(WOUND_SLASH, WOUND_PIERCE, WOUND_BITE, WOUND_BLUNT)))
+					continue
+				injury.heal_damage(healing_on_tick)
 		owner.heal_wounds(healing_on_tick, list(/datum/wound/slash, /datum/wound/puncture, /datum/wound/bite, /datum/wound/bruise))
 		owner.update_damage_overlays()
 
