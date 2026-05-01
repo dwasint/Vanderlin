@@ -163,7 +163,9 @@
 	return (damage/amount)
 
 /datum/injury/proc/can_autoheal()
-	if(parent_mob.stat == DEAD)
+	if(!parent_mob)
+		return FALSE
+	if(parent_mob?.stat == DEAD)
 		return FALSE
 	if(required_status != BODYPART_ORGANIC)
 		return FALSE

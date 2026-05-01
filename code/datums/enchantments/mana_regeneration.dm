@@ -10,7 +10,10 @@
 	var/regeneration_rate = 2
 
 /datum/enchantment/mana_regeneration/process()
-	if(!iscarbon(enchanted_item.loc))
+	if(!enchanted_item)
+		STOP_PROCESSING(SSenchantment, src)
+		return
+	if(!iscarbon(enchanted_item?.loc))
 		return
 	var/mob/living/carbon/mob = enchanted_item.loc
 	mob.safe_adjust_personal_mana(regeneration_rate)

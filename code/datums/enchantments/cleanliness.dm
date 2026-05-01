@@ -9,4 +9,7 @@
 	)
 
 /datum/enchantment/eternal_clean/process()
-	enchanted_item.wash(CLEAN_SCRUB)
+	if(!enchanted_item)
+		STOP_PROCESSING(SSenchantment, src)
+		return
+	enchanted_item?.wash(CLEAN_SCRUB)

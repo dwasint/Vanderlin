@@ -10,7 +10,10 @@
 	required_type = list(/obj/item/clothing)
 
 /datum/enchantment/bloodmend/process(delta_time)
-	if(!iscarbon(enchanted_item.loc))
+	if(!enchanted_item)
+		STOP_PROCESSING(SSenchantment, src)
+		return
+	if(!iscarbon(enchanted_item?.loc))
 		return
 	if(enchanted_item.get_integrity() >= enchanted_item.max_integrity)
 		return

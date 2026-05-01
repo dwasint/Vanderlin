@@ -14,7 +14,7 @@
 	RegisterSignal(item, COMSIG_ITEM_DROPPED, PROC_REF(on_drop))
 
 /datum/enchantment/divine_link/proc/on_drop(obj/item/i, mob/living/user)
-	if(ishuman(enchanted_item.loc))
+	if(ishuman(enchanted_item?.loc))
 		return
 	var/mob/living/carbon/human/carbon = user
 	if(!carbon.cleric)
@@ -25,6 +25,9 @@
 
 
 /datum/enchantment/divine_link/process(delta_time)
+	if(!enchanted_item)
+		STOP_PROCESSING(SSenchantment, src)
+		return
 	if(!ishuman(enchanted_item.loc))
 		return
 	var/obj/item/item = enchanted_item
