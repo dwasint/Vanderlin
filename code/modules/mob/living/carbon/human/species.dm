@@ -1884,7 +1884,7 @@ GLOBAL_LIST_EMPTY(roundstart_species)
 	var/datum/wound/bodypart_wound = affecting.bodypart_attacked_by(user.used_intent.blade_class, actual_damage, user, selzone, crit_message = TRUE, modifiers = list(CRIT_MOD_KNOCKOUT_CHANCE = knockout_modifier), incoming_germ = I.germ_level, pre_applied = TRUE)
 	H.send_item_attack_message(I, user, parse_zone(selzone))
 
-	if(bodypart_wound?.should_embed(I))
+	if(istype(bodypart_wound) && bodypart_wound?.should_embed(I))
 		var/can_impale = TRUE
 		if(!affecting)
 			can_impale = FALSE
