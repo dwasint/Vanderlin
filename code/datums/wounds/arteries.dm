@@ -51,7 +51,9 @@
 			continue
 		artery = possible_artery
 		break
-	var/dissection = (severity >= WOUND_SEVERITY_CRITICAL) || (artery?.damage >= (artery.maxHealth * 0.5))
+	if(!artery)
+		return
+	var/dissection = (severity >= WOUND_SEVERITY_CRITICAL) || (artery?.damage >= (artery?.maxHealth * 0.5))
 	if(artery)
 		if(dissection)
 			artery.dissect()
