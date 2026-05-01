@@ -446,7 +446,7 @@
 		to_chat(user, "Collar is already unlocked!")
 
 
-/obj/item/clothing/neck/gorget/explosive/proc/tries_to_unequip(force, atom/newloc, no_move, invdrop, silent)
+/obj/item/clothing/neck/gorget/explosive/proc/tries_to_unequip(datum/source, force, atom/newloc, no_move, invdrop, silent)
 	SIGNAL_HANDLER
 
 	if(!ismob(loc))

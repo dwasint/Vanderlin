@@ -236,7 +236,8 @@
 		enchanting = FALSE
 		update_appearance(UPDATE_OVERLAYS)
 		return
-	placed_item.enchant(epath)
+	var/datum/enchantment/enchant = placed_item.enchant(epath)
+	enchant.apply_user_modifications(user)
 	var/datum/enchantment/tmp = new epath
 	if(tmp.should_process)
 		STOP_PROCESSING(SSenchantment, tmp)

@@ -28,6 +28,10 @@
 /datum/enchantment/proc/can_enchant(atom/item)
 	return TRUE
 
+///exclusively from the enchanting matrix a byproduct of enchanting
+/datum/enchantment/proc/apply_user_modifications(mob/user)
+	return TRUE
+
 /datum/enchantment/proc/add_item(atom/item)
 	if(!item)
 		return FALSE

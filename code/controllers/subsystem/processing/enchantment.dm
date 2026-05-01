@@ -53,7 +53,7 @@ PROCESSING_SUBSYSTEM_DEF(enchantment)
 		return FALSE
 	LAZYADD(item.enchantments, new_enchantment)
 	new_enchantment.add_item(item)
-	return TRUE
+	return new_enchantment
 
 /datum/controller/subsystem/processing/enchantment/proc/has_enchantment(atom/item, datum/enchantment/path)
 	if(!item || !path)
