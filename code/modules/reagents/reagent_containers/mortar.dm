@@ -177,12 +177,12 @@
 	return
 
 // Looks through all the alch grind recipes to find what it should create, returns the correct one.
-/obj/item/reagent_containers/glass/mortar/proc/find_recipe()
+/obj/item/reagent_containers/glass/mortar/proc/find_recipe(obj/item/target)
 	for(var/datum/alch_grind_recipe/grindRec in GLOB.alch_grind_recipes)
 		if(grindRec.picky)
-			if(to_grind.type == grindRec.valid_input)
+			if(target.type == grindRec.valid_input)
 				return grindRec
 		else
-			if(istype(to_grind,grindRec.valid_input))
+			if(istype(target, grindRec.valid_input))
 				return grindRec
 	return null

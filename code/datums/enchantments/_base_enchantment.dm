@@ -25,6 +25,9 @@
 	registered_signals = null
 	return ..()
 
+/datum/enchantment/proc/can_enchant(atom/item)
+	return TRUE
+
 /datum/enchantment/proc/add_item(atom/item)
 	if(!item)
 		return FALSE

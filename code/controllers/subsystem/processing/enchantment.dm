@@ -20,14 +20,18 @@ PROCESSING_SUBSYSTEM_DEF(enchantment)
 		return FALSE
 	var/datum/enchantment/singleton = enchantment_types[enchantment_path]
 	var/required_type = singleton.required_type
-	if(!required_type)
-		return TRUE
-	if(islist(required_type))
-		for(var/type_path in required_type)
-			if(istype(item, type_path))
-				return TRUE
-		return FALSE
-	return istype(item, required_type)
+	if(required_type)
+		if(islist(required_type))
+			var/type_matched = FALSE
+			for(var/type_path in required_type)
+				if(istype(item, type_path))
+					type_matched = TRUE
+					break
+			if(!type_matched)
+				return FALSE
+		else if(!istype(item, required_type))
+			return FALSE
+	return singleton.can_enchant(item)
 
 /datum/controller/subsystem/processing/enchantment/proc/get_valid_enchantments(atom/item)
 	var/list/valid = list()
