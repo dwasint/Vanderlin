@@ -71,6 +71,7 @@
 #define COMSIG_MOB_ALLOWED "mob_allowed"
 /// from base of mob/create_mob_hud(): ()
 #define COMSIG_MOB_HUD_CREATED "mob_hud_created"
+#define COMSIG_MOB_ITEM_ATTACK_POST_SWINGDELAY "mob_post_delay_attack"
 /// from base of
 #define COMSIG_MOB_ATTACK_HAND "mob_attack_hand"
 /// from base of /obj/item/attack(): (mob/M, mob/user)
