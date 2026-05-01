@@ -4,7 +4,7 @@
 
 	Otherwise pretty standard.
 */
-/mob/living/carbon/UnarmedAttack(atom/A, proximity, list/modifiers, atom/source)
+/mob/living/carbon/UnarmedAttack(atom/A, proximity_flag, list/modifiers, atom/source)
 	if(HAS_TRAIT(src, TRAIT_HANDS_BLOCKED))
 		return FALSE
 
