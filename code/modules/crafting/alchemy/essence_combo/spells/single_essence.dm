@@ -1,6 +1,6 @@
 /datum/essence_combo/spell/single
 	abstract_type = /datum/essence_combo/spell/single
-	required_minimum_essences = 1
+	required_count = 1
 
 /datum/essence_combo/spell/single/air
 	name = "Air Mastery"
