@@ -16,51 +16,52 @@ GLOBAL_LIST_INIT(essence_combos, init_essence_combos())
 	return available_combos
 
 /datum/essence_combo
-	abstract_type = /datum/essence_combo
-	var/name = "Unknown Combo"
-	/// Essence type paths required to activate this combo.
-	/// All must be present unless required_count overrides this.
-	var/list/required_essences = list()
-	/// How many of the required essences must be present.
-	/// Defaults to all of them if left null.
-	var/required_count = null
-	/// If set, only users of this species ID can activate this combo.
-	var/required_species = null
+	var/name = "Base Combo"
+	var/list/required_essences = list() // List of essence type paths
+	var/required_race = null // Optional race requirement
+	var/required_minimum_essences = 0 // How many of the required essences must be present (default: all)
 
 /datum/essence_combo/New()
-	ASSERT(length(required_essences) > 0)
-	validate()
+	if(!length(required_essences))
+		stack_trace("Essence combo [type] has no required essences!")
+	validate_combo()
 
-/// Override to perform subtype-specific validation at init time.
-/datum/essence_combo/proc/validate()
+/datum/essence_combo/proc/validate_combo()
+	// Override in subtypes to validate their specific requirements
 	return
 
-/// Returns TRUE if all activation conditions are met.
 /datum/essence_combo/proc/can_activate(list/available_essences, mob/user)
-	var/needed = required_count != null ? required_count : length(required_essences)
-	var/matched = 0
+	// Check essence requirements
+	var/matching_essences = 0
 	for(var/essence_type in required_essences)
 		if(essence_type in available_essences)
-			matched++
-	if(matched < needed)
-		return FALSE
+			matching_essences++
 
-	if(required_species && !user_is_species(user, required_species))
-		return FALSE
+	if(required_minimum_essences)
+		if(matching_essences < required_minimum_essences)
+			return FALSE
+	else
+		if(length(required_essences) != matching_essences)
+			return FALSE
+
+	// Check race requirement if any
+	if(required_race)
+		var/user_race = get_user_race(user)
+		if(user_race != required_race)
+			return FALSE
 
 	return TRUE
 
-/datum/essence_combo/proc/user_is_species(mob/user, species_id)
+/datum/essence_combo/proc/get_user_race(mob/user)
 	if(!ishuman(user))
-		return FALSE
-	var/mob/living/carbon/human/H = user
-	return H.dna?.species?.id == species_id
+		return null
+	var/mob/living/carbon/human/human_user = user
+	return human_user.dna?.species?.id
 
-/// Called when the gauntlet is equipped or vials are updated and this combo is active.
-/datum/essence_combo/proc/apply(obj/item/clothing/gloves/essence_gauntlet/gauntlet, mob/living/user)
+// Base proc for applying combo effects - override in subtypes
+/datum/essence_combo/proc/apply_effects(obj/item/clothing/gloves/essence_gauntlet/gauntlet, mob/user)
 	return
 
-/// Called when the gauntlet is unequipped or vials are updated.
-/// Spell combos do not need to override this, the gauntlet handles bulk spell removal.
-/datum/essence_combo/proc/remove(obj/item/clothing/gloves/essence_gauntlet/gauntlet, mob/living/user)
+// Base proc for removing combo effects - override in subtypes
+/datum/essence_combo/proc/remove_effects(obj/item/clothing/gloves/essence_gauntlet/gauntlet, mob/user)
 	return

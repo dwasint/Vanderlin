@@ -57,6 +57,7 @@
 /obj/item/essence_vial/proc/get_available_space()
 	return max_essence - essence_amount
 
+
 /datum/thaumaturgical_essence
 	var/name = "essence"
 	var/desc = "A concentrated magical essence."
@@ -64,8 +65,6 @@
 	var/color = "#FFFFFF"
 	var/icon_state = "essence_basic"
 	var/smells_like = "magic"
-	///basically what attunement we can tie this to
-	var/datum/attunement/attunement
 
 // =============================================================================
 // TIER 0 - BASIC ESSENCES
@@ -76,28 +75,24 @@
 	desc = "The essence of wind and movement."
 	color = "#E6F3FF"
 	smells_like = "fresh breeze"
-	attunement = /datum/attunement/aeromancy
 
 /datum/thaumaturgical_essence/water
 	name = "Water Essence"
 	desc = "The essence of flowing water."
 	color = "#4A90E2"
 	smells_like = "clear streams"
-	attunement = /datum/attunement/blood
 
 /datum/thaumaturgical_essence/fire
 	name = "Fire Essence"
 	desc = "The essence of burning flame."
 	color = "#FF6B35"
 	smells_like = "smoke and ash"
-	attunement = /datum/attunement/fire
 
 /datum/thaumaturgical_essence/earth
 	name = "Earth Essence"
 	desc = "The essence of solid ground."
 	color = "#8B4513"
 	smells_like = "rich soil"
-	attunement = /datum/attunement/earth
 
 /datum/thaumaturgical_essence/order
 	name = "Order Essence"
@@ -110,7 +105,6 @@
 	desc = "The essence of change and discord."
 	color = "#8A2BE2"
 	smells_like = "freedom and chaos"
-	attunement = /datum/attunement/polymorph
 
 // =============================================================================
 // TIER 1 - FIRST COMPOUND ESSENCES
@@ -122,14 +116,12 @@
 	tier = 1
 	color = "#87CEEB"
 	smells_like = "winter air"
-	attunement = /datum/attunement/ice
 
 /datum/thaumaturgical_essence/light
 	name = "Light Essence"
 	desc = "The essence of illumination."
 	tier = 1
 	smells_like = "warm embrace"
-	attunement = /datum/attunement/light
 
 /datum/thaumaturgical_essence/motion
 	name = "Motion Essence"
@@ -172,7 +164,6 @@
 	tier = 1
 	color = "#FF69B4"
 	smells_like = "blooming flowers"
-	attunement = /datum/attunement/life
 
 /datum/thaumaturgical_essence/crystal
 	name = "Crystal Essence"

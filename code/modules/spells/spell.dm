@@ -926,7 +926,7 @@
 			if(QDELETED(target) || !istype(target))
 				stack_trace("Essence spell checking cost without being assigned to an essence gauntlet!")
 				return FALSE
-			if(!gaunt.is_worn_by(owner))
+			if(!gaunt.check_gauntlet_validity(owner))
 				return FALSE
 			// Ditto
 			if(!length(gaunt.stored_vials))
@@ -996,11 +996,7 @@
 
 		if(SPELL_ESSENCE)
 			var/obj/item/clothing/gloves/essence_gauntlet/gaunt = target
-			if(!gaunt.is_worn_by(owner))
-				return
-
-			if(!gaunt.can_consume_essence(used_cost, attunements))
-				owner.balloon_alert(owner, "not enough essence!")
+			if(!gaunt?.check_gauntlet_validity(owner))
 				return
 
 			gaunt.consume_essence(used_cost, attunements)

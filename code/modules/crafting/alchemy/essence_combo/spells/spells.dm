@@ -63,22 +63,22 @@
 	name = "Dwarven Brewing"
 	required_essences = list(/datum/thaumaturgical_essence/earth, /datum/thaumaturgical_essence/water)
 	granted_spells = list(/datum/action/cooldown/spell/essence/create_beer)
-	required_species = SPEC_ID_DWARF
+	required_race = "dwarf"
 
 /datum/essence_combo/spell/master_forge
 	name = "Master Forge"
 	required_essences = list(/datum/thaumaturgical_essence/fire, /datum/thaumaturgical_essence/earth)
 	granted_spells = list(/datum/action/cooldown/spell/essence/master_forge, /datum/action/cooldown/spell/essence/ancestral_smithing)
-	required_species = SPEC_ID_DWARF
+	required_race = "dwarf"
 
 /datum/essence_combo/spell/elven_grace
 	name = "Elven Grace"
 	required_essences = list(/datum/thaumaturgical_essence/life, /datum/thaumaturgical_essence/light)
 	granted_spells = list(/datum/action/cooldown/spell/essence/elven_grace)
-	required_species = SPEC_ID_ELF
+	required_race = "elf"
 
 /datum/essence_combo/spell/balanced_mind
 	name = "Balanced Mind"
 	required_essences = list(/datum/thaumaturgical_essence/order, /datum/thaumaturgical_essence/chaos)
 	granted_spells = list(/datum/action/cooldown/spell/essence/balanced_mind)
-	required_species = SPEC_ID_HUMEN
+	required_race = "human"
