@@ -21,6 +21,7 @@
 		owner.remove_filter(SONG_DEBUFF_FILTER)
 
 /datum/action/cooldown/spell/undirected/song
+	abstract_type = /datum/action/cooldown/spell/undirected/song
 	button_icon = 'icons/mob/actions/bardsongs.dmi'
 	button_icon_state = "dirge_t1_base"
 	sound = 'sound/magic/buffrollaccent.ogg'

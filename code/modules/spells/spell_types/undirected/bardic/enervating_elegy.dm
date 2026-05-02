@@ -4,6 +4,7 @@
 	button_icon_state = "dirge_t2_base"
 	sound = 'sound/magic/debuffroll.ogg'
 	invocation = "plays a mournful, droning elegy. The will to fight seems to drain from the air."
+	invocation_self_message = "you play a mournful, droning elegy. The will to fight seems to drain from the air."
 	song_effect = /datum/status_effect/buff/playing_dirge/enervating_elegy
 
 /datum/status_effect/buff/playing_dirge/enervating_elegy

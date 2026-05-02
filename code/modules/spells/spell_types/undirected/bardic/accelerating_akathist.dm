@@ -3,6 +3,7 @@
 	desc = "Accelerate your allies with your bardic song!"
 	button_icon_state = "bardsong_t3_base"
 	invocation = "plays a blisteringly fast series of notes!"
+	invocation_self_message = "you play a blisteringly fast series of notes!"
 	song_effect = /datum/status_effect/buff/playing_melody/accelakathist
 
 /datum/status_effect/buff/playing_melody/accelakathist

@@ -4,6 +4,7 @@
 	button_icon_state = "dirge_t3_base"
 	sound = 'sound/magic/debuffroll.ogg'
 	invocation = "plays an unsettling, discordant requiem. Those nearby feel their confidence shaken."
+	invocation_self_message = "you play an unsettling, discordant requiem. Those nearby feel their confidence shaken."
 	song_effect = /datum/status_effect/buff/playing_dirge/rattling_requiem
 
 /datum/status_effect/buff/playing_dirge/rattling_requiem

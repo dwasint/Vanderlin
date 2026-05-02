@@ -3,6 +3,7 @@
 	desc = "Inspire the rhythm of battle, granting your allies guidance in combat!"
 	button_icon_state = "bardsong_t2_base"
 	invocation = "plays a bombastic, rhythmic march! The world feels grounded!"
+	invocation_self_message = "you play a bombastic, rhythmic march! The world feels grounded!"
 	song_effect = /datum/status_effect/buff/playing_melody/fervor
 
 /datum/status_effect/buff/playing_melody/fervor

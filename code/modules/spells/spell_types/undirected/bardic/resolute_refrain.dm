@@ -2,6 +2,8 @@
 	name = "Resolute Refrain"
 	desc = "A steadying melody that bolsters your allies' constitution."
 	button_icon_state = "melody_t1_base"
+	invocation = "plays a bolstering tune. The nearby air hardens."
+	invocation_self_message = "you play a bolstering tune. The nearby air hardens."
 	song_effect = /datum/status_effect/buff/playing_melody/resolute_refrain
 
 /datum/status_effect/buff/playing_melody/resolute_refrain

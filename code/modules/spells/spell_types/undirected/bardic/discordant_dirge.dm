@@ -4,6 +4,7 @@
 	button_icon_state = "dirge_t1_base"
 	sound = 'sound/magic/debuffroll.ogg'
 	invocation = "plays a grinding, dissonant melody. The air grows heavy and sluggish."
+	invocation_self_message = "you play a grinding, dissonant melody. The air grows heavy and sluggish."
 	song_effect = /datum/status_effect/buff/playing_dirge/discordant_dirge
 
 /datum/status_effect/buff/playing_dirge/discordant_dirge
