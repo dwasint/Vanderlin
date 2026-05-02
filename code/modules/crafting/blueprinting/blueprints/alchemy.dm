@@ -85,8 +85,8 @@
 	craftdiff = 3
 
 /datum/blueprint_recipe/alchemy/separator
-	name = "Distillation Apparatus"
-	desc = "A device for seperating liquids from eachother."
+	name = "Alembic"
+	desc = "A device for seperating liquids from eachother through distillation."
 	result_type = /obj/structure/chem_separator
 	required_materials = list(
 		/obj/item/natural/wood/plank = 1,

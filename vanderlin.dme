@@ -3711,6 +3711,8 @@
 #include "code\modules\reagents\chemistry\recipes\pyrotechnics.dm"
 #include "code\modules\reagents\chemistry\recipes\special.dm"
 #include "code\modules\reagents\chemistry\recipes\toxins.dm"
+#include "code\modules\reagents\chemistry\recipes\distillation\_base.dm"
+#include "code\modules\reagents\chemistry\recipes\distillation\aqua_vitae.dm"
 #include "code\modules\reagents\reagent_containers\bucket_pot.dm"
 #include "code\modules\reagents\reagent_containers\carafe.dm"
 #include "code\modules\reagents\reagent_containers\glass.dm"

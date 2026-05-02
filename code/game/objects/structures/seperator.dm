@@ -1,5 +1,5 @@
 /obj/structure/chem_separator
-	name = "distillation apparatus"
+	name = "alembic"
 	desc = "A device that performs liquid separation by distillation."
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "separator"
@@ -16,18 +16,22 @@
 	var/boiling = FALSE
 	/// Sound during separation
 	var/datum/looping_sound/boiling/soundloop
-	/// Minimal mixture temperature for separation
-	var/required_temp = T0C + 100
 	/// Mixture heating speed in degrees per second for full container
 	var/heating_rate = 5
 	/// Separation speed in units per second
 	var/distillation_rate = 5
+	/// Minimal mixture temperature for separation
+	var/required_temp = T0C + 100
 	/// Reagent container for the vapor of the separating reagent
 	var/datum/reagents/condenser
 	/// The reagent chosen for separation
 	var/datum/reagent/separating_reagent
 	/// Reagent container for condensate or separator filling
 	var/obj/item/reagent_containers/beaker
+	/// Whether the distill message for the current recipe has already been shown
+	var/distill_message_shown = FALSE
+	/// The currently active distillation recipe, if any
+	var/datum/distillation_recipe/active_recipe = null
 
 /obj/structure/chem_separator/Initialize(mapload)
 	. = ..()
@@ -58,6 +62,12 @@
 		. += emissive_appearance(icon, "[icon_state]_burn", src)
 	// Separator reagents overlay
 	if(reagents.total_volume)
+		var/is_glowing = FALSE
+		for(var/datum/reagent/R in reagents.reagent_list)
+			if(R.glows)
+				is_glowing = TRUE
+				break
+
 		var/threshold = null
 		for(var/i in 1 to fill_icon_thresholds.len)
 			if(ROUND_UP(100 * reagents.total_volume / reagents.maximum_volume) >= fill_icon_thresholds[i])
@@ -67,11 +77,18 @@
 			var/mutable_appearance/filling = mutable_appearance(fill_icon, fill_name)
 			filling.color = mix_color_from_reagents(reagents.reagent_list)
 			. += filling
+			if(is_glowing)
+				. += emissive_appearance(fill_icon, fill_name)
 	// Beaker overlay
 	if(beaker)
 		. += "[icon_state]_beaker"
 		// Beaker reagents overlay
 		if(beaker.reagents.total_volume)
+			var/is_glowing = FALSE
+			for(var/datum/reagent/R in beaker.reagents.reagent_list)
+				if(R.glows)
+					is_glowing = TRUE
+					break
 			var/threshold = null
 			for(var/i in 1 to fill_icon_thresholds.len)
 				if(ROUND_UP(100 * beaker.reagents.total_volume / beaker.reagents.maximum_volume) >= fill_icon_thresholds[i])
@@ -81,6 +98,8 @@
 				var/mutable_appearance/filling = mutable_appearance(fill_icon, fill_name)
 				filling.color = mix_color_from_reagents(beaker.reagents.reagent_list)
 				. += filling
+				if(is_glowing)
+					. += emissive_appearance(fill_icon, fill_name)
 		// Dripping overlay
 		if(boiling)
 			var/mutable_appearance/filling = mutable_appearance(fill_icon, "separator_dripping")
@@ -152,8 +171,10 @@
 	if(!reagents.total_volume)
 		return
 	var/list/reagents_sorted = reagents.reagent_list.Copy()
-	reagents_sorted = sortList(reagents_sorted, GLOBAL_PROC_REF(cmp_reagents_asc))
+	reagents_sorted = sortList(reagents_sorted, GLOBAL_PROC_REF(cmp_reagents_boiling_asc))
 	separating_reagent = reagents_sorted[1]
+	// Set required_temp dynamically from the reagent itself
+	required_temp = initial(separating_reagent.boiling_point)
 	burning = TRUE
 	update_appearance(UPDATE_ICON)
 	START_PROCESSING(SSobj, src)
@@ -161,6 +182,8 @@
 /// Extinguish the burner to stop the separation process
 /obj/structure/chem_separator/proc/stop()
 	separating_reagent = null
+	active_recipe = null
+	distill_message_shown = FALSE
 	burning = FALSE
 	if(boiling)
 		boiling = FALSE
@@ -207,6 +230,12 @@
 		return FALSE
 	return TRUE
 
+/obj/structure/chem_separator/proc/check_recipe()
+	if(!separating_reagent)
+		active_recipe = null
+		return
+	active_recipe = find_distillation_recipe(separating_reagent, reagents, required_temp)
+
 /obj/structure/chem_separator/process(seconds_per_tick)
 	var/turf/location = get_turf(loc)
 	if(!can_process(location))
@@ -219,18 +248,49 @@
 	if(reagents.chem_temp >= required_temp)
 		if(!boiling)
 			boiling = TRUE
+			distill_message_shown = FALSE
 			soundloop.start()
 		var/vapor_amount = distillation_rate * seconds_per_tick
-		// Vapor to condenser
 		reagents.trans_id_to(condenser, separating_reagent.type, vapor_amount)
-		// Cool the vapor down
 		condenser.set_temperature(273.15 + location.return_temperature())
-		// Condense into container
-		condenser.trans_to(beaker.reagents, condenser.total_volume)
-	else if (boiling)
+
+		// I hate this >:(
+		check_recipe()
+
+		if(active_recipe)
+			// consume condensate and produce results not drippy
+			if(!distill_message_shown)
+				if(active_recipe.distill_message)
+					visible_message(active_recipe.distill_message)
+				if(active_recipe.distill_sound)
+					playsound(src, active_recipe.distill_sound, 50, TRUE)
+				distill_message_shown = TRUE
+			condenser.remove_reagent(separating_reagent.type, condenser.total_volume)
+			if(active_recipe.consume_reagents)
+				for(var/req in active_recipe.required_reagents)
+					var/consume_amount = active_recipe.required_reagents[req] * (vapor_amount / distillation_rate)
+					reagents.remove_reagent(req, consume_amount)
+			for(var/result_type in active_recipe.results)
+				var/result_amount = active_recipe.results[result_type] * vapor_amount
+				beaker.reagents.add_reagent(result_type, result_amount)
+			active_recipe.on_distill(reagents, beaker.reagents, vapor_amount)
+		else if(!has_potential_recipe())
+			// drip through normally since no recipe
+			condenser.trans_to(beaker.reagents, condenser.total_volume)
+	else if(boiling)
 		boiling = FALSE
+		active_recipe = null
 		soundloop.stop()
 	update_appearance(UPDATE_ICON)
+
+/// Returns TRUE if any recipe exists for the current separating_reagent,
+/// even if conditions aren't currently met. Used to decide whether to hold condensate.
+/obj/structure/chem_separator/proc/has_potential_recipe()
+	if(!separating_reagent)
+		return FALSE
+	if(!length(GLOB.distillation_recipes) || !GLOB.distillation_recipes[separating_reagent.type])
+		return FALSE
+	return length(GLOB.distillation_recipes[separating_reagent.type]) > 0
 
 /obj/structure/chem_separator/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
