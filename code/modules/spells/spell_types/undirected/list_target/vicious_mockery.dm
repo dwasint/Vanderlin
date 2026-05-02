@@ -15,6 +15,7 @@
 	has_visual_effects = FALSE
 	spell_type = NONE
 
+	invocation_type = INVOCATION_NONE
 	charge_required = TRUE
 	charge_time = 0.5 SECONDS
 	charge_slowdown = 0
