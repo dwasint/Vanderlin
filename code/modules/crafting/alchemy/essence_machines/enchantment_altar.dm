@@ -1,4 +1,3 @@
-
 /obj/machinery/essence/enchantment_altar
 	name = "enchanting table"
 	desc = "An obsidian focus for binding alchemical essences into an item."
@@ -88,87 +87,57 @@
 		if("browse") show_recipe_selection(user, TRUE)
 		if("info") to_chat(user, span_notice("Place an item to begin."))
 
-// required_type may be null (any item), a single type, or a list of types, this sorts it for us basically
 /obj/machinery/essence/enchantment_altar/proc/item_matches_recipe(datum/enchantment/recipe, obj/item/item)
 	if(!recipe || !item)
 		return FALSE
-	if(!recipe.required_type)
-		return TRUE
-	if(islist(recipe.required_type))
-		for(var/req in recipe.required_type)
-			if(istype(item, req))
-				return TRUE
-		return FALSE
-	return istype(item, recipe.required_type)
+	return SSenchantment.can_enchant(item, recipe.type)
 
 /obj/machinery/essence/enchantment_altar/proc/show_recipe_selection(mob/user, browse_only)
 	var/list/opts = list()
-	var/list/mapping = list()
 
-	for(var/epath in subtypesof(/datum/enchantment))
-		var/datum/enchantment/e = new epath
+	for(var/epath in SSenchantment.enchantment_types)
+		var/datum/enchantment/e = SSenchantment.enchantment_types[epath]
+		var/compatible = placed_item ? SSenchantment.can_enchant(placed_item, epath) : null
 
-		// When actively selecting, skip recipes that don't match the placed item.
-		if(!browse_only && placed_item && !item_matches_recipe(e, placed_item))
-			qdel(e)
+		if(!browse_only && placed_item && !compatible)
 			continue
 
-		var/compatible_tag = ""
-		if(browse_only && placed_item && e.required_type)
-			compatible_tag = item_matches_recipe(e, placed_item) ? " ✓" : " ✗"
+		var/tag = ""
+		if(browse_only && placed_item)
+			tag = compatible ? " ✓" : " ✗"
 
-		var/key = "[e.enchantment_name][compatible_tag] - [get_recipe_summary(e)]"
+		var/key = "[e.enchantment_name][tag] - [get_recipe_summary(e)]"
 		opts[key] = epath
-		mapping[key] = e
 
 	if(!opts.len)
 		to_chat(user, span_warning("No enchantment recipes available\
 			[(!browse_only && placed_item) ? " for [placed_item]" : ""]."))
-		for(var/key in mapping) qdel(mapping[key])
 		return
 
 	var/choice = browser_input_list(user,
 		browse_only ? "Browse Recipes" : "Select Recipe for [placed_item]",
 		"Enchantment Recipes", opts)
 
-	if(!choice)
-		for(var/key in mapping) qdel(mapping[key])
-		return
+	if(!choice) return
 
 	var/epath = opts[choice]
 	if(browse_only)
-		show_recipe_details(user, mapping[choice])
+		show_recipe_details(user, SSenchantment.enchantment_types[epath])
 	else
 		select_recipe(epath, user)
 
-	for(var/key in mapping)
-		if(mapping[key] != selected_recipe)
-			qdel(mapping[key])
-
 /obj/machinery/essence/enchantment_altar/proc/select_recipe(epath, mob/user)
-	var/datum/enchantment/candidate = new epath
-
-	if(placed_item && !item_matches_recipe(candidate, placed_item))
-		// Build a readable type hint for the player.
-		var/hint = ""
-		if(islist(candidate.required_type))
-			var/list/names = list()
-			for(var/req in candidate.required_type)
-				names += "[req]"
-			hint = jointext(names, " or ")
-		else
-			hint = "[candidate.required_type]"
-		to_chat(user, span_warning("'[candidate.enchantment_name]' requires [hint]; \
-			[placed_item] is not compatible."))
-		qdel(candidate)
+	if(placed_item && !SSenchantment.can_enchant(placed_item, epath))
+		var/datum/enchantment/e = SSenchantment.enchantment_types[epath]
+		to_chat(user, span_warning("'[e.enchantment_name]' is not compatible with [placed_item]."))
 		return
 
 	if(selected_recipe) qdel(selected_recipe)
-	selected_recipe = candidate
+	selected_recipe = new epath
 	if(network) network.invalidate_cache()
 	push_surplus_to_linked(storage)
 	to_chat(user, span_info("Recipe '[selected_recipe.enchantment_name]' selected."))
-	show_recipe_details(user, selected_recipe)
+	show_recipe_details(user, SSenchantment.enchantment_types[epath])
 	update_appearance(UPDATE_OVERLAYS)
 
 /obj/machinery/essence/enchantment_altar/proc/clear_recipe(mob/user)
@@ -176,20 +145,18 @@
 	qdel(selected_recipe)
 	selected_recipe = null
 	if(network) network.invalidate_cache()
-	push_surplus_to_linked(storage) // nothing wanted now, push everything out
+	push_surplus_to_linked(storage)
 	to_chat(user, span_info("Recipe cleared."))
 	update_appearance(UPDATE_OVERLAYS)
 
 /obj/machinery/essence/enchantment_altar/proc/show_recipe_progress(mob/user)
 	if(!selected_recipe) return
 	to_chat(user, span_info("Progress for '[selected_recipe.enchantment_name]':"))
-	for(var/etype in selected_recipe.essence_recipe)
+	for(var/datum/thaumaturgical_essence/etype as anything in selected_recipe.essence_recipe)
 		var/needed = selected_recipe.essence_recipe[etype]
 		var/have = storage.get(etype)
-		var/datum/thaumaturgical_essence/e = new etype
 		var/color = (have >= needed) ? "green" : "red"
-		to_chat(user, span_info(" <font color='[color]'>[e.name]: [have]/[needed]</font>"))
-		qdel(e)
+		to_chat(user, span_info(" <font color='[color]'>[initial(etype.name)]: [have]/[needed]</font>"))
 	if(recipe_complete())
 		to_chat(user, span_info("<font color='green'>Ready to enchant!</font>"))
 
@@ -203,22 +170,20 @@
 		if(islist(recipe.required_type))
 			var/list/names = list()
 			for(var/atom/req as anything in recipe.required_type)
-				names += "[initial(req.name)]"
+				names += initial(req.name)
 			to_chat(user, span_notice("Requires: [jointext(names, " or ")]"))
 		else
-			var/atom/atom_path = recipe.required_type
-			to_chat(user, span_notice("Requires: [initial(atom_path.name)]"))
+			var/atom/atom = recipe.required_type
+			to_chat(user, span_notice("Requires: [initial(atom.name)]"))
 
 	to_chat(user, span_info("Required essences:"))
-	for(var/etype in recipe.essence_recipe)
-		var/datum/thaumaturgical_essence/e = new etype
-		to_chat(user, span_info(" [e.name]: [recipe.essence_recipe[etype]] units"))
-		qdel(e)
+	for(var/datum/thaumaturgical_essence/etype as anything in recipe.essence_recipe)
+		to_chat(user, span_info(" [initial(etype.name)]: [recipe.essence_recipe[etype]] units"))
 
 /obj/machinery/essence/enchantment_altar/proc/begin_enchantment(mob/living/user)
 	if(!placed_item || !selected_recipe || !recipe_complete()) return
 
-	if(!item_matches_recipe(selected_recipe, placed_item))
+	if(!SSenchantment.can_enchant(placed_item, selected_recipe.type))
 		to_chat(user, span_warning("[placed_item] is not compatible with \
 			'[selected_recipe.enchantment_name]'. Remove it and place the correct item type."))
 		return
@@ -236,19 +201,22 @@
 		enchanting = FALSE
 		update_appearance(UPDATE_OVERLAYS)
 		return
+
+	var/datum/enchantment/singleton = SSenchantment.enchantment_types[epath]
+	var/enchant_name = singleton ? singleton.enchantment_name : "Unknown"
+
 	var/datum/enchantment/enchant = placed_item.enchant(epath)
-	enchant.apply_user_modifications(user)
-	var/datum/enchantment/tmp = new epath
-	if(tmp.should_process)
-		STOP_PROCESSING(SSenchantment, tmp)
-	to_chat(user, span_info("[placed_item] has been enchanted with [tmp.enchantment_name]!"))
-	qdel(tmp)
+	if(enchant)
+		enchant.apply_user_modifications(user)
+		to_chat(user, span_info("[placed_item] has been enchanted with [enchant_name]!"))
+	else
+		to_chat(user, span_warning("Enchantment failed!"))
+
 	spawn_sparkles(8)
 	if(selected_recipe) qdel(selected_recipe)
 	selected_recipe = null
-	var/turf/T = get_turf(src)
 	if(user && placed_item.loc == src) user.put_in_hands(placed_item)
-	else placed_item.forceMove(T)
+	else placed_item.forceMove(get_turf(src))
 	placed_item = null
 	enchanting = FALSE
 	update_appearance(UPDATE_OVERLAYS)
@@ -261,14 +229,13 @@
 	user ? user.put_in_hands(placed_item) : placed_item.forceMove(get_turf(src))
 	to_chat(user, span_info("You remove [placed_item] from [src]."))
 	placed_item = null
+	clear_recipe(user)
 	update_appearance(UPDATE_OVERLAYS)
 
 /obj/machinery/essence/enchantment_altar/proc/get_recipe_summary(datum/enchantment/recipe)
 	var/list/parts = list()
-	for(var/etype in recipe.essence_recipe)
-		var/datum/thaumaturgical_essence/e = new etype
-		parts += "[recipe.essence_recipe[etype]] [e.name]"
-		qdel(e)
+	for(var/datum/thaumaturgical_essence/etype as anything in recipe.essence_recipe)
+		parts += "[recipe.essence_recipe[etype]] [initial(etype.name)]"
 	return jointext(parts, ", ")
 
 /obj/machinery/essence/enchantment_altar/proc/spawn_sparkles(count)
@@ -298,13 +265,11 @@
 		. += span_notice("Item: [placed_item]")
 	if(selected_recipe)
 		. += span_notice("Enchantment: [selected_recipe.enchantment_name]")
-		for(var/etype in selected_recipe.essence_recipe)
+		for(var/datum/thaumaturgical_essence/etype as anything in selected_recipe.essence_recipe)
 			var/needed = selected_recipe.essence_recipe[etype]
 			var/have = storage.get(etype)
-			var/datum/thaumaturgical_essence/e = new etype
 			var/color = (have >= needed) ? "green" : "red"
-			. += span_notice(" <font color='[color]'>[e.name]: [have]/[needed]</font>")
-			qdel(e)
+			. += span_notice(" <font color='[color]'>[initial(etype.name)]: [have]/[needed]</font>")
 		if(recipe_complete())
 			. += span_info("<font color='green'>Ready to enchant!</font>")
 	if(enchanting)
@@ -332,12 +297,11 @@
 	. += mutable_appearance(icon, "crystal")
 
 /obj/machinery/essence/enchantment_altar/proc/get_dominant_color()
-	var/highest = 0; var/color = "#FFFFFF"
-	for(var/etype in storage.contents)
+	var/highest = 0
+	var/color = "#FFFFFF"
+	for(var/datum/thaumaturgical_essence/etype as anything in storage.contents)
 		var/amt = storage.get(etype)
 		if(amt > highest)
 			highest = amt
-			var/datum/thaumaturgical_essence/e = new etype
-			color = e.color
-			qdel(e)
+			color = initial(etype.color)
 	return color
