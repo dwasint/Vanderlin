@@ -131,33 +131,20 @@
 
 
 /datum/anvil_recipe/proc/handle_creation(obj/item/I, minigame_success = 30,skill_level = 0)
-	if(istype(I, /obj/item/ingot))
-		var/datum/quality_calculator/metallurgy/quality_calc = new(
-			base_qual = 0,
-			mat_qual = material_quality,
-			skill_qual = skill_level,
-			perf_qual = numberofhits,
-			diff_mod = craftdiff,
-			components = num_of_materials
-		)
-		quality_calc.minigame_bonus = minigame_success
-		quality_calc.apply_quality_to_item(I, TRUE)
-		qdel(quality_calc)
-	else
-		var/datum/quality_calculator/blacksmithing/quality_calc = new(
-			base_qual = 0,
-			mat_qual = material_quality,
-			skill_qual = skill_level, // Pass the success score here
-			perf_qual = numberofhits,
-			diff_mod = craftdiff,
-			components = num_of_materials
-		)
-		quality_calc.minigame_success = minigame_success
+	var/datum/quality_calculator/blacksmithing/quality_calc = new(
+		base_qual = 0,
+		mat_qual = material_quality,
+		skill_qual = skill_level, // Pass the success score here
+		perf_qual = numberofhits,
+		diff_mod = craftdiff,
+		components = num_of_materials
+	)
+	quality_calc.minigame_success = minigame_success
 
-		quality_calc.apply_quality_to_item(I, TRUE)
-		qdel(quality_calc)
+	quality_calc.apply_quality_to_item(I, TRUE)
 	I.add_quench_requirement()
 	addtimer(CALLBACK(I, TYPE_PROC_REF(/obj/item, remove_quench)), 60 SECONDS)
+	qdel(quality_calc)
 
 /datum/anvil_recipe/proc/get_display_name()
 	return recipe_name || name
