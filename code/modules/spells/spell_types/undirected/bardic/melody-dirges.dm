@@ -25,6 +25,8 @@
 	button_icon = 'icons/mob/actions/bardsongs.dmi'
 	button_icon_state = "dirge_t1_base"
 	sound = 'sound/magic/buffrollaccent.ogg'
+	invocation = "plays a song."
+	invocation_self_message = "you play a song."
 
 	click_to_activate = FALSE
 	self_cast_possible = TRUE
