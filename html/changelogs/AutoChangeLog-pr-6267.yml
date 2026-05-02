@@ -1,0 +1,4 @@
+author: "Sulaboy"
+delete-after: True
+changes:
+  - bugfix: "Shovel, Godendag, and Psydonian Greatmace intents that required sharpness work now."
