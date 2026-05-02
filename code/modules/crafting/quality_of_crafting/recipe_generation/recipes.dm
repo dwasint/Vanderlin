@@ -544,7 +544,7 @@
 
 		if(S.skill_used && S.skill_min)
 			step_e["skill_name"] = initial(S.skill_used.name)
-			step_e["skill_min"] = SSskills.level_names[S.skill_min]
+			step_e["skill_min"] = SSskills.level_names[FLOOR(S.skill_min * 0.1, 1)]
 			step_e["skill_median"] = SSskills.level_names[S.skill_median]
 
 		if(length(S.chems_needed))

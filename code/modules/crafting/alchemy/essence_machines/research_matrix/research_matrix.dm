@@ -85,7 +85,7 @@
 			selected_research.experience_reward * boon, FALSE)
 	qdel(selected_research)
 	selected_research = null
-	network.invalidate_cache()
+	network?.invalidate_cache()
 	addtimer(CALLBACK(src, PROC_REF(open_research_interface), user), 1)
 
 /obj/machinery/essence/research_matrix/proc/open_research_interface(mob/user)
@@ -108,7 +108,7 @@
 		return
 	if(selected_research) qdel(selected_research)
 	selected_research = node
-	network.invalidate_cache()
+	network?.invalidate_cache()
 	// No network to invalidate since accepts_input = FALSE,
 	// but push out anything the old research needed that the new one doesn't
 	push_surplus_to_linked(storage)
