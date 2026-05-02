@@ -3,7 +3,7 @@
 	desc = "Recuperate your allies' spirits with your song! Refills stamina over time!"
 	button_icon_state = "melody_t2_base"
 	invocation = "plays a gentle-yet-refreshing tune. The nearby air clears."
-	invocation_self_message "you play a gentle-yet-refreshing tune. The nearby air clears."
+	invocation_self_message = "you play a gentle-yet-refreshing tune. The nearby air clears."
 	song_effect = /datum/status_effect/buff/playing_melody/recovery
 
 /datum/status_effect/buff/playing_melody/recovery
