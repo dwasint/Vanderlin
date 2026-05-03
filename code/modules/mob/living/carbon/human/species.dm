@@ -1497,6 +1497,11 @@ GLOBAL_LIST_EMPTY(roundstart_species)
 		if(!nodmg)
 			playsound(target, user.used_intent.hitsound, 100, FALSE)
 
+		var/obj/item/clothing/gloves = user.get_item_by_slot(ITEM_SLOT_GLOVES)
+		if(gloves)
+			SEND_SIGNAL(gloves, COMSIG_GLOVES_POST_ATTACK_HAND, target, user, damage)
+
+
 
 /datum/species/proc/spec_unarmedattacked(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	return

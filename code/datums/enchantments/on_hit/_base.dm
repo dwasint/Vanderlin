@@ -11,6 +11,16 @@
 	registered_signals += COMSIG_ITEM_POST_ATTACK_SIMPLE
 	RegisterSignal(item, COMSIG_ITEM_POST_ATTACK_SIMPLE, PROC_REF(on_simple_attack))
 
+	registered_signals += COMSIG_GLOVES_POST_ATTACK_HAND
+	RegisterSignal(item, COMSIG_GLOVES_POST_ATTACK_HAND, PROC_REF(on_attackhand_delegate))
+
+/datum/enchantment/on_hit/proc/on_attackhand_delegate(obj/item/source, mob/living/attacked, mob/living/attacker, damage)
+	if(ishuman(attacked))
+		var/zone_hit = attacker.zone_selected
+		on_human_attack(source, attacked, attacker, attacker.get_bodypart(zone_hit), damage)
+	else
+		on_simple_attack(source, attacked, attacker, damage)
+
 /datum/enchantment/on_hit/proc/on_human_attack(obj/item/source, mob/living/carbon/human/attacked, mob/attacker, obj/item/bodypart/attacked_part, actual_damage)
 	if(!COOLDOWN_FINISHED(src, hit_cooldown))
 		return

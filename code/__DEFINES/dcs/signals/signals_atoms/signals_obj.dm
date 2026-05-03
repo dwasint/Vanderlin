@@ -23,6 +23,8 @@
 /// From base of [obj/item/afterattack_secondary()]: (atom/target, mob/user, list/modifiers)
 #define COMSIG_ITEM_AFTERATTACK_SECONDARY "item_afterattack_secondary"
 
+#define COMSIG_GLOVES_POST_ATTACK_HAND "glove_post_attackhand"
+
 /// From base of obj/item/attack_qdeleted(): (atom/target, mob/user, list/modifiers)
 #define COMSIG_ITEM_ATTACK_QDELETED "item_attack_qdeleted"
 /// From base of datum/species/proc/spec_attacked_by: (atom/target, mob/user, list/modifiers)

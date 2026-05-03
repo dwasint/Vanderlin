@@ -55,7 +55,6 @@
 				if(L.attack_hand_secondary(src, modifiers) != SECONDARY_ATTACK_CALL_NORMAL)
 					return TRUE
 			L.attack_hand(src, modifiers)
-
 		return TRUE
 
 	var/item_skip = FALSE
