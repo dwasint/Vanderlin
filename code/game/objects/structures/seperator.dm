@@ -252,6 +252,7 @@
 			soundloop.start()
 		var/vapor_amount = distillation_rate * seconds_per_tick
 		reagents.trans_id_to(condenser, separating_reagent.type, vapor_amount)
+		//! IMPORTANT, readd this after either borbops or potatos pr merges
 		//condenser.set_temperature(273.15 + location.return_temperature())
 		condenser.chem_temp = 273.15 + location.return_temperature()
 
