@@ -1,4 +1,5 @@
-/datum/attribute_holder/sheet/ancestral_smithing
+/datum/attribute_modifier/ancestral_smithing
+	id = "Ancestral Smithing"
 	attribute_list = list(
 		STAT_ENDURANCE = 2,
 		/datum/attribute/skill/craft/weaponsmithing = 15,
@@ -30,8 +31,8 @@
 
 /datum/status_effect/buff/ancestral_smithing/on_apply()
 	. = ..()
-	owner.attributes?.add_sheet(/datum/attribute_holder/sheet/ancestral_smithing)
+	owner.attributes?.add_attribute_modifier(/datum/attribute_modifier/ancestral_smithing)
 
 /datum/status_effect/buff/ancestral_smithing/on_remove()
 	. = ..()
-	owner.attributes?.subtract_sheet(/datum/attribute_holder/sheet/ancestral_smithing)
+	owner.attributes?.remove_attribute_modifier(/datum/attribute_modifier/ancestral_smithing)
