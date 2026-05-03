@@ -4,11 +4,20 @@
 	icon = 'icons/roguetown/items/glass_reagent_container.dmi'
 	icon_state = "essence_vial"
 	w_class = WEIGHT_CLASS_TINY
+	var/essence_fill = "essence_liquid"
 	var/datum/thaumaturgical_essence/contained_essence = null
 	var/essence_amount = 0
 	var/max_essence = 10
 	var/extract_amount = 10 // Amount to try to extract when used
 	var/extract_index = 1
+
+/obj/item/essence_vial/combat
+	name = "combat flask"
+	desc = "A larger crystalline flask designed to hold large amounts of essences."
+	icon_state = "clear_bottle4"
+	essence_fill = "combat_essence_fill"
+	extract_amount = 100
+	max_essence = 100
 
 /obj/item/essence_vial/Initialize()
 	. = ..()
@@ -35,8 +44,8 @@
 	if(!contained_essence || essence_amount < 0)
 		return
 	var/used_alpha = min(255, 100 + (essence_amount * 15))
-	. += mutable_appearance(icon, "essence_liquid", alpha = used_alpha, color = contained_essence.color)
-	. += emissive_appearance(icon, "essence_liquid", alpha = used_alpha)
+	. += mutable_appearance(icon, essence_fill, alpha = used_alpha, color = contained_essence.color)
+	. += emissive_appearance(icon, essence_fill, alpha = used_alpha)
 
 /obj/item/essence_vial/examine(mob/user)
 	. = ..()

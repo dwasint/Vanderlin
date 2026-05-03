@@ -3,9 +3,9 @@
 	desc = "Unleash a spreading fan of slow-moving flame projectiles."
 	school = "evocation"
 	button_icon_state = "sacredflame"
-	spell_cost = 10
+	spell_cost = 4
 	cooldown_time = 45 SECONDS
-	point_cost = 3
+	point_cost = 4
 	attunements = list(/datum/attunement/fire, /datum/attunement/aeromancy)
 	click_to_activate = TRUE
 	/// Projectile type to fire

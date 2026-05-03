@@ -128,24 +128,65 @@
 		available += vial.essence_amount
 	return available >= amount
 
-/// Consumes essence, drawing from matching vials first. Returns TRUE on success.
+/// Consumes essence, splitting cost evenly across matching attunements when multiple are required.
+/// Returns TRUE on success.
 /obj/item/clothing/gloves/essence_gauntlet/proc/consume_essence(amount, list/attunements = null)
 	if(!can_consume_essence(amount, attunements))
 		return FALSE
-	var/remaining = amount
+
+	// Build a list of eligible vials grouped by attunement type
+	var/list/vials_by_attunement = list()
 	for(var/obj/item/essence_vial/vial in stored_vials)
-		if(remaining <= 0)
-			break
 		if(!vial.contained_essence || vial.essence_amount <= 0)
 			continue
-		if(attunements && !(vial.contained_essence.attunement in attunements))
+		var/att = vial.contained_essence.attunement
+		if(attunements && !(att in attunements))
 			continue
-		var/drawn = min(vial.essence_amount, remaining)
-		vial.essence_amount -= drawn
-		remaining -= drawn
-		if(vial.essence_amount <= 0)
-			vial.contained_essence = null
-		vial.update_appearance(UPDATE_OVERLAYS)
+		if(!vials_by_attunement[att])
+			vials_by_attunement[att] = list()
+		vials_by_attunement[att] += vial
+
+	// Split cost as evenly as possible across attunement groups
+	var/list/att_types = vials_by_attunement
+	var/num_groups = length(att_types)
+	var/remaining = amount
+
+	if(num_groups > 1)
+		// First pass: try to take an even share from each group
+		var/share = CEILING(amount / num_groups, 1)
+		for(var/att in att_types)
+			if(remaining <= 0)
+				break
+			var/to_draw = min(share, remaining)
+			var/drawn_from_group = 0
+			for(var/obj/item/essence_vial/vial in att_types[att])
+				if(to_draw <= 0)
+					break
+				var/drawn = min(vial.essence_amount, to_draw)
+				vial.essence_amount -= drawn
+				to_draw -= drawn
+				drawn_from_group += drawn
+				if(vial.essence_amount <= 0)
+					vial.contained_essence = null
+				vial.update_appearance(UPDATE_OVERLAYS)
+			remaining -= drawn_from_group
+
+	if(remaining > 0)
+		for(var/att in att_types)
+			if(remaining <= 0)
+				break
+			for(var/obj/item/essence_vial/vial in att_types[att])
+				if(remaining <= 0)
+					break
+				if(!vial.contained_essence || vial.essence_amount <= 0)
+					continue
+				var/drawn = min(vial.essence_amount, remaining)
+				vial.essence_amount -= drawn
+				remaining -= drawn
+				if(vial.essence_amount <= 0)
+					vial.contained_essence = null
+				vial.update_appearance(UPDATE_OVERLAYS)
+
 	return TRUE
 
 /obj/item/clothing/gloves/essence_gauntlet/proc/not_enough_essence(mob/user)

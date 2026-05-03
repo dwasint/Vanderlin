@@ -49,10 +49,15 @@
 	result_type = /obj/item/ore/cinnabar
 	required_essences = list(/datum/thaumaturgical_essence/magic = 20, /datum/thaumaturgical_essence/earth = 10, /datum/thaumaturgical_essence/motion = 10)
 
-
 /datum/infusion_recipe/jar_two
 	name = "Containment Enchantment"
 	target_type  = /obj/item/essence_node_jar
 	result_type = /obj/item/essence_node_jar/advanced
+	required_essences = list(/datum/thaumaturgical_essence/magic = 20, /datum/thaumaturgical_essence/earth = 10)
+
+/datum/infusion_recipe/combat_flask
+	name = "Combat Flask Synthesis"
+	target_type  = /obj/item/natural/glass
+	result_type = /obj/item/essence_vial/combat
 	required_essences = list(/datum/thaumaturgical_essence/magic = 20, /datum/thaumaturgical_essence/earth = 10)
 

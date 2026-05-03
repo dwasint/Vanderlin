@@ -3,9 +3,9 @@
 	desc = "Unleash a spreading fan of slow-moving flame projectiles."
 	school = "evocation"
 	button_icon_state = "fireaura"
-	spell_cost = 10
+	spell_cost = 4
 	cooldown_time = 45 SECONDS
-	point_cost = 3
+	point_cost = 4
 	click_to_activate = TRUE
 	attunements = list(/datum/attunement/fire, /datum/attunement/aeromancy)
 	var/flame_radius = 2
@@ -20,6 +20,8 @@
 
 	for(var/i in 0 to flame_radius)
 		for(var/turf/nearby_turf as anything in spiral_range_turfs(i + 1, centre))
+			if(nearby_turf == centre)
+				continue
 			new /obj/effect/hotspot(nearby_turf, null, null, hotspot_lifetime)
 
-		stoplag(0.3 SECONDS)
+		sleep(0.3 SECONDS)
