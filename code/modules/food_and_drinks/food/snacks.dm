@@ -820,3 +820,18 @@ All foods are distributed among various categories. Use common sense.
 			name = "nice [name]"
 	filling_color = filling_color
 	update_snack_overlays(src)
+
+/obj/item/reagent_containers/food/snacks/poisonglands
+	name = "venom sac"
+	desc = "A swollen venom sac drawn from a foul beast, heavy with bitter humors. Its contents are sought by alchemists for the brewing of deadly draughts."
+	icon_state = "venomgland"
+	nutrition = SNACK_POOR
+	list_reagents = list(
+		/datum/reagent/toxin/venom = 20,
+		/datum/reagent/medicine/soporpot = 20,
+		)
+	filling_color = "#8B4513"
+	faretype = FARE_IMPOVERISHED
+	foodtype = GROSS
+	burntime = 0
+	cooktime = 0

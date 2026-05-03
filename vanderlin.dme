@@ -3728,6 +3728,7 @@
 #include "code\modules\reagents\chemistry\recipes\distillation\aqua_vitae.dm"
 #include "code\modules\reagents\chemistry\recipes\distillation\buffs.dm"
 #include "code\modules\reagents\chemistry\recipes\distillation\drugs.dm"
+#include "code\modules\reagents\chemistry\recipes\distillation\misc.dm"
 #include "code\modules\reagents\chemistry\recipes\distillation\toxin.dm"
 #include "code\modules\reagents\reagent_containers\bucket_pot.dm"
 #include "code\modules\reagents\reagent_containers\carafe.dm"
