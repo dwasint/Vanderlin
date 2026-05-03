@@ -77,7 +77,6 @@
 /datum/essence_combo/spell/single/energia
 	name = "Energia Mastery"
 	required_essences = list(/datum/thaumaturgical_essence/energia)
-
 	granted_spells = list(/datum/action/cooldown/spell/essence/energize)
 
 /datum/essence_combo/spell/single/cycle
@@ -85,3 +84,9 @@
 	required_essences = list(/datum/thaumaturgical_essence/cycle)
 
 	granted_spells = list(/datum/action/cooldown/spell/essence/seasonal_attune)
+
+/datum/essence_combo/spell/single/chaos
+	name = "Chaos Mastery"
+	required_essences = list(/datum/thaumaturgical_essence/chaos)
+
+	granted_spells = list(/datum/action/cooldown/spell/essence/read_omen)

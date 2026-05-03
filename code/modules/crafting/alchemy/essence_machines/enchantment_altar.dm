@@ -209,6 +209,7 @@
 	if(enchant)
 		enchant.apply_user_modifications(user)
 		to_chat(user, span_info("[placed_item] has been enchanted with [enchant_name]!"))
+		add_abstract_elastic_data(ELASCAT_ENCHANTING, "[enchant.enchantment_name]", 1)
 	else
 		to_chat(user, span_warning("Enchantment failed!"))
 

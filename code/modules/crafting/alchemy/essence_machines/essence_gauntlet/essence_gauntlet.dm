@@ -118,12 +118,12 @@
 	on_vials_changed(user)
 
 /// Returns TRUE if the gauntlet can cover the cost. Pass null attunements to draw from any essence.
-/obj/item/clothing/gloves/essence_gauntlet/proc/can_consume_essence(amount, list/attunements = null)
+/obj/item/clothing/gloves/essence_gauntlet/proc/can_consume_essence(amount, list/essences = null)
 	var/available = 0
 	for(var/obj/item/essence_vial/vial in stored_vials)
 		if(!vial.contained_essence || vial.essence_amount <= 0)
 			continue
-		if(attunements && !(vial.contained_essence.attunement in attunements))
+		if(essences && !(vial.contained_essence.type in essences))
 			continue
 		available += vial.essence_amount
 	return available >= amount

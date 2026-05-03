@@ -9,6 +9,10 @@
 	var/final_dir = dir
 	var/changed = FALSE
 
+	var/enlarge = get_chem_effect(CE_ENLARGING)
+	var/shrink = get_chem_effect(CE_SHRINKING)
+	resize *= (1 + 0.1 * (enlarge - shrink))
+
 	if(lying_angle != lying_prev && rotate_on_lying)
 		changed = TRUE
 		if(lying_angle && lying_prev == 0)

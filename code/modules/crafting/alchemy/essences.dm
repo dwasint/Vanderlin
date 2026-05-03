@@ -9,7 +9,7 @@
 	var/essence_amount = 0
 	var/max_essence = 10
 	var/extract_amount = 10 // Amount to try to extract when used
-	var/extract_index = 1
+	var/increments = 1
 
 /obj/item/essence_vial/combat
 	name = "combat flask"
@@ -18,22 +18,25 @@
 	essence_fill = "combat_essence_fill"
 	extract_amount = 100
 	max_essence = 100
+	increments = 10
 
 /obj/item/essence_vial/Initialize()
 	. = ..()
 	update_appearance(UPDATE_OVERLAYS)
 
 /obj/item/essence_vial/attack_self(mob/user, list/modifiers)
-	if(extract_amount == 10)
+	if(extract_amount >= max_essence)
 		extract_amount = 1
 	else
-		extract_amount++
+		if(extract_amount == 1)
+			extract_amount = 0
+		extract_amount += increments
 
 	to_chat(user, span_info("You adjust the vial to extract [extract_amount] unit[extract_amount > 1 ? "s" : ""] of essence."))
 
 /obj/item/essence_vial/attack_self_secondary(mob/user, list/modifiers)
-	if(extract_amount != 10)
-		extract_amount = 10
+	if(extract_amount != max_essence)
+		extract_amount = max_essence
 		to_chat(user, span_info("You adjust the vial to extract [extract_amount] unit[extract_amount > 1 ? "s" : ""] of essence."))
 
 /obj/item/essence_vial/proc/check_vial_menu_validity(mob/user)
@@ -146,6 +149,7 @@
 	tier = 1
 	color = "#32CD32"
 	smells_like = "rushing wind"
+	attunement = /datum/attunement/time
 
 /datum/thaumaturgical_essence/cycle
 	name = "Cycle Essence"
@@ -160,6 +164,7 @@
 	tier = 1
 	color = "#FF1493"
 	smells_like = "crackling energy"
+	attunement = /datum/attunement/electric
 
 /datum/thaumaturgical_essence/void
 	name = "Void Essence"
@@ -175,6 +180,7 @@
 	tier = 1
 	color = "#9ACD32"
 	smells_like = "toxic fumes"
+	attunement = /datum/attunement/dark
 
 /datum/thaumaturgical_essence/life
 	name = "Life Essence"
@@ -201,6 +207,7 @@
 	tier = 2
 	color = "#9370DB"
 	smells_like = "raw magic"
+	attunement = /datum/attunement/arcyne
 
 /datum/thaumaturgical_essence/death
 	name = "Death Essence"
@@ -208,3 +215,4 @@
 	tier = 2
 	color = "#221123"
 	smells_like = "death and the end"
+	attunement = /datum/attunement/death

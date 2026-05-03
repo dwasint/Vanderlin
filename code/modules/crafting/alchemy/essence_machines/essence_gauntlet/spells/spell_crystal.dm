@@ -6,7 +6,7 @@
 	cast_range = 1
 	point_cost = 9
 	cooldown_time = 3 MINUTES
-	attunements = list(/datum/attunement/light, /datum/attunement/earth)
+	essences = list(/datum/thaumaturgical_essence/magic, /datum/thaumaturgical_essence/crystal)
 
 /datum/action/cooldown/spell/essence/spell_crystal/cast(atom/cast_on)
 	. = ..()

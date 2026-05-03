@@ -5,6 +5,7 @@
 	cast_range = 3
 	point_cost = 7
 	attunements = list(/datum/attunement/fire)
+	essences = list(/datum/thaumaturgical_essence/chaos)
 
 /datum/action/cooldown/spell/essence/read_omen/cast(mob/living/cast_on)
 	. = ..()

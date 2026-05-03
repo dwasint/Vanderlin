@@ -5,6 +5,7 @@
 	cast_range = 1
 	attunements = list(/datum/attunement/earth)
 	point_cost = 3
+	essences = list(/datum/thaumaturgical_essence/earth)
 
 	var/repair_percent = 0.08
 

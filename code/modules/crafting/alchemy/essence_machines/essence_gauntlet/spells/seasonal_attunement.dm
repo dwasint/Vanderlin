@@ -5,6 +5,7 @@
 	cast_range = 0
 	point_cost = 3
 	attunements = list(/datum/attunement/light)
+	essences = list(/datum/thaumaturgical_essence/cycle)
 
 /datum/action/cooldown/spell/essence/seasonal_attune/cast(atom/cast_on)
 	. = ..()

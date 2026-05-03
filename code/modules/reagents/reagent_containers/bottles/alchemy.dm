@@ -165,3 +165,21 @@
 
 /obj/item/reagent_containers/glass/bottle/vial/scholars_ink
 	list_reagents = list(/datum/reagent/skill_elixir/scholars_ink = 25)
+
+/obj/item/reagent_containers/glass/bottle/vial/phlogiston_elasticum
+	list_reagents = list(/datum/reagent/drug/phlogiston_elasticum = 25)
+
+/obj/item/reagent_containers/glass/bottle/vial/subtilum_tincture
+	list_reagents = list(/datum/reagent/drug/subtilum_tincture = 25)
+
+/obj/item/reagent_containers/glass/bottle/vial/gravitum_elixir
+	list_reagents = list(/datum/reagent/drug/gravitum_elixir = 25)
+
+/obj/item/reagent_containers/glass/bottle/vial/sal_petris
+	list_reagents = list(/datum/reagent/sal_petris = 25)
+
+/obj/item/reagent_containers/glass/bottle/vial/mercury
+	list_reagents = list(/datum/reagent/mercury = 25)
+
+/obj/item/reagent_containers/glass/bottle/vial/mirrorwaste
+	list_reagents = list(/datum/reagent/poison/mirrorwaste = 25)

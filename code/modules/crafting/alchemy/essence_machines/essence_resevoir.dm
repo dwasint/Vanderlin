@@ -254,3 +254,12 @@
 
 /obj/machinery/essence/reservoir/filled/life
 	essence_list = list(/datum/thaumaturgical_essence/life = 1000)
+
+/obj/machinery/essence/reservoir/filled/order
+	essence_list = list(/datum/thaumaturgical_essence/order = 1000)
+
+/obj/machinery/essence/reservoir/filled/magic
+	essence_list = list(/datum/thaumaturgical_essence/magic = 1000)
+
+/obj/machinery/essence/reservoir/filled/motion
+	essence_list = list(/datum/thaumaturgical_essence/motion = 1000)

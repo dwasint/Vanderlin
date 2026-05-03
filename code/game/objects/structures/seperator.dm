@@ -172,8 +172,14 @@
 		return
 	var/list/reagents_sorted = reagents.reagent_list.Copy()
 	reagents_sorted = sortList(reagents_sorted, GLOBAL_PROC_REF(cmp_reagents_boiling_asc))
-	separating_reagent = reagents_sorted[1]
-	// Set required_temp dynamically from the reagent itself
+	// Prefer a reagent that has a matching recipe first
+	for(var/datum/reagent/R in reagents_sorted)
+		if(GLOB.distillation_recipes[R.type])
+			separating_reagent = R
+			break
+	// Fall back to lowest boiling point if no recipe found
+	if(!separating_reagent)
+		separating_reagent = reagents_sorted[1]
 	required_temp = initial(separating_reagent.boiling_point)
 	burning = TRUE
 	update_appearance(UPDATE_ICON)

@@ -5,6 +5,7 @@
 	//sound = 'sound/magic/whiff.ogg'
 	cast_range = 1
 	attunements = list(/datum/attunement/ice)
+	essences = list(/datum/thaumaturgical_essence/frost)
 
 /datum/action/cooldown/spell/essence/chill/cast(atom/cast_on)
 	. = ..()

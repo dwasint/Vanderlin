@@ -172,8 +172,8 @@
 	color = "#835c5c"
 
 /datum/reagent/consumable/sodiumchloride
-	name = "Table Salt"
-	description = "A salt made of sodium chloride. Commonly used to season food."
+	name = "Sea Salt"
+	description = "Commonly used to season food."
 	reagent_state = SOLID
 	color = "#FFFFFF" // rgb: 255,255,255
 	taste_description = "salt"

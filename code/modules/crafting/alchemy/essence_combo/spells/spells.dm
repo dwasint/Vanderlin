@@ -13,12 +13,6 @@
 	required_essences = list(/datum/thaumaturgical_essence/frost, /datum/thaumaturgical_essence/water)
 	granted_spells = list(/datum/action/cooldown/spell/essence/ice_bridge, /datum/action/cooldown/spell/essence/frozen_storage)
 
-/datum/essence_combo/spell/single/chaos
-	name = "Chaos Mastery"
-	required_essences = list(/datum/thaumaturgical_essence/chaos)
-
-	granted_spells = list(/datum/action/cooldown/spell/essence/read_omen)
-
 /datum/essence_combo/spell/divine_order
 	name = "Orderly Transcription"
 	required_essences = list(/datum/thaumaturgical_essence/order, /datum/thaumaturgical_essence/light)

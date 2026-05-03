@@ -8,6 +8,7 @@
 	point_cost = 4
 	click_to_activate = TRUE
 	attunements = list(/datum/attunement/fire, /datum/attunement/aeromancy)
+	essences = list(/datum/thaumaturgical_essence/fire, /datum/thaumaturgical_essence/air)
 	var/flame_radius = 2
 	var/hotspot_lifetime = 3
 
