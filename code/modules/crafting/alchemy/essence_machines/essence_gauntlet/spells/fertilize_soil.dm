@@ -1,7 +1,7 @@
 /datum/action/cooldown/spell/essence/fertile_soil
 	name = "Fertile Soil"
 	desc = "Enriches soil to promote plant growth."
-	button_icon_state = "fertile_soil"
+	button_icon_state = "blesscrop"
 	cast_range = 2
 	point_cost = 4
 	attunements = list(/datum/attunement/blood, /datum/attunement/earth)

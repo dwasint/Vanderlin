@@ -1,7 +1,7 @@
 /datum/action/cooldown/spell/essence/refresh
 	name = "Refresh"
 	desc = "Removes minor fatigue and restores a small amount of stamina."
-	button_icon_state = "refresh"
+	button_icon_state = "terrors"
 	//sound = 'sound/magic/staff_healing.ogg'
 	cast_range = 1
 	point_cost = 3

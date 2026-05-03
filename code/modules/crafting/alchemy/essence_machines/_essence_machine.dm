@@ -32,7 +32,7 @@
 	return storage
 
 /**
- * Return assoc list [essence_type = max_units] describing what this machine
+ * Return assoc list [essence_type = max_ligulae] describing what this machine
  * will accept right now. Used to populate the network's allowed-type cache.
  * Empty list = accept nothing (machine is full, busy, or has no recipe).
  */
@@ -171,7 +171,7 @@
 
 /obj/machinery/essence/get_mechanics_examine(mob/user)
 	var/list/lines = list()
-	lines += span_notice("Storage: [storage.total()]/[storage.max_total] units \
+	lines += span_notice("Storage: [storage.total()]/[storage.max_total] ligulae \
 		([storage.type_count()]/[storage.max_types] types)")
 
 	if(storage.contents.len)
@@ -179,7 +179,7 @@
 			var/datum/thaumaturgical_essence/e = new etype
 			var/label = HAS_TRAIT(user, TRAIT_LEGENDARY_ALCHEMIST) \
 				? e.name : "essence smelling of [e.smells_like]"
-			lines += span_notice("  - [label]: [storage.contents[etype]] units")
+			lines += span_notice("  - [label]: [storage.contents[etype]] ligulae")
 			qdel(e)
 	else
 		lines += span_notice("  (empty)")
@@ -269,7 +269,7 @@
 		if(vial.essence_amount <= 0)
 			vial.contained_essence = null
 		vial.update_appearance(UPDATE_OVERLAYS)
-		to_chat(user, span_info("You pour [moved] units into [src]."))
+		to_chat(user, span_info("You pour [moved] ligulae into [src]."))
 
 /obj/machinery/essence/proc/extract_to_vial(obj/item/essence_vial/vial, mob/user)
 	if(!storage.contents.len)
@@ -280,8 +280,8 @@
 	for(var/etype in storage.contents)
 		var/datum/thaumaturgical_essence/e = new etype
 		var/label = HAS_TRAIT(user, TRAIT_LEGENDARY_ALCHEMIST) \
-			? "[e.name] ([storage.contents[etype]] units)" \
-			: "Essence of [e.smells_like] ([storage.contents[etype]] units)"
+			? "[e.name] ([storage.contents[etype]] ligulae)" \
+			: "Essence of [e.smells_like] ([storage.contents[etype]] ligulae)"
 		var/datum/radial_menu_choice/rmc = new()
 		var/image/img = image(icon='icons/roguetown/misc/alchemy.dmi', icon_state="essence")
 		img.color = e.color
@@ -305,7 +305,7 @@
 		vial.contained_essence = new chosen
 		vial.essence_amount = extracted
 		vial.update_appearance(UPDATE_OVERLAYS)
-		to_chat(user, span_info("You extract [extracted] units from [src]."))
+		to_chat(user, span_info("You extract [extracted] ligulae from [src]."))
 
 /obj/machinery/essence/proc/check_vial_menu_valid(mob/user, obj/item/essence_vial/vial)
 	return user && vial && (vial in user.contents) \

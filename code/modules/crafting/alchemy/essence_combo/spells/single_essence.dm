@@ -1,6 +1,6 @@
 /datum/essence_combo/spell/single
 	abstract_type = /datum/essence_combo/spell/single
-	required_minimum_essences = 1
+	required_count = 1
 
 /datum/essence_combo/spell/single/air
 	name = "Air Mastery"
@@ -30,7 +30,7 @@
 	name = "Frost Mastery"
 	required_essences = list(/datum/thaumaturgical_essence/frost)
 
-	granted_spells = list(/datum/action/cooldown/spell/essence/chill, /datum/action/cooldown/spell/essence/preserve)
+	granted_spells = list(/datum/action/cooldown/spell/essence/chill)
 
 /datum/essence_combo/spell/single/light
 	name = "Light Mastery"
@@ -55,18 +55,6 @@
 	required_essences = list(/datum/thaumaturgical_essence/order)
 
 	granted_spells = list(/datum/action/cooldown/spell/essence/stabilize)
-
-/datum/essence_combo/spell/single/chaos
-	name = "Chaos Mastery"
-	required_essences = list(/datum/thaumaturgical_essence/chaos)
-
-	granted_spells = list(/datum/action/cooldown/spell/essence/randomize)
-
-/datum/essence_combo/spell/single/void
-	name = "Void Mastery"
-	required_essences = list(/datum/thaumaturgical_essence/void)
-
-	granted_spells = list(/datum/action/cooldown/spell/essence/silence)
 
 /datum/essence_combo/spell/single/poison
 	name = "Poison Mastery"

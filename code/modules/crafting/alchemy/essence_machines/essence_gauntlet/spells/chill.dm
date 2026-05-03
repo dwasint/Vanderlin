@@ -17,7 +17,7 @@
 	//playsound(target, 'sound/magic/whiff.ogg', 50, TRUE)
 
 	var/obj/structure/ice_zone/zone = new(get_turf(target))
-	QDEL_IN(zone, 45 MINUTES)
+	QDEL_IN(zone, 3 MINUTES)
 
 /obj/structure/ice_zone
 	name = "frozen zone"
@@ -33,6 +33,11 @@
 	. = ..()
 	AddElement(/datum/element/give_turf_traits, string_list(list(TRAIT_IMMERSE_STOPPED)))
 	propagate_temp_change(-30, 8, 0.9, 2) // Cooling effect
+
+/obj/structure/ice_zone/Crossed(atom/movable/AM)
+	. = ..()
+	if(isliving(AM))
+		apply_frost_stack(AM, 1)
 
 /obj/structure/ice_zone/Destroy()
 	remove_temp_effect()

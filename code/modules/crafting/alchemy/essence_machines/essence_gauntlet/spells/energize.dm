@@ -1,7 +1,7 @@
 /datum/action/cooldown/spell/essence/energize
 	name = "Energize"
 	desc = "Restores energy to magical devices or provides a burst of vitality."
-	button_icon_state = "energize"
+	button_icon_state = "primetriangle"
 	cast_range = 1
 	point_cost = 4
 	attunements = list(/datum/attunement/light)

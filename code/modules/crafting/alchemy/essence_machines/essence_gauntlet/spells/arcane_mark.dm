@@ -27,8 +27,8 @@
 
 /datum/hover_data/arcane_mark/New(datum/component/hovering_information, atom/parent)
 	mark = new(null)
-	mark.icon = 'icons/effects/effects.dmi'
-	mark.icon_state = "phasein"
+	mark.icon = 'icons/mob/actions/roguespells.dmi'
+	mark.icon_state = "nondetect"
 	mark.pixel_y = 32
 
 /datum/hover_data/arcane_mark/setup_data(mob/living/source, mob/enterer)
