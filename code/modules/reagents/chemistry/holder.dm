@@ -955,21 +955,6 @@
 	handle_reactions()
 	SEND_SIGNAL(my_atom, COMSIG_REAGENTS_EXPOSE_TEMPERATURE, null, chem_temp)
 
-/** Sets the temperature of this reagent container to a new value.
- *
- * Handles setter signals.
- *
- * Arguments:
- * - _temperature: The new temperature value.
- */
-/datum/reagents/proc/set_temperature(_temperature)
-	if(_temperature == chem_temp)
-		return
-
-	. = chem_temp
-	chem_temp = clamp(_temperature, 0, 99999)
-
-
 /**
  * Multiplies reagents inside this holder by a specific amount
  * Arguments
