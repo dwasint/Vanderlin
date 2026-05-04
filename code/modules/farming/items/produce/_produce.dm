@@ -798,6 +798,7 @@
 	dropshrink = 0.8
 	rotprocess = SHELFLIFE_DECENT
 	item_weight = 12 GRAMS
+	grind_results = list(/datum/reagent/caveweep = 5)
 
 /obj/item/reagent_containers/food/snacks/produce/mushroom/borowiki
 	name = "borowiki"

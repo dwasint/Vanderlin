@@ -33,6 +33,8 @@
 	. = ..()
 
 /datum/container_craft/pan/check_failure(obj/item/crafter, mob/user)
+	if(crafter.has_enchantment(/datum/enchantment/eternal_flames))
+		return FALSE
 	if(!istype(crafter.loc, /obj/machinery/light/fueled))
 		return TRUE
 	var/obj/machinery/light/fueled/fueled = crafter.loc

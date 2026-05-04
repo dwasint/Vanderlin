@@ -327,12 +327,14 @@
 	L.add_chem_effect(CE_STABLE, 1, "[type]")
 	L.add_chem_effect(CE_BLOODRESTORE, 10, "[type]")
 	L.add_chem_effect(CE_SHRINKING, 2, "[type]")
+	L.update_effect_scaling()
 
 /datum/reagent/medicine/spiritwood_elixir/on_mob_end_metabolize(mob/living/L)
 	. = ..()
 	L.remove_chem_effect(CE_STABLE, "[type]")
 	L.remove_chem_effect(CE_BLOODRESTORE, "[type]")
 	L.remove_chem_effect(CE_SHRINKING, "[type]")
+	L.update_effect_scaling()
 
 /datum/reagent/medicine/spiritwood_elixir/on_mob_life(mob/living/carbon/M, efficiency)
 	if(volume > 0.99)
@@ -528,6 +530,7 @@
 /datum/reagent/medicine/bloodelder_wine/on_mob_life(mob/living/carbon/M, efficiency)
 	if(prob(20))
 		M.adjust_dizzy(3 SECONDS * efficiency)
+	M.adjustOrganLoss(ORGAN_SLOT_HEART, -2 * efficiency)
 	. = ..()
 
 /datum/reagent/medicine/crystalline_lymph
@@ -544,11 +547,11 @@
 	L.add_chem_effect(CE_STABLE, 1, "[type]")
 	L.add_chem_effect(CE_OXYGENATED, 1, "[type]")
 	L.add_chem_effect(CE_ENLARGING, 3, "[type]")
-	L.update_transform()
+	L.update_effect_scaling()
 
 /datum/reagent/medicine/crystalline_lymph/on_mob_end_metabolize(mob/living/L)
 	. = ..()
 	L.remove_chem_effect(CE_STABLE, "[type]")
 	L.remove_chem_effect(CE_OXYGENATED, "[type]")
 	L.remove_chem_effect(CE_ENLARGING, "[type]")
-	L.update_transform()
+	L.update_effect_scaling()

@@ -83,11 +83,12 @@
 /datum/reagent/drug/gravitum_elixir/on_mob_metabolize(mob/living/L)
 	. = ..()
 	L.add_chem_effect(CE_ENLARGING, 4, "[type]")
+	L.update_effect_scaling()
 
 /datum/reagent/drug/gravitum_elixir/on_mob_end_metabolize(mob/living/L)
 	. = ..()
-	L.remove_chem_effect(CE_ENLARGING, 4)
-	L.update_transform()
+	L.remove_chem_effect(CE_ENLARGING, "[type]")
+	L.update_effect_scaling()
 
 /datum/reagent/drug/subtilum_tincture
 	name = "Subtilum Tincture"
@@ -99,12 +100,12 @@
 /datum/reagent/drug/subtilum_tincture/on_mob_metabolize(mob/living/L)
 	. = ..()
 	L.add_chem_effect(CE_SHRINKING, 4, "[type]")
-	L.update_transform()
+	L.update_effect_scaling()
 
 /datum/reagent/drug/subtilum_tincture/on_mob_end_metabolize(mob/living/L)
 	. = ..()
 	L.remove_chem_effect(CE_SHRINKING, 4)
-	L.update_transform()
+	L.update_effect_scaling()
 
 /datum/reagent/sal_petris
 	name = "Sal Petris"

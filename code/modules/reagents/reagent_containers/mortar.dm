@@ -1,4 +1,3 @@
-
 /obj/item/pestle
 	name = "pestle"
 	desc = ""
@@ -22,6 +21,7 @@
 	grid_height = 32
 	grid_width = 64
 	dropshrink = 0.9
+	soaker = FALSE
 	var/list/to_grind = list()
 	// total w_class units allowed
 	var/max_grind_capacity = 13
@@ -57,7 +57,7 @@
 
 	// Check all items can actually be juiced/ground
 	for(var/obj/item/I in to_grind)
-		if(!I.grind_results && !I.juice_results)
+		if(!I.grind_results && !I.juice_results || !I.reagents.total_volume)
 			to_chat(user, span_warning("I cannot process [I] this way."))
 			return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
@@ -70,13 +70,13 @@
 	for(var/obj/item/I in to_grind)
 		if(QDELETED(I))
 			continue
-		if(I.juice_results)
+		if(length(I.juice_results))
 			I.on_juice()
 			reagents.add_reagent_list(I.juice_results)
 			to_chat(user, span_notice("I juice [I] into a fine liquid."))
 			if(I.reagents)
 				I.reagents.trans_to(src, I.reagents.total_volume, transfered_by = user)
-		else if(I.grind_results)
+		else if(length(I.grind_results))
 			I.on_grind()
 			reagents.add_reagent_list(I.grind_results)
 			to_chat(user, span_notice("I break [I] into powder."))

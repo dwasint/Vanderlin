@@ -1,3 +1,14 @@
+/mob/living/proc/update_effect_scaling()
+	var/old_scale = last_scale_number
+
+	var/new_scale = max(0.2, 1 + ((get_chem_effect(CE_ENLARGING) - get_chem_effect(CE_SHRINKING)) * 0.1))
+	last_scale_number = new_scale
+
+	if(old_scale == 0)
+		return
+
+	var/resize = new_scale / old_scale
+	update_transform(resize)
 
 /**
  * Called whenever the mob is to be resized or when lying/standing up for carbons.
@@ -8,10 +19,6 @@
 	var/current_translate = get_transform_translation_size(current_size)
 	var/final_dir = dir
 	var/changed = FALSE
-
-	var/enlarge = get_chem_effect(CE_ENLARGING)
-	var/shrink = get_chem_effect(CE_SHRINKING)
-	resize *= (1 + 0.1 * (enlarge - shrink))
 
 	if(lying_angle != lying_prev && rotate_on_lying)
 		changed = TRUE

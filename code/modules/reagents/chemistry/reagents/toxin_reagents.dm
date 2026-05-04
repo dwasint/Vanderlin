@@ -22,10 +22,11 @@
 	color = "#792300" // rgb: 121, 35, 0
 	toxpwr = 2.5
 	taste_description = "mushroom"
+	boiling_point = T0C + 120
 
 /datum/reagent/toxin/plasma
-	name = "Plasma"
-	description = "Plasma in its liquid form."
+	name = "Purple Aetherium"
+	description = "A strange liquid, it seems almost... alive."
 	taste_description = "bitterness"
 	specific_heat = SPECIFIC_HEAT_PLASMA
 	taste_mult = 1.5
@@ -52,8 +53,6 @@
 	color = "#7F8400" // rgb: 127, 132, 0
 	toxpwr = 0.1
 	taste_description = "green tea"
-
-
 
 /datum/reagent/medicine/soporpot
 	name = "Soporific Poison"

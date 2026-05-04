@@ -141,10 +141,26 @@
 	brute_heal = 1
 	burn_heal = 1
 
+
 /datum/reagent/consumable/nutriment/vitamin/on_mob_life(mob/living/carbon/M, efficiency)
 	if(M.satiety < 600)
 		M.satiety += 30 * efficiency
 	. = ..()
+
+/datum/reagent/consumable/nutriment/bone_marrow
+	name = "Bone Marrow"
+	description = "Marrow straight from the source."
+
+	brute_heal = 1
+	burn_heal = 1
+
+/datum/reagent/consumable/nutriment/bone_marrow/on_mob_metabolize(mob/living/L)
+	. = ..()
+	L.add_chem_effect(CE_BLOODRESTORE, 4, "[type]")
+
+/datum/reagent/consumable/nutriment/bone_marrow/on_mob_end_metabolize(mob/living/L)
+	. = ..()
+	L.remove_chem_effect(CE_BLOODRESTORE, "[type]")
 
 /datum/reagent/consumable/sugar
 	name = "Sugar"
