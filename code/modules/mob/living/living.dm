@@ -171,6 +171,10 @@
 		var/mob/M = A
 		if(MobBump(M))
 			return
+	if(isturf(A))
+		var/turf/bump_turf = A
+		if(TurfBump(bump_turf))
+			return
 	if(isobj(A))
 		var/obj/O = A
 		if(ObjBump(O))
@@ -180,9 +184,6 @@
 		if(PushAM(AM, move_force))
 			return
 
-/mob/living/Bumped(atom/movable/AM)
-	..()
-	last_bumped = world.time
 
 //Called when we bump onto a mob
 /mob/living/proc/MobBump(mob/M)
@@ -191,6 +192,16 @@
 
 	if(now_pushing)
 		return TRUE
+
+	if(get_chem_effect(CE_BOUNCY))
+		visible_message("<span class='warning'>[src] bounces off [M]!</span>")
+		var/atom/throw_target = get_edge_target_turf(src, get_dir(M, src))
+		var/atom/throw_target_mob = get_edge_target_turf(M, get_dir(src, M))
+
+		src.throw_at(throw_target, get_chem_effect(CE_BOUNCY) * 5, 3, force = 0)
+		if(get_chem_effect(CE_BOUNCY) > 5)
+			M.throw_at(throw_target_mob, get_chem_effect(CE_BOUNCY) * 5, 3, force = 0)
+
 
 	var/they_can_move = TRUE
 	if(isliving(M))
@@ -348,7 +359,19 @@
 				return
 //Called when we bump onto an obj
 /mob/living/proc/ObjBump(obj/O)
+	if(get_chem_effect(CE_BOUNCY))
+		visible_message("<span class='warning'>[src] bounces off [O]!</span>")
+		var/atom/throw_target = get_edge_target_turf(src, get_dir(O, src))
+
+		src.throw_at(throw_target, get_chem_effect(CE_BOUNCY) * 5, 3, force = 0)
 	return
+
+/mob/living/proc/TurfBump(turf/T)
+	if(get_chem_effect(CE_BOUNCY))
+		visible_message("<span class='warning'>[src] bounces off [T]!</span>")
+		var/atom/throw_target = get_edge_target_turf(src, get_dir(T, src))
+
+		src.throw_at(throw_target, get_chem_effect(CE_BOUNCY) * 5, 3, force = 0)
 
 //Called when we want to push an atom/movable
 /mob/living/proc/PushAM(atom/movable/AM, force = move_force)

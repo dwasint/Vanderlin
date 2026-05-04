@@ -417,9 +417,9 @@
 		if(!is_failing())
 			REMOVE_TRAIT(owner, TRAIT_KNOCKEDOUT, CRIT_HEALTH_TRAIT)
 	if(damage >= 60)
-		owner.add_stress(/datum/stress_event/brain_damage)
+		owner?.add_stress(/datum/stress_event/brain_damage)
 	else
-		owner.remove_stress(/datum/stress_event/brain_damage)
+		owner?.remove_stress(/datum/stress_event/brain_damage)
 
 ////////////////////////////////////TRAUMAS////////////////////////////////////////
 
