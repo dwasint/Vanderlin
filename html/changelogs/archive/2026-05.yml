@@ -13,3 +13,6 @@
   Sulaboy:
   - bugfix: Shovel, Godendag, and Psydonian Greatmace intents that required sharpness
       work now.
+2026-05-04:
+  Sulaboy:
+  - bugfix: Evil tree vines delete when the evil tree is killed.
