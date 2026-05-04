@@ -16,7 +16,7 @@
 /datum/enchantment/binding_runes/apply_user_modifications(mob/user)
 	enchanter = WEAKREF(user)
 
-/datum/enchantment/binding_runes/proc/tries_to_unequip(datum/source, force, atom/newloc, no_move, invdrop, silent, atom/source)
+/datum/enchantment/binding_runes/proc/tries_to_unequip(datum/source, force, atom/newloc, no_move, invdrop, silent)
 	var/mob/living/location = enchanted_item.loc
 	if(istype(location))
 		if(enchanted_item in location.held_items)
