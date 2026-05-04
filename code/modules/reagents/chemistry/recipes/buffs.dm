@@ -19,7 +19,7 @@
 	required_reagents = list(
 		/datum/reagent/buff/strength/concentrated = 4,
 		/datum/reagent/blood = 3,
-		/datum/reagent/ash = 3
+		/datum/reagent/consumable/nutriment/bone_marrow = 3
 	)
 	results = list(/datum/reagent/skill_elixir/heavy_arms = 10)
 
@@ -162,7 +162,7 @@
 	mix_sound = "pour"
 	required_reagents = list(
 		/datum/reagent/buff/intelligence/concentrated = 4,
-		/datum/reagent/water = 3,
+		/datum/reagent/consumable/nutriment/bone_marrow = 3,
 		/datum/reagent/consumable/honey = 3
 	)
 	results = list(/datum/reagent/skill_elixir/cooks_brine = 10)
@@ -210,7 +210,7 @@
 	mix_sound = "pour"
 	required_reagents = list(
 		/datum/reagent/buff/strength/concentrated = 4,
-		/datum/reagent/ash = 3,
+		/datum/reagent/toxin/fyritiusnectar = 3,
 		/datum/reagent/blood = 3
 	)
 	results = list(/datum/reagent/skill_elixir/miners_heart = 10)
@@ -222,7 +222,7 @@
 	mix_sound = "pour"
 	required_reagents = list(
 		/datum/reagent/buff/intelligence/concentrated = 4,
-		/datum/reagent/water = 3,
+		/datum/reagent/caveweep = 3,
 		/datum/reagent/consumable/honey = 3
 	)
 	results = list(/datum/reagent/skill_elixir/farmers_almanac = 10)
@@ -235,8 +235,8 @@
 	required_reagents = list(
 		/datum/reagent/buff/perception/concentrated = 3,
 		/datum/reagent/buff/fortune/concentrated = 3,
-		/datum/reagent/medicine/rosawater = 2,
-		/datum/reagent/consumable/honey = 2
+		/datum/reagent/tree_sap = 2,
+		/datum/reagent/consumable/nutriment/bone_marrow = 2
 	)
 	results = list(/datum/reagent/skill_elixir/beastwhisper = 10)
 
@@ -284,8 +284,8 @@
 	required_reagents = list(
 		/datum/reagent/buff/perception/concentrated = 3,
 		/datum/reagent/buff/fortune/concentrated = 3,
-		/datum/reagent/medicine/rosawater = 2,
-		/datum/reagent/consumable/honey = 2
+		/datum/reagent/thorn_essence = 2,
+		/datum/reagent/tree_sap = 2
 	)
 	results = list(/datum/reagent/skill_elixir/wild_draught = 10)
 
@@ -321,8 +321,7 @@
 	required_reagents = list(
 		/datum/reagent/buff/intelligence/concentrated = 4,
 		/datum/reagent/ash = 2,
-		/datum/reagent/water = 2,
-		/datum/reagent/consumable/honey = 2
+		/datum/reagent/toxin/plasma = 2,
 	)
 	results = list(/datum/reagent/skill_elixir/scholars_ink = 10)
 
