@@ -59,6 +59,15 @@
 	. = ..()
 	soundloop = new(src, FALSE)
 
+/obj/item/instrument/get_mechanics_examine(mob/living/carbon/human/user)
+	. = ..()
+	if(!istype(user))
+		return
+	if(!user.inspiration)
+		return
+	. += "Use Alt-Click to open up your inspiration menu."
+	. += "Middle-Click on people to add or remove them from your audience."
+
 /obj/item/instrument/AltClick(mob/living/carbon/human/user, list/modifiers)
 	. = ..()
 	if(!istype(user))
