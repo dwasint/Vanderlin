@@ -61,7 +61,7 @@
 		if(COMBINER_MODE_AUTO)
 			var/list/demand = build_network_demand()
 			var/datum/essence_combination/best = null
-			var/best_score = -1
+			var/best_score = 0
 			for(var/rpath in subtypesof(/datum/essence_combination))
 				var/datum/essence_combination/recipe = new rpath
 				var/score = demand[recipe.output_type] || 0
@@ -309,7 +309,7 @@
 			// Build a demand map from the network: output_type -> total units wanted
 			var/list/demand = build_network_demand()
 			var/datum/essence_combination/best_recipe = null
-			var/best_score = -1
+			var/best_score = 0
 			for(var/rpath in subtypesof(/datum/essence_combination))
 				var/datum/essence_combination/recipe = new rpath
 				var/ok = TRUE
