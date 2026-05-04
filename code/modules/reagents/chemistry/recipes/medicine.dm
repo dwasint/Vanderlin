@@ -203,7 +203,7 @@
 	required_reagents = list(
 		/datum/reagent/ash = 5,
 		/datum/reagent/medicine/antidote = 5,
-		/datum/reagent/consumable/bone_marrow = 2
+		/datum/reagent/consumable/nutriment/bone_marrow = 2
 	)
 	results = list(/datum/reagent/medicine/ashwarden_brew = 12)
 	mix_message = "The brew darkens to near-black, releasing a sulphurous cloud."
