@@ -320,7 +320,7 @@
 	mix_sound = "pour"
 	required_reagents = list(
 		/datum/reagent/buff/intelligence/concentrated = 4,
-		/datum/reagent/ash = 2,
+		/datum/reagent/toxin/manabloom_juice = 2,
 		/datum/reagent/toxin/plasma = 2,
 	)
 	results = list(/datum/reagent/skill_elixir/scholars_ink = 10)
