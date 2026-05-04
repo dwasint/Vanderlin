@@ -58,9 +58,9 @@
 	name = "Woundwrack Oil"
 	id = "woundwrack_oil"
 	required_reagents = list(
-		/datum/reagent/medicine/rosawater = 5,
+		/datum/reagent/water = 5,
 		/datum/reagent/ash = 5,
-		/datum/reagent/medicine/healthpot = 3
+		/datum/reagent/tree_sap = 3
 	)
 	results = list(/datum/reagent/medicine/woundwrack_oil = 13)
 	mix_message = "The mixture separates briefly before fusing into a shimmering amber oil."
@@ -320,7 +320,7 @@
 	id = "mirelung_brew"
 	required_reagents = list(
 		/datum/reagent/water/gross = 5,
-		/datum/reagent/toxin/amatoxin = 5,
+		/datum/reagent/toxin/venom = 5,
 		/datum/reagent/toxin/bad_food = 3
 	)
 	results = list(/datum/reagent/poison/mirelung_brew = 13)

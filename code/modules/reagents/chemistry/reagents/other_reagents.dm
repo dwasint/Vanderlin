@@ -303,6 +303,13 @@
 	color = "#515151"
 	taste_description = "ash"
 
+/datum/reagent/tree_sap
+	name = "Tree Sap"
+	description = "A thick substance left behind by dendor's blessed creations."
+	reagent_state = LIQUID
+	color = "#b85900"
+	taste_description = "sap"
+
 /datum/reagent/thorn_essence
 	name = "Thorn Essence"
 	description = "A component used in further refinement, sourced from thorns."
