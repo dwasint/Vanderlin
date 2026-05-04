@@ -98,7 +98,7 @@
 	granted_spell.base_background_icon_state = "spelltemp0"
 	granted_spell.active_background_icon_state = "spelltemp1"
 	granted_spell.spell_cost = 0
-	granted.spell_flags |= SPELL_TEMPORARY
+	granted_spell.spell_flags |= SPELL_TEMPORARY
 	granted_spell.Grant(user)
 
 	RegisterSignal(user, COMSIG_MOB_ABILITY_FINISHED, PROC_REF(on_spell_fired))
