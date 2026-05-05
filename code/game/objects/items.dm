@@ -1615,3 +1615,74 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 	if(!silent)
 		balloon_alert_to_viewers(span_warning("[name]<br>breaks!"))
+
+
+/obj/item/return_recipe_data()
+	var/has_grind = length(grind_results)
+	var/has_juice = length(juice_results)
+	var/list/milled_from_paths = GLOB.snack_mill_reverse[type]
+	var/list/sliced_from_paths = GLOB.snack_slice_reverse[type]
+
+	if(!has_grind&& !has_juice && !length(milled_from_paths) && !length(sliced_from_paths))
+		return null
+
+	var/list/data = list()
+	data["type"] = "snack_processing"
+	data["name"] = name
+	data["category"] = "Processing"
+	data["_output_path"] = "[type]"
+	data["output_name"] = name
+	data["output_icon"] = "[icon]"
+	data["output_state"] = "[icon_state]"
+
+	if(has_grind)
+		var/list/grind = list()
+		for(var/datum/reagent/path as anything in grind_results)
+			grind += list(list("name" = initial(path.name), "amount" = grind_results[path]))
+		data["grind_results"] = grind
+
+	if(has_juice)
+		var/list/juice = list()
+		var/list/combined_path = juice_results
+		for(var/datum/reagent/path as anything in combined_path)
+			juice += list(list("name" = initial(path.name), "amount" = combined_path[path]))
+		data["juice_results"] = juice
+
+	if(length(sliced_from_paths))
+		var/list/sliced_from = list()
+		for(var/atom/src_path as anything in sliced_from_paths)
+			sliced_from += list(list(
+				"name" = initial(src_path.name),
+				"icon" = "[initial(src_path.icon)]",
+				"icon_state" = "[initial(src_path.icon_state)]",
+				"_path" = "[src_path]",
+			))
+		data["sliced_from"] = sliced_from
+
+	if(length(milled_from_paths))
+		var/list/milled_from = list()
+		for(var/atom/src_path as anything in milled_from_paths)
+			milled_from += list(list(
+				"name" = initial(src_path.name),
+				"icon" = "[initial(src_path.icon)]",
+				"icon_state" = "[initial(src_path.icon_state)]",
+				"_path" = "[src_path]",
+			))
+		data["milled_from"] = milled_from
+
+	if(length(obtained_from))
+		var/list/sources = list()
+		for(var/list/entry as anything in obtained_from)
+			if(!islist(entry) || length(entry) < 2) continue
+			var/label = entry[1]
+			var/atom/src_path = entry[2]
+			sources += list(list(
+				"label" = label,
+				"_path" = "[src_path]",
+				"name" = initial(src_path.name),
+				"icon" = "[initial(src_path.icon)]",
+				"icon_state" = "[initial(src_path.icon_state)]",
+			))
+		data["sources"] = sources
+
+	return data

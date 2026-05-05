@@ -71,11 +71,8 @@
 	name = MAGIC_MATERIAL_NAME + " crystal"
 	desc = "Crystalized mana." //placeholder desc
 	icon = 'icons/obj/crystals.dmi' //placeholder
-
-/obj/item/mana_battery/mana_crystal/Initialize(mapload)
-	. = ..()
-	create_reagents(40)
-	reagents.add_reagent(/datum/reagent/toxin/plasma, 40)
+	grind_results = list(/datum/reagent/toxin/plasma = 40)
+	indexed = TRUE
 
 // Do not use, basetype
 /datum/mana_pool/mana_battery/mana_crystal
