@@ -1,4 +1,4 @@
-/obj/effect/decal/cleanable/roguerune/arcyne/knowledge
+/obj/effect/decal/cleanable/ritual_rune/arcyne/knowledge
 	name = "Knowledge rune"
 	desc = "Arcane symbols pulse upon the ground..."
 	icon_state = "6"
@@ -9,7 +9,7 @@
 	can_be_scribed = TRUE
 	associated_ritual = /datum/runerituals/knowledge
 
-/obj/effect/decal/cleanable/roguerune/arcyne/knowledge/invoke(list/invokers, datum/runerituals/runeritual)
+/obj/effect/decal/cleanable/ritual_rune/arcyne/knowledge/invoke(list/invokers, datum/runerituals/runeritual)
 	runeritual = associated_ritual
 	if(!..())
 		return

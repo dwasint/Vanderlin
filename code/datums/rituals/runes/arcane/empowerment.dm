@@ -1,4 +1,4 @@
-/obj/effect/decal/cleanable/roguerune/arcyne/empowerment
+/obj/effect/decal/cleanable/ritual_rune/arcyne/empowerment
 	name = "empowerment array"
 	desc = "Arcane symbols pulse upon the ground..."
 	icon = 'icons/effects/96x96.dmi'
@@ -12,10 +12,10 @@
 	can_be_scribed = TRUE
 	ritual_number = TRUE
 
-/obj/effect/decal/cleanable/roguerune/arcyne/empowerment/get_ritual_list_for_rune()
+/obj/effect/decal/cleanable/ritual_rune/arcyne/empowerment/get_ritual_list_for_rune()
 	return tier >= 2 ? GLOB.t2buffrunerituallist : GLOB.buffrunerituallist
 
-/obj/effect/decal/cleanable/roguerune/arcyne/empowerment/invoke(list/invokers, datum/runerituals/buff/runeritual)
+/obj/effect/decal/cleanable/ritual_rune/arcyne/empowerment/invoke(list/invokers, datum/runerituals/buff/runeritual)
 	if(!..())
 		return
 	for(var/mob/living/nearby_mob in range(runesize, src))

@@ -1,4 +1,4 @@
-/obj/effect/decal/cleanable/roguerune/arcyne/wallgreater
+/obj/effect/decal/cleanable/ritual_rune/arcyne/wallgreater
 	name = "fortress accession matrix"
 	desc = "A massive sigil — is that a wall in the center?"
 	icon = 'icons/effects/160x160.dmi'
@@ -13,14 +13,14 @@
 	var/datum/map_template/template
 	var/fortress_template_type = /datum/map_template/arcyne_fortress
 
-/obj/effect/decal/cleanable/roguerune/arcyne/wallgreater/proc/load_fortress_template()
+/obj/effect/decal/cleanable/ritual_rune/arcyne/wallgreater/proc/load_fortress_template()
 	var/datum/map_template/temp = new fortress_template_type()
 	template = SSmapping.map_templates[temp.id]
 	if(!template)
 		WARNING("Fortress template ([temp.id]) not found!")
 		qdel(src)
 
-/obj/effect/decal/cleanable/roguerune/arcyne/wallgreater/invoke(list/invokers, datum/runerituals/runeritual)
+/obj/effect/decal/cleanable/ritual_rune/arcyne/wallgreater/invoke(list/invokers, datum/runerituals/runeritual)
 	runeritual = associated_ritual
 	if(!..())
 		return

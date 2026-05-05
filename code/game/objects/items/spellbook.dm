@@ -182,7 +182,7 @@
 		to_chat(user, span_smallgreen("Swampweed truly does open one's third eye to the secrets of the arcyne..."))
 		qualityoflearn += 10
 
-	var/obj/effect/decal/cleanable/roguerune/rune = locate(/obj/effect/decal/cleanable/roguerune) in range(1, user)
+	var/obj/effect/decal/cleanable/ritual_rune/rune = locate(/obj/effect/decal/cleanable/ritual_rune) in range(1, user)
 	if(rune)
 		to_chat(user, span_cultsmall("The rune beneath my feet glows..."))
 		qualityoflearn += rune.spellbonus

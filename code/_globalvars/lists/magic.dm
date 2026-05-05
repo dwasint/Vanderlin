@@ -12,7 +12,7 @@ GLOBAL_LIST(teleport_runes)
 /proc/generate_rune_types_for_tier(max_tier)
 	RETURN_TYPE(/list)
 	var/list/runes = list()
-	for(var/obj/effect/decal/cleanable/roguerune/rune as anything in subtypesof(/obj/effect/decal/cleanable/roguerune))
+	for(var/obj/effect/decal/cleanable/ritual_rune/rune as anything in subtypesof(/obj/effect/decal/cleanable/ritual_rune))
 		if(!initial(rune.can_be_scribed))
 			continue
 		if(!isnull(max_tier) && initial(rune.tier) > max_tier)

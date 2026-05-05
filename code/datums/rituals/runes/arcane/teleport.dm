@@ -1,4 +1,4 @@
-/obj/effect/decal/cleanable/roguerune/arcyne/teleport
+/obj/effect/decal/cleanable/ritual_rune/arcyne/teleport
 	name = "planar convergence matrix"
 	desc = "A large spiraling sigil that seems to thrum with power."
 	icon = 'icons/effects/160x160.dmi'
@@ -14,18 +14,18 @@
 	associated_ritual = /datum/runerituals/teleport
 	var/listkey
 
-/obj/effect/decal/cleanable/roguerune/arcyne/teleport/Initialize(mapload, set_keyword)
+/obj/effect/decal/cleanable/ritual_rune/arcyne/teleport/Initialize(mapload, set_keyword)
 	. = ..()
 	var/area/A = get_area(src)
 	var/locname = initial(A.name)
 	listkey = set_keyword ? "[set_keyword] [locname]" : "[locname]"
 	LAZYADD(GLOB.teleport_runes, src)
 
-/obj/effect/decal/cleanable/roguerune/arcyne/teleport/Destroy()
+/obj/effect/decal/cleanable/ritual_rune/arcyne/teleport/Destroy()
 	LAZYREMOVE(GLOB.teleport_runes, src)
 	return ..()
 
-/obj/effect/decal/cleanable/roguerune/arcyne/teleport/invoke(list/invokers, datum/runerituals/runeritual)
+/obj/effect/decal/cleanable/ritual_rune/arcyne/teleport/invoke(list/invokers, datum/runerituals/runeritual)
 	runeritual = associated_ritual
 	if(!..())
 		return
@@ -34,7 +34,7 @@
 
 	var/list/potential_runes = list()
 	var/list/seen_keys = list()
-	for(var/obj/effect/decal/cleanable/roguerune/arcyne/teleport/T as anything in GLOB.teleport_runes)
+	for(var/obj/effect/decal/cleanable/ritual_rune/arcyne/teleport/T as anything in GLOB.teleport_runes)
 		if(T == src)
 			continue
 		potential_runes[avoid_assoc_duplicate_keys(T.listkey, seen_keys)] = T
@@ -48,7 +48,7 @@
 	var/chosen_key = input(user, "Rune to teleport to", "Teleportation Target") as null|anything in potential_runes
 	if(isnull(chosen_key))
 		return
-	var/obj/effect/decal/cleanable/roguerune/arcyne/teleport/dest = potential_runes[chosen_key]
+	var/obj/effect/decal/cleanable/ritual_rune/arcyne/teleport/dest = potential_runes[chosen_key]
 	if(!dest || !Adjacent(user) || QDELETED(src))
 		fail_invoke()
 		return

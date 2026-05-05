@@ -1,4 +1,4 @@
-/obj/effect/decal/cleanable/roguerune/arcyne/leylines
+/obj/effect/decal/cleanable/ritual_rune/arcyne/leylines
 	name = "leyline attunement matrix"
 	desc = "Geometric shapes and lines on the ground resonate with power..."
 	icon = 'icons/effects/96x96.dmi'
@@ -13,7 +13,7 @@
 	can_be_scribed = TRUE
 	associated_ritual = /datum/runerituals/leyattunement
 
-/obj/effect/decal/cleanable/roguerune/arcyne/leylines/invoke(list/invokers, datum/runerituals/runeritual)
+/obj/effect/decal/cleanable/ritual_rune/arcyne/leylines/invoke(list/invokers, datum/runerituals/runeritual)
 	runeritual = associated_ritual
 	if(!..())
 		return

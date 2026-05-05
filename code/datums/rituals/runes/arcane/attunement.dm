@@ -1,5 +1,5 @@
 
-/obj/effect/decal/cleanable/roguerune/arcyne/attunement
+/obj/effect/decal/cleanable/ritual_rune/arcyne/attunement
 	name = "arcyne attunement matrix"
 	desc = "A large matrix designed to imbue the energies of materials."
 	icon = 'icons/effects/160x160.dmi'
@@ -15,7 +15,7 @@
 	associated_ritual = /datum/runerituals/attunement
 	takes_all_items = TRUE
 
-/obj/effect/decal/cleanable/roguerune/arcyne/attunement/invoke(list/invokers, datum/runerituals/runeritual)
+/obj/effect/decal/cleanable/ritual_rune/arcyne/attunement/invoke(list/invokers, datum/runerituals/runeritual)
 	runeritual = associated_ritual
 	if(!..())
 		return

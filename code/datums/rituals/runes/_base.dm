@@ -1,5 +1,5 @@
 
-/obj/effect/decal/cleanable/roguerune
+/obj/effect/decal/cleanable/ritual_rune
 	name = "ritual rune"
 	desc = "Strange symbols pulse upon the ground..."
 	anchored = TRUE
@@ -64,20 +64,20 @@
 	/// If TRUE, every item with attunement_values on the rune is pulled into selected_atoms
 	var/takes_all_items = FALSE
 
-/obj/effect/decal/cleanable/roguerune/Initialize(mapload, set_keyword)
+/obj/effect/decal/cleanable/ritual_rune/Initialize(mapload, set_keyword)
 	. = ..()
 	if(set_keyword)
 		keyword = set_keyword
 
 /// Plays the brief flash-and-fade glow when a rune successfully fires.
-/obj/effect/decal/cleanable/roguerune/proc/do_invoke_glow()
+/obj/effect/decal/cleanable/ritual_rune/proc/do_invoke_glow()
 	set waitfor = FALSE
 	animate(src, transform = matrix() * 2, alpha = 0, time = 5, flags = ANIMATION_END_NOW)
 	sleep(0.5 SECONDS)
 	animate(src, transform = matrix(), alpha = 255, time = 0, flags = ANIMATION_END_NOW)
 
 /// Called when the rune fails to activate. Shows a fizzle and resets rune_in_use.
-/obj/effect/decal/cleanable/roguerune/proc/fail_invoke()
+/obj/effect/decal/cleanable/ritual_rune/proc/fail_invoke()
 	visible_message(span_warning("The markings pulse with a small flash of light, then fall dark."))
 	var/oldcolor = color
 	color = rgb(255, 0, 0)
@@ -85,7 +85,7 @@
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, update_atom_colour)), 0.5 SECONDS)
 	rune_in_use = FALSE
 
-/obj/effect/decal/cleanable/roguerune/attack_hand(mob/living/user)
+/obj/effect/decal/cleanable/ritual_rune/attack_hand(mob/living/user)
 	if(GET_MOB_SKILL_VALUE(user, magictype) < SKILL_LEVEL_NONE)
 		to_chat(user, span_warning("You aren't able to understand the words of [src]."))
 		return
@@ -105,7 +105,8 @@
 
 	if(!ritual_number)
 		// Single fixed ritual - no menu needed.
-		invoke(invokers)
+		if(associated_ritual)
+			invoke(invokers, associated_ritual)
 		return
 
 	// Multi-ritual rune: build the ritual list for this rune's tier, then ask.
@@ -129,13 +130,13 @@
 
 /// Returns the appropriate ritual list for this rune type and tier.
 /// Override on subtype if you need a different pool.
-/obj/effect/decal/cleanable/roguerune/proc/get_ritual_list_for_rune()
+/obj/effect/decal/cleanable/ritual_rune/proc/get_ritual_list_for_rune()
 	return GLOB.allowedrunerituallist
 
 
 /// Marks the rune as in-use and returns the list of eligible invokers.
 /// Always includes user as the first entry if supplied.
-/obj/effect/decal/cleanable/roguerune/proc/can_invoke(mob/living/user = null)
+/obj/effect/decal/cleanable/ritual_rune/proc/can_invoke(mob/living/user = null)
 	rune_in_use = TRUE
 	var/list/invokers = list()
 	if(user)
@@ -152,7 +153,7 @@
 	return invokers
 
 
-/obj/effect/decal/cleanable/roguerune/proc/invoke(list/invokers, datum/runerituals/runeritual)
+/obj/effect/decal/cleanable/ritual_rune/proc/invoke(list/invokers, datum/runerituals/runeritual)
 	SHOULD_CALL_PARENT(TRUE)
 	rune_in_use = FALSE
 
@@ -221,7 +222,7 @@
 
 /// Plays invocations, deals damage, and fires the glow after a successful invoke.
 /// Call this at the end of every subtype invoke() proc.
-/obj/effect/decal/cleanable/roguerune/proc/finish_invoke(list/invokers)
+/obj/effect/decal/cleanable/ritual_rune/proc/finish_invoke(list/invokers)
 	for(var/atom/invoker_atom in invokers)
 		if(!isliving(invoker_atom))
 			continue
@@ -233,20 +234,20 @@
 			to_chat(M, span_italics("[src] saps your strength!"))
 	do_invoke_glow()
 
-/obj/effect/decal/cleanable/roguerune/arcyne
+/obj/effect/decal/cleanable/ritual_rune/arcyne
 	name = "arcane ritual rune"
 	desc = "Subtype used for arcane rituals — you should not be seeing this."
 	magictype = /datum/attribute/skill/magic/arcane
 	can_be_scribed = FALSE
 
-/obj/effect/decal/cleanable/roguerune/divine
+/obj/effect/decal/cleanable/ritual_rune/divine
 	magictype = /datum/attribute/skill/magic/holy
 	can_be_scribed = FALSE
 
-/obj/effect/decal/cleanable/roguerune/druid
+/obj/effect/decal/cleanable/ritual_rune/druid
 	magictype = /datum/attribute/skill/magic/druidic
 	can_be_scribed = FALSE
 
-/obj/effect/decal/cleanable/roguerune/blood
+/obj/effect/decal/cleanable/ritual_rune/blood
 	magictype = /datum/attribute/skill/magic/blood
 	can_be_scribed = FALSE

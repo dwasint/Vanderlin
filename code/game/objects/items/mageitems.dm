@@ -102,13 +102,13 @@
 	if(GET_MOB_SKILL_VALUE(user, /datum/attribute/skill/magic/arcane) <= SKILL_LEVEL_NONE)//We'll set up other items for other types of rune rituals
 		to_chat(user, span_cult("Nothing comes in mind to draw with the chalk."))
 		return
-	var/obj/effect/decal/cleanable/roguerune/pickrune
+	var/obj/effect/decal/cleanable/ritual_rune/pickrune
 	var/runenameinput = browser_input_list(user, "Runes", "Tier 1&2 Runes", GLOB.t2rune_types)
 	pickrune = GLOB.rune_types[runenameinput]
 	if(!pickrune)
 		return
 	var/turf/Turf = get_turf(user)
-	if(locate(/obj/effect/decal/cleanable/roguerune) in Turf)
+	if(locate(/obj/effect/decal/cleanable/ritual_rune) in Turf)
 		to_chat(user, span_cult("There is already a rune here."))
 		return
 	var/structures_in_way = check_for_structures_and_closed_turfs(loc, pickrune)
@@ -130,7 +130,7 @@
 	if(amount <= 0)
 		qdel(src)
 
-/obj/item/chalk/proc/check_for_structures_and_closed_turfs(loc, obj/effect/decal/cleanable/roguerune/rune_to_scribe)
+/obj/item/chalk/proc/check_for_structures_and_closed_turfs(loc, obj/effect/decal/cleanable/ritual_rune/rune_to_scribe)
 	for(var/turf/T in range(loc, rune_to_scribe.runesize))
 		//check for /sturcture subtypes in the turf's contents
 		for(var/obj/structure/S in T.contents)
@@ -140,7 +140,7 @@
 		if(istype(T,/turf/closed))
 			return TRUE
 		//check if rune in the turfs contents
-		for(var/obj/effect/decal/cleanable/roguerune/R in T.contents)
+		for(var/obj/effect/decal/cleanable/ritual_rune/R in T.contents)
 			return TRUE
 		//Return false if nothing in range was found
 	return FALSE
@@ -170,13 +170,13 @@
 /obj/item/weapon/knife/dagger/silver/arcyne/attack_self(mob/living/carbon/human/user, list/modifiers)
 	if(GET_MOB_SKILL_VALUE(user, /datum/attribute/skill/magic/arcane) <= SKILL_LEVEL_NONE)
 		return
-	var/obj/effect/decal/cleanable/roguerune/pickrune
+	var/obj/effect/decal/cleanable/ritual_rune/pickrune
 	var/runenameinput = browser_input_list(user, "Runes", "All Runes", GLOB.t4rune_types)
 	pickrune = GLOB.rune_types[runenameinput]
 	if(!pickrune)
 		return
 	var/turf/Turf = get_turf(user)
-	if(locate(/obj/effect/decal/cleanable/roguerune) in Turf)
+	if(locate(/obj/effect/decal/cleanable/ritual_rune) in Turf)
 		to_chat(user, span_cult("There is already a rune here."))
 		return
 	var/structures_in_way = check_for_structures_and_closed_turfs(loc, pickrune)
@@ -207,7 +207,7 @@
 		span_notice("I finish dragging the blade in symbols and circles, leaving behind a [pickrune.name]."))
 		new pickrune(Turf, chosen_keyword)
 
-/obj/item/weapon/knife/dagger/proc/check_for_structures_and_closed_turfs(loc, obj/effect/decal/cleanable/roguerune/rune_to_scribe)
+/obj/item/weapon/knife/dagger/proc/check_for_structures_and_closed_turfs(loc, obj/effect/decal/cleanable/ritual_rune/rune_to_scribe)
 	for(var/turf/T in range(loc, rune_to_scribe.runesize))
 		//check for /sturcture subtypes in the turf's contents
 		for(var/obj/structure/S in T.contents)
@@ -216,7 +216,7 @@
 		if(istype(T,/turf/closed))
 			return TRUE
 		//check if rune in the turfs contents
-		for(var/obj/effect/decal/cleanable/roguerune/R in T.contents)
+		for(var/obj/effect/decal/cleanable/ritual_rune/R in T.contents)
 			return TRUE
 		//Return false if nothing in range was found
 	return FALSE

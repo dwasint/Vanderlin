@@ -1,4 +1,4 @@
-/obj/effect/decal/cleanable/roguerune/arcyne/wall
+/obj/effect/decal/cleanable/ritual_rune/arcyne/wall
 	name = "wall accession matrix"
 	desc = "Arcane symbols litter the ground — is that a wall of some sort?"
 	icon_state = "wall"
@@ -9,12 +9,12 @@
 	color = "#184075"
 	var/list/barriers = list()
 
-/obj/effect/decal/cleanable/roguerune/arcyne/wall/Destroy()
+/obj/effect/decal/cleanable/ritual_rune/arcyne/wall/Destroy()
 	QDEL_LIST_CONTENTS(barriers)
 	barriers = null
 	return ..()
 
-/obj/effect/decal/cleanable/roguerune/arcyne/wall/attack_hand(mob/living/user)
+/obj/effect/decal/cleanable/ritual_rune/arcyne/wall/attack_hand(mob/living/user)
 	if(active)
 		QDEL_LIST_CONTENTS(barriers)
 		to_chat(user, span_warning("You deactivate the [src]!"))
@@ -23,10 +23,10 @@
 		return
 	. = ..()
 
-/obj/effect/decal/cleanable/roguerune/arcyne/wall/get_ritual_list_for_rune()
+/obj/effect/decal/cleanable/ritual_rune/arcyne/wall/get_ritual_list_for_rune()
 	return tier >= 3 ? GLOB.t4wallrunerituallist : GLOB.t2wallrunerituallist
 
-/obj/effect/decal/cleanable/roguerune/arcyne/wall/invoke(list/invokers, datum/runerituals/runeritual)
+/obj/effect/decal/cleanable/ritual_rune/arcyne/wall/invoke(list/invokers, datum/runerituals/runeritual)
 	if(!..())
 		return
 	var/mob/living/user = usr
@@ -40,7 +40,7 @@
 		pickritual.cleanup_atoms(selected_atoms)
 	finish_invoke(invokers)
 
-/obj/effect/decal/cleanable/roguerune/arcyne/wall/proc/wall_get_target_turfs(mob/living/user, double_row = FALSE)
+/obj/effect/decal/cleanable/ritual_rune/arcyne/wall/proc/wall_get_target_turfs(mob/living/user, double_row = FALSE)
 	var/user_dir = user.dir
 	var/turf/front = get_step(get_step(src, user_dir), user_dir)
 	var/list/turfs = list(
