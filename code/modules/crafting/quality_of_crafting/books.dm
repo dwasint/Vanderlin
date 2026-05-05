@@ -63,6 +63,11 @@ GLOBAL_LIST_EMPTY(linked_recipe_cache)
 		ui = new /datum/tgui(user, src, "RecipeBook", name)
 		ui.open()
 
+/obj/item/recipe_book/ui_state(mob/user)
+	if(!loc)
+		return GLOB.always_state
+	. = ..()
+
 /obj/item/recipe_book/attack_self(mob/user, list/modifiers)
 	. = ..()
 	ui_interact(user)
@@ -573,7 +578,8 @@ GLOBAL_LIST_EMPTY(linked_recipe_cache)
 	name = "Survival"
 	can_spawn = FALSE
 	types = list(
-		/datum/repeatable_crafting_recipe/survival)
+		/datum/repeatable_crafting_recipe/survival
+	)
 
 /obj/item/recipe_book/agriculture
 	name = "The Farmers Almanac: Principles of Growth and Harvest"
