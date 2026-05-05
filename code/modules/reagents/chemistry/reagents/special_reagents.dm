@@ -104,7 +104,7 @@
 
 /datum/reagent/drug/subtilum_tincture/on_mob_end_metabolize(mob/living/L)
 	. = ..()
-	L.remove_chem_effect(CE_SHRINKING, 4)
+	L.remove_chem_effect(CE_SHRINKING, "[type]")
 	L.update_effect_scaling()
 
 /datum/reagent/sal_petris
