@@ -71,7 +71,7 @@
 
 /datum/reagent/drug/phlogiston_elasticum/on_mob_end_metabolize(mob/living/L)
 	. = ..()
-	L.remove_chem_effect(CE_BOUNCY, 4)
+	L.remove_chem_effect(CE_BOUNCY, "[type]")
 
 /datum/reagent/drug/gravitum_elixir
 	name = "Gravitum Elixir"
