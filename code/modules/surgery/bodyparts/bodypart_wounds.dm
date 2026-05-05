@@ -170,7 +170,7 @@
 	if(!bclass || !dam || !owner || (owner.status_flags & GODMODE))
 		return
 	dam *= damage_multiplier
-	if(dam < 5)
+	if(dam < 5 && bclass != WOUND_INTERNAL_BRUISE)
 		if(CEILING(dam, 1) < 5)
 			return
 		dam = CEILING(dam, 1)
