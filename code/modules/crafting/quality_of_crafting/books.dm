@@ -199,6 +199,24 @@ GLOBAL_LIST_EMPTY(linked_recipe_cache)
 		GLOB.recipe_data_cache["[src_path]"] = page
 		linked += list(page)
 
+	for(var/key in GLOB.indexed_item_paths)
+		if(visited[key])
+			continue  // already picked up by get_source_page_data or obtained_from
+		var/atom/item_path = text2path(key)
+		if(!item_path)
+			continue
+		var/list/existing = get_cached_recipe_data(item_path)
+		if(existing)
+			continue
+		var/obj/item/inst = new item_path()
+		var/list/entry = inst.return_recipe_data()
+		qdel(inst)
+		if(!entry)
+			continue
+		GLOB.recipe_data_cache[key] = entry
+		linked += list(entry)
+
+
 	GLOB.linked_recipe_cache["[book_type]"] = linked
 	return linked
 

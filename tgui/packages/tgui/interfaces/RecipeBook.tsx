@@ -573,18 +573,10 @@ const DetailChemicalReaction = ({
 
     {!!r.results?.length && (
       <>
-        <SectionHead>Output Reagents</SectionHead>
+       <SectionHead>Output Reagents</SectionHead>
         {r.results.map((rg, i) => (
           <Box key={i} className="RecipeBook__item-row">
-            {rg.amount}u of{' '}
-            <RecipeLink
-              name={rg.name}
-              allRecipes={allRecipes}
-              essenceIndex={essenceIndex}
-              lookup={lookup}
-              pickerMap={pickerMap}
-              onNavigate={nav}
-            />
+            {rg.amount}u of <strong>{rg.name}</strong>
           </Box>
         ))}
       </>
@@ -1864,25 +1856,29 @@ export const RecipeBook = (props: any, context: any) => {
   const essencePrecursorIndex = new Map<string, Recipe[]>();
 
   for (const r of allRecipes) {
-    if (r.type === 'natural_precursor') {
-      if (r.yield_names) {
-        for (const ename of r.yield_names) {
-          const key = ename.toLowerCase();
-          if (!essencePrecursorIndex.has(key)) essencePrecursorIndex.set(key, []);
-          essencePrecursorIndex.get(key)!.push(r);
-        }
+  if (r.type === 'natural_precursor') {
+    if (r.yield_names) {
+      for (const ename of r.yield_names) {
+        const key = ename.toLowerCase();
+        if (!essencePrecursorIndex.has(key)) essencePrecursorIndex.set(key, []);
+        essencePrecursorIndex.get(key)!.push(r);
       }
-      continue;
     }
-    if (r.type === 'essence_combination' && r.output_name) {
-      const key = r.output_name.toLowerCase();
-      if (!essencePrecursorIndex.has(key)) essencePrecursorIndex.set(key, []);
-      essencePrecursorIndex.get(key)!.push(r);
-    }
-    if (r.name) addToMultiMap(r.name.toLowerCase(), r);
-    if (r.output_name) addToMultiMap(r.output_name.toLowerCase(), r);
-    if (r._output_path) addToMultiMap(r._output_path, r);
+    continue;
   }
+  if (r.type === 'essence_combination' && r.output_name) {
+    const key = r.output_name.toLowerCase();
+    if (!essencePrecursorIndex.has(key)) essencePrecursorIndex.set(key, []);
+    essencePrecursorIndex.get(key)!.push(r);
+  }
+  if (r.type === 'snack_processing') {
+    for (const rg of r.grind_results || []) addToMultiMap(rg.name.toLowerCase(), r);
+    for (const rg of r.juice_results || []) addToMultiMap(rg.name.toLowerCase(), r);
+  }
+  if (r.name) addToMultiMap(r.name.toLowerCase(), r);
+  if (r.output_name) addToMultiMap(r.output_name.toLowerCase(), r);
+  if (r._output_path) addToMultiMap(r._output_path, r);
+}
 
   const recipeLookup = new Map<string, Recipe>();
   const recipePickerMap = new Map<string, Recipe[]>(); // keys with >1 result

@@ -15,6 +15,8 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	var/lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
 	///Icon file for right inhand overlays
 	var/righthand_file = 'icons/mob/inhands/items_righthand.dmi'
+	///basically avoiding adding an atom var this is the we are indexed by the recipe book call
+	var/indexed = FALSE
 
 	///Icon file for mob worn overlays.
 	///no var for state because it should *always* be the same as icon_state
