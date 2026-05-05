@@ -38,7 +38,7 @@ GLOBAL_LIST_EMPTY(linked_recipe_cache)
 // recipe_info_path, set this on any /atom to redirect hyperlink
 // lookups to a different typepath's return_recipe_data().
 // Example: /obj/item/ore/iron { recipe_info_path = /datum/ore_source/iron }
-// Example: /obj/item/hammer   { recipe_info_path = /obj/item/recipe_book/blacksmithing }
+// Example: /obj/item/hammer { recipe_info_path = /obj/item/recipe_book/blacksmithing }
 // When null the atom's own return_recipe_data() is called directly.
 /atom/var/recipe_info_path
 
@@ -53,9 +53,9 @@ GLOBAL_LIST_EMPTY(linked_recipe_cache)
 	var/list/types = list()
 	var/open
 	var/can_spawn = TRUE
-	var/current_category = "All"      // Default selected category
-	var/current_recipe = null         // Currently viewed recipe
-	var/search_query = ""             // Current search query
+	var/current_category = "All" // Default selected category
+	var/current_recipe = null // Currently viewed recipe
+	var/search_query = "" // Current search query
 
 /obj/item/recipe_book/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -178,23 +178,23 @@ GLOBAL_LIST_EMPTY(linked_recipe_cache)
 			if(!GLOB.mob_source_paths[mob_entry["_path"]])
 				continue
 			sources += list(list(
-				"label"      = mob_entry["source_label"],
-				"_path"      = mob_entry["_path"],
-				"name"       = mob_entry["name"],
-				"icon"       = mob_entry["icon"],
+				"label" = mob_entry["source_label"],
+				"_path" = mob_entry["_path"],
+				"name" = mob_entry["name"],
+				"icon" = mob_entry["icon"],
 				"icon_state" = mob_entry["icon_state"],
 			))
 		if(!length(sources))
 			continue
 		var/list/page = list(
-			"type"         = "obtained_from",
-			"name"         = initial(src_path.name),
-			"category"     = "Sources",
+			"type" = "obtained_from",
+			"name" = initial(src_path.name),
+			"category" = "Sources",
 			"_output_path" = "[src_path]",
-			"output_name"  = initial(src_path.name),
-			"output_icon"  = "[initial(src_path.icon)]",
+			"output_name" = initial(src_path.name),
+			"output_icon" = "[initial(src_path.icon)]",
 			"output_state" = "[initial(src_path.icon_state)]",
-			"sources"      = sources,
+			"sources" = sources,
 		)
 		GLOB.recipe_data_cache["[src_path]"] = page
 		linked += list(page)
@@ -206,14 +206,14 @@ GLOBAL_LIST_EMPTY(linked_recipe_cache)
 	var/list/drops = GLOB.obtained_from_reverse["[src_path]"]
 	if(!length(drops)) return null
 	return list(
-		"type"         = "source_page",
-		"name"         = initial(src_path.name),
-		"category"     = "Sources",
+		"type" = "source_page",
+		"name" = initial(src_path.name),
+		"category" = "Sources",
 		"_output_path" = "[src_path]",
-		"output_name"  = initial(src_path.name),
-		"output_icon"  = "[initial(src_path.icon)]",
+		"output_name" = initial(src_path.name),
+		"output_icon" = "[initial(src_path.icon)]",
 		"output_state" = "[initial(src_path.icon_state)]",
-		"drops"        = drops,
+		"drops" = drops,
 	)
 
 /obj/item/recipe_book/proc/get_mob_source_page_data(atom/mob_path)
@@ -227,26 +227,26 @@ GLOBAL_LIST_EMPTY(linked_recipe_cache)
 			if(!drop_path)
 				continue
 			drops += list(list(
-				"name"         = initial(drop_path.name),
-				"icon"         = "[initial(drop_path.icon)]",
-				"icon_state"   = "[initial(drop_path.icon_state)]",
-				"_path"        = "[drop_path]",
+				"name" = initial(drop_path.name),
+				"icon" = "[initial(drop_path.icon)]",
+				"icon_state" = "[initial(drop_path.icon_state)]",
+				"_path" = "[drop_path]",
 				"source_label" = entry["source_label"],
-				"amount"       = entry["amount"],
+				"amount" = entry["amount"],
 			))
 
 	if(!length(drops))
 		return null
 
 	return list(
-		"type"         = "source_page",
-		"name"         = initial(mob_path.name),
-		"category"     = "Sources",
+		"type" = "source_page",
+		"name" = initial(mob_path.name),
+		"category" = "Sources",
 		"_output_path" = "[mob_path]",
-		"output_name"  = initial(mob_path.name),
-		"output_icon"  = "[initial(mob_path.icon)]",
+		"output_name" = initial(mob_path.name),
+		"output_icon" = "[initial(mob_path.icon)]",
 		"output_state" = "[initial(mob_path.icon_state)]",
-		"drops"        = drops,
+		"drops" = drops,
 	)
 
 /// Returns cached recipe data for a typepath, computing and caching it if needed.
@@ -520,6 +520,7 @@ GLOBAL_LIST_EMPTY(linked_recipe_cache)
 		/datum/book_entry/grimoire,
 		/datum/book_entry/attunement,
 		/datum/book_entry/mana_sources,
+		/datum/arcyne_crafting_recipe,
 		/datum/repeatable_crafting_recipe/arcyne,
 		/datum/blueprint_recipe/arcyne,
 		/datum/container_craft/cooking/arcyne,
@@ -537,6 +538,8 @@ GLOBAL_LIST_EMPTY(linked_recipe_cache)
 		/datum/book_entry/gnome_homunculus,
 		/datum/book_entry/essence_crafting,
 		/datum/alch_cauldron_recipe,
+		/datum/chemical_reaction,
+		/datum/distillation_recipe,
 		/datum/essence_combination,
 		/datum/natural_precursor,
 		/datum/infusion_recipe,

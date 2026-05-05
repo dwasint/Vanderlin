@@ -288,6 +288,24 @@ interface Recipe {
   oxygen_req?: number;
   nutriment_req?: number;
   hydration_req?: number;
+  // chemical_reaction
+  required_reagents?: ReagentRef[];
+  required_catalysts?: ReagentRef[];
+  is_cold_recipe?: number;        // 1 = cold recipe
+  mob_react?: boolean;
+  required_container?: string;
+  mix_message?: string;
+  required_temp?: number;
+  results?:  { name: string; amount: number }[];
+
+  // distillation
+  distilled_reagent_name?: string;
+  consume_reagents?: boolean;
+  distill_message?: string;
+
+  // arcyne_crafting
+  ingredients?: ItemRef[];        // ItemRef already has name/icon/icon_state/_path
+  required_skill?: number;
 }
 
 interface RecipeBookData {
@@ -385,6 +403,9 @@ const recipeTypeLabel = (type: string): string => {
     snack_processing: 'Processing',
     obtained_from: 'Source',
     source_page: 'Source', organ: 'Organ',
+    chemical_reaction: 'Chemistry',
+    distillation:      'Distillation',
+    arcyne_crafting:   'Arcyne Crafting',
   };
   return labels[type] || type;
 };
@@ -489,6 +510,214 @@ const OutputBanner = (props: {
     </Box>
   );
 };
+
+const DetailChemicalReaction = ({
+  r, lookup, pickerMap, allRecipes, essenceIndex, nav,
+}: {
+  r: Recipe; lookup: Map<string, Recipe>; pickerMap: Map<string, Recipe[]>;
+  allRecipes: Recipe[]; essenceIndex: Map<string, Recipe[]>; nav: (r: Recipe) => void;
+}) => (
+  <>
+    {!!r.is_cold_recipe && (
+      <WarnFlag color="#88ccff">
+        Cold recipe — react BELOW {r.required_temp ? `${r.required_temp - 273.15}C` : 'required temp'}
+      </WarnFlag>
+    )}
+    {!r.is_cold_recipe && r.required_temp ? (
+      <WarnFlag color="#e57c34">Requires temperature ≥ {r.required_temp - 273.15}C</WarnFlag>
+    ) : null}
+    {r.required_container && (
+      <WarnFlag color="#aaaaff">Must react inside: {r.required_container}</WarnFlag>
+    )}
+    {r.mob_react === false && (
+      <WarnFlag color="#cc6600">Cannot react inside a living body</WarnFlag>
+    )}
+
+    {!!r.required_reagents?.length && (
+      <>
+        <SectionHead>Reagents</SectionHead>
+        {r.required_reagents.map((rg, i) => (
+          <Box key={i} className="RecipeBook__item-row">
+            {rg.amount}u of{' '}
+            <RecipeLink
+              name={rg.name}
+              allRecipes={allRecipes}
+              essenceIndex={essenceIndex}
+              lookup={lookup}
+              pickerMap={pickerMap}
+              onNavigate={nav}
+            />
+          </Box>
+        ))}
+      </>
+    )}
+
+    {!!r.required_catalysts?.length && (
+      <>
+        <SectionHead>Catalysts (not consumed)</SectionHead>
+        {r.required_catalysts.map((rg, i) => (
+          <Box key={i} className="RecipeBook__item-row">
+            {rg.amount}u of{' '}
+            <RecipeLink
+              name={rg.name}
+              allRecipes={allRecipes}
+              essenceIndex={essenceIndex}
+              lookup={lookup}
+              pickerMap={pickerMap}
+              onNavigate={nav}
+            />
+          </Box>
+        ))}
+      </>
+    )}
+
+    {!!r.results?.length && (
+      <>
+        <SectionHead>Output Reagents</SectionHead>
+        {r.results.map((rg, i) => (
+          <Box key={i} className="RecipeBook__item-row">
+            {rg.amount}u of{' '}
+            <RecipeLink
+              name={rg.name}
+              allRecipes={allRecipes}
+              essenceIndex={essenceIndex}
+              lookup={lookup}
+              pickerMap={pickerMap}
+              onNavigate={nav}
+            />
+          </Box>
+        ))}
+      </>
+    )}
+
+    {r.mix_message && (
+      <Box className="RecipeBook__hint">💬 {r.mix_message}</Box>
+    )}
+  </>
+);
+
+
+const DetailDistillation = ({
+  r, lookup, pickerMap, allRecipes, essenceIndex, nav,
+}: {
+  r: Recipe; lookup: Map<string, Recipe>; pickerMap: Map<string, Recipe[]>;
+  allRecipes: Recipe[]; essenceIndex: Map<string, Recipe[]>; nav: (r: Recipe) => void;
+}) => (
+  <>
+    <WarnFlag color="#e57c34">
+      Requires alembic temperature ≥ {r.required_temp ? r.required_temp - 273.15 : '?'}C
+    </WarnFlag>
+
+    <SectionHead>Primary Input (vaporized)</SectionHead>
+    <Box className="RecipeBook__item-row">
+      <RecipeLink
+        name={r.distilled_reagent_name}
+        allRecipes={allRecipes}
+        essenceIndex={essenceIndex}
+        lookup={lookup}
+        pickerMap={pickerMap}
+        onNavigate={nav}
+      />
+    </Box>
+
+    {!!r.required_reagents?.length && (
+      <>
+        <SectionHead>
+          Also requires{r.consume_reagents ? ' (consumed)' : ' (not consumed)'}
+        </SectionHead>
+        {r.required_reagents.map((rg, i) => (
+          <Box key={i} className="RecipeBook__item-row">
+            {rg.amount}u of{' '}
+            <RecipeLink
+              name={rg.name}
+              allRecipes={allRecipes}
+              essenceIndex={essenceIndex}
+              lookup={lookup}
+              pickerMap={pickerMap}
+              onNavigate={nav}
+            />
+          </Box>
+        ))}
+      </>
+    )}
+
+    {!!r.results?.length && (
+      <>
+        <SectionHead>Output (per unit distilled)</SectionHead>
+        {r.results.map((rg, i) => (
+          <Box key={i} className="RecipeBook__item-row">
+            {rg.amount}u of{' '}
+            <RecipeLink
+              name={rg.name}
+              allRecipes={allRecipes}
+              essenceIndex={essenceIndex}
+              lookup={lookup}
+              pickerMap={pickerMap}
+              onNavigate={nav}
+            />
+          </Box>
+        ))}
+      </>
+    )}
+
+    {r.distill_message && (
+      <Box className="RecipeBook__hint">💬 {r.distill_message}</Box>
+    )}
+  </>
+);
+
+
+const DetailArcyneCrafting = ({
+  r, lookup, pickerMap, allRecipes, essenceIndex, nav,
+}: {
+  r: Recipe; lookup: Map<string, Recipe>; pickerMap: Map<string, Recipe[]>;
+  allRecipes: Recipe[]; essenceIndex: Map<string, Recipe[]>; nav: (r: Recipe) => void;
+}) => (
+  <>
+    {r.required_skill !== undefined && r.required_skill > 0 && (
+      <Box className="RecipeBook__skill-bar">
+        <span className="RecipeBook__skill-label">⚑ Required arcane skill: </span>
+        <strong>{r.required_skill}</strong>
+      </Box>
+    )}
+
+    <SectionHead>Ingredients (order doesn't matter)</SectionHead>
+    {r.ingredients?.map((item, i) => (
+      <ItemRow
+        key={i}
+        item={item}
+        allRecipes={allRecipes}
+        essenceIndex={essenceIndex}
+        lookup={lookup}
+        pickerMap={pickerMap}
+        onNavigate={nav}
+      />
+    ))}
+
+    <SectionHead>Instructions</SectionHead>
+    <Box className="RecipeBook__step-block">
+      <Box className="RecipeBook__step-row">
+        Draw the <strong>Arcyne Crafting Matrix</strong> rune with Arcyne Chalk.
+      </Box>
+      <Box className="RecipeBook__step-row">
+        Place all ingredients on the rune, then invoke it empty-handed.
+      </Box>
+    </Box>
+
+    {r.output_name && (
+      <OutputBanner
+        icon={r.output_icon}
+        icon_state={r.output_state}
+        name={r.output_name}
+        allRecipes={allRecipes}
+        essenceIndex={essenceIndex}
+        lookup={lookup}
+        pickerMap={pickerMap}
+        onNavigate={nav}
+      />
+    )}
+  </>
+);
 
 const DetailOrgan = ({ r, lookup, pickerMap, allRecipes, essenceIndex, nav }: { r: Recipe; lookup: Map<string, Recipe>; pickerMap: Map<string, Recipe[]>; allRecipes: Recipe[]; essenceIndex: Map<string, Recipe[]>; nav: (r: Recipe) => void }) => (
   <>
@@ -619,7 +848,7 @@ const DetailRepeatable = ({ r, lookup, pickerMap, allRecipes, essenceIndex, nav 
 const DetailBrewing = ({ r, lookup, pickerMap, allRecipes, essenceIndex, nav }: { r: Recipe; lookup: Map<string, Recipe>; pickerMap: Map<string, Recipe[]>; allRecipes: Recipe[]; essenceIndex: Map<string, Recipe[]>; nav: (r: Recipe) => void }) => (
   <>
     <Box className="RecipeBook__brew-time">⏱ {r.brew_time_s}s brewing time</Box>
-    {r.heat_c !== undefined && <WarnFlag color="#e57c34">Requires heated vessel ≥ {Math.round(r.heat_c!)}°C</WarnFlag>}
+    {r.heat_c !== undefined && <WarnFlag color="#e57c34">Requires heated vessel ≥ {Math.round(r.heat_c!)}C</WarnFlag>}
     {r.prereq_name && <WarnFlag color="#aaaaff">Requires {r.prereq_name} present in keg</WarnFlag>}
     {!!r.ages && <WarnFlag color="#aad4aa">Will continue to age after brewing</WarnFlag>}
     {r.hints && <Box className="RecipeBook__hint">💡 {r.hints}</Box>}
@@ -761,7 +990,7 @@ const DetailMolten = ({ r, lookup, pickerMap, allRecipes, essenceIndex, nav }: {
     ))}
     <Box className="RecipeBook__step-block">
       <Box className="RecipeBook__step-row">
-        🌡 Heat to {r.temperature_c !== undefined ? `${Math.round(r.temperature_c!)}°C` : '—'}
+        🌡 Heat to {r.temperature_c !== undefined ? `${Math.round(r.temperature_c!)}C` : '—'}
       </Box>
     </Box>
     {!!r.outputs?.length && (
@@ -1363,7 +1592,7 @@ const DetailFish = ({ r }: { r: Recipe }) => {
       <SectionHead>Environment</SectionHead>
       <Box className="RecipeBook__step-block">
         <Box className="RecipeBook__step-row">Fluid: {r.fluid_type}</Box>
-        <Box className="RecipeBook__step-row">Temperature: {r.temp_min}°C – {r.temp_max}°C</Box>
+        <Box className="RecipeBook__step-row">Temperature: {r.temp_min}C – {r.temp_max}C</Box>
       </Box>
       <SectionHead>Fishing</SectionHead>
       <Box className="RecipeBook__step-block">
@@ -1528,6 +1757,9 @@ const RecipeDetail = (props: {
       case 'slapcraft':           return <DetailSlapcraft r={r} allRecipes={allRecipes} essenceIndex={essenceIndex} lookup={lookup} pickerMap={pickerMap} nav={onNavigate} />;
       case 'orderless_slapcraft': return <DetailOrderlessSlapcraft r={r} allRecipes={allRecipes} essenceIndex={essenceIndex} lookup={lookup} pickerMap={pickerMap} nav={onNavigate} />;
       case 'organ':               return <DetailOrgan r={r} allRecipes={allRecipes} essenceIndex={essenceIndex} lookup={lookup} pickerMap={pickerMap} nav={onNavigate} />;
+      case 'chemical_reaction': return <DetailChemicalReaction r={r} allRecipes={allRecipes} essenceIndex={essenceIndex} lookup={lookup} pickerMap={pickerMap} nav={onNavigate} />;
+      case 'distillation':      return <DetailDistillation      r={r} allRecipes={allRecipes} essenceIndex={essenceIndex} lookup={lookup} pickerMap={pickerMap} nav={onNavigate} />;
+      case 'arcyne_crafting':   return <DetailArcyneCrafting    r={r} allRecipes={allRecipes} essenceIndex={essenceIndex} lookup={lookup} pickerMap={pickerMap} nav={onNavigate} />;
       default:
         return <Box className="RecipeBook__desc">No details available for type: {r.type}</Box>;
     }

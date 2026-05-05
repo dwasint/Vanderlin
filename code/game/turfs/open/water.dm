@@ -940,6 +940,7 @@
 	force_open_above = TRUE
 
 /datum/reagent/water/salty
+	name = "Salt Water"
 	taste_description = "salt"
 	color = "#3e7459"
 
