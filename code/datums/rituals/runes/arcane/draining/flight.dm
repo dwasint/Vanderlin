@@ -7,7 +7,7 @@
 	mana_cost = 1.2
 
 /datum/status_effect/mana_siphon_buff/flight
-	id = "mana_siphon_haste_buff"
+	id = "mana_siphon_flight_buff"
 	alert_type = /atom/movable/screen/alert/status_effect/mana_siphon_buff/haste
 	max_range = 4
 

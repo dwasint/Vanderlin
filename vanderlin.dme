@@ -1455,6 +1455,7 @@
 #include "code\datums\rituals\runes\arcane\draining\_base.dm"
 #include "code\datums\rituals\runes\arcane\draining\action_speed.dm"
 #include "code\datums\rituals\runes\arcane\draining\cooking.dm"
+#include "code\datums\rituals\runes\arcane\draining\experience.dm"
 #include "code\datums\rituals\runes\arcane\draining\flight.dm"
 #include "code\datums\rituals\runes\arcane\draining\plant_growth.dm"
 #include "code\datums\rituals\runes\arcane\draining\waterwheel.dm"
