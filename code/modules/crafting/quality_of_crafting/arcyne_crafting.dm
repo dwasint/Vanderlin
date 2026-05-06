@@ -278,3 +278,84 @@
 	)
 	output = /obj/item/natural/elementalrelic
 	required_skill = SKILL_LEVEL_NOVICE
+
+/datum/arcyne_crafting_recipe/spell_focus
+	name = "arcyne focus"
+	ingredients = list(
+		/obj/item/gem/amethyst,
+		/obj/item/natural/infernalash,
+	)
+	output = /obj/item/spell_focus
+	required_skill = SKILL_LEVEL_APPRENTICE
+
+/datum/arcyne_crafting_recipe/arcyne_scroll
+	name = "arcyne scroll"
+	ingredients = list(
+		/obj/item/natural/melded/t1,
+		/obj/item/ore/cinnabar,
+		/obj/item/paper,
+	)
+	output = /obj/item/arcyne_spellobject/scroll
+	required_skill = SKILL_LEVEL_APPRENTICE
+
+/datum/arcyne_crafting_recipe/spellstone_lesser
+	name = "lesser arcyne spellstone"
+	ingredients = list(
+		/obj/item/natural/melded/t1,
+		/obj/item/gem/amethyst,
+		/obj/item/natural/stone,
+	)
+	output = /obj/item/arcyne_spellobject/spellstone/lesser
+	required_skill = SKILL_LEVEL_APPRENTICE
+
+/datum/arcyne_crafting_recipe/spellstone_greater
+	name = "greater arcyne spellstone"
+	ingredients = list(
+		/obj/item/natural/melded/t2,
+		/obj/item/gem/amethyst,
+		/obj/item/gem/amethyst,
+	)
+	output = /obj/item/arcyne_spellobject/spellstone/greater
+	required_skill = SKILL_LEVEL_JOURNEYMAN
+
+/datum/arcyne_crafting_recipe/spellstone_supreme
+	name = "supreme arcyne spellstone"
+	ingredients = list(
+		/obj/item/natural/melded/t3,
+		/obj/item/gem/amethyst,
+		/obj/item/gem/amethyst,
+		/obj/item/gem/amethyst,
+	)
+	output = /obj/item/arcyne_spellobject/spellstone/supreme
+	required_skill = SKILL_LEVEL_JOURNEYMAN
+
+/datum/arcyne_crafting_recipe/arcyne_wand
+	name = "arcyne wand"
+	ingredients = list(
+		/obj/item/natural/melded/t1,
+		/obj/item/natural/wood/plank,
+		/obj/item/gem/amethyst,
+	)
+	output = /obj/item/arcyne_spellobject/wand
+	required_skill = SKILL_LEVEL_APPRENTICE
+
+/datum/arcyne_crafting_recipe/arcyne_wand_greater
+	name = "greater arcyne wand"
+	ingredients = list(
+		/obj/item/natural/melded/t2,
+		/obj/item/natural/wood/plank,
+		/obj/item/gem/amethyst,
+		/obj/item/gem/amethyst,
+	)
+	output = /obj/item/arcyne_spellobject/wand/greater
+	required_skill = SKILL_LEVEL_JOURNEYMAN
+
+/datum/arcyne_crafting_recipe/arcyne_wand_chaotic
+	name = "chaotic arcyne wand"
+	ingredients = list(
+		/obj/item/natural/melded/t2,
+		/obj/item/natural/wood/plank,
+		/obj/item/natural/voidstone,
+	)
+	output = /obj/item/arcyne_spellobject/wand/chaotic
+	required_skill = SKILL_LEVEL_JOURNEYMAN

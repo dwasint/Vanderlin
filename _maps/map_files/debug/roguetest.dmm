@@ -1096,6 +1096,10 @@
 	},
 /turf/open/floor/tile,
 /area/indoors/town/keep)
+"dT" = (
+/obj/effect/decal/cleanable/ritual_rune/arcyne/focus_etch,
+/turf/open/floor/churchbrick,
+/area)
 "dV" = (
 /obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/churchbrick,
@@ -1452,6 +1456,11 @@
 /obj/machinery/essence/test_tube,
 /turf/open/floor/wood,
 /area/indoors/town/keep)
+"kf" = (
+/obj/machinery/light/fueled/torchholder/c,
+/obj/item/spell_focus,
+/turf/open/floor/churchbrick,
+/area)
 "ki" = (
 /obj/structure/rotation_piece/cog{
 	dir = 4
@@ -2158,6 +2167,14 @@
 "ya" = (
 /obj/machinery/essence/splitter,
 /obj/structure/table/vtable,
+/obj/item/essence_vial{
+	pixel_y = 18;
+	pixel_x = -9
+	},
+/obj/item/essence_vial{
+	pixel_y = 14;
+	pixel_x = -4
+	},
 /turf/open/floor/wood,
 /area/indoors/town/keep)
 "yi" = (
@@ -2772,6 +2789,10 @@
 /obj/item/natural/chaff/oat,
 /turf/open/floor/blocks,
 /area/indoors/town/keep)
+"HJ" = (
+/obj/effect/decal/cleanable/ritual_rune/arcyne/spellobject_imbue,
+/turf/open/floor/churchbrick,
+/area)
 "HK" = (
 /obj/structure/hotspring/border/two,
 /obj/machinery/light/fueled/torchholder/hotspring/standing{
@@ -3022,6 +3043,11 @@
 	dir = 1
 	},
 /area/outdoors/mountains/decap)
+"Lx" = (
+/obj/machinery/light/fueled/torchholder/c,
+/obj/item/arcyne_spellobject/wand,
+/turf/open/floor/churchbrick,
+/area)
 "LX" = (
 /mob/living/simple_animal/hostile/retaliate/banker,
 /turf/open/floor/wood,
@@ -3061,6 +3087,10 @@
 /obj/structure/gearbox,
 /turf/open/floor/dirt,
 /area/outdoors)
+"ML" = (
+/obj/item/spell_focus,
+/turf/open/floor/churchbrick,
+/area)
 "MS" = (
 /obj/structure/fluff/railing/wood{
 	dir = 4;
@@ -3265,7 +3295,7 @@
 /turf/open/openspace,
 /area/outdoors)
 "SC" = (
-/obj/effect/decal/cleanable/ritual_rune/arcyne/decrafting,
+/obj/effect/decal/cleanable/ritual_rune/arcyne/crafting,
 /turf/open/floor/churchbrick,
 /area/indoors/town/keep)
 "SE" = (
@@ -3704,6 +3734,10 @@
 /obj/machinery/light/fueled/wallfire/candle,
 /turf/open/floor/blocks,
 /area/indoors/town/keep)
+"Zr" = (
+/obj/item/arcyne_spellobject/spellstone/greater,
+/turf/open/floor/churchbrick,
+/area)
 "Zs" = (
 /turf/closed/wall/mineral/wood,
 /area/indoors)
@@ -3715,14 +3749,6 @@
 /area/indoors)
 "ZO" = (
 /obj/item/essence_vial{
-	pixel_y = 18;
-	pixel_x = -9
-	},
-/obj/item/essence_vial{
-	pixel_y = 14;
-	pixel_x = -4
-	},
-/obj/item/essence_vial{
 	pixel_y = 8;
 	pixel_x = 3
 	},
@@ -3731,8 +3757,9 @@
 	pixel_x = -6
 	},
 /obj/structure/table/vtable/v2,
-/obj/effect/spawner/map_spawner/random_lure,
-/obj/effect/spawner/map_spawner/random_lure,
+/obj/structure/chem_separator{
+	pixel_y = 14
+	},
 /turf/open/floor/wood,
 /area/indoors/town/keep)
 
@@ -13946,13 +13973,13 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
+Jd
+Jd
+Jd
+Jd
+Jd
+Jd
+Jd
 as
 as
 as
@@ -14203,13 +14230,13 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
+Jd
+kf
+ML
+ML
+ML
+ML
+Jd
 as
 as
 as
@@ -14460,13 +14487,13 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
+Jd
+Ll
+Ll
+Ll
+Ll
+Ll
+Jd
 as
 as
 as
@@ -14717,13 +14744,13 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
+Jd
+Ll
+Ll
+dT
+Ll
+Ll
+Jd
 as
 as
 as
@@ -14974,13 +15001,13 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
+Jd
+Ll
+Ll
+Ll
+Ll
+Ll
+Jd
 as
 as
 as
@@ -15231,13 +15258,13 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
+Jd
+XX
+Ll
+Ll
+Ll
+Ll
+Jd
 zg
 zg
 zg
@@ -15491,7 +15518,7 @@ as
 Jd
 Jd
 Jd
-Jd
+Ll
 Jd
 Jd
 zg
@@ -17033,7 +17060,7 @@ as
 Jd
 Jd
 Jd
-Jd
+Ll
 Jd
 Jd
 zg
@@ -17287,13 +17314,13 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
+Jd
+XX
+Ll
+Ll
+Ll
+Ll
+Jd
 zg
 zg
 zg
@@ -17544,13 +17571,13 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
+Jd
+Ll
+Ll
+Ll
+Ll
+Ll
+Jd
 as
 ac
 ac
@@ -17801,13 +17828,13 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
+Jd
+Ll
+Ll
+HJ
+Ll
+Ll
+Jd
 as
 ac
 ac
@@ -18058,13 +18085,13 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
+Jd
+Ll
+Ll
+Ll
+Ll
+Ll
+Jd
 as
 ac
 ac
@@ -18315,13 +18342,13 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
+Jd
+Lx
+Zr
+Ll
+Ll
+Ll
+Jd
 as
 ac
 ac
@@ -18572,13 +18599,13 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
+Jd
+Jd
+Jd
+Jd
+Jd
+Jd
+Jd
 as
 as
 as
