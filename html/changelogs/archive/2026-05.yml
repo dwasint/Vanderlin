@@ -16,3 +16,22 @@
 2026-05-04:
   Sulaboy:
   - bugfix: Evil tree vines delete when the evil tree is killed.
+2026-05-05:
+  Snack-Max:
+  - rscadd: Touch-ups to Abyssorite templar armor, renamed the bronze helmet to deep
+      abyssorite helmet.
+  dwasint:
+  - refactor: 'all code pertaining to apothecary has been refactored
+
+      add; you can hover over essence machinery to see their links with a connector'
+  - bugfix: gave gnomes back their frontal lobe
+  - bugfix: essence dupe
+  - balance: reduced the cost of all research
+  - balance: reduced the time for infusing
+2026-05-06:
+  CheffieGithub:
+  - bugfix: Fixed voices lacking colours and emotes using voice color
+  PotatoTomahto:
+  - refactor: buckling and riding code refactored
+  - rscadd: animals can be fireman carried
+  - balance: riding speed
