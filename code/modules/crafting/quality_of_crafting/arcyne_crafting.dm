@@ -5,7 +5,7 @@
 	/// Unordered list of item typepaths required (one entry per item needed)
 	var/list/ingredients = list()
 	/// The typepath of the item produced
-	var/output
+	var/atom/output
 	/// Minimum arcane skill level required to invoke
 	var/required_skill = SKILL_LEVEL_NONE
 
