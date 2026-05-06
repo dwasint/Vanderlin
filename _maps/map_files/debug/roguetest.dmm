@@ -1625,6 +1625,10 @@
 /obj/effect/landmark/stall,
 /turf/open/floor/grass/yel,
 /area/outdoors)
+"nn" = (
+/obj/structure/mana_pylon,
+/turf/open/floor/churchbrick,
+/area/indoors/town/keep)
 "nt" = (
 /obj/structure/chair/bench/couch/left{
 	dir = 4
@@ -1842,6 +1846,10 @@
 "se" = (
 /turf/closed/wall/mineral/decorstone,
 /area/indoors/town/keep)
+"sl" = (
+/obj/item/clothing/ring/shimmeringlens,
+/turf/open/floor/churchbrick,
+/area/indoors/town/keep)
 "so" = (
 /obj/structure/carpet,
 /turf/open/floor/tile/kitchen,
@@ -1904,6 +1912,10 @@
 	},
 /turf/closed/mineral/random/med,
 /area/outdoors/mountains/decap)
+"tj" = (
+/obj/structure/mana_pylon,
+/turf/open/floor/churchbrick,
+/area)
 "tp" = (
 /obj/structure/hotspring,
 /obj/effect/falling_sakura,
@@ -2857,6 +2869,10 @@
 "Jd" = (
 /turf/closed/wall/mineral/stone,
 /area)
+"Je" = (
+/obj/item/pylon_linker,
+/turf/open/floor/churchbrick,
+/area/indoors/town/keep)
 "Jj" = (
 /obj/structure/hotspring/border/eight,
 /turf/open/floor/cobblerock,
@@ -15991,19 +16007,19 @@ Ll
 Ll
 Ll
 Ll
-Ll
+tj
 EQ
 vD
 vD
 vD
 vD
-vD
+nn
 EQ
 vD
 vD
 dO
 vD
-vD
+nn
 EQ
 fK
 GB
@@ -16773,8 +16789,8 @@ zg
 wZ
 vD
 vD
-vD
-vD
+sl
+Je
 zg
 ke
 GB

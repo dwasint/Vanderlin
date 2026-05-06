@@ -138,26 +138,28 @@
 		if(isnull(thing.mana_pool))
 			continue
 		var/datum/mana_pool/pool = thing.mana_pool
-		if(pool.amount <= mana_cost *  max(1, length(subscribers)))
+		if(pool.amount <= mana_cost * max(1, length(subscribers)))
 			continue
-		var/drain = min(pool.amount, mana_cost *  max(1, length(subscribers)))
+		var/drain = min(pool.amount, mana_cost * max(1, length(subscribers)))
 		pool.adjust_mana(-drain)
 		mana_found = TRUE
-		break // one source per tick is enough
+		break
 
 	if(!mana_found)
 		for(var/obj/structure/mana_pylon/pylon in range(runesize, src))
-			if(pylon.mana_pool.amount <= mana_cost *  max(1, length(subscribers)))
+			if(pylon.mana_pool.amount <= mana_cost * max(1, length(subscribers)))
 				continue
-			var/drain = min(pylon.mana_pool.amount, mana_cost *  max(1, length(subscribers)))
+			var/drain = min(pylon.mana_pool.amount, mana_cost * max(1, length(subscribers)))
 			pylon.mana_pool.adjust_mana(-drain)
+			var/turf/turf = get_turf(src)
+			turf.Beam(pylon, icon_state = "drain_life", time = loop_speed, override_target_pixel_y = 32)
 			mana_found = TRUE
 			break
 
 	if(!mana_found)
 		if(activating_mob && !QDELETED(activating_mob) && activating_mob.stat == CONSCIOUS)
-			if(!isnull(activating_mob.mana_pool) && activating_mob.mana_pool.amount > mana_cost *  max(1, length(subscribers)))
-				var/drain = min(activating_mob.mana_pool.amount, mana_cost *  max(1, length(subscribers)))
+			if(!isnull(activating_mob.mana_pool) && activating_mob.mana_pool.amount > mana_cost * max(1, length(subscribers)))
+				var/drain = min(activating_mob.mana_pool.amount, mana_cost * max(1, length(subscribers)))
 				activating_mob.mana_pool.adjust_mana(-drain)
 				if(COOLDOWN_FINISHED(src, drain_message))
 					to_chat(activating_mob, span_italics("The siphon draws from your own reserves..."))

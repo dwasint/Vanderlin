@@ -4,7 +4,7 @@
 	icon_state = "pylon"
 	icon = 'icons/roguetown/misc/mana_pylon.dmi'
 	has_initial_mana_pool = TRUE
-	plane = GAME_PLANE_UPPER
+	plane = GAME_PLANE_FOV_HIDDEN
 	layer = ABOVE_MOB_LAYER
 	light_outer_range = MINIMUM_USEFUL_LIGHT_RANGE
 	light_color = COLOR_CYAN
@@ -27,6 +27,17 @@
 	. = ..()
 	update_appearance(UPDATE_OVERLAYS)
 	set_light(1.4, 1.4, 0.75, l_color = COLOR_CYAN)
+
+/obj/structure/mana_pylon/AltClick(mob/living/user)
+	. = ..()
+	if(!user.client)
+		return
+	var/datum/mana_pool/mana_pylon/pool = mana_pool
+	var/new_threshold = input(user, "Set the minimum mana reserve for this pylon (current: [pool.transfer_threshold]):", "Pylon Threshold", pool.transfer_threshold) as num|null
+	if(isnull(new_threshold))
+		return
+	pool.transfer_threshold = max(0, new_threshold)
+	user.balloon_alert(user, "threshold set: [pool.transfer_threshold]")
 
 /obj/structure/mana_pylon/Destroy()
 	if(linked_pylon)

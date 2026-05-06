@@ -786,3 +786,23 @@
 	source_pylon.link_pylon(pylon)
 	user.balloon_alert(user, "pylons linked!")
 	source_pylon = null
+
+/obj/item/pylon_linker/afterattack_secondary(atom/target, mob/living/user, proximity_flag, list/modifiers)
+	. = ..()
+	if(!proximity_flag)
+		return
+
+	if(!istype(target, /obj/structure/mana_pylon))
+		if(source_pylon)
+			user.balloon_alert(user, "source cleared!")
+			source_pylon = null
+		return
+
+	var/obj/structure/mana_pylon/pylon = target
+
+	if(!pylon.linked_pylon)
+		user.balloon_alert(user, "not linked!")
+		return
+
+	pylon.unlink_pylon(pylon.linked_pylon)
+	user.balloon_alert(user, "link broken!")
