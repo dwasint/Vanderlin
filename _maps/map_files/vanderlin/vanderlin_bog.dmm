@@ -18996,7 +18996,7 @@
 	},
 /area/under/tomb/indoors/magic)
 "snE" = (
-/obj/effect/decal/cleanable/ritual_rune/arcyne/summoning/mid{
+/obj/effect/decal/cleanable/roguerune/arcyne/summoning/mid{
 	pixel_x = -18;
 	pixel_y = -16
 	},
