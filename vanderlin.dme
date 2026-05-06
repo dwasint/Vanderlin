@@ -1235,6 +1235,7 @@
 #include "code\datums\enchantments\pestra_gift.dm"
 #include "code\datums\enchantments\phoenix_guard.dm"
 #include "code\datums\enchantments\pocket_dimension.dm"
+#include "code\datums\enchantments\pylon_rider.dm"
 #include "code\datums\enchantments\shattering.dm"
 #include "code\datums\enchantments\shrinking.dm"
 #include "code\datums\enchantments\silver.dm"

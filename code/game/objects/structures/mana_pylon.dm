@@ -131,3 +131,24 @@
 			mana_pool.transfer_specific_mana(user.mana_pool, transfer_amount, decrement_budget = TRUE)
 
 	qdel(transfer_beam)
+
+/obj/structure/mana_pylon/MouseDrop_T(mob/living/user, mob/living/over_object)
+	. = ..()
+	if(!isliving(user) || user != over_object)
+		return
+	if(!HAS_TRAIT(user, TRAIT_PYLON_RIDER))
+		return
+	if(get_dist(user, src) > 1)
+		to_chat(user, span_warning("You're too far from the pylon."))
+		return
+	if(mana_pool.amount < 10)
+		to_chat(user, span_warning("The pylon doesn't have enough mana to carry you."))
+		return
+
+	mana_pool.amount -= 10
+	user.visible_message(
+		span_notice("[user] dissolves into the leyline!"),
+		span_notice("You dissolve into the leyline, riding the flow of mana.")
+	)
+	user.forceMove(get_turf(src))
+	new /obj/effect/bloodcult_jaunt/visible/ley(get_turf(user), user, get_turf(linked_pylon), null)
