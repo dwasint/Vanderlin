@@ -756,3 +756,33 @@
 		else
 			mana_amount -= transfer_amount
 			user.mana_pool.adjust_mana(transfer_amount)
+
+/obj/item/pylon_linker
+	name = "ley linker"
+	desc = "A mystical tool used to bind mana pylons together, allowing mana to flow between them."
+	icon = 'icons/roguetown/items/misc.dmi'
+	icon_state = "dbrush"
+
+	var/obj/structure/mana_pylon/source_pylon
+
+/obj/item/pylon_linker/afterattack(atom/target, mob/living/user, proximity_flag, list/modifiers)
+	. = ..()
+	if(!proximity_flag)
+		return
+	if(!istype(target, /obj/structure/mana_pylon))
+		return
+
+	var/obj/structure/mana_pylon/pylon = target
+
+	if(!source_pylon)
+		source_pylon = pylon
+		user.balloon_alert(user, "source set: [pylon.name]")
+		return
+
+	if(source_pylon == pylon)
+		user.balloon_alert(user, "can't link to itself!")
+		return
+
+	source_pylon.link_pylon(pylon)
+	user.balloon_alert(user, "pylons linked!")
+	source_pylon = null

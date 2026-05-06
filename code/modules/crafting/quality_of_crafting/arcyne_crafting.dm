@@ -178,3 +178,103 @@
 	)
 	output = /obj/item/natural/melded/t5
 	required_skill = SKILL_LEVEL_JOURNEYMAN
+
+/datum/arcyne_crafting_recipe/ley_linker
+	name = "ley linker"
+	ingredients = list(
+		/obj/item/gem/amethyst,
+		/obj/item/natural/infernalash,
+		/obj/item/natural/fairydust,
+	)
+	output = /obj/item/pylon_linker
+	required_skill = SKILL_LEVEL_NOVICE
+
+/datum/arcyne_crafting_recipe/infernal_t1_to_t2
+	name = "hellhound fang synthesis"
+	ingredients = list(
+		/obj/item/natural/infernalash,
+		/obj/item/natural/infernalash,
+		/obj/item/natural/infernalash,
+	)
+	output = /obj/item/natural/hellhoundfang
+	required_skill = SKILL_LEVEL_NOVICE
+
+/datum/arcyne_crafting_recipe/infernal_t2_to_t3
+	name = "molten core synthesis"
+	ingredients = list(
+		/obj/item/natural/hellhoundfang,
+		/obj/item/natural/hellhoundfang,
+		/obj/item/natural/hellhoundfang,
+	)
+	output = /obj/item/natural/moltencore
+	required_skill = SKILL_LEVEL_NOVICE
+
+/datum/arcyne_crafting_recipe/infernal_t3_to_t4
+	name = "abyssal flame synthesis"
+	ingredients = list(
+		/obj/item/natural/moltencore,
+		/obj/item/natural/moltencore,
+		/obj/item/natural/moltencore,
+	)
+	output = /obj/item/natural/abyssalflame
+	required_skill = SKILL_LEVEL_NOVICE
+
+/datum/arcyne_crafting_recipe/fairy_t1_to_t2
+	name = "iridescent scale synthesis"
+	ingredients = list(
+		/obj/item/natural/fairydust,
+		/obj/item/natural/fairydust,
+		/obj/item/natural/fairydust,
+	)
+	output = /obj/item/natural/iridescentscale
+	required_skill = SKILL_LEVEL_NOVICE
+
+/datum/arcyne_crafting_recipe/fairy_t2_to_t3
+	name = "heartwood core synthesis"
+	ingredients = list(
+		/obj/item/natural/iridescentscale,
+		/obj/item/natural/iridescentscale,
+		/obj/item/natural/iridescentscale,
+	)
+	output = /obj/item/natural/heartwoodcore
+	required_skill = SKILL_LEVEL_NOVICE
+
+/datum/arcyne_crafting_recipe/fairy_t3_to_t4
+	name = "sylvan essence synthesis"
+	ingredients = list(
+		/obj/item/natural/heartwoodcore,
+		/obj/item/natural/heartwoodcore,
+		/obj/item/natural/heartwoodcore,
+	)
+	output = /obj/item/natural/sylvanessence
+	required_skill = SKILL_LEVEL_NOVICE
+
+/datum/arcyne_crafting_recipe/elemental_t1_to_t2
+	name = "elemental shard synthesis"
+	ingredients = list(
+		/obj/item/natural/elementalmote,
+		/obj/item/natural/elementalmote,
+		/obj/item/natural/elementalmote,
+	)
+	output = /obj/item/natural/elementalshard
+	required_skill = SKILL_LEVEL_NOVICE
+
+/datum/arcyne_crafting_recipe/elemental_t2_to_t3
+	name = "elemental fragment synthesis"
+	ingredients = list(
+		/obj/item/natural/elementalshard,
+		/obj/item/natural/elementalshard,
+		/obj/item/natural/elementalshard,
+	)
+	output = /obj/item/natural/elementalfragment
+	required_skill = SKILL_LEVEL_NOVICE
+
+/datum/arcyne_crafting_recipe/elemental_t3_to_t4
+	name = "elemental relic synthesis"
+	ingredients = list(
+		/obj/item/natural/elementalfragment,
+		/obj/item/natural/elementalfragment,
+		/obj/item/natural/elementalfragment,
+	)
+	output = /obj/item/natural/elementalrelic
+	required_skill = SKILL_LEVEL_NOVICE
