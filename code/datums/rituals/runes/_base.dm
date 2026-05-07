@@ -86,7 +86,7 @@
 	rune_in_use = FALSE
 
 /obj/effect/decal/cleanable/ritual_rune/attack_hand(mob/living/user)
-	if(!ritual_number || !associated_ritual)
+	if(!ritual_number && !associated_ritual)
 		return ..() // this is basically are we a type 2 rune
 	if(GET_MOB_SKILL_VALUE(user, magictype) < SKILL_LEVEL_NONE)
 		to_chat(user, span_warning("You aren't able to understand the words of [src]."))
