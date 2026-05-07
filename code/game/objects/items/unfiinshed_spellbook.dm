@@ -53,9 +53,9 @@
 		user.visible_message(span_notice("I run my arcyne energy into the crystal. Its artificial lattices pulse and then fall dormant. It must not be strong enough to make a spellbook with!"))
 		return
 
-	if(isturf(loc) && found_table)
+	if(isturf(loc) && !found_table)
+		to_chat(user, "<span class='warning'>You need to put the [src] on a table to work on it.</span>")
 		return TRUE
-	to_chat(user, "<span class='warning'>You need to put the [src] on a table to work on it.</span>")
 
 	if(istype(P, /obj/item/gem/violet))
 		apply_gem_catalyst(user, P, /obj/item/book/granter/spellbook/expert, found_table)
@@ -80,9 +80,10 @@
 	return ..()
 
 /// Spawns a finished book, sets owner, and cleans up catalyst + self.
-/obj/item/spellbook_unfinished/pre_arcyne/proc/_finish_book(mob/user, obj/item/catalyst, book_type, born_of_rock = FALSE, extra_desc = null)
+/obj/item/spellbook_unfinished/pre_arcyne/proc/finish_book(mob/user, obj/item/catalyst, book_type, born_of_rock = FALSE, extra_desc = null)
 	playsound(src, 'sound/magic/crystal.ogg', 100, TRUE)
-	var/obj/item/book/granter/spellbook/newbook = new book_type(loc)
+	var/obj/item/book/granter/spellbook/newbook = new book_type(get_turf(loc))
+	var/atom/old_loc = loc
 	newbook.owner = user
 	if(born_of_rock)
 		newbook.born_of_rock = TRUE
@@ -90,6 +91,9 @@
 		newbook.desc += extra_desc
 	qdel(catalyst)
 	qdel(src)
+	if(ismob(old_loc))
+		var/mob/living/mob = old_loc
+		mob.put_in_hands(newbook)
 
 /// Handles gem catalysts. Unskilled readers just get a cosmetic press.
 /obj/item/spellbook_unfinished/pre_arcyne/proc/apply_gem_catalyst(mob/user, obj/item/gem/gem, book_type, found_table)
@@ -100,7 +104,7 @@
 			span_warning("[user] crushes [user.p_their()] [gem]! Its powder seeps into the [src]."),
 			span_notice("I run my arcyne energy into the crystal. It shatters and seeps into the cover of the tome! Runes and symbols of an unknowable language cover its pages now...")
 		)
-		_finish_book(user, gem, book_type)
+		finish_book(user, gem, book_type)
 	else
 		to_chat(user, span_notice("I press the gem into the cover of the book. What a pretty design this would make!"))
 		return TRUE
@@ -120,7 +124,7 @@
 			span_notice("I join my arcyne energy with that of the magical stone in my hands, which shudders briefly before dissolving into motes of ash. Runes and symbols of an unknowable language cover its pages now...")
 		)
 		to_chat(user, span_notice("...yet even for an enigma of the arcyne, these characters are unlike anything I've seen before. They're going to be -much- harder to understand..."))
-		_finish_book(user, the_rock, book_type, born_of_rock = TRUE, extra_desc = " Traces of multicolored stone limn its margins.")
+		finish_book(user, the_rock, book_type, born_of_rock = TRUE, extra_desc = " Traces of multicolored stone limn its margins.")
 	else
 		// Unskilled: prob chance proportional to magic_power (capped at ~15%).
 		if(prob(the_rock.magic_power * 5))
@@ -129,7 +133,7 @@
 				span_notice("I knew this stone was special! Its colourful magick has soaked into my tome and given me gift of mystery!")
 			)
 			to_chat(user, span_notice("...what in the world does any of this scribbling possibly mean?"))
-			_finish_book(user, the_rock, book_type, born_of_rock = TRUE, extra_desc = " Traces of multicolored stone limn its margins.")
+			finish_book(user, the_rock, book_type, born_of_rock = TRUE, extra_desc = " Traces of multicolored stone limn its margins.")
 		else
 			user.visible_message(
 				span_warning("[user] sets down [the_rock] upon the surface of [src] and watches expectantly. Without warning, the rock violently pops like a squashed gourd!"),
@@ -156,7 +160,7 @@
 			span_notice("I join my arcyne energy with that of the [P] in my hands, which shudders briefly before dissolving into motes of energy. Runes and symbols of an unknowable language cover its pages now...")
 		)
 		to_chat(user, span_notice("...yet even for an enigma of the arcyne, these characters are unlike anything I've seen before. They're going to be -much- harder to understand..."))
-		_finish_book(user, P, book_type)
+		finish_book(user, P, book_type)
 	else
 		user.visible_message(
 			span_warning("[user] sets down [P] upon the surface of [src] and watches expectantly. Without warning, the [P] violently explodes!"),
