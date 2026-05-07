@@ -358,7 +358,7 @@
 
 // unbandages the injury
 /datum/injury/proc/unbandage_injury()
-	injury_flags |= INJURY_BANDAGED
+	injury_flags &= ~INJURY_BANDAGED
 	return TRUE
 
 /datum/injury/proc/is_bleeding()
