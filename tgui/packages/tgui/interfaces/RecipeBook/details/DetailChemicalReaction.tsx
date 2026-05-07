@@ -35,7 +35,7 @@ export const DetailChemicalReaction = ({
         <SectionHead>Reagents</SectionHead>
         {r.required_reagents.map((rg, i) => (
           <Box key={i} className="RecipeBook__item-row">
-            {rg.amount}ligulae of{' '}
+            {rg.amount} ligulae of{' '}
             <RecipeLink
               name={rg.name}
               allRecipes={allRecipes}
@@ -54,7 +54,7 @@ export const DetailChemicalReaction = ({
         <SectionHead>Catalysts (not consumed)</SectionHead>
         {r.required_catalysts.map((rg, i) => (
           <Box key={i} className="RecipeBook__item-row">
-            {rg.amount}ligulae of{' '}
+            {rg.amount} ligulae of{' '}
             <RecipeLink
               name={rg.name}
               allRecipes={allRecipes}
@@ -73,7 +73,7 @@ export const DetailChemicalReaction = ({
         <SectionHead>Output Reagents</SectionHead>
         {r.results.map((rg, i) => (
           <Box key={i} className="RecipeBook__item-row">
-            {rg.amount}ligulae of <strong>{rg.name}</strong>
+            {rg.amount} ligulae of <strong>{rg.name}</strong>
           </Box>
         ))}
       </>

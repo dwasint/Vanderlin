@@ -22,7 +22,7 @@ export const DetailAlchCauldron = ({ r, lookup, pickerMap, allRecipes, essenceIn
         <SectionHead>Output Reagents</SectionHead>
         {r.output_reagents!.map((rg, i) => (
           <Box key={i} className="RecipeBook__item-row">
-            {rg.amount}ligulae of{' '}
+            {rg.amount} ligulae of{' '}
             <RecipeLink name={rg.name} allRecipes={allRecipes} essenceIndex={essenceIndex} lookup={lookup} pickerMap={pickerMap} onNavigate={nav} />
           </Box>
         ))}
