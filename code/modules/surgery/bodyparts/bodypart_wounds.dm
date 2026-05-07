@@ -214,7 +214,7 @@
 	if(wounding_type == WOUND_NONE)
 		return
 
-	if((zone_precise in list(BODY_ZONE_PRECISE_L_EYE, BODY_ZONE_PRECISE_L_EYE)) && wounding_type == WOUND_PIERCE)
+	if((zone_precise in list(BODY_ZONE_PRECISE_L_EYE, BODY_ZONE_PRECISE_R_EYE)) && wounding_type == WOUND_PIERCE)
 		organ_bonus = CANT_ORGAN
 
 	if(organ_bonus != CANT_ORGAN)
