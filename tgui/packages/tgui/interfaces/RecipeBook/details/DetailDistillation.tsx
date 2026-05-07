@@ -30,7 +30,7 @@ export const DetailDistillation = ({
         </SectionHead>
         {r.required_reagents.map((rg, i) => (
           <Box key={i} className="RecipeBook__item-row">
-            {rg.amount}u of{' '}
+            {rg.amount}ligulae of{' '}
             <RecipeLink
               name={rg.name}
               allRecipes={allRecipes}
@@ -49,7 +49,7 @@ export const DetailDistillation = ({
         <SectionHead>Output (per unit distilled)</SectionHead>
         {r.results.map((rg, i) => (
           <Box key={i} className="RecipeBook__item-row">
-            {rg.amount}u of{' '}
+            {rg.amount}ligulae of{' '}
             <RecipeLink
               name={rg.name}
               allRecipes={allRecipes}

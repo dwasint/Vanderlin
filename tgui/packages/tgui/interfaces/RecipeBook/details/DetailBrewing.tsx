@@ -32,7 +32,7 @@ export const DetailBrewing = ({ r, lookup, pickerMap, allRecipes, essenceIndex, 
         <SectionHead>Liquids Required</SectionHead>
         {r.reagents.map((rg, i) => (
           <Box key={i} className="RecipeBook__item-row">
-            {rg.amount}u of{' '}
+            {rg.amount}ligulae of{' '}
             <RecipeLink name={rg.name} allRecipes={allRecipes} essenceIndex={essenceIndex} lookup={lookup} pickerMap={pickerMap} onNavigate={nav} />
           </Box>
         ))}
@@ -43,7 +43,7 @@ export const DetailBrewing = ({ r, lookup, pickerMap, allRecipes, essenceIndex, 
       <Box className="RecipeBook__output-banner">
         <span className="RecipeBook__output-label">Liquid</span>
         <Box className="RecipeBook__output-body">
-          {r.output_volume}u of <strong>{r.output_liquid}</strong>
+          {r.output_volume}ligulae of <strong>{r.output_liquid}</strong>
         </Box>
       </Box>
     )}

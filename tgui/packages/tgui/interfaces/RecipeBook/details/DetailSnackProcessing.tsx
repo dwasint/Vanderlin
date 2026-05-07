@@ -52,7 +52,7 @@ export const DetailSnackProcessing = ({ r, lookup, pickerMap, allRecipes, essenc
         <SectionHead>Grinding</SectionHead>
         {r.grind_results!.map((rg, i) => (
           <Box key={i} className="RecipeBook__item-row">
-            {rg.amount}u of{' '}
+            {rg.amount}ligulae of{' '}
             <RecipeLink name={rg.name} allRecipes={allRecipes} essenceIndex={essenceIndex} lookup={lookup} pickerMap={pickerMap} onNavigate={nav} />
           </Box>
         ))}
@@ -63,7 +63,7 @@ export const DetailSnackProcessing = ({ r, lookup, pickerMap, allRecipes, essenc
         <SectionHead>Juicing</SectionHead>
         {r.juice_results!.map((rg, i) => (
           <Box key={i} className="RecipeBook__item-row">
-            {rg.amount}u of{' '}
+            {rg.amount}ligulae of{' '}
             <RecipeLink name={rg.name} allRecipes={allRecipes} essenceIndex={essenceIndex} lookup={lookup} pickerMap={pickerMap} onNavigate={nav} />
           </Box>
         ))}

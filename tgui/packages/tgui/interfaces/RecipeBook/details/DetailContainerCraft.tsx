@@ -18,7 +18,7 @@ export const DetailContainerCraft = ({ r, lookup, pickerMap, allRecipes, essence
         <SectionHead>Liquids</SectionHead>
         {r.reagents!.map((rg, i) => (
           <Box key={i} className="RecipeBook__item-row">
-            {rg.amount}u of{' '}
+            {rg.amount}ligulae of{' '}
             <RecipeLink name={rg.name} allRecipes={allRecipes} essenceIndex={essenceIndex} lookup={lookup} pickerMap={pickerMap} onNavigate={nav} />
           </Box>
         ))}
