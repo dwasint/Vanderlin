@@ -1,0 +1,4 @@
+author: "ta3754859-max"
+delete-after: True
+changes:
+  - bugfix: "Getting a kill in the normal world properly makes you fight your way out of the underworld"
