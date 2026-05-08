@@ -11113,7 +11113,7 @@
 /turf/open/floor/concrete,
 /area/under/mountains/anvil/upper)
 "bKV" = (
-/obj/effect/decal/cleanable/ritual_rune/arcyne/enchantment,
+/obj/effect/decal/cleanable/ritual_rune/arcyne/summoning/mid,
 /turf/open/floor/cobble,
 /area/indoors/mountains/anvil/upperkeep)
 "bRz" = (
