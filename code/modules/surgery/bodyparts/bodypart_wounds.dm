@@ -170,7 +170,7 @@
 	if(!bclass || !dam || !owner || (owner.status_flags & GODMODE))
 		return
 	dam *= damage_multiplier
-	if(dam < 5)
+	if(dam < 5 && bclass != WOUND_INTERNAL_BRUISE)
 		if(CEILING(dam, 1) < 5)
 			return
 		dam = CEILING(dam, 1)
@@ -214,7 +214,7 @@
 	if(wounding_type == WOUND_NONE)
 		return
 
-	if((zone_precise in list(BODY_ZONE_PRECISE_L_EYE, BODY_ZONE_PRECISE_L_EYE)) && wounding_type == WOUND_PIERCE)
+	if((zone_precise in list(BODY_ZONE_PRECISE_L_EYE, BODY_ZONE_PRECISE_R_EYE)) && wounding_type == WOUND_PIERCE)
 		organ_bonus = CANT_ORGAN
 
 	if(organ_bonus != CANT_ORGAN)
