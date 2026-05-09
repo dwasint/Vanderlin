@@ -19,6 +19,10 @@
 	var/pledge_difficulty = QUEST_DIFFICULTY_EASY
 	var/pledge_reward = 0 // mammons promised
 
+	var/pledge_assassin_target = ""
+	var/pledge_delivery_target = ""
+	var/list/obj/item/packed_delivery_items = list()
+
 	/// Mammons actually held inside the scroll after sealing.
 	var/escrowed_mammons = 0
 
@@ -27,6 +31,14 @@
 
 /obj/item/paper/scroll/quest/pledge/examine(mob/user)
 	. = ..()
+	if(pledge_mode == "assassinate" && pledge_assassin_target)
+		. += span_notice("Target: <b>[pledge_assassin_target]</b>")
+	if(pledge_mode == "delivery" && pledge_delivery_target)
+		. += span_notice("Recipient: <b>[pledge_delivery_target]</b>")
+	if(pledge_mode == "delivery" && length(packed_delivery_items))
+		. += span_notice("Packed items:")
+		for(var/obj/item/I in packed_delivery_items)
+			. += span_notice(" -- [I.name]")
 	switch(pledge_state)
 		if(PLEDGE_BLANK)
 			. += span_notice("The parchment is blank. Use it in-hand to fill out a quest commission.")
@@ -68,7 +80,12 @@
 			to_chat(user, span_warning("This pledge has already been posted. It cannot be altered."))
 
 /obj/item/paper/scroll/quest/pledge/proc/do_fill_out(mob/user)
-	var/list/mode_choices = list("Item Collection", "Freeform (Manually Verified)")
+	var/list/mode_choices = list(
+		"Item Collection",
+		"Freeform (Manually Verified)",
+		"Player Assassination",
+		"Item Delivery",
+	)
 	var/mode_choice = tgui_input_list(user, "What kind of quest are you commissioning?", "Quest Pledge", mode_choices)
 	if(!mode_choice)
 		return
@@ -86,37 +103,66 @@
 		to_chat(user, span_warning("Reward must be at least [min_reward] mammons for a [diff] quest."))
 		return
 
-	if(mode_choice == "Item Collection")
-		var/search_query = tgui_input_text(user, "Search for the item adventurers must bring:", "Item Search", pledge_item_name, 60)
-		if(!search_query)
-			return
+	switch(mode_choice)
+		if("Item Collection")
+			var/search_query = tgui_input_text(user, "Search for the item adventurers must bring:", "Item Search", pledge_item_name, 60)
+			if(!search_query)
+				return
+			var/list/results = search_item_types_global(search_query)
+			if(!length(results))
+				to_chat(user, span_warning("No items found matching '[search_query]'."))
+				return
+			var/chosen_name = tgui_input_list(user, "Select the item:", "Item Search Results", results)
+			if(!chosen_name)
+				return
+			var/count = tgui_input_number(user, "How many [chosen_name] are needed?", "Item Count", max(pledge_item_count, 1), 10, 1)
+			if(!count || count < 1)
+				return
+			pledge_mode = "item"
+			pledge_item_type = results[chosen_name]
+			pledge_item_name = chosen_name
+			pledge_item_count = count
 
-		var/list/results = search_item_types_global(search_query)
-		if(!length(results))
-			to_chat(user, span_warning("No items found matching '[search_query]'."))
-			return
+		if("Freeform (Manually Verified)")
+			var/obj_text = tgui_input_text(user, "Describe what the adventurer must do:", "Quest Objective", pledge_objective, 200)
+			if(!obj_text)
+				return
+			pledge_mode = "freeform"
+			pledge_objective = obj_text
 
-		var/chosen_name = tgui_input_list(user, "Select the item:", "Item Search Results", results)
-		if(!chosen_name)
-			return
+		if("Player Assassination")
+			var/list/player_names = list()
+			for(var/mob/living/carbon/human/H in GLOB.player_list)
+				if(H.real_name)
+					player_names += H.real_name
+			player_names = sortList(player_names)
+			if(!length(player_names))
+				to_chat(user, span_warning("No valid targets are currently online."))
+				return
+			var/chosen = tgui_input_list(user, "Select the target:", "Assassination Target", player_names)
+			if(!chosen)
+				return
+			pledge_mode = "assassinate"
+			pledge_assassin_target = chosen
 
-		var/count = tgui_input_number(user, "How many [chosen_name] are needed?", "Item Count", max(pledge_item_count, 1), 10, 1)
-		if(!count || count < 1)
-			return
-
-		pledge_mode = "item"
-		pledge_item_type = results[chosen_name]
-		pledge_item_name = chosen_name
-		pledge_item_count = count
-	else
-		var/obj_text = tgui_input_text(user, "Describe what the adventurer must do:", "Quest Objective", pledge_objective, 200)
-		if(!obj_text)
-			return
-		pledge_mode = "freeform"
-		pledge_objective = obj_text
+		if("Item Delivery")
+			var/list/player_names = list()
+			for(var/mob/living/carbon/human/H in GLOB.player_list)
+				if(H.real_name)
+					player_names += H.real_name
+			player_names = sortList(player_names)
+			if(!length(player_names))
+				to_chat(user, span_warning("No valid recipients are currently online."))
+				return
+			var/chosen = tgui_input_list(user, "Who should receive the parcel?", "Delivery Recipient", player_names)
+			if(!chosen)
+				return
+			pledge_mode = "delivery"
+			pledge_delivery_target = chosen
+			to_chat(user, span_notice("Recipient set to [chosen]. Attack this pledge with up to 5 items to pack them, then seal it."))
 
 	var/auto_title = generate_pledge_title()
-	var/custom_title = tgui_input_text(user, "Give this quest a title (blank = \"[auto_title]\"):", "Quest Title", pledge_title, 80)
+	var/custom_title = tgui_input_text(user, "Give this quest a title (blank = auto):", "Quest Title", pledge_title, 80)
 	pledge_title = custom_title ? custom_title : auto_title
 	pledge_difficulty = diff
 	pledge_reward = offered
@@ -124,6 +170,19 @@
 	name = "quest pledge: [pledge_title]"
 	desc = "A filled quest pledge offering [pledge_reward] mammons. Seal it to commit the coins."
 	to_chat(user, span_notice("Pledge filled out. Activate in hand again to seal and commit your coins."))
+
+/obj/item/paper/scroll/quest/pledge/attackby(obj/item/I, mob/living/carbon/human/user, params)
+	if(pledge_mode == "delivery" && pledge_state == PLEDGE_FILLED)
+		if(!(I in user))
+			return ..()
+		if(length(packed_delivery_items) >= 5)
+			to_chat(user, span_warning("The pledge can hold at most 5 items."))
+			return
+		I.forceMove(src)
+		packed_delivery_items += I
+		to_chat(user, span_notice("You tuck [I.name] into the pledge. ([length(packed_delivery_items)]/5)"))
+		return
+	return ..()
 
 /obj/item/paper/scroll/quest/pledge/proc/do_seal(mob/user)
 	if(pledge_state != PLEDGE_FILLED)
@@ -184,13 +243,76 @@
 	CQ.quest_giver_reference = WEAKREF(steward) // steward is responsible for validation
 	CQ.quest_giver_name = steward.real_name
 
-	if(pledge_mode == "item")
-		CQ.custom_item_type = pledge_item_type
-		CQ.custom_item_name = pledge_item_name
-		CQ.custom_item_count = pledge_item_count
-		CQ.progress_required = pledge_item_count
-	else
-		CQ.custom_objective_text = pledge_objective
+	switch(pledge_mode)
+		if("assassinate")
+			if(!pledge_assassin_target)
+				to_chat(steward, span_warning("No assassination target is recorded in this pledge."))
+				return null
+			if(pledge_state != PLEDGE_SEALED || !escrowed_mammons)
+				to_chat(steward, span_warning("This pledge isn't sealed yet."))
+				return null
+			var/datum/quest/custom/assassinate/AQ = new()
+			AQ.quest_difficulty = pledge_difficulty
+			AQ.reward_amount = escrowed_mammons
+			AQ.title = pledge_title
+			AQ.quest_giver_reference = WEAKREF(steward)
+			AQ.quest_giver_name = steward.real_name
+			AQ.target_player_name = pledge_assassin_target
+			AQ.custom_mode = "assassinate"
+			if(!SSquestboard.issue_custom_quest_funded(steward, AQ, escrowed_mammons))
+				to_chat(steward, span_warning("The board couldn't accept this pledge right now."))
+				qdel(AQ)
+				return null
+			escrowed_mammons = 0
+			pledge_state = PLEDGE_POSTED
+			posted_quest_ref = WEAKREF(AQ)
+			name = "posted quest pledge: [pledge_title]"
+			desc = "This pledge has been accepted by the guild. The quest is now live on the board."
+			AQ.generate(null)
+			AQ.pledge_ref = WEAKREF(src)
+			return AQ
+
+		if("delivery")
+			if(!pledge_delivery_target)
+				to_chat(steward, span_warning("No delivery recipient is recorded in this pledge."))
+				return null
+			if(pledge_state != PLEDGE_SEALED || !escrowed_mammons)
+				to_chat(steward, span_warning("This pledge isn't sealed yet."))
+				return null
+			var/datum/quest/custom/delivery/DQ = new()
+			DQ.quest_difficulty = pledge_difficulty
+			DQ.reward_amount = escrowed_mammons
+			DQ.title = pledge_title
+			DQ.quest_giver_reference = WEAKREF(steward)
+			DQ.quest_giver_name = steward.real_name
+			DQ.delivery_target_name = pledge_delivery_target
+			DQ.custom_mode = "delivery"
+			for(var/obj/item/I in packed_delivery_items)
+				if(!QDELETED(I))
+					DQ.pending_items += I
+					I.forceMove(DQ)
+			packed_delivery_items.Cut()
+			if(!SSquestboard.issue_custom_quest_funded(steward, DQ, escrowed_mammons))
+				to_chat(steward, span_warning("The board couldn't accept this pledge right now."))
+				for(var/obj/item/I in DQ.pending_items)
+					I.forceMove(get_turf(steward))
+				qdel(DQ)
+				return null
+			escrowed_mammons = 0
+			pledge_state = PLEDGE_POSTED
+			posted_quest_ref = WEAKREF(DQ)
+			name = "posted quest pledge: [pledge_title]"
+			desc = "This pledge has been accepted by the guild. The quest is now live on the board."
+			DQ.generate(null)
+			DQ.pledge_ref = WEAKREF(src)
+			return DQ
+		if("item")
+			CQ.custom_item_type = pledge_item_type
+			CQ.custom_item_name = pledge_item_name
+			CQ.custom_item_count = pledge_item_count
+			CQ.progress_required = pledge_item_count
+		else
+			CQ.custom_objective_text = pledge_objective
 
 	// Fund the quest from escrowed coins (bypass normal treasury check)
 	if(!SSquestboard.issue_custom_quest_funded(steward, CQ, escrowed_mammons))
@@ -209,8 +331,13 @@
 	return CQ
 
 /obj/item/paper/scroll/quest/pledge/proc/generate_pledge_title()
-	if(pledge_mode == "item")
-		return "Bring [pledge_item_count]x [pledge_item_name]"
+	switch(pledge_mode)
+		if("item")
+			return "Bring [pledge_item_count]x [pledge_item_name]"
+		if("assassinate")
+			return "Eliminate [pledge_assassin_target ? pledge_assassin_target : "unknown target"]"
+		if("delivery")
+			return "Deliver parcel to [pledge_delivery_target ? pledge_delivery_target : "unknown recipient"]"
 	return "Commission: [pledge_objective ? copytext(pledge_objective, 1, 40) : "Unknown"]"
 
 /obj/item/paper/scroll/quest/pledge/proc/get_min_reward(diff)
@@ -237,7 +364,6 @@
 			if(length(results) >= 20)
 				break
 	return results
-
 
 #undef PLEDGE_BLANK
 #undef PLEDGE_FILLED

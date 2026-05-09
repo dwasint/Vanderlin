@@ -452,65 +452,26 @@
 	qdel(scroll)
 
 /obj/structure/notice_board/proc/issue_custom_quest(mob/user)
-	var/list/mode_choices = list("Item Collection", "Freeform (Manually Verified)")
+	var/list/mode_choices = list(
+		"Item Collection",
+		"Freeform (Manually Verified)",
+		"Player Assassination",
+	)
 	var/mode_choice = tgui_input_list(user, "What kind of custom quest?", "Custom Quest", mode_choices)
 	if(!mode_choice)
 		return
 
-	var/datum/quest/custom/CQ = new()
+	var/datum/quest/custom/CQ
+	switch(mode_choice)
+		if("Player Assassination")
+			CQ = build_assassinate_quest(user)
+		if("Item Collection")
+			CQ = build_item_collection_quest(user)
+		if("Freeform (Manually Verified)")
+			CQ = build_freeform_quest(user)
 
-	var/list/diff_choices = list(QUEST_DIFFICULTY_EASY, QUEST_DIFFICULTY_MEDIUM, QUEST_DIFFICULTY_HARD)
-	var/diff = tgui_input_list(user, "Quest difficulty?", "Custom Quest Difficulty", diff_choices)
-	if(!diff)
-		qdel(CQ)
+	if(!CQ)
 		return
-	CQ.quest_difficulty = diff
-
-	var/suggested_reward = CQ.get_base_reward()
-	var/reward = tgui_input_number(user, "Set the reward (mammons). Suggested: [suggested_reward]", "Reward", suggested_reward, 9999, 1)
-	if(!reward || reward < 1)
-		qdel(CQ)
-		return
-	CQ.reward_amount = reward
-
-	if(mode_choice == "Item Collection")
-		CQ.custom_mode = "item"
-		var/search_query = tgui_input_text(user, "Search for the item the adventurer must bring:", "Item Search", "", 60)
-		if(!search_query)
-			qdel(CQ)
-			return
-
-		var/list/results = search_item_types(search_query)
-		if(!length(results))
-			say("No items found matching '[search_query]'.")
-			qdel(CQ)
-			return
-
-		var/chosen_name = tgui_input_list(user, "Select the item:", "Item Search Results", results)
-		if(!chosen_name)
-			qdel(CQ)
-			return
-
-		CQ.custom_item_type = results[chosen_name]
-		CQ.custom_item_name = chosen_name
-
-		var/count = tgui_input_number(user, "How many [chosen_name] are needed?", "Item Count", 1, 10, 1)
-		if(!count || count < 1)
-			qdel(CQ)
-			return
-		CQ.custom_item_count = count
-		CQ.progress_required = count
-	else
-		CQ.custom_mode = "freeform"
-		var/obj_text = tgui_input_text(user, "Describe what the adventurer must do:", "Quest Objective", "", 200)
-		if(!obj_text)
-			qdel(CQ)
-			return
-		CQ.custom_objective_text = obj_text
-
-	var/auto_title = CQ.get_title()
-	var/custom_title = tgui_input_text(user, "Give this quest a title (blank = auto: \"[auto_title]\"):", "Quest Title", "", 80)
-	CQ.title = custom_title ? custom_title : auto_title
 
 	if(!SSquestboard.issue_custom_quest(user, CQ))
 		say("Failed to post the custom quest. Check the fund balance.")
@@ -518,6 +479,112 @@
 		return
 
 	CQ.generate(null)
+
+/obj/structure/notice_board/proc/build_assassinate_quest(mob/user)
+	var/list/player_names = list()
+	for(var/mob/living/carbon/human/H in GLOB.player_list)
+		if(H.real_name)
+			player_names += H.real_name
+	player_names = sortList(player_names)
+
+	if(!length(player_names))
+		say("No valid targets are online at the moment.")
+		return null
+
+	var/target_name = tgui_input_list(user, "Select the assassination target:", "Target", player_names)
+	if(!target_name)
+		return null
+
+	var/datum/quest/custom/assassinate/AQ = new()
+	if(!fill_quest_reward(user, AQ))
+		qdel(AQ)
+		return null
+
+	AQ.target_player_name = target_name
+	AQ.quest_giver_reference = WEAKREF(user)
+	AQ.quest_giver_name = user.real_name
+	AQ.custom_mode = "assassinate"
+
+	var/auto_title = AQ.get_title()
+	var/custom_title = tgui_input_text(user, "Give this quest a title (blank = auto):", "Quest Title", "", 80)
+	AQ.title = custom_title ? custom_title : auto_title
+	return AQ
+
+/obj/structure/notice_board/proc/build_item_collection_quest(mob/user)
+	var/datum/quest/custom/CQ = new()
+	CQ.custom_mode = "item"
+	if(!fill_quest_reward(user, CQ))
+		qdel(CQ)
+		return null
+
+	var/search_query = tgui_input_text(user, "Search for the item:", "Item Search", "", 60)
+	if(!search_query)
+		qdel(CQ)
+		return null
+
+	var/list/results = search_item_types(search_query)
+	if(!length(results))
+		say("No items found matching '[search_query]'.")
+		qdel(CQ)
+		return null
+
+	var/chosen_name = tgui_input_list(user, "Select the item:", "Item Search Results", results)
+	if(!chosen_name)
+		qdel(CQ)
+		return null
+
+	CQ.custom_item_type = results[chosen_name]
+	CQ.custom_item_name = chosen_name
+	var/count = tgui_input_number(user, "How many [chosen_name] are needed?", "Item Count", 1, 10, 1)
+	if(!count || count < 1)
+		qdel(CQ)
+		return null
+
+	CQ.custom_item_count = count
+	CQ.progress_required = count
+	CQ.quest_giver_reference = WEAKREF(user)
+	CQ.quest_giver_name = user.real_name
+
+	var/auto_title = CQ.get_title()
+	var/custom_title = tgui_input_text(user, "Give this quest a title:", "Quest Title", "", 80)
+	CQ.title = custom_title ? custom_title : auto_title
+	return CQ
+
+/obj/structure/notice_board/proc/build_freeform_quest(mob/user)
+	var/datum/quest/custom/CQ = new()
+	CQ.custom_mode = "freeform"
+	if(!fill_quest_reward(user, CQ))
+		qdel(CQ)
+		return null
+
+	var/obj_text = tgui_input_text(user, "Describe what the adventurer must do:", "Quest Objective", "", 200)
+	if(!obj_text)
+		qdel(CQ)
+		return null
+
+	CQ.custom_objective_text = obj_text
+	CQ.quest_giver_reference = WEAKREF(user)
+	CQ.quest_giver_name = user.real_name
+
+	var/auto_title = CQ.get_title()
+	var/custom_title = tgui_input_text(user, "Give this quest a title:", "Quest Title", "", 80)
+	CQ.title = custom_title ? custom_title : auto_title
+	return CQ
+
+/obj/structure/notice_board/proc/fill_quest_reward(mob/user, datum/quest/custom/CQ)
+	var/list/diff_choices = list(QUEST_DIFFICULTY_EASY, QUEST_DIFFICULTY_MEDIUM, QUEST_DIFFICULTY_HARD)
+	var/diff = tgui_input_list(user, "Quest difficulty?", "Custom Quest Difficulty", diff_choices)
+	if(!diff)
+		return FALSE
+	CQ.quest_difficulty = diff
+
+	var/suggested_reward = CQ.get_base_reward()
+	var/reward = tgui_input_number(user, "Set the reward (mammons). Suggested: [suggested_reward]", "Reward", suggested_reward, 9999, 1)
+	if(!reward || reward < 1)
+		return FALSE
+
+	CQ.reward_amount = reward
+	return TRUE
 
 /obj/structure/notice_board/proc/do_validate_custom(mob/user, datum/quest/custom/target)
 	if(target.custom_mode == "item")

@@ -3733,6 +3733,8 @@
 #include "code\modules\questing\quests\courier.dm"
 #include "code\modules\questing\quests\custom.dm"
 #include "code\modules\questing\quests\retrieval.dm"
+#include "code\modules\questing\quests\custom\assassinate.dm"
+#include "code\modules\questing\quests\custom\delivery.dm"
 #include "code\modules\questing\quests\kill\_kill_base.dm"
 #include "code\modules\questing\quests\kill\clearout.dm"
 #include "code\modules\questing\quests\kill\easy_kill.dm"

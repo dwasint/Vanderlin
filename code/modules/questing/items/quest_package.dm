@@ -7,6 +7,7 @@
 	var/quest_title = ""
 	/// Weakref to the specific pledge scroll that must be used to open this parcel.
 	var/datum/weakref/pledge_ref
+	var/delivery_target_name
 
 /obj/item/quest_package/examine(mob/user)
 	. = ..()
@@ -37,7 +38,7 @@
 	qdel(src)
 
 /obj/item/quest_package/attack_self(mob/user)
-	if(pledge_ref)
+	if(pledge_ref && !delivery_target_name)
 		return
 	if(!length(contents))
 		to_chat(user, span_warning("The parcel is empty."))
