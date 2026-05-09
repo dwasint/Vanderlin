@@ -1,5 +1,3 @@
-#define DELIVERY_PLEDGE_MAX_ITEMS 5
-
 /datum/quest/custom/delivery
 	issue_label = "Item Delivery"
 	/// Delivery quests are pledge-only, they cannot be issued directly from the board
