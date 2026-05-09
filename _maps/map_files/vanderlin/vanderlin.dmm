@@ -1672,6 +1672,13 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/hexstone,
 /area/indoors/town/clocktower)
+"aOf" = (
+/obj/structure/table/wood/plain,
+/obj/effect/landmark/quest_dropoff/counter{
+	board_id = "guild_1"
+	},
+/turf/open/floor/church/gold,
+/area/under/town/sewer)
 "aOi" = (
 /obj/structure/chair/wood/alt{
 	dir = 1
@@ -4142,6 +4149,11 @@
 	},
 /turf/open/floor/ruinedwood/chevron,
 /area/indoors/town/keep/halls/w)
+"bXc" = (
+/obj/structure/carpet/purple,
+/obj/structure/water_pipe,
+/turf/open/floor/church/gold,
+/area/under/town/sewer)
 "bXi" = (
 /turf/open/floor/carpet/red,
 /area/indoors/town/keep/library)
@@ -5823,6 +5835,13 @@
 /obj/machinery/light/fueled/wallfire/candle/r,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/town/tavern)
+"cLx" = (
+/obj/structure/table/wood/plain,
+/obj/structure/quest_counter{
+	board_id = "guild_2"
+	},
+/turf/open/floor/church/gold,
+/area/under/town/sewer)
 "cLN" = (
 /obj/structure/table/wood/large/corner{
 	dir = 9
@@ -16313,6 +16332,13 @@
 /obj/structure/bookcase/random/legends,
 /turf/open/floor/herringbone,
 /area/indoors/town/keep/library)
+"hRi" = (
+/obj/structure/water_pipe,
+/obj/structure/water_vent{
+	dir = 4
+	},
+/turf/open/floor/blocks/paving,
+/area/under/town/sewer)
 "hRw" = (
 /obj/structure/fluff/walldeco/bath/wallpipes/innie{
 	dir = 1
@@ -18698,6 +18724,10 @@
 "iUy" = (
 /turf/closed/wall/mineral/decorstone,
 /area/indoors/town/keep/hand)
+"iUA" = (
+/obj/structure/water_pipe,
+/turf/open/floor/carpet/lord/center,
+/area/under/town/sewer)
 "iUR" = (
 /obj/structure/fluff/walldeco/stone{
 	pixel_y = 32
@@ -20804,6 +20834,11 @@
 	},
 /turf/open/floor/blocks,
 /area/indoors/town/cell)
+"jQJ" = (
+/obj/structure/water_pipe,
+/obj/structure/fluid_drain,
+/turf/open/floor/church/gold,
+/area/under/town/sewer)
 "jQM" = (
 /obj/structure/bed/mediocre,
 /obj/item/bedsheet/pelt,
@@ -22297,6 +22332,10 @@
 /obj/effect/landmark/start/vagrant,
 /turf/open/floor/dirt,
 /area/outdoors/town)
+"kCN" = (
+/obj/structure/water_pipe,
+/turf/open/floor/church/gold,
+/area/under/town/sewer)
 "kCS" = (
 /turf/open/floor/rooftop{
 	dir = 4
@@ -29362,6 +29401,10 @@
 /obj/structure/chair/stool,
 /turf/open/water/bath,
 /area/indoors/town/keep/lord_appt)
+"nSL" = (
+/obj/structure/fluff/walldeco/bigpainting,
+/turf/open/floor/wood,
+/area/under/town/sewer)
 "nSW" = (
 /obj/structure/fake_machine/scomm/l,
 /turf/open/floor/church,
@@ -35204,6 +35247,12 @@
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/blocks,
 /area/under/dungeon)
+"qzH" = (
+/obj/structure/carpet/purple,
+/obj/structure/chair/stool,
+/obj/structure/water_pipe,
+/turf/open/floor/church/gold,
+/area/under/town/sewer)
 "qzJ" = (
 /turf/closed/wall/mineral/decorstone,
 /area/indoors/town/keep/archivist)
@@ -35339,6 +35388,11 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/indoors/town/church)
+"qCq" = (
+/obj/structure/fluid_drain,
+/obj/structure/water_pipe,
+/turf/open/floor/church/gold,
+/area/under/town/sewer)
 "qCW" = (
 /obj/structure/table/wood/reinforced_alter,
 /obj/item/mould/ingot{
@@ -37940,6 +37994,13 @@
 /obj/structure/fake_machine/scomm/r,
 /turf/open/floor/ruinedwood,
 /area/indoors/town/tavern)
+"rLC" = (
+/obj/structure/table/wood/plain,
+/obj/structure/quest_counter{
+	board_id = "guild_1"
+	},
+/turf/open/floor/church/gold,
+/area/under/town/sewer)
 "rLU" = (
 /obj/structure/fluff/walldeco/church/line,
 /obj/structure/fluff/walldeco/church/line{
@@ -40102,6 +40163,13 @@
 "sIT" = (
 /turf/open/floor/ruinedwood/alt,
 /area/indoors/town/smithy)
+"sIW" = (
+/obj/structure/table/wood/plain,
+/obj/effect/landmark/quest_dropoff/counter{
+	board_id = "guild_2"
+	},
+/turf/open/floor/church/gold,
+/area/under/town/sewer)
 "sIY" = (
 /obj/structure/table/vtable/v2,
 /obj/effect/spawner/map_spawner/loot/food{
@@ -40334,6 +40402,7 @@
 /area/outdoors/river)
 "sNA" = (
 /obj/machinery/light/fueled/torchholder/l,
+/obj/structure/water_pipe,
 /turf/open/floor/church/gold,
 /area/under/town/sewer)
 "sNH" = (
@@ -46892,8 +46961,10 @@
 /turf/open/floor/church/gold,
 /area/under/town/sewer)
 "vJt" = (
-/obj/structure/fake_machine/contractledger,
-/turf/open/floor/carpet/lord/center,
+/obj/structure/door/window,
+/obj/effect/mapping_helpers/access/locker,
+/obj/effect/mapping_helpers/access/keyset/town/inn,
+/turf/open/floor/ruinedwood,
 /area/indoors/town/tavern)
 "vJB" = (
 /obj/structure/table/wood/plain_alt,
@@ -75519,13 +75590,13 @@ unl
 unl
 pGp
 wpU
+upc
 wpU
 wpU
 wpU
 wpU
 wpU
-wpU
-asC
+hRi
 pGp
 pGp
 pGp
@@ -75727,7 +75798,7 @@ hLm
 ven
 evb
 wpU
-wpU
+fVM
 wpU
 jEQ
 jEQ
@@ -75928,7 +75999,7 @@ hLm
 aqo
 vYR
 seg
-cUH
+kCN
 sNA
 aYY
 jEQ
@@ -76130,7 +76201,7 @@ seg
 cxv
 hHY
 cUH
-cUH
+qCq
 vJr
 cBR
 clv
@@ -76330,9 +76401,9 @@ cmo
 ftz
 xJD
 cUH
-hHY
+rLC
 cUH
-cUH
+kCN
 cBR
 jEQ
 jEQ
@@ -76528,13 +76599,13 @@ cZN
 cZN
 cZN
 wpU
-hLm
+nSL
 ftz
 cUH
 lRn
-hHY
+aOf
 cUH
-cUH
+kCN
 aYY
 jEQ
 tvF
@@ -76735,8 +76806,8 @@ ftz
 cUH
 hHY
 cUH
-cUH
-cUH
+kCN
+kCN
 cUH
 jEQ
 pPf
@@ -76934,10 +77005,10 @@ wZM
 wpU
 hLm
 ftz
-cUH
-cUH
-cUH
-bfs
+jQJ
+kCN
+kCN
+qzH
 pVH
 cUH
 jEQ
@@ -77139,7 +77210,7 @@ axf
 cUH
 cUH
 lPv
-uRy
+bXc
 bfs
 jEQ
 jEQ
@@ -77341,7 +77412,7 @@ ftz
 cUH
 cUH
 cUH
-uRy
+bXc
 uRy
 jEQ
 evE
@@ -77543,7 +77614,7 @@ sqp
 qUd
 sqp
 sqp
-sqp
+iUA
 sqp
 uln
 hhq
@@ -77742,10 +77813,10 @@ msU
 knf
 hLm
 ftz
-hHY
-hHY
-cUH
-cUH
+cLx
+sIW
+qCq
+kCN
 cUH
 jEQ
 oJv
@@ -78346,10 +78417,10 @@ wRn
 msU
 cPe
 wpU
+upc
 wpU
 wpU
-wpU
-wpU
+upc
 wpU
 utl
 wRZ
@@ -116332,7 +116403,7 @@ ekU
 eYe
 hmw
 fUV
-vJt
+sAG
 mqH
 sPm
 cUs
@@ -116530,7 +116601,7 @@ gLs
 cNl
 pny
 lkw
-pny
+vJt
 kvW
 pny
 pny

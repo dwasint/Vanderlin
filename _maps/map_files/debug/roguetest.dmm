@@ -1150,6 +1150,11 @@
 	},
 /turf/open/floor/grass/yel,
 /area/outdoors)
+"eR" = (
+/obj/structure/table/wood/plain,
+/obj/structure/quest_counter,
+/turf/open/floor/church/gold,
+/area/indoors/town/keep)
 "fe" = (
 /obj/structure/closet/crate/chest,
 /obj/item/weapon/hammer/iron,
@@ -1574,6 +1579,7 @@
 /area/outdoors)
 "mL" = (
 /obj/structure/table/vtable/v2,
+/obj/structure/quest_counter,
 /turf/open/floor/church/gold,
 /area/indoors/town/keep)
 "mM" = (
@@ -1674,6 +1680,13 @@
 /obj/structure/bookcase/random_recipes,
 /turf/open/floor/wood,
 /area/indoors)
+"qp" = (
+/obj/item/reagent_containers/powder/manabloom,
+/obj/item/reagent_containers/powder/manabloom,
+/obj/item/reagent_containers/powder/manabloom,
+/obj/item/reagent_containers/powder/manabloom,
+/turf/open/floor/church/gold,
+/area/indoors/town/keep)
 "qr" = (
 /obj/effect/decal/carpet/kover_purple{
 	dir = 4;
@@ -3537,10 +3550,6 @@
 /obj/effect/landmark/quest_dropoff{
 	board_id = "debug"
 	},
-/obj/item/reagent_containers/powder/manabloom,
-/obj/item/reagent_containers/powder/manabloom,
-/obj/item/reagent_containers/powder/manabloom,
-/obj/item/reagent_containers/powder/manabloom,
 /turf/open/floor/church/gold,
 /area/indoors/town/keep)
 "Ym" = (
@@ -14884,7 +14893,7 @@ zg
 zg
 kw
 mL
-Cp
+qp
 Cp
 Cp
 dV
@@ -21319,7 +21328,7 @@ Mj
 Cp
 Cp
 Hg
-TH
+eR
 Cp
 Cp
 yn
@@ -22088,7 +22097,7 @@ GB
 GB
 Mj
 MA
-TH
+eR
 TH
 ej
 Cp

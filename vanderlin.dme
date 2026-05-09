@@ -3720,6 +3720,7 @@
 #include "code\modules\questing\contract_machine.dm"
 #include "code\modules\questing\landmarks.dm"
 #include "code\modules\questing\noticeboard.dm"
+#include "code\modules\questing\quest_counter.dm"
 #include "code\modules\questing\quest_object.dm"
 #include "code\modules\questing\items\parcel.dm"
 #include "code\modules\questing\items\pledge.dm"
