@@ -238,6 +238,8 @@
 	var/injury_healed = FALSE
 	for(var/thing in affecting.injuries)
 		var/datum/injury/injury = thing
+		if(!(injury.damage_type in list(WOUND_SLASH, WOUND_PIERCE, WOUND_BITE)))
+			continue
 		var/time = 2 SECONDS + (injury.damage * 0.5)
 		time *= min(time * 1.5, (ATTRIBUTE_MIDDLING/max(GET_MOB_ATTRIBUTE_VALUE(user, STAT_PERCEPTION), 1)))
 		playsound(target, 'sound/foley/sewflesh.ogg', 65, FALSE)
@@ -252,7 +254,7 @@
 			//to_chat(user, span_warning(fail_msg()))
 			continue
 		injury.suture_injury()
-		if(!(injury.damage_type in list(WOUND_SLASH, WOUND_PIERCE, WOUND_BITE)) || (injury.damage_per_injury() <= injury.autoheal_cutoff))
+		if((injury.damage_per_injury() <= injury.autoheal_cutoff))
 			continue
 		injury.heal_damage(10)
 		var/amt2raise = GET_MOB_ATTRIBUTE_VALUE(doctor, STAT_INTELLIGENCE)
