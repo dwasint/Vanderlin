@@ -10,6 +10,10 @@
 
 	var/pledge_state = PLEDGE_BLANK
 
+	var/pledge_reagent_type = null  // type path
+	var/pledge_reagent_name = ""
+	var/pledge_reagent_volume = 10
+
 	var/pledge_title = ""
 	var/pledge_objective = ""
 	var/pledge_mode = "" // "item" or "freeform"
@@ -39,6 +43,9 @@
 		. += span_notice("Packed items:")
 		for(var/obj/item/I in packed_delivery_items)
 			. += span_notice(" -- [I.name]")
+	if(pledge_mode == "reagent" && pledge_reagent_name)
+		. += span_notice("Reagent: <b>[pledge_reagent_name]</b> - [pledge_reagent_volume] ligulae required.")
+
 	switch(pledge_state)
 		if(PLEDGE_BLANK)
 			. += span_notice("The parchment is blank. Use it in-hand to fill out a quest commission.")
@@ -85,6 +92,7 @@
 		"Freeform (Manually Verified)",
 		"Player Assassination",
 		"Item Delivery",
+		"Liquid Collection",
 	)
 	var/mode_choice = tgui_input_list(user, "What kind of quest are you commissioning?", "Quest Pledge", mode_choices)
 	if(!mode_choice)
@@ -160,6 +168,28 @@
 			pledge_mode = "delivery"
 			pledge_delivery_target = chosen
 			to_chat(user, span_notice("Recipient set to [chosen]. Attack this pledge with up to 5 items to pack them, then seal it."))
+
+		if("Liquid Collection")
+			var/search_query = tgui_input_text(user, "Search for the reagent adventurers must bring:", "Reagent Search", pledge_reagent_name, 60)
+			if(!search_query)
+				return
+			var/list/results = search_reagent_types_global(search_query)
+			if(!length(results))
+				to_chat(user, span_warning("No reagents found matching '[search_query]'."))
+				return
+			var/chosen_name = tgui_input_list(user, "Select the reagent:", "Reagent Search Results", results)
+			if(!chosen_name)
+				return
+			var/volume = tgui_input_number(user,
+				"How many ligulae of [chosen_name] are needed? (max 100)",
+				"Reagent Volume", max(pledge_reagent_volume, 10), 100, 1)
+			if(!volume || volume < 1)
+				return
+			pledge_mode = "reagent"
+			pledge_reagent_type = results[chosen_name]
+			pledge_reagent_name = chosen_name
+			pledge_reagent_volume = volume
+
 
 	var/auto_title = generate_pledge_title()
 	var/custom_title = tgui_input_text(user, "Give this quest a title (blank = auto):", "Quest Title", pledge_title, 80)
@@ -311,6 +341,35 @@
 			CQ.custom_item_name = pledge_item_name
 			CQ.custom_item_count = pledge_item_count
 			CQ.progress_required = pledge_item_count
+
+		if("reagent")
+			if(!pledge_reagent_type || !pledge_reagent_name)
+				to_chat(steward, span_warning("No reagent is recorded in this pledge."))
+				return null
+			var/datum/quest/custom/reagent/RQ = new()
+			RQ.quest_difficulty = pledge_difficulty
+			RQ.reward_amount = escrowed_mammons
+			RQ.title = pledge_title
+			RQ.quest_giver_reference = WEAKREF(steward)
+			RQ.quest_giver_name = steward.real_name
+			RQ.reagent_type_path = pledge_reagent_type
+			RQ.reagent_name = pledge_reagent_name
+			RQ.reagent_volume_required = pledge_reagent_volume
+			RQ.progress_required = pledge_reagent_volume
+			RQ.custom_mode = "reagent"
+			if(!SSquestboard.issue_custom_quest_funded(steward, RQ, escrowed_mammons))
+				to_chat(steward, span_warning("The board couldn't accept this pledge right now."))
+				qdel(RQ)
+				return null
+			escrowed_mammons = 0
+			pledge_state = PLEDGE_POSTED
+			posted_quest_ref = WEAKREF(RQ)
+			name = "posted quest pledge: [pledge_title]"
+			desc = "This pledge has been accepted by the guild. The quest is now live on the board."
+			RQ.generate(null)
+			RQ.pledge_ref = WEAKREF(src)
+			return RQ
+
 		else
 			CQ.custom_objective_text = pledge_objective
 
@@ -338,6 +397,8 @@
 			return "Eliminate [pledge_assassin_target ? pledge_assassin_target : "unknown target"]"
 		if("delivery")
 			return "Deliver parcel to [pledge_delivery_target ? pledge_delivery_target : "unknown recipient"]"
+		if("reagent")
+			return "Provide [pledge_reagent_volume] ligulae [pledge_reagent_name ? pledge_reagent_name : "reagent"]"
 	return "Commission: [pledge_objective ? copytext(pledge_objective, 1, 40) : "Unknown"]"
 
 /obj/item/paper/scroll/quest/pledge/proc/get_min_reward(diff)
@@ -361,6 +422,19 @@
 		if(findtext(iname, query))
 			var/display = "[initial(item_type.name)] ([item_type])"
 			results[display] = item_type
+			if(length(results) >= 20)
+				break
+	return results
+
+/proc/search_reagent_types_global(query)
+	var/list/results = list()
+	query = lowertext(query)
+	for(var/datum/reagent/reagent_type as anything in subtypesof(/datum/reagent))
+		if(IS_ABSTRACT(reagent_type))
+			continue
+		var/rname = lowertext(initial(reagent_type.name))
+		if(findtext(rname, query))
+			results[initial(reagent_type.name)] = reagent_type  // type path as value
 			if(length(results) >= 20)
 				break
 	return results

@@ -456,6 +456,7 @@
 		"Item Collection",
 		"Freeform (Manually Verified)",
 		"Player Assassination",
+		"Liquid Collection",
 	)
 	var/mode_choice = tgui_input_list(user, "What kind of custom quest?", "Custom Quest", mode_choices)
 	if(!mode_choice)
@@ -469,6 +470,8 @@
 			CQ = build_item_collection_quest(user)
 		if("Freeform (Manually Verified)")
 			CQ = build_freeform_quest(user)
+		if("Liquid Collection")
+			CQ = build_reagent_quest(user)
 
 	if(!CQ)
 		return
@@ -509,6 +512,62 @@
 	var/custom_title = tgui_input_text(user, "Give this quest a title (blank = auto):", "Quest Title", "", 80)
 	AQ.title = custom_title ? custom_title : auto_title
 	return AQ
+
+/obj/structure/notice_board/proc/build_reagent_quest(mob/user)
+	var/datum/quest/custom/reagent/CQ = new()
+
+	if(!fill_quest_reward(user, CQ))
+		qdel(CQ)
+		return null
+
+	var/search_query = tgui_input_text(user, "Search for the reagent:", "Reagent Search", "", 60)
+	if(!search_query)
+		qdel(CQ)
+		return null
+
+	var/list/results = search_reagent_types(search_query)
+	if(!length(results))
+		say("No reagents found matching '[search_query]'.")
+		qdel(CQ)
+		return null
+
+	var/chosen_name = tgui_input_list(user, "Select the reagent:", "Reagent Search Results", results)
+	if(!chosen_name)
+		qdel(CQ)
+		return null
+
+	CQ.reagent_type_path = results[chosen_name]
+	CQ.reagent_name = chosen_name
+
+	var/volume = tgui_input_number(user,
+		"How many ligulae of [chosen_name] are needed? (max 100)",
+		"Reagent Volume", 10, 100, 1)
+	if(!volume || volume < 1)
+		qdel(CQ)
+		return null
+
+	CQ.reagent_volume_required = volume
+	CQ.progress_required = volume
+	CQ.quest_giver_reference = WEAKREF(user)
+	CQ.quest_giver_name = user.real_name
+
+	var/auto_title = CQ.get_title()
+	var/custom_title = tgui_input_text(user, "Give this quest a title (blank = auto):", "Quest Title", "", 80)
+	CQ.title = custom_title ? custom_title : auto_title
+	return CQ
+
+/obj/structure/notice_board/proc/search_reagent_types(query)
+	var/list/results = list()
+	query = lowertext(query)
+	for(var/datum/reagent/reagent_type as anything in subtypesof(/datum/reagent))
+		if(IS_ABSTRACT(reagent_type))
+			continue
+		var/rname = lowertext(initial(reagent_type.name))
+		if(findtext(rname, query))
+			results[initial(reagent_type.name)] = reagent_type  // type path as value
+			if(length(results) >= 20)
+				break
+	return results
 
 /obj/structure/notice_board/proc/build_item_collection_quest(mob/user)
 	var/datum/quest/custom/CQ = new()
@@ -587,6 +646,16 @@
 	return TRUE
 
 /obj/structure/notice_board/proc/do_validate_custom(mob/user, datum/quest/custom/target)
+	if(istype(target, /datum/quest/custom/reagent))
+		var/datum/quest/custom/reagent/RQ = target
+		if(RQ.check_reagent_turnin(input_point))
+			say("Liquids verified! Quest \"[RQ.title]\" marked as complete.")
+		else
+			var/still_needed = RQ.reagent_volume_required - RQ.reagent_volume_current
+			say("Not enough [RQ.reagent_name] on the marker. Still need [still_needed] ligulae \
+				(have [RQ.reagent_volume_current]u of [RQ.reagent_volume_required] ligulae).")
+		return
+
 	if(target.custom_mode == "item")
 		var/list/items_on_marker = list()
 		for(var/obj/item/I in input_point)

@@ -30,7 +30,6 @@
 /datum/quest/custom/delivery/check_completion()
 	return progress_current >= progress_required
 
-/
 /datum/quest/custom/delivery/on_claim(mob/user)
 	. = ..()
 	var/spawn_turf = get_turf(quest_scroll) || get_turf(user)
