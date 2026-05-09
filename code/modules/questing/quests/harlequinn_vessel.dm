@@ -3,7 +3,6 @@
 	name = "a cloaked figure"
 	real_name = "a cloaked figure"
 	invisibility = INVISIBILITY_MAXIMUM
-	anchored = TRUE
 	var/datum/weakref/spawning_region
 	var/list/viable_species = list(
 		/datum/species/human/northern,
