@@ -4,6 +4,7 @@ SUBSYSTEM_DEF(regionthreat)
 	flags = SS_KEEP_TIMING | SS_BACKGROUND
 	runlevels = RUNLEVEL_GAME
 	var/list/threat_regions = list()
+	COOLDOWN_DECLARE(harlequinn_spawn_cooldown)
 
 /datum/controller/subsystem/regionthreat/Initialize(start_timeofday)
 	for(var/datum/threat_region/region as anything in subtypesof(/datum/threat_region))

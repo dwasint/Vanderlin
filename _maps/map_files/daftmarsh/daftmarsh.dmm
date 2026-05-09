@@ -4290,7 +4290,7 @@
 /turf/open/floor/twig,
 /area/outdoors/town)
 "dzz" = (
-/obj/structure/bounty_board,
+/obj/structure/notice_board,
 /turf/open/floor/dirt,
 /area/under/town/sewer)
 "dzC" = (
@@ -16390,14 +16390,6 @@
 /obj/structure/fluff/walldeco/gear,
 /turf/open/openspace,
 /area/indoors/town/clocktower)
-"oei" = (
-/obj/effect/landmark/bounty_location{
-	location_name = "Beside the Church Gate";
-	name = "Beside the Church Gate";
-	completion_range = 5
-	},
-/turf/open/floor/dirt,
-/area/outdoors/town)
 "oeV" = (
 /obj/structure/lever/hidden/keep{
 	redstone_id = "Guest1Passage"
@@ -16487,14 +16479,6 @@
 /obj/machinery/light/fueled/firebowl/standing/blue,
 /turf/open/floor/tile,
 /area/under/town/sewer)
-"oiZ" = (
-/obj/effect/landmark/bounty_location{
-	location_name = "Beside the Town's Dungeon";
-	name = "Beside the Town's Dungeon";
-	completion_range = 5
-	},
-/turf/open/floor/cobble/mossy,
-/area/under/cavewet)
 "ojk" = (
 /obj/item/toy/cards/deck/syndicate{
 	pixel_x = -4;
@@ -17183,16 +17167,6 @@
 	dir = 1
 	},
 /area/outdoors/town/roofs)
-"oUS" = (
-/obj/structure/fluff/railing/wood,
-/obj/machinery/light/fueled/lanternpost/fixed,
-/obj/effect/landmark/bounty_location{
-	location_name = "End of the Cargo Docks";
-	name = "End of the Cargo Docks";
-	completion_range = 5
-	},
-/turf/open/floor/ruinedwood/spiral,
-/area/outdoors/town)
 "oWq" = (
 /obj/structure/bookcase/random/legends,
 /obj/machinery/light/fueled/wallfire/candle,
@@ -21781,14 +21755,6 @@
 /obj/item/clothing/head/padded/deathshroud,
 /turf/open/floor/blocks/newstone/alt,
 /area/indoors/town/church)
-"tiu" = (
-/obj/effect/landmark/bounty_location{
-	location_name = "Infront of the Clinic";
-	name = "Infront of the Clinic";
-	completion_range = 5
-	},
-/turf/open/floor/twig,
-/area/outdoors/town)
 "tiI" = (
 /obj/structure/fluff/railing/wood{
 	dir = 4
@@ -25285,14 +25251,6 @@
 "wpV" = (
 /obj/item/natural/stone,
 /turf/open/floor/dirt/road,
-/area/under/town/sewer)
-"wqa" = (
-/obj/effect/landmark/bounty_location{
-	location_name = "Across the River by the Bounty Board";
-	name = "Across the River by the Bounty Board";
-	completion_range = 5
-	},
-/turf/open/floor/cobblerock,
 /area/under/town/sewer)
 "wqp" = (
 /turf/open/floor/carpet/red,
@@ -50926,7 +50884,7 @@ dIg
 dIg
 dIg
 nfD
-wqa
+qBk
 hXW
 dIg
 dIg
@@ -93713,7 +93671,7 @@ ePk
 ePk
 ePk
 ivT
-oei
+bJI
 bJI
 bJI
 hDR
@@ -111623,7 +111581,7 @@ deJ
 bLB
 keX
 bLB
-oiZ
+bLB
 keX
 bLB
 keX
@@ -113549,7 +113507,7 @@ jXg
 not
 iHi
 iHi
-oUS
+gIB
 jXg
 jXg
 jXg
@@ -122422,7 +122380,7 @@ mGB
 iHi
 ssI
 dcH
-tiu
+sQG
 iHi
 iHi
 iHi

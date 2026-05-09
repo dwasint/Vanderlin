@@ -1,3 +1,9 @@
+GLOBAL_VAR(harlequinn_hunt_quest) // weakref to active /datum/quest/custom/harlequinn_hunt
+
+#define HARLEQUINN_HUNT_COOLDOWN (35 MINUTES)
+#define HARLEQUINN_VESSEL_ID "Harlequinn"
+#define HARLEQUINN_HUNT_REWARD 500
+
 #define QUEST_DIFFICULTY_EASY "Easy"
 #define QUEST_DIFFICULTY_MEDIUM "Medium"
 #define QUEST_DIFFICULTY_HARD "Hard"
@@ -78,4 +84,6 @@
 /// This quest type can be issued directly from the notice board by a steward.
 #define CUSTOM_QUEST_NOTICEBOARD (1<<0)
 /// This quest type can be created via a player-written pledge scroll.
-#define CUSTOM_QUEST_PLEDGE      (1<<1)
+#define CUSTOM_QUEST_PLEDGE (1<<1)
+// Can be issued as a harlequinn objective quest
+#define CUSTOM_QUEST_HARLEQUINN (1<<2)

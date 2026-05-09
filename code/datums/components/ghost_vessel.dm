@@ -88,4 +88,5 @@ GLOBAL_LIST_EMPTY(active_ghost_vessels)
 	var/new_name = browser_input_text(owner, "Choose a new Name", "New Name", owner.name)
 	if(new_name)
 		owner.real_name = new_name
+	SEND_SIGNAL(owner, COMSIG_GHOST_VESSEL_POSSESSED, src)
 	qdel(src)

@@ -2717,14 +2717,6 @@
 /obj/machinery/light/fueled/wallfire/candle/blue/l,
 /turf/open/floor/cobble,
 /area/indoors/town/clocktower)
-"bsk" = (
-/obj/effect/landmark/bounty_location{
-	location_name = "By the Right Trains Seats";
-	name = "By the Right Trains Seats";
-	completion_range = 5
-	},
-/turf/open/floor/herringbone,
-/area/indoors/town)
 "bss" = (
 /turf/open/openspace,
 /area/indoors/town/keep)
@@ -16172,14 +16164,6 @@
 /obj/structure/table/wood/reinforced_alter,
 /turf/open/floor/hexstone,
 /area/indoors/town)
-"hOs" = (
-/obj/effect/landmark/bounty_location{
-	location_name = "End of the Cargo Docks";
-	name = "End of the Cargo Docks";
-	completion_range = 5
-	},
-/turf/open/floor/ruinedwood/spiral,
-/area/outdoors/mountains)
 "hOF" = (
 /obj/machinery/light/fueled/wallfire/candle/l,
 /turf/open/floor/cobble,
@@ -16883,14 +16867,6 @@
 	},
 /turf/open/floor/grass/cold,
 /area/outdoors/mountains)
-"iiU" = (
-/obj/effect/landmark/bounty_location{
-	location_name = "Infront of the Clinic";
-	name = "Infront of the Clinic";
-	completion_range = 5
-	},
-/turf/open/floor/cobblerock,
-/area/outdoors/town)
 "ijb" = (
 /obj/structure/stairs{
 	dir = 4
@@ -39709,14 +39685,6 @@
 	},
 /turf/open/floor/greenstone,
 /area/indoors/town/bath)
-"tmy" = (
-/obj/effect/landmark/bounty_location{
-	location_name = "By the Left Trains Seats";
-	name = "By the Left Trains Seats";
-	completion_range = 5
-	},
-/turf/open/floor/herringbone,
-/area/indoors/town)
 "tmG" = (
 /obj/structure/fluff/railing/tall/palisade,
 /obj/structure/spider/stickyweb{
@@ -43574,14 +43542,6 @@
 	},
 /turf/open/floor/carpet,
 /area/indoors/town/tavern)
-"vkE" = (
-/obj/effect/landmark/bounty_location{
-	completion_range = 5;
-	location_name = "In Front of Astrata's Statue";
-	name = "In Front of Astrata's Statue"
-	},
-/turf/open/floor/cobblerock/alt,
-/area/outdoors/town)
 "vkM" = (
 /obj/structure/table/church,
 /obj/item/candle/yellow/lit/infinite/strong/skull,
@@ -45118,7 +45078,7 @@
 /turf/open/floor/metal/alt,
 /area/indoors/town/shop)
 "vWK" = (
-/obj/structure/bounty_board,
+/obj/structure/notice_board,
 /turf/open/floor/greenstone,
 /area/under/town/sewer)
 "vWM" = (
@@ -66509,7 +66469,7 @@ vnY
 kGa
 vnY
 cqv
-tmy
+caF
 caF
 wuB
 hhK
@@ -68125,7 +68085,7 @@ vnY
 kGa
 vnY
 cqv
-bsk
+caF
 caF
 wuB
 oRF
@@ -100383,7 +100343,7 @@ tjV
 cgZ
 bZD
 pOD
-iiU
+omp
 prz
 omp
 pmI
@@ -107663,7 +107623,7 @@ jxN
 gpm
 bvL
 eBH
-vkE
+crD
 ipE
 aBN
 jxf
@@ -125812,7 +125772,7 @@ vxr
 vxr
 uVF
 eay
-hOs
+eay
 dLG
 vxr
 vxr

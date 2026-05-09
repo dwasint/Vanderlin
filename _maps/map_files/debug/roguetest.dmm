@@ -1610,14 +1610,6 @@
 /obj/structure/flora/grass,
 /turf/open/floor/grass/yel,
 /area/outdoors)
-"qg" = (
-/obj/structure/flora/ausbushes/ppflowers,
-/obj/effect/landmark/bounty_location{
-	location_name = "By the sakura tree";
-	completion_range = 5
-	},
-/turf/open/floor/grass/yel,
-/area/outdoors)
 "qi" = (
 /obj/structure/hotspring/border/five,
 /turf/open/floor/dirt/road,
@@ -2297,10 +2289,6 @@
 /obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/church/gold,
 /area/indoors/town/keep)
-"BB" = (
-/obj/effect/landmark/bounty_location/warehouse,
-/turf/open/floor/wood,
-/area/indoors)
 "BW" = (
 /obj/structure/flora/grass,
 /obj/structure/minecart_rail{
@@ -14828,7 +14816,7 @@ zE
 zg
 zg
 Ln
-qg
+jC
 QN
 FN
 ew
@@ -18439,7 +18427,7 @@ Zs
 Zx
 Zx
 Zs
-BB
+mY
 mY
 Zs
 QN

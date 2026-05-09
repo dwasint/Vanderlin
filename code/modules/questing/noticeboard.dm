@@ -10,7 +10,7 @@
 	desc = "A weathered oak board covered in pinned contracts, bounty notices, and guild announcements. The enchanted frame keeps all postings magically fresh."
 	icon = 'icons/obj/bounty_board.dmi'
 	icon_state = "bounty_board"
-	density = TRUE
+	density = FALSE
 	anchored = TRUE
 	max_integrity = 1000
 	layer = ABOVE_MOB_LAYER
@@ -287,10 +287,14 @@
 	return FALSE
 
 /// Converts a quest pool list into serialisable dicts for the UI.
+
 /obj/structure/notice_board/proc/build_quest_list(list/pool)
 	var/list/out = list()
 	for(var/datum/quest/Q as anything in pool)
 		if(QDELETED(Q) || Q.quest_receiver_reference)
+			continue
+		// Never show harlequinn internal objective quests on the public board
+		if(istype(Q, /datum/quest/custom/harlequinn_objective))
 			continue
 		out += list(list(
 			"ref" = REF(Q),

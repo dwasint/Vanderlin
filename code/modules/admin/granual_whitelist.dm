@@ -1,4 +1,4 @@
-GLOBAL_LIST_INIT(vessel_ids, list(WHITELIST_AUTOMATON))
+GLOBAL_LIST_INIT(vessel_ids, list(WHITELIST_AUTOMATON, HARLEQUINN_VESSEL_ID))
 
 /datum/whitelist_panel
 	var/datum/admins/holder
@@ -119,6 +119,8 @@ GLOBAL_LIST_INIT(vessel_ids, list(WHITELIST_AUTOMATON))
 	log_admin(msg)
 
 /client/proc/is_whitelisted(whitelist_id)
+	if(!(whitelist_id in list(WHITELIST_AUTOMATON)))
+		return TRUE
 	if(check_rights(R_ADMIN, FALSE))
 		return TRUE
 	var/datum/save_manager/SM = get_save_manager(ckey)

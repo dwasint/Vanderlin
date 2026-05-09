@@ -29,62 +29,67 @@
 	H.unequip_everything()
 	H.equipOutfit(/datum/outfit/harlequin)
 
-/datum/antagonist/harlequinn/proc/give_objectives()
-	var/list/contract_choices = list()
-	for(var/datum/bounty_contract/contract in available_contracts)
-		if(!contract.assigned_to_harlequinn && !contract.completed && !contract.failed)
-			contract_choices[contract.get_description()] = contract
 
-	if(!length(contract_choices))
+/datum/antagonist/harlequinn/proc/give_objectives()
+	var/mob/living/carbon/human/H = owner?.current
+	if(!H)
+		return
+
+	// Collect all concrete harlequinn objective subtypes
+	var/list/available_types = list()
+	for(var/datum/quest/custom/harlequinn_objective/T as anything in subtypesof(/datum/quest/custom/harlequinn_objective))
+		if(IS_ABSTRACT(T))
+			continue
+		available_types += T
+
+	if(!length(available_types))
+		// Fallback: plain survive
 		var/datum/objective/survive/surv = new()
 		surv.owner = owner
 		objectives += surv
 		return
 
-	var/contracts_selected = 0
-	while(contracts_selected < 3 && length(contract_choices))
-		var/choice = input(owner.current, "Select a contract (you can choose up to 3):", "Contract Selection") as null|anything in contract_choices + list("Finish Selection")
-
-		if(choice == "Finish Selection" || !choice)
+	// Shuffle and try up to 3
+	available_types = shuffle(available_types)
+	var/assigned = 0
+	for(var/quest_type as anything in available_types)
+		if(assigned >= 3)
 			break
 
-		var/datum/bounty_contract/selected = contract_choices[choice]
-		selected.assigned_to_harlequinn = TRUE
-		active_contracts += selected
-		contract_choices -= choice
-		contracts_selected++
+		var/datum/quest/custom/harlequinn_objective/OQ = new quest_type()
+		OQ.owning_harlequinn = WEAKREF(src)
+		OQ.generate(null)
 
+		if(!OQ.setup_for_harlequinn(src))
+			qdel(OQ)
+			continue
+
+		// Wrap in a standard objective so the antag panel works normally
 		var/datum/objective/harlequinn_contract/obj = new()
 		obj.owner = owner
-		obj.contract = selected
-		obj.explanation_text = "Complete the contract: [selected.get_description()]"
+		// Re-use harlequinn_contract objective but point it at the quest datum
+		// via a small shim — see below
+		obj.explanation_text = OQ.get_objective_text()
+		obj.linked_quest = WEAKREF(OQ)
 		objectives += obj
 
-/datum/bounty_contract/proc/get_description()
-	switch(contract_type)
-		if("theft")
-			return "Steal [target_name] for [payment] coins"
-		if("kidnapping")
-			return "Kidnap [target_name] and bring them to [delivery_location] for [payment] coins"
-		if("assassination")
-			return "Eliminate [target_name] for [payment] coins"
-		if("smuggling")
-			return "Transport contraband to [delivery_location] for [payment] coins"
-		if("sabotage")
-			return "Sabotage [target_name] for [payment] coins"
-		if("impersonation")
-			return "Impersonate [target_name] for [payment] coins"
-		if("burial")
-			return "Bury item at [delivery_location] for [payment] coins"
-	return "Unknown contract type"
+		// Store on the antag for later reference
+		active_contracts += OQ
+		assigned++
 
+	if(!assigned)
+		var/datum/objective/survive/surv = new()
+		surv.owner = owner
+		objectives += surv
 
 /datum/objective/harlequinn_contract
-	var/datum/bounty_contract/contract
+	var/datum/weakref/linked_quest // weakref to /datum/quest/custom/harlequinn_objective
 
 /datum/objective/harlequinn_contract/check_completion()
-	return contract?.completed || FALSE
-
+	var/datum/quest/custom/harlequinn_objective/OQ = linked_quest?.resolve()
+	if(OQ && !QDELETED(OQ))
+		return OQ.check_completion()
+	return FALSE
 
 /obj/item/harlequinn_disguise_kit
 	name = "professional disguise kit"

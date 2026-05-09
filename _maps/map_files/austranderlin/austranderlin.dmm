@@ -4172,7 +4172,7 @@
 /turf/open/floor/tile,
 /area/indoors/town/vault)
 "bVz" = (
-/obj/structure/bounty_board{
+/obj/structure/notice_board{
 	pixel_x = -7;
 	pixel_y = 0
 	},
@@ -10730,7 +10730,7 @@
 /turf/open/floor/grass,
 /area/outdoors/town)
 "eWb" = (
-/obj/structure/bounty_board{
+/obj/structure/notice_board{
 	pixel_x = -7;
 	pixel_y = 30
 	},
@@ -25642,14 +25642,6 @@
 	},
 /turf/open/floor/church,
 /area/indoors/town/clinic_large)
-"lNe" = (
-/obj/effect/landmark/bounty_location{
-	completion_range = 5;
-	location_name = "Infront of the Graveyard Gates";
-	name = "Infront of the Graveyard Gates"
-	},
-/turf/open/floor/cobblerock,
-/area/outdoors/town)
 "lNi" = (
 /obj/structure/table/wood/plain_alt,
 /obj/item/candle/yellow,
@@ -35485,14 +35477,6 @@
 /obj/structure/bars/bent,
 /turf/open/floor/cobblerock,
 /area/indoors/town/merc_guild)
-"qaV" = (
-/obj/effect/landmark/bounty_location{
-	completion_range = 5;
-	location_name = "By the Forest Garrisons Noose";
-	name = "By the Forest Garrisons Noose"
-	},
-/turf/open/floor/wood,
-/area/outdoors/basin/safe)
 "qbb" = (
 /turf/closed/wall/mineral/stone,
 /area/indoors/town/shop)
@@ -53612,14 +53596,6 @@
 /obj/item/bedsheet/cloth,
 /turf/open/floor/ruinedwood/spiralfade,
 /area/under/town/basement)
-"xKj" = (
-/obj/effect/landmark/bounty_location{
-	completion_range = 5;
-	location_name = "Infront of the Clinic";
-	name = "Infront of the Clinic"
-	},
-/turf/open/floor/cobble,
-/area/outdoors/town)
 "xKn" = (
 /obj/structure/closet/crate/crafted_closet,
 /obj/item/clothing/armor/leather/jacket/silk_coat,
@@ -192376,7 +192352,7 @@ eII
 osm
 gLs
 sqr
-xKj
+hZn
 mFi
 mFi
 oat
@@ -196094,7 +196070,7 @@ oiF
 oLF
 gyF
 oXW
-qaV
+oXW
 lGb
 jaQ
 rvF
@@ -205920,7 +205896,7 @@ mFi
 kwJ
 kwJ
 ele
-lNe
+mFi
 mFi
 mFi
 mFi

@@ -1,0 +1,21 @@
+
+/datum/quest/custom/harlequinn_objective
+	abstract_type = /datum/quest/custom/harlequinn_objective
+	issue_label = ""
+	custom_quest_flags = CUSTOM_QUEST_HARLEQUINN // Never on the board, only for harlequinn use
+	quest_difficulty = QUEST_DIFFICULTY_HARD
+	/// The harlequinn antag datum that owns this objective
+	var/datum/weakref/owning_harlequinn
+
+/// Called during harlequinn setup to configure this quest's target/parameters.
+/// Return TRUE on success, FALSE if generation failed (e.g. no valid targets).
+/datum/quest/custom/harlequinn_objective/proc/setup_for_harlequinn(datum/antagonist/harlequinn/antag)
+	return FALSE
+
+/datum/quest/custom/harlequinn_objective/get_location_text()
+	return "Somewhere in the realm."
+
+// These never enter the board pool so steward_validate is irrelevant,
+// but override validate() to auto-complete when check_completion() passes.
+/datum/quest/custom/harlequinn_objective/validate(mob/steward, turf/input_point)
+	return check_completion()

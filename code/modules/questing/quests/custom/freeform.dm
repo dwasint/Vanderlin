@@ -1,4 +1,3 @@
-
 /datum/quest/custom/freeform
 	issue_label = "Freeform (Manually Verified)"
 	custom_quest_flags = CUSTOM_QUEST_NOTICEBOARD | CUSTOM_QUEST_PLEDGE
