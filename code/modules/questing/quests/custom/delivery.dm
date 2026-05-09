@@ -1,13 +1,57 @@
 #define DELIVERY_PLEDGE_MAX_ITEMS 5
 
 /datum/quest/custom/delivery
+	issue_label = "Item Delivery"
+	/// Delivery quests are pledge-only, they cannot be issued directly from the board
+	/// because the items must be physically packed into the pledge scroll first.
+	custom_quest_flags = CUSTOM_QUEST_PLEDGE
 	quest_type = QUEST_CUSTOM
-	/// real_name of the recipient player.
+
 	var/delivery_target_name = ""
-	/// Items held inside this datum before the quest is claimed and the parcel spawned.
 	var/list/obj/item/pending_items = list()
-	/// Weakref to the live parcel once the quest is claimed.
 	var/datum/weakref/parcel_ref
+
+/datum/quest/custom/delivery/build_from_user(mob/user)
+	var/list/player_names = list()
+	for(var/mob/living/carbon/human/H in GLOB.player_list)
+		if(H.real_name)
+			player_names += H.real_name
+	player_names = sortList(player_names)
+	if(!length(player_names))
+		return FALSE
+
+	var/chosen = tgui_input_list(user, "Who should receive the parcel?", "Delivery Recipient", player_names)
+	if(!chosen)
+		return FALSE
+
+	if(!fill_common_fields(user))
+		return FALSE
+
+	delivery_target_name = chosen
+	quest_giver_reference = WEAKREF(user)
+	quest_giver_name = user.real_name
+
+	var/auto_title = get_title()
+	var/custom_title = tgui_input_text(user, "Give this quest a title (blank = auto):", "Quest Title", "", 80)
+	title = custom_title ? custom_title : auto_title
+	return TRUE
+
+/datum/quest/custom/delivery/build_pledge(obj/item/paper/scroll/quest/pledge/PL)
+	..()
+	PL.pledge_delivery_target = delivery_target_name
+
+/datum/quest/custom/delivery/build_from_pledge(obj/item/paper/scroll/quest/pledge/PL, mob/steward)
+	if(!..())
+		return FALSE
+	delivery_target_name = PL.pledge_delivery_target
+	if(!delivery_target_name)
+		return FALSE
+	for(var/obj/item/I in PL.packed_delivery_items)
+		if(!QDELETED(I))
+			pending_items += I
+			I.forceMove(src)
+	PL.packed_delivery_items.Cut()
+	return TRUE
 
 /datum/quest/custom/delivery/get_title()
 	if(title)

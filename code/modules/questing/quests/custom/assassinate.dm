@@ -1,8 +1,45 @@
-
 /datum/quest/custom/assassinate
+	issue_label = "Player Assassination"
+	custom_quest_flags = CUSTOM_QUEST_NOTICEBOARD | CUSTOM_QUEST_PLEDGE
 	quest_type = QUEST_CUSTOM
 	/// real_name of the player to eliminate.
 	var/target_player_name = ""
+
+/datum/quest/custom/assassinate/build_from_user(mob/user)
+	var/list/player_names = list()
+	for(var/mob/living/carbon/human/H in GLOB.player_list)
+		if(H.real_name)
+			player_names += H.real_name
+	player_names = sortList(player_names)
+	if(!length(player_names))
+		return FALSE // caller displays "no valid targets"
+
+	var/target_name = tgui_input_list(user, "Select the assassination target:", "Target", player_names)
+	if(!target_name)
+		return FALSE
+	if(!fill_common_fields(user))
+		return FALSE
+
+	target_player_name = target_name
+	quest_giver_reference = WEAKREF(user)
+	quest_giver_name = user.real_name
+
+	var/auto_title = get_title()
+	var/custom_title = tgui_input_text(user, "Give this quest a title (blank = auto):", "Quest Title", "", 80)
+	title = custom_title ? custom_title : auto_title
+	return TRUE
+
+/datum/quest/custom/assassinate/build_from_pledge(obj/item/paper/scroll/quest/pledge/PL, mob/steward)
+	if(!..()) // writes difficulty, reward, title, giver
+		return FALSE
+	target_player_name = PL.pledge_assassin_target
+	if(!target_player_name)
+		return FALSE
+	return TRUE
+
+/datum/quest/custom/assassinate/build_pledge(obj/item/paper/scroll/quest/pledge/PL)
+	..()
+	PL.pledge_assassin_target = target_player_name
 
 /datum/quest/custom/assassinate/get_title()
 	if(title)
@@ -20,10 +57,10 @@
 	if(!title)
 		title = get_title()
 	progress_required = 1
-	_register_death_signals()
+	register_death_signals()
 	return TRUE
 
-/datum/quest/custom/assassinate/proc/_register_death_signals()
+/datum/quest/custom/assassinate/proc/register_death_signals()
 	for(var/mob/living/carbon/human/H in GLOB.player_list)
 		if(H.real_name == target_player_name)
 			RegisterSignal(H, COMSIG_LIVING_DEATH, PROC_REF(on_target_death))

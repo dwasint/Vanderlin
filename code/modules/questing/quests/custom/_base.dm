@@ -1,30 +1,18 @@
-#define CUSTOM_MODE_ITEM "item"
-#define CUSTOM_MODE_FREEFORM "freeform"
-
 /datum/quest/custom
 	quest_type = QUEST_CUSTOM
 	quest_difficulty = QUEST_DIFFICULTY_EASY
-	var/custom_mode = CUSTOM_MODE_FREEFORM
-	var/obj/item/custom_item_type
-	var/custom_item_name = ""
-	var/custom_item_count = 1
-	var/custom_objective_text = ""
-	var/steward_validated = FALSE
-
+	/// Bitfield of CUSTOM_QUEST_* flags — controls where this type can be issued from.
+	var/custom_quest_flags = CUSTOM_QUEST_NOTICEBOARD | CUSTOM_QUEST_PLEDGE
+	/// Label shown in the quest-type picker. Must be set on each concrete subtype.
+	var/issue_label = ""
 	/// Weakref to the /obj/item/paper/scroll/quest/pledge that created this quest, if any.
 	var/datum/weakref/pledge_ref
 
 /datum/quest/custom/get_title()
-	if(title)
-		return title
-	if(custom_mode == CUSTOM_MODE_ITEM)
-		return "Procure [custom_item_count > 1 ? "[custom_item_count]x " : ""][custom_item_name]"
-	return "Special Commission"
+	return title ? title : "Special Commission"
 
 /datum/quest/custom/get_objective_text()
-	if(custom_mode == CUSTOM_MODE_ITEM)
-		return "Bring [custom_item_count] [custom_item_name] to [quest_giver_name ? quest_giver_name : "the steward"]."
-	return custom_objective_text ? custom_objective_text : "Speak with [quest_giver_name ? quest_giver_name : "the steward"] for details."
+	return "Speak with [quest_giver_name ? quest_giver_name : "the steward"] for details."
 
 /datum/quest/custom/get_location_text()
 	return "Speak to [quest_giver_name ? quest_giver_name : "the steward"] for instructions."
@@ -36,13 +24,50 @@
 		var/datum/threat_region/TR = SSregionthreat.get_region_for_turf(get_turf(landmark))
 		if(TR)
 			threat_region_name = TR.region_name
-	progress_required = (custom_mode == CUSTOM_MODE_ITEM) ? custom_item_count : 1
+	progress_required = 1
 	return TRUE
 
 /datum/quest/custom/check_completion()
-	if(custom_mode == CUSTOM_MODE_ITEM)
-		return progress_current >= progress_required
-	return steward_validated
+	return progress_current >= progress_required
+
+/**
+ * Interactive builder: called when a steward issues this quest from the notice board.
+ * Handles all tgui prompts needed to fully configure the datum.
+ * fill_common_fields() should be called inside here for difficulty + reward.
+ * Returns TRUE on success, FALSE if the user cancelled or input was invalid.
+ */
+/datum/quest/custom/proc/build_from_user(mob/user)
+	return FALSE
+
+/**
+ * Non-interactive builder: called when a sealed pledge scroll is posted to the board.
+ * Copies pledge fields onto this datum. Subtypes call ..() then fill their own vars.
+ * Returns TRUE on success, FALSE if required pledge data is missing.
+ */
+/datum/quest/custom/proc/build_from_pledge(obj/item/paper/scroll/quest/pledge/PL, mob/steward)
+	quest_difficulty = PL.pledge_difficulty
+	reward_amount = PL.escrowed_mammons
+	title = PL.pledge_title
+	quest_giver_reference = WEAKREF(steward)
+	quest_giver_name = steward.real_name
+	return TRUE
+
+/datum/quest/custom/proc/build_pledge(obj/item/paper/scroll/quest/pledge/PL)
+	PL.pledge_difficulty = quest_difficulty
+	PL.pledge_reward = reward_amount
+	PL.pledge_title = title
+
+/**
+ * Validate a turn-in at the board's input_point.
+ * The default falls through to manual steward validation.
+ * Subtypes that do automatic checking (items, reagents) override this.
+ * Returns TRUE if the quest was completed by this call.
+ */
+/datum/quest/custom/proc/validate(mob/steward, turf/input_point)
+	return steward_validate(steward)
+
+/datum/quest/custom/proc/on_validate_fail(mob/steward, turf/input_point, atom/movable/talker)
+	talker.say("Validation failed for \"[title]\". Ensure the required items or conditions are met.")
 
 /datum/quest/custom/proc/steward_validate(mob/steward)
 	if(!ishuman(steward))
@@ -54,37 +79,26 @@
 	if(complete)
 		to_chat(steward, span_notice("This quest is already complete."))
 		return FALSE
-	steward_validated = TRUE
 	log_quest(steward.ckey, steward.mind, steward, "Validate custom quest: [title]")
 	mark_complete()
 	to_chat(steward, span_notice("You validate \"[title]\" as complete."))
 	return TRUE
 
-/datum/quest/custom/proc/check_item_turnin(list/items_on_marker, turf/input_point)
-	if(custom_mode != CUSTOM_MODE_ITEM || !custom_item_type)
+/// Shared helper — asks for difficulty + reward and writes them onto the datum.
+/// Returns TRUE if the user completed both prompts.
+/datum/quest/custom/proc/fill_common_fields(mob/user)
+	var/list/diff_choices = list(QUEST_DIFFICULTY_EASY, QUEST_DIFFICULTY_MEDIUM, QUEST_DIFFICULTY_HARD)
+	var/diff = tgui_input_list(user, "Quest difficulty?", "Custom Quest Difficulty", diff_choices)
+	if(!diff)
 		return FALSE
-	var/count = 0
-	for(var/obj/item/I in items_on_marker)
-		if(istype(I, custom_item_type))
-			count++
-	if(count < custom_item_count)
+	quest_difficulty = diff
+
+	var/suggested_reward = get_base_reward()
+	var/reward = tgui_input_number(user,
+		"Set the reward (mammons). Suggested: [suggested_reward]",
+		"Reward", suggested_reward, 9999, 1)
+	if(!reward || reward < 1)
 		return FALSE
 
-	var/obj/item/quest_package/P = new(input_point)
-	P.name = "quest parcel ([custom_item_name])"
-	P.quest_title = title
-	// If this was pledge-backed, store the ref so only that pledgee(?) can open it.
-	P.pledge_ref = pledge_ref
-
-	var/consumed = 0
-	for(var/obj/item/I in items_on_marker)
-		if(istype(I, custom_item_type) && consumed < custom_item_count)
-			I.forceMove(P)
-			consumed++
-
-	progress_current = progress_required
-	mark_complete()
+	reward_amount = reward
 	return TRUE
-
-#undef CUSTOM_MODE_ITEM
-#undef CUSTOM_MODE_FREEFORM

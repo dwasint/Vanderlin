@@ -3735,6 +3735,8 @@
 #include "code\modules\questing\quests\custom\_base.dm"
 #include "code\modules\questing\quests\custom\assassinate.dm"
 #include "code\modules\questing\quests\custom\delivery.dm"
+#include "code\modules\questing\quests\custom\freeform.dm"
+#include "code\modules\questing\quests\custom\item_collection.dm"
 #include "code\modules\questing\quests\custom\reagents.dm"
 #include "code\modules\questing\quests\kill\_kill_base.dm"
 #include "code\modules\questing\quests\kill\clearout.dm"

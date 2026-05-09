@@ -1,13 +1,69 @@
 #define CUSTOM_MODE_REAGENT "reagent"
 
 /datum/quest/custom/reagent
-	custom_mode = CUSTOM_MODE_REAGENT
+	issue_label = "Liquid Collection"
+	custom_quest_flags = CUSTOM_QUEST_NOTICEBOARD | CUSTOM_QUEST_PLEDGE
+	quest_type = QUEST_CUSTOM
 
-	var/reagent_type_path = null  // type path, e.g. /datum/reagent/consumable/coffee
+	var/reagent_type_path = null
 	var/reagent_name = ""
 	var/reagent_volume_required = 10
 	var/reagent_volume_current = 0
 
+/datum/quest/custom/reagent/build_from_user(mob/user)
+	if(!fill_common_fields(user))
+		return FALSE
+
+	var/search_query = tgui_input_text(user, "Search for the reagent:", "Reagent Search", "", 60)
+	if(!search_query)
+		return FALSE
+
+	var/list/results = search_reagent_types_global(search_query)
+	if(!length(results))
+		return FALSE // caller displays "no results"
+
+	var/chosen_name = tgui_input_list(user, "Select the reagent:", "Reagent Search Results", results)
+	if(!chosen_name)
+		return FALSE
+
+	reagent_type_path = results[chosen_name]
+	reagent_name = chosen_name
+
+	var/volume = tgui_input_number(user,
+		"How many ligulae of [chosen_name] are needed? (max 100)",
+		"Reagent Volume", 10, 100, 1)
+	if(!volume || volume < 1)
+		return FALSE
+
+	reagent_volume_required = volume
+	progress_required = volume
+	quest_giver_reference = WEAKREF(user)
+	quest_giver_name = user.real_name
+
+	var/auto_title = get_title()
+	var/custom_title = tgui_input_text(user, "Give this quest a title (blank = auto):", "Quest Title", "", 80)
+	title = custom_title ? custom_title : auto_title
+	return TRUE
+
+/datum/quest/custom/reagent/build_from_pledge(obj/item/paper/scroll/quest/pledge/PL, mob/steward)
+	if(!..())
+		return FALSE
+	reagent_type_path = PL.pledge_reagent_type
+	reagent_name = PL.pledge_reagent_name
+	reagent_volume_required = PL.pledge_reagent_volume
+	progress_required = PL.pledge_reagent_volume
+	if(!reagent_type_path || !reagent_name)
+		return FALSE
+	return TRUE
+
+/datum/quest/custom/reagent/build_pledge(obj/item/paper/scroll/quest/pledge/PL)
+	..()
+	PL.pledge_reagent_type = reagent_type_path
+	PL.pledge_reagent_name = reagent_name
+	PL.pledge_reagent_volume = reagent_volume_required
+
+/datum/quest/custom/reagent/validate(mob/steward, turf/input_point)
+	return check_reagent_turnin(input_point)
 
 /datum/quest/custom/reagent/get_title()
 	if(title)

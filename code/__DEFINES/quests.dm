@@ -74,3 +74,8 @@
 	/mob/living/carbon/human/species/elf/dark/drowraider = 5, \
 	/mob/living/carbon/human/species/human/northern/bog_deserters = 5,\
 )
+
+/// This quest type can be issued directly from the notice board by a steward.
+#define CUSTOM_QUEST_NOTICEBOARD (1<<0)
+/// This quest type can be created via a player-written pledge scroll.
+#define CUSTOM_QUEST_PLEDGE      (1<<1)

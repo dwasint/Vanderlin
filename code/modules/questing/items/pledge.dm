@@ -10,7 +10,7 @@
 
 	var/pledge_state = PLEDGE_BLANK
 
-	var/pledge_reagent_type = null  // type path
+	var/pledge_reagent_type = null // type path
 	var/pledge_reagent_name = ""
 	var/pledge_reagent_volume = 10
 
@@ -87,122 +87,45 @@
 			to_chat(user, span_warning("This pledge has already been posted. It cannot be altered."))
 
 /obj/item/paper/scroll/quest/pledge/proc/do_fill_out(mob/user)
-	var/list/mode_choices = list(
-		"Item Collection",
-		"Freeform (Manually Verified)",
-		"Player Assassination",
-		"Item Delivery",
-		"Liquid Collection",
-	)
-	var/mode_choice = tgui_input_list(user, "What kind of quest are you commissioning?", "Quest Pledge", mode_choices)
+	var/list/available = list()
+	for(var/datum/quest/custom/t as anything in subtypesof(/datum/quest/custom))
+		if(IS_ABSTRACT(t))
+			continue
+		var/label = initial(t.issue_label)
+		if(!label)
+			continue
+		if(!(initial(t.custom_quest_flags) & CUSTOM_QUEST_PLEDGE))
+			continue
+		available += label
+
+	var/mode_choice = tgui_input_list(user, "What kind of quest are you commissioning?", "Quest Pledge", available)
 	if(!mode_choice)
 		return
 
-	var/list/diff_choices = list(QUEST_DIFFICULTY_EASY, QUEST_DIFFICULTY_MEDIUM, QUEST_DIFFICULTY_HARD)
-	var/diff = tgui_input_list(user, "Difficulty level?", "Quest Pledge Difficulty", diff_choices)
-	if(!diff)
+	var/quest_path
+	for(var/datum/quest/custom/t as anything in subtypesof(/datum/quest/custom))
+		if(IS_ABSTRACT(t))
+			continue
+		if(initial(t.issue_label) == mode_choice)
+			quest_path = t
+			break
+
+	var/datum/quest/custom/CQ = new quest_path()
+	if(!CQ.build_from_user(user))
+		qdel(CQ)
 		return
 
-	var/min_reward = get_min_reward(diff)
-	var/offered = tgui_input_number(user,
-		"How many mammons will you offer? (Minimum for [diff]: [min_reward])",
-		"Quest Reward", max(pledge_reward, min_reward), 9999, min_reward)
-	if(!offered || offered < min_reward)
-		to_chat(user, span_warning("Reward must be at least [min_reward] mammons for a [diff] quest."))
-		return
+	pledge_mode = mode_choice
+	CQ.build_pledge(src)
+	qdel(CQ)
 
-	switch(mode_choice)
-		if("Item Collection")
-			var/search_query = tgui_input_text(user, "Search for the item adventurers must bring:", "Item Search", pledge_item_name, 60)
-			if(!search_query)
-				return
-			var/list/results = search_item_types_global(search_query)
-			if(!length(results))
-				to_chat(user, span_warning("No items found matching '[search_query]'."))
-				return
-			var/chosen_name = tgui_input_list(user, "Select the item:", "Item Search Results", results)
-			if(!chosen_name)
-				return
-			var/count = tgui_input_number(user, "How many [chosen_name] are needed?", "Item Count", max(pledge_item_count, 1), 10, 1)
-			if(!count || count < 1)
-				return
-			pledge_mode = "item"
-			pledge_item_type = results[chosen_name]
-			pledge_item_name = chosen_name
-			pledge_item_count = count
-
-		if("Freeform (Manually Verified)")
-			var/obj_text = tgui_input_text(user, "Describe what the adventurer must do:", "Quest Objective", pledge_objective, 200)
-			if(!obj_text)
-				return
-			pledge_mode = "freeform"
-			pledge_objective = obj_text
-
-		if("Player Assassination")
-			var/list/player_names = list()
-			for(var/mob/living/carbon/human/H in GLOB.player_list)
-				if(H.real_name)
-					player_names += H.real_name
-			player_names = sortList(player_names)
-			if(!length(player_names))
-				to_chat(user, span_warning("No valid targets are currently online."))
-				return
-			var/chosen = tgui_input_list(user, "Select the target:", "Assassination Target", player_names)
-			if(!chosen)
-				return
-			pledge_mode = "assassinate"
-			pledge_assassin_target = chosen
-
-		if("Item Delivery")
-			var/list/player_names = list()
-			for(var/mob/living/carbon/human/H in GLOB.player_list)
-				if(H.real_name)
-					player_names += H.real_name
-			player_names = sortList(player_names)
-			if(!length(player_names))
-				to_chat(user, span_warning("No valid recipients are currently online."))
-				return
-			var/chosen = tgui_input_list(user, "Who should receive the parcel?", "Delivery Recipient", player_names)
-			if(!chosen)
-				return
-			pledge_mode = "delivery"
-			pledge_delivery_target = chosen
-			to_chat(user, span_notice("Recipient set to [chosen]. Attack this pledge with up to 5 items to pack them, then seal it."))
-
-		if("Liquid Collection")
-			var/search_query = tgui_input_text(user, "Search for the reagent adventurers must bring:", "Reagent Search", pledge_reagent_name, 60)
-			if(!search_query)
-				return
-			var/list/results = search_reagent_types_global(search_query)
-			if(!length(results))
-				to_chat(user, span_warning("No reagents found matching '[search_query]'."))
-				return
-			var/chosen_name = tgui_input_list(user, "Select the reagent:", "Reagent Search Results", results)
-			if(!chosen_name)
-				return
-			var/volume = tgui_input_number(user,
-				"How many ligulae of [chosen_name] are needed? (max 100)",
-				"Reagent Volume", max(pledge_reagent_volume, 10), 100, 1)
-			if(!volume || volume < 1)
-				return
-			pledge_mode = "reagent"
-			pledge_reagent_type = results[chosen_name]
-			pledge_reagent_name = chosen_name
-			pledge_reagent_volume = volume
-
-
-	var/auto_title = generate_pledge_title()
-	var/custom_title = tgui_input_text(user, "Give this quest a title (blank = auto):", "Quest Title", pledge_title, 80)
-	pledge_title = custom_title ? custom_title : auto_title
-	pledge_difficulty = diff
-	pledge_reward = offered
 	pledge_state = PLEDGE_FILLED
 	name = "quest pledge: [pledge_title]"
 	desc = "A filled quest pledge offering [pledge_reward] mammons. Seal it to commit the coins."
 	to_chat(user, span_notice("Pledge filled out. Activate in hand again to seal and commit your coins."))
 
 /obj/item/paper/scroll/quest/pledge/attackby(obj/item/I, mob/living/carbon/human/user, params)
-	if(pledge_mode == "delivery" && pledge_state == PLEDGE_FILLED)
+	if(pledge_mode == "Item Delivery" && pledge_state == PLEDGE_FILLED)
 		if(!(I in user))
 			return ..()
 		if(length(packed_delivery_items) >= 5)
@@ -259,123 +182,40 @@
 	if(pledge_state != PLEDGE_SEALED)
 		to_chat(steward, span_warning("This pledge isn't sealed yet."))
 		return null
-
 	if(!escrowed_mammons || escrowed_mammons < 1)
 		to_chat(steward, span_warning("No coins are escrowed in this pledge."))
 		return null
 
-	// Build the quest datum
-	var/datum/quest/custom/CQ = new()
-	CQ.quest_difficulty = pledge_difficulty
-	CQ.reward_amount = escrowed_mammons // whatever was locked in
-	CQ.custom_mode = pledge_mode
-	CQ.title = pledge_title
-	CQ.quest_giver_reference = WEAKREF(steward) // steward is responsible for validation
-	CQ.quest_giver_name = steward.real_name
+	// Find the subtype whose issue_label matches pledge_mode.
+	// Pledge mode strings still correspond to issue_label values set on each subtype,
+	// so no string table is needed — we iterate subtypes exactly once.
+	var/quest_path
+	for(var/datum/quest/custom/t as anything in subtypesof(/datum/quest/custom))
+		if(IS_ABSTRACT(t))
+			continue
+		// Match on the pledge_mode field; pledge_mode is set from the issue_label
+		// when do_fill_out() runs (see bottom of this proc's notes).
+		if(initial(t.issue_label) == pledge_mode)
+			quest_path = t
+			break
 
-	switch(pledge_mode)
-		if("assassinate")
-			if(!pledge_assassin_target)
-				to_chat(steward, span_warning("No assassination target is recorded in this pledge."))
-				return null
-			if(pledge_state != PLEDGE_SEALED || !escrowed_mammons)
-				to_chat(steward, span_warning("This pledge isn't sealed yet."))
-				return null
-			var/datum/quest/custom/assassinate/AQ = new()
-			AQ.quest_difficulty = pledge_difficulty
-			AQ.reward_amount = escrowed_mammons
-			AQ.title = pledge_title
-			AQ.quest_giver_reference = WEAKREF(steward)
-			AQ.quest_giver_name = steward.real_name
-			AQ.target_player_name = pledge_assassin_target
-			AQ.custom_mode = "assassinate"
-			if(!SSquestboard.issue_custom_quest_funded(steward, AQ, escrowed_mammons))
-				to_chat(steward, span_warning("The board couldn't accept this pledge right now."))
-				qdel(AQ)
-				return null
-			escrowed_mammons = 0
-			pledge_state = PLEDGE_POSTED
-			posted_quest_ref = WEAKREF(AQ)
-			name = "posted quest pledge: [pledge_title]"
-			desc = "This pledge has been accepted by the guild. The quest is now live on the board."
-			AQ.generate(null)
-			AQ.pledge_ref = WEAKREF(src)
-			return AQ
+	if(!quest_path)
+		to_chat(steward, span_warning("Unrecognised quest mode \"[pledge_mode]\" in this pledge."))
+		return null
 
-		if("delivery")
-			if(!pledge_delivery_target)
-				to_chat(steward, span_warning("No delivery recipient is recorded in this pledge."))
-				return null
-			if(pledge_state != PLEDGE_SEALED || !escrowed_mammons)
-				to_chat(steward, span_warning("This pledge isn't sealed yet."))
-				return null
-			var/datum/quest/custom/delivery/DQ = new()
-			DQ.quest_difficulty = pledge_difficulty
-			DQ.reward_amount = escrowed_mammons
-			DQ.title = pledge_title
-			DQ.quest_giver_reference = WEAKREF(steward)
-			DQ.quest_giver_name = steward.real_name
-			DQ.delivery_target_name = pledge_delivery_target
-			DQ.custom_mode = "delivery"
-			for(var/obj/item/I in packed_delivery_items)
-				if(!QDELETED(I))
-					DQ.pending_items += I
-					I.forceMove(DQ)
-			packed_delivery_items.Cut()
-			if(!SSquestboard.issue_custom_quest_funded(steward, DQ, escrowed_mammons))
-				to_chat(steward, span_warning("The board couldn't accept this pledge right now."))
-				for(var/obj/item/I in DQ.pending_items)
-					I.forceMove(get_turf(steward))
-				qdel(DQ)
-				return null
-			escrowed_mammons = 0
-			pledge_state = PLEDGE_POSTED
-			posted_quest_ref = WEAKREF(DQ)
-			name = "posted quest pledge: [pledge_title]"
-			desc = "This pledge has been accepted by the guild. The quest is now live on the board."
-			DQ.generate(null)
-			DQ.pledge_ref = WEAKREF(src)
-			return DQ
-		if("item")
-			CQ.custom_item_type = pledge_item_type
-			CQ.custom_item_name = pledge_item_name
-			CQ.custom_item_count = pledge_item_count
-			CQ.progress_required = pledge_item_count
+	var/datum/quest/custom/CQ = new quest_path()
+	if(!CQ.build_from_pledge(src, steward))
+		to_chat(steward, span_warning("Could not build the quest from this pledge. Check all required fields are filled."))
+		qdel(CQ)
+		return null
 
-		if("reagent")
-			if(!pledge_reagent_type || !pledge_reagent_name)
-				to_chat(steward, span_warning("No reagent is recorded in this pledge."))
-				return null
-			var/datum/quest/custom/reagent/RQ = new()
-			RQ.quest_difficulty = pledge_difficulty
-			RQ.reward_amount = escrowed_mammons
-			RQ.title = pledge_title
-			RQ.quest_giver_reference = WEAKREF(steward)
-			RQ.quest_giver_name = steward.real_name
-			RQ.reagent_type_path = pledge_reagent_type
-			RQ.reagent_name = pledge_reagent_name
-			RQ.reagent_volume_required = pledge_reagent_volume
-			RQ.progress_required = pledge_reagent_volume
-			RQ.custom_mode = "reagent"
-			if(!SSquestboard.issue_custom_quest_funded(steward, RQ, escrowed_mammons))
-				to_chat(steward, span_warning("The board couldn't accept this pledge right now."))
-				qdel(RQ)
-				return null
-			escrowed_mammons = 0
-			pledge_state = PLEDGE_POSTED
-			posted_quest_ref = WEAKREF(RQ)
-			name = "posted quest pledge: [pledge_title]"
-			desc = "This pledge has been accepted by the guild. The quest is now live on the board."
-			RQ.generate(null)
-			RQ.pledge_ref = WEAKREF(src)
-			return RQ
-
-		else
-			CQ.custom_objective_text = pledge_objective
-
-	// Fund the quest from escrowed coins (bypass normal treasury check)
 	if(!SSquestboard.issue_custom_quest_funded(steward, CQ, escrowed_mammons))
 		to_chat(steward, span_warning("The board couldn't accept this pledge right now."))
+		// Return packed items to the turf if it was a delivery quest
+		if(istype(CQ, /datum/quest/custom/delivery))
+			var/datum/quest/custom/delivery/DQ = CQ
+			for(var/obj/item/I in DQ.pending_items)
+				I.forceMove(get_turf(steward))
 		qdel(CQ)
 		return null
 
@@ -434,7 +274,7 @@
 			continue
 		var/rname = lowertext(initial(reagent_type.name))
 		if(findtext(rname, query))
-			results[initial(reagent_type.name)] = reagent_type  // type path as value
+			results[initial(reagent_type.name)] = reagent_type // type path as value
 			if(length(results) >= 20)
 				break
 	return results

@@ -108,7 +108,7 @@
 						"ref" = REF(CQ),
 						"title" = CQ.title,
 						"difficulty" = CQ.quest_difficulty,
-						"mode" = CQ.custom_mode,
+						"mode" = CQ.issue_label,
 						"receiver" = null,
 						"claimed" = FALSE,
 					))
@@ -122,7 +122,7 @@
 				"ref" = REF(CQ),
 				"title" = CQ.title,
 				"difficulty" = CQ.quest_difficulty,
-				"mode" = CQ.custom_mode,
+				"mode" = CQ.issue_label,
 				"receiver" = CQ.quest_receiver_name,
 				"claimed" = TRUE,
 			))
@@ -451,29 +451,31 @@
 	qdel(Q)
 	qdel(scroll)
 
+
 /obj/structure/notice_board/proc/issue_custom_quest(mob/user)
-	var/list/mode_choices = list(
-		"Item Collection",
-		"Freeform (Manually Verified)",
-		"Player Assassination",
-		"Liquid Collection",
-	)
-	var/mode_choice = tgui_input_list(user, "What kind of custom quest?", "Custom Quest", mode_choices)
+	// Build the picker list dynamically from all concrete subtypes
+	// that carry the CUSTOM_QUEST_NOTICEBOARD flag.
+	var/list/available = list() // label -> type path
+	for(var/datum/quest/custom/quest_type as anything in subtypesof(/datum/quest/custom))
+		if(IS_ABSTRACT(quest_type))
+			continue
+		var/label = initial(quest_type.issue_label)
+		if(!label)
+			continue
+		var/flags = initial(quest_type.custom_quest_flags)
+		if(!(flags & CUSTOM_QUEST_NOTICEBOARD))
+			continue
+		available[label] = quest_type
+
+	var/mode_choice = tgui_input_list(user, "What kind of custom quest?", "Custom Quest", available)
 	if(!mode_choice)
 		return
 
-	var/datum/quest/custom/CQ
-	switch(mode_choice)
-		if("Player Assassination")
-			CQ = build_assassinate_quest(user)
-		if("Item Collection")
-			CQ = build_item_collection_quest(user)
-		if("Freeform (Manually Verified)")
-			CQ = build_freeform_quest(user)
-		if("Liquid Collection")
-			CQ = build_reagent_quest(user)
+	var/quest_path = available[mode_choice]
+	var/datum/quest/custom/CQ = new quest_path()
 
-	if(!CQ)
+	if(!CQ.build_from_user(user))
+		qdel(CQ)
 		return
 
 	if(!SSquestboard.issue_custom_quest(user, CQ))
@@ -482,153 +484,6 @@
 		return
 
 	CQ.generate(null)
-
-/obj/structure/notice_board/proc/build_assassinate_quest(mob/user)
-	var/list/player_names = list()
-	for(var/mob/living/carbon/human/H in GLOB.player_list)
-		if(H.real_name)
-			player_names += H.real_name
-	player_names = sortList(player_names)
-
-	if(!length(player_names))
-		say("No valid targets are online at the moment.")
-		return null
-
-	var/target_name = tgui_input_list(user, "Select the assassination target:", "Target", player_names)
-	if(!target_name)
-		return null
-
-	var/datum/quest/custom/assassinate/AQ = new()
-	if(!fill_quest_reward(user, AQ))
-		qdel(AQ)
-		return null
-
-	AQ.target_player_name = target_name
-	AQ.quest_giver_reference = WEAKREF(user)
-	AQ.quest_giver_name = user.real_name
-	AQ.custom_mode = "assassinate"
-
-	var/auto_title = AQ.get_title()
-	var/custom_title = tgui_input_text(user, "Give this quest a title (blank = auto):", "Quest Title", "", 80)
-	AQ.title = custom_title ? custom_title : auto_title
-	return AQ
-
-/obj/structure/notice_board/proc/build_reagent_quest(mob/user)
-	var/datum/quest/custom/reagent/CQ = new()
-
-	if(!fill_quest_reward(user, CQ))
-		qdel(CQ)
-		return null
-
-	var/search_query = tgui_input_text(user, "Search for the reagent:", "Reagent Search", "", 60)
-	if(!search_query)
-		qdel(CQ)
-		return null
-
-	var/list/results = search_reagent_types(search_query)
-	if(!length(results))
-		say("No reagents found matching '[search_query]'.")
-		qdel(CQ)
-		return null
-
-	var/chosen_name = tgui_input_list(user, "Select the reagent:", "Reagent Search Results", results)
-	if(!chosen_name)
-		qdel(CQ)
-		return null
-
-	CQ.reagent_type_path = results[chosen_name]
-	CQ.reagent_name = chosen_name
-
-	var/volume = tgui_input_number(user,
-		"How many ligulae of [chosen_name] are needed? (max 100)",
-		"Reagent Volume", 10, 100, 1)
-	if(!volume || volume < 1)
-		qdel(CQ)
-		return null
-
-	CQ.reagent_volume_required = volume
-	CQ.progress_required = volume
-	CQ.quest_giver_reference = WEAKREF(user)
-	CQ.quest_giver_name = user.real_name
-
-	var/auto_title = CQ.get_title()
-	var/custom_title = tgui_input_text(user, "Give this quest a title (blank = auto):", "Quest Title", "", 80)
-	CQ.title = custom_title ? custom_title : auto_title
-	return CQ
-
-/obj/structure/notice_board/proc/search_reagent_types(query)
-	var/list/results = list()
-	query = lowertext(query)
-	for(var/datum/reagent/reagent_type as anything in subtypesof(/datum/reagent))
-		if(IS_ABSTRACT(reagent_type))
-			continue
-		var/rname = lowertext(initial(reagent_type.name))
-		if(findtext(rname, query))
-			results[initial(reagent_type.name)] = reagent_type  // type path as value
-			if(length(results) >= 20)
-				break
-	return results
-
-/obj/structure/notice_board/proc/build_item_collection_quest(mob/user)
-	var/datum/quest/custom/CQ = new()
-	CQ.custom_mode = "item"
-	if(!fill_quest_reward(user, CQ))
-		qdel(CQ)
-		return null
-
-	var/search_query = tgui_input_text(user, "Search for the item:", "Item Search", "", 60)
-	if(!search_query)
-		qdel(CQ)
-		return null
-
-	var/list/results = search_item_types(search_query)
-	if(!length(results))
-		say("No items found matching '[search_query]'.")
-		qdel(CQ)
-		return null
-
-	var/chosen_name = tgui_input_list(user, "Select the item:", "Item Search Results", results)
-	if(!chosen_name)
-		qdel(CQ)
-		return null
-
-	CQ.custom_item_type = results[chosen_name]
-	CQ.custom_item_name = chosen_name
-	var/count = tgui_input_number(user, "How many [chosen_name] are needed?", "Item Count", 1, 10, 1)
-	if(!count || count < 1)
-		qdel(CQ)
-		return null
-
-	CQ.custom_item_count = count
-	CQ.progress_required = count
-	CQ.quest_giver_reference = WEAKREF(user)
-	CQ.quest_giver_name = user.real_name
-
-	var/auto_title = CQ.get_title()
-	var/custom_title = tgui_input_text(user, "Give this quest a title:", "Quest Title", "", 80)
-	CQ.title = custom_title ? custom_title : auto_title
-	return CQ
-
-/obj/structure/notice_board/proc/build_freeform_quest(mob/user)
-	var/datum/quest/custom/CQ = new()
-	CQ.custom_mode = "freeform"
-	if(!fill_quest_reward(user, CQ))
-		qdel(CQ)
-		return null
-
-	var/obj_text = tgui_input_text(user, "Describe what the adventurer must do:", "Quest Objective", "", 200)
-	if(!obj_text)
-		qdel(CQ)
-		return null
-
-	CQ.custom_objective_text = obj_text
-	CQ.quest_giver_reference = WEAKREF(user)
-	CQ.quest_giver_name = user.real_name
-
-	var/auto_title = CQ.get_title()
-	var/custom_title = tgui_input_text(user, "Give this quest a title:", "Quest Title", "", 80)
-	CQ.title = custom_title ? custom_title : auto_title
-	return CQ
 
 /obj/structure/notice_board/proc/fill_quest_reward(mob/user, datum/quest/custom/CQ)
 	var/list/diff_choices = list(QUEST_DIFFICULTY_EASY, QUEST_DIFFICULTY_MEDIUM, QUEST_DIFFICULTY_HARD)
@@ -646,29 +501,10 @@
 	return TRUE
 
 /obj/structure/notice_board/proc/do_validate_custom(mob/user, datum/quest/custom/target)
-	if(istype(target, /datum/quest/custom/reagent))
-		var/datum/quest/custom/reagent/RQ = target
-		if(RQ.check_reagent_turnin(input_point))
-			say("Liquids verified! Quest \"[RQ.title]\" marked as complete.")
-		else
-			var/still_needed = RQ.reagent_volume_required - RQ.reagent_volume_current
-			say("Not enough [RQ.reagent_name] on the marker. Still need [still_needed] ligulae \
-				(have [RQ.reagent_volume_current]u of [RQ.reagent_volume_required] ligulae).")
-		return
-
-	if(target.custom_mode == "item")
-		var/list/items_on_marker = list()
-		for(var/obj/item/I in input_point)
-			items_on_marker += I
-		if(length(items_on_marker) && target.check_item_turnin(items_on_marker, input_point))
-			say("Items verified! Quest \"[target.title]\" marked as complete.")
-		else
-			say("I don't see [target.custom_item_count] [target.custom_item_name] on the marker.")
-		return
-
-	target.steward_validate(user)
-	if(target.complete)
+	if(target.validate(user, input_point))
 		say("Quest \"[target.title]\" validated and marked complete. The adventurer may claim their reward.")
+	else
+		target.on_validate_fail(user, input_point, src) // subtypes can emit a specific failure message
 
 /obj/structure/notice_board/proc/is_quest_giver(mob/user)
 	var/datum/job/mob_job = user.job ? SSjob.GetJob(user.job) : null
