@@ -135,7 +135,7 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 
 /// Broadcast a message to the player's screen
 /datum/tutorial/proc/message_to_player(message)
-	tutorial_mob.play_screen_text(message, /atom/movable/screen/text/screen_text/command_order/tutorial, rgb(103, 214, 146))
+	tutorial_mob.play_screen_text(message, /atom/movable/screen/text/screen_text/tutorial, rgb(103, 214, 146))
 	to_chat(tutorial_mob, span_notice(message))
 
 /// Updates a player's objective in their status tab
