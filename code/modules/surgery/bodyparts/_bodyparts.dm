@@ -1565,6 +1565,37 @@
 		return internal_incision
 	return incision
 
+/obj/item/bodypart/proc/get_cut(strict = FALSE, ignore_gauze = FALSE)
+	if(ignore_gauze && (bandage))
+		return
+	var/datum/wound/incision
+	for(var/datum/wound/slash/slash in wounds)
+		if(slash.is_sewn())
+			continue
+		incision = slash
+		break
+
+	if(!incision)
+		var/datum/injury/internal_incision
+		for(var/datum/injury/slash in injuries)
+			if(!(slash.damage_type in  list(WOUND_SLASH, WOUND_BITE, WOUND_PIERCE)))
+				continue
+			if(slash.is_bandaged() || slash.current_stage > slash.max_bleeding_stage) // Shit's unusable
+				continue
+			if(strict && !slash.is_surgical()) //We don't need dirty ones
+				continue
+			if(!internal_incision)
+				internal_incision = slash
+				continue
+			if(slash.is_surgical() && internal_incision.is_surgical()) //If they're both dirty or both are surgical, just get bigger one
+				if(slash.damage > internal_incision.damage)
+					internal_incision = slash
+					break
+			else if(slash.is_surgical()) //otherwise surgical one takes priority
+				internal_incision = slash
+				break
+		return internal_incision
+	return incision
 
 /obj/item/bodypart/proc/is_bandaged()
 	. = TRUE
