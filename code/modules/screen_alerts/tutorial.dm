@@ -3,3 +3,4 @@
 	play_delay = 0.1
 	fade_out_delay = 2.5 SECONDS
 	fade_out_time = 0.5 SECONDS
+	screen_loc = "CENTER"
