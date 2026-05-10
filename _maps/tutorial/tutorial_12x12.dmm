@@ -1,0 +1,193 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/open/floor/blocks/newstone,
+/area)
+"c" = (
+/obj/machinery/light/fueled/torchholder/metal_torch/west,
+/turf/open/floor/blocks/newstone,
+/area)
+"e" = (
+/obj/machinery/light/fueled/torchholder/c,
+/turf/open/floor/blocks/newstone,
+/area)
+"h" = (
+/obj/machinery/light/fueled/torchholder/metal_torch/north,
+/turf/open/floor/blocks/newstone,
+/area)
+"A" = (
+/obj/effect/landmark/tutorial_bottom_left,
+/turf/open/floor/blocks/newstone,
+/area)
+"W" = (
+/obj/machinery/light/fueled/torchholder/metal_torch/east,
+/turf/open/floor/blocks/newstone,
+/area)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+A
+"}
+(2,1,1) = {"
+a
+W
+a
+a
+W
+a
+a
+W
+a
+a
+W
+a
+"}
+(3,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(4,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(5,1,1) = {"
+a
+e
+a
+a
+a
+a
+a
+a
+a
+a
+h
+a
+"}
+(6,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(7,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(8,1,1) = {"
+a
+e
+a
+a
+a
+a
+a
+a
+a
+a
+h
+a
+"}
+(9,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(10,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(11,1,1) = {"
+a
+c
+a
+a
+c
+a
+a
+c
+a
+a
+c
+a
+"}
+(12,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
