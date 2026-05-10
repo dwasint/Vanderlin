@@ -170,7 +170,7 @@
 	if(isnull(max_pain_damage))
 		max_pain_damage = max_damage * 1.5
 	if(isnull(organ_damage_requirement))
-		organ_damage_requirement = max_damage * 0.2
+		organ_damage_requirement = max_damage * 0.4
 	if(isnull(organ_damage_hit_minimum))
 		organ_damage_hit_minimum = ORGAN_MINIMUM_DAMAGE
 
