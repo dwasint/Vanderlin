@@ -237,7 +237,7 @@
 			if(get_cut())
 				status += "<span class='bloody'>[possible_artery.name]'s been cut.</span>"
 			else
-				status += "<span class='bloody'>spreading bruises underneath the [parse_zone(possible_artery.zone)].</span>"
+				status += span_bloody("bruised [parse_zone(possible_artery.zone)]</span>")
 
 	if(skeletonized)
 		status += "<span class='dead'>SKELETON</span>"
