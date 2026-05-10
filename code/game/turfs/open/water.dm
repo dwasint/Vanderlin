@@ -266,7 +266,7 @@
 			if(!shovel.heldclod)
 				return
 			user.visible_message("[user] starts filling in [src].", "I start filling in [src].")
-			if(!do_after(user, 10 SECONDS * shovel.time_multiplier, src))
+			if(!do_after(user, 10 SECONDS * shovel.toolspeed, src))
 				return
 			QDEL_NULL(shovel.heldclod)
 			shovel.update_appearance(UPDATE_ICON_STATE)
@@ -944,9 +944,10 @@
 	taste_description = "salt"
 	color = "#3e7459"
 
-/datum/reagent/water/salty/reaction_mob(mob/living/L, method=TOUCH, reac_volume)
-	if(method & INGEST) // Make sure you DRANK the salty water before losing hydration
-		..()
+/datum/reagent/water/salty/expose_mob(mob/living/exposed_mob, methods, reac_volume)
+	if(!(methods & INGEST)) // Make sure you DRANK the salty water before losing hydration
+		return
+	. = ..()
 
 /datum/reagent/water/salty/on_mob_life(mob/living/carbon/M, efficiency)
 	if(ishuman(M))
