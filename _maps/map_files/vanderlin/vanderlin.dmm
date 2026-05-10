@@ -493,7 +493,7 @@
 	pixel_y = 24
 	},
 /turf/open/floor/wood,
-/area/under/town/sewer)
+/area/under/town/basement)
 "amQ" = (
 /obj/item/candle/yellow{
 	pixel_x = -12;
@@ -670,7 +670,7 @@
 	pixel_y = -1
 	},
 /turf/open/floor/wood,
-/area/under/town/sewer)
+/area/under/town/basement)
 "aqp" = (
 /turf/open/floor/tile,
 /area/indoors/town/keep/feast)
@@ -932,7 +932,7 @@
 	pixel_y = 31
 	},
 /turf/open/floor/wood,
-/area/under/town/sewer)
+/area/under/town/basement)
 "axi" = (
 /obj/structure/door/stone,
 /obj/effect/mapping_helpers/structure/breaker{
@@ -1678,7 +1678,7 @@
 	board_id = "guild_1"
 	},
 /turf/open/floor/church/gold,
-/area/under/town/sewer)
+/area/under/town/basement)
 "aOi" = (
 /obj/structure/chair/wood/alt{
 	dir = 1
@@ -2115,7 +2115,7 @@
 "aYY" = (
 /obj/structure/carpet/blue,
 /turf/open/floor/church/gold,
-/area/under/town/sewer)
+/area/under/town/basement)
 "aZa" = (
 /obj/structure/chair/wood/alt/chair_noble/purple{
 	dir = 8
@@ -2362,7 +2362,7 @@
 /obj/structure/carpet/purple,
 /obj/structure/chair/stool,
 /turf/open/floor/church/gold,
-/area/under/town/sewer)
+/area/under/town/basement)
 "bfu" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1
@@ -3621,7 +3621,7 @@
 "bLQ" = (
 /obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/wood,
-/area/under/town/sewer)
+/area/under/town/basement)
 "bLT" = (
 /obj/structure/fluff/walldeco/church/line,
 /turf/open/floor/churchrough,
@@ -4153,7 +4153,7 @@
 /obj/structure/carpet/purple,
 /obj/structure/water_pipe,
 /turf/open/floor/church/gold,
-/area/under/town/sewer)
+/area/under/town/basement)
 "bXi" = (
 /turf/open/floor/carpet/red,
 /area/indoors/town/keep/library)
@@ -4647,7 +4647,7 @@
 "cmo" = (
 /obj/machinery/light/fueled/torchholder/c,
 /turf/open/floor/wood,
-/area/under/town/sewer)
+/area/under/town/basement)
 "cmG" = (
 /obj/structure/well,
 /obj/machinery/light/fueled/wallfire/candle/blue/l,
@@ -4695,7 +4695,7 @@
 "cnn" = (
 /obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/wood,
-/area/under/town/sewer)
+/area/under/town/basement)
 "cnF" = (
 /obj/machinery/light/fueled/wallfire/candle/l,
 /turf/open/floor/blocks/newstone/alt,
@@ -5122,7 +5122,7 @@
 	pixel_x = -3
 	},
 /turf/open/floor/church/gold,
-/area/under/town/sewer)
+/area/under/town/basement)
 "cxx" = (
 /obj/machinery/light/fueled/wallfire/candle/blue,
 /turf/closed/wall/mineral/pipe,
@@ -5338,7 +5338,7 @@
 /obj/structure/carpet/blue,
 /obj/structure/chair/stool,
 /turf/open/floor/church/gold,
-/area/under/town/sewer)
+/area/under/town/basement)
 "cCk" = (
 /obj/structure/bed/wool,
 /obj/item/bedsheet/fabric,
@@ -5838,10 +5838,10 @@
 "cLx" = (
 /obj/structure/table/wood/plain,
 /obj/structure/quest_counter{
-	board_id = "guild_2"
+	counter_id = "guild_2"
 	},
 /turf/open/floor/church/gold,
-/area/under/town/sewer)
+/area/under/town/basement)
 "cLN" = (
 /obj/structure/table/wood/large/corner{
 	dir = 9
@@ -6338,7 +6338,7 @@
 /area/under/cave)
 "cUH" = (
 /turf/open/floor/church/gold,
-/area/under/town/sewer)
+/area/under/town/basement)
 "cUJ" = (
 /obj/machinery/light/fueled/torchholder/c,
 /turf/open/floor/grass,
@@ -9418,7 +9418,7 @@
 /obj/structure/fluff/railing/wood,
 /obj/structure/chair/stool,
 /turf/open/floor/wood,
-/area/under/town/sewer)
+/area/under/town/basement)
 "evg" = (
 /obj/structure/carpet,
 /turf/open/floor/tile,
@@ -11350,7 +11350,7 @@
 "ftz" = (
 /obj/structure/fluff/railing/wood,
 /turf/open/floor/wood,
-/area/under/town/sewer)
+/area/under/town/basement)
 "ftI" = (
 /obj/structure/table/wood/reinforced_alter,
 /turf/open/floor/wood,
@@ -13520,7 +13520,7 @@
 "gxq" = (
 /obj/structure/carpet/cyan,
 /turf/open/floor/church/gold,
-/area/under/town/sewer)
+/area/under/town/basement)
 "gxD" = (
 /turf/open/openspace,
 /area/indoors/town/merc_guild)
@@ -14147,7 +14147,7 @@
 /obj/effect/mapping_helpers/access/keyset/town/tomb,
 /obj/effect/mapping_helpers/access/locker,
 /turf/open/floor/cobble/mossy,
-/area/under/town/sewer)
+/area/under/town/basement)
 "gQB" = (
 /turf/open/floor/tile/masonic/spiral,
 /area/under/cave)
@@ -15086,7 +15086,7 @@
 "hoI" = (
 /obj/structure/bars/cemetery,
 /turf/open/floor/cobblerock,
-/area/under/town/sewer)
+/area/under/town/basement)
 "hoL" = (
 /obj/structure/door/viewport{
 	name = "Merchant Bedroom";
@@ -16022,7 +16022,7 @@
 "hHY" = (
 /obj/structure/table/wood/plain,
 /turf/open/floor/church/gold,
-/area/under/town/sewer)
+/area/under/town/basement)
 "hIl" = (
 /obj/structure/fluff/nest{
 	name = "patch of straw"
@@ -16354,7 +16354,7 @@
 	dir = 4
 	},
 /turf/open/floor/blocks/paving,
-/area/under/town/sewer)
+/area/under/town/basement)
 "hRw" = (
 /obj/structure/fluff/walldeco/bath/wallpipes/innie{
 	dir = 1
@@ -18747,7 +18747,7 @@
 "iUA" = (
 /obj/structure/water_pipe,
 /turf/open/floor/carpet/lord/center,
-/area/under/town/sewer)
+/area/under/town/basement)
 "iUR" = (
 /obj/structure/fluff/walldeco/stone{
 	pixel_y = 32
@@ -20858,7 +20858,7 @@
 /obj/structure/water_pipe,
 /obj/structure/fluid_drain,
 /turf/open/floor/church/gold,
-/area/under/town/sewer)
+/area/under/town/basement)
 "jQM" = (
 /obj/structure/bed/mediocre,
 /obj/item/bedsheet/pelt,
@@ -21694,7 +21694,7 @@
 "knf" = (
 /obj/structure/bars/cemetery,
 /turf/open/floor/cobble/mossy,
-/area/under/town/sewer)
+/area/under/town/basement)
 "kni" = (
 /obj/structure/door/viewport{
 	dir = 8;
@@ -22359,7 +22359,7 @@
 "kCN" = (
 /obj/structure/water_pipe,
 /turf/open/floor/church/gold,
-/area/under/town/sewer)
+/area/under/town/basement)
 "kCS" = (
 /turf/open/floor/rooftop{
 	dir = 4
@@ -25031,7 +25031,7 @@
 	layer = 4
 	},
 /turf/open/floor/church/gold,
-/area/under/town/sewer)
+/area/under/town/basement)
 "lPA" = (
 /obj/machinery/light/fueled/torchholder{
 	dir = 8
@@ -25096,7 +25096,7 @@
 "lRn" = (
 /obj/structure/chair/stool,
 /turf/open/floor/church/gold,
-/area/under/town/sewer)
+/area/under/town/basement)
 "lRv" = (
 /obj/structure/chair/wood/alt/chair_noble{
 	dir = 1
@@ -29409,7 +29409,7 @@
 "nSL" = (
 /obj/structure/fluff/walldeco/bigpainting,
 /turf/open/floor/wood,
-/area/under/town/sewer)
+/area/under/town/basement)
 "nSW" = (
 /obj/structure/fake_machine/scomm/l,
 /turf/open/floor/church,
@@ -34111,7 +34111,7 @@
 /obj/structure/carpet/purple,
 /obj/structure/table/wood/plain/alt,
 /turf/open/floor/church/gold,
-/area/under/town/sewer)
+/area/under/town/basement)
 "pVZ" = (
 /mob/living/carbon/human/species/skeleton/npc/ambush,
 /turf/open/floor/churchbrick,
@@ -35261,7 +35261,7 @@
 /obj/structure/chair/stool,
 /obj/structure/water_pipe,
 /turf/open/floor/church/gold,
-/area/under/town/sewer)
+/area/under/town/basement)
 "qzJ" = (
 /turf/closed/wall/mineral/decorstone,
 /area/indoors/town/keep/archivist)
@@ -35401,7 +35401,7 @@
 /obj/structure/fluid_drain,
 /obj/structure/water_pipe,
 /turf/open/floor/church/gold,
-/area/under/town/sewer)
+/area/under/town/basement)
 "qCW" = (
 /obj/structure/table/wood/reinforced_alter,
 /obj/item/mould/ingot{
@@ -36177,7 +36177,7 @@
 	dir = 1
 	},
 /turf/open/floor/church/gold,
-/area/under/town/sewer)
+/area/under/town/basement)
 "qUe" = (
 /obj/structure/closet/crate/chest,
 /turf/open/floor/ruinedwood,
@@ -38006,10 +38006,10 @@
 "rLC" = (
 /obj/structure/table/wood/plain,
 /obj/structure/quest_counter{
-	board_id = "guild_1"
+	counter_id = "guild_1"
 	},
 /turf/open/floor/church/gold,
-/area/under/town/sewer)
+/area/under/town/basement)
 "rLU" = (
 /obj/structure/fluff/walldeco/church/line,
 /obj/structure/fluff/walldeco/church/line{
@@ -38964,7 +38964,7 @@
 	pixel_y = -1
 	},
 /turf/open/floor/wood,
-/area/under/town/sewer)
+/area/under/town/basement)
 "seP" = (
 /obj/structure/spider/stickyweb,
 /turf/open/floor/greenstone,
@@ -39406,8 +39406,9 @@
 /turf/closed/wall/mineral/decorstone,
 /area/indoors/town/keep/lord_appt)
 "sqp" = (
-/turf/open/floor/carpet/lord/center,
-/area/under/town/sewer)
+/obj/structure/water_pipe,
+/turf/closed/wall/mineral/stone,
+/area/under/town/basement)
 "sqr" = (
 /obj/machinery/light/fueled/lanternpost/fixed{
 	dir = 1
@@ -40178,7 +40179,7 @@
 	board_id = "guild_2"
 	},
 /turf/open/floor/church/gold,
-/area/under/town/sewer)
+/area/under/town/basement)
 "sIY" = (
 /obj/structure/table/vtable/v2,
 /obj/effect/spawner/map_spawner/loot/food{
@@ -40413,7 +40414,7 @@
 /obj/machinery/light/fueled/torchholder/l,
 /obj/structure/water_pipe,
 /turf/open/floor/church/gold,
-/area/under/town/sewer)
+/area/under/town/basement)
 "sNH" = (
 /obj/structure/door/stone,
 /obj/effect/mapping_helpers/access/keyset/church/general,
@@ -41055,9 +41056,8 @@
 /turf/open/floor/twig,
 /area/indoors/town/church/inquisition)
 "tdv" = (
-/obj/structure/chair/stool,
 /turf/open/floor/wood,
-/area/under/town/sewer)
+/area/under/town/basement)
 "tdB" = (
 /obj/effect/landmark/hammer/dev_text{
 	name = "Ook wants more staging areas. -Aberra."
@@ -41671,7 +41671,7 @@
 /obj/structure/carpet/cyan,
 /obj/structure/chair/stool,
 /turf/open/floor/church/gold,
-/area/under/town/sewer)
+/area/under/town/basement)
 "ttS" = (
 /turf/closed/wall/mineral/stone/window,
 /area/under/town/sewer)
@@ -43812,7 +43812,7 @@
 /obj/structure/chair/stool,
 /obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/church/gold,
-/area/under/town/sewer)
+/area/under/town/basement)
 "utz" = (
 /obj/machinery/light/fueled/wallfire/candle{
 	pixel_x = 32;
@@ -44904,7 +44904,7 @@
 "uRy" = (
 /obj/structure/carpet/purple,
 /turf/open/floor/church/gold,
-/area/under/town/sewer)
+/area/under/town/basement)
 "uRB" = (
 /obj/machinery/light/fueled/torchholder/metal_torch/east,
 /obj/effect/decal/cleanable/dirt/dust,
@@ -45642,7 +45642,7 @@
 "ven" = (
 /obj/structure/table/wood/plain/alt,
 /turf/open/floor/wood,
-/area/under/town/sewer)
+/area/under/town/basement)
 "veE" = (
 /obj/structure/fluff/statue/gargoyle{
 	layer = 4.11
@@ -46968,7 +46968,7 @@
 /obj/structure/carpet/blue,
 /obj/structure/table/wood/plain/alt,
 /turf/open/floor/church/gold,
-/area/under/town/sewer)
+/area/under/town/basement)
 "vJt" = (
 /obj/structure/door/window,
 /obj/effect/mapping_helpers/access/locker,
@@ -47470,7 +47470,7 @@
 	pixel_x = 9
 	},
 /turf/open/floor/church/gold,
-/area/under/town/sewer)
+/area/under/town/basement)
 "vTv" = (
 /obj/structure/closet/crate/chest/neu,
 /obj/item/reagent_containers/food/snacks/produce/grain/oat,
@@ -47707,7 +47707,7 @@
 	},
 /obj/structure/chair/stool,
 /turf/open/floor/wood,
-/area/under/town/sewer)
+/area/under/town/basement)
 "vZd" = (
 /obj/structure/bed/wool,
 /obj/item/bedsheet/pelt,
@@ -49794,7 +49794,7 @@
 /obj/structure/carpet/cyan,
 /obj/structure/table/wood/plain/alt,
 /turf/open/floor/church/gold,
-/area/under/town/sewer)
+/area/under/town/basement)
 "wSg" = (
 /obj/machinery/light/fueled/hearth,
 /obj/machinery/light/fueled/oven{
@@ -51779,7 +51779,7 @@
 	pixel_x = 2
 	},
 /turf/open/floor/church/gold,
-/area/under/town/sewer)
+/area/under/town/basement)
 "xJM" = (
 /obj/machinery/tanningrack,
 /turf/open/floor/blocks/stonered/tiny,
@@ -75598,15 +75598,15 @@ unl
 unl
 unl
 pGp
-wpU
-upc
-wpU
-wpU
-wpU
-wpU
-wpU
+jEQ
+kkL
+jEQ
+jEQ
+jEQ
+jEQ
+jEQ
 hRi
-pGp
+cZN
 pGp
 pGp
 pGp
@@ -75799,16 +75799,16 @@ unl
 unl
 unl
 unl
-wpU
-wpU
-hLm
+jEQ
+jEQ
+tdv
 bLQ
-hLm
+tdv
 ven
 evb
-wpU
-fVM
-wpU
+jEQ
+sqp
+jEQ
 jEQ
 jEQ
 clv
@@ -76001,10 +76001,10 @@ unl
 unl
 unl
 unl
-wpU
+jEQ
 ven
+dsp
 tdv
-hLm
 aqo
 vYR
 seg
@@ -76203,9 +76203,9 @@ unl
 unl
 unl
 unl
-wpU
+jEQ
+dsp
 tdv
-hLm
 seg
 cxv
 hHY
@@ -76405,7 +76405,7 @@ jQb
 jQb
 jQb
 jQb
-wpU
+jEQ
 cmo
 ftz
 xJD
@@ -76607,7 +76607,7 @@ ktH
 cZN
 cZN
 cZN
-wpU
+jEQ
 nSL
 ftz
 cUH
@@ -76809,8 +76809,8 @@ mKO
 fud
 oWr
 cZN
-wpU
-hLm
+jEQ
+tdv
 ftz
 cUH
 hHY
@@ -77011,8 +77011,8 @@ fud
 mKO
 mKO
 wZM
-wpU
-hLm
+jEQ
+tdv
 ftz
 jQJ
 kCN
@@ -77213,7 +77213,7 @@ eoP
 hGP
 fud
 cZN
-wpU
+jEQ
 amH
 axf
 cUH
@@ -77415,7 +77415,7 @@ gcf
 msU
 lHj
 cZN
-wpU
+jEQ
 cmo
 ftz
 cUH
@@ -77617,14 +77617,14 @@ lUx
 msU
 wRn
 dRg
-upc
-hLm
-sqp
+kkL
+tdv
+hhq
 qUd
-sqp
-sqp
+hhq
+hhq
 iUA
-sqp
+hhq
 uln
 hhq
 rLh
@@ -77820,7 +77820,7 @@ ryr
 msU
 msU
 knf
-hLm
+tdv
 ftz
 cLx
 sIW
@@ -78022,7 +78022,7 @@ ryr
 ryr
 msU
 gQz
-hLm
+tdv
 ftz
 cUH
 lRn
@@ -78425,12 +78425,12 @@ bHF
 wRn
 msU
 cPe
-wpU
-upc
-wpU
-wpU
-upc
-wpU
+jEQ
+kkL
+jEQ
+jEQ
+kkL
+jEQ
 utl
 wRZ
 ttN
