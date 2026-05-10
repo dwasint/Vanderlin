@@ -1,6 +1,0 @@
-author: "dwasint"
-delete-after: True
-changes:
-  - balance: "minimum damage required to hit organs has been doubled"
-  - balance: "organ pain has been reduced by around 45%"
-  - balance: "organs can only be damaged after the bodypart is above 40% of its total damage from 20%"
