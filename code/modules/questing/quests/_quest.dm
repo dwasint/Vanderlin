@@ -49,6 +49,10 @@
 	var/datum/weakref/quest_scroll_ref
 	/// List of weakrefs to actual quest items/mobs for reducing overhead of compass.
 	var/list/datum/weakref/tracked_atoms = list()
+	/// If non-empty, this quest type may only spawn in these threat region names.
+	var/list/allowed_threat_regions = list()
+	/// If non-empty, this quest type will never spawn in these threat region names.
+	var/list/denied_threat_regions = list()
 
 /datum/quest/Destroy()
 	// Clean up mobs with quest components

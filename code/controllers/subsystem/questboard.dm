@@ -109,15 +109,22 @@ SUBSYSTEM_DEF(questboard)
 		return null
 
 	var/type_selection = pick(valid_types)
-	var/obj/effect/landmark/quest_spawner/landmark = find_landmark_for(difficulty, type_selection)
-	if(!landmark)
-		return null
 
 	var/datum/quest/Q = create_quest_of_type(type_selection, difficulty)
 	if(!Q)
 		return null
 
 	Q.quest_difficulty = difficulty
+
+	var/obj/effect/landmark/quest_spawner/landmark = find_landmark_for(
+		difficulty,
+		type_selection,
+		Q.allowed_threat_regions,
+		Q.denied_threat_regions,
+	)
+	if(!landmark)
+		qdel(Q)
+		return null
 
 	if(!Q.generate(landmark))
 		qdel(Q)
@@ -145,7 +152,7 @@ SUBSYSTEM_DEF(questboard)
  * Each candidate is added to the pool that many times so prob(pick) scales
  * correctly. Player-occupied landmarks are always excluded.
  */
-/datum/controller/subsystem/questboard/proc/find_landmark_for(difficulty, type)
+/datum/controller/subsystem/questboard/proc/find_landmark_for(difficulty, type, list/allowed_regions, list/denied_regions)
 	var/list/weighted_candidates = list()
 
 	for(var/obj/effect/landmark/quest_spawner/L in GLOB.quest_landmarks_list)
@@ -163,17 +170,23 @@ SUBSYSTEM_DEF(questboard)
 		if(occupied)
 			continue
 
-		// Determine weight from the threat level of the region this landmark is in
-		var/weight = 1
 		var/datum/threat_region/TR = SSregionthreat.get_region_for_turf(get_turf(L))
-		if(TR)
-			weight = danger_level_to_weight(TR.get_danger_level())
+		var/region_name = TR ? TR.region_name : null
 
-		// Add the landmark `weight` times so pick() selects it proportionally
+		if(length(allowed_regions))
+			if(!region_name || !(region_name in allowed_regions))
+				continue
+
+		if(length(denied_regions))
+			if(region_name && (region_name in denied_regions))
+				continue
+
+		var/weight = TR ? danger_level_to_weight(TR.get_danger_level()) : 1
+
 		for(var/i in 1 to weight)
 			weighted_candidates += L
 
-	return length(weighted_candidates) ? pick(weighted_candidates) : null
+	return length(weighted_candidates) ? pickweight(weighted_candidates) : null
 
 /// Converts a danger level string to a generation weight.
 /datum/controller/subsystem/questboard/proc/danger_level_to_weight(level)
