@@ -79,5 +79,5 @@
 			return TRUE
 
 /mob/dead/new_player/proc/start_test_tutorial()
-	var/datum/tutorial/new_tutorial = new /datum/tutorial/vanderlin/example
+	var/datum/tutorial/new_tutorial = new /datum/tutorial/vanderlin/injury
 	new_tutorial.start_tutorial(src)

@@ -1620,6 +1620,7 @@
 		injury.disinfect_injury()
 	if(time)
 		disinfects_in = addtimer(CALLBACK(src, PROC_REF(undisinfect_limb)), time, TIMER_STOPPABLE)
+	SEND_SIGNAL(src, COMSIG_BODYPART_DISINFECTED)
 
 /obj/item/bodypart/proc/undisinfect_limb()
 	for(var/datum/injury/injury as anything in injuries)

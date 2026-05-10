@@ -1660,6 +1660,7 @@
 #include "code\datums\tutorial\area.dm"
 #include "code\datums\tutorial\example_tutorial.dm"
 #include "code\datums\tutorial\vanderlin\_base_vander_tutorial.dm"
+#include "code\datums\tutorial\vanderlin\medical.dm"
 #include "code\datums\world_factions\_base.dm"
 #include "code\datums\world_factions\coastal.dm"
 #include "code\datums\world_factions\mountain.dm"
