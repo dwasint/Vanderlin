@@ -1,4 +1,0 @@
-author: "Sulaboy"
-delete-after: True
-changes:
-  - balance: "Rope/Chain grid size 2x2->1x2"
