@@ -220,7 +220,7 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 	. = ..()
 	tutorial = WEAKREF(selected_tutorial)
 
-/datum/action/tutorial_end/Trigger()
+/datum/action/tutorial_end/Trigger(trigger_flags)
 	if(!tutorial)
 		return
 
