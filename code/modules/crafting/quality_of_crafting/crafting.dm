@@ -665,6 +665,17 @@
 /datum/repeatable_crafting_recipe/crafting/scroll/create_blacklisted_paths()
 	blacklisted_paths = subtypesof(/obj/item/paper)
 
+/datum/repeatable_crafting_recipe/crafting/pledge
+	name = "pledge scroll"
+	requirements = list(
+		/obj/item/paper/scroll = 1,
+		/obj/item/natural/fibers = 1,
+	)
+	starting_atom = /obj/item/natural/fibers
+	attacked_atom = /obj/item/paper/scroll
+	output = /datum/repeatable_crafting_recipe/crafting/pledge
+	craftdiff = 0
+
 /datum/repeatable_crafting_recipe/crafting/cart_upgrade
 	name = "cart upgrade"
 	requirements = list(
