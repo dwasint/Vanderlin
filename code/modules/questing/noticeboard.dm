@@ -96,7 +96,7 @@
 				"color" = R.get_danger_color(),
 				"latent" = R.latent_ambush,
 				"fixed" = R.fixed_ambush,
-				"invasion" = (R.latent_ambush >= THREAT_INVASION_THRESHOLD),
+				"invasion" = (R.latent_ambush >= R.max_ambush),
 			))
 
 	var/list/my_custom = list()

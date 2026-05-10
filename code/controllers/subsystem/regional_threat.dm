@@ -23,7 +23,7 @@ SUBSYSTEM_DEF(regionthreat)
 		else
 			TR.increase_latent_ambush(TR.lowpop_tick)
 
-		if(TR.latent_ambush >= THREAT_INVASION_THRESHOLD)
+		if(TR.latent_ambush >= TR.max_ambush)
 			trigger_invasion(TR)
 
 /datum/controller/subsystem/regionthreat/proc/trigger_invasion(datum/threat_region/TR)

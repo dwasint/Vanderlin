@@ -42,8 +42,6 @@ GLOBAL_VAR(harlequinn_hunt_quest) // weakref to active /datum/quest/custom/harle
 #define QUEST_THREAT_REDUCE_MEDIUM 12
 #define QUEST_THREAT_REDUCE_HARD 25
 
-#define THREAT_INVASION_THRESHOLD 150
-
 #define QUEST_HANDLER_REWARD_MULTIPLIER 1.25
 
 // Delivery quest additional reward scaling
