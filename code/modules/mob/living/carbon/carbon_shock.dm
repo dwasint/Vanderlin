@@ -188,7 +188,7 @@
 	if((shock_stage >= SHOCK_STAGE_4) && (previous_shock_stage < SHOCK_STAGE_4))
 		emote("becomes limp.")
 		if(!HAS_TRAIT(src, TRAIT_NOPAINSTUN))
-			Immobilize(rand(2, 3) SECONDS)
+			Immobilize(rand(2, 5) SECONDS)
 		//Attempt to inject combat cocktail a second time
 		endorphinate()
 
@@ -196,7 +196,7 @@
 		if(DT_PROB(1, delta_time))
 			custom_pain("[pick("The pain is excruciating", "Please, just end the pain", "My whole body is going numb")]!", shock_stage, nopainloss = TRUE)
 			if(!HAS_TRAIT(src, TRAIT_NOPAINSTUN))
-				Knockdown(2 SECONDS)
+				Knockdown(20 SECONDS)
 		if(DT_PROB(2, delta_time))
 			emote("gasp")
 
@@ -204,14 +204,14 @@
 		if(DT_PROB(2.5, delta_time))
 			custom_pain("[pick("The pain is excruciating", "Please, just end the pain", "My whole body is going numb")]!", shock_stage, nopainloss = TRUE)
 			if(!HAS_TRAIT(src, TRAIT_NOPAINSTUN))
-				Paralyze(5 SECONDS)
+				Knockdown(40 SECONDS)
 
 	if((shock_stage >= SHOCK_STAGE_6) && (previous_shock_stage >= SHOCK_STAGE_6))
 		if(DT_PROB(1, delta_time))
 			if(!IsUnconscious())
 				custom_pain("[pick("I black out", "I feel like I could die at any moment now", "I'm about to lose consciousness")]!", shock_stage, nopainloss = TRUE)
 			if(!HAS_TRAIT(src, TRAIT_NOPAINSTUN))
-				Unconscious(1 SECONDS)
+				Unconscious(10 SECONDS)
 
 	if((shock_stage >= SHOCK_STAGE_7) && (previous_shock_stage < SHOCK_STAGE_7))
 		emote("gargle")
@@ -222,11 +222,11 @@
 
 	if((shock_stage >= SHOCK_STAGE_7) && (previous_shock_stage >= SHOCK_STAGE_7))
 		if(!HAS_TRAIT(src, TRAIT_NOPAINSTUN))
-			Paralyze(5 SECONDS)
-		if(DT_PROB(1, delta_time))
-			Unconscious(5)
-		if(DT_PROB(4, delta_time))
-			emote("gargle")
+			Paralyze(40 SECONDS)
+			if(DT_PROB(1, delta_time))
+				Unconscious(20 SECONDS)
+			if(DT_PROB(4, delta_time))
+				emote("gargle")
 
 	if((shock_stage >= SHOCK_STAGE_8) && (previous_shock_stage < SHOCK_STAGE_8))
 		//Attempt to inject combat cocktail - ONE FINAL TIME
@@ -234,7 +234,7 @@
 		//Death is near...
 		emote("scream")
 		if(!HAS_TRAIT(src, TRAIT_NOPAINSTUN))
-			Unconscious(10 SECONDS)
+			Unconscious(20 SECONDS)
 
 	if((shock_stage >= SHOCK_STAGE_8) && (previous_shock_stage >= SHOCK_STAGE_8))
 		//How the fuck are we still alive?
@@ -243,4 +243,4 @@
 			custom_pain(PAIN_KNOCKOUT_MESSAGE_SELF, 100, nopainloss = TRUE)
 			//death_rattle()
 		if(!HAS_TRAIT(src, TRAIT_NOPAINSTUN))
-			Unconscious(15 SECONDS)
+			Unconscious(20 SECONDS)
