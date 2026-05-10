@@ -170,7 +170,7 @@
 	if(isnull(max_pain_damage))
 		max_pain_damage = max_damage * 1.5
 	if(isnull(organ_damage_requirement))
-		organ_damage_requirement = max_damage * 0.2
+		organ_damage_requirement = max_damage * 0.4
 	if(isnull(organ_damage_hit_minimum))
 		organ_damage_hit_minimum = ORGAN_MINIMUM_DAMAGE
 
@@ -246,30 +246,30 @@
 	if(!prob(2))
 		return
 	if(owner.encumbrance >= ENCUMBRANCE_HEAVY)
-		var/pain_amount = rand(8, 15)
+		var/pain_amount = rand(3, 5)
 		if(owner.encumbrance >= ENCUMBRANCE_EXTREME)
-			pain_amount = rand(15, 25)
+			pain_amount = rand(5, 7)
 			to_chat(owner, span_warning("Your heavy gear puts severe strain on your [name]!"))
 		else
 			to_chat(owner, span_warning("The weight of your equipment aggravates your chronic [name] pain!"))
 		add_pain(pain_amount)
 
 /obj/item/bodypart/proc/on_arthritis_life()
-	if(prob(2) && pain_dam < 20)
-		add_pain(rand(7, 14))
+	if(prob(2) && pain_dam < max_pain_damage * 0.1)
+		add_pain(rand(1, 2))
 		var/pain_msg = pick("Your [name] throbs with arthritic pain!",
 							"A sharp ache shoots through your [name]!",
 							"Your [name] feels stiff and painful!")
 		to_chat(owner, span_warning(pain_msg))
 
-	if(prob(1) && owner.loc)
+	if(prob(1) && owner.loc && pain_dam < max_pain_damage * 0.15)
 		if(SSParticleWeather.runningWeather && SSParticleWeather.runningWeather.can_weather(owner))
-			add_pain(rand(5, 10))
+			add_pain(rand(2, 3))
 			to_chat(owner, span_warning("The weather makes your arthritis act up."))
 
 /obj/item/bodypart/proc/on_migraine_life()
-	if(prob(2) && pain_dam < 35)
-		add_pain(rand(5, 15))
+	if(prob(2) && pain_dam < max_pain_damage * 0.2)
+		add_pain(rand(2, 3))
 
 		if(prob(30))
 			owner.set_eye_blur_if_lower(rand(6 SECONDS, 12 SECONDS))
@@ -278,8 +278,8 @@
 			to_chat(owner, span_warning("A migraine headache begins to build."))
 
 	if(prob(1))
-		if(pain_dam > 20 && owner.loc?.luminosity > 2)
-			add_pain(rand(5, 10))
+		if(pain_dam > max_pain_damage * 0.2 && owner.loc?.luminosity > 2)
+			add_pain(rand(3, 5))
 			to_chat(owner, span_warning("The flickering flames make your migraine worse!"))
 
 /obj/item/bodypart/proc/update_pain_coeff()
@@ -813,6 +813,7 @@
 		owner.update_shock()
 	if(can_be_disabled)
 		update_disabled()
+	consider_processing()
 	return TRUE
 
 /// Remove pain_dam from a bodypart
@@ -826,6 +827,7 @@
 		owner?.update_shock()
 	if(can_be_disabled)
 		update_disabled()
+	consider_processing()
 	return TRUE
 
 /// Make total pain equal amount
