@@ -1062,7 +1062,7 @@
 /turf/open/floor/blocks,
 /area/indoors/town/keep)
 "do" = (
-/obj/item/reagent_containers/glass/bucket,
+/obj/item/reagent_containers/glass/bucket/wooden,
 /turf/open/floor/grass/yel,
 /area/outdoors)
 "du" = (
