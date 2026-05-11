@@ -673,7 +673,8 @@
 	)
 	starting_atom = /obj/item/natural/fibers
 	attacked_atom = /obj/item/paper/scroll
-	output = /datum/repeatable_crafting_recipe/crafting/pledge
+	output = /obj/item/paper/scroll/quest/pledge
+	subtypes_allowed = FALSE
 	craftdiff = 0
 
 /datum/repeatable_crafting_recipe/crafting/cart_upgrade
