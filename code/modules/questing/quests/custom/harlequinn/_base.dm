@@ -1,4 +1,3 @@
-
 /datum/quest/custom/harlequinn_objective
 	abstract_type = /datum/quest/custom/harlequinn_objective
 	issue_label = ""
@@ -6,6 +5,9 @@
 	quest_difficulty = QUEST_DIFFICULTY_HARD
 	/// The harlequinn antag datum that owns this objective
 	var/datum/weakref/owning_harlequinn
+
+/datum/quest/custom/harlequinn_objective/on_claim(mob/user)
+	return
 
 /// Called during harlequinn setup to configure this quest's target/parameters.
 /// Return TRUE on success, FALSE if generation failed (e.g. no valid targets).
