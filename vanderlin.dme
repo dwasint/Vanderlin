@@ -3744,6 +3744,7 @@
 #include "code\modules\questing\quests\custom\harlequinn.dm"
 #include "code\modules\questing\quests\custom\item_collection.dm"
 #include "code\modules\questing\quests\custom\reagents.dm"
+#include "code\modules\questing\quests\custom\tame_animal.dm"
 #include "code\modules\questing\quests\custom\harlequinn\_base.dm"
 #include "code\modules\questing\quests\custom\harlequinn\murder.dm"
 #include "code\modules\questing\quests\custom\job_quests\_base_job_quest.dm"
