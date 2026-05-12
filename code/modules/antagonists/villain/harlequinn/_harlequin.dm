@@ -29,13 +29,11 @@
 	H.unequip_everything()
 	H.equipOutfit(/datum/outfit/harlequin)
 
-
 /datum/antagonist/harlequinn/proc/give_objectives()
 	var/mob/living/carbon/human/H = owner?.current
 	if(!H)
 		return
 
-	// Collect all concrete harlequinn objective subtypes
 	var/list/available_types = list()
 	for(var/datum/quest/custom/harlequinn_objective/T as anything in subtypesof(/datum/quest/custom/harlequinn_objective))
 		if(IS_ABSTRACT(T))
@@ -43,13 +41,11 @@
 		available_types += T
 
 	if(!length(available_types))
-		// Fallback: plain survive
 		var/datum/objective/survive/surv = new()
 		surv.owner = owner
 		objectives += surv
 		return
 
-	// Shuffle and try up to 3
 	available_types = shuffle(available_types)
 	var/assigned = 0
 	for(var/quest_type as anything in available_types)
@@ -64,16 +60,37 @@
 			qdel(OQ)
 			continue
 
-		// Wrap in a standard objective so the antag panel works normally
+		// Set giver to the harlequinn themselves so scroll text makes sense
+		OQ.quest_giver_reference = WEAKREF(H)
+		OQ.quest_giver_name = H.real_name
+
+		// Create the quest scroll
+		var/obj/item/paper/scroll/quest/scroll = new(get_turf(H))
+		scroll.base_icon_state = OQ.get_scroll_icon()
+		scroll.assigned_quest = OQ
+		OQ.quest_scroll = scroll
+		OQ.quest_scroll_ref = WEAKREF(scroll)
+		OQ.quest_receiver_reference = WEAKREF(H)
+		OQ.quest_receiver_name = H.real_name
+		OQ.accepted_time = world.time
+		scroll.update_quest_text()
+
+		// Try belt first, then hands, then just leave it on the turf
+		var/stored = FALSE
+		var/obj/item/belt = H.get_item_by_slot(ITEM_SLOT_BELT)
+		if(belt)
+			SEND_SIGNAL(belt, COMSIG_TRY_STORAGE_INSERT, scroll, null, null, TRUE, TRUE)
+			stored = scroll.loc == belt // check it actually went in
+		if(!stored)
+			H.put_in_hands(scroll)
+
+		// Wrap in a standard objective for the antag panel
 		var/datum/objective/harlequinn_contract/obj = new()
 		obj.owner = owner
-		// Re-use harlequinn_contract objective but point it at the quest datum
-		// via a small shim — see below
 		obj.explanation_text = OQ.get_objective_text()
 		obj.linked_quest = WEAKREF(OQ)
 		objectives += obj
 
-		// Store on the antag for later reference
 		active_contracts += OQ
 		assigned++
 
@@ -81,6 +98,7 @@
 		var/datum/objective/survive/surv = new()
 		surv.owner = owner
 		objectives += surv
+
 
 /datum/objective/harlequinn_contract
 	var/datum/weakref/linked_quest // weakref to /datum/quest/custom/harlequinn_objective
