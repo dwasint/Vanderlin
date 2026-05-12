@@ -116,8 +116,6 @@ SUBSYSTEM_DEF(questboard)
 	if(!Q)
 		return null
 
-	Q.quest_difficulty = difficulty
-
 	var/obj/effect/landmark/quest_spawner/landmark = find_landmark_for(
 		difficulty,
 		type_selection,
@@ -216,7 +214,7 @@ SUBSYSTEM_DEF(questboard)
 				qdel(Q)
 
 /// Called by the notice board / contract ledger UI to let a steward deposit funds.
-/datum/controller/subsystem/questboard/proc/steward_deposit(mob/steward, amount)
+/datum/controller/subsystem/questboard/proc/deposit_quest_funds(mob/steward, amount)
 	if(amount <= 0)
 		return FALSE
 	if(!(steward in SStreasury.bank_accounts))
@@ -242,10 +240,6 @@ SUBSYSTEM_DEF(questboard)
 		if(QUEST_DIFFICULTY_HARD)
 			return QUESTBOARD_COST_HARD
 	return QUESTBOARD_COST_EASY
-
-// =========================================================================
-// Claim Interface (called by the notice board)
-// =========================================================================
 
 /**
  * Attempt to claim a specific pre-generated quest for a mob.

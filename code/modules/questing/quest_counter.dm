@@ -143,7 +143,7 @@
 				"Deposit to Quest Fund", 0, balance, 0)
 			if(!amount || amount <= 0)
 				return FALSE
-			SSquestboard.steward_deposit(user, amount)
+			SSquestboard.deposit_quest_funds(user, amount)
 			return TRUE
 
 		if("issue_custom")

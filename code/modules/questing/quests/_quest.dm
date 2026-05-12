@@ -163,7 +163,7 @@
 		log_game("Quest completion reduced threat in [threat_region_name] by [reduction] (quest: [title])")
 
 // Base reward scaled only to difficulty
-/datum/quest/proc/get_base_reward()
+/datum/quest/proc/get_base_reward() // I plan to add something to this to be more eventually
 	return rand(minimum_payout, maximum_payout)
 
 // Additional reward, override in subtypes for specific calculations. Called AFTER generation.
