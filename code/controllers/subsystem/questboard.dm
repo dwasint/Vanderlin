@@ -3,6 +3,8 @@ SUBSYSTEM_DEF(questboard)
 	wait = 5 MINUTES
 	flags = SS_KEEP_TIMING | SS_BACKGROUND
 	runlevels = RUNLEVEL_GAME
+	///singleton list of quests mapped to difficulty to save a super tiny amount of time
+	var/list/quest_types_by_difficulty = list()
 
 	/// Pool of /datum/quest that are generated and unclaimed. Keyed by difficulty.
 	var/list/quest_pool = list(
@@ -110,7 +112,7 @@ SUBSYSTEM_DEF(questboard)
 
 	var/type_selection = pick(valid_types)
 
-	var/datum/quest/Q = create_quest_of_type(type_selection, difficulty)
+	var/datum/quest/Q = new type_selection()
 	if(!Q)
 		return null
 
@@ -152,13 +154,13 @@ SUBSYSTEM_DEF(questboard)
  * Each candidate is added to the pool that many times so prob(pick) scales
  * correctly. Player-occupied landmarks are always excluded.
  */
-/datum/controller/subsystem/questboard/proc/find_landmark_for(difficulty, type, list/allowed_regions, list/denied_regions)
+/datum/controller/subsystem/questboard/proc/find_landmark_for(difficulty, datum/quest/type, list/allowed_regions, list/denied_regions)
 	var/list/weighted_candidates = list()
 
 	for(var/obj/effect/landmark/quest_spawner/L in GLOB.quest_landmarks_list)
 		if(L.quest_difficulty != difficulty)
 			continue
-		if(!(type in L.quest_type))
+		if(!(initial(type.quest_type) in L.quest_type)) // the shitcode we make for mappers ease :( (actually this might bite me in the ass in the future but eh)
 			continue
 
 		// Skip landmarks with players nearby
@@ -198,24 +200,6 @@ SUBSYSTEM_DEF(questboard)
 		if(DANGER_LEVEL_BLEAK) return 8
 	return 1
 
-/// Instantiate the correct quest subtype from a type string.
-/datum/controller/subsystem/questboard/proc/create_quest_of_type(type_selection, difficulty)
-	var/datum/quest/Q
-	switch(type_selection)
-		if(QUEST_RETRIEVAL)
-			Q = new /datum/quest/retrieval()
-		if(QUEST_KILL_EASY)
-			Q = new /datum/quest/kill/easy()
-		if(QUEST_COURIER)
-			Q = new /datum/quest/courier()
-		if(QUEST_CLEAR_OUT)
-			Q = new /datum/quest/kill/clearout()
-		if(QUEST_RAID)
-			Q = new /datum/quest/kill/raid()
-		if(QUEST_OUTLAW)
-			Q = new /datum/quest/kill/outlaw()
-	return Q
-
 /// Remove quests that somehow lost their scroll reference or have been sitting unclaimed too long.
 /datum/controller/subsystem/questboard/proc/prune_stale_quests()
 	for(var/difficulty in quest_pool)
@@ -230,10 +214,6 @@ SUBSYSTEM_DEF(questboard)
 				tier -= Q
 				log_game("Quest expired: [Q.title] ([Q.quest_difficulty])")
 				qdel(Q)
-
-// =========================================================================
-// Steward Budget Interface
-// =========================================================================
 
 /// Called by the notice board / contract ledger UI to let a steward deposit funds.
 /datum/controller/subsystem/questboard/proc/steward_deposit(mob/steward, amount)

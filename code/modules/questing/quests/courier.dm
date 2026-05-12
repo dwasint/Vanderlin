@@ -1,5 +1,6 @@
 /datum/quest/courier
 	quest_type = QUEST_COURIER
+	quest_difficulty = QUEST_DIFFICULTY_EASY
 	var/list/target_delivery_locations = list(
 		/area/indoors/town/tavern,
 		/area/indoors/town/church,

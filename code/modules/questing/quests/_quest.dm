@@ -54,6 +54,11 @@
 	/// If non-empty, this quest type will never spawn in these threat region names.
 	var/list/denied_threat_regions = list()
 
+	///low range for our quest
+	var/minimum_payout = QUEST_REWARD_EASY_LOW
+	///high range for our quest
+	var/maximum_payout = QUEST_REWARD_EASY_HIGH
+
 /datum/quest/Destroy()
 	// Clean up mobs with quest components
 	for(var/mob/living/M in GLOB.mob_list)
@@ -159,13 +164,7 @@
 
 // Base reward scaled only to difficulty
 /datum/quest/proc/get_base_reward()
-	switch(quest_difficulty)
-		if(QUEST_DIFFICULTY_EASY)
-			return rand(QUEST_REWARD_EASY_LOW, QUEST_REWARD_EASY_HIGH)
-		if(QUEST_DIFFICULTY_MEDIUM)
-			return rand(QUEST_REWARD_MEDIUM_LOW, QUEST_REWARD_MEDIUM_HIGH)
-		if(QUEST_DIFFICULTY_HARD)
-			return rand(QUEST_REWARD_HARD_LOW, QUEST_REWARD_HARD_HIGH)
+	return rand(minimum_payout, maximum_payout)
 
 // Additional reward, override in subtypes for specific calculations. Called AFTER generation.
 /datum/quest/proc/get_additional_reward(turf/target_turf)

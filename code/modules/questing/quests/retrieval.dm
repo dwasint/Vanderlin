@@ -1,5 +1,6 @@
 /datum/quest/retrieval
 	quest_type = QUEST_RETRIEVAL
+	quest_difficulty = QUEST_DIFFICULTY_EASY
 	var/list/fetch_items = list(
 		/obj/item/weapon/knife/throwingknife/steel,
 		/obj/item/weapon/knife,

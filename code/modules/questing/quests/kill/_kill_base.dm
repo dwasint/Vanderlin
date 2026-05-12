@@ -1,5 +1,6 @@
 // Base for kill quests
 /datum/quest/kill
+	quest_difficulty = QUEST_DIFFICULTY_EASY
 	var/list/mob_types_to_spawn = list()
 	var/count_min = 1
 	var/count_max = 3

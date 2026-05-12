@@ -3723,7 +3723,6 @@
 #include "code\modules\projectiles\projectile\reusable\bolt.dm"
 #include "code\modules\projectiles\projectile\reusable\bullet.dm"
 #include "code\modules\projectiles\projectile\reusable\dart.dm"
-#include "code\modules\questing\contract_machine.dm"
 #include "code\modules\questing\landmarks.dm"
 #include "code\modules\questing\noticeboard.dm"
 #include "code\modules\questing\quest_counter.dm"
