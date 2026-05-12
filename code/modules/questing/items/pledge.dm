@@ -14,6 +14,8 @@
 	var/pledge_reagent_name = ""
 	var/pledge_reagent_volume = 10
 
+	var/pledge_generic_count = 0
+
 	var/pledge_title = ""
 	var/pledge_objective = ""
 	var/pledge_mode = "" // "item" or "freeform"
@@ -96,6 +98,13 @@
 			continue
 		if(!(initial(t.custom_quest_flags) & CUSTOM_QUEST_PLEDGE))
 			continue
+		if(ispath(t, /datum/quest/custom/job_quest))
+			var/datum/quest/custom/job_quest/job_quest = t
+			var/required = initial(job_quest.required_job)
+			if(required)
+				var/datum/job/mob_job = user.job ? SSjob.GetJob(user.job) : null
+				if(!istype(mob_job, required))
+					continue
 		available += label
 
 	var/mode_choice = tgui_input_list(user, "What kind of quest are you commissioning?", "Quest Pledge", available)
