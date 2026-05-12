@@ -180,6 +180,11 @@ SUBSYSTEM_DEF(job)
 		JobDebug("Eligibility failed: event whitelist, Player: [player], Job: [job.title]")
 		return FALSE
 
+	if((job.job_flags & JOB_REQUIRE_WHITELIST) && player.client?.is_whitelisted(initial(job.title)))
+		JobDebug("Eligibility failed: whitelist, Player: [player], Job: [job.title]")
+		return FALSE
+
+
 	// Activate triumph if we passed with it
 	if(dominated_species_check)
 		player.client?.activate_triumph_buy(TRIUMPH_BUY_RACE_ALL)

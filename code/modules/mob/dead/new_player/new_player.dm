@@ -412,6 +412,9 @@ GLOBAL_LIST_INIT(roleplay_readme, file2list("strings/rt/Lore_Primer.txt"))
 	if((player_prefs.lastclass == job.title) && !job.bypass_lastclass)
 		return JOB_UNAVAILABLE_LASTCLASS
 
+	if((job.job_flags & JOB_REQUIRE_WHITELIST) && !client?.is_whitelisted(initial(job.title)))
+		return JOB_UNAVAILABLE_GENERIC
+
 	return JOB_AVAILABLE
 
 /mob/dead/new_player/proc/AttemptLateSpawn(rank)
