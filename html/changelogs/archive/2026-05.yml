@@ -63,3 +63,6 @@
   - image: changes the recipe books css to look like parchment
   aberrantQuesrist:
   - bugfix: Default priest mask restored.
+2026-05-13:
+  Ben10083:
+  - spellcheck: Spymaster Knife Fervor now has correct name.
