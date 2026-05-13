@@ -16,10 +16,9 @@
 	return "Retrieve [progress_required] [initial(target_item_type.name)]."
 
 
-/datum/quest/retrieval/get_additional_reward(target_turf)
+/datum/quest/retrieval/get_additional_reward(turf/target_turf)
 	var/turf/scroll_turf = get_turf(quest_scroll)
 	var/item_bonus = progress_required * QUEST_DELIVERY_PER_ITEM_BONUS
-
 	return ROUND_UP(item_bonus)
 
 /datum/quest/retrieval/generate(obj/effect/landmark/quest_spawner/landmark)
