@@ -17,7 +17,6 @@
 
 
 /datum/quest/retrieval/get_additional_reward(turf/target_turf)
-	var/turf/scroll_turf = get_turf(quest_scroll)
 	var/item_bonus = progress_required * QUEST_DELIVERY_PER_ITEM_BONUS
 	return ROUND_UP(item_bonus)
 

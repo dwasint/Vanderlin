@@ -28,7 +28,6 @@
 	return target_spawn_area ? "Reported sighting in [target_spawn_area] region." : "Location unknown."
 
 /datum/quest/recovery/get_additional_reward(turf/target_turf)
-	var/turf/scroll_turf = get_turf(quest_scroll)
 	var/kill_reward = progress_required * QUEST_KILL_MOBS_LIST[target_mob_type]
 	return ROUND_UP(kill_reward + QUEST_COURIER_BONUS_FLAT)
 
