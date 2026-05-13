@@ -173,7 +173,7 @@
 /// Calculate reward based on base + additional reward. Called AFTER generation.
 /datum/quest/proc/calculate_reward(turf/target_turf)
 	var/base = get_base_reward()
-	var/additional = get_additional_reward(turf/target_turf)
+	var/additional = get_additional_reward(target_turf)
 	return base + additional
 
 /// Get icon for scroll based on difficulty
