@@ -34,8 +34,6 @@
 		return
 
 /obj/effect/decal/cleanable/ritual_rune/arcyne/decrafting/attackby(obj/item/W, mob/user, list/modifiers)
-	if(istype(W, /obj/item/melee/touch_attack))
-		return ..()
 	if(animating)
 		to_chat(user, span_notice("The rune is already working..."))
 		return
