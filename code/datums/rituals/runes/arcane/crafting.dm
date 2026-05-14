@@ -202,6 +202,7 @@
 
 	//spawn output invisible and floating, then fade it in.
 	var/obj/item/result = new matched_recipe.output(center)
+	result.OnCrafted(dir, user)
 	result.alpha = 0
 	var/saved_transform = result.transform
 	result.transform = matrix() * 0.1
