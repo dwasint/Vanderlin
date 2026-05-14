@@ -69,9 +69,10 @@
 	update_objective("Remove the bandage from your <b>right arm</b>.")
 	RegisterSignal(tutorial_mob, COMSIG_MOB_UNBANDAGE, PROC_REF(on_disinfect_bandage_removed))
 
-/datum/tutorial/vanderlin/injury/proc/on_disinfect_bandage_removed(datum/source, obj/bodypart/limb)
+/datum/tutorial/vanderlin/injury/proc/on_disinfect_bandage_removed(datum/source, obj/item/bodypart/limb)
 	SIGNAL_HANDLER
-	// Removing the bandage from the limb puts it in the mob's hand, which fires pickup
+	// Removing the bandage from the limb puts it in the mob's hand, which fires after removal
+	var/mob/living/carbon/human/mob = tutorial_mob
 	var/obj/item/bodypart/arm = mob.get_bodypart(BODY_ZONE_R_ARM)
 	if(arm != limb)
 		return
