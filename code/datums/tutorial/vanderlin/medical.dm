@@ -67,14 +67,15 @@
 	message_to_player("The wound is disinfected. Remove the bandage from your <b>right arm</b> before suturing  - \
 		click your <b>right arm</b> with an empty hand to take it off.")
 	update_objective("Remove the bandage from your <b>right arm</b>.")
-	RegisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM, PROC_REF(on_disinfect_bandage_removed))
+	RegisterSignal(tutorial_mob, COMSIG_MOB_UNBANDAGE, PROC_REF(on_disinfect_bandage_removed))
 
-/datum/tutorial/vanderlin/injury/proc/on_disinfect_bandage_removed(datum/source, obj/item/picked_up)
+/datum/tutorial/vanderlin/injury/proc/on_disinfect_bandage_removed(datum/source, obj/bodypart/limb)
 	SIGNAL_HANDLER
 	// Removing the bandage from the limb puts it in the mob's hand, which fires pickup
-	if(!istype(picked_up, /obj/item/natural/cloth/bandage))
+	var/obj/item/bodypart/arm = mob.get_bodypart(BODY_ZONE_R_ARM)
+	if(arm != limb)
 		return
-	UnregisterSignal(tutorial_mob, COMSIG_MOB_PICKUP_ITEM)
+	UnregisterSignal(tutorial_mob, COMSIG_MOB_UNBANDAGE)
 	message_to_player("Good. Now pick up the <b>Suture Needle</b> to stitch the slash closed.")
 	update_objective("Pick up the <b>Suture Needle</b>.")
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/needle, suture_needle)

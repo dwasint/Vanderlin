@@ -1668,3 +1668,5 @@
 /obj/item/bodypart/proc/unbandage_limb()
 	for(var/datum/injury/injury as anything in injuries)
 		injury.unbandage_injury()
+	if(owner)
+		SEND_SIGNAL(owner, COMSIG_MOB_UNBANDAGE, src)

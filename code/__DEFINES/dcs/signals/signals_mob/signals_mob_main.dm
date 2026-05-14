@@ -161,3 +161,5 @@
 #define COMSIG_MOB_END_TUTORIAL "tutorial_over"
 /// From /datum/tutorial/proc/update_objective() : (new_objective)
 #define COMSIG_MOB_TUTORIAL_UPDATE_OBJECTIVE "mob_tutorial_update_objective"
+
+#define COMSIG_MOB_UNBANDAGE "mob_unbandage_limb"
