@@ -55,6 +55,16 @@
 			. = ..()
 		return
 
+/obj/effect/decal/cleanable/ritual_rune/arcyne/crafting/attack_hand_secondary(mob/living/user, list/modifiers)
+	if(animating)
+		to_chat(user, span_notice("The rune is already working..."))
+		return
+	if(!length(slots))
+		return ..()
+	abort_ritual()
+	to_chat(user, span_cultsmall("The items clatter free from the rune."))
+	playsound(src, 'sound/magic/glass.ogg', 40, TRUE)
+
 /obj/effect/decal/cleanable/ritual_rune/arcyne/crafting/attackby(obj/item/W, mob/user, list/modifiers)
 	if(animating)
 		to_chat(user, span_notice("The rune is already working..."))
@@ -222,6 +232,9 @@
 	matched_recipe = null
 	animating = FALSE
 	rune_in_use = FALSE
+
+	user.mind.add_sleep_experience(/datum/attribute/skill/magic/arcane, (GET_MOB_ATTRIBUTE_VALUE(user, STAT_INTELLIGENCE) * 2) + matched_recipe.required_skill, FALSE)
+
 	do_invoke_glow()
 
 /// Releases all staged items and resets state without crafting anything.

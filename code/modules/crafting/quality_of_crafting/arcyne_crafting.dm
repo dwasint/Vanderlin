@@ -15,7 +15,7 @@
 		/obj/item/natural/stone,
 	)
 	output = /obj/item/gem/amethyst
-	required_skill =  SKILL_LEVEL_APPRENTICE
+	required_skill = SKILL_LEVEL_NONE
 
 /datum/arcyne_crafting_recipe/infernal_feather
 	name = "infernal feather"
