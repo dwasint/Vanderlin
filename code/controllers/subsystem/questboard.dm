@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(questboard)
 	name = "Quest Board"
-	wait = 5 MINUTES
+	wait = 2 SECONDS
 	flags = SS_KEEP_TIMING | SS_BACKGROUND
 	runlevels = RUNLEVEL_GAME
 	///singleton list of quests mapped to difficulty to save a super tiny amount of time
@@ -26,6 +26,9 @@ SUBSYSTEM_DEF(questboard)
 	///stored list of transactions (currently admin stuff but like yummy paperwork)
 	var/list/fund_log = list()
 
+	var/list/generation_queue = list()
+	COOLDOWN_DECLARE(generation_cooldown)
+
 /datum/controller/subsystem/questboard/Initialize(start_timeofday)
 	quest_pool = list(
 		QUEST_DIFFICULTY_EASY = list(),
@@ -35,45 +38,37 @@ SUBSYSTEM_DEF(questboard)
 	return ..()
 
 /datum/controller/subsystem/questboard/fire(resumed)
-	generate_pool_quests()
-	prune_stale_quests()
+	if(!resumed)
+		prune_stale_quests()
+		if(COOLDOWN_FINISHED(src, generation_cooldown))
+			build_generation_queue()
+			COOLDOWN_START(src, generation_cooldown, 5 MINUTES)
 
-/**
- * Attempt to fill each difficulty tier up to its current effective maximum.
- *
- * The effective max scales upward with the highest threat level across all
- * regions, so a world under heavy pressure gets more quests posted
- * automatically. Giving adventurers more options to chip away at it.
- *
- * Generation is also threat-biased: when there are high-threat regions we
- * preferentially pick landmarks that sit inside them so the quests the board
- * shows are actually useful for reducing local danger.
- */
-/datum/controller/subsystem/questboard/proc/generate_pool_quests()
-	var/threat_bonus = get_threat_pool_bonus()
+	while(length(generation_queue))
+		var/difficulty = generation_queue[1]
+		generation_queue.Cut(1, 2)
 
-	for(var/difficulty in quest_pool)
-		// Count only non-custom quests against the pool cap
-		var/current = 0
-		for(var/datum/quest/Q as anything in quest_pool[difficulty])
-			if(!istype(Q, /datum/quest/custom))
-				current++
-
-		var/base_max = pool_max[difficulty]
-		var/effective_max = base_max + threat_bonus
-		if(current >= effective_max)
-			continue
-
-		var/needed = effective_max - current
-		for(var/i in 1 to needed)
-			var/cost = get_generation_cost(difficulty)
-			if(quest_fund < cost)
-				break
+		var/cost = get_generation_cost(difficulty)
+		if(quest_fund >= cost)
 			var/datum/quest/generated = try_generate_quest(difficulty)
 			if(generated)
 				quest_pool[difficulty] += generated
 				quest_fund -= cost
-				fund_log += "-[cost] (generated [difficulty] quest: [generated.title] in [generated.threat_region_name || "unknown region"])"
+				fund_log += "-[cost] (generated [difficulty] quest: [generated.title])"
+
+		if(MC_TICK_CHECK)
+			return
+
+/datum/controller/subsystem/questboard/proc/build_generation_queue()
+	var/threat_bonus = get_threat_pool_bonus()
+	for(var/difficulty in quest_pool)
+		var/current = 0
+		for(var/datum/quest/Q as anything in quest_pool[difficulty])
+			if(!istype(Q, /datum/quest/custom))
+				current++
+		var/needed = (pool_max[difficulty] + threat_bonus) - current
+		for(var/i in 1 to needed)
+			generation_queue += difficulty
 
 
 /datum/controller/subsystem/questboard/proc/get_threat_pool_bonus()

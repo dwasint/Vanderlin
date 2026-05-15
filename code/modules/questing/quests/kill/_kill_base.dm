@@ -28,7 +28,7 @@
 		spawn_effect.AddComponent(/datum/component/quest_object/mob_spawner, src)
 		add_tracked_atom(new_mob)
 		landmark.add_quest_faction_to_nearby_mobs(spawn_turf)
-		sleep(1)
+		sleep(0.5 SECONDS)
 
 /datum/quest/kill/get_additional_reward()
 	..()
