@@ -2395,6 +2395,10 @@
 	},
 /turf/open/floor/wood,
 /area/outdoors)
+"AB" = (
+/obj/effect/landmark/quest_spawner/objective,
+/turf/open/floor/cobblerock,
+/area/outdoors)
 "AI" = (
 /obj/structure/flora/grass/water/reeds,
 /turf/open/water/river,
@@ -2412,7 +2416,6 @@
 	dir = 1;
 	pixel_y = -5
 	},
-/obj/structure/fake_machine/contractledger,
 /turf/open/floor/wood,
 /area/indoors/town/keep)
 "Bd" = (
@@ -16190,7 +16193,7 @@ zg
 zg
 cp
 ji
-Wr
+AB
 xM
 Pg
 EX

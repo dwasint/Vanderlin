@@ -18,6 +18,7 @@ GLOBAL_VAR(harlequinn_hunt_quest) // weakref to active /datum/quest/custom/harle
 #define QUEST_CUSTOM "Custom"
 #define QUEST_RECOVERY "Recovery"
 #define QUEST_PLANAR "Planar Assault"
+#define QUEST_OBJECTIVE "Decree"
 
 #define QUEST_REWARD_EASY_LOW 5
 #define QUEST_REWARD_EASY_HIGH 15

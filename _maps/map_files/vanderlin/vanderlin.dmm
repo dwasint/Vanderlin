@@ -4388,10 +4388,9 @@
 /turf/open/floor/carpet/stellar,
 /area/indoors/town/keep/magician)
 "ceZ" = (
-/obj/machinery/light/fueled/wallfire/candle,
-/obj/structure/fake_machine/contractledger,
-/turf/open/floor/ruinedwood/two,
-/area/indoors/town/shop)
+/obj/effect/landmark/quest_spawner/objective,
+/turf/open/floor/cobble,
+/area/outdoors/town)
 "cfl" = (
 /turf/open/floor/wood,
 /area/outdoors/woods_safe)
@@ -98431,7 +98430,7 @@ nbk
 msL
 qKT
 oNn
-ceZ
+oZU
 vaz
 txx
 fPz
@@ -114423,7 +114422,7 @@ ujt
 mFi
 mFi
 hZn
-hZn
+ceZ
 eYb
 qOq
 fXE

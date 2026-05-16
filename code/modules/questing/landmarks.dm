@@ -62,3 +62,9 @@
 	icon_state = "quest_marker_high"
 	quest_difficulty = QUEST_DIFFICULTY_HARD
 	quest_type = list(QUEST_CLEAR_OUT, QUEST_RAID, QUEST_BEACON, QUEST_OUTLAW, QUEST_RECOVERY, QUEST_PLANAR)
+
+/obj/effect/landmark/quest_spawner/objective
+	name = "objective quest landmark"
+	icon_state = "quest_marker_high"
+	quest_difficulty = QUEST_DIFFICULTY_EASY
+	quest_type = list(QUEST_OBJECTIVE)
