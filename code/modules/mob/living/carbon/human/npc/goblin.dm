@@ -478,6 +478,7 @@
 	gobs++
 	var/mob/living/carbon/human/species/goblin/npc/N = new (get_turf(src))
 	N.key = user.key
+	addtimer(CALLBACK(N, TYPE_PROC_REF(/mob/living/carbon/human, choose_name_popup), "GOBLIN"), 5 SECONDS)
 	qdel(user)
 
 
