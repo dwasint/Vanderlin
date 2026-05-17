@@ -347,6 +347,14 @@
 		STAT_ENDURANCE = list(-2, 2),
 		STAT_SPEED = list(-2, 4),
 	)
+	raw_attribute_list = list(
+		/datum/attribute/skill/combat/wrestling = 20,
+		/datum/attribute/skill/combat/unarmed = 20,
+		/datum/attribute/skill/combat/polearms = 10,
+		/datum/attribute/skill/combat/knives = 10,
+		/datum/attribute/skill/combat/axesmaces = 10,
+		/datum/attribute/skill/combat/swords = 10,
+	)
 /datum/outfit/npc/goblin/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.attributes?.add_sheet(/datum/attribute_holder/sheet/job/goblin)
