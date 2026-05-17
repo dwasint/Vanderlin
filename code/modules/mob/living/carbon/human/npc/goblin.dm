@@ -153,6 +153,21 @@
 	exotic_bloodtype = /datum/blood_type/human/corrupted/goblin
 	meat = list(/obj/item/reagent_containers/food/snacks/meat/strange/inhumen = 1)
 
+/datum/species/goblin/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+	..()
+	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))
+	C.grant_language(/datum/language/hellspeak)
+
+/datum/species/goblin/after_creation(mob/living/carbon/C)
+	..()
+	C.dna.species.accent_language = C.dna.species.get_accent(native_language, 1)
+	C.grant_language(/datum/language/hellspeak)
+
+/datum/species/goblin/on_species_loss(mob/living/carbon/C)
+	. = ..()
+	UnregisterSignal(C, COMSIG_MOB_SAY)
+	C.remove_language(/datum/language/hellspeak)
+
 /datum/species/goblin/regenerate_icons(mob/living/carbon/human/H)
 	H.icon_state = ""
 	if(HAS_TRAIT(H, TRAIT_NO_TRANSFORM))
