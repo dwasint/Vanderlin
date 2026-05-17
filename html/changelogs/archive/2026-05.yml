@@ -66,3 +66,10 @@
 2026-05-13:
   Ben10083:
   - spellcheck: Spymaster Knife Fervor now has correct name.
+2026-05-17:
+  dwasint:
+  - bugfix: stumps no longer cry about location
+  - bugfix: fall damage applies localized damage
+  - bugfix: fall twist applies localized damage
+  - bugfix: edge cases of applying damage now pass in the body zone as a fallback
+      to prevent unnatural wounds

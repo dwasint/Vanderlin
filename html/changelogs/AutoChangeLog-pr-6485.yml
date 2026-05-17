@@ -1,7 +1,0 @@
-author: "dwasint"
-delete-after: True
-changes:
-  - bugfix: "stumps no longer cry about location"
-  - bugfix: "fall damage applies localized damage"
-  - bugfix: "fall twist applies localized damage"
-  - bugfix: "edge cases of applying damage now pass in the body zone as a fallback to prevent unnatural wounds"
