@@ -1,0 +1,6 @@
+author: "ta3754859-max"
+delete-after: True
+changes:
+  - code_imp: "Framework (if you can even call it that) for alternative examine names"
+  - rscadd: "alternative naming for inquisition items"
+  - bugfix: "Skin items such as disciple's skin no longer show up on examine"
