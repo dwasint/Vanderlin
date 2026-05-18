@@ -35,9 +35,9 @@ GLOBAL_VAR(harlequinn_hunt_quest) // weakref to active /datum/quest/custom/harle
 #define QUESTBOARD_POOL_MAX_MEDIUM 4
 #define QUESTBOARD_POOL_MAX_HARD 2
 
-#define QUESTBOARD_COST_EASY 3
-#define QUESTBOARD_COST_MEDIUM 7
-#define QUESTBOARD_COST_HARD 10
+#define QUESTBOARD_COST_EASY 1 //3
+#define QUESTBOARD_COST_MEDIUM 2 //7
+#define QUESTBOARD_COST_HARD 3 //10
 
 #define QUESTBOARD_CUSTOM_ISSUE_FEE 20
 
