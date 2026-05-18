@@ -64,7 +64,7 @@ SUBSYSTEM_DEF(questboard)
 	for(var/difficulty in quest_pool)
 		var/current = 0
 		for(var/datum/quest/Q as anything in quest_pool[difficulty])
-			if(!istype(Q, /datum/quest/custom))
+			if(!istype(Q, /datum/quest/custom) || !istype(Q, /datum/quest/objective))
 				current++
 		var/needed = (pool_max[difficulty] + threat_bonus) - current
 		for(var/i in 1 to needed)
