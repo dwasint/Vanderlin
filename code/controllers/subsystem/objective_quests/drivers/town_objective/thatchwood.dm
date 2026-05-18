@@ -1,4 +1,5 @@
 /datum/objective_quest_driver/town_objective/area/thatchwood
+	abstract_type = /datum/objective_quest_driver/town_objective/area/thatchwood //TODO: REMOVE THIS WHEN I FINISH THIS
 	area_types = list(
 		/area/outdoors/wilderness/outpost/vanderlin,
 		/area/indoors/wilderness/tavern,

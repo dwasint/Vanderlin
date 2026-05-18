@@ -2756,6 +2756,8 @@
 #include "code\modules\crafting\blueprinting\blueprints\wall.dm"
 #include "code\modules\crafting\blueprinting\blueprints\wonders.dm"
 #include "code\modules\crafting\blueprinting\blueprints\zizo.dm"
+#include "code\modules\crafting\blueprinting\building_footprint\_preview_holder.dm"
+#include "code\modules\crafting\blueprinting\building_footprint\schematic_item.dm"
 #include "code\modules\crafting\book_entries\_base.dm"
 #include "code\modules\crafting\book_entries\attunement_matrix.dm"
 #include "code\modules\crafting\book_entries\container_craft.dm"
