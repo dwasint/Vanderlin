@@ -2613,7 +2613,7 @@
 	changeNext_move(CLICK_CD_MELEE)
 	if(m_intent != MOVE_INTENT_SNEAK)
 		visible_message(span_info("[src] looks up."))
-	var/turf/ceiling = get_step_multiz(src, UP)
+	var/turf/ceiling = GET_TURF_ABOVE(get_turf(src))
 	var/turf/T = get_turf(src)
 	if(isnull(ceiling)) //Can't check what isn't there
 		return

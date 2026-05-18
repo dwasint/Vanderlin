@@ -1932,6 +1932,15 @@
 /obj/effect/falling_sakura,
 /turf/open/floor/dirt/road,
 /area/outdoors)
+"tw" = (
+/obj/effect/mapping_helpers/virtual_z_link{
+	is_above = 1;
+	link_id = "infini-1";
+	link_height = 4;
+	link_width = 4
+	},
+/turf/open/floor/churchbrick,
+/area)
 "tA" = (
 /turf/closed,
 /area/outdoors)
@@ -2005,6 +2014,12 @@
 	},
 /turf/open/floor/grass/yel,
 /area/outdoors)
+"uq" = (
+/obj/structure/stairs/stone{
+	dir = 1
+	},
+/turf/open/floor/churchbrick,
+/area)
 "uL" = (
 /obj/structure/hotspring/border/two,
 /turf/open/floor/cobblerock,
@@ -2550,6 +2565,14 @@
 /obj/effect/landmark/observer_start,
 /turf/open/floor/cobblerock,
 /area/outdoors)
+"Dc" = (
+/obj/effect/mapping_helpers/virtual_z_link{
+	link_id = "infini-1";
+	link_height = 4;
+	link_width = 4
+	},
+/turf/closed/wall/mineral/stone,
+/area)
 "Di" = (
 /obj/structure/flora/ausbushes/ppflowers,
 /obj/structure/flora/ausbushes/lavendergrass,
@@ -3116,6 +3139,10 @@
 /obj/machinery/light/fueled/wallfire/candle/l,
 /turf/open/floor/tile,
 /area/indoors/town/keep)
+"Nu" = (
+/obj/structure/stairs/stone,
+/turf/open/floor/churchbrick,
+/area)
 "NF" = (
 /obj/structure/irrigation_channel,
 /turf/open/floor/grass/yel,
@@ -3692,6 +3719,12 @@
 /obj/structure/hotspring/border/twelve,
 /turf/open/floor/dirt/road,
 /area/outdoors)
+"XP" = (
+/obj/structure/stairs/stone{
+	dir = 1
+	},
+/turf/open/openspace,
+/area)
 "XS" = (
 /obj/structure/door,
 /turf/open/floor/churchbrick,
@@ -15766,12 +15799,12 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
+IZ
+IZ
+IZ
+IZ
+IZ
+IZ
 IZ
 vd
 ON
@@ -16023,12 +16056,12 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
+IZ
+IZ
+uq
+ON
+tw
+ON
 IZ
 ON
 ON
@@ -16280,13 +16313,13 @@ ac
 ac
 as
 as
-as
-as
-as
-as
-as
-as
 IZ
+GE
+IZ
+IZ
+vd
+ON
+ON
 ON
 ON
 DC
@@ -16537,12 +16570,12 @@ ac
 ac
 as
 as
-as
-as
-as
-as
-as
-as
+IZ
+GE
+GE
+Nu
+ON
+ON
 IZ
 ON
 ON
@@ -16794,12 +16827,12 @@ ac
 ac
 as
 as
-as
-as
-as
-as
-as
-as
+IZ
+IZ
+IZ
+IZ
+IZ
+IZ
 IZ
 vd
 ON
@@ -81301,12 +81334,12 @@ ac
 ac
 ac
 ac
-as
-as
-as
-as
-as
-as
+IZ
+IZ
+IZ
+IZ
+IZ
+IZ
 IZ
 IZ
 GE
@@ -81558,12 +81591,12 @@ ac
 ac
 ac
 ac
-as
-as
-as
-as
-as
-as
+IZ
+ON
+XP
+GE
+GE
+Dc
 IZ
 ON
 GE
@@ -81815,12 +81848,12 @@ ac
 ac
 ac
 ac
-as
-as
-as
-as
-as
-as
+IZ
+vd
+IZ
+IZ
+IZ
+IZ
 IZ
 ON
 GE
@@ -82072,12 +82105,12 @@ ac
 ac
 ac
 ac
-as
-as
-as
-as
-as
-as
+IZ
+ON
+ON
+Nu
+IZ
+IZ
 IZ
 ON
 GE
@@ -82329,12 +82362,12 @@ ac
 ac
 ac
 ac
-as
-as
-as
-as
-as
-as
+IZ
+IZ
+IZ
+IZ
+IZ
+IZ
 IZ
 IZ
 GE
