@@ -212,17 +212,19 @@ SUBSYSTEM_DEF(questboard)
 /datum/controller/subsystem/questboard/proc/deposit_quest_funds(mob/steward, amount)
 	if(amount <= 0)
 		return FALSE
-	if(!(steward in SStreasury.bank_accounts))
-		return FALSE
-	if(SStreasury.bank_accounts[steward] < amount)
-		return FALSE
+	if(steward)
+		if(!(steward in SStreasury.bank_accounts))
+			return FALSE
+		if(SStreasury.bank_accounts[steward] < amount)
+			return FALSE
 
-	SStreasury.bank_accounts[steward] -= amount
+		SStreasury.bank_accounts[steward] -= amount
 	SStreasury.treasury_value += amount
 	quest_fund += amount
-	fund_log += "+[amount] deposited by [steward.real_name]"
-	to_chat(steward, span_notice("You deposit [amount] mammons into the quest fund. Fund total: [quest_fund]."))
-	log_quest(steward.ckey, steward.mind, steward, "Deposit [amount] to quest fund")
+	if(steward)
+		fund_log += "+[amount] deposited by [steward.real_name]"
+		to_chat(steward, span_notice("You deposit [amount] mammons into the quest fund. Fund total: [quest_fund]."))
+		log_quest(steward.ckey, steward.mind, steward, "Deposit [amount] to quest fund")
 	return TRUE
 
 /// How much it costs from the fund to auto-generate one quest of a given difficulty.

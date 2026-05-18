@@ -362,6 +362,7 @@
 
 	add_mammons_to_atom(user, round(reward))
 	log_quest(user.ckey, user.mind, user, "Turn in [Q.quest_type] for [reward] mammon")
+	SSquestboard.deposit_quest_funds(null, CEILING(reward * 0.1, 1))
 
 	// Pledge-backed completion: flavour say names the original patron
 	if(istype(Q, /datum/quest/custom))
