@@ -8,7 +8,9 @@ SUBSYSTEM_DEF(objectivequests)
 	var/list/datum/objective_quest_driver/objectives = list()
 
 /datum/controller/subsystem/objectivequests/Initialize(start_timeofday)
-	for(var/subtype in subtypesof(/datum/objective_quest_driver))
+	for(var/atom/subtype as anything in subtypesof(/datum/objective_quest_driver))
+		if(IS_ABSTRACT(subtype))
+			continue
 		objectives += new subtype()
 	return ..()
 
