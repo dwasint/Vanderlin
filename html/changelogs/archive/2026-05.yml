@@ -48,3 +48,28 @@
   - balance: organ pain has been reduced by around 45%
   - balance: organs can only be damaged after the bodypart is above 40% of its total
       damage from 20%
+2026-05-11:
+  PotatoTomahto:
+  - balance: blacksmithing
+  Singul0:
+  - qol: The monarch has procured some very exotic fashion from various corners of
+      the world from various traveling merchants
+  Sulaboy:
+  - balance: Templar Sacrestant speed -2 to -1
+  ta3754859-max:
+  - balance: Collar detonator size decreased to 1x1
+2026-05-12:
+  PotatoTomahto:
+  - image: changes the recipe books css to look like parchment
+  aberrantQuesrist:
+  - bugfix: Default priest mask restored.
+2026-05-13:
+  Ben10083:
+  - spellcheck: Spymaster Knife Fervor now has correct name.
+2026-05-17:
+  dwasint:
+  - bugfix: stumps no longer cry about location
+  - bugfix: fall damage applies localized damage
+  - bugfix: fall twist applies localized damage
+  - bugfix: edge cases of applying damage now pass in the body zone as a fallback
+      to prevent unnatural wounds
