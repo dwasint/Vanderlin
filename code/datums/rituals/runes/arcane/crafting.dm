@@ -178,6 +178,11 @@
 		to_chat(user, span_hierophant_warning("My arcyne is not refined enough to complete this working..."))
 		abort_ritual()
 		return
+	if(user.mana_pool.amount < matched_recipe.mana_cost)
+		to_chat(user, span_hierophant_warning("My mana is lacking..."))
+		abort_ritual()
+		return
+	user.mana_pool.adjust_mana(-matched_recipe.mana_cost)
 
 	user.say(invocation, language = /datum/language/common, ignore_spam = TRUE, forced = "cult invocation")
 	playsound(src, 'sound/magic/cosmic_expansion.ogg', 60, TRUE)
