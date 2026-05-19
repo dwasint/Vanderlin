@@ -882,8 +882,8 @@ export const TriumphShop = () => {
             <Section>
               <Stack vertical>
                 <Stack.Item>
-                  <Box style={{ overflowX: 'auto', overflowY: 'hidden' }}>
-                    <Tabs>
+                  <Box>
+                    <Tabs scrollable>
                       {allTabs.map((tab) => (
                         <Tabs.Tab
                           key={tab}
