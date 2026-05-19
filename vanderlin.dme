@@ -1336,6 +1336,7 @@
 #include "code\datums\loadouts\_base_loadout_item.dm"
 #include "code\datums\loadouts\accessory_loadout_items.dm"
 #include "code\datums\loadouts\cloak_loadout_items.dm"
+#include "code\datums\loadouts\dye_loadout_items.dm"
 #include "code\datums\loadouts\face_loadout_items.dm"
 #include "code\datums\loadouts\hat_loadout_items.dm"
 #include "code\datums\loadouts\item_loadout_items.dm"

@@ -13,6 +13,9 @@ import {
 } from 'tgui-core/components';
 import type { BooleanLike } from 'tgui-core/react';
 import { Window } from '../layouts';
+import { ColorPicker } from './ColorPicker';
+import type { ColorEntry } from './ColorPicker';
+
 
 type LoadoutEntry = {
   path: string;
@@ -39,6 +42,11 @@ type EquippedSlot = {
   path: string | null;
   name: string;
   permanent: BooleanLike;
+  dyeable: BooleanLike;
+  has_detail: BooleanLike;
+  base_color: string | null;
+  detail_color: string | null;
+
 };
 
 type SpecialEntry = {
@@ -62,6 +70,7 @@ type Data = {
   categories: Record<string, LoadoutEntry[]>;
   equipped_slots: [EquippedSlot, EquippedSlot, EquippedSlot];
   specials: SpecialEntry[];
+  available_colors: ColorEntry[];
 };
 
 function flattenCategories(categories: Record<string, LoadoutEntry[]>): LoadoutEntry[] {
@@ -121,52 +130,142 @@ const ItemSprite = ({
   );
 };
 
+
 const EquippedPanel = ({
   slots,
+  availableColors,
   onUnequip,
+  onSetColor,
+  onClearColor,
+  onBuyColor,
 }: {
   slots: EquippedSlot[];
+  availableColors: ColorEntry[];
   onUnequip: (path: string) => void;
-}) => (
-  <Section title="Loadout Slots" fill>
-    <Stack vertical>
-      {slots.map((slot, i) => (
-        <Stack.Item key={i}>
-          <Stack align="center">
-            <Stack.Item>
-              <Icon
-                name={slot.path ? 'check-circle' : 'circle'}
-                color={slot.path ? 'good' : 'average'}
-              />
+  onSetColor: (path: string, layer: 'base' | 'detail', hex: string) => void;
+  onClearColor: (path: string, layer: 'base' | 'detail') => void;
+  onBuyColor: (colorPath: string) => void;
+}) => {
+  const [openSlotPath, setOpenSlotPath] = useState<string | null>(null);
+  const [openLayer, setOpenLayer] = useState<'base' | 'detail'>('base');
+
+  const togglePicker = (path: string, layer: 'base' | 'detail' = 'base') => {
+    if (openSlotPath === path && openLayer === layer) {
+      setOpenSlotPath(null);
+    } else {
+      setOpenSlotPath(path);
+      setOpenLayer(layer);
+    }
+  };
+
+  return (
+    <Section title="Loadout Slots" fill>
+      <Stack vertical>
+        {slots.map((slot, i) => {
+          const isOpen    = !!slot.path && openSlotPath === slot.path;
+          const dyeable   = !!slot.dyeable;
+          const hasDetail = !!slot.has_detail;
+
+          return (
+            <Stack.Item key={i}>
+              <Stack align="center">
+                <Stack.Item>
+                  <Icon
+                    name={slot.path ? 'check-circle' : 'circle'}
+                    color={slot.path ? 'good' : 'average'}
+                  />
+                </Stack.Item>
+                <Stack.Item grow>
+                  {slot.path ? slot.name : `Slot ${i + 1} — Empty`}
+                </Stack.Item>
+
+                {!!slot.path && dyeable && (
+                  <Stack.Item>
+                    <Button
+                      icon="palette"
+                      color={isOpen && openLayer === 'base' ? 'average' : 'transparent'}
+                      tooltip="Set base color"
+                      onClick={() => togglePicker(slot.path!, 'base')}
+                      style={slot.base_color ? { borderBottom: `2px solid ${slot.base_color}` } : {}}
+                    />
+                  </Stack.Item>
+                )}
+                {!!slot.path && hasDetail && (
+                  <Stack.Item>
+                    <Button
+                      icon="star"
+                      color={isOpen && openLayer === 'detail' ? 'average' : 'transparent'}
+                      tooltip="Set accent/detail color"
+                      onClick={() => togglePicker(slot.path!, 'detail')}
+                      style={slot.detail_color ? { borderBottom: `2px solid ${slot.detail_color}` } : {}}
+                    />
+                  </Stack.Item>
+                )}
+
+                {!!slot.path && (
+                  <Stack.Item>
+                    <Button
+                      icon="times"
+                      color="transparent"
+                      tooltip={
+                        !!slot.permanent
+                          ? 'Unequip (item stays owned)'
+                          : 'Cancel rental (refunded)'
+                      }
+                      onClick={() => onUnequip(slot.path!)}
+                    />
+                  </Stack.Item>
+                )}
+              </Stack>
+
+              {isOpen && slot.path && (
+                <Box mt={1} ml={2}>
+                  {dyeable && hasDetail && (
+                    <Stack mb={1}>
+                      <Stack.Item>
+                        <Button
+                          selected={openLayer === 'base'}
+                          onClick={() => setOpenLayer('base')}
+                          fontSize="0.8em"
+                        >
+                          Base
+                        </Button>
+                      </Stack.Item>
+                      <Stack.Item>
+                        <Button
+                          selected={openLayer === 'detail'}
+                          onClick={() => setOpenLayer('detail')}
+                          fontSize="0.8em"
+                        >
+                          Accent
+                        </Button>
+                      </Stack.Item>
+                    </Stack>
+                  )}
+                  <ColorPicker
+                    colors={availableColors}
+                    selected={openLayer === 'base' ? slot.base_color : slot.detail_color}
+                    onSelect={(hex) => onSetColor(slot.path!, openLayer, hex)}
+                    onClear={() => onClearColor(slot.path!, openLayer)}
+                    onBuy={onBuyColor}
+                    label={openLayer === 'base' ? 'Base Color' : 'Accent Color'}
+                  />
+                </Box>
+              )}
             </Stack.Item>
-            <Stack.Item grow>
-              {slot.path ? slot.name : `Slot ${i + 1} — Empty`}
-            </Stack.Item>
-            {!!slot.path && (
-              <Stack.Item>
-                <Button
-                  icon="times"
-                  color="transparent"
-                  tooltip={
-                    !!slot.permanent
-                      ? 'Unequip (item stays owned)'
-                      : 'Cancel rental (refunded)'
-                  }
-                  onClick={() => onUnequip(slot.path!)}
-                />
-              </Stack.Item>
-            )}
-          </Stack>
+          );
+        })}
+
+        <Stack.Item>
+          <Box mt={1} color="label" fontSize="0.8em">
+            Items and colors apply on your next spawn.
+          </Box>
         </Stack.Item>
-      ))}
-      <Stack.Item>
-        <Box mt={1} color="label" fontSize="0.8em">
-          Items spawn with you next round.
-        </Box>
-      </Stack.Item>
-    </Stack>
-  </Section>
-);
+      </Stack>
+    </Section>
+  );
+};
+
 
 const LoadoutItemRow = ({
   item,
@@ -589,8 +688,8 @@ const SpecialsTab = ({
           <NoticeBox info>
             <Icon name="heart" mr={1} color="purple" />
             <Box as="span" bold>Patreon Supporter perk:</Box>{' '}
-            Random rolls are <Box as="span" bold color="good">free</Box> for you,
-            and specific trait costs are <Box as="span" bold color="good">50% off</Box>.
+            Random rolls are free for you,
+            and specific trait costs are 50% off.
           </NoticeBox>
         ) : (
           <Box color="label" fontSize="0.8em" mb={0.5}>
@@ -721,6 +820,7 @@ export const TriumphShop = () => {
     pending_special,
     cost_random_special,
     donator,
+    available_colors,   // new
   } = data;
 
   const categoryNames = Object.keys(categories);
@@ -731,19 +831,26 @@ export const TriumphShop = () => {
 
   const slotsUsed = equipped_slots.filter((s) => s.path !== null).length;
 
-  const handleBuySingle    = (path: string) => act('buy_single', { path });
-  const handleBuyPermanent = (path: string) => act('buy_permanent', { path });
-  const handleEquip        = (path: string) => act('equip_item', { path });
-  const handleUnequip      = (path: string) => act('unequip_item', { path });
-  const handleRollRandom   = () => act('buy_random_special');
+  // unchanged handlers
+  const handleBuySingle    = (path: string) => act('buy_single',           { path });
+  const handleBuyPermanent = (path: string) => act('buy_permanent',        { path });
+  const handleEquip        = (path: string) => act('equip_item',           { path });
+  const handleUnequip      = (path: string) => act('unequip_item',         { path });
+  const handleRollRandom   = ()              => act('buy_random_special');
   const handleBuySpecific  = (path: string) => act('buy_specific_special', { path });
-  const handleClearPending = () => act('clear_pending_special');
+  const handleClearPending = ()              => act('clear_pending_special');
+
+  // new color handlers
+  const handleSetColor   = (path: string, layer: 'base' | 'detail', hex: string) =>
+    act('set_loadout_color',   { path, layer, hex });
+  const handleClearColor = (path: string, layer: 'base' | 'detail') =>
+    act('clear_loadout_color', { path, layer });
+  const handleBuyColor   = (colorPath: string) =>
+    act('buy_permanent',       { path: colorPath });
 
   const effectiveTab = search.length > 1 ? '__search__' : activeTab;
   const allItems     = useMemo(() => flattenCategories(categories), [categories]);
-
-  // Search bar shown on all tabs except Specials
-  const showSearch = activeTab !== 'Specials';
+  const showSearch   = activeTab !== 'Specials';
 
   return (
     <Window title="Triumph Shop" width={820} height={600}>
@@ -813,8 +920,15 @@ export const TriumphShop = () => {
           <Stack.Item grow>
             <Stack fill>
               {activeTab !== 'Specials' && (
-                <Stack.Item width="210px">
-                  <EquippedPanel slots={equipped_slots} onUnequip={handleUnequip} />
+                <Stack.Item width="230px">
+                  <EquippedPanel
+                    slots={equipped_slots}
+                    availableColors={available_colors}
+                    onUnequip={handleUnequip}
+                    onSetColor={handleSetColor}
+                    onClearColor={handleClearColor}
+                    onBuyColor={handleBuyColor}
+                  />
                 </Stack.Item>
               )}
               <Stack.Item grow>
@@ -873,3 +987,4 @@ export const TriumphShop = () => {
     </Window>
   );
 };
+

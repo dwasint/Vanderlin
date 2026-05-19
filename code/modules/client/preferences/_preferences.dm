@@ -262,6 +262,9 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	/// Single-round rentals queued for this spawn only. NOT persisted.
 	var/list/single_round_loadout = list()
 
+	var/list/equipped_loadout_colors = list()
+	var/list/single_round_loadout_colors = list()
+
 /datum/preferences/New(client/C)
 	parent = C
 

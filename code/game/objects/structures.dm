@@ -193,5 +193,6 @@
 				var/path2item = user.mind.special_items[item]
 				user.mind.special_items -= item
 				var/obj/item/I = new path2item(user.loc)
+				apply_item_colors(I, user.mind)
 				user.put_in_hands(I)
 	return TRUE
