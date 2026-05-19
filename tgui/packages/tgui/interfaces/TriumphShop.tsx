@@ -58,6 +58,7 @@ type Data = {
   triumph_balance: number;
   cost_random_special: number;
   pending_special: string | null;
+  donator: BooleanLike;
   categories: Record<string, LoadoutEntry[]>;
   equipped_slots: [EquippedSlot, EquippedSlot, EquippedSlot];
   specials: SpecialEntry[];
@@ -541,6 +542,7 @@ const SpecialsTab = ({
   pendingSpecial,
   balance,
   costRandom,
+  donator,
   onRollRandom,
   onBuySpecific,
   onClearPending,
@@ -549,6 +551,7 @@ const SpecialsTab = ({
   pendingSpecial: string | null;
   balance: number;
   costRandom: number;
+  donator: BooleanLike;
   onRollRandom: () => void;
   onBuySpecific: (path: string) => void;
   onClearPending: () => void;
@@ -581,6 +584,22 @@ const SpecialsTab = ({
 
   return (
     <Stack vertical fill>
+      <Stack.Item>
+        {!!donator ? (
+          <NoticeBox info>
+            <Icon name="heart" mr={1} color="purple" />
+            <Box as="span" bold>Patreon Supporter perk:</Box>{' '}
+            Random rolls are <Box as="span" bold color="good">free</Box> for you,
+            and specific trait costs are <Box as="span" bold color="good">50% off</Box>.
+          </NoticeBox>
+        ) : (
+          <Box color="label" fontSize="0.8em" mb={0.5}>
+            <Icon name="heart" mr={1} color="purple" />
+            Patreon supporters get free random rolls and 50% off specific trait picks.
+          </Box>
+        )}
+      </Stack.Item>
+
       <Stack.Item>
         <Section title="Next Round Special">
           {showReel ? (
@@ -616,10 +635,16 @@ const SpecialsTab = ({
                   icon="dice"
                   color={canAffordRandom ? 'caution' : 'bad'}
                   disabled={!canAffordRandom || hasPending || showReel}
-                  tooltip={!canAffordRandom ? `Need ${costRandom} triumphs` : `Roll a random special for ${costRandom} triumphs`}
+                  tooltip={
+                    !canAffordRandom
+                      ? `Need ${costRandom} triumphs`
+                      : !!donator
+                        ? 'Roll a random special for free (Patreon perk)'
+                        : `Roll a random special for ${costRandom} triumphs`
+                  }
                   onClick={handleRollClick}
                 >
-                  Roll Random ({costRandom})
+                  {!!donator ? 'Roll Random (Free)' : `Roll Random (${costRandom})`}
                 </Button>
               </Stack.Item>
               <Stack.Item color="label" fontSize="0.85em">
@@ -668,7 +693,9 @@ const SpecialsTab = ({
                       !eligible ? 'Your character does not meet the requirements'
                         : hasPending ? 'You already have a special queued — clear it first'
                           : !canAfford ? `Need ${trait.cost_specific} triumphs`
-                            : `Pick this trait for ${trait.cost_specific} triumphs`
+                            : !!donator
+                              ? `Pick this trait for ${trait.cost_specific} triumphs (50% Patreon discount applied)`
+                              : `Pick this trait for ${trait.cost_specific} triumphs`
                     }
                     onClick={() => onBuySpecific(trait.path)}
                   >
@@ -693,6 +720,7 @@ export const TriumphShop = () => {
     specials,
     pending_special,
     cost_random_special,
+    donator,
   } = data;
 
   const categoryNames = Object.keys(categories);
@@ -713,6 +741,9 @@ export const TriumphShop = () => {
 
   const effectiveTab = search.length > 1 ? '__search__' : activeTab;
   const allItems     = useMemo(() => flattenCategories(categories), [categories]);
+
+  // Search bar shown on all tabs except Specials
+  const showSearch = activeTab !== 'Specials';
 
   return (
     <Window title="Triumph Shop" width={820} height={600}>
@@ -742,31 +773,36 @@ export const TriumphShop = () => {
 
           <Stack.Item>
             <Section>
-              <Stack align="center">
-                <Stack.Item grow>
-                  <Tabs>
-                    {allTabs.map((tab) => (
-                      <Tabs.Tab
-                        key={tab}
-                        selected={effectiveTab === tab}
-                        onClick={() => { setActiveTab(tab); setSearch(''); }}
-                      >
-                        <Icon name={tab === 'Specials' ? 'dice' : tab === 'Collection' ? 'archive' : 'tag'} mr={1} />
-                        {tab}
-                        {tab === 'Specials' && !!pending_special && (
-                          <Icon name="circle" color="good" ml={1} fontSize="0.6em" />
-                        )}
-                      </Tabs.Tab>
-                    ))}
-                  </Tabs>
+              <Stack vertical>
+                <Stack.Item>
+                  <Box style={{ overflowX: 'auto', overflowY: 'hidden' }}>
+                    <Tabs>
+                      {allTabs.map((tab) => (
+                        <Tabs.Tab
+                          key={tab}
+                          selected={effectiveTab === tab}
+                          onClick={() => { setActiveTab(tab); setSearch(''); }}
+                        >
+                          <Icon
+                            name={tab === 'Specials' ? 'dice' : tab === 'Collection' ? 'archive' : 'tag'}
+                            mr={1}
+                          />
+                          {tab}
+                          {tab === 'Specials' && !!pending_special && (
+                            <Icon name="circle" color="good" ml={1} fontSize="0.6em" />
+                          )}
+                        </Tabs.Tab>
+                      ))}
+                    </Tabs>
+                  </Box>
                 </Stack.Item>
-                {activeTab !== 'Specials' && (
+                {showSearch && (
                   <Stack.Item>
                     <Input
-                      placeholder="Search..."
+                      fluid
+                      placeholder="Search items..."
                       value={search}
                       onChange={(value: string) => setSearch(value)}
-                      width="150px"
                     />
                   </Stack.Item>
                 )}
@@ -788,6 +824,7 @@ export const TriumphShop = () => {
                     pendingSpecial={pending_special}
                     balance={triumph_balance}
                     costRandom={cost_random_special}
+                    donator={donator}
                     onRollRandom={handleRollRandom}
                     onBuySpecific={handleBuySpecific}
                     onClearPending={handleClearPending}
