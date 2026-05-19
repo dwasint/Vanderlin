@@ -469,7 +469,6 @@ SUBSYSTEM_DEF(ticker)
 
 	job_change_locked = FALSE
 
-	SStriumphs.fire_on_PostSetup()
 	for(var/obj/effect/landmark/start/S as anything in GLOB.roundstart_landmarks)
 		if(!istype(S))//we can not runtime here. not in this important of a proc.
 			stack_trace("[S] [S.type] found in roundstart landmarks list, which isn't a start landmark!")

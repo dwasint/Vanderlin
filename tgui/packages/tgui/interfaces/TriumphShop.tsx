@@ -15,7 +15,12 @@ import type { BooleanLike } from 'tgui-core/react';
 import { Window } from '../layouts';
 import { ColorPicker } from './ColorPicker';
 import type { ColorEntry } from './ColorPicker';
-
+import {
+  ActiveTriumphBuysView,
+  TriumphBuyCategoryView,
+  type ActiveTriumphBuy,
+  type TriumphBuyEntry,
+} from './TriumphBuy';
 
 type LoadoutEntry = {
   path: string;
@@ -46,7 +51,6 @@ type EquippedSlot = {
   has_detail: BooleanLike;
   base_color: string | null;
   detail_color: string | null;
-
 };
 
 type SpecialEntry = {
@@ -71,9 +75,14 @@ type Data = {
   equipped_slots: [EquippedSlot, EquippedSlot, EquippedSlot];
   specials: SpecialEntry[];
   available_colors: ColorEntry[];
+  /** keyed by TRIUMPH_CAT_* strings */
+  triumph_buy_categories: Record<string, TriumphBuyEntry[]>;
+  active_triumph_buys: ActiveTriumphBuy[];
 };
 
-function flattenCategories(categories: Record<string, LoadoutEntry[]>): LoadoutEntry[] {
+function flattenCategories(
+  categories: Record<string, LoadoutEntry[]>,
+): LoadoutEntry[] {
   return Object.values(categories).flatMap((v) =>
     Array.isArray(v) ? v : [v as unknown as LoadoutEntry],
   );
@@ -85,7 +94,7 @@ function getRarity(weight: number, allWeights: number[]): RarityTier {
   if (!allWeights.length || weight <= 0) return 'epic';
   const sorted = [...allWeights].sort((a, b) => b - a);
   const q1 = sorted[Math.floor(sorted.length * 0.25)];
-  const q2 = sorted[Math.floor(sorted.length * 0.50)];
+  const q2 = sorted[Math.floor(sorted.length * 0.5)];
   const q3 = sorted[Math.floor(sorted.length * 0.75)];
   if (weight >= q1) return 'common';
   if (weight >= q2) return 'uncommon';
@@ -94,17 +103,17 @@ function getRarity(weight: number, allWeights: number[]): RarityTier {
 }
 
 const RARITY_COLOR: Record<RarityTier, string> = {
-  common:   '#9e9e9e',
+  common: '#9e9e9e',
   uncommon: '#4caf50',
-  rare:     '#2196f3',
-  epic:     '#9c27b0',
+  rare: '#2196f3',
+  epic: '#9c27b0',
 };
 
 const RARITY_LABEL: Record<RarityTier, string> = {
-  common:   'Common',
+  common: 'Common',
   uncommon: 'Uncommon',
-  rare:     'Rare',
-  epic:     'Epic',
+  rare: 'Rare',
+  epic: 'Epic',
 };
 
 const ItemSprite = ({
@@ -129,7 +138,6 @@ const ItemSprite = ({
     />
   );
 };
-
 
 const EquippedPanel = ({
   slots,
@@ -162,8 +170,8 @@ const EquippedPanel = ({
     <Section title="Loadout Slots" fill>
       <Stack vertical>
         {slots.map((slot, i) => {
-          const isOpen    = !!slot.path && openSlotPath === slot.path;
-          const dyeable   = !!slot.dyeable;
+          const isOpen = !!slot.path && openSlotPath === slot.path;
+          const dyeable = !!slot.dyeable;
           const hasDetail = !!slot.has_detail;
 
           return (
@@ -176,17 +184,25 @@ const EquippedPanel = ({
                   />
                 </Stack.Item>
                 <Stack.Item grow>
-                  {slot.path ? slot.name : `Slot ${i + 1} — Empty`}
+                  {slot.path ? slot.name : `Slot ${i + 1} - Empty`}
                 </Stack.Item>
 
                 {!!slot.path && dyeable && (
                   <Stack.Item>
                     <Button
                       icon="palette"
-                      color={isOpen && openLayer === 'base' ? 'average' : 'transparent'}
+                      color={
+                        isOpen && openLayer === 'base'
+                          ? 'average'
+                          : 'transparent'
+                      }
                       tooltip="Set base color"
                       onClick={() => togglePicker(slot.path!, 'base')}
-                      style={slot.base_color ? { borderBottom: `2px solid ${slot.base_color}` } : {}}
+                      style={
+                        slot.base_color
+                          ? { borderBottom: `2px solid ${slot.base_color}` }
+                          : {}
+                      }
                     />
                   </Stack.Item>
                 )}
@@ -194,10 +210,18 @@ const EquippedPanel = ({
                   <Stack.Item>
                     <Button
                       icon="star"
-                      color={isOpen && openLayer === 'detail' ? 'average' : 'transparent'}
+                      color={
+                        isOpen && openLayer === 'detail'
+                          ? 'average'
+                          : 'transparent'
+                      }
                       tooltip="Set accent/detail color"
                       onClick={() => togglePicker(slot.path!, 'detail')}
-                      style={slot.detail_color ? { borderBottom: `2px solid ${slot.detail_color}` } : {}}
+                      style={
+                        slot.detail_color
+                          ? { borderBottom: `2px solid ${slot.detail_color}` }
+                          : {}
+                      }
                     />
                   </Stack.Item>
                 )}
@@ -244,11 +268,17 @@ const EquippedPanel = ({
                   )}
                   <ColorPicker
                     colors={availableColors}
-                    selected={openLayer === 'base' ? slot.base_color : slot.detail_color}
+                    selected={
+                      openLayer === 'base'
+                        ? slot.base_color
+                        : slot.detail_color
+                    }
                     onSelect={(hex) => onSetColor(slot.path!, openLayer, hex)}
                     onClear={() => onClearColor(slot.path!, openLayer)}
                     onBuy={onBuyColor}
-                    label={openLayer === 'base' ? 'Base Color' : 'Accent Color'}
+                    label={
+                      openLayer === 'base' ? 'Base Color' : 'Accent Color'
+                    }
                   />
                 </Box>
               )}
@@ -266,7 +296,6 @@ const EquippedPanel = ({
   );
 };
 
-
 const LoadoutItemRow = ({
   item,
   onBuySingle,
@@ -282,16 +311,16 @@ const LoadoutItemRow = ({
   onUnequip: (path: string) => void;
   slotsUsed: number;
 }) => {
-  const slotsFull   = slotsUsed >= 3;
-  const owned       = !!item.owned;
-  const equipped    = !!item.equipped;
-  const rented      = !!item.rented;
-  const free        = !!item.free;
+  const slotsFull = slotsUsed >= 3;
+  const owned = !!item.owned;
+  const equipped = !!item.equipped;
+  const rented = !!item.rented;
+  const free = !!item.free;
   const awardLocked = !!item.award_locked;
-  const canSingle   = !!item.can_afford_single;
-  const canPerm     = !!item.can_afford_perm;
-  const noRent      = !!item.no_rent;
-  const noEquip     = !!item.no_equip;
+  const canSingle = !!item.can_afford_single;
+  const canPerm = !!item.can_afford_perm;
+  const noRent = !!item.no_rent;
+  const noEquip = !!item.no_equip;
   const patreonLock = !!item.patreon_locked;
 
   return (
@@ -302,21 +331,31 @@ const LoadoutItemRow = ({
       <Stack.Item grow>
         <Box bold>{item.name}</Box>
         {!!item.description && (
-          <Box color="label" fontSize="0.8em">{item.description}</Box>
+          <Box color="label" fontSize="0.8em">
+            {item.description}
+          </Box>
         )}
       </Stack.Item>
       <Stack.Item>
         {patreonLock && !owned && (
-          <Box color="purple" fontSize="0.8em">Patreon exclusive</Box>
+          <Box color="purple" fontSize="0.8em">
+            Patreon exclusive
+          </Box>
         )}
         {awardLocked && (
-          <Box color="bad" fontSize="0.8em">Achievement locked</Box>
+          <Box color="bad" fontSize="0.8em">
+            Achievement locked
+          </Box>
         )}
         {!awardLocked && !patreonLock && owned && (
-          <Box color="good" fontSize="0.8em">{noEquip ? 'Claimed' : 'Owned'}</Box>
+          <Box color="good" fontSize="0.8em">
+            {noEquip ? 'Claimed' : 'Owned'}
+          </Box>
         )}
         {!awardLocked && !patreonLock && !owned && rented && (
-          <Box color="average" fontSize="0.8em">Rented this round</Box>
+          <Box color="average" fontSize="0.8em">
+            Rented this round
+          </Box>
         )}
       </Stack.Item>
       <Stack.Item>
@@ -332,27 +371,45 @@ const LoadoutItemRow = ({
             </Button>
           )}
           {equipped && !noEquip && (
-            <Button icon="minus" color="bad" tooltip="Unequip" onClick={() => onUnequip(item.path)}>
+            <Button
+              icon="minus"
+              color="bad"
+              tooltip="Unequip"
+              onClick={() => onUnequip(item.path)}
+            >
               Unequip
             </Button>
           )}
-          {!owned && !rented && !awardLocked && !patreonLock && !noRent && !noEquip && (
-            <Button
-              icon="clock"
-              disabled={slotsFull || (!free && !canSingle)}
-              tooltip={
-                slotsFull ? 'All slots full'
-                  : free ? 'Free — use for one round'
-                    : canSingle ? `Rent for ${item.cost_single} triumphs (one round)`
-                      : `Need ${item.cost_single} triumphs`
-              }
-              onClick={() => onBuySingle(item.path)}
-            >
-              {free ? 'Use' : `Rent (${item.cost_single})`}
-            </Button>
-          )}
+          {!owned &&
+            !rented &&
+            !awardLocked &&
+            !patreonLock &&
+            !noRent &&
+            !noEquip && (
+              <Button
+                icon="clock"
+                disabled={slotsFull || (!free && !canSingle)}
+                tooltip={
+                  slotsFull
+                    ? 'All slots full'
+                    : free
+                      ? 'Free, use for one round'
+                      : canSingle
+                        ? `Rent for ${item.cost_single} triumphs (one round)`
+                        : `Need ${item.cost_single} triumphs`
+                }
+                onClick={() => onBuySingle(item.path)}
+              >
+                {free ? 'Use' : `Rent (${item.cost_single})`}
+              </Button>
+            )}
           {rented && !noEquip && (
-            <Button icon="undo" color="average" tooltip="Cancel rental and get a refund" onClick={() => onUnequip(item.path)}>
+            <Button
+              icon="undo"
+              color="average"
+              tooltip="Cancel rental and get a refund"
+              onClick={() => onUnequip(item.path)}
+            >
               Cancel
             </Button>
           )}
@@ -371,11 +428,21 @@ const LoadoutItemRow = ({
               Unlock ({item.cost_permanent})
             </Button>
           )}
-          {!owned && !awardLocked && !patreonLock && item.cost_permanent === 0 && !rented && free && (
-            <Button icon="gift" color="good" tooltip="Claim permanently for free" onClick={() => onBuyPermanent(item.path)}>
-              Claim
-            </Button>
-          )}
+          {!owned &&
+            !awardLocked &&
+            !patreonLock &&
+            item.cost_permanent === 0 &&
+            !rented &&
+            free && (
+              <Button
+                icon="gift"
+                color="good"
+                tooltip="Claim permanently for free"
+                onClick={() => onBuyPermanent(item.path)}
+              >
+                Claim
+              </Button>
+            )}
         </Stack>
       </Stack.Item>
     </Stack>
@@ -403,12 +470,18 @@ const LoadoutCategoryView = ({
     if (!search) return items;
     const q = search.toLowerCase();
     return items.filter(
-      (i) => i.name.toLowerCase().includes(q) || (i.description ?? '').toLowerCase().includes(q),
+      (i) =>
+        i.name.toLowerCase().includes(q) ||
+        (i.description ?? '').toLowerCase().includes(q),
     );
   }, [items, search]);
 
   if (!filtered.length) {
-    return <NoticeBox>No items found{search ? ` for "${search}"` : ''}.</NoticeBox>;
+    return (
+      <NoticeBox>
+        No items found{search ? ` for "${search}"` : ''}.
+      </NoticeBox>
+    );
   }
 
   return (
@@ -440,12 +513,20 @@ const CollectionView = ({
   slotsUsed: number;
 }) => {
   const items = useMemo(
-    () => flattenCategories(categories).filter((i) => i.owned || i.equipped || i.rented),
+    () =>
+      flattenCategories(categories).filter(
+        (i) => i.owned || i.equipped || i.rented,
+      ),
     [categories],
   );
 
   if (!items.length) {
-    return <NoticeBox>You have not unlocked any items yet. Browse the shop tabs to spend triumphs!</NoticeBox>;
+    return (
+      <NoticeBox>
+        You have not unlocked any items yet. Browse the shop tabs to spend
+        triumphs!
+      </NoticeBox>
+    );
   }
 
   return (
@@ -465,9 +546,9 @@ const CollectionView = ({
   );
 };
 
-const REEL_VISIBLE   = 5;
-const REEL_CARD_H    = 52;
-const REEL_LAND_MS   = 2000;
+const REEL_VISIBLE = 5;
+const REEL_CARD_H = 52;
+const REEL_LAND_MS = 2000;
 const REEL_LINGER_MS = 2500;
 
 function buildPool(specials: SpecialEntry[]): string[] {
@@ -503,29 +584,39 @@ const TraitReel = ({
   landOnPath: string | null;
   onDone: () => void;
 }) => {
-  const allWeights = useMemo(() => specials.map((s) => s.weight), [specials]);
-  const nameMap    = useMemo(() => Object.fromEntries(specials.map((s) => [s.path, s.name])), [specials]);
-  const weightMap  = useMemo(() => Object.fromEntries(specials.map((s) => [s.path, s.weight])), [specials]);
+  const allWeights = useMemo(
+    () => specials.map((s) => s.weight),
+    [specials],
+  );
+  const nameMap = useMemo(
+    () => Object.fromEntries(specials.map((s) => [s.path, s.name])),
+    [specials],
+  );
+  const weightMap = useMemo(
+    () => Object.fromEntries(specials.map((s) => [s.path, s.weight])),
+    [specials],
+  );
 
-  const [strip, setStrip]     = useState<string[]>(() => buildPool(specials));
+  const [strip, setStrip] = useState<string[]>(() => buildPool(specials));
   const [offsetY, setOffsetY] = useState(0);
 
-  const rafRef         = useRef<number | null>(null);
-  const phaseRef       = useRef<'spin' | 'land' | 'linger'>('spin');
-  const spinOffsetRef  = useRef(0);
-  const landStartRef   = useRef<number | null>(null);
-  const landFromRef    = useRef(0);
-  const landTargetRef  = useRef(0);
+  const rafRef = useRef<number | null>(null);
+  const phaseRef = useRef<'spin' | 'land' | 'linger'>('spin');
+  const spinOffsetRef = useRef(0);
+  const landStartRef = useRef<number | null>(null);
+  const landFromRef = useRef(0);
+  const landTargetRef = useRef(0);
   const lingerStartRef = useRef<number | null>(null);
-  const doneRef        = useRef(false);
-  const centreIndex    = Math.floor(REEL_VISIBLE / 2);
+  const doneRef = useRef(false);
+  const centreIndex = Math.floor(REEL_VISIBLE / 2);
 
   const spinLoopRef = useRef<(ts: number) => void>(() => {});
   spinLoopRef.current = (_ts: number) => {
     if (phaseRef.current !== 'spin') return;
     spinOffsetRef.current += REEL_CARD_H * 0.35;
     const maxOffset = strip.length * REEL_CARD_H;
-    if (maxOffset > 0 && spinOffsetRef.current >= maxOffset) spinOffsetRef.current -= maxOffset;
+    if (maxOffset > 0 && spinOffsetRef.current >= maxOffset)
+      spinOffsetRef.current -= maxOffset;
     setOffsetY(Math.round(spinOffsetRef.current));
     rafRef.current = requestAnimationFrame(spinLoopRef.current);
   };
@@ -533,7 +624,9 @@ const TraitReel = ({
   useEffect(() => {
     phaseRef.current = 'spin';
     rafRef.current = requestAnimationFrame(spinLoopRef.current);
-    return () => { if (rafRef.current !== null) cancelAnimationFrame(rafRef.current); };
+    return () => {
+      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
+    };
   }, []);
 
   useEffect(() => {
@@ -542,12 +635,12 @@ const TraitReel = ({
     newStrip.push(landOnPath);
     setStrip(newStrip);
 
-    const targetIndex  = newStrip.length - 1 - centreIndex;
+    const targetIndex = newStrip.length - 1 - centreIndex;
     const targetOffset = targetIndex * REEL_CARD_H;
-    landFromRef.current   = spinOffsetRef.current;
+    landFromRef.current = spinOffsetRef.current;
     landTargetRef.current = targetOffset;
-    landStartRef.current  = null;
-    phaseRef.current      = 'land';
+    landStartRef.current = null;
+    phaseRef.current = 'land';
     if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
 
     const lingerLoop = (ts: number) => {
@@ -563,15 +656,17 @@ const TraitReel = ({
     const landAnimate = (ts: number) => {
       if (!landStartRef.current) landStartRef.current = ts;
       const elapsed = ts - landStartRef.current;
-      const t       = Math.min(elapsed / REEL_LAND_MS, 1);
-      const eased   = 1 - Math.pow(1 - t, 3);
-      const current = landFromRef.current + (landTargetRef.current - landFromRef.current) * eased;
+      const t = Math.min(elapsed / REEL_LAND_MS, 1);
+      const eased = 1 - Math.pow(1 - t, 3);
+      const current =
+        landFromRef.current +
+        (landTargetRef.current - landFromRef.current) * eased;
       setOffsetY(Math.round(current));
       if (t < 1) {
         rafRef.current = requestAnimationFrame(landAnimate);
       } else {
         setOffsetY(landTargetRef.current);
-        phaseRef.current       = 'linger';
+        phaseRef.current = 'linger';
         lingerStartRef.current = null;
         rafRef.current = requestAnimationFrame(lingerLoop);
       }
@@ -579,23 +674,43 @@ const TraitReel = ({
     rafRef.current = requestAnimationFrame(landAnimate);
   }, [landOnPath]);
 
-  const startIndex    = strip.length > 0 ? Math.floor(offsetY / REEL_CARD_H) : 0;
-  const pixelOffset   = strip.length > 0 ? offsetY % REEL_CARD_H : 0;
+  const startIndex =
+    strip.length > 0 ? Math.floor(offsetY / REEL_CARD_H) : 0;
+  const pixelOffset = strip.length > 0 ? offsetY % REEL_CARD_H : 0;
   const visibleIndices: number[] = [];
-  for (let i = 0; i < REEL_VISIBLE + 1; i++) visibleIndices.push(startIndex + i);
+  for (let i = 0; i < REEL_VISIBLE + 1; i++)
+    visibleIndices.push(startIndex + i);
 
-  const centredPath   = strip.length > 0 ? (strip[safeMod(startIndex + centreIndex, strip.length)] ?? '') : '';
+  const centredPath =
+    strip.length > 0
+      ? strip[safeMod(startIndex + centreIndex, strip.length)] ?? ''
+      : '';
   const centredRarity = getRarity(weightMap[centredPath] ?? 0, allWeights);
-  const centreColor   = RARITY_COLOR[centredRarity];
+  const centreColor = RARITY_COLOR[centredRarity];
 
   return (
-    <Section title={phaseRef.current === 'linger' ? `You got: ${nameMap[centredPath] ?? '???'}` : landOnPath ? 'Landing...' : 'Rolling...'}>
-      <Box style={{ height: `${REEL_VISIBLE * REEL_CARD_H}px`, overflow: 'hidden', position: 'relative' }}>
+    <Section
+      title={
+        phaseRef.current === 'linger'
+          ? `You got: ${nameMap[centredPath] ?? '???'}`
+          : landOnPath
+            ? 'Landing...'
+            : 'Rolling...'
+      }
+    >
+      <Box
+        style={{
+          height: `${REEL_VISIBLE * REEL_CARD_H}px`,
+          overflow: 'hidden',
+          position: 'relative',
+        }}
+      >
         <Box
           style={{
             position: 'absolute',
             top: `${centreIndex * REEL_CARD_H}px`,
-            left: 0, right: 0,
+            left: 0,
+            right: 0,
             height: `${REEL_CARD_H}px`,
             background: `${centreColor}18`,
             borderTop: `1px solid ${centreColor}88`,
@@ -604,12 +719,22 @@ const TraitReel = ({
             zIndex: 1,
           }}
         />
-        <Box style={{ position: 'absolute', top: `-${pixelOffset}px`, left: 0, right: 0 }}>
+        <Box
+          style={{
+            position: 'absolute',
+            top: `-${pixelOffset}px`,
+            left: 0,
+            right: 0,
+          }}
+        >
           {visibleIndices.map((idx, i) => {
-            const path     = strip.length > 0 ? (strip[safeMod(idx, strip.length)] ?? '') : '';
+            const path =
+              strip.length > 0
+                ? strip[safeMod(idx, strip.length)] ?? ''
+                : '';
             const isCentre = i === centreIndex;
-            const rarity   = getRarity(weightMap[path] ?? 0, allWeights);
-            const color    = RARITY_COLOR[rarity];
+            const rarity = getRarity(weightMap[path] ?? 0, allWeights);
+            const color = RARITY_COLOR[rarity];
             return (
               <Box
                 key={i}
@@ -655,11 +780,11 @@ const SpecialsTab = ({
   onBuySpecific: (path: string) => void;
   onClearPending: () => void;
 }) => {
-  const [showReel, setShowReel]     = useState(false);
+  const [showReel, setShowReel] = useState(false);
   const [landOnPath, setLandOnPath] = useState<string | null>(null);
-  const prevPendingRef              = useRef<string | null>(pendingSpecial);
+  const prevPendingRef = useRef<string | null>(pendingSpecial);
 
-  const allWeights  = useMemo(() => specials.map((s) => s.weight), [specials]);
+  const allWeights = useMemo(() => specials.map((s) => s.weight), [specials]);
   const totalWeight = specials[0]?.total_weight ?? 1;
 
   useEffect(() => {
@@ -677,9 +802,11 @@ const SpecialsTab = ({
 
   const handleReelDone = () => setShowReel(false);
 
-  const hasPending      = !!pendingSpecial;
+  const hasPending = !!pendingSpecial;
   const canAffordRandom = balance >= costRandom;
-  const pendingTrait    = pendingSpecial ? specials.find((s) => s.path === pendingSpecial) : null;
+  const pendingTrait = pendingSpecial
+    ? specials.find((s) => s.path === pendingSpecial)
+    : null;
 
   return (
     <Stack vertical fill>
@@ -687,14 +814,16 @@ const SpecialsTab = ({
         {!!donator ? (
           <NoticeBox info>
             <Icon name="heart" mr={1} color="purple" />
-            <Box as="span" bold>Patreon Supporter perk:</Box>{' '}
-            Random rolls are free for you,
-            and specific trait costs are 50% off.
+            <Box as="span" bold>
+              Patreon Supporter perk:
+            </Box>{' '}
+            Random rolls are free for you, and specific trait costs are 50% off.
           </NoticeBox>
         ) : (
           <Box color="label" fontSize="0.8em" mb={0.5}>
             <Icon name="heart" mr={1} color="purple" />
-            Patreon supporters get free random rolls and 50% off specific trait picks.
+            Patreon supporters get free random rolls and 50% off specific trait
+            picks.
           </Box>
         )}
       </Stack.Item>
@@ -702,7 +831,11 @@ const SpecialsTab = ({
       <Stack.Item>
         <Section title="Next Round Special">
           {showReel ? (
-            <TraitReel specials={specials} landOnPath={landOnPath} onDone={handleReelDone} />
+            <TraitReel
+              specials={specials}
+              landOnPath={landOnPath}
+              onDone={handleReelDone}
+            />
           ) : hasPending ? (
             <NoticeBox>
               <Stack align="center">
@@ -712,16 +845,35 @@ const SpecialsTab = ({
                     {pendingTrait?.name ?? pendingSpecial}
                   </Box>
                   {pendingTrait && (
-                    <Box fontSize="0.8em" style={{ color: RARITY_COLOR[getRarity(pendingTrait.weight, allWeights)] }}>
-                      {RARITY_LABEL[getRarity(pendingTrait.weight, allWeights)]}
+                    <Box
+                      fontSize="0.8em"
+                      style={{
+                        color:
+                          RARITY_COLOR[
+                            getRarity(pendingTrait.weight, allWeights)
+                          ],
+                      }}
+                    >
+                      {
+                        RARITY_LABEL[
+                          getRarity(pendingTrait.weight, allWeights)
+                        ]
+                      }
                     </Box>
                   )}
                   {pendingTrait?.req_text && (
-                    <Box color="label" fontSize="0.85em" mt={0.5}>Requirements: {pendingTrait.req_text}</Box>
+                    <Box color="label" fontSize="0.85em" mt={0.5}>
+                      Requirements: {pendingTrait.req_text}
+                    </Box>
                   )}
                 </Stack.Item>
                 <Stack.Item>
-                  <Button icon="times" color="bad" tooltip="Clear pending special (no refund)" onClick={onClearPending}>
+                  <Button
+                    icon="times"
+                    color="bad"
+                    tooltip="Clear pending special (no refund)"
+                    onClick={onClearPending}
+                  >
                     Clear
                   </Button>
                 </Stack.Item>
@@ -743,7 +895,9 @@ const SpecialsTab = ({
                   }
                   onClick={handleRollClick}
                 >
-                  {!!donator ? 'Roll Random (Free)' : `Roll Random (${costRandom})`}
+                  {!!donator
+                    ? 'Roll Random (Free)'
+                    : `Roll Random (${costRandom})`}
                 </Button>
               </Stack.Item>
               <Stack.Item color="label" fontSize="0.85em">
@@ -757,30 +911,42 @@ const SpecialsTab = ({
       <Stack.Item grow>
         <Section title="Available Specials" fill scrollable>
           {specials.map((trait) => {
-            const eligible      = !!trait.eligible;
-            const rarity        = getRarity(trait.weight, allWeights);
-            const color         = RARITY_COLOR[rarity];
-            const canAfford     = balance >= trait.cost_specific;
-            const expectedRolls = totalWeight > 0
-              ? Math.round(totalWeight / Math.max(trait.weight, 1))
-              : 999;
+            const eligible = !!trait.eligible;
+            const rarity = getRarity(trait.weight, allWeights);
+            const color = RARITY_COLOR[rarity];
+            const canAfford = balance >= trait.cost_specific;
+            const expectedRolls =
+              totalWeight > 0
+                ? Math.round(totalWeight / Math.max(trait.weight, 1))
+                : 999;
 
             return (
               <Stack key={trait.path} align="center" mb={1}>
                 <Stack.Item
                   width="4px"
-                  style={{ alignSelf: 'stretch', background: color, borderRadius: '2px', marginRight: '8px' }}
+                  style={{
+                    alignSelf: 'stretch',
+                    background: color,
+                    borderRadius: '2px',
+                    marginRight: '8px',
+                  }}
                 />
                 <Stack.Item grow>
                   <Box bold color={eligible ? 'default' : 'label'}>
                     {trait.name}
-                    {!eligible && <Box as="span" color="average" fontSize="0.8em" ml={1}>(ineligible)</Box>}
+                    {!eligible && (
+                      <Box as="span" color="average" fontSize="0.8em" ml={1}>
+                        (ineligible)
+                      </Box>
+                    )}
                   </Box>
                   <Box fontSize="0.75em" style={{ color }}>
-                    {RARITY_LABEL[rarity]}  ~1 in {expectedRolls} rolls
+                    {RARITY_LABEL[rarity]} ~1 in {expectedRolls} rolls
                   </Box>
                   {!!trait.req_text && (
-                    <Box color="label" fontSize="0.8em">Requires: {trait.req_text}</Box>
+                    <Box color="label" fontSize="0.8em">
+                      Requires: {trait.req_text}
+                    </Box>
                   )}
                 </Stack.Item>
                 <Stack.Item>
@@ -789,9 +955,12 @@ const SpecialsTab = ({
                     color={canAfford && eligible ? 'default' : 'bad'}
                     disabled={!eligible || !canAfford || hasPending || showReel}
                     tooltip={
-                      !eligible ? 'Your character does not meet the requirements'
-                        : hasPending ? 'You already have a special queued — clear it first'
-                          : !canAfford ? `Need ${trait.cost_specific} triumphs`
+                      !eligible
+                        ? 'Your character does not meet the requirements'
+                        : hasPending
+                          ? 'You already have a special queued, clear it first'
+                          : !canAfford
+                            ? `Need ${trait.cost_specific} triumphs`
                             : !!donator
                               ? `Pick this trait for ${trait.cost_specific} triumphs (50% Patreon discount applied)`
                               : `Pick this trait for ${trait.cost_specific} triumphs`
@@ -820,40 +989,82 @@ export const TriumphShop = () => {
     pending_special,
     cost_random_special,
     donator,
-    available_colors,   // new
+    available_colors,
+    triumph_buy_categories = {},
+    active_triumph_buys = [],
   } = data;
 
-  const categoryNames = Object.keys(categories);
-  const allTabs       = ['Collection', 'Specials', ...categoryNames];
+  const loadoutCategoryNames = Object.keys(categories);
+
+  const tbCategoryNames = Object.keys(triumph_buy_categories).filter(
+    (k) => triumph_buy_categories[k]?.length > 0,
+  );
+
+  const TRIUMPH_SHOP_TAB = 'Seasonal / Round Shop';
+  const MY_PURCHASES_TAB = 'My Purchases';
+
+  const allTabs = [
+    'Collection',
+    'Specials',
+    ...loadoutCategoryNames,
+    ...(tbCategoryNames.length > 0 ? [TRIUMPH_SHOP_TAB] : []),
+  ];
 
   const [activeTab, setActiveTab] = useLocalState('ts_tab', 'Specials');
-  const [search, setSearch]       = useLocalState('ts_search', '');
+  const [search, setSearch] = useLocalState('ts_search', '');
+  const [triumphShopSubTab, setTriumphShopSubTab] = useLocalState(
+    'ts_triumph_subtab',
+    MY_PURCHASES_TAB,
+  );
 
   const slotsUsed = equipped_slots.filter((s) => s.path !== null).length;
 
-  // unchanged handlers
-  const handleBuySingle    = (path: string) => act('buy_single',           { path });
-  const handleBuyPermanent = (path: string) => act('buy_permanent',        { path });
-  const handleEquip        = (path: string) => act('equip_item',           { path });
-  const handleUnequip      = (path: string) => act('unequip_item',         { path });
-  const handleRollRandom   = ()              => act('buy_random_special');
-  const handleBuySpecific  = (path: string) => act('buy_specific_special', { path });
-  const handleClearPending = ()              => act('clear_pending_special');
+  const isTriumphShopTab = activeTab === TRIUMPH_SHOP_TAB;
+  const isSpecialsTab = activeTab === 'Specials';
 
-  // new color handlers
-  const handleSetColor   = (path: string, layer: 'base' | 'detail', hex: string) =>
-    act('set_loadout_color',   { path, layer, hex });
+  const showEquippedPanel = !isSpecialsTab && !isTriumphShopTab;
+  const showSearch = !isSpecialsTab;
+
+  const effectiveTab =
+    search.length > 1 && !isTriumphShopTab && !isSpecialsTab
+      ? '__search__'
+      : activeTab;
+
+  const allLoadoutItems = useMemo(
+    () => flattenCategories(categories),
+    [categories],
+  );
+  const allTbItems = useMemo(
+    () => Object.values(triumph_buy_categories).flat(),
+    [triumph_buy_categories],
+  );
+
+  const handleBuySingle = (path: string) => act('buy_single', { path });
+  const handleBuyPermanent = (path: string) => act('buy_permanent', { path });
+  const handleEquip = (path: string) => act('equip_item', { path });
+  const handleUnequip = (path: string) => act('unequip_item', { path });
+  const handleSetColor = (
+    path: string,
+    layer: 'base' | 'detail',
+    hex: string,
+  ) => act('set_loadout_color', { path, layer, hex });
   const handleClearColor = (path: string, layer: 'base' | 'detail') =>
     act('clear_loadout_color', { path, layer });
-  const handleBuyColor   = (colorPath: string) =>
-    act('buy_permanent',       { path: colorPath });
+  const handleBuyColor = (colorPath: string) =>
+    act('buy_permanent', { path: colorPath });
 
-  const effectiveTab = search.length > 1 ? '__search__' : activeTab;
-  const allItems     = useMemo(() => flattenCategories(categories), [categories]);
-  const showSearch   = activeTab !== 'Specials';
+  const handleRollRandom = () => act('buy_random_special');
+  const handleBuySpecific = (path: string) =>
+    act('buy_specific_special', { path });
+  const handleClearPending = () => act('clear_pending_special');
+
+  const handleTriumphBuy = (ref: string) => act('triumph_buy', { ref });
+  const handleTriumphRefund = (ref: string) => act('triumph_refund', { ref });
+  const handleContribute = (ref: string, amount: number) =>
+    act('triumph_contribute', { ref, amount });
 
   return (
-    <Window title="Triumph Shop" width={820} height={600}>
+    <Window title="Triumph Shop" width={860} height={620}>
       <Window.Content>
         <Stack vertical fill>
           <Stack.Item>
@@ -865,7 +1076,8 @@ export const TriumphShop = () => {
                     Triumph Shop
                   </Box>
                   <Box color="label" fontSize="0.85em">
-                    Spend triumphs on loadout items and special traits.
+                    Spend triumphs on loadout items, special traits, and server
+                    events.
                   </Box>
                 </Stack.Item>
                 <Stack.Item>
@@ -882,32 +1094,76 @@ export const TriumphShop = () => {
             <Section>
               <Stack vertical>
                 <Stack.Item>
-                  <Box>
-                    <Tabs scrollable>
-                      {allTabs.map((tab) => (
+                  <Tabs scrollable>
+                    {allTabs.map((tab) => {
+                      const isDivider = tab === TRIUMPH_SHOP_TAB;
+                      return (
                         <Tabs.Tab
                           key={tab}
                           selected={effectiveTab === tab}
-                          onClick={() => { setActiveTab(tab); setSearch(''); }}
+                          onClick={() => {
+                            setActiveTab(tab);
+                            setSearch('');
+                          }}
+                          style={
+                            isDivider
+                              ? {
+                                  borderLeft: '1px solid rgba(255,255,255,0.15)',
+                                  marginLeft: '4px',
+                                }
+                              : {}
+                          }
                         >
                           <Icon
-                            name={tab === 'Specials' ? 'dice' : tab === 'Collection' ? 'archive' : 'tag'}
+                            name={
+                              tab === 'Specials'
+                                ? 'dice'
+                                : tab === 'Collection'
+                                  ? 'archive'
+                                  : tab === TRIUMPH_SHOP_TAB
+                                    ? 'shopping-cart'
+                                    : 'tag'
+                            }
                             mr={1}
                           />
                           {tab}
                           {tab === 'Specials' && !!pending_special && (
-                            <Icon name="circle" color="good" ml={1} fontSize="0.6em" />
+                            <Icon
+                              name="circle"
+                              color="good"
+                              ml={1}
+                              fontSize="0.6em"
+                            />
                           )}
+                          {tab === TRIUMPH_SHOP_TAB &&
+                            active_triumph_buys.length > 0 && (
+                              <Box
+                                as="span"
+                                ml={1}
+                                fontSize="0.7em"
+                                style={{
+                                  background: 'rgba(255,255,255,0.15)',
+                                  borderRadius: '8px',
+                                  padding: '0 4px',
+                                }}
+                              >
+                                {active_triumph_buys.length}
+                              </Box>
+                            )}
                         </Tabs.Tab>
-                      ))}
-                    </Tabs>
-                  </Box>
+                      );
+                    })}
+                  </Tabs>
                 </Stack.Item>
                 {showSearch && (
                   <Stack.Item>
                     <Input
                       fluid
-                      placeholder="Search items..."
+                      placeholder={
+                        isTriumphShopTab
+                          ? 'Search shop items...'
+                          : 'Search items...'
+                      }
                       value={search}
                       onChange={(value: string) => setSearch(value)}
                     />
@@ -919,7 +1175,7 @@ export const TriumphShop = () => {
 
           <Stack.Item grow>
             <Stack fill>
-              {activeTab !== 'Specials' && (
+              {showEquippedPanel && (
                 <Stack.Item width="230px">
                   <EquippedPanel
                     slots={equipped_slots}
@@ -931,8 +1187,9 @@ export const TriumphShop = () => {
                   />
                 </Stack.Item>
               )}
+
               <Stack.Item grow>
-                {activeTab === 'Specials' && effectiveTab !== '__search__' ? (
+                {isSpecialsTab && (
                   <SpecialsTab
                     specials={specials}
                     pendingSpecial={pending_special}
@@ -943,15 +1200,87 @@ export const TriumphShop = () => {
                     onBuySpecific={handleBuySpecific}
                     onClearPending={handleClearPending}
                   />
-                ) : (
+                )}
+
+                {isTriumphShopTab && (
+                  <Stack vertical fill>
+                    <Stack.Item>
+                      <Section>
+                        <Tabs>
+                          <Tabs.Tab
+                            selected={triumphShopSubTab === MY_PURCHASES_TAB}
+                            onClick={() =>
+                              setTriumphShopSubTab(MY_PURCHASES_TAB)
+                            }
+                          >
+                            <Icon name="receipt" mr={1} />
+                            My Purchases
+                            {active_triumph_buys.length > 0 && (
+                              <Box
+                                as="span"
+                                ml={1}
+                                fontSize="0.7em"
+                                style={{
+                                  background: 'rgba(255,255,255,0.15)',
+                                  borderRadius: '8px',
+                                  padding: '0 4px',
+                                }}
+                              >
+                                {active_triumph_buys.length}
+                              </Box>
+                            )}
+                          </Tabs.Tab>
+                          {tbCategoryNames.map((cat) => (
+                            <Tabs.Tab
+                              key={cat}
+                              selected={triumphShopSubTab === cat}
+                              onClick={() => setTriumphShopSubTab(cat)}
+                            >
+                              <Icon name="shopping-bag" mr={1} />
+                              {cat}
+                            </Tabs.Tab>
+                          ))}
+                        </Tabs>
+                      </Section>
+                    </Stack.Item>
+                    <Stack.Item grow>
+                      {triumphShopSubTab === MY_PURCHASES_TAB ? (
+                        <Section fill scrollable title="My Purchases">
+                          <ActiveTriumphBuysView
+                            items={active_triumph_buys}
+                            onRefund={handleTriumphRefund}
+                          />
+                        </Section>
+                      ) : (
+                        <Section fill scrollable title={triumphShopSubTab}>
+                          <TriumphBuyCategoryView
+                            items={
+                              triumph_buy_categories[triumphShopSubTab] ?? []
+                            }
+                            balance={triumph_balance}
+                            search={search}
+                            onBuy={handleTriumphBuy}
+                            onContribute={handleContribute}
+                          />
+                        </Section>
+                      )}
+                    </Stack.Item>
+                  </Stack>
+                )}
+
+                {!isSpecialsTab && !isTriumphShopTab && (
                   <Section
                     fill
                     scrollable
-                    title={effectiveTab === '__search__' ? `Search: "${search}"` : activeTab}
+                    title={
+                      effectiveTab === '__search__'
+                        ? `Search: "${search}"`
+                        : activeTab
+                    }
                   >
                     {effectiveTab === '__search__' ? (
                       <LoadoutCategoryView
-                        items={allItems}
+                        items={allLoadoutItems}
                         onBuySingle={handleBuySingle}
                         onBuyPermanent={handleBuyPermanent}
                         onEquip={handleEquip}
@@ -987,4 +1316,3 @@ export const TriumphShop = () => {
     </Window>
   );
 };
-

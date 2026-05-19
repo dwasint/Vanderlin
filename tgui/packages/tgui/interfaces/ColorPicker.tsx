@@ -47,8 +47,8 @@ const ColorSwatch = ({
   const tooltip = owned
     ? entry.name
     : free
-      ? `${entry.name} — free, click to claim`
-      : `${entry.name} — ${entry.cost} triumphs to unlock`;
+      ? `${entry.name} - free, click to claim`
+      : `${entry.name} - ${entry.cost} triumphs to unlock`;
 
   return (
     <Box

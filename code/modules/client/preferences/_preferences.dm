@@ -2161,8 +2161,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 					user << browse(null, "window=latechoices") //closes late job selection
 					user << browse(null, "window=migration") // Closes migrant menu
 
-					SStriumphs.remove_triumph_buy_menu(user.client)
-
 					winshow(user, "stonekeep_prefwin", FALSE)
 					user << browse(null, "window=preferences_browser")
 					user.client?.clear_character_previews() // browse null doesn't call on-close directly as far as i can tell

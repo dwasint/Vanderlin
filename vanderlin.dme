@@ -562,7 +562,6 @@
 #include "code\controllers\subsystem\role_class_handler\role_class_handler.dm"
 #include "code\controllers\subsystem\role_class_handler\class_select_handler\class_select_handler.dm"
 #include "code\controllers\subsystem\triumph\triumph_adjust_procs.dm"
-#include "code\controllers\subsystem\triumph\triumph_buy_menu.dm"
 #include "code\controllers\subsystem\triumph\triumphs.dm"
 #include "code\controllers\subsystem\triumph\buy_datums\triumph_buy_datums.dm"
 #include "code\controllers\subsystem\triumph\buy_datums\challenges\curse.dm"

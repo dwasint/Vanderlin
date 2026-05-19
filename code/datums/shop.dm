@@ -159,6 +159,60 @@
 	var/pending = owner.prefs.next_special_trait
 	data["pending_special"] = pending ? "[pending]" : null
 
+	var/list/tb_cats = list()
+	for(var/cat_key in SStriumphs.central_state_data)
+		if(cat_key == TRIUMPH_CAT_ACTIVE_DATUMS) continue // handled separately
+		var/list/cat_items = list()
+		for(var/page_key in SStriumphs.central_state_data[cat_key])
+			for(var/datum/triumph_buy/tb in SStriumphs.central_state_data[cat_key][page_key])
+				// resolve conflicts server-side so client never has to iterate
+				var/conflicted = FALSE
+				for(var/datum/triumph_buy/active in SStriumphs.active_triumph_buy_queue)
+					if(tb.type in active.conflicts_with) conflicted = TRUE
+				if(SSticker.HasRoundStarted() && tb.pre_round_only) conflicted = TRUE
+				var/already_owned = !tb.allow_multiple_buys && owner?.has_triumph_buy(tb.triumph_buy_id)
+				cat_items += list(list(
+					"ref" = REF(tb),
+					"triumph_buy_id" = tb.triumph_buy_id,
+					"name" = tb.name,
+					"desc" = tb.desc,
+					"cost" = tb.triumph_cost,
+					"category" = cat_key,
+					"is_communal" = istype(tb, /datum/triumph_buy/communal),
+					"communal_current" = istype(tb,/datum/triumph_buy/communal) ? SStriumphs.communal_pools[tb.type] : 0,
+					"communal_max" = istype(tb,/datum/triumph_buy/communal) ? tb:maximum_pool : 0,
+					"communal_activated" = istype(tb,/datum/triumph_buy/communal) ? tb.activated : FALSE,
+					"pre_round_only" = tb.pre_round_only,
+					"limited" = tb.limited,
+					"stock" = tb.limited ? SStriumphs.triumph_buy_stocks[tb.type] : -1,
+					"conflicted" = conflicted,
+					"disabled" = tb.disabled,
+					"allow_multiple" = tb.allow_multiple_buys,
+					"already_owned" = already_owned,
+					"can_be_refunded" = tb.can_be_refunded,
+					"activated" = tb.activated,
+					"is_seasonal" = istype(tb, /datum/triumph_buy/seasonal),
+					"visible_active" = tb.visible_on_active_menu,
+					))
+		tb_cats[cat_key] = cat_items
+
+	var/list/active_items = list()
+	for(var/datum/triumph_buy/tb in SStriumphs.active_triumph_buy_queue)
+		if(!tb.visible_on_active_menu || owner.ckey != tb.ckey_of_buyer) continue
+		active_items += list(list(
+			"ref" = REF(tb),
+			"triumph_buy_id" = tb.triumph_buy_id,
+			"name" = tb.name,
+			"desc" = tb.desc,
+			"cost" = tb.triumph_cost,
+			"pre_round_only" = tb.pre_round_only,
+			"can_be_refunded" = tb.can_be_refunded,
+			"activated" = tb.activated,
+			"is_seasonal" = istype(tb, /datum/triumph_buy/seasonal),
+		))
+	data["triumph_buy_categories"] = tb_cats
+	data["active_triumph_buys"] = active_items
+
 	// Loadout categories
 	var/list/categories = list()
 	for(var/path in GLOB.loadout_items)
@@ -214,8 +268,8 @@
 		if(path_str)
 			var/datum/loadout_item/item = GLOB.loadout_items[text2path(path_str)]
 			var/list/slot_entry = list(
-				"path"      = path_str,
-				"name"      = item ? item.name : "Unknown",
+				"path" = path_str,
+				"name" = item ? item.name : "Unknown",
 				"permanent" = TRUE
 			)
 			enrich_slot_with_dye_info(slot_entry, path_str, owner.prefs.equipped_loadout_colors)
@@ -226,8 +280,8 @@
 				var/rpath = owner.prefs.single_round_loadout[rent_idx]
 				var/datum/loadout_item/ritem = GLOB.loadout_items[text2path(rpath)]
 				var/list/slot_entry = list(
-					"path"      = rpath,
-					"name"      = ritem ? "[ritem.name] (this round)" : "Rental",
+					"path" = rpath,
+					"name" = ritem ? "[ritem.name] (this round)" : "Rental",
 					"permanent" = FALSE
 				)
 				enrich_slot_with_dye_info(slot_entry, rpath, owner.prefs.single_round_loadout_colors)
@@ -235,12 +289,12 @@
 			else
 				// four dye keys stubbed out since empty
 				slots += list(list(
-					"path"         = null,
-					"name"         = "Empty",
-					"permanent"    = FALSE,
-					"dyeable"      = FALSE,
-					"has_detail"   = FALSE,
-					"base_color"   = null,
+					"path" = null,
+					"name" = "Empty",
+					"permanent" = FALSE,
+					"dyeable" = FALSE,
+					"has_detail" = FALSE,
+					"base_color" = null,
 					"detail_color" = null
 				))
 	data["equipped_slots"] = slots
@@ -317,6 +371,59 @@
 			return handle_set_loadout_color(params["path"], params["layer"], params["hex"])
 		if("clear_loadout_color")
 			return handle_clear_loadout_color(params["path"], params["layer"])
+		if("triumph_buy")
+			var/datum/triumph_buy/tb = locate(params["ref"])
+			if(!tb) return FALSE
+			return SStriumphs.attempt_to_buy_triumph_condition(owner, tb)
+		if("triumph_refund")
+			var/datum/triumph_buy/tb = locate(params["ref"])
+			if(!tb) return FALSE
+			return SStriumphs.attempt_to_unbuy_triumph_condition(owner, tb)
+		if("triumph_contribute")
+			var/datum/triumph_buy/communal/tb = locate(params["ref"])
+			if(!tb || !istype(tb)) return FALSE
+			var/amount = text2num(params["amount"])
+			var/available = SStriumphs.get_triumphs(owner.ckey)
+			if(!amount || amount <= 0) return FALSE
+			if(!owner?.ckey)
+				return
+			if(!amount || amount <= 0)
+				return
+
+			var/max_possible = tb.maximum_pool ? tb.maximum_pool - SStriumphs.communal_pools[tb.type] : INFINITY
+
+			if(SSticker.current_state == GAME_STATE_FINISHED)
+				to_chat(owner, span_warning("You cannot contribute after the round has ended!"))
+				return
+			if(tb.activated)
+				to_chat(owner, span_warning("The item is already active!"))
+				return
+			if(istype(tb, /datum/triumph_buy/communal/preround) && SSticker.HasRoundStarted())
+				to_chat(owner, span_warning("This can only be contributed to before the round starts!"))
+				return
+
+			amount = round(amount)
+			if(amount <= 0)
+				to_chat(owner, span_warning("You must contribute at least one whole triumph!"))
+				return
+			if(amount > available)
+				to_chat(owner, span_warning("You don't have [amount] triumph\s! You only have [available] triumph\s."))
+				return
+
+			amount = min(amount, available, max_possible)
+			if(amount > 0)
+				owner.adjust_triumphs(-amount, counted = FALSE, silent = TRUE)
+				SStriumphs.communal_pools[tb.type] += amount
+				LAZYADD(SStriumphs.communal_contributions[tb.type][owner.ckey], amount)
+				to_chat(owner, span_notice("You have contributed [amount] triumph\s to the [tb.name]."))
+
+				if(amount >= 5 && SSticker.current_state < GAME_STATE_SETTING_UP)
+					to_chat(world, span_notice("[amount] triumph\s were contributed to the [tb.name] communal buy!"))
+
+				if(tb.maximum_pool && SStriumphs.communal_pools[tb.type] >= tb.maximum_pool)
+					tb.on_activate()
+			return TRUE
+
 	return FALSE
 
 /datum/tgui_triumph_shop/proc/handle_buy_permanent(path_str)
