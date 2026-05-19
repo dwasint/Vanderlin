@@ -89,8 +89,8 @@
 		total_weight += trait.weight
 
 	data["triumph_balance"] = get_triumph_amount(owner.ckey)
-	data["cost_random_special"] = TRIUMPH_COST_RANDOM_SPECIAL
-	data["cost_specific_special"] = TRIUMPH_COST_SPECIFIC_SPECIAL
+	data["cost_random_special"] = owner.is_donator() ? 0 : TRIUMPH_COST_RANDOM_SPECIAL
+	data["donator"] = owner.is_donator()
 
 	// Pending special for next spawn
 	var/pending = owner.prefs.next_special_trait
@@ -171,7 +171,7 @@
 			"weight" = trait.weight,
 			"total_weight" = total_weight,
 			"eligible" = eligible,
-			"cost_random" = TRIUMPH_COST_RANDOM_SPECIAL,
+			"cost_random" = owner.is_donator() ? 0 : TRIUMPH_COST_RANDOM_SPECIAL,
 			"cost_specific" = computed_cost,
 			"is_pending" = (pending == trait_type)
 		))
@@ -292,8 +292,9 @@
 		to_chat(owner.mob, span_warning("You already have a special trait queued. Clear it first."))
 		return FALSE
 	var/balance = get_triumph_amount(owner.ckey)
-	if(balance < TRIUMPH_COST_RANDOM_SPECIAL)
-		to_chat(owner.mob, span_warning("You need [TRIUMPH_COST_RANDOM_SPECIAL] triumphs to roll a random special. You have [balance]."))
+	var/cost = owner.is_donator() ? 0 : TRIUMPH_COST_RANDOM_SPECIAL
+	if(balance < cost)
+		to_chat(owner.mob, span_warning("You need [cost] triumphs to roll a random special. You have [balance]."))
 		return FALSE
 	// roll_random_special uses weight-based pickweight across ALL specials
 	// (not filtered by character eligibility, this is intentional for random rolls)
@@ -301,7 +302,8 @@
 	if(!rolled)
 		to_chat(owner.mob, span_warning("No specials available to roll."))
 		return FALSE
-	adjust_triumphs(owner, -TRIUMPH_COST_RANDOM_SPECIAL, TRUE, "Triumph Shop: random special roll", FALSE, TRUE)
+	if(cost)
+		adjust_triumphs(owner, -cost, TRUE, "Triumph Shop: random special roll", FALSE, TRUE)
 	owner.prefs.next_special_trait = rolled
 	owner.prefs.save_preferences()
 	var/datum/special_trait/trait = SPECIAL_TRAIT(rolled)

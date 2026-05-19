@@ -57,7 +57,6 @@ type SpecialEntry = {
 type Data = {
   triumph_balance: number;
   cost_random_special: number;
-  cost_specific_special: number;
   pending_special: string | null;
   categories: Record<string, LoadoutEntry[]>;
   equipped_slots: [EquippedSlot, EquippedSlot, EquippedSlot];
