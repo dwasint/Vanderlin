@@ -158,7 +158,8 @@
 	for(var/trait_type in GLOB.special_traits)
 		var/datum/special_trait/trait = SPECIAL_TRAIT(trait_type)
 		var/expected_rolls = (trait.weight > 0) ? (total_weight / trait.weight) : 999
-		var/computed_cost = FLOOR(expected_rolls * TRIUMPH_COST_RANDOM_SPECIAL * trait.cost_modifier, 1)
+		var/patreon_modifier = user.client.is_donator() ? 0.5 : 1
+		var/computed_cost = FLOOR(expected_rolls * TRIUMPH_COST_RANDOM_SPECIAL * trait.cost_modifier * patreon_modifier, 1)
 		var/eligible = TRUE
 		if(istype(preview, /mob/living/carbon/human))
 			eligible = !!charactet_eligible_for_trait(preview, owner, trait_type)
@@ -249,6 +250,7 @@
 			return FALSE
 		adjust_triumphs(owner, -item.triumph_cost_single, TRUE, "Triumph Shop: single-round rent [item.name]", FALSE, TRUE)
 	owner.prefs.single_round_loadout += path_str
+	owner.prefs.save_preferences()
 	log_game("TRIUMPH SHOP: [owner.ckey] rented [path_str] for one round ([item.triumph_cost_single] triumphs).")
 	to_chat(owner.mob, span_notice("Rented [item.name] for this round."))
 	return TRUE
@@ -277,6 +279,7 @@
 		return TRUE
 	if(path_str in owner.prefs.single_round_loadout)
 		owner.prefs.single_round_loadout -= path_str
+		owner.prefs.save_preferences()
 		// Refund the single-round cost
 		var/datum/loadout_item/item = GLOB.loadout_items[text2path(path_str)]
 		if(item?.triumph_cost_single > 0)
@@ -300,6 +303,7 @@
 		return FALSE
 	adjust_triumphs(owner, -TRIUMPH_COST_RANDOM_SPECIAL, TRUE, "Triumph Shop: random special roll", FALSE, TRUE)
 	owner.prefs.next_special_trait = rolled
+	owner.prefs.save_preferences()
 	var/datum/special_trait/trait = SPECIAL_TRAIT(rolled)
 	log_game("TRIUMPH SHOP: [owner.ckey] rolled random special [rolled] ([trait?.name]) for [TRIUMPH_COST_RANDOM_SPECIAL] triumphs.")
 	to_chat(owner.mob, span_notice("You rolled: <b>[trait?.name]</b>! Applies on your next spawn."))
@@ -324,13 +328,15 @@
 		total_weight += special.weight
 	var/datum/special_trait/trait = SPECIAL_TRAIT(trait_type)
 	var/expected_rolls = (trait.weight > 0) ? (total_weight / trait.weight) : 999
-	var/cost = FLOOR(expected_rolls * TRIUMPH_COST_RANDOM_SPECIAL * trait.cost_modifier, 1)
+	var/patreon_modifier = owner.is_donator() ? 0.5 : 1
+	var/cost = FLOOR(expected_rolls * TRIUMPH_COST_RANDOM_SPECIAL * trait.cost_modifier * patreon_modifier, 1)
 	var/balance = get_triumph_amount(owner.ckey)
 	if(balance < cost)
 		to_chat(owner.mob, span_warning("You need [cost] triumphs to pick [trait.name]. You have [balance]."))
 		return FALSE
 	adjust_triumphs(owner, -cost, TRUE, "Triumph Shop: specific special [path_str]", FALSE, TRUE)
 	owner.prefs.next_special_trait = trait_type
+	owner.prefs.save_preferences()
 	log_game("TRIUMPH SHOP: [owner.ckey] purchased specific special [path_str] ([trait?.name]) for [cost] triumphs.")
 	to_chat(owner.mob, span_notice("Selected: <b>[trait?.name]</b>! Applies on your next spawn."))
 	return TRUE
@@ -339,5 +345,6 @@
 	if(!owner.prefs.next_special_trait)
 		return FALSE
 	owner.prefs.next_special_trait = null
+	owner.prefs.save_preferences()
 	to_chat(owner.mob, span_notice("Pending special trait cleared. No refund issued."))
 	return TRUE

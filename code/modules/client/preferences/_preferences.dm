@@ -793,11 +793,17 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	if(update_all || ("accent" in fields_to_update))
 		params["accent"] = selected_accent
 	if(update_all || ("loadout1" in fields_to_update))
-		params["loadout1"] = loadout1 ? loadout1.name : "None"
+		var/loadout1_str = _get_loadout_slot(1)
+		var/datum/loadout_item/loadout1_item = loadout1_str ? GLOB.loadout_items[text2path(loadout1_str)] : null
+		params["loadout1"] = loadout1_item ? loadout1_item.name : "None"
 	if(update_all || ("loadout2" in fields_to_update))
-		params["loadout2"] = loadout2 ? loadout2.name : "None"
+		var/loadout2_str = _get_loadout_slot(2)
+		var/datum/loadout_item/loadout2_item = loadout2_str ? GLOB.loadout_items[text2path(loadout2_str)] : null
+		params["loadout2"] = loadout2_item ? loadout2_item.name : "None"
 	if(update_all || ("loadout3" in fields_to_update))
-		params["loadout3"] = loadout3 ? loadout3.name : "None"
+		var/loadout3_str = _get_loadout_slot(3)
+		var/datum/loadout_item/loadout3_item = loadout3_str ? GLOB.loadout_items[text2path(loadout3_str)] : null
+		params["loadout3"] = loadout3_item ? loadout3_item.name : "None"
 	if(update_all || ("triumphs" in fields_to_update))
 		params["triumphs"] = user.get_triumphs() ? "\Roman [user.get_triumphs()]" : "0"
 	if(update_all || ("headshot" in fields_to_update))
@@ -813,6 +819,13 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	user << output(list2params(params), "preferences_browser:updateCharacterData")
 	update_preview_icon()
 
+/datum/preferences/proc/_get_loadout_slot(slot)
+    if(length(equipped_loadout) >= slot)
+        return equipped_loadout[slot]
+    var/rent_idx = slot - length(equipped_loadout)
+    if(rent_idx >= 1 && rent_idx <= length(single_round_loadout))
+        return single_round_loadout[rent_idx]
+    return null
 
 /datum/preferences/proc/set_ui_theme(new_theme)
 	if(new_theme in list("dusty", "grimshart", "paper", "parchment"))
