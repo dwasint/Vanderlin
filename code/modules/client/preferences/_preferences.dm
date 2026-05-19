@@ -254,6 +254,14 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	/// culture datum type
 	var/datum/culture/culture = /datum/culture/universal/ambiguous
 
+	/// Typepath strings the player has permanently purchased (persisted)
+	var/list/owned_loadout_items = list()
+	/// Up to 3 equipped slots (typepath strings); must be in owned_loadout_items
+	/// to survive validate_loadouts(). Persisted.
+	var/list/equipped_loadout = list()
+	/// Single-round rentals queued for this spawn only. NOT persisted.
+	var/list/single_round_loadout = list()
+
 /datum/preferences/New(client/C)
 	parent = C
 
@@ -1702,39 +1710,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 					popup.set_content(dat.Join())
 					popup.open(use_onclose = FALSE)
 				if("loadout_item")
-					var/list/loadouts_available = list("None" = null)
-					for(var/datum/loadout_item/item as anything in GLOB.loadout_items)
-						var/datum/loadout_item/singleton = GLOB.loadout_items[item]
-						if(singleton.is_unlocked_for(user.client))
-							loadouts_available[item.name] = item
-						else
-							// Show it but greyed out with a hint, so players know it exists
-							var/datum/award/A = SSachievements.awards[item.required_award]
-							var/locked_name = "\[Locked\] [item.name]"
-							if(A?.name)
-								locked_name += " (Requires: [A.name]"
-								// Show progress for progress-type awards
-								if(istype(A, /datum/award/achievement/progress))
-									locked_name += " - [user.client.player_details.achievements.get_progress_string(item.required_award)]"
-								locked_name += ")"
-							loadouts_available[locked_name] = null // Maps to null so set_loadout gets nothing if somehow selected
-					var/loadout_input = browser_input_list(
-						user,
-						"Choose your character's loadout item. RMB a tree, statue or clock to collect.",
-						"Loadout",
-						loadouts_available,
-					)
-					var/loadout_number = href_list["loadout_number"]
-					// Re-validate on submission in case of href manipulation
-					var/datum/loadout_item/chosen = loadouts_available[loadout_input]
-					var/datum/loadout_item/chosen_singleton = GLOB.loadout_items[chosen]
-					if(!chosen || !chosen_singleton)
-						to_chat(user, span_warning("Error selecting [loadout_input] for loadout."))
-						return
-					if(!chosen_singleton.is_unlocked_for(user.client))
-						to_chat(user, span_warning("You haven't unlocked that loadout item yet."))
-						return
-					set_loadout(user, loadout_number, chosen)
+					open_loadout_shop(user)
 
 				if("species")
 					selected_accent = ACCENT_DEFAULT
@@ -1968,29 +1944,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 					else
 						domhand = 1
 				if("bespecial")
-					if(next_special_trait)
-						print_special_text(user, next_special_trait)
-						return
-					to_chat(user, span_boldwarning("You will become special for one round, this could be something negative, positive or neutral and could have a high impact on your character and your experience. You cannot back out from or reroll this, and it will not carry over to other rounds."))
-					if(!donator)
-						to_chat(user, span_boldwarning("THIS COSTS 1 TRIUMPH"))
-						if(user.get_triumphs() < 1)
-							to_chat(user, span_bignotice("YOU DON'T HAVE ENOUGH TRIUMPHS."))
-							return
-					var/result = tgui_alert(user, "You'll receive a unique trait for one round\n You cannot back out from or reroll this.\nDo you really wish to [donator ? "" : "spend 1 triumph and " ]proceed?", "Be Special", list("Yes", "No"))
-					if(result != "Yes")
-						return
-					if(!donator)
-						user.adjust_triumphs(-1)
-					if(next_special_trait)
-						return
-					next_special_trait = roll_random_special(user.client)
-					if(next_special_trait)
-						log_game("SPECIALS: Rolled [next_special_trait] for ckey: [user.ckey]")
-						print_special_text(user, next_special_trait)
-						user.playsound_local(user, 'sound/misc/alert.ogg', 100)
-						to_chat(user, span_warning("This will be applied on your next game join."))
-						to_chat(user, span_warning("You may switch your character and choose any role, if you don't meet the requirements (if any are specified) it won't be applied"))
+					open_loadout_shop(user)
 
 				if("family")
 					var/list/famtree_options_list = list(FAMILY_NONE, FAMILY_PARTIAL, FAMILY_NEWLYWED, FAMILY_FULL, "EXPLAIN THIS TO ME")

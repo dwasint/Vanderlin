@@ -66,3 +66,8 @@
 
 // Bought triumph buys category
 #define TRIUMPH_CAT_ACTIVE_DATUMS "BOUGHT"
+
+/// Cost to roll a random eligible special trait
+#define TRIUMPH_COST_RANDOM_SPECIAL 1
+/// Cost to directly pick a specific eligible special trait
+#define TRIUMPH_COST_SPECIFIC_SPECIAL 400
