@@ -1,6 +1,0 @@
-author: "CheffieGithub"
-delete-after: True
-changes:
-  - rscadd: "Blast powder can refill alchemical flasks."
-  - rscdel: "Removed confessor mask breathing sounds"
-  - bugfix: "Fixed travelling merchant outfits"
