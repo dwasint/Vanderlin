@@ -16,7 +16,11 @@
 		var/datum/loadout_item/item = GLOB.loadout_items[text2path(path_str)]
 		if(!item)
 			continue
-		if(item.required_award && !item.is_unlocked_for(parent))
+		// Achievement check: item must still be unlocked.
+		if(!item.is_unlocked_for(parent))
+			continue
+		// Patreon check: lapsed subs lose patreon-locked items.
+		if((item.loadout_flags & LOADOUT_FLAG_PATREON_LOCKED) && !parent?.patreon?.is_donator())
 			continue
 		clean_owned += path_str
 	owned_loadout_items = clean_owned
@@ -24,6 +28,10 @@
 	var/list/clean_equipped = list()
 	for(var/path_str in equipped_loadout)
 		if(!(path_str in owned_loadout_items))
+			continue
+		var/datum/loadout_item/item = GLOB.loadout_items[text2path(path_str)]
+		// NO_EQUIP items must not occupy a loadout slot under any circumstances.
+		if(item && (item.loadout_flags & LOADOUT_FLAG_NO_EQUIP))
 			continue
 		clean_equipped += path_str
 	if(length(clean_equipped) > 3)
@@ -111,6 +119,9 @@
 			"award_locked" = !!(item.required_award && !item.is_unlocked_for(owner)),
 			"ui_icon" = item.ui_icon,
 			"ui_icon_state" = item.ui_icon_state,
+			"no_rent" = !!(item.loadout_flags & LOADOUT_FLAG_NO_RENT),
+			"no_equip" = !!(item.loadout_flags & LOADOUT_FLAG_NO_EQUIP),
+			"patreon_locked" = !!(item.loadout_flags & LOADOUT_FLAG_PATREON_LOCKED),
 			"category" = cat
 		))
 	data["categories"] = categories
@@ -192,8 +203,11 @@
 		return FALSE
 	if(path_str in owner.prefs.owned_loadout_items)
 		return FALSE
-	if(item.required_award && !item.is_unlocked_for(owner))
-		to_chat(owner.mob, span_warning("You haven't unlocked the achievement required for [item.name]."))
+	if(!item.is_unlocked_for(owner))
+		if(item.required_award)
+			to_chat(owner.mob, span_warning("You haven't unlocked the achievement required for [item.name]."))
+		else if(item.loadout_flags & LOADOUT_FLAG_PATREON_LOCKED)
+			to_chat(owner.mob, span_warning("[item.name] requires an active Patreon subscription."))
 		return FALSE
 	if(item.triumph_cost_permanent > 0)
 		var/balance = get_triumph_amount(owner.ckey)
@@ -211,12 +225,18 @@
 	var/datum/loadout_item/item = GLOB.loadout_items[text2path(path_str)]
 	if(!item)
 		return FALSE
+	if(item.loadout_flags & LOADOUT_FLAG_NO_RENT)
+		to_chat(owner.mob, span_warning("[item.name] cannot be rented — it must be permanently unlocked."))
+		return FALSE
+	if(item.loadout_flags & LOADOUT_FLAG_NO_EQUIP)
+		to_chat(owner.mob, span_warning("[item.name] cannot be equipped as a loadout item."))
+		return FALSE
 	if(path_str in owner.prefs.owned_loadout_items)
-		return FALSE // don't charge single if they already own it
+		return FALSE
 	if(path_str in owner.prefs.single_round_loadout)
-		return FALSE // already rented
-	if(item.required_award && !item.is_unlocked_for(owner))
-		to_chat(owner.mob, span_warning("You haven't unlocked the achievement required for [item.name]."))
+		return FALSE
+	if(!item.is_unlocked_for(owner))
+		to_chat(owner.mob, span_warning("You don't meet the requirements for [item.name]."))
 		return FALSE
 	var/used = length(owner.prefs.equipped_loadout) + length(owner.prefs.single_round_loadout)
 	if(used >= 3)
@@ -225,7 +245,7 @@
 	if(item.triumph_cost_single > 0)
 		var/balance = get_triumph_amount(owner.ckey)
 		if(balance < item.triumph_cost_single)
-			to_chat(owner.mob, span_warning("You need [item.triumph_cost_single] triumphs to rent [item.name] for this round. You have [balance]."))
+			to_chat(owner.mob, span_warning("You need [item.triumph_cost_single] triumphs to rent [item.name]. You have [balance]."))
 			return FALSE
 		adjust_triumphs(owner, -item.triumph_cost_single, TRUE, "Triumph Shop: single-round rent [item.name]", FALSE, TRUE)
 	owner.prefs.single_round_loadout += path_str
@@ -237,6 +257,10 @@
 	if(!(path_str in owner.prefs.owned_loadout_items))
 		return FALSE
 	if(path_str in owner.prefs.equipped_loadout)
+		return FALSE
+	var/datum/loadout_item/item = GLOB.loadout_items[text2path(path_str)]
+	if(item && (item.loadout_flags & LOADOUT_FLAG_NO_EQUIP))
+		to_chat(owner.mob, span_warning("[item.name] cannot be equipped as a loadout slot item."))
 		return FALSE
 	var/used = length(owner.prefs.equipped_loadout) + length(owner.prefs.single_round_loadout)
 	if(used >= 3)

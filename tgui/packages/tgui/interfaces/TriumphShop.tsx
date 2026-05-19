@@ -30,6 +30,9 @@ type LoadoutEntry = {
   ui_icon: string | null;
   ui_icon_state: string | null;
   category: string;
+  no_rent: BooleanLike;
+  no_equip: BooleanLike;
+  patreon_locked: BooleanLike;
 };
 
 type EquippedSlot = {
@@ -188,6 +191,9 @@ const LoadoutItemRow = ({
   const awardLocked = !!item.award_locked;
   const canSingle   = !!item.can_afford_single;
   const canPerm     = !!item.can_afford_perm;
+  const noRent      = !!item.no_rent;
+  const noEquip     = !!item.no_equip;
+  const patreonLock = !!item.patreon_locked;
 
   return (
     <Stack align="center" mb={1}>
@@ -201,23 +207,37 @@ const LoadoutItemRow = ({
         )}
       </Stack.Item>
       <Stack.Item>
-        {awardLocked && <Box color="bad" fontSize="0.8em">Achievement locked</Box>}
-        {!awardLocked && owned && <Box color="good" fontSize="0.8em">Owned</Box>}
-        {!awardLocked && !owned && rented && <Box color="average" fontSize="0.8em">Rented this round</Box>}
+        {patreonLock && !owned && (
+          <Box color="purple" fontSize="0.8em">Patreon exclusive</Box>
+        )}
+        {awardLocked && (
+          <Box color="bad" fontSize="0.8em">Achievement locked</Box>
+        )}
+        {!awardLocked && !patreonLock && owned && (
+          <Box color="good" fontSize="0.8em">{noEquip ? 'Claimed' : 'Owned'}</Box>
+        )}
+        {!awardLocked && !patreonLock && !owned && rented && (
+          <Box color="average" fontSize="0.8em">Rented this round</Box>
+        )}
       </Stack.Item>
       <Stack.Item>
         <Stack>
-          {owned && !equipped && (
-            <Button icon="plus" disabled={slotsFull} tooltip={slotsFull ? 'All slots full' : 'Equip'} onClick={() => onEquip(item.path)}>
+          {owned && !equipped && !noEquip && (
+            <Button
+              icon="plus"
+              disabled={slotsFull}
+              tooltip={slotsFull ? 'All slots full' : 'Equip'}
+              onClick={() => onEquip(item.path)}
+            >
               Equip
             </Button>
           )}
-          {equipped && (
+          {equipped && !noEquip && (
             <Button icon="minus" color="bad" tooltip="Unequip" onClick={() => onUnequip(item.path)}>
               Unequip
             </Button>
           )}
-          {!owned && !rented && !awardLocked && (
+          {!owned && !rented && !awardLocked && !patreonLock && !noRent && !noEquip && (
             <Button
               icon="clock"
               disabled={slotsFull || (!free && !canSingle)}
@@ -232,23 +252,27 @@ const LoadoutItemRow = ({
               {free ? 'Use' : `Rent (${item.cost_single})`}
             </Button>
           )}
-          {rented && (
+          {rented && !noEquip && (
             <Button icon="undo" color="average" tooltip="Cancel rental and get a refund" onClick={() => onUnequip(item.path)}>
               Cancel
             </Button>
           )}
-          {!owned && !awardLocked && item.cost_permanent > 0 && (
+          {!owned && !awardLocked && !patreonLock && item.cost_permanent > 0 && (
             <Button
               icon="lock-open"
               color={canPerm ? 'good' : 'bad'}
               disabled={!canPerm}
-              tooltip={canPerm ? `Permanently unlock for ${item.cost_permanent} triumphs` : `Need ${item.cost_permanent} triumphs to permanently unlock`}
+              tooltip={
+                canPerm
+                  ? `Permanently unlock for ${item.cost_permanent} triumphs`
+                  : `Need ${item.cost_permanent} triumphs to permanently unlock`
+              }
               onClick={() => onBuyPermanent(item.path)}
             >
               Unlock ({item.cost_permanent})
             </Button>
           )}
-          {!owned && !awardLocked && item.cost_permanent === 0 && !rented && free && (
+          {!owned && !awardLocked && !patreonLock && item.cost_permanent === 0 && !rented && free && (
             <Button icon="gift" color="good" tooltip="Claim permanently for free" onClick={() => onBuyPermanent(item.path)}>
               Claim
             </Button>

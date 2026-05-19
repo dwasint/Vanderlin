@@ -28,6 +28,8 @@ GLOBAL_LIST_INIT(loadout_items, init_loadout_items())
 	var/ui_icon_state = null
 	/// Category tab shown in the shop
 	var/ui_category = "Miscellaneous"
+	/// Bitfield of LOADOUT_FLAG_* defines controlling rental, equip, and access restrictions.
+	var/loadout_flags = LOADOUT_FLAG_NONE
 
 /datum/loadout_item/New()
 	. = ..()
@@ -50,18 +52,40 @@ GLOBAL_LIST_INIT(loadout_items, init_loadout_items())
 
 /// Returns TRUE if the given client has satisfied this loadout item's award requirement.
 /datum/loadout_item/proc/is_unlocked_for(client/C)
-	if(!required_award)
-		return TRUE
-	if(!C?.player_details?.achievements)
-		return FALSE
-	var/datum/award/A = SSachievements.awards[required_award]
-	if(!A)
-		return FALSE
-	if(istype(A, /datum/award/achievement/progress))
-		var/datum/award/achievement/progress/PA = A
-		return C.player_details.achievements.get_achievement_status(required_award) >= PA.required_progress
-	if(istype(A, /datum/award/achievement))
-		return C.player_details.achievements.get_achievement_status(required_award) == TRUE
-	if(istype(A, /datum/award/score))
-		return C.player_details.achievements.get_achievement_status(required_award) > 0
-	return FALSE
+	if(required_award)
+		if(!length(SSachievements.awards))
+			SSachievements.setup()
+		var/datum/award/A = SSachievements.awards[required_award]
+		if(!A)
+			return FALSE
+		if(istype(A, /datum/award/achievement/progress))
+			var/datum/award/achievement/progress/PA = A
+			if(C.player_details.achievements.get_achievement_status(required_award) < PA.required_progress)
+				return FALSE
+		else if(istype(A, /datum/award/achievement))
+			if(C.player_details.achievements.get_achievement_status(required_award) != TRUE)
+				return FALSE
+		else if(istype(A, /datum/award/score))
+			if(C.player_details.achievements.get_achievement_status(required_award) <= 0)
+				return FALSE
+	if(loadout_flags & LOADOUT_FLAG_PATREON_LOCKED)
+		if(!C?.patreon?.is_donator())
+			return FALSE
+	return TRUE
+
+/// Returns TRUE if this item is currently owned by the client and all runtime access checks pass.
+/// Use this as the authoritative check in other systems (species checks, perk grants, etc).
+/datum/loadout_item/proc/is_owned_and_accessible(client/C)
+    if(!C?.prefs)
+        return FALSE
+    if(!("[type]" in C.prefs.owned_loadout_items))
+        return FALSE
+    // Patreon can lapse after purchase; re-validate at runtime.
+    if(loadout_flags & LOADOUT_FLAG_PATREON_LOCKED)
+        if(!C?.patreon?.is_donator())
+            return FALSE
+    return TRUE
+
+/proc/owns_loadout_item(client/client, datum/loadout_item/loadout_item)
+	var/datum/loadout_item/singleton = GLOB.loadout_items[loadout_item]
+	return singleton.is_owned_and_accessible(client)
