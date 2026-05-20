@@ -177,7 +177,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["multi_char_ready"] >> multi_char_ready
 	S["owned_loadout_items"] >> owned_loadout_items
 	S["next_special_trait"] >> next_special_trait
-	S["single_round_loadout"] >> single_round_loadout
 
 	S["multi_ready_slots"] >> multi_ready_slots
 	if(!islist(multi_ready_slots))
@@ -296,7 +295,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["multi_char_ready"], multi_char_ready)
 	WRITE_FILE(S["multi_ready_slots"], multi_ready_slots)
 	WRITE_FILE(S["owned_loadout_items"], owned_loadout_items)
-	WRITE_FILE(S["single_round_loadout"], single_round_loadout)
 	WRITE_FILE(S["next_special_trait"], next_special_trait)
 	return TRUE
 
@@ -512,6 +510,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["equipped_loadout"], equipped_loadout)
 	WRITE_FILE(S["equipped_loadout_colors"], equipped_loadout_colors)
 	WRITE_FILE(S["single_round_loadout_colors"], single_round_loadout_colors)
+	WRITE_FILE(S["single_round_loadout"], single_round_loadout)
 
 	//Custom names
 	for(var/custom_name_id in GLOB.preferences_custom_names)

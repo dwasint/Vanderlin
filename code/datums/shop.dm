@@ -11,6 +11,10 @@
 	S["equipped_loadout"] >> equipped_loadout
 	if(!islist(equipped_loadout))
 		equipped_loadout = list()
+	S["single_round_loadout"] >> single_round_loadout
+	if(!islist(single_round_loadout))
+		single_round_loadout = list()
+
 	validate_loadouts()
 	load_loadout_colors(S)
 
