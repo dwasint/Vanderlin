@@ -97,3 +97,12 @@
   - image: Added new icons for grave curses.
   Trexdude:
   - spellcheck: Fish tamto plates are now properly named
+2026-05-19:
+  CheffieGithub:
+  - rscadd: Blast powder can refill alchemical flasks.
+  - rscdel: Removed confessor mask breathing sounds
+  - bugfix: Fixed travelling merchant outfits
+  ta3754859-max:
+  - code_imp: Framework (if you can even call it that) for alternative examine names
+  - rscadd: alternative naming for inquisition items
+  - bugfix: Skin items such as disciple's skin no longer show up on examine
