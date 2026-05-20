@@ -120,7 +120,6 @@
 	if(!player.is_donator())
 		player.prefs.single_round_loadout = list()
 		player.prefs.single_round_loadout_colors = list()
-	player.prefs.single_round_loadout_colors = list()
 	player.prefs.save_preferences()
 	player.prefs.save_character()
 
@@ -237,9 +236,9 @@
 			"path" = path_str,
 			"name" = item.name,
 			"description" = item.description,
-			"cost_single" = item.triumph_cost_single,
+			"cost_single" = CEILING(item.triumph_cost_permanent * 0.05, 1),
 			"cost_permanent" = item.triumph_cost_permanent,
-			"free" = (!item.triumph_cost_single && !item.triumph_cost_permanent),
+			"free" = (!item.triumph_cost_permanent),
 			"owned" = (path_str in owner.prefs.owned_loadout_items),
 			"equipped" = (path_str in owner.prefs.equipped_loadout),
 			"rented" = (path_str in owner.prefs.single_round_loadout),
@@ -485,18 +484,18 @@
 	if(used >= 3)
 		to_chat(owner.mob, span_warning("All 3 loadout slots are in use."))
 		return FALSE
-	if(item.triumph_cost_single > 0 && !(owner.is_donator() && !(item.loadout_flags & LOADOUT_FLAG_NO_DONATOR_FREE)))
+	if(CEILING(item.triumph_cost_permanent * 0.05, 1) > 0 && !(owner.is_donator() && !(item.loadout_flags & LOADOUT_FLAG_NO_DONATOR_FREE)))
 		var/balance = get_triumph_amount(owner.ckey)
-		if(balance < item.triumph_cost_single)
-			to_chat(owner.mob, span_warning("You need [item.triumph_cost_single] triumphs to rent [item.name]. You have [balance]."))
+		if(balance < CEILING(item.triumph_cost_permanent * 0.05, 1))
+			to_chat(owner.mob, span_warning("You need [CEILING(item.triumph_cost_permanent * 0.05, 1)] triumphs to rent [item.name]. You have [balance]."))
 			return FALSE
-		adjust_triumphs(owner, -item.triumph_cost_single, TRUE, "Triumph Shop: single-round rent [item.name]", FALSE, TRUE)
+		adjust_triumphs(owner, -CEILING(item.triumph_cost_permanent * 0.05, 1), TRUE, "Triumph Shop: single-round rent [item.name]", FALSE, TRUE)
 
 	var/donator_free_use = owner.is_donator() && !(item.loadout_flags & LOADOUT_FLAG_NO_DONATOR_FREE)
 	owner.prefs.single_round_loadout += path_str
 	owner.prefs.save_preferences()
 	owner.prefs.save_character()
-	log_game("TRIUMPH SHOP: [owner.ckey] [donator_free_use ? "trialing" : "rented"] [path_str] [donator_free_use ? "(free, donator)" : "for one round ([item.triumph_cost_single] triumphs)"].")
+	log_game("TRIUMPH SHOP: [owner.ckey] [donator_free_use ? "trialing" : "rented"] [path_str] [donator_free_use ? "(free, donator)" : "for one round ([CEILING(item.triumph_cost_permanent * 0.05, 1)] triumphs)"].")
 	to_chat(owner.mob, span_notice("[donator_free_use ? "Trying out [item.name] for this round (Patreon perk, no cost)." : "Rented [item.name] for this round."]"))
 	return TRUE
 
@@ -530,8 +529,8 @@
 		owner.prefs.save_character()
 		var/datum/loadout_item/item = GLOB.loadout_items[text2path(path_str)]
 		var/donator_free_use = owner.is_donator() && !(item?.loadout_flags & LOADOUT_FLAG_NO_DONATOR_FREE)
-		if(!donator_free_use && item?.triumph_cost_single > 0)
-			adjust_triumphs(owner, item.triumph_cost_single, TRUE, "Triumph Shop: refund rent [item.name]", FALSE, TRUE)
+		if(!donator_free_use && CEILING(item?.triumph_cost_permanent * 0.05, 1) > 0)
+			adjust_triumphs(owner, CEILING(item.triumph_cost_permanent * 0.05, 1), TRUE, "Triumph Shop: refund rent [item.name]", FALSE, TRUE)
 		return TRUE
 	return FALSE
 

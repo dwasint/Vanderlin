@@ -18,8 +18,6 @@ GLOBAL_LIST_INIT(loadout_items, init_loadout_items())
 	var/item_path
 	/// Typepath of a /datum/award that must be unlocked to use this loadout item. Null = no requirement.
 	var/required_award = null
-	/// Triumphs spent per round to use this item once. Not saved.
-	var/triumph_cost_single = 0
 	/// Triumphs spent to permanently own this item. Saved to owned_loadout_items.
 	var/triumph_cost_permanent = 0
 	/// DMI file for the shop sprite, auto-derived from item_path in New()
@@ -41,9 +39,9 @@ GLOBAL_LIST_INIT(loadout_items, init_loadout_items())
 	return ("[type]" in C.prefs.owned_loadout_items)
 
 /datum/loadout_item/proc/can_afford_single(client/C)
-	if(!triumph_cost_single)
+	if(triumph_cost_permanent)
 		return TRUE
-	return get_triumph_amount(C.ckey) >= triumph_cost_single
+	return get_triumph_amount(C.ckey) >= CEILING(triumph_cost_permanent * 0.05, 1)
 
 /datum/loadout_item/proc/can_afford_permanent(client/C)
 	if(!triumph_cost_permanent)
