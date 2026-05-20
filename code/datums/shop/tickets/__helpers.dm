@@ -31,6 +31,24 @@
 /client/proc/test_ticket()
 	admin_grant_ticket(ckey, TICKET_TYPE_SPECIAL, "Test", "testing desc.!", \
 		special_trait_path = /datum/special_trait/black_biar)
+	// Minor boost for a specific job
+	admin_grant_ticket(ckey, TICKET_TYPE_JOB_BOOST, "Artificer Boost", "Priority artificer slot",
+		job_boost_job = JOB_ARTIFICER,
+		job_boost_typepath = /datum/job_priority_boost/minor)
+
+	// Premium boost for Monarch
+	admin_grant_ticket(ckey, TICKET_TYPE_JOB_BOOST, "Monarch Fast Track", "High priority Monarch",
+		job_boost_job = JOB_MONARCH,
+		job_boost_typepath = /datum/job_priority_boost/premium)
+
+	// Automaton boost — applicable_jobs is already baked into the subtype, job_boost_job is just display
+	admin_grant_ticket(ckey, TICKET_TYPE_JOB_BOOST, "Automaton Vessel Boost", "15 uses of automaton priority",
+		job_boost_job = WHITELIST_AUTOMATON,
+		job_boost_typepath = /datum/job_priority_boost/automaton_15)
+
+	// Timed boost
+	admin_grant_ticket(ckey, TICKET_TYPE_JOB_BOOST, "Weekend Boost", "48hr priority",
+		job_boost_typepath = /datum/job_priority_boost/timed)
 
 /// Grant a ticket to a player by client reference.
 /// Pass keyword args matching the target subtype's payload field.
@@ -44,6 +62,7 @@
 	loadout_item_path = null,
 	special_trait_path = null,
 	job_boost_job = null,
+	job_boost_typepath = /datum/job_priority_boost/minor,
 )
 	var/subtype = ticket_type_to_path(ticket_type)
 	var/datum/ticket/t = new subtype()
@@ -65,6 +84,8 @@
 		if(TICKET_TYPE_JOB_BOOST)
 			var/datum/ticket/job_boost/jt = t
 			jt.job_boost_job = job_boost_job
+			if(ispath(job_boost_typepath, /datum/job_priority_boost))
+				jt.boost_typepath = job_boost_typepath
 
 	// Online grant
 	var/client/C = GLOB.directory[target_ckey]
@@ -98,7 +119,7 @@
 		return FALSE
 
 	user.prefs.ticket_history += list(list(
-		"event" = "used",
+		"event" = "used [t.name], [t.ticket_type]",
 		"timestamp" = time2text(world.realtime, "YYYY-MM-DD hh:mm:ss"),
 		"ticket_id" = t.ticket_id,
 		"name" = t.name,

@@ -26,7 +26,7 @@
 	if(user.prefs.next_special_trait)
 		to_chat(user, span_warning("You already have a special trait queued. Clear it first."))
 		return FALSE
-	user.prefs.next_special_trait = text2path(special_trait_path)
-	var/datum/special_trait/trait = SPECIAL_TRAIT(text2path(special_trait_path))
+	user.prefs.next_special_trait = special_trait_path
+	var/datum/special_trait/trait = SPECIAL_TRAIT(special_trait_path)
 	to_chat(user, span_notice("Ticket used! Special trait queued: <b>[trait?.name]</b>!"))
 	return TRUE
