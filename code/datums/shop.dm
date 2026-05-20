@@ -1,3 +1,6 @@
+/datum/config_entry/number/special_rerolls
+	default = 0
+
 /datum/preferences/proc/open_loadout_shop(mob/mob)
 	var/datum/tgui_triumph_shop/ui = new /datum/tgui_triumph_shop(mob.client)
 	ui.ui_interact(mob)
@@ -585,6 +588,9 @@
 /datum/tgui_triumph_shop/proc/handle_clear_pending_special()
 	if(!owner.prefs.next_special_trait)
 		return FALSE
+	if(owner.player_details.rerolls <= 0)
+		return FALSE
+	owner.player_details.rerolls--
 	owner.prefs.next_special_trait = null
 	owner.prefs.save_preferences()
 	owner.prefs.save_character()
