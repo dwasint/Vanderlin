@@ -361,11 +361,6 @@ export const TriumphBuyCategoryView = ({
   );
 };
 
-/**
- * Shows purchased/active triumph_buy datums.
- * Mirrors CollectionView's role but for triumph buys.
- * Refund maps to the TRIUMPH_CAT_ACTIVE_DATUMS "REFUND" action.
- */
 export const ActiveTriumphBuysView = ({
   items,
   onRefund,
@@ -411,7 +406,6 @@ export const ActiveTriumphBuysView = ({
               )}
               {entry.activated && !isSeasonal && (
                 <Box fontSize="0.75em" color="average" mt={0.25}>
-                  <Icon name="bolt" mr={0.5} />
                   Already activated, cannot refund
                 </Box>
               )}

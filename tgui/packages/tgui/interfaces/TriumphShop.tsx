@@ -1252,7 +1252,7 @@ export const TriumphShop = () => {
                           />
                         </Section>
                       ) : (
-                        <Section fill scrollable title={triumphShopSubTab}>
+                        <Section fill scrollable title={triumphShopSubTab} key={triumphShopSubTab}>
                           <TriumphBuyCategoryView
                             items={
                               triumph_buy_categories[triumphShopSubTab] ?? []
