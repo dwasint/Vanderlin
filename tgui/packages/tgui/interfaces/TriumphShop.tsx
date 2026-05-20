@@ -21,6 +21,14 @@ import {
   type ActiveTriumphBuy,
   type TriumphBuyEntry,
 } from './TriumphBuy';
+import {
+  TicketShopView,
+  type TicketEntry,
+  type HistoryEntry,
+  type IncomingTrade,
+  type OutgoingTrade,
+} from './TicketShop';
+
 
 type LoadoutEntry = {
   path: string;
@@ -79,6 +87,16 @@ type Data = {
   /** keyed by TRIUMPH_CAT_* strings */
   triumph_buy_categories: Record<string, TriumphBuyEntry[]>;
   active_triumph_buys: ActiveTriumphBuy[];
+  owned_tickets: TicketEntry[];
+  ticket_history: HistoryEntry[];
+  incoming_trades: IncomingTrade[];
+  outgoing_trades: OutgoingTrade[];
+  locked_offering_ids: string[];   // ticket_ids currently in outgoing trades
+  online_ckeys: string[];
+  lookup_result_ckey: string | null;
+  lookup_result_tickets: TicketEntry[] | null;
+
+
 };
 
 function flattenCategories(
@@ -1004,6 +1022,16 @@ export const TriumphShop = () => {
     available_colors,
     triumph_buy_categories = {},
     active_triumph_buys = [],
+    owned_tickets = [],
+    ticket_history = [],
+    incoming_trades = [],
+    outgoing_trades = [],
+    locked_offering_ids = [],
+    online_ckeys = [],
+    lookup_result_ckey = null,
+    lookup_result_tickets = null,
+
+
   } = data;
 
   const loadoutCategoryNames = Object.keys(categories);
@@ -1014,8 +1042,10 @@ export const TriumphShop = () => {
 
   const TRIUMPH_SHOP_TAB = 'Seasonal / Round Shop';
   const MY_PURCHASES_TAB = 'My Purchases';
+  const TICKETS_TAB = 'Tickets';
 
   const allTabs = [
+    TICKETS_TAB,
     'Collection',
     'Specials',
     ...loadoutCategoryNames,
@@ -1031,11 +1061,12 @@ export const TriumphShop = () => {
 
   const slotsUsed = equipped_slots.filter((s) => s.path !== null).length;
 
-  const isTriumphShopTab = activeTab === TRIUMPH_SHOP_TAB;
-  const isSpecialsTab = activeTab === 'Specials';
+    const isTicketsTab      = activeTab === TICKETS_TAB;
+  const isTriumphShopTab  = activeTab === TRIUMPH_SHOP_TAB;
+  const isSpecialsTab     = activeTab === 'Specials';
 
-  const showEquippedPanel = !isSpecialsTab && !isTriumphShopTab;
-  const showSearch = !isSpecialsTab;
+  const showEquippedPanel = !isSpecialsTab && !isTriumphShopTab && !isTicketsTab;
+  const showSearch        = !isSpecialsTab && !isTicketsTab;
 
   const effectiveTab =
     search.length > 1 && !isTriumphShopTab && !isSpecialsTab
@@ -1074,6 +1105,19 @@ export const TriumphShop = () => {
   const handleTriumphRefund = (ref: string) => act('triumph_refund', { ref });
   const handleContribute = (ref: string, amount: number) =>
     act('triumph_contribute', { ref, amount });
+
+  const handleUseTicket    = (ticket_id: string) => act('use_ticket',    { ticket_id });
+  const handleOfferTrade = (
+    offered_ids: string[],
+    requested_ids: string[],
+    to_ckey: string,
+  ) => act('offer_trade', { offered_ids, requested_ids, to_ckey });
+
+  const handleAcceptTrade  = (trade_id: string)  => act('accept_trade',  { trade_id });
+  const handleCancelTrade  = (trade_id: string)  => act('cancel_trade',  { trade_id });
+  const handleDeclineTrade = (trade_id: string)  => act('cancel_trade',  { trade_id }); // recipient decline reuses cancel
+  const handleLookupCkey   = (target_ckey: string) => act('lookup_ckey_tickets', { target_ckey });
+
 
   return (
     <Window title="Triumph Shop" width={860} height={620}>
@@ -1127,15 +1171,17 @@ export const TriumphShop = () => {
                           }
                         >
                           <Icon
-                            name={
-                              tab === 'Specials'
-                                ? 'dice'
-                                : tab === 'Collection'
+                              name={
+                                tab === TICKETS_TAB
+                                  ? 'ticket-alt'
+                                  : tab === 'Specials'
+                                  ? 'dice'
+                                  : tab === 'Collection'
                                   ? 'archive'
                                   : tab === TRIUMPH_SHOP_TAB
-                                    ? 'shopping-cart'
-                                    : 'tag'
-                            }
+                                  ? 'shopping-cart'
+                                  : 'tag'
+                              }
                             mr={1}
                           />
                           {tab}
@@ -1160,6 +1206,20 @@ export const TriumphShop = () => {
                                 }}
                               >
                                 {active_triumph_buys.length}
+                              </Box>
+                            )}
+                            {tab === TICKETS_TAB && incoming_trades.length > 0 && (
+                              <Box
+                                as="span"
+                                ml={1}
+                                fontSize="0.7em"
+                                style={{
+                                  background: '#f44336',
+                                  borderRadius: '8px',
+                                  padding: '0 4px',
+                                }}
+                              >
+                                {incoming_trades.length}
                               </Box>
                             )}
                         </Tabs.Tab>
@@ -1279,6 +1339,26 @@ export const TriumphShop = () => {
                     </Stack.Item>
                   </Stack>
                 )}
+
+                {isTicketsTab && (
+                  <TicketShopView
+                    ownedTickets={owned_tickets}
+                    ticketHistory={ticket_history}
+                    incomingTrades={incoming_trades}
+                    outgoingTrades={outgoing_trades}
+                    lockedOfferingIds={locked_offering_ids}
+                    onlineCkeys={online_ckeys}
+                    lookupResultCkey={lookup_result_ckey}
+                    lookupResultTickets={lookup_result_tickets}
+                    onUseTicket={handleUseTicket}
+                    onOfferTrade={handleOfferTrade}
+                    onAcceptTrade={handleAcceptTrade}
+                    onCancelTrade={handleCancelTrade}
+                    onDeclineTrade={handleDeclineTrade}
+                    onLookupCkey={handleLookupCkey}
+                  />
+                )}
+
 
                 {!isSpecialsTab && !isTriumphShopTab && (
                   <Section

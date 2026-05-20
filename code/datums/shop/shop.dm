@@ -142,6 +142,8 @@
 
 /datum/tgui_triumph_shop
 	var/client/owner
+	var/lookup_result_ckey = null
+	var/list/lookup_result_tickets = null
 
 /datum/tgui_triumph_shop/New(client/C)
 	owner = C
@@ -334,6 +336,81 @@
 		))
 	data["specials"] = specials_list
 
+	// --- Tickets ---
+	var/list/tickets_list = list()
+	for(var/datum/ticket/t in owner.prefs.owned_tickets)
+		var/list/tdata = t.to_list()
+		t.enrich_ui_entry(tdata)
+		tickets_list += list(tdata)
+	data["owned_tickets"] = tickets_list
+	data["ticket_history"] = owner.prefs.ticket_history
+
+	// --- Trade data via manager ---
+	var/list/locked_offering_ids = list()
+	var/list/incoming_trades = list()
+	var/list/outgoing_trades = list()
+
+	for(var/datum/ticket_trade/trade in GLOB.ticket_trade_manager.pending)
+		if(trade.from_ckey == owner.ckey)
+			for(var/id in trade.offered_ticket_ids)
+				locked_offering_ids += id
+			outgoing_trades += list(list(
+				"trade_id" = trade.trade_id,
+				"to_ckey" = trade.to_ckey,
+				"offered_ticket_ids" = trade.offered_ticket_ids,
+				"offered_ticket_names" = trade.offered_ticket_names,
+				"requested_ticket_ids" = trade.requested_ticket_ids,
+				"requested_ticket_names" = trade.requested_ticket_names,
+				"cancelling" = !!(trade.cancel_requested_at),
+			))
+		else if(trade.to_ckey == owner.ckey)
+			var/client/from_client = GLOB.directory[trade.from_ckey]
+			var/list/sender_raw = GLOB.ticket_trade_manager.get_raw_ticket_list(trade.from_ckey, from_client)
+
+			var/list/offered_enriched = list()
+			for(var/id in trade.offered_ticket_ids)
+				if(islist(sender_raw))
+					for(var/list/entry in sender_raw)
+						if(entry["ticket_id"] == id)
+							var/list/enriched = entry.Copy()
+							// Use a temporary datum purely for enrich_ui_entry
+							var/datum/ticket/temp = ticket_from_list(entry)
+							if(temp)
+								temp.enrich_ui_entry(enriched)
+							offered_enriched += list(enriched)
+							break
+
+			var/list/requested_enriched = list()
+			for(var/id in trade.requested_ticket_ids)
+				var/datum/ticket/t = find_ticket_in_prefs(owner.prefs, id)
+				if(t)
+					var/list/tdata = t.to_list()
+					t.enrich_ui_entry(tdata)
+					requested_enriched += list(tdata)
+				else
+					requested_enriched += list(list(
+						"ticket_id" = id,
+						"name" = "(no longer owned)",
+						"ticket_type" = "unknown",
+					))
+
+			incoming_trades += list(list(
+				"trade_id" = trade.trade_id,
+				"from_ckey" = trade.from_ckey,
+				"offered_tickets" = offered_enriched,
+				"offered_ticket_names" = trade.offered_ticket_names,
+				"requested_tickets" = requested_enriched,
+				"requested_ticket_names" = trade.requested_ticket_names,
+				"cancelling" = !!(trade.cancel_requested_at),
+			))
+
+	data["locked_offering_ids"] = locked_offering_ids
+	data["incoming_trades"] = incoming_trades
+	data["outgoing_trades"] = outgoing_trades
+
+	data["lookup_result_ckey"] = src.lookup_result_ckey
+	data["lookup_result_tickets"] = src.lookup_result_tickets
+
 	return data
 
 
@@ -435,6 +512,40 @@
 				if(tb.maximum_pool && SStriumphs.communal_pools[tb.type] >= tb.maximum_pool)
 					tb.on_activate()
 			return TRUE
+		if("use_ticket")
+			var/datum/ticket/t = find_ticket_in_prefs(owner.prefs, params["ticket_id"])
+			if(!t) return FALSE
+			return use_ticket(owner, t)
+
+		if("offer_trade")
+			var/list/offered_ids = params["offered_ids"]
+			var/list/requested_ids = params["requested_ids"]
+			if(!islist(offered_ids)) offered_ids = list()
+			if(!islist(requested_ids)) requested_ids = list()
+			return GLOB.ticket_trade_manager.offer_trade(owner, params["to_ckey"], offered_ids, requested_ids)
+
+		if("accept_trade")
+			return GLOB.ticket_trade_manager.accept_trade(owner, params["trade_id"])
+
+		if("cancel_trade")
+			return GLOB.ticket_trade_manager.cancel_trade(owner, params["trade_id"])
+
+		if("lookup_ckey_tickets")
+			var/target_ckey = params["target_ckey"]
+			if(!target_ckey) return FALSE
+			var/list/raw = GLOB.ticket_trade_manager.lookup_inventory(target_ckey)
+			var/list/enriched = list()
+			if(islist(raw))
+				for(var/list/entry in raw)
+					var/list/e = entry.Copy()
+					var/datum/ticket/temp = ticket_from_list(entry)
+					if(temp)
+						temp.enrich_ui_entry(e)
+					enriched += list(e)
+			src.lookup_result_ckey = target_ckey
+			src.lookup_result_tickets = enriched
+			SStgui.update_uis(src)
+			return TRUE
 
 	return FALSE
 
@@ -468,7 +579,7 @@
 	if(!item)
 		return FALSE
 	if(item.loadout_flags & LOADOUT_FLAG_NO_RENT)
-		to_chat(owner.mob, span_warning("[item.name] cannot be rented — it must be permanently unlocked."))
+		to_chat(owner.mob, span_warning("[item.name] cannot be rented, it must be permanently unlocked."))
 		return FALSE
 	if(item.loadout_flags & LOADOUT_FLAG_NO_EQUIP)
 		to_chat(owner.mob, span_warning("[item.name] cannot be equipped as a loadout item."))

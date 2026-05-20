@@ -227,6 +227,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	check_new_keybindings()
 
+	load_tickets(S)
+
 	//ROGUETOWN
 	parallax = PARALLAX_INSANE
 
@@ -296,6 +298,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["multi_ready_slots"], multi_ready_slots)
 	WRITE_FILE(S["owned_loadout_items"], owned_loadout_items)
 	WRITE_FILE(S["next_special_trait"], next_special_trait)
+	save_tickets(S)
 	return TRUE
 
 /datum/preferences/proc/_load_species(S)

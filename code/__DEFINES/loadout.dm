@@ -5,3 +5,12 @@
 #define LOADOUT_FLAG_PATREON_LOCKED (1<<2) // Requires active patreon/donator status to use
 #define LOADOUT_FLAG_ACHIEVEMENT_LOCKED (1<<3) // requires required_award to be satisfied (replaces checking required_award != null implicitly)
 #define LOADOUT_FLAG_NO_DONATOR_FREE (1<<4)
+
+#define TICKET_TYPE_LOADOUT "loadout"
+#define TICKET_TYPE_SPECIAL "special"
+#define TICKET_TYPE_JOB_BOOST "job_boost"
+#define TICKET_TYPE_UNKNOWN "unknown"
+
+// Seconds the *sender* must wait before a cancel is processed
+// (prevents accepting+cancelling race that would dupe tickets)
+#define TICKET_TRADE_CANCEL_LOCK 5

@@ -265,6 +265,9 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	var/list/equipped_loadout_colors = list()
 	var/list/single_round_loadout_colors = list()
 
+	var/list/owned_tickets = list() // list of /datum/ticket subtypes
+	var/list/ticket_history = list() // list of assoc lists
+
 /datum/preferences/New(client/C)
 	parent = C
 
