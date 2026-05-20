@@ -533,6 +533,7 @@
 		if("lookup_ckey_tickets")
 			var/target_ckey = params["target_ckey"]
 			if(!target_ckey) return FALSE
+			if(target_ckey == owner.ckey) return FALSE
 			var/list/raw = GLOB.ticket_trade_manager.lookup_inventory(target_ckey)
 			var/list/enriched = list()
 			if(islist(raw))

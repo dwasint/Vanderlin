@@ -1,4 +1,5 @@
 GLOBAL_DATUM_INIT(ticket_trade_manager, /datum/ticket_trade_manager, new)
+#define TICKET_TRADES_FILE "data/ticket_trades.sav"
 
 /datum/ticket_trade
 	var/trade_id
@@ -13,6 +14,10 @@ GLOBAL_DATUM_INIT(ticket_trade_manager, /datum/ticket_trade_manager, new)
 
 /datum/ticket_trade_manager
 	var/list/pending = list()
+
+/datum/ticket_trade_manager/New()
+	. = ..()
+	load_pending()
 
 /// Returns list of assoc-lists for a ckey, regardless of online status.
 /datum/ticket_trade_manager/proc/get_raw_ticket_list(target_ckey, client/online_client)
@@ -149,6 +154,7 @@ GLOBAL_DATUM_INIT(ticket_trade_manager, /datum/ticket_trade_manager, new)
 	trade.created_at = world.time
 
 	pending += trade
+	save_pending()
 
 	if(to_client)
 		var/list/offer_summary = offered_names.len ? offered_names : list("nothing")
@@ -191,6 +197,7 @@ GLOBAL_DATUM_INIT(ticket_trade_manager, /datum/ticket_trade_manager, new)
 			if(!t)
 				to_chat(accepting_client, span_warning("The sender no longer has one of the offered tickets, trade cancelled."))
 				pending -= trade
+				save_pending()
 				return FALSE
 			offered_datums += t
 	else
@@ -198,6 +205,7 @@ GLOBAL_DATUM_INIT(ticket_trade_manager, /datum/ticket_trade_manager, new)
 		if(isnull(sender_raw))
 			to_chat(accepting_client, span_warning("Could not read the sender's save, trade cancelled."))
 			pending -= trade
+			save_pending()
 			return FALSE
 		for(var/id in trade.offered_ticket_ids)
 			var/found = FALSE
@@ -208,6 +216,7 @@ GLOBAL_DATUM_INIT(ticket_trade_manager, /datum/ticket_trade_manager, new)
 			if(!found)
 				to_chat(accepting_client, span_warning("The sender no longer has one of the offered tickets, trade cancelled."))
 				pending -= trade
+				save_pending()
 				return FALSE
 
 	// Validate requested tickets still in recipient's inventory
@@ -274,6 +283,7 @@ GLOBAL_DATUM_INIT(ticket_trade_manager, /datum/ticket_trade_manager, new)
 	accepting_client.prefs.save_character()
 
 	pending -= trade
+	save_pending()
 
 	to_chat(accepting_client, span_notice("Trade accepted!"))
 	if(from_client)
@@ -304,6 +314,7 @@ GLOBAL_DATUM_INIT(ticket_trade_manager, /datum/ticket_trade_manager, new)
 		if(!(trade in pending))
 			return
 		pending -= trade
+		save_pending()
 		to_chat(cancelling_client, span_notice("Trade [trade.trade_id] cancelled."))
 		var/client/to_client = GLOB.directory[trade.to_ckey]
 		if(to_client)
@@ -322,3 +333,43 @@ GLOBAL_DATUM_INIT(ticket_trade_manager, /datum/ticket_trade_manager, new)
 /datum/ticket_trade_manager/proc/lookup_inventory(target_ckey)
 	var/client/C = GLOB.directory[target_ckey]
 	return get_raw_ticket_list(target_ckey, C)
+
+/datum/ticket_trade_manager/proc/save_pending()
+	var/savefile/S = new(TICKET_TRADES_FILE)
+	var/list/serialized = list()
+	for(var/datum/ticket_trade/tr in pending)
+		serialized += list(list(
+			"trade_id"              = tr.trade_id,
+			"from_ckey"             = tr.from_ckey,
+			"to_ckey"               = tr.to_ckey,
+			"offered_ticket_ids"    = tr.offered_ticket_ids.Join(","),
+			"offered_ticket_names"  = tr.offered_ticket_names.Join(","),
+			"requested_ticket_ids"  = tr.requested_ticket_ids.Join(","),
+			"requested_ticket_names"= tr.requested_ticket_names.Join(","),
+			"created_at"            = tr.created_at,
+			"cancel_requested_at"   = tr.cancel_requested_at,
+		))
+	S["pending"] << serialized
+
+/datum/ticket_trade_manager/proc/load_pending()
+	if(!fexists(TICKET_TRADES_FILE))
+		return
+	var/savefile/S = new(TICKET_TRADES_FILE)
+	var/list/raw
+	S["pending"] >> raw
+	if(!islist(raw))
+		return
+	for(var/list/entry in raw)
+		var/datum/ticket_trade/tr = new
+		tr.trade_id              = entry["trade_id"]
+		tr.from_ckey             = entry["from_ckey"]
+		tr.to_ckey               = entry["to_ckey"]
+		tr.offered_ticket_ids    = entry["offered_ticket_ids"]   != "" ? splittext(entry["offered_ticket_ids"],   ",") : list()
+		tr.offered_ticket_names  = entry["offered_ticket_names"]  != "" ? splittext(entry["offered_ticket_names"],  ",") : list()
+		tr.requested_ticket_ids  = entry["requested_ticket_ids"]  != "" ? splittext(entry["requested_ticket_ids"],  ",") : list()
+		tr.requested_ticket_names= entry["requested_ticket_names"]!= "" ? splittext(entry["requested_ticket_names"],",") : list()
+		tr.created_at            = entry["created_at"]
+		tr.cancel_requested_at   = null
+		pending += tr
+
+#undef TICKET_TRADES_FILE
