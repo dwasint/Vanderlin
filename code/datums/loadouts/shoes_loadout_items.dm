@@ -2,7 +2,7 @@
 	name = "Babouche"
 	item_path = /obj/item/clothing/shoes/shalal
 	ui_category = "Shoes"
-	triumph_cost_single = 8
+	triumph_cost_single = 1
 	triumph_cost_permanent = 25
 
 /datum/loadout_item/sandals
@@ -16,12 +16,12 @@
 	name = "Gladiatorial Sandals"
 	item_path = /obj/item/clothing/shoes/gladiator
 	ui_category = "Shoes"
-	triumph_cost_single = 15
+	triumph_cost_single = 1
 	triumph_cost_permanent = 50
 
 /datum/loadout_item/ankletscloth
 	name = "Cloth Anklets"
 	item_path = /obj/item/clothing/shoes/boots/clothlinedanklets
 	ui_category = "Shoes"
-	triumph_cost_single = 8
+	triumph_cost_single = 1
 	triumph_cost_permanent = 25

@@ -3,7 +3,7 @@
 	name = "Robe"
 	item_path = /obj/item/clothing/shirt/robe
 	ui_category = "Shirts"
-	triumph_cost_single = 8
+	triumph_cost_single = 1
 	triumph_cost_permanent = 25
 
 /datum/loadout_item/longshirt
@@ -24,7 +24,7 @@
 	name = "Striped Shirt"
 	item_path = /obj/item/clothing/shirt/undershirt/sailor
 	ui_category = "Shirts"
-	triumph_cost_single = 8
+	triumph_cost_single = 1
 	triumph_cost_permanent = 25
 
 /datum/loadout_item/bottomtunic
@@ -38,40 +38,40 @@
 	name = "Tunic"
 	item_path = /obj/item/clothing/shirt/tunic/colored/random
 	ui_category = "Shirts"
-	triumph_cost_single = 8
+	triumph_cost_single = 1
 	triumph_cost_permanent = 25
 
 /datum/loadout_item/dress
 	name = "Dress"
 	item_path = /obj/item/clothing/shirt/dress/gen
 	ui_category = "Shirts"
-	triumph_cost_single = 15
+	triumph_cost_single = 1
 	triumph_cost_permanent = 50
 
 /datum/loadout_item/bardress
 	name = "Bar Dress"
 	item_path = /obj/item/clothing/shirt/dress
 	ui_category = "Shirts"
-	triumph_cost_single = 25
+	triumph_cost_single = 1
 	triumph_cost_permanent = 75
 
 /datum/loadout_item/nun_habit
 	name = "Nun Habit"
 	item_path = /obj/item/clothing/shirt/robe/nun
 	ui_category = "Shirts"
-	triumph_cost_single = 30
+	triumph_cost_single = 1
 	triumph_cost_permanent = 100
 
 /datum/loadout_item/corset
 	name = "Corset"
 	item_path = /obj/item/clothing/armor/corset
 	ui_category = "Shirts"
-	triumph_cost_single = 25
+	triumph_cost_single = 1
 	triumph_cost_permanent = 75
 
 /datum/loadout_item/jestertunick
 	name = "Jester's Tunick"
 	item_path = /obj/item/clothing/shirt/jester
 	ui_category = "Shirts"
-	triumph_cost_single = 25
+	triumph_cost_single = 1
 	triumph_cost_permanent = 75

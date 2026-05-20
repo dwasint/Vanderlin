@@ -10,28 +10,28 @@
 	name = "Rosa Bouquet"
 	item_path = /obj/item/bouquet/rosa
 	ui_category = "Miscellaneous"
-	triumph_cost_single = 10
+	triumph_cost_single = 1
 	triumph_cost_permanent = 25
 
 /datum/loadout_item/salvia_bouquet
 	name = "Salvia Bouquet"
 	item_path = /obj/item/bouquet/salvia
 	ui_category = "Miscellaneous"
-	triumph_cost_single = 10
+	triumph_cost_single = 1
 	triumph_cost_permanent = 25
 
 /datum/loadout_item/matricaria_bouquet
 	name = "Matricaria Bouquet"
 	item_path = /obj/item/bouquet/matricaria
 	ui_category = "Miscellaneous"
-	triumph_cost_single = 10
+	triumph_cost_single = 1
 	triumph_cost_permanent = 25
 
 /datum/loadout_item/calendula_bouquet
 	name = "Calendula Bouquet"
 	item_path = /obj/item/bouquet/calendula
 	ui_category = "Miscellaneous"
-	triumph_cost_single = 10
+	triumph_cost_single = 1
 	triumph_cost_permanent = 25
 
 /datum/loadout_item/keyring
@@ -52,7 +52,7 @@
 	name = "Unbound Servant Bell"
 	item_path = /obj/item/servant_bell
 	ui_category = "Miscellaneous"
-	triumph_cost_single = 50
+	triumph_cost_single = 1
 	triumph_cost_permanent = 150
 
 /datum/loadout_item/pocket_rous

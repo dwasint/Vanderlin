@@ -9,7 +9,7 @@
 	name = "Seafaring Pants"
 	item_path = /obj/item/clothing/pants/tights/sailor
 	ui_category = "Pants"
-	triumph_cost_single = 8
+	triumph_cost_single = 1
 	triumph_cost_permanent = 25
 
 /datum/loadout_item/skirt
