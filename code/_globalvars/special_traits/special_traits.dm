@@ -30,6 +30,7 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 
 /proc/try_apply_character_post_equipment(mob/living/carbon/human/character, client/player)
 	var/datum/job/job
+	apply_loadouts(character, player)
 	if(character.job)
 		job = SSjob.name_occupations[character.job]
 	if(!job)
@@ -41,7 +42,6 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 		return
 	// Apply the stuff if we have a job that has no adv classes
 	apply_character_post_equipment(character, player)
-	apply_loadouts(character, player)
 
 /proc/apply_character_post_equipment(mob/living/carbon/human/character, client/player)
 	if(!player)
