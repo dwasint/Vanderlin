@@ -1082,6 +1082,17 @@ export const TriumphShop = () => {
     [triumph_buy_categories],
   );
 
+  const [convertAmount, setConvertAmount] = useState('');
+  const [showConvert, setShowConvert] = useState(false);
+
+  const handleConvertToTicket = () => {
+    const n = parseInt(convertAmount, 10);
+    if (!n || n <= 0) return;
+    act('convert_triumphs_to_ticket', { amount: n });
+    setConvertAmount('');
+    setShowConvert(false);
+  };
+
   const handleBuySingle = (path: string) => act('buy_single', { path });
   const handleBuyPermanent = (path: string) => act('buy_permanent', { path });
   const handleEquip = (path: string) => act('equip_item', { path });
@@ -1137,10 +1148,65 @@ export const TriumphShop = () => {
                   </Box>
                 </Stack.Item>
                 <Stack.Item>
-                  <Box bold color="average">
-                    <Icon name="trophy" mr={1} />
-                    {triumph_balance.toLocaleString()} triumphs
-                  </Box>
+                  <Stack align="center">
+                    <Stack.Item>
+                      <Box bold color="average">
+                        <Icon name="trophy" mr={1} />
+                        {triumph_balance.toLocaleString()} triumphs
+                      </Box>
+                    </Stack.Item>
+                    <Stack.Item>
+                      <Button
+                        icon="ticket-alt"
+                        color="transparent"
+                        tooltip="Convert triumphs into a tradeable ticket"
+                        selected={showConvert}
+                        onClick={() => setShowConvert(!showConvert)}
+                      />
+                    </Stack.Item>
+                  </Stack>
+                  {showConvert && (
+                    <Stack align="center" mt={0.5}>
+                      <Stack.Item>
+                        <Input
+                          width="80px"
+                          placeholder="Amount"
+                          value={convertAmount}
+                          onChange={(v: string) => setConvertAmount(v)}
+                        />
+                      </Stack.Item>
+                      <Stack.Item>
+                        <Button
+                          icon="arrow-right"
+                          color={
+                            parseInt(convertAmount) > 0 &&
+                            parseInt(convertAmount) <= triumph_balance
+                              ? 'good'
+                              : 'bad'
+                          }
+                          disabled={
+                            !parseInt(convertAmount) ||
+                            parseInt(convertAmount) <= 0 ||
+                            parseInt(convertAmount) > triumph_balance
+                          }
+                          tooltip={`Convert ${convertAmount || '?'} triumphs into a tradeable ticket`}
+                          onClick={handleConvertToTicket}
+                        >
+                          Convert
+                        </Button>
+                      </Stack.Item>
+                      <Stack.Item>
+                        <Button
+                          icon="times"
+                          color="transparent"
+                          onClick={() => {
+                            setShowConvert(false);
+                            setConvertAmount('');
+                          }}
+                        />
+                      </Stack.Item>
+                    </Stack>
+                  )}
                 </Stack.Item>
               </Stack>
             </Section>

@@ -546,8 +546,41 @@
 			src.lookup_result_tickets = enriched
 			SStgui.update_uis(src)
 			return TRUE
+		if("convert_triumphs_to_ticket")
+			var/amount = text2num(params["amount"])
+			return handle_convert_triumphs_to_ticket(amount)
 
 	return FALSE
+
+/datum/tgui_triumph_shop/proc/handle_convert_triumphs_to_ticket(amount)
+	amount = round(text2num("[amount]")) // paranoia, never trust client
+	if(!amount || amount <= 0)
+		return FALSE
+	if(amount < TRIUMPH_TICKET_MIN_CONVERT)
+		to_chat(owner.mob, span_warning("You must convert at least [TRIUMPH_TICKET_MIN_CONVERT] triumphs at a time."))
+		return FALSE
+	var/balance = get_triumph_amount(owner.ckey)
+	if(balance < amount)
+		to_chat(owner.mob, span_warning("You only have [balance] triumphs, not [amount]."))
+		return FALSE
+
+	adjust_triumphs(owner, -amount, TRUE, "Triumph Shop: converted [amount] triumphs to ticket", FALSE, TRUE)
+
+	var/datum/ticket/triumph/t = new
+	t.ticket_id = generate_ticket_id()
+	t.name = "[amount] Triumph Ticket"
+	t.description = "Redeemable for [amount] triumphs."
+	t.triumph_amount = amount
+	t.granted_by = "Triumph Shop"
+	t.granted_at = "[time2text(world.realtime, "YYYY-MM-DD hh:mm:ss")]"
+	t.grant_reason = "Self-converted"
+	owner.prefs.owned_tickets += t
+	owner.prefs.save_preferences()
+	owner.prefs.save_character()
+
+	log_game("TRIUMPH SHOP: [owner.ckey] converted [amount] triumphs into a triumph ticket.")
+	to_chat(owner.mob, span_notice("Converted <b>[amount] triumphs</b> into a tradeable ticket!"))
+	return TRUE
 
 /datum/tgui_triumph_shop/proc/handle_buy_permanent(path_str)
 	var/datum/loadout_item/item = GLOB.loadout_items[text2path(path_str)]

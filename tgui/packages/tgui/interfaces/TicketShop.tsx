@@ -26,7 +26,6 @@ export type TicketEntry = {
   ui_color: string;          // hex accent
   ui_type_label: string;     // badge text
   ui_grant_summary: string;  // one-liner
-  item_name: string | null;
 };
 
 export type HistoryEntry = {
@@ -207,8 +206,8 @@ const BasketSummary = ({
       style={{
         display: 'inline-flex',
         alignItems: 'center',
-        background: `${TICKET_TYPE_COLOR[ticket.ticket_type] ?? '#9e9e9e'}22`,
-        border: `1px solid ${TICKET_TYPE_COLOR[ticket.ticket_type] ?? '#9e9e9e'}55`,
+        background: `${ticket.ui_color}22`,
+        border: `1px solid ${ticket.ui_color}55`,
         borderRadius: '12px',
         padding: '1px 6px',
         fontSize: '0.8em',

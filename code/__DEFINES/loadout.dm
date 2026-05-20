@@ -10,7 +10,9 @@
 #define TICKET_TYPE_SPECIAL "special"
 #define TICKET_TYPE_JOB_BOOST "job_boost"
 #define TICKET_TYPE_UNKNOWN "unknown"
+#define TICKET_TYPE_TRIUMPH "triumph"
 
 // Seconds the *sender* must wait before a cancel is processed
 // (prevents accepting+cancelling race that would dupe tickets)
 #define TICKET_TRADE_CANCEL_LOCK 5
+#define TRIUMPH_TICKET_MIN_CONVERT 10

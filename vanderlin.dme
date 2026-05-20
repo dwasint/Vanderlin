@@ -1621,6 +1621,7 @@
 #include "code\datums\shop\tickets\job_boost.dm"
 #include "code\datums\shop\tickets\loadout.dm"
 #include "code\datums\shop\tickets\special.dm"
+#include "code\datums\shop\tickets\triumph.dm"
 #include "code\datums\speech_modifiers\_speech_modifier.dm"
 #include "code\datums\speech_modifiers\lisp.dm"
 #include "code\datums\stamina_modifier\_stamina_modifier.dm"
