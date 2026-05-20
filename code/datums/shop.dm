@@ -72,6 +72,8 @@
 
 
 /proc/apply_loadouts(mob/living/carbon/human/character, client/player)
+	if(!player)
+		player = character.client //???
 	if(!player?.prefs)
 		return
 
