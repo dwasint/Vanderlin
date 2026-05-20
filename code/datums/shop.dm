@@ -107,7 +107,9 @@
 
 		slot++
 
-	player.prefs.single_round_loadout = list()
+	if(!player.is_donator())
+		player.prefs.single_round_loadout = list()
+		player.prefs.single_round_loadout_colors = list()
 	player.prefs.single_round_loadout_colors = list()
 	player.prefs.save_preferences()
 	player.prefs.save_character()
@@ -239,6 +241,7 @@
 			"no_rent" = !!(item.loadout_flags & LOADOUT_FLAG_NO_RENT),
 			"no_equip" = !!(item.loadout_flags & LOADOUT_FLAG_NO_EQUIP),
 			"patreon_locked" = !!(item.loadout_flags & LOADOUT_FLAG_PATREON_LOCKED),
+			"donator_free" = !(item.loadout_flags & LOADOUT_FLAG_NO_DONATOR_FREE),
 			"category" = cat
 		))
 	data["categories"] = categories
@@ -472,17 +475,19 @@
 	if(used >= 3)
 		to_chat(owner.mob, span_warning("All 3 loadout slots are in use."))
 		return FALSE
-	if(item.triumph_cost_single > 0)
+	if(item.triumph_cost_single > 0 && !(owner.is_donator() && !(item.loadout_flags & LOADOUT_FLAG_NO_DONATOR_FREE)))
 		var/balance = get_triumph_amount(owner.ckey)
 		if(balance < item.triumph_cost_single)
 			to_chat(owner.mob, span_warning("You need [item.triumph_cost_single] triumphs to rent [item.name]. You have [balance]."))
 			return FALSE
 		adjust_triumphs(owner, -item.triumph_cost_single, TRUE, "Triumph Shop: single-round rent [item.name]", FALSE, TRUE)
+
+	var/donator_free_use = owner.is_donator() && !(item.loadout_flags & LOADOUT_FLAG_NO_DONATOR_FREE)
 	owner.prefs.single_round_loadout += path_str
 	owner.prefs.save_preferences()
 	owner.prefs.save_character()
-	log_game("TRIUMPH SHOP: [owner.ckey] rented [path_str] for one round ([item.triumph_cost_single] triumphs).")
-	to_chat(owner.mob, span_notice("Rented [item.name] for this round."))
+	log_game("TRIUMPH SHOP: [owner.ckey] [donator_free_use ? "trialing" : "rented"] [path_str] [donator_free_use ? "(free, donator)" : "for one round ([item.triumph_cost_single] triumphs)"].")
+	to_chat(owner.mob, span_notice("[donator_free_use ? "Trying out [item.name] for this round (Patreon perk, no cost)." : "Rented [item.name] for this round."]"))
 	return TRUE
 
 /datum/tgui_triumph_shop/proc/handle_equip(path_str)
@@ -513,9 +518,9 @@
 		owner.prefs.single_round_loadout -= path_str
 		owner.prefs.save_preferences()
 		owner.prefs.save_character()
-		// Refund the single-round cost
 		var/datum/loadout_item/item = GLOB.loadout_items[text2path(path_str)]
-		if(item?.triumph_cost_single > 0)
+		var/donator_free_use = owner.is_donator() && !(item?.loadout_flags & LOADOUT_FLAG_NO_DONATOR_FREE)
+		if(!donator_free_use && item?.triumph_cost_single > 0)
 			adjust_triumphs(owner, item.triumph_cost_single, TRUE, "Triumph Shop: refund rent [item.name]", FALSE, TRUE)
 		return TRUE
 	return FALSE

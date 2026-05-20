@@ -4,3 +4,4 @@
 #define LOADOUT_FLAG_NO_EQUIP (1<<1) // Cannot be manually equipped (granted automatically on spawn, cosmetic/species grants)
 #define LOADOUT_FLAG_PATREON_LOCKED (1<<2) // Requires active patreon/donator status to use
 #define LOADOUT_FLAG_ACHIEVEMENT_LOCKED (1<<3) // requires required_award to be satisfied (replaces checking required_award != null implicitly)
+#define LOADOUT_FLAG_NO_DONATOR_FREE (1<<4)

@@ -41,6 +41,7 @@ type LoadoutEntry = {
   no_rent: BooleanLike;
   no_equip: BooleanLike;
   patreon_locked: BooleanLike;
+  donator_free: BooleanLike;
 };
 
 type EquippedSlot = {
@@ -303,6 +304,7 @@ const LoadoutItemRow = ({
   onEquip,
   onUnequip,
   slotsUsed,
+  donator,
 }: {
   item: LoadoutEntry;
   onBuySingle: (path: string) => void;
@@ -310,6 +312,7 @@ const LoadoutItemRow = ({
   onEquip: (path: string) => void;
   onUnequip: (path: string) => void;
   slotsUsed: number;
+  donator: BooleanLike;
 }) => {
   const slotsFull = slotsUsed >= 3;
   const owned = !!item.owned;
@@ -322,6 +325,7 @@ const LoadoutItemRow = ({
   const noRent = !!item.no_rent;
   const noEquip = !!item.no_equip;
   const patreonLock = !!item.patreon_locked;
+  const isDonatorFree = !!donator && !!item.donator_free;
 
   return (
     <Stack align="center" mb={1}>
@@ -381,36 +385,38 @@ const LoadoutItemRow = ({
             </Button>
           )}
           {!owned &&
-            !rented &&
-            !awardLocked &&
-            !patreonLock &&
-            !noRent &&
-            !noEquip && (
-              <Button
-                icon="clock"
-                disabled={slotsFull || (!free && !canSingle)}
-                tooltip={
-                  slotsFull
-                    ? 'All slots full'
+          !rented &&
+          !awardLocked &&
+          !patreonLock &&
+          !noRent &&
+          !noEquip && (
+            <Button
+              icon={isDonatorFree ? 'flask' : 'clock'}
+              disabled={slotsFull || (!isDonatorFree && !free && !canSingle)}
+              tooltip={
+                slotsFull
+                  ? 'All slots full'
+                  : isDonatorFree
+                    ? 'Try this item for one round for free (Patreon perk)'
                     : free
                       ? 'Free, use for one round'
                       : canSingle
                         ? `Rent for ${item.cost_single} triumphs (one round)`
                         : `Need ${item.cost_single} triumphs`
-                }
-                onClick={() => onBuySingle(item.path)}
-              >
-                {free ? 'Use' : `Rent (${item.cost_single})`}
-              </Button>
-            )}
+              }
+              onClick={() => onBuySingle(item.path)}
+            >
+              {isDonatorFree ? 'Try' : free ? 'Use' : `Rent (${item.cost_single})`}
+            </Button>
+          )}
           {rented && !noEquip && (
             <Button
               icon="undo"
               color="average"
-              tooltip="Cancel rental and get a refund"
+              tooltip={isDonatorFree ? 'Remove trial item (no refund)' : 'Cancel rental and get a refund'}
               onClick={() => onUnequip(item.path)}
             >
-              Cancel
+              {isDonatorFree ? 'Remove' : 'Cancel'}
             </Button>
           )}
           {!owned && !awardLocked && !patreonLock && item.cost_permanent > 0 && (
@@ -457,6 +463,7 @@ const LoadoutCategoryView = ({
   onUnequip,
   slotsUsed,
   search,
+  donator,
 }: {
   items: LoadoutEntry[];
   onBuySingle: (path: string) => void;
@@ -465,6 +472,7 @@ const LoadoutCategoryView = ({
   onUnequip: (path: string) => void;
   slotsUsed: number;
   search: string;
+  donator: BooleanLike;
 }) => {
   const filtered = useMemo(() => {
     if (!search) return items;
@@ -495,6 +503,7 @@ const LoadoutCategoryView = ({
           onEquip={onEquip}
           onUnequip={onUnequip}
           slotsUsed={slotsUsed}
+          donator={donator}
         />
       ))}
     </Box>
@@ -506,11 +515,13 @@ const CollectionView = ({
   onEquip,
   onUnequip,
   slotsUsed,
+  donator,
 }: {
   categories: Record<string, LoadoutEntry[]>;
   onEquip: (path: string) => void;
   onUnequip: (path: string) => void;
   slotsUsed: number;
+  donator: BooleanLike;
 }) => {
   const items = useMemo(
     () =>
@@ -529,7 +540,7 @@ const CollectionView = ({
     );
   }
 
-  return (
+ return (
     <Box>
       {items.map((item) => (
         <LoadoutItemRow
@@ -540,6 +551,7 @@ const CollectionView = ({
           onEquip={onEquip}
           onUnequip={onUnequip}
           slotsUsed={slotsUsed}
+          donator={donator}
         />
       ))}
     </Box>
@@ -1287,6 +1299,7 @@ export const TriumphShop = () => {
                         onUnequip={handleUnequip}
                         slotsUsed={slotsUsed}
                         search={search}
+                        donator={donator}
                       />
                     ) : activeTab === 'Collection' ? (
                       <CollectionView
@@ -1294,6 +1307,7 @@ export const TriumphShop = () => {
                         onEquip={handleEquip}
                         onUnequip={handleUnequip}
                         slotsUsed={slotsUsed}
+                        donator={donator}
                       />
                     ) : (
                       <LoadoutCategoryView
@@ -1303,6 +1317,7 @@ export const TriumphShop = () => {
                         onEquip={handleEquip}
                         onUnequip={handleUnequip}
                         slotsUsed={slotsUsed}
+                        donator={donator}
                         search=""
                       />
                     )}
