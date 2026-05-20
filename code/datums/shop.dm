@@ -75,6 +75,7 @@
 	if(!player)
 		player = character.client //???
 	if(!player?.prefs)
+		stack_trace("No Client passed into apply_loadouts, [character]. This means something is funky")
 		return
 
 	var/slot = 1
