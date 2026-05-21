@@ -20,4 +20,9 @@
 // These never enter the board pool so steward_validate is irrelevant,
 // but override validate() to auto-complete when check_completion() passes.
 /datum/quest/custom/harlequinn_objective/validate(mob/steward, turf/input_point)
-	return check_completion()
+	if(check_completion())
+		mark_complete()
+		return TRUE
+	else
+		quest_scroll?.update_quest_text()
+
