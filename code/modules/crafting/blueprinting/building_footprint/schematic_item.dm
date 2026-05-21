@@ -9,6 +9,8 @@
 	var/datum/map_template/building_template = /datum/map_template/vanderlin_house
 	/// The spell granted while held
 	var/datum/action/cooldown/spell/place_blueprint/held_spell
+	///type of skill added
+	var/skill = /datum/action/cooldown/spell/place_blueprint
 
 /obj/item/building_schematic/Destroy()
 	QDEL_NULL(held_spell)
@@ -22,7 +24,7 @@
 		return
 	if(!building_template)
 		return
-	held_spell = new /datum/action/cooldown/spell/place_blueprint(user)
+	held_spell = new skill(user)
 	held_spell.schematic = src
 	held_spell.Grant(user)
 
@@ -88,6 +90,8 @@
 	var/obj/effect/building_outline/ghost_effect
 	/// The turf the ghost is currently on
 	var/turf/ghost_turf
+	///do we care about the output of the list ued on children.
+	var/cares_about_placement = FALSE
 
 /datum/action/cooldown/spell/place_blueprint/Destroy()
 	remove_ghost()
@@ -169,4 +173,5 @@
 	// Deactivate first so the ghost vanishes cleanly before blueprints appear
 	unset_click_ability(owner, refund_cooldown = FALSE)
 
-	preview.place_blueprints(T, owner)
+	if(!cares_about_placement)
+		preview.place_blueprints(T, owner)

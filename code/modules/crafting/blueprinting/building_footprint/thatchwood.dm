@@ -1,28 +1,15 @@
 /obj/item/building_schematic/thatchwood_hall
 	name = "town hall schematic"
 	desc = "A rolled construction schematic for Thatchwood's new town hall."
-
+	skill = /datum/action/cooldown/spell/place_blueprint/thatchwood_hall
 	/// Weakref to the driver so placement can report back
 	var/datum/weakref/driver_ref
 
 /obj/item/building_schematic/thatchwood_hall/proc/set_driver(datum/objective_quest_driver/town_objective/area/thatchwood/driver)
 	driver_ref = WEAKREF(driver)
 
-// Override equipped to use our spell subtype instead of the base one
-/obj/item/building_schematic/thatchwood_hall/equipped(mob/user, slot)
-	. = ..()
-	if(!(slot & ITEM_SLOT_HANDS))
-		return
-	if(held_spell)
-		return
-	if(!building_template)
-		return
-	held_spell = new /datum/action/cooldown/spell/place_blueprint/thatchwood_hall(user)
-	held_spell.schematic = src
-	held_spell.Grant(user)
-
-
 /datum/action/cooldown/spell/place_blueprint/thatchwood_hall
+	cares_about_placement = TRUE
 
 /datum/action/cooldown/spell/place_blueprint/thatchwood_hall/is_valid_target(atom/cast_on)
 	. = ..()
@@ -49,15 +36,7 @@
 	return FALSE
 
 /datum/action/cooldown/spell/place_blueprint/thatchwood_hall/cast(atom/cast_on)
-	var/turf/T = get_turf(cast_on)
-	if(!T)
-		return
-
-	var/datum/building_preview/preview = schematic?.get_or_build_preview()
-	if(!preview)
-		return
-
-	unset_click_ability(owner, refund_cooldown = FALSE)
+	. = ..()
 
 	var/list/placed = preview.place_blueprints(T, owner)
 	if(!length(placed))
