@@ -166,12 +166,12 @@
 	var/turf/T = get_turf(cast_on)
 	if(!T)
 		return
-	var/datum/building_preview/preview = schematic?.get_or_build_preview()
-	if(!preview)
-		return
-
-	// Deactivate first so the ghost vanishes cleanly before blueprints appear
-	unset_click_ability(owner, refund_cooldown = FALSE)
-
 	if(!cares_about_placement)
+		var/datum/building_preview/preview = schematic?.get_or_build_preview()
+		if(!preview)
+			return
+
+		// Deactivate first so the ghost vanishes cleanly before blueprints appear
+		unset_click_ability(owner, refund_cooldown = FALSE)
+
 		preview.place_blueprints(T, owner)

@@ -23,7 +23,7 @@
 
 /datum/quest/objective/thatchwood/build_hall/register_signals(mob/user)
 	. = ..()
-	var/datum/objective_quest_driver/town_objective/area/thatchwood/driver = driver_ref?.resolve()
+	var/datum/objective_quest_driver/town_objective/area/thatchwood/driver = SSobjectivequests.get_driver(/datum/objective_quest_driver/town_objective/area/thatchwood)
 	if(!driver)
 		return
 
@@ -49,7 +49,7 @@
 	my_schematic = null
 
 /datum/quest/objective/thatchwood/build_hall/check_completion()
-	var/datum/objective_quest_driver/town_objective/area/thatchwood/driver = driver_ref?.resolve()
+	var/datum/objective_quest_driver/town_objective/area/thatchwood/driver = SSobjectivequests.get_driver(/datum/objective_quest_driver/town_objective/area/thatchwood)
 	if(!driver)
 		return FALSE
 	return driver.town_hall_complete

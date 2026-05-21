@@ -17,7 +17,7 @@
 		return FALSE
 
 	var/obj/item/building_schematic/thatchwood_hall/S = schematic
-	var/datum/objective_quest_driver/town_objective/area/thatchwood/driver = S.driver_ref?.resolve()
+	var/datum/objective_quest_driver/town_objective/area/thatchwood/driver = SSobjectivequests.get_driver(/datum/objective_quest_driver/town_objective/area/thatchwood)
 	if(!driver)
 		owner.balloon_alert(owner, "Quest expired!")
 		return FALSE
@@ -36,14 +36,24 @@
 	return FALSE
 
 /datum/action/cooldown/spell/place_blueprint/thatchwood_hall/cast(atom/cast_on)
+	var/datum/objective_quest_driver/town_objective/area/thatchwood/driver = SSobjectivequests.get_driver(/datum/objective_quest_driver/town_objective/area/thatchwood)
+	var/turf/T = get_turf(cast_on)
+	if(!is_type_in_list(get_area(T), driver.area_types))
+		return
 	. = ..()
+
+	var/datum/building_preview/preview = schematic?.get_or_build_preview()
+	if(!preview)
+		return
+
+	// Deactivate first so the ghost vanishes cleanly before blueprints appear
+	unset_click_ability(owner, refund_cooldown = FALSE)
 
 	var/list/placed = preview.place_blueprints(T, owner)
 	if(!length(placed))
 		return
 
 	var/obj/item/building_schematic/thatchwood_hall/S = schematic
-	var/datum/objective_quest_driver/town_objective/area/thatchwood/driver = S.driver_ref?.resolve()
 	if(!driver)
 		return
 
