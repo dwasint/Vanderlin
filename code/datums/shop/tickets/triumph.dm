@@ -14,7 +14,7 @@
 /datum/ticket/triumph/use(client/user)
 	if(!triumph_amount || triumph_amount <= 0)
 		return FALSE
-	adjust_triumphs(user, triumph_amount, FALSE, "Ticket Used")
+	adjust_triumphs(user, triumph_amount, FALSE, "Ticket Used", override_bonus = TRUE)
 	return TRUE
 
 /datum/ticket/triumph/enrich_ui_entry(list/entry)
