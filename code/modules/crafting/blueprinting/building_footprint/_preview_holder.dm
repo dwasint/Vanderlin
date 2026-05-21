@@ -143,8 +143,9 @@
 /datum/building_preview/proc/place_blueprints(turf/origin, mob/placer)
 	if(!length(blueprint_slots))
 		to_chat(placer, span_warning("No valid blueprint positions found in this schematic."))
-		return FALSE
+		return null
 
+	var/list/placed = list()
 	for(var/datum/blueprint_slot/slot in blueprint_slots)
 		var/target_z = origin.z + slot.z_offset
 		if(target_z < 1 || target_z > world.maxz)
@@ -166,6 +167,7 @@
 		BP.stored_pixel_y = slot.pixel_y
 		BP.blueprint_dir = slot.recipe.supports_directions ? placer.dir : slot.dir
 		BP.setup_blueprint()
+		placed += BP
 
-	to_chat(placer, span_notice("You roll out the schematic, marking [length(blueprint_slots)] construction point[length(blueprint_slots) != 1 ? "s" : ""]."))
-	return TRUE
+	to_chat(placer, span_notice("You roll out the schematic, marking [length(placed)] construction point[length(placed) != 1 ? "s" : ""]."))
+	return placed
