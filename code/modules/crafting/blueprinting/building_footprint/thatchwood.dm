@@ -16,7 +16,6 @@
 	if(!.)
 		return FALSE
 
-	var/obj/item/building_schematic/thatchwood_hall/S = schematic
 	var/datum/objective_quest_driver/town_objective/area/thatchwood/driver = SSobjectivequests.get_driver(/datum/objective_quest_driver/town_objective/area/thatchwood)
 	if(!driver)
 		owner.balloon_alert(owner, "Quest expired!")
@@ -53,7 +52,6 @@
 	if(!length(placed))
 		return
 
-	var/obj/item/building_schematic/thatchwood_hall/S = schematic
 	if(!driver)
 		return
 
