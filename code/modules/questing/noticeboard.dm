@@ -340,6 +340,9 @@
 	say("Quest accepted! Your enchanted scroll has been prepared, [user.real_name].")
 
 /obj/structure/notice_board/proc/process_turnin(mob/user, obj/item/paper/scroll/quest/scroll)
+	if(scroll.assigned_quest?.self_validating)
+		var/datum/quest/custom/quest = scroll.assigned_quest
+		quest.validate(user, input_point)
 	if(!scroll.assigned_quest?.complete)
 		say("This contract isn't complete yet, [user.real_name].")
 		return

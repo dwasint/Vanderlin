@@ -9,6 +9,7 @@
 	var/reward_amount = 0
 	var/deposit_amount = 0
 	var/complete = FALSE
+	var/self_validating = FALSE
 
 	/// world.time at which this quest expires and gets pruned. 0 = never expire.
 	var/expiry_time = 0

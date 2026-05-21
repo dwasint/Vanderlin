@@ -3,6 +3,7 @@
 	issue_label = ""
 	custom_quest_flags = CUSTOM_QUEST_HARLEQUINN // Never on the board, only for harlequinn use
 	quest_difficulty = QUEST_DIFFICULTY_HARD
+	self_validating = TRUE
 	/// The harlequinn antag datum that owns this objective
 	var/datum/weakref/owning_harlequinn
 
