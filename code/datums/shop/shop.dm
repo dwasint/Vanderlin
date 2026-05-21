@@ -167,6 +167,7 @@
 	data["triumph_balance"] = get_triumph_amount(owner.ckey)
 	data["cost_random_special"] = owner.is_donator() ? 0 : TRIUMPH_COST_RANDOM_SPECIAL
 	data["donator"] = owner.is_donator()
+	data["online_ckeys"] = GLOB.key_list
 
 	// Pending special for next spawn
 	var/pending = owner.prefs.next_special_trait

@@ -433,6 +433,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 		return null
 
 	GLOB.clients += src
+	GLOB.key_list += ckey
 	GLOB.keys_by_ckey[ckey] = key
 	GLOB.directory[ckey] = src
 
@@ -770,6 +771,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 		GLOB.admins -= src
 
 	GLOB.clients -= src
+	GLOB.key_list -= ckey
 	GLOB.directory -= ckey
 
 	QDEL_NULL(tgui_panel)
