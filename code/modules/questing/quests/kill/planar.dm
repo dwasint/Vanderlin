@@ -23,7 +23,9 @@
 /datum/quest/kill/planar/generate(obj/effect/landmark/quest_spawner/landmark)
 	chosen_faction_pool = pick(infernal_mobs, fae_mobs, elemental_mobs)
 	mob_types_to_spawn = chosen_faction_pool
-	return ..()
+	. = ..()
+	if(.)
+		spawn_kill_mobs(landmark)
 
 /datum/quest/kill/planar/proc/get_faction_name()
 	if(chosen_faction_pool == infernal_mobs)
