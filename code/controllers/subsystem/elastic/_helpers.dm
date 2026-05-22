@@ -43,5 +43,5 @@
 	add_abstract_elastic_data(ELASCAT_MEDICAL, ELASDATA_LUX_REVIVE, 0)
 	add_abstract_elastic_data(ELASCAT_MEDICAL, ELASDATA_LUX_EXTRACT, 0)
 	add_abstract_elastic_data(ELASCAT_MEDICAL, ELASDATA_LUX_EXTRACT_PLAYER, 0)
-	add_abstract_elastic_data(ELASCAT_ECONOMY, ELASDATA_TRIUMP_SPENT, 0)
-	add_abstract_elastic_data(ELASCAT_ECONOMY, ELASDATA_TRIUMP_AWARDED, 0)
+	add_abstract_elastic_data(ELASCAT_ECONOMY, ELASDATA_TRIUMPH_SPENT, 0)
+	add_abstract_elastic_data(ELASCAT_ECONOMY, ELASDATA_TRIUMPH_AWARDED, 0)
