@@ -30,8 +30,8 @@
     return TRUE
 
 /proc/init_abstract_zeros()
-    add_abstract_elastic_data(ELASCAT_COMBAT,  ELASDATA_FIGHT_REVIVES,    0)
-    add_abstract_elastic_data(ELASCAT_COMBAT,  ELASDATA_COIN_REVIVES,     0)
+    add_abstract_elastic_data(ELASCAT_MEDICAL,  ELASDATA_FIGHT_REVIVES,    0)
+    add_abstract_elastic_data(ELASCAT_MEDICAL,  ELASDATA_COIN_REVIVES,     0)
     add_abstract_elastic_data(ELASCAT_COMBAT,  ELASDATA_EATEN_BODIES,     0)
     add_abstract_elastic_data(ELASCAT_COMBAT,  ELASDATA_DECAPITATIONS,    0)
     add_abstract_elastic_data(ELASCAT_ECONOMY, ELASDATA_MAMMONS_GAINED,   0)
