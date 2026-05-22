@@ -267,7 +267,6 @@
 			SStreasury.give_money_treasury(tax_amt, "quest completion tax - [src.name]")
 			record_featured_stat(FEATURED_STATS_TAX_PAYERS, user, tax_amt)
 			record_round_statistic(STATS_TAXES_COLLECTED, tax_amt)
-			add_abstract_elastic_data(ELASCAT_ECONOMY, ELASDATA_TAXES_COLLECTED, tax_amt)
 
 	cash_in(user, round(reward), original_reward, tax_amt)
 
