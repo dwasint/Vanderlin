@@ -700,6 +700,8 @@
 	owner.prefs.next_special_trait = rolled
 	owner.prefs.save_preferences()
 	owner.prefs.save_character()
+	print_special_text(owner, owner.prefs.next_special_trait)
+	owner.mob.playsound_local(owner.mob, 'sound/misc/alert.ogg', 100)
 	var/datum/special_trait/trait = SPECIAL_TRAIT(rolled)
 	log_game("TRIUMPH SHOP: [owner.ckey] rolled random special [rolled] ([trait?.name]) for [TRIUMPH_COST_RANDOM_SPECIAL] triumphs.")
 	to_chat(owner.mob, span_notice("You rolled: <b>[trait?.name]</b>! Applies on your next spawn."))
@@ -733,6 +735,8 @@
 	adjust_triumphs(owner, -cost, TRUE, "Triumph Shop: specific special [path_str]", FALSE, TRUE)
 	owner.prefs.next_special_trait = trait_type
 	owner.prefs.save_preferences()
+	print_special_text(owner, owner.prefs.next_special_trait)
+	owner.mob.playsound_local(owner.mob, 'sound/misc/alert.ogg', 100)
 	log_game("TRIUMPH SHOP: [owner.ckey] purchased specific special [path_str] ([trait?.name]) for [cost] triumphs.")
 	to_chat(owner.mob, span_notice("Selected: <b>[trait?.name]</b>! Applies on your next spawn."))
 	return TRUE
