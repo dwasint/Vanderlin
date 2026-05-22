@@ -15,6 +15,8 @@
 	#define ELASCAT_BALANCE "balance"
 	#define ELASCAT_MEDICAL "medical"
 	#define ELASCAT_ENCHANTING "enchanting"
+	#define ELASCAT_HEARTBEAT "heartbeat"
+	#define ELASCAT_ROUND "round"
 
 /* Abstract Data */
 	/* Combat */
