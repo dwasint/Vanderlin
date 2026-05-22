@@ -11,6 +11,8 @@
 	var/list/assoc_list_data = list()
 	/// Abstract (cumulative numeric) data, keyed by ELASDATA_ defines
 	var/list/abstract_information = list()
+	///should we keep things dated? (send on loop if its being triggered once)
+	var/should_keep_dated = FALSE
 
 /datum/elastic_shard/proc/should_fire()
 	return (REALTIMEOFDAY - last_fired) >= upload_frequency
@@ -27,7 +29,7 @@
 	reset()
 
 /datum/elastic_shard/proc/get_compiled_data(datum/controller/subsystem/elastic/SS)
-	if(!length(assoc_list_data) && !length(abstract_information))
+	if(!length(assoc_list_data) && (should_keep_dated && !length(abstract_information)))
 		return null
 	var/list/compiled = list()
 	compiled["@timestamp"] = time_stamp_metric()
