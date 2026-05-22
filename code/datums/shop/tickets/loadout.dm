@@ -1,12 +1,15 @@
 
 /datum/ticket/loadout
 	ticket_type = TICKET_TYPE_LOADOUT
-	var/loadout_item_path
+	var/datum/loadout_item/loadout_item_path
 
 /datum/ticket/loadout/to_list()
 	var/list/L = ..()
 	L["loadout_item_path"] = loadout_item_path
 	return L
+
+/datum/ticket/loadout/details()
+	return ", [initial(loadout_item_path.name)]"
 
 /datum/ticket/loadout/from_list(list/L)
 	..()
@@ -27,14 +30,11 @@
 	return TRUE
 
 /datum/ticket/loadout/enrich_ui_entry(list/entry)
-	var/datum/loadout_item/item = loadout_item_path \
-		? GLOB.loadout_items[text2path(loadout_item_path)] \
-		: null
-	entry["ui_icon"] = item ? item.ui_icon : null
-	entry["ui_icon_state"] = item ? item.ui_icon_state : null
-	entry["item_name"] = item ? item.name : null
+	entry["ui_icon"] = loadout_item_path ? initial(loadout_item_path.ui_icon) : null
+	entry["ui_icon_state"] = loadout_item_path ? initial(loadout_item_path.ui_icon_state) : null
+	entry["item_name"] = loadout_item_path ? initial(loadout_item_path.name) : null
 	entry["ui_fa_icon"] = "box-open"
 	entry["ui_color"] = "#2196f3"
 	entry["ui_type_label"] = "Loadout Item"
-	entry["ui_grant_summary"] = item ? "Grants: [item.name]" : "Grants a loadout item"
+	entry["ui_grant_summary"] = loadout_item_path ? "Grants: [initial(loadout_item_path.name)]" : "Grants a loadout item"
 

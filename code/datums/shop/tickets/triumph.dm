@@ -7,6 +7,9 @@
 	L["triumph_amount"] = triumph_amount
 	return L
 
+/datum/ticket/triumph/details()
+	return ", [triumph_amount] triumphs"
+
 /datum/ticket/triumph/from_list(list/L)
 	..()
 	triumph_amount = L["triumph_amount"]

@@ -1618,6 +1618,7 @@
 #include "code\datums\shop\tickets\__trade.dm"
 #include "code\datums\shop\tickets\_base.dm"
 #include "code\datums\shop\tickets\_preference_save.dm"
+#include "code\datums\shop\tickets\admin_panel.dm"
 #include "code\datums\shop\tickets\job_boost.dm"
 #include "code\datums\shop\tickets\loadout.dm"
 #include "code\datums\shop\tickets\special.dm"

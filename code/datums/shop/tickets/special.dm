@@ -8,6 +8,9 @@
 	L["special_trait_path"] = special_trait_path
 	return L
 
+/datum/ticket/special/details()
+	return ", [initial(special_trait_path.name)]"
+
 /datum/ticket/special/from_list(list/L)
 	..()
 	special_trait_path = L["special_trait_path"]

@@ -337,7 +337,6 @@
 		))
 	data["specials"] = specials_list
 
-	// --- Tickets ---
 	var/list/tickets_list = list()
 	for(var/datum/ticket/t in owner.prefs.owned_tickets)
 		var/list/tdata = t.to_list()
@@ -346,7 +345,6 @@
 	data["owned_tickets"] = tickets_list
 	data["ticket_history"] = owner.prefs.ticket_history
 
-	// --- Trade data via manager ---
 	var/list/locked_offering_ids = list()
 	var/list/incoming_trades = list()
 	var/list/outgoing_trades = list()
@@ -577,6 +575,14 @@
 	t.granted_at = "[time2text(world.realtime, "YYYY-MM-DD hh:mm:ss")]"
 	t.grant_reason = "Self-converted"
 	owner.prefs.owned_tickets += t
+	owner.prefs.ticket_history += list(list(
+		"event" = "converted",
+		"description" = "granted [t.name] ([t.ticket_type][t.details()]) by Triumph Shop (self-converted).",
+		"timestamp" = time2text(world.realtime, "YYYY-MM-DD hh:mm:ss"),
+		"ticket_id" = t.ticket_id,
+		"name" = t.name,
+		"type" = t.ticket_type,
+	))
 	owner.prefs.save_preferences()
 	owner.prefs.save_character()
 

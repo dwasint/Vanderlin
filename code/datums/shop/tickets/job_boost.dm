@@ -9,6 +9,10 @@
 	L["boost_typepath"] = ispath(boost_typepath) ? "[boost_typepath]" : null
 	return L
 
+/datum/ticket/job_boost/details()
+	var/datum/job_priority_boost/boost = boost_typepath
+	return ", [job_boost_job] - [initial(boost.name)]"
+
 /datum/ticket/job_boost/from_list(list/L)
 	..()
 	job_boost_job = L["job_boost_job"]

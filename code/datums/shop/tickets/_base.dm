@@ -33,6 +33,10 @@
 		"grant_reason" = grant_reason,
 	)
 
+///this is a string of details we pass back for history purposes
+/datum/ticket/proc/details()
+	return
+
 // Reconstruct from a savefile assoc-list.
 // The manager calls the right subtype constructor before calling
 // this, so subtypes only need to ..() and then pull their keys.

@@ -27,90 +27,6 @@
 			return t
 	return null
 
-
-/client/proc/test_ticket()
-	admin_grant_ticket(ckey, TICKET_TYPE_SPECIAL, "Test", "testing desc.!", \
-		special_trait_path = /datum/special_trait/black_biar)
-	// Minor boost for a specific job
-	admin_grant_ticket(ckey, TICKET_TYPE_JOB_BOOST, "Artificer Boost", "Priority artificer slot",
-		job_boost_job = JOB_ARTIFICER,
-		job_boost_typepath = /datum/job_priority_boost/minor)
-
-	// Premium boost for Monarch
-	admin_grant_ticket(ckey, TICKET_TYPE_JOB_BOOST, "Monarch Fast Track", "High priority Monarch",
-		job_boost_job = JOB_MONARCH,
-		job_boost_typepath = /datum/job_priority_boost/premium)
-
-	// Automaton boost — applicable_jobs is already baked into the subtype, job_boost_job is just display
-	admin_grant_ticket(ckey, TICKET_TYPE_JOB_BOOST, "Automaton Vessel Boost", "15 uses of automaton priority",
-		job_boost_job = WHITELIST_AUTOMATON,
-		job_boost_typepath = /datum/job_priority_boost/automaton_15)
-
-	// Timed boost
-	admin_grant_ticket(ckey, TICKET_TYPE_JOB_BOOST, "Weekend Boost", "48hr priority",
-		job_boost_typepath = /datum/job_priority_boost/timed)
-
-/// Grant a ticket to a player by client reference.
-/// Pass keyword args matching the target subtype's payload field.
-/proc/admin_grant_ticket(
-	target_ckey,
-	ticket_type,
-	name,
-	description,
-	granted_by = "server",
-	grant_reason = "",
-	loadout_item_path = null,
-	special_trait_path = null,
-	job_boost_job = null,
-	job_boost_typepath = /datum/job_priority_boost/minor,
-)
-	var/subtype = ticket_type_to_path(ticket_type)
-	var/datum/ticket/t = new subtype()
-	t.ticket_id = generate_ticket_id()
-	t.name = name
-	t.description = description
-	t.granted_by = granted_by
-	t.granted_at = time2text(world.realtime, "YYYY-MM-DD hh:mm:ss")
-	t.grant_reason = grant_reason
-
-	// Assign payload to the correct subtype field
-	switch(ticket_type)
-		if(TICKET_TYPE_LOADOUT)
-			var/datum/ticket/loadout/lt = t
-			lt.loadout_item_path = loadout_item_path
-		if(TICKET_TYPE_SPECIAL)
-			var/datum/ticket/special/st = t
-			st.special_trait_path = special_trait_path
-		if(TICKET_TYPE_JOB_BOOST)
-			var/datum/ticket/job_boost/jt = t
-			jt.job_boost_job = job_boost_job
-			if(ispath(job_boost_typepath, /datum/job_priority_boost))
-				jt.boost_typepath = job_boost_typepath
-
-	// Online grant
-	var/client/C = GLOB.directory[target_ckey]
-	if(C?.prefs)
-		C.prefs.owned_tickets += t
-		C.prefs.save_character()
-		to_chat(C, span_notice("You have received a ticket: <b>[name]</b>!"))
-		log_game("TICKETS: [granted_by] granted '[name]' ([ticket_type]) to [target_ckey] (online). Reason: [grant_reason]")
-		return TRUE
-
-	// Offline grant — write directly to savefile
-	var/target_file = file("data/player_saves/[target_ckey[1]]/[target_ckey]/preferences.sav")
-	if(!fexists(target_file))
-		log_game("TICKETS: Could not grant '[name]' to [target_ckey] — no savefile.")
-		return FALSE
-	var/savefile/S = new(target_file)
-	var/list/raw
-	S["owned_tickets"] >> raw
-	if(!islist(raw))
-		raw = list()
-	raw += list(t.to_list())
-	S["owned_tickets"] << raw
-	log_game("TICKETS: [granted_by] granted '[name]' ([ticket_type]) to [target_ckey] (offline). Reason: [grant_reason]")
-	return TRUE
-
 /proc/use_ticket(client/user, datum/ticket/t)
 	if(!user?.prefs || !(t in user.prefs.owned_tickets))
 		return FALSE
@@ -119,7 +35,8 @@
 		return FALSE
 
 	user.prefs.ticket_history += list(list(
-		"event" = "used [t.name], [t.ticket_type]",
+		"event" = "used",
+		"description" = "used [t.name], [t.ticket_type][t.details()]",
 		"timestamp" = time2text(world.realtime, "YYYY-MM-DD hh:mm:ss"),
 		"ticket_id" = t.ticket_id,
 		"name" = t.name,

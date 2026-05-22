@@ -29,7 +29,8 @@ export type TicketEntry = {
 };
 
 export type HistoryEntry = {
-  event: 'used' | 'traded_away' | 'traded_received';
+  event: 'used' | 'traded_away' | 'traded_received' | 'granted' | 'converted';
+  description: string;
   timestamp: string;
   // may be comma-joined list of ids for basket trades
   ticket_ids: string;
@@ -729,16 +730,22 @@ const EVENT_ICON: Record<string, string> = {
   used: 'play',
   traded_away: 'arrow-right',
   traded_received: 'arrow-left',
+  granted: 'arrow-left',
+  converted: 'arrow-left',
 };
 const EVENT_COLOR: Record<string, string> = {
   used: 'good',
   traded_away: 'average',
   traded_received: '#2196f3',
+  granted: 'good',
+  converted: 'bad',
 };
 const EVENT_LABEL: Record<string, string> = {
   used: 'Used',
   traded_away: 'Traded away',
   traded_received: 'Received via trade',
+  granted: 'Given',
+  converted: "Converted",
 };
 
 const HistoryView = ({ history }: { history: HistoryEntry[] }) => {
@@ -783,6 +790,11 @@ const HistoryView = ({ history }: { history: HistoryEntry[] }) => {
                   </Box>
                 )}
               </Box>
+              {!!entry.description && (
+                <Box fontSize="0.7em" color="label">
+                  {entry.description}
+                </Box>
+              )}
               <Box fontSize="0.7em" color="label">
                 {entry.timestamp}
               </Box>
