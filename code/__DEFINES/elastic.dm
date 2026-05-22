@@ -35,6 +35,8 @@
 		#define ELASDATA_EXPORT_VALUE "export_value"
 		#define ELASDATA_GOLDFACE_SPENT "goldface_spent"
 		#define ELASDATA_NOBLE_INCOME "noble_income"
+		#define ELASDATA_TRIUMPH_AWARDED "triumph_awarded"
+		#define ELASDATA_TRIUMPH_SPENT "triumph_spent"
 
 	/* Medical */
 		#define ELASDATA_ANASTASIS_REVIVE "anastasis"
