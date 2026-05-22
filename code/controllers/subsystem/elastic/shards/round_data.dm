@@ -1,6 +1,6 @@
 /datum/elastic_shard/round_data
 	name = "Round Data"
-	upload_frequency = 1 MINUTES
+	upload_frequency = 5 MINUTES
 	shard_category = ELASCAT_ROUND
 
 /datum/elastic_shard/round_data/get_compiled_data(datum/controller/subsystem/elastic/SS)
