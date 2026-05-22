@@ -4,6 +4,8 @@ This is a subsystem dedicated to sending data to [elasticsearch](https://www.ela
 Because if you want to collect lots of data with lots of fields its better to split things into multiple indices, it also allows you to setup different times for sending data see heartbeat vs round_data.
 ## How?
 This is entirely self contained except the category defines as I assume you want to do those yourself, so just drop this folder into your codebase. After that you will want to create an API key see the curl request below (my homies hate the kibana dashboard)
+
+1 thing to note is rouge_round_id will almost certainly need to be replaced with round_id in round_id compiled data sections.
 ```
 curl -X POST "https://{YOUR_BACKEND}:9200/_security/api_key" \
   -H "Content-Type: application/json" \
