@@ -50,3 +50,4 @@
 		#define ELASDATA_COIN_REVIVES "coin_revive"
 		/// An underworld spirit has won a pit fight.
 		#define ELASDATA_FIGHT_REVIVES "fight_revives"
+		#define ELASDATA_DEATH "deaths"
