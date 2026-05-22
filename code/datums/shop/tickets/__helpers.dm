@@ -6,6 +6,8 @@
 			return /datum/ticket/special
 		if(TICKET_TYPE_JOB_BOOST)
 			return /datum/ticket/job_boost
+		if(TICKET_TYPE_TRIUMPH)
+			return /datum/ticket/triumph
 	return /datum/ticket
 
 // Deserialise one savefile assoc-list entry into the right subtype.
