@@ -1,6 +1,6 @@
 /datum/elastic_shard/combat
 	name = "Combat"
-	upload_frequency = 30 SECONDS
+	upload_frequency = 60 SECONDS
 	shard_category = ELASCAT_COMBAT
 
 /datum/elastic_shard/combat/get_endpoint()
