@@ -23,7 +23,7 @@ curl -X POST "https://{YOUR_BACKEND}:9200/_security/api_key" \
     }
   }'
 ```
-this will create you an api key thats wildcarded to your indice + anything which is ideal each cat can be stuff like: CODEBASE_heartbeat
+this will create you an api key thats wildcarded to your indice + anything which is ideal, each cat can be stuff like: CODEBASE_heartbeat
 
 You will use the encoded output from the above command as your metric key.
 For the Endpoint urls that depends on your structure but it will always be:
