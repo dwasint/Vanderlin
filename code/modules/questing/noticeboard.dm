@@ -494,7 +494,6 @@
 		qdel(CQ)
 		return
 
-	CQ.generate(null)
 
 /obj/structure/notice_board/proc/fill_quest_reward(mob/user, datum/quest/custom/CQ)
 	var/list/diff_choices = list(QUEST_DIFFICULTY_EASY, QUEST_DIFFICULTY_MEDIUM, QUEST_DIFFICULTY_HARD)
