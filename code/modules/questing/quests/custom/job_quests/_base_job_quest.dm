@@ -4,6 +4,7 @@
 	var/datum/weakref/signal_target_ref
 
 /datum/quest/custom/job_quest/generate(obj/effect/landmark/quest_spawner/landmark)
+	add_abstract_elastic_data(ELASCAT_ECONOMY, ELASDATA_QUEST_CREATED, 1)
 	if(!title)
 		title = get_title()
 	if(landmark)

@@ -43,6 +43,7 @@
 		#define ELASDATA_QUEST_COMPLETED "quest_completed"
 		#define ELASDATA_QUEST_PROFIT "quest_profit"
 		#define ELASDATA_QUEST_TAXES "quest_taxes"
+		#define ELASDATA_QUEST_CREATED "quests_created"
 
 	/* Medical */
 		#define ELASDATA_ANASTASIS_REVIVE "anastasis"

@@ -15,6 +15,7 @@
 	return "Last sighted near [harlequinn_region]."
 
 /datum/quest/custom/harlequinn_hunt/generate(obj/effect/landmark/quest_spawner/landmark)
+	add_abstract_elastic_data(ELASCAT_ECONOMY, ELASDATA_QUEST_CREATED, 1)
 	title = get_title()
 	quest_difficulty = QUEST_DIFFICULTY_HARD
 	reward_amount = HARLEQUINN_HUNT_REWARD

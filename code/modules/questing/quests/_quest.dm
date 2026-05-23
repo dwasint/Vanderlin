@@ -98,6 +98,7 @@
 
 /// Generate quest content - override in subtypes
 /datum/quest/proc/generate(obj/effect/landmark/quest_spawner/landmark)
+	add_abstract_elastic_data(ELASCAT_ECONOMY, ELASDATA_QUEST_CREATED, 1)
 	if(!title)
 		title = get_title()
 	// Record which threat region this landmark sits in

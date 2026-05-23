@@ -54,6 +54,7 @@
 	return "Locate [target_player_name ? target_player_name : "your target"] yourself."
 
 /datum/quest/custom/assassinate/generate(obj/effect/landmark/quest_spawner/landmark)
+	add_abstract_elastic_data(ELASCAT_ECONOMY, ELASDATA_QUEST_CREATED, 1)
 	if(!title)
 		title = get_title()
 	progress_required = 1

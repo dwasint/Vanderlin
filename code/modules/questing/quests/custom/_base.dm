@@ -18,6 +18,7 @@
 	return "Speak to [quest_giver_name ? quest_giver_name : "the steward"] for instructions."
 
 /datum/quest/custom/generate(obj/effect/landmark/quest_spawner/landmark)
+	add_abstract_elastic_data(ELASCAT_ECONOMY, ELASDATA_QUEST_CREATED, 1)
 	if(!title)
 		title = get_title()
 	if(landmark)

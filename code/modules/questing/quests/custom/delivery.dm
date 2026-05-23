@@ -64,6 +64,7 @@
 	return "Locate [delivery_target_name ? delivery_target_name : "the recipient"] and make the delivery."
 
 /datum/quest/custom/delivery/generate(obj/effect/landmark/quest_spawner/landmark)
+	add_abstract_elastic_data(ELASCAT_ECONOMY, ELASDATA_QUEST_CREATED, 1)
 	if(!title)
 		title = get_title()
 	progress_required = 1

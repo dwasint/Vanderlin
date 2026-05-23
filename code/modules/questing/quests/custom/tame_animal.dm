@@ -14,6 +14,7 @@
 	return "Bring your tamed [target_animal_name] to [quest_giver_name ? quest_giver_name : "the steward"] at the guild board."
 
 /datum/quest/custom/tame_animal/generate(obj/effect/landmark/quest_spawner/landmark)
+	add_abstract_elastic_data(ELASCAT_ECONOMY, ELASDATA_QUEST_CREATED, 1)
 	if(!title)
 		title = get_title()
 	if(landmark)
