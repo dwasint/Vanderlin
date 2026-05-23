@@ -145,7 +145,7 @@
  */
 /datum/quest/proc/on_complete()
 	SHOULD_CALL_PARENT(TRUE)
-	add_abstract_elastic_data(ELASCAT_QUESTS_FINISHED, title)
+	add_abstract_elastic_data(ELASCAT_QUESTS_FINISHED, title, 1)
 	add_abstract_elastic_data(ELASCAT_ECONOMY, ELASDATA_QUEST_COMPLETED, 1)
 	if(!threat_region_name)
 		return
@@ -224,7 +224,7 @@
 /// Called when quest is claimed by a user
 /datum/quest/proc/on_claim(mob/user)
 	SHOULD_CALL_PARENT(TRUE)
-	add_abstract_elastic_data(ELASCAT_QUESTS, title)
+	add_abstract_elastic_data(ELASCAT_QUESTS, title, 1)
 	add_abstract_elastic_data(ELASCAT_ECONOMY, ELASDATA_QUEST_ACCEPTED, 1)
 	quest_receiver_reference = WEAKREF(user)
 	quest_receiver_name = user.real_name
