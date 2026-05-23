@@ -17,6 +17,8 @@
 	#define ELASCAT_ENCHANTING "enchanting"
 	#define ELASCAT_HEARTBEAT "heartbeat"
 	#define ELASCAT_ROUND "round"
+	#define ELASCAT_QUESTS "quests"
+	#define ELASCAT_QUESTS_FINISHED "finished-quests"
 
 /* Abstract Data */
 	/* Combat */
@@ -37,6 +39,10 @@
 		#define ELASDATA_NOBLE_INCOME "noble_income"
 		#define ELASDATA_TRIUMPH_AWARDED "triumph_awarded"
 		#define ELASDATA_TRIUMPH_SPENT "triumph_spent"
+		#define ELASDATA_QUEST_ACCEPTED "quest_accepted"
+		#define ELASDATA_QUEST_COMPLETED "quest_completed"
+		#define ELASDATA_QUEST_PROFIT "quest_profit"
+		#define ELASDATA_QUEST_TAXES "quest_taxes"
 
 	/* Medical */
 		#define ELASDATA_ANASTASIS_REVIVE "anastasis"

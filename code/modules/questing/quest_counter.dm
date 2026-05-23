@@ -267,8 +267,11 @@
 		SStreasury.give_money_treasury(tax_amt, "quest completion tax - [src.name]")
 		record_featured_stat(FEATURED_STATS_TAX_PAYERS, user, tax_amt)
 		record_round_statistic(STATS_TAXES_COLLECTED, tax_amt)
+		add_abstract_elastic_data(ELASCAT_ECONOMY, ELASDATA_TAXES_COLLECTED, tax_amt)
+		add_abstract_elastic_data(ELASCAT_ECONOMY, ELASDATA_QUEST_TAXES, tax_amt)
 
 	add_mammons_to_atom(user, round(reward))
+	add_abstract_elastic_data(ELASCAT_ECONOMY, ELASDATA_QUEST_PROFIT, round(reward))
 	log_quest(user.ckey, user.mind, user, "Turn in [Q.quest_type] for [reward] mammon")
 	SSquestboard.deposit_quest_funds(null, CEILING(reward * 0.1, 1))
 

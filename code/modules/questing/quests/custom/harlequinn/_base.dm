@@ -7,9 +7,6 @@
 	/// The harlequinn antag datum that owns this objective
 	var/datum/weakref/owning_harlequinn
 
-/datum/quest/custom/harlequinn_objective/on_claim(mob/user)
-	return
-
 /// Called during harlequinn setup to configure this quest's target/parameters.
 /// Return TRUE on success, FALSE if generation failed (e.g. no valid targets).
 /datum/quest/custom/harlequinn_objective/proc/setup_for_harlequinn(datum/antagonist/harlequinn/antag)
