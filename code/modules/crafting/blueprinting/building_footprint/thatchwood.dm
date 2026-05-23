@@ -34,6 +34,9 @@
 	owner.balloon_alert(owner, "Must place within Thatchwood!")
 	return FALSE
 
+/datum/action/cooldown/spell/place_blueprint/thatchwood_hall
+	name = "Place Thatchwood Hall"
+
 /datum/action/cooldown/spell/place_blueprint/thatchwood_hall/cast(atom/cast_on)
 	var/datum/objective_quest_driver/town_objective/area/thatchwood/driver = SSobjectivequests.get_driver(/datum/objective_quest_driver/town_objective/area/thatchwood)
 	var/turf/T = get_turf(cast_on)
