@@ -207,6 +207,8 @@ SUBSYSTEM_DEF(questboard)
 				tier -= Q
 				log_game("Quest expired: [Q.title] ([Q.quest_difficulty])")
 				qdel(Q)
+				add_abstract_elastic_data(ELASCAT_ECONOMY, ELASDATA_QUEST_STALE, 1)
+
 
 /// Called by the notice board / contract ledger UI to let a steward deposit funds.
 /datum/controller/subsystem/questboard/proc/deposit_quest_funds(mob/steward, amount)
