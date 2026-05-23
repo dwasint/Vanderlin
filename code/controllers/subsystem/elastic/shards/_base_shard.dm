@@ -29,7 +29,7 @@
 	reset()
 
 /datum/elastic_shard/proc/get_compiled_data(datum/controller/subsystem/elastic/SS)
-	if(!length(assoc_list_data) && (should_keep_dated && !length(abstract_information)))
+	if(!length(assoc_list_data) && !should_keep_dated)
 		return null
 	var/list/compiled = list()
 	compiled["@timestamp"] = time_stamp_metric()
