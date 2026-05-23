@@ -274,6 +274,7 @@ SUBSYSTEM_DEF(questboard)
 /datum/controller/subsystem/questboard/proc/issue_custom_quest(mob/steward, datum/quest/custom/custom_quest)
 	if(!custom_quest || QDELETED(custom_quest))
 		return FALSE
+	add_abstract_elastic_data(ELASCAT_ECONOMY, ELASDATA_QUEST_CREATED, 1)
 
 	var/cost = custom_quest.reward_amount + QUESTBOARD_CUSTOM_ISSUE_FEE
 	if(quest_fund < cost && !(SStreasury.bank_accounts[steward] >= cost))
