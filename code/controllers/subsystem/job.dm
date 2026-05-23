@@ -747,12 +747,16 @@ SUBSYSTEM_DEF(job)
 					low++
 				else
 					never++
-		SSblackbox.record_feedback("nested tally", "job_preferences", high, list("[job.title]", "high"))
-		SSblackbox.record_feedback("nested tally", "job_preferences", medium, list("[job.title]", "medium"))
-		SSblackbox.record_feedback("nested tally", "job_preferences", low, list("[job.title]", "low"))
-		SSblackbox.record_feedback("nested tally", "job_preferences", never, list("[job.title]", "never"))
-		SSblackbox.record_feedback("nested tally", "job_preferences", banned, list("[job.title]", "banned"))
-		SSblackbox.record_feedback("nested tally", "job_preferences", young, list("[job.title]", "young"))
+
+		record_job_preferences_full(
+			job.title,
+			high,
+			medium,
+			low,
+			never,
+			banned,
+			young,
+		)
 
 /datum/controller/subsystem/job/proc/PopcapReached()
 	var/hpc = CONFIG_GET(number/hard_popcap)

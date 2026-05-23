@@ -19,6 +19,7 @@
 	#define ELASCAT_ROUND "round"
 	#define ELASCAT_QUESTS "quests"
 	#define ELASCAT_QUESTS_FINISHED "finished-quests"
+	#define ELASCAT_JOB_PREFERENCES "job_preferences"
 
 /* Abstract Data */
 	/* Combat */

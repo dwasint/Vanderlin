@@ -35,3 +35,6 @@
 
 /datum/config_entry/string/metrics_api_token
 	protection = CONFIG_ENTRY_HIDDEN
+
+/datum/config_entry/string/job_endpoint
+	protection = CONFIG_ENTRY_HIDDEN
