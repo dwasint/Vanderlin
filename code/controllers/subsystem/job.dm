@@ -724,7 +724,7 @@ SUBSYSTEM_DEF(job)
 		var/banned = 0 //banned
 		var/young = 0 //account too young
 		for(var/mob/dead/new_player/player as anything in GLOB.new_player_list)
-			if(!(player.ready == PLAYER_READY_TO_PLAY && player.mind && !player.mind.assigned_role))
+			if(!(player.ready == PLAYER_READY_TO_PLAY))
 				continue //This player is not ready
 			if(is_role_banned(player.ckey, job.title) || QDELETED(player))
 				banned++
