@@ -100,7 +100,7 @@ GLOBAL_LIST_EMPTY(virtual_z_link_helpers)
 	qdel(below)
 
 /obj/effect/mapping_helpers/virtual_z_link/Destroy()
-	if(link_id)
+	if(link_id && (link_id in GLOB.virtual_z_link_helpers))
 		GLOB.virtual_z_link_helpers[link_id] -= src
 		if(!length(GLOB.virtual_z_link_helpers[link_id]))
 			GLOB.virtual_z_link_helpers -= link_id
