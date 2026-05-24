@@ -211,6 +211,7 @@ SUBSYSTEM_DEF(triumphs)
 					attempt_to_unbuy_triumph_condition(C, active_datum, reason = "CONFLICTS")
 
 	triumph_buy.on_buy(C)
+	add_abstract_elastic_data(ELASCAT_SHOP, "[triumph_buy.name]", 1)
 	return TRUE
 
 /// This occurs when you try to unbuy a triumph condition and removes it, also used for refunding due to conflicts

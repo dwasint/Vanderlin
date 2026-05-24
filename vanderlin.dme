@@ -535,6 +535,7 @@
 #include "code\controllers\subsystem\elastic\shards\heartbeat.dm"
 #include "code\controllers\subsystem\elastic\shards\medical.dm"
 #include "code\controllers\subsystem\elastic\shards\round_data.dm"
+#include "code\controllers\subsystem\elastic\shards\shop.dm"
 #include "code\controllers\subsystem\elastic\shards\storytellers.dm"
 #include "code\controllers\subsystem\mobs\islander.dm"
 #include "code\controllers\subsystem\mobs\matthios.dm"

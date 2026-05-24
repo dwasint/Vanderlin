@@ -613,6 +613,7 @@
 	owner.prefs.save_character()
 	log_game("TRIUMPH SHOP: [owner.ckey] permanently unlocked [path_str] for [item.triumph_cost_permanent] triumphs.")
 	to_chat(owner.mob, span_notice("Permanently unlocked [item.name]!"))
+	add_abstract_elastic_data(ELASCAT_SHOP, "[item.name]", 1)
 	return TRUE
 
 /datum/tgui_triumph_shop/proc/handle_buy_single(path_str)
@@ -642,6 +643,7 @@
 			to_chat(owner.mob, span_warning("You need [CEILING(item.triumph_cost_permanent * 0.05, 1)] triumphs to rent [item.name]. You have [balance]."))
 			return FALSE
 		adjust_triumphs(owner, -CEILING(item.triumph_cost_permanent * 0.05, 1), TRUE, "Triumph Shop: single-round rent [item.name]", FALSE, TRUE)
+		add_abstract_elastic_data(ELASCAT_SHOP, "[item.name] - Rented", 1)
 
 	var/donator_free_use = owner.is_donator() && !(item.loadout_flags & LOADOUT_FLAG_NO_DONATOR_FREE)
 	owner.prefs.single_round_loadout += path_str
@@ -745,6 +747,7 @@
 	owner.mob.playsound_local(owner.mob, 'sound/misc/alert.ogg', 100)
 	log_game("TRIUMPH SHOP: [owner.ckey] purchased specific special [path_str] ([trait?.name]) for [cost] triumphs.")
 	to_chat(owner.mob, span_notice("Selected: <b>[trait?.name]</b>! Applies on your next spawn."))
+	add_abstract_elastic_data(ELASCAT_SHOP, "[trait.name]", 1)
 	return TRUE
 
 /datum/tgui_triumph_shop/proc/handle_clear_pending_special()
