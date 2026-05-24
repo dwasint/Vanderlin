@@ -12,7 +12,6 @@
 	for(var/area/A as anything in GLOB.areas)
 		if(is_type_in_list(A, area_types))
 			real_areas |= A
-			break
 	setup_stages()
 
 /datum/objective_quest_driver/town_objective/area/proc/setup_stages()
