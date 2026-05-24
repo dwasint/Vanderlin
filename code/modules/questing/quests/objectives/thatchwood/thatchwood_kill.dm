@@ -23,3 +23,9 @@
 		return
 	progress_current = driver.initial_mob_count - driver.mob_count
 	on_progress_update()
+
+/datum/quest/objective/thatchwood/kill/get_target_location()
+	var/datum/objective_quest_driver/town_objective/area/thatchwood/driver = SSobjectivequests.get_driver(/datum/objective_quest_driver/town_objective/area/thatchwood)
+	if(!driver || !length(driver.mobs))
+		return null
+	return get_turf(pick(driver.mobs))

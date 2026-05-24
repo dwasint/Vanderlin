@@ -42,11 +42,14 @@
 	var/schematic_placed = FALSE
 	/// TRUE once all blueprints are built (used by quests to check_completion)
 	var/town_hall_complete = FALSE
+	///list of our mobs
+	var/list/mobs = list()
 
 /datum/objective_quest_driver/town_objective/area/thatchwood/setup_stages()
 	for(var/area/managed_area in real_areas)
 		for(var/mob/living/living in managed_area.contents)
 			mob_count++
+			mobs |= living
 			RegisterSignal(living, COMSIG_LIVING_DEATH, PROC_REF(mob_death))
 		for(var/obj/structure/kneestingers/C in managed_area.contents)
 			clutter_count++
@@ -62,6 +65,7 @@
 
 /datum/objective_quest_driver/town_objective/area/thatchwood/proc/mob_death(mob/living/source)
 	mob_count--
+	mobs -= source
 	notify_active_quest(/datum/quest/objective/thatchwood/kill)
 
 /datum/objective_quest_driver/town_objective/area/thatchwood/proc/tree_cleanup(obj/source)
