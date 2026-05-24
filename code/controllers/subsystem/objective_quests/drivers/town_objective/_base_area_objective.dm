@@ -18,11 +18,13 @@
 	return
 
 /datum/objective_quest_driver/town_objective/proc/notify_active_quest(quest_type)
-    if(current_stage > length(stages))
-        return
-    var/list/stage = stages[current_stage]
-    if(!(quest_type in stage["quest_types"]))
-        return
-    for(var/datum/quest/objective/thatchwood/Q as anything in SSquestboard.quest_pool[quest_difficulty])
-        if(istype(Q, quest_type))
-            Q.on_world_progress_update()
+	if(current_stage > length(stages))
+		return
+	var/list/stage = stages[current_stage]
+	if(!(quest_type in stage["quest_types"]))
+		return
+	for(var/obj/item/paper/scroll/quest/quest_scroll in GLOB.quest_scrolls)
+		if(!istype(quest_scroll.assigned_quest, quest_type))
+			continue
+		var/datum/quest/objective/thatchwood/quest = quest_scroll.assigned_quest
+		quest.on_world_progress_update()
