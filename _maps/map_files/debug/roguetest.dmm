@@ -3171,6 +3171,10 @@
 	},
 /turf/open/floor/wood,
 /area/indoors/town/keep)
+"RR" = (
+/mob/living/carbon/human/species/goblin/npc/ambush,
+/turf/closed/basic,
+/area/outdoors/wilderness/beside_thatchwood)
 "Sq" = (
 /obj/structure/flora/grass,
 /obj/structure/fluff/railing/wood{
@@ -3603,7 +3607,7 @@
 /area/outdoors/mountains/decap)
 "Zk" = (
 /turf/closed/basic,
-/area/indoors/town/keep)
+/area/outdoors/wilderness/beside_thatchwood)
 "Zr" = (
 /obj/item/arcyne_spellobject/spellstone/greater,
 /turf/open/floor/churchbrick,
@@ -21316,7 +21320,7 @@ Cp
 ev
 Zk
 Zk
-Zk
+RR
 Il
 Cp
 Cp
@@ -21827,7 +21831,7 @@ Cp
 Cp
 Cp
 lm
-Zk
+RR
 Zk
 Zk
 Zk
@@ -22086,7 +22090,7 @@ Cp
 lm
 Zk
 Zk
-Zk
+RR
 Zk
 Zk
 lJ
