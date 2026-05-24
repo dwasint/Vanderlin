@@ -3,6 +3,7 @@ SUBSYSTEM_DEF(objectivequests)
 	wait = 5 SECONDS
 	flags = SS_KEEP_TIMING | SS_BACKGROUND
 	runlevels = RUNLEVEL_GAME
+	init_order = INIT_ORDER_OBJECTIVE_QUEST
 
 	///singleton list of all objective_quest_driver subtypes
 	var/list/datum/objective_quest_driver/objectives = list()

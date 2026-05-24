@@ -2,6 +2,7 @@
 	area_types = list(
 		/area/outdoors/wilderness/outpost/vanderlin,
 		/area/indoors/wilderness/tavern,
+		/area/indoors/wilderness/garrison,
 		/area/indoors/wilderness/shop,
 		/area/outdoors/wilderness/beside_thatchwood,
 	)
