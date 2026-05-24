@@ -613,7 +613,8 @@
 	owner.prefs.save_character()
 	log_game("TRIUMPH SHOP: [owner.ckey] permanently unlocked [path_str] for [item.triumph_cost_permanent] triumphs.")
 	to_chat(owner.mob, span_notice("Permanently unlocked [item.name]!"))
-	add_abstract_elastic_data(ELASCAT_SHOP, "[item.name]", 1)
+	if(item.triumph_cost_permanent)
+		add_abstract_elastic_data(ELASCAT_SHOP, "[item.name]", 1)
 	return TRUE
 
 /datum/tgui_triumph_shop/proc/handle_buy_single(path_str)
