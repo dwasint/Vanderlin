@@ -3,6 +3,12 @@
 	var/pet_name = "Unknown"
 	var/owner_name = "Unknown"
 
+/datum/quest/custom/harlequinn_objective/kill_pet/Destroy()
+	var/atom/target = pet_ref.resolve()
+	if(target)
+		UnregisterSignal(target, COMSIG_LIVING_DEATH)
+	return ..()
+
 /datum/quest/custom/harlequinn_objective/kill_pet/setup_for_harlequinn(datum/antagonist/harlequinn/antag)
 	var/mob/living/carbon/human/harlequinn_mob = antag.owner?.current
 
@@ -33,6 +39,7 @@
 	owner_name = owner.real_name
 	title = "Kill [owner_name]'s [pet_name]"
 	reward_amount = 300
+	RegisterSignal(pet, COMSIG_LIVING_DEATH, PROC_REF(on_death))
 	return TRUE
 
 /datum/quest/custom/harlequinn_objective/kill_pet/get_objective_text()
@@ -41,3 +48,6 @@
 /datum/quest/custom/harlequinn_objective/kill_pet/check_completion()
 	var/mob/living/simple_animal/P = pet_ref?.resolve()
 	return QDELETED(P) || P.stat == DEAD
+
+/datum/quest/custom/harlequinn_objective/kill_pet/proc/on_death()
+	validate()

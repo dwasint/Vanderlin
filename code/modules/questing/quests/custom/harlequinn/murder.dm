@@ -3,6 +3,12 @@
 	var/datum/weakref/target_ref
 	var/target_name = "Unknown"
 
+/datum/quest/custom/harlequinn_objective/murder/Destroy()
+	var/atom/target = target_ref.resolve()
+	if(target)
+		UnregisterSignal(target, COMSIG_LIVING_DEATH)
+	return ..()
+
 /datum/quest/custom/harlequinn_objective/murder/setup_for_harlequinn(datum/antagonist/harlequinn/antag)
 	var/mob/living/carbon/human/harlequinn_mob = antag.owner?.current
 	var/list/candidates = list()
@@ -23,6 +29,7 @@
 	target_name = target.real_name
 	title = "Eliminate [target_name]"
 	reward_amount = 300
+	RegisterSignal(target, COMSIG_LIVING_DEATH, PROC_REF(on_death))
 	return TRUE
 
 /datum/quest/custom/harlequinn_objective/murder/get_objective_text()
@@ -31,3 +38,6 @@
 /datum/quest/custom/harlequinn_objective/murder/check_completion()
 	var/mob/living/carbon/human/T = target_ref?.resolve()
 	return QDELETED(T) || T.stat == DEAD
+
+/datum/quest/custom/harlequinn_objective/murder/proc/on_death()
+	validate()
