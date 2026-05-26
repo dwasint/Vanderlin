@@ -75,3 +75,45 @@
 	ui_category = "Shirts"
 
 	triumph_cost_permanent = 75
+
+/datum/loadout_item/explorer_vest
+	name = "Explorer's Vest"
+	item_path = /obj/item/clothing/shirt/explorer
+	ui_category = "Shirts"
+
+	triumph_cost_permanent = 75
+
+/datum/loadout_item/fancyjacket
+	name = "Fancy Jacket"
+	item_path = /obj/item/clothing/shirt/fancyjacket
+	ui_category = "Shirts"
+
+	triumph_cost_permanent = 125
+
+/datum/loadout_item/saree
+	name = "Saree"
+	item_path = /obj/item/clothing/shirt/saree
+	ui_category = "Shirts"
+
+	triumph_cost_permanent = 125
+
+/datum/loadout_item/slitted_dress
+	name = "Slitted Dress"
+	item_path = /obj/item/clothing/shirt/dress/slit
+	ui_category = "Shirts"
+
+	triumph_cost_permanent = 125
+
+/datum/loadout_item/velvetdress
+	name = "Velvet Dress"
+	item_path = /obj/item/clothing/shirt/dress/velvetdress
+	ui_category = "Shirts"
+
+	triumph_cost_permanent = 150
+
+/datum/loadout_item/nobledress
+	name = "Noble Dress"
+	item_path = /obj/item/clothing/shirt/dress/nobledress
+	ui_category = "Shirts"
+
+	triumph_cost_permanent = 200

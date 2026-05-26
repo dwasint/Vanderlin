@@ -99,6 +99,7 @@
 
 /datum/loadout_item/furcloak
 	name = "Fur Cloak"
+	ui_category = "Cloaks"
 	item_path = /obj/item/clothing/cloak/raincloak/furcloak
 	triumph_cost_permanent = 100
 
