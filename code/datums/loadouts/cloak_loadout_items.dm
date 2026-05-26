@@ -6,6 +6,27 @@
 
 	triumph_cost_permanent = 50
 
+/datum/loadout_item/tabard
+	name = "Sleeved Tabard"
+	item_path = /obj/item/clothing/cloak/sleevedtabard
+	ui_category = "Cloaks"
+
+	triumph_cost_permanent = 50
+
+/datum/loadout_item/toga
+	name = "Toga"
+	item_path = /obj/item/clothing/cloak/tabard/toga
+	ui_category = "Cloaks"
+
+	triumph_cost_permanent = 50
+
+/datum/loadout_item/toga
+	name = "Black Toga"
+	item_path = /obj/item/clothing/cloak/psydontabard/black
+	ui_category = "Cloaks"
+
+	triumph_cost_permanent = 50
+
 /datum/loadout_item/surcoat
 	name = "Surcoat"
 	item_path = /obj/item/clothing/cloak/stabard
@@ -75,3 +96,50 @@
 	ui_category = "Cloaks"
 
 	triumph_cost_permanent = 100
+
+/datum/loadout_item/furcloak
+	name = "Fur Cloak"
+	item_path = /obj/item/clothing/cloak/raincloak/furcloak
+	triumph_cost_permanent = 100
+
+/datum/loadout_item/bandolier
+	name = "Bandolier"
+	item_path = /obj/item/clothing/cloak/bandolier
+	ui_category = "Cloaks"
+	triumph_cost_permanent = 100
+
+/datum/loadout_item/scaledcloak
+	name = "Scaled Cloak"
+	item_path = /obj/item/clothing/cloak/scaledcloak
+	ui_category = "Cloaks"
+	triumph_cost_permanent = 100
+
+/datum/loadout_item/fancycoat
+	name = "Fancy Coat"
+	item_path = /obj/item/clothing/cloak/poncho/fancycoat
+	ui_category = "Cloaks"
+	triumph_cost_permanent = 100
+
+/datum/loadout_item/kazengun_coat
+	name = "Jinbaori"
+	item_path = /obj/item/clothing/cloak/kazengun
+	ui_category = "Cloaks"
+	triumph_cost_permanent = 250
+
+/datum/loadout_item/lirvan_silk
+	name = "Lirvan Silks"
+	item_path = /obj/item/clothing/cloak/ordinatorcape/lirvas
+	ui_category = "Cloaks"
+	triumph_cost_permanent = 1000
+
+/datum/loadout_item/golden_order
+	name = "Golden Order Cloak"
+	item_path = /obj/item/clothing/cloak/cape/inquisitorgold
+	ui_category = "Cloaks"
+	triumph_cost_permanent = 3000
+
+/datum/loadout_item/silver_order
+	name = "Silver Order Cloak"
+	item_path = /obj/item/clothing/cloak/cape/inquisitorsilver
+	ui_category = "Cloaks"
+	triumph_cost_permanent = 2000

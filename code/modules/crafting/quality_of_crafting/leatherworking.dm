@@ -306,6 +306,14 @@
 	output = /obj/item/clothing/cloak/raincloak
 	craftdiff = 2
 
+/datum/repeatable_crafting_recipe/leather/cloak/bandolier
+	name = "bandolier"
+	requirements = list(
+		/obj/item/natural/hide/cured = 2,
+		/obj/item/rope = 1,
+	)
+	output = /obj/item/clothing/cloak/bandolier
+
 /datum/repeatable_crafting_recipe/leather/cloakfur
 	name = "fur lined raincloak"
 	requirements = list(
@@ -331,6 +339,15 @@
 		/obj/item/natural/silk = 1,
 	)
 	output = /obj/item/clothing/cloak/graggar
+	craftdiff = 4
+
+/datum/repeatable_crafting_recipe/leather/heavy_graggar_cloak
+	name = "heavy vicious cloak"
+	requirements = list(
+		/obj/item/natural/hide/cured = 4,
+		/obj/item/natural/silk = 1,
+	)
+	output = /obj/item/clothing/cloak/graggar/heavy
 	craftdiff = 4
 
 /datum/repeatable_crafting_recipe/leather/savage_cloak
