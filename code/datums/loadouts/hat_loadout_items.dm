@@ -12,6 +12,48 @@
 
 	triumph_cost_permanent = 25
 
+/datum/loadout_item/archercap
+	name = "Archer's Cap"
+	item_path = /obj/item/clothing/head/archercap
+	ui_category = "Hats"
+
+	triumph_cost_permanent = 50
+
+/datum/loadout_item/fedora
+	name = "Archeologist's Hat"
+	item_path = /obj/item/clothing/head/fedora
+	ui_category = "Hats"
+
+	triumph_cost_permanent = 50
+
+/datum/loadout_item/gravehat
+	name = "Gravetender's Hat"
+	item_path = /obj/item/clothing/head/leather/inqhat/gravehat
+	ui_category = "Hats"
+
+	triumph_cost_permanent = 75
+
+/datum/loadout_item/explorer
+	name = "Explorer's Hat"
+	item_path = /obj/item/clothing/head/explorerhat
+	ui_category = "Hats"
+
+	triumph_cost_permanent = 75
+
+/datum/loadout_item/headdress
+	name = "Foreign Headdress"
+	item_path = /obj/item/clothing/head/headdress
+	ui_category = "Hats"
+
+	triumph_cost_permanent = 100
+
+/datum/loadout_item/dancer_headdress
+	name = "Dancer's Headdress"
+	item_path = /obj/item/clothing/head/dancer_headdress
+	ui_category = "Hats"
+
+	triumph_cost_permanent = 100
+
 /datum/loadout_item/rosa_flower_crown
 	name = "Rosa Flower Crown"
 	item_path = /obj/item/clothing/head/flowercrown/rosa
@@ -22,6 +64,27 @@
 /datum/loadout_item/salvia_flower_crown
 	name = "Salvia Flower Crown"
 	item_path = /obj/item/clothing/head/flowercrown/salvia
+	ui_category = "Hats"
+
+	triumph_cost_permanent = 50
+
+/datum/loadout_item/calendula_flower_crown
+	name = "Calendula Flower Crown"
+	item_path = /obj/item/clothing/head/flowercrown/calendula
+	ui_category = "Hats"
+
+	triumph_cost_permanent = 50
+
+/datum/loadout_item/matricaria_flower_crown
+	name = "Matricaria Flower Crown"
+	item_path = /obj/item/clothing/head/flowercrown/matricaria
+	ui_category = "Hats"
+
+	triumph_cost_permanent = 50
+
+/datum/loadout_item/manabloom_flower_crown
+	name = "Manabloom Flower Crown"
+	item_path = /obj/item/clothing/head/flowercrown/manabloom
 	ui_category = "Hats"
 
 	triumph_cost_permanent = 50

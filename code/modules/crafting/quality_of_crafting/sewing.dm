@@ -476,6 +476,24 @@
 					/obj/item/alch/herb/salvia = 2)
 	output = /obj/item/clothing/head/flowercrown/salvia
 
+/datum/repeatable_crafting_recipe/sewing/flowercrown/calendula
+	name = "calendula crown"
+	requirements = list(/obj/item/natural/fibers = 1,\
+					/obj/item/alch/herb/calendula = 2)
+	output = /obj/item/clothing/head/flowercrown/calendula
+
+/datum/repeatable_crafting_recipe/sewing/flowercrown/manabloom
+	name = "manabloom crown"
+	requirements = list(/obj/item/natural/fibers = 1,\
+					/obj/item/reagent_containers/food/snacks/produce/manabloom = 2)
+	output = /obj/item/clothing/head/flowercrown/manabloom
+
+/datum/repeatable_crafting_recipe/sewing/flowercrown/matricaria
+	name = "matricaria crown"
+	requirements = list(/obj/item/natural/fibers = 1,\
+					/obj/item/alch/herb/matricaria = 2)
+	output = /obj/item/clothing/head/flowercrown/matricaria
+
 /*.............. recipes requiring skill 2 ..............*/
 /datum/repeatable_crafting_recipe/sewing/gambeson
 	name = "gambeson"
