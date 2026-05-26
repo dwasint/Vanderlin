@@ -126,20 +126,32 @@
 	ui_category = "Cloaks"
 	triumph_cost_permanent = 250
 
+/datum/loadout_item/graggar_heavy
+	name = "Vicious Halfcloak"
+	item_path = /obj/item/clothing/cloak/graggar/heavy
+	ui_category = "Cloaks"
+	triumph_cost_permanent = 500
+
+/datum/loadout_item/graggar
+	name = "Vicious Cloak"
+	item_path = /obj/item/clothing/cloak/graggar
+	ui_category = "Cloaks"
+	triumph_cost_permanent = 500
+
 /datum/loadout_item/lirvan_silk
 	name = "Lirvan Silks"
 	item_path = /obj/item/clothing/cloak/ordinatorcape/lirvas
 	ui_category = "Cloaks"
 	triumph_cost_permanent = 1000
 
-/datum/loadout_item/golden_order
-	name = "Golden Order Cloak"
-	item_path = /obj/item/clothing/cloak/cape/inquisitorgold
-	ui_category = "Cloaks"
-	triumph_cost_permanent = 3000
-
 /datum/loadout_item/silver_order
 	name = "Silver Order Cloak"
 	item_path = /obj/item/clothing/cloak/cape/inquisitorsilver
 	ui_category = "Cloaks"
 	triumph_cost_permanent = 2000
+
+/datum/loadout_item/golden_order
+	name = "Golden Order Cloak"
+	item_path = /obj/item/clothing/cloak/cape/inquisitorgold
+	ui_category = "Cloaks"
+	triumph_cost_permanent = 3000

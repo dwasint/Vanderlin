@@ -132,5 +132,5 @@
 	name = "\"Puffer\""
 	item_path = /obj/item/gun/ballistic/powder/wheellock/puffer
 	ui_category = "Accessories"
-	triumph_cost_permanent = 100000 //this is straight up not feasible to get in a season lol
+	triumph_cost_permanent = 100000 //this is straigrght up not feasible to get in a season lol
 	loadout_flags = LOADOUT_FLAG_NO_RENT

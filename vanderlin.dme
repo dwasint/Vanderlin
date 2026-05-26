@@ -1923,7 +1923,6 @@
 #include "code\game\objects\items\honeycomb.dm"
 #include "code\game\objects\items\hourglass.dm"
 #include "code\game\objects\items\inquisition_relics.dm"
-#include "code\game\objects\items\joke.dm"
 #include "code\game\objects\items\keyrings.dm"
 #include "code\game\objects\items\keys.dm"
 #include "code\game\objects\items\kitchen.dm"
