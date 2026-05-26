@@ -152,6 +152,7 @@
 	icon_state = "butlershorts"
 	item_state = "butlershorts"
 	detail_color = CLOTHING_SOOT_BLACK
+	childcore = TRUE
 
 /obj/item/clothing/pants/trou/courtphysician
 	name = "sanguine trousers"
