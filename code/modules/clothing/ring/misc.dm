@@ -262,7 +262,7 @@
 /obj/item/clothing/ring/silver/calm
 	name = "soothing ring"
 	desc = "A lightweight ring that feels entirely weightless, and easing to your mind as you place it upon a finger."
-	icon_state = "ring_calm"
+	icon_state = "s_newring_quartz"
 
 /obj/item/clothing/ring/silver/calm/equipped(mob/living/user, slot)
 	. = ..()
