@@ -126,3 +126,6 @@
   realforest2001:
   - bugfix: Fixed admin hear all.
   - rscdel: Removed racist cats.
+2026-05-27:
+  ta3754859-max:
+  - bugfix: Rare subclasses now appear in triumph buy classes menu
