@@ -48,6 +48,24 @@
 
 	triumph_cost_permanent = 50
 
+/datum/loadout_item/shawl
+	name = "Shawl"
+	item_path = /obj/item/storage/belt/leather/shawl
+	ui_category = "Accessories"
+	triumph_cost_permanent = 50
+
+/datum/loadout_item/double_belt
+	name = "Pair of Belts"
+	item_path = /obj/item/storage/belt/leather/double
+	ui_category = "Accessories"
+	triumph_cost_permanent = 125
+
+/datum/loadout_item/breechcloth
+	name = "Breechcloth"
+	item_path = /obj/item/storage/belt/leather/breechcloth
+	ui_category = "Accessories"
+	triumph_cost_permanent = 125
+
 /datum/loadout_item/jestershoes
 	name = "Jester's Shoes"
 	item_path = /obj/item/clothing/shoes/jester
