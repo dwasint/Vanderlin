@@ -409,6 +409,7 @@
 	desc = "Minotaur fur and straw roughly sewn into a long mantle."
 	icon_state = "mino"
 	item_state = "mino"
+	sleeved = 'icons/roguetown/clothing/onmob/cloaks.dmi'
 	salvage_result = /obj/item/natural/hide/cured
 	salvage_amount = 4
 
@@ -433,6 +434,7 @@
 	icon_state = "kazenguncoat"
 	item_state = "kazenguncoat"
 	detail_tag = "_detail"
+	sleeved = 'icons/roguetown/clothing/onmob/cloaks.dmi'
 	slot_flags = ITEM_SLOT_BACK_R|ITEM_SLOT_CLOAK
 	color = "#FFFFFF"
 	detail_color = "#FFFFFF"
