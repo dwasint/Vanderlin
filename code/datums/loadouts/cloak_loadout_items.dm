@@ -34,6 +34,13 @@
 
 	triumph_cost_permanent = 75
 
+/datum/loadout_item/justicesurcoat
+	name = "Surcoat of the Justice Order"
+	item_path = /obj/item/clothing/cloak/stabard/templar/justice
+	ui_category = "Cloaks"
+
+	triumph_cost_permanent = 150
+
 /datum/loadout_item/jupon
 	name = "Jupon"
 	item_path = /obj/item/clothing/cloak/stabard/jupon
