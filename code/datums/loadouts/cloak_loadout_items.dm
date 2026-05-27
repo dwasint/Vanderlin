@@ -48,6 +48,13 @@
 
 	triumph_cost_permanent = 50
 
+/datum/loadout_item/shadowcloak
+	name = "Stalker Cloak"
+	item_path = /obj/item/clothing/cloak/half/shadowcloak
+	ui_category = "Cloaks"
+
+	triumph_cost_permanent = 75
+
 /datum/loadout_item/halfcloak
 	name = "Halfcloak"
 	item_path = /obj/item/clothing/cloak/half
