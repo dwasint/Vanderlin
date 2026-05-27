@@ -120,7 +120,7 @@
 
 /obj/item/clothing/head/helmet/heavy/kabuto
 	name = "kabuto"
-	desc = "A Kazengunite helmet of steel plates, gilded in blacksteel and gold trim alike to evoke feelings of nobility and strength. Commonly worn with a mask or mouthguard."
+	desc = "A Blackmeadow helmet of steel plates, gilded in blacksteel and gold trim alike to evoke feelings of nobility and strength. Commonly worn with a mask or mouthguard."
 	flags_inv = HIDEEARS|HIDEHAIR
 	flags_cover = null
 	icon_state = "kazengunheavyhelm"

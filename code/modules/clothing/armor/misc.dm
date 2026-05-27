@@ -70,7 +70,7 @@
 
 /obj/item/clothing/armor/brigandine/haraate
 	name = "hansimhae cuirass"
-	desc = "A more common form of Kazengunite armor, consisting of several interlocking plates of blacksteel-coated steel. Much cheaper than a full set of armor, these are commonly seen on militia forces and standing armies alike."
+	desc = "A more common form of Blackmeadow armor, consisting of several interlocking plates of blacksteel-coated steel. Much cheaper than a full set of armor, these are commonly seen on militia forces and standing armies alike."
 	icon_state = "kazengunmedium"
 	boobed = FALSE
 	item_state = "kazengunmedium"
