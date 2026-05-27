@@ -1,18 +1,3 @@
-
-/datum/loadout_item/elf_ear_necklace
-	name = "Elf Ear Necklace"
-	item_path = /obj/item/clothing/neck/elfears
-	ui_category = "Accessories"
-
-	triumph_cost_permanent = 50
-
-/datum/loadout_item/men_ear_necklace
-	name = "Men Ear Necklace"
-	item_path = /obj/item/clothing/neck/menears
-	ui_category = "Accessories"
-
-	triumph_cost_permanent = 50
-
 /datum/loadout_item/wrappings
 	name = "Handwraps"
 	item_path = /obj/item/clothing/wrists/wrappings
@@ -33,20 +18,6 @@
 	ui_category = "Accessories"
 
 	triumph_cost_permanent = 25
-
-/datum/loadout_item/collar
-	name = "Collar"
-	item_path = /obj/item/clothing/neck/leathercollar
-	ui_category = "Accessories"
-
-	triumph_cost_permanent = 25
-
-/datum/loadout_item/bell_collar
-	name = "Bell Collar"
-	item_path = /obj/item/clothing/neck/bellcollar
-	ui_category = "Accessories"
-
-	triumph_cost_permanent = 50
 
 /datum/loadout_item/shawl
 	name = "Shawl"

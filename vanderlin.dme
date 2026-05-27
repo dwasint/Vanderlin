@@ -1352,6 +1352,7 @@
 #include "code\datums\loadouts\hat_loadout_items.dm"
 #include "code\datums\loadouts\item_loadout_items.dm"
 #include "code\datums\loadouts\misc_loadout_item.dm"
+#include "code\datums\loadouts\neck.dm"
 #include "code\datums\loadouts\pants_loadout_items.dm"
 #include "code\datums\loadouts\shirt_loadout_items.dm"
 #include "code\datums\loadouts\shoes_loadout_items.dm"
