@@ -6,6 +6,13 @@
 
 	triumph_cost_permanent = 25
 
+/datum/loadout_item/shepherdvest
+	name = "Shepherd Vest"
+	item_path = /obj/item/clothing/shirt/robe/shepherdvest
+	ui_category = "Shirts"
+
+	triumph_cost_permanent = 25
+
 /datum/loadout_item/longshirt
 	name = "Shirt"
 	item_path = /obj/item/clothing/shirt
@@ -117,3 +124,10 @@
 	ui_category = "Shirts"
 
 	triumph_cost_permanent = 200
+
+/datum/loadout_item/hag
+	name = "Wyrd Robe"
+	item_path = /obj/item/clothing/shirt/robe/hag
+	ui_category = "Shirts"
+
+	triumph_cost_permanent = 250
