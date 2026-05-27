@@ -18,7 +18,7 @@
 /datum/ticket/loadout/use(client/user)
 	if(!loadout_item_path)
 		return FALSE
-	var/datum/loadout_item/item = GLOB.loadout_items[text2path(loadout_item_path)]
+	var/datum/loadout_item/item = GLOB.loadout_items[loadout_item_path]
 	if(!item)
 		to_chat(user, span_warning("That loadout item no longer exists."))
 		return FALSE
