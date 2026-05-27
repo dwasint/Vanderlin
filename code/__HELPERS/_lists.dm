@@ -272,8 +272,6 @@ if (length(L) < I) { \
 	RETURN_TYPE(/list)
 	. = list()
 	for(var/atom/A as anything in atoms)
-		if(!A)
-			continue
 		if(isnull(A))
 			continue
 		if (typecache[A.type])
