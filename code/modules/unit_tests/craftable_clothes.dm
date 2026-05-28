@@ -72,8 +72,11 @@ abstract types are automatically excluded.
 		/obj/item/clothing/cloak/psydontabard/black,
 		/obj/item/clothing/cloak/psydontabard/black/alt,
 		/obj/item/clothing/shoes/boots/armor/gold/king,
-		/obj/item/clothing/armor/plate/cuirass/fluted/gold/king,
+		/obj/item/clothing/armor/cuirass/fluted/gold/king,
 		/obj/item/clothing/head/helmet/visored/gold/king,
+		/obj/item/clothing/neck/gorget/gold/king,
+		/obj/item/clothing/head/helmet/visored/gold/king,
+		/obj/item/clothing/shirt/robe/hag,
 
 		//stat rings
 		/obj/item/clothing/ring/statgemerald,
