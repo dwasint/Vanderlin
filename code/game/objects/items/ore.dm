@@ -414,7 +414,7 @@
 	desc = "A strange green ingot. It seems to be covered in an oily metal-liquid, though it refuses to leave the ingot-shape no matter how you much you try. No one in the region yet knows what the metal can be shaped into, as it's exceedingly stubborn. But, it sure seems priceless."
 	icon_state = "ingotlithmyc"
 	smeltresult = /obj/item/ingot/lithmyc
-	melting_material = /datum/material/ketryl
+	melting_material = /datum/material/lithmyc
 	sellprice = 444
 
 /obj/item/ingot/lithmyc/Initialize()

@@ -519,3 +519,9 @@
 	required_material = /obj/item/ingot/purifiedaalloy
 	created_item = /obj/item/clothing/ring/band/paalloy
 	output_amount = 2
+
+/datum/anvil_recipe/valuables/draconic_ring
+	name = "Draconic Ring"
+	required_material = /obj/item/ingot/draconic
+	created_item = /obj/item/clothing/ring/dragon_ring
+	craftdiff = 4

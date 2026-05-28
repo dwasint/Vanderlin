@@ -1386,6 +1386,7 @@
 #include "code\datums\materials\metals\gold.dm"
 #include "code\datums\materials\metals\iron.dm"
 #include "code\datums\materials\metals\ketryl.dm"
+#include "code\datums\materials\metals\lithmyc.dm"
 #include "code\datums\materials\metals\purified_alloy.dm"
 #include "code\datums\materials\metals\silver.dm"
 #include "code\datums\materials\metals\steel.dm"

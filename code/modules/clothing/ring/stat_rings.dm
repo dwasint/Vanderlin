@@ -186,7 +186,8 @@
 	name = "dragonstone ring"
 	icon_state = "dragonring" //Should be safe for vampyres to wear, as the ring itself isn't made of silver. If they've suffered enough to make this ring, they should be able to wear it.
 	desc = "A gilded blacksteel ring with a drake's head, sculpted from silver. Perched within its sockets is a blortz and saffira - each, crackling with the reflection of a raging fire."
-	//smeltresult = /obj/item/ingot/draconic
+	melting_material = /datum/material/draconic
+	melt_amount = 100
 	sellprice = 666
 	var/active_item
 
