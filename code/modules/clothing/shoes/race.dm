@@ -6,3 +6,4 @@
 	allowed_race = list(/datum/species/dwarf, /datum/species/dwarf/mountain)
 	icon_state = "dwarfshoe"
 	item_state = "dwarfshoe"
+	item_weight = 2.1 KILOGRAMS

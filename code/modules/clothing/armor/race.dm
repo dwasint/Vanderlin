@@ -7,6 +7,8 @@
 	icon_state = "dwarfchest"
 	item_state = "dwarfchest"
 	melt_amount = 375
+	item_weight = 17 KILOGRAMS
+	stand_speed_reduction = 1.2
 
 /obj/item/clothing/armor/plate/full/dwarven/smith
 	name = "grudgebearer splint apron"

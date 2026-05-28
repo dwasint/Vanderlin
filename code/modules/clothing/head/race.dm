@@ -12,6 +12,7 @@
 	melting_material = /datum/material/steel
 	experimental_inhand = FALSE
 	experimental_onhip = FALSE
+	item_weight = 3.5 KILOGRAMS
 
 /obj/item/clothing/head/helmet/heavy/dwarven/smith
 	name = "grudgebearer smith helm"
