@@ -10,6 +10,7 @@
 	return ..()
 
 /datum/quest/custom/harlequinn_objective/kill_pet/setup_for_harlequinn(datum/antagonist/harlequinn/antag)
+	. = ..()
 	var/mob/living/carbon/human/harlequinn_mob = antag.owner?.current
 
 	var/list/candidates = list() // list(list("owner" = H, "pet" = A))

@@ -7,9 +7,23 @@
 	/// The harlequinn antag datum that owns this objective
 	var/datum/weakref/owning_harlequinn
 
+/datum/quest/custom/harlequinn_objective/process()
+	if(complete)
+		STOP_PROCESSING(SSslowobj, src)
+		return
+	if(check_completion())
+		mark_complete()
+		STOP_PROCESSING(SSslowobj, src)
+
+/datum/quest/custom/harlequinn_objective/Destroy()
+	STOP_PROCESSING(SSslowobj, src)
+	return ..()
+
 /// Called during harlequinn setup to configure this quest's target/parameters.
 /// Return TRUE on success, FALSE if generation failed (e.g. no valid targets).
 /datum/quest/custom/harlequinn_objective/proc/setup_for_harlequinn(datum/antagonist/harlequinn/antag)
+	SHOULD_CALL_PARENT(TRUE)
+	START_PROCESSING(SSslowobj, src)
 	return FALSE
 
 /datum/quest/custom/harlequinn_objective/get_location_text()

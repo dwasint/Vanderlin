@@ -10,6 +10,7 @@
 	return ..()
 
 /datum/quest/custom/harlequinn_objective/murder/setup_for_harlequinn(datum/antagonist/harlequinn/antag)
+	. = ..()
 	var/mob/living/carbon/human/harlequinn_mob = antag.owner?.current
 	var/list/candidates = list()
 	for(var/mob/living/carbon/human/H in GLOB.player_list)

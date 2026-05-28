@@ -3,6 +3,7 @@
 	var/target_name = "Unknown"
 
 /datum/quest/custom/harlequinn_objective/rob/setup_for_harlequinn(datum/antagonist/harlequinn/antag)
+	. = ..()
 	var/mob/living/carbon/human/harlequinn_mob = antag.owner?.current
 
 	var/list/tier_weights = list(
