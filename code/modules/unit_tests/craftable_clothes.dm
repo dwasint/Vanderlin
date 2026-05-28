@@ -67,6 +67,13 @@ abstract types are automatically excluded.
 		/obj/item/clothing/head/menacing/mad_touched_treasure_hunter, //cursed
 		/obj/item/clothing/face/facemask/steel/mad_touched, //cursed
 		/obj/item/clothing/cloak/poncho/yellow,//No free colouring
+		/obj/item/clothing/cloak/ordinatorcape/lirvas,
+		/obj/item/clothing/cloak/minotaur,
+		/obj/item/clothing/cloak/psydontabard/black,
+		/obj/item/clothing/cloak/psydontabard/black/alt,
+		/obj/item/clothing/shoes/boots/armor/gold/king,
+		/obj/item/clothing/armor/plate/cuirass/fluted/gold/king,
+		/obj/item/clothing/head/helmet/visored/gold/king,
 
 		//stat rings
 		/obj/item/clothing/ring/statgemerald,
