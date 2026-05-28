@@ -418,8 +418,8 @@
 	sellprice = 444
 
 /obj/item/ingot/lithmyc/Initialize()
-  ..()
-  add_filter(FORCE_FILTER, 2, list("type" = "outline", "color" = GLOW_COLOR_BUFF, "alpha" = 100, "size" = 1))
+	. = ..()
+	add_filter(FORCE_FILTER, 2, list("type" = "outline", "color" = "#A0E65C", "alpha" = 100, "size" = 1))
 
 
 /obj/item/ingot/component //Root. Don't use under most circumstances.
@@ -445,8 +445,8 @@
 			. += span_danger("You know this gem well. They are born out of great violence, but only if it involves the mightiest of warriors. </br>Fleshcrafting it with the meat of whatever warrior birthed this gem will allow me to summon another of their kind into this world.  </br>Melting away its crystalline shell is ideal, if you wish to ensure no chance for error while conducting such a ritual.")
 
 /obj/item/ingot/component/glutcrystal/Initialize()
-  ..()
-  add_filter(FORCE_FILTER, 2, list("type" = "outline", "color" = "#8B0000", "alpha" = 120, "size" = 1))
+	. = ..()
+	add_filter(FORCE_FILTER, 2, list("type" = "outline", "color" = "#8B0000", "alpha" = 120, "size" = 1))
 
 /obj/item/ingot/component/heapofrawiron
 	name = "heap of raw iron"

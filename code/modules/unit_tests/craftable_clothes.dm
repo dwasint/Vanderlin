@@ -78,6 +78,13 @@ abstract types are automatically excluded.
 		/obj/item/clothing/head/helmet/visored/gold/king,
 		/obj/item/clothing/shirt/robe/hag,
 
+		/obj/item/clothing/head/helmet/heavy/dwarven,
+		/obj/item/clothing/head/helmet/heavy/dwarven/smith,
+		/obj/item/clothing/shoes/boots/armor/dwarven,
+		/obj/item/clothing/gloves/plate/dwarven,
+		/obj/item/clothing/armor/plate/full/dwarven,
+		/obj/item/clothing/armor/plate/full/dwarven/smith,
+
 		//stat rings
 		/obj/item/clothing/ring/statgemerald,
 		/obj/item/clothing/ring/statonyx,
