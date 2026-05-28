@@ -68,6 +68,13 @@ abstract types are automatically excluded.
 		/obj/item/clothing/face/facemask/steel/mad_touched, //cursed
 		/obj/item/clothing/cloak/poncho/yellow,//No free colouring
 
+		//stat rings
+		/obj/item/clothing/ring/statgemerald,
+		/obj/item/clothing/ring/statonyx,
+		/obj/item/clothing/ring/statamythortz,
+		/obj/item/clothing/ring/statrontz,
+		/obj/item/clothing/ring/statdorpel,
+
 		/obj/item/clothing/wrists/bracers/naledi //Inqstuff
 	)
 	// these don't use misc_flags = CRAFTING_TEST_EXCLUDE because we want to explicitly know which paths we are excluding.
