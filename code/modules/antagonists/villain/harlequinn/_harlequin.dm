@@ -107,7 +107,7 @@
 	var/datum/quest/custom/harlequinn_objective/OQ = linked_quest?.resolve()
 	if(OQ && !QDELETED(OQ))
 		return OQ.check_completion()
-	return FALSE
+	return TRUE
 
 /obj/item/harlequinn_disguise_kit
 	name = "professional disguise kit"
