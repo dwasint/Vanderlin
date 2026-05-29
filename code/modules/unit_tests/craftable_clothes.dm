@@ -111,7 +111,7 @@ abstract types are automatically excluded.
 		/obj/item/clothing/face/facemask/steel/kazengun,
 		/obj/item/clothing/face/facemask/steel/kazengun/full,
 		/obj/item/clothing/head/helmet/heavy/kabuto,
-		/obj/item/clothing/armor/plate/full/samsibsa
+		/obj/item/clothing/armor/plate/full/samsibsa,
 
 		/obj/item/clothing/wrists/bracers/naledi, //Inqstuff
 		/obj/item/clothing/pants/trou/leather/pontifex,

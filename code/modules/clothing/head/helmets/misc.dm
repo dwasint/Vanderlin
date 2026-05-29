@@ -452,7 +452,7 @@
 	emote_environment = 3
 	item_weight = 4.45 KILOGRAMS
 
-/obj/item/clothing/head/helmet/visored/knight/armet/owl
+/obj/item/clothing/head/helmet/visored/knight/owl
 	name = "strigidae armet"
 	desc = "An armet of distinct bird like design with a pronounced beak. \
 		Close to the teachings of the moon himself, it shields the curious gaze of the one wearing it. \

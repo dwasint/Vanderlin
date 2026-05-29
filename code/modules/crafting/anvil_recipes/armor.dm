@@ -48,6 +48,66 @@
 	abstract_type = /datum/anvil_recipe/armor/bronze
 ///////////////////////////////////////////////
 
+/datum/anvil_recipe/armor/bronze/barbute
+	name = "Barbute, Bronze (+1 Bronze, +1 Cured Leather)"
+	additional_items = list(/obj/item/ingot/bronze, /obj/item/natural/hide/cured)
+	created_item = /obj/item/clothing/head/helmet/heavy/bronze
+
+/datum/anvil_recipe/armor/bronze/murmillo
+	name = "Murmillo-Style Helmet, Bronze (+1 Bronze, +1 Fur)"
+	additional_items = list(/obj/item/ingot/bronze, /obj/item/natural/fur)
+	created_item = /obj/item/clothing/head/helmet/bronzegladiator
+	craftdiff = 2
+
+/datum/anvil_recipe/armor/bronze/illyria
+	name = "Bascinet, Bronze (+1 Cured Leather)"
+	additional_items = list( /obj/item/natural/hide/cured)
+	created_item = /obj/item/clothing/head/helmet/bronze
+
+/datum/anvil_recipe/armor/bronze/protector
+	name = "Heart Protector, Bronze (+1 Cured Leather)"
+	additional_items = list(/obj/item/ingot/bronze, /obj/item/natural/hide/cured)
+	created_item = /obj/item/clothing/armor/plate/bronze/light
+
+/datum/anvil_recipe/armor/bronze/cuirass
+	name = "Cuirass, Bronze (+1 Bronze, +1 Cured Leather)"
+	additional_items = list(/obj/item/ingot/bronze, /obj/item/natural/hide/cured)
+	created_item = /obj/item/clothing/armor/plate/bronze
+
+/datum/anvil_recipe/armor/bronze/halfplate
+	name = "Panoply Assembly, Halved, Bronze (+2 Bronze, +1 Cured Leather, +1 Fur)"
+	additional_items = list(/obj/item/ingot/bronze, /obj/item/ingot/bronze, /obj/item/ingot/bronze, /obj/item/natural/hide/cured, /obj/item/natural/fur)
+	created_item = /obj/item/clothing/armor/plate/full/bronze/alt
+	craftdiff = 2
+
+/datum/anvil_recipe/armor/bronze/fullplate
+	name = "Panoply Assembly, Full, Bronze (+3 Bronze, +1 Cured Leather, +1 Fur)"
+	additional_items = list(/obj/item/ingot/bronze, /obj/item/ingot/bronze, /obj/item/ingot/bronze, /obj/item/natural/hide/cured, /obj/item/natural/fur)
+	created_item = /obj/item/clothing/armor/plate/full/bronze
+	craftdiff = 3
+
+/datum/anvil_recipe/armor/bronze/bevor
+	name = "Bevor, Bronze (+1 Cured Leather)"
+	additional_items = list(/obj/item/natural/hide/cured)
+	created_item = /obj/item/clothing/neck/bevor/bronze
+	craftdiff = 2
+
+/datum/anvil_recipe/armor/bronze/greaves
+	name = "Greaves, Bronze (+1 Cured Leather)"
+	additional_items = list(/obj/item/natural/hide/cured)
+	created_item = /obj/item/clothing/shoes/boots/armor/bronze
+
+
+/datum/anvil_recipe/armor/bronze/mask
+	name = "Mask, Bronze (+1 Cured Leather)"
+	additional_items = list(/obj/item/natural/hide/cured)
+	created_item = /obj/item/clothing/face/facemask/bronze
+
+/datum/anvil_recipe/armor/bronze/maskclassic
+	name = "Mask, Ornate, Bronze (+1 Cured Leather)"
+	additional_items = list(/obj/item/natural/hide/cured)
+	created_item = /obj/item/clothing/face/facemask/bronze/classic
+
 // BRONZE ARMOR
 
 /datum/anvil_recipe/armor/bronze/brigandine
@@ -335,6 +395,12 @@
 	created_item = (/obj/item/clothing/head/helmet/visored/knight/iron)
 	craftdiff = 2
 
+/datum/anvil_recipe/armor/iron/owlhelmet
+	name = "strigidae armet (+Bar)"
+	additional_items = list(/obj/item/ingot/iron)
+	created_item = /obj/item/clothing/head/helmet/visored/knight/owl
+	craftdiff = 2
+
 // IRON PLATE ARMOR
 /datum/anvil_recipe/armor/iron/halfplate
 	name = "Iron Half-plate (+Bar x2)"
@@ -443,6 +509,13 @@
 	name = "Great Helm"
 	required_material = /obj/item/ingot/steel
 	created_item = (/obj/item/clothing/head/helmet/heavy/bucket)
+
+/datum/anvil_recipe/armor/steel/keeperbucket
+	name = "Keeper's Helm"
+	required_material = /obj/item/ingot/steel
+	additional_items = list(/obj/item/natural/cloth)
+	created_item = (/obj/item/clothing/head/helmet/heavy/bucket/keeper)
+
 /*
 /datum/anvil_recipe/armor/steel/sinistar
 	name = "Sinistar Helmet (+Steel Bar)"
