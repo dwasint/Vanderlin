@@ -61,7 +61,7 @@
 /datum/quest/custom/harlequinn_objective/rob/proc/on_item_stripped(mob/source, mob/living/victim, obj/item/stolen)
 	SIGNAL_HANDLER
 	var/mob/living/carbon/human/T = target_ref?.resolve()
-	if(!T || victim != T)
+	if(victim != T)
 		return
 	progress_current = 1
 	unregister_from_harlequinn(source)

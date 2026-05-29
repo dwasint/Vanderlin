@@ -2336,7 +2336,7 @@
 #include "code\modules\antagonists\villain\zomble.dm"
 #include "code\modules\antagonists\villain\harlequinn\_harlequin.dm"
 #include "code\modules\antagonists\villain\harlequinn\clothing.dm"
-#include "code\modules\antagonists\villain\harlequinn\enhanced_mimicry.dm"
+#include "code\modules\antagonists\villain\harlequinn\disguise_kit.dm"
 #include "code\modules\antagonists\villain\harlequinn\outfit.dm"
 #include "code\modules\antagonists\villain\lich\lich.dm"
 #include "code\modules\antagonists\villain\lich\spells\command_undead.dm"

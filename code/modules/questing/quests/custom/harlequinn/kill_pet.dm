@@ -4,9 +4,10 @@
 	var/owner_name = "Unknown"
 
 /datum/quest/custom/harlequinn_objective/kill_pet/Destroy()
-	var/atom/target = pet_ref.resolve()
-	if(target)
-		UnregisterSignal(target, COMSIG_LIVING_DEATH)
+	if(pet_ref)
+		var/atom/target = pet_ref?.resolve()
+		if(target)
+			UnregisterSignal(target, COMSIG_LIVING_DEATH)
 	return ..()
 
 /datum/quest/custom/harlequinn_objective/kill_pet/setup_for_harlequinn(datum/antagonist/harlequinn/antag)

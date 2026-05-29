@@ -62,7 +62,7 @@
 
 		// Set giver to the harlequinn themselves so scroll text makes sense
 		OQ.quest_giver_reference = WEAKREF(H)
-		OQ.quest_giver_name = H.real_name
+		OQ.quest_giver_name = "The Theatre"
 
 		// Create the quest scroll
 		var/obj/item/paper/scroll/quest/scroll = new(get_turf(H))
@@ -99,7 +99,6 @@
 		surv.owner = owner
 		objectives += surv
 
-
 /datum/objective/harlequinn_contract
 	var/datum/weakref/linked_quest // weakref to /datum/quest/custom/harlequinn_objective
 
@@ -108,56 +107,6 @@
 	if(OQ && !QDELETED(OQ))
 		return OQ.check_completion()
 	return TRUE
-
-/obj/item/harlequinn_disguise_kit
-	name = "professional disguise kit"
-	desc = "A collection of makeup, prosthetics, and costume pieces for mundane disguises."
-	//icon = 'icons/obj/items.dmi'
-	icon_state = "disguise_kit"
-	w_class = WEIGHT_CLASS_NORMAL
-	grid_width = 32
-	grid_height = 32
-
-/obj/item/harlequinn_disguise_kit/attack_self(mob/user, list/modifiers)
-	var/list/options = list(
-		"Quick Disguise" = "quick",
-		"Detailed Disguise" = "detailed",
-		"Remove Disguise" = "remove"
-	)
-
-	var/choice = input(user, "What would you like to do?", "Disguise Kit") as null|anything in options
-	if(!choice)
-		return
-
-	switch(options[choice])
-		if("quick")
-			quick_disguise(user)
-		if("detailed")
-			detailed_disguise(user)
-		if("remove")
-			remove_disguise(user)
-
-/obj/item/harlequinn_disguise_kit/proc/quick_disguise(mob/user)
-	to_chat(user, span_notice("You quickly apply a basic disguise..."))
-	if(do_after(user, 30 SECONDS, target = user))
-		user.name = "Unknown"
-		to_chat(user, span_notice("You look like a different person, though the disguise won't fool close inspection."))
-
-/obj/item/harlequinn_disguise_kit/proc/detailed_disguise(mob/user)
-	var/new_name = browser_input_text(user, "What name should you appear as?", "DISGUISE", max_length = MAX_NAME_LEN)
-	if(!new_name)
-		return
-
-	to_chat(user, span_notice("You carefully apply an elaborate disguise..."))
-	if(do_after(user, 120 SECONDS, target = user))
-		user.name = new_name
-		to_chat(user, span_notice("Your disguise is convincing and should fool most observers."))
-
-/obj/item/harlequinn_disguise_kit/proc/remove_disguise(mob/user)
-	to_chat(user, span_notice("You remove your disguise..."))
-	if(do_after(user, 15 SECONDS, target = user))
-		user.name = user.real_name
-		to_chat(user, span_notice("You return to your normal appearance."))
 
 /obj/structure/buried_cache
 	name = "buried cache"
