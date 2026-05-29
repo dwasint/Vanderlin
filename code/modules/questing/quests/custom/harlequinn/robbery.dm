@@ -47,6 +47,7 @@
 	title = "Rob [target_name]"
 	reward_amount = 300
 	RegisterSignal(harlequinn_mob, COMSIG_MOB_STRIPPED_ITEM, PROC_REF(on_item_stripped))
+	RegisterSignal(harlequinn_mob, COMSIG_ITEM_STOLEN, PROC_REF(on_item_stripped))
 	return TRUE
 
 /datum/quest/custom/harlequinn_objective/rob/get_objective_text()
@@ -56,7 +57,7 @@
 	return progress_current >= 1
 
 /datum/quest/custom/harlequinn_objective/rob/proc/unregister_from_harlequinn(mob/living/carbon/human/harlequinn_mob)
-	UnregisterSignal(harlequinn_mob, COMSIG_MOB_STRIPPED_ITEM)
+	UnregisterSignal(harlequinn_mob, list(COMSIG_MOB_STRIPPED_ITEM, COMSIG_ITEM_STOLEN))
 
 /datum/quest/custom/harlequinn_objective/rob/proc/on_item_stripped(mob/source, mob/living/victim, obj/item/stolen)
 	SIGNAL_HANDLER
