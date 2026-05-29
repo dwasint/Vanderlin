@@ -38,7 +38,9 @@
 
 /datum/quest/custom/harlequinn_objective/murder/check_completion()
 	var/mob/living/carbon/human/T = target_ref?.resolve()
-	return QDELETED(T) || T.stat == DEAD
+	if(!T || QDELETED(T))
+		return TRUE
+	return T.stat >= DEAD
 
 /datum/quest/custom/harlequinn_objective/murder/proc/on_death()
 	validate()

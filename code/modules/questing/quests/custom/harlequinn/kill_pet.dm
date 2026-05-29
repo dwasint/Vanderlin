@@ -48,8 +48,11 @@
 	return "Slay [owner_name]'s [pet_name]. Leave no trace."
 
 /datum/quest/custom/harlequinn_objective/kill_pet/check_completion()
-	var/mob/living/simple_animal/P = pet_ref?.resolve()
-	return QDELETED(P) || P.stat == DEAD
+	var/mob/living/simple_animal/T = pet_ref?.resolve()
+	if(!T || QDELETED(T))
+		return TRUE
+	return T.stat == DEAD
+
 
 /datum/quest/custom/harlequinn_objective/kill_pet/proc/on_death()
 	validate()
