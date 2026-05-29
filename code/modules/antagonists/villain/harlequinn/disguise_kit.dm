@@ -3,15 +3,17 @@
 	var/mutable_appearance/cloned_appearance
 	var/examine_tone
 	var/datum/species/examine_species
-	var/old_gender
 	var/examine_title
+	var/old_gender
+	var/old_name
 
 /datum/component/disguise/Initialize(mob/living/carbon/human/source)
 	if(!ishuman(parent))
 		return COMPONENT_INCOMPATIBLE
-	var/mob/living/carbon/human/user = parent
+	var/mob/living/carbon/human/user = paget_role_titlerent
 	old_gender = user.gender
 	user.cut_overlays()
+	old_name = user.real_name
 	cloned_appearance = copy_appearance_filter_overlays(source.appearance)
 	examine_tone = source.skin_tone
 	examine_species = source.dna.species
@@ -50,7 +52,7 @@
 		COMSIG_ATOM_UPDATE_APPEARANCE,
 		COMSIG_ATOM_WAS_ATTACKED,
 	))
-	user.name = user.real_name
+	user.name = old_name
 	user.cut_overlays()
 	user.regenerate_icons()
 	user.alpha = 255
