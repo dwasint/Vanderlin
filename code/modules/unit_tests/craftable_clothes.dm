@@ -102,6 +102,26 @@ abstract types are automatically excluded.
 		/obj/item/clothing/face/xylixmask/weathered,
 		/obj/item/clothing/ring/duelist,
 		/obj/item/clothing/cloak/stabard/templar/justice,
+		/obj/item/clothing/cloak/cape/inquisitorgold,
+		/obj/item/clothing/cloak/cape/inquisitorsilver,
+		/obj/item/clothing/cloak/sleevedtabard,
+		/obj/item/clothing/cloak/absolutionistrobe/black,
+		/obj/item/clothing/gloves/angle/freifechter,
+		/obj/item/clothing/head/dancer_headdress,
+		/obj/item/clothing/face/faceveil,
+
+		//we have no way to get aalloy yet
+		/obj/item/clothing/head/helmet/heavy/aalloy,
+		/obj/item/clothing/head/helmet/kettle/aalloy,
+		/obj/item/clothing/head/helmet/visored/knight/aalloy,
+		/obj/item/clothing/armor/chainmail/hauberk/aalloy,
+
+		//funny clothes no recipe
+		/obj/item/clothing/gloves/plate/iron/banded,
+		/obj/item/clothing/head/helmet/sallet/beastskull,
+		/obj/item/clothing/head/helmet/sallet/iron/banded,
+		/obj/item/clothing/armor/plate/iron/banded,
+		/obj/item/clothing/gloves/plate/iron/banded,
 
 		///all blackmeadow are pending blackmeadow features
 		/obj/item/clothing/cloak/kazengun,
@@ -112,6 +132,9 @@ abstract types are automatically excluded.
 		/obj/item/clothing/face/facemask/steel/kazengun/full,
 		/obj/item/clothing/head/helmet/heavy/kabuto,
 		/obj/item/clothing/armor/plate/full/samsibsa,
+		/obj/item/clothing/gloves/plate/kote,
+		/obj/item/clothing/head/helmet/kettle/jingasa,
+		/obj/item/clothing/armor/brigandine/haraate,
 
 		/obj/item/clothing/wrists/bracers/naledi, //Inqstuff
 		/obj/item/clothing/pants/trou/leather/pontifex,

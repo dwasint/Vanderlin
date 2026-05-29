@@ -263,6 +263,10 @@
 	name = "mourning pants"
 	output = /obj/item/clothing/pants/trou/leather/mourning
 
+/datum/repeatable_crafting_recipe/leather/pants/shepherd
+	name = "shepherd's pants"
+	output = /obj/item/clothing/pants/trou/leather/shepherd
+
 /datum/repeatable_crafting_recipe/leather/shoes
 	name = "leather shoes"
 	output_amount = 2
@@ -606,6 +610,15 @@
 	)
 	output = /obj/item/clothing/head/leather/inqhat
 	craftdiff = 4
+
+/datum/repeatable_crafting_recipe/leather/gravetenderhat
+	name = "gravetender's hat"
+	requirements = list(
+		/obj/item/natural/hide/cured = 2,
+		/obj/item/natural/feather = 1,
+	)
+	output = /obj/item/clothing/head/leather/inqhat/gravehat
+	craftdiff = 2
 
 /datum/repeatable_crafting_recipe/leather/nobleboots
 	name = "noble boots"

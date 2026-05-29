@@ -203,6 +203,12 @@
 	created_item = /obj/item/clothing/gloves/chain/iron
 	output_amount = 2
 
+/datum/anvil_recipe/armor/iron/scaledcloak
+	name = "Scaled Cloak (+Bar)"
+	additional_items = list(/obj/item/ingot/iron)
+	created_item = /obj/item/clothing/cloak/scaledcloak
+	output_amount = 2
+
 // IRON NECK ARMOR
 /datum/anvil_recipe/armor/iron/gorget
 	name = "Iron Gorget"
@@ -1025,6 +1031,12 @@
 	created_item = /obj/item/clothing/armor/plate/full/silver
 	craftdiff = 4
 
+/datum/anvil_recipe/armor/silver/halfplate
+	name = "Silver Half Plate Armor (+Silver Bar, +Steel Bar)"
+	additional_items = list(/obj/item/ingot/silver, /obj/item/ingot/steel)
+	created_item = /obj/item/clothing/armor/plate/full/silver
+	craftdiff = 4
+
 /datum/anvil_recipe/armor/silver/gauntlet
 	name = "Silver Gauntlets"
 	additional_items = list(/obj/item/ingot/silver)
@@ -1412,3 +1424,13 @@
 	name = "Golden Greaves (+1 Gold, +2 Silk)"
 	additional_items = list(/obj/item/ingot/gold, /obj/item/natural/silk, /obj/item/natural/silk)
 	created_item = /obj/item/clothing/shoes/boots/armor/gold
+
+/datum/anvil_recipe/armor/holysteel
+	required_material = /obj/item/ingot/steelholy
+	craftdiff = 4
+	abstract_type = /datum/anvil_recipe/armor/holysteel
+
+/datum/anvil_recipe/armor/holysteel/undividedtemplar_sallet
+	name = "Undivided Templar's Sallet (+1 Holy Steel, +1 Cured Leather)"
+	additional_items = list(/obj/item/ingot/steelholy, /obj/item/natural/hide/cured)
+	created_item = /obj/item/clothing/head/helmet/heavy/undivided
