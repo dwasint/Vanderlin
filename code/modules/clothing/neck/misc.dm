@@ -415,8 +415,8 @@
 	ADD_TRAIT(src, TRAIT_HARD_TO_STEAL, TRAIT_GENERIC)
 
 /obj/item/clothing/neck/gorget/kazengun
-	name = "kazengunite gorget"
-	desc = "A series of interlocking rings of metal set around the throat. Used by the kouken of Kazengun for precisely the same reason as the knights of Psydonia."
+	name = "blackmeadow gorget"
+	desc = "A series of interlocking rings of metal set around the throat. Used by the kouken of Blackmeadow for precisely the same reason as the knights of Psydonia."
 	icon_state = "kazengunneckguard"
 
 /obj/item/clothing/neck/gorget/explosive

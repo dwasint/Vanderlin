@@ -16,7 +16,7 @@
 /obj/item/clothing/ring/signet/psy/g
 	name = "psydonian golden signet ring"
 	icon_state = "psysignet_gold"
-	desc = "A ring of opulent gold, embodying the Naledian belief in Psydon's eternity. Its face is cut to seal writs of religious importance, a bead of tallow nested in the underside."
+	desc = "A ring of opulent gold, embodying the unforgotten belief in Psydon's eternity. Its face is cut to seal writs of religious importance, a bead of tallow nested in the underside."
 
 /obj/item/clothing/ring/duelist
 	name = "duelist's ring"

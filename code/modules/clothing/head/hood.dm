@@ -204,7 +204,7 @@
 
 /obj/item/clothing/head/roguehood/studded
 	name = "studded hood"
-	desc = "A padded hood splinted across creating a cocooon for whoever wears it - won't protect your face however."
+	desc = "A padded hood splinted across creating a cocoon for whoever wears it - won't protect your face however."
 	icon_state = "studhood"
 	item_state = "studhood"
 	body_parts_covered = NECK | HEAD | HAIR
@@ -225,7 +225,7 @@
 
 /obj/item/clothing/head/roguehood/studded/retinue //For skirmisher
 	name = "guard studded hood"
-	desc = "A padded hood splinted across creating a cocooon for whoever wears it - won't protect your face however. This one bears the heraldry of the local lord."
+	desc = "A padded hood splinted across creating a cocoon for whoever wears it - won't protect your face however. This one bears the heraldry of the local lord."
 	detail_tag = "_detail"
 	color = CLOTHING_AZURE
 	detail_color = CLOTHING_WHITE

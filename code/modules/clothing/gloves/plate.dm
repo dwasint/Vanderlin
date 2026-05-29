@@ -112,7 +112,7 @@
 
 /obj/item/clothing/gloves/plate/graggar/heavy
 	name = "vicious plated gauntlets"
-	desc = "Steel plated gauntlets overlaid by an ornamental imagery of fractured bone and entrails. The violet smears; a tether to the lyfe that once was - and now, a stinging reminder of what could've been."
+	desc = "Steel plated gauntlets overlaid by an ornamental imagery of fractured bone and entrails. The violet smears; a tether to the life that once was - and now, a stinging reminder of what could've been."
 	icon_state = "graggarplategloves_heavy"
 	sleeved = 'icons/roguetown/clothing/onmob/gloves.dmi'
 	icon = 'icons/roguetown/clothing/gloves.dmi'

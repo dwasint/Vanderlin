@@ -268,7 +268,7 @@
 
 /obj/item/clothing/head/helmet/heavy/graggar/skull
 	name = "vicious skullhelm"
-	desc = "Nigh lyke a crushed skull worn with pride; as sturdy as one that has seen fractures.. and survived them, too. Godliness was never meant to be tainted with minds so fragile and passionate."
+	desc = "Nigh like a crushed skull worn with pride; as sturdy as one that has seen fractures.. and survived them, too. Godliness was never meant to be tainted with minds so fragile and passionate."
 	icon_state = "graggarplatehelm_heavy"
 	icon = 'icons/roguetown/clothing/head.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/head.dmi'
