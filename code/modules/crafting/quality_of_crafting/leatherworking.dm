@@ -1267,6 +1267,26 @@
 	craftdiff = 2
 	category = "Hat"
 
+/datum/repeatable_crafting_recipe/leather/studdedleatherhood
+	name = "studded leather hood"
+	requirements = list(
+		/obj/item/natural/hide/cured = 3,
+		/obj/item/natural/fibers/sinew = 1,
+	)
+	output = /obj/item/clothing/head/roguehood/studded
+	craftdiff = 2
+	category = "Hat"
+
+/datum/repeatable_crafting_recipe/leather/studdedleatherhood
+	name = "guard studded leather hood"
+	requirements = list(
+		/obj/item/natural/hide/cured = 3,
+		/obj/item/natural/fibers = 2,
+	)
+	output = /obj/item/clothing/head/roguehood/studded/retinue
+	craftdiff = 3
+	category = "Hat"
+
 /datum/repeatable_crafting_recipe/leather/sanguinejacket
 	name = "sanguine jacket"
 	requirements = list(
