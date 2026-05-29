@@ -10,8 +10,8 @@
 	item_state = "dwarfhead"
 	bloody_icon = 'icons/effects/blood64x64.dmi'
 	melting_material = /datum/material/steel
-	experimental_inhand = FALSE
-	experimental_onhip = FALSE
+	experimental_inhand = TRUE
+	experimental_onhip = TRUE
 	item_weight = 3.5 KILOGRAMS
 
 /obj/item/clothing/head/helmet/heavy/dwarven/smith
