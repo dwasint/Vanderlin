@@ -185,8 +185,8 @@
 			. += span_danger("You know this gem well. They are born out of great violence, but only if it involves the mightiest of warriors. </br>Fleshcrafting it with the meat of whatever warrior birthed this gem will allow me to summon another of their kind into this world.")
 
 /obj/item/gem/blood_diamond/Initialize()
-  ..()
-  add_filter(FORCE_FILTER, 2, list("type" = "outline", "color" = "#8B0000", "alpha" = 188, "size" = 1))
+	. = ..()
+	add_filter(FORCE_FILTER, 2, list("type" = "outline", "color" = "#8B0000", "alpha" = 188, "size" = 1))
 
 /obj/item/gem/green
 	name = "gemerald"

@@ -388,8 +388,8 @@
 	item_weight = 5.5 KILOGRAMS
 
 /obj/item/ingot/draconic/Initialize()
-  ..()
-  add_filter(FORCE_FILTER, 2, list("type" = "outline", "color" = "#FF4500", "alpha" = 100, "size" = 1))
+	. = ..()
+	add_filter(FORCE_FILTER, 2, list("type" = "outline", "color" = "#FF4500", "alpha" = 100, "size" = 1))
 
 /obj/item/ingot/avantyne
 	name = "avantyne wafer"
