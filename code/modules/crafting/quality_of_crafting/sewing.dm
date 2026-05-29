@@ -1114,7 +1114,7 @@
 
 /datum/repeatable_crafting_recipe/sewing/dress/velvetdress
 	name = "velvet dress"
-	output = /obj/item/clothing/shirt/velvetdress
+	output = /obj/item/clothing/shirt/dress/velvetdress
 	requirements = list(/obj/item/natural/cloth = 3,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
