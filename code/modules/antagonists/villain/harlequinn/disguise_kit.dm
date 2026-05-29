@@ -10,7 +10,7 @@
 /datum/component/disguise/Initialize(mob/living/carbon/human/source)
 	if(!ishuman(parent))
 		return COMPONENT_INCOMPATIBLE
-	var/mob/living/carbon/human/user = paget_role_titlerent
+	var/mob/living/carbon/human/user = parent
 	old_gender = user.gender
 	user.cut_overlays()
 	old_name = user.real_name
