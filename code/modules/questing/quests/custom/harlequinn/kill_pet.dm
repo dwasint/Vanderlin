@@ -51,7 +51,7 @@
 	var/mob/living/simple_animal/T = pet_ref?.resolve()
 	if(!T || QDELETED(T))
 		return TRUE
-	return T.stat == DEAD
+	return T.stat >= DEAD
 
 
 /datum/quest/custom/harlequinn_objective/kill_pet/proc/on_death()
