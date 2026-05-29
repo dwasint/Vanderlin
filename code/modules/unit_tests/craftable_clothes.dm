@@ -97,7 +97,22 @@ abstract types are automatically excluded.
 
 		/obj/item/clothing/armor/cuirass/fluted,
 
-		/obj/item/clothing/wrists/bracers/naledi //Inqstuff
+		///these can probably have recipes?
+		/obj/item/clothing/face/xylixmask,
+		/obj/item/clothing/face/xylixmask/weathered,
+		/obj/item/clothing/ring/duelist,
+		/obj/item/clothing/cloak/stabard/templar/justice,
+
+		///all blackmeadow are pending blackmeadow features
+		/obj/item/clothing/cloak/kazengun,
+		/obj/item/clothing/neck/gorget/kazengun,
+		/obj/item/clothing/shoes/boots/leather/kazengun,
+		/obj/item/clothing/pants/trou/leather/kazengun,
+		/obj/item/clothing/face/facemask/steel/kazengun,
+		/obj/item/clothing/face/facemask/steel/kazengun/full,
+
+		/obj/item/clothing/wrists/bracers/naledi, //Inqstuff
+		/obj/item/clothing/pants/trou/leather/pontifex,
 	)
 	// these don't use misc_flags = CRAFTING_TEST_EXCLUDE because we want to explicitly know which paths we are excluding.
 	/// excludes paths along with their subtypes
