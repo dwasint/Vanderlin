@@ -401,7 +401,7 @@
 	created_item = /obj/item/clothing/head/crown/sparrowcrown
 	craftdiff = 6
 
-/datum/anvil_recipe/valuables/signet
+/datum/anvil_recipe/valuables/signet/unblessedsilver
 	name = "Silver Signet Ring"
 	required_material = /obj/item/ingot/silver
 	craftdiff = SKILL_LEVEL_EXPERT
