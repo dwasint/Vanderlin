@@ -1290,7 +1290,7 @@
 	craftdiff = 2
 	category = "Hat"
 
-/datum/repeatable_crafting_recipe/leather/studdedleatherhood
+/datum/repeatable_crafting_recipe/leather/studdedleatherhoodretinue
 	name = "guard studded leather hood"
 	requirements = list(
 		/obj/item/natural/hide/cured = 3,

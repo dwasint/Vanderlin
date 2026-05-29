@@ -115,6 +115,7 @@ abstract types are automatically excluded.
 		/obj/item/clothing/head/helmet/kettle/aalloy,
 		/obj/item/clothing/head/helmet/visored/knight/aalloy,
 		/obj/item/clothing/armor/chainmail/hauberk/aalloy,
+		/obj/item/clothing/ring/band/aalloy,
 
 		//funny clothes no recipe
 		/obj/item/clothing/gloves/plate/iron/banded,

@@ -1034,7 +1034,7 @@
 /datum/anvil_recipe/armor/silver/halfplate
 	name = "Silver Half Plate Armor (+Silver Bar, +Steel Bar)"
 	additional_items = list(/obj/item/ingot/silver, /obj/item/ingot/steel)
-	created_item = /obj/item/clothing/armor/plate/full/silver
+	created_item = /obj/item/clothing/armor/plate/silver
 	craftdiff = 4
 
 /datum/anvil_recipe/armor/silver/gauntlet

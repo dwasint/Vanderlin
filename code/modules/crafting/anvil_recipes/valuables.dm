@@ -402,6 +402,12 @@
 	craftdiff = 6
 
 /datum/anvil_recipe/valuables/signet
+	name = "Silver Signet Ring"
+	required_material = /obj/item/ingot/silver
+	craftdiff = SKILL_LEVEL_EXPERT
+	created_item = /obj/item/clothing/ring/signet/silver
+
+/datum/anvil_recipe/valuables/signet
 	name = "Signet Ring"
 	required_material = /obj/item/ingot/gold
 	craftdiff = SKILL_LEVEL_EXPERT
