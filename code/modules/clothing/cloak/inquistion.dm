@@ -160,7 +160,7 @@
 	AddComponent(/datum/component/storage/concrete/grid/cloak)
 
 /obj/item/clothing/cloak/ordinatorcape/lirvas
-	name = "lirvan silks"
+	name = "warrior silks"
 	desc = "Fine silks. Only the best for me, of course. You need to look good while beating someone to death."
 	icon_state = "lirvastabard"
 	item_state = "lirvastabard"

@@ -154,7 +154,7 @@
 	triumph_cost_permanent = 500
 
 /datum/loadout_item/lirvan_silk
-	name = "Lirvan Silks"
+	name = "Warrior Silks"
 	item_path = /obj/item/clothing/cloak/ordinatorcape/lirvas
 	ui_category = "Cloaks"
 	triumph_cost_permanent = 1000
