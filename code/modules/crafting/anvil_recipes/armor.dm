@@ -1304,3 +1304,38 @@
 	name = "Psydonic Chain Gloves"
 	required_material = /obj/item/ingot/silverblessed
 	created_item = /obj/item/clothing/gloves/chain/psydon
+
+/datum/anvil_recipe/armor/gold
+	abstract_type = /datum/anvil_recipe/armor/gold
+	craftdiff = SKILL_LEVEL_LEGENDARY
+	required_material = /obj/item/ingot/gold
+
+/datum/anvil_recipe/armor/gold/armet
+	name = "Golden Knight's Armet (+1 Gold, +2 Silk)"
+	additional_items = list(/obj/item/ingot/gold, /obj/item/natural/silk, /obj/item/natural/silk)
+	created_item = /obj/item/clothing/head/helmet/visored/gold/king
+
+/datum/anvil_recipe/armor/gold/armetcrown
+	name = "Golden Knight's Armet, Royal (+1 Gold, +2 Silk, +1 Dorpel)"
+	additional_items = list(/obj/item/ingot/gold, /obj/item/natural/silk, /obj/item/natural/silk, /obj/item/gem/diamond)
+	created_item = /obj/item/clothing/head/helmet/visored/gold
+
+/datum/anvil_recipe/armor/gold/gorget
+	name = "Golden Gorget (+1 Gold, +2 Silk)"
+	additional_items = list(/obj/item/ingot/gold, /obj/item/natural/silk, /obj/item/natural/silk)
+	created_item = /obj/item/clothing/neck/gorget/gold
+
+/datum/anvil_recipe/armor/gold/cuirass
+	name = "Golden Cuirass (+2 Gold, +2 Silk)"
+	additional_items = list(/obj/item/ingot/gold, /obj/item/ingot/gold, /obj/item/natural/silk, /obj/item/natural/silk)
+	created_item = /obj/item/clothing/armor/cuirass/fluted/gold
+
+/datum/anvil_recipe/armor/gold/cuirasshero
+	name = "Golden Cuirass, Heroic (+2 Gold, +2 Silk, +1 Tallow)"
+	additional_items = list(/obj/item/ingot/gold, /obj/item/ingot/gold, /obj/item/natural/silk, /obj/item/natural/silk, /obj/item/reagent_containers/food/snacks/tallow)
+	created_item = /obj/item/clothing/armor/cuirass/fluted/gold/heroic
+
+/datum/anvil_recipe/armor/gold/greaves
+	name = "Golden Greaves (+1 Gold, +2 Silk)"
+	additional_items = list(/obj/item/ingot/gold, /obj/item/natural/silk, /obj/item/natural/silk)
+	created_item = /obj/item/clothing/shoes/boots/armor/gold
