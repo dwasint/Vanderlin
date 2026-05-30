@@ -1,4 +1,0 @@
-author: "CheffieGithub"
-delete-after: True
-changes:
-  - admin: "Added a new verb called \"Controller Overview\" with an interface that lists various stats of the subsystems and their cost as well as providing filtering and access to VV."
