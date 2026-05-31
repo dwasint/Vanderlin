@@ -25,3 +25,24 @@
 	ui_category = "Shoes"
 
 	triumph_cost_permanent = 25
+
+/datum/loadout_item/shortboots
+	name = "Short Boots"
+	item_path = /obj/item/clothing/shoes/shortboots
+	ui_category = "Shoes"
+
+	triumph_cost_permanent = 50
+
+/datum/loadout_item/nobleboots
+	name = "Noble Boots"
+	item_path = /obj/item/clothing/shoes/nobleboot
+	ui_category = "Shoes"
+
+	triumph_cost_permanent = 75
+
+/datum/loadout_item/thighboots
+	name = "Thigh Boots"
+	item_path = /obj/item/clothing/shoes/nobleboot/thighboots
+	ui_category = "Shoes"
+
+	triumph_cost_permanent = 75
