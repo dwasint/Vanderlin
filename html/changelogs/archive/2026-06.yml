@@ -6,3 +6,13 @@
   tired-wired:
   - rscadd: Added the Gallowband roles.
   - rscadd: Added Osslandic as a selectable language for the quirk.
+2026-06-03:
+  Archeonan:
+  - rscadd: Added 3 new Grenzelhoft Mercenary classes
+  - rscdel: Removed old Grenzelhoft Mercenary
+  Ben10083:
+  - code_imp: Improved logic to mapped in graves to have some bodies stored in a coffin
+      or sheet
+  - bugfix: Fixed graves not supporting simple animals.
+  ModDownloading:
+  - qol: The Hand no longer is assigned an offscreen NPC spouse roundstart.
