@@ -4510,11 +4510,6 @@
 /obj/item/reagent_containers/food/snacks/butter,
 /turf/open/floor/carpet/stellar,
 /area/indoors/town/keep/magician)
-"ceZ" = (
-/obj/machinery/light/fueled/wallfire/candle,
-/obj/structure/fake_machine/contractledger,
-/turf/open/floor/ruinedwood/two,
-/area/indoors/town/shop)
 "cff" = (
 /obj/item/clothing/head/peaceflower,
 /obj/structure/closet/dirthole/closed,
@@ -48617,10 +48612,6 @@
 /mob/living/carbon/human/species/rousman/npc,
 /turf/open/floor/cobble,
 /area/indoors/dungeon)
-"vJt" = (
-/obj/structure/fake_machine/contractledger,
-/turf/open/floor/carpet/lord/center,
-/area/indoors/town/tavern)
 "vJu" = (
 /obj/structure/handcart{
 	dir = 4
@@ -181054,7 +181045,7 @@ nbk
 msL
 qKT
 oNn
-ceZ
+oZU
 vaz
 txx
 fPz
@@ -199035,7 +199026,7 @@ diw
 mFi
 mFi
 fUV
-vJt
+sAG
 cfr
 gOZ
 cUs

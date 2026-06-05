@@ -13924,10 +13924,6 @@
 /obj/machinery/light/fueled/firebowl,
 /turf/open/floor/cobble,
 /area/outdoors/town/roofs)
-"lWT" = (
-/obj/structure/fake_machine/contractledger,
-/turf/open/floor/ruinedwood/darker,
-/area/indoors/town/tavern)
 "lXl" = (
 /obj/machinery/anvil,
 /obj/item/weapon/hammer/iron,
@@ -128755,7 +128751,7 @@ iHi
 tpZ
 jXg
 ueR
-lWT
+bNv
 bNv
 bNv
 hOo
