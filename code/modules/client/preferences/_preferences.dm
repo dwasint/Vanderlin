@@ -2507,6 +2507,13 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 			"<b>This role has been whitelisted by staff for event purposes.</b>"
 		)
 
+	if(job.job_flags & JOB_REQUIRE_WHITELIST && !user.client?.is_whitelisted(initial(job.title)))
+		return make_lock_row(
+			used_name,
+			"\[WHITELISTED\]",
+			"<b>This role has been whitelisted.</b>"
+		)
+
 	if(job.required_playtime_remaining(user.client))
 		var/list/lines = list()
 		for(var/t in job.exp_requirements)
