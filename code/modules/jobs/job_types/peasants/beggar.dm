@@ -1,13 +1,14 @@
 /datum/attribute_holder/sheet/job/vagrant
 	attribute_variance = list(
 		STAT_FORTUNE = list(-9, 9),
-		/datum/attribute/skill/misc/sneaking = list(10, 40),
-		/datum/attribute/skill/misc/stealing = list(10, 40),
-		/datum/attribute/skill/misc/lockpicking = list(10, 40),
-		/datum/attribute/skill/misc/climbing = list(10, 30),
-		/datum/attribute/skill/combat/wrestling = list(-10, 10),
-		/datum/attribute/skill/combat/unarmed = list(10, 20),
-		/datum/attribute/skill/craft/alchemy = list(10, 20),
+		/datum/attribute/skill/misc/sneaking = list(20, 50),
+		/datum/attribute/skill/misc/stealing = list(20, 50),
+		/datum/attribute/skill/misc/lockpicking = list(20, 50),
+		/datum/attribute/skill/misc/climbing = list(30, 50),
+		/datum/attribute/skill/combat/wrestling = list(-10, 20),
+		/datum/attribute/skill/combat/unarmed = list(20, 30),
+		/datum/attribute/skill/craft/alchemy = list(20, 30),
+		/datum/attribute/skill/craft/crafting = list(10, 20),
 	)
 	raw_attribute_list = list(
 		STAT_INTELLIGENCE = -3,
