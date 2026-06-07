@@ -105,6 +105,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	var/list/owned_tickets = list() // list of /datum/ticket subtypes
 	var/list/ticket_history = list() // list of assoc lists
 
+	///this exists since we use a savefile, basically lets us cache access to the values from our datums to let us use singletons
 	var/list/preference_cache = list()
 
 /datum/preferences/New(client/C)
