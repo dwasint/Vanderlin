@@ -48,6 +48,11 @@
 	TRY_MIGRATE_PREF(/datum/preference/numeric/tip_delay, "tip_delay")
 	TRY_MIGRATE_PREF(/datum/preference/toggle/multi_char_ready, "multi_char_ready")
 
+	TRY_MIGRATE_PREF(/datum/preference/bitwise/toggles, "toggles")
+	TRY_MIGRATE_PREF(/datum/preference/bitwise/chat_toggles, "chat_toggles")
+	TRY_MIGRATE_PREF(/datum/preference/bitwise/toggles_maptext, "toggles_maptext")
+	TRY_MIGRATE_PREF(/datum/preference/bitwise/toggles_gameplay, "toggles_gameplay")
+
 	#undef TRY_MIGRATE_PREF
 
 /// Migrate flat character preferences from old raw savefile data
@@ -65,10 +70,7 @@
 	TRY_MIGRATE_PREF(/datum/preference/choiced/pronouns, "pronouns")
 	TRY_MIGRATE_PREF(/datum/preference/choiced/voice_type, "voice_type")
 	TRY_MIGRATE_PREF(/datum/preference/choiced/age, "age")
-	TRY_MIGRATE_PREF(/datum/preference/choiced/origin, "origin")
 	TRY_MIGRATE_PREF(/datum/preference/choiced/domhand, "domhand")
-	TRY_MIGRATE_PREF(/datum/preference/choiced/alignment, "alignment")
-	TRY_MIGRATE_PREF(/datum/preference/choiced/phobia, "phobia")
 	TRY_MIGRATE_PREF(/datum/preference/choiced/selected_accent,"selected_accent")
 	TRY_MIGRATE_PREF(/datum/preference/text/family, "family")
 	TRY_MIGRATE_PREF(/datum/preference/text/setspouse, "setspouse")

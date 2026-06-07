@@ -498,8 +498,8 @@ GLOBAL_LIST_EMPTY(respawncounts)
 		prefs = new /datum/preferences(src)
 		GLOB.preferences_datums[ckey] = prefs
 	if(!holder)
-		prefs.chat_toggles &= ~CHAT_GHOSTEARS
-		prefs.chat_toggles &= ~CHAT_GHOSTWHISPER
+		prefs.preference_clear_flag(/datum/preference/bitwise/chat_toggles, CHAT_GHOSTEARS)
+		prefs.preference_clear_flag(/datum/preference/bitwise/chat_toggles, CHAT_GHOSTWHISPER)
 		prefs.save_preferences()
 	prefs.last_ip = address				//these are gonna be used for banning
 	prefs.last_id = computer_id			//these are gonna be used for banning
@@ -731,7 +731,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	loot_panel = new(src)
 
 	view_size = new(src)
-	toggle_fullscreeny((prefs.toggles & TOGGLE_FULLSCREEN), logging_in = TRUE)
+	toggle_fullscreeny((prefs.read_preference(/datum/preference/bitwise/toggles) & TOGGLE_FULLSCREEN), logging_in = TRUE)
 	view_size.resetFormat()
 	view_size.setZoomMode()
 	view_size.apply()
@@ -973,7 +973,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 				CRASH("Key check regex failed for [ckey]")
 
 /client/proc/update_ambience_pref()
-	if(prefs.toggles & SOUND_AMBIENCE)
+	if(prefs.read_preference(/datum/preference/bitwise/toggles) & SOUND_AMBIENCE)
 		if(SSambience.ambience_listening_clients[src] > world.time)
 			return // If already properly set we don't want to reset the timer.
 		SSambience.ambience_listening_clients[src] = world.time + 10 SECONDS //Just wait 10 seconds before the next one aight mate? cheers.
@@ -1308,7 +1308,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	void.UpdateGreed(actualview[1],actualview[2])
 
 /client/proc/AnnouncePR(announcement)
-	if(prefs && prefs.chat_toggles & CHAT_PULLR)
+	if(prefs && prefs.read_preference(/datum/preference/bitwise/chat_toggles) & CHAT_PULLR)
 		to_chat(src, announcement)
 
 /client/proc/show_character_previews(mutable_appearance/MA)
@@ -1414,7 +1414,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 
 /// This grabs the DPI of the user per their skin
 /client/proc/acquire_dpi()
-	if(prefs && (prefs.toggles & UI_SCALE))
+	if(prefs && (prefs.read_preference(/datum/preference/bitwise/toggles) & UI_SCALE))
 		window_scaling = prefs.read_preference(/datum/preference/numeric/ui_scale)
 	else if(isnull(window_scaling))
 		window_scaling = text2num(winget(src, null, "dpi"))
@@ -1484,14 +1484,14 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	set category = "Preferences.Options"
 
 	if(prefs)
-		prefs.toggles ^= TOGGLE_FULLSCREEN
-		toggle_fullscreeny(prefs.toggles & TOGGLE_FULLSCREEN)
+		prefs.preference_toggle_flag(/datum/preference/bitwise/toggles, TOGGLE_FULLSCREEN)
+		toggle_fullscreeny(prefs.preference_has_flag(/datum/preference/bitwise/toggles, TOGGLE_FULLSCREEN))
 
 /client/proc/toggle_fullscreeny(new_value, logging_in = FALSE)
 	//no need to set every login to not fullscreen, they already aren't.
 	//we also dont need to call attempt_auto_fit_viewport, Login does that for us.
 	if(logging_in)
-		var/fullscreen = (prefs.toggles & TOGGLE_FULLSCREEN)
+		var/fullscreen = (prefs.read_preference(/datum/preference/bitwise/toggles) & TOGGLE_FULLSCREEN)
 		if(fullscreen)
 			winset(src, "mainwindow", "menu=;is-fullscreen=[fullscreen ? "true" : "false"]")
 		return

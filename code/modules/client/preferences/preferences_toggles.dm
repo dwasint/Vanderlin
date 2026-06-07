@@ -46,60 +46,60 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Ghost/chatterbox, toggle_ghost_ears)(
 	set category = "Preferences"
 	set desc = ""
 	set hidden = 1
-	usr.client.prefs.chat_toggles ^= CHAT_GHOSTEARS
-	to_chat(usr, "As a ghost, you will now [(usr.client.prefs.chat_toggles & CHAT_GHOSTEARS) ? "see all speech in the world" : "only see speech from nearby mobs"].")
+	usr.client.prefs.read_preference(/datum/preference/bitwise/chat_toggles) ^= CHAT_GHOSTEARS
+	to_chat(usr, "As a ghost, you will now [(usr.client.prefs.read_preference(/datum/preference/bitwise/chat_toggles) & CHAT_GHOSTEARS) ? "see all speech in the world" : "only see speech from nearby mobs"].")
 	usr.client.prefs.save_preferences()
-	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Ghost Ears", "[usr.client.prefs.chat_toggles & CHAT_GHOSTEARS ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Ghost Ears", "[usr.client.prefs.read_preference(/datum/preference/bitwise/chat_toggles) & CHAT_GHOSTEARS ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 /datum/verbs/menu/Settings/Ghost/chatterbox/toggle_ghost_ears/Get_checked(client/C)
-	return C.prefs.chat_toggles & CHAT_GHOSTEARS
+	return C.prefs.read_preference(/datum/preference/bitwise/chat_toggles) & CHAT_GHOSTEARS
 
 TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Ghost/chatterbox, toggle_ghost_sight)()
 	set name = "Show/Hide GhostSight"
 	set category = "Preferences"
 	set desc = ""
 	set hidden = 1
-	usr.client.prefs.chat_toggles ^= CHAT_GHOSTSIGHT
-	to_chat(usr, "As a ghost, you will now [(usr.client.prefs.chat_toggles & CHAT_GHOSTSIGHT) ? "see all emotes in the world" : "only see emotes from nearby mobs"].")
+	usr.client.prefs.read_preference(/datum/preference/bitwise/chat_toggles) ^= CHAT_GHOSTSIGHT
+	to_chat(usr, "As a ghost, you will now [(usr.client.prefs.read_preference(/datum/preference/bitwise/chat_toggles) & CHAT_GHOSTSIGHT) ? "see all emotes in the world" : "only see emotes from nearby mobs"].")
 	usr.client.prefs.save_preferences()
-	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Ghost Sight", "[usr.client.prefs.chat_toggles & CHAT_GHOSTSIGHT ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Ghost Sight", "[usr.client.prefs.read_preference(/datum/preference/bitwise/chat_toggles) & CHAT_GHOSTSIGHT ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 /datum/verbs/menu/Settings/Ghost/chatterbox/toggle_ghost_sight/Get_checked(client/C)
-	return C.prefs.chat_toggles & CHAT_GHOSTSIGHT
+	return C.prefs.read_preference(/datum/preference/bitwise/chat_toggles) & CHAT_GHOSTSIGHT
 
 TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Ghost/chatterbox, toggle_ghost_whispers)()
 	set name = "Show/Hide GhostWhispers"
 	set category = "Preferences"
 	set desc = ""
 	set hidden = 1
-	usr.client.prefs.chat_toggles ^= CHAT_GHOSTWHISPER
-	to_chat(usr, "As a ghost, you will now [(usr.client.prefs.chat_toggles & CHAT_GHOSTWHISPER) ? "see all whispers in the world" : "only see whispers from nearby mobs"].")
+	usr.client.prefs.read_preference(/datum/preference/bitwise/chat_toggles) ^= CHAT_GHOSTWHISPER
+	to_chat(usr, "As a ghost, you will now [(usr.client.prefs.read_preference(/datum/preference/bitwise/chat_toggles) & CHAT_GHOSTWHISPER) ? "see all whispers in the world" : "only see whispers from nearby mobs"].")
 	usr.client.prefs.save_preferences()
-	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Ghost Whispers", "[usr.client.prefs.chat_toggles & CHAT_GHOSTWHISPER ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Ghost Whispers", "[usr.client.prefs.read_preference(/datum/preference/bitwise/chat_toggles) & CHAT_GHOSTWHISPER ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 /datum/verbs/menu/Settings/Ghost/chatterbox/toggle_ghost_whispers/Get_checked(client/C)
-	return C.prefs.chat_toggles & CHAT_GHOSTWHISPER
+	return C.prefs.read_preference(/datum/preference/bitwise/chat_toggles) & CHAT_GHOSTWHISPER
 
 TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Ghost/chatterbox, toggle_ghost_radio)()
 	set name = "Show/Hide GhostRadio"
 	set category = "Preferences"
 	set desc = ""
 	set hidden = 1
-	usr.client.prefs.chat_toggles ^= CHAT_GHOSTRADIO
-	to_chat(usr, "As a ghost, you will now [(usr.client.prefs.chat_toggles & CHAT_GHOSTRADIO) ? "see radio chatter" : "not see radio chatter"].")
+	usr.client.prefs.read_preference(/datum/preference/bitwise/chat_toggles) ^= CHAT_GHOSTRADIO
+	to_chat(usr, "As a ghost, you will now [(usr.client.prefs.read_preference(/datum/preference/bitwise/chat_toggles) & CHAT_GHOSTRADIO) ? "see radio chatter" : "not see radio chatter"].")
 	usr.client.prefs.save_preferences()
-	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Ghost Radio", "[usr.client.prefs.chat_toggles & CHAT_GHOSTRADIO ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc! //social experiment, increase the generation whenever you copypaste this shamelessly GENERATION 1
+	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Ghost Radio", "[usr.client.prefs.read_preference(/datum/preference/bitwise/chat_toggles) & CHAT_GHOSTRADIO ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc! //social experiment, increase the generation whenever you copypaste this shamelessly GENERATION 1
 /datum/verbs/menu/Settings/Ghost/chatterbox/toggle_ghost_radio/Get_checked(client/C)
-	return C.prefs.chat_toggles & CHAT_GHOSTRADIO
+	return C.prefs.read_preference(/datum/preference/bitwise/chat_toggles) & CHAT_GHOSTRADIO
 
 TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Ghost/chatterbox, toggle_ghost_pda)()
 	set name = "Show/Hide GhostPDA"
 	set category = "Preferences"
 	set desc = ""
 	set hidden = 1
-	usr.client.prefs.chat_toggles ^= CHAT_GHOSTPDA
-	to_chat(usr, "As a ghost, you will now [(usr.client.prefs.chat_toggles & CHAT_GHOSTPDA) ? "see all pda messages in the world" : "only see pda messages from nearby mobs"].")
+	usr.client.prefs.read_preference(/datum/preference/bitwise/chat_toggles) ^= CHAT_GHOSTPDA
+	to_chat(usr, "As a ghost, you will now [(usr.client.prefs.read_preference(/datum/preference/bitwise/chat_toggles) & CHAT_GHOSTPDA) ? "see all pda messages in the world" : "only see pda messages from nearby mobs"].")
 	usr.client.prefs.save_preferences()
-	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Ghost PDA", "[usr.client.prefs.chat_toggles & CHAT_GHOSTPDA ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Ghost PDA", "[usr.client.prefs.read_preference(/datum/preference/bitwise/chat_toggles) & CHAT_GHOSTPDA ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 /datum/verbs/menu/Settings/Ghost/chatterbox/toggle_ghost_pda/Get_checked(client/C)
-	return C.prefs.chat_toggles & CHAT_GHOSTPDA
+	return C.prefs.read_preference(/datum/preference/bitwise/chat_toggles) & CHAT_GHOSTPDA
 
 /datum/verbs/menu/Settings/Ghost/chatterbox/Events
 	name = "Events"
@@ -110,54 +110,54 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Ghost/chatterbox/Events, toggle_death
 	set category = "Preferences"
 	set desc = ""
 	set hidden = 1
-	usr.client.prefs.toggles ^= DISABLE_DEATHRATTLE
+	usr.client.prefs.read_preference(/datum/preference/bitwise/toggles) ^= DISABLE_DEATHRATTLE
 	usr.client.prefs.save_preferences()
-	to_chat(usr, "You will [(usr.client.prefs.toggles & DISABLE_DEATHRATTLE) ? "no longer" : "now"] get messages when a sentient mob dies.")
-	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Deathrattle", "[!(usr.client.prefs.toggles & DISABLE_DEATHRATTLE) ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, maybe you should spend some time reading the comments.
+	to_chat(usr, "You will [(usr.client.prefs.read_preference(/datum/preference/bitwise/toggles) & DISABLE_DEATHRATTLE) ? "no longer" : "now"] get messages when a sentient mob dies.")
+	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Deathrattle", "[!(usr.client.prefs.read_preference(/datum/preference/bitwise/toggles) & DISABLE_DEATHRATTLE) ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, maybe you should spend some time reading the comments.
 /datum/verbs/menu/Settings/Ghost/chatterbox/Events/toggle_deathrattle/Get_checked(client/C)
-	return !(C.prefs.toggles & DISABLE_DEATHRATTLE)
+	return !(C.prefs.read_preference(/datum/preference/bitwise/toggles) & DISABLE_DEATHRATTLE)
 
 TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Ghost/chatterbox/Events, toggle_arrivalrattle)()
 	set name = "Toggle Arrivalrattle"
 	set category = "Preferences"
 	set desc = ""
 	set hidden = 1
-	usr.client.prefs.toggles ^= DISABLE_ARRIVALRATTLE
-	to_chat(usr, "You will [(usr.client.prefs.toggles & DISABLE_ARRIVALRATTLE) ? "no longer" : "now"] get messages when someone joins the station.")
+	usr.client.prefs.read_preference(/datum/preference/bitwise/toggles) ^= DISABLE_ARRIVALRATTLE
+	to_chat(usr, "You will [(usr.client.prefs.read_preference(/datum/preference/bitwise/toggles) & DISABLE_ARRIVALRATTLE) ? "no longer" : "now"] get messages when someone joins the station.")
 	usr.client.prefs.save_preferences()
-	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Arrivalrattle", "[!(usr.client.prefs.toggles & DISABLE_ARRIVALRATTLE) ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, maybe you should rethink where your life went so wrong.
+	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Arrivalrattle", "[!(usr.client.prefs.read_preference(/datum/preference/bitwise/toggles) & DISABLE_ARRIVALRATTLE) ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, maybe you should rethink where your life went so wrong.
 /datum/verbs/menu/Settings/Ghost/chatterbox/Events/toggle_arrivalrattle/Get_checked(client/C)
-	return !(C.prefs.toggles & DISABLE_ARRIVALRATTLE)
+	return !(C.prefs.read_preference(/datum/preference/bitwise/toggles) & DISABLE_ARRIVALRATTLE)
 
 TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Ghost, togglemidroundantag)()
 	set name = "Toggle Midround Antagonist"
 	set category = "Preferences"
 	set desc = ""
 	set hidden = 1
-	usr.client.prefs.toggles ^= MIDROUND_ANTAG
+	usr.client.prefs.read_preference(/datum/preference/bitwise/toggles) ^= MIDROUND_ANTAG
 	usr.client.prefs.save_preferences()
-	to_chat(usr, "You will [(usr.client.prefs.toggles & MIDROUND_ANTAG) ? "now" : "no longer"] be considered for midround antagonist positions.")
-	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Midround Antag", "[usr.client.prefs.toggles & MIDROUND_ANTAG ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	to_chat(usr, "You will [(usr.client.prefs.read_preference(/datum/preference/bitwise/toggles) & MIDROUND_ANTAG) ? "now" : "no longer"] be considered for midround antagonist positions.")
+	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Midround Antag", "[usr.client.prefs.read_preference(/datum/preference/bitwise/toggles) & MIDROUND_ANTAG ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 /datum/verbs/menu/Settings/Ghost/togglemidroundantag/Get_checked(client/C)
-	return C.prefs.toggles & MIDROUND_ANTAG*/
+	return C.prefs.read_preference(/datum/preference/bitwise/toggles) & MIDROUND_ANTAG*/
 /*
 TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Sound, toggletitlemusic)()
 	set name = "LobbyMusic"
 	set category = "Preferences.Options"
 	set desc = ""
 	set hidden = 1
-	usr.client.prefs.toggles ^= SOUND_LOBBY
+	usr.client.prefs.read_preference(/datum/preference/bitwise/toggles) ^= SOUND_LOBBY
 	usr.client.prefs.save_preferences()
-	if(usr.client.prefs.toggles & SOUND_LOBBY)
+	if(usr.client.prefs.read_preference(/datum/preference/bitwise/toggles) & SOUND_LOBBY)
 		to_chat(usr, "You will now hear music in the lobby.")
 		if(isnewplayer(usr))
 			usr.client.playtitlemusic()
 	else
 		to_chat(usr, "You will no longer hear music in the lobby.")
 		usr.stop_sound_channel(CHANNEL_LOBBYMUSIC)
-	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Lobby Music", "[usr.client.prefs.toggles & SOUND_LOBBY ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Lobby Music", "[usr.client.prefs.read_preference(/datum/preference/bitwise/toggles) & SOUND_LOBBY ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 /datum/verbs/menu/Settings/Sound/toggletitlemusic/Get_checked(client/C)
-	return C.prefs.toggles & SOUND_LOBBY
+	return C.prefs.read_preference(/datum/preference/bitwise/toggles) & SOUND_LOBBY
 
 
 TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Sound, togglemidis)()
@@ -165,9 +165,9 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Sound, togglemidis)()
 	set category = "Preferences"
 	set desc = ""
 	set hidden = 1
-	usr.client.prefs.toggles ^= SOUND_MIDI
+	usr.client.prefs.read_preference(/datum/preference/bitwise/toggles) ^= SOUND_MIDI
 	usr.client.prefs.save_preferences()
-	if(usr.client.prefs.toggles & SOUND_MIDI)
+	if(usr.client.prefs.read_preference(/datum/preference/bitwise/toggles) & SOUND_MIDI)
 		to_chat(usr, "You will now hear any sounds uploaded by admins.")
 	else
 		to_chat(usr, "You will no longer hear sounds uploaded by admins")
@@ -175,9 +175,9 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Sound, togglemidis)()
 		var/client/C = usr.client
 		if(C && C.chatOutput && !C.chatOutput.broken && C.chatOutput.loaded)
 			C.chatOutput.stopMusic()
-	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Hearing Midis", "[usr.client.prefs.toggles & SOUND_MIDI ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Hearing Midis", "[usr.client.prefs.read_preference(/datum/preference/bitwise/toggles) & SOUND_MIDI ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 /datum/verbs/menu/Settings/Sound/togglemidis/Get_checked(client/C)
-	return C.prefs.toggles & SOUND_MIDI
+	return C.prefs.read_preference(/datum/preference/bitwise/toggles) & SOUND_MIDI
 
 
 TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Sound, toggle_instruments)()
@@ -185,15 +185,15 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Sound, toggle_instruments)()
 	set category = "Preferences"
 	set desc = ""
 	set hidden = 1
-	usr.client.prefs.toggles ^= SOUND_INSTRUMENTS
+	usr.client.prefs.read_preference(/datum/preference/bitwise/toggles) ^= SOUND_INSTRUMENTS
 	usr.client.prefs.save_preferences()
-	if(usr.client.prefs.toggles & SOUND_INSTRUMENTS)
+	if(usr.client.prefs.read_preference(/datum/preference/bitwise/toggles) & SOUND_INSTRUMENTS)
 		to_chat(usr, "You will now hear people playing musical instruments.")
 	else
 		to_chat(usr, "You will no longer hear musical instruments.")
-	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Instruments", "[usr.client.prefs.toggles & SOUND_INSTRUMENTS ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Instruments", "[usr.client.prefs.read_preference(/datum/preference/bitwise/toggles) & SOUND_INSTRUMENTS ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 /datum/verbs/menu/Settings/Sound/toggle_instruments/Get_checked(client/C)
-	return C.prefs.toggles & SOUND_INSTRUMENTS
+	return C.prefs.read_preference(/datum/preference/bitwise/toggles) & SOUND_INSTRUMENTS
 
 
 TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Sound, Toggle_Soundscape)()
@@ -201,17 +201,17 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Sound, Toggle_Soundscape)()
 	set category = "Preferences"
 	set desc = ""
 	set hidden = 1
-	usr.client.prefs.toggles ^= SOUND_AMBIENCE
+	usr.client.prefs.read_preference(/datum/preference/bitwise/toggles) ^= SOUND_AMBIENCE
 	usr.client.prefs.save_preferences()
-	if(usr.client.prefs.toggles & SOUND_AMBIENCE)
+	if(usr.client.prefs.read_preference(/datum/preference/bitwise/toggles) & SOUND_AMBIENCE)
 		to_chat(usr, "You will now hear ambient sounds.")
 	else
 		to_chat(usr, "You will no longer hear ambient sounds.")
 		usr.stop_sound_channel(CHANNEL_AMBIENCE)
 		usr.stop_sound_channel(CHANNEL_BUZZ)
-	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Ambience", "[usr.client.prefs.toggles & SOUND_AMBIENCE ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Ambience", "[usr.client.prefs.read_preference(/datum/preference/bitwise/toggles) & SOUND_AMBIENCE ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 /datum/verbs/menu/Settings/Sound/Toggle_Soundscape/Get_checked(client/C)
-	return C.prefs.toggles & SOUND_AMBIENCE
+	return C.prefs.read_preference(/datum/preference/bitwise/toggles) & SOUND_AMBIENCE
 
 
 TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Sound, toggle_ship_ambience)()
@@ -219,17 +219,17 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Sound, toggle_ship_ambience)()
 	set category = "Preferences"
 	set desc = ""
 	set hidden = 1
-	usr.client.prefs.toggles ^= SOUND_SHIP_AMBIENCE
+	usr.client.prefs.read_preference(/datum/preference/bitwise/toggles) ^= SOUND_SHIP_AMBIENCE
 	usr.client.prefs.save_preferences()
-	if(usr.client.prefs.toggles & SOUND_SHIP_AMBIENCE)
+	if(usr.client.prefs.read_preference(/datum/preference/bitwise/toggles) & SOUND_SHIP_AMBIENCE)
 		to_chat(usr, "You will now hear ship ambience.")
 	else
 		to_chat(usr, "You will no longer hear ship ambience.")
 		usr.stop_sound_channel(CHANNEL_BUZZ)
 		usr.client.ambience_playing = 0
-	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Ship Ambience", "[usr.client.prefs.toggles & SOUND_SHIP_AMBIENCE ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, I bet you read this comment expecting to see the same thing :^)
+	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Ship Ambience", "[usr.client.prefs.read_preference(/datum/preference/bitwise/toggles) & SOUND_SHIP_AMBIENCE ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, I bet you read this comment expecting to see the same thing :^)
 /datum/verbs/menu/Settings/Sound/toggle_ship_ambience/Get_checked(client/C)
-	return C.prefs.toggles & SOUND_SHIP_AMBIENCE
+	return C.prefs.read_preference(/datum/preference/bitwise/toggles) & SOUND_SHIP_AMBIENCE
 
 
 TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Sound, toggle_announcement_sound)()
@@ -237,12 +237,12 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Sound, toggle_announcement_sound)()
 	set category = "Preferences"
 	set desc = ""
 	set hidden = 1
-	usr.client.prefs.toggles ^= SOUND_ANNOUNCEMENTS
-	to_chat(usr, "You will now [(usr.client.prefs.toggles & SOUND_ANNOUNCEMENTS) ? "hear announcement sounds" : "no longer hear announcements"].")
+	usr.client.prefs.read_preference(/datum/preference/bitwise/toggles) ^= SOUND_ANNOUNCEMENTS
+	to_chat(usr, "You will now [(usr.client.prefs.read_preference(/datum/preference/bitwise/toggles) & SOUND_ANNOUNCEMENTS) ? "hear announcement sounds" : "no longer hear announcements"].")
 	usr.client.prefs.save_preferences()
-	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Announcement Sound", "[usr.client.prefs.toggles & SOUND_ANNOUNCEMENTS ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Announcement Sound", "[usr.client.prefs.read_preference(/datum/preference/bitwise/toggles) & SOUND_ANNOUNCEMENTS ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 /datum/verbs/menu/Settings/Sound/toggle_announcement_sound/Get_checked(client/C)
-	return C.prefs.toggles & SOUND_ANNOUNCEMENTS
+	return C.prefs.read_preference(/datum/preference/bitwise/toggles) & SOUND_ANNOUNCEMENTS
 
 
 /datum/verbs/menu/Settings/Sound/verb/stop_client_sounds()
@@ -261,24 +261,24 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings, listen_ooc)()
 	set category = "Preferences"
 	set desc = ""
 	set hidden = 1
-	usr.client.prefs.chat_toggles ^= CHAT_OOC
+	usr.client.prefs.read_preference(/datum/preference/bitwise/chat_toggles) ^= CHAT_OOC
 	usr.client.prefs.save_preferences()
-	to_chat(usr, "You will [(usr.client.prefs.chat_toggles & CHAT_OOC) ? "now" : "no longer"] see messages on the OOC channel.")
-	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Seeing OOC", "[usr.client.prefs.chat_toggles & CHAT_OOC ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	to_chat(usr, "You will [(usr.client.prefs.read_preference(/datum/preference/bitwise/chat_toggles) & CHAT_OOC) ? "now" : "no longer"] see messages on the OOC channel.")
+	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Seeing OOC", "[usr.client.prefs.read_preference(/datum/preference/bitwise/chat_toggles) & CHAT_OOC ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 /datum/verbs/menu/Settings/listen_ooc/Get_checked(client/C)
-	return C.prefs.chat_toggles & CHAT_OOC
+	return C.prefs.read_preference(/datum/preference/bitwise/chat_toggles) & CHAT_OOC
 
 TOGGLE_CHECKBOX(/datum/verbs/menu/Settings, listen_bank_card)()
 	set name = "Show/Hide Income Updates"
 	set category = "Preferences"
 	set desc = ""
 	set hidden = 1
-	usr.client.prefs.chat_toggles ^= CHAT_BANKCARD
+	usr.client.prefs.read_preference(/datum/preference/bitwise/chat_toggles) ^= CHAT_BANKCARD
 	usr.client.prefs.save_preferences()
-	to_chat(usr, "You will [(usr.client.prefs.chat_toggles & CHAT_BANKCARD) ? "now" : "no longer"] be notified when you get paid.")
-	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Income Notifications", "[(usr.client.prefs.chat_toggles & CHAT_BANKCARD) ? "Enabled" : "Disabled"]"))
+	to_chat(usr, "You will [(usr.client.prefs.read_preference(/datum/preference/bitwise/chat_toggles) & CHAT_BANKCARD) ? "now" : "no longer"] be notified when you get paid.")
+	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Income Notifications", "[(usr.client.prefs.read_preference(/datum/preference/bitwise/chat_toggles) & CHAT_BANKCARD) ? "Enabled" : "Disabled"]"))
 /datum/verbs/menu/Settings/listen_bank_card/Get_checked(client/C)
-	return C.prefs.chat_toggles & CHAT_BANKCARD*/
+	return C.prefs.read_preference(/datum/preference/bitwise/chat_toggles) & CHAT_BANKCARD*/
 
 
 GLOBAL_LIST_INIT(ghost_forms, sortList(list("ghost","ghostking","ghostian2","skeleghost","ghost_red","ghost_black", \
@@ -367,10 +367,10 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 	set hidden = 1
 	if(!holder)
 		return
-	prefs.toggles ^= INTENT_STYLE
-	to_chat(src, "[(prefs.toggles & INTENT_STYLE) ? "Clicking directly on intents selects them." : "Clicking on intents rotates selection clockwise."]")
+	prefs.preference_toggle_flag(/datum/preference/bitwise/toggles, INTENT_STYLE)
+	to_chat(src, "[(prefs.preference_has_flag(/datum/preference/bitwise/toggles, INTENT_STYLE)) ? "Clicking directly on intents selects them." : "Clicking on intents rotates selection clockwise."]")
 	prefs.save_preferences()
-	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Intent Selection", "[prefs.toggles & INTENT_STYLE ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Intent Selection", "[prefs.preference_has_flag(/datum/preference/bitwise/toggles, INTENT_STYLE) ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/verb/toggle_ghost_hud_pref()
 	set name = "Toggle Ghost HUD"
@@ -393,13 +393,13 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 	set hidden = 1
 	if(!holder)
 		return
-	prefs.inquisitive_ghost = !prefs.inquisitive_ghost
+	prefs.write_preference(/datum/preference/toggle/inquisitive_ghost, !prefs.read_preference(/datum/preference/toggle/inquisitive_ghost))
 	prefs.save_preferences()
-	if(prefs.inquisitive_ghost)
+	if(prefs.read_preference(/datum/preference/toggle/inquisitive_ghost))
 		to_chat(src, "<span class='notice'>I will now examine everything you click on.</span>")
 	else
 		to_chat(src, "<span class='notice'>I will no longer examine things you click on.</span>")
-	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Ghost Inquisitiveness", "[prefs.inquisitive_ghost ? "Enabled" : "Disabled"]"))
+	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Ghost Inquisitiveness", "[prefs.read_preference(/datum/preference/toggle/inquisitive_ghost) ? "Enabled" : "Disabled"]"))
 
 //Admin Preferences
 /client/proc/toggleadminhelpsound()
@@ -408,10 +408,10 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 	set desc = ""
 	if(!holder)
 		return
-	prefs.toggles ^= SOUND_ADMINHELP
+	prefs.preference_toggle_flag(/datum/preference/bitwise/toggles, SOUND_ADMINHELP)
 	prefs.save_preferences()
-	to_chat(usr, "You will [(prefs.toggles & SOUND_ADMINHELP) ? "now" : "no longer"] hear a sound when adminhelps arrive.")
-	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle Adminhelp Sound", "[prefs.toggles & SOUND_ADMINHELP ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	to_chat(usr, "You will [(prefs.preference_has_flag(/datum/preference/bitwise/toggles, SOUND_ADMINHELP)) ? "now" : "no longer"] hear a sound when adminhelps arrive.")
+	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle Adminhelp Sound", "[prefs.preference_has_flag(/datum/preference/bitwise/toggles, SOUND_ADMINHELP) ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/toggleannouncelogin()
 	set name = "Do/Don't Announce Login"
@@ -419,10 +419,10 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 	set desc = ""
 	if(!holder)
 		return
-	prefs.toggles ^= ANNOUNCE_LOGIN
+	prefs.preference_toggle_flag(/datum/preference/bitwise/toggles, ANNOUNCE_LOGIN)
 	prefs.save_preferences()
-	to_chat(usr, "You will [(prefs.toggles & ANNOUNCE_LOGIN) ? "now" : "no longer"] have an announcement to other admins when you login.")
-	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle Login Announcement", "[prefs.toggles & ANNOUNCE_LOGIN ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	to_chat(usr, "You will [(prefs.preference_has_flag(/datum/preference/bitwise/toggles, ANNOUNCE_LOGIN)) ? "now" : "no longer"] have an announcement to other admins when you login.")
+	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle Login Announcement", "[prefs.preference_has_flag(/datum/preference/bitwise/toggles, ANNOUNCE_LOGIN) ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/toggle_hear_radio()
 	set name = "Show/Hide Radio Chatter"
@@ -430,10 +430,10 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 	set desc = ""
 	if(!holder)
 		return
-	prefs.chat_toggles ^= CHAT_RADIO
+	prefs.preference_toggle_flag(/datum/preference/bitwise/chat_toggles, CHAT_RADIO)
 	prefs.save_preferences()
-	to_chat(usr, "You will [(prefs.chat_toggles & CHAT_RADIO) ? "now" : "no longer"] see radio chatter from nearby radios or speakers")
-	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle Radio Chatter", "[prefs.chat_toggles & CHAT_RADIO ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	to_chat(usr, "You will [(prefs.preference_has_flag(/datum/preference/bitwise/chat_toggles, CHAT_RADIO)) ? "now" : "no longer"] see radio chatter from nearby radios or speakers")
+	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle Radio Chatter", "[prefs.preference_has_flag(/datum/preference/bitwise/chat_toggles, CHAT_RADIO) ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/deadchat()
 	set name = "Show/Hide Deadchat"
@@ -441,10 +441,10 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 	set desc ="Toggles seeing deadchat"
 	if(!holder)
 		return
-	prefs.chat_toggles ^= CHAT_DEAD
+	prefs.preference_toggle_flag(/datum/preference/bitwise/chat_toggles, CHAT_DEAD)
 	prefs.save_preferences()
-	to_chat(src, "You will [(prefs.chat_toggles & CHAT_DEAD) ? "now" : "no longer"] see deadchat.")
-	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle Deadchat Visibility", "[prefs.chat_toggles & CHAT_DEAD ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	to_chat(src, "You will [(prefs.read_preference(/datum/preference/bitwise/chat_toggles, CHAT_DEAD)) ? "now" : "no longer"] see deadchat.")
+	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle Deadchat Visibility", "[prefs.preference_has_flag(/datum/preference/bitwise/chat_toggles, CHAT_DEAD) ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/toggleprayers()
 	set name = "Show/Hide Prayers"
@@ -452,10 +452,10 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 	set desc = ""
 	if(!holder)
 		return
-	prefs.chat_toggles ^= CHAT_PRAYER
+	prefs.preference_toggle_flag(/datum/preference/bitwise/chat_toggles, CHAT_PRAYER)
 	prefs.save_preferences()
-	to_chat(src, "You will [(prefs.chat_toggles & CHAT_PRAYER) ? "now" : "no longer"] see prayerchat.")
-	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle Prayer Visibility", "[prefs.chat_toggles & CHAT_PRAYER ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	to_chat(src, "You will [(prefs.preference_has_flag(/datum/preference/bitwise/chat_toggles, CHAT_PRAYER)) ? "now" : "no longer"] see prayerchat.")
+	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle Prayer Visibility", "[prefs.preference_has_flag(/datum/preference/bitwise/chat_toggles, CHAT_PRAYER) ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/toggle_prayer_sound()
 	set name = "Hear/Silence Prayer Sounds"
@@ -463,10 +463,10 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 	set desc = ""
 	if(!holder)
 		return
-	prefs.toggles ^= SOUND_PRAYERS
+	prefs.preference_toggle_flag(/datum/preference/bitwise/toggles, SOUND_PRAYERS)
 	prefs.save_preferences()
-	to_chat(usr, "You will [(prefs.toggles & SOUND_PRAYERS) ? "now" : "no longer"] hear a sound when prayers arrive.")
-	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle Prayer Sounds", "[usr.client.prefs.toggles & SOUND_PRAYERS ? "Enabled" : "Disabled"]"))
+	to_chat(usr, "You will [(prefs.preference_has_flag(/datum/preference/bitwise/toggles, SOUND_PRAYERS)) ? "now" : "no longer"] hear a sound when prayers arrive.")
+	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle Prayer Sounds", "[usr.client.prefs.preference_has_flag(/datum/preference/bitwise/toggles, SOUND_PRAYERS) ? "Enabled" : "Disabled"]"))
 
 /client/proc/colorasay()
 	set name = "Set Admin Say Color"
@@ -551,3 +551,22 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 	prefs.save_preferences()
 
 #undef TOGGLE_CHECKBOX
+
+/// Returns TRUE if the given flag bit is set in a bitwise preference.
+/datum/preferences/proc/preference_has_flag(preference_type, flag)
+	return !!(read_preference(preference_type) & flag)
+
+/// Sets a flag bit in a bitwise preference.
+/datum/preferences/proc/preference_set_flag(preference_type, flag)
+	var/current = read_preference(preference_type)
+	write_preference(GLOB.preference_entries[preference_type], current | flag)
+
+/// Clears a flag bit in a bitwise preference.
+/datum/preferences/proc/preference_clear_flag(preference_type, flag)
+	var/current = read_preference(preference_type)
+	write_preference(GLOB.preference_entries[preference_type], current & ~flag)
+
+/// Toggles a flag bit in a bitwise preference.
+/datum/preferences/proc/preference_toggle_flag(preference_type, flag)
+	var/current = read_preference(preference_type)
+	write_preference(GLOB.preference_entries[preference_type], current ^ flag)

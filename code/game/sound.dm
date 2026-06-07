@@ -284,7 +284,7 @@
 	set waitfor = FALSE
 	UNTIL(SSticker.login_music) //wait for SSticker init to set the login music
 
-	if(prefs && (prefs.toggles & SOUND_LOBBY))
+	if(prefs && (prefs.read_preference(/datum/preference/bitwise/toggles) & SOUND_LOBBY))
 		SEND_SOUND(src, sound(SSticker.login_music, repeat = 1, wait = 0, volume = prefs.read_preference(/datum/preference/numeric/musicvol), channel = CHANNEL_LOBBYMUSIC)) // MAD JAMS
 
 /proc/get_rand_frequency()

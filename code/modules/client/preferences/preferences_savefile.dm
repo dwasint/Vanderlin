@@ -1,15 +1,13 @@
 //This is the lowest supported version, anything below this is completely obsolete and the entire savefile will be wiped.
 #define SAVEFILE_VERSION_MIN 18
 
+#define PREF_MIGRATION_VERSION 34
+
 //This is the current version, anything below this will attempt to update (if it's not obsolete)
 //	You do not need to raise this if you are adding new values that have sane defaults.
 //	Only raise this value when changing the meaning/format/name/layout of an existing value
 //	where you would want the updater procs below to run
-#define SAVEFILE_VERSION_MAX 33
-
-// Bump SAVEFILE_VERSION_MAX in your savefile_versioning.dm to
-// this value to trigger the migration.
-#define VPREF_MIGRATION_VERSION 45 // adjust to your next version
+#define SAVEFILE_VERSION_MAX 35
 
 /*
 SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Carn
@@ -104,7 +102,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 			if("Feminine")
 				write_preference(GLOB.preference_entries[/datum/preference/choiced/voice_type], VOICE_TYPE_FEM)
 
-	if(current_version < VPREF_MIGRATION_VERSION)
+	if(current_version < PREF_MIGRATION_VERSION)
 		var/list/flat = list()
 		for(var/key in list(
 			"real_name","gender","pronouns","voice_type","age",
@@ -147,10 +145,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["triumphs"]			>> triumphs
 	S["lastclass"]			>> lastclass
 	S["default_slot"]		>> default_slot
-	S["chat_toggles"]		>> chat_toggles
-	S["toggles"]			>> toggles
-	S["toggles_maptext"]	>> toggles_maptext
-	S["toggles_gameplay"]	>> toggles_gameplay
 	S["preferred_map"]		>> preferred_map
 	S["ignoring"]			>> ignoring
 	S["uses_glasses_colour"]>> uses_glasses_colour
@@ -174,10 +168,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	// Sanitize non-preference fields
 	lastchangelog = sanitize_text(lastchangelog, initial(lastchangelog))
 	default_slot = sanitize_integer(default_slot, 1, max_save_slots, initial(default_slot))
-	toggles = sanitize_integer(toggles, 0, SHORT_REAL_LIMIT, initial(toggles))
-	chat_toggles = sanitize_integer(chat_toggles, 0, SHORT_REAL_LIMIT, initial(chat_toggles))
-	toggles_maptext = sanitize_integer(toggles_maptext, 0, SHORT_REAL_LIMIT, initial(toggles_maptext))
-	toggles_gameplay = sanitize_integer(toggles_gameplay, 0, SHORT_REAL_LIMIT, initial(toggles_gameplay))
 	parallax = sanitize_integer(parallax, PARALLAX_INSANE, PARALLAX_DISABLE, null)
 	menuoptions = SANITIZE_LIST(menuoptions)
 	be_special = SANITIZE_LIST(be_special)
@@ -210,10 +200,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["lastchangelog"], lastchangelog)
 	WRITE_FILE(S["be_special"], be_special)
 	WRITE_FILE(S["default_slot"], default_slot)
-	WRITE_FILE(S["toggles"], toggles)
-	WRITE_FILE(S["chat_toggles"], chat_toggles)
-	WRITE_FILE(S["toggles_maptext"], toggles_maptext)
-	WRITE_FILE(S["toggles_gameplay"], toggles_gameplay)
 	WRITE_FILE(S["preferred_map"], preferred_map)
 	WRITE_FILE(S["ignoring"], ignoring)
 	WRITE_FILE(S["uses_glasses_colour"], uses_glasses_colour)

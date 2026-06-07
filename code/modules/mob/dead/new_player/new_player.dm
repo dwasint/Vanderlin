@@ -419,7 +419,7 @@ GLOBAL_LIST_INIT(roleplay_readme, file2list("strings/rt/Lore_Primer.txt"))
 /mob/dead/new_player/proc/AttemptLateSpawn(rank)
 	// Multi-ready is pregame-only. If active, ignore cached slots and
 	// reload whichever character slot the player actually has selected.
-	if(client?.prefs?.multi_char_ready)
+	if(client?.prefs?.read_preference(/datum/preference/toggle/multi_char_ready))
 		client.prefs.load_character(client.prefs.default_slot)
 		multi_ready_characters = list()
 

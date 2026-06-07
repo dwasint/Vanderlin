@@ -76,7 +76,7 @@ GLOBAL_LIST_INIT(oocpronouns_required, list(
 			message_admins("[key_name_admin(src)] has attempted to advertise in OOC: [msg]")
 			return
 
-	if(!(prefs.chat_toggles & CHAT_OOC))
+	if(!(prefs.read_preference(/datum/preference/bitwise/chat_toggles) & CHAT_OOC))
 		to_chat(src, span_danger("I have OOC muted."))
 		return
 
@@ -93,7 +93,7 @@ GLOBAL_LIST_INIT(oocpronouns_required, list(
 	for(var/client/C in GLOB.clients)
 		var/pre_keyfield = C.holder ? "[keyname]([key])" : keyname
 		var/keyfield = conditional_tooltip_alt(pre_keyfield, prefs.read_preference(/datum/preference/color/ooccolor), length(prefs.read_preference(/datum/preference/text/oocpronouns)) && !is_misc_banned(ckey, BAN_MISC_OOCPRONOUNS))
-		if(C.prefs.chat_toggles & CHAT_OOC)
+		if(C.prefs.read_preference(/datum/preference/bitwise/chat_toggles) & CHAT_OOC)
 			msg_to_send = "<font color='[color2use]'><EM>[keyfield]:</EM></font> <span class='message linkify'>[msg]</span>"
 			if(holder)
 				msg_to_send = "<font color='[color2use]'><EM>[keyfield]:</EM></font> <font color='[admin_message_color ? admin_message_color : GLOB.OOC_COLOR]'><span class='message linkify'>[msg]</span></font>"
@@ -145,7 +145,7 @@ GLOBAL_LIST_INIT(oocpronouns_required, list(
 			message_admins("[key_name_admin(src)] has attempted to advertise in OOC: [msg]")
 			return
 
-	if(!(prefs.chat_toggles & CHAT_OOC))
+	if(!(prefs.read_preference(/datum/preference/bitwise/chat_toggles) & CHAT_OOC))
 		to_chat(src, span_danger("I have OOC muted."))
 		return
 
@@ -166,7 +166,7 @@ GLOBAL_LIST_INIT(oocpronouns_required, list(
 
 	for(var/client/C in GLOB.clients)
 		var/real_key = C.holder ? "([key])" : ""
-		if(C.prefs.chat_toggles & CHAT_OOC)
+		if(C.prefs.read_preference(/datum/preference/bitwise/chat_toggles) & CHAT_OOC)
 			if(!C.holder)
 				if(SSticker.current_state != GAME_STATE_FINISHED && !istype(C.mob, /mob/dead/new_player))
 					continue

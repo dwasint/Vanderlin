@@ -23,4 +23,4 @@
 	return sanitize_inlist(path, get_choices(), create_default_value())
 
 /datum/preference/choiced/culture/apply_to_human(mob/living/carbon/human/H, value, datum/preferences/prefs)
-	H.culture = value
+	H.culture = GLOB.culture_singletons[value]

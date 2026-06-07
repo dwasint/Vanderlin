@@ -31,11 +31,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	var/list/key_bindings = list()
 
 	var/db_flags
-	var/toggles = TOGGLES_DEFAULT
-	var/chat_toggles = TOGGLES_DEFAULT_CHAT
-	var/toggles_maptext = NONE
-	var/toggles_gameplay = NONE
-	var/inquisitive_ghost = 1
 	var/allow_midround_antag = 1
 	var/preferred_map = null
 
@@ -1390,9 +1385,9 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 	else if(href_list["preference"] == "toggles")
 		var/list/toggles_list = list(
-			"Default Toggles" = list("toggles_default", toggles),
-			"Maptext Toggles" = list("toggles_maptext", toggles_maptext),
-			"Gameplay Toggles" = list("toggles_gameplay", toggles_gameplay),
+			"Default Toggles" = list("toggles_default", read_preference(/datum/preference/bitwise/toggles)),
+			"Maptext Toggles" = list("toggles_maptext", read_preference(/datum/preference/bitwise/toggles_maptext)),
+			"Gameplay Toggles" = list("toggles_gameplay", read_preference(/datum/preference/bitwise/toggles_gameplay)),
 		)
 		var/toggle_type = browser_input_list(user, title = "Toggle Select", items = toggles_list)
 		if(!toggle_type)
@@ -1406,9 +1401,11 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 				if("Default Toggles")
 					// Reset all fields we touch to 0 first because we don't use a full set to do toggles = X
 					// And don't want to override them
+					var/toggles = read_preference(/datum/preference/bitwise/toggles)
 					for(var/field in GLOB.bitfields[bitfield])
 						toggles &= ~GLOB.bitfields[bitfield][field]
 					toggles ^= new_toggles
+					write_preference(/datum/preference/bitwise/toggles, toggles)
 					if((prefs_variable & SOUND_LOBBY) && user.client && isnewplayer(user))
 						user.client.playtitlemusic()
 					else
@@ -1421,10 +1418,10 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 					user.client?.update_ambience_pref()
 				if("Maptext Toggles")
-					toggles_maptext = new_toggles
+					write_preference(/datum/preference/bitwise/toggles_maptext, new_toggles)
 
 				if("Gameplay Toggles")
-					toggles_gameplay = new_toggles
+					write_preference(/datum/preference/bitwise/toggles_gameplay, new_toggles)
 
 	switch(href_list["task"])
 		if("change_customizer")
@@ -1875,10 +1872,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 						if(new_gender_choice)
 
 							write_preference(/datum/preference/choiced/gender_choice, new_gender_choice)
-				if("alignment")
-					var/new_alignment = browser_input_list(user, "SELECT YOUR HERO'S MORALITY", "CUT FROM THE SAME CLOTH", ALL_ALIGNMENTS_LIST, read_preference(/datum/preference/choiced/alignment))
-					if(new_alignment)
-						write_preference(/datum/preference/choiced/alignment, new_alignment)
 				if("hotkeys")
 					write_preference(/datum/preference/toggle/hotkeys, !read_preference(/datum/preference/toggle/hotkeys))
 					if(read_preference(/datum/preference/toggle/hotkeys))
@@ -1903,7 +1896,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 				if("announce_login")
 					user.client.toggleannouncelogin()
 				if("combohud_lighting")
-					toggles ^= COMBOHUD_LIGHTING
+					preference_toggle_flag(/datum/preference/bitwise/toggles, COMBOHUD_LIGHTING)
 				if("toggle_dead_chat")
 					user.client.deadchat()
 				if("toggle_radio_chatter")
@@ -1911,15 +1904,15 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 				if("toggle_prayers")
 					user.client.toggleprayers()
 				if("toggle_deadmin_always")
-					toggles ^= DEADMIN_ALWAYS
+					preference_toggle_flag(/datum/preference/bitwise/toggles, DEADMIN_ALWAYS)
 				if("toggle_deadmin_antag")
-					toggles ^= DEADMIN_ANTAGONIST
+					preference_toggle_flag(/datum/preference/bitwise/toggles, DEADMIN_ANTAGONIST)
 				if("toggle_deadmin_head")
-					toggles ^= DEADMIN_POSITION_HEAD
+					preference_toggle_flag(/datum/preference/bitwise/toggles, DEADMIN_POSITION_HEAD)
 				if("toggle_deadmin_security")
-					toggles ^= DEADMIN_POSITION_SECURITY
+					preference_toggle_flag(/datum/preference/bitwise/toggles, DEADMIN_POSITION_SECURITY)
 				if("toggle_deadmin_silicon")
-					toggles ^= DEADMIN_POSITION_SILICON
+					preference_toggle_flag(/datum/preference/bitwise/toggles, DEADMIN_POSITION_SILICON)
 
 
 				if("be_special")
@@ -1937,41 +1930,41 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 						randomise[random_type] = TRUE
 
 				if("hear_midis")
-					toggles ^= SOUND_MIDI
+					preference_toggle_flag(/datum/preference/bitwise/toggles, SOUND_MIDI)
 
 				if("lobby_music")
-					toggles ^= SOUND_LOBBY
-					if((toggles & SOUND_LOBBY) && user.client && isnewplayer(user))
+					preference_toggle_flag(/datum/preference/bitwise/toggles, SOUND_LOBBY)
+					if((preference_has_flag(/datum/preference/bitwise/toggles, SOUND_LOBBY)) && user.client && isnewplayer(user))
 						user.client.playtitlemusic()
 					else
 						user.stop_sound_channel(CHANNEL_LOBBYMUSIC)
 
 				if("ghost_ears")
 					if(user.client?.holder)
-						chat_toggles ^= CHAT_GHOSTEARS
+						preference_toggle_flag(/datum/preference/bitwise/chat_toggles, CHAT_GHOSTEARS)
 
 				if("ghost_sight")
 					if(user.client?.holder)
-						chat_toggles ^= CHAT_GHOSTSIGHT
+						preference_toggle_flag(/datum/preference/bitwise/chat_toggles, CHAT_GHOSTSIGHT)
 
 				if("ghost_whispers")
 					if(user.client?.holder)
-						chat_toggles ^= CHAT_GHOSTWHISPER
+						preference_toggle_flag(/datum/preference/bitwise/chat_toggles, CHAT_GHOSTWHISPER)
 
 				if("ghost_radio")
-					chat_toggles ^= CHAT_GHOSTRADIO
+					preference_toggle_flag(/datum/preference/bitwise/chat_toggles, CHAT_GHOSTRADIO)
 
 				if("ghost_pda")
-					chat_toggles ^= CHAT_GHOSTPDA
+					preference_toggle_flag(/datum/preference/bitwise/chat_toggles, CHAT_GHOSTPDA)
 
 				if("income_pings")
-					chat_toggles ^= CHAT_BANKCARD
+					preference_toggle_flag(/datum/preference/bitwise/chat_toggles, CHAT_BANKCARD)
 
 				if("pull_requests")
-					chat_toggles ^= CHAT_PULLR
+					preference_toggle_flag(/datum/preference/bitwise/chat_toggles, CHAT_PULLR)
 
 				if("allow_midround_antag")
-					toggles ^= MIDROUND_ANTAG
+					preference_toggle_flag(/datum/preference/bitwise/toggles, MIDROUND_ANTAG)
 
 				if("ambientocclusion")
 					write_preference(/datum/preference/toggle/ambientocclusion, !read_preference(/datum/preference/toggle/ambientocclusion))
@@ -2018,8 +2011,8 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 					user.client.view_size.setZoomMode()
 
 				if("schizo_voice")
-					toggles ^= SCHIZO_VOICE
-					if(toggles & SCHIZO_VOICE)
+					preference_toggle_flag(/datum/preference/bitwise/toggles, SCHIZO_VOICE)
+					if(preference_has_flag(/datum/preference/bitwise/toggles, SCHIZO_VOICE))
 						to_chat(user, "<span class='warning'>You are now a voice.\n\
 										As a voice, you will receive meditations from players asking about game mechanics!\n\
 										Good voices could be rewarded with PQ by staff for answering meditations, while bad ones are punished.</span>")

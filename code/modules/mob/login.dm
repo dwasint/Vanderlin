@@ -110,8 +110,8 @@
  *
  * Configs:
  * * flag/auto_deadmin_players
- * * client.prefs?.toggles & DEADMIN_ALWAYS
- * * User is antag and flag/auto_deadmin_antagonists or client.prefs?.toggles & DEADMIN_ANTAGONIST
+ * * client.prefs?.read_preference(/datum/preference/bitwise/toggles) & DEADMIN_ALWAYS
+ * * User is antag and flag/auto_deadmin_antagonists or client.prefs?.read_preference(/datum/preference/bitwise/toggles) & DEADMIN_ANTAGONIST
  * * or if their job demands a deadminning SSjob.handle_auto_deadmin_roles()
  *
  * Called from [login](mob.html#proc/Login)
@@ -119,9 +119,9 @@
 /mob/proc/auto_deadmin_on_login() //return true if they're not an admin at the end.
 	if(!client?.holder)
 		return TRUE
-	if(CONFIG_GET(flag/auto_deadmin_players) || (client.prefs?.toggles & DEADMIN_ALWAYS))
+	if(CONFIG_GET(flag/auto_deadmin_players) || (client.prefs?.read_preference(/datum/preference/bitwise/toggles) & DEADMIN_ALWAYS))
 		return client.holder.auto_deadmin()
-	if(mind.has_antag_datum(/datum/antagonist) && (CONFIG_GET(flag/auto_deadmin_antagonists) || client.prefs?.toggles & DEADMIN_ANTAGONIST))
+	if(mind.has_antag_datum(/datum/antagonist) && (CONFIG_GET(flag/auto_deadmin_antagonists) || client.prefs?.read_preference(/datum/preference/bitwise/toggles) & DEADMIN_ANTAGONIST))
 		return client.holder.auto_deadmin()
 	if(job)
 		return SSjob.handle_auto_deadmin_roles(client, job)

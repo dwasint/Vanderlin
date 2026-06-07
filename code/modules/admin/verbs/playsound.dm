@@ -31,7 +31,7 @@
 	message_admins("[key_name_admin(src)] played sound [S]")
 
 	for(var/mob/M in GLOB.player_list)
-		if(M.client.prefs.toggles & SOUND_MIDI)
+		if(M.client.prefs.read_preference(/datum/preference/bitwise/toggles) & SOUND_MIDI)
 			var/user_vol = M.client.prefs.read_preference(/datum/preference/numeric/musicvol)
 			if(user_vol)
 				admin_sound.volume = vol * (user_vol / 100)
@@ -179,7 +179,7 @@
 		if(web_sound_url || stop_web_sounds)
 			for(var/mob/M as anything in GLOB.player_list)
 				var/client/C = M.client
-				if((C.prefs.toggles & SOUND_MIDI))
+				if((C.prefs.read_preference(/datum/preference/bitwise/toggles) & SOUND_MIDI))
 					SEND_SOUND(C, sound(null, channel = CHANNEL_LOBBYMUSIC))
 					SEND_SOUND(C, sound(null, channel = CHANNEL_ADMIN))
 					if(!stop_web_sounds)
