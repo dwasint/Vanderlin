@@ -31,11 +31,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	var/list/key_bindings = list()
 
 	var/db_flags
-	var/allow_midround_antag = 1
-	var/preferred_map = null
-
-	var/uses_glasses_colour = 0
-
 	//character preferences
 	/// Keeps track of round-to-round randomization of the character slot, prevents overwriting.
 	var/slot_randomized

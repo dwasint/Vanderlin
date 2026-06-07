@@ -143,9 +143,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["triumphs"]			>> triumphs
 	S["lastclass"]			>> lastclass
 	S["default_slot"]		>> default_slot
-	S["preferred_map"]		>> preferred_map
 	S["ignoring"]			>> ignoring
-	S["uses_glasses_colour"]>> uses_glasses_colour
 	S["parallax"]			>> parallax
 	S["menuoptions"]		>> menuoptions
 	S["owned_loadout_items"] >> owned_loadout_items
@@ -198,9 +196,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["lastchangelog"], lastchangelog)
 	WRITE_FILE(S["be_special"], be_special)
 	WRITE_FILE(S["default_slot"], default_slot)
-	WRITE_FILE(S["preferred_map"], preferred_map)
 	WRITE_FILE(S["ignoring"], ignoring)
-	WRITE_FILE(S["uses_glasses_colour"], uses_glasses_colour)
 	WRITE_FILE(S["parallax"], parallax)
 	WRITE_FILE(S["menuoptions"], menuoptions)
 	WRITE_FILE(S["key_bindings"], key_bindings)
