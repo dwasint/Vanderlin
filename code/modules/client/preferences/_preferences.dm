@@ -51,9 +51,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	//Job preferences 2.0 - indexed by job title , no key or value implies never
 	var/list/job_preferences = list()
 
-	/// 0 = character settings, 1 = game preferences
-	var/current_tab = 0
-
 	var/unlock_content = 0
 
 	var/list/ignoring = list()
@@ -2066,10 +2063,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 					reset_all_customizer_accessory_colors()
 					randomize_all_customizer_accessories()
 					reset_jobs(user)
-
-				if("tab")
-					if (href_list["tab"])
-						current_tab = text2num(href_list["tab"])
 
 	update_menu_data(user)
 	return 1

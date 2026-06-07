@@ -17,7 +17,6 @@
 	set category = "Preferences.Options"
 	set desc = ""
 	set hidden = 1
-	usr.client.prefs.current_tab = 1
 	usr.client.prefs.show_choices(usr)
 #endif
 
@@ -26,7 +25,6 @@
 	set category = "Preferences.Options"
 	set desc = ""
 	if(prefs)
-		usr.client.prefs.current_tab = 1
 		usr.client.prefs.show_choices(usr, 4)
 
 /client/verb/stop_sounds_rogue()
