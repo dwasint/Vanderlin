@@ -24,9 +24,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 	//Antag preferences
 	var/list/be_special = list()		//Special role selection
-	var/tmp/old_be_special = 0			//Bitflag version of be_special, used to update old savefiles and nothing more
-										//If it's 0, that's good, if it's anything but 0, the owner of this prefs file's antag choices were,
-										//autocorrected this round, not that you'd need to check that.
+
 	// Custom Keybindings
 	var/list/key_bindings = list()
 
@@ -37,8 +35,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 	/// The species this character is.
 	var/datum/species/pref_species = new /datum/species/human/northern() //Mutant race
-	/// The default patron to use if none is selected
-	var/static/datum/patron/default_patron = /datum/patron/divine/astrata
 	var/list/features = MANDATORY_FEATURE_LIST
 	var/list/randomise = list(
 		(RANDOM_BODY) = FALSE,
@@ -146,7 +142,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	//we couldn't load character data so just randomize the character appearance + name
 	randomise_appearance_prefs(include_donator = donator)		//let's create a random character then - rather than a fat, bald and naked man.
 	if(!read_preference(/datum/preference/choiced/patron))
-		write_preference(/datum/preference/choiced/patron, GLOB.patrons_by_type[default_patron])
+		write_preference(/datum/preference/choiced/patron, GLOB.patrons_by_type[/datum/patron/divine/astrata])
 	key_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
 	if(isclient(C))
 		C.update_movement_keys()
@@ -1081,7 +1077,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	// onclose(user, "capturekeypress", src) // this would act as if the main prefs window was closed, so it didn't actually do anything. plus use_onclose was false
 
 /datum/preferences/proc/reset_patron(mob/user, silent = FALSE)
-	write_preference(/datum/preference/choiced/patron, default_patron)
+	write_preference(/datum/preference/choiced/patron, /datum/patron/divine/astrata)
 	if(!silent)
 		to_chat(user, "<font color='red'>Patron reset.</font>")
 
@@ -1524,7 +1520,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 				if("patron")
 					var/datum/patron/pref_patron = read_preference(/datum/preference/choiced/patron)
 					var/list/patrons_named = list()
-					for(var/datum/patron/patron as anything in GLOB.patrons_by_faith[pref_patron.associated_faith || initial(default_patron.associated_faith)])
+					for(var/datum/patron/patron as anything in GLOB.patrons_by_faith[pref_patron.associated_faith || /datum/patron/divine/astrata::associated_faith])
 						patron = GLOB.patrons_by_type[patron]
 						if(!patron.preference_accessible(src))
 							continue
@@ -1532,7 +1528,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 						patrons_named[pref_name] = patron
 
 					if(length(patrons_named))
-						var/datum/faith/current_faith = GLOB.faith_list[pref_patron.associated_faith] || GLOB.faith_list[initial(default_patron.associated_faith)]
+						var/datum/faith/current_faith = GLOB.faith_list[pref_patron.associated_faith] || GLOB.faith_list[/datum/patron/divine/astrata::associated_faith]
 						var/god_input = browser_input_list(user, "SELECT YOUR HERO'S PATRON GOD", uppertext("\The [current_faith.name]"), patrons_named, pref_patron)
 						if(god_input)
 							write_preference(/datum/preference/choiced/patron, patrons_named[god_input])
