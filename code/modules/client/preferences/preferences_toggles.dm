@@ -292,7 +292,7 @@ GLOBAL_LIST_INIT(ghost_forms, sortList(list("ghost","ghostking","ghostian2","ske
 		return
 	var/new_form = input(src, "Thanks for supporting BYOND - Choose your ghostly form:","Thanks for supporting BYOND",null) as null|anything in GLOB.ghost_forms
 	if(new_form)
-		prefs.ghost_form = new_form
+		prefs.write_preference(/datum/preference/choiced/ghost_form, new_form)
 		prefs.save_preferences()
 
 GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOST_ORBIT_SQUARE,GHOST_ORBIT_HEXAGON,GHOST_ORBIT_PENTAGON))
@@ -303,7 +303,7 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 		return
 	var/new_orbit = input(src, "Thanks for supporting BYOND - Choose your ghostly orbit:","Thanks for supporting BYOND",null) as null|anything in GLOB.ghost_orbits
 	if(new_orbit)
-		prefs.ghost_orbit = new_orbit
+		prefs.write_preference(/datum/preference/choiced/ghost_orbit, new_orbit)
 		prefs.save_preferences()
 		if(isobserver(mob))
 			var/mob/dead/observer/O = mob
@@ -314,11 +314,11 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 	if(new_ghost_accs)
 		switch(new_ghost_accs)
 			if("full accessories")
-				prefs.ghost_accs = GHOST_ACCS_FULL
+				prefs.write_preference(/datum/preference/choiced/ghost_accs, GHOST_ACCS_FULL)
 			if("only directional sprites")
-				prefs.ghost_accs = GHOST_ACCS_DIR
+				prefs.write_preference(/datum/preference/choiced/ghost_accs, GHOST_ACCS_DIR)
 			if("default sprites")
-				prefs.ghost_accs = GHOST_ACCS_NONE
+				prefs.write_preference(/datum/preference/choiced/ghost_accs, GHOST_ACCS_NONE)
 		prefs.save_preferences()
 
 /client/verb/pick_ghost_customization()
@@ -350,11 +350,11 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 	if(new_ghost_others)
 		switch(new_ghost_others)
 			if("Their Setting")
-				prefs.ghost_others = GHOST_OTHERS_THEIR_SETTING
+				prefs.write_preference(/datum/preference/choiced/ghost_others, GHOST_OTHERS_THEIR_SETTING)
 			if("Default Sprites")
-				prefs.ghost_others = GHOST_OTHERS_DEFAULT_SPRITE
+				prefs.write_preference(/datum/preference/choiced/ghost_others, GHOST_OTHERS_DEFAULT_SPRITE)
 			if("White Ghost")
-				prefs.ghost_others = GHOST_OTHERS_SIMPLE
+				prefs.write_preference(/datum/preference/choiced/ghost_others, GHOST_OTHERS_SIMPLE)
 		prefs.save_preferences()
 		if(isobserver(mob))
 			var/mob/dead/observer/O = mob
@@ -379,12 +379,12 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 	set hidden = 1
 	if(!holder)
 		return
-	prefs.ghost_hud = !prefs.ghost_hud
-	to_chat(src, "Ghost HUD will now be [prefs.ghost_hud ? "visible" : "hidden"].")
+	prefs.write_preference(/datum/preference/toggle/ghost_hud, !prefs.read_preference(/datum/preference/toggle/ghost_hud))
+	to_chat(src, "Ghost HUD will now be [prefs.read_preference(/datum/preference/toggle/ghost_hud) ? "visible" : "hidden"].")
 	prefs.save_preferences()
 	if(isobserver(mob))
 		mob.hud_used.show_hud()
-	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Ghost HUD", "[prefs.ghost_hud ? "Enabled" : "Disabled"]"))
+	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Ghost HUD", "[prefs.read_preference(/datum/preference/toggle/ghost_hud) ? "Enabled" : "Disabled"]"))
 
 /client/verb/toggle_inquisition() // warning: unexpected inquisition
 	set name = "Toggle Inquisitiveness"
@@ -477,9 +477,9 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 	if(!CONFIG_GET(flag/allow_admin_asaycolor))
 		to_chat(src, "Custom Asay color is currently disabled by the server.")
 		return
-	var/new_asaycolor = input(src, "Please select your ASAY color.", "ASAY color", prefs.asaycolor) as color|null
+	var/new_asaycolor = input(src, "Please select your ASAY color.", "ASAY color", prefs.read_preference(/datum/preference/color/asaycolor)) as color|null
 	if(new_asaycolor)
-		prefs.asaycolor = sanitize_color(new_asaycolor)
+		prefs.write_preference(/datum/preference/color/asaycolor, new_asaycolor)
 		prefs.save_preferences()
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Set ASAY Color")
 	return
@@ -493,7 +493,7 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 	if(!CONFIG_GET(flag/allow_admin_asaycolor))
 		to_chat(src, "Custom Asay color is currently disabled by the server.")
 		return
-	prefs.asaycolor = initial(prefs.asaycolor)
+	prefs.write_preference(/datum/preference/color/asaycolor, prefs.read_default_preference(/datum/preference/color/asaycolor))
 	prefs.save_preferences()
 
 /client/proc/set_ghost_sprite()
@@ -520,12 +520,12 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 	if(!holder)
 		return
 
-	if(prefs.ui_theme == UI_PREFERENCE_LIGHT_MODE)
-		prefs.ui_theme = UI_PREFERENCE_DARK_MODE
+	if(prefs.read_preference(/datum/preference/choiced/ui_theme) == UI_PREFERENCE_LIGHT_MODE)
+		prefs.write_preference(/datum/preference/choiced/ui_theme, UI_PREFERENCE_DARK_MODE)
 	else
-		prefs.ui_theme = UI_PREFERENCE_LIGHT_MODE
+		prefs.write_preference(/datum/preference/choiced/ui_theme, UI_PREFERENCE_LIGHT_MODE)
 
-	to_chat(src, span_notice("UI theme switched to [prefs.ui_theme]"))
+	to_chat(src, span_notice("UI theme switched to [prefs.read_preference(/datum/preference/choiced/ui_theme)]"))
 
 /client/proc/set_personal_admin_ooc_color()
 	set name = "Set Personal Admin OOC Color"
@@ -534,9 +534,9 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 	if(!holder)
 		return
 
-	var/new_ooccolor = input(src, "Please select your OOC color.", "OOC color", prefs.ooccolor) as color|null
+	var/new_ooccolor = input(src, "Please select your OOC color.", "OOC color", prefs.read_preference(/datum/preference/color/ooccolor)) as color|null
 	if(new_ooccolor)
-		prefs.ooccolor = sanitize_color(new_ooccolor)
+		prefs.write_preference(/datum/preference/color/ooccolor, sanitize_color(new_ooccolor))
 		prefs.save_preferences()
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Set personal admin OOC color")
 	return
@@ -547,7 +547,7 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 	set category = "Preferences.Admin"
 	if(!holder)
 		return
-	prefs.ooccolor = null
+	prefs.write_preference(/datum/preference/color/ooccolor, null)
 	prefs.save_preferences()
 
 #undef TOGGLE_CHECKBOX

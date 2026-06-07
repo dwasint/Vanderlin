@@ -240,7 +240,7 @@
 		if(!isnull(new_scaling))
 			prefs.toggles |= UI_SCALE
 			window_scaling = new_scaling / 100
-			prefs.ui_scale = window_scaling
+			prefs.write_preference(/datum/preference/numeric/ui_scale, window_scaling)
 			prefs.save_preferences()
 			to_chat(src, span_notice("UI Scaling set to [window_scaling * 100]%. Changes take effect when opening new windows."))
 		else
@@ -263,8 +263,8 @@
 		return
 	var/newfps = input(usr, "Enter new FPS", "New FPS", 100) as null|num
 	if (!isnull(newfps))
-		prefs.clientfps = clamp(newfps, 1, 1000)
-		fps = prefs.clientfps
+		prefs.write_preference(/datum/preference/numeric/clientfps, clamp(newfps, 1, 1000))
+		fps = prefs.read_preference(/datum/preference/numeric/clientfps)
 		prefs.save_preferences()
 
 /client/verb/changelog()

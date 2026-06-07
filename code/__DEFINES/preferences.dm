@@ -228,3 +228,35 @@ DEFINE_BITFIELD(toggles_maptext, list(
 DEFINE_BITFIELD(toggles_gameplay, list(
 	"Disable random split personality" = DISABLE_SPLIT_PERSONALITY,
 ))
+
+
+// Priorities must be in order!
+/// The default priority level
+#define PREF_PRIORITY_DEFAULT 1
+
+/// Species applies first so external organs / bodyparts can reference it.
+#define PREF_PRIORITY_SPECIES 2
+
+/// Bodypart-related prefs (head_flags etc.) apply after species.
+#define PREF_PRIORITY_BODYPARTS 3
+
+/// Gender is resolved before names so randomisation is sex-aware.
+#define PREF_PRIORITY_GENDER 4
+
+/// Body type after gender so "use gender" option works.
+#define PREF_PRIORITY_BODY_TYPE 5
+
+/// Names are resolved last among character prefs.
+#define PREF_PRIORITY_NAMES 6
+
+/// Modifications that adjust the name chosen by PREF_PRIORITY_NAMES.
+#define PREF_PRIORITY_NAME_MODS 7
+
+/// Keep this equal to the highest priority above.
+#define MAX_PREF_PRIORITY PREF_PRIORITY_NAME_MODS
+
+// ---- Savefile identifier tokens ----
+/// This preference is stored per-character (under /character[N]).
+#define PREF_CHARACTER "character"
+/// This preference is stored per-player (under /).
+#define PREF_PLAYER "player"

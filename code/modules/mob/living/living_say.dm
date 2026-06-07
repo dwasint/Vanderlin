@@ -210,7 +210,7 @@
 		return FALSE
 	if(stat >= UNCONSCIOUS)
 		return FALSE
-	if(!ismob(speaker) && !client.prefs.see_chat_non_mob)
+	if(!ismob(speaker) && !client.prefs.read_preference(/datum/preference/toggle/see_chat_non_mob))
 		return FALSE
 	return TRUE
 

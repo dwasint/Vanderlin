@@ -408,7 +408,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	else
 		var/datum/preferences/A = new()
 		A.safe_transfer_prefs_to(new_character)
-		A.real_name = G_found.real_name
+		//A.real_name = G_found.real_name
 		new_character.dna.update_dna_identity()
 
 	new_character.name = new_character.real_name

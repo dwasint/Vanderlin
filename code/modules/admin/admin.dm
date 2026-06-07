@@ -33,7 +33,7 @@
 		to_chat(usr, "<span class='warning'>I seem to be selecting a mob that doesn't exist anymore.</span>")
 		return
 
-	var/ui_theme = usr.client.prefs.ui_theme
+	var/ui_theme = usr.client.prefs.read_preference(/datum/preference/choiced/ui_theme)
 	var/dark_ui = FALSE
 	if(ui_theme == UI_PREFERENCE_DARK_MODE) // rewrite if you want to add more (yes it's ass)
 		dark_ui = TRUE

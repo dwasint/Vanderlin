@@ -503,7 +503,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 		prefs.save_preferences()
 	prefs.last_ip = address				//these are gonna be used for banning
 	prefs.last_id = computer_id			//these are gonna be used for banning
-	fps = prefs.clientfps
+	fps = prefs.read_preference(/datum/preference/numeric/clientfps)
 
 	// Instantiate tgui panel
 	tgui_panel = new(src, "browseroutput")
@@ -1188,7 +1188,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	if(!QDELETED(object) && TRY_QUEUE_VERB(VERB_CALLBACK(object, TYPE_PROC_REF(/atom, _Click), location, control, params), VERB_HIGH_PRIORITY_QUEUE_THRESHOLD, SSinput, control))
 		return
 
-	if (prefs.hotkeys)
+	if (prefs.read_preference(/datum/preference/toggle/hotkeys))
 		// If hotkey mode is enabled, then clicking the map will automatically
 		// unfocus the text bar. This removes the red color from the text bar
 		// so that the visual focus indicator matches reality.
@@ -1291,7 +1291,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	if (isliving(mob))
 		var/mob/living/M = mob
 		M.update_damage_hud()
-	if (prefs.auto_fit_viewport)
+	if (prefs.read_preference(/datum/preference/toggle/auto_fit_viewport))
 		addtimer(CALLBACK(src, VERB_REF(fit_viewport), 1 SECONDS)) //Delayed to avoid wingets from Login calls.
 
 	SEND_SIGNAL(mob, COMSIG_MOB_CLIENT_CHANGE_VIEW, src, getviewsize(old_view), getviewsize(view))
@@ -1415,7 +1415,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 /// This grabs the DPI of the user per their skin
 /client/proc/acquire_dpi()
 	if(prefs && (prefs.toggles & UI_SCALE))
-		window_scaling = prefs.ui_scale
+		window_scaling = prefs.read_preference(/datum/preference/numeric/ui_scale)
 	else if(isnull(window_scaling))
 		window_scaling = text2num(winget(src, null, "dpi"))
 	debug_admins("scalies: [window_scaling]")

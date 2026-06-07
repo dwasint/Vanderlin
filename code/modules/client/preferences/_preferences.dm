@@ -18,49 +18,23 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 	//game-preferences
 	var/lastchangelog = ""				//Saved changlog filesize to detect if there was a change
-	/// color of the players text in OOC messages
-	var/ooccolor = null
-	/// color of admin's asay messages
-	var/asaycolor = "#ff4500"			//This won't change the color for current admins, only incoming ones.
-	/// pronouns that will be shown when hovering over the users name in OOC messages
-	var/oocpronouns = ""
 	/// the ghost icon this admin ghost will get when becoming an aghost.
 	var/admin_ghost_icon = null
-	var/ui_theme = UI_PREFERENCE_LIGHT_MODE
 	var/triumphs = 0
-	var/enable_tips = TRUE
-	var/tip_delay = 500 //tip delay in milliseconds
 
 	//Antag preferences
 	var/list/be_special = list()		//Special role selection
 	var/tmp/old_be_special = 0			//Bitflag version of be_special, used to update old savefiles and nothing more
 										//If it's 0, that's good, if it's anything but 0, the owner of this prefs file's antag choices were,
 										//autocorrected this round, not that you'd need to check that.
-
-	var/UI_style = null
-	var/buttons_locked = TRUE
-	var/hotkeys = TRUE
-
-	var/showrolls = TRUE
-	var/max_chat_length = CHAT_MESSAGE_MAX_LENGTH
-	var/see_chat_non_mob = TRUE
-
 	// Custom Keybindings
 	var/list/key_bindings = list()
 
-	var/tgui_fancy = TRUE
-	var/tgui_lock = TRUE
-	var/windowflashing = TRUE
 	var/db_flags
 	var/toggles = TOGGLES_DEFAULT
 	var/chat_toggles = TOGGLES_DEFAULT_CHAT
 	var/toggles_maptext = NONE
 	var/toggles_gameplay = NONE
-	var/ghost_form = "ghost"
-	var/ghost_orbit = GHOST_ORBIT_CIRCLE
-	var/ghost_accs = GHOST_ACCS_DEFAULT_OPTION
-	var/ghost_others = GHOST_OTHERS_DEFAULT_OPTION
-	var/ghost_hud = 1
 	var/inquisitive_ghost = 1
 	var/allow_midround_antag = 1
 	var/preferred_map = null
@@ -71,72 +45,8 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	/// Keeps track of round-to-round randomization of the character slot, prevents overwriting.
 	var/slot_randomized
 
-	/// The character's real name.
-	var/real_name
-
-	/// Gender of character (used for masculine or feminine model selection).
-	var/gender = MALE
-
-	/// Character's pronouns.
-	var/pronouns = HE_HIM
-
-	/// The type of voice soundpack the mob should use.
-	var/voice_type = VOICE_TYPE_MASC
-
-	/// Age of character.
-	var/age = AGE_ADULT
-
-	/// Character's origin.
-	var/origin = "Default"
-
-	/// Underwear type.
-	var/underwear = "Nude"
-
-	/// Underwear color.
-	var/underwear_color = null
-
-	/// Undershirt type.
-	var/undershirt = "Nude"
-
-	/// Accessory type.
-	var/accessory = "Nothing"
-
-	/// Detail type.
-	var/detail = "Nothing"
-
-	/// Socks type.
-	var/socks = "Nude"
-
-	/// Skin color.
-	var/skin_tone = SKIN_COLOR_CONTINENTAL
-
-	/// Eye color.
-	var/eye_color = "000"
-
-	/// Voice color.
-	var/voice_color = "a0a0a0"
-
-	/// Detail color.
-	var/detail_color = "000"
-
-	/// link to a page containing your headshot image
-	var/headshot_link
-
-	/// link to a page containing your ooc extra image
-	var/ooc_extra_link
-	var/ooc_extra
-
-	/// text of your flavor
-	var/flavortext
-	var/flavortext_display
-
-	var/ooc_notes
-	var/ooc_notes_display
-
 	/// The species this character is.
 	var/datum/species/pref_species = new /datum/species/human/northern() //Mutant race
-	/// The patron/god/diety this character worships
-	var/datum/patron/selected_patron
 	/// The default patron to use if none is selected
 	var/static/datum/patron/default_patron = /datum/patron/divine/astrata
 	var/list/features = MANDATORY_FEATURE_LIST
@@ -150,15 +60,10 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 		(RANDOM_EYE_COLOR) = FALSE
 	)
 
-	var/phobia = "spiders"
-
 	var/list/custom_names = list()
 
 	//Job preferences 2.0 - indexed by job title , no key or value implies never
 	var/list/job_preferences = list()
-
-		// Want randomjob if preferences already filled - Donkie
-	var/joblessrole = RETURNTOLOBBY  //defaults to 1 for fewer assistants
 
 	/// 0 = character settings, 1 = game preferences
 	var/current_tab = 0
@@ -167,24 +72,8 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 	var/list/ignoring = list()
 
-	var/clientfps = 100//0 is sync
-
 	var/parallax
 
-	var/ambientocclusion = TRUE
-	///Should we automatically fit the viewport?
-	var/auto_fit_viewport = FALSE
-	///Should we be in the widescreen mode set by the config?
-	var/widescreenpref = TRUE
-	///What size should pixels be displayed as? 0 is strech to fit
-	var/pixel_size = 0
-	///What scaling method should we use?
-	var/scaling_method = "normal"
-
-	var/musicvol = 50
-	var/mastervol = 50
-
-	var/anonymize = TRUE
 
 	var/lastclass
 
@@ -196,17 +85,9 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 	var/action_buttons_screen_locs = list()
 
-	var/domhand = 2
-	var/alignment = ALIGNMENT_TN
 	var/list/quirks = list()
 	var/list/quirk_customizations = list() // Maps quirk_type -> customization_value
 
-	/// Family system
-	var/family = FAMILY_NONE
-	var/setspouse = ""
-	var/gender_choice = ANY_GENDER
-
-	var/crt = FALSE
 
 	var/list/customizer_entries = list()
 	var/list/list/body_markings = list()
@@ -215,44 +96,23 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	var/list/descriptor_entries = list()
 	var/list/custom_descriptors = list()
 
-	var/datum/loadout_item/loadout1
-	var/datum/loadout_item/loadout2
-	var/datum/loadout_item/loadout3
-
 	var/list/preference_message_list = list()
 
 	/// Tracker to whether the person has ever spawned into the round, for purposes of applying the respawn ban
 	var/has_spawned = FALSE
-	///our selected accent
-	var/selected_accent = ACCENT_DEFAULT
 	/// If our owner is patreon or twitch sub
 	var/donator = FALSE
 	/// If our owner is from a race that has more than one accent
 	var/change_accent = FALSE
 
-	/// Custom UI scale
-	var/ui_scale
 	/// Assoc list of culinary preferences, where the key is the type of the culinary preference, and value is food/drink typepath
 	var/list/culinary_preferences = list()
 
-	/// Whether multi-character readying is enabled
-	var/multi_char_ready = FALSE
 	/// List of character slot indices selected for multi-ready (in priority order)
 	var/list/multi_ready_slots = list()
 
 	var/datum/multi_ready_ui/multi_ready_panel
 
-	var/char_theme = "grimshart"
-	var/static/list/char_themes = list(
-		"dusty",
-		"grimshart",
-		"paper",
-		"parchment",
-	)
-
-	// I beg for datumised prefs
-	/// culture datum type
-	var/datum/culture/culture = /datum/culture/universal/ambiguous
 
 	/// Typepath strings the player has permanently purchased (persisted)
 	var/list/owned_loadout_items = list()
@@ -268,13 +128,12 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	var/list/owned_tickets = list() // list of /datum/ticket subtypes
 	var/list/ticket_history = list() // list of assoc lists
 
+	var/list/preference_cache = list()
+
 /datum/preferences/New(client/C)
 	parent = C
 
 	migrant  = new /datum/migrant_pref(src)
-
-	flavortext = null
-	headshot_link = null
 
 	// C/parent can be a client_interface
 	if(isclient(parent))
@@ -282,8 +141,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 	for(var/custom_name_id in GLOB.preferences_custom_names)
 		custom_names[custom_name_id] = get_default_name(custom_name_id)
-
-	UI_style = GLOB.available_ui_styles[1]
 
 	if(istype(C))
 		if(!IsGuestKey(C.key))
@@ -297,16 +154,16 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	if(loaded_preferences_successfully)
 		if(load_character())
 			if(check_nameban(C.ckey))
-				real_name = pref_species.random_name(gender,1)
+				write_preference(/datum/preference/text/real_name, pref_species.random_name(read_preference(/datum/preference/choiced/gender), TRUE))
 			return
 	//we couldn't load character data so just randomize the character appearance + name
 	randomise_appearance_prefs(include_donator = donator)		//let's create a random character then - rather than a fat, bald and naked man.
-	if(!selected_patron)
-		selected_patron = GLOB.patrons_by_type[default_patron]
+	if(!read_preference(/datum/preference/choiced/patron))
+		write_preference(/datum/preference/choiced/patron, GLOB.patrons_by_type[default_patron])
 	key_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
 	if(isclient(C))
 		C.update_movement_keys()
-	real_name = pref_species.random_name(gender,1)
+	write_preference(/datum/preference/text/real_name, pref_species.random_name(read_preference(/datum/preference/choiced/gender), TRUE))
 	if(!loaded_preferences_successfully)
 		save_preferences()
 	save_character()		//let's save this new random character so it doesn't keep generating new ones.
@@ -338,8 +195,18 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 /datum/preferences/proc/build_and_show_menu(mob/user)
 	var/list/dat = list()
-	var/datum/faith/selected_faith = GLOB.faith_list[selected_patron.associated_faith]
+	var/datum/patron/pref_patron = read_preference(/datum/preference/choiced/patron)
+	var/datum/culture/pref_culture = read_preference(/datum/preference/choiced/culture)
+	var/datum/faith/selected_faith = GLOB.faith_list[pref_patron.associated_faith]
 	var/datum/job/high_job
+
+	var/loadout1_str = _get_loadout_slot(1)
+	var/datum/loadout_item/loadout1_item = loadout1_str ? GLOB.loadout_items[text2path(loadout1_str)] : null
+	var/loadout2_str = _get_loadout_slot(2)
+	var/datum/loadout_item/loadout2_item = loadout2_str ? GLOB.loadout_items[text2path(loadout2_str)] : null
+	var/loadout3_str = _get_loadout_slot(3)
+	var/datum/loadout_item/loadout3_item = loadout3_str ? GLOB.loadout_items[text2path(loadout3_str)] : null
+
 	for(var/job_type in job_preferences)
 		if(job_preferences[job_type] != JP_HIGH)
 			continue
@@ -606,7 +473,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	<div class="sprite triumphs-bg"></div>
 	<div class="sprite headshot-bg" style="padding: 3px; box-sizing: border-box;">
 		<a href='?_src_=prefs;preference=headshot;task=input' style="display: block; width: 100%; height: 100%;">
-			<img id="headshot-img" src="[headshot_link || ""]"
+			<img id="headshot-img" src="[read_preference(/datum/preference/text/headshot_link) || ""]"
 				 style="width: 100%; height: 100%; object-fit: cover; cursor: pointer; image-rendering: auto;"
 				 onerror="this.style.display='none';">
 		</a>
@@ -615,7 +482,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 	<div class="sprite" style="top:26px; left:23px; width:92px; height:9px; background-image: url('header_charname.png');">
 		<a href='?_src_=prefs;preference=name;task=input' style="text-decoration: none; display: block; width: 100%; height: 100%;">
-			<div id="char-name" class="clickable-text auto-shrink" style="width:92px; height:9px;">[real_name]</div>
+			<div id="char-name" class="clickable-text auto-shrink" style="width:92px; height:9px;">[read_preference(/datum/preference/text/real_name)]</div>
 		</a>
 	</div>
 	<div class="sprite" style="top:11px; left:122px; width:46px; height:9px; background-image: url('header_class.png');">
@@ -638,7 +505,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	</div>
 	<div class="sprite" style="top:30px; left:172px; width:42px; height:9px; background-image: url('header_patron.png');">
 		<a href='?_src_=prefs;preference=patron;task=input' style="text-decoration: none; display: block; width: 100%; height: 100%;">
-			<div id="char-patron" class="clickable-text auto-shrink" style="width:42px; height:9px;">[selected_patron.name]</div>
+			<div id="char-patron" class="clickable-text auto-shrink" style="width:42px; height:9px;">[pref_patron.name]</div>
 		</a>
 	</div>
 	<div class="sprite" style="top:30px; left:220px; width:31px; height:9px; background-image: url('header_pq.png');">
@@ -649,7 +516,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 	<div class="sprite" style="top:70px; left:118px; width:46px; height:9px; background-image: url('body_age.png');">
 		<a href='?_src_=prefs;preference=age;task=input' style="text-decoration: none; display: block; width: 100%; height: 100%;">
-			<div id="char-age" class="clickable-text auto-shrink" style="width:46px; height:9px;">[age]</div>
+			<div id="char-age" class="clickable-text auto-shrink" style="width:46px; height:9px;">[read_preference(/datum/preference/choiced/age)]</div>
 		</a>
 	</div>
 	<div class="sprite" style="top:70px; left:168px; width:53px; height:9px; background-image: url('body_flaw.png');">
@@ -659,7 +526,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	</div>
 	<div class="sprite" style="top:89px; left:119px; width:46px; height:9px; background-image: url('body_dominanthand.png');">
 		<a href='?_src_=prefs;preference=domhand' style="text-decoration: none; display: block; width: 100%; height: 100%;">
-			<div id="char-domhand" class="clickable-text auto-shrink" style="width:46px; height:9px;">[domhand == 1 ? "Left" : "Right"]</div>
+			<div id="char-domhand" class="clickable-text auto-shrink" style="width:46px; height:9px;">[read_preference(/datum/preference/choiced/domhand) == 1 ? "Left" : "Right"]</div>
 		</a>
 	</div>
 	<div class="sprite" style="top:89px; left:168px; width:53px; height:9px; background-image: url('body_ancestry.png');">
@@ -669,42 +536,42 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	</div>
 	<div class="sprite" style="top:108px; left:119px; width:46px; height:9px; background-image: url('body_pronouns.png');">
 		<a href='?_src_=prefs;preference=pronouns;task=input' style="text-decoration: none; display: block; width: 100%; height: 100%;">
-			<div id="char-pronouns" class="clickable-text auto-shrink" style="width:46px; height:9px;">[pronouns]</div>
+			<div id="char-pronouns" class="clickable-text auto-shrink" style="width:46px; height:9px;">[read_preference(/datum/preference/choiced/pronouns)]</div>
 		</a>
 	</div>
 	<a href='?_src_=prefs;preference=gender'><div class="sprite" style="top:108px; left:169px; width:53px; height:9px; background-image: url('body_bodytype.png');">
-		<div id="char-gender" class="clickable-text auto-shrink" style="width:53px; height:9px;">[gender == MALE ? "M" : "F"]</div>
+		<div id="char-gender" class="clickable-text auto-shrink" style="width:53px; height:9px;">[read_preference(/datum/preference/choiced/gender) == MALE ? "M" : "F"]</div>
 	</div></a>
 
 	<a href='?_src_=prefs;preference=family'><div class="sprite" style="top:150px; left:120px; width:73px; height:9px; background-image: url('family_type.png');">
-		<div id="char-family" class="clickable-text auto-shrink" style="width:73px; height:9px;">[family ? family : "None"]</div>
+		<div id="char-family" class="clickable-text auto-shrink" style="width:73px; height:9px;">[read_preference(/datum/preference/text/family) ? read_preference(/datum/preference/text/family) : "None"]</div>
 	</div></a>
 	<a href='?_src_=prefs;preference=gender_choice'><div class="sprite" style="top:169px; left:120px; width:73px; height:9px; background-image: url('gender_pref.png');">
-		<div id="char-genderpref" class="clickable-text auto-shrink" style="width:73px; height:9px;">[gender_choice ? gender_choice : "Any"]</div>
+		<div id="char-genderpref" class="clickable-text auto-shrink" style="width:73px; height:9px;">[read_preference(/datum/preference/choiced/gender_choice) ? read_preference(/datum/preference/choiced/gender_choice) : "Any"]</div>
 	</div></a>
 	<a href='?_src_=prefs;preference=setspouse'><div class="sprite" style="top:188px; left:120px; width:73px; height:9px; background-image: url('spouse_pref.png');">
-		<div id="char-spouse" class="clickable-text auto-shrink" style="width:73px; height:9px;">[setspouse ? setspouse : "None"]</div>
+		<div id="char-spouse" class="clickable-text auto-shrink" style="width:73px; height:9px;">[read_preference(/datum/preference/text/setspouse) ? read_preference(/datum/preference/text/setspouse) : "None"]</div>
 	</div></a>
 
 	<a href='?_src_=prefs;preference=culture;task=input'><div class="sprite" style="top:150px; left:207px; width:51px; height:9px; background-image: url('flavour_culture.png');">
-		<div id="char-culture" class="clickable-text auto-shrink" style="width:51px; height:9px;">[culture ? culture::name : "None"]</div>
+		<div id="char-culture" class="clickable-text auto-shrink" style="width:51px; height:9px;">[pref_culture ? pref_culture::name : "None"]</div>
 	</div></a>
 
 	<a href='?_src_=prefs;preference=voicetype;task=input'><div class="sprite" style="top:154px; left:10px; width:46px; height:9px; background-image: url('voice_type.png');">
-		<div id="char-voicetype" class="clickable-text auto-shrink" style="width:46px; height:9px;">[voice_type]</div>
+		<div id="char-voicetype" class="clickable-text auto-shrink" style="width:46px; height:9px;">[read_preference(/datum/preference/choiced/voice_type)]</div>
 	</div></a>
 	<a href='?_src_=prefs;preference=selected_accent;task=input'><div class="sprite" style="top:154px; left:60px; width:42px; height:9px; background-image: url('voice_accent.png');">
-		<div id="char-accent" class="clickable-text auto-shrink" style="width:42px; height:9px;">[selected_accent]</div>
+		<div id="char-accent" class="clickable-text auto-shrink" style="width:42px; height:9px;">[read_preference(/datum/preference/choiced/selected_accent)]</div>
 	</div></a>
 
 	<a href='?_src_=prefs;preference=loadout_item;loadout_number=1;task=input'><div class="sprite" style="top:194px; left:10px; width:51px; height:9px; background-image: url('loadout_item1.png');">
-		<div id="char-loadout1" class="clickable-text auto-shrink" style="width:51px; height:9px;">[loadout1 ? loadout1.name : "None"]</div>
+		<div id="char-loadout1" class="clickable-text auto-shrink" style="width:51px; height:9px;">[loadout1_item ? loadout1_item.name : "None"]</div>
 	</div></a>
 	<a href='?_src_=prefs;preference=loadout_item;loadout_number=2;task=input'><div class="sprite" style="top:213px; left:10px; width:51px; height:9px; background-image: url('loadout_item2.png');">
-		<div id="char-loadout2" class="clickable-text auto-shrink" style="width:51px; height:9px;">[loadout2 ? loadout2.name : "None"]</div>
+		<div id="char-loadout2" class="clickable-text auto-shrink" style="width:51px; height:9px;">[loadout2_item ? loadout2_item.name : "None"]</div>
 	</div></a>
 	<a href='?_src_=prefs;preference=loadout_item;loadout_number=3;task=input'><div class="sprite" style="top:232px; left:10px; width:51px; height:9px; background-image: url('loadout_item3.png');">
-		<div id="char-loadout3" class="clickable-text auto-shrink" style="width:51px; height:9px;">[loadout3 ? loadout3.name : "None"]</div>
+		<div id="char-loadout3" class="clickable-text auto-shrink" style="width:51px; height:9px;">[loadout3_item ? loadout3_item.name : "None"]</div>
 	</div></a>
 
 	<div class="sprite" style="top:195px; left:82px; width:22px; height:7px; background-image: url('triumphs_display.png');">
@@ -724,11 +591,11 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	<a href='?_src_=prefs;preference=customizers;task=menu'><div class="sprite f-btn"></div></a>
 	<a href='?_src_=prefs;preference=randomiseappearanceprefs;'><div class="sprite f-random"></div></a>
 
-	<div class="sprite features-bg"><div id="silhouette" class="sprite" style="background-image: url('features_bodytype_[gender == MALE ? "m" : "f"].png');"></div></div>
+	<div class="sprite features-bg"><div id="silhouette" class="sprite" style="background-image: url('features_bodytype_[read_preference(/datum/preference/choiced/gender) == MALE ? "m" : "f"].png');"></div></div>
 
 	<div class="sprite v-color-box">
 		<a href='?_src_=prefs;preference=voice;task=input' style="display: block; width: 100%; height: 100%;">
-			<div id="voice-blob" class="sprite v-blob" style="background-color: [voice_color];"></div>
+			<div id="voice-blob" class="sprite v-blob" style="background-color: [read_preference(/datum/preference/color/voice_color)];"></div>
 		</a>
 	</div>
 	<a href='?_src_=prefs;preference=bespecial'><div id="bespecial" class="sprite [next_special_trait ? "yes" : ""]"></div></a>
@@ -754,8 +621,9 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 /datum/preferences/proc/update_menu_data(mob/user, list/fields_to_update)
 	if(!winexists(user, "preferences_browser"))
 		return
-
-	var/datum/faith/selected_faith = GLOB.faith_list[selected_patron.associated_faith]
+	var/datum/patron/pref_patron = read_preference(/datum/preference/choiced/patron)
+	var/datum/culture/pref_culture = read_preference(/datum/preference/choiced/culture)
+	var/datum/faith/selected_faith = GLOB.faith_list[pref_patron.associated_faith]
 	var/datum/job/high_job
 	for(var/job_type in job_preferences)
 		if(job_preferences[job_type] != JP_HIGH)
@@ -769,7 +637,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	var/update_all = !fields_to_update || !length(fields_to_update)
 
 	if(update_all || ("name" in fields_to_update))
-		params["name"] = real_name
+		params["name"] = read_preference(/datum/preference/text/real_name)
 	if(update_all || ("job" in fields_to_update))
 		params["job"] = high_job || "None"
 	if(update_all || ("faith" in fields_to_update))
@@ -777,27 +645,27 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	if(update_all || ("species" in fields_to_update))
 		params["species"] = pref_species.name
 	if(update_all || ("patron" in fields_to_update))
-		params["patron"] = selected_patron.name
+		params["patron"] = pref_patron.name
 	if(update_all || ("pq" in fields_to_update))
 		params["pq"] = get_playerquality(user.ckey, text = TRUE)
 	if(update_all || ("age" in fields_to_update))
-		params["age"] = age
+		params["age"] = read_preference(/datum/preference/choiced/age)
 	if(update_all || ("domhand" in fields_to_update))
-		params["domhand"] = domhand == 1 ? "Left" : "Right"
+		params["domhand"] = read_preference(/datum/preference/choiced/domhand) == 1 ? "Left" : "Right"
 	if(update_all || ("pronouns" in fields_to_update))
-		params["pronouns"] = pronouns
+		params["pronouns"] = read_preference(/datum/preference/choiced/pronouns)
 	if(update_all || ("gender" in fields_to_update))
-		params["gender"] = gender == MALE ? "M" : "F"
+		params["gender"] = read_preference(/datum/preference/choiced/gender) == MALE ? "M" : "F"
 	if(update_all || ("family" in fields_to_update))
-		params["family"] = family ? family : "None"
+		params["family"] = read_preference(/datum/preference/text/family) ? read_preference(/datum/preference/text/family) : "None"
 	if(update_all || ("genderpref" in fields_to_update))
-		params["genderpref"] = gender_choice ? gender_choice : "Any"
+		params["genderpref"] = read_preference(/datum/preference/choiced/gender_choice) ? read_preference(/datum/preference/choiced/gender_choice) : "Any"
 	if(update_all || ("spouse" in fields_to_update))
-		params["spouse"] = setspouse ? setspouse : "None"
+		params["spouse"] = read_preference(/datum/preference/text/setspouse) ? read_preference(/datum/preference/text/setspouse) : "None"
 	if(update_all || ("voicetype" in fields_to_update))
-		params["voicetype"] = voice_type
+		params["voicetype"] = read_preference(/datum/preference/choiced/voice_type)
 	if(update_all || ("accent" in fields_to_update))
-		params["accent"] = selected_accent
+		params["accent"] = read_preference(/datum/preference/choiced/selected_accent)
 	if(update_all || ("loadout1" in fields_to_update))
 		var/loadout1_str = _get_loadout_slot(1)
 		var/datum/loadout_item/loadout1_item = loadout1_str ? GLOB.loadout_items[text2path(loadout1_str)] : null
@@ -813,13 +681,13 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	if(update_all || ("triumphs" in fields_to_update))
 		params["triumphs"] = user.get_triumphs() ? "\Roman [user.get_triumphs()]" : "0"
 	if(update_all || ("headshot" in fields_to_update))
-		params["headshot"] = headshot_link || ""
+		params["headshot"] = read_preference(/datum/preference/text/headshot_link) || ""
 	if(update_all || ("voice_color" in fields_to_update))
-		params["voice_color"] = voice_color
+		params["voice_color"] = read_preference(/datum/preference/color/voice_color)
 	if(update_all || ("bespecial" in fields_to_update))
 		params["bespecial"] = next_special_trait ? "1" : "0"
 	if(update_all || ("culture" in fields_to_update))
-		params["culture"] = culture::name
+		params["culture"] = pref_culture::name
 
 	// Use list2params as BYOND expects for browser output
 	user << output(list2params(params), "preferences_browser:updateCharacterData")
@@ -835,7 +703,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 /datum/preferences/proc/set_ui_theme(new_theme)
 	if(new_theme in list("dusty", "grimshart", "paper", "parchment"))
-		char_theme = new_theme
+		write_preference(/datum/preference/choiced/char_theme, new_theme)
 		return TRUE
 	return FALSE
 
@@ -851,9 +719,9 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 		HTML += "<center><a href='?_src_=prefs;preference=job;task=close'>Done</a></center><br>"
 	else
 		HTML += "<center><a href='?_src_=prefs;preference=job;task=close'>Done</a></center><br>"
-		if(joblessrole != RETURNTOLOBBY && joblessrole != BERANDOMJOB)
-			joblessrole = RETURNTOLOBBY
-		HTML += "<b>If Role Unavailable:</b><font color='purple'><a href='?_src_=prefs;preference=job;task=nojob'>[joblessrole]</a></font><BR>"
+		if(read_preference(/datum/preference/choiced/joblessrole) != RETURNTOLOBBY && read_preference(/datum/preference/choiced/joblessrole) != BERANDOMJOB)
+			write_preference(/datum/preference/choiced/joblessrole, RETURNTOLOBBY)
+		HTML += "<b>If Role Unavailable:</b><font color='purple'><a href='?_src_=prefs;preference=job;task=nojob'>[read_preference(/datum/preference/choiced/joblessrole)]</a></font><BR>"
 		HTML += "<script type='text/javascript'>function setJobPrefRedirect(level, rank) { window.location.href='?_src_=prefs;preference=job;task=setJobLevel;level=' + level + ';text=' + encodeURIComponent(rank); return false; }</script>"
 		HTML += {"
 			<script type='text/javascript'>
@@ -1046,7 +914,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 				for(var/datum/job/job in available_jobs)
 					var/rank = job.title
-					var/used_name = (pronouns == SHE_HER && job.f_title) ? job.f_title : job.title
+					var/used_name = (read_preference(/datum/preference/choiced/pronouns) == SHE_HER && job.f_title) ? job.f_title : job.title
 					var/job_id = replacetext(rank, " ", "_")
 
 					category_html += "<tr bgcolor='#000000'><td width='60%' align='right'>"
@@ -1226,15 +1094,15 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	// onclose(user, "capturekeypress", src) // this would act as if the main prefs window was closed, so it didn't actually do anything. plus use_onclose was false
 
 /datum/preferences/proc/reset_patron(mob/user, silent = FALSE)
-	selected_patron = default_patron
+	write_preference(/datum/preference/choiced/patron, default_patron)
 	if(!silent)
 		to_chat(user, "<font color='red'>Patron reset.</font>")
 
 /datum/preferences/proc/reset_culture(mob/user, silent = FALSE)
-	var/datum/culture/selected = GLOB.culture_singletons[culture]
+	var/datum/culture/selected = GLOB.culture_singletons[read_preference(/datum/preference/choiced/culture)]
 	if(selected.is_selectable(src))
 		return
-	culture = src::culture
+	write_preference(/datum/preference/choiced/culture, read_default_preference(/datum/preference/choiced/culture))
 	if(!silent)
 		to_chat(user, "<font color='red'>Culture reset.</font>")
 
@@ -1374,11 +1242,11 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 			if("triumphthing")
 				reset_last_class(user)
 			if("nojob")
-				switch(joblessrole)
+				switch(read_preference(/datum/preference/choiced/joblessrole))
 					if(RETURNTOLOBBY)
-						joblessrole = BERANDOMJOB
+						write_preference(/datum/preference/choiced/joblessrole, BERANDOMJOB)
 					if(BERANDOMJOB)
-						joblessrole = RETURNTOLOBBY
+						write_preference(/datum/preference/choiced/joblessrole, RETURNTOLOBBY)
 				set_choices(user)
 			if("tutorial")
 				if(href_list["tut"])
@@ -1386,7 +1254,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 					to_chat(user, href_list["tut"])
 					to_chat(user, "<span class='info'>* ----------------------- *</span>")
 			if("random")
-				joblessrole = BERANDOMJOB
+				write_preference(/datum/preference/choiced/joblessrole, BERANDOMJOB)
 				set_choices(user)
 			if("setJobLevel")
 				if(SSticker.job_change_locked)
@@ -1512,7 +1380,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 				var/choice = tgui_alert(user, "Do you really want to reset your keybindings?", "Setup keybindings", DEFAULT_INPUT_CONFIRMATIONS)
 				if(choice != CHOICE_CONFIRM)
 					return
-				hotkeys = TRUE
+				write_preference(/datum/preference/toggle/hotkeys, TRUE)
 				key_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key)
 				user.client.update_movement_keys()
 				set_keybinds(user)
@@ -1580,14 +1448,12 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 		if("random")
 			switch(href_list["preference"])
 				if("name")
-					real_name = pref_species.random_name(gender,1)
+					write_preference(/datum/preference/text/real_name, pref_species.random_name(read_preference(/datum/preference/choiced/gender), TRUE))
 				if("age")
-					age = pick(pref_species.possible_ages)
-				if("eyes")
-					eye_color = random_eye_color()
+					write_preference(/datum/preference/choiced/age, pick(pref_species.possible_ages))
 				if("s_tone")
 					var/list/skins = pref_species.get_skin_list()
-					skin_tone = skins[pick(skins)]
+					write_preference(/datum/preference/choiced/skin_tone, skins[pick(skins)])
 				if("species")
 					random_species()
 				if("all")
@@ -1600,20 +1466,20 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 			switch(href_list["preference"])
 				if("name")
-					var/new_name = browser_input_text(user, "DECIDE YOUR HERO'S IDENTITY", "THE SELF", real_name, MAX_NAME_LEN, encode = FALSE)
+					var/new_name = browser_input_text(user, "DECIDE YOUR HERO'S IDENTITY", "THE SELF", read_preference(/datum/preference/text/real_name), MAX_NAME_LEN, encode = FALSE)
 					if(new_name)
 						new_name = reject_bad_name(new_name)
 						if(new_name)
-							real_name = new_name
+							write_preference(/datum/preference/text/real_name, new_name)
 						else
 							to_chat(user, "<font color='red'>Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and .</font>")
 					GLOB.name_adjustments |= "[parent] changed their characters name to [new_name]."
 					log_character("[parent] changed their characters name to [new_name].")
 
 				if("age")
-					var/new_age = browser_input_list(user, "SELECT YOUR HERO'S AGE", "YILS DEAD", pref_species.possible_ages, age)
+					var/new_age = browser_input_list(user, "SELECT YOUR HERO'S AGE", "YILS DEAD", pref_species.possible_ages, read_preference(/datum/preference/choiced/age))
 					if(new_age)
-						age = new_age
+						write_preference(/datum/preference/choiced/age, new_age)
 						reset_jobs(user)
 				if ("pronouns")
 					var/list/allowed_pronouns = pref_species.allowed_pronouns
@@ -1622,35 +1488,35 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 						allowed_pronouns = PRONOUNS_LIST
 
 					if(length(allowed_pronouns) == 1)
-						pronouns = allowed_pronouns[1]
-						to_chat(user, span_warning("This species can only use [pronouns]."))
+						write_preference(/datum/preference/choiced/pronouns, allowed_pronouns[1])
+						to_chat(user, span_warning("This species can only use [read_preference(/datum/preference/choiced/pronouns)]."))
 						return
 
 					var/pronouns_input = browser_input_list(user, "CHOOSE HOW MORTALS REFER TO YOUR HERO", "DISOBEY SOCIAL NORMS", allowed_pronouns)
 					if(pronouns_input)
-						pronouns = pronouns_input
-						to_chat(user, span_warning("Your character's pronouns are now [pronouns]."))
+						write_preference(/datum/preference/choiced/pronouns, pronouns_input)
+						to_chat(user, span_warning("Your character's pronouns are now [read_preference(/datum/preference/choiced/pronouns)]."))
 				if ("voicetype")
 					var/list/allowed_voices
-					if(gender == MALE)
+					if(read_preference(/datum/preference/choiced/gender) == MALE)
 						allowed_voices = pref_species.allowed_voicetypes_m
-					else if(gender == FEMALE)
+					else if(read_preference(/datum/preference/choiced/gender) == FEMALE)
 						allowed_voices = pref_species.allowed_voicetypes_f
 					else
 						allowed_voices = VOICE_TYPES_LIST
 					if(!allowed_voices || !length(allowed_voices))
 						allowed_voices = VOICE_TYPES_LIST
 					if(length(allowed_voices) == 1)
-						voice_type = allowed_voices[1]
-						to_chat(user, span_warning("This species can only use the [voice_type] voice type."))
+						write_preference(/datum/preference/choiced/voice_type, allowed_voices[1])
+						to_chat(user, span_warning("This species can only use the [read_preference(/datum/preference/choiced/voice_type)] voice type."))
 						return
 
 					var/voicetype_input = browser_input_list(user, "CHOOSE YOUR HERO'S VOICE TYPE", "DISCARD SOCIETY'S EXPECTATIONS", allowed_voices)
 					if(voicetype_input)
-						voice_type = voicetype_input
+						write_preference(/datum/preference/choiced/voice_type, voicetype_input)
 						if(voicetype_input == VOICE_TYPE_ANDRO)
 							to_chat(user, span_warning("This will use the feminine voicepack pitched down a bit to achieve a more androgynous sound."))
-						to_chat(user, span_warning("Your character will now vocalize with a [lowertext(voice_type)] affect."))
+						to_chat(user, span_warning("Your character will now vocalize with a [lowertext(read_preference(/datum/preference/choiced/voice_type))] affect."))
 				if("faith")
 					var/list/faiths_named = list()
 					for(var/datum/faith/faith as anything in GLOB.faith_list)
@@ -1658,16 +1524,18 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 						if(!faith.preference_accessible(src))
 							continue
 						faiths_named["\The [faith.name]"] = faith
-					var/faith_input = browser_input_list(user, "SELECT YOUR HERO'S BELIEF", "PUPPETS ON STRINGS", faiths_named, "\The [selected_patron.associated_faith::name]")
+					var/datum/patron/pref_patron = read_preference(/datum/preference/choiced/patron)
+					var/faith_input = browser_input_list(user, "SELECT YOUR HERO'S BELIEF", "PUPPETS ON STRINGS", faiths_named, "\The [pref_patron.associated_faith::name]")
 					if(faith_input)
 						var/datum/faith/faith = faiths_named[faith_input]
 						to_chat(user, "<font color='purple'>Faith: [faith.name]</font>")
 						to_chat(user, "<font color='purple'>Background: [faith.desc]</font>")
-						selected_patron = GLOB.patrons_by_type[faith.godhead] || GLOB.patrons_by_type[pick(GLOB.patrons_by_faith[faith.type])]
+						write_preference(/datum/preference/choiced/patron, GLOB.patrons_by_type[faith.godhead] || GLOB.patrons_by_type[pick(GLOB.patrons_by_faith[faith.type])])
 
 				if("patron")
+					var/datum/patron/pref_patron = read_preference(/datum/preference/choiced/patron)
 					var/list/patrons_named = list()
-					for(var/datum/patron/patron as anything in GLOB.patrons_by_faith[selected_patron.associated_faith || initial(default_patron.associated_faith)])
+					for(var/datum/patron/patron as anything in GLOB.patrons_by_faith[pref_patron.associated_faith || initial(default_patron.associated_faith)])
 						patron = GLOB.patrons_by_type[patron]
 						if(!patron.preference_accessible(src))
 							continue
@@ -1675,26 +1543,27 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 						patrons_named[pref_name] = patron
 
 					if(length(patrons_named))
-						var/datum/faith/current_faith = GLOB.faith_list[selected_patron.associated_faith] || GLOB.faith_list[initial(default_patron.associated_faith)]
-						var/god_input = browser_input_list(user, "SELECT YOUR HERO'S PATRON GOD", uppertext("\The [current_faith.name]"), patrons_named, selected_patron)
+						var/datum/faith/current_faith = GLOB.faith_list[pref_patron.associated_faith] || GLOB.faith_list[initial(default_patron.associated_faith)]
+						var/god_input = browser_input_list(user, "SELECT YOUR HERO'S PATRON GOD", uppertext("\The [current_faith.name]"), patrons_named, pref_patron)
 						if(god_input)
-							selected_patron = patrons_named[god_input]
+							write_preference(/datum/preference/choiced/patron, patrons_named[god_input])
 
-					to_chat(user, "<font color='purple'>Patron: [selected_patron]</font>")
-					to_chat(user, "<font color='purple'>Domain: [selected_patron.domain]</font>")
-					to_chat(user, "<font color='purple'>Background: [selected_patron.desc]</font>")
-					to_chat(user, "<font color='purple'>Flawed aspects: [selected_patron.flaws]</font>")
-					to_chat(user, "<font color='purple'>Likely Worshippers: [selected_patron.worshippers]</font>")
-					to_chat(user, "<font color='red'>Considers these to be Sins: [selected_patron.sins]</font>")
-					to_chat(user, "<font color='white'>Blessed with boon(s): [selected_patron.boons]</font>")
+					pref_patron = read_preference(/datum/preference/choiced/patron)
+					to_chat(user, "<font color='purple'>Patron: [pref_patron]</font>")
+					to_chat(user, "<font color='purple'>Domain: [pref_patron.domain]</font>")
+					to_chat(user, "<font color='purple'>Background: [pref_patron.desc]</font>")
+					to_chat(user, "<font color='purple'>Flawed aspects: [pref_patron.flaws]</font>")
+					to_chat(user, "<font color='purple'>Likely Worshippers: [pref_patron.worshippers]</font>")
+					to_chat(user, "<font color='red'>Considers these to be Sins: [pref_patron.sins]</font>")
+					to_chat(user, "<font color='white'>Blessed with boon(s): [pref_patron.boons]</font>")
 
 				if("voice")
-					var/new_voice = input(user, "SELECT YOUR HERO'S VOICE COLOR", "THE THROAT","#"+voice_color) as color|null
+					var/new_voice = input(user, "SELECT YOUR HERO'S VOICE COLOR", "THE THROAT","#"+read_preference(/datum/preference/color/voice_color)) as color|null
 					if(new_voice)
 						if(color_hex2num(new_voice) < 230)
 							to_chat(user, "<font color='red'>This voice color is too dark for mortals.</font>")
 							return
-						voice_color = sanitize_hexcolor(new_voice, include_crunch = FALSE)
+						write_preference(/datum/preference/color/voice_color, sanitize_hexcolor(new_voice, include_crunch = FALSE))
 
 				if("headshot")
 					if(!donator)
@@ -1703,16 +1572,16 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 					to_chat(user, span_notice("Please use an image of the head and shoulder area to maintain immersion level. Lastly, ["<span class='bold'>do not use a real life photo or ANYTHING AI generated.</span>"]"))
 					to_chat(user, span_notice("If the photo doesn't show up properly in-game, ensure that it's a direct image link that opens properly in a browser."))
 					to_chat(user, span_notice("Keep in mind that the photo will be downsized to 325x325 pixels, so the more square the photo, the better it will look."))
-					var/new_headshot_link = input(user, "Input the headshot link (https, hosts: gyazo, lensdump, imgbox, catbox):", "Headshot", headshot_link) as text|null
+					var/new_headshot_link = input(user, "Input the headshot link (https, hosts: gyazo, lensdump, imgbox, catbox):", "Headshot", read_preference(/datum/preference/text/headshot_link)) as text|null
 					if(!new_headshot_link)
 						return
 					var/is_valid_link = is_valid_headshot_link(user, new_headshot_link, FALSE)
 					if(!is_valid_link)
 						to_chat(user, span_notice("Failed to update headshot"))
 						return
-					headshot_link = new_headshot_link
+					write_preference(/datum/preference/text/headshot_link, new_headshot_link)
 					to_chat(user, span_notice("Successfully updated headshot picture"))
-					log_game("[user] has set their Headshot image to '[headshot_link]'.")
+					log_game("[user] has set their Headshot image to '[read_preference(/datum/preference/text/headshot_link)]'.")
 				if("formathelp")
 					var/list/dat = list()
 					dat +="You can use backslash (\\) to escape special characters.<br>"
@@ -1735,7 +1604,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 					open_loadout_shop(user)
 
 				if("species")
-					selected_accent = ACCENT_DEFAULT
+					write_preference(/datum/preference/choiced/selected_accent, ACCENT_DEFAULT)
 
 					var/list/selectable = list()
 					for(var/species_id in GLOB.roundstart_species)
@@ -1761,12 +1630,12 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 						if(!length(pref_species.allowed_pronouns))
 							to_chat(user, span_warning("This species does not have any allowed pronouns. Please contact a coder to add them."))
 						else if (length(pref_species.allowed_pronouns) == 1)
-							pronouns = pref_species.allowed_pronouns[1]
-						else if(!(pronouns in pref_species.allowed_pronouns))
-							pronouns = pref_species.allowed_pronouns[1]
+							write_preference(/datum/preference/choiced/pronouns, pref_species.allowed_pronouns[1])
+						else if(!(read_preference(/datum/preference/choiced/pronouns) in pref_species.allowed_pronouns))
+							write_preference(/datum/preference/choiced/pronouns, pref_species.allowed_pronouns[1])
 
 						//Now that we changed our species, we must verify that the mutant colour is still allowed.
-						real_name = pref_species.random_name(gender,1)
+						write_preference(/datum/preference/text/real_name, pref_species.random_name(read_preference(/datum/preference/choiced/gender), TRUE))
 						reset_jobs(user)
 						reset_patron(user)
 						reset_culture(user)
@@ -1775,56 +1644,56 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 						validate_customizer_entries()
 						reset_all_customizer_accessory_colors()
 						randomize_all_customizer_accessories()
-						accessory = "Nothing"
+						write_preference(/datum/preference/choiced/accessory, "Nothing")
 
 				if("flavortext")
 					to_chat(user, span_notice("["<span class='bold'>Flavortext should not include nonphysical nonsensory attributes such as backstory or the character's internal thoughts. NSFW descriptions are prohibited.</span>"]"))
-					var/new_flavortext = input(user, "Input your character description", "DESCRIBE YOURSELF", flavortext) as message|null // browser_input_text sanitizes in the box itself, which makes it look kind of ugly when editing A LOT of FTs
+					var/new_flavortext = input(user, "Input your character description", "DESCRIBE YOURSELF", read_preference(/datum/preference/text/flavortext)) as message|null // browser_input_text sanitizes in the box itself, which makes it look kind of ugly when editing A LOT of FTs
 					if(new_flavortext == null)
 						return
 					if(new_flavortext == "")
-						flavortext = null
-						flavortext_display = null
+						write_preference(/datum/preference/text/flavortext, null)
+						write_preference(/datum/preference/text/flavortext_display, null)
 						update_menu_data(user)
 						return
-					flavortext = new_flavortext
-					var/ft = flavortext
+					write_preference(/datum/preference/text/flavortext, new_flavortext)
+					var/ft = read_preference(/datum/preference/text/flavortext)
 					ft = html_encode(ft)
 					ft = replacetext(parsemarkdown_basic(ft), "\n", "<BR>")
-					flavortext_display = ft
+					write_preference(/datum/preference/text/flavortext_display, ft)
 					to_chat(user, span_notice("Successfully updated flavortext"))
 					log_game("[user] has set their flavortext'.")
 				if("ooc_notes")
 					to_chat(user, span_notice("["<span class='bold'>Do not put anything NSFW here. This feature is for stuff that wouldn't fit in the flavortext.</span>"]"))
-					var/new_ooc_notes = input(user, "Input your OOC preferences:", "OOC notes", ooc_notes) as message|null
+					var/new_ooc_notes = input(user, "Input your OOC preferences:", "OOC notes", read_preference(/datum/preference/text/ooc_notes)) as message|null
 					if(new_ooc_notes == null)
 						return
 					if(new_ooc_notes == "")
-						ooc_notes = null
-						ooc_notes_display = null
+						write_preference(/datum/preference/text/ooc_notes, null)
+						write_preference(/datum/preference/text/ooc_notes_display, null)
 						update_menu_data(user)
 						return
-					ooc_notes = new_ooc_notes
+					write_preference(/datum/preference/text/ooc_notes, new_ooc_notes)
 
-					var/ooc = ooc_notes
+					var/ooc = read_preference(/datum/preference/text/ooc_notes)
 					ooc = html_encode(ooc)
 					ooc = replacetext(parsemarkdown_basic(ooc), "\n", "<BR>")
-					ooc_notes_display = ooc
+					write_preference(/datum/preference/text/ooc_notes_display, ooc)
 					to_chat(user, span_notice("Successfully updated OOC notes."))
 					log_game("[user] has set their OOC notes'.")
 				if("ooc_preview")
 					var/list/dat = list()
-					if(is_valid_headshot_link(null, headshot_link, TRUE))
-						dat += ("<div align='center'><img src='[headshot_link]' width='350px' height='350px'></div>")
-					if(flavortext && flavortext_display)
-						dat += "<div align='left' style='line-height: 1.2;'>[flavortext_display]</div>"
-					if(ooc_notes && ooc_notes_display)
+					if(is_valid_headshot_link(null, read_preference(/datum/preference/text/headshot_link), TRUE))
+						dat += ("<div align='center'><img src='[read_preference(/datum/preference/text/headshot_link)]' width='350px' height='350px'></div>")
+					if(read_preference(/datum/preference/text/flavortext) && read_preference(/datum/preference/text/flavortext_display))
+						dat += "<div align='left' style='line-height: 1.2;'>[read_preference(/datum/preference/text/flavortext_display)]</div>"
+					if(read_preference(/datum/preference/text/ooc_notes) && read_preference(/datum/preference/text/ooc_notes_display))
 						dat += "<br>"
 						dat += "<div align='center'><b>OOC notes</b></div>"
-						dat += "<div align='left' style='line-height: 1.2;'>[ooc_notes_display]</div>"
-					if(ooc_extra)
-						dat += "[ooc_extra]"
-					var/datum/browser/popup = new(user, "[real_name]", "<center>[real_name]</center>", width = 480, height = 700)
+						dat += "<div align='left' style='line-height: 1.2;'>[read_preference(/datum/preference/text/ooc_notes_display)]</div>"
+					if(read_preference(/datum/preference/text/ooc_extra))
+						dat += "[read_preference(/datum/preference/text/ooc_extra)]"
+					var/datum/browser/popup = new(user, "[read_preference(/datum/preference/text/real_name)]", "<center>[read_preference(/datum/preference/text/real_name)]</center>", width = 480, height = 700)
 					popup.set_content(dat.Join())
 					popup.open(use_onclose = FALSE)
 				if("ooc_extra")
@@ -1836,7 +1705,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 					to_chat(user, span_notice("Videos will be shrunk to a ~300x300 square. Keep this in mind."))
 					to_chat(user, "<font color = '#d6d6d6'>Leave a single space to delete it from your OOC notes.</font>")
 					to_chat(user, "<font color ='red'>Abuse of this will get you banned.</font>")
-					var/new_extra_link = input(user, "Input the accessory link (https, hosts: gyazo, discord, lensdump, imgbox, catbox):", "OOC Extra", ooc_extra_link) as text|null
+					var/new_extra_link = input(user, "Input the accessory link (https, hosts: gyazo, discord, lensdump, imgbox, catbox):", "OOC Extra", read_preference(/datum/preference/text/ooc_extra_link)) as text|null
 					if(new_extra_link == null)
 						return
 					if(new_extra_link == "")
@@ -1844,8 +1713,8 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 						update_menu_data(user)
 						return
 					if(new_extra_link == " ")	//Single space to delete
-						ooc_extra_link = null
-						ooc_extra = null
+						write_preference(/datum/preference/text/ooc_extra, null)
+						write_preference(/datum/preference/text/ooc_extra_link, null)
 						to_chat(user, span_notice("Successfully deleted OOC Extra."))
 					var/static/list/valid_extensions = list("jpg", "png", "jpeg", "gif", "mp4", "mp3")
 					if(!is_valid_headshot_link(user, new_extra_link, FALSE, valid_extensions))
@@ -1859,36 +1728,37 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 					var/extension = value_split[length(value_split)]
 					var/info
 					if(extension in valid_extensions)
-						ooc_extra_link = new_extra_link
-						ooc_extra = null
+						write_preference(/datum/preference/text/ooc_extra_link, new_extra_link)
+						var/ooc_extra = null
 						ooc_extra = "<div align ='center'><center>"
 						if(extension == "jpg" || extension == "png" || extension == "jpeg" || extension == "gif")
 							ooc_extra += "<br>"
-							ooc_extra += "<img src='[ooc_extra_link]'/>"
+							ooc_extra += "<img src='[read_preference(/datum/preference/text/ooc_extra_link)]'/>"
 							info = "an embedded image."
 						else
 							switch(extension)
 								if("mp4")
 									ooc_extra = "<br>"
 									ooc_extra += "<video width=["288"] height=["288"] controls=["true"]>"
-									ooc_extra += "<source src='[ooc_extra_link]' type=["video/mp4"]>"
+									ooc_extra += "<source src='[read_preference(/datum/preference/text/ooc_extra_link)]' type=["video/mp4"]>"
 									ooc_extra += "</video>"
 									info = "a video."
 								if("mp3")
 									ooc_extra = "<br>"
 									ooc_extra += "<audio controls>"
-									ooc_extra += "<source src='[ooc_extra_link]' type=["audio/mp3"]>"
+									ooc_extra += "<source src='[read_preference(/datum/preference/text/ooc_extra_link)]' type=["audio/mp3"]>"
 									ooc_extra += "Your browser does not support the audio element."
 									ooc_extra += "</audio>"
 									info = "embedded audio."
 						ooc_extra += "</center></div>"
 						to_chat(user, span_notice("Successfully updated OOC Extra with [info]"))
-						log_game("[user] has set their OOC Extra to '[ooc_extra_link]'.")
+						log_game("[user] has set their OOC Extra to '[read_preference(/datum/preference/text/ooc_extra_link)]'.")
+						write_preference(/datum/preference/text/ooc_extra, ooc_extra)
 				if("s_tone")
 					var/list/listy = pref_species.get_skin_list()
 					var/new_s_tone = browser_input_list(user, "CHOOSE YOUR HERO'S [uppertext(pref_species.skin_tone_wording)]", "THE SUN", listy)
 					if(new_s_tone)
-						skin_tone = listy[new_s_tone]
+						write_preference(/datum/preference/choiced/skin_tone, listy[new_s_tone])
 
 				if("selected_accent")
 					if(length(pref_species.multiple_accents))
@@ -1897,38 +1767,38 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 						change_accent = FALSE
 					if(!donator && !change_accent)
 						to_chat(user, "Sorry, this option is Donator-exclusive or unavailable to your race.")
-						selected_accent = ACCENT_DEFAULT
+						write_preference(/datum/preference/choiced/selected_accent, ACCENT_DEFAULT)
 						return
 					var/accent
 					if(donator)
-						accent = browser_input_list(user, "CHOOSE YOUR HERO'S ACCENT", "VOICE OF THE WORLD", GLOB.accent_list, selected_accent)
+						accent = browser_input_list(user, "CHOOSE YOUR HERO'S ACCENT", "VOICE OF THE WORLD", GLOB.accent_list, read_preference(/datum/preference/choiced/selected_accent))
 						if(accent)
-							selected_accent = accent
+							write_preference(/datum/preference/choiced/selected_accent, accent)
 					else if(change_accent)
-						accent = browser_input_list(user, "CHOOSE YOUR HERO'S ACCENT", "VOICE OF THE WORLD", pref_species.multiple_accents, selected_accent)
+						accent = browser_input_list(user, "CHOOSE YOUR HERO'S ACCENT", "VOICE OF THE WORLD", pref_species.multiple_accents, read_preference(/datum/preference/choiced/selected_accent))
 						if(accent)
-							selected_accent = pref_species.multiple_accents[accent]
+							write_preference(/datum/preference/choiced/selected_accent, pref_species.multiple_accents[accent])
 				if("ooccolor")
-					var/new_ooccolor = input(user, "Choose your OOC colour:", "Game Preference", ooccolor) as color|null
+					var/new_ooccolor = input(user, "Choose your OOC colour:", "Game Preference", read_preference(/datum/preference/color/ooccolor)) as color|null
 					if(new_ooccolor)
-						ooccolor = sanitize_color(new_ooccolor)
+						write_preference(/datum/preference/color/ooccolor, sanitize_color(new_ooccolor))
 
 				if("asaycolor")
-					var/new_asaycolor = input(user, "Choose your ASAY color:", "Game Preference", asaycolor) as color|null
+					var/new_asaycolor = input(user, "Choose your ASAY color:", "Game Preference", read_preference(/datum/preference/color/asaycolor)) as color|null
 					if(new_asaycolor)
-						asaycolor = sanitize_color(new_asaycolor)
+						write_preference(/datum/preference/color/asaycolor, sanitize_color(new_asaycolor))
 				if ("clientfps")
-					var/desiredfps = input(user, "Choose your desired fps. (0 = synced with server tick rate (currently:[world.fps]))", "Character Preference", clientfps)  as null|num
+					var/desiredfps = input(user, "Choose your desired fps. (0 = synced with server tick rate (currently:[world.fps]))", "Character Preference", read_preference(/datum/preference/numeric/clientfps))  as null|num
 					if (!isnull(desiredfps))
-						clientfps = desiredfps
+						write_preference(/datum/preference/numeric/clientfps, desiredfps)
 						parent.fps = desiredfps
 
 				if("ui")
-					var/pickedui = input(user, "Choose your UI style.", "Character Preference", UI_style)  as null|anything in sortList(GLOB.available_ui_styles)
+					var/pickedui = input(user, "Choose your UI style.", "Character Preference", read_preference(/datum/preference/choiced/UI_style))  as null|anything in sortList(GLOB.available_ui_styles)
 					if(pickedui)
-						UI_style = "Rogue"
+						write_preference(/datum/preference/choiced/UI_style, "Rogue")
 						if (parent && parent.mob && parent.mob.hud_used)
-							parent.mob.hud_used.update_ui_style(ui_style2icon(UI_style))
+							parent.mob.hud_used.update_ui_style(ui_style2icon(read_preference(/datum/preference/choiced/UI_style)))
 
 				if("culture")
 					var/list/cultures = list()
@@ -1940,37 +1810,38 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 					var/choice = browser_input_list(user, "CHOOSE YOUR HERO'S CULTURE", "CULTURE", cultures)
 					if(!choice)
 						return
-					culture = cultures[choice]
-					to_chat(user, span_notice("[culture::name]"))
-					to_chat(user, span_notice("[culture::description]"))
+					write_preference(/datum/preference/choiced/culture, cultures[choice])
+					var/datum/culture/pref_culture = read_preference(/datum/preference/choiced/culture)
+					to_chat(user, span_notice("[pref_culture::name]"))
+					to_chat(user, span_notice("[pref_culture::description]"))
 		else
 			switch(href_list["preference"])
 				if ("max_chat_length")
-					var/desiredlength = input(user, "Choose the max character length of shown Runechat messages. Valid range is 1 to [CHAT_MESSAGE_MAX_LENGTH] (default: [initial(max_chat_length)]))", "Character Preference", max_chat_length)  as null|num
+					var/desiredlength = input(user, "Choose the max character length of shown Runechat messages. Valid range is 1 to [CHAT_MESSAGE_MAX_LENGTH] (default: [read_default_preference(/datum/preference/numeric/max_chat_length)]))", "Character Preference", read_preference(/datum/preference/numeric/max_chat_length))  as null|num
 					if (!isnull(desiredlength))
-						max_chat_length = clamp(desiredlength, 1, CHAT_MESSAGE_MAX_LENGTH)
+						write_preference(/datum/preference/numeric/max_chat_length, clamp(desiredlength, 1, CHAT_MESSAGE_MAX_LENGTH))
 				if("gender")
 					var/pickedGender = MALE
-					if(gender == MALE)
+					if(read_preference(/datum/preference/choiced/gender) == MALE)
 						pickedGender = FEMALE
-					if(pickedGender && pickedGender != gender)
-						gender = pickedGender
-						real_name = real_name = pref_species.random_name(gender,1)
+					if(pickedGender && pickedGender != read_preference(/datum/preference/choiced/gender))
+						write_preference(/datum/preference/choiced/gender, pickedGender)
+						write_preference(/datum/preference/text/real_name, pref_species.random_name(read_preference(/datum/preference/choiced/gender), TRUE))
 						reset_jobs(user)
 						randomise_appearance_prefs(RANDOMIZE_UNDERWEAR | RANDOMIZE_HAIRSTYLE)
-						accessory = "Nothing"
-						detail = "Nothing"
+						write_preference(/datum/preference/choiced/accessory, "Nothing")
+						write_preference(/datum/preference/choiced/detail, "Nothing")
 				if("domhand")
-					if(domhand == 1)
-						domhand = 2
+					if(read_preference(/datum/preference/choiced/domhand) == 1)
+						write_preference(/datum/preference/choiced/domhand, 2)
 					else
-						domhand = 1
+						write_preference(/datum/preference/choiced/domhand, 1)
 				if("bespecial")
 					open_loadout_shop(user)
 
 				if("family")
 					var/list/famtree_options_list = list(FAMILY_NONE, FAMILY_PARTIAL, FAMILY_NEWLYWED, FAMILY_FULL, "EXPLAIN THIS TO ME")
-					var/new_family = browser_input_list(user, "SELECT YOUR HERO'S BOND", "BLOOD IS THICKER THAN WATER", famtree_options_list, family)
+					var/new_family = browser_input_list(user, "SELECT YOUR HERO'S BOND", "BLOOD IS THICKER THAN WATER", famtree_options_list, read_preference(/datum/preference/text/family))
 					if(new_family == "EXPLAIN THIS TO ME")
 						to_chat(user, span_purple("\
 						--[FAMILY_NONE] will disable this feature.<br>\
@@ -1980,14 +1851,14 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 						players with the setspouse = None from matching with you unless their name equals your setspouse."))
 
 					else if(new_family)
-						family = new_family
+						write_preference(/datum/preference/text/family, new_family)
 				//Setspouse is part of the family subsystem. It will check existing families for this character and attempt to place you in this family.
 				if("setspouse")
 					var/newspouse = browser_input_text(user, "INPUT THE IDENTITY OF ANOTHER HERO", "TIL DEATH DO US PART")
 					if(newspouse)
-						setspouse = newspouse
+						write_preference(/datum/preference/text/setspouse, newspouse)
 					else
-						setspouse = null
+						write_preference(/datum/preference/text/setspouse, null)
 
 				if("select_quirks")
 					open_quirk_menu(user)
@@ -1995,35 +1866,34 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 				//Gender_choice is part of the family subsytem. It will check existing families members with the same preference of this character and attempt to place you in this family.
 				if("gender_choice")
 					// If pronouns are neutral, lock to ANY_GENDER
-					if(pronouns == THEY_THEM || pronouns == IT_ITS)
+					if(read_preference(/datum/preference/choiced/pronouns) == THEY_THEM || read_preference(/datum/preference/choiced/pronouns) == IT_ITS)
 						to_chat(user, span_warning("With neutral pronouns, you may only choose [ANY_GENDER]."))
-						gender_choice = ANY_GENDER
+						write_preference(/datum/preference/choiced/gender_choice, ANY_GENDER)
 					else
 						var/list/gender_choice_option_list = list(ANY_GENDER, SAME_GENDER, DIFFERENT_GENDER)
-						var/new_gender_choice  = browser_input_list(user, "SELECT YOUR HERO'S PREFERENCE", "TO LOVE AND TO CHERISH", gender_choice_option_list, gender_choice)
+						var/new_gender_choice  = browser_input_list(user, "SELECT YOUR HERO'S PREFERENCE", "TO LOVE AND TO CHERISH", gender_choice_option_list, read_preference(/datum/preference/choiced/gender_choice))
 						if(new_gender_choice)
-							gender_choice = new_gender_choice
+
+							write_preference(/datum/preference/choiced/gender_choice, new_gender_choice)
 				if("alignment")
-					var/new_alignment = browser_input_list(user, "SELECT YOUR HERO'S MORALITY", "CUT FROM THE SAME CLOTH", ALL_ALIGNMENTS_LIST, alignment)
+					var/new_alignment = browser_input_list(user, "SELECT YOUR HERO'S MORALITY", "CUT FROM THE SAME CLOTH", ALL_ALIGNMENTS_LIST, read_preference(/datum/preference/choiced/alignment))
 					if(new_alignment)
-						alignment = new_alignment
+						write_preference(/datum/preference/choiced/alignment, new_alignment)
 				if("hotkeys")
-					hotkeys = !hotkeys
-					if(hotkeys)
+					write_preference(/datum/preference/toggle/hotkeys, !read_preference(/datum/preference/toggle/hotkeys))
+					if(read_preference(/datum/preference/toggle/hotkeys))
 						winset(user, null, "input.focus=true command=activeInput input.background-color=[COLOR_INPUT_ENABLED]  input.text-color = #EEEEEE")
 					else
 						winset(user, null, "input.focus=true command=activeInput input.background-color=[COLOR_INPUT_DISABLED]  input.text-color = #ad9eb4")
 
 				if("see_chat_non_mob")
-					see_chat_non_mob = !see_chat_non_mob
+					write_preference(/datum/preference/toggle/see_chat_non_mob, !read_preference(/datum/preference/toggle/see_chat_non_mob))
 				if("action_buttons")
-					buttons_locked = !buttons_locked
+					write_preference(/datum/preference/toggle/buttons_locked, !read_preference(/datum/preference/toggle/buttons_locked))
 				if("tgui_fancy")
-					tgui_fancy = !tgui_fancy
+					write_preference(/datum/preference/toggle/tgui_fancy, !read_preference(/datum/preference/toggle/tgui_fancy))
 				if("tgui_lock")
-					tgui_lock = !tgui_lock
-				if("winflash")
-					windowflashing = !windowflashing
+					write_preference(/datum/preference/toggle/tgui_lock, !read_preference(/datum/preference/toggle/tgui_lock))
 
 				//here lies the badmins
 				if("hear_adminhelps")
@@ -2104,7 +1974,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 					toggles ^= MIDROUND_ANTAG
 
 				if("ambientocclusion")
-					ambientocclusion = !ambientocclusion
+					write_preference(/datum/preference/toggle/ambientocclusion, !read_preference(/datum/preference/toggle/ambientocclusion))
 					if(parent && parent.screen && parent.screen.len)
 						var/atom/movable/screen/plane_master/game_world/PM = locate(/atom/movable/screen/plane_master/game_world) in parent.screen
 						PM.backdrop(parent.mob)
@@ -2114,37 +1984,37 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 						PM.backdrop(parent.mob)
 
 				if("auto_fit_viewport")
-					auto_fit_viewport = !auto_fit_viewport
-					if(auto_fit_viewport && parent)
+					write_preference(/datum/preference/toggle/auto_fit_viewport, !read_preference(/datum/preference/toggle/auto_fit_viewport))
+					if(read_preference(/datum/preference/toggle/auto_fit_viewport) && parent)
 						parent.fit_viewport()
 
 				if("widescreenpref")
-					widescreenpref = !widescreenpref
+					write_preference(/datum/preference/toggle/widescreenpref, !read_preference(/datum/preference/toggle/widescreenpref))
 					var/datum/view_data/view = user.client.view_size
-					view.setDefault(view.getScreenSize(widescreenpref))
+					view.setDefault(view.getScreenSize(read_preference(/datum/preference/toggle/widescreenpref)))
 
 				if("pixel_size")
-					switch(pixel_size)
+					switch(read_preference(/datum/preference/numeric/pixel_size))
 						if(PIXEL_SCALING_AUTO)
-							pixel_size = PIXEL_SCALING_1X
+							write_preference(/datum/preference/numeric/pixel_size, PIXEL_SCALING_1X)
 						if(PIXEL_SCALING_1X)
-							pixel_size = PIXEL_SCALING_1_2X
+							write_preference(/datum/preference/numeric/pixel_size, PIXEL_SCALING_1_2X)
 						if(PIXEL_SCALING_1_2X)
-							pixel_size = PIXEL_SCALING_2X
+							write_preference(/datum/preference/numeric/pixel_size, PIXEL_SCALING_2X)
 						if(PIXEL_SCALING_2X)
-							pixel_size = PIXEL_SCALING_3X
+							write_preference(/datum/preference/numeric/pixel_size, PIXEL_SCALING_3X)
 						if(PIXEL_SCALING_3X)
-							pixel_size = PIXEL_SCALING_AUTO
+							write_preference(/datum/preference/numeric/pixel_size, PIXEL_SCALING_AUTO)
 					user.client.view_size.apply() //Let's winset() it so it actually works
 
 				if("scaling_method")
-					switch(scaling_method)
+					switch(read_preference(/datum/preference/choiced/scaling_method))
 						if(SCALING_METHOD_NORMAL)
-							scaling_method = SCALING_METHOD_DISTORT
+							write_preference(/datum/preference/choiced/scaling_method, SCALING_METHOD_DISTORT)
 						if(SCALING_METHOD_DISTORT)
-							scaling_method = SCALING_METHOD_BLUR
+							write_preference(/datum/preference/choiced/scaling_method, SCALING_METHOD_BLUR)
 						if(SCALING_METHOD_BLUR)
-							scaling_method = SCALING_METHOD_NORMAL
+							write_preference(/datum/preference/choiced/scaling_method, SCALING_METHOD_NORMAL)
 					user.client.view_size.setZoomMode()
 
 				if("schizo_voice")
@@ -2189,7 +2059,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 						player.cache_multi_ready_characters()
 
 				if("changeslot")
-					selected_accent = ACCENT_DEFAULT
+					write_preference(/datum/preference/choiced/selected_accent, ACCENT_DEFAULT)
 					var/list/choices = list()
 					if(path)
 						var/savefile/S = new /savefile(path)
@@ -2201,7 +2071,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 								if(!name)
 									name = "Slot[i]"
 								choices[name] = i
-					var/choice = browser_input_list(user, "WHO IS YOUR HERO?", "NECRA AWAITS", choices, real_name)
+					var/choice = browser_input_list(user, "WHO IS YOUR HERO?", "NECRA AWAITS", choices, read_preference(/datum/preference/text/real_name))
 					if(choice)
 						choice = choices[choice]
 						if(!load_character(choice))
@@ -2233,13 +2103,16 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 		validate_customizer_entries()
 		save_character()
 
+	var/name_value = read_preference(/datum/preference/text/real_name)
 	if(CONFIG_GET(flag/humans_need_surnames) && (pref_species.id == SPEC_ID_HUMEN))
-		var/firstspace = findtext(real_name, " ")
-		var/name_length = length(real_name)
+		var/firstspace = findtext(name_value, " ")
+		var/name_length = length(name_value)
 		if(!firstspace)	//we need a surname
-			real_name += " [pick(GLOB.last_names)]"
+			name_value += " [pick(GLOB.last_names)]"
 		else if(firstspace == name_length)
-			real_name += "[pick(GLOB.last_names)]"
+			name_value += "[pick(GLOB.last_names)]"
+	if(name_value != read_preference(/datum/preference/text/real_name))
+		update_preference(/datum/preference/text/real_name, name_value)
 
 /// Applies the randomization prefs, sanitizes the result and then applies the preference to the human mob.
 /// This is good if you are applying prefs to a mob as if they were joining the round.
@@ -2253,46 +2126,27 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 /datum/preferences/proc/apply_prefs_to(mob/living/carbon/human/character, icon_updates = TRUE)
 	if(QDELETED(character) || !ishuman(character))
 		return
-	character.clear_quirks() // clear preexisting quirks to undo things like transform changes
-	character.transform = matrix() // reset transforms anyway just in case, to avoid drift from setting and unsetting small/large build
-	character.age = age
-	character.gender = gender
-	character.set_patron(selected_patron)
-	character.set_species(pref_species.type, icon_update = FALSE, pref_load = src)
-	if(real_name in GLOB.chosen_names)
-		character.real_name = pref_species.random_name(gender)
-	else
-		character.real_name = real_name
-	character.name = character.real_name
+	character.clear_quirks()
+	character.transform = matrix()
+
+	for(var/datum/preference/pref as anything in get_preferences_in_priority_order())
+		if(!pref)
+			continue
+		if(pref.savefile_identifier != PREF_CHARACTER)
+			continue
+		if(!pref.should_apply)
+			continue
+		pref.apply_to_human(character, read_preference(pref.type), src)
+
+	if(character.real_name in GLOB.chosen_names)
+		character.real_name = pref_species.random_name(character.gender)
+		character.name = character.real_name
 
 	character.dna.features = features.Copy()
 	character.dna.real_name = character.real_name
 
-	character.skin_tone = skin_tone
-	character.culture = GLOB.culture_singletons[culture]
-	character.underwear = underwear
-	character.underwear_color = underwear_color
-	character.undershirt = undershirt
-	character.detail = detail
-	character.socks = socks
-
-	/* V: */
-
-	character.headshot_link = headshot_link
-	character.flavortext = flavortext
-	character.flavortext_display = flavortext_display
-	character.ooc_notes = ooc_notes
-	character.ooc_notes_display = ooc_notes_display
-	character.ooc_extra_link = ooc_extra_link
-	character.ooc_extra = ooc_extra
-	character.pronouns = pronouns
-	character.voice_type = voice_type
-
-	character.domhand = domhand
-	character.voice_color = voice_color
-	character.familytree_pref = family
-	character.gender_choice_pref = gender_choice
-	character.setspouse = setspouse
+	if(icon_updates)
+		character.update_body()
 
 	if(length(quirks))
 		// ???
@@ -2333,9 +2187,9 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 		change_accent = FALSE
 
 	if(donator)
-		character.accent = selected_accent
+		character.accent = read_preference(/datum/preference/choiced/selected_accent)
 	if(change_accent && !donator)
-		character.accent = selected_accent
+		character.accent = read_preference(/datum/preference/choiced/selected_accent)
 		change_accent = FALSE
 
 	/* :V */
@@ -2382,7 +2236,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	return TRUE
 
 /datum/preferences/proc/get_ui_theme_stylesheet()
-	switch(ui_theme)
+	switch(read_preference(/datum/preference/choiced/ui_theme))
 
 		if(UI_PREFERENCE_LIGHT_MODE)
 
@@ -2435,7 +2289,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 			</html>
 			"}
 
-/datum/preferences/proc/is_valid_headshot_link(mob/user, value, silent = FALSE, list/valid_extensions = list("jpg", "png", "jpeg", "gif"))
+/proc/is_valid_headshot_link(mob/user, value, silent = FALSE, list/valid_extensions = list("jpg", "png", "jpeg", "gif"))
 	var/static/list/allowed_hosts = list("i.gyazo.com", "a.l3n.co", "b.l3n.co", "c.l3n.co", "images2.imgbox.com", "thumbs2.imgbox.com", "files.catbox.moe")
 
 	if(!length(value))
@@ -2533,7 +2387,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 				"<b>Species Needed:</b><br>[races_text]"
 			)
 
-	if(length(job.allowed_ages) && !(user.client.prefs.age in job.allowed_ages))
+	if(length(job.allowed_ages) && !(user.client.prefs.read_preference(/datum/preference/choiced/age) in job.allowed_ages))
 		var/ages_text = jointext(job.allowed_ages, ", ")
 		return make_lock_row(
 			used_name,
@@ -2541,7 +2395,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 			"<b>Ages Needed:</b><br>[ages_text]"
 		)
 
-	if(length(job.allowed_sexes) && !(user.client.prefs.gender in job.allowed_sexes))
+	if(length(job.allowed_sexes) && !(user.client.prefs.read_preference(/datum/preference/choiced/gender) in job.allowed_sexes))
 		var/sexes_text = jointext(job.allowed_sexes, ", ")
 		return make_lock_row(
 			used_name,
@@ -2549,7 +2403,8 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 			"<b>Sexes Needed:</b><br>[sexes_text]"
 		)
 
-	if(length(job.allowed_patrons) && !(user.client.prefs.selected_patron.type in job.allowed_patrons))
+	var/datum/patron/patron = user.client.prefs.read_preference(/datum/preference/choiced/patron)
+	if(length(job.allowed_patrons) && !(patron.type in job.allowed_patrons))
 		var/list/patron_list = list()
 		for(var/mult_patron in job.allowed_patrons)
 			var/datum/patron/P = new mult_patron
@@ -2562,8 +2417,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 			"\[PATRON LOCK\]",
 			"<b>Patron Needed:</b><br>[patron_text]"
 		)
-
-	if(length(job.banned_patrons) && (user.client.prefs.selected_patron.type in job.banned_patrons))
+	if(length(job.banned_patrons) && (patron.type in job.banned_patrons))
 		var/list/patron_list = list()
 		for(var/mult_patron in job.banned_patrons)
 			var/datum/patron/P = new mult_patron
