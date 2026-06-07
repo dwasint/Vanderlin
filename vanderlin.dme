@@ -2600,6 +2600,8 @@
 #include "code\modules\client\preferences\datums\color\ooccolor.dm"
 #include "code\modules\client\preferences\datums\color\underwear_color.dm"
 #include "code\modules\client\preferences\datums\color\voice_color.dm"
+#include "code\modules\client\preferences\datums\list\_base.dm"
+#include "code\modules\client\preferences\datums\list\culinary_preference.dm"
 #include "code\modules\client\preferences\datums\numeric\_base.dm"
 #include "code\modules\client\preferences\datums\numeric\clientfps.dm"
 #include "code\modules\client\preferences\datums\numeric\mastervol.dm"

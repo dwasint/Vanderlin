@@ -141,6 +141,22 @@
 	preference_cache[preference_type] = value
 	return value
 
+/datum/preferences/proc/read_assoc_preference(preference_type, key)
+	var/datum/preference/entry = GLOB.preference_entries[preference_type]
+	var/list/value = list()
+	if (isnull(entry))
+		CRASH("preference type `[preference_type]` is not registered!")
+
+	if (preference_type in preference_cache)
+		value = preference_cache[preference_type]
+	if(!islist(value))
+		CRASH("preference type `[preference_type]` is not a list type preference!")
+
+	if(value)
+		return value[key]
+	preference_cache[preference_type] = value
+	return value[key]
+
 /// Return the default value of a given preference, useful for resetting some
 /datum/preferences/proc/read_default_preference(preference_type)
 	var/datum/preference/entry = GLOB.preference_entries[preference_type]

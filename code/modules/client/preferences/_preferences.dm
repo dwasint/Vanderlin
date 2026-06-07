@@ -85,9 +85,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	/// If our owner is from a race that has more than one accent
 	var/change_accent = FALSE
 
-	/// Assoc list of culinary preferences, where the key is the type of the culinary preference, and value is food/drink typepath
-	var/list/culinary_preferences = list()
-
 	/// List of character slot indices selected for multi-ready (in priority order)
 	var/list/multi_ready_slots = list()
 
@@ -2135,9 +2132,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 		character.regenerate_limb(BODY_ZONE_R_ARM)
 		character.regenerate_limb(BODY_ZONE_L_ARM)
 		apply_quirks_to_character(character)
-
-	if(culinary_preferences)
-		apply_culinary_preferences(character)
 
 	if(parent)
 		var/datum/role_bans/bans = get_role_bans_for_ckey(parent.ckey)

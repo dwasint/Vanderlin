@@ -211,15 +211,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		species_type = /datum/species/human/northern
 	pref_species = new species_type()
 
-/datum/preferences/proc/_load_culinary_preferences(S)
-	var/list/loaded_culinary_preferences
-	S["culinary_preferences"] >> loaded_culinary_preferences
-	if(loaded_culinary_preferences)
-		culinary_preferences = loaded_culinary_preferences
-		validate_culinary_preferences()
-	else
-		reset_culinary_preferences()
-
 
 /datum/preferences/proc/_load_appearence(S)
 	S["randomise"] >> randomise
@@ -256,7 +247,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	// Systems with their own load logic
 	_load_species(S)
 	load_triumph_shop_character_data(S)
-	_load_culinary_preferences(S)
 	load_quirks(S)
 
 	// preference character fields
@@ -335,7 +325,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	// Non-preference fields
 	WRITE_FILE(S["randomise"], randomise)
 	WRITE_FILE(S["job_preferences"], job_preferences)
-	WRITE_FILE(S["culinary_preferences"], culinary_preferences)
 	WRITE_FILE(S["equipped_loadout"], equipped_loadout)
 	WRITE_FILE(S["equipped_loadout_colors"], equipped_loadout_colors)
 	WRITE_FILE(S["single_round_loadout_colors"], single_round_loadout_colors)
