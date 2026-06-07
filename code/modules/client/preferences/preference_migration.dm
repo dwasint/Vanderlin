@@ -117,7 +117,7 @@
 	if (isnull(typed))
 		return // bad value (e.g. corrupt hex colour), use default
 
-	if (!pref.is_valid(typed))
+	if (!pref.is_valid(typed, src))
 		return // failed validation, use default
 
 	// save_character() will flush everything to disk after migration.

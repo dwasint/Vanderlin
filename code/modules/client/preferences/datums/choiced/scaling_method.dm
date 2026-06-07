@@ -10,3 +10,13 @@
 
 /datum/preference/choiced/scaling_method/create_default_value()
 	return "normal"
+
+/datum/preference/choiced/scaling_method/handle_link(datum/preferences/prefs, mob/user)
+	switch(prefs.read_preference(/datum/preference/choiced/scaling_method))
+		if(SCALING_METHOD_NORMAL)
+			prefs.write_preference(/datum/preference/choiced/scaling_method, SCALING_METHOD_DISTORT)
+		if(SCALING_METHOD_DISTORT)
+			prefs.write_preference(/datum/preference/choiced/scaling_method, SCALING_METHOD_BLUR)
+		if(SCALING_METHOD_BLUR)
+			prefs.write_preference(/datum/preference/choiced/scaling_method, SCALING_METHOD_NORMAL)
+	user.client.view_size.setZoomMode()

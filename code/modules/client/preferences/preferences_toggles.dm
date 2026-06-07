@@ -551,20 +551,28 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 #undef TOGGLE_CHECKBOX
 
 /// Returns TRUE if the given flag bit is set in a bitwise preference.
-/datum/preferences/proc/preference_has_flag(preference_type, flag)
+/datum/preferences/proc/preference_has_flag(datum/preference/preference_type, flag)
+	if(!ispath(preference_type, /datum/preference/bitwise))
+		CRASH("preference_has_flag() called with a non bitwise preference: [preference_type]")
 	return !!(read_preference(preference_type) & flag)
 
 /// Sets a flag bit in a bitwise preference.
-/datum/preferences/proc/preference_set_flag(preference_type, flag)
+/datum/preferences/proc/preference_set_flag(datum/preference/preference_type, flag)
+	if(!ispath(preference_type, /datum/preference/bitwise))
+		CRASH("preference_set_flag() called with a non bitwise preference: [preference_type]")
 	var/current = read_preference(preference_type)
 	write_preference(GLOB.preference_entries[preference_type], current | flag)
 
 /// Clears a flag bit in a bitwise preference.
-/datum/preferences/proc/preference_clear_flag(preference_type, flag)
+/datum/preferences/proc/preference_clear_flag(datum/preference/preference_type, flag)
+	if(!ispath(preference_type, /datum/preference/bitwise))
+		CRASH("prefence_clear_flag() called with a non bitwise preference: [preference_type]")
 	var/current = read_preference(preference_type)
 	write_preference(GLOB.preference_entries[preference_type], current & ~flag)
 
 /// Toggles a flag bit in a bitwise preference.
-/datum/preferences/proc/preference_toggle_flag(preference_type, flag)
+/datum/preferences/proc/preference_toggle_flag(datum/preference/preference_type, flag)
+	if(!ispath(preference_type, /datum/preference/bitwise))
+		CRASH("preference_toggle_flag() called with a non bitwise preference: [preference_type]")
 	var/current = read_preference(preference_type)
 	write_preference(GLOB.preference_entries[preference_type], current ^ flag)

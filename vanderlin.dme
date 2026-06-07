@@ -2575,6 +2575,7 @@
 #include "code\modules\client\preferences\datums\choiced\culture.dm"
 #include "code\modules\client\preferences\datums\choiced\detail.dm"
 #include "code\modules\client\preferences\datums\choiced\domhand.dm"
+#include "code\modules\client\preferences\datums\choiced\faith.dm"
 #include "code\modules\client\preferences\datums\choiced\gender.dm"
 #include "code\modules\client\preferences\datums\choiced\gender_choice.dm"
 #include "code\modules\client\preferences\datums\choiced\ghost_accs.dm"

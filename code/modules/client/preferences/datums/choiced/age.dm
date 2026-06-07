@@ -22,3 +22,9 @@
 
 /datum/preference/choiced/age/apply_to_human(mob/living/carbon/human/H, value, datum/preferences/prefs)
 	H.age = value
+
+/datum/preference/choiced/age/handle_link(datum/preferences/prefs, mob/user)
+	var/new_age = browser_input_list(user, "SELECT YOUR HERO'S AGE", "YILS DEAD", prefs.pref_species.possible_ages, prefs.read_preference(/datum/preference/choiced/age))
+	if(new_age)
+		prefs.write_preference(/datum/preference/choiced/age, new_age)
+		prefs.reset_jobs(user)

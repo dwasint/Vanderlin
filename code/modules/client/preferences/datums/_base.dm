@@ -176,6 +176,21 @@
 	preference_cache[pref.type] = typed
 	return TRUE
 
+/// Deserialise and cache the toggled state for a preference.
+/// Does NOT write to the savefile, should be used when save_preferences() is called at the end of the block
+/// Returns TRUE on success, FALSE if validation fails.
+/datum/preferences/proc/toggle_preference(datum/preference/pref)
+	if(!istype(pref))
+		pref = GLOB.preference_entries[pref]
+	if(!istype(pref, /datum/preference/toggle))
+		CRASH(" toggle_preference() called with a non toggle preference [pref.type].")
+	var/old_value = read_preference(pref)
+	var/typed = pref.deserialize(!old_value, src)
+	if (!pref.is_valid(typed, src))
+		return FALSE
+	preference_cache[pref.type] = typed
+	return TRUE
+
 /// Update a preference in-memory and immediately apply it to the live
 /// client or character preview. Does NOT write to the savefile.
 /// Returns TRUE on success.
@@ -194,3 +209,10 @@
 		update_preview_icon()
 
 	return TRUE
+
+/// This basically exists to move process_Link logic into its own datum,
+/// this means adding new thnigs to the menu should use the savefile key
+/// Returns TRUE on success
+/datum/preference/proc/handle_link(datum/preferences/prefs, mob/user)
+	SHOULD_CALL_PARENT(FALSE)
+	CRASH("`handle_link()` not implemented on [type]!")

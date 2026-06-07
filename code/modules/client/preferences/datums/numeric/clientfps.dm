@@ -10,3 +10,9 @@
 
 /datum/preference/numeric/clientfps/create_default_value()
 	return 100
+
+/datum/preference/numeric/clientfps/handle_link(datum/preferences/prefs, mob/user)
+	var/desiredfps = input(user, "Choose your desired fps. (0 = synced with server tick rate (currently:[world.fps]))", "Character Preference", prefs.read_preference(/datum/preference/numeric/clientfps))  as null|num
+	if (!isnull(desiredfps))
+		prefs.write_preference(/datum/preference/numeric/clientfps, desiredfps)
+		prefs.parent.fps = desiredfps

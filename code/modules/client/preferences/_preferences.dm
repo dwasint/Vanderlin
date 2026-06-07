@@ -450,7 +450,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	<div class="sprite loadout-bg"></div>
 	<div class="sprite triumphs-bg"></div>
 	<div class="sprite headshot-bg" style="padding: 3px; box-sizing: border-box;">
-		<a href='?_src_=prefs;preference=headshot;task=input' style="display: block; width: 100%; height: 100%;">
+		<a href='?_src_=prefs;preference=headshot_link;task=input' style="display: block; width: 100%; height: 100%;">
 			<img id="headshot-img" src="[read_preference(/datum/preference/text/headshot_link) || ""]"
 				 style="width: 100%; height: 100%; object-fit: cover; cursor: pointer; image-rendering: auto;"
 				 onerror="this.style.display='none';">
@@ -459,7 +459,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	<div class="sprite ooc-bg"></div>
 
 	<div class="sprite" style="top:26px; left:23px; width:92px; height:9px; background-image: url('header_charname.png');">
-		<a href='?_src_=prefs;preference=name;task=input' style="text-decoration: none; display: block; width: 100%; height: 100%;">
+		<a href='?_src_=prefs;preference=real_name;task=input' style="text-decoration: none; display: block; width: 100%; height: 100%;">
 			<div id="char-name" class="clickable-text auto-shrink" style="width:92px; height:9px;">[read_preference(/datum/preference/text/real_name)]</div>
 		</a>
 	</div>
@@ -482,7 +482,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 		</a>
 	</div>
 	<div class="sprite" style="top:30px; left:172px; width:42px; height:9px; background-image: url('header_patron.png');">
-		<a href='?_src_=prefs;preference=patron;task=input' style="text-decoration: none; display: block; width: 100%; height: 100%;">
+		<a href='?_src_=prefs;preference=selected_patron;task=input' style="text-decoration: none; display: block; width: 100%; height: 100%;">
 			<div id="char-patron" class="clickable-text auto-shrink" style="width:42px; height:9px;">[pref_patron.name]</div>
 		</a>
 	</div>
@@ -498,7 +498,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 		</a>
 	</div>
 	<div class="sprite" style="top:70px; left:168px; width:53px; height:9px; background-image: url('body_flaw.png');">
-		<a href='?_src_=prefs;preference=select_quirks' style="text-decoration: none; display: block; width: 100%; height: 100%;">
+		<a href='?_src_=prefs;task=select_quirks' style="text-decoration: none; display: block; width: 100%; height: 100%;">
 			<div class="clickable-text auto-shrink" style="width:53px; height:9px;">Select Quirks</div>
 		</a>
 	</div>
@@ -508,7 +508,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 		</a>
 	</div>
 	<div class="sprite" style="top:89px; left:168px; width:53px; height:9px; background-image: url('body_ancestry.png');">
-		<a href='?_src_=prefs;preference=s_tone;task=input' style="text-decoration: none; display: block; width: 100%; height: 100%;">
+		<a href='?_src_=prefs;preference=skin_tone;task=input' style="text-decoration: none; display: block; width: 100%; height: 100%;">
 			<div class="clickable-text auto-shrink" style="width:53px; height:9px;">Change</div>
 		</a>
 	</div>
@@ -535,20 +535,20 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 		<div id="char-culture" class="clickable-text auto-shrink" style="width:51px; height:9px;">[pref_culture ? pref_culture::name : "None"]</div>
 	</div></a>
 
-	<a href='?_src_=prefs;preference=voicetype;task=input'><div class="sprite" style="top:154px; left:10px; width:46px; height:9px; background-image: url('voice_type.png');">
+	<a href='?_src_=prefs;preference=voice_type;task=input'><div class="sprite" style="top:154px; left:10px; width:46px; height:9px; background-image: url('voice_type.png');">
 		<div id="char-voicetype" class="clickable-text auto-shrink" style="width:46px; height:9px;">[read_preference(/datum/preference/choiced/voice_type)]</div>
 	</div></a>
 	<a href='?_src_=prefs;preference=selected_accent;task=input'><div class="sprite" style="top:154px; left:60px; width:42px; height:9px; background-image: url('voice_accent.png');">
 		<div id="char-accent" class="clickable-text auto-shrink" style="width:42px; height:9px;">[read_preference(/datum/preference/choiced/selected_accent)]</div>
 	</div></a>
 
-	<a href='?_src_=prefs;preference=loadout_item;loadout_number=1;task=input'><div class="sprite" style="top:194px; left:10px; width:51px; height:9px; background-image: url('loadout_item1.png');">
+	<a href='?_src_=prefs;preference=loadout_item;loadout_number=1;task=loadout_store'><div class="sprite" style="top:194px; left:10px; width:51px; height:9px; background-image: url('loadout_item1.png');">
 		<div id="char-loadout1" class="clickable-text auto-shrink" style="width:51px; height:9px;">[loadout1_item ? loadout1_item.name : "None"]</div>
 	</div></a>
-	<a href='?_src_=prefs;preference=loadout_item;loadout_number=2;task=input'><div class="sprite" style="top:213px; left:10px; width:51px; height:9px; background-image: url('loadout_item2.png');">
+	<a href='?_src_=prefs;preference=loadout_item;loadout_number=2;task=loadout_store'><div class="sprite" style="top:213px; left:10px; width:51px; height:9px; background-image: url('loadout_item2.png');">
 		<div id="char-loadout2" class="clickable-text auto-shrink" style="width:51px; height:9px;">[loadout2_item ? loadout2_item.name : "None"]</div>
 	</div></a>
-	<a href='?_src_=prefs;preference=loadout_item;loadout_number=3;task=input'><div class="sprite" style="top:232px; left:10px; width:51px; height:9px; background-image: url('loadout_item3.png');">
+	<a href='?_src_=prefs;preference=loadout_item;loadout_number=3;task=loadout_store'><div class="sprite" style="top:232px; left:10px; width:51px; height:9px; background-image: url('loadout_item3.png');">
 		<div id="char-loadout3" class="clickable-text auto-shrink" style="width:51px; height:9px;">[loadout3_item ? loadout3_item.name : "None"]</div>
 	</div></a>
 
@@ -562,7 +562,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	<a href='?_src_=prefs;preference=descriptors;task=menu'><div class="sprite flav-desc"></div></a>
 	<a href='?_src_=prefs;preference=flavortext;task=input'><div class="sprite flav-text"></div></a>
 	<a href='?_src_=prefs;preference=culinary;task=menu'><div class="sprite flav-food"></div></a>
-	<a href='?_src_=prefs;preference=ooc_preview;task=input'><div class="sprite flav-prev"></div></a>
+	<a href='?_src_=prefs;preference=ooc_preview;task=ooc_preview'><div class="sprite flav-prev"></div></a>
 	<a href='?_src_=prefs;preference=ooc_notes;task=input'><div class="sprite ooc-notes"></div></a>
 	<a href='?_src_=prefs;preference=ooc_extra;task=input'><div class="sprite ooc-extra"></div></a>
 	<a href='?_src_=prefs;preference=antag;task=menu'><div class="sprite btn-roles"></div></a>
@@ -572,18 +572,18 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	<div class="sprite features-bg"><div id="silhouette" class="sprite" style="background-image: url('features_bodytype_[read_preference(/datum/preference/choiced/gender) == MALE ? "m" : "f"].png');"></div></div>
 
 	<div class="sprite v-color-box">
-		<a href='?_src_=prefs;preference=voice;task=input' style="display: block; width: 100%; height: 100%;">
+		<a href='?_src_=prefs;preference=voice_color;task=input' style="display: block; width: 100%; height: 100%;">
 			<div id="voice-blob" class="sprite v-blob" style="background-color: [read_preference(/datum/preference/color/voice_color)];"></div>
 		</a>
 	</div>
-	<a href='?_src_=prefs;preference=bespecial'><div id="bespecial" class="sprite [next_special_trait ? "yes" : ""]"></div></a>
+	<a href='?_src_=prefs;task=loadout_store'><div id="bespecial" class="sprite [next_special_trait ? "yes" : ""]"></div></a>
 	<a href='?_src_=prefs;preference=multi;task=menu'><div class="sprite menu-ready"></div></a>
-	<a href='?_src_=prefs;preference=changeslot;'><div class="sprite menu-change"></div></a>
-	<a href='?_src_=prefs;preference=keybinds;task=menu'><div class="sprite menu-keybinds"></div></a>
-	<a href='?_src_=prefs;preference=toggles'><div class="sprite menu-toggles"></div></a>
-	<a href='?_src_=prefs;preference=save'><div class="sprite menu-save"></div></a>
-	<a href='?_src_=prefs;preference=load'><div class="sprite menu-undo"></div></a>
-	<a href='?_src_=prefs;preference=finished'><div class="sprite menu-done"></div></a>
+	<a href='?_src_=prefs;task=changeslot;'><div class="sprite menu-change"></div></a>
+	<a href='?_src_=prefs;task=keybinds;task=menu'><div class="sprite menu-keybinds"></div></a>
+	<a href='?_src_=prefs;task=toggles'><div class="sprite menu-toggles"></div></a>
+	<a href='?_src_=prefs;task=save'><div class="sprite menu-save"></div></a>
+	<a href='?_src_=prefs;task=load'><div class="sprite menu-undo"></div></a>
+	<a href='?_src_=prefs;task=finished'><div class="sprite menu-done"></div></a>
 </div>
 </body>
 </html>
@@ -614,7 +614,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	// If no specific fields specified, update all
 	var/update_all = !fields_to_update || !length(fields_to_update)
 
-	if(update_all || ("name" in fields_to_update))
+	if(update_all || ("real_name" in fields_to_update))
 		params["name"] = read_preference(/datum/preference/text/real_name)
 	if(update_all || ("job" in fields_to_update))
 		params["job"] = high_job || "None"
@@ -640,7 +640,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 		params["genderpref"] = read_preference(/datum/preference/choiced/gender_choice) ? read_preference(/datum/preference/choiced/gender_choice) : "Any"
 	if(update_all || ("spouse" in fields_to_update))
 		params["spouse"] = read_preference(/datum/preference/text/setspouse) ? read_preference(/datum/preference/text/setspouse) : "None"
-	if(update_all || ("voicetype" in fields_to_update))
+	if(update_all || ("voice_type" in fields_to_update))
 		params["voicetype"] = read_preference(/datum/preference/choiced/voice_type)
 	if(update_all || ("accent" in fields_to_update))
 		params["accent"] = read_preference(/datum/preference/choiced/selected_accent)
@@ -1439,628 +1439,102 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 				if("all")
 					apply_character_randomization_prefs()
 
+		if("loadout_store")
+			open_loadout_shop(user)
+
+		if("select_quirks")
+			open_quirk_menu(user)
+
+		if("finished")
+			user << browse(null, "window=latechoices") //closes late choices window
+			user << browse(null, "window=playersetup") //closes the player setup window
+			user << browse(null, "window=preferences") //closes job selection
+			user << browse(null, "window=mob_occupation")
+			user << browse(null, "window=latechoices") //closes late job selection
+			user << browse(null, "window=migration") // Closes migrant menu
+
+			winshow(user, "stonekeep_prefwin", FALSE)
+			user << browse(null, "window=preferences_browser")
+			user.client?.clear_character_previews() // browse null doesn't call on-close directly as far as i can tell
+			user << browse(null, "window=lobby_window")
+			return
+
+		if("save")
+			to_chat(user, span_info("Preferences Saved."))
+			save_preferences()
+			save_character()
+			if(isnewplayer(user))
+				var/mob/dead/new_player/player = user
+				player.cache_multi_ready_characters()
+
+		if("load")
+			load_preferences()
+			load_character()
+			if(isnewplayer(user))
+				var/mob/dead/new_player/player = user
+				player.cache_multi_ready_characters()
+
+		if("changeslot")
+			write_preference(/datum/preference/choiced/selected_accent, ACCENT_DEFAULT)
+			var/list/choices = list()
+			if(path)
+				var/savefile/S = new /savefile(path)
+				if(S)
+					for(var/i=1, i<=max_save_slots, i++)
+						var/name
+						S.cd = "/character[i]"
+						S["real_name"] >> name
+						if(!name)
+							name = "Slot[i]"
+						choices[name] = i
+			var/choice = browser_input_list(user, "WHO IS YOUR HERO?", "NECRA AWAITS", choices, read_preference(/datum/preference/text/real_name))
+			if(choice)
+				choice = choices[choice]
+				if(!load_character(choice))
+					randomise_appearance_prefs()
+					save_character()
+
+		if("randomiseappearanceprefs")
+			randomise_appearance_prefs()
+			customizer_entries = list()
+			validate_customizer_entries()
+			reset_all_customizer_accessory_colors()
+			randomize_all_customizer_accessories()
+			reset_jobs(user)
+
+		if("ooc_preview")
+			var/list/dat = list()
+			if(is_valid_headshot_link(null, read_preference(/datum/preference/text/headshot_link), TRUE))
+				dat += ("<div align='center'><img src='[read_preference(/datum/preference/text/headshot_link)]' width='350px' height='350px'></div>")
+			if(read_preference(/datum/preference/text/flavortext) && read_preference(/datum/preference/text/flavortext_display))
+				dat += "<div align='left' style='line-height: 1.2;'>[read_preference(/datum/preference/text/flavortext_display)]</div>"
+			if(read_preference(/datum/preference/text/ooc_notes) && read_preference(/datum/preference/text/ooc_notes_display))
+				dat += "<br>"
+				dat += "<div align='center'><b>OOC notes</b></div>"
+				dat += "<div align='left' style='line-height: 1.2;'>[read_preference(/datum/preference/text/ooc_notes_display)]</div>"
+			if(read_preference(/datum/preference/text/ooc_extra))
+				dat += "[read_preference(/datum/preference/text/ooc_extra)]"
+			var/datum/browser/popup = new(user, "[read_preference(/datum/preference/text/real_name)]", "<center>[read_preference(/datum/preference/text/real_name)]</center>", width = 480, height = 700)
+			popup.set_content(dat.Join())
+			popup.open(use_onclose = FALSE)
+
 		if("input")
 
 			if(href_list["preference"] in GLOB.preferences_custom_names)
 				ask_for_custom_name(user,href_list["preference"])
 
-			switch(href_list["preference"])
-				if("name")
-					var/new_name = browser_input_text(user, "DECIDE YOUR HERO'S IDENTITY", "THE SELF", read_preference(/datum/preference/text/real_name), MAX_NAME_LEN, encode = FALSE)
-					if(new_name)
-						new_name = reject_bad_name(new_name)
-						if(new_name)
-							write_preference(/datum/preference/text/real_name, new_name)
-						else
-							to_chat(user, "<font color='red'>Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and .</font>")
-					GLOB.name_adjustments |= "[parent] changed their characters name to [new_name]."
-					log_character("[parent] changed their characters name to [new_name].")
+			if(!(href_list["preference"] in GLOB.preference_entries_by_key))
+				CRASH("invalid key [href_list["preference"]] in menu, please set it to a savefile key!")
 
-				if("age")
-					var/new_age = browser_input_list(user, "SELECT YOUR HERO'S AGE", "YILS DEAD", pref_species.possible_ages, read_preference(/datum/preference/choiced/age))
-					if(new_age)
-						write_preference(/datum/preference/choiced/age, new_age)
-						reset_jobs(user)
-				if ("pronouns")
-					var/list/allowed_pronouns = pref_species.allowed_pronouns
-					if(!allowed_pronouns || !length(allowed_pronouns))
-						// fallback to the default pronouns list
-						allowed_pronouns = PRONOUNS_LIST
+			var/datum/preference/preference = GLOB.preference_entries_by_key[href_list["preference"]]
+			preference.handle_link(src, user)
 
-					if(length(allowed_pronouns) == 1)
-						write_preference(/datum/preference/choiced/pronouns, allowed_pronouns[1])
-						to_chat(user, span_warning("This species can only use [read_preference(/datum/preference/choiced/pronouns)]."))
-						return
-
-					var/pronouns_input = browser_input_list(user, "CHOOSE HOW MORTALS REFER TO YOUR HERO", "DISOBEY SOCIAL NORMS", allowed_pronouns)
-					if(pronouns_input)
-						write_preference(/datum/preference/choiced/pronouns, pronouns_input)
-						to_chat(user, span_warning("Your character's pronouns are now [read_preference(/datum/preference/choiced/pronouns)]."))
-				if ("voicetype")
-					var/list/allowed_voices
-					if(read_preference(/datum/preference/choiced/gender) == MALE)
-						allowed_voices = pref_species.allowed_voicetypes_m
-					else if(read_preference(/datum/preference/choiced/gender) == FEMALE)
-						allowed_voices = pref_species.allowed_voicetypes_f
-					else
-						allowed_voices = VOICE_TYPES_LIST
-					if(!allowed_voices || !length(allowed_voices))
-						allowed_voices = VOICE_TYPES_LIST
-					if(length(allowed_voices) == 1)
-						write_preference(/datum/preference/choiced/voice_type, allowed_voices[1])
-						to_chat(user, span_warning("This species can only use the [read_preference(/datum/preference/choiced/voice_type)] voice type."))
-						return
-
-					var/voicetype_input = browser_input_list(user, "CHOOSE YOUR HERO'S VOICE TYPE", "DISCARD SOCIETY'S EXPECTATIONS", allowed_voices)
-					if(voicetype_input)
-						write_preference(/datum/preference/choiced/voice_type, voicetype_input)
-						if(voicetype_input == VOICE_TYPE_ANDRO)
-							to_chat(user, span_warning("This will use the feminine voicepack pitched down a bit to achieve a more androgynous sound."))
-						to_chat(user, span_warning("Your character will now vocalize with a [lowertext(read_preference(/datum/preference/choiced/voice_type))] affect."))
-				if("faith")
-					var/list/faiths_named = list()
-					for(var/datum/faith/faith as anything in GLOB.faith_list)
-						faith = GLOB.faith_list[faith]
-						if(!faith.preference_accessible(src))
-							continue
-						faiths_named["\The [faith.name]"] = faith
-					var/datum/patron/pref_patron = read_preference(/datum/preference/choiced/patron)
-					var/faith_input = browser_input_list(user, "SELECT YOUR HERO'S BELIEF", "PUPPETS ON STRINGS", faiths_named, "\The [pref_patron.associated_faith::name]")
-					if(faith_input)
-						var/datum/faith/faith = faiths_named[faith_input]
-						to_chat(user, "<font color='purple'>Faith: [faith.name]</font>")
-						to_chat(user, "<font color='purple'>Background: [faith.desc]</font>")
-						write_preference(/datum/preference/choiced/patron, GLOB.patrons_by_type[faith.godhead] || GLOB.patrons_by_type[pick(GLOB.patrons_by_faith[faith.type])])
-
-				if("patron")
-					var/datum/patron/pref_patron = read_preference(/datum/preference/choiced/patron)
-					var/list/patrons_named = list()
-					for(var/datum/patron/patron as anything in GLOB.patrons_by_faith[pref_patron.associated_faith || /datum/patron/divine/astrata::associated_faith])
-						patron = GLOB.patrons_by_type[patron]
-						if(!patron.preference_accessible(src))
-							continue
-						var/pref_name = patron.display_name ? patron.display_name : patron.name
-						patrons_named[pref_name] = patron
-
-					if(length(patrons_named))
-						var/datum/faith/current_faith = GLOB.faith_list[pref_patron.associated_faith] || GLOB.faith_list[/datum/patron/divine/astrata::associated_faith]
-						var/god_input = browser_input_list(user, "SELECT YOUR HERO'S PATRON GOD", uppertext("\The [current_faith.name]"), patrons_named, pref_patron)
-						if(god_input)
-							write_preference(/datum/preference/choiced/patron, patrons_named[god_input])
-
-					pref_patron = read_preference(/datum/preference/choiced/patron)
-					to_chat(user, "<font color='purple'>Patron: [pref_patron]</font>")
-					to_chat(user, "<font color='purple'>Domain: [pref_patron.domain]</font>")
-					to_chat(user, "<font color='purple'>Background: [pref_patron.desc]</font>")
-					to_chat(user, "<font color='purple'>Flawed aspects: [pref_patron.flaws]</font>")
-					to_chat(user, "<font color='purple'>Likely Worshippers: [pref_patron.worshippers]</font>")
-					to_chat(user, "<font color='red'>Considers these to be Sins: [pref_patron.sins]</font>")
-					to_chat(user, "<font color='white'>Blessed with boon(s): [pref_patron.boons]</font>")
-
-				if("voice")
-					var/new_voice = input(user, "SELECT YOUR HERO'S VOICE COLOR", "THE THROAT","#"+read_preference(/datum/preference/color/voice_color)) as color|null
-					if(new_voice)
-						if(color_hex2num(new_voice) < 230)
-							to_chat(user, "<font color='red'>This voice color is too dark for mortals.</font>")
-							return
-						write_preference(/datum/preference/color/voice_color, sanitize_hexcolor(new_voice, include_crunch = FALSE))
-
-				if("headshot")
-					if(!donator)
-						to_chat(user, "This is a donator exclusive feature, your headshot link will be applied but others will only be able to view it if you are a Patreon supporter or Twitch subscriber.")
-
-					to_chat(user, span_notice("Please use an image of the head and shoulder area to maintain immersion level. Lastly, ["<span class='bold'>do not use a real life photo or ANYTHING AI generated.</span>"]"))
-					to_chat(user, span_notice("If the photo doesn't show up properly in-game, ensure that it's a direct image link that opens properly in a browser."))
-					to_chat(user, span_notice("Keep in mind that the photo will be downsized to 325x325 pixels, so the more square the photo, the better it will look."))
-					var/new_headshot_link = input(user, "Input the headshot link (https, hosts: gyazo, lensdump, imgbox, catbox):", "Headshot", read_preference(/datum/preference/text/headshot_link)) as text|null
-					if(!new_headshot_link)
-						return
-					var/is_valid_link = is_valid_headshot_link(user, new_headshot_link, FALSE)
-					if(!is_valid_link)
-						to_chat(user, span_notice("Failed to update headshot"))
-						return
-					write_preference(/datum/preference/text/headshot_link, new_headshot_link)
-					to_chat(user, span_notice("Successfully updated headshot picture"))
-					log_game("[user] has set their Headshot image to '[read_preference(/datum/preference/text/headshot_link)]'.")
-				if("formathelp")
-					var/list/dat = list()
-					dat +="You can use backslash (\\) to escape special characters.<br>"
-					dat += "<br>"
-					dat += "# text : Defines a header.<br>"
-					dat += "|text| : Centers the text.<br>"
-					dat += "**text** : Makes the text <b>bold</b>.<br>"
-					dat += "*text* : Makes the text <i>italic</i>.<br>"
-					dat += "^text^ : Increases the <font size = \"4\">size</font> of the text.<br>"
-					dat += "((text)) : Decreases the <font size = \"1\">size</font> of the text.<br>"
-					dat += "* item : An unordered list item.<br>"
-					dat += "--- : Adds a horizontal rule.<br>"
-					dat += "-=FFFFFFtext=- : Adds a specific <font color = '#FFFFFF'>colour</font> to text.<br><br>"
-					dat += "Minimum Flavortext: <b>[MINIMUM_FLAVOR_TEXT]</b> characters.<br>"
-					dat += "Minimum OOC Notes: <b>[MINIMUM_OOC_NOTES]</b> characters."
-					var/datum/browser/popup = new(user, "Formatting Help", width = 400, height = 350)
-					popup.set_content(dat.Join())
-					popup.open(use_onclose = FALSE)
-				if("loadout_item")
-					open_loadout_shop(user)
-
-				if("species")
-					write_preference(/datum/preference/choiced/selected_accent, ACCENT_DEFAULT)
-
-					var/list/selectable = list()
-					for(var/species_id in GLOB.roundstart_species)
-						var/species_type = GLOB.species_list[species_id]
-
-						var/datum/species/species = new species_type()
-						if(!species.preference_accessible(src))
-							continue
-
-						selectable[species.name] = species.type
-
-					var/result = browser_input_list(user, "SELECT YOUR HERO'S PEOPLE:", "VANDERLIN FAUNA", selectable, pref_species)
-
-					if(result)
-						var/species_type = selectable[result]
-
-						pref_species = new species_type()
-
-						to_chat(user, "<em>[pref_species.name]</em>")
-						if(pref_species.desc)
-							to_chat(user, "[pref_species.desc]")
-
-						if(!length(pref_species.allowed_pronouns))
-							to_chat(user, span_warning("This species does not have any allowed pronouns. Please contact a coder to add them."))
-						else if (length(pref_species.allowed_pronouns) == 1)
-							write_preference(/datum/preference/choiced/pronouns, pref_species.allowed_pronouns[1])
-						else if(!(read_preference(/datum/preference/choiced/pronouns) in pref_species.allowed_pronouns))
-							write_preference(/datum/preference/choiced/pronouns, pref_species.allowed_pronouns[1])
-
-						//Now that we changed our species, we must verify that the mutant colour is still allowed.
-						write_preference(/datum/preference/text/real_name, pref_species.random_name(read_preference(/datum/preference/choiced/gender), TRUE))
-						reset_jobs(user)
-						reset_patron(user)
-						reset_culture(user)
-						randomise_appearance_prefs(~(RANDOMIZE_SPECIES))
-						customizer_entries = list()
-						validate_customizer_entries()
-						reset_all_customizer_accessory_colors()
-						randomize_all_customizer_accessories()
-						write_preference(/datum/preference/choiced/accessory, "Nothing")
-
-				if("flavortext")
-					to_chat(user, span_notice("["<span class='bold'>Flavortext should not include nonphysical nonsensory attributes such as backstory or the character's internal thoughts. NSFW descriptions are prohibited.</span>"]"))
-					var/new_flavortext = input(user, "Input your character description", "DESCRIBE YOURSELF", read_preference(/datum/preference/text/flavortext)) as message|null // browser_input_text sanitizes in the box itself, which makes it look kind of ugly when editing A LOT of FTs
-					if(new_flavortext == null)
-						return
-					if(new_flavortext == "")
-						write_preference(/datum/preference/text/flavortext, null)
-						write_preference(/datum/preference/text/flavortext_display, null)
-						update_menu_data(user)
-						return
-					write_preference(/datum/preference/text/flavortext, new_flavortext)
-					var/ft = read_preference(/datum/preference/text/flavortext)
-					ft = html_encode(ft)
-					ft = replacetext(parsemarkdown_basic(ft), "\n", "<BR>")
-					write_preference(/datum/preference/text/flavortext_display, ft)
-					to_chat(user, span_notice("Successfully updated flavortext"))
-					log_game("[user] has set their flavortext'.")
-				if("ooc_notes")
-					to_chat(user, span_notice("["<span class='bold'>Do not put anything NSFW here. This feature is for stuff that wouldn't fit in the flavortext.</span>"]"))
-					var/new_ooc_notes = input(user, "Input your OOC preferences:", "OOC notes", read_preference(/datum/preference/text/ooc_notes)) as message|null
-					if(new_ooc_notes == null)
-						return
-					if(new_ooc_notes == "")
-						write_preference(/datum/preference/text/ooc_notes, null)
-						write_preference(/datum/preference/text/ooc_notes_display, null)
-						update_menu_data(user)
-						return
-					write_preference(/datum/preference/text/ooc_notes, new_ooc_notes)
-
-					var/ooc = read_preference(/datum/preference/text/ooc_notes)
-					ooc = html_encode(ooc)
-					ooc = replacetext(parsemarkdown_basic(ooc), "\n", "<BR>")
-					write_preference(/datum/preference/text/ooc_notes_display, ooc)
-					to_chat(user, span_notice("Successfully updated OOC notes."))
-					log_game("[user] has set their OOC notes'.")
-				if("ooc_preview")
-					var/list/dat = list()
-					if(is_valid_headshot_link(null, read_preference(/datum/preference/text/headshot_link), TRUE))
-						dat += ("<div align='center'><img src='[read_preference(/datum/preference/text/headshot_link)]' width='350px' height='350px'></div>")
-					if(read_preference(/datum/preference/text/flavortext) && read_preference(/datum/preference/text/flavortext_display))
-						dat += "<div align='left' style='line-height: 1.2;'>[read_preference(/datum/preference/text/flavortext_display)]</div>"
-					if(read_preference(/datum/preference/text/ooc_notes) && read_preference(/datum/preference/text/ooc_notes_display))
-						dat += "<br>"
-						dat += "<div align='center'><b>OOC notes</b></div>"
-						dat += "<div align='left' style='line-height: 1.2;'>[read_preference(/datum/preference/text/ooc_notes_display)]</div>"
-					if(read_preference(/datum/preference/text/ooc_extra))
-						dat += "[read_preference(/datum/preference/text/ooc_extra)]"
-					var/datum/browser/popup = new(user, "[read_preference(/datum/preference/text/real_name)]", "<center>[read_preference(/datum/preference/text/real_name)]</center>", width = 480, height = 700)
-					popup.set_content(dat.Join())
-					popup.open(use_onclose = FALSE)
-				if("ooc_extra")
-					if(!donator)
-						to_chat(user, "This is a donator exclusive feature, your OOC Extra link will be applied but others will only be able to view it if you are a patreon supporter or Twitch Subscriber.")
-
-					to_chat(user, span_notice("Add a link from a suitable host (catbox, etc) to an mp3, mp4, or jpg / png file to have it embed at the bottom of your OOC notes."))
-					to_chat(user, span_notice("If the link doesn't show up properly in-game, ensure that it's a direct link that opens properly in a browser."))
-					to_chat(user, span_notice("Videos will be shrunk to a ~300x300 square. Keep this in mind."))
-					to_chat(user, "<font color = '#d6d6d6'>Leave a single space to delete it from your OOC notes.</font>")
-					to_chat(user, "<font color ='red'>Abuse of this will get you banned.</font>")
-					var/new_extra_link = input(user, "Input the accessory link (https, hosts: gyazo, discord, lensdump, imgbox, catbox):", "OOC Extra", read_preference(/datum/preference/text/ooc_extra_link)) as text|null
-					if(new_extra_link == null)
-						return
-					if(new_extra_link == "")
-						new_extra_link = null
-						update_menu_data(user)
-						return
-					if(new_extra_link == " ")	//Single space to delete
-						write_preference(/datum/preference/text/ooc_extra, null)
-						write_preference(/datum/preference/text/ooc_extra_link, null)
-						to_chat(user, span_notice("Successfully deleted OOC Extra."))
-					var/static/list/valid_extensions = list("jpg", "png", "jpeg", "gif", "mp4", "mp3")
-					if(!is_valid_headshot_link(user, new_extra_link, FALSE, valid_extensions))
-						new_extra_link = null
-						update_menu_data(user)
-						return
-
-					var/list/value_split = splittext(new_extra_link, ".")
-
-					// extension will always be the last entry
-					var/extension = value_split[length(value_split)]
-					var/info
-					if(extension in valid_extensions)
-						write_preference(/datum/preference/text/ooc_extra_link, new_extra_link)
-						var/ooc_extra = null
-						ooc_extra = "<div align ='center'><center>"
-						if(extension == "jpg" || extension == "png" || extension == "jpeg" || extension == "gif")
-							ooc_extra += "<br>"
-							ooc_extra += "<img src='[read_preference(/datum/preference/text/ooc_extra_link)]'/>"
-							info = "an embedded image."
-						else
-							switch(extension)
-								if("mp4")
-									ooc_extra = "<br>"
-									ooc_extra += "<video width=["288"] height=["288"] controls=["true"]>"
-									ooc_extra += "<source src='[read_preference(/datum/preference/text/ooc_extra_link)]' type=["video/mp4"]>"
-									ooc_extra += "</video>"
-									info = "a video."
-								if("mp3")
-									ooc_extra = "<br>"
-									ooc_extra += "<audio controls>"
-									ooc_extra += "<source src='[read_preference(/datum/preference/text/ooc_extra_link)]' type=["audio/mp3"]>"
-									ooc_extra += "Your browser does not support the audio element."
-									ooc_extra += "</audio>"
-									info = "embedded audio."
-						ooc_extra += "</center></div>"
-						to_chat(user, span_notice("Successfully updated OOC Extra with [info]"))
-						log_game("[user] has set their OOC Extra to '[read_preference(/datum/preference/text/ooc_extra_link)]'.")
-						write_preference(/datum/preference/text/ooc_extra, ooc_extra)
-				if("s_tone")
-					var/list/listy = pref_species.get_skin_list()
-					var/new_s_tone = browser_input_list(user, "CHOOSE YOUR HERO'S [uppertext(pref_species.skin_tone_wording)]", "THE SUN", listy)
-					if(new_s_tone)
-						write_preference(/datum/preference/choiced/skin_tone, listy[new_s_tone])
-
-				if("selected_accent")
-					if(length(pref_species.multiple_accents))
-						change_accent = TRUE
-					else
-						change_accent = FALSE
-					if(!donator && !change_accent)
-						to_chat(user, "Sorry, this option is Donator-exclusive or unavailable to your race.")
-						write_preference(/datum/preference/choiced/selected_accent, ACCENT_DEFAULT)
-						return
-					var/accent
-					if(donator)
-						accent = browser_input_list(user, "CHOOSE YOUR HERO'S ACCENT", "VOICE OF THE WORLD", GLOB.accent_list, read_preference(/datum/preference/choiced/selected_accent))
-						if(accent)
-							write_preference(/datum/preference/choiced/selected_accent, accent)
-					else if(change_accent)
-						accent = browser_input_list(user, "CHOOSE YOUR HERO'S ACCENT", "VOICE OF THE WORLD", pref_species.multiple_accents, read_preference(/datum/preference/choiced/selected_accent))
-						if(accent)
-							write_preference(/datum/preference/choiced/selected_accent, pref_species.multiple_accents[accent])
-				if("ooccolor")
-					var/new_ooccolor = input(user, "Choose your OOC colour:", "Game Preference", read_preference(/datum/preference/color/ooccolor)) as color|null
-					if(new_ooccolor)
-						write_preference(/datum/preference/color/ooccolor, sanitize_color(new_ooccolor))
-
-				if("asaycolor")
-					var/new_asaycolor = input(user, "Choose your ASAY color:", "Game Preference", read_preference(/datum/preference/color/asaycolor)) as color|null
-					if(new_asaycolor)
-						write_preference(/datum/preference/color/asaycolor, sanitize_color(new_asaycolor))
-				if ("clientfps")
-					var/desiredfps = input(user, "Choose your desired fps. (0 = synced with server tick rate (currently:[world.fps]))", "Character Preference", read_preference(/datum/preference/numeric/clientfps))  as null|num
-					if (!isnull(desiredfps))
-						write_preference(/datum/preference/numeric/clientfps, desiredfps)
-						parent.fps = desiredfps
-
-				if("ui")
-					var/pickedui = input(user, "Choose your UI style.", "Character Preference", read_preference(/datum/preference/choiced/UI_style))  as null|anything in sortList(GLOB.available_ui_styles)
-					if(pickedui)
-						write_preference(/datum/preference/choiced/UI_style, "Rogue")
-						if (parent && parent.mob && parent.mob.hud_used)
-							parent.mob.hud_used.update_ui_style(ui_style2icon(read_preference(/datum/preference/choiced/UI_style)))
-
-				if("culture")
-					var/list/cultures = list()
-					for(var/culture_type in GLOB.culture_singletons)
-						var/datum/culture/culture = GLOB.culture_singletons[culture_type]
-						if(!culture.is_selectable(src))
-							continue
-						cultures[culture.name] += culture.type
-					var/choice = browser_input_list(user, "CHOOSE YOUR HERO'S CULTURE", "CULTURE", cultures)
-					if(!choice)
-						return
-					write_preference(/datum/preference/choiced/culture, cultures[choice])
-					var/datum/culture/pref_culture = read_preference(/datum/preference/choiced/culture)
-					to_chat(user, span_notice("[pref_culture::name]"))
-					to_chat(user, span_notice("[pref_culture::description]"))
 		else
-			switch(href_list["preference"])
-				if ("max_chat_length")
-					var/desiredlength = input(user, "Choose the max character length of shown Runechat messages. Valid range is 1 to [CHAT_MESSAGE_MAX_LENGTH] (default: [read_default_preference(/datum/preference/numeric/max_chat_length)]))", "Character Preference", read_preference(/datum/preference/numeric/max_chat_length))  as null|num
-					if (!isnull(desiredlength))
-						write_preference(/datum/preference/numeric/max_chat_length, clamp(desiredlength, 1, CHAT_MESSAGE_MAX_LENGTH))
-				if("gender")
-					var/pickedGender = MALE
-					if(read_preference(/datum/preference/choiced/gender) == MALE)
-						pickedGender = FEMALE
-					if(pickedGender && pickedGender != read_preference(/datum/preference/choiced/gender))
-						write_preference(/datum/preference/choiced/gender, pickedGender)
-						write_preference(/datum/preference/text/real_name, pref_species.random_name(read_preference(/datum/preference/choiced/gender), TRUE))
-						reset_jobs(user)
-						randomise_appearance_prefs(RANDOMIZE_UNDERWEAR | RANDOMIZE_HAIRSTYLE)
-						write_preference(/datum/preference/choiced/accessory, "Nothing")
-						write_preference(/datum/preference/choiced/detail, "Nothing")
-				if("domhand")
-					if(read_preference(/datum/preference/choiced/domhand) == 1)
-						write_preference(/datum/preference/choiced/domhand, 2)
-					else
-						write_preference(/datum/preference/choiced/domhand, 1)
-				if("bespecial")
-					open_loadout_shop(user)
+			if(!(href_list["preference"] in GLOB.preference_entries_by_key))
+				CRASH("invalid key [href_list["preference"]] in menu, please set it to a savefile key!")
 
-				if("family")
-					var/list/famtree_options_list = list(FAMILY_NONE, FAMILY_PARTIAL, FAMILY_NEWLYWED, FAMILY_FULL, "EXPLAIN THIS TO ME")
-					var/new_family = browser_input_list(user, "SELECT YOUR HERO'S BOND", "BLOOD IS THICKER THAN WATER", famtree_options_list, read_preference(/datum/preference/text/family))
-					if(new_family == "EXPLAIN THIS TO ME")
-						to_chat(user, span_purple("\
-						--[FAMILY_NONE] will disable this feature.<br>\
-						--[FAMILY_PARTIAL] will assign you as a progeny of a local house based on your species. This feature will instead assign you as a aunt or uncle to a local family if your older than ADULT.<br>\
-						--[FAMILY_NEWLYWED] assigns you a spouse without adding you to a family. Setspouse will prioritize pairing you with another newlywed with the same name as your setspouse.<br>\
-						--[FAMILY_FULL] will attempt to assign you as matriarch or patriarch of one of the local houses of the kingdom/town. Setspouse will will prevent \
-						players with the setspouse = None from matching with you unless their name equals your setspouse."))
-
-					else if(new_family)
-						write_preference(/datum/preference/text/family, new_family)
-				//Setspouse is part of the family subsystem. It will check existing families for this character and attempt to place you in this family.
-				if("setspouse")
-					var/newspouse = browser_input_text(user, "INPUT THE IDENTITY OF ANOTHER HERO", "TIL DEATH DO US PART")
-					if(newspouse)
-						write_preference(/datum/preference/text/setspouse, newspouse)
-					else
-						write_preference(/datum/preference/text/setspouse, null)
-
-				if("select_quirks")
-					open_quirk_menu(user)
-
-				//Gender_choice is part of the family subsytem. It will check existing families members with the same preference of this character and attempt to place you in this family.
-				if("gender_choice")
-					// If pronouns are neutral, lock to ANY_GENDER
-					if(read_preference(/datum/preference/choiced/pronouns) == THEY_THEM || read_preference(/datum/preference/choiced/pronouns) == IT_ITS)
-						to_chat(user, span_warning("With neutral pronouns, you may only choose [ANY_GENDER]."))
-						write_preference(/datum/preference/choiced/gender_choice, ANY_GENDER)
-					else
-						var/list/gender_choice_option_list = list(ANY_GENDER, SAME_GENDER, DIFFERENT_GENDER)
-						var/new_gender_choice  = browser_input_list(user, "SELECT YOUR HERO'S PREFERENCE", "TO LOVE AND TO CHERISH", gender_choice_option_list, read_preference(/datum/preference/choiced/gender_choice))
-						if(new_gender_choice)
-
-							write_preference(/datum/preference/choiced/gender_choice, new_gender_choice)
-				if("hotkeys")
-					write_preference(/datum/preference/toggle/hotkeys, !read_preference(/datum/preference/toggle/hotkeys))
-					if(read_preference(/datum/preference/toggle/hotkeys))
-						winset(user, null, "input.focus=true command=activeInput input.background-color=[COLOR_INPUT_ENABLED]  input.text-color = #EEEEEE")
-					else
-						winset(user, null, "input.focus=true command=activeInput input.background-color=[COLOR_INPUT_DISABLED]  input.text-color = #ad9eb4")
-
-				if("see_chat_non_mob")
-					write_preference(/datum/preference/toggle/see_chat_non_mob, !read_preference(/datum/preference/toggle/see_chat_non_mob))
-				if("action_buttons")
-					write_preference(/datum/preference/toggle/buttons_locked, !read_preference(/datum/preference/toggle/buttons_locked))
-				if("tgui_fancy")
-					write_preference(/datum/preference/toggle/tgui_fancy, !read_preference(/datum/preference/toggle/tgui_fancy))
-				if("tgui_lock")
-					write_preference(/datum/preference/toggle/tgui_lock, !read_preference(/datum/preference/toggle/tgui_lock))
-
-				//here lies the badmins
-				if("hear_adminhelps")
-					user.client.toggleadminhelpsound()
-				if("hear_prayers")
-					user.client.toggle_prayer_sound()
-				if("announce_login")
-					user.client.toggleannouncelogin()
-				if("combohud_lighting")
-					preference_toggle_flag(/datum/preference/bitwise/toggles, COMBOHUD_LIGHTING)
-				if("toggle_dead_chat")
-					user.client.deadchat()
-				if("toggle_radio_chatter")
-					user.client.toggle_hear_radio()
-				if("toggle_prayers")
-					user.client.toggleprayers()
-				if("toggle_deadmin_always")
-					preference_toggle_flag(/datum/preference/bitwise/toggles, DEADMIN_ALWAYS)
-				if("toggle_deadmin_antag")
-					preference_toggle_flag(/datum/preference/bitwise/toggles, DEADMIN_ANTAGONIST)
-				if("toggle_deadmin_head")
-					preference_toggle_flag(/datum/preference/bitwise/toggles, DEADMIN_POSITION_HEAD)
-				if("toggle_deadmin_security")
-					preference_toggle_flag(/datum/preference/bitwise/toggles, DEADMIN_POSITION_SECURITY)
-				if("toggle_deadmin_silicon")
-					preference_toggle_flag(/datum/preference/bitwise/toggles, DEADMIN_POSITION_SILICON)
-
-
-				if("be_special")
-					var/be_special_type = href_list["be_special_type"]
-					if(be_special_type in be_special)
-						be_special -= be_special_type
-					else
-						be_special += be_special_type
-
-				if("toggle_random")
-					var/random_type = href_list["random_type"]
-					if(randomise[random_type])
-						randomise -= random_type
-					else
-						randomise[random_type] = TRUE
-
-				if("hear_midis")
-					preference_toggle_flag(/datum/preference/bitwise/toggles, SOUND_MIDI)
-
-				if("lobby_music")
-					preference_toggle_flag(/datum/preference/bitwise/toggles, SOUND_LOBBY)
-					if((preference_has_flag(/datum/preference/bitwise/toggles, SOUND_LOBBY)) && user.client && isnewplayer(user))
-						user.client.playtitlemusic()
-					else
-						user.stop_sound_channel(CHANNEL_LOBBYMUSIC)
-
-				if("ghost_ears")
-					if(user.client?.holder)
-						preference_toggle_flag(/datum/preference/bitwise/chat_toggles, CHAT_GHOSTEARS)
-
-				if("ghost_sight")
-					if(user.client?.holder)
-						preference_toggle_flag(/datum/preference/bitwise/chat_toggles, CHAT_GHOSTSIGHT)
-
-				if("ghost_whispers")
-					if(user.client?.holder)
-						preference_toggle_flag(/datum/preference/bitwise/chat_toggles, CHAT_GHOSTWHISPER)
-
-				if("ghost_radio")
-					preference_toggle_flag(/datum/preference/bitwise/chat_toggles, CHAT_GHOSTRADIO)
-
-				if("ghost_pda")
-					preference_toggle_flag(/datum/preference/bitwise/chat_toggles, CHAT_GHOSTPDA)
-
-				if("income_pings")
-					preference_toggle_flag(/datum/preference/bitwise/chat_toggles, CHAT_BANKCARD)
-
-				if("pull_requests")
-					preference_toggle_flag(/datum/preference/bitwise/chat_toggles, CHAT_PULLR)
-
-				if("allow_midround_antag")
-					preference_toggle_flag(/datum/preference/bitwise/toggles, MIDROUND_ANTAG)
-
-				if("ambientocclusion")
-					write_preference(/datum/preference/toggle/ambientocclusion, !read_preference(/datum/preference/toggle/ambientocclusion))
-					if(parent && parent.screen && parent.screen.len)
-						var/atom/movable/screen/plane_master/game_world/PM = locate(/atom/movable/screen/plane_master/game_world) in parent.screen
-						PM.backdrop(parent.mob)
-						PM = locate(/atom/movable/screen/plane_master/game_world_fov_hidden) in parent.screen
-						PM.backdrop(parent.mob)
-						PM = locate(/atom/movable/screen/plane_master/game_world_above) in parent.screen
-						PM.backdrop(parent.mob)
-
-				if("auto_fit_viewport")
-					write_preference(/datum/preference/toggle/auto_fit_viewport, !read_preference(/datum/preference/toggle/auto_fit_viewport))
-					if(read_preference(/datum/preference/toggle/auto_fit_viewport) && parent)
-						parent.fit_viewport()
-
-				if("widescreenpref")
-					write_preference(/datum/preference/toggle/widescreenpref, !read_preference(/datum/preference/toggle/widescreenpref))
-					var/datum/view_data/view = user.client.view_size
-					view.setDefault(view.getScreenSize(read_preference(/datum/preference/toggle/widescreenpref)))
-
-				if("pixel_size")
-					switch(read_preference(/datum/preference/numeric/pixel_size))
-						if(PIXEL_SCALING_AUTO)
-							write_preference(/datum/preference/numeric/pixel_size, PIXEL_SCALING_1X)
-						if(PIXEL_SCALING_1X)
-							write_preference(/datum/preference/numeric/pixel_size, PIXEL_SCALING_1_2X)
-						if(PIXEL_SCALING_1_2X)
-							write_preference(/datum/preference/numeric/pixel_size, PIXEL_SCALING_2X)
-						if(PIXEL_SCALING_2X)
-							write_preference(/datum/preference/numeric/pixel_size, PIXEL_SCALING_3X)
-						if(PIXEL_SCALING_3X)
-							write_preference(/datum/preference/numeric/pixel_size, PIXEL_SCALING_AUTO)
-					user.client.view_size.apply() //Let's winset() it so it actually works
-
-				if("scaling_method")
-					switch(read_preference(/datum/preference/choiced/scaling_method))
-						if(SCALING_METHOD_NORMAL)
-							write_preference(/datum/preference/choiced/scaling_method, SCALING_METHOD_DISTORT)
-						if(SCALING_METHOD_DISTORT)
-							write_preference(/datum/preference/choiced/scaling_method, SCALING_METHOD_BLUR)
-						if(SCALING_METHOD_BLUR)
-							write_preference(/datum/preference/choiced/scaling_method, SCALING_METHOD_NORMAL)
-					user.client.view_size.setZoomMode()
-
-				if("schizo_voice")
-					preference_toggle_flag(/datum/preference/bitwise/toggles, SCHIZO_VOICE)
-					if(preference_has_flag(/datum/preference/bitwise/toggles, SCHIZO_VOICE))
-						to_chat(user, "<span class='warning'>You are now a voice.\n\
-										As a voice, you will receive meditations from players asking about game mechanics!\n\
-										Good voices could be rewarded with PQ by staff for answering meditations, while bad ones are punished.</span>")
-					else
-						to_chat(user, span_warning("You are no longer a voice."))
-
-				if("loreprimer")
-					lore_popup(user)
-
-				if("finished")
-					user << browse(null, "window=latechoices") //closes late choices window
-					user << browse(null, "window=playersetup") //closes the player setup window
-					user << browse(null, "window=preferences") //closes job selection
-					user << browse(null, "window=mob_occupation")
-					user << browse(null, "window=latechoices") //closes late job selection
-					user << browse(null, "window=migration") // Closes migrant menu
-
-					winshow(user, "stonekeep_prefwin", FALSE)
-					user << browse(null, "window=preferences_browser")
-					user.client?.clear_character_previews() // browse null doesn't call on-close directly as far as i can tell
-					user << browse(null, "window=lobby_window")
-					return
-
-				if("save")
-					to_chat(user, span_info("Preferences Saved."))
-					save_preferences()
-					save_character()
-					if(isnewplayer(user))
-						var/mob/dead/new_player/player = user
-						player.cache_multi_ready_characters()
-
-				if("load")
-					load_preferences()
-					load_character()
-					if(isnewplayer(user))
-						var/mob/dead/new_player/player = user
-						player.cache_multi_ready_characters()
-
-				if("changeslot")
-					write_preference(/datum/preference/choiced/selected_accent, ACCENT_DEFAULT)
-					var/list/choices = list()
-					if(path)
-						var/savefile/S = new /savefile(path)
-						if(S)
-							for(var/i=1, i<=max_save_slots, i++)
-								var/name
-								S.cd = "/character[i]"
-								S["real_name"] >> name
-								if(!name)
-									name = "Slot[i]"
-								choices[name] = i
-					var/choice = browser_input_list(user, "WHO IS YOUR HERO?", "NECRA AWAITS", choices, read_preference(/datum/preference/text/real_name))
-					if(choice)
-						choice = choices[choice]
-						if(!load_character(choice))
-							randomise_appearance_prefs()
-							save_character()
-
-				if("randomiseappearanceprefs")
-					randomise_appearance_prefs()
-					customizer_entries = list()
-					validate_customizer_entries()
-					reset_all_customizer_accessory_colors()
-					randomize_all_customizer_accessories()
-					reset_jobs(user)
+			var/datum/preference/preference = GLOB.preference_entries_by_key[href_list["preference"]]
+			preference.handle_link(src, user)
 
 	update_menu_data(user)
 	return 1
