@@ -144,7 +144,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["lastclass"]			>> lastclass
 	S["default_slot"]		>> default_slot
 	S["ignoring"]			>> ignoring
-	S["parallax"]			>> parallax
 	S["menuoptions"]		>> menuoptions
 	S["owned_loadout_items"] >> owned_loadout_items
 	S["next_special_trait"]	>> next_special_trait
@@ -164,7 +163,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	// Sanitize non-preference fields
 	lastchangelog = sanitize_text(lastchangelog, initial(lastchangelog))
 	default_slot = sanitize_integer(default_slot, 1, max_save_slots, initial(default_slot))
-	parallax = sanitize_integer(parallax, PARALLAX_INSANE, PARALLAX_DISABLE, null)
 	menuoptions = SANITIZE_LIST(menuoptions)
 	be_special = SANITIZE_LIST(be_special)
 	key_bindings = sanitize_islist(key_bindings, list())
@@ -173,7 +171,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	load_tickets(S)
 
-	parallax = PARALLAX_INSANE
 
 	return TRUE
 
@@ -185,8 +182,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		return FALSE
 	S.cd = "/"
 
-	parallax = PARALLAX_INSANE
-
 	WRITE_FILE(S["version"], SAVEFILE_VERSION_MAX)
 
 	// Non-preference fields
@@ -197,7 +192,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["be_special"], be_special)
 	WRITE_FILE(S["default_slot"], default_slot)
 	WRITE_FILE(S["ignoring"], ignoring)
-	WRITE_FILE(S["parallax"], parallax)
 	WRITE_FILE(S["menuoptions"], menuoptions)
 	WRITE_FILE(S["key_bindings"], key_bindings)
 	WRITE_FILE(S["multi_ready_slots"], multi_ready_slots)

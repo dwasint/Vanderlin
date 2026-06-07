@@ -62,9 +62,6 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 	var/list/ignoring = list()
 
-	var/parallax
-
-
 	var/lastclass
 
 	var/list/exp = list()

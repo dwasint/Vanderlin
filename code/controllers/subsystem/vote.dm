@@ -73,7 +73,6 @@ SUBSYSTEM_DEF(vote)
 						greatest_votes = choices[GLOB.master_mode]
 			else if(mode == "map")
 				for (var/non_voter_ckey in non_voters)
-					var/client/C = non_voters[non_voter_ckey]
 					if(global.config.defaultmap)
 						var/default_map = global.config.defaultmap.map_name
 						choices[default_map] += 1

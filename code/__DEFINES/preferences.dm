@@ -53,12 +53,6 @@
 // Gameplay toggles :(
 #define DISABLE_SPLIT_PERSONALITY (1<<0)
 
-#define PARALLAX_INSANE -1 //for show offs
-#define PARALLAX_HIGH    0 //default.
-#define PARALLAX_MED     1
-#define PARALLAX_LOW     2
-#define PARALLAX_DISABLE 3 //this option must be the highest number
-
 #define PIXEL_SCALING_AUTO 0
 #define PIXEL_SCALING_1X 1
 #define PIXEL_SCALING_1_2X 1.5
