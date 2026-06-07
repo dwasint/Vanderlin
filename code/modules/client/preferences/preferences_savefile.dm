@@ -1,8 +1,6 @@
 //This is the lowest supported version, anything below this is completely obsolete and the entire savefile will be wiped.
 #define SAVEFILE_VERSION_MIN 18
 
-#define PREF_MIGRATION_VERSION 34
-
 //This is the current version, anything below this will attempt to update (if it's not obsolete)
 //	You do not need to raise this if you are adding new values that have sane defaults.
 //	Only raise this value when changing the meaning/format/name/layout of an existing value
@@ -102,7 +100,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 			if("Feminine")
 				write_preference(GLOB.preference_entries[/datum/preference/choiced/voice_type], VOICE_TYPE_FEM)
 
-	if(current_version < PREF_MIGRATION_VERSION)
+	if(current_version < 34)
 		var/list/flat = list()
 		for(var/key in list(
 			"real_name","gender","pronouns","voice_type","age",
