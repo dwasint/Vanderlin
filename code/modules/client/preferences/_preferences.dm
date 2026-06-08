@@ -964,6 +964,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 		else
 			HTML += "<br>"
 		HTML += "<center><a href='?_src_=prefs;preference=job;task=reset'>Reset</a></center>"
+		HTML += "<br><center><a href='?_src_=prefs;preference=role_settings'>Role Specific Preferences</a></center>"
 
 	HTML += "</center>"
 
@@ -1267,6 +1268,11 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 	else if(href_list["preference"] == "triumphs")
 		user.show_triumphs_list()
+
+	else if(href_list["preference"] == "role_settings")
+		var/datum/role_settings_menu/menu = new(src)
+		menu.ui_interact(user)
+		return TRUE
 
 	else if(href_list["preference"] == "playerquality")
 		check_pq_menu(user.ckey)

@@ -1,8 +1,8 @@
-/datum/preference/list/culinary_preferences
+/datum/preference/list_type/culinary_preferences
 	savefile_key = "culinary_preferences"
 	savefile_identifier = PREF_CHARACTER
 
-/datum/preference/list/culinary_preferences/create_default_value()
+/datum/preference/list_type/culinary_preferences/create_default_value()
 	return list(
 		CULINARY_RANDOM_PREFERENCES = FALSE,
 		CULINARY_FAVOURITE_FOOD = null,
@@ -11,7 +11,7 @@
 		CULINARY_HATED_DRINK = null,
 	)
 
-/datum/preference/list/culinary_preferences/apply_to_human(mob/living/carbon/human/H, list/value)
+/datum/preference/list_type/culinary_preferences/apply_to_human(mob/living/carbon/human/H, list/value)
 	H.client?.prefs?.validate_culinary_preferences()
 	H.culinary_preferences = value.Copy()
 	if(has_world_trait(/datum/world_trait/exotic_tastes))

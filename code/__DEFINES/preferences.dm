@@ -254,3 +254,7 @@ DEFINE_BITFIELD(toggles_gameplay, list(
 #define PREF_CHARACTER "character"
 /// This preference is stored per-player (under /).
 #define PREF_PLAYER "player"
+
+
+#define ROLE_SETTING_LIST_PICK "picker"
+#define ROLE_SETTING_TEXT "freetext"
