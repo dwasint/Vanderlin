@@ -2608,7 +2608,6 @@
 #include "code\modules\client\preferences\datums\list\role_preferences\monarch_decree.dm"
 #include "code\modules\client\preferences\datums\list\role_preferences\monarch_law.dm"
 #include "code\modules\client\preferences\datums\list\role_preferences\list_pick\_base.dm"
-#include "code\modules\client\preferences\datums\list\role_preferences\list_pick\test.dm"
 #include "code\modules\client\preferences\datums\numeric\_base.dm"
 #include "code\modules\client\preferences\datums\numeric\clientfps.dm"
 #include "code\modules\client\preferences\datums\numeric\mastervol.dm"
