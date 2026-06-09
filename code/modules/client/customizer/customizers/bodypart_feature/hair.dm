@@ -101,7 +101,13 @@
 	var/datum/species/species = return_species(human)
 	var/list/hairs
 	var/new_color
-	if(human.age == AGE_OLD)
+	var/age
+	if(istype(human))
+		age = human.age
+	else
+		var/datum/preferences/prefs = human
+		age = prefs.read_preference(/datum/preference/choiced/age)
+	if(age == AGE_OLD)
 		hairs = species.get_oldhc_list()
 	else
 		hairs = species.get_hairc_list()
@@ -489,8 +495,13 @@
 
 /datum/customizer_choice/bodypart_feature/hair/facial/humanoid/get_random_accessory(datum/customizer_entry/entry, mob/living/carbon/human/human)
 	var/datum/species/species = return_species(human)
-
-	if((human.age == MALE) || istype(species, /datum/species/dwarf))
+	var/age
+	if(istype(human))
+		age = human.age
+	else
+		var/datum/preferences/prefs = human
+		age = prefs.read_preference(/datum/preference/choiced/age)
+	if((age == MALE) || istype(species, /datum/species/dwarf))
 		return pick(sprite_accessories)
 	else
 		return /datum/sprite_accessory/hair/facial/shaved

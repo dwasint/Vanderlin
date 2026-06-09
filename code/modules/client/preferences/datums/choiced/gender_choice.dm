@@ -5,7 +5,7 @@
 	can_randomize = FALSE
 
 /datum/preference/choiced/gender_choice/init_possible_values(datum/preferences/prefs)
-	return list(ANY_GENDER, MALE, FEMALE)
+	return list(ANY_GENDER, SAME_GENDER, DIFFERENT_GENDER)
 
 /datum/preference/choiced/gender_choice/create_default_value()
 	return ANY_GENDER

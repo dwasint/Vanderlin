@@ -76,3 +76,4 @@
 		prefs.reset_all_customizer_accessory_colors()
 		prefs.randomize_all_customizer_accessories()
 		prefs.write_preference(/datum/preference/choiced/accessory, "Nothing")
+		prefs.write_preference(/datum/preference/choiced/species, prefs.pref_species.id)
