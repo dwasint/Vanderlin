@@ -1,4 +1,4 @@
-/datum/grudge
+/datum/history
 	var/label = "Incident"
 	var/aggressor_text = ""
 	var/victim_text = ""
@@ -6,7 +6,7 @@
 	var/datum/mind/aggressor
 	var/datum/mind/victim
 
-/datum/grudge/New(label, aggressor_text, victim_text, datum/mind/aggressor, datum/mind/victim)
+/datum/history/New(label, aggressor_text, victim_text, datum/mind/aggressor, datum/mind/victim)
 	src.label = label
 	src.aggressor_text = aggressor_text
 	src.victim_text = victim_text
@@ -14,6 +14,6 @@
 	src.victim = victim
 	src.created_at = world.time
 
-/datum/grudge/proc/attach_to(datum/relation/R)
-	LAZYADD(R.grudges, src)
+/datum/history/proc/attach_to(datum/relation/R)
+	LAZYADD(R.relation_history, src)
 	return src

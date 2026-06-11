@@ -22,16 +22,12 @@
 		if(!R.snapshot)
 			continue
 		var/list/grudge_data = list()
-		for(var/datum/grudge/G in R.grudges)
+		for(var/datum/history/G in R.relation_history)
 			var/side_text = (mind == G.aggressor) ? G.aggressor_text : G.victim_text
 			grudge_data += list(list(
 				"label" = G.label,
 				"text" = side_text,
 			))
-		var/our_side = null
-		if(length(R.grudges))
-			var/datum/grudge/G = R.grudges[1]
-			our_side = (mind == G.aggressor) ? "aggressor" : "victim"
 		rel_list += list(list(
 			"name" = R.other?.name,
 			"rel_type" = R.name,
@@ -39,7 +35,6 @@
 			"desc" = R.desc,
 			"grudges" = grudge_data,
 			"is_asymmetric" = !R.symmetric,
-			"our_side" = our_side,
 		))
 	//header bar count
 	var/rival_count = 0

@@ -5,8 +5,8 @@
 	var/name = "Relation"
 	/// Flavour description shown to the holder.
 	var/desc = ""
-	/// List of /datum/grudge attached to this relation.
-	var/list/grudges = null
+	/// List of /datum/history attached to this relation.
+	var/list/relation_history = null
 	/// The mind that owns this relation entry.
 	var/datum/mind/holder
 	/// The mind on the other side.
@@ -73,7 +73,7 @@
 		counterpart.dissolve()
 		counterpart = null
 
-///this adds a grudge to a users grudge list and returns it
-/datum/relation/proc/add_grudge(datum/grudge/grudge)
-	LAZYADD(grudges, grudge)
-	return grudge
+///this adds a piece of history to a users history list and returns it
+/datum/relation/proc/add_grudge(datum/history/history)
+	LAZYADD(relation_history, history)
+	return history

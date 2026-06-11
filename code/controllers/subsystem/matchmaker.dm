@@ -144,11 +144,11 @@ SUBSYSTEM_DEF(relations)
 			aggressor = B
 			victim = A
 
-	var/datum/grudge/grudge = new /datum/grudge(G.grudge_name, G.aggressor_text, G.victim_text, aggressor, victim)
+	var/datum/history/history = new /datum/history(G.grudge_name, G.aggressor_text, G.victim_text, aggressor, victim)
 	var/datum/relation/R_other = B.get_relation(A, /datum/relation/rival)
-	LAZYADD(R.grudges, grudge)
+	LAZYADD(R.relation_history, history)
 	if(R_other && R_other != R)
-		LAZYADD(R_other.grudges, grudge)
+		LAZYADD(R_other.relation_history, history)
 	qdel(G)
 
 /datum/controller/subsystem/relations/proc/pick_grudge_pool(datum/mind/A, datum/mind/B)

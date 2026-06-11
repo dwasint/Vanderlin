@@ -9,7 +9,6 @@ type RelationEntry = {
   desc: string;
   grudges: GrudgeEntry[];
   is_asymmetric: boolean;
-  our_side: 'aggressor' | 'victim' | null;
 };
 
 type SnapshotData = {
