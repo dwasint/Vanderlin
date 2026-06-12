@@ -36,11 +36,11 @@
 		return
 	var/mob/living/carbon/human/H = other.current
 	snapshot = list(
-		"name"   = H.real_name,
+		"name" = H.real_name,
 		"vcolor" = H.voice_color,
-		"job"    = _get_job_title(H),
+		"job" = _get_job_title(H),
 		"gender" = H.gender,
-		"age"    = H.age,
+		"age" = H.age,
 	)
 
 /datum/relation/proc/_get_job_title(mob/living/carbon/human/H)
@@ -74,6 +74,26 @@
 		counterpart = null
 
 ///this adds a piece of history to a users history list and returns it
-/datum/relation/proc/add_grudge(datum/history/history)
+/datum/relation/proc/add_history(datum/history/history)
 	LAZYADD(relation_history, history)
 	return history
+
+/datum/relation/proc/snapshot_name_only(mob/living/carbon/human/H)
+	snapshot = list(
+		"name" = H.real_name,
+		"vcolor" = null,
+		"job" = null,
+		"gender" = null,
+		"age" = null,
+	)
+
+/// Enrich an existing partial snapshot with full identity data.
+/datum/relation/proc/enrich_snapshot()
+	if(!other?.current || !ishuman(other.current))
+		return
+	var/mob/living/carbon/human/H = other.current
+	snapshot["name"] = H.real_name
+	snapshot["vcolor"] = H.voice_color
+	snapshot["job"] = _get_job_title(H)
+	snapshot["gender"] = H.gender
+	snapshot["age"] = H.age

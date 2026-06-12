@@ -258,3 +258,7 @@ DEFINE_BITFIELD(toggles_gameplay, list(
 
 #define ROLE_SETTING_LIST_PICK "picker"
 #define ROLE_SETTING_TEXT "freetext"
+
+#define MAX_RUMORS 5
+#define MAX_NOBLE_GOSSIP 5
+#define MAX_GOSSIP_LENGTH 250

@@ -9,6 +9,91 @@ SUBSYSTEM_DEF(relations)
 /datum/controller/subsystem/relations/proc/all_minds()
 	return participating_minds
 
+/datum/controller/subsystem/relations/proc/spread_gossip()
+	var/list/all_minds = list()
+	for(var/mob/M in GLOB.player_list)
+		if(M.mind)
+			all_minds += M.mind
+
+	var/list/pool = list()
+	for(var/datum/mind/M in all_minds)
+		if(!M.current?.client?.prefs)
+			continue
+		if(!ishuman(M.current))
+			continue
+
+		var/list/rumors = M.current.client.prefs.read_preference(/datum/preference/list_type/rumors)
+		for(var/rumor_text in rumors)
+			if(!length(rumor_text))
+				continue
+			pool += list(list("mind" = M, "text" = rumor_text, "is_noble" = FALSE))
+
+		var/list/ng = M.current.client.prefs.read_preference(/datum/preference/list_type/noble_gossip)
+		for(var/ng_text in ng)
+			if(!length(ng_text))
+				continue
+			pool += list(list("mind" = M, "text" = ng_text, "is_noble" = TRUE))
+
+	if(!pool.len)
+		return
+
+	// How many listeners each gossip entry reaches.
+	// Scales down as pool grows so total assignments stay reasonableish
+	var/total_listeners = all_minds.len
+	var/spread = clamp(round(total_listeners / max(pool.len, 1)), 2, 5)
+
+	for(var/list/entry in pool)
+		var/datum/mind/subject = entry["mind"]
+		var/is_noble_gossip = entry["is_noble"]
+
+		var/list/eligible = list()
+		for(var/datum/mind/listener in all_minds)
+			if(listener == subject)
+				continue
+			if(!listener.current || !ishuman(listener.current))
+				continue
+			if(is_noble_gossip)
+				var/mob/living/carbon/human/H = listener.current
+				if(!HAS_TRAIT(H, TRAIT_NOBLE_BLOOD) && !HAS_TRAIT(H, TRAIT_NOBLE_POWER))
+					continue
+			eligible += listener
+
+		shuffle_inplace(eligible)
+		var/count = min(spread, eligible.len)
+		for(var/i in 1 to count)
+			var/datum/mind/listener = eligible[i]
+			var/datum/relation/R = get_or_create_gossip_relation(listener, subject)
+			if(!R)
+				continue
+			var/datum/history/gossip/G
+			if(is_noble_gossip)
+				G = new /datum/history/gossip/noble()
+			else
+				G = new /datum/history/gossip/rumor()
+			G.heard_text = entry["text"]
+			R.add_history(G)
+
+/datum/controller/subsystem/relations/proc/get_or_create_gossip_relation(datum/mind/listener, datum/mind/subject)
+	for(var/datum/relation/R in listener.relations)
+		if(R.other == subject)
+			// Ensure snapshot has at minimum a name
+			if(!R.snapshot)
+				if(subject.current && ishuman(subject.current))
+					R.snapshot_name_only(subject.current)
+			return R
+
+	var/datum/relation/R = new /datum/relation/acquaintance()
+	R.holder = listener
+	R.other = subject
+	R.symmetric = FALSE // listener knows of subject, not necessarily vice versa
+
+	if(subject.current && ishuman(subject.current))
+		R.snapshot_name_only(subject.current)
+
+	LAZYADD(listener.relations, R)
+	R.on_created()
+	return R
+
 /// Called from SSticker after DivideOccupations and create_characters().
 /// Assigns rival relations based on each player's rival_count preference.
 /datum/controller/subsystem/relations/proc/run_rival_matchmaking()

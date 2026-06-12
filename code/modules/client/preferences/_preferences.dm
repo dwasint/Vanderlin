@@ -1454,6 +1454,10 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 		if("loadout_store")
 			open_loadout_shop(user)
 
+		if("gossip")
+			open_gossip(user)
+			return
+
 		if("select_quirks")
 			open_quirk_menu(user)
 

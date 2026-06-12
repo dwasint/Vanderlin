@@ -22,6 +22,8 @@ type SnapshotData = {
 type GrudgeEntry = {
   label: string;
   text: string; // already resolved to our side by the backend
+  is_gossip: number | boolean;
+  say_string: string | null;
 };
 
 type Data = {
@@ -80,11 +82,11 @@ export const Relations = () => {
 };
 
 const RelationCard = ({ rel }: { rel: RelationEntry }) => {
+  const { act } = useBackend<Data>();
   const { name, snapshot, desc, grudges, rel_type } = rel;
   const [open, setOpen] = useLocalState<boolean>(`grudge_open_${name}`, false);
 
   const displayName = snapshot?.name ?? name;
-  const vcolor = snapshot?.vcolor;
   const job = snapshot?.job ?? 'Unknown';
   const gender = snapshot?.gender
     ? snapshot.gender.charAt(0).toUpperCase() + snapshot.gender.slice(1)
@@ -125,9 +127,22 @@ const RelationCard = ({ rel }: { rel: RelationEntry }) => {
               <Stack vertical>
                 {grudges.map((g, i) => (
                   <Stack.Item key={i}>
-                    <Box color="average">
-                      <b>{g.label}:</b> {g.text}
-                    </Box>
+                    <Stack align="center">
+                      <Stack.Item grow>
+                        <Box color="average">
+                          <b>{g.label}:</b> {g.text}
+                        </Box>
+                      </Stack.Item>
+                      {!!g.is_gossip && g.say_string && (
+                        <Stack.Item>
+                          <Button
+                            icon="comment"
+                            tooltip="Say this gossip aloud"
+                            onClick={() => act('say_gossip', { text: g.say_string })}
+                          />
+                        </Stack.Item>
+                      )}
+                    </Stack>
                   </Stack.Item>
                 ))}
               </Stack>

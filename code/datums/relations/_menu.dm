@@ -23,10 +23,13 @@
 			continue
 		var/list/grudge_data = list()
 		for(var/datum/history/G in R.relation_history)
-			var/side_text = (mind == G.aggressor) ? G.aggressor_text : G.victim_text
+			var/is_gossip = istype(G, /datum/history/gossip)
+			var/side_text = is_gossip ? G:heard_text : (mind == G.aggressor) ? G.aggressor_text : G.victim_text
 			grudge_data += list(list(
-				"label" = G.label,
-				"text" = side_text,
+				"label"      = G.label,
+				"text"       = side_text,
+				"is_gossip"  = is_gossip,
+				"say_string" = is_gossip ? "Did you hear that [R.snapshot?["name"] || "someone"] [G:heard_text]?" : null,
 			))
 		rel_list += list(list(
 			"name" = R.other?.name,
@@ -49,3 +52,20 @@
 		"rival_count" = rival_count,
 		"rival_pref" = rival_pref,
 	)
+
+/datum/tgui_relations/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return TRUE
+	switch(action)
+		if("say_gossip")
+			var/text = params["text"]
+			if(!istext(text) || !length(text))
+				return FALSE
+			// Sanitize length
+			text = copytext(text, 1, 280)
+			var/mob/living/M = ui.user
+			if(!isliving(M))
+				return FALSE
+			M.say(text)
+			return TRUE
