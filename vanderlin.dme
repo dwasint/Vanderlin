@@ -2656,6 +2656,8 @@
 #include "code\modules\client\preferences\datums\text\ooc_notes_display.dm"
 #include "code\modules\client\preferences\datums\text\oocpronouns.dm"
 #include "code\modules\client\preferences\datums\text\real_name.dm"
+#include "code\modules\client\preferences\datums\text\setchild.dm"
+#include "code\modules\client\preferences\datums\text\setparent.dm"
 #include "code\modules\client\preferences\datums\text\setspouse.dm"
 #include "code\modules\client\preferences\datums\toggle\_base.dm"
 #include "code\modules\client\preferences\datums\toggle\ambientocclusion.dm"

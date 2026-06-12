@@ -23,6 +23,8 @@
 
 	var/family_mode = prefs.read_preference(/datum/preference/choiced/family_mode) || FAMILY_NONE
 	var/setspouse = prefs.read_preference(/datum/preference/text/setspouse) || ""
+	var/setchild  = prefs.read_preference(/datum/preference/text/setchild)  || ""
+	var/setparent = prefs.read_preference(/datum/preference/text/setparent) || ""
 	var/was_divorced = prefs.read_preference(/datum/preference/toggle/was_divorced) || FALSE
 	var/gender_pref = prefs.read_preference(/datum/preference/choiced/gender_choice) || ANY_GENDER
 	var/same_species = prefs.read_preference(/datum/preference/toggle/same_species_family) || FALSE
@@ -74,6 +76,8 @@
 	return list(
 		"family_mode" = family_mode,
 		"setspouse" = setspouse,
+		"setchild"  = setchild,
+		"setparent" = setparent,
 		"was_divorced" = was_divorced,
 		"wants_adoption" = wants_adoption,
 		"gender_choice" = gender_pref,
@@ -193,6 +197,39 @@
 			prefs.write_preference(/datum/preference/list_type/role_setting/picker/accepted_species, list())
 			prefs.write_preference(/datum/preference/list_type/role_setting/picker/accepted_patrons, list())
 			prefs.write_preference(/datum/preference/list_type/role_setting/picker/family_job_filler, list())
+			return TRUE
+
+		if("edit_setchild")
+			var/new_name = tgui_input_text(
+				owner,
+				"Enter the exact character name of your designated child, or leave blank to clear.",
+				"Designated Child",
+				prefs.read_preference(/datum/preference/text/setchild),
+				MAX_NAME_LEN,
+			)
+			if(new_name == null)
+				return FALSE
+			prefs.write_preference(/datum/preference/text/setchild, length(new_name) ? new_name : "")
+			return TRUE
+
+		if("clear_setchild")
+			prefs.write_preference(/datum/preference/text/setchild, "")
+			return TRUE
+		if("edit_setparent")
+			var/new_name = tgui_input_text(
+				owner,
+				"Enter the exact character name of your designated parent, or leave blank to clear.",
+				"Designated Parent",
+				prefs.read_preference(/datum/preference/text/setparent),
+				MAX_NAME_LEN,
+			)
+			if(new_name == null)
+				return FALSE
+			prefs.write_preference(/datum/preference/text/setparent, length(new_name) ? new_name : "")
+			return TRUE
+
+		if("clear_setparent")
+			prefs.write_preference(/datum/preference/text/setparent, "")
 			return TRUE
 
 	return FALSE

@@ -88,6 +88,8 @@
 	var/mob/living/carbon/spouse_mob
 	var/image/spouse_indicator
 	var/setspouse
+	var/setchild
+	var/setparent
 	var/gender_choice_pref = ANY_GENDER
 	var/familytree_pref = FAMILY_NONE
 	var/family_adoption_pref = FALSE

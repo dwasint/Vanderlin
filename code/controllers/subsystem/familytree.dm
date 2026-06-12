@@ -206,6 +206,7 @@ SUBSYSTEM_DEF(familytree)
 	var/species = H.dna.species.type
 	var/adopted = force_adopted
 	var/datum/heritage/chosen_house
+	var/is_young = (H.age == AGE_CHILD || H.age == AGE_ADULT)
 
 	var/list/active = list()
 	var/list/seed = list()
@@ -216,16 +217,39 @@ SUBSYSTEM_DEF(familytree)
 		else
 			seed += house
 
-	for(var/datum/heritage/house in active)
-		if(!HousePassesFilters(H, house) || WouldCreateAgeConflict(house, H))
-			continue
-		if(adopted || (prob(20) && LAZYLEN(house.members) <= 8))
-			chosen_house = house
-			adopted = TRUE
-			break
-		if(house.dominant_species == species && LAZYLEN(house.members) < 4)
-			chosen_house = house
-			break
+	if(H.setchild)
+		for(var/datum/heritage/house in active)
+			if(!HousePassesFilters(H, house) || WouldCreateAgeConflict(house, H))
+				continue
+			for(var/datum/family_member/member in house.members)
+				if(member.person?.real_name == H.setchild)
+					chosen_house = house
+					break
+			if(chosen_house)
+				break
+
+	if(!chosen_house && is_young && H.setparent)
+		for(var/datum/heritage/house in active)
+			if(!HousePassesFilters(H, house) || WouldCreateAgeConflict(house, H))
+				continue
+			for(var/datum/family_member/member in house.members)
+				if(member.person?.real_name == H.setparent)
+					chosen_house = house
+					break
+			if(chosen_house)
+				break
+
+	if(!chosen_house)
+		for(var/datum/heritage/house in active)
+			if(!HousePassesFilters(H, house) || WouldCreateAgeConflict(house, H))
+				continue
+			if(adopted || (prob(20) && LAZYLEN(house.members) <= 8))
+				chosen_house = house
+				adopted = TRUE
+				break
+			if(house.dominant_species == species && LAZYLEN(house.members) < 4)
+				chosen_house = house
+				break
 
 	if(!chosen_house)
 		for(var/datum/heritage/house in seed)
@@ -292,6 +316,15 @@ SUBSYSTEM_DEF(familytree)
 	return (PassesFamilyFilters(H, other) && PassesFamilyFilters(other, H) \
 		&& H.pronouns_match(H, other) && other.pronouns_match(other, H))
 
+/datum/controller/subsystem/familytree/proc/_ChildCompatible(mob/living/carbon/human/parent, mob/living/carbon/human/child)
+	if(!parent || !child)
+		return FALSE
+	if(parent.setchild == child.real_name && child.setparent == parent.real_name)
+		return TRUE
+	if(parent.setchild && parent.setchild != child.real_name)
+		return FALSE
+	return CanBeParentOf(parent.age, child.age)
+
 /datum/controller/subsystem/familytree/proc/AssignNewlyWed(mob/living/carbon/human/H)
 	viable_spouses += H
 
@@ -336,7 +369,12 @@ SUBSYSTEM_DEF(familytree)
 /datum/controller/subsystem/familytree/proc/PlaceAsChild(datum/heritage/house, mob/living/carbon/human/person, adopted)
 	var/list/potential_parents = list()
 	for(var/datum/family_member/member in house.members)
-		if(member.person && CanBeParentOf(member.person.age, person.age))
+		if(!member.person || !CanBeParentOf(member.person.age, person.age))
+			continue
+		// Prioritise: put parents who named this person first
+		if(member.person.setchild == person.real_name)
+			potential_parents.Insert(1, member)
+		else
 			potential_parents += member
 
 	var/datum/family_member/parent1 = LAZYLEN(potential_parents) >= 1 ? potential_parents[1] : null

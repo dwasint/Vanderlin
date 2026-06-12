@@ -23,6 +23,8 @@ type UiConfigItem = {
 type FamilyPrefsData = {
   family_mode: string;
   setspouse: string;
+  setchild: string;
+  setparent: string;
   was_divorced: boolean;
   gender_choice: string;
   wants_adoption: boolean;
@@ -148,7 +150,7 @@ const BondsTab = () => {
                   })}
                 </Flex>
               </LabeledList.Item>
-              <LabeledList.Item label="Designated Name">
+              <LabeledList.Item label="Designated Spouse">
                 <Flex align="center" gap={1}>
                   <Box flex={1} italic={!data.setspouse}>
                     {data.setspouse || 'No target name set'}
@@ -165,6 +167,48 @@ const BondsTab = () => {
                       icon="times"
                       compact
                       onClick={() => act('clear_setspouse')}
+                    />
+                  )}
+                </Flex>
+              </LabeledList.Item>
+              <LabeledList.Item label="Designated Child">
+                <Flex align="center" gap={1}>
+                  <Box flex={1} italic={!data.setchild}>
+                    {data.setchild || 'No target name set'}
+                  </Box>
+                  <Button
+                    icon="pen"
+                    compact
+                    onClick={() => act('edit_setchild')}
+                  >
+                    Edit
+                  </Button>
+                  {data.setchild && (
+                    <Button
+                      icon="times"
+                      compact
+                      onClick={() => act('clear_setchild')}
+                    />
+                  )}
+                </Flex>
+              </LabeledList.Item>
+              <LabeledList.Item label="Designated Parent">
+                <Flex align="center" gap={1}>
+                  <Box flex={1} italic={!data.setparent}>
+                    {data.setparent || 'No target name set'}
+                  </Box>
+                  <Button
+                    icon="pen"
+                    compact
+                    onClick={() => act('edit_setparent')}
+                  >
+                    Edit
+                  </Button>
+                  {data.setparent && (
+                    <Button
+                      icon="times"
+                      compact
+                      onClick={() => act('clear_setparent')}
                     />
                   )}
                 </Flex>
