@@ -1,6 +1,6 @@
 
-/datum/preference/list
-	abstract_type = /datum/preference/list
+/datum/preference/list_type
+	abstract_type = /datum/preference/list_type
 	can_randomize = FALSE
 	should_update_preview = FALSE
 
