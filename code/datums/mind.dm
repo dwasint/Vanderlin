@@ -189,6 +189,21 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 
 	var/datum/relation/template = new relation_type()
 
+	var/list/to_dissolve = list()
+	var/list/inherited_history = null
+	var/list/old_snapshot = null
+	for(var/datum/relation/R in relations)
+		if(R.other == target && template.upgrades_relation(R))
+			if(R.relation_history)
+				if(!inherited_history)
+					inherited_history = list()
+				inherited_history += R.relation_history
+			if(R.snapshot && !old_snapshot)
+				old_snapshot = R.snapshot
+			to_dissolve += R
+	for(var/datum/relation/R in to_dissolve)
+		R.dissolve()
+
 	// Incompatibility check on both sides.
 	for(var/datum/relation/R in relations)
 		if(R.other == target && template.conflicts_with(R))
@@ -202,14 +217,40 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 	// Build our side.
 	template.holder = src
 	template.other = target
+	if(old_snapshot)
+		template.snapshot = old_snapshot.Copy()
+	if(inherited_history)
+		template.relation_history = inherited_history.Copy()
 	template.refresh_snapshot()
 	LAZYADD(relations, template)
 
 	if(template.symmetric)
-		// Build mirror on their side.
+		// Check for inherited history/snapshot on target's side too,
+		// in case their copy of the old relation had its own data.
+		var/list/mirror_inherited_history = null
+		var/list/mirror_old_snapshot = null
+		var/list/mirror_to_dissolve = list()
+		for(var/datum/relation/R in target.relations)
+			if(R.other == src && template.upgrades_relation(R))
+				if(R.relation_history)
+					if(!mirror_inherited_history)
+						mirror_inherited_history = list()
+					mirror_inherited_history += R.relation_history
+				if(R.snapshot && !mirror_old_snapshot)
+					mirror_old_snapshot = R.snapshot
+				mirror_to_dissolve += R
+		for(var/datum/relation/R in mirror_to_dissolve)
+			R.dissolve()
+
 		var/datum/relation/mirror = new relation_type()
 		mirror.holder = target
 		mirror.other = src
+		if(mirror_old_snapshot)
+			mirror.snapshot = mirror_old_snapshot.Copy()
+		else if(old_snapshot)
+			mirror.snapshot = old_snapshot.Copy()
+		if(mirror_inherited_history)
+			mirror.relation_history = mirror_inherited_history.Copy()
 		mirror.refresh_snapshot()
 		LAZYADD(target.relations, mirror)
 		template.on_created()

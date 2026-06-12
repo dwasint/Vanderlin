@@ -20,10 +20,18 @@
 	/// Snapshot of identity data at time of relation creation.
 	/// Keys: "name", "vcolor", "job", "gender", "age"
 	var/list/snapshot = null
+	/// Relation types this one supersedes, adding this relation will remove those.
+	var/list/upgrades = null
 
 /// Called when this relation is first established. Override to do setup.
 /datum/relation/proc/on_created()
 	return
+
+/// Returns TRUE if this relation type should replace an existing one (upgrade path).
+/datum/relation/proc/upgrades_relation(datum/relation/other_rel)
+	if(!upgrades || !other_rel)
+		return FALSE
+	return (other_rel.type in upgrades)
 
 /// Returns a sentence describing the relationship from an outside perspective.
 /datum/relation/proc/get_desc_string()
@@ -56,7 +64,7 @@
 /datum/relation/proc/conflicts_with(datum/relation/other_rel)
 	if(!incompatible || !other_rel)
 		return FALSE
-	return (other_rel.name in incompatible)
+	return (other_rel.type in incompatible)
 
 /// Dissolve this relation from both minds and nullify counterpart links.
 /datum/relation/proc/dissolve()
