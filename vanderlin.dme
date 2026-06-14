@@ -1708,6 +1708,7 @@
 #include "code\datums\threat_regions\terror_bog.dm"
 #include "code\datums\threat_regions\town.dm"
 #include "code\datums\threat_regions\woods.dm"
+#include "code\datums\wave_coordinator\_admin_menu.dm"
 #include "code\datums\wave_coordinator\_base.dm"
 #include "code\datums\wave_coordinator\behaviors.dm"
 #include "code\datums\wave_coordinator\subtree.dm"
