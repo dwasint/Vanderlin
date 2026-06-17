@@ -25,19 +25,15 @@
 
 	// Faction Information
 	data["faction_name"] = faction ? faction.faction_name : "None"
-
 	data["categories"] = list("All") + SSmerchant.supply_cats
 
 	var/list/all_packs = list()
-
-	// Ensure we have an active faction and the target list exists before iterating
 	if(faction && islist(faction.faction_supply_packs))
 		for(var/pack_id in faction.faction_supply_packs)
 			var/datum/supply_pack/pack = faction.faction_supply_packs[pack_id]
 			if(!pack || pack.contraband)
 				continue
 
-			// Cleanly track price trends
 			var/list/sanitized_history = list()
 			if(islist(pack.cost_history) && length(pack.cost_history))
 				for(var/price in pack.cost_history)
@@ -56,10 +52,45 @@
 				"in_stock" = faction.has_supply_pack(pack.type),
 				"history" = sanitized_history
 			))
-
 	data["supply_packs"] = all_packs
 
-	// Shopping Cart Processing
+	var/list/serialized_bounties = list()
+	if(faction && islist(faction.active_bounties))
+		for(var/datum/bounty/bounty in faction.active_bounties)
+			if(!bounty)
+				continue
+
+			// 1. Resolve what the bounty wants specifically
+			var/target_name = "Unknown Asset"
+			if(bounty.required_path)
+				var/atom/bounty_target = bounty.required_path
+				target_name = initial(bounty_target.name)
+
+			// 2. Resolve package discounts provided upon contract completion
+			var/list/serialized_discounts = list()
+			if(islist(bounty.supply_pack_modifiers) && length(bounty.supply_pack_modifiers))
+				for(var/datum/supply_pack/pack_path as anything in bounty.supply_pack_modifiers)
+					var/discount_value = bounty.supply_pack_modifiers[pack_path]
+
+					// Assuming the modifier tracks a value reduction (e.g., 20 means 20% off)
+					serialized_discounts += list(list(
+						"pack_name" = initial(pack_path.name),
+						"modifier"  = discount_value
+					))
+
+			serialized_bounties += list(list(
+				"id" = "\ref[bounty]",
+				"name" = bounty.name,
+				"desc" = bounty.desc,
+				"target_item" = target_name,
+				"required_count" = bounty.required_count,
+				"current_count" = bounty.current_count,
+				"reward_reputation" = bounty.reward_reputation,
+				"reward_currency" = bounty.reward_currency,
+				"discounts" = serialized_discounts
+			))
+	data["active_bounties"] = serialized_bounties
+
 	var/list/cart_items = list()
 	var/total_mammon = 0
 

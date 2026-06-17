@@ -862,6 +862,7 @@ GLOBAL_LIST_EMPTY(active_lifts_by_type)
 		var/list/sold_items = list()
 		var/list/sold_count = list()
 		SSmerchant.handle_lift_contents(platform, platform.lift_load, destination) //this potentially nukes some items so its done here
+
 		for(var/atom/movable/listed_atom in platform.lift_load)
 			if(listed_atom in original_contents)
 				continue
@@ -876,15 +877,25 @@ GLOBAL_LIST_EMPTY(active_lifts_by_type)
 			if(old_price <= 0)
 				continue
 
+			// If true, the item was eaten by a bounty. It rewards its own customized values.
+			if(SSmerchant.active_faction.handle_selling(listed_atom))
+				// Clean up nested contents before deleting the item container
+				for(var/atom/movable/inside in listed_atom.get_all_contents())
+					if(inside != listed_atom)
+						qdel(inside)
+				qdel(listed_atom)
+				continue
+
+			// Standard Sale Continues if no bounty claimed it
 			total_coin_value += old_price
 			sold_count[initial(listed_atom.name)] += 1
 			sold_items[initial(listed_atom.name)] += old_price
-			SSmerchant.handle_selling(listed_atom)
 
 			var/new_price = SSmerchant.active_faction.get_actual_sell_price(listed_atom, sell_modifer)
 			if(old_price != new_price)
 				SSmerchant.changed_sell_prices(listed_atom.type, old_price, new_price)
 
+			// Nested item handling loop
 			for(var/atom/movable/inside in listed_atom.get_all_contents())
 				if(inside == listed_atom)
 					continue
@@ -901,10 +912,15 @@ GLOBAL_LIST_EMPTY(active_lifts_by_type)
 				if(old_inside_price <= 0)
 					continue
 
+				// --- BOUNTY INTEGRATION (Nested Container Item) ---
+				if(SSmerchant.active_faction.handle_selling(inside))
+					qdel(inside)
+					continue
+
+				// Standard Nested Item Sale
 				total_coin_value += old_inside_price
 				sold_count[initial(inside.name)] += 1
 				sold_items[initial(inside.name)] += old_inside_price
-				SSmerchant.handle_selling(inside)
 
 				var/new_inside_price = SSmerchant.active_faction.get_actual_sell_price(inside, sell_modifer)
 				if(old_inside_price != new_inside_price)
@@ -916,10 +932,11 @@ GLOBAL_LIST_EMPTY(active_lifts_by_type)
 				for(var/obj/item/item in holder.held_mob.get_equipped_items())
 					item.forceMove(get_turf(holder))
 				to_chat(holder.held_mob, span_boldwarning("You have been sold."))
-				qdel(holder.held_mob) //so long my friend
+				qdel(holder.held_mob)
 			qdel(listed_atom)
 
-		var/atom/location = spawn_coins(total_coin_value, platform) // try_process_order will eat these coins, so don't spawn a chest
+		// Coin Spawning & Logging Block
+		var/atom/location = spawn_coins(total_coin_value, platform)
 		record_round_statistic(STATS_TRADE_VALUE_EXPORTED, total_coin_value)
 		add_abstract_elastic_data(ELASCAT_ECONOMY, ELASDATA_MAMMONS_GAINED, total_coin_value)
 		add_abstract_elastic_data(ELASCAT_ECONOMY, ELASDATA_EXPORT_VALUE, total_coin_value)
@@ -931,7 +948,7 @@ GLOBAL_LIST_EMPTY(active_lifts_by_type)
 				var/list/items = list()
 				var/list/count = list()
 				for(var/b = 1 to length(sold_items))
-					if(b > 6) // manifest can reasonably fit 6 entries
+					if(b > 6)
 						continue
 					var/first_item = sold_items[1]
 					items[first_item] = sold_items[first_item]

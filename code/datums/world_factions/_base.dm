@@ -55,6 +55,9 @@
 	var/next_boat_trader_count = 0 // How many traders will come on next boat
 	var/trader_schedule_generated = FALSE // Whether we've prepared for next boat
 
+	var/list/active_bounties = list()
+	var/list/completed_bounties = list()
+	var/max_active_bounties = 5
 
 /datum/world_faction/New()
 	..()
@@ -123,9 +126,60 @@
 
 	return created_traders
 
-// Static supply console limits (unaffected by reputation, per your rules)
-/datum/world_faction/proc/get_max_supply_packs()
-	return base_max_supply_packs
+/**
+ * Automatically rolls and generates new random weighted bounties, pulling weights from the bounty datums themselves.
+ */
+/datum/world_faction/proc/generate_bounties()
+	if(!length(subtypesof(/datum/bounty)))
+		return
+	var/current_tier = get_reputation_tier()
+
+	// Keep generating until we hit our maximum active slots
+	while(length(active_bounties) < max_active_bounties)
+		var/list/weighted_selection = list()
+
+		for(var/bounty_type in subtypesof(/datum/bounty))
+
+			// Don't duplicate an identical bounty type if it's already active
+			var/already_active = FALSE
+			for(var/datum/bounty/active in active_bounties)
+				if(active.type == bounty_type)
+					already_active = TRUE
+					break
+			if(already_active)
+				continue
+
+			// Check if the faction has achieved the required tier
+			var/datum/bounty/bounty_initial = new bounty_type
+			if(current_tier >= initial(bounty_initial.required_reputation_tier))
+
+				// Read the weight configuration out of the bounty type
+				var/list/weights_map = bounty_initial.faction_generation_weights
+				var/final_weight = initial(bounty_initial.fallback_weight)
+
+				// Check if this specific faction type (or an exact parent type match) exists in the list
+				// Using istype() or basic key lookup. Let's do direct key tracking first:
+				if(src.type in weights_map)
+					final_weight = weights_map[src.type]
+				else
+					// Loop to support inherited faction parent types matching safely
+					for(var/faction_path in weights_map)
+						if(istype(src, faction_path))
+							final_weight = weights_map[faction_path]
+							break
+
+				if(final_weight > 0)
+					weighted_selection[bounty_type] = final_weight
+
+		// If no unique/eligible bounties are left to generate, break out
+		if(!length(weighted_selection))
+			break
+
+		// Pick a type based on the dynamically assembled weights and instantiate it
+		var/chosen_bounty_type = pickweight(weighted_selection)
+		var/datum/bounty/new_bounty = new chosen_bounty_type()
+
+		active_bounties += new_bounty
 
 /**
  * Initializes the entire catalog permanently. No elements are dropped or skipped.
@@ -280,15 +334,30 @@
 	return (pack_type in faction_supply_packs)
 
 /**
- * Handles selling an item
+ * Handles selling an item & matches against active bounties
+ * Returns TRUE if consumed by a bounty, FALSE if treated as a normal sale
  */
-/datum/world_faction/proc/handle_selling(obj/selling_type)
-	sold_count |= selling_type
-	sold_count[selling_type]++
+/datum/world_faction/proc/handle_selling(atom/movable/selling_item)
+	// Check against active bounties first
+	for(var/datum/bounty/bounty in active_bounties)
+		if(bounty.check_completion(selling_item))
+			bounty.fulfill_bounty(src)
 
-	if(!prob(sold_count[selling_type] * 10))
-		return
-	adjust_sell_multiplier(selling_type, -rand(0.01, 0.1))
+			// If the bounty is finished, cycle its lists
+			if(bounty.current_count >= bounty.required_count)
+				active_bounties -= bounty
+				completed_bounties += bounty
+
+			return TRUE // Item consumed by bounty fulfillment
+
+	// Baseline logic for standard item market sales
+	sold_count |= selling_item.type
+	sold_count[selling_item.type]++
+
+	if(prob(sold_count[selling_item.type] * 10))
+		adjust_sell_multiplier(selling_item.type, -rand(0.01, 0.1))
+
+	return FALSE
 
 /datum/world_faction/proc/handle_supply_purchase(datum/supply_pack/pack)
 	award_supply_reputation(pack)

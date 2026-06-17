@@ -30,30 +30,41 @@ type CartItem = {
   mammon_cost: number;
 };
 
+type BountyDiscount = {
+  pack_name: string;
+  modifier: number;
+};
+
+type FactionBounty = {
+  id: string;
+  name: string;
+  desc: string;
+  target_item: string;
+  required_count: number;
+  current_count: number;
+  reward_reputation: number;
+  reward_currency: number;
+  discounts: BountyDiscount[];
+};
+
 type Data = {
   faction_name: string;
   categories: string[];
   supply_packs: SupplyPack[];
+  active_bounties: FactionBounty[];
   cart: CartItem[];
   total_mammon_cost: number;
 };
 
-// Converts flat history into the required number[][] coordinate pairs [[x, y], [x, y]]
 const getValidChartData = (history: SupplyPack['history']): number[][] => {
   if (!history || typeof history !== 'object') return [];
 
-  const rawValues = Array.isArray(history)
-    ? history
-    : Object.values(history);
-
+  const rawValues = Array.isArray(history) ? history : Object.values(history);
   const cleanNumbers = rawValues
     .map(Number)
     .filter((val) => !isNaN(val) && isFinite(val));
 
-  // The component needs at least 2 coordinate points to map a line segment
   if (cleanNumbers.length < 2) return [];
-
-  // Map flat values into [x, y] coordinates: [[0, val1], [1, val2], ...]
   return cleanNumbers.map((val, index) => [index, val]);
 };
 
@@ -76,13 +87,16 @@ export const CatatomaLedger = (props) => {
     faction_name,
     categories = [],
     supply_packs = [],
+    active_bounties = [],
     cart = [],
     total_mammon_cost = 0,
   } = data;
 
+  const [currentTab, setCurrentTab] = useState<'catalog' | 'bounties'>('catalog');
   const [currentCategory, setCurrentCategory] = useState('All');
   const [showInStock, setShowInStock] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [expandedBountyId, setExpandedBountyId] = useState<string | null>(null);
 
   const filteredPacks = supply_packs.filter((pack) => {
     if (currentCategory !== 'All' && pack.group !== currentCategory) return false;
@@ -103,136 +117,256 @@ export const CatatomaLedger = (props) => {
         <Section title="Faction Clearance">
           <Table>
             <Table.Row>
-              <Table.Cell>Active Trading Entity:</Table.Cell>
+              <Table.Cell bold width="150px">Active Trading Entity:</Table.Cell>
               <Table.Cell>{faction_name || "Unknown Entity"}</Table.Cell>
             </Table.Row>
           </Table>
         </Section>
 
-        {/* CATEGORY BAR */}
-        {categories.length > 0 && (
-          <Tabs scrollable>
-            {categories.map((cat) => (
-              <Tabs.Tab
-                key={cat}
-                selected={currentCategory === cat}
-                onClick={() => setCurrentCategory(cat)}
-              >
-                {cat}
-              </Tabs.Tab>
-            ))}
-          </Tabs>
-        )}
+        {/* TOP LEVEL MODULE WORKSPACE TABS */}
+        <Tabs>
+          <Tabs.Tab
+            icon="store"
+            selected={currentTab === 'catalog'}
+            onClick={() => setCurrentTab('catalog')}
+          >
+            Provisions Catalog
+          </Tabs.Tab>
+          <Tabs.Tab
+            icon="scroll"
+            selected={currentTab === 'bounties'}
+            onClick={() => setCurrentTab('bounties')}
+          >
+            Active Faction Bounties ({active_bounties.length})
+          </Tabs.Tab>
+        </Tabs>
 
-        {/* CATALOG CONTROL BAR */}
-        <Section>
-          <Stack justify="space-between" align="center">
-            <Stack.Item color="label">
-              Showing entries for: <b>{currentCategory}</b>
-            </Stack.Item>
-            <Stack.Item>
-              <Stack align="center">
-                <Stack.Item>
-                  <Input
-                    placeholder="Search provisions..."
-                    value={searchQuery}
-                    onChange={(e: string) => setSearchQuery(e)}
-                    width="200px"
-                  />
-                </Stack.Item>
-                {searchQuery && (
-                  <Stack.Item>
-                    <Button
-                      icon="times"
-                      color="transparent"
-                      onClick={() => setSearchQuery('')}
-                      tooltip="Clear Search"
-                    />
-                  </Stack.Item>
-                )}
-                <Stack.Item>
-                  <Button
-                    icon="boxes"
-                    selected={showInStock}
-                    onClick={() => setShowInStock(!showInStock)}
+        {/* WORKSPACE ELEMENT PANELS */}
+        {currentTab === 'catalog' && (
+          <>
+            {/* CATEGORY SUB-BAR */}
+            {categories.length > 0 && (
+              <Tabs scrollable>
+                {categories.map((cat) => (
+                  <Tabs.Tab
+                    key={cat}
+                    selected={currentCategory === cat}
+                    onClick={() => setCurrentCategory(cat)}
                   >
-                    In Stock Only
-                  </Button>
+                    {cat}
+                  </Tabs.Tab>
+                ))}
+              </Tabs>
+            )}
+
+            {/* CATALOG CONTROL BAR */}
+            <Section>
+              <Stack justify="space-between" align="center">
+                <Stack.Item color="label">
+                  Showing entries for: <b>{currentCategory}</b>
+                </Stack.Item>
+                <Stack.Item>
+                  <Stack align="center">
+                    <Stack.Item>
+                      <Input
+                        placeholder="Search provisions..."
+                        value={searchQuery}
+                        onChange={(e: string) => setSearchQuery(e)}
+                        width="200px"
+                      />
+                    </Stack.Item>
+                    {searchQuery && (
+                      <Stack.Item>
+                        <Button
+                          icon="times"
+                          color="transparent"
+                          onClick={() => setSearchQuery('')}
+                          tooltip="Clear Search"
+                        />
+                      </Stack.Item>
+                    )}
+                    <Stack.Item>
+                      <Button
+                        icon="boxes"
+                        selected={showInStock}
+                        onClick={() => setShowInStock(!showInStock)}
+                      >
+                        In Stock Only
+                      </Button>
+                    </Stack.Item>
+                  </Stack>
                 </Stack.Item>
               </Stack>
-            </Stack.Item>
-          </Stack>
-        </Section>
+            </Section>
 
-        {/* MARKET CATALOG DISPLAY */}
-        <Section title="Provisions Listing">
-          <Table>
-            <Table.Row header>
-              <Table.Cell>Item</Table.Cell>
-              <Table.Cell>Market Trend</Table.Cell>
-              <Table.Cell>Availability</Table.Cell>
-              <Table.Cell>Purchase Options</Table.Cell>
-            </Table.Row>
-            {filteredPacks.length === 0 ? (
-              <Table.Row>
-                <Table.Cell colSpan={4}>No matching provisions found.</Table.Cell>
-              </Table.Row>
-            ) : (
-              filteredPacks.map((pack) => {
-                // Now returns valid number[][] matrix format
-                const chartCoordinates = getValidChartData(pack.history);
-
-                // Extract structural Y values to accurately map explicit range boundaries
-                const yValues = chartCoordinates.map(coord => coord[1]);
-                const minY = yValues.length > 0 ? Math.min(...yValues) : 0;
-                const maxY = yValues.length > 0 ? Math.max(...yValues) : 100;
-
-                // Prevent flatlines from triggering zero-span delta errors
-                const paddedRangeY: [number, number] = minY === maxY
-                  ? [minY - 5, maxY + 5]
-                  : [minY, maxY];
-
-                return (
-                  <Table.Row key={pack.id} className="candystripe">
-                    <Table.Cell verticalAlign="middle">
-                      <Box bold>{pack.name}</Box>
-                      <Box color="label" fontSize="0.9em">{pack.desc}</Box>
-                    </Table.Cell>
-
-                    {/* TRENDLINE CHART CELL */}
-                    <Table.Cell verticalAlign="middle" width="120px">
-                      {chartCoordinates.length > 0 ? (
-                        <Chart.Line
-                          data={chartCoordinates}
-                          height="25px"
-                          strokeColor="amber"
-                          fillColor="rgba(255, 193, 7, 0.1)"
-                          rangeX={[0, chartCoordinates.length - 1]}
-                          rangeY={paddedRangeY}
-                        />
-                      ) : (
-                        <Box color="label" italic fontSize="0.9em">Stable</Box>
-                      )}
-                    </Table.Cell>
-
-                    <Table.Cell verticalAlign="middle">
-                      {pack.in_stock ? "AVAILABLE" : "BACKORDER ONLY"}
-                    </Table.Cell>
-                    <Table.Cell>
-                      <Button
-                        icon="coins"
-                        disabled={!pack.in_stock}
-                        onClick={() => act('add_to_cart', { id: pack.id })}
-                      >
-                        Buy ({pack.cost} M)
-                      </Button>
-                    </Table.Cell>
+            {/* MARKET CATALOG DISPLAY */}
+            <Section title="Provisions Listing">
+              <Table>
+                <Table.Row header>
+                  <Table.Cell>Item</Table.Cell>
+                  <Table.Cell>Market Trend</Table.Cell>
+                  <Table.Cell>Availability</Table.Cell>
+                  <Table.Cell>Purchase Options</Table.Cell>
+                </Table.Row>
+                {filteredPacks.length === 0 ? (
+                  <Table.Row>
+                    <Table.Cell colSpan={4}>No matching provisions found.</Table.Cell>
                   </Table.Row>
-                );
-              })
-            )}
-          </Table>
-        </Section>
+                ) : (
+                  filteredPacks.map((pack) => {
+                    const chartCoordinates = getValidChartData(pack.history);
+                    const yValues = chartCoordinates.map(coord => coord[1]);
+                    const minY = yValues.length > 0 ? Math.min(...yValues) : 0;
+                    const maxY = yValues.length > 0 ? Math.max(...yValues) : 100;
+                    const paddedRangeY: [number, number] = minY === maxY
+                      ? [minY - 5, maxY + 5]
+                      : [minY, maxY];
+
+                    return (
+                      <Table.Row key={pack.id} className="candystripe">
+                        <Table.Cell verticalAlign="middle">
+                          <Box bold>{pack.name}</Box>
+                          <Box color="label" fontSize="0.9em">{pack.desc}</Box>
+                        </Table.Cell>
+                        <Table.Cell verticalAlign="middle" width="120px">
+                          {chartCoordinates.length > 0 ? (
+                            <Chart.Line
+                              data={chartCoordinates}
+                              height="25px"
+                              strokeColor="amber"
+                              fillColor="rgba(255, 193, 7, 0.1)"
+                              rangeX={[0, chartCoordinates.length - 1]}
+                              rangeY={paddedRangeY}
+                            />
+                          ) : (
+                            <Box color="label" italic fontSize="0.9em">Stable</Box>
+                          )}
+                        </Table.Cell>
+                        <Table.Cell verticalAlign="middle">
+                          {pack.in_stock ? "AVAILABLE" : "BACKORDER ONLY"}
+                        </Table.Cell>
+                        <Table.Cell>
+                          <Button
+                            icon="coins"
+                            disabled={!pack.in_stock}
+                            onClick={() => act('add_to_cart', { id: pack.id })}
+                          >
+                            Buy ({pack.cost} M)
+                          </Button>
+                        </Table.Cell>
+                      </Table.Row>
+                    );
+                  })
+                )}
+              </Table>
+            </Section>
+          </>
+        )}
+
+        {currentTab === 'bounties' && (
+          <Section title="Demanded Supply Inquisitions">
+            <Table>
+              <Table.Row header>
+                <Table.Cell width="25px" />
+                <Table.Cell>Contract Specifications</Table.Cell>
+                <Table.Cell width="120px" align="center">Progress Status</Table.Cell>
+                <Table.Cell width="180px">Compensation Rewards</Table.Cell>
+              </Table.Row>
+              {active_bounties.length === 0 ? (
+                <Table.Row>
+                  <Table.Cell colSpan={4} italic color="label">
+                    No active contract allocations or bounties issued by this faction.
+                  </Table.Cell>
+                </Table.Row>
+              ) : (
+                active_bounties.map((bounty) => {
+                  const isCompleted = bounty.current_count >= bounty.required_count;
+                  const isExpanded = expandedBountyId === bounty.id;
+
+                  return (
+                    <>
+                      {/* PRIMARY BOUNTY ROW */}
+                      <Table.Row key={bounty.id} className="candystripe">
+                        <Table.Cell verticalAlign="middle">
+                          <Button
+                            fluid
+                            compact
+                            color="transparent"
+                            icon={isExpanded ? 'chevron-down' : 'chevron-right'}
+                            onClick={() => setExpandedBountyId(isExpanded ? null : bounty.id)}
+                          />
+                        </Table.Cell>
+                        <Table.Cell
+                          verticalAlign="middle"
+                          onClick={() => setExpandedBountyId(isExpanded ? null : bounty.id)}
+                          style={{ cursor: 'pointer' }}
+                        >
+                          <Box bold color={isCompleted ? "success" : "default"}>
+                            {bounty.name}
+                          </Box>
+                          <Box color="label" fontSize="0.9em">{bounty.desc}</Box>
+                        </Table.Cell>
+                        <Table.Cell verticalAlign="middle" align="center">
+                          <Box bold color={isCompleted ? "success" : "amber"}>
+                            {bounty.current_count} / {bounty.required_count}
+                          </Box>
+                          <Box fontSize="0.8em" color="label">
+                            {isCompleted ? "RESOLVED" : "PENDING"}
+                        </Box>
+                        </Table.Cell>
+                        <Table.Cell verticalAlign="middle">
+                          <Box color="amber" bold>+{bounty.reward_currency} Mammons</Box>
+                          <Box color="teal">+{bounty.reward_reputation} Faction Rep</Box>
+                        </Table.Cell>
+                      </Table.Row>
+
+                      {/* DROPDOWN DETAILS SECTION */}
+                      {isExpanded && (
+                        <Table.Row key={`${bounty.id}-details`}>
+                          <Table.Cell />
+                          <Table.Cell colSpan={3}>
+                            <Box p={1} style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)', borderRadius: '4px' }}>
+                              <Stack vertical >
+                                <Stack.Item>
+                                  <Box color="label" bold fontSize="0.9em">Material Demanded Specifically:</Box>
+                                  <Box pl={1} color="default" italic>
+                                    {bounty.target_item} ({bounty.required_count} needed)
+                                  </Box>
+                                </Stack.Item>
+
+                                <Stack.Item>
+                                  <Box color="label" bold fontSize="0.9em">Completion Manifest Incentives:</Box>
+                                  {bounty.discounts && bounty.discounts.length > 0 ? (
+                                    <Table mt={0.5}>
+                                      <Table.Row header>
+                                        <Table.Cell fontSize="0.85em">Target Supply Package</Table.Cell>
+                                        <Table.Cell fontSize="0.85em" align="right">Wholesale Rebate</Table.Cell>
+                                      </Table.Row>
+                                      {bounty.discounts.map((discount, idx) => (
+                                        <Table.Row key={idx}>
+                                          <Table.Cell color="default">{discount.pack_name}</Table.Cell>
+                                          <Table.Cell color="success" align="right" bold>-{discount.modifier}% Discount</Table.Cell>
+                                        </Table.Row>
+                                      ))}
+                                    </Table>
+                                  ) : (
+                                    <Box pl={1} color="label" italic fontSize="0.9em">
+                                      No additional market provisions or package modifications associated with this contract.
+                                    </Box>
+                                  )}
+                                </Stack.Item>
+                              </Stack>
+                            </Box>
+                          </Table.Cell>
+                        </Table.Row>
+                      )}
+                    </>
+                  );
+                })
+              )}
+            </Table>
+          </Section>
+        )}
 
         {/* SHOPPING CART OVERVIEW */}
         <Section title="Pending Manifest Invoice">
@@ -265,14 +399,12 @@ export const CatatomaLedger = (props) => {
                   </Table.Cell>
                 </Table.Row>
               ))}
-
-              {/* CART SUMMARY FOOTER */}
               <Table.Row>
                 <Table.Cell colSpan={4}>
                   <Table>
                     <Table.Row>
-                      <Table.Cell>Total Mammons:</Table.Cell>
-                      <Table.Cell color="amber">{total_mammon_cost} M</Table.Cell>
+                      <Table.Cell bold>Total Mammons:</Table.Cell>
+                      <Table.Cell color="amber" bold>{total_mammon_cost} M</Table.Cell>
                     </Table.Row>
                   </Table>
                 </Table.Cell>

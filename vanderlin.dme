@@ -1712,6 +1712,7 @@
 #include "code\datums\world_factions\coastal.dm"
 #include "code\datums\world_factions\mountain.dm"
 #include "code\datums\world_factions\zalad.dm"
+#include "code\datums\world_factions\bounties\_base.dm"
 #include "code\datums\world_factions\traders\_trade_data.dm"
 #include "code\datums\world_factions\traders\_training_data.dm"
 #include "code\datums\world_factions\traders\actions.dm"
