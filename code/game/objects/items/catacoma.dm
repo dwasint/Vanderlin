@@ -60,22 +60,19 @@
 			if(!bounty)
 				continue
 
-			// 1. Resolve what the bounty wants specifically
 			var/target_name = "Unknown Asset"
 			if(bounty.required_path)
 				var/atom/bounty_target = bounty.required_path
 				target_name = initial(bounty_target.name)
 
-			// 2. Resolve package discounts provided upon contract completion
 			var/list/serialized_discounts = list()
 			if(islist(bounty.supply_pack_modifiers) && length(bounty.supply_pack_modifiers))
 				for(var/datum/supply_pack/pack_path as anything in bounty.supply_pack_modifiers)
-					var/discount_value = bounty.supply_pack_modifiers[pack_path]
+					var/discount_value = 1 - bounty.supply_pack_modifiers[pack_path]
 
-					// Assuming the modifier tracks a value reduction (e.g., 20 means 20% off)
 					serialized_discounts += list(list(
 						"pack_name" = initial(pack_path.name),
-						"modifier"  = discount_value
+						"modifier"  = discount_value * 100
 					))
 
 			serialized_bounties += list(list(
