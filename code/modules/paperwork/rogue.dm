@@ -132,7 +132,7 @@
 	var/signedname
 	var/signedjob
 	var/list/orders = list()
-	var/list/reputation_orders = list()
+	var/datum/world_faction/buying_from
 	var/list/fufilled_orders = list()
 
 /obj/item/paper/scroll/cargo/Destroy()
@@ -186,16 +186,26 @@
 /obj/item/paper/scroll/cargo/proc/rebuild_info()
 	info = null
 	info += "<div style='vertical-align:top'>"
-	info += "<h2 style='color:#06080F;font-family:\"Segoe Script\"'>Shipping Order</h2>"
+
+	var/faction_header = buying_from ? "[buying_from.faction_name] Manifest" : "Shipping Order"
+	info += "<h2 style='color:#06080F;font-family:\"Segoe Script\"'>[faction_header]</h2>"
 	info += "<hr/>"
 
 	if(orders.len)
 		info += "<ul>"
 		for(var/datum/supply_pack/A in orders)
+			// Determine faction local price vs fallback core value
+			var/target_cost = A.cost
+			if(buying_from && islist(buying_from.faction_supply_packs) && buying_from.faction_supply_packs[A.type])
+				var/datum/supply_pack/faction_pack = buying_from.faction_supply_packs[A.type]
+				target_cost = faction_pack.cost
+
+			var/item_total = target_cost * orders[A]
+
 			if(!A.contraband)
-				info += "<li style='color:#06080F;font-size:11px;font-family:\"Segoe Script\"'>[A.name] x[orders[A]] - [A.cost * orders[A]] mammons</li><br/>"
+				info += "<li style='color:#06080F;font-size:11px;font-family:\"Segoe Script\"'>[A.name] x[orders[A]] - [item_total] mammons</li><br/>"
 			else
-				info += "<li style='color:#610018;font-size:11px;font-family:\"Segoe Script\"'>[A.name] x[orders[A]] - [A.cost * orders[A]] mammons</li><br/>"
+				info += "<li style='color:#610018;font-size:11px;font-family:\"Segoe Script\"'>[A.name] x[orders[A]] - [item_total] mammons</li><br/>"
 		info += "</ul>"
 
 	info += "<br/></font>"

@@ -1,4 +1,5 @@
 /datum/supply_pack
+	abstract_type = /datum/supply_pack
 	var/name = "Crate"
 	var/group = ""
 	var/hidden = FALSE
@@ -19,7 +20,9 @@
 	var/static_cost = FALSE
 	var/randomprice_factor = 0.07
 	var/unlocked = TRUE
-	abstract_type = /datum/supply_pack
+	// Stock Market & Price Fluctuation Variables
+	var/list/cost_history = list() // Stores a history of previous costs (e.g., list(710, 685, 740...))
+	var/max_history_length = 20    // Caps how many data points are saved for the graph
 
 /datum/supply_pack/New()
 	..()
@@ -38,6 +41,9 @@
 #endif
 	if(contains && !islist(contains))
 		contains = list(contains)
+
+	// Record initial cost as the first point on our market graph
+	record_cost_history()
 
 /datum/supply_pack/proc/generate(atom/A, datum/bank_account/paying_account)
 	var/obj/structure/closet/crate/C
@@ -66,17 +72,10 @@
 		actual_price += SSmerchant.get_item_base_value(atom)
 	return actual_price
 
-/datum/supply_pack/proc/calculate_reputation_cost()
-	var/datum/world_faction/faction = SSmerchant.active_faction
-	if(!faction)
-		return 50
-
-	var/base_cost = cost
-	var/tier = faction.get_reputation_tier()
-
-	// Base reputation cost scales with item value
-	// Higher tier = lower reputation costs (better relations = better deals)
-	var/reputation_multiplier = max(0.5, 1.5 - (tier * 0.15)) // 15% reduction per tier
-	var/reputation_cost = max(10, round(base_cost * reputation_multiplier))
-
-	return reputation_cost
+/**
+ * Appends the current cost into the trend line database
+ */
+/datum/supply_pack/proc/record_cost_history()
+	cost_history += cost
+	if(length(cost_history) > max_history_length)
+		cost_history.Cut(1, 2)

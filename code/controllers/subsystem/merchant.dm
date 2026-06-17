@@ -292,24 +292,6 @@ SUBSYSTEM_DEF(merchant)
 
 	return faction.return_sell_modifier(sell_type)
 
-/datum/controller/subsystem/merchant/proc/is_bounty_item(atom/item_type, datum/world_faction/faction)
-	if(!faction)
-		faction = active_faction
-
-	if(!faction)
-		return FALSE
-
-	return (item_type in faction.bounty_items)
-
-/datum/controller/subsystem/merchant/proc/get_bounty_multiplier(atom/item_type, datum/world_faction/faction)
-	if(!faction)
-		faction = active_faction
-
-	if(!faction || !(item_type in faction.bounty_items))
-		return 0
-
-	return faction.bounty_items[item_type]
-
 /datum/controller/subsystem/merchant/proc/register_sellable_item(atom/sell_type)
 	if(sell_type in staticly_setup_types)
 		return
