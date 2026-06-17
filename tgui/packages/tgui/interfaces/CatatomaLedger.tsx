@@ -345,7 +345,7 @@ export const CatatomaLedger = (props) => {
                                       {bounty.discounts.map((discount, idx) => (
                                         <Table.Row key={idx}>
                                           <Table.Cell color="default">{discount.pack_name}</Table.Cell>
-                                          <Table.Cell color="success" align="right" bold>-{discount.modifier}% Discount</Table.Cell>
+                                          <Table.Cell color="success" align="right" bold>{discount.modifier}% Discount</Table.Cell>
                                         </Table.Row>
                                       ))}
                                     </Table>
