@@ -11,7 +11,7 @@
 
 	var/list/faction_supply_packs = list() // This faction's available supply packs
 	var/next_supply_rotation = 0 // Used here as next market price shift timestamp
-	var/supply_rotation_interval = 15 MINUTES // How often prices fluctuate
+	var/supply_rotation_interval = 5 MINUTES // How often prices fluctuate
 	var/base_max_supply_packs = 30 // Base maximum supply packs available at once
 	var/faction_color = "#FFFFFF" // Color for UI theming
 

@@ -4,6 +4,31 @@ SUBSYSTEM_DEF(merchant)
 	init_order = INIT_ORDER_DEFAULT
 	runlevels = RUNLEVEL_SETUP | RUNLEVEL_GAME
 
+	var/static/list/group_batch_sizes = list(
+		"Raw Materials" = 30,
+		"Seeds" = 50,
+		"Food" = 15,
+		"Drinks" = 15,
+		"Narcotics" = 20,
+		"Livestock" = 2,
+		"Luxury" = 5,
+		"Jewelry" = 20,
+		"Armor" = 5,
+		"Armor(Light)" = 5,
+		"Armor(Steel)" = 5,
+		"Instruments" = 5,
+		"Storage" = 5,
+		"Tools" = 5,
+		"Medicine" = 20,
+		"Shields" = 5,
+		"Weapons" = 5,
+		"Weapons (Iron)" = 5,
+		"Weapons (Steel)" = 5,
+		"Weapons (Ranged)" = 5,
+		"Ammunition" = 100,
+		"Apparel" = 10,
+	)
+
 	var/list/supply_packs = list()
 	var/list/supply_cats = list()
 	var/list/shoppinglist = list()
@@ -344,33 +369,119 @@ SUBSYSTEM_DEF(merchant)
 		return
 	draw_selling_changes()
 	cargo_boat.show_tram()
+
+	// Gather available flooring spaces from the lift system
 	var/list/boat_spaces = list()
 	for(var/obj/structure/industrial_lift/lift in cargo_boat.lift_platforms)
 		boat_spaces |= cargo_boat.get_valid_turfs(lift)
-	for(var/datum/supply_pack/requested as anything in requestlist)
-		if(!requestlist[requested])
-			continue
-		var/turf/boat_turf = pick_n_take(boat_spaces)
-		var/obj/structure/closet/crate/crate_to_use
-		for(var/i in 1 to requestlist[requested])
-			if(i == 1)
-				crate_to_use = requested.generate(boat_turf)
+
+	if(!length(boat_spaces))
+		return
+
+	var/list/items_by_group = list() // Format: list(group_name = list(item_type_paths_or_instances))
+	var/list/admin_flagged_types = list() // Track which types need admin flags (if applicable)
+
+	if(length(requestlist))
+		for(var/datum/supply_pack/requested as anything in requestlist)
+			var/quantity = requestlist[requested]
+			if(quantity <= 0 || !length(requested.contains))
+				continue
+
+			// Fallback to "General" if group is empty/unset
+			var/group_name = requested.group ? requested.group : "General"
+			if(!items_by_group[group_name])
+				items_by_group[group_name] = list()
+
+			// Unpack the items directly from the supply pack list data
+			for(var/i in 1 to quantity)
+				for(var/item_type in requested.contains)
+					if(!item_type)
+						continue
+
+					// Track if this instance stream needs admin item mapping
+					if(requested.admin_spawned)
+						admin_flagged_types += item_type
+
+					items_by_group[group_name] += item_type
+
+	if(length(items_by_group))
+		for(var/group_name in items_by_group)
+			var/list/group_items = items_by_group[group_name]
+			var/list/current_chest_batch = list()
+
+			var/max_batch_size = group_batch_sizes[group_name] ? group_batch_sizes[group_name] : 5
+
+			if(length(group_items))
+				for(var/item_type in group_items)
+					current_chest_batch += item_type
+
+					// Slice the batch according to the group's dynamic max size
+					if(length(current_chest_batch) == max_batch_size)
+						spawn_delivery_chest(group_name, current_chest_batch, boat_spaces, admin_flagged_types)
+						current_chest_batch.Cut()
+
+				// Wrap up remaining leftovers for this category group
+				if(length(current_chest_batch))
+					spawn_delivery_chest(group_name, current_chest_batch, boat_spaces, admin_flagged_types)
+
+	if(length(sending_stuff))
+		for(var/atom/movable/item as anything in sending_stuff)
+			if(QDELETED(item))
+				continue
+			var/turf/boat_turf = pick(boat_spaces)
+			if(ispath(item))
+				var/atom/movable/spawned_item = new item(boat_turf)
+				register_lift_cargo(spawned_item)
 			else
-				requested.fill(crate_to_use)
-		for(var/obj/structure/industrial_lift/lift in cargo_boat.lift_platforms)
-			lift.held_cargo |= crate_to_use
-	for(var/atom/movable/item as anything in sending_stuff)
-		if(QDELETED(item))
-			continue
-		var/turf/boat_turf = pick(boat_spaces)
-		if(ispath(item))
-			new item(boat_turf)
-		else
-			item.forceMove(boat_turf)
+				item.forceMove(boat_turf)
+				register_lift_cargo(item)
+
 	requestlist = list()
 	spawn_faction_traders()
 	cargo_docked = FALSE
 	SEND_GLOBAL_SIGNAL(COMSIG_DISPATCH_CARGO, cargo_boat)
+
+/**
+ * Assembles a physical chest on the deck, loads it with up to 5 items,
+ * and prints a parchment manifest lying over it.
+ */
+/datum/controller/subsystem/merchant/proc/spawn_delivery_chest(category, list/items_to_pack, list/boat_spaces)
+	if(!length(boat_spaces) || !length(items_to_pack))
+		return
+
+	var/turf/spawn_turf = pick(boat_spaces)
+	if(!spawn_turf)
+		return
+
+	var/obj/structure/closet/crate/chest/merchant/delivery_chest = new(spawn_turf)
+	delivery_chest.name = "[lowertext(category)] delivery chest"
+	register_lift_cargo(delivery_chest)
+
+	var/manifest_contents = "<h2>[category] Supply Division</h2><hr><b>Contained Cargo Manifest:</b><ul>"
+
+	for(var/atom/movable/item in items_to_pack)
+		item.forceMove(delivery_chest)
+		manifest_contents += "<li>[item.name]</li>"
+
+	manifest_contents += "</ul><hr><i>Seal of Authenticity - Approved Shipment.</i>"
+
+	var/obj/item/paper/manifest = new(spawn_turf)
+	manifest.name = "manifest parchment ([lowertext(category)])"
+	manifest.info = manifest_contents
+	manifest.update_appearance()
+
+	manifest.pixel_x = delivery_chest.pixel_x + rand(-3, 3)
+	manifest.pixel_y = delivery_chest.pixel_y + rand(-3, 3)
+	register_lift_cargo(manifest)
+
+/**
+ * Clean internal utility to link any instantiated delivery item back to the platform
+ */
+/datum/controller/subsystem/merchant/proc/register_lift_cargo(atom/movable/cargo_item)
+	if(!cargo_boat)
+		return
+	for(var/obj/structure/industrial_lift/lift in cargo_boat.lift_platforms)
+		lift.held_cargo |= cargo_item
 
 /datum/controller/subsystem/merchant/proc/send_cargo_ship_back()
 	var/obj/effect/landmark/tram/queued_path/cargo_stop/cargo_stop = cargo_boat.idle_platform
