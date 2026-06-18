@@ -258,3 +258,9 @@ DEFINE_BITFIELD(toggles_gameplay, list(
 
 #define ROLE_SETTING_LIST_PICK "picker"
 #define ROLE_SETTING_TEXT "freetext"
+/// The non gender specific list that we get from init_sprite_accessory_subtypes()
+#define DEFAULT_SPRITE_LIST "default_sprites"
+/// The male specific list that we get from init_sprite_accessory_subtypes()
+#define MALE_SPRITE_LIST "male_sprites"
+/// The female specific list that we get from init_sprite_accessory_subtypes()
+#define FEMALE_SPRITE_LIST "female_sprites"

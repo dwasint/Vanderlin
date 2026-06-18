@@ -137,7 +137,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	//we couldn't load character data so just randomize the character appearance + name
 	randomise_appearance_prefs(include_donator = donator)		//let's create a random character then - rather than a fat, bald and naked man.
 	if(!read_preference(/datum/preference/choiced/patron))
-		write_preference(/datum/preference/choiced/patron, GLOB.patrons_by_type[/datum/patron/divine/astrata])
+		write_preference(/datum/preference/choiced/patron, GLOB.patron_list[/datum/patron/divine/astrata])
 	key_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
 	if(isclient(C))
 		C.update_movement_keys()
@@ -1862,10 +1862,8 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	var/datum/patron/patron = user.client.prefs.read_preference(/datum/preference/choiced/patron)
 	if(length(job.allowed_patrons) && !(patron.type in job.allowed_patrons))
 		var/list/patron_list = list()
-		for(var/mult_patron in job.allowed_patrons)
-			var/datum/patron/P = new mult_patron
-			patron_list += (P.display_name ? P.display_name : P.name)
-			qdel(P)
+		for(var/datum/patron/mult_patron as anything in job.allowed_patrons)
+			patron_list += mult_patron::display_name || mult_patron::name
 		var/patron_text = jointext(patron_list, ", ")
 
 		return make_lock_row(
