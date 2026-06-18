@@ -84,16 +84,3 @@
 			pack.cost = max(1, round(pack.cost * modifier))
 			// Record the history graph drop
 			pack.record_cost_history()
-
-/datum/bounty/noble_luxury
-	name = "Royal Silk Kimono"
-	required_path = /obj/item/clothing/shirt/robe/kimono
-	required_count = 1
-	reward_currency = 30
-	reward_reputation = 20
-	demanded_by = NOBLEMEN
-	supply_pack_modifiers = list(
-		/datum/supply_pack/food/eel = 0.2
-	)
-
-	fallback_weight = 10 // What standard unlisted factions will use
