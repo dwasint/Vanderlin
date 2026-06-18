@@ -4,9 +4,9 @@
 	category = "ui"
 	can_randomize = FALSE
 	should_update_preview = FALSE
-	minimum = 50
-	maximum = 200
-	step = 5
+	minimum = 0.25
+	maximum = 5
+	step = 0.25
 
 /datum/preference/numeric/ui_scale/create_default_value()
-	return 100
+	return 1
