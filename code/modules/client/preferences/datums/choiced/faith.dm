@@ -48,5 +48,5 @@
 
 	// Reset patron to the godhead of the new faith, or a valid one if godhead is null.
 	// This keeps faith and patron in sync I HATE IT I HATE IT I HATE IT I HATE IT
-	var/datum/patron/new_patron = GLOB.patrons_by_type[chosen_faith.godhead] || GLOB.patrons_by_type[pick(GLOB.patrons_by_faith[chosen_faith.type])]
+	var/datum/patron/new_patron = GLOB.patron_list[chosen_faith.godhead] || GLOB.patron_list[pick(GLOB.patrons_by_faith[chosen_faith.type])]
 	prefs.write_preference(/datum/preference/choiced/patron, new_patron.type)
