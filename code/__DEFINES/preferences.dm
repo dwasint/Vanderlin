@@ -262,3 +262,9 @@ DEFINE_BITFIELD(toggles_gameplay, list(
 #define MAX_RUMORS 5
 #define MAX_NOBLE_GOSSIP 5
 #define MAX_GOSSIP_LENGTH 250
+/// The non gender specific list that we get from init_sprite_accessory_subtypes()
+#define DEFAULT_SPRITE_LIST "default_sprites"
+/// The male specific list that we get from init_sprite_accessory_subtypes()
+#define MALE_SPRITE_LIST "male_sprites"
+/// The female specific list that we get from init_sprite_accessory_subtypes()
+#define FEMALE_SPRITE_LIST "female_sprites"

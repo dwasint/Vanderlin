@@ -6,7 +6,7 @@
 
 /datum/preference/choiced/patron/init_possible_values(datum/preferences/prefs)
 	var/list/out = list()
-	for (var/T in GLOB.patrons_by_type)
+	for (var/T in GLOB.patron_list)
 		out += T
 	return out
 
@@ -27,9 +27,9 @@
 
 /datum/preference/choiced/patron/deserialize(input, datum/preferences/prefs)
 	var/path = ispath(input) ? input : text2path(input)
-	if (!(path in GLOB.patrons_by_type))
+	if (!(path in GLOB.patron_list))
 		return create_default_value()
-	return GLOB.patrons_by_type[path]
+	return GLOB.patron_list[path]
 
 /datum/preference/choiced/patron/apply_to_human(mob/living/carbon/human/H, value, datum/preferences/prefs)
 	H.set_patron(value)
@@ -38,7 +38,7 @@
 	var/datum/patron/pref_patron = prefs.read_preference(/datum/preference/choiced/patron)
 	var/list/patrons_named = list()
 	for(var/datum/patron/patron as anything in GLOB.patrons_by_faith[pref_patron.associated_faith || /datum/patron/divine/astrata::associated_faith])
-		patron = GLOB.patrons_by_type[patron]
+		patron = GLOB.patron_list[patron]
 		if(!is_valid(patron.type, prefs))
 			continue
 		var/pref_name = patron.display_name ? patron.display_name : patron.name
