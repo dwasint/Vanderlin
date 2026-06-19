@@ -39,6 +39,8 @@
 	var/list/patrons_named = list()
 	for(var/datum/patron/patron as anything in GLOB.patrons_by_faith[pref_patron.associated_faith || /datum/patron/divine/astrata::associated_faith])
 		patron = GLOB.patron_list[patron]
+		if(!patron.preference_accessible(prefs))
+			continue
 		if(!is_valid(patron.type, prefs))
 			continue
 		var/pref_name = patron.display_name ? patron.display_name : patron.name
