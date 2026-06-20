@@ -1585,7 +1585,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	character.clear_quirks()
 	character.transform = matrix()
 
-	for(var/datum/preference/pref as anything in get_preferences_in_priority_order())
+	for(var/datum/preference/pref as anything in GLOB.preferences_in_priority_order)
 		if(!pref)
 			continue
 		if(pref.savefile_identifier != PREF_CHARACTER)
