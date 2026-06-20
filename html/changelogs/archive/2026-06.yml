@@ -150,3 +150,6 @@
   - rscadd: Ollies, the equivalent for olives.
   - bugfix: Salted seeds recipe works properly now.
   - bugfix: Per-species hunger and cleanliness modifiers actually function now.
+2026-06-20:
+  ModDownloading:
+  - balance: Sewer Cave troll has been replaced with a Skullsplitter troll.
