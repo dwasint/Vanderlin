@@ -1268,6 +1268,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 	else if(href_list["preference"] == "triumphs")
 		user.show_triumphs_list()
+		return TRUE
 
 	else if(href_list["preference"] == "role_settings")
 		var/datum/role_settings_menu/menu = new(src)
@@ -1276,6 +1277,7 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 
 	else if(href_list["preference"] == "playerquality")
 		check_pq_menu(user.ckey)
+		return TRUE
 
 	else if(href_list["preference"] == "culinary")
 		show_culinary_ui(user)
@@ -1291,8 +1293,10 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	else if(href_list["preference"] == "customizers")
 		ShowCustomizers(user)
 		return
+
 	else if(href_list["preference"] == "triumph_buy_menu")
 		SStriumphs.startup_triumphs_menu(user.client)
+		return TRUE
 
 	else if(href_list["preference"] == "keybinds")
 		switch(href_list["task"])
