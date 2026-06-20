@@ -6,7 +6,7 @@
 		return sanitize_hexcolor(input)
 	return null
 
-/datum/preference/color/create_default_value()
+/datum/preference/color/create_default_value(datum/preferences/prefs)
 	if (default_null)
 		return null
 	return random_color()

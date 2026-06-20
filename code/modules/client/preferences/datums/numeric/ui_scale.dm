@@ -8,5 +8,5 @@
 	maximum = 5
 	step = 0.25
 
-/datum/preference/numeric/ui_scale/create_default_value()
+/datum/preference/numeric/ui_scale/create_default_value(datum/preferences/prefs)
 	return 1

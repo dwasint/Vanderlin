@@ -12,7 +12,7 @@
 		out += T
 	return out
 
-/datum/preference/choiced/culture/create_default_value()
+/datum/preference/choiced/culture/create_default_value(datum/preferences/prefs)
 	return /datum/culture/universal/ambiguous
 
 /datum/preference/choiced/culture/serialize(input)
@@ -23,7 +23,7 @@
 
 /datum/preference/choiced/culture/deserialize(input, datum/preferences/prefs)
 	var/path = ispath(input) ? input : text2path(input)
-	return sanitize_inlist(path, get_choices(), create_default_value())
+	return sanitize_inlist(path, get_choices(), create_default_value(prefs))
 
 /datum/preference/choiced/culture/apply_to_human(mob/living/carbon/human/H, value, datum/preferences/prefs)
 	H.culture = GLOB.culture_singletons[value]

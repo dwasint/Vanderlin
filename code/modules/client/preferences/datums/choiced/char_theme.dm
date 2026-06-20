@@ -14,5 +14,5 @@
 /datum/preference/choiced/char_theme/init_possible_values(datum/preferences/prefs)
 	return char_themes
 
-/datum/preference/choiced/char_theme/create_default_value()
+/datum/preference/choiced/char_theme/create_default_value(datum/preferences/prefs)
 	return "grimshart"

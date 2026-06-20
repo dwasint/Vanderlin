@@ -8,5 +8,5 @@
 	maximum = 5000
 	step = 100
 
-/datum/preference/numeric/tip_delay/create_default_value()
+/datum/preference/numeric/tip_delay/create_default_value(datum/preferences/prefs)
 	return 500

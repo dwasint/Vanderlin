@@ -60,14 +60,14 @@
 	return input
 
 /// Produce a default (possibly random) value when nothing is in the savefile.
-/datum/preference/proc/create_default_value()
+/datum/preference/proc/create_default_value(datum/preferences/prefs)
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(FALSE)
-	CRASH("`create_default_value()` not implemented on [type]!")
+	CRASH("`create_default_value(prefs)` not implemented on [type]!")
 
-/// Like create_default_value() but receives the preferences datum for context.
+/// Like create_default_value(prefs) but receives the preferences datum for context.
 /datum/preference/proc/create_informed_default_value(datum/preferences/prefs)
-	return create_default_value()
+	return create_default_value(prefs)
 
 /// Produce a random value for character randomisation.
 /datum/preference/proc/create_random_value(datum/preferences/prefs)

@@ -24,7 +24,7 @@
 			return FALSE
 	return TRUE
 
-/datum/preference/list_type/role_setting/create_default_value()
+/datum/preference/list_type/role_setting/create_default_value(datum/preferences/prefs)
 	return list()
 
 /datum/preference/list_type/role_setting/apply_to_human(mob/living/carbon/human/H, value, datum/preferences/prefs)

@@ -10,7 +10,7 @@
 		out += T
 	return out
 
-/datum/preference/choiced/faith/create_default_value()
+/datum/preference/choiced/faith/create_default_value(datum/preferences/prefs)
 	return /datum/patron/divine/astrata::associated_faith
 
 /datum/preference/choiced/faith/serialize(input)
@@ -22,7 +22,7 @@
 /datum/preference/choiced/faith/deserialize(input, datum/preferences/prefs)
 	var/path = ispath(input) ? input : text2path(input)
 	if(!(path in GLOB.faith_list))
-		return create_default_value()
+		return create_default_value(prefs)
 	return GLOB.faith_list[path]
 
 /datum/preference/choiced/faith/apply_to_human(mob/living/carbon/human/H, value)

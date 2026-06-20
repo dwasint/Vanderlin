@@ -32,10 +32,10 @@
 	return value in get_choices(prefs)
 
 /datum/preference/choiced/deserialize(input, datum/preferences/prefs)
-	return sanitize_inlist(input, get_choices(prefs), create_default_value())
+	return sanitize_inlist(input, get_choices(prefs), create_default_value(prefs))
 
-/datum/preference/choiced/create_default_value()
-	return pick(get_choices())
+/datum/preference/choiced/create_default_value(datum/preferences/prefs)
+	return pick(get_choices(prefs))
 
 /datum/preference/choiced/compile_constant_data()
 	var/list/data = list()

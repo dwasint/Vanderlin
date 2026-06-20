@@ -8,7 +8,7 @@
 	maximum = 1000
 	step = 1
 
-/datum/preference/numeric/clientfps/create_default_value()
+/datum/preference/numeric/clientfps/create_default_value(datum/preferences/prefs)
 	return 100
 
 /datum/preference/numeric/clientfps/apply_to_client(client/client, value)

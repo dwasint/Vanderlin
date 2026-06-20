@@ -7,7 +7,7 @@
 /datum/preference/choiced/underwear/init_possible_values(datum/preferences/prefs)
 	return GLOB.underwear_list
 
-/datum/preference/choiced/underwear/create_default_value()
+/datum/preference/choiced/underwear/create_default_value(datum/preferences/prefs)
 	return "Nude"
 
 /datum/preference/choiced/underwear/apply_to_human(mob/living/carbon/human/H, value, datum/preferences/prefs)

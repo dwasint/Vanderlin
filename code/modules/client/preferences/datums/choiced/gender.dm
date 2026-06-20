@@ -7,7 +7,7 @@
 /datum/preference/choiced/gender/init_possible_values(datum/preferences/prefs)
 	return list(MALE, FEMALE, PLURAL)
 
-/datum/preference/choiced/gender/create_default_value()
+/datum/preference/choiced/gender/create_default_value(datum/preferences/prefs)
 	return MALE
 
 /datum/preference/choiced/gender/apply_to_human(mob/living/carbon/human/H, value, datum/preferences/prefs)

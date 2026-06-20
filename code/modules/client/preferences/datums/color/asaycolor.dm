@@ -5,7 +5,7 @@
 	can_randomize = FALSE
 	should_update_preview = FALSE
 
-/datum/preference/color/asaycolor/create_default_value()
+/datum/preference/color/asaycolor/create_default_value(datum/preferences/prefs)
 	return "ff4500"
 
 /datum/preference/color/asaycolor/handle_link(datum/preferences/prefs, mob/user)

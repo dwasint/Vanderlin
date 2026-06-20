@@ -18,9 +18,6 @@
 	qdel(S)
 	return skins
 
-/datum/preference/choiced/skin_tone/create_default_value()
-	return SKIN_COLOR_CONTINENTAL
-
 /datum/preference/choiced/skin_tone/apply_to_human(mob/living/carbon/human/H, value, datum/preferences/prefs)
 	H.skin_tone = value
 	H.update_body()

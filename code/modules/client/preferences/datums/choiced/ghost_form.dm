@@ -8,5 +8,5 @@
 /datum/preference/choiced/ghost_form/init_possible_values(datum/preferences/prefs)
 	return GLOB.ghost_forms
 
-/datum/preference/choiced/ghost_form/create_default_value()
+/datum/preference/choiced/ghost_form/create_default_value(datum/preferences/prefs)
 	return "ghost"

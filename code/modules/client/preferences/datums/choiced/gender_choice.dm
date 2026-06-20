@@ -7,7 +7,7 @@
 /datum/preference/choiced/gender_choice/init_possible_values(datum/preferences/prefs)
 	return list(ANY_GENDER, SAME_GENDER, DIFFERENT_GENDER)
 
-/datum/preference/choiced/gender_choice/create_default_value()
+/datum/preference/choiced/gender_choice/create_default_value(datum/preferences/prefs)
 	return ANY_GENDER
 
 /datum/preference/choiced/gender_choice/apply_to_human(mob/living/carbon/human/H, value, datum/preferences/prefs)

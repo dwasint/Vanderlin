@@ -16,7 +16,7 @@
 		return FALSE
 	return TRUE
 
-/datum/preference/choiced/patron/create_default_value()
+/datum/preference/choiced/patron/create_default_value(datum/preferences/prefs)
 	return /datum/patron/divine/astrata
 
 /datum/preference/choiced/patron/serialize(input)
@@ -28,7 +28,7 @@
 /datum/preference/choiced/patron/deserialize(input, datum/preferences/prefs)
 	var/path = ispath(input) ? input : text2path(input)
 	if (!(path in GLOB.patron_list))
-		return create_default_value()
+		return create_default_value(prefs)
 	return GLOB.patron_list[path]
 
 /datum/preference/choiced/patron/apply_to_human(mob/living/carbon/human/H, value, datum/preferences/prefs)

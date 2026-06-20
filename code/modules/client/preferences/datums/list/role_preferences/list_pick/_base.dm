@@ -16,7 +16,7 @@
 
 /datum/preference/list_type/role_setting/picker/deserialize(input, datum/preferences/prefs)
 	if(!islist(input))
-		return create_default_value()
+		return create_default_value(prefs)
 	var/list/cleaned = list()
 	for(var/entry in input)
 		var/path = ispath(entry) ? entry : text2path(entry)

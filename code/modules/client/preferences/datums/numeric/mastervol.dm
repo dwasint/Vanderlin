@@ -8,5 +8,5 @@
 	maximum = 100
 	step = 1
 
-/datum/preference/numeric/mastervol/create_default_value()
+/datum/preference/numeric/mastervol/create_default_value(datum/preferences/prefs)
 	return 50
