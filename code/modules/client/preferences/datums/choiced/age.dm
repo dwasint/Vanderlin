@@ -4,9 +4,14 @@
 	category = "character"
 
 /datum/preference/choiced/age/init_possible_values(datum/preferences/prefs)
-	// Pull valid ages from the character's current species, falling back to a
-	// sane default list so we never crash with an empty choices list.
-	return list(AGE_CHILD, AGE_ADULT, AGE_MIDDLEAGED, AGE_OLD)
+	var/datum/species/base_species = /datum/species/human/northern
+	if(prefs)
+		base_species = prefs.read_preference(/datum/preference/choiced/species)
+	var/datum/species/S = new base_species
+	var/list/ages = list()
+	ages = S.possible_ages
+	qdel(S)
+	return ages
 
 /datum/preference/choiced/age/create_informed_default_value(datum/preferences/prefs)
 	var/datum/species/S = prefs.pref_species
