@@ -1,0 +1,5 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "Added storage to matron cloak."
+  - code_imp: "Cleaned up the backend for cloaks that have storage."
