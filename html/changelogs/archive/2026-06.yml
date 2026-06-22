@@ -156,3 +156,15 @@
 2026-06-21:
   tired-wired:
   - rscadd: Added bible verses for the rest of the Ten
+2026-06-22:
+  Ben10083:
+  - balance: Embracing Death now prevents you from turning into a deadite.
+  Sulaboy:
+  - rscadd: Miner's Satchel (Given to miners, lets you walk onto tiles with ore to
+      pick them up)
+  - balance: All pickaxes can be two handed to increase force, Miner's Helmet gives
+      more light
+  - qol: Made smithing minigame faster, and take less stamina.
+  realforest2001:
+  - rscadd: Added storage to matron cloak.
+  - code_imp: Cleaned up the backend for cloaks that have storage.
