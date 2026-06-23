@@ -6,7 +6,7 @@
 	can_randomize = TRUE
 	maximum_value_length = MAX_NAME_LEN
 
-/datum/preference/text/real_name/create_default_value()
+/datum/preference/text/real_name/create_default_value(datum/preferences/prefs)
 	return "Unknown"
 
 /datum/preference/text/real_name/deserialize(input, datum/preferences/prefs)

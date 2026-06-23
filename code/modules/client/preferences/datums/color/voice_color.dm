@@ -3,7 +3,7 @@
 	savefile_identifier = PREF_CHARACTER
 	category = "appearance"
 
-/datum/preference/color/voice_color/create_default_value()
+/datum/preference/color/voice_color/create_default_value(datum/preferences/prefs)
 	return "a0a0a0"
 
 /datum/preference/color/voice_color/deserialize(input, datum/preferences/prefs)

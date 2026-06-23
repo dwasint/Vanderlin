@@ -6,7 +6,7 @@
 /datum/preference/text/deserialize(input, datum/preferences/prefs)
 	return should_strip_html ? STRIP_HTML_SIMPLE(input, maximum_value_length) : copytext(input, 1, maximum_value_length)
 
-/datum/preference/text/create_default_value()
+/datum/preference/text/create_default_value(datum/preferences/prefs)
 	return ""
 
 /datum/preference/text/is_valid(value, datum/preferences/prefs)

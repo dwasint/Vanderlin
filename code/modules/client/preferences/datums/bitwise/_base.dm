@@ -8,7 +8,7 @@
 	/// Must be set by subtypes.
 	var/max_value = 0
 
-/datum/preference/bitwise/create_default_value()
+/datum/preference/bitwise/create_default_value(datum/preferences/prefs)
 	return default_value
 
 /datum/preference/bitwise/deserialize(input, datum/preferences/prefs)

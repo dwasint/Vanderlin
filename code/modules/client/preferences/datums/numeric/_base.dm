@@ -9,12 +9,12 @@
 /datum/preference/numeric/deserialize(input, datum/preferences/prefs)
 	if (istext(input))
 		input = text2num(input)
-	return sanitize_float(input, minimum, maximum, step, create_default_value())
+	return sanitize_float(input, minimum, maximum, step, create_default_value(prefs))
 
 /datum/preference/numeric/serialize(input)
 	return sanitize_float(input, minimum, maximum, step, create_default_value())
 
-/datum/preference/numeric/create_default_value()
+/datum/preference/numeric/create_default_value(datum/preferences/prefs)
 	return rand(minimum, maximum)
 
 /datum/preference/numeric/is_valid(value, datum/preferences/prefs)

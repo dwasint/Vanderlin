@@ -2,7 +2,7 @@
 	savefile_key = "culinary_preferences"
 	savefile_identifier = PREF_CHARACTER
 
-/datum/preference/list_type/culinary_preferences/create_default_value()
+/datum/preference/list_type/culinary_preferences/create_default_value(datum/preferences/prefs)
 	return list(
 		CULINARY_RANDOM_PREFERENCES = FALSE,
 		CULINARY_FAVOURITE_FOOD = null,

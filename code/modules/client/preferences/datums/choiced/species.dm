@@ -13,7 +13,7 @@
 /datum/preference/choiced/species/apply_to_client(client/C, value)
 	C.prefs.pref_species = new value
 
-/datum/preference/choiced/species/create_default_value()
+/datum/preference/choiced/species/create_default_value(datum/preferences/prefs)
 	return /datum/species/human/northern
 
 /datum/preference/choiced/species/serialize(input)
@@ -70,10 +70,10 @@
 		prefs.reset_jobs(user)
 		prefs.reset_patron(user)
 		prefs.reset_culture(user)
+		prefs.write_preference(/datum/preference/choiced/species, prefs.pref_species.id)
 		prefs.randomise_appearance_prefs(~(RANDOMIZE_SPECIES))
 		prefs.customizer_entries = list()
 		prefs.validate_customizer_entries()
 		prefs.reset_all_customizer_accessory_colors()
 		prefs.randomize_all_customizer_accessories()
 		prefs.write_preference(/datum/preference/choiced/accessory, "Nothing")
-		prefs.write_preference(/datum/preference/choiced/species, prefs.pref_species.id)

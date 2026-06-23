@@ -8,7 +8,7 @@
 /datum/preference/choiced/scaling_method/init_possible_values(datum/preferences/prefs)
 	return list("normal", "pixel_perfect", "distorted")
 
-/datum/preference/choiced/scaling_method/create_default_value()
+/datum/preference/choiced/scaling_method/create_default_value(datum/preferences/prefs)
 	return "normal"
 
 /datum/preference/choiced/scaling_method/handle_link(datum/preferences/prefs, mob/user)

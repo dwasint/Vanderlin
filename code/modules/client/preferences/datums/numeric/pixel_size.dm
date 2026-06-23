@@ -8,7 +8,7 @@
 	maximum = 3
 	step = 1
 
-/datum/preference/numeric/pixel_size/create_default_value()
+/datum/preference/numeric/pixel_size/create_default_value(datum/preferences/prefs)
 	return 0
 
 /datum/preference/numeric/pixel_size/handle_link(datum/preferences/prefs, mob/user)

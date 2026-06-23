@@ -7,11 +7,13 @@
 /datum/preference/choiced/gender/init_possible_values(datum/preferences/prefs)
 	return list(MALE, FEMALE, PLURAL)
 
-/datum/preference/choiced/gender/create_default_value()
+/datum/preference/choiced/gender/create_default_value(datum/preferences/prefs)
 	return MALE
 
 /datum/preference/choiced/gender/apply_to_human(mob/living/carbon/human/H, value, datum/preferences/prefs)
+	var/old_gender = H.gender
 	H.gender = value
+	H.dna?.species?.on_gender_update(H, old_gender)
 
 /datum/preference/choiced/gender/handle_link(datum/preferences/prefs, mob/user)
 	var/pickedGender = MALE

@@ -385,24 +385,19 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 			key_bindings[key] = GLOB.hotkey_keybinding_list_by_key[key]
 
 /datum/preferences/proc/preference_load_from_savefile(savefile/S, identifier)
-	for (var/T in GLOB.preference_entries)
-		var/datum/preference/entry = GLOB.preference_entries[T]
+	for (var/datum/preference/entry as anything in GLOB.preferences_in_priority_order)
 		if (entry.savefile_identifier != identifier)
 			continue
-
 		var/raw
 		S[entry.savefile_key] >> raw
-
 		var/value
 		if (!isnull(raw))
 			value = entry.deserialize(raw, src)
-
 		if (isnull(value))
 			value = entry.create_informed_default_value(src)
 			// Write the default back so stale/absent keys are healed immediately.
 			WRITE_FILE(S[entry.savefile_key], entry.serialize(value))
-
-		preference_cache[T] = value
+		preference_cache[entry.type] = value
 
 /datum/preferences/proc/preference_save_to_savefile(savefile/S, identifier)
 	for (var/T in GLOB.preference_entries)

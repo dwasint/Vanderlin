@@ -8,7 +8,7 @@
 	maximum = CHAT_MESSAGE_MAX_LENGTH
 	step = 1
 
-/datum/preference/numeric/max_chat_length/create_default_value()
+/datum/preference/numeric/max_chat_length/create_default_value(datum/preferences/prefs)
 	return CHAT_MESSAGE_MAX_LENGTH
 
 /datum/preference/numeric/handle_link(datum/preferences/prefs, mob/user)

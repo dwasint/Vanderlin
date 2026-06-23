@@ -2,7 +2,7 @@
 	var/default_value = TRUE
 	abstract_type = /datum/preference/toggle
 
-/datum/preference/toggle/create_default_value()
+/datum/preference/toggle/create_default_value(datum/preferences/prefs)
 	return default_value
 
 /datum/preference/toggle/deserialize(input, datum/preferences/prefs)
