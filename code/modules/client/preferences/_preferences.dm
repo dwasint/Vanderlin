@@ -579,8 +579,8 @@ GLOBAL_LIST_INIT(name_adjustments, list())
 	<a href='?_src_=prefs;task=loadout_store'><div id="bespecial" class="sprite [next_special_trait ? "yes" : ""]"></div></a>
 	<a href='?_src_=prefs;preference=multi;task=menu'><div class="sprite menu-ready"></div></a>
 	<a href='?_src_=prefs;task=changeslot;'><div class="sprite menu-change"></div></a>
-	<a href='?_src_=prefs;task=keybinds;task=menu'><div class="sprite menu-keybinds"></div></a>
-	<a href='?_src_=prefs;task=toggles'><div class="sprite menu-toggles"></div></a>
+	<a href='?_src_=prefs;preference=keybinds;task=menu'><div class="sprite menu-keybinds"></div></a>
+	<a href='?_src_=prefs;preference=toggles'><div class="sprite menu-toggles"></div></a>
 	<a href='?_src_=prefs;task=save'><div class="sprite menu-save"></div></a>
 	<a href='?_src_=prefs;task=load'><div class="sprite menu-undo"></div></a>
 	<a href='?_src_=prefs;task=finished'><div class="sprite menu-done"></div></a>

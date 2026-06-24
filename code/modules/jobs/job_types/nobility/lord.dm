@@ -142,12 +142,16 @@ GLOBAL_LIST_EMPTY(lord_titles)
 		var/datum/preferences/prefs = player_client.prefs
 
 		var/list/laws = prefs.read_preference(/datum/preference/list_type/role_setting/monarch_law)
+		if(length(laws))
+			GLOB.laws_of_the_land = list()
 		for(var/law in laws)
 			law = trim(law)
 			GLOB.laws_of_the_land += trim(law)
 
 
 		var/list/decrees = prefs.read_preference(/datum/preference/list_type/role_setting/monarch_decree)
+		if(length(decrees))
+			GLOB.lord_decrees = list()
 		for(var/decree in decrees)
 			decree = trim(decree)
 			GLOB.lord_decrees += trim(decree)
