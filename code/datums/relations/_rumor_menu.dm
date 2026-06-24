@@ -30,6 +30,9 @@
 		"noble_gossip" = noble_gossip,
 		"max_rumors" = MAX_RUMORS,
 		"max_noble_gossip" = MAX_NOBLE_GOSSIP,
+		"rival_count" = holder.client.prefs.read_preference(/datum/preference/numeric/rival_count),
+		"rival_count_min" = /datum/preference/numeric/rival_count::minimum,
+		"rival_count_max" = /datum/preference/numeric/rival_count::maximum,
 	)
 
 /datum/gossip_prefs/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -109,4 +112,14 @@
 				return FALSE
 			current[idx] = text
 			holder.client.prefs.write_preference(/datum/preference/list_type/noble_gossip, current)
+			return TRUE
+
+		if("set_rival_count")
+			var/val = params["value"]
+			if(!isnum(val))
+				return FALSE
+			val = round(val)
+			if(val < /datum/preference/numeric/rival_count::minimum || val > /datum/preference/numeric/rival_count::maximum)
+				return FALSE
+			holder.client.prefs.write_preference(/datum/preference/numeric/rival_count, val)
 			return TRUE

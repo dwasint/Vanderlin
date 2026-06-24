@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Box, Button, Input, Section, Stack, Tabs } from 'tgui-core/components';
+import { Box, Button, Input, NumberInput, Section, Stack, Tabs } from 'tgui-core/components';
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
 
@@ -8,12 +8,15 @@ type Data = {
   noble_gossip: string[];
   max_rumors: number;
   max_noble_gossip: number;
+  rival_count: number;
+  rival_count_min: number;
+  rival_count_max: number;
 };
 
-type TabKey = 'rumors' | 'noble';
+type TabKey = 'rumors' | 'noble' | 'rivals';
 
 export const GossipPrefs = () => {
-  const { data } = useBackend<Data>();
+  const { data, act } = useBackend<Data>();
   const [tab, setTab] = useState<TabKey>('rumors');
 
   return (
@@ -25,20 +28,17 @@ export const GossipPrefs = () => {
           that [name]...&quot;
         </Box>
         <Tabs>
-          <Tabs.Tab
-            selected={tab === 'rumors'}
-            onClick={() => setTab('rumors')}
-          >
+          <Tabs.Tab selected={tab === 'rumors'} onClick={() => setTab('rumors')}>
             Rumors
           </Tabs.Tab>
-          <Tabs.Tab
-            selected={tab === 'noble'}
-            onClick={() => setTab('noble')}
-          >
+          <Tabs.Tab selected={tab === 'noble'} onClick={() => setTab('noble')}>
             Noble Gossip
           </Tabs.Tab>
+          <Tabs.Tab selected={tab === 'rivals'} onClick={() => setTab('rivals')}>
+            Rivals
+          </Tabs.Tab>
         </Tabs>
-        {tab === 'rumors' ? (
+        {tab === 'rumors' && (
           <GossipList
             entries={data.rumors}
             max={data.max_rumors}
@@ -47,7 +47,8 @@ export const GossipPrefs = () => {
             editAction="edit_rumor"
             placeholder="stole bread from the market stalls..."
           />
-        ) : (
+        )}
+        {tab === 'noble' && (
           <GossipList
             entries={data.noble_gossip}
             max={data.max_noble_gossip}
@@ -56,6 +57,26 @@ export const GossipPrefs = () => {
             editAction="edit_noble_gossip"
             placeholder="was seen meeting with foreign envoys in secret..."
           />
+        )}
+        {tab === 'rivals' && (
+          <Section title="Rival Count">
+            <Stack vertical>
+              <Stack.Item>
+                <Box color="gray" italic mb={1}>
+                  Number of rivals your character starts with at roundstart.
+                </Box>
+              </Stack.Item>
+              <Stack.Item>
+                <NumberInput
+                  value={data.rival_count}
+                  minValue={data.rival_count_min}
+                  maxValue={data.rival_count_max}
+                  step={1}
+                  onChange={(val) => act('set_rival_count', { value: val })}
+                />
+              </Stack.Item>
+            </Stack>
+          </Section>
         )}
       </Window.Content>
     </Window>
