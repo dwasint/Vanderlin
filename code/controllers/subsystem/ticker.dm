@@ -346,8 +346,6 @@ SUBSYSTEM_DEF(ticker)
 
 	create_characters() //Create player characters
 	log_game("GAME SETUP: create characters success")
-	SSrelations.spread_gossip()
-	log_game("GAME SETUP: gossip spreading success")
 	collect_minds()
 	log_game("GAME SETUP: collect minds success")
 	equip_characters()
@@ -356,6 +354,8 @@ SUBSYSTEM_DEF(ticker)
 	log_game("GAME SETUP: transfer characters success")
 	SSrelations.run_rival_matchmaking()
 	log_game("GAME SETUP: rival matchmaking success")
+	SSrelations.spread_gossip()
+	log_game("GAME SETUP: gossip spreading success")
 
 	for(var/datum/callback/cb as anything in round_start_events)
 		cb.InvokeAsync()
