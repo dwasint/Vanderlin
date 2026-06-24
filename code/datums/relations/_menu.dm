@@ -33,7 +33,7 @@
 			))
 		rel_list += list(list(
 			"name" = R.other?.name,
-			"rel_type" = R.name,
+			"category" = R.category,
 			"snapshot" = R.snapshot?.Copy(),
 			"desc" = R.desc,
 			"grudges" = grudge_data,

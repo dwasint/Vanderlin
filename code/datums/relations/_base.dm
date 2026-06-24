@@ -22,6 +22,8 @@
 	var/list/snapshot = null
 	/// Relation types this one supersedes, adding this relation will remove those.
 	var/list/upgrades = null
+	/// Category string used for UI tab sorting. e.g. "Rival", "Other"
+	var/category = "Known"
 
 /// Called when this relation is first established. Override to do setup.
 /datum/relation/proc/on_created()

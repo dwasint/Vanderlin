@@ -2,6 +2,7 @@
 	name = "Family"
 	desc = "You share blood, marriage, or adoption with this person."
 	symmetric = FALSE
+	category = "Family"
 
 	/// One of: "parent", "child", "sibling", "spouse", "adopted_parent",
 	/// "adopted_child", "step_parent", "step_child"

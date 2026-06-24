@@ -4,7 +4,7 @@ import { Window } from '../layouts';
 
 type RelationEntry = {
   name: string;
-  rel_type: string;
+  category: string;
   snapshot: SnapshotData | null;
   desc: string;
   grudges: GrudgeEntry[];
@@ -21,16 +21,20 @@ type SnapshotData = {
 
 type GrudgeEntry = {
   label: string;
-  text: string; // already resolved to our side by the backend
+  text: string;
   is_gossip: number | boolean;
   say_string: string | null;
 };
 
 type Data = {
   relations: RelationEntry[];
-  rival_count: number;    // current number of rival relations
-  rival_pref: number;     // player's preferred max rivals (0–3)
+  rival_count: number;
+  rival_pref: number;
 };
+
+// Known categories in preferred display order.
+// Any category not listed here will appear alphabetically after these.
+const TAB_ORDER = ['Rival', 'Friend'];
 
 export const Relations = () => {
   const { data } = useBackend<Data>();
@@ -38,11 +42,16 @@ export const Relations = () => {
 
   const [tab, setTab] = useLocalState<string>('rel_tab', 'All');
 
-  const tabs = ['All', 'Rivals', 'Other'];
+  const categories = Array.from(new Set(relations.map((r) => r.category)));
+  const orderedCategories = [
+    ...TAB_ORDER.filter((t) => categories.includes(t)),
+    ...categories.filter((t) => !TAB_ORDER.includes(t)).sort(),
+  ];
+  const tabs = ['All', ...orderedCategories];
+
   const visible = relations.filter((r) => {
-    if (tab === 'Rivals') return r.rel_type === 'Rival'; //shitcode but like idk man maybe a category var?
-    if (tab === 'Other') return r.rel_type !== 'Rival';
-    return true;
+    if (tab === 'All') return true;
+    return r.category === tab;
   });
 
   return (
@@ -83,7 +92,7 @@ export const Relations = () => {
 
 const RelationCard = ({ rel }: { rel: RelationEntry }) => {
   const { act } = useBackend<Data>();
-  const { name, snapshot, desc, grudges, rel_type } = rel;
+  const { name, snapshot, desc, grudges } = rel;
   const [open, setOpen] = useLocalState<boolean>(`grudge_open_${name}`, false);
 
   const displayName = snapshot?.name ?? name;
