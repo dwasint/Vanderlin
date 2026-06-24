@@ -26,9 +26,9 @@
 			var/is_gossip = istype(G, /datum/history/gossip)
 			var/side_text = is_gossip ? G:heard_text : (mind == G.aggressor) ? G.aggressor_text : G.victim_text
 			grudge_data += list(list(
-				"label"      = G.label,
-				"text"       = side_text,
-				"is_gossip"  = is_gossip,
+				"label" = G.label,
+				"text" = side_text,
+				"is_gossip" = is_gossip,
 				"say_string" = is_gossip ? "Did you hear that [R.snapshot?["name"] || "someone"] [G:heard_text]?" : null,
 			))
 		rel_list += list(list(
