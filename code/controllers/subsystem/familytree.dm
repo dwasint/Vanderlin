@@ -69,19 +69,6 @@ SUBSYSTEM_DEF(familytree)
 		return FALSE
 	return (abs(GetAgeValue(age1) - GetAgeValue(age2)) <= 1)
 
-// Returns a list of family_member nodes whose bond_type toward the given
-// member matches any bond in the provided list.
-/datum/controller/subsystem/familytree/proc/GetRelatedMembers(datum/heritage/house, datum/family_member/member, list/bond_types)
-	var/list/result = list()
-	if(!member.person?.mind)
-		return result
-	for(var/datum/relation/family/R in member.person.mind.relations)
-		if(!(R.bond_type in bond_types))
-			continue
-		var/datum/family_member/rel = house.GetFamilyMemberByMind(R.other)
-		if(rel)
-			result += rel
-	return result
 
 // Returns TRUE if adding `person` to `house` would violate parent/child age ordering.
 /datum/controller/subsystem/familytree/proc/WouldCreateAgeConflict(datum/heritage/house, mob/living/carbon/human/person)
