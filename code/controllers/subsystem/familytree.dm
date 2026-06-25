@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(familytree)
 	name = "Family Manager"
-	flags = SS_NO_FIRE
+	wait = 5 SECONDS
 	lazy_load = FALSE
 
 	/*
@@ -15,6 +15,7 @@ SUBSYSTEM_DEF(familytree)
 	var/const/MAX_HOUSE_MEMBERS = 6
 
 	var/datum/family_member/cached_monarch = null
+	var/list/pending_latejoin = list()
 
 	var/list/excluded_jobs = list(
 		/datum/job/prince, /datum/job/advclass/heir,
@@ -41,6 +42,9 @@ SUBSYSTEM_DEF(familytree)
 			families += new /datum/heritage(null, null, species_type)
 
 	return ..()
+
+/datum/controller/subsystem/familytree/fire(resumed)
+	ResolvePendingLatejoins()
 
 /datum/controller/subsystem/familytree/proc/GetAgeValue(age_string)
 	switch(age_string)
@@ -121,23 +125,55 @@ SUBSYSTEM_DEF(familytree)
 		_MaybeMakeDivorcedStub(H)
 		return
 
+	var/assigned = FALSE
 	switch(mode)
 		if(FAMILY_PARTIAL)
-			AssignToHouse(H, H.family_adoption_pref)
+			assigned = AssignToHouse(H, H.family_adoption_pref)
 
 		if(FAMILY_NEWLYWED)
 			if(H.age == AGE_CHILD)
-				AssignToHouse(H, H.family_adoption_pref)
+				assigned = AssignToHouse(H, H.family_adoption_pref)
 			else
-				AssignNewlyWed(H)
+				assigned = AssignNewlyWed(H)
 
 		if(FAMILY_FULL)
 			if(H.virginity || H.age == AGE_CHILD)
-				AssignToHouse(H, H.family_adoption_pref)
+				assigned = AssignToHouse(H, H.family_adoption_pref)
 			else
-				AssignToFamily(H)
+				assigned = AssignToFamily(H)
+
+	// If nothing worked, queue for deferred resolution
+	if(!assigned)
+		pending_latejoin += H
 
 	_MaybeMakeDivorcedStub(H)
+
+/datum/controller/subsystem/familytree/proc/ResolvePendingLatejoins()
+	if(!LAZYLEN(pending_latejoin))
+		return
+
+	var/list/retry = pending_latejoin.Copy()
+	pending_latejoin.Cut()
+
+	for(var/mob/living/carbon/human/H in retry)
+		if(!H?.mind)
+			continue
+		var/mode = H.familytree_pref
+		if(!mode || mode == FAMILY_NONE)
+			continue
+		switch(mode)
+			if(FAMILY_PARTIAL)
+				AssignToHouse(H, H.family_adoption_pref)
+			if(FAMILY_NEWLYWED)
+				if(H.age == AGE_CHILD)
+					AssignToHouse(H, H.family_adoption_pref)
+				else
+					AssignNewlyWed(H)
+			if(FAMILY_FULL)
+				if(H.virginity || H.age == AGE_CHILD)
+					AssignToHouse(H, H.family_adoption_pref)
+				else
+					AssignToFamily(H)
 
 /datum/controller/subsystem/familytree/proc/AddRoyal(mob/living/carbon/human/H, status)
 	if(!ruling_family.housename)
@@ -199,9 +235,10 @@ SUBSYSTEM_DEF(familytree)
 	link_family(member.person.mind, monarch.person.mind, FAMILY_MEMBER_SIBLING)
 	link_family(monarch.person.mind, member.person.mind, FAMILY_MEMBER_SIBLING)
 
+// Returns TRUE if a house was found and the person was added, FALSE otherwise.
 /datum/controller/subsystem/familytree/proc/AssignToHouse(mob/living/carbon/human/H, force_adopted = FALSE)
 	if(!H)
-		return
+		return FALSE
 
 	var/species = H.dna.species.type
 	var/adopted = force_adopted
@@ -218,7 +255,7 @@ SUBSYSTEM_DEF(familytree)
 			seed += house
 
 	if(H.setchild)
-		for(var/datum/heritage/house in active)
+		for(var/datum/heritage/house in active + seed)
 			if(!HousePassesFilters(H, house) || WouldCreateAgeConflict(house, H))
 				continue
 			for(var/datum/family_member/member in house.members)
@@ -229,7 +266,7 @@ SUBSYSTEM_DEF(familytree)
 				break
 
 	if(!chosen_house && is_young && H.setparent)
-		for(var/datum/heritage/house in active)
+		for(var/datum/heritage/house in active + seed)
 			if(!HousePassesFilters(H, house) || WouldCreateAgeConflict(house, H))
 				continue
 			for(var/datum/family_member/member in house.members)
@@ -259,12 +296,23 @@ SUBSYSTEM_DEF(familytree)
 				chosen_house = house
 				break
 
+	if(!chosen_house)
+		for(var/datum/heritage/house in seed)
+			if(!HousePassesFilters(H, house) || WouldCreateAgeConflict(house, H))
+				continue
+			chosen_house = house
+			break
+
 	if(chosen_house)
 		AddPersonToHouse(chosen_house, H, adopted)
+		return TRUE
 
+	return FALSE
+
+// Returns TRUE if H was placed into an existing or new family, FALSE otherwise.
 /datum/controller/subsystem/familytree/proc/AssignToFamily(mob/living/carbon/human/H)
 	if(!H)
-		return
+		return FALSE
 
 	var/species = H.dna.species.type
 
@@ -275,7 +323,6 @@ SUBSYSTEM_DEF(familytree)
 		for(var/datum/family_member/member in house.members)
 			if(!member.person || member.person.age == AGE_CHILD)
 				continue
-			// Check not already married via relations.
 			var/already_wed = FALSE
 			if(member.person.mind)
 				for(var/datum/relation/family/R in member.person.mind.relations)
@@ -284,7 +331,6 @@ SUBSYSTEM_DEF(familytree)
 						break
 			if(already_wed)
 				continue
-
 			if(!_SpouseCompatible(H, member.person))
 				continue
 
@@ -292,17 +338,20 @@ SUBSYSTEM_DEF(familytree)
 			if(new_member)
 				house.MarryMembers(new_member, member)
 				MarryAndLink(H, member.person)
-			return
+			return TRUE
 
 		if(!house.housename)
 			var/datum/family_member/new_member = house.CreateFamilyMember(H)
 			if(new_member)
 				house.founder = new_member
 				house.housename = house.SurnameFormatting(H)
-			return
+			return TRUE
 
 	if(species != /datum/species/aasimar)
 		families += new /datum/heritage(H, null, species)
+		return TRUE
+
+	return FALSE
 
 /datum/controller/subsystem/familytree/proc/_SpouseCompatible(mob/living/carbon/human/H, mob/living/carbon/human/other)
 	if(!H || !other)
@@ -325,6 +374,7 @@ SUBSYSTEM_DEF(familytree)
 		return FALSE
 	return CanBeParentOf(parent.age, child.age)
 
+// Returns TRUE if H was married or queued as a viable spouse, FALSE if nothing happened.
 /datum/controller/subsystem/familytree/proc/AssignNewlyWed(mob/living/carbon/human/H)
 	viable_spouses += H
 
@@ -357,6 +407,9 @@ SUBSYSTEM_DEF(familytree)
 		viable_spouses -= best_match
 		viable_spouses -= H
 		MarryAndLink(H, best_match)
+		return TRUE
+
+	return FALSE
 
 /datum/controller/subsystem/familytree/proc/AddPersonToHouse(datum/heritage/house, mob/living/carbon/human/person, adopted = FALSE)
 	var/role = DetermineRole(house, person)
