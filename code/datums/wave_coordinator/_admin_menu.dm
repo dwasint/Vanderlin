@@ -21,7 +21,7 @@
 	for(var/obj/effect/landmark/wave_defense/landmark in GLOB.wave_defense_landmarks)
 		if(landmark.set_id == set_id)
 			matching += landmark
-	sortTim(matching, /proc/cmp_wave_landmark_order)
+	sortTim(matching, GLOBAL_PROC_REF(cmp_wave_landmark_order))
 
 	var/list/wp_list = list()
 	for(var/obj/effect/landmark/wave_defense/landmark as anything in matching)
@@ -96,7 +96,6 @@
 	if(!length(points))
 		to_chat(admin, span_warning("No wave defense landmarks found for set '[set_id]'."))
 		return
-
 	var/list/mob/living/wave_mobs = list()
 	for(var/path in mob_counts)
 		var/count = mob_counts[path]
@@ -106,18 +105,15 @@
 		for(var/i in 1 to count)
 			var/mob/living/m = new mobtype(get_turf(admin))
 			wave_mobs += m
-
 	if(!length(wave_mobs))
 		to_chat(admin, span_warning("No mobs configured, wave not launched."))
 		return
-
-	setup_wave_mobs(
+	new /datum/wave_defense_coordinator(
 		set_id,
 		wave_mobs,
 		on_complete = CALLBACK(src, PROC_REF(on_wave_complete), admin),
 		on_failed = CALLBACK(src, PROC_REF(on_wave_failed), admin),
 	)
-
 	to_chat(admin, span_notice("Wave launched: [length(wave_mobs)] mob(s), [length(points)] waypoint(s)."))
 	message_admins("[key_name(admin)] launched a wave ([set_id]) with [length(wave_mobs)] mobs.")
 

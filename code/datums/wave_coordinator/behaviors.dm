@@ -33,7 +33,7 @@
 
 /datum/ai_behavior/wave_attack_point/proc/locate_destructible_near(datum/ai_controller/controller, atom/point, radius = WAVE_DEFENSE_POINT_RADIUS)
 	var/atom/movable/pawn = controller.pawn
-	for(var/atom/movable/thing in range(radius, point))
+	for(var/atom/movable/thing in view(radius, point))
 		if(thing.density && !ismob(thing))
 			return thing
 	for(var/mob/living/enemy in oview(radius, point))

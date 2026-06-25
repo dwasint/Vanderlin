@@ -15,6 +15,21 @@
 	var/datum/callback/on_complete
 	var/datum/callback/on_failed
 
+/datum/wave_defense_coordinator/New(set_id, list/mob/living/wave_mobs, occupy_duration = 10 SECONDS, datum/callback/on_complete, datum/callback/on_failed)
+	src.occupy_duration = occupy_duration
+	src.on_complete = on_complete
+	src.on_failed = on_failed
+	wave_points = get_wave_defense_points(set_id)
+
+	for(var/mob/living/wave_mob as anything in wave_mobs)
+		if(!wave_mob.ai_controller)
+			stack_trace("wave_defense_coordinator: [wave_mob] has no ai_controller, skipping.")
+			continue
+		register_participant(wave_mob.ai_controller)
+		wave_mob.ai_controller.change_ai_movement_type(/datum/ai_movement/hybrid_pathing/wave_defense)
+		wave_mob.ai_controller.max_target_distance = 100
+		wave_mob.ai_controller.blackboard[BB_TARGETTING_DATUM] = new /datum/targetting_datum/basic/allow_structures
+
 /datum/wave_defense_coordinator/Destroy(force)
 	for(var/datum/ai_controller/controller as anything in participants.Copy())
 		unregister_participant(controller)
@@ -91,25 +106,3 @@
 /datum/wave_defense_coordinator/proc/occupy_timeout_check()
 	if(wave_state == WAVE_OCCUPYING && world.time >= occupy_started_at + occupy_duration)
 		advance_point()
-
-/proc/setup_wave_mobs(set_id, list/mob/living/wave_mobs, occupy_duration = 10 SECONDS, datum/callback/on_complete, datum/callback/on_failed)
-	var/datum/wave_defense_coordinator/coordinator = new
-	coordinator.wave_points = get_wave_defense_points(set_id)
-	coordinator.occupy_duration = occupy_duration
-	coordinator.on_complete = on_complete
-	coordinator.on_failed = on_failed
-
-	for(var/mob/living/wave_mob as anything in wave_mobs)
-		if(!wave_mob.ai_controller)
-			stack_trace("setup_wave_mobs: [wave_mob] has no ai_controller, skipping.")
-			continue
-		coordinator.register_participant(wave_mob.ai_controller)
-		wave_mob.ai_controller.change_ai_movement_type(/datum/ai_movement/hybrid_pathing/wave_defense)
-		wave_mob.ai_controller.max_target_distance = 100
-		wave_mob.ai_controller.blackboard[BB_TARGETTING_DATUM] = new /datum/targetting_datum/basic/allow_structures
-
-	return coordinator
-
-/mob/proc/create_test_wave()
-	var/mob/living/simple_animal/hostile/retaliate/spider/mob = new (get_turf(src))
-	setup_wave_mobs("test", list(mob))
