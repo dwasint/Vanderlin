@@ -88,6 +88,18 @@ SUBSYSTEM_DEF(familytree)
 
 // Returns the structural role a person should occupy given the current house.
 /datum/controller/subsystem/familytree/proc/DetermineRole(datum/heritage/house, mob/living/carbon/human/person)
+	// Explicit preferences always win regardless of age
+	if(person.setparent)
+		for(var/datum/family_member/member in house.members)
+			if(member.person?.real_name == person.setparent)
+				return FAMILY_MEMBER_CHILD
+
+	if(person.setchild)
+		for(var/datum/family_member/member in house.members)
+			if(member.person?.real_name == person.setchild)
+				return FAMILY_MEMBER_PARENT
+
+	// Fall through to age-based logic
 	if(person.age == AGE_CHILD)
 		return FAMILY_MEMBER_CHILD
 
@@ -243,7 +255,7 @@ SUBSYSTEM_DEF(familytree)
 
 	if(H.setchild)
 		for(var/datum/heritage/house in active + seed)
-			if(!HousePassesFilters(H, house) || WouldCreateAgeConflict(house, H))
+			if(!HousePassesFilters(H, house))
 				continue
 			for(var/datum/family_member/member in house.members)
 				if(member.person?.real_name == H.setchild)
@@ -254,7 +266,7 @@ SUBSYSTEM_DEF(familytree)
 
 	if(!chosen_house && is_young && H.setparent)
 		for(var/datum/heritage/house in active + seed)
-			if(!HousePassesFilters(H, house) || WouldCreateAgeConflict(house, H))
+			if(!HousePassesFilters(H, house))
 				continue
 			for(var/datum/family_member/member in house.members)
 				if(member.person?.real_name == H.setparent)
