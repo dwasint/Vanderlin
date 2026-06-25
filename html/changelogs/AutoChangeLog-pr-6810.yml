@@ -1,4 +1,0 @@
-author: "ModDownloading"
-delete-after: True
-changes:
-  - bugfix: "Venatari Nightmare Ward now stops your energy (not stamina) from decreasing, as you have no way to regenerate it."
