@@ -437,7 +437,21 @@ SUBSYSTEM_DEF(familytree)
 			potential_parents += member
 
 	var/datum/family_member/parent1 = LAZYLEN(potential_parents) >= 1 ? potential_parents[1] : null
-	var/datum/family_member/parent2 = LAZYLEN(potential_parents) >= 2 ? potential_parents[2] : null
+	var/datum/family_member/parent2 = null
+
+	// Only take a second parent if they are actually married to parent1
+	if(parent1?.person?.mind && LAZYLEN(potential_parents) >= 2)
+		for(var/datum/relation/family/R in parent1.person.mind.relations)
+			if(R.bond_type != FAMILY_MEMBER_SPOUSE)
+				continue
+			for(var/datum/family_member/candidate in potential_parents)
+				if(candidate == parent1)
+					continue
+				if(candidate.person?.mind == R.other)
+					parent2 = candidate
+					break
+			if(parent2)
+				break
 
 	house.AddToFamily(person, parent1, parent2, adopted)
 
