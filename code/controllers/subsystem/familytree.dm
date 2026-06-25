@@ -279,27 +279,33 @@ SUBSYSTEM_DEF(familytree)
 		for(var/datum/heritage/house in active)
 			if(!HousePassesFilters(H, house) || WouldCreateAgeConflict(house, H))
 				continue
-			if(adopted || (prob(20) && LAZYLEN(house.members) <= 8))
-				chosen_house = house
-				adopted = TRUE
-				break
 			if(house.dominant_species == species && LAZYLEN(house.members) < 4)
 				chosen_house = house
 				break
 
 	if(!chosen_house)
-		for(var/datum/heritage/house in seed)
+		for(var/datum/heritage/house in active)
 			if(!HousePassesFilters(H, house) || WouldCreateAgeConflict(house, H))
 				continue
-			if(adopted || house.dominant_species == species)
+			if(house.dominant_species != species && (force_adopted || LAZYLEN(house.members) <= 8))
 				chosen_house = house
+				adopted = TRUE
 				break
 
 	if(!chosen_house)
 		for(var/datum/heritage/house in seed)
 			if(!HousePassesFilters(H, house) || WouldCreateAgeConflict(house, H))
 				continue
+			if(house.dominant_species == species)
+				chosen_house = house
+				break
+
+	if(!chosen_house && force_adopted)
+		for(var/datum/heritage/house in seed)
+			if(!HousePassesFilters(H, house) || WouldCreateAgeConflict(house, H))
+				continue
 			chosen_house = house
+			adopted = TRUE
 			break
 
 	if(chosen_house)
@@ -423,7 +429,8 @@ SUBSYSTEM_DEF(familytree)
 	for(var/datum/family_member/member in house.members)
 		if(!member.person || !CanBeParentOf(member.person.age, person.age))
 			continue
-		// Prioritise: put parents who named this person first
+		if(!PassesChildFilters(member.person, person))
+			continue
 		if(member.person.setchild == person.real_name)
 			potential_parents.Insert(1, member)
 		else
@@ -440,7 +447,6 @@ SUBSYSTEM_DEF(familytree)
 	LinkRelatives(person.mind, parent1?.person?.mind, FAMILY_MEMBER_CHILD, FAMILY_MEMBER_PARENT, adopted)
 	LinkRelatives(person.mind, parent2?.person?.mind, FAMILY_MEMBER_CHILD, FAMILY_MEMBER_PARENT, adopted)
 
-	// Sibling links: anyone who shares parent1 via a FAMILY_MEMBER_PARENT bond.
 	if(parent1?.person?.mind)
 		for(var/datum/family_member/sib in house.members)
 			if(!sib.person?.mind || sib.person == person)
@@ -526,6 +532,46 @@ SUBSYSTEM_DEF(familytree)
 				passed = TRUE
 				break
 		if(!passed)
+			return FALSE
+
+	return TRUE
+
+/datum/controller/subsystem/familytree/proc/PassesChildFilters(mob/living/carbon/human/parent, mob/living/carbon/human/child)
+	if(!parent || !child)
+		return FALSE
+
+	// Check parent's species preference toward child
+	if(parent.same_species_family)
+		if(parent.dna?.species?.type != child.dna?.species?.type)
+			return FALSE
+	else
+		var/list/accepted_sp = parent.accepted_family_species
+		if(length(accepted_sp) && !("[child.dna?.species?.type]" in accepted_sp))
+			return FALSE
+
+	// Check child's species preference toward parent
+	if(child.same_species_family)
+		if(child.dna?.species?.type != parent.dna?.species?.type)
+			return FALSE
+	else
+		var/list/accepted_sp = child.accepted_family_species
+		if(length(accepted_sp) && !("[parent.dna?.species?.type]" in accepted_sp))
+			return FALSE
+
+	// Check parent's faith preference toward child
+	var/list/parent_faiths = parent.accepted_patron_faiths
+	if(length(parent_faiths))
+		var/datum/patron/child_patron = child.patron
+		var/child_faith = child_patron ? "[child_patron.associated_faith]" : null
+		if(!child_faith || !(child_faith in parent_faiths))
+			return FALSE
+
+	// Check child's faith preference toward parent
+	var/list/child_faiths = child.accepted_patron_faiths
+	if(length(child_faiths))
+		var/datum/patron/parent_patron = parent.patron
+		var/parent_faith = parent_patron ? "[parent_patron.associated_faith]" : null
+		if(!parent_faith || !(parent_faith in child_faiths))
 			return FALSE
 
 	return TRUE
