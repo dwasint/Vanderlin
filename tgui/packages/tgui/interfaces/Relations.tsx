@@ -24,6 +24,8 @@ type GrudgeEntry = {
   text: string;
   is_gossip: number | boolean;
   say_string: string | null;
+  rel_index: number | null;
+  history_index: number | null;
 };
 
 type Data = {
@@ -147,7 +149,7 @@ const RelationCard = ({ rel }: { rel: RelationEntry }) => {
                           <Button
                             icon="comment"
                             tooltip="Say this gossip aloud"
-                            onClick={() => act('say_gossip', { text: g.say_string })}
+                            onClick={() => act('say_gossip', { text: g.say_string, rel_index: g.rel_index, history_index: g.history_index })}
                           />
                         </Stack.Item>
                       )}
