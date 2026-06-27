@@ -1,0 +1,7 @@
+author: "CheffieGithub"
+delete-after: True
+changes:
+  - rscadd: "Add missing strain sound and emote to guarding. credit to FreeStylaLT."
+  - balance: "Guard stance is only bypassed by behind and out of range melee attacks not fully stopped."
+  - bugfix: "Fixed hefty swing being able to stack damage"
+  - bugfix: "Fixed being able to attack while guarding."
