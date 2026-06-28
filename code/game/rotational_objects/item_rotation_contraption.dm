@@ -235,3 +235,11 @@
 	place_behavior = PLACE_ON_PIPE
 	item_weight = 125 GRAMS
 
+/obj/item/rotation_contraption/roller
+	placed_type = /obj/structure/roller
+	grid_height = 32
+	grid_width = 32
+
+/obj/item/rotation_contraption/roller/get_mechanics_examine(mob/user)
+	. = ..()
+	. += span_info("Rollers move loose items and mobs in their facing direction while powered.")
