@@ -6,6 +6,7 @@
 	setting_display_name = "Accepted Species"
 	max_lines = 20
 	is_role = FALSE
+	should_apply = TRUE
 
 /datum/preference/list_type/role_setting/picker/accepted_species/build_lists()
 	if(!length(picker_options))

@@ -7,6 +7,7 @@
 	setting_display_name = "Accepted Patron Faiths"
 	max_lines = 10
 	is_role = FALSE
+	should_apply = TRUE
 
 /datum/preference/list_type/role_setting/picker/accepted_patrons/build_lists()
 	if(!length(picker_options))

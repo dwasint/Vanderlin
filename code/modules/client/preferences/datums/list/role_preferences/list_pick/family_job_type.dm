@@ -20,6 +20,7 @@
 		"youngfolk",
 	)
 	is_role = FALSE
+	should_apply = TRUE
 
 /datum/preference/list_type/role_setting/picker/family_job_filler/create_default_value()
 	return list()
