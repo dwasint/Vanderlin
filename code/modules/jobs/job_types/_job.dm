@@ -295,7 +295,7 @@
 			var/datum/preference/pref = GLOB.post_job_spawn_prefs[path]
 			if(!length(pref.job_types))
 				continue // ???
-			if(!type in pref.job_types)
+			if(!(type in pref.job_types))
 				continue
 			pref.post_job_apply(spawned, player_client.prefs.read_preference(pref.type), player_client)
 
