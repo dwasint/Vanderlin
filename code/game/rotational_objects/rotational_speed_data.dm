@@ -142,7 +142,8 @@
 				if(!structure.try_network_merge(src))
 					rotation_break()
 			else
-				if(!structure.try_connect(src))
+				var/result = structure.try_connect(src)
+				if(result == FALSE)
 					rotation_break()
 
 	if(!rotation_network)
@@ -178,22 +179,26 @@
 		rotation_network.check_stress()
 
 /obj/structure/proc/try_connect(obj/structure/connector)
-	if(can_connect(connector))
-		rotation_network.add_connection(connector)
-		if(connector.stress_use)
-			connector.set_stress_use(connector.stress_use, check_network = FALSE)
-		rotation_network.rebuild_group()
-		return TRUE
-	return FALSE
+	if(can_connect(connector) == FALSE)
+		return FALSE
+	if(connector.can_connect(src) == FALSE)
+		return null
+	rotation_network.add_connection(connector)
+	if(connector.stress_use)
+		connector.set_stress_use(connector.stress_use, check_network = FALSE)
+	rotation_network.rebuild_group()
+	return TRUE
 
 /obj/structure/proc/can_connect(obj/structure/connector)
 	if(connector.rotation_direction && rotation_direction && (connector.rotation_direction != rotation_direction))
 		if(connector.rotations_per_minute && rotations_per_minute)
-			return FALSE
-	return TRUE
+			return FALSE // direction conflict
+	return TRUE // compatible
 
 /obj/structure/proc/try_network_merge(obj/structure/connector)
-	if(!can_connect(connector))
+	if(can_connect(connector) == FALSE)
+		return FALSE
+	if(connector.can_connect(src) == FALSE)
 		return FALSE
 	if(!rotation_network)
 		return FALSE
