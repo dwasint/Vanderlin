@@ -287,7 +287,7 @@ SUBSYSTEM_DEF(familytree)
 		for(var/datum/heritage/house in active)
 			if(!HousePassesFilters(H, house) || WouldCreateAgeConflict(house, H))
 				continue
-			if(house.dominant_species != species && (force_adopted || LAZYLEN(house.members) <= 8))
+			if(house.dominant_species != species && force_adopted)
 				chosen_house = house
 				adopted = TRUE
 				break
@@ -599,6 +599,10 @@ SUBSYSTEM_DEF(familytree)
 			continue
 		if(H.same_species_family && H.dna?.species?.type != member.person.dna?.species?.type)
 			return FALSE
+		else if(!H.same_species_family)
+			var/list/accepted_sp = H.accepted_family_species
+			if(length(accepted_sp) && !("[member.person.dna?.species?.type]" in accepted_sp))
+				return FALSE
 		var/list/accepted_faiths = H.accepted_patron_faiths
 		if(length(accepted_faiths))
 			var/datum/patron/their_patron = member.person.patron
