@@ -2726,10 +2726,6 @@
 	},
 /turf/open/water/river/creatable,
 /area/outdoors)
-"Ik" = (
-/obj/structure/waterwheel,
-/turf/open/water/river,
-/area/outdoors)
 "Il" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1
@@ -19541,8 +19537,8 @@ ac
 ac
 at
 Yr
-Ik
-Ua
+xh
+QN
 QN
 ai
 jC
@@ -19799,7 +19795,7 @@ zg
 zg
 zg
 zg
-Ua
+at
 at
 QN
 at
