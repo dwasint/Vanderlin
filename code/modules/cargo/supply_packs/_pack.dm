@@ -23,6 +23,8 @@
 	// Stock Market & Price Fluctuation Variables
 	var/list/cost_history = list() // Stores a history of previous costs (e.g., list(710, 685, 740...))
 	var/max_history_length = 20    // Caps how many data points are saved for the graph
+	///are we allowed to be picked as a starting type?
+	var/allowed_start = TRUE
 
 /datum/supply_pack/New()
 	..()
