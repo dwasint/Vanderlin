@@ -221,8 +221,9 @@
 					continue
 				if(!(neighbor in connected))
 					continue
-				var/edge_dir = get_dir(current, neighbor)
-				if(!((edge_dir & current.dpdir) && (REVERSE_DIR(edge_dir) & neighbor.dpdir)))
+				if(!(direction & current.dpdir))
+					continue
+				if(!(REVERSE_DIR(direction) & neighbor.dpdir))
 					continue
 				reachable[neighbor] = TRUE
 				to_visit += neighbor
