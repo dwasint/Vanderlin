@@ -30,7 +30,7 @@
 		"noble_gossip" = noble_gossip,
 		"max_rumors" = MAX_RUMORS,
 		"max_noble_gossip" = MAX_NOBLE_GOSSIP,
-		"rival_count" = holder.client.prefs.read_preference(/datum/preference/numeric/rival_count),
+		"rival_count" = holder?.client?.prefs.read_preference(/datum/preference/numeric/rival_count),
 		"rival_count_min" = /datum/preference/numeric/rival_count::minimum,
 		"rival_count_max" = /datum/preference/numeric/rival_count::maximum,
 	)
