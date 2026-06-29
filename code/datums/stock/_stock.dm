@@ -136,6 +136,7 @@ GLOBAL_LIST_EMPTY(cache_timestamps) // Timestamps for each cache entry
 
 	// Unregister signals
 	UnregisterSignal(I, list(COMSIG_MOVABLE_MOVED, COMSIG_QDELETING, COMSIG_ITEM_PICKUP))
+	REMOVE_TRAIT(I, TRAIT_NO_ROT, STOCK_TRAIT)
 
 	return TRUE
 
@@ -200,6 +201,8 @@ GLOBAL_LIST_EMPTY(cache_timestamps) // Timestamps for each cache entry
 
 	var/turf/target_turf = pick(valid_turfs)
 	I.forceMove(target_turf)
+
+	ADD_TRAIT(I, TRAIT_NO_ROT, STOCK_TRAIT)
 
 	// Registration will happen automatically via proximity monitor
 	return TRUE

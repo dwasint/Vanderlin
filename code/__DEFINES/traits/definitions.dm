@@ -622,3 +622,4 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 // genetic traits
 #define TRAIT_ANIMAL_NATURAL_ARMOR "natural_armor"
 #define TRAIT_ANIMAL_PRODUCTIVE "trait_productive"
+#define TRAIT_NO_ROT "no_rot"
