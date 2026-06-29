@@ -54,8 +54,8 @@
 	)
 
 /datum/relation/proc/_get_job_title(mob/living/carbon/human/H)
-	if(H.job)
-		var/datum/job/J = SSjob.GetJob(H.job)
+	if(H.mind?.assigned_role)
+		var/datum/job/J = H.mind?.assigned_role
 		if(J)
 			var/t = J.get_informed_title(H)
 			if(t)
