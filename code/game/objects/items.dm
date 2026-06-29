@@ -881,12 +881,12 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	switch(armor_class)
 		if(AC_HEAVY)
 			if(carrier && !HAS_TRAIT(carrier, TRAIT_HEAVYARMOR))
-				. = item_weight * 1.5
+				. = item_weight * 2
 			else
 				. = item_weight
 		if(AC_MEDIUM)
 			if(carrier && !HAS_TRAIT(carrier, TRAIT_MEDIUMARMOR))
-				. = item_weight * 1.5
+				. = item_weight * 2
 			else
 				. = item_weight
 		if(AC_LIGHT)
