@@ -124,6 +124,7 @@ GLOBAL_LIST_EMPTY(cache_timestamps) // Timestamps for each cache entry
 	RegisterSignal(I, COMSIG_MOVABLE_MOVED, PROC_REF(on_item_moved))
 	RegisterSignal(I, COMSIG_QDELETING, PROC_REF(on_item_deleted))
 	RegisterSignal(I, COMSIG_ITEM_PICKUP, PROC_REF(on_item_picked_up))
+	ADD_TRAIT(I, TRAIT_NO_ROT, STOCK_TRAIT)
 
 	return TRUE
 
@@ -201,8 +202,6 @@ GLOBAL_LIST_EMPTY(cache_timestamps) // Timestamps for each cache entry
 
 	var/turf/target_turf = pick(valid_turfs)
 	I.forceMove(target_turf)
-
-	ADD_TRAIT(I, TRAIT_NO_ROT, STOCK_TRAIT)
 
 	// Registration will happen automatically via proximity monitor
 	return TRUE
