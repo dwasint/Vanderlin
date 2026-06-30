@@ -19,7 +19,8 @@
 		playsound(usr, 'sound/magic/teleport_diss.ogg', 75, TRUE)
 		do_invoke_glow()
 		sleep(20)
-		animate(summoned_mob, color = null, time = 5)
+		if(summoned_mob && !QDELETED(summoned_mob))
+			animate(summoned_mob, color = null, time = 5)
 		release_summon()
 		return
 	. = ..()
