@@ -30,6 +30,7 @@
 
 /datum/blueprint_system/Destroy()
 	holder.player_details.post_login_callbacks -= li_cb
+	li_cb = null
 	clear_preview()
 	clear_pixel_positioning_dummy()
 	clear_selection()
@@ -43,6 +44,9 @@
 		holder.screen -= buttons
 		QDEL_LIST(buttons)
 	holder.click_intercept = null
+	if(holder?.mob)
+		UnregisterSignal(holder.mob, COMSIG_MOB_MOUSE_ENTERED)
+		UnregisterSignal(holder.mob, COMSIG_ATOM_MOUSE_ENTERED)
 	holder.mob?.blueprints = null
 	holder = null
 	return ..()
