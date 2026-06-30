@@ -109,7 +109,9 @@
 	flags_inv = HIDEEARS
 	sellprice = VALUE_CHEAP_STEEL_HELMET
 	max_integrity = INTEGRITY_STRONGEST
-	smeltresult = /obj/item/ingot/steel_slag
+	smeltresult = null
+	melting_material = /datum/material/steel
+	melt_amount = 50
 	body_parts_covered = COVERAGE_HEAD
 	item_weight = 2.2 KILOGRAMS
 
@@ -134,7 +136,9 @@
 	armor = ARMOR_SCALE
 	max_integrity = INTEGRITY_STRONG
 	item_weight = 2.2 KILOGRAMS
-	smeltresult = /obj/item/ingot/iron
+	smeltresult = null
+	melting_material = /datum/material/iron
+	melt_amount = 50
 
 /obj/item/clothing/head/helmet/kettle/aalloy
 	name = "decrepit kettle helmet"
@@ -165,6 +169,7 @@
 	max_integrity = INTEGRITY_STRONG
 	item_weight = 2.2 KILOGRAMS
 	smeltresult = /obj/item/ingot/iron
+	melting_material = /datum/material/iron
 
 //................ Iron Pot Helmet ............... //
 /obj/item/clothing/head/helmet/ironpot
@@ -416,6 +421,13 @@
 	sellprice = VALUE_IRON_HELMET+BONUS_VALUE_TINY
 	armor = ARMOR_PLATE_BAD
 	max_integrity = INTEGRITY_STRONG
+
+//............... Bellow Sallet ............... //
+/obj/item/clothing/head/helmet/visored/bellow
+	name = "Bellow Sallet"
+	desc = "An unorthodox approach of sallet design that includes a full face cover with holes for easier breathing."
+	icon_state = "sallet_bellow"
+	item_weight = 4.5 KILOGRAMS
 
 //............... Hounskull ............... //
 /obj/item/clothing/head/helmet/visored/hounskull
@@ -716,7 +728,7 @@
 			user.dropItemToGround(src)
 			user.put_in_hands(P)
 		var/obj/item/bodypart/arm = user.get_active_hand()
-		arm?.bodypart_attacked_by(BCLASS_CUT, 25, modifiers = list(CRIT_MOD_CHANCE = -100))
+		arm?.bodypart_attacked_by(BCLASS_CUT, 25, modifiers = list(CRIT_MOD_CHANCE = CANT_CRIT))
 		qdel(src)
 	else
 		user.visible_message(span_warning("[user] stops reshaping [src]."))
@@ -778,3 +790,4 @@
 	detail_color = GLOB.noble_dyes[choice]
 	detail_tag = "_detail"
 	update_appearance(UPDATE_ICON)
+
