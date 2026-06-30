@@ -43,7 +43,7 @@
 		holder.screen -= buttons
 		QDEL_LIST(buttons)
 	holder.click_intercept = null
-	holder.blueprints = null
+	holder.mob?.blueprints = null
 	holder = null
 	return ..()
 
