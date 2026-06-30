@@ -559,6 +559,78 @@
 
 	return base_price
 
+/// Maps reputation tier (0-6) to a calculator's best achievable quality tier.
+/// quality_scale should be the calculator's lowest and highest quality_descriptor keys.
+/datum/world_faction/proc/get_peak_quality(low, high, tier)
+	var/tier_fraction = tier / 6 // 0.0 to 1.0
+	var/peak = low + round((high - low) * tier_fraction)
+	return clamp(peak, low, high)
+
+/datum/world_faction/proc/get_faction_quality_calculator(obj/item/target)
+	if(!target)
+		return null
+
+	var/tier = get_reputation_tier() // 0-6
+	var/datum/quality_calculator/calc
+	var/rolled_quality
+
+	if(istype(target, /obj/item/reagent_containers/glass/bottle))
+		calc = new /datum/quality_calculator/brewing(
+			mat_qual = SMELTERY_QUALITY_NORMAL + tier,
+			skill_qual = tier,
+			components = 1,
+			reagent_qual = 0,
+			fresh = 5 MINUTES,
+			recipe_mod = 1.0 + (tier * 0.05),
+			aging_bonus = 0,
+		)
+		var/peak = get_peak_quality(-1, COOK_QUALITY_VERYGOOD, tier)
+		rolled_quality = roll_bell_quality(peak, spread = 2, low_bound = -1, high_bound = COOK_QUALITY_VERYGOOD)
+
+	else if(istype(target, /obj/item/reagent_containers/food/snacks)) // idk how else to really do this tbh
+		calc = new /datum/quality_calculator/cooking(
+			mat_qual = SMELTERY_QUALITY_POOR + tier,
+			skill_qual = tier,
+			components = 1,
+			reagent_qual = 1 + (tier * 0.2),
+			fresh = 5 MINUTES,
+			recipe_mod = 1.0 + (tier * 0.05),
+		)
+		var/peak = get_peak_quality(-1, COOK_QUALITY_VERYGOOD, tier)
+		rolled_quality = roll_bell_quality(peak, spread = 2, low_bound = -1, high_bound = COOK_QUALITY_VERYGOOD)
+
+	else if(target.melting_material)
+		calc = new /datum/quality_calculator/blacksmithing(
+			mat_qual = SMELTERY_QUALITY_NORMAL + tier,
+			skill_qual = min(6, tier),
+			components = 1,
+			reagent_qual = 0,
+			perf_qual = 60 + (tier * 5),
+			diff_mod = 0,
+			mini_play = 1,
+		)
+		var/peak = get_peak_quality(BLACKSMITH_QUALITY_SPOILED, BLACKSMITH_QUALITY_LEGENDARY, tier)
+		rolled_quality = roll_bell_quality(peak, spread = 2, low_bound = BLACKSMITH_QUALITY_SPOILED, high_bound = BLACKSMITH_QUALITY_LEGENDARY)
+
+	return list(calc, rolled_quality)
+
+/// Rolls a bell-curve-weighted value centered near `peak`, biased towards peak
+/datum/world_faction/proc/roll_bell_quality(peak, spread = 2, low_bound, high_bound)
+	// Sum of 3 uniform rolls, each contributing 0 to spread/3, averages
+	var/roll = 0
+	for(var/i = 1 to 3)
+		roll += rand(0, spread * 10)
+	roll /= 3 // average of three rolls, now ranges 0 to spread*10, bell-weighted toward spread*5
+
+	var/offset = round((roll / 10) - (spread / 2)) // shifts back up so the bulk centers near peak - (spread/4)
+
+	var/result = peak - offset
+	if(!isnull(low_bound))
+		result = max(result, low_bound)
+	if(!isnull(high_bound))
+		result = min(result, high_bound)
+	return min(result, peak) // hard guarantee: never above peak
+
 /datum/world_faction/proc/debug_spawn_trader(mob/spawner)
 	if(!spawner)
 		return null
