@@ -205,7 +205,6 @@ export const CatatomaLedger = (props) => {
                 <Table.Row header>
                   <Table.Cell>Item</Table.Cell>
                   <Table.Cell>Market Trend</Table.Cell>
-                  <Table.Cell>Availability</Table.Cell>
                   <Table.Cell>Purchase Options</Table.Cell>
                 </Table.Row>
                 {filteredPacks.length === 0 ? (
@@ -241,9 +240,6 @@ export const CatatomaLedger = (props) => {
                           ) : (
                             <Box color="label" italic fontSize="0.9em">Stable</Box>
                           )}
-                        </Table.Cell>
-                        <Table.Cell verticalAlign="middle">
-                          {pack.in_stock ? "AVAILABLE" : "BACKORDER ONLY"}
                         </Table.Cell>
                         <Table.Cell>
                           <Button
