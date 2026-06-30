@@ -48,8 +48,15 @@ GLOBAL_LIST_INIT(role_setting_categories, init_role_setting_categories())
 
 /datum/role_settings_menu/ui_data(mob/user)
 	var/list/settings = list()
-	for(var/pref_type in GLOB.role_setting_preference_entries)
-		var/datum/preference/list_type/role_setting/entry = GLOB.role_setting_preference_entries[pref_type]
+	var/list/categories = list()
+
+	for(var/pref_type in GLOB.preference_entries)
+		var/datum/preference/list_type/role_setting/entry = GLOB.preference_entries[pref_type]
+		if(!istype(entry, /datum/preference/list_type/role_setting))
+			continue
+		if(!entry.is_role)
+			continue
+
 		var/list/current = preferences.read_preference(pref_type)
 		var/list/setting_data = list(
 			"savefile_key" = entry.savefile_key,
