@@ -56,8 +56,6 @@ SUBSYSTEM_DEF(merchant)
 
 	/// Cache of recipe component costs to avoid recalculation
 	var/static/list/recipe_base_values = list()
-	/// Cached list of all valid bounty items (items that can be obtained through gameplay)
-	var/static/list/valid_bounty_items = list()
 	/// This is a static of possible bounty items
 	var/static/list/obtainable_items = list()
 	/// Cached list of exclusions for the craft requirements
@@ -75,7 +73,6 @@ SUBSYSTEM_DEF(merchant)
 	setup_map_nations()
 	// Initialize recipe values and bounty cache BEFORE factions cause they use it
 	initialize_recipe_values()
-	initialize_bounty_cache()
 
 	// Initialize supply packs
 	for(var/pack in subtypesof(/datum/supply_pack))
@@ -175,65 +172,6 @@ SUBSYSTEM_DEF(merchant)
 		qdel(recipe)
 
 	log_game("Calculated recipe values for [length(recipe_base_values)] craftable items")
-
-/**
- * Initializes the cache of valid bounty items
- * This includes items that BOTH have sell values AND can be obtained through gameplay
- */
-/datum/controller/subsystem/merchant/proc/initialize_bounty_cache()
-	if(length(valid_bounty_items))
-		return
-
-	// Build obtainable items list
-	for(var/datum/supply_pack/pack_type as anything in subtypesof(/datum/supply_pack))
-		var/datum/supply_pack/pack = new pack_type()
-
-		if(islist(pack.contains))
-			for(var/item_type in pack.contains)
-				obtainable_items |= item_type
-		else if(pack.contains)
-			obtainable_items |= pack.contains
-
-		qdel(pack)
-
-	for(var/path in exclusion_subtypes)
-		obtainable_items |= subtypesof(path)
-
-	for(var/path in exclusions)
-		obtainable_items |= path
-
-	for(var/datum/repeatable_crafting_recipe/recipe as anything in subtypesof(/datum/repeatable_crafting_recipe))
-		var/output = initial(recipe.output)
-		if(output)
-			obtainable_items |= output
-
-	for(var/datum/container_craft/recipe as anything in subtypesof(/datum/container_craft))
-		var/output = initial(recipe.output)
-		if(output)
-			obtainable_items |= output
-
-	for(var/datum/orderless_slapcraft/recipe as anything in subtypesof(/datum/orderless_slapcraft))
-		var/output = initial(recipe.output_item)
-		if(output)
-			obtainable_items |= output
-
-	for(var/datum/anvil_recipe/recipe as anything in subtypesof(/datum/anvil_recipe))
-		var/output = initial(recipe.created_item)
-		if(output)
-			obtainable_items |= output
-
-	for(var/datum/artificer_recipe/recipe as anything in subtypesof(/datum/artificer_recipe))
-		var/output = initial(recipe.created_item)
-		if(output)
-			obtainable_items |= output
-
-	// Only include items that are both obtainable AND have a base value
-	for(var/obj_type in obtainable_items)
-		var/base_value = get_item_base_value(obj_type)
-		if(base_value > 0)
-			valid_bounty_items |= obj_type
-
-	log_game("Initialized [length(valid_bounty_items)] valid bounty items (out of [length(obtainable_items)] obtainable items)")
 
 /**
  * Calculates the total cost of components in a recipe

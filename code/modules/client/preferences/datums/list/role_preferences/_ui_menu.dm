@@ -59,6 +59,8 @@ GLOBAL_LIST_INIT(role_setting_categories, init_role_setting_categories())
 			"lines" = current?.len ? current.Copy() : list(),
 			"max_lines" = entry.max_lines,
 		)
+		if(!entry.is_role)
+			continue
 		if(istype(entry, /datum/preference/list_type/role_setting/picker))
 			var/datum/preference/list_type/role_setting/picker/picker_entry = entry
 			setting_data["options"] = picker_entry.get_option_data()
