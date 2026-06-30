@@ -7,7 +7,7 @@
 	var/list/sold_count = list()
 	var/list/price_change_manifest = list()
 	var/list/hard_value_multipliers = list()
-	var/faction_reputation = 0
+	var/faction_reputation = 200
 
 	var/list/faction_supply_packs = list() // This faction's available supply packs
 	var/next_supply_rotation = 0 // Used here as next market price shift timestamp
@@ -599,7 +599,7 @@
 		var/peak = get_peak_quality(-1, COOK_QUALITY_VERYGOOD, tier)
 		rolled_quality = roll_bell_quality(peak, spread = 2, low_bound = -1, high_bound = COOK_QUALITY_VERYGOOD)
 
-	else if(target.melting_material)
+	else if(target.melting_material || ispath(target.smeltresult, /obj/item/ingot))
 		calc = new /datum/quality_calculator/blacksmithing(
 			mat_qual = SMELTERY_QUALITY_NORMAL + tier,
 			skill_qual = min(6, tier),
