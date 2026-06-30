@@ -446,12 +446,16 @@ SUBSYSTEM_DEF(merchant)
 	delivery_chest.name = "[lowertext(category)] delivery chest"
 	register_lift_cargo(delivery_chest)
 	var/manifest_contents = "<h2>[category] Supply Division</h2><hr><b>Contained Cargo Manifest:</b><ul>"
-	for(var/atom/movable/item in items_to_pack)
+	for(var/item_type in items_to_pack)
+		var/atom/movable/item = item_type
+		if(ispath(item_type))
+			item = new item_type(delivery_chest)
+		else
+			item.forceMove(delivery_chest)
 		if(isitem(item))
 			var/list/calc_result = active_faction.get_faction_quality_calculator(item)
 			if(calc_result)
 				create_quality_item(item, calc_result[1], calc_result[2])
-		item.forceMove(delivery_chest)
 		manifest_contents += "<li>[item.name]</li>"
 	manifest_contents += "</ul><hr><i>Seal of Authenticity - Approved Shipment.</i>"
 	var/obj/item/paper/manifest = new(spawn_turf)
