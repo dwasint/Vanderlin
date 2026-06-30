@@ -52,16 +52,6 @@
 	return ..()
 
 /datum/blueprint_system/proc/quit()
-	holder.screen -= buttons
-	holder.click_intercept = null
-	clear_preview()
-	clear_pixel_positioning_dummy()
-	if(recipe_browser)
-		recipe_browser.close()
-		recipe_browser = null
-	if(holder?.mob)
-		UnregisterSignal(holder.mob, COMSIG_MOB_MOUSE_ENTERED)
-		UnregisterSignal(holder.mob, COMSIG_ATOM_MOUSE_ENTERED)
 	qdel(src)
 
 /datum/blueprint_system/proc/post_login()
