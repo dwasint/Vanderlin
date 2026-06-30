@@ -5,6 +5,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 /obj/item
 	name = "item"
+	var/examine_name = null
 	icon = 'icons/obj/items_and_weapons.dmi'
 	pass_flags_self = PASSITEM
 	pass_flags = PASSTABLE
@@ -41,6 +42,8 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 	obj_flags = NONE
 	var/item_flags = NONE
+	///do we have a child icon?
+	var/childcore = FALSE
 
 	var/list/hitsound
 	///Played when the item is used, for example tools
@@ -392,8 +395,9 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 			lordcolor()
 		else
 			RegisterSignal(SSdcs, COMSIG_LORD_COLORS_SET, TYPE_PROC_REF(/obj/item, lordcolor))
-	else if(get_detail_color()) // Lord color does this
-		update_appearance(UPDATE_OVERLAYS)
+
+	if(get_detail_color()) // Lord color does this
+		update_appearance(UPDATE_ICON)
 
 	if(slot_flags)
 		AddElement(/datum/element/update_icon_updates_onmob, slot_flags)
@@ -418,14 +422,20 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		else if(isliving(loc))
 			var/mob/living/embedded_mob = loc
 			embedded_mob.simple_remove_embedded_object(src)
+
+	remove_all_enchantments()
+
 	if(artrecipe)
 		QDEL_NULL(artrecipe)
+
 	if(currecipe)
 		QDEL_NULL(currecipe)
+
 	if(istype(loc, /obj/machinery/artificer_table))
 		var/obj/machinery/artificer_table/A = loc
 		A.material = null
 		A.update_appearance(UPDATE_OVERLAYS)
+
 	return ..()
 
 /obj/item/proc/set_quality(quality)
@@ -433,13 +443,11 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 /obj/item/update_overlays()
 	. = ..()
-	//details tags for items/clothes
-	if(get_detail_tag())
-		var/mutable_appearance/pic = mutable_appearance(icon, "[icon_state][detail_tag]")
-		pic.appearance_flags = RESET_COLOR
-		if(get_detail_color())
-			pic.color = get_detail_color()
-		. += pic
+
+	if(!get_detail_tag())
+		return
+
+	. += mutable_appearance(icon, "[icon_state][detail_tag]", color = get_detail_color(), appearance_flags = RESET_COLOR)
 
 /**
  * Handles adding components to the item. Added in Initialize()
@@ -1490,7 +1498,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	if(ismob(loc))
 		update_slot_icon()
 	if(clean_types & CLEAN_WASH)
-		set_germ_level(GERM_LEVEL_STERILE)
+		set_germ_level(0)
 
 /obj/item/proc/do_pickup_animation(atom/target, turf/source)
 	set waitfor = FALSE
@@ -1601,6 +1609,16 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 				if(1 to 4)
 					if(alch_skill >= SKILL_LEVEL_EXPERT)
 						. += span_notice(" Smells faintly of [smell].")
+
+/obj/item/get_examine_string(mob/user, thats = FALSE, examine_list_bool = FALSE)
+	if(examine_name && examine_list_bool)
+		var/display_name = article ? "[article] <b>[examine_name]</b>" : gender == PLURAL ? "some <b>[examine_name]</b>" : "\a <b>[examine_name]</b>"
+		var/list/override = list(article || (gender == PLURAL ? "some" : "a"), " ", "[get_examine_name(user, FALSE)]")
+		if(SEND_SIGNAL(src, COMSIG_ATOM_GET_EXAMINE_NAME, user, override) & COMPONENT_EXNAME_CHANGED)
+			display_name = override.Join("")
+		return "[thats ? ismob(src) ? "This is " : "That's " : ""][display_name]"
+	else
+		return ..()
 
 /obj/item/atom_break(damage_flag, silent)
 	. = ..()

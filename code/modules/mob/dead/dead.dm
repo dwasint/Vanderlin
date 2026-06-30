@@ -94,8 +94,8 @@ INITIALIZE_IMMEDIATE(/mob/dead)
 			// But do we show them?
 
 			// We will show them
-			if(player.client.prefs.real_name)
-				var/thing = "[player.client.prefs.real_name]"
+			if(player.client.prefs.read_preference(/datum/preference/text/real_name))
+				var/thing = "[player.client.prefs.read_preference(/datum/preference/text/real_name)]"
 				PL += thing
 
 		var/list/PL2 = list()
@@ -236,8 +236,6 @@ INITIALIZE_IMMEDIATE(/mob/dead)
 	src << browse(null, "window=culinary_customization")
 	src << browse(null, "window=food_selection")
 	src << browse(null, "window=drink_selection")
-
-	SStriumphs.remove_triumph_buy_menu(client)
 
 	winshow(src, "stonekeep_prefwin", FALSE)
 	src << browse(null, "window=preferences_browser")

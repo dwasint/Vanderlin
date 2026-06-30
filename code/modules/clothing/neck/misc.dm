@@ -183,6 +183,9 @@
 /obj/item/clothing/neck/coif/cloth/colored
 	misc_flags = CRAFTING_TEST_EXCLUDE
 
+/obj/item/clothing/neck/coif/cloth/colored/peasantbrown
+	color = CLOTHING_PEASANT_BROWN
+
 /obj/item/clothing/neck/coif/cloth/colored/berryblue
 	color = CLOTHING_BERRY_BLUE
 
@@ -232,6 +235,20 @@
 /obj/item/clothing/neck/bellcollar/Initialize()
 	. = ..()
 	AddComponent(/datum/component/item_equipped_movement_rustle, custom_sounds = list(SFX_JINGLE_BELLS))
+
+/obj/item/clothing/neck/woolen
+	name = "woolen collar"
+	desc = "A comfortable and thick collar made of wools and cloth, not protective but it sure keeps your neck warm."
+	icon_state = "woolencollar"
+	item_state = "woolencollar"
+	slot_flags = ITEM_SLOT_NECK|ITEM_SLOT_MOUTH
+	salvage_result = /obj/item/natural/cloth
+	salvage_amount = 1
+	dropshrink = 0.5
+	muteinmouth = FALSE
+	spitoutmouth = FALSE
+	sewrepair = TRUE
+
 //..................................................................................................................................
 /*---------------\
 |			 	 |
@@ -254,8 +271,7 @@
 	toggle_icon_state = TRUE
 	blocksound = CHAINHIT
 	smeltresult = null
-	smeltresult = /obj/item/ingot/steel_slag
-	melting_material = /datum/material/iron
+	melting_material = /datum/material/steel
 	melt_amount = 100
 	clothing_flags = CANT_SLEEP_IN
 
@@ -355,6 +371,13 @@
 	. = ..()
 	ADD_TRAIT(src, TRAIT_HARD_TO_STEAL, TRAIT_GENERIC)
 
+/obj/item/clothing/neck/bevor/bronze
+	name = "bronze gorgette"
+	desc = "A jutting slab of bronze, traditionally mounted atop a panoplic assembly to veil the neck from precise strikes. </br>To tip the chin up while grounded is an ancient gesture; one which willingly beckons for the 'gift of mercy'."
+	icon_state = "bbevor"
+	melt_amount = 75
+	melting_material = /datum/material/bronze
+
 /obj/item/clothing/neck/bevor/iron
 	name = "iron bevor"
 	desc = "A piece of iron plate armor meant to protect the throat and neck of its wearer against decapitation, extending the protection of armor plates."
@@ -393,8 +416,14 @@
 	. = ..()
 	ADD_TRAIT(src, TRAIT_HARD_TO_STEAL, TRAIT_GENERIC)
 
+/obj/item/clothing/neck/gorget/kazengun
+	name = "blackmeadow gorget"
+	desc = "A series of interlocking rings of metal set around the throat. Used by the kouken of Blackmeadow for precisely the same reason as the knights of Psydonia."
+	icon_state = "kazengunneckguard"
+
 /obj/item/clothing/neck/gorget/explosive
 	name = "collar of servitude"
+	examine_name = "gorget"
 	icon_state = "collar_of_servitude"
 	desc = "an ordinary gorget that has been imbued with a curse of the explosive sort by the inquisition. It is a powerfui tool designed to keep its wearer \
 		servile and obedient under threat of its explosive potential detonating on their necks."
@@ -482,12 +511,30 @@
 	if(!istype(loc, /mob/living/carbon))
 		qdel(src)
 		return
+
 	var/mob/living/carbon/soon_to_be_headless = loc
 	var/obj/item/bodypart/head/to_decap = soon_to_be_headless.get_bodypart(BODY_ZONE_HEAD)
 	if(to_decap)
-		to_decap.dismember(BRUTE) //its a NECK collar
+		if(!istype(to_decap))
+			stack_trace("get_bodypart(BODY_ZONE_HEAD) returned something that isn't a head.")
+		to_decap.dismember(BRUTE, zone_precise = BODY_ZONE_PRECISE_NECK, forced = TRUE) //its a NECK collar
 
 	qdel(src)
+
+/obj/item/clothing/neck/gorget/gold
+	name = "golden gorget"
+	desc = "A series of resplendant golden plates designed to protect the neck, traditionally worn atop a jacket or cuirass. The holy sigil between its buckled halves promises to carry the flame of its wearer, no matter what strike's poised its way."
+	icon_state = "goldgorget"
+	armor_class = AC_HEAVY //Ceremonial. Heavy is the head that bares the burden.
+	melting_material = /datum/material/gold
+	melt_amount = 75
+	grid_height = 96
+	grid_width = 96
+	sellprice = 200
+
+/obj/item/clothing/neck/gorget/gold/king
+	name = "royal golden gorget"
+	sellprice = 300
 
 /obj/item/collar_detonator
 	name = "collar detonator"
@@ -520,7 +567,6 @@
 	desc = "A heavy collar of great age, meant to protect the neck."
 	icon_state = "aasimarneck"
 	smeltresult = /obj/item/ingot/bronze
-	melting_material = /datum/material/bronze
 	armor = ARMOR_MAILLE_GOOD
 
 /obj/item/clothing/neck/highcollier
