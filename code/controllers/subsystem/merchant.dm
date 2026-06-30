@@ -299,15 +299,6 @@ SUBSYSTEM_DEF(merchant)
 
 	return 0
 
-/datum/controller/subsystem/merchant/proc/get_sell_price(atom/sell_type, datum/world_faction/faction, sell_modifier = 1)
-	if(!faction)
-		faction = active_faction
-
-	if(!faction)
-		return 0
-
-	return faction.get_actual_sell_price(sell_type, sell_modifier)
-
 /datum/controller/subsystem/merchant/proc/get_sell_modifier(atom/sell_type, datum/world_faction/faction)
 	if(!faction)
 		faction = active_faction
@@ -619,7 +610,3 @@ SUBSYSTEM_DEF(merchant)
 		if(!(type in SSmerchant.staticly_setup_types))
 			if(!istype(src, /obj/item/coin))
 				SSmerchant.set_faction_sell_values(type)
-
-/obj/item/proc/get_sell_price(datum/world_faction/faction, sell_modifier = 1)
-	return SSmerchant.get_sell_price(type, faction, sell_modifier)
-

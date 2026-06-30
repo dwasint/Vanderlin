@@ -293,6 +293,17 @@
 	if(!trader_schedule_generated)
 		schedule_next_boat_traders()
 
+/datum/world_faction/proc/get_reagent_sell_values(obj/item/reagent_containers/glass/container)
+	var/list/values = list()
+	if(!istype(container) || !container.reagents)
+		return values
+	for(var/datum/reagent/reagent in container.reagents.reagent_list)
+		var/value = FLOOR(reagent.price_per_unit * reagent.volume, 1)
+		if(value <= 0)
+			continue
+		values[reagent.name] = list(reagent.volume, value)
+	return values
+
 /datum/world_faction/proc/get_actual_sell_price(atom/sell_type, sell_modifier = 1)
 	var/base_price = SSmerchant.get_item_base_value(sell_type)
 

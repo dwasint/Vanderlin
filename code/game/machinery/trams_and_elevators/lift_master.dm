@@ -895,6 +895,20 @@ GLOBAL_LIST_EMPTY(active_lifts_by_type)
 			if(old_price != new_price)
 				SSmerchant.changed_sell_prices(listed_atom.type, old_price, new_price)
 
+			// Reagent contents sold separately, shown as their own manifest line
+			if(istype(listed_atom, /obj/item/reagent_containers/glass))
+				var/list/reagent_values = SSmerchant.active_faction.get_reagent_sell_values(listed_atom)
+				for(var/reagent_name in reagent_values)
+					var/list/reagent_data = reagent_values[reagent_name]
+					var/reagent_volume = reagent_data[1]
+					var/reagent_value = round(reagent_data[2] * sell_modifer)
+					if(reagent_value <= 0)
+						continue
+					var/reagent_key = "[UNIT_FORM_STRING(reagent_volume)] of [reagent_name]"
+					total_coin_value += reagent_value
+					sold_count[reagent_key] += 1
+					sold_items[reagent_key] += reagent_value
+
 			// Nested item handling loop
 			for(var/atom/movable/inside in listed_atom.get_all_contents())
 				if(inside == listed_atom)
@@ -912,7 +926,6 @@ GLOBAL_LIST_EMPTY(active_lifts_by_type)
 				if(old_inside_price <= 0)
 					continue
 
-				// --- BOUNTY INTEGRATION (Nested Container Item) ---
 				if(SSmerchant.active_faction.handle_selling(inside))
 					qdel(inside)
 					continue
@@ -925,6 +938,21 @@ GLOBAL_LIST_EMPTY(active_lifts_by_type)
 				var/new_inside_price = SSmerchant.active_faction.get_actual_sell_price(inside, sell_modifer)
 				if(old_inside_price != new_inside_price)
 					SSmerchant.changed_sell_prices(inside.type, old_inside_price, new_inside_price)
+
+				// Reagent contents of nested glass containers sold separately too
+				if(istype(inside, /obj/item/reagent_containers/glass))
+					var/list/inside_reagent_values = SSmerchant.active_faction.get_reagent_sell_values(inside)
+					for(var/reagent_name in inside_reagent_values)
+						var/list/reagent_data = inside_reagent_values[reagent_name]
+						var/reagent_volume = reagent_data[1]
+						var/reagent_value = round(reagent_data[2] * sell_modifer)
+						if(reagent_value <= 0)
+							continue
+						var/reagent_key = "[UNIT_FORM_STRING(reagent_volume)] of [reagent_name]"
+						total_coin_value += reagent_value
+						sold_count[reagent_key] += 1
+						sold_items[reagent_key] += reagent_value
+
 				qdel(inside)
 
 			if(ismobholder(listed_atom))
