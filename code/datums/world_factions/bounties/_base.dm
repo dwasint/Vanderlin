@@ -1,4 +1,5 @@
 /datum/bounty
+	abstract_type = /datum/bounty
 	var/name = "Generic Bounty"
 	var/desc = "A request for specific goods or assets."
 
@@ -6,6 +7,12 @@
 	var/required_path
 	var/required_count = 1
 	var/current_count = 0
+
+	/// If set, this bounty wants a REAGENT, not a discrete item count.
+	/// required_path can still be set alongside this to restrict to a specific container (e.g. only bottles)
+	var/required_reagent_type
+	var/required_reagent_amount = 0
+	var/current_reagent_amount = 0
 
 	// Rewards
 	var/reward_reputation = 10
@@ -37,11 +44,29 @@
 
 
 /datum/bounty/proc/check_completion(obj/item/delivered_item)
+	if(required_reagent_type)
+		return check_reagent_completion(delivered_item)
+
 	if(!istype(delivered_item, required_path))
 		return FALSE
-
 	current_count++
 	if(current_count >= required_count)
+		return TRUE
+	return FALSE
+
+/datum/bounty/proc/check_reagent_completion(obj/item/delivered_item)
+	var/obj/item/reagent_containers/glass/container = delivered_item
+	if(!istype(container) || !container.reagents)
+		return FALSE
+
+	var/found_amount = container.reagents.get_reagent_amount(required_reagent_type)
+	if(found_amount <= 0)
+		return FALSE
+
+	current_reagent_amount += found_amount
+	current_count = min(current_reagent_amount, required_reagent_amount) // keep handle_selling's current_count >= required_count check valid
+
+	if(current_reagent_amount >= required_reagent_amount)
 		return TRUE
 	return FALSE
 

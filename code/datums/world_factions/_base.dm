@@ -138,8 +138,9 @@
 	while(length(active_bounties) < max_active_bounties)
 		var/list/weighted_selection = list()
 
-		for(var/bounty_type in subtypesof(/datum/bounty))
-
+		for(var/datum/bounty/bounty_type as anything in subtypesof(/datum/bounty))
+			if(IS_ABSTRACT(bounty_type))
+				continue
 			// Don't duplicate an identical bounty type if it's already active
 			var/already_active = FALSE
 			for(var/datum/bounty/active in active_bounties)

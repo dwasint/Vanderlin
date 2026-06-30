@@ -262,7 +262,7 @@ SUBSYSTEM_DEF(merchant)
 			world_factions |= new_faction
 
 	// Set initial active faction
-	active_faction = world_factions[rand(1, length(world_factions))]
+	active_faction = pick(world_factions)
 
 	// Schedule faction rotations (every 45 minutes)
 	var/rotation_time = 45 MINUTES

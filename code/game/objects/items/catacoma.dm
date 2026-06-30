@@ -60,10 +60,19 @@
 			if(!bounty)
 				continue
 
+			var/required_count = 0
+			var/current_count = 0
 			var/target_name = "Unknown Asset"
 			if(bounty.required_path)
 				var/atom/bounty_target = bounty.required_path
 				target_name = initial(bounty_target.name)
+				required_count = bounty.required_count
+				current_count = bounty.current_count
+			else if(bounty.required_reagent_type)
+				var/datum/reagent/bounty_target = bounty.required_reagent_type
+				target_name = initial(bounty_target.name)
+				required_count = bounty.required_reagent_amount
+				current_count = bounty.current_reagent_amount
 
 			var/list/serialized_discounts = list()
 			if(islist(bounty.supply_pack_modifiers) && length(bounty.supply_pack_modifiers))
@@ -80,8 +89,8 @@
 				"name" = bounty.name,
 				"desc" = bounty.desc,
 				"target_item" = target_name,
-				"required_count" = bounty.required_count,
-				"current_count" = bounty.current_count,
+				"required_count" = required_count,
+				"current_count" = current_count,
 				"reward_reputation" = bounty.reward_reputation,
 				"reward_currency" = bounty.reward_currency,
 				"discounts" = serialized_discounts
