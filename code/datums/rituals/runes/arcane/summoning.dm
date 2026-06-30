@@ -11,6 +11,7 @@
 /obj/effect/decal/cleanable/ritual_rune/arcyne/summoning/Destroy()
 	if(summoning)
 		release_summon()
+	summoned_mob = null
 	.=..()
 
 /obj/effect/decal/cleanable/ritual_rune/arcyne/summoning/attack_hand(mob/living/user)
