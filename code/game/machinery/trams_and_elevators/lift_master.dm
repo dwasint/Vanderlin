@@ -870,12 +870,6 @@ GLOBAL_LIST_EMPTY(active_lifts_by_type)
 				continue
 			if(istype(listed_atom, /obj/item/coin))
 				continue
-			if(!listed_atom.sellprice && !SSmerchant.get_item_base_value(listed_atom))
-				continue
-
-			var/old_price = SSmerchant.active_faction.get_actual_sell_price(listed_atom, sell_modifer)
-			if(old_price <= 0)
-				continue
 
 			// If true, the item was eaten by a bounty. It rewards its own customized values.
 			if(SSmerchant.active_faction.handle_selling(listed_atom))
@@ -884,6 +878,13 @@ GLOBAL_LIST_EMPTY(active_lifts_by_type)
 					if(inside != listed_atom)
 						qdel(inside)
 				qdel(listed_atom)
+				continue
+
+			if(!listed_atom.sellprice && !SSmerchant.get_item_base_value(listed_atom))
+				continue
+
+			var/old_price = SSmerchant.active_faction.get_actual_sell_price(listed_atom, sell_modifer)
+			if(old_price <= 0)
 				continue
 
 			// Standard Sale Continues if no bounty claimed it
