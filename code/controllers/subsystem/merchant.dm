@@ -264,6 +264,7 @@ SUBSYSTEM_DEF(merchant)
 		var/datum/world_faction/new_faction = new faction
 		if((SSmapping.config.map_name in new_faction.allowed_maps) || !length(new_faction.allowed_maps))
 			world_factions |= new_faction
+	shuffle(world_factions)
 
 	// Set initial active faction
 	active_faction = pick(world_factions)
