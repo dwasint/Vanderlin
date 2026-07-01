@@ -52,7 +52,7 @@
 	if(faction && islist(faction.faction_supply_packs))
 		for(var/pack_id in faction.faction_supply_packs)
 			var/datum/supply_pack/pack = faction.faction_supply_packs[pack_id]
-			if(!pack || pack.contraband)
+			if(!pack)
 				continue
 
 			var/list/sanitized_history = list()
