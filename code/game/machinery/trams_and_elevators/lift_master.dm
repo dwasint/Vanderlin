@@ -897,7 +897,7 @@ GLOBAL_LIST_EMPTY(active_lifts_by_type)
 				SSmerchant.changed_sell_prices(listed_atom.type, old_price, new_price)
 
 			// Reagent contents sold separately, shown as their own manifest line
-			if(istype(listed_atom, /obj/item/reagent_containers/glass))
+			if(istype(listed_atom, /obj/item/reagent_containers/glass) || istype(listed_atom, /obj/structure))
 				var/list/reagent_values = SSmerchant.active_faction.get_reagent_sell_values(listed_atom)
 				for(var/reagent_name in reagent_values)
 					var/list/reagent_data = reagent_values[reagent_name]

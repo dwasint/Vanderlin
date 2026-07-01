@@ -65,10 +65,10 @@
 
 /datum/bounty/proc/check_reagent_completion(obj/item/delivered_item)
 	var/obj/item/reagent_containers/glass/container = delivered_item
-	if(!istype(container) || !container.reagents)
+	if((!istype(container) && !istype(container, /obj/structure)) || !container.reagents)
 		return FALSE
 
-	var/found_amount = container.reagents.get_reagent_amount(required_reagent_type)
+	var/found_amount = container.reagents?.get_reagent_amount(required_reagent_type)
 	if(found_amount <= 0)
 		return FALSE
 

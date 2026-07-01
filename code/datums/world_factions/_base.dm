@@ -317,9 +317,9 @@
 
 /datum/world_faction/proc/get_reagent_sell_values(obj/item/reagent_containers/glass/container)
 	var/list/values = list()
-	if(!istype(container) || !container.reagents)
+	if((!istype(container) && !istype(container, /obj/structure))|| !container.reagents)
 		return values
-	for(var/datum/reagent/reagent in container.reagents.reagent_list)
+	for(var/datum/reagent/reagent in container.reagents?.reagent_list)
 		var/value = FLOOR(reagent.price_per_unit * reagent.volume, 1)
 		if(value <= 0)
 			continue
