@@ -65,13 +65,13 @@ GLOBAL_LIST_EMPTY(virtual_z_link_helpers)
 		var/below_max_x = -INFINITY
 		var/below_max_y = -INFINITY
 
-		for(var/turf/T in above_area.contents)
+		for(var/turf/T as anything in above_area.get_turfs_by_zlevel(above.z))
 			if(T.z != above.z)
 				continue
 			if(T.x < above_min_x) above_min_x = T.x
 			if(T.y < above_min_y) above_min_y = T.y
 
-		for(var/turf/T in below_area.contents)
+		for(var/turf/T as anything in below_area.get_turfs_by_zlevel(below.z))
 			if(T.z != below.z)
 				continue
 			if(T.x < below_min_x) below_min_x = T.x
