@@ -237,7 +237,6 @@
 	icon_state = "moondust"
 	list_reagents = list(/datum/reagent/moondust = 15)
 	sellprice = 16
-	price_per_unit = 3
 
 /datum/reagent/moondust
 	name = "Moondust"
@@ -246,6 +245,7 @@
 	color = "#bfc3b5"
 	overdose_threshold = 50
 	metabolization_rate = 0.2
+	price_per_unit = 3
 
 /datum/reagent/moondust/on_mob_metabolize(mob/living/affected_mob)
 	. = ..()
