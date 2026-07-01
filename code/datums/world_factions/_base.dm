@@ -371,26 +371,50 @@
  * Returns TRUE if consumed by a bounty, FALSE if treated as a normal sale
  */
 /datum/world_faction/proc/handle_selling(atom/movable/selling_item)
-	// Check against active bounties first
+	if(istype(selling_item, /obj/item/natural/bundle))
+		return handle_selling_bundle(selling_item)
+	return handle_selling_single(selling_item)
+
+/datum/world_faction/proc/handle_selling_single(atom/movable/selling_item)
 	for(var/datum/bounty/bounty in active_bounties)
 		if(bounty.check_completion(selling_item))
 			bounty.fulfill_bounty(src)
-
-			// If the bounty is finished, cycle its lists
 			if(bounty.current_count >= bounty.required_count)
 				active_bounties -= bounty
 				completed_bounties += bounty
-
-			return TRUE // Item consumed by bounty fulfillment
-
-	// Baseline logic for standard item market sales
+			return TRUE
 	sold_count |= selling_item.type
 	sold_count[selling_item.type]++
-
 	if(prob(sold_count[selling_item.type] * 10))
 		adjust_sell_multiplier(selling_item.type, -rand(0.01, 0.1))
-
 	return FALSE
+
+/// Bundles represent N copies of stacktype feed them into bounties one
+/// unit at a time, then dump whatever's left into the market as a block sale.
+/datum/world_faction/proc/handle_selling_bundle(obj/item/natural/bundle/bundle)
+	var/remaining = bundle.amount
+	var/fed_a_bounty = FALSE
+
+	for(var/datum/bounty/bounty in active_bounties)
+		if(remaining <= 0)
+			break
+		while(remaining > 0 && bounty.check_completion_type(bundle.stacktype))
+			remaining--
+			if(bounty.current_count >= bounty.required_count)
+				bounty.fulfill_bounty(src)
+				fed_a_bounty = TRUE
+				active_bounties -= bounty
+				completed_bounties += bounty
+				break
+
+	if(remaining > 0)
+		sold_count |= bundle.stacktype
+		sold_count[bundle.stacktype] += remaining
+		if(prob(sold_count[bundle.stacktype] * 10))
+			adjust_sell_multiplier(bundle.stacktype, -rand(0.01, 0.1))
+
+	qdel(bundle)
+	return fed_a_bounty
 
 /datum/world_faction/proc/handle_supply_purchase(datum/supply_pack/pack)
 	award_supply_reputation(pack)

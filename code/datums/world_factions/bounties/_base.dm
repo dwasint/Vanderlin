@@ -54,6 +54,15 @@
 		return TRUE
 	return FALSE
 
+/datum/bounty/proc/check_completion_type(obj/item/delivered_item)
+	if(required_reagent_type)
+		return FALSE
+
+	if(!ispath(delivered_item, required_path))
+		return FALSE
+	current_count++
+	return TRUE
+
 /datum/bounty/proc/check_reagent_completion(obj/item/delivered_item)
 	var/obj/item/reagent_containers/glass/container = delivered_item
 	if(!istype(container) || !container.reagents)
