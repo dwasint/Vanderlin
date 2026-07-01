@@ -920,15 +920,14 @@ GLOBAL_LIST_EMPTY(active_lifts_by_type)
 					continue
 				if(istype(inside, /obj/item/coin))
 					continue
+				if(SSmerchant.active_faction.handle_selling(inside))
+					qdel(inside)
+					continue
 				if(!inside.sellprice && !SSmerchant.get_item_base_value(inside))
 					continue
 
 				var/old_inside_price = SSmerchant.active_faction.get_actual_sell_price(inside, sell_modifer)
 				if(old_inside_price <= 0)
-					continue
-
-				if(SSmerchant.active_faction.handle_selling(inside))
-					qdel(inside)
 					continue
 
 				// Standard Nested Item Sale
@@ -941,7 +940,7 @@ GLOBAL_LIST_EMPTY(active_lifts_by_type)
 					SSmerchant.changed_sell_prices(inside.type, old_inside_price, new_inside_price)
 
 				// Reagent contents of nested glass containers sold separately too
-				if(istype(inside, /obj/item/reagent_containers/glass))
+				if(istype(listed_atom, /obj/item/reagent_containers/glass) || istype(listed_atom, /obj/structure))
 					var/list/inside_reagent_values = SSmerchant.active_faction.get_reagent_sell_values(inside)
 					for(var/reagent_name in inside_reagent_values)
 						var/list/reagent_data = inside_reagent_values[reagent_name]
