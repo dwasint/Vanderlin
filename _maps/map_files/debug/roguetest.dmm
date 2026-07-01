@@ -1065,14 +1065,6 @@
 /obj/item/reagent_containers/glass/bucket/wooden,
 /turf/open/floor/grass/yel,
 /area/outdoors)
-"du" = (
-/obj/structure/notice_board{
-	pixel_y = 32;
-	board_id = "debug";
-	density = 0
-	},
-/turf/open/floor/wood,
-/area/indoors/town/keep)
 "dL" = (
 /obj/machinery/light/fueled/torchholder/hotspring/standing{
 	pixel_x = 15;
@@ -1511,6 +1503,10 @@
 /obj/item/paper/scroll/quest/pledge,
 /obj/item/paper/scroll/quest/pledge,
 /obj/item/paper/scroll/quest/pledge,
+/turf/open/floor/church/gold,
+/area/indoors/town/keep)
+"lv" = (
+/obj/structure/notice_board,
 /turf/open/floor/church/gold,
 /area/indoors/town/keep)
 "lJ" = (
@@ -1954,12 +1950,6 @@
 /area/outdoors)
 "vD" = (
 /turf/open/floor/churchbrick,
-/area/indoors/town/keep)
-"vH" = (
-/obj/structure/notice_board{
-	pixel_y = 0
-	},
-/turf/open/floor/church/gold,
 /area/indoors/town/keep)
 "vV" = (
 /obj/machinery/light/fueled/campfire/densefire,
@@ -2920,6 +2910,13 @@
 /obj/machinery/light/fueled/torchholder/c,
 /obj/item/arcyne_spellobject/wand,
 /turf/open/floor/churchbrick,
+/area/indoors/town/keep)
+"LE" = (
+/obj/structure/notice_board{
+	pixel_y = 32;
+	board_id = "debug"
+	},
+/turf/open/floor/wood,
 /area/indoors/town/keep)
 "Md" = (
 /obj/machinery/light/fueled/torchholder/l,
@@ -5620,7 +5617,7 @@ ac
 ac
 ac
 ac
-ac
+as
 as
 as
 as
@@ -5877,7 +5874,7 @@ ac
 ac
 ac
 ac
-ac
+as
 as
 as
 as
@@ -6134,7 +6131,7 @@ ac
 ac
 ac
 ac
-ac
+as
 as
 as
 as
@@ -6391,7 +6388,7 @@ ac
 ac
 ac
 ac
-ac
+as
 as
 as
 as
@@ -6648,7 +6645,7 @@ ac
 ac
 ac
 ac
-ac
+as
 as
 as
 as
@@ -6905,7 +6902,7 @@ ac
 ac
 ac
 ac
-ac
+as
 as
 as
 as
@@ -7162,7 +7159,7 @@ ac
 ac
 ac
 ac
-ac
+as
 as
 as
 as
@@ -7419,7 +7416,7 @@ ac
 ac
 ac
 ac
-ac
+as
 as
 as
 as
@@ -7676,7 +7673,7 @@ ac
 ac
 ac
 ac
-ac
+as
 as
 as
 as
@@ -7933,7 +7930,7 @@ ac
 ac
 ac
 ac
-ac
+as
 as
 as
 as
@@ -8190,7 +8187,7 @@ ac
 ac
 ac
 ac
-ac
+as
 as
 as
 as
@@ -9234,7 +9231,7 @@ as
 as
 as
 as
-ac
+as
 as
 as
 as
@@ -9491,7 +9488,7 @@ as
 as
 as
 as
-ac
+as
 as
 as
 as
@@ -11290,7 +11287,7 @@ as
 as
 as
 as
-ac
+as
 as
 as
 as
@@ -14379,7 +14376,7 @@ OK
 Ie
 Lj
 zg
-du
+LE
 XE
 Cp
 Cp
@@ -19521,8 +19518,8 @@ as
 as
 as
 as
-as
-as
+at
+at
 at
 at
 QN
@@ -20304,7 +20301,7 @@ GB
 GB
 Ac
 Mj
-vH
+lv
 sJ
 Cp
 Cp
