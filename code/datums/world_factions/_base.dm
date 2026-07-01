@@ -383,19 +383,30 @@
 
 /datum/world_faction/proc/handle_selling_single(atom/movable/selling_item)
 	for(var/datum/bounty/bounty in active_bounties)
-		if(bounty.check_completion(selling_item))
-			bounty.fulfill_bounty(src)
-			if(bounty.current_count >= bounty.required_count)
+		var/bounty_result = bounty.check_completion(selling_item)
+
+		if(bounty_result == BOUNTY_MATCH_CONSUMED)
+			// The item was 100% swallowed by the bounty. Check if the bounty is now done.
+			if(bounty.current_count >= bounty.required_count || (bounty.required_reagent_type && bounty.current_reagent_amount >= bounty.required_reagent_amount))
+				bounty.fulfill_bounty(src)
 				active_bounties -= bounty
 				completed_bounties += bounty
 			return TRUE
+		if(bounty_result == BOUNTY_MATCH_PARTIAL)
+			if(bounty.current_reagent_amount >= bounty.required_reagent_amount)
+				bounty.fulfill_bounty(src)
+				active_bounties -= bounty
+				completed_bounties += bounty
+			return FALSE_BUT_HANDLED
+
+	// If no bounty wanted it at all, log it for market inflation and return FALSE to allow normal sale
 	sold_count |= selling_item.type
 	sold_count[selling_item.type]++
 	if(prob(sold_count[selling_item.type] * 10))
 		adjust_sell_multiplier(selling_item.type, -rand(0.01, 0.1))
 	return FALSE
 
-/// Bundles represent N copies of stacktype feed them into bounties one
+/// Bundles represent N copies of stacktype. Feed them into bounties one
 /// unit at a time, then dump whatever's left into the market as a block sale.
 /datum/world_faction/proc/handle_selling_bundle(obj/item/natural/bundle/bundle)
 	var/remaining = bundle.amount
@@ -404,23 +415,30 @@
 	for(var/datum/bounty/bounty in active_bounties)
 		if(remaining <= 0)
 			break
+
 		while(remaining > 0 && bounty.check_completion_type(bundle.stacktype))
 			remaining--
+			fed_a_bounty = TRUE
+
 			if(bounty.current_count >= bounty.required_count)
 				bounty.fulfill_bounty(src)
-				fed_a_bounty = TRUE
 				active_bounties -= bounty
 				completed_bounties += bounty
-				break
+				break // This bounty is finished, move to the next active bounty in the loop
 
-	if(remaining > 0)
+	bundle.amount = remaining
+
+	if(bundle.amount <= 0)
+		return TRUE // Tell tram loop: "Item is empty/consumed, go ahead and qdel() it"
+
+	if(fed_a_bounty)
 		sold_count |= bundle.stacktype
-		sold_count[bundle.stacktype] += remaining
+		sold_count[bundle.stacktype] += bundle.amount
 		if(prob(sold_count[bundle.stacktype] * 10))
 			adjust_sell_multiplier(bundle.stacktype, -rand(0.01, 0.1))
 
-	qdel(bundle)
-	return fed_a_bounty
+		return FALSE // Tell tram loop: "Keep this object alive and sell the remainder for cash"
+	return FALSE // Hand off to normal tram selling logic
 
 /datum/world_faction/proc/handle_supply_purchase(datum/supply_pack/pack)
 	award_supply_reputation(pack)

@@ -43,6 +43,7 @@
 #include "code\__DEFINES\bees.dm"
 #include "code\__DEFINES\bodyparts.dm"
 #include "code\__DEFINES\bodytemperature.dm"
+#include "code\__DEFINES\bounties.dm"
 #include "code\__DEFINES\browser.dm"
 #include "code\__DEFINES\buildmode.dm"
 #include "code\__DEFINES\callbacks.dm"

@@ -42,42 +42,54 @@
 	/// Fallback weight applied if a faction isn't explicitly listed in the weights map above
 	var/fallback_weight = 10
 
-
 /datum/bounty/proc/check_completion(obj/item/delivered_item)
 	if(required_reagent_type)
 		return check_reagent_completion(delivered_item)
 
 	if(!istype(delivered_item, required_path))
-		return FALSE
-	current_count++
-	if(current_count >= required_count)
-		return TRUE
-	return FALSE
+		return BOUNTY_NO_MATCH
 
-/datum/bounty/proc/check_completion_type(obj/item/delivered_item)
+	current_count++
+	return BOUNTY_MATCH_CONSUMED // Delete me on the spot!
+
+/datum/bounty/proc/check_completion_type(delivered_path)
 	if(required_reagent_type)
-		return FALSE
+		return BOUNTY_NO_MATCH
 
-	if(!ispath(delivered_item, required_path))
-		return FALSE
+	// Bundles pass a type path (bundle.stacktype), not an object instance
+	if(!ispath(delivered_path, required_path))
+		return BOUNTY_NO_MATCH
+
+	if(current_count >= required_count)
+		return BOUNTY_NO_MATCH // This bounty is already satisfied; don't slice any more items from the bundle
+
 	current_count++
-	return TRUE
+	return BOUNTY_MATCH_CONSUMED // Confirms 1 unit of the stack was successfully eaten by the bounty
 
 /datum/bounty/proc/check_reagent_completion(obj/item/delivered_item)
 	var/obj/item/reagent_containers/glass/container = delivered_item
 	if((!istype(container) && !istype(container, /obj/structure)) || !container.reagents)
-		return FALSE
+		return BOUNTY_NO_MATCH
 
-	var/found_amount = container.reagents?.get_reagent_amount(required_reagent_type)
+	var/found_amount = container.reagents.get_reagent_amount(required_reagent_type)
 	if(found_amount <= 0)
-		return FALSE
+		return BOUNTY_NO_MATCH
 
-	current_reagent_amount += found_amount
-	current_count = min(current_reagent_amount, required_reagent_amount) // keep handle_selling's current_count >= required_count check valid
+	var/needed = required_reagent_amount - current_reagent_amount
+	if(needed <= 0)
+		return BOUNTY_NO_MATCH
 
-	if(current_reagent_amount >= required_reagent_amount)
-		return TRUE
-	return FALSE
+	var/amount_to_take = min(found_amount, needed)
+	container.reagents.remove_reagent(required_reagent_type, amount_to_take)
+	current_reagent_amount += amount_to_take
+	current_count = min(current_reagent_amount, required_reagent_amount)
+
+	// If the beaker is now bone dry of this bounty reagent, consume/delete the item entirely
+	if(container.reagents.get_reagent_amount(required_reagent_type) <= 0)
+		return BOUNTY_MATCH_CONSUMED
+
+	// If it still has liquid left, keep the object alive but mark it as handled
+	return BOUNTY_MATCH_PARTIAL
 
 /datum/bounty/proc/fulfill_bounty(datum/world_faction/faction)
 	add_abstract_elastic_data(ELASCAT_ECONOMY, ELASDATA_BOUNTIES_COMPLETED, 1)

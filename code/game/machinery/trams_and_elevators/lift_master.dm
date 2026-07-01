@@ -871,14 +871,17 @@ GLOBAL_LIST_EMPTY(active_lifts_by_type)
 			if(istype(listed_atom, /obj/item/coin))
 				continue
 
-			// If true, the item was eaten by a bounty. It rewards its own customized values.
-			if(SSmerchant.active_faction.handle_selling(listed_atom))
-				// Clean up nested contents before deleting the item container
+			var/bounty_status = SSmerchant.active_faction.handle_selling(listed_atom)
+			if(bounty_status == TRUE)
+				// Clean up nested contents and delete
 				for(var/atom/movable/inside in listed_atom.get_all_contents())
 					if(inside != listed_atom)
 						qdel(inside)
 				qdel(listed_atom)
 				continue
+
+			if(bounty_status == FALSE_BUT_HANDLED)
+				continue //It just stays on the tram.
 
 			if(!listed_atom.sellprice && !SSmerchant.get_item_base_value(listed_atom))
 				continue
@@ -920,9 +923,14 @@ GLOBAL_LIST_EMPTY(active_lifts_by_type)
 					continue
 				if(istype(inside, /obj/item/coin))
 					continue
-				if(SSmerchant.active_faction.handle_selling(inside))
+				var/bounty_status_inside = SSmerchant.active_faction.handle_selling(inside)
+				if(bounty_status_inside == TRUE)
 					qdel(inside)
 					continue
+
+				if(bounty_status_inside == FALSE_BUT_HANDLED)
+					continue //It just stays on the tram.
+
 				if(!inside.sellprice && !SSmerchant.get_item_base_value(inside))
 					continue
 
