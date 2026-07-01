@@ -9,6 +9,7 @@ import {
   Section,
   Stack,
   Table,
+  ProgressBar,
   Tabs,
   NoticeBox,
 } from 'tgui-core/components';
@@ -56,6 +57,27 @@ type Data = {
   total_mammon_cost: number;
   bounty_reroll_ready: boolean;
   bounty_reroll_seconds_left: number;
+  faction_reputation: number;
+  faction_reputation_tier: number;
+  faction_reputation_thresholds: number[];
+  faction_color: string;
+  rotation_seconds_left: number;
+  manual_rotate_ready: boolean;
+  manual_rotate_seconds_left: number;
+  available_factions: FactionOption[];
+};
+
+type FactionOption = {
+  name: string;
+  ref: string;
+  color: string;
+  active: boolean;
+};
+
+const formatSeconds = (totalSeconds: number): string => {
+  const mins = Math.floor(totalSeconds / 60);
+  const secs = totalSeconds % 60;
+  return `${mins}:${secs.toString().padStart(2, '0')}`;
 };
 
 const getValidChartData = (history: SupplyPack['history']): number[][] => {
@@ -94,6 +116,13 @@ export const CatatomaLedger = (props) => {
     total_mammon_cost = 0,
     bounty_reroll_ready,
     bounty_reroll_seconds_left,
+    faction_reputation = 0,
+    faction_reputation_tier = 0,
+    faction_reputation_thresholds = [],
+    rotation_seconds_left = 0,
+    manual_rotate_ready = false,
+    manual_rotate_seconds_left = 0,
+    available_factions = [],
   } = data;
 
   const [currentTab, setCurrentTab] = useState<'catalog' | 'bounties'>('catalog');
@@ -101,6 +130,14 @@ export const CatatomaLedger = (props) => {
   const [showInStock, setShowInStock] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [expandedBountyId, setExpandedBountyId] = useState<string | null>(null);
+
+  const [showFactionPicker, setShowFactionPicker] = useState(false);
+
+  const nextThreshold = faction_reputation_thresholds[faction_reputation_tier + 1];
+  const currThreshold = faction_reputation_thresholds[faction_reputation_tier] ?? 0;
+  const tierProgress = nextThreshold
+    ? Math.min(1, (faction_reputation - currThreshold) / (nextThreshold - currThreshold))
+    : 1;
 
   const filteredPacks = supply_packs.filter((pack) => {
     if (currentCategory !== 'All' && pack.group !== currentCategory) return false;
@@ -123,8 +160,64 @@ export const CatatomaLedger = (props) => {
             <Table.Row>
               <Table.Cell bold width="150px">Active Trading Entity:</Table.Cell>
               <Table.Cell>{faction_name || "Unknown Entity"}</Table.Cell>
+              <Table.Cell width="150px" align="right">
+                <Button
+                  icon="exchange-alt"
+                  selected={showFactionPicker}
+                  onClick={() => setShowFactionPicker(!showFactionPicker)}
+                >
+                  Redirect Trade Routes
+                </Button>
+              </Table.Cell>
+            </Table.Row>
+            <Table.Row>
+              <Table.Cell bold>Standing:</Table.Cell>
+              <Table.Cell colSpan={2}>
+                <Stack align="center">
+                  <Stack.Item>Tier {faction_reputation_tier}</Stack.Item>
+                  <Stack.Item grow>
+                    <ProgressBar
+                      value={tierProgress}
+                      ranges={{ good: [0.66, 1], average: [0.33, 0.66], bad: [0, 0.33] }}
+                    >
+                      {faction_reputation}
+                      {nextThreshold ? ` / ${nextThreshold}` : ' (Max)'}
+                    </ProgressBar>
+                  </Stack.Item>
+                </Stack>
+              </Table.Cell>
+            </Table.Row>
+            <Table.Row>
+              <Table.Cell bold>Rotates Out In:</Table.Cell>
+              <Table.Cell colSpan={2}>
+                {rotation_seconds_left > 0 ? formatSeconds(rotation_seconds_left) : "Pending rotation..."}
+              </Table.Cell>
             </Table.Row>
           </Table>
+
+          {showFactionPicker && (
+            <Box mt={1}>
+              <NoticeBox info={manual_rotate_ready}>
+                {manual_rotate_ready
+                  ? "Route redirection is ready. Choosing a faction will reset the automatic rotation clock."
+                  : `Route redirection on cooldown: ${formatSeconds(manual_rotate_seconds_left)} remaining.`}
+              </NoticeBox>
+              <Stack wrap mt={0.5}>
+                {available_factions.map((f) => (
+                  <Stack.Item key={f.ref}>
+                    <Button
+                      disabled={f.active || !manual_rotate_ready}
+                      selected={f.active}
+                      color={f.active ? 'good' : undefined}
+                      onClick={() => act('manual_rotate_faction', { ref: f.ref })}
+                    >
+                      {f.name}
+                    </Button>
+                  </Stack.Item>
+                ))}
+              </Stack>
+            </Box>
+          )}
         </Section>
 
         {/* TOP LEVEL MODULE WORKSPACE TABS */}

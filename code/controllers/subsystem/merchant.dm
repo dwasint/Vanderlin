@@ -69,6 +69,12 @@ SUBSYSTEM_DEF(merchant)
 		/obj/item/natural,
 	)
 
+	/// world.time at which the current active_faction will be rotated out
+	var/active_faction_rotation_time = 0
+	/// world.time at which a manual faction rotation becomes available again
+	var/manual_rotation_ready_time = 0
+	/// Cooldown between player-triggered faction rotations
+	var/manual_rotation_cooldown = 10 MINUTES
 
 
 /datum/controller/subsystem/merchant/Initialize(timeofday)
@@ -278,17 +284,43 @@ SUBSYSTEM_DEF(merchant)
 /datum/controller/subsystem/merchant/proc/rotate_active_faction()
 	var/datum/world_faction/next_faction
 	var/earliest_time = INFINITY
-
-	// Find the faction scheduled to be next
 	for(var/datum/world_faction/faction in faction_rotation_schedule)
 		var/scheduled_time = faction_rotation_schedule[faction]
 		if(scheduled_time <= world.time && scheduled_time < earliest_time)
 			earliest_time = scheduled_time
 			next_faction = faction
-
 	if(next_faction && next_faction != active_faction)
-		active_faction = next_faction
-		faction_rotation_schedule[next_faction] = world.time + (45 MINUTES * length(world_factions))
+		set_active_faction(next_faction)
+
+/datum/controller/subsystem/merchant/proc/reschedule_faction_queue(datum/world_faction/starting_faction)
+	// Rebuilds the round-robin queue so starting_faction is active now,
+	// with the remaining factions queued up in sequence afterward.
+	var/list/remaining = world_factions.Copy()
+	remaining -= starting_faction
+
+	var/index = 1
+	for(var/datum/world_faction/faction in remaining)
+		faction_rotation_schedule[faction] = world.time + (45 MINUTES * index)
+		index++
+
+	faction_rotation_schedule[starting_faction] = world.time + (45 MINUTES * length(world_factions))
+
+/// Central point for changing the active faction, whether by schedule or by player choice
+/datum/controller/subsystem/merchant/proc/set_active_faction(datum/world_faction/new_faction, manual = FALSE)
+	if(!new_faction)
+		return FALSE
+	active_faction = new_faction
+	if(manual)
+		reschedule_faction_queue(new_faction)
+		manual_rotation_ready_time = world.time + manual_rotation_cooldown
+	else
+		faction_rotation_schedule[new_faction] = world.time + (45 MINUTES * length(world_factions))
+
+	var/next_time = faction_rotation_schedule[new_faction]
+	for(var/faction in faction_rotation_schedule)
+		next_time = min(next_time, faction_rotation_schedule[faction])
+	active_faction_rotation_time = next_time
+	return TRUE
 
 /datum/controller/subsystem/merchant/fire(resumed)
 	// Update all factions
@@ -297,6 +329,34 @@ SUBSYSTEM_DEF(merchant)
 
 	// Check for faction rotation
 	rotate_active_faction()
+
+
+/datum/controller/subsystem/merchant/proc/get_active_faction_rotation_seconds_left()
+	if(!active_faction_rotation_time)
+		return 0
+	return max(0, round((active_faction_rotation_time - world.time) / 10))
+
+/datum/controller/subsystem/merchant/proc/can_manual_rotate()
+	return world.time >= manual_rotation_ready_time
+
+/datum/controller/subsystem/merchant/proc/get_manual_rotation_seconds_left()
+	return max(0, round((manual_rotation_ready_time - world.time) / 10))
+
+/datum/controller/subsystem/merchant/proc/manual_rotate_faction(datum/world_faction/chosen_faction, mob/user)
+	if(!can_manual_rotate())
+		if(user)
+			to_chat(user, "<span class='warning'>The trade routes can't be redirected again so soon.</span>")
+		return FALSE
+	if(!chosen_faction || !(chosen_faction in world_factions))
+		return FALSE
+	if(chosen_faction == active_faction)
+		if(user)
+			to_chat(user, "<span class='warning'>[chosen_faction.faction_name] is already the active trading faction.</span>")
+		return FALSE
+	set_active_faction(chosen_faction, manual = TRUE)
+	if(user)
+		to_chat(user, "<span class='notice'>You redirect the trade routes. [chosen_faction.faction_name] is now active.</span>")
+	return TRUE
 
 /datum/controller/subsystem/merchant/proc/prepare_cargo_shipment()
 	if(!cargo_boat || !cargo_docked)
