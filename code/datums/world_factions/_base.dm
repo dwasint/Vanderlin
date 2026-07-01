@@ -57,7 +57,14 @@
 
 	var/list/active_bounties = list()
 	var/list/completed_bounties = list()
-	var/max_active_bounties = 5
+	var/max_active_bounties = 8
+
+	/// Timestamp for the next independent bounty trickle check
+	var/next_bounty_rotation = 0
+	/// How often we attempt to trickle in new bounties, independent of the trade boat cycle
+	var/bounty_rotation_interval = 3 MINUTES
+	/// Minimum delay after a bounty is completed before that slot can be refilled by the trickle
+	var/bounty_refill_cooldown = 1 MINUTES
 
 /datum/world_faction/New()
 	..()
@@ -73,11 +80,20 @@
 			break
 	return max(0, tier - 1) // Adjust since we increment before breaking
 
+/datum/world_faction/proc/fluctuate_bounties()
+	if(world.time < next_bounty_rotation)
+		return
+
+	next_bounty_rotation = world.time + bounty_rotation_interval
+
+	if(length(active_bounties) >= max_active_bounties)
+		return
+
+	generate_bounties(rand(1, 2))
+
 /datum/world_faction/proc/schedule_next_boat_traders()
 	if(trader_schedule_generated)
 		return // Already scheduled
-	generate_bounties()
-
 	next_boat_traders.Cut()
 	next_boat_trader_count = 0
 
@@ -130,13 +146,14 @@
 /**
  * Automatically rolls and generates new random weighted bounties, pulling weights from the bounty datums themselves.
  */
-/datum/world_faction/proc/generate_bounties()
+/datum/world_faction/proc/generate_bounties(amount = INFINITY)
 	if(!length(subtypesof(/datum/bounty)))
 		return
 	var/current_tier = get_reputation_tier()
+	var/generated = 0
 
-	// Keep generating until we hit our maximum active slots
-	while(length(active_bounties) < max_active_bounties)
+	// Keep generating until we hit our maximum active slots, or our per-call cap, whichever's first
+	while(length(active_bounties) < max_active_bounties && generated < amount)
 		var/list/weighted_selection = list()
 
 		for(var/datum/bounty/bounty_type as anything in subtypesof(/datum/bounty))
@@ -182,6 +199,7 @@
 		var/datum/bounty/new_bounty = new chosen_bounty_type()
 
 		active_bounties += new_bounty
+		generated++
 
 /**
  * Initializes the entire catalog permanently. No elements are dropped or skipped.
@@ -209,6 +227,7 @@
 			faction_supply_packs[pack_type] = pack
 
 	next_supply_rotation = world.time + supply_rotation_interval
+	next_bounty_rotation = world.time
 
 /**
  * Moves supply crate values organically over time.
@@ -290,6 +309,7 @@
 			changed_sell_prices(atom, current_price, new_price)
 
 	fluctuate_supply_prices()
+	fluctuate_bounties()
 
 	// Schedule traders for next boat if boat is coming soon or just left
 	if(!trader_schedule_generated)
