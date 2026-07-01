@@ -76,6 +76,7 @@
 /datum/world_faction/proc/schedule_next_boat_traders()
 	if(trader_schedule_generated)
 		return // Already scheduled
+	generate_bounties()
 
 	next_boat_traders.Cut()
 	next_boat_trader_count = 0
