@@ -86,6 +86,7 @@
 	for(var/reward_path in reward_item_paths)
 		var/obj/item/reward_item = new reward_path(null) // Spawn in nullspace
 		SSmerchant.sending_stuff |= reward_item
+	SSmerchant.extra_currency += final_currency
 
 	// 3. Apply permanent or long-term supply pack discounts to the faction market
 	if(length(supply_pack_modifiers))

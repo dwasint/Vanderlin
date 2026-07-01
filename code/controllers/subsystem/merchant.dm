@@ -37,6 +37,8 @@ SUBSYSTEM_DEF(merchant)
 	var/list/orderhistory = list()
 	var/list/trade_requests = list()
 	var/list/sending_stuff = list()
+	///the amount of currency generated when we spawn everything
+	var/extra_currency = 0
 
 	var/datum/lift_master/tram/cargo_boat
 	var/cargo_docked = TRUE

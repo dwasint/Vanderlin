@@ -964,7 +964,8 @@ GLOBAL_LIST_EMPTY(active_lifts_by_type)
 			qdel(listed_atom)
 
 		// Coin Spawning & Logging Block
-		var/atom/location = spawn_coins(total_coin_value, platform)
+		var/atom/location = spawn_coins(total_coin_value + SSmerchant.extra_currency, platform)
+		SSmerchant.extra_currency = 0
 		record_round_statistic(STATS_TRADE_VALUE_EXPORTED, total_coin_value)
 		add_abstract_elastic_data(ELASCAT_ECONOMY, ELASDATA_MAMMONS_GAINED, total_coin_value)
 		add_abstract_elastic_data(ELASCAT_ECONOMY, ELASDATA_EXPORT_VALUE, total_coin_value)
