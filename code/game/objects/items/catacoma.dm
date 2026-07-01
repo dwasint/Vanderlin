@@ -26,6 +26,8 @@
 	// Faction Information
 	data["faction_name"] = faction ? faction.faction_name : "None"
 	data["categories"] = list("All") + SSmerchant.supply_cats
+	data["bounty_reroll_ready"] = faction ? faction.can_reroll_bounty() : FALSE
+	data["bounty_reroll_seconds_left"] = faction ? faction.get_bounty_reroll_seconds_left() : 0
 
 	var/list/all_packs = list()
 	if(faction && islist(faction.faction_supply_packs))
@@ -148,6 +150,13 @@
 
 		if("submit_order")
 			create_order_scroll(usr)
+			return TRUE
+		if("reroll_bounty")
+			var/datum/bounty/target = locate(params["id"])
+			var/datum/world_faction/faction = SSmerchant.active_faction
+			if(!target || !faction)
+				return TRUE
+			faction.reroll_bounty(target, usr)
 			return TRUE
 
 	return FALSE

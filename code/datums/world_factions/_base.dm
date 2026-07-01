@@ -66,6 +66,11 @@
 	/// Minimum delay after a bounty is completed before that slot can be refilled by the trickle
 	var/bounty_refill_cooldown = 1 MINUTES
 
+	/// world.time at which the next bounty reroll becomes available
+	var/bounty_reroll_ready_time = 0
+	/// How long a faction must wait between bounty rerolls
+	var/bounty_reroll_cooldown = 5 MINUTES
+
 /datum/world_faction/New()
 	..()
 	initialize_faction_stock()
@@ -200,6 +205,7 @@
 
 		active_bounties += new_bounty
 		generated++
+		add_abstract_elastic_data(ELASCAT_ECONOMY, ELASDATA_BOUNTIES_GENERATED, 1)
 
 /**
  * Initializes the entire catalog permanently. No elements are dropped or skipped.
@@ -676,6 +682,30 @@
 	if(!isnull(high_bound))
 		result = min(result, high_bound)
 	return min(result, peak) // hard guarantee: never above peak
+
+
+/datum/world_faction/proc/can_reroll_bounty()
+	return world.time >= bounty_reroll_ready_time
+
+/datum/world_faction/proc/get_bounty_reroll_seconds_left()
+	return max(0, round((bounty_reroll_ready_time - world.time) / 10))
+
+/datum/world_faction/proc/reroll_bounty(datum/bounty/target_bounty, mob/user)
+	if(!can_reroll_bounty())
+		return FALSE
+
+	if(!istype(target_bounty) || !(target_bounty in active_bounties))
+		return FALSE
+
+	active_bounties -= target_bounty
+	qdel(target_bounty)
+
+	bounty_reroll_ready_time = world.time + bounty_reroll_cooldown
+	add_abstract_elastic_data(ELASCAT_ECONOMY, ELASDATA_BOUNTIES_REROLLED, 1)
+
+	// Slot is now open, so this will generate exactly one replacement
+	generate_bounties(1)
+	return TRUE
 
 /datum/world_faction/proc/debug_spawn_trader(mob/spawner)
 	if(!spawner)

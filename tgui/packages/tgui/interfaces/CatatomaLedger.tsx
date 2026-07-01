@@ -54,6 +54,8 @@ type Data = {
   active_bounties: FactionBounty[];
   cart: CartItem[];
   total_mammon_cost: number;
+  bounty_reroll_ready: boolean;
+  bounty_reroll_seconds_left: number;
 };
 
 const getValidChartData = (history: SupplyPack['history']): number[][] => {
@@ -90,6 +92,8 @@ export const CatatomaLedger = (props) => {
     active_bounties = [],
     cart = [],
     total_mammon_cost = 0,
+    bounty_reroll_ready,
+    bounty_reroll_seconds_left,
   } = data;
 
   const [currentTab, setCurrentTab] = useState<'catalog' | 'bounties'>('catalog');
@@ -313,6 +317,21 @@ export const CatatomaLedger = (props) => {
                         <Table.Cell verticalAlign="middle">
                           <Box color="amber" bold>+{bounty.reward_currency} Mammons</Box>
                           <Box color="teal">+{bounty.reward_reputation} Faction Rep</Box>
+                          <Button
+                            fluid
+                            mt={0.5}
+                            icon="dice"
+                            color="transparent"
+                            disabled={!bounty_reroll_ready}
+                            tooltip={
+                              bounty_reroll_ready
+                                ? 'Discard this bounty and generate a new one'
+                                : `On cooldown (${bounty_reroll_seconds_left}s left)`
+                            }
+                            onClick={() => act('reroll_bounty', { id: bounty.id })}
+                          >
+                            {bounty_reroll_ready ? 'Reroll' : `${bounty_reroll_seconds_left}s`}
+                          </Button>
                         </Table.Cell>
                       </Table.Row>
 

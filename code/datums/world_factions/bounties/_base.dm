@@ -80,6 +80,7 @@
 	return FALSE
 
 /datum/bounty/proc/fulfill_bounty(datum/world_faction/faction)
+	add_abstract_elastic_data(ELASCAT_ECONOMY, ELASDATA_BOUNTIES_COMPLETED, 1)
 	// 1. Process administrative/department deductions
 	var/total_cut_percentage = 0
 	for(var/dept_tag in department_cuts)
