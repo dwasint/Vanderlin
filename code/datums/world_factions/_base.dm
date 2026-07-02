@@ -37,8 +37,6 @@
 		/obj/effect/mob_spawn/human/rakshari/trader
 	)
 
-	/// Chance for this faction to send a trader (0-100)
-	var/trader_chance = 60
 	/// Weighted preferences for trader types - higher numbers = more likely
 	var/list/trader_type_weights = list(
 		/datum/trader_data/food_merchant = 10,
@@ -70,6 +68,26 @@
 	var/bounty_reroll_ready_time = 0
 	/// How long a faction must wait between bounty rerolls
 	var/bounty_reroll_cooldown = 5 MINUTES
+
+	/// Chance for this faction to send a trader (0-100), baseline value at trader_chance_baseline_tier
+	var/trader_chance = 60
+	/// The reputation tier at which trader_chance is treated as the unmodified baseline
+	var/trader_chance_baseline_tier = 2
+	/// Percentage points added per tier ABOVE the baseline tier (linear growth)
+	var/trader_chance_tier_scaling = 10
+	/// Percentage points subtracted per tier BELOW the baseline, squared
+	var/trader_chance_penalty_scaling = 15
+
+	/// Peak (most likely) trader count at trader_count_baseline_tier
+	var/trader_count_base_peak = 2
+	/// The reputation tier at which trader_count_base_peak applies unmodified
+	var/trader_count_baseline_tier = 2
+	/// Traders added to the peak per tier ABOVE baseline (linear growth)
+	var/trader_count_tier_scaling = 0.5
+	/// Traders subtracted from the peak per tier BELOW baseline, squared
+	var/trader_count_penalty_scaling = 0.75
+	/// How wide the bell roll can swing around the peak
+	var/trader_count_bell_spread = 1
 
 /datum/world_faction/New()
 	..()
@@ -106,9 +124,20 @@
 		trader_schedule_generated = TRUE
 		return
 
-	// Random number of traders between 1 and 4
 	var/max_traders = min(4, length(trader_type_weights)) // Don't exceed available types
-	next_boat_trader_count = rand(1, max_traders)
+
+	var/tier = get_reputation_tier()
+	var/tier_diff = tier - trader_count_baseline_tier
+	var/peak
+
+	if(tier_diff >= 0)
+		peak = trader_count_base_peak + (tier_diff * trader_count_tier_scaling)
+	else
+		peak = trader_count_base_peak - ((tier_diff * tier_diff) * trader_count_penalty_scaling)
+
+	peak = clamp(round(peak), 1, max_traders)
+
+	next_boat_trader_count = roll_bell_quality(peak, trader_count_bell_spread, 1, max_traders)
 
 	// Pick trader types (avoid duplicates if possible)
 	var/list/available_types = trader_type_weights.Copy()
@@ -483,7 +512,20 @@
 /datum/world_faction/proc/should_send_trader()
 	if(!length(trader_type_weights))
 		return FALSE
-	return prob(trader_chance)
+
+	var/tier = get_reputation_tier()
+	var/tier_diff = tier - trader_chance_baseline_tier
+	var/effective_chance
+
+	if(tier_diff >= 0)
+		// Linear climb above baseline
+		effective_chance = trader_chance + (tier_diff * trader_chance_tier_scaling)
+	else
+		// Quadratic falloff below baseline, each tier further down hurts more than the last
+		effective_chance = trader_chance - ((tier_diff * tier_diff) * trader_chance_penalty_scaling)
+
+	effective_chance = clamp(effective_chance, 0, 100)
+	return prob(effective_chance)
 
 /datum/world_faction/proc/create_faction_trader(turf/spawn_location)
 	if(!length(trader_type_weights))
