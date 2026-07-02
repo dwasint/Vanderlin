@@ -113,6 +113,9 @@
 /datum/lift_master/tram/proc/tram_travel(obj/effect/landmark/tram/destination_platform, rapid = TRUE)
 	if(destination_platform == idle_platform)
 		return
+	if(travelling)
+		stack_trace("Tried to call tram_travel while already travelling!")
+		return
 
 	travel_direction = get_dir(idle_platform, destination_platform)
 	travel_distance = get_dist(idle_platform, destination_platform)
