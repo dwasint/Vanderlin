@@ -575,13 +575,12 @@ SUBSYSTEM_DEF(merchant)
 	var/list/possible_turfs = list()
 	for(var/obj/structure/industrial_lift/lift in cargo_boat.lift_platforms)
 		possible_turfs |= cargo_boat.get_valid_turfs(lift)
-	var/atom/spawn_turf = get_turf(pick(possible_turfs))
 
-	if(!spawn_turf)
+	if(!length(possible_turfs))
 		return
 
 	// Create all scheduled traders
-	var/list/new_traders = selected_faction.create_scheduled_traders(spawn_turf)
+	var/list/new_traders = selected_faction.create_scheduled_traders(possible_turfs)
 
 	for(var/mob/living/simple_animal/hostile/retaliate/trader/faction_trader/trader in new_traders)
 		active_faction_traders += trader
@@ -596,16 +595,6 @@ SUBSYSTEM_DEF(merchant)
 		if(!(pack.type in incoming_packs))
 			continue
 		pack.unlocked = TRUE
-
-/datum/controller/subsystem/merchant/proc/handle_lift_contents(obj/structure/industrial_lift/tram/platform, list/items, datum/nation/shipped_nation)
-	if(!length(nations))
-		return
-	if(shipped_nation)
-		shipped_nation.handle_import_shipment(items, platform)
-	for(var/datum/nation/other_nation in nations)
-		if(shipped_nation == other_nation)
-			continue
-		shipped_nation.handle_global_shipment(items)
 
 
 /obj/Initialize()

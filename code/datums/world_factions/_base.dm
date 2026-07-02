@@ -134,10 +134,13 @@
 	next_boat_trader_count = 0
 
 // Create multiple traders from scheduled list
-/datum/world_faction/proc/create_scheduled_traders(turf/spawn_location)
+/datum/world_faction/proc/create_scheduled_traders(list/possible_turfs)
 	var/list/created_traders = list()
 
+	var/turf/spawn_location //this is legit incase a mapper makes a like... 1 tile boat
 	for(var/datum/trader_data/trader_data in next_boat_traders)
+		if(length(possible_turfs))
+			spawn_location = pick_n_take(possible_turfs)
 		var/picked_outfit = pick(trader_outfits)
 		if(length(trader_data.outfit_override))
 			picked_outfit = pick(trader_data.outfit_override)
