@@ -565,6 +565,7 @@
 	var/list/all_packs = essential_packs + common_pool + uncommon_pool + rare_pool + exotic_pool
 	var/list/compatible_packs = list()
 	var/list/faction_products = list()
+	trader_data.active_faction = src
 
 	// Find all compatible packs with this trader type
 	for(var/pack_type in all_packs)
