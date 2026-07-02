@@ -180,6 +180,25 @@
 
 	return created_traders
 
+/// Shifts faction_reputation by a relative number of tiers (supports fractional tiers, e.g. -1.5).
+/// Interpolates within reputation_thresholds rather than applying a flat number, since tiers aren't evenly spaced.
+/datum/world_faction/proc/adjust_reputation_by_tier(tier_delta)
+	if(!tier_delta)
+		return
+
+	var/current_tier = get_reputation_tier()
+	var/max_tier = length(reputation_thresholds) - 1
+	var/target_tier = clamp(current_tier + tier_delta, 0, max_tier)
+
+	var/low_tier = floor(target_tier)
+	var/high_tier = ceil(target_tier)
+	var/frac = target_tier - low_tier
+
+	var/low_value = reputation_thresholds[low_tier + 1]   // BYOND lists are 1-indexed
+	var/high_value = reputation_thresholds[high_tier + 1]
+
+	faction_reputation = round(low_value + (high_value - low_value) * frac)
+
 /**
  * Automatically rolls and generates new random weighted bounties, pulling weights from the bounty datums themselves.
  */
@@ -587,11 +606,11 @@
 		else if(pack_type in common_pool)
 			weight = 12
 		else if(pack_type in uncommon_pool)
-			weight = 8
+			weight = 8 + tier
 		else if(pack_type in rare_pool)
-			weight = 5 + tier
+			weight = 5 + (tier * 2)
 		else if(pack_type in exotic_pool)
-			weight = 2 + (tier * 2)
+			weight = 2 + (tier * 4)
 		unified_selection[pack_type] = weight
 
 	var/items_to_select = min(max_items, length(unified_selection))

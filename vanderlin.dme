@@ -2671,6 +2671,7 @@
 #include "code\modules\client\preferences\datums\list\role_preferences\list_pick\_base.dm"
 #include "code\modules\client\preferences\datums\list\role_preferences\list_pick\accepted_patrons.dm"
 #include "code\modules\client\preferences\datums\list\role_preferences\list_pick\accepted_species.dm"
+#include "code\modules\client\preferences\datums\list\role_preferences\list_pick\faction_status.dm"
 #include "code\modules\client\preferences\datums\list\role_preferences\list_pick\family_job_type.dm"
 #include "code\modules\client\preferences\datums\list\role_preferences\list_pick\supply_pack.dm"
 #include "code\modules\client\preferences\datums\numeric\_base.dm"
