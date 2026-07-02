@@ -23,9 +23,18 @@
 		return
 
 	var/datum/job/user_job = SSjob.GetJob(user.job)
-	if(user_job && !(initial(user_job.type) in approved_jobs) && (SSmapping.config.map_name != "Voyager"))
-		if(!COOLDOWN_FINISHED(src, outsider_ring_bell))
-			return
+	var/merchant = FALSE
+	for(var/mob/living/liver in GLOB.player_list)
+		var/datum/job/liver_job = SSjob.GetJob(liver.job)
+		if(!liver_job || !(liver_job.type in approved_jobs))
+			continue
+		merchant = TRUE
+		break
+
+	if(merchant)
+		if(user_job && !(initial(user_job.type) in approved_jobs) && (SSmapping.config.map_name != "Voyager"))
+			if(!COOLDOWN_FINISHED(src, outsider_ring_bell))
+				return
 
 	if(!do_after(user, 5 SECONDS, src))
 		return
