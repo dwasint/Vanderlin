@@ -324,6 +324,9 @@
 		else if(pack_id in exotic_pool)
 			group_volatility = 35  // Severe luxury market volatility
 			group_bias = 5         // Strong luxury markup force
+		else if(pack.cost > pack.baseline_price)
+			group_volatility = 5 // basically we want this to be volatile to lower the price ideally
+			group_bias = 0
 		else
 			continue
 
