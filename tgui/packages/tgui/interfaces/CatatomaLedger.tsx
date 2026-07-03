@@ -6,6 +6,7 @@ import {
   Button,
   Chart,
   Input,
+  NumberInput,
   Section,
   Stack,
   Table,
@@ -130,6 +131,13 @@ export const CatatomaLedger = (props) => {
   const [showInStock, setShowInStock] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [expandedBountyId, setExpandedBountyId] = useState<string | null>(null);
+
+  const [quantities, setQuantities] = useState<Record<string, number>>({});
+
+  const getQuantity = (id: string) => quantities[id] ?? 1;
+  const setQuantity = (id: string, value: number) => {
+    setQuantities((prev) => ({ ...prev, [id]: Math.max(1, Math.floor(value)) }));
+  };
 
   const [showFactionPicker, setShowFactionPicker] = useState(false);
 
@@ -300,7 +308,7 @@ export const CatatomaLedger = (props) => {
             <Section title="Provisions Listing">
               <Table>
                 <Table.Row header>
-                  <Table.Cell>Item</Table.Cell>
+                  <Table.Cell>Supply Pack</Table.Cell>
                   <Table.Cell>Market Trend</Table.Cell>
                   <Table.Cell>Purchase Options</Table.Cell>
                 </Table.Row>
@@ -339,13 +347,33 @@ export const CatatomaLedger = (props) => {
                           )}
                         </Table.Cell>
                         <Table.Cell>
-                          <Button
-                            icon="coins"
-                            disabled={!pack.in_stock}
-                            onClick={() => act('add_to_cart', { id: pack.id })}
-                          >
-                            Buy ({pack.cost} M)
-                          </Button>
+                          <Stack align="center">
+                            <Stack.Item>
+                              <NumberInput
+                                width="48px"
+                                step={1}
+                                minValue={1}
+                                maxValue={99}
+                                value={getQuantity(pack.id)}
+                                onChange={(value) => setQuantity(pack.id, value)}
+                              />
+                            </Stack.Item>
+                            <Stack.Item>
+                              <Button
+                                fluid
+                                icon="coins"
+                                disabled={!pack.in_stock}
+                                onClick={() =>
+                                  act('add_to_cart', {
+                                    id: pack.id,
+                                    quantity: getQuantity(pack.id),
+                                  })
+                                }
+                              >
+                                Buy ({pack.cost * getQuantity(pack.id)} M)
+                              </Button>
+                            </Stack.Item>
+                          </Stack>
                         </Table.Cell>
                       </Table.Row>
                     );

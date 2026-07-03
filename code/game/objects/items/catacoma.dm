@@ -150,7 +150,12 @@
 			if(!pack)
 				return TRUE
 
-			cart[pack]++
+			var/quantity = round(text2num(params["quantity"]))
+			if(!quantity || quantity < 1)
+				quantity = 1
+			quantity = min(quantity, 100) // sanity cap
+
+			cart[pack] += quantity
 			return TRUE
 
 		if("remove_from_cart")
@@ -158,7 +163,11 @@
 			if(!pack)
 				return TRUE
 
-			cart[pack]--
+			var/quantity = round(text2num(params["quantity"]))
+			if(!quantity || quantity < 1)
+				quantity = 1
+
+			cart[pack] -= quantity
 			if(cart[pack] <= 0)
 				cart -= pack
 			return TRUE
