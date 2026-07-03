@@ -4,7 +4,6 @@ import { Window } from '../layouts';
 import {
   Box,
   Button,
-  Chart,
   Input,
   NumberInput,
   Section,
@@ -81,16 +80,64 @@ const formatSeconds = (totalSeconds: number): string => {
   return `${mins}:${secs.toString().padStart(2, '0')}`;
 };
 
-const getValidChartData = (history: SupplyPack['history']): number[][] => {
+const getCleanValues = (history: SupplyPack['history']): number[] => {
   if (!history || typeof history !== 'object') return [];
 
   const rawValues = Array.isArray(history) ? history : Object.values(history);
-  const cleanNumbers = rawValues
-    .map(Number)
-    .filter((val) => !isNaN(val) && isFinite(val));
+  return rawValues.map(Number).filter((val) => !isNaN(val) && isFinite(val));
+};
 
-  if (cleanNumbers.length < 2) return [];
-  return cleanNumbers.map((val, index) => [index, val]);
+// sparkline, IK we have Chart but Chart sucks ass tbh
+const TrendSparkline = ({
+  data,
+  width = 100,
+  height = 25,
+}: {
+  data: number[];
+  width?: number;
+  height?: number;
+}) => {
+  if (!data || data.length < 2) {
+    return (
+      <Box color="label" italic fontSize="0.9em">
+        Stable
+      </Box>
+    );
+  }
+
+  const min = Math.min(...data);
+  const max = Math.max(...data);
+  const range = max - min || Math.abs(min) * 0.1 || 1;
+  const pad = range * 0.15;
+  const paddedMin = min - pad;
+  const paddedRange = range + pad * 2;
+
+  const points = data.map((value, i) => {
+    const x = (i / (data.length - 1)) * width;
+    const y = height - ((value - paddedMin) / paddedRange) * height;
+    return [x, y] as const;
+  });
+
+  const linePath = points
+    .map((p, i) => `${i === 0 ? 'M' : 'L'} ${p[0].toFixed(2)} ${p[1].toFixed(2)}`)
+    .join(' ');
+  const fillPath = `${linePath} L ${width} ${height} L 0 ${height} Z`;
+
+  const isUp = data[data.length - 1] >= data[0];
+  const stroke = isUp ? '#f44336' : '#4caf50';
+  const fill = isUp ? 'rgba(76,175,80,0.12)' : 'rgba(244,67,54,0.12)';
+
+  return (
+    <svg
+      width={width}
+      height={height}
+      viewBox={`0 0 ${width} ${height}`}
+      style={{ display: 'block' }}
+    >
+      <path d={fillPath} fill={fill} stroke="none" />
+      <path d={linePath} fill="none" stroke={stroke} strokeWidth={1.5} />
+    </svg>
+  );
 };
 
 export const CatatomaLedger = (props) => {
@@ -318,13 +365,7 @@ export const CatatomaLedger = (props) => {
                   </Table.Row>
                 ) : (
                   filteredPacks.map((pack) => {
-                    const chartCoordinates = getValidChartData(pack.history);
-                    const yValues = chartCoordinates.map(coord => coord[1]);
-                    const minY = yValues.length > 0 ? Math.min(...yValues) : 0;
-                    const maxY = yValues.length > 0 ? Math.max(...yValues) : 100;
-                    const paddedRangeY: [number, number] = minY === maxY
-                      ? [minY - 5, maxY + 5]
-                      : [minY, maxY];
+                    const trendValues = getCleanValues(pack.history);
 
                     return (
                       <Table.Row key={pack.id} className="candystripe">
@@ -333,18 +374,7 @@ export const CatatomaLedger = (props) => {
                           <Box color="label" fontSize="0.9em">{pack.desc}</Box>
                         </Table.Cell>
                         <Table.Cell verticalAlign="middle" width="120px">
-                          {chartCoordinates.length > 0 ? (
-                            <Chart.Line
-                              data={chartCoordinates}
-                              height="25px"
-                              strokeColor="amber"
-                              fillColor="rgba(255, 193, 7, 0.1)"
-                              rangeX={[0, chartCoordinates.length - 1]}
-                              rangeY={paddedRangeY}
-                            />
-                          ) : (
-                            <Box color="label" italic fontSize="0.9em">Stable</Box>
-                          )}
+                          <TrendSparkline data={trendValues} width={100} height={25} />
                         </Table.Cell>
                         <Table.Cell>
                           <Stack align="center">
