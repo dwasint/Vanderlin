@@ -5,6 +5,7 @@
 	var/hidden = FALSE
 	var/contraband = FALSE
 	var/cost = 700 // Minimum cost, or infinite points are possible.
+	var/baseline_price = 0
 	var/access = FALSE
 	var/access_any = FALSE
 	var/list/contains = null
@@ -46,6 +47,7 @@
 
 	// Record initial cost as the first point on our market graph
 	record_cost_history()
+	baseline_price = cost
 
 /datum/supply_pack/proc/generate(atom/A, datum/bank_account/paying_account)
 	var/obj/structure/closet/crate/C

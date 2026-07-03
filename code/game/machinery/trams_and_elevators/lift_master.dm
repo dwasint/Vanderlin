@@ -743,20 +743,29 @@ GLOBAL_LIST_EMPTY(active_lifts_by_type)
 					modifier = 1.5
 
 			// DYNAMIC PRICING (Deduction phase)
+			var/datum/supply_pack/faction_pack
 			var/base_cost = requested.cost
 			if(ordering_faction && islist(ordering_faction.faction_supply_packs) && ordering_faction.faction_supply_packs[requested.type])
-				var/datum/supply_pack/faction_pack = ordering_faction.faction_supply_packs[requested.type]
+				faction_pack = ordering_faction.faction_supply_packs[requested.type]
 				base_cost = faction_pack.cost
+
+			var/units_bought = 0
 
 			for(var/i in 1 to requested_supplies[requested])
 				var/cost = FLOOR(base_cost * modifier, 1)
 				if(total_coin_value >= cost)
 					total_coin_value -= cost
 					spent_amount += cost
+					units_bought++
 
 					// Check stock matching the target ordering faction instead of global global state
 					if(ordering_faction && ordering_faction.has_supply_pack(requested.type))
 						SSmerchant.requestlist[requested] += 1
+
+			// Buying pushes that faction's live price for this pack upward - demand
+			// outpacing supply. Bigger nudge the further under baseline it currently sits.
+			if(units_bought && faction_pack)
+				ordering_faction.apply_purchase_demand_pressure(faction_pack, units_bought)
 
 		// Return remaining coins
 		spawn_coins(total_coin_value, platform, crate_type = /obj/structure/closet/crate/chest/merchant)

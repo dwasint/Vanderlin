@@ -130,5 +130,6 @@
 		if(faction.faction_supply_packs[pack_type])
 			var/datum/supply_pack/pack = faction.faction_supply_packs[pack_type]
 			pack.cost = max(1, round(pack.cost * modifier))
+			pack.baseline_price = max(1, round(pack.baseline_price * modifier))
 			// Record the history graph drop
 			pack.record_cost_history()

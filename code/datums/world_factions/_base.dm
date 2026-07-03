@@ -335,13 +335,51 @@
 		var/change_modifier = 1.0 + (rand(min_swing, max_swing) * 0.01)
 
 		var/old_cost = pack.cost
-		pack.cost = max(1, round(pack.cost * change_modifier))
+		var/new_cost = max(1, round(pack.cost * change_modifier))
 
-		// Log changes to the graph
+		if(pack.baseline_price)
+			var/floor_cost = max(1, round(pack.baseline_price * SUPPLY_PRICE_FLOOR_MULT))
+			var/ceiling_cost = max(floor_cost, round(pack.baseline_price * SUPPLY_PRICE_CEILING_MULT))
+			new_cost = clamp(new_cost, floor_cost, ceiling_cost)
+
+		pack.cost = new_cost
+
 		if(old_cost != pack.cost)
 			pack.record_cost_history()
 
 	next_supply_rotation = world.time + supply_rotation_interval
+
+/**
+ * Nudges a pack's live price up whenever it's bought.
+ * Small flat nudge if the pack is already at/above its baseline price; a bigger
+ * corrective nudge the further under baseline it currently sits.
+ */
+/datum/world_faction/proc/apply_purchase_demand_pressure(datum/supply_pack/pack, quantity = 1)
+	if(!pack || !quantity)
+		return
+	if(pack.static_cost || !pack.baseline_price)
+		return
+
+	var/old_cost = pack.cost
+
+	for(var/i = 1 to quantity)
+		var/ratio = pack.cost / pack.baseline_price // 1.0 = baseline, <1 discounted, >1 marked up
+
+		var/push_percent
+		if(ratio <= 1)
+			push_percent = SUPPLY_DEMAND_PUSH_BASE + ((1 - ratio) * SUPPLY_DEMAND_PUSH_DISCOUNT_SCALING)
+		else
+			push_percent = SUPPLY_DEMAND_PUSH_BASE
+
+		pack.cost = max(1, round(pack.cost * (1 + (push_percent * 0.01))))
+
+		var/floor_cost = max(1, round(pack.baseline_price * SUPPLY_PRICE_FLOOR_MULT))
+		var/ceiling_cost = max(floor_cost, round(pack.baseline_price * SUPPLY_PRICE_CEILING_MULT))
+		pack.cost = clamp(pack.cost, floor_cost, ceiling_cost)
+
+	if(pack.cost != old_cost)
+		pack.record_cost_history()
+
 // Award reputation for purchasing supplies
 /datum/world_faction/proc/award_supply_reputation(datum/supply_pack/pack)
 	var/rep_gain = supply_rep_reward_base
