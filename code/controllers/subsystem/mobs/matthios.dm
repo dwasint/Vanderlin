@@ -4,7 +4,7 @@
 SUBSYSTEM_DEF(matthios_mobs)
 	name = "Matthios Mobs"
 	priority = FIRE_PRIORITY_MOBS - 2
-	flags = SS_KEEP_TIMING | SS_NO_INIT | SS_BACKGROUND
+	flags = SS_KEEP_TIMING | SS_NO_INIT
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 	wait = 2 SECONDS
 	var/list/currentrun = list()
