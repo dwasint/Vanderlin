@@ -176,8 +176,6 @@ SUBSYSTEM_DEF(familytree)
 				else
 					assigned = AssignToFamily(H)
 
-		if(!assigned)
-			pending_latejoin += H
 
 /datum/controller/subsystem/familytree/proc/AddRoyal(mob/living/carbon/human/H, status)
 	if(!ruling_family.housename)
