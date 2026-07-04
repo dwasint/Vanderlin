@@ -65,6 +65,8 @@ SUBSYSTEM_DEF(matthios_mobs)
 					continue
 				seen_cells[cell] = TRUE
 				for(var/atom/hearable as anything in cell.hearing_contents)
+					if(hearable in clients_here)
+						continue
 					.[hearable] = TRUE
 
 /datum/controller/subsystem/matthios_mobs/proc/register_mob(mob/living/L)
