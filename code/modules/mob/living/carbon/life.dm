@@ -20,8 +20,16 @@
 		. = ..()
 	else
 		//Reagent processing needs to come before breathing, to prevent edge cases.
-		handle_organs(delta_time, times_fired)
-		handle_bodyparts(delta_time, times_fired)
+		var/organ_flag = handle_organs(delta_time, times_fired)
+		var/bodypart_flag = handle_bodyparts(delta_time, times_fired)
+
+		var/shock_flag = NONE
+		shock_flag |= handle_shock(delta_time, times_fired)
+		shock_flag |= handle_shock_stage(delta_time, times_fired)
+
+		if((organ_flag & ORGAN_PROCESS_UPDATE_HEALTH) || (bodypart_flag & BODYPART_LIFE_UPDATE_HEALTH) || (shock_flag & SHOCK_PROCESS_UPDATE_HEALTH))
+			updatehealth()
+			update_stamina()
 
 		. = ..()
 
@@ -32,9 +40,6 @@
 		handle_embedded_objects()
 		update_stress()
 		handle_nausea()
-
-		handle_shock(delta_time, times_fired)
-		handle_shock_stage(delta_time, times_fired)
 
 		handle_sleep()
 
@@ -90,7 +95,7 @@
 			// This exists mostly because reagent metabolization can cause organ shuffling
 			if(!QDELETED(organ) && !already_processed_life[organ_slot] && (organ.owner == src))
 				if(organ.needs_processing)
-					organ.on_life(delta_time, times_fired)
+					. |= organ.on_life(delta_time, times_fired)
 				already_processed_life[organ] = TRUE
 
 	if(stat < DEAD)
@@ -99,11 +104,11 @@
 				break
 			var/datum/organ_process/organ_process = GLOB.organ_processes_by_slot[thing]
 			if(organ_process.needs_process(src))
-				organ_process.handle_process(src, delta_time, times_fired)
+				. |= organ_process.handle_process(src, delta_time, times_fired)
 	else
 		for(var/obj/item/organ/organ as anything in internal_organs)
 			//Needed so organs decay while inside the body
-			organ.on_death(delta_time, times_fired)
+			. |= organ.on_death(delta_time, times_fired)
 
 
 /mob/living/carbon/handle_embedded_objects()

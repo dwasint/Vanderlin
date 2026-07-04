@@ -131,7 +131,7 @@
 
 /mob/living/carbon/proc/handle_shock_stage(delta_time, times_fired)
 	if(!can_feel_pain())
-		setShockStage(0)
+		. |= setShockStage(0, FALSE, deferred = TRUE)
 		remove_movespeed_modifier(MOVESPEED_ID_SHOCK, FALSE)
 		remove_movespeed_modifier(MOVESPEED_ID_CARDIAC_ARREST, TRUE)
 		hud_used?.update_chromatic_aberration(intensity = 0)
@@ -142,7 +142,7 @@
 
 	//Cardiac arrest automatically throws us into sofcrit territory
 	if(undergoing_cardiac_arrest())
-		setShockStage(max(shock_stage, SHOCK_STAGE_4))
+		. |= setShockStage(max(shock_stage, SHOCK_STAGE_4), deferred = TRUE)
 		add_movespeed_modifier(MOVESPEED_ID_CARDIAC_ARREST, TRUE, multiplicative_slowdown = 5)
 	else
 		remove_movespeed_modifier(MOVESPEED_ID_CARDIAC_ARREST, TRUE)

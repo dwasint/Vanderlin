@@ -428,12 +428,15 @@
 		var/multiplier = 1
 		if(owner.body_position == LYING_DOWN)
 			multiplier *= pain_heal_rest_multiplier
-		remove_pain(amount = (pain_heal_tick * multiplier * delta_time * (PAIN_SYSTEM_SPEED_MODIFIER/10)), updating_health = FALSE)
+		if(remove_pain(amount = (pain_heal_tick * multiplier * delta_time * (PAIN_SYSTEM_SPEED_MODIFIER/10)), updating_health = FALSE))
+			. |= BODYPART_LIFE_UPDATE_HEALTH
 	if(can_decay())
 		if(germ_level || (getorganslotefficiency(ORGAN_SLOT_ARTERY) < ORGAN_FAILING_EFFICIENCY))
 			update_germs(delta_time, times_fired)
+			. |= BODYPART_LIFE_UPDATE_HEALTH
 	if(number_injuries)
 		update_injuries(delta_time, times_fired)
+		. |= BODYPART_LIFE_UPDATE_HEALTH
 
 /// Check if we need to run on_life()
 /obj/item/bodypart/proc/consider_processing()
@@ -611,7 +614,7 @@
 			heal_amt *= injury.amount
 			injury.heal_damage(heal_amt * delta_time)
 
-	if(post_damage_change())
+	if(post_damage_change(FALSE))
 		owner.update_damage_overlays()
 
 /// Updates brute_damn and burn_damn from injuries

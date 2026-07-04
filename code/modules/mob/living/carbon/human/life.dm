@@ -113,8 +113,12 @@
 
 	. = ..()
 	name = get_visible_name()
-	handle_organs(delta_time, times_fired)
-	handle_bodyparts(delta_time, times_fired)
+	var/organ_flag = handle_organs(delta_time, times_fired)
+	var/bodypart_flag = handle_bodyparts(delta_time, times_fired)
+
+	if((organ_flag & ORGAN_PROCESS_UPDATE_HEALTH) || (bodypart_flag & BODYPART_LIFE_UPDATE_HEALTH))
+		updatehealth()
+		update_stamina() //gods greatest optimization
 
 /mob/living/carbon/human/proc/on_daypass()
 	if(stat < 3) //not dead

@@ -379,3 +379,10 @@ DEFINE_BITFIELD(organ_flags, list(
 
 /// Injuries bleed at (bleed_rate / BLEED_DAMAGE_RATIO) per tick
 #define BLEED_DAMAGE_RATIO 25
+
+// /obj/item/bodypart on_mob_life() retval flag
+#define BODYPART_LIFE_UPDATE_HEALTH (1<<0)
+// /datum/organ_process/handle_process retval flag
+#define ORGAN_PROCESS_UPDATE_HEALTH (1<<1) // why is this like so? cause
+// /mob/living/carbon/handle_shock() retval flag
+#define SHOCK_PROCESS_UPDATE_HEALTH (1<<0)

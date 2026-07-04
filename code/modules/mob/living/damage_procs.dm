@@ -281,13 +281,15 @@
 	if(updating_health)
 		updatehealth()
 
-/mob/living/proc/setShockStage(amount, updating_health = TRUE, forced = FALSE)
+/mob/living/proc/setShockStage(amount, updating_health = TRUE, forced = FALSE, deferred = FALSE)
 	if(!forced && status_flags & GODMODE)
 		return
-	. = painloss
 	shock_stage = amount
 	if(updating_health)
-		updatehealth()
+		if(deferred)
+			. |= SHOCK_PROCESS_UPDATE_HEALTH
+		else
+			updatehealth()
 
 // heal ONE external organ, organ gets randomly selected from damaged ones.
 /mob/living/proc/heal_bodypart_damage(brute = 0, burn = 0, updating_health = TRUE, required_status)
