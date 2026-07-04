@@ -193,7 +193,7 @@
 		owner.remove_status_effect(/datum/status_effect/debuff/bleedingworse)
 		owner.remove_status_effect(/datum/status_effect/debuff/bleedingworst)
 
-	if(owner.get_bleed_rate())
+	if(temp_bleed)
 		owner.add_stress(/datum/stress_event/bleeding)
 	else
 		owner.remove_stress(/datum/stress_event/bleeding)
