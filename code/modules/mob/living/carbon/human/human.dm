@@ -1019,14 +1019,11 @@
 	create_bodyparts()
 
 /mob/living/carbon/human/species
-	var/race = null
 	var/attribute_sheet
 	var/headprice
 
 /mob/living/carbon/human/species/Initialize()
 	. = ..()
-	if(race)
-		set_species(race)
 	if(attribute_sheet)
 		attributes?.add_sheet(attribute_sheet)
 	return INITIALIZE_HINT_LATELOAD

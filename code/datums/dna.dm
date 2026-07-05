@@ -201,6 +201,8 @@
 	dna = new /datum/dna(src)
 	if(!dna.species)
 		var/datum/species/random_species = GLOB.species_list[pick(GLOB.roundstart_species)]
+		if(race)
+			random_species = GLOB.species_list[race]
 		set_species(random_species, TRUE)
 
 //proc used to update the mob's appearance after its dna UI has been changed
