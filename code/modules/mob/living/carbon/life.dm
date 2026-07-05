@@ -29,12 +29,13 @@
 
 		var/organ_flag = handle_organs(delta_time, times_fired,virus_immunity, antibiotics, immunity_weakness, passed_temp)
 		var/bodypart_flag = handle_bodyparts(delta_time, times_fired,virus_immunity, antibiotics, immunity_weakness, passed_temp)
+		var/sleep_flag = handle_sleep()
 
 		var/shock_flag = NONE
 		shock_flag |= handle_shock(delta_time, times_fired)
 		shock_flag |= handle_shock_stage(delta_time, times_fired)
 
-		if((organ_flag & ORGAN_PROCESS_UPDATE_HEALTH) || (bodypart_flag & BODYPART_LIFE_UPDATE_HEALTH) || (shock_flag & SHOCK_PROCESS_UPDATE_HEALTH))
+		if((organ_flag & ORGAN_PROCESS_UPDATE_HEALTH) || (bodypart_flag & BODYPART_LIFE_UPDATE_HEALTH) || (shock_flag & SHOCK_PROCESS_UPDATE_HEALTH) || (sleep_flag & BODYPART_LIFE_UPDATE_HEALTH))
 			updatehealth()
 			update_stamina()
 
@@ -48,7 +49,6 @@
 		update_stress()
 		handle_nausea()
 
-		handle_sleep()
 
 	check_cremation()
 
@@ -459,8 +459,9 @@ All effects don't start immediately, but rather get worse over time; the rate is
 					if(!wound.sleep_healing)
 						continue
 					wound.heal_wound(wound.sleep_healing * sleepy_mod)
-			adjustToxLoss(-(sleepy_mod * 0.15), forced = TRUE)
-			updatehealth()
+			if(toxloss)
+				adjustToxLoss(-(sleepy_mod * 0.15), FALSE, TRUE)
+				. |= BODYPART_LIFE_UPDATE_HEALTH
 			if(eyesclosed && !HAS_TRAIT(src, TRAIT_NOSLEEP))
 				Sleeping(300)
 		tiredness = 0
