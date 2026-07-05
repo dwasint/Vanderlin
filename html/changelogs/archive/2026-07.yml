@@ -83,3 +83,6 @@
   - balance: Rebalanced thrown force of cleavers and buffed force for cleavers
   - image: Inhand and onmob icons for cleavers updated to use the same system as other
       weapons
+2026-07-05:
+  realforest2001:
+  - bugfix: Fixed admin categories for leadership roles.
