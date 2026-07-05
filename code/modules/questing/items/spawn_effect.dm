@@ -22,6 +22,7 @@
 /obj/effect/quest_spawn/proc/set_contained_atom(atom/movable/contained)
 	RegisterSignal(contained, COMSIG_LIVING_LIFE, PROC_REF(cancel_life))
 	ADD_TRAIT(contained, TRAIT_STASIS, "[type]")
+	contained_atom = contained
 
 /obj/effect/quest_spawn/proc/cancel_life()
 	return COMPONENT_LIVING_CANCEL_LIFE_PROCESSING
