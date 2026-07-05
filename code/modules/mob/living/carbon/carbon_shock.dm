@@ -148,7 +148,7 @@
 		remove_movespeed_modifier(MOVESPEED_ID_CARDIAC_ARREST, TRUE)
 
 	if(traumatic_shock > 0.8 * shock_stage)
-		adjustShockStage(delta_time * (ATTRIBUTE_MIDDLING/our_endurance) * PAIN_SYSTEM_SPEED_MODIFIER)
+		. |= adjustShockStage(delta_time * (ATTRIBUTE_MIDDLING/our_endurance) * PAIN_SYSTEM_SPEED_MODIFIER, deferred = TRUE)
 	else if(!undergoing_cardiac_arrest())
 		var/recovery = delta_time
 		//Lower shock faster the less pain we feel
@@ -156,7 +156,7 @@
 			recovery += 1
 		if(traumatic_shock < 0.25 * shock_stage)
 			recovery += 1
-		adjustShockStage(-recovery * (our_endurance/ATTRIBUTE_MIDDLING) * PAIN_SYSTEM_SPEED_MODIFIER * 0.75)
+		. |= adjustShockStage(-recovery * (our_endurance/ATTRIBUTE_MIDDLING) * PAIN_SYSTEM_SPEED_MODIFIER * 0.75, deferred = TRUE)
 
 	//Shock makes us slow
 	if(shock_stage >= (SHOCK_STAGE_2 * (our_endurance/ATTRIBUTE_MIDDLING)))
