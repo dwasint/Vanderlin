@@ -199,10 +199,10 @@
 
 /mob/living/carbon/proc/create_dna()
 	dna = new /datum/dna(src)
-	if(!dna.species || race)
+	if(race)
+		dna.species = new race()
+	if(!dna.species)
 		var/datum/species/random_species = GLOB.species_list[pick(GLOB.roundstart_species)]
-		if(race)
-			random_species = race
 		set_species(random_species, TRUE)
 
 //proc used to update the mob's appearance after its dna UI has been changed

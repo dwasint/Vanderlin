@@ -114,6 +114,7 @@
 	//initialize limbs first
 	create_bodyparts()
 
+	attribute_initialize() // chud shit
 	setup_human_dna()
 
 	if(dna.species)
