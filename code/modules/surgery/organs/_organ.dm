@@ -378,39 +378,42 @@
 		return TRUE
 
 /// Runs decay both inside and outside a person
-/obj/item/organ/proc/on_death(delta_time, times_fired)
+/obj/item/organ/proc/on_death(delta_time, times_fired, passed_temp)
 	if(!owner && !isbodypart(loc))
 		if(isnull(loc))
 			STOP_PROCESSING(SSobj, src)
 		organ_flags |= ORGAN_CUT_AWAY
-	if(can_decay())
+	if(can_decay(passed_temp))
 		decay(delta_time)
 	// else
 	// 	STOP_PROCESSING(SSobj, src)
 
 /// Infection/rot checks
-/obj/item/organ/proc/can_decay()
+/obj/item/organ/proc/can_decay(passed_temp)
 	if(isreagentcontainer(loc))
 		return FALSE /// preserving ah.
-	check_cold()
+	check_cold(passed_temp)
 	if(CHECK_BITFIELD(organ_flags, ORGAN_FROZEN|ORGAN_NECROTIC|ORGAN_SYNTHETIC|ORGAN_INDESTRUCTIBLE))//I'll let arteries not rot to make life easier
 		return FALSE
 	return TRUE
 
 // Checks to see if the organ is frozen from temperature and adds the ORGAN_FROZEN flag if so
-/obj/item/organ/proc/check_cold()
+/obj/item/organ/proc/check_cold(passed_temp)
 	var/local_temp
-	if(!owner)
-		//Only concern is adding an organ to a freezer when the area around it is cold.
-		if(isturf(loc))
-			var/turf/turf_loc = loc
-			local_temp = turf_loc?.return_temperature()
-		else if(ismob(loc))
-			var/mob/holder = loc
-			var/turf/turf_loc = holder.loc
-			local_temp = turf_loc?.return_temperature()
+	if(passed_temp)
+		local_temp = passed_temp
 	else
-		local_temp = owner.bodytemperature
+		if(!owner)
+			//Only concern is adding an organ to a freezer when the area around it is cold.
+			if(isturf(loc))
+				var/turf/turf_loc = loc
+				local_temp = turf_loc?.return_temperature()
+			else if(ismob(loc))
+				var/mob/holder = loc
+				var/turf/turf_loc = holder.loc
+				local_temp = turf_loc?.return_temperature()
+		else
+			local_temp = owner.bodytemperature
 
 	// Shouldn't happen but just in case
 	if(isnull(local_temp))
@@ -476,13 +479,13 @@
 		if(owner?.body_position == LYING_DOWN)
 			adjust_germ_level(-SANITIZATION_LYING * delta_time)
 
-/obj/item/organ/proc/on_life(delta_time, times_fired, in_bleedout, virus_immunity, antibiotics, immunity_weakness)	//repair organ damage if the organ is not failing
+/obj/item/organ/proc/on_life(delta_time, times_fired, in_bleedout, virus_immunity, antibiotics, immunity_weakness, passed_temp)	//repair organ damage if the organ is not failing
 	SHOULD_CALL_PARENT(TRUE)
 	if(!owner)
 		return
 
 	/// Handle germs before anything else!
-	if(can_decay())
+	if(can_decay(passed_temp))
 		handle_germ_effects(delta_time, times_fired, virus_immunity, antibiotics, immunity_weakness)
 		handle_antibiotics(delta_time, times_fired, antibiotics)
 	else

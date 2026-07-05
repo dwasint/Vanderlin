@@ -24,9 +24,11 @@
 		var/virus_immunity = virus_immunity()
 		var/antibiotics = get_antibiotics()
 		var/immunity_weakness = immunity_weakness()
+		var/turf/turf_loc = loc
+		var/passed_temp = turf_loc?.return_temperature()
 
-		var/organ_flag = handle_organs(delta_time, times_fired,virus_immunity, antibiotics, immunity_weakness)
-		var/bodypart_flag = handle_bodyparts(delta_time, times_fired,virus_immunity, antibiotics, immunity_weakness)
+		var/organ_flag = handle_organs(delta_time, times_fired,virus_immunity, antibiotics, immunity_weakness, passed_temp)
+		var/bodypart_flag = handle_bodyparts(delta_time, times_fired,virus_immunity, antibiotics, immunity_weakness, passed_temp)
 
 		var/shock_flag = NONE
 		shock_flag |= handle_shock(delta_time, times_fired)
@@ -79,12 +81,12 @@
 		return TRUE
 	return FALSE
 
-/mob/living/carbon/proc/handle_bodyparts(delta_time, times_fired, virus_immunity, antibiotics, immunity_weakness)
+/mob/living/carbon/proc/handle_bodyparts(delta_time, times_fired, virus_immunity, antibiotics, immunity_weakness, passed_temp)
 	for(var/obj/item/bodypart/bodypart as anything in bodyparts)
 		if(bodypart.needs_processing)
-			. |= bodypart.on_life(delta_time, times_fired, virus_immunity, antibiotics, immunity_weakness)
+			. |= bodypart.on_life(delta_time, times_fired, virus_immunity, antibiotics, immunity_weakness, passed_temp)
 
-/mob/living/carbon/proc/handle_organs(delta_time, times_fired, virus_immunity, antibiotics, immunity_weakness)
+/mob/living/carbon/proc/handle_organs(delta_time, times_fired, virus_immunity, antibiotics, immunity_weakness, passed_temp)
 	if(HAS_TRAIT(src, TRAIT_NO_ORGAN_PROCESS)) //internal stasis basically
 		return
 
@@ -101,7 +103,7 @@
 			// This exists mostly because reagent metabolization can cause organ shuffling
 			if(!QDELETED(organ) && !already_processed_life[organ_slot] && (organ.owner == src))
 				if(organ.needs_processing)
-					. |= organ.on_life(delta_time, times_fired, in_bleedout, virus_immunity, antibiotics, immunity_weakness)
+					. |= organ.on_life(delta_time, times_fired, in_bleedout, virus_immunity, antibiotics, immunity_weakness, passed_temp)
 				already_processed_life[organ] = TRUE
 
 	if(stat < DEAD)
@@ -114,7 +116,7 @@
 	else
 		for(var/obj/item/organ/organ as anything in internal_organs)
 			//Needed so organs decay while inside the body
-			. |= organ.on_death(delta_time, times_fired)
+			. |= organ.on_death(delta_time, times_fired, passed_temp)
 
 
 /mob/living/carbon/handle_embedded_objects()

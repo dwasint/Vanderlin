@@ -117,9 +117,11 @@
 	var/virus_immunity = virus_immunity()
 	var/antibiotics = get_antibiotics()
 	var/immunity_weakness = immunity_weakness()
+	var/turf/turf_loc = loc
+	var/passed_temp = turf_loc?.return_temperature()
 
-	var/organ_flag = handle_organs(delta_time, times_fired,virus_immunity, antibiotics, immunity_weakness)
-	var/bodypart_flag = handle_bodyparts(delta_time, times_fired,virus_immunity, antibiotics, immunity_weakness)
+	var/organ_flag = handle_organs(delta_time, times_fired,virus_immunity, antibiotics, immunity_weakness, passed_temp)
+	var/bodypart_flag = handle_bodyparts(delta_time, times_fired,virus_immunity, antibiotics, immunity_weakness, passed_temp)
 
 	if((organ_flag & ORGAN_PROCESS_UPDATE_HEALTH) || (bodypart_flag & BODYPART_LIFE_UPDATE_HEALTH))
 		updatehealth()
