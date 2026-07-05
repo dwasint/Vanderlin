@@ -60,7 +60,10 @@ SUBSYSTEM_DEF(matthios_mobs)
 		if(!length(clients_here))
 			continue
 		for(var/mob/living/client_mob as anything in clients_here)
-			for(var/datum/spatial_grid_cell/cell as anything in SSspatial_grid.get_cells_in_range(client_mob, MATTHIOS_PROCESSING_TILE_RANGE))
+			var/turf/turf = get_turf(client_mob)
+			if(!turf)
+				continue
+			for(var/datum/spatial_grid_cell/cell as anything in SSspatial_grid.get_cells_in_range(turf, MATTHIOS_PROCESSING_TILE_RANGE))
 				if(seen_cells[cell])
 					continue
 				seen_cells[cell] = TRUE
