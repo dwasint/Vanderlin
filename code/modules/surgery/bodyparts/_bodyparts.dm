@@ -423,7 +423,7 @@
 	update_limb_efficiency()
 
 /// Return TRUE to get whatever mob this is in to update health.
-/obj/item/bodypart/proc/on_life(delta_time, times_fired)
+/obj/item/bodypart/proc/on_life(delta_time, times_fired, virus_immunity, antibiotics, immunity_weakness)
 	if(pain_heal_tick)
 		var/multiplier = 1
 		if(owner.body_position == LYING_DOWN)
@@ -432,7 +432,7 @@
 			. |= BODYPART_LIFE_UPDATE_HEALTH
 	if(can_decay())
 		if(germ_level || (getorganslotefficiency(ORGAN_SLOT_ARTERY) < ORGAN_FAILING_EFFICIENCY))
-			update_germs(delta_time, times_fired)
+			update_germs(delta_time, times_fired, virus_immunity, antibiotics, immunity_weakness)
 			. |= BODYPART_LIFE_UPDATE_HEALTH
 	if(number_injuries)
 		update_injuries(delta_time, times_fired)
@@ -634,12 +634,12 @@
 		number_injuries += injury.amount
 
 /// General handling of infections
-/obj/item/bodypart/proc/update_germs(delta_time, times_fired)
+/obj/item/bodypart/proc/update_germs(delta_time, times_fired, virus_immunity, antibiotics)
 	//Cryo stops germs from moving and doing their bad stuffs
 	if(owner.bodytemperature <= -15)
 		return
 	handle_germ_sync(delta_time, times_fired)
-	handle_germ_effects(delta_time, times_fired)
+	handle_germ_effects(delta_time, times_fired, virus_immunity, antibiotics)
 	handle_antibiotics(delta_time, times_fired)
 
 /// Try to sync wound/inuries etc with our germ level
@@ -672,10 +672,7 @@
 
 
 /// Handle infection effects
-/obj/item/bodypart/proc/handle_germ_effects(delta_time, times_fired)
-	var/immunity = owner.virus_immunity()
-	var/immunity_weakness = owner.immunity_weakness()
-	var/antibiotics = owner.get_antibiotics()
+/obj/item/bodypart/proc/handle_germ_effects(delta_time, times_fired, immunity, antibiotics, immunity_weakness)
 	var/arterial_efficiency = getorganslotefficiency(ORGAN_SLOT_ARTERY)
 
 	// Being properly oxygenated

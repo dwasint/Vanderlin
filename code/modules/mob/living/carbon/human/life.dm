@@ -113,8 +113,12 @@
 
 	. = ..()
 	name = get_visible_name()
-	var/organ_flag = handle_organs(delta_time, times_fired)
-	var/bodypart_flag = handle_bodyparts(delta_time, times_fired)
+
+	var/virus_immunity = virus_immunity()
+	var/antibiotics = get_antibiotics()
+
+	var/organ_flag = handle_organs(delta_time, times_fired,virus_immunity, antibiotics)
+	var/bodypart_flag = handle_bodyparts(delta_time, times_fired,virus_immunity, antibiotics)
 
 	if((organ_flag & ORGAN_PROCESS_UPDATE_HEALTH) || (bodypart_flag & BODYPART_LIFE_UPDATE_HEALTH))
 		updatehealth()

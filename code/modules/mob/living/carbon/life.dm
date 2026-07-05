@@ -20,8 +20,12 @@
 		. = ..()
 	else
 		//Reagent processing needs to come before breathing, to prevent edge cases.
-		var/organ_flag = handle_organs(delta_time, times_fired)
-		var/bodypart_flag = handle_bodyparts(delta_time, times_fired)
+
+		var/virus_immunity = virus_immunity()
+		var/antibiotics = get_antibiotics()
+
+		var/organ_flag = handle_organs(delta_time, times_fired,virus_immunity, antibiotics)
+		var/bodypart_flag = handle_bodyparts(delta_time, times_fired,virus_immunity, antibiotics)
 
 		var/shock_flag = NONE
 		shock_flag |= handle_shock(delta_time, times_fired)
@@ -74,15 +78,18 @@
 		return TRUE
 	return FALSE
 
-/mob/living/carbon/proc/handle_bodyparts(delta_time, times_fired)
+/mob/living/carbon/proc/handle_bodyparts(delta_time, times_fired, virus_immunity, antibiotics)
+	var/immunity_weakness = immunity_weakness()
+
 	for(var/obj/item/bodypart/bodypart as anything in bodyparts)
 		if(bodypart.needs_processing)
-			. |= bodypart.on_life(delta_time, times_fired)
+			. |= bodypart.on_life(delta_time, times_fired, virus_immunity, antibiotics, immunity_weakness)
 
-/mob/living/carbon/proc/handle_organs(delta_time, times_fired)
+/mob/living/carbon/proc/handle_organs(delta_time, times_fired, virus_immunity, antibiotics)
 	if(HAS_TRAIT(src, TRAIT_NO_ORGAN_PROCESS)) //internal stasis basically
 		return
 
+	var/in_bleedout = in_bleedout()
 	// This is no longer tied to mob stat since organs can live on their own
 	var/list/already_processed_life = list()
 	for(var/organ_slot in GLOB.organ_process_order)
@@ -95,7 +102,7 @@
 			// This exists mostly because reagent metabolization can cause organ shuffling
 			if(!QDELETED(organ) && !already_processed_life[organ_slot] && (organ.owner == src))
 				if(organ.needs_processing)
-					. |= organ.on_life(delta_time, times_fired)
+					. |= organ.on_life(delta_time, times_fired, in_bleedout, virus_immunity, antibiotics)
 				already_processed_life[organ] = TRUE
 
 	if(stat < DEAD)
