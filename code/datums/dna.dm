@@ -199,7 +199,7 @@
 
 /mob/living/carbon/proc/create_dna()
 	dna = new /datum/dna(src)
-	if(!dna.species)
+	if(!dna.species && !race)
 		var/datum/species/random_species = GLOB.species_list[pick(GLOB.roundstart_species)]
 		if(race)
 			random_species = GLOB.species_list[race]
