@@ -273,13 +273,16 @@
 /mob/living/proc/getShockStage()
 	return shock_stage
 
-/mob/living/proc/adjustShockStage(amount, updating_health = TRUE, forced = FALSE)
+/mob/living/proc/adjustShockStage(amount, updating_health = TRUE, forced = FALSE, deferred = FALSE)
 	if(!forced && (status_flags & GODMODE))
 		return
-	. = shock_stage
+	var/old = shock_stage
 	shock_stage = clamp((shock_stage + (amount * CONFIG_GET(number/damage_multiplier))), 0, SHOCK_STAGE_MAX)
-	if(updating_health)
-		updatehealth()
+	if(updating_health && old != shock_stage)
+		if(deferred)
+			. |= SHOCK_PROCESS_UPDATE_HEALTH
+		else
+			updatehealth()
 
 /mob/living/proc/setShockStage(amount, updating_health = TRUE, forced = FALSE, deferred = FALSE)
 	if(!forced && status_flags & GODMODE)
