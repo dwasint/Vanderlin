@@ -425,14 +425,14 @@
 
 
 /// Malus caused by germs
-/obj/item/organ/proc/handle_germ_effects(delta_time, times_fired, virus_immunity, antibiotics)
+/obj/item/organ/proc/handle_germ_effects(delta_time, times_fired, virus_immunity, antibiotics, immunity_weakness)
 	if(germ_level > 0 && germ_level < INFECTION_LEVEL_ONE/2 && DT_PROB(virus_immunity*0.15, delta_time))
 		adjust_germ_level(-0.5 * delta_time)
 		return
 
 	if(germ_level >= INFECTION_LEVEL_ONE/2)
 		//Aiming for germ level to go from ambient to INFECTION_LEVEL_TWO in an average of 15 minutes, when immunity is full.
-		if(antibiotics < 5 && DT_PROB(round(germ_level/6 * owner.immunity_weakness() * 0.005), delta_time))
+		if(antibiotics < 5 && DT_PROB(round(germ_level/6 * immunity_weakness * 0.005), delta_time))
 			if(virus_immunity > 0)
 				adjust_germ_level(clamp(round(0.5/virus_immunity), 1, 10) * delta_time) // Immunity starts at 100. This doubles infection rate at 50% immunity. Rounded to nearest whole.
 			else // Will only trigger if immunity has hit zero. Once it does, 10x infection rate.
@@ -446,7 +446,7 @@
 		var/obj/item/bodypart/bodypart = owner.get_bodypart(current_zone)
 		if(bodypart)
 			//Spread germs
-			if(antibiotics < 5 && bodypart.germ_level < germ_level && (bodypart.germ_level < INFECTION_LEVEL_ONE*2 || DT_PROB(owner.immunity_weakness() * 0.15, delta_time)))
+			if(antibiotics < 5 && bodypart.germ_level < germ_level && (bodypart.germ_level < INFECTION_LEVEL_ONE*2 || DT_PROB(immunity_weakness * 0.15, delta_time)))
 				bodypart.adjust_germ_level(0.5 * delta_time)
 		//Cause organ damage about once every ~30 seconds
 		//The bodypart deals with dealing raw toxin damage, let's not stack onto the problem now
@@ -476,14 +476,14 @@
 		if(owner?.body_position == LYING_DOWN)
 			adjust_germ_level(-SANITIZATION_LYING * delta_time)
 
-/obj/item/organ/proc/on_life(delta_time, times_fired, in_bleedout, virus_immunity, antibiotics)	//repair organ damage if the organ is not failing
+/obj/item/organ/proc/on_life(delta_time, times_fired, in_bleedout, virus_immunity, antibiotics, immunity_weakness)	//repair organ damage if the organ is not failing
 	SHOULD_CALL_PARENT(TRUE)
 	if(!owner)
 		return
 
 	/// Handle germs before anything else!
 	if(can_decay())
-		handle_germ_effects(delta_time, times_fired, virus_immunity, antibiotics)
+		handle_germ_effects(delta_time, times_fired, virus_immunity, antibiotics, immunity_weakness)
 		handle_antibiotics(delta_time, times_fired, antibiotics)
 	else
 		germ_level = 0
