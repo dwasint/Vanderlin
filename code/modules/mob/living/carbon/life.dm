@@ -101,8 +101,8 @@
 			if(QDELETED(src))
 				break
 			// This exists mostly because reagent metabolization can cause organ shuffling
-			if(!QDELETED(organ) && !already_processed_life[organ_slot] && (organ.owner == src))
-				if(organ.needs_processing)
+			if(!QDELETED(organ) && !already_processed_life[organ] && (organ.owner == src))
+				if(in_bleedout || organ.needs_processing)
 					. |= organ.on_life(delta_time, times_fired, in_bleedout, virus_immunity, antibiotics, immunity_weakness, passed_temp)
 				already_processed_life[organ] = TRUE
 

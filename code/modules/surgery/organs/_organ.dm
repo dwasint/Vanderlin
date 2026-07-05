@@ -238,6 +238,7 @@
 			if(owner?.bodytemperature > BODYTEMP_NORMAL)
 				temperature_mod += round((owner.bodytemperature - BODYTEMP_NORMAL) / (BODYTEMP_MAX_TEMPERATURE - BODYTEMP_NORMAL), 0.1)
 			applyOrganDamage(decay_factor * maxHealth * temperature_mod * delta_time)
+	consider_processing()
 
 /obj/item/organ/proc/generate_chimeric_organ(mob/living/source_mob)
 	if(!source_mob)
@@ -370,6 +371,7 @@
 	. = ..()
 	if((germ_level >= INFECTION_LEVEL_THREE) && !CHECK_BITFIELD(organ_flags, ORGAN_NECROTIC))
 		kill_organ()
+	consider_processing()
 
 /obj/item/organ/proc/kill_organ()
 	. = FALSE
@@ -479,6 +481,20 @@
 		if(owner?.body_position == LYING_DOWN)
 			adjust_germ_level(-SANITIZATION_LYING * delta_time)
 
+/obj/item/organ/proc/consider_processing()
+	. = FALSE
+	if(damage >= DAMAGE_PRECISION)
+		. = TRUE
+	else if(germ_level > 0)
+		. = TRUE
+	else if(current_blood < max_blood_storage && blood_req)
+		. = TRUE
+	else if(failure_time > 0)
+		. = TRUE
+	else if(is_failing())
+		. = TRUE
+	needs_processing = .
+
 /obj/item/organ/proc/on_life(delta_time, times_fired, in_bleedout, virus_immunity, antibiotics, immunity_weakness, passed_temp)	//repair organ damage if the organ is not failing
 	SHOULD_CALL_PARENT(TRUE)
 	if(!owner)
@@ -504,6 +520,7 @@
 	// Decrease failure time while healthy
 	if(failure_time > 0)
 		failure_time = max(0, failure_time - delta_time)
+	consider_processing()
 
 ///Organs don't die instantly, and neither should you when you get fucked up
 /obj/item/organ/proc/handle_failing_organ(delta_time, times_fired)
@@ -652,6 +669,7 @@
 
 	if(message && owner)
 		to_chat(owner, message)
+	consider_processing()
 
 ///SETS an organ's damage to the amount "d", and in doing so clears or sets the failing flag, good for when you have an effect that should fix an organ if broken
 /obj/item/organ/proc/setOrganDamage(d)	//use mostly for admin heals
