@@ -425,10 +425,7 @@
 
 
 /// Malus caused by germs
-/obj/item/organ/proc/handle_germ_effects(delta_time, times_fired)
-	var/virus_immunity = owner?.virus_immunity()
-	var/antibiotics = owner?.get_antibiotics()
-
+/obj/item/organ/proc/handle_germ_effects(delta_time, times_fired, virus_immunity, antibiotics)
 	if(germ_level > 0 && germ_level < INFECTION_LEVEL_ONE/2 && DT_PROB(virus_immunity*0.15, delta_time))
 		adjust_germ_level(-0.5 * delta_time)
 		return
@@ -465,11 +462,10 @@
 				bodypart.adjust_germ_level(0.5 * delta_time)
 
 /// Antibiotics combating germs and stuff
-/obj/item/organ/proc/handle_antibiotics(delta_time, times_fired)
+/obj/item/organ/proc/handle_antibiotics(delta_time, times_fired, antibiotics)
 	if(!owner || (germ_level <= 0))
 		return
 
-	var/antibiotics = owner.get_antibiotics()
 	if(antibiotics <= 0)
 		return
 
@@ -480,15 +476,15 @@
 		if(owner?.body_position == LYING_DOWN)
 			adjust_germ_level(-SANITIZATION_LYING * delta_time)
 
-/obj/item/organ/proc/on_life(delta_time, times_fired, in_bleedout)	//repair organ damage if the organ is not failing
+/obj/item/organ/proc/on_life(delta_time, times_fired, in_bleedout, virus_immunity, antibiotics)	//repair organ damage if the organ is not failing
 	SHOULD_CALL_PARENT(TRUE)
 	if(!owner)
 		return
 
 	/// Handle germs before anything else!
 	if(can_decay())
-		handle_germ_effects(delta_time, times_fired)
-		handle_antibiotics(delta_time, times_fired)
+		handle_germ_effects(delta_time, times_fired, virus_immunity, antibiotics)
+		handle_antibiotics(delta_time, times_fired, antibiotics)
 	else
 		germ_level = 0
 
