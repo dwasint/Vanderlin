@@ -119,7 +119,7 @@
 	setup_human_dna()
 
 	if(dna.species)
-		set_species(dna.species.type)
+		set_species(dna.species.type, initial_set = TRUE)
 
 	//initialise organs
 	create_internal_organs() //most of it is done in set_species now, this is only for parent call
