@@ -115,7 +115,7 @@
 	. = ..()
 	owner.remove_stress(/datum/stress_event/brain_damage)
 
-/obj/item/organ/brain/can_self_heal(delta_time, times_fired)
+/obj/item/organ/brain/can_self_heal(delta_time, times_fired, in_bleedout)
 	. = ..()
 	if(!.)
 		return

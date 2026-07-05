@@ -492,7 +492,7 @@
 	handle_blood(delta_time, times_fired, in_bleedout)
 
 	// Damage decrements by a percent of maxhealth
-	if(can_self_heal(delta_time, times_fired))
+	if(can_self_heal(delta_time, times_fired, in_bleedout))
 		handle_self_healing(delta_time, times_fired)
 
 	if(is_failing())
@@ -512,7 +512,7 @@
 	organ_failure(delta_time)
 
 /// healing checks
-/obj/item/organ/proc/can_self_heal(delta_time, times_fired)
+/obj/item/organ/proc/can_self_heal(delta_time, times_fired, in_bleedout)
 	. = TRUE
 	if(!owner)
 		return FALSE
@@ -526,7 +526,7 @@
 		return FALSE
 	if(current_blood <= 0)
 		return FALSE
-	if(owner.undergoing_cardiac_arrest())
+	if(in_bleedout)
 		return FALSE
 	if(owner.get_chem_effect(CE_TOXIN))
 		return FALSE
