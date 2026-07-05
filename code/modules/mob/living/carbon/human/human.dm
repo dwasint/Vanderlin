@@ -111,6 +111,7 @@
 /mob/living/carbon/human/Initialize()
 	add_verb(src, /mob/living/proc/lay_down)
 
+	status_flags |= BUILDING_ORGANS
 	//initialize limbs first
 	create_bodyparts()
 
@@ -123,6 +124,7 @@
 	//initialise organs
 	create_internal_organs() //most of it is done in set_species now, this is only for parent call
 	physiology = new()
+	status_flags &= ~BUILDING_ORGANS
 	culture = GLOB.culture_singletons[culture]
 
 	. = ..()

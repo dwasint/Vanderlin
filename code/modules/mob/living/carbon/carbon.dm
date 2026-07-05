@@ -1,7 +1,9 @@
 /mob/living/carbon/Initialize()
 	. = ..()
 	create_reagents(1000)
-	update_body_parts() //to update the carbon's new bodyparts appearance
+	update_organ_requirements()
+	update_limb_efficiencies()
+	update_body() //to update the carbon's new bodyparts appearance
 	LoadComponent(/datum/component/storage/concrete/organ)
 	GLOB.carbon_list += src
 

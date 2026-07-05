@@ -61,8 +61,9 @@ GLOBAL_PROTECT(no_child_icons)
 
 
 /mob/living/carbon/human/update_body()
-	dna?.species?.handle_body(src) //create destroy moment
-	..()
+	if(!(status_flags & BUILDING_ORGANS))
+		dna?.species?.handle_body(src)
+		return ..()
 
 /mob/living/carbon/human/proc/update_organ_colors()
 	var/list/colors = color_key_source_list_from_carbon(src)

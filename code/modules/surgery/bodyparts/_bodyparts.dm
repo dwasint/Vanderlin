@@ -999,7 +999,7 @@
 /obj/item/bodypart/proc/post_damage_change(updating_health = TRUE, updating_shock = FALSE)
 	update_damages()
 
-	if(owner)
+	if(owner && !(owner.status_flags & BUILDING_ORGANS))
 		update_limb_efficiency()
 		if(can_be_disabled)
 			update_disabled()
@@ -1199,7 +1199,7 @@
 		if(status == BODYPART_ORGANIC)
 			icon = species_icon
 
-	if(owner)
+	if(owner && !(owner.status_flags & BUILDING_ORGANS))
 		owner.updatehealth()
 		owner.update_body() //if our head becomes robotic, we remove the lizard horns and human hair.
 		owner.update_damage_overlays()

@@ -316,12 +316,13 @@
 		A.Grant(M)
 	update_accessory_colors()
 	update_appearance()
-	if(visible_organ)
-		M.update_body_parts(TRUE)
-	M.update_organ_requirements()
-	if(organ_flags & ORGAN_LIMB_SUPPORTER)
-		var/obj/item/bodypart/affected = owner.get_bodypart(current_zone)
-		affected?.update_limb_efficiency()
+	if(!(M.status_flags & BUILDING_ORGANS))
+		if(visible_organ)
+			M.update_body_parts(TRUE)
+		M.update_organ_requirements()
+		if(organ_flags & ORGAN_LIMB_SUPPORTER)
+			var/obj/item/bodypart/affected = owner.get_bodypart(current_zone)
+			affected?.update_limb_efficiency()
 	STOP_PROCESSING(SSobj, src)
 
 //Special is for instant replacement like autosurgeons
@@ -347,10 +348,11 @@
 	update_appearance()
 
 	START_PROCESSING(SSobj, src)
-	M.update_organ_requirements()
-	if(organ_flags & ORGAN_LIMB_SUPPORTER)
-		var/obj/item/bodypart/affected = M.get_bodypart(initial_zone)
-		affected?.update_limb_efficiency()
+	if(!(M.status_flags & BUILDING_ORGANS))
+		M.update_organ_requirements()
+		if(organ_flags & ORGAN_LIMB_SUPPORTER)
+			var/obj/item/bodypart/affected = M.get_bodypart(initial_zone)
+			affected?.update_limb_efficiency()
 
 /obj/item/organ/proc/on_owner_examine(datum/source, mob/user, list/examine_list)
 	return
