@@ -62,6 +62,9 @@
 /obj/effect/landmark/tram/queued_path/cargo_stop/tram_reached_travel_point(datum/source, datum/lift_master/tram/tram)
 	RegisterSignal(tram, COMSIG_TRAM_EMPTY, PROC_REF(send_cargo_boat))
 	tram.set_travelling(FALSE)
+	for(var/obj/structure/industrial_lift/tram/tram_part as anything in tram.lift_platforms)
+		for(var/mob/living/living in tram_part.lift_load)
+			SEND_SIGNAL(living, COMSIG_MOB_CARGO_DOCKED)
 
 /obj/effect/landmark/tram/queued_path/cargo_stop/proc/send_cargo_boat(datum/lift_master/tram/tram)
 	UnregisterSignal(tram, COMSIG_TRAM_EMPTY)

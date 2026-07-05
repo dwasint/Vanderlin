@@ -562,13 +562,13 @@ SUBSYSTEM_DEF(merchant)
 	if(!cargo_docked || !length(world_factions))
 		return
 
-	var/datum/world_faction/selected_faction
-	for(var/datum/world_faction/faction in world_factions)
-		if(faction.trader_schedule_generated && faction.next_boat_trader_count > 0)
-			selected_faction = faction
-			break
+	var/datum/world_faction/selected_faction = active_faction
+	if(!selected_faction.trader_schedule_generated || selected_faction.next_boat_trader_count <= 0)
+		selected_faction.reset_trader_schedule()
+		return
 
 	if(!selected_faction)
+		selected_faction.reset_trader_schedule()
 		return
 
 	// Find spawn location on or near the boat
@@ -585,10 +585,7 @@ SUBSYSTEM_DEF(merchant)
 	for(var/mob/living/simple_animal/hostile/retaliate/trader/faction_trader/trader in new_traders)
 		active_faction_traders += trader
 		trader.ai_controller?.set_blackboard_key(BB_CURRENT_MIN_MOVE_DISTANCE, 0)
-		trader.ai_controller.PauseAi(1 MINUTES) // Wait a minute then they get off the boat
-
-	// Reset for next boat
-	selected_faction.reset_trader_schedule()
+		trader.ai_controller.PauseUntil(COMSIG_MOB_CARGO_DOCKED, 1 MINUTES) // Wait a minute then they get off the boat
 
 /datum/controller/subsystem/merchant/proc/unlock_supply_packs(list/incoming_packs)
 	for(var/datum/supply_pack/pack in supply_packs)
