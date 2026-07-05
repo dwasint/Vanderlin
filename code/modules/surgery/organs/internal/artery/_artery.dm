@@ -68,6 +68,38 @@
 	else
 		squirt_less(final_bleed_rate)
 
+/obj/item/organ/artery/handle_blood(delta_time, times_fired, in_bleedout)
+	var/arterial_efficiency = get_slot_efficiency(ORGAN_SLOT_ARTERY)
+	var/failer = is_failing_without_bleedout()
+	if(!failer && !in_bleedout)
+		// Arteries get an extra flat 10 blood regen
+		current_blood = min(current_blood + (2.5 * delta_time) * (max(1, arterial_efficiency)/ORGAN_OPTIMAL_EFFICIENCY), max_blood_storage)
+		return
+	if(!blood_req)
+		return
+	if(!in_bleedout)
+		current_blood = min(current_blood + (blood_req * delta_time), max_blood_storage) //very slow refill
+		return
+	current_blood = max(current_blood - (blood_req * delta_time), 0)
+	// When all blood is lost, take blood from blood vessels
+	if(!current_blood)
+		var/obj/item/organ/artery
+		var/obj/item/bodypart/parent = owner.get_bodypart(current_zone)
+		for(var/thing in shuffle(parent?.getorganslotlist(ORGAN_SLOT_ARTERY)))
+			var/obj/item/organ/candidate = thing
+			if(candidate.current_blood && (candidate.get_slot_efficiency(ORGAN_SLOT_ARTERY) >= ORGAN_FAILING_EFFICIENCY))
+				artery = candidate
+				break
+		if(artery?.current_blood)
+			var/prev_blood = artery.current_blood
+			artery.current_blood = max(artery.current_blood - (blood_req * delta_time), 0)
+			current_blood = max(prev_blood - artery.current_blood, 0)
+		if((current_blood <= 0) && !(organ_flags & ORGAN_LIMB_SUPPORTER))
+			var/temperature_mod = 1
+			if(owner?.bodytemperature > BODYTEMP_NORMAL)
+				temperature_mod += round((owner.bodytemperature - BODYTEMP_NORMAL) / (BODYTEMP_MAX_TEMPERATURE - BODYTEMP_NORMAL), 0.1)
+			applyOrganDamage(decay_factor * maxHealth * temperature_mod * delta_time)
+
 /obj/item/organ/artery/tear()
 	if(!owner)
 		return
