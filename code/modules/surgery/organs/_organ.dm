@@ -499,8 +499,7 @@
 		handle_self_healing(delta_time, times_fired)
 
 	if(is_failing())
-		handle_failing_organ(delta_time, times_fired)
-		return
+		return handle_failing_organ(delta_time, times_fired)
 
 	// Decrease failure time while healthy
 	if(failure_time > 0)
@@ -512,7 +511,7 @@
 		return
 
 	failure_time += delta_time
-	organ_failure(delta_time)
+	return organ_failure(delta_time)
 
 /// healing checks
 /obj/item/organ/proc/can_self_heal(delta_time, times_fired, in_bleedout)
