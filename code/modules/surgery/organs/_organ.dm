@@ -214,7 +214,6 @@
 		return TRUE
 
 /obj/item/organ/proc/handle_blood(delta_time, times_fired, in_bleedout)
-	var/failer = is_failing()
 	if(!blood_req)
 		return
 	if(!in_bleedout)
