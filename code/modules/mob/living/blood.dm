@@ -91,7 +91,7 @@
 		return BLEED_NONE
 
 	if(!iscarbon(src) && HAS_TRAIT(src, TRAIT_SIMPLE_WOUNDS))
-		return BLEED_NONE
+		return BLEED_SPLATTER
 
 	if(!iscarbon(src))
 		return BLEED_NONE
