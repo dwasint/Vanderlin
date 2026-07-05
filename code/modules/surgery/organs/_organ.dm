@@ -213,9 +213,8 @@
 		organ_flags &= ~ORGAN_NECROTIC
 		return TRUE
 
-/obj/item/organ/proc/handle_blood(delta_time, times_fired)
+/obj/item/organ/proc/handle_blood(delta_time, times_fired, in_bleedout)
 	var/arterial_efficiency = get_slot_efficiency(ORGAN_SLOT_ARTERY)
-	var/in_bleedout = owner.in_bleedout()
 	var/failer
 	if(arterial_efficiency)
 		failer = is_failing_without_bleedout()
@@ -491,7 +490,7 @@
 		if(owner?.body_position == LYING_DOWN)
 			adjust_germ_level(-SANITIZATION_LYING * delta_time)
 
-/obj/item/organ/proc/on_life(delta_time, times_fired)	//repair organ damage if the organ is not failing
+/obj/item/organ/proc/on_life(delta_time, times_fired, in_bleedout)	//repair organ damage if the organ is not failing
 	SHOULD_CALL_PARENT(TRUE)
 	if(!owner)
 		return
@@ -504,7 +503,7 @@
 		germ_level = 0
 
 	/// Handle blood
-	handle_blood(delta_time, times_fired)
+	handle_blood(delta_time, times_fired, in_bleedout)
 
 	// Damage decrements by a percent of maxhealth
 	if(can_self_heal(delta_time, times_fired))
