@@ -863,7 +863,7 @@
 
 	//glide_size strangely enough can change mid movement animation and update correctly while the animation is playing
 	//This means that if you don't override it late like this, it will just be set back by the movement update that's called when you move turfs.
-	if(glide_size_override)
+	if(glide_size_override && glide_size != glide_size_override)
 		set_glide_size(glide_size_override)
 
 	last_move = direction_to_move
