@@ -2,7 +2,7 @@
 	icon_state = "runner"
 	icon_living = "runner"
 	icon_dead = "runner_dead"
-	icon = 'icons/obj/cellular/putrid_large.dmi'
+	icon = 'icons/obj/cellular/putrid_big.dmi'
 
 	tether_distance = 5
 	possible_evolutions = list(

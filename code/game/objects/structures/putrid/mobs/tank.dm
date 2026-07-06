@@ -2,7 +2,7 @@
 	icon_state = "tank"
 	icon_living = "tank"
 	icon_dead = "tank_dead"
-	icon = 'icons/obj/cellular/putrid_large.dmi'
+	icon = 'icons/obj/cellular/putrid_big.dmi'
 
 	possible_evolutions = list(
 		/mob/living/simple_animal/hostile/retaliate/meatvine/defender,
