@@ -1,0 +1,8 @@
+author: "CheffieGithub"
+delete-after: True
+changes:
+  - rscadd: "You can still look up if the turf above has transparent neighbours"
+  - bugfix: "Fixed travel tiles sometimes disappearing"
+  - bugfix: "Travel tiles work off both traits and mind traits"
+  - bugfix: "Fix COMBO HUD not working"
+  - bugfix: "Fix some clothes not being equippable by select equippable even with the correct species/gender"
