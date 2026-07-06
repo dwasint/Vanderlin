@@ -2,10 +2,10 @@
 	name = "Horrible creature"
 	abstract_type = /mob/living/simple_animal/hostile/retaliate/meatvine
 	desc = "What is that?!"
-	icon = 'icons/obj/cellular/meat.dmi'
-	icon_state = "bloodling_stage_1"
-	icon_living = "bloodling_stage_1"
-	icon_dead = "bloodling_stage_1_dead"
+	icon = 'icons/obj/cellular/putrid_small.dmi'
+	icon_state = "base"
+	icon_living = "base"
+	icon_dead = "base_dead"
 	faction = list("meat")
 
 	health = VOLF_HEALTH
