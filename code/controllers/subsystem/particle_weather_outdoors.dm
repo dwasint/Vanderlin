@@ -280,7 +280,7 @@ SUBSYSTEM_DEF(outdoor_effects)
 	return sunlight_overlays[index]
 
 //get our weather overlay
-/datum/controller/subsystem/outdoor_effects/proc/get_weather_overlay() //TODO VANDERLIN: Restore this to 32x48 for some extra
+/datum/controller/subsystem/outdoor_effects/proc/get_weather_overlay()
 	var/mutable_appearance/MA = new /mutable_appearance()
 	MA.icon = 'icons/effects/weather_overlay.dmi'
 	MA.icon_state = "weather_overlay"
