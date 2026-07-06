@@ -39,6 +39,8 @@
 	can_buckle = TRUE
 	buckle_lying = 0
 
+	base_intents = list(INTENT_BITE, SWORD_CUT, SWORD_CLEAVE)
+
 	var/tether_distance = 3
 
 	var/obj/effect/meatvine_controller/master
