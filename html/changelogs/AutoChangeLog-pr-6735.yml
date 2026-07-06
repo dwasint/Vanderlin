@@ -1,6 +1,0 @@
-author: "SSensum13"
-delete-after: True
-changes:
-  - rscadd: "Added new watchmen outfit clothings."
-  - rscadd: "Added anvil and weaving recipes for new watchmen items."
-  - balance: "Added weapon selection for City Watch's footmen and pikemen."
