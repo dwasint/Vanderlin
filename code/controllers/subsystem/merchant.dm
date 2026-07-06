@@ -586,6 +586,7 @@ SUBSYSTEM_DEF(merchant)
 		active_faction_traders += trader
 		trader.ai_controller?.set_blackboard_key(BB_CURRENT_MIN_MOVE_DISTANCE, 0)
 		trader.ai_controller.PauseUntil(COMSIG_MOB_CARGO_DOCKED, 1 MINUTES) // Wait a minute then they get off the boat
+	selected_faction.reset_trader_schedule()
 
 /datum/controller/subsystem/merchant/proc/unlock_supply_packs(list/incoming_packs)
 	for(var/datum/supply_pack/pack in supply_packs)
