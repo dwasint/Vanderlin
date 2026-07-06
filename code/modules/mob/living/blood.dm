@@ -221,7 +221,7 @@
 	var/blood_purity = 1 // what % of the amt are we actually taking as blood?
 	var/cached_blood_volume = get_blood_volume()
 	amount = min(amount, transfer_to.maximum_volume - transfer_to.total_volume) // the volume of our transfer
-	if(reagents.total_volume)
+	if(reagents?.total_volume)
 		var/impurity_volume = reagents.total_volume
 		for(var/reagent_type in blacklisted_reagents)
 			impurity_volume -= reagents.get_reagent_amount(reagent_type, FALSE)
