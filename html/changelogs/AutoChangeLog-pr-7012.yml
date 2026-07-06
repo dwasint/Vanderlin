@@ -1,0 +1,4 @@
+author: "Ben10083"
+delete-after: True
+changes:
+  - qol: "Now states on examine if you are examining your rival"
