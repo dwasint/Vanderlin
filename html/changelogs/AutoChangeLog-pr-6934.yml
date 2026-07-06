@@ -1,0 +1,5 @@
+author: "dwasint"
+delete-after: True
+changes:
+  - bugfix: "Rollers now properly pass rotational data through itself"
+  - bugfix: "waterwheels behave correctly in weirder situations"
