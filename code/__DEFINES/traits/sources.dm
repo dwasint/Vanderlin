@@ -127,3 +127,5 @@
 #define MARTYR_TRAIT "martyr"
 /// Trait from wings
 #define WING_TRAIT "wings"
+/// Trait from brood eggs
+#define BROODMOTHER_EGG_TRAIT "broodmother_egg"
