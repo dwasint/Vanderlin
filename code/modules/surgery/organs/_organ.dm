@@ -214,14 +214,10 @@
 		return TRUE
 
 /obj/item/organ/proc/handle_blood(delta_time, times_fired, in_bleedout)
-	if(!blood_req)
-		return
-	if(!in_bleedout)
-		current_blood = min(current_blood + (blood_req * delta_time), max_blood_storage) //very slow refill
-		return
-	current_blood = max(current_blood - (blood_req * delta_time), 0)
-	// When all blood is lost, take blood from blood vessels
-	if(!current_blood)
+	if(blood_req && (is_failing_without_bleedout() || in_bleedout))
+		current_blood = max(current_blood - (blood_req * delta_time), 0)
+	// When blood is missing take from arteries
+	if(current_blood < max_blood_storage)
 		var/obj/item/organ/artery
 		var/obj/item/bodypart/parent = owner.get_bodypart(current_zone)
 		for(var/thing in shuffle(parent?.getorganslotlist(ORGAN_SLOT_ARTERY)))
@@ -230,9 +226,11 @@
 				artery = candidate
 				break
 		if(artery?.current_blood)
-			var/prev_blood = artery.current_blood
-			artery.current_blood = max(artery.current_blood - (blood_req * delta_time), 0)
-			current_blood = max(prev_blood - artery.current_blood, 0)
+			var/blood_needed = min(max_blood_storage - current_blood, blood_req * delta_time)
+			var/blood_taken = min(artery.current_blood, blood_needed)
+			artery.current_blood = max(artery.current_blood - blood_taken, 0)
+			artery.consider_processing()
+			current_blood = min(current_blood + blood_taken, max_blood_storage)
 		if((current_blood <= 0) && !(organ_flags & ORGAN_LIMB_SUPPORTER))
 			var/temperature_mod = 1
 			if(owner?.bodytemperature > BODYTEMP_NORMAL)
@@ -489,7 +487,7 @@
 		. = TRUE
 	else if(germ_level > 0)
 		. = TRUE
-	else if(current_blood < max_blood_storage && blood_req)
+	else if(current_blood < max_blood_storage)
 		. = TRUE
 	else if(failure_time > 0)
 		. = TRUE
