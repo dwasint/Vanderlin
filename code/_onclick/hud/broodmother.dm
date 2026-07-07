@@ -130,5 +130,8 @@
 		using.set_new_hud(src)
 		static_inventory += using
 
+	backhudl = new /atom/movable/screen/backhudl/empty_border(null, src)
+	static_inventory += backhudl
+
 #undef RENDER_TARGET_BAR_MASK
 #undef BROODMOTHER_HUD_ELEMENTS
