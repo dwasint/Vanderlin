@@ -344,33 +344,58 @@ Actual Adjacent procs :
 
 // Add a helper function to compute 3D Manhattan distance
 /turf/proc/Distance3D(turf/T)
-	if (!T || !istype(T))
+	if(!T)
 		return 0
+	if(z == T.z)
+		return abs(x - T.x) + abs(y - T.y)
+	if(is_in_zweb(z, T.z))
+		return abs(x - T.x) + abs(y - T.y) + abs(z - T.z) * 5
 
-	var/tracked = FALSE
+	if(!length(GLOB.virtual_region_index))
+		return 1000000 // effectively impossible
 
-	var/target_x = T.x
-	var/target_y = T.y
-	var/target_z = T.z
+	var/cx = x
+	var/cy = y
+	var/cz = z
+	var/hops = 1
+	var/list/visited = list(cz)
 
-	var/real_x = x
-	var/real_y = y
-	var/real_z = z
-	if(virtual_below && T.z == virtual_below.z)
-		real_x = virtual_below.x
-		real_y = virtual_below.y
-		target_z = real_z - 1
-		tracked = TRUE
-	if(!tracked && virtual_above && T.z == virtual_above.z)
-		real_x = virtual_above.x
-		real_y = virtual_above.y
-		target_z = real_z + 1
-		tracked = TRUE
+	while(!is_in_zweb(cz, T.z))
+		var/next_z
+		var/next_x
+		var/next_y
+		var/found = FALSE
 
-	var/dx = abs(real_x - target_x)
-	var/dy = abs(real_y - target_y)
-	var/dz = abs(real_z - target_z) * 5  // Weight z-level differences higher
-	return (dx + dy + dz)
+		for(var/stack_z in get_multiz_accessible_levels(cz))
+			for(var/datum/virtual_region_link/L in GLOB.virtual_region_index["[stack_z]"])
+				if(L.z_below == stack_z)
+					next_z = L.z_above
+					next_x = cx + L.offset_x
+					next_y = cy + L.offset_y
+					found = TRUE
+					break
+				else if(L.z_above == stack_z)
+					next_z = L.z_below
+					next_x = cx - L.offset_x
+					next_y = cy - L.offset_y
+					found = TRUE
+					break
+			if(found)
+				break
+
+		if(!found || (next_z in visited))
+			return abs(cx - T.x) + abs(cy - T.y) + abs(cz - T.z) * 5
+
+		visited += next_z
+		cx = next_x
+		cy = next_y
+		cz = next_z
+		hops++
+
+		if(hops > 32)
+			break
+
+	return abs(cx - T.x) + abs(cy - T.y) + abs(cz - T.z) * 5 + hops * 5
 
 /turf/proc/LinkBlockedWithAccess(turf/T, requester, ID)
 	var/adir = get_dir(src, T)
