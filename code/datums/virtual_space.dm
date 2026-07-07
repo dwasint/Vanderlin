@@ -1,5 +1,5 @@
-/turf/var/virtual_above
-/turf/var/virtual_below
+/turf/var/turf/virtual_above
+/turf/var/turf/virtual_below
 
 GLOBAL_LIST_EMPTY(virtual_z_links)
 

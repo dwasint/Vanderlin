@@ -346,9 +346,30 @@ Actual Adjacent procs :
 /turf/proc/Distance3D(turf/T)
 	if (!T || !istype(T))
 		return 0
-	var/dx = abs(x - T.x)
-	var/dy = abs(y - T.y)
-	var/dz = abs(z - T.z) * 5  // Weight z-level differences higher
+
+	var/tracked = FALSE
+
+	var/target_x = T.x
+	var/target_y = T.y
+	var/target_z = T.z
+
+	var/real_x = x
+	var/real_y = y
+	var/real_z = z
+	if(virtual_below && T.z == virtual_below.z)
+		real_x = virtual_below.x
+		real_y = virtual_below.y
+		target_z = real_z - 1
+		tracked = TRUE
+	if(!tracked && virtual_above && T.z == virtual_above.z)
+		real_x = virtual_above.x
+		real_y = virtual_above.y
+		target_z = real_z + 1
+		tracked = TRUE
+
+	var/dx = abs(real_x - target_x)
+	var/dy = abs(real_y - target_y)
+	var/dz = abs(real_z - target_z) * 5  // Weight z-level differences higher
 	return (dx + dy + dz)
 
 /turf/proc/LinkBlockedWithAccess(turf/T, requester, ID)
