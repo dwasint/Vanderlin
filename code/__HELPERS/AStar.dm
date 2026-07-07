@@ -364,7 +364,7 @@ Actual Adjacent procs :
 	var/cx = x
 	var/cy = y
 	var/cz = z
-	var/hops = 1
+	var/hops = 0
 	var/list/visited = list(cz)
 
 	while(!is_in_zweb(cz, T.z))

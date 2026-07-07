@@ -2081,6 +2081,10 @@
 	dir = 4
 	},
 /area/outdoors)
+"xj" = (
+/obj/effect/mapping_helpers/broodmother_entry,
+/turf/closed/mineral/bedrock,
+/area/outdoors)
 "xo" = (
 /obj/structure/fluff/railing/wood{
 	dir = 1
@@ -3607,6 +3611,12 @@
 /obj/structure/flora/grass,
 /turf/open/floor/grass/yel,
 /area/outdoors)
+"YN" = (
+/obj/structure/stairs/stone{
+	dir = 1
+	},
+/turf/open/floor/church/gold,
+/area/indoors/town/keep)
 "YR" = (
 /obj/structure/hotspring/border/twelve,
 /turf/open/floor/cobblerock,
@@ -21592,7 +21602,7 @@ KV
 KV
 KV
 KV
-KV
+YN
 zg
 Wr
 Wr
@@ -21854,7 +21864,7 @@ kE
 Wr
 ai
 Wr
-at
+xj
 as
 as
 as
