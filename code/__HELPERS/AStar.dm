@@ -321,7 +321,13 @@ Actual Adjacent procs :
 	if(!T.can_cross_safely(requester))  // dangerous turf! lava or openspace (or others in the future)
 		return FALSE
 
-	var/z_distance = abs(T.z - z)
+	var/z_distance = 0
+	if(T.z != z)
+		if (T.virtual_above || T.virtual_below)
+			if(T.virtual_above?.z == z || T.virtual_below?.z == z)
+				z_distance = 1
+	else
+		z_distance = abs(T.z - z)
 	if(!z_distance)  // standard check for same-z pathing
 		return !LinkBlockedWithAccess(T, requester, ID)
 
@@ -329,11 +335,12 @@ Actual Adjacent procs :
 		return FALSE
 
 	var/obj/structure/stairs/source_stairs = locate(/obj/structure/stairs) in src
-	if(T.z < z)  // going down
-		if(source_stairs?.get_target_loc(REVERSE_DIR(source_stairs.dir)) == T)
+	if(source_stairs)
+		// Check if T is the target going UP the stairs
+		if(source_stairs.get_target_loc(source_stairs.dir) == T)
 			return TRUE
-	else  // heading DOWN stairs was handled earlier, so now handle going UP stairs
-		if(source_stairs?.get_target_loc(source_stairs.dir) == T)
+		// Check if T is the target going DOWN the stairs (reversed direction)
+		if(source_stairs.get_target_loc(REVERSE_DIR(source_stairs.dir)) == T)
 			return TRUE
 
 	return FALSE
