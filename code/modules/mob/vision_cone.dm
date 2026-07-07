@@ -159,7 +159,7 @@
 		new_angle = 0
 
 	// Nothing actually changed so we shouldn't need a rebuild
-	if(fov.fov_holder && fov.fov_holder.alpha && fov.shadow_angle == new_shadow_angle && fov.angle == new_angle)
+	if(fov.fov_holder?.alpha && fov.shadow_angle == new_shadow_angle && fov.angle == new_angle)
 		return
 
 	fov.generate_fov_holder(src, new_shadow_angle, new_angle, register = FALSE, delete_holder = TRUE)

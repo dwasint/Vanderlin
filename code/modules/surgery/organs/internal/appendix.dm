@@ -37,7 +37,6 @@
 	name = "[inflamation_stage ? "inflamed " : null][initial(name)]"
 
 /obj/item/organ/appendix/organ_failure(delta_time)
-	. = ..()
 	inflamation_stage = TRUE
 	owner.adjustToxLoss(0.5 * delta_time, FALSE, TRUE) //forced to ensure people don't use it to gain tox as slime person
 	return ..() || ORGAN_PROCESS_UPDATE_HEALTH
