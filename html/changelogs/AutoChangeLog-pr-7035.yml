@@ -1,0 +1,4 @@
+author: "Banditwithdrugs"
+delete-after: True
+changes:
+  - rscadd: "Added a recipie for decorated dagger that uses one steel bar+iron bar to craft 2 decorated daggers"
