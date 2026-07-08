@@ -346,11 +346,6 @@ GLOBAL_LIST_EMPTY(broodmother_eggs)
 		REMOVE_TRAIT(spawned, TRAIT_IMMOBILIZED, BROODMOTHER_EGG_TRAIT)
 		REMOVE_TRAIT(spawned, TRAIT_HANDS_BLOCKED, BROODMOTHER_EGG_TRAIT)
 		spawned.forceMove(get_turf(src))
-		// nobody claimed it in time - let it become a regular AI-driven mob instead of
-		// sitting frozen forever waiting on a ghost that isn't coming
-		var/datum/component/ghost_vessel/vessel = spawned.GetComponent(/datum/component/ghost_vessel)
-		if(vessel)
-			qdel(vessel)
 	else
 		spawned = new type_to_spawn(get_turf(src))
 
