@@ -57,6 +57,8 @@ have ways of interacting with a specific atom and control it. They posses a blac
 	var/list/movement_path
 	///Cooldown for JPS movement, how often we're allowed to try making a new path
 	COOLDOWN_DECLARE(repath_cooldown)
+	///Cooldown for loot scanning
+	COOLDOWN_DECLARE(loot_scan_cooldown)
 	///AI paused time
 	var/paused_until = 0
 
