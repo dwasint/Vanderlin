@@ -36,6 +36,11 @@
 /obj/item/organ/artery/can_self_heal(delta_time, times_fired, in_bleedout)
 	return FALSE
 
+/obj/item/organ/artery/proc/is_bleeding()
+	if(!is_bruised() || !owner.pulse || (owner.bodytemperature <= -15))
+		return
+	return TRUE
+	
 /obj/item/organ/artery/on_life(delta_time, times_fired)
 	. = ..()
 	// Dead, pulseless or cryosleep people do not pump blood

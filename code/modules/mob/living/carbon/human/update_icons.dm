@@ -176,6 +176,14 @@ GLOBAL_PROTECT(no_child_icons)
 					isnum(wound.armdam_override) ? wound.armdam_override : ARM_DAMAGE_LAYER,
 					wound.use_blood_color
 				)
+		if(BP.get_cut() && BP.is_artery_torn())
+			wound_overlays["s1"] = list(
+				DAMAGE_LAYER,
+				LEG_DAMAGE_LAYER,
+				ARM_DAMAGE_LAYER,
+				TRUE
+			)
+
 		for(var/wound_overlay in wound_overlays)
 			var/mutable_appearance/damage_overlay = mutable_appearance(limb_icon, "[BP.body_zone]_[wound_overlay]", -wound_overlays[wound_overlay][1])
 			damage_overlays += damage_overlay
