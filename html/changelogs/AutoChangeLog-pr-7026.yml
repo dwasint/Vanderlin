@@ -1,4 +1,0 @@
-author: "ModDownloading"
-delete-after: True
-changes:
-  - bugfix: "Steward can no longer reassign the job of the current Monarch."

@@ -1,5 +1,0 @@
-author: "Ben10083"
-delete-after: True
-changes:
-  - map: "The Saint's Coffin at Vanderlin Forest is now a custom grave with special loot for would be robbers"
-  - code_imp: "Gravespawner map helper now supports custom outfits and/or bodies"
