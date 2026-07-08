@@ -1,0 +1,4 @@
+author: "Wrench-1"
+delete-after: True
+changes:
+  - bugfix: "fixes examinations. people who are part of families can no longer see the jobs of people they don't even know"
