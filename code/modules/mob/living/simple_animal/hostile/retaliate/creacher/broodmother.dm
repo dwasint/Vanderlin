@@ -14,6 +14,9 @@ GLOBAL_LIST_EMPTY(broodmother_eggs)
 #define FRENZY_DURATION 60 SECONDS
 #define FRENZY_COOLDOWN 5 MINUTES
 
+/area/broodmother_den
+	name = "Broodmothers Den"
+
 /mob/living/simple_animal/hostile/retaliate/troll/broodmother
 	name = "Broodmother"
 	desc = "Once, Eora gifted to Graggar the Luxus Pragmas and told him to make a female companion with it.\
@@ -22,6 +25,7 @@ GLOBAL_LIST_EMPTY(broodmother_eggs)
 	icon = 'icons/mob/creacher/trolls/broodmother.dmi'
 	icon_state = "broodmother"
 	gender = FEMALE
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	SET_BASE_PIXEL(-38, -8)
 	hud_type = /datum/hud/broodmother
 	icon_dead = "broodmother_dead"
