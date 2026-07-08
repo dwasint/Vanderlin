@@ -137,3 +137,4 @@
 	// No open wound, even less drama
 	else
 		owner.adjust_blood_volume(-amount)
+	current_blood = max(current_blood - amount, 0)

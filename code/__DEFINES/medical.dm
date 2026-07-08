@@ -295,7 +295,7 @@ DEFINE_BITFIELD(organ_flags, list(
 #define CPR_CHEST "cardio"
 
 // ~arteries
-#define ARTERIAL_BLOOD_FLOW 20
+#define ARTERIAL_BLOOD_FLOW 9
 
 #define ARTERY_HEAD /obj/item/organ/artery/head
 #define ARTERY_MOUTH /obj/item/organ/artery/mouth
