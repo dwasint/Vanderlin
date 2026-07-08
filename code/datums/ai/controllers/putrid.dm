@@ -4,6 +4,7 @@
 	max_target_distance = 200
 	ai_movement = /datum/ai_movement/hybrid_pathing/wormhole_aware
 	idle_behavior = /datum/idle_behavior/idle_random_walk
+	can_idle = FALSE
 
 	blackboard = list(
 		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic/allow_items/meatvine(),

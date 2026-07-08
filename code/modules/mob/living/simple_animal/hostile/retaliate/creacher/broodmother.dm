@@ -302,6 +302,7 @@ GLOBAL_LIST_EMPTY(broodmother_eggs)
 		return
 	resident_mob = new type_to_spawn(src)
 	resident_mob.forceMove(src)
+	resident_mob.ai_controller?.can_idle = FALSE
 	resident_mob.AddComponent(
 		/datum/component/ghost_vessel, \
 		null, \
