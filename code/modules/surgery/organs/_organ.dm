@@ -131,6 +131,10 @@
 	LAZYNULL(organ_efficiency_modification)
 	return ..()
 
+/obj/item/organ/vv_edit_var(var_name, var_value)
+	. = ..()
+	consider_processing()
+
 /obj/item/organ/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!isliving(interacting_with))
 		return NONE

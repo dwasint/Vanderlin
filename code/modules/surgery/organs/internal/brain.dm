@@ -107,6 +107,25 @@
 	organ_owner.update_body()
 	organ_owner.remove_stress(/datum/stress_event/brain_damage)
 
+///somehow slightly faster to not call parent...
+/obj/item/organ/brain/consider_processing(in_bleedout)
+	. = FALSE
+	if(in_bleedout)
+		. = TRUE
+	else if(damage >= DAMAGE_PRECISION)
+		. = TRUE
+	else if(germ_level > 0)
+		. = TRUE
+	else if(current_blood < max_blood_storage)
+		. = TRUE
+	else if(failure_time > 0)
+		. = TRUE
+	else if(is_failing())
+		. = TRUE
+	else if(owner && GET_EFFECTIVE_BLOOD_VOL(owner.get_blood_oxygenation(), owner.total_blood_req) < BLOOD_VOLUME_BAD)
+		. = TRUE
+	needs_processing = .
+
 /obj/item/organ/brain/on_medium_damage_received()
 	. = ..()
 	owner.add_stress(/datum/stress_event/brain_damage)
