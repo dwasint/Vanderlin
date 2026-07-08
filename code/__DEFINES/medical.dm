@@ -251,6 +251,9 @@ DEFINE_BITFIELD(organ_flags, list(
 #define GERM_LEVEL_FILTHY 500
 #define GERM_LEVEL_SMASHPLAYER 750
 
+/// Maximum germ level you can reach by standing still.
+#define GERM_LEVEL_AMBIENT 250
+
 /// Exposure to blood germ level per unit
 #define GERM_PER_UNIT_BLOOD 2
 
