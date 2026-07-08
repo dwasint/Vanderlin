@@ -214,7 +214,7 @@
 		return TRUE
 
 /obj/item/organ/proc/handle_blood(delta_time, times_fired, in_bleedout)
-	if(blood_req && (is_failing_without_bleedout() || in_bleedout))
+	if(blood_req && (in_bleedout || is_failing_without_bleedout()))
 		current_blood = max(current_blood - (blood_req * delta_time), 0)
 	// When blood is missing take from arteries
 	if(current_blood < max_blood_storage)
@@ -481,9 +481,11 @@
 		if(owner?.body_position == LYING_DOWN)
 			adjust_germ_level(-SANITIZATION_LYING * delta_time)
 
-/obj/item/organ/proc/consider_processing()
+/obj/item/organ/proc/consider_processing(in_bleedout)
 	. = FALSE
-	if(damage >= DAMAGE_PRECISION)
+	if(in_bleedout)
+		. = TRUE
+	else if(damage >= DAMAGE_PRECISION)
 		. = TRUE
 	else if(germ_level > 0)
 		. = TRUE
@@ -520,7 +522,7 @@
 	// Decrease failure time while healthy
 	if(failure_time > 0)
 		failure_time = max(0, failure_time - delta_time)
-	consider_processing()
+	consider_processing(in_bleedout)
 
 ///Organs don't die instantly, and neither should you when you get fucked up
 /obj/item/organ/proc/handle_failing_organ(delta_time, times_fired)
