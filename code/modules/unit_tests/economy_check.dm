@@ -1,6 +1,6 @@
-/datum/unit_test/merchant_infinite_money_exploit_check
+/datum/unit_test/economy_check
 
-/datum/unit_test/merchant_infinite_money_exploit_check/Run()
+/datum/unit_test/economy_check/Run()
 	if(!SSmerchant)
 		TEST_FAIL("SSmerchant is uninitialized.")
 		return
