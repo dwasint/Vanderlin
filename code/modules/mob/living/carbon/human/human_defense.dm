@@ -403,6 +403,7 @@
 				brute_loss = (10 * (2 - round(bomb_armor*0.01, 0.05)) * ldist) - ((10 * (2 - round(bomb_armor*0.01, 0.05))) * fodist)
 				damage_clothes(max(brute_loss - bomb_armor, 0), BRUTE, "blunt")
 	if(!burns)
+		brute_loss += burn_loss
 		burn_loss = 0
 
 	take_overall_damage(brute_loss,burn_loss, damage_type = BCLASS_BLUNT)
