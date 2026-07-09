@@ -69,9 +69,6 @@
 
 	var/range = 9
 
-/mob/living/simple_animal/hostile/retaliate/troll/slaved
-	ai_controller = /datum/ai_controller/summon
-
 /mob/living/simple_animal/hostile/retaliate/troll/slaved/Initialize()
 	. = ..()
 	var/static/list/pet_commands = list(
@@ -163,9 +160,6 @@
 	defprob = 25
 	defdrain = 13
 	range = 3
-
-/mob/living/simple_animal/hostile/retaliate/troll/bog/slaved
-	ai_controller = /datum/ai_controller/summon
 
 /mob/living/simple_animal/hostile/retaliate/troll/slaved/Initialize()
 	. = ..()
@@ -446,6 +440,19 @@
 	harpoon.Grant(src)
 	ai_controller.set_blackboard_key(BB_TARGETED_ACTION, harpoon)
 	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(check_submersion))
+
+/mob/living/simple_animal/hostile/retaliate/troll/sea/slaved/Initialize()
+	. = ..()
+	var/static/list/pet_commands = list(
+				/datum/pet_command/idle,
+				/datum/pet_command/free,
+				/datum/pet_command/follow,
+				/datum/pet_command/attack,
+				/datum/pet_command/protect_owner,
+				/datum/pet_command/aggressive,
+				/datum/pet_command/calm,
+			)
+	AddComponent(/datum/component/obeys_commands, pet_commands)
 
 /mob/living/simple_animal/hostile/retaliate/troll/sea/proc/check_submersion()
 	SIGNAL_HANDLER

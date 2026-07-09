@@ -9,6 +9,7 @@
 	)
 
 	planning_subtrees = list(
+		/datum/ai_planning_subtree/pet_planning,
 		/datum/ai_planning_subtree/flee_target,
 
 		/datum/ai_planning_subtree/aggro_find_target,
@@ -32,6 +33,7 @@
 	)
 
 	planning_subtrees = list(
+		/datum/ai_planning_subtree/pet_planning,
 		/datum/ai_planning_subtree/aggro_find_target,
 		/datum/ai_planning_subtree/basic_melee_attack_subtree/bog_troll,
 
@@ -53,6 +55,7 @@
 	)
 
 	planning_subtrees = list(
+		/datum/ai_planning_subtree/pet_planning,
 		/datum/ai_planning_subtree/flee_target,
 
 		/datum/ai_planning_subtree/aggro_find_target,
@@ -77,6 +80,7 @@
 	)
 
 	planning_subtrees = list(
+		/datum/ai_planning_subtree/pet_planning,
 		/datum/ai_planning_subtree/aggro_find_target,
 		/datum/ai_planning_subtree/targeted_mob_ability,
 		/datum/ai_planning_subtree/basic_melee_attack_subtree/bog_troll,
@@ -90,6 +94,7 @@
 
 /datum/ai_controller/troll/axe
 	planning_subtrees = list(
+		/datum/ai_planning_subtree/pet_planning,
 		/datum/ai_planning_subtree/flee_target,
 		/datum/ai_planning_subtree/aggro_find_target,
 		/datum/ai_planning_subtree/find_food/troll,
@@ -106,6 +111,7 @@
 		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic/allow_items()
 	)
 	planning_subtrees = list(
+		/datum/ai_planning_subtree/pet_planning,
 		/datum/ai_planning_subtree/aggro_find_target,
 		/datum/ai_planning_subtree/targeted_mob_ability/harpoon_pull,
 		/datum/ai_planning_subtree/basic_melee_attack_subtree/bog_troll,
