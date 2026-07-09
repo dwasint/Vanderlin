@@ -21,6 +21,10 @@
 	raceicon = "goblin_moon"
 	statsheet_male = /datum/attribute_holder/sheet/job/goblin/moon
 
+/datum/species/goblin/moon/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+	. = ..()
+	C.add_spell(/datum/action/cooldown/spell/undirected/conjure_item/brick)
+
 /datum/species/goblin/moon/spec_death(gibbed, mob/living/carbon/human/H)
 	new /obj/item/reagent_containers/powder/moondust_purest(get_turf(H))
 	H.visible_message("<span class='blue'>Moondust falls from [H]!</span>")

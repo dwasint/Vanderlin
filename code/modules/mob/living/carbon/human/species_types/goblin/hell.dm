@@ -21,3 +21,11 @@
 	id = "goblin_hell"
 	raceicon = "goblin_hell"
 	statsheet_male = /datum/attribute_holder/sheet/job/goblin/hell
+
+/datum/species/goblin/hell/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+	. = ..()
+	C.AddComponent(/datum/component/violent_death)
+
+/datum/species/goblin/hell/on_species_loss(mob/living/carbon/C)
+	. = ..()
+	qdel(C.GetComponent(/datum/component/violent_death))

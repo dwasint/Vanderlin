@@ -27,10 +27,8 @@
 		return
 	var/mob/living/L = owner
 	var/INT = GET_MOB_ATTRIBUTE_VALUE(L, STAT_INTELLIGENCE)
-	if(INT <= 10)
-		return
 	var/obj/item/brick = .
-	var/int_scaling = INT - 10
+	var/int_scaling = max(INT - 10, 1)
 	brick.force = (brick.force + int_scaling) * attuned_strength
 	brick.throwforce = (brick.throwforce + int_scaling * 2) * attuned_strength // 2x scaling for throwing. Let's go.
 	brick.name = "magician's brick +[int_scaling]"
