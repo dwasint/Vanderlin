@@ -53,7 +53,7 @@
 
 					var/inside_price = faction.get_actual_sell_price(inside, 1)
 					if(inside_price > 0)
-						total_value += inside_price
+						total_sell_value += inside_price
 
 					if(istype(inside, /obj/item/reagent_containers/glass) || istype(inside, /obj/structure))
 						var/list/inside_reagent_values = faction.get_reagent_sell_values(inside)
