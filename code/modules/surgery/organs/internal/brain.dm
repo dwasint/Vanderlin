@@ -126,14 +126,6 @@
 		. = TRUE
 	needs_processing = .
 
-/obj/item/organ/brain/on_medium_damage_received()
-	. = ..()
-	owner.add_stress(/datum/stress_event/brain_damage)
-
-/obj/item/organ/brain/on_medium_damage_healed()
-	. = ..()
-	owner.remove_stress(/datum/stress_event/brain_damage)
-
 /obj/item/organ/brain/can_self_heal(delta_time, times_fired, in_bleedout)
 	. = ..()
 	if(!.)
