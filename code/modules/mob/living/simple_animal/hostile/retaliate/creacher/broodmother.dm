@@ -242,12 +242,14 @@ GLOBAL_LIST_EMPTY(broodmother_eggs)
 				C.gib()
 	else if(isorgan(A))
 		var/obj/item/organ/organ = A
+		var/turf/organ_turf = get_turf(organ)
 		var/obj/item/reagent_containers/food/snacks/S = organ.prepare_eat(src)
 		if(S)
-			S.attack(src, src)
+			S.forceMove(organ_turf)
+			eat_food(S)
 	else if(issnack(A))
 		var/obj/item/reagent_containers/food/snacks/S = A
-		S.attack(src, src)
+		eat_food(S)
 
 /obj/structure/broodmother_egg
 	name = "egg"
