@@ -8,8 +8,8 @@
 		STAT_SPEED = list(-6, 0),
 	)
 	raw_attribute_list = list(
-		/datum/attribute/skill/combat/wrestling = 20,
-		/datum/attribute/skill/combat/unarmed = 20,
+		/datum/attribute/skill/combat/wrestling = 40,
+		/datum/attribute/skill/combat/unarmed = 30,
 		/datum/attribute/skill/combat/polearms = 10,
 		/datum/attribute/skill/combat/knives = 10,
 		/datum/attribute/skill/combat/axesmaces = 10,
