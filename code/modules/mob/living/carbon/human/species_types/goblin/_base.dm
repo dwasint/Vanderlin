@@ -22,9 +22,8 @@
 	species_traits = list(NO_UNDERWEAR)
 	inherent_traits = list(TRAIT_RESISTCOLD,TRAIT_RESISTHIGHPRESSURE,TRAIT_RESISTLOWPRESSURE,TRAIT_RADIMMUNE, TRAIT_EASYDISMEMBER, TRAIT_CRITICAL_WEAKNESS, TRAIT_NASTY_EATER, TRAIT_LEECHIMMUNE, TRAIT_INHUMENCAMP)
 
-	no_equip = list(ITEM_SLOT_SHIRT, ITEM_SLOT_MASK, ITEM_SLOT_GLOVES, ITEM_SLOT_SHOES, ITEM_SLOT_PANTS)
-	offset_features_m = list(OFFSET_HANDS = list(0,-4))
-	offset_features_f = list(OFFSET_HANDS = list(0,-4))
+	no_equip = list(ITEM_SLOT_SHOES, ITEM_SLOT_PANTS, ITEM_SLOT_GLOVES, ITEM_SLOT_MASK)
+
 
 	statsheet_male = /datum/attribute_holder/sheet/job/goblin
 
@@ -35,6 +34,48 @@
 	var/raceicon = "goblin"
 	exotic_bloodtype = /datum/blood_type/human/corrupted/goblin
 	meat = list(/obj/item/reagent_containers/food/snacks/meat/strange/inhumen = 1)
+
+	custom_clothes = TRUE
+	custom_id = SPEC_ID_DWARF
+
+	offset_features_m = list(
+		OFFSET_RING = list(0,-4),\
+		OFFSET_GLOVES = list(0,0),\
+		OFFSET_WRISTS = list(0,0),\
+		OFFSET_HANDS = list(0,-4),\
+		OFFSET_CLOAK = list(0,0),\
+		OFFSET_FACEMASK = list(0,-5),\
+		OFFSET_HEAD = list(0,-5),\
+		OFFSET_FACE = list(0,-5),\
+		OFFSET_BELT = list(0,0),\
+		OFFSET_BACK = list(0,-5),\
+		OFFSET_NECK = list(0,-5),\
+		OFFSET_MOUTH = list(0,-5),\
+		OFFSET_PANTS = list(0,0),\
+		OFFSET_SHIRT = list(0,-3),\
+		OFFSET_ARMOR = list(0,-3),\
+		OFFSET_UNDIES = list(0,0)\
+	)
+
+	offset_features_f = list(
+		OFFSET_RING = list(0,-4),\
+		OFFSET_GLOVES = list(0,0),\
+		OFFSET_WRISTS = list(0,0),\
+		OFFSET_HANDS = list(0,-4),\
+		OFFSET_CLOAK = list(0,0),\
+		OFFSET_FACEMASK = list(0,-5),\
+		OFFSET_HEAD = list(0,-5),\
+		OFFSET_FACE = list(0,-5),\
+		OFFSET_BELT = list(0,0),\
+		OFFSET_BACK = list(0,-5),\
+		OFFSET_NECK = list(0,-5),\
+		OFFSET_MOUTH = list(0,-5),\
+		OFFSET_PANTS = list(0,0),\
+		OFFSET_SHIRT = list(0,-3),\
+		OFFSET_ARMOR = list(0,-3),\
+		OFFSET_UNDIES = list(0,0)\
+	)
+	id_override = SPEC_ID_GOBLIN
 
 /datum/species/goblin/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	..()
@@ -60,7 +101,5 @@
 	H.update_inv_legcuffed()
 	H.update_fire()
 	H.update_body()
-	var/mob/living/carbon/human/species/goblin/G = H
-	G.update_wearable()
 	H.update_transform()
 	return TRUE

@@ -183,11 +183,6 @@
 	apply_overlay(ARMOR_LAYER)
 
 
-/mob/living/carbon/human/species/goblin/update_inv_head(hide_nonstandard = FALSE)
-	update_wearable()
-/mob/living/carbon/human/species/goblin/update_inv_armor()
-	update_wearable()
-
 /datum/species/goblin/update_damage_overlays(mob/living/carbon/human/H)
 	return
 

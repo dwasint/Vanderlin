@@ -1,11 +1,12 @@
 /datum/component/violent_death
 	// Adjust these to change how the explosion scales by default
-	var/explosion_power = 40
+	var/explosion_power = 20
 	var/explosion_falloff = 2
 	var/explosion_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR
 	var/death_time = 10 SECONDS
+	var/burns = FALSE
 
-/datum/component/violent_death/Initialize(power, falloff, shape, explode_time = 10 SECONDS)
+/datum/component/violent_death/Initialize(power, falloff, shape, burn, explode_time = 10 SECONDS)
 	if(!isliving(parent))
 		return COMPONENT_INCOMPATIBLE
 
@@ -17,6 +18,8 @@
 		explosion_shape = shape
 	if(explode_time)
 		death_time = explode_time
+	if(burn)
+		burns = burn
 
 	RegisterSignal(parent, COMSIG_LIVING_DEATH, PROC_REF(handle_death))
 
@@ -54,7 +57,8 @@
 		power = explosion_power, \
 		falloff = explosion_falloff, \
 		falloff_shape = explosion_shape, \
-		explosion_source = "[L.name] (Violent Death Component)" \
+		explosion_source = "[L.name] (Violent Death Component)", \
+		burns = burns \
 	)
 
 	var/matrix/M = matrix(L.transform)

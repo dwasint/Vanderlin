@@ -33,8 +33,6 @@
 	H.update_inv_legcuffed()
 	H.update_fire()
 	H.update_body()
-	var/mob/living/carbon/human/species/orc/G = H
-	G.update_wearable()
 	H.update_transform()
 	return TRUE
 
