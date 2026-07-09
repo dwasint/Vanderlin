@@ -72,6 +72,7 @@
 #include "craftable_clothes.dm"
 #include "craftable_turfs.dm"
 #include "create_and_destroy.dm"
+#include "economy_check.dm"
 #include "faction_supply_packs.dm"
 #include "focus_only_tests.dm"
 #include "item_detail_sanity.dm"
