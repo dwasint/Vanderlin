@@ -25,7 +25,7 @@
 
 			// Calculate the absolute lowest theoretical purchase price after extreme market drops.
 			// Under max reputation, buyer bias subtracts up to 15% from the random fluctuation window.
-			var/floor_cost = max(1, round(pack.baseline_price * SUPPLY_PRICE_FLOOR_MULT))
+			var/floor_cost = baseline_price
 
 			var/total_sell_value = 0
 
