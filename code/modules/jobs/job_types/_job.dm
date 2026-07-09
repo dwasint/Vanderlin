@@ -316,7 +316,10 @@
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_JOB_AFTER_SPAWN, src, spawned, player_client)
 
-	var/list/player_sel = player_client?.prefs?.alt_job_selections[title]
+	var/list/player_sel
+	if(title in player_client?.prefs?.alt_job_selections)
+		player_sel = player_client?.prefs?.alt_job_selections[title]
+
 	if(length(player_sel))
 		var/chosen_title = player_sel["title"]
 		if(chosen_title && (chosen_title in (list(title, f_title) + alt_titles + alt_titles_female)))

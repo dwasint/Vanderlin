@@ -289,7 +289,9 @@
 
 		entry["status"] = "available"
 
-		var/list/current_sel = prefs.alt_job_selections[job.title]
+		var/list/current_sel
+		if(job.title in prefs.alt_job_selections)
+			current_sel = prefs.alt_job_selections[job.title]
 		entry["current_title"] = (current_sel && current_sel["title"]) || entry["display_name"]
 
 		var/list/honorary_choices = prefs.get_valid_alt_values(job, "honorary", user)
