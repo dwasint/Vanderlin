@@ -23,7 +23,7 @@
 			if(!pack || pack.static_cost || !pack.baseline_price || !pack.contains)
 				continue
 
-			var/floor_cost = baseline_price
+			var/floor_cost = pack.baseline_price
 
 			var/total_sell_value = 0
 
