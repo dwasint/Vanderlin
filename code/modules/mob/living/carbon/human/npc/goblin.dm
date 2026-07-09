@@ -97,10 +97,6 @@
 /mob/living/carbon/human/species/goblin/npc/ambush/sea
 	race = /datum/species/goblin/sea
 
-/datum/species/goblin/sea
-	raceicon = "goblin_sea"
-	id = "goblin_sea"
-
 /mob/living/carbon/human/species/goblin/moon
 	name = "moon goblin"
 	race = /datum/species/goblin/moon

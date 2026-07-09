@@ -20,3 +20,6 @@
 	raceicon = "goblin_sea"
 	id = "goblin_sea"
 	statsheet_male = /datum/attribute_holder/sheet/job/goblin/sea
+	species_traits = list(
+		TRAIT_SWIMMER,
+	)
