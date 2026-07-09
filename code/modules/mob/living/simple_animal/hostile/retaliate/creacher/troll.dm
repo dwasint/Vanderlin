@@ -161,6 +161,19 @@
 	defdrain = 13
 	range = 3
 
+/mob/living/simple_animal/hostile/retaliate/troll/bog/slaved/Initialize()
+	. = ..()
+	var/static/list/pet_commands = list(
+				/datum/pet_command/idle,
+				/datum/pet_command/free,
+				/datum/pet_command/follow,
+				/datum/pet_command/attack,
+				/datum/pet_command/protect_owner,
+				/datum/pet_command/aggressive,
+				/datum/pet_command/calm,
+			)
+	AddComponent(/datum/component/obeys_commands, pet_commands)
+
 /mob/living/simple_animal/hostile/retaliate/troll/slaved/Initialize()
 	. = ..()
 	var/static/list/pet_commands = list(
