@@ -3863,6 +3863,15 @@
 /obj/item/reagent_containers/glass/cup/wooden,
 /turf/open/floor/ruinedwood/turned/darker,
 /area/indoors/bandit_lair)
+"vy" = (
+/obj/effect/mapping_helpers/virtual_z_link/broodmother_base{
+	link_height = 6;
+	link_width = 4;
+	link_id = "broodmother-escape4";
+	invisibility = 100
+	},
+/turf/closed/mineral,
+/area/broodmother_den)
 "vz" = (
 /obj/effect/decal/cobbleedge,
 /turf/open/floor/dirt,
@@ -4117,6 +4126,15 @@
 	},
 /turf/open/floor/cobblerock,
 /area/outdoors/woods_safe)
+"wO" = (
+/obj/effect/mapping_helpers/virtual_z_link/broodmother_base{
+	link_height = 5;
+	link_width = 7;
+	link_id = "broodmother-escape2";
+	invisibility = 100
+	},
+/turf/closed/mineral,
+/area/broodmother_den)
 "wR" = (
 /obj/effect/decal/cobbleedge/alt,
 /turf/open/floor/dirt,
@@ -4702,6 +4720,14 @@
 "Ba" = (
 /turf/open/floor/metal/barograte,
 /area/indoors/vampire_manor)
+"Bc" = (
+/obj/effect/mapping_helpers/virtual_z_link/broodmother_base{
+	link_height = 5;
+	link_width = 6;
+	link_id = "broodmother-escape1"
+	},
+/turf/closed/mineral,
+/area/broodmother_den)
 "Bd" = (
 /obj/item/natural/rock,
 /turf/open/floor/dirt,
@@ -4975,6 +5001,12 @@
 	},
 /turf/open/floor/churchrough,
 /area/indoors/lich)
+"CJ" = (
+/obj/structure/stairs/stone{
+	dir = 1
+	},
+/turf/open/floor/cobblerock,
+/area/broodmother_den)
 "CK" = (
 /obj/machinery/light/fueled/torchholder/l,
 /turf/open/floor/carpet/royalblack,
@@ -8599,6 +8631,15 @@
 /obj/structure/fluff/statue/knight/interior/r,
 /turf/open/floor/churchrough,
 /area/indoors/lich)
+"ZS" = (
+/obj/effect/mapping_helpers/virtual_z_link/broodmother_base{
+	link_height = 4;
+	link_width = 7;
+	link_id = "broodmother-escape3";
+	invisibility = 100
+	},
+/turf/open/floor/naturalstone,
+/area/broodmother_den)
 "ZT" = (
 /obj/structure/flora/grass/bush_meagre/yellow,
 /turf/open/floor/dirt,
@@ -16592,11 +16633,11 @@ Pe
 Pe
 OU
 Pe
-WK
+CJ
 WK
 KA
 KA
-Pe
+vy
 Pe
 Pe
 Pe
@@ -16982,7 +17023,7 @@ Pe
 Pe
 OU
 Pe
-KA
+KO
 hn
 hn
 La
@@ -16990,7 +17031,7 @@ Pe
 Pe
 Pe
 hn
-hn
+ZS
 OU
 ag
 ag
@@ -17638,7 +17679,7 @@ La
 Pe
 Pe
 Pe
-KA
+KO
 hn
 KA
 OU
@@ -17762,10 +17803,10 @@ Pe
 Pe
 OU
 Pe
-KA
+KO
 KA
 WK
-Pe
+wO
 Pe
 WK
 WK
@@ -18412,7 +18453,7 @@ Pe
 Pe
 OU
 Pe
-hn
+UO
 La
 WK
 Pe
@@ -18543,7 +18584,7 @@ Pe
 OU
 Pe
 Pe
-WK
+CJ
 hn
 La
 Pe
@@ -18810,7 +18851,7 @@ WK
 La
 KA
 hn
-Pe
+Bc
 OU
 ag
 ag
@@ -19197,7 +19238,7 @@ Pe
 Pe
 Pe
 Pe
-KA
+KO
 La
 WK
 hn
@@ -19327,7 +19368,7 @@ Pe
 Pe
 Pe
 Pe
-La
+QW
 uB
 WK
 hn

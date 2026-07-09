@@ -4,7 +4,7 @@
 
 	id = "broodmother_entry"
 	name = "Broodmother Sinkhole"
-	mappath = "_maps/templates/broodmother_hole.dmm"
+	mappath = "_maps/templates/broodmother/broodmother_hole.dmm"
 
 /obj/effect/mapping_helpers/broodmother_entry
 	name = "broodmother_spawner"
