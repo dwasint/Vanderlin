@@ -436,7 +436,6 @@
 	var/submerged = FALSE
 	/// How close the target has to be before we surface even while in water
 	var/surface_distance = 4
-	var/submerged_icon_state = "submerging"
 	COOLDOWN_DECLARE(submerge_cooldown)
 
 /mob/living/simple_animal/hostile/retaliate/troll/sea/Initialize(mapload)
@@ -467,7 +466,6 @@
 	if(submerged || !COOLDOWN_FINISHED(src, submerge_cooldown))
 		return
 	submerged = TRUE
-	icon_state = submerged_icon_state
 	update_reflection()
 	add_movespeed_modifier(MOVESPEED_ID_WHIRLPOOL, multiplicative_slowdown = -1.5)
 
@@ -475,7 +473,6 @@
 	if(!submerged)
 		return
 	submerged = FALSE
-	icon_state = initial(icon_state)
 	update_reflection()
 	remove_movespeed_modifier(MOVESPEED_ID_WHIRLPOOL)
 	COOLDOWN_START(src, submerge_cooldown, 1 MINUTES)
