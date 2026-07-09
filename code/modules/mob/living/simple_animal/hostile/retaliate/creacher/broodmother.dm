@@ -212,6 +212,7 @@ GLOBAL_LIST_EMPTY(broodmother_eggs)
 	adjust_biomass(2, round(nutriments / 150, 0.1))
 	adjust_biomass(3, round(nutriments / 500, 0.1))
 
+///this whole proc is fucking ass holy
 /mob/living/simple_animal/hostile/retaliate/troll/broodmother/MiddleClickOn(atom/A, list/modifiers) // it's so bad :sob: I'm so sorry
 	. = ..()
 	if(isanimal(A))
@@ -247,9 +248,11 @@ GLOBAL_LIST_EMPTY(broodmother_eggs)
 		if(S)
 			S.forceMove(organ_turf)
 			eat_food(S)
+			eat_food_after(S)
 	else if(issnack(A))
 		var/obj/item/reagent_containers/food/snacks/S = A
 		eat_food(S)
+		eat_food_after(S)
 
 /obj/structure/broodmother_egg
 	name = "egg"
