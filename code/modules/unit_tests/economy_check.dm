@@ -23,8 +23,6 @@
 			if(!pack || pack.static_cost || !pack.baseline_price || !pack.contains)
 				continue
 
-			// Calculate the absolute lowest theoretical purchase price after extreme market drops.
-			// Under max reputation, buyer bias subtracts up to 15% from the random fluctuation window.
 			var/floor_cost = baseline_price
 
 			var/total_sell_value = 0
