@@ -162,13 +162,13 @@ GLOBAL_LIST_EMPTY(broodmother_eggs)
 		tier_3_biomass_amount,
 		)
 
-/mob/living/simple_animal/hostile/retaliate/troll/broodmother/proc/attempt_lay_egg(tier)
+/mob/living/simple_animal/hostile/retaliate/troll/broodmother/proc/attempt_lay_egg(tier, obj/structure/broodmother_egg/override)
 	if(!tier)
 		stack_trace("didn't pass tier for egg")
 	if(!egg_laying_checks(tier))
 		return
 
-	lay_egg(tier)
+	lay_egg(tier, override)
 
 /mob/living/simple_animal/hostile/retaliate/troll/broodmother/proc/egg_laying_checks(tier)
 	var/check = tier
@@ -182,7 +182,7 @@ GLOBAL_LIST_EMPTY(broodmother_eggs)
 
 	return (vars["tier_[tier]_biomass_amount"] >= check) ? TRUE : FALSE // gaming
 
-/mob/living/simple_animal/hostile/retaliate/troll/broodmother/proc/lay_egg(tier)
+/mob/living/simple_animal/hostile/retaliate/troll/broodmother/proc/lay_egg(tier, obj/structure/broodmother_egg/override)
 	var/egg_to_lay
 	switch(tier)
 		if(1)
@@ -194,6 +194,9 @@ GLOBAL_LIST_EMPTY(broodmother_eggs)
 		if(3)
 			egg_to_lay = /obj/structure/broodmother_egg/troll
 			adjust_biomass(tier, -tier_3_biomass_cost)
+
+	if(override)
+		egg_to_lay = override
 
 	var/obj/structure/broodmother_egg/made_egg = new egg_to_lay(get_turf(src))
 	made_egg.mother_weak_ref = WEAKREF(src)
@@ -251,6 +254,8 @@ GLOBAL_LIST_EMPTY(broodmother_eggs)
 	desc = "An egg..."
 	abstract_type = /obj/structure/broodmother_egg
 	icon = 'icons/obj/broodmother_32x.dmi'
+	///name that shows in the hud on hover
+	var/hud_name = ""
 	var/hatched = FALSE
 	var/hatch_time = 60 SECONDS
 	var/type_to_spawn
@@ -373,8 +378,29 @@ GLOBAL_LIST_EMPTY(broodmother_eggs)
 /obj/structure/broodmother_egg/goblin
 	name = "small egg"
 	icon_state = "goblin_egg"
+	hud_name = "a Goblin Egg"
 	type_to_spawn = /mob/living/carbon/human/species/goblin/slaved
 	vessel_id = BROODSPAWN_GOBLIN_VESSEL_ID
+
+/obj/structure/broodmother_egg/goblin/moon
+	icon_state = "goblin_moon_egg"
+	hud_name = "a Moon Goblin Egg"
+	type_to_spawn = /mob/living/carbon/human/species/goblin/slaved/moon
+
+/obj/structure/broodmother_egg/goblin/hell
+	icon_state = "goblin_hell_egg"
+	hud_name = "a Hell Goblin Egg"
+	type_to_spawn = /mob/living/carbon/human/species/goblin/slaved/hell
+
+/obj/structure/broodmother_egg/goblin/sea
+	icon_state = "goblin_sea_egg"
+	hud_name = "a Sea Goblin Egg"
+	type_to_spawn = /mob/living/carbon/human/species/goblin/slaved/hell
+
+/obj/structure/broodmother_egg/goblin/cave
+	icon_state = "goblin_cave_egg"
+	hud_name = "a Cave Goblin Egg"
+	type_to_spawn = /mob/living/carbon/human/species/goblin/slaved/hell
 
 /obj/structure/broodmother_egg/orc
 	name = "medium egg"

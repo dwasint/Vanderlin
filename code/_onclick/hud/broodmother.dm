@@ -88,15 +88,43 @@
 
 /atom/movable/screen/broodmother/button
 	icon = 'icons/hud/broodmother_abilities.dmi'
+	no_over_text = FALSE
 	var/tier
+
+	var/obj/structure/broodmother_egg/selected_override
+	var/list/overrides
+	var/image/override_overlay
 
 /atom/movable/screen/broodmother/button/Click(location, control, params)
 	. = ..()
 	var/mob/living/simple_animal/hostile/retaliate/troll/broodmother/broodmother = usr
 	if(!istype(broodmother))
 		return
+	var/list/modifiers = params2list(params)
+	if(LAZYACCESS(modifiers, RIGHT_CLICK) && length(overrides))
+		rotate_overide()
+		return
+	broodmother.attempt_lay_egg(tier, selected_override)
 
-	broodmother.attempt_lay_egg(tier)
+/atom/movable/screen/broodmother/button/proc/rotate_overide()
+	if(!length(overrides))
+		return
+
+	var/current_index = overrides.Find(selected_override)
+	selected_override = overrides[(current_index % length(overrides)) + 1]
+	name = "Lay [initial(selected_override.hud_name)]"
+	update_override_overlay()
+
+/atom/movable/screen/broodmother/button/proc/update_override_overlay()
+	if(override_overlay)
+		cut_overlay(override_overlay)
+		override_overlay = null
+
+	if(!selected_override)
+		return
+
+	override_overlay = image(icon = selected_override.icon, icon_state = selected_override.icon_state)
+	add_overlay(override_overlay)
 
 /atom/movable/screen/broodmother/bar/tier_1_biomass_bar
 	name = "Tier 1 Biomass"
@@ -110,6 +138,13 @@
 	icon_state = "tier1"
 	screen_loc = "WEST+1:-13,CENTER-1:0"
 	tier = 1
+	overrides = list(
+		/obj/structure/broodmother_egg/goblin,
+		/obj/structure/broodmother_egg/goblin/moon,
+		/obj/structure/broodmother_egg/goblin/hell,
+		/obj/structure/broodmother_egg/goblin/sea,
+		/obj/structure/broodmother_egg/goblin/cave,
+	)
 
 /atom/movable/screen/broodmother/bar/tier_2_biomass_bar
 	name = "Tier 2 Biomass"
@@ -119,7 +154,7 @@
 	tier = 2
 
 /atom/movable/screen/broodmother/button/tier_2_biomass_lay
-	name = "Lay a tier 2 egg"
+	name = "Lay an Orc Egg"
 	icon_state = "tier2"
 	screen_loc = "WEST+1:-13,CENTER+0:2"
 	tier = 2
@@ -132,7 +167,7 @@
 	tier = 3
 
 /atom/movable/screen/broodmother/button/tier_3_biomass_lay
-	name = "Lay a tier 3 egg"
+	name = "Lay a Troll Egg"
 	icon_state = "tier3"
 	screen_loc = "WEST+1:-13,CENTER+1:4"
 	tier = 3
@@ -152,6 +187,8 @@
 
 /datum/hud/broodmother/proc/button_effects(mob/living/simple_animal/hostile/retaliate/troll/broodmother/mob)
 	for(var/atom/movable/screen/broodmother/button/button in static_inventory)
+		if(length(button.overrides))
+			button.rotate_overide()
 		if(!mob.egg_laying_checks(button.tier))
 			button.color = "#610000"
 			continue
