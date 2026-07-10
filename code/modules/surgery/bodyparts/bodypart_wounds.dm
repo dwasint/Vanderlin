@@ -237,7 +237,7 @@
 
 		//If the patient has antibiotics, kill germs by an amount equal to 10x the antibiotic force
 		//e.g. nalixidic acid has 35 force, thus would decrease germs here by 350
-		var/antibiotics = owner.get_antibiotics()
+		var/antibiotics = owner?.get_antibiotics()
 		incoming_germ = max(0, incoming_germ - (antibiotics * 10))
 
 		//This amount is not meaningful enough to cause an infection
