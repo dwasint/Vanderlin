@@ -1,7 +1,7 @@
 /datum/component/violent_death
 	// Adjust these to change how the explosion scales by default
 	var/explosion_power = 25
-	var/explosion_falloff = 2
+	var/explosion_falloff = 4
 	var/explosion_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR
 	var/death_time = 10 SECONDS
 	var/burns = FALSE
