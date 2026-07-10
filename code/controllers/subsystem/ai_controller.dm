@@ -1,5 +1,7 @@
 #define AI_CONTROLLER_PROCESSING_TILE_RANGE 15
 
+/// Handles the processing of SelectBehaviors aswell as able_to_plan() seperate from controller/process
+/// handles only the subsystems within our planning bucket.
 SUBSYSTEM_DEF(ai_controllers)
 	name = "AI Controller Ticker"
 	flags = SS_POST_FIRE_TIMING|SS_BACKGROUND
@@ -7,9 +9,9 @@ SUBSYSTEM_DEF(ai_controllers)
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 	init_order = INIT_ORDER_AI_CONTROLLERS
 	wait = 0.5 SECONDS
+	///bucket we look into for planning. GLOB.ai_controllers_by_status[planning_status]
 	var/planning_status = AI_STATUS_ON
-	var/our_cost
-	var/list/currentrun = list()
+	var/list/currentrun = list()q
 	///if TRUE, this subsystem only processes controllers near a client (or flagged always_process), same rules as SSmobs. If FALSE (default/base), everything in the status bucket processes every fire like before.
 	var/uses_cell_processing = FALSE
 
@@ -93,7 +95,5 @@ SUBSYSTEM_DEF(ai_controllers)
 			COOLDOWN_START(ai_controller, failed_planning_cooldown, AI_FAILED_PLANNING_COOLDOWN)
 		if(MC_TICK_CHECK)
 			return
-
-	our_cost = MC_AVERAGE(our_cost, TICK_DELTA_TO_MS(TICK_USAGE_REAL - timer))
 
 #undef AI_CONTROLLER_PROCESSING_TILE_RANGE
