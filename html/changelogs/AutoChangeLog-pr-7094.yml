@@ -1,0 +1,4 @@
+author: "CheffieGithub"
+delete-after: True
+changes:
+  - bugfix: "Account for cursor X offset when using keybindings (GIVE)"
