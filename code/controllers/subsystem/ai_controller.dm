@@ -11,7 +11,7 @@ SUBSYSTEM_DEF(ai_controllers)
 	wait = 0.5 SECONDS
 	///bucket we look into for planning. GLOB.ai_controllers_by_status[planning_status]
 	var/planning_status = AI_STATUS_ON
-	var/list/currentrun = list()q
+	var/list/currentrun = list()
 	///if TRUE, this subsystem only processes controllers near a client (or flagged always_process), same rules as SSmobs. If FALSE (default/base), everything in the status bucket processes every fire like before.
 	var/uses_cell_processing = FALSE
 
