@@ -774,8 +774,9 @@
 	var/tier = get_reputation_tier()
 	var/list/rerolled = list()
 
-	for(var/list/item_type as anything in trader_data.initial_wanteds)
-		var/list/entry = trader_data.initial_wanteds[item_type].Copy()
+	for(var/item_type as anything in trader_data.initial_wanteds)
+		var/list/list = trader_data.initial_wanteds[item_type]
+		var/list/entry = list.Copy()
 
 		if(prob(wanted_infinite_chance))
 			entry[2] = INFINITY //trader always wants more of this
