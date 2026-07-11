@@ -187,6 +187,30 @@
 			)
 	AddComponent(/datum/component/obeys_commands, pet_commands)
 
+/obj/projectile/thrown_stone
+	name = "stone"
+	icon = 'icons/roguetown/items/natural.dmi'
+	icon_state = "stonebig1"
+	damage = 20
+	damage_type = BRUTE
+	speed = 6
+	///this is chip damage/knockback, not a real siege weapon so yea
+	var/explosion_power = 25
+	var/explosion_falloff = 10
+
+/obj/projectile/thrown_stone/on_hit(atom/target, blocked, pierce_hit)
+	. = ..()
+	var/turf/T = get_turf(src)
+	if(!T)
+		return
+	cell_explosion(
+		epicenter = T, \
+		power = explosion_power, \
+		falloff = explosion_falloff, \
+		falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR, \
+		explosion_source = "[name] (Stone Throw)", \
+		burns = FALSE \
+	)
 
 /mob/living/simple_animal/hostile/retaliate/troll/cave
 	name = "cave troll"

@@ -60,7 +60,7 @@
 
 		/datum/ai_planning_subtree/aggro_find_target,
 		/datum/ai_planning_subtree/find_food/troll,
-		/datum/ai_planning_subtree/targeted_mob_ability,
+		/datum/ai_planning_subtree/targeted_mob_ability/stone_throw,
 		/datum/ai_planning_subtree/basic_melee_attack_subtree,
 
 		/datum/ai_planning_subtree/find_dead_bodies,
