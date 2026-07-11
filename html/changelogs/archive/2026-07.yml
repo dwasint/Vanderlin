@@ -137,3 +137,60 @@
   tired-wired:
   - rscadd: Added a Rockhill accent.
   - bugfix: Fixed the Rockhill knight's hat. Now it's a helmet.
+2026-07-10:
+  Ben10083:
+  - rscadd: Inquisition music box can now be destroyed by casting Burial Rites.
+  ModDownloading:
+  - rscadd: Men-at-Arms Rangers and Returning Bannermen Pikemen can now select their
+      weapon rather than having it be random.
+  - rscdel: Automatons can no longer be unshackled.
+  Somniworld:
+  - balance: The Sweeper now has the "crate mover" trait, and starts with an iron
+      lamptern in their backpack.
+  Wrench-1:
+  - rscadd: Reworked Court Agent, giving them unique subclasses and tools for intrigue
+      and subterfuge (Sprites by Blumengama)
+  - map: added the Court Agent Hideout, located behind a hidden door in the Keep's
+      Stables
+  dwasint:
+  - qol: catacoma now stocks every pack by default
+  - refactor: bounties now use specific datums preventing bugs, and allowing post
+      bounty rewards.
+  - refactor: world reputation now affects market trends of things the faction supplies
+      instead of being a reputation buy system
+  - rscadd: merchants can choose 3 supply packs to come on the first ship in
+  - refactor: supplies now come in crates with a manifest of what each crate has over
+      individual crates
+  - refactor: movement is smoother now, you aren't slower this is purely visual
+2026-07-11:
+  Avalon-Proto:
+  - rscadd: My body is a TEMPLE TO ASTRATA ( New Special)
+  Ben10083:
+  - refactor: Grave examine code refactored to use examine box like the others
+  Blumengama:
+  - rscadd: Added new hair and facial hair options
+  Carol-J:
+  - rscadd: added ability to tame dire bears
+  - bugfix: fixed a few typos in the comments of the bear file, but added one more
+      (for balance)
+  CheffieGithub:
+  - rscadd: Add missing required strings to some operations
+  - bugfix: Lux extraction now tells you when the patient is luxless
+  - bugfix: Fixed cure rot requiring open skin OR clamped skin
+  - bugfix: Account for cursor X offset when using keybindings (GIVE)
+  ModDownloading:
+  - rscadd: Solyanka, a new kind of stew made from coppiette, tamto, lemon, and cured
+      ollie.
+  - rscadd: Half-Drow are now an Accepted species, and can be any job a Half-Elf can
+      except for Monarch and those exclusive to Elves and Half-Elves, like Bladesinger.
+  dwasint:
+  - qol: catacoma now stocks every pack by default
+  - refactor: bounties now use specific datums preventing bugs, and allowing post
+      bounty rewards.
+  - refactor: world reputation now affects market trends of things the faction supplies
+      instead of being a reputation buy system
+  - rscadd: merchants can choose 3 supply packs to come on the first ship in
+  - refactor: supplies now come in crates with a manifest of what each crate has over
+      individual crates
+  realforest2001:
+  - rscadd: The crown can now be worn on the mask slot.

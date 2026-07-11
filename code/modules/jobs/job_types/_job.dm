@@ -329,6 +329,15 @@
 		if(chosen_honorary && (chosen_honorary in (list(honorary, honorary_f) + alt_honorary + alt_honorary_female)))
 			spawned.job_honorary_override = chosen_honorary
 
+	if(player_client)
+		for(var/path in GLOB.post_job_spawn_prefs)
+			var/datum/preference/pref = GLOB.post_job_spawn_prefs[path]
+			if(!length(pref.job_types))
+				continue // ???
+			if(!(type in pref.job_types))
+				continue
+			pref.post_job_apply(spawned, player_client.prefs.read_preference(pref.type), player_client)
+
 	if(spawned.attributes)
 		assign_attributes(spawned, player_client)
 	if(!ishuman(spawned))
