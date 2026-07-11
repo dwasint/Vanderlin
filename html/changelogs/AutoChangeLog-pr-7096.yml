@@ -1,6 +1,0 @@
-author: "CheffieGithub"
-delete-after: True
-changes:
-  - rscadd: "Add missing required strings to some operations"
-  - bugfix: "Lux extraction now tells you when the patient is luxless"
-  - bugfix: "Fixed cure rot requiring open skin OR clamped skin"

@@ -1,4 +1,0 @@
-author: "Ben10083"
-delete-after: True
-changes:
-  - refactor: "Grave examine code refactored to use examine box like the others"
