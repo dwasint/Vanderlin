@@ -661,6 +661,12 @@
 		unified_selection[pack_type] = weight
 
 	var/items_to_select = min(max_items, length(unified_selection))
+
+	// never take more than a random fraction of what's available,
+	// so weighted picks can actually exclude low-weight items instead of draining the pool.
+	// we might need to increase the variety of traders though
+	var/max_variety_cap = max(1, round(length(unified_selection) * 0.6))
+	items_to_select = min(items_to_select, max_variety_cap)
 	var/custom_items_selected = 0
 
 	for(var/i = 1 to items_to_select)
