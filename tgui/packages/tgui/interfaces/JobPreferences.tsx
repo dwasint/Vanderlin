@@ -1,6 +1,6 @@
 import { useState, Fragment } from 'react';
 import { useBackend } from '../backend';
-import { Box, Button, Section, Table, Tabs } from 'tgui-core/components';
+import { Box, Button, Input, Section, Table, Tabs } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 type AltChoice = {
@@ -58,8 +58,34 @@ export const JobPreferences = (props) => {
   const [activeCategory, setActiveCategory] = useState(categories[0]?.name);
   const [expandedJob, setExpandedJob] = useState<string | null>(null);
   const [activeExtraTab, setActiveExtraTab] = useState<'titles' | 'honorary'>('titles');
+  const [searchText, setSearchText] = useState('');
 
   const currentCategory = categories.find((cat) => cat.name === activeCategory) || categories[0];
+
+  const normalizedSearch = (typeof searchText === 'string' ? searchText : '').trim().toLowerCase();
+  const isSearching = normalizedSearch.length > 0;
+
+  const getJobState = (job: StaticJobEntry): DynamicJobState =>
+    job_states[job.title] || {
+      display_name: job.title,
+      pref_level: null,
+      status: 'locked',
+      current_title: job.title,
+      current_honorary: '',
+    };
+
+  const jobMatchesSearch = (job: StaticJobEntry) => {
+    const state = getJobState(job);
+    const haystack = [job.title, state.display_name, state.current_title]
+      .filter(Boolean)
+      .join(' ')
+      .toLowerCase();
+    return haystack.includes(normalizedSearch);
+  };
+
+  const visibleJobs = isSearching
+    ? categories.flatMap((category) => category.jobs.filter(jobMatchesSearch))
+    : currentCategory?.jobs ?? [];
 
   if (race_banned) {
     return (
@@ -87,6 +113,16 @@ export const JobPreferences = (props) => {
           )}
         </Section>
 
+        <Section>
+          <Input
+            fluid
+            expensive
+            placeholder="Search jobs..."
+            value={searchText}
+            onChange={(value) => setSearchText(typeof value === 'string' ? value : '')}
+          />
+        </Section>
+
         <Tabs>
           {categories.map((category) => (
             <Tabs.Tab
@@ -102,8 +138,8 @@ export const JobPreferences = (props) => {
           ))}
         </Tabs>
 
-        {currentCategory && (
-          <Section title={currentCategory.name}>
+        {(isSearching || currentCategory) && (
+          <Section title={isSearching ? `Search Results (${visibleJobs.length})` : currentCategory?.name}>
             <Table>
               <Table.Row header>
                 <Table.Cell width="45%">Job</Table.Cell>
@@ -111,14 +147,18 @@ export const JobPreferences = (props) => {
                 <Table.Cell width="25%">Priority</Table.Cell>
               </Table.Row>
 
-              {currentCategory.jobs.map((job) => {
-                const jobState = job_states[job.title] || {
-                  display_name: job.title,
-                  pref_level: null,
-                  status: 'locked',
-                  current_title: job.title,
-                  current_honorary: '',
-                };
+              {visibleJobs.length === 0 && isSearching && (
+                <Table.Row>
+                  <Table.Cell colSpan={3}>
+                    <Box color="label" italic>
+                      No jobs match "{searchText}"
+                    </Box>
+                  </Table.Cell>
+                </Table.Row>
+              )}
+
+              {visibleJobs.map((job) => {
+                const jobState = getJobState(job);
 
                 const isExpanded = expandedJob === job.title;
                 const hasTitles = job.title_choices && job.title_choices.length > 1;
