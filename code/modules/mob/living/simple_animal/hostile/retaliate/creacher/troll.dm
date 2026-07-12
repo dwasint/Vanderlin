@@ -313,7 +313,7 @@
 		for(var/mob/living/hit_mob in hit_turf)
 			if(hit_mob == caster)
 				continue
-			hit_mob.apply_damage(slam_damage, BRUTE, damage_type = BCLASS_CHOP)
+			hit_mob.apply_damage(slam_damage, BRUTE, def_zone = BODY_ZONE_HEAD, damage_type = BCLASS_CHOP)
 			hit_mob.visible_message(span_danger("[hit_mob] is crushed by the slam!"))
 
 /mob/living/simple_animal/hostile/retaliate/troll/axe
