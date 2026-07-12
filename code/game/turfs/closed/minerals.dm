@@ -138,6 +138,10 @@
 	var/turf/new_turf = ScrapeAway(null, flags)
 	GLOB.mined_resource_loc |= new_turf
 	addtimer(CALLBACK(src, PROC_REF(AfterChange)), 1, TIMER_UNIQUE)
+	return TRUE
+
+/turf/closed/mineral/bedrock/gets_drilled(mob/living/user, triggered_by_explosion, give_exp)
+	return FALSE
 
 /turf/closed/mineral/proc/apply_mining_quality(obj/item/item, mob/living/user)
 	if(!user || !istype(item, /obj/item/ore))
@@ -499,6 +503,7 @@
 	max_integrity = 10000000
 	damage_deflection = 99999999
 	above_floor = /turf/closed/mineral/bedrock
+	turf_flags = NO_JAUNT
 
 /turf/closed/mineral/bedrock/cold
 	icon = MAP_SWITCH('icons/turf/smooth/walls/mineral_blue.dmi', 'icons/turf/mining.dmi')

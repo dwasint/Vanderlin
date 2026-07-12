@@ -634,3 +634,5 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_ANIMAL_PRODUCTIVE "trait_productive"
 #define TRAIT_EXPLOSION_PREVENTER "exploded"
 #define TRAIT_NO_ROT "no_rot"
+
+#define TRAIT_BROOD "Broodspawn"

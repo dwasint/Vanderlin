@@ -245,6 +245,19 @@
 	throwing_stone.Grant(src)
 	ai_controller.set_blackboard_key(BB_TARGETED_ACTION, throwing_stone)
 
+/mob/living/simple_animal/hostile/retaliate/troll/cave/slaved/Initialize()
+	. = ..()
+	var/static/list/pet_commands = list(
+				/datum/pet_command/idle,
+				/datum/pet_command/free,
+				/datum/pet_command/follow,
+				/datum/pet_command/attack,
+				/datum/pet_command/protect_owner,
+				/datum/pet_command/aggressive,
+				/datum/pet_command/calm,
+			)
+	AddComponent(/datum/component/obeys_commands, pet_commands)
+
 /mob/living/simple_animal/hostile/retaliate/troll/cave/ambush
 	ai_controller = /datum/ai_controller/troll/ambush
 	range = 3

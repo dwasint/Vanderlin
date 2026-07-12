@@ -1628,6 +1628,12 @@
 /obj/machinery/light/fueled/wallfire/candle/weak/l,
 /turf/open/floor/blocks/paving/vert,
 /area/indoors/vampire_manor)
+"hs" = (
+/obj/structure/broodmother_hole_base{
+	collapse_template = /datum/map_template/broodmother_sinkhole_four
+	},
+/turf/open/floor/dirt,
+/area/broodmother_den)
 "ht" = (
 /obj/machinery/anvil/crafted,
 /obj/item/weapon/hammer/iron,
@@ -4375,6 +4381,12 @@
 /obj/item/weapon/flail/sflail,
 /turf/open/floor/cobble,
 /area/indoors)
+"yC" = (
+/obj/structure/broodmother_hole_base{
+	collapse_template = /datum/map_template/broodmother_sinkhole_three
+	},
+/turf/open/floor/naturalstone,
+/area/broodmother_den)
 "yD" = (
 /turf/open/floor/cobble,
 /area/outdoors/bog/inhumen_camp)
@@ -4720,6 +4732,10 @@
 "Ba" = (
 /turf/open/floor/metal/barograte,
 /area/indoors/vampire_manor)
+"Bb" = (
+/obj/structure/broodmother_hole_base,
+/turf/open/floor/cobblerock,
+/area/broodmother_den)
 "Bc" = (
 /obj/effect/mapping_helpers/virtual_z_link/broodmother_base{
 	link_height = 5;
@@ -7996,6 +8012,12 @@
 /obj/item/clothing/head/roguehood/astrata,
 /turf/open/floor/wood,
 /area)
+"VV" = (
+/obj/structure/broodmother_hole_base{
+	collapse_template = /datum/map_template/broodmother_sinkhole_two
+	},
+/turf/open/floor/naturalstone,
+/area/broodmother_den)
 "VW" = (
 /obj/structure/fluff/wallclock/r,
 /turf/open/floor/ruinedwood/turned/darker,
@@ -16760,7 +16782,7 @@ Pe
 OU
 hn
 hn
-KA
+hs
 hn
 hn
 hn
@@ -17417,7 +17439,7 @@ Pe
 KA
 WK
 KA
-hn
+yC
 OU
 ag
 ag
@@ -18059,7 +18081,7 @@ Pe
 Pe
 OU
 KA
-hn
+VV
 La
 KA
 Pe
@@ -18949,8 +18971,8 @@ KA
 La
 KA
 La
-Pe
-uB
+CJ
+xV
 xV
 xV
 KA
@@ -19106,7 +19128,7 @@ Pe
 KA
 hn
 La
-WK
+Bb
 hn
 OU
 ag
@@ -20140,8 +20162,8 @@ Pe
 OU
 Pe
 Pe
-WK
-hn
+Pe
+UO
 hn
 hn
 WK

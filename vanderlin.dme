@@ -691,6 +691,7 @@
 #include "code\datums\actions\mob\stone_drop.dm"
 #include "code\datums\actions\mob\stone_throw.dm"
 #include "code\datums\actions\mob\void_blast.dm"
+#include "code\datums\actions\mob\broodmother\open_hole.dm"
 #include "code\datums\actionspeed_modifier\_base.dm"
 #include "code\datums\actionspeed_modifier\base.dm"
 #include "code\datums\actionspeed_modifier\stimulants.dm"

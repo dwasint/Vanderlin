@@ -171,6 +171,12 @@
 	icon_state = "tier3"
 	screen_loc = "WEST+1:-13,CENTER+1:4"
 	tier = 3
+	overrides = list(
+		/obj/structure/broodmother_egg/troll,
+		/obj/structure/broodmother_egg/troll/sea,
+		/obj/structure/broodmother_egg/troll/cave,
+		/obj/structure/broodmother_egg/troll/axe,
+	)
 
 /datum/hud/broodmother/New(mob/owner)
 	..()

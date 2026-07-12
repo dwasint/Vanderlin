@@ -49,9 +49,12 @@ GLOBAL_LIST_EMPTY(broodmother_eggs)
 /mob/living/simple_animal/hostile/retaliate/troll/broodmother/Initialize()
 	. = ..()
 
+	ADD_TRAIT(src, TRAIT_BROOD, INNATE_TRAIT)
 	add_spell(/datum/action/cooldown/spell/projectile/acid_splash_broodmother)
 	add_spell(/datum/action/cooldown/spell/stone_throw)
 	add_spell(/datum/action/cooldown/mob_cooldown/earth_quake)
+	add_spell(/datum/action/cooldown/spell/broodmother_hole)
+	add_spell(/datum/action/cooldown/spell/stone_drop)
 
 	grant_language(/datum/language/common)
 	grant_language(/datum/language/orcish)
@@ -323,6 +326,7 @@ GLOBAL_LIST_EMPTY(broodmother_eggs)
 		vessel_id, \
 		CALLBACK(src, PROC_REF(on_vessel_possessed)), \
 	)
+	ADD_TRAIT(resident_mob, TRAIT_BROOD, INNATE_TRAIT)
 
 /// Whether the resident mob currently has a soul in it (possessed by a ghost).
 /obj/structure/broodmother_egg/proc/is_resident_possessed()
@@ -424,6 +428,21 @@ GLOBAL_LIST_EMPTY(broodmother_eggs)
 	hatch_time = 5 MINUTES
 	time_before_first_crack = 4 MINUTES
 	cracking_speed = 6 SECONDS
+
+/obj/structure/broodmother_egg/troll/sea
+	hud_name = "a Sea Troll Egg"
+	icon_state = "troll_sea_egg"
+	type_to_spawn = /mob/living/simple_animal/hostile/retaliate/troll/sea/slaved
+
+/obj/structure/broodmother_egg/troll/cave
+	hud_name = "a Cave Troll Egg"
+	icon_state = "toll_cave_egg"
+	type_to_spawn = /mob/living/simple_animal/hostile/retaliate/troll/cave/slaved
+
+/obj/structure/broodmother_egg/troll/axe
+	hud_name = "an Axe Troll Egg"
+	icon_state = "troll_axe_egg"
+	type_to_spawn = /mob/living/simple_animal/hostile/retaliate/troll/axe/slaved
 
 /// Mapper-placed egg: sits inert until a ghost claims it, then immediately becomes
 /// a fully active broodmother. No hatch_time/cracking - it's not laid by anything,
