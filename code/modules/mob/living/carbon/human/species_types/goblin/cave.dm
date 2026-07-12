@@ -20,3 +20,11 @@
 	id = "goblin_cave"
 	raceicon = "goblin_cave"
 	statsheet_male = /datum/attribute_holder/sheet/job/goblin/cave
+
+/datum/species/goblin/cave/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+	. = ..()
+	C.add_spell(/datum/action/cooldown/spell/burrow)
+
+/datum/species/goblin/cave/on_species_loss(mob/living/carbon/C)
+	. = ..()
+	C.remove_spell(/datum/action/cooldown/spell/burrow)

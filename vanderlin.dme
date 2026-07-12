@@ -687,6 +687,7 @@
 #include "code\datums\actions\toggles.dm"
 #include "code\datums\actions\items\organ_action.dm"
 #include "code\datums\actions\mob\_base.dm"
+#include "code\datums\actions\mob\burrow.dm"
 #include "code\datums\actions\mob\earth_quake.dm"
 #include "code\datums\actions\mob\stone_drop.dm"
 #include "code\datums\actions\mob\stone_throw.dm"
