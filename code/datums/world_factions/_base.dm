@@ -760,7 +760,7 @@
 	else if(pack.type in exotic_pool)
 		variance = 30
 
-	var/modifier = 1 + (rand(-variance, variance) * 0.01)
+	var/modifier = 1 + (rand(-variance+20, variance-20) * 0.01)
 	return max(1, round(base_price * modifier))
 
 /**
