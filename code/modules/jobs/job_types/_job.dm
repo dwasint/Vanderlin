@@ -794,6 +794,17 @@
 /datum/job/proc/remove_spells(mob/living/equipped_human)
 	equipped_human.remove_spells(source = src)
 
+
+/datum/job/proc/get_default_title(mob/mob, ignore_pronouns = FALSE)
+	if(title_override)
+		return title_override
+
+	if(f_title)
+		if(ignore_pronouns && mob.gender == FEMALE || !ignore_pronouns && mob.pronouns == SHE_HER)
+			return f_title
+
+	return title
+
 /datum/job/proc/get_informed_title(mob/mob, ignore_pronouns = FALSE)
 	if(mob.admin_title)
 		return mob.admin_title
@@ -803,14 +814,7 @@
 		if(H.job_title_override)
 			return H.job_title_override
 
-	if(title_override)
-		return title_override
-
-	if(f_title)
-		if(ignore_pronouns && mob.gender == FEMALE || !ignore_pronouns && mob.pronouns == SHE_HER)
-			return f_title
-
-	return title
+	return get_default_title(mob, ignore_pronouns)
 
 /datum/job/proc/set_spawn_and_total_positions(count)
 	return spawn_positions
