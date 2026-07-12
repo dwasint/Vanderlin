@@ -45,6 +45,10 @@
 /datum/job/priest
 	title = JOB_PRIEST
 	f_title = JOB_PRIEST_FEM
+
+	unique_alt_honororary = TRUE
+	alt_honorary = list("Brother")
+	alt_honorary_female = list("Sister")
 	tutorial = "You are a devoted follower of Astrata. \
 	The divine is all that matters in an immoral world. \
 	The Sun Queen and her pantheon rule over all, and you will preach their wisdom to Vanderlin. \
