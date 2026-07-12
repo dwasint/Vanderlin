@@ -314,6 +314,10 @@
 		return TRUE
 	return ..()
 
+/obj/item/melee/touch_attack/dropped(mob/user, silent)
+	. = ..()
+	remove_hand_with_no_refund(user)
+
 /**
  * When the hand component of a touch spell is qdel'd, (the hand is dropped or otherwise lost),
  * the cooldown on the spell that made it is automatically refunded.
