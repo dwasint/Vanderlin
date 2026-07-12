@@ -76,7 +76,16 @@ export const JobPreferences = (props) => {
 
   const jobMatchesSearch = (job: StaticJobEntry) => {
     const state = getJobState(job);
-    const haystack = [job.title, state.display_name, state.current_title]
+    const altTitleValues = job.title_choices?.map((choice) => choice.value) ?? [];
+    const honoraryValues = job.honorary_choices?.map((choice) => choice.value) ?? [];
+    const haystack = [
+      job.title,
+      state.display_name,
+      state.current_title,
+      state.current_honorary,
+      ...altTitleValues,
+      ...honoraryValues,
+    ]
       .filter(Boolean)
       .join(' ')
       .toLowerCase();
@@ -116,7 +125,6 @@ export const JobPreferences = (props) => {
         <Section>
           <Input
             fluid
-            expensive
             placeholder="Search jobs..."
             value={searchText}
             onChange={(value) => setSearchText(typeof value === 'string' ? value : '')}
