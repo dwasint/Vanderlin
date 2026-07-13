@@ -288,7 +288,6 @@ export const ArmorCompare = (props) => {
             <Button
               icon={usageBuilt ? 'check' : 'magnifying-glass'}
               content={usageBuilt ? 'Item usage scanned' : 'Scan item usage'}
-              confirmContent="This walks every item type in the game and may cause a brief lag spike. Click again to confirm."
               disabled={usageBuilt}
               onClick={() => act('build_usage')}
             />
