@@ -99,10 +99,11 @@
  * If reset_cooldown_after is TRUE, we will additionally refund the cooldown of the spell.
  * If reset_cooldown_after is FALSE, we will instead just start the spell's cooldown
  */
-/datum/action/cooldown/spell/undirected/touch/proc/remove_hand(mob/living/hand_owner, reset_cooldown_after = FALSE)
+/datum/action/cooldown/spell/undirected/touch/proc/remove_hand(mob/living/hand_owner, reset_cooldown_after = FALSE, skipper = FALSE)
 	if(!QDELETED(attached_hand))
 		unregister_hand_signals()
-		hand_owner?.temporarilyRemoveItemFromInventory(attached_hand)
+		if(!skipper)
+			hand_owner?.temporarilyRemoveItemFromInventory(attached_hand)
 		QDEL_NULL(attached_hand)
 	attached_hand = null
 
@@ -328,7 +329,7 @@
 /obj/item/melee/touch_attack/proc/remove_hand_with_no_refund(mob/holder, skipper = FALSE)
 	var/datum/action/cooldown/spell/undirected/touch/hand_spell = spell_which_made_us?.resolve()
 	if(!QDELETED(hand_spell))
-		hand_spell.remove_hand(holder, reset_cooldown_after = FALSE)
+		hand_spell.remove_hand(holder, reset_cooldown_after = FALSE, skipper)
 		return
 
 	// We have no spell associated for some reason, just delete us as normal.
