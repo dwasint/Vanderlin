@@ -8,7 +8,7 @@
 	blade_dulling = DULLING_BASHCHOP
 	resistance_flags = FLAMMABLE // Made of leather
 
-	armor_type = /datum/armor/padded/bad
+	armor_type = /datum/armor/gloves/padded/bad
 	prevent_crits = CUT_AND_MINOR_CRITS
 	max_integrity = INTEGRITY_POOR
 	salvage_result = null
@@ -60,7 +60,7 @@
 	desc = "A pair of heavy Grenzelhoftian leather gloves, commonly used by fencers, renowned for their quality."
 	icon_state = "fencergloves"
 	item_state = "fencergloves"
-	armor_type = /datum/armor/leather/good
+	armor_type = /datum/armor/gloves/leather/good
 	prevent_crits = list(BCLASS_CHOP, BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
 	resistance_flags = FIRE_PROOF
 	blocksound = SOFTHIT
@@ -87,7 +87,7 @@
 	blocksound = SOFTHIT
 	blade_dulling = DULLING_BASHCHOP
 	resistance_flags = FLAMMABLE // Made of leather
-	armor_type = /datum/armor/leather
+	armor_type = /datum/armor/gloves/leather
 	prevent_crits = ALL_EXCEPT_CHOP_AND_STAB
 	max_integrity = INTEGRITY_STANDARD
 	salvage_result = /obj/item/natural/fur
