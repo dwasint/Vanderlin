@@ -1,4 +1,3 @@
-
 /datum/armor/maille/iron
 	blunt = 30
 	slash = 45
