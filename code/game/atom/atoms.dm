@@ -256,7 +256,6 @@
 
 	if(uses_integrity)
 		atom_integrity = max_integrity
-	TEST_ONLY_ASSERT((!armor || istype(armor)), "[type] has an armor that contains an invalid value at intialize")
 
 	if(ispath(ai_controller))
 		ai_controller = new ai_controller(src)

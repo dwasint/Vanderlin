@@ -106,7 +106,6 @@
 
 	if(uses_integrity)
 		atom_integrity = max_integrity
-	TEST_ONLY_ASSERT((!armor || istype(armor)), "[type] has an armor that contains an invalid value at intialize")
 
 	var/turf/T = GET_TURF_ABOVE(src)
 	if(T)
