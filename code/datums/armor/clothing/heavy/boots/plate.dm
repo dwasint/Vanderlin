@@ -22,6 +22,14 @@
 	fire = 0
 	acid = 0
 
+/datum/armor/boots/plate/good
+	blunt = 90
+	slash = 90
+	stab = 90
+	piercing = 85
+	fire = 0
+	acid = 0
+
 /datum/armor/boots/plate/elf
 	blunt = 100
 	slash = 100
