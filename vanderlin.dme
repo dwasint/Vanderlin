@@ -939,6 +939,8 @@
 #include "code\datums\armor\clothing\light\gloves\padded.dm"
 #include "code\datums\armor\clothing\light\head\headband.dm"
 #include "code\datums\armor\clothing\light\head\leather.dm"
+#include "code\datums\armor\clothing\light\neck\leather.dm"
+#include "code\datums\armor\clothing\light\neck\padded.dm"
 #include "code\datums\armor\clothing\light\pants\leather.dm"
 #include "code\datums\armor\clothing\light\pants\padded.dm"
 #include "code\datums\armor\clothing\light\wrist\leather.dm"

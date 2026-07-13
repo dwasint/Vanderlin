@@ -13,3 +13,11 @@
 	piercing = 45
 	fire = 0
 	acid = 0
+
+/datum/armor/neck/maille/iron
+	blunt = 30
+	slash = 45
+	stab = 50
+	piercing = 30
+	fire = 0
+	acid = 0
