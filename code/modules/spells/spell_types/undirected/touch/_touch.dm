@@ -316,7 +316,7 @@
 
 /obj/item/melee/touch_attack/dropped(mob/user, silent)
 	. = ..()
-	remove_hand_with_no_refund(user)
+	remove_hand_with_no_refund(user, TRUE)
 
 /**
  * When the hand component of a touch spell is qdel'd, (the hand is dropped or otherwise lost),
@@ -325,14 +325,15 @@
  * However, if you want to consume the hand and not give a cooldown,
  * such as adding a unique behavior to the hand specifically, this function will do that.
  */
-/obj/item/melee/touch_attack/proc/remove_hand_with_no_refund(mob/holder)
+/obj/item/melee/touch_attack/proc/remove_hand_with_no_refund(mob/holder, skipper = FALSE)
 	var/datum/action/cooldown/spell/undirected/touch/hand_spell = spell_which_made_us?.resolve()
 	if(!QDELETED(hand_spell))
 		hand_spell.remove_hand(holder, reset_cooldown_after = FALSE)
 		return
 
 	// We have no spell associated for some reason, just delete us as normal.
-	holder.temporarilyRemoveItemFromInventory(src, force = TRUE)
+	if(!skipper)
+		holder.temporarilyRemoveItemFromInventory(src, force = TRUE)
 	qdel(src)
 
 /obj/item/melee/touch_attack/attack_self(mob/user, list/modifiers)
