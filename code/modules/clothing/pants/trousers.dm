@@ -12,7 +12,7 @@
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 
-	armor_type = /datum/armor/padded/bad
+	armor_type = /datum/armor/pants/padded/bad
 	prevent_crits = MINOR_CRITICALS
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide/cured

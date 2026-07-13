@@ -208,7 +208,7 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/shirts.dmi'
 	sleeved = 'icons/roguetown/clothing/onmob/shirts.dmi'
 	toggle_icon_state = TRUE
-	armor_type = /datum/armor/padded/bad
+	armor_type = /datum/armor/shirt/robe/mage
 	max_integrity = 200
 	color = null
 	hoodtype = /obj/item/clothing/head/hooded/magehood

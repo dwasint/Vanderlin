@@ -1,4 +1,3 @@
-
 /datum/armor/padded/bad
 	blunt = 15
 	slash = 15

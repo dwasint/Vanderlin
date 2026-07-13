@@ -13,3 +13,11 @@
 	piercing = 25
 	fire = 0
 	acid = 0
+
+/datum/armor/pants/padded/bad
+	blunt = 15
+	slash = 15
+	stab = 15
+	piercing = 15
+	fire = 0
+	acid = 0
