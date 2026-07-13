@@ -182,6 +182,6 @@
 	item_state = "ancientboots"
 	misc_flags = CRAFTING_TEST_EXCLUDE
 
-	armor_type = /datum/armor/plate/good
+	armor_type = /datum/armor/boots/plate/good
 	item_weight = 2 KILOGRAMS
 
