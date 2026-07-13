@@ -1,4 +1,4 @@
-/datum/armor/head/helmet/metal/orc
+/datum/armor/head/metal/orc
 	blunt = 70
 	slash = 70
 	stab = 70
@@ -6,7 +6,7 @@
 	fire = 0
 	acid = 0
 
-/datum/armor/head/helmet/metal/orc/bad
+/datum/armor/head/metal/orc/bad
 	blunt = 60
 	slash = 60
 	stab = 60

@@ -42,7 +42,7 @@
 	desc = "An oddly shaped hat made of tightly-sewn leather, commonly worn by spellsinger."
 	icon_state = "spellcasterhat"
 	item_state = "spellcasterhat"
-	armor_type = /datum/armor/leather/good
+	armor_type = /datum/armor/head/leather/good
 	max_integrity = ARMOR_INT_HELMET_LEATHER
 	blocksound = SOFTHIT
 	sewrepair = /datum/attribute/skill/misc/sewing/mending
@@ -191,7 +191,7 @@
 	desc = "A reinforced bamboo hat."
 	icon_state = "easthat"
 	item_state = "easthat"
-	armor_type = /datum/armor/padded/good
+	armor_type = /datum/armor/head/padded/good
 	max_integrity = ARMOR_INT_HELMET_LEATHER
 	blocksound = SOFTHIT
 	sewrepair = /datum/attribute/skill/misc/sewing/mending

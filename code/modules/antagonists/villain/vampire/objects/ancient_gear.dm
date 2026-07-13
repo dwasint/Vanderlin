@@ -8,7 +8,7 @@
 	icon_state = "ancientbarbute"
 	item_state = "ancientbarbute"
 
-	armor_type = /datum/armor/head/helmet/plate/good
+	armor_type = /datum/armor/head/plate/good
 	flags_inv = HIDEEARS|HIDEHAIR
 
 	detail_tag = "_detail"
@@ -27,7 +27,7 @@
 	misc_flags = CRAFTING_TEST_EXCLUDE
 
 	armor_class = AC_MEDIUM
-	armor_type = /datum/armor/head/helmet/plate
+	armor_type = /datum/armor/head/plate
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
 	body_parts_covered = HEAD_NECK
 	block2add = FOV_BEHIND

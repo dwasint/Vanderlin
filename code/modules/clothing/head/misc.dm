@@ -184,7 +184,7 @@
 	icon_state = "armingcap"
 	flags_inv = HIDEEARS
 
-	armor_type = /datum/armor/padded
+	armor_type = /datum/armor/head/padded
 	body_parts_covered = HEAD|HAIR|EARS
 	prevent_crits =  MINOR_CRITICALS
 	max_integrity = INTEGRITY_POOR
@@ -358,7 +358,6 @@
 	name = "coifed helmet"
 	desc = "Many find the design of this helmet unusual, but it protects the neck well and is easy to see out of."
 	icon_state = "lakkarihelm"
-	armor_type = /datum/armor/plate
 	flags_inv = HIDEEARS|HIDEHAIR
 	body_parts_covered = HEAD_NECK
 	prevent_crits = ALL_EXCEPT_BLUNT

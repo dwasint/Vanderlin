@@ -64,7 +64,7 @@
 	worn_y_dimension = 64
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_MASK
 	resistance_flags = FIRE_PROOF // Made of metal
-	armor_type = /datum/armor/maille/iron
+	armor_type = /datum/armor/head/maille/iron
 	blocksound = CHAINHIT
 	prevent_crits = CUT_AND_MINOR_CRITS
 	break_sound = 'sound/foley/breaksound.ogg'

@@ -38,7 +38,7 @@
 	item_state = "marauder_helm"
 	allowed_race = list(SPEC_ID_ORC)
 	smeltresult = /obj/item/ingot/iron
-	armor_type = /datum/armor/head/helmet/metal/orc/bad
+	armor_type = /datum/armor/head/metal/orc/bad
 	body_parts_covered = HEAD|EARS|HAIR|EYES|NECK
 	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT)
 	blocksound = PLATEHIT
@@ -49,7 +49,7 @@
 	name = "Orc Warlord Helmet"
 	icon_state = "warlord_helm"
 	item_state = "warlord_helm"
-	armor_type = /datum/armor/head/helmet/metal/orc
+	armor_type = /datum/armor/head/metal/orc
 	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_STAB)
 	max_integrity = 150
 	sellprice = 10

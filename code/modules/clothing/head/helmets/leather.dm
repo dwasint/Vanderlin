@@ -14,7 +14,7 @@
 	dyeable = TRUE
 	sellprice = VALUE_LEATHER_HELMET
 
-	armor_type = /datum/armor/leather/bad
+	armor_type = /datum/armor/head/leather/bad
 	body_parts_covered = HEAD|HAIR|EARS|NOSE
 	prevent_crits = CUT_AND_MINOR_CRITS
 	max_integrity = INTEGRITY_STANDARD
@@ -53,7 +53,7 @@
 	icon_state = "headscarf"
 	color = CLOTHING_BARK_BROWN
 	sellprice = VALUE_LEATHER_HELMET/2
-	armor_type = /datum/armor/padded/bad
+	armor_type = /datum/armor/head/padded/bad
 	body_parts_covered = HEAD|HAIR
 	prevent_crits =  MINOR_CRITICALS
 	max_integrity = INTEGRITY_POOR
@@ -87,7 +87,7 @@
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
 	sellprice = VALUE_LEATHER_HELMET/2
 
-	armor_type = /datum/armor/padded/good
+	armor_type = /datum/armor/head/padded/good
 	body_parts_covered = NECK|HAIR|EARS|HEAD
 
 //............... Hardened Helmet ............... //
@@ -112,7 +112,7 @@
 	item_state = "minerslamp"
 	sellprice = VALUE_LEATHER_HELMET+BONUS_VALUE_MODEST
 
-	armor_type = /datum/armor/padded
+	armor_type = /datum/armor/head/padded
 	prevent_crits = list(BCLASS_LASHING, BCLASS_BITE, BCLASS_TWIST, BCLASS_BLUNT)
 	item_weight = 470 GRAMS
 

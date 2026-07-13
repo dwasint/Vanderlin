@@ -14,7 +14,7 @@
 	melting_material = /datum/material/steel
 	sellprice = VALUE_STEEL_HELMET+BONUS_VALUE_SMALL
 
-	armor_type = /datum/armor/plate/good
+	armor_type = /datum/armor/head/plate/good
 	armor_class = AC_HEAVY
 	prevent_crits = ALL_CRITICAL_HITS
 	max_integrity = INTEGRITY_STRONG

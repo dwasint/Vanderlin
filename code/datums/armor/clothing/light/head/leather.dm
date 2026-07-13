@@ -6,6 +6,22 @@
 	fire = 0
 	acid = 0
 
+/datum/armor/head/leather/bad
+	blunt = 30
+	slash = 30
+	stab = 30
+	piercing = 10
+	fire = 0
+	acid = 0
+
+/datum/armor/head/leather/good
+	blunt = 40
+	slash = 40
+	stab = 40
+	piercing = 20
+	fire = 0
+	acid = 0
+
 /datum/armor/head/leather/saiga
 	blunt = 60
 	slash = 40

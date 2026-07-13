@@ -5,7 +5,7 @@
 	smeltresult = /obj/item/ingot/iron
 	icon = 'icons/roguetown/mob/monster/rousman.dmi'
 	allowed_race = list(SPEC_ID_ROUSMAN)
-	armor_type = /datum/armor/head/helmet/plate/rous
+	armor_type = /datum/armor/head/plate/rous
 	body_parts_covered = HEAD|EARS|HAIR|EYES
 	sellprice = 0
 

@@ -159,7 +159,7 @@
 	body_parts_covered = HEAD|HAIR|EARS|NOSE
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_HIP
 	misc_flags = CRAFTING_TEST_EXCLUDE //special item with unique mechanics, not craftable
-	armor_type = /datum/armor/leather/good
+	armor_type = /datum/armor/head/leather/good
 	flags_inv = HIDEEARS|HIDEFACE
 	worn_x_dimension = 32
 	worn_y_dimension = 48

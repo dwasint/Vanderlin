@@ -54,6 +54,6 @@
 	smeltresult = /obj/item/ingot/iron
 	icon = 'icons/roguetown/mob/monster/goblins.dmi'
 	allowed_race = list(SPEC_ID_GOBLIN)
-	armor_type = /datum/armor/head/helmet/plate/goblin
+	armor_type = /datum/armor/head/plate/goblin
 	body_parts_covered = HEAD|EARS|HAIR|EYES
 	sellprice = 0
