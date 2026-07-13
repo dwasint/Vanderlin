@@ -5,6 +5,7 @@
 	layer = BELOW_OBJ_LAYER
 	anchored = TRUE
 	pass_flags_self = PASSSTRUCTURE
+	armor_type = /datum/armor/structure
 	var/climb_time = 20
 	var/climb_stun = 0
 	var/climb_sound = 'sound/foley/woodclimb.ogg'
