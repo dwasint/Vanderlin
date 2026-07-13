@@ -316,12 +316,14 @@
 			var/job_title = params["job"]
 			var/label = params["level"]
 			prefs.set_job_pref_level(job_title, label)
+			prefs.update_menu_data(user)
 			. = TRUE
 
 		if("set_job_pref")
 			if(SSticker.job_change_locked)
 				return
 			prefs.set_job_pref(params, user)
+			prefs.update_menu_data(user)
 			. = TRUE
 
 		if("toggle_jobless")
@@ -334,10 +336,12 @@
 
 		if("reset")
 			prefs.reset_jobs(user, TRUE)
+			prefs.update_menu_data(user)
 			. = TRUE
 
 		if("play_last_class")
 			prefs.reset_last_class(user)
+			prefs.update_menu_data(user)
 			. = TRUE
 
 		if("open_role_settings")
