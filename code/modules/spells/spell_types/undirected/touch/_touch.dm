@@ -329,7 +329,7 @@
 /obj/item/melee/touch_attack/proc/remove_hand_with_no_refund(mob/holder, skipper = FALSE)
 	var/datum/action/cooldown/spell/undirected/touch/hand_spell = spell_which_made_us?.resolve()
 	if(!QDELETED(hand_spell))
-		hand_spell.remove_hand(holder, reset_cooldown_after = FALSE, skipper)
+		hand_spell.remove_hand(holder, reset_cooldown_after = FALSE, skipper = skipper)
 		return
 
 	// We have no spell associated for some reason, just delete us as normal.
