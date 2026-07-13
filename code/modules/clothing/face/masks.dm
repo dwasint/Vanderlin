@@ -353,7 +353,7 @@
 	name = "soldier's half-mask"
 	desc = "\"The first lesson of war is that it would be better to live in peace.\""
 	block2add = null
-	armor_type = /datum/armor/plate // because it's only half
+	armor_type = /datum/armor/mask/metal // because it's only half
 	icon_state = "kazengunmouthguard"
 	item_state = "kazengunmouthguard"
 
