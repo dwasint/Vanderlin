@@ -202,7 +202,7 @@ export const ArmorCompare = (props) => {
           <Table>
             <Table.Row header>
               <Table.Cell>Slot</Table.Cell>
-              <Table.Cell collapsing>Class</Table.Cell>
+              <Table.Cell collapsing width="80px">Class</Table.Cell>
               {RATINGS.map((rating) => (
                 <Table.Cell key={rating} collapsing>
                   {RATING_LABELS[rating]}
