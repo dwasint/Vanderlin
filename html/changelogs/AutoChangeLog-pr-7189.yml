@@ -1,0 +1,9 @@
+author: "dwasint"
+delete-after: True
+changes:
+  - bugfix: "skin armor lets you get surgery and healing done again"
+  - bugfix: "sleeping should now always reset your studied setting"
+  - bugfix: "dropping touch spells should delete them now"
+  - bugfix: "scying should now try to early abort if you log out"
+  - bugfix: "absolvers now get Grace regeneration"
+  - bugfix: "profane dagger now copies over visible organs"
