@@ -94,6 +94,10 @@
 	if(isnull(new_level))
 		job_preferences -= job_title
 		return TRUE
+	if(new_level == JP_HIGH)
+		for(var/j in job_preferences)
+			if(job_preferences[j] == JP_HIGH)
+				job_preferences[j] = JP_MEDIUM
 	job_preferences[job_title] = new_level
 	return TRUE
 
