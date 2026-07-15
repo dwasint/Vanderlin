@@ -121,7 +121,7 @@
 
 		slot++
 
-	if(length(player.prefssingle_round_loadout) || length([player.prefs.single_round_loadout_colors]))
+	if(length(player.prefs.single_round_loadout) || length(player.prefs.single_round_loadout_colors))
 		if(!player.is_donator())
 			player.prefs.single_round_loadout = list()
 			player.prefs.single_round_loadout_colors = list()
