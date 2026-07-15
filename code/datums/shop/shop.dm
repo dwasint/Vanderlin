@@ -121,11 +121,12 @@
 
 		slot++
 
-	if(!player.is_donator())
-		player.prefs.single_round_loadout = list()
-		player.prefs.single_round_loadout_colors = list()
-	player.prefs.save_preferences()
-	player.prefs.save_character()
+	if(length(player.prefssingle_round_loadout) || length([player.prefs.single_round_loadout_colors]))
+		if(!player.is_donator())
+			player.prefs.single_round_loadout = list()
+			player.prefs.single_round_loadout_colors = list()
+		player.prefs.save_preferences()
+		player.prefs.save_character()
 
 /proc/apply_item_colors(obj/item/spawned_item, datum/mind/mind)
 	if(!spawned_item || !mind?.loadout_item_colors)
