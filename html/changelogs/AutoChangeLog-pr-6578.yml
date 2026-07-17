@@ -1,0 +1,5 @@
+author: "PatapoIIIa"
+delete-after: True
+changes:
+  - code_imp: "Redesigned AttributeMenu Skills panel UI with improved styling"
+  - code_imp: "Updated attribute modifier system and TutorialOverlay"
