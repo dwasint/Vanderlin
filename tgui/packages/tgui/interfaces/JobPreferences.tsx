@@ -65,6 +65,16 @@ export const JobPreferences = (props) => {
   const normalizedSearch = (typeof searchText === 'string' ? searchText : '').trim().toLowerCase();
   const isSearching = normalizedSearch.length > 0;
 
+  // Map every job title back to the color of the department it belongs to,
+  // so we can keep showing department color even when jobs are flattened
+  // together (e.g. during search).
+  const jobCategoryColor: Record<string, string> = {};
+  for (const category of categories) {
+    for (const job of category.jobs) {
+      jobCategoryColor[job.title] = category.color;
+    }
+  }
+
   const getJobState = (job: StaticJobEntry): DynamicJobState =>
     job_states[job.title] || {
       display_name: job.title,
@@ -132,22 +142,38 @@ export const JobPreferences = (props) => {
         </Section>
 
         <Tabs>
-          {categories.map((category) => (
-            <Tabs.Tab
-              key={category.name}
-              selected={activeCategory === category.name}
-              onClick={() => {
-                setActiveCategory(category.name);
-                setExpandedJob(null);
-              }}
-            >
-              {category.name}
-            </Tabs.Tab>
-          ))}
+          {categories.map((category) => {
+            const selected = activeCategory === category.name;
+            return (
+              <Tabs.Tab
+                key={category.name}
+                selected={selected}
+                onClick={() => {
+                  setActiveCategory(category.name);
+                  setExpandedJob(null);
+                }}
+                style={{
+                  borderBottom: `2px solid ${selected ? category.color : 'transparent'}`,
+                }}
+              >
+                <Box style={{ color: category.color }} bold={selected}>
+                  {category.name}
+                </Box>
+              </Tabs.Tab>
+            );
+          })}
         </Tabs>
 
         {(isSearching || currentCategory) && (
-          <Section title={isSearching ? `Search Results (${visibleJobs.length})` : currentCategory?.name}>
+          <Section
+            title={
+              isSearching ? (
+                `Search Results (${visibleJobs.length})`
+              ) : (
+                <Box style={{ color: currentCategory?.color }}>{currentCategory?.name}</Box>
+              )
+            }
+          >
             <Table>
               <Table.Row header>
                 <Table.Cell width="45%">Job</Table.Cell>
@@ -167,6 +193,7 @@ export const JobPreferences = (props) => {
 
               {visibleJobs.map((job) => {
                 const jobState = getJobState(job);
+                const departmentColor = jobCategoryColor[job.title];
 
                 const isExpanded = expandedJob === job.title;
                 const hasTitles = job.title_choices && job.title_choices.length > 1;
@@ -176,8 +203,14 @@ export const JobPreferences = (props) => {
                 return (
                   <Fragment key={job.title}>
                     <Table.Row>
-                      <Table.Cell py={0.5}>
-                        <Button tooltip={job.tutorial} color= 'transparent' bold={jobState.status === 'available'}>
+                      <Table.Cell
+                        py={0.5}
+                        style={{
+                          borderLeft: `3px solid ${departmentColor || 'transparent'}`,
+                          paddingLeft: '6px',
+                        }}
+                      >
+                        <Button tooltip={job.tutorial} color="transparent" bold={jobState.status === 'available'}>
                           {jobState.status === 'available' ? jobState.current_title : jobState.display_name}
                         </Button>
                         {jobState.status === 'available' && (
