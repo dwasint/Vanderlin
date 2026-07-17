@@ -1,0 +1,4 @@
+author: "dwasint"
+delete-after: True
+changes:
+  - rscadd: "verb for admins to give tickets to players"
