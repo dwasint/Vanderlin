@@ -760,8 +760,6 @@ const InspectionPanel = memo((props: {
   act: any;
 }) => {
   const { attribute, act } = props;
-  const total = totalFromModifiers(attribute.base, attribute.modifiers);
-
   if (!attribute) {
     return (
       <Section
@@ -783,7 +781,7 @@ const InspectionPanel = memo((props: {
       </Section>
     );
   }
-
+  const total = totalFromModifiers(attribute.base, attribute.modifiers);
   return (
     <Section
       fill
