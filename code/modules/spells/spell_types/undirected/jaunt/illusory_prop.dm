@@ -15,6 +15,9 @@
 	has_visual_effects = FALSE
 	attunements = list(/datum/attunement/illusion = 0.6)
 
+	required_form = FORM_EARTH
+	required_technique = TECHNIQUE_ILLUSION
+
 	var/obj/effect/dummy/bush_disguise/active_dummy = null
 	var/static/list/allowed_structures = list(
 		/obj/item/ingot/gold,

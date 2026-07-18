@@ -16,6 +16,9 @@
 	attunements = list(
 		/datum/attunement/ice = 0.3,
 	)
+
+	required_form = FORM_ICE
+
 	button_icon_state = "frostbolt"
 	charge_time = 2 SECONDS
 	charge_drain = 1

@@ -12,6 +12,8 @@
 	attunements = list(
 		/datum/attunement/death = 1,
 	)
+	required_form = FORM_DEATH
+	required_technique = TECHNIQUE_SUMMONING
 
 	invocation = "Obey me."
 	invocation_type = INVOCATION_WHISPER

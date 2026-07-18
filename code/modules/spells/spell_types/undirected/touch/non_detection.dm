@@ -8,6 +8,10 @@
 	attunements = list(
 		/datum/attunement/illusion = 0.4,
 	)
+
+	required_form = FORM_EARTH
+	required_technique = TECHNIQUE_ILLUSION
+
 	spell_flags = SPELL_RITUOS
 	cooldown_time = 10 MINUTES
 

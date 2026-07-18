@@ -25,6 +25,9 @@
 		/datum/attunement/arcyne = 0.4,
 	)
 
+	required_form = FORM_ARCANE
+	required_technique = TECHNIQUE_SUMMONING
+
 /datum/action/cooldown/spell/conjure/familiar/post_summon(atom/summoned_object, atom/cast_on)
 	var/mob/living/wolf = summoned_object
 	wolf.befriend(owner)

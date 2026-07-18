@@ -14,6 +14,10 @@
 		/datum/attunement/aeromancy = 0.5,
 	)
 
+	required_form = FORM_AIR
+	required_technique = TECHNIQUE_DESTRUCTION
+
+
 /datum/action/cooldown/spell/undirected/feather_falling/cast(atom/cast_on)
 	. = ..()
 	var/datum/status_effect/status = /datum/status_effect/buff/featherfall

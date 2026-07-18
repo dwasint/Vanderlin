@@ -9,6 +9,9 @@
 		/datum/attunement/ice = 0.7,
 	)
 
+	required_form = FORM_ICE
+	required_technique = TECHNIQUE_DESTRUCTION
+
 	invocation = "Beam of Frost!!"
 	invocation_type = INVOCATION_SHOUT
 

@@ -10,6 +10,8 @@
 		/datum/attunement/aeromancy = 0.4,
 	)
 
+	required_form = FORM_AIR
+
 	invocation = "Repel!"
 	invocation_type = INVOCATION_SHOUT
 

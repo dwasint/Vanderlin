@@ -9,6 +9,10 @@
 		/datum/attunement/death = 0.5,
 	)
 
+	required_form = FORM_DEATH
+	required_technique = TECHNIQUE_RESTORATION
+	required_level = 2
+
 	charge_required = FALSE
 	cooldown_time = 15 SECONDS
 	spell_cost = 30

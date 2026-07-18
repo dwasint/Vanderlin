@@ -9,6 +9,8 @@
 		/datum/attunement/dark = 0.5,
 	)
 
+	required_form = FORM_DEATH
+
 	cooldown_time = 25 SECONDS
 	spell_cost = 25
 

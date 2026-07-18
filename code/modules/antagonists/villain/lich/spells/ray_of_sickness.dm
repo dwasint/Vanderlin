@@ -9,6 +9,8 @@
 		/datum/attunement/blood = 0.5,
 	)
 
+	required_form = FORM_WATER
+
 	charge_time = 2 SECONDS
 	charge_drain = 1
 	charge_slowdown = 0.3

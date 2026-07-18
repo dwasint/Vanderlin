@@ -15,6 +15,8 @@
 	attunements = list(
 		/datum/attunement/arcyne = 1.2
 	)
+	required_form = FORM_ARCANE
+	required_technique = TECHNIQUE_DESTRUCTION
 
 	invocation = "BE TORN APART!!!"
 	invocation_type = INVOCATION_SHOUT

@@ -16,6 +16,9 @@
 		/datum/attunement/arcyne = 0.3,
 	)
 
+	required_form = FORM_ARCANE
+
+
 /datum/action/cooldown/spell/undirected/blade_ward/cast(atom/cast_on)
 	. = ..()
 	var/datum/status_effect/status = /datum/status_effect/buff/bladeward

@@ -15,6 +15,9 @@
 		/datum/attunement/electric = 0.7,
 	)
 
+	required_form = FORM_ELECTRIC
+	required_technique = TECHNIQUE_DESTRUCTION
+
 	charge_time = 3 SECONDS
 	charge_drain = 1
 	charge_slowdown = 0.7

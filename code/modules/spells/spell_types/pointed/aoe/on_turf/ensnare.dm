@@ -8,6 +8,9 @@
 		/datum/attunement/arcyne = 0.4,
 	)
 
+	required_form = FORM_ARCANE
+	required_technique = TECHNIQUE_CREATION
+
 	invocation = "H'ld D'wn!"
 	invocation_type = INVOCATION_SHOUT
 

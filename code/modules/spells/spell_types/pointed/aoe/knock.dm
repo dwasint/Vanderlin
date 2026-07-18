@@ -9,6 +9,8 @@
 		/datum/attunement/aeromancy = 0.2,
 	)
 
+	required_form = FORM_AIR
+
 	school = SCHOOL_TRANSMUTATION
 	charge_time = 2 SECONDS
 	cooldown_time = 20 SECONDS

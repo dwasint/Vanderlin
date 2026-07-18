@@ -10,6 +10,9 @@
 		/datum/attunement/death = 0.4,
 	)
 
+	required_form = FORM_WATER
+	required_technique = TECHNIQUE_DESTRUCTION
+
 	invocation = "HYDRO MURIATIC!!!!"
 	invocation_type = INVOCATION_SHOUT
 

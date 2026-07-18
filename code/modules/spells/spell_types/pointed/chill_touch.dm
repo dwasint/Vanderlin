@@ -11,6 +11,8 @@
 		/datum/attunement/death = 0.2,
 	)
 
+	required_form = FORM_ICE
+
 	invocation = "Death grip you!"
 	invocation_type = INVOCATION_SHOUT
 	spell_flags = SPELL_RITUOS

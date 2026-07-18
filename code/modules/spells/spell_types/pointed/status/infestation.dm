@@ -12,6 +12,9 @@
 		/datum/attunement/death = 0.3,
 	)
 
+	required_form = FORM_DEATH
+	required_technique = TECHNIQUE_SUMMONING
+
 	invocation = "Rot, take them!"
 	invocation_type = INVOCATION_SHOUT
 	spell_flags = SPELL_RITUOS

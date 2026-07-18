@@ -9,6 +9,9 @@
 		/datum/attunement/earth = 0.5,
 	)
 
+	required_form = FORM_EARTH
+	required_technique = TECHNIQUE_CREATION
+
 	invocation = "Earth pierce you!!!"
 	invocation_type = INVOCATION_SHOUT
 

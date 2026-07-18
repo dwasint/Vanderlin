@@ -8,6 +8,9 @@
 		/datum/attunement/ice = 0.6,
 	)
 
+	required_form = FORM_ICE
+	required_technique = TECHNIQUE_DESTRUCTION
+
 	charge_time = 2.5 SECONDS
 	charge_drain = 1
 	cooldown_time = 20 SECONDS

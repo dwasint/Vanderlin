@@ -9,6 +9,10 @@
 	)
 	school = SCHOOL_TRANSMUTATION
 
+
+	required_form = FORM_ARCANE
+	required_technique = TECHNIQUE_ILLUSION
+
 	charge_time = 2 SECONDS
 	charge_drain = 1
 	charge_slowdown = 1.3

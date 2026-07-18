@@ -19,3 +19,6 @@
 	attunements = list(
 		/datum/attunement/death = 0.3,
 	)
+
+	required_form = FORM_DEATH
+	required_technique = TECHNIQUE_CREATION

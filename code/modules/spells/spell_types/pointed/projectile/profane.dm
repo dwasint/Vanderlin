@@ -16,6 +16,9 @@
 		/datum/attunement/blood = 0.3,
 	)
 
+	required_form = FORM_DEATH
+	required_technique = TECHNIQUE_DESTRUCTION
+
 	charge_drain = 1
 	charge_time = 2 SECONDS
 	charge_slowdown = 0.3

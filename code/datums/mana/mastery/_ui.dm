@@ -1,0 +1,127 @@
+/datum/spellbook
+	var/mob/living/owner
+	var/datum/spell_mastery/mastery
+	var/unlearn_mode = FALSE
+
+/datum/spellbook/New(mob/living/owner, datum/spell_mastery/_mastery)
+	src.owner = owner
+	if(owner.mana_pool)
+		mastery = owner.mana_pool?.get_mastery()
+	if(_mastery)
+		mastery = _mastery
+
+/datum/spellbook/Destroy(force)
+	owner = null
+	mastery = null
+	return ..()
+
+/datum/spellbook/ui_state(mob/user)
+	return GLOB.always_state
+
+/datum/spellbook/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "SpellBook")
+		ui.open()
+
+/datum/spellbook/ui_static_data(mob/user)
+	var/list/data = list()
+	data["techniques"] = GLOB.all_techniques
+	data["forms"] = GLOB.all_forms
+	return data
+
+/datum/spellbook/ui_data(mob/user)
+	var/list/data = list()
+
+	if(!mastery)
+		return data
+
+	data["unspentFormPoints"] = mastery.unspent_form_points
+	data["unspentTechniquePoints"] = mastery.unspent_technique_points
+	data["unlearnMode"] = unlearn_mode
+
+	var/list/technique_data = list()
+	for(var/technique in GLOB.all_techniques)
+		technique_data += list(list(
+			"id" = technique,
+			"name" = technique,
+			"level" = mastery.get_technique_level(technique),
+			"rank" = mastery.get_technique_rank_name(technique),
+		))
+	data["techniqueLevels"] = technique_data
+
+	var/list/form_data = list()
+	for(var/form in GLOB.all_forms)
+		form_data += list(list(
+			"id" = form,
+			"name" = form,
+			"level" = mastery.get_form_level(form),
+			"rank" = mastery.get_form_rank_name(form),
+		))
+	data["formLevels"] = form_data
+
+	var/list/spell_data = list()
+	for(var/datum/action/cooldown/spell/spell_path as anything in subtypesof(/datum/action/cooldown/spell))
+		if(IS_ABSTRACT(spell_path))
+			continue
+		if(!initial(spell_path.learnable))
+			continue
+		var/technique = initial(spell_path:required_technique)
+		var/form = initial(spell_path:required_form)
+		if(!form)
+			continue
+		var/is_unlocked = (spell_path in mastery.unlocked_spells)
+
+		spell_data += list(list(
+			"path" = "[spell_path]",
+			"name" = initial(spell_path.name),
+			"desc" = initial(spell_path.desc),
+			"technique" = technique,
+			"form" = form,
+			"level" = initial(spell_path.required_level),
+			"formCost" = form ? 1 : 0,
+			"techniqueCost" = technique ? 1 : 0,
+			"unlocked" = is_unlocked,
+			"canLearn" = mastery.can_learn_spell(spell_path),
+			"canUnlearn" = is_unlocked, // any unlocked spell can be unlearned
+			"icon" = "[initial(spell_path.button_icon)]",
+			"iconState" = initial(spell_path.button_icon_state),
+		))
+	data["spells"] = spell_data
+
+	return data
+
+/datum/spellbook/ui_act(action, list/params)
+	. = ..()
+	if(.)
+		return
+	if(!mastery)
+		return
+
+	switch(action)
+		if("invest_technique")
+			var/technique = params["technique"]
+			if(!(technique in GLOB.all_techniques))
+				return
+			. = mastery.invest_technique(technique, 1)
+
+		if("invest_form")
+			var/form = params["form"]
+			if(!(form in GLOB.all_forms))
+				return
+			. = mastery.invest_form(form, 1)
+
+		if("learn_spell")
+			var/spell_path = text2path(params["path"])
+			. = mastery.try_learn_spell(spell_path)
+
+		if("unlearn_spell")
+			var/spell_path = text2path(params["path"])
+			. = mastery.try_unlearn_spell(spell_path)
+
+/mob/living/proc/open_spellbook()
+	set name = "Open Innate Spells"
+	set category = "Magic"
+
+	var/datum/spellbook/book = new(src)
+	book.ui_interact(src)

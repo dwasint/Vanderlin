@@ -13,6 +13,9 @@
 		/datum/attunement/arcyne = 0.4,
 	)
 
+	required_form = FORM_ARCANE
+	required_technique = TECHNIQUE_ALTERATION
+
 	jaunt_type = /obj/effect/dummy/phased_mob/spell_jaunt
 
 	var/exit_jaunt_sound = 'sound/magic/ethereal_exit.ogg'

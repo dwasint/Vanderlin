@@ -13,6 +13,9 @@
 		/datum/attunement/dark = 0.4
 	)
 
+	required_form = FORM_DEATH
+	required_technique = TECHNIQUE_ALTERATION
+
 /datum/action/cooldown/spell/undirected/shadow_step/cast(atom/cast_on)
 	. = ..()
 	if(!isliving(owner))

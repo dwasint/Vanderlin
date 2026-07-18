@@ -9,6 +9,9 @@
 		/datum/attunement/ice = 0.4,
 	)
 
+	required_form = FORM_ICE
+	required_technique = TECHNIQUE_DESTRUCTION
+
 	invocation = "Air be still!"
 	invocation_type = INVOCATION_SHOUT
 	spell_flags = SPELL_RITUOS

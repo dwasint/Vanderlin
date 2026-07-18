@@ -8,6 +8,9 @@
 		/datum/attunement/arcyne = 0.1
 	)
 
+	required_form = FORM_ARCANE
+	required_technique = TECHNIQUE_ILLUSION
+
 	invocation = "darkness envelop them."
 	invocation_type = INVOCATION_WHISPER
 

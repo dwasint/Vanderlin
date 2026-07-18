@@ -13,6 +13,9 @@
 		/datum/attunement/death = 0.3,
 		/datum/attunement/blood = 0.2,
 	)
+	required_form = FORM_DEATH
+	required_technique = TECHNIQUE_ALTERATION
+
 	invocation = "Return to rot."
 	invocation_type = INVOCATION_WHISPER
 

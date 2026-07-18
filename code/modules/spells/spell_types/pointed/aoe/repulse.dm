@@ -22,6 +22,9 @@
 		/datum/attunement/aeromancy = 0.4,
 	)
 
+	required_form = FORM_AIR
+	required_technique = TECHNIQUE_CREATION
+
 	/// The minimum throw range of the replusion
 	var/min_throw = 3
 	/// The max throw range of the repulsion.

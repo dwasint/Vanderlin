@@ -15,6 +15,9 @@
 		/datum/attunement/earth = 1,
 	)
 
+	required_form = FORM_EARTH
+	required_technique = TECHNIQUE_SUMMONING
+
 	invocation = "Be still and calm, brotherbeast."
 	invocation_type = INVOCATION_WHISPER
 

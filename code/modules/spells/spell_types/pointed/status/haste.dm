@@ -9,6 +9,7 @@
 		/datum/attunement/aeromancy = 0.5,
 	)
 	school = SCHOOL_TRANSMUTATION
+	required_form = FORM_EARTH
 
 	charge_time = 2 SECONDS
 	charge_slowdown = 0.3

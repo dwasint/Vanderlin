@@ -13,6 +13,8 @@
 		/datum/attunement/arcyne = 0.1
 	)
 
+	required_form = FORM_ARCANE
+
 /datum/action/cooldown/spell/undirected/arcyne_eye/cast(atom/cast_on)
 	. = ..()
 	if(isliving(owner))

@@ -15,6 +15,8 @@
 		/datum/attunement/aeromancy = 0.3,
 	)
 
+	required_form = FORM_AIR
+
 	charge_required = FALSE
 	cooldown_time = 2 MINUTES
 	spell_cost = 75

@@ -9,6 +9,7 @@
 	attunements = list(
 		/datum/attunement/dark = 0.6,
 	)
+	required_form = FORM_AIR
 
 	//https://www.youtube.com/watch?v=MfK3Ygb7Jzk
 	invocation = "Fall."

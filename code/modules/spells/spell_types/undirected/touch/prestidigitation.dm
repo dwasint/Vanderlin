@@ -15,6 +15,8 @@
 		/datum/attunement/arcyne = 0.2,
 	)
 
+	required_form = FORM_ARCANE
+
 	cooldown_time = 1 MINUTES
 
 	hand_path = /obj/item/melee/touch_attack/prestidigitation

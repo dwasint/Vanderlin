@@ -20,6 +20,8 @@
 		/datum/attunement/light = 0.3,
 	)
 
+	required_form = FORM_FIRE
+
 /datum/action/cooldown/spell/undirected/conjure_item/light/make_item()
 	var/obj/item = ..()
 	item.add_overlay(mutable_appearance('icons/obj/projectiles.dmi', "gumball"))

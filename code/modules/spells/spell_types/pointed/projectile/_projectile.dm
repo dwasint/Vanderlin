@@ -12,6 +12,7 @@
  * These REQUIRE click_to_activate to be true
  */
 /datum/action/cooldown/spell/projectile
+	abstract_type = /datum/action/cooldown/spell/projectile
 	self_cast_possible = FALSE
 	experience_modifier = 0.3 // More earned when hitting a target
 

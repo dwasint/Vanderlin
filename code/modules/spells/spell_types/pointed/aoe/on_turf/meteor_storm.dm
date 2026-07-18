@@ -10,6 +10,10 @@
 		/datum/attunement/fire = 1.2
 	)
 
+	required_form = FORM_FIRE
+	required_technique = TECHNIQUE_DESTRUCTION
+	required_level = 4
+
 	charge_time = 25 SECONDS
 	charge_drain = 2
 	charge_slowdown = 1.3

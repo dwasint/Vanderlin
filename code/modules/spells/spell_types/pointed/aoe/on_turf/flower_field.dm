@@ -9,6 +9,9 @@
 		/datum/attunement/life = 0.3,
 	)
 
+	required_form = FORM_EARTH
+	required_technique = TECHNIQUE_CREATION
+
 	invocation = "May the earth bloom!"
 	invocation_type = INVOCATION_WHISPER
 

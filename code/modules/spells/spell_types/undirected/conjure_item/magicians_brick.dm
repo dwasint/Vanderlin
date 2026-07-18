@@ -21,6 +21,9 @@
 		/datum/attunement/earth = 0.3,
 	)
 
+	required_form = FORM_EARTH
+	required_technique = TECHNIQUE_CREATION
+
 /datum/action/cooldown/spell/undirected/conjure_item/brick/make_item()
 	. = ..()
 	if(!isliving(owner))

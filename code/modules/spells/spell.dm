@@ -40,6 +40,7 @@
  * - [update_spell_name][/datum/action/cooldown/spell/update_spell_name] updates the prefix of the spell name based on its level.
  */
 /datum/action/cooldown/spell
+	abstract_type = /datum/action/cooldown/spell
 	name = "Spell"
 	desc = "A wizard spell."
 	background_icon = 'icons/mob/actions/roguespells.dmi'
@@ -63,6 +64,9 @@
 
 	///this is purely for etching
 	var/spell_tier = 1
+
+	///do we even bother to show in the ui?
+	var/learnable = TRUE
 
 	/// The sound played on cast.
 	var/sound = 'sound/magic/whiteflame.ogg'
@@ -179,6 +183,20 @@
 
 	/// Timer ID for the auto cancel, so we can cancel it
 	var/auto_cancel_timer = null
+
+	/// Technique (class) this spell belongs to, e.g. TECHNIQUE_DESTRUCTION. Null = techniqueless.
+	var/required_technique = null
+	/// Form (element) this spell belongs to, e.g. FORM_FIRE. Null = formless.
+	var/required_form = null
+	/// How many points must be invested in required_technique (and required_form, if set)
+	/// before this spell can be learned. Ignored if both required_technique and required_form are null.
+	var/required_level = 0
+	/// Optional list of other spell typepaths that must already be unlocked before this one
+	/// can be learned. Lets you build a simple prerequisite chain within a technique/form.
+	var/list/prerequisite_spells
+	///the amount of charges we have if we are a spellbook varient
+	var/initial_charges = 3
+
 
 /datum/action/cooldown/spell/New(Target)
 	. = ..()

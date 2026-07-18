@@ -22,6 +22,10 @@
 	attunements = list(
 		/datum/attunement/arcyne = 0.4,
 	)
+	required_form = FORM_DEATH
+	required_technique = TECHNIQUE_SUMMONING
+	required_level = 2
+
 	var/cabal_affine = FALSE
 
 /datum/action/cooldown/spell/conjure/raise_lesser_undead/before_cast()

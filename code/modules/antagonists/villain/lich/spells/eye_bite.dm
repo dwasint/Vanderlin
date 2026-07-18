@@ -7,6 +7,7 @@
 	attunements = list(
 		/datum/attunement/dark = 0.4,
 	)
+	required_form = FORM_DEATH
 
 	charge_time = 2 SECONDS
 	charge_drain = 1

@@ -9,6 +9,10 @@
 	attunements = list(
 		/datum/attunement/arcyne = 0.4,
 	)
+
+	required_form = FORM_ARCANE
+	required_technique = TECHNIQUE_ALTERATION
+
 	spell_flags = SPELL_RITUOS
 	invocation = "Be still!"
 	invocation_type = INVOCATION_SHOUT

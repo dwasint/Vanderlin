@@ -51,6 +51,9 @@
 	/// Multiplier for spell points gained per read. Higher = better book.
 	var/bookquality = 3
 
+/obj/item/book/granter/spellbook/Initialize()
+	. = ..()
+	new /datum/spell_mastery(null, src)
 
 // ============================================================
 // VISUAL / OPEN STATE
@@ -96,6 +99,8 @@
 	if(!open)
 		attack_hand_secondary(user, modifiers)
 		return
+	if(SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user, modifiers) & COMPONENT_CANCEL_ATTACK_CHAIN)
+		return TRUE
 	..()
 	user.update_inv_hands()
 

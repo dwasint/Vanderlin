@@ -18,6 +18,8 @@
 	spell_flags = SPELL_RITUOS
 	projectile_type = /obj/projectile/magic/aoe/fireball/flare
 
+	required_form = FORM_FIRE
+
 /datum/action/cooldown/spell/projectile/fire_flare/ready_projectile(obj/projectile/magic/aoe/fireball/to_fire, atom/target, mob/user, iteration)
 	. = ..()
 	to_fire.damage *= attuned_strength

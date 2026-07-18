@@ -75,6 +75,10 @@
 
 	VAR_PRIVATE/is_processing = FALSE
 
+	/// Tracks this mana pool owner's technique/form investment, unspent points, and unlocked spells.
+	/// Lazily created - use get_mastery() rather than referencing this directly.
+	var/datum/spell_mastery/mastery
+
 /datum/mana_pool/New(atom/parent = null)
 	. = ..()
 	donation_budget_this_tick = max_donation_rate_per_second
@@ -120,6 +124,13 @@
 	if(amount > get_softcap())
 		return TRUE
 	return FALSE
+
+/datum/mana_pool/proc/get_mastery()
+	if(!mastery)
+		mastery = new(src)
+		if(isliving(parent))
+			add_verb(parent, list(/mob/living/proc/open_spellbook))
+	return mastery
 
 /datum/mana_pool/proc/update_processing_state()
 	var/should_process = needs_processing()

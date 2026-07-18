@@ -9,6 +9,9 @@
 	)
 	school = SCHOOL_TRANSMUTATION
 
+	required_form = FORM_AIR
+	required_technique = TECHNIQUE_ALTERATION
+
 	invocation = "Walk unopposed."
 	invocation_type = INVOCATION_WHISPER
 

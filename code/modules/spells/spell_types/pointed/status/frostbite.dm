@@ -10,6 +10,9 @@
 		/datum/attunement/ice = 0.9
 	)
 
+	required_form = FORM_ICE
+	required_technique = TECHNIQUE_ALTERATION
+
 	invocation = "Bite of Frost!!"
 	invocation_type = INVOCATION_SHOUT
 

@@ -232,3 +232,55 @@ DEFINE_BITFIELD(spell_requirements, list(
 #define SPELLOBJECT_AIM_REQ_EXPERT      15
 #define SPELLOBJECT_AIM_REQ_MASTER      16
 #define SPELLOBJECT_AIM_REQ_LEGENDARY   17
+
+#define TECHNIQUE_DESTRUCTION "Destruction"
+#define TECHNIQUE_CREATION "Creation"
+#define TECHNIQUE_SUMMONING "Summoning"
+#define TECHNIQUE_RESTORATION "Restoration"
+#define TECHNIQUE_ALTERATION "Alteration"
+#define TECHNIQUE_ILLUSION "Illusion"
+
+#define FORM_FIRE "Fire"
+#define FORM_ICE "Ice"
+#define FORM_LIGHTNING "Lightning"
+#define FORM_EARTH "Earth"
+#define FORM_ARCANE "Arcane"
+#define FORM_ELECTRIC "Electric"
+#define FORM_DEATH "Death"
+#define FORM_LIFE "Life"
+#define FORM_AIR "Aeromancy"
+#define FORM_WATER "Hydromancy"
+
+#define MASTERY_RANK_NOVICE 0
+#define MASTERY_RANK_ADEPT 2
+#define MASTERY_RANK_EXPERT 4
+#define MASTERY_RANK_MASTER 6
+
+GLOBAL_LIST_INIT(mastery_rank_names, list(
+	"[MASTERY_RANK_NOVICE]" = "Novice",
+	"[MASTERY_RANK_ADEPT]" = "Adept",
+	"[MASTERY_RANK_EXPERT]" = "Expert",
+	"[MASTERY_RANK_MASTER]" = "Master",
+))
+
+GLOBAL_LIST_INIT(all_techniques, list(
+	TECHNIQUE_DESTRUCTION,
+	TECHNIQUE_CREATION,
+	TECHNIQUE_SUMMONING,
+	TECHNIQUE_RESTORATION,
+	TECHNIQUE_ALTERATION,
+	TECHNIQUE_ILLUSION,
+))
+
+GLOBAL_LIST_INIT(all_forms, list(
+	FORM_FIRE,
+	FORM_ICE,
+	FORM_LIGHTNING,
+	FORM_EARTH,
+	FORM_ARCANE,
+	FORM_LIFE,
+	FORM_DEATH,
+	FORM_AIR,
+	FORM_WATER,
+	FORM_ELECTRIC,
+))

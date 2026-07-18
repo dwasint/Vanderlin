@@ -19,6 +19,9 @@
 		/datum/attunement/death = 0.3,
 	)
 
+	required_form = FORM_WATER
+	required_technique = TECHNIQUE_ALTERATION
+
 /datum/action/cooldown/spell/undirected/create_cloud/is_valid_target(atom/cast_on)
 	. = ..()
 	if(!.)

@@ -80,6 +80,8 @@
 		/datum/attunement/dark = 0.3,
 	)
 
+	required_form = FORM_DEATH
+
 	invocation = "Eldritch blast!"
 	invocation_type = INVOCATION_SHOUT
 

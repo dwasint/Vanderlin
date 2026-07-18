@@ -12,6 +12,9 @@
 		/datum/attunement/blood = 0.7,
 	)
 
+	required_form = FORM_WATER
+	required_technique = TECHNIQUE_DESTRUCTION
+
 	invocation = "Blood Bolt!!"
 	invocation_type = INVOCATION_SHOUT
 

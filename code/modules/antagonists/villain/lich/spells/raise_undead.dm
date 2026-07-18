@@ -9,6 +9,10 @@
 		/datum/attunement/death = 1,
 	)
 
+	required_form = FORM_DEATH
+	required_technique = TECHNIQUE_SUMMONING
+	required_level = 6
+
 	charge_time = 6 SECONDS
 	charge_drain = 1
 	charge_slowdown = 0.3

@@ -9,6 +9,9 @@
 		/datum/attunement/blood = 0.7,
 	)
 
+	required_form = FORM_WATER
+	required_technique = TECHNIQUE_ALTERATION
+
 	invocation = "DR'N LF'E!"
 	invocation_type = INVOCATION_SHOUT
 
