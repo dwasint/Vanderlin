@@ -3118,12 +3118,7 @@
 	if(QDELETED(src))
 		return
 
-	if(get_spell(/datum/action/cooldown/spell/undirected/learn))
-		return
-
-	// Because of kobolds spellpoints can be decimal, but you can't do anything with that if below 1
-	if(floor(spell_points - used_spell_points) > 0)
-		add_spell(/datum/action/cooldown/spell/undirected/learn)
+	mana_pool?.get_mastery()
 
 /**
  * purges all spells and skills

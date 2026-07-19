@@ -40,6 +40,9 @@
 	data["unspentTechniquePoints"] = mastery.unspent_technique_points
 	data["unlearnMode"] = unlearn_mode
 
+	var/list/form_modifiers = get_modifiers_by_form()
+	var/list/technique_modifiers = get_modifiers_by_technique()
+
 	var/list/technique_data = list()
 	for(var/technique in GLOB.all_techniques)
 		technique_data += list(list(
@@ -47,6 +50,7 @@
 			"name" = technique,
 			"level" = mastery.get_technique_level(technique),
 			"rank" = mastery.get_technique_rank_name(technique),
+			"modifiers" = technique_modifiers[technique],
 		))
 	data["techniqueLevels"] = technique_data
 
@@ -57,8 +61,10 @@
 			"name" = form,
 			"level" = mastery.get_form_level(form),
 			"rank" = mastery.get_form_rank_name(form),
+			"modifiers" = form_modifiers[form],
 		))
 	data["formLevels"] = form_data
+
 
 	var/list/spell_data = list()
 	for(var/datum/action/cooldown/spell/spell_path as anything in subtypesof(/datum/action/cooldown/spell))
@@ -88,7 +94,6 @@
 			"iconState" = initial(spell_path.button_icon_state),
 		))
 	data["spells"] = spell_data
-
 	return data
 
 /datum/spellbook/ui_act(action, list/params)
@@ -118,6 +123,30 @@
 		if("unlearn_spell")
 			var/spell_path = text2path(params["path"])
 			. = mastery.try_unlearn_spell(spell_path)
+
+/datum/spellbook/proc/get_modifiers_by_form()
+    return get_modifiers_by_key("form")
+
+/datum/spellbook/proc/get_modifiers_by_technique()
+    return get_modifiers_by_key("technique")
+
+/datum/spellbook/proc/get_modifiers_by_key(key)
+    if(!mastery?.parent)
+        return list()
+    var/list/modifiers = list()
+    SEND_SIGNAL(mastery.parent, COMSIG_SPELL_REQUEST_MODIFIERS, modifiers)
+
+    var/list/by_key = list()
+    for(var/list/entry in modifiers)
+        var/id = entry[key]
+        if(!id)
+            continue
+        if(!by_key[id])
+            by_key[id] = list("cost" = 1, "castSpeed" = 1, "magnitude" = 0)
+        by_key[id]["cost"] *= entry["cost"]
+        by_key[id]["castSpeed"] *= entry["castSpeed"]
+        by_key[id]["magnitude"] += entry["magnitude"]
+    return by_key
 
 /mob/living/proc/open_spellbook()
 	set name = "Open Innate Spells"

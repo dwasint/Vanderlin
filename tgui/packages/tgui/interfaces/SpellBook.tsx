@@ -16,6 +16,11 @@ type Track = {
   name: string;
   level: number;
   rank: string;
+  modifiers?: {
+    cost: number;
+    castSpeed: number;
+    magnitude: number;
+  } | null;
 };
 
 type SpellEntry = {
@@ -46,6 +51,28 @@ type SpellBookData = {
 type SpellBookStatic = {
   techniques: string[];
   forms: string[];
+};
+
+const formatModifierPart = (label: string, multiplier: number) => {
+  if (multiplier === 1) return null;
+  const pct = Math.round((multiplier - 1) * 100);
+  return `${pct > 0 ? '+' : ''}${pct}% ${label}`;
+};
+
+const formatModifierWhole = (label: string, multiplier: number) => {
+  if (multiplier === 0) return null;
+  const pct = Math.round((multiplier));
+  return `${pct > 0 ? '+' : ''}${pct} ${label}`;
+};
+
+const formatModifiers = (modifiers: Track['modifiers']) => {
+  if (!modifiers) return null;
+  const parts = [
+    formatModifierPart('cost', modifiers.cost),
+    formatModifierPart('cast speed', modifiers.castSpeed),
+    formatModifierWhole('magnitude', modifiers.magnitude),
+  ].filter(Boolean);
+  return parts.length > 0 ? parts.join(', ') : null;
 };
 
 const SpellSprite = (props: { icon: string; iconState: string }) => {
@@ -154,6 +181,8 @@ const InvestRow = (props: {
   onInvest: (id: string) => void;
 }) => {
   const { track, disabled, onInvest } = props;
+  const modifierText = formatModifiers(track.modifiers);
+
   return (
     <Stack align="center" mb={0.5} className="SpellBook__invest-row">
       <Stack.Item grow>
@@ -161,6 +190,11 @@ const InvestRow = (props: {
         <Box color="label" fontSize="0.9em">
           {track.rank} - Level {track.level}
         </Box>
+        {modifierText && (
+          <Box color="average" fontSize="0.85em">
+            {modifierText}
+          </Box>
+        )}
       </Stack.Item>
       <Stack.Item>
         <Button

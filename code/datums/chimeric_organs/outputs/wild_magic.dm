@@ -7,14 +7,12 @@
 /datum/chimeric_node/output/wild_magic/trigger_effect(multiplier)
 	. = ..()
 	if(!length(spell_types))
-		for(var/datum/spell_node/node as anything in subtypesof(/datum/spell_node))
+		for(var/datum/action/cooldown/spell/node as anything in subtypesof(/datum/action/cooldown/spell))
 			if(IS_ABSTRACT(node))
 				continue
-			if(initial(node.is_passive))
+			if(!initial(node.required_form))
 				continue
-			if(!initial(node.spell_type))
-				continue
-			spell_types += initial(node.spell_type)
+			spell_types += node
 
 	var/picked_type = pick(spell_types)
 	var/datum/action/cooldown/spell/picked_spell = new picked_type

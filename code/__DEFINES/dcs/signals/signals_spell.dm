@@ -100,3 +100,5 @@
 	#define COMPONENT_ITEM_CHARGED (1 << 0)
 	/// Return if the item had a negative side effect occur while recharging
 	#define COMPONENT_ITEM_BURNT_OUT (1 << 1)
+
+#define COMSIG_SPELL_REQUEST_MODIFIERS "spell_request_modifiers"
