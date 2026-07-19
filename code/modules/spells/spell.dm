@@ -39,6 +39,12 @@
  * this can be extended if you wish to undo unique effects on level up for wizards.
  * - [update_spell_name][/datum/action/cooldown/spell/update_spell_name] updates the prefix of the spell name based on its level.
  */
+
+/// Dedicated maptext holder for the ARC indicator, separate from cooldown and such
+/atom/movable/screen/arc_maptext_holder
+	maptext_x = 6
+	maptext_y = 12
+
 /datum/action/cooldown/spell
 	abstract_type = /datum/action/cooldown/spell
 	name = "Spell"
@@ -498,6 +504,11 @@
 	if(!check_cost(feedback = feedback))
 		return FALSE
 
+	if(!(spell_requirements & SPELL_CASTABLE_WHILE_MOUNTED) && owner.client && owner.buckled && isliving(owner.buckled))
+		if(feedback)
+			owner.balloon_alert(owner, "Too distracted riding to cast!")
+		return FALSE
+
 	if(uses_spellbook_charges && mastery_source && !mastery_source.has_spellbook_charges(type))
 		if(feedback)
 			owner.balloon_alert(owner, "No charges remaining!")
@@ -553,7 +564,10 @@
 		if(cast_on == owner)
 			owner.balloon_alert(owner, "Can't self cast!")
 			return FALSE
-
+	if(spell_requirements & SPELL_REQUIRES_SAME_Z)
+		if(owner.z != cast_on.z)
+			owner.balloon_alert(owner, "They are to far to cast on!")
+			return FALSE
 	return TRUE
 
 // The actual cast chain occurs here, in Activate().
@@ -1201,6 +1215,11 @@
 
 	cancel_casting()
 
+
+/// Override on spells that have an alt mode (e.g. cycling ward types). Called by the Alt Mode keybind (Shift+G).
+/// Return TRUE if handled.
+/datum/action/cooldown/spell/proc/toggle_alt_mode(mob/user)
+	return FALSE
 
 /**
 *Used to calculate bonuses to Great Hunt miracles/spells.

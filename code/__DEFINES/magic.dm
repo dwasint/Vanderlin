@@ -188,6 +188,10 @@ DEFINE_BITFIELD(antimagic_flags, list(
 #define SPELL_CASTABLE_WITHOUT_INVOCATION (1 << 6)
 /// If the spell requires the user to not move during casting
 #define SPELL_REQUIRES_NO_MOVE (1 << 7)
+/// Whether the spell requires the target to be on the same Z-level as the caster.
+#define SPELL_REQUIRES_SAME_Z (1 << 8)
+/// Whether the spell can be cast while buckled to a living mount (on horseback).
+#define SPELL_CASTABLE_WHILE_MOUNTED (1 << 9)
 
 DEFINE_BITFIELD(spell_requirements, list(
 	"SPELL_CASTABLE_WITHOUT_INVOCATION" = SPELL_CASTABLE_WITHOUT_INVOCATION,
@@ -225,13 +229,13 @@ DEFINE_BITFIELD(spell_requirements, list(
 
 /// Diceroll requirement at each arcane skill tier for aimed-fire
 /// Lower = easier to hit the intended target (roll-under system)
-#define SPELLOBJECT_AIM_REQ_NONE        6
-#define SPELLOBJECT_AIM_REQ_NOVICE      9
+#define SPELLOBJECT_AIM_REQ_NONE    6
+#define SPELLOBJECT_AIM_REQ_NOVICE  9
 #define SPELLOBJECT_AIM_REQ_APPRENTICE  11
 #define SPELLOBJECT_AIM_REQ_JOURNEYMAN  13
-#define SPELLOBJECT_AIM_REQ_EXPERT      15
-#define SPELLOBJECT_AIM_REQ_MASTER      16
-#define SPELLOBJECT_AIM_REQ_LEGENDARY   17
+#define SPELLOBJECT_AIM_REQ_EXPERT  15
+#define SPELLOBJECT_AIM_REQ_MASTER  16
+#define SPELLOBJECT_AIM_REQ_LEGENDARY 17
 
 #define TECHNIQUE_DESTRUCTION "Destruction"
 #define TECHNIQUE_CREATION "Creation"
@@ -282,3 +286,20 @@ GLOBAL_LIST_INIT(all_forms, list(
 	FORM_AIR,
 	FORM_WATER,
 ))
+
+#define CHARGETIME_POKE 0.5 SECONDS // Staple poke spells
+#define CHARGETIME_MINOR 1 SECONDS // Minor utility / support spells
+#define CHARGETIME_MAJOR 1.5 SECONDS // Major projectiles
+#define CHARGETIME_HEAVY 2 SECONDS // Heavy AOE / ultimates
+#define CHARGETIME_BARRAGE 3 SECONDS // Barrage / Channeled spells
+
+#define CHARGING_SLOWDOWN_NONE 0
+#define CHARGING_SLOWDOWN_SMALL 1
+#define CHARGING_SLOWDOWN_MEDIUM 2
+#define CHARGING_SLOWDOWN_HEAVY 3
+
+#define SPELL_RANGE_PROJECTILE 10 // Standard projectile travel distance and projectile spell cast range
+#define SPELL_RANGE_GROUND 7 // Standard ground-targeted / AOE spell cast range
+#define SPELL_RANGE_TWO_SCREENS 14 // Two screens away for very very special spells
+#define SPELL_RANGE_AURA 4 // For 'warcry' type miracles or AOE BUFFS originating on the caster
+#define SPELL_RANGE_ADJACENT 1 // Self explanatory

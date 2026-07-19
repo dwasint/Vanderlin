@@ -267,6 +267,12 @@
 	var/datum/intent/cached_intent = user.used_intent
 	if(user.used_intent.swingdelay)
 		sleep(user.used_intent.swingdelay)
+
+	// Getting struck w/ /disrupt swingdelay type sets our swing_state to false.
+	// If we had the effect, but not the bool, we were interrupted. (Or something else went wrong.)
+	if(user.is_swinging() && !user.swing_state)
+		return
+
 	if(user.a_intent != cached_intent)
 		return
 	if(QDELETED(src) || QDELETED(M))

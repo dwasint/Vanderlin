@@ -24,7 +24,7 @@
 		steps++
 		var/obj/structure/ice_bridge/bridge = new(target_turf)
 		QDEL_IN(bridge, 300 SECONDS)
-		target_turf = step_towards(target_turf, caster_turf)
+		target_turf = get_step_towards(target_turf, caster_turf)
 
 /obj/structure/ice_bridge
 	name = "ice bridge"

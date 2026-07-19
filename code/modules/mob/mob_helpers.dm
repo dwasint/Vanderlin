@@ -1008,3 +1008,29 @@
 
 	animate(my_client, pixel_x = oldx + mpx, pixel_y = oldy + mpy, time = duration, flags = ANIMATION_RELATIVE)
 	animate(pixel_x = oldx, pixel_y = oldy, time = backtime_duration, easing = BACK_EASING)
+
+///Return any anti magic atom on this mob that matches the magic type
+/mob/proc/anti_magic_check(magic = TRUE, holy = FALSE, tinfoil = FALSE, chargecost = 1, self = FALSE)
+	if(!magic && !holy && !tinfoil)
+		return
+	var/list/protection_sources = list()
+	if(SEND_SIGNAL(src, COMSIG_MOB_RECEIVE_MAGIC, src, magic, holy, tinfoil, chargecost, self, protection_sources) & COMPONENT_MAGIC_BLOCKED)
+		if(protection_sources.len)
+			return pick(protection_sources)
+		else
+			return src
+	if((magic && HAS_TRAIT(src, TRAIT_ANTIMAGIC)) || (holy && HAS_TRAIT(src, TRAIT_HOLY)))
+		return src
+
+/mob/living/anti_magic_check(magic = TRUE, holy = FALSE, tinfoil = FALSE, chargecost = 1, self = FALSE)
+	. = ..()
+	if(.)
+		return
+	if((magic && HAS_TRAIT(src, TRAIT_ANTIMAGIC)) || (holy && HAS_TRAIT(src, TRAIT_HOLY)))
+		return src
+
+/mob/living/proc/is_swinging(disrupt_only = FALSE)
+	if(!disrupt_only)
+		return (has_status_effect(/datum/status_effect/swingdelay) || has_status_effect(/datum/status_effect/swingdelay/disrupt))
+	else
+		return (has_status_effect(/datum/status_effect/swingdelay/disrupt))
