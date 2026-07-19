@@ -41,3 +41,13 @@
 		organ_healing = TRUE, \
 		healing_color = "#375637", \
 	)
+
+/datum/action/cooldown/spell/essence/healing_spring/spell
+	charge_required = TRUE
+	charge_time = 10 SECONDS
+	spell_cost = 120
+	spell_type = SPELL_MANA
+
+	required_form = FORM_EARTH
+	required_technique = TECHNIQUE_RESTORATION
+	required_level = 4

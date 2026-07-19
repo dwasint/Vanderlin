@@ -34,3 +34,12 @@
 
 	carbon.adjustBruteLoss(-0.1, FALSE)
 	carbon.adjustFireLoss(-0.1, TRUE)
+
+/datum/action/cooldown/spell/essence/regeneration_cycle/spell
+	charge_required = TRUE
+	charge_time = 2 SECONDS
+	spell_cost = 80
+	spell_type = SPELL_MANA
+
+	required_form = FORM_LIFE
+	required_technique = TECHNIQUE_RESTORATION

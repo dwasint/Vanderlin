@@ -23,3 +23,9 @@
 	for(var/obj/item/I in target_turf)
 		if(I.w_class <= WEIGHT_CLASS_SMALL && prob(50))
 			SSmove_manager.move_rand(I)
+
+/datum/action/cooldown/spell/essence/breeze/spell
+	spell_cost = 15
+	spell_type = SPELL_MANA
+
+	required_form = FORM_AIR

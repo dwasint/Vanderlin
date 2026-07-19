@@ -11,7 +11,7 @@
 		/datum/attunement/electric = 0.9
 	)
 
-	required_form = FORM_ELECTRIC
+	required_form = FORM_LIGHTNING
 	required_technique = TECHNIQUE_DESTRUCTION
 
 	invocation = "Lighnting Lure!!!"

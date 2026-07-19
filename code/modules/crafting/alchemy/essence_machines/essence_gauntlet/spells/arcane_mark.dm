@@ -39,3 +39,9 @@
 	else
 		new_image.loc = source
 	add_client_image(new_image, enterer.client)
+
+/datum/action/cooldown/spell/essence/arcane_mark/spell
+	spell_cost = 20
+	spell_type = SPELL_MANA
+
+	required_form = FORM_ARCANE

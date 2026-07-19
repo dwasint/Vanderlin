@@ -44,3 +44,11 @@
 /obj/structure/ice_bridge/Destroy()
 	remove_temp_effect()
 	return ..()
+
+/datum/action/cooldown/spell/essence/ice_bridge/spell
+	charge_required = TRUE
+	charge_time = 2 SECONDS
+	spell_cost = 60
+	spell_type = SPELL_MANA
+
+	required_form = FORM_ICE

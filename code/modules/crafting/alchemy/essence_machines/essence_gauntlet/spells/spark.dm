@@ -28,3 +28,9 @@
 			if(!T.on)
 				T.fuel += 5 MINUTES
 				T.fire_act()
+
+/datum/action/cooldown/spell/essence/spark/spell
+	spell_cost = 10
+	spell_type = SPELL_MANA
+
+	required_form = FORM_FIRE

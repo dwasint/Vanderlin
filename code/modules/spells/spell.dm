@@ -195,7 +195,15 @@
 	/// can be learned. Lets you build a simple prerequisite chain within a technique/form.
 	var/list/prerequisite_spells
 	///the amount of charges we have if we are a spellbook varient
-	var/initial_charges = 3
+	var/initial_charges = 10
+	/// If TRUE, this spell's uses are gated by a spellbook item's charge pool instead of (or in addition to) spell_cost.
+	var/uses_spellbook_charges = FALSE
+	/// The spell_mastery datum that owns our charge pool, set when granted from a spellbook.
+	var/datum/spell_mastery/mastery_source
+	/// The specific item instance our charge pool is keyed against.
+	var/atom/movable/charge_item
+	/// Cached overlay image showing remaining charges, added/removed from action buttons.
+	var/image/charge_overlay
 
 
 /datum/action/cooldown/spell/New(Target)
@@ -490,6 +498,11 @@
 	if(!check_cost(feedback = feedback))
 		return FALSE
 
+	if(uses_spellbook_charges && mastery_source && !mastery_source.has_spellbook_charges(type))
+		if(feedback)
+			owner.balloon_alert(owner, "No charges remaining!")
+		return FALSE
+
 	// Certain spells are not allowed on the centcom zlevel
 	var/turf/caster_turf = get_turf(owner)
 	if((spell_requirements & SPELL_REQUIRES_STATION) && is_centcom_level(caster_turf.z))
@@ -660,6 +673,47 @@
 		return FALSE
 	return TRUE
 
+/datum/action/cooldown/spell/proc/get_remaining_charges()
+	if(!uses_spellbook_charges || !mastery_source || !charge_item)
+		return -1
+	var/list/charges = mastery_source.spellbook_charges[charge_item]
+	if(!charges)
+		return -1
+	return charges[type] || 0
+
+/datum/action/cooldown/spell/update_button_status(atom/movable/screen/movable/action_button/button, force = FALSE)
+	. = ..()
+	if(!uses_spellbook_charges || !button)
+		return
+
+	var/charges = get_remaining_charges()
+	if(charges < 0)
+		if(charge_overlay)
+			button.cut_overlay(charge_overlay)
+			charge_overlay = null
+		return
+
+	if(charge_overlay)
+		button.cut_overlay(charge_overlay)
+	else
+		charge_overlay = image(icon = 'icons/hud/screen_gen.dmi', icon_state = "")
+		charge_overlay.plane = ABOVE_HUD_PLANE
+		charge_overlay.pixel_x = 20
+		charge_overlay.pixel_y = 20
+		charge_overlay.maptext_x = 0
+		charge_overlay.maptext_y = 0
+		charge_overlay.maptext_width = 16
+		charge_overlay.maptext_height = 16
+
+	var/badge_color = (charges <= 0) ? "#ff4444" : "#ffffff"
+	charge_overlay.maptext = MAPTEXT_PIXELIFY("<font color='[badge_color]'>[charges]</font>")
+
+	button.add_overlay(charge_overlay)
+
+	// Red-out the whole button when it genuinely cannot fire right now
+	if(charges <= 0 && !active_background_icon_state && !active_icon_state && !active_overlay_icon_state)
+		button.color = "#ff4444"
+
 /**
  * Actions done as the main effect of the spell.
  *
@@ -671,6 +725,9 @@
 
 	SEND_SIGNAL(src, COMSIG_SPELL_CAST, cast_on)
 	record_featured_object_stat(FEATURED_STATS_SPELLS, name)
+	if(uses_spellbook_charges && mastery_source)
+		mastery_source.consume_spellbook_charge(type)
+		build_all_button_icons(UPDATE_BUTTON_STATUS)
 	if(owner)
 		SEND_SIGNAL(owner, COMSIG_MOB_CAST_SPELL, src, cast_on)
 		if(owner.ckey)

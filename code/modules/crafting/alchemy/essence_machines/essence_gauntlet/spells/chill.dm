@@ -43,3 +43,11 @@
 /obj/structure/ice_zone/Destroy()
 	remove_temp_effect()
 	return ..()
+
+/datum/action/cooldown/spell/essence/chill/spell
+	charge_required = TRUE
+	charge_time = 0.5 SECONDS
+	spell_cost = 20
+	spell_type = SPELL_MANA
+
+	required_form = FORM_ICE

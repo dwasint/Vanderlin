@@ -35,3 +35,11 @@
 	icon_state = "solosnake"
 	duration = 2 SECONDS
 	layer = EFFECTS_LAYER
+
+/datum/action/cooldown/spell/essence/detect_poison/spell
+	charge_required = TRUE
+	charge_time = 2 SECONDS
+	spell_cost = 10
+	spell_type = SPELL_MANA
+
+	required_form = FORM_LIFE

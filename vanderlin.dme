@@ -4111,6 +4111,7 @@
 #include "code\modules\spells\spell_types\pointed\mind_spike.dm"
 #include "code\modules\spells\spell_types\pointed\numbing_pleasure.dm"
 #include "code\modules\spells\spell_types\pointed\ocean_embrace.dm"
+#include "code\modules\spells\spell_types\pointed\ore_vision.dm"
 #include "code\modules\spells\spell_types\pointed\persistence.dm"
 #include "code\modules\spells\spell_types\pointed\pressure.dm"
 #include "code\modules\spells\spell_types\pointed\respite.dm"

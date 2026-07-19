@@ -19,3 +19,12 @@
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "impact_laser"
 	duration = 1 HOURS
+
+/datum/action/cooldown/spell/essence/daylight/spell
+	charge_required = TRUE
+	charge_time = 5 SECONDS
+	spell_cost = 40
+	spell_type = SPELL_MANA
+
+	required_form = FORM_FIRE
+	required_technique = TECHNIQUE_CREATION

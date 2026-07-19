@@ -24,3 +24,9 @@
 	else
 		to_chat(user, span_warning("That is not a valid target for Fridigitation."))
 		return FALSE
+
+/datum/action/cooldown/spell/essence/frozen_storage/spell
+	spell_cost = 5
+	spell_type = SPELL_MANA
+
+	required_form = FORM_ICE

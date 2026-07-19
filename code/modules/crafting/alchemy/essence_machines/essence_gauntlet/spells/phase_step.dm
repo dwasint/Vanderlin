@@ -36,3 +36,12 @@
 	name = "Phase Walking"
 	desc = "You can pass through solid objects."
 	icon_state = "buff"
+
+/datum/action/cooldown/spell/essence/phase_step/spell
+	charge_required = TRUE
+	charge_time = 4 SECONDS
+	spell_cost = 40
+	spell_type = SPELL_MANA
+
+	required_form = FORM_ARCANE
+	required_technique = TECHNIQUE_ILLUSION

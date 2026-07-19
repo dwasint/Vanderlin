@@ -18,3 +18,11 @@
 
 	target.adjust_stamina(20)
 	target.adjust_energy(20)
+
+/datum/action/cooldown/spell/essence/refresh/spell
+	charge_required = TRUE
+	charge_time = 0.2 SECONDS
+	spell_cost = 30
+	spell_type = SPELL_MANA
+
+	required_form = FORM_LIGHTNING

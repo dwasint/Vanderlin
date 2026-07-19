@@ -18,6 +18,7 @@
 	)
 
 	required_form = FORM_ICE
+	required_level = 2
 
 	button_icon_state = "frostbolt"
 	charge_time = 2 SECONDS

@@ -17,3 +17,12 @@
 	for(var/obj/structure/soil/plant in range(1, target_turf))
 		plant.accellerated_growth = world.time + 600 SECONDS
 		new /obj/effect/temp_visual/bless_swirl(get_turf(plant))
+
+
+/datum/action/cooldown/spell/essence/growth_acceleration/spell
+	charge_required = TRUE
+	charge_time = 2 SECONDS
+	spell_cost = 40
+	spell_type = SPELL_MANA
+
+	required_form = FORM_LIFE

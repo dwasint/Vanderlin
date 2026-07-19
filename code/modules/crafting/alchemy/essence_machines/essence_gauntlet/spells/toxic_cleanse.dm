@@ -38,3 +38,13 @@
 /datum/status_effect/buff/toxin_immunity/on_remove()
 	. = ..()
 	REMOVE_TRAIT(owner, TRAIT_TOXINLOVER, TRAIT_STATUS_EFFECT(id))
+
+/datum/action/cooldown/spell/essence/toxic_cleanse/spell
+	charge_required = TRUE
+	charge_time = 5 SECONDS
+	spell_cost = 80
+	spell_type = SPELL_MANA
+
+	required_form = FORM_LIFE
+	required_technique = TECHNIQUE_RESTORATION
+	required_level = 6

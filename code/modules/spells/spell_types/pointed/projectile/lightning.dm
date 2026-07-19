@@ -15,7 +15,7 @@
 		/datum/attunement/electric = 0.7,
 	)
 
-	required_form = FORM_ELECTRIC
+	required_form = FORM_LIGHTNING
 	required_technique = TECHNIQUE_DESTRUCTION
 
 	charge_time = 3 SECONDS

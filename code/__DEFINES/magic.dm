@@ -245,7 +245,6 @@ DEFINE_BITFIELD(spell_requirements, list(
 #define FORM_LIGHTNING "Lightning"
 #define FORM_EARTH "Earth"
 #define FORM_ARCANE "Arcane"
-#define FORM_ELECTRIC "Electric"
 #define FORM_DEATH "Death"
 #define FORM_LIFE "Life"
 #define FORM_AIR "Aeromancy"
@@ -282,5 +281,4 @@ GLOBAL_LIST_INIT(all_forms, list(
 	FORM_DEATH,
 	FORM_AIR,
 	FORM_WATER,
-	FORM_ELECTRIC,
 ))

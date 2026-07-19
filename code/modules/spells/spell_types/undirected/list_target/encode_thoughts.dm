@@ -44,3 +44,4 @@
 	point_cost = 0
 	spell_type = SPELL_BLOOD
 	spell_flags = NONE
+	required_form = null

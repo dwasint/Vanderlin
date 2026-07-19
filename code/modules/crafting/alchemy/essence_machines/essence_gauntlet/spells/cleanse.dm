@@ -17,3 +17,11 @@
 	playsound(target,  'sound/effects/splash.ogg', 50, TRUE)
 
 	target.wash(CLEAN_WASH)
+
+/datum/action/cooldown/spell/essence/cleanse/spell
+	charge_required = TRUE
+	charge_time = 2 SECONDS
+	spell_cost = 15
+	spell_type = SPELL_MANA
+
+	required_form = FORM_WATER

@@ -22,3 +22,12 @@
 	if(istype(target, /obj/structure/mana_pylon))
 		var/obj/structure/mana_pylon/pylon = target
 		pylon.mana_pool.adjust_mana(30)
+
+/datum/action/cooldown/spell/essence/energize/spell
+	charge_required = TRUE
+	charge_time = 1 SECONDS
+	spell_cost = 40
+	spell_type = SPELL_MANA
+
+	required_form = FORM_LIGHTNING
+	required_technique = TECHNIQUE_RESTORATION

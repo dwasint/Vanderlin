@@ -81,6 +81,8 @@
 
 	point_cost = 0
 
+	required_form = null
+
 	sound = 'sound/misc/tail_swing.ogg'
 	spell_flags = NONE
 	invocation = null

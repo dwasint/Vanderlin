@@ -132,6 +132,8 @@
 	overlay_icon_state = "bg_heretic_border"
 	button_icon_state = "icebeam"
 
+	required_form = NONE
+
 	school = SCHOOL_FORBIDDEN
 	cooldown_time = 30 SECONDS
 

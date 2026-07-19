@@ -36,3 +36,12 @@
 	REMOVE_TRAIT(owner, TRAIT_HOLLOWBONES, TRAIT_STATUS_EFFECT(id))
 	REMOVE_TRAIT(owner, TRAIT_MOVE_FLYING, TRAIT_STATUS_EFFECT(id))
 	to_chat(owner, span_notice("Your feet return to solid ground."))
+
+/datum/action/cooldown/spell/essence/air_walk/spell
+	charge_required = TRUE
+	charge_time = 1 SECONDS
+	spell_cost = 50
+	spell_type = SPELL_MANA
+
+	required_form = FORM_AIR
+	required_technique = TECHNIQUE_ALTERATION

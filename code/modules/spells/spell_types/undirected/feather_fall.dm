@@ -15,7 +15,7 @@
 	)
 
 	required_form = FORM_AIR
-	required_technique = TECHNIQUE_DESTRUCTION
+	required_technique = TECHNIQUE_ALTERATION
 
 
 /datum/action/cooldown/spell/undirected/feather_falling/cast(atom/cast_on)

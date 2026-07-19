@@ -98,3 +98,12 @@
 			to_chat(M, span_danger("You are hurled by a kinetic shockwave!"))
 		else
 			AM.throw_at(throw_target, throw_range, throw_speed)
+
+/datum/action/cooldown/spell/essence/momentum_transfer/spell
+	charge_required = TRUE
+	charge_time = 1 SECONDS
+	spell_cost = 60
+	spell_type = SPELL_MANA
+
+	required_form = FORM_ARCANE
+	required_technique = TECHNIQUE_ALTERATION

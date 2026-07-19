@@ -46,6 +46,15 @@
 	icon_state = "blastwave"
 	damage = 5
 	damage_type = BURN
-	speed = 1 SECONDS
+	speed = 0.8 SECONDS
 	homing = FALSE
-	range = 3
+	range = 4
+
+/datum/action/cooldown/spell/essence/fan_of_flames/spell
+	charge_required = TRUE
+	charge_time = 0.3 SECONDS
+	spell_cost = 35
+	spell_type = SPELL_MANA
+
+	required_form = FORM_FIRE
+	required_technique = TECHNIQUE_DESTRUCTION

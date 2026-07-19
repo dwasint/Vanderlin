@@ -17,3 +17,11 @@
 	var/mob/living/L = owner
 	L.apply_status_effect(/datum/status_effect/buff/haste, 10 SECONDS)
 	new /obj/effect/temp_visual/snake/swarm(null, L)
+
+/datum/action/cooldown/spell/essence/haste/spell
+	charge_required = TRUE
+	charge_time = 0.2 SECONDS
+	spell_cost = 25
+	spell_type = SPELL_MANA
+
+	required_form = FORM_AIR

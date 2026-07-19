@@ -119,6 +119,10 @@
 			existing_spell = new spell_path()
 			granted_actions[spell_path] = existing_spell
 
+		existing_spell.mastery_source = src
+		existing_spell.charge_item = AM
+		existing_spell.uses_spellbook_charges = TRUE
+
 		// Grant the persistent instance to the current user
 		existing_spell.Grant(user)
 		actions[spell_path] = existing_spell
@@ -309,6 +313,10 @@
 		var/datum/action/cooldown/spell/new_spell = new spell_path()
 		if(owner)
 			new_spell.Grant(owner.parent)
+		if(parent)
+			new_spell.mastery_source = src
+			new_spell.charge_item = parent
+			new_spell.uses_spellbook_charges = TRUE
 		actions[spell_path] = new_spell
 
 		if(holder)
@@ -385,6 +393,12 @@
 
 	for(var/spell_path in unlocked_spells)
 		charges[spell_path] = initial(spell_path:initial_charges) || 0
+
+	var/list/actions = spellbook_granted_actions[AM]
+	if(actions)
+		for(var/spell_path in actions)
+			var/datum/action/cooldown/spell/granted = actions[spell_path]
+			granted?.build_all_button_icons(UPDATE_BUTTON_STATUS)
 
 /datum/spell_mastery/proc/reset_all_spellbook_charges()
 	for(var/atom/movable/AM in spellbook_charges)
