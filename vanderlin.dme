@@ -4175,6 +4175,7 @@
 #include "code\modules\spells\spell_types\pointed\projectile\profane.dm"
 #include "code\modules\spells\spell_types\pointed\projectile\repel.dm"
 #include "code\modules\spells\spell_types\pointed\projectile\revel_in_slaughter.dm"
+#include "code\modules\spells\spell_types\pointed\projectile\smoke_ball.dm"
 #include "code\modules\spells\spell_types\pointed\projectile\swordfish.dm"
 #include "code\modules\spells\spell_types\pointed\projectile\unholy_grasp.dm"
 #include "code\modules\spells\spell_types\pointed\status\_status.dm"
