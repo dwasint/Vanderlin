@@ -1,6 +1,8 @@
 /mob/living/carbon/human/getarmor(def_zone, type, damage, armor_penetration, blade_dulling, simulate=FALSE)
 	var/armorval = 0
 	var/organnum = 0
+	if(has_status_effect(/datum/status_effect/buff/iron_skin))
+		damage *= 0.75
 
 	if(def_zone)
 		return checkarmor(def_zone, type, damage, armor_penetration, blade_dulling, simulate)

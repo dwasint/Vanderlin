@@ -1042,6 +1042,10 @@
 		updatehealth()
 		get_up(TRUE)
 
+	// Reapply arcyne momentum if this mind had it before death
+	if(mind?.has_arcyne_momentum && !has_status_effect(/datum/status_effect/buff/arcyne_momentum))
+		apply_status_effect(/datum/status_effect/buff/arcyne_momentum)
+
 	// The signal is called after everything else so components can properly check the updated values
 	SEND_SIGNAL(src, COMSIG_LIVING_REVIVE, full_heal_flags)
 

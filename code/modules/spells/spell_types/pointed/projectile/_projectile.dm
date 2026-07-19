@@ -91,6 +91,8 @@
 	if(istype(to_fire, /obj/projectile/magic))
 		var/obj/projectile/magic/magic_to_fire = to_fire
 		magic_to_fire.antimagic_flags = antimagic_flags
+		magic_to_fire.spell_impact_intensity = spell_impact_intensity
+		magic_to_fire.spell_impact_color = spell_impact_color
 
 /// Signal proc for whenever the projectile we fire hits someone.
 /// Pretty much relays to the spell when the projectile actually hits something.

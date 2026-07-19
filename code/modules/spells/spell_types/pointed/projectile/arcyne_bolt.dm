@@ -11,7 +11,6 @@
 	)
 
 	required_form = FORM_ARCANE
-	required_technique = TECHNIQUE_DESTRUCTION
 
 	invocation = "MAGIC MISSILE!!!"
 	invocation_type = INVOCATION_SHOUT

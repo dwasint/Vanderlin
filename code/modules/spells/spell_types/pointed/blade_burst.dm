@@ -56,3 +56,8 @@
 	icon_state = "grassblade"
 	randomdir = FALSE
 	duration = 1 SECONDS
+
+/obj/effect/temp_visual/trap/telomancy
+	color = "#9932CC"
+	light_color = "#9932CC"
+	duration = 3 SECONDS

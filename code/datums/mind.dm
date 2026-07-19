@@ -127,6 +127,8 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 	var/has_studied = FALSE
 	/// Variable that lets the event picker see if someones getting chosen or not
 	var/picking = FALSE
+	/// Whether this mind has arcyne momentum (persists through death)
+	var/has_arcyne_momentum = FALSE
 
 /datum/mind/New(key)
 	src.key = key

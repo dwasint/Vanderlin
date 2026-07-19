@@ -68,11 +68,13 @@
 
 /// Start effects, used for channeled spells,
 /// Creates and sets the spell_rune.
-/mob/living/proc/start_spell_visual_effects(list/attunements)
+/mob/living/proc/start_spell_visual_effects(list/attunements, true_color)
 	if(QDELETED(src))
 		return
 
 	var/spell_color = get_blended_attunement_color(attunements)
+	if(true_color)
+		spell_color = true_color
 
 	if(spell_rune)
 		QDEL_NULL(spell_rune)
@@ -99,12 +101,13 @@
 
 /// Finish effect, used by most spells.
 /// Cleans up the spell_rune if present and creates a cloud visual based on attunement.
-/mob/living/proc/finish_spell_visual_effects(list/attunements)
+/mob/living/proc/finish_spell_visual_effects(list/attunements, true_color)
 	if(QDELETED(src))
 		return
 
 	var/spell_color = get_blended_attunement_color(attunements)
-
+	if(true_color)
+		spell_color = true_color
 	// Clean up the rune
 	if(spell_rune)
 		QDEL_NULL(spell_rune)

@@ -118,6 +118,9 @@
 	/// Stat associated with spell enchancements.
 	var/associated_stat = STAT_INTELLIGENCE
 
+	///the color we use (overrides attunements for animate color)
+	var/spell_color
+
 	/// Assoc list of [datum/attunement] to value.
 	var/list/attunements
 	///list of essences we can use as a sub for cost
@@ -210,6 +213,11 @@
 	var/atom/movable/charge_item
 	/// Cached overlay image showing remaining charges, added/removed from action buttons.
 	var/image/charge_overlay
+	/// Impact visual intensity. SPELL_IMPACT_NONE / SPELL_IMPACT_LOW / SPELL_IMPACT_MEDIUM / SPELL_IMPACT_HIGH
+	var/spell_impact_intensity = SPELL_IMPACT_LOW
+	/// Override color for the impact effect. If null, uses light_color.
+	var/spell_impact_color
+
 
 
 /datum/action/cooldown/spell/New(Target)
@@ -221,6 +229,12 @@
 
 	if(click_to_activate && !charge_required)
 		ranged_mousepointer = 'icons/effects/mousemice/charge/spell_charged.dmi'
+
+	if(required_form && !spell_color)
+		spell_color = GLOB.form_colors[required_form]
+
+	if(!spell_impact_color)
+		spell_impact_color = spell_color
 
 	if(!charge_required)
 		return
@@ -777,7 +791,7 @@
 
 	if(has_visual_effects)
 		var/mob/living/caster = owner
-		caster.finish_spell_visual_effects(attunements)
+		caster.finish_spell_visual_effects(attunements, spell_color)
 
 /// Provides feedback after a spell cast occurs, in the form of a cast sound and/or invocation
 /datum/action/cooldown/spell/proc/spell_feedback(mob/living/invoker)
@@ -825,7 +839,7 @@
 
 	if(has_visual_effects)
 		var/mob/living/caster = owner
-		caster.start_spell_visual_effects(attunements)
+		caster.start_spell_visual_effects(attunements, spell_color)
 
 	if(charge_message)
 		owner.balloon_alert(owner, charge_message)

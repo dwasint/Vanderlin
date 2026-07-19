@@ -266,6 +266,18 @@ GLOBAL_LIST_INIT(mastery_rank_names, list(
 	"[MASTERY_RANK_MASTER]" = "Master",
 ))
 
+GLOBAL_LIST_INIT(form_colors, list(
+	FORM_FIRE = "#FF4500",        // Orange-red
+	FORM_ICE = "#00BFFF",         // Deep sky blue
+	FORM_LIGHTNING = "#FFD700",    // Gold/yellow
+	FORM_WATER = "#00158b",       // Dark red
+	FORM_LIFE = "#32CD32",        // Lime green
+	FORM_DEATH = "#800080",       // Purple
+	FORM_EARTH = "#8B4513",       // Saddle brown
+	FORM_AIR = "#C0C0C0",        // Silver
+	FORM_ARCANE = "#9932CC"
+))
+
 GLOBAL_LIST_INIT(all_techniques, list(
 	TECHNIQUE_DESTRUCTION,
 	TECHNIQUE_CREATION,
@@ -303,3 +315,8 @@ GLOBAL_LIST_INIT(all_forms, list(
 #define SPELL_RANGE_TWO_SCREENS 14 // Two screens away for very very special spells
 #define SPELL_RANGE_AURA 4 // For 'warcry' type miracles or AOE BUFFS originating on the caster
 #define SPELL_RANGE_ADJACENT 1 // Self explanatory
+
+#define SPELL_IMPACT_NONE   0  // No impact visual
+#define SPELL_IMPACT_LOW    1  // 2 wisps — minor pokes, utility
+#define SPELL_IMPACT_MEDIUM 2  // 4 wisps — staple projectiles, soulshot
+#define SPELL_IMPACT_HIGH   3  // 6 wisps — big hits, fireball, boulder
