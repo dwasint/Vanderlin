@@ -11,6 +11,7 @@
 
 	required_form = FORM_EARTH
 	required_technique = TECHNIQUE_CREATION
+	required_level = 3
 
 	invocation = "May the earth bloom!"
 	invocation_type = INVOCATION_WHISPER
@@ -58,6 +59,7 @@
 	if(isliving(owner))
 		var/mob/living/L = owner
 		L.apply_status_effect(/datum/status_effect/buff/flowerfield_resistance)
+	qdel(flower_item)
 
 /datum/action/cooldown/spell/aoe/on_turf/circle/flower_field/cast_on_thing_in_aoe(turf/victim, atom/caster)
 	if(prob(25))
