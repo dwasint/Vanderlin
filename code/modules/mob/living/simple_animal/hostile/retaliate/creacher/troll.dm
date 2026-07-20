@@ -426,9 +426,8 @@
 
 /datum/action/cooldown/spell/projectile/harpoon_pull/ready_projectile(obj/projectile/to_fire, atom/target, mob/user, iteration)
 	. = ..()
-	user.visible_message(span_danger("[caster] hurls a harpoon!"))
+	user.visible_message(span_danger("[user] hurls a harpoon!"))
 	to_fire.Beam(user, "shisha")
-	to_fire.caster = user
 
 /obj/projectile/harpoon
 	name = "harpoon"
@@ -436,21 +435,16 @@
 	damage = 15
 	damage_type = BRUTE
 	speed = 1.6
-	var/mob/living/caster
 	/// Delay between the hit landing and the pull happening
 	var/pull_delay = 0.4 SECONDS
 
-/obj/projectile/harpoon/Destroy()
-	. = ..()
-	caster = null
-
 /obj/projectile/harpoon/on_hit(atom/target, blocked, pierce_hit)
 	. = ..()
-	if(!QDELETED(caster))
+	if(!QDELETED(firer))
 		if(isliving(target))
-			addtimer(CALLBACK(target, TYPE_PROC_REF(/mob, fly_towards), "is yanked towards [caster] by the harpoon!", caster), pull_delay)
+			addtimer(CALLBACK(target, TYPE_PROC_REF(/mob, fly_towards), "is yanked towards [firer] by the harpoon!", firer), pull_delay)
 		else
-			addtimer(CALLBACK(caster, TYPE_PROC_REF(/mob, fly_towards), "is yanked forward by the harpoon line!", target), pull_delay)
+			addtimer(CALLBACK(firer, TYPE_PROC_REF(/mob, fly_towards), "is yanked forward by the harpoon line!", target), pull_delay)
 
 /mob/proc/fly_towards(flying_text, atom/target)
 	if(QDELETED(target))
