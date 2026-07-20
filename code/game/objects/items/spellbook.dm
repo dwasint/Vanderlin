@@ -50,10 +50,16 @@
 	var/born_of_rock = FALSE
 	/// Multiplier for spell points gained per read. Higher = better book.
 	var/bookquality = 3
+	var/datum/spell_mastery/mastery
 
 /obj/item/book/granter/spellbook/Initialize()
 	. = ..()
-	new /datum/spell_mastery(null, src)
+	mastery = new /datum/spell_mastery(null, src)
+
+/obj/item/book/granter/spellbook/proc/get_or_make_mastery()
+	if(!mastery)
+		mastery = new /datum/spell_mastery(null, src)
+	return mastery
 
 // ============================================================
 // VISUAL / OPEN STATE
