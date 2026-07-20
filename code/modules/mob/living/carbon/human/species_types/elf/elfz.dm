@@ -1,15 +1,15 @@
 	/*==============*
 	*				*
-	*	Dark Elf	*
+	*	Snow Elf	*
 	*				*
 	*===============*/
 
 //	( + Night Vision Plus )
 
-/mob/living/carbon/human/species/elf/dark
-	race = /datum/species/elf/dark
+/mob/living/carbon/human/species/elf/zizo
+	race = /datum/species/elf/zizo
 
-/datum/attribute_holder/sheet/job/species/dark
+/datum/attribute_holder/sheet/job/species/zizo
 	raw_attribute_list = list(
 		STAT_PERCEPTION = -1,
 		STAT_INTELLIGENCE = 1,
@@ -17,7 +17,7 @@
 		STAT_SPEED = 2,
 	)
 
-/datum/attribute_holder/sheet/job/species/dark/female
+/datum/attribute_holder/sheet/job/species/zizo/female
 	raw_attribute_list = list(
 		STAT_STRENGTH = 1,
 		STAT_PERCEPTION = -1,
@@ -26,10 +26,11 @@
 		STAT_SPEED = 1
 	)
 
-/datum/species/elf/dark
-	name = "Dark Elf"
-	id = SPEC_ID_DROW
-	desc = "Zizo's conquered. \
+/datum/species/elf/zizo
+	name = "Snow Elf"
+	id = SPEC_ID_SNOW_ELF
+	id_override = SPEC_ID_DROW
+	desc = "Zizo's progeny. \
 	\n\n\
 	These elves hail from an underground expanse of newly-reborn empires. \
 	They lead harsh, matriarchal lives under the watchful gaze of Zizo, \
@@ -42,9 +43,9 @@
 	rarely receive fair treatment. \
 	Dark elves over 500 years old may remember their Ravoxian empire of old, yet few remain who were not killed or converted. \
 	\n\n\
-	THIS IS A DISCRIMINATED SPECIES. EXPECT A MORE DIFFICULT EXPERIENCE. <B>NOBLES EVEN MORE SO.</B> PLAY AT YOUR OWN RISK."
+	WARNING: THIS IS A HEAVILY DISCRIMINATED AGAINST CHALLENGE SPECIES WITH ACTIVE SPECIES DETRIMENTS. YOU CAN AND WILL DIE A LOT; PLAY AT YOUR OWN RISK!"
 
-	skin_tone_wording = "Parent House"
+	skin_tone_wording = "Bloodline"
 
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,OLDGREY)
 	inherent_traits = list(TRAIT_NOMOBSWAP)
@@ -56,7 +57,7 @@
 	limbs_icon_m = 'icons/roguetown/mob/bodies/m/mem.dmi'
 	limbs_icon_f = 'icons/roguetown/mob/bodies/f/ft.dmi'
 	hairyness = "t3"
-	exotic_bloodtype = /datum/blood_type/human/delf
+	exotic_bloodtype = /datum/blood_type/human/cursed_elf
 
 	organs = list(
 		ORGAN_SLOT_BRAIN = /obj/item/organ/brain,
@@ -125,8 +126,8 @@
 		OFFSET_UNDIES = list(0,1),\
 	)
 
-	statsheet_male = /datum/attribute_holder/sheet/job/species/dark
-	statsheet_female = /datum/attribute_holder/sheet/job/species/dark/female
+	statsheet_male = /datum/attribute_holder/sheet/job/species/zizo
+	statsheet_female = /datum/attribute_holder/sheet/job/species/zizo/female
 	enflamed_icon = "widefire"
 
 	body_markings = list(
@@ -139,31 +140,15 @@
 	if(message_language.type == /datum/language/elvish)
 		return list(SPAN_DELF)
 	return message_language.spans
-/*
-/datum/species/elf/dark/on_species_gain(mob/living/carbon/C, datum/species/old_species)
-	. = ..()
-	C.remove_language(/datum/language/common)
-
-/datum/species/elf/dark/on_species_loss(mob/living/carbon/C)
-	. = ..()
-	C.grant_language(/datum/language/common)
-*/
-/datum/species/elf/dark/check_roundstart_eligible()
+/datum/species/elf/zizo/check_roundstart_eligible()
 	return TRUE
 
-/datum/species/elf/dark/get_skin_list()
+/datum/species/elf/zizo/get_skin_list()
 	return sortList(list(
-		"Maggot" = SKIN_COLOR_MAGGOT, // - (Pale blue)
-		"Cocoon" = SKIN_COLOR_COCOON, // - (Pale purple)
-		"Ashen" = SKIN_COLOR_ASHEN, // - (Pale grey)
-		"Spider Venom" = SKIN_COLOR_SPIDER_VENOM, // - (Deep grey)
-		"Jackpoison" = SKIN_COLOR_JACKPOISON, // - (Grey-purple)
-		"Homunculus" = SKIN_COLOR_HOMUNCULUS, // - (Grey-blue)
-		"Arachnid Ichor" = SKIN_COLOR_ARACHNID_ICHOR, // - (Black-blue)
-		"Gloomhaven" = SKIN_COLOR_GLOOMHAVEN, // - (Pink)
+		"Zizo Descendant" = SKIN_COLOR_ICECAP, // - (Pale white)
 	))
 
-/datum/species/elf/dark/get_hairc_list()
+/datum/species/elf/zizo/get_hairc_list()
 	return sortList(list(
 		"black - oil" = "181a1d",
 		"black - cave" = "201616",
@@ -174,14 +159,27 @@
 		"white - spiderweb" = "f4f4f4"
 	))
 
-/datum/species/elf/dark/get_possible_names(gender = MALE)
+/datum/species/elf/zizo/get_possible_names(gender = MALE)
 	var/static/list/male_names = file2list('strings/rt/names/elf/elfdm.txt')
 	var/static/list/female_names = file2list('strings/rt/names/elf/elfdf.txt')
 	return (gender == FEMALE) ? female_names : male_names
 
-/datum/species/elf/dark/get_possible_surnames(gender = MALE)
+/datum/species/elf/zizo/get_possible_surnames(gender = MALE)
 	var/static/list/last_names = file2list('strings/rt/names/elf/elfsnf.txt')
 	return last_names
 
-/datum/species/elf/dark/after_creation(mob/living/carbon/human/C)
+/datum/species/elf/zizo/after_creation(mob/living/carbon/human/C)
 	C.dna.species.accent_language = C.dna.species.get_accent(native_language, 2)
+
+/datum/species/elf/zizo/preference_accessible(datum/preferences/prefs)
+	. = ..()
+	if(!.)
+		return
+
+	if(!prefs?.parent)
+		return FALSE
+
+	if(prefs.parent.is_donator())
+		return TRUE
+
+	return prefs.parent.has_triumph_buy(TRIUMPH_BUY_SNOW_ELF)

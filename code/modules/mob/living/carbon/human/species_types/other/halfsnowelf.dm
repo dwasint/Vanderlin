@@ -4,24 +4,25 @@
 	*				*
 	*===============*/
 
-/mob/living/carbon/human/species/human/halfdrow
-	race = /datum/species/human/halfdrow
+/mob/living/carbon/human/species/human/halfzizo
+	race = /datum/species/human/halfzizo
 
-/datum/attribute_holder/sheet/job/species/halfdrow
+/datum/attribute_holder/sheet/job/species/halfzizo
 	raw_attribute_list = list(
-		STAT_CONSTITUTION = 1,
 		STAT_ENDURANCE = 1,
+		STAT_CONSTITUTION = 1,
 		STAT_SPEED = 1,
 	)
 
-/datum/species/human/halfdrow
-	name = "Half-Drow"
-	id = SPEC_ID_HALF_DROW
+/datum/species/human/halfzizo
+	name = "Half-Snow Elf"
+	id = SPEC_ID_HALF_SNOW_ELF
+	id_override = SPEC_ID_HALF_DROW
 	multiple_accents = list(
 		"Humen Accent" = "Imperial",
 		"Dark Elf Accent" = "Elfish"
 	)
-	desc = "The child of a Dark Elf and Humen. \
+	desc = "The bastards of Zizo \
 	\n\n\
 	The distinction between Half-Elves and 'Half-Drow' has been a subject of debate for centuries. \
 	While similar in physicality and longevity to their non-drow cousins, their origins cause them to face discrimination akin to their elven side. \
@@ -29,7 +30,7 @@
 	Groups of half-elves and half-drow have been known to congregate together and consider themselves one species. \
 	According to some radical academic scholars, they might be one and the same species indeed- yet the people of Psydonia certainly do not believe the same at large. \
 	\n\
-	THIS IS A DISCRIMINATED SPECIES. EXPECT A MORE DIFFICULT EXPERIENCE. <B>NOBLES EVEN MORE SO.</B> PLAY AT YOUR OWN RISK."
+	WARNING: THIS IS A HEAVILY DISCRIMINATED AGAINST CHALLENGE SPECIES WITH ACTIVE SPECIES DETRIMENTS. YOU CAN AND WILL DIE A LOT; PLAY AT YOUR OWN RISK!"
 
 	default_color = "FFFFFF"
 
@@ -40,6 +41,8 @@
 	possible_ages = NORMAL_AGES_LIST_CHILD
 
 	changesource_flags = WABBAJACK
+
+	exotic_bloodtype = /datum/blood_type/human/cursed_elf
 
 	limbs_icon_m = 'icons/roguetown/mob/bodies/m/mm.dmi'
 	limbs_icon_f = 'icons/roguetown/mob/bodies/f/fm.dmi'
@@ -82,7 +85,7 @@
 		OFFSET_UNDIES = list(0,0),\
 	)
 
-	statsheet_male = /datum/attribute_holder/sheet/job/species/halfdrow
+	statsheet_male = /datum/attribute_holder/sheet/job/species/halfzizo
 
 	enflamed_icon = "widefire"
 
@@ -118,20 +121,15 @@
 		/datum/body_marking/tonage,
 	)
 
-/datum/species/human/halfdrow/check_roundstart_eligible()
+/datum/species/human/halfzizo/check_roundstart_eligible()
 	return TRUE
 
-/datum/species/human/halfdrow/get_skin_list()
+/datum/species/human/halfzizo/get_skin_list()
 	return sortList(list(
 		"Zizo-Cursed" = SKIN_COLOR_ICECAP, // - (Pale)
-		"Parasite-Taineted" = SKIN_COLOUR_PARASITE_TAINTED, // - (Light purple)
-		"Mushroom-Minded" = SKIN_COLOR_MUSHROOM_MINDED, // - (Mid purple)
-		"Cave-Attuned" = SKIN_COLOR_CAVE_ATTUNED, // - (Deep purple)
-		"Fungus-Stained" = SKIN_COLOR_FUNGUS_STAINED, // - (Pink)
-		"Depth-Departed" = SKIN_COLOR_DEPTH_DEPARTED, // - (Grey-blue)
 	))
 
-/datum/species/human/halfdrow/get_hairc_list()
+/datum/species/human/halfzizo/get_hairc_list()
 	return sortList(list(
 		"black - oil" = "181a1d",
 		"black - cave" = "201616",
@@ -159,15 +157,15 @@
 		"white - spiderweb" = "f4f4f4"
 	))
 
-/datum/species/human/halfdrow/get_possible_names(gender = MALE)
+/datum/species/human/halfzizo/get_possible_names(gender = MALE)
 	var/static/list/male_names = file2list('strings/rt/names/elf/elfwm.txt')
 	var/static/list/female_names = file2list('strings/rt/names/elf/elfwf.txt')
 	return (gender == FEMALE) ? female_names : male_names
 
-/datum/species/human/halfdrow/get_possible_surnames(gender = MALE)
+/datum/species/human/halfzizo/get_possible_surnames(gender = MALE)
 	return null
 
-/datum/species/human/halfdrow/after_creation(mob/living/carbon/human/C)
+/datum/species/human/halfzizo/after_creation(mob/living/carbon/human/C)
 	..()
 	//If a donator picks the Dark Elf Accent as a Half Drow, it will work the same as a non donator.
 	if(C.accent == ACCENT_DELF)
@@ -180,3 +178,15 @@
 	C.grant_language(/datum/language/elvish)
 	to_chat(C, "<span class='info'>I can speak Elvish with ,e before my speech.</span>")
 
+/datum/species/human/halfzizo/preference_accessible(datum/preferences/prefs)
+	. = ..()
+	if(!.)
+		return
+
+	if(!prefs?.parent)
+		return FALSE
+
+	if(prefs.parent.is_donator())
+		return TRUE
+
+	return prefs.parent.has_triumph_buy(TRIUMPH_BUY_HALF_SNOW_ELF)

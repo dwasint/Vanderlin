@@ -1003,4 +1003,14 @@
 		if(!(tested.department_flag & OUTSIDERS))
 			return FALSE
 
+	if(species.id == SPEC_ID_SNOW_ELF)
+		var/datum/job/tested = parent_job ? SSjob.GetJobType(parent_job) : src
+		if(!(tested.department_flag & (OUTSIDERS | PEASANTS | SERFS)) || tested.title == JOB_BUTLER || tested.title == JOB_TOMB_WARDEN || tested.title == JOB_MATRON)
+			return FALSE
+
+	if(species.id == SPEC_ID_HALF_SNOW_ELF)
+		var/datum/job/tested = parent_job ? SSjob.GetJobType(parent_job) : src
+		if(!(tested.department_flag & (OUTSIDERS | PEASANTS | SERFS | APPRENTICES)) || tested.title == JOB_BUTLER || tested.title == JOB_TOMB_WARDEN || tested.title == JOB_MATRON)
+			return FALSE
+
 	return TRUE
