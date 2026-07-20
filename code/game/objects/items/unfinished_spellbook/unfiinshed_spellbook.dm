@@ -31,6 +31,7 @@
 	if("spellcraft_star" in user.mind.active_uis)
 		ui = user.mind.active_uis["spellcraft_star"]
 		ui.remove_from_client()
+		qdel(ui)
 		return
 	else
 		ui = new(user.mind, src)
