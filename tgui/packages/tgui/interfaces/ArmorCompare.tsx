@@ -14,9 +14,6 @@ type ArmorEntry = {
   acid: number;
   magic: number;
   wound: number;
-  slash_ep: number;
-  stab_ep: number;
-  piercing_ep: number;
 };
 
 type ArmorCompareData = {
@@ -34,9 +31,6 @@ const RATINGS: (keyof Omit<ArmorEntry, 'type'>)[] = [
   'acid',
   'magic',
   'wound',
-  'slash_ep',
-  'stab_ep',
-  'piercing_ep',
 ];
 
 const RATING_LABELS: Record<string, string> = {
@@ -48,9 +42,6 @@ const RATING_LABELS: Record<string, string> = {
   acid: 'Acid',
   magic: 'Magic',
   wound: 'Wound',
-  slash_ep: "Slash EP",
-  stab_ep: "Stab EP",
-  piercing_ep: "Piercing EP",
 };
 
 type SortDirection = 'default' | 'asc' | 'desc';
@@ -197,7 +188,7 @@ export const ArmorCompare = (props) => {
   const viewingItems = viewingType ? itemUsage[viewingType] || [] : [];
 
   return (
-    <Window width={1200} height={680}>
+    <Window width={960} height={680}>
       <Window.Content scrollable>
         <Section
           title="Compare"

@@ -20,12 +20,9 @@
 /obj/projectile/bullet/reusable/dart/on_hit(atom/target, blocked = FALSE)
 	if(iscarbon(target))
 		var/mob/living/carbon/M = target
-		var/list/split = list()
-		M.run_armor_check(def_zone, flag, "", "", armor_penetration, damage, split_output = split)
+		var/armor = M.run_armor_check(def_zone, flag, "", "",armor_penetration, damage)
 		var/armor_real_check = max(0, armor - damage)
-		var/actually_penetrated = (armor_real_check == 0) && (split[DAMAGE_TYPED] > 0 || !split[DAMAGE_BLUNT])
-
-		if(actually_penetrated)
+		if(armor_real_check == 0)
 			if(M.can_inject(null, FALSE, def_zone, piercing)) // Pass the hit zone to see if it can inject by whether it hit the head or the body.
 				..()
 				reagents.reaction(M, INJECT)
@@ -33,11 +30,7 @@
 				return BULLET_ACT_HIT
 			else
 				blocked = 100
-				target.visible_message(span_danger("\The [src] was deflected!"), span_danger("My armor protected me against \the [src]!"))
-		else if(armor_real_check == 0)
-			//never broke skin
-			blocked = 100
-			target.visible_message(span_danger("\The [src] thuds against [M]'s armor, failing to pierce!"), span_danger("\The [src] thuds against my armor — it doesn't get through!"))
+				target.visible_message(	span_danger("\The [src] was deflected!"), span_danger("My armor protected me against \the [src]!"))
 
 	..(target, blocked)
 	DISABLE_BITFIELD(reagents.flags, NO_REACT)
