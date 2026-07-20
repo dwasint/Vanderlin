@@ -40,7 +40,7 @@
 		/datum/action/cooldown/spell/undirected/touch/prestidigitation,
 		/datum/action/cooldown/spell/eyebite,
 		/datum/action/cooldown/spell/projectile/sickness,
-		/datum/action/cooldown/spell/conjure/raise_lesser_undead/necromancer,
+		/datum/action/cooldown/spell/conjure_summon/raise_lesser_undead/necromancer,
 		/datum/action/cooldown/spell/gravemark,
 		/datum/action/cooldown/spell/control_undead
 	)

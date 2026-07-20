@@ -320,3 +320,7 @@ GLOBAL_LIST_INIT(all_forms, list(
 #define SPELL_IMPACT_LOW    1  // 2 wisps — minor pokes, utility
 #define SPELL_IMPACT_MEDIUM 2  // 4 wisps — staple projectiles, soulshot
 #define SPELL_IMPACT_HIGH   3  // 6 wisps — big hits, fireball, boulder
+
+#define CONJURE_RECOIL_LIGHT 0
+#define CONJURE_RECOIL_PARTIAL 1
+#define CONJURE_RECOIL_FULL 2

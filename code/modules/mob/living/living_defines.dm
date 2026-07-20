@@ -253,6 +253,10 @@
 	var/pegleg = 0			//Handles check & slowdown for peglegs. Fuckin' bootleg, literally, but hey it at least works.
 	var/pet_passive = FALSE
 
+	var/list/summoned_minions
+	var/attack_relay_refs = 0
+	var/attack_relay_self_added = FALSE
+
 	/// amount of spell points this mob currently has
 	var/spell_points
 	/// amount of spell points this mob has used

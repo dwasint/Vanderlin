@@ -22,6 +22,10 @@
 	cooldown_time = 1 MINUTES
 	spell_cost = 75
 
+	var/recoil_energy_floor = 200
+	var/recoil_severity = CONJURE_RECOIL_LIGHT
+	var/recoil_stamina_only = FALSE
+
 	var/static/list/pet_commands = list(
 		/datum/pet_command/idle,
 		/datum/pet_command/free,
@@ -54,6 +58,7 @@
 	cast_on.set_faction(list(FACTION_CABAL, FACTION_UNDEAD))
 	cast_on.befriend(owner)
 	cast_on.pet_passive = TRUE
+	cast_on.AddComponent(/datum/component/conjured_minion, owner, recoil_energy_floor, recoil_severity, recoil_stamina_only)
 
 	owner.visible_message(
 		span_greentext("[owner] soothes \the [cast_on] with zizo's blessing."),

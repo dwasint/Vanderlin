@@ -11,13 +11,41 @@
 
 	required_form = FORM_DEATH
 	required_technique = TECHNIQUE_SUMMONING
-	required_level = 6
+	required_level = 12
 
 	charge_time = 6 SECONDS
 	charge_drain = 1
 	charge_slowdown = 0.3
 	cooldown_time = 30 SECONDS
 	spell_cost = 40
+
+	var/max_summons = 30
+	var/list/conjured_mobs = list()
+	var/recoil_energy_floor = 200
+	var/recoil_severity = CONJURE_RECOIL_LIGHT
+	var/recoil_stamina_only = FALSE
+
+/datum/action/cooldown/spell/raise_undead/Destroy()
+	for(var/mob/living/M in conjured_mobs.Copy())
+		if(!QDELETED(M))
+			qdel(M)
+	conjured_mobs.Cut()
+	return ..()
+
+/datum/action/cooldown/spell/raise_undead/proc/remove_conjure(mob/living/summoned)
+	SIGNAL_HANDLER
+	conjured_mobs -= summoned
+
+/datum/action/cooldown/spell/raise_undead/proc/register_minion(mob/living/minion, mob/living/user)
+	if(length(conjured_mobs) >= max_summons)
+		for(var/mob/living/M in conjured_mobs.Copy())
+			if(!QDELETED(M))
+				qdel(M)
+		conjured_mobs.Cut()
+
+	conjured_mobs += minion
+	RegisterSignal(minion, COMSIG_QDELETING, PROC_REF(remove_conjure))
+	minion.AddComponent(/datum/component/conjured_minion, user, recoil_energy_floor, recoil_severity, recoil_stamina_only)
 
 /datum/action/cooldown/spell/raise_undead/is_valid_target(atom/cast_on)
 	. = ..()
@@ -41,6 +69,8 @@
 
 /datum/action/cooldown/spell/raise_undead/cast(mob/living/carbon/human/cast_on)
 	. = ..()
+	var/mob/living/user = owner
+
 	owner.say("Hgf'ant'kthar!")
 
 	cast_on.visible_message(span_warning("[cast_on.real_name]'s body is engulfed by dark energy..."), runechat_message = TRUE)
@@ -52,6 +82,7 @@
 			to_chat(cast_on, span_danger("You rise as a minion."))
 			cast_on.turn_to_minion(owner, cast_on.ckey)
 			cast_on.visible_message(span_warning("[cast_on.real_name]'s eyes light up with an evil glow."), runechat_message = TRUE)
+			register_minion(cast_on, user)
 			return
 		else
 			to_chat(cast_on, span_danger("Another soul will take over."))
@@ -64,6 +95,8 @@
 	else
 		cast_on.turn_to_minion(owner)
 		cast_on.visible_message(span_warning("[cast_on.real_name]'s eyes light up with a weak glow."), runechat_message = TRUE)
+
+	register_minion(cast_on, user)
 
 /mob/living/carbon/human/proc/turn_to_minion(mob/living/carbon/human/master, ckey)
 	if(!master)

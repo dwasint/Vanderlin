@@ -182,7 +182,7 @@
 /datum/special_trait/darkmagic/on_apply(mob/living/carbon/human/character, silent)
 	character.add_spell(/datum/action/cooldown/spell/eyebite, silent = TRUE)
 	character.add_spell(/datum/action/cooldown/spell/projectile/sickness, silent = TRUE)
-	character.add_spell(/datum/action/cooldown/spell/conjure/raise_lesser_undead/necromancer, silent = TRUE)
+	character.add_spell(/datum/action/cooldown/spell/conjure_summon/raise_lesser_undead/necromancer, silent = TRUE)
 	character.add_spell(/datum/action/cooldown/spell/gravemark, silent = TRUE)
 
 /datum/special_trait/too_smart

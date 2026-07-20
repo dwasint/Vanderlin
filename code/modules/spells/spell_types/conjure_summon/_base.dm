@@ -1,0 +1,149 @@
+
+/datum/action/cooldown/spell/conjure_summon
+	button_icon = 'icons/mob/actions/spells/mage_conjure.dmi'
+	sound = 'sound/magic/magnet.ogg'
+
+	click_to_activate = TRUE
+	cast_range = 2
+
+	spell_cost = 40
+
+	required_technique = TECHNIQUE_SUMMONING
+
+	invocation_type = INVOCATION_SHOUT
+
+	charge_required = TRUE
+	charge_time = CHARGETIME_HEAVY
+	charge_slowdown = CHARGING_SLOWDOWN_HEAVY
+	charge_sound = 'sound/magic/charging.ogg'
+	cooldown_time = 2 MINUTES
+
+	spell_impact_intensity = SPELL_IMPACT_NONE
+
+	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z
+
+	var/max_summons = 1
+	var/summons_per_cast = 1
+	var/list/conjured_mobs = list()
+	var/current_mode = 1
+	var/list/modes = list()
+	var/summon_noun = "servant"
+	var/recoil_energy_floor = 200
+	var/recoil_severity = CONJURE_RECOIL_FULL
+	var/recoil_stamina_only = FALSE
+
+/datum/action/cooldown/spell/conjure_summon/Grant(mob/grant_to)
+	. = ..()
+	apply_mode()
+
+/datum/action/cooldown/spell/conjure_summon/Destroy()
+	for(var/mob/living/M in conjured_mobs.Copy())
+		if(!QDELETED(M))
+			qdel(M)
+	conjured_mobs.Cut()
+	return ..()
+
+/datum/action/cooldown/spell/conjure_summon/toggle_alt_mode(mob/user)
+	if(length(modes) < 2)
+		return
+	var/next = current_mode
+	for(var/i in 1 to length(modes))
+		next = (next % length(modes)) + 1
+		if(mode_available(next, user))
+			break
+	current_mode = next
+	apply_mode()
+	to_chat(user, span_notice("[name]: [modes[current_mode]["name"]]."))
+	return TRUE
+
+/datum/action/cooldown/spell/conjure_summon/proc/mode_available(index, mob/user)
+	var/req = modes[index]["tier_req"]
+	if(!req)
+		return TRUE
+	return get_summon_tier(user) >= req
+
+/datum/action/cooldown/spell/conjure_summon/proc/apply_mode()
+	if(!length(modes))
+		return
+	var/list/mode = modes[current_mode]
+	if(mode["invocation"])
+		invocation = mode["invocation"]
+	update_mode_maptext()
+
+/datum/action/cooldown/spell/conjure_summon/proc/update_mode_maptext()
+	if(!length(modes))
+		return
+	var/list/mode = modes[current_mode]
+	for(var/datum/hud/hud as anything in viewers)
+		var/atom/movable/screen/movable/action_button/B = viewers[hud]
+		var/atom/movable/screen/arc_maptext_holder/holder
+		for(var/atom/movable/screen/arc_maptext_holder/existing in B.vis_contents)
+			holder = existing
+			break
+		if(!holder)
+			holder = new(B)
+			B.vis_contents.Add(holder)
+		holder.maptext = MAPTEXT(mode["tag"])
+		holder.maptext_x = 5
+		holder.color = mode["color"]
+
+/datum/action/cooldown/spell/conjure_summon/can_cast_spell(feedback = TRUE)
+	. = ..()
+	if(!.)
+		return
+	if(HAS_TRAIT(owner, TRAIT_CONJURE_BACKLASH))
+		if(feedback)
+			owner.balloon_alert(owner, "The backlash still grips me!")
+		return FALSE
+
+/datum/action/cooldown/spell/conjure_summon/cast(atom/cast_on)
+	. = ..()
+	var/mob/living/user = owner
+	if(!istype(user))
+		return FALSE
+
+	var/turf/T = get_turf(cast_on)
+	if(!isopenturf(T) || T.is_blocked_turf())
+		to_chat(user, span_warning("The targeted location is blocked. My summon fails to come forth."))
+		return FALSE
+
+	var/at_capacity = (length(conjured_mobs) >= max_summons)
+	if(at_capacity)
+		dismiss_summons(conjured_mobs.Copy())
+	var/to_spawn = at_capacity ? summons_per_cast : min(summons_per_cast, max_summons - length(conjured_mobs))
+	if(to_spawn < 1)
+		to_spawn = 1
+
+	var/list/all_summoned = list()
+	for(var/i in 1 to to_spawn)
+		var/mob/living/summoned = spawn_summon(T, user)
+		if(summoned)
+			all_summoned += summoned
+	if(!length(all_summoned))
+		return FALSE
+	for(var/mob/living/summoned in all_summoned)
+		conjured_mobs += summoned
+		RegisterSignal(summoned, COMSIG_QDELETING, PROC_REF(remove_conjure))
+		summoned.AddComponent(/datum/component/conjured_minion, user, recoil_energy_floor, recoil_severity, recoil_stamina_only)
+		var/turf/landing = get_turf(summoned)
+		landing?.zFall(summoned)
+	return TRUE
+
+/datum/action/cooldown/spell/conjure_summon/proc/spawn_summon(turf/T, mob/living/user)
+	return
+
+/datum/action/cooldown/spell/conjure_summon/proc/get_summon_tier(mob/living/user)
+	var/lvl = GET_MOB_SKILL_VALUE(user, /datum/attribute/skill/magic/arcane)
+	if(lvl >= SKILL_LEVEL_MASTER)
+		return 3
+	if(lvl >= SKILL_LEVEL_EXPERT)
+		return 2
+	return 1
+
+/datum/action/cooldown/spell/conjure_summon/proc/dismiss_summons(list/mobs)
+	for(var/mob/living/M in mobs)
+		dismiss_conjured_minion(M)
+
+/datum/action/cooldown/spell/conjure_summon/proc/remove_conjure(mob/living/summoned)
+	SIGNAL_HANDLER
+	conjured_mobs -= summoned
