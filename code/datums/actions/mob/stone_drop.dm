@@ -1,5 +1,5 @@
 /datum/action/cooldown/spell/stone_drop
-	name = "Stone Throw"
+	name = "Stone Drop"
 	button_icon = 'icons/effects/effects.dmi'
 	button_icon_state = "explosion"
 	desc = "Chucks a stone at someone"
