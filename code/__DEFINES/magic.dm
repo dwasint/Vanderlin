@@ -243,6 +243,7 @@ DEFINE_BITFIELD(spell_requirements, list(
 #define TECHNIQUE_RESTORATION "Restoration"
 #define TECHNIQUE_ALTERATION "Alteration"
 #define TECHNIQUE_ILLUSION "Illusion"
+#define TECHNIQUE_IMBUE "Imbue"
 
 #define FORM_FIRE "Fire"
 #define FORM_ICE "Ice"
@@ -285,6 +286,7 @@ GLOBAL_LIST_INIT(all_techniques, list(
 	TECHNIQUE_RESTORATION,
 	TECHNIQUE_ALTERATION,
 	TECHNIQUE_ILLUSION,
+	TECHNIQUE_IMBUE,
 ))
 
 GLOBAL_LIST_INIT(all_forms, list(
