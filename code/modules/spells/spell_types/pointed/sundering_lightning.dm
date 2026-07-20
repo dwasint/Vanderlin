@@ -38,4 +38,4 @@
 		if(dist > last_dist)
 			last_dist = dist
 			sleep(2 + min(4 - last_dist, 12) * 0.5)
-		new /obj/effect/temp_visual/target/lightning(T)
+		new /obj/effect/temp_visual/target/lightning/sundering(T)

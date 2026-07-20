@@ -126,3 +126,17 @@
 
 	for(var/mob/living/L in T)
 		L.electrocute_act(50)
+
+/obj/effect/temp_visual/target/lightning/sundering
+	light_color = COLOR_PALE_BLUE_GRAY
+	duration = 12
+
+/obj/effect/temp_visual/target/lightning/sundering/fall(list/hit_atoms)
+	var/turf/T = get_turf(src)
+	sleep(duration)
+	playsound(T,'sound/magic/lightning.ogg', 80, TRUE)
+	new /obj/effect/temp_visual/lightning(T)
+
+	for(var/mob/living/L in T)
+		L.adjustFireLoss(50)
+		L.lightning_shock(src)

@@ -61,3 +61,8 @@
 	color = "#9932CC"
 	light_color = "#9932CC"
 	duration = 3 SECONDS
+
+/obj/effect/temp_visual/trap/geomancy
+	color = "#8B4513"
+	light_color = "#8B4513"
+	duration = 4 SECONDS

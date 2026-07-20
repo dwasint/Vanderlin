@@ -7,6 +7,11 @@
 	armor_penetration = 100
 	pass_flags = PASSTABLE | PASSGRILLE
 	flag = "magic"
+
+	dam_falloff_factor = 0.5
+	suppress_effects_past_range = TRUE
+	max_range = 7
+
 	/// determines what type of antimagic can block the spell projectile
 	var/antimagic_flags = MAGIC_RESISTANCE
 	/// determines the drain cost on the antimagic item

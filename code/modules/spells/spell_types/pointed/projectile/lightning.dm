@@ -39,9 +39,21 @@
 	light_color = "#dbe72c"
 	light_outer_range =  7
 
-/obj/projectile/magic/lightning/on_hit(atom/target, blocked, pierce_hit)
+/obj/projectile/magic/lightning/on_hit(target)
 	. = ..()
-	if(isliving(target))
-		var/mob/living/L = target
-		L.electrocute_act(1, src)
-		L.apply_status_effect(/datum/status_effect/debuff/electrified)
+	if(ismob(target))
+		var/mob/M = target
+		if(M.anti_magic_check())
+			visible_message(span_warning("[src] fizzles on contact with [target]!"))
+			playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
+			qdel(src)
+			return BULLET_ACT_BLOCK
+		if(isliving(target))
+			var/mob/living/L = target
+			if(out_of_effective_range())
+				return
+			L.lightning_shock(src)
+	else if(isatom(target))
+		var/atom/A = target
+		A.fire_act()
+	qdel(src)
