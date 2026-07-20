@@ -638,3 +638,5 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 #define TRAIT_CONJURED_SUMMON "conjured_summon"
 #define TRAIT_CONJURE_BACKLASH "conjure_backlash"
+
+#define TRAIT_EMPOWERED_UNARMED "empowered_unarmed"

@@ -244,7 +244,7 @@
 	. = ..()
 
 
-/mob/living/carbon/human/attacked_by(obj/item/I, mob/living/user)
+/mob/living/carbon/human/attacked_by(obj/item/I, mob/living/user, signal)
 	if(!I || !user)
 		return 0
 
@@ -270,7 +270,7 @@
 	SSblackbox.record_feedback("tally", "zone_targeted", 1, useder)
 
 	// the attacked_by code varies among species
-	return dna.species.spec_attacked_by(I, user, affecting, used_intent, src, useder, accurate)
+	return dna.species.spec_attacked_by(I, user, affecting, used_intent, src, useder, accurate, signal)
 
 /mob/living/carbon/human/attack_hand(mob/user)
 	. = ..()

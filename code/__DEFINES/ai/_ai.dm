@@ -179,6 +179,9 @@
 #define BB_ENERGY_REGEN_RATE "energy_regen"
 #define BB_BASIC_MOB_STOP_FLEEING "bb_stop_fleeing"
 
+///Blackboard key for a whitelist typecache of "things we can target while trying to move"
+#define BB_OBSTACLE_TARGETING_WHITELIST "BB_targeting_whitelist"
+
 #define BB_DRAGGER_HUNTING_COOLDOWN "dragger_hunting_cooldown"
 #define BB_DRAGGER_TELEPORT_COOLDOWN "dragger_teleport_cooldown"
 #define BB_DRAGGER_DRAG_COOLDOWN "dragger_drag_cooldown"
@@ -206,6 +209,8 @@
 #define BB_CAT_GET_UP_CHANCE "cat_getup"
 #define BB_CAT_GROOM_CHANCE "cat_groom"
 #define BB_CAT_RACISM  "cat_racist"
+
+#define BB_FORCED_ATTACK_ZONE	"bb_forced_attack_zone"
 
 /// key that holds the target we will battle over our turf
 #define BB_TRESSPASSER_TARGET "tresspasser_target"

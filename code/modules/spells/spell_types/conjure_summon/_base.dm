@@ -31,10 +31,50 @@
 	var/recoil_energy_floor = 200
 	var/recoil_severity = CONJURE_RECOIL_FULL
 	var/recoil_stamina_only = FALSE
+	var/static/list/command_word_types = list(
+		/datum/action/cooldown/spell/command_word/fray,
+		/datum/action/cooldown/spell/command_word/harry,
+		/datum/action/cooldown/spell/command_word/quicken,
+		/datum/action/cooldown/spell/command_word/beckon,
+	)
+
+/datum/action/cooldown/spell/conjure_summon/Remove(mob/remove_from)
+	check_remove_command_words(remove_from)
+	return ..()
 
 /datum/action/cooldown/spell/conjure_summon/Grant(mob/grant_to)
 	. = ..()
 	apply_mode()
+	grant_command_words(grant_to)
+
+/datum/action/cooldown/spell/conjure_summon/proc/grant_command_words(mob/living/user)
+	if(!istype(user))
+		return
+	for(var/path in command_word_types)
+		if(has_command_word(user, path))
+			continue
+		var/datum/action/cooldown/spell/command_word/new_word = new path()
+		new_word.Grant(user)
+
+/datum/action/cooldown/spell/conjure_summon/proc/has_command_word(mob/living/user, path)
+	for(var/datum/action/cooldown/spell/command_word/existing in user.actions)
+		if(existing.type == path)
+			return TRUE
+	return FALSE
+
+/datum/action/cooldown/spell/conjure_summon/proc/check_remove_command_words(mob/living/user)
+	if(!istype(user))
+		return
+	// bail if another conjure_summon spell is still granted
+	for(var/datum/action/cooldown/spell/conjure_summon/other in user.actions)
+		if(other == src)
+			continue
+		return
+	// none left - strip the command words too
+	for(var/datum/action/cooldown/spell/command_word/cw in user.actions)
+		if(!(cw.type in command_word_types))
+			continue
+		cw.Remove(user)
 
 /datum/action/cooldown/spell/conjure_summon/Destroy()
 	for(var/mob/living/M in conjured_mobs.Copy())

@@ -299,3 +299,5 @@
 	var/looking_vertically = NONE
 	///looking holder we use for look_up and look_down. we use this over resetting to the turf because we want to glide
 	var/atom/movable/looking_holder/looking_holder
+	///The NAME (not the reference) of the mob's summoner and probable master.
+	var/summoner = null

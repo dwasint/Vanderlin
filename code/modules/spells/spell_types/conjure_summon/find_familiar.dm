@@ -1,5 +1,3 @@
-
-
 /datum/action/cooldown/spell/conjure_summon/familiar
 	name = "Find Familiar"
 	desc = "Summons a temporary spectral wolf to aid you."
