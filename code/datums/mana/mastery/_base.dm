@@ -321,8 +321,8 @@
 
 		if(holder)
 			var/atom/cached_holder = holder
-			remove_spells(cached_holder)
-			add_spells(cached_holder)
+			remove_spells(src, cached_holder)
+			add_spells(src, cached_holder)
 	return TRUE
 
 /datum/spell_mastery/proc/try_unlearn_spell(spell_path)
@@ -355,8 +355,8 @@
 
 	if(holder)
 		var/atom/cached_holder = holder
-		remove_spells(cached_holder)
-		add_spells(cached_holder)
+		remove_spells(src, cached_holder)
+		add_spells(src, cached_holder)
 
 	return TRUE
 
