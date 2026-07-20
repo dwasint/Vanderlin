@@ -1,14 +1,7 @@
 GLOBAL_VAR(harlequinn_hunt_quest) // weakref to active /datum/quest/custom/harlequinn_hunt
 
 #define HARLEQUINN_HUNT_COOLDOWN (35 MINUTES)
-#define HARLEQUINN_VESSEL_ID "Harlequinn"
 #define HARLEQUINN_HUNT_REWARD 500
-
-#define PUTRID_VESSEL_ID "Putrid"
-#define BROODMOTHER_VESSEL_ID "Broodmother"
-#define BROODSPAWN_GOBLIN_VESSEL_ID "Broodspawn Goblin"
-#define BROODSPAWN_ORC_VESSEL_ID "Broodspawn Orc"
-#define BROODSPAWN_TROLL_VESSEL_ID "Broodspawn Troll"
 
 #define QUEST_DIFFICULTY_EASY "Easy"
 #define QUEST_DIFFICULTY_MEDIUM "Medium"

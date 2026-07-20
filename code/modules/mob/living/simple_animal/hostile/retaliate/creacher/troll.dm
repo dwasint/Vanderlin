@@ -414,7 +414,7 @@
 	icon = 'icons/roguetown/mob/cabbit.dmi'
 	icon_state = "cabbit_remains"
 
-/datum/action/cooldown/spell/harpoon_pull
+/datum/action/cooldown/spell/projectile/harpoon_pull
 	name = "Harpoon"
 	desc = "Hurls a barbed harpoon; if it connects, the line goes taut and yanks the troll straight to its prey."
 	button_icon = 'icons/mob/actions/actions_animal.dmi'
@@ -422,19 +422,13 @@
 	cooldown_time = 14 SECONDS
 	spell_type = NONE
 	charge_required = FALSE
-	var/projectile_type = /obj/projectile/harpoon
+	projectile_type = /obj/projectile/harpoon
 
-/datum/action/cooldown/spell/harpoon_pull/cast(atom/cast_on)
+/datum/action/cooldown/spell/projectile/harpoon_pull/ready_projectile(obj/projectile/to_fire, atom/target, mob/user, iteration)
 	. = ..()
-	var/mob/living/caster = owner
-	if(!istype(caster) || !cast_on)
-		return
-	caster.visible_message(span_danger("[caster] hurls a harpoon!"))
-	var/obj/projectile/harpoon/shot = new projectile_type(get_turf(caster))
-	shot.Beam(caster, "shisha")
-	shot.caster = caster
-	shot.preparePixelProjectile(cast_on, caster) // swap for your codebase's actual projectile-fire helper
-	shot.fire()
+	user.visible_message(span_danger("[caster] hurls a harpoon!"))
+	to_fire.Beam(user, "shisha")
+	to_fire.caster = user
 
 /obj/projectile/harpoon
 	name = "harpoon"
@@ -446,12 +440,15 @@
 	/// Delay between the hit landing and the pull happening
 	var/pull_delay = 0.4 SECONDS
 
+/obj/projectile/harpoon/Destroy()
+	. = ..()
+	caster = null
+
 /obj/projectile/harpoon/on_hit(atom/target, blocked, pierce_hit)
 	. = ..()
 	if(!QDELETED(caster))
 		if(isliving(target))
 			addtimer(CALLBACK(target, TYPE_PROC_REF(/mob, fly_towards), "is yanked towards [caster] by the harpoon!", caster), pull_delay)
-
 		else
 			addtimer(CALLBACK(caster, TYPE_PROC_REF(/mob, fly_towards), "is yanked forward by the harpoon line!", target), pull_delay)
 
@@ -486,7 +483,7 @@
 	. = ..()
 	ADD_TRAIT(src, TRAIT_SWIMMER, INNATE_TRAIT)
 
-	var/datum/action/cooldown/spell/harpoon_pull/harpoon = new(src)
+	var/datum/action/cooldown/spell/projectile/harpoon_pull/harpoon = new(src)
 	harpoon.Grant(src)
 	ai_controller.set_blackboard_key(BB_TARGETED_ACTION, harpoon)
 	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(check_submersion))
@@ -494,14 +491,14 @@
 /mob/living/simple_animal/hostile/retaliate/troll/sea/slaved/Initialize()
 	. = ..()
 	var/static/list/pet_commands = list(
-				/datum/pet_command/idle,
-				/datum/pet_command/free,
-				/datum/pet_command/follow,
-				/datum/pet_command/attack,
-				/datum/pet_command/protect_owner,
-				/datum/pet_command/aggressive,
-				/datum/pet_command/calm,
-			)
+			/datum/pet_command/idle,
+			/datum/pet_command/free,
+			/datum/pet_command/follow,
+			/datum/pet_command/attack,
+			/datum/pet_command/protect_owner,
+			/datum/pet_command/aggressive,
+			/datum/pet_command/calm,
+		)
 	AddComponent(/datum/component/obeys_commands, pet_commands)
 
 /mob/living/simple_animal/hostile/retaliate/troll/sea/proc/check_submersion()

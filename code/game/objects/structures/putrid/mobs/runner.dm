@@ -2,7 +2,6 @@
 	icon_state = "runner"
 	icon_living = "runner"
 	icon_dead = "runner_dead"
-	c
 
 	tether_distance = 5
 	possible_evolutions = list(

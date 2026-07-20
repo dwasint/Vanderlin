@@ -49,7 +49,7 @@
 /obj/structure/meatvine/proc/wrap_items_on_turf()
 	var/turf/T = get_turf(src)
 
-	for(var/obj/item/Item in T.contents)
+	for(var/obj/item/Item in T)
 		for(var/generator_type in lair_generators)
 			if(istype(Item, generator_type))
 				continue

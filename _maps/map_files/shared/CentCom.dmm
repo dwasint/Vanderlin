@@ -1453,10 +1453,6 @@
 /obj/structure/mannequin/male/female,
 /turf/open/floor/wood,
 /area)
-"fV" = (
-/turf/closed/mineral,
-/turf/closed/mineral,
-/area/broodmother_den)
 "fX" = (
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/naturalstone,
@@ -19885,7 +19881,7 @@ Pe
 hn
 KA
 hn
-fV
+Pe
 MJ
 fX
 La
