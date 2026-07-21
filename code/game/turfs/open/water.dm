@@ -866,7 +866,7 @@
 /turf/open/water/river
 	name = "water"
 	desc = "Crystal clear water! Flowing swiftly along the river."
-	icon_state = MAP_SWITCH("rivermove", "rivermove-dir")
+	icon_state = MAP_SWITCH("rivermove", "rivermove-rockc")
 	underlay_icon_state = "rock"
 	water_height = WATER_HEIGHT_DEEP
 	slowdown = 20
@@ -904,7 +904,7 @@
 	water.try_set_parent(src)
 
 /turf/open/water/river/under
-	icon_state = MAP_SWITCH("riverbotdeep", "rivermoveF-dir")
+	icon_state = MAP_SWITCH("riverbotdeep", "rivermove-rockcf")
 	water_height = WATER_HEIGHT_FULL
 	immerse_overlay = null
 	shine = SHINE_MATTE
@@ -912,7 +912,7 @@
 
 /turf/open/water/river/dirt
 	desc = "Murky water, churning along the river."
-	icon_state = MAP_SWITCH("rivermove", "rivermovealt-dir")
+	icon_state = MAP_SWITCH("rivermove", "rivermove-dirtg")
 	underlay_icon_state = "dirt"
 	water_reagent = /datum/reagent/water/gross
 	cleanliness_factor = -5
@@ -921,7 +921,24 @@
 	current_speed = 1 SECONDS
 
 /turf/open/water/river/dirt/under
-	icon_state = MAP_SWITCH("riverbotdeep", "rivermovealtF-dir")
+	icon_state = MAP_SWITCH("riverbotdeep", "rivermove-dirtgf")
+	water_height = WATER_HEIGHT_FULL
+	immerse_overlay = null
+	shine = SHINE_MATTE
+	force_open_above = TRUE
+
+/turf/open/water/river/marsh
+	desc = "Marshy water, churning along the river."
+	icon_state = MAP_SWITCH("rivermove", "rivermove-dirtm")
+	underlay_icon_state = "dirt"
+	water_reagent = /datum/reagent/water/gross/marshy
+	cleanliness_factor = -3
+	slowdown = 5
+	slowdown = 1
+	current_speed = 1 SECONDS
+
+/turf/open/water/river/marsh/under
+	icon_state = MAP_SWITCH("riverbotdeep", "rivermove-dirtmf")
 	water_height = WATER_HEIGHT_FULL
 	immerse_overlay = null
 	shine = SHINE_MATTE
@@ -930,10 +947,17 @@
 /turf/open/water/river/blood
 	name = "blood"
 	desc = "This river flows a viscous red."
-	icon_state = MAP_SWITCH("rivermove", "rivermovealt2-dir")
+	icon_state = MAP_SWITCH("rivermove", "rivermove-rockb")
 	underlay_icon_state = "rock"
 	water_reagent = /datum/reagent/blood
 	cleanliness_factor = -5
+
+/turf/open/water/river/blood/under
+	icon_state = MAP_SWITCH("riverbotdeep", "rivermove-rockbf")
+	water_height = WATER_HEIGHT_FULL
+	immerse_overlay = null
+	shine = SHINE_MATTE
+	force_open_above = TRUE
 
 /turf/open/water/acid // holy SHIT
 	name = "acid pool"
@@ -999,7 +1023,7 @@
 /// Piss
 /turf/open/water/river/sewer
 	desc = "Piss-laden water! Flowing swiftly along the river."
-	icon_state = MAP_SWITCH("rivermove", "rivermovealt-dir")
+	icon_state = MAP_SWITCH("rivermove", "rivermove-sewerg")
 	underlay_icon_state = "paving"
 	water_reagent = /datum/reagent/water/gross/sewer
 	cleanliness_factor = -5
