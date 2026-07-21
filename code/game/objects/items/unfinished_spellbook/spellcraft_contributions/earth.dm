@@ -38,7 +38,7 @@
 		FORM_LIGHTNING = 1.2,
 	)
 	technique_points = list(
-		TECHNIQUE_DESTRUCTION = 1,
+		TECHNIQUE_CREATION = 1,
 	)
 
 /datum/spellcraft_contribution/sylvanessence
@@ -51,7 +51,7 @@
 		FORM_LIGHTNING = 2,
 	)
 	technique_points = list(
-		TECHNIQUE_DESTRUCTION = 2,
+		TECHNIQUE_CREATION = 2,
 		TECHNIQUE_IMBUE = 1,
 	)
 
@@ -62,7 +62,7 @@
 		FORM_EARTH = 0.95,
 	)
 	form_cast_speed_multipliers = list(
-		FORM_EARTH = 0.95,
+		FORM_EARTH = 1.05,
 	)
 	form_magnitude_modifications = list(
 		FORM_EARTH = 0.05,

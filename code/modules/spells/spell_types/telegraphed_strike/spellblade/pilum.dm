@@ -1,5 +1,5 @@
 /datum/action/cooldown/spell/projectile/pilum
-	name = "Azurean Pilum"
+	name = "Pilum"
 	desc = "A borrowed art - spellblades of tradition learned to imbue their throw with ice essence, \
 		flash-chilling the target on impact. Applies 2 frost stacks on hit. \
 		At 3+ momentum: consumes 3 for a heavier throw that applies 3 stacks, guaranteeing a freeze on any frosted target. \
@@ -67,7 +67,7 @@
 	to_fire.damage = cached_damage
 
 /obj/projectile/energy/pilum
-	name = "Azurean Pilum"
+	name = "Pilum"
 	icon = 'icons/obj/magic_projectiles.dmi'
 	icon_state = "air_blade_stab"
 	color = "#88BFFF"
@@ -95,17 +95,17 @@
 			log_combat(firer, L, "pilum-struck")
 
 /obj/projectile/energy/pilum/empowered
-	name = "Empowered Azurean Pilum"
+	name = "Empowered Pilum"
 	icon_state = "youreyesonly"
 	color = "#4CADEE"
 	frost_stacks = 3
 
 /obj/projectile/energy/pilum/arc
-	name = "Arced Azurean Pilum"
+	name = "Arced Pilum"
 	damage = 26
 	arcshot = TRUE
 
 /obj/projectile/energy/pilum/empowered/arc
-	name = "Empowered Arced Azurean Pilum"
+	name = "Empowered Arced Pilum"
 	damage = 26
 	arcshot = TRUE
