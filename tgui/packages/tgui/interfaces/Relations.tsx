@@ -44,7 +44,7 @@ const TAB_ORDER = ['Rival', 'Friend'];
 const JOB_CATEGORY_ORDER = [
   'Court',
   'Garrison',
-  'Gallows Band',
+  'Gallowband',
   'Church',
   'Inquisition',
   'Serfs',

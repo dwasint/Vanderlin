@@ -21,7 +21,7 @@
 	if(title in GLOB.garrison_positions)
 		return "Garrison"
 	if(title in GLOB.gallowband_positions)
-		return "Gallows Band"
+		return "Gallowband"
 	if(title in GLOB.church_positions)
 		return "Church"
 	if(title in GLOB.inquisition_positions)
