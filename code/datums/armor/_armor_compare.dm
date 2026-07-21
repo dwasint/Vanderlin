@@ -32,7 +32,7 @@ GLOBAL_LIST_EMPTY(armor_item_usage)
 /datum/armor_compare_menu/ui_data(mob/user)
 	var/list/data = list()
 	var/usage = FALSE
-	if(length(length(GLOB.armor_item_usage)))
+	if(length(GLOB.armor_item_usage))
 		usage = TRUE
 	data["usage_built"] = usage
 	if(usage)
