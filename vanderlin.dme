@@ -2099,6 +2099,7 @@
 #include "code\game\objects\items\unfinished_spellbook\session.dm"
 #include "code\game\objects\items\unfinished_spellbook\unfiinshed_spellbook.dm"
 #include "code\game\objects\items\unfinished_spellbook\spellcraft_contributions\_base.dm"
+#include "code\game\objects\items\unfinished_spellbook\spellcraft_contributions\earth.dm"
 #include "code\game\objects\items\unfinished_spellbook\spellcraft_contributions\fire.dm"
 #include "code\game\objects\items\weapons\integrity.dm"
 #include "code\game\objects\items\weapons\rmb_intents.dm"

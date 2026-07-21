@@ -41,6 +41,21 @@
 		TECHNIQUE_DESTRUCTION = 1,
 	)
 
+/datum/spellcraft_contribution/abyssalflame
+	atom_path = /obj/item/natural/abyssalflame
+	form_points = list(
+		FORM_FIRE = 4,
+	)
+	form_cost_multipliers = list(
+		FORM_FIRE = 1.4,
+		FORM_WATER = 2,
+	)
+	technique_points = list(
+		TECHNIQUE_DESTRUCTION = 2,
+		TECHNIQUE_IMBUE = 1,
+	)
+
+
 /datum/spellcraft_contribution/firedust
 	atom_path = /obj/item/alch/firedust
 	form_cost_multipliers = list(
