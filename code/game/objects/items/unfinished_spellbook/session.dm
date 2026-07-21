@@ -1,6 +1,8 @@
-/proc/merge_spellcraft_multipliers(list/target, list/source)
+/proc/merge_spellcraft_multipliers(list/target, list/source, amplifier = 1)
 	for(var/key in source)
-		target[key] = (target[key] || 1) * source[key]
+		var/base = target[key] || 1
+		var/scaled_source = 1 + (source[key] - 1) * amplifier
+		target[key] = base * scaled_source
 
 /proc/merge_spellcraft_additions(list/target, list/source)
 	for(var/key in source)
@@ -67,13 +69,12 @@
 			form_points[form] = (form_points[form] || 0) + contribution.form_points[form] * amplifier
 		for(var/tech in contribution.technique_points)
 			technique_points[tech] = (technique_points[tech] || 0) + contribution.technique_points[tech] * amplifier
-		merge_spellcraft_multipliers(form_cost_multipliers, contribution.form_cost_multipliers)
-		merge_spellcraft_multipliers(form_cast_speed_multipliers, contribution.form_cast_speed_multipliers)
+		merge_spellcraft_multipliers(form_cost_multipliers, contribution.form_cost_multipliers, amplifier)
+		merge_spellcraft_multipliers(form_cast_speed_multipliers, contribution.form_cast_speed_multipliers, amplifier)
 		merge_spellcraft_additions(form_magnitude_modifications, contribution.form_magnitude_modifications)
-		merge_spellcraft_multipliers(technique_cost_multipliers, contribution.technique_cost_multipliers)
-		merge_spellcraft_multipliers(technique_cast_speed_multipliers, contribution.technique_cast_speed_multipliers)
+		merge_spellcraft_multipliers(technique_cost_multipliers, contribution.technique_cost_multipliers, amplifier)
+		merge_spellcraft_multipliers(technique_cast_speed_multipliers, contribution.technique_cast_speed_multipliers, amplifier)
 		merge_spellcraft_additions(technique_magnitude_modifications, contribution.technique_magnitude_modifications)
-
 	var/book_type = meld_data["book_type"]
 	var/skilled = GET_MOB_SKILL_VALUE(user, /datum/attribute/skill/magic/arcane) > SKILL_LEVEL_NONE
 
