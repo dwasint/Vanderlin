@@ -30,6 +30,7 @@ import { DetailOrgan } from './details/DetailOrgan';
 import { DetailChemicalReaction } from './details/DetailChemicalReaction';
 import { DetailDistillation } from './details/DetailDistillation';
 import { DetailArcyneCrafting } from './details/DetailArcyneCrafting';
+import { DetailSpellcraft } from './details/DetailSpellcraft';
 
 type Props = {
   recipe: Recipe;
@@ -77,6 +78,7 @@ export const RecipeDetail = ({ recipe: r, lookup, pickerMap, allRecipes, essence
       case 'chemical_reaction':   return <DetailChemicalReaction {...sharedProps} />;
       case 'distillation':        return <DetailDistillation {...sharedProps} />;
       case 'arcyne_crafting':     return <DetailArcyneCrafting {...sharedProps} />;
+      case 'spellcraft':          return <DetailSpellcraft r={r} />;
       default:
         return <Box className="RecipeBook__desc">No details available for type: {r.type}</Box>;
     }

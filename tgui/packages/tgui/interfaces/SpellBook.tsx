@@ -61,7 +61,7 @@ const formatModifierPart = (label: string, multiplier: number) => {
 
 const formatModifierWhole = (label: string, multiplier: number) => {
   if (multiplier === 0) return null;
-  const pct = Math.round((multiplier));
+  const pct = ((multiplier));
   return `${pct > 0 ? '+' : ''}${pct} ${label}`;
 };
 

@@ -31,6 +31,7 @@
 	if("spellcraft_star" in user.mind.active_uis)
 		ui = user.mind.active_uis["spellcraft_star"]
 		ui.remove_from_client()
+		user.mind.active_uis -= "spellcraft_star"
 		qdel(ui)
 		return
 	else
@@ -82,4 +83,10 @@
 	if(ismob(old_loc))
 		var/mob/living/mob = old_loc
 		mob.put_in_hands(newbook)
+	var/datum/visual_ui/spellcraft_star/ui
+	if("spellcraft_star" in user.mind.active_uis)
+		ui = user.mind.active_uis["spellcraft_star"]
+		ui.remove_from_client()
+		user.mind.active_uis -= "spellcraft_star"
+		qdel(ui)
 	return newbook

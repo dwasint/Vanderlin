@@ -543,6 +543,7 @@ GLOBAL_LIST_EMPTY(linked_recipe_cache)
 		/datum/book_entry/grimoire,
 		/datum/book_entry/attunement,
 		/datum/book_entry/mana_sources,
+		/datum/spellcraft_contribution,
 		/datum/arcyne_crafting_recipe,
 		/datum/repeatable_crafting_recipe/arcyne,
 		/datum/blueprint_recipe/arcyne,
