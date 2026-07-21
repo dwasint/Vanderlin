@@ -1,5 +1,3 @@
-/// Cached mapping of armor type path (string) -> list of /obj/item type paths (string) that default to that armor
-GLOBAL_VAR_INIT(armor_item_usage_built, FALSE)
 GLOBAL_LIST_EMPTY(armor_item_usage)
 
 /**
@@ -7,7 +5,7 @@ GLOBAL_LIST_EMPTY(armor_item_usage)
  * This walks every item type in the game, so it's deliberately opt-in and cached because I genuinely do not see it being worth the cost normally
  */
 /proc/build_armor_item_usage_cache()
-	if(GLOB.armor_item_usage_built)
+	if(length(GLOB.armor_item_usage))
 		return
 	var/list/usage = list()
 	for(var/item_type in subtypesof(/obj/item))
@@ -19,7 +17,6 @@ GLOBAL_LIST_EMPTY(armor_item_usage)
 			usage[key] = list()
 		usage[key] += "[item_type]"
 	GLOB.armor_item_usage = usage
-	GLOB.armor_item_usage_built = TRUE
 
 /datum/armor_compare_menu
 
@@ -34,8 +31,11 @@ GLOBAL_LIST_EMPTY(armor_item_usage)
 
 /datum/armor_compare_menu/ui_data(mob/user)
 	var/list/data = list()
-	data["usage_built"] = GLOB.armor_item_usage_built
-	if(GLOB.armor_item_usage_built)
+	var/usage = FALSE
+	if(length(length(GLOB.armor_item_usage)))
+		usage = TRUE
+	data["usage_built"] = usage
+	if(usage)
 		data["item_usage"] = GLOB.armor_item_usage
 	return data
 
@@ -71,7 +71,7 @@ GLOBAL_LIST_EMPTY(armor_item_usage)
 		return
 	switch(action)
 		if("build_usage")
-			if(GLOB.armor_item_usage_built)
+			if(length(GLOB.armor_item_usage))
 				return
 			build_armor_item_usage_cache()
 			. = TRUE
