@@ -127,6 +127,8 @@
 	var/list/essences
 	/// Value summed from caster and spell attunements to adjust some spell effects.
 	var/attuned_strength
+	/// Flat magnitude bonus/penalty pulled from active form/technique modifiers (spell_modifier components), computed once per cast.
+	var/spell_magnitude_modifier = 0
 
 	// Pointed vars
 	// In the TG refactor these weren't a given but almost all our spells are pointed including most spell types.
@@ -431,43 +433,6 @@
 		SEND_SIGNAL(owner, COMSIG_MOB_ABILITY_FINISHED, src)
 	return target_val
 
-/// Adjust the base charge time based on the users stats
-/datum/action/cooldown/spell/proc/get_adjusted_charge_time()
-	if(charge_time <= 0)
-		return
-
-	var/mob/living/living_owner = owner
-	var/new_time = charge_time
-
-	new_time -= charge_time * GET_MOB_SKILL_VALUE_OLD(living_owner, associated_skill) * 0.05
-
-	var/owner_stat = living_owner.get_stat(associated_stat)
-	if(owner_stat > 10)
-		new_time -= charge_time * (owner_stat - 10) * 0.02
-	else
-		new_time += charge_time * (10 - owner_stat) * 0.02
-
-	return max(new_time, 1 DECISECONDS)
-
-/// Adjust the base spell cost based on the users stats
-/datum/action/cooldown/spell/proc/get_adjusted_cost(cost_override)
-	if(spell_cost <= 0 && !cost_override)
-		return
-
-	var/mob/living/living_owner = owner
-	var/new_cost = spell_cost
-	if(cost_override)
-		new_cost = cost_override
-
-	new_cost -= spell_cost * GET_MOB_SKILL_VALUE_OLD(living_owner, associated_skill) * 0.03
-
-	var/owner_stat = living_owner.get_stat(associated_stat)
-	if(owner_stat > 10)
-		new_cost -= spell_cost * (owner_stat - 10) * 0.02
-	else
-		new_cost += spell_cost * (10 - owner_stat) * 0.02
-
-	return max(new_cost, 0)
 
 /// Do any attunement handling in here or any time after before_cast
 /datum/action/cooldown/spell/proc/handle_attunements()
@@ -490,6 +455,73 @@
 		total_value += total_attunements[attunement] * attunements[attunement]
 
 	attuned_strength = clamp(total_value, 0.5, 2.5)
+
+/// Queries the owner for any active form/technique modifiers (from spell_modifier components)
+/// that apply to THIS spell, based on its required_form / required_technique.
+/// Returns list("cost" = mult, "castSpeed" = mult, "magnitude" = total) - defaults if nothing matches.
+/datum/action/cooldown/spell/proc/get_form_technique_modifiers()
+	var/list/result = list("cost" = 1, "castSpeed" = 1, "magnitude" = 0)
+	if(!owner)
+		return result
+
+	var/list/modifiers = list()
+	SEND_SIGNAL(owner, COMSIG_SPELL_REQUEST_MODIFIERS, modifiers)
+	if(!length(modifiers))
+		return result
+
+	for(var/list/entry in modifiers)
+		if(required_form && entry["form"] == required_form)
+			result["cost"] *= entry["cost"]
+			result["castSpeed"] *= entry["castSpeed"]
+			result["magnitude"] += entry["magnitude"]
+		if(required_technique && entry["technique"] == required_technique)
+			result["cost"] *= entry["cost"]
+			result["castSpeed"] *= entry["castSpeed"]
+			result["magnitude"] += entry["magnitude"]
+
+	return result
+
+/// Adjust the base spell cost based on the users stats
+/datum/action/cooldown/spell/proc/get_adjusted_cost(cost_override)
+	if(spell_cost <= 0 && !cost_override)
+		return
+
+	var/mob/living/living_owner = owner
+	var/new_cost = spell_cost
+	if(cost_override)
+		new_cost = cost_override
+
+	new_cost -= spell_cost * GET_MOB_SKILL_VALUE_OLD(living_owner, associated_skill) * 0.03
+
+	var/owner_stat = living_owner.get_stat(associated_stat)
+	if(owner_stat > 10)
+		new_cost -= spell_cost * (owner_stat - 10) * 0.02
+	else
+		new_cost += spell_cost * (10 - owner_stat) * 0.02
+
+	new_cost *= get_form_technique_modifiers()["cost"]
+
+	return max(new_cost, 0)
+
+/// Adjust the base charge time based on the users stats
+/datum/action/cooldown/spell/proc/get_adjusted_charge_time()
+	if(charge_time <= 0)
+		return
+
+	var/mob/living/living_owner = owner
+	var/new_time = charge_time
+
+	new_time -= charge_time * GET_MOB_SKILL_VALUE_OLD(living_owner, associated_skill) * 0.05
+
+	var/owner_stat = living_owner.get_stat(associated_stat)
+	if(owner_stat > 10)
+		new_time -= charge_time * (owner_stat - 10) * 0.02
+	else
+		new_time += charge_time * (10 - owner_stat) * 0.02
+
+	new_time *= get_form_technique_modifiers()["castSpeed"]
+
+	return max(new_time, 1 DECISECONDS)
 
 /// Checks if the owner of the spell can currently cast it.
 /// Does not check anything involving potential targets.
@@ -611,6 +643,8 @@
 
 	if(length(attunements))
 		handle_attunements()
+
+	spell_magnitude_modifier = get_form_technique_modifiers()["magnitude"]
 
 	// Actually cast the spell. Main effects go here
 	cast(target)

@@ -24,6 +24,9 @@
 
 	var/mana_required
 
+	var/spell_form
+	var/spell_technique
+
 /datum/component/uses_mana/Initialize(
 	datum/callback/activate_check_failure_callback,
 	datum/callback/get_user_callback,
@@ -32,6 +35,8 @@
 	post_use_comsig,
 	datum/callback/mana_required,
 	list/datum/attunement/attunements,
+	spell_form,
+	spell_technique,
 )
 	. = ..()
 
@@ -54,6 +59,9 @@
 	src.pre_use_check_with_feedback_comsig = pre_use_check_with_feedback_comsig
 	src.post_use_comsig = post_use_comsig
 
+	src.spell_form = spell_form
+	src.spell_technique = spell_technique
+
 
 /datum/component/uses_mana/RegisterWithParent()
 	. = ..()
@@ -67,11 +75,63 @@
 	UnregisterSignal(parent, pre_use_check_with_feedback_comsig)
 	UnregisterSignal(parent, post_use_comsig)
 
+/// Broadcasts to the caster and collects any active form/technique modifier entries.
+/datum/component/uses_mana/proc/get_active_modifiers()
+	var/mob/user = get_parent_user()
+	if(isnull(user))
+		return null
+
+	var/list/modifiers = list()
+	SEND_SIGNAL(user, COMSIG_SPELL_REQUEST_MODIFIERS, modifiers)
+	return modifiers
+
+/// Multiplies together every cost multiplier from equipped spell_modifier sources that match our form/technique.
+/datum/component/uses_mana/proc/get_cost_multiplier()
+	var/list/modifiers = get_active_modifiers()
+	if(!length(modifiers))
+		return 1
+
+	var/mult = 1
+	for(var/list/entry in modifiers)
+		if(spell_form && entry["form"] == spell_form)
+			mult *= entry["cost"]
+		if(spell_technique && entry["technique"] == spell_technique)
+			mult *= entry["cost"]
+	return mult
+
+/// Convenience for spell code that wants the cast-speed side of the same broadcast.
+/datum/component/uses_mana/proc/get_cast_speed_multiplier()
+	var/list/modifiers = get_active_modifiers()
+	if(!length(modifiers))
+		return 1
+
+	var/mult = 1
+	for(var/list/entry in modifiers)
+		if(spell_form && entry["form"] == spell_form)
+			mult *= entry["castSpeed"]
+		if(spell_technique && entry["technique"] == spell_technique)
+			mult *= entry["castSpeed"]
+	return mult
+
+/// Convenience for spell code that wants the magnitude side of the same broadcast.
+/datum/component/uses_mana/proc/get_magnitude_modifier()
+	var/list/modifiers = get_active_modifiers()
+	if(!length(modifiers))
+		return 0
+
+	var/total = 0
+	for(var/list/entry in modifiers)
+		if(spell_form && entry["form"] == spell_form)
+			total += entry["magnitude"]
+		if(spell_technique && entry["technique"] == spell_technique)
+			total += entry["magnitude"]
+	return total
+
 // TODO: Do I need the vararg?
 /// Should return the numerical value of mana needed to use whatever it is we're using. Unaffected by attunements.
-/datum/component/uses_mana/proc/get_mana_required(atom/caster, ...) // Get the mana required to cast the spell.
+/datum/component/uses_mana/proc/get_mana_required(atom/caster, ...)
 	if (!isnull(get_mana_required_callback))
-		return get_mana_required_callback?.Invoke(arglist(args))
+		return get_mana_required_callback?.Invoke(arglist(args)) * get_cost_multiplier()
 
 	var/required = 0
 
@@ -79,7 +139,7 @@
 		required = mana_required
 	else
 		return stack_trace("Both the Callback and value for mana required is null!")
-	return required
+	return required * get_cost_multiplier()
 
 /datum/component/uses_mana/proc/get_mana_to_use()
 	var/atom/movable/caster = get_parent_user()

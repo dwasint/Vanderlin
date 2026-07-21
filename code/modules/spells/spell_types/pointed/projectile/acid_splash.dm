@@ -41,6 +41,8 @@
 	sound = 'sound/vo/vomit.ogg'
 	charge_sound = null
 
+	required_form = null
+
 	associated_skill = null
 
 	invocation_type = INVOCATION_EMOTE
