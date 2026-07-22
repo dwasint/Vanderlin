@@ -29,17 +29,23 @@
 	blacklisted_species = list(SPEC_ID_HALFLING)
 	exp_types_granted = list(EXP_TYPE_MERCENARY, EXP_TYPE_COMBAT, EXP_TYPE_MAGICK)
 	magic_user = TRUE
-	spell_points = 5
+	form_points = 7
+	technique_points = 2
 
 	attribute_sheet = /datum/attribute_holder/sheet/job/spellsword
 
 	spells = list(
-		/datum/action/cooldown/spell/undirected/touch/prestidigitation
+		/datum/action/cooldown/spell/undirected/touch/prestidigitation,
+		/datum/action/cooldown/spell/bind_weapon,
+		/datum/action/cooldown/spell/recall_weapon,
+		/datum/action/cooldown/spell/empower_weapon,
+		/datum/action/cooldown/spell/essence/mend/spell,
 	)
 
 /datum/job/advclass/mercenary/spellsword/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
 	spawned.merctype = 9
+	spawned.adjust_technique_mastery_points(3, FALSE, TECHNIQUE_IMBUE)
 
 /datum/outfit/mercenary/spellsword
 	name = "Spellsword (Mercenary)"

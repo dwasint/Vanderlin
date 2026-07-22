@@ -64,3 +64,11 @@
 	else
 		to_chat(user, span_warning("My concentration breaks! I could not repair [I]."))
 	return FALSE
+
+/datum/action/cooldown/spell/essence/mend/spell
+	spell_cost = 40
+	spell_type = SPELL_MANA
+	cooldown_time = 3 MINUTES
+
+	required_form = FORM_EARTH
+	required_technique = TECHNIQUE_RESTORATION

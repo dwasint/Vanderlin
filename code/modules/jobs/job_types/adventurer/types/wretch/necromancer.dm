@@ -23,7 +23,8 @@
 	total_positions = 1
 	exp_types_granted = list(EXP_TYPE_COMBAT, EXP_TYPE_MAGICK)
 	allowed_patrons = list(/datum/patron/inhumen/zizo)
-	spell_points = 7
+	form_points = 5
+	technique_points = 3
 	languages = list(/datum/language/undead)
 	faction = FACTION_CABAL
 
