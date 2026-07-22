@@ -108,10 +108,15 @@
 	// Since this wasn't bought via try_learn_spell(), bump the lifetime totals
 	// so recalculate_unspent_points() doesn't dock the player for a spell
 	// they never paid points for.
-	if(spell.required_form)
-		adjust_form_points(1)
-	if(spell.required_technique)
-		adjust_technique_points(1)
+	var/req_form = spell.required_form
+	var/req_technique = spell.required_technique
+
+	if(req_form)
+		form_levels[req_form] = get_form_level(req_form) + 1
+		initial_form_points += 1
+	if(req_technique)
+		technique_levels[req_technique] = get_technique_level(req_technique) + 1
+		initial_technique_points += 1
 
 	recalculate_unspent_points()
 	return TRUE
