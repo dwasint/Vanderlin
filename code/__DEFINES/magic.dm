@@ -240,14 +240,14 @@ GLOBAL_LIST_INIT(mastery_rank_names, list(
 ))
 
 GLOBAL_LIST_INIT(form_colors, list(
-	FORM_FIRE = "#FF4500",        // Orange-red
-	FORM_ICE = "#00BFFF",         // Deep sky blue
-	FORM_LIGHTNING = "#FFD700",    // Gold/yellow
-	FORM_WATER = "#00158b",       // Dark red
-	FORM_LIFE = "#32CD32",        // Lime green
-	FORM_DEATH = "#800080",       // Purple
-	FORM_EARTH = "#8B4513",       // Saddle brown
-	FORM_AIR = "#C0C0C0",        // Silver
+	FORM_FIRE = "#FF4500",
+	FORM_ICE = "#00BFFF",
+	FORM_LIGHTNING = "#FFD700",
+	FORM_WATER = "#00158b",
+	FORM_LIFE = "#32CD32",
+	FORM_DEATH = "#800080",
+	FORM_EARTH = "#8B4513",
+	FORM_AIR = "#C0C0C0",
 	FORM_ARCANE = "#9932CC"
 ))
 
