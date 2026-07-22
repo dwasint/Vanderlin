@@ -480,7 +480,7 @@
 	else
 		new_time += charge_time * (10 - owner_stat) * 0.02
 
-	new_time *= get_form_technique_modifiers()["castSpeed"]
+	new_time /= get_form_technique_modifiers()["castSpeed"]
 
 	return max(new_time, 1 DECISECONDS)
 
