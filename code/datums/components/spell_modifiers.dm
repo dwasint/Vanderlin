@@ -38,7 +38,7 @@
 
 /datum/component/spell_modifier/proc/on_equipped(datum/source, mob/user)
 	SIGNAL_HANDLER
-	RegisterSignal(user, COMSIG_SPELL_REQUEST_MODIFIERS, PROC_REF(on_request_modifiers))
+	RegisterSignal(user, COMSIG_SPELL_REQUEST_MODIFIERS, PROC_REF(on_request_modifiers), override = TRUE)
 
 /datum/component/spell_modifier/proc/on_dropped(datum/source, mob/user)
 	SIGNAL_HANDLER

@@ -65,6 +65,7 @@
 
 /datum/action/cooldown/spell/conjure_summon/raise_lesser_undead/necromancer
 	name = "Lesser Necromancy"
+	desc = "Summons a temporary spectral skeleton to aid you."
 	spell_type = SPELL_MANA
 	antimagic_flags = MAGIC_RESISTANCE
 	associated_skill = /datum/attribute/skill/magic/arcane

@@ -48,8 +48,6 @@
 	src.owner = owner
 	if(contained_source)
 		register_parent(contained_source)
-	adjust_technique_points(3)
-	adjust_form_points(3)
 
 /datum/spell_mastery/Destroy(force)
 	remove_spells()

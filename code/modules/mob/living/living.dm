@@ -3133,7 +3133,6 @@
 
 	mana_pool?.get_mastery().adjust_form_mastery_points(points, used_points, specific_form)
 
-
 /mob/proc/adjust_technique_mastery_points(points, used_points = FALSE, specific_technique = null)
 	return
 

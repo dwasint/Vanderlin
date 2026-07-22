@@ -51,15 +51,54 @@
 	/// Multiplier for spell points gained per read. Higher = better book.
 	var/bookquality = 3
 	var/datum/spell_mastery/mastery
+	/// If set, this book is specialized in one form and gets bonus points + spell buffs for it
+	var/themed_form = null
+	/// Total innate points this book grants toward its form track on creation
+	var/base_form_points = 0
+	/// Total innate points this book grants toward the (generic) technique pool on creation
+	var/base_technique_points = 0
+	/// Cost multiplier for spells of themed_form (below 1 = cheaper)
+	var/themed_cost_multiplier = 1
+	var/themed_cast_speed_multiplier = 1
+	/// Flat magnitude addition for spells of themed_form
+	var/themed_magnitude_bonus = 0
+
+	var/list/designlist = list("green", "yellow", "brown")
 
 /obj/item/book/granter/spellbook/Initialize()
 	. = ..()
 	mastery = new /datum/spell_mastery(null, src)
+	apply_themed_bonuses()
+	if(length(designlist) == 1)
+		base_icon_state = "spellbook[designlist[1]]"
+		update_appearance(UPDATE_ICON_STATE)
+		picked = TRUE
 
 /obj/item/book/granter/spellbook/proc/get_or_make_mastery()
 	if(!mastery)
 		mastery = new /datum/spell_mastery(null, src)
 	return mastery
+
+
+/obj/item/book/granter/spellbook/proc/apply_themed_bonuses()
+	if(base_form_points > 0)
+		if(themed_form)
+			var/themed_amount = CEILING(base_form_points * 0.5, 1)
+			var/generic_amount = base_form_points - themed_amount
+			mastery.adjust_form_mastery_points(themed_amount, FALSE, themed_form)
+			if(generic_amount)
+				mastery.adjust_form_points(generic_amount)
+		else
+			mastery.adjust_form_points(base_form_points)
+
+	if(base_technique_points > 0)
+		mastery.adjust_technique_points(base_technique_points)
+
+	if(themed_form && (themed_cost_multiplier != 1 || themed_cast_speed_multiplier != 1 || themed_magnitude_bonus != 0))
+		AddComponent(/datum/component/spell_modifier, \
+			list("[themed_form]" = themed_cost_multiplier), \
+			list("[themed_form]" = themed_cast_speed_multiplier), \
+			list("[themed_form]" = themed_magnitude_bonus))
 
 // ============================================================
 // VISUAL / OPEN STATE
@@ -123,10 +162,6 @@
 /obj/item/book/granter/spellbook/attack_hand_secondary(mob/user, list/modifiers)
 	//first pick styles
 	if(!picked)
-		var/list/designlist = list("green", "yellow", "brown")
-		var/mob/living/carbon/human/gamer = user
-		if(gamer.job == JOB_COURT_MAGE)
-			designlist = list("steel", "gem", "skin", "mimic")
 		var/the_time = world.time
 		var/design = input(user, "Select a design.", "Spellbook Design") as null|anything in designlist
 		if(!design || world.time > (the_time + 30 SECONDS))
@@ -314,3 +349,101 @@
 	desc = "An incredible book that gives off glowing arcyne motes, it is filled with runes and arcyne theories that is hard for even masters of arcyne to understand. The arcyne script glows and practically whispers from the page..."
 	bookquality = 12
 	sellprice = 400
+
+/obj/item/book/granter/spellbook/expert/fire
+	name = "expert tome of the arcyne, aflame"
+	desc = "A well cared for book, shining brightly with arcyne. Faint heat radiates from its pages, and its runes are all subtly singed."
+	themed_form = FORM_FIRE
+	base_form_points = 7
+	base_technique_points = 3
+	themed_cost_multiplier = 0.85
+	themed_cast_speed_multiplier = 1.3
+	themed_magnitude_bonus = 0.1
+	designlist = list("steel")
+
+/obj/item/book/granter/spellbook/expert/ice
+	name = "expert tome of the arcyne, frostbound"
+	desc = "A well cared for book, shining brightly with arcyne. Its pages are cool to the touch, rimed with a frost that never quite melts."
+	themed_form = FORM_ICE
+	base_form_points = 7
+	base_technique_points = 3
+	themed_cost_multiplier = 0.85
+	themed_cast_speed_multiplier = 1.3
+	themed_magnitude_bonus = 0.1
+
+/obj/item/book/granter/spellbook/expert/lightning
+	name = "expert tome of the arcyne, storm-charged"
+	desc = "A well cared for book, shining brightly with arcyne. Tiny sparks crawl between its runes whenever the cover is opened."
+	themed_form = FORM_LIGHTNING
+	base_form_points = 7
+	base_technique_points = 3
+	themed_cost_multiplier = 0.85
+	themed_cast_speed_multiplier = 1.3
+	themed_magnitude_bonus = 0.1
+	designlist = list("steel")
+
+/obj/item/book/granter/spellbook/expert/earth
+	name = "expert tome of the arcyne, stoneveined"
+	desc = "A well cared for book, shining brightly with arcyne. Its binding is threaded with fine mineral veins, heavy as river stone."
+	themed_form = FORM_EARTH
+	base_form_points = 7
+	base_technique_points = 3
+	themed_cost_multiplier = 0.85
+	themed_cast_speed_multiplier = 1.3
+	themed_magnitude_bonus = 0.1
+	designlist = list("steel")
+
+/obj/item/book/granter/spellbook/expert/arcane
+	name = "expert tome of the arcyne, thrice-warded"
+	desc = "A well cared for book, shining brightly with arcyne. Its script folds in on itself in ways the eye struggles to follow."
+	themed_form = FORM_ARCANE
+	base_form_points = 7
+	base_technique_points = 3
+	themed_cost_multiplier = 0.85
+	themed_cast_speed_multiplier = 1.3
+	themed_magnitude_bonus = 0.1
+	designlist = list("gem")
+
+/obj/item/book/granter/spellbook/expert/death
+	name = "expert tome of the arcyne, grave-touched"
+	desc = "A well cared for book, shining brightly with arcyne. A faint chill of the grave lingers about its pages."
+	themed_form = FORM_DEATH
+	base_form_points = 7
+	base_technique_points = 3
+	themed_cost_multiplier = 0.85
+	themed_cast_speed_multiplier = 1.3
+	themed_magnitude_bonus = 0.1
+	designlist = list("skin")
+
+/obj/item/book/granter/spellbook/expert/life
+	name = "expert tome of the arcyne, verdant"
+	desc = "A well cared for book, shining brightly with arcyne. Its margins are traced with fine, living green filigree."
+	themed_form = FORM_LIFE
+	base_form_points = 7
+	base_technique_points = 3
+	themed_cost_multiplier = 0.85
+	themed_cast_speed_multiplier = 1.3
+	themed_magnitude_bonus = 0.1
+	designlist = list("mimic")
+
+/obj/item/book/granter/spellbook/expert/air
+	name = "expert tome of the arcyne, windswept"
+	desc = "A well cared for book, shining brightly with arcyne. Its pages riffle gently even in still air."
+	themed_form = FORM_AIR
+	base_form_points = 7
+	base_technique_points = 3
+	themed_cost_multiplier = 0.85
+	themed_cast_speed_multiplier = 1.3
+	themed_magnitude_bonus = 0.1
+	designlist = list("steel")
+
+/obj/item/book/granter/spellbook/expert/water
+	name = "expert tome of the arcyne, tidebound"
+	desc = "A well cared for book, shining brightly with arcyne. Condensation beads along its cover no matter how dry the room."
+	themed_form = FORM_WATER
+	base_form_points = 7
+	base_technique_points = 3
+	themed_cost_multiplier = 0.85
+	themed_cast_speed_multiplier = 1.3
+	themed_magnitude_bonus = 0.1
+	designlist = list("steel")

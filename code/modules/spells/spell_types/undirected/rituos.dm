@@ -80,7 +80,9 @@
 	if(!length(get_unskeletonized_bodyparts(cast_on)))
 		cast_on.adjust_stat_modifier(STATMOD_RITUAL, list(/datum/attribute/skill/magic/arcane = 30))
 		cast_on.add_spell(/datum/action/cooldown/spell/undirected/touch/prestidigitation, mastery_spell = TRUE)
-		cast_on.adjust_spell_points(18)
+		//! MAGIC BALANCE POINT
+		cast_on.adjust_form_mastery_points(20)
+		cast_on.adjust_technique_mastery_points(12)
 		cast_on.visible_message(
 			span_boldwarning("[cast_on]'s form swells with terrible power as they cast away almost all of \
 			the remnants of their mortal flesh, arcyne runes glowing upon their exposed bones..."),

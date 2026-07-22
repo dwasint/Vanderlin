@@ -61,7 +61,6 @@
 	cmode_music = 'sound/music/cmode/nobility/CombatCourtMagician.ogg'
 	allowed_patrons = list(/datum/patron/divine/noc, /datum/patron/inhumen/zizo)
 	magic_user = TRUE
-	spell_points = 17
 	attunements_max = 6
 	attunements_min = 4
 	job_bitflag = BITFLAG_ROYALTY
@@ -74,6 +73,8 @@
 		/datum/action/cooldown/spell/undirected/jaunt/ethereal_jaunt,
 		/datum/action/cooldown/spell/undirected/touch/prestidigitation,
 	)
+
+	form_points = 4
 
 	exp_type = list(EXP_TYPE_ADVENTURER, EXP_TYPE_LIVING, EXP_TYPE_MAGICK)
 	exp_types_granted = list(EXP_TYPE_NOBLE, EXP_TYPE_MAGICK, EXP_TYPE_ADVENTURER)
@@ -106,6 +107,20 @@
 
 	if(spawned.gender == MALE && spawned.dna?.species  && spawned.dna.species.id != SPEC_ID_MEDICATOR)
 		spawned.dna.species.soundpack_m = new /datum/voicepack/male/wizard()
+
+	var/list/selectable_books = list(
+		"Blazing Tome (Fire)" = /obj/item/book/granter/spellbook/expert/fire,
+		"Frostbound Tome (Ice)" = /obj/item/book/granter/spellbook/expert/ice,
+		"Storm-Charged Tome (Lightning)" = /obj/item/book/granter/spellbook/expert/lightning,
+		"Stoneveined Tome (Earth)" = /obj/item/book/granter/spellbook/expert/earth,
+		"Thrice-Warded Tome (Arcane)" = /obj/item/book/granter/spellbook/expert/arcane,
+		"Grave-Touched Tome (Death)" = /obj/item/book/granter/spellbook/expert/death,
+		"Verdant Tome (Life)" = /obj/item/book/granter/spellbook/expert/life,
+		"Windswept Tome (Air)" = /obj/item/book/granter/spellbook/expert/air,
+		"Tidebound Tome (Water)" = /obj/item/book/granter/spellbook/expert/water,
+	)
+
+	INVOKE_ASYNC(src, PROC_REF(grant_selected_spellbooks), spawned, selectable_books, 2)
 
 /datum/job/magician/on_roundstart(mob/living/spawned, client/player_client)
 	. = ..()
@@ -141,7 +156,6 @@
 		/obj/item/scrying = 1,
 		/obj/item/chalk = 1,
 		/obj/item/reagent_containers/glass/bottle/killersice = 1,
-		/obj/item/book/granter/spellbook/master = 1,
 		/obj/item/weapon/knife/dagger/silver/arcyne = 1,
 		/obj/item/storage/keyring/mage = 1
 	)

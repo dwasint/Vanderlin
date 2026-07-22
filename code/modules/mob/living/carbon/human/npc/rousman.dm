@@ -641,7 +641,10 @@ GLOBAL_LIST_EMPTY(rousman_ambush_objects)
 		/datum/action/cooldown/spell/sundering_lightning,
 	)
 
-	seer.adjust_spell_points(17)
+	//! MAGIC BALANCE POINT
+	ADD_TRAIT(seer, TRAIT_SORCERER, INNATE_TRAIT)
+	seer.adjust_technique_mastery_points(12)
+	seer.adjust_form_mastery_points(20)
 	seer.generate_random_attunements(rand(4,6))
 	seer.mana_pool.set_intrinsic_recharge(MANA_ALL_LEYLINES)
 	seer.mana_pool.adjust_mana(100)
