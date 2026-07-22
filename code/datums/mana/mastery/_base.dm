@@ -90,6 +90,33 @@
 	book.ui_interact(user)
 
 /**
+ * Grants a spell directly, bypassing the normal spendable-point cost check.
+ * Use this for innate/bonus spells (quest rewards, traits, etc.) rather than
+ * mutating unlocked_spells/granted_actions directly.
+ */
+/datum/spell_mastery/proc/grant_bonus_spell(datum/action/cooldown/spell/spell, mob/living/user)
+	if(!istype(spell) || !user)
+		return FALSE
+
+	var/spell_path = spell.type
+	if(spell_path in unlocked_spells)
+		return FALSE
+
+	unlocked_spells += spell_path
+	granted_actions[spell_path] = spell
+
+	// Since this wasn't bought via try_learn_spell(), bump the lifetime totals
+	// so recalculate_unspent_points() doesn't dock the player for a spell
+	// they never paid points for.
+	if(spell.required_form)
+		adjust_form_points(1)
+	if(spell.required_technique)
+		adjust_technique_points(1)
+
+	recalculate_unspent_points()
+	return TRUE
+
+/**
  * Instantiates the singleton spell action and grants it to the user.
  * Triggered when the parent item is equipped.
  */

@@ -464,9 +464,9 @@ GLOBAL_LIST_INIT(ritualslist, build_zizo_rituals())
 	if(!target)
 		return
 	target.set_faction(list(FACTION_UNDEAD))
-	target.add_spell(/datum/action/cooldown/spell/gravemark)
-	target.add_spell(/datum/action/cooldown/spell/control_undead)
-	target.add_spell(/datum/action/cooldown/spell/decompose)
+	target.add_spell(/datum/action/cooldown/spell/gravemark, mastery_spell = TRUE)
+	target.add_spell(/datum/action/cooldown/spell/control_undead, mastery_spell = TRUE)
+	target.add_spell(/datum/action/cooldown/spell/decompose, mastery_spell = TRUE)
 	to_chat(target, span_notice("The undead bow down to my will."))
 
 /datum/ritual/fleshcrafting/arcane

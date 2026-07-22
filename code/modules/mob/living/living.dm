@@ -3024,7 +3024,7 @@
 	if(QDELETED(src))
 		return
 
-	var/datum/action/cooldown/spell = get_spell(spell_type, TRUE)
+	var/datum/action/cooldown/spell/spell = get_spell(spell_type, TRUE)
 	if(spell)
 		if(!override)
 			return
@@ -3041,10 +3041,9 @@
 		to_chat(src, span_nicegreen("I learnt [spell.name]!"))
 
 	spell.Grant(src)
-	if(mastery_spell)
+	if(mastery_spell && spell.required_form)
 		var/datum/spell_mastery/mastery = mana_pool?.get_mastery()
-		mastery?.unlocked_spells |= spell.type
-		mastery?.granted_actions += spell
+		mastery?.grant_bonus_spell(spell, src)
 
 /mob/living/proc/remove_spell(datum/action/cooldown/spell/spell, return_skill_points = FALSE, silent = TRUE)
 	if(QDELETED(src))
