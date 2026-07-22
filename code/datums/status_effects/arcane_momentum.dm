@@ -43,7 +43,6 @@
 		UnregisterSignal(owner, list(COMSIG_HUMAN_MELEE_UNARMED_ATTACK, COMSIG_MOB_ITEM_ATTACK))
 	if(is_overcharged)
 		owner.cut_overlay(electricity_overlay)
-	owner.clear_fullscreen("momentum_strain")
 	owner.remove_filter(MOMENTUM_FILTER)
 	. = ..()
 
