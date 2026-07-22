@@ -194,7 +194,7 @@
 		UnregisterSignal(vessel, list(COMSIG_LIVING_DEATH, COMSIG_QDELETING, COMSIG_MOVABLE_MOVED))
 	if(body)
 		UnregisterSignal(body, list(COMSIG_MOB_APPLY_DAMAGE, COMSIG_LIVING_DEATH, COMSIG_MOVABLE_MOVED))
-		REMOVE_TRAIT(body, TRAIT_NOSLEEP, "spirit_projection")
+		REMOVE_TRAIT(body, TRAIT_SLEEPIMMUNE, "spirit_projection")
 		REMOVE_TRAIT(body, TRAIT_NOBREATH, "spirit_projection")
 		REMOVE_TRAIT(body, TRAIT_NOHUNGER, "spirit_projection")
 		REMOVE_TRAIT(body, TRAIT_NOMOOD, "spirit_projection")
