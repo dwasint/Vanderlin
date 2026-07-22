@@ -290,10 +290,10 @@ GLOBAL_LIST_INIT(all_forms, list(
 #define SPELL_RANGE_AURA 4 // For 'warcry' type miracles or AOE BUFFS originating on the caster
 #define SPELL_RANGE_ADJACENT 1 // Self explanatory
 
-#define SPELL_IMPACT_NONE   0  // No impact visual
-#define SPELL_IMPACT_LOW    1  // 2 wisps — minor pokes, utility
-#define SPELL_IMPACT_MEDIUM 2  // 4 wisps — staple projectiles, soulshot
-#define SPELL_IMPACT_HIGH   3  // 6 wisps — big hits, fireball, boulder
+#define SPELL_IMPACT_NONE 0
+#define SPELL_IMPACT_LOW 1
+#define SPELL_IMPACT_MEDIUM 2
+#define SPELL_IMPACT_HIGH 3
 
 #define CONJURE_RECOIL_LIGHT 0
 #define CONJURE_RECOIL_PARTIAL 1
