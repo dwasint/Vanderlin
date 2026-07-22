@@ -1542,6 +1542,7 @@
 #include "code\datums\rituals\runes\arcane\greater_wall.dm"
 #include "code\datums\rituals\runes\arcane\knowledge.dm"
 #include "code\datums\rituals\runes\arcane\leylines.dm"
+#include "code\datums\rituals\runes\arcane\recharging.dm"
 #include "code\datums\rituals\runes\arcane\spell_imbuement.dm"
 #include "code\datums\rituals\runes\arcane\summoning.dm"
 #include "code\datums\rituals\runes\arcane\teleport.dm"
