@@ -4,11 +4,6 @@
 	button_icon_state = "prestidigitation"
 	can_cast_on_self = TRUE
 
-	point_cost = 1
-	attunements = list(
-		/datum/attunement/illusion = 0.4,
-	)
-
 	required_form = FORM_EARTH
 	required_technique = TECHNIQUE_ILLUSION
 
@@ -21,7 +16,7 @@
 	charges = 2
 
 /datum/action/cooldown/spell/undirected/touch/non_detection/adjust_hand_charges()
-	charges += FLOOR(attuned_strength * 1.5, 1)
+	charges += FLOOR(spell_magnitude_modifier * 1.5, 1)
 
 /datum/action/cooldown/spell/undirected/touch/non_detection/is_valid_target(atom/cast_on)
 	. = ..()

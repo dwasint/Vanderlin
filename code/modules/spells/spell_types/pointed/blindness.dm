@@ -4,10 +4,6 @@
 	button_icon_state = "blindness"
 	sound = 'sound/magic/churn.ogg'
 
-	attunements = list(
-		/datum/attunement/arcyne = 0.1
-	)
-
 	required_form = FORM_ARCANE
 	required_technique = TECHNIQUE_ILLUSION
 

@@ -1,32 +1,3 @@
-// Magic schools
-
-/// Unset / default / "not actually magic" school.
-#define SCHOOL_UNSET "unset"
-
-// GOOD SCHOOLS (allowed by honorbound gods, some of these you can get on station)
-/// Holy school (chaplain magic)
-#define SCHOOL_HOLY "holy"
-/// Mime... school? Mime magic. It counts
-#define SCHOOL_MIME "mime"
-/// Restoration school, which is mostly healing stuff
-#define SCHOOL_RESTORATION "restoration"
-
-// NEUTRAL SPELLS (punished by honorbound gods if you get caught using it)
-/// Evocation school, usually involves killing or destroy stuff, usually out of thin air
-#define SCHOOL_EVOCATION "evocation"
-/// School of transforming stuff into other stuff
-#define SCHOOL_TRANSMUTATION "transmutation"
-/// School of transolcation, usually movement spells
-#define SCHOOL_TRANSLOCATION "translocation"
-/// Conjuration spells summon items / mobs / etc somehow
-#define SCHOOL_CONJURATION "conjuration"
-
-// EVIL SPELLS (instant smite + banishment)
-/// Necromancy spells, usually involves soul / evil / bad stuff
-#define SCHOOL_NECROMANCY "necromancy"
-/// Other forbidden magics, such as heretic spells
-#define SCHOOL_FORBIDDEN "forbidden"
-
 #define NO_MANA_POOL (1<<0)
 #define MANA_POOL_FULL (1<<1)
 
@@ -202,6 +173,7 @@ DEFINE_BITFIELD(spell_requirements, list(
 	"SPELL_REQUIRES_NO_MOVE" = SPELL_REQUIRES_NO_MOVE,
 	"SPELL_REQUIRES_STATION" = SPELL_REQUIRES_STATION,
 	"SPELL_REQUIRES_WIZARD_GARB" = SPELL_REQUIRES_WIZARD_GARB,
+	"SPELL_REQUIRES_SAME_Z" = SPELL_REQUIRES_SAME_Z,
 ))
 
 /**

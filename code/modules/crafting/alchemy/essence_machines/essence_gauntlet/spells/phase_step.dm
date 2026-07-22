@@ -3,8 +3,6 @@
 	desc = "Allows brief passage through solid objects."
 	button_icon_state = "deathdoor"
 	cast_range = 0
-	point_cost = 6
-	attunements = list(/datum/attunement/aeromancy)
 	essences = list(/datum/thaumaturgical_essence/motion)
 	has_visual_effects = FALSE
 

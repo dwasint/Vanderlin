@@ -5,8 +5,6 @@
 	button_icon_state = "zad"
 	sound = 'sound/magic/whiteflame.ogg'
 
-	point_cost = 3
-
 	invocation = "B'ST FR'ND!"
 	invocation_type = INVOCATION_SHOUT
 
@@ -16,10 +14,6 @@
 	cooldown_time = 6 MINUTES
 	spell_cost = 30
 	spell_flags = SPELL_RITUOS
-
-	attunements = list(
-		/datum/attunement/arcyne = 0.4,
-	)
 
 	required_form = FORM_ARCANE
 	required_technique = TECHNIQUE_SUMMONING

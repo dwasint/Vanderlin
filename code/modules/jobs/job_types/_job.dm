@@ -145,12 +145,6 @@
 	/// Technique points to give/take to the mob
 	var/technique_points
 
-	/// Upper number of attunements to grant
-	var/attunements_max
-
-	/// Lower number of attunemnets to grant
-	var/attunements_min
-
 	var/banned_leprosy = TRUE
 	var/banned_lunatic = TRUE
 
@@ -378,7 +372,6 @@
 
 	add_spells(spawned)
 	spawned.adjust_spell_points(spell_points)
-	spawned.generate_random_attunements(rand(attunements_min, attunements_max))
 
 	if(form_points)
 		spawned.adjust_form_mastery_points(form_points)

@@ -134,7 +134,6 @@
 
 	required_form = NONE
 
-	school = SCHOOL_FORBIDDEN
 	cooldown_time = 30 SECONDS
 
 	invocation = "FR'ZE!"

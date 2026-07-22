@@ -11,9 +11,6 @@
 	antimagic_flags = MAGIC_RESISTANCE_HOLY
 	associated_skill = /datum/attribute/skill/magic/holy
 	required_items = list(/obj/item/clothing/neck/psycross/silver/divine/dendor)
-	attunements = list(
-		/datum/attunement/earth = 1,
-	)
 
 	required_form = FORM_EARTH
 	required_technique = TECHNIQUE_SUMMONING

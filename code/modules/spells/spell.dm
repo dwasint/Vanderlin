@@ -33,10 +33,6 @@
  * want to cancel a spell in before_cast and would like the cooldown restart, call this.
  *
  * ## Other procs of note:
- * - [level_spell][/datum/action/cooldown/spell/level_spell] is where the process of adding a spell level is handled.
- * this can be extended if you wish to add unique effects on level up for wizards.
- * - [delevel_spell][/datum/action/cooldown/spell/delevel_spell] is where the process of removing a spell level is handled.
- * this can be extended if you wish to undo unique effects on level up for wizards.
  * - [update_spell_name][/datum/action/cooldown/spell/update_spell_name] updates the prefix of the spell name based on its level.
  */
 
@@ -61,10 +57,6 @@
 
 	/// Variable for type of spell.
 	var/spell_type = SPELL_MANA
-	/// School of magic. (Might go unused)
-	var/school = SCHOOL_UNSET
-	/// Cost to learn this spell in the tree.
-	var/point_cost = 0
 	/// Cost to cast based on [spell_type].
 	var/spell_cost = 0
 
@@ -79,10 +71,6 @@
 
 	/// If the spell uses the wizard spell rank system, the cooldown reduction per rank of the spell
 	var/cooldown_reduction_per_rank = 0 SECONDS
-	/// The current spell level, if taken multiple times by a wizard
-	var/spell_level = 1
-	/// The max possible spell level
-	var/spell_max_level = 5
 
 	/// What is uttered when the user casts the spell.
 	var/invocation
@@ -121,12 +109,8 @@
 	///the color we use (overrides attunements for animate color)
 	var/spell_color
 
-	/// Assoc list of [datum/attunement] to value.
-	var/list/attunements
 	///list of essences we can use as a sub for cost
 	var/list/essences
-	/// Value summed from caster and spell attunements to adjust some spell effects.
-	var/attuned_strength
 	/// Flat magnitude bonus/penalty pulled from active form/technique modifiers (spell_modifier components), computed once per cast.
 	var/spell_magnitude_modifier = 0
 
@@ -433,29 +417,6 @@
 		SEND_SIGNAL(owner, COMSIG_MOB_ABILITY_FINISHED, src)
 	return target_val
 
-
-/// Do any attunement handling in here or any time after before_cast
-/datum/action/cooldown/spell/proc/handle_attunements()
-	SHOULD_CALL_PARENT(TRUE)
-
-	var/mob/living/caster = owner
-	var/list/datum/mana_pool/usable_pools = caster.get_all_pools()
-	var/list/total_attunements = GLOB.default_attunements.Copy()
-
-	for(var/datum/mana_pool/pool as anything in usable_pools)
-		for(var/negative_attunement in pool.negative_attunements)
-			total_attunements[negative_attunement] += pool.negative_attunements[negative_attunement]
-		for(var/attunement in pool.attunements)
-			total_attunements[attunement] += pool.attunements[attunement]
-
-	var/total_value = 1
-	for(var/datum/attunement/attunement as anything in attunements)
-		if(!(attunement in total_attunements))
-			continue
-		total_value += total_attunements[attunement] * attunements[attunement]
-
-	attuned_strength = clamp(total_value, 0.5, 2.5)
-
 /// Queries the owner for any active form/technique modifiers (from spell_modifier components)
 /// that apply to THIS spell, based on its required_form / required_technique.
 /// Returns list("cost" = mult, "castSpeed" = mult, "magnitude" = total) - defaults if nothing matches.
@@ -641,9 +602,6 @@
 		// That way stuff like teleports or shape-shifts can be invoked before ocurring
 		spell_feedback(owner)
 
-	if(length(attunements))
-		handle_attunements()
-
 	spell_magnitude_modifier = get_form_technique_modifiers()["magnitude"]
 
 	// Actually cast the spell. Main effects go here
@@ -825,7 +783,7 @@
 
 	if(has_visual_effects)
 		var/mob/living/caster = owner
-		caster.finish_spell_visual_effects(attunements, spell_color)
+		caster.finish_spell_visual_effects(spell_color)
 
 /// Provides feedback after a spell cast occurs, in the form of a cast sound and/or invocation
 /datum/action/cooldown/spell/proc/spell_feedback(mob/living/invoker)
@@ -873,7 +831,7 @@
 
 	if(has_visual_effects)
 		var/mob/living/caster = owner
-		caster.start_spell_visual_effects(attunements, spell_color)
+		caster.start_spell_visual_effects(spell_color)
 
 	if(charge_message)
 		owner.balloon_alert(owner, charge_message)
@@ -955,65 +913,9 @@
 	next_use_time -= cooldown_time // Basically, ensures that the ability can be used now
 	build_all_button_icons()
 
-// Spell level is unused currently, it could be used for attunement thresholds
-
-/**
- * Levels the spell up a single level, reducing the cooldown.
- * If bypass_cap is TRUE, will level the spell up past it's set cap.
- */
-/datum/action/cooldown/spell/proc/level_spell(bypass_cap = FALSE)
-	// Spell cannot be levelled
-	if(spell_max_level <= 1)
-		return FALSE
-
-	// Spell is at cap, and we will not bypass it
-	if(!bypass_cap && (spell_level >= spell_max_level))
-		return FALSE
-
-	spell_level++
-	cooldown_time = max(cooldown_time - cooldown_reduction_per_rank, 0)
-	build_all_button_icons(UPDATE_BUTTON_NAME)
-	return TRUE
-
-/**
- * Levels the spell down a single level, down to 1.
- */
-/datum/action/cooldown/spell/proc/delevel_spell()
-	// Spell cannot be levelled
-	if(spell_max_level <= 1)
-		return FALSE
-
-	if(spell_level <= 1)
-		return FALSE
-
-	spell_level--
-	if(cooldown_reduction_per_rank > 0 SECONDS)
-		cooldown_time = min(cooldown_time + cooldown_reduction_per_rank, initial(cooldown_time))
-	else
-		cooldown_time = max(cooldown_time + cooldown_reduction_per_rank, initial(cooldown_time))
-
-	build_all_button_icons(UPDATE_BUTTON_NAME)
-	return TRUE
-
 /datum/action/cooldown/spell/update_button_name(atom/movable/screen/movable/action_button/button, force)
-	name = "[get_spell_title()][initial(name)]"
+	name = "[initial(name)]"
 	return ..()
-
-/// Gets the title of the spell based on its level.
-/datum/action/cooldown/spell/proc/get_spell_title()
-	switch(spell_level)
-		if(2)
-			return "Efficient "
-		if(3)
-			return "Quickened "
-		if(4)
-			return "Free "
-		if(5)
-			return "Instant "
-		if(6)
-			return "Ludicrous "
-
-	return ""
 
 /// Check if the spell is castable by cost
 /datum/action/cooldown/spell/proc/check_cost(cost_override, feedback = TRUE)
@@ -1035,7 +937,7 @@
 
 	switch(spell_type)
 		if(SPELL_MANA)
-			if(!caster.has_mana_available(attunements, used_cost))
+			if(!caster.has_mana_available(used_cost))
 				if(feedback)
 					owner.balloon_alert(owner, "Not enough mana to cast!")
 				return FALSE
@@ -1127,7 +1029,7 @@
 	switch(used_type)
 		if(SPELL_MANA)
 			var/mob/living/caster = owner
-			caster.consume_mana(attunements, used_cost)
+			caster.consume_mana(used_cost)
 
 		if(SPELL_MIRACLE)
 			var/mob/living/carbon/human/H = owner
@@ -1150,7 +1052,7 @@
 				owner.balloon_alert(owner, "not enough essence!")
 				return
 
-			gaunt.consume_essence(used_cost, attunements)
+			gaunt.consume_essence(used_cost, essences)
 
 		if(SPELL_BLOOD)
 			var/mob/living/caster = owner

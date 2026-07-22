@@ -17,9 +17,6 @@
 	spell_type = SPELL_MIRACLE
 	antimagic_flags = MAGIC_RESISTANCE_HOLY
 	associated_skill = /datum/attribute/skill/magic/holy
-	attunements = list(
-		/datum/attunement/arcyne = 0.4,
-	)
 
 	self_cast_possible = FALSE
 

@@ -3053,11 +3053,6 @@
 	if(!real_spell)
 		return
 
-	if(return_skill_points)
-		used_spell_points = max(used_spell_points - real_spell.point_cost, 0)
-		spell_points = max(spell_points + real_spell.point_cost, 0)
-		check_learnspell()
-
 	if(!silent)
 		to_chat(src, span_boldwarning("I forgot [real_spell.name]!"))
 

@@ -6,11 +6,6 @@
 	charge_sound = 'sound/magic/charging_lightning.ogg'
 	click_to_activate = FALSE
 
-	point_cost = 4
-	attunements = list(
-		/datum/attunement/electric = 0.9
-	)
-
 	required_form = FORM_LIGHTNING
 	required_technique = TECHNIQUE_DESTRUCTION
 

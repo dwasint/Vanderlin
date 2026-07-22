@@ -61,8 +61,6 @@
 	cmode_music = 'sound/music/cmode/nobility/CombatCourtMagician.ogg'
 	allowed_patrons = list(/datum/patron/divine/noc, /datum/patron/inhumen/zizo)
 	magic_user = TRUE
-	attunements_max = 6
-	attunements_min = 4
 	job_bitflag = BITFLAG_ROYALTY
 	max_apprentices = 2
 	honorary = "Archmage"

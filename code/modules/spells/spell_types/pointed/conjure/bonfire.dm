@@ -4,8 +4,6 @@
 	button_icon_state = "create_campfire"
 	self_cast_possible = FALSE
 
-	point_cost = 1
-
 	sound = 'sound/magic/whiteflame.ogg'
 
 	charge_required = FALSE
@@ -14,6 +12,8 @@
 	spell_flags = SPELL_RITUOS
 	invocation = "Bonfire!"
 	invocation_type = INVOCATION_SHOUT
+
+	required_form = FORM_FIRE
 
 	summon_type = list(/obj/machinery/light/fueled/firebowl/church/magic)
 	summon_radius = 0

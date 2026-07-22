@@ -8,9 +8,6 @@
 	Being stunned, knocked down, or grabbed will break the channeling."
 	button_icon_state = "arcyne_barrage"
 	sound = 'sound/magic/vlightning.ogg'
-	attunements = list(
-		/datum/attunement/arcyne = 0.7,
-	)
 
 	click_to_activate = TRUE
 	cast_range = 21

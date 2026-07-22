@@ -5,8 +5,6 @@
 	button_icon_state = "magicians_brick"
 	sound = 'sound/magic/whiteflame.ogg'
 
-	point_cost = 1
-
 	cooldown_time = 5 SECONDS
 	spell_cost = 30
 
@@ -16,10 +14,6 @@
 	item_type = /obj/item/weapon/magicbrick
 	item_duration = 3 MINUTES
 	item_outline = "#6495ED"
-
-	attunements = list(
-		/datum/attunement/earth = 0.3,
-	)
 
 	required_form = FORM_EARTH
 	required_technique = TECHNIQUE_CREATION
@@ -34,8 +28,8 @@
 		return
 	var/obj/item/brick = .
 	var/int_scaling = INT - 10
-	brick.force = (brick.force + int_scaling) * attuned_strength
-	brick.throwforce = (brick.throwforce + int_scaling * 2) * attuned_strength // 2x scaling for throwing. Let's go.
+	brick.force = (brick.force + int_scaling) * spell_magnitude_modifier
+	brick.throwforce = (brick.throwforce + int_scaling * 2) * spell_magnitude_modifier // 2x scaling for throwing. Let's go.
 	brick.name = "magician's brick +[int_scaling]"
 	return brick
 

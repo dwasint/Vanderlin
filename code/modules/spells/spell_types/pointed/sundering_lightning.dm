@@ -4,12 +4,7 @@
 	button_icon_state = "sundering"
 	sound = 'sound/weather/rain/thunder_1.ogg'
 
-	point_cost = 8
 	cast_range = 4
-	attunements = list(
-		/datum/attunement/electric = 0.9
-	)
-
 	required_form = FORM_LIGHTNING
 	required_technique = TECHNIQUE_DESTRUCTION
 

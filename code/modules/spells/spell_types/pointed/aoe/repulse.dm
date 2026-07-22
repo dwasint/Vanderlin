@@ -3,9 +3,6 @@
 	desc = "This spell throws everything around the user away."
 	button_icon_state = "repulse"
 
-	point_cost = 3
-
-	school = SCHOOL_EVOCATION
 	invocation = "GITTAH WEIGH"
 	invocation_type = INVOCATION_SHOUT
 	aoe_radius = 2
@@ -17,10 +14,6 @@
 	charge_time = 3 SECONDS
 	charge_drain = 1
 	charge_slowdown = 0.7
-
-	attunements = list(
-		/datum/attunement/aeromancy = 0.4,
-	)
 
 	required_form = FORM_AIR
 	required_technique = TECHNIQUE_CREATION
@@ -78,8 +71,6 @@
 	name = "Tail Sweep"
 	desc = "Throw back attackers with a sweep of your tail."
 	button_icon_state = "tailsweep"
-
-	point_cost = 0
 
 	required_form = null
 

@@ -75,11 +75,6 @@
 	button_icon_state = "eldritch_blast"
 	sound = 'sound/magic/whiteflame.ogg'
 
-	point_cost = 1
-	attunements = list(
-		/datum/attunement/dark = 0.3,
-	)
-
 	required_form = FORM_DEATH
 
 	invocation = "Eldritch blast!"

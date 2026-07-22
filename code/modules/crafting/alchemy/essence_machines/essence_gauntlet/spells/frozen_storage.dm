@@ -3,8 +3,6 @@
 	desc = "Prevents rot from ever touching."
 	button_icon_state = "fridigitation"
 	cast_range = 1
-	point_cost = 6
-	attunements = list(/datum/attunement/ice, /datum/attunement/blood)
 	essences = list(/datum/thaumaturgical_essence/frost, /datum/thaumaturgical_essence/water)
 
 /datum/action/cooldown/spell/fridigitation/cast(atom/cast_on, mob/user = usr)

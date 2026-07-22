@@ -13,7 +13,6 @@
 	cooldown_time = 2 MINUTES
 	spell_cost = 25
 	has_visual_effects = FALSE
-	attunements = list(/datum/attunement/illusion = 0.6)
 
 	required_form = FORM_EARTH
 	required_technique = TECHNIQUE_ILLUSION

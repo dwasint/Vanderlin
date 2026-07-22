@@ -7,9 +7,6 @@
 	Those caught beside it as it erupts are left frosted. The wall lasts for 20 seconds or until shattered."
 	button_icon_state = "frost_blast"
 	sound = 'sound/spellbooks/crystal.ogg'
-	attunements = list(
-		/datum/attunement/ice = 0.4
-	)
 
 	required_form = FORM_ICE
 	required_technique = TECHNIQUE_CREATION

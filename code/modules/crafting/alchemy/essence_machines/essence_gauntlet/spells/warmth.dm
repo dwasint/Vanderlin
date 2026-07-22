@@ -3,8 +3,6 @@
 	desc = "Provides resistance to cold and warms the body."
 	button_icon_state = "warmth"
 	cast_range = 1
-	point_cost = 3
-	attunements = list(/datum/attunement/fire)
 	essences = list(/datum/thaumaturgical_essence/fire)
 
 /datum/action/cooldown/spell/essence/warmth/cast(atom/cast_on)

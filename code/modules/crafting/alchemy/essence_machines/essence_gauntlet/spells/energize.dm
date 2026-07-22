@@ -3,8 +3,6 @@
 	desc = "Restores energy to magical devices or provides a burst of vitality."
 	button_icon_state = "primetriangle"
 	cast_range = 1
-	point_cost = 4
-	attunements = list(/datum/attunement/electric)
 	essences = list(/datum/thaumaturgical_essence/energia)
 
 /datum/action/cooldown/spell/essence/energize/cast(atom/cast_on)

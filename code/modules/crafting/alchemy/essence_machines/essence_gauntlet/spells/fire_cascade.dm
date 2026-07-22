@@ -1,13 +1,10 @@
 /datum/action/cooldown/spell/essence/fire_cascade
 	name = "Fire Cascade"
 	desc = "Unleash a nova of spreading flames."
-	school = "evocation"
 	button_icon_state = "fireaura"
 	spell_cost = 4
 	cooldown_time = 45 SECONDS
-	point_cost = 4
 	click_to_activate = TRUE
-	attunements = list(/datum/attunement/fire, /datum/attunement/aeromancy)
 	essences = list(/datum/thaumaturgical_essence/fire, /datum/thaumaturgical_essence/air)
 	var/flame_radius = 2
 	var/hotspot_lifetime = 3

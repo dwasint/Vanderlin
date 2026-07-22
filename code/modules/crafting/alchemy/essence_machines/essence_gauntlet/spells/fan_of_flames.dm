@@ -1,12 +1,9 @@
 /datum/action/cooldown/spell/essence/fan_of_flames
 	name = "Fan of Flames"
 	desc = "Unleash a spreading fan of slow-moving flame projectiles."
-	school = "evocation"
 	button_icon_state = "sacredflame"
 	spell_cost = 4
 	cooldown_time = 45 SECONDS
-	point_cost = 4
-	attunements = list(/datum/attunement/fire, /datum/attunement/aeromancy)
 	essences = list(/datum/thaumaturgical_essence/fire, /datum/thaumaturgical_essence/air)
 	click_to_activate = TRUE
 	/// Projectile type to fire

@@ -80,7 +80,7 @@
 
 	cooldown_time = 30 SECONDS
 	spell_tier = 3
-	point_cost = 0
+
 	spell_impact_intensity = SPELL_IMPACT_NONE
 	invocation_type = INVOCATION_NONE
 	spell_requirements = SPELL_REQUIRES_SAME_Z

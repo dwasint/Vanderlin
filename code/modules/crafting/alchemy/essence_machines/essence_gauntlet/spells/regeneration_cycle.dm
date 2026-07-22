@@ -3,8 +3,6 @@
 	desc = "Establishes a cycle of continuous healing over time."
 	button_icon_state = "regeneratelimb"
 	cast_range = 1
-	point_cost = 8
-	attunements = list(/datum/attunement/light, /datum/attunement/life)
 	essences = list(/datum/thaumaturgical_essence/cycle, /datum/thaumaturgical_essence/life)
 
 /datum/action/cooldown/spell/essence/regeneration_cycle/cast(atom/cast_on)

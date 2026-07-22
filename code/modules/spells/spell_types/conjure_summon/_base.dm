@@ -142,9 +142,7 @@
 	if(!istype(user))
 		return FALSE
 
-	var/turf/T = get_turf(cast_on)
-	if(!isopenturf(T) || T.is_blocked_turf())
-		to_chat(user, span_warning("The targeted location is blocked. My summon fails to come forth."))
+	if(!validate_cast_location(cast_on, user))
 		return FALSE
 
 	var/at_capacity = (length(conjured_mobs) >= max_summons)
@@ -156,7 +154,8 @@
 
 	var/list/all_summoned = list()
 	for(var/i in 1 to to_spawn)
-		var/mob/living/summoned = spawn_summon(T, user)
+		var/turf/spawn_turf = get_summon_turf(user, cast_on, i)
+		var/mob/living/summoned = spawn_summon(spawn_turf, user)
 		if(summoned)
 			all_summoned += summoned
 	if(!length(all_summoned))
@@ -167,9 +166,26 @@
 		summoned.AddComponent(/datum/component/conjured_minion, user, recoil_energy_floor, recoil_severity, recoil_stamina_only)
 		var/turf/landing = get_turf(summoned)
 		landing?.zFall(summoned)
+	on_summon_complete(user, cast_on, all_summoned)
+	return TRUE
+
+/// Checked before spawning starts. Override to skip/replace the default "cast_on must be open" check.
+/datum/action/cooldown/spell/conjure_summon/proc/validate_cast_location(atom/cast_on, mob/living/user)
+	var/turf/T = get_turf(cast_on)
+	if(!isopenturf(T) || T.is_blocked_turf())
+		to_chat(user, span_warning("The targeted location is blocked. My summon fails to come forth."))
+		return FALSE
 	return TRUE
 
 /datum/action/cooldown/spell/conjure_summon/proc/spawn_summon(turf/T, mob/living/user)
+	return TRUE
+
+/// Where the Nth summon of this cast lands. Default: everyone piles on cast_on's turf.
+/datum/action/cooldown/spell/conjure_summon/proc/get_summon_turf(mob/living/user, atom/cast_on, index)
+	return get_turf(cast_on)
+
+/// Fires once, after all mobs for this cast have been created and registered. Good spot for AI targeting etc.
+/datum/action/cooldown/spell/conjure_summon/proc/on_summon_complete(mob/living/user, atom/cast_on, list/summoned_mobs)
 	return
 
 /datum/action/cooldown/spell/conjure_summon/proc/get_summon_tier(mob/living/user)

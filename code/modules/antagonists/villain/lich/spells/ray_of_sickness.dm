@@ -4,11 +4,6 @@
 	button_icon_state = "raiseskele"
 	sound = 'sound/misc/portal_enter.ogg'
 
-	attunements = list(
-		/datum/attunement/dark = 0.4,
-		/datum/attunement/blood = 0.5,
-	)
-
 	required_form = FORM_WATER
 
 	charge_time = 2 SECONDS

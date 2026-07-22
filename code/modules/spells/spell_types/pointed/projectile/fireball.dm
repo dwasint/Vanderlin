@@ -6,10 +6,6 @@
 	sound = 'sound/magic/fireball.ogg'
 
 	cast_range = 8
-	point_cost = 4
-	attunements = list(
-		/datum/attunement/fire = 0.5
-	)
 
 	invocation = "ONI SOMA!!!"
 	invocation_type = INVOCATION_SHOUT
@@ -29,9 +25,9 @@
 
 /datum/action/cooldown/spell/projectile/fireball/ready_projectile(obj/projectile/magic/aoe/fireball/to_fire, atom/target, mob/user, iteration)
 	. = ..()
-	to_fire.damage *= attuned_strength
-	to_fire.exp_light *= attuned_strength
-	to_fire.exp_fire *= attuned_strength
+	to_fire.damage *= spell_magnitude_modifier
+	to_fire.exp_light *= spell_magnitude_modifier
+	to_fire.exp_fire *= spell_magnitude_modifier
 
 /datum/action/cooldown/spell/projectile/fireball/baali
 	name = "Infernal Fireball"
@@ -48,11 +44,6 @@
 	name = "Fireball (Greater)"
 	desc = "Shoot out an immense ball of fire that explodes on impact."
 	button_icon_state = "fireball_greater"
-
-	point_cost = 6
-	attunements = list(
-		/datum/attunement/fire = 1.1,
-	)
 
 	charge_time = 4 SECONDS
 	charge_drain = 2

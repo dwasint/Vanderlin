@@ -3,8 +3,6 @@
 	desc = "Dramatically speeds up natural growth processes."
 	button_icon_state = "great_shelter"
 	cast_range = 2
-	point_cost = 7
-	attunements = list(/datum/attunement/light, /datum/attunement/life)
 	essences = list(/datum/thaumaturgical_essence/life, /datum/thaumaturgical_essence/light)
 
 /datum/action/cooldown/spell/essence/growth_acceleration/cast(atom/cast_on)

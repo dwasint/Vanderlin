@@ -4,8 +4,6 @@
 	button_icon_state = "terrors"
 	//sound = 'sound/magic/staff_healing.ogg'
 	cast_range = 1
-	point_cost = 3
-	attunements = list(/datum/attunement/life)
 	essences = list(/datum/thaumaturgical_essence/life)
 
 /datum/action/cooldown/spell/essence/refresh/cast(atom/cast_on)

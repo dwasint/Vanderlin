@@ -3,8 +3,6 @@
 	desc = "Completely purges an area of all toxic substances and poisons."
 	button_icon_state = "detect_poison"
 	cast_range = 3
-	point_cost = 7
-	attunements = list(/datum/attunement/life, /datum/attunement/blood)
 	essences = list(/datum/thaumaturgical_essence/poison, /datum/thaumaturgical_essence/water)
 
 /datum/action/cooldown/spell/essence/toxic_cleanse/cast(atom/cast_on)

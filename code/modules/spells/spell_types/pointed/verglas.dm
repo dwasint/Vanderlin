@@ -9,10 +9,6 @@
 	Use the Alt Mode keybind to switch between Lay (cast and forget) and Hold (maintained by concentration for as long as you like, but shattered the instant you are struck or cast another spell)."
 	button_icon_state = "snap_freeze"
 
-	attunements = list(
-		/datum/attunement/ice = 0.4
-	)
-
 	click_to_activate = TRUE
 	cast_range = SPELL_RANGE_GROUND
 

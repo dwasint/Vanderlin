@@ -4,11 +4,6 @@
 	button_icon_state = "raiseskele"
 	sound = 'sound/magic/whiteflame.ogg'
 
-	attunements = list(
-		/datum/attunement/dark = 0.4,
-		/datum/attunement/death = 0.5,
-	)
-
 	required_form = FORM_DEATH
 	required_technique = TECHNIQUE_RESTORATION
 	required_level = 2

@@ -238,7 +238,6 @@
 
 	cooldown_time = 0
 	spell_tier = 3
-	point_cost = 0
 	spell_impact_intensity = SPELL_IMPACT_NONE
 	spell_requirements = NONE
 	check_flags = NONE

@@ -3,7 +3,6 @@
 	desc = "Places an invisible magical mark on an object for identification."
 	button_icon_state = "arcane_mark"
 	cast_range = 1
-	point_cost = 2
 	essences = list(/datum/thaumaturgical_essence/magic)
 
 /datum/action/cooldown/spell/essence/arcane_mark/cast(atom/cast_on)

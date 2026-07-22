@@ -9,9 +9,7 @@
 	spell_type = SPELL_MANA
 	antimagic_flags = MAGIC_RESISTANCE_UNHOLY
 	associated_skill = /datum/attribute/skill/magic/arcane
-	attunements = list(
-		/datum/attunement/death = 1,
-	)
+
 	required_form = FORM_DEATH
 	required_technique = TECHNIQUE_SUMMONING
 

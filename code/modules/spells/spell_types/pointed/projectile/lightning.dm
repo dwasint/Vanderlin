@@ -10,10 +10,6 @@
 	invocation_type = INVOCATION_SHOUT
 
 	cast_range = 8
-	point_cost = 3
-	attunements = list(
-		/datum/attunement/electric = 0.7,
-	)
 
 	required_form = FORM_LIGHTNING
 	required_technique = TECHNIQUE_DESTRUCTION

@@ -5,11 +5,6 @@
 	cast_range = 15
 	sound = 'sound/magic/magnet.ogg'
 
-	point_cost = 2
-	attunements = list(
-		/datum/attunement/aeromancy = 0.4,
-	)
-
 	required_form = FORM_AIR
 
 	//yoink

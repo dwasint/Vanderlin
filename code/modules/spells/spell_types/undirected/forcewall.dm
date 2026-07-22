@@ -3,13 +3,6 @@
 	desc = "Conjure a wall of arcyne force, preventing anyone and anything other than you from moving through it."
 	button_icon_state = "forcewall"
 
-	point_cost = 3
-	attunements = list(
-		/datum/attunement/illusion = 0.3,
-	)
-	school = SCHOOL_TRANSMUTATION
-
-
 	required_form = FORM_ARCANE
 	required_technique = TECHNIQUE_ILLUSION
 

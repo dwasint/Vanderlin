@@ -5,10 +5,6 @@
 	sound = 'sound/magic/vlightning.ogg'
 
 	associated_skill = /datum/attribute/skill/magic/blood
-	attunements = list(
-		/datum/attunement/blood = 0.7,
-	)
-
 	required_form = FORM_WATER
 	required_technique = TECHNIQUE_ALTERATION
 

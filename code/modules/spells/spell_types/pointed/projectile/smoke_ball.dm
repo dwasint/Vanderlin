@@ -6,7 +6,6 @@
 	Toggle arc mode (Shift+G) while the spell is active to lob it over intervening mobs and obstacles."
 	button_icon_state = "smoke_burst"
 	sound = 'sound/items/firesnuff.ogg'
-	attunements = list(/datum/attunement/fire = 0.5)
 
 	projectile_type = /obj/projectile/magic/smoke_burst
 	projectile_type_arc = /obj/projectile/magic/smoke_burst/arc

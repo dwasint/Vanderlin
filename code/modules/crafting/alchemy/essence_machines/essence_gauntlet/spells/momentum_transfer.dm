@@ -3,10 +3,8 @@
 	desc = "Transfers kinetic energy between objects or creatures."
 	button_icon_state = "longstrider"
 	cast_range = 2
-	point_cost = 6
 	has_visual_effects = FALSE
 	cooldown_time = 2 MINUTES
-	attunements = list(/datum/attunement/light, /datum/attunement/aeromancy)
 	essences = list(/datum/thaumaturgical_essence/energia, /datum/thaumaturgical_essence/motion)
 
 /datum/action/cooldown/spell/essence/momentum_transfer/cast(atom/cast_on)

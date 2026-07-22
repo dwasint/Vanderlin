@@ -19,9 +19,7 @@
 	desc = "A magic piece of paper transcribes whats happening around."
 	button_icon_state = "transcribe"
 	cast_range = 1
-	point_cost = 4
 	cooldown_time = 3 MINUTES
-	attunements = list(/datum/attunement/polymorph)
 	essences = list(/datum/thaumaturgical_essence/order, /datum/thaumaturgical_essence/light)
 	var/item_type = /obj/item/paper/magictranscription
 

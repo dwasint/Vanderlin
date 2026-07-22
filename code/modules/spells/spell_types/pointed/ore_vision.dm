@@ -4,7 +4,6 @@
 	button_icon_state = "aros"
 	button_icon = 'icons/roguetown/items/gems.dmi'
 	spell_cost = 30
-	attunements = list(/datum/attunement/earth)
 	required_form = FORM_EARTH
 
 /datum/action/cooldown/spell/gem_detect/is_valid_target(atom/cast_on)

@@ -264,9 +264,6 @@
 	var/spellpoints = CEILING(bookquality * (qualityoflearn / 100), 1)
 	reader.adjust_spell_points(spellpoints)
 
-	if(stored_attunement)
-		user.mana_pool?.adjust_attunement(stored_attunement, 0.1 * (spellpoints / 0.2))
-
 	user.log_message("successfully studied their spellbook and gained spellpoints", LOG_ATTACK, color = "orange")
 	onlearned(user)
 
