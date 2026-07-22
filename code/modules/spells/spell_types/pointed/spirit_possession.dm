@@ -85,7 +85,7 @@
 	body_ref = WEAKREF(body)
 	vessel_ref = WEAKREF(vessel)
 
-	ADD_TRAIT(body, TRAIT_NOSLEEP, "spirit_projection")
+	ADD_TRAIT(body, TRAIT_SLEEPIMMUNE, "spirit_projection")
 	ADD_TRAIT(body, TRAIT_NOBREATH, "spirit_projection")
 	ADD_TRAIT(body, TRAIT_NOHUNGER, "spirit_projection")
 	ADD_TRAIT(body, TRAIT_NOMOOD, "spirit_projection")
