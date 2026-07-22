@@ -421,7 +421,7 @@
 /// that apply to THIS spell, based on its required_form / required_technique.
 /// Returns list("cost" = mult, "castSpeed" = mult, "magnitude" = total) - defaults if nothing matches.
 /datum/action/cooldown/spell/proc/get_form_technique_modifiers()
-	var/list/result = list("cost" = 1, "castSpeed" = 1, "magnitude" = 0)
+	var/list/result = list("cost" = 1, "castSpeed" = 1, "magnitude" = 1)
 	if(!owner)
 		return result
 
