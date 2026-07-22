@@ -275,8 +275,6 @@
 	spendable_form_points[form] = (spendable_form_points[form] || 0) + amount
 	return TRUE
 
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Spell learning ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 /// Returns the {form points, technique points} cost of learning spell_path, as a 2-item list.
 /datum/spell_mastery/proc/get_spell_cost(spell_path)
 	var/form_cost = initial(spell_path:required_form) ? 1 : 0
