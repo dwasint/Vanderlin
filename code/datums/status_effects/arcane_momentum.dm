@@ -95,7 +95,7 @@
 	update_visuals()
 	update_alert()
 	update_spell_buttons()
-	to_chat(owner, span_warning("The shock breaks my concentration — all momentum lost!"))
+	to_chat(owner, span_warning("The shock breaks my concentration, all momentum lost!"))
 
 /datum/status_effect/buff/arcyne_momentum/proc/on_knockdown()
 	SIGNAL_HANDLER
@@ -106,7 +106,7 @@
 	update_visuals()
 	update_alert()
 	update_spell_buttons()
-	to_chat(owner, span_warning("I hit the ground — all momentum lost!"))
+	to_chat(owner, span_warning("I hit the ground, all momentum lost!"))
 
 /datum/status_effect/buff/arcyne_momentum/proc/add_stacks(amount)
 	var/old_stacks = stacks
