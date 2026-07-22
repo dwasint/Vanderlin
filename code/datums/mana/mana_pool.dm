@@ -126,6 +126,7 @@
 	return FALSE
 
 /datum/mana_pool/proc/get_mastery()
+	RETURN_TYPE(/datum/spell_mastery)
 	if(!mastery)
 		mastery = new(src)
 		if(isliving(parent))

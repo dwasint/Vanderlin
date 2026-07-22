@@ -3124,6 +3124,43 @@
 
 	check_learnspell()
 
+/mob/proc/adjust_form_mastery_points(points, used_points = FALSE, specific_form = null)
+	return
+
+/mob/living/adjust_form_mastery_points(points, used_points = FALSE, specific_form = null)
+	if(QDELETED(src))
+		return
+
+	mana_pool?.get_mastery().adjust_form_mastery_points(points, used_points, specific_form)
+
+
+/mob/proc/adjust_technique_mastery_points(points, used_points = FALSE, specific_technique = null)
+	return
+
+/mob/living/adjust_technique_mastery_points(points, used_points = FALSE, specific_technique = null)
+	if(QDELETED(src))
+		return
+
+	mana_pool?.get_mastery().adjust_technique_mastery_points(points, used_points, specific_technique)
+
+/mob/proc/reset_form_mastery_points(silent = TRUE)
+	return
+
+/mob/living/reset_form_mastery_points(silent = TRUE)
+	if(QDELETED(src))
+		return
+
+	mana_pool?.get_mastery().reset_form_mastery_points(silent)
+
+/mob/proc/reset_technique_mastery_points(silent = TRUE)
+	return
+
+/mob/living/reset_technique_mastery_points(silent = TRUE)
+	if(QDELETED(src))
+		return
+
+	mana_pool?.get_mastery().reset_technique_mastery_points(silent)
+
 /// Check if learnspell should be removed or granted
 /mob/living/proc/check_learnspell()
 	if(QDELETED(src))

@@ -439,3 +439,85 @@
 /datum/spell_mastery/proc/sync_points_to_level(new_level)
 	last_synced_level = new_level
 	recalculate_unspent_points()
+
+/**
+ * adjusts the amount of available form mastery points
+ *
+ * Args
+ * * points - amount of points to grant or reduce
+ * * used_points - adjust used/spendable points instead of the lifetime pool
+ * * specific_form - if provided, adjusts this form's level directly instead
+ *   of the general unspent form pool
+*/
+/datum/spell_mastery/proc/adjust_form_mastery_points(points, used_points = FALSE, specific_form = null)
+	if(QDELETED(src))
+		return
+
+	if(specific_form)
+		if(used_points)
+			// consume from that form's spendable (spell-buying) pool specifically
+			spendable_form_points[specific_form] = max(0, (spendable_form_points[specific_form] || 0) - points)
+		else
+			// actually rank up (or down) that specific form
+			form_levels[specific_form] = max(0, get_form_level(specific_form) + points)
+			initial_form_points += points
+	else
+		if(used_points)
+			unspent_form_points = max(0, unspent_form_points - points)
+		else
+			adjust_form_points(points)
+
+	recalculate_unspent_points()
+
+/**
+ * adjusts the amount of available technique mastery points
+ *
+ * Args
+ * * points - amount of points to grant or reduce
+ * * used_points - adjust used/spendable points instead of the lifetime pool
+ * * specific_technique - if provided, adjusts this technique's level directly
+ *   instead of the general unspent technique pool
+*/
+/datum/spell_mastery/proc/adjust_technique_mastery_points(points, used_points = FALSE, specific_technique = null)
+	if(QDELETED(src))
+		return
+
+	if(specific_technique)
+		if(used_points)
+			spendable_technique_points[specific_technique] = max(0, (spendable_technique_points[specific_technique] || 0) - points)
+		else
+			technique_levels[specific_technique] = max(0, get_technique_level(specific_technique) + points)
+			initial_technique_points += points
+	else
+		if(used_points)
+			unspent_technique_points = max(0, unspent_technique_points - points)
+		else
+			adjust_technique_points(points)
+
+	recalculate_unspent_points()
+
+/// Reset form mastery points and used form points
+/datum/spell_mastery/proc/reset_form_mastery_points(silent = TRUE)
+	if(QDELETED(src))
+		return
+
+	initial_form_points = 0
+	unspent_form_points = 0
+
+	if(!silent && holder)
+		to_chat(holder, span_boldwarning("I lost all my form mastery points!"))
+
+	recalculate_unspent_points()
+
+/// Reset technique mastery points and used technique points
+/datum/spell_mastery/proc/reset_technique_mastery_points(silent = TRUE)
+	if(QDELETED(src))
+		return
+
+	initial_technique_points = 0
+	unspent_technique_points = 0
+
+	if(!silent && holder)
+		to_chat(holder, span_boldwarning("I lost all my technique mastery points!"))
+
+	recalculate_unspent_points()
