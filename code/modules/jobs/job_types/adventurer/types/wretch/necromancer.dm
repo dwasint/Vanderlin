@@ -89,7 +89,7 @@
 	beltr = /obj/item/reagent_containers/glass/bottle/manapot
 	r_hand = /obj/item/weapon/polearm/woodstaff
 	backpack_contents = list(
-		/obj/item/book/granter/spellbook/expert/starter/death = 1,
+		/obj/item/spellbook/expert/starter/death = 1,
 		/obj/item/chalk = 1,
 		/obj/item/rope/chain = 1,
 		/obj/item/reagent_containers/glass/bottle/stronghealthpot = 1,

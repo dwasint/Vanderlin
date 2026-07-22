@@ -1,12 +1,12 @@
 
-/obj/item/book/granter/spellbook/horrible/starter
-	abstract_type = /obj/item/book/granter/spellbook/horrible/starter
+/obj/item/spellbook/horrible/starter
+	abstract_type = /obj/item/spellbook/horrible/starter
 	themed_cost_multiplier = 0.97
 	themed_cast_speed_multiplier = 1.05
 	themed_magnitude_bonus = 0.1
 
 
-/obj/item/book/granter/spellbook/horrible/starter/apply_themed_bonuses()
+/obj/item/spellbook/horrible/starter/apply_themed_bonuses()
 	if(!themed_form)
 		return ..()
 	var/list/flavor = get_theme_flavor(themed_form)
@@ -27,29 +27,29 @@
 		list("[themed_form]" = themed_cast_speed_multiplier), \
 		list("[themed_form]" = themed_magnitude_bonus))
 
-/obj/item/book/granter/spellbook/horrible/starter/fire
+/obj/item/spellbook/horrible/starter/fire
 	themed_form = FORM_FIRE
 	designlist = list("steel")
-/obj/item/book/granter/spellbook/horrible/starter/ice
+/obj/item/spellbook/horrible/starter/ice
 	themed_form = FORM_ICE
-/obj/item/book/granter/spellbook/horrible/starter/lightning
+/obj/item/spellbook/horrible/starter/lightning
 	themed_form = FORM_LIGHTNING
 	designlist = list("steel")
-/obj/item/book/granter/spellbook/horrible/starter/earth
+/obj/item/spellbook/horrible/starter/earth
 	themed_form = FORM_EARTH
 	designlist = list("steel")
-/obj/item/book/granter/spellbook/horrible/starter/arcane
+/obj/item/spellbook/horrible/starter/arcane
 	themed_form = FORM_ARCANE
 	designlist = list("gem")
-/obj/item/book/granter/spellbook/horrible/starter/death
+/obj/item/spellbook/horrible/starter/death
 	themed_form = FORM_DEATH
 	designlist = list("skin")
-/obj/item/book/granter/spellbook/horrible/starter/life
+/obj/item/spellbook/horrible/starter/life
 	themed_form = FORM_LIFE
 	designlist = list("mimic")
-/obj/item/book/granter/spellbook/horrible/starter/air
+/obj/item/spellbook/horrible/starter/air
 	themed_form = FORM_AIR
 	designlist = list("steel")
-/obj/item/book/granter/spellbook/horrible/starter/water
+/obj/item/spellbook/horrible/starter/water
 	themed_form = FORM_WATER
 	designlist = list("steel")

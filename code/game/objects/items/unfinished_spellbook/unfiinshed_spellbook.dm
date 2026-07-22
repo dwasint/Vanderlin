@@ -71,7 +71,7 @@
 /// Spawns a finished book, sets owner, and cleans up catalyst + self.
 /obj/item/spellbook_unfinished/pre_arcyne/proc/finish_book(mob/user, obj/item/catalyst, book_type, born_of_rock = FALSE, extra_desc = null)
 	playsound(src, 'sound/magic/crystal.ogg', 100, TRUE)
-	var/obj/item/book/granter/spellbook/newbook = new book_type(get_turf(loc))
+	var/obj/item/spellbook/newbook = new book_type(get_turf(loc))
 	var/atom/old_loc = loc
 	newbook.owner = user
 	if(born_of_rock)

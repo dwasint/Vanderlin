@@ -91,7 +91,7 @@
 						span_notice("I knew this stone was special! Its colourful magick has soaked into my tome and given me gift of mystery!")
 					)
 					to_chat(user, span_notice("...what in the world does any of this scribbling possibly mean?"))
-					var/obj/item/book/granter/spellbook/newbook = book_base.finish_book(user, meld, book_type, born_of_rock, meld_data["extra_desc"])
+					var/obj/item/spellbook/newbook = book_base.finish_book(user, meld, book_type, born_of_rock, meld_data["extra_desc"])
 					apply_crafting_bonuses(newbook, meld_data, form_points, technique_points, \
 						form_cost_multipliers, form_cast_speed_multipliers, form_magnitude_modifications, \
 						technique_cost_multipliers, technique_cast_speed_multipliers, technique_magnitude_modifications)
@@ -122,14 +122,14 @@
 		span_warning("[user] imbues [user.p_their()] [meld]! It fuses into [book_base]."),
 		span_notice("I join my arcyne energy with that of the [meld] in my hands, which shudders briefly before dissolving into motes of energy...")
 	)
-	var/obj/item/book/granter/spellbook/newbook = book_base.finish_book(user, meld, book_type, born_of_rock, meld_data["extra_desc"])
+	var/obj/item/spellbook/newbook = book_base.finish_book(user, meld, book_type, born_of_rock, meld_data["extra_desc"])
 	apply_crafting_bonuses(newbook, meld_data, form_points, technique_points, \
 		form_cost_multipliers, form_cast_speed_multipliers, form_magnitude_modifications, \
 		technique_cost_multipliers, technique_cast_speed_multipliers, technique_magnitude_modifications)
 	clear_materials()
 	return TRUE
 
-/datum/spellcraft_session/proc/apply_crafting_bonuses(obj/item/book/granter/spellbook/newbook, list/meld_data, \
+/datum/spellcraft_session/proc/apply_crafting_bonuses(obj/item/spellbook/newbook, list/meld_data, \
 	list/form_points, list/technique_points, list/form_cost_multipliers, list/form_cast_speed_multipliers, \
 	list/form_magnitude_modifications, list/technique_cost_multipliers, list/technique_cast_speed_multipliers, \
 	list/technique_magnitude_modifications)
@@ -201,7 +201,7 @@
 
 /obj/item/gem/get_spellcraft_meld_data()
 	return list(
-		"book_type" = /obj/item/book/granter/spellbook/adept,
+		"book_type" = /obj/item/spellbook/adept,
 		"amplifier" = 1.0,
 		"generic_points" = 0,
 		"generic_points_form" = 0,
@@ -210,7 +210,7 @@
 
 /obj/item/gem/violet/get_spellcraft_meld_data()
 	return list(
-		"book_type" = /obj/item/book/granter/spellbook/expert,
+		"book_type" = /obj/item/spellbook/expert,
 		"amplifier" = 1.2,
 		"generic_points" = 0,
 		"generic_points_form" = 0,
@@ -245,10 +245,10 @@
 /// Moved off spellbook_unfinished/pre_arcyne since the stone itself is the natural owner of this logic now.
 /obj/item/natural/stone/proc/stone_quality_to_book()
 	if(magic_power >= 10)
-		return /obj/item/book/granter/spellbook/apprentice
+		return /obj/item/spellbook/apprentice
 	if(magic_power > 5)
-		return /obj/item/book/granter/spellbook/mid
-	return /obj/item/book/granter/spellbook/horrible
+		return /obj/item/spellbook/mid
+	return /obj/item/spellbook/horrible
 
 
 /obj/item/proc/get_spellcraft_contribution()

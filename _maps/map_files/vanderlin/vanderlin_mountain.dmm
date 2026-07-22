@@ -3368,7 +3368,7 @@
 /turf/open/floor/cobble,
 /area/indoors/mountains/anvil/upperkeep)
 "aqq" = (
-/obj/item/book/granter/spellbook/horrible,
+/obj/item/spellbook/horrible,
 /turf/open/floor/herringbone,
 /area/indoors/mountains/anvil/upperkeep)
 "aqr" = (
@@ -6008,7 +6008,7 @@
 /obj/structure/fluff/walldeco/painting/castle{
 	pixel_y = 32
 	},
-/obj/item/book/granter/spellbook/adept,
+/obj/item/spellbook/adept,
 /turf/open/floor/herringbone,
 /area/indoors/mountains/anvil/upperkeep)
 "aCs" = (

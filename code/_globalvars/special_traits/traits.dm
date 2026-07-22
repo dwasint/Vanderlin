@@ -831,7 +831,7 @@
 	character.add_spell(/datum/action/cooldown/spell/undirected/touch/prestidigitation, silent = TRUE, mastery_spell = TRUE)
 	character.mana_pool.set_intrinsic_recharge(MANA_ALL_LEYLINES)
 	character.mana_pool.adjust_mana(100) //I don't know, they don't spawn with their full mana bar, so we give them a bit more mana at the start.
-	new /obj/item/book/granter/spellbook/master(get_turf(character))
+	new /obj/item/spellbook/master(get_turf(character))
 
 /datum/special_trait/skeleton
 	name = "Skeleton"

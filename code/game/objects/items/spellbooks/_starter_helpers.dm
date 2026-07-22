@@ -1,4 +1,4 @@
-/obj/item/book/granter/spellbook/proc/get_theme_flavor(form)
+/obj/item/spellbook/proc/get_theme_flavor(form)
 	switch(form)
 		if(FORM_FIRE)
 			return list("aflame", "Faint heat radiates from its pages, and its runes are all subtly singed.")

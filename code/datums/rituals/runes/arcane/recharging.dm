@@ -53,7 +53,7 @@
 		to_chat(user, span_notice("The rune is already working..."))
 		return ITEM_INTERACT_BLOCKING
 
-	if(!istype(tool, /obj/item/book/granter/spellbook))
+	if(!istype(tool, /obj/item/spellbook))
 		to_chat(user, span_hierophant_warning("Only a spellbook can be placed here."))
 		return ITEM_INTERACT_BLOCKING
 
@@ -105,7 +105,7 @@
 	INVOKE_ASYNC(src, PROC_REF(run_recharge_animation), user)
 
 /obj/effect/decal/cleanable/ritual_rune/arcyne/recharge/proc/run_recharge_animation(mob/living/user)
-	var/obj/item/book/granter/spellbook/book = staged_book
+	var/obj/item/spellbook/book = staged_book
 
 	// pulse the book brighter as it charges
 	for(var/i = 1 to 10)

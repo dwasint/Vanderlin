@@ -156,7 +156,7 @@
 	beltl = /obj/item/weapon/knife/dagger/steel
 	r_hand = /obj/item/weapon/polearm/woodstaff
 	backpack_contents = list(
-		/obj/item/book/granter/spellbook/expert/starter/death = 1
+		/obj/item/spellbook/expert/starter/death = 1
 	)
 
 	H.attributes?.add_sheet(/datum/attribute_holder/sheet/job/lich)

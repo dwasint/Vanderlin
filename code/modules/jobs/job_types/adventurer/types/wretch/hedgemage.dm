@@ -58,15 +58,15 @@
 	if(prob(1))
 		spawned.cmode_music = 'sound/music/cmode/antag/combat_evilwizard.ogg'
 	var/list/selectable_books = list(
-		"Blazing Tome (Fire)" = /obj/item/book/granter/spellbook/adept/starter/fire,
-		"Frostbound Tome (Ice)" = /obj/item/book/granter/spellbook/adept/starter/ice,
-		"Storm-Charged Tome (Lightning)" = /obj/item/book/granter/spellbook/adept/starter/lightning,
-		"Stoneveined Tome (Earth)" = /obj/item/book/granter/spellbook/adept/starter/earth,
-		"Thrice-Warded Tome (Arcane)" = /obj/item/book/granter/spellbook/adept/starter/arcane,
-		"Grave-Touched Tome (Death)" = /obj/item/book/granter/spellbook/adept/starter/death,
-		"Verdant Tome (Life)" = /obj/item/book/granter/spellbook/adept/starter/life,
-		"Windswept Tome (Air)" = /obj/item/book/granter/spellbook/adept/starter/air,
-		"Tidebound Tome (Water)" = /obj/item/book/granter/spellbook/adept/starter/water,
+		"Blazing Tome (Fire)" = /obj/item/spellbook/adept/starter/fire,
+		"Frostbound Tome (Ice)" = /obj/item/spellbook/adept/starter/ice,
+		"Storm-Charged Tome (Lightning)" = /obj/item/spellbook/adept/starter/lightning,
+		"Stoneveined Tome (Earth)" = /obj/item/spellbook/adept/starter/earth,
+		"Thrice-Warded Tome (Arcane)" = /obj/item/spellbook/adept/starter/arcane,
+		"Grave-Touched Tome (Death)" = /obj/item/spellbook/adept/starter/death,
+		"Verdant Tome (Life)" = /obj/item/spellbook/adept/starter/life,
+		"Windswept Tome (Air)" = /obj/item/spellbook/adept/starter/air,
+		"Tidebound Tome (Water)" = /obj/item/spellbook/adept/starter/water,
 	)
 
 	INVOKE_ASYNC(src, PROC_REF(grant_selected_spellbooks), spawned, selectable_books, 2)

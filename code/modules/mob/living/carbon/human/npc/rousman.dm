@@ -675,7 +675,7 @@ GLOBAL_LIST_EMPTY(rousman_ambush_objects)
 	head = /obj/item/clothing/head/roguehood/rousman/rousseer
 	r_hand = /obj/item/weapon/polearm/woodstaff/seer
 	belt = /obj/item/storage/belt/leather/black
-	l_pocket = /obj/item/book/granter/spellbook/expert/starter/earth
+	l_pocket = /obj/item/spellbook/expert/starter/earth
 
 	var/list/spells = list(
 		/datum/action/cooldown/spell/undirected/jaunt/ethereal_jaunt,

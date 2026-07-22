@@ -55,15 +55,15 @@
 		spawned.grant_language(/datum/language/undead)
 
 	var/list/selectable_books = list(
-		"Blazing Tome (Fire)" = /obj/item/book/granter/spellbook/apprentice/starter/fire,
-		"Frostbound Tome (Ice)" = /obj/item/book/granter/spellbook/apprentice/starter/ice,
-		"Storm-Charged Tome (Lightning)" = /obj/item/book/granter/spellbook/apprentice/starter/lightning,
-		"Stoneveined Tome (Earth)" = /obj/item/book/granter/spellbook/apprentice/starter/earth,
-		"Thrice-Warded Tome (Arcane)" = /obj/item/book/granter/spellbook/apprentice/starter/arcane,
-		"Grave-Touched Tome (Death)" = /obj/item/book/granter/spellbook/apprentice/starter/death,
-		"Verdant Tome (Life)" = /obj/item/book/granter/spellbook/apprentice/starter/life,
-		"Windswept Tome (Air)" = /obj/item/book/granter/spellbook/apprentice/starter/air,
-		"Tidebound Tome (Water)" = /obj/item/book/granter/spellbook/apprentice/starter/water,
+		"Blazing Tome (Fire)" = /obj/item/spellbook/apprentice/starter/fire,
+		"Frostbound Tome (Ice)" = /obj/item/spellbook/apprentice/starter/ice,
+		"Storm-Charged Tome (Lightning)" = /obj/item/spellbook/apprentice/starter/lightning,
+		"Stoneveined Tome (Earth)" = /obj/item/spellbook/apprentice/starter/earth,
+		"Thrice-Warded Tome (Arcane)" = /obj/item/spellbook/apprentice/starter/arcane,
+		"Grave-Touched Tome (Death)" = /obj/item/spellbook/apprentice/starter/death,
+		"Verdant Tome (Life)" = /obj/item/spellbook/apprentice/starter/life,
+		"Windswept Tome (Air)" = /obj/item/spellbook/apprentice/starter/air,
+		"Tidebound Tome (Water)" = /obj/item/spellbook/apprentice/starter/water,
 	)
 
 	INVOKE_ASYNC(src, PROC_REF(grant_selected_spellbooks), spawned, selectable_books, 2)

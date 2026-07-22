@@ -1,11 +1,11 @@
-/obj/item/book/granter/spellbook/adept/starter
-	abstract_type = /obj/item/book/granter/spellbook/adept/starter
-	abstract_type = /obj/item/book/granter/spellbook/adept/starter
+/obj/item/spellbook/adept/starter
+	abstract_type = /obj/item/spellbook/adept/starter
+	abstract_type = /obj/item/spellbook/adept/starter
 	themed_cost_multiplier = 0.88
 	themed_cast_speed_multiplier = 1.22
 	themed_magnitude_bonus = 0.3
 
-/obj/item/book/granter/spellbook/adept/starter/apply_themed_bonuses()
+/obj/item/spellbook/adept/starter/apply_themed_bonuses()
 	if(!themed_form)
 		return ..()
 	var/list/flavor = get_theme_flavor(themed_form)
@@ -26,29 +26,29 @@
 		list("[themed_form]" = themed_cast_speed_multiplier), \
 		list("[themed_form]" = themed_magnitude_bonus))
 
-/obj/item/book/granter/spellbook/adept/starter/fire
+/obj/item/spellbook/adept/starter/fire
 	themed_form = FORM_FIRE
 	designlist = list("steel")
-/obj/item/book/granter/spellbook/adept/starter/ice
+/obj/item/spellbook/adept/starter/ice
 	themed_form = FORM_ICE
-/obj/item/book/granter/spellbook/adept/starter/lightning
+/obj/item/spellbook/adept/starter/lightning
 	themed_form = FORM_LIGHTNING
 	designlist = list("steel")
-/obj/item/book/granter/spellbook/adept/starter/earth
+/obj/item/spellbook/adept/starter/earth
 	themed_form = FORM_EARTH
 	designlist = list("steel")
-/obj/item/book/granter/spellbook/adept/starter/arcane
+/obj/item/spellbook/adept/starter/arcane
 	themed_form = FORM_ARCANE
 	designlist = list("gem")
-/obj/item/book/granter/spellbook/adept/starter/death
+/obj/item/spellbook/adept/starter/death
 	themed_form = FORM_DEATH
 	designlist = list("skin")
-/obj/item/book/granter/spellbook/adept/starter/life
+/obj/item/spellbook/adept/starter/life
 	themed_form = FORM_LIFE
 	designlist = list("mimic")
-/obj/item/book/granter/spellbook/adept/starter/air
+/obj/item/spellbook/adept/starter/air
 	themed_form = FORM_AIR
 	designlist = list("steel")
-/obj/item/book/granter/spellbook/adept/starter/water
+/obj/item/spellbook/adept/starter/water
 	themed_form = FORM_WATER
 	designlist = list("steel")

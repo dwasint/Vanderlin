@@ -1,10 +1,10 @@
-/obj/item/book/granter/spellbook/mid/starter
-	abstract_type = /obj/item/book/granter/spellbook/mid/starter
+/obj/item/spellbook/mid/starter
+	abstract_type = /obj/item/spellbook/mid/starter
 	themed_cost_multiplier = 0.94
 	themed_cast_speed_multiplier = 1.10
 	themed_magnitude_bonus = 0.15
 
-/obj/item/book/granter/spellbook/mid/starter/apply_themed_bonuses()
+/obj/item/spellbook/mid/starter/apply_themed_bonuses()
 	if(!themed_form)
 		return ..()
 	var/list/flavor = get_theme_flavor(themed_form)
@@ -25,29 +25,29 @@
 		list("[themed_form]" = themed_cast_speed_multiplier), \
 		list("[themed_form]" = themed_magnitude_bonus))
 
-/obj/item/book/granter/spellbook/mid/starter/fire
+/obj/item/spellbook/mid/starter/fire
 	themed_form = FORM_FIRE
 	designlist = list("steel")
-/obj/item/book/granter/spellbook/mid/starter/ice
+/obj/item/spellbook/mid/starter/ice
 	themed_form = FORM_ICE
-/obj/item/book/granter/spellbook/mid/starter/lightning
+/obj/item/spellbook/mid/starter/lightning
 	themed_form = FORM_LIGHTNING
 	designlist = list("steel")
-/obj/item/book/granter/spellbook/mid/starter/earth
+/obj/item/spellbook/mid/starter/earth
 	themed_form = FORM_EARTH
 	designlist = list("steel")
-/obj/item/book/granter/spellbook/mid/starter/arcane
+/obj/item/spellbook/mid/starter/arcane
 	themed_form = FORM_ARCANE
 	designlist = list("gem")
-/obj/item/book/granter/spellbook/mid/starter/death
+/obj/item/spellbook/mid/starter/death
 	themed_form = FORM_DEATH
 	designlist = list("skin")
-/obj/item/book/granter/spellbook/mid/starter/life
+/obj/item/spellbook/mid/starter/life
 	themed_form = FORM_LIFE
 	designlist = list("mimic")
-/obj/item/book/granter/spellbook/mid/starter/air
+/obj/item/spellbook/mid/starter/air
 	themed_form = FORM_AIR
 	designlist = list("steel")
-/obj/item/book/granter/spellbook/mid/starter/water
+/obj/item/spellbook/mid/starter/water
 	themed_form = FORM_WATER
 	designlist = list("steel")
