@@ -127,6 +127,8 @@
  */
 /datum/spell_mastery/proc/add_spells(datum/source, mob/living/user)
 	holder = user
+	if(HAS_TRAIT(holder, TRAIT_SORCERER))
+		return
 	var/atom/movable/AM = parent
 	if(!AM || !istype(user))
 		return
@@ -169,7 +171,6 @@
 	if(!user)
 		user = holder
 	holder = null
-
 	var/atom/movable/AM = parent
 	var/list/actions = spellbook_granted_actions[AM]
 	if(!actions)
