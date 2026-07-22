@@ -102,3 +102,10 @@
 	#define COMPONENT_ITEM_BURNT_OUT (1 << 1)
 
 #define COMSIG_SPELL_REQUEST_MODIFIERS "spell_request_modifiers"
+
+#define COMSIG_MASTERY_CAST "mastery_cast"
+
+#define COMSIG_MASTERY_ADD_SPELLS "add_mastery_spells"
+#define COMSIG_MASTERY_REMOVE_SPELLS "remove_mastery_spells"
+#define COMSIG_MASTERY_CHECK_PARENT "mastery_parent_status"
+	#define COMPONENT_MASTERY_CANCEL (1<<0)

@@ -45,10 +45,15 @@
 	. = ..()
 	mastery = new /datum/spell_mastery(null, src)
 	apply_themed_bonuses()
+	RegisterSignal(src, COMSIG_MASTERY_CAST, PROC_REF(check_reader_and_recoil))
+	RegisterSignal(src, COMSIG_MASTERY_CHECK_PARENT, PROC_REF(is_open))
 	if(length(designlist) == 1)
 		base_icon_state = "spellbook[designlist[1]]"
 		update_appearance(UPDATE_ICON_STATE)
 		picked = TRUE
+
+/obj/item/spellbook/proc/is_open()
+	return !open
 
 /obj/item/spellbook/proc/get_or_make_mastery()
 	if(!mastery)
@@ -128,7 +133,6 @@
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/item/spellbook/attack_hand_secondary(mob/user, list/modifiers)
-	//first pick styles
 	if(!picked)
 		var/the_time = world.time
 		var/design = input(user, "Select a design.", "Spellbook Design") as null|anything in designlist
@@ -139,19 +143,35 @@
 		picked = TRUE
 		return
 
-	//now we togge state
 	if(owner == null)
 		owner = user
 	if(!open)
 		slot_flags &= ~ITEM_SLOT_HIP
 		open = TRUE
 		playsound(src, 'sound/items/book_open.ogg', 100, FALSE, -1)
+		SEND_SIGNAL(src, COMSIG_MASTERY_ADD_SPELLS, user)
 	else
 		slot_flags |= ITEM_SLOT_HIP
 		open = FALSE
 		playsound(src, 'sound/items/book_close.ogg', 100, FALSE, -1)
+		SEND_SIGNAL(src, COMSIG_MASTERY_REMOVE_SPELLS, user)
 	update_appearance(UPDATE_ICON_STATE)
 	user.update_inv_hands()
+
+/// Punishes anyone casting a spell sourced from this book who isn't the owner or an
+/// allowed reader. Does not prevent the cast - only recoil()s them.
+/obj/item/spellbook/proc/check_reader_and_recoil(datum/source, mob/living/cast_on)
+	SIGNAL_HANDLER
+	var/mob/living/user = loc
+	if(!istype(user))
+		return
+	if(!user)
+		return
+	if(user == owner)
+		return
+	if(user in allowed_readers)
+		return
+	recoil(user)
 
 /obj/item/spellbook/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!isliving(interacting_with))

@@ -126,6 +126,7 @@
 	apply_crafting_bonuses(newbook, meld_data, form_points, technique_points, \
 		form_cost_multipliers, form_cast_speed_multipliers, form_magnitude_modifications, \
 		technique_cost_multipliers, technique_cast_speed_multipliers, technique_magnitude_modifications)
+	newbook.owner = user
 	clear_materials()
 	return TRUE
 

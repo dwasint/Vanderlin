@@ -78,10 +78,12 @@
 	RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, PROC_REF(add_spells))
 	RegisterSignal(parent, COMSIG_QDELETING, PROC_REF(on_deletion))
 	RegisterSignal(parent, COMSIG_ITEM_ATTACK_SELF, PROC_REF(open_menu))
+	RegisterSignal(parent, COMSIG_MASTERY_ADD_SPELLS, PROC_REF(add_spells))
+	RegisterSignal(parent, COMSIG_MASTERY_REMOVE_SPELLS, PROC_REF(remove_spells))
 
 /datum/spell_mastery/proc/unregister_parent(atom/movable/old_parent)
 	parent = null
-	UnregisterSignal(old_parent, list(COMSIG_ITEM_ATTACK_SELF, COMSIG_ITEM_DROPPED, COMSIG_ITEM_EQUIPPED, COMSIG_QDELETING))
+	UnregisterSignal(old_parent, list(COMSIG_ITEM_ATTACK_SELF, COMSIG_ITEM_DROPPED, COMSIG_ITEM_EQUIPPED, COMSIG_QDELETING,COMSIG_MASTERY_REMOVE_SPELLS, COMSIG_MASTERY_ADD_SPELLS))
 
 /datum/spell_mastery/proc/open_menu(datum/source, mob/living/user)
 	var/datum/spellbook/book = new(parent, src)
@@ -126,6 +128,8 @@
 /datum/spell_mastery/proc/add_spells(datum/source, mob/living/user)
 	holder = user
 	if(HAS_TRAIT(holder, TRAIT_SORCERER))
+		return
+	if(parent && (SEND_SIGNAL(parent, COMSIG_MASTERY_CHECK_PARENT) == COMPONENT_MASTERY_CANCEL))
 		return
 	var/atom/movable/AM = parent
 	if(!AM || !istype(user))
@@ -340,6 +344,7 @@
 			charges[spell_path] = initial(spell_path:initial_charges) || 0
 
 		var/datum/action/cooldown/spell/new_spell = new spell_path()
+		RegisterSignal(new_spell, COMSIG_SPELL_CAST, PROC_REF(pass_spell_cast))
 		if(owner)
 			new_spell.Grant(owner.parent)
 		if(parent)
@@ -350,6 +355,9 @@
 
 		if(holder)
 			var/atom/cached_holder = holder
+			if(parent && (SEND_SIGNAL(parent, COMSIG_MASTERY_CHECK_PARENT) == COMPONENT_MASTERY_CANCEL))
+				remove_spells(src, cached_holder)
+				return
 			remove_spells(src, cached_holder)
 			add_spells(src, cached_holder)
 	return TRUE
@@ -374,6 +382,7 @@
 	if(actions && actions[spell_path])
 		var/datum/action/cooldown/spell/granted = actions[spell_path]
 		if(granted)
+			UnregisterSignal(granted, COMSIG_SPELL_CAST)
 			granted.Remove(owner?.parent)
 			qdel(granted)
 		actions -= spell_path
@@ -384,6 +393,9 @@
 
 	if(holder)
 		var/atom/cached_holder = holder
+		if(parent && (SEND_SIGNAL(parent, COMSIG_MASTERY_CHECK_PARENT) == COMPONENT_MASTERY_CANCEL))
+			remove_spells(src, cached_holder)
+			return
 		remove_spells(src, cached_holder)
 		add_spells(src, cached_holder)
 
@@ -518,3 +530,8 @@
 		to_chat(holder, span_boldwarning("I lost all my technique mastery points!"))
 
 	recalculate_unspent_points()
+
+/datum/spell_mastery/proc/pass_spell_cast(datum/action/cooldown/spell/spell, atom/cast_on)
+	if(!parent)
+		return
+	SEND_SIGNAL(parent, COMSIG_MASTERY_CAST, spell, cast_on)
