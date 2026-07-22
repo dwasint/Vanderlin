@@ -3086,39 +3086,6 @@
 	if(!silent && !silent_individual)
 		to_chat(src, span_boldwarning("I forgot all my spells!"))
 
-/**
- * adjusts the amount of available spellpoints
- *
- * Args
- * * points - amount of points to grant or reduce
- * * used_points - ajust used points
-*/
-/mob/proc/adjust_spell_points(points, used_points = FALSE)
-
-/mob/living/adjust_spell_points(points, used_points = FALSE)
-	if(QDELETED(src))
-		return
-
-	if(used_points)
-		used_spell_points += points
-	else
-		spell_points += points
-
-	check_learnspell()
-
-/// Reset spell points and used spell points
-/mob/living/proc/reset_spell_points(silent = TRUE)
-	if(QDELETED(src))
-		return
-
-	spell_points = 0
-	used_spell_points = 0
-
-	if(!silent)
-		to_chat(src, span_boldwarning("I lost all my spellpoints!"))
-
-	check_learnspell()
-
 /mob/proc/adjust_form_mastery_points(points, used_points = FALSE, specific_form = null)
 	return
 
@@ -3170,7 +3137,8 @@
 /mob/living/proc/purge_combat_knowledge(silent = TRUE)
 	purge_all_skills(silent)
 	remove_spells(silent = silent)
-	reset_spell_points(silent)
+	reset_technique_mastery_points(silent)
+	reset_form_mastery_points(silent)
 
 /mob/living/proc/offer_item(mob/living/offered_to, obj/offered_item)
 	if(isnull(offered_to) || isnull(offered_item))

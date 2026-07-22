@@ -68,7 +68,7 @@ const formatModifierWhole = (label: string, multiplier: number) => {
 const formatModifiers = (modifiers: Track['modifiers']) => {
   if (!modifiers) return null;
   const parts = [
-    formatModifierPart('cost', modifiers.cost),
+    formatModifierPart('mana cost', modifiers.cost),
     formatModifierPart('cast speed', modifiers.castSpeed),
     formatModifierWhole('magnitude', modifiers.magnitude),
   ].filter(Boolean);

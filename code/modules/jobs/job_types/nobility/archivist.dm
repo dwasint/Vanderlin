@@ -102,12 +102,27 @@
 	attribute_sheet = /datum/attribute_holder/sheet/job/chronicler
 	attribute_sheet_old = /datum/attribute_holder/sheet/job/chronicler/old
 
+/datum/job/advclass/archivist/chronicler/after_spawn(mob/living/carbon/human/spawned, client/player_client)
+	. = ..()
+	var/list/selectable_books = list(
+		"Blazing Tome (Fire)" = /obj/item/book/granter/spellbook/expert/starter/fire,
+		"Frostbound Tome (Ice)" = /obj/item/book/granter/spellbook/expert/starter/ice,
+		"Storm-Charged Tome (Lightning)" = /obj/item/book/granter/spellbook/expert/starter/lightning,
+		"Stoneveined Tome (Earth)" = /obj/item/book/granter/spellbook/expert/starter/earth,
+		"Thrice-Warded Tome (Arcane)" = /obj/item/book/granter/spellbook/expert/starter/arcane,
+		"Grave-Touched Tome (Death)" = /obj/item/book/granter/spellbook/expert/starter/death,
+		"Verdant Tome (Life)" = /obj/item/book/granter/spellbook/expert/starter/life,
+		"Windswept Tome (Air)" = /obj/item/book/granter/spellbook/expert/starter/air,
+		"Tidebound Tome (Water)" = /obj/item/book/granter/spellbook/expert/starter/water,
+	)
+
+	INVOKE_ASYNC(src, PROC_REF(grant_selected_spellbooks), spawned, selectable_books, 2)
+
 /datum/outfit/archivist/chronicler
 	name = "Chronicler (Archivist)"
 	shoes = /obj/item/clothing/shoes/boots
 	belt = /obj/item/storage/belt/leather/plaquesilver
 	beltl = /obj/item/storage/keyring/archivist
-	beltr = /obj/item/book/granter/spellbook/expert
 	backl = /obj/item/storage/backpack/satchel
 	neck = /obj/item/clothing/neck/psycross/silver/divine/noc
 	backpack_contents = list(

@@ -182,6 +182,22 @@
 		TRAIT_NOBLE_POWER
 	)
 
+/datum/job/advclass/minornoble/magickal_graduate/after_spawn(mob/living/carbon/human/spawned, client/player_client)
+	. = ..()
+	var/list/selectable_books = list(
+		"Blazing Tome (Fire)" = /obj/item/book/granter/spellbook/apprentice/starter/fire,
+		"Frostbound Tome (Ice)" = /obj/item/book/granter/spellbook/apprentice/starter/ice,
+		"Storm-Charged Tome (Lightning)" = /obj/item/book/granter/spellbook/apprentice/starter/lightning,
+		"Stoneveined Tome (Earth)" = /obj/item/book/granter/spellbook/apprentice/starter/earth,
+		"Thrice-Warded Tome (Arcane)" = /obj/item/book/granter/spellbook/apprentice/starter/arcane,
+		"Grave-Touched Tome (Death)" = /obj/item/book/granter/spellbook/apprentice/starter/death,
+		"Verdant Tome (Life)" = /obj/item/book/granter/spellbook/apprentice/starter/life,
+		"Windswept Tome (Air)" = /obj/item/book/granter/spellbook/apprentice/starter/air,
+		"Tidebound Tome (Water)" = /obj/item/book/granter/spellbook/apprentice/starter/water,
+	)
+
+	INVOKE_ASYNC(src, PROC_REF(grant_selected_spellbooks), spawned, selectable_books, 2)
+
 /datum/outfit/minornoble/magickal_graduate
 	name = "Magical Graduate (noble)"
 	head = /obj/item/clothing/head/wizhat/gen
@@ -190,7 +206,6 @@
 	cloak = /obj/item/clothing/cloak/raincloak/furcloak
 	backr = /obj/item/storage/backpack/satchel/black
 	backpack_contents = list(
-		/obj/item/book/granter/spellbook/apprentice = 1,
 		/obj/item/chalk = 1
 	)
 

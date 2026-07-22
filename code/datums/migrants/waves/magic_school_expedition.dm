@@ -33,7 +33,7 @@
 	attribute_sheet = /datum/attribute_holder/sheet/job/migrant/magic_teacher
 
 	spells = list(/datum/action/cooldown/spell/undirected/touch/prestidigitation)
-	spell_points = 10
+	form_points = 7
 
 	cmode_music = 'sound/music/cmode/adventurer/CombatSorcerer.ogg'
 	voicepack_m = /datum/voicepack/male/wizard
@@ -95,7 +95,7 @@
 	attribute_sheet = /datum/attribute_holder/sheet/job/migrant/magic_student
 
 	spells = list(/datum/action/cooldown/spell/undirected/touch/prestidigitation)
-	spell_points = 6
+	form_points = 3
 
 /datum/job/migrant/magic_student/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
@@ -103,11 +103,24 @@
 	if(prob(5))
 		spawned.cmode_music = 'sound/music/cmode/antag/combat_evilwizard.ogg'
 
+	var/list/selectable_books = list(
+		"Blazing Tome (Fire)" = /obj/item/book/granter/spellbook/adept/starter/fire,
+		"Frostbound Tome (Ice)" = /obj/item/book/granter/spellbook/adept/starter/ice,
+		"Storm-Charged Tome (Lightning)" = /obj/item/book/granter/spellbook/adept/starter/lightning,
+		"Stoneveined Tome (Earth)" = /obj/item/book/granter/spellbook/adept/starter/earth,
+		"Thrice-Warded Tome (Arcane)" = /obj/item/book/granter/spellbook/adept/starter/arcane,
+		"Grave-Touched Tome (Death)" = /obj/item/book/granter/spellbook/adept/starter/death,
+		"Verdant Tome (Life)" = /obj/item/book/granter/spellbook/adept/starter/life,
+		"Windswept Tome (Air)" = /obj/item/book/granter/spellbook/adept/starter/air,
+		"Tidebound Tome (Water)" = /obj/item/book/granter/spellbook/adept/starter/water,
+	)
+
+	INVOKE_ASYNC(src, PROC_REF(grant_selected_spellbooks), spawned, selectable_books, 1)
+
 /datum/outfit/magic_student
 	name = "Magic School Student (Migrant Wave)"
 	neck = /obj/item/clothing/neck/mana_star
 	belt  =	/obj/item/storage/belt/leather
-	beltl = /obj/item/book/granter/spellbook/adept
 	beltr = /obj/item/storage/magebag/apprentice
 	armor = /obj/item/clothing/shirt/robe/newmage/adept
 	backr = /obj/item/storage/backpack/satchel

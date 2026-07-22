@@ -69,6 +69,5 @@
 		/obj/item/storage/belt/pouch/coins/poor = 1,
 		/obj/item/weapon/knife/dagger = 1,
 		/obj/item/reagent_containers/glass/bottle/manapot = 1,
-		/obj/item/book/granter/spellbook/apprentice = 1,
 		/obj/item/chalk = 1
 	)

@@ -42,7 +42,7 @@
 	attribute_sheet_old = /datum/attribute_holder/sheet/job/hedgemage/old
 
 	magic_user = TRUE
-	spell_points = 12
+	form_points = 6
 	exp_types_granted = list(EXP_TYPE_COMBAT, EXP_TYPE_MAGICK)
 
 	traits = list(
@@ -57,6 +57,19 @@
 	. = ..()
 	if(prob(1))
 		spawned.cmode_music = 'sound/music/cmode/antag/combat_evilwizard.ogg'
+	var/list/selectable_books = list(
+		"Blazing Tome (Fire)" = /obj/item/book/granter/spellbook/adept/starter/fire,
+		"Frostbound Tome (Ice)" = /obj/item/book/granter/spellbook/adept/starter/ice,
+		"Storm-Charged Tome (Lightning)" = /obj/item/book/granter/spellbook/adept/starter/lightning,
+		"Stoneveined Tome (Earth)" = /obj/item/book/granter/spellbook/adept/starter/earth,
+		"Thrice-Warded Tome (Arcane)" = /obj/item/book/granter/spellbook/adept/starter/arcane,
+		"Grave-Touched Tome (Death)" = /obj/item/book/granter/spellbook/adept/starter/death,
+		"Verdant Tome (Life)" = /obj/item/book/granter/spellbook/adept/starter/life,
+		"Windswept Tome (Air)" = /obj/item/book/granter/spellbook/adept/starter/air,
+		"Tidebound Tome (Water)" = /obj/item/book/granter/spellbook/adept/starter/water,
+	)
+
+	INVOKE_ASYNC(src, PROC_REF(grant_selected_spellbooks), spawned, selectable_books, 2)
 
 /datum/job/advclass/wretch/hedgemage/on_roundstart(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
@@ -87,7 +100,6 @@
 	beltl = /obj/item/reagent_containers/glass/bottle/manapot
 	r_hand = /obj/item/weapon/polearm/woodstaff/quarterstaff/steel
 	backpack_contents = list(
-		/obj/item/book/granter/spellbook/adept = 1,
 		/obj/item/chalk = 1,
 		/obj/item/rope/chain = 1,
 		/obj/item/reagent_containers/glass/bottle/stronghealthpot = 1,

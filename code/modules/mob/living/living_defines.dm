@@ -260,11 +260,6 @@
 	var/attack_relay_refs = 0
 	var/attack_relay_self_added = FALSE
 
-	/// amount of spell points this mob currently has
-	var/spell_points
-	/// amount of spell points this mob has used
-	var/used_spell_points
-
 	/// Whether we are in a swingdelay, used to check for disrupted swingdelays.
 	var/swing_state = FALSE
 

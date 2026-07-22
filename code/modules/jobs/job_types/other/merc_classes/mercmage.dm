@@ -64,7 +64,8 @@
 	allowed_patrons = list(/datum/patron/divine/noc, /datum/patron/inhumen/zizo)//only noc or zizo worshippers can be mages
 	exp_types_granted = list(EXP_TYPE_MERCENARY, EXP_TYPE_COMBAT, EXP_TYPE_MAGICK)
 	magic_user = TRUE
-	spell_points = 8 //less than courtmagician, more than an adventurer wizard
+	form_points = 8
+	technique_points = 1
 
 	attribute_sheet = /datum/attribute_holder/sheet/job/sellmage
 	attribute_sheet_old = /datum/attribute_holder/sheet/job/sellmage/old
@@ -80,6 +81,20 @@
 	// Random rare combat music (1% chance)
 	if(prob(1)) //extremely rare just like court mage
 		spawned.cmode_music = 'sound/music/cmode/antag/combat_evilwizard.ogg'
+
+	var/list/selectable_books = list(
+		"Blazing Tome (Fire)" = /obj/item/book/granter/spellbook/adept/starter/fire,
+		"Frostbound Tome (Ice)" = /obj/item/book/granter/spellbook/adept/starter/ice,
+		"Storm-Charged Tome (Lightning)" = /obj/item/book/granter/spellbook/adept/starter/lightning,
+		"Stoneveined Tome (Earth)" = /obj/item/book/granter/spellbook/adept/starter/earth,
+		"Thrice-Warded Tome (Arcane)" = /obj/item/book/granter/spellbook/adept/starter/arcane,
+		"Grave-Touched Tome (Death)" = /obj/item/book/granter/spellbook/adept/starter/death,
+		"Verdant Tome (Life)" = /obj/item/book/granter/spellbook/adept/starter/life,
+		"Windswept Tome (Air)" = /obj/item/book/granter/spellbook/adept/starter/air,
+		"Tidebound Tome (Water)" = /obj/item/book/granter/spellbook/adept/starter/water,
+	)
+
+	INVOKE_ASYNC(src, PROC_REF(grant_selected_spellbooks), spawned, selectable_books, 2)
 
 /datum/job/advclass/mercenary/sellmage/on_roundstart(mob/living/spawned, client/player_client)
 	. = ..()
@@ -114,7 +129,6 @@
 	backr = /obj/item/storage/backpack/satchel
 	backl = /obj/item/weapon/polearm/woodstaff/quarterstaff/iron
 	backpack_contents = list(
-		/obj/item/book/granter/spellbook/adept = 1,
 		/obj/item/chalk = 1,
 		/obj/item/reagent_containers/glass/bottle/manapot = 1
 	)

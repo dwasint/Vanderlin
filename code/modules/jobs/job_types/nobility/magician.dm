@@ -107,15 +107,15 @@
 		spawned.dna.species.soundpack_m = new /datum/voicepack/male/wizard()
 
 	var/list/selectable_books = list(
-		"Blazing Tome (Fire)" = /obj/item/book/granter/spellbook/expert/fire,
-		"Frostbound Tome (Ice)" = /obj/item/book/granter/spellbook/expert/ice,
-		"Storm-Charged Tome (Lightning)" = /obj/item/book/granter/spellbook/expert/lightning,
-		"Stoneveined Tome (Earth)" = /obj/item/book/granter/spellbook/expert/earth,
-		"Thrice-Warded Tome (Arcane)" = /obj/item/book/granter/spellbook/expert/arcane,
-		"Grave-Touched Tome (Death)" = /obj/item/book/granter/spellbook/expert/death,
-		"Verdant Tome (Life)" = /obj/item/book/granter/spellbook/expert/life,
-		"Windswept Tome (Air)" = /obj/item/book/granter/spellbook/expert/air,
-		"Tidebound Tome (Water)" = /obj/item/book/granter/spellbook/expert/water,
+		"Blazing Tome (Fire)" = /obj/item/book/granter/spellbook/expert/starter/fire,
+		"Frostbound Tome (Ice)" = /obj/item/book/granter/spellbook/expert/starter/ice,
+		"Storm-Charged Tome (Lightning)" = /obj/item/book/granter/spellbook/expert/starter/lightning,
+		"Stoneveined Tome (Earth)" = /obj/item/book/granter/spellbook/expert/starter/earth,
+		"Thrice-Warded Tome (Arcane)" = /obj/item/book/granter/spellbook/expert/starter/arcane,
+		"Grave-Touched Tome (Death)" = /obj/item/book/granter/spellbook/expert/starter/death,
+		"Verdant Tome (Life)" = /obj/item/book/granter/spellbook/expert/starter/life,
+		"Windswept Tome (Air)" = /obj/item/book/granter/spellbook/expert/starter/air,
+		"Tidebound Tome (Water)" = /obj/item/book/granter/spellbook/expert/starter/water,
 	)
 
 	INVOKE_ASYNC(src, PROC_REF(grant_selected_spellbooks), spawned, selectable_books, 2)

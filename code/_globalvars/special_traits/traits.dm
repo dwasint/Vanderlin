@@ -826,7 +826,8 @@
 
 /datum/special_trait/thinker/on_apply(mob/living/carbon/human/character, silent)
 	character.attributes?.add_sheet(/datum/attribute_holder/sheet/job/thinker)
-	character.adjust_spell_points(14) //Less points than Court Mage, why do Court mage get 17 points? what even?
+	character.adjust_technique_mastery_points(3)
+	character.adjust_form_mastery_points(8)
 	character.add_spell(/datum/action/cooldown/spell/undirected/touch/prestidigitation, silent = TRUE, mastery_spell = TRUE)
 	character.mana_pool.set_intrinsic_recharge(MANA_ALL_LEYLINES)
 	character.mana_pool.adjust_mana(100) //I don't know, they don't spawn with their full mana bar, so we give them a bit more mana at the start.

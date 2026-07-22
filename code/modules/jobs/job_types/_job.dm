@@ -138,8 +138,6 @@
 	/// Innate spells that get removed when the job is removed
 	var/list/spells
 
-	/// Spell points to give/take to the mob
-	var/spell_points
 	/// Form points to give/take to the mob
 	var/form_points
 	/// Technique points to give/take to the mob
@@ -371,7 +369,6 @@
 		spawned.set_apprentice_name(apprentice_name)
 
 	add_spells(spawned)
-	spawned.adjust_spell_points(spell_points)
 
 	if(form_points)
 		spawned.adjust_form_mastery_points(form_points)
@@ -536,8 +533,6 @@
 			spawned.clamped_adjust_skill_level(skill, -amount_or_list[1], amount_or_list[2], TRUE)
 		else
 			spawned.adjust_skillrank(skill, -amount_or_list, TRUE)
-
-	spawned.adjust_spell_points(-spell_points)
 
 	if(form_points)
 		spawned.adjust_form_mastery_points(-form_points)

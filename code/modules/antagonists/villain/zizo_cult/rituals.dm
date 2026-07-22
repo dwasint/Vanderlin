@@ -485,7 +485,8 @@ GLOBAL_LIST_INIT(ritualslist, build_zizo_rituals())
 	mage.gib()
 
 	cultist.adjust_stat_modifier(STATMOD_RITUAL, list(/datum/attribute/skill/magic/arcane = 40))
-	cultist.adjust_spell_points(18)
+	cultist.adjust_form_mastery_points(12)
+	cultist.adjust_technique_mastery_points(5)
 	cultist.mana_pool.set_intrinsic_recharge(MANA_ALL_LEYLINES)
 	to_chat(cultist, span_notice("Stolen Arcane prowess floods my mind, ZIZO empowers me."))
 

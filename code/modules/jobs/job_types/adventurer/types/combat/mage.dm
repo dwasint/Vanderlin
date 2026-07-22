@@ -39,7 +39,7 @@
 	blacklisted_species = list(SPEC_ID_HALFLING)
 	exp_types_granted = list(EXP_TYPE_ADVENTURER, EXP_TYPE_COMBAT, EXP_TYPE_MAGICK)
 	magic_user = TRUE
-	spell_points = 5
+	form_points = 4
 
 	spells = list(
 		/datum/action/cooldown/spell/undirected/touch/prestidigitation
@@ -53,6 +53,20 @@
 	. = ..()
 	if(istype(spawned.patron, /datum/patron/inhumen/zizo))
 		spawned.grant_language(/datum/language/undead)
+
+	var/list/selectable_books = list(
+		"Blazing Tome (Fire)" = /obj/item/book/granter/spellbook/apprentice/starter/fire,
+		"Frostbound Tome (Ice)" = /obj/item/book/granter/spellbook/apprentice/starter/ice,
+		"Storm-Charged Tome (Lightning)" = /obj/item/book/granter/spellbook/apprentice/starter/lightning,
+		"Stoneveined Tome (Earth)" = /obj/item/book/granter/spellbook/apprentice/starter/earth,
+		"Thrice-Warded Tome (Arcane)" = /obj/item/book/granter/spellbook/apprentice/starter/arcane,
+		"Grave-Touched Tome (Death)" = /obj/item/book/granter/spellbook/apprentice/starter/death,
+		"Verdant Tome (Life)" = /obj/item/book/granter/spellbook/apprentice/starter/life,
+		"Windswept Tome (Air)" = /obj/item/book/granter/spellbook/apprentice/starter/air,
+		"Tidebound Tome (Water)" = /obj/item/book/granter/spellbook/apprentice/starter/water,
+	)
+
+	INVOKE_ASYNC(src, PROC_REF(grant_selected_spellbooks), spawned, selectable_books, 2)
 
 /datum/job/advclass/combat/mage/on_roundstart(mob/living/spawned, client/player_client)
 	. = ..()
@@ -84,7 +98,6 @@
 	beltl = /obj/item/reagent_containers/glass/bottle/manapot
 	r_hand = /obj/item/weapon/polearm/woodstaff
 	backpack_contents = list(
-		/obj/item/book/granter/spellbook/apprentice = 1,
 		/obj/item/chalk = 1,
 	)
 
