@@ -4212,7 +4212,6 @@
 #include "code\modules\spells\spell_types\pointed\beam\equalize.dm"
 #include "code\modules\spells\spell_types\pointed\conjure\_conjure.dm"
 #include "code\modules\spells\spell_types\pointed\conjure\aether_knife.dm"
-#include "code\modules\spells\spell_types\pointed\conjure\bonfire.dm"
 #include "code\modules\spells\spell_types\pointed\conjure\garden_fae.dm"
 #include "code\modules\spells\spell_types\pointed\conjure\hunters_trick.dm"
 #include "code\modules\spells\spell_types\pointed\conjure\kneestingers.dm"
