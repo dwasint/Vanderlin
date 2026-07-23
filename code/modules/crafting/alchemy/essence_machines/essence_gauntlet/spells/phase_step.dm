@@ -36,6 +36,7 @@
 	icon_state = "buff"
 
 /datum/action/cooldown/spell/essence/phase_step/spell
+	name = "Lesser Phase Step"
 	charge_required = TRUE
 	charge_time = 4 SECONDS
 	spell_cost = 40

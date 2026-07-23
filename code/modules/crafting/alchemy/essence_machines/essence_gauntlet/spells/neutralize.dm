@@ -19,6 +19,7 @@
 		new /obj/effect/temp_visual/snake/twin_up(null, L)
 
 /datum/action/cooldown/spell/essence/neutralize/spell
+	name = "Neutralize Toxins"
 	charge_required = TRUE
 	charge_time = 0.2 SECONDS
 	spell_cost = 40

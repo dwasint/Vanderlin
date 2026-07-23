@@ -98,6 +98,7 @@
 			AM.throw_at(throw_target, throw_range, throw_speed)
 
 /datum/action/cooldown/spell/essence/momentum_transfer/spell
+	name = "Kinetic Transfer"
 	charge_required = TRUE
 	charge_time = 1 SECONDS
 	spell_cost = 60

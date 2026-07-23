@@ -40,6 +40,7 @@
 	add_client_image(new_image, enterer.client)
 
 /datum/action/cooldown/spell/essence/arcane_mark/spell
+	name = "Arcane Markings"
 	spell_cost = 20
 	spell_type = SPELL_MANA
 

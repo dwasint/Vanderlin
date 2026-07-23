@@ -18,6 +18,7 @@
 
 
 /datum/action/cooldown/spell/essence/growth_acceleration/spell
+	name = "Accelerated Growth"
 	charge_required = TRUE
 	charge_time = 2 SECONDS
 	spell_cost = 40

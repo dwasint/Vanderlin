@@ -44,6 +44,7 @@
 	return ..()
 
 /datum/action/cooldown/spell/essence/chill/spell
+	name = "Ice Zone"
 	charge_required = TRUE
 	charge_time = 0.5 SECONDS
 	spell_cost = 20

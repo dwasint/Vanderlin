@@ -36,6 +36,7 @@
 	to_chat(owner, span_notice("Your feet return to solid ground."))
 
 /datum/action/cooldown/spell/essence/air_walk/spell
+	name = "Lesser Air Walk"
 	charge_required = TRUE
 	charge_time = 1 SECONDS
 	spell_cost = 50

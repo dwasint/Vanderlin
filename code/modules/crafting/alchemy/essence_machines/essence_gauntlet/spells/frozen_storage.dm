@@ -24,6 +24,7 @@
 		return FALSE
 
 /datum/action/cooldown/spell/essence/frozen_storage/spell
+	name = "Greater Fridigitation"
 	spell_cost = 5
 	spell_type = SPELL_MANA
 

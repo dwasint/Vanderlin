@@ -29,6 +29,7 @@
 				T.fire_act()
 
 /datum/action/cooldown/spell/essence/spark/spell
+	name = "Lesser Spark"
 	spell_cost = 10
 	spell_type = SPELL_MANA
 

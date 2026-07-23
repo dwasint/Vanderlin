@@ -38,6 +38,7 @@
 	REMOVE_TRAIT(owner, TRAIT_TOXINLOVER, TRAIT_STATUS_EFFECT(id))
 
 /datum/action/cooldown/spell/essence/toxic_cleanse/spell
+	name = "Detoxify"
 	charge_required = TRUE
 	charge_time = 5 SECONDS
 	spell_cost = 80

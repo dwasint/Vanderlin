@@ -64,6 +64,7 @@
 	return FALSE
 
 /datum/action/cooldown/spell/essence/mend/spell
+	name = "Lesser Mend"
 	spell_cost = 40
 	spell_type = SPELL_MANA
 	cooldown_time = 3 MINUTES

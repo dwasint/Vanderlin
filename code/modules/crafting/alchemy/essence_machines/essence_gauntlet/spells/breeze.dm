@@ -24,6 +24,7 @@
 			SSmove_manager.move_rand(I)
 
 /datum/action/cooldown/spell/essence/breeze/spell
+	name = "Breeze"
 	spell_cost = 15
 	spell_type = SPELL_MANA
 

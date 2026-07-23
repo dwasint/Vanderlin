@@ -19,6 +19,7 @@
 	duration = 1 HOURS
 
 /datum/action/cooldown/spell/essence/daylight/spell
+	name =  "Daylight Orb"
 	charge_required = TRUE
 	charge_time = 5 SECONDS
 	spell_cost = 40

@@ -44,6 +44,7 @@
 	return ..()
 
 /datum/action/cooldown/spell/essence/ice_bridge/spell
+	name = "Bridge of Ice"
 	charge_required = TRUE
 	charge_time = 2 SECONDS
 	spell_cost = 60

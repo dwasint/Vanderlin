@@ -18,6 +18,7 @@
 	target.adjust_energy(20)
 
 /datum/action/cooldown/spell/essence/refresh/spell
+	name = "Reinvigorate"
 	charge_required = TRUE
 	charge_time = 0.2 SECONDS
 	spell_cost = 30

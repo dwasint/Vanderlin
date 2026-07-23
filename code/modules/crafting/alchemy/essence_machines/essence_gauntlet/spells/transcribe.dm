@@ -204,6 +204,7 @@
 		. += span_notice("It's blank and ready to record.")
 
 /datum/action/cooldown/spell/essence/transcribe/spell
+	name = "Arcane Transcription"
 	spell_cost = 20
 	spell_type = SPELL_MANA
 

@@ -18,6 +18,7 @@
 	target.wash(CLEAN_WASH)
 
 /datum/action/cooldown/spell/essence/cleanse/spell
+	name = "Lesser Cleanse"
 	charge_required = TRUE
 	charge_time = 2 SECONDS
 	spell_cost = 15

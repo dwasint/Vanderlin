@@ -39,6 +39,7 @@
 	to_chat(owner, span_notice("The supernatural vigor fades."))
 
 /datum/action/cooldown/spell/essence/vigor/spell
+	name = "Greater Vigor"
 	charge_required = TRUE
 	charge_time = 3 SECONDS
 	spell_cost = 70

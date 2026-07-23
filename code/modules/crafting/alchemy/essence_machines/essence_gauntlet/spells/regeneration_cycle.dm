@@ -34,6 +34,7 @@
 	carbon.adjustFireLoss(-0.1, TRUE)
 
 /datum/action/cooldown/spell/essence/regeneration_cycle/spell
+	name = "Rejuvenation Cycle"
 	charge_required = TRUE
 	charge_time = 2 SECONDS
 	spell_cost = 80

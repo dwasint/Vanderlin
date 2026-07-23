@@ -25,6 +25,7 @@
 		sleep(0.3 SECONDS)
 
 /datum/action/cooldown/spell/essence/fire_cascade/spell
+	name = "Cascade of Fire"
 	charge_required = TRUE
 	charge_time = 0.2 SECONDS
 	spell_cost = 40

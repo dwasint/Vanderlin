@@ -22,6 +22,7 @@
 		pylon.mana_pool.adjust_mana(30)
 
 /datum/action/cooldown/spell/essence/energize/spell
+	name = "Re-Energize"
 	charge_required = TRUE
 	charge_time = 1 SECONDS
 	spell_cost = 40

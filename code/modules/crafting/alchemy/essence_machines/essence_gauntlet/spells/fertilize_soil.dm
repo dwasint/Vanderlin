@@ -17,6 +17,7 @@
 		new /obj/effect/temp_visual/bless_swirl(get_turf(plant))
 
 /datum/action/cooldown/spell/essence/fertile_soil/spell
+	name = "Fertilze Land"
 	spell_cost = 15
 	spell_type = SPELL_MANA
 

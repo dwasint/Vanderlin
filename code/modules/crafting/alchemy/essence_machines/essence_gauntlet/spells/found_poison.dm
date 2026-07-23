@@ -35,6 +35,7 @@
 	layer = EFFECTS_LAYER
 
 /datum/action/cooldown/spell/essence/detect_poison/spell
+	name = "Detect Toxin"
 	charge_required = TRUE
 	charge_time = 2 SECONDS
 	spell_cost = 10

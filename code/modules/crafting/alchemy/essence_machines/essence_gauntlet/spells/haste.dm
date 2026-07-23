@@ -17,6 +17,7 @@
 	new /obj/effect/temp_visual/snake/swarm(null, L)
 
 /datum/action/cooldown/spell/essence/haste/spell
+	name = "Lesser Haste"
 	charge_required = TRUE
 	charge_time = 0.2 SECONDS
 	spell_cost = 25

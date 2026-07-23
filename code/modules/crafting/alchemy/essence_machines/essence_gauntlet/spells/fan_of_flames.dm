@@ -48,6 +48,7 @@
 	range = 4
 
 /datum/action/cooldown/spell/essence/fan_of_flames/spell
+	name = "Greater Fan of Flames"
 	charge_required = TRUE
 	charge_time = 0.3 SECONDS
 	spell_cost = 35

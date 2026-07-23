@@ -35,6 +35,7 @@
 	to_chat(owner, span_notice("The magical warmth fades away."))
 
 /datum/action/cooldown/spell/essence/warmth/spell
+	name = "Lesser Warmth"
 	charge_required = TRUE
 	charge_time = 1 SECONDS
 	spell_cost = 40
