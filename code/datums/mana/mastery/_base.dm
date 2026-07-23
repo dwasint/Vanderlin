@@ -153,6 +153,7 @@
 		var/datum/action/cooldown/spell/existing_spell = granted_actions[spell_path]
 		if(!existing_spell)
 			existing_spell = new spell_path()
+			RegisterSignal(existing_spell, COMSIG_SPELL_CAST, PROC_REF(pass_spell_cast))
 			granted_actions[spell_path] = existing_spell
 
 		existing_spell.mastery_source = src

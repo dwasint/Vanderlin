@@ -171,7 +171,7 @@
 		return
 	if(user in allowed_readers)
 		return
-	recoil(user)
+	addtimer(CALLBACK(src, PROC_REF(recoil), user), 0.1 SECONDS)
 
 /obj/item/spellbook/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!isliving(interacting_with))
