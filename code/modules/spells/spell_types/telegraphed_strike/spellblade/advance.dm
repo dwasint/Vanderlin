@@ -15,7 +15,7 @@
 	required_technique = TECHNIQUE_IMBUE
 
 	invocation = null
-	invocation_type = INVOCATION_SHOUT
+	invocation_type = INVOCATION_NONE
 
 	charge_required = TRUE
 	charge_time = CHARGETIME_POKE

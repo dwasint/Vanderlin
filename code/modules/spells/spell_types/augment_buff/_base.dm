@@ -10,6 +10,7 @@
 	required_technique = TECHNIQUE_ALTERATION
 
 	invocation_type = INVOCATION_SHOUT
+	invocation = "FIX ME!"
 
 	charge_required = TRUE
 	charge_time = CHARGETIME_MINOR

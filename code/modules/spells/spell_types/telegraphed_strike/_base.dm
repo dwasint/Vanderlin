@@ -3,6 +3,7 @@
 	self_cast_possible = TRUE
 	charge_required = FALSE
 	invocation_type = INVOCATION_SHOUT
+	invocation = "FIX ME!"
 
 	var/damage = 50
 	var/strike_damage_type = BRUTE

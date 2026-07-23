@@ -11,6 +11,7 @@
 	required_technique = TECHNIQUE_SUMMONING
 
 	invocation_type = INVOCATION_SHOUT
+	invocation = "FIX ME!"
 
 	charge_required = TRUE
 	charge_time = CHARGETIME_HEAVY
