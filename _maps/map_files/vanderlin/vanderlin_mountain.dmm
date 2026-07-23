@@ -13652,7 +13652,7 @@
 /area/indoors/mountains/anvil/upperkeep)
 "rjA" = (
 /obj/effect/decal/cleanable/ritual_rune/arcyne/summoning/adv,
-/obj/effect/decal/cleanable/ritual_rune/arcyne/attunement,
+/obj/effect/decal/cleanable/ritual_rune/arcyne/recharge,
 /obj/item/riddleofsteel,
 /mob/living/simple_animal/hostile/retaliate/voiddragon/red,
 /turf/open/floor/plasteel/maniac,
