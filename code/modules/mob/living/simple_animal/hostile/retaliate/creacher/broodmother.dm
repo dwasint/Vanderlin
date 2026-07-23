@@ -436,7 +436,7 @@ GLOBAL_LIST_EMPTY(broodmother_eggs)
 
 /obj/structure/broodmother_egg/troll/cave
 	hud_name = "a Cave Troll Egg"
-	icon_state = "toll_cave_egg"
+	icon_state = "troll_cave_egg"
 	type_to_spawn = /mob/living/simple_animal/hostile/retaliate/troll/cave/slaved
 
 /obj/structure/broodmother_egg/troll/axe
