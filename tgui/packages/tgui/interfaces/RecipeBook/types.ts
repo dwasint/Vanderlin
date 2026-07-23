@@ -303,4 +303,5 @@ export interface FormTechniqueContribution {
   cost_mult?: number;
   speed_mult?: number;
   magnitude_mod?: number;
+  holder?: number;
 }

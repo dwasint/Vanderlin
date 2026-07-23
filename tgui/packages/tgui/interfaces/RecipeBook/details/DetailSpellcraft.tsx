@@ -22,7 +22,14 @@ const ContributionTable = ({ rows }: { rows: FormTechniqueContribution[] }) => (
     <tbody>
       {rows.map((c, i) => (
         <tr key={i} style={{ borderTop: '1px solid rgba(0,0,0,0.15)' }}>
-          <td style={{ padding: '4px 6px', fontWeight: 'bold', color: c.color || 'inherit' }}>{c.name}</td>
+          <td style={{ padding: '4px 6px', fontWeight: 'bold', color: c.color || 'inherit' }}>
+            {c.name}
+            {c.holder && (
+              <span style={{ display: 'block', fontSize: '10px', fontWeight: 'normal', fontStyle: 'italic', opacity: 0.7 }}>
+                Item Stats
+              </span>
+            )}
+          </td>
           <td style={{ padding: '4px 6px', textAlign: 'right' }}>{fmtPoints(c.points)}</td>
           <td style={{ padding: '4px 6px', textAlign: 'right' }}>{fmtMult(c.cost_mult)}</td>
           <td style={{ padding: '4px 6px', textAlign: 'right' }}>{fmtMult(c.speed_mult)}</td>

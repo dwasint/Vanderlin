@@ -79,6 +79,7 @@ export const RecipeDetail = ({ recipe: r, lookup, pickerMap, allRecipes, essence
       case 'distillation':        return <DetailDistillation {...sharedProps} />;
       case 'arcyne_crafting':     return <DetailArcyneCrafting {...sharedProps} />;
       case 'spellcraft':          return <DetailSpellcraft r={r} />;
+      case 'spellcraft-item':          return <DetailSpellcraft r={r} />;
       default:
         return <Box className="RecipeBook__desc">No details available for type: {r.type}</Box>;
     }

@@ -2163,6 +2163,7 @@
 #include "code\game\objects\items\unfinished_spellbook\spellcraft_contributions\elemental.dm"
 #include "code\game\objects\items\unfinished_spellbook\spellcraft_contributions\fire.dm"
 #include "code\game\objects\items\unfinished_spellbook\spellcraft_contributions\special.dm"
+#include "code\game\objects\items\unfinished_spellbook\spellcraft_contributions\items\_base.dm"
 #include "code\game\objects\items\weapons\integrity.dm"
 #include "code\game\objects\items\weapons\rmb_intents.dm"
 #include "code\game\objects\items\weapons\rogueweapon.dm"

@@ -15,6 +15,8 @@
 	return charge_time
 
 /datum/action/cooldown/spell/essence/get_adjusted_cost(cost_override)
+	if(spell_type == SPELL_MANA)
+		return ..()
 	if(cost_override)
 		return cost_override
 	return spell_cost

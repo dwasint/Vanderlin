@@ -1,11 +1,23 @@
 
 GLOBAL_LIST_INIT(spellcraft_contributions, build_spellcraft_contributions())
 
+GLOBAL_LIST_INIT(spellcraft_items, build_spellcraft_items())
+
+/proc/build_spellcraft_items()
+	. = list()
+	for(var/contribution_type in typesof(/datum/spellcraft_contribution))
+		var/datum/spellcraft_contribution/contribution = new contribution_type()
+		if(!contribution.holder)
+			continue
+		.[contribution.type] = contribution
+
 /proc/build_spellcraft_contributions()
 	. = list()
 	for(var/contribution_type in typesof(/datum/spellcraft_contribution))
 		var/datum/spellcraft_contribution/contribution = new contribution_type()
 		if(!contribution.atom_path)
+			continue
+		if(contribution.holder)
 			continue
 		if(contribution.include_subtypes)
 			for(var/sub_path in typesof(contribution.atom_path))
@@ -15,6 +27,8 @@ GLOBAL_LIST_INIT(spellcraft_contributions, build_spellcraft_contributions())
 
 /datum/spellcraft_contribution
 	abstract_type = /datum/spellcraft_contribution
+	///are we a spellcraft piece or a holder?
+	var/holder = FALSE
 	/// The atom typepath this contribution is registered under.
 	var/atom/atom_path
 	/// If TRUE, all subtypes of atom_path get mapped to this same singleton too.
@@ -38,12 +52,13 @@ GLOBAL_LIST_INIT(spellcraft_contributions, build_spellcraft_contributions())
 
 /datum/spellcraft_contribution/return_recipe_data(atom/source_path)
 	var/list/data = list()
-	data["type"] = "spellcraft"
+	data["type"] = holder ? "spellcraft-item" : "spellcraft"
 	data["name"] = initial(atom_path.name)
-	data["category"] = "Spellcraft"
+	data["category"] = holder ? "Spellcraft Item Stats" : "Spellcraft"
 	data["output_icon"] = "[initial(atom_path.icon)]"
 	data["output_state"] = "[initial(atom_path.icon_state)]"
 	data["_output_path"] = "[source_path]"
+	data["holder"] = holder
 
 	var/list/forms = list()
 	for(var/form in GLOB.all_forms)
