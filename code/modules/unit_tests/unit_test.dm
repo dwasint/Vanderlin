@@ -189,6 +189,8 @@ GLOBAL_LIST_EMPTY(required_map_items)
 	ignore += typesof(/obj/effect/spawner)
 	ignore += typesof(/atom/movable/screen)
 	ignore += typesof(/obj/abstract)
+	///these have turf changing race conditions when spawned specifically for create and destroy.
+	ignore += typesof(/mob/living/simple_animal/hostile/retaliate/primordial)
 
 	return ignore
 
