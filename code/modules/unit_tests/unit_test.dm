@@ -155,6 +155,8 @@ GLOBAL_LIST_EMPTY(required_map_items)
 		/obj/effect/meatvine_controller,
 		//Single use case holder atom requiring a user
 		/atom/movable/looking_holder,
+		///same as with the primordials
+		/obj/effect/primordial_pool
 	)
 	/// ???
 	ignore += typesof(/obj/effect/bombard_zone)
