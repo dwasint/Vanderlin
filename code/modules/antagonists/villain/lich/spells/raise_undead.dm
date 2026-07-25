@@ -132,18 +132,6 @@
 	mob_biotypes = MOB_UNDEAD
 	faction = list(FACTION_UNDEAD)
 
-	skeletonize(FALSE)
-	fully_heal(HEAL_TRAUMAS)
-
-	skele_look()
-	grant_undead_eyes()
-
-	for(var/obj/item/organ/organ as anything in internal_organs)
-		organ.regenerate_organ()
-
-	if(length(quirks))
-		clear_quirks()
-
 	add_traits(list(TRAIT_NOMOOD, \
 		TRAIT_NOHUNGER, \
 		TRAIT_NOBREATH, \
@@ -161,6 +149,18 @@
 		TRAIT_NOAMBUSH, \
 		TRAIT_UNDODGING)
 		, SPECIES_TRAIT)
+
+	skeletonize(FALSE)
+	fully_heal(HEAL_TRAUMAS)
+
+	skele_look()
+	grant_undead_eyes()
+
+	for(var/obj/item/organ/organ as anything in internal_organs)
+		organ.regenerate_organ()
+
+	if(length(quirks))
+		clear_quirks()
 
 	update_body()
 
