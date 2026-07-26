@@ -1653,8 +1653,8 @@
 				target.mind.attackedme[user.real_name] = world.time
 			var/selzone = accuracy_check(user.zone_selected, user, target, /datum/attribute/skill/combat/unarmed, user.used_intent)
 			var/obj/item/bodypart/affecting = target.get_bodypart(check_zone(selzone))
-			var/damage = user.get_kick_damage(2.5)
-			//note we don't really pass in a list for EP because this is pure blunt so its redundant
+			var/damage = user.get_kick_damage() * 1.5
+      //note we don't really pass in a list for EP because this is pure blunt so its redundant
 			var/armor_block = target.run_armor_check(selzone, "blunt", blade_dulling = BCLASS_BLUNT)
 			var/balance = 10
 			target.next_attack_msg.Cut()
@@ -1762,7 +1762,7 @@
 			affecting = target.get_bodypart(BODY_ZONE_CHEST)
 		//note we don't really pass in a list for EP because this is pure blunt so its redundant
 		var/armor_block = target.run_armor_check(selzone, "blunt", blade_dulling = BCLASS_BLUNT)
-		var/damage = user.get_kick_damage(1.4)
+		var/damage = user.get_kick_damage()
 		var/damage_blocked = FALSE
 
 		if(!target.apply_damage(damage, user.dna.species.attack_type, affecting, armor_block))
