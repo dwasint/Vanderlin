@@ -25,10 +25,6 @@
 	base_modifier = new
 	add_physiology_modifier(base_modifier)
 
-/// Direct access to the always-on base modifier, for species seeding or admin/genetic edits
-/datum/physiology/proc/get_base_modifier()
-	return base_modifier
-
 /// Add a physiology modifier to this holder. If a variable subtype is passed in as the first argument, it will make a new datum. If ID conflicts, it will overwrite the old ID.
 /datum/physiology/proc/add_physiology_modifier(datum/physiology_modifier/type_or_datum)
 	if(ispath(type_or_datum))

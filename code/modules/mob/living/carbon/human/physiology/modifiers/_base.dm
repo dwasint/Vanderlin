@@ -73,7 +73,7 @@ GLOBAL_LIST_EMPTY(physiology_modification_cache)
 		phys_mod = GLOB.physiology_modification_cache[modtype] = new modtype
 	return phys_mod
 
-/// The "always on" variable modifier every physiology gets on creation. This is what species defaults + direct/admin edits get written to, so nothing gets wiped when species changes.
+/// The "always on" variable modifier every physiology gets on creation. This is what direct/admin edits get written to.
 /datum/physiology_modifier/base
 	id = "base"
 	variable = TRUE
